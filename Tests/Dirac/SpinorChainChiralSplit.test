@@ -1,0 +1,52 @@
+
+
+(* :Title: SpinorChainChiralSplit.test                                                    *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for SpinorChainChiralSplit                 *)
+
+(* ------------------------------------------------------------------------ *)
+
+
+
+Tests`Dirac`fcstSpinorChainChiralSplit =
+({
+{"fcstSpinorChainChiralSplit-ID1", "SpinorChainChiralSplit[GA[5]]",
+"DiracGamma[5]"},
+{"fcstSpinorChainChiralSplit-ID2",
+"SpinorChainChiralSplit[SpinorUBar[p1,m1].GSD[p].SpinorV[p2,m2]]",
+"Spinor[Momentum[p1], m1, 1] . DiracGamma[Momentum[p, D], D] . \
+DiracGamma[6] . Spinor[-Momentum[p2], m2, 1] + Spinor[Momentum[p1], \
+m1, 1] . DiracGamma[Momentum[p, D], D] . DiracGamma[7] . \
+Spinor[-Momentum[p2], m2, 1]"},
+{"fcstSpinorChainChiralSplit-ID3",
+"SpinorChainChiralSplit[SpinorUBar[p1,m1].GSD[p].SpinorV[p2,m2]+x]\
+", "x + Spinor[Momentum[p1], m1, 1] . DiracGamma[Momentum[p, D], D] . \
+DiracGamma[6] . Spinor[-Momentum[p2], m2, 1] + Spinor[Momentum[p1], \
+m1, 1] . DiracGamma[Momentum[p, D], D] . DiracGamma[7] . \
+Spinor[-Momentum[p2], m2, 1]"},
+{"fcstSpinorChainChiralSplit-ID4",
+"SpinorChainChiralSplit[SpinorUBar[p1,m1].GSD[p].GA[5].SpinorV[p2,\
+m2]]", "Spinor[Momentum[p1], m1, 1] . DiracGamma[Momentum[p, D], D] . \
+DiracGamma[6] . Spinor[-Momentum[p2], m2, 1] - Spinor[Momentum[p1], \
+m1, 1] . DiracGamma[Momentum[p, D], D] . DiracGamma[7] . \
+Spinor[-Momentum[p2], m2, 1]"},
+{"fcstSpinorChainChiralSplit-ID5",
+"SpinorChainChiralSplit[SpinorUBar[p1,m1].GSD[p].GA[5].SpinorV[p2,\
+m2],DiracSubstitute5\[Rule]False]",
+"Spinor[Momentum[p1], m1, 1] . DiracGamma[Momentum[p, D], D] . \
+DiracGamma[5] . Spinor[-Momentum[p2], m2, 1]"},
+{"fcstSpinorChainChiralSplit-ID6",
+"SpinorChainChiralSplit[SpinorUBar[p1,m1].GSD[p].GA[5].SpinorV[p2,\
+m2],Head\[Rule]dhead]",
+"dhead[Spinor[Momentum[p1], m1, 1] . DiracGamma[Momentum[p, D], D] \
+. DiracGamma[6] . Spinor[-Momentum[p2], m2, 1]] - \
+dhead[Spinor[Momentum[p1], m1, 1] . DiracGamma[Momentum[p, D], D] . \
+DiracGamma[7] . Spinor[-Momentum[p2], m2, 1]]"}
+});

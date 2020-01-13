@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for PaVeReduce  		*)
@@ -330,7 +330,26 @@ m2^2}])/(D*(2 + D)) + ((1 + 2*D)*m1^2*(m1^2 - m2^2)*PaVe[1, 1, {0}, \
 "PaVe[0,0,1,1,1,{0},{m1^2,m2^2}]//PaVeReduce",
 "-PaVe[0, {}, {m2^2}]/(2*(2 + D)) + (m1^2*PaVe[1, 1, 1, {0}, \
 {m1^2, m2^2}])/(2 + D) + ((m1^2 - m2^2)*PaVe[1, 1, 1, 1, {0}, {m1^2, \
-m2^2}])/(2*(2 + D))"}
+m2^2}])/(2*(2 + D))"},
+{"fcstPaVeReduceBFunctions-ID25",
+"PaVeReduce[PaVe[1, 1, 1, {-CSPD[p, p]}, {m1^2, m2^2}], FCE -> True]",
+"((2 D m1^4 + D^2 m1^4 - 4 D m1^2 m2^2 - 2 D^2 m1^2 m2^2 + 2 D m2^4 +
+	D^2 m2^4 - 8 m1^2 CSPD[p, p] + 4 D m1^2 CSPD[p, p] -
+	2 D^2 m1^2 CSPD[p, p] + 4 D m2^2 CSPD[p, p] +
+	2 D^2 m2^2 CSPD[p, p] + 2 D CSPD[p, p]^2 + D^2 CSPD[p, p]^2) PaVe[
+0, {}, {m1^2}])/(8 (1 - D) D CSPD[p, p]^3) - (1/(
+8 (1 - D) D CSPD[p,
+p]^3))(2 D m1^4 + D^2 m1^4 - 4 D m1^2 m2^2 - 2 D^2 m1^2 m2^2 +
+	2 D m2^4 + D^2 m2^4 + 4 D m1^2 CSPD[p, p] -
+	4 D^2 m1^2 CSPD[p, p] - 8 m2^2 CSPD[p, p] + 4 D m2^2 CSPD[p, p] +
+	4 D^2 m2^2 CSPD[p, p] - 10 D CSPD[p, p]^2 +
+	7 D^2 CSPD[p, p]^2) PaVe[0, {}, {m2^2}] - (1/(
+8 (1 - D) CSPD[p,
+p]^3))(m1^2 - m2^2 - CSPD[p, p]) (2 m1^4 + D m1^4 - 4 m1^2 m2^2 -
+	2 D m1^2 m2^2 + 2 m2^4 + D m2^4 + 8 m1^2 CSPD[p, p] -
+	2 D m1^2 CSPD[p, p] + 4 m2^2 CSPD[p, p] + 2 D m2^2 CSPD[p, p] +
+	2 CSPD[p, p]^2 + D CSPD[p, p]^2) PaVe[
+0, {-CSPD[p, p]}, {m1^2, m2^2}]"}
 });
 
 Tests`LoopIntegrals`fcstPaVeReduceCFunctions =
@@ -955,7 +974,18 @@ PaVe[2, {p10, p12, p20}, {m1^2, m2^2,
 "0"},
 {"fcstPaVeReduce-ID9", "PaVe[0, 0, {0}, {0, m^2}, PaVeAutoOrder -> True] // PaVeReduce",
 "-(PaVe[0, {}, {m^2}]/(2 (1 - D))) + (m^2 PaVe[1, {0}, {0, m^2}])/(
-2 (1 - D))"}
+2 (1 - D))"},
+{"fcstPaVeReduce-ID10", "PaVeReduce[PaVe[0, 0, 1, {pp}, {mm1, mm2}], MaxIterations -> 1]",
+"(mm1 PaVe[0, {}, {mm1}])/(
+2 D pp) - ((mm1 + mm2 + pp) PaVe[0, {}, {mm2}])/(4 D pp) - (
+mm1 (mm1 - mm2 + pp) PaVe[0, {pp}, {mm1, mm2}])/(
+2 D pp) - ((mm1 - mm2 + pp)^2 PaVe[1, {pp}, {mm1, mm2}])/(
+4 D pp) - ((mm1 - mm2 + pp) PaVe[0, 0, {pp}, {mm1, mm2}])/(2 D pp)"},
+{"fcstPaVeReduce-ID11", "MatchQ[PaVeReduce[
+Collect2[Expand[Sum[a[i], {i, 1, 5}] B0[0, mm, mm]], B0,
+IsolateNames -> KK],
+BReduce -> True], -(((2 - D) HoldForm[_] PaVe[0, {}, {mm}])/(2 mm))]",
+"True"}
 })
 
 

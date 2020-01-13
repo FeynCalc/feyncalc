@@ -118,14 +118,24 @@ Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
   RowBox[{"DiracBasis", "[", "any", "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "is a head which is wrapped around Dirac structures (and the 1) as a result \
-of the function DiracReduce. Eventually you want to substitute DiracBasis by \
-Identity (or set: DiracBasis[1] = S; DiracBasis[DiracMatrix[mu]] = P; etc.)."
+ " \[LineSeparator]is a head which is wrapped around Dirac structures (and \
+the 1) as a result of the function ",
+ ButtonBox["DiracReduce",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracReduce",
+  ButtonNote->"DiracReduce"],
+ "."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
+Cell[TextData[{
+ "For more details, see the documentation for ",
+ ButtonBox["DiracReduce",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracReduce",
+  ButtonNote->"DiracReduce"],
+ "."
+}], "Notes",
  CellID->1067943069]
 }, Open  ]],
 
@@ -161,16 +171,10 @@ Cell[CellGroupData[{
 Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
-Cell[TextData[{
- "See also: ",
- ButtonBox["DiracReduce",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracReduce",
-  ButtonNote->"DiracReduce"],
- "."
-}], "Text",
- CellTags->"DiracBasis",
- CellID->1805198737]
+Cell[TextData[ButtonBox["DiracReduce",
+ BaseStyle->"Link",
+ ButtonData:>"paclet:FeynCalc/ref/DiracReduce",
+ ButtonNote->"DiracReduce"]], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -256,12 +260,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{1358, Automatic}, {Automatic, 247}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

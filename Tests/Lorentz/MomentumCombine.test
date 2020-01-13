@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for MomentumCombine          *)
@@ -19,39 +19,166 @@ Tests`Lorentz`fcstMomentumCombine = {
 {"fcstMomentumCombine-ID2","MomentumCombine[FV[p, mu] + 2 FV[q, mu]]", "Pair[LorentzIndex[mu], Momentum[p + 2*q]]"},
 {"fcstMomentumCombine-ID3","MomentumCombine[
 Pair[Momentum[a], Momentum[c]] - 2*Pair[Momentum[a], Momentum[d]] +
-	Pair[Momentum[b], Momentum[c]] - 2*Pair[Momentum[b], Momentum[d]]]", "Pair[Momentum[a + b], Momentum[c - 2*d]]"}
+	Pair[Momentum[b], Momentum[c]] - 2*Pair[Momentum[b], Momentum[d]]]", "Pair[Momentum[a + b], Momentum[c - 2*d]]"},
+{"fcstMomentumCombine-ID4","MomentumCombine[n FV[p, mu] + m FV[q, mu]]", "n Pair[LorentzIndex[mu], Momentum[p]] +
+m Pair[LorentzIndex[mu], Momentum[q]]"},
+{"fcstMomentumCombine-ID5","MomentumCombine[n FV[p, mu] + m FV[q, mu], FV -> False]", "n Pair[LorentzIndex[mu], Momentum[p]] +
+m Pair[LorentzIndex[mu], Momentum[q]]"},
+{"fcstMomentumCombine-ID6","MomentumCombine[SP[a, b] + SP[a, c]]", "Pair[Momentum[a], Momentum[b + c]]"},
+{"fcstMomentumCombine-ID7","MomentumCombine[SP[a, b] + SP[a, c], SP -> False]", "Pair[Momentum[a], Momentum[b]] + Pair[Momentum[a], Momentum[c]]"},
+{"fcstMomentumCombine-ID8","MomentumCombine[Pair[LorentzIndex[Lor1, D], Momentum[p1, D]] PaVe[1, {m^2, q2, m^2}, {0, m^2, m^2}] -
+Pair[LorentzIndex[Lor1, D], Momentum[p1, D]] PaVe[0, 0, {m^2, q2, m^2}, {0, m^2, m^2}]]", "Pair[LorentzIndex[Lor1, D], Momentum[p1, D]] PaVe[
+1, {m^2, q2, m^2}, {0, m^2, m^2}] - Pair[LorentzIndex[Lor1, D], Momentum[p1, D]] PaVe[0,0, {m^2, q2, m^2}, {0, m^2, m^2}]"},
+{"fcstMomentumCombine-ID9","MomentumCombine[CartesianMomentum[p] - 2 CartesianMomentum[q]]", "CartesianMomentum[p - 2 q]"},
+{"fcstMomentumCombine-ID10","MomentumCombine[
+CartesianPair[CartesianMomentum[p], CartesianIndex[i]] + 2 CartesianPair[CartesianMomentum[q], CartesianIndex[i]]]", "CartesianPair[CartesianIndex[i], CartesianMomentum[p + 2 q]]"},
+{"fcstMomentumCombine-ID11","MomentumCombine[CartesianPair[CartesianMomentum[a], CartesianMomentum[c]] - 2*CartesianPair[CartesianMomentum[a], CartesianMomentum[d]] +
+CartesianPair[CartesianMomentum[b], CartesianMomentum[c]] - 2*CartesianPair[CartesianMomentum[b], CartesianMomentum[d]]]", "CartesianPair[CartesianMomentum[a + b], CartesianMomentum[c - 2 d]]"},
+{"fcstMomentumCombine-ID12","MomentumCombine[
+n CartesianPair[CartesianMomentum[p], CartesianIndex[i]] + m CartesianPair[CartesianMomentum[q], CartesianIndex[i]]]", "n CartesianPair[CartesianIndex[i], CartesianMomentum[p]] + m CartesianPair[CartesianIndex[i], CartesianMomentum[q]]"},
+{"fcstMomentumCombine-ID13","MomentumCombine[
+CartesianPair[CartesianMomentum[a], CartesianMomentum[b]] +
+CartesianPair[CartesianMomentum[a], CartesianMomentum[c]]]", "CartesianPair[CartesianMomentum[a], CartesianMomentum[b + c]]"},
+{"fcstMomentumCombine-ID14","MomentumCombine[
+CartesianPair[CartesianMomentum[a], CartesianMomentum[b]] +
+CartesianPair[CartesianMomentum[a], CartesianMomentum[c]], SP -> False]", "CartesianPair[CartesianMomentum[a], CartesianMomentum[b]] + CartesianPair[CartesianMomentum[a], CartesianMomentum[c]]"},
+{"fcstMomentumCombine-ID15","FCE[MomentumCombine[
+CartesianPair[CartesianIndex[i], CartesianMomentum[q1]] c1 +
+CartesianPair[CartesianIndex[i], CartesianMomentum[q2]] c1 +
+CartesianPair[CartesianIndex[i], CartesianMomentum[q2]] +
+CartesianPair[CartesianIndex[i], CartesianMomentum[q1]] ]]", "CV[q1 + q2, i] + c1 CV[q1 + q2, i]"},
+{"fcstMomentumCombine-ID16",
+"MomentumCombine[5LC[][p1,q,r,s]+4LC[][p2,q,r,s],FCE->True]",
+"LC[][5*p1 + 4*p2, q, r, s]"},
+{"fcstMomentumCombine-ID17",
+"MomentumCombine[5LC[][p,q1,r,s]+4LC[][p,q2,r,s],FCE->True]",
+"LC[][p, 5*q1 + 4*q2, r, s]"},
+{"fcstMomentumCombine-ID18",
+"MomentumCombine[5LC[][p,q,r,s1]+4LC[][p,q,r,s2],FCE->True]",
+"LC[][p, q, r, 5*s1 + 4*s2]"},
+{"fcstMomentumCombine-ID19",
+"MomentumCombine[3LC[][p1,q,r,s]+3LC[][p2,q,r,s],FCE->True]",
+"3*LC[][p1 + p2, q, r, s]"},
+{"fcstMomentumCombine-ID20",
+"MomentumCombine[3LC[][p,q1,r,s]+3LC[][p,q2,r,s],FCE->True]",
+"3*LC[][p, q1 + q2, r, s]"},
+{"fcstMomentumCombine-ID21",
+"MomentumCombine[3LC[][p,q,r,s1]+3LC[][p,q,r,s2],FCE->True]",
+"3*LC[][p, q, r, s1 + s2]"},
+{"fcstMomentumCombine-ID22",
+"MomentumCombine[5LC[][p1,q,r,s]+4LC[][p2,q,r,s],LC\[Rule]False,\
+FCE->True]", "5*LC[][p1, q, r, s] + 4*LC[][p2, q, r, s]"},
+{"fcstMomentumCombine-ID23",
+"MomentumCombine[5CLC[][p1,q,r]+4CLC[][p2,q,r],FCE->True]",
+"CLC[][5*p1 + 4*p2, q, r]"},
+{"fcstMomentumCombine-ID24",
+"MomentumCombine[5CLC[][p,q1,r]+4CLC[][p,q2,r],FCE->True]",
+"CLC[][p, 5*q1 + 4*q2, r]"},
+{"fcstMomentumCombine-ID25",
+"MomentumCombine[5CLC[][p,q,s1]+4CLC[][p,q,s2],FCE->True]",
+"CLC[][p, q, 5*s1 + 4*s2]"},
+{"fcstMomentumCombine-ID26",
+"MomentumCombine[3CLC[][p1,q,r]+3CLC[][p2,q,r],FCE->True]",
+"3*CLC[][p1 + p2, q, r]"},
+{"fcstMomentumCombine-ID27",
+"MomentumCombine[3CLC[][p,q1,r]+3CLC[][p,q2,r],FCE->True]",
+"3*CLC[][p, q1 + q2, r]"},
+{"fcstMomentumCombine-ID28",
+"MomentumCombine[3CLC[][q,r,s1]+3CLC[][q,r,s2],FCE->True]",
+"3*CLC[][q, r, s1 + s2]"},
+{"fcstMomentumCombine-ID29",
+"MomentumCombine[5CLC[][p1,r,s]+4CLC[][p2,r,s],LC\[Rule]False,\
+FCE->True]", "5*CLC[][p1, r, s] + 4*CLC[][p2, r, s]"},
+{"fcstMomentumCombine-ID30",
+"MomentumCombine[Spinor[Momentum[q] + Momentum[p], 0, 1]]", "Spinor[Momentum[p + q], 0, 1]"},
+{"fcstMomentumCombine-ID31",
+"MomentumCombine[c1 SP[p1,p2]-c1 SP[p1,p3]]",
+"c1*Pair[Momentum[p1], Momentum[p2 - p3]]"},
+{"fcstMomentumCombine-ID32",
+"MomentumCombine[-c1 SP[p1,p2]+c1 SP[p1,p3]]",
+"c1*Pair[Momentum[p1], Momentum[-p2 + p3]]"},
+{"fcstMomentumCombine-ID33",
+"MomentumCombine[-c1 SP[p1,p2]-c1 SP[p1,p3]]",
+"-(c1*Pair[Momentum[p1], Momentum[p2 + p3]])"},
+{"fcstMomentumCombine-ID34",
+"MomentumCombine[c1 CSP[p1,p2]-c1 CSP[p1,p3]]",
+"c1*CartesianPair[CartesianMomentum[p1], CartesianMomentum[p2 - \
+p3]]"},
+{"fcstMomentumCombine-ID35",
+"MomentumCombine[-c1 CSP[p1,p2]+c1 CSP[p1,p3]]",
+"c1*CartesianPair[CartesianMomentum[p1], CartesianMomentum[-p2 + \
+p3]]"},
+{"fcstMomentumCombine-ID36",
+"MomentumCombine[-c1 CSP[p1,p2]-c1 CSP[p1,p3]]",
+"-(c1*CartesianPair[CartesianMomentum[p1], CartesianMomentum[p2 + \
+p3]])"},
+{"fcstMomentumCombine-ID37",
+"MomentumCombine[c1 FV[p1,mu]-c1 FV[p2,mu]]",
+"c1*Pair[LorentzIndex[mu], Momentum[p1 - p2]]"},
+{"fcstMomentumCombine-ID38",
+"MomentumCombine[-c1 FV[p1,mu]+c1 FV[p2,mu]]",
+"c1*Pair[LorentzIndex[mu], Momentum[-p1 + p2]]"},
+{"fcstMomentumCombine-ID39",
+"MomentumCombine[c1 CV[p1,mu]-c1 CV[p2,mu]]",
+"c1*CartesianPair[CartesianIndex[mu], CartesianMomentum[p1 - p2]]"},
+{"fcstMomentumCombine-ID40",
+"MomentumCombine[-c1 CV[p1,mu]+c1 CV[p2,mu]]",
+"c1*CartesianPair[CartesianIndex[mu], CartesianMomentum[-p1 + \
+p2]]"},
+{"fcstMomentumCombine-ID41", "MomentumCombine[c1 TC[p1]-c1 TC[p2]]",
+	"c1*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p1 - p2]]"},
+{"fcstMomentumCombine-ID42",
+"MomentumCombine[-c1 TC[p1]+c1 TC[p2]]",
+"c1*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[-p1 + p2]]"},
+{"fcstMomentumCombine-ID43",
+"MomentumCombine[c1 LC[][a,p1,b,c]+c1 LC[][a,p2,b,c]]",
+"c1*Eps[Momentum[a], Momentum[p1 + p2], Momentum[b], Momentum[c]]"},
+{"fcstMomentumCombine-ID44",
+"MomentumCombine[c1 LC[][a,p1,b,c]-c1 LC[][a,p2,b,c]]",
+"c1*Eps[Momentum[a], Momentum[p1 - p2], Momentum[b], Momentum[c]]"},
+{"fcstMomentumCombine-ID45",
+"MomentumCombine[-c1 LC[][a,p1,b,c]+c1 LC[][a,p2,b,c]]",
+"c1*Eps[Momentum[a], Momentum[-p1 + p2], Momentum[b], \
+Momentum[c]]"},
+{"fcstMomentumCombine-ID46",
+"MomentumCombine[c1 CLC[][a,p1,b]+c1 CLC[][a,p2,b]]",
+"c1*Eps[CartesianMomentum[a], CartesianMomentum[p1 + p2], \
+CartesianMomentum[b]]"},
+{"fcstMomentumCombine-ID47",
+"MomentumCombine[c1 CLC[][a,p1,b]-c1 CLC[][a,p2,b]]",
+"c1*Eps[CartesianMomentum[a], CartesianMomentum[p1 - p2], \
+CartesianMomentum[b]]"},
+{"fcstMomentumCombine-ID48",
+"MomentumCombine[-c1 CLC[][a,p1,b]+c1 CLC[][a,p2,b]]",
+"c1*Eps[CartesianMomentum[a], CartesianMomentum[-p1 + p2], \
+CartesianMomentum[b]]"},
+{"fcstMomentumCombine-ID49",
+"MomentumCombine[SP[p,p] (SP[p,q]+SP[p,r]-SP[q,q]-SP[q,r])]",
+"Pair[Momentum[p], Momentum[p]]*Pair[Momentum[p - q], Momentum[q + \
+r]]"},
+{"fcstMomentumCombine-ID50",
+"MomentumCombine[SP[p,p] (CSP[p,q]+CSP[p,r]-CSP[q,q]-CSP[q,r])]",
+"CartesianPair[CartesianMomentum[p - q], CartesianMomentum[q + \
+r]]*Pair[Momentum[p], Momentum[p]]"},
+{"fcstMomentumCombine-ID51",
+"MomentumCombine[c1 SP[p1,p2]-c1 SP[p1,p3]]",
+"c1*Pair[Momentum[p1], Momentum[p2 - p3]]"},
+{"fcstMomentumCombine-ID52",
+"MomentumCombine[-c1 SP[p1,p2]+c1 SP[p1,p3]]",
+"c1*Pair[Momentum[p1], Momentum[-p2 + p3]]"},
+{"fcstMomentumCombine-ID53",
+"MomentumCombine[-c1 SP[p1,p2]-c1 SP[p1,p3]]",
+"-(c1*Pair[Momentum[p1], Momentum[p2 + p3]])"},
+{"fcstMomentumCombine-ID54",
+"MomentumCombine[c1 CSP[p1,p2]-c1 CSP[p1,p3]]",
+"c1*CartesianPair[CartesianMomentum[p1], CartesianMomentum[p2 - \
+p3]]"},
+{"fcstMomentumCombine-ID55",
+"MomentumCombine[-c1 CSP[p1,p2]+c1 CSP[p1,p3]]",
+"c1*CartesianPair[CartesianMomentum[p1], CartesianMomentum[-p2 + \
+p3]]"},
+{"fcstMomentumCombine-ID56",
+"MomentumCombine[-c1 CSP[p1,p2]-c1 CSP[p1,p3]]",
+"-(c1*CartesianPair[CartesianMomentum[p1], CartesianMomentum[p2 + \
+p3]])"}
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

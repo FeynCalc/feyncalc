@@ -167,9 +167,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Integrate2",
   ButtonNote->"Integrate2"],
  "."
-}], "Text",
- CellTags->"Integrate3",
- CellID->622342761]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -207,7 +205,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}]], "Input",
  CellTags->"Integrate3",
- CellLabel->"In[1]:=",
+ CellLabel->"In[47]:=",
  CellID->425224867],
 
 Cell[BoxData[
@@ -218,8 +216,7 @@ Cell[BoxData[
      RowBox[{"(", 
       RowBox[{"m", "+", "1"}], ")"}], "2"]]}], TraditionalForm]], "Output",
  CellTags->"Integrate3",
- CellLabel->"Out[1]=",
- CellID->559999213]
+ CellLabel->"Out[47]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -237,7 +234,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}]], "Input",
  CellTags->"Integrate3",
- CellLabel->"In[2]:=",
+ CellLabel->"In[48]:=",
  CellID->1726046539],
 
 Cell[BoxData[
@@ -245,17 +242,22 @@ Cell[BoxData[
   RowBox[{
    RowBox[{
     RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-    RowBox[{"FeynCalc`Integrate3`Private`S", "(", 
-     RowBox[{"1", ",", "m"}], ")"}]}], "-", 
-   RowBox[{"FeynCalc`Integrate3`Private`S", "(", 
-    RowBox[{"1", ",", "2", ",", "m"}], ")"}], "-", 
-   RowBox[{"FeynCalc`Integrate3`Private`S", "(", 
-    RowBox[{"2", ",", "1", ",", "m"}], ")"}], "+", 
+    RowBox[{
+     SubscriptBox["S", "1"], "(", 
+     FormBox["m",
+      TraditionalForm], ")"}]}], "-", 
+   RowBox[{
+    SubscriptBox["S", "12"], "(", 
+    FormBox["m",
+     TraditionalForm], ")"}], "-", 
+   RowBox[{
+    SubscriptBox["S", "21"], "(", 
+    FormBox["m",
+     TraditionalForm], ")"}], "+", 
    TemplateBox[{"3"},
     "Zeta"]}], TraditionalForm]], "Output",
  CellTags->"Integrate3",
- CellLabel->"Out[2]=",
- CellID->279018012]
+ CellLabel->"Out[48]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -283,7 +285,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}]], "Input",
  CellTags->"Integrate3",
- CellLabel->"In[3]:=",
+ CellLabel->"In[49]:=",
  CellID->1210488286],
 
 Cell[BoxData[
@@ -294,12 +296,18 @@ Cell[BoxData[
      RowBox[{
       RowBox[{
        RowBox[{"\[Zeta]", "(", "2", ")"}], " ", 
-       RowBox[{"FeynCalc`Integrate3`Private`S", "(", 
-        RowBox[{"1", ",", "m"}], ")"}]}], "-", 
-      RowBox[{"FeynCalc`Integrate3`Private`S", "(", 
-       RowBox[{"1", ",", "2", ",", "m"}], ")"}], "-", 
-      RowBox[{"FeynCalc`Integrate3`Private`S", "(", 
-       RowBox[{"2", ",", "1", ",", "m"}], ")"}], "+", 
+       RowBox[{
+        SubscriptBox["S", "1"], "(", 
+        FormBox["m",
+         TraditionalForm], ")"}]}], "-", 
+      RowBox[{
+       SubscriptBox["S", "12"], "(", 
+       FormBox["m",
+        TraditionalForm], ")"}], "-", 
+      RowBox[{
+       SubscriptBox["S", "21"], "(", 
+       FormBox["m",
+        TraditionalForm], ")"}], "+", 
       TemplateBox[{"3"},
        "Zeta"]}], ")"}]}], "+", 
    RowBox[{"b", " ", 
@@ -353,8 +361,7 @@ Cell[BoxData[
        RowBox[{"log", "(", "2", ")"}]}]}], ")"}]}]}], 
   TraditionalForm]], "Output",
  CellTags->"Integrate3",
- CellLabel->"Out[3]=",
- CellID->243111463]
+ CellLabel->"Out[49]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -367,14 +374,13 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}]], "Input",
  CellTags->"Integrate3",
- CellLabel->"In[4]:=",
+ CellLabel->"In[50]:=",
  CellID->757263318],
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
  CellTags->"Integrate3",
- CellLabel->"Out[4]=",
- CellID->1705014554]
+ CellLabel->"Out[50]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -389,7 +395,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}]], "Input",
  CellTags->"Integrate3",
- CellLabel->"In[5]:=",
+ CellLabel->"In[51]:=",
  CellID->818446262],
 
 Cell[BoxData[
@@ -398,8 +404,7 @@ Cell[BoxData[
    SuperscriptBox["f", "\[Prime]",
     MultilineFunction->None], "(", "1", ")"}], TraditionalForm]], "Output",
  CellTags->"Integrate3",
- CellLabel->"Out[5]=",
- CellID->929710671]
+ CellLabel->"Out[51]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -413,14 +418,13 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}]], "Input",
  CellTags->"Integrate3",
- CellLabel->"In[6]:=",
+ CellLabel->"In[52]:=",
  CellID->1567611943],
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
  CellTags->"Integrate3",
- CellLabel->"Out[6]=",
- CellID->64714700]
+ CellLabel->"Out[52]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -485,12 +489,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{502, Automatic}, {Automatic, 63}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

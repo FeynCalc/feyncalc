@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for GluonPropagator	  		*)
@@ -19,7 +19,7 @@ Tests`Feynman`fcstGluonPropagator = ({
 "I*FAD[p]*((1 - al)*FAD[p]*FVD[p, mu]*FVD[p, nu] - MTD[mu, \
 nu])*SD[a, b]"},
 {"fcstGluonPropagator-ID2",
-"GluonPropagator[p,mu,a,nu,b,Gauge\[Rule]{Momentum[n],1}]\
+"GluonPropagator[p,mu,a,nu,b,Gauge\[Rule]{Momentum[n,D],1}]\
 //Explicit//FCE",
 "I*FAD[p]*SD[a, b]*(-MTD[mu, nu] + (FVD[n, nu]*FVD[p, mu] + FVD[n, \
 mu]*FVD[p, nu])/SPD[n, p] - (FVD[p, mu]*FVD[p, nu]*SPD[n, n] - FVD[n, \
@@ -28,9 +28,9 @@ mu]*FVD[n, nu]*SPD[p, p])/SPD[n, p]^2)"},
 "GluonPropagator[p,mu,nu]//Explicit//FCE",
 "(-I)*FAD[p]*MTD[mu, nu]"},
 {"fcstGluonPropagator-ID4",
-"Explicit[GP[p,1,2],Gauge\[Rule]xi]//FCE",
+"Explicit[GP[p,li1,li2],Gauge\[Rule]xi]//FCE",
 "I*FAD[p]*((1 - xi)*FAD[p]*FVD[p, li1]*FVD[p, li2] - MTD[li1, \
-li2])*SD[ci1, ci2]"},
+li2])"},
 {"fcstGluonPropagator-ID5",
 "GluonPropagator[p,mu,a,nu,b,CounterTerm\[Rule] 1]//Explicit//FCE",
 	"((-I)*CA*Gstrong^2*Sn*SD[a, b]*((11*FVD[p, mu]*FVD[p, nu])/3 - \

@@ -170,9 +170,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/QuarkField",
   ButtonNote->"QuarkField"],
  "."
-}], "Text",
- CellTags->"AntiQuarkField",
- CellID->1809382525]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -203,15 +201,14 @@ Cell[CellGroupData[{
 
 Cell[BoxData["AntiQuarkField"], "Input",
  CellTags->"AntiQuarkField",
- CellLabel->"In[1]:=",
+ CellLabel->"In[222]:=",
  CellID->820739788],
 
 Cell[BoxData[
  FormBox[
   OverscriptBox["\[Psi]", "_"], TraditionalForm]], "Output",
  CellTags->"AntiQuarkField",
- CellLabel->"Out[1]=",
- CellID->1958170632]
+ CellLabel->"Out[222]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -276,12 +273,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{256, Automatic}, {Automatic, -8}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

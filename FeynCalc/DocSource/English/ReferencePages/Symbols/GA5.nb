@@ -174,9 +174,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/GS",
   ButtonNote->"GS"],
  "."
-}], "Text",
- CellTags->"GA5",
- CellID->1140253619]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -207,7 +205,7 @@ Cell[CellGroupData[{
 
 Cell[BoxData["GA5"], "Input",
  CellTags->"GA5",
- CellLabel->"In[1]:=",
+ CellLabel->"In[142]:=",
  CellID->51140118],
 
 Cell[BoxData[
@@ -217,23 +215,21 @@ Cell[BoxData[
    FormBox["5",
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"GA5",
- CellLabel->"Out[1]=",
- CellID->26317546]
+ CellLabel->"Out[142]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"%", "//", "Tr"}]], "Input",
+ RowBox[{"%", "//", "StandardForm"}]], "Input",
  CellTags->"GA5",
- CellLabel->"In[2]:=",
+ CellLabel->"In[143]:=",
  CellID->306400430],
 
 Cell[BoxData[
- FormBox["0", TraditionalForm]], "Output",
+ RowBox[{"DiracGamma", "[", "5", "]"}]], "Output",
  CellTags->"GA5",
- CellLabel->"Out[2]=",
- CellID->223026079]
+ CellLabel->"Out[143]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -298,12 +294,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{1249, Automatic}, {Automatic, 233}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

@@ -3,168 +3,96 @@ Tests`LoopIntegrals`fcitTIDMTests =
 {"fcitTIDMTests-ID1",
 "TID[FAD[{z,M},{k+z,M},{-k+pp-z,MD},{p-z,m}] GSD[z] \
 SPD[k,z],z]//FCE",
-"(FAD[{z, M}, {-k - p + z, m}]*(-(GSD[pp]*(SPD[k, k] + 2*SPD[k, p] \
-+ SPD[p, p])) + GSD[-k - p]*(-SPD[k, pp] - SPD[p, pp])))/(4*((-SPD[k, \
-pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, \
-pp])) + (FAD[{z, M}, {-pp + z, MD}]*(-(GSD[pp]*(-SPD[k, pp] - SPD[p, \
-pp])) + GSD[-k - p]*SPD[pp, pp]))/(4*((-SPD[k, pp] - SPD[p, pp])^2 - \
-(SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])) + (FAD[{z, m}, \
-{-p + z, M}]*(GSD[-k + pp]*SPD[p, p] - GSD[p]*(-SPD[k, p] + SPD[p, \
-pp])))/(4*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - \
-2*SPD[k, pp] + SPD[pp, pp]))) - (FAD[{z, MD}, {-k + pp + z, \
-M}]*(GSD[-k + pp]*(-SPD[k, p] + SPD[p, pp]) - GSD[p]*(SPD[k, k] - \
-2*SPD[k, pp] + SPD[pp, pp])))/(4*((-SPD[k, p] + SPD[p, pp])^2 - \
-SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))) + (FAD[{z, M}, \
-{k + z, M}, {-p + z, m}]*SPD[k, k]*(GSD[-k + pp]*(SPD[k, p]^2 - \
-SPD[k, k]*SPD[p, p]) - GSD[p]*(SPD[k, p]*(-SPD[k, k] + SPD[k, pp]) - \
-SPD[k, k]*(-SPD[k, p] + SPD[p, pp])) - GSD[k]*(-((-SPD[k, k] + SPD[k, \
-pp])*SPD[p, p]) + SPD[k, p]*(-SPD[k, p] + SPD[p, pp]))))/(4*((-SPD[k, \
-k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, \
-pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, \
-pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - \
-SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))) + \
-(FAD[{z, M}, {-k + z, M}, {-pp + z, MD}]*SPD[k, k]*(GSD[-k + \
-pp]*(-(SPD[k, p]*(-SPD[k, k] + SPD[k, pp])) + SPD[k, k]*(-SPD[k, p] + \
-SPD[p, pp])) - GSD[p]*(-(-SPD[k, k] + SPD[k, pp])^2 + SPD[k, \
-k]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) - GSD[k]*((-SPD[k, k] + \
-SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) - SPD[k, p]*(SPD[k, k] - \
-2*SPD[k, pp] + SPD[pp, pp]))))/(4*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, \
-p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) \
-+ SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - \
-2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - \
-2*SPD[k, pp] + SPD[pp, pp]))) - (FAD[{z, MD}, {-k - p + pp + z, \
-m}]*(GSD[-k + pp]*SPD[p, p]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, \
-k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp]) - GSD[p]*(-SPD[k, p] + \
-SPD[p, pp])*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] \
-+ SPD[p, p])*SPD[pp, pp]) - GSD[-k + pp]*(-SPD[k, p] + SPD[p, \
-pp])*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + \
-SPD[p, p])*SPD[pp, pp]) + GSD[p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, \
-pp])*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + \
-SPD[p, p])*SPD[pp, pp]) - GSD[pp]*(SPD[k, k] + 2*SPD[k, p] + SPD[p, \
-p])*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, \
-pp] + SPD[pp, pp])) + GSD[-k - p]*(-SPD[k, pp] - SPD[p, \
-pp])*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, \
-pp] + SPD[pp, pp])) - GSD[pp]*(-SPD[k, pp] - SPD[p, pp])*((-SPD[k, p] \
-+ SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) \
-+ GSD[-k - p]*SPD[pp, pp]*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, \
-p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))))/(4*((-SPD[k, pp] - \
-SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, \
-pp])*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, \
-pp] + SPD[pp, pp]))) - (FAD[{z, M}, {-k + z, M}, {p + z, m}, {-k + pp \
-+ z, MD}]*SPD[k, k]*(-(GSD[-k + pp]*(m^2 - M^2 - SPD[p, p])*(-(SPD[k, \
-p]*(-SPD[k, k] + SPD[k, pp])) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp]))) \
-- GSD[-k + pp]*SPD[k, k]*((-SPD[k, k] + SPD[k, pp])*SPD[p, p] - \
-SPD[k, p]*(-SPD[k, p] + SPD[p, pp])) + GSD[-k + pp]*(SPD[k, p]^2 - \
-SPD[k, k]*SPD[p, p])*(M^2 - MD^2 + SPD[k, k] - 2*SPD[k, pp] + SPD[pp, \
-pp]) - GSD[p]*(SPD[k, p]*(-SPD[k, k] + SPD[k, pp]) - SPD[k, \
-k]*(-SPD[k, p] + SPD[p, pp]))*(M^2 - MD^2 + SPD[k, k] - 2*SPD[k, pp] \
-+ SPD[pp, pp]) - GSD[k]*(-((-SPD[k, k] + SPD[k, pp])*SPD[p, p]) + \
-SPD[k, p]*(-SPD[k, p] + SPD[p, pp]))*(M^2 - MD^2 + SPD[k, k] - \
-2*SPD[k, pp] + SPD[pp, pp]) + GSD[p]*(m^2 - M^2 - SPD[p, \
-p])*(-(-SPD[k, k] + SPD[k, pp])^2 + SPD[k, k]*(SPD[k, k] - 2*SPD[k, \
-pp] + SPD[pp, pp])) + GSD[p]*SPD[k, k]*((-SPD[k, k] + SPD[k, \
-pp])*(-SPD[k, p] + SPD[p, pp]) - SPD[k, p]*(SPD[k, k] - 2*SPD[k, pp] \
-+ SPD[pp, pp])) + GSD[k]*(m^2 - M^2 - SPD[p, p])*((-SPD[k, k] + \
-SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) - SPD[k, p]*(SPD[k, k] - \
-2*SPD[k, pp] + SPD[pp, pp])) + GSD[k]*SPD[k, k]*(-(-SPD[k, p] + \
-SPD[p, pp])^2 + SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, \
-pp]))))/(4*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, \
-p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, \
-k]*(-SPD[k, p] + SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, \
-pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + \
-SPD[pp, pp]))) - (FAD[{z, M}, {p + z, m}, {-k + pp + z, MD}]*(GSD[-k \
-+ pp]*SPD[k, k]*((-SPD[k, k] + SPD[k, pp])*SPD[p, p] - SPD[k, \
-p]*(-SPD[k, p] + SPD[p, pp]))*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, \
-p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) - GSD[p]*SPD[k, \
-k]*((-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) - SPD[k, \
-p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))*((-SPD[k, p] + SPD[p, \
-pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) - \
-GSD[k]*SPD[k, k]*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] \
-- 2*SPD[k, pp] + SPD[pp, pp]))*(-(-SPD[k, p] + SPD[p, pp])^2 + SPD[p, \
-p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) + GSD[-k + pp]*(m^2 - \
-M^2 - SPD[p, p])*(-SPD[k, p] + SPD[p, pp])*((-SPD[k, k] + SPD[k, \
-pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] \
-+ SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 + SPD[k, \
-p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, \
-p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) - GSD[p]*(m^2 - M^2 - \
-SPD[p, p])*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])*((-SPD[k, k] + \
-SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, \
-pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, \
-pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - \
-SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) + \
-GSD[-k + pp]*SPD[p, p]*(M^2 - MD^2 + SPD[k, k] - 2*SPD[k, pp] + \
-SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, \
-p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, \
-k]*(-SPD[k, p] + SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, \
-pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + \
-SPD[pp, pp])) - GSD[p]*(-SPD[k, p] + SPD[p, pp])*(M^2 - MD^2 + SPD[k, \
-k] - 2*SPD[k, pp] + SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, \
-p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) \
-+ SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - \
-2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - \
-2*SPD[k, pp] + SPD[pp, pp]))))/(4*((-SPD[k, p] + SPD[p, pp])^2 - \
-SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))*((-SPD[k, k] + \
-SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, \
-pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, \
-pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - \
-SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))) + \
-(FAD[{z, M}, {-pp + z, MD}, {-k - p + z, m}]*(-(GSD[-k + pp]*SPD[k, \
-k]*(SPD[k, p]^2 - SPD[k, k]*SPD[p, p])*((-SPD[k, pp] - SPD[p, pp])^2 \
-- (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])) + GSD[p]*SPD[k, \
-k]*(SPD[k, p]*(-SPD[k, k] + SPD[k, pp]) - SPD[k, k]*(-SPD[k, p] + \
-SPD[p, pp]))*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] \
-+ SPD[p, p])*SPD[pp, pp]) - GSD[-k + pp]*SPD[k, k]*(-(SPD[k, \
-p]*(-SPD[k, k] + SPD[k, pp])) + SPD[k, k]*(-SPD[k, p] + SPD[p, \
-pp]))*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + \
-SPD[p, p])*SPD[pp, pp]) + GSD[-k + pp]*SPD[k, k]*((-SPD[k, k] + \
-SPD[k, pp])*SPD[p, p] - SPD[k, p]*(-SPD[k, p] + SPD[p, \
-pp]))*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + \
-SPD[p, p])*SPD[pp, pp]) + GSD[k]*SPD[k, k]*(-((-SPD[k, k] + SPD[k, \
-pp])*SPD[p, p]) + SPD[k, p]*(-SPD[k, p] + SPD[p, pp]))*((-SPD[k, pp] \
-- SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp]) \
-+ GSD[p]*SPD[k, k]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + \
-2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])*(-(-SPD[k, k] + SPD[k, pp])^2 + \
-SPD[k, k]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) + GSD[k]*SPD[k, \
-k]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, \
-p])*SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) \
-- SPD[k, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) - GSD[p]*SPD[k, \
-k]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, \
-p])*SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) \
-- SPD[k, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) - GSD[k]*SPD[k, \
-k]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, \
-p])*SPD[pp, pp])*(-(-SPD[k, p] + SPD[p, pp])^2 + SPD[p, p]*(SPD[k, k] \
-- 2*SPD[k, pp] + SPD[pp, pp])) - GSD[pp]*(m^2 - M^2 - SPD[k, k] - \
-2*SPD[k, p] - SPD[p, p])*(-SPD[k, pp] - SPD[p, pp])*((-SPD[k, k] + \
-SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, \
-pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, \
-pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - \
-SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) + \
-GSD[-k - p]*(m^2 - M^2 - SPD[k, k] - 2*SPD[k, p] - SPD[p, p])*SPD[pp, \
-pp]*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] \
-+ SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + \
-SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) \
-- SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) + \
-GSD[pp]*(SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*(M^2 - MD^2 + SPD[pp, \
-pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] \
-+ SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + \
-SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) \
-- SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) - \
-GSD[-k - p]*(-SPD[k, pp] - SPD[p, pp])*(M^2 - MD^2 + SPD[pp, \
-pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] \
-+ SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + \
-SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) \
-- SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) + \
-2*GSD[k]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + \
-SPD[p, p])*SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - \
-2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + \
-SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - \
-2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - \
-2*SPD[k, pp] + SPD[pp, pp]))))/(4*((-SPD[k, pp] - SPD[p, pp])^2 - \
-(SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])*((-SPD[k, k] + \
-SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, \
-pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, \
-pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - \
-SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])))"},
+"-(FAD[{z, M}, {-k - p + z, m}]*(GSD[pp]*SPD[k, k] + 2*GSD[pp]*SPD[k, p] + GSD[-k - p]*SPD[k, pp] + GSD[pp]*SPD[p, p] + GSD[-k - p]*SPD[p, pp]))/
+(4*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])) + (FAD[{z, M}, {-pp + z, MD}]*(GSD[pp]*SPD[k, pp] + GSD[pp]*SPD[p, pp] + GSD[-k - p]*SPD[pp, pp]))/
+(4*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])) + (FAD[{z, m}, {-p + z, M}]*(GSD[p]*SPD[k, p] + GSD[-k + pp]*SPD[p, p] - GSD[p]*SPD[p, pp]))/
+(4*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))) +
+(FAD[{z, MD}, {-k + pp + z, M}]*(GSD[p]*SPD[k, k] + GSD[-k + pp]*SPD[k, p] - 2*GSD[p]*SPD[k, pp] - GSD[-k + pp]*SPD[p, pp] + GSD[p]*SPD[pp, pp]))/
+(4*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))) +
+(FAD[{z, M}, {k + z, M}, {-p + z, m}]*SPD[k, k]*(GSD[-k + pp]*(SPD[k, p]^2 - SPD[k, k]*SPD[p, p]) - GSD[p]*(SPD[k, p]*(-SPD[k, k] + SPD[k, pp]) - SPD[k, k]*(-SPD[k, p] + SPD[p, pp])) -
+	GSD[k]*(-((-SPD[k, k] + SPD[k, pp])*SPD[p, p]) + SPD[k, p]*(-SPD[k, p] + SPD[p, pp]))))/
+(4*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))) +
+(FAD[{z, M}, {-k + z, M}, {-pp + z, MD}]*SPD[k, k]*(GSD[-k + pp]*(-(SPD[k, p]*(-SPD[k, k] + SPD[k, pp])) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])) -
+	GSD[p]*(-(-SPD[k, k] + SPD[k, pp])^2 + SPD[k, k]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) -
+	GSD[k]*((-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) - SPD[k, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))))/
+(4*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))) +
+(FAD[{z, MD}, {-k - p + pp + z, m}]*(-(GSD[p]*SPD[k, k]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])) -
+	GSD[-k + p + pp]*SPD[k, p]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp]) +
+	2*GSD[p]*SPD[k, pp]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp]) -
+	GSD[-k + pp]*SPD[p, p]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp]) +
+	GSD[-k + p + pp]*SPD[p, pp]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp]) -
+	GSD[p]*SPD[pp, pp]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp]) +
+	GSD[pp]*SPD[k, k]*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	2*GSD[pp]*SPD[k, p]*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) -
+	GSD[k + p + pp]*SPD[k, pp]*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	GSD[pp]*SPD[p, p]*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) -
+	GSD[k + p + pp]*SPD[p, pp]*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) -
+	GSD[-k - p]*SPD[pp, pp]*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))))/(4*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])*
+((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))) -
+(FAD[{z, M}, {-k + z, M}, {p + z, m}, {-k + pp + z, MD}]*SPD[k, k]*(-(GSD[-k + pp]*(m^2 - M^2 - SPD[p, p])*(-(SPD[k, p]*(-SPD[k, k] + SPD[k, pp])) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp]))) -
+	GSD[-k + pp]*SPD[k, k]*((-SPD[k, k] + SPD[k, pp])*SPD[p, p] - SPD[k, p]*(-SPD[k, p] + SPD[p, pp])) + GSD[-k + pp]*(SPD[k, p]^2 - SPD[k, k]*SPD[p, p])*
+	(M^2 - MD^2 + SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - GSD[p]*(SPD[k, p]*(-SPD[k, k] + SPD[k, pp]) - SPD[k, k]*(-SPD[k, p] + SPD[p, pp]))*
+	(M^2 - MD^2 + SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - GSD[k]*(-((-SPD[k, k] + SPD[k, pp])*SPD[p, p]) + SPD[k, p]*(-SPD[k, p] + SPD[p, pp]))*
+	(M^2 - MD^2 + SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) + GSD[p]*(m^2 - M^2 - SPD[p, p])*(-(-SPD[k, k] + SPD[k, pp])^2 + SPD[k, k]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	GSD[p]*SPD[k, k]*((-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) - SPD[k, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	GSD[k]*(m^2 - M^2 - SPD[p, p])*((-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) - SPD[k, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	GSD[k]*SPD[k, k]*(-(-SPD[k, p] + SPD[p, pp])^2 + SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))))/
+(4*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))) -
+(FAD[{z, M}, {p + z, m}, {-k + pp + z, MD}]*(GSD[-k + pp]*SPD[k, k]*((-SPD[k, k] + SPD[k, pp])*SPD[p, p] - SPD[k, p]*(-SPD[k, p] + SPD[p, pp]))*
+	((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) - GSD[p]*SPD[k, k]*((-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) -
+	SPD[k, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) -
+	GSD[k]*SPD[k, k]*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))*(-(-SPD[k, p] + SPD[p, pp])^2 + SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) -
+	GSD[p]*SPD[k, k]*(m^2 - M^2 - SPD[p, p])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) -
+	GSD[-k + pp]*SPD[k, p]*(m^2 - M^2 - SPD[p, p])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	2*GSD[p]*SPD[k, pp]*(m^2 - M^2 - SPD[p, p])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	GSD[-k + pp]*(m^2 - M^2 - SPD[p, p])*SPD[p, pp]*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) -
+	GSD[p]*(m^2 - M^2 - SPD[p, p])*SPD[pp, pp]*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) + GSD[p]*SPD[k, p]*(M^2 - MD^2 + SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])*
+	((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	GSD[-k + pp]*SPD[p, p]*(M^2 - MD^2 + SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) +
+	SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) -
+	GSD[p]*SPD[p, pp]*(M^2 - MD^2 + SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) +
+	SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))))/
+(4*((-SPD[k, p] + SPD[p, pp])^2 - SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) +
+	SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))) +
+(FAD[{z, M}, {-pp + z, MD}, {-k - p + z, m}]*(-(GSD[-k + pp]*SPD[k, k]*(SPD[k, p]^2 - SPD[k, k]*SPD[p, p])*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])) +
+	GSD[p]*SPD[k, k]*(SPD[k, p]*(-SPD[k, k] + SPD[k, pp]) - SPD[k, k]*(-SPD[k, p] + SPD[p, pp]))*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp]) -
+	GSD[-k + pp]*SPD[k, k]*(-(SPD[k, p]*(-SPD[k, k] + SPD[k, pp])) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp]))*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp]) +
+	GSD[-k + pp]*SPD[k, k]*((-SPD[k, k] + SPD[k, pp])*SPD[p, p] - SPD[k, p]*(-SPD[k, p] + SPD[p, pp]))*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp]) +
+	GSD[k]*SPD[k, k]*(-((-SPD[k, k] + SPD[k, pp])*SPD[p, p]) + SPD[k, p]*(-SPD[k, p] + SPD[p, pp]))*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp]) +
+	GSD[p]*SPD[k, k]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])*(-(-SPD[k, k] + SPD[k, pp])^2 + SPD[k, k]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	GSD[k - p]*SPD[k, k]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) -
+	SPD[k, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) - GSD[k]*SPD[k, k]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])*
+	(-(-SPD[k, p] + SPD[p, pp])^2 + SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) + GSD[pp]*SPD[k, pp]*(m^2 - M^2 - SPD[k, k] - 2*SPD[k, p] - SPD[p, p])*
+	((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) + GSD[pp]*(m^2 - M^2 - SPD[k, k] - 2*SPD[k, p] - SPD[p, p])*SPD[p, pp]*
+	((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) + GSD[-k - p]*(m^2 - M^2 - SPD[k, k] - 2*SPD[k, p] - SPD[p, p])*SPD[pp, pp]*
+	((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	GSD[pp]*SPD[k, k]*(M^2 - MD^2 + SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	2*GSD[pp]*SPD[k, p]*(M^2 - MD^2 + SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	GSD[-k - p]*SPD[k, pp]*(M^2 - MD^2 + SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) +
+	SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	GSD[pp]*SPD[p, p]*(M^2 - MD^2 + SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	GSD[-k - p]*SPD[p, pp]*(M^2 - MD^2 + SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) +
+	SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])) +
+	2*GSD[k]*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])*((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] -
+	2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 + SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) -
+	SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]))))/(4*((-SPD[k, pp] - SPD[p, pp])^2 - (SPD[k, k] + 2*SPD[k, p] + SPD[p, p])*SPD[pp, pp])*
+((-SPD[k, k] + SPD[k, pp])^2*SPD[p, p] - 2*SPD[k, p]*(-SPD[k, k] + SPD[k, pp])*(-SPD[k, p] + SPD[p, pp]) + SPD[k, k]*(-SPD[k, p] + SPD[p, pp])^2 +
+	SPD[k, p]^2*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp]) - SPD[k, k]*SPD[p, p]*(SPD[k, k] - 2*SPD[k, pp] + SPD[pp, pp])))"},
 {"fcitTIDMTests-ID2",
 "TID[GSD[z].GA[5] FAD[{z,M},{k+z,M},{-k+pp-z,MD}] \
 SPD[k,z],z]//FCE",
@@ -202,5 +130,995 @@ M}, {-pp + z, MD}]*(-(GSD[pp] . GA[5]*SPD[k, k]*SPD[k, pp]*SPD[pp, \
 pp]) + GSD[k] . GA[5]*SPD[k, k]*SPD[pp, pp]^2 - 2*GSD[k] . \
 GA[5]*SPD[pp, pp]*(SPD[k, pp]^2 - SPD[k, k]*SPD[pp, pp]) + GSD[pp] . \
 GA[5]*(M^2 - MD^2 + SPD[pp, pp])*(SPD[k, pp]^2 - SPD[k, k]*SPD[pp, \
-pp])))/(4*SPD[pp, pp]*(SPD[k, pp]^2 - SPD[k, k]*SPD[pp, pp]))"}
+pp])))/(4*SPD[pp, pp]*(SPD[k, pp]^2 - SPD[k, k]*SPD[pp, pp]))"},
+
+{"fcitTIDMTests-ID3",
+"TimeConstrained[TID[(-4*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(8*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(4*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(8*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]])/3 +
+4*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]] -
+8*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]] -
+(2*CA*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(4*CF*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(16*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p1, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(32*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p1, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(2*CA*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p1, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(4*CF*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p1, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(16*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(32*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(2*CA*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(4*CF*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(4*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(8*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(4*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p3, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(8*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p3, D]]*SUNT[SUNIndex[Cola1]])/3 +
+4*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]] -
+8*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]] -
+(2*CA*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(4*CF*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(4*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(8*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(4*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(8*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(8*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0],
+	PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D], 0],
+	PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[l, D]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (16*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[l, D]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (4*CA*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[l, D]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (8*CF*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[l, D]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (16*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p1, D]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (32*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p1, D]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (4*CA*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p1, D]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (8*CF*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p1, D]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (8*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p1, D]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (16*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p1, D]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (8*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p2, D]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (16*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p2, D]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (8*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p2, D]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (16*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p2, D]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (8*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p3, D]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (16*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p3, D]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (16*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] .
+	Spinor[-Momentum[p3, D], 0, 1]*FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0],
+	PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*
+Pair[LorentzIndex[Lor2, D], Momentum[p1, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(32*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[p1, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(2*CA*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[p1, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(4*CF*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[p1, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(8*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0],
+	PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D], 0],
+	PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[l, D]]*Pair[LorentzIndex[Lor2, D], Momentum[p1, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (16*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[l, D]]*Pair[LorentzIndex[Lor2, D], Momentum[p1, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (8*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p2, D]]*Pair[LorentzIndex[Lor2, D], Momentum[p1, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (16*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p2, D]]*Pair[LorentzIndex[Lor2, D], Momentum[p1, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (16*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . DiracGamma[Momentum[p2, D], D] .
+	Spinor[-Momentum[p3, D], 0, 1]*FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0],
+	PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*
+Pair[LorentzIndex[Lor2, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(32*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(2*CA*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(4*CF*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(4*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(8*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(8*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0],
+	PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D], 0],
+	PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[l, D]]*Pair[LorentzIndex[Lor2, D], Momentum[p2, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (16*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[l, D]]*Pair[LorentzIndex[Lor2, D], Momentum[p2, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (8*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[l, D]]*Pair[LorentzIndex[Lor2, D], Momentum[p2, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (16*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[l, D]]*Pair[LorentzIndex[Lor2, D], Momentum[p2, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (8*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p1, D]]*Pair[LorentzIndex[Lor2, D], Momentum[p2, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (16*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p1, D]]*Pair[LorentzIndex[Lor2, D], Momentum[p2, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (4*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] .
+	Spinor[-Momentum[p3, D], 0, 1]*FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0],
+	PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*
+Pair[LorentzIndex[Lor2, D], Momentum[p3, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(8*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[p3, D]]*SUNT[SUNIndex[Cola1]])/3 +
+2*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]] -
+4*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]] -
+(CA*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(2*CF*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]])/3 -
+2*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]] +
+4*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]] +
+(CA*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(2*CF*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(4*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(8*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(4*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(8*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]])/3 -
+2*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]] +
+4*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]] +
+(CA*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(2*CF*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[l, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(4*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0],
+	PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D], 0],
+	PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], LorentzIndex[Lor2, D]]*Pair[Momentum[l, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (8*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], LorentzIndex[Lor2, D]]*Pair[Momentum[l, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (8*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], LorentzIndex[Lor2, D]]*Pair[Momentum[l, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (16*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], LorentzIndex[Lor2, D]]*Pair[Momentum[l, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (4*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[l, D]]*Pair[Momentum[l, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (8*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[l, D]]*Pair[Momentum[l, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (8*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p1, D]]*Pair[Momentum[l, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (16*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p1, D]]*Pair[Momentum[l, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (2*CA*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p1, D]]*Pair[Momentum[l, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (4*CF*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p1, D]]*Pair[Momentum[l, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (4*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p3, D]]*Pair[Momentum[l, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (8*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p3, D]]*Pair[Momentum[l, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (16*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*Pair[Momentum[l, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (32*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*Pair[Momentum[l, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (2*CA*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*Pair[Momentum[l, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (4*CF*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*Pair[Momentum[l, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (8*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[p1, D]]*Pair[Momentum[l, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (16*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[p1, D]]*Pair[Momentum[l, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (2*CA*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[p1, D]]*Pair[Momentum[l, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (4*CF*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[p1, D]]*Pair[Momentum[l, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (4*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[p3, D]]*Pair[Momentum[l, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (8*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[p3, D]]*Pair[Momentum[l, D], Momentum[l, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (4*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] .
+	Spinor[-Momentum[p3, D], 0, 1]*FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0],
+	PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*
+Pair[Momentum[l, D], Momentum[p1, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(8*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[p1, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(4*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[p1, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(8*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[p1, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(16*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[p1, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(32*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[p1, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(2*CA*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[p1, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(4*CF*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[p1, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(8*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0],
+	PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D], 0],
+	PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], LorentzIndex[Lor2, D]]*Pair[Momentum[l, D], Momentum[p1, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (16*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], LorentzIndex[Lor2, D]]*Pair[Momentum[l, D], Momentum[p1, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (8*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p2, D]]*Pair[Momentum[l, D], Momentum[p1, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (16*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p2, D]]*Pair[Momentum[l, D], Momentum[p1, D]]*
+SUNT[SUNIndex[Cola1]])/3 - 8*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*Pair[Momentum[l, D], Momentum[p1, D]]*
+SUNT[SUNIndex[Cola1]] + 16*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*Pair[Momentum[l, D], Momentum[p1, D]]*
+SUNT[SUNIndex[Cola1]] + (4*CA*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*Pair[Momentum[l, D], Momentum[p1, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (8*CF*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*Pair[Momentum[l, D], Momentum[p1, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (8*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[p2, D]]*Pair[Momentum[l, D], Momentum[p1, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (16*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[p2, D]]*Pair[Momentum[l, D], Momentum[p1, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (4*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . DiracGamma[Momentum[l, D], D] .
+	Spinor[-Momentum[p3, D], 0, 1]*FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0],
+	PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*
+Pair[Momentum[l, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(8*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(16*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(32*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(2*CA*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(4*CF*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(8*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(16*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(4*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(8*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(4*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(8*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(8*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0],
+	PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D], 0],
+	PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], LorentzIndex[Lor2, D]]*Pair[Momentum[l, D], Momentum[p2, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (16*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], LorentzIndex[Lor2, D]]*Pair[Momentum[l, D], Momentum[p2, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (8*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p1, D]]*Pair[Momentum[l, D], Momentum[p2, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (16*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[p1, D]]*Pair[Momentum[l, D], Momentum[p2, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (8*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[p1, D]]*Pair[Momentum[l, D], Momentum[p2, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (16*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[p1, D]]*Pair[Momentum[l, D], Momentum[p2, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (4*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] .
+	Spinor[-Momentum[p3, D], 0, 1]*FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0],
+	PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*
+Pair[Momentum[l, D], Momentum[p3, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(8*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[p3, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(4*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[p3, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(8*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[p3, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(4*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[p3, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(8*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[p2, D], D] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[l, D], Momentum[p3, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(16*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[p1, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(32*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[p1, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 -
+(2*CA*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[p1, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(4*CF*D*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[p1, D], Momentum[p2, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(8*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0],
+	PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D], 0],
+	PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], LorentzIndex[Lor2, D]]*Pair[Momentum[p1, D], Momentum[p2, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (16*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[Momentum[l, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], LorentzIndex[Lor2, D]]*Pair[Momentum[p1, D], Momentum[p2, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (8*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[l, D]]*Pair[Momentum[p1, D], Momentum[p2, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (16*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor1, D], Momentum[l, D]]*Pair[Momentum[p1, D], Momentum[p2, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (8*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*Pair[Momentum[p1, D], Momentum[p2, D]]*
+SUNT[SUNIndex[Cola1]])/3 + (16*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[LorentzIndex[Lor2, D], Momentum[l, D]]*Pair[Momentum[p1, D], Momentum[p2, D]]*
+SUNT[SUNIndex[Cola1]])/3 - (4*CA*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] .
+	Spinor[-Momentum[p3, D], 0, 1]*FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0],
+	PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*
+Pair[Momentum[p2, D], Momentum[p3, D]]*SUNT[SUNIndex[Cola1]])/3 +
+(8*CF*Spinor[Momentum[p1, D], 0, 1] . DiracGamma[LorentzIndex[Lor2, D], D] . DiracGamma[Momentum[l, D], D] . DiracGamma[LorentzIndex[Lor1, D], D] . Spinor[-Momentum[p3, D], 0, 1]*
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p2, D], 0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D],
+	0], PropagatorDenominator[Momentum[l, D] - Momentum[p1, D] - Momentum[p2, D] - Momentum[p3, D], 0]]*Pair[Momentum[p2, D], Momentum[p3, D]]*SUNT[SUNIndex[Cola1]])/3,l,
+	ToPaVe -> True, UsePaVeBasis -> True, FCE->True], 15, $Failed]",
+	"((-2*I)/3)*(CA - 2*CF)*Pi^2*C0[0, 0, 2*SPD[p1, p2], 0, 0, 0]*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*SUNT[Cola1] -
+(I/3)*(CA - 2*CF)*Pi^2*C0[0, 2*SPD[p1, p2], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 0, 0, 0]*
+(2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1] +
+10*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1] -
+D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p3] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1] -
+10*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1] - 4*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+16*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] -
+4*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] + 16*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] -
+2*D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] + 12*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] -
+2*D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2])*SUNT[Cola1] + (I/3)*(CA - 2*CF)*Pi^2*C0[0, 0, 2*SPD[p1, p3], 0, 0, 0]*
+(8*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1] -
+D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1] +
+10*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1] -
+D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1] -
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1] -
+10*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1] - 16*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+2*D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] + 28*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] -
+4*D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] - 4*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] +
+16*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] +
+4*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] - 4*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] -
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*MTD[Lor1, Lor2])*SUNT[Cola1] -
+(I/3)*(CA - 2*CF)*Pi^2*C0[0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 0, 0, 0]*
+(10*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1] -
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1] + 4*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] -
+4*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] - 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*MTD[Lor1, Lor2])*
+SUNT[Cola1] + ((2*I)/3)*(CA - 2*CF)*Pi^2*(Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p1 - p2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1] +
+Spinor[Momentum[p1, D], 0, 1] . GSD[p1 - p2] . GAD[Lor2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1])*PaVe[1, {0, 2*SPD[p1, p2], 0}, {0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*
+SUNT[Cola1] - ((2*I)/3)*(CA - 2*CF)*Pi^2*(Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1] +
+Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p3] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1] + 6*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] -
+D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2])*PaVe[1, {0, 2*SPD[p1, p2], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3]}, {0, 0, 0},
+PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SUNT[Cola1] + (I/3)*(CA - 2*CF)*Pi^2*(8*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[p1 - p3] . Spinor[-Momentum[p3, D], 0, 1] -
+D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[p1 - p3] . Spinor[-Momentum[p3, D], 0, 1] -
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1 - p3] . GAD[Lor2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1] - 4*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1] + 16*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor2] + 4*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] - 16*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p3, Lor2] + 2*D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] - 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1 - p3] . Spinor[-Momentum[p3, D], 0, 1]*
+	MTD[Lor1, Lor2])*PaVe[1, {0, 2*SPD[p1, p3], 0}, {0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SUNT[Cola1] -
+((2*I)/3)*(CA - 2*CF)*(6 - D)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2]*
+PaVe[1, {0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3]}, {0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SUNT[Cola1] +
+((2*I)/3)*(CA - 2*CF)*Pi^2*(Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[-p1 - p2 - p3] . Spinor[-Momentum[p3, D], 0, 1] +
+Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[-p1 - p2 - p3] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1] - 6*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor2] + D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] - 6*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p2, Lor2] + D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] - 6*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p3, Lor2] + D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2])*PaVe[2, {0, 2*SPD[p1, p2], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3]}, {0, 0, 0},
+PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SUNT[Cola1] - ((2*I)/3)*(CA - 2*CF)*(6 - D)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*
+(FVD[p1, Lor2] + FVD[p2, Lor2] + FVD[p3, Lor2])*PaVe[2, {0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3]}, {0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SUNT[Cola1] -
+((2*I)/3)*(CA - 2*CF)*Pi^2*(2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1] -
+4*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1] +
+D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1] -
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1] - 4*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+4*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+8*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] +
+8*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] +
+4*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*MTD[Lor1, Lor2] -
+2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*MTD[Lor1, Lor2] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*MTD[Lor1, Lor2] -
+2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*MTD[Lor1, Lor2])*PaVe[0, 0, {0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 2*SPD[p1, p2], 0, 0},
+{0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SUNT[Cola1] -
+((2*I)/3)*(CA - 2*CF)*Pi^2*(2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] -
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] -
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[p1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1]*FVD[p1, Lor2] - 4*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p1, Lor2] +
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p1, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*
+	FVD[p1, Lor2] + 8*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p2, Lor1] -
+2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p2, Lor1] + 8*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*
+	FVD[p2, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p2, Lor2] +
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p3, Lor1])*
+PaVe[1, 1, {0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 2*SPD[p1, p2], 0, 0}, {0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SUNT[Cola1] +
+((2*I)/3)*(CA - 2*CF)*Pi^2*(2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p3] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] -
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[p3] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] -
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1]*FVD[p1, Lor2] + 8*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p2, Lor1] -
+2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p2, Lor1] + 8*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*
+	FVD[p2, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p2, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] -
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] + 8*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor2]*FVD[p3, Lor1] - 4*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p3, Lor1] +
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p3, Lor1] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*
+	FVD[p3, Lor1] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p3, Lor1] +
+8*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2]*FVD[p3, Lor1] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2]*
+	FVD[p3, Lor1] - 6*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[p1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1]*FVD[p3, Lor2] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p3, Lor2] -
+2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p3, Lor2] + 8*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*
+	FVD[p3, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p3, Lor2] +
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1]*FVD[p3, Lor2])*
+PaVe[1, 2, {0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 2*SPD[p1, p2], 0, 0}, {0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SUNT[Cola1] -
+((2*I)/3)*(CA - 2*CF)*Pi^2*(2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] -
+2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[-p1 - p2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] -
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] -
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] -
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] -
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] -
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] -
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[p1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] -
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[-p1 - p2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] + 8*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1]*FVD[p1, Lor2] - 6*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p1, Lor2] +
+2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p1, Lor2] + 8*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1]*FVD[p1, Lor2] - 4*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p1, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] -
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] + 16*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor2]*FVD[p2, Lor1] - 6*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p2, Lor1] -
+8*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p2, Lor1] + 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor2]*FVD[p2, Lor1] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p2, Lor1] -
+2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p2, Lor1] -
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[p1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] + 8*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1]*FVD[p2, Lor2] - 4*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p2, Lor2] -
+8*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p2, Lor2] + 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1]*FVD[p2, Lor2] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p2, Lor2] -
+2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p2, Lor2] + 16*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p2, Lor1]*FVD[p2, Lor2] - 4*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p2, Lor2] +
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p3, Lor1] - 4*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor2]*FVD[p3, Lor1] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2]*FVD[p3, Lor1])*
+PaVe[1, 3, {0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 2*SPD[p1, p2], 0, 0}, {0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SUNT[Cola1] -
+((2*I)/3)*(CA - 2*CF)*Pi^2*(2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p3] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] -
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor2]*FVD[p3, Lor1] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p3, Lor1] +
+8*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2]*FVD[p3, Lor1] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2]*
+	FVD[p3, Lor1] + 2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[p3] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] -
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] - 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1]*FVD[p3, Lor2] + 8*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p3, Lor2] -
+2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p3, Lor2] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1]*
+	FVD[p3, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1]*FVD[p3, Lor2] +
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1]*FVD[p3, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1]*
+	FVD[p3, Lor2] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1]*FVD[p3, Lor2])*
+PaVe[2, 2, {0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 2*SPD[p1, p2], 0, 0}, {0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SUNT[Cola1] +
+((2*I)/3)*(CA - 2*CF)*Pi^2*(2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p3] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] -
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[p3] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] -
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1]*FVD[p1, Lor2] + 2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p3] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] -
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] + 12*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor2]*FVD[p2, Lor1] - 4*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p2, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[p3] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] -
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1]*FVD[p2, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p2, Lor2] +
+16*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p2, Lor2] - 4*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p2, Lor1]*FVD[p2, Lor2] - 2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[-p1 - p2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] -
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] +
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] -
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor2]*FVD[p3, Lor1] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p3, Lor1] -
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p3, Lor1] + 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor2]*FVD[p3, Lor1] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p3, Lor1] -
+2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p3, Lor1] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*
+	FVD[p3, Lor1] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2]*FVD[p3, Lor1] -
+2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2]*FVD[p3, Lor1] - 8*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p2, Lor2]*FVD[p3, Lor1] + 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2]*FVD[p3, Lor1] +
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2]*FVD[p3, Lor1] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2]*
+	FVD[p3, Lor1] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2]*FVD[p3, Lor1] +
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] -
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] -
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] -
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[-p1 - p2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1]*FVD[p3, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p3, Lor2] +
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p3, Lor2] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1]*FVD[p3, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p3, Lor2] +
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p3, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*
+	FVD[p3, Lor2] - 8*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p3, Lor2] +
+2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p3, Lor2] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p2, Lor1]*FVD[p3, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p3, Lor2] -
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1]*FVD[p3, Lor2])*
+PaVe[2, 3, {0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 2*SPD[p1, p2], 0, 0}, {0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SUNT[Cola1] +
+((2*I)/3)*(CA - 2*CF)*Pi^2*(2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[-p1 - p2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] -
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] -
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[-p1 - p2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] - 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1]*FVD[p1, Lor2] + 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p1, Lor2] -
+2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p1, Lor2] - 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1]*FVD[p1, Lor2] + 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p1, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[-p1 - p2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] -
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] - 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor2]*FVD[p2, Lor1] + 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p2, Lor1] +
+12*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p2, Lor1] - 4*D*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor2]*FVD[p2, Lor1] - 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p2, Lor1] +
+2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p2, Lor1] -
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[-p1 - p2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] - 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1]*FVD[p2, Lor2] + 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p2, Lor2] +
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p2, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1]*FVD[p2, Lor2] - 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p2, Lor2] +
+2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p2, Lor2] - 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*
+	FVD[p2, Lor2] + 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p2, Lor2] +
+16*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p2, Lor2] - 4*D*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p2, Lor1]*FVD[p2, Lor2] - 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p2, Lor2] +
+2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p2, Lor2] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor2]*FVD[p3, Lor1] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2]*FVD[p3, Lor1])*
+PaVe[3, 3, {0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 2*SPD[p1, p2], 0, 0}, {0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SUNT[Cola1] -
+((4*I)/3)*(CA - 2*CF)*(2 - D)*Pi^2*(Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] + Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*MTD[Lor1, Lor2])*
+PaVe[0, 0, 1, {0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 2*SPD[p1, p2], 0, 0}, {0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SUNT[Cola1] +
+((4*I)/3)*(CA - 2*CF)*(2 - D)*Pi^2*(Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] +
+Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] + Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*MTD[Lor1, Lor2])*
+PaVe[0, 0, 2, {0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 2*SPD[p1, p2], 0, 0}, {0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SUNT[Cola1] +
+((4*I)/3)*(CA - 2*CF)*(2 - D)*Pi^2*(-(Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]) -
+Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] - Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] -
+Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] + Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*MTD[Lor1, Lor2])*
+PaVe[0, 0, 3, {0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 2*SPD[p1, p2], 0, 0}, {0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SUNT[Cola1] -
+((4*I)/3)*(CA - 2*CF)*(2 - D)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p1, Lor2]*
+PaVe[1, 1, 1, {0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 2*SPD[p1, p2], 0, 0}, {0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SUNT[Cola1] +
+((4*I)/3)*(CA - 2*CF)*(2 - D)*Pi^2*(Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p1, Lor2] +
+Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p3, Lor1] + Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*
+	FVD[p3, Lor2])*PaVe[1, 1, 2, {0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 2*SPD[p1, p2], 0, 0}, {0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SUNT[Cola1] -
+((4*I)/3)*(CA - 2*CF)*(2 - D)*Pi^2*(2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p1, Lor2] -
+Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p1, Lor2] + Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*
+	FVD[p2, Lor1] + Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p2, Lor2])*
+PaVe[1, 1, 3, {0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 2*SPD[p1, p2], 0, 0}, {0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SUNT[Cola1] -
+((4*I)/3)*(CA - 2*CF)*(2 - D)*Pi^2*(Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p3, Lor1] +
+Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p3, Lor2] + Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1]*
+	FVD[p3, Lor2])*PaVe[1, 2, 2, {0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 2*SPD[p1, p2], 0, 0}, {0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SUNT[Cola1] +
+((4*I)/3)*(CA - 2*CF)*(2 - D)*Pi^2*(2*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p1, Lor2] +
+Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p2, Lor1] + Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*
+	FVD[p2, Lor2] + Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p3, Lor1] -
+Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p3, Lor1] + Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2]*
+	FVD[p3, Lor1] + Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p3, Lor2] -
+Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p3, Lor2] + Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*
+	FVD[p3, Lor2])*PaVe[1, 2, 3, {0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 2*SPD[p1, p2], 0, 0}, {0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SUNT[Cola1] -
+((4*I)/3)*(CA - 2*CF)*(2 - D)*Pi^2*(Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p1, Lor2] -
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p1, Lor2] + Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor2]*FVD[p2, Lor1] - Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p2, Lor1] +
+Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p2, Lor2] - Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*
+	FVD[p2, Lor2] + Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p2, Lor2])*
+PaVe[1, 3, 3, {0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 2*SPD[p1, p2], 0, 0}, {0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SUNT[Cola1] +
+((4*I)/3)*(CA - 2*CF)*(2 - D)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1]*FVD[p3, Lor2]*
+PaVe[2, 2, 2, {0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 2*SPD[p1, p2], 0, 0}, {0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SUNT[Cola1] -
+((4*I)/3)*(CA - 2*CF)*(2 - D)*Pi^2*(Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p3, Lor1] +
+Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2]*FVD[p3, Lor1] + Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*
+	FVD[p3, Lor2] + Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p3, Lor2] -
+Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1]*FVD[p3, Lor2])*
+PaVe[2, 2, 3, {0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 2*SPD[p1, p2], 0, 0}, {0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SUNT[Cola1] +
+((4*I)/3)*(CA - 2*CF)*(2 - D)*Pi^2*(Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p1, Lor2] +
+Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p2, Lor1] + Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*
+	FVD[p2, Lor2] + Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p2, Lor2] -
+Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p3, Lor1] - Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p2, Lor2]*FVD[p3, Lor1] - Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p3, Lor2] -
+Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p3, Lor2])*
+PaVe[2, 3, 3, {0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 2*SPD[p1, p2], 0, 0}, {0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SUNT[Cola1] +
+((4*I)/3)*(CA - 2*CF)*(2 - D)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*(FVD[p1, Lor1] + FVD[p2, Lor1])*(FVD[p1, Lor2] + FVD[p2, Lor2])*
+PaVe[3, 3, 3, {0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 2*SPD[p1, p2], 0, 0}, {0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SUNT[Cola1] -
+((2*I)/3)*(CA - 2*CF)*Pi^2*(8*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1] -
+D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1] -
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1] - 4*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] +
+16*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] -
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*MTD[Lor1, Lor2])*PaVe[1, {0, 2*SPD[p1, p2], 0, 2*SPD[p1, p3], 0, 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3]},
+{0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SPD[p1, p2]*SUNT[Cola1] +
+((2*I)/3)*(CA - 2*CF)*Pi^2*(8*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1] -
+D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1] -
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1] - 4*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+16*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] -
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*MTD[Lor1, Lor2])*PaVe[2, {0, 2*SPD[p1, p2], 0, 2*SPD[p1, p3], 0, 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3]},
+{0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SPD[p1, p2]*SUNT[Cola1] -
+((2*I)/3)*(CA - 2*CF)*Pi^2*(8*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[-p1 - p3] . Spinor[-Momentum[p3, D], 0, 1] -
+D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[-p1 - p3] . Spinor[-Momentum[p3, D], 0, 1] -
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p3] . GAD[Lor2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1] + 4*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1] - 16*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] + 2*D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor2] + 4*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] - 16*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p3, Lor2] + 2*D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] - 4*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p3] . Spinor[-Momentum[p3, D], 0, 1]*
+	MTD[Lor1, Lor2])*PaVe[3, {0, 2*SPD[p1, p2], 0, 2*SPD[p1, p3], 0, 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3]}, {0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SPD[p1, p2]*
+SUNT[Cola1] - ((2*I)/3)*(CA - 2*CF)*Pi^2*PaVe[1, {0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 2*SPD[p1, p2], 0, 0}, {0, 0, 0, 0}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True]*(4*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] -
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] -
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] -
+12*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] -
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+12*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[p1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] -
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[p1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[p2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] - 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1]*FVD[p1, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p1, Lor2] -
+8*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p1, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*
+	FVD[p1, Lor2] + 10*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] -
+D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] -
+8*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] + 20*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor2]*FVD[p2, Lor1] - 4*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p2, Lor1] +
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p2, Lor1] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*
+	FVD[p2, Lor1] + 2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1]*FVD[p2, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p2, Lor2] +
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p2, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*
+	FVD[p2, Lor2] + 12*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p2, Lor2] -
+2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p2, Lor2] -
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] + 8*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor2]*FVD[p3, Lor1] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p3, Lor1] +
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2]*FVD[p3, Lor1] -
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[p1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] -
+8*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p1, p2] +
+D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p1, p2] -
+10*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p1, p2] +
+D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p1, p2] + 8*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1]*SPD[p1, p2] - 2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p1, p3] -
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p1, p3] -
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p2, p3])*SUNT[Cola1] -
+((2*I)/3)*(CA - 2*CF)*Pi^2*D0[0, 0, 0, 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 2*SPD[p1, p2], 2*SPD[p1, p3], 0, 0, 0, 0]*
+(2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] -
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] -
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+10*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[p1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] -
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[p1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+10*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[p2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] -
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[p2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] - 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1]*FVD[p1, Lor2] - 12*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p1, Lor2] +
+10*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] -
+D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] +
+10*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] -
+D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] -
+8*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] -
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] + 12*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor2]*FVD[p2, Lor1] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p2, Lor1] +
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p2, Lor1] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*
+	FVD[p2, Lor1] + 2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] +
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] - 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1]*FVD[p2, Lor2] - 12*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p2, Lor2] +
+12*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p2, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p2, Lor1]*FVD[p2, Lor2] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p2, Lor2] -
+2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p2, Lor2] -
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] -
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor2]*FVD[p3, Lor1] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p3, Lor1] +
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2]*FVD[p3, Lor1] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2]*
+	FVD[p3, Lor1] - 2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[p1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] -
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[p2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] -
+8*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p1, p2] +
+D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p1, p2] -
+10*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p1, p2] +
+D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p1, p2] -
+10*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p1, p2] +
+D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p1, p2] -
+10*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p1, p2] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p1, p2] + 8*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1]*SPD[p1, p2] + 20*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2]*SPD[p1, p2] -
+2*D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2]*SPD[p1, p2] -
+2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p1, p3] -
+2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p1, p3] -
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p1, p3] -
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p2, p3])*SUNT[Cola1] +
+((2*I)/3)*(CA - 2*CF)*Pi^2*PaVe[2, {0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 2*SPD[p1, p2], 0, 0}, {0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*
+(2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p3] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+10*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[p3] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] -
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[p3] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] -
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2] - 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1]*FVD[p1, Lor2] + 10*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p3] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] -
+D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p3] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] -
+8*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1] + 12*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor2]*FVD[p2, Lor1] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p2, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2] - 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1]*FVD[p2, Lor2] + 12*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p2, Lor2] -
+2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p2, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] -
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] -
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] -
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor2]*FVD[p3, Lor1] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p3, Lor1] -
+2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*FVD[p3, Lor1] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*
+	FVD[p3, Lor1] + 8*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2]*FVD[p3, Lor1] -
+2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2]*FVD[p3, Lor1] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2]*
+	FVD[p3, Lor1] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2]*FVD[p3, Lor1] +
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor2]*FVD[p3, Lor1] -
+6*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] -
+4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] +
+D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[p1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] +
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[p2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] -
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[p3] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor2] - 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p1, Lor1]*FVD[p3, Lor2] - 8*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*FVD[p3, Lor2] +
+8*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p3, Lor2] - 2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*
+	FVD[p3, Lor2] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p3, Lor2] -
+2*D*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*FVD[p3, Lor2] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1]*
+	FVD[p3, Lor2] + 4*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p3, Lor1]*FVD[p3, Lor2] -
+8*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p1, p2] +
+D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[p3] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p1, p2] -
+10*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p3] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p1, p2] +
+D*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p3] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p1, p2] + 8*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1]*
+	FVD[p3, Lor1]*SPD[p1, p2] - 2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p3] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p1, p3] -
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . GAD[Lor2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p1, p3] -
+2*Spinor[Momentum[p1, D], 0, 1] . GSD[p3] . GAD[Lor2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p2, p3])*SUNT[Cola1] +
+PaVe[3, {0, 2*SPD[p1, p3], 2*SPD[p1, p2] + 2*SPD[p1, p3] + 2*SPD[p2, p3], 2*SPD[p1, p2], 0, 0}, {0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*
+(((2*I)/3)*(CA - 2*CF)*D*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*SUNT[Cola1] -
+((2*I)/3)*(CA - 2*CF)*D*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[-p1 - p2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*SUNT[Cola1] +
+((4*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*(-FVD[p1, Lor1] - FVD[p2, Lor1])*SUNT[Cola1] +
+((4*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[p2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*(-FVD[p1, Lor1] - FVD[p2, Lor1])*SUNT[Cola1] +
+((4*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*(-FVD[p1, Lor1] - FVD[p2, Lor1])*SUNT[Cola1] -
+(4*I)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*(-FVD[p1, Lor1] - FVD[p2, Lor1])*SUNT[Cola1] +
+((2*I)/3)*(CA - 2*CF)*D*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*(-FVD[p1, Lor1] - FVD[p2, Lor1])*SUNT[Cola1] -
+((8*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*(-FVD[p1, Lor1] - FVD[p2, Lor1])*SUNT[Cola1] +
+((2*I)/3)*(CA - 2*CF)*D*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*(-FVD[p1, Lor1] - FVD[p2, Lor1])*SUNT[Cola1] +
+((8*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*(-FVD[p1, Lor1] - FVD[p2, Lor1])*SUNT[Cola1] -
+((4*I)/3)*(CA - 2*CF)*D*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*(-FVD[p1, Lor1] - FVD[p2, Lor1])*SUNT[Cola1] -
+((4*I)/3)*(CA - 2*CF)*D*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor2]*(-FVD[p1, Lor1] - FVD[p2, Lor1])*SUNT[Cola1] -
+((2*I)/3)*(CA - 2*CF)*D*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[-p1 - p2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*SUNT[Cola1] +
+((2*I)/3)*(CA - 2*CF)*D*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*SUNT[Cola1] +
+((4*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . GAD[Lor2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*(FVD[p1, Lor1] + FVD[p2, Lor1])*SUNT[Cola1] +
+((2*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[-p1 - p2] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*(2*FVD[p1, Lor1] + 10*FVD[p2, Lor1])*SUNT[Cola1] -
+(4*I)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*(-FVD[p1, Lor2] - FVD[p2, Lor2])*SUNT[Cola1] +
+((2*I)/3)*(CA - 2*CF)*D*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*(-FVD[p1, Lor2] - FVD[p2, Lor2])*SUNT[Cola1] +
+((4*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*(-FVD[p1, Lor2] - FVD[p2, Lor2])*SUNT[Cola1] -
+((8*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*(-FVD[p1, Lor2] - FVD[p2, Lor2])*SUNT[Cola1] +
+((2*I)/3)*(CA - 2*CF)*D*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*(-FVD[p1, Lor2] - FVD[p2, Lor2])*SUNT[Cola1] +
+((4*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[p1] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*(-FVD[p1, Lor2] - FVD[p2, Lor2])*SUNT[Cola1] +
+((4*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[p2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*(-FVD[p1, Lor2] - FVD[p2, Lor2])*SUNT[Cola1] -
+((8*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*(-FVD[p1, Lor2] - FVD[p2, Lor2])*SUNT[Cola1] -
+((16*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p1, Lor1]*(-FVD[p1, Lor2] - FVD[p2, Lor2])*SUNT[Cola1] +
+((16*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*(-FVD[p1, Lor2] - FVD[p2, Lor2])*SUNT[Cola1] -
+((4*I)/3)*(CA - 2*CF)*D*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*(-FVD[p1, Lor2] - FVD[p2, Lor2])*SUNT[Cola1] +
+((8*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*(-FVD[p1, Lor2] - FVD[p2, Lor2])*SUNT[Cola1] -
+((4*I)/3)*(CA - 2*CF)*D*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*(-FVD[p1, Lor2] - FVD[p2, Lor2])*SUNT[Cola1] +
+((16*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*(-FVD[p1, Lor1] - FVD[p2, Lor1])*FVD[p2, Lor2]*SUNT[Cola1] -
+((4*I)/3)*(CA - 2*CF)*D*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*(-FVD[p1, Lor1] - FVD[p2, Lor1])*FVD[p2, Lor2]*SUNT[Cola1] +
+((8*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*(-FVD[p1, Lor1] - FVD[p2, Lor1])*FVD[p2, Lor2]*SUNT[Cola1] -
+((4*I)/3)*(CA - 2*CF)*D*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*(-FVD[p1, Lor1] - FVD[p2, Lor1])*FVD[p2, Lor2]*SUNT[Cola1] +
+((4*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*(FVD[p1, Lor2] + FVD[p2, Lor2])*SUNT[Cola1] -
+((4*I)/3)*(CA - 2*CF)*D*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*FVD[p2, Lor1]*(FVD[p1, Lor2] + FVD[p2, Lor2])*SUNT[Cola1] +
+((2*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . GAD[Lor1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*(-6*FVD[p1, Lor2] + 2*FVD[p2, Lor2])*SUNT[Cola1] +
+((2*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GAD[Lor2] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*(2*FVD[p1, Lor1] - 8*FVD[p2, Lor1] - 2*FVD[p3, Lor1])*SUNT[Cola1] -
+((4*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*(FVD[p1, Lor2] + FVD[p2, Lor2])*(2*FVD[p1, Lor1] - 6*FVD[p2, Lor1] - 2*FVD[p3, Lor1])*
+	SUNT[Cola1] + ((8*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p1] . Spinor[-Momentum[p3, D], 0, 1]*(-FVD[p1, Lor2] - FVD[p2, Lor2])*FVD[p3, Lor1]*SUNT[Cola1] +
+((8*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . Spinor[-Momentum[p3, D], 0, 1]*(-FVD[p1, Lor2] - FVD[p2, Lor2])*FVD[p3, Lor1]*SUNT[Cola1] -
+((2*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[p2] . GSD[-p1 - p2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*(-10*FVD[p1, Lor2] + 2*FVD[p3, Lor2])*SUNT[Cola1] +
+((2*I)/3)*(CA - 2*CF)*(-8 + D)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GAD[Lor1] . GSD[-p1 - p2] . Spinor[-Momentum[p3, D], 0, 1]*SPD[p1, p2]*SUNT[Cola1] +
+((16*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . Spinor[-Momentum[p3, D], 0, 1]*(-FVD[p1, Lor1] - FVD[p2, Lor1])*SPD[p1, p2]*SUNT[Cola1] +
+((2*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GAD[Lor2] . GSD[-p1 - p2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*(-10*SPD[p1, p2] + D*SPD[p1, p2] - 2*SPD[p1, p3])*SUNT[Cola1] -
+((4*I)/3)*(CA - 2*CF)*Pi^2*Spinor[Momentum[p1, D], 0, 1] . GSD[-p1 - p2] . GAD[Lor2] . GAD[Lor1] . Spinor[-Momentum[p3, D], 0, 1]*(SPD[p1, p3] + SPD[p2, p3])*SUNT[Cola1])"}
 })

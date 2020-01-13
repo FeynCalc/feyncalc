@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Small helper tools extensively used in FeynCalc			    *)
@@ -39,25 +39,94 @@ Expand2::usage=
 "Expand2[exp, x] expands all sums containing x. \
 Expand2[exp, {x1, x2, ...}]  expands all sums containing x1, x2, ....";
 
-FCFactorOut::usage=
-"FCFactorOut[exp, pref] factors out pref out of exp. This is often need to \
-bring exp into a particular form that Mathematica refuses to give";
+ExpandAll2::usage=
+"ExpandAll2[exp] is similar to ExpandAll, but much faster on simple structures.";
 
 FCAntiSymmetrize::usage=
 "FCAntiSymmetrize[expr, {a1, a2, ...}] antisymmetrizes expr with respect \
 to the variables a1, a2, ... ";
 
+FCCheckVersion::usage=
+"FCCheckVersion[major,minor,build] checks if the current version of FeynCalc \
+is larger or equal than marjor.minor.build. For example, FCCheckVersion[9,3,0] \
+will generate a warning (when running with the frontend) or quit kernel (when \
+running without the frontend) if the loaded FeynCalc version is older than 9.3.0. \n
+Notice that this function is available only since FeynCalc 9.3.";
+
+FCDuplicateFreeQ::usage=
+"FCDuplicateFreeQ[list] yields True if list contains no duplicates and False otherwise. \n
+FCDuplicateFreeQ[list,test] uses test to determine whether two objects should be considered \
+duplicates.\n
+FCDuplicateFreeQ returns the same results as the standard DuplicateFreeQ. \
+The only reason for introducing FCDuplicateFreeQ is that DuplicateFreeQ is not available \
+in Mathematica 8 and 9, which are still supported by FeynCalc.";
+
+FCGetNotebookDirectory::usage=
+"FCGetNotebookDirectory[] is a convenience function that returns the directory \
+in which the current notebook or .m file is located. It also works when the FrontEnd \
+is not available.";
+
+FCFactorOut::usage=
+"FCFactorOut[exp, pref] factors out pref out of exp. This is often need to \
+bring exp into a particular form that Mathematica refuses to give.";
+
+FCMakeIndex::usage=
+"FCMakeIndex[str1, str2, head] generates an index with the given head out \
+of the string str1 and str2. For example, FCMakeIndex[\"Lor\",\"1\",LorentzIndex] \
+yields LorentzIndex[Lor1]. The second argument can also be an integer. FCMakeIndex \
+is useful for converting the output of different diagram generators such as \
+FeynArts or QGAF into the FeynCalc notation. It uses memoization to improve the \
+performance."
+
 FCPatternFreeQ::usage =
-"FCPatternFreeQ[{expr}] yields True if {expr} does not contain any \
+"FCPatternFreeQ[{exp}] yields True if {exp} does not contain any \
 pattern objects, e.g. Pattern, Blank, BlankSequence and BlankNullSequence. \n
-FCPatternFreeQ[{expr},{h1,h2,...}] checks that in addition to the pattern \
+FCPatternFreeQ[{exp},{h1,h2,...}] checks that in addition to the pattern \
 objects, no heads h1, h2, ... are present.";
 
-FCSplit::usage = "FCSplit[expr,{v1, v2, ...}] splits expr into pieces \
+FCProgressBar::usage =
+"FCProgressBar[text, i, total] is a simple auxiliary function that can \
+be used to display the progress of a certain evaluation, e.g. mapping a list \
+of integrals to some function. Here i is the number of the current step \
+while total denotes the overall number of steps. A simple usage example \
+is Table[FCProgressBar[\"Calculating integral \", i, 10], {i, 1, 10}].";
+
+FCReloadFunctionFromFile::usage =
+"FCReloadFunctionFromFile[function, path] is an auxiliary function that \
+attempts to remove all the definitions of the given FeynCalc function and \
+then reload them from the specified file. It is intended to be a helper tool \
+for FeynCalc developers, which allows one to debug/improve internal functions \
+and test the results without restarting the kernel. Depending on the complexity \
+of the given function, there might also be unknown side effects. The function is \
+not meant to be invoked by the normal users. ";
+
+FCReplaceAll::usage=
+"FCReplaceAll[exp, ru1, ...] is like ReplaceAll, but it also allows to apply multiple \
+replacement rules sequentially. Instead of doing exp /. ru1 /. ru2 /. ru3 one can just \
+write FCReplaceAll[exp, ru1, ru2, ru3].";
+
+FCReplaceRepeated::usage=
+"FCReplaceRepeated[exp, ru1, ...] is like ReplaceRepeated, but it also allows to apply multiple \
+replacement rules sequentially. Instead of doing exp //. ru1 //. ru2 //. ru3 one can just \
+write FCReplaceRepeated[exp, ru1, ru2, ru3].";
+
+FCSplit::usage = "FCSplit[exp,{v1, v2, ...}] splits expr into pieces \
 that are free of any occurence of v1, v2, ... and pieces that contain \
 those variables. This works both on sums and products. The output \
 is provided in the form of a two element list. One can recover the \
-original expression by applying Total to that list";
+original expression by applying Total to that list.";
+
+FCProductSplit::usage = "FCProductSplit[exp,{v1, v2, ...}] splits exp \
+into two products, where the first one is free  of \
+v1, v2, ... and the second one contains those variables. \
+The output is provided in the form of a two element list. One can recover the \
+original expression by multiplying both elements with each other.";
+
+FCSubsetQ::usage=
+"FCSubsetQ[list1,list2] yields True if list2 is a subset of list1 and \
+False otherwise. It returns the same results as the standard SubsetQ. \
+The only reason for introducing FCSubsetQ is that SubsetQ is not available \
+in Mathematica 8 and 9, which are still supported by FeynCalc.";
 
 FCSymmetrize::usage=
 "FCSymmetrize[expr, {a1, a2, ...}] symmetrizes expr with respect \
@@ -90,14 +159,14 @@ otherwise Map2[f, exp] gives f[exp].";
 
 MemSet::usage =
 "MemSet[f[x_], body] is like f[x_] := f[x] = body, \
-but dependend on the value of the setting of MemoryAvailable -> \
+but dependend on the value of the setting of FCMemoryAvailable -> \
 memorycut (memorycut - MemoryInUse[]/10.^6) \
 MemSet[f[x_], body] may evaluate as f[x_] := body."
 
-MemoryAvailable::usage =
-"MemoryAvailable is an option of MemSet. It can be set to an integer n, \
+FCMemoryAvailable::usage =
+"FCMemoryAvailable is an option of MemSet. It can be set to an integer n, \
 where n is the available amount of main memory in Mega Byte. \
-The default setting is $MemoryAvailable.";
+The default setting is $FCMemoryAvailable.";
 
 MLimit::usage=
 "MLimit[expr, {lims}] takes multiple limits of expr using the limits lims.";
@@ -135,8 +204,8 @@ an integer (even if it is symbolic). Furthermore \
 (-1)^(-n) -> (-1)^n and Exp[I m Pi] -> (-1)^m.";
 
 SelectFree2::usage=
-"SelectFree2[expr, a, b, ...] is like SelectFree but
-it first expands the expression w.r.t to the arguments via
+"SelectFree2[expr, a, b, ...] is like SelectFree but \
+it first expands the expression w.r.t to the arguments via \
 Expand2";
 
 SelectFree::usage=
@@ -154,8 +223,8 @@ SelectNotFree[a,a] returns a (where a is not a product or \
 a sum).";
 
 SelectNotFree2::usage=
-"SelectNotFree2[expr, a, b, ...] is like SelectNotFree but
-it first expands the expression w.r.t to the arguments via
+"SelectNotFree2[expr, a, b, ...] is like SelectNotFree but \
+it first expands the expression w.r.t to the arguments via \
 Expand2";
 
 SelectSplit::usage=
@@ -166,7 +235,17 @@ appends the subset of remaining unmatched elements.";
 XYT::usage=
 "XYT[exp, x,y] transforms  (x y)^m away ..."
 
-FCSplit::fail = "Error! Splitting `1` w.r.t `2` failed!";
+FCProductSplit::failmsg = "Error! FCProductSplit has encountered a fatal problem and must abort the computation. \n
+The problem reads: `1`";
+
+FCSplit::failmsg = "Error! FCSplit has encountered a fatal problem and must abort the computation. \n
+The problem reads: `1`";
+
+FCReloadFunctionFromFile::failmsg = "Error! FCReloadFunctionFromFile has encountered a fatal problem and must abort the computation. \n
+The problem reads: `1`";
+
+FCDuplicateFreeQ::failmsg = "Error! FCDuplicateFreeQ has encountered a fatal problem and must abort the computation. \n
+The problem reads: `1`";
 
 Begin["`Package`"]
 End[]
@@ -180,45 +259,55 @@ SetAttributes[MemSet, HoldFirst];
 Options[Cases2] = {
 	Heads -> False
 };
+
 Options[Combine] = {
 	Expanding -> False
 };
+
 Options[SelectSplit] = {
 	Heads -> None
 };
 
-
 Options[FCFactorOut] = {
-	Factoring -> Simplify
+	Factoring	-> Simplify,
+	Head 		-> Identity
 };
-
-
 
 Options[ILimit] = {
 	FunctionLimits -> {Log -> Log}
 };
+
 Options[MemSet] = {
-	MemoryAvailable -> $MemoryAvailable
+	FCMemoryAvailable -> $FCMemoryAvailable
 };
+
 Options[MLimit] = {
 	Limit -> Limit
+};
+
+Options[NTerms] = {
+	Expand -> True
 };
 
 Options[FCSplit] = {
 	Expanding -> True
 };
 
+Options[FCProductSplit] = {
+	Abort -> False
+};
+
 Options[FRH] = {
-	IsolateNames->All
+	IsolateNames -> All
 };
 
 Options[PowerSimplify] = {
-	Assumptions->True,
-	PowerExpand->True
+	Assumptions	-> True,
+	PowerExpand	-> True
 };
 
 Options[Power2] = {
-	Assumptions->True
+	Assumptions	-> True
 };
 
 Cases2[expr_, {f___}, opts:OptionsPattern[]] :=
@@ -228,7 +317,7 @@ Cases2[expr_, f_, opts:OptionsPattern[]] :=
 	Union[Cases[{expr}, HoldPattern[f[___]], Infinity,opts]];
 
 Cases2[expr_, f_, g__, opts:OptionsPattern[]] :=
-	Union[Cases[{expr}, Alternatives@@(#[___]&/@{f,g}),
+	Union[Cases[{expr}, Alternatives@@(HoldPattern[#[___]]&/@{f,g}),
 	Infinity, FilterRules[{opts}, Options[Cases]]]];
 
 
@@ -306,14 +395,186 @@ Expand2[x_, l_List] :=
 		]
 	];
 
+
+ExpandAll2[expr_] :=
+	FixedPoint[
+		Switch[	Head[#],
+				Times,
+					Distribute[#],
+				Plus,
+					If[	!FreeQ[List@@#,Plus],
+						(ExpandAll2 /@ #),
+						#
+					],
+				_,
+					#
+		] &, expr];
+
 FCAntiSymmetrize[x_,v_List] :=
 	Block[{su},
 		su[y_, {a__}, {b__}] := y /. Thread[{a} -> {b}];
 		1 / Factorial[Length[v]] Plus@@Map[(Signature[#] su[x,v,#])&, Permutations[v]]
 	];
 
+FCCheckVersion[major_Integer?NonNegative, minor_Integer?NonNegative, build_Integer?NonNegative, OptionsPattern[]]:=
+	Block[{str},
+		str = "Your FeynCalc version is too old. The following code requires at least FeynCalc "<>
+		ToString[major]<>"."<> ToString[minor]<>"."<> ToString[build]<>".";
+		If[	!MatchQ[ToExpression[StringSplit[$FeynCalcVersion, "."]],{a_/;a>=major,b_/;b>=minor,c_/; c>=build}],
+			If[	($FrontEnd === Null || $Notebooks===False),
+				Print[str];
+				Quit[],
+				CreateDialog[{TextCell[str], DefaultButton[]}, Modal->True];
+			]
+		]
+	];
+
+
+FCDuplicateFreeQ[ex_/; Head[ex] =!= List, ___] :=
+	(
+	Message[FCDuplicateFreeQ::failmsg, "The input expression is not a list."];
+	Abort[]
+	);
+
+FCDuplicateFreeQ[{}, ___] :=
+	True;
+
+FCDuplicateFreeQ[ex_List, test_ : FCGV[""]] :=
+	Block[{tmp, num},
+
+		If[	test === FCGV[""],
+			tmp = Last[SortBy[Tally[ex], Last]],
+			tmp = Check[Last[SortBy[Tally[ex, test], Last]], $Failed, Tally::smtst]
+		];
+
+		If[	Head[tmp] =!= List || tmp === {},
+			Message[FCDuplicateFreeQ::failmsg, "Failed to count the elements in the list."];
+			Abort[]
+		];
+
+		num = Last[tmp];
+
+		If[	!MatchQ[num, _Integer?NonNegative],
+			Message[FCDuplicateFreeQ::failmsg, "Failed to count the elements in the list."];
+			Abort[]
+		];
+
+		num < 2
+	];
+
+
+FCMakeIndex[x_String, y_List, head_: Identity] :=
+	MemSet[	FCMakeIndex[x, y, head],
+			FCMakeIndex[x,#,head]&/@y
+	];
+
+FCMakeIndex[x_String, y_String, head_: Identity] :=
+	MemSet[	FCMakeIndex[x, y, head],
+			head[ToExpression[x <> y]]
+	];
+
+FCMakeIndex[x_String, y_Integer, head_: Identity] :=
+	MemSet[	FCMakeIndex[x, y, head],
+			head[ToExpression[x <> ToString[y]]]
+	]/; y >= 0;
+
+FCMakeIndex[x_String, y_Integer, head_: Identity] :=
+	MemSet[	FCMakeIndex[x, y, head],
+			head[ToExpression[x <> "Minus" <> ToString[-y]]]
+	]/; y < 0;
+
 FCFactorOut[expr_,pref_,OptionsPattern[]]:=
-	pref OptionValue[Factoring][expr/pref];
+	pref OptionValue[Head][OptionValue[Factoring][expr/pref]];
+
+FCGetNotebookDirectory[]:=
+	Block[{dir},
+		If[$FrontEnd===Null,
+			dir=DirectoryName[$InputFileName],
+			dir=NotebookDirectory[]
+		];
+		dir
+	];
+
+FCPatternFreeQ[expr_List]:=
+	FreeQ2[expr, {Pattern, Blank,BlankSequence,BlankNullSequence, Alternatives}];
+
+FCPatternFreeQ[expr_List ,objs_List]:=
+	FreeQ2[expr, Join[ {Pattern, Blank,BlankSequence,BlankNullSequence, Alternatives}, objs]];
+
+FCProgressBar[text_String, i_Integer, tot_Integer] :=
+	FCPrint[0, text <> ToString[i] <> " / " <> ToString[tot] <> "\n", UseWriteString -> True];
+
+
+FCReloadFunctionFromFile[fun_, file_String] :=
+	Block[{names, names1, names2, str1, str2},
+
+	If[! TrueQ[FileExistsQ[file]],
+			Message[FCReloadFunctionFromFile::failmsg, "The file " <> file <> " does not exist."];
+			Abort[]
+	];
+
+	str1 = "FeynCalc`" <> ToString[fun] <> "`*";
+	str2 = "FeynCalc`" <> ToString[fun] <> "`Private`*";
+	names = Join[Names[str1], Names[str2]];
+
+	With[{x = str1}, ClearAll[x]];
+	With[{x = str2}, ClearAll[x]];
+
+	If[	names =!= {},
+		Quiet[Remove /@ names, Remove::rmnsm]
+	];
+
+	ClearAll[fun];
+	Quiet[Remove[fun], Remove::rmnsm];
+
+	BeginPackage["FeynCalc`"];
+		FCDeclareHeader[file];
+		Get[file];
+	EndPackage[];
+	Null
+];
+
+FCProductSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
+	Block[{dummy,exprAsList,pow,free,notfree},
+		If[	NTerms[expr,Expand->False] > 1,
+			Message[FCProductSplit::failmsg,"The input expression is not a product"];
+			Abort[]
+		];
+
+		exprAsList = List@@(expr*dummy);
+		If[	!FreeQ[exprAsList,Power],
+			exprAsList /. Power -> pow //. {
+				{a___,pow[b_,n_Integer?Positive],c___} :> {a,Sequence@@ConstantArray[b,n],c},
+				{a___,pow[b_,n_Integer?Negative],c___} :> {a,Sequence@@ConstantArray[1/b,-n],c}
+			} /. pow -> Power
+		];
+
+		free = SelectFree[exprAsList,vars] /. dummy :> Unevaluated[Sequence[]];
+		notfree = SelectNotFree[exprAsList,vars];
+
+		free = Times@@free;
+		notfree = Times@@notfree;
+
+		If[ free*notfree =!= expr || ! FreeQ2[free, vars],
+			Message[FCProductSplit::failmsg, "Error! Splitting" <>ToString[expr,InputForm]<> " w.r.t " <>ToString[vars,InputForm]<> " failed!"];
+			Abort[]
+		];
+
+		{free,notfree}
+	];
+
+
+FCReplaceAll[ex_, ru_] :=
+	ReplaceAll[ex, ru];
+
+FCReplaceAll[ex_, ru1_, ru2__] :=
+	Fold[ReplaceAll, ex, {ru1, ru2}];
+
+FCReplaceRepeated[ex_, ru_] :=
+	ReplaceRepeated[ex, ru];
+
+FCReplaceRepeated[ex_, ru1_, ru2__] :=
+	Fold[ReplaceRepeated, ex, {ru1, ru2}];
 
 FCPatternFreeQ[expr_List]:=
 	FreeQ2[expr, {Pattern, Blank,BlankSequence,BlankNullSequence}];
@@ -322,16 +583,30 @@ FCPatternFreeQ[expr_List ,objs_List]:=
 	FreeQ2[expr, Join[ {Pattern, Blank,BlankSequence,BlankNullSequence}, objs]];
 
 FCSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
-	Block[ {free, notfree, tmp, null1, null2},
+	Block[ {free, notfree, tmp, time},
 		If[ OptionValue[Expanding],
 			tmp = Expand2[expr, vars],
 			tmp = expr
 		];
-		free = SelectFree[tmp + null1 + null2, vars] /. null1 | null2 -> 0;
-		notfree =
-		SelectNotFree[tmp + null1 + null2, vars] /. null1 | null2 -> 0;
+
+		time=AbsoluteTime[];
+
+		If[Head[tmp]===Plus,
+			free = SelectFree[tmp, vars];
+			notfree = SelectNotFree[tmp, vars],
+
+			If[	FreeQ2[tmp,vars],
+				free = tmp;
+				notfree = 0,
+
+				notfree = tmp;
+				free = 0
+			]
+		];
+		FCPrint[1,"FCSplit: Splitting, timing: ", N[AbsoluteTime[] - time, 4]];
+
 		If[ free + notfree =!= tmp || ! FreeQ2[free, vars],
-			Message[FCSplit::fail, expr, vars];
+			Message[FCSplit::failmsg, "Error! Splitting" <>ToString[expr,InputForm]<> " w.r.t " <>ToString[vars,InputForm]<> " failed!"];
 			Abort[]
 		];
 		{free, notfree}
@@ -340,12 +615,24 @@ FCSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
 FCSplit[expr_List, vars_List /; vars =!= {}, opts:OptionsPattern[]]:=
 	Map[FCSplit[#, vars, opts]&, expr];
 
+FCSplit[_, vars_, OptionsPattern[]]:=
+	(
+	Message[FCSplit::failmsg, "The second argument must be a list."];
+	Abort[]
+	)/; Head[vars]=!=List;
 
 FCSymmetrize[x_,v_List] :=
 	Block[{su},
 		su[y_, {a__}, {b__}] := y /. Thread[{a} -> {b}];
 		1 / Factorial[Length[v]] Plus@@Map[su[x, v, #]&, Permutations[v]]
 	];
+
+
+FCSubsetQ[l1_List, l2_List] :=
+(DeleteDuplicates[Sort[MemberQ[l1, #] & /@ l2]] === {True}) /; l2 =!= {};
+
+FCSubsetQ[_List, {}] :=
+	True;
 
 FreeQ2[_,{}] :=
 	True;
@@ -429,20 +716,32 @@ Map2[f_, exp_] :=
 	];
 
 MemSet[x_,y_, OptionsPattern[]] :=
-	If[(OptionValue[MemoryAvailable] - MemoryInUse[]/1000000.) <1. || $DisableMemSet,
+	If[(OptionValue[FCMemoryAvailable] - MemoryInUse[]/1000000.) <1. || $DisableMemSet,
 		y,
 		Set[x, y]
-	];
+	]/; MatchQ[OptionValue[FCMemoryAvailable],_Integer?Positive];
+
+MemSet[_,_, OptionsPattern[]]:=
+	(
+	Message[FeynCalc::failmsg,"The value of FCMemoryAvailable is not a positive integer."];
+	Abort[]
+	)/; !MatchQ[OptionValue[FCMemoryAvailable],_Integer?Positive];
 
 MLimit[x_, l_List, OptionsPattern[]] :=
 	Fold[OptionValue[Limit][#1, Flatten[{##2}][[1]]]&, x, l];
 
 
-NTerms[x_Plus] :=
+NTerms[x_Plus, OptionsPattern[]] :=
 	Length[x];
 
-NTerms[x_] :=
-	Block[{ntermslex = Expand[x]},
+NTerms[x_, OptionsPattern[]] :=
+	Block[{ntermslex},
+
+		If[	OptionValue[Expand],
+			ntermslex = Expand[x],
+			ntermslex = x
+		];
+
 		If[ Head[ntermslex]===Plus,
 			ntermslex = Length[ntermslex],
 			If[x===0,

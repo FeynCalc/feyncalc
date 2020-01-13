@@ -116,11 +116,11 @@ Cell["EpsContract", "ObjectName",
 
 Cell[TextData[{
  Cell["   ", "ModInfo"],
- Cell[BoxData["EpsContract"], "InlineFormula"],
- " \[LineSeparator]",
- "is an option of Contract specifying whether Levi-Civita tensors Eps[...] \
-will be contracted, i.e., products of two  Eps are replaced via the \
-determinant formula."
+ Cell[BoxData[
+  RowBox[{"EpsContract", "[", "exp", "]"}]], "InlineFormula"],
+ " \[LineSeparator]handles contractions of two Levi-Civita tensors. It is \
+also an option of Contract and other functions that specifies whether such \
+contractions should be done or not."
 }], "Usage",
  CellID->982511436],
 
@@ -171,9 +171,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Contract",
   ButtonNote->"Contract"],
  "."
-}], "Text",
- CellTags->"EpsContract",
- CellID->1380465394]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -203,24 +201,15 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"a1", " ", "=", 
-  RowBox[{"Eps", "[", 
-   RowBox[{
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Mu]", ",", "D"}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Nu]", ",", "D"}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Rho]", ",", "D"}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Sigma]", ",", "D"}], "]"}]}], "]"}]}]], "Input",
- CellTags->"EpsContract",
- CellLabel->"In[1]:=",
- CellID->1863867389],
+ RowBox[{"LCD", "[", 
+  RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], 
+  "]"}]], "Input",
+ CellLabel->"In[697]:="],
 
 Cell[BoxData[
  FormBox[
-  SuperscriptBox["\[Epsilon]", 
+  SuperscriptBox[
+   OverscriptBox["\[Epsilon]", ""], 
    RowBox[{
     FormBox[
      FormBox["\[Mu]",
@@ -238,9 +227,54 @@ Cell[BoxData[
      FormBox["\[Sigma]",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
+ CellLabel->"Out[697]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"EpsContract", "[", 
+   RowBox[{"%", " ", "%"}], "]"}], "//", "Factor2"}]], "Input",
+ CellLabel->"In[698]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"1", "-", "D"}], ")"}], " ", 
+   RowBox[{"(", 
+    RowBox[{"2", "-", "D"}], ")"}], " ", 
+   RowBox[{"(", 
+    RowBox[{"3", "-", "D"}], ")"}], " ", "D"}], TraditionalForm]], "Output",
+ CellLabel->"Out[698]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Contract", "[", 
+   RowBox[{"%", " ", "%"}], "]"}], "//", "Factor2"}]], "Input",
  CellTags->"EpsContract",
- CellLabel->"Out[1]=",
- CellID->1306724827]
+ CellLabel->"In[699]:=",
+ CellID->1929247061],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"1", "-", "D"}], ")"}], "2"], " ", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"2", "-", "D"}], ")"}], "2"], " ", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"3", "-", "D"}], ")"}], "2"], " ", 
+   SuperscriptBox["D", "2"]}], TraditionalForm]], "Output",
+ CellTags->"EpsContract",
+ CellLabel->"Out[699]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -248,17 +282,21 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Contract", "[", 
   RowBox[{
-   RowBox[{"a1", " ", "a1"}], ",", 
+   RowBox[{
+    RowBox[{"LCD", "[", 
+     RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], "]"}], 
+    "^", "2"}], ",", 
    RowBox[{"EpsContract", "\[Rule]", "False"}]}], "]"}]], "Input",
  CellTags->"EpsContract",
- CellLabel->"In[2]:=",
- CellID->1929247061],
+ CellLabel->"In[700]:=",
+ CellID->903937612],
 
 Cell[BoxData[
  FormBox[
   SuperscriptBox[
    RowBox[{"(", 
-    SuperscriptBox["\[Epsilon]", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", ""], 
      RowBox[{
       FormBox[
        FormBox["\[Mu]",
@@ -277,27 +315,7 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm]}]], ")"}], "2"], TraditionalForm]], "Output",
  CellTags->"EpsContract",
- CellLabel->"Out[2]=",
- CellID->1644037415]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Contract", "[", 
-  RowBox[{
-   RowBox[{"a1", " ", "a1"}], ",", 
-   RowBox[{"EpsContract", "\[Rule]", "True"}]}], "]"}]], "Input",
- CellTags->"EpsContract",
- CellLabel->"In[3]:=",
- CellID->903937612],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"-", "24"}], TraditionalForm]], "Output",
- CellTags->"EpsContract",
- CellLabel->"Out[3]=",
- CellID->848962305]
+ CellLabel->"Out[700]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -362,12 +380,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{1548, Automatic}, {Automatic, 89}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

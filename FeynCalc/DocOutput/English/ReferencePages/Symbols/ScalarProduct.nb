@@ -3,69 +3,100 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21462,        787]
-NotebookOptionsPosition[     14505,        568]
-NotebookOutlinePosition[     18927,        691]
-CellTagsIndexPosition[     18810,        685]
+NotebookDataLength[     23956,        855]
+NotebookOptionsPosition[     17058,        645]
+NotebookOutlinePosition[     21321,        759]
+CellTagsIndexPosition[     21204,        753]
 WindowTitle->ScalarProduct
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/ScalarProduct\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/ScalarProduct"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Calc\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Calc"], "\<\"FCClearScalarProducts\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FCClearScalarProducts"], "\<\"ExpandScalarProduct\
+\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ExpandScalarProduct"], "\<\"ScalarProductCancel\"\
+\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ScalarProductCancel"], "\<\"Pair\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Pair"], "\<\"SP\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/SP"], "\<\"SPD\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/SPD"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/ScalarProduct\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/ScalarProduct"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 ScalarProduct.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$131677], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/ScalarProduct", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$226318], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/ScalarProduct", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,34 +104,37 @@ ScalarProduct.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["ScalarProduct", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["ScalarProduct", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"ScalarProduct", "[", 
        RowBox[{"p", ",", " ", "q"}], "]"}]], "InlineFormula"],
-     " \[LineSeparator]",
-     "is the input for scalar product. ScalarProduct[p] is equivalent to \
-ScalarProduct[p, p]. Expansion of sums of momenta in ScalarProduct is done \
-with ExpandScalarProduct. Scalar product may be set, e.g., ScalarProduct[a, \
-b] = ",
-     Cell[BoxData[
-      FormBox[
-       RowBox[{"m", "^", "2"}], TraditionalForm]]],
-     "; but a and b must not contain sums. Note that ScalarProduct[a, b] = ",
-     Cell[BoxData[
-      FormBox[
-       RowBox[{"m", "^", "2"}], TraditionalForm]]],
-     " actually sets also: Pair[Momentum[a, ___], Momentum[b, ___]] = ",
-     Cell[BoxData[
-      FormBox[
-       RowBox[{"m", "^", "2"}], TraditionalForm]]],
-     ". It is encouraged to always set ScalarProduct's ",
+     " \[LineSeparator] is the input for the scalar product of two Lorentz \
+vectors p and q. ScalarProduct[p] is equivalent to ScalarProduct[p, p]. \
+Expansion of sums of momenta in ScalarProduct is done with \
+ExpandScalarProduct. Scalar products may be set, e.g. via ScalarProduct[a, b] \
+= m^2; but a and b may not contain sums. Note that ScalarProduct[a, b] = m^2 \
+actually sets Lorentzian scalar products in different dimensions specified by \
+the value of the SetDimensions option. It is highly recommended to set \
+ScalarProduct's ",
      StyleBox["before",
       FontWeight->"Bold"],
-     " any calculation. This improves the performance of FeynCalc ."
+     " any calculation. This improves the performance of FeynCalc.."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -108,6 +142,59 @@ b] = ",
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}},
  CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1621412968],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "ScalarProduct", "]"}]], "Input",
+ CellLabel->"In[312]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Dimension", "\[Rule]", "4"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "True"}], ",", 
+    RowBox[{"SetDimensions", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"4", ",", "D"}], "}"}]}]}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{414, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[312]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -126,7 +213,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1941076749],
+ CellID->237599024],
 
 Cell[CellGroupData[{
 
@@ -136,7 +223,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1613247979],
+ CellID->50304825],
 
 Cell[CellGroupData[{
 
@@ -162,12 +249,11 @@ Cell[BoxData[
      FormBox["q",
       TraditionalForm], "_"],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{35, 17},
+ ImageSize->{43, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ScalarProduct",
- CellLabel->"Out[1]=",
- CellID->785575855]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -196,22 +282,23 @@ Cell[BoxData[
      FormBox["\<\"(\"\>",
       TraditionalForm], 
      FormBox[
-      RowBox[{
-       OverscriptBox[
-        FormBox["p",
-         TraditionalForm], "_"], "+", 
-       OverscriptBox[
-        FormBox["q",
-         TraditionalForm], "_"]}],
+      FormBox[
+       RowBox[{
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"], "+", 
+        OverscriptBox[
+         FormBox["q",
+          TraditionalForm], "_"]}],
+       TraditionalForm],
       TraditionalForm], 
      FormBox["\<\")\"\>",
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{101, 18},
+ ImageSize->{114, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ScalarProduct",
- CellLabel->"Out[2]=",
- CellID->1751795401]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -231,12 +318,11 @@ Cell[BoxData[
      FormBox["p",
       TraditionalForm], "_"],
     TraditionalForm], "2"], TraditionalForm]], "Output",
- ImageSize->{23, 20},
+ ImageSize->{26, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ScalarProduct",
- CellLabel->"Out[3]=",
- CellID->170285827]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -255,12 +341,11 @@ Cell[BoxData[
      FormBox["q",
       TraditionalForm], "_"],
     TraditionalForm], "2"], TraditionalForm]], "Output",
- ImageSize->{22, 20},
+ ImageSize->{26, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ScalarProduct",
- CellLabel->"Out[4]=",
- CellID->794666024]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -282,8 +367,7 @@ Cell[BoxData[
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ScalarProduct",
- CellLabel->"Out[5]//StandardForm=",
- CellID->2085175923]
+ CellLabel->"Out[5]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -309,8 +393,7 @@ Cell[BoxData[
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ScalarProduct",
- CellLabel->"Out[6]//StandardForm=",
- CellID->1965353289]
+ CellLabel->"Out[6]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -329,12 +412,11 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   FractionBox["s", "2"], TraditionalForm]], "Output",
- ImageSize->{17, 39},
+ ImageSize->{17, 31},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ScalarProduct",
- CellLabel->"Out[7]=",
- CellID->622238783]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -405,12 +487,11 @@ Cell[BoxData[
        TraditionalForm]],
      TraditionalForm]}], "+", 
    FractionBox["s", "2"]}], TraditionalForm]], "Output",
- ImageSize->{180, 39},
+ ImageSize->{208, 31},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ScalarProduct",
- CellLabel->"Out[8]=",
- CellID->1856511612]
+ CellLabel->"Out[8]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -481,12 +562,11 @@ Cell[BoxData[
        TraditionalForm]],
      TraditionalForm]}], "+", 
    FractionBox["s", "2"]}], TraditionalForm]], "Output",
- ImageSize->{180, 39},
+ ImageSize->{208, 31},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ScalarProduct",
- CellLabel->"Out[9]=",
- CellID->1175433176]
+ CellLabel->"Out[9]="]
 }, Open  ]],
 
 Cell[BoxData[
@@ -516,7 +596,6 @@ Cell[TextData[{
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  StyleBox[ButtonBox["Calc",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/Calc",
@@ -559,9 +638,7 @@ Cell[TextData[{
   ButtonNote->"SPD"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"ScalarProduct",
- CellID->912859437]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -569,7 +646,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"ScalarProduct",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -578,27 +655,29 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 24, 22.280347}", 
+   "built" -> "{2020, 1, 5, 19, 1, 27.743003}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
-    "ScalarProduct[p, q] is the input for scalar product. ScalarProduct[p] is \
-equivalent to ScalarProduct[p, p]. Expansion of sums of momenta in \
-ScalarProduct is done with ExpandScalarProduct. Scalar product may be set, \
-e.g., ScalarProduct[a, b] = m^2; but a and b must not contain sums. Note that \
-ScalarProduct[a, b] = m^2 actually sets also: Pair[Momentum[a, ___], \
-Momentum[b, ___]] = m^2. It is encouraged to always set ScalarProduct's \
-before any calculation. This improves the performance of FeynCalc .", 
-    "synonyms" -> {}, "title" -> "ScalarProduct", "titlemodifier" -> "", 
-    "windowtitle" -> "ScalarProduct", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/ScalarProduct"}, "SearchTextTranslated" -> ""},
+    "ScalarProduct[p, q] is the input for the scalar product of two Lorentz \
+vectors p and q. ScalarProduct[p] is equivalent to ScalarProduct[p, p]. \
+Expansion of sums of momenta in ScalarProduct is done with \
+ExpandScalarProduct. Scalar products may be set, e.g. via ScalarProduct[a, b] \
+= m^2; but a and b may not contain sums. Note that ScalarProduct[a, b] = m^2 \
+actually sets Lorentzian scalar products in different dimensions specified by \
+the value of the SetDimensions option. It is highly recommended to set \
+ScalarProduct's before any calculation. This improves the performance of \
+FeynCalc..", "synonyms" -> {}, "tabletags" -> {}, "title" -> "ScalarProduct", 
+    "titlemodifier" -> "", "windowtitle" -> "ScalarProduct", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/ScalarProduct"}, "SearchTextTranslated" -> 
+  ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -606,8 +685,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -616,179 +696,167 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4136, 113, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[6890, 200, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1941076749]},
+   CellID->237599024]},
  "ScalarProduct"->{
-  Cell[4770, 142, 160, 5, 27, "Input",
+  Cell[7521, 229, 160, 5, 27, "Input",
    CellTags->"ScalarProduct",
    CellID->888961720],
-  Cell[4933, 149, 484, 20, 38, "Output",
-   CellTags->"ScalarProduct",
-   CellID->785575855],
-  Cell[5454, 174, 204, 7, 27, "Input",
+  Cell[7684, 236, 464, 19, 37, "Output",
+   CellTags->"ScalarProduct"],
+  Cell[8185, 260, 204, 7, 27, "Input",
    CellTags->"ScalarProduct",
    CellID->2091143136],
-  Cell[5661, 183, 758, 30, 39, "Output",
-   CellTags->"ScalarProduct",
-   CellID->1751795401],
-  Cell[6456, 218, 160, 5, 27, "Input",
+  Cell[8392, 269, 784, 31, 37, "Output",
+   CellTags->"ScalarProduct"],
+  Cell[9213, 305, 160, 5, 27, "Input",
    CellTags->"ScalarProduct",
    CellID->780031215],
-  Cell[6619, 225, 335, 13, 41, "Output",
-   CellTags->"ScalarProduct",
-   CellID->170285827],
-  Cell[6991, 243, 136, 4, 27, "Input",
+  Cell[9376, 312, 315, 12, 39, "Output",
+   CellTags->"ScalarProduct"],
+  Cell[9728, 329, 136, 4, 27, "Input",
    CellTags->"ScalarProduct",
    CellID->10314838],
-  Cell[7130, 249, 335, 13, 41, "Output",
-   CellTags->"ScalarProduct",
-   CellID->794666024],
-  Cell[7502, 267, 196, 6, 27, "Input",
+  Cell[9867, 335, 315, 12, 39, "Output",
+   CellTags->"ScalarProduct"],
+  Cell[10219, 352, 196, 6, 27, "Input",
    CellTags->"ScalarProduct",
    CellID->158991943],
-  Cell[7701, 275, 327, 10, 49, "Output",
-   CellTags->"ScalarProduct",
-   CellID->2085175923],
-  Cell[8065, 290, 249, 8, 27, "Input",
+  Cell[10418, 360, 306, 9, 51, "Output",
+   CellTags->"ScalarProduct"],
+  Cell[10761, 374, 249, 8, 27, "Input",
    CellTags->"ScalarProduct",
    CellID->1173751525],
-  Cell[8317, 300, 377, 12, 49, "Output",
-   CellTags->"ScalarProduct",
-   CellID->1965353289],
-  Cell[8731, 317, 266, 9, 27, "Input",
+  Cell[11013, 384, 356, 11, 51, "Output",
+   CellTags->"ScalarProduct"],
+  Cell[11406, 400, 266, 9, 27, "Input",
    CellTags->"ScalarProduct",
    CellID->1579106051],
-  Cell[9000, 328, 235, 8, 60, "Output",
-   CellTags->"ScalarProduct",
-   CellID->622238783],
-  Cell[9272, 341, 312, 10, 27, "Input",
+  Cell[11675, 411, 215, 7, 52, "Output",
+   CellTags->"ScalarProduct"],
+  Cell[11927, 423, 312, 10, 27, "Input",
    CellTags->"ScalarProduct",
    CellID->373851414],
-  Cell[9587, 353, 1389, 59, 60, "Output",
-   CellTags->"ScalarProduct",
-   CellID->1856511612],
-  Cell[11013, 417, 296, 10, 27, "Input",
+  Cell[12242, 435, 1368, 58, 52, "Output",
+   CellTags->"ScalarProduct"],
+  Cell[13647, 498, 296, 10, 27, "Input",
    CellTags->"ScalarProduct",
    CellID->54231534],
-  Cell[11312, 429, 1389, 59, 60, "Output",
+  Cell[13946, 510, 1368, 58, 52, "Output",
+   CellTags->"ScalarProduct"],
+  Cell[15329, 571, 142, 4, 27, "Input",
    CellTags->"ScalarProduct",
-   CellID->1175433176],
-  Cell[12716, 491, 142, 4, 27, "Input",
-   CellTags->"ScalarProduct",
-   CellID->1715327028],
-  Cell[13214, 517, 1249, 46, 51, "Text",
-   CellTags->"ScalarProduct",
-   CellID->912859437]}
+   CellID->1715327028]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 16772, 617},
- {"ScalarProduct", 16913, 621}
+ {"PrimaryExamplesSection", 19457, 697},
+ {"ScalarProduct", 19597, 701}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[585, 21, 2266, 52, 51, "AnchorBarGrid",
+Cell[585, 21, 3583, 83, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2854, 75, 56, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2913, 78, 1198, 31, 146, "Usage",
+Cell[4171, 106, 290, 11, 45, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4486, 121, 1010, 22, 171, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4136, 113, 388, 15, 31, "PrimaryExamplesSection",
+Cell[5521, 147, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1621412968],
+Cell[6263, 173, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[CellGroupData[{
+Cell[6319, 177, 97, 2, 70, "Input"],
+Cell[6419, 181, 410, 12, 37, "Output"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6890, 200, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1941076749],
+ CellID->237599024],
 Cell[CellGroupData[{
-Cell[4549, 132, 196, 6, 25, "ExampleSection",
- CellID->1613247979],
+Cell[7302, 219, 194, 6, 26, "ExampleSection",
+ CellID->50304825],
 Cell[CellGroupData[{
-Cell[4770, 142, 160, 5, 27, "Input",
+Cell[7521, 229, 160, 5, 27, "Input",
  CellTags->"ScalarProduct",
  CellID->888961720],
-Cell[4933, 149, 484, 20, 38, "Output",
- CellTags->"ScalarProduct",
- CellID->785575855]
+Cell[7684, 236, 464, 19, 37, "Output",
+ CellTags->"ScalarProduct"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5454, 174, 204, 7, 27, "Input",
+Cell[8185, 260, 204, 7, 27, "Input",
  CellTags->"ScalarProduct",
  CellID->2091143136],
-Cell[5661, 183, 758, 30, 39, "Output",
- CellTags->"ScalarProduct",
- CellID->1751795401]
+Cell[8392, 269, 784, 31, 37, "Output",
+ CellTags->"ScalarProduct"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6456, 218, 160, 5, 27, "Input",
+Cell[9213, 305, 160, 5, 27, "Input",
  CellTags->"ScalarProduct",
  CellID->780031215],
-Cell[6619, 225, 335, 13, 41, "Output",
- CellTags->"ScalarProduct",
- CellID->170285827]
+Cell[9376, 312, 315, 12, 39, "Output",
+ CellTags->"ScalarProduct"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6991, 243, 136, 4, 27, "Input",
+Cell[9728, 329, 136, 4, 27, "Input",
  CellTags->"ScalarProduct",
  CellID->10314838],
-Cell[7130, 249, 335, 13, 41, "Output",
- CellTags->"ScalarProduct",
- CellID->794666024]
+Cell[9867, 335, 315, 12, 39, "Output",
+ CellTags->"ScalarProduct"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7502, 267, 196, 6, 27, "Input",
+Cell[10219, 352, 196, 6, 27, "Input",
  CellTags->"ScalarProduct",
  CellID->158991943],
-Cell[7701, 275, 327, 10, 49, "Output",
- CellTags->"ScalarProduct",
- CellID->2085175923]
+Cell[10418, 360, 306, 9, 51, "Output",
+ CellTags->"ScalarProduct"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8065, 290, 249, 8, 27, "Input",
+Cell[10761, 374, 249, 8, 27, "Input",
  CellTags->"ScalarProduct",
  CellID->1173751525],
-Cell[8317, 300, 377, 12, 49, "Output",
- CellTags->"ScalarProduct",
- CellID->1965353289]
+Cell[11013, 384, 356, 11, 51, "Output",
+ CellTags->"ScalarProduct"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8731, 317, 266, 9, 27, "Input",
+Cell[11406, 400, 266, 9, 27, "Input",
  CellTags->"ScalarProduct",
  CellID->1579106051],
-Cell[9000, 328, 235, 8, 60, "Output",
- CellTags->"ScalarProduct",
- CellID->622238783]
+Cell[11675, 411, 215, 7, 52, "Output",
+ CellTags->"ScalarProduct"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9272, 341, 312, 10, 27, "Input",
+Cell[11927, 423, 312, 10, 27, "Input",
  CellTags->"ScalarProduct",
  CellID->373851414],
-Cell[9587, 353, 1389, 59, 60, "Output",
- CellTags->"ScalarProduct",
- CellID->1856511612]
+Cell[12242, 435, 1368, 58, 52, "Output",
+ CellTags->"ScalarProduct"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11013, 417, 296, 10, 27, "Input",
+Cell[13647, 498, 296, 10, 27, "Input",
  CellTags->"ScalarProduct",
  CellID->54231534],
-Cell[11312, 429, 1389, 59, 60, "Output",
- CellTags->"ScalarProduct",
- CellID->1175433176]
+Cell[13946, 510, 1368, 58, 52, "Output",
+ CellTags->"ScalarProduct"]
 }, Open  ]],
-Cell[12716, 491, 142, 4, 27, "Input",
+Cell[15329, 571, 142, 4, 27, "Input",
  CellTags->"ScalarProduct",
  CellID->1715327028]
 }, Open  ]],
-Cell[12873, 498, 31, 0, 29, "SectionFooterSpacer"]
+Cell[15486, 578, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12941, 503, 270, 12, 31, "SeeAlsoSection",
+Cell[15554, 583, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[13214, 517, 1249, 46, 51, "Text",
- CellTags->"ScalarProduct",
- CellID->912859437]
+Cell[15827, 597, 1189, 43, 56, "SeeAlso"]
 }, Open  ]],
-Cell[14478, 566, 23, 0, 42, "FooterCell"]
+Cell[17031, 643, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

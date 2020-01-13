@@ -119,12 +119,21 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"LCD", "[", 
    RowBox[{"m", ",", "n", ",", "r", ",", "s"}], "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "evaluates to D-dimensional LeviCivita[m,n,r,s] by virtue of \
-FeynCalcInternal. LCD[m,...][p, ...] evaluates to D-dimensional \
-LeviCivita[m,...][p,...] applying FeynCalcInternal.\n\nYou need to do \
-SetOptions[Eps, Dimension\[Rule]D] before LCD can be used as D-dimensional \
-Levi-Civita input function."
+ " \[LineSeparator]evaluates to D-dimensional ",
+ Cell[BoxData[
+  SuperscriptBox["\[Epsilon]", 
+   RowBox[{"m", " ", "n", " ", "r", " ", "s"}]]], "InlineFormula"],
+ " by virtue of FeynCalcInternal. LCD[m,...][p, ...] evaluates to \
+D-dimensional ",
+ Cell[BoxData[
+  RowBox[{
+   SuperscriptBox["\[Epsilon]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"m", " ", ".."}], " ", "\[Mu]"}], " ", ".."}]], 
+   SubscriptBox["p", 
+    RowBox[{"\[Mu]", " ", ".."}]]}]], "InlineFormula"],
+ " applying FeynCalcInternal."
 }], "Usage",
  CellID->982511436],
 
@@ -165,19 +174,17 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- ButtonBox["LeviCivita",
+ ButtonBox["Eps",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/LeviCivita",
-  ButtonNote->"LeviCivita"],
+  ButtonData:>"paclet:FeynCalc/ref/Eps",
+  ButtonNote->"Eps"],
  ", ",
  ButtonBox["LC",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/LC",
   ButtonNote->"LC"],
  "."
-}], "Text",
- CellTags->"LCD",
- CellID->552899823]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -204,15 +211,6 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell[BoxData[
- RowBox[{
-  RowBox[{"SetOptions", "[", 
-   RowBox[{"Eps", ",", 
-    RowBox[{"Dimension", "\[Rule]", "D"}]}], "]"}], ";"}]], "Input",
- CellTags->"LCD",
- CellLabel->"In[1]:=",
- CellID->246917287],
-
 Cell[CellGroupData[{
 
 Cell[BoxData[
@@ -220,12 +218,13 @@ Cell[BoxData[
   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], 
   "]"}]], "Input",
  CellTags->"LCD",
- CellLabel->"In[2]:=",
+ CellLabel->"In[7]:=",
  CellID->163498575],
 
 Cell[BoxData[
  FormBox[
-  SuperscriptBox["\[Epsilon]", 
+  SuperscriptBox[
+   OverscriptBox["\[Epsilon]", ""], 
    RowBox[{
     FormBox[
      FormBox["\[Mu]",
@@ -244,50 +243,17 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"LCD",
- CellLabel->"Out[2]=",
- CellID->1669873163]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"%", "//", "FCI"}]], "Input",
+ RowBox[{
+  RowBox[{"%", "//", "FCI"}], "//", "StandardForm"}]], "Input",
  CellTags->"LCD",
- CellLabel->"In[3]:=",
+ CellLabel->"In[8]:=",
  CellID->950730684],
-
-Cell[BoxData[
- FormBox[
-  SuperscriptBox["\[Epsilon]", 
-   RowBox[{
-    FormBox[
-     FormBox["\[Mu]",
-      TraditionalForm],
-     TraditionalForm], 
-    FormBox[
-     FormBox["\[Nu]",
-      TraditionalForm],
-     TraditionalForm], 
-    FormBox[
-     FormBox["\[Rho]",
-      TraditionalForm],
-     TraditionalForm], 
-    FormBox[
-     FormBox["\[Sigma]",
-      TraditionalForm],
-     TraditionalForm]}]], TraditionalForm]], "Output",
- CellTags->"LCD",
- CellLabel->"Out[3]=",
- CellID->774559606]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"%", "//", "StandardForm"}]], "Input",
- CellTags->"LCD",
- CellLabel->"In[4]:=",
- CellID->1738716456],
 
 Cell[BoxData[
  RowBox[{"Eps", "[", 
@@ -299,11 +265,9 @@ Cell[BoxData[
    RowBox[{"LorentzIndex", "[", 
     RowBox[{"\[Rho]", ",", "D"}], "]"}], ",", 
    RowBox[{"LorentzIndex", "[", 
-    RowBox[{"\[Sigma]", ",", "D"}], "]"}], ",", 
-   RowBox[{"Dimension", "\[Rule]", "D"}]}], "]"}]], "Output",
+    RowBox[{"\[Sigma]", ",", "D"}], "]"}]}], "]"}]], "Output",
  CellTags->"LCD",
- CellLabel->"Out[4]//StandardForm=",
- CellID->1281931789]
+ CellLabel->"Out[8]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -314,12 +278,13 @@ Cell[BoxData[
    RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], "[", 
   RowBox[{"p", ",", "q"}], "]"}]], "Input",
  CellTags->"LCD",
- CellLabel->"In[5]:=",
+ CellLabel->"In[9]:=",
  CellID->1568724284],
 
 Cell[BoxData[
  FormBox[
-  SuperscriptBox["\[Epsilon]", 
+  SuperscriptBox[
+   OverscriptBox["\[Epsilon]", ""], 
    RowBox[{
     FormBox[
      FormBox["\[Mu]",
@@ -338,8 +303,7 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"LCD",
- CellLabel->"Out[5]=",
- CellID->474988897]
+ CellLabel->"Out[9]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -348,7 +312,7 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"%", "//", "FCI"}], "//", "StandardForm"}]], "Input",
  CellTags->"LCD",
- CellLabel->"In[6]:=",
+ CellLabel->"In[10]:=",
  CellID->531209658],
 
 Cell[BoxData[
@@ -361,11 +325,9 @@ Cell[BoxData[
    RowBox[{"Momentum", "[", 
     RowBox[{"p", ",", "D"}], "]"}], ",", 
    RowBox[{"Momentum", "[", 
-    RowBox[{"q", ",", "D"}], "]"}], ",", 
-   RowBox[{"Dimension", "\[Rule]", "D"}]}], "]"}]], "Output",
+    RowBox[{"q", ",", "D"}], "]"}]}], "]"}]], "Output",
  CellTags->"LCD",
- CellLabel->"Out[6]//StandardForm=",
- CellID->1647742492]
+ CellLabel->"Out[10]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -383,7 +345,7 @@ Cell[BoxData[
       RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]"}], "]"}], "[", "q", 
      "]"}]}], "]"}], "]"}]], "Input",
  CellTags->"LCD",
- CellLabel->"In[7]:=",
+ CellLabel->"In[11]:=",
  CellID->173575058],
 
 Cell[BoxData[
@@ -408,27 +370,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"LCD",
- CellLabel->"Out[7]=",
- CellID->932361259]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"SetOptions", "[", 
-  RowBox[{"Eps", ",", 
-   RowBox[{"Dimension", "\[Rule]", "4"}]}], "]"}]], "Input",
- CellTags->"LCD",
- CellLabel->"In[8]:=",
- CellID->1229900885],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{"Dimension", "\[Rule]", "4"}], "}"}], TraditionalForm]], "Output",
- CellTags->"LCD",
- CellLabel->"Out[8]=",
- CellID->1904977628]
+ CellLabel->"Out[11]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -493,12 +435,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{729, Automatic}, {Automatic, 111}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

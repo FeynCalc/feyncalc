@@ -3,69 +3,93 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21475,        756]
-NotebookOptionsPosition[     13341,        504]
-NotebookOutlinePosition[     18202,        639]
-CellTagsIndexPosition[     18077,        633]
+NotebookDataLength[     21649,        747]
+NotebookOptionsPosition[     14155,        524]
+NotebookOutlinePosition[     18687,        645]
+CellTagsIndexPosition[     18562,        639]
 WindowTitle->SimplifyDeltaFunction
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/SimplifyDeltaFunction\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/SimplifyDeltaFunction"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"DeltaFunction\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DeltaFunction"], "\<\"DeltaFunctionPrime\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/DeltaFunctionPrime"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/SimplifyDeltaFunction\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/SimplifyDeltaFunction"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 SimplifyDeltaFunction.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$136447], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/SimplifyDeltaFunction", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$233775], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/SimplifyDeltaFunction", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +97,18 @@ SimplifyDeltaFunction.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["SimplifyDeltaFunction", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["SimplifyDeltaFunction", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -110,7 +144,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1647774514],
+ CellID->195701692],
 
 Cell[CellGroupData[{
 
@@ -120,7 +154,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->846531538],
+ CellID->1321573759],
 
 Cell[CellGroupData[{
 
@@ -141,12 +175,11 @@ Cell[BoxData[
     FormBox[
      RowBox[{"1", "-", "x"}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{92, 15},
+ ImageSize->{97, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SimplifyDeltaFunction",
- CellLabel->"Out[1]=",
- CellID->117200739]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -170,12 +203,11 @@ Cell[BoxData[
      UnderscriptBox["lim", 
       RowBox[{"x", "\[Rule]", "1"}]], "\[ThinSpace]", 
      RowBox[{"g", "(", "x", ")"}]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{135, 33},
+ ImageSize->{141, 32},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SimplifyDeltaFunction",
- CellLabel->"Out[2]=",
- CellID->226766481]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -198,12 +230,11 @@ Cell[BoxData[
     FormBox[
      RowBox[{"1", "-", "x"}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{98, 15},
+ ImageSize->{104, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SimplifyDeltaFunction",
- CellLabel->"Out[3]=",
- CellID->1487082282]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -241,12 +272,11 @@ Cell[BoxData[
       UnderscriptBox["lim", 
        RowBox[{"x", "\[Rule]", "1"}]], "\[ThinSpace]", 
       RowBox[{"g", "(", "x", ")"}]}], ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{293, 33},
+ ImageSize->{308, 32},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SimplifyDeltaFunction",
- CellLabel->"Out[4]=",
- CellID->1033550143]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -269,12 +299,11 @@ Cell[BoxData[
     FormBox[
      RowBox[{"1", "-", "x"}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{121, 15},
+ ImageSize->{126, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SimplifyDeltaFunction",
- CellLabel->"Out[5]=",
- CellID->2058651279]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -292,12 +321,11 @@ Cell[BoxData[
    FormBox[
     RowBox[{"1", "-", "x"}],
     TraditionalForm], ")"}], TraditionalForm]], "Output",
- ImageSize->{57, 15},
+ ImageSize->{59, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SimplifyDeltaFunction",
- CellLabel->"Out[6]=",
- CellID->214547923]
+ CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -323,12 +351,11 @@ Cell[BoxData[
     FormBox[
      RowBox[{"1", "-", "x"}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{130, 15},
+ ImageSize->{136, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SimplifyDeltaFunction",
- CellLabel->"Out[7]=",
- CellID->102107043]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -347,12 +374,11 @@ Cell[BoxData[
     FormBox[
      RowBox[{"1", "-", "x"}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{67, 15},
+ ImageSize->{70, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SimplifyDeltaFunction",
- CellLabel->"Out[8]=",
- CellID->1247820634]
+ CellLabel->"Out[8]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -380,12 +406,11 @@ Cell[BoxData[
     FormBox[
      RowBox[{"1", "-", "x"}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{176, 15},
+ ImageSize->{182, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SimplifyDeltaFunction",
- CellLabel->"Out[9]=",
- CellID->1462784843]
+ CellLabel->"Out[9]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -399,12 +424,11 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
- ImageSize->{11, 15},
+ ImageSize->{13, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SimplifyDeltaFunction",
- CellLabel->"Out[10]=",
- CellID->1037602810]
+ CellLabel->"Out[10]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -430,12 +454,11 @@ Cell[BoxData[
     FormBox[
      RowBox[{"1", "-", "x"}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{130, 15},
+ ImageSize->{136, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SimplifyDeltaFunction",
- CellLabel->"Out[11]=",
- CellID->1786873704]
+ CellLabel->"Out[11]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -454,12 +477,11 @@ Cell[BoxData[
     FormBox[
      RowBox[{"1", "-", "x"}],
      TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{67, 15},
+ ImageSize->{70, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"SimplifyDeltaFunction",
- CellLabel->"Out[12]=",
- CellID->1434858408]
+ CellLabel->"Out[12]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -495,9 +517,7 @@ Cell[TextData[{
   ButtonNote->"DeltaFunctionPrime"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"SimplifyDeltaFunction",
- CellID->2042613065]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -505,7 +525,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 WindowTitle->"SimplifyDeltaFunction",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -514,10 +534,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 24, 43.543399}", 
+   "built" -> "{2020, 1, 5, 19, 1, 46.629198}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -526,12 +546,12 @@ TaggingRules->{
     "SimplifyDeltaFunction[exp, x] simplifies f[x]*DeltaFunction[1-x] \
 toLimit[f[x],x->1] DeltaFunction[1-x] and applies a list of transformation \
 rules for DeltaFunctionPrime[1-x]*x^(OPEm-1)*f[x] where x^(OPEm-1) is \
-suppressed in exp.", "synonyms" -> {}, "title" -> "SimplifyDeltaFunction", 
-    "titlemodifier" -> "", "windowtitle" -> "SimplifyDeltaFunction", "type" -> 
-    "Symbol", "uri" -> "FeynCalc/ref/SimplifyDeltaFunction"}, 
-  "SearchTextTranslated" -> ""},
+suppressed in exp.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "SimplifyDeltaFunction", "titlemodifier" -> "", "windowtitle" -> 
+    "SimplifyDeltaFunction", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/SimplifyDeltaFunction"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -539,8 +559,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -549,215 +570,185 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3584, 97, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4699, 131, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1647774514]},
+   CellID->195701692]},
  "SimplifyDeltaFunction"->{
-  Cell[4217, 126, 220, 7, 27, "Input",
+  Cell[5332, 160, 220, 7, 27, "Input",
    CellTags->"SimplifyDeltaFunction",
    CellID->341273603],
-  Cell[4440, 135, 372, 13, 36, "Output",
-   CellTags->"SimplifyDeltaFunction",
-   CellID->117200739],
-  Cell[4849, 153, 181, 5, 27, "Input",
+  Cell[5555, 169, 352, 12, 37, "Output",
+   CellTags->"SimplifyDeltaFunction"],
+  Cell[5944, 186, 181, 5, 27, "Input",
    CellTags->"SimplifyDeltaFunction",
    CellID->197548510],
-  Cell[5033, 160, 497, 17, 54, "Output",
-   CellTags->"SimplifyDeltaFunction",
-   CellID->226766481],
-  Cell[5567, 182, 221, 7, 27, "Input",
+  Cell[6128, 193, 477, 16, 53, "Output",
+   CellTags->"SimplifyDeltaFunction"],
+  Cell[6642, 214, 221, 7, 27, "Input",
    CellTags->"SimplifyDeltaFunction",
    CellID->1890191905],
-  Cell[5791, 191, 406, 14, 36, "Output",
-   CellTags->"SimplifyDeltaFunction",
-   CellID->1487082282],
-  Cell[6234, 210, 182, 5, 27, "Input",
+  Cell[6866, 223, 386, 13, 37, "Output",
+   CellTags->"SimplifyDeltaFunction"],
+  Cell[7289, 241, 182, 5, 27, "Input",
    CellTags->"SimplifyDeltaFunction",
    CellID->1317091871],
-  Cell[6419, 217, 918, 31, 54, "Output",
-   CellTags->"SimplifyDeltaFunction",
-   CellID->1033550143],
-  Cell[7374, 253, 237, 7, 27, "Input",
+  Cell[7474, 248, 897, 30, 53, "Output",
+   CellTags->"SimplifyDeltaFunction"],
+  Cell[8408, 283, 237, 7, 27, "Input",
    CellTags->"SimplifyDeltaFunction",
    CellID->160707751],
-  Cell[7614, 262, 419, 14, 36, "Output",
-   CellTags->"SimplifyDeltaFunction",
-   CellID->2058651279],
-  Cell[8070, 281, 181, 5, 27, "Input",
+  Cell[8648, 292, 398, 13, 37, "Output",
+   CellTags->"SimplifyDeltaFunction"],
+  Cell[9083, 310, 181, 5, 27, "Input",
    CellTags->"SimplifyDeltaFunction",
    CellID->954894660],
-  Cell[8254, 288, 316, 11, 36, "Output",
-   CellTags->"SimplifyDeltaFunction",
-   CellID->214547923],
-  Cell[8607, 304, 280, 9, 27, "Input",
+  Cell[9267, 317, 296, 10, 37, "Output",
+   CellTags->"SimplifyDeltaFunction"],
+  Cell[9600, 332, 280, 9, 27, "Input",
    CellTags->"SimplifyDeltaFunction",
    CellID->962444267],
-  Cell[8890, 315, 435, 15, 36, "Output",
-   CellTags->"SimplifyDeltaFunction",
-   CellID->102107043],
-  Cell[9362, 335, 181, 5, 27, "Input",
+  Cell[9883, 343, 415, 14, 37, "Output",
+   CellTags->"SimplifyDeltaFunction"],
+  Cell[10335, 362, 181, 5, 27, "Input",
    CellTags->"SimplifyDeltaFunction",
    CellID->523290366],
-  Cell[9546, 342, 339, 12, 36, "Output",
-   CellTags->"SimplifyDeltaFunction",
-   CellID->1247820634],
-  Cell[9922, 359, 316, 10, 27, "Input",
+  Cell[10519, 369, 318, 11, 37, "Output",
+   CellTags->"SimplifyDeltaFunction"],
+  Cell[10874, 385, 316, 10, 27, "Input",
    CellTags->"SimplifyDeltaFunction",
    CellID->1418492585],
-  Cell[10241, 371, 477, 16, 36, "Output",
-   CellTags->"SimplifyDeltaFunction",
-   CellID->1462784843],
-  Cell[10755, 392, 182, 5, 27, "Input",
+  Cell[11193, 397, 456, 15, 37, "Output",
+   CellTags->"SimplifyDeltaFunction"],
+  Cell[11686, 417, 182, 5, 27, "Input",
    CellTags->"SimplifyDeltaFunction",
    CellID->591675657],
-  Cell[10940, 399, 224, 7, 36, "Output",
-   CellTags->"SimplifyDeltaFunction",
-   CellID->1037602810],
-  Cell[11201, 411, 282, 9, 27, "Input",
+  Cell[11871, 424, 203, 6, 35, "Output",
+   CellTags->"SimplifyDeltaFunction"],
+  Cell[12111, 435, 282, 9, 27, "Input",
    CellTags->"SimplifyDeltaFunction",
    CellID->1446102124],
-  Cell[11486, 422, 437, 15, 36, "Output",
-   CellTags->"SimplifyDeltaFunction",
-   CellID->1786873704],
-  Cell[11960, 442, 183, 5, 27, "Input",
+  Cell[12396, 446, 416, 14, 37, "Output",
+   CellTags->"SimplifyDeltaFunction"],
+  Cell[12849, 465, 183, 5, 27, "Input",
    CellTags->"SimplifyDeltaFunction",
    CellID->1325762264],
-  Cell[12146, 449, 340, 12, 36, "Output",
-   CellTags->"SimplifyDeltaFunction",
-   CellID->1434858408],
-  Cell[12854, 484, 445, 15, 31, "Text",
-   CellTags->"SimplifyDeltaFunction",
-   CellID->2042613065]}
+  Cell[13035, 472, 319, 11, 37, "Output",
+   CellTags->"SimplifyDeltaFunction"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 15359, 550},
- {"SimplifyDeltaFunction", 15507, 554}
+ {"PrimaryExamplesSection", 16215, 571},
+ {"SimplifyDeltaFunction", 16363, 575}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[593, 21, 2298, 52, 51, "AnchorBarGrid",
+Cell[593, 21, 3179, 76, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2894, 75, 64, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2961, 78, 598, 15, 99, "Usage",
+Cell[3775, 99, 298, 11, 45, "ObjectNameGrid"],
+Cell[4076, 112, 598, 15, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3584, 97, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4699, 131, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1647774514],
+ CellID->195701692],
 Cell[CellGroupData[{
-Cell[3997, 116, 195, 6, 25, "ExampleSection",
- CellID->846531538],
+Cell[5111, 150, 196, 6, 26, "ExampleSection",
+ CellID->1321573759],
 Cell[CellGroupData[{
-Cell[4217, 126, 220, 7, 27, "Input",
+Cell[5332, 160, 220, 7, 27, "Input",
  CellTags->"SimplifyDeltaFunction",
  CellID->341273603],
-Cell[4440, 135, 372, 13, 36, "Output",
- CellTags->"SimplifyDeltaFunction",
- CellID->117200739]
+Cell[5555, 169, 352, 12, 37, "Output",
+ CellTags->"SimplifyDeltaFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4849, 153, 181, 5, 27, "Input",
+Cell[5944, 186, 181, 5, 27, "Input",
  CellTags->"SimplifyDeltaFunction",
  CellID->197548510],
-Cell[5033, 160, 497, 17, 54, "Output",
- CellTags->"SimplifyDeltaFunction",
- CellID->226766481]
+Cell[6128, 193, 477, 16, 53, "Output",
+ CellTags->"SimplifyDeltaFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5567, 182, 221, 7, 27, "Input",
+Cell[6642, 214, 221, 7, 27, "Input",
  CellTags->"SimplifyDeltaFunction",
  CellID->1890191905],
-Cell[5791, 191, 406, 14, 36, "Output",
- CellTags->"SimplifyDeltaFunction",
- CellID->1487082282]
+Cell[6866, 223, 386, 13, 37, "Output",
+ CellTags->"SimplifyDeltaFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6234, 210, 182, 5, 27, "Input",
+Cell[7289, 241, 182, 5, 27, "Input",
  CellTags->"SimplifyDeltaFunction",
  CellID->1317091871],
-Cell[6419, 217, 918, 31, 54, "Output",
- CellTags->"SimplifyDeltaFunction",
- CellID->1033550143]
+Cell[7474, 248, 897, 30, 53, "Output",
+ CellTags->"SimplifyDeltaFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7374, 253, 237, 7, 27, "Input",
+Cell[8408, 283, 237, 7, 27, "Input",
  CellTags->"SimplifyDeltaFunction",
  CellID->160707751],
-Cell[7614, 262, 419, 14, 36, "Output",
- CellTags->"SimplifyDeltaFunction",
- CellID->2058651279]
+Cell[8648, 292, 398, 13, 37, "Output",
+ CellTags->"SimplifyDeltaFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8070, 281, 181, 5, 27, "Input",
+Cell[9083, 310, 181, 5, 27, "Input",
  CellTags->"SimplifyDeltaFunction",
  CellID->954894660],
-Cell[8254, 288, 316, 11, 36, "Output",
- CellTags->"SimplifyDeltaFunction",
- CellID->214547923]
+Cell[9267, 317, 296, 10, 37, "Output",
+ CellTags->"SimplifyDeltaFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8607, 304, 280, 9, 27, "Input",
+Cell[9600, 332, 280, 9, 27, "Input",
  CellTags->"SimplifyDeltaFunction",
  CellID->962444267],
-Cell[8890, 315, 435, 15, 36, "Output",
- CellTags->"SimplifyDeltaFunction",
- CellID->102107043]
+Cell[9883, 343, 415, 14, 37, "Output",
+ CellTags->"SimplifyDeltaFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9362, 335, 181, 5, 27, "Input",
+Cell[10335, 362, 181, 5, 27, "Input",
  CellTags->"SimplifyDeltaFunction",
  CellID->523290366],
-Cell[9546, 342, 339, 12, 36, "Output",
- CellTags->"SimplifyDeltaFunction",
- CellID->1247820634]
+Cell[10519, 369, 318, 11, 37, "Output",
+ CellTags->"SimplifyDeltaFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9922, 359, 316, 10, 27, "Input",
+Cell[10874, 385, 316, 10, 27, "Input",
  CellTags->"SimplifyDeltaFunction",
  CellID->1418492585],
-Cell[10241, 371, 477, 16, 36, "Output",
- CellTags->"SimplifyDeltaFunction",
- CellID->1462784843]
+Cell[11193, 397, 456, 15, 37, "Output",
+ CellTags->"SimplifyDeltaFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10755, 392, 182, 5, 27, "Input",
+Cell[11686, 417, 182, 5, 27, "Input",
  CellTags->"SimplifyDeltaFunction",
  CellID->591675657],
-Cell[10940, 399, 224, 7, 36, "Output",
- CellTags->"SimplifyDeltaFunction",
- CellID->1037602810]
+Cell[11871, 424, 203, 6, 35, "Output",
+ CellTags->"SimplifyDeltaFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11201, 411, 282, 9, 27, "Input",
+Cell[12111, 435, 282, 9, 27, "Input",
  CellTags->"SimplifyDeltaFunction",
  CellID->1446102124],
-Cell[11486, 422, 437, 15, 36, "Output",
- CellTags->"SimplifyDeltaFunction",
- CellID->1786873704]
+Cell[12396, 446, 416, 14, 37, "Output",
+ CellTags->"SimplifyDeltaFunction"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11960, 442, 183, 5, 27, "Input",
+Cell[12849, 465, 183, 5, 27, "Input",
  CellTags->"SimplifyDeltaFunction",
  CellID->1325762264],
-Cell[12146, 449, 340, 12, 36, "Output",
- CellTags->"SimplifyDeltaFunction",
- CellID->1434858408]
+Cell[13035, 472, 319, 11, 37, "Output",
+ CellTags->"SimplifyDeltaFunction"]
 }, Open  ]]
 }, Open  ]],
-Cell[12513, 465, 31, 0, 29, "SectionFooterSpacer"]
+Cell[13381, 487, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12581, 470, 270, 12, 31, "SeeAlsoSection",
+Cell[13449, 492, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[12854, 484, 445, 15, 31, "Text",
- CellTags->"SimplifyDeltaFunction",
- CellID->2042613065]
+Cell[13722, 506, 391, 13, 56, "SeeAlso"]
 }, Open  ]],
-Cell[13314, 502, 23, 0, 42, "FooterCell"]
+Cell[14128, 522, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

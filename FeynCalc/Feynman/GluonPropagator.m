@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Gluon propagator												*)
@@ -20,11 +20,10 @@ GP::usage =
 
 GluonPropagator::usage =
 "GluonPropagator[p, {mu, a}, {nu, b}] or GluonPropagator[p,  mu, a ,  nu, b ] \
-yields the gluon propagator.
-
+yields the gluon propagator. \n
 GluonPropagator[p, {mu}, {nu}] or GluonPropagator[p, mu, nu] omits the SUNDelta. \
 Using {p,M} instead of p as the first argument gives the Gluon a mass. \
-The gauge and the dimension is determined by the option Gauge and Dimension. \
+The gauge and the dimension are determined by the options Gauge and Dimension. \
 The following settings of Gauge are possible: \
 1 :  the Feynman gauge; \
 alpha : the general covariant gauge; \
@@ -46,11 +45,6 @@ Options[GluonPropagator] = {
 
 GP = GluonPropagator;
 Abbreviation[GluonPropagator] = HoldForm[GP];
-
-{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
-
-GluonPropagator[x___, i_Integer, y___] :=
-	GluonPropagator[x, l[i], c[i], y]/;2<Length[{x,i,y}];
 
 GluonPropagator[a_, b_,c_, d_,e_, opt:OptionsPattern[]] :=
 	GluonPropagator[a, {b,c}, {d,e}, opt]/;FreeQ[{a,b,c,d,e},Rule];

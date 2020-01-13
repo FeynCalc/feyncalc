@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for MomentumExpand           *)
@@ -41,11 +41,62 @@ Tests`Lorentz`fcstMomentumExpand = {
 {"fcstMomentumExpand-ID13","Momentum[p + Momentum[3 q], D]//MomentumExpand",
 	"Momentum[p, D] + 3*Momentum[q, {4, D}]"},
 {"fcstMomentumExpand-ID14","Momentum[p + Momentum[3 q], D - 4]//MomentumExpand",
-	"Momentum[p, -4 + D] + 3*Momentum[q, {4, -4 + D}]"}
+	"Momentum[p, -4 + D] + 3*Momentum[q, {4, -4 + D}]"},
+{"fcstMomentumExpand-ID15","Pair[LorentzIndex[mu, D], Momentum[l - q, D]] // MomentumExpand",
+	"Pair[LorentzIndex[mu, D], Momentum[l, D] - Momentum[q, D]]"}
 };
 
-
-
+Tests`Lorentz`fcstMomentumExpandNR =
+{{"fcstMomentumExpandNR-ID1", "MomentumExpand[TemporalMomentum[p]]",
+"TemporalMomentum[p]"}, {"fcstMomentumExpandNR-ID2",
+"MomentumExpand[TemporalMomentum[p+3q]]",
+"TemporalMomentum[p] + 3*TemporalMomentum[q]"}, {"fcstMomentumExpandNR-ID4",
+"MomentumExpand[TemporalPair[ExplicitLorentzIndex[0],TemporalMomentum[p+3q]]]",
+"TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p] + 3*TemporalMomentum[q]]"}, \
+{"fcstMomentumExpandNR-ID5", "MomentumExpand[CartesianMomentum[p]]",
+"CartesianMomentum[p]"}, {"fcstMomentumExpandNR-ID6",
+"MomentumExpand[CartesianMomentum[p,D-1]]",
+"CartesianMomentum[p, -1 + D]"}, {"fcstMomentumExpandNR-ID7",
+"MomentumExpand[CartesianMomentum[p,D-4]]",
+"CartesianMomentum[p, -4 + D]"}, {"fcstMomentumExpandNR-ID8",
+"MomentumExpand[CartesianMomentum[p+3q]]",
+"CartesianMomentum[p] + 3*CartesianMomentum[q]"}, {"fcstMomentumExpandNR-ID9",
+"MomentumExpand[CartesianMomentum[p+3q,D-1]]",
+"CartesianMomentum[p, -1 + D] + 3*CartesianMomentum[q, -1 + D]"}, \
+{"fcstMomentumExpandNR-ID10", "MomentumExpand[CartesianMomentum[p+3q,D-4]]",
+"CartesianMomentum[p, -4 + D] + 3*CartesianMomentum[q, -4 + D]"}, \
+{"fcstMomentumExpandNR-ID11",
+"MomentumExpand[CartesianMomentum[p+CartesianMomentum[3 q]]]",
+"CartesianMomentum[p] + 3*CartesianMomentum[q]"}, {"fcstMomentumExpandNR-ID12",
+"MomentumExpand[CartesianMomentum[p+CartesianMomentum[3 q,D-1],D-1]]",
+"CartesianMomentum[p, -1 + D] + 3*CartesianMomentum[q, -1 + D]"}, \
+{"fcstMomentumExpandNR-ID13",
+"MomentumExpand[CartesianMomentum[p+CartesianMomentum[3 q,D-4],D-4]]",
+"CartesianMomentum[p, -4 + D] + 3*CartesianMomentum[q, -4 + D]"}, \
+{"fcstMomentumExpandNR-ID14",
+"MomentumExpand[CartesianMomentum[p+CartesianMomentum[3 q],D-1]]",
+"CartesianMomentum[p, -1 + D] + 3*CartesianMomentum[q, {3, -1 + D}]"}, \
+{"fcstMomentumExpandNR-ID15",
+"MomentumExpand[CartesianMomentum[p+CartesianMomentum[3 q],D-4]]",
+"CartesianMomentum[p, -4 + D] + 3*CartesianMomentum[q, {3, -4 + D}]"}, \
+{"fcstMomentumExpandNR-ID16",
+"MomentumExpand[CartesianMomentum[p+CartesianMomentum[3 q,D-1]]]",
+"CartesianMomentum[p] + 3*CartesianMomentum[q, {-1 + D, 3}]"}, \
+{"fcstMomentumExpandNR-ID17",
+"MomentumExpand[CartesianMomentum[p+CartesianMomentum[3 q],D-1]]",
+"CartesianMomentum[p, -1 + D] + 3*CartesianMomentum[q, {3, -1 + D}]"}, \
+{"fcstMomentumExpandNR-ID18",
+"MomentumExpand[CartesianMomentum[p+CartesianMomentum[3 q],D-4]]",
+"CartesianMomentum[p, -4 + D] + 3*CartesianMomentum[q, {3, -4 + D}]"}, \
+{"fcstMomentumExpandNR-ID19",
+"MomentumExpand[CartesianPair[CartesianIndex[i,D-1],CartesianMomentum[l-q,D-1]]]",
+"CartesianPair[CartesianIndex[i, -1 + D], CartesianMomentum[l, -1 + D] - CartesianMomentum[q, -1 + \
+D]]"}, {"fcstMomentumExpandNR-ID20", "MomentumExpand[TemporalMomentum[p]]",
+"TemporalMomentum[p]"}, {"fcstMomentumExpandNR-ID21",
+"MomentumExpand[TemporalMomentum[p+3q]]",
+"TemporalMomentum[p] + 3*TemporalMomentum[q]"}, {"fcstMomentumExpandNR-ID23",
+"MomentumExpand[TemporalPair[ExplicitLorentzIndex[0],TemporalMomentum[p+3q]]]",
+"TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p] + 3*TemporalMomentum[q]]"}};
 
 
 

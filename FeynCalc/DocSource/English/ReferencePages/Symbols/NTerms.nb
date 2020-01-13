@@ -200,8 +200,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox["2", TraditionalForm]], "Output",
  CellTags->"NTerms",
- CellLabel->"Out[1]=",
- CellID->306409458]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -216,8 +215,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox["1", TraditionalForm]], "Output",
  CellTags->"NTerms",
- CellLabel->"Out[2]=",
- CellID->730102974]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -231,8 +229,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox["1", TraditionalForm]], "Output",
  CellTags->"NTerms",
- CellLabel->"Out[3]=",
- CellID->313925848]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -246,8 +243,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
  CellTags->"NTerms",
- CellLabel->"Out[4]=",
- CellID->2111597694]
+ CellLabel->"Out[4]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -312,12 +308,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{738, Automatic}, {Automatic, 132}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

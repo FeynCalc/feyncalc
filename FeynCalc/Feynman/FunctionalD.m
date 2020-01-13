@@ -15,11 +15,9 @@
 (* ------------------------------------------------------------------------ *)
 
 FunctionalD::usage =
-"FunctionalD[expr,
-{QuantumField[name, LorentzIndex[mu], ..., SUNIndex[a]][p], ...}] calculates \
-the functional derivative of expr with respect to the QuantumField list (with \
-incoming momenta p, etc.) and does the fourier transform. \
-\n
+"FunctionalD[exp, {QuantumField[name, LorentzIndex[mu], ..., SUNIndex[a]][p], ...}] \
+calculates the functional derivative of exp with respect to the QuantumField list \
+(with incoming momenta p, etc.) and does the Fourier transform.\n
 FunctionalD[expr, {QuantumField[name, LorentzIndex[mu], ... \
 SUNIndex[a]], ...}] calculates the functional derivative and does \
 partial integration but omits the x-space delta functions.";

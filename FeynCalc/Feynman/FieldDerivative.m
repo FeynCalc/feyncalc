@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Field derivative												*)
@@ -19,9 +19,8 @@ FieldDerivative::usage =
 "FieldDerivative[f[x],x,li1,li2,...] is the derivative of f[x] with \
 respect to space-time variables x and with Lorentz indices li1, li2, ...,  \
 where li1, li2, ... have head LorentzIndex.  \n
-
 FieldDerivative[f[x],x,li1,li2,...] can be given as  \
-FieldDerivative[f[x],x,{l1,l2,...}], where l1 is li1 without the head, ... \
+FieldDerivative[f[x],x,{l1,l2,...}], where l1 is li1 without the head. \n
 NOTICE: FieldDerivative is defined only for objects with head QuantumField[...]. \
 If the space-time derivative of other objects is wanted, the corresponding \
 rule must be specified.";
@@ -94,9 +93,9 @@ FieldDerivative[(h_ [QuantumField[field__], opts___])[x_], x_, lori_LorentzIndex
 (* Recursive definition of multiple derivatives: *)
 FieldDerivative[aa_, x_, loris__LorentzIndex, lori1_LorentzIndex] :=
 	(newfunc[1] = FieldDerivative[aa, x, lori1];
-	Do[newfunc[rep + 1] =
-		FieldDerivative[newfunc[rep], x, ##]& @@
-		Take[{loris}, {-rep}], {rep, 1, Length[{loris}]}];
+	Do[newfunc[r + 1] =
+		FieldDerivative[newfunc[r], x, ##]& @@
+		Take[{loris}, {-r}], {r, 1, Length[{loris}]}];
 	newfunc[Length[{loris}] + 1]);
 
 FieldDerivative /:

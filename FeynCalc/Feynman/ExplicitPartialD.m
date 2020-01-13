@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Partial derivative												*)
@@ -16,8 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 ExplicitPartialD::usage =
-"ExplicitPartialD[exp] inserts in exp the definition for \
-LeftRightPartialD[z] (and LeftRightPartialD2[z]).";
+"ExplicitPartialD[exp] inserts the definitions for \
+LeftRightPartialD[z] and LeftRightPartialD2[z].";
 
 Begin["`Package`"]
 End[]

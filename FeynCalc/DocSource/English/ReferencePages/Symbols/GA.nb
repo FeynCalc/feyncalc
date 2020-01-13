@@ -117,13 +117,13 @@ Cell["GA", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{"GA", "[", "mu", "]"}]], "InlineFormula"],
+  RowBox[{"GA", "[", "\[Mu]", "]"}]], "InlineFormula"],
  " \[LineSeparator]",
  "can be used as input for a 4-dimensional ",
  Cell[BoxData[
   FormBox[
-   SubscriptBox["\[Gamma]", 
-    RowBox[{"\[Mu]", " "}]], TraditionalForm]]],
+   SubscriptBox[
+    SuperscriptBox["\[Gamma]", "\[Mu]"], " "], TraditionalForm]]],
  "and is transformed into DiracGamma[LorentzIndex[",
  Cell[BoxData[
   FormBox["\[Mu]", TraditionalForm]]],
@@ -178,10 +178,10 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- ButtonBox["DiracMatrix",
+ ButtonBox["DiracGamma",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracMatrix",
-  ButtonNote->"DiracMatrix"],
+  ButtonData:>"paclet:FeynCalc/ref/DiracGamma",
+  ButtonNote->"DiracGamma"],
  ", ",
  ButtonBox["GAD",
   BaseStyle->"Link",
@@ -193,9 +193,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/GS",
   ButtonNote->"GS"],
  "."
-}], "Text",
- CellTags->"GA",
- CellID->1423338362]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -227,7 +225,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"GA", "[", "\[Mu]", "]"}]], "Input",
  CellTags->"GA",
- CellLabel->"In[1]:=",
+ CellLabel->"In[136]:=",
  CellID->192317475],
 
 Cell[BoxData[
@@ -239,8 +237,7 @@ Cell[BoxData[
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"GA",
- CellLabel->"Out[1]=",
- CellID->1620727253]
+ CellLabel->"Out[136]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -252,7 +249,7 @@ Cell[BoxData[
   RowBox[{"GA", "[", 
    RowBox[{"\[Nu]", ",", "\[Mu]"}], "]"}]}]], "Input",
  CellTags->"GA",
- CellLabel->"In[2]:=",
+ CellLabel->"In[137]:=",
  CellID->950175955],
 
 Cell[BoxData[
@@ -293,8 +290,7 @@ Cell[BoxData[
        TraditionalForm]],
      TraditionalForm]}]}], TraditionalForm]], "Output",
  CellTags->"GA",
- CellLabel->"Out[2]=",
- CellID->751580324]
+ CellLabel->"Out[137]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -304,15 +300,14 @@ Cell[BoxData[
   RowBox[{"FCI", "[", 
    RowBox[{"GA", "[", "\[Mu]", "]"}], "]"}], "]"}]], "Input",
  CellTags->"GA",
- CellLabel->"In[3]:=",
+ CellLabel->"In[138]:=",
  CellID->872281918],
 
 Cell[BoxData[
  RowBox[{"DiracGamma", "[", 
   RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], "]"}]], "Output",
  CellTags->"GA",
- CellLabel->"Out[3]//StandardForm=",
- CellID->1671355959]
+ CellLabel->"Out[138]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -322,7 +317,7 @@ Cell[BoxData[
   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], 
   "]"}]], "Input",
  CellTags->"GA",
- CellLabel->"In[4]:=",
+ CellLabel->"In[139]:=",
  CellID->1064432869],
 
 Cell[BoxData[
@@ -361,8 +356,7 @@ Cell[BoxData[
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"GA",
- CellLabel->"Out[4]=",
- CellID->973003462]
+ CellLabel->"Out[139]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -373,7 +367,7 @@ Cell[BoxData[
    RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], "]"}], 
   "]"}]], "Input",
  CellTags->"GA",
- CellLabel->"In[5]:=",
+ CellLabel->"In[140]:=",
  CellID->1945449635],
 
 Cell[BoxData[
@@ -383,8 +377,7 @@ Cell[BoxData[
   RowBox[{"GA", "[", "\[Rho]", "]"}], ".", 
   RowBox[{"GA", "[", "\[Sigma]", "]"}]}]], "Output",
  CellTags->"GA",
- CellLabel->"Out[5]//StandardForm=",
- CellID->390738149]
+ CellLabel->"Out[140]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -397,7 +390,7 @@ Cell[BoxData[
     RowBox[{"GS", "[", "p", "]"}], "+", "m"}], ")"}], ".", 
   RowBox[{"GA", "[", "\[Beta]", "]"}]}]], "Input",
  CellTags->"GA",
- CellLabel->"In[6]:=",
+ CellLabel->"In[141]:=",
  CellID->1527316325],
 
 Cell[BoxData[
@@ -431,8 +424,7 @@ Cell[BoxData[
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"GA",
- CellLabel->"Out[6]=",
- CellID->1420363209]
+ CellLabel->"Out[141]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -497,12 +489,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{1130, Automatic}, {Automatic, 161}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

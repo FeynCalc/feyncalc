@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for FCDiracIsolate               *)
@@ -31,13 +31,12 @@ SpinorUBar[p1,m1].GA[5].SpinorVBar[p2,m2]+zz]",
 xx*FCGV[\"DiracChain\"][Spinor[Momentum[p1], m1, 1] . DiracGamma[5] . \
 Spinor[-Momentum[p2], m2, 1]]"},
 {"fcstFCDiracIsolate-ID8",
-"FCDiracIsolate[yy GA[i]+xx \
-SpinorUBar[p1,m1].GA[5].SpinorVBar[p2,m2]+zz+DiracTrace[GA[i,j]],\
-DiracGamma\[Rule]False]",
-"zz + yy*DiracGamma[LorentzIndex[i]] + \
-DiracTrace[DiracGamma[LorentzIndex[i]] . DiracGamma[LorentzIndex[j]]] \
-+ xx*FCGV[\"DiracChain\"][Spinor[Momentum[p1], m1, 1] . DiracGamma[5] \
-. Spinor[-Momentum[p2], m2, 1]]"},
+"FCDiracIsolate[
+yy GA[i] + xx SpinorUBar[p1, m1].GA[5].SpinorVBar[p2, m2] + zz +
+DiracTrace[GA[i, j]], DiracGamma -> False]",
+"zz + yy*DiracGamma[LorentzIndex[i]] +
+FCGV[\"DiracChain\"][DiracTrace[DiracGamma[LorentzIndex[i]] . DiracGamma[LorentzIndex[j]]]] +
+xx*FCGV[\"DiracChain\"][Spinor[Momentum[p1], m1, 1] . DiracGamma[5] . Spinor[-Momentum[p2], m2, 1]]"},
 {"fcstFCDiracIsolate-ID9",
 "FCDiracIsolate[yy GA[i]+xx \
 SpinorUBar[p1,m1].GA[5].SpinorVBar[p2,m2]+zz+DiracTrace[GA[i,j]],\
@@ -97,6 +96,197 @@ LorentzIndex -> True, Head -> dch] // FCE",
 "1/2 I dsHead[GA[i].GA[j]] - 1/2 I dsHead[GA[j].GA[i]]"},
 {"fcstFCDiracIsolate-ID19",
 "FCDiracIsolate[DiracSigma[GA[i], GA[j]], Head -> dsHead]//FCE",
-"dsHead[DiracSigma[GA[i], GA[j]]]"}
+"dsHead[DiracSigma[GA[i], GA[j]]]"},
+{"fcstFCDiracIsolate-ID20",
+"FCDiracIsolate[SI[i].GA[mu, nu, rho].SI[j], Head -> dsHead] // FCE",
+"SI[i].SI[j] dsHead[GA[mu].GA[nu].GA[rho]]"},
+{"fcstFCDiracIsolate-ID21",
+"Spinor[Momentum[p3, D], m, 1].GAD[Lor4].(m + GSD[l + p3]).GAD[Lor1].Spinor[Momentum[p1, D]] // DiracGammaExpand //
+DotSimplify //FCDiracIsolate[#, DiracGammaCombine -> False, Head -> dsHead,FCE->True] &",
+"m dsHead[Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GAD[Lor1].Spinor[Momentum[p1, D], 0, 1]] +
+dsHead[Spinor[Momentum[p3, D], m, 1].GAD[Lor4].(GSD[l] + GSD[p3]).GAD[Lor1].Spinor[Momentum[p1, D], 0, 1]]"},
+{"fcstFCDiracIsolate-ID22",
+"Spinor[Momentum[p3, D], m, 1].GAD[Lor4].(m + GSD[l + p3]).GAD[Lor1].Spinor[Momentum[p1, D]] // DiracGammaExpand //
+DotSimplify // FCDiracIsolate[#, DiracGammaCombine -> False, Head -> dch,
+FCJoinDOTs -> False, FCE -> True] &",
+"m dch[Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GAD[Lor1].Spinor[Momentum[p1, D], 0, 1]] +
+dch[Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[l].GAD[Lor1].Spinor[Momentum[p1, D], 0, 1]] +
+dch[Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[p3].GAD[Lor1].Spinor[Momentum[p1, D], 0, 1]]"},
+{"fcstFCDiracIsolate-ID23",
+"FCDiracIsolate[
+4 Spinor[Momentum[k], m, 1].GA[i].Spinor[Momentum[k], m, 1] Spinor[
+	Momentum[p], m, 1].GA[i].Spinor[Momentum[p], m, 1] +
+2 Spinor[Momentum[k], m, 1].GA[j].Spinor[Momentum[k], m, 1] Spinor[
+	Momentum[p], m, 1].GA[j].Spinor[Momentum[p], m, 1] +
+4 Spinor[Momentum[k], m, 1].GA[k].Spinor[Momentum[k], m, 1] Spinor[
+	Momentum[p], m, 1].GA[k].Spinor[Momentum[p], m, 1] +
+6 Spinor[Momentum[k], m, 1].GA[$MU[$39]].GA[5].Spinor[Momentum[k],
+	m, 1] Spinor[Momentum[p], m, 1].GA[$MU[$39]].GA[5].Spinor[
+	Momentum[p], m, 1], Spinor -> Join, Head -> dch,FCE->True]",
+"4 dch[Spinor[Momentum[k], m, 1].GA[i].Spinor[Momentum[k], m,
+	1] Spinor[Momentum[p], m, 1].GA[i].Spinor[Momentum[p], m, 1]] +
+2 dch[Spinor[Momentum[k], m, 1].GA[j].Spinor[Momentum[k], m,
+	1] Spinor[Momentum[p], m, 1].GA[j].Spinor[Momentum[p], m, 1]] +
+4 dch[Spinor[Momentum[k], m, 1].GA[k].Spinor[Momentum[k], m,
+	1] Spinor[Momentum[p], m, 1].GA[k].Spinor[Momentum[p], m, 1]] +
+6 dch[Spinor[Momentum[k], m, 1].GA[$MU[$39]].GA[5].Spinor[
+	Momentum[k], m, 1] Spinor[Momentum[p], m, 1].GA[$MU[$39]].GA[
+	5].Spinor[Momentum[p], m, 1]]"},
+{"fcstFCDiracIsolate-ID24",
+"FCDiracIsolate[GA[mu].(1 + GA[5]).GA[nu], Head -> dsHead, ToDiracGamma67 -> True]//FCE",
+"2 dsHead[GA[mu].GA[6].GA[nu]]"},
+{"fcstFCDiracIsolate-ID25",
+"FCDiracIsolate[
+PolarizationVector[p, mu] SP[p1,
+	p2] SpinorUBar[p, m].GA[i].SpinorV[p, m] + -Eps[LorentzIndex[nu],
+	LorentzIndex[rho], LorentzIndex[si],
+	Momentum[Polarization[p, I]]] SP[p1,
+	p2] SpinorUBar[p2, m].GA[i].SpinorV[p2, m] + g,
+Polarization -> True, FCE -> True,Head->di]",
+"g + di[Spinor[Momentum[p], m, 1] . GA[i] . Spinor[-Momentum[p], m, 1]*
+	FV[Polarization[p, I], mu]]*SP[p1, p2] -
+di[Spinor[Momentum[p2], m, 1] . GA[i] . Spinor[-Momentum[p2], m, 1]*
+	LC[nu, rho, si][Polarization[p, I]]]*SP[p1, p2]"},
+{"fcstFCDiracIsolate-ID26",
+"FCDiracIsolate[
+a (2 Spinor[Momentum[p - q], m1, 1].GA[b].Spinor[Momentum[p], m1,
+		1] (2 FV[p, a] - FV[q, a]) +
+	2 Spinor[Momentum[p - q], m1, 1].GA[a].Spinor[Momentum[p], m1,
+		1] (2 FV[p, b] - FV[q, b]) +
+	2 Spinor[Momentum[p - q], m1, 1].GS[q].Spinor[Momentum[p], m1,
+		1] MT[a,
+	b]) (4 Spinor[Momentum[p + q], m2, 1].GA[b].Spinor[Momentum[p],
+		m2, 1] (2 FV[p, a] + FV[q, a]) +
+	4 Spinor[Momentum[p + q], m2, 1].GA[a].Spinor[Momentum[p], m2,
+		1] (2 FV[p, b] + FV[q, b]) -
+	m2 Spinor[Momentum[p + q], m2, 1].Spinor[Momentum[p], m2, 1] MT[
+	a, b] + 4 Spinor[Momentum[p + q], m2, 1].GS[q].Spinor[
+		Momentum[p], m2, 1] MT[a, b]), LorentzIndex -> All,
+FCJoinDOTs -> True, Spinor -> Join, Head -> dsHead] // FCE",
+"32 a dsHead[
+Spinor[Momentum[p - q], m1, 1].GA[b].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GA[b].Spinor[Momentum[p], m2,
+	1] FV[p, a]^2] +
+32 a dsHead[
+Spinor[Momentum[p - q], m1, 1].GA[b].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GA[a].Spinor[Momentum[p], m2,
+	1] FV[p, a] FV[p, b]] +
+32 a dsHead[
+Spinor[Momentum[p - q], m1, 1].GA[a].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GA[b].Spinor[Momentum[p], m2,
+	1] FV[p, a] FV[p, b]] +
+32 a dsHead[
+Spinor[Momentum[p - q], m1, 1].GA[a].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GA[a].Spinor[Momentum[p], m2,
+	1] FV[p, b]^2] -
+16 a dsHead[
+Spinor[Momentum[p - q], m1, 1].GA[b].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GA[a].Spinor[Momentum[p], m2,
+	1] FV[p, b] FV[q, a]] +
+16 a dsHead[
+Spinor[Momentum[p - q], m1, 1].GA[a].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GA[b].Spinor[Momentum[p], m2,
+	1] FV[p, b] FV[q, a]] -
+8 a dsHead[
+Spinor[Momentum[p - q], m1, 1].GA[b].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GA[b].Spinor[Momentum[p], m2,
+	1] FV[q, a]^2] +
+16 a dsHead[
+Spinor[Momentum[p - q], m1, 1].GA[b].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GA[a].Spinor[Momentum[p], m2,
+	1] FV[p, a] FV[q, b]] -
+16 a dsHead[
+Spinor[Momentum[p - q], m1, 1].GA[a].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GA[b].Spinor[Momentum[p], m2,
+	1] FV[p, a] FV[q, b]] -
+8 a dsHead[
+Spinor[Momentum[p - q], m1, 1].GA[b].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GA[a].Spinor[Momentum[p], m2,
+	1] FV[q, a] FV[q, b]] -
+8 a dsHead[
+Spinor[Momentum[p - q], m1, 1].GA[a].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GA[b].Spinor[Momentum[p], m2,
+	1] FV[q, a] FV[q, b]] -
+8 a dsHead[
+Spinor[Momentum[p - q], m1, 1].GA[a].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GA[a].Spinor[Momentum[p], m2,
+	1] FV[q, b]^2] -
+4 a m2 dsHead[
+Spinor[Momentum[p + q], m2, 1].Spinor[Momentum[p], m2, 1] Spinor[
+	Momentum[p - q], m1, 1].GA[b].Spinor[Momentum[p], m1, 1] FV[p,
+	a] MT[a, b]] +
+16 a dsHead[
+Spinor[Momentum[p - q], m1, 1].GS[q].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GA[b].Spinor[Momentum[p], m2,
+	1] FV[p, a] MT[a, b]] +
+16 a dsHead[
+Spinor[Momentum[p - q], m1, 1].GA[b].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GS[q].Spinor[Momentum[p], m2,
+	1] FV[p, a] MT[a, b]] -
+4 a m2 dsHead[
+Spinor[Momentum[p + q], m2, 1].Spinor[Momentum[p], m2, 1] Spinor[
+	Momentum[p - q], m1, 1].GA[a].Spinor[Momentum[p], m1, 1] FV[p,
+	b] MT[a, b]] +
+16 a dsHead[
+Spinor[Momentum[p - q], m1, 1].GS[q].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GA[a].Spinor[Momentum[p], m2,
+	1] FV[p, b] MT[a, b]] +
+16 a dsHead[
+Spinor[Momentum[p - q], m1, 1].GA[a].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GS[q].Spinor[Momentum[p], m2,
+	1] FV[p, b] MT[a, b]] +
+2 a m2 dsHead[
+Spinor[Momentum[p + q], m2, 1].Spinor[Momentum[p], m2, 1] Spinor[
+	Momentum[p - q], m1, 1].GA[b].Spinor[Momentum[p], m1, 1] FV[q,
+	a] MT[a, b]] +
+8 a dsHead[
+Spinor[Momentum[p - q], m1, 1].GS[q].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GA[b].Spinor[Momentum[p], m2,
+	1] FV[q, a] MT[a, b]] -
+8 a dsHead[
+Spinor[Momentum[p - q], m1, 1].GA[b].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GS[q].Spinor[Momentum[p], m2,
+	1] FV[q, a] MT[a, b]] +
+2 a m2 dsHead[
+Spinor[Momentum[p + q], m2, 1].Spinor[Momentum[p], m2, 1] Spinor[
+	Momentum[p - q], m1, 1].GA[a].Spinor[Momentum[p], m1, 1] FV[q,
+	b] MT[a, b]] +
+8 a dsHead[
+Spinor[Momentum[p - q], m1, 1].GS[q].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GA[a].Spinor[Momentum[p], m2,
+	1] FV[q, b] MT[a, b]] -
+8 a dsHead[
+Spinor[Momentum[p - q], m1, 1].GA[a].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GS[q].Spinor[Momentum[p], m2,
+	1] FV[q, b] MT[a, b]] -
+2 a m2 dsHead[
+Spinor[Momentum[p + q], m2, 1].Spinor[Momentum[p], m2, 1] Spinor[
+	Momentum[p - q], m1, 1].GS[q].Spinor[Momentum[p], m1, 1] MT[a,
+	b]^2] + 8 a dsHead[
+Spinor[Momentum[p - q], m1, 1].GS[q].Spinor[Momentum[p], m1,
+	1] Spinor[Momentum[p + q], m2, 1].GS[q].Spinor[Momentum[p], m2,
+	1] MT[a, b]^2]"},
+{"fcstFCDiracIsolate-ID27", "FCDiracIsolate[
+DiracChain[DiracGamma[LorentzIndex[mu]], DiracIndex[i],
+DiracIndex[j]], FCE -> True]", "DCHN[GA[mu], i, j]"},
+{"fcstFCDiracIsolate-ID28", "FCDiracIsolate[
+DiracChain[DiracGamma[LorentzIndex[mu]], DiracIndex[i],
+DiracIndex[j]], DiracChain -> True, Head -> dirac, FCE -> True]", "dirac[DCHN[GA[mu], i, j]]"},
+{"fcstFCDiracIsolate-ID29", "FCDiracIsolate[DiracChain[1, DiracIndex[i], DiracIndex[j]] GA[mu],
+DiracGamma -> False, DiracChain -> True, Head -> dirac,
+FCE -> True]", "dirac[DCHN[1, i, j]]*GA[mu]"},
+{"fcstFCDiracIsolate-ID30", "FCDiracIsolate[CGA[i].CGS[p].CGA[j].CGS[p + q] KD[i, j],
+CartesianIndex -> True, Head -> dch, FCE -> True]", "dch[CGA[i].CGS[p].CGA[j].CGS[p + q] KD[i, j]]"},
+{"fcstFCDiracIsolate-ID31", "Spinor[Momentum[p3, D], m, 1].GAD[Lor4].(m + GSD[l + p3]).GAD[
+Lor1].Spinor[Momentum[p1, D]] // DiracGammaExpand // DotSimplify //
+FCDiracIsolate[#, DiracGammaCombine -> False, Head -> {dch, re},
+	FCJoinDOTs -> False, FCE -> True] &", "Spinor[Momentum[p3, D], m, 1].GAD[Lor4].(m + GSD[l + p3]).GAD[
+	Lor1].Spinor[Momentum[p1, D]] // DiracGammaExpand //
+DotSimplify //
+FCDiracIsolate[#, DiracGammaCombine -> False, Head -> {dch, re},
+FCJoinDOTs -> False, FCE -> True] &"},
+{"fcstFCDiracIsolate-ID32", "FCDiracIsolate[x,Head->{di,re}]", "re[x]"},
+{"fcstFCDiracIsolate-ID33", "FCDiracIsolate[{GA[i], GS[p]}, Head -> di, FCE -> True]",
+"{di[GA[i]], di[GS[p]]}"}
 });
 

@@ -168,9 +168,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Integrate2",
   ButtonNote->"Integrate2"],
  "."
-}], "Text",
- CellTags->"PlusDistribution",
- CellID->773699831]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -215,8 +213,7 @@ Cell[BoxData[
     FractionBox["1", 
      RowBox[{"1", "-", "x"}]], ")"}], "+"], TraditionalForm]], "Output",
  CellTags->"PlusDistribution",
- CellLabel->"Out[1]=",
- CellID->793477050]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -241,8 +238,7 @@ Cell[BoxData[
       RowBox[{"1", "-", "x"}], ")"}], 
      RowBox[{"1", "-", "x"}]], ")"}], "+"], TraditionalForm]], "Output",
  CellTags->"PlusDistribution",
- CellLabel->"Out[2]=",
- CellID->311507260]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -263,8 +259,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
  CellTags->"PlusDistribution",
- CellLabel->"Out[3]=",
- CellID->1505699793]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -287,8 +282,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
  CellTags->"PlusDistribution",
- CellLabel->"Out[4]=",
- CellID->1574569015]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -312,8 +306,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
  CellTags->"PlusDistribution",
- CellLabel->"Out[5]=",
- CellID->207625118]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -344,8 +337,7 @@ Cell[BoxData[
        RowBox[{"1", "-", "x"}], ")"}], 
       RowBox[{"1", "-", "x"}]], ")"}], "+"]}], TraditionalForm]], "Output",
  CellTags->"PlusDistribution",
- CellLabel->"Out[6]=",
- CellID->593139408]
+ CellLabel->"Out[6]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -410,12 +402,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{734, Automatic}, {Automatic, 99}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

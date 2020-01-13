@@ -127,8 +127,30 @@ is equivalent to Series2[f, {e, 0, n}]."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Series2", "]"}]], "Input",
+ CellTags->"Series2",
+ CellLabel->"In[3]:=",
+ CellID->1435843837],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Collecting", "\[Rule]", "False"}], ",", 
+    RowBox[{"Factoring", "\[Rule]", "True"}], ",", 
+    RowBox[{"FinalSubstitutions", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       TagBox["\[DoubledGamma]",
+        Function[{}, EulerGamma]], "\[Rule]", "0"}], "}"}]}], ",", 
+    RowBox[{"SimplifyPolyLog", "\[Rule]", "True"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"Series2",
+ CellLabel->"Out[3]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -194,32 +216,6 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "Series2", "]"}]], "Input",
- CellTags->"Series2",
- CellLabel->"In[1]:=",
- CellID->1435843837],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Collecting", "\[Rule]", "False"}], ",", 
-    RowBox[{"Factoring", "\[Rule]", "True"}], ",", 
-    RowBox[{"FinalSubstitutions", "\[Rule]", 
-     RowBox[{"{", 
-      RowBox[{
-       TagBox["\[DoubledGamma]",
-        Function[{}, EulerGamma]], "\[Rule]", "0"}], "}"}]}], ",", 
-    RowBox[{"SimplifyPolyLog", "\[Rule]", "True"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"Series2",
- CellLabel->"Out[1]=",
- CellID->1982660957]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"Series2", "[", 
   RowBox[{
    RowBox[{
@@ -231,7 +227,7 @@ Cell[BoxData[
      RowBox[{"\[Delta]", "/", "2"}], ")"}]}], ",", "\[Delta]", ",", "1"}], 
   "]"}]], "Input",
  CellTags->"Series2",
- CellLabel->"In[2]:=",
+ CellLabel->"In[1]:=",
  CellID->785606174],
 
 Cell[BoxData[
@@ -246,8 +242,7 @@ Cell[BoxData[
     RowBox[{"log", "(", "x", ")"}]}], "+", "1"}], TraditionalForm]], "Output",
  
  CellTags->"Series2",
- CellLabel->"Out[2]=",
- CellID->78273571]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -257,7 +252,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"Gamma", "[", "x", "]"}], ",", "x", ",", "1"}], "]"}]], "Input",
  CellTags->"Series2",
- CellLabel->"In[3]:=",
+ CellLabel->"In[2]:=",
  CellID->1445520007],
 
 Cell[BoxData[
@@ -268,8 +263,7 @@ Cell[BoxData[
     RowBox[{"\[Zeta]", "(", "2", ")"}], " ", "x"}], "+", 
    FractionBox["1", "x"]}], TraditionalForm]], "Output",
  CellTags->"Series2",
- CellLabel->"Out[3]=",
- CellID->1484488938]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -281,7 +275,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}]], "Input",
  CellTags->"Series2",
- CellLabel->"In[4]:=",
+ CellLabel->"In[3]:=",
  CellID->1607149077],
 
 Cell[BoxData[
@@ -309,8 +303,7 @@ Cell[BoxData[
     1, -EulerGamma, Rational[1, 12] (6 EulerGamma^2 + Pi^2)}, -1, 2, 1],
    Editable->False], TraditionalForm]], "Output",
  CellTags->"Series2",
- CellLabel->"Out[4]=",
- CellID->406465977]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -320,7 +313,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"Gamma", "[", "x", "]"}], ",", "x", ",", "2"}], "]"}]], "Input",
  CellTags->"Series2",
- CellLabel->"In[5]:=",
+ CellLabel->"In[4]:=",
  CellID->113546639],
 
 Cell[BoxData[
@@ -337,8 +330,7 @@ Cell[BoxData[
     RowBox[{"\[Zeta]", "(", "2", ")"}], " ", "x"}], "+", 
    FractionBox["1", "x"]}], TraditionalForm]], "Output",
  CellTags->"Series2",
- CellLabel->"Out[5]=",
- CellID->503684567]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -351,7 +343,7 @@ Cell[BoxData[
     RowBox[{"FinalSubstitutions", "\[Rule]", 
      RowBox[{"{", "}"}]}]}], "]"}], "//", "FullSimplify"}]], "Input",
  CellTags->"Series2",
- CellLabel->"In[6]:=",
+ CellLabel->"In[5]:=",
  CellID->31680807],
 
 Cell[BoxData[
@@ -386,8 +378,7 @@ Cell[BoxData[
         Function[{}, EulerGamma]], "2"], " ", "x"}], "+", 
      FractionBox["6", "x"]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"Series2",
- CellLabel->"Out[6]=",
- CellID->607384212]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -407,7 +398,7 @@ Cell[BoxData[
         "}"}]}], "]"}], "//", "Normal"}], "//", "Expand"}], "//", 
   "FullSimplify"}]], "Input",
  CellTags->"Series2",
- CellLabel->"In[7]:=",
+ CellLabel->"In[6]:=",
  CellID->1418084636],
 
 Cell[BoxData[
@@ -443,15 +434,12 @@ Cell[BoxData[
         Function[{}, EulerGamma]], "2"], " ", "x"}], "+", 
      FractionBox["12", "x"]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"Series2",
- CellLabel->"Out[7]=",
- CellID->743143408]
+ CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell["\<\
 There is a table of expansions of special hypergeometric functions.\
-\>", "Text",
- CellTags->"Series2",
- CellID->659671376],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -470,7 +458,7 @@ Cell[BoxData[
        RowBox[{"OPEm", "+", "Epsilon"}]}], "}"}], ",", "1"}], "]"}], ",", 
    "Epsilon", ",", "1"}], "]"}]], "Input",
  CellTags->"Series2",
- CellLabel->"In[8]:=",
+ CellLabel->"In[7]:=",
  CellID->1447119838],
 
 Cell[BoxData[
@@ -497,8 +485,7 @@ Cell[BoxData[
      TemplateBox[{"1","m"},
       "PolyGamma2"]}], "2"], "+", "1"}], TraditionalForm]], "Output",
  CellTags->"Series2",
- CellLabel->"Out[8]=",
- CellID->1252077467]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -520,7 +507,7 @@ Cell[BoxData[
         RowBox[{"Epsilon", " ", "+", " ", "OPEm"}]}], "}"}], ",", "  ", "1"}],
       "]"}], ",", "Epsilon", ",", "1"}], "]"}]}]], "Input",
  CellTags->"Series2",
- CellLabel->"In[9]:=",
+ CellLabel->"In[8]:=",
  CellID->1777911067],
 
 Cell[BoxData[
@@ -558,8 +545,7 @@ Cell[BoxData[
       RowBox[{"m", "-", "1"}],
       TraditionalForm], ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"Series2",
- CellLabel->"Out[9]=",
- CellID->859590251]
+ CellLabel->"Out[8]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -570,7 +556,7 @@ Cell[BoxData[
    RowBox[{"1", " ", "+", " ", 
     RowBox[{"2", " ", "Epsilon"}]}], ",", "x"}], "]"}]], "Input",
  CellTags->"Series2",
- CellLabel->"In[10]:=",
+ CellLabel->"In[9]:=",
  CellID->1986693903],
 
 Cell[BoxData[
@@ -580,8 +566,7 @@ Cell[BoxData[
         TagBox["\[CurlyEpsilon]", TraditionalForm]}], "+", "1"}],"x"},
    "Hypergeometric2F1"], TraditionalForm]], "Output",
  CellTags->"Series2",
- CellLabel->"Out[10]=",
- CellID->444344105]
+ CellLabel->"Out[9]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -590,7 +575,7 @@ Cell[BoxData[
  RowBox[{"Series2", "[", 
   RowBox[{"%", ",", "Epsilon", ",", "3"}], "]"}]], "Input",
  CellTags->"Series2",
- CellLabel->"In[11]:=",
+ CellLabel->"In[10]:=",
  CellID->180283674],
 
 Cell[BoxData[
@@ -699,8 +684,7 @@ Cell[BoxData[
     TemplateBox[{"3"},
      "Zeta"]}], "+", "1"}], TraditionalForm]], "Output",
  CellTags->"Series2",
- CellLabel->"Out[11]=",
- CellID->1006368312]
+ CellLabel->"Out[10]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -713,9 +697,7 @@ Cell[TextData[{
      SubscriptBox["F", "1"]}]}], TraditionalForm]]],
  " tabulated in Series2.m. The interested user can consult the source code \
 (search for HYPERLIST)."
-}], "Text",
- CellTags->"Series2",
- CellID->1023055054]
+}], "Notes"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -779,12 +761,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{645, Automatic}, {Automatic, 86}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

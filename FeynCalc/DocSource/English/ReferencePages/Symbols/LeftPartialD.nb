@@ -189,9 +189,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/RightPartialD",
   ButtonNote->"RightPartialD"],
  "."
-}], "Text",
- CellTags->"LeftPartialD",
- CellID->333878293]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -218,10 +216,6 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell[BoxData["Examples"], "Subsubsection",
- CellTags->"LeftPartialD",
- CellID->112576831],
-
 Cell[CellGroupData[{
 
 Cell[BoxData[
@@ -231,7 +225,7 @@ Cell[BoxData[
     RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}]}], "]"}], ".", 
   RowBox[{"LeftPartialD", "[", "\[Nu]", "]"}]}]], "Input",
  CellTags->"LeftPartialD",
- CellLabel->"In[1]:=",
+ CellLabel->"In[17]:=",
  CellID->1505949422],
 
 Cell[BoxData[
@@ -249,8 +243,7 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"LeftPartialD",
- CellLabel->"Out[1]=",
- CellID->830365091]
+ CellLabel->"Out[17]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -258,27 +251,27 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"ExpandPartialD", "[", "%", "]"}]], "Input",
  CellTags->"LeftPartialD",
- CellLabel->"In[2]:=",
+ CellLabel->"In[18]:=",
  CellID->1429866239],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   SubscriptBox["\[PartialD]", 
+   SubscriptBox[
+    RowBox[{"(", "\[PartialD]"}], 
     FormBox[
      FormBox["\[Nu]",
       TraditionalForm],
      TraditionalForm]], 
-   SubsuperscriptBox[
+   SubscriptBox[
     FormBox["A",
      TraditionalForm], 
     FormBox[
      FormBox["\[Mu]",
       TraditionalForm],
-     TraditionalForm], "\[Null]"]}], TraditionalForm]], "Output",
+     TraditionalForm]], ")"}], TraditionalForm]], "Output",
  CellTags->"LeftPartialD",
- CellLabel->"Out[2]=",
- CellID->1758698798]
+ CellLabel->"Out[18]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -286,7 +279,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"StandardForm", "[", "%", "]"}]], "Input",
  CellTags->"LeftPartialD",
- CellLabel->"In[3]:=",
+ CellLabel->"In[19]:=",
  CellID->145865999],
 
 Cell[BoxData[
@@ -296,8 +289,7 @@ Cell[BoxData[
     RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}], "]"}], ",", "A", ",", 
    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}]}], "]"}]], "Output",
  CellTags->"LeftPartialD",
- CellLabel->"Out[3]//StandardForm=",
- CellID->1222822570]
+ CellLabel->"Out[19]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -306,15 +298,14 @@ Cell[BoxData[
  RowBox[{"StandardForm", "[", 
   RowBox[{"LeftPartialD", "[", "\[Mu]", "]"}], "]"}]], "Input",
  CellTags->"LeftPartialD",
- CellLabel->"In[4]:=",
+ CellLabel->"In[20]:=",
  CellID->1674572572],
 
 Cell[BoxData[
  RowBox[{"LeftPartialD", "[", 
   RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], "]"}]], "Output",
  CellTags->"LeftPartialD",
- CellLabel->"Out[4]//StandardForm=",
- CellID->2010768027]
+ CellLabel->"Out[20]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -329,7 +320,7 @@ Cell[BoxData[
     RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}]}], "]"}], ".", 
   RowBox[{"LeftPartialD", "[", "\[Rho]", "]"}]}]], "Input",
  CellTags->"LeftPartialD",
- CellLabel->"In[5]:=",
+ CellLabel->"In[21]:=",
  CellID->1935363723],
 
 Cell[BoxData[
@@ -352,8 +343,7 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"LeftPartialD",
- CellLabel->"Out[5]=",
- CellID->1721340260]
+ CellLabel->"Out[21]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -361,7 +351,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"ExpandPartialD", "[", "%", "]"}]], "Input",
  CellTags->"LeftPartialD",
- CellLabel->"In[6]:=",
+ CellLabel->"In[22]:=",
  CellID->1467469251],
 
 Cell[BoxData[
@@ -373,41 +363,44 @@ Cell[BoxData[
       TraditionalForm], 
      FormBox["\[Mu]",
       TraditionalForm]], ".", 
-    RowBox[{
-     SubscriptBox["\[PartialD]", 
-      FormBox[
-       FormBox["\[Rho]",
-        TraditionalForm],
-       TraditionalForm]], 
-     SubsuperscriptBox[
-      FormBox["A",
-       TraditionalForm], 
-      FormBox[
-       FormBox["\[Nu]",
-        TraditionalForm],
-       TraditionalForm], "\[Null]"]}]}], "+", 
+    RowBox[{"(", 
+     RowBox[{
+      SubscriptBox[
+       RowBox[{"(", "\[PartialD]"}], 
+       FormBox[
+        FormBox["\[Rho]",
+         TraditionalForm],
+        TraditionalForm]], 
+      SubscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]], ")"}], ")"}]}], "+", 
    RowBox[{
-    RowBox[{
-     SubscriptBox["\[PartialD]", 
-      FormBox[
-       FormBox["\[Rho]",
-        TraditionalForm],
-       TraditionalForm]], 
-     SubsuperscriptBox[
-      FormBox["A",
-       TraditionalForm], 
-      FormBox[
-       FormBox["\[Mu]",
-        TraditionalForm],
-       TraditionalForm], "\[Null]"]}], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      SubscriptBox[
+       RowBox[{"(", "\[PartialD]"}], 
+       FormBox[
+        FormBox["\[Rho]",
+         TraditionalForm],
+        TraditionalForm]], 
+      SubscriptBox[
+       FormBox["A",
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]], ")"}], ")"}], ".", 
     SubscriptBox[
      FormBox["A",
       TraditionalForm], 
      FormBox["\[Nu]",
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"LeftPartialD",
- CellLabel->"Out[6]=",
- CellID->1229859500]
+ CellLabel->"Out[22]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -415,7 +408,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"StandardForm", "[", "%", "]"}]], "Input",
  CellTags->"LeftPartialD",
- CellLabel->"In[7]:=",
+ CellLabel->"In[23]:=",
  CellID->692947033],
 
 Cell[BoxData[
@@ -439,8 +432,7 @@ Cell[BoxData[
     RowBox[{"A", ",", 
      RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}]}], "]"}]}]}]], "Output",
  CellTags->"LeftPartialD",
- CellLabel->"Out[7]//StandardForm=",
- CellID->296675662]
+ CellLabel->"Out[23]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -505,12 +497,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{898, Automatic}, {Automatic, 110}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

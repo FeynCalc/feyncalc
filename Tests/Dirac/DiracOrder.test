@@ -4,20 +4,168 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for DiracOrder               *)
 
 (* ------------------------------------------------------------------------ *)
 
-Tests`Dirac`fcstDiracOrder = {
-{"fcstDiracOrder-ID1","DiracOrder[DiracMatrix[b, a]]","-DiracGamma[LorentzIndex[a]] . DiracGamma[LorentzIndex[b]] + 2*Pair[LorentzIndex[a], LorentzIndex[b]]"},
-{"fcstDiracOrder-ID2","DiracOrder[-DiracGamma[LorentzIndex[a]].DiracGamma[LorentzIndex[b]] +
-	2*Pair[LorentzIndex[a], LorentzIndex[b]], {b, a}]","DiracGamma[LorentzIndex[b]] . DiracGamma[LorentzIndex[a]]"},
-{"fcstDiracOrder-ID3","DiracOrder[DiracMatrix[mu, mu].DiracSlash[p, p]]","4*Pair[Momentum[p], Momentum[p]]"},
-{"fcstDiracOrder-ID4","DiracOrder[DiracMatrix[a, mu, a, Dimension -> D]]","2*DiracGamma[LorentzIndex[mu, D], D] - D*DiracGamma[LorentzIndex[mu, D], D]"},
-{"fcstDiracOrder-ID5","DiracOrder[DiracSlash[-p, q, p]]","DiracGamma[Momentum[q]]*Pair[Momentum[p], Momentum[p]] - 2*DiracGamma[Momentum[p]]*Pair[Momentum[p], Momentum[q]]"}
-}
+Tests`Dirac`fcstDiracOrder =
+({
+{"fcstDiracOrder-ID1", "FCSetDiracGammaScheme[\"BMHV\"]; \n DiracOrder[0]", "0"},
+{"fcstDiracOrder-ID2",
+"ClearAll[tmp]; \n MatchQ[DiracOrder[Sum[tmp[i],{i,1,10000}]],Sum[tmp[i],{i,1,10000}]\
+]", "True"},
+{"fcstDiracOrder-ID3", "DiracOrder[GA[a],FCE\[Rule]True]",
+"GA[a]"},
+{"fcstDiracOrder-ID4", "DiracOrder[GA[b,a],FCE\[Rule]True]",
+"-GA[a] . GA[b] + 2*MT[a, b]"},
+{"fcstDiracOrder-ID5", "DiracOrder[GAD[b,a],FCE\[Rule]True]",
+"-GAD[a] . GAD[b] + 2*MTD[a, b]"},
+{"fcstDiracOrder-ID6", "DiracOrder[GAE[b,a],FCE\[Rule]True]",
+"-GAE[a] . GAE[b] + 2*MTE[a, b]"},
+{"fcstDiracOrder-ID7", "DiracOrder[GA[a,b],{b,a},FCE\[Rule]True]",
+"-GA[b] . GA[a] + 2*MT[a, b]"},
+{"fcstDiracOrder-ID8", "DiracOrder[GAD[a,b],{b,a},FCE\[Rule]True]",
+"-GAD[b] . GAD[a] + 2*MTD[a, b]"},
+{"fcstDiracOrder-ID9", "DiracOrder[GAE[a,b],{b,a},FCE\[Rule]True]",
+"-GAE[b] . GAE[a] + 2*MTE[a, b]"},
+{"fcstDiracOrder-ID10",
+"DiracOrder[-GA[a].GA[b]+2 MT[a,b],{b,a},FCE\[Rule]True]",
+"GA[b] . GA[a]"},
+{"fcstDiracOrder-ID11",
+"DiracOrder[-GAD[a].GAD[b]+2 MTD[a,b],{b,a},FCE\[Rule]True]",
+"GAD[b] . GAD[a]"},
+{"fcstDiracOrder-ID12",
+"DiracOrder[-GAE[a].GAE[b]+2 MTE[a,b],{b,a},FCE\[Rule]True]",
+"GAE[b] . GAE[a]"},
+{"fcstDiracOrder-ID13",
+"DiracOrder[GA[mu,mu].GS[p,p],FCE\[Rule]True]", "4*SP[p, p]"},
+{"fcstDiracOrder-ID14",
+"DiracOrder[GAD[mu,mu].GSD[p,p],FCE\[Rule]True]", "D*SPD[p, p]"},
+{"fcstDiracOrder-ID15",
+"DiracOrder[GAD[mu,mu].GS[p,p],FCE\[Rule]True]", "D*SP[p, p]"},
+{"fcstDiracOrder-ID16",
+"DiracOrder[GAD[nu,mu].GA[nu,mu],FCE\[Rule]True]", "-8"},
+{"fcstDiracOrder-ID17", "DiracOrder[GAD[a,mu,a],FCE\[Rule]True]",
+"(2 - D)*GAD[mu]"},
+{"fcstDiracOrder-ID18", "DiracOrder[GS[-p,q,p],FCE\[Rule]True]",
+"GS[q]*SP[p, p] - 2*GS[p]*SP[p, q]"},
+{"fcstDiracOrder-ID19", "DiracOrder[GSD[-p,q,p],FCE\[Rule]True]",
+"GSD[q]*SPD[p, p] - 2*GSD[p]*SPD[p, q]"},
+{"fcstDiracOrder-ID20",
+"DiracOrder[-GA[a].GA[b]+2 \
+MT[a,b],{b,a},FCDiracIsolate\[Rule]False,FCE\[Rule]True]",
+"GA[b] . GA[a]"},
+{"fcstDiracOrder-ID21",
+"DiracOrder[-GAD[a].GAD[b]+2 \
+MTD[a,b],{b,a},FCDiracIsolate\[Rule]False,FCE\[Rule]True]",
+"GAD[b] . GAD[a]"},
+{"fcstDiracOrder-ID22",
+"DiracOrder[-GAE[a].GAE[b]+2 \
+MTE[a,b],{b,a},FCDiracIsolate\[Rule]False,FCE\[Rule]True]",
+"GAE[b] . GAE[a]"},
+{"fcstDiracOrder-ID23",
+"DiracOrder[GAD[nu,mu].GA[nu,mu],DiracTrick\[Rule]False,FCE\[Rule]\
+True]", "-8*(8 - GA[mu] . GAD[mu]) + 2*(8 - GA[nu] . GAD[nu]) + \
+6*GA[nu] . GAD[nu] + GA[mu] . GA[nu] . GAD[mu] . GAD[nu]"},
+{"fcstDiracOrder-ID24",
+"DiracOrder[GA[i1,i2,i3,i4],{i4,i3,i2,i1},FCE\
+\[Rule]True]",
+"GA[i4] . GA[i3] . GA[i2] . GA[i1] - 2*GA[i4] . GA[i3]*MT[i1, i2] \
++ 2*GA[i4] . GA[i2]*MT[i1, i3] - 2*GA[i3] . GA[i2]*MT[i1, i4] - \
+2*GA[i4] . GA[i1]*MT[i2, i3] + 2*GA[i3] . GA[i1]*MT[i2, i4] - \
+2*GA[i2] . GA[i1]*MT[i3, i4] + 4*(MT[i1, i4]*MT[i2, i3] - MT[i1, \
+i3]*MT[i2, i4] + MT[i1, i2]*MT[i3, i4])"},
+
+{"fcstDiracOrder-ID25", "DiracOrder[CGA[a],FCE\[Rule]True]",
+"CGA[a]"},
+{"fcstDiracOrder-ID26", "DiracOrder[CGA[b,a],FCE\[Rule]True]",
+"-CGA[a] . CGA[b] - 2*KD[a, b]"},
+{"fcstDiracOrder-ID27", "DiracOrder[CGAD[b,a],FCE\[Rule]True]",
+"-CGAD[a] . CGAD[b] - 2*KDD[a, b]"},
+{"fcstDiracOrder-ID28", "DiracOrder[CGAE[b,a],FCE\[Rule]True]",
+"-CGAE[a] . CGAE[b] - 2*KDE[a, b]"},
+{"fcstDiracOrder-ID29", "DiracOrder[CGA[a,b],{b,a},FCE\[Rule]True]",
+	"-CGA[b] . CGA[a] - 2*KD[a, b]"},
+{"fcstDiracOrder-ID30",
+"DiracOrder[CGAD[a,b],{b,a},FCE\[Rule]True]",
+"-CGAD[b] . CGAD[a] - 2*KDD[a, b]"},
+{"fcstDiracOrder-ID31",
+"DiracOrder[CGAE[a,b],{b,a},FCE\[Rule]True]",
+"-CGAE[b] . CGAE[a] - 2*KDE[a, b]"},
+{"fcstDiracOrder-ID32",
+"DiracOrder[-CGA[a].CGA[b]-2 KD[a,b],{b,a},FCE\[Rule]True]",
+"CGA[b] . CGA[a]"},
+{"fcstDiracOrder-ID33",
+"DiracOrder[-CGAD[a].CGAD[b]-2 KDD[a,b],{b,a},FCE\[Rule]True]",
+"CGAD[b] . CGAD[a]"},
+{"fcstDiracOrder-ID34",
+"DiracOrder[-CGAE[a].CGAE[b]-2 KDE[a,b],{b,a},FCE\[Rule]True]",
+"CGAE[b] . CGAE[a]"},
+{"fcstDiracOrder-ID35",
+"DiracOrder[CGA[mu,mu].CGS[p,p],FCE\[Rule]True]", "3*CSP[p, p]"},
+{"fcstDiracOrder-ID36",
+"DiracOrder[CGAD[mu,mu].CGSD[p,p],FCE\[Rule]True]",
+"-((1 - D)*CSPD[p, p])"},
+{"fcstDiracOrder-ID37",
+"DiracOrder[CGAD[mu,mu].CGS[p,p],FCE\[Rule]True]",
+"-((1 - D)*CSP[p, p])"},
+{"fcstDiracOrder-ID38",
+"DiracOrder[CGAD[nu,mu].CGA[nu,mu],FCE\[Rule]True]", "-3"},
+{"fcstDiracOrder-ID39", "DiracOrder[CGAD[a,mu,a],FCE\[Rule]True]",
+"(-3 + D)*CGAD[mu]"},
+{"fcstDiracOrder-ID40", "DiracOrder[CGS[-p,q,p],FCE\[Rule]True]",
+"-(CGS[q]*CSP[p, p]) + 2*CGS[p]*CSP[p, q]"},
+{"fcstDiracOrder-ID41", "DiracOrder[CGSD[-p,q,p],FCE\[Rule]True]",
+"-(CGSD[q]*CSPD[p, p]) + 2*CGSD[p]*CSPD[p, q]"},
+{"fcstDiracOrder-ID42",
+"DiracOrder[-CGA[a].CGA[b]-2 \
+KD[a,b],{b,a},FCDiracIsolate\[Rule]False,FCE\[Rule]True]",
+"CGA[b] . CGA[a]"},
+{"fcstDiracOrder-ID43",
+"DiracOrder[-CGAD[a].CGAD[b]-2 \
+KDD[a,b],{b,a},FCDiracIsolate\[Rule]False,FCE\[Rule]True]",
+"CGAD[b] . CGAD[a]"},
+{"fcstDiracOrder-ID44",
+"DiracOrder[-CGAE[a].CGAE[b]-2 \
+KDE[a,b],{b,a},FCDiracIsolate\[Rule]False,FCE\[Rule]True]",
+"CGAE[b] . CGAE[a]"},
+{"fcstDiracOrder-ID45",
+"DiracOrder[CGAD[nu,mu].CGA[nu,mu],DiracTrick\[Rule]False,FCE\
+\[Rule]True]",
+"6*(-6 - CGA[mu] . CGAD[mu]) - 2*(-6 - CGA[nu] . CGA[nu]) - \
+2*CGA[nu] . CGA[nu] - 4*CGA[nu] . CGAD[nu] - CGA[mu] . CGAD[mu] . \
+CGA[nu] . CGAD[nu]"},
+{"fcstDiracOrder-ID46",
+"FCSetDiracGammaScheme[\"NDR\"]; DiracOrder[CGA[i1,i2,i3,i4],{i4,i3,i2,i1},FCE\
+\[Rule]True]",
+"CGA[i4] . CGA[i3] . CGA[i2] . CGA[i1] + 2*CGA[i4] . \
+CGA[i3]*KD[i1, i2] - 2*CGA[i4] . CGA[i2]*KD[i1, i3] + 2*CGA[i3] . \
+CGA[i2]*KD[i1, i4] + 2*CGA[i4] . CGA[i1]*KD[i2, i3] - 2*CGA[i3] . \
+CGA[i1]*KD[i2, i4] + 2*CGA[i2] . CGA[i1]*KD[i3, i4] + 4*(KD[i1, \
+i4]*KD[i2, i3] - KD[i1, i3]*KD[i2, i4] + KD[i1, i2]*KD[i3, i4])"},
+{"fcstDiracOrder-ID47", "DiracOrder[TGA[].CGA[i],FCE\[Rule]True]",
+"-CGA[i] . TGA[]"},
+{"fcstDiracOrder-ID48", "FCSetDiracGammaScheme[\"BMHV\"]; \n tmp=DiracOrder[TGA[].CGAD[i],FCE\[Rule]True];
+FCSetDiracGammaScheme[\"NDR\"]; \n tmp",
+"-CGAD[i] . TGA[]"},
+{"fcstDiracOrder-ID49", "DiracOrder[TGA[].GA[mu],FCE\[Rule]True]",
+"-GA[mu] . TGA[] + 2*MT[0, mu]"},
+{"fcstDiracOrder-ID50",
+"DiracOrder[CGA[j].TGA[].CGA[i],FCE\[Rule]True]",
+"CGA[i] . CGA[j] . TGA[] + 2*KD[i, j]*TGA[]"},
+{"fcstDiracOrder-ID51",
+"DiracOrder[TGA[].CGA[i]-CGA[i].TGA[],{ExplicitLorentzIndex[0],i},FCE\
+\[Rule]True]", "2*TGA[] . CGA[i]"},
+{"fcstDiracOrder-ID52",
+"DiracOrder[CGA[i].TGA[]-TGA[].CGA[i],FCE\[Rule]True]",
+"2*CGA[i] . TGA[]"},
+{"fcstDiracOrder-ID53",
+"DiracOrder[DCHN[GA[j, i, l, k], a, b],FCE->True]",
+"DCHN[GA[i].GA[j].GA[k].GA[l] - 2 GA[k].GA[l] MT[i, j] -
+2 GA[i].GA[j] MT[k, l] + 4 MT[i, j] MT[k, l], a, b]"}
+});

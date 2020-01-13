@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # This software is covered by the GNU General Public License 3.
-# Copyright (C) 1990-2016 Rolf Mertig
-# Copyright (C) 1997-2016 Frederik Orellana
-# Copyright (C) 2014-2016 Vladyslav Shtabovenko
+# Copyright (C) 1990-2018 Rolf Mertig
+# Copyright (C) 1997-2018 Frederik Orellana
+# Copyright (C) 2014-2018 Vladyslav Shtabovenko
 
 # Description:
 
@@ -18,3 +18,12 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
 
 $1 -nopromt -script TestSuite.m -run testType=3 -run onlyTest=\"$2\"
+
+if [ -z "$2" ]
+  then
+    outtxt="Finished running unit tests for TARCER."
+  else
+    outtxt="Finished running unit tests for TARCER ($2)."
+fi
+
+notify-send --urgency=low -i "$([ $? = 0 ] && echo sunny || echo error)" "$outtxt"

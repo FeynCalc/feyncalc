@@ -199,14 +199,13 @@ Cell[BoxData[
    RowBox[{"Log", "[", "b", "]"}], "+", 
    SuperscriptBox["c", "2"]}], "]"}]], "Input",
  CellTags->"NumericQ1",
- CellLabel->"In[1]:=",
+ CellLabel->"In[12]:=",
  CellID->294886798],
 
 Cell[BoxData[
  FormBox["False", TraditionalForm]], "Output",
  CellTags->"NumericQ1",
- CellLabel->"Out[1]=",
- CellID->583048133]
+ CellLabel->"Out[12]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -220,14 +219,13 @@ Cell[BoxData[
     SuperscriptBox["c", "2"]}], ",", 
    RowBox[{"{", "}"}]}], "]"}]], "Input",
  CellTags->"NumericQ1",
- CellLabel->"In[2]:=",
+ CellLabel->"In[13]:=",
  CellID->792660906],
 
 Cell[BoxData[
  FormBox["False", TraditionalForm]], "Output",
  CellTags->"NumericQ1",
- CellLabel->"Out[2]=",
- CellID->1595713370]
+ CellLabel->"Out[13]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -242,14 +240,13 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], "]"}]], "Input",
  CellTags->"NumericQ1",
- CellLabel->"In[3]:=",
+ CellLabel->"In[14]:=",
  CellID->103103501],
 
 Cell[BoxData[
  FormBox["True", TraditionalForm]], "Output",
  CellTags->"NumericQ1",
- CellLabel->"Out[3]=",
- CellID->397430963]
+ CellLabel->"Out[14]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -314,12 +311,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{503, Automatic}, {Automatic, 81}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

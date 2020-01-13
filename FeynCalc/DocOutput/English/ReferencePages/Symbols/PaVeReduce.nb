@@ -3,69 +3,93 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.2' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     34914,       1149]
-NotebookOptionsPosition[     27047,        885]
-NotebookOutlinePosition[     31720,       1027]
-CellTagsIndexPosition[     31606,       1021]
+NotebookDataLength[     47038,       1415]
+NotebookOptionsPosition[     40712,       1208]
+NotebookOutlinePosition[     44493,       1320]
+CellTagsIndexPosition[     44377,       1314]
 WindowTitle->PaVeReduce
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/PaVeReduce\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/PaVeReduce"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/PaVeReduce.\
-html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$111848], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/PaVeReduce", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FRH\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FRH"], "\<\"PaVeOrder\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/PaVeOrder"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/PaVeReduce\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/PaVeReduce"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
+PaVeReduce.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$207652], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/PaVeReduce", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,16 +97,27 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["PaVeReduce", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["PaVeReduce", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"PaVeReduce", "[", "expr", "]"}]], "InlineFormula"],
-     " \[LineSeparator]",
-     "reduces all Passarino-Veltman integrals (i.e. all PaVe's) in expr down \
-to scalar A0, B0, C0 and D0."
+     " \[LineSeparator]reduces all Passarino-Veltman integrals (i.e. all \
+PaVe's) in expr down to scalar A0, B0, C0 and D0."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -90,6 +125,74 @@ to scalar A0, B0, C0 and D0."
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}},
  CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1713910284],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "PaVeReduce", "]"}]], "Input",
+ CellTags->"PaVeReduce",
+ CellLabel->"In[26]:=",
+ CellID->1685498711],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"A0ToB0", "\[Rule]", "False"}], ",", 
+    RowBox[{"BReduce", "\[Rule]", "False"}], ",", 
+    RowBox[{"Collecting", "\[Rule]", "True"}], ",", 
+    RowBox[{"Dimension", "\[Rule]", "True"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "True"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
+    RowBox[{"Factoring", "\[Rule]", "Factor2"}], ",", 
+    RowBox[{"IsolateNames", "\[Rule]", "False"}], ",", 
+    RowBox[{"Mandelstam", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"PaVeAutoReduce", "\[Rule]", "False"}], ",", 
+    RowBox[{"PaVeOrderList", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"WriteOutPaVe", "\[Rule]", "False"}], ",", 
+    RowBox[{"MaxIterations", "\[Rule]", "\[Infinity]"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{456, 71},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"PaVeReduce",
+ CellLabel->"Out[26]=",
+ CellID->458544387]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -108,7 +211,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->906569074],
+ CellID->1536895706],
 
 Cell[CellGroupData[{
 
@@ -118,35 +221,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->318399322],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "PaVeReduce", "]"}]], "Input",
- CellTags->"PaVeReduce",
- CellLabel->"In[1]:=",
- CellID->1685498711],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Dimension", "\[Rule]", "True"}], ",", 
-    RowBox[{"IsolateNames", "\[Rule]", "False"}], ",", 
-    RowBox[{"Mandelstam", "\[Rule]", 
-     RowBox[{"{", "}"}]}], ",", 
-    RowBox[{"PaVeOrderList", "\[Rule]", 
-     RowBox[{"{", "}"}]}], ",", 
-    RowBox[{"WriteOutPaVe", "\[Rule]", "False"}]}], "}"}], 
-  TraditionalForm]], "Output",
- ImageSize->{418, 35},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"PaVeReduce",
- CellLabel->"Out[1]=",
- CellID->1380007374]
-}, Open  ]],
+ CellID->1759687694],
 
 Cell[CellGroupData[{
 
@@ -166,39 +241,20 @@ Cell[BoxData[
        RowBox[{"M", "^", "2"}]}], "}"}]}], "]"}], ",", 
    RowBox[{"IsolateNames", "\[Rule]", "FF"}]}], "]"}]], "Input",
  CellTags->"PaVeReduce",
- CellLabel->"In[2]:=",
+ CellLabel->"In[1]:=",
  CellID->311139632],
 
 Cell[BoxData[
  FormBox[
   TagBox[
-   RowBox[{"FF", "(", "981", ")"}],
+   RowBox[{"FF", "(", "45", ")"}],
    HoldForm], TraditionalForm]], "Output",
- ImageSize->{55, 15},
+ ImageSize->{48, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"PaVeReduce",
- CellLabel->"Out[2]=",
- CellID->1665481194]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"FF", "[", "10", "]"}]], "Input",
- CellTags->"PaVeReduce",
- CellLabel->"In[3]:=",
- CellID->469470556],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"FF", "(", "10", ")"}], TraditionalForm]], "Output",
- ImageSize->{48, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"PaVeReduce",
- CellLabel->"Out[3]=",
- CellID->111861120]
+ CellLabel->"Out[1]=",
+ CellID->516283693]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -206,18 +262,188 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"FRH", "[", "%", "]"}]], "Input",
  CellTags->"PaVeReduce",
- CellLabel->"In[4]:=",
+ CellLabel->"In[2]:=",
  CellID->927282004],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"FF", "(", "10", ")"}], TraditionalForm]], "Output",
- ImageSize->{48, 15},
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"2", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"2", " ", "D"}], "-", "3"}], ")"}], " ", 
+        SuperscriptBox["M", "2"]}], 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"D", "-", "2"}], ")"}], " ", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"4", " ", 
+            SuperscriptBox["m", "2"]}], "-", "s"}], ")"}], "2"]}]], "-", 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["M", "2"], " ", "s"}], 
+       RowBox[{"2", " ", 
+        SuperscriptBox["m", "2"], " ", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"4", " ", 
+            SuperscriptBox["m", "2"]}], "-", "s"}], ")"}], "2"]}]], "-", 
+      FractionBox[
+       RowBox[{"4", " ", 
+        SuperscriptBox["m", "2"]}], 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"4", " ", 
+           SuperscriptBox["m", "2"]}], "-", "s"}], ")"}], "2"]], "+", 
+      FractionBox["s", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"4", " ", 
+           SuperscriptBox["m", "2"]}], "-", "s"}], ")"}], "2"]]}], ")"}], " ", 
+    FormBox[
+     RowBox[{
+      SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+      RowBox[{
+       SuperscriptBox["m", "2"], ",", 
+       SuperscriptBox["m", "2"], ",", 
+       SuperscriptBox["M", "2"]}], ")"}],
+     TraditionalForm]}], "+", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", 
+       FractionBox[
+        RowBox[{"2", " ", 
+         RowBox[{"(", 
+          RowBox[{"D", "-", "1"}], ")"}], " ", 
+         SuperscriptBox["M", "2"]}], 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"D", "-", "2"}], ")"}], " ", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"4", " ", 
+             SuperscriptBox["m", "2"]}], "-", "s"}], ")"}], "2"]}]]}], "+", 
+      FractionBox[
+       RowBox[{"4", " ", 
+        SuperscriptBox["m", "2"]}], 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"D", "-", "2"}], ")"}], " ", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"4", " ", 
+            SuperscriptBox["m", "2"]}], "-", "s"}], ")"}], "2"]}]], "-", 
+      FractionBox["s", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"D", "-", "2"}], ")"}], " ", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"4", " ", 
+            SuperscriptBox["m", "2"]}], "-", "s"}], ")"}], "2"]}]]}], ")"}], 
+    " ", 
+    FormBox[
+     RowBox[{
+      SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+      RowBox[{"s", ",", 
+       SuperscriptBox["m", "2"], ",", 
+       SuperscriptBox["m", "2"]}], ")"}],
+     TraditionalForm]}], "+", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", 
+       FractionBox[
+        RowBox[{"2", " ", 
+         RowBox[{"(", 
+          RowBox[{"D", "-", "1"}], ")"}], " ", 
+         SuperscriptBox["M", "4"]}], 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"D", "-", "2"}], ")"}], " ", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"4", " ", 
+             SuperscriptBox["m", "2"]}], "-", "s"}], ")"}], "2"]}]]}], "-", 
+      FractionBox[
+       RowBox[{"D", " ", 
+        SuperscriptBox["M", "2"], " ", "s"}], 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"D", "-", "2"}], ")"}], " ", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"4", " ", 
+            SuperscriptBox["m", "2"]}], "-", "s"}], ")"}], "2"]}]], "+", 
+      FractionBox[
+       RowBox[{"4", " ", "D", " ", 
+        SuperscriptBox["m", "2"], " ", 
+        SuperscriptBox["M", "2"]}], 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"D", "-", "2"}], ")"}], " ", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"4", " ", 
+            SuperscriptBox["m", "2"]}], "-", "s"}], ")"}], "2"]}]]}], ")"}], 
+    " ", 
+    FormBox[
+     RowBox[{
+      SubscriptBox["\<\"C\"\>", "\<\"0\"\>"], "(", 
+      RowBox[{
+       SuperscriptBox["m", "2"], ",", 
+       SuperscriptBox["m", "2"], ",", "s", ",", 
+       SuperscriptBox["m", "2"], ",", 
+       SuperscriptBox["M", "2"], ",", 
+       SuperscriptBox["m", "2"]}], ")"}],
+     TraditionalForm]}], "-", 
+   FractionBox[
+    FormBox[
+     RowBox[{
+      SubscriptBox["\<\"A\"\>", "\<\"0\"\>"], "(", 
+      SuperscriptBox["M", "2"], ")"}],
+     TraditionalForm], 
+    RowBox[{"2", " ", 
+     SuperscriptBox["m", "2"], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"4", " ", 
+        SuperscriptBox["m", "2"]}], "-", "s"}], ")"}]}]], "+", 
+   FractionBox[
+    FormBox[
+     RowBox[{
+      SubscriptBox["\<\"A\"\>", "\<\"0\"\>"], "(", 
+      SuperscriptBox["m", "2"], ")"}],
+     TraditionalForm], 
+    RowBox[{"2", " ", 
+     SuperscriptBox["m", "2"], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"4", " ", 
+        SuperscriptBox["m", "2"]}], "-", "s"}], ")"}]}]]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{498, 261},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"PaVeReduce",
- CellLabel->"Out[4]=",
- CellID->1785054415]
+ CellLabel->"Out[2]=",
+ CellID->1592936160]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -237,43 +463,32 @@ Cell[BoxData[
       "}"}]}], "]"}], ",", 
    RowBox[{"WriteOutPaVe", "\[Rule]", "\"\<p\>\""}]}], "]"}]], "Input",
  CellTags->"PaVeReduce",
- CellLabel->"In[5]:=",
+ CellLabel->"In[3]:=",
  CellID->1031771651],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   RowBox[{"-", 
-    FractionBox[
-     FormBox[
-      TagBox[
-       FormBox[
-        RowBox[{
-         SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
-         RowBox[{"t", ",", "mw2", ",", "me2"}], ")"}],
-        TraditionalForm],
-       HoldForm],
-      TraditionalForm], 
-     RowBox[{"mw2", "-", "t"}]]}], "+", 
    FractionBox[
     FormBox[
-     TagBox[
-      FormBox[
-       RowBox[{
-        SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
-        RowBox[{"0", ",", "mw2", ",", "mw2"}], ")"}],
-       TraditionalForm],
-      HoldForm],
+     RowBox[{
+      SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+      RowBox[{"mw2", ",", "0", ",", "mw2"}], ")"}],
      TraditionalForm], 
-    RowBox[{"mw2", "-", "t"}]], "+", 
-   FractionBox["2", 
+    RowBox[{"mw2", "-", "t"}]], "-", 
+   FractionBox[
+    FormBox[
+     RowBox[{
+      SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+      RowBox[{"t", ",", "mw2", ",", "me2"}], ")"}],
+     TraditionalForm], 
     RowBox[{"mw2", "-", "t"}]]}], TraditionalForm]], "Output",
- ImageSize->{334, 42},
+ ImageSize->{254, 34},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"PaVeReduce",
- CellLabel->"Out[5]=",
- CellID->795683657]
+ CellLabel->"Out[3]=",
+ CellID->1972744154]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -290,15 +505,15 @@ Cell[BoxData[
      "\"\<pPaVe2Csmame2mw2tCsmame20mw2.s\>\""}], ",", "String"}], "]"}], 
   "]"}]], "Input",
  CellTags->"PaVeReduce",
- CellLabel->"In[6]:=",
+ CellLabel->"In[4]:=",
  CellID->2052937684],
 
 Cell[BoxData[
  FormBox[
   TagBox[
    TagBox[GridBox[{
-      {"\<\"( 2/(mw2 - t) + B0[0, mw2, mw2]/(mw2 - t) - B0[t, mw2, \
-SmallVariable[me2]]/\"\>"},
+      {"\<\"( PaVe[0, {mw2}, {0, mw2}]/(mw2 - t) - PaVe[0, {t}, {mw2, \
+SmallVariable[me2]}]/\"\>"},
       {"\<\"  (mw2 - t)\"\>"},
       {"\<\"  ) \"\>"}
      },
@@ -315,12 +530,12 @@ SmallVariable[me2]]/\"\>"},
     Column],
    Function[BoxForm`e$, 
     TableForm[BoxForm`e$]]], TraditionalForm]], "Output",
- ImageSize->{517, 51},
+ ImageSize->{533, 49},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"PaVeReduce",
- CellLabel->"Out[6]//TableForm=",
- CellID->1465048226]
+ CellLabel->"Out[4]//TableForm=",
+ CellID->1778677368]
 }, Open  ]],
 
 Cell[BoxData[
@@ -330,7 +545,7 @@ Cell[BoxData[
    "FileNames", "[", "\"\<pPaVe2Csmame2mw2tCsmame20mw2.s\>\"", "]"}]}], 
   ";"}]], "Input",
  CellTags->"PaVeReduce",
- CellLabel->"In[7]:=",
+ CellLabel->"In[5]:=",
  CellID->1002068234],
 
 Cell[BoxData[
@@ -338,7 +553,7 @@ Cell[BoxData[
   RowBox[{"se", "=", 
    RowBox[{"SmallVariable", "[", "ME2", "]"}]}], ";"}]], "Input",
  CellTags->"PaVeReduce",
- CellLabel->"In[8]:=",
+ CellLabel->"In[6]:=",
  CellID->175960789],
 
 Cell[CellGroupData[{
@@ -362,43 +577,183 @@ Cell[BoxData[
      RowBox[{"IsolateNames", "\[Rule]", "F"}]}], "]"}], "//", 
    "FRH"}]}]], "Input",
  CellTags->"PaVeReduce",
- CellLabel->"In[9]:=",
+ CellLabel->"In[7]:=",
  CellID->1868254708],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{"D", " ", 
+      RowBox[{"(", 
+       RowBox[{"MW2", "-", "S"}], ")"}], " ", 
+      SuperscriptBox["T", "2"], " ", 
+      FormBox[
+       RowBox[{
+        SubscriptBox["\<\"D\"\>", "\<\"0\"\>"], "(", 
+        RowBox[{
+        "ME2", ",", "MW2", ",", "MW2", ",", "ME2", ",", "S", ",", "T", ",", 
+         "0", ",", "ME2", ",", "0", ",", "ME2"}], ")"}],
+       TraditionalForm], " ", 
+      SuperscriptBox["S", "3"]}], 
+     RowBox[{"8", " ", 
+      RowBox[{"(", 
+       RowBox[{"3", "-", "D"}], ")"}], " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         SuperscriptBox["MW2", "2"], "-", 
+         RowBox[{"S", " ", "U"}]}], ")"}], "3"]}]]}], "-", 
+   FractionBox[
+    RowBox[{"D", " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"MW2", "-", "S"}], ")"}], "2"], " ", "T", " ", 
+     FormBox[
+      RowBox[{
+       SubscriptBox["\<\"C\"\>", "\<\"0\"\>"], "(", 
+       RowBox[{"MW2", ",", "S", ",", "ME2", ",", "ME2", ",", "0", ",", "0"}], 
+       ")"}],
+      TraditionalForm], " ", 
+     SuperscriptBox["S", "2"]}], 
+    RowBox[{"4", " ", 
+     RowBox[{"(", 
+      RowBox[{"3", "-", "D"}], ")"}], " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["MW2", "2"], "-", 
+        RowBox[{"S", " ", "U"}]}], ")"}], "3"]}]], "+", 
+   FractionBox[
+    RowBox[{"D", " ", 
+     RowBox[{"(", 
+      RowBox[{"MW2", "-", "S"}], ")"}], " ", 
+     SuperscriptBox["T", "2"], " ", 
+     FormBox[
+      RowBox[{
+       SubscriptBox["\<\"C\"\>", "\<\"0\"\>"], "(", 
+       RowBox[{
+       "T", ",", "ME2", ",", "ME2", ",", "ME2", ",", "ME2", ",", "0"}], ")"}],
+      
+      TraditionalForm], " ", 
+     SuperscriptBox["S", "2"]}], 
+    RowBox[{"8", " ", 
+     RowBox[{"(", 
+      RowBox[{"3", "-", "D"}], ")"}], " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["MW2", "2"], "-", 
+        RowBox[{"S", " ", "U"}]}], ")"}], "3"]}]], "-", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"2", " ", 
+        SuperscriptBox["MW2", "2"]}], "-", 
+       RowBox[{"D", " ", "S", " ", "T"}], "-", 
+       RowBox[{"2", " ", "S", " ", "U"}]}], ")"}], " ", 
+     FormBox[
+      RowBox[{
+       SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+       RowBox[{"S", ",", "0", ",", "0"}], ")"}],
+      TraditionalForm], " ", "S"}], 
+    RowBox[{"2", " ", 
+     RowBox[{"(", 
+      RowBox[{"2", "-", "D"}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{"MW2", "-", "S"}], ")"}], " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["MW2", "2"], "-", 
+        RowBox[{"S", " ", "U"}]}], ")"}], "2"]}]], "-", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox["MW2", "2"], "+", 
+       RowBox[{"2", " ", "S", " ", "MW2"}], "+", 
+       RowBox[{"S", " ", "U"}]}], ")"}], " ", 
+     FormBox[
+      RowBox[{
+       SubscriptBox["\<\"A\"\>", "\<\"0\"\>"], "(", "ME2", ")"}],
+      TraditionalForm]}], 
+    RowBox[{"2", " ", "MW2", " ", 
+     RowBox[{"(", 
+      RowBox[{"MW2", "-", "S"}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"4", " ", "MW2"}], "-", "T"}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox["MW2", "2"], "-", 
+       RowBox[{"S", " ", "U"}]}], ")"}]}]], "+", 
    RowBox[{
     RowBox[{"(", 
      RowBox[{
       RowBox[{"(", 
-       RowBox[{"MW2", "+", "S"}], ")"}], " ", 
-      RowBox[{"(", 
        RowBox[{
-        RowBox[{"4", " ", 
-         SuperscriptBox["MW2", "3"]}], "-", 
-        RowBox[{"9", " ", 
-         SuperscriptBox["MW2", "2"], " ", "S"}], "-", 
         RowBox[{
-         SuperscriptBox["MW2", "2"], " ", "U"}], "-", 
-        RowBox[{"4", " ", "MW2", " ", "S", " ", "U"}], "+", 
+         RowBox[{"-", "2"}], " ", "D", " ", 
+         SuperscriptBox["MW2", "5"]}], "+", 
+        RowBox[{"16", " ", 
+         SuperscriptBox["MW2", "5"]}], "-", 
+        RowBox[{"3", " ", "D", " ", "S", " ", 
+         SuperscriptBox["MW2", "4"]}], "+", 
+        RowBox[{"2", " ", "S", " ", 
+         SuperscriptBox["MW2", "4"]}], "-", 
+        RowBox[{"3", " ", "D", " ", "U", " ", 
+         SuperscriptBox["MW2", "4"]}], "+", 
+        RowBox[{"10", " ", "U", " ", 
+         SuperscriptBox["MW2", "4"]}], "-", 
+        RowBox[{"8", " ", "D", " ", 
+         SuperscriptBox["S", "2"], " ", 
+         SuperscriptBox["MW2", "3"]}], "+", 
+        RowBox[{"4", " ", "D", " ", "S", " ", "U", " ", 
+         SuperscriptBox["MW2", "3"]}], "-", 
+        RowBox[{"16", " ", "S", " ", "U", " ", 
+         SuperscriptBox["MW2", "3"]}], "+", 
+        RowBox[{"2", " ", "D", " ", 
+         SuperscriptBox["S", "3"], " ", 
+         SuperscriptBox["MW2", "2"]}], "+", 
+        RowBox[{"4", " ", "D", " ", "S", " ", 
+         SuperscriptBox["U", "2"], " ", 
+         SuperscriptBox["MW2", "2"]}], "-", 
+        RowBox[{"8", " ", "S", " ", 
+         SuperscriptBox["U", "2"], " ", 
+         SuperscriptBox["MW2", "2"]}], "-", 
+        RowBox[{"2", " ", "D", " ", 
+         SuperscriptBox["S", "2"], " ", "U", " ", 
+         SuperscriptBox["MW2", "2"]}], "+", 
+        RowBox[{"2", " ", "D", " ", 
+         SuperscriptBox["S", "4"], " ", "MW2"}], "+", 
+        RowBox[{"4", " ", "D", " ", 
+         SuperscriptBox["S", "3"], " ", "U", " ", "MW2"}], "+", 
+        RowBox[{"D", " ", 
+         SuperscriptBox["S", "2"], " ", 
+         SuperscriptBox["U", "3"]}], "-", 
         RowBox[{"2", " ", 
-         SuperscriptBox["S", "3"]}], "+", 
-        RowBox[{"5", " ", 
-         SuperscriptBox["S", "2"], " ", "U"}], "+", 
-        RowBox[{"3", " ", "S", " ", 
+         SuperscriptBox["S", "2"], " ", 
+         SuperscriptBox["U", "3"]}], "+", 
+        RowBox[{"D", " ", 
+         SuperscriptBox["S", "3"], " ", 
+         SuperscriptBox["U", "2"]}], "-", 
+        RowBox[{"2", " ", 
+         SuperscriptBox["S", "3"], " ", 
          SuperscriptBox["U", "2"]}]}], ")"}], " ", 
       FormBox[
-       TagBox[
-        FormBox[
-         RowBox[{
-          SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
-          RowBox[{"T", ",", "ME2", ",", "ME2"}], ")"}],
-         TraditionalForm],
-        HoldForm],
+       RowBox[{
+        SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+        RowBox[{"MW2", ",", "0", ",", "ME2"}], ")"}],
        TraditionalForm]}], ")"}], "/", 
     RowBox[{"(", 
      RowBox[{"2", " ", 
+      RowBox[{"(", 
+       RowBox[{"2", "-", "D"}], ")"}], " ", 
+      RowBox[{"(", 
+       RowBox[{"MW2", "-", "S"}], ")"}], " ", 
       SuperscriptBox[
        RowBox[{"(", 
         RowBox[{
@@ -413,47 +768,48 @@ Cell[BoxData[
      RowBox[{
       RowBox[{"(", 
        RowBox[{
-        RowBox[{"4", " ", 
-         SuperscriptBox["MW2", "5"]}], "-", 
-        RowBox[{"5", " ", 
-         SuperscriptBox["MW2", "4"], " ", "S"}], "-", 
-        RowBox[{
-         SuperscriptBox["MW2", "4"], " ", "U"}], "-", 
-        RowBox[{"16", " ", 
-         SuperscriptBox["MW2", "3"], " ", 
-         SuperscriptBox["S", "2"]}], "+", 
-        RowBox[{"4", " ", 
-         SuperscriptBox["MW2", "2"], " ", 
-         SuperscriptBox["S", "3"]}], "-", 
-        RowBox[{"4", " ", 
-         SuperscriptBox["MW2", "2"], " ", 
-         SuperscriptBox["S", "2"], " ", "U"}], "+", 
-        RowBox[{"4", " ", 
-         SuperscriptBox["MW2", "2"], " ", "S", " ", 
-         SuperscriptBox["U", "2"]}], "+", 
-        RowBox[{"4", " ", "MW2", " ", 
-         SuperscriptBox["S", "4"]}], "+", 
-        RowBox[{"8", " ", "MW2", " ", 
-         SuperscriptBox["S", "3"], " ", "U"}], "+", 
-        RowBox[{
-         SuperscriptBox["S", "3"], " ", 
-         SuperscriptBox["U", "2"]}], "+", 
-        RowBox[{
+        RowBox[{"20", " ", 
+         SuperscriptBox["MW2", "4"]}], "-", 
+        RowBox[{"2", " ", "D", " ", "S", " ", 
+         SuperscriptBox["MW2", "3"]}], "-", 
+        RowBox[{"12", " ", "S", " ", 
+         SuperscriptBox["MW2", "3"]}], "-", 
+        RowBox[{"6", " ", "T", " ", 
+         SuperscriptBox["MW2", "3"]}], "-", 
+        RowBox[{"2", " ", "D", " ", "U", " ", 
+         SuperscriptBox["MW2", "3"]}], "-", 
+        RowBox[{"4", " ", "D", " ", 
          SuperscriptBox["S", "2"], " ", 
-         SuperscriptBox["U", "3"]}]}], ")"}], " ", 
+         SuperscriptBox["MW2", "2"]}], "+", 
+        RowBox[{"2", " ", "S", " ", "T", " ", 
+         SuperscriptBox["MW2", "2"]}], "-", 
+        RowBox[{"20", " ", "S", " ", "U", " ", 
+         SuperscriptBox["MW2", "2"]}], "+", 
+        RowBox[{"D", " ", 
+         SuperscriptBox["S", "3"], " ", "MW2"}], "+", 
+        RowBox[{"3", " ", "D", " ", "S", " ", 
+         SuperscriptBox["U", "2"], " ", "MW2"}], "+", 
+        RowBox[{"12", " ", 
+         SuperscriptBox["S", "2"], " ", "U", " ", "MW2"}], "+", 
+        RowBox[{"6", " ", "S", " ", "T", " ", "U", " ", "MW2"}], "+", 
+        RowBox[{"D", " ", 
+         SuperscriptBox["S", "4"]}], "+", 
+        RowBox[{"D", " ", 
+         SuperscriptBox["S", "2"], " ", 
+         SuperscriptBox["U", "2"]}], "+", 
+        RowBox[{"2", " ", "D", " ", 
+         SuperscriptBox["S", "3"], " ", "U"}], "-", 
+        RowBox[{"2", " ", 
+         SuperscriptBox["S", "2"], " ", "T", " ", "U"}]}], ")"}], " ", 
       FormBox[
-       TagBox[
-        FormBox[
-         RowBox[{
-          SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
-          RowBox[{"MW2", ",", "0", ",", "ME2"}], ")"}],
-         TraditionalForm],
-        HoldForm],
+       RowBox[{
+        SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+        RowBox[{"T", ",", "ME2", ",", "ME2"}], ")"}],
        TraditionalForm]}], ")"}], "/", 
     RowBox[{"(", 
      RowBox[{"2", " ", 
       RowBox[{"(", 
-       RowBox[{"MW2", "-", "S"}], ")"}], " ", 
+       RowBox[{"2", "-", "D"}], ")"}], " ", 
       SuperscriptBox[
        RowBox[{"(", 
         RowBox[{
@@ -462,139 +818,190 @@ Cell[BoxData[
        RowBox[{"(", 
         RowBox[{
          SuperscriptBox["MW2", "2"], "-", 
-         RowBox[{"S", " ", "U"}]}], ")"}], "2"]}], ")"}]}], "+", 
-   FractionBox[
-    RowBox[{"S", " ", 
-     RowBox[{"(", 
-      RowBox[{
-       SuperscriptBox["MW2", "2"], "-", 
-       RowBox[{"4", " ", "MW2", " ", "S"}], "+", 
-       RowBox[{"2", " ", 
-        SuperscriptBox["S", "2"]}], "+", 
-       RowBox[{"S", " ", "U"}]}], ")"}], " ", 
-     FormBox[
-      TagBox[
-       FormBox[
-        RowBox[{
-         SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
-         RowBox[{"S", ",", "0", ",", "0"}], ")"}],
-        TraditionalForm],
-       HoldForm],
-      TraditionalForm]}], 
-    RowBox[{"2", " ", 
-     RowBox[{"(", 
-      RowBox[{"MW2", "-", "S"}], ")"}], " ", 
-     SuperscriptBox[
-      RowBox[{"(", 
-       RowBox[{
-        SuperscriptBox["MW2", "2"], "-", 
-        RowBox[{"S", " ", "U"}]}], ")"}], "2"]}]], "-", 
-   FractionBox[
-    RowBox[{
-     SuperscriptBox["S", "2"], " ", 
-     SuperscriptBox["T", "2"], " ", 
-     RowBox[{"(", 
-      RowBox[{"MW2", "-", "S"}], ")"}], " ", 
-     FormBox[
-      TagBox[
-       FormBox[
-        RowBox[{
-         SubscriptBox["\<\"C\"\>", "\<\"0\"\>"], "(", 
-         RowBox[{
-         "T", ",", "ME2", ",", "ME2", ",", "ME2", ",", "ME2", ",", "0"}], 
-         ")"}],
-        TraditionalForm],
-       HoldForm],
-      TraditionalForm]}], 
-    RowBox[{"2", " ", 
-     SuperscriptBox[
-      RowBox[{"(", 
-       RowBox[{
-        SuperscriptBox["MW2", "2"], "-", 
-        RowBox[{"S", " ", "U"}]}], ")"}], "3"]}]], "+", 
-   FractionBox[
-    RowBox[{
-     SuperscriptBox["S", "2"], " ", "T", " ", 
-     SuperscriptBox[
-      RowBox[{"(", 
-       RowBox[{"MW2", "-", "S"}], ")"}], "2"], " ", 
-     FormBox[
-      TagBox[
-       FormBox[
-        RowBox[{
-         SubscriptBox["\<\"C\"\>", "\<\"0\"\>"], "(", 
-         RowBox[{
-         "MW2", ",", "S", ",", "ME2", ",", "ME2", ",", "0", ",", "0"}], ")"}],
-        
-        TraditionalForm],
-       HoldForm],
-      TraditionalForm]}], 
-    SuperscriptBox[
-     RowBox[{"(", 
-      RowBox[{
-       SuperscriptBox["MW2", "2"], "-", 
-       RowBox[{"S", " ", "U"}]}], ")"}], "3"]], "-", 
+         RowBox[{"S", " ", "U"}]}], ")"}], "2"]}], ")"}]}], "-", 
    RowBox[{
     RowBox[{"(", 
      RowBox[{
       RowBox[{"(", 
-       RowBox[{"MW2", "+", "S"}], ")"}], " ", 
-      RowBox[{"(", 
        RowBox[{
-        RowBox[{"2", " ", 
+        RowBox[{"128", " ", "D", " ", 
+         SuperscriptBox["MW2", "7"]}], "+", 
+        RowBox[{"48", " ", 
+         SuperscriptBox["MW2", "7"]}], "-", 
+        RowBox[{"608", " ", "D", " ", "S", " ", 
          SuperscriptBox["MW2", "6"]}], "-", 
-        RowBox[{"8", " ", 
-         SuperscriptBox["MW2", "5"], " ", "S"}], "-", 
-        RowBox[{"2", " ", 
-         SuperscriptBox["MW2", "5"], " ", "T"}], "+", 
-        RowBox[{"12", " ", 
-         SuperscriptBox["MW2", "4"], " ", 
-         SuperscriptBox["S", "2"]}], "+", 
-        RowBox[{"20", " ", 
-         SuperscriptBox["MW2", "4"], " ", "S", " ", "T"}], "-", 
-        RowBox[{"8", " ", 
-         SuperscriptBox["MW2", "3"], " ", 
-         SuperscriptBox["S", "3"]}], "-", 
-        RowBox[{"36", " ", 
-         SuperscriptBox["MW2", "3"], " ", 
-         SuperscriptBox["S", "2"], " ", "T"}], "-", 
-        RowBox[{"6", " ", 
-         SuperscriptBox["MW2", "3"], " ", "S", " ", 
-         SuperscriptBox["T", "2"]}], "+", 
-        RowBox[{"2", " ", 
-         SuperscriptBox["MW2", "2"], " ", 
-         SuperscriptBox["S", "4"]}], "+", 
-        RowBox[{"20", " ", 
-         SuperscriptBox["MW2", "2"], " ", 
-         SuperscriptBox["S", "3"], " ", "T"}], "+", 
-        RowBox[{"6", " ", 
-         SuperscriptBox["MW2", "2"], " ", 
+        RowBox[{"128", " ", "D", " ", "T", " ", 
+         SuperscriptBox["MW2", "6"]}], "-", 
+        RowBox[{"144", " ", "U", " ", 
+         SuperscriptBox["MW2", "6"]}], "-", 
+        RowBox[{"4", " ", 
+         SuperscriptBox["D", "2"], " ", 
          SuperscriptBox["S", "2"], " ", 
-         SuperscriptBox["T", "2"]}], "-", 
-        RowBox[{"2", " ", "MW2", " ", 
-         SuperscriptBox["S", "4"], " ", "T"}], "-", 
-        RowBox[{"6", " ", "MW2", " ", 
+         SuperscriptBox["MW2", "5"]}], "+", 
+        RowBox[{"1152", " ", "D", " ", 
+         SuperscriptBox["S", "2"], " ", 
+         SuperscriptBox["MW2", "5"]}], "+", 
+        RowBox[{"28", " ", "D", " ", 
+         SuperscriptBox["T", "2"], " ", 
+         SuperscriptBox["MW2", "5"]}], "-", 
+        RowBox[{"4", " ", 
+         SuperscriptBox["D", "2"], " ", 
+         SuperscriptBox["U", "2"], " ", 
+         SuperscriptBox["MW2", "5"]}], "+", 
+        RowBox[{"888", " ", "D", " ", "S", " ", "T", " ", 
+         SuperscriptBox["MW2", "5"]}], "-", 
+        RowBox[{"8", " ", 
+         SuperscriptBox["D", "2"], " ", "S", " ", "U", " ", 
+         SuperscriptBox["MW2", "5"]}], "-", 
+        RowBox[{"96", " ", "S", " ", "U", " ", 
+         SuperscriptBox["MW2", "5"]}], "+", 
+        RowBox[{"48", " ", "T", " ", "U", " ", 
+         SuperscriptBox["MW2", "5"]}], "-", 
+        RowBox[{"16", " ", 
+         SuperscriptBox["D", "2"], " ", 
          SuperscriptBox["S", "3"], " ", 
-         SuperscriptBox["T", "2"]}], "+", 
-        RowBox[{"4", " ", "MW2", " ", 
+         SuperscriptBox["MW2", "4"]}], "-", 
+        RowBox[{"1088", " ", "D", " ", 
+         SuperscriptBox["S", "3"], " ", 
+         SuperscriptBox["MW2", "4"]}], "-", 
+        RowBox[{"420", " ", "D", " ", "S", " ", 
+         SuperscriptBox["T", "2"], " ", 
+         SuperscriptBox["MW2", "4"]}], "+", 
+        RowBox[{"288", " ", "S", " ", 
+         SuperscriptBox["U", "2"], " ", 
+         SuperscriptBox["MW2", "4"]}], "-", 
+        RowBox[{"1840", " ", "D", " ", 
+         SuperscriptBox["S", "2"], " ", "T", " ", 
+         SuperscriptBox["MW2", "4"]}], "+", 
+        RowBox[{"6", " ", 
+         SuperscriptBox["D", "2"], " ", 
+         SuperscriptBox["S", "4"], " ", 
+         SuperscriptBox["MW2", "3"]}], "+", 
+        RowBox[{"512", " ", "D", " ", 
+         SuperscriptBox["S", "4"], " ", 
+         SuperscriptBox["MW2", "3"]}], "+", 
+        RowBox[{"64", " ", "D", " ", "S", " ", 
+         SuperscriptBox["T", "3"], " ", 
+         SuperscriptBox["MW2", "3"]}], "+", 
+        RowBox[{"10", " ", 
+         SuperscriptBox["D", "2"], " ", "S", " ", 
+         SuperscriptBox["U", "3"], " ", 
+         SuperscriptBox["MW2", "3"]}], "+", 
+        RowBox[{"1116", " ", "D", " ", 
          SuperscriptBox["S", "2"], " ", 
-         SuperscriptBox["T", "3"]}], "-", 
+         SuperscriptBox["T", "2"], " ", 
+         SuperscriptBox["MW2", "3"]}], "+", 
+        RowBox[{"18", " ", 
+         SuperscriptBox["D", "2"], " ", 
+         SuperscriptBox["S", "2"], " ", 
+         SuperscriptBox["U", "2"], " ", 
+         SuperscriptBox["MW2", "3"]}], "+", 
+        RowBox[{"48", " ", 
+         SuperscriptBox["S", "2"], " ", 
+         SuperscriptBox["U", "2"], " ", 
+         SuperscriptBox["MW2", "3"]}], "-", 
+        RowBox[{"96", " ", "S", " ", "T", " ", 
+         SuperscriptBox["U", "2"], " ", 
+         SuperscriptBox["MW2", "3"]}], "+", 
+        RowBox[{"1568", " ", "D", " ", 
+         SuperscriptBox["S", "3"], " ", "T", " ", 
+         SuperscriptBox["MW2", "3"]}], "-", 
+        RowBox[{"2", " ", 
+         SuperscriptBox["D", "2"], " ", 
+         SuperscriptBox["S", "3"], " ", "U", " ", 
+         SuperscriptBox["MW2", "3"]}], "+", 
+        RowBox[{"8", " ", 
+         SuperscriptBox["D", "2"], " ", 
+         SuperscriptBox["S", "5"], " ", 
+         SuperscriptBox["MW2", "2"]}], "-", 
+        RowBox[{"96", " ", "D", " ", 
+         SuperscriptBox["S", "5"], " ", 
+         SuperscriptBox["MW2", "2"]}], "-", 
+        RowBox[{"324", " ", "D", " ", 
+         SuperscriptBox["S", "2"], " ", 
+         SuperscriptBox["T", "3"], " ", 
+         SuperscriptBox["MW2", "2"]}], "-", 
+        RowBox[{"144", " ", 
+         SuperscriptBox["S", "2"], " ", 
+         SuperscriptBox["U", "3"], " ", 
+         SuperscriptBox["MW2", "2"]}], "-", 
+        RowBox[{"716", " ", "D", " ", 
+         SuperscriptBox["S", "3"], " ", 
+         SuperscriptBox["T", "2"], " ", 
+         SuperscriptBox["MW2", "2"]}], "+", 
+        RowBox[{"8", " ", 
+         SuperscriptBox["D", "2"], " ", 
+         SuperscriptBox["S", "3"], " ", 
+         SuperscriptBox["U", "2"], " ", 
+         SuperscriptBox["MW2", "2"]}], "-", 
+        RowBox[{"528", " ", "D", " ", 
+         SuperscriptBox["S", "4"], " ", "T", " ", 
+         SuperscriptBox["MW2", "2"]}], "+", 
+        RowBox[{"16", " ", 
+         SuperscriptBox["D", "2"], " ", 
+         SuperscriptBox["S", "4"], " ", "U", " ", 
+         SuperscriptBox["MW2", "2"]}], "-", 
         RowBox[{
+         SuperscriptBox["D", "2"], " ", 
+         SuperscriptBox["S", "6"], " ", "MW2"}], "+", 
+        RowBox[{"38", " ", "D", " ", 
          SuperscriptBox["S", "2"], " ", 
-         SuperscriptBox["T", "4"]}]}], ")"}], " ", 
+         SuperscriptBox["T", "4"], " ", "MW2"}], "-", 
+        RowBox[{"7", " ", 
+         SuperscriptBox["D", "2"], " ", 
+         SuperscriptBox["S", "2"], " ", 
+         SuperscriptBox["U", "4"], " ", "MW2"}], "+", 
+        RowBox[{"100", " ", "D", " ", 
+         SuperscriptBox["S", "3"], " ", 
+         SuperscriptBox["T", "3"], " ", "MW2"}], "-", 
+        RowBox[{"6", " ", 
+         SuperscriptBox["D", "2"], " ", 
+         SuperscriptBox["S", "3"], " ", 
+         SuperscriptBox["U", "3"], " ", "MW2"}], "+", 
+        RowBox[{"48", " ", 
+         SuperscriptBox["S", "2"], " ", "T", " ", 
+         SuperscriptBox["U", "3"], " ", "MW2"}], "+", 
+        RowBox[{"120", " ", "D", " ", 
+         SuperscriptBox["S", "4"], " ", 
+         SuperscriptBox["T", "2"], " ", "MW2"}], "+", 
+        RowBox[{"40", " ", "D", " ", 
+         SuperscriptBox["S", "5"], " ", "T", " ", "MW2"}], "-", 
+        RowBox[{"2", " ", 
+         SuperscriptBox["D", "2"], " ", 
+         SuperscriptBox["S", "5"], " ", "U", " ", "MW2"}], "-", 
+        RowBox[{
+         SuperscriptBox["D", "2"], " ", 
+         SuperscriptBox["S", "7"]}], "+", 
+        RowBox[{"2", " ", "D", " ", 
+         SuperscriptBox["S", "3"], " ", 
+         SuperscriptBox["T", "4"]}], "-", 
+        RowBox[{
+         SuperscriptBox["D", "2"], " ", 
+         SuperscriptBox["S", "3"], " ", 
+         SuperscriptBox["U", "4"]}], "-", 
+        RowBox[{"4", " ", 
+         SuperscriptBox["D", "2"], " ", 
+         SuperscriptBox["S", "4"], " ", 
+         SuperscriptBox["U", "3"]}], "-", 
+        RowBox[{"6", " ", 
+         SuperscriptBox["D", "2"], " ", 
+         SuperscriptBox["S", "5"], " ", 
+         SuperscriptBox["U", "2"]}], "-", 
+        RowBox[{"4", " ", 
+         SuperscriptBox["D", "2"], " ", 
+         SuperscriptBox["S", "6"], " ", "U"}]}], ")"}], " ", 
       FormBox[
-       TagBox[
-        FormBox[
-         RowBox[{
-          SubscriptBox["\<\"C\"\>", "\<\"0\"\>"], "(", 
-          RowBox[{
-          "MW2", ",", "MW2", ",", "T", ",", "ME2", ",", "0", ",", "ME2"}], 
-          ")"}],
-         TraditionalForm],
-        HoldForm],
+       RowBox[{
+        SubscriptBox["\<\"C\"\>", "\<\"0\"\>"], "(", 
+        RowBox[{
+        "MW2", ",", "MW2", ",", "T", ",", "ME2", ",", "0", ",", "ME2"}], ")"}],
        TraditionalForm]}], ")"}], "/", 
     RowBox[{"(", 
-     RowBox[{"2", " ", 
+     RowBox[{"8", " ", 
+      RowBox[{"(", 
+       RowBox[{"2", "-", "D"}], ")"}], " ", 
+      RowBox[{"(", 
+       RowBox[{"3", "-", "D"}], ")"}], " ", 
       SuperscriptBox[
        RowBox[{"(", 
         RowBox[{
@@ -603,49 +1010,15 @@ Cell[BoxData[
        RowBox[{"(", 
         RowBox[{
          SuperscriptBox["MW2", "2"], "-", 
-         RowBox[{"S", " ", "U"}]}], ")"}], "3"]}], ")"}]}], "+", 
-   FractionBox[
-    RowBox[{
-     SuperscriptBox["S", "3"], " ", 
-     SuperscriptBox["T", "2"], " ", 
-     RowBox[{"(", 
-      RowBox[{"MW2", "-", "S"}], ")"}], " ", 
-     FormBox[
-      TagBox[
-       FormBox[
-        RowBox[{
-         SubscriptBox["\<\"D\"\>", "\<\"0\"\>"], "(", 
-         RowBox[{
-         "MW2", ",", "MW2", ",", "ME2", ",", "ME2", ",", "T", ",", "S", ",", 
-          "ME2", ",", "0", ",", "ME2", ",", "0"}], ")"}],
-        TraditionalForm],
-       HoldForm],
-      TraditionalForm]}], 
-    RowBox[{"2", " ", 
-     SuperscriptBox[
-      RowBox[{"(", 
-       RowBox[{
-        SuperscriptBox["MW2", "2"], "-", 
-        RowBox[{"S", " ", "U"}]}], ")"}], "3"]}]], "-", 
-   FractionBox[
-    RowBox[{"MW2", "+", "S"}], 
-    RowBox[{"2", " ", 
-     RowBox[{"(", 
-      RowBox[{
-       RowBox[{"4", " ", "MW2"}], "-", "T"}], ")"}], " ", 
-     RowBox[{"(", 
-      RowBox[{
-       SuperscriptBox["MW2", "2"], "-", 
-       RowBox[{"S", " ", "U"}]}], ")"}]}]]}], TraditionalForm]], "Output",
- ImageSize->{576, 512},
+         RowBox[{"S", " ", "U"}]}], ")"}], "3"]}], ")"}]}]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{579, 824},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"PaVeReduce",
- CellLabel->"Out[9]=",
- CellID->2007769481]
+ CellLabel->"Out[7]=",
+ CellID->775966781]
 }, Open  ]],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
@@ -655,110 +1028,8 @@ Cell[BoxData[
     RowBox[{"FormatType", "\[Rule]", "FortranForm"}]}], "]"}], ";"}]], "Input",\
 
  CellTags->"PaVeReduce",
- CellLabel->"In[10]:=",
+ CellLabel->"In[8]:=",
  CellID->1848976065],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- FormBox[
-  InterpretationBox[
-   RowBox[{"\<\"FORTRAN generation WARNING!\\n\\t\\t\\t\\t\\tLine encountered \
-with more than 72 characters. Check line \"\>", "\[InvisibleSpace]", "1", 
-    "\[InvisibleSpace]", "\<\" and \"\>", "\[InvisibleSpace]", "2"}],
-   SequenceForm[
-   "FORTRAN generation WARNING!\n\t\t\t\t\tLine encountered with more than 72 \
-characters. Check line ", 1, " and ", 2],
-   Editable->False], TraditionalForm]], "Print",
- CellTags->"PaVeReduce",
- CellLabel->"During evaluation of In[10]:=",
- CellID->166843212],
-
-Cell[BoxData[
- FormBox[
-  InterpretationBox[
-   RowBox[{"\<\"FORTRAN generation WARNING!\\n\\t\\t\\t\\t\\tLine encountered \
-with more than 72 characters. Check line \"\>", "\[InvisibleSpace]", "3", 
-    "\[InvisibleSpace]", "\<\" and \"\>", "\[InvisibleSpace]", "4"}],
-   SequenceForm[
-   "FORTRAN generation WARNING!\n\t\t\t\t\tLine encountered with more than 72 \
-characters. Check line ", 3, " and ", 4],
-   Editable->False], TraditionalForm]], "Print",
- CellTags->"PaVeReduce",
- CellLabel->"During evaluation of In[10]:=",
- CellID->698332942],
-
-Cell[BoxData[
- FormBox[
-  InterpretationBox[
-   RowBox[{"\<\"FORTRAN generation WARNING!\\n\\t\\t\\t\\t\\tLine encountered \
-with more than 72 characters. Check line \"\>", "\[InvisibleSpace]", "7", 
-    "\[InvisibleSpace]", "\<\" and \"\>", "\[InvisibleSpace]", "8"}],
-   SequenceForm[
-   "FORTRAN generation WARNING!\n\t\t\t\t\tLine encountered with more than 72 \
-characters. Check line ", 7, " and ", 8],
-   Editable->False], TraditionalForm]], "Print",
- CellTags->"PaVeReduce",
- CellLabel->"During evaluation of In[10]:=",
- CellID->1548805099],
-
-Cell[BoxData[
- FormBox[
-  InterpretationBox[
-   RowBox[{"\<\"FORTRAN generation WARNING!\\n\\t\\t\\t\\t\\tLine encountered \
-with more than 72 characters. Check line \"\>", "\[InvisibleSpace]", "11", 
-    "\[InvisibleSpace]", "\<\" and \"\>", "\[InvisibleSpace]", "12"}],
-   SequenceForm[
-   "FORTRAN generation WARNING!\n\t\t\t\t\tLine encountered with more than 72 \
-characters. Check line ", 11, " and ", 12],
-   Editable->False], TraditionalForm]], "Print",
- CellTags->"PaVeReduce",
- CellLabel->"During evaluation of In[10]:=",
- CellID->1669457698],
-
-Cell[BoxData[
- FormBox[
-  InterpretationBox[
-   RowBox[{"\<\"FORTRAN generation WARNING!\\n\\t\\t\\t\\t\\tLine encountered \
-with more than 72 characters. Check line \"\>", "\[InvisibleSpace]", "13", 
-    "\[InvisibleSpace]", "\<\" and \"\>", "\[InvisibleSpace]", "14"}],
-   SequenceForm[
-   "FORTRAN generation WARNING!\n\t\t\t\t\tLine encountered with more than 72 \
-characters. Check line ", 13, " and ", 14],
-   Editable->False], TraditionalForm]], "Print",
- CellTags->"PaVeReduce",
- CellLabel->"During evaluation of In[10]:=",
- CellID->1662947713],
-
-Cell[BoxData[
- FormBox[
-  InterpretationBox[
-   RowBox[{"\<\"FORTRAN generation WARNING!\\n\\t\\t\\t\\t\\tLine encountered \
-with more than 72 characters. Check line \"\>", "\[InvisibleSpace]", "15", 
-    "\[InvisibleSpace]", "\<\" and \"\>", "\[InvisibleSpace]", "16"}],
-   SequenceForm[
-   "FORTRAN generation WARNING!\n\t\t\t\t\tLine encountered with more than 72 \
-characters. Check line ", 15, " and ", 16],
-   Editable->False], TraditionalForm]], "Print",
- CellTags->"PaVeReduce",
- CellLabel->"During evaluation of In[10]:=",
- CellID->481089128],
-
-Cell[BoxData[
- FormBox[
-  InterpretationBox[
-   RowBox[{"\<\"FORTRAN generation WARNING!\\n\\t\\t\\t\\t\\tLine encountered \
-with more than 72 characters. Check line \"\>", "\[InvisibleSpace]", "17", 
-    "\[InvisibleSpace]", "\<\" and \"\>", "\[InvisibleSpace]", "18"}],
-   SequenceForm[
-   "FORTRAN generation WARNING!\n\t\t\t\t\tLine encountered with more than 72 \
-characters. Check line ", 17, " and ", 18],
-   Editable->False], TraditionalForm]], "Print",
- CellTags->"PaVeReduce",
- CellLabel->"During evaluation of In[10]:=",
- CellID->2099280721]
-}, Open  ]]
-}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -773,44 +1044,96 @@ Cell[BoxData[
         ",", "\"\<\>\""}], "]"}], "<>", "\"\<fctd122.for\>\""}], ",", 
     "String"}], "]"}], "]"}]], "Input",
  CellTags->"PaVeReduce",
- CellLabel->"In[11]:=",
+ CellLabel->"In[9]:=",
  CellID->193852328],
 
 Cell[BoxData[
  FormBox[
   TagBox[
    TagBox[GridBox[{
-      {"\<\"        d122res = (-0.5*(MW2 + S))/((4.*MW2 - 1.*T)*(MW2^2 - \
-1.*S*U)) - \"\>"},
-      {"\<\" (0.5*(4.*MW2^5 - 5.*MW2^4*S - 16.*MW2^3*S^2 + 4.*MW2^2*S^3 + \
-4.*MW2*S^4 - \"\>"},
-      {"\<\"    1.*MW2^4*U - 4.*MW2^2*S^2*U + 8.*MW2*S^3*U + 4.*MW2^2*S*U^2 + \
-S^3*U^2 + \"\>"},
-      {"\<\"    S^2*U^3)*B0[MW2, 0., ME2])/((MW2 - 1.*S)*(4.*MW2 - 1.*T)^2*\"\
-\>"},
-      {"\<\"   (MW2^2 - 1.*S*U)^2) + (0.5*S*(MW2^2 - 4.*MW2*S + 2.*S^2 + \
-S*U)*\"\>"},
-      {"\<\"   B0[S, 0., 0.])/((MW2 - 1.*S)*(MW2^2 - 1.*S*U)^2) + \"\>"},
-      {"\<\" (0.5*(MW2 + S)*(4.*MW2^3 - 9.*MW2^2*S + 2.*S^3 - 1.*MW2^2*U - \
-4.*MW2*S*U + \"\>"},
-      {"\<\"    5.*S^2*U + 3.*S*U^2)*B0[T, ME2, ME2])/((4.*MW2 - \
-1.*T)^2*\"\>"},
-      {"\<\"   (MW2^2 - 1.*S*U)^2) - \"\>"},
-      {"\<\" (0.5*(MW2 + S)*(2.*MW2^6 - 8.*MW2^5*S + 12.*MW2^4*S^2 - \
-8.*MW2^3*S^3 + \"\>"},
-      {"\<\"    2.*MW2^2*S^4 - 2.*MW2^5*T + 20.*MW2^4*S*T - 36.*MW2^3*S^2*T + \
+      {"\<\"        d122res = -((5.D-1*(MW2**2 + S*U + MW2*S*2D0)*\"\>"},
+      {"\<\"     &       PaVe(0D0,List(),List(ME2)))/\"\>"},
+      {"\<\"     &     (MW2*(MW2 - S*1D0)*(MW2**2 - S*U*1D0)*\"\>"},
+      {"\<\"     &       (-(T*1D0) + MW2*4D0))) + \"\>"},
+      {"\<\"     &  (5.D-1*(D*S**3*U**2 + D*S**2*U**3 - D*MW2**5*2D0 + \
 \"\>"},
-      {"\<\"    20.*MW2^2*S^3*T - 2.*MW2*S^4*T - 6.*MW2^3*S*T^2 + \
-6.*MW2^2*S^2*T^2 - \"\>"},
-      {"\<\"    6.*MW2*S^3*T^2 + 4.*MW2*S^2*T^3 - 1.*S^2*T^4)*\"\>"},
-      {"\<\"   C0[MW2, MW2, T, ME2, 0., ME2])/((4.*MW2 - 1.*T)^2*(MW2^2 - \
-1.*S*U)^3) + \"\>"},
-      {"\<\" ((MW2 & 1.*S)^2*S^2*T*C0[MW2, S, ME2, ME2, 0., 0.])/(MW2^2 - \
-1.*S*U)^3 - \"\>"},
-      {"\<\" (0.5*(MW2 - 1.*S)*S^2*T^2*C0[T, ME2, ME2, ME2, ME2, 0.])/\"\>"},
-      {"\<\"  (MW2^2 - 1.*S*U)^3 + (0.5*(MW2 - 1.*S)*S^3*T^2*D0[MW2, MW2, \
-ME2, ME2, T, S, \"\>"},
-      {"\<\"    ME2, 0., ME2, 0.])/(MW2^2 - 1.*S*U)^3\"\>"}
+      {"\<\"     &       MW2**4*S*2D0 + D*MW2**2*S**3*2D0 + \"\>"},
+      {"\<\"     &       D*MW2*S**4*2D0 - D*MW2**2*S**2*U*2D0 - \"\>"},
+      {"\<\"     &       S**3*U**2*2D0 - S**2*U**3*2D0 - D*MW2**4*S*3D0 - \
+\"\>"},
+      {"\<\"     &       D*MW2**4*U*3D0 + D*MW2**3*S*U*4D0 + \"\>"},
+      {"\<\"     &       D*MW2*S**3*U*4D0 + D*MW2**2*S*U**2*4D0 - \"\>"},
+      {"\<\"     &       D*MW2**3*S**2*8D0 - MW2**2*S*U**2*8D0 + \"\>"},
+      {"\<\"     &       MW2**4*U*1.D1 + MW2**5*1.6D1 - \
+MW2**3*S*U*1.6D1)*\"\>"},
+      {"\<\"     &     PaVe(0D0,List(MW2),List(0D0,ME2)))/\"\>"},
+      {"\<\"     &   ((MW2 - S*1D0)*(MW2**2 - S*U*1D0)**2*\"\>"},
+      {"\<\"     &     (-(D*1D0) + 2D0)*(-(T*1D0) + MW2*4D0)**2) - \"\>"},
+      {"\<\"     &  (S*5.D-1*(-(D*S*T*1D0) + MW2**2*2D0 - S*U*2D0)*\"\>"},
+      {"\<\"     &     PaVe(0D0,List(S),List(0D0,0D0)))/\"\>"},
+      {"\<\"     &   ((MW2 - S*1D0)*(MW2**2 - S*U*1D0)**2*\"\>"},
+      {"\<\"     &     (-(D*1D0) + 2D0)) - \"\>"},
+      {"\<\"     &  (5.D-1*(D*MW2*S**3 + D*S**4 + D*S**2*U**2 - \"\>"},
+      {"\<\"     &       D*MW2**3*S*2D0 + MW2**2*S*T*2D0 - \"\>"},
+      {"\<\"     &       D*MW2**3*U*2D0 + D*S**3*U*2D0 - S**2*T*U*2D0 + \"\>"},
+      {"\<\"     &       D*MW2*S*U**2*3D0 - D*MW2**2*S**2*4D0 - \"\>"},
+      {"\<\"     &       MW2**3*T*6D0 + MW2*S*T*U*6D0 - MW2**3*S*1.2D1 + \
+\"\>"},
+      {"\<\"     &       MW2*S**2*U*1.2D1 + MW2**4*2.D1 - \
+MW2**2*S*U*2.D1)\"\>"},
+      {"\<\"     &      *PaVe(0D0,List(T),List(ME2,ME2)))/\"\>"},
+      {"\<\"     &   ((MW2**2 - S*U*1D0)**2*(-(D*1D0) + 2D0)*\"\>"},
+      {"\<\"     &     (-(T*1D0) + MW2*4D0)**2) - \"\>"},
+      {"\<\"     &  (1.25D-1*(-(D**2*MW2*S**6*1D0) - D**2*S**7*1D0 - \"\>"},
+      {"\<\"     &       D**2*S**3*U**4*1D0 + D*S**3*T**4*2D0 - \"\>"},
+      {"\<\"     &       D**2*MW2**3*S**3*U*2D0 - D**2*MW2*S**5*U*2D0 - \"\>"},
+      {"\<\"     &       D**2*MW2**5*S**2*4D0 - D**2*S**6*U*4D0 - \"\>"},
+      {"\<\"     &       D**2*MW2**5*U**2*4D0 - D**2*S**4*U**3*4D0 + \"\>"},
+      {"\<\"     &       D**2*MW2**3*S**4*6D0 - D**2*S**5*U**2*6D0 - \"\>"},
+      {"\<\"     &       D**2*MW2*S**3*U**3*6D0 - \"\>"},
+      {"\<\"     &       D**2*MW2*S**2*U**4*7D0 + D**2*MW2**2*S**5*8D0 - \
+\"\>"},
+      {"\<\"     &       D**2*MW2**5*S*U*8D0 + \"\>"},
+      {"\<\"     &       D**2*MW2**2*S**3*U**2*8D0 + \"\>"},
+      {"\<\"     &       D**2*MW2**3*S*U**3*1.D1 - \"\>"},
+      {"\<\"     &       D**2*MW2**4*S**3*1.6D1 + \"\>"},
+      {"\<\"     &       D**2*MW2**2*S**4*U*1.6D1 + \"\>"},
+      {"\<\"     &       D**2*MW2**3*S**2*U**2*1.8D1 + \"\>"},
+      {"\<\"     &       D*MW2**5*T**2*2.8D1 + D*MW2*S**2*T**4*3.8D1 + \
+\"\>"},
+      {"\<\"     &       D*MW2*S**5*T*4.D1 + MW2**7*4.8D1 + \"\>"},
+      {"\<\"     &       MW2**5*T*U*4.8D1 + MW2**3*S**2*U**2*4.8D1 + \"\>"},
+      {"\<\"     &       MW2*S**2*T*U**3*4.8D1 + D*MW2**3*S*T**3*6.4D1 - \
+\"\>"},
+      {"\<\"     &       D*MW2**2*S**5*9.6D1 - MW2**5*S*U*9.6D1 - \"\>"},
+      {"\<\"     &       MW2**3*S*T*U**2*9.6D1 + D*MW2*S**3*T**3*1.D2 + \"\>"},
+      {"\<\"     &       D*MW2*S**4*T**2*1.2D2 + D*MW2**7*1.28D2 - \"\>"},
+      {"\<\"     &       D*MW2**6*T*1.28D2 - MW2**6*U*1.44D2 - \"\>"},
+      {"\<\"     &       MW2**2*S**2*U**3*1.44D2 + MW2**4*S*U**2*2.88D2 - \
+\"\>"},
+      {"\<\"     &       D*MW2**2*S**2*T**3*3.24D2 - \"\>"},
+      {"\<\"     &       D*MW2**4*S*T**2*4.2D2 + D*MW2**3*S**4*5.12D2 - \"\>"},
+      {"\<\"     &       D*MW2**2*S**4*T*5.28D2 - D*MW2**6*S*6.08D2 - \"\>"},
+      {"\<\"     &       D*MW2**2*S**3*T**2*7.16D2 + \"\>"},
+      {"\<\"     &       D*MW2**5*S*T*8.88D2 - D*MW2**4*S**3*1.088D3 + \
+\"\>"},
+      {"\<\"     &       D*MW2**3*S**2*T**2*1.116D3 + \"\>"},
+      {"\<\"     &       D*MW2**5*S**2*1.152D3 + \"\>"},
+      {"\<\"     &       D*MW2**3*S**3*T*1.568D3 - \
+D*MW2**4*S**2*T*1.84D3)\"\>"},
+      {"\<\"     &      *PaVe(0D0,List(MW2,MW2,T),List(ME2,0D0,ME2)))/\"\>"},
+      {"\<\"     &   ((MW2**2 - S*U*1D0)**3*(-(D*1D0) + 2D0)*\"\>"},
+      {"\<\"     &     (-(D*1D0) + 3D0)*(-(T*1D0) + MW2*4D0)**2) - \"\>"},
+      {"\<\"     &  (D*S**2*T*2.5D-1*(MW2 - S*1D0)**2*\"\>"},
+      {"\<\"     &     PaVe(0D0,List(MW2,S,ME2),List(ME2,0D0,0D0)))/\"\>"},
+      {"\<\"     &   ((MW2**2 - S*U*1D0)**3*(-(D*1D0) + 3D0)) + \"\>"},
+      {"\<\"     &  (D*S**2*T**2*1.25D-1*(MW2 - S*1D0)*\"\>"},
+      {"\<\"     &     PaVe(0D0,List(T,ME2,ME2),List(ME2,ME2,0D0)))/\"\>"},
+      {"\<\"     &   ((MW2**2 - S*U*1D0)**3*(-(D*1D0) + 3D0)) - \"\>"},
+      {"\<\"     &  (D*S**3*T**2*1.25D-1*(MW2 - S*1D0)*\"\>"},
+      {"\<\"     &     PaVe(0D0,List(ME2,MW2,MW2,ME2,S,T),\"\>"},
+      {"\<\"     &      List(0D0,ME2,0D0,ME2)))/\"\>"},
+      {"\<\"     &   ((MW2**2 - S*U*1D0)**3*(-(D*1D0) + 3D0))\"\>"}
      },
      GridBoxAlignment->{
       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
@@ -825,22 +1148,23 @@ ME2, ME2, T, S, \"\>"},
     Column],
    Function[BoxForm`e$, 
     TableForm[BoxForm`e$]]], TraditionalForm]], "Output",
- ImageSize->{594, 321},
+ ImageSize->{461, 1272},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"PaVeReduce",
- CellLabel->"Out[11]//TableForm=",
- CellID->273826743]
+ CellLabel->"Out[9]//TableForm=",
+ CellID->2020509582]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"DeleteFile", "/@", 
-   RowBox[{"FileNames", "[", "\"\<fctd122.for\>\"", "]"}]}], ";", 
-  RowBox[{"Clear", "[", 
-   RowBox[{"d122", ",", "se"}], "]"}], ";"}]], "Input",
+  RowBox[{
+   RowBox[{"DeleteFile", "/@", 
+    RowBox[{"FileNames", "[", "\"\<fctd122.for\>\"", "]"}]}], ";", 
+   RowBox[{"Clear", "[", 
+    RowBox[{"d122", ",", "se"}], "]"}], ";"}], " "}]], "Input",
  CellTags->"PaVeReduce",
- CellLabel->"In[12]:=",
+ CellLabel->"In[10]:=",
  CellID->793776799]
 }, Open  ]],
 
@@ -876,9 +1200,8 @@ Cell[TextData[{
   ButtonNote->"PaVeOrder"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"PaVeReduce",
- CellID->1234185302]
+}], "SeeAlso",
+ CellID->939950363]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -895,22 +1218,22 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2015, 11, 6, 23, 4, 29.112410}", 
+   "built" -> "{2020, 1, 5, 19, 0, 41.675133}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
     "PaVeReduce[expr] reduces all Passarino-Veltman integrals (i.e. all \
-PaVe's) in expr down to scalar A0, B0, C0 and D0.", "synonyms" -> {}, "title" -> 
-    "PaVeReduce", "titlemodifier" -> "", "windowtitle" -> "PaVeReduce", 
-    "type" -> "Symbol", "uri" -> "FeynCalc/ref/PaVeReduce"}, 
-  "SearchTextTranslated" -> ""},
+PaVe's) in expr down to scalar A0, B0, C0 and D0.", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "PaVeReduce", "titlemodifier" -> "", 
+    "windowtitle" -> "PaVeReduce", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/PaVeReduce"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 6, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -919,7 +1242,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.2 for Linux x86 (64-bit) (July 6, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -927,230 +1250,173 @@ StyleDefinitions->Notebook[{
 (* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
- "PrimaryExamplesSection"->{
-  Cell[3368, 95, 387, 15, 31, "PrimaryExamplesSection",
-   CellTags->"PrimaryExamplesSection",
-   CellID->906569074]},
  "PaVeReduce"->{
-  Cell[4000, 124, 138, 4, 27, "Input",
+  Cell[5266, 160, 139, 4, 70, "Input",
    CellTags->"PaVeReduce",
    CellID->1685498711],
-  Cell[4141, 130, 552, 17, 56, "Output",
+  Cell[5408, 166, 994, 25, 92, "Output",
    CellTags->"PaVeReduce",
-   CellID->1380007374],
-  Cell[4730, 152, 539, 17, 45, "Input",
+   CellID->458544387],
+  Cell[7097, 227, 539, 17, 45, "Input",
    CellTags->"PaVeReduce",
    CellID->311139632],
-  Cell[5272, 171, 268, 10, 36, "Output",
+  Cell[7639, 246, 266, 10, 37, "Output",
    CellTags->"PaVeReduce",
-   CellID->1665481194],
-  Cell[5577, 186, 124, 4, 27, "Input",
-   CellTags->"PaVeReduce",
-   CellID->469470556],
-  Cell[5704, 192, 241, 8, 36, "Output",
-   CellTags->"PaVeReduce",
-   CellID->111861120],
-  Cell[5982, 205, 124, 4, 27, "Input",
+   CellID->516283693],
+  Cell[7942, 261, 124, 4, 27, "Input",
    CellTags->"PaVeReduce",
    CellID->927282004],
-  Cell[6109, 211, 242, 8, 36, "Output",
+  Cell[8069, 267, 5286, 178, 282, "Output",
    CellTags->"PaVeReduce",
-   CellID->1785054415],
-  Cell[6388, 224, 509, 16, 45, "Input",
+   CellID->1592936160],
+  Cell[13392, 450, 509, 16, 45, "Input",
    CellTags->"PaVeReduce",
    CellID->1031771651],
-  Cell[6900, 242, 874, 33, 63, "Output",
+  Cell[13904, 468, 634, 22, 55, "Output",
    CellTags->"PaVeReduce",
-   CellID->795683657],
-  Cell[7811, 280, 416, 13, 45, "Input",
+   CellID->1972744154],
+  Cell[14575, 495, 416, 13, 45, "Input",
    CellTags->"PaVeReduce",
    CellID->2052937684],
-  Cell[8230, 295, 898, 27, 72, "Output",
+  Cell[14994, 510, 902, 27, 85, "Output",
    CellTags->"PaVeReduce",
-   CellID->1465048226],
-  Cell[9143, 325, 227, 8, 27, "Input",
+   CellID->1778677368],
+  Cell[15911, 540, 227, 8, 27, "Input",
    CellTags->"PaVeReduce",
    CellID->1002068234],
-  Cell[9373, 335, 179, 6, 27, "Input",
+  Cell[16141, 550, 179, 6, 27, "Input",
    CellTags->"PaVeReduce",
    CellID->175960789],
-  Cell[9577, 345, 696, 20, 45, "Input",
+  Cell[16345, 560, 696, 20, 45, "Input",
    CellTags->"PaVeReduce",
    CellID->1868254708],
-  Cell[10276, 367, 8762, 277, 533, "Output",
+  Cell[17044, 582, 16051, 437, 845, "Output",
    CellTags->"PaVeReduce",
-   CellID->2007769481],
-  Cell[19075, 649, 286, 9, 27, "Input",
+   CellID->775966781],
+  Cell[33110, 1022, 285, 9, 27, "Input",
    CellTags->"PaVeReduce",
    CellID->1848976065],
-  Cell[19386, 662, 547, 12, 62, "Print",
-   CellTags->"PaVeReduce",
-   CellID->166843212],
-  Cell[19936, 676, 547, 12, 62, "Print",
-   CellTags->"PaVeReduce",
-   CellID->698332942],
-  Cell[20486, 690, 548, 12, 62, "Print",
-   CellTags->"PaVeReduce",
-   CellID->1548805099],
-  Cell[21037, 704, 552, 12, 62, "Print",
-   CellTags->"PaVeReduce",
-   CellID->1669457698],
-  Cell[21592, 718, 552, 12, 62, "Print",
-   CellTags->"PaVeReduce",
-   CellID->1662947713],
-  Cell[22147, 732, 551, 12, 62, "Print",
-   CellTags->"PaVeReduce",
-   CellID->481089128],
-  Cell[22701, 746, 552, 12, 62, "Print",
-   CellTags->"PaVeReduce",
-   CellID->2099280721],
-  Cell[23302, 764, 393, 12, 45, "Input",
+  Cell[33420, 1035, 392, 12, 45, "Input",
    CellTags->"PaVeReduce",
    CellID->193852328],
-  Cell[23698, 778, 2288, 54, 342, "Output",
+  Cell[33815, 1049, 5837, 106, 1308, "Output",
    CellTags->"PaVeReduce",
-   CellID->273826743],
-  Cell[26001, 835, 271, 8, 27, "Input",
+   CellID->2020509582],
+  Cell[39667, 1158, 293, 9, 27, "Input",
    CellTags->"PaVeReduce",
-   CellID->793776799],
-  Cell[26628, 865, 377, 15, 31, "Text",
-   CellTags->"PaVeReduce",
-   CellID->1234185302]}
+   CellID->793776799]},
+ "PrimaryExamplesSection"->{
+  Cell[6463, 198, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1536895706]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 28894, 929},
- {"PaVeReduce", 29030, 933}
+ {"PaVeReduce", 42545, 1252},
+ {"PrimaryExamplesSection", 44233, 1307}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[582, 21, 2253, 52, 51, "AnchorBarGrid",
+Cell[582, 21, 3106, 76, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2838, 75, 53, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2894, 78, 449, 13, 83, "Usage",
+Cell[3691, 99, 287, 11, 45, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4003, 114, 440, 12, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3368, 95, 387, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->906569074],
+Cell[4468, 130, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1713910284],
+Cell[5210, 156, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[3780, 114, 195, 6, 25, "ExampleSection",
- CellID->318399322],
-Cell[CellGroupData[{
-Cell[4000, 124, 138, 4, 27, "Input",
+Cell[5266, 160, 139, 4, 70, "Input",
  CellTags->"PaVeReduce",
  CellID->1685498711],
-Cell[4141, 130, 552, 17, 56, "Output",
+Cell[5408, 166, 994, 25, 92, "Output",
  CellTags->"PaVeReduce",
- CellID->1380007374]
+ CellID->458544387]
+}, Open  ]]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4730, 152, 539, 17, 45, "Input",
+Cell[6463, 198, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1536895706],
+Cell[CellGroupData[{
+Cell[6876, 217, 196, 6, 26, "ExampleSection",
+ CellID->1759687694],
+Cell[CellGroupData[{
+Cell[7097, 227, 539, 17, 45, "Input",
  CellTags->"PaVeReduce",
  CellID->311139632],
-Cell[5272, 171, 268, 10, 36, "Output",
+Cell[7639, 246, 266, 10, 37, "Output",
  CellTags->"PaVeReduce",
- CellID->1665481194]
+ CellID->516283693]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5577, 186, 124, 4, 27, "Input",
- CellTags->"PaVeReduce",
- CellID->469470556],
-Cell[5704, 192, 241, 8, 36, "Output",
- CellTags->"PaVeReduce",
- CellID->111861120]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[5982, 205, 124, 4, 27, "Input",
+Cell[7942, 261, 124, 4, 27, "Input",
  CellTags->"PaVeReduce",
  CellID->927282004],
-Cell[6109, 211, 242, 8, 36, "Output",
+Cell[8069, 267, 5286, 178, 282, "Output",
  CellTags->"PaVeReduce",
- CellID->1785054415]
+ CellID->1592936160]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6388, 224, 509, 16, 45, "Input",
+Cell[13392, 450, 509, 16, 45, "Input",
  CellTags->"PaVeReduce",
  CellID->1031771651],
-Cell[6900, 242, 874, 33, 63, "Output",
+Cell[13904, 468, 634, 22, 55, "Output",
  CellTags->"PaVeReduce",
- CellID->795683657]
+ CellID->1972744154]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7811, 280, 416, 13, 45, "Input",
+Cell[14575, 495, 416, 13, 45, "Input",
  CellTags->"PaVeReduce",
  CellID->2052937684],
-Cell[8230, 295, 898, 27, 72, "Output",
+Cell[14994, 510, 902, 27, 85, "Output",
  CellTags->"PaVeReduce",
- CellID->1465048226]
+ CellID->1778677368]
 }, Open  ]],
-Cell[9143, 325, 227, 8, 27, "Input",
+Cell[15911, 540, 227, 8, 27, "Input",
  CellTags->"PaVeReduce",
  CellID->1002068234],
-Cell[9373, 335, 179, 6, 27, "Input",
+Cell[16141, 550, 179, 6, 27, "Input",
  CellTags->"PaVeReduce",
  CellID->175960789],
 Cell[CellGroupData[{
-Cell[9577, 345, 696, 20, 45, "Input",
+Cell[16345, 560, 696, 20, 45, "Input",
  CellTags->"PaVeReduce",
  CellID->1868254708],
-Cell[10276, 367, 8762, 277, 533, "Output",
+Cell[17044, 582, 16051, 437, 845, "Output",
  CellTags->"PaVeReduce",
- CellID->2007769481]
+ CellID->775966781]
 }, Open  ]],
-Cell[CellGroupData[{
-Cell[19075, 649, 286, 9, 27, "Input",
+Cell[33110, 1022, 285, 9, 27, "Input",
  CellTags->"PaVeReduce",
  CellID->1848976065],
 Cell[CellGroupData[{
-Cell[19386, 662, 547, 12, 62, "Print",
- CellTags->"PaVeReduce",
- CellID->166843212],
-Cell[19936, 676, 547, 12, 62, "Print",
- CellTags->"PaVeReduce",
- CellID->698332942],
-Cell[20486, 690, 548, 12, 62, "Print",
- CellTags->"PaVeReduce",
- CellID->1548805099],
-Cell[21037, 704, 552, 12, 62, "Print",
- CellTags->"PaVeReduce",
- CellID->1669457698],
-Cell[21592, 718, 552, 12, 62, "Print",
- CellTags->"PaVeReduce",
- CellID->1662947713],
-Cell[22147, 732, 551, 12, 62, "Print",
- CellTags->"PaVeReduce",
- CellID->481089128],
-Cell[22701, 746, 552, 12, 62, "Print",
- CellTags->"PaVeReduce",
- CellID->2099280721]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[23302, 764, 393, 12, 45, "Input",
+Cell[33420, 1035, 392, 12, 45, "Input",
  CellTags->"PaVeReduce",
  CellID->193852328],
-Cell[23698, 778, 2288, 54, 342, "Output",
+Cell[33815, 1049, 5837, 106, 1308, "Output",
  CellTags->"PaVeReduce",
- CellID->273826743]
+ CellID->2020509582]
 }, Open  ]],
-Cell[26001, 835, 271, 8, 27, "Input",
+Cell[39667, 1158, 293, 9, 27, "Input",
  CellTags->"PaVeReduce",
  CellID->793776799]
 }, Open  ]],
-Cell[26287, 846, 31, 0, 29, "SectionFooterSpacer"]
+Cell[39975, 1170, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[26355, 851, 270, 12, 31, "SeeAlsoSection",
+Cell[40043, 1175, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[26628, 865, 377, 15, 31, "Text",
- CellTags->"PaVeReduce",
- CellID->1234185302]
+Cell[40316, 1189, 354, 14, 56, "SeeAlso",
+ CellID->939950363]
 }, Open  ]],
-Cell[27020, 883, 23, 0, 42, "FooterCell"]
+Cell[40685, 1206, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

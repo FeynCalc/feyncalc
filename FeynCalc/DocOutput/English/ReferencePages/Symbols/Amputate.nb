@@ -3,69 +3,98 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11933,        419]
-NotebookOptionsPosition[      8001,        295]
-NotebookOutlinePosition[     10779,        374]
-CellTagsIndexPosition[     10668,        368]
+NotebookDataLength[     13917,        483]
+NotebookOptionsPosition[     10034,        363]
+NotebookOutlinePosition[     12646,        436]
+CellTagsIndexPosition[     12534,        430]
 WindowTitle->Amputate
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/Amputate\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/Amputate"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/Amputate.\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"DiracGamma\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracGamma"], "\<\"GA\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/GA"], "\<\"DiracSimplify\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracSimplify"], "\<\"GS\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/GS"], "\<\"DiracTrick\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/DiracTrick"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/Amputate\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/Amputate"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/Amputate.\
 html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$16635], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/Amputate", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$21786], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/Amputate", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +102,20 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Amputate", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Amputate", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -95,6 +136,62 @@ amputates also p.q1 and p.q2; Pair\[Rule]All amputates all except OPEDelta."
 
 Cell[CellGroupData[{
 
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1409029404],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Amputate", "]"}]], "Input",
+ CellTags->"Amputate",
+ CellLabel->"In[194]:=",
+ CellID->1884550851],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
+    RowBox[{"Pair", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"Unique", "\[Rule]", "True"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{274, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Amputate",
+ CellLabel->"Out[194]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell[TextData[{
  Cell[BoxData[
   InterpretationBox[
@@ -110,7 +207,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1776549739],
+ CellID->1219110035],
 
 Cell[CellGroupData[{
 
@@ -120,68 +217,46 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->279009291],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "Amputate", "]"}]], "Input",
- CellTags->"Amputate",
- CellLabel->"In[1]:=",
- CellID->1884550851],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
-    RowBox[{"Pair", "\[Rule]", 
-     RowBox[{"{", "}"}]}], ",", 
-    RowBox[{"Unique", "\[Rule]", "True"}]}], "}"}], 
-  TraditionalForm]], "Output",
- ImageSize->{292, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"Amputate",
- CellLabel->"Out[1]=",
- CellID->697719830]
-}, Open  ]],
+ CellID->377177486],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"DiracSlash", "[", "p", "]"}], ".", 
-  RowBox[{"DiracSlash", "[", "q", "]"}]}]], "Input",
+  RowBox[{"GS", "[", "p", "]"}], ".", 
+  RowBox[{"GS", "[", "q", "]"}]}]], "Input",
  CellTags->"Amputate",
- CellLabel->"In[2]:=",
+ CellLabel->"In[1]:=",
  CellID->479729855],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
    RowBox[{"(", 
-    RowBox[{
-     OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-     FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm]}], ")"}], ".", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], ".", 
    RowBox[{"(", 
-    RowBox[{
-     OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-     FormBox[
-      OverscriptBox[
-       FormBox["q",
-        TraditionalForm], "_"],
-      TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{91, 18},
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["q",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{101, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Amputate",
- CellLabel->"Out[2]=",
- CellID->1732499360]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -190,27 +265,23 @@ Cell[BoxData[
  RowBox[{"Amputate", "[", 
   RowBox[{"%", ",", "q"}], "]"}]], "Input",
  CellTags->"Amputate",
- CellLabel->"In[3]:=",
+ CellLabel->"In[2]:=",
  CellID->1612122659],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FormBox[
-    SuperscriptBox[
+   SuperscriptBox[
+    FormBox[
+     FormBox["q",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      FormBox["q",
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$2188", "\[InvisibleApplication]", 
-         RowBox[{"(", "1", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
+      RowBox[{"$AL$41318", "\[InvisibleApplication]", 
+       RowBox[{"(", "1", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]], " ", 
    RowBox[{
     RowBox[{"(", 
      RowBox[{
@@ -223,16 +294,15 @@ Cell[BoxData[
     SuperscriptBox["\[Gamma]", 
      FormBox[
       FormBox[
-       RowBox[{"$AL$2188", "\[InvisibleApplication]", 
+       RowBox[{"$AL$41318", "\[InvisibleApplication]", 
         RowBox[{"(", "1", ")"}]}],
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
- ImageSize->{197, 23},
+ ImageSize->{214, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Amputate",
- CellLabel->"Out[3]=",
- CellID->42958207]
+ CellLabel->"Out[2]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -262,10 +332,10 @@ Cell[TextData[{
   ButtonNote->"DiracGamma"],
   FontFamily->"Verdana"],
  ", ",
- StyleBox[ButtonBox["DiracMatrix",
+ StyleBox[ButtonBox["GA",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/DiracMatrix",
-  ButtonNote->"DiracMatrix"],
+  ButtonData->"paclet:FeynCalc/ref/GA",
+  ButtonNote->"GA"],
   FontFamily->"Verdana"],
  ", ",
  StyleBox[ButtonBox["DiracSimplify",
@@ -274,10 +344,10 @@ Cell[TextData[{
   ButtonNote->"DiracSimplify"],
   FontFamily->"Verdana"],
  ", ",
- StyleBox[ButtonBox["DiracSlash",
+ StyleBox[ButtonBox["GS",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/DiracSlash",
-  ButtonNote->"DiracSlash"],
+  ButtonData->"paclet:FeynCalc/ref/GS",
+  ButtonNote->"GS"],
   FontFamily->"Verdana"],
  ", ",
  StyleBox[ButtonBox["DiracTrick",
@@ -286,9 +356,7 @@ Cell[TextData[{
   ButtonNote->"DiracTrick"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"Amputate",
- CellID->1266124166]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -305,10 +373,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 16, 9.030852}", 
+   "built" -> "{2020, 1, 5, 18, 52, 33.254118}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -316,11 +384,11 @@ TaggingRules->{
     "None", "summary" -> 
     "Amputate[exp, q1, q2, ...] amputates Eps and DiracGamma. \
 Amputate[exp,q1,q2,Pair->{p}] amputates also p.q1 and p.q2; Pair->All \
-amputates all except OPEDelta.", "synonyms" -> {}, "title" -> "Amputate", 
-    "titlemodifier" -> "", "windowtitle" -> "Amputate", "type" -> "Symbol", 
-    "uri" -> "FeynCalc/ref/Amputate"}, "SearchTextTranslated" -> ""},
+amputates all except OPEDelta.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "Amputate", "titlemodifier" -> "", "windowtitle" -> "Amputate", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/Amputate"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -329,7 +397,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -337,90 +405,86 @@ StyleDefinitions->Notebook[{
 (* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
- "PrimaryExamplesSection"->{
-  Cell[3452, 97, 388, 15, 31, "PrimaryExamplesSection",
-   CellTags->"PrimaryExamplesSection",
-   CellID->1776549739]},
  "Amputate"->{
-  Cell[4085, 126, 134, 4, 27, "Input",
+  Cell[5625, 168, 136, 4, 70, "Input",
    CellTags->"Amputate",
    CellID->1884550851],
-  Cell[4222, 132, 403, 14, 36, "Output",
-   CellTags->"Amputate",
-   CellID->697719830],
-  Cell[4662, 151, 189, 6, 27, "Input",
+  Cell[5764, 174, 385, 13, 37, "Output",
+   CellTags->"Amputate"],
+  Cell[6843, 223, 173, 6, 27, "Input",
    CellTags->"Amputate",
    CellID->479729855],
-  Cell[4854, 159, 633, 24, 39, "Output",
-   CellTags->"Amputate",
-   CellID->1732499360],
-  Cell[5524, 188, 151, 5, 27, "Input",
+  Cell[7019, 231, 699, 27, 37, "Output",
+   CellTags->"Amputate"],
+  Cell[7755, 263, 151, 5, 27, "Input",
    CellTags->"Amputate",
    CellID->1612122659],
-  Cell[5678, 195, 1007, 39, 44, "Output",
-   CellTags->"Amputate",
-   CellID->42958207],
-  Cell[7053, 257, 906, 33, 32, "Text",
-   CellTags->"Amputate",
-   CellID->1266124166]}
+  Cell[7909, 270, 901, 34, 40, "Output",
+   CellTags->"Amputate"]},
+ "PrimaryExamplesSection"->{
+  Cell[6210, 194, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1219110035]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9890, 339},
- {"Amputate", 10025, 343}
+ {"Amputate", 11896, 407},
+ {"PrimaryExamplesSection", 12390, 423}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[580, 21, 2244, 52, 51, "AnchorBarGrid",
+Cell[580, 21, 3363, 81, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2827, 75, 51, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2881, 78, 546, 15, 98, "Usage",
+Cell[3946, 104, 285, 11, 45, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4256, 119, 546, 15, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3452, 97, 388, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->1776549739],
+Cell[4827, 138, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1409029404],
+Cell[5569, 164, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[3865, 116, 195, 6, 25, "ExampleSection",
- CellID->279009291],
-Cell[CellGroupData[{
-Cell[4085, 126, 134, 4, 27, "Input",
+Cell[5625, 168, 136, 4, 70, "Input",
  CellTags->"Amputate",
  CellID->1884550851],
-Cell[4222, 132, 403, 14, 36, "Output",
- CellTags->"Amputate",
- CellID->697719830]
+Cell[5764, 174, 385, 13, 37, "Output",
+ CellTags->"Amputate"]
+}, Open  ]]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4662, 151, 189, 6, 27, "Input",
+Cell[6210, 194, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1219110035],
+Cell[CellGroupData[{
+Cell[6623, 213, 195, 6, 26, "ExampleSection",
+ CellID->377177486],
+Cell[CellGroupData[{
+Cell[6843, 223, 173, 6, 27, "Input",
  CellTags->"Amputate",
  CellID->479729855],
-Cell[4854, 159, 633, 24, 39, "Output",
- CellTags->"Amputate",
- CellID->1732499360]
+Cell[7019, 231, 699, 27, 37, "Output",
+ CellTags->"Amputate"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5524, 188, 151, 5, 27, "Input",
+Cell[7755, 263, 151, 5, 27, "Input",
  CellTags->"Amputate",
  CellID->1612122659],
-Cell[5678, 195, 1007, 39, 44, "Output",
- CellTags->"Amputate",
- CellID->42958207]
+Cell[7909, 270, 901, 34, 40, "Output",
+ CellTags->"Amputate"]
 }, Open  ]]
 }, Open  ]],
-Cell[6712, 238, 31, 0, 29, "SectionFooterSpacer"]
+Cell[8837, 308, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6780, 243, 270, 12, 31, "SeeAlsoSection",
+Cell[8905, 313, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7053, 257, 906, 33, 32, "Text",
- CellTags->"Amputate",
- CellID->1266124166]
+Cell[9178, 327, 814, 31, 56, "SeeAlso"]
 }, Open  ]],
-Cell[7974, 293, 23, 0, 42, "FooterCell"]
+Cell[10007, 361, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

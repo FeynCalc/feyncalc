@@ -164,9 +164,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/GaugeField",
   ButtonNote->"GaugeField"],
  "."
-}], "Text",
- CellTags->"GluonField",
- CellID->2115683038]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -197,14 +195,13 @@ Cell[CellGroupData[{
 
 Cell[BoxData["GluonField"], "Input",
  CellTags->"GluonField",
- CellLabel->"In[1]:=",
+ CellLabel->"In[206]:=",
  CellID->807080920],
 
 Cell[BoxData[
  FormBox["A", TraditionalForm]], "Output",
  CellTags->"GluonField",
- CellLabel->"Out[1]=",
- CellID->1953309416]
+ CellLabel->"Out[206]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -215,7 +212,7 @@ Cell[BoxData[
    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
    RowBox[{"SUNIndex", "[", "a", "]"}]}], "]"}]], "Input",
  CellTags->"GluonField",
- CellLabel->"In[2]:=",
+ CellLabel->"In[207]:=",
  CellID->1368218379],
 
 Cell[BoxData[
@@ -232,8 +229,7 @@ Cell[BoxData[
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"GluonField",
- CellLabel->"Out[2]=",
- CellID->1231631318]
+ CellLabel->"Out[207]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -298,12 +294,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{780, Automatic}, {Automatic, 256}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

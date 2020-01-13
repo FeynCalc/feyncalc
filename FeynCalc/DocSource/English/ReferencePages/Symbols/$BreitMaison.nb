@@ -117,14 +117,10 @@ Cell["$BreitMaison", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData["$BreitMaison"], "InlineFormula"],
- " \[LineSeparator]",
- "The Breitenlohner-Maison ",
- Cell[BoxData[
-  FormBox[
-   SubscriptBox["\[Gamma]", "5"], TraditionalForm]]],
- " scheme is currently not supported by the Dirac algebra functions.Use \
-Tracer if you need it (PHI supplies the functions FCToTracer and \
-TracerToFC)."
+ " \[LineSeparator]is a legacy switch for the \
+Breitenlohner-Maison-t'Hooft-Veltman scheme. Use FCSetDiracGammaScheme to \
+specify a scheme for handling Dirac matrices in dimensional regularization \
+and FCGetDiracGammaScheme to check the current setting."
 }], "Usage",
  CellID->982511436],
 
@@ -165,24 +161,17 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- ButtonBox["Tr",
+ ButtonBox["FCSetDiracGammaScheme",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/Tr",
-  ButtonNote->"Tr"],
+  ButtonData:>"paclet:FeynCalc/ref/FCSetDiracGammaScheme",
+  ButtonNote->"FCSetDiracGammaScheme"],
  ", ",
- ButtonBox["$Larin",
+ ButtonBox["FCGetDiracGammaScheme",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/$Larin",
-  ButtonNote->"$Larin"],
- ", ",
- ButtonBox["West",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/West",
-  ButtonNote->"West"],
+  ButtonData:>"paclet:FeynCalc/ref/FCGetDiracGammaScheme",
+  ButtonNote->"FCGetDiracGammaScheme"],
  "."
-}], "Text",
- CellTags->"$BreitMaison",
- CellID->1928344928]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -268,12 +257,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 741},
-WindowMargins->{{Automatic, 961}, {84, Automatic}},
+WindowMargins->{{934, Automatic}, {20, Automatic}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for
@@ -23,5 +23,44 @@ Tests`LoopIntegrals`fcstFeynAmpDenominatorSplit = {
 {"fcstFeynAmpDenominatorSplit-ID3",
 	"FeynAmpDenominatorSplit[FAD[q1, q2, p + k, q1 - p, p - k, q1, l, q3],Momentum -> {q1, q2, q3}] // FCE",
 	"FAD[k + p, -k + p, l] FAD[q1, q2, -p + q1, q1, q3]"
-}
+},
+{"fcstFeynAmpDenominatorSplit-ID4",
+	"FeynAmpDenominatorSplit[FeynAmpDenominator[PropagatorDenominator[Momentum[p + r + l, D], m1], PropagatorDenominator[Momentum[q, D], m2]]]",
+	"FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], m2]] FeynAmpDenominator[PropagatorDenominator[Momentum[l, D] + Momentum[p, D] + Momentum[r, D], m1]]"
+},
+{"fcstFeynAmpDenominatorSplit-ID5",
+	"FeynAmpDenominatorSplit[FeynAmpDenominator[PropagatorDenominator[Momentum[p + r + l, D], m1], PropagatorDenominator[Momentum[q, D], m2]], MomentumExpand -> False]",
+	"FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], m2]] FeynAmpDenominator[PropagatorDenominator[Momentum[l + p + r, D], m1]]"
+},
+{"fcstFeynAmpDenominatorSplit-ID6",
+	"FeynAmpDenominatorSplit[
+FeynAmpDenominator[myPD[CartesianMomentum[q1], m1], myPD[CartesianMomentum[q2], m2], myPD[CartesianMomentum[q3], m3]]]",
+	"FeynAmpDenominator[myPD[CartesianMomentum[q1], m1]] FeynAmpDenominator[myPD[CartesianMomentum[q2], m2]] FeynAmpDenominator[myPD[CartesianMomentum[q3], m3]]"
+},
+{"fcstFeynAmpDenominatorSplit-ID7",
+	"FeynAmpDenominatorSplit[FeynAmpDenominator[myPD[CartesianMomentum[q1], m1], myPD[CartesianMomentum[q2], m2],myPD[CartesianMomentum[q3], m3]], Momentum -> {q1}]",
+	"FeynAmpDenominator[myPD[CartesianMomentum[q1], m1]] FeynAmpDenominator[myPD[CartesianMomentum[q2], m2], myPD[CartesianMomentum[q3], m3]]"
+},
+{"fcstFeynAmpDenominatorSplit-ID8",
+	"FeynAmpDenominatorSplit[FeynAmpDenominator[GenericPropagatorDenominator[Pair[Momentum[p, D], Momentum[q1, D]] Pair[Momentum[p, D], Momentum[q2, D]], {2, 1}],
+	PropagatorDenominator[Momentum[p, D], m]], FCE -> True]",
+	"FAD[{p, m}] GFAD[{{SPD[p, q1] SPD[p, q2], 1}, 2}]"
+},
+{"fcstFeynAmpDenominatorSplit-ID9",
+	"FeynAmpDenominatorSplit[FAD[q, q + p, q - a, q2], List -> True, FCE -> True]",
+	"{FAD[q], FAD[p + q], FAD[-a + q], FAD[q2]}"
+},
+{"fcstFeynAmpDenominatorSplit-ID10",
+	"FeynAmpDenominatorSplit[CFAD[q, q + p, q2 - p, q - a, q2],
+List -> True, Momentum -> {q}, FCE -> True]",
+	"{CFAD[{{-p + q2, 0}, {0, -1}, 1}, {{q2, 0}, {0, -1}, 1}],
+CFAD[{{q, 0}, {0, -1}, 1}, {{p + q, 0}, {0, -1},
+1}, {{-a + q, 0}, {0, -1}, 1}]}"
+},
+{"fcstFeynAmpDenominatorSplit-ID11",
+	"FeynAmpDenominatorSplit[SFAD[q, q + p, q - a, q2], List -> True, FCE -> True]",
+	"{SFAD[{{q, 0}, {0, 1}, 1}], SFAD[{{p + q, 0}, {0, 1}, 1}],
+SFAD[{{-a + q, 0}, {0, 1}, 1}], SFAD[{{q2, 0}, {0, 1}, 1}]}"}
+
+
 }

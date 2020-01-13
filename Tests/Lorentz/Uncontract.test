@@ -3,64 +3,207 @@
 (* :Title: Uncontract.test                                                  *)
 
 (* This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Framework independent unit tests for Unconctract	        *)
+(* :Summary:  Framework independent unit tests for Uncontract	        	*)
 
 (* ------------------------------------------------------------------------ *)
 
-Tests`Lorentz`fcstUncontract = {
-{"fcstUncontract-ID1","(Uncontract[LeviCivita[mu, nu][p, q], p] //FCRenameDummyIndices) /. {$AL[_] -> rho}",
-	"Eps[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho], Momentum[q]]*Pair[LorentzIndex[rho], Momentum[p]]"},
-{"fcstUncontract-ID2","(Uncontract[DiracSlash[p], p, Pair -> All] // FCRenameDummyIndices) /. {$AL[_] -> mu}",
-	"DiracGamma[LorentzIndex[mu]]*Pair[LorentzIndex[mu], Momentum[p]]"},
-{"fcstUncontract-ID3","(Uncontract[DiracSlash[p], p] // FCRenameDummyIndices) /. {$AL[_] -> mu}",
-	"DiracGamma[LorentzIndex[mu]]*Pair[LorentzIndex[mu], Momentum[p]]"},
-{"fcstUncontract-ID4","(Uncontract[LeviCivita[mu, nu][p, q], p, q]) /. {Eps[LorentzIndex[mu],
-	LorentzIndex[nu], LorentzIndex[a_], LorentzIndex[b_]]*Pair[LorentzIndex[b_], Momentum[q]]*
-	Pair[LorentzIndex[a_], Momentum[p]] ->  Eps[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho],
-	LorentzIndex[sigma]]*Pair[LorentzIndex[sigma], Momentum[q]]* Pair[LorentzIndex[rho], Momentum[p]]}",
-	"Eps[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho], LorentzIndex[sigma]]*Pair[LorentzIndex[rho], Momentum[p]]*
-	Pair[LorentzIndex[sigma], Momentum[q]]"},
-{"fcstUncontract-ID5","Uncontract[SP[p, w] , p]1",
-	"Pair[Momentum[p], Momentum[w]]"},
-{"fcstUncontract-ID6","(Uncontract[SP[p, w] , p, Pair -> All] //
-	FCRenameDummyIndices) /. {$AL[_] -> mu}",
-	"Pair[LorentzIndex[mu], Momentum[p]]*Pair[LorentzIndex[mu], Momentum[w]]"},
-{"fcstUncontract-ID7","Uncontract[SP[p, w]^2 , p, Pair -> All] /. {Pair[LorentzIndex[a_],
-	Momentum[p]]*Pair[LorentzIndex[a_], Momentum[w]]* Pair[LorentzIndex[b_], Momentum[p]]*
-	Pair[LorentzIndex[b_], Momentum[w]] -> Pair[LorentzIndex[mu], Momentum[p]]* Pair[LorentzIndex[mu],
-	Momentum[w]]* Pair[LorentzIndex[nu], Momentum[p]]* Pair[LorentzIndex[nu], Momentum[w]]}",
-	"Pair[LorentzIndex[mu], Momentum[p]]*Pair[LorentzIndex[mu], Momentum[w]]*Pair[LorentzIndex[nu], Momentum[p]]*
-	Pair[LorentzIndex[nu], Momentum[w]]"},
-{"fcstUncontract-ID8","MatchQ[Pair[Momentum[p], Momentum[Polarization[p, I]]] //
-	Uncontract[#, p, Pair -> {p}] &, Pair[LorentzIndex[a_], LorentzIndex[b_]]*
-	Pair[LorentzIndex[a_], Momentum[p]]*Pair[LorentzIndex[b_], Momentum[Polarization[p, I]]]]","True"},
-{"fcstUncontract-ID9","MatchQ[-Eps[LorentzIndex[nu], LorentzIndex[rho], LorentzIndex[si],
-	Momentum[Polarization[p, I]]] // Uncontract[#,p] &,
-	-(Eps[LorentzIndex[nu], LorentzIndex[rho], LorentzIndex[si], LorentzIndex[a_]]*
-	Pair[LorentzIndex[a_], Momentum[Polarization[p, I]]])]","True"},
-{"fcstUncontract-ID10","MatchQ[Uncontract[FCI[GS[p + q + l]], l, Pair -> All] // FCE,
-	GS[p] + GS[q] + DiracGamma[LorentzIndex[x_]] Pair[LorentzIndex[x_], Momentum[l]]]","True"},
-{"fcstUncontract-ID11","MatchQ[Uncontract[ExpandScalarProduct[SP[q + p, a + b]], q,
-Pair -> All] // FCE,
-Pair[LorentzIndex[x_], Momentum[a]] Pair[LorentzIndex[x_],
-	Momentum[q]] +
-Pair[LorentzIndex[y_], Momentum[b]] Pair[LorentzIndex[y_],
-	Momentum[q]] + SP[a, p] + SP[b, p]]","True"},
-{"fcstUncontract-ID11","DataType[mytensor, FCTensor] = True; \n
-MatchQ[Uncontract[mytensor[Momentum[x], Momentum[y]]^3, x, y,
-Pair -> All],
-FCI[FV[x, i1_] FV[x, i2_]] FCI[FV[x, i3_]] FCI[
-	FV[y, j1_] FV[y, j2_]] FCI[FV[y, j3_]]
-mytensor[LorentzIndex[i1_], LorentzIndex[j1_]] mytensor[
-	LorentzIndex[i2_], LorentzIndex[j2_]]
-mytensor[LorentzIndex[i3_], LorentzIndex[j3_]] /;
-i1 =!= i2 && i2 =!= i3 && j1 =!= j2 && j2 =!= j3]","True"},
-{"fcstUncontract-ID12","MatchQ[Uncontract[SP[x, y]^3, x, y, Pair -> All],
-FCI[FV[x, i1_] FV[x, i2_]] FCI[FV[x, i3_]] FCI[
-	FV[y, i1_] FV[y, i2_]] FCI[FV[y, i3_]] /; i1 =!= i2 && i2 =!= i3]","True"}
-};
+Tests`Lorentz`fcstUncontract =
+({
+{"fcstUncontract-ID1", "Uncontract[SP[p,q],p,FCE\[Rule]True]",
+"SP[p, q]"},
+{"fcstUncontract-ID2",
+"MatchQ[Uncontract[SP[p,q],p,Pair\[Rule]All,FCE\[Rule]True],FV[p,a_\
+] FV[q,a_]]", "True"},
+{"fcstUncontract-ID3",
+"MatchQ[Uncontract[SP[p,q]^2,p,Pair\[Rule]All,FCE\[Rule]True],FV[p,\
+b_] FV[p,a_] FV[q,b_] FV[q,a_]]", "True"},
+{"fcstUncontract-ID4",
+"MatchQ[Uncontract[SP[p,q],p,Pair\[Rule]All,Dimension\[Rule]D,FCE\
+\[Rule]True],FVD[p,a_] FVD[q,a_]]", "True"},
+{"fcstUncontract-ID5",
+"MatchQ[Uncontract[SP[p,q],p,Pair\[Rule]All,Dimension\[Rule]D-4,\
+FCE\[Rule]True],FVE[p,a_] FVE[q,a_]]", "True"},
+{"fcstUncontract-ID6",
+"MatchQ[Uncontract[SPD[p,q],p,Pair\[Rule]All,FCE\[Rule]True],FVD[p,\
+a_] FVD[q,a_]]", "True"},
+{"fcstUncontract-ID7", "Uncontract[CSP[p,q],p,FCE\[Rule]True]",
+"CSP[p, q]"},
+{"fcstUncontract-ID8",
+"MatchQ[Uncontract[CSP[p,q],p,CartesianPair\[Rule]All,FCE\[Rule]True],CV[p,\
+a_]CV[q,a_]]", "True"},
+{"fcstUncontract-ID9",
+"MatchQ[Uncontract[CSP[p,q]^2,p,CartesianPair\[Rule]All,FCE\[Rule]True],CV[\
+p,b_] CV[p,a_] CV[q,b_]CV[q,a_]]", "True"},
+{"fcstUncontract-ID10",
+"MatchQ[Uncontract[CSP[p,q],p,CartesianPair\[Rule]All,Dimension\[Rule]D,\
+FCE\[Rule]True],CVD[p,a_] CVD[q,a_]]", "True"},
+{"fcstUncontract-ID11",
+"MatchQ[Uncontract[CSP[p,q],p,CartesianPair\[Rule]All,Dimension\[Rule]D-4,\
+FCE\[Rule]True],CVE[p,a_] CVE[q,a_]]", "True"},
+{"fcstUncontract-ID12",
+"MatchQ[Uncontract[CSPD[p,q],p,CartesianPair\[Rule]All,FCE\[Rule]True],CVD[\
+p,a_] CVD[q,a_]]", "True"},
+{"fcstUncontract-ID13",
+"MatchQ[Uncontract[Pair[CartesianMomentum[p],LorentzIndex[mu]],p,Pair\
+\[Rule]All,FCE\[Rule]True],\[IndentingNewLine]CV[p,a_] \
+Pair[CartesianIndex[a_],LorentzIndex[mu]]]", "True"},
+{"fcstUncontract-ID14",
+"Uncontract[GS[p],p,FCE\[Rule]True,DiracGamma\[Rule]False]",
+"GS[p]"},
+{"fcstUncontract-ID15",
+"MatchQ[Uncontract[GS[p],p,FCE\[Rule]True],FV[p,a_] GA[a_]]",
+"True"},
+{"fcstUncontract-ID16",
+"MatchQ[Uncontract[GSD[p],p,FCE\[Rule]True],FVD[p,a_] GAD[a_]]",
+"True"},
+{"fcstUncontract-ID17",
+"MatchQ[Uncontract[GSE[p],p,FCE\[Rule]True],FVE[p,a_] GAE[a_]]",
+"True"},
+{"fcstUncontract-ID18",
+"MatchQ[Uncontract[GS[p],p,Dimension\[Rule]D,FCE\[Rule]True],FVD[p,\
+a_] GAD[a_]]", "True"},
+{"fcstUncontract-ID19",
+"MatchQ[Uncontract[GS[p],p,Dimension\[Rule]D-4,FCE\[Rule]True],FVE[\
+p,a_] GAE[a_]]", "True"},
+{"fcstUncontract-ID20",
+"MatchQ[Uncontract[GS[p]^2,p,FCE\[Rule]True],FV[p,a_] FV[p,b_] \
+GA[a_].GA[b_]]", "True"},
+{"fcstUncontract-ID21",
+"MatchQ[Uncontract[CGS[p],p,FCE\[Rule]True],CV[p,a_] CGA[a_]]",
+"True"},
+{"fcstUncontract-ID22",
+"MatchQ[Uncontract[CGSD[p],p,FCE\[Rule]True],CVD[p,a_] CGAD[a_]]",
+"True"},
+{"fcstUncontract-ID23",
+"MatchQ[Uncontract[CGSE[p],p,FCE\[Rule]True],CVE[p,a_] CGAE[a_]]",
+"True"},
+{"fcstUncontract-ID24",
+"MatchQ[Uncontract[CGS[p],p,Dimension\[Rule]D,FCE\[Rule]True],CVD[\
+p,a_] CGAD[a_]]", "True"},
+{"fcstUncontract-ID25",
+"MatchQ[Uncontract[CGS[p],p,Dimension\[Rule]D-4,FCE\[Rule]True],\
+CVE[p,a_] CGAE[a_]]", "True"},
+{"fcstUncontract-ID26",
+"MatchQ[Uncontract[CGS[p]^2,p,FCE\[Rule]True],CV[p,a_] \
+CV[p,b_]CGA[a_].CGA[b_]]", "True"},
+{"fcstUncontract-ID27",
+"MatchQ[Uncontract[SIS[p],p,FCE\[Rule]True],FV[p,a_] SI[a_]]",
+"True"},
+{"fcstUncontract-ID28",
+"MatchQ[Uncontract[SISD[p],p,FCE\[Rule]True],FVD[p,a_] SID[a_]]",
+"True"},
+{"fcstUncontract-ID29",
+"MatchQ[Uncontract[SISE[p],p,FCE\[Rule]True],FVE[p,a_] SIE[a_]]",
+"True"},
+{"fcstUncontract-ID30",
+"MatchQ[Uncontract[SIS[p],p,Dimension\[Rule]D,FCE\[Rule]True],FVD[\
+p,a_] SID[a_]]", "True"},
+{"fcstUncontract-ID31",
+"MatchQ[Uncontract[SIS[p],p,Dimension\[Rule]D-4,FCE\[Rule]True],\
+FVE[p,a_] SIE[a_]]", "True"},
+{"fcstUncontract-ID32",
+"MatchQ[Uncontract[SIS[p]^2,p,FCE\[Rule]True],FV[p,a_] FV[p,b_] \
+SI[a_].SI[b_]]", "True"},
+{"fcstUncontract-ID33",
+"MatchQ[Uncontract[CSIS[p],p,FCE\[Rule]True],CV[p,a_] CSI[a_]]",
+"True"},
+{"fcstUncontract-ID34",
+"MatchQ[Uncontract[CSISD[p],p,FCE\[Rule]True],CVD[p,a_] CSID[a_]]",
+	"True"},
+{"fcstUncontract-ID35",
+"MatchQ[Uncontract[CSISE[p],p,FCE\[Rule]True],CVE[p,a_] CSIE[a_]]",
+	"True"},
+{"fcstUncontract-ID36",
+"MatchQ[Uncontract[CSIS[p],p,Dimension\[Rule]D,FCE\[Rule]True],CVD[\
+p,a_] CSID[a_]]", "True"},
+{"fcstUncontract-ID37",
+"MatchQ[Uncontract[CSIS[p],p,Dimension\[Rule]D-4,FCE\[Rule]True],\
+CVE[p,a_] CSIE[a_]]", "True"},
+{"fcstUncontract-ID38",
+"MatchQ[Uncontract[CSIS[p]^2,p,FCE\[Rule]True],CV[p,a_] \
+CV[p,b_]CSI[a_].CSI[b_]]", "True"},
+{"fcstUncontract-ID39",
+"MatchQ[Uncontract[LC[mu,nu][p,q],p,FCE\[Rule]True],FV[p,a_] \
+LC[mu,nu,a_][q]]", "True"},
+{"fcstUncontract-ID40",
+"Uncontract[LC[mu,nu][p,q],p,FCE\[Rule]True,Eps\[Rule]False]",
+"LC[mu, nu][p, q]"},
+{"fcstUncontract-ID41",
+"MatchQ[Uncontract[CLC[i][p,q],p,FCE\[Rule]True],CV[p,a_] \
+CLC[i,a_][q]]", "True"},
+{"fcstUncontract-ID42",
+"Uncontract[CLC[i][p,q],p,FCE\[Rule]True,Eps\[Rule]False]",
+"CLC[i][p, q]"},
+{"fcstUncontract-ID43",
+"MatchQ[Uncontract[LC[mu,nu][p,q],p,q,FCE\[Rule]True],-FV[p,a_] \
+FV[q,b_] LC[mu,nu,b_,a_]]", "True"},
+{"fcstUncontract-ID44",
+"MatchQ[Uncontract[Pair[Momentum[p], Momentum[Polarization[p, I]]], p,
+Pair -> {p}, FCE -> True],
+FV[p, $AL[b_]] FV[Polarization[p, I], $AL[a_]] MT[$AL[a_], $AL[b_]]]", "True"},
+{"fcstUncontract-ID45",
+"MatchQ[Uncontract[CartesianPair[CartesianMomentum[p], CartesianMomentum[Polarization[p, I]]],
+p, CartesianPair -> {p}, FCE -> True],
+CV[p, $AL[b_]] CV[Polarization[p, I], $AL[a_]] KD[$AL[a_], $AL[b_]]]", "True"},
+{"fcstUncontract-ID46",
+"MatchQ[Uncontract[Eps[LorentzIndex[nu],LorentzIndex[rho],\
+LorentzIndex[si],Momentum[Polarization[p,I]]],p,FCE\[Rule]True],FV[\
+Polarization[p,\[ImaginaryI]],a_] LC[nu,rho,si,a_]]", "True"},
+{"fcstUncontract-ID47",
+"MatchQ[Uncontract[FCI[GS[p+q+l]],l,Pair\[Rule]All,FCE\[Rule]True],\
+FV[l,a_] GA[a_]+GS[p]+GS[q]]", "True"},
+{"fcstUncontract-ID48",
+"MatchQ[Uncontract[ExpandScalarProduct[SP[q+p,a+b]],q,Pair\[Rule]\
+All,FCE\[Rule]True],\[IndentingNewLine]FV[a,b_] FV[q,b_]+FV[b,c_] \
+FV[q,c_]+SP[a,p]+SP[b,p]]", "True"},
+{"fcstUncontract-ID49", "DataType[mytensor,FCTensor]=True;
+MatchQ[Uncontract[mytensor[Momentum[x],Momentum[y]]^3,x,y,Pair\
+\[Rule]All],FCI[FV[x,i1_] FV[x,i2_]] FCI[FV[x,i3_]] FCI[FV[y,j1_] \
+FV[y,j2_]] FCI[FV[y,j3_]] \
+mytensor[LorentzIndex[i1_],LorentzIndex[j1_]] \
+mytensor[LorentzIndex[i2_],LorentzIndex[j2_]] \
+mytensor[LorentzIndex[i3_],LorentzIndex[j3_]]\
+/;i1=!=i2&&i2=!=i3&&j1=!=j2&&j2=!=j3]", "True"},
+{"fcstUncontract-ID50",
+"MatchQ[Uncontract[SP[x,y]^3,x,y,Pair\[Rule]All],FCI[FV[x,i1_] \
+FV[x,i2_]] FCI[FV[x,i3_]] FCI[FV[y,i1_] FV[y,i2_]] \
+FCI[FV[y,i3_]]/;i1=!=i2&&i2=!=i3]", "True"},
+{"fcstUncontract-ID51",
+"MatchQ[Uncontract[SPD[l, l], l, Pair -> All, FCE -> True],
+FVD[l, $AL[a_]] FVD[l, $AL[b_]] MTD[$AL[a_], $AL[b_]]]", "True"},
+{"fcstUncontract-ID52",
+"MatchQ[Uncontract[CSPD[l, l], l, CartesianPair -> All, FCE -> True],
+CVD[l, $AL[a_]] CVD[l, $AL[b_]] KDD[$AL[a_], $AL[b_]]]", "True"},
+{"fcstUncontract-ID53",
+"Uncontract[SPD[l, l], l, Pair -> All, Square -> False, FCE -> True]", "SPD[l, l]"},
+{"fcstUncontract-ID54",
+"Uncontract[CSPD[l, l], l, CartesianPair -> All, Square -> False, FCE -> True]", "CSPD[l, l]"},
+{"fcstUncontract-ID55",
+"MatchQ[Uncontract[GSD[l, q, l], l, FCE -> True],GAD[b_].GSD[q].GAD[a_] FVD[l, b_] FVD[l, a_]]", "True"},
+{"fcstUncontract-ID56",
+"MatchQ[Uncontract[SP[q, p]^2 GS[r1].GA[mu].GS[r2], All, Pair -> All, FCE -> True],
+GA[b_].GA[mu].GA[a_] FV[p, c_] FV[p, d_] FV[q, c_] FV[q, d_] FV[r1, b_] FV[r2, a_]]", "True"},
+{"fcstUncontract-ID55",
+"Uncontract[aaa, All]", "aaa"},
+{"fcstUncontract-ID56",
+"FCCanonicalizeDummyIndices[
+Uncontract[DCHN[GA[mu].(GS[p]).GA[nu], i, j], p],
+LorentzIndexNames -> {al}, FCE -> True]", "DCHN[GA[mu].GA[al].GA[nu], i, j] FV[p, al]"},
+{"fcstUncontract-ID57",
+"FCCanonicalizeDummyIndices[
+Uncontract[DCHN[GA[mu].(GS[p] + m).GA[nu], i, j], p],
+LorentzIndexNames -> {al}, FCE -> True]", "m DCHN[ GA[mu].GA[nu], i, j] +
+DCHN[GA[mu].GA[al].GA[nu], i, j] FV[p, al]"},
+{"fcstUncontract-ID58", "FCCanonicalizeDummyIndices[
+Uncontract[DCHN[-GSD[k] + me, Dir3, Dir4], k],
+LorentzIndexNames -> {mu}, FCE -> True]", "me DCHN[1, Dir3, Dir4] - DCHN[GAD[mu], Dir3, Dir4] FVD[k, mu]"},
+{"fcstUncontract-ID59", "FCCanonicalizeDummyIndices[
+Uncontract[DCHN[GA[mu].(-GSD[k] + me).GA[nu], Dir3, Dir4], k],
+LorentzIndexNames -> {la}, FCE -> True]", "me DCHN[GA[mu].GA[nu], Dir3, Dir4] -
+DCHN[GA[mu].GAD[la].GA[nu], Dir3, Dir4] FVD[k, la]"}
+});

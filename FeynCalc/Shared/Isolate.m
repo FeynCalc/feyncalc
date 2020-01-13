@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary: 	Isolate introduces abbreviations for common
@@ -67,19 +67,19 @@ End[]
 Begin["`Isolate`Private`"]
 
 Options[Isolate] = {
-	IsolateNames -> KK,
-	IsolatePrint -> False,
-	IsolateFast	 -> False,
-	IsolateSplit -> Infinity,
-	IsolateTimes -> False,
-	IsolatePlus -> False
+	IsolateFast		-> False,
+	IsolateNames	-> KK,
+	IsolatePlus 	-> False,
+	IsolatePrint	-> False,
+	IsolateSplit 	-> Infinity,
+	IsolateTimes 	-> False
 };
 
 Isolate[OptionsPattern[]] :=
 	(Message[Isolate::argt, Isolate, 0, 1, 2]; Abort[]);
 
 Isolate[_,_,a___,z:Except[_?OptionQ], OptionsPattern[]] :=
-	(Message[Isolate::argt, Isolate, Length[{a}]+3, 1, 2]; Abort[]);
+	(Message[Isolate::argt, Isolate, Length[{a}]+3, 1, 2]; Abort[])/; !OptionQ[z]
 
 Isolate[y_HoldForm^n_., _, OptionsPattern[]] :=
 	y^n;
@@ -243,7 +243,7 @@ remIsolate[x_, {___Plus, abb_ /; Head[abb] =!= Plus, ___}] :=
 	];
 
 remIsolate[x_, abb_ /; Head[abb] =!= List] :=
-	Block[{re, h},
+	Block[{re, h, temp},
 		If[Length[(re = Select[DownValues @@ {abb}, (#[[2]]===x) &])] > 0,
 			re = re[[1,1]] /. {Literal :> HoldForm, HoldPattern :> HoldForm},
 			If[ Head[abb]===Symbol,

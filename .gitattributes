@@ -5,4 +5,19 @@
 *.Gen linguist-language=Mathematica
 *.conf linguist-language=Mathematica
 *.Fac linguist-language=Mathematica
-
+Tests export-ignore
+FeynCalc/DocSource export-ignore
+FeynCalc/DocOutput export-ignore
+FeynCalc/Phi export-ignore
+install.m export-ignore
+.project export-ignore
+.gitignore export-ignore
+.gitattributes export-ignore
+docbuild.xml export-ignore
+issue_template.md export-ignore
+SUPPORT.md export-ignore
+README.MD export-ignore
+.WolframResources export-ignore
+edit_documentation.sh export-ignore
+use_documentation.sh export-ignore
+LICENSE export-ignore

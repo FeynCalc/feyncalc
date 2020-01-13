@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for FCColorIsolate             *)
@@ -53,5 +53,22 @@ SUNIndex[k]]*FCGV[\"ColorObject\"][SUNT[SUNIndex[c]]]"},
 {"fcstFCColorIsolate-ID9",
 "FCColorIsolate[SUNTrace[SUNT[a,b,c]]x+y]",
 "y + x*FCGV[\"ColorObject\"][SUNTrace[SUNT[SUNIndex[a]] . \
-SUNT[SUNIndex[b]] . SUNT[SUNIndex[c]]]]"}
+SUNT[SUNIndex[b]] . SUNT[SUNIndex[c]]]]"},
+{"fcstFCColorIsolate-ID10",
+"FCColorIsolate[SUNF[x, y, z]^2 SUNT[a, b] x + y SUNT[c] SUND[i, j, k],
+Head -> {col, re}, FCE -> True]",
+"col[SUNT[a].SUNT[b] SUNF[x, y, z]^2] re[x] +
+col[SUND[i, j, k] SUNT[c]] re[y]"},
+{"fcstFCColorIsolate-ID11", "FCColorIsolate[x,Head->{col,re}]", "re[x]"},
+{"fcstFCColorIsolate-ID12", "FCColorIsolate[
+Spinor[Momentum[p1, D], mb, 1].GAD[FCGV[mu]].GA[7].Spinor[
+	Momentum[p3, D], ms, 1] Spinor[-Momentum[p1, D], mb, 1].GAD[
+	mu].GSD[p1].GSD[p1].GA[7].Spinor[-Momentum[p2, D], ms, 1] SDF[
+colInB, colOutS] SDF[colInS, colOutB], ExceptHeads -> {CA},
+Head -> col, FCE -> True]", "col[SDF[colInB, colOutS] SDF[colInS, colOutB]] Spinor[Momentum[p1, D],
+	mb, 1].GAD[FCGV[mu]].GA[7].Spinor[Momentum[p3, D], ms,
+1] Spinor[-Momentum[p1, D], mb, 1].GAD[mu].GSD[p1].GSD[p1].GA[
+7].Spinor[-Momentum[p2, D], ms, 1]"},
+{"fcstFCColorIsolate-ID13", "FCColorIsolate[{SUNT[a], SUNT[b]}, Head -> col, FCE -> True]",
+"{col[SUNT[a]], col[SUNT[b]]}"}
 });

@@ -178,9 +178,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/PaVeReduce",
   ButtonNote->"PaVeReduce"],
  "."
-}], "Text",
- CellTags->"PaVeOrder",
- CellID->776510000]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -207,6 +205,11 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
+Cell[BoxData[
+ RowBox[{"ClearAll", "[", 
+  RowBox[{"t", ",", "s"}], "]"}]], "Input",
+ CellLabel->"In[53]:="],
+
 Cell[CellGroupData[{
 
 Cell[BoxData[
@@ -221,7 +224,7 @@ Cell[BoxData[
      RowBox[{"me2", ",", "me2", ",", "0", ",", "0"}], "}"}]}]}], 
   "]"}]], "Input",
  CellTags->"PaVeOrder",
- CellLabel->"In[1]:=",
+ CellLabel->"In[54]:=",
  CellID->641538627],
 
 Cell[BoxData[
@@ -236,8 +239,7 @@ Cell[BoxData[
     TraditionalForm],
    HoldForm], TraditionalForm]], "Output",
  CellTags->"PaVeOrder",
- CellLabel->"Out[1]=",
- CellID->1082848295]
+ CellLabel->"Out[54]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -254,7 +256,7 @@ Cell[BoxData[
      RowBox[{"me2", ",", "me2", ",", "0", ",", "0"}], "}"}]}]}], 
   "]"}]], "Input",
  CellTags->"PaVeOrder",
- CellLabel->"In[2]:=",
+ CellLabel->"In[55]:=",
  CellID->490694983],
 
 Cell[BoxData[
@@ -269,8 +271,7 @@ Cell[BoxData[
     TraditionalForm],
    HoldForm], TraditionalForm]], "Output",
  CellTags->"PaVeOrder",
- CellLabel->"Out[2]=",
- CellID->1266309668]
+ CellLabel->"Out[55]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -295,7 +296,7 @@ Cell[BoxData[
       RowBox[{"{", 
        RowBox[{"f", ",", "e"}], "}"}]}], "}"}]}]}], "]"}]], "Input",
  CellTags->"PaVeOrder",
- CellLabel->"In[3]:=",
+ CellLabel->"In[56]:=",
  CellID->1444685309],
 
 Cell[BoxData[
@@ -324,8 +325,7 @@ Cell[BoxData[
      HoldForm],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"PaVeOrder",
- CellLabel->"Out[3]=",
- CellID->1493961476]
+ CellLabel->"Out[56]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -390,12 +390,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{830, Automatic}, {Automatic, 179}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

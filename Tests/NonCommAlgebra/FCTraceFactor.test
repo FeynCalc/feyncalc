@@ -2,9 +2,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for FCTraceFactor			*)
@@ -36,5 +36,10 @@ b)]]//FCE",
 "(a - b)*(a + b)^2*c*DiracTrace[1]*DiracTrace[GA[i] . GA[j]]"},
 {"fcstFCTraceFactor-ID8",
 "DiracTrace[DiracTrace[GA[i, j]] GA[k, l]] // FCTraceFactor // FCE",
-"DiracTrace[GA[i].GA[j]] DiracTrace[GA[k].GA[l]]"}
+"DiracTrace[GA[i].GA[j]] DiracTrace[GA[k].GA[l]]"},
+{"fcstFCTraceFactor-ID9",
+"FCTraceFactor[
+DiracTrace[(x*(GS[p1] + M)).GA[mu].SI[xx].SUNT[
+	a].(y*(GS[p2] + M).GA[nu])], FCE -> True]",
+"x y DiracTrace[(M + GS[p1]).GA[mu].SI[xx].SUNT[a].(M + GS[p2]).GA[nu]]"}
 })

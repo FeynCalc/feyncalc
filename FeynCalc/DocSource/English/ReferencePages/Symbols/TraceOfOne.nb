@@ -160,20 +160,17 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
- ButtonBox["TR",
+ ButtonBox["DiracSimplify",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/TR",
-  ButtonNote->"Tr"],
+  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
  ", ",
  ButtonBox["DiracTrace",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/DiracTrace",
   ButtonNote->"DiracTrace"],
  "."
-}], "Text",
- CellTags->"TraceOfOne",
- CellID->622050208]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -203,39 +200,53 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"TR", "[", 
-  RowBox[{"1", ",", 
-   RowBox[{"SUNTrace", "\[Rule]", "False"}], ",", 
-   RowBox[{"SUNNToCACF", "\[Rule]", "True"}], ",", 
-   RowBox[{"TraceOfOne", "\[Rule]", "tr1"}]}], "]"}]], "Input",
- CellTags->"TraceOfOne",
- CellLabel->"In[1]:=",
- CellID->223402463],
+ RowBox[{"DiracTrace", "[", "1", "]"}]], "Input",
+ CellLabel->"In[7]:="],
 
 Cell[BoxData[
- FormBox["tr1", TraditionalForm]], "Output",
- CellTags->"TraceOfOne",
- CellLabel->"Out[1]=",
- CellID->2044201134]
+ FormBox[
+  RowBox[{"tr", "(", 
+   FormBox["1",
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"TR", "[", 
-  RowBox[{"1", ",", 
-   RowBox[{"SUNTrace", "\[Rule]", "True"}], ",", 
-   RowBox[{"SUNNToCACF", "\[Rule]", "True"}], ",", 
-   RowBox[{"TraceOfOne", "\[Rule]", "tr2"}]}], "]"}]], "Input",
- CellTags->"TraceOfOne",
- CellLabel->"In[2]:=",
- CellID->1954279511],
+ RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[8]:="],
 
 Cell[BoxData[
- FormBox["tr2", TraditionalForm]], "Output",
- CellTags->"TraceOfOne",
- CellLabel->"Out[2]=",
- CellID->803728852]
+ FormBox["4", TraditionalForm]], "Output",
+ CellLabel->"Out[8]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracTrace", "[", 
+  RowBox[{"1", ",", 
+   RowBox[{"TraceOfOne", "\[Rule]", "tr1"}]}], "]"}]], "Input",
+ CellLabel->"In[9]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"tr", "(", 
+   FormBox["1",
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ CellLabel->"Out[9]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[10]:="],
+
+Cell[BoxData[
+ FormBox["tr1", TraditionalForm]], "Output",
+ CellLabel->"Out[10]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -300,12 +311,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{963, Automatic}, {Automatic, 180}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

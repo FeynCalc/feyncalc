@@ -1,7 +1,15 @@
-(* ------------------------------------------------------------------------ *)
-(* ------------------------------------------------------------------------ *)
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Summary: test for non-commutativity *)
+(* :Title: NonCommutative													*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Tests for non-commutativity									*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -46,6 +54,14 @@ UnDeclareNonCommutative::usage =
 "UnDeclareNonCommutative[a, b, ...] undeclares a,b, ... to be \
 noncommutative, i.e., DataType[a,b, ..., NonCommutative] = False \
 is performed.";
+
+UnDeclareAntiCommutator::usage =
+"UnDeclareAntiCommutator[a, b] undeclares the value assigned to the
+anticommutator of a and b.";
+
+UnDeclareCommutator::usage =
+"UnDeclareCommutator[a, b] undeclares the value assigned to the
+commutator of a and b.";
 
 
 (* ------------------------------------------------------------------------ *)
@@ -108,23 +124,49 @@ UnDeclareNonCommutative[] :=
 UnDeclareNonCommutative[b__] :=
 	(Map[Set[DataType[#, NonCommutative], False]&, Flatten[{b}]]; Null);
 
+UnDeclareCommutator[a_, b_] :=
+	Block[{exp, comm, dw},
+		exp = HoldPattern[comm[a, b]] /. comm -> Commutator;
+		dw = SelectFree[DownValues[Commutator], exp];
+		DownValues[Commutator] = dw;
+	];
+
+UnDeclareAntiCommutator[a_, b_] :=
+	Block[{exp, acomm, dw},
+		exp = HoldPattern[acomm[a, b]] /. acomm -> AntiCommutator;
+		dw = SelectFree[DownValues[AntiCommutator], exp];
+		DownValues[AntiCommutator] = dw;
+	];
+
 (* Have traces treated as commutating objects. F.Orellana, 11/9-2002. *)
-excludeTraces = a : (DiracTrace |  SUNTrace)[__] :>
+
+excludeTraces = {_DiracTrace :> Unique["DiracTrace"], _SUNTrace :> Unique["SUNTrace"]};
+(*
+a : (DiracTrace |  SUNTrace)[__] :>
 (a /. (Rule[#, ToString[#]] & /@{DiracTrace, SUNTrace, Sequence @@ $NonComm}));
+*)
 
 NonCommFreeQ[_?NumberQ] :=
 	True;
-NonCommFreeQ[x_] :=
-	MemSet[NonCommFreeQ[x], FreeQ2[x /. excludeTraces, $NonComm]];
 
-(*Comment: Because of this MemSet, NonCommFreeQ is updated when setting a new
-	DataType[x,NonCommutative]=True or DataType[x,NonCommutative]=False.
-	Rolf implemented it this way to gain speed I suppose. F.Orellana*)
+NonCommFreeQ[x_] :=
+	MemSet[NonCommFreeQ[x],
+		If[ !FreeQ2[x,{DiracTrace,SUNTrace}],
+				FreeQ2[x /. excludeTraces, $NonComm],
+				FreeQ2[x, $NonComm]
+		]
+	];
 
 NonCommQ[_?NumberQ]   :=
 	False;
+
 NonCommQ[x_] :=
-	MemSet[NonCommQ[x],	!FreeQ2[x /. excludeTraces, $NonComm]];
+	MemSet[NonCommQ[x],
+		If[ !FreeQ2[x,{DiracTrace,SUNTrace}],
+				!FreeQ2[x /. excludeTraces, $NonComm],
+				!FreeQ2[x, $NonComm]
+		]
+	];
 
 FCPrint[1,"NonCommutative loaded"];
 End[]

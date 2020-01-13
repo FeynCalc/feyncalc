@@ -117,10 +117,15 @@ Cell["AntiCommutator", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{"AntiCommutator", "[", 
-   RowBox[{"x", ",", " ", "y"}], "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "= c defines the anti-commutator of the non commuting objects x and y."
+  RowBox[{
+   RowBox[{"AntiCommutator", "[", 
+    RowBox[{"x", ",", " ", "y"}], "]"}], "=", "c"}]], "InlineFormula"],
+ " \[LineSeparator]defines the anti-commutator of the non commuting objects \
+",
+ Cell[BoxData["x"], "InlineFormula"],
+ " and ",
+ Cell[BoxData["y"], "InlineFormula"],
+ "."
 }], "Usage",
  CellID->982511436],
 
@@ -181,9 +186,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/DotSimplify",
   ButtonNote->"DotSimplify"],
  "."
-}], "Text",
- CellTags->"AntiCommutator",
- CellID->1793111208]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -218,15 +221,13 @@ Cell[TextData[{
  StyleBox["b",
   FontFamily->"Courier"],
  " as noncommutative variables."
-}], "Text",
- CellTags->"AntiCommutator",
- CellID->1525212065],
+}], "Notes"],
 
 Cell[BoxData[
  RowBox[{"DeclareNonCommutative", "[", 
   RowBox[{"a", ",", "b"}], "]"}]], "Input",
  CellTags->"AntiCommutator",
- CellLabel->"In[1]:=",
+ CellLabel->"In[209]:=",
  CellID->756062925],
 
 Cell[CellGroupData[{
@@ -235,7 +236,7 @@ Cell[BoxData[
  RowBox[{"AntiCommutator", "[", 
   RowBox[{"a", ",", "b"}], "]"}]], "Input",
  CellTags->"AntiCommutator",
- CellLabel->"In[2]:=",
+ CellLabel->"In[210]:=",
  CellID->1726378547],
 
 Cell[BoxData[
@@ -254,8 +255,7 @@ Cell[BoxData[
    FormBox["\<\"}\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"AntiCommutator",
- CellLabel->"Out[2]=",
- CellID->479481037]
+ CellLabel->"Out[210]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -263,7 +263,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"CommutatorExplicit", "[", "%", "]"}]], "Input",
  CellTags->"AntiCommutator",
- CellLabel->"In[3]:=",
+ CellLabel->"In[211]:=",
  CellID->693384404],
 
 Cell[BoxData[
@@ -272,8 +272,7 @@ Cell[BoxData[
    RowBox[{"a", ".", "b"}], "+", 
    RowBox[{"b", ".", "a"}]}], TraditionalForm]], "Output",
  CellTags->"AntiCommutator",
- CellLabel->"Out[3]=",
- CellID->147684859]
+ CellLabel->"Out[211]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -286,7 +285,7 @@ Cell[BoxData[
     RowBox[{"a", "-", 
      RowBox[{"2", "b"}]}]}], " ", "]"}], "]"}]], "Input",
  CellTags->"AntiCommutator",
- CellLabel->"In[4]:=",
+ CellLabel->"In[212]:=",
  CellID->1495920503],
 
 Cell[BoxData[
@@ -305,8 +304,7 @@ Cell[BoxData[
      RowBox[{"a", "-", 
       RowBox[{"2", " ", "b"}]}], ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"AntiCommutator",
- CellLabel->"Out[4]=",
- CellID->1027223948]
+ CellLabel->"Out[212]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -319,27 +317,21 @@ Cell[BoxData[
     RowBox[{"a", "-", 
      RowBox[{"2", "b"}]}]}], " ", "]"}], "]"}]], "Input",
  CellTags->"AntiCommutator",
- CellLabel->"In[5]:=",
+ CellLabel->"In[213]:=",
  CellID->871283752],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   RowBox[{
-    RowBox[{"(", 
-     RowBox[{"a", "-", 
-      RowBox[{"2", " ", "b"}]}], ")"}], ".", 
-    RowBox[{"(", 
-     RowBox[{"a", "+", "b"}], ")"}]}], "+", 
-   RowBox[{
-    RowBox[{"(", 
-     RowBox[{"a", "+", "b"}], ")"}], ".", 
-    RowBox[{"(", 
-     RowBox[{"a", "-", 
-      RowBox[{"2", " ", "b"}]}], ")"}]}]}], TraditionalForm]], "Output",
+   RowBox[{"-", 
+    RowBox[{"a", ".", "b"}]}], "-", 
+   RowBox[{"b", ".", "a"}], "+", 
+   RowBox[{"2", " ", 
+    RowBox[{"a", ".", "a"}]}], "-", 
+   RowBox[{"4", " ", 
+    RowBox[{"b", ".", "b"}]}]}], TraditionalForm]], "Output",
  CellTags->"AntiCommutator",
- CellLabel->"Out[5]=",
- CellID->980600157]
+ CellLabel->"Out[213]="]
 }, Open  ]],
 
 Cell[BoxData[
@@ -348,12 +340,10 @@ Cell[BoxData[
    OverscriptBox["c", "~"], ",", 
    OverscriptBox["d", "~"]}], "]"}]], "Input",
  CellTags->"AntiCommutator",
- CellLabel->"In[6]:=",
+ CellLabel->"In[214]:=",
  CellID->422937377],
 
-Cell["Defining {c,d} = z results in replacements of c.d by z-d.c.", "Text",
- CellTags->"AntiCommutator",
- CellID->405748459],
+Cell["Defining {c,d} = z results in replacements of c.d by z-d.c.", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -362,14 +352,13 @@ Cell[BoxData[
   RowBox[{"AntiCommutator", "[", 
    RowBox[{"c", ",", "d"}], "]"}], " ", "=", " ", "z"}]], "Input",
  CellTags->"AntiCommutator",
- CellLabel->"In[7]:=",
+ CellLabel->"In[215]:=",
  CellID->1154888291],
 
 Cell[BoxData[
  FormBox["z", TraditionalForm]], "Output",
  CellTags->"AntiCommutator",
- CellLabel->"Out[7]=",
- CellID->1400406202]
+ CellLabel->"Out[215]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -379,7 +368,7 @@ Cell[BoxData[
   RowBox[{"d", " ", ".", " ", "c", " ", ".", " ", "d"}], " ", "]"}]], "Input",
  
  CellTags->"AntiCommutator",
- CellLabel->"In[8]:=",
+ CellLabel->"In[216]:=",
  CellID->400792382],
 
 Cell[BoxData[
@@ -388,8 +377,7 @@ Cell[BoxData[
    RowBox[{"d", " ", "z"}], "-", 
    RowBox[{"d", ".", "d", ".", "c"}]}], TraditionalForm]], "Output",
  CellTags->"AntiCommutator",
- CellLabel->"Out[8]=",
- CellID->1500489599]
+ CellLabel->"Out[216]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -402,15 +390,14 @@ Cell[BoxData[
     OverscriptBox["c", "~"]}], "]"}], " ", "=", " ", 
   OverscriptBox["z", "~"]}]], "Input",
  CellTags->"AntiCommutator",
- CellLabel->"In[9]:=",
+ CellLabel->"In[217]:=",
  CellID->392638266],
 
 Cell[BoxData[
  FormBox[
   OverscriptBox["z", "~"], TraditionalForm]], "Output",
  CellTags->"AntiCommutator",
- CellLabel->"Out[9]=",
- CellID->225220528]
+ CellLabel->"Out[217]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -422,7 +409,7 @@ Cell[BoxData[
    OverscriptBox["c", "~"], " ", ".", " ", 
    OverscriptBox["d", "~"]}], " ", "]"}]], "Input",
  CellTags->"AntiCommutator",
- CellLabel->"In[10]:=",
+ CellLabel->"In[218]:=",
  CellID->598753128],
 
 Cell[BoxData[
@@ -436,8 +423,7 @@ Cell[BoxData[
     OverscriptBox["d", "~"], ".", 
     OverscriptBox["d", "~"]}]}], TraditionalForm]], "Output",
  CellTags->"AntiCommutator",
- CellLabel->"Out[10]=",
- CellID->1740531218]
+ CellLabel->"Out[218]="]
 }, Open  ]],
 
 Cell[BoxData[
@@ -446,7 +432,7 @@ Cell[BoxData[
    OverscriptBox["c", "~"], ",", 
    OverscriptBox["d", "~"]}], "]"}]], "Input",
  CellTags->"AntiCommutator",
- CellLabel->"In[11]:=",
+ CellLabel->"In[219]:=",
  CellID->108727372],
 
 Cell[BoxData[
@@ -454,7 +440,7 @@ Cell[BoxData[
   RowBox[{"AntiCommutator", "[", 
    RowBox[{"c", ",", "d"}], "]"}], "]"}]], "Input",
  CellTags->"AntiCommutator",
- CellLabel->"In[12]:=",
+ CellLabel->"In[220]:=",
  CellID->873286670],
 
 Cell[BoxData[
@@ -464,7 +450,7 @@ Cell[BoxData[
     OverscriptBox["d", "~"], ",", 
     OverscriptBox["c", "~"]}], "]"}], "]"}]], "Input",
  CellTags->"AntiCommutator",
- CellLabel->"In[13]:=",
+ CellLabel->"In[221]:=",
  CellID->702830390]
 }, Open  ]],
 
@@ -529,12 +515,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{593, Automatic}, {Automatic, 76}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

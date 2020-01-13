@@ -123,8 +123,19 @@ Cell[TextData[{
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "OPESumSimplify", "]"}]], "Input",
+ CellLabel->"In[34]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"Assumptions", "\[Rule]", "True"}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[34]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -170,9 +181,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/OPESumExplicit",
   ButtonNote->"OPESumExplicit"],
  "."
-}], "Text",
- CellTags->"OPESumSimplify",
- CellID->189414120]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -484,12 +493,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{830, Automatic}, {Automatic, 154}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

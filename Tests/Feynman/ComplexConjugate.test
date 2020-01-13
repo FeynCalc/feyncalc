@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for ComplexConjugate         *)
@@ -19,5 +19,119 @@ Tests`Feynman`fcstComplexConjugate = {
 {"fcstComplexConjugate-ID2","ComplexConjugate[SUNTF[a,b,c]]",
 	"SUNTF[{SUNIndex[a]}, SUNFIndex[c], SUNFIndex[b]]"},
 {"fcstComplexConjugate-ID3","ComplexConjugate[SUNTF[{a1,a2,a3},b,c]]",
-	"SUNTF[{SUNIndex[a3], SUNIndex[a2], SUNIndex[a1]}, SUNFIndex[c], SUNFIndex[b]]"}
+	"SUNTF[{SUNIndex[a3], SUNIndex[a2], SUNIndex[a1]}, SUNFIndex[c], SUNFIndex[b]]"},
+{"fcstComplexConjugate-ID4","MatchQ[ComplexConjugate[GA[a].GA[5].GA[a]],
+-DiracGamma[LorentzIndex[x_]].DiracGamma[5].DiracGamma[LorentzIndex[x_]] /; x =!= a]",
+	"True"},
+{"fcstComplexConjugate-ID5","ComplexConjugate[PauliXi[-I].CSI[i].PauliEta[I], FCE -> True]",
+	"PauliEta[-I].CSI[i].PauliXi[I]"},
+{"fcstComplexConjugate-ID6","ComplexConjugate[PauliXi[-I].CSI[i, j, k].PauliEta[I], FCE -> True]",
+	"PauliEta[-I].CSI[k].CSI[j].CSI[i].PauliXi[I]"},
+{"fcstComplexConjugate-ID7","ComplexConjugate[PauliXi[-I].CSIS[p, q, r].PauliEta[I], FCE -> True]",
+	"PauliEta[-I].CSIS[r].CSIS[q].CSIS[p].PauliXi[I]"},
+{"fcstComplexConjugate-ID8","ComplexConjugate[SpinorUBar[p1, m1].GA[mu, nu, rho].SpinorV[p2, m2], FCE -> True]",
+	"Spinor[-Momentum[p2], m2, 1].GA[rho].GA[nu].GA[mu].Spinor[Momentum[p1], m1, 1]"},
+{"fcstComplexConjugate-ID9","ComplexConjugate[SpinorUBar[p1, m1].CGA[i, j, k].SpinorV[p2, m2], FCE -> True]",
+	"Spinor[-Momentum[p2], m2, 1].CGA[k].CGA[j].CGA[i].Spinor[Momentum[p1], m1, 1]"},
+{"fcstComplexConjugate-ID10","ComplexConjugate[aaa]",
+	"aaa"},
+{"fcstComplexConjugate-ID11","ComplexConjugate[aaa,Conjugate->{aaa}]",
+	"Conjugate[aaa]"},
+{"fcstComplexConjugate-ID12","ComplexConjugate[SUNDelta[SUNIndex[Glu3], SUNIndex[Glu4]]]",
+	"SUNDelta[SUNIndex[Glu3], SUNIndex[Glu4]]"},
+{"fcstComplexConjugate-ID13","ComplexConjugate[SpinorUBar[k].GA[mu].(1 - la GA[5]).SpinorU[p, m], FCE -> True]",
+"Spinor[Momentum[p], m, 1].(1 + la GA[5]).GA[mu].Spinor[Momentum[k], 0, 1]"},
+{"fcstComplexConjugate-ID14","ComplexConjugate[Spinor[-Momentum[p1], 0, 1].GA[al].(CRE GA[6] + CLE GA[7]).Spinor[Momentum[p2], 0, 1], FCE -> True]",
+"Spinor[Momentum[p2], 0, 1] . (CLE*GA[6] + CRE*GA[7]) . GA[al] . Spinor[-Momentum[p1], 0, 1]"},
+{"fcstComplexConjugate-ID15","ComplexConjugate[Spinor[Momentum[p4], M4, 1].GA[
+be].(OR GA[6] + OL GA[7]).(-MGJ + GS[p3] + GS[p5]).(CA1 FMIX1A (A2 GA[6] + A1 GA[7]) + CA2 FMIX2A (A4 GA[6] + A3 GA[7])).Spinor[-Momentum[p5], M5, 1], FCE -> True]",
+"Spinor[-Momentum[p5], M5, 1] . (CA1*FMIX1A*(A1*GA[6] + A2*GA[7]) + CA2*FMIX2A*(A3*GA[6] + A4*GA[7])) . (-MGJ + GS[p3] + GS[p5]) . (OL*GA[6] + OR*GA[7]) . GA[be] .
+Spinor[Momentum[p4], M4, 1]"},
+{"fcstComplexConjugate-ID16","ComplexConjugate[Spinor[Momentum[k2], mb, 1].(mb GA[6] + GA[7] mt), FCE -> True]",
+	"(mt*GA[6] + mb*GA[7]) . Spinor[Momentum[k2], mb, 1]"},
+{"fcstComplexConjugate-ID17","ComplexConjugate[(mb GA[6] + GA[7] mt), FCE -> True]",
+	"(mt*GA[6] + mb*GA[7])"},
+{"fcstComplexConjugate-ID18","ComplexConjugate[FCChargeConjugateTransposed[GA[\[Mu], 5, \[Nu]]],
+FCE -> True]",	"-GA[\[Mu]] . GA[5] . GA[\[Nu]]"},
+{"fcstComplexConjugate-ID19",
+"ComplexConjugate[SpinorUBar[p1,m1].FCCCT[GA[mu]].SpinorV[p2,m2],\
+FCE->True]",
+"-Spinor[-Momentum[p2], m2, 1] . GA[mu] . Spinor[Momentum[p1], m1, \
+1]"},
+{"fcstComplexConjugate-ID20",
+"ComplexConjugate[SpinorUBar[p1,m1].FCCCT[GA[5]].SpinorV[p2,m2],\
+FCE->True]",
+"-Spinor[-Momentum[p2], m2, 1] . GA[5] . Spinor[Momentum[p1], m1, \
+1]"},
+{"fcstComplexConjugate-ID21",
+"ComplexConjugate[SpinorUBar[p1,m1].FCCCT[GA[mu,nu]].SpinorV[p2,m2]\
+,FCE->True]",
+"Spinor[-Momentum[p2], m2, 1] . GA[mu] . GA[nu] . \
+Spinor[Momentum[p1], m1, 1]"},
+{"fcstComplexConjugate-ID22",
+"ComplexConjugate[SpinorUBar[p1,m1].FCCCT[GA[mu,5,nu]].SpinorV[p2,\
+m2],FCE->True]",
+"-Spinor[-Momentum[p2], m2, 1] . GA[mu] . GA[5] . GA[nu] . \
+Spinor[Momentum[p1], m1, 1]"},
+{"fcstComplexConjugate-ID23",
+"ComplexConjugate[SpinorUBar[p1,m1].FCCCT[GA[mu,nu,rho]].SpinorV[\
+p2,m2],FCE->True]",
+"-Spinor[-Momentum[p2], m2, 1] . GA[mu] . GA[nu] . GA[rho] . \
+Spinor[Momentum[p1], m1, 1]"},
+{"fcstComplexConjugate-ID24",
+"ComplexConjugate[SpinorUBar[p1,m1].FCCCT[GA[mu,nu,rho,5]].SpinorV[\
+p2,m2],FCE->True]",
+"Spinor[-Momentum[p2], m2, 1] . GA[mu] . GA[nu] . GA[rho] . GA[5] \
+. Spinor[Momentum[p1], m1, 1]"},
+{"fcstComplexConjugate-ID25",
+"ComplexConjugate[SpinorUBar[p1,m1].FCCCT[GS[p]+m].SpinorV[p2,m2],\
+FCE->True]",
+"Spinor[-Momentum[p2], m2, 1] . (m - GS[p]) . Spinor[Momentum[p1], \
+m1, 1]"},
+{"fcstComplexConjugate-ID26",
+"ComplexConjugate[SpinorUBar[p1,m1].FCCCT[GA[mu].(GS[p]+m).GA[nu]].\
+SpinorV[p2,m2],FCE->True]",
+"Spinor[-Momentum[p2], m2, 1] . GA[mu] . (m - GS[p]) . GA[nu] . \
+Spinor[Momentum[p1], m1, 1]"},
+{"fcstComplexConjugate-ID27", "ComplexConjugate[SpinorUBar[p1, m1].FCCCT[GA[mu]].SpinorV[p2, m2],
+FCE -> True]","-Spinor[-Momentum[p2], m2, 1].GA[mu].Spinor[Momentum[p1], m1, 1]"},
+{"fcstComplexConjugate-ID28", "FCCanonicalizeDummyIndices[
+DCHN[Spinor[-Momentum[p1], m1, 1], $AL[$42]] DCHN[
+Spinor[Momentum[p2], m2, 1], $AL[$43]] DCHN[
+GA[5].GA[nu].GA[mu], $AL[$42], $AL[$43]],
+DiracIndexNames -> {i, j}, FCE -> True]","DCHN[Spinor[-Momentum[p1], m1, 1], i] DCHN[
+Spinor[Momentum[p2], m2, 1], j] DCHN[GA[5].GA[nu].GA[mu], i, j]"},
+{"fcstComplexConjugate-ID29", "ComplexConjugate[
+I*Spinor[Momentum[k1], mq, 1].((((-4*I)/3)*2^(1/4)*sinW*Sqrt[cosW^2*GF*mZ^2*sinW^2]*
+GS[Polarization[p, I]].GA[6]*SDF[Col2, Col3])/cosW + ((2*I)*2^(1/4)*
+Sqrt[cosW^2*GF*mZ^2*sinW^2]*(1/2 - (2*sinW^2)/3)*
+GS[Polarization[p, I]].GA[7]*SDF[Col2, Col3])/(cosW*sinW)).Spinor[-Momentum[k2], mq, 1],FCE->True]",
+"-I ((I 2^(1/4) Sqrt[
+	cosW^2 GF mZ^2 sinW^2] (-3 + 4 sinW^2) Spinor[-Momentum[k2], mq,
+	1].GA[6].GS[Polarization[p, -I]].Spinor[Momentum[k1], mq,
+	1] SDF[Col2, Col3])/(3 cosW sinW) + (
+4 I 2^(1/4) sinW Sqrt[cosW^2 GF mZ^2 sinW^2]
+	Spinor[-Momentum[k2], mq, 1].GA[7].GS[
+	Polarization[p, -I]].Spinor[Momentum[k1], mq, 1] SDF[Col2,
+	Col3])/(3 cosW))"},
+{"fcstComplexConjugate-ID30",
+"ComplexConjugate[foo*y[a,b]*h[k,l]*z*rest,Conjugate\[Rule]{foo}]",
+	"rest*z*Conjugate[foo]*h[k, l]*y[a, b]"},
+{"fcstComplexConjugate-ID31",
+"ComplexConjugate[foo*y[a,b]*h[k,l]*z*rest,Conjugate\[Rule]{y[i_,j_\
+]\[RuleDelayed]yCC[i,j]}]", "foo*rest*z*h[k, l]*yCC[a, b]"},
+{"fcstComplexConjugate-ID32",
+"ComplexConjugate[foo*y[a,b]*h[k,l]*z*rest,Conjugate\[Rule]{z\
+\[Rule]-z}]", "-(foo*rest*z*h[k, l]*y[a, b])"},
+{"fcstComplexConjugate-ID33",
+"ComplexConjugate[foo*y[a,b]*h[k,l]*z*rest,Conjugate\[Rule]{foo,y[\
+i_,j_]\[RuleDelayed]yCC[i,j],z\[Rule]-z}]",
+"-(rest*z*Conjugate[foo]*h[k, l]*yCC[a, b])"},
+{"fcstComplexConjugate-ID34",
+"Quiet[ComplexConjugate[(Spinor[-Momentum[p2],MassFu[Index[I3Gen, 2],
+SUNFIndex[Col2]], 1].DiracGamma[7].Spinor[Momentum[p3],
+MassFQ[Index[I3Gen, 3], SUNFIndex[Col3]],1])]]",
+"Spinor[Momentum[p3], MassFQ[Index[I3Gen, 3], SUNFIndex[Col3]],
+1].DiracGamma[6].Spinor[-Momentum[p2],
+MassFu[Index[I3Gen, 2], SUNFIndex[Col2]], 1]"}
 };

@@ -22,6 +22,8 @@ End[]
 
 Begin["`Integrate5`Private`"]
 
+sing::usage="";
+
 Integrate5[a_, b_List, c__List, opts___?OptionQ] :=
 	Integrate5[Integrate5[a,b, opts], c, opts] /; FreeQ[SelectNotFree[a, b[[1]]], DeltaFunction];
 
@@ -45,28 +47,31 @@ Integrate5[a_, b_, c___] := (
 															Integrate -> Integrate3 /. Integrate3 ->
 															Integrate *);
 
-integrateD[a_, b_, c___] := Block[{i3, tt, nop, n1, n2},
-If[Head[i3 = Integrate3[a, b, c]] =!= Integrate3, i3,
-	If[FreeQ[a, PlusDistribution],
-(*
-Dialog[a];
-*)
-		integrate2[a, b, c],
-(*
-Dialog[a];
-*)
-		tt = Collect2[a, PlusDistribution, Factoring -> True];
-FCPrint[2,"integrating ",tt//InputForm];
-		nop = SelectFree[n1 + n2 + tt, PlusDistribution]/.{n1:>0, n2:>0};
-		pd = tt - nop;
-		pd = Collect2[
-		If[Head[pd] === Plus,
-				Map[intDistribution[#, b, c]&, pd],
-				intDistribution[pd,b,c]
-			] + integrate2[nop, b, c],
-							{Log, PolyLog}];
-		pd
-																]]];
+integrateD[a_, b_, c___] :=
+	Block[{	i3, tt, nop, n1, n2,pd},
+		If[Head[i3 = Integrate3[a, b, c]] =!= Integrate3,
+			i3,
+			If[	FreeQ[a, PlusDistribution],
+				(*
+				Dialog[a];
+				*)
+				integrate2[a, b, c],
+				(*
+				Dialog[a];
+				*)
+				tt = Collect2[a, PlusDistribution, Factoring -> True];
+				FCPrint[2,"integrating ",tt//InputForm];
+				nop = SelectFree[n1 + n2 + tt, PlusDistribution]/.{n1:>0, n2:>0};
+				pd = tt - nop;
+				pd = Collect2[
+				If[	Head[pd] === Plus,
+					Map[intDistribution[#, b, c]&, pd],
+					intDistribution[pd,b,c]
+				] + integrate2[nop, b, c], {Log, PolyLog}];
+				pd
+			]
+		]
+	];
 
 (* 10 *)
 intDistribution[ PlusDistribution[1/(1-x2_)] *
@@ -150,7 +155,7 @@ intDistribution[f_. PlusDistribution[1/(1-x1_)] *
 										Zeta2 DeltaFunction[1 - x]
 										) /; FreeQ2[f, {x1, x2}];
 
-intDistribution[f_. PlusDistribution[1/(1-x1_)] *
+intDistribution[_. PlusDistribution[1/(1-x1_)] *
 										PlusDistribution[Log[1-x2_]/(1-x2_)] *
 								DeltaFunction[x_ - (x1_ x2_)], {x1_,0,1},{x2_,0,1}
 							] := -Log[x] Log[1-x]/(1-x) + 3/2 Log[1-x]^2/(1-x) -
@@ -164,7 +169,7 @@ integrate2[Factor2[(f - (f /. x1 -> 1)) / (1 - x1)
 									], {x1,0,1}
 					];
 
-integrate1[f_. PlusDistribution[Log[y_] / (1-x1_)], {x1_,0,1}
+integrate1[f_. PlusDistribution[Log[_] / (1-x1_)], {x1_,0,1}
 					] := 0 /; FreeQ[f, x1];
 
 integrate1[Log[1 - z_ / x1_]  PlusDistribution[1/(1 - x1_)],

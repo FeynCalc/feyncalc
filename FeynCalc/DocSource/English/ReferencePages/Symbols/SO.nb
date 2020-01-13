@@ -161,7 +161,6 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  ButtonBox["FCI",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/FCI",
@@ -187,9 +186,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/SOD",
   ButtonNote->"SOD"],
  "."
-}], "Text",
- CellTags->"SO",
- CellID->747915813]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -221,7 +218,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"SO", "[", "p", "]"}]], "Input",
  CellTags->"SO",
- CellLabel->"In[1]:=",
+ CellLabel->"In[5]:=",
  CellID->549535977],
 
 Cell[BoxData[
@@ -234,8 +231,7 @@ Cell[BoxData[
    FormBox["p",
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"SO",
- CellLabel->"Out[1]=",
- CellID->1525917797]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -244,7 +240,7 @@ Cell[BoxData[
  RowBox[{"SO", "[", 
   RowBox[{"p", "-", "q"}], "]"}]], "Input",
  CellTags->"SO",
- CellLabel->"In[2]:=",
+ CellLabel->"In[6]:=",
  CellID->2038998491],
 
 Cell[BoxData[
@@ -262,8 +258,7 @@ Cell[BoxData[
    FormBox["\<\")\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"SO",
- CellLabel->"Out[2]=",
- CellID->1173558036]
+ CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -274,7 +269,7 @@ Cell[BoxData[
    RowBox[{"SO", "[", "p", "]"}], "//", "FCI"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"SO",
- CellLabel->"In[3]:=",
+ CellLabel->"In[7]:=",
  CellID->73131493],
 
 Cell[BoxData[
@@ -283,8 +278,7 @@ Cell[BoxData[
    RowBox[{"Momentum", "[", "OPEDelta", "]"}], ",", 
    RowBox[{"Momentum", "[", "p", "]"}]}], "]"}]], "Output",
  CellTags->"SO",
- CellLabel->"Out[3]//StandardForm=",
- CellID->1244939750]
+ CellLabel->"Out[7]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -349,12 +343,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

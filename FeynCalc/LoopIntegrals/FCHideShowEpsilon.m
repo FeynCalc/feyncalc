@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Substitutes 1/Epsilon - EulerGamma + Log[4Pi] with
@@ -22,7 +22,7 @@ SMP[\"Delta\"]";
 
 FCShowEpsilon::usage =
 "FCShowEpsilon[expr] substitutes SMP[\"Delta\"] with 1/Epsilon - \
-EulerGamma + Log[4Pi] with";
+EulerGamma + Log[4Pi]";
 
 FCHideEpsilon::failmsg =
 "Error! FCHideEpsilon has encountered a fatal problem and must abort the computation. \
@@ -40,20 +40,23 @@ End[]
 Begin["`FCHideShowEpsilon`Private`"]
 
 Options[FCHideEpsilon] = {
-	Factoring -> Factor,
-	Collecting -> True,
-	D -> 4 - 2 Epsilon
+	Collecting	-> True,
+	D			-> 4 - 2 Epsilon,
+	Factoring	-> Factor,
+	Subtract	-> EulerGamma - Log[4Pi]
 };
 
 Options[FCShowEpsilon] = {
-	D -> 4 - 2 Epsilon
+	D 			-> 4 - 2 Epsilon,
+	Subtract	-> EulerGamma - Log[4Pi]
 };
 
 FCHideEpsilon[expr_, OptionsPattern[]] :=
-	Block[{tmp,wrap,factoring,pref, dVal},
+	Block[{tmp,wrap,factoring,pref, dVal, subtract},
 
 		factoring = OptionValue[Factoring];
 		dVal = OptionValue[D];
+		subtract = OptionValue[Subtract];
 
 		tmp = Collect2[expr,{Epsilon,EpsilonUV,EpsilonIR},Factoring->factoring];
 
@@ -74,9 +77,9 @@ FCHideEpsilon[expr_, OptionsPattern[]] :=
 						1/EpsilonIR -> wrap[pref/EpsilonIR]/pref
 		};
 
-		tmp = tmp /. { 	wrap[pref/Epsilon] -> SMP["Delta"] + EulerGamma - Log[4Pi],
-						wrap[pref/EpsilonUV] -> SMP["Delta_UV"] + EulerGamma - Log[4Pi],
-						wrap[pref/EpsilonIR] -> SMP["Delta_IR"] + EulerGamma - Log[4Pi]
+		tmp = tmp /. { 	wrap[pref/Epsilon] -> SMP["Delta"] + subtract,
+						wrap[pref/EpsilonUV] -> SMP["Delta_UV"] + subtract,
+						wrap[pref/EpsilonIR] -> SMP["Delta_IR"] + subtract
 		};
 
 		If[	OptionValue[Collecting],
@@ -88,9 +91,10 @@ FCHideEpsilon[expr_, OptionsPattern[]] :=
 	];
 
 FCShowEpsilon[expr_, OptionsPattern[]] :=
-	Block[{tmp,pref, dVal},
+	Block[{tmp,pref, dVal, subtract},
 
 		dVal = OptionValue[D];
+		subtract = OptionValue[Subtract];
 
 		Which[
 			dVal === 4 - 2 Epsilon,
@@ -102,9 +106,9 @@ FCShowEpsilon[expr_, OptionsPattern[]] :=
 				Abort[]
 		];
 
-		tmp = expr/. { SMP["Delta"] -> pref/Epsilon - EulerGamma + Log[4Pi],
-					SMP["Delta_UV"] -> pref/EpsilonUV - EulerGamma + Log[4Pi],
-					SMP["Delta_IR"] -> pref/EpsilonIR - EulerGamma + Log[4Pi]
+		tmp = expr/. { SMP["Delta"] -> pref/Epsilon - subtract,
+					SMP["Delta_UV"] -> pref/EpsilonUV - subtract,
+					SMP["Delta_IR"] -> pref/EpsilonIR - subtract
 		};
 
 		tmp

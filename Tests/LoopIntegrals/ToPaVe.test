@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for ToPaVe			  		*)
@@ -74,5 +74,53 @@ PaVeAutoReduce -> True]"},
 {"fcstToPaVe-ID20","FCClearScalarProducts[];\n SPD[p, p] = ma^2; \n ToPaVe[FAD[q, q + p], q]",
 "I Pi^2 B0[ma^2, 0, 0]"},
 {"fcstToPaVe-ID21","FCClearScalarProducts[];\n SPD[p, p] = mb^2; \n ToPaVe[FAD[q, q + p], q]",
-"I Pi^2 B0[mb^2, 0, 0]"}
+"I Pi^2 B0[mb^2, 0, 0]"},
+{"fcstToPaVe-ID22","ToPaVe[FAD[{l, m}, {l + p, m}] GFAD[{SPD[l, p], 1}], l] // FCE",
+"FAD[{l, m}, {l + p, m}] GFAD[{{SPD[l, p], 1}, 1}]"},
+{"fcstToPaVe-ID23","ToPaVe[FAD[{l, m}, {l + p, m}] CFAD[{{0, l.p}, m^2}], l] // FCE",
+"CFAD[{{0, l.p}, {m^2, -1}, 1}] FAD[{l, m}, {l + p, m}]"},
+{"fcstToPaVe-ID25", "ToPaVe[SFAD[{q,m1^2}],q,FCE->True]",
+"I*Pi^2*A0[m1^2]"},
+{"fcstToPaVe-ID26", "ToPaVe[SFAD[{q,m1^2,2}],q,FCE->True]",
+"I*Pi^2*B0[0, m1^2, m1^2]"},
+{"fcstToPaVe-ID27", "ToPaVe[SFAD[{{q,q.p},m^2}],q,FCE->True]",
+"SFAD[{{q, p . q}, {m^2, 1}, 1}]"},
+{"fcstToPaVe-ID28", "ToPaVe[SFAD[{q,m1^2},{q-p,m2^2}],q,FCE->True]",
+	"I*Pi^2*B0[SPD[p, p], m1^2, m2^2]"},
+{"fcstToPaVe-ID29",
+"ToPaVe[SFAD[{q,m1^2},{q+p1,m2^2}],q,FCE->True]",
+"I*Pi^2*B0[SPD[p1, p1], m1^2, m2^2]"},
+{"fcstToPaVe-ID30",
+"ToPaVe[SFAD[{q,mm1},{q+p1,mm2},{q+p2,mm3}],q,FCE->True]",
+"I*Pi^2*C0[SPD[p1, p1], SPD[p2, p2], SPD[p1, p1] - 2*SPD[p1, p2] + \
+SPD[p2, p2], mm2, mm1, mm3]"},
+{"fcstToPaVe-ID31",
+"ToPaVe[SFAD[{q, mm1}, {q + p1, mm2}, {q + p2, mm3}, {q + p3, \
+mm4}], q,FCE->True]",
+"I*Pi^2*D0[SPD[p1, p1], SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] + \
+SPD[p3, p3], SPD[p1, p1] - 2*SPD[p1, p3] + SPD[p3, p3], SPD[p1, p1] - \
+2*SPD[p1, p2] + SPD[p2, p2], SPD[p3, p3], mm2, mm1, mm3, mm4]"},
+{"fcstToPaVe-ID32", "ToPaVe[SFAD[{q,m1^2,2}],q,FCE->True]",
+"I*Pi^2*B0[0, m1^2, m1^2]"},
+{"fcstToPaVe-ID33", "ToPaVe[SFAD[{q,m1^2,3}],q,FCE->True]",
+"I*Pi^2*C0[0, 0, 0, m1^2, m1^2, m1^2]"},
+{"fcstToPaVe-ID34", "ToPaVe[SFAD[{q,m1^2,4}],q,FCE->True]",
+"I*Pi^2*D0[0, 0, 0, 0, 0, 0, m1^2, m1^2, m1^2, m1^2]"},
+{"fcstToPaVe-ID35",
+"FCClearScalarProducts[]; \n ToPaVe[SFAD[{q,m1^2},{q-p,m2^2,3}],q,FCE->True]",
+"I*Pi^2*D0[0, 0, SPD[p, p], SPD[p, p], 0, SPD[p, p], m2^2, m2^2, \
+m2^2, m1^2]"},
+{"fcstToPaVe-ID36", "ToPaVe[FAD[{q, m0}, {q - p1, m1}, {q - p2, m2}], q,
+PaVeAutoOrder -> False, PaVeOrder -> False, FCE -> True]",
+"I \[Pi]^2 PaVe[
+0, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}, PaVeAutoOrder -> False,
+PaVeAutoReduce -> True]"},
+{"fcstToPaVe-ID37", "ToPaVe[FAD[{q, m0}, {q - p1, m1}, {q - p2, m2}, {q - p2, m3}], q,
+PaVeAutoOrder -> False, PaVeOrder -> False, FCE -> True]",
+"I \[Pi]^2 PaVe[
+0, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2], 0,
+SPD[p2, p2], SPD[p2, p2],
+SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2]}, {m0^2, m1^2, m2^2,
+m3^2}, PaVeAutoOrder -> False, PaVeAutoReduce -> True]"}
 };

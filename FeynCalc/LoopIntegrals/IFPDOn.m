@@ -31,6 +31,11 @@ IFPDOn[exp_,qu__] :=
 		Block[ {int,qq,sub,t0,t1,t2,t3,t4,MyHold,feynsub,ifnu,
 			condition,pa,unsameq, checkm, checkp, thr,t0r,bb},
 
+			If[	!FreeQ2[{exp}, FeynCalc`Package`NRStuff],
+				Message[FeynCalc::nrfail];
+				Abort[]
+			];
+
 			int = FeynAmpDenominatorSplit[exp];
 			t0 = Cases2[int, FeynAmpDenominator];
 			FCPrint[3,"t0: ",t0];
@@ -68,7 +73,7 @@ IFPDOn[exp_,qu__] :=
 			(* calculate  a canonical q.p  as a side effect*)
 			t3 = ifp[t3, qq];
 			FCPrint[3,"IFPDOn: t3 after ifp ", t3];
-			sub = Table[(Pair @@ t3[[ij,1]]) -> t3[[ij,2]],{ij,Length[t3]}];
+			sub = Table[(Pair @@ t3[[r,1]]) -> t3[[r,2]],{r,Length[t3]}];
 			int = int /. feynsub /. sub;
 			int /. MyHold -> Identity
 		]

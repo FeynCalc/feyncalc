@@ -2,9 +2,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for FCRenameDummyIndices					*)
@@ -15,7 +15,7 @@ Tests`Lorentz`fcstFCRenameDummyIndices =
 {
 {"FCRenameDummyIndices-ID1",
 	"MatchQ[FieldStrength[a,b].FieldStrength[a,b]\
-	//Explicit//Expand//FCRenameDummyIndices,(QuantumField[FCPartialD[\
+	//Explicit//ChangeDimension[#,D]&//Expand//FCRenameDummyIndices,(QuantumField[FCPartialD[\
 	LorentzIndex[$AL[i_],D]],GaugeField,LorentzIndex[$AL[j_],D]]-\
 	QuantumField[FCPartialD[LorentzIndex[$AL[j_],D]],GaugeField,\
 	LorentzIndex[$AL[i_],D]]).(QuantumField[FCPartialD[LorentzIndex[$AL[$i_]\
@@ -36,7 +36,27 @@ Tests`Lorentz`fcstFCRenameDummyIndices =
 	SUNIndex[b]].SUNT[SUNIndex[$AL[$x_]]].SUNT[SUNIndex[$AL[y_]]].SUNT[\
 	SUNIndex[k]]]", "True"},
 {"FCRenameDummyIndices-ID5",
-	"MatchQ[FCRenameDummyIndices[FCI[FVD[p, mu] FVD[q, mu]]],
-Pair[LorentzIndex[a_$AL, D], Momentum[p, D]] Pair[
-LorentzIndex[a_$AL, D], Momentum[q, D]]]", "True"}
-}
+	"MatchQ[FCRenameDummyIndices[FVD[p, mu] FVD[q, mu], FCE -> True],
+FVD[p, $AL[a_]] FVD[q, $AL[a_]]]", "True"},
+{"FCRenameDummyIndices-ID6",
+	"MatchQ[FCRenameDummyIndices[CVD[p, i] CVD[q, i], FCE -> True],
+CVD[p, $AL[a_]] CVD[q, $AL[a_]]]", "True"},
+{"FCRenameDummyIndices-ID7",
+	"MatchQ[
+FCRenameDummyIndices[
+Spinor[Momentum[k], m, 1].GA[k].Spinor[Momentum[k], m, 1] Spinor[
+	Momentum[p], m, 1].GA[k].Spinor[Momentum[p], m, 1],
+FCE -> True],
+Spinor[Momentum[k], m, 1].GA[a_].Spinor[Momentum[k], m, 1] Spinor[
+	Momentum[p], m, 1].GA[a_].Spinor[Momentum[p], m, 1]]", "True"},
+{"FCRenameDummyIndices-ID8","MatchQ[FCRenameDummyIndices[
+DCHN[SpinorUBar[p1], i] DCHN[SpinorV[p1], j] DIDelta[i, j],
+FCE -> True],
+DIDelta[$AL[a_], $AL[b_]] DCHN[
+Spinor[-Momentum[p1], 0, 1], $AL[b_]] DCHN[
+Spinor[Momentum[p1], 0, 1], $AL[a_]]]","True"},
+{"FCRenameDummyIndices-ID9",
+	"MatchQ[FCRenameDummyIndices[
+tr[GA[mu].(1 - GA[5]), GA[mu].(1 - GA[5])], DotSimplify -> False, FCE -> True],
+tr[GA[$AL[a_]].(1 - GA[5]), GA[$AL[a_]].(1 - GA[5])]]", "True"}
+};

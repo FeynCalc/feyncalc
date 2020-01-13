@@ -775,11 +775,340 @@ GenPaVe[{0, 0}, {{0, m0}, {p1, m1}, {p2, m2}}] MTD[mu, nu]"},
 I m0^2 \[Pi]^2 B0[SPD[p, p], m0^2, m1^2] FVD[p,
 mu] (m0^2 - m1^2 + SPD[p, p]))/(2 SPD[p, p]) - (
 I \[Pi]^2 A0[m1^2] FVD[p, mu] (m0^2 + 2 SPD[p, p]))/(2 SPD[p, p])"},
-{"fcstTID-ID20", "$BreitMaison=True; \n tmp = FCE[
+{"fcstTID-ID20", "FCSetDiracGammaScheme[\"BMHV\"]; \n tmp = FCE[
 TID[FVD[q, mu] FVD[q, nu] FAD[{q, m}] - FVE[q, mu] FVE[q, nu] FAD[{q, m}], q]]; \n
-$BreitMaison=False;  \n tmp","-((m^2 FAD[{q, m}] (-MTD[mu, nu] + MTE[mu, nu]))/D)"},
-{"fcstTID-ID21", "$BreitMaison=True; \n tmp =
+FCSetDiracGammaScheme[\"NDR\"];  \n tmp","-((m^2 FAD[{q, m}] (-MTD[mu, nu] + MTE[mu, nu]))/D)"},
+{"fcstTID-ID21", "FCSetDiracGammaScheme[\"BMHV\"]; \n tmp =
 FCE[TID[ FAD[l, k + l] MTE[mu, nu] (SPE[k, l] + SPE[l, l]), l]]; \n
-$BreitMaison=False;  \n tmp","-((FAD[l, -k + l] MTE[mu, nu] (4 SPD[k, k] -
-D SPD[k, k] + 2 (1 - D) SPE[k, k] + D SPE[k, k]))/(4 (1 - D)))"}
+FCSetDiracGammaScheme[\"NDR\"];  \n tmp","-((FAD[l, -k + l] MTE[mu, nu] (4 SPD[k, k] -
+D SPD[k, k] + 2 (1 - D) SPE[k, k] + D SPE[k, k]))/(4 (1 - D)))"},
+{"fcstTID-ID22", "TID[8 (-FAD[{q, mA}, {p + q, mS2}] SPD[p,p] +
+(1 - GaugeXi) FAD[{q, mA}, {p + q, mS2}, {q,mA Sqrt[GaugeXi]}] SPD[p, q]^2) , q,FCE->True]",
+"2 (1 - GaugeXi) FAD[{q, mS2}] + (
+2 FAD[{q, mA}, {-p + q, mS2}] (mA^2 - 2 mA mS2 + mS2^2 -
+	SPD[p, p]) (mA^2 + 2 mA mS2 + mS2^2 - SPD[p, p]))/mA^2 - (
+2 FAD[{q, mA}] (mA^2 - mS2^2 + SPD[p, p]))/mA^2 + (
+2 FAD[{q, Sqrt[GaugeXi] mA}] (GaugeXi mA^2 - mS2^2 +
+	SPD[p, p]))/mA^2 - (
+2 FAD[{q, Sqrt[GaugeXi] mA}, {-p + q, mS2}] (GaugeXi mA^2 - mS2^2 +
+	SPD[p, p])^2)/mA^2"},
+{"fcstTID-ID23", "TID[4 m^2 ((4 - Epsilon) FAD[{q, mA}, {p + q, mA}] + (1 -
+	GaugeXi)^2 FAD[{q, mA}, {p + q, mA}, {q,
+	mA Sqrt[GaugeXi]}, {p + q, mA Sqrt[GaugeXi]}] (-SPD[p, q] -
+	SPD[q, q])^2 + (1 -
+	GaugeXi) (-FAD[{q, mA}, {p + q, mA}, {q,
+		mA Sqrt[GaugeXi]}] SPD[q, q] -
+	FAD[{q, mA}, {p + q, mA}, {p + q, mA Sqrt[GaugeXi]}] SPD[p + q,
+		p + q])) , q, FCE -> True]",
+"(2 (1 - GaugeXi) m^2 FAD[{q, mA}])/mA^2 - (
+2 (1 - GaugeXi) m^2 FAD[{q, Sqrt[GaugeXi] mA}])/mA^2 + (
+m^2 FAD[{q, Sqrt[GaugeXi] mA}, {-p + q,
+	Sqrt[GaugeXi] mA}] (2 GaugeXi mA^2 - SPD[p, p])^2)/mA^4 + (
+m^2 FAD[{q, mA}, {-p + q, mA}] (12 mA^4 - 4 Epsilon mA^4 -
+	4 mA^2 SPD[p, p] + SPD[p, p]^2))/mA^4 - (
+2 m^2 FAD[{q, mA}, {-p + q, Sqrt[GaugeXi] mA}] (mA^4 -
+	2 GaugeXi mA^4 + GaugeXi^2 mA^4 - 2 mA^2 SPD[p, p] -
+	2 GaugeXi mA^2 SPD[p, p] + SPD[p, p]^2))/mA^4"},
+{"fcstTID-ID24", "TID[((DiracGamma[LorentzIndex[b, d], d] .
+	DiracGamma[Momentum[k + p, d], d] .
+	DiracGamma[LorentzIndex[b, d], d]*
+	FeynAmpDenominator[PropagatorDenominator[Momentum[k, d], m1]]*
+		FeynAmpDenominator[
+	PropagatorDenominator[Momentum[k, d] + Momentum[p, d], m2]])/
+cw^2), k, Dimension -> d]",
+"((2 - d)*DiracGamma[Momentum[p, d], d]*FeynAmpDenominator[PropagatorDenominator[Momentum[k, d], m1]])/(2*cw^2*Pair[Momentum[p, d], Momentum[p, d]]) -
+((2 - d)*DiracGamma[Momentum[p, d], d]*FeynAmpDenominator[PropagatorDenominator[Momentum[k, d], m2]])/(2*cw^2*Pair[Momentum[p, d], Momentum[p, d]]) -
+((2 - d)*DiracGamma[Momentum[p, d], d]*FeynAmpDenominator[PropagatorDenominator[Momentum[k, d], m1], PropagatorDenominator[Momentum[k, d] - Momentum[p, d], m2]]*
+(m1^2 - m2^2 - Pair[Momentum[p, d], Momentum[p, d]]))/(2*cw^2*Pair[Momentum[p, d], Momentum[p, d]])"},
+{"fcstTID-ID25", "SPD[k1] = 0; SPD[k2] = 0; SPD[k1, k2] = 2 m^2; res = TID[ FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0],
+PropagatorDenominator[1/2 Momentum[k1 + k2, D] + Momentum[l, D], m], PropagatorDenominator[-Momentum[k2, D] +
+1/2 Momentum[k1 + k2, D] + Momentum[l, D], m], PropagatorDenominator[-Momentum[k1, D] - Momentum[k2, D] + 1/2 Momentum[k1 + k2, D] +
+Momentum[l, D], m]]  Pair[LorentzIndex[mu, D], Momentum[l, D]], l, FCE->True]; FCClearScalarProducts[]; res",
+"(FAD[l, {-k1/2 + k2/2 + l, m}, {k1/2 + k2/2 + l, m}]*FVD[k1, mu])/(4*m^2) -
+(FAD[l, l, {-k1/2 - k2/2 + l, m}]*(FVD[k1, mu] - FVD[k2, mu]))/(4*m^2) -
+(FAD[l, l, {-k1/2 - k2/2 + l, m}, {-k1/2 + k2/2 + l, m}]*(FVD[k1, mu] - FVD[k2, mu]))/4 -
+(FAD[l, l, {-k1/2 + k2/2 + l, m}, {k1/2 + k2/2 + l, m}]*(FVD[k1, mu] - FVD[k2, mu]))/4 -
+(FAD[l, {-k1/2 - k2/2 + l, m}, {-k1/2 + k2/2 + l, m}]*FVD[k2, mu])/(4*m^2)"},
+{"fcstTID-ID26", "TID[CVD[q,i]CVD[q,j]CFAD[{q,m}],q,FCE->True]",
+"-((m*CFAD[{{q, 0}, {m, -1}, 1}]*KDD[i, j])/(-1 + D))"},
+{"fcstTID-ID27", "TID[CVD[q,i]CFAD[{q,m}],q,FCE->True]", "0"},
+{"fcstTID-ID28",
+"TID[CVD[q,i]CVD[q,j]CVD[q,k]CVD[q,l]CFAD[{q,m}],q,FCE->True]",
+"(m^2*CFAD[{{q, 0}, {m, -1}, 1}]*(KDD[i, l]*KDD[j, k] + KDD[i, \
+k]*KDD[j, l] + KDD[i, j]*KDD[k, l]))/((-1 + D)*(1 + D))"},
+{"fcstTID-ID29", "TID[CVD[q,i]CVD[q,j]CFAD[q,q+p],q,FCE->True]",
+"(CFAD[{{q, 0}, {0, -1}, 1}, {{p + q, 0}, {0, -1},
+1}] (-(-1 + D) CVD[p, i] CVD[p, j] + CSPD[p, p] KDD[i, j]))/(4 (2 -
+	D))"},
+{"fcstTID-ID30", "TID[CVD[q,i]CVD[q,j]CFAD[{q,m,2}],q,FCE->True]",
+"(CFAD[{{q, 0}, {m, -1}, 1}]*KDD[i, j])/(-1 + D) - (m*CFAD[{{q, \
+0}, {m, -1}, 1}, {{q, 0}, {m, -1}, 1}]*KDD[i, j])/(-1 + D)"},
+{"fcstTID-ID31", "TID[CVD[q,i]CVD[q,j]CFAD[{q,m,-1}],q,FCE->True]",
+"0"},
+{"fcstTID-ID32", "TID[FVD[q,i]FVD[q,j]SFAD[{q,m}],q,FCE->True]",
+"(m*MTD[i, j]*SFAD[{{q, 0}, {m, 1}, 1}])/D"},
+{"fcstTID-ID33", "TID[FVD[q,i]SFAD[{q,m}],q,FCE->True]", "0"},
+{"fcstTID-ID34",
+"TID[FVD[q,i]FVD[q,j]FVD[q,k]FVD[q,l]SFAD[{q,m}],q,FCE->True]",
+"(m^2*(MTD[i, l]*MTD[j, k] + MTD[i, k]*MTD[j, l] + MTD[i, \
+j]*MTD[k, l])*SFAD[{{q, 0}, {m, 1}, 1}])/(D*(2 + D))"},
+{"fcstTID-ID35", "TID[FVD[q,i]FVD[q,j]SFAD[{q,m,2}],q,FCE->True]",
+"(MTD[i, j]*SFAD[{{q, 0}, {m, 1}, 1}])/D + (m*MTD[i, j]*SFAD[{{q, \
+0}, {m, 1}, 1}, {{q, 0}, {m, 1}, 1}])/D"},
+{"fcstTID-ID36",
+"TID[FVD[q,i]SFAD[{q,m,2},q+p],q,UsePaVeBasis\[Rule]True,FCE->True]\
+", "(-2*I)*Pi^2*FVD[p, i]*PaVe[1, {SPD[p, p], 0, SPD[p, p]}, {0, m, \
+m}, PaVeAutoOrder -> True, PaVeAutoReduce -> True] - FVD[p, \
+i]*SFAD[{{q, 0}, {0, 1}, 1}, {{-p + q, 0}, {m, 1}, 2}]"},
+{"fcstTID-ID37",
+"TID[FVD[q,i]SFAD[{q,m,3},q+p],q,UsePaVeBasis\[Rule]True,FCE->True]\
+", "(-3*I)*Pi^2*FVD[p, i]*PaVe[1, {SPD[p, p], 0, 0, SPD[p, p], SPD[p, \
+p], 0}, {0, m, m, m}, PaVeAutoOrder -> True, PaVeAutoReduce -> True] \
+- FVD[p, i]*SFAD[{{q, 0}, {0, 1}, 1}, {{-p + q, 0}, {m, 1}, 3}]"},
+{"fcstTID-ID38",
+"TID[FCI[FVD[q,mu] FVD[q,nu] \
+SFAD[{q,m0^2},{q+p1,m1^2},{q+p2,m2^2}]]/(I*Pi^2),q,UsePaVeBasis\[Rule]\
+True,GenPaVe\[Rule]True,FCE\[Rule]True]",
+"FVD[p1, mu]*FVD[p1, nu]*GenPaVe[{1, 1}, {{0, m0}, {-p1, m1}, \
+{-p2, m2}}] + (FVD[p1, nu]*FVD[p2, mu] + FVD[p1, mu]*FVD[p2, \
+nu])*GenPaVe[{1, 2}, {{0, m0}, {-p1, m1}, {-p2, m2}}] + FVD[p2, \
+mu]*FVD[p2, nu]*GenPaVe[{2, 2}, {{0, m0}, {-p1, m1}, {-p2, m2}}] + \
+GenPaVe[{0, 0}, {{0, m0}, {-p1, m1}, {-p2, m2}}]*MTD[mu, nu]"},
+{"fcstTID-ID39", "TID[FVD[q,mu]SFAD[-q,q-p]FAD[q-p],q,FCE->True]",
+"FAD[-p + q]*FVD[q, mu]*SFAD[{{q, 0}, {0, 1}, 1}, {{-p + q, 0}, \
+{0, 1}, 1}]"},
+{"fcstTID-ID40", "TID[FVD[q,mu]SFAD[q,q-p]FAD[q-p],q,FCE->True]",
+"FAD[-p + q]*FVD[q, mu]*SFAD[{{q, 0}, {0, 1}, 1}, {{-p + q, 0}, \
+{0, 1}, 1}]"},
+{"fcstTID-ID41", "TID[FVD[q,mu]SFAD[q,q-p,{{0,q.k}}],q,FCE->True]",
+"FVD[q, mu]*SFAD[{{0, k . q}, {0, 1}, 1}, {{q, 0}, {0, 1}, 1}, {{p \
+- q, 0}, {0, 1}, 1}]"},
+{"fcstTID-ID42",
+"TID[FCI[CVD[q,i]CVD[q,j]SFAD[{q,m^2,2}]],q,FCE->True]",
+"(CFAD[{{q, 0}, {m^2 - TC[q]^2, -1}, 1}]*KDD[i, j])/(-1 + D) - \
+(m^2*CFAD[{{q, 0}, {m^2 - TC[q]^2, -1}, 1}, {{q, 0}, {m^2 - TC[q]^2, \
+-1}, 1}]*KDD[i, j])/(-1 + D) + (CFAD[{{q, 0}, {m^2 - TC[q]^2, -1}, \
+1}, {{q, 0}, {m^2 - TC[q]^2, -1}, 1}]*KDD[i, j]*TC[q]^2)/(-1 + D)"},
+{"fcstTID-ID43",
+"TID[(-(-1/2 \
+GA[5].(GAD[mu].GSD[v]-FVD[v,mu])FVD[k,mu]))SFAD[{{0,v.(r-k)}},{k,-M^2}\
+]*\[IndentingNewLine](-1/2 \
+GA[5].(GAD[nu].GSD[v]-FVD[v,nu]))FVD[k,nu],k,FCE->True]",
+"(SFAD[{{k, 0}, {-M^2, 1}, 1}]*SPD[r, v])/4 - (SFAD[{{k, 0}, \
+{-M^2, 1}, 1}, {{0, (-k + r) . v}, {0, 1}, 1}]*(SPD[r, v]^2 + \
+M^2*SPD[v, v]))/4"},
+{"fcstTID-ID44",
+"TID[TC[q]^2SFAD[q]CVD[q,i]CVD[q,j],q,FCE\[Rule]True]",
+"-((CFAD[{{q, 0}, {-TC[q]^2, -1}, 1}]*KDD[i, j]*TC[q]^4)/(-1 + \
+D))"},
+{"fcstTID-ID45",
+"TID[SFAD[q]CVD[q,i]CVD[q,j]CVD[q,k]CVD[q,l],q,FCE\[Rule]True]",
+"-((CFAD[{{q, 0}, {-TC[q]^2, -1}, 1}]*(KDD[i, l]*KDD[j, k] + \
+KDD[i, k]*KDD[j, l] + KDD[i, j]*KDD[k, l])*TC[q]^4)/((-1 + D)*(1 + \
+D)))"},
+{"fcstTID-ID46", "TID[TC[q]^2*SFAD[q]CVD[q,i],q]", "0"},
+{"fcstTID-ID47", "TID[CVD[k, i] CVD[k, j] SFAD[k, k - q], k, FCE -> True]",
+"(CFAD[{{k, 0}, {-TC[k - q]^2, -1}, 1}]*(4*CVD[q, i]*CVD[q, j] - 3*(-1 + D)*CVD[q, i]*CVD[q, j] -
+	CSPD[q, q]*KDD[i, j]))/(4*(2 - D)*CSPD[q, q]) +
+(CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}, {{k - q, 0}, {-TC[k - q]^2, -1}, 1}]*
+(-((-1 + D)*CVD[q, i]*CVD[q, j]) + CSPD[q, q]*KDD[i, j]))/(4*(2 - D)) -
+(CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}]*(-((-1 + D)*CVD[q, i]*CVD[q, j]) + CSPD[q, q]*KDD[i, j]))/
+(4*(2 - D)*CSPD[q, q]) + (CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}, {{k - q, 0}, {-TC[k - q]^2, -1}, 1}]*
+(2*CVD[q, i]*CVD[q, j] - (-1 + D)*CVD[q, i]*CVD[q, j] - CSPD[q, q]*KDD[i, j])*TC[k]^2)/(2*(2 - D)*CSPD[q, q]) -
+(CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}]*(-((-1 + D)*CVD[q, i]*CVD[q, j]) + CSPD[q, q]*KDD[i, j])*TC[k]^2)/
+(4*(2 - D)*CSPD[q, q]^2) + (CFAD[{{k, 0}, {-TC[k - q]^2, -1}, 1}]*(-((-1 + D)*CVD[q, i]*CVD[q, j]) +
+	CSPD[q, q]*KDD[i, j])*TC[k]^2)/(4*(2 - D)*CSPD[q, q]^2) +
+(CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}, {{k - q, 0}, {-TC[k - q]^2, -1}, 1}]*
+(-((-1 + D)*CVD[q, i]*CVD[q, j]) + CSPD[q, q]*KDD[i, j])*TC[k]^4)/(4*(2 - D)*CSPD[q, q]^2) +
+(CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}]*(-((-1 + D)*CVD[q, i]*CVD[q, j]) + CSPD[q, q]*KDD[i, j])*(TC[k] - TC[q])^2)/
+(4*(2 - D)*CSPD[q, q]^2) - (CFAD[{{k, 0}, {-TC[k - q]^2, -1}, 1}]*(-((-1 + D)*CVD[q, i]*CVD[q, j]) +
+	CSPD[q, q]*KDD[i, j])*(TC[k] - TC[q])^2)/(4*(2 - D)*CSPD[q, q]^2) -
+(CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}, {{k - q, 0}, {-TC[k - q]^2, -1}, 1}]*
+(-((-1 + D)*CVD[q, i]*CVD[q, j]) + CSPD[q, q]*KDD[i, j])*(TC[k] - TC[q])^2)/(2*(2 - D)*CSPD[q, q]) -
+(CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}, {{k - q, 0}, {-TC[k - q]^2, -1}, 1}]*
+(-((-1 + D)*CVD[q, i]*CVD[q, j]) + CSPD[q, q]*KDD[i, j])*TC[k]^2*(TC[k] - TC[q])^2)/(2*(2 - D)*CSPD[q, q]^2) +
+(CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}, {{k - q, 0}, {-TC[k - q]^2, -1}, 1}]*
+(-((-1 + D)*CVD[q, i]*CVD[q, j]) + CSPD[q, q]*KDD[i, j])*(TC[k] - TC[q])^4)/(4*(2 - D)*CSPD[q, q]^2)"},
+{"fcstTID-ID48", "FCClearScalarProducts[]; \n CSPD[p] = 0; \n TID[CVD[q, i] CVD[q, j] CFAD[{q, m^2}, {q - p, m^2}], q, FCE -> True]",
+"(CFAD[{{q, 0}, {m^2, -1}, 1}] KDD[i, j])/(-1 + D) - (
+m^2 CFAD[{{q, 0}, {m^2, -1}, 1}, {{q, 0}, {m^2, -1}, 1}] KDD[i,j])/(-1 + D)"},
+{"fcstTID-ID49", "FCClearScalarProducts[]; \n TID[TC[k] FVD[k,mu] FAD[k,k+p],k,FCE->True]",
+"-(CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}, {{k - p, 0}, {-TC[k - p]^2, -1}, 1}]*
+	Pair[CartesianMomentum[p, -1 + D], LorentzIndex[mu, D]]*TC[k])/2 +
+(CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}]*Pair[CartesianMomentum[p, -1 + D],
+	LorentzIndex[mu, D]]*TC[k])/(2*CSPD[p, p]) -
+(CFAD[{{k, 0}, {-TC[k - p]^2, -1}, 1}]*Pair[CartesianMomentum[p, -1 + D],
+	LorentzIndex[mu, D]]*TC[k])/(2*CSPD[p, p]) +
+CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}, {{k - p, 0}, {-TC[k - p]^2, -1}, 1}]*
+MT[0, mu]*TC[k]^2 -
+(CFAD[{{k, 0}, {-TC[k]^2, -1}, 1}, {{k - p, 0}, {-TC[k - p]^2, -1}, 1}]*
+Pair[CartesianMomentum[p, -1 + D], LorentzIndex[mu, D]]*TC[k]^3)/
+(2*CSPD[p, p]) + (CFAD[{{k, 0}, {-TC[k]^2, -1}, 1},
+	{{k - p, 0}, {-TC[k - p]^2, -1}, 1}]*Pair[CartesianMomentum[p, -1 + D],
+	LorentzIndex[mu, D]]*TC[k]*(TC[k] - TC[p])^2)/(2*CSPD[p, p])"},
+{"fcstTID-ID50",
+"TID[GSD[k] FAD[-pE1-pPh] \
+FAD[{k,m2},k+pE1-pH+pPh,{k-pH,m2},{k-pH,m3}] TC[k],k,FCE\[Rule]True]",
+	"(CFAD[{{k, 0}, {-TC[k - pE1 - pPh]^2, -1}, 1}, {{k + pE1 - pH + \
+pPh, 0}, {-m2^2 - TC[k - pH]^2, -1}, 1}]*(CGSD[pH] - CGSD[-pE1 - pPh] \
+- CGSD[pE1 + pH + pPh])*(CSPD[pE1, pH] + CSPD[pH, pPh])*FAD[pE1 + \
+pPh]*TC[k])/(2*(m2^2 - m3^2)*((-CSPD[pE1, pH] - CSPD[pH, pPh])^2 - \
+CSPD[pH, pH]*(CSPD[pE1, pE1] + 2*CSPD[pE1, pPh] + CSPD[pPh, pPh]))) - \
+(CFAD[{{k, 0}, {-m2^2 - TC[k]^2, -1}, 1}, {{k - pH, 0}, {-m2^2 - TC[k \
+- pH]^2, -1}, 1}]*(CGSD[pH]*CSPD[pE1, pH] + CGSD[-pE1 - pPh]*CSPD[pH, \
+pH] + CGSD[pH]*CSPD[pH, pPh])*FAD[pE1 + pPh]*TC[k])/(2*(m2^2 - \
+m3^2)*((-CSPD[pE1, pH] - CSPD[pH, pPh])^2 - CSPD[pH, pH]*(CSPD[pE1, \
+pE1] + 2*CSPD[pE1, pPh] + CSPD[pPh, pPh]))) + (CFAD[{{k, 0}, {-m3^2 - \
+TC[k]^2, -1}, 1}, {{k - pH, 0}, {-m2^2 - TC[k - pH]^2, -1}, \
+1}]*(CGSD[pH]*CSPD[pE1, pH] + CGSD[-pE1 - pPh]*CSPD[pH, pH] + \
+CGSD[pH]*CSPD[pH, pPh])*FAD[pE1 + pPh]*TC[k])/(2*(m2^2 - \
+m3^2)*((-CSPD[pE1, pH] - CSPD[pH, pPh])^2 - CSPD[pH, pH]*(CSPD[pE1, \
+pE1] + 2*CSPD[pE1, pPh] + CSPD[pPh, pPh]))) + (CFAD[{{k, 0}, {-TC[k - \
+pE1 - pPh]^2, -1}, 1}, {{k + pE1 + pPh, 0}, {-m2^2 - TC[k]^2, -1}, \
+1}]*(CGSD[pH]*CSPD[pE1, pE1] + CGSD[-pE1 - pPh]*CSPD[pE1, pH] + \
+2*CGSD[pH]*CSPD[pE1, pPh] + CGSD[-pE1 - pPh]*CSPD[pH, pPh] + \
+CGSD[pH]*CSPD[pPh, pPh])*FAD[pE1 + pPh]*TC[k])/(2*(m2^2 - \
+m3^2)*((-CSPD[pE1, pH] - CSPD[pH, pPh])^2 - CSPD[pH, pH]*(CSPD[pE1, \
+pE1] + 2*CSPD[pE1, pPh] + CSPD[pPh, pPh]))) - (CFAD[{{k, 0}, {-TC[k - \
+pE1 - pPh]^2, -1}, 1}, {{k + pE1 + pPh, 0}, {-m3^2 - TC[k]^2, -1}, \
+1}]*(CGSD[pH]*CSPD[pE1, pE1] + CGSD[-pE1 - pPh]*CSPD[pE1, pH] + \
+2*CGSD[pH]*CSPD[pE1, pPh] + CGSD[-pE1 - pPh]*CSPD[pH, pPh] + \
+CGSD[pH]*CSPD[pPh, pPh])*FAD[pE1 + pPh]*TC[k])/(2*(m2^2 - \
+m3^2)*((-CSPD[pE1, pH] - CSPD[pH, pPh])^2 - CSPD[pH, pH]*(CSPD[pE1, \
+pE1] + 2*CSPD[pE1, pPh] + CSPD[pPh, pPh]))) - (CFAD[{{k, 0}, {-m2^2 - \
+TC[k - pH]^2, -1}, 1}, {{k + pH, 0}, {-m2^2 - TC[k]^2, -1}, 1}, {{k - \
+pE1 + pH - pPh, 0}, {-TC[k - pE1 - pPh]^2, -1}, \
+1}]*(CGSD[pH]*CSPD[pE1, pE1]*CSPD[pH, pH] + CGSD[-pE1 - \
+pPh]*CSPD[pE1, pH]*CSPD[pH, pH] + 2*CGSD[pH]*CSPD[pE1, pPh]*CSPD[pH, \
+pH] + CGSD[-pE1 - pPh]*CSPD[pH, pH]*CSPD[pH, pPh] + CGSD[pH]*CSPD[pH, \
+pH]*CSPD[pPh, pPh] - CGSD[pH]*CSPD[pE1, pH]*(m2^2 + CSPD[pE1, pE1] + \
+2*CSPD[pE1, pPh] + CSPD[pPh, pPh]) - CGSD[-pE1 - pPh]*CSPD[pH, \
+pH]*(m2^2 + CSPD[pE1, pE1] + 2*CSPD[pE1, pPh] + CSPD[pPh, pPh]) - \
+CGSD[pH]*CSPD[pH, pPh]*(m2^2 + CSPD[pE1, pE1] + 2*CSPD[pE1, pPh] + \
+CSPD[pPh, pPh]))*FAD[pE1 + pPh]*TC[k])/(2*(m2^2 - m3^2)*((-CSPD[pE1, \
+pH] - CSPD[pH, pPh])^2 - CSPD[pH, pH]*(CSPD[pE1, pE1] + 2*CSPD[pE1, \
+pPh] + CSPD[pPh, pPh]))) - (CFAD[{{k, 0}, {-m2^2 - TC[k - pH]^2, -1}, \
+1}, {{k + pH, 0}, {-m3^2 - TC[k]^2, -1}, 1}, {{k - pE1 + pH - pPh, \
+0}, {-TC[k - pE1 - pPh]^2, -1}, 1}]*(CGSD[pH]*CSPD[pE1, pE1]*(m2^2 - \
+m3^2 - CSPD[pH, pH]) + CGSD[-pE1 - pPh]*CSPD[pE1, pH]*(m2^2 - m3^2 - \
+CSPD[pH, pH]) + 2*CGSD[pH]*CSPD[pE1, pPh]*(m2^2 - m3^2 - CSPD[pH, \
+pH]) + CGSD[-pE1 - pPh]*(m2^2 - m3^2 - CSPD[pH, pH])*CSPD[pH, pPh] + \
+CGSD[pH]*(m2^2 - m3^2 - CSPD[pH, pH])*CSPD[pPh, pPh] + \
+CGSD[pH]*CSPD[pE1, pH]*(m3^2 + CSPD[pE1, pE1] + 2*CSPD[pE1, pPh] + \
+CSPD[pPh, pPh]) + CGSD[-pE1 - pPh]*CSPD[pH, pH]*(m3^2 + CSPD[pE1, \
+pE1] + 2*CSPD[pE1, pPh] + CSPD[pPh, pPh]) + CGSD[pH]*CSPD[pH, \
+pPh]*(m3^2 + CSPD[pE1, pE1] + 2*CSPD[pE1, pPh] + CSPD[pPh, \
+pPh]))*FAD[pE1 + pPh]*TC[k])/(2*(m2^2 - m3^2)*((-CSPD[pE1, pH] - \
+CSPD[pH, pPh])^2 - CSPD[pH, pH]*(CSPD[pE1, pE1] + 2*CSPD[pE1, pPh] + \
+CSPD[pPh, pPh]))) + (CFAD[{{k, 0}, {-m2^2 - TC[k]^2, -1}, 1}, {{k - \
+pH, 0}, {-m2^2 - TC[k - pH]^2, -1}, 1}, {{k - pE1 - pPh, 0}, {-TC[k - \
+pE1 - pPh]^2, -1}, 1}]*FAD[pE1 + pPh]*GSD[pH]*TC[k])/(m2^2 - m3^2) - \
+(CFAD[{{k, 0}, {-m3^2 - TC[k]^2, -1}, 1}, {{k - pH, 0}, {-m2^2 - TC[k \
+- pH]^2, -1}, 1}, {{k - pE1 - pPh, 0}, {-TC[k - pE1 - pPh]^2, -1}, \
+1}]*FAD[pE1 + pPh]*GSD[pH]*TC[k])/(m2^2 - m3^2) - (CFAD[{{k, 0}, \
+{-m2^2 - TC[k - pH]^2, -1}, 1}, {{k + pH, 0}, {-m2^2 - TC[k]^2, -1}, \
+1}, {{k - pE1 + pH - pPh, 0}, {-TC[k - pE1 - pPh]^2, -1}, \
+1}]*(CGSD[pH]*CSPD[pE1, pE1] - CGSD[pH]*CSPD[pE1, pH] + CGSD[-pE1 - \
+pPh]*CSPD[pE1, pH] + 2*CGSD[pH]*CSPD[pE1, pPh] - CGSD[-pE1 - \
+pPh]*CSPD[pH, pH] - CGSD[pH]*CSPD[pH, pPh] + CGSD[-pE1 - \
+pPh]*CSPD[pH, pPh] + CGSD[pH]*CSPD[pPh, pPh])*FAD[pE1 + \
+pPh]*TC[k]^3)/(2*(m2^2 - m3^2)*((-CSPD[pE1, pH] - CSPD[pH, pPh])^2 - \
+CSPD[pH, pH]*(CSPD[pE1, pE1] + 2*CSPD[pE1, pPh] + CSPD[pPh, pPh]))) + \
+(CFAD[{{k, 0}, {-m2^2 - TC[k - pH]^2, -1}, 1}, {{k + pH, 0}, {-m3^2 - \
+TC[k]^2, -1}, 1}, {{k - pE1 + pH - pPh, 0}, {-TC[k - pE1 - pPh]^2, \
+-1}, 1}]*(CGSD[pH]*CSPD[pE1, pE1] - CGSD[pE1 + pH + pPh]*CSPD[pE1, \
+pH] + 2*CGSD[pH]*CSPD[pE1, pPh] - CGSD[-pE1 - pPh]*CSPD[pH, pH] - \
+CGSD[pE1 + pH + pPh]*CSPD[pH, pPh] + CGSD[pH]*CSPD[pPh, pPh])*FAD[pE1 \
++ pPh]*TC[k]^3)/(2*(m2^2 - m3^2)*((-CSPD[pE1, pH] - CSPD[pH, pPh])^2 \
+- CSPD[pH, pH]*(CSPD[pE1, pE1] + 2*CSPD[pE1, pPh] + CSPD[pPh, pPh]))) \
++ (CFAD[{{k, 0}, {-m2^2 - TC[k - pH]^2, -1}, 1}, {{k + pH, 0}, {-m2^2 \
+- TC[k]^2, -1}, 1}, {{k - pE1 + pH - pPh, 0}, {-TC[k - pE1 - pPh]^2, \
+-1}, 1}]*(CGSD[pH]*CSPD[pE1, pE1] + CGSD[-pE1 - pPh]*CSPD[pE1, pH] + \
+2*CGSD[pH]*CSPD[pE1, pPh] + CGSD[-pE1 - pPh]*CSPD[pH, pPh] + \
+CGSD[pH]*CSPD[pPh, pPh])*FAD[pE1 + pPh]*TC[k]*(TC[k] - \
+TC[pH])^2)/(2*(m2^2 - m3^2)*((-CSPD[pE1, pH] - CSPD[pH, pPh])^2 - \
+CSPD[pH, pH]*(CSPD[pE1, pE1] + 2*CSPD[pE1, pPh] + CSPD[pPh, pPh]))) - \
+(CFAD[{{k, 0}, {-m2^2 - TC[k - pH]^2, -1}, 1}, {{k + pH, 0}, {-m3^2 - \
+TC[k]^2, -1}, 1}, {{k - pE1 + pH - pPh, 0}, {-TC[k - pE1 - pPh]^2, \
+-1}, 1}]*(CGSD[pH]*CSPD[pE1, pE1] + CGSD[-pE1 - pPh]*CSPD[pE1, pH] + \
+2*CGSD[pH]*CSPD[pE1, pPh] + CGSD[-pE1 - pPh]*CSPD[pH, pPh] + \
+CGSD[pH]*CSPD[pPh, pPh])*FAD[pE1 + pPh]*TC[k]*(TC[k] - \
+TC[pH])^2)/(2*(m2^2 - m3^2)*((-CSPD[pE1, pH] - CSPD[pH, pPh])^2 - \
+CSPD[pH, pH]*(CSPD[pE1, pE1] + 2*CSPD[pE1, pPh] + CSPD[pPh, pPh]))) + \
+(FAD[pE1 + pPh]*FAD[{k, m2}, {k - pH, m2}]*(GSD[pH]*SPD[pE1, pH] + \
+GSD[-pE1 - pPh]*SPD[pH, pH] + GSD[pH]*SPD[pH, pPh])*TC[pH])/(2*(m2^2 \
+- m3^2)*((-SPD[pE1, pH] - SPD[pH, pPh])^2 - SPD[pH, pH]*(SPD[pE1, \
+pE1] + 2*SPD[pE1, pPh] + SPD[pPh, pPh]))) - (FAD[pE1 + pPh]*FAD[{k, \
+m2}, {k - pH, m3}]*(GSD[pH]*SPD[pE1, pH] + GSD[-pE1 - pPh]*SPD[pH, \
+pH] + GSD[pH]*SPD[pH, pPh])*TC[pH])/(2*(m2^2 - m3^2)*((-SPD[pE1, pH] \
+- SPD[pH, pPh])^2 - SPD[pH, pH]*(SPD[pE1, pE1] + 2*SPD[pE1, pPh] + \
+SPD[pPh, pPh]))) - (FAD[pE1 + pPh]*FAD[{k, m2}, k - pE1 - \
+pPh]*(GSD[pH]*SPD[pE1, pE1] + GSD[-pE1 - pPh]*SPD[pE1, pH] + \
+2*GSD[pH]*SPD[pE1, pPh] + GSD[-pE1 - pPh]*SPD[pH, pPh] + \
+GSD[pH]*SPD[pPh, pPh])*TC[pH])/(2*(m2^2 - m3^2)*((-SPD[pE1, pH] - \
+SPD[pH, pPh])^2 - SPD[pH, pH]*(SPD[pE1, pE1] + 2*SPD[pE1, pPh] + \
+SPD[pPh, pPh]))) + (FAD[pE1 + pPh]*FAD[{k, m3}, k - pE1 - \
+pPh]*(GSD[pH]*SPD[pE1, pE1] + GSD[-pE1 - pPh]*SPD[pE1, pH] + \
+2*GSD[pH]*SPD[pE1, pPh] + GSD[-pE1 - pPh]*SPD[pH, pPh] + \
+GSD[pH]*SPD[pPh, pPh])*TC[pH])/(2*(m2^2 - m3^2)*((-SPD[pE1, pH] - \
+SPD[pH, pPh])^2 - SPD[pH, pH]*(SPD[pE1, pE1] + 2*SPD[pE1, pPh] + \
+SPD[pPh, pPh]))) + (FAD[pE1 + pPh]*FAD[{k, m2}, {k - pH, m2}, k - pE1 \
+- pPh]*(GSD[pH]*SPD[pE1, pE1]*SPD[pH, pH] + GSD[-pE1 - pPh]*SPD[pE1, \
+pH]*SPD[pH, pH] + 2*GSD[pH]*SPD[pE1, pPh]*SPD[pH, pH] + GSD[-pE1 - \
+pPh]*SPD[pH, pH]*SPD[pH, pPh] + GSD[pH]*SPD[pH, pH]*SPD[pPh, pPh] - \
+GSD[pH]*SPD[pE1, pH]*(m2^2 + SPD[pE1, pE1] + 2*SPD[pE1, pPh] + \
+SPD[pPh, pPh]) - GSD[-pE1 - pPh]*SPD[pH, pH]*(m2^2 + SPD[pE1, pE1] + \
+2*SPD[pE1, pPh] + SPD[pPh, pPh]) - GSD[pH]*SPD[pH, pPh]*(m2^2 + \
+SPD[pE1, pE1] + 2*SPD[pE1, pPh] + SPD[pPh, pPh]) + \
+2*GSD[pH]*((-SPD[pE1, pH] - SPD[pH, pPh])^2 - SPD[pH, pH]*(SPD[pE1, \
+pE1] + 2*SPD[pE1, pPh] + SPD[pPh, pPh])))*TC[pH])/(2*(m2^2 - \
+m3^2)*((-SPD[pE1, pH] - SPD[pH, pPh])^2 - SPD[pH, pH]*(SPD[pE1, pE1] \
++ 2*SPD[pE1, pPh] + SPD[pPh, pPh]))) - (FAD[pE1 + pPh]*FAD[{k, m3}, \
+{k - pH, m2}, k - pE1 - pPh]*(-(GSD[pH]*SPD[pE1, pE1]*(m2^2 - m3^2 - \
+SPD[pH, pH])) - GSD[-pE1 - pPh]*SPD[pE1, pH]*(m2^2 - m3^2 - SPD[pH, \
+pH]) - 2*GSD[pH]*SPD[pE1, pPh]*(m2^2 - m3^2 - SPD[pH, pH]) - GSD[-pE1 \
+- pPh]*(m2^2 - m3^2 - SPD[pH, pH])*SPD[pH, pPh] - GSD[pH]*(m2^2 - \
+m3^2 - SPD[pH, pH])*SPD[pPh, pPh] - GSD[pH]*SPD[pE1, pH]*(m3^2 + \
+SPD[pE1, pE1] + 2*SPD[pE1, pPh] + SPD[pPh, pPh]) - GSD[-pE1 - \
+pPh]*SPD[pH, pH]*(m3^2 + SPD[pE1, pE1] + 2*SPD[pE1, pPh] + SPD[pPh, \
+pPh]) - GSD[pH]*SPD[pH, pPh]*(m3^2 + SPD[pE1, pE1] + 2*SPD[pE1, pPh] \
++ SPD[pPh, pPh]) + 2*GSD[pH]*((-SPD[pE1, pH] - SPD[pH, pPh])^2 - \
+SPD[pH, pH]*(SPD[pE1, pE1] + 2*SPD[pE1, pPh] + SPD[pPh, \
+pPh])))*TC[pH])/(2*(m2^2 - m3^2)*((-SPD[pE1, pH] - SPD[pH, pPh])^2 - \
+SPD[pH, pH]*(SPD[pE1, pE1] + 2*SPD[pE1, pPh] + SPD[pPh, pPh]))) - \
+(CFAD[{{k, 0}, {-m2^2 - TC[k - pH]^2, -1}, 1}, {{k + pH, 0}, {-m2^2 - \
+TC[k]^2, -1}, 1}, {{k - pE1 + pH - pPh, 0}, {-TC[k - pE1 - pPh]^2, \
+-1}, 1}]*(CGSD[pH]*CSPD[pE1, pH] + CGSD[-pE1 - pPh]*CSPD[pH, pH] + \
+CGSD[pH]*CSPD[pH, pPh])*FAD[pE1 + pPh]*TC[k]*(TC[k] - TC[pE1] - \
+TC[pPh])^2)/(2*(m2^2 - m3^2)*((-CSPD[pE1, pH] - CSPD[pH, pPh])^2 - \
+CSPD[pH, pH]*(CSPD[pE1, pE1] + 2*CSPD[pE1, pPh] + CSPD[pPh, pPh]))) + \
+(CFAD[{{k, 0}, {-m2^2 - TC[k - pH]^2, -1}, 1}, {{k + pH, 0}, {-m3^2 - \
+TC[k]^2, -1}, 1}, {{k - pE1 + pH - pPh, 0}, {-TC[k - pE1 - pPh]^2, \
+-1}, 1}]*(CGSD[pH]*CSPD[pE1, pH] + CGSD[-pE1 - pPh]*CSPD[pH, pH] + \
+CGSD[pH]*CSPD[pH, pPh])*FAD[pE1 + pPh]*TC[k]*(TC[k] - TC[pE1] - \
+TC[pPh])^2)/(2*(m2^2 - m3^2)*((-CSPD[pE1, pH] - CSPD[pH, pPh])^2 - \
+CSPD[pH, pH]*(CSPD[pE1, pE1] + 2*CSPD[pE1, pPh] + CSPD[pPh, pPh]))) - \
+(CFAD[{{k, 0}, {-m2^2 - TC[k]^2, -1}, 1}, {{k - pH, 0}, {-m2^2 - TC[k \
+- pH]^2, -1}, 1}, {{k - pE1 - pPh, 0}, {-TC[k - pE1 - pPh]^2, -1}, \
+1}]*FAD[pE1 + pPh]*TC[k]^2*TGA[])/(m2^2 - m3^2) + (CFAD[{{k, 0}, \
+{-m3^2 - TC[k]^2, -1}, 1}, {{k - pH, 0}, {-m2^2 - TC[k - pH]^2, -1}, \
+1}, {{k - pE1 - pPh, 0}, {-TC[k - pE1 - pPh]^2, -1}, 1}]*FAD[pE1 + \
+pPh]*TC[k]^2*TGA[])/(m2^2 - m3^2)"},
+{"fcstTID-ID51","TID[DCHN[-GSD[k] + me, Dir3, Dir4] FAD[{k, me}, k - q], k,
+FCE -> True]","(DCHN[GSD[q], Dir3, Dir4] FAD[{k, me}])/(2 SPD[q, q]) - (1/(
+2 SPD[q, q]))*FAD[k, {k - q, me}] (DCHN[GSD[q], Dir3, Dir4] (me^2 - SPD[q, q]) -
+2 me DCHN[1, Dir3, Dir4] SPD[q, q] + 2 DCHN[GSD[q], Dir3, Dir4] SPD[q, q])"},
+{"fcstTID-ID52","TID[DCHN[GAD[mu].(-GSD[k] + me).GAD[nu], Dir3, Dir4] FAD[{k, me},
+k - q], k, FCE -> True]","(DCHN[GAD[mu].GSD[q].GAD[nu], Dir3, Dir4] FAD[{k, me}])/(
+2 SPD[q, q]) - (1/(2 SPD[q, q]))* FAD[k, {k - q, me}] (DCHN[GAD[mu].GSD[q].GAD[nu], Dir3, Dir4] (me^2 - SPD[q, q]) -
+2 me DCHN[GAD[mu].GAD[nu], Dir3, Dir4] SPD[q, q] + 2 DCHN[GAD[mu].GSD[q].GAD[nu], Dir3, Dir4] SPD[q, q])"},
+{"fcstTID-ID52","TID[FVD[p, mu] FAD[p, p + q], {p}, FCE -> True]",
+"-(1/2) FAD[p, p - q] FVD[q, mu]"},
+{"fcstTID-ID53","TID[DiracTrace[GAD[mu].(GSD[q]).GAD[nu, rho, 5]] FAD[q, q - p], q,
+DiracSimplify -> False, FCE -> True]",
+"1/2 DiracTrace[GAD[mu].GSD[p].GAD[nu].GAD[rho].GA[5]] FAD[q, -p + q]"},
+{"fcstTID-ID54","TID[DiracTrace[GAD[mu].(GSD[q] + m).GAD[nu, rho, 5]] FAD[q, q - p], q,
+DiracSimplify -> False, FCE -> True]",
+"1/2 (2 m DiracTrace[GAD[mu].GAD[nu].GAD[rho].GA[5]] +
+DiracTrace[GAD[mu].GSD[p].GAD[nu].GAD[rho].GA[5]]) FAD[q, -p + q]"}
 };

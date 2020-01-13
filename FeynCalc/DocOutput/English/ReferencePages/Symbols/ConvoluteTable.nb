@@ -3,69 +3,93 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11387,        394]
-NotebookOptionsPosition[      6996,        256]
-NotebookOutlinePosition[      9982,        341]
-CellTagsIndexPosition[      9866,        335]
+NotebookDataLength[     13092,        448]
+NotebookOptionsPosition[      8756,        315]
+NotebookOutlinePosition[     11603,        394]
+CellTagsIndexPosition[     11485,        388]
 WindowTitle->ConvoluteTable
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/ConvoluteTable\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/ConvoluteTable"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"PlusDistribution\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/PlusDistribution"], "\<\"Convolute\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Convolute"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/ConvoluteTable\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/ConvoluteTable"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 ConvoluteTable.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$31794], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/ConvoluteTable", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$46887], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/ConvoluteTable", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +97,20 @@ ConvoluteTable.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["ConvoluteTable", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["ConvoluteTable", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -94,6 +130,65 @@ Convolute."
 
 Cell[CellGroupData[{
 
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->457681475],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Convolute", "]"}]], "Input",
+ CellTags->"ConvoluteTable",
+ CellLabel->"In[521]:=",
+ CellID->1127190721],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Bracket", "\[Rule]", 
+     RowBox[{"{", 
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm], "}"}]}], ",", 
+    RowBox[{"FinalSubstitutions", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"PlusDistribution", "\[Rule]", "Identity"}], "}"}]}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{398, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"ConvoluteTable",
+ CellLabel->"Out[521]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell[TextData[{
  Cell[BoxData[
   InterpretationBox[
@@ -109,7 +204,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->589697723],
+ CellID->451857424],
 
 Cell[CellGroupData[{
 
@@ -119,57 +214,26 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1106656784],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "Convolute", "]"}]], "Input",
- CellTags->"ConvoluteTable",
- CellLabel->"In[1]:=",
- CellID->1127190721],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Bracket", "\[Rule]", 
-     RowBox[{"{", 
-      TagBox["\[CurlyEpsilon]",
-       TraditionalForm], "}"}]}], ",", 
-    RowBox[{"FinalSubstitutions", "\[Rule]", 
-     RowBox[{"{", 
-      RowBox[{"PlusDistribution", "\[Rule]", "Identity"}], "}"}]}]}], "}"}], 
-  TraditionalForm]], "Output",
- ImageSize->{440, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"ConvoluteTable",
- CellLabel->"Out[1]=",
- CellID->1360987202]
-}, Open  ]],
+ CellID->142666285],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"ConvoluteTable", "[", 
-  RowBox[{"1", ",", "1"}], "]"}]], "Input",
+  RowBox[{"1", ",", "1", ",", "x"}], "]"}]], "Input",
  CellTags->"ConvoluteTable",
- CellLabel->"In[2]:=",
+ CellLabel->"In[1]:=",
  CellID->1383961976],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"-", 
-   RowBox[{"log", "(", 
-    RowBox[{"FCGV", "(", "\<\"x45\"\>", ")"}], ")"}]}], 
-  TraditionalForm]], "Output",
- ImageSize->{119, 15},
+   RowBox[{"log", "(", "x", ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{58, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ConvoluteTable",
- CellLabel->"Out[2]=",
- CellID->1197018632]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -178,40 +242,37 @@ Cell[BoxData[
  RowBox[{"ConvoluteTable", "[", 
   RowBox[{"x", ",", "x"}], "]"}]], "Input",
  CellTags->"ConvoluteTable",
- CellLabel->"In[3]:=",
+ CellLabel->"In[2]:=",
  CellID->783988219],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"False", "[", 
    RowBox[{"x", ",", "x"}], "]"}], TraditionalForm]], "Output",
- ImageSize->{74, 15},
+ ImageSize->{76, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ConvoluteTable",
- CellLabel->"Out[3]=",
- CellID->289063823]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"ConvoluteTable", "[", 
-  RowBox[{"1", ",", "x"}], "]"}]], "Input",
+  RowBox[{"1", ",", "x", ",", "x"}], "]"}]], "Input",
  CellTags->"ConvoluteTable",
- CellLabel->"In[4]:=",
+ CellLabel->"In[3]:=",
  CellID->1430786364],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"False", "[", 
-   RowBox[{"1", ",", "x"}], "]"}], TraditionalForm]], "Output",
- ImageSize->{72, 15},
+  RowBox[{"1", "-", "x"}], TraditionalForm]], "Output",
+ ImageSize->{38, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ConvoluteTable",
- CellLabel->"Out[4]=",
- CellID->1781441936]
+ CellLabel->"Out[3]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -247,9 +308,7 @@ Cell[TextData[{
   ButtonNote->"Convolute"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"ConvoluteTable",
- CellID->538606169]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -266,22 +325,22 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 17, 15.776979}", 
+   "built" -> "{2020, 1, 5, 18, 53, 41.543434}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
     "ConvoluteTable[f, g, x] yields the convolution of f and g. \
-ConvoluteTable is called by Convolute.", "synonyms" -> {}, "title" -> 
-    "ConvoluteTable", "titlemodifier" -> "", "windowtitle" -> 
+ConvoluteTable is called by Convolute.", "synonyms" -> {}, "tabletags" -> {}, 
+    "title" -> "ConvoluteTable", "titlemodifier" -> "", "windowtitle" -> 
     "ConvoluteTable", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/ConvoluteTable"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -289,8 +348,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -298,104 +358,98 @@ StyleDefinitions->Notebook[{
 (* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
- "PrimaryExamplesSection"->{
-  Cell[3415, 96, 387, 15, 31, "PrimaryExamplesSection",
-   CellTags->"PrimaryExamplesSection",
-   CellID->589697723]},
  "ConvoluteTable"->{
-  Cell[4048, 125, 141, 4, 27, "Input",
+  Cell[5337, 162, 143, 4, 70, "Input",
    CellTags->"ConvoluteTable",
    CellID->1127190721],
-  Cell[4192, 131, 512, 17, 36, "Output",
-   CellTags->"ConvoluteTable",
-   CellID->1360987202],
-  Cell[4741, 153, 163, 5, 27, "Input",
+  Cell[5483, 168, 493, 16, 37, "Output",
+   CellTags->"ConvoluteTable"],
+  Cell[6669, 220, 173, 5, 27, "Input",
    CellTags->"ConvoluteTable",
    CellID->1383961976],
-  Cell[4907, 160, 312, 11, 36, "Output",
-   CellTags->"ConvoluteTable",
-   CellID->1197018632],
-  Cell[5256, 176, 162, 5, 27, "Input",
+  Cell[6845, 227, 244, 8, 37, "Output",
+   CellTags->"ConvoluteTable"],
+  Cell[7126, 240, 162, 5, 27, "Input",
    CellTags->"ConvoluteTable",
    CellID->783988219],
-  Cell[5421, 183, 271, 9, 36, "Output",
-   CellTags->"ConvoluteTable",
-   CellID->289063823],
-  Cell[5729, 197, 163, 5, 27, "Input",
+  Cell[7291, 247, 251, 8, 35, "Output",
+   CellTags->"ConvoluteTable"],
+  Cell[7579, 260, 173, 5, 27, "Input",
    CellTags->"ConvoluteTable",
    CellID->1430786364],
-  Cell[5895, 204, 272, 9, 36, "Output",
-   CellTags->"ConvoluteTable",
-   CellID->1781441936],
-  Cell[6535, 236, 419, 15, 31, "Text",
-   CellTags->"ConvoluteTable",
-   CellID->538606169]}
+  Cell[7755, 267, 218, 7, 35, "Output",
+   CellTags->"ConvoluteTable"]},
+ "PrimaryExamplesSection"->{
+  Cell[6037, 191, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->451857424]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8853, 300},
- {"ConvoluteTable", 8993, 304}
+ {"ConvoluteTable", 10648, 360},
+ {"PrimaryExamplesSection", 11342, 381}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[586, 21, 2269, 52, 51, "AnchorBarGrid",
+Cell[586, 21, 3138, 76, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2858, 75, 57, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2918, 78, 472, 14, 82, "Usage",
+Cell[3727, 99, 291, 11, 45, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4043, 114, 472, 14, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3415, 96, 387, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->589697723],
+Cell[4540, 132, 738, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->457681475],
+Cell[5281, 158, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[3827, 115, 196, 6, 25, "ExampleSection",
- CellID->1106656784],
-Cell[CellGroupData[{
-Cell[4048, 125, 141, 4, 27, "Input",
+Cell[5337, 162, 143, 4, 70, "Input",
  CellTags->"ConvoluteTable",
  CellID->1127190721],
-Cell[4192, 131, 512, 17, 36, "Output",
- CellTags->"ConvoluteTable",
- CellID->1360987202]
+Cell[5483, 168, 493, 16, 37, "Output",
+ CellTags->"ConvoluteTable"]
+}, Open  ]]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4741, 153, 163, 5, 27, "Input",
+Cell[6037, 191, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->451857424],
+Cell[CellGroupData[{
+Cell[6449, 210, 195, 6, 26, "ExampleSection",
+ CellID->142666285],
+Cell[CellGroupData[{
+Cell[6669, 220, 173, 5, 27, "Input",
  CellTags->"ConvoluteTable",
  CellID->1383961976],
-Cell[4907, 160, 312, 11, 36, "Output",
- CellTags->"ConvoluteTable",
- CellID->1197018632]
+Cell[6845, 227, 244, 8, 37, "Output",
+ CellTags->"ConvoluteTable"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5256, 176, 162, 5, 27, "Input",
+Cell[7126, 240, 162, 5, 27, "Input",
  CellTags->"ConvoluteTable",
  CellID->783988219],
-Cell[5421, 183, 271, 9, 36, "Output",
- CellTags->"ConvoluteTable",
- CellID->289063823]
+Cell[7291, 247, 251, 8, 35, "Output",
+ CellTags->"ConvoluteTable"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5729, 197, 163, 5, 27, "Input",
+Cell[7579, 260, 173, 5, 27, "Input",
  CellTags->"ConvoluteTable",
  CellID->1430786364],
-Cell[5895, 204, 272, 9, 36, "Output",
- CellTags->"ConvoluteTable",
- CellID->1781441936]
+Cell[7755, 267, 218, 7, 35, "Output",
+ CellTags->"ConvoluteTable"]
 }, Open  ]]
 }, Open  ]],
-Cell[6194, 217, 31, 0, 29, "SectionFooterSpacer"]
+Cell[8000, 278, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6262, 222, 270, 12, 31, "SeeAlsoSection",
+Cell[8068, 283, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6535, 236, 419, 15, 31, "Text",
- CellTags->"ConvoluteTable",
- CellID->538606169]
+Cell[8341, 297, 373, 13, 56, "SeeAlso"]
 }, Open  ]],
-Cell[6969, 254, 23, 0, 42, "FooterCell"]
+Cell[8729, 313, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

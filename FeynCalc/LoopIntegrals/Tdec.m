@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Computes tensor decompositions for multiloop integrals
@@ -19,7 +19,7 @@
 Tdec::usage = "Tdec[{q,mu}, {p}]; \
 Tdec[{{qi, mu}, {qj, nu}, ...}, {p1, p2, ...}] or \
 Tdec[exp, {{qi, mu}, {qj, nu}, ...}, {p1, p2, ...}] \
-calculates the tensorial decomposition formulas. \
+calculates the tensorial decomposition formulas for Lorentzian integrals. \
 The more common ones are saved in TIDL.";
 
 UseParallelization::usage =
@@ -75,14 +75,15 @@ tdecVerbose::usage="";
 symmMT::usage="";
 
 Options[Tdec] =	{
-	BasisOnly -> False,
-	Dimension -> D,
-	FCVerbose -> False,
-	Factoring -> Factor2,
-	FeynCalcExternal -> True,
-	List -> True,
-	UseParallelization -> True,
-	UseTIDL -> True
+	BasisOnly 			-> False,
+	Dimension 			-> D,
+	FCVerbose 			-> False,
+	Factoring 			-> {Factor2, Factor},
+	FCE					-> True,
+	Head				-> Identity,
+	List 				-> True,
+	UseParallelization	-> True,
+	UseTIDL 			-> True
 };
 
 SetAttributes[symmMT,Orderless];
@@ -242,7 +243,7 @@ CCSymmetrize[ins_List, li_List, syms_List/;Length[syms]>0] :=
 
 		(*
 		Here one has to be careful; We can exchange the indices according to the symmetries,
-		but we are not allowed to change the overall oredering. Consider for example
+		but we are not allowed to change the overall ordering. Consider for example
 		{{1,0,0},{nu,mu,rho},{nu,rho}}
 		{{1,0,0},{rho,mu,nu},{nu,rho}}
 		The ordering {1,0,0} is fixed by the tensor structure, i.e. we cannot
@@ -323,7 +324,7 @@ Tdec[exp_:1, {a_/;Head[a] =!=List, b_/;Head[b]=!=List}, pli_List/;FreeQ[pli,Opti
 Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]] :=
 	Block[ {tt, factor, dim, proli, nccli, ccli, pli,
 			eqli, neqli,  nttt,listlabel, fce,
-			veqli, seqli, scqli, solu,ii,ex,ce,xy,
+			veqli, seqli, scqli, solu,ii,ex,ce,xy, optHead,
 			extMom,basisonly,multiLoop=False,lis,mlis,basis,multiLoopSyms={}},
 
 		dim         = OptionValue[Dimension];
@@ -331,10 +332,11 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 		fce			= OptionValue[FeynCalcExternal];
 		factor		= OptionValue[Factoring];
 		basisonly	= OptionValue[BasisOnly];
+		optHead 	= OptionValue[Head];
 
 		If [OptionValue[FCVerbose]===False,
 			tdecVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				tdecVerbose=OptionValue[FCVerbose]
 			]
 		];
@@ -374,7 +376,7 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 		we have a 1-point function or were requested just to provide the tensor basis *)
 		If[!basisonly && ppli=!={},
 			FCPrint[1, "Tdec: Checking Gram determinant...", FCDoControl->tdecVerbose];
-			If[ExpandScalarProduct[Det[ppli//Table[2 ScalarProduct[#[[i]], #[[j]],Dimension->dim], {i, 1, Length[#]}, {j, 1, Length[#]}] &]]===0,
+			If[	FCGramDeterminant[ppli,Dimension->dim]===0,
 				FCPrint[1, "Tensor decomposition with Tdec is not possible due to vanishing Gram determinants", FCDoControl->tdecVerbose];
 				tt=Apply[Times, Map[Pair[Momentum[#[[1]],dim], LorentzIndex[#[[2]],dim]]&, li]];
 				seqli={};
@@ -412,8 +414,8 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 		If[	basisonly,
 			If[multiLoop,
 				(* for multiloop coefficient functions some more infos can be useful	*)
-				Return[(basis/.extMom->Identity/.CC[xx__]:> FCGV["GCF"][xx,li,ppli])],
-				Return[(basis/.extMom->Identity/.CC[xx__]:> FCGV["PaVe"][xx])]
+				Return[(basis/.extMom->optHead/.CC[xx__]:> FCGV["GCF"][xx,li,ppli])],
+				Return[(basis/.extMom->optHead/.CC[xx__]:> FCGV["PaVe"][xx])]
 			]
 		];
 		FCPrint[1, "Tdec: symmetrized tensor basis ",basis, FCDoControl->tdecVerbose];
@@ -505,8 +507,8 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 		FCPrint[1, "Tdec: after solu substitution ", N[MemoryInUse[]/10^6,3], " MB ; time used ", TimeUsed[]//FeynCalcForm, FCDoControl->tdecVerbose];
 		FCPrint[2, "Tdec: tt: ", tt, FCDoControl->tdecVerbose];
 		FCPrint[2, "Tdec: seqli: ", seqli, FCDoControl->tdecVerbose];
-		tt = tt/.extMom->Identity;
-		seqli = seqli/.extMom->Identity;
+		tt = tt/.extMom->optHead;
+		seqli = seqli/.extMom->optHead;
 		If[ fce,
 			tt = FeynCalcExternal[tt];
 			seqli = FeynCalcExternal[seqli];

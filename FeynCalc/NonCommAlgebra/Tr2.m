@@ -26,7 +26,9 @@ End[]
 
 Begin["`Tr2`Private`"]
 
-Options[ Tr2 ] = {Factoring -> False};
+Options[Tr2] = {
+	Factoring -> False
+};
 
 
 dirtr[x_, OptionsPattern[]] :=
@@ -64,12 +66,13 @@ trap[y_,ops___Rule] :=
 trdifficult[y_, ops___Rule] :=
 	If[MatchQ[y, _. DOT[(a__) /; FreeQ2[{a}, {DiracGamma[5],DiracGamma[6], DiracGamma[7]}], DiracGamma[5]]],
 		treasy[Expand[ExpandScalarProduct[Contract[DiracOrder[Collect2[DiracSimplify[y, InsideDiracTrace -> True],
-		DOT, Factoring -> False]],EpsEvaluate->False]],DiracGamma],ops],
-		treasy[Expand[ExpandScalarProduct[Contract[DiracOrder[y],EpsEvaluate->False]], DiracGamma], ops]
+		DOT, Factoring -> False]],EpsContract->False]],DiracGamma],ops],
+		treasy[Expand[ExpandScalarProduct[Contract[DiracOrder[y],EpsContract->False]], DiracGamma], ops]
 	] /. treasy -> DiracTrace /. DiracTrace -> trup /. trup -> DiracTrace /. DiracTrace -> trap;
 
 Tr2[x_] :=
 	Block[{tt=FCI[x]},
+
 		If[FreeQ[tt, DiracTrace],
 			tt = DiracTrace[tt]
 		];

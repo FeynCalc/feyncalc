@@ -16,7 +16,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1446741392778</id>
+			<id>1537241074983</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -25,12 +25,75 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1446741392779</id>
+			<id>1537241074984</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
 				<id>org.eclipse.ui.ide.multiFilter</id>
-				<arguments>1.0-name-matches-false-false-FeynArts</arguments>
+				<arguments>1.0-name-matches-true-false-FeynArts</arguments>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1537241074986</id>
+			<name></name>
+			<type>26</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-name-matches-true-false-Phi</arguments>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1537241074987</id>
+			<name></name>
+			<type>26</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-name-matches-true-false-Tests</arguments>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1537241074989</id>
+			<name></name>
+			<type>26</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-name-matches-true-false-build</arguments>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1537241074990</id>
+			<name></name>
+			<type>26</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-name-matches-true-false-DocOutput</arguments>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1537241074997</id>
+			<name></name>
+			<type>26</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-name-matches-true-false-Examples</arguments>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1537241074999</id>
+			<name></name>
+			<type>26</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-name-matches-true-false-AddOns</arguments>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1537241075001</id>
+			<name></name>
+			<type>26</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-name-matches-true-false-Database</arguments>
 			</matcher>
 		</filter>
 	</filteredResources>

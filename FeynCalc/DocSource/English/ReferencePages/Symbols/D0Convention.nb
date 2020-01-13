@@ -162,7 +162,6 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  ButtonBox["D0",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/D0",
@@ -173,9 +172,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Write2",
   ButtonNote->"Write2"],
  "."
-}], "Text",
- CellTags->"D0Convention",
- CellID->1599988993]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -261,12 +258,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{1011, Automatic}, {Automatic, 159}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

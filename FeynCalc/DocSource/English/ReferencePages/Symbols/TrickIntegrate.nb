@@ -208,9 +208,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Epsilon",
   ButtonNote->"Epsilon"],
  "."
-}], "Text",
- CellTags->"TrickIntegrate",
- CellID->1095920169]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -251,7 +249,7 @@ Cell[BoxData[
        RowBox[{"a", " ", "Epsilon"}], "-", "1"}], ")"}]}], " ", 
     RowBox[{"g", "[", "t", "]"}]}], ",", "t"}], "]"}]], "Input",
  CellTags->"TrickIntegrate",
- CellLabel->"In[1]:=",
+ CellLabel->"In[16]:=",
  CellID->1216797415],
 
 Cell[BoxData[
@@ -272,8 +270,7 @@ Cell[BoxData[
      RowBox[{"t", ",", "0", ",", "1"}], "}"}]}], "]"}], 
   TraditionalForm]], "Output",
  CellTags->"TrickIntegrate",
- CellLabel->"Out[1]=",
- CellID->308907212]
+ CellLabel->"Out[16]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -288,7 +285,7 @@ Cell[BoxData[
        RowBox[{"a", " ", "Epsilon"}], "-", "1"}], ")"}]}], " ", 
     RowBox[{"g", "[", "t", "]"}]}], ",", "t"}], "]"}]], "Input",
  CellTags->"TrickIntegrate",
- CellLabel->"In[2]:=",
+ CellLabel->"In[17]:=",
  CellID->256517011],
 
 Cell[BoxData[
@@ -307,8 +304,7 @@ Cell[BoxData[
      RowBox[{"t", ",", "0", ",", "1"}], "}"}]}], "]"}], 
   TraditionalForm]], "Output",
  CellTags->"TrickIntegrate",
- CellLabel->"Out[2]=",
- CellID->1473267114]
+ CellLabel->"Out[17]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -373,12 +369,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{951, Automatic}, {Automatic, -8}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

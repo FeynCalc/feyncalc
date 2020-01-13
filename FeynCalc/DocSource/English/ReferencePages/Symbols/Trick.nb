@@ -186,9 +186,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/DiracTrick",
   ButtonNote->"DiracTrick"],
  "."
-}], "Text",
- CellTags->"Trick",
- CellID->633331234]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -215,10 +213,6 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell[BoxData["Examples"], "Subsubsection",
- CellTags->"Trick",
- CellID->890627813],
-
 Cell[TextData[{
  "This calculates ",
  Cell[BoxData[
@@ -232,10 +226,7 @@ Cell[TextData[{
   FormBox[
    SubsuperscriptBox["g", "\[Nu]", "\[Nu]"], TraditionalForm]]],
  " in D dimensions."
-}], "Text",
- ZeroWidthTimes->True,
- CellTags->"Trick",
- CellID->1624506888],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
@@ -250,7 +241,7 @@ Cell[BoxData[
     RowBox[{"MTD", "[", 
      RowBox[{"\[Nu]", ",", "\[Nu]"}], "]"}]}], "}"}], "]"}]], "Input",
  CellTags->"Trick",
- CellLabel->"In[1]:=",
+ CellLabel->"In[11]:=",
  CellID->1470455200],
 
 Cell[BoxData[
@@ -264,8 +255,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]], ",", "D"}], "}"}], TraditionalForm]], "Output",
  CellTags->"Trick",
- CellLabel->"Out[1]=",
- CellID->472477170]
+ CellLabel->"Out[11]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -281,80 +271,65 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"q", "-", "p"}], ",", "\[Nu]"}], "]"}]}]], "Input",
  CellTags->"Trick",
- CellLabel->"In[2]:=",
+ CellLabel->"In[12]:=",
  CellID->1607408478],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
    FormBox[
-    FormBox[
-     SuperscriptBox[
-      OverscriptBox["g", "_"], 
-      RowBox[{
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm],
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]}]],
     TraditionalForm], " ", 
    FormBox[
-    FormBox[
-     SuperscriptBox[
-      RowBox[{"(", 
-       FormBox[
-        FormBox[
-         RowBox[{
-          OverscriptBox[
-           FormBox["q",
-            TraditionalForm], "_"], "-", 
-          OverscriptBox[
-           FormBox["p",
-            TraditionalForm], "_"]}],
-         TraditionalForm],
-        TraditionalForm], ")"}], 
+    SuperscriptBox[
+     RowBox[{"(", 
       FormBox[
        FormBox[
-        FormBox["\[Nu]",
-         TraditionalForm],
+        RowBox[{
+         OverscriptBox[
+          FormBox["q",
+           TraditionalForm], "_"], "-", 
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"]}],
         TraditionalForm],
-       TraditionalForm]],
-     TraditionalForm],
+       TraditionalForm], ")"}], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]],
     TraditionalForm], " ", 
    FormBox[
-    FormBox[
-     SuperscriptBox[
-      RowBox[{"(", 
-       FormBox[
-        FormBox[
-         RowBox[{
-          OverscriptBox[
-           FormBox["p",
-            TraditionalForm], "_"], "+", 
-          OverscriptBox[
-           FormBox["r",
-            TraditionalForm], "_"]}],
-         TraditionalForm],
-        TraditionalForm], ")"}], 
+    SuperscriptBox[
+     RowBox[{"(", 
       FormBox[
        FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
+        RowBox[{
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"], "+", 
+         OverscriptBox[
+          FormBox["r",
+           TraditionalForm], "_"]}],
         TraditionalForm],
-       TraditionalForm]],
-     TraditionalForm],
+       TraditionalForm], ")"}], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"Trick",
- CellLabel->"Out[2]=",
- CellID->379098985]
+ CellLabel->"Out[12]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -362,7 +337,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Trick", "[", "%", "]"}]], "Input",
  CellTags->"Trick",
- CellLabel->"In[3]:=",
+ CellLabel->"In[13]:=",
  CellID->1357228781],
 
 Cell[BoxData[
@@ -414,8 +389,7 @@ Cell[BoxData[
        TraditionalForm], "_"],
      TraditionalForm]}]}], TraditionalForm]], "Output",
  CellTags->"Trick",
- CellLabel->"Out[3]=",
- CellID->1886505726]
+ CellLabel->"Out[13]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -426,7 +400,7 @@ Cell[BoxData[
    RowBox[{"GA", "[", "d", "]"}], ".", 
    RowBox[{"GA", "[", "e", "]"}]}], "]"}]], "Input",
  CellTags->"Trick",
- CellLabel->"In[4]:=",
+ CellLabel->"In[14]:=",
  CellID->542077909],
 
 Cell[BoxData[
@@ -446,8 +420,7 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"Trick",
- CellLabel->"Out[4]=",
- CellID->272166616]
+ CellLabel->"Out[14]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -456,7 +429,7 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"%", "//", "FCE"}], "//", "StandardForm"}]], "Input",
  CellTags->"Trick",
- CellLabel->"In[5]:=",
+ CellLabel->"In[15]:=",
  CellID->1364919880],
 
 Cell[BoxData[
@@ -465,8 +438,7 @@ Cell[BoxData[
    RowBox[{"GA", "[", "d", "]"}], ".", 
    RowBox[{"GA", "[", "e", "]"}]}]}]], "Output",
  CellTags->"Trick",
- CellLabel->"Out[5]//StandardForm=",
- CellID->1559426683]
+ CellLabel->"Out[15]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -531,12 +503,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{759, Automatic}, {Automatic, 80}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

@@ -118,14 +118,50 @@ Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
   RowBox[{"DiracGammaExpand", "[", "exp", "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "expands all DiracGamma[Momentum[a+b+..]] in exp into \
-(DiracGamma[Momentum[a]] + DiracGamma[Momentum[b]] + ...)."
+ " \[LineSeparator]expands Dirac matrices contracted to linear combinations \
+of ",
+ Cell[BoxData["4"], "InlineFormula"],
+ "-vectors."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[TextData[{
+ "All ",
+ Cell[BoxData[
+  RowBox[{"DiracGamma", "[", 
+   RowBox[{"Momentum", "[", 
+    RowBox[{
+     RowBox[{"a", "+", "b", "+"}], ".."}], "]"}], "]"}]], "InlineFormula"],
+ " will be expanded to ",
+ Cell[BoxData[
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"DiracGamma", "[", 
+      RowBox[{"Momentum", "[", "a", "]"}], "]"}], "+", 
+     RowBox[{"DiracGamma", "[", 
+      RowBox[{"Momentum", "[", "b", "]"}], "]"}], "+"}], "..."}], ")"}]], 
+  "InlineFormula"],
+ "."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "DiracGammaExpand", "]"}]], "Input",
+ CellLabel->"In[141]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"DiracSigmaExpand", "\[Rule]", "True"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"Momentum", "\[Rule]", "All"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[141]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -171,29 +207,17 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/DiracGammaCombine",
   ButtonNote->"DiracGammaCombine"],
  ", ",
- ButtonBox["DiracMatrix",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracMatrix",
-  ButtonNote->"DiracMatrix"],
- ", ",
  ButtonBox["DiracSimplify",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
   ButtonNote->"DiracSimplify"],
- ", ",
- ButtonBox["DiracSlash",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracSlash",
-  ButtonNote->"DiracSlash"],
  ", ",
  ButtonBox["DiracTrick",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/DiracTrick",
   ButtonNote->"DiracTrick"],
  "."
-}], "Text",
- CellTags->"DiracGammaExpand",
- CellID->1587243701]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -223,84 +247,73 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t", "=", 
-  RowBox[{
-   RowBox[{"DiracGamma", "[", 
-    RowBox[{"Momentum", "[", "q", "]"}], "]"}], " ", ".", " ", 
-   RowBox[{"DiracGamma", "[", 
-    RowBox[{"Momentum", "[", 
-     RowBox[{"p", "-", "q"}], "]"}], "]"}]}]}]], "Input",
- CellTags->"DiracGammaExpand",
- CellLabel->"In[1]:=",
- CellID->808958256],
+ RowBox[{
+  RowBox[{"GS", "[", "q", "]"}], ".", 
+  RowBox[{"GS", "[", 
+   RowBox[{"p", "-", "q"}], "]"}]}]], "Input",
+ CellLabel->"In[144]:="],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
    RowBox[{"(", 
-    RowBox[{
-     OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-     FormBox[
-      OverscriptBox[
-       FormBox["q",
-        TraditionalForm], "_"],
-      TraditionalForm]}], ")"}], ".", 
-   RowBox[{"(", 
-    RowBox[{
-     OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(", 
-     FormBox[
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
       FormBox[
-       RowBox[{
-        OverscriptBox[
-         FormBox["p",
-          TraditionalForm], "_"], "-", 
-        OverscriptBox[
-         FormBox["q",
-          TraditionalForm], "_"]}],
-       TraditionalForm],
-      TraditionalForm], ")"}], ")"}]}], TraditionalForm]], "Output",
- CellTags->"DiracGammaExpand",
- CellLabel->"Out[1]=",
- CellID->922918740]
+       OverscriptBox[
+        FormBox["q",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(", 
+      FormBox[
+       FormBox[
+        RowBox[{
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"], "-", 
+         OverscriptBox[
+          FormBox["q",
+           TraditionalForm], "_"]}],
+        TraditionalForm],
+       TraditionalForm], ")"}],
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[144]="]
 }, Open  ]],
 
-Cell["\<\
-Momentum is the head of p-q, i.e., it is treated as one four-momentum.\
-\>", "Text",
- CellTags->"DiracGammaExpand",
- CellID->2029354787],
+Cell[TextData[{
+ ButtonBox["DiracGammaExpand",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracGammaExpand",
+  ButtonNote->"DiracGammaExpand"],
+ " rewrites ",
+ Cell[BoxData[
+  RowBox[{
+   SuperscriptBox["\[Gamma]", "\[Mu]"], 
+   SubscriptBox[
+    RowBox[{"(", 
+     RowBox[{"p", "-", "q"}], ")"}], "\[Mu]"]}]], "InlineFormula"],
+ " as ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{
+    SuperscriptBox["\[Gamma]", "\[Mu]"], 
+    SubscriptBox["p", "\[Mu]"]}], "-", 
+   RowBox[{
+    SuperscriptBox["\[Gamma]", "\[Mu]"], 
+    SubscriptBox["q", "\[Mu]"]}]}]], "InlineFormula"],
+ "."
+}], "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"StandardForm", "[", "t", "]"}]], "Input",
- CellTags->"DiracGammaExpand",
- CellLabel->"In[2]:=",
- CellID->1573863723],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"DiracGamma", "[", 
-   RowBox[{"Momentum", "[", "q", "]"}], "]"}], ".", 
-  RowBox[{"DiracGamma", "[", 
-   RowBox[{"Momentum", "[", 
-    RowBox[{"p", "-", "q"}], "]"}], "]"}]}]], "Output",
- CellTags->"DiracGammaExpand",
- CellLabel->"Out[2]//StandardForm=",
- CellID->50723928]
-}, Open  ]],
-
-Cell["With DiracGammaExpand the Momentum[p-q] gets expanded.", "Text",
- CellTags->"DiracGammaExpand",
- CellID->2014620015],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"DiracGammaExpand", "[", "t", "]"}]], "Input",
- CellTags->"DiracGammaExpand",
- CellLabel->"In[3]:=",
- CellID->260673945],
+ RowBox[{"DiracGammaExpand", "[", "%", "]"}]], "Input",
+ CellLabel->"In[147]:="],
 
 Cell[BoxData[
  FormBox[
@@ -329,45 +342,14 @@ Cell[BoxData[
         FormBox["q",
          TraditionalForm], "_"],
        TraditionalForm]}]}], ")"}]}], TraditionalForm]], "Output",
- CellTags->"DiracGammaExpand",
- CellLabel->"Out[3]=",
- CellID->511724887]
-}, Open  ]],
-
-Cell["The inverse operation is DiracGammaCombine.", "Text",
- CellTags->"DiracGammaExpand",
- CellID->1184042108],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"StandardForm", "[", 
-  RowBox[{"DiracGammaCombine", "[", 
-   RowBox[{"DiracGammaExpand", "[", "t", "]"}], "]"}], "]"}]], "Input",
- CellTags->"DiracGammaExpand",
- CellLabel->"In[4]:=",
- CellID->1327296799],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"DiracGamma", "[", 
-   RowBox[{"Momentum", "[", "q", "]"}], "]"}], ".", 
-  RowBox[{"DiracGamma", "[", 
-   RowBox[{"Momentum", "[", 
-    RowBox[{"p", "-", "q"}], "]"}], "]"}]}]], "Output",
- CellTags->"DiracGammaExpand",
- CellLabel->"Out[4]//StandardForm=",
- CellID->264621103]
+ CellLabel->"Out[147]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"StandardForm", "[", 
-  RowBox[{"DiracGammaExpand", "[", "t", "]"}], "]"}]], "Input",
- CellTags->"DiracGammaExpand",
- CellLabel->"In[5]:=",
- CellID->447085558],
+ RowBox[{"StandardForm", "[", "%", "]"}]], "Input",
+ CellLabel->"In[148]:="],
 
 Cell[BoxData[
  RowBox[{
@@ -379,22 +361,445 @@ Cell[BoxData[
      RowBox[{"Momentum", "[", "p", "]"}], "]"}], "-", 
     RowBox[{"DiracGamma", "[", 
      RowBox[{"Momentum", "[", "q", "]"}], "]"}]}], ")"}]}]], "Output",
- CellTags->"DiracGammaExpand",
- CellLabel->"Out[5]//StandardForm=",
- CellID->85762253]
+ CellLabel->"Out[148]//StandardForm="]
 }, Open  ]],
-
-Cell["In order to do non-commutative expansion use DiracSimplify.", "Text",
- CellTags->"DiracGammaExpand",
- CellID->56861818],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DiracSimplify", "[", "t", "]"}]], "Input",
- CellTags->"DiracGammaExpand",
- CellLabel->"In[6]:=",
- CellID->103977295],
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[TextData[{
+ "The inverse operation is ",
+ ButtonBox["DiracGammaCombine",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracGammaCombine",
+  ButtonNote->"DiracGammaCombine"],
+ "."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GS", "[", "q", "]"}], ".", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"GS", "[", "p", "]"}], "-", 
+    RowBox[{"GS", "[", "q", "]"}]}], ")"}]}]], "Input",
+ CellLabel->"In[149]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["q",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], ".", 
+   RowBox[{"(", 
+    RowBox[{
+     FormBox[
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm]}],
+      TraditionalForm], "-", 
+     FormBox[
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["q",
+          TraditionalForm], "_"],
+        TraditionalForm]}],
+      TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[149]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracGammaCombine", "[", "%", "]"}]], "Input",
+ CellLabel->"In[150]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+     FormBox[
+      OverscriptBox[
+       FormBox["q",
+        TraditionalForm], "_"],
+      TraditionalForm]}], ")"}], ".", 
+   RowBox[{"(", 
+    RowBox[{
+     OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", "(", 
+     FormBox[
+      FormBox[
+       RowBox[{
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"], "-", 
+        OverscriptBox[
+         FormBox["q",
+          TraditionalForm], "_"]}],
+       TraditionalForm],
+      TraditionalForm], ")"}], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[150]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StandardForm", "[", "%", "]"}]], "Input",
+ CellLabel->"In[151]:="],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DiracGamma", "[", 
+   RowBox[{"Momentum", "[", "q", "]"}], "]"}], ".", 
+  RowBox[{"DiracGamma", "[", 
+   RowBox[{"Momentum", "[", 
+    RowBox[{"p", "-", "q"}], "]"}], "]"}]}]], "Output",
+ CellLabel->"Out[151]//StandardForm="]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell["\<\
+It is possible to perform the expansions only on Dirac matrices contracted \
+with particular momenta.\
+\>", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"c1", " ", 
+   RowBox[{
+    RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"GSD", "[", 
+       RowBox[{"p1", "+", "p2"}], "]"}], "+", "m"}], ")"}], ".", 
+    RowBox[{"GAD", "[", "\[Nu]", "]"}]}]}], "+", "\[IndentingNewLine]", 
+  RowBox[{"c2", " ", 
+   RowBox[{
+    RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"GSD", "[", 
+       RowBox[{"q1", "+", "q2"}], "]"}], "+", "m"}], ")"}], ".", 
+    RowBox[{"GAD", "[", "\[Nu]", "]"}]}]}]}]], "Input",
+ CellLabel->"In[44]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"c1", " ", 
+    RowBox[{
+     FormBox[
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     RowBox[{"(", 
+      RowBox[{"m", "+", 
+       FormBox[
+        RowBox[{"\[Gamma]", "\[CenterDot]", "(", 
+         FormBox[
+          FormBox[
+           RowBox[{
+            FormBox["p1",
+             TraditionalForm], "+", 
+            FormBox["p2",
+             TraditionalForm]}],
+           TraditionalForm],
+          TraditionalForm], ")"}],
+        TraditionalForm]}], ")"}], ".", 
+     FormBox[
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm]}]}], "+", 
+   RowBox[{"c2", " ", 
+    RowBox[{
+     FormBox[
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     RowBox[{"(", 
+      RowBox[{"m", "+", 
+       FormBox[
+        RowBox[{"\[Gamma]", "\[CenterDot]", "(", 
+         FormBox[
+          FormBox[
+           RowBox[{
+            FormBox["q1",
+             TraditionalForm], "+", 
+            FormBox["q2",
+             TraditionalForm]}],
+           TraditionalForm],
+          TraditionalForm], ")"}],
+        TraditionalForm]}], ")"}], ".", 
+     FormBox[
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm]}]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[44]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracGammaExpand", "[", 
+  RowBox[{"%", ",", 
+   RowBox[{"Momentum", "\[Rule]", 
+    RowBox[{"{", "q1", "}"}]}]}], "]"}]], "Input",
+ CellLabel->"In[45]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"c1", " ", 
+    RowBox[{
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     RowBox[{"(", 
+      RowBox[{"m", "+", 
+       RowBox[{"\[Gamma]", "\[CenterDot]", "(", 
+        FormBox[
+         FormBox[
+          RowBox[{
+           FormBox["p1",
+            TraditionalForm], "+", 
+           FormBox["p2",
+            TraditionalForm]}],
+          TraditionalForm],
+         TraditionalForm], ")"}]}], ")"}], ".", 
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]]}]}], "+", 
+   RowBox[{"c2", " ", 
+    RowBox[{
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     RowBox[{"(", 
+      RowBox[{"m", "+", 
+       RowBox[{"\[Gamma]", "\[CenterDot]", 
+        FormBox[
+         FormBox["q1",
+          TraditionalForm],
+         TraditionalForm]}], "+", 
+       RowBox[{"\[Gamma]", "\[CenterDot]", 
+        FormBox[
+         FormBox["q2",
+          TraditionalForm],
+         TraditionalForm]}]}], ")"}], ".", 
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]]}]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[45]="]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[TextData[{
+ "If the input expression contains ",
+ ButtonBox["DiracSigma",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSigma",
+  ButtonNote->"DiracSigma"],
+ ",  ",
+ ButtonBox["DiracGammaExpand",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracGammaExpand",
+  ButtonNote->"DiracGammaExpand"],
+ " will expand Feynman slashes inside ",
+ ButtonBox["DiracSigma",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSigma",
+  ButtonNote->"DiracSigma"],
+ " and call ",
+ ButtonBox["DiracSigmaExpand",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSigmaExpand",
+  ButtonNote->"DiracSigma"],
+ "."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSigma", "[", 
+  RowBox[{
+   RowBox[{"GSD", "[", 
+    RowBox[{"p", "+", "q"}], "]"}], ",", 
+   RowBox[{"GSD", "[", "r", "]"}]}], "]"}]], "Input",
+ CellLabel->"In[48]:="],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox["\[Sigma]", 
+   RowBox[{
+    FormBox[
+     RowBox[{"p", "+", "q"}],
+     TraditionalForm], 
+    FormBox["r",
+     TraditionalForm]}]], TraditionalForm]], "Output",
+ CellLabel->"Out[48]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracGammaExpand", "[", "%", "]"}]], "Input",
+ CellLabel->"In[49]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SuperscriptBox["\[Sigma]", 
+    RowBox[{
+     FormBox[
+      FormBox["p",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["r",
+       TraditionalForm],
+      TraditionalForm]}]], "+", 
+   SuperscriptBox["\[Sigma]", 
+    RowBox[{
+     FormBox[
+      FormBox["q",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["r",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
+ CellLabel->"Out[49]="]
+}, Open  ]],
+
+Cell[TextData[{
+ "The call to ",
+ ButtonBox["DiracSigmaExpand",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSigmaExpand",
+  ButtonNote->"DiracSigma"],
+ " can be inhibited by disabling the corresponding option."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracGammaExpand", "[", 
+  RowBox[{
+   RowBox[{"DiracSigma", "[", 
+    RowBox[{
+     RowBox[{"GSD", "[", 
+      RowBox[{"p", "+", "q"}], "]"}], ",", 
+     RowBox[{"GSD", "[", "r", "]"}]}], "]"}], ",", 
+   RowBox[{"DiracSigmaExpand", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellLabel->"In[47]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"DiracSigma", "(", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"\[Gamma]", "\[CenterDot]", 
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm]}], "+", 
+     RowBox[{"\[Gamma]", "\[CenterDot]", 
+      FormBox[
+       FormBox["q",
+        TraditionalForm],
+       TraditionalForm]}]}], ",", 
+    RowBox[{"\[Gamma]", "\[CenterDot]", 
+     FormBox[
+      FormBox["r",
+       TraditionalForm],
+      TraditionalForm]}]}], ")"}], TraditionalForm]], "Output",
+ CellLabel->"Out[47]="]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[TextData[{
+ "Use ",
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ " f",
+ ButtonBox["or",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracGammaExpand",
+  ButtonNote->"DiracGammaExpand"],
+ " noncommutative expansions with the corresponding simplifications."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", 
+  RowBox[{
+   RowBox[{"GS", "[", "q", "]"}], ".", 
+   RowBox[{"(", 
+    RowBox[{"GS", "[", 
+     RowBox[{"p", "-", "q"}], "]"}], ")"}]}], "]"}]], "Input",
+ CellLabel->"In[156]:="],
 
 Cell[BoxData[
  FormBox[
@@ -422,16 +827,75 @@ Cell[BoxData[
       FormBox["q",
        TraditionalForm], "_"],
      TraditionalForm], "2"]}], TraditionalForm]], "Output",
- CellTags->"DiracGammaExpand",
- CellLabel->"Out[6]=",
- CellID->703741666]
+ CellLabel->"Out[156]="]
 }, Open  ]],
 
+Cell[TextData[{
+ "If simplifications are not required, you may also combine ",
+ ButtonBox["DiracGammaExpand",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracGammaExpand",
+  ButtonNote->"DiracGammaExpand"],
+ " with ",
+ ButtonBox["DotSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DotSimplify",
+  ButtonNote->"DotSimplify"],
+ "."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
 Cell[BoxData[
- RowBox[{"Clear", "[", "t", "]"}]], "Input",
- CellTags->"DiracGammaExpand",
- CellLabel->"In[7]:=",
- CellID->2056643915]
+ RowBox[{"DotSimplify", "[", 
+  RowBox[{"DiracGammaExpand", "[", 
+   RowBox[{
+    RowBox[{"GS", "[", "q", "]"}], ".", 
+    RowBox[{"(", 
+     RowBox[{"GS", "[", 
+      RowBox[{"p", "-", "q"}], "]"}], ")"}]}], "]"}], "]"}]], "Input",
+ CellLabel->"In[158]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["q",
+         TraditionalForm], "_"],
+       TraditionalForm]}], ")"}], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}], ")"}]}], "-", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["q",
+         TraditionalForm], "_"],
+       TraditionalForm]}], ")"}], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["q",
+         TraditionalForm], "_"],
+       TraditionalForm]}], ")"}]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[158]="]
+}, Open  ]]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -494,13 +958,15 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{700, 760},
+WindowMargins->{{1516, Automatic}, {Automatic, 246}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

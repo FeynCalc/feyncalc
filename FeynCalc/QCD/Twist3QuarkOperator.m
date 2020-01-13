@@ -36,12 +36,13 @@ End[]
 
 Begin["`Twist3QuarkOperator`Private`"]
 
-Options[Twist3QuarkOperator] = { CouplingConstant -> SMP["g_s"],
-													Dimension -> D, Polarization -> 1};
+Options[Twist3QuarkOperator] = {
+	CouplingConstant -> SMP["g_s"],
+	Dimension -> D,
+	Polarization -> 1
+};
 
-Twist3QuarkOperator[a1_/;Head[a1] =!= List, v_/;Head[v] =!=Integer,
-																			w_/;Head[w] =!= Integer,
-	opt___Rule] :=
+Twist3QuarkOperator[a1_/;Head[a1] =!= List, v_/;Head[v] =!=Integer, w_/;Head[w] =!= Integer, opt___Rule] :=
 	Twist3QuarkOperator[a1, opt];
 
 (* 2 - Quark operator; unpolarized :   RH (3A.8); (3A.9) *)
@@ -59,26 +60,19 @@ Twist3QuarkOperator[pi_, opt___Rule] :=
 		re
 	];
 
-{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
-
-Twist3QuarkOperator[p_, i_Integer, j_Integer] :=
+Twist3QuarkOperator[p_, _Integer, _Integer] :=
 	QuarkOperator[p];
-Twist3QuarkOperator[x___, i_Integer, y___] :=
-	QuarkOperator[x, l[i], c[i], y];
-
 
 (* Quark - Quark - Gluon *)
 
-Twist3QuarkOperator[{p1_,__}  {p2_,__},  {p3_,mu_,a_ /; Head[a] =!= Rule},
-							opt___Rule] :=
+Twist3QuarkOperator[{p1_,__}  {p2_,__},  {p3_,mu_,a_ /; Head[a] =!= Rule}, opt___Rule] :=
 	Twist3QuarkOperator[{p1}, {p2}, {p3, mu, a}, opt];
 
-Twist3QuarkOperator[p1_,_,_,  p2_,_,_,  p3_,mu_,a_ /; Head[a] =!= Rule,
-							opt___Rule] :=
+Twist3QuarkOperator[p1_,_,_,  p2_,_,_,  p3_,mu_,a_ /; Head[a] =!= Rule, opt___Rule] :=
 	Twist3QuarkOperator[{p1}, {p2}, {p3, mu, a}, opt];
 
-Twist3QuarkOperator[{p2_}, {p1_}, {p3_, mu_, a_}, opt___Rule] :=
-	Block[ {dim, pe1, pe2, pol, del, muu, coup},
+Twist3QuarkOperator[{p2_}, {p1_}, {_, mu_, a_}, opt___Rule] :=
+	Block[ {dim, pe1, pe2, pol, del, muu, coup, re},
 		coup  = CouplingConstant /. {opt} /. Options[Twist3QuarkOperator];
 		dim   = Dimension /. {opt} /. Options[Twist3QuarkOperator];
 		pol    = Polarization /. {opt} /. Options[Twist3QuarkOperator];
@@ -88,37 +82,28 @@ Twist3QuarkOperator[{p2_}, {p1_}, {p3_, mu_, a_}, opt___Rule] :=
 		muu = LorentzIndex[mu, dim];
 		If[ pol === 0,
 			re = -coup  SUNT[SUNIndex[a]] Pair[del,muu] *
-									OPESum[(-1)^OPEi Pair[del, pe1]^OPEi *
-																	Pair[del, pe2]^(OPEm-OPEi-2),
-												{OPEi, 0, OPEm-2}],
+				OPESum[(-1)^OPEi Pair[del, pe1]^OPEi *
+				Pair[del, pe2]^(OPEm-OPEi-2), {OPEi, 0, OPEm-2}],
 			re = -coup (*((1-(-1)^OPEm)/2)*) *
-									DOT[DiracGamma[del,dim], DiracGamma[5],
-											SUNT[SUNIndex[a]]] Pair[del,muu] *
-									OPESum[(-1)^OPEi Pair[del, pe1]^OPEi *
-																	Pair[del, pe2]^(OPEm-OPEi-2),
-												{OPEi, 0, OPEm-2}]
+				DOT[DiracGamma[del,dim], DiracGamma[5], SUNT[SUNIndex[a]]] Pair[del,muu] *
+				OPESum[(-1)^OPEi Pair[del, pe1]^OPEi * Pair[del, pe2]^(OPEm-OPEi-2), {OPEi, 0, OPEm-2}]
 		];
 		re
 	];
 
 (* Quark - Quark - Gluon - Gluon *)
 
-Twist3QuarkOperator[{p1_,__}  {p2_,__},  {p3_,mu_,a_ /; Head[a] =!= Rule},
-							{p4_,nu_,b_ /; Head[b] =!= Rule},
-							opt___Rule] :=
+Twist3QuarkOperator[{p1_,__}  {p2_,__},  {p3_,mu_,a_ /; Head[a] =!= Rule}, {p4_,nu_,b_ /; Head[b] =!= Rule}, opt___Rule] :=
 	Twist3QuarkOperator[{p1}, {p2}, {p3, mu, a}, {p4, nu, b}, opt];
 
-Twist3QuarkOperator[p1_,_,_,  p2_,_,_,  p3_,mu_,a_ /; Head[a] =!= Rule,
-							p4_,nu_,b_,
-							opt___Rule] :=
+Twist3QuarkOperator[p1_,_,_,  p2_,_,_,  p3_,mu_,a_ /; Head[a] =!= Rule, p4_,nu_,b_, opt___Rule] :=
 	Twist3QuarkOperator[{p1}, {p2}, {p3, mu, a}, {p4, nu, b}, opt];
 
-Twist3QuarkOperator[{p2_}, {p1_}, {p3_, mu_, c_},{p4_, nu_, d_},
-							opt___Rule] :=
-	Block[ {dim, pe1, pe2, pe3, pe4, pol, del, muu, coup},
-		coup  = CouplingConstant /. {opt} /. Options[Twist3QuarkOperator];
-		dim   = Dimension /. {opt} /. Options[Twist3QuarkOperator];
-		pol    = Polarization /. {opt} /. Options[Twist3QuarkOperator];
+Twist3QuarkOperator[{p2_}, {p1_}, {p3_, mu_, c_},{p4_, nu_, d_}, opt___Rule] :=
+	Block[{	dim, pe1, pe2, pe3, pe4, pol, del, muu, nuu, coup, re},
+		coup= CouplingConstant /. {opt} /. Options[Twist3QuarkOperator];
+		dim	= Dimension /. {opt} /. Options[Twist3QuarkOperator];
+		pol	= Polarization /. {opt} /. Options[Twist3QuarkOperator];
 		pe1 = Momentum[p1, dim];
 		pe2 = Momentum[p2, dim];
 		pe3 = Momentum[p3, dim];
@@ -126,8 +111,9 @@ Twist3QuarkOperator[{p2_}, {p1_}, {p3_, mu_, c_},{p4_, nu_, d_},
 		del = Momentum[OPEDelta, dim];
 		muu = LorentzIndex[mu, dim];
 		nuu = LorentzIndex[nu, dim];
+
 		If[ pol === 0,
-			re = notyet,
+			re = "Not ready yet!",
 			re = (-coup^2 (*((1-(-1)^OPEm)/2)*) *
 					DOT[DiracGamma[del], DiracGamma[5],
 			(DOT[SUNT[SUNIndex[d]], SUNT[SUNIndex[c]]]*

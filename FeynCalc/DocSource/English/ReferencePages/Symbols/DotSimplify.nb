@@ -117,17 +117,69 @@ Cell["DotSimplify", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{"DotSimplify", "[", "expr", "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "expands and reorders noncommutative terms in expr. Simplifying relations \
-may be specified by the option DotSimplifyRelations or by Commutator and \
-AntiCommutator definitions. Whether expr is expanded noncommutatively depends \
-on the option Expanding."
+  RowBox[{"DotSimplify", "[", "exp", "]"}]], "InlineFormula"],
+ " \[LineSeparator]expands and reorders noncommutative terms in ",
+ Cell[BoxData["exp"], "InlineFormula"],
+ ". "
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[TextData[{
+ "Simplifying relations may be specified by the option ",
+ ButtonBox["DotSimplifyRelations",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DotSimplifyRelations",
+  ButtonNote->"DotSimplifyRelations"],
+ " or by ",
+ ButtonBox["Commutator",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/Commutator",
+  ButtonNote->"Commutator"],
+ " and ",
+ ButtonBox["AntiCommutator",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/AntiCommutator",
+  ButtonNote->"AntiCommutator"],
+ " definitions. "
+}], "Notes"],
+
+Cell[TextData[{
+ "Whether ",
+ Cell[BoxData["exp"], "InlineFormula"],
+ " is expanded noncommutatively depends on the option ",
+ ButtonBox["Expanding",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/Expanding",
+  ButtonNote->"Expanding"],
+ "."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "DotSimplify", "]"}]], "Input",
+ CellTags->"DotSimplify",
+ CellLabel->"In[136]:=",
+ CellID->1331874134],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"FCJoinDOTs", "\[Rule]", "True"}], ",", 
+    RowBox[{"Expanding", "\[Rule]", "True"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
+    RowBox[{"DotSimplifyRelations", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"DotPower", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "True"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"MaxIterations", "\[Rule]", "100"}], ",", 
+    RowBox[{"PreservePropagatorStructures", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"DotSimplify",
+ CellLabel->"Out[136]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -178,9 +230,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Calc",
   ButtonNote->"Calc"],
  "."
-}], "Text",
- CellTags->"DotSimplify",
- CellID->574897097]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -210,41 +260,16 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "DotSimplify", "]"}]], "Input",
- CellTags->"DotSimplify",
- CellLabel->"In[1]:=",
- CellID->1331874134],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
+ RowBox[{
+  RowBox[{"GA", "[", "\[Mu]", "]"}], ".", 
+  RowBox[{"(", 
    RowBox[{
-    RowBox[{"Expanding", "\[Rule]", "True"}], ",", 
-    RowBox[{"DotSimplifyRelations", "\[Rule]", 
-     RowBox[{"{", "}"}]}], ",", 
-    RowBox[{"DotPower", "\[Rule]", "False"}], ",", 
-    RowBox[{"CommonTrace", "\[Rule]", "False"}], ",", 
-    RowBox[{"FeynCalcInternal", "\[Rule]", "True"}]}], "}"}], 
-  TraditionalForm]], "Output",
+    RowBox[{"2", " ", 
+     RowBox[{"GS", "[", "p", "]"}]}], "-", 
+    RowBox[{"GS", "[", "q", "]"}]}], ")"}], ".", 
+  RowBox[{"GA", "[", "\[Nu]", "]"}]}]], "Input",
  CellTags->"DotSimplify",
- CellLabel->"Out[1]=",
- CellID->1021382404]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"t1", "=", 
-  RowBox[{
-   RowBox[{"GA", "[", "\[Mu]", "]"}], ".", 
-   RowBox[{"(", 
-    RowBox[{
-     RowBox[{"2", " ", 
-      RowBox[{"GS", "[", "p", "]"}]}], "-", 
-     RowBox[{"GS", "[", "q", "]"}]}], ")"}], ".", 
-   RowBox[{"GA", "[", "\[Nu]", "]"}]}]}]], "Input",
- CellTags->"DotSimplify",
- CellLabel->"In[2]:=",
+ CellLabel->"In[137]:=",
  CellID->1782604794],
 
 Cell[BoxData[
@@ -288,16 +313,15 @@ Cell[BoxData[
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"DotSimplify",
- CellLabel->"Out[2]=",
- CellID->97040369]
+ CellLabel->"Out[137]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DotSimplify", "[", "t1", "]"}]], "Input",
+ RowBox[{"DotSimplify", "[", "%", "]"}]], "Input",
  CellTags->"DotSimplify",
- CellLabel->"In[3]:=",
+ CellLabel->"In[138]:=",
  CellID->1204340698],
 
 Cell[BoxData[
@@ -347,27 +371,31 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"DotSimplify",
- CellLabel->"Out[3]=",
- CellID->715244913]
+ CellLabel->"Out[138]="]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
 
 Cell[BoxData[
  RowBox[{"DeclareNonCommutative", "[", 
   RowBox[{"a", ",", "b", ",", "c"}], "]"}]], "Input",
  CellTags->"DotSimplify",
- CellLabel->"In[4]:=",
+ CellLabel->"In[139]:=",
  CellID->194491386],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t2", "=", 
-  RowBox[{"a", ".", 
-   RowBox[{"(", 
-    RowBox[{"b", "-", 
-     RowBox[{"z", " ", "c"}]}], ")"}], ".", "a"}]}]], "Input",
+ RowBox[{"a", ".", 
+  RowBox[{"(", 
+   RowBox[{"b", "-", 
+    RowBox[{"z", " ", "c"}]}], ")"}], ".", "a"}]], "Input",
  CellTags->"DotSimplify",
- CellLabel->"In[5]:=",
+ CellLabel->"In[140]:=",
  CellID->2117662767],
 
 Cell[BoxData[
@@ -377,16 +405,15 @@ Cell[BoxData[
     RowBox[{"b", "-", 
      RowBox[{"c", " ", "z"}]}], ")"}], ".", "a"}], TraditionalForm]], "Output",
  CellTags->"DotSimplify",
- CellLabel->"Out[5]=",
- CellID->1736919809]
+ CellLabel->"Out[140]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DotSimplify", "[", "t2", "]"}]], "Input",
+ RowBox[{"DotSimplify", "[", "%", "]"}]], "Input",
  CellTags->"DotSimplify",
- CellLabel->"In[6]:=",
+ CellLabel->"In[141]:=",
  CellID->1117578635],
 
 Cell[BoxData[
@@ -396,8 +423,7 @@ Cell[BoxData[
    RowBox[{"z", " ", 
     RowBox[{"a", ".", "c", ".", "a"}]}]}], TraditionalForm]], "Output",
  CellTags->"DotSimplify",
- CellLabel->"Out[6]=",
- CellID->1099682282]
+ CellLabel->"Out[141]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -407,22 +433,25 @@ Cell[BoxData[
   RowBox[{"Commutator", "[", 
    RowBox[{"a", ",", "c"}], "]"}], "=", "1"}]], "Input",
  CellTags->"DotSimplify",
- CellLabel->"In[7]:=",
+ CellLabel->"In[142]:=",
  CellID->1442809361],
 
 Cell[BoxData[
  FormBox["1", TraditionalForm]], "Output",
  CellTags->"DotSimplify",
- CellLabel->"Out[7]=",
- CellID->2070115949]
+ CellLabel->"Out[142]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DotSimplify", "[", "t2", "]"}]], "Input",
+ RowBox[{"DotSimplify", "[", 
+  RowBox[{"a", ".", 
+   RowBox[{"(", 
+    RowBox[{"b", "-", 
+     RowBox[{"z", " ", "c"}]}], ")"}], ".", "a"}], "]"}]], "Input",
  CellTags->"DotSimplify",
- CellLabel->"In[8]:=",
+ CellLabel->"In[143]:=",
  CellID->1013643835],
 
 Cell[BoxData[
@@ -435,24 +464,27 @@ Cell[BoxData[
       RowBox[{"c", ".", "a", ".", "a"}], "+", "a"}], ")"}]}]}], 
   TraditionalForm]], "Output",
  CellTags->"DotSimplify",
- CellLabel->"Out[8]=",
- CellID->1231130458]
+ CellLabel->"Out[143]="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"Commutator", "[", 
-   RowBox[{"a", ",", "c"}], "]"}], "=", "."}]], "Input",
+   RowBox[{"a", ",", "c"}], "]"}], "=."}]], "Input",
  CellTags->"DotSimplify",
- CellLabel->"In[9]:=",
+ CellLabel->"In[144]:=",
  CellID->1466952413],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DotSimplify", "[", "t2", "]"}]], "Input",
+ RowBox[{"DotSimplify", "[", 
+  RowBox[{"a", ".", 
+   RowBox[{"(", 
+    RowBox[{"b", "-", 
+     RowBox[{"z", " ", "c"}]}], ")"}], ".", "a"}], "]"}]], "Input",
  CellTags->"DotSimplify",
- CellLabel->"In[10]:=",
+ CellLabel->"In[146]:=",
  CellID->1037294655],
 
 Cell[BoxData[
@@ -462,8 +494,7 @@ Cell[BoxData[
    RowBox[{"z", " ", 
     RowBox[{"a", ".", "c", ".", "a"}]}]}], TraditionalForm]], "Output",
  CellTags->"DotSimplify",
- CellLabel->"Out[10]=",
- CellID->918347217]
+ CellLabel->"Out[146]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -473,22 +504,25 @@ Cell[BoxData[
   RowBox[{"AntiCommutator", "[", 
    RowBox[{"b", ",", "a"}], "]"}], "=", "c"}]], "Input",
  CellTags->"DotSimplify",
- CellLabel->"In[11]:=",
+ CellLabel->"In[147]:=",
  CellID->579521038],
 
 Cell[BoxData[
  FormBox["c", TraditionalForm]], "Output",
  CellTags->"DotSimplify",
- CellLabel->"Out[11]=",
- CellID->675731172]
+ CellLabel->"Out[147]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DotSimplify", "[", "t2", "]"}]], "Input",
+ RowBox[{"DotSimplify", "[", 
+  RowBox[{"a", ".", 
+   RowBox[{"(", 
+    RowBox[{"b", "-", 
+     RowBox[{"z", " ", "c"}]}], ")"}], ".", "a"}], "]"}]], "Input",
  CellTags->"DotSimplify",
- CellLabel->"In[12]:=",
+ CellLabel->"In[148]:=",
  CellID->164431463],
 
 Cell[BoxData[
@@ -500,30 +534,33 @@ Cell[BoxData[
     RowBox[{"a", ".", "c", ".", "a"}]}], "+", 
    RowBox[{"a", ".", "c"}]}], TraditionalForm]], "Output",
  CellTags->"DotSimplify",
- CellLabel->"Out[12]=",
- CellID->412911369]
+ CellLabel->"Out[148]="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"AntiCommutator", "[", 
-   RowBox[{"b", ",", "a"}], "]"}], "=", "."}]], "Input",
+   RowBox[{"b", ",", "a"}], "]"}], "=."}]], "Input",
  CellTags->"DotSimplify",
- CellLabel->"In[13]:=",
+ CellLabel->"In[149]:=",
  CellID->216404314],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DotSimplify", "[", 
-  RowBox[{"t2", ",", 
+  RowBox[{
+   RowBox[{"a", ".", 
+    RowBox[{"(", 
+     RowBox[{"b", "-", 
+      RowBox[{"z", " ", "c"}]}], ")"}], ".", "a"}], ",", 
    RowBox[{"DotSimplifyRelations", "\[Rule]", 
     RowBox[{"{", 
      RowBox[{
       RowBox[{"a", ".", "c"}], "\[Rule]", 
       RowBox[{"1", "/", "z"}]}], "}"}]}]}], "]"}]], "Input",
  CellTags->"DotSimplify",
- CellLabel->"In[14]:=",
+ CellLabel->"In[152]:=",
  CellID->2011362420],
 
 Cell[BoxData[
@@ -532,14 +569,25 @@ Cell[BoxData[
    RowBox[{"a", ".", "b", ".", "a"}], "-", "a"}], TraditionalForm]], "Output",
  
  CellTags->"DotSimplify",
- CellLabel->"Out[14]=",
- CellID->1420474961]
+ CellLabel->"Out[152]="]
 }, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"UnDeclareNonCommutative", "[", 
+  RowBox[{"a", ",", "b", ",", "c"}], "]"}]], "Input",
+ CellLabel->"In[153]:="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
 
 Cell[BoxData[
  RowBox[{"DeclareNonCommutative", "[", "x", "]"}]], "Input",
  CellTags->"DotSimplify",
- CellLabel->"In[15]:=",
+ CellLabel->"In[169]:=",
  CellID->1063178346],
 
 Cell[CellGroupData[{
@@ -547,16 +595,12 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"DotSimplify", "[", 
   RowBox[{"x", ".", "x", ".", "x"}], "]"}]], "Input",
- CellTags->"DotSimplify",
- CellLabel->"In[16]:=",
- CellID->1173966576],
+ CellLabel->"In[170]:="],
 
 Cell[BoxData[
  FormBox[
-  SuperscriptBox["x", "3"], TraditionalForm]], "Output",
- CellTags->"DotSimplify",
- CellLabel->"Out[16]=",
- CellID->629656626]
+  RowBox[{"x", ".", "x", ".", "x"}], TraditionalForm]], "Output",
+ CellLabel->"Out[170]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -565,25 +609,24 @@ Cell[BoxData[
  RowBox[{"DotSimplify", "[", 
   RowBox[{
    RowBox[{"x", ".", "x", ".", "x"}], ",", 
-   RowBox[{"DotPower", "\[Rule]", "False"}]}], "]"}]], "Input",
+   RowBox[{"DotPower", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"DotSimplify",
- CellLabel->"In[17]:=",
- CellID->49078014],
+ CellLabel->"In[171]:=",
+ CellID->1173966576],
 
 Cell[BoxData[
  FormBox[
   SuperscriptBox["x", "3"], TraditionalForm]], "Output",
  CellTags->"DotSimplify",
- CellLabel->"Out[17]=",
- CellID->316863354]
+ CellLabel->"Out[171]="]
 }, Open  ]],
 
 Cell[BoxData[
- RowBox[{"UnDeclareNonCommutative", "[", 
-  RowBox[{"a", ",", "b", ",", "c", ",", "x"}], "]"}]], "Input",
+ RowBox[{"UnDeclareNonCommutative", "[", "x", "]"}]], "Input",
  CellTags->"DotSimplify",
- CellLabel->"In[18]:=",
+ CellLabel->"In[172]:=",
  CellID->1813929769]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -647,12 +690,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{Automatic, 268}, {Automatic, -35}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

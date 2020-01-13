@@ -118,11 +118,8 @@ Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
   RowBox[{"ExplicitSUNIndex", "[", "ind", "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "is a specific SU(",
- StyleBox["N",
-  FontSlant->"Italic"],
- ") index, i.e., ind is an integer."
+ " \[LineSeparator] is a specific SU(N) index in the adjoint representation, \
+i.e. ind is an integer."
 }], "Usage",
  CellID->982511436],
 
@@ -163,7 +160,6 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  ButtonBox["FCI",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/FCI",
@@ -184,9 +180,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/SUNIndex",
   ButtonNote->"SUNIndex"],
  "."
-}], "Text",
- CellTags->"ExplicitSUNIndex",
- CellID->1491985045]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -218,14 +212,13 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"ExplicitSUNIndex", "[", "1", "]"}]], "Input",
  CellTags->"ExplicitSUNIndex",
- CellLabel->"In[1]:=",
+ CellLabel->"In[745]:=",
  CellID->902504379],
 
 Cell[BoxData[
  FormBox["1", TraditionalForm]], "Output",
  CellTags->"ExplicitSUNIndex",
- CellLabel->"Out[1]=",
- CellID->835416034]
+ CellLabel->"Out[745]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -290,12 +283,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{1016, Automatic}, {Automatic, 117}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

@@ -117,8 +117,7 @@ Cell["$NonComm", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData["$NonComm"], "InlineFormula"],
- " \[LineSeparator]",
- "contains a list of all non-commutative heads present."
+ " \[LineSeparator]contains a list of all noncommutative heads present."
 }], "Usage",
  CellID->982511436],
 
@@ -169,9 +168,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/NonCommutative",
   ButtonNote->"NonCommutative"],
  "."
-}], "Text",
- CellTags->"$NonComm",
- CellID->1040108898]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -198,39 +195,37 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell["Examples", "Subsubsection",
- CellTags->"$NonComm",
- CellID->2045411989],
-
 Cell[CellGroupData[{
 
 Cell[BoxData["$NonComm"], "Input",
  CellTags->"$NonComm",
- CellLabel->"In[1]:=",
+ CellLabel->"In[189]:=",
  CellID->1876740578],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"{", 
    RowBox[{
-   "ChiralityProjector", ",", "DiracGamma", ",", "DiracGammaT", ",", 
-    "DiracMatrix", ",", "DiracSigma", ",", "DiracSlash", ",", "DiracSpinor", 
-    ",", "GA", ",", 
+   "ChiralityProjector", ",", "DiracGamma", ",", "DiracMatrix", ",", 
+    "DiracSigma", ",", "DiracSlash", ",", "Spinor", ",", "GA", ",", 
     SuperscriptBox[
      OverscriptBox["\[Gamma]", "_"], 
      FormBox["5",
       TraditionalForm]], ",", "GAD", ",", "GAE", ",", "GS", ",", "GSD", ",", 
     "GSE", ",", "LeftPartialD", ",", "LeftRightPartialD", ",", 
-    "LeftRightPartialD2", ",", "FCPartialD", ",", "PauliSigma", ",", 
+    "LeftRightPartialD2", ",", "FCPartialD", ",", "OPESum", ",", 
     "QuantumField", ",", "RightPartialD", ",", "Spinor", ",", "SpinorU", ",", 
-    "SpinorUBar", ",", "SpinorV", ",", "SpinorVBar", ",", "SUNT", ",", "C", 
-    ",", "CovariantD", ",", "OPESum", ",", "FieldStrength", ",", 
-    "QuarkGluonVertex", ",", "QuarkPropagator", ",", "Twist2AlienOperator", 
-    ",", "Twist2CounterOperator", ",", "Twist2QuarkOperator"}], "}"}], 
+    "SpinorUBar", ",", "SpinorV", ",", "SpinorVBar", ",", "SUNT", ",", 
+    "PauliSigma", ",", "PauliXi", ",", "PauliEta", ",", "TGA", ",", "CGA", 
+    ",", "CGAD", ",", "CGAE", ",", "CGS", ",", "CGSD", ",", "CGSE", ",", "SI",
+     ",", "SID", ",", "SIE", ",", "CSI", ",", "CSID", ",", "CSIE", ",", 
+    "FeynCalc`Package`dotsimpHold", ",", "FCChargeConjugateTransposed", ",", 
+    "CovariantD", ",", "FieldStrength", ",", "QuarkGluonVertex", ",", 
+    "QuarkPropagator", ",", "Twist2AlienOperator", ",", 
+    "Twist2CounterOperator", ",", "Twist2QuarkOperator"}], "}"}], 
   TraditionalForm]], "Output",
  CellTags->"$NonComm",
- CellLabel->"Out[1]=",
- CellID->1539262372]
+ CellLabel->"Out[189]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -295,12 +290,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

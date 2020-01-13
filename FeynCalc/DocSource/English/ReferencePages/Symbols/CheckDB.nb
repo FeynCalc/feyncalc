@@ -119,26 +119,60 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"CheckDB", "[", 
    RowBox[{"exp", ",", " ", "fil"}], "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "saves [with Put] or retrieves [with Get] exp from a file fil. It checks if \
-the setting of the option Directory is a valid directory name and if fil is a \
-valid file name and does exist. If it does, Get[fil] is executed. If fil does \
-not exist, exp gets evaluated and saved to  fil. Saving and evaluating can be \
-further controlled with the options ForceSave and NoSave. If the option Check \
-is set to False  the return value is what is evaluated [see above]. If Check \
-is set to True the return value is True or False depending on whether the \
-evaluation of exp agrees with what is loaded from fil or fil does not exist.  \
-Default value of Check : False.\nNOTICE : If fil ends with \".Gen\" or \".Mod\
-\", the   setting of Directory is ignored and fil is  saved in the \
-\"CouplingVectors\"  subdirectory of \"Phi\". If fil ends with  \".Fac\", the \
-setting of Directory is  ignored and fil is saved in the \"Factors\" \
-subdirectory of \"Phi\". If fil is a file   name with full path, the setting \
-of  Directory is also ignored."
+ " \[LineSeparator]saves [with Put] or retrieves [with Get] exp from a file \
+fil. It checks if the setting of the option Directory is a valid directory \
+name and if fil is a valid file name and does exist. If it does, Get[fil] is \
+executed. If fil does not exist, exp gets evaluated and saved to  fil. Saving \
+and evaluating can be further controlled with the options ForceSave and \
+NoSave. If the option Check is set to False  the return value is what is \
+evaluated [see above]. If Check is set to True the return value is True or \
+False depending on whether the evaluation of exp agrees with what is loaded \
+from fil or fil does not exist.  Default value of Check : False."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell["\<\
+If fil ends with \".Gen\" or \".Mod\", the   setting of Directory is ignored \
+and fil is  saved in the \"CouplingVectors\"  subdirectory of \"Phi\". If fil \
+ends with  \".Fac\", the setting of Directory is  ignored and fil is saved in \
+the \"Factors\" subdirectory of \"Phi\". If fil is a file   name with full \
+path, the setting of  Directory is also ignored.\
+\>", "Notes",
+ CellID->1067943069],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "CheckDB", "]"}]], "Input",
+ CellLabel->"In[305]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Directory", "\[RuleDelayed]", 
+     RowBox[{"ToFileName", "[", 
+      RowBox[{
+       RowBox[{"{", "$FeynCalcDirectory", "}"}], ",", "\<\"Database\"\>"}], 
+      "]"}]}], ",", 
+    RowBox[{"ForceSave", "\[Rule]", "False"}], ",", 
+    RowBox[{"NoSave", "\[Rule]", "False"}], ",", 
+    RowBox[{"Check", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[305]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Attributes", "[", "CheckDB", "]"}]], "Input",
+ CellLabel->"In[306]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", "HoldFirst", "}"}], TraditionalForm]], "Output",
+ CellLabel->"Out[306]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -201,58 +235,10 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell["Examples", "Subsubsection",
- CellTags->"CheckDB",
- CellID->647730640],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "CheckDB", "]"}]], "Input",
- CellTags->"CheckDB",
- CellLabel->"In[1]:=",
- CellID->2004487562],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Directory", "\[RuleDelayed]", 
-     RowBox[{"ToFileName", "[", 
-      RowBox[{
-       RowBox[{"{", "$FeynCalcDirectory", "}"}], ",", "\<\"Database\"\>"}], 
-      "]"}]}], ",", 
-    RowBox[{"ForceSave", "\[Rule]", "False"}], ",", 
-    RowBox[{"NoSave", "\[Rule]", "False"}], ",", 
-    RowBox[{"Check", "\[Rule]", "False"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"CheckDB",
- CellLabel->"Out[1]=",
- CellID->1735070400]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Attributes", "[", "CheckDB", "]"}]], "Input",
- CellTags->"CheckDB",
- CellLabel->"In[2]:=",
- CellID->62116505],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", "HoldFirst", "}"}], TraditionalForm]], "Output",
- CellTags->"CheckDB",
- CellLabel->"Out[2]=",
- CellID->393414258]
-}, Open  ]],
-
 Cell["\<\
 The first time the Table function is evaluated and the result saved into the \
 test.s file.\
-\>", "Text",
- CellTags->"CheckDB",
- CellID->1632453918],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -269,29 +255,25 @@ Cell[BoxData[
       RowBox[{"i", ",", "2"}], "}"}]}], "]"}], ",", "\"\<test.s\>\""}], 
   "]"}]], "Input",
  CellTags->"CheckDB",
- CellLabel->"In[3]:=",
+ CellLabel->"In[307]:=",
  CellID->1433287094],
 
 Cell["test test ", "Print",
  CellTags->"CheckDB",
- CellLabel->"During evaluation of In[3]:=",
- CellID->670482458],
+ CellLabel->"During evaluation of In[307]:="],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"{", 
    RowBox[{"1", ",", "2"}], "}"}], TraditionalForm]], "Output",
  CellTags->"CheckDB",
- CellLabel->"Out[3]=",
- CellID->1976770700]
+ CellLabel->"Out[307]="]
 }, Open  ]],
 
 Cell["\<\
 Executing the same a second time will just load the result from test.s and \
 not evaluate the Table function.\
-\>", "Text",
- CellTags->"CheckDB",
- CellID->342347170],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -308,7 +290,7 @@ Cell[BoxData[
       RowBox[{"i", ",", "2"}], "}"}]}], "]"}], ",", "\"\<test.s\>\""}], 
   "]"}]], "Input",
  CellTags->"CheckDB",
- CellLabel->"In[4]:=",
+ CellLabel->"In[308]:=",
  CellID->1024102984],
 
 Cell[BoxData[
@@ -316,13 +298,10 @@ Cell[BoxData[
   RowBox[{"{", 
    RowBox[{"1", ",", "2"}], "}"}], TraditionalForm]], "Output",
  CellTags->"CheckDB",
- CellLabel->"Out[4]=",
- CellID->129097795]
+ CellLabel->"Out[308]="]
 }, Open  ]],
 
-Cell["This shows the actual saved value of test.s.", "Text",
- CellTags->"CheckDB",
- CellID->277506706],
+Cell["This shows the actual saved value of test.s.", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -335,14 +314,13 @@ Cell[BoxData[
       RowBox[{"Options", "[", "CheckDB", "]"}]}], ",", "\"\<test.s\>\""}], 
     "]"}], ",", "\"\<Text\>\""}], "]"}]], "Input",
  CellTags->"CheckDB",
- CellLabel->"In[5]:=",
+ CellLabel->"In[309]:=",
  CellID->1578936180],
 
 Cell[BoxData[
  FormBox["\<\"{1, 2}\"\>", TraditionalForm]], "Output",
  CellTags->"CheckDB",
- CellLabel->"Out[5]=",
- CellID->796644611]
+ CellLabel->"Out[309]="]
 }, Open  ]],
 
 Cell[BoxData[
@@ -353,7 +331,7 @@ Cell[BoxData[
      RowBox[{"Options", "[", "CheckDB", "]"}]}], ",", "\"\<test.s\>\""}], 
    "]"}], "]"}]], "Input",
  CellTags->"CheckDB",
- CellLabel->"In[6]:=",
+ CellLabel->"In[310]:=",
  CellID->1720430951]
 }, Open  ]],
 
@@ -418,12 +396,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{784, Automatic}, {Automatic, 51}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

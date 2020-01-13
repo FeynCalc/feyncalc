@@ -120,47 +120,90 @@ Cell[TextData[{
   RowBox[{"FieldStrength", "[", 
    RowBox[{"\[Mu]", ",", " ", "\[Nu]", ",", " ", "a"}], "]"}]], 
   "InlineFormula"],
- " \[LineSeparator]",
- "is the field strength tensor ",
+ " \[LineSeparator]is the field strength tensor ",
  Cell[BoxData[
-  FormBox[
+  RowBox[{
    RowBox[{
-    RowBox[{
-     SubscriptBox["\[PartialD]", "\[Mu]"], 
-     SubsuperscriptBox["A", "\[Nu]", "a"]}], "-", 
-    RowBox[{
-     SubscriptBox["\[PartialD]", "\[Nu]"], 
-     SubsuperscriptBox["A", "\[Mu]", "a"]}], "+", 
-    RowBox[{
-     SubscriptBox["g", "s"], " ", 
-     SubsuperscriptBox["A", "\[Mu]", "b1"], 
-     SubsuperscriptBox["A", "\[Nu]", "c1"]}]}], TraditionalForm]]],
- Cell[BoxData[
-  FormBox[
-   RowBox[{" ", 
-    SuperscriptBox["f", 
-     RowBox[{"a", " ", "b1", " ", "c1"}]]}], TraditionalForm]]],
- ". FieldStrength[\[Mu], \[Nu]] is the field strength tensor ",
- Cell[BoxData[
-  FormBox[
+    SubscriptBox["\[PartialD]", "\[Mu]"], 
+    SubsuperscriptBox["A", "\[Nu]", "a"]}], " ", "-", " ", 
    RowBox[{
-    RowBox[{
-     SubscriptBox["\[PartialD]", "\[Mu]"], 
-     SubsuperscriptBox["A", "\[Nu]", "\[Null]"]}], "-", 
-    RowBox[{
-     RowBox[{
-      SubscriptBox["\[PartialD]", "\[Nu]"], 
-      SubsuperscriptBox["A", "\[Mu]", "\[Null]"]}], "."}]}], 
-   TraditionalForm]]],
- " The name of the field (A) and the coupling constant (g) can be set through \
-the options or by additional arguments. The first two indices are interpreted \
-as type LorentzIndex, except OPEDelta, which is converted to \
-Momentum[OPEDelta]."
+    SubscriptBox["\[PartialD]", "\[Nu]"], 
+    SubsuperscriptBox["A", "\[Mu]", "a"]}], " ", "+", " ", 
+   RowBox[{
+    SubscriptBox["g", "s"], 
+    SubsuperscriptBox["A", "\[Mu]", "b"], 
+    SubsuperscriptBox["A", "\[Nu]", "c"], " ", 
+    SuperscriptBox["f", "abc"]}]}]], "InlineFormula"],
+ ".\n",
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{"FieldStrength", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]], "InlineFormula"],
+ " \[LineSeparator]is the field strength tensor ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{Cell[TextData[Cell[BoxData[
+     FormBox[
+      RowBox[{
+       RowBox[{
+        SubscriptBox["\[PartialD]", "\[Mu]"], 
+        SubscriptBox["A", "\[Nu]"]}], "-", 
+       RowBox[{
+        SubscriptBox["\[PartialD]", "\[Nu]"], 
+        SubscriptBox["A", "\[Mu]"]}]}], TraditionalForm]], "InlineFormula"]], 
+     "InlineFormula"], "."}], TraditionalForm]]]
 }], "Usage",
- CellID->982511436],
+ CellID->2010081510],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[TextData[{
+ "The name of the field (",
+ Cell[BoxData["A"], "InlineFormula"],
+ ") and the coupling constant (",
+ Cell[BoxData["g"], "InlineFormula"],
+ ") can be set through the options or by additional arguments. "
+}], "Notes"],
+
+Cell[TextData[{
+ "The first two indices are interpreted as type ",
+ ButtonBox["LorentzIndex",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/LorentzIndex",
+  ButtonNote->"LorentzIndex"],
+ ", except ",
+ ButtonBox["OPEDelta",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/OPEDelta",
+  ButtonNote->"OPEDelta"],
+ ", which is converted to ",
+ Cell[BoxData[
+  RowBox[{"Momentum", "[", "OPEDelta", "]"}]], "InlineFormula"],
+ "."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "FieldStrength", "]"}]], "Input",
+ CellTags->"FieldStrength",
+ CellLabel->"In[196]:=",
+ CellID->1871937792],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"CouplingConstant", "\[Rule]", 
+     SubscriptBox["g", "s"]}], ",", 
+    RowBox[{"Explicit", "\[Rule]", "False"}], ",", 
+    RowBox[{"IndexPosition", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}]}], ",", 
+    RowBox[{"Symbol", "\[Rule]", "\<\"F\"\>"}], ",", 
+    RowBox[{"QuantumField", "\[Rule]", "A"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"FieldStrength",
+ CellLabel->"Out[196]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -195,15 +238,10 @@ Cell[CellGroupData[{
 Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
-Cell[TextData[{
- ButtonBox["QuantumField",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/QuantumField",
-  ButtonNote->"QuantumField"],
- "."
-}], "Text",
- CellTags->"FieldStrength",
- CellID->830418848]
+Cell[TextData[ButtonBox["QuantumField",
+ BaseStyle->"Link",
+ ButtonData:>"paclet:FeynCalc/ref/QuantumField",
+ ButtonNote->"QuantumField"]], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -233,36 +271,10 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "FieldStrength", "]"}]], "Input",
- CellTags->"FieldStrength",
- CellLabel->"In[1]:=",
- CellID->1871937792],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"CouplingConstant", "\[Rule]", 
-     SubscriptBox["g", "s"]}], ",", 
-    RowBox[{"Explicit", "\[Rule]", "False"}], ",", 
-    RowBox[{"IndexPosition", "\[Rule]", 
-     RowBox[{"{", 
-      RowBox[{"0", ",", "0"}], "}"}]}], ",", 
-    RowBox[{"Symbol", "\[Rule]", "\<\"F\"\>"}], ",", 
-    RowBox[{"QuantumField", "\[Rule]", "A"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"FieldStrength",
- CellLabel->"Out[1]=",
- CellID->1632479646]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"FieldStrength", "[", 
   RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]], "Input",
  CellTags->"FieldStrength",
- CellLabel->"In[2]:=",
+ CellLabel->"In[197]:=",
  CellID->302696897],
 
 Cell[BoxData[
@@ -274,8 +286,7 @@ Cell[BoxData[
     FormBox["\[Nu]",
      TraditionalForm]}], "\[Null]"], TraditionalForm]], "Output",
  CellTags->"FieldStrength",
- CellLabel->"Out[2]=",
- CellID->1654266361]
+ CellLabel->"Out[197]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -284,7 +295,7 @@ Cell[BoxData[
  RowBox[{"FieldStrength", "[", 
   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "a"}], "]"}]], "Input",
  CellTags->"FieldStrength",
- CellLabel->"In[3]:=",
+ CellLabel->"In[198]:=",
  CellID->1691553307],
 
 Cell[BoxData[
@@ -298,8 +309,7 @@ Cell[BoxData[
    FormBox["a",
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"FieldStrength",
- CellLabel->"Out[3]=",
- CellID->1099758759]
+ CellLabel->"Out[198]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -309,41 +319,42 @@ Cell[BoxData[
   RowBox[{"\[Mu]", ",", "\[Nu]", ",", 
    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"FieldStrength",
- CellLabel->"In[4]:=",
+ CellLabel->"In[199]:=",
  CellID->278939746],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
    RowBox[{
-    SubscriptBox["\[PartialD]", 
+    SubscriptBox[
+     RowBox[{"(", "\[PartialD]"}], 
      FormBox[
       FormBox["\[Mu]",
        TraditionalForm],
       TraditionalForm]], 
-    SubsuperscriptBox[
+    SubscriptBox[
      FormBox["A",
       TraditionalForm], 
      FormBox[
       FormBox["\[Nu]",
        TraditionalForm],
-      TraditionalForm], "\[Null]"]}], "-", 
+      TraditionalForm]], ")"}], "-", 
    RowBox[{
-    SubscriptBox["\[PartialD]", 
+    SubscriptBox[
+     RowBox[{"(", "\[PartialD]"}], 
      FormBox[
       FormBox["\[Nu]",
        TraditionalForm],
       TraditionalForm]], 
-    SubsuperscriptBox[
+    SubscriptBox[
      FormBox["A",
       TraditionalForm], 
      FormBox[
       FormBox["\[Mu]",
        TraditionalForm],
-      TraditionalForm], "\[Null]"]}]}], TraditionalForm]], "Output",
+      TraditionalForm]], ")"}]}], TraditionalForm]], "Output",
  CellTags->"FieldStrength",
- CellLabel->"Out[4]=",
- CellID->1642105709]
+ CellLabel->"Out[199]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -353,7 +364,7 @@ Cell[BoxData[
   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "a", ",", 
    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"FieldStrength",
- CellLabel->"In[5]:=",
+ CellLabel->"In[200]:=",
  CellID->474892601],
 
 Cell[BoxData[
@@ -365,9 +376,9 @@ Cell[BoxData[
      RowBox[{
       FormBox["a",
        TraditionalForm], 
-      FormBox["b663",
+      FormBox["b849",
        TraditionalForm], 
-      FormBox["c664",
+      FormBox["c850",
        TraditionalForm]}]], " ", 
     RowBox[{
      SubsuperscriptBox[
@@ -378,7 +389,7 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm], 
       FormBox[
-       FormBox["b663",
+       FormBox["b849",
         TraditionalForm],
        TraditionalForm]], ".", 
      SubsuperscriptBox[
@@ -389,11 +400,12 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm], 
       FormBox[
-       FormBox["c664",
+       FormBox["c850",
         TraditionalForm],
        TraditionalForm]]}]}], "+", 
    RowBox[{
-    SubscriptBox["\[PartialD]", 
+    SubscriptBox[
+     RowBox[{"(", "\[PartialD]"}], 
      FormBox[
       FormBox["\[Mu]",
        TraditionalForm],
@@ -408,9 +420,10 @@ Cell[BoxData[
      FormBox[
       FormBox["a",
        TraditionalForm],
-      TraditionalForm]]}], "-", 
+      TraditionalForm]], ")"}], "-", 
    RowBox[{
-    SubscriptBox["\[PartialD]", 
+    SubscriptBox[
+     RowBox[{"(", "\[PartialD]"}], 
      FormBox[
       FormBox["\[Nu]",
        TraditionalForm],
@@ -425,70 +438,9 @@ Cell[BoxData[
      FormBox[
       FormBox["a",
        TraditionalForm],
-      TraditionalForm]]}]}], TraditionalForm]], "Output",
+      TraditionalForm]], ")"}]}], TraditionalForm]], "Output",
  CellTags->"FieldStrength",
- CellLabel->"Out[5]=",
- CellID->409660918]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"StandardForm", "[", 
-  RowBox[{"FieldStrength", "[", 
-   RowBox[{"\[Mu]", ",", "\[Nu]", ",", 
-    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}], "]"}]], "Input",
- CellTags->"FieldStrength",
- CellLabel->"In[6]:=",
- CellID->2102395759],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"QuantumField", "[", 
-   RowBox[{
-    RowBox[{"FCPartialD", "[", 
-     RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], "]"}], ",", "GaugeField", 
-    ",", 
-    RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}]}], "]"}], "-", 
-  RowBox[{"QuantumField", "[", 
-   RowBox[{
-    RowBox[{"FCPartialD", "[", 
-     RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}], "]"}], ",", "GaugeField", 
-    ",", 
-    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}]}], "]"}]}]], "Output",
- CellTags->"FieldStrength",
- CellLabel->"Out[6]//StandardForm=",
- CellID->66342321]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"StandardForm", "[", 
-  RowBox[{"FieldStrength", "[", 
-   RowBox[{"\[Mu]", ",", "OPEDelta", ",", 
-    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}], "]"}]], "Input",
- CellTags->"FieldStrength",
- CellLabel->"In[7]:=",
- CellID->481183730],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"QuantumField", "[", 
-   RowBox[{
-    RowBox[{"FCPartialD", "[", 
-     RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], "]"}], ",", "GaugeField", 
-    ",", 
-    RowBox[{"Momentum", "[", "OPEDelta", "]"}]}], "]"}], "-", 
-  RowBox[{"QuantumField", "[", 
-   RowBox[{
-    RowBox[{"FCPartialD", "[", 
-     RowBox[{"Momentum", "[", "OPEDelta", "]"}], "]"}], ",", "GaugeField", 
-    ",", 
-    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}]}], "]"}]}]], "Output",
- CellTags->"FieldStrength",
- CellLabel->"Out[7]//StandardForm=",
- CellID->1631615995]
+ CellLabel->"Out[200]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -497,10 +449,11 @@ Cell[BoxData[
  RowBox[{"FieldStrength", "[", 
   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "a", ",", 
    RowBox[{"CouplingConstant", "\[Rule]", 
-    RowBox[{"-", "Gstrong"}]}], ",", 
+    RowBox[{"-", 
+     RowBox[{"SMP", "[", "\"\<g_s\>\"", "]"}]}]}], ",", 
    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"FieldStrength",
- CellLabel->"In[8]:=",
+ CellLabel->"In[202]:=",
  CellID->1847448290],
 
 Cell[BoxData[
@@ -513,9 +466,9 @@ Cell[BoxData[
       RowBox[{
        FormBox["a",
         TraditionalForm], 
-       FormBox["b665",
+       FormBox["b853",
         TraditionalForm], 
-       FormBox["c666",
+       FormBox["c854",
         TraditionalForm]}]], " ", 
      RowBox[{
       SubsuperscriptBox[
@@ -526,7 +479,7 @@ Cell[BoxData[
          TraditionalForm],
         TraditionalForm], 
        FormBox[
-        FormBox["b665",
+        FormBox["b853",
          TraditionalForm],
         TraditionalForm]], ".", 
       SubsuperscriptBox[
@@ -537,11 +490,12 @@ Cell[BoxData[
          TraditionalForm],
         TraditionalForm], 
        FormBox[
-        FormBox["c666",
+        FormBox["c854",
          TraditionalForm],
         TraditionalForm]]}]}]}], "+", 
    RowBox[{
-    SubscriptBox["\[PartialD]", 
+    SubscriptBox[
+     RowBox[{"(", "\[PartialD]"}], 
      FormBox[
       FormBox["\[Mu]",
        TraditionalForm],
@@ -556,9 +510,10 @@ Cell[BoxData[
      FormBox[
       FormBox["a",
        TraditionalForm],
-      TraditionalForm]]}], "-", 
+      TraditionalForm]], ")"}], "-", 
    RowBox[{
-    SubscriptBox["\[PartialD]", 
+    SubscriptBox[
+     RowBox[{"(", "\[PartialD]"}], 
      FormBox[
       FormBox["\[Nu]",
        TraditionalForm],
@@ -573,10 +528,9 @@ Cell[BoxData[
      FormBox[
       FormBox["a",
        TraditionalForm],
-      TraditionalForm]]}]}], TraditionalForm]], "Output",
+      TraditionalForm]], ")"}]}], TraditionalForm]], "Output",
  CellTags->"FieldStrength",
- CellLabel->"Out[8]=",
- CellID->865013743]
+ CellLabel->"Out[202]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -640,13 +594,15 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{700, 769},
+WindowMargins->{{1113, Automatic}, {235, Automatic}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

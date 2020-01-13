@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Gluon ghost vertex												*)
@@ -21,9 +21,11 @@ GGV::usage =
 
 GluonGhostVertex::usage =
 "GluonGhostVertex[{p,mu,a}, {q,nu,b}, {k,rho,c}] or \
-GluonGhostVertex[ p,mu,a , q,nu,b , k,rho,c ] yields" <> ToString[
-Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/GluonGhostVertex"],
-StandardForm]
+GluonGhostVertex[ p,mu,a , q,nu,b , k,rho,c ] yields the gluon-ghost-vertex. \
+The first argument represents the gluon and the third argument the outgoing \
+ghost field (but incoming 4-momentum). \n
+The dimension and the name of the coupling constant are determined by the \
+options Dimension and CouplingConstant."
 
 (* ------------------------------------------------------------------------ *)
 
@@ -38,15 +40,9 @@ Options[GluonGhostVertex] = {
 	Explicit -> False
 };
 
-{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
-
-
 GluonGhostVertex[{_, ai_}, {bi_}, {ki_, ci_}, opt:OptionsPattern[]] :=
 	GluonGhostVertex[{FCGV["x"], FCGV["y"], ai}, {FCGV["z"],FCGV["h"],bi},
 	{ki,FCGV["l"],ci}, opt] /; OptionValue[Explicit];
-
-GluonGhostVertex[x___, i_Integer, y___] :=
-	GluonGhostVertex[x, l[i], c[i], y];
 
 GGV = GluonGhostVertex;
 

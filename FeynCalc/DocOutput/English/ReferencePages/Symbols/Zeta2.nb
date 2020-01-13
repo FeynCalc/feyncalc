@@ -3,69 +3,91 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9499,        335]
-NotebookOptionsPosition[      5736,        212]
-NotebookOutlinePosition[      8371,        290]
-CellTagsIndexPosition[      8264,        284]
+NotebookDataLength[     10709,        376]
+NotebookOptionsPosition[      6972,        255]
+NotebookOutlinePosition[      9524,        330]
+CellTagsIndexPosition[      9417,        324]
 WindowTitle->Zeta2
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/Zeta2\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/Zeta2"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/Zeta2.\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"SimplifyPolyLog\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/SimplifyPolyLog"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/Zeta2\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/Zeta2"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/Zeta2.\
 html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$166437], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], "FeynCalc/ref/Zeta2", 
-            ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$288353], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], "FeynCalc/ref/Zeta2",
+              ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,14 +95,23 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Zeta2", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Zeta2", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData["Zeta2"], "InlineFormula"],
-     " \[LineSeparator]",
-     "denotes Zeta[2]. N[Zeta[2]] evaluates to N[Zeta[2]]."
+     " \[LineSeparator]denotes Zeta[2]."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -106,7 +137,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->795404074],
+ CellID->832889734],
 
 Cell[CellGroupData[{
 
@@ -116,7 +147,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1631755319],
+ CellID->829028169],
 
 Cell[CellGroupData[{
 
@@ -128,7 +159,7 @@ Cell[BoxData["Zeta2"], "Input",
 Cell[BoxData[
  FormBox[
   RowBox[{"\[Zeta]", "(", "2", ")"}], TraditionalForm]], "Output",
- ImageSize->{35, 15},
+ ImageSize->{34, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Zeta2",
@@ -146,7 +177,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["1.6449340668482262`", TraditionalForm]], "Output",
- ImageSize->{50, 15},
+ ImageSize->{49, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Zeta2",
@@ -167,12 +198,27 @@ Cell[BoxData[
  FormBox[
   RowBox[{"6", " ", 
    RowBox[{"\[Zeta]", "(", "2", ")"}]}], TraditionalForm]], "Output",
- ImageSize->{45, 15},
+ ImageSize->{46, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Zeta2",
  CellLabel->"Out[3]=",
  CellID->494970297]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Conjugate", "[", "Zeta2", "]"}]], "Input",
+ CellLabel->"In[4]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"\[Zeta]", "(", "2", ")"}], TraditionalForm]], "Output",
+ ImageSize->{34, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[4]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -196,16 +242,13 @@ Cell[TextData[{
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  StyleBox[ButtonBox["SimplifyPolyLog",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/SimplifyPolyLog",
   ButtonNote->"SimplifyPolyLog"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"Zeta2",
- CellID->798811969]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -222,21 +265,20 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 26, 55.920962}", 
+   "built" -> "{2020, 1, 5, 19, 4, 6.489791}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
-    "None", "summary" -> 
-    "Zeta2 denotes Zeta[2]. N[Zeta[2]] evaluates to N[Zeta[2]].", 
-    "synonyms" -> {}, "title" -> "Zeta2", "titlemodifier" -> "", 
+    "None", "summary" -> "Zeta2 denotes Zeta[2].", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "Zeta2", "titlemodifier" -> "", 
     "windowtitle" -> "Zeta2", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/Zeta2"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -244,8 +286,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 29}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -254,89 +297,87 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3249, 93, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4209, 124, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->795404074]},
+   CellID->832889734]},
  "Zeta2"->{
-  Cell[3882, 122, 95, 3, 27, "Input",
+  Cell[4841, 153, 95, 3, 27, "Input",
    CellTags->"Zeta2",
    CellID->1322156795],
-  Cell[3980, 127, 241, 8, 36, "Output",
+  Cell[4939, 158, 241, 8, 37, "Output",
    CellTags->"Zeta2",
    CellID->1170410673],
-  Cell[4258, 140, 122, 4, 27, "Input",
+  Cell[5217, 171, 122, 4, 27, "Input",
    CellTags->"Zeta2",
    CellID->1445114635],
-  Cell[4383, 146, 224, 7, 36, "Output",
+  Cell[5342, 177, 224, 7, 35, "Output",
    CellTags->"Zeta2",
    CellID->829124917],
-  Cell[4644, 158, 155, 5, 27, "Input",
+  Cell[5603, 189, 155, 5, 27, "Input",
    CellTags->"Zeta2",
    CellID->312992098],
-  Cell[4802, 165, 264, 9, 36, "Output",
+  Cell[5761, 196, 264, 9, 37, "Output",
    CellTags->"Zeta2",
-   CellID->494970297],
-  Cell[5434, 197, 260, 10, 32, "Text",
-   CellTags->"Zeta2",
-   CellID->798811969]}
+   CellID->494970297]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7516, 255},
- {"Zeta2", 7647, 259}
+ {"PrimaryExamplesSection", 8752, 298},
+ {"Zeta2", 8884, 302}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[577, 21, 2233, 52, 51, "AnchorBarGrid",
+Cell[577, 21, 3004, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2813, 75, 48, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2864, 78, 360, 11, 83, "Usage",
+Cell[3584, 97, 282, 11, 45, "ObjectNameGrid"],
+Cell[3869, 110, 315, 10, 84, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3249, 93, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4209, 124, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->795404074],
+ CellID->832889734],
 Cell[CellGroupData[{
-Cell[3661, 112, 196, 6, 25, "ExampleSection",
- CellID->1631755319],
+Cell[4621, 143, 195, 6, 26, "ExampleSection",
+ CellID->829028169],
 Cell[CellGroupData[{
-Cell[3882, 122, 95, 3, 27, "Input",
+Cell[4841, 153, 95, 3, 27, "Input",
  CellTags->"Zeta2",
  CellID->1322156795],
-Cell[3980, 127, 241, 8, 36, "Output",
+Cell[4939, 158, 241, 8, 37, "Output",
  CellTags->"Zeta2",
  CellID->1170410673]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4258, 140, 122, 4, 27, "Input",
+Cell[5217, 171, 122, 4, 27, "Input",
  CellTags->"Zeta2",
  CellID->1445114635],
-Cell[4383, 146, 224, 7, 36, "Output",
+Cell[5342, 177, 224, 7, 35, "Output",
  CellTags->"Zeta2",
  CellID->829124917]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4644, 158, 155, 5, 27, "Input",
+Cell[5603, 189, 155, 5, 27, "Input",
  CellTags->"Zeta2",
  CellID->312992098],
-Cell[4802, 165, 264, 9, 36, "Output",
+Cell[5761, 196, 264, 9, 37, "Output",
  CellTags->"Zeta2",
  CellID->494970297]
-}, Open  ]]
-}, Open  ]],
-Cell[5093, 178, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5161, 183, 270, 12, 31, "SeeAlsoSection",
- CellID->1255426704],
-Cell[5434, 197, 260, 10, 32, "Text",
- CellTags->"Zeta2",
- CellID->798811969]
+Cell[6062, 210, 89, 2, 27, "Input"],
+Cell[6154, 214, 200, 6, 37, "Output"]
+}, Open  ]]
 }, Open  ]],
-Cell[5709, 210, 23, 0, 42, "FooterCell"]
+Cell[6381, 224, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6449, 229, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[6722, 243, 208, 7, 56, "SeeAlso"]
+}, Open  ]],
+Cell[6945, 253, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

@@ -1,0 +1,28 @@
+(* :Title: Schouten.test														*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for Schouten					*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Lorentz`fcstSchouten = ({
+{"fcstSchouten-ID1",
+"Schouten[-FV[k,mu] LC[][q[1],q[2],q[3],q[4]]-SP[k,q[4]] \
+LC[mu][q[1],q[2],q[3]]+SP[k,q[3]] LC[mu][q[1],q[2],q[4]]-SP[k,q[2]] \
+LC[mu][q[1],q[3],q[4]]+SP[k,q[1]] LC[mu][q[2],q[3],q[4]]]", "0"},
+{"fcstSchouten-ID2",
+"Schouten[8 \[ImaginaryI] (-LC[b,c,d,f] MT[a,e]+LC[b,c,d,e] \
+MT[a,f]+LC[a,c,d,f] MT[b,e]-LC[a,c,d,e] MT[b,f]-LC[a,b,d,f] \
+MT[c,e]+LC[a,b,d,e] MT[c,f]+LC[a,b,c,f] MT[d,e]-LC[a,b,c,e] \
+MT[d,f])]", "0"},
+{"fcstSchouten-ID3",
+"Schouten[(-32*I)*(MT[b,c]*LC[a][k,p,y]-MT[a,c]*LC[b][k,p,y]+FV[p,\
+c]*LC[a,b][k,y]-FV[k,c]*LC[a,b][p,y]-FV[y,b]*LC[a,c][k,p]+FV[y,a]*LC[\
+b,c][k,p]+SP[p,y]*LC[a,b,c][k]-SP[k,y]*LC[a,b,c][p])]", "0"}
+});

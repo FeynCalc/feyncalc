@@ -3,69 +3,92 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13735,        479]
-NotebookOptionsPosition[      8452,        315]
-NotebookOutlinePosition[     11892,        412]
-CellTagsIndexPosition[     11770,        406]
+NotebookDataLength[     14328,        490]
+NotebookOptionsPosition[      9375,        341]
+NotebookOutlinePosition[     12651,        431]
+CellTagsIndexPosition[     12529,        425]
 WindowTitle->CommutatorExplicit
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/CommutatorExplicit\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/CommutatorExplicit"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Calc\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Calc"], "\<\"DotSimplify\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/DotSimplify"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/CommutatorExplicit\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/CommutatorExplicit"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 CommutatorExplicit.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$29359], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/CommutatorExplicit", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$43708], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/CommutatorExplicit", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +96,18 @@ CommutatorExplicit.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["CommutatorExplicit", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["CommutatorExplicit", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -108,7 +141,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->214790583],
+ CellID->888736535],
 
 Cell[CellGroupData[{
 
@@ -118,7 +151,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->319865647],
+ CellID->1117516388],
 
 Cell[BoxData[
  RowBox[{"DeclareNonCommutative", "[", 
@@ -143,12 +176,11 @@ Cell[BoxData[
     TraditionalForm], "\[NoBreak]", ",", 
    FormBox["b",
     TraditionalForm], "\[NoBreak]", "]"}], TraditionalForm]], "Output",
- ImageSize->{41, 15},
+ ImageSize->{46, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"CommutatorExplicit",
- CellLabel->"Out[2]=",
- CellID->1736741048]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -164,12 +196,11 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"a", ".", "b"}], "-", 
    RowBox[{"b", ".", "a"}]}], TraditionalForm]], "Output",
- ImageSize->{63, 15},
+ ImageSize->{74, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"CommutatorExplicit",
- CellLabel->"Out[3]=",
- CellID->1538616356]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -200,12 +231,11 @@ Cell[BoxData[
     TraditionalForm], 
    FormBox["\<\"}\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{105, 15},
+ ImageSize->{115, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"CommutatorExplicit",
- CellLabel->"Out[4]=",
- CellID->945514452]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -229,12 +259,11 @@ Cell[BoxData[
      RowBox[{"b", "-", "d"}], ")"}], ".", 
     RowBox[{"(", 
      RowBox[{"a", "-", "c"}], ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{207, 15},
+ ImageSize->{230, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"CommutatorExplicit",
- CellLabel->"Out[5]=",
- CellID->272209917]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -258,12 +287,11 @@ Cell[BoxData[
    RowBox[{"c", ".", "b"}], "+", 
    RowBox[{"c", ".", "d"}], "+", 
    RowBox[{"d", ".", "c"}]}], TraditionalForm]], "Output",
- ImageSize->{285, 15},
+ ImageSize->{332, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"CommutatorExplicit",
- CellLabel->"Out[6]=",
- CellID->1425635977]
+ CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell[BoxData[
@@ -306,17 +334,15 @@ Cell[TextData[{
   ButtonNote->"DotSimplify"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"CommutatorExplicit",
- CellID->763111899]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{808, 911},
+WindowMargins->{{278, Automatic}, {Automatic, 28}},
 WindowTitle->"CommutatorExplicit",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -325,22 +351,22 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 17, 4.876060}", 
+   "built" -> "{2020, 1, 5, 18, 53, 32.437053}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
     "CommutatorExplicit[exp] substitutes any Commutator and AntiCommutator in \
-exp by their definitions.", "synonyms" -> {}, "title" -> "CommutatorExplicit",
-     "titlemodifier" -> "", "windowtitle" -> "CommutatorExplicit", "type" -> 
-    "Symbol", "uri" -> "FeynCalc/ref/CommutatorExplicit"}, 
-  "SearchTextTranslated" -> ""},
+exp by their definitions.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "CommutatorExplicit", "titlemodifier" -> "", "windowtitle" -> 
+    "CommutatorExplicit", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/CommutatorExplicit"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -348,8 +374,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -358,129 +385,113 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3398, 95, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4473, 128, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->214790583]},
+   CellID->888736535]},
  "CommutatorExplicit"->{
-  Cell[4008, 122, 193, 5, 27, "Input",
+  Cell[5084, 155, 193, 5, 27, "Input",
    CellTags->"CommutatorExplicit",
    CellID->596826267],
-  Cell[4226, 131, 163, 5, 27, "Input",
+  Cell[5302, 164, 163, 5, 27, "Input",
    CellTags->"CommutatorExplicit",
    CellID->1546400369],
-  Cell[4392, 138, 363, 12, 36, "Output",
-   CellTags->"CommutatorExplicit",
-   CellID->1736741048],
-  Cell[4792, 155, 148, 4, 27, "Input",
+  Cell[5468, 171, 342, 11, 35, "Output",
+   CellTags->"CommutatorExplicit"],
+  Cell[5847, 187, 148, 4, 27, "Input",
    CellTags->"CommutatorExplicit",
    CellID->1022077689],
-  Cell[4943, 161, 291, 10, 36, "Output",
-   CellTags->"CommutatorExplicit",
-   CellID->1538616356],
-  Cell[5271, 176, 215, 7, 27, "Input",
+  Cell[5998, 193, 270, 9, 35, "Output",
+   CellTags->"CommutatorExplicit"],
+  Cell[6305, 207, 215, 7, 27, "Input",
    CellTags->"CommutatorExplicit",
    CellID->1564234454],
-  Cell[5489, 185, 557, 22, 36, "Output",
-   CellTags->"CommutatorExplicit",
-   CellID->945514452],
-  Cell[6083, 212, 147, 4, 27, "Input",
+  Cell[6523, 216, 537, 21, 35, "Output",
+   CellTags->"CommutatorExplicit"],
+  Cell[7097, 242, 147, 4, 27, "Input",
    CellTags->"CommutatorExplicit",
    CellID->631256546],
-  Cell[6233, 218, 495, 18, 36, "Output",
-   CellTags->"CommutatorExplicit",
-   CellID->272209917],
-  Cell[6765, 241, 186, 6, 27, "Input",
+  Cell[7247, 248, 475, 17, 37, "Output",
+   CellTags->"CommutatorExplicit"],
+  Cell[7759, 270, 186, 6, 27, "Input",
    CellTags->"CommutatorExplicit",
    CellID->1843011592],
-  Cell[6954, 249, 496, 16, 36, "Output",
+  Cell[7948, 278, 475, 15, 35, "Output",
+   CellTags->"CommutatorExplicit"],
+  Cell[8438, 296, 196, 5, 27, "Input",
    CellTags->"CommutatorExplicit",
-   CellID->1425635977],
-  Cell[7465, 268, 196, 5, 27, "Input",
-   CellTags->"CommutatorExplicit",
-   CellID->1614014702],
-  Cell[8017, 295, 393, 15, 70, "Text",
-   CellTags->"CommutatorExplicit",
-   CellID->763111899]}
+   CellID->1614014702]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10323, 359},
- {"CommutatorExplicit", 10467, 363}
+ {"PrimaryExamplesSection", 11292, 386},
+ {"CommutatorExplicit", 11437, 390}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[590, 21, 2285, 52, 51, "AnchorBarGrid",
+Cell[590, 21, 3126, 75, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2878, 75, 61, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2942, 78, 431, 13, 82, "Usage",
+Cell[3719, 98, 295, 11, 45, "ObjectNameGrid"],
+Cell[4017, 111, 431, 13, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3398, 95, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4473, 128, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->214790583],
+ CellID->888736535],
 Cell[CellGroupData[{
-Cell[3810, 114, 195, 6, 25, "ExampleSection",
- CellID->319865647],
-Cell[4008, 122, 193, 5, 27, "Input",
+Cell[4885, 147, 196, 6, 26, "ExampleSection",
+ CellID->1117516388],
+Cell[5084, 155, 193, 5, 27, "Input",
  CellTags->"CommutatorExplicit",
  CellID->596826267],
 Cell[CellGroupData[{
-Cell[4226, 131, 163, 5, 27, "Input",
+Cell[5302, 164, 163, 5, 27, "Input",
  CellTags->"CommutatorExplicit",
  CellID->1546400369],
-Cell[4392, 138, 363, 12, 36, "Output",
- CellTags->"CommutatorExplicit",
- CellID->1736741048]
+Cell[5468, 171, 342, 11, 35, "Output",
+ CellTags->"CommutatorExplicit"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4792, 155, 148, 4, 27, "Input",
+Cell[5847, 187, 148, 4, 27, "Input",
  CellTags->"CommutatorExplicit",
  CellID->1022077689],
-Cell[4943, 161, 291, 10, 36, "Output",
- CellTags->"CommutatorExplicit",
- CellID->1538616356]
+Cell[5998, 193, 270, 9, 35, "Output",
+ CellTags->"CommutatorExplicit"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5271, 176, 215, 7, 27, "Input",
+Cell[6305, 207, 215, 7, 27, "Input",
  CellTags->"CommutatorExplicit",
  CellID->1564234454],
-Cell[5489, 185, 557, 22, 36, "Output",
- CellTags->"CommutatorExplicit",
- CellID->945514452]
+Cell[6523, 216, 537, 21, 35, "Output",
+ CellTags->"CommutatorExplicit"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6083, 212, 147, 4, 27, "Input",
+Cell[7097, 242, 147, 4, 27, "Input",
  CellTags->"CommutatorExplicit",
  CellID->631256546],
-Cell[6233, 218, 495, 18, 36, "Output",
- CellTags->"CommutatorExplicit",
- CellID->272209917]
+Cell[7247, 248, 475, 17, 37, "Output",
+ CellTags->"CommutatorExplicit"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6765, 241, 186, 6, 27, "Input",
+Cell[7759, 270, 186, 6, 27, "Input",
  CellTags->"CommutatorExplicit",
  CellID->1843011592],
-Cell[6954, 249, 496, 16, 36, "Output",
- CellTags->"CommutatorExplicit",
- CellID->1425635977]
+Cell[7948, 278, 475, 15, 35, "Output",
+ CellTags->"CommutatorExplicit"]
 }, Open  ]],
-Cell[7465, 268, 196, 5, 27, "Input",
+Cell[8438, 296, 196, 5, 27, "Input",
  CellTags->"CommutatorExplicit",
  CellID->1614014702]
 }, Open  ]],
-Cell[7676, 276, 31, 0, 29, "SectionFooterSpacer"]
+Cell[8649, 304, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7744, 281, 270, 12, 31, "SeeAlsoSection",
+Cell[8717, 309, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[8017, 295, 393, 15, 70, "Text",
- CellTags->"CommutatorExplicit",
- CellID->763111899]
+Cell[8990, 323, 343, 13, 70, "SeeAlso"]
 }, Open  ]],
-Cell[8425, 313, 23, 0, 70, "FooterCell"]
+Cell[9348, 339, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

@@ -3,69 +3,91 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     18947,        666]
-NotebookOptionsPosition[     13296,        487]
-NotebookOutlinePosition[     16873,        589]
-CellTagsIndexPosition[     16753,        583]
+NotebookDataLength[     22723,        814]
+NotebookOptionsPosition[     16914,        632]
+NotebookOutlinePosition[     20122,        721]
+CellTagsIndexPosition[     20002,        715]
 WindowTitle->QuarkGluonVertex
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/QuarkGluonVertex\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/QuarkGluonVertex"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"GluonVertex\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/GluonVertex"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/QuarkGluonVertex\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/QuarkGluonVertex"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 QuarkGluonVertex.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$125795], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/QuarkGluonVertex", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$219172], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/QuarkGluonVertex", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,14 +95,26 @@ QuarkGluonVertex.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["QuarkGluonVertex", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["QuarkGluonVertex", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"QuarkGluonVertex", "[", 
-       RowBox[{"mu", ",", " ", "a"}], "]"}]], "InlineFormula"],
+       RowBox[{"\[Mu]", ",", " ", "a"}], "]"}]], "InlineFormula"],
      " \[LineSeparator]",
      "gives the Feynman rule for the quark-gluon vertex. "
     }]]}
@@ -90,6 +124,89 @@ Cell[BoxData[GridBox[{
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}},
  CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1086406271],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[TextData[{
+ Cell[BoxData["QGV"], "InlineFormula"],
+ " can be used as an abbreviation of ",
+ ButtonBox["QuarkGluonVertex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/QuarkGluonVertex",
+  ButtonNote->"QuarkGluonVertex"],
+ "."
+}], "Notes",
+ CellID->1067943069],
+
+Cell[TextData[{
+ "The dimension and the name of the coupling constant are determined by the \
+options ",
+ ButtonBox["Dimension",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Dimension",
+  ButtonNote->"Dimension"],
+ " and ",
+ ButtonBox["CouplingConstant",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CouplingConstant",
+  ButtonNote->"CouplingConstant"],
+ ". "
+}], "Notes",
+ CellID->14058075],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "QuarkGluonVertex", "]"}]], "Input",
+ CellLabel->"In[38]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"CounterTerm", "\[Rule]", "False"}], ",", 
+    RowBox[{"CouplingConstant", "\[Rule]", 
+     SubscriptBox["g", "s"]}], ",", 
+    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
+    RowBox[{"Explicit", "\[Rule]", "False"}], ",", 
+    RowBox[{"\[CapitalOmega]", "\[Rule]", "False"}], ",", 
+    RowBox[{"Polarization", "\[Rule]", "0"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{396, 35},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[38]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -104,49 +221,21 @@ Cell[TextData[{
    Spacer[6]]]],
  "Examples",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
+ Cell["(4)", "ExampleCount"]
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1902982783],
+ CellID->1807272232],
 
 Cell[CellGroupData[{
 
 Cell[TextData[{
  "Basic Examples",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
+ Cell["(4)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->894471574],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "QuarkGluonVertex", "]"}]], "Input",
- CellTags->"QuarkGluonVertex",
- CellLabel->"In[1]:=",
- CellID->1162740224],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"CounterTerm", "\[Rule]", "False"}], ",", 
-    RowBox[{"CouplingConstant", "\[Rule]", 
-     SubscriptBox["g", "s"]}], ",", 
-    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
-    RowBox[{"Explicit", "\[Rule]", "False"}], ",", 
-    RowBox[{"\[CapitalOmega]", "\[Rule]", "False"}], ",", 
-    RowBox[{"Polarization", "\[Rule]", "0"}]}], "}"}], 
-  TraditionalForm]], "Output",
- ImageSize->{420, 35},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"QuarkGluonVertex",
- CellLabel->"Out[1]=",
- CellID->1237177013]
-}, Open  ]],
+ CellID->542719504],
 
 Cell[CellGroupData[{
 
@@ -155,7 +244,7 @@ Cell[BoxData[
   RowBox[{"\[Mu]", ",", "a", ",", 
    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"QuarkGluonVertex",
- CellLabel->"In[2]:=",
+ CellLabel->"In[1]:=",
  CellID->158944719],
 
 Cell[BoxData[
@@ -173,13 +262,72 @@ Cell[BoxData[
       FormBox["\[Mu]",
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
- ImageSize->{76, 17},
+ ImageSize->{83, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"QuarkGluonVertex",
- CellLabel->"Out[2]=",
- CellID->1997015232]
+ CellLabel->"Out[1]="]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"QGV", "[", 
+  RowBox[{"\[Mu]", ",", "a"}], "]"}]], "Input",
+ CellLabel->"In[1]:="],
+
+Cell[BoxData[
+ FormBox[
+  SubsuperscriptBox["Q", 
+   FormBox["a",
+    TraditionalForm], 
+   FormBox["\[Mu]",
+    TraditionalForm]], TraditionalForm]], "Output",
+ ImageSize->{30, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Explicit", "[", "%", "]"}]], "Input",
+ CellLabel->"In[2]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"\[ImaginaryI]", " ", 
+   SubscriptBox["g", "s"], " ", 
+   RowBox[{
+    SuperscriptBox["T", 
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox["\[Gamma]", 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]]}]}], TraditionalForm]], "Output",
+ ImageSize->{83, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]="]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
 
 Cell[CellGroupData[{
 
@@ -189,7 +337,7 @@ Cell[BoxData[
    RowBox[{"CounterTerm", " ", "\[Rule]", "1"}], ",", 
    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"QuarkGluonVertex",
- CellLabel->"In[3]:=",
+ CellLabel->"In[1]:=",
  CellID->196044183],
 
 Cell[BoxData[
@@ -216,12 +364,11 @@ Cell[BoxData[
        TraditionalForm]]}]}], 
    TagBox["\[CurlyEpsilon]",
     TraditionalForm]], TraditionalForm]], "Output",
- ImageSize->{186, 55},
+ ImageSize->{206, 53},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"QuarkGluonVertex",
- CellLabel->"Out[3]=",
- CellID->1493367329]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -232,7 +379,7 @@ Cell[BoxData[
    RowBox[{"CounterTerm", " ", "\[Rule]", "2"}], ",", 
    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"QuarkGluonVertex",
- CellLabel->"In[4]:=",
+ CellLabel->"In[2]:=",
  CellID->1947570088],
 
 Cell[BoxData[
@@ -255,12 +402,11 @@ Cell[BoxData[
        TraditionalForm]]}]}], 
    TagBox["\[CurlyEpsilon]",
     TraditionalForm]], TraditionalForm]], "Output",
- ImageSize->{137, 45},
+ ImageSize->{149, 39},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"QuarkGluonVertex",
- CellLabel->"Out[4]=",
- CellID->559873087]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -271,7 +417,7 @@ Cell[BoxData[
    RowBox[{"CounterTerm", " ", "\[Rule]", "3"}], ",", 
    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"QuarkGluonVertex",
- CellLabel->"In[5]:=",
+ CellLabel->"In[3]:=",
  CellID->339282308],
 
 Cell[BoxData[
@@ -297,13 +443,19 @@ Cell[BoxData[
        TraditionalForm]]}]}], 
    TagBox["\[CurlyEpsilon]",
     TraditionalForm]], TraditionalForm]], "Output",
- ImageSize->{184, 45},
+ ImageSize->{200, 39},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"QuarkGluonVertex",
- CellLabel->"Out[5]=",
- CellID->1688386600]
+ CellLabel->"Out[3]="]
+}, Open  ]]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
 
 Cell[CellGroupData[{
 
@@ -317,26 +469,22 @@ Cell[BoxData[
    RowBox[{"OPE", "\[Rule]", "True"}], ",", 
    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"QuarkGluonVertex",
- CellLabel->"In[6]:=",
+ CellLabel->"In[1]:=",
  CellID->2017937273],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
    RowBox[{"\[CapitalOmega]", " ", 
-    FormBox[
-     SuperscriptBox[
-      FormBox[
-       FormBox["\[CapitalDelta]",
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm]],
-     TraditionalForm], " ", 
+    SuperscriptBox[
+     FormBox[
+      FormBox["\[CapitalDelta]",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]], " ", 
     SubscriptBox["g", "s"], " ", 
     RowBox[{
      RowBox[{"(", 
@@ -405,12 +553,11 @@ Cell[BoxData[
        FormBox["\[Mu]",
         TraditionalForm],
        TraditionalForm]]}]}]}], TraditionalForm]], "Output",
- ImageSize->{444, 47},
+ ImageSize->{481, 46},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"QuarkGluonVertex",
- CellLabel->"Out[6]=",
- CellID->389181480]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -425,7 +572,7 @@ Cell[BoxData[
    RowBox[{"OPE", "\[Rule]", "False"}], ",", 
    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"QuarkGluonVertex",
- CellLabel->"In[7]:=",
+ CellLabel->"In[2]:=",
  CellID->729288779],
 
 Cell[BoxData[
@@ -443,12 +590,12 @@ Cell[BoxData[
       FormBox["\[Mu]",
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
- ImageSize->{76, 17},
+ ImageSize->{83, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"QuarkGluonVertex",
- CellLabel->"Out[7]=",
- CellID->1936603618]
+ CellLabel->"Out[2]="]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -478,9 +625,7 @@ Cell[TextData[{
   ButtonNote->"GluonVertex"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"QuarkGluonVertex",
- CellID->507567203]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -488,7 +633,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"QuarkGluonVertex",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -497,21 +642,22 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 23, 57.890898}", 
+   "built" -> "{2020, 1, 5, 19, 1, 10.687084}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
-    "QuarkGluonVertex[mu, a] gives the Feynman rule for the quark-gluon \
-vertex. ", "synonyms" -> {}, "title" -> "QuarkGluonVertex", "titlemodifier" -> 
-    "", "windowtitle" -> "QuarkGluonVertex", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/QuarkGluonVertex"}, "SearchTextTranslated" -> ""},
+    "QuarkGluonVertex[\\[Mu], a] gives the Feynman rule for the quark-gluon \
+vertex. ", "synonyms" -> {}, "tabletags" -> {}, "title" -> "QuarkGluonVertex",
+     "titlemodifier" -> "", "windowtitle" -> "QuarkGluonVertex", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/QuarkGluonVertex"}, 
+  "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -519,8 +665,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -529,145 +676,146 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3392, 95, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[6615, 212, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1902982783]},
+   CellID->1807272232]},
  "QuarkGluonVertex"->{
-  Cell[4025, 124, 150, 4, 27, "Input",
-   CellTags->"QuarkGluonVertex",
-   CellID->1162740224],
-  Cell[4178, 130, 597, 17, 56, "Output",
-   CellTags->"QuarkGluonVertex",
-   CellID->1237177013],
-  Cell[4812, 152, 220, 6, 27, "Input",
+  Cell[7248, 241, 220, 6, 27, "Input",
    CellTags->"QuarkGluonVertex",
    CellID->158944719],
-  Cell[5035, 160, 529, 20, 38, "Output",
-   CellTags->"QuarkGluonVertex",
-   CellID->1997015232],
-  Cell[5601, 185, 275, 7, 27, "Input",
+  Cell[7471, 249, 508, 19, 37, "Output",
+   CellTags->"QuarkGluonVertex"],
+  Cell[9305, 333, 275, 7, 27, "Input",
    CellTags->"QuarkGluonVertex",
    CellID->196044183],
-  Cell[5879, 194, 804, 29, 76, "Output",
-   CellTags->"QuarkGluonVertex",
-   CellID->1493367329],
-  Cell[6720, 228, 276, 7, 27, "Input",
+  Cell[9583, 342, 783, 28, 74, "Output",
+   CellTags->"QuarkGluonVertex"],
+  Cell[10403, 375, 276, 7, 27, "Input",
    CellTags->"QuarkGluonVertex",
    CellID->1947570088],
-  Cell[6999, 237, 698, 25, 66, "Output",
-   CellTags->"QuarkGluonVertex",
-   CellID->559873087],
-  Cell[7734, 267, 275, 7, 27, "Input",
+  Cell[10682, 384, 678, 24, 60, "Output",
+   CellTags->"QuarkGluonVertex"],
+  Cell[11397, 413, 275, 7, 27, "Input",
    CellTags->"QuarkGluonVertex",
    CellID->339282308],
-  Cell[8012, 276, 778, 28, 66, "Output",
-   CellTags->"QuarkGluonVertex",
-   CellID->1688386600],
-  Cell[8827, 309, 383, 11, 27, "Input",
+  Cell[11675, 422, 757, 27, 60, "Output",
+   CellTags->"QuarkGluonVertex"],
+  Cell[12611, 461, 383, 11, 27, "Input",
    CellTags->"QuarkGluonVertex",
    CellID->2017937273],
-  Cell[9213, 322, 2477, 90, 68, "Output",
-   CellTags->"QuarkGluonVertex",
-   CellID->389181480],
-  Cell[11727, 417, 383, 11, 27, "Input",
+  Cell[12997, 474, 2368, 85, 67, "Output",
+   CellTags->"QuarkGluonVertex"],
+  Cell[15402, 564, 383, 11, 27, "Input",
    CellTags->"QuarkGluonVertex",
    CellID->729288779],
-  Cell[12113, 430, 529, 20, 38, "Output",
-   CellTags->"QuarkGluonVertex",
-   CellID->1936603618],
-  Cell[13010, 473, 244, 9, 31, "Text",
-   CellTags->"QuarkGluonVertex",
-   CellID->507567203]}
+  Cell[15788, 577, 508, 19, 37, "Output",
+   CellTags->"QuarkGluonVertex"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 15134, 530},
- {"QuarkGluonVertex", 15277, 534}
+ {"PrimaryExamplesSection", 18801, 677},
+ {"QuarkGluonVertex", 18945, 681}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[588, 21, 2278, 52, 51, "AnchorBarGrid",
+Cell[588, 21, 3041, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2869, 75, 59, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2931, 78, 436, 13, 82, "Usage",
+Cell[3632, 97, 293, 11, 45, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[3950, 112, 439, 13, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3392, 95, 388, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->1902982783],
+Cell[4414, 129, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1086406271],
+Cell[5156, 155, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[5190, 157, 275, 9, 70, "Notes",
+ CellID->1067943069],
+Cell[5468, 168, 413, 14, 70, "Notes",
+ CellID->14058075],
 Cell[CellGroupData[{
-Cell[3805, 114, 195, 6, 25, "ExampleSection",
- CellID->894471574],
-Cell[CellGroupData[{
-Cell[4025, 124, 150, 4, 27, "Input",
- CellTags->"QuarkGluonVertex",
- CellID->1162740224],
-Cell[4178, 130, 597, 17, 56, "Output",
- CellTags->"QuarkGluonVertex",
- CellID->1237177013]
+Cell[5906, 186, 99, 2, 70, "Input"],
+Cell[6008, 190, 546, 15, 56, "Output"]
+}, Open  ]]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4812, 152, 220, 6, 27, "Input",
+Cell[6615, 212, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1807272232],
+Cell[CellGroupData[{
+Cell[7028, 231, 195, 6, 26, "ExampleSection",
+ CellID->542719504],
+Cell[CellGroupData[{
+Cell[7248, 241, 220, 6, 27, "Input",
  CellTags->"QuarkGluonVertex",
  CellID->158944719],
-Cell[5035, 160, 529, 20, 38, "Output",
- CellTags->"QuarkGluonVertex",
- CellID->1997015232]
+Cell[7471, 249, 508, 19, 37, "Output",
+ CellTags->"QuarkGluonVertex"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5601, 185, 275, 7, 27, "Input",
- CellTags->"QuarkGluonVertex",
- CellID->196044183],
-Cell[5879, 194, 804, 29, 76, "Output",
- CellTags->"QuarkGluonVertex",
- CellID->1493367329]
+Cell[8016, 273, 105, 2, 9, "ExampleDelimiter"],
+Cell[CellGroupData[{
+Cell[8146, 279, 106, 3, 27, "Input"],
+Cell[8255, 284, 270, 10, 38, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6720, 228, 276, 7, 27, "Input",
- CellTags->"QuarkGluonVertex",
- CellID->1947570088],
-Cell[6999, 237, 698, 25, 66, "Output",
- CellTags->"QuarkGluonVertex",
- CellID->559873087]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[7734, 267, 275, 7, 27, "Input",
- CellTags->"QuarkGluonVertex",
- CellID->339282308],
-Cell[8012, 276, 778, 28, 66, "Output",
- CellTags->"QuarkGluonVertex",
- CellID->1688386600]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[8827, 309, 383, 11, 27, "Input",
- CellTags->"QuarkGluonVertex",
- CellID->2017937273],
-Cell[9213, 322, 2477, 90, 68, "Output",
- CellTags->"QuarkGluonVertex",
- CellID->389181480]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[11727, 417, 383, 11, 27, "Input",
- CellTags->"QuarkGluonVertex",
- CellID->729288779],
-Cell[12113, 430, 529, 20, 38, "Output",
- CellTags->"QuarkGluonVertex",
- CellID->1936603618]
+Cell[8562, 299, 84, 2, 27, "Input"],
+Cell[8649, 303, 477, 18, 37, "Output"]
 }, Open  ]]
 }, Open  ]],
-Cell[12669, 454, 31, 0, 29, "SectionFooterSpacer"]
+Cell[CellGroupData[{
+Cell[9175, 327, 105, 2, 9, "ExampleDelimiter"],
+Cell[CellGroupData[{
+Cell[9305, 333, 275, 7, 27, "Input",
+ CellTags->"QuarkGluonVertex",
+ CellID->196044183],
+Cell[9583, 342, 783, 28, 74, "Output",
+ CellTags->"QuarkGluonVertex"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12737, 459, 270, 12, 31, "SeeAlsoSection",
- CellID->1255426704],
-Cell[13010, 473, 244, 9, 31, "Text",
+Cell[10403, 375, 276, 7, 27, "Input",
  CellTags->"QuarkGluonVertex",
- CellID->507567203]
+ CellID->1947570088],
+Cell[10682, 384, 678, 24, 60, "Output",
+ CellTags->"QuarkGluonVertex"]
 }, Open  ]],
-Cell[13269, 485, 23, 0, 42, "FooterCell"]
+Cell[CellGroupData[{
+Cell[11397, 413, 275, 7, 27, "Input",
+ CellTags->"QuarkGluonVertex",
+ CellID->339282308],
+Cell[11675, 422, 757, 27, 60, "Output",
+ CellTags->"QuarkGluonVertex"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12481, 455, 105, 2, 9, "ExampleDelimiter"],
+Cell[CellGroupData[{
+Cell[12611, 461, 383, 11, 27, "Input",
+ CellTags->"QuarkGluonVertex",
+ CellID->2017937273],
+Cell[12997, 474, 2368, 85, 67, "Output",
+ CellTags->"QuarkGluonVertex"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15402, 564, 383, 11, 27, "Input",
+ CellTags->"QuarkGluonVertex",
+ CellID->729288779],
+Cell[15788, 577, 508, 19, 37, "Output",
+ CellTags->"QuarkGluonVertex"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[16335, 601, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16403, 606, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[16676, 620, 196, 7, 56, "SeeAlso"]
+}, Open  ]],
+Cell[16887, 630, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

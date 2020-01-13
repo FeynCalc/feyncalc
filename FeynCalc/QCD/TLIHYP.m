@@ -20,6 +20,8 @@ End[]
 
 Begin["`TLIHYP`Private`"]
 
+tli::usage="";
+
 (* Fri Feb 16 04:09:29 MET 1996 *)
 (* By R. Scharf *)
 
@@ -31,7 +33,7 @@ MCH[w_ /; Head[w]=!=Integer] :=
 	True;  (* the m of the spin *)
 integ[y_ /; Head[y] === Integer] :=
 	True;  (* check for integer*)
-pinteg[y_Integer?Positive] :=
+pinteg[_Integer?Positive] :=
 	True;  (* check for positive integer*)
 pinteg[y_ /; DataType[y, PositiveInteger] === True] :=
 	True;
@@ -46,7 +48,7 @@ Options[TLIHYP] = {FeynmanParameterNames -> FCGV["x"],
 								};
 
 TLIHYP[exp_, opt___Rule] :=
-	Block[ {tlihyp, so, x, p},
+	Block[{	tlihyp, so, x, p, rule2F1},
 		x = FeynmanParameterNames /. {opt} /.  Options[TLIHYP];
 		p = Momentum /. {opt} /.  Options[TLIHYP];
 		so[r] = ScalarProduct[OPEDelta, p];
@@ -61,9 +63,9 @@ TLIHYP[exp_, opt___Rule] :=
 				] :=
 			so[r] *
 			tlihyp[tLI[{m, 0, g3, g4, g5}, {{a1, M}, 0, a3, {a4, M}, {a5,M}}]
-					   ]  -
+					]  -
 			tlihyp[tLI[{m, 0, g3, g4+1,g5}, {{a1, M}, 0, a3, {a4, M}, {a5,M}}]
-					   ];
+					];
 		tlihyp[tLI[{m_ , 0, g3_?integ, g4_?integ, g5_?integ},
 							{{a1_?integ, M_Symbol}, 0, a3_?integ,
 							{a4_?integ, M_Symbol}, {a5_?integ, M_Symbol}}
@@ -103,7 +105,7 @@ TLIHYP[exp_, opt___Rule] :=
 												- y^2/(4 x (x+y))]
 			)
 			) /. {Dot :> Times, EulerGamma :> 0, y :> 1 - x}
-				   )/.rule2F1;
+				)/.rule2F1;
 		(* ************************   tlihyp, RHYP5  ************************ *)
 
 
@@ -150,7 +152,7 @@ TLIHYP[exp_, opt___Rule] :=
 					(Gamma[2 - a4 + Epsilon/2]*Gamma[-4 + a1 + a2 + 2*a5 - Epsilon - g5])
 			)
 			) /. {Dot :> Times, EulerGamma :> 0}
-				   )/.rule2F1;
+				)/.rule2F1;
 		(* ************************   tlihyp, RHYP1ende   ************************ *)
 
 		(* ************************   tlihyp, RHYP3     ************************ *)
@@ -160,9 +162,9 @@ TLIHYP[exp_, opt___Rule] :=
 						]
 					] :=
 			so[r] tlihyp[tLI[{g1, m, 0, g4, g5}, {{a1, M}, {a2, M}, 0, a4, a5}]
-									   ] -
-					   tlihyp[tLI[{g1+1, m, 0, g4, g5}, {{a1, M}, {a2, M}, 0, a4, a5}]
-									   ];
+									] -
+					tlihyp[tLI[{g1+1, m, 0, g4, g5}, {{a1, M}, {a2, M}, 0, a4, a5}]
+									];
 		tlihyp[tLI[{g1_?integ, m_ , 0, g4_?integ, g5_?integ},
 							{{a1_?integ, M_Symbol}, {a2_?integ, M_Symbol}, 0,
 									a4_?integ, a5_?integ}
@@ -208,7 +210,7 @@ TLIHYP[exp_, opt___Rule] :=
 							Gamma[-4 + a1 + a2 + 2*a5 - Epsilon - g5])
 			)
 			) /. {Dot :> Times, EulerGamma :> 0, y :> 1 - x}
-				   )/.rule2F1;
+				)/.rule2F1;
 		(* ************************   tlihyp, RHYP3  ************************ *)
 		exp /. TLI -> tli /. tli[ww__] :> tlihyp[tLI[ww]] /.
 						tlihyp -> Identity /. tLI -> TLI

@@ -1,0 +1,37 @@
+
+
+(* :Title: fcstFCLoopEikonalPropagatorFreeQ.test							*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for
+				fcstFCLoopEikonalPropagatorFreeQ							*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopEikonalPropagatorFreeQ =
+({
+{"fcstFCLoopEikonalPropagatorFreeQ-ID1",
+"FCLoopEikonalPropagatorFreeQ[FCI@SFAD[p,p-q]]", "True"},
+{"fcstFCLoopEikonalPropagatorFreeQ-ID2",
+"FCLoopEikonalPropagatorFreeQ[FCI@SFAD[{{0,p.q}}]]", "False"},
+{"fcstFCLoopEikonalPropagatorFreeQ-ID3",
+"FCLoopEikonalPropagatorFreeQ[FCI@CFAD[p,p-q]]", "True"},
+{"fcstFCLoopEikonalPropagatorFreeQ-ID4",
+"FCLoopEikonalPropagatorFreeQ[FCI@CFAD[{{0,p.q}}]]", "False"},
+{"fcstFCLoopEikonalPropagatorFreeQ-ID5",
+"FCLoopEikonalPropagatorFreeQ[FCI@CFAD[{{0,p.q}}],Momentum\[Rule]{\
+q}]", "False"},
+{"fcstFCLoopEikonalPropagatorFreeQ-ID6",
+"FCLoopEikonalPropagatorFreeQ[FCI@CFAD[{{0,p.q}}],Momentum\[Rule]{\
+r}]", "True"},
+{"fcstFCLoopEikonalPropagatorFreeQ-ID7",
+"FCLoopEikonalPropagatorFreeQ[FCI@SFAD[{{q, q.p}}]]", "True"},
+{"fcstFCLoopEikonalPropagatorFreeQ-ID8",
+"FCLoopEikonalPropagatorFreeQ[FCI@SFAD[{{q, q.p}}], First -> False]", "False"}
+});

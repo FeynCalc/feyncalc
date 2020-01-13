@@ -123,8 +123,30 @@ Cell[TextData[{
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "TLI2FC", "]"}]], "Input",
+ CellTags->"TLI2FC",
+ CellLabel->"In[5]:=",
+ CellID->972870614],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"Momentum", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}], ",", 
+       RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}], ",", 
+       RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}]}], "}"}]}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"TLI2FC",
+ CellLabel->"Out[5]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -164,15 +186,13 @@ Cell[TextData[{
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/TLI",
   ButtonNote->"TLI"],
- ".  ",
+ ",  ",
  ButtonBox["FC2TLI",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/FC2TLI",
   ButtonNote->"FC2TLI"],
  "."
-}], "Text",
- CellTags->"TLI2FC",
- CellID->708615958]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -183,8 +203,6 @@ Cell["More About", "MoreAboutSection",
 Cell["XXXX", "MoreAbout",
  CellID->1665078683]
 }, Open  ]],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[
  InterpretationBox[GridBox[{
@@ -198,38 +216,6 @@ Cell[BoxData[
    }],
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "TLI2FC", "]"}]], "Input",
- CellTags->"TLI2FC",
- CellLabel->"In[1]:=",
- CellID->972870614],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
-    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
-    RowBox[{"Momentum", "\[Rule]", 
-     RowBox[{"{", 
-      RowBox[{
-       RowBox[{"FCGV", "(", "\<\"q1\"\>", ")"}], ",", 
-       RowBox[{"FCGV", "(", "\<\"q2\"\>", ")"}], ",", 
-       RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}]}], "}"}]}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"TLI2FC",
- CellLabel->"Out[1]=",
- CellID->1369959726]
-}, Open  ]],
-
-Cell[BoxData[""], "Input",
- CellTags->"TLI2FC",
- CellLabel->"In[2]:=",
- CellID->1527451776]
-}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -292,12 +278,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{704, Automatic}, {Automatic, 46}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

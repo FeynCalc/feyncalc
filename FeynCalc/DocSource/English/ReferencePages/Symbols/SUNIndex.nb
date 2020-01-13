@@ -116,12 +116,10 @@ Cell["SUNIndex", "ObjectName",
 
 Cell[TextData[{
  Cell["   ", "ModInfo"],
- Cell[BoxData["SUNIndex"], "InlineFormula"],
- " \[LineSeparator]",
- "is the head of SU(",
- StyleBox["N",
-  FontSlant->"Italic"],
- ") indices."
+ Cell[BoxData[
+  RowBox[{"SUNIndex", "[", "a", "]"}]], "InlineFormula"],
+ " \[LineSeparator]is an SU(N) index in the adjoint representation. If the \
+argument is an integer, SUNIndex[a] turns into ExplicitSUNIndex[a]."
 }], "Usage",
  CellID->982511436],
 
@@ -162,7 +160,6 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  ButtonBox["ExplicitSUNIndex",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/ExplicitSUNIndex",
@@ -178,9 +175,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/SUNF",
   ButtonNote->"SUNF"],
  "."
-}], "Text",
- CellTags->"SUNIndex",
- CellID->341377518]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -218,8 +213,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox["i", TraditionalForm]], "Output",
  CellTags->"SUNIndex",
- CellLabel->"Out[1]=",
- CellID->969035127]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -233,8 +227,29 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{"SUNIndex", "[", "i", "]"}]], "Output",
  CellTags->"SUNIndex",
- CellLabel->"Out[2]//StandardForm=",
- CellID->675650496]
+ CellLabel->"Out[2]//StandardForm="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SUNIndex", "[", "2", "]"}]], "Input",
+ CellLabel->"In[3]:="],
+
+Cell[BoxData[
+ FormBox["2", TraditionalForm]], "Output",
+ CellLabel->"Out[3]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "StandardForm"}]], "Input",
+ CellLabel->"In[4]:="],
+
+Cell[BoxData[
+ RowBox[{"ExplicitSUNIndex", "[", "2", "]"}]], "Output",
+ CellLabel->"Out[4]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -246,7 +261,7 @@ Cell[BoxData[
     RowBox[{"i", ",", "j"}], "]"}], "//", "FCI"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"SUNIndex",
- CellLabel->"In[3]:=",
+ CellLabel->"In[5]:=",
  CellID->874008605],
 
 Cell[BoxData[
@@ -255,8 +270,7 @@ Cell[BoxData[
    RowBox[{"SUNIndex", "[", "i", "]"}], ",", 
    RowBox[{"SUNIndex", "[", "j", "]"}]}], "]"}]], "Output",
  CellTags->"SUNIndex",
- CellLabel->"Out[3]//StandardForm=",
- CellID->46597874]
+ CellLabel->"Out[5]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -321,12 +335,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{731, Automatic}, {Automatic, 155}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

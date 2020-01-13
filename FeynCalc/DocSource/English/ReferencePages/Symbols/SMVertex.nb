@@ -116,20 +116,27 @@ Cell["SMVertex", "ObjectName",
 
 Cell[TextData[{
  Cell["   ", "ModInfo"],
- Cell[BoxData[
-  RowBox[{"SMVertex", "[", 
-   RowBox[{
-   "\"\<AWW\>\"", ",", " ", "p", ",", "mu", ",", " ", "q", ",", "nu", ",", 
-    " ", "k", ",", "rho"}], "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "gives the photon-W-W vertex (p,mu correspond to the photon, q,nu to the \
-(incoming) W+ and k,rho to the (incoming) W-. All momenta are flowing into \
-the vertex.  SMVertex[\"HHH\", ___] give the three-higgs coupling. "
+ Cell[BoxData["SMVertex"], "InlineFormula"],
+ " \[LineSeparator]is a library of SM vertices. Currently it implements only \
+few vertices and is not really useful."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "SMVertex", "]"}]], "Input",
+ CellLabel->"In[58]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Dimension", "\[Rule]", "4"}], ",", 
+    RowBox[{"Explicit", "\[Rule]", "True"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[58]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -164,8 +171,10 @@ Cell[CellGroupData[{
 Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
-Cell["XXXX", "SeeAlso",
- CellID->929782353]
+Cell[TextData[ButtonBox["SMP",
+ BaseStyle->"Link",
+ ButtonData:>"paclet:FeynCalc/ref/SMP",
+ ButtonNote->"SMP"]], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -192,25 +201,7 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "SMVertex", "]"}]], "Input",
- CellTags->"SMVertex",
- CellLabel->"In[1]:=",
- CellID->537549751],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Dimension", "\[Rule]", "4"}], ",", 
-    RowBox[{"Explicit", "\[Rule]", "True"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"SMVertex",
- CellLabel->"Out[1]=",
- CellID->1908910905]
-}, Open  ]],
+Cell["This is the photon-W-W vertex (all momenta ingoing)", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -220,135 +211,152 @@ Cell[BoxData[
   "\"\<AWW\>\"", ",", "p", ",", "\[Mu]", ",", " ", "q", ",", "\[Nu]", ",", 
    " ", "k", ",", "\[Rho]"}], "]"}]], "Input",
  CellTags->"SMVertex",
- CellLabel->"In[2]:=",
+ CellLabel->"In[59]:=",
  CellID->1911879451],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   RowBox[{"-", "\[ImaginaryI]"}], " ", "e", " ", 
+   RowBox[{"-", "\[ImaginaryI]"}], " ", "\<\"e\"\>", " ", 
    RowBox[{"(", 
     RowBox[{
      RowBox[{
-      FormBox[
-       SuperscriptBox[
-        OverscriptBox["g", "_"], 
-        RowBox[{
-         FormBox[
-          FormBox[
-           FormBox["\[Mu]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm], 
-         FormBox[
-          FormBox[
-           FormBox["\[Rho]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm]}]],
-       TraditionalForm], " ", 
-      FormBox[
-       SuperscriptBox[
-        RowBox[{"(", 
-         FormBox[
-          FormBox[
-           RowBox[{
-            OverscriptBox[
-             FormBox["p",
-              TraditionalForm], "_"], "-", 
-            OverscriptBox[
-             FormBox["k",
-              TraditionalForm], "_"]}],
-           TraditionalForm],
-          TraditionalForm], ")"}], 
+      SuperscriptBox[
+       OverscriptBox["g", "_"], 
+       RowBox[{
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Rho]",
+          TraditionalForm],
+         TraditionalForm]}]], " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
         FormBox[
          FormBox[
-          FormBox["\[Nu]",
-           TraditionalForm],
+          RowBox[{
+           OverscriptBox[
+            FormBox["p",
+             TraditionalForm], "_"], "-", 
+           OverscriptBox[
+            FormBox["k",
+             TraditionalForm], "_"]}],
           TraditionalForm],
-         TraditionalForm]],
-       TraditionalForm]}], "+", 
+         TraditionalForm], ")"}], 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]]}], "+", 
      RowBox[{
-      FormBox[
-       SuperscriptBox[
-        OverscriptBox["g", "_"], 
-        RowBox[{
-         FormBox[
-          FormBox[
-           FormBox["\[Nu]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm], 
-         FormBox[
-          FormBox[
-           FormBox["\[Rho]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm]}]],
-       TraditionalForm], " ", 
-      FormBox[
-       SuperscriptBox[
-        RowBox[{"(", 
-         FormBox[
-          FormBox[
-           RowBox[{
-            OverscriptBox[
-             FormBox["k",
-              TraditionalForm], "_"], "-", 
-            OverscriptBox[
-             FormBox["q",
-              TraditionalForm], "_"]}],
-           TraditionalForm],
-          TraditionalForm], ")"}], 
+      SuperscriptBox[
+       OverscriptBox["g", "_"], 
+       RowBox[{
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Rho]",
+          TraditionalForm],
+         TraditionalForm]}]], " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
         FormBox[
          FormBox[
-          FormBox["\[Mu]",
-           TraditionalForm],
+          RowBox[{
+           OverscriptBox[
+            FormBox["k",
+             TraditionalForm], "_"], "-", 
+           OverscriptBox[
+            FormBox["q",
+             TraditionalForm], "_"]}],
           TraditionalForm],
-         TraditionalForm]],
-       TraditionalForm]}], "+", 
+         TraditionalForm], ")"}], 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]]}], "+", 
      RowBox[{
-      FormBox[
-       SuperscriptBox[
-        OverscriptBox["g", "_"], 
-        RowBox[{
-         FormBox[
-          FormBox[
-           FormBox["\[Mu]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm], 
-         FormBox[
-          FormBox[
-           FormBox["\[Nu]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm]}]],
-       TraditionalForm], " ", 
-      FormBox[
-       SuperscriptBox[
-        RowBox[{"(", 
-         FormBox[
-          FormBox[
-           RowBox[{
-            OverscriptBox[
-             FormBox["q",
-              TraditionalForm], "_"], "-", 
-            OverscriptBox[
-             FormBox["p",
-              TraditionalForm], "_"]}],
-           TraditionalForm],
-          TraditionalForm], ")"}], 
+      SuperscriptBox[
+       OverscriptBox["g", "_"], 
+       RowBox[{
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]}]], " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
         FormBox[
          FormBox[
-          FormBox["\[Rho]",
-           TraditionalForm],
+          RowBox[{
+           OverscriptBox[
+            FormBox["q",
+             TraditionalForm], "_"], "-", 
+           OverscriptBox[
+            FormBox["p",
+             TraditionalForm], "_"]}],
           TraditionalForm],
-         TraditionalForm]],
-       TraditionalForm]}]}], ")"}]}], TraditionalForm]], "Output",
+         TraditionalForm], ")"}], 
+       FormBox[
+        FormBox["\[Rho]",
+         TraditionalForm],
+        TraditionalForm]]}]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"SMVertex",
- CellLabel->"Out[2]=",
- CellID->60024772]
+ CellLabel->"Out[59]="]
+}, Open  ]],
+
+Cell["This is the HHH-coupling", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SMVertex", "[", "\"\<HHH\>\"", "]"}]], "Input",
+ CellLabel->"In[60]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", 
+   FractionBox[
+    RowBox[{"3", " ", "\[ImaginaryI]", " ", "\<\"e\"\>", " ", 
+     SubsuperscriptBox["m", "H", "2"]}], 
+    RowBox[{"2", " ", 
+     SubscriptBox["m", "W"], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"sin", "("}], 
+       SubscriptBox["\[Theta]", "W"], ")"}], ")"}]}]]}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[60]="]
+}, Open  ]],
+
+Cell["This is the H-electron-coupling", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SMVertex", "[", "\"\<eeH\>\"", "]"}]], "Input",
+ CellLabel->"In[61]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", 
+   FractionBox[
+    RowBox[{"\[ImaginaryI]", " ", "\<\"e\"\>", " ", 
+     SubscriptBox["m", "e"]}], 
+    RowBox[{"2", " ", 
+     SubscriptBox["m", "W"], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"sin", "("}], 
+       SubscriptBox["\[Theta]", "W"], ")"}], ")"}]}]]}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[61]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -412,10 +420,11 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{235, Automatic}, {Automatic, 66}},
+WindowSize->{1005, 937},
+WindowMargins->{{1240, Automatic}, {Automatic, 106}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",

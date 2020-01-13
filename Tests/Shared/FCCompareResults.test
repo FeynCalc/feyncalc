@@ -1,0 +1,18 @@
+(* :Title: Factor2.test														*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for Factor2					*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Shared`fcstFCCompareResults = {
+{"fcstFCCompareResults-ID1","FCCompareResults[{{D}, {D}}, {{D}, {D}},Function->False]", "True"},
+{"fcstFCCompareResults-ID2","FCCompareResults[{}, {},Function->False]", "True"},
+{"fcstFCCompareResults-ID3","FCCompareResults[{1,2}, {1,2},Function->False]", "True"}
+};

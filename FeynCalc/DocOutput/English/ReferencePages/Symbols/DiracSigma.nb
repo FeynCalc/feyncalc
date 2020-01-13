@@ -3,69 +3,91 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14334,        511]
-NotebookOptionsPosition[      9428,        353]
-NotebookOutlinePosition[     12683,        447]
-CellTagsIndexPosition[     12569,        441]
+NotebookDataLength[     15027,        528]
+NotebookOptionsPosition[     10468,        386]
+NotebookOutlinePosition[     13466,        470]
+CellTagsIndexPosition[     13352,        464]
 WindowTitle->DiracSigma
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/DiracSigma\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/DiracSigma"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/DiracSigma.\
-html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$42131], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/DiracSigma", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"DiracSigmaExplicit\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/DiracSigmaExplicit"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/DiracSigma\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/DiracSigma"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
+DiracSigma.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$69044], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/DiracSigma", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,17 +95,26 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["DiracSigma", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["DiracSigma", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"DiracSigma", "[", 
        RowBox[{"a", ",", " ", "b"}], "]"}]], "InlineFormula"],
-     " \[LineSeparator]",
-     "stands for i/2*(a . b - b . a) in 4 dimensions. a and b must have Head \
-DiracGamma, DiracMatrix or DiracSlash. Only antisymmetry is implemented."
+     " \[LineSeparator]stands for i/2*(a . b - b . a) in 4 dimensions. a and \
+b must have Head DiracGamma, GA or GS. Only antisymmetry is implemented."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -109,7 +140,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->261630240],
+ CellID->1819183924],
 
 Cell[CellGroupData[{
 
@@ -119,16 +150,15 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->142212645],
+ CellID->26103714],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t1", "=", 
-  RowBox[{"DiracSigma", "[", 
-   RowBox[{
-    RowBox[{"GA", "[", "\[Alpha]", "]"}], ",", 
-    RowBox[{"GA", "[", "\[Beta]", "]"}]}], "]"}]}]], "Input",
+ RowBox[{"DiracSigma", "[", 
+  RowBox[{
+   RowBox[{"GA", "[", "\[Alpha]", "]"}], ",", 
+   RowBox[{"GA", "[", "\[Beta]", "]"}]}], "]"}]], "Input",
  CellTags->"DiracSigma",
  CellLabel->"In[1]:=",
  CellID->1797257280],
@@ -141,18 +171,17 @@ Cell[BoxData[
      TraditionalForm], 
     FormBox["\[Beta]",
      TraditionalForm]}]], TraditionalForm]], "Output",
- ImageSize->{36, 19},
+ ImageSize->{36, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DiracSigma",
- CellLabel->"Out[1]=",
- CellID->669982831]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DiracSigmaExplicit", "[", "t1", "]"}]], "Input",
+ RowBox[{"DiracSigmaExplicit", "[", "%", "]"}]], "Input",
  CellTags->"DiracSigma",
  CellLabel->"In[2]:=",
  CellID->350892177],
@@ -189,22 +218,20 @@ Cell[BoxData[
         FormBox["\[Alpha]",
          TraditionalForm],
         TraditionalForm]]}]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{146, 41},
+ ImageSize->{152, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DiracSigma",
- CellLabel->"Out[2]=",
- CellID->249746681]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t2", "=", 
-  RowBox[{"DiracSigma", "[", 
-   RowBox[{
-    RowBox[{"GA", "[", "\[Beta]", "]"}], ",", 
-    RowBox[{"GA", "[", "\[Alpha]", "]"}]}], "]"}]}]], "Input",
+ RowBox[{"DiracSigma", "[", 
+  RowBox[{
+   RowBox[{"GA", "[", "\[Beta]", "]"}], ",", 
+   RowBox[{"GA", "[", "\[Alpha]", "]"}]}], "]"}]], "Input",
  CellTags->"DiracSigma",
  CellLabel->"In[3]:=",
  CellID->334267816],
@@ -218,22 +245,20 @@ Cell[BoxData[
       TraditionalForm], 
      FormBox["\[Beta]",
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- ImageSize->{46, 19},
+ ImageSize->{47, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DiracSigma",
- CellLabel->"Out[3]=",
- CellID->838537027]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t3", "=", 
-  RowBox[{"DiracSigma", "[", 
-   RowBox[{
-    RowBox[{"GS", "[", "p", "]"}], ",", 
-    RowBox[{"GS", "[", "q", "]"}]}], "]"}]}]], "Input",
+ RowBox[{"DiracSigma", "[", 
+  RowBox[{
+   RowBox[{"GS", "[", "p", "]"}], ",", 
+   RowBox[{"GS", "[", "q", "]"}]}], "]"}]], "Input",
  CellTags->"DiracSigma",
  CellLabel->"In[4]:=",
  CellID->938175920],
@@ -246,18 +271,17 @@ Cell[BoxData[
      TraditionalForm], 
     FormBox["q",
      TraditionalForm]}]], TraditionalForm]], "Output",
- ImageSize->{34, 15},
+ ImageSize->{39, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DiracSigma",
- CellLabel->"Out[4]=",
- CellID->1981550461]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DiracSigmaExplicit", "[", "t3", "]"}]], "Input",
+ RowBox[{"DiracSigmaExplicit", "[", "%", "]"}]], "Input",
  CellTags->"DiracSigma",
  CellLabel->"In[5]:=",
  CellID->493035408],
@@ -302,20 +326,31 @@ Cell[BoxData[
           FormBox["p",
            TraditionalForm], "_"],
          TraditionalForm]}], ")"}]}]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{233, 41},
+ ImageSize->{252, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"DiracSigma",
- CellLabel->"Out[5]=",
- CellID->360348225]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
+Cell["The antisymmetry propery is built-in", "Notes"],
+
+Cell[CellGroupData[{
+
 Cell[BoxData[
- RowBox[{"Clear", "[", 
-  RowBox[{"t1", ",", "t2", ",", "t3"}], "]"}]], "Input",
- CellTags->"DiracSigma",
- CellLabel->"In[6]:=",
- CellID->1941239189]
+ RowBox[{"DiracSigma", "[", 
+  RowBox[{
+   RowBox[{"GA", "[", "\[Alpha]", "]"}], ",", 
+   RowBox[{"GA", "[", "\[Alpha]", "]"}]}], "]"}]], "Input",
+ CellLabel->"In[6]:="],
+
+Cell[BoxData[
+ FormBox["0", TraditionalForm]], "Output",
+ ImageSize->{13, 14},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[6]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell["", "SectionFooterSpacer"]
@@ -344,9 +379,7 @@ Cell[TextData[{
   ButtonNote->"DiracSigmaExplicit"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"DiracSigma",
- CellID->94805766]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -363,22 +396,22 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 18, 0.699904}", 
+   "built" -> "{2020, 1, 5, 18, 54, 40.854766}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
     "DiracSigma[a, b] stands for i/2*(a . b - b . a) in 4 dimensions. a and b \
-must have Head DiracGamma, DiracMatrix or DiracSlash. Only antisymmetry is \
-implemented.", "synonyms" -> {}, "title" -> "DiracSigma", "titlemodifier" -> 
-    "", "windowtitle" -> "DiracSigma", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/DiracSigma"}, "SearchTextTranslated" -> ""},
+must have Head DiracGamma, GA or GS. Only antisymmetry is implemented.", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "DiracSigma", 
+    "titlemodifier" -> "", "windowtitle" -> "DiracSigma", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/DiracSigma"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -386,8 +419,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -396,123 +430,106 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3441, 96, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4427, 127, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->261630240]},
+   CellID->1819183924]},
  "DiracSigma"->{
-  Cell[4073, 125, 255, 8, 27, "Input",
+  Cell[5059, 156, 228, 7, 27, "Input",
    CellTags->"DiracSigma",
    CellID->1797257280],
-  Cell[4331, 135, 346, 13, 40, "Output",
-   CellTags->"DiracSigma",
-   CellID->669982831],
-  Cell[4714, 153, 140, 4, 27, "Input",
+  Cell[5290, 165, 326, 12, 37, "Output",
+   CellTags->"DiracSigma"],
+  Cell[5653, 182, 139, 4, 27, "Input",
    CellTags->"DiracSigma",
    CellID->350892177],
-  Cell[4857, 159, 1002, 37, 62, "Output",
-   CellTags->"DiracSigma",
-   CellID->249746681],
-  Cell[5896, 201, 254, 8, 27, "Input",
+  Cell[5795, 188, 982, 36, 56, "Output",
+   CellTags->"DiracSigma"],
+  Cell[6814, 229, 227, 7, 27, "Input",
    CellTags->"DiracSigma",
    CellID->334267816],
-  Cell[6153, 211, 370, 14, 40, "Output",
-   CellTags->"DiracSigma",
-   CellID->838537027],
-  Cell[6560, 230, 241, 8, 27, "Input",
+  Cell[7044, 238, 350, 13, 37, "Output",
+   CellTags->"DiracSigma"],
+  Cell[7431, 256, 214, 7, 27, "Input",
    CellTags->"DiracSigma",
    CellID->938175920],
-  Cell[6804, 240, 334, 13, 36, "Output",
-   CellTags->"DiracSigma",
-   CellID->1981550461],
-  Cell[7175, 258, 140, 4, 27, "Input",
+  Cell[7648, 265, 313, 12, 35, "Output",
+   CellTags->"DiracSigma"],
+  Cell[7998, 282, 139, 4, 27, "Input",
    CellTags->"DiracSigma",
    CellID->493035408],
-  Cell[7318, 264, 1276, 45, 62, "Output",
-   CellTags->"DiracSigma",
-   CellID->360348225],
-  Cell[8609, 312, 163, 5, 27, "Input",
-   CellTags->"DiracSigma",
-   CellID->1941239189],
-  Cell[9128, 339, 258, 9, 70, "Text",
-   CellTags->"DiracSigma",
-   CellID->94805766]}
+  Cell[8140, 288, 1256, 44, 56, "Output",
+   CellTags->"DiracSigma"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 11328, 397},
- {"DiracSigma", 11464, 401}
+ {"PrimaryExamplesSection", 12398, 431},
+ {"DiracSigma", 12536, 435}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[582, 21, 2252, 52, 51, "AnchorBarGrid",
+Cell[582, 21, 3030, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2837, 75, 53, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2893, 78, 523, 14, 98, "Usage",
+Cell[3615, 97, 287, 11, 45, "ObjectNameGrid"],
+Cell[3905, 110, 497, 13, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3441, 96, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4427, 127, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->261630240],
+ CellID->1819183924],
 Cell[CellGroupData[{
-Cell[3853, 115, 195, 6, 25, "ExampleSection",
- CellID->142212645],
+Cell[4840, 146, 194, 6, 26, "ExampleSection",
+ CellID->26103714],
 Cell[CellGroupData[{
-Cell[4073, 125, 255, 8, 27, "Input",
+Cell[5059, 156, 228, 7, 27, "Input",
  CellTags->"DiracSigma",
  CellID->1797257280],
-Cell[4331, 135, 346, 13, 40, "Output",
- CellTags->"DiracSigma",
- CellID->669982831]
+Cell[5290, 165, 326, 12, 37, "Output",
+ CellTags->"DiracSigma"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4714, 153, 140, 4, 27, "Input",
+Cell[5653, 182, 139, 4, 27, "Input",
  CellTags->"DiracSigma",
  CellID->350892177],
-Cell[4857, 159, 1002, 37, 62, "Output",
- CellTags->"DiracSigma",
- CellID->249746681]
+Cell[5795, 188, 982, 36, 56, "Output",
+ CellTags->"DiracSigma"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5896, 201, 254, 8, 27, "Input",
+Cell[6814, 229, 227, 7, 27, "Input",
  CellTags->"DiracSigma",
  CellID->334267816],
-Cell[6153, 211, 370, 14, 40, "Output",
- CellTags->"DiracSigma",
- CellID->838537027]
+Cell[7044, 238, 350, 13, 37, "Output",
+ CellTags->"DiracSigma"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6560, 230, 241, 8, 27, "Input",
+Cell[7431, 256, 214, 7, 27, "Input",
  CellTags->"DiracSigma",
  CellID->938175920],
-Cell[6804, 240, 334, 13, 36, "Output",
- CellTags->"DiracSigma",
- CellID->1981550461]
+Cell[7648, 265, 313, 12, 35, "Output",
+ CellTags->"DiracSigma"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7175, 258, 140, 4, 27, "Input",
+Cell[7998, 282, 139, 4, 27, "Input",
  CellTags->"DiracSigma",
  CellID->493035408],
-Cell[7318, 264, 1276, 45, 62, "Output",
- CellTags->"DiracSigma",
- CellID->360348225]
+Cell[8140, 288, 1256, 44, 56, "Output",
+ CellTags->"DiracSigma"]
 }, Open  ]],
-Cell[8609, 312, 163, 5, 27, "Input",
- CellTags->"DiracSigma",
- CellID->1941239189]
+Cell[9411, 335, 53, 0, 32, "Notes"],
+Cell[CellGroupData[{
+Cell[9489, 339, 183, 5, 27, "Input"],
+Cell[9675, 346, 166, 5, 35, "Output"]
+}, Open  ]]
 }, Open  ]],
-Cell[8787, 320, 31, 0, 29, "SectionFooterSpacer"]
+Cell[9868, 355, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8855, 325, 270, 12, 70, "SeeAlsoSection",
+Cell[9936, 360, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[9128, 339, 258, 9, 70, "Text",
- CellTags->"DiracSigma",
- CellID->94805766]
+Cell[10209, 374, 217, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[9401, 351, 23, 0, 70, "FooterCell"]
+Cell[10441, 384, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

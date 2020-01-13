@@ -167,9 +167,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/OPEIntegrateDelta",
   ButtonNote->"OPEIntegrateDelta"],
  "."
-}], "Text",
- CellTags->"$MIntegrate",
- CellID->193164279]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -196,10 +194,6 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell["Examples", "Subsubsection",
- CellTags->"$MIntegrate",
- CellID->896374065],
-
 Cell[CellGroupData[{
 
 Cell[BoxData["$MIntegrate"], "Input",
@@ -213,19 +207,7 @@ Cell[BoxData[
  CellTags->"$MIntegrate",
  CellLabel->"Out[1]=",
  CellID->1034422222]
-}, Open  ]],
-
-Cell[TextData[{
- "See also: ",
- " ",
- ButtonBox["OPEIntegrateDelta",
-  BaseStyle->"AddOnsLink",
-  ButtonData:>"OPEIntegrateDelta",
-  ButtonNote->"OPEIntegrateDelta"],
- "."
-}], "Text",
- CellTags->"$MIntegrate",
- CellID->404160805]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -289,12 +271,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

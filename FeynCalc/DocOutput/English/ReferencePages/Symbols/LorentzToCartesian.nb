@@ -1,0 +1,670 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     18796,        660]
+NotebookOptionsPosition[     15275,        552]
+NotebookOutlinePosition[     17493,        610]
+CellTagsIndexPosition[     17408,        605]
+WindowTitle->LorentzToCartesian
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
+     ActionMenuBox[
+      FrameBox[
+       InterpretationBox[Cell[TextData[{
+         "URL",
+         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+          StripOnInput->False]
+        }]],
+        TextCell[
+         Row[{"URL", 
+           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+       StripOnInput->False], {"\<\"FeynCalc/ref/LorentzToCartesian\"\>":>
+      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["FeynCalc/ref/LorentzToCartesian"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web URL\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/language/FeynCalc/ref/\
+LorentzToCartesian.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+            If[
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$182514], 
+             "http://reference.wolfram.com/system-modeler/", 
+             "http://reference.wolfram.com/language/"], 
+            "FeynCalc/ref/LorentzToCartesian", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[TextData[{
+ Cell["LorentzToCartesian", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"LorentzToCartesian", "[", "exp", "]"}]], "InlineFormula"],
+     " \[LineSeparator] rewrites Lorentz tensors in form of Cartesian tensors \
+(when possible). Using options one can specify which types of tensors should \
+be converted."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->280971684],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "LorentzToCartesian", "]"}]], "Input",
+ CellLabel->"In[381]:=",
+ CellID->446069166],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"DiracGammaExpand", "\[Rule]", "True"}], ",", 
+    RowBox[{"PauliSigmaExpand", "\[Rule]", "True"}], ",", 
+    RowBox[{"DotSimplify", "\[Rule]", "True"}], ",", 
+    RowBox[{"EpsEvaluate", "\[Rule]", "True"}], ",", 
+    RowBox[{"ExpandScalarProduct", "\[Rule]", "True"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCTensor", "\[Rule]", "True"}], ",", 
+    RowBox[{"FV", "\[Rule]", "True"}], ",", 
+    RowBox[{"GA", "\[Rule]", "True"}], ",", 
+    RowBox[{"GS", "\[Rule]", "True"}], ",", 
+    RowBox[{"LC", "\[Rule]", "True"}], ",", 
+    RowBox[{"SI", "\[Rule]", "True"}], ",", 
+    RowBox[{"SIS", "\[Rule]", "True"}], ",", 
+    RowBox[{"LorentzIndex", "\[Rule]", "True"}], ",", 
+    RowBox[{"SP", "\[Rule]", "True"}]}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{501, 72},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[381]=",
+ CellID->61602561]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1336889648],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1586818607],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SPD", "[", 
+  RowBox[{"p", ",", "q"}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->2133361503],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    FormBox["p",
+     TraditionalForm],
+    TraditionalForm], 
+   FormBox["\<\"\[CenterDot]\"\>",
+    TraditionalForm], 
+   FormBox[
+    FormBox["q",
+     TraditionalForm],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{39, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->1369736194]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "LorentzToCartesian"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->151214086],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SuperscriptBox[
+     FormBox[
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm],
+      TraditionalForm], "0"], " ", 
+    SuperscriptBox[
+     FormBox[
+      FormBox[
+       FormBox["q",
+        TraditionalForm],
+       TraditionalForm],
+      TraditionalForm], "0"]}], "-", 
+   RowBox[{
+    FormBox[
+     FormBox[
+      StyleBox["p",
+       StripOnInput->False,
+       FontWeight->Bold],
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox["\<\"\[CenterDot]\"\>",
+     TraditionalForm], 
+    FormBox[
+     FormBox[
+      StyleBox["q",
+       StripOnInput->False,
+       FontWeight->Bold],
+      TraditionalForm],
+     TraditionalForm]}]}], TraditionalForm]], "Output",
+ ImageSize->{100, 18},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->263079240]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"LC", "[", 
+   RowBox[{"mu", ",", "nu"}], "]"}], "[", 
+  RowBox[{"p", ",", "q"}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->2100534216],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   OverscriptBox["\[Epsilon]", "_"], 
+   RowBox[{
+    FormBox[
+     FormBox["mu",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["nu",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"],
+     TraditionalForm]}]], TraditionalForm]], "Output",
+ ImageSize->{72, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->1423936308]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "LorentzToCartesian"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->507274850],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["0",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["mu",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox[
+        StyleBox[
+         RowBox[{"$MU", "\[InvisibleApplication]", 
+          RowBox[{"(", "$31", ")"}]}],
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["nu",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{"(", 
+     RowBox[{"-", 
+      SuperscriptBox[
+       OverscriptBox["\[Epsilon]", "_"], 
+       RowBox[{
+        FormBox[
+         FormBox[
+          StyleBox[
+           RowBox[{"$MU", "\[InvisibleApplication]", 
+            RowBox[{"(", "$31", ")"}]}],
+           StripOnInput->False,
+           FontWeight->Bold],
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         OverscriptBox[
+          FormBox[
+           StyleBox["p",
+            StripOnInput->False,
+            FontWeight->Bold],
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox[
+         OverscriptBox[
+          FormBox[
+           StyleBox["q",
+            StripOnInput->False,
+            FontWeight->Bold],
+           TraditionalForm], "_"],
+         TraditionalForm]}]]}], ")"}]}], "-", 
+   RowBox[{
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox[
+        StyleBox[
+         RowBox[{"$MU", "\[InvisibleApplication]", 
+          RowBox[{"(", "$31", ")"}]}],
+         StripOnInput->False,
+         FontWeight->Bold],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["mu",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["g", "_"], 
+        RowBox[{
+         FormBox[
+          FormBox["0",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["nu",
+           TraditionalForm],
+          TraditionalForm]}]], " ", 
+       RowBox[{"(", 
+        RowBox[{"-", 
+         SuperscriptBox[
+          OverscriptBox["\[Epsilon]", "_"], 
+          RowBox[{
+           FormBox[
+            FormBox[
+             StyleBox[
+              RowBox[{"$MU", "\[InvisibleApplication]", 
+               RowBox[{"(", "$31", ")"}]}],
+              StripOnInput->False,
+              FontWeight->Bold],
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox[
+            OverscriptBox[
+             FormBox[
+              StyleBox["p",
+               StripOnInput->False,
+               FontWeight->Bold],
+              TraditionalForm], "_"],
+            TraditionalForm], 
+           FormBox[
+            OverscriptBox[
+             FormBox[
+              StyleBox["q",
+               StripOnInput->False,
+               FontWeight->Bold],
+              TraditionalForm], "_"],
+            TraditionalForm]}]]}], ")"}]}], "-", 
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["g", "_"], 
+        RowBox[{
+         FormBox[
+          FormBox[
+           StyleBox[
+            RowBox[{"$MU", "\[InvisibleApplication]", 
+             RowBox[{"(", "$32", ")"}]}],
+            StripOnInput->False,
+            FontWeight->Bold],
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["nu",
+           TraditionalForm],
+          TraditionalForm]}]], " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          SuperscriptBox[
+           FormBox[
+            FormBox[
+             FormBox["q",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm], "0"], " ", 
+          SuperscriptBox[
+           OverscriptBox["\[Epsilon]", "_"], 
+           RowBox[{
+            FormBox[
+             FormBox[
+              StyleBox[
+               RowBox[{"$MU", "\[InvisibleApplication]", 
+                RowBox[{"(", "$31", ")"}]}],
+               StripOnInput->False,
+               FontWeight->Bold],
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox[
+             FormBox[
+              StyleBox[
+               RowBox[{"$MU", "\[InvisibleApplication]", 
+                RowBox[{"(", "$32", ")"}]}],
+               StripOnInput->False,
+               FontWeight->Bold],
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox[
+             OverscriptBox[
+              FormBox[
+               StyleBox["p",
+                StripOnInput->False,
+                FontWeight->Bold],
+               TraditionalForm], "_"],
+             TraditionalForm]}]]}], "-", 
+         RowBox[{
+          SuperscriptBox[
+           FormBox[
+            FormBox[
+             FormBox["p",
+              TraditionalForm],
+             TraditionalForm],
+            TraditionalForm], "0"], " ", 
+          SuperscriptBox[
+           OverscriptBox["\[Epsilon]", "_"], 
+           RowBox[{
+            FormBox[
+             FormBox[
+              StyleBox[
+               RowBox[{"$MU", "\[InvisibleApplication]", 
+                RowBox[{"(", "$31", ")"}]}],
+               StripOnInput->False,
+               FontWeight->Bold],
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox[
+             FormBox[
+              StyleBox[
+               RowBox[{"$MU", "\[InvisibleApplication]", 
+                RowBox[{"(", "$32", ")"}]}],
+               StripOnInput->False,
+               FontWeight->Bold],
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox[
+             OverscriptBox[
+              FormBox[
+               StyleBox["q",
+                StripOnInput->False,
+                FontWeight->Bold],
+               TraditionalForm], "_"],
+             TraditionalForm]}]]}]}], ")"}]}]}], ")"}]}]}], 
+  TraditionalForm]], "Output",
+ ImageSize->{540, 54},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[4]=",
+ CellID->354058269]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
+WindowTitle->"LorentzToCartesian",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2020, 1, 5, 18, 59, 38.566304}", 
+    "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "LorentzToCartesian[exp] rewrites Lorentz tensors in form of Cartesian \
+tensors (when possible). Using options one can specify which types of tensors \
+should be converted.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "LorentzToCartesian", "titlemodifier" -> "", "windowtitle" -> 
+    "LorentzToCartesian", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/LorentzToCartesian"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[5775, 174, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1336889648]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 17264, 598}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[590, 21, 2314, 53, 53, "AnchorBarGrid",
+ CellID->1],
+Cell[2907, 76, 295, 11, 45, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[3227, 91, 495, 13, 102, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3747, 108, 738, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->280971684],
+Cell[4488, 134, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[CellGroupData[{
+Cell[4544, 138, 122, 3, 70, "Input",
+ CellID->446069166],
+Cell[4669, 143, 1045, 24, 93, "Output",
+ CellID->61602561]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5775, 174, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1336889648],
+Cell[CellGroupData[{
+Cell[6188, 193, 196, 6, 26, "ExampleSection",
+ CellID->1586818607],
+Cell[CellGroupData[{
+Cell[6409, 203, 123, 4, 27, "Input",
+ CellID->2133361503],
+Cell[6535, 209, 403, 17, 37, "Output",
+ CellID->1369736194]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6975, 231, 110, 3, 27, "Input",
+ CellID->151214086],
+Cell[7088, 236, 893, 39, 39, "Output",
+ CellID->263079240]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8018, 280, 176, 6, 27, "Input",
+ CellID->2100534216],
+Cell[8197, 288, 627, 27, 38, "Output",
+ CellID->1423936308]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8861, 320, 110, 3, 27, "Input",
+ CellID->507274850],
+Cell[8974, 325, 6235, 220, 75, "Output",
+ CellID->354058269]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[15248, 550, 23, 0, 41, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

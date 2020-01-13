@@ -1,0 +1,568 @@
+Tests`Lorentz`fcitContract =
+({
+{"fcitContract-ID1",
+"Y[k_, mu_, nu_, al_, be_, ga_] :=
+FVD[k, mu] (MTD[nu, be] MTD[al, ga] - MTD[nu, ga] MTD[al, be]) +
+FVD[k, be] (MTD[mu, al] MTD[nu, ga] -
+	1/2 MTD[mu, nu] MTD[al, ga]) -
+FVD[k, ga] (MTD[mu, al] MTD[nu, be] -
+	1/2 MTD[mu, nu] MTD[al, be]); \n
+Z[k1_, k2_, k3_, mu_, nu_, al_, be_, ga_] :=
+Y[k1, mu, nu, al, be, ga] + Y[k2, mu, nu, be, ga, al] +
+Y[k3, nu, mu, ga, al, be] + Y[k1, nu, mu, al, be, ga] +
+Y[k2, nu, mu, be, ga, al] + Y[k3, nu, mu, ga, al, be];  \n
+gps[mu_, nu_, rho_, si_] := (MTD[mu, rho] - (FVD[k, mu] FVD[k, rho])/SPD[k, k]) (MTD[
+	nu, si] - (FVD[k, nu] FVD[k, si])/SPD[k, k]) + (MTD[mu,
+	si] - (FVD[k, mu] FVD[k, si])/SPD[k, k]) (MTD[nu,
+	rho] - (FVD[k, nu] FVD[k, rho])/SPD[k, k]) -
+2/3 (MTD[mu, nu] - (FVD[k, mu] FVD[k, nu])/SPD[k, k]) (MTD[rho,
+	si] - (FVD[k, rho] FVD[k, si]/SPD[k, k])); \n
+xyz[k1_, k2_, k3_, al_, be_, ga_] :=
+MTD[al, be] FVD[(k1 - k2), ga] + MTD[be, ga] FVD[(k2 - k3), al] + MTD[ga, al] FVD[(k3 - k1), be];
+gp = (GSD[p3] + m).GAD[ga].(GSD[p4 + k] + m).(FVD[2 p4 + k, mu] GAD[nu] +
+	FVD[2 p4 + k, nu].GAD[mu]).gps[mu, nu, rho, si].(GSD[p4] - m); \n
+cp = xyz[k1, k2, -k1 + k2, al, be, ga];  \n
+cpc = Z[-k1, -k2, k1 + k2 - k, rho, si, al, be, eps];  \n
+TimeConstrained[(res = Contract[TR[gp.GAD[eps]] cp cpc];), If[$VersionNumber>=9,5,10]]; \n FCE[res]",
+"-192*m^2*SPD[k, k1]*SPD[k, p4] + 128*D*m^2*SPD[k, k1]*SPD[k, p4] +
+(128*m^2*SPD[k, k1]^2*SPD[k, p4])/(3*SPD[k, k]) -
+(256*D*m^2*SPD[k, k1]^2*SPD[k, p4])/(3*SPD[k, k]) +
+(32*D^2*m^2*SPD[k, k1]^2*SPD[k, p4])/SPD[k, k] +
+64*m^2*SPD[k, k2]*SPD[k, p4] - (128*D*m^2*SPD[k, k2]*SPD[k, p4])/3 -
+(256*m^2*SPD[k, k1]*SPD[k, k2]*SPD[k, p4])/(3*SPD[k, k]) +
+(512*D*m^2*SPD[k, k1]*SPD[k, k2]*SPD[k, p4])/(3*SPD[k, k]) -
+(64*D^2*m^2*SPD[k, k1]*SPD[k, k2]*SPD[k, p4])/SPD[k, k] +
+(128*m^2*SPD[k, k2]^2*SPD[k, p4])/(3*SPD[k, k]) -
+(256*D*m^2*SPD[k, k2]^2*SPD[k, p4])/(3*SPD[k, k]) +
+(32*D^2*m^2*SPD[k, k2]^2*SPD[k, p4])/SPD[k, k] +
+(576*m^2*SPD[k, k1]*SPD[k, p3]*SPD[k, p4])/SPD[k, k] -
+(352*D*m^2*SPD[k, k1]*SPD[k, p3]*SPD[k, p4])/SPD[k, k] +
+(32*D^2*m^2*SPD[k, k1]*SPD[k, p3]*SPD[k, p4])/SPD[k, k] -
+(192*m^2*SPD[k, k2]*SPD[k, p3]*SPD[k, p4])/SPD[k, k] +
+(352*D*m^2*SPD[k, k2]*SPD[k, p3]*SPD[k, p4])/(3*SPD[k, k]) -
+(32*D^2*m^2*SPD[k, k2]*SPD[k, p3]*SPD[k, p4])/(3*SPD[k, k]) -
+(384*m^2*SPD[k, k1]*SPD[k, p4]^2)/SPD[k, k] +
+(256*D*m^2*SPD[k, k1]*SPD[k, p4]^2)/SPD[k, k] -
+(512*m^2*SPD[k, k1]^2*SPD[k, p4]^2)/(3*SPD[k, k]^2) +
+(256*D*m^2*SPD[k, k1]^2*SPD[k, p4]^2)/(3*SPD[k, k]^2) +
+(128*m^2*SPD[k, k2]*SPD[k, p4]^2)/SPD[k, k] -
+(256*D*m^2*SPD[k, k2]*SPD[k, p4]^2)/(3*SPD[k, k]) +
+(1024*m^2*SPD[k, k1]*SPD[k, k2]*SPD[k, p4]^2)/(3*SPD[k, k]^2) -
+(512*D*m^2*SPD[k, k1]*SPD[k, k2]*SPD[k, p4]^2)/(3*SPD[k, k]^2) -
+(512*m^2*SPD[k, k2]^2*SPD[k, p4]^2)/(3*SPD[k, k]^2) +
+(256*D*m^2*SPD[k, k2]^2*SPD[k, p4]^2)/(3*SPD[k, k]^2) +
+(384*SPD[k, k1]*SPD[k, p3]*SPD[k, p4]^2)/SPD[k, k] -
+(192*D*SPD[k, k1]*SPD[k, p3]*SPD[k, p4]^2)/SPD[k, k] -
+(128*SPD[k, k2]*SPD[k, p3]*SPD[k, p4]^2)/SPD[k, k] +
+(64*D*SPD[k, k2]*SPD[k, p3]*SPD[k, p4]^2)/SPD[k, k] -
+(2048*m^2*SPD[k, p3]*SPD[k, p4]*SPD[k1, k1])/SPD[k, k] +
+(928*D*m^2*SPD[k, p3]*SPD[k, p4]*SPD[k1, k1])/SPD[k, k] -
+(64*D^2*m^2*SPD[k, p3]*SPD[k, p4]*SPD[k1, k1])/SPD[k, k] +
+(128*m^2*SPD[k, p4]^2*SPD[k1, k1])/SPD[k, k] -
+(64*D*m^2*SPD[k, p4]^2*SPD[k1, k1])/SPD[k, k] -
+(1984*SPD[k, p3]*SPD[k, p4]^2*SPD[k1, k1])/(3*SPD[k, k]) +
+(384*D*SPD[k, p3]*SPD[k, p4]^2*SPD[k1, k1])/SPD[k, k] +
+(2560*SPD[k, p3]*SPD[k, p4]^3*SPD[k1, k1])/(3*SPD[k, k]^2) -
+(256*m^2*SPD[k, p3]*SPD[k, p4]*SPD[k1, k2])/SPD[k, k] +
+(64*D*m^2*SPD[k, p3]*SPD[k, p4]*SPD[k1, k2])/SPD[k, k] -
+(256*m^2*SPD[k, p4]^2*SPD[k1, k2])/SPD[k, k] +
+(128*D*m^2*SPD[k, p4]^2*SPD[k1, k2])/SPD[k, k] +
+(128*SPD[k, p3]*SPD[k, p4]^2*SPD[k1, k2])/(3*SPD[k, k]) +
+(1024*SPD[k, p3]*SPD[k, p4]^3*SPD[k1, k2])/(3*SPD[k, k]^2) +
+(4736*m^2*SPD[k, k1]*SPD[k, p4]*SPD[k1, p3])/(3*SPD[k, k]) -
+(2144*D*m^2*SPD[k, k1]*SPD[k, p4]*SPD[k1, p3])/(3*SPD[k, k]) +
+(160*D^2*m^2*SPD[k, k1]*SPD[k, p4]*SPD[k1, p3])/(3*SPD[k, k]) -
+(512*m^2*SPD[k, k2]*SPD[k, p4]*SPD[k1, p3])/(3*SPD[k, k]) +
+(608*D*m^2*SPD[k, k2]*SPD[k, p4]*SPD[k1, p3])/(3*SPD[k, k]) -
+(160*D^2*m^2*SPD[k, k2]*SPD[k, p4]*SPD[k1, p3])/(3*SPD[k, k]) +
+96*SPD[k, p4]^2*SPD[k1, p3] - 32*D*SPD[k, p4]^2*SPD[k1, p3] +
+(704*SPD[k, k1]*SPD[k, p4]^2*SPD[k1, p3])/SPD[k, k] -
+(1408*D*SPD[k, k1]*SPD[k, p4]^2*SPD[k1, p3])/(3*SPD[k, k]) +
+(32*D^2*SPD[k, k1]*SPD[k, p4]^2*SPD[k1, p3])/SPD[k, k] +
+(128*SPD[k, k2]*SPD[k, p4]^2*SPD[k1, p3])/SPD[k, k] +
+(256*D*SPD[k, k2]*SPD[k, p4]^2*SPD[k1, p3])/(3*SPD[k, k]) -
+(32*D^2*SPD[k, k2]*SPD[k, p4]^2*SPD[k1, p3])/SPD[k, k] +
+(384*SPD[k, p4]^3*SPD[k1, p3])/SPD[k, k] - (64*D*SPD[k, p4]^3*SPD[k1, p3])/
+SPD[k, k] - (1024*SPD[k, k1]*SPD[k, p4]^3*SPD[k1, p3])/SPD[k, k]^2 +
+(256*D*SPD[k, k1]*SPD[k, p4]^3*SPD[k1, p3])/(3*SPD[k, k]^2) -
+(256*D*SPD[k, k2]*SPD[k, p4]^3*SPD[k1, p3])/(3*SPD[k, k]^2) +
+192*m^2*SPD[k, k]*SPD[k1, p4] - 128*D*m^2*SPD[k, k]*SPD[k1, p4] -
+(128*m^2*SPD[k, k1]*SPD[k1, p4])/3 + (256*D*m^2*SPD[k, k1]*SPD[k1, p4])/3 -
+32*D^2*m^2*SPD[k, k1]*SPD[k1, p4] - (1024*m^2*SPD[k, k2]*SPD[k1, p4])/3 +
+(512*D*m^2*SPD[k, k2]*SPD[k1, p4])/3 + 32*D^2*m^2*SPD[k, k2]*SPD[k1, p4] +
+192*m^2*SPD[k, p3]*SPD[k1, p4] - 128*D*m^2*SPD[k, p3]*SPD[k1, p4] +
+(640*m^2*SPD[k, k1]*SPD[k, p3]*SPD[k1, p4])/SPD[k, k] -
+(160*D*m^2*SPD[k, k1]*SPD[k, p3]*SPD[k1, p4])/(3*SPD[k, k]) +
+(160*D*m^2*SPD[k, k2]*SPD[k, p3]*SPD[k1, p4])/(3*SPD[k, k]) +
+384*m^2*SPD[k, p4]*SPD[k1, p4] - 256*D*m^2*SPD[k, p4]*SPD[k1, p4] +
+(512*m^2*SPD[k, k1]*SPD[k, p4]*SPD[k1, p4])/(3*SPD[k, k]) -
+(640*D*m^2*SPD[k, k1]*SPD[k, p4]*SPD[k1, p4])/(3*SPD[k, k]) +
+(64*D^2*m^2*SPD[k, k1]*SPD[k, p4]*SPD[k1, p4])/SPD[k, k] -
+(2816*m^2*SPD[k, k2]*SPD[k, p4]*SPD[k1, p4])/(3*SPD[k, k]) +
+(2176*D*m^2*SPD[k, k2]*SPD[k, p4]*SPD[k1, p4])/(3*SPD[k, k]) -
+(64*D^2*m^2*SPD[k, k2]*SPD[k, p4]*SPD[k1, p4])/SPD[k, k] -
+96*SPD[k, p3]*SPD[k, p4]*SPD[k1, p4] - 32*D*SPD[k, p3]*SPD[k, p4]*
+SPD[k1, p4] - (192*SPD[k, k1]*SPD[k, p3]*SPD[k, p4]*SPD[k1, p4])/
+SPD[k, k] + (320*D*SPD[k, k1]*SPD[k, p3]*SPD[k, p4]*SPD[k1, p4])/
+(3*SPD[k, k]) - (32*D^2*SPD[k, k1]*SPD[k, p3]*SPD[k, p4]*SPD[k1, p4])/
+SPD[k, k] + (256*SPD[k, k2]*SPD[k, p3]*SPD[k, p4]*SPD[k1, p4])/SPD[k, k] -
+(896*D*SPD[k, k2]*SPD[k, p3]*SPD[k, p4]*SPD[k1, p4])/(3*SPD[k, k]) +
+(32*D^2*SPD[k, k2]*SPD[k, p3]*SPD[k, p4]*SPD[k1, p4])/SPD[k, k] -
+(384*SPD[k, p3]*SPD[k, p4]^2*SPD[k1, p4])/SPD[k, k] -
+(64*D*SPD[k, p3]*SPD[k, p4]^2*SPD[k1, p4])/SPD[k, k] -
+(1024*SPD[k, k1]*SPD[k, p3]*SPD[k, p4]^2*SPD[k1, p4])/SPD[k, k]^2 +
+(256*D*SPD[k, k1]*SPD[k, p3]*SPD[k, p4]^2*SPD[k1, p4])/(3*SPD[k, k]^2) -
+(256*D*SPD[k, k2]*SPD[k, p3]*SPD[k, p4]^2*SPD[k1, p4])/(3*SPD[k, k]^2) -
+(4736*m^2*SPD[k1, p3]*SPD[k1, p4])/3 + (2144*D*m^2*SPD[k1, p3]*SPD[k1, p4])/
+3 - (160*D^2*m^2*SPD[k1, p3]*SPD[k1, p4])/3 -
+(4736*SPD[k, p4]*SPD[k1, p3]*SPD[k1, p4])/3 +
+(2144*D*SPD[k, p4]*SPD[k1, p3]*SPD[k1, p4])/3 -
+(160*D^2*SPD[k, p4]*SPD[k1, p3]*SPD[k1, p4])/3 -
+(2560*SPD[k, p4]^2*SPD[k1, p3]*SPD[k1, p4])/(3*SPD[k, k]) +
+(1408*D*SPD[k, p4]^2*SPD[k1, p3]*SPD[k1, p4])/(3*SPD[k, k]) -
+(128*D^2*SPD[k, p4]^2*SPD[k1, p3]*SPD[k1, p4])/(3*SPD[k, k]) -
+128*m^2*SPD[k1, p4]^2 + 192*D*m^2*SPD[k1, p4]^2 - 64*D^2*m^2*SPD[k1, p4]^2 +
+832*SPD[k, p3]*SPD[k1, p4]^2 - 160*D*SPD[k, p3]*SPD[k1, p4]^2 +
+32*D^2*SPD[k, p3]*SPD[k1, p4]^2 + (1536*SPD[k, p3]*SPD[k, p4]*SPD[k1, p4]^2)/
+SPD[k, k] - (128*D*SPD[k, p3]*SPD[k, p4]*SPD[k1, p4]^2)/SPD[k, k] +
+(128*m^2*SPD[k, p3]*SPD[k, p4]*SPD[k2, k2])/SPD[k, k] -
+(32*D*m^2*SPD[k, p3]*SPD[k, p4]*SPD[k2, k2])/SPD[k, k] +
+(128*m^2*SPD[k, p4]^2*SPD[k2, k2])/SPD[k, k] -
+(64*D*m^2*SPD[k, p4]^2*SPD[k2, k2])/SPD[k, k] -
+(64*SPD[k, p3]*SPD[k, p4]^2*SPD[k2, k2])/(3*SPD[k, k]) -
+(512*SPD[k, p3]*SPD[k, p4]^3*SPD[k2, k2])/(3*SPD[k, k]^2) -
+(512*m^2*SPD[k, k1]*SPD[k, p4]*SPD[k2, p3])/(3*SPD[k, k]) +
+(608*D*m^2*SPD[k, k1]*SPD[k, p4]*SPD[k2, p3])/(3*SPD[k, k]) -
+(160*D^2*m^2*SPD[k, k1]*SPD[k, p4]*SPD[k2, p3])/(3*SPD[k, k]) +
+(512*m^2*SPD[k, k2]*SPD[k, p4]*SPD[k2, p3])/(3*SPD[k, k]) -
+(608*D*m^2*SPD[k, k2]*SPD[k, p4]*SPD[k2, p3])/(3*SPD[k, k]) +
+(160*D^2*m^2*SPD[k, k2]*SPD[k, p4]*SPD[k2, p3])/(3*SPD[k, k]) -
+32*SPD[k, p4]^2*SPD[k2, p3] + (32*D*SPD[k, p4]^2*SPD[k2, p3])/3 -
+(256*SPD[k, k1]*SPD[k, p4]^2*SPD[k2, p3])/SPD[k, k] +
+(256*D*SPD[k, k1]*SPD[k, p4]^2*SPD[k2, p3])/(3*SPD[k, k]) -
+(32*D^2*SPD[k, k1]*SPD[k, p4]^2*SPD[k2, p3])/SPD[k, k] +
+(64*SPD[k, k2]*SPD[k, p4]^2*SPD[k2, p3])/SPD[k, k] -
+(256*D*SPD[k, k2]*SPD[k, p4]^2*SPD[k2, p3])/(3*SPD[k, k]) +
+(32*D^2*SPD[k, k2]*SPD[k, p4]^2*SPD[k2, p3])/SPD[k, k] -
+(128*SPD[k, p4]^3*SPD[k2, p3])/SPD[k, k] + (64*D*SPD[k, p4]^3*SPD[k2, p3])/
+(3*SPD[k, k]) - (256*D*SPD[k, k1]*SPD[k, p4]^3*SPD[k2, p3])/
+(3*SPD[k, k]^2) + (256*D*SPD[k, k2]*SPD[k, p4]^3*SPD[k2, p3])/
+(3*SPD[k, k]^2) + (512*m^2*SPD[k1, p4]*SPD[k2, p3])/3 -
+(608*D*m^2*SPD[k1, p4]*SPD[k2, p3])/3 +
+(160*D^2*m^2*SPD[k1, p4]*SPD[k2, p3])/3 +
+(512*SPD[k, p4]*SPD[k1, p4]*SPD[k2, p3])/3 -
+(608*D*SPD[k, p4]*SPD[k1, p4]*SPD[k2, p3])/3 +
+(160*D^2*SPD[k, p4]*SPD[k1, p4]*SPD[k2, p3])/3 +
+(1024*SPD[k, p4]^2*SPD[k1, p4]*SPD[k2, p3])/(3*SPD[k, k]) -
+(640*D*SPD[k, p4]^2*SPD[k1, p4]*SPD[k2, p3])/(3*SPD[k, k]) +
+(128*D^2*SPD[k, p4]^2*SPD[k1, p4]*SPD[k2, p3])/(3*SPD[k, k]) -
+64*m^2*SPD[k, k]*SPD[k2, p4] + (128*D*m^2*SPD[k, k]*SPD[k2, p4])/3 +
+(1280*m^2*SPD[k, k1]*SPD[k2, p4])/3 - (1024*D*m^2*SPD[k, k1]*SPD[k2, p4])/
+3 + 32*D^2*m^2*SPD[k, k1]*SPD[k2, p4] - (128*m^2*SPD[k, k2]*SPD[k2, p4])/
+3 + (256*D*m^2*SPD[k, k2]*SPD[k2, p4])/3 -
+32*D^2*m^2*SPD[k, k2]*SPD[k2, p4] - 64*m^2*SPD[k, p3]*SPD[k2, p4] +
+(128*D*m^2*SPD[k, p3]*SPD[k2, p4])/3 +
+(160*D*m^2*SPD[k, k1]*SPD[k, p3]*SPD[k2, p4])/(3*SPD[k, k]) -
+(160*D*m^2*SPD[k, k2]*SPD[k, p3]*SPD[k2, p4])/(3*SPD[k, k]) -
+128*m^2*SPD[k, p4]*SPD[k2, p4] + (256*D*m^2*SPD[k, p4]*SPD[k2, p4])/3 +
+(1792*m^2*SPD[k, k1]*SPD[k, p4]*SPD[k2, p4])/(3*SPD[k, k]) -
+(896*D*m^2*SPD[k, k1]*SPD[k, p4]*SPD[k2, p4])/(3*SPD[k, k]) -
+(64*D^2*m^2*SPD[k, k1]*SPD[k, p4]*SPD[k2, p4])/SPD[k, k] +
+(512*m^2*SPD[k, k2]*SPD[k, p4]*SPD[k2, p4])/(3*SPD[k, k]) -
+(640*D*m^2*SPD[k, k2]*SPD[k, p4]*SPD[k2, p4])/(3*SPD[k, k]) +
+(64*D^2*m^2*SPD[k, k2]*SPD[k, p4]*SPD[k2, p4])/SPD[k, k] +
+32*SPD[k, p3]*SPD[k, p4]*SPD[k2, p4] +
+(32*D*SPD[k, p3]*SPD[k, p4]*SPD[k2, p4])/3 -
+(128*SPD[k, k1]*SPD[k, p3]*SPD[k, p4]*SPD[k2, p4])/SPD[k, k] +
+(256*D*SPD[k, k1]*SPD[k, p3]*SPD[k, p4]*SPD[k2, p4])/(3*SPD[k, k]) +
+(32*D^2*SPD[k, k1]*SPD[k, p3]*SPD[k, p4]*SPD[k2, p4])/SPD[k, k] -
+(64*SPD[k, k2]*SPD[k, p3]*SPD[k, p4]*SPD[k2, p4])/SPD[k, k] +
+(320*D*SPD[k, k2]*SPD[k, p3]*SPD[k, p4]*SPD[k2, p4])/(3*SPD[k, k]) -
+(32*D^2*SPD[k, k2]*SPD[k, p3]*SPD[k, p4]*SPD[k2, p4])/SPD[k, k] +
+(128*SPD[k, p3]*SPD[k, p4]^2*SPD[k2, p4])/SPD[k, k] +
+(64*D*SPD[k, p3]*SPD[k, p4]^2*SPD[k2, p4])/(3*SPD[k, k]) -
+(256*D*SPD[k, k1]*SPD[k, p3]*SPD[k, p4]^2*SPD[k2, p4])/(3*SPD[k, k]^2) +
+(256*D*SPD[k, k2]*SPD[k, p3]*SPD[k, p4]^2*SPD[k2, p4])/(3*SPD[k, k]^2) +
+(512*m^2*SPD[k1, p3]*SPD[k2, p4])/3 - (608*D*m^2*SPD[k1, p3]*SPD[k2, p4])/
+3 + (160*D^2*m^2*SPD[k1, p3]*SPD[k2, p4])/3 +
+(512*SPD[k, p4]*SPD[k1, p3]*SPD[k2, p4])/3 -
+(608*D*SPD[k, p4]*SPD[k1, p3]*SPD[k2, p4])/3 +
+(160*D^2*SPD[k, p4]*SPD[k1, p3]*SPD[k2, p4])/3 +
+(1024*SPD[k, p4]^2*SPD[k1, p3]*SPD[k2, p4])/(3*SPD[k, k]) -
+(640*D*SPD[k, p4]^2*SPD[k1, p3]*SPD[k2, p4])/(3*SPD[k, k]) +
+(128*D^2*SPD[k, p4]^2*SPD[k1, p3]*SPD[k2, p4])/(3*SPD[k, k]) +
+256*m^2*SPD[k1, p4]*SPD[k2, p4] - 384*D*m^2*SPD[k1, p4]*SPD[k2, p4] +
+128*D^2*m^2*SPD[k1, p4]*SPD[k2, p4] - 128*SPD[k, p3]*SPD[k1, p4]*
+SPD[k2, p4] + 320*D*SPD[k, p3]*SPD[k1, p4]*SPD[k2, p4] -
+64*D^2*SPD[k, p3]*SPD[k1, p4]*SPD[k2, p4] +
+(256*D*SPD[k, p3]*SPD[k, p4]*SPD[k1, p4]*SPD[k2, p4])/SPD[k, k] -
+(512*m^2*SPD[k2, p3]*SPD[k2, p4])/3 + (608*D*m^2*SPD[k2, p3]*SPD[k2, p4])/
+3 - (160*D^2*m^2*SPD[k2, p3]*SPD[k2, p4])/3 -
+(512*SPD[k, p4]*SPD[k2, p3]*SPD[k2, p4])/3 +
+(608*D*SPD[k, p4]*SPD[k2, p3]*SPD[k2, p4])/3 -
+(160*D^2*SPD[k, p4]*SPD[k2, p3]*SPD[k2, p4])/3 -
+(1024*SPD[k, p4]^2*SPD[k2, p3]*SPD[k2, p4])/(3*SPD[k, k]) +
+(640*D*SPD[k, p4]^2*SPD[k2, p3]*SPD[k2, p4])/(3*SPD[k, k]) -
+(128*D^2*SPD[k, p4]^2*SPD[k2, p3]*SPD[k2, p4])/(3*SPD[k, k]) -
+128*m^2*SPD[k2, p4]^2 + 192*D*m^2*SPD[k2, p4]^2 - 64*D^2*m^2*SPD[k2, p4]^2 +
+64*SPD[k, p3]*SPD[k2, p4]^2 - 160*D*SPD[k, p3]*SPD[k2, p4]^2 +
+32*D^2*SPD[k, p3]*SPD[k2, p4]^2 -
+(128*D*SPD[k, p3]*SPD[k, p4]*SPD[k2, p4]^2)/SPD[k, k] -
+768*m^2*SPD[k, k1]*SPD[p3, p4] + 480*D*m^2*SPD[k, k1]*SPD[p3, p4] -
+32*D^2*m^2*SPD[k, k1]*SPD[p3, p4] - (640*m^2*SPD[k, k1]^2*SPD[p3, p4])/
+SPD[k, k] + (160*D*m^2*SPD[k, k1]^2*SPD[p3, p4])/(3*SPD[k, k]) +
+256*m^2*SPD[k, k2]*SPD[p3, p4] - 160*D*m^2*SPD[k, k2]*SPD[p3, p4] +
+(32*D^2*m^2*SPD[k, k2]*SPD[p3, p4])/3 -
+(320*D*m^2*SPD[k, k1]*SPD[k, k2]*SPD[p3, p4])/(3*SPD[k, k]) +
+(160*D*m^2*SPD[k, k2]^2*SPD[p3, p4])/(3*SPD[k, k]) -
+1056*SPD[k, k1]*SPD[k, p4]*SPD[p3, p4] + 576*D*SPD[k, k1]*SPD[k, p4]*
+SPD[p3, p4] - 32*D^2*SPD[k, k1]*SPD[k, p4]*SPD[p3, p4] +
+(192*SPD[k, k1]^2*SPD[k, p4]*SPD[p3, p4])/SPD[k, k] -
+(320*D*SPD[k, k1]^2*SPD[k, p4]*SPD[p3, p4])/(3*SPD[k, k]) +
+(32*D^2*SPD[k, k1]^2*SPD[k, p4]*SPD[p3, p4])/SPD[k, k] +
+352*SPD[k, k2]*SPD[k, p4]*SPD[p3, p4] - 192*D*SPD[k, k2]*SPD[k, p4]*
+SPD[p3, p4] + (32*D^2*SPD[k, k2]*SPD[k, p4]*SPD[p3, p4])/3 -
+(128*SPD[k, k1]*SPD[k, k2]*SPD[k, p4]*SPD[p3, p4])/SPD[k, k] +
+(640*D*SPD[k, k1]*SPD[k, k2]*SPD[k, p4]*SPD[p3, p4])/(3*SPD[k, k]) -
+(64*D^2*SPD[k, k1]*SPD[k, k2]*SPD[k, p4]*SPD[p3, p4])/SPD[k, k] +
+(64*SPD[k, k2]^2*SPD[k, p4]*SPD[p3, p4])/SPD[k, k] -
+(320*D*SPD[k, k2]^2*SPD[k, p4]*SPD[p3, p4])/(3*SPD[k, k]) +
+(32*D^2*SPD[k, k2]^2*SPD[k, p4]*SPD[p3, p4])/SPD[k, k] -
+(1152*SPD[k, k1]*SPD[k, p4]^2*SPD[p3, p4])/SPD[k, k] +
+(576*D*SPD[k, k1]*SPD[k, p4]^2*SPD[p3, p4])/SPD[k, k] -
+(64*D^2*SPD[k, k1]*SPD[k, p4]^2*SPD[p3, p4])/SPD[k, k] +
+(1024*SPD[k, k1]^2*SPD[k, p4]^2*SPD[p3, p4])/SPD[k, k]^2 -
+(256*D*SPD[k, k1]^2*SPD[k, p4]^2*SPD[p3, p4])/(3*SPD[k, k]^2) +
+(384*SPD[k, k2]*SPD[k, p4]^2*SPD[p3, p4])/SPD[k, k] -
+(192*D*SPD[k, k2]*SPD[k, p4]^2*SPD[p3, p4])/SPD[k, k] +
+(64*D^2*SPD[k, k2]*SPD[k, p4]^2*SPD[p3, p4])/(3*SPD[k, k]) +
+(512*D*SPD[k, k1]*SPD[k, k2]*SPD[k, p4]^2*SPD[p3, p4])/(3*SPD[k, k]^2) -
+(256*D*SPD[k, k2]^2*SPD[k, p4]^2*SPD[p3, p4])/(3*SPD[k, k]^2) +
+2048*m^2*SPD[k1, k1]*SPD[p3, p4] - 928*D*m^2*SPD[k1, k1]*SPD[p3, p4] +
+64*D^2*m^2*SPD[k1, k1]*SPD[p3, p4] + 2048*SPD[k, p4]*SPD[k1, k1]*
+SPD[p3, p4] - 928*D*SPD[k, p4]*SPD[k1, k1]*SPD[p3, p4] +
+64*D^2*SPD[k, p4]*SPD[k1, k1]*SPD[p3, p4] +
+(2048*SPD[k, p4]^2*SPD[k1, k1]*SPD[p3, p4])/SPD[k, k] -
+(1152*D*SPD[k, p4]^2*SPD[k1, k1]*SPD[p3, p4])/SPD[k, k] +
+(128*D^2*SPD[k, p4]^2*SPD[k1, k1]*SPD[p3, p4])/SPD[k, k] +
+256*m^2*SPD[k1, k2]*SPD[p3, p4] - 64*D*m^2*SPD[k1, k2]*SPD[p3, p4] +
+256*SPD[k, p4]*SPD[k1, k2]*SPD[p3, p4] - 64*D*SPD[k, p4]*SPD[k1, k2]*
+SPD[p3, p4] + 288*SPD[k, k]*SPD[k1, p4]*SPD[p3, p4] -
+96*D*SPD[k, k]*SPD[k1, p4]*SPD[p3, p4] - 832*SPD[k, k1]*SPD[k1, p4]*
+SPD[p3, p4] + 160*D*SPD[k, k1]*SPD[k1, p4]*SPD[p3, p4] -
+32*D^2*SPD[k, k1]*SPD[k1, p4]*SPD[p3, p4] - 128*SPD[k, k2]*SPD[k1, p4]*
+SPD[p3, p4] + 32*D*SPD[k, k2]*SPD[k1, p4]*SPD[p3, p4] +
+32*D^2*SPD[k, k2]*SPD[k1, p4]*SPD[p3, p4] + 384*SPD[k, p4]*SPD[k1, p4]*
+SPD[p3, p4] - (1536*SPD[k, k1]*SPD[k, p4]*SPD[k1, p4]*SPD[p3, p4])/
+SPD[k, k] + (128*D*SPD[k, k1]*SPD[k, p4]*SPD[k1, p4]*SPD[p3, p4])/
+SPD[k, k] - (128*D*SPD[k, k2]*SPD[k, p4]*SPD[k1, p4]*SPD[p3, p4])/
+SPD[k, k] - 128*m^2*SPD[k2, k2]*SPD[p3, p4] +
+32*D*m^2*SPD[k2, k2]*SPD[p3, p4] - 128*SPD[k, p4]*SPD[k2, k2]*SPD[p3, p4] +
+32*D*SPD[k, p4]*SPD[k2, k2]*SPD[p3, p4] - 96*SPD[k, k]*SPD[k2, p4]*
+SPD[p3, p4] + 32*D*SPD[k, k]*SPD[k2, p4]*SPD[p3, p4] +
+256*SPD[k, k1]*SPD[k2, p4]*SPD[p3, p4] - 352*D*SPD[k, k1]*SPD[k2, p4]*
+SPD[p3, p4] + 32*D^2*SPD[k, k1]*SPD[k2, p4]*SPD[p3, p4] -
+64*SPD[k, k2]*SPD[k2, p4]*SPD[p3, p4] + 160*D*SPD[k, k2]*SPD[k2, p4]*
+SPD[p3, p4] - 32*D^2*SPD[k, k2]*SPD[k2, p4]*SPD[p3, p4] -
+128*SPD[k, p4]*SPD[k2, p4]*SPD[p3, p4] -
+(128*D*SPD[k, k1]*SPD[k, p4]*SPD[k2, p4]*SPD[p3, p4])/SPD[k, k] +
+(128*D*SPD[k, k2]*SPD[k, p4]*SPD[k2, p4]*SPD[p3, p4])/SPD[k, k] +
+(128*m^2*SPD[k, k1]^2*SPD[p4, p4])/SPD[k, k] -
+(64*D*m^2*SPD[k, k1]^2*SPD[p4, p4])/SPD[k, k] -
+(256*m^2*SPD[k, k1]*SPD[k, k2]*SPD[p4, p4])/SPD[k, k] +
+(128*D*m^2*SPD[k, k1]*SPD[k, k2]*SPD[p4, p4])/SPD[k, k] +
+(128*m^2*SPD[k, k2]^2*SPD[p4, p4])/SPD[k, k] -
+(64*D*m^2*SPD[k, k2]^2*SPD[p4, p4])/SPD[k, k] +
+480*SPD[k, k1]*SPD[k, p3]*SPD[p4, p4] - 256*D*SPD[k, k1]*SPD[k, p3]*
+SPD[p4, p4] + 32*D^2*SPD[k, k1]*SPD[k, p3]*SPD[p4, p4] -
+160*SPD[k, k2]*SPD[k, p3]*SPD[p4, p4] +
+(256*D*SPD[k, k2]*SPD[k, p3]*SPD[p4, p4])/3 -
+(32*D^2*SPD[k, k2]*SPD[k, p3]*SPD[p4, p4])/3 +
+(960*SPD[k, k1]*SPD[k, p3]*SPD[k, p4]*SPD[p4, p4])/SPD[k, k] -
+(352*D*SPD[k, k1]*SPD[k, p3]*SPD[k, p4]*SPD[p4, p4])/SPD[k, k] +
+(32*D^2*SPD[k, k1]*SPD[k, p3]*SPD[k, p4]*SPD[p4, p4])/SPD[k, k] -
+(320*SPD[k, k2]*SPD[k, p3]*SPD[k, p4]*SPD[p4, p4])/SPD[k, k] +
+(352*D*SPD[k, k2]*SPD[k, p3]*SPD[k, p4]*SPD[p4, p4])/(3*SPD[k, k]) -
+(32*D^2*SPD[k, k2]*SPD[k, p3]*SPD[k, p4]*SPD[p4, p4])/(3*SPD[k, k]) -
+128*m^2*SPD[k1, k1]*SPD[p4, p4] + 64*D*m^2*SPD[k1, k1]*SPD[p4, p4] -
+(4160*SPD[k, p3]*SPD[k1, k1]*SPD[p4, p4])/3 +
+544*D*SPD[k, p3]*SPD[k1, k1]*SPD[p4, p4] - 64*D^2*SPD[k, p3]*SPD[k1, k1]*
+SPD[p4, p4] - (8704*SPD[k, p3]*SPD[k, p4]*SPD[k1, k1]*SPD[p4, p4])/
+(3*SPD[k, k]) + (928*D*SPD[k, p3]*SPD[k, p4]*SPD[k1, k1]*SPD[p4, p4])/
+SPD[k, k] - (64*D^2*SPD[k, p3]*SPD[k, p4]*SPD[k1, k1]*SPD[p4, p4])/
+SPD[k, k] + 256*m^2*SPD[k1, k2]*SPD[p4, p4] -
+128*D*m^2*SPD[k1, k2]*SPD[p4, p4] - (896*SPD[k, p3]*SPD[k1, k2]*SPD[p4, p4])/
+3 + 64*D*SPD[k, p3]*SPD[k1, k2]*SPD[p4, p4] -
+(1792*SPD[k, p3]*SPD[k, p4]*SPD[k1, k2]*SPD[p4, p4])/(3*SPD[k, k]) +
+(64*D*SPD[k, p3]*SPD[k, p4]*SPD[k1, k2]*SPD[p4, p4])/SPD[k, k] -
+96*SPD[k, k]*SPD[k1, p3]*SPD[p4, p4] + 32*D*SPD[k, k]*SPD[k1, p3]*
+SPD[p4, p4] + (2624*SPD[k, k1]*SPD[k1, p3]*SPD[p4, p4])/3 -
+(736*D*SPD[k, k1]*SPD[k1, p3]*SPD[p4, p4])/3 +
+(64*D^2*SPD[k, k1]*SPD[k1, p3]*SPD[p4, p4])/3 -
+(896*SPD[k, k2]*SPD[k1, p3]*SPD[p4, p4])/3 +
+(352*D*SPD[k, k2]*SPD[k1, p3]*SPD[p4, p4])/3 -
+(64*D^2*SPD[k, k2]*SPD[k1, p3]*SPD[p4, p4])/3 -
+384*SPD[k, p4]*SPD[k1, p3]*SPD[p4, p4] + 64*D*SPD[k, p4]*SPD[k1, p3]*
+SPD[p4, p4] + (7808*SPD[k, k1]*SPD[k, p4]*SPD[k1, p3]*SPD[p4, p4])/
+(3*SPD[k, k]) - (800*D*SPD[k, k1]*SPD[k, p4]*SPD[k1, p3]*SPD[p4, p4])/
+SPD[k, k] + (160*D^2*SPD[k, k1]*SPD[k, p4]*SPD[k1, p3]*SPD[p4, p4])/
+(3*SPD[k, k]) - (512*SPD[k, k2]*SPD[k, p4]*SPD[k1, p3]*SPD[p4, p4])/
+(3*SPD[k, k]) + (288*D*SPD[k, k2]*SPD[k, p4]*SPD[k1, p3]*SPD[p4, p4])/
+SPD[k, k] - (160*D^2*SPD[k, k2]*SPD[k, p4]*SPD[k1, p3]*SPD[p4, p4])/
+(3*SPD[k, k]) + 192*SPD[k, p3]*SPD[k1, p4]*SPD[p4, p4] -
+64*D*SPD[k, p3]*SPD[k1, p4]*SPD[p4, p4] +
+(128*SPD[k, k1]*SPD[k, p3]*SPD[k1, p4]*SPD[p4, p4])/SPD[k, k] -
+(32*D*SPD[k, k1]*SPD[k, p3]*SPD[k1, p4]*SPD[p4, p4])/(3*SPD[k, k]) +
+(32*D*SPD[k, k2]*SPD[k, p3]*SPD[k1, p4]*SPD[p4, p4])/(3*SPD[k, k]) -
+(2176*SPD[k1, p3]*SPD[k1, p4]*SPD[p4, p4])/3 +
+(736*D*SPD[k1, p3]*SPD[k1, p4]*SPD[p4, p4])/3 -
+(32*D^2*SPD[k1, p3]*SPD[k1, p4]*SPD[p4, p4])/3 -
+128*m^2*SPD[k2, k2]*SPD[p4, p4] + 64*D*m^2*SPD[k2, k2]*SPD[p4, p4] +
+(448*SPD[k, p3]*SPD[k2, k2]*SPD[p4, p4])/3 - 32*D*SPD[k, p3]*SPD[k2, k2]*
+SPD[p4, p4] + (896*SPD[k, p3]*SPD[k, p4]*SPD[k2, k2]*SPD[p4, p4])/
+(3*SPD[k, k]) - (32*D*SPD[k, p3]*SPD[k, p4]*SPD[k2, k2]*SPD[p4, p4])/
+SPD[k, k] + 32*SPD[k, k]*SPD[k2, p3]*SPD[p4, p4] -
+(32*D*SPD[k, k]*SPD[k2, p3]*SPD[p4, p4])/3 +
+(256*SPD[k, k1]*SPD[k2, p3]*SPD[p4, p4])/3 +
+(352*D*SPD[k, k1]*SPD[k2, p3]*SPD[p4, p4])/3 -
+(64*D^2*SPD[k, k1]*SPD[k2, p3]*SPD[p4, p4])/3 +
+(320*SPD[k, k2]*SPD[k2, p3]*SPD[p4, p4])/3 -
+(352*D*SPD[k, k2]*SPD[k2, p3]*SPD[p4, p4])/3 +
+(64*D^2*SPD[k, k2]*SPD[k2, p3]*SPD[p4, p4])/3 +
+128*SPD[k, p4]*SPD[k2, p3]*SPD[p4, p4] -
+(64*D*SPD[k, p4]*SPD[k2, p3]*SPD[p4, p4])/3 -
+(512*SPD[k, k1]*SPD[k, p4]*SPD[k2, p3]*SPD[p4, p4])/(3*SPD[k, k]) +
+(288*D*SPD[k, k1]*SPD[k, p4]*SPD[k2, p3]*SPD[p4, p4])/SPD[k, k] -
+(160*D^2*SPD[k, k1]*SPD[k, p4]*SPD[k2, p3]*SPD[p4, p4])/(3*SPD[k, k]) +
+(512*SPD[k, k2]*SPD[k, p4]*SPD[k2, p3]*SPD[p4, p4])/(3*SPD[k, k]) -
+(288*D*SPD[k, k2]*SPD[k, p4]*SPD[k2, p3]*SPD[p4, p4])/SPD[k, k] +
+(160*D^2*SPD[k, k2]*SPD[k, p4]*SPD[k2, p3]*SPD[p4, p4])/(3*SPD[k, k]) -
+(512*SPD[k1, p4]*SPD[k2, p3]*SPD[p4, p4])/3 +
+(32*D*SPD[k1, p4]*SPD[k2, p3]*SPD[p4, p4])/3 +
+(32*D^2*SPD[k1, p4]*SPD[k2, p3]*SPD[p4, p4])/3 -
+64*SPD[k, p3]*SPD[k2, p4]*SPD[p4, p4] +
+(64*D*SPD[k, p3]*SPD[k2, p4]*SPD[p4, p4])/3 +
+(32*D*SPD[k, k1]*SPD[k, p3]*SPD[k2, p4]*SPD[p4, p4])/(3*SPD[k, k]) -
+(32*D*SPD[k, k2]*SPD[k, p3]*SPD[k2, p4]*SPD[p4, p4])/(3*SPD[k, k]) -
+(512*SPD[k1, p3]*SPD[k2, p4]*SPD[p4, p4])/3 +
+(32*D*SPD[k1, p3]*SPD[k2, p4]*SPD[p4, p4])/3 +
+(32*D^2*SPD[k1, p3]*SPD[k2, p4]*SPD[p4, p4])/3 +
+(512*SPD[k2, p3]*SPD[k2, p4]*SPD[p4, p4])/3 -
+(32*D*SPD[k2, p3]*SPD[k2, p4]*SPD[p4, p4])/3 -
+(32*D^2*SPD[k2, p3]*SPD[k2, p4]*SPD[p4, p4])/3 -
+96*D*SPD[k, k1]*SPD[p3, p4]*SPD[p4, p4] + 32*D^2*SPD[k, k1]*SPD[p3, p4]*
+SPD[p4, p4] - (128*SPD[k, k1]^2*SPD[p3, p4]*SPD[p4, p4])/SPD[k, k] +
+(32*D*SPD[k, k1]^2*SPD[p3, p4]*SPD[p4, p4])/(3*SPD[k, k]) +
+32*D*SPD[k, k2]*SPD[p3, p4]*SPD[p4, p4] -
+(32*D^2*SPD[k, k2]*SPD[p3, p4]*SPD[p4, p4])/3 -
+(64*D*SPD[k, k1]*SPD[k, k2]*SPD[p3, p4]*SPD[p4, p4])/(3*SPD[k, k]) +
+(32*D*SPD[k, k2]^2*SPD[p3, p4]*SPD[p4, p4])/(3*SPD[k, k]) +
+224*D*SPD[k1, k1]*SPD[p3, p4]*SPD[p4, p4] - 64*D^2*SPD[k1, k1]*SPD[p3, p4]*
+SPD[p4, p4] + 256*SPD[k1, k2]*SPD[p3, p4]*SPD[p4, p4] -
+64*D*SPD[k1, k2]*SPD[p3, p4]*SPD[p4, p4] - 128*SPD[k2, k2]*SPD[p3, p4]*
+SPD[p4, p4] + 32*D*SPD[k2, k2]*SPD[p3, p4]*SPD[p4, p4] -
+6*((-16*SPD[k, k1]*(SPD[k, k] + 2*SPD[k, p4])*(D*m^2*SPD[k, k] +
+	2*m^2*SPD[k, p3] - D*m^2*SPD[k, p3] - 2*SPD[k, k]*SPD[p3, p4] +
+	D*SPD[k, k]*SPD[p3, p4] - 4*SPD[k, p4]*SPD[p3, p4] +
+	2*D*SPD[k, p4]*SPD[p3, p4] + 2*SPD[k, p3]*SPD[p4, p4] -
+	D*SPD[k, p3]*SPD[p4, p4]))/SPD[k, k] +
+(8*SPD[k, k1]*(2*D*m^2*SPD[k, k]^2 + 4*m^2*SPD[k, k]*SPD[k, p3] -
+	2*D*m^2*SPD[k, k]*SPD[k, p3] + 4*D*m^2*SPD[k, k]*SPD[k, p4] +
+	8*m^2*SPD[k, p3]*SPD[k, p4] - 4*D*m^2*SPD[k, p3]*SPD[k, p4] -
+	4*SPD[k, k]^2*SPD[p3, p4] + 2*D*SPD[k, k]^2*SPD[p3, p4] -
+	16*SPD[k, k]*SPD[k, p4]*SPD[p3, p4] + 8*D*SPD[k, k]*SPD[k, p4]*
+	SPD[p3, p4] - 16*SPD[k, p4]^2*SPD[p3, p4] + 8*D*SPD[k, p4]^2*
+	SPD[p3, p4] + 4*SPD[k, k]*SPD[k, p3]*SPD[p4, p4] -
+	2*D*SPD[k, k]*SPD[k, p3]*SPD[p4, p4] + 8*SPD[k, p3]*SPD[k, p4]*
+	SPD[p4, p4] - 4*D*SPD[k, p3]*SPD[k, p4]*SPD[p4, p4]))/SPD[k, k]) +
+2*((-16*SPD[k, k2]*(SPD[k, k] + 2*SPD[k, p4])*(D*m^2*SPD[k, k] +
+	2*m^2*SPD[k, p3] - D*m^2*SPD[k, p3] - 2*SPD[k, k]*SPD[p3, p4] +
+	D*SPD[k, k]*SPD[p3, p4] - 4*SPD[k, p4]*SPD[p3, p4] +
+	2*D*SPD[k, p4]*SPD[p3, p4] + 2*SPD[k, p3]*SPD[p4, p4] -
+	D*SPD[k, p3]*SPD[p4, p4]))/SPD[k, k] +
+(8*SPD[k, k2]*(2*D*m^2*SPD[k, k]^2 + 4*m^2*SPD[k, k]*SPD[k, p3] -
+	2*D*m^2*SPD[k, k]*SPD[k, p3] + 4*D*m^2*SPD[k, k]*SPD[k, p4] +
+	8*m^2*SPD[k, p3]*SPD[k, p4] - 4*D*m^2*SPD[k, p3]*SPD[k, p4] -
+	4*SPD[k, k]^2*SPD[p3, p4] + 2*D*SPD[k, k]^2*SPD[p3, p4] -
+	16*SPD[k, k]*SPD[k, p4]*SPD[p3, p4] + 8*D*SPD[k, k]*SPD[k, p4]*
+	SPD[p3, p4] - 16*SPD[k, p4]^2*SPD[p3, p4] + 8*D*SPD[k, p4]^2*
+	SPD[p3, p4] + 4*SPD[k, k]*SPD[k, p3]*SPD[p4, p4] -
+	2*D*SPD[k, k]*SPD[k, p3]*SPD[p4, p4] + 8*SPD[k, p3]*SPD[k, p4]*
+	SPD[p4, p4] - 4*D*SPD[k, p3]*SPD[k, p4]*SPD[p4, p4]))/SPD[k, k]) +
+10*((-16*(SPD[k, k] + 2*SPD[k, p4])*(2*SPD[k, k1]^2 + SPD[k, k]*SPD[k1, k1])*
+	(D*m^2*SPD[k, k] + 2*m^2*SPD[k, p3] - D*m^2*SPD[k, p3] -
+	2*SPD[k, k]*SPD[p3, p4] + D*SPD[k, k]*SPD[p3, p4] -
+	4*SPD[k, p4]*SPD[p3, p4] + 2*D*SPD[k, p4]*SPD[p3, p4] +
+	2*SPD[k, p3]*SPD[p4, p4] - D*SPD[k, p3]*SPD[p4, p4]))/(3*SPD[k, k]^2) +
+(16*SPD[k, k1]*(2*D*m^2*SPD[k, k]*SPD[k, k1] + 2*m^2*SPD[k, k1]*
+	SPD[k, p3] - D*m^2*SPD[k, k1]*SPD[k, p3] + 2*D*m^2*SPD[k, k1]*
+	SPD[k, p4] + 2*m^2*SPD[k, k]*SPD[k1, p3] - D*m^2*SPD[k, k]*
+	SPD[k1, p3] + 4*m^2*SPD[k, p4]*SPD[k1, p3] - 2*D*m^2*SPD[k, p4]*
+	SPD[k1, p3] + 2*SPD[k, k]*SPD[k, p4]*SPD[k1, p3] -
+	D*SPD[k, k]*SPD[k, p4]*SPD[k1, p3] + 4*SPD[k, p4]^2*SPD[k1, p3] -
+	2*D*SPD[k, p4]^2*SPD[k1, p3] + 2*D*m^2*SPD[k, k]*SPD[k1, p4] +
+	4*m^2*SPD[k, p3]*SPD[k1, p4] - 2*D*m^2*SPD[k, p3]*SPD[k1, p4] -
+	2*SPD[k, k]*SPD[k, p3]*SPD[k1, p4] + D*SPD[k, k]*SPD[k, p3]*
+	SPD[k1, p4] - 4*SPD[k, p3]*SPD[k, p4]*SPD[k1, p4] +
+	2*D*SPD[k, p3]*SPD[k, p4]*SPD[k1, p4] - 4*SPD[k, k]*SPD[k, k1]*
+	SPD[p3, p4] + 2*D*SPD[k, k]*SPD[k, k1]*SPD[p3, p4] -
+	8*SPD[k, k1]*SPD[k, p4]*SPD[p3, p4] + 4*D*SPD[k, k1]*SPD[k, p4]*
+	SPD[p3, p4] - 8*SPD[k, k]*SPD[k1, p4]*SPD[p3, p4] +
+	4*D*SPD[k, k]*SPD[k1, p4]*SPD[p3, p4] - 16*SPD[k, p4]*SPD[k1, p4]*
+	SPD[p3, p4] + 8*D*SPD[k, p4]*SPD[k1, p4]*SPD[p3, p4] +
+	2*SPD[k, k1]*SPD[k, p3]*SPD[p4, p4] - D*SPD[k, k1]*SPD[k, p3]*
+	SPD[p4, p4] + 2*SPD[k, k]*SPD[k1, p3]*SPD[p4, p4] -
+	D*SPD[k, k]*SPD[k1, p3]*SPD[p4, p4] + 4*SPD[k, p4]*SPD[k1, p3]*
+	SPD[p4, p4] - 2*D*SPD[k, p4]*SPD[k1, p3]*SPD[p4, p4] +
+	4*SPD[k, p3]*SPD[k1, p4]*SPD[p4, p4] - 2*D*SPD[k, p3]*SPD[k1, p4]*
+	SPD[p4, p4]))/SPD[k, k] - 8*(2*D*m^2*SPD[k, k1]^2 +
+	4*m^2*SPD[k, k1]*SPD[k1, p3] - 2*D*m^2*SPD[k, k1]*SPD[k1, p3] +
+	4*SPD[k, k1]*SPD[k, p4]*SPD[k1, p3] - 2*D*SPD[k, k1]*SPD[k, p4]*
+	SPD[k1, p3] + 4*D*m^2*SPD[k, k1]*SPD[k1, p4] -
+	4*SPD[k, k1]*SPD[k, p3]*SPD[k1, p4] + 2*D*SPD[k, k1]*SPD[k, p3]*
+	SPD[k1, p4] + 8*m^2*SPD[k1, p3]*SPD[k1, p4] -
+	4*D*m^2*SPD[k1, p3]*SPD[k1, p4] + 8*SPD[k, p4]*SPD[k1, p3]*SPD[k1, p4] -
+	4*D*SPD[k, p4]*SPD[k1, p3]*SPD[k1, p4] - 8*SPD[k, p3]*SPD[k1, p4]^2 +
+	4*D*SPD[k, p3]*SPD[k1, p4]^2 - 4*SPD[k, k1]^2*SPD[p3, p4] +
+	2*D*SPD[k, k1]^2*SPD[p3, p4] - 16*SPD[k, k1]*SPD[k1, p4]*SPD[p3, p4] +
+	8*D*SPD[k, k1]*SPD[k1, p4]*SPD[p3, p4] - 16*SPD[k1, p4]^2*SPD[p3, p4] +
+	8*D*SPD[k1, p4]^2*SPD[p3, p4] + 4*SPD[k, k1]*SPD[k1, p3]*SPD[p4, p4] -
+	2*D*SPD[k, k1]*SPD[k1, p3]*SPD[p4, p4] + 8*SPD[k1, p3]*SPD[k1, p4]*
+	SPD[p4, p4] - 4*D*SPD[k1, p3]*SPD[k1, p4]*SPD[p4, p4]) +
+(16*(-SPD[k, k1]^2 + SPD[k, k]*SPD[k1, k1])*(D*m^2*SPD[k, k] +
+	2*m^2*SPD[k, p3] - D*m^2*SPD[k, p3] + 2*D*m^2*SPD[k, p4] +
+	4*m^2*SPD[p3, p4] - 2*D*m^2*SPD[p3, p4] - 2*SPD[k, k]*SPD[p3, p4] +
+	D*SPD[k, k]*SPD[p3, p4] - 4*SPD[k, p4]*SPD[p3, p4] +
+	2*D*SPD[k, p4]*SPD[p3, p4] - 2*SPD[k, p3]*SPD[p4, p4] +
+	D*SPD[k, p3]*SPD[p4, p4] - 4*SPD[p3, p4]*SPD[p4, p4] +
+	2*D*SPD[p3, p4]*SPD[p4, p4]))/(3*SPD[k, k])) +
+4*((-16*(SPD[k, k] + 2*SPD[k, p4])*(2*SPD[k, k1]*SPD[k, k2] +
+	SPD[k, k]*SPD[k1, k2])*(D*m^2*SPD[k, k] + 2*m^2*SPD[k, p3] -
+	D*m^2*SPD[k, p3] - 2*SPD[k, k]*SPD[p3, p4] + D*SPD[k, k]*SPD[p3, p4] -
+	4*SPD[k, p4]*SPD[p3, p4] + 2*D*SPD[k, p4]*SPD[p3, p4] +
+	2*SPD[k, p3]*SPD[p4, p4] - D*SPD[k, p3]*SPD[p4, p4]))/(3*SPD[k, k]^2) +
+(8*SPD[k, k2]*(2*D*m^2*SPD[k, k]*SPD[k, k1] + 2*m^2*SPD[k, k1]*
+	SPD[k, p3] - D*m^2*SPD[k, k1]*SPD[k, p3] + 2*D*m^2*SPD[k, k1]*
+	SPD[k, p4] + 2*m^2*SPD[k, k]*SPD[k1, p3] - D*m^2*SPD[k, k]*
+	SPD[k1, p3] + 4*m^2*SPD[k, p4]*SPD[k1, p3] - 2*D*m^2*SPD[k, p4]*
+	SPD[k1, p3] + 2*SPD[k, k]*SPD[k, p4]*SPD[k1, p3] -
+	D*SPD[k, k]*SPD[k, p4]*SPD[k1, p3] + 4*SPD[k, p4]^2*SPD[k1, p3] -
+	2*D*SPD[k, p4]^2*SPD[k1, p3] + 2*D*m^2*SPD[k, k]*SPD[k1, p4] +
+	4*m^2*SPD[k, p3]*SPD[k1, p4] - 2*D*m^2*SPD[k, p3]*SPD[k1, p4] -
+	2*SPD[k, k]*SPD[k, p3]*SPD[k1, p4] + D*SPD[k, k]*SPD[k, p3]*
+	SPD[k1, p4] - 4*SPD[k, p3]*SPD[k, p4]*SPD[k1, p4] +
+	2*D*SPD[k, p3]*SPD[k, p4]*SPD[k1, p4] - 4*SPD[k, k]*SPD[k, k1]*
+	SPD[p3, p4] + 2*D*SPD[k, k]*SPD[k, k1]*SPD[p3, p4] -
+	8*SPD[k, k1]*SPD[k, p4]*SPD[p3, p4] + 4*D*SPD[k, k1]*SPD[k, p4]*
+	SPD[p3, p4] - 8*SPD[k, k]*SPD[k1, p4]*SPD[p3, p4] +
+	4*D*SPD[k, k]*SPD[k1, p4]*SPD[p3, p4] - 16*SPD[k, p4]*SPD[k1, p4]*
+	SPD[p3, p4] + 8*D*SPD[k, p4]*SPD[k1, p4]*SPD[p3, p4] +
+	2*SPD[k, k1]*SPD[k, p3]*SPD[p4, p4] - D*SPD[k, k1]*SPD[k, p3]*
+	SPD[p4, p4] + 2*SPD[k, k]*SPD[k1, p3]*SPD[p4, p4] -
+	D*SPD[k, k]*SPD[k1, p3]*SPD[p4, p4] + 4*SPD[k, p4]*SPD[k1, p3]*
+	SPD[p4, p4] - 2*D*SPD[k, p4]*SPD[k1, p3]*SPD[p4, p4] +
+	4*SPD[k, p3]*SPD[k1, p4]*SPD[p4, p4] - 2*D*SPD[k, p3]*SPD[k1, p4]*
+	SPD[p4, p4]))/SPD[k, k] +
+(8*SPD[k, k1]*(2*D*m^2*SPD[k, k]*SPD[k, k2] + 2*m^2*SPD[k, k2]*
+	SPD[k, p3] - D*m^2*SPD[k, k2]*SPD[k, p3] + 2*D*m^2*SPD[k, k2]*
+	SPD[k, p4] + 2*m^2*SPD[k, k]*SPD[k2, p3] - D*m^2*SPD[k, k]*
+	SPD[k2, p3] + 4*m^2*SPD[k, p4]*SPD[k2, p3] - 2*D*m^2*SPD[k, p4]*
+	SPD[k2, p3] + 2*SPD[k, k]*SPD[k, p4]*SPD[k2, p3] -
+	D*SPD[k, k]*SPD[k, p4]*SPD[k2, p3] + 4*SPD[k, p4]^2*SPD[k2, p3] -
+	2*D*SPD[k, p4]^2*SPD[k2, p3] + 2*D*m^2*SPD[k, k]*SPD[k2, p4] +
+	4*m^2*SPD[k, p3]*SPD[k2, p4] - 2*D*m^2*SPD[k, p3]*SPD[k2, p4] -
+	2*SPD[k, k]*SPD[k, p3]*SPD[k2, p4] + D*SPD[k, k]*SPD[k, p3]*
+	SPD[k2, p4] - 4*SPD[k, p3]*SPD[k, p4]*SPD[k2, p4] +
+	2*D*SPD[k, p3]*SPD[k, p4]*SPD[k2, p4] - 4*SPD[k, k]*SPD[k, k2]*
+	SPD[p3, p4] + 2*D*SPD[k, k]*SPD[k, k2]*SPD[p3, p4] -
+	8*SPD[k, k2]*SPD[k, p4]*SPD[p3, p4] + 4*D*SPD[k, k2]*SPD[k, p4]*
+	SPD[p3, p4] - 8*SPD[k, k]*SPD[k2, p4]*SPD[p3, p4] +
+	4*D*SPD[k, k]*SPD[k2, p4]*SPD[p3, p4] - 16*SPD[k, p4]*SPD[k2, p4]*
+	SPD[p3, p4] + 8*D*SPD[k, p4]*SPD[k2, p4]*SPD[p3, p4] +
+	2*SPD[k, k2]*SPD[k, p3]*SPD[p4, p4] - D*SPD[k, k2]*SPD[k, p3]*
+	SPD[p4, p4] + 2*SPD[k, k]*SPD[k2, p3]*SPD[p4, p4] -
+	D*SPD[k, k]*SPD[k2, p3]*SPD[p4, p4] + 4*SPD[k, p4]*SPD[k2, p3]*
+	SPD[p4, p4] - 2*D*SPD[k, p4]*SPD[k2, p3]*SPD[p4, p4] +
+	4*SPD[k, p3]*SPD[k2, p4]*SPD[p4, p4] - 2*D*SPD[k, p3]*SPD[k2, p4]*
+	SPD[p4, p4]))/SPD[k, k] - 8*(2*D*m^2*SPD[k, k1]*SPD[k, k2] +
+	2*m^2*SPD[k, k2]*SPD[k1, p3] - D*m^2*SPD[k, k2]*SPD[k1, p3] +
+	2*SPD[k, k2]*SPD[k, p4]*SPD[k1, p3] - D*SPD[k, k2]*SPD[k, p4]*
+	SPD[k1, p3] + 2*D*m^2*SPD[k, k2]*SPD[k1, p4] -
+	2*SPD[k, k2]*SPD[k, p3]*SPD[k1, p4] + D*SPD[k, k2]*SPD[k, p3]*
+	SPD[k1, p4] + 2*m^2*SPD[k, k1]*SPD[k2, p3] -
+	D*m^2*SPD[k, k1]*SPD[k2, p3] + 2*SPD[k, k1]*SPD[k, p4]*SPD[k2, p3] -
+	D*SPD[k, k1]*SPD[k, p4]*SPD[k2, p3] + 4*m^2*SPD[k1, p4]*SPD[k2, p3] -
+	2*D*m^2*SPD[k1, p4]*SPD[k2, p3] + 4*SPD[k, p4]*SPD[k1, p4]*SPD[k2, p3] -
+	2*D*SPD[k, p4]*SPD[k1, p4]*SPD[k2, p3] + 2*D*m^2*SPD[k, k1]*
+	SPD[k2, p4] - 2*SPD[k, k1]*SPD[k, p3]*SPD[k2, p4] +
+	D*SPD[k, k1]*SPD[k, p3]*SPD[k2, p4] + 4*m^2*SPD[k1, p3]*SPD[k2, p4] -
+	2*D*m^2*SPD[k1, p3]*SPD[k2, p4] + 4*SPD[k, p4]*SPD[k1, p3]*SPD[k2, p4] -
+	2*D*SPD[k, p4]*SPD[k1, p3]*SPD[k2, p4] - 8*SPD[k, p3]*SPD[k1, p4]*
+	SPD[k2, p4] + 4*D*SPD[k, p3]*SPD[k1, p4]*SPD[k2, p4] -
+	4*SPD[k, k1]*SPD[k, k2]*SPD[p3, p4] + 2*D*SPD[k, k1]*SPD[k, k2]*
+	SPD[p3, p4] - 8*SPD[k, k2]*SPD[k1, p4]*SPD[p3, p4] +
+	4*D*SPD[k, k2]*SPD[k1, p4]*SPD[p3, p4] - 8*SPD[k, k1]*SPD[k2, p4]*
+	SPD[p3, p4] + 4*D*SPD[k, k1]*SPD[k2, p4]*SPD[p3, p4] -
+	16*SPD[k1, p4]*SPD[k2, p4]*SPD[p3, p4] + 8*D*SPD[k1, p4]*SPD[k2, p4]*
+	SPD[p3, p4] + 2*SPD[k, k2]*SPD[k1, p3]*SPD[p4, p4] -
+	D*SPD[k, k2]*SPD[k1, p3]*SPD[p4, p4] + 2*SPD[k, k1]*SPD[k2, p3]*
+	SPD[p4, p4] - D*SPD[k, k1]*SPD[k2, p3]*SPD[p4, p4] +
+	4*SPD[k1, p4]*SPD[k2, p3]*SPD[p4, p4] - 2*D*SPD[k1, p4]*SPD[k2, p3]*
+	SPD[p4, p4] + 4*SPD[k1, p3]*SPD[k2, p4]*SPD[p4, p4] -
+	2*D*SPD[k1, p3]*SPD[k2, p4]*SPD[p4, p4]) +
+(16*(-(SPD[k, k1]*SPD[k, k2]) + SPD[k, k]*SPD[k1, k2])*
+	(D*m^2*SPD[k, k] + 2*m^2*SPD[k, p3] - D*m^2*SPD[k, p3] +
+	2*D*m^2*SPD[k, p4] + 4*m^2*SPD[p3, p4] - 2*D*m^2*SPD[p3, p4] -
+	2*SPD[k, k]*SPD[p3, p4] + D*SPD[k, k]*SPD[p3, p4] -
+	4*SPD[k, p4]*SPD[p3, p4] + 2*D*SPD[k, p4]*SPD[p3, p4] -
+	2*SPD[k, p3]*SPD[p4, p4] + D*SPD[k, p3]*SPD[p4, p4] -
+	4*SPD[p3, p4]*SPD[p4, p4] + 2*D*SPD[p3, p4]*SPD[p4, p4]))/
+	(3*SPD[k, k])) -
+2*((-16*(SPD[k, k] + 2*SPD[k, p4])*(2*SPD[k, k2]^2 + SPD[k, k]*SPD[k2, k2])*
+	(D*m^2*SPD[k, k] + 2*m^2*SPD[k, p3] - D*m^2*SPD[k, p3] -
+	2*SPD[k, k]*SPD[p3, p4] + D*SPD[k, k]*SPD[p3, p4] -
+	4*SPD[k, p4]*SPD[p3, p4] + 2*D*SPD[k, p4]*SPD[p3, p4] +
+	2*SPD[k, p3]*SPD[p4, p4] - D*SPD[k, p3]*SPD[p4, p4]))/(3*SPD[k, k]^2) +
+(16*SPD[k, k2]*(2*D*m^2*SPD[k, k]*SPD[k, k2] + 2*m^2*SPD[k, k2]*
+	SPD[k, p3] - D*m^2*SPD[k, k2]*SPD[k, p3] + 2*D*m^2*SPD[k, k2]*
+	SPD[k, p4] + 2*m^2*SPD[k, k]*SPD[k2, p3] - D*m^2*SPD[k, k]*
+	SPD[k2, p3] + 4*m^2*SPD[k, p4]*SPD[k2, p3] - 2*D*m^2*SPD[k, p4]*
+	SPD[k2, p3] + 2*SPD[k, k]*SPD[k, p4]*SPD[k2, p3] -
+	D*SPD[k, k]*SPD[k, p4]*SPD[k2, p3] + 4*SPD[k, p4]^2*SPD[k2, p3] -
+	2*D*SPD[k, p4]^2*SPD[k2, p3] + 2*D*m^2*SPD[k, k]*SPD[k2, p4] +
+	4*m^2*SPD[k, p3]*SPD[k2, p4] - 2*D*m^2*SPD[k, p3]*SPD[k2, p4] -
+	2*SPD[k, k]*SPD[k, p3]*SPD[k2, p4] + D*SPD[k, k]*SPD[k, p3]*
+	SPD[k2, p4] - 4*SPD[k, p3]*SPD[k, p4]*SPD[k2, p4] +
+	2*D*SPD[k, p3]*SPD[k, p4]*SPD[k2, p4] - 4*SPD[k, k]*SPD[k, k2]*
+	SPD[p3, p4] + 2*D*SPD[k, k]*SPD[k, k2]*SPD[p3, p4] -
+	8*SPD[k, k2]*SPD[k, p4]*SPD[p3, p4] + 4*D*SPD[k, k2]*SPD[k, p4]*
+	SPD[p3, p4] - 8*SPD[k, k]*SPD[k2, p4]*SPD[p3, p4] +
+	4*D*SPD[k, k]*SPD[k2, p4]*SPD[p3, p4] - 16*SPD[k, p4]*SPD[k2, p4]*
+	SPD[p3, p4] + 8*D*SPD[k, p4]*SPD[k2, p4]*SPD[p3, p4] +
+	2*SPD[k, k2]*SPD[k, p3]*SPD[p4, p4] - D*SPD[k, k2]*SPD[k, p3]*
+	SPD[p4, p4] + 2*SPD[k, k]*SPD[k2, p3]*SPD[p4, p4] -
+	D*SPD[k, k]*SPD[k2, p3]*SPD[p4, p4] + 4*SPD[k, p4]*SPD[k2, p3]*
+	SPD[p4, p4] - 2*D*SPD[k, p4]*SPD[k2, p3]*SPD[p4, p4] +
+	4*SPD[k, p3]*SPD[k2, p4]*SPD[p4, p4] - 2*D*SPD[k, p3]*SPD[k2, p4]*
+	SPD[p4, p4]))/SPD[k, k] - 8*(2*D*m^2*SPD[k, k2]^2 +
+	4*m^2*SPD[k, k2]*SPD[k2, p3] - 2*D*m^2*SPD[k, k2]*SPD[k2, p3] +
+	4*SPD[k, k2]*SPD[k, p4]*SPD[k2, p3] - 2*D*SPD[k, k2]*SPD[k, p4]*
+	SPD[k2, p3] + 4*D*m^2*SPD[k, k2]*SPD[k2, p4] -
+	4*SPD[k, k2]*SPD[k, p3]*SPD[k2, p4] + 2*D*SPD[k, k2]*SPD[k, p3]*
+	SPD[k2, p4] + 8*m^2*SPD[k2, p3]*SPD[k2, p4] -
+	4*D*m^2*SPD[k2, p3]*SPD[k2, p4] + 8*SPD[k, p4]*SPD[k2, p3]*SPD[k2, p4] -
+	4*D*SPD[k, p4]*SPD[k2, p3]*SPD[k2, p4] - 8*SPD[k, p3]*SPD[k2, p4]^2 +
+	4*D*SPD[k, p3]*SPD[k2, p4]^2 - 4*SPD[k, k2]^2*SPD[p3, p4] +
+	2*D*SPD[k, k2]^2*SPD[p3, p4] - 16*SPD[k, k2]*SPD[k2, p4]*SPD[p3, p4] +
+	8*D*SPD[k, k2]*SPD[k2, p4]*SPD[p3, p4] - 16*SPD[k2, p4]^2*SPD[p3, p4] +
+	8*D*SPD[k2, p4]^2*SPD[p3, p4] + 4*SPD[k, k2]*SPD[k2, p3]*SPD[p4, p4] -
+	2*D*SPD[k, k2]*SPD[k2, p3]*SPD[p4, p4] + 8*SPD[k2, p3]*SPD[k2, p4]*
+	SPD[p4, p4] - 4*D*SPD[k2, p3]*SPD[k2, p4]*SPD[p4, p4]) +
+(16*(-SPD[k, k2]^2 + SPD[k, k]*SPD[k2, k2])*(D*m^2*SPD[k, k] +
+	2*m^2*SPD[k, p3] - D*m^2*SPD[k, p3] + 2*D*m^2*SPD[k, p4] +
+	4*m^2*SPD[p3, p4] - 2*D*m^2*SPD[p3, p4] - 2*SPD[k, k]*SPD[p3, p4] +
+	D*SPD[k, k]*SPD[p3, p4] - 4*SPD[k, p4]*SPD[p3, p4] +
+	2*D*SPD[k, p4]*SPD[p3, p4] - 2*SPD[k, p3]*SPD[p4, p4] +
+	D*SPD[k, p3]*SPD[p4, p4] - 4*SPD[p3, p4]*SPD[p4, p4] +
+	2*D*SPD[p3, p4]*SPD[p4, p4]))/(3*SPD[k, k]))"}
+});

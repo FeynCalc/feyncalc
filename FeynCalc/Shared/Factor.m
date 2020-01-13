@@ -37,9 +37,9 @@ End[]
 Begin["`Factor`Private`"]
 
 Options[Factor2] = {
-	FactorFull -> False,
-	Method -> 3
-	};
+	FactorFull	-> False,
+	Method 		-> 3
+};
 
 Factor1[x_] :=
 	Block[{factor1t1,factor1t2,factor1t3,mt,mi,m1,mp1,nx=x,iIii},

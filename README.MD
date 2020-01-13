@@ -1,6 +1,6 @@
 # FeynCalc
 
-[![license: GPLv3](https://img.shields.io/badge/license-GPLv3-brightgreen.svg)](https://github.com/FeynCalc/feyncalc/LICENSE.md)
+[![license: GPLv3](https://img.shields.io/badge/license-GPLv3-brightgreen.svg)](https://github.com/FeynCalc/feyncalc/blob/master/LICENSE)
 [![latest release](https://img.shields.io/github/release/FeynCalc/feyncalc.svg)](https://github.com/FeynCalc/feyncalc/releases)
 ![compatibility](https://img.shields.io/badge/Mathematica-8.x_9.x_10.x_11.x-brightgreen.svg)
 
@@ -12,13 +12,13 @@ Visit our [wiki](https://github.com/FeynCalc/feyncalc/wiki) to learn more about 
 
 # Using FeynCalc in your research
 
-Development of FeynCalc costs of a lot of effort and is done on a largely voluntarily basis.
+Development of FeynCalc costs a lot of effort and is done on a largely voluntarily basis.
 To support the developers and increase their academic visibility, please acknowledge our work
 when you use FeynCalc in your research. You can do so by citing the two FeynCalc papers:
 
 
 * V. Shtabovenko, R. Mertig and F. Orellana, "New Developments in FeynCalc 9.0",
-Comput. Phys. Commun., 207C, 432-444, 2016, arXiv:1601.01167.
+Comput. Phys. Commun., 207, 432--444, 2016, arXiv:1601.01167.
 
 * R. Mertig, M. Böhm, and A. Denner, "Feyn Calc - Computer-algebraic calculation of Feynman amplitudes",
 Comput. Phys. Commun., 64, 345--359, 1991.
@@ -27,11 +27,11 @@ Comput. Phys. Commun., 64, 345--359, 1991.
 
 FeynCalc is covered by the GNU General Public License 3.
 
-Copyright (C) 1990-2016 Rolf Mertig 
+Copyright (C) 1990-2018 Rolf Mertig
 
-Copyright (C) 1997-2016 Frederik Orellana 
+Copyright (C) 1997-2018 Frederik Orellana
 
-Copyright (C) 2014-2016 Vladyslav Shtabovenko
+Copyright (C) 2014-2018 Vladyslav Shtabovenko
 
 FeynCalc is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as

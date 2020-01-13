@@ -166,9 +166,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Nielsen",
   ButtonNote->"Nielsen"],
  "."
-}], "Text",
- CellTags->"SimplifyPolyLog",
- CellID->1770209649]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -235,8 +233,7 @@ Cell[BoxData[
     RowBox[{"\[ImaginaryI]", " ", "\[Pi]", " ", 
      RowBox[{"log", "(", "x", ")"}]}]}]}], TraditionalForm]], "Output",
  CellTags->"SimplifyPolyLog",
- CellLabel->"Out[2]=",
- CellID->2071359595]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -263,8 +260,7 @@ Cell[BoxData[
       RowBox[{"1", "-", "x"}], ")"}], " ", 
      RowBox[{"log", "(", "x", ")"}]}]}]}], TraditionalForm]], "Output",
  CellTags->"SimplifyPolyLog",
- CellLabel->"Out[3]=",
- CellID->669626223]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -299,8 +295,7 @@ Cell[BoxData[
      RowBox[{"log", "(", 
       RowBox[{"x", "+", "1"}], ")"}]}]}]}], TraditionalForm]], "Output",
  CellTags->"SimplifyPolyLog",
- CellLabel->"Out[4]=",
- CellID->1110979124]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -333,8 +328,7 @@ Cell[BoxData[
       RowBox[{"1", "-", "x"}], ")"}], " ", 
      RowBox[{"log", "(", "x", ")"}]}]}]}], TraditionalForm]], "Output",
  CellTags->"SimplifyPolyLog",
- CellLabel->"Out[5]=",
- CellID->2004136203]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -373,8 +367,7 @@ Cell[BoxData[
      RowBox[{"log", "(", 
       RowBox[{"1", "-", "x"}], ")"}]}]}]}], TraditionalForm]], "Output",
  CellTags->"SimplifyPolyLog",
- CellLabel->"Out[6]=",
- CellID->746814688]
+ CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -411,8 +404,7 @@ Cell[BoxData[
      RowBox[{"log", "(", 
       RowBox[{"1", "-", "x"}], ")"}]}]}]}], TraditionalForm]], "Output",
  CellTags->"SimplifyPolyLog",
- CellLabel->"Out[7]=",
- CellID->965485175]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -460,8 +452,7 @@ Cell[BoxData[
       SuperscriptBox["log", "3"], "(", 
       RowBox[{"1", "-", "x"}], ")"}]}]}]}], TraditionalForm]], "Output",
  CellTags->"SimplifyPolyLog",
- CellLabel->"Out[8]=",
- CellID->350232376]
+ CellLabel->"Out[8]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -493,8 +484,7 @@ Cell[BoxData[
       SuperscriptBox["log", "3"], "(", "x", ")"}], "6"]}]}], 
   TraditionalForm]], "Output",
  CellTags->"SimplifyPolyLog",
- CellLabel->"Out[9]=",
- CellID->1378986370]
+ CellLabel->"Out[9]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -511,8 +501,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox["True", TraditionalForm]], "Output",
  CellTags->"SimplifyPolyLog",
- CellLabel->"Out[10]=",
- CellID->1264404285]
+ CellLabel->"Out[10]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -562,8 +551,7 @@ Cell[BoxData[
      TemplateBox[{"3"},
       "Zeta"]}]}]}], TraditionalForm]], "Output",
  CellTags->"SimplifyPolyLog",
- CellLabel->"Out[11]=",
- CellID->1217956432]
+ CellLabel->"Out[11]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -630,8 +618,7 @@ Cell[BoxData[
      RowBox[{"log", "(", 
       RowBox[{"1", "-", "x"}], ")"}]}]}]}], TraditionalForm]], "Output",
  CellTags->"SimplifyPolyLog",
- CellLabel->"Out[12]=",
- CellID->1165745994]
+ CellLabel->"Out[12]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -693,8 +680,7 @@ Cell[BoxData[
     TemplateBox[{"3"},
      "Zeta"]}]}], TraditionalForm]], "Output",
  CellTags->"SimplifyPolyLog",
- CellLabel->"Out[13]=",
- CellID->1811068047]
+ CellLabel->"Out[13]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -813,8 +799,7 @@ Cell[BoxData[
       SuperscriptBox["log", "2"], "(", 
       RowBox[{"1", "-", "x"}], ")"}]}]}]}], TraditionalForm]], "Output",
  CellTags->"SimplifyPolyLog",
- CellLabel->"Out[14]=",
- CellID->2000726501]
+ CellLabel->"Out[14]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -840,8 +825,7 @@ Cell[BoxData[
       RowBox[{"a", " ", "c"}], "+", "b"}], "c"], ")"}]}], 
   TraditionalForm]], "Output",
  CellTags->"SimplifyPolyLog",
- CellLabel->"Out[15]=",
- CellID->352084172]
+ CellLabel->"Out[15]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -862,8 +846,7 @@ Cell[BoxData[
    RowBox[{"-", 
     RowBox[{"log", "(", "x", ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"SimplifyPolyLog",
- CellLabel->"Out[16]=",
- CellID->1162064393]
+ CellLabel->"Out[16]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -889,8 +872,7 @@ Cell[BoxData[
        RowBox[{"x", "+", "1"}], 
        RowBox[{"1", "-", "x"}]]}], ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"SimplifyPolyLog",
- CellLabel->"Out[17]=",
- CellID->1326650152]
+ CellLabel->"Out[17]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -915,8 +897,7 @@ Cell[BoxData[
        SuperscriptBox["x", "2"], "+", "1"}]], "+", "x"}], ")"}]}], 
   TraditionalForm]], "Output",
  CellTags->"SimplifyPolyLog",
- CellLabel->"Out[18]=",
- CellID->580053978]
+ CellLabel->"Out[18]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -941,8 +922,7 @@ Cell[BoxData[
        SuperscriptBox["x", "2"], "-", "1"}]], "+", "x"}], ")"}]}], 
   TraditionalForm]], "Output",
  CellTags->"SimplifyPolyLog",
- CellLabel->"Out[19]=",
- CellID->654978590]
+ CellLabel->"Out[19]="]
 }, Open  ]],
 
 Cell[BoxData[
@@ -1013,12 +993,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{873, Automatic}, {Automatic, 149}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

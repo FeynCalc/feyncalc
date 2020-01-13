@@ -208,9 +208,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/PaVe",
   ButtonNote->"PaVe"],
  "."
-}], "Text",
- CellTags->"A0ToB0",
- CellID->1722982066]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -237,10 +235,6 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell["Examples", "Subsubsection",
- CellTags->"A0ToB0",
- CellID->2064085766],
-
 Cell[CellGroupData[{
 
 Cell[BoxData[
@@ -257,39 +251,7 @@ Cell[BoxData[
  CellTags->"A0ToB0",
  CellLabel->"Out[1]=",
  CellID->1727801355]
-}, Open  ]],
-
-Cell[TextData[{
- "See also: ",
- " ",
- ButtonBox["A0",
-  BaseStyle->"AddOnsLink",
-  ButtonData:>"A0",
-  ButtonNote->"A0"],
- ", ",
- ButtonBox["B0",
-  BaseStyle->"AddOnsLink",
-  ButtonData:>"B0",
-  ButtonNote->"B0"],
- ", ",
- ButtonBox["C0",
-  BaseStyle->"AddOnsLink",
-  ButtonData:>"C0",
-  ButtonNote->"C0"],
- ", ",
- ButtonBox["D0",
-  BaseStyle->"AddOnsLink",
-  ButtonData:>"D0",
-  ButtonNote->"D0"],
- ", ",
- ButtonBox["PaVe",
-  BaseStyle->"AddOnsLink",
-  ButtonData:>"PaVe",
-  ButtonNote->"PaVe"],
- "."
-}], "Text",
- CellTags->"A0ToB0",
- CellID->1120307520]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -353,12 +315,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

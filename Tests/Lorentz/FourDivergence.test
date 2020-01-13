@@ -3,9 +3,9 @@
 (* :Title: FourDivergence.test                                              *)
 
 (* This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for FourDivergence           *)
@@ -14,53 +14,58 @@
 
 
 Tests`Lorentz`fcstFourDivergence = {
-{"fcstFourDivergence-ID1","FourDivergence[ScalarProduct[p, q], FV[p, mu]]","Pair[LorentzIndex[mu], Momentum[q]]"},
-{"fcstFourDivergence-ID2","FourDivergence[ScalarProduct[p - k, q], FV[p - k, mu]]","Pair[LorentzIndex[mu], Momentum[q]]"},
-{"fcstFourDivergence-ID3","FourDivergence[ScalarProduct[p - k, q] // ExpandScalarProduct,
-FV[p, mu]]","Pair[LorentzIndex[mu], Momentum[q]]"},
-{"fcstFourDivergence-ID4","FourDivergence[1/ScalarProduct[p, q], FV[p, mu]] //
-FourDivergence[#, FV[p, mu]] &","(2*Pair[Momentum[q], Momentum[q]])/Pair[Momentum[p], Momentum[q]]^3"},
-{"fcstFourDivergence-ID5","FourDivergence[
+{"fcstFourDivergence-ID1","FourDivergence[SP[p, q], FV[p, mu], FCE->True]","FV[q,mu]"},
+{"fcstFourDivergence-ID2","FourDivergence[ScalarProduct[p - k, q], FV[p, mu], FCE->True]","FV[q,mu]"},
+{"fcstFourDivergence-ID3","FourDivergence[1/SP[p, q], FV[p, mu], FV[p, mu], FCE -> True]","(2 SP[q, q])/SP[p, q]^3"},
+{"fcstFourDivergence-ID4","FourDivergence[
 Uncontract[SP[p, w] SpinorUBar[p2, m].GS[w].SpinorU[p1, m], w,
 	Pair -> All], FV[w, a]]","Spinor[Momentum[p2], m, 1] . DiracGamma[Momentum[w]] . Spinor[Momentum[p1], m, 1]*Pair[LorentzIndex[a], Momentum[p]] +
 Spinor[Momentum[p2], m, 1] . DiracGamma[LorentzIndex[a]] . Spinor[Momentum[p1], m, 1]*Pair[Momentum[p], Momentum[w]]"},
-{"fcstFourDivergence-ID6","FourDivergence[FV[k1, a] FV[k1, b] (SP[k1, q] + 2 SP[k2, q]),
-	FV[q, c]]","Pair[LorentzIndex[a], Momentum[k1]]*Pair[LorentzIndex[b], Momentum[k1]]*
-	Pair[LorentzIndex[c], Momentum[k1]] + 2*Pair[LorentzIndex[a], Momentum[k1]]*
-	Pair[LorentzIndex[b], Momentum[k1]]*Pair[LorentzIndex[c], Momentum[k2]]"},
-{"fcstFourDivergence-ID7","FourDivergence[FV[k1, a] FV[k1, b] (SP[k1, q] + SP[k2, q]), FV[q, c]]",
-	"Pair[LorentzIndex[a], Momentum[k1]]*Pair[LorentzIndex[b], Momentum[k1]]*Pair[LorentzIndex[c], Momentum[k1]] +
-	Pair[LorentzIndex[a], Momentum[k1]]*Pair[LorentzIndex[b], Momentum[k1]]*Pair[LorentzIndex[c], Momentum[k2]]"},
-{"fcstFourDivergence-ID8","FourDivergence[ScalarProduct[p - k, q + b], FV[k, mu]]",
+{"fcstFourDivergence-ID5","FourDivergence[FV[k1, a] FV[k1, b] (SP[k1, q] + 2 SP[k2, q]),
+	FV[q, c],FCE->True]","FV[k1, a]*FV[k1, b]*(FV[k1, c] + 2*FV[k2, c])"},
+{"fcstFourDivergence-ID6","FourDivergence[FV[k1, a] FV[k1, b] (SP[k1, q] + SP[k2, q]), FV[q, c], FCE->True]",
+	"FV[k1, a]*FV[k1, b]*(FV[k1, c] + FV[k2, c])"},
+{"fcstFourDivergence-ID7","FourDivergence[ScalarProduct[p - k, q + b], FV[k, mu]]",
 	"-Pair[LorentzIndex[mu], Momentum[b]] - Pair[LorentzIndex[mu], Momentum[q]]"},
-{"fcstFourDivergence-ID9","FourDivergence[FAD[p - k], FV[k, mu]]","0"},
-{"fcstFourDivergence-ID10","FourDivergence[FAD[p - k], FVD[k, mu]]",
-	"2 FeynAmpDenominator[PropagatorDenominator[-Momentum[k, D] + Momentum[p, D], 0],
-	PropagatorDenominator[-Momentum[k, D] + Momentum[p, D],	0]] (-Pair[LorentzIndex[mu, D], Momentum[k, D]] +
-	Pair[LorentzIndex[mu, D], Momentum[p, D]])"},
-{"fcstFourDivergence-ID11","FourDivergence[FAD[{p + q, m}], FVD[p, mu]] // FCE",
-	"-2 FAD[{p + q, m}, {p + q, m}] (FVD[p, mu] + FVD[q, mu])"},
-{"fcstFourDivergence-ID12","FourDivergence[FAD[{p + k, m}, {k - l, m}], FVD[k, mu]] // FCE",
-	"-2 FAD[{k + p, m}, {k - l, m}, {k - l, m}] (FVD[k, mu] -
-	FVD[l, mu]) - 2 FAD[{k - l, m}, {k + p, m}, {k + p, m}] (FVD[k, mu] + FVD[p, mu])"},
-{"fcstFourDivergence-ID11","FourDivergence[ScalarProduct[p - k, q],FourVector[k - p, mu]] // FCE",
-	"-FV[q, mu]"},
-{"fcstFourDivergence-ID12","FourDivergence[GSD[p], FVD[p, mu]]//FCE",
+{"fcstFourDivergence-ID8","Off[FourDivergence::warn]; tmp=FourDivergence[FAD[p - k], FV[k, mu]]; On[FourDivergence::warn]; tmp","0"},
+{"fcstFourDivergence-ID9","FourDivergence[FAD[p - k], FVD[k, mu], FCE->True]",
+	"FAD[-k + p, -k + p]*(-2*FVD[k, mu] + 2*FVD[p, mu])"},
+{"fcstFourDivergence-ID10","FourDivergence[FAD[{p + q, m}], FVD[p, mu], FCE->True]",
+	"FAD[{p + q, m}, {p + q, m}]*(-2*FVD[p, mu] - 2*FVD[q, mu])"},
+{"fcstFourDivergence-ID11","FourDivergence[FAD[{p + k, m}, {k - l, m}], FVD[k, mu], FCE->True]",
+	"FAD[{k + p, m}, {k - l, m}, {k - l, m}] (-2 FVD[k, mu] +
+	2 FVD[l, mu]) + FAD[{k - l, m}, {k + p, m}, {k + p, m}] (-2 FVD[k, mu] - 2 FVD[p, mu])"},
+{"fcstFourDivergence-ID12","FourDivergence[GSD[p], FVD[p, mu], FCE->True]",
 	"GAD[mu]"},
-{"fcstFourDivergence-ID13","FourDivergence[GS[p], FV[p, mu]]//FCE",
+{"fcstFourDivergence-ID13","FourDivergence[GS[p], FV[p, mu], FCE->True]",
 	"GA[mu]"},
-{"fcstFourDivergence-ID14","FourDivergence[GSD[p+q], FVD[p, mu]]//FCE",
+{"fcstFourDivergence-ID14","FourDivergence[GSD[p+q], FVD[p, mu], FCE->True]",
 	"GAD[mu]"},
-{"fcstFourDivergence-ID15","FourDivergence[GS[p+q], FV[p, mu]]//FCE",
+{"fcstFourDivergence-ID15","FourDivergence[GS[p+q], FV[p, mu], FCE->True]",
 	"GA[mu]"},
-{"fcstFourDivergence-ID16","FourDivergence[FVD[l, mu] FAD[{l, 0}, {l - p, 0}], FVD[l, mu]]//FCE",
-	"D FAD[l, l - p] - 2 FAD[l, l, l - p] SPD[l, l] -2 FAD[l, l - p, l - p] (SPD[l, l] - SPD[l, p])"}
-
-
-
-
-
-
-
+{"fcstFourDivergence-ID16","FourDivergence[FVD[l, mu] FAD[{l, 0}, {l - p, 0}], FVD[l, mu], FCE->True]",
+	"D FAD[l, l - p] - 2 FAD[l, l, l - p] SPD[l, l] +FAD[l, l - p, l - p] (-2 SPD[l, l] + 2 SPD[l, p])"},
+{"fcstFourDivergence-ID17","FourDivergence[FVD[l, mu] FAD[{l, 0}, {l - p, 0}], FVD[l, mu], FCE->True, ApartFF->True]",
+	"(-3 + D) FAD[l, l - p] - FAD[l - p, l - p] + FAD[l, l - p, l - p] SPD[p, p]"},
+{"fcstFourDivergence-ID18","FourDivergence[
+FeynAmpDenominator[
+PropagatorDenominator[
+Momentum[q, D] - Sqrt[m^2 - SPD[q, q]] Momentum[k1hat, D] +
+	2 Sqrt[m^2 - SPD[q, q]] Momentum[Phat, D], m]], FVD[q, nu],
+FCE -> True]//Simplify",
+	"(2*FAD[{q - (k1hat - 2*Phat)*Sqrt[m^2 - SPD[q, q]], m},
+	{q - (k1hat - 2*Phat)*Sqrt[m^2 - SPD[q, q]], m}]*
+	(FVD[q, nu]*(-SPD[k1hat, q] + 2*SPD[Phat, q] +
+	(-1 + SPD[k1hat, k1hat] - 4*SPD[k1hat, Phat] + 4*SPD[Phat, Phat])*
+	Sqrt[m^2 - SPD[q, q]]) + FVD[k1hat, nu]*(m^2 - SPD[q, q]) -
+	2*FVD[Phat, nu]*(m^2 - SPD[q, q])))/Sqrt[m^2 - SPD[q, q]]"},
+{"fcstFourDivergence-ID15","FourDivergence[ScalarProduct[p, w]*SpinorUBar[p2, m].GS[w].SpinorU[p1, m], FV[w, a],FCE -> True]",
+	"Spinor[Momentum[p2], m, 1].GS[w].Spinor[Momentum[p1], m, 1] FV[p, a] +
+Spinor[Momentum[p2], m, 1].GA[a].Spinor[Momentum[p1], m, 1] SP[p, w]"},
+{"fcstFourDivergence-ID16","Off[FourDivergence::warnCartesian]; tmp =
+FourDivergence[CSP[p, q], FV[p, mu]]; On[FourDivergence::warnCartesian]; tmp","0"},
+{"fcstFourDivergence-ID17","FourDivergence[SFAD[{{p + q, p.l}}], FVD[p, mu], FCE -> True]",
+"(-FVD[l, mu] - 2 FVD[p, mu] -2 FVD[q, mu]) SFAD[{{p + q, l.p}, {0, 1},
+1}, {{p + q, l.p}, {0, 1}, 1}]"}
 };
 

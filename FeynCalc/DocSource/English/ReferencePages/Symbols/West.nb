@@ -117,19 +117,41 @@ Cell["West", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData["West"], "InlineFormula"],
- " \[LineSeparator]West is an option for DiracTrace, TR and other functions \
-that deal with traces of Dirac matrices. It applies only to the computation \
-of D-dimensional chiral traces (i.e. those that involve one ",
- Cell[BoxData[
-  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula",
-  FormatType->"StandardForm"],
- ") in the Breitenlohner-Maison-t'Hooft-Veltman (BMHV) scheme. If set to \
-True, such traces will be computed according to formula  (A.5) from Comp. \
-Phys. Comm 77 (1993) 286-298, which is also known as West's formula."
+ " \[LineSeparator]is an option for ",
+ ButtonBox["DiracTrace",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracTrace",
+  ButtonNote->"DiracTrace"],
+ " and several other functions that deal with traces of Dirac matrices."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
+Cell[TextData[{
+ "The option applies only to the computation of ",
+ Cell[BoxData["D"], "InlineFormula"],
+ "-dimensional traces with an odd number of ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+ " in the Breitenlohner-Maison-t'Hooft-Veltman (BMHV) scheme."
+}], "Notes"],
+
+Cell[TextData[{
+ "With ",
+ Cell[BoxData[
+  RowBox[{"West", "->", "True"}]], "InlineFormula"],
+ " (default setting), such traces are computed according to formula  (A.5) \
+from Comp. Phys. Comm 77 (1993) 286-298, which is also known as West's \
+formula. "
+}], "Notes"],
+
+Cell[TextData[{
+ "For more details, see the documentation for ",
+ ButtonBox["DiracTrace",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracTrace",
+  ButtonNote->"DiracTrace"],
+ "."
+}], "Notes",
  CellID->1067943069]
 }, Open  ]],
 
@@ -165,8 +187,10 @@ Cell[CellGroupData[{
 Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
-Cell["XXXX", "SeeAlso",
- CellID->929782353]
+Cell[TextData[ButtonBox["DiracTrace",
+ BaseStyle->"Link",
+ ButtonData:>"paclet:FeynCalc/ref/DiracTrace",
+ ButtonNote->"DiracTrace"]], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -252,9 +276,10 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 741},
-WindowMargins->{{Automatic, 919}, {32, Automatic}},
+WindowMargins->{{779, Automatic}, {Automatic, 221}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",

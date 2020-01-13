@@ -126,9 +126,8 @@ Cell[TextData[{
        RowBox[{"m2", "^", "2"}], "+", 
        RowBox[{"m3", "^", "2"}], "+", 
        RowBox[{"m4", "^", "2"}]}]}], "}"}]}], "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "simplifies all sums in expr so that one of the \nMandelstam variables s, t \
-or u is eliminated by the relation ",
+ " \[LineSeparator]simplifies all sums in expr so that one of the Mandelstam \
+variables s, t or u is eliminated by the relation ",
  StyleBox["s",
   FontSlant->"Italic"],
  " + ",
@@ -243,7 +242,7 @@ Cell[BoxData[
        SubsuperscriptBox["M", "W", "2"]}]}], "}"}]}], "]"}], "//", 
   "Factor2"}]], "Input",
  CellTags->"TrickMandelstam",
- CellLabel->"In[1]:=",
+ CellLabel->"In[18]:=",
  CellID->576381697],
 
 Cell[BoxData[
@@ -255,8 +254,7 @@ Cell[BoxData[
      SubsuperscriptBox["M", "W", "2"]}], ")"}]}], TraditionalForm]], "Output",
  
  CellTags->"TrickMandelstam",
- CellLabel->"Out[1]=",
- CellID->1660674587]
+ CellLabel->"Out[18]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -278,7 +276,7 @@ Cell[BoxData[
      RowBox[{"2", 
       RowBox[{"M", "^", "2"}]}]}], "}"}]}], "]"}]], "Input",
  CellTags->"TrickMandelstam",
- CellLabel->"In[2]:=",
+ CellLabel->"In[19]:=",
  CellID->2075024335],
 
 Cell[BoxData[
@@ -289,8 +287,7 @@ Cell[BoxData[
    SuperscriptBox["s", "2"], "-", "st", "-", "su"}], 
   TraditionalForm]], "Output",
  CellTags->"TrickMandelstam",
- CellLabel->"Out[2]=",
- CellID->26761965]
+ CellLabel->"Out[19]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -355,12 +352,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{775, Automatic}, {Automatic, 115}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

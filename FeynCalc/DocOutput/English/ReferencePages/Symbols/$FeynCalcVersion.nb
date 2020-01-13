@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7512,        235]
-NotebookOptionsPosition[      4463,        145]
-NotebookOutlinePosition[      6877,        211]
-CellTagsIndexPosition[      6759,        205]
+NotebookDataLength[      7451,        234]
+NotebookOptionsPosition[      4615,        151]
+NotebookOutlinePosition[      6949,        215]
+CellTagsIndexPosition[      6831,        209]
 WindowTitle->$FeynCalcVersion
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ FeynCalcVersion.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$169186], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$293576], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/$FeynCalcVersion", ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -73,8 +74,18 @@ FeynCalcVersion.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["$FeynCalcVersion", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["$FeynCalcVersion", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -106,7 +117,9 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1421813232],
+ CellID->614101205],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
  "Basic Examples",
@@ -114,13 +127,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->753980873],
-
-Cell[CellGroupData[{
-
-Cell["Examples", "Subsubsection",
- CellTags->"$FeynCalcVersion",
- CellID->1483320671],
+ CellID->211792166],
 
 Cell[CellGroupData[{
 
@@ -130,13 +137,12 @@ Cell[BoxData["$FeynCalcVersion"], "Input",
  CellID->806604709],
 
 Cell[BoxData[
- FormBox["\<\"9.0.0\"\>", TraditionalForm]], "Output",
- ImageSize->{33, 15},
+ FormBox["\<\"9.3.0\"\>", TraditionalForm]], "Output",
+ ImageSize->{34, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"$FeynCalcVersion",
- CellLabel->"Out[1]=",
- CellID->1396918294]
+ CellLabel->"Out[1]="]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -146,7 +152,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"$FeynCalcVersion",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -155,21 +161,22 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 27, 8.183592}", 
+   "built" -> "{2020, 1, 5, 19, 4, 19.178713}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
     "$FeynCalcVersion is a string that represents the version of FeynCalc.", 
-    "synonyms" -> {}, "title" -> "$FeynCalcVersion", "titlemodifier" -> "", 
-    "windowtitle" -> "$FeynCalcVersion", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/$FeynCalcVersion"}, "SearchTextTranslated" -> ""},
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "$FeynCalcVersion", 
+    "titlemodifier" -> "", "windowtitle" -> "$FeynCalcVersion", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/$FeynCalcVersion"}, 
+  "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -177,8 +184,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -187,56 +195,47 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3327, 93, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3589, 104, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1421813232]},
+   CellID->614101205]},
  "$FeynCalcVersion"->{
-  Cell[3938, 120, 85, 2, 35, "Subsubsection",
-   CellTags->"$FeynCalcVersion",
-   CellID->1483320671],
-  Cell[4048, 126, 116, 3, 27, "Input",
+  Cell[4221, 133, 116, 3, 27, "Input",
    CellTags->"$FeynCalcVersion",
    CellID->806604709],
-  Cell[4167, 131, 230, 7, 36, "Output",
-   CellTags->"$FeynCalcVersion",
-   CellID->1396918294]}
+  Cell[4340, 138, 209, 6, 35, "Output",
+   CellTags->"$FeynCalcVersion"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 6297, 188},
- {"$FeynCalcVersion", 6440, 192}
+ {"PrimaryExamplesSection", 6495, 196},
+ {"$FeynCalcVersion", 6638, 200}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[588, 21, 2278, 52, 51, "AnchorBarGrid",
+Cell[588, 21, 2306, 53, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2869, 75, 59, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2931, 78, 371, 11, 82, "Usage",
+Cell[2897, 76, 293, 11, 45, "ObjectNameGrid"],
+Cell[3193, 89, 371, 11, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3327, 93, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3589, 104, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1421813232],
-Cell[3718, 110, 195, 6, 25, "ExampleSection",
- CellID->753980873],
+ CellID->614101205],
 Cell[CellGroupData[{
-Cell[3938, 120, 85, 2, 35, "Subsubsection",
- CellTags->"$FeynCalcVersion",
- CellID->1483320671],
+Cell[4001, 123, 195, 6, 26, "ExampleSection",
+ CellID->211792166],
 Cell[CellGroupData[{
-Cell[4048, 126, 116, 3, 27, "Input",
+Cell[4221, 133, 116, 3, 27, "Input",
  CellTags->"$FeynCalcVersion",
  CellID->806604709],
-Cell[4167, 131, 230, 7, 36, "Output",
- CellTags->"$FeynCalcVersion",
- CellID->1396918294]
+Cell[4340, 138, 209, 6, 35, "Output",
+ CellTags->"$FeynCalcVersion"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[4436, 143, 23, 0, 42, "FooterCell"]
+Cell[4588, 149, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

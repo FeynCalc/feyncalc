@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Ghost propagator												*)
@@ -35,13 +35,12 @@ Options[GhostPropagator] = {
 	Explicit -> False
 };
 
-{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
-
-GhostPropagator[x___, i_Integer, y___] :=
-	GhostPropagator[x, c[i], y];
-
-GhostPropagator[p_, OptionsPattern[]] :=
-	(I FeynAmpDenominator[PropagatorDenominator[p, 0]]) /;OptionValue[Explicit];
+GhostPropagator[pi_, OptionsPattern[]] :=
+	Block[ {p, glp},
+		p = Momentum[pi, OptionValue[Dimension]];
+		glp  = I FeynAmpDenominator[PropagatorDenominator[p, 0]];
+		QCDFeynmanRuleConvention[GhostPropagator] glp
+	] /; OptionValue[Explicit];
 
 GhostPropagator[pi_, ai_, bi_, OptionsPattern[]] :=
 	Block[ {p, a, b, glp},
@@ -49,7 +48,7 @@ GhostPropagator[pi_, ai_, bi_, OptionsPattern[]] :=
 		a = SUNIndex[ai];
 		b = SUNIndex[bi];
 		glp  = I FeynAmpDenominator[PropagatorDenominator[p, 0]] SUNDelta[a, b];
-		glp
+		QCDFeynmanRuleConvention[GhostPropagator] glp
 	] /; OptionValue[Explicit];
 
 GhostPropagator /:

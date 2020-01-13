@@ -30,7 +30,9 @@ End[]
 
 Begin["`TrickIntegrate`Private`"]
 
-Options[TrickIntegrate] = {Hold -> True};
+Options[TrickIntegrate] = {
+	Hold -> True
+};
 
 hopt[vau_,op___Rule][z_] :=
 	If[ !TrueQ[Hold /. {op} /. Options[TrickIntegrate]],
@@ -44,10 +46,7 @@ TrickIntegrate[exp_Plus, v_,opt___] :=
 (* if there is nothing to substract, then : *)
 TrickIntegrate[w_/;Head[w]=!=Plus, v_, opt___] :=
 	(hopt[v,opt][SelectFree[w, v](Hold[Integrate]@@ {SelectNotFree[w,v], {v,0,1}})]
-	) //. holdLimit->limit /;
-		(!MatchQ[w,(1-v)^(a_. Epsilon-1) ex_.] &&
-			!MatchQ[w,    v^(a_. Epsilon-1) ex_.]
-		);
+	) //. holdLimit->limit /; (!MatchQ[w,(1-v)^(a_. Epsilon-1) _.] && !MatchQ[w,    v^(a_. Epsilon-1) _.]);
 
 (* this is just linearity *)
 TrickIntegrate[exp_. y^a_. (1-y)^b_ (1-x_ y_)^g_, y_, opt___Rule] :=
@@ -109,7 +108,7 @@ TrickIntegrate[v_^(a_. Epsilon-1) exp_., v_, opt___Rule
 		v = 0 then: return the input *)
 		res =
 		If[ (lim === Indeterminate) (*|| (!FreeQ[tt, Log[v]])*) ||
-			(MatchQ[lim, _. (1-v)^(bb_. Epsilon-1)]),
+			(MatchQ[lim, _. (1-v)^(_. Epsilon-1)]),
 			tt pre (v)^(a Epsilon-1),
 		(*special PowerExpand by hand ... *)
 			lim = lim /. {((z_Symbol) (1-r_Symbol))^eps_ :> z^eps (1-r)^eps,

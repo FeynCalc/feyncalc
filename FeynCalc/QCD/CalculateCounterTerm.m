@@ -21,8 +21,10 @@ End[]
 
 Begin["`CalculateCounterTerm`Private`"]
 
-Options[CalculateCounterTerm] = {Chisholm -> False,
-								FinalSubstitutions -> {D -> 4}};
+Options[CalculateCounterTerm] = {
+	Chisholm -> False,
+	FinalSubstitutions -> {D -> 4}
+};
 
 
 mapart[y_Plus] :=
@@ -97,7 +99,8 @@ fixpower2[y_Times, k_,
 
 CalculateCounterTerm[exp_, k_, saveit_:D, opt___Rule] :=
 	Block[ {t0 = exp, chish, ta, sunt,pow2,opvar,finsub,
-	lt, t1,t2,t3,t4,t5,t6,t7,ht7,t8,t9,t10,t11,t12,t13,nt7,lnt7},
+	lt, t1,t2,t3,t4,t5,t6,t7,ht7,t8,t9,t10,t11,t12,t13,nt7,lnt7, pr, sut8,
+	fsut8, fa1, fa2},
 		chish = Chisholm /. {opt} /. Options[CalculateCounterTerm];
 		t1 = Collect2[ChangeDimension[t0, 4] // Trick,
 						SUNIndex,Factoring->False];
@@ -174,15 +177,15 @@ CalculateCounterTerm[exp_, k_, saveit_:D, opt___Rule] :=
 		If[ Head[t7] =!= Plus,
 			nt7 = ChangeDimension[TID[t7, k, Isolate -> True], 4],
 			lnt7 =  Length[t7];
-			For[ijn = 1, ijn <= lnt7, ijn++,
-				FCPrint[2,"ijn = ",ijn,"  out of", lnt7,
-				" ", InputForm[SelectNotFree[t7[[ijn]], k]]];
-				nt7 = nt7 + (( ( SelectFree[dummy t7[[ijn]],k]
+			For[r = 1, r <= lnt7, r++,
+				FCPrint[2,"ijn = ",r,"  out of", lnt7,
+				" ", InputForm[SelectNotFree[t7[[r]], k]]];
+				nt7 = nt7 + (( ( SelectFree[dummy t7[[r]],k]
 											) /.dummy -> 1
 							) *
 					ChangeDimension[
 					FixedPoint[ReleaseHold,
-					TID[SelectNotFree[dummy t7[[ijn]],k], k,
+					TID[SelectNotFree[dummy t7[[r]],k], k,
 										Contract -> True,
 										Isolate -> True
 						]     ], 4]
@@ -277,7 +280,7 @@ CalculateCounterTerm[exp_, k_, saveit_:D, opt___Rule] :=
 											LorentzIndex[mu3_],
 											Momentum[OPEDelta]]
 										) :> FeynCalcInternal[
-											DiracMatrix[mu1,mu2,mu3]*
+											GA[mu1,mu2,mu3]*
 											LC[mu1,mu2,mu3][OPEDelta]
 															]
 										}

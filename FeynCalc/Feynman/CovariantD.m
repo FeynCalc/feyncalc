@@ -14,23 +14,15 @@
 
 CovariantD::usage =
 "CovariantD[mu] is a generic covariant derivative with \
-Lorentz index mu. With the option-setting Explicit -> True,  \
-an explicit expression for a fermionic field is returned,  \
-depending on the setting on the other options.
-
-CovariantD[x, mu] is a generic covariant derivative with respect to x^mu. \
-
-CovariantD[mu, a, b] is a covariant derivative for a bosonic field; \
-acting on QuantumField[f,{},{a,b}], where f is some field name and \
-a and b are two SU(N) indices.
-
-Again, with the option-setting Explicit -> True, an explicit expression \
-is returned, depending on the setting on the other options.
-
-CovariantD[OPEDelta, a, b] is a short form for CovariantD[mu,a,b]*FourVector[OPEDelta, mu]. \
-
-CovariantD[{OPEDelta, a, b}, {n}] yields the product of n operators, where n is an integer. \
-
+Lorentz index mu. \n
+CovariantD[x, mu] is a generic covariant derivative with respect to x^mu. \n
+CovariantD[mu, a, b] is a covariant derivative for a bosonic field that \
+acts on QuantumField[f,{},{a,b}], where f is some field name and \
+a and b are two SU(N) indices in the adjoint representation. \n
+To obtain the explicit expression for a particular covariant derivatine, the \
+option Explicit must be set to True. \n
+CovariantD[OPEDelta, a, b] is a short form for CovariantD[mu,a,b]*FV[OPEDelta, mu]. \n
+CovariantD[{OPEDelta, a, b}, {n}] yields the product of n operators, where n is an integer. \n
 CovariantD[OPEDelta, a, b, {m, n}] gives the expanded form of CovariantD[OPEDelta, a, b]^m \
 up to order g^n for the gluon, where n is an integer and g the coupling constant indicated \
 by the setting of the option CouplingConstant. CovariantD[OPEDelta, {m, n}] gives the expanded \
@@ -173,10 +165,10 @@ CovariantD[OPEDelta, a___,
 			{m_ /; (Head[m] =!= Integer), n_Integer}, ru___Rule
 			] :=
 	Block[ {geen},
-		(Sum[geen[jj, m, a,
+		(Sum[geen[j, m, a,
 				QuantumField /. {ru} /. Options[CovariantD],
 				CouplingConstant /. {ru} /. Options[CovariantD]
-				], {jj, 0, n}
+				], {j, 0, n}
 			] /. geen -> gen[Join[{ru}, Options[CovariantD]]]
 		)
 	];

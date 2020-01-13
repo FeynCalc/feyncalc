@@ -168,9 +168,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/HypergeometricAC",
   ButtonNote->"HypergeometricAC"],
  "."
-}], "Text",
- CellTags->"Kummer",
- CellID->1248445733]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -225,8 +223,7 @@ Cell[BoxData[
     TemplateBox[{RowBox[{"c", "-", "a"}],RowBox[{"c", "-", "b"}],"c","z"},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[1]=",
- CellID->780995976]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -258,8 +255,7 @@ Cell[BoxData[
          RowBox[{"1", "-", "z"}]]}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[2]=",
- CellID->334128730]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -291,8 +287,7 @@ Cell[BoxData[
          RowBox[{"1", "-", "z"}]]}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[3]=",
- CellID->1379521301]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -325,8 +320,7 @@ Cell[BoxData[
       RowBox[{"1", "-", "z"}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[4]=",
- CellID->1681078809]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -362,8 +356,7 @@ Cell[BoxData[
       RowBox[{"a", "+", "b", "-", "c", "+", "1"}],RowBox[{"1", "-", "z"}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[5]=",
- CellID->583730114]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -395,8 +388,7 @@ Cell[BoxData[
          RowBox[{"1", "-", "z"}], "z"]}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[6]=",
- CellID->282378053]
+ CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -434,8 +426,7 @@ Cell[BoxData[
          RowBox[{"1", "-", "z"}], "z"]}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[7]=",
- CellID->593894309]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -467,8 +458,7 @@ Cell[BoxData[
          RowBox[{"1", "-", "z"}], "z"]}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[8]=",
- CellID->658206917]
+ CellLabel->"Out[8]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -506,8 +496,7 @@ Cell[BoxData[
          RowBox[{"1", "-", "z"}], "z"]}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[9]=",
- CellID->884891760]
+ CellLabel->"Out[9]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -550,8 +539,7 @@ Cell[BoxData[
       "1", "z"]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[10]=",
- CellID->1201929686]
+ CellLabel->"Out[10]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -600,8 +588,7 @@ Cell[BoxData[
       RowBox[{"a", "-", "b", "+", "1"}],FractionBox["1", "z"]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[11]=",
- CellID->1407407771]
+ CellLabel->"Out[11]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -643,8 +630,7 @@ Cell[BoxData[
        RowBox[{"1", "-", "z"}]]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[12]=",
- CellID->171828604]
+ CellLabel->"Out[12]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -694,8 +680,7 @@ Cell[BoxData[
        RowBox[{"1", "-", "z"}]]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[13]=",
- CellID->1340266483]
+ CellLabel->"Out[13]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -736,8 +721,7 @@ Cell[BoxData[
        RowBox[{"1", "-", "z"}]]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[14]=",
- CellID->1878402139]
+ CellLabel->"Out[14]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -787,8 +771,7 @@ Cell[BoxData[
        RowBox[{"1", "-", "z"}]]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[15]=",
- CellID->1646537872]
+ CellLabel->"Out[15]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -831,8 +814,7 @@ Cell[BoxData[
       "1", "z"]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[16]=",
- CellID->976219709]
+ CellLabel->"Out[16]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -880,8 +862,7 @@ Cell[BoxData[
         RowBox[{"-", "a"}], "+", "b", "+", "1"}],FractionBox["1", "z"]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[17]=",
- CellID->922572585]
+ CellLabel->"Out[17]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -921,8 +902,7 @@ Cell[BoxData[
        RowBox[{"1", "-", "z"}]]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[18]=",
- CellID->1393980026]
+ CellLabel->"Out[18]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -972,8 +952,7 @@ Cell[BoxData[
        RowBox[{"1", "-", "z"}]]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[19]=",
- CellID->1288498782]
+ CellLabel->"Out[19]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1013,8 +992,7 @@ Cell[BoxData[
        RowBox[{"1", "-", "z"}]]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[20]=",
- CellID->2121590638]
+ CellLabel->"Out[20]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1061,8 +1039,7 @@ Cell[BoxData[
        RowBox[{"1", "-", "z"}]]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[21]=",
- CellID->1992183596]
+ CellLabel->"Out[21]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1103,8 +1080,7 @@ Cell[BoxData[
       "z"},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[22]=",
- CellID->652936361]
+ CellLabel->"Out[22]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1135,8 +1111,7 @@ Cell[BoxData[
     TemplateBox[{RowBox[{"c", "-", "a"}],RowBox[{"c", "-", "b"}],"c","z"},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[23]=",
- CellID->1706021647]
+ CellLabel->"Out[23]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1178,8 +1153,7 @@ Cell[BoxData[
        RowBox[{"z", "-", "1"}]]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[24]=",
- CellID->378032271]
+ CellLabel->"Out[24]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1210,8 +1184,7 @@ Cell[BoxData[
        RowBox[{"z", "-", "1"}]]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[25]=",
- CellID->2057626251]
+ CellLabel->"Out[25]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1253,8 +1226,7 @@ Cell[BoxData[
        RowBox[{"z", "-", "1"}]]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[26]=",
- CellID->129109138]
+ CellLabel->"Out[26]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1285,8 +1257,7 @@ Cell[BoxData[
        RowBox[{"z", "-", "1"}]]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[27]=",
- CellID->149180370]
+ CellLabel->"Out[27]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1327,8 +1298,7 @@ Cell[BoxData[
       RowBox[{"1", "-", "z"}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[28]=",
- CellID->1291617006]
+ CellLabel->"Out[28]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1361,8 +1331,7 @@ Cell[BoxData[
       RowBox[{"1", "-", "z"}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[29]=",
- CellID->467825582]
+ CellLabel->"Out[29]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1406,8 +1375,7 @@ Cell[BoxData[
          RowBox[{"1", "-", "z"}]]}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[30]=",
- CellID->1418885380]
+ CellLabel->"Out[30]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1441,8 +1409,7 @@ Cell[BoxData[
          RowBox[{"1", "-", "z"}]]}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[31]=",
- CellID->1820473911]
+ CellLabel->"Out[31]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1484,8 +1451,7 @@ Cell[BoxData[
          RowBox[{"1", "-", "z"}], "z"]}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[32]=",
- CellID->1271802490]
+ CellLabel->"Out[32]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1517,8 +1483,7 @@ Cell[BoxData[
          RowBox[{"1", "-", "z"}], "z"]}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[33]=",
- CellID->1670296832]
+ CellLabel->"Out[33]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1578,8 +1543,7 @@ Cell[BoxData[
       TemplateBox[{RowBox[{"c", "-", "b"}]},
        "Gamma"]}]]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[34]=",
- CellID->1552242027]
+ CellLabel->"Out[34]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1642,8 +1606,7 @@ Cell[BoxData[
       TemplateBox[{RowBox[{"c", "-", "b"}]},
        "Gamma"]}]]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[35]=",
- CellID->449279839]
+ CellLabel->"Out[35]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1706,8 +1669,7 @@ Cell[BoxData[
       TemplateBox[{RowBox[{"c", "-", "b"}]},
        "Gamma"]}]]}]}], TraditionalForm]], "Output",
  CellTags->"Kummer",
- CellLabel->"Out[36]=",
- CellID->1951010163]
+ CellLabel->"Out[36]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -1772,12 +1734,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{817, Automatic}, {Automatic, 147}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

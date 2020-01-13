@@ -2,13 +2,13 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: DiracGamma														*)
+(* :Title: DiracGammaExpand													*)
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Expands Feynman slashes										*)
@@ -20,7 +20,7 @@ DiracGammaExpand::usage =
 exp into (DiracGamma[Momentum[a]] + DiracGamma[Momentum[b]] + ...).";
 
 DiracGammaExpand::fail =
-"Something went while expanding momenta contracted with Dirac matrices.
+"Something went wrong while expanding momenta contracted with Dirac matrices.
 Evaluation aborted! "
 
 (* ------------------------------------------------------------------------ *)
@@ -31,34 +31,29 @@ End[]
 Begin["`DiracGammaExpand`Private`"]
 
 Options[DiracGammaExpand] = {
+	DiracSigmaExpand -> True,
+	FCE -> False,
 	FCI -> False,
 	Momentum -> All
 };
 
 DiracGammaExpand[expr_, OptionsPattern[]] :=
-	Block[{x,null1,null2, uniqList, solsList, repRule, momList,gaev,gaevlin,rud},
-
-	gaev[xx_,di_:4] :=
-		gaevlin[Expand[xx//MomentumExpand, Momentum], di];
-
-	gaevlin[xx_Plus, di_:4] :=
-		Map[gaevlin[#, di]&, xx];
+	Block[{ex, null1, null2, uniqList, solsList, repRule, momList, ruleDelayed, res},
 
 	momList = OptionValue[Momentum];
 
-
 	If[	!OptionValue[FCI],
-		x = FCI[expr],
-		x = expr
+		ex = FCI[expr],
+		ex = expr
 	];
 
 	(*	Nothing to do...	*)
-	If[	FreeQ[x,DiracGamma],
-		Return[x]
+	If[	FreeQ[ex,DiracGamma],
+		Return[ex]
 	];
 
 	(* List of all the unique Feynman slashes	*)
-	uniqList = Cases[x+null1+null2, DiracGamma[arg_ /; ! FreeQ[{arg}, Momentum],_:4], Infinity]//Union;
+	uniqList = Cases[ex+null1+null2, DiracGamma[arg_ /; ! FreeQ2[{arg}, {Momentum,CartesianMomentum}],___], Infinity]//DeleteDuplicates//Sort;
 
 	(*	If the user specified to perform expansion only for some
 		special slashed momenta, let's do it	*)
@@ -67,7 +62,7 @@ DiracGammaExpand[expr_, OptionsPattern[]] :=
 	];
 
 	(* Final replacement rule	*)
-	repRule = Thread[rud[uniqList, uniqList/.DiracGamma -> gaev /. gaevlin -> DiracGamma]] /. rud->RuleDelayed;
+	repRule = Thread[ruleDelayed[uniqList, uniqList /.DiracGamma -> gaev /. gaevlin -> DiracGamma]] /. ruleDelayed->RuleDelayed;
 
 	(* Simple cross check	*)
 	If[ !FreeQ2[repRule,{gaev,gaevlin}],
@@ -75,9 +70,25 @@ DiracGammaExpand[expr_, OptionsPattern[]] :=
 		Abort[]
 	];
 
-	x /. Dispatch[repRule]
+	res = ex /. Dispatch[repRule];
+
+	If[	OptionValue[DiracSigmaExpand],
+		res = DiracSigmaExpand[res, FCI->True, DiracGammaExpand->False, Momentum -> momList]
+	];
+
+	If[	OptionValue[FCE],
+		res = FCE[res]
+	];
+
+	res
 
 	];
+
+gaev[xx_,di_:4] :=
+	gaevlin[Expand[MomentumExpand[xx], Momentum], di];
+
+gaevlin[xx_Plus, di_:4] :=
+	Map[gaevlin[#, di]&, xx];
 
 FCPrint[1,"DiracGammaExpand.m loaded."];
 End[]

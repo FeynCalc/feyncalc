@@ -127,8 +127,24 @@ q1."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "FeynAmpDenominatorSplit", "]"}]], "Input",
+ CellLabel->"In[73]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"List", "\[Rule]", "False"}], ",", 
+    RowBox[{"Momentum", "\[Rule]", "All"}], ",", 
+    RowBox[{"MomentumExpand", "\[Rule]", "True"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[73]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -169,9 +185,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/FeynAmpDenominatorCombine",
   ButtonNote->"FeynAmpDenominatorCombine"],
  "."
-}], "Text",
- CellTags->"FeynAmpDenominatorSplit",
- CellID->1583918878]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -201,110 +215,235 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t", "=", 
-  RowBox[{
-   RowBox[{"FAD", "[", 
-    RowBox[{"q1", ",", 
-     RowBox[{"q1", "-", "p"}], ",", 
-     RowBox[{"q1", "-", "q2"}], ",", "q2", ",", 
-     RowBox[{"q2", "-", "p"}]}], "]"}], "//", "FCI"}]}]], "Input",
+ RowBox[{"FAD", "[", 
+  RowBox[{"q1", ",", 
+   RowBox[{"q1", "-", "p"}], ",", 
+   RowBox[{"q1", "-", "q2"}], ",", "q2", ",", 
+   RowBox[{"q2", "-", "p"}]}], "]"}]], "Input",
  CellTags->"FeynAmpDenominatorSplit",
- CellLabel->"In[1]:=",
+ CellLabel->"In[78]:=",
  CellID->403484877],
 
 Cell[BoxData[
  FormBox[
   FractionBox["1", 
    RowBox[{
-    SuperscriptBox[
-     FormBox["q1",
-      TraditionalForm], "2"], ".", 
-    SuperscriptBox[
-     RowBox[{"(", 
-      RowBox[{
+    InterpretationBox[
+     SuperscriptBox[
+      FormBox[
        FormBox["q1",
-        TraditionalForm], "-", 
-       FormBox["p",
-        TraditionalForm]}], ")"}], "2"], ".", 
-    SuperscriptBox[
-     RowBox[{"(", 
+        TraditionalForm],
+       TraditionalForm], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[$CellContext`q1, D], 
+       FeynCalc`Momentum[$CellContext`q1, D]]],
+     Editable->False], ".", 
+    InterpretationBox[
+     SuperscriptBox[
       RowBox[{
-       FormBox["q1",
-        TraditionalForm], "-", 
-       FormBox["q2",
-        TraditionalForm]}], ")"}], "2"], ".", 
-    SuperscriptBox[
-     FormBox["q2",
-      TraditionalForm], "2"], ".", 
-    SuperscriptBox[
-     RowBox[{"(", 
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox["q1",
+           TraditionalForm], "-", 
+          FormBox["p",
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[-$CellContext`p + $CellContext`q1, D], 
+       FeynCalc`Momentum[-$CellContext`p + $CellContext`q1, D]]],
+     Editable->False], ".", 
+    InterpretationBox[
+     SuperscriptBox[
       RowBox[{
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox["q1",
+           TraditionalForm], "-", 
+          FormBox["q2",
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[$CellContext`q1 - $CellContext`q2, D], 
+       FeynCalc`Momentum[$CellContext`q1 - $CellContext`q2, D]]],
+     Editable->False], ".", 
+    InterpretationBox[
+     SuperscriptBox[
+      FormBox[
        FormBox["q2",
-        TraditionalForm], "-", 
-       FormBox["p",
-        TraditionalForm]}], ")"}], "2"]}]], TraditionalForm]], "Output",
+        TraditionalForm],
+       TraditionalForm], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[$CellContext`q2, D], 
+       FeynCalc`Momentum[$CellContext`q2, D]]],
+     Editable->False], ".", 
+    InterpretationBox[
+     SuperscriptBox[
+      RowBox[{
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox["q2",
+           TraditionalForm], "-", 
+          FormBox["p",
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[-$CellContext`p + $CellContext`q2, D], 
+       FeynCalc`Momentum[-$CellContext`p + $CellContext`q2, D]]],
+     Editable->False]}]], TraditionalForm]], "Output",
  CellTags->"FeynAmpDenominatorSplit",
- CellLabel->"Out[1]=",
- CellID->305665918]
+ CellLabel->"Out[78]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t", "//", "Head"}]], "Input",
- CellTags->"FeynAmpDenominatorSplit",
- CellLabel->"In[2]:=",
- CellID->388100450],
+ RowBox[{"%", "//", "StandardForm"}]], "Input",
+ CellLabel->"In[79]:="],
 
 Cell[BoxData[
- FormBox["FeynAmpDenominator", TraditionalForm]], "Output",
- CellTags->"FeynAmpDenominatorSplit",
- CellLabel->"Out[2]=",
- CellID->818053302]
+ RowBox[{"FAD", "[", 
+  RowBox[{"q1", ",", 
+   RowBox[{
+    RowBox[{"-", "p"}], "+", "q1"}], ",", 
+   RowBox[{"q1", "-", "q2"}], ",", "q2", ",", 
+   RowBox[{
+    RowBox[{"-", "p"}], "+", "q2"}]}], "]"}]], "Output",
+ CellLabel->"Out[79]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FeynAmpDenominatorSplit", "[", "t", "]"}]], "Input",
- CellTags->"FeynAmpDenominatorSplit",
- CellLabel->"In[3]:=",
- CellID->922049966],
+ RowBox[{"FeynAmpDenominatorSplit", "[", "%", "]"}]], "Input",
+ CellLabel->"In[80]:="],
 
 Cell[BoxData[
  FormBox[
-  FractionBox["1", 
-   RowBox[{
-    SuperscriptBox[
-     FormBox["q1",
-      TraditionalForm], "2"], " ", 
-    SuperscriptBox[
-     FormBox["q2",
-      TraditionalForm], "2"], " ", 
-    SuperscriptBox[
-     RowBox[{"(", 
-      RowBox[{
-       FormBox["q1",
-        TraditionalForm], "-", 
-       FormBox["p",
-        TraditionalForm]}], ")"}], "2"], " ", 
-    SuperscriptBox[
-     RowBox[{"(", 
-      RowBox[{
-       FormBox["q2",
-        TraditionalForm], "-", 
-       FormBox["p",
-        TraditionalForm]}], ")"}], "2"], " ", 
-    SuperscriptBox[
-     RowBox[{"(", 
-      RowBox[{
-       FormBox["q1",
-        TraditionalForm], "-", 
-       FormBox["q2",
-        TraditionalForm]}], ")"}], "2"]}]], TraditionalForm]], "Output",
- CellTags->"FeynAmpDenominatorSplit",
- CellLabel->"Out[3]=",
- CellID->810343253]
+  FormBox[
+   FormBox[
+    FormBox[
+     FormBox[
+      FractionBox["1", 
+       RowBox[{
+        InterpretationBox[
+         SuperscriptBox[
+          FormBox[
+           FormBox["q1",
+            TraditionalForm],
+           TraditionalForm], "2"],
+         SequenceForm[
+          FeynCalc`Pair[
+           FeynCalc`Momentum[$CellContext`q1, D], 
+           FeynCalc`Momentum[$CellContext`q1, D]]],
+         Editable->False], " ", 
+        InterpretationBox[
+         SuperscriptBox[
+          FormBox[
+           FormBox["q2",
+            TraditionalForm],
+           TraditionalForm], "2"],
+         SequenceForm[
+          FeynCalc`Pair[
+           FeynCalc`Momentum[$CellContext`q2, D], 
+           FeynCalc`Momentum[$CellContext`q2, D]]],
+         Editable->False], " ", 
+        InterpretationBox[
+         SuperscriptBox[
+          RowBox[{
+           FormBox["\<\"(\"\>",
+            TraditionalForm], 
+           FormBox[
+            FormBox[
+             RowBox[{
+              FormBox["q1",
+               TraditionalForm], "-", 
+              FormBox["p",
+               TraditionalForm]}],
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox["\<\")\"\>",
+            TraditionalForm]}], "2"],
+         SequenceForm[
+          
+          FeynCalc`Pair[-FeynCalc`Momentum[$CellContext`p, D] + 
+           FeynCalc`Momentum[$CellContext`q1, D], -
+            FeynCalc`Momentum[$CellContext`p, D] + 
+           FeynCalc`Momentum[$CellContext`q1, D]]],
+         Editable->False], " ", 
+        InterpretationBox[
+         SuperscriptBox[
+          RowBox[{
+           FormBox["\<\"(\"\>",
+            TraditionalForm], 
+           FormBox[
+            FormBox[
+             RowBox[{
+              FormBox["q2",
+               TraditionalForm], "-", 
+              FormBox["p",
+               TraditionalForm]}],
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox["\<\")\"\>",
+            TraditionalForm]}], "2"],
+         SequenceForm[
+          
+          FeynCalc`Pair[-FeynCalc`Momentum[$CellContext`p, D] + 
+           FeynCalc`Momentum[$CellContext`q2, D], -
+            FeynCalc`Momentum[$CellContext`p, D] + 
+           FeynCalc`Momentum[$CellContext`q2, D]]],
+         Editable->False], " ", 
+        InterpretationBox[
+         SuperscriptBox[
+          RowBox[{
+           FormBox["\<\"(\"\>",
+            TraditionalForm], 
+           FormBox[
+            FormBox[
+             RowBox[{
+              FormBox["q1",
+               TraditionalForm], "-", 
+              FormBox["q2",
+               TraditionalForm]}],
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox["\<\")\"\>",
+            TraditionalForm]}], "2"],
+         SequenceForm[
+          FeynCalc`Pair[
+          FeynCalc`Momentum[$CellContext`q1, D] - 
+           FeynCalc`Momentum[$CellContext`q2, D], 
+           FeynCalc`Momentum[$CellContext`q1, D] - 
+           FeynCalc`Momentum[$CellContext`q2, D]]],
+         Editable->False]}]],
+      TraditionalForm],
+     TraditionalForm],
+    TraditionalForm],
+   TraditionalForm], TraditionalForm]], "Output",
+ CellLabel->"Out[80]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -312,9 +451,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{
   RowBox[{"%", "//", "FCE"}], "//", "StandardForm"}]], "Input",
- CellTags->"FeynAmpDenominatorSplit",
- CellLabel->"In[4]:=",
- CellID->1536194379],
+ CellLabel->"In[81]:="],
 
 Cell[BoxData[
  RowBox[{
@@ -328,37 +465,59 @@ Cell[BoxData[
   RowBox[{"FAD", "[", 
    RowBox[{
     RowBox[{"-", "p"}], "+", "q2"}], "]"}]}]], "Output",
- CellTags->"FeynAmpDenominatorSplit",
- CellLabel->"Out[4]//StandardForm=",
- CellID->1693985591]
+ CellLabel->"Out[81]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{
-   RowBox[{"FeynAmpDenominatorSplit", "[", 
-    RowBox[{"t", ",", "q1"}], "]"}], "//", "FCE"}], "//", 
-  "StandardForm"}]], "Input",
- CellTags->"FeynAmpDenominatorSplit",
- CellLabel->"In[5]:=",
- CellID->1257504819],
 
 Cell[BoxData[
  RowBox[{"FeynAmpDenominatorSplit", "[", 
   RowBox[{
    RowBox[{"FAD", "[", 
     RowBox[{"q1", ",", 
-     RowBox[{
-      RowBox[{"-", "p"}], "+", "q1"}], ",", 
+     RowBox[{"q1", "-", "p"}], ",", 
      RowBox[{"q1", "-", "q2"}], ",", "q2", ",", 
-     RowBox[{
-      RowBox[{"-", "p"}], "+", "q2"}]}], "]"}], ",", "q1"}], "]"}]], "Output",
- 
+     RowBox[{"q2", "-", "p"}]}], "]"}], ",", 
+   RowBox[{"Momentum", "\[Rule]", 
+    RowBox[{"{", "q1", "}"}]}]}], "]"}]], "Input",
  CellTags->"FeynAmpDenominatorSplit",
- CellLabel->"Out[5]//StandardForm=",
- CellID->863883694]
+ CellLabel->"In[83]:=",
+ CellID->1257504819],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FAD", "[", 
+   RowBox[{"q2", ",", 
+    RowBox[{
+     RowBox[{"-", "p"}], "+", "q2"}]}], "]"}], " ", 
+  RowBox[{"FAD", "[", 
+   RowBox[{"q1", ",", 
+    RowBox[{
+     RowBox[{"-", "p"}], "+", "q1"}], ",", 
+    RowBox[{"q1", "-", "q2"}]}], "]"}]}]], "Output",
+ CellTags->"FeynAmpDenominatorSplit",
+ CellLabel->"Out[83]//StandardForm="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"%", "//", "FCE"}], "//", "StandardForm"}]], "Input",
+ CellLabel->"In[84]:="],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FAD", "[", 
+   RowBox[{"q2", ",", 
+    RowBox[{
+     RowBox[{"-", "p"}], "+", "q2"}]}], "]"}], " ", 
+  RowBox[{"FAD", "[", 
+   RowBox[{"q1", ",", 
+    RowBox[{
+     RowBox[{"-", "p"}], "+", "q1"}], ",", 
+    RowBox[{"q1", "-", "q2"}]}], "]"}]}]], "Output",
+ CellLabel->"Out[84]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -369,30 +528,20 @@ Cell[BoxData[
    RowBox[{"FeynAmpDenominatorCombine", "[", "%", "]"}], "//", "FCE"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"FeynAmpDenominatorSplit",
- CellLabel->"In[6]:=",
+ CellLabel->"In[85]:=",
  CellID->1174376888],
 
 Cell[BoxData[
- RowBox[{"FeynAmpDenominatorSplit", "[", 
-  RowBox[{
-   RowBox[{"FAD", "[", 
-    RowBox[{"q2", ",", "q1", ",", 
-     RowBox[{
-      RowBox[{"-", "p"}], "+", "q2"}], ",", 
-     RowBox[{"q1", "-", "q2"}], ",", 
-     RowBox[{
-      RowBox[{"-", "p"}], "+", "q1"}]}], "]"}], ",", "q1"}], "]"}]], "Output",
- 
+ RowBox[{"FAD", "[", 
+  RowBox[{"q1", ",", "q2", ",", 
+   RowBox[{"q1", "-", "q2"}], ",", 
+   RowBox[{
+    RowBox[{"-", "p"}], "+", "q1"}], ",", 
+   RowBox[{
+    RowBox[{"-", "p"}], "+", "q2"}]}], "]"}]], "Output",
  CellTags->"FeynAmpDenominatorSplit",
- CellLabel->"Out[6]//StandardForm=",
- CellID->1033440679]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{"Clear", "[", "t", "]"}]], "Input",
- CellTags->"FeynAmpDenominatorSplit",
- CellLabel->"In[7]:=",
- CellID->616885004]
+ CellLabel->"Out[85]//StandardForm="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -456,12 +605,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{1158, Automatic}, {Automatic, 191}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Quark gluon vertex												*)
@@ -44,11 +44,6 @@ Options[QuarkGluonVertex] = {
 };
 
 QGV = QuarkGluonVertex;
-
-{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
-
-QuarkGluonVertex[x___, i_Integer, y___] :=
-	QuarkGluonVertex[x, l[i], c[i], y];
 
 QuarkGluonVertex[x1_,x2_,x3_,x4_,x5_,x6_,x7_,x8_, x9_, y:OptionsPattern[]] :=
 	QuarkGluonVertex[{x1,x2,x3}, {x4,x5,x6}, {x7,x8,x9} , y] /;

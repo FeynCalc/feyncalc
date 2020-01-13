@@ -119,19 +119,47 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"GhostPropagator", "[", 
    RowBox[{"p", ",", " ", "a", ",", " ", "b"}], "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "gives the ghost propagator where \"a\" and \"b\" are the color indices. \
-GhostPropagator[p] omits the ",
+ " \[LineSeparator]gives the ghost propagator where ",
+ Cell[BoxData["a"], "InlineFormula"],
+ " and ",
+ Cell[BoxData["b"], "InlineFormula"],
+ " are the color indices.\n",
+ Cell["   ", "ModInfo"],
  Cell[BoxData[
-  FormBox[
-   RowBox[{
-    SubscriptBox["\[Delta]", 
-     RowBox[{"a", "\[NoBreak]", "b"}]], "."}], TraditionalForm]]]
+  RowBox[{"GhostPropagator", "[", "p", "]"}]], "InlineFormula"],
+ " \[LineSeparator]omits the ",
+ Cell[BoxData[
+  SubscriptBox["\[Delta]", 
+   RowBox[{"a", "\[NoBreak]", "b"}]]], "InlineFormula"],
+ "."
 }], "Usage",
- CellID->982511436],
+ CellID->2010081510],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[TextData[{
+ Cell[BoxData["GHP"], "InlineFormula"],
+ " can be used as an abbreviation of ",
+ ButtonBox["GhostPropagator",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/GhostPropagator",
+  ButtonNote->"GhostPropagator"],
+ "."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "GhostPropagator", "]"}]], "Input",
+ CellLabel->"In[408]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
+    RowBox[{"Explicit", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[408]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -167,24 +195,22 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- ButtonBox["GHP",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/GHP",
-  ButtonNote->"GHP"],
- ", ",
  ButtonBox["GluonPropagator",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/GluonPropagator",
-  ButtonNote->"GluonPropagator"],
+  ButtonData:>"paclet:FeynCalc/ref/GhostPropagator",
+  ButtonNote->"GhostPropagator"],
+ ", ",
+ ButtonBox["QCDFeynmanRuleConvention",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/QCDFeynmanRuleConvention",
+  ButtonNote->"QCDFeynmanRuleConvention"],
  ", ",
  ButtonBox["GluonGhostVertex",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/GluonGhostVertex",
   ButtonNote->"GluonGhostVertex"],
  "."
-}], "Text",
- CellTags->"GhostPropagator",
- CellID->495663945]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -232,19 +258,14 @@ Cell[BoxData[
    FormBox["p",
     TraditionalForm], ")"}], TraditionalForm]], "Output",
  CellTags->"GhostPropagator",
- CellLabel->"Out[1]=",
- CellID->512151226]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"GhostPropagator", "[", 
-  RowBox[{"p", ",", "a", ",", "b", ",", 
-   RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
- CellTags->"GhostPropagator",
- CellLabel->"In[2]:=",
- CellID->736877273],
+ RowBox[{"Explicit", "[", "%", "]"}]], "Input",
+ CellLabel->"In[2]:="],
 
 Cell[BoxData[
  FormBox[
@@ -260,18 +281,30 @@ Cell[BoxData[
        FormBox["b",
         TraditionalForm],
        TraditionalForm]}]]}], 
-   SuperscriptBox[
-    FormBox["p",
-     TraditionalForm], "2"]], TraditionalForm]], "Output",
- CellTags->"GhostPropagator",
- CellLabel->"Out[2]=",
- CellID->1880336114]
+   InterpretationBox[
+    SuperscriptBox[
+     FormBox[
+      FormBox["p",
+       TraditionalForm],
+      TraditionalForm], "2"],
+    SequenceForm[
+     FeynCalc`Pair[
+      FeynCalc`Momentum[$CellContext`p, D], 
+      FeynCalc`Momentum[$CellContext`p, D]]],
+    Editable->False]], TraditionalForm]], "Output",
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"GhostPropagator", "[", "p", "]"}]], "Input",
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GHP", "[", "p", "]"}]], "Input",
  CellTags->"GhostPropagator",
  CellLabel->"In[3]:=",
  CellID->357152074],
@@ -283,64 +316,31 @@ Cell[BoxData[
    FormBox["p",
     TraditionalForm], ")"}], TraditionalForm]], "Output",
  CellTags->"GhostPropagator",
- CellLabel->"Out[3]=",
- CellID->1092778903]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{"GhostPropagator", "[", 
-   RowBox[{"p", ",", "1", ",", "2"}], "]"}], "//", "Explicit"}]], "Input",
- CellTags->"GhostPropagator",
- CellLabel->"In[4]:=",
- CellID->1361525951],
+ RowBox[{"Explicit", "[", "%", "]"}]], "Input",
+ CellLabel->"In[4]:="],
 
 Cell[BoxData[
  FormBox[
-  FractionBox[
-   RowBox[{"\[ImaginaryI]", " ", 
-    SuperscriptBox["\[Delta]", 
-     RowBox[{
-      FormBox[
-       FormBox["ci1",
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox["ci2",
-        TraditionalForm],
-       TraditionalForm]}]]}], 
-   SuperscriptBox[
-    FormBox["p",
-     TraditionalForm], "2"]], TraditionalForm]], "Output",
- CellTags->"GhostPropagator",
- CellLabel->"Out[4]=",
- CellID->190043121]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{
-   RowBox[{
-    RowBox[{"GhostPropagator", "[", 
-     RowBox[{
-      RowBox[{"-", "k"}], ",", "3", ",", "4"}], "]"}], "//", "Explicit"}], "//",
-    " ", "FCE"}], "//", "StandardForm"}]], "Input",
- CellTags->"GhostPropagator",
- CellLabel->"In[5]:=",
- CellID->160188204],
-
-Cell[BoxData[
- RowBox[{"\[ImaginaryI]", " ", 
-  RowBox[{"FAD", "[", "k", "]"}], " ", 
-  RowBox[{"SD", "[", 
-   RowBox[{"ci3", ",", "ci4"}], "]"}]}]], "Output",
- CellTags->"GhostPropagator",
- CellLabel->"Out[5]//StandardForm=",
- CellID->657761817]
+  FractionBox["\[ImaginaryI]", 
+   InterpretationBox[
+    SuperscriptBox[
+     FormBox[
+      FormBox["p",
+       TraditionalForm],
+      TraditionalForm], "2"],
+    SequenceForm[
+     FeynCalc`Pair[
+      FeynCalc`Momentum[$CellContext`p, D], 
+      FeynCalc`Momentum[$CellContext`p, D]]],
+    Editable->False]], TraditionalForm]], "Output",
+ CellLabel->"Out[4]="]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -405,12 +405,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{1495, Automatic}, {Automatic, 243}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Gluon vertices													*)
@@ -19,19 +19,15 @@ GV::usage =
 "GV is equivalent to GluonVertex.";
 
 GluonVertex::usage =
-"GluonVertex[{p,mu,a}, {q,nu,b}, {k,la,c}] or GluonVertex[ p,mu,a ,  q,nu,b ,  k,la,c ] yields the
-3-gluon vertex.
-
-GluonVertex[{p,mu}, {q,nu}, {k,la}] yields the 3-gluon vertex without color structure and the \
-coupling constant.
-
+"GluonVertex[{p,mu,a}, {q,nu,b}, {k,la,c}] or \
+GluonVertex[ p,mu,a ,  q,nu,b ,  k,la,c ] yields the 3-gluon vertex. \n
+GluonVertex[{p,mu}, {q,nu}, {k,la}] yields the 3-gluon vertex without color structure \
+and the coupling constant. \n
 GluonVertex[{p,mu,a}, {q,nu,b}, {k,la,c}, {s,si,d}] or GluonVertex[{mu,a}, {nu,b}, {la,c}, {si,d}] or \
 GluonVertex[p,mu,a ,  q,nu,b ,  k,la,c ,  s,si,d] or GluonVertex[ mu,a ,  nu,b ,  la,c ,  si,d ] \
-yields the  4-gluon vertex.
-
+yields the  4-gluon vertex. \n
 The dimension  and the name of the coupling constant are determined by the options
-Dimension and CouplingConstant.
-
+Dimension and CouplingConstant. \n
 The Option setting Explicit determines whether the explicit Feynman rule \
 is returned or whether it is left as an operator.";
 
@@ -52,8 +48,6 @@ Options[GluonVertex] = {
 GV = GluonVertex;
 Abbreviation[GluonVertex] = HoldForm[GV];
 
-{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
-
 lorfix[w_] :=
 	MomentumCombine[w,LeafCount -> 1000] /. LorentzIndex -> lorf /. lorf -> LorentzIndex;
 lorf[y_lorf,___] :=
@@ -64,9 +58,6 @@ momfix[v_] :=
 	MomentumCombine[v,LeafCount -> 1000]/.Momentum->momf/.momf->Momentum;
 momf[y_momf,___] :=
 	y;
-
-GluonVertex[x___, i_Integer, y___] :=
-	GluonVertex[x, l[i], c[i], y];
 
 (* 3 - vertex *)
 GluonVertex[x1_,x2_,x3_,x4_,x5_,x6_,x7_,x8_, x9_, y___Rule] :=
@@ -132,7 +123,7 @@ GluonVertex /:
 
 GluonVertex /:
 	MakeBoxes[GluonVertex[{_,mu1_},{_,mu2_},{_,mu3_},{_,mu4_}],    TraditionalForm] :=
-		SuperscriptBox["W",TBox[mu1,mu2,mu3,mu4]];
+		SuperscriptBox["V",TBox[mu1,mu2,mu3,mu4]];
 
 GluonVertex /:
 	MakeBoxes[GluonVertex[{p1_,mu1_, a_},{p2_,mu2_,b_},{p3_,mu3_,c_},{p4_,mu4_,d_}], TraditionalForm] :=

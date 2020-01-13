@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Clears definitions of scalar products						    *)
@@ -36,12 +36,24 @@ ClearScalarProducts:=FCClearScalarProducts[];
 
 FCClearScalarProducts[OptionsPattern[]] :=
 	(
-		DownValues[Pair] = initialPairDownValues;
-		DownValues[ScalarProduct] = initialScalarProductDownValues;
-		UpValues[ScalarProduct] = initialScalarProductUpValues;
-		DownValues[SP] = initialSPDownValues;
-		DownValues[SPD] = initialSPDDownValues;
-		$ScalarProducts = initialScalarProducts;
+		DownValues[Pair] = FeynCalc`Package`initialPairDownValues;
+		DownValues[CartesianPair] = FeynCalc`Package`initialCartesianPairDownValues;
+		DownValues[TemporalPair] = FeynCalc`Package`initialTemporalPairDownValues;
+		DownValues[ScalarProduct] = FeynCalc`Package`initialScalarProductDownValues;
+		UpValues[ScalarProduct] = FeynCalc`Package`initialScalarProductUpValues;
+		DownValues[CartesianScalarProduct] = FeynCalc`Package`initialCartesianScalarProductDownValues;
+		UpValues[CartesianScalarProduct] = FeynCalc`Package`initialCartesianScalarProductUpValues;
+		DownValues[SP] = FeynCalc`Package`initialSPDownValues;
+		DownValues[SPD] = FeynCalc`Package`initialSPDDownValues;
+		DownValues[SPE] = FeynCalc`Package`initialSPEDownValues;
+		DownValues[CSP] = FeynCalc`Package`initialCSPDownValues;
+		DownValues[CSPD] = FeynCalc`Package`initialCSPDDownValues;
+		DownValues[CSPE] = FeynCalc`Package`initialCSPEDownValues;
+		DownValues[TC] = FeynCalc`Package`initialTCDownValues;
+		DownValues[Momentum] = FeynCalc`Package`initialMomentumDownValues;
+		DownValues[TemporalMomentum] = FeynCalc`Package`initialTemporalMomentumDownValues;
+		DownValues[CartesianMomentum] = FeynCalc`Package`initialCartesianMomentumDownValues;
+		$ScalarProducts = FeynCalc`Package`initialScalarProducts;
 	);
 
 FCPrint[1,"FCClearScalarProducts.m loaded"];

@@ -23,7 +23,10 @@ End[]
 
 Begin["`RussianTrick`Private`"]
 
-Options[RussianTrick] = {Dimension -> D, FC2TLI -> False};
+Options[RussianTrick] = {
+	Dimension	-> D,
+	FC2TLI 		-> False
+};
 
 RussianTrick[exp_,k_, opt___Rule] :=
 	RussianTrick[exp,k,k,{FCGV["q1"], FCGV["q2"], FCGV["p"]},opt];
@@ -32,11 +35,17 @@ RussianTrick[exp_,k_, pe_/; Head[pe]=!=List, opt___Rule] :=
 	RussianTrick[exp,k,pe,{FCGV["q1"], FCGV["q2"], FCGV["p"]},opt];
 
 RussianTrick[ex_, p_,k_, {q1_, q2_, pe_}, opt___Rule] :=
-	Block[ {fv, t1, t2, t3, dime, exp,mu, dim},
+	Block[ {t1, t2, t3, dime, exp,mu, dim},
+
+		If[	!FreeQ2[{ex}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		exp = FCI[ex];
 		dim = Dimension /. {opt} /. Options[RussianTrick];
-		fv  = ExpandScalarProduct[FourVector[##, Dimension -> dim]]&;
-		t1  = FourDivergence[exp fv[p,mu], fv[k, mu]];
+		t1  = FourDivergence[exp ExpandScalarProduct[Pair[Momentum[p,dim],LorentzIndex[mu,dim]]],
+			ExpandScalarProduct[Pair[Momentum[k,dim],LorentzIndex[mu,dim]]]];
 		t2  = ApartFF[t1, {q1, q2}];
 		t2  = Collect2[FeynAmpDenominatorSimplify[t2, q1,q2], q1,q2];
 		If[ Head[t2] === Plus,

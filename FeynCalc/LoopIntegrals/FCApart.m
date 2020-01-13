@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Partial fractioning for loop integrals with linearly
@@ -47,24 +47,27 @@ pfracOut::usage="";
 counter::usage="";
 
 Options[FCApart] = {
-	Check -> True,
-	Collecting -> True,
-	DropScaleless -> True,
+	Check 				-> True,
+	Collecting 			-> True,
+	DropScaleless 		-> True,
 	ExpandScalarProduct -> True,
-	FCI -> False,
-	FCVerbose -> False,
-	FDS -> True,
-	MaxIterations -> Infinity,
-	SetDimensions-> {4,D}
+	FCE 				-> False,
+	FCI 				-> False,
+	FCVerbose 			-> False,
+	FDS 				-> True,
+	Factoring 			-> {Factor, 5000},
+	MaxIterations 		-> Infinity,
+	SetDimensions		-> {3,4,D, D-1},
+	TimeConstrained 	-> 3
 };
 
 FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 	Block[{ex,vectorSet,res,check, scalarTerm, vectorTerm=1, pref=1, tmp,
-		scaleless1=0,scaleless2=0},
+		scaleless1=0,scaleless2=0,time, optFactoring, optTimeConstrained},
 
 		If [OptionValue[FCVerbose]===False,
 			fcaVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				fcaVerbose=OptionValue[FCVerbose]
 			];
 		];
@@ -74,7 +77,9 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 			ex = expr
 		];
 
-		counter = OptionValue[MaxIterations];
+		counter 			= OptionValue[MaxIterations];
+		optFactoring 		= OptionValue[Factoring];
+		optTimeConstrained 	= OptionValue[TimeConstrained];
 
 		FCPrint[3,"FCApart: Entering with ", ex, FCDoControl->fcaVerbose];
 
@@ -85,25 +90,51 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 		];
 
 		If[	OptionValue[ExpandScalarProduct],
-			ex = ExpandScalarProduct[ex]
+			ex = ExpandScalarProduct[ex, FCI->True]
 		];
 
-		(* To bring the propagators into a proper form *)
-		ex = ex /. FeynAmpDenominator -> feynsimp[lmoms];
+
+
+
+
+		(*
+			We need to cancel things like p.q/(p.q+i Eta) before invoking FCLoopBasis functions!
+		*)
+		If[!FreeQ2[ex, {StandardPropagatorDenominator, CartesianPropagatorDenominator}],
+			ex = cancelSP[ex];
+			ex = ex /. fadHold[r___, (h: StandardPropagatorDenominator|CartesianPropagatorDenominator)[a__, {n_, s_}], t___]/;n<0 :>
+				fadHold[r,t] FeynAmpDenominatorExplicit[FeynAmpDenominator[h[a, {n, s}]],FCI->True, ExpandScalarProduct->OptionValue[ExpandScalarProduct]];
+			ex = ex /. fadHold[] -> 1 /. fadHold-> FeynAmpDenominator;
+			FCPrint[3,"FCApart: After the initial cancelling of scalar products ", ex, FCDoControl->fcaVerbose]
+		];
+
+		(*	To bring the propagators into a proper form.
+			However, this might also mess up the signs of the
+			propagators in the already fixed topology, so if FDS is set to False,
+			this simplification should not be done as well!	*)
+		If[	OptionValue[FDS],
+			ex = ex /. FeynAmpDenominator -> FeynCalc`Package`feynsimp[lmoms]
+		];
+
 
 		If [ FreeQ2[ex,lmoms],
 			FCPrint[3,"FCApart: The intermediate expression contains no loop integrals ", ex, FCDoControl->fcaVerbose];
+
+			If[	OptionValue[FCE],
+				ex = FCE[ex]
+			];
+
 			Return[ex];
 		];
 
 
 		(*	Partial fractioning should work also for loop integrals that contain loop momenta
 			with uncontracted indices, or loop momenta contracted with Epsilon tensors and Dirac gammas	*)
-		If[	!FreeQ2[ex,{LorentzIndex,Eps,DiracGamma}],
-			scalarTerm = SelectFree[ex, LorentzIndex,Eps,DiracGamma];
-			vectorTerm = SelectNotFree[ex, LorentzIndex,Eps,DiracGamma];
+		If[	!FreeQ2[ex,{LorentzIndex,CartesianIndex,Eps,DiracGamma}],
+			scalarTerm = SelectFree[ex, LorentzIndex,CartesianIndex,Eps,DiracGamma];
+			vectorTerm = SelectNotFree[ex, LorentzIndex,CartesianIndex,Eps,DiracGamma];
 
-			If[	scalarTerm*vectorTerm =!= ex || !FreeQ[scalarTerm,LorentzIndex],
+			If[	scalarTerm*vectorTerm =!= ex || !FreeQ2[scalarTerm,{LorentzIndex,CartesianIndex}],
 				Message[FCApart::error, ex];
 				Abort[]
 			],
@@ -115,6 +146,12 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 
 		(* If the integral can't be partial fractioned any further, then we have nothing to do here *)
 		If[	!FCLoopBasisOverdeterminedQ[scalarTerm,lmoms, SetDimensions->OptionValue[SetDimensions], FCI->True],
+			FCPrint[3,"FCApart: No furher partial fractioning is possible in ", ex, FCDoControl->fcaVerbose];
+
+			If[	OptionValue[FCE],
+				ex = FCE[ex]
+			];
+
 			Return[ex];
 		];
 
@@ -133,19 +170,26 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 
 		(*	Otherwise, we need to first obtain the list of polynomials that appear in the integral
 			plus their vector representation.	*)
-		vectorSet= FCLoopBasisExtract[scalarTerm, lmoms, OptionValue[SetDimensions]];
+
+
+
+
+		vectorSet= FCLoopBasisExtract[scalarTerm, lmoms, SetDimensions->OptionValue[SetDimensions]];
 
 		(* All the partial fractioning is done by pfrac *)
+		time=AbsoluteTime[];
+		FCPrint[1,"FCApart: Doing the actual partial fractioning via pfrac", FCDoControl->fcaVerbose];
 		res = pref*vectorTerm*pfrac[vectorSet];
+		FCPrint[1, "FCApart: Done applying pfrac, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcaVerbose];
 
 		(*pfrac can appear in the final result if MaxIterations is not Infinity	*)
-		res = res/.pfrac -> pfracOut;
+		res = res/. (pfracRaw|pfrac) -> pfracOut /. pfracOut[u_List, {}] :> pfracOut[u];
 
 		(*	propagators with zero exponents are unity	*)
 		res = res /. pfracOut[{_, _, {}, _}]->1 /. pfracOut[{_, _, {0..}, _}]->1;
 
 		If [OptionValue[Collecting],
-			res = Collect2[res,pfracOut]
+			res = Collect2[res,pfracOut, Factoring->optFactoring, TimeConstrained->optTimeConstrained]
 		];
 
 		FCPrint[3,"FCApart: Preliminary result ", res, FCDoControl->fcaVerbose];
@@ -153,8 +197,10 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 		(* The output is converted back into the standard FeynCalc notation *)
 		res = res/. pfracOut[{_,_,x_,y_}]:> FeynAmpDenominatorCombine[Times@@MapIndexed[Power[y[[First[#2]]],Abs[#1]]&,x]];
 
+		res = FCLoopRemoveNegativePropagatorPowers[res,FCI->True,FCLoopPropagatorPowersCombine -> False];
+
 		If [OptionValue[Collecting],
-			res = Collect2[res, Join[{FeynAmpDenominator},lmoms]]
+			res = Collect2[res, Join[{FeynAmpDenominator},lmoms], Factoring->optFactoring, TimeConstrained->optTimeConstrained]
 		];
 
 		FCPrint[3,"FCApart: Preliminary result converted back to FeynCalc notation ", res, FCDoControl->fcaVerbose];
@@ -163,7 +209,7 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 		(* 	Check that the sum of the resulting integrals brought to the commond denominator
 			is identical to the original integral *)
 		If [OptionValue[Check],
-			If[	check=Together[PropagatorDenominatorExplicit[ex] - Together[PropagatorDenominatorExplicit[res]]]; check=!=0,
+			If[	check=Together[FeynAmpDenominatorExplicit[ex] - Together[FeynAmpDenominatorExplicit[res]]]; check=!=0,
 				Message[FCApart::checkfail,ToString[ex,InputForm]];
 				FCPrint[0, StandardForm[check]];
 				Abort[]
@@ -173,7 +219,7 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 		If [OptionValue[FDS],
 			res = FDS[res, Sequence@@lmoms];
 			If [OptionValue[Collecting],
-				res = Collect2[res, Join[{FeynAmpDenominator},lmoms]]
+				res = Collect2[res, Join[{FeynAmpDenominator},lmoms], Factoring->optFactoring, TimeConstrained->optTimeConstrained]
 			]
 		];
 
@@ -193,24 +239,35 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 		];
 
 		If [OptionValue[Collecting],
-				res = Collect2[res, Join[{FeynAmpDenominator},lmoms]]
+				res = Collect2[res, Join[{FeynAmpDenominator},lmoms], Factoring->optFactoring, TimeConstrained->optTimeConstrained]
 		];
-
-
 
 		FCPrint[3,"FCApart: Leaving with ", res,FCDoControl->fcaVerbose];
 
+		If[	OptionValue[FCE],
+			res = FCE[res]
+		];
 
 		Return[res]
 	]/; (lmoms=!={}) && !FreeQ2[expr,lmoms];
 
 
 pfrac[inputVectorSet_List]:=
-	Block[{	vectorSet,removalList,f,v,ca,M,expCounts,spIndices,
-			spPosition,spExponent,spfCoeff,spType,res,iterList, dummy, eiPos,tmpNS,tmp},
+	FCUseCache[pfracRaw,{inputVectorSet},{}]/; counter===Infinity;
 
-		counter--;
-		FCPrint[3,"FCApart: pfrac: Counter is ", counter, FCDoControl->fcaVerbose];
+(*	If MaxIterations is not set to Infinity, then most likely some debugging
+	is ongoing. In this case we do not want to do any caching of pfrac! *)
+pfrac[inputVectorSet_List]:=
+	(
+	counter--;
+	FCPrint[3,"FCApart: pfrac: Counter is ", counter, FCDoControl->fcaVerbose];
+	pfracRaw[inputVectorSet]
+	)/; counter>0 && counter=!=Infinity;
+
+pfracRaw[inputVectorSet_List, OptionsPattern[]]:=
+	Block[{	vectorSet,removalList,f,v,ca,M,expCounts,spIndices,
+			spPosition,spExponent,spfCoeff,spType,res,iterList, dummy, eiPos,tmpNS,tmp,
+			hRule, vectorSet12, nlCoeffs},
 
 		(*	We need to determine f_i and f from Eq. 10 in arXiv:1204.2314.
 		This can be done by computing the nullspace basis of the matrix M
@@ -241,7 +298,11 @@ pfrac[inputVectorSet_List]:=
 		];
 
 		(* Now we compute M and check linear independence of the propagators and scalar products*)
-		ca = Normal[CoefficientArrays@@(vectorSet[[1;;2]])];
+		nlCoeffs=Select[vectorSet[[2]], !MemberQ[{Pair, CartesianPair, TemporalPair}, Head[#]] &];
+		hRule = Map[Rule[#, Unique["caVar"]] &, nlCoeffs];
+		vectorSet12 = {vectorSet[[1]] //. hRule, Join[Complement[vectorSet[[2]],nlCoeffs],Last/@hRule]};
+
+		ca = Normal[CoefficientArrays@@(vectorSet12)];
 		M = Transpose[ca[[2]]];
 		tmpNS = Sort[NullSpace[M]];
 
@@ -297,8 +358,10 @@ pfrac[inputVectorSet_List]:=
 				res = pfrac[{Delete[vectorSet[[1]],{spPosition}],vectorSet[[2]],Delete[expCounts,{spPosition}],Delete[vectorSet[[4]],{spPosition}]}];
 				(* Here we reinsert the factored out scalar product *)
 				FCPrint[3,"FCApart: pfrac: Output after treating the vanishing coefficient f_i", res," ",FCDoControl->fcaVerbose];
-				res = res/.(h:pfrac|pfracOut)[{b1_,b2_,b3_,b4_}]:>h[{Join[b1,{spType}],b2,Join[b3,{spExponent}],
-					Join[b4,{spType}]}];
+				res = res/.{
+					pfracOut[{a_,b_,c_,d_}]:>pfracOut[{Join[a,{spType}],b,Join[c,{spExponent}], Join[d,{spType}]}],
+					(pfracRaw|pfrac)[{a_,b_,c_,d_}]:>pfrac[{Join[a,{spType}],b,Join[c,{spExponent}], Join[d,{spType}]}]
+				};
 				Return[res],
 
 				FCPrint[3,"FCApart: pfrac: The coefficient of ", spType, " is not zero",FCDoControl->fcaVerbose];
@@ -353,8 +416,25 @@ pfrac[inputVectorSet_List]:=
 		];
 
 		FCPrint[3,"FCApart: pfrac: Leaving pfrac with", res,FCDoControl->fcaVerbose];
+
 		res
-]/; counter=!=0;
+];
+
+cancelSP[ex_]:=
+	ex /. FeynAmpDenominator -> fadHold //. Dispatch[{
+
+		b_Pair fadHold[r1___, StandardPropagatorDenominator[0, b_Pair, 0_, {n_, s_}],r2___] :>
+					fadHold[r1, StandardPropagatorDenominator[0, b, 0, {n - 1, s}], r2],
+
+		Power[b_Pair,m_] fadHold[r1___, StandardPropagatorDenominator[0, b_Pair, 0, {n_, s_}],r2___] :>
+					fadHold[r1, StandardPropagatorDenominator[0, b, 0, {n - m, s}], r2],
+
+		b_CartesianPair fadHold[r1___, CartesianPropagatorDenominator[0, b_CartesianPair, 0, {n_, s_}],r2___] :>
+					fadHold[r1, CartesianPropagatorDenominator[0, b, 0, {n - 1, s}], r2],
+
+		Power[b_CartesianPair,m_] fadHold[r1___, CartesianPropagatorDenominator[0, b_CartesianPair, 0, {n_, s_}],r2___] :>
+					fadHold[r1, CartesianPropagatorDenominator[0, b, 0, {n - m, s}], r2]
+	}] /. fadHold[r1___, (StandardPropagatorDenominator|CartesianPropagatorDenominator)[__, {0, _}], r2___] :> fadHold[r1,r2];
 
 
 FCPrint[1,"FCApart.m loaded."];

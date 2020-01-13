@@ -126,8 +126,22 @@ sums in the denominator."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Combine", "]"}]], "Input",
+ CellTags->"Combine",
+ CellLabel->"In[394]:=",
+ CellID->194899276],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"Expanding", "\[Rule]", "False"}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"Combine",
+ CellLabel->"Out[394]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -168,9 +182,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Factor2",
   ButtonNote->"Factor2"],
  "."
-}], "Text",
- CellTags->"Combine",
- CellID->2027442052]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -200,24 +212,6 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "Combine", "]"}]], "Input",
- CellTags->"Combine",
- CellLabel->"In[1]:=",
- CellID->194899276],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{"Expanding", "\[Rule]", "False"}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"Combine",
- CellLabel->"Out[1]=",
- CellID->1836728683]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"Combine", "[", 
   RowBox[{
    FractionBox[
@@ -227,7 +221,7 @@ Cell[BoxData[
      RowBox[{"(", 
       RowBox[{"c", "-", "d"}], ")"}]}], "e"], "+", "g"}], "]"}]], "Input",
  CellTags->"Combine",
- CellLabel->"In[2]:=",
+ CellLabel->"In[395]:=",
  CellID->809742744],
 
 Cell[BoxData[
@@ -241,15 +235,12 @@ Cell[BoxData[
       RowBox[{"c", "-", "d"}], ")"}]}], "+", 
     RowBox[{"e", " ", "g"}]}], "e"], TraditionalForm]], "Output",
  CellTags->"Combine",
- CellLabel->"Out[2]=",
- CellID->1151883280]
+ CellLabel->"Out[395]="]
 }, Open  ]],
 
 Cell["\<\
 Here the result from Together where the numerator is automatically expanded.\
-\>", "Text",
- CellTags->"Combine",
- CellID->18145815],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -263,7 +254,7 @@ Cell[BoxData[
      RowBox[{"(", 
       RowBox[{"c", "-", "d"}], ")"}]}], "e"], "+", "g"}], "]"}]], "Input",
  CellTags->"Combine",
- CellLabel->"In[3]:=",
+ CellLabel->"In[396]:=",
  CellID->990215666],
 
 Cell[BoxData[
@@ -276,16 +267,13 @@ Cell[BoxData[
     RowBox[{"b", " ", "d"}], "+", 
     RowBox[{"e", " ", "g"}]}], "e"], TraditionalForm]], "Output",
  CellTags->"Combine",
- CellLabel->"Out[3]=",
- CellID->1980431254]
+ CellLabel->"Out[396]="]
 }, Open  ]],
 
 Cell["\<\
 If the option Expanding is set to True, the result of Combine is the same as \
 Together, but uses a slightly different algorithm.\
-\>", "Text",
- CellTags->"Combine",
- CellID->484864717],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -301,7 +289,7 @@ Cell[BoxData[
        RowBox[{"c", "-", "d"}], ")"}]}], "e"], "+", "g"}], ",", 
    RowBox[{"Expanding", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"Combine",
- CellLabel->"In[4]:=",
+ CellLabel->"In[397]:=",
  CellID->758144630],
 
 Cell[BoxData[
@@ -314,8 +302,7 @@ Cell[BoxData[
     RowBox[{"b", " ", "d"}], "+", 
     RowBox[{"e", " ", "g"}]}], "e"], TraditionalForm]], "Output",
  CellTags->"Combine",
- CellLabel->"Out[4]=",
- CellID->1932335260]
+ CellLabel->"Out[397]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -380,12 +367,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{750, Automatic}, {Automatic, 101}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

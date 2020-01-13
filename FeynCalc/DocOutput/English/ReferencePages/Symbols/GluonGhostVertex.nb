@@ -3,69 +3,100 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13929,        473]
-NotebookOptionsPosition[      9207,        331]
-NotebookOutlinePosition[     12502,        420]
-CellTagsIndexPosition[     12382,        414]
+NotebookDataLength[     15477,        523]
+NotebookOptionsPosition[     11445,        405]
+NotebookOutlinePosition[     14140,        476]
+CellTagsIndexPosition[     14020,        470]
 WindowTitle->GluonGhostVertex
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/GluonGhostVertex\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/GluonGhostVertex"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"GluonPropagator\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/GluonPropagator"], "\<\"GluonSelfEnergy\"\>":>
+       Documentation`HelpLookup[
+       "paclet:ref/GluonSelfEnergy"], "\<\"GluonVertex\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/GluonVertex"], "\<\"QCDFeynmanRuleConvention\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/QCDFeynmanRuleConvention"], \
+"\<\"GhostPropagator\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/GhostPropagator"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/GluonGhostVertex\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/GluonGhostVertex"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 GluonGhostVertex.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$83029], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/GluonGhostVertex", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$157103], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/GluonGhostVertex", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +104,20 @@ GluonGhostVertex.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["GluonGhostVertex", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["GluonGhostVertex", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -88,12 +131,15 @@ Cell[BoxData[GridBox[{
         RowBox[{"{", 
          RowBox[{"k", ",", "rho", ",", "c"}], "}"}]}], "]"}]], 
       "InlineFormula"],
-     " \[LineSeparator]",
-     "or GluonGhostVertex[ p,mu,a , q,nu,b , k,rho,c ] yields the Gluon-Ghost \
-vertex. The first argument represents the gluon and the third argument the \
-outgoing ghost field (but incoming four-momentum). The dimension and the name \
-of the coupling constant are determined by the options Dimension and \
-CouplingConstant."
+     " \[LineSeparator]or ",
+     Cell[BoxData[
+      RowBox[{"GluonGhostVertex", "[", " ", 
+       RowBox[{
+       "p", ",", "mu", ",", "a", " ", ",", " ", "q", ",", "nu", ",", "b", " ",
+         ",", " ", "k", ",", "rho", ",", "c"}], " ", "]"}]], "InlineFormula"],
+     
+     " yields the Gluon-Ghost vertex. The first argument represents the gluon \
+and the third argument the outgoing ghost field (but incoming 4-momentum)."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -101,6 +147,88 @@ CouplingConstant."
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}},
  CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1286729640],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[TextData[{
+ Cell[BoxData["GGV"], "InlineFormula"],
+ " can be used as an abbreviation of ",
+ ButtonBox["GluonGhostVertex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GluonGhostVertex",
+  ButtonNote->"GluonGhostVertex"],
+ "."
+}], "Notes"],
+
+Cell[TextData[{
+ "The dimension and the name of the coupling constant are determined by the \
+options ",
+ ButtonBox["Dimension",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Dimension",
+  ButtonNote->"Dimension"],
+ " and ",
+ ButtonBox["CouplingConstant",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/CouplingConstant",
+  ButtonNote->"CouplingConstant"],
+ ". "
+}], "Notes",
+ CellID->1067943069],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "GluonGhostVertex", "]"}]], "Input",
+ CellTags->"GluonGhostVertex",
+ CellLabel->"In[5]:=",
+ CellID->607510152],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"CouplingConstant", "\[Rule]", 
+     SubscriptBox["g", "s"]}], ",", 
+    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
+    RowBox[{"Explicit", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{365, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"GluonGhostVertex",
+ CellLabel->"Out[5]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -119,7 +247,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1825249286],
+ CellID->303763348],
 
 Cell[CellGroupData[{
 
@@ -129,46 +257,22 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->273216259],
+ CellID->693409499],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "GluonGhostVertex", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"GluonGhostVertex", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"p", ",", "\[Mu]", ",", "a"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"q", ",", "\[Nu]", ",", "b"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"k", ",", "\[Rho]", ",", "c"}], "}"}]}], "]"}], " "}]], "Input",
  CellTags->"GluonGhostVertex",
  CellLabel->"In[1]:=",
- CellID->607510152],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"CouplingConstant", "\[Rule]", 
-     SubscriptBox["g", "s"]}], ",", 
-    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
-    RowBox[{"Explicit", "\[Rule]", "False"}]}], "}"}], 
-  TraditionalForm]], "Output",
- ImageSize->{385, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"GluonGhostVertex",
- CellLabel->"Out[1]=",
- CellID->1946787782]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"GluonGhostVertex", "[", 
-  RowBox[{
-   RowBox[{"{", 
-    RowBox[{"p", ",", "\[Mu]", ",", "a"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"q", ",", "\[Nu]", ",", "b"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"k", ",", "\[Rho]", ",", "c"}], "}"}]}], "]"}]], "Input",
- CellTags->"GluonGhostVertex",
- CellLabel->"In[2]:=",
  CellID->1492094433],
 
 Cell[BoxData[
@@ -195,85 +299,52 @@ Cell[BoxData[
       FormBox["c",
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- ImageSize->{86, 19},
+ ImageSize->{97, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"GluonGhostVertex",
- CellLabel->"Out[2]=",
- CellID->1673363298]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{"%", "//", "Explicit"}], "//", "StandardForm"}]], "Input",
- CellTags->"GluonGhostVertex",
- CellLabel->"In[3]:=",
- CellID->566433445],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"-", "Gstrong"}], " ", 
-  RowBox[{"Pair", "[", 
-   RowBox[{
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Mu]", ",", "D"}], "]"}], ",", 
-    RowBox[{"Momentum", "[", 
-     RowBox[{"k", ",", "D"}], "]"}]}], "]"}], " ", 
-  RowBox[{"SUNF", "[", 
-   RowBox[{
-    RowBox[{"SUNIndex", "[", "a", "]"}], ",", 
-    RowBox[{"SUNIndex", "[", "b", "]"}], ",", 
-    RowBox[{"SUNIndex", "[", "c", "]"}]}], "]"}]}]], "Output",
- ImageSize->{401, 33},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"GluonGhostVertex",
- CellLabel->"Out[3]//StandardForm=",
- CellID->1977739800]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"GluonGhostVertex", "[", 
-  RowBox[{"p", ",", "1", ",", "q", ",", "2", ",", "k", ",", "3"}], 
-  "]"}]], "Input",
- CellTags->"GluonGhostVertex",
- CellLabel->"In[4]:=",
- CellID->471934348],
+ RowBox[{"Explicit", "[", "%", "]"}]], "Input",
+ CellLabel->"In[2]:="],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   RowBox[{
-    SuperscriptBox[
-     OverscriptBox["\[CapitalLambda]", "~"], 
-     FormBox["li1",
-      TraditionalForm]], "(", 
-    FormBox["k",
-     TraditionalForm], ")"}], " ", 
+   SubscriptBox["g", "s"], " ", 
+   RowBox[{"(", 
+    RowBox[{"-", 
+     SuperscriptBox[
+      FormBox[
+       FormBox["k",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]]}], ")"}], " ", 
    SuperscriptBox["f", 
     RowBox[{
      FormBox[
-      FormBox["ci1",
+      FormBox["a",
        TraditionalForm],
       TraditionalForm], 
      FormBox[
-      FormBox["ci2",
+      FormBox["b",
        TraditionalForm],
       TraditionalForm], 
      FormBox[
-      FormBox["ci3",
+      FormBox["c",
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- ImageSize->{113, 19},
+ ImageSize->{117, 22},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"GluonGhostVertex",
- CellLabel->"Out[4]=",
- CellID->1348899544]
+ CellLabel->"Out[2]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -297,7 +368,6 @@ Cell[TextData[{
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  StyleBox[ButtonBox["GluonPropagator",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/GluonPropagator",
@@ -306,14 +376,8 @@ Cell[TextData[{
  ", ",
  StyleBox[ButtonBox["GluonSelfEnergy",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/GluonSelfEnergy",
+  ButtonData->"paclet:ref/GluonSelfEnergy",
   ButtonNote->"GluonSelfEnergy"],
-  FontFamily->"Verdana"],
- ", ",
- StyleBox[ButtonBox["GhostPropagator",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/GhostPropagator",
-  ButtonNote->"GhostPropagator"],
   FontFamily->"Verdana"],
  ", ",
  StyleBox[ButtonBox["GluonVertex",
@@ -321,10 +385,20 @@ Cell[TextData[{
   ButtonData->"paclet:FeynCalc/ref/GluonVertex",
   ButtonNote->"GluonVertex"],
   FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["QCDFeynmanRuleConvention",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/QCDFeynmanRuleConvention",
+  ButtonNote->"QCDFeynmanRuleConvention"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["GhostPropagator",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GhostPropagator",
+  ButtonNote->"GhostPropagator"],
+  FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"GluonGhostVertex",
- CellID->508730211]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -332,7 +406,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 WindowTitle->"GluonGhostVertex",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -341,26 +415,24 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 20, 55.145290}", 
+   "built" -> "{2020, 1, 5, 18, 58, 35.406504}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
     "GluonGhostVertex[{p, mu, a}, {q, nu, b}, {k, rho, c}] or \
-GluonGhostVertex[p,mu,a , q,nu,b , k,rho,c ] yields the Gluon-Ghost vertex. \
-The first argument represents the gluon and the third argument the outgoing \
-ghost field (but incoming four-momentum). The dimension and the name of the \
-coupling constant are determined by the options Dimension and \
-CouplingConstant.", "synonyms" -> {}, "title" -> "GluonGhostVertex", 
-    "titlemodifier" -> "", "windowtitle" -> "GluonGhostVertex", "type" -> 
-    "Symbol", "uri" -> "FeynCalc/ref/GluonGhostVertex"}, 
-  "SearchTextTranslated" -> ""},
+GluonGhostVertex[p, mu, a , q, nu, b , k, rho, c ] yields the Gluon-Ghost \
+vertex. The first argument represents the gluon and the third argument the \
+outgoing ghost field (but incoming 4-momentum).", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "GluonGhostVertex", "titlemodifier" -> "", 
+    "windowtitle" -> "GluonGhostVertex", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/GluonGhostVertex"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -368,8 +440,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -377,104 +450,81 @@ StyleDefinitions->Notebook[{
 (* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
- "PrimaryExamplesSection"->{
-  Cell[3891, 106, 388, 15, 31, "PrimaryExamplesSection",
-   CellTags->"PrimaryExamplesSection",
-   CellID->1825249286]},
  "GluonGhostVertex"->{
-  Cell[4524, 135, 149, 4, 27, "Input",
+  Cell[6903, 208, 149, 4, 70, "Input",
    CellTags->"GluonGhostVertex",
    CellID->607510152],
-  Cell[4676, 141, 431, 14, 36, "Output",
-   CellTags->"GluonGhostVertex",
-   CellID->1946787782],
-  Cell[5144, 160, 367, 11, 27, "Input",
+  Cell[7055, 214, 410, 13, 37, "Output",
+   CellTags->"GluonGhostVertex"],
+  Cell[8158, 263, 392, 12, 27, "Input",
    CellTags->"GluonGhostVertex",
    CellID->1492094433],
-  Cell[5514, 173, 699, 29, 40, "Output",
-   CellTags->"GluonGhostVertex",
-   CellID->1673363298],
-  Cell[6250, 207, 166, 5, 27, "Input",
-   CellTags->"GluonGhostVertex",
-   CellID->566433445],
-  Cell[6419, 214, 626, 19, 67, "Output",
-   CellTags->"GluonGhostVertex",
-   CellID->1977739800],
-  Cell[7082, 238, 209, 6, 27, "Input",
-   CellTags->"GluonGhostVertex",
-   CellID->471934348],
-  Cell[7294, 246, 704, 29, 40, "Output",
-   CellTags->"GluonGhostVertex",
-   CellID->1348899544],
-  Cell[8366, 298, 799, 28, 32, "Text",
-   CellTags->"GluonGhostVertex",
-   CellID->508730211]}
+  Cell[8553, 277, 678, 28, 40, "Output",
+   CellTags->"GluonGhostVertex"]},
+ "PrimaryExamplesSection"->{
+  Cell[7526, 234, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->303763348]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 11345, 379},
- {"GluonGhostVertex", 11489, 383}
+ {"GluonGhostVertex", 13505, 452},
+ {"PrimaryExamplesSection", 13877, 463}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[588, 21, 2277, 52, 51, "AnchorBarGrid",
+Cell[588, 21, 3484, 83, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2868, 75, 59, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2930, 78, 936, 24, 129, "Usage",
+Cell[4075, 106, 293, 11, 45, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4393, 121, 1012, 27, 119, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3891, 106, 388, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->1825249286],
+Cell[5430, 152, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1286729640],
+Cell[6172, 178, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[6206, 180, 254, 8, 70, "Notes"],
+Cell[6463, 190, 415, 14, 70, "Notes",
+ CellID->1067943069],
 Cell[CellGroupData[{
-Cell[4304, 125, 195, 6, 25, "ExampleSection",
- CellID->273216259],
-Cell[CellGroupData[{
-Cell[4524, 135, 149, 4, 27, "Input",
+Cell[6903, 208, 149, 4, 70, "Input",
  CellTags->"GluonGhostVertex",
  CellID->607510152],
-Cell[4676, 141, 431, 14, 36, "Output",
- CellTags->"GluonGhostVertex",
- CellID->1946787782]
+Cell[7055, 214, 410, 13, 37, "Output",
+ CellTags->"GluonGhostVertex"]
+}, Open  ]]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5144, 160, 367, 11, 27, "Input",
+Cell[7526, 234, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->303763348],
+Cell[CellGroupData[{
+Cell[7938, 253, 195, 6, 26, "ExampleSection",
+ CellID->693409499],
+Cell[CellGroupData[{
+Cell[8158, 263, 392, 12, 27, "Input",
  CellTags->"GluonGhostVertex",
  CellID->1492094433],
-Cell[5514, 173, 699, 29, 40, "Output",
- CellTags->"GluonGhostVertex",
- CellID->1673363298]
+Cell[8553, 277, 678, 28, 40, "Output",
+ CellTags->"GluonGhostVertex"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6250, 207, 166, 5, 27, "Input",
- CellTags->"GluonGhostVertex",
- CellID->566433445],
-Cell[6419, 214, 626, 19, 67, "Output",
- CellTags->"GluonGhostVertex",
- CellID->1977739800]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[7082, 238, 209, 6, 27, "Input",
- CellTags->"GluonGhostVertex",
- CellID->471934348],
-Cell[7294, 246, 704, 29, 40, "Output",
- CellTags->"GluonGhostVertex",
- CellID->1348899544]
+Cell[9268, 310, 84, 2, 27, "Input"],
+Cell[9355, 314, 746, 32, 43, "Output"]
 }, Open  ]]
 }, Open  ]],
-Cell[8025, 279, 31, 0, 29, "SectionFooterSpacer"]
+Cell[10128, 350, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8093, 284, 270, 12, 31, "SeeAlsoSection",
+Cell[10196, 355, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[8366, 298, 799, 28, 32, "Text",
- CellTags->"GluonGhostVertex",
- CellID->508730211]
+Cell[10469, 369, 934, 31, 71, "SeeAlso"]
 }, Open  ]],
-Cell[9180, 329, 23, 0, 70, "FooterCell"]
+Cell[11418, 403, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

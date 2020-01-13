@@ -1,0 +1,971 @@
+
+
+(* :Title: EpsContract.test                                                 *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for EpsContract              *)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Lorentz`fcstEpsContract =
+({
+{"fcstEpsContract-ID1", "EpsContract[0]", "0"},
+{"fcstEpsContract-ID2", "EpsContract[a LC[i1,i2,i3,i4]^2 + b]",
+"-24*a + b"},
+{"fcstEpsContract-ID3", "EpsContract[Eps[p1,p2,p3,p4]]",
+"Eps[p1, p2, p3, p4]"},
+{"fcstEpsContract-ID4",
+"EpsContract[LCD[i1,i2,i3,i4]LCD[i5,i6,i7,i8]]",
+"-(Pair[LorentzIndex[i1, D], LorentzIndex[i8, \
+D]]*Pair[LorentzIndex[i2, D], LorentzIndex[i7, \
+D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i6, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i5, D]]) + \
+Pair[LorentzIndex[i1, D], LorentzIndex[i7, D]]*Pair[LorentzIndex[i2, \
+D], LorentzIndex[i8, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i6, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i5, D]] + \
+Pair[LorentzIndex[i1, D], LorentzIndex[i8, D]]*Pair[LorentzIndex[i2, \
+D], LorentzIndex[i6, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i7, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i5, D]] - \
+Pair[LorentzIndex[i1, D], LorentzIndex[i6, D]]*Pair[LorentzIndex[i2, \
+D], LorentzIndex[i8, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i7, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i5, D]] - \
+Pair[LorentzIndex[i1, D], LorentzIndex[i7, D]]*Pair[LorentzIndex[i2, \
+D], LorentzIndex[i6, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i8, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i5, D]] + \
+Pair[LorentzIndex[i1, D], LorentzIndex[i6, D]]*Pair[LorentzIndex[i2, \
+D], LorentzIndex[i7, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i8, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i5, D]] + \
+Pair[LorentzIndex[i1, D], LorentzIndex[i8, D]]*Pair[LorentzIndex[i2, \
+D], LorentzIndex[i7, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i5, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i6, D]] - \
+Pair[LorentzIndex[i1, D], LorentzIndex[i7, D]]*Pair[LorentzIndex[i2, \
+D], LorentzIndex[i8, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i5, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i6, D]] - \
+Pair[LorentzIndex[i1, D], LorentzIndex[i8, D]]*Pair[LorentzIndex[i2, \
+D], LorentzIndex[i5, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i7, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i6, D]] + \
+Pair[LorentzIndex[i1, D], LorentzIndex[i5, D]]*Pair[LorentzIndex[i2, \
+D], LorentzIndex[i8, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i7, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i6, D]] + \
+Pair[LorentzIndex[i1, D], LorentzIndex[i7, D]]*Pair[LorentzIndex[i2, \
+D], LorentzIndex[i5, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i8, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i6, D]] - \
+Pair[LorentzIndex[i1, D], LorentzIndex[i5, D]]*Pair[LorentzIndex[i2, \
+D], LorentzIndex[i7, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i8, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i6, D]] - \
+Pair[LorentzIndex[i1, D], LorentzIndex[i8, D]]*Pair[LorentzIndex[i2, \
+D], LorentzIndex[i6, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i5, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i7, D]] + \
+Pair[LorentzIndex[i1, D], LorentzIndex[i6, D]]*Pair[LorentzIndex[i2, \
+D], LorentzIndex[i8, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i5, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i7, D]] + \
+Pair[LorentzIndex[i1, D], LorentzIndex[i8, D]]*Pair[LorentzIndex[i2, \
+D], LorentzIndex[i5, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i6, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i7, D]] - \
+Pair[LorentzIndex[i1, D], LorentzIndex[i5, D]]*Pair[LorentzIndex[i2, \
+D], LorentzIndex[i8, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i6, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i7, D]] - \
+Pair[LorentzIndex[i1, D], LorentzIndex[i6, D]]*Pair[LorentzIndex[i2, \
+D], LorentzIndex[i5, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i8, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i7, D]] + \
+Pair[LorentzIndex[i1, D], LorentzIndex[i5, D]]*Pair[LorentzIndex[i2, \
+D], LorentzIndex[i6, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i8, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i7, D]] + \
+Pair[LorentzIndex[i1, D], LorentzIndex[i7, D]]*Pair[LorentzIndex[i2, \
+D], LorentzIndex[i6, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i5, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i8, D]] - \
+Pair[LorentzIndex[i1, D], LorentzIndex[i6, D]]*Pair[LorentzIndex[i2, \
+D], LorentzIndex[i7, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i5, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i8, D]] - \
+Pair[LorentzIndex[i1, D], LorentzIndex[i7, D]]*Pair[LorentzIndex[i2, \
+D], LorentzIndex[i5, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i6, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i8, D]] + \
+Pair[LorentzIndex[i1, D], LorentzIndex[i5, D]]*Pair[LorentzIndex[i2, \
+D], LorentzIndex[i7, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i6, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i8, D]] + \
+Pair[LorentzIndex[i1, D], LorentzIndex[i6, D]]*Pair[LorentzIndex[i2, \
+D], LorentzIndex[i5, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i7, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i8, D]] - \
+Pair[LorentzIndex[i1, D], LorentzIndex[i5, D]]*Pair[LorentzIndex[i2, \
+D], LorentzIndex[i6, D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i7, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i8, D]]"},
+{"fcstEpsContract-ID5",
+"EpsContract[LCD[i1,i2,i3,i4]LCD[i1,i6,i7,i8]]",
+"-3*Pair[LorentzIndex[i2, D], LorentzIndex[i8, \
+D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i7, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i6, D]] + \
+D*Pair[LorentzIndex[i2, D], LorentzIndex[i8, \
+D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i7, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i6, D]] + \
+3*Pair[LorentzIndex[i2, D], LorentzIndex[i7, \
+D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i8, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i6, D]] - \
+D*Pair[LorentzIndex[i2, D], LorentzIndex[i7, \
+D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i8, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i6, D]] + \
+3*Pair[LorentzIndex[i2, D], LorentzIndex[i8, \
+D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i6, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i7, D]] - \
+D*Pair[LorentzIndex[i2, D], LorentzIndex[i8, \
+D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i6, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i7, D]] - \
+3*Pair[LorentzIndex[i2, D], LorentzIndex[i6, \
+D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i8, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i7, D]] + \
+D*Pair[LorentzIndex[i2, D], LorentzIndex[i6, \
+D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i8, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i7, D]] - \
+3*Pair[LorentzIndex[i2, D], LorentzIndex[i7, \
+D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i6, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i8, D]] + \
+D*Pair[LorentzIndex[i2, D], LorentzIndex[i7, \
+D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i6, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i8, D]] + \
+3*Pair[LorentzIndex[i2, D], LorentzIndex[i6, \
+D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i7, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i8, D]] - \
+D*Pair[LorentzIndex[i2, D], LorentzIndex[i6, \
+D]]*Pair[LorentzIndex[i3, D], LorentzIndex[i7, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i8, D]]"},
+{"fcstEpsContract-ID6",
+"EpsContract[LCD[i1,i2,i3,i4]LCD[i1,i2,i7,i8]]",
+"6*Pair[LorentzIndex[i3, D], LorentzIndex[i8, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i7, D]] - \
+5*D*Pair[LorentzIndex[i3, D], LorentzIndex[i8, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i7, D]] + \
+D^2*Pair[LorentzIndex[i3, D], LorentzIndex[i8, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i7, D]] - \
+6*Pair[LorentzIndex[i3, D], LorentzIndex[i7, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i8, D]] + \
+5*D*Pair[LorentzIndex[i3, D], LorentzIndex[i7, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i8, D]] - \
+D^2*Pair[LorentzIndex[i3, D], LorentzIndex[i7, \
+D]]*Pair[LorentzIndex[i4, D], LorentzIndex[i8, D]]"},
+{"fcstEpsContract-ID7",
+"EpsContract[LCD[i1,i2,i3,i4]LCD[i1,i2,i3,i8]]",
+"6*Pair[LorentzIndex[i4, D], LorentzIndex[i8, D]] - \
+11*D*Pair[LorentzIndex[i4, D], LorentzIndex[i8, D]] + \
+6*D^2*Pair[LorentzIndex[i4, D], LorentzIndex[i8, D]] - \
+D^3*Pair[LorentzIndex[i4, D], LorentzIndex[i8, D]]"},
+{"fcstEpsContract-ID8",
+"EpsContract[LCD[i1,i2,i3,i4]LCD[i1,i2,i3,i4]]",
+"6*D - 11*D^2 + 6*D^3 - D^4"},
+{"fcstEpsContract-ID9",
+"EpsContract[LCD[][p1,p2,p3,p4]LCD[][p5,p6,p7,p8]]",
+"-(Pair[Momentum[p1, D], Momentum[p8, D]]*Pair[Momentum[p2, D], \
+Momentum[p7, D]]*Pair[Momentum[p3, D], Momentum[p6, \
+D]]*Pair[Momentum[p4, D], Momentum[p5, D]]) + Pair[Momentum[p1, D], \
+Momentum[p7, D]]*Pair[Momentum[p2, D], Momentum[p8, \
+D]]*Pair[Momentum[p3, D], Momentum[p6, D]]*Pair[Momentum[p4, D], \
+Momentum[p5, D]] + Pair[Momentum[p1, D], Momentum[p8, \
+D]]*Pair[Momentum[p2, D], Momentum[p6, D]]*Pair[Momentum[p3, D], \
+Momentum[p7, D]]*Pair[Momentum[p4, D], Momentum[p5, D]] - \
+Pair[Momentum[p1, D], Momentum[p6, D]]*Pair[Momentum[p2, D], \
+Momentum[p8, D]]*Pair[Momentum[p3, D], Momentum[p7, \
+D]]*Pair[Momentum[p4, D], Momentum[p5, D]] - Pair[Momentum[p1, D], \
+Momentum[p7, D]]*Pair[Momentum[p2, D], Momentum[p6, \
+D]]*Pair[Momentum[p3, D], Momentum[p8, D]]*Pair[Momentum[p4, D], \
+Momentum[p5, D]] + Pair[Momentum[p1, D], Momentum[p6, \
+D]]*Pair[Momentum[p2, D], Momentum[p7, D]]*Pair[Momentum[p3, D], \
+Momentum[p8, D]]*Pair[Momentum[p4, D], Momentum[p5, D]] + \
+Pair[Momentum[p1, D], Momentum[p8, D]]*Pair[Momentum[p2, D], \
+Momentum[p7, D]]*Pair[Momentum[p3, D], Momentum[p5, \
+D]]*Pair[Momentum[p4, D], Momentum[p6, D]] - Pair[Momentum[p1, D], \
+Momentum[p7, D]]*Pair[Momentum[p2, D], Momentum[p8, \
+D]]*Pair[Momentum[p3, D], Momentum[p5, D]]*Pair[Momentum[p4, D], \
+Momentum[p6, D]] - Pair[Momentum[p1, D], Momentum[p8, \
+D]]*Pair[Momentum[p2, D], Momentum[p5, D]]*Pair[Momentum[p3, D], \
+Momentum[p7, D]]*Pair[Momentum[p4, D], Momentum[p6, D]] + \
+Pair[Momentum[p1, D], Momentum[p5, D]]*Pair[Momentum[p2, D], \
+Momentum[p8, D]]*Pair[Momentum[p3, D], Momentum[p7, \
+D]]*Pair[Momentum[p4, D], Momentum[p6, D]] + Pair[Momentum[p1, D], \
+Momentum[p7, D]]*Pair[Momentum[p2, D], Momentum[p5, \
+D]]*Pair[Momentum[p3, D], Momentum[p8, D]]*Pair[Momentum[p4, D], \
+Momentum[p6, D]] - Pair[Momentum[p1, D], Momentum[p5, \
+D]]*Pair[Momentum[p2, D], Momentum[p7, D]]*Pair[Momentum[p3, D], \
+Momentum[p8, D]]*Pair[Momentum[p4, D], Momentum[p6, D]] - \
+Pair[Momentum[p1, D], Momentum[p8, D]]*Pair[Momentum[p2, D], \
+Momentum[p6, D]]*Pair[Momentum[p3, D], Momentum[p5, \
+D]]*Pair[Momentum[p4, D], Momentum[p7, D]] + Pair[Momentum[p1, D], \
+Momentum[p6, D]]*Pair[Momentum[p2, D], Momentum[p8, \
+D]]*Pair[Momentum[p3, D], Momentum[p5, D]]*Pair[Momentum[p4, D], \
+Momentum[p7, D]] + Pair[Momentum[p1, D], Momentum[p8, \
+D]]*Pair[Momentum[p2, D], Momentum[p5, D]]*Pair[Momentum[p3, D], \
+Momentum[p6, D]]*Pair[Momentum[p4, D], Momentum[p7, D]] - \
+Pair[Momentum[p1, D], Momentum[p5, D]]*Pair[Momentum[p2, D], \
+Momentum[p8, D]]*Pair[Momentum[p3, D], Momentum[p6, \
+D]]*Pair[Momentum[p4, D], Momentum[p7, D]] - Pair[Momentum[p1, D], \
+Momentum[p6, D]]*Pair[Momentum[p2, D], Momentum[p5, \
+D]]*Pair[Momentum[p3, D], Momentum[p8, D]]*Pair[Momentum[p4, D], \
+Momentum[p7, D]] + Pair[Momentum[p1, D], Momentum[p5, \
+D]]*Pair[Momentum[p2, D], Momentum[p6, D]]*Pair[Momentum[p3, D], \
+Momentum[p8, D]]*Pair[Momentum[p4, D], Momentum[p7, D]] + \
+Pair[Momentum[p1, D], Momentum[p7, D]]*Pair[Momentum[p2, D], \
+Momentum[p6, D]]*Pair[Momentum[p3, D], Momentum[p5, \
+D]]*Pair[Momentum[p4, D], Momentum[p8, D]] - Pair[Momentum[p1, D], \
+Momentum[p6, D]]*Pair[Momentum[p2, D], Momentum[p7, \
+D]]*Pair[Momentum[p3, D], Momentum[p5, D]]*Pair[Momentum[p4, D], \
+Momentum[p8, D]] - Pair[Momentum[p1, D], Momentum[p7, \
+D]]*Pair[Momentum[p2, D], Momentum[p5, D]]*Pair[Momentum[p3, D], \
+Momentum[p6, D]]*Pair[Momentum[p4, D], Momentum[p8, D]] + \
+Pair[Momentum[p1, D], Momentum[p5, D]]*Pair[Momentum[p2, D], \
+Momentum[p7, D]]*Pair[Momentum[p3, D], Momentum[p6, \
+D]]*Pair[Momentum[p4, D], Momentum[p8, D]] + Pair[Momentum[p1, D], \
+Momentum[p6, D]]*Pair[Momentum[p2, D], Momentum[p5, \
+D]]*Pair[Momentum[p3, D], Momentum[p7, D]]*Pair[Momentum[p4, D], \
+Momentum[p8, D]] - Pair[Momentum[p1, D], Momentum[p5, \
+D]]*Pair[Momentum[p2, D], Momentum[p6, D]]*Pair[Momentum[p3, D], \
+Momentum[p7, D]]*Pair[Momentum[p4, D], Momentum[p8, D]]"},
+{"fcstEpsContract-ID10",
+"EpsContract[LCD[][p1,p2,p3,p4]LCD[][p1,p6,p7,p8]]",
+"-(Pair[Momentum[p1, D], Momentum[p4, D]]*Pair[Momentum[p1, D], \
+Momentum[p8, D]]*Pair[Momentum[p2, D], Momentum[p7, \
+D]]*Pair[Momentum[p3, D], Momentum[p6, D]]) + Pair[Momentum[p1, D], \
+Momentum[p4, D]]*Pair[Momentum[p1, D], Momentum[p7, \
+D]]*Pair[Momentum[p2, D], Momentum[p8, D]]*Pair[Momentum[p3, D], \
+Momentum[p6, D]] + Pair[Momentum[p1, D], Momentum[p4, \
+D]]*Pair[Momentum[p1, D], Momentum[p8, D]]*Pair[Momentum[p2, D], \
+Momentum[p6, D]]*Pair[Momentum[p3, D], Momentum[p7, D]] - \
+Pair[Momentum[p1, D], Momentum[p4, D]]*Pair[Momentum[p1, D], \
+Momentum[p6, D]]*Pair[Momentum[p2, D], Momentum[p8, \
+D]]*Pair[Momentum[p3, D], Momentum[p7, D]] - Pair[Momentum[p1, D], \
+Momentum[p4, D]]*Pair[Momentum[p1, D], Momentum[p7, \
+D]]*Pair[Momentum[p2, D], Momentum[p6, D]]*Pair[Momentum[p3, D], \
+Momentum[p8, D]] + Pair[Momentum[p1, D], Momentum[p4, \
+D]]*Pair[Momentum[p1, D], Momentum[p6, D]]*Pair[Momentum[p2, D], \
+Momentum[p7, D]]*Pair[Momentum[p3, D], Momentum[p8, D]] + \
+Pair[Momentum[p1, D], Momentum[p3, D]]*Pair[Momentum[p1, D], \
+Momentum[p8, D]]*Pair[Momentum[p2, D], Momentum[p7, \
+D]]*Pair[Momentum[p4, D], Momentum[p6, D]] - Pair[Momentum[p1, D], \
+Momentum[p3, D]]*Pair[Momentum[p1, D], Momentum[p7, \
+D]]*Pair[Momentum[p2, D], Momentum[p8, D]]*Pair[Momentum[p4, D], \
+Momentum[p6, D]] - Pair[Momentum[p1, D], Momentum[p2, \
+D]]*Pair[Momentum[p1, D], Momentum[p8, D]]*Pair[Momentum[p3, D], \
+Momentum[p7, D]]*Pair[Momentum[p4, D], Momentum[p6, D]] + \
+Pair[Momentum[p1, D], Momentum[p1, D]]*Pair[Momentum[p2, D], \
+Momentum[p8, D]]*Pair[Momentum[p3, D], Momentum[p7, \
+D]]*Pair[Momentum[p4, D], Momentum[p6, D]] + Pair[Momentum[p1, D], \
+Momentum[p2, D]]*Pair[Momentum[p1, D], Momentum[p7, \
+D]]*Pair[Momentum[p3, D], Momentum[p8, D]]*Pair[Momentum[p4, D], \
+Momentum[p6, D]] - Pair[Momentum[p1, D], Momentum[p1, \
+D]]*Pair[Momentum[p2, D], Momentum[p7, D]]*Pair[Momentum[p3, D], \
+Momentum[p8, D]]*Pair[Momentum[p4, D], Momentum[p6, D]] - \
+Pair[Momentum[p1, D], Momentum[p3, D]]*Pair[Momentum[p1, D], \
+Momentum[p8, D]]*Pair[Momentum[p2, D], Momentum[p6, \
+D]]*Pair[Momentum[p4, D], Momentum[p7, D]] + Pair[Momentum[p1, D], \
+Momentum[p3, D]]*Pair[Momentum[p1, D], Momentum[p6, \
+D]]*Pair[Momentum[p2, D], Momentum[p8, D]]*Pair[Momentum[p4, D], \
+Momentum[p7, D]] + Pair[Momentum[p1, D], Momentum[p2, \
+D]]*Pair[Momentum[p1, D], Momentum[p8, D]]*Pair[Momentum[p3, D], \
+Momentum[p6, D]]*Pair[Momentum[p4, D], Momentum[p7, D]] - \
+Pair[Momentum[p1, D], Momentum[p1, D]]*Pair[Momentum[p2, D], \
+Momentum[p8, D]]*Pair[Momentum[p3, D], Momentum[p6, \
+D]]*Pair[Momentum[p4, D], Momentum[p7, D]] - Pair[Momentum[p1, D], \
+Momentum[p2, D]]*Pair[Momentum[p1, D], Momentum[p6, \
+D]]*Pair[Momentum[p3, D], Momentum[p8, D]]*Pair[Momentum[p4, D], \
+Momentum[p7, D]] + Pair[Momentum[p1, D], Momentum[p1, \
+D]]*Pair[Momentum[p2, D], Momentum[p6, D]]*Pair[Momentum[p3, D], \
+Momentum[p8, D]]*Pair[Momentum[p4, D], Momentum[p7, D]] + \
+Pair[Momentum[p1, D], Momentum[p3, D]]*Pair[Momentum[p1, D], \
+Momentum[p7, D]]*Pair[Momentum[p2, D], Momentum[p6, \
+D]]*Pair[Momentum[p4, D], Momentum[p8, D]] - Pair[Momentum[p1, D], \
+Momentum[p3, D]]*Pair[Momentum[p1, D], Momentum[p6, \
+D]]*Pair[Momentum[p2, D], Momentum[p7, D]]*Pair[Momentum[p4, D], \
+Momentum[p8, D]] - Pair[Momentum[p1, D], Momentum[p2, \
+D]]*Pair[Momentum[p1, D], Momentum[p7, D]]*Pair[Momentum[p3, D], \
+Momentum[p6, D]]*Pair[Momentum[p4, D], Momentum[p8, D]] + \
+Pair[Momentum[p1, D], Momentum[p1, D]]*Pair[Momentum[p2, D], \
+Momentum[p7, D]]*Pair[Momentum[p3, D], Momentum[p6, \
+D]]*Pair[Momentum[p4, D], Momentum[p8, D]] + Pair[Momentum[p1, D], \
+Momentum[p2, D]]*Pair[Momentum[p1, D], Momentum[p6, \
+D]]*Pair[Momentum[p3, D], Momentum[p7, D]]*Pair[Momentum[p4, D], \
+Momentum[p8, D]] - Pair[Momentum[p1, D], Momentum[p1, \
+D]]*Pair[Momentum[p2, D], Momentum[p6, D]]*Pair[Momentum[p3, D], \
+Momentum[p7, D]]*Pair[Momentum[p4, D], Momentum[p8, D]]"},
+{"fcstEpsContract-ID11",
+"EpsContract[LCD[][p1,p2,p3,p4]LCD[][p1,p2,p7,p8]]",
+"-(Pair[Momentum[p1, D], Momentum[p4, D]]*Pair[Momentum[p1, D], \
+Momentum[p8, D]]*Pair[Momentum[p2, D], Momentum[p3, \
+D]]*Pair[Momentum[p2, D], Momentum[p7, D]]) + Pair[Momentum[p1, D], \
+Momentum[p3, D]]*Pair[Momentum[p1, D], Momentum[p8, \
+D]]*Pair[Momentum[p2, D], Momentum[p4, D]]*Pair[Momentum[p2, D], \
+Momentum[p7, D]] + Pair[Momentum[p1, D], Momentum[p4, \
+D]]*Pair[Momentum[p1, D], Momentum[p7, D]]*Pair[Momentum[p2, D], \
+Momentum[p3, D]]*Pair[Momentum[p2, D], Momentum[p8, D]] - \
+Pair[Momentum[p1, D], Momentum[p3, D]]*Pair[Momentum[p1, D], \
+Momentum[p7, D]]*Pair[Momentum[p2, D], Momentum[p4, \
+D]]*Pair[Momentum[p2, D], Momentum[p8, D]] + Pair[Momentum[p1, D], \
+Momentum[p4, D]]*Pair[Momentum[p1, D], Momentum[p8, \
+D]]*Pair[Momentum[p2, D], Momentum[p2, D]]*Pair[Momentum[p3, D], \
+Momentum[p7, D]] - Pair[Momentum[p1, D], Momentum[p2, \
+D]]*Pair[Momentum[p1, D], Momentum[p8, D]]*Pair[Momentum[p2, D], \
+Momentum[p4, D]]*Pair[Momentum[p3, D], Momentum[p7, D]] - \
+Pair[Momentum[p1, D], Momentum[p2, D]]*Pair[Momentum[p1, D], \
+Momentum[p4, D]]*Pair[Momentum[p2, D], Momentum[p8, \
+D]]*Pair[Momentum[p3, D], Momentum[p7, D]] + Pair[Momentum[p1, D], \
+Momentum[p1, D]]*Pair[Momentum[p2, D], Momentum[p4, \
+D]]*Pair[Momentum[p2, D], Momentum[p8, D]]*Pair[Momentum[p3, D], \
+Momentum[p7, D]] - Pair[Momentum[p1, D], Momentum[p4, \
+D]]*Pair[Momentum[p1, D], Momentum[p7, D]]*Pair[Momentum[p2, D], \
+Momentum[p2, D]]*Pair[Momentum[p3, D], Momentum[p8, D]] + \
+Pair[Momentum[p1, D], Momentum[p2, D]]*Pair[Momentum[p1, D], \
+Momentum[p7, D]]*Pair[Momentum[p2, D], Momentum[p4, \
+D]]*Pair[Momentum[p3, D], Momentum[p8, D]] + Pair[Momentum[p1, D], \
+Momentum[p2, D]]*Pair[Momentum[p1, D], Momentum[p4, \
+D]]*Pair[Momentum[p2, D], Momentum[p7, D]]*Pair[Momentum[p3, D], \
+Momentum[p8, D]] - Pair[Momentum[p1, D], Momentum[p1, \
+D]]*Pair[Momentum[p2, D], Momentum[p4, D]]*Pair[Momentum[p2, D], \
+Momentum[p7, D]]*Pair[Momentum[p3, D], Momentum[p8, D]] - \
+Pair[Momentum[p1, D], Momentum[p3, D]]*Pair[Momentum[p1, D], \
+Momentum[p8, D]]*Pair[Momentum[p2, D], Momentum[p2, \
+D]]*Pair[Momentum[p4, D], Momentum[p7, D]] + Pair[Momentum[p1, D], \
+Momentum[p2, D]]*Pair[Momentum[p1, D], Momentum[p8, \
+D]]*Pair[Momentum[p2, D], Momentum[p3, D]]*Pair[Momentum[p4, D], \
+Momentum[p7, D]] + Pair[Momentum[p1, D], Momentum[p2, \
+D]]*Pair[Momentum[p1, D], Momentum[p3, D]]*Pair[Momentum[p2, D], \
+Momentum[p8, D]]*Pair[Momentum[p4, D], Momentum[p7, D]] - \
+Pair[Momentum[p1, D], Momentum[p1, D]]*Pair[Momentum[p2, D], \
+Momentum[p3, D]]*Pair[Momentum[p2, D], Momentum[p8, \
+D]]*Pair[Momentum[p4, D], Momentum[p7, D]] - Pair[Momentum[p1, D], \
+Momentum[p2, D]]^2*Pair[Momentum[p3, D], Momentum[p8, \
+D]]*Pair[Momentum[p4, D], Momentum[p7, D]] + Pair[Momentum[p1, D], \
+Momentum[p1, D]]*Pair[Momentum[p2, D], Momentum[p2, \
+D]]*Pair[Momentum[p3, D], Momentum[p8, D]]*Pair[Momentum[p4, D], \
+Momentum[p7, D]] + Pair[Momentum[p1, D], Momentum[p3, \
+D]]*Pair[Momentum[p1, D], Momentum[p7, D]]*Pair[Momentum[p2, D], \
+Momentum[p2, D]]*Pair[Momentum[p4, D], Momentum[p8, D]] - \
+Pair[Momentum[p1, D], Momentum[p2, D]]*Pair[Momentum[p1, D], \
+Momentum[p7, D]]*Pair[Momentum[p2, D], Momentum[p3, \
+D]]*Pair[Momentum[p4, D], Momentum[p8, D]] - Pair[Momentum[p1, D], \
+Momentum[p2, D]]*Pair[Momentum[p1, D], Momentum[p3, \
+D]]*Pair[Momentum[p2, D], Momentum[p7, D]]*Pair[Momentum[p4, D], \
+Momentum[p8, D]] + Pair[Momentum[p1, D], Momentum[p1, \
+D]]*Pair[Momentum[p2, D], Momentum[p3, D]]*Pair[Momentum[p2, D], \
+Momentum[p7, D]]*Pair[Momentum[p4, D], Momentum[p8, D]] + \
+Pair[Momentum[p1, D], Momentum[p2, D]]^2*Pair[Momentum[p3, D], \
+Momentum[p7, D]]*Pair[Momentum[p4, D], Momentum[p8, D]] - \
+Pair[Momentum[p1, D], Momentum[p1, D]]*Pair[Momentum[p2, D], \
+Momentum[p2, D]]*Pair[Momentum[p3, D], Momentum[p7, \
+D]]*Pair[Momentum[p4, D], Momentum[p8, D]]"},
+{"fcstEpsContract-ID12",
+"EpsContract[LCD[][p1,p2,p3,p4]LCD[][p1,p2,p3,p8]]",
+"-(Pair[Momentum[p1, D], Momentum[p4, D]]*Pair[Momentum[p1, D], \
+Momentum[p8, D]]*Pair[Momentum[p2, D], Momentum[p3, D]]^2) + \
+Pair[Momentum[p1, D], Momentum[p3, D]]*Pair[Momentum[p1, D], \
+Momentum[p8, D]]*Pair[Momentum[p2, D], Momentum[p3, \
+D]]*Pair[Momentum[p2, D], Momentum[p4, D]] + Pair[Momentum[p1, D], \
+Momentum[p3, D]]*Pair[Momentum[p1, D], Momentum[p4, \
+D]]*Pair[Momentum[p2, D], Momentum[p3, D]]*Pair[Momentum[p2, D], \
+Momentum[p8, D]] - Pair[Momentum[p1, D], Momentum[p3, \
+D]]^2*Pair[Momentum[p2, D], Momentum[p4, D]]*Pair[Momentum[p2, D], \
+Momentum[p8, D]] + Pair[Momentum[p1, D], Momentum[p4, \
+D]]*Pair[Momentum[p1, D], Momentum[p8, D]]*Pair[Momentum[p2, D], \
+Momentum[p2, D]]*Pair[Momentum[p3, D], Momentum[p3, D]] - \
+Pair[Momentum[p1, D], Momentum[p2, D]]*Pair[Momentum[p1, D], \
+Momentum[p8, D]]*Pair[Momentum[p2, D], Momentum[p4, \
+D]]*Pair[Momentum[p3, D], Momentum[p3, D]] - Pair[Momentum[p1, D], \
+Momentum[p2, D]]*Pair[Momentum[p1, D], Momentum[p4, \
+D]]*Pair[Momentum[p2, D], Momentum[p8, D]]*Pair[Momentum[p3, D], \
+Momentum[p3, D]] + Pair[Momentum[p1, D], Momentum[p1, \
+D]]*Pair[Momentum[p2, D], Momentum[p4, D]]*Pair[Momentum[p2, D], \
+Momentum[p8, D]]*Pair[Momentum[p3, D], Momentum[p3, D]] - \
+Pair[Momentum[p1, D], Momentum[p3, D]]*Pair[Momentum[p1, D], \
+Momentum[p8, D]]*Pair[Momentum[p2, D], Momentum[p2, \
+D]]*Pair[Momentum[p3, D], Momentum[p4, D]] + Pair[Momentum[p1, D], \
+Momentum[p2, D]]*Pair[Momentum[p1, D], Momentum[p8, \
+D]]*Pair[Momentum[p2, D], Momentum[p3, D]]*Pair[Momentum[p3, D], \
+Momentum[p4, D]] + Pair[Momentum[p1, D], Momentum[p2, \
+D]]*Pair[Momentum[p1, D], Momentum[p3, D]]*Pair[Momentum[p2, D], \
+Momentum[p8, D]]*Pair[Momentum[p3, D], Momentum[p4, D]] - \
+Pair[Momentum[p1, D], Momentum[p1, D]]*Pair[Momentum[p2, D], \
+Momentum[p3, D]]*Pair[Momentum[p2, D], Momentum[p8, \
+D]]*Pair[Momentum[p3, D], Momentum[p4, D]] - Pair[Momentum[p1, D], \
+Momentum[p3, D]]*Pair[Momentum[p1, D], Momentum[p4, \
+D]]*Pair[Momentum[p2, D], Momentum[p2, D]]*Pair[Momentum[p3, D], \
+Momentum[p8, D]] + Pair[Momentum[p1, D], Momentum[p2, \
+D]]*Pair[Momentum[p1, D], Momentum[p4, D]]*Pair[Momentum[p2, D], \
+Momentum[p3, D]]*Pair[Momentum[p3, D], Momentum[p8, D]] + \
+Pair[Momentum[p1, D], Momentum[p2, D]]*Pair[Momentum[p1, D], \
+Momentum[p3, D]]*Pair[Momentum[p2, D], Momentum[p4, \
+D]]*Pair[Momentum[p3, D], Momentum[p8, D]] - Pair[Momentum[p1, D], \
+Momentum[p1, D]]*Pair[Momentum[p2, D], Momentum[p3, \
+D]]*Pair[Momentum[p2, D], Momentum[p4, D]]*Pair[Momentum[p3, D], \
+Momentum[p8, D]] - Pair[Momentum[p1, D], Momentum[p2, \
+D]]^2*Pair[Momentum[p3, D], Momentum[p4, D]]*Pair[Momentum[p3, D], \
+Momentum[p8, D]] + Pair[Momentum[p1, D], Momentum[p1, \
+D]]*Pair[Momentum[p2, D], Momentum[p2, D]]*Pair[Momentum[p3, D], \
+Momentum[p4, D]]*Pair[Momentum[p3, D], Momentum[p8, D]] + \
+Pair[Momentum[p1, D], Momentum[p3, D]]^2*Pair[Momentum[p2, D], \
+Momentum[p2, D]]*Pair[Momentum[p4, D], Momentum[p8, D]] - \
+2*Pair[Momentum[p1, D], Momentum[p2, D]]*Pair[Momentum[p1, D], \
+Momentum[p3, D]]*Pair[Momentum[p2, D], Momentum[p3, \
+D]]*Pair[Momentum[p4, D], Momentum[p8, D]] + Pair[Momentum[p1, D], \
+Momentum[p1, D]]*Pair[Momentum[p2, D], Momentum[p3, \
+D]]^2*Pair[Momentum[p4, D], Momentum[p8, D]] + Pair[Momentum[p1, D], \
+Momentum[p2, D]]^2*Pair[Momentum[p3, D], Momentum[p3, \
+D]]*Pair[Momentum[p4, D], Momentum[p8, D]] - Pair[Momentum[p1, D], \
+Momentum[p1, D]]*Pair[Momentum[p2, D], Momentum[p2, \
+D]]*Pair[Momentum[p3, D], Momentum[p3, D]]*Pair[Momentum[p4, D], \
+Momentum[p8, D]]"},
+{"fcstEpsContract-ID13",
+"EpsContract[LCD[][p1,p2,p3,p4]LCD[][p1,p2,p3,p4]]",
+"-(Pair[Momentum[p1, D], Momentum[p4, D]]^2*Pair[Momentum[p2, D], \
+Momentum[p3, D]]^2) + 2*Pair[Momentum[p1, D], Momentum[p3, \
+D]]*Pair[Momentum[p1, D], Momentum[p4, D]]*Pair[Momentum[p2, D], \
+Momentum[p3, D]]*Pair[Momentum[p2, D], Momentum[p4, D]] - \
+Pair[Momentum[p1, D], Momentum[p3, D]]^2*Pair[Momentum[p2, D], \
+Momentum[p4, D]]^2 + Pair[Momentum[p1, D], Momentum[p4, \
+D]]^2*Pair[Momentum[p2, D], Momentum[p2, D]]*Pair[Momentum[p3, D], \
+Momentum[p3, D]] - 2*Pair[Momentum[p1, D], Momentum[p2, \
+D]]*Pair[Momentum[p1, D], Momentum[p4, D]]*Pair[Momentum[p2, D], \
+Momentum[p4, D]]*Pair[Momentum[p3, D], Momentum[p3, D]] + \
+Pair[Momentum[p1, D], Momentum[p1, D]]*Pair[Momentum[p2, D], \
+Momentum[p4, D]]^2*Pair[Momentum[p3, D], Momentum[p3, D]] - \
+2*Pair[Momentum[p1, D], Momentum[p3, D]]*Pair[Momentum[p1, D], \
+Momentum[p4, D]]*Pair[Momentum[p2, D], Momentum[p2, \
+D]]*Pair[Momentum[p3, D], Momentum[p4, D]] + 2*Pair[Momentum[p1, D], \
+Momentum[p2, D]]*Pair[Momentum[p1, D], Momentum[p4, \
+D]]*Pair[Momentum[p2, D], Momentum[p3, D]]*Pair[Momentum[p3, D], \
+Momentum[p4, D]] + 2*Pair[Momentum[p1, D], Momentum[p2, \
+D]]*Pair[Momentum[p1, D], Momentum[p3, D]]*Pair[Momentum[p2, D], \
+Momentum[p4, D]]*Pair[Momentum[p3, D], Momentum[p4, D]] - \
+2*Pair[Momentum[p1, D], Momentum[p1, D]]*Pair[Momentum[p2, D], \
+Momentum[p3, D]]*Pair[Momentum[p2, D], Momentum[p4, \
+D]]*Pair[Momentum[p3, D], Momentum[p4, D]] - Pair[Momentum[p1, D], \
+Momentum[p2, D]]^2*Pair[Momentum[p3, D], Momentum[p4, D]]^2 + \
+Pair[Momentum[p1, D], Momentum[p1, D]]*Pair[Momentum[p2, D], \
+Momentum[p2, D]]*Pair[Momentum[p3, D], Momentum[p4, D]]^2 + \
+Pair[Momentum[p1, D], Momentum[p3, D]]^2*Pair[Momentum[p2, D], \
+Momentum[p2, D]]*Pair[Momentum[p4, D], Momentum[p4, D]] - \
+2*Pair[Momentum[p1, D], Momentum[p2, D]]*Pair[Momentum[p1, D], \
+Momentum[p3, D]]*Pair[Momentum[p2, D], Momentum[p3, \
+D]]*Pair[Momentum[p4, D], Momentum[p4, D]] + Pair[Momentum[p1, D], \
+Momentum[p1, D]]*Pair[Momentum[p2, D], Momentum[p3, \
+D]]^2*Pair[Momentum[p4, D], Momentum[p4, D]] + Pair[Momentum[p1, D], \
+Momentum[p2, D]]^2*Pair[Momentum[p3, D], Momentum[p3, \
+D]]*Pair[Momentum[p4, D], Momentum[p4, D]] - Pair[Momentum[p1, D], \
+Momentum[p1, D]]*Pair[Momentum[p2, D], Momentum[p2, \
+D]]*Pair[Momentum[p3, D], Momentum[p3, D]]*Pair[Momentum[p4, D], \
+Momentum[p4, D]]"},
+{"fcstEpsContract-ID14",
+"EpsContract[LC[i1,i2,i3,i4]LC[i5,i6,i7,i8]]",
+"-(Pair[LorentzIndex[i1], LorentzIndex[i8]]*Pair[LorentzIndex[i2], \
+LorentzIndex[i7]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i6]]*Pair[LorentzIndex[i4], LorentzIndex[i5]]) + \
+Pair[LorentzIndex[i1], LorentzIndex[i7]]*Pair[LorentzIndex[i2], \
+LorentzIndex[i8]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i6]]*Pair[LorentzIndex[i4], LorentzIndex[i5]] + \
+Pair[LorentzIndex[i1], LorentzIndex[i8]]*Pair[LorentzIndex[i2], \
+LorentzIndex[i6]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i7]]*Pair[LorentzIndex[i4], LorentzIndex[i5]] - \
+Pair[LorentzIndex[i1], LorentzIndex[i6]]*Pair[LorentzIndex[i2], \
+LorentzIndex[i8]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i7]]*Pair[LorentzIndex[i4], LorentzIndex[i5]] - \
+Pair[LorentzIndex[i1], LorentzIndex[i7]]*Pair[LorentzIndex[i2], \
+LorentzIndex[i6]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i8]]*Pair[LorentzIndex[i4], LorentzIndex[i5]] + \
+Pair[LorentzIndex[i1], LorentzIndex[i6]]*Pair[LorentzIndex[i2], \
+LorentzIndex[i7]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i8]]*Pair[LorentzIndex[i4], LorentzIndex[i5]] + \
+Pair[LorentzIndex[i1], LorentzIndex[i8]]*Pair[LorentzIndex[i2], \
+LorentzIndex[i7]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i5]]*Pair[LorentzIndex[i4], LorentzIndex[i6]] - \
+Pair[LorentzIndex[i1], LorentzIndex[i7]]*Pair[LorentzIndex[i2], \
+LorentzIndex[i8]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i5]]*Pair[LorentzIndex[i4], LorentzIndex[i6]] - \
+Pair[LorentzIndex[i1], LorentzIndex[i8]]*Pair[LorentzIndex[i2], \
+LorentzIndex[i5]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i7]]*Pair[LorentzIndex[i4], LorentzIndex[i6]] + \
+Pair[LorentzIndex[i1], LorentzIndex[i5]]*Pair[LorentzIndex[i2], \
+LorentzIndex[i8]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i7]]*Pair[LorentzIndex[i4], LorentzIndex[i6]] + \
+Pair[LorentzIndex[i1], LorentzIndex[i7]]*Pair[LorentzIndex[i2], \
+LorentzIndex[i5]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i8]]*Pair[LorentzIndex[i4], LorentzIndex[i6]] - \
+Pair[LorentzIndex[i1], LorentzIndex[i5]]*Pair[LorentzIndex[i2], \
+LorentzIndex[i7]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i8]]*Pair[LorentzIndex[i4], LorentzIndex[i6]] - \
+Pair[LorentzIndex[i1], LorentzIndex[i8]]*Pair[LorentzIndex[i2], \
+LorentzIndex[i6]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i5]]*Pair[LorentzIndex[i4], LorentzIndex[i7]] + \
+Pair[LorentzIndex[i1], LorentzIndex[i6]]*Pair[LorentzIndex[i2], \
+LorentzIndex[i8]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i5]]*Pair[LorentzIndex[i4], LorentzIndex[i7]] + \
+Pair[LorentzIndex[i1], LorentzIndex[i8]]*Pair[LorentzIndex[i2], \
+LorentzIndex[i5]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i6]]*Pair[LorentzIndex[i4], LorentzIndex[i7]] - \
+Pair[LorentzIndex[i1], LorentzIndex[i5]]*Pair[LorentzIndex[i2], \
+LorentzIndex[i8]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i6]]*Pair[LorentzIndex[i4], LorentzIndex[i7]] - \
+Pair[LorentzIndex[i1], LorentzIndex[i6]]*Pair[LorentzIndex[i2], \
+LorentzIndex[i5]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i8]]*Pair[LorentzIndex[i4], LorentzIndex[i7]] + \
+Pair[LorentzIndex[i1], LorentzIndex[i5]]*Pair[LorentzIndex[i2], \
+LorentzIndex[i6]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i8]]*Pair[LorentzIndex[i4], LorentzIndex[i7]] + \
+Pair[LorentzIndex[i1], LorentzIndex[i7]]*Pair[LorentzIndex[i2], \
+LorentzIndex[i6]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i5]]*Pair[LorentzIndex[i4], LorentzIndex[i8]] - \
+Pair[LorentzIndex[i1], LorentzIndex[i6]]*Pair[LorentzIndex[i2], \
+LorentzIndex[i7]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i5]]*Pair[LorentzIndex[i4], LorentzIndex[i8]] - \
+Pair[LorentzIndex[i1], LorentzIndex[i7]]*Pair[LorentzIndex[i2], \
+LorentzIndex[i5]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i6]]*Pair[LorentzIndex[i4], LorentzIndex[i8]] + \
+Pair[LorentzIndex[i1], LorentzIndex[i5]]*Pair[LorentzIndex[i2], \
+LorentzIndex[i7]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i6]]*Pair[LorentzIndex[i4], LorentzIndex[i8]] + \
+Pair[LorentzIndex[i1], LorentzIndex[i6]]*Pair[LorentzIndex[i2], \
+LorentzIndex[i5]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i7]]*Pair[LorentzIndex[i4], LorentzIndex[i8]] - \
+Pair[LorentzIndex[i1], LorentzIndex[i5]]*Pair[LorentzIndex[i2], \
+LorentzIndex[i6]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i7]]*Pair[LorentzIndex[i4], LorentzIndex[i8]]"},
+{"fcstEpsContract-ID15",
+"EpsContract[LC[i1,i2,i3,i4]LC[i1,i6,i7,i8]]",
+"Pair[LorentzIndex[i2], LorentzIndex[i8]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i7]]*Pair[LorentzIndex[i4], LorentzIndex[i6]] - \
+Pair[LorentzIndex[i2], LorentzIndex[i7]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i8]]*Pair[LorentzIndex[i4], LorentzIndex[i6]] - \
+Pair[LorentzIndex[i2], LorentzIndex[i8]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i6]]*Pair[LorentzIndex[i4], LorentzIndex[i7]] + \
+Pair[LorentzIndex[i2], LorentzIndex[i6]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i8]]*Pair[LorentzIndex[i4], LorentzIndex[i7]] + \
+Pair[LorentzIndex[i2], LorentzIndex[i7]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i6]]*Pair[LorentzIndex[i4], LorentzIndex[i8]] - \
+Pair[LorentzIndex[i2], LorentzIndex[i6]]*Pair[LorentzIndex[i3], \
+LorentzIndex[i7]]*Pair[LorentzIndex[i4], LorentzIndex[i8]]"},
+{"fcstEpsContract-ID16",
+"EpsContract[LC[i1,i2,i3,i4]LC[i1,i2,i7,i8]]",
+"2*Pair[LorentzIndex[i3], LorentzIndex[i8]]*Pair[LorentzIndex[i4], \
+LorentzIndex[i7]] - 2*Pair[LorentzIndex[i3], \
+LorentzIndex[i7]]*Pair[LorentzIndex[i4], LorentzIndex[i8]]"},
+{"fcstEpsContract-ID17",
+"EpsContract[LC[i1,i2,i3,i4]LC[i1,i2,i3,i8]]",
+"-6*Pair[LorentzIndex[i4], LorentzIndex[i8]]"},
+{"fcstEpsContract-ID18",
+"EpsContract[LC[i1,i2,i3,i4]LC[i1,i2,i3,i4]]", "-24"},
+{"fcstEpsContract-ID19",
+"EpsContract[LC[][p1,p2,p3,p4]LC[][p5,p6,p7,p8]]",
+"-(Pair[Momentum[p1], Momentum[p8]]*Pair[Momentum[p2], \
+Momentum[p7]]*Pair[Momentum[p3], Momentum[p6]]*Pair[Momentum[p4], \
+Momentum[p5]]) + Pair[Momentum[p1], Momentum[p7]]*Pair[Momentum[p2], \
+Momentum[p8]]*Pair[Momentum[p3], Momentum[p6]]*Pair[Momentum[p4], \
+Momentum[p5]] + Pair[Momentum[p1], Momentum[p8]]*Pair[Momentum[p2], \
+Momentum[p6]]*Pair[Momentum[p3], Momentum[p7]]*Pair[Momentum[p4], \
+Momentum[p5]] - Pair[Momentum[p1], Momentum[p6]]*Pair[Momentum[p2], \
+Momentum[p8]]*Pair[Momentum[p3], Momentum[p7]]*Pair[Momentum[p4], \
+Momentum[p5]] - Pair[Momentum[p1], Momentum[p7]]*Pair[Momentum[p2], \
+Momentum[p6]]*Pair[Momentum[p3], Momentum[p8]]*Pair[Momentum[p4], \
+Momentum[p5]] + Pair[Momentum[p1], Momentum[p6]]*Pair[Momentum[p2], \
+Momentum[p7]]*Pair[Momentum[p3], Momentum[p8]]*Pair[Momentum[p4], \
+Momentum[p5]] + Pair[Momentum[p1], Momentum[p8]]*Pair[Momentum[p2], \
+Momentum[p7]]*Pair[Momentum[p3], Momentum[p5]]*Pair[Momentum[p4], \
+Momentum[p6]] - Pair[Momentum[p1], Momentum[p7]]*Pair[Momentum[p2], \
+Momentum[p8]]*Pair[Momentum[p3], Momentum[p5]]*Pair[Momentum[p4], \
+Momentum[p6]] - Pair[Momentum[p1], Momentum[p8]]*Pair[Momentum[p2], \
+Momentum[p5]]*Pair[Momentum[p3], Momentum[p7]]*Pair[Momentum[p4], \
+Momentum[p6]] + Pair[Momentum[p1], Momentum[p5]]*Pair[Momentum[p2], \
+Momentum[p8]]*Pair[Momentum[p3], Momentum[p7]]*Pair[Momentum[p4], \
+Momentum[p6]] + Pair[Momentum[p1], Momentum[p7]]*Pair[Momentum[p2], \
+Momentum[p5]]*Pair[Momentum[p3], Momentum[p8]]*Pair[Momentum[p4], \
+Momentum[p6]] - Pair[Momentum[p1], Momentum[p5]]*Pair[Momentum[p2], \
+Momentum[p7]]*Pair[Momentum[p3], Momentum[p8]]*Pair[Momentum[p4], \
+Momentum[p6]] - Pair[Momentum[p1], Momentum[p8]]*Pair[Momentum[p2], \
+Momentum[p6]]*Pair[Momentum[p3], Momentum[p5]]*Pair[Momentum[p4], \
+Momentum[p7]] + Pair[Momentum[p1], Momentum[p6]]*Pair[Momentum[p2], \
+Momentum[p8]]*Pair[Momentum[p3], Momentum[p5]]*Pair[Momentum[p4], \
+Momentum[p7]] + Pair[Momentum[p1], Momentum[p8]]*Pair[Momentum[p2], \
+Momentum[p5]]*Pair[Momentum[p3], Momentum[p6]]*Pair[Momentum[p4], \
+Momentum[p7]] - Pair[Momentum[p1], Momentum[p5]]*Pair[Momentum[p2], \
+Momentum[p8]]*Pair[Momentum[p3], Momentum[p6]]*Pair[Momentum[p4], \
+Momentum[p7]] - Pair[Momentum[p1], Momentum[p6]]*Pair[Momentum[p2], \
+Momentum[p5]]*Pair[Momentum[p3], Momentum[p8]]*Pair[Momentum[p4], \
+Momentum[p7]] + Pair[Momentum[p1], Momentum[p5]]*Pair[Momentum[p2], \
+Momentum[p6]]*Pair[Momentum[p3], Momentum[p8]]*Pair[Momentum[p4], \
+Momentum[p7]] + Pair[Momentum[p1], Momentum[p7]]*Pair[Momentum[p2], \
+Momentum[p6]]*Pair[Momentum[p3], Momentum[p5]]*Pair[Momentum[p4], \
+Momentum[p8]] - Pair[Momentum[p1], Momentum[p6]]*Pair[Momentum[p2], \
+Momentum[p7]]*Pair[Momentum[p3], Momentum[p5]]*Pair[Momentum[p4], \
+Momentum[p8]] - Pair[Momentum[p1], Momentum[p7]]*Pair[Momentum[p2], \
+Momentum[p5]]*Pair[Momentum[p3], Momentum[p6]]*Pair[Momentum[p4], \
+Momentum[p8]] + Pair[Momentum[p1], Momentum[p5]]*Pair[Momentum[p2], \
+Momentum[p7]]*Pair[Momentum[p3], Momentum[p6]]*Pair[Momentum[p4], \
+Momentum[p8]] + Pair[Momentum[p1], Momentum[p6]]*Pair[Momentum[p2], \
+Momentum[p5]]*Pair[Momentum[p3], Momentum[p7]]*Pair[Momentum[p4], \
+Momentum[p8]] - Pair[Momentum[p1], Momentum[p5]]*Pair[Momentum[p2], \
+Momentum[p6]]*Pair[Momentum[p3], Momentum[p7]]*Pair[Momentum[p4], \
+Momentum[p8]]"},
+{"fcstEpsContract-ID20",
+"EpsContract[LC[][p1,p2,p3,p4]LC[][p1,p6,p7,p8]]",
+"-(Pair[Momentum[p1], Momentum[p4]]*Pair[Momentum[p1], \
+Momentum[p8]]*Pair[Momentum[p2], Momentum[p7]]*Pair[Momentum[p3], \
+Momentum[p6]]) + Pair[Momentum[p1], Momentum[p4]]*Pair[Momentum[p1], \
+Momentum[p7]]*Pair[Momentum[p2], Momentum[p8]]*Pair[Momentum[p3], \
+Momentum[p6]] + Pair[Momentum[p1], Momentum[p4]]*Pair[Momentum[p1], \
+Momentum[p8]]*Pair[Momentum[p2], Momentum[p6]]*Pair[Momentum[p3], \
+Momentum[p7]] - Pair[Momentum[p1], Momentum[p4]]*Pair[Momentum[p1], \
+Momentum[p6]]*Pair[Momentum[p2], Momentum[p8]]*Pair[Momentum[p3], \
+Momentum[p7]] - Pair[Momentum[p1], Momentum[p4]]*Pair[Momentum[p1], \
+Momentum[p7]]*Pair[Momentum[p2], Momentum[p6]]*Pair[Momentum[p3], \
+Momentum[p8]] + Pair[Momentum[p1], Momentum[p4]]*Pair[Momentum[p1], \
+Momentum[p6]]*Pair[Momentum[p2], Momentum[p7]]*Pair[Momentum[p3], \
+Momentum[p8]] + Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p1], \
+Momentum[p8]]*Pair[Momentum[p2], Momentum[p7]]*Pair[Momentum[p4], \
+Momentum[p6]] - Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p1], \
+Momentum[p7]]*Pair[Momentum[p2], Momentum[p8]]*Pair[Momentum[p4], \
+Momentum[p6]] - Pair[Momentum[p1], Momentum[p2]]*Pair[Momentum[p1], \
+Momentum[p8]]*Pair[Momentum[p3], Momentum[p7]]*Pair[Momentum[p4], \
+Momentum[p6]] + Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p2], \
+Momentum[p8]]*Pair[Momentum[p3], Momentum[p7]]*Pair[Momentum[p4], \
+Momentum[p6]] + Pair[Momentum[p1], Momentum[p2]]*Pair[Momentum[p1], \
+Momentum[p7]]*Pair[Momentum[p3], Momentum[p8]]*Pair[Momentum[p4], \
+Momentum[p6]] - Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p2], \
+Momentum[p7]]*Pair[Momentum[p3], Momentum[p8]]*Pair[Momentum[p4], \
+Momentum[p6]] - Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p1], \
+Momentum[p8]]*Pair[Momentum[p2], Momentum[p6]]*Pair[Momentum[p4], \
+Momentum[p7]] + Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p1], \
+Momentum[p6]]*Pair[Momentum[p2], Momentum[p8]]*Pair[Momentum[p4], \
+Momentum[p7]] + Pair[Momentum[p1], Momentum[p2]]*Pair[Momentum[p1], \
+Momentum[p8]]*Pair[Momentum[p3], Momentum[p6]]*Pair[Momentum[p4], \
+Momentum[p7]] - Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p2], \
+Momentum[p8]]*Pair[Momentum[p3], Momentum[p6]]*Pair[Momentum[p4], \
+Momentum[p7]] - Pair[Momentum[p1], Momentum[p2]]*Pair[Momentum[p1], \
+Momentum[p6]]*Pair[Momentum[p3], Momentum[p8]]*Pair[Momentum[p4], \
+Momentum[p7]] + Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p2], \
+Momentum[p6]]*Pair[Momentum[p3], Momentum[p8]]*Pair[Momentum[p4], \
+Momentum[p7]] + Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p1], \
+Momentum[p7]]*Pair[Momentum[p2], Momentum[p6]]*Pair[Momentum[p4], \
+Momentum[p8]] - Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p1], \
+Momentum[p6]]*Pair[Momentum[p2], Momentum[p7]]*Pair[Momentum[p4], \
+Momentum[p8]] - Pair[Momentum[p1], Momentum[p2]]*Pair[Momentum[p1], \
+Momentum[p7]]*Pair[Momentum[p3], Momentum[p6]]*Pair[Momentum[p4], \
+Momentum[p8]] + Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p2], \
+Momentum[p7]]*Pair[Momentum[p3], Momentum[p6]]*Pair[Momentum[p4], \
+Momentum[p8]] + Pair[Momentum[p1], Momentum[p2]]*Pair[Momentum[p1], \
+Momentum[p6]]*Pair[Momentum[p3], Momentum[p7]]*Pair[Momentum[p4], \
+Momentum[p8]] - Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p2], \
+Momentum[p6]]*Pair[Momentum[p3], Momentum[p7]]*Pair[Momentum[p4], \
+Momentum[p8]]"},
+{"fcstEpsContract-ID21",
+"EpsContract[LC[][p1,p2,p3,p4]LC[][p1,p2,p7,p8]]",
+"-(Pair[Momentum[p1], Momentum[p4]]*Pair[Momentum[p1], \
+Momentum[p8]]*Pair[Momentum[p2], Momentum[p3]]*Pair[Momentum[p2], \
+Momentum[p7]]) + Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p1], \
+Momentum[p8]]*Pair[Momentum[p2], Momentum[p4]]*Pair[Momentum[p2], \
+Momentum[p7]] + Pair[Momentum[p1], Momentum[p4]]*Pair[Momentum[p1], \
+Momentum[p7]]*Pair[Momentum[p2], Momentum[p3]]*Pair[Momentum[p2], \
+Momentum[p8]] - Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p1], \
+Momentum[p7]]*Pair[Momentum[p2], Momentum[p4]]*Pair[Momentum[p2], \
+Momentum[p8]] + Pair[Momentum[p1], Momentum[p4]]*Pair[Momentum[p1], \
+Momentum[p8]]*Pair[Momentum[p2], Momentum[p2]]*Pair[Momentum[p3], \
+Momentum[p7]] - Pair[Momentum[p1], Momentum[p2]]*Pair[Momentum[p1], \
+Momentum[p8]]*Pair[Momentum[p2], Momentum[p4]]*Pair[Momentum[p3], \
+Momentum[p7]] - Pair[Momentum[p1], Momentum[p2]]*Pair[Momentum[p1], \
+Momentum[p4]]*Pair[Momentum[p2], Momentum[p8]]*Pair[Momentum[p3], \
+Momentum[p7]] + Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p2], \
+Momentum[p4]]*Pair[Momentum[p2], Momentum[p8]]*Pair[Momentum[p3], \
+Momentum[p7]] - Pair[Momentum[p1], Momentum[p4]]*Pair[Momentum[p1], \
+Momentum[p7]]*Pair[Momentum[p2], Momentum[p2]]*Pair[Momentum[p3], \
+Momentum[p8]] + Pair[Momentum[p1], Momentum[p2]]*Pair[Momentum[p1], \
+Momentum[p7]]*Pair[Momentum[p2], Momentum[p4]]*Pair[Momentum[p3], \
+Momentum[p8]] + Pair[Momentum[p1], Momentum[p2]]*Pair[Momentum[p1], \
+Momentum[p4]]*Pair[Momentum[p2], Momentum[p7]]*Pair[Momentum[p3], \
+Momentum[p8]] - Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p2], \
+Momentum[p4]]*Pair[Momentum[p2], Momentum[p7]]*Pair[Momentum[p3], \
+Momentum[p8]] - Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p1], \
+Momentum[p8]]*Pair[Momentum[p2], Momentum[p2]]*Pair[Momentum[p4], \
+Momentum[p7]] + Pair[Momentum[p1], Momentum[p2]]*Pair[Momentum[p1], \
+Momentum[p8]]*Pair[Momentum[p2], Momentum[p3]]*Pair[Momentum[p4], \
+Momentum[p7]] + Pair[Momentum[p1], Momentum[p2]]*Pair[Momentum[p1], \
+Momentum[p3]]*Pair[Momentum[p2], Momentum[p8]]*Pair[Momentum[p4], \
+Momentum[p7]] - Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p2], \
+Momentum[p3]]*Pair[Momentum[p2], Momentum[p8]]*Pair[Momentum[p4], \
+Momentum[p7]] - Pair[Momentum[p1], Momentum[p2]]^2*Pair[Momentum[p3], \
+Momentum[p8]]*Pair[Momentum[p4], Momentum[p7]] + Pair[Momentum[p1], \
+Momentum[p1]]*Pair[Momentum[p2], Momentum[p2]]*Pair[Momentum[p3], \
+Momentum[p8]]*Pair[Momentum[p4], Momentum[p7]] + Pair[Momentum[p1], \
+Momentum[p3]]*Pair[Momentum[p1], Momentum[p7]]*Pair[Momentum[p2], \
+Momentum[p2]]*Pair[Momentum[p4], Momentum[p8]] - Pair[Momentum[p1], \
+Momentum[p2]]*Pair[Momentum[p1], Momentum[p7]]*Pair[Momentum[p2], \
+Momentum[p3]]*Pair[Momentum[p4], Momentum[p8]] - Pair[Momentum[p1], \
+Momentum[p2]]*Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p2], \
+Momentum[p7]]*Pair[Momentum[p4], Momentum[p8]] + Pair[Momentum[p1], \
+Momentum[p1]]*Pair[Momentum[p2], Momentum[p3]]*Pair[Momentum[p2], \
+Momentum[p7]]*Pair[Momentum[p4], Momentum[p8]] + Pair[Momentum[p1], \
+Momentum[p2]]^2*Pair[Momentum[p3], Momentum[p7]]*Pair[Momentum[p4], \
+Momentum[p8]] - Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p2], \
+Momentum[p2]]*Pair[Momentum[p3], Momentum[p7]]*Pair[Momentum[p4], \
+Momentum[p8]]"},
+{"fcstEpsContract-ID22",
+"EpsContract[LC[][p1,p2,p3,p4]LC[][p1,p2,p3,p8]]",
+"-(Pair[Momentum[p1], Momentum[p4]]*Pair[Momentum[p1], \
+Momentum[p8]]*Pair[Momentum[p2], Momentum[p3]]^2) + \
+Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p1], \
+Momentum[p8]]*Pair[Momentum[p2], Momentum[p3]]*Pair[Momentum[p2], \
+Momentum[p4]] + Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p1], \
+Momentum[p4]]*Pair[Momentum[p2], Momentum[p3]]*Pair[Momentum[p2], \
+Momentum[p8]] - Pair[Momentum[p1], Momentum[p3]]^2*Pair[Momentum[p2], \
+Momentum[p4]]*Pair[Momentum[p2], Momentum[p8]] + Pair[Momentum[p1], \
+Momentum[p4]]*Pair[Momentum[p1], Momentum[p8]]*Pair[Momentum[p2], \
+Momentum[p2]]*Pair[Momentum[p3], Momentum[p3]] - Pair[Momentum[p1], \
+Momentum[p2]]*Pair[Momentum[p1], Momentum[p8]]*Pair[Momentum[p2], \
+Momentum[p4]]*Pair[Momentum[p3], Momentum[p3]] - Pair[Momentum[p1], \
+Momentum[p2]]*Pair[Momentum[p1], Momentum[p4]]*Pair[Momentum[p2], \
+Momentum[p8]]*Pair[Momentum[p3], Momentum[p3]] + Pair[Momentum[p1], \
+Momentum[p1]]*Pair[Momentum[p2], Momentum[p4]]*Pair[Momentum[p2], \
+Momentum[p8]]*Pair[Momentum[p3], Momentum[p3]] - Pair[Momentum[p1], \
+Momentum[p3]]*Pair[Momentum[p1], Momentum[p8]]*Pair[Momentum[p2], \
+Momentum[p2]]*Pair[Momentum[p3], Momentum[p4]] + Pair[Momentum[p1], \
+Momentum[p2]]*Pair[Momentum[p1], Momentum[p8]]*Pair[Momentum[p2], \
+Momentum[p3]]*Pair[Momentum[p3], Momentum[p4]] + Pair[Momentum[p1], \
+Momentum[p2]]*Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p2], \
+Momentum[p8]]*Pair[Momentum[p3], Momentum[p4]] - Pair[Momentum[p1], \
+Momentum[p1]]*Pair[Momentum[p2], Momentum[p3]]*Pair[Momentum[p2], \
+Momentum[p8]]*Pair[Momentum[p3], Momentum[p4]] - Pair[Momentum[p1], \
+Momentum[p3]]*Pair[Momentum[p1], Momentum[p4]]*Pair[Momentum[p2], \
+Momentum[p2]]*Pair[Momentum[p3], Momentum[p8]] + Pair[Momentum[p1], \
+Momentum[p2]]*Pair[Momentum[p1], Momentum[p4]]*Pair[Momentum[p2], \
+Momentum[p3]]*Pair[Momentum[p3], Momentum[p8]] + Pair[Momentum[p1], \
+Momentum[p2]]*Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p2], \
+Momentum[p4]]*Pair[Momentum[p3], Momentum[p8]] - Pair[Momentum[p1], \
+Momentum[p1]]*Pair[Momentum[p2], Momentum[p3]]*Pair[Momentum[p2], \
+Momentum[p4]]*Pair[Momentum[p3], Momentum[p8]] - Pair[Momentum[p1], \
+Momentum[p2]]^2*Pair[Momentum[p3], Momentum[p4]]*Pair[Momentum[p3], \
+Momentum[p8]] + Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p2], \
+Momentum[p2]]*Pair[Momentum[p3], Momentum[p4]]*Pair[Momentum[p3], \
+Momentum[p8]] + Pair[Momentum[p1], Momentum[p3]]^2*Pair[Momentum[p2], \
+Momentum[p2]]*Pair[Momentum[p4], Momentum[p8]] - 2*Pair[Momentum[p1], \
+Momentum[p2]]*Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p2], \
+Momentum[p3]]*Pair[Momentum[p4], Momentum[p8]] + Pair[Momentum[p1], \
+Momentum[p1]]*Pair[Momentum[p2], Momentum[p3]]^2*Pair[Momentum[p4], \
+Momentum[p8]] + Pair[Momentum[p1], Momentum[p2]]^2*Pair[Momentum[p3], \
+Momentum[p3]]*Pair[Momentum[p4], Momentum[p8]] - Pair[Momentum[p1], \
+Momentum[p1]]*Pair[Momentum[p2], Momentum[p2]]*Pair[Momentum[p3], \
+Momentum[p3]]*Pair[Momentum[p4], Momentum[p8]]"},
+{"fcstEpsContract-ID23",
+"EpsContract[LC[][p1,p2,p3,p4]LC[][p1,p2,p3,p4]]",
+"-(Pair[Momentum[p1], Momentum[p4]]^2*Pair[Momentum[p2], \
+Momentum[p3]]^2) + 2*Pair[Momentum[p1], \
+Momentum[p3]]*Pair[Momentum[p1], Momentum[p4]]*Pair[Momentum[p2], \
+Momentum[p3]]*Pair[Momentum[p2], Momentum[p4]] - Pair[Momentum[p1], \
+Momentum[p3]]^2*Pair[Momentum[p2], Momentum[p4]]^2 + \
+Pair[Momentum[p1], Momentum[p4]]^2*Pair[Momentum[p2], \
+Momentum[p2]]*Pair[Momentum[p3], Momentum[p3]] - 2*Pair[Momentum[p1], \
+Momentum[p2]]*Pair[Momentum[p1], Momentum[p4]]*Pair[Momentum[p2], \
+Momentum[p4]]*Pair[Momentum[p3], Momentum[p3]] + Pair[Momentum[p1], \
+Momentum[p1]]*Pair[Momentum[p2], Momentum[p4]]^2*Pair[Momentum[p3], \
+Momentum[p3]] - 2*Pair[Momentum[p1], Momentum[p3]]*Pair[Momentum[p1], \
+Momentum[p4]]*Pair[Momentum[p2], Momentum[p2]]*Pair[Momentum[p3], \
+Momentum[p4]] + 2*Pair[Momentum[p1], Momentum[p2]]*Pair[Momentum[p1], \
+Momentum[p4]]*Pair[Momentum[p2], Momentum[p3]]*Pair[Momentum[p3], \
+Momentum[p4]] + 2*Pair[Momentum[p1], Momentum[p2]]*Pair[Momentum[p1], \
+Momentum[p3]]*Pair[Momentum[p2], Momentum[p4]]*Pair[Momentum[p3], \
+Momentum[p4]] - 2*Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p2], \
+Momentum[p3]]*Pair[Momentum[p2], Momentum[p4]]*Pair[Momentum[p3], \
+Momentum[p4]] - Pair[Momentum[p1], Momentum[p2]]^2*Pair[Momentum[p3], \
+Momentum[p4]]^2 + Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p2], \
+Momentum[p2]]*Pair[Momentum[p3], Momentum[p4]]^2 + Pair[Momentum[p1], \
+Momentum[p3]]^2*Pair[Momentum[p2], Momentum[p2]]*Pair[Momentum[p4], \
+Momentum[p4]] - 2*Pair[Momentum[p1], Momentum[p2]]*Pair[Momentum[p1], \
+Momentum[p3]]*Pair[Momentum[p2], Momentum[p3]]*Pair[Momentum[p4], \
+Momentum[p4]] + Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p2], \
+Momentum[p3]]^2*Pair[Momentum[p4], Momentum[p4]] + Pair[Momentum[p1], \
+Momentum[p2]]^2*Pair[Momentum[p3], Momentum[p3]]*Pair[Momentum[p4], \
+Momentum[p4]] - Pair[Momentum[p1], Momentum[p1]]*Pair[Momentum[p2], \
+Momentum[p2]]*Pair[Momentum[p3], Momentum[p3]]*Pair[Momentum[p4], \
+Momentum[p4]]"},
+{"fcstEpsContract-ID24", "EpsContract[CLC[i1,i2,i3]CLC[i4,i5,i6]]",
+"-(CartesianPair[CartesianIndex[i1], CartesianIndex[i6]]*CartesianPair[CartesianIndex[i2], \
+CartesianIndex[i5]]*CartesianPair[CartesianIndex[i3], CartesianIndex[i4]]) + CartesianPair[CartesianIndex[i1], \
+CartesianIndex[i5]]*CartesianPair[CartesianIndex[i2], CartesianIndex[i6]]*CartesianPair[CartesianIndex[i3], \
+CartesianIndex[i4]] + CartesianPair[CartesianIndex[i1], CartesianIndex[i6]]*CartesianPair[CartesianIndex[i2], \
+CartesianIndex[i4]]*CartesianPair[CartesianIndex[i3], CartesianIndex[i5]] - CartesianPair[CartesianIndex[i1], \
+CartesianIndex[i4]]*CartesianPair[CartesianIndex[i2], CartesianIndex[i6]]*CartesianPair[CartesianIndex[i3], \
+CartesianIndex[i5]] - CartesianPair[CartesianIndex[i1], CartesianIndex[i5]]*CartesianPair[CartesianIndex[i2], \
+CartesianIndex[i4]]*CartesianPair[CartesianIndex[i3], CartesianIndex[i6]] + CartesianPair[CartesianIndex[i1], \
+CartesianIndex[i4]]*CartesianPair[CartesianIndex[i2], CartesianIndex[i5]]*CartesianPair[CartesianIndex[i3], \
+CartesianIndex[i6]]"},
+{"fcstEpsContract-ID25", "EpsContract[CLC[i1,i2,i3]CLC[i1,i5,i6]]",
+"-(CartesianPair[CartesianIndex[i2], CartesianIndex[i6]]*CartesianPair[CartesianIndex[i3], CartesianIndex[i5]]) + \
+CartesianPair[CartesianIndex[i2], CartesianIndex[i5]]*CartesianPair[CartesianIndex[i3], CartesianIndex[i6]]"},
+{"fcstEpsContract-ID26", "EpsContract[CLC[i1,i2,i3]CLC[i1,i2,i6]]",
+"2*CartesianPair[CartesianIndex[i3], CartesianIndex[i6]]"},
+{"fcstEpsContract-ID27", "EpsContract[CLC[i1,i2,i3]CLC[i1,i2,i3]]",
+"6"},
+{"fcstEpsContract-ID28",
+"EpsContract[CLC[][p1,p2,p3]CLC[][p4,p5,p6]]",
+"-(CartesianPair[CartesianMomentum[p1], CartesianMomentum[p6]]*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p5]]*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p4]]) + \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p5]]*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p6]]*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p4]] + \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p6]]*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p4]]*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p5]] - \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p4]]*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p6]]*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p5]] - \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p5]]*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p4]]*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p6]] + \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p4]]*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p5]]*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p6]]"},
+{"fcstEpsContract-ID29",
+"EpsContract[CLC[][p1,p2,p3]CLC[][p1,p5,p6]]",
+"-(CartesianPair[CartesianMomentum[p1], CartesianMomentum[p3]]*CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p6]]*CartesianPair[CartesianMomentum[p2], CartesianMomentum[p5]]) + \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p3]]*CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p5]]*CartesianPair[CartesianMomentum[p2], CartesianMomentum[p6]] + \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p2]]*CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p6]]*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p5]] - \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p1]]*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p6]]*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p5]] - \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p2]]*CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p5]]*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p6]] + \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p1]]*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p5]]*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p6]]"},
+{"fcstEpsContract-ID30",
+"EpsContract[CLC[][p1,p2,p3]CLC[][p1,p2,p6]]",
+"-(CartesianPair[CartesianMomentum[p1], CartesianMomentum[p3]]*CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p6]]*CartesianPair[CartesianMomentum[p2], CartesianMomentum[p2]]) + \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p2]]*CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p6]]*CartesianPair[CartesianMomentum[p2], CartesianMomentum[p3]] + \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p2]]*CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p3]]*CartesianPair[CartesianMomentum[p2], CartesianMomentum[p6]] - \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p1]]*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p3]]*CartesianPair[CartesianMomentum[p2], CartesianMomentum[p6]] - \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p2]]^2*CartesianPair[CartesianMomentum[p3], \
+CartesianMomentum[p6]] + CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p1]]*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p2]]*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p6]]"},
+{"fcstEpsContract-ID31",
+"EpsContract[CLC[][p1,p2,p3]CLC[][p1,p2,p3]]",
+"-(CartesianPair[CartesianMomentum[p1], CartesianMomentum[p3]]^2*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p2]]) + 2*CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p2]]*CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p3]]*CartesianPair[CartesianMomentum[p2], CartesianMomentum[p3]] - \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p1]]*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p3]]^2 - CartesianPair[CartesianMomentum[p1], \
+CartesianMomentum[p2]]^2*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p3]] + \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p1]]*CartesianPair[CartesianMomentum[p2], \
+CartesianMomentum[p2]]*CartesianPair[CartesianMomentum[p3], CartesianMomentum[p3]]"},
+{"fcstEpsContract-ID32",
+"EpsContract[CLCD[i1,i2,i3]CLCD[i4,i5,i6]]",
+"-(CartesianPair[CartesianIndex[i1, -1 + D], CartesianIndex[i6, -1 + D]]*CartesianPair[CartesianIndex[i2, \
+-1 + D], CartesianIndex[i5, -1 + D]]*CartesianPair[CartesianIndex[i3, -1 + D], CartesianIndex[i4, -1 \
++ D]]) + CartesianPair[CartesianIndex[i1, -1 + D], CartesianIndex[i5, -1 + \
+D]]*CartesianPair[CartesianIndex[i2, -1 + D], CartesianIndex[i6, -1 + D]]*CartesianPair[CartesianIndex[i3, -1 \
++ D], CartesianIndex[i4, -1 + D]] + CartesianPair[CartesianIndex[i1, -1 + D], CartesianIndex[i6, -1 + \
+D]]*CartesianPair[CartesianIndex[i2, -1 + D], CartesianIndex[i4, -1 + D]]*CartesianPair[CartesianIndex[i3, -1 \
++ D], CartesianIndex[i5, -1 + D]] - CartesianPair[CartesianIndex[i1, -1 + D], CartesianIndex[i4, -1 + \
+D]]*CartesianPair[CartesianIndex[i2, -1 + D], CartesianIndex[i6, -1 + D]]*CartesianPair[CartesianIndex[i3, -1 \
++ D], CartesianIndex[i5, -1 + D]] - CartesianPair[CartesianIndex[i1, -1 + D], CartesianIndex[i5, -1 + \
+D]]*CartesianPair[CartesianIndex[i2, -1 + D], CartesianIndex[i4, -1 + D]]*CartesianPair[CartesianIndex[i3, -1 \
++ D], CartesianIndex[i6, -1 + D]] + CartesianPair[CartesianIndex[i1, -1 + D], CartesianIndex[i4, -1 + \
+D]]*CartesianPair[CartesianIndex[i2, -1 + D], CartesianIndex[i5, -1 + D]]*CartesianPair[CartesianIndex[i3, -1 \
++ D], CartesianIndex[i6, -1 + D]]"},
+{"fcstEpsContract-ID33",
+"EpsContract[CLCD[i1,i2,i3]CLCD[i1,i5,i6]]",
+"3*CartesianPair[CartesianIndex[i2, -1 + D], CartesianIndex[i6, -1 + D]]*CartesianPair[CartesianIndex[i3, \
+-1 + D], CartesianIndex[i5, -1 + D]] - D*CartesianPair[CartesianIndex[i2, -1 + D], CartesianIndex[i6, \
+-1 + D]]*CartesianPair[CartesianIndex[i3, -1 + D], CartesianIndex[i5, -1 + D]] - \
+3*CartesianPair[CartesianIndex[i2, -1 + D], CartesianIndex[i5, -1 + D]]*CartesianPair[CartesianIndex[i3, -1 + \
+D], CartesianIndex[i6, -1 + D]] + D*CartesianPair[CartesianIndex[i2, -1 + D], CartesianIndex[i5, -1 + \
+D]]*CartesianPair[CartesianIndex[i3, -1 + D], CartesianIndex[i6, -1 + D]]"},
+{"fcstEpsContract-ID34",
+"EpsContract[CLCD[i1,i2,i3]CLCD[i1,i2,i6]]",
+"6*CartesianPair[CartesianIndex[i3, -1 + D], CartesianIndex[i6, -1 + D]] - \
+5*D*CartesianPair[CartesianIndex[i3, -1 + D], CartesianIndex[i6, -1 + D]] + \
+D^2*CartesianPair[CartesianIndex[i3, -1 + D], CartesianIndex[i6, -1 + D]]"},
+{"fcstEpsContract-ID35",
+"EpsContract[CLCD[i1,i2,i3]CLCD[i1,i2,i3]]",
+"-6 + 11*D - 6*D^2 + D^3"},
+{"fcstEpsContract-ID36",
+"EpsContract[CLCD[][p1,p2,p3]CLCD[][p4,p5,p6]]",
+"-(CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p6, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p5, -1 + \
+D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p4, -1 + D]]) + \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p5, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p6, -1 + \
+D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p4, -1 + D]] + \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p6, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p4, -1 + \
+D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p5, -1 + D]] - \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p4, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p6, -1 + \
+D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p5, -1 + D]] - \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p5, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p4, -1 + \
+D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p6, -1 + D]] + \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p4, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p5, -1 + \
+D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p6, -1 + D]]"},
+{"fcstEpsContract-ID37",
+"EpsContract[CLCD[][p1,p2,p3]CLCD[][p1,p5,p6]]",
+"-(CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p3, -1 + \
+D]]*CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p6, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p5, -1 + D]]) + \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p3, -1 + \
+D]]*CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p5, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p6, -1 + D]] + \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p2, -1 + \
+D]]*CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p6, -1 + \
+D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p5, -1 + D]] - \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p1, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p6, -1 + \
+D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p5, -1 + D]] - \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p2, -1 + \
+D]]*CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p5, -1 + \
+D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p6, -1 + D]] + \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p1, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p5, -1 + \
+D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p6, -1 + D]]"},
+{"fcstEpsContract-ID38",
+"EpsContract[CLCD[][p1,p2,p3]CLCD[][p1,p2,p6]]",
+"-(CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p3, -1 + \
+D]]*CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p6, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p2, -1 + D]]) + \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p2, -1 + \
+D]]*CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p6, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p3, -1 + D]] + \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p2, -1 + \
+D]]*CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p3, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p6, -1 + D]] - \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p1, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p3, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p6, -1 + D]] - \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p2, -1 + \
+D]]^2*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p6, -1 + D]] + \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p1, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p2, -1 + \
+D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p6, -1 + D]]"},
+{"fcstEpsContract-ID39",
+"EpsContract[CLCD[][p1,p2,p3]CLCD[][p1,p2,p3]]",
+"-(CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p3, -1 + \
+D]]^2*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p2, -1 + D]]) + \
+2*CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p2, -1 + \
+D]]*CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p3, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p3, -1 + D]] - \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p1, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p3, -1 + D]]^2 - \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p2, -1 + \
+D]]^2*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p3, -1 + D]] + \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p1, -1 + \
+D]]*CartesianPair[CartesianMomentum[p2, -1 + D], CartesianMomentum[p2, -1 + \
+D]]*CartesianPair[CartesianMomentum[p3, -1 + D], CartesianMomentum[p3, -1 + D]]"},
+{"fcstEpsContract-ID40",
+"LC[0][p1, p2, p3] LC[0][q1, q2, q3]// EpsContract // FCE",
+"-(CSP[p1, q3]*CSP[p2, q2]*CSP[p3, q1]) + CSP[p1, q2]*CSP[p2, q3]*CSP[p3, q1] +
+CSP[p1, q3]*CSP[p2, q1]*CSP[p3, q2] - CSP[p1, q1]*CSP[p2, q3]*CSP[p3, q2] -
+	CSP[p1, q2]*CSP[p2, q1]*CSP[p3, q3] + CSP[p1, q1]*CSP[p2, q2]*CSP[p3, q3]"},
+{"fcstEpsContract-ID41",
+"LC[0][p1, p2, p3] LC[0][q1, q2, q3] // LorentzToCartesian // EpsContract // FCE","-CSP[p1, q3] CSP[p2, q2] CSP[p3, q1] +
+CSP[p1, q2] CSP[p2, q3] CSP[p3, q1] +
+CSP[p1, q3] CSP[p2, q1] CSP[p3, q2] -
+CSP[p1, q1] CSP[p2, q3] CSP[p3, q2] -
+CSP[p1, q2] CSP[p2, q1] CSP[p3, q3] +
+CSP[p1, q1] CSP[p2, q2] CSP[p3, q3]"}
+})

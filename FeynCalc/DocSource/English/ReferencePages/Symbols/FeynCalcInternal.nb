@@ -176,9 +176,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/FCE",
   ButtonNote->"FCE"],
  "."
-}], "Text",
- CellTags->"FeynCalcInternal",
- CellID->1416834624]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -220,7 +218,7 @@ Cell[BoxData[
    RowBox[{"FV", "[", 
     RowBox[{"p", ",", "\[Mu]"}], "]"}]}], "}"}]], "Input",
  CellTags->"FeynCalcInternal",
- CellLabel->"In[1]:=",
+ CellLabel->"In[101]:=",
  CellID->1722777606],
 
 Cell[BoxData[
@@ -267,43 +265,32 @@ Cell[BoxData[
        TraditionalForm]}],
      TraditionalForm], ",", 
     FormBox[
-     FormBox[
-      SuperscriptBox[
-       OverscriptBox["g", "_"], 
-       RowBox[{
-        FormBox[
-         FormBox[
-          FormBox["\[Alpha]",
-           TraditionalForm],
-          TraditionalForm],
-         TraditionalForm], 
-        FormBox[
-         FormBox[
-          FormBox["\[Beta]",
-           TraditionalForm],
-          TraditionalForm],
-         TraditionalForm]}]],
-      TraditionalForm],
-     TraditionalForm], ",", 
-    FormBox[
-     FormBox[
-      SuperscriptBox[
+     SuperscriptBox[
+      OverscriptBox["g", "_"], 
+      RowBox[{
        FormBox[
-        OverscriptBox[
-         FormBox["p",
-          TraditionalForm], "_"],
+        FormBox["\[Alpha]",
+         TraditionalForm],
         TraditionalForm], 
        FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
+        FormBox["\[Beta]",
          TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm],
+        TraditionalForm]}]],
+     TraditionalForm], ",", 
+    FormBox[
+     SuperscriptBox[
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]],
      TraditionalForm]}], "}"}], TraditionalForm]], "Output",
  CellTags->"FeynCalcInternal",
- CellLabel->"Out[1]=",
- CellID->1418441538]
+ CellLabel->"Out[101]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -311,7 +298,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"%", "//", "StandardForm"}]], "Input",
  CellTags->"FeynCalcInternal",
- CellLabel->"In[2]:=",
+ CellLabel->"In[102]:=",
  CellID->1982442552],
 
 Cell[BoxData[
@@ -327,8 +314,7 @@ Cell[BoxData[
    RowBox[{"FV", "[", 
     RowBox[{"p", ",", "\[Mu]"}], "]"}]}], "}"}]], "Output",
  CellTags->"FeynCalcInternal",
- CellLabel->"Out[2]//StandardForm=",
- CellID->603554670]
+ CellLabel->"Out[102]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -336,7 +322,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"%", "//", "FeynCalcInternal"}]], "Input",
  CellTags->"FeynCalcInternal",
- CellLabel->"In[3]:=",
+ CellLabel->"In[103]:=",
  CellID->1465614164],
 
 Cell[BoxData[
@@ -374,40 +360,29 @@ Cell[BoxData[
        FormBox["q",
         TraditionalForm], "_"],
       TraditionalForm]}], ",", 
-    FormBox[
-     SuperscriptBox[
-      OverscriptBox["g", "_"], 
-      RowBox[{
-       FormBox[
-        FormBox[
-         FormBox["\[Alpha]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Beta]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm], ",", 
-    FormBox[
-     SuperscriptBox[
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
       FormBox[
-       OverscriptBox[
-        FormBox["p",
-         TraditionalForm], "_"],
+       FormBox["\[Alpha]",
+        TraditionalForm],
        TraditionalForm], 
       FormBox[
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
+       FormBox["\[Beta]",
         TraditionalForm],
-       TraditionalForm]],
-     TraditionalForm]}], "}"}], TraditionalForm]], "Output",
+       TraditionalForm]}]], ",", 
+    SuperscriptBox[
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]]}], "}"}], TraditionalForm]], "Output",
  CellTags->"FeynCalcInternal",
- CellLabel->"Out[3]=",
- CellID->618861015]
+ CellLabel->"Out[103]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -415,7 +390,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"%", "//", "StandardForm"}]], "Input",
  CellTags->"FeynCalcInternal",
- CellLabel->"In[4]:=",
+ CellLabel->"In[104]:=",
  CellID->1783117065],
 
 Cell[BoxData[
@@ -442,8 +417,7 @@ Cell[BoxData[
      RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
      RowBox[{"Momentum", "[", "p", "]"}]}], "]"}]}], "}"}]], "Output",
  CellTags->"FeynCalcInternal",
- CellLabel->"Out[4]//StandardForm=",
- CellID->1678932419]
+ CellLabel->"Out[104]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -453,7 +427,7 @@ Cell[BoxData[
   RowBox[{"FeynCalcExternal", "[", "%", "]"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"FeynCalcInternal",
- CellLabel->"In[5]:=",
+ CellLabel->"In[105]:=",
  CellID->53564155],
 
 Cell[BoxData[
@@ -469,8 +443,7 @@ Cell[BoxData[
    RowBox[{"FV", "[", 
     RowBox[{"p", ",", "\[Mu]"}], "]"}]}], "}"}]], "Output",
  CellTags->"FeynCalcInternal",
- CellLabel->"Out[5]//StandardForm=",
- CellID->44863235]
+ CellLabel->"Out[105]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -490,7 +463,7 @@ Cell[BoxData[
      RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], "]"}]}],
     "}"}], "]"}]], "Input",
  CellTags->"FeynCalcInternal",
- CellLabel->"In[6]:=",
+ CellLabel->"In[106]:=",
  CellID->1030775122],
 
 Cell[BoxData[
@@ -535,11 +508,22 @@ Cell[BoxData[
        FormBox["c",
         TraditionalForm],
        TraditionalForm]}]], ",", 
-    FractionBox["1", 
-     SuperscriptBox[
-      FormBox["q",
-       TraditionalForm], "2"]], ",", 
-    SuperscriptBox["\[Epsilon]", 
+    FormBox[
+     FractionBox["1", 
+      InterpretationBox[
+       SuperscriptBox[
+        FormBox[
+         FormBox["q",
+          TraditionalForm],
+         TraditionalForm], "2"],
+       SequenceForm[
+        FeynCalc`Pair[
+         FeynCalc`Momentum[$CellContext`q, D], 
+         FeynCalc`Momentum[$CellContext`q, D]]],
+       Editable->False]],
+     TraditionalForm], ",", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", "_"], 
      RowBox[{
       FormBox[
        FormBox["\[Mu]",
@@ -558,8 +542,7 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm]}]]}], "}"}], TraditionalForm]], "Output",
  CellTags->"FeynCalcInternal",
- CellLabel->"Out[6]=",
- CellID->164140775]
+ CellLabel->"Out[106]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -567,7 +550,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"%", "//", "StandardForm"}]], "Input",
  CellTags->"FeynCalcInternal",
- CellLabel->"In[7]:=",
+ CellLabel->"In[107]:=",
  CellID->438838711],
 
 Cell[BoxData[
@@ -597,11 +580,10 @@ Cell[BoxData[
      RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
      RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}], ",", 
      RowBox[{"LorentzIndex", "[", "\[Rho]", "]"}], ",", 
-     RowBox[{"LorentzIndex", "[", "\[Sigma]", "]"}], ",", 
-     RowBox[{"Dimension", "\[Rule]", "4"}]}], "]"}]}], "}"}]], "Output",
+     RowBox[{"LorentzIndex", "[", "\[Sigma]", "]"}]}], "]"}]}], 
+  "}"}]], "Output",
  CellTags->"FeynCalcInternal",
- CellLabel->"Out[7]//StandardForm=",
- CellID->700854959]
+ CellLabel->"Out[107]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -666,12 +648,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{932, Automatic}, {Automatic, 77}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

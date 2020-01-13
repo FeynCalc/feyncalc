@@ -2,9 +2,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for Tr2					*)
@@ -14,5 +14,7 @@
 Tests`NonCommAlgebra`fcstTr2 = {
 {"Tr2-ID1", "DiracTrace[a]//Tr2", "4*a"},
 {"Tr2-ID2", "DiracTrace[a[SUNFIndex[i]]Tf ]//Tr2",
-	"4*Tf*a[SUNFIndex[i]]"}
+	"4*Tf*a[SUNFIndex[i]]"},
+{"Tr2-ID3", "Tr[GA[i, j]]// FCE", "4 MT[i, j]"},
+{"Tr2-ID4", "Tr[CGA[i, j]] // FCE", "-4 KD[i, j]"}
 };

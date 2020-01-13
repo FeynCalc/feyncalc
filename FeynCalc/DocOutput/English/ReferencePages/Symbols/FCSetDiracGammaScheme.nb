@@ -1,0 +1,1637 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     50091,       1627]
+NotebookOptionsPosition[     43894,       1427]
+NotebookOutlinePosition[     46458,       1494]
+CellTagsIndexPosition[     46336,       1488]
+WindowTitle->FCSetDiracGammaScheme
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FCGetDiracGammaScheme\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FCGetDiracGammaScheme"], "\<\"DiracTrace\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/DiracTrace"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/FCSetDiracGammaScheme\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/FCSetDiracGammaScheme"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
+FCSetDiracGammaScheme.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$124054], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/FCSetDiracGammaScheme", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[TextData[{
+ Cell["FCSetDiracGammaScheme", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"FCSetDiracGammaScheme", "[", "\"\<scheme\>\"", "]"}]], 
+      "InlineFormula"],
+     " \[LineSeparator]allows you to specify how Dirac matrices will be \
+handled in D dimensions. This is mainly relevant to the treatment of the \
+fifth Dirac matrix ",
+     Cell[BoxData[
+      SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+     ", which is not well-defined in dimensional regularization."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->36733847],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell["Following schemes are supported: ", "Notes",
+ CellID->1067943069],
+
+Cell[TextData[{
+ "\"NDR\" - This is the default value. In the naive dimensional \
+regularization (also known as conventional dimensional regularization or CDR) \
+",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]]],
+ " is assumed to anticommute with all Dirac matrices in ",
+ Cell[BoxData["D"], "InlineFormula"],
+ " dimensions. Hence, every Dirac trace can be rewritten in such a way, that \
+it contains either just one or not a single ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]]],
+ " matrix. The latter traces are obviously unambiguous. The traces with one \
+",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]]],
+ " are not well-defined in this scheme. It usually depends on the physics of \
+the process, whether and how they can contribute to the final result. \
+Therefore, FeynCalc will keep such traces unevaluated, leaving it to the user \
+to decide how to treat them. "
+}], "Notes",
+ CellID->190401776],
+
+Cell[TextData[{
+ "Notice that traces with an odd number of the usual Dirac matrices and one \
+",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]]],
+ ", that vanish in 4 dimensions, will be also put to zero in this scheme."
+}], "Notes",
+ CellID->1784502655],
+
+Cell[TextData[{
+ "\"NDR-Discard\" - This is a special version of the NDR scheme. The Dirac \
+algebra is\nevaluated in the same way as with \"NDR\", but the remaining \
+traces with one ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]]],
+ "\nare put to zero. This assumes that such traces do not contribute to the \
+final result,\nwhich is obviously true only for specific calculations."
+}], "Notes",
+ CellID->665441283],
+
+Cell[TextData[{
+ "\"BMHV\" - The Breitenlohner-Maison extension of the t'Hooft-Veltman \
+scheme. This scheme introduces Dirac and Lorentz tensors living in ",
+ Cell[BoxData["4"], "InlineFormula"],
+ ", ",
+ Cell[BoxData["D"], "InlineFormula"],
+ " or ",
+ Cell[BoxData[
+  RowBox[{"D", "-", "4"}]], "InlineFormula"],
+ " dimensions, while ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+ " is a purely ",
+ Cell[BoxData["4"], "InlineFormula"],
+ "-dimensional object. BMHV is algebraically consistent but often suffers \
+from nonconservation of currents in the final results. The conservation must \
+be then enfornced by introducing finite counter-terms. The counter-terms are \
+to be supplied by the users, FeynCalc does not do this automatically."
+}], "Notes",
+ CellID->2003509557],
+
+Cell[TextData[{
+ "\"Larin\" - Special prescription developed by Larin, also known as the \
+Larin-Gorishny-Atkyampo-DelBurgo scheme. Essentially, it is a shortcut \
+(mostly used in QCD) for obtaining the same results as in BMHV but without \
+the necessity to deal with tensors from different dimensions. That is, before \
+evaluating traces (but after moving gamma5 anticommuting in D-dimensions to \
+the right of the Dirac string inside a trace) a product  gamma[mu].gamma5 is \
+substituted to -I/6 Eps[mu,al,be,si] gamma[al,be,si], where all indices live \
+in D-dimensions now. The Levi-Civita tensor is taken to be",
+ StyleBox[" ", "Tutorials"],
+ Cell[BoxData["D"], "InlineFormula"],
+ StyleBox["-", "Tutorials"],
+ "dimensional, i.e., contraction of two Eps's results in D's. \\\nThis scheme \
+is often used for performance reasons and is assumed to give the same results \
+as the Breitenlohner-Maison-'t Hooft-Veltman (BMHV) scheme. However, ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+ " is not anticommuting inside closed fermion loops and it is not so clear if \
+this scheme works for more than one fermion line involving ",
+ Cell[BoxData[
+  SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
+ " When in doubt, it might be better to use BMHV instead."
+}], "Notes",
+ CellID->93561036]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->82917860],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->32234158],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCSetDiracGammaScheme", "[", "\"\<NDR\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1948773281],
+
+Cell[BoxData[
+ FormBox["\<\"NDR\"\>", TraditionalForm]], "Output",
+ ImageSize->{35, 14},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->1851033209]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracTrace", "[", 
+  RowBox[{"GAD", "[", 
+   RowBox[{
+   "\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]", ",", "\[Tau]", ",", 
+    "\[Kappa]", ",", "5"}], "]"}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->98306849],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"tr", "(", 
+   FormBox[
+    RowBox[{
+     FormBox[
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Rho]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Tau]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Kappa]",
+         TraditionalForm],
+        TraditionalForm]],
+      TraditionalForm], ".", 
+     FormBox[
+      SuperscriptBox[
+       OverscriptBox["\[Gamma]", "_"], 
+       FormBox["5",
+        TraditionalForm]],
+      TraditionalForm]}],
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ ImageSize->{189, 22},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->319736968]
+}, Open  ]],
+
+Cell["\<\
+In NDR chiral traces remain unevaluated. You decide how to treat them.\
+\>", "ExampleText",
+ CellID->1475497628],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", "%", "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->933234494],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"tr", "(", 
+   FormBox[
+    RowBox[{
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Tau]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Kappa]",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox[
+      OverscriptBox["\[Gamma]", "_"], 
+      FormBox["5",
+       TraditionalForm]]}],
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ ImageSize->{189, 22},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->1219913945]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCSetDiracGammaScheme", "[", "\"\<NDR-Drop\>\"", "]"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->1854871493],
+
+Cell[BoxData[
+ FormBox["\<\"NDR-Drop\"\>", TraditionalForm]], "Output",
+ ImageSize->{75, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[4]=",
+ CellID->771760149]
+}, Open  ]],
+
+Cell["\<\
+If you know that such traces do not contribute, use NDR-Drop scheme to put \
+them to zero\
+\>", "ExampleText",
+ CellID->2003592022],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", 
+  RowBox[{"DiracTrace", "[", 
+   RowBox[{"GAD", "[", 
+    RowBox[{
+    "\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]", ",", "\[Tau]", ",",
+      "\[Kappa]", ",", "5"}], "]"}], "]"}], "]"}]], "Input",
+ CellLabel->"In[5]:=",
+ CellID->415066987],
+
+Cell[BoxData[
+ FormBox["0", TraditionalForm]], "Output",
+ ImageSize->{13, 14},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[5]=",
+ CellID->2065197167]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCSetDiracGammaScheme", "[", "\"\<BMHV\>\"", "]"}]], "Input",
+ CellLabel->"In[6]:=",
+ CellID->1400459732],
+
+Cell[BoxData[
+ FormBox["\<\"BMHV\"\>", TraditionalForm]], "Output",
+ ImageSize->{47, 14},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[6]=",
+ CellID->153708414]
+}, Open  ]],
+
+Cell["In BMHV chiral traces are algebraically well-defined", "ExampleText",
+ CellID->204593488],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"res1", "=", 
+  RowBox[{"DiracSimplify", "[", 
+   RowBox[{"DiracTrace", "[", 
+    RowBox[{"GAD", "[", 
+     RowBox[{
+     "\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]", ",", "\[Tau]", 
+      ",", "\[Kappa]", ",", "5"}], "]"}], "]"}], "]"}]}]], "Input",
+ CellLabel->"In[7]:=",
+ CellID->1352029659],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[RasterBox[CompressedData["
+1:eJztnQtwVNUZgLF12o6dTlHHkanDjDqAPEQEOkhA3hgKQwcBLQEjlQxvNDqA
+gHQKCGhKgwMjr2kAGzBoEcjwEEFBOkKlCNhQk/IKEAiPBBIxL7KbbDanu7lI
+ILn3nLv33HPOfw7/NwMD7Gaz5zv/vbmb7PA9lvT6sPE/adKkybRfRH4bNmZm
+n6lTx7w1vGnkLy8mT5s0IXnc2IHJ08dNGDe1a9JPI/84MPLr0j1NmkT/TLQk
+XKv6GSBUcIPkgJ4RFYS/3zsxcV1+xcWNb4xbeTbY4NZQfvrwpAMlhFRkJfcc
+fbA0poeuvrb/rwO7zz0eIJU5M3s+v7u44YiHy7I3rv7kiy8y5o5ZeKj09ltr
+A+c//2DDjs/Sp3d64IFHWz3xRPv+754K3Lq5pmjv/JG9nnr01/c/3ubJLiO3
+X62J6YlJx1EyUxEL9gah5Js3O3pwA80zdRMNk4wopPTgy3FT9h9MX7bnaqjR
+jbXFu4YP+vhKDQmeWti1/6bCcKyPXrI/MX75uUDhjqT5h8saHB/h619O+f3y
+s1WEBE8u7D3qYFn9py05MG3o8jNV0UNkbb/BuxqewcKBwqJgbWX23BHr8hs/
+aYDQJNMUMWFuEEq2cPbgCpZnp000TjJCJVSwOaFj4jfO0xU8s2TEH97LDTje
+gUJl9pttf9O+0+h91+1OExVHJ8ennAqSmssf9u6acrrRtQqTwIl3B885dGR9
++neNTkPhq5mDeqTmRsaY3Dg2tf/s7MpbN13/clj3Ocej66nKfa//H/9tu/Tg
+ycUJaeeqY35K9qiTTFHEhrVBKNmC4sEVLM9Om6hAMqKM0JUtY599qHkCZcLD
+pVmZmVklMV/0RqjOW96z36qPkrq89Hlx44+PXETEPfdZcW3V2b/1afvyN2Wx
+f4bA/97uk/jnDWdsDo2ygyNaxmVcjrzmq/jvgsQV0WuPm4QLN/WNWxQ9sIJn
+Vo2c959yu0cOXVgzYNQe268wsaNSMkURE+YGoWQLZw+uYHp22ET5khFlVF/a
+/KelO1M7taBNuHdCl9b365aaW3H5o9GD3vm64TFSc+XjPq179U184+3UJUM6
+D1m8La/SfqBm3klBQcGPt5QdmTIxI9/ukiFwYm77R54ZPHfd9q0b0v9ZeMdd
+Qlc2Txo6K/3T7Rkf7LnkcDEfuvj3fq0G7ixiHdc1V3dMeO0wVZ5SyRRFP+Ko
+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
+AihZIRjlkQBKlgBKlgBKRhAEQfTl/9uYo7I=
+    "], {{0, 73}, {484, 0}}, {0, 255},
+    ColorFunction->RGBColor],
+   BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
+   Selectable->False],
+  DefaultBaseStyle->"ImageGraphics",
+  ImageSize->Automatic,
+  ImageSizeRaw->{484, 73},
+  PlotRange->{{0, 484}, {0, 73}}]], "Output",
+ ImageSize->{488, 73},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"RasterizedOutput",
+ CellLabel->"Out[7]=",
+ CellID->1048714447]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCSetDiracGammaScheme", "[", "\"\<Larin\>\"", "]"}]], "Input",
+ CellLabel->"In[8]:=",
+ CellID->969077787],
+
+Cell[BoxData[
+ FormBox["\<\"Larin\"\>", TraditionalForm]], "Output",
+ ImageSize->{35, 14},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[8]=",
+ CellID->1981877909]
+}, Open  ]],
+
+Cell["In Larin's scheme reproduces the results of the BMHV scheme", \
+"ExampleText",
+ CellID->1939646369],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"res2", "=", 
+  RowBox[{"DiracSimplify", "[", 
+   RowBox[{"DiracTrace", "[", 
+    RowBox[{"GAD", "[", 
+     RowBox[{
+     "\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]", ",", "\[Tau]", 
+      ",", "\[Kappa]", ",", "5"}], "]"}], "]"}], "]"}]}]], "Input",
+ CellLabel->"In[9]:=",
+ CellID->1886065691],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[RasterBox[CompressedData["
+1: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
+
+    "], {{0, 54}, {467, 0}}, {0, 255},
+    ColorFunction->RGBColor],
+   BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
+   Selectable->False],
+  DefaultBaseStyle->"ImageGraphics",
+  ImageSize->Automatic,
+  ImageSizeRaw->{467, 54},
+  PlotRange->{{0, 467}, {0, 54}}]], "Output",
+ ImageSize->{471, 54},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"RasterizedOutput",
+ CellLabel->"Out[9]=",
+ CellID->551636363]
+}, Open  ]],
+
+Cell["\<\
+Owing to Schouten identities, proving the equivalence of chiral traces is not \
+so simple, especially for many terms. FCSchoutenBruteForce can be helpful here\
+\>", "ExampleText",
+ CellID->958789175],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"diff", "=", 
+  RowBox[{"ChangeDimension", "[", 
+   RowBox[{
+    RowBox[{"res1", "-", "res2"}], ",", "D"}], "]"}]}]], "Input",
+ CellLabel->"In[10]:=",
+ CellID->1406824487],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+     SuperscriptBox["g", 
+      RowBox[{
+       FormBox[
+        FormBox["\[Kappa]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]}]], " ", 
+     SuperscriptBox[
+      OverscriptBox["\[Epsilon]", ""], 
+      RowBox[{
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Rho]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Sigma]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox["\[Tau]",
+         TraditionalForm],
+        TraditionalForm]}]]}]}], "+", 
+   RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
+       FormBox["\[Kappa]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", ""], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Tau]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "-", 
+   RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
+       FormBox["\[Kappa]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", ""], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Tau]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
+       FormBox["\[Kappa]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", ""], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Tau]",
+        TraditionalForm],
+       TraditionalForm]}]]}], "-", 
+   RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
+       FormBox["\[Kappa]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Tau]",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", ""], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Rho]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Sigma]",
+        TraditionalForm],
+       TraditionalForm]}]]}]}], TraditionalForm]], "Output",
+ ImageSize->{353, 35},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[10]=",
+ CellID->981092168]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Contract", "[", 
+  RowBox[{
+   RowBox[{"FV", "[", 
+    RowBox[{"p1", ",", "\[Mu]"}], "]"}], 
+   RowBox[{"FV", "[", 
+    RowBox[{"p2", ",", "\[Nu]"}], "]"}], 
+   RowBox[{"FV", "[", 
+    RowBox[{"p3", ",", "\[Rho]"}], "]"}], 
+   RowBox[{"FV", "[", 
+    RowBox[{"p4", ",", "\[Sigma]"}], "]"}], 
+   RowBox[{"FV", "[", 
+    RowBox[{"p5", ",", "\[Tau]"}], "]"}], 
+   RowBox[{"FV", "[", 
+    RowBox[{"p6", ",", "\[Kappa]"}], "]"}], "diff"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"FCSchoutenBruteForce", "[", 
+  RowBox[{"%", ",", 
+   RowBox[{"{", "}"}], ",", 
+   RowBox[{"{", "}"}]}], "]"}]}], "Input",
+ CellLabel->"In[11]:=",
+ CellID->1776546156],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       FormBox[
+        OverscriptBox[
+         FormBox["p1",
+          TraditionalForm], "_"],
+        TraditionalForm], 
+       FormBox["\<\"\[CenterDot]\"\>",
+        TraditionalForm], 
+       FormBox[
+        OverscriptBox[
+         FormBox["p6",
+          TraditionalForm], "_"],
+        TraditionalForm]}], ")"}], " ", 
+     SuperscriptBox[
+      OverscriptBox["\[Epsilon]", "_"], 
+      RowBox[{
+       FormBox[
+        OverscriptBox[
+         FormBox["p2",
+          TraditionalForm], "_"],
+        TraditionalForm], 
+       FormBox[
+        OverscriptBox[
+         FormBox["p3",
+          TraditionalForm], "_"],
+        TraditionalForm], 
+       FormBox[
+        OverscriptBox[
+         FormBox["p4",
+          TraditionalForm], "_"],
+        TraditionalForm], 
+       FormBox[
+        OverscriptBox[
+         FormBox["p5",
+          TraditionalForm], "_"],
+        TraditionalForm]}]]}]}], "+", 
+   RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox[
+       OverscriptBox[
+        FormBox["p2",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["p6",
+         TraditionalForm], "_"],
+       TraditionalForm]}], ")"}], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", "_"], 
+     RowBox[{
+      FormBox[
+       OverscriptBox[
+        FormBox["p1",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["p3",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["p4",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["p5",
+         TraditionalForm], "_"],
+       TraditionalForm]}]]}], "-", 
+   RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox[
+       OverscriptBox[
+        FormBox["p3",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["p6",
+         TraditionalForm], "_"],
+       TraditionalForm]}], ")"}], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", "_"], 
+     RowBox[{
+      FormBox[
+       OverscriptBox[
+        FormBox["p1",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["p2",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["p4",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["p5",
+         TraditionalForm], "_"],
+       TraditionalForm]}]]}], "+", 
+   RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox[
+       OverscriptBox[
+        FormBox["p4",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["p6",
+         TraditionalForm], "_"],
+       TraditionalForm]}], ")"}], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", "_"], 
+     RowBox[{
+      FormBox[
+       OverscriptBox[
+        FormBox["p1",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["p2",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["p3",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["p5",
+         TraditionalForm], "_"],
+       TraditionalForm]}]]}], "-", 
+   RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox[
+       OverscriptBox[
+        FormBox["p5",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["p6",
+         TraditionalForm], "_"],
+       TraditionalForm]}], ")"}], " ", 
+    SuperscriptBox[
+     OverscriptBox["\[Epsilon]", "_"], 
+     RowBox[{
+      FormBox[
+       OverscriptBox[
+        FormBox["p1",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["p2",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["p3",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["p4",
+         TraditionalForm], "_"],
+       TraditionalForm]}]]}]}], TraditionalForm]], "Output",
+ ImageSize->{493, 54},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[11]=",
+ CellID->8901553],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"FCSchoutenBruteForce: The following rule was applied: \"\>", 
+    "\[InvisibleSpace]", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox[
+       OverscriptBox["\[Epsilon]", "_"], 
+       RowBox[{
+        FormBox[
+         OverscriptBox[
+          FormBox["p2",
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox[
+         OverscriptBox[
+          FormBox["p3",
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox[
+         OverscriptBox[
+          FormBox["p4",
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox[
+         OverscriptBox[
+          FormBox["p5",
+           TraditionalForm], "_"],
+         TraditionalForm]}]], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        FormBox[
+         OverscriptBox[
+          FormBox["p1",
+           TraditionalForm], "_"],
+         TraditionalForm], 
+        FormBox["\<\"\[CenterDot]\"\>",
+         TraditionalForm], 
+        FormBox[
+         OverscriptBox[
+          FormBox["p6",
+           TraditionalForm], "_"],
+         TraditionalForm]}], ")"}]}], "\[RuleDelayed]", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["\[Epsilon]", "_"], 
+        RowBox[{
+         FormBox[
+          OverscriptBox[
+           FormBox["p1",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox[
+          OverscriptBox[
+           FormBox["p3",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox[
+          OverscriptBox[
+           FormBox["p4",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox[
+          OverscriptBox[
+           FormBox["p5",
+            TraditionalForm], "_"],
+          TraditionalForm]}]], " ", 
+       RowBox[{"(", 
+        RowBox[{
+         FormBox[
+          OverscriptBox[
+           FormBox["p2",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox["\<\"\[CenterDot]\"\>",
+          TraditionalForm], 
+         FormBox[
+          OverscriptBox[
+           FormBox["p6",
+            TraditionalForm], "_"],
+          TraditionalForm]}], ")"}]}], "-", 
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["\[Epsilon]", "_"], 
+        RowBox[{
+         FormBox[
+          OverscriptBox[
+           FormBox["p1",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox[
+          OverscriptBox[
+           FormBox["p2",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox[
+          OverscriptBox[
+           FormBox["p4",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox[
+          OverscriptBox[
+           FormBox["p5",
+            TraditionalForm], "_"],
+          TraditionalForm]}]], " ", 
+       RowBox[{"(", 
+        RowBox[{
+         FormBox[
+          OverscriptBox[
+           FormBox["p3",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox["\<\"\[CenterDot]\"\>",
+          TraditionalForm], 
+         FormBox[
+          OverscriptBox[
+           FormBox["p6",
+            TraditionalForm], "_"],
+          TraditionalForm]}], ")"}]}], "+", 
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["\[Epsilon]", "_"], 
+        RowBox[{
+         FormBox[
+          OverscriptBox[
+           FormBox["p1",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox[
+          OverscriptBox[
+           FormBox["p2",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox[
+          OverscriptBox[
+           FormBox["p3",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox[
+          OverscriptBox[
+           FormBox["p5",
+            TraditionalForm], "_"],
+          TraditionalForm]}]], " ", 
+       RowBox[{"(", 
+        RowBox[{
+         FormBox[
+          OverscriptBox[
+           FormBox["p4",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox["\<\"\[CenterDot]\"\>",
+          TraditionalForm], 
+         FormBox[
+          OverscriptBox[
+           FormBox["p6",
+            TraditionalForm], "_"],
+          TraditionalForm]}], ")"}]}], "-", 
+      RowBox[{
+       SuperscriptBox[
+        OverscriptBox["\[Epsilon]", "_"], 
+        RowBox[{
+         FormBox[
+          OverscriptBox[
+           FormBox["p1",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox[
+          OverscriptBox[
+           FormBox["p2",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox[
+          OverscriptBox[
+           FormBox["p3",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox[
+          OverscriptBox[
+           FormBox["p4",
+            TraditionalForm], "_"],
+          TraditionalForm]}]], " ", 
+       RowBox[{"(", 
+        RowBox[{
+         FormBox[
+          OverscriptBox[
+           FormBox["p5",
+            TraditionalForm], "_"],
+          TraditionalForm], 
+         FormBox["\<\"\[CenterDot]\"\>",
+          TraditionalForm], 
+         FormBox[
+          OverscriptBox[
+           FormBox["p6",
+            TraditionalForm], "_"],
+          TraditionalForm]}], ")"}]}]}]}], "\[InvisibleSpace]", "\<\" \"\>"}],
+   
+   SequenceForm[
+   "FCSchoutenBruteForce: The following rule was applied: ", FeynCalc`Eps[
+       FeynCalc`Momentum[$CellContext`p2], 
+       FeynCalc`Momentum[$CellContext`p3], 
+       FeynCalc`Momentum[$CellContext`p4], 
+       FeynCalc`Momentum[$CellContext`p5]] FeynCalc`Pair[
+       FeynCalc`Momentum[$CellContext`p1], 
+       FeynCalc`Momentum[$CellContext`p6]] :> FeynCalc`Eps[
+        FeynCalc`Momentum[$CellContext`p1], 
+        FeynCalc`Momentum[$CellContext`p3], 
+        FeynCalc`Momentum[$CellContext`p4], 
+        FeynCalc`Momentum[$CellContext`p5]] FeynCalc`Pair[
+        FeynCalc`Momentum[$CellContext`p2], 
+        FeynCalc`Momentum[$CellContext`p6]] - FeynCalc`Eps[
+       FeynCalc`Momentum[$CellContext`p1], 
+       FeynCalc`Momentum[$CellContext`p2], 
+       FeynCalc`Momentum[$CellContext`p4], 
+       FeynCalc`Momentum[$CellContext`p5]] FeynCalc`Pair[
+       FeynCalc`Momentum[$CellContext`p3], 
+       FeynCalc`Momentum[$CellContext`p6]] + FeynCalc`Eps[
+        FeynCalc`Momentum[$CellContext`p1], 
+        FeynCalc`Momentum[$CellContext`p2], 
+        FeynCalc`Momentum[$CellContext`p3], 
+        FeynCalc`Momentum[$CellContext`p5]] FeynCalc`Pair[
+        FeynCalc`Momentum[$CellContext`p4], 
+        FeynCalc`Momentum[$CellContext`p6]] - FeynCalc`Eps[
+       FeynCalc`Momentum[$CellContext`p1], 
+       FeynCalc`Momentum[$CellContext`p2], 
+       FeynCalc`Momentum[$CellContext`p3], 
+       FeynCalc`Momentum[$CellContext`p4]] FeynCalc`Pair[
+       FeynCalc`Momentum[$CellContext`p5], 
+       FeynCalc`Momentum[$CellContext`p6]], " "],
+   Editable->False], TraditionalForm]], "Print",
+ CellLabel->"During evaluation of In[59]:=",
+ CellID->1870797322],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"FCSchoutenBruteForce: The numbers of terms in the expression \
+decreased by: \"\>", "\[InvisibleSpace]", "5"}],
+   SequenceForm[
+   "FCSchoutenBruteForce: The numbers of terms in the expression decreased \
+by: ", 5],
+   Editable->False], TraditionalForm]], "Print",
+ CellLabel->"During evaluation of In[59]:=",
+ CellID->2083320504],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"\<\"FCSchoutenBruteForce: Current length of the expression: \"\>",
+     "\[InvisibleSpace]", "0"}],
+   SequenceForm["FCSchoutenBruteForce: Current length of the expression: ", 0],
+   Editable->False], TraditionalForm]], "Print",
+ CellLabel->"During evaluation of In[59]:=",
+ CellID->353050808]
+}, Open  ]],
+
+Cell[BoxData[
+ FormBox["0", TraditionalForm]], "Output",
+ ImageSize->{13, 14},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[11]=",
+ CellID->2075390810]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCSetDiracGammaScheme", "[", "\"\<NDR\>\"", "]"}]], "Input",
+ CellLabel->"In[12]:=",
+ CellID->692469312],
+
+Cell[BoxData[
+ FormBox["\<\"NDR\"\>", TraditionalForm]], "Output",
+ ImageSize->{35, 14},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[12]=",
+ CellID->1788510841]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["FCGetDiracGammaScheme",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCGetDiracGammaScheme",
+  ButtonNote->"FCGetDiracGammaScheme"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["DiracTrace",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracTrace",
+  ButtonNote->"DiracTrace"],
+  FontFamily->"Verdana"],
+ "."
+}], "SeeAlso",
+ CellID->830480392]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowTitle->"FCSetDiracGammaScheme",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2020, 1, 5, 18, 57, 10.479595}", 
+    "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "FCSetDiracGammaScheme[\"scheme\"] allows you to specify how Dirac \
+matrices will be handled in D dimensions. This is mainly relevant to the \
+treatment of the fifth Dirac matrix \\[Gamma]^5, which is not well-defined in \
+dimensional regularization.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "FCSetDiracGammaScheme", "titlemodifier" -> "", "windowtitle" -> 
+    "FCSetDiracGammaScheme", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/FCSetDiracGammaScheme"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[9400, 259, 386, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->82917860]},
+ "RasterizedOutput"->{
+  Cell[15402, 508, 4650, 84, 94, "Output",
+   CellTags->"RasterizedOutput",
+   CellID->1048714447],
+  Cell[20895, 628, 3820, 71, 75, "Output",
+   CellTags->"RasterizedOutput",
+   CellID->551636363]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 45971, 1474},
+ {"RasterizedOutput", 46113, 1478}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[593, 21, 3179, 76, 53, "AnchorBarGrid",
+ CellID->1],
+Cell[3775, 99, 298, 11, 45, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4098, 114, 656, 17, 102, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[4779, 135, 737, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->36733847],
+Cell[5519, 161, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[5553, 163, 71, 1, 70, "Notes",
+ CellID->1067943069],
+Cell[5627, 166, 919, 21, 70, "Notes",
+ CellID->190401776],
+Cell[6549, 189, 257, 7, 70, "Notes",
+ CellID->1784502655],
+Cell[6809, 198, 421, 9, 70, "Notes",
+ CellID->665441283],
+Cell[7233, 209, 799, 19, 70, "Notes",
+ CellID->2003509557],
+Cell[8035, 230, 1316, 23, 70, "Notes",
+ CellID->93561036]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9400, 259, 386, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->82917860],
+Cell[CellGroupData[{
+Cell[9811, 278, 194, 6, 26, "ExampleSection",
+ CellID->32234158],
+Cell[CellGroupData[{
+Cell[10030, 288, 128, 3, 27, "Input",
+ CellID->1948773281],
+Cell[10161, 293, 197, 6, 35, "Output",
+ CellID->1851033209]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10395, 304, 250, 7, 27, "Input",
+ CellID->98306849],
+Cell[10648, 313, 1454, 58, 43, "Output",
+ CellID->319736968]
+}, Open  ]],
+Cell[12117, 374, 122, 3, 35, "ExampleText",
+ CellID->1475497628],
+Cell[CellGroupData[{
+Cell[12264, 381, 109, 3, 27, "Input",
+ CellID->933234494],
+Cell[12376, 386, 1155, 44, 43, "Output",
+ CellID->1219913945]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13568, 435, 133, 3, 27, "Input",
+ CellID->1854871493],
+Cell[13704, 440, 201, 6, 37, "Output",
+ CellID->771760149]
+}, Open  ]],
+Cell[13920, 449, 141, 4, 36, "ExampleText",
+ CellID->2003592022],
+Cell[CellGroupData[{
+Cell[14086, 457, 295, 8, 27, "Input",
+ CellID->415066987],
+Cell[14384, 467, 187, 6, 35, "Output",
+ CellID->2065197167]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14608, 478, 129, 3, 27, "Input",
+ CellID->1400459732],
+Cell[14740, 483, 197, 6, 35, "Output",
+ CellID->153708414]
+}, Open  ]],
+Cell[14952, 492, 95, 1, 36, "ExampleText",
+ CellID->204593488],
+Cell[CellGroupData[{
+Cell[15072, 497, 327, 9, 27, "Input",
+ CellID->1352029659],
+Cell[15402, 508, 4650, 84, 94, "Output",
+ CellTags->"RasterizedOutput",
+ CellID->1048714447]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20089, 597, 129, 3, 27, "Input",
+ CellID->969077787],
+Cell[20221, 602, 199, 6, 35, "Output",
+ CellID->1981877909]
+}, Open  ]],
+Cell[20435, 611, 105, 2, 36, "ExampleText",
+ CellID->1939646369],
+Cell[CellGroupData[{
+Cell[20565, 617, 327, 9, 27, "Input",
+ CellID->1886065691],
+Cell[20895, 628, 3820, 71, 75, "Output",
+ CellTags->"RasterizedOutput",
+ CellID->551636363]
+}, Open  ]],
+Cell[24730, 702, 209, 4, 53, "ExampleText",
+ CellID->958789175],
+Cell[CellGroupData[{
+Cell[24964, 710, 194, 6, 27, "Input",
+ CellID->1406824487],
+Cell[25161, 718, 3880, 158, 56, "Output",
+ CellID->981092168]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29078, 881, 670, 21, 62, "Input",
+ CellID->1776546156],
+Cell[29751, 904, 4976, 198, 75, "Output",
+ CellID->8901553],
+Cell[CellGroupData[{
+Cell[34752, 1106, 7004, 232, 81, "Print",
+ CellID->1870797322],
+Cell[41759, 1340, 392, 10, 24, "Print",
+ CellID->2083320504],
+Cell[42154, 1352, 350, 8, 24, "Print",
+ CellID->353050808]
+}, Open  ]],
+Cell[42519, 1363, 188, 6, 35, "Output",
+ CellID->2075390810]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42744, 1374, 128, 3, 27, "Input",
+ CellID->692469312],
+Cell[42875, 1379, 198, 6, 35, "Output",
+ CellID->1788510841]
+}, Open  ]]
+}, Open  ]],
+Cell[43100, 1389, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[43168, 1394, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[43441, 1408, 411, 14, 56, "SeeAlso",
+ CellID->830480392]
+}, Open  ]],
+Cell[43867, 1425, 23, 0, 41, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

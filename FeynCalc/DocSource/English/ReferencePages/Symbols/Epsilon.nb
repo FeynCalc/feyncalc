@@ -170,9 +170,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Series2",
   ButtonNote->"Series2"],
  "."
-}], "Text",
- CellTags->"Epsilon",
- CellID->2095009444]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -203,7 +201,7 @@ Cell[CellGroupData[{
 
 Cell[BoxData["Epsilon"], "Input",
  CellTags->"Epsilon",
- CellLabel->"In[1]:=",
+ CellLabel->"In[713]:=",
  CellID->777209644],
 
 Cell[BoxData[
@@ -211,15 +209,12 @@ Cell[BoxData[
   TagBox["\[CurlyEpsilon]",
    TraditionalForm], TraditionalForm]], "Output",
  CellTags->"Epsilon",
- CellLabel->"Out[1]=",
- CellID->750039629]
+ CellLabel->"Out[713]="]
 }, Open  ]],
 
 Cell["\<\
 Epsilon has no functional properties, but some upvalues are changed:\
-\>", "Text",
- CellTags->"Epsilon",
- CellID->568077555],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -242,7 +237,7 @@ Cell[BoxData[
     RowBox[{"Re", "[", "Epsilon", "]"}], " ", ">", " ", "0"}]}], 
   "}"}]], "Input",
  CellTags->"Epsilon",
- CellLabel->"In[2]:=",
+ CellLabel->"In[714]:=",
  CellID->2127471490],
 
 Cell[BoxData[
@@ -251,8 +246,7 @@ Cell[BoxData[
    RowBox[{"True", ",", "True", ",", "True", ",", "True", ",", "True"}], 
    "}"}], TraditionalForm]], "Output",
  CellTags->"Epsilon",
- CellLabel->"Out[2]=",
- CellID->1912563910]
+ CellLabel->"Out[714]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -317,12 +311,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{1085, Automatic}, {Automatic, 123}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

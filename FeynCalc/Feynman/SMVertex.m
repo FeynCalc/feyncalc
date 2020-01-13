@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Some Standard model vertices									*)
@@ -16,10 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 SMVertex::usage =
-"SMVertex[\"AWW\", p,mu, q,nu, k,rho] gives the photon-W-W vertex \
-(p,mu correspond to the photon, q,nu to the (incoming) W+ and k,rho \
-to the (incoming) W-. All momenta are flowing into the vertex. \n
-SMVertex[\"HHH\", ___] give the three-higgs coupling.";
+"is a library of SM vertices. Currently it implements only few vertices and \
+is not really useful.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -45,9 +43,9 @@ SMVertex[x___, i_Integer, y___] :=
 SMVertex["AWW", mom1_, li1_, mom2_, li2_, mom3_, li3_, OptionsPattern[]] :=
 	Block[	{dim, res},
 		res = ChangeDimension[
-			-I*SMP["e"]*( MetricTensor[li1, li2] * FourVector[(mom2 -mom1 ),li3]+
-					MetricTensor[li2, li3] * FourVector[(mom3 -mom2 ),li1]+
-					MetricTensor[li3, li1] * FourVector[(mom1 -mom3 ),li2]), OptionValue[Dimension]];
+			-I*SMP["e"]*( MT[li1, li2] * FV[(mom2 -mom1 ),li3]+
+					MT[li2, li3] * FV[(mom3 -mom2 ),li1]+
+					MT[li3, li1] * FV[(mom1 -mom3 ),li2]), OptionValue[Dimension]];
 		res
 	]/; OptionValue[Explicit];
 

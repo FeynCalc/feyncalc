@@ -3,69 +3,91 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     66705,       2366]
-NotebookOptionsPosition[     50362,       1779]
-NotebookOutlinePosition[     59022,       2057]
-CellTagsIndexPosition[     58910,       2051]
+NotebookDataLength[     65232,       2282]
+NotebookOptionsPosition[     50593,       1773]
+NotebookOutlinePosition[     58340,       2012]
+CellTagsIndexPosition[     58228,       2006]
 WindowTitle->Kummer
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/Kummer\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/Kummer"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/Kummer.\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"HypergeometricAC\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/HypergeometricAC"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/Kummer\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/Kummer"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/Kummer.\
 html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$96865], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], "FeynCalc/ref/Kummer",
-             ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$176750], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/Kummer", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +95,18 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Kummer", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Kummer", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -110,7 +142,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->451429310],
+ CellID->1622183496],
 
 Cell[CellGroupData[{
 
@@ -120,7 +152,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->22536900],
+ CellID->842763816],
 
 Cell[CellGroupData[{
 
@@ -149,12 +181,11 @@ Cell[BoxData[
       RowBox[{"-", "a"}], "-", "b", "+", "c"}]], " ", 
     TemplateBox[{RowBox[{"c", "-", "a"}],RowBox[{"c", "-", "b"}],"c","z"},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{357, 19},
+ ImageSize->{375, 20},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[1]=",
- CellID->780995976]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -185,12 +216,11 @@ Cell[BoxData[
         FractionBox["z", 
          RowBox[{"1", "-", "z"}]]}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{342, 39},
+ ImageSize->{354, 33},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[2]=",
- CellID->334128730]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -221,12 +251,11 @@ Cell[BoxData[
         FractionBox["z", 
          RowBox[{"1", "-", "z"}]]}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{342, 39},
+ ImageSize->{355, 33},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[3]=",
- CellID->1379521301]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -258,12 +287,11 @@ Cell[BoxData[
      RowBox[{"c", "-", "a"}],RowBox[{"c", "-", "b"}],"c",
       RowBox[{"1", "-", "z"}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{367, 19},
+ ImageSize->{386, 20},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[4]=",
- CellID->1681078809]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -298,12 +326,11 @@ Cell[BoxData[
      RowBox[{"a", "-", "c", "+", "1"}],RowBox[{"b", "-", "c", "+", "1"}],
       RowBox[{"a", "+", "b", "-", "c", "+", "1"}],RowBox[{"1", "-", "z"}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{526, 18},
+ ImageSize->{557, 20},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[5]=",
- CellID->583730114]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -334,12 +361,11 @@ Cell[BoxData[
         FractionBox[
          RowBox[{"1", "-", "z"}], "z"]}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{330, 43},
+ ImageSize->{342, 36},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[6]=",
- CellID->282378053]
+ CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -376,12 +402,11 @@ Cell[BoxData[
         FractionBox[
          RowBox[{"1", "-", "z"}], "z"]}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{492, 43},
+ ImageSize->{517, 36},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[7]=",
- CellID->593894309]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -412,12 +437,11 @@ Cell[BoxData[
         FractionBox[
          RowBox[{"1", "-", "z"}], "z"]}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{330, 43},
+ ImageSize->{343, 36},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[8]=",
- CellID->658206917]
+ CellLabel->"Out[8]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -454,12 +478,11 @@ Cell[BoxData[
         FractionBox[
          RowBox[{"1", "-", "z"}], "z"]}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{492, 43},
+ ImageSize->{522, 36},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[9]=",
- CellID->884891760]
+ CellLabel->"Out[9]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -501,12 +524,11 @@ Cell[BoxData[
      RowBox[{"c", "-", "a"}],RowBox[{"c", "-", "b"}],"c",FractionBox[
       "1", "z"]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{444, 43},
+ ImageSize->{468, 36},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[10]=",
- CellID->1201929686]
+ CellLabel->"Out[10]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -554,12 +576,11 @@ Cell[BoxData[
      RowBox[{"1", "-", "b"}],RowBox[{"c", "-", "b"}],
       RowBox[{"a", "-", "b", "+", "1"}],FractionBox["1", "z"]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{380, 93},
+ ImageSize->{405, 78},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[11]=",
- CellID->1407407771]
+ CellLabel->"Out[11]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -600,12 +621,11 @@ Cell[BoxData[
     TemplateBox[{"a",RowBox[{"c", "-", "b"}],"c",FractionBox["1", 
        RowBox[{"1", "-", "z"}]]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{397, 42},
+ ImageSize->{412, 36},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[12]=",
- CellID->171828604]
+ CellLabel->"Out[12]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -654,12 +674,11 @@ Cell[BoxData[
       FractionBox["1", 
        RowBox[{"1", "-", "z"}]]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{536, 42},
+ ImageSize->{561, 36},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[13]=",
- CellID->1340266483]
+ CellLabel->"Out[13]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -699,12 +718,11 @@ Cell[BoxData[
     TemplateBox[{"b",RowBox[{"c", "-", "a"}],"c",FractionBox["1", 
        RowBox[{"1", "-", "z"}]]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{397, 43},
+ ImageSize->{414, 36},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[14]=",
- CellID->1878402139]
+ CellLabel->"Out[14]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -753,12 +771,11 @@ Cell[BoxData[
       RowBox[{"a", "-", "b", "+", "1"}],FractionBox["1", 
        RowBox[{"1", "-", "z"}]]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{406, 93},
+ ImageSize->{424, 78},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[15]=",
- CellID->1646537872]
+ CellLabel->"Out[15]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -800,12 +817,11 @@ Cell[BoxData[
      RowBox[{"c", "-", "a"}],RowBox[{"c", "-", "b"}],"c",FractionBox[
       "1", "z"]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{444, 43},
+ ImageSize->{468, 36},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[16]=",
- CellID->976219709]
+ CellLabel->"Out[16]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -852,12 +868,11 @@ Cell[BoxData[
     TemplateBox[{RowBox[{"1", "-", "a"}],RowBox[{"c", "-", "a"}],RowBox[{
         RowBox[{"-", "a"}], "+", "b", "+", "1"}],FractionBox["1", "z"]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{390, 93},
+ ImageSize->{412, 78},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[17]=",
- CellID->922572585]
+ CellLabel->"Out[17]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -896,12 +911,11 @@ Cell[BoxData[
     TemplateBox[{"b",RowBox[{"c", "-", "a"}],"c",FractionBox["1", 
        RowBox[{"1", "-", "z"}]]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{381, 43},
+ ImageSize->{397, 36},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[18]=",
- CellID->1393980026]
+ CellLabel->"Out[18]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -950,12 +964,11 @@ Cell[BoxData[
         RowBox[{"-", "a"}], "+", "b", "+", "1"}],FractionBox["1", 
        RowBox[{"1", "-", "z"}]]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{432, 93},
+ ImageSize->{454, 78},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[19]=",
- CellID->1288498782]
+ CellLabel->"Out[19]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -994,12 +1007,11 @@ Cell[BoxData[
     TemplateBox[{"a",RowBox[{"c", "-", "b"}],"c",FractionBox["1", 
        RowBox[{"1", "-", "z"}]]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{381, 43},
+ ImageSize->{395, 36},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[20]=",
- CellID->2121590638]
+ CellLabel->"Out[20]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1045,12 +1057,11 @@ Cell[BoxData[
         RowBox[{"-", "a"}], "+", "b", "+", "1"}],FractionBox["1", 
        RowBox[{"1", "-", "z"}]]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{540, 43},
+ ImageSize->{572, 36},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[21]=",
- CellID->1992183596]
+ CellLabel->"Out[21]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1090,12 +1101,11 @@ Cell[BoxData[
      RowBox[{"1", "-", "a"}],RowBox[{"1", "-", "b"}],RowBox[{"2", "-", "c"}],
       "z"},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{491, 19},
+ ImageSize->{517, 20},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[22]=",
- CellID->652936361]
+ CellLabel->"Out[22]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1125,12 +1135,11 @@ Cell[BoxData[
       RowBox[{"-", "a"}], "-", "b", "+", "c"}]], " ", 
     TemplateBox[{RowBox[{"c", "-", "a"}],RowBox[{"c", "-", "b"}],"c","z"},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{357, 19},
+ ImageSize->{375, 20},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[23]=",
- CellID->1706021647]
+ CellLabel->"Out[23]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1171,12 +1180,11 @@ Cell[BoxData[
       RowBox[{"2", "-", "c"}],FractionBox["z", 
        RowBox[{"z", "-", "1"}]]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{542, 39},
+ ImageSize->{568, 33},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[24]=",
- CellID->378032271]
+ CellLabel->"Out[24]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1206,12 +1214,11 @@ Cell[BoxData[
     TemplateBox[{"a",RowBox[{"c", "-", "b"}],"c",FractionBox["z", 
        RowBox[{"z", "-", "1"}]]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{332, 39},
+ ImageSize->{343, 33},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[25]=",
- CellID->2057626251]
+ CellLabel->"Out[25]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1252,12 +1259,11 @@ Cell[BoxData[
       RowBox[{"2", "-", "c"}],FractionBox["z", 
        RowBox[{"z", "-", "1"}]]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{542, 39},
+ ImageSize->{569, 33},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[26]=",
- CellID->129109138]
+ CellLabel->"Out[26]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1287,12 +1293,11 @@ Cell[BoxData[
     TemplateBox[{"b",RowBox[{"c", "-", "a"}],"c",FractionBox["z", 
        RowBox[{"z", "-", "1"}]]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{332, 39},
+ ImageSize->{344, 33},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[27]=",
- CellID->149180370]
+ CellLabel->"Out[27]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1332,12 +1337,11 @@ Cell[BoxData[
         RowBox[{"-", "a"}], "-", "b", "+", "c", "+", "1"}],
       RowBox[{"1", "-", "z"}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{546, 18},
+ ImageSize->{579, 20},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[28]=",
- CellID->1291617006]
+ CellLabel->"Out[28]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1369,12 +1373,11 @@ Cell[BoxData[
      RowBox[{"c", "-", "a"}],RowBox[{"c", "-", "b"}],"c",
       RowBox[{"1", "-", "z"}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{367, 19},
+ ImageSize->{386, 20},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[29]=",
- CellID->467825582]
+ CellLabel->"Out[29]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1417,12 +1420,11 @@ Cell[BoxData[
         FractionBox["1", 
          RowBox[{"1", "-", "z"}]]}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{359, 63},
+ ImageSize->{377, 57},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[30]=",
- CellID->1418885380]
+ CellLabel->"Out[30]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1455,12 +1457,11 @@ Cell[BoxData[
         FractionBox["1", 
          RowBox[{"1", "-", "z"}]]}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{376, 43},
+ ImageSize->{389, 36},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[31]=",
- CellID->1820473911]
+ CellLabel->"Out[31]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1501,12 +1502,11 @@ Cell[BoxData[
         FractionBox[
          RowBox[{"1", "-", "z"}], "z"]}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{565, 43},
+ ImageSize->{335, 57},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[32]=",
- CellID->1271802490]
+ CellLabel->"Out[32]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1537,12 +1537,11 @@ Cell[BoxData[
         FractionBox[
          RowBox[{"1", "-", "z"}], "z"]}]},
      "Hypergeometric2F1"]}]}], TraditionalForm]], "Output",
- ImageSize->{330, 43},
+ ImageSize->{343, 36},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[33]=",
- CellID->1670296832]
+ CellLabel->"Out[33]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1601,12 +1600,11 @@ Cell[BoxData[
        "Gamma"], " ", 
       TemplateBox[{RowBox[{"c", "-", "b"}]},
        "Gamma"]}]]}]}], TraditionalForm]], "Output",
- ImageSize->{482, 125},
+ ImageSize->{520, 112},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[34]=",
- CellID->1552242027]
+ CellLabel->"Out[34]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1668,12 +1666,11 @@ Cell[BoxData[
        "Gamma"], " ", 
       TemplateBox[{RowBox[{"c", "-", "b"}]},
        "Gamma"]}]]}]}], TraditionalForm]], "Output",
- ImageSize->{472, 125},
+ ImageSize->{509, 128},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[35]=",
- CellID->449279839]
+ CellLabel->"Out[35]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1735,12 +1732,11 @@ Cell[BoxData[
        "Gamma"], " ", 
       TemplateBox[{RowBox[{"c", "-", "b"}]},
        "Gamma"]}]]}]}], TraditionalForm]], "Output",
- ImageSize->{486, 125},
+ ImageSize->{515, 128},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Kummer",
- CellLabel->"Out[36]=",
- CellID->1951010163]
+ CellLabel->"Out[36]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -1770,17 +1766,15 @@ Cell[TextData[{
   ButtonNote->"HypergeometricAC"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"Kummer",
- CellID->1248445733]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{808, 911},
+WindowMargins->{{278, Automatic}, {Automatic, 28}},
 WindowTitle->"Kummer",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -1789,10 +1783,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 21, 55.649152}", 
+   "built" -> "{2020, 1, 5, 18, 59, 23.123162}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1801,11 +1795,11 @@ TaggingRules->{
     "Kummer[i][exp] applies Kummer relation number i (i =1, ... 24, 94,95,96) \
 to all Hypergeometric2F1 in exp. i = 94 corresponds to eq. 9.131.2, i = 95 to \
 eq. 9.132.1 and i = 96 to eq. 9.132.2 in Gradsteyn & Ryzhik.", 
-    "synonyms" -> {}, "title" -> "Kummer", "titlemodifier" -> "", 
-    "windowtitle" -> "Kummer", "type" -> "Symbol", "uri" -> 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "Kummer", "titlemodifier" -> 
+    "", "windowtitle" -> "Kummer", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/Kummer"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -1814,7 +1808,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -1823,551 +1817,473 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3470, 97, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4478, 129, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->451429310]},
+   CellID->1622183496]},
  "Kummer"->{
-  Cell[4101, 126, 354, 10, 45, "Input",
+  Cell[5111, 158, 354, 10, 27, "Input",
    CellTags->"Kummer",
    CellID->318247247],
-  Cell[4458, 138, 557, 18, 40, "Output",
-   CellTags->"Kummer",
-   CellID->780995976],
-  Cell[5052, 161, 355, 10, 45, "Input",
+  Cell[5468, 170, 537, 17, 41, "Output",
+   CellTags->"Kummer"],
+  Cell[6042, 192, 355, 10, 27, "Input",
    CellTags->"Kummer",
    CellID->1547382498],
-  Cell[5410, 173, 572, 19, 60, "Output",
-   CellTags->"Kummer",
-   CellID->334128730],
-  Cell[6019, 197, 353, 10, 45, "Input",
+  Cell[6400, 204, 552, 18, 54, "Output",
+   CellTags->"Kummer"],
+  Cell[6989, 227, 353, 10, 27, "Input",
    CellTags->"Kummer",
    CellID->87779889],
-  Cell[6375, 209, 573, 19, 60, "Output",
-   CellTags->"Kummer",
-   CellID->1379521301],
-  Cell[6985, 233, 405, 12, 45, "Input",
+  Cell[7345, 239, 552, 18, 54, "Output",
+   CellTags->"Kummer"],
+  Cell[7934, 262, 405, 12, 45, "Input",
    CellTags->"Kummer",
    CellID->196494184],
-  Cell[7393, 247, 558, 18, 40, "Output",
-   CellTags->"Kummer",
-   CellID->1681078809],
-  Cell[7988, 270, 496, 14, 45, "Input",
+  Cell[8342, 276, 537, 17, 41, "Output",
+   CellTags->"Kummer"],
+  Cell[8916, 298, 496, 14, 45, "Input",
    CellTags->"Kummer",
    CellID->793293677],
-  Cell[8487, 286, 636, 19, 39, "Output",
-   CellTags->"Kummer",
-   CellID->583730114],
-  Cell[9160, 310, 404, 12, 45, "Input",
+  Cell[9415, 314, 616, 18, 41, "Output",
+   CellTags->"Kummer"],
+  Cell[10068, 337, 404, 12, 45, "Input",
    CellTags->"Kummer",
    CellID->39664086],
-  Cell[9567, 324, 539, 17, 64, "Output",
-   CellTags->"Kummer",
-   CellID->282378053],
-  Cell[10143, 346, 496, 14, 45, "Input",
+  Cell[10475, 351, 519, 16, 57, "Output",
+   CellTags->"Kummer"],
+  Cell[11031, 372, 496, 14, 45, "Input",
    CellTags->"Kummer",
    CellID->326626360],
-  Cell[10642, 362, 653, 21, 64, "Output",
-   CellTags->"Kummer",
-   CellID->593894309],
-  Cell[11332, 388, 406, 12, 45, "Input",
+  Cell[11530, 388, 633, 20, 57, "Output",
+   CellTags->"Kummer"],
+  Cell[12200, 413, 406, 12, 45, "Input",
    CellTags->"Kummer",
    CellID->2096680953],
-  Cell[11741, 402, 539, 17, 64, "Output",
-   CellTags->"Kummer",
-   CellID->658206917],
-  Cell[12317, 424, 497, 14, 45, "Input",
+  Cell[12609, 427, 519, 16, 57, "Output",
+   CellTags->"Kummer"],
+  Cell[13165, 448, 497, 14, 45, "Input",
    CellTags->"Kummer",
    CellID->1606284055],
-  Cell[12817, 440, 653, 21, 64, "Output",
-   CellTags->"Kummer",
-   CellID->884891760],
-  Cell[13507, 466, 506, 16, 45, "Input",
+  Cell[13665, 464, 633, 20, 57, "Output",
+   CellTags->"Kummer"],
+  Cell[14335, 489, 506, 16, 45, "Input",
    CellTags->"Kummer",
    CellID->1495083835],
-  Cell[14016, 484, 728, 24, 64, "Output",
-   CellTags->"Kummer",
-   CellID->1201929686],
-  Cell[14781, 513, 648, 20, 45, "Input",
+  Cell[14844, 507, 707, 23, 57, "Output",
+   CellTags->"Kummer"],
+  Cell[15588, 535, 648, 20, 45, "Input",
    CellTags->"Kummer",
    CellID->2086065203],
-  Cell[15432, 535, 829, 26, 114, "Output",
-   CellTags->"Kummer",
-   CellID->1407407771],
-  Cell[16298, 566, 505, 16, 45, "Input",
+  Cell[16239, 557, 808, 25, 99, "Output",
+   CellTags->"Kummer"],
+  Cell[17084, 587, 505, 16, 45, "Input",
    CellTags->"Kummer",
    CellID->764355789],
-  Cell[16806, 584, 699, 23, 63, "Output",
-   CellTags->"Kummer",
-   CellID->171828604],
-  Cell[17542, 612, 648, 20, 45, "Input",
+  Cell[17592, 605, 679, 22, 57, "Output",
+   CellTags->"Kummer"],
+  Cell[18308, 632, 648, 20, 45, "Input",
    CellTags->"Kummer",
    CellID->1556461178],
-  Cell[18193, 634, 814, 27, 63, "Output",
-   CellTags->"Kummer",
-   CellID->1340266483],
-  Cell[19044, 666, 505, 16, 45, "Input",
+  Cell[18959, 654, 793, 26, 57, "Output",
+   CellTags->"Kummer"],
+  Cell[19789, 685, 505, 16, 45, "Input",
    CellTags->"Kummer",
    CellID->487619941],
-  Cell[19552, 684, 676, 22, 64, "Output",
-   CellTags->"Kummer",
-   CellID->1878402139],
-  Cell[20265, 711, 648, 20, 45, "Input",
+  Cell[20297, 703, 655, 21, 57, "Output",
+   CellTags->"Kummer"],
+  Cell[20989, 729, 648, 20, 45, "Input",
    CellTags->"Kummer",
    CellID->1099088563],
-  Cell[20916, 733, 857, 27, 114, "Output",
-   CellTags->"Kummer",
-   CellID->1646537872],
-  Cell[21810, 765, 505, 16, 45, "Input",
+  Cell[21640, 751, 836, 26, 99, "Output",
+   CellTags->"Kummer"],
+  Cell[22513, 782, 505, 16, 45, "Input",
    CellTags->"Kummer",
    CellID->598392912],
-  Cell[22318, 783, 727, 24, 64, "Output",
-   CellTags->"Kummer",
-   CellID->976219709],
-  Cell[23082, 812, 648, 20, 45, "Input",
+  Cell[23021, 800, 707, 23, 57, "Output",
+   CellTags->"Kummer"],
+  Cell[23765, 828, 648, 20, 45, "Input",
    CellTags->"Kummer",
    CellID->1367394877],
-  Cell[23733, 834, 871, 25, 114, "Output",
-   CellTags->"Kummer",
-   CellID->922572585],
-  Cell[24641, 864, 506, 16, 45, "Input",
+  Cell[24416, 850, 851, 24, 99, "Output",
+   CellTags->"Kummer"],
+  Cell[25304, 879, 506, 16, 45, "Input",
    CellTags->"Kummer",
    CellID->2076771032],
-  Cell[25150, 882, 650, 21, 64, "Output",
-   CellTags->"Kummer",
-   CellID->1393980026],
-  Cell[25837, 908, 647, 20, 45, "Input",
+  Cell[25813, 897, 629, 20, 57, "Output",
+   CellTags->"Kummer"],
+  Cell[26479, 922, 647, 20, 45, "Input",
    CellTags->"Kummer",
    CellID->860912097],
-  Cell[26487, 930, 916, 27, 114, "Output",
-   CellTags->"Kummer",
-   CellID->1288498782],
-  Cell[27440, 962, 506, 16, 45, "Input",
+  Cell[27129, 944, 895, 26, 99, "Output",
+   CellTags->"Kummer"],
+  Cell[28061, 975, 506, 16, 45, "Input",
    CellTags->"Kummer",
    CellID->1768264658],
-  Cell[27949, 980, 650, 21, 64, "Output",
-   CellTags->"Kummer",
-   CellID->2121590638],
-  Cell[28636, 1006, 648, 20, 45, "Input",
+  Cell[28570, 993, 629, 20, 57, "Output",
+   CellTags->"Kummer"],
+  Cell[29236, 1018, 648, 20, 45, "Input",
    CellTags->"Kummer",
    CellID->1824141612],
-  Cell[29287, 1028, 807, 24, 64, "Output",
-   CellTags->"Kummer",
-   CellID->1992183596],
-  Cell[30131, 1057, 549, 16, 45, "Input",
+  Cell[29887, 1040, 786, 23, 57, "Output",
+   CellTags->"Kummer"],
+  Cell[30710, 1068, 549, 16, 45, "Input",
    CellTags->"Kummer",
    CellID->748421164],
-  Cell[30683, 1075, 682, 22, 40, "Output",
-   CellTags->"Kummer",
-   CellID->652936361],
-  Cell[31402, 1102, 357, 10, 45, "Input",
+  Cell[31262, 1086, 662, 21, 41, "Output",
+   CellTags->"Kummer"],
+  Cell[31961, 1112, 357, 10, 45, "Input",
    CellTags->"Kummer",
    CellID->1906183256],
-  Cell[31762, 1114, 559, 18, 40, "Output",
-   CellTags->"Kummer",
-   CellID->1706021647],
-  Cell[32358, 1137, 549, 16, 45, "Input",
+  Cell[32321, 1124, 538, 17, 41, "Output",
+   CellTags->"Kummer"],
+  Cell[32896, 1146, 549, 16, 45, "Input",
    CellTags->"Kummer",
    CellID->151044707],
-  Cell[32910, 1155, 738, 23, 60, "Output",
-   CellTags->"Kummer",
-   CellID->378032271],
-  Cell[33685, 1183, 357, 10, 45, "Input",
+  Cell[33448, 1164, 718, 22, 54, "Output",
+   CellTags->"Kummer"],
+  Cell[34203, 1191, 357, 10, 45, "Input",
    CellTags->"Kummer",
    CellID->1217870653],
-  Cell[34045, 1195, 548, 18, 60, "Output",
-   CellTags->"Kummer",
-   CellID->2057626251],
-  Cell[34630, 1218, 550, 16, 45, "Input",
+  Cell[34563, 1203, 527, 17, 54, "Output",
+   CellTags->"Kummer"],
+  Cell[35127, 1225, 550, 16, 45, "Input",
    CellTags->"Kummer",
    CellID->1953071601],
-  Cell[35183, 1236, 738, 23, 60, "Output",
-   CellTags->"Kummer",
-   CellID->129109138],
-  Cell[35958, 1264, 357, 10, 45, "Input",
+  Cell[35680, 1243, 718, 22, 54, "Output",
+   CellTags->"Kummer"],
+  Cell[36435, 1270, 357, 10, 45, "Input",
    CellTags->"Kummer",
    CellID->1999495516],
-  Cell[36318, 1276, 547, 18, 60, "Output",
-   CellTags->"Kummer",
-   CellID->149180370],
-  Cell[36902, 1299, 600, 18, 45, "Input",
+  Cell[36795, 1282, 527, 17, 54, "Output",
+   CellTags->"Kummer"],
+  Cell[37359, 1304, 600, 18, 45, "Input",
    CellTags->"Kummer",
    CellID->834381322],
-  Cell[37505, 1319, 714, 20, 39, "Output",
-   CellTags->"Kummer",
-   CellID->1291617006],
-  Cell[38256, 1344, 408, 12, 45, "Input",
+  Cell[37962, 1324, 693, 19, 41, "Output",
+   CellTags->"Kummer"],
+  Cell[38692, 1348, 408, 12, 45, "Input",
    CellTags->"Kummer",
    CellID->2015364677],
-  Cell[38667, 1358, 558, 18, 40, "Output",
-   CellTags->"Kummer",
-   CellID->467825582],
-  Cell[39262, 1381, 599, 18, 45, "Input",
+  Cell[39103, 1362, 538, 17, 41, "Output",
+   CellTags->"Kummer"],
+  Cell[39678, 1384, 599, 18, 45, "Input",
    CellTags->"Kummer",
    CellID->71156327],
-  Cell[39864, 1401, 817, 23, 84, "Output",
-   CellTags->"Kummer",
-   CellID->1418885380],
-  Cell[40718, 1429, 407, 12, 45, "Input",
+  Cell[40280, 1404, 796, 22, 78, "Output",
+   CellTags->"Kummer"],
+  Cell[41113, 1431, 407, 12, 45, "Input",
    CellTags->"Kummer",
    CellID->899498003],
-  Cell[41128, 1443, 599, 19, 64, "Output",
-   CellTags->"Kummer",
-   CellID->1820473911],
-  Cell[41764, 1467, 600, 18, 45, "Input",
+  Cell[41523, 1445, 578, 18, 57, "Output",
+   CellTags->"Kummer"],
+  Cell[42138, 1468, 600, 18, 45, "Input",
    CellTags->"Kummer",
    CellID->735406262],
-  Cell[42367, 1487, 759, 21, 64, "Output",
-   CellTags->"Kummer",
-   CellID->1271802490],
-  Cell[43163, 1513, 407, 12, 45, "Input",
+  Cell[42741, 1488, 738, 20, 78, "Output",
+   CellTags->"Kummer"],
+  Cell[43516, 1513, 407, 12, 45, "Input",
    CellTags->"Kummer",
    CellID->812767727],
-  Cell[43573, 1527, 541, 17, 64, "Output",
-   CellTags->"Kummer",
-   CellID->1670296832],
-  Cell[44151, 1549, 357, 10, 45, "Input",
+  Cell[43926, 1527, 520, 16, 57, "Output",
+   CellTags->"Kummer"],
+  Cell[44483, 1548, 357, 10, 45, "Input",
    CellTags->"Kummer",
    CellID->1807092891],
-  Cell[44511, 1561, 1418, 47, 146, "Output",
-   CellTags->"Kummer",
-   CellID->1552242027],
-  Cell[45966, 1613, 356, 10, 45, "Input",
+  Cell[44843, 1560, 1397, 46, 133, "Output",
+   CellTags->"Kummer"],
+  Cell[46277, 1611, 356, 10, 45, "Input",
    CellTags->"Kummer",
    CellID->434139577],
-  Cell[46325, 1625, 1477, 50, 146, "Output",
-   CellTags->"Kummer",
-   CellID->449279839],
-  Cell[47839, 1680, 356, 10, 45, "Input",
+  Cell[46636, 1623, 1457, 49, 149, "Output",
+   CellTags->"Kummer"],
+  Cell[48130, 1677, 356, 10, 45, "Input",
    CellTags->"Kummer",
    CellID->467969472],
-  Cell[48198, 1692, 1504, 50, 146, "Output",
-   CellTags->"Kummer",
-   CellID->1951010163],
-  Cell[50070, 1765, 250, 9, 32, "Text",
-   CellTags->"Kummer",
-   CellID->1248445733]}
+  Cell[48489, 1689, 1483, 49, 149, "Output",
+   CellTags->"Kummer"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 52303, 1824},
- {"Kummer", 52435, 1828}
+ {"PrimaryExamplesSection", 52520, 1818},
+ {"Kummer", 52654, 1822}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[578, 21, 2236, 52, 51, "AnchorBarGrid",
+Cell[578, 21, 3010, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2817, 75, 49, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2869, 78, 576, 15, 98, "Usage",
+Cell[3591, 97, 283, 11, 45, "ObjectNameGrid"],
+Cell[3877, 110, 576, 15, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3470, 97, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4478, 129, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->451429310],
+ CellID->1622183496],
 Cell[CellGroupData[{
-Cell[3882, 116, 194, 6, 25, "ExampleSection",
- CellID->22536900],
+Cell[4891, 148, 195, 6, 26, "ExampleSection",
+ CellID->842763816],
 Cell[CellGroupData[{
-Cell[4101, 126, 354, 10, 45, "Input",
+Cell[5111, 158, 354, 10, 27, "Input",
  CellTags->"Kummer",
  CellID->318247247],
-Cell[4458, 138, 557, 18, 40, "Output",
- CellTags->"Kummer",
- CellID->780995976]
+Cell[5468, 170, 537, 17, 41, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5052, 161, 355, 10, 45, "Input",
+Cell[6042, 192, 355, 10, 27, "Input",
  CellTags->"Kummer",
  CellID->1547382498],
-Cell[5410, 173, 572, 19, 60, "Output",
- CellTags->"Kummer",
- CellID->334128730]
+Cell[6400, 204, 552, 18, 54, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6019, 197, 353, 10, 45, "Input",
+Cell[6989, 227, 353, 10, 27, "Input",
  CellTags->"Kummer",
  CellID->87779889],
-Cell[6375, 209, 573, 19, 60, "Output",
- CellTags->"Kummer",
- CellID->1379521301]
+Cell[7345, 239, 552, 18, 54, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6985, 233, 405, 12, 45, "Input",
+Cell[7934, 262, 405, 12, 45, "Input",
  CellTags->"Kummer",
  CellID->196494184],
-Cell[7393, 247, 558, 18, 40, "Output",
- CellTags->"Kummer",
- CellID->1681078809]
+Cell[8342, 276, 537, 17, 41, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7988, 270, 496, 14, 45, "Input",
+Cell[8916, 298, 496, 14, 45, "Input",
  CellTags->"Kummer",
  CellID->793293677],
-Cell[8487, 286, 636, 19, 39, "Output",
- CellTags->"Kummer",
- CellID->583730114]
+Cell[9415, 314, 616, 18, 41, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9160, 310, 404, 12, 45, "Input",
+Cell[10068, 337, 404, 12, 45, "Input",
  CellTags->"Kummer",
  CellID->39664086],
-Cell[9567, 324, 539, 17, 64, "Output",
- CellTags->"Kummer",
- CellID->282378053]
+Cell[10475, 351, 519, 16, 57, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10143, 346, 496, 14, 45, "Input",
+Cell[11031, 372, 496, 14, 45, "Input",
  CellTags->"Kummer",
  CellID->326626360],
-Cell[10642, 362, 653, 21, 64, "Output",
- CellTags->"Kummer",
- CellID->593894309]
+Cell[11530, 388, 633, 20, 57, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11332, 388, 406, 12, 45, "Input",
+Cell[12200, 413, 406, 12, 45, "Input",
  CellTags->"Kummer",
  CellID->2096680953],
-Cell[11741, 402, 539, 17, 64, "Output",
- CellTags->"Kummer",
- CellID->658206917]
+Cell[12609, 427, 519, 16, 57, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12317, 424, 497, 14, 45, "Input",
+Cell[13165, 448, 497, 14, 45, "Input",
  CellTags->"Kummer",
  CellID->1606284055],
-Cell[12817, 440, 653, 21, 64, "Output",
- CellTags->"Kummer",
- CellID->884891760]
+Cell[13665, 464, 633, 20, 57, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13507, 466, 506, 16, 45, "Input",
+Cell[14335, 489, 506, 16, 45, "Input",
  CellTags->"Kummer",
  CellID->1495083835],
-Cell[14016, 484, 728, 24, 64, "Output",
- CellTags->"Kummer",
- CellID->1201929686]
+Cell[14844, 507, 707, 23, 57, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14781, 513, 648, 20, 45, "Input",
+Cell[15588, 535, 648, 20, 45, "Input",
  CellTags->"Kummer",
  CellID->2086065203],
-Cell[15432, 535, 829, 26, 114, "Output",
- CellTags->"Kummer",
- CellID->1407407771]
+Cell[16239, 557, 808, 25, 99, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16298, 566, 505, 16, 45, "Input",
+Cell[17084, 587, 505, 16, 45, "Input",
  CellTags->"Kummer",
  CellID->764355789],
-Cell[16806, 584, 699, 23, 63, "Output",
- CellTags->"Kummer",
- CellID->171828604]
+Cell[17592, 605, 679, 22, 57, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17542, 612, 648, 20, 45, "Input",
+Cell[18308, 632, 648, 20, 45, "Input",
  CellTags->"Kummer",
  CellID->1556461178],
-Cell[18193, 634, 814, 27, 63, "Output",
- CellTags->"Kummer",
- CellID->1340266483]
+Cell[18959, 654, 793, 26, 57, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19044, 666, 505, 16, 45, "Input",
+Cell[19789, 685, 505, 16, 45, "Input",
  CellTags->"Kummer",
  CellID->487619941],
-Cell[19552, 684, 676, 22, 64, "Output",
- CellTags->"Kummer",
- CellID->1878402139]
+Cell[20297, 703, 655, 21, 57, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[20265, 711, 648, 20, 45, "Input",
+Cell[20989, 729, 648, 20, 45, "Input",
  CellTags->"Kummer",
  CellID->1099088563],
-Cell[20916, 733, 857, 27, 114, "Output",
- CellTags->"Kummer",
- CellID->1646537872]
+Cell[21640, 751, 836, 26, 99, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[21810, 765, 505, 16, 45, "Input",
+Cell[22513, 782, 505, 16, 45, "Input",
  CellTags->"Kummer",
  CellID->598392912],
-Cell[22318, 783, 727, 24, 64, "Output",
- CellTags->"Kummer",
- CellID->976219709]
+Cell[23021, 800, 707, 23, 57, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[23082, 812, 648, 20, 45, "Input",
+Cell[23765, 828, 648, 20, 45, "Input",
  CellTags->"Kummer",
  CellID->1367394877],
-Cell[23733, 834, 871, 25, 114, "Output",
- CellTags->"Kummer",
- CellID->922572585]
+Cell[24416, 850, 851, 24, 99, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[24641, 864, 506, 16, 45, "Input",
+Cell[25304, 879, 506, 16, 45, "Input",
  CellTags->"Kummer",
  CellID->2076771032],
-Cell[25150, 882, 650, 21, 64, "Output",
- CellTags->"Kummer",
- CellID->1393980026]
+Cell[25813, 897, 629, 20, 57, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[25837, 908, 647, 20, 45, "Input",
+Cell[26479, 922, 647, 20, 45, "Input",
  CellTags->"Kummer",
  CellID->860912097],
-Cell[26487, 930, 916, 27, 114, "Output",
- CellTags->"Kummer",
- CellID->1288498782]
+Cell[27129, 944, 895, 26, 99, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[27440, 962, 506, 16, 45, "Input",
+Cell[28061, 975, 506, 16, 45, "Input",
  CellTags->"Kummer",
  CellID->1768264658],
-Cell[27949, 980, 650, 21, 64, "Output",
- CellTags->"Kummer",
- CellID->2121590638]
+Cell[28570, 993, 629, 20, 57, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[28636, 1006, 648, 20, 45, "Input",
+Cell[29236, 1018, 648, 20, 45, "Input",
  CellTags->"Kummer",
  CellID->1824141612],
-Cell[29287, 1028, 807, 24, 64, "Output",
- CellTags->"Kummer",
- CellID->1992183596]
+Cell[29887, 1040, 786, 23, 57, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[30131, 1057, 549, 16, 45, "Input",
+Cell[30710, 1068, 549, 16, 45, "Input",
  CellTags->"Kummer",
  CellID->748421164],
-Cell[30683, 1075, 682, 22, 40, "Output",
- CellTags->"Kummer",
- CellID->652936361]
+Cell[31262, 1086, 662, 21, 41, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[31402, 1102, 357, 10, 45, "Input",
+Cell[31961, 1112, 357, 10, 45, "Input",
  CellTags->"Kummer",
  CellID->1906183256],
-Cell[31762, 1114, 559, 18, 40, "Output",
- CellTags->"Kummer",
- CellID->1706021647]
+Cell[32321, 1124, 538, 17, 41, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[32358, 1137, 549, 16, 45, "Input",
+Cell[32896, 1146, 549, 16, 45, "Input",
  CellTags->"Kummer",
  CellID->151044707],
-Cell[32910, 1155, 738, 23, 60, "Output",
- CellTags->"Kummer",
- CellID->378032271]
+Cell[33448, 1164, 718, 22, 54, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[33685, 1183, 357, 10, 45, "Input",
+Cell[34203, 1191, 357, 10, 45, "Input",
  CellTags->"Kummer",
  CellID->1217870653],
-Cell[34045, 1195, 548, 18, 60, "Output",
- CellTags->"Kummer",
- CellID->2057626251]
+Cell[34563, 1203, 527, 17, 54, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[34630, 1218, 550, 16, 45, "Input",
+Cell[35127, 1225, 550, 16, 45, "Input",
  CellTags->"Kummer",
  CellID->1953071601],
-Cell[35183, 1236, 738, 23, 60, "Output",
- CellTags->"Kummer",
- CellID->129109138]
+Cell[35680, 1243, 718, 22, 54, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[35958, 1264, 357, 10, 45, "Input",
+Cell[36435, 1270, 357, 10, 45, "Input",
  CellTags->"Kummer",
  CellID->1999495516],
-Cell[36318, 1276, 547, 18, 60, "Output",
- CellTags->"Kummer",
- CellID->149180370]
+Cell[36795, 1282, 527, 17, 54, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[36902, 1299, 600, 18, 45, "Input",
+Cell[37359, 1304, 600, 18, 45, "Input",
  CellTags->"Kummer",
  CellID->834381322],
-Cell[37505, 1319, 714, 20, 39, "Output",
- CellTags->"Kummer",
- CellID->1291617006]
+Cell[37962, 1324, 693, 19, 41, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[38256, 1344, 408, 12, 45, "Input",
+Cell[38692, 1348, 408, 12, 45, "Input",
  CellTags->"Kummer",
  CellID->2015364677],
-Cell[38667, 1358, 558, 18, 40, "Output",
- CellTags->"Kummer",
- CellID->467825582]
+Cell[39103, 1362, 538, 17, 41, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[39262, 1381, 599, 18, 45, "Input",
+Cell[39678, 1384, 599, 18, 45, "Input",
  CellTags->"Kummer",
  CellID->71156327],
-Cell[39864, 1401, 817, 23, 84, "Output",
- CellTags->"Kummer",
- CellID->1418885380]
+Cell[40280, 1404, 796, 22, 78, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[40718, 1429, 407, 12, 45, "Input",
+Cell[41113, 1431, 407, 12, 45, "Input",
  CellTags->"Kummer",
  CellID->899498003],
-Cell[41128, 1443, 599, 19, 64, "Output",
- CellTags->"Kummer",
- CellID->1820473911]
+Cell[41523, 1445, 578, 18, 57, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[41764, 1467, 600, 18, 45, "Input",
+Cell[42138, 1468, 600, 18, 45, "Input",
  CellTags->"Kummer",
  CellID->735406262],
-Cell[42367, 1487, 759, 21, 64, "Output",
- CellTags->"Kummer",
- CellID->1271802490]
+Cell[42741, 1488, 738, 20, 78, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[43163, 1513, 407, 12, 45, "Input",
+Cell[43516, 1513, 407, 12, 45, "Input",
  CellTags->"Kummer",
  CellID->812767727],
-Cell[43573, 1527, 541, 17, 64, "Output",
- CellTags->"Kummer",
- CellID->1670296832]
+Cell[43926, 1527, 520, 16, 57, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[44151, 1549, 357, 10, 45, "Input",
+Cell[44483, 1548, 357, 10, 45, "Input",
  CellTags->"Kummer",
  CellID->1807092891],
-Cell[44511, 1561, 1418, 47, 146, "Output",
- CellTags->"Kummer",
- CellID->1552242027]
+Cell[44843, 1560, 1397, 46, 133, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[45966, 1613, 356, 10, 45, "Input",
+Cell[46277, 1611, 356, 10, 45, "Input",
  CellTags->"Kummer",
  CellID->434139577],
-Cell[46325, 1625, 1477, 50, 146, "Output",
- CellTags->"Kummer",
- CellID->449279839]
+Cell[46636, 1623, 1457, 49, 149, "Output",
+ CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[47839, 1680, 356, 10, 45, "Input",
+Cell[48130, 1677, 356, 10, 45, "Input",
  CellTags->"Kummer",
  CellID->467969472],
-Cell[48198, 1692, 1504, 50, 146, "Output",
- CellTags->"Kummer",
- CellID->1951010163]
+Cell[48489, 1689, 1483, 49, 149, "Output",
+ CellTags->"Kummer"]
 }, Open  ]]
 }, Open  ]],
-Cell[49729, 1746, 31, 0, 29, "SectionFooterSpacer"]
+Cell[49999, 1742, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[49797, 1751, 270, 12, 31, "SeeAlsoSection",
+Cell[50067, 1747, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[50070, 1765, 250, 9, 32, "Text",
- CellTags->"Kummer",
- CellID->1248445733]
+Cell[50340, 1761, 211, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[50335, 1777, 23, 0, 42, "FooterCell"]
+Cell[50566, 1771, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

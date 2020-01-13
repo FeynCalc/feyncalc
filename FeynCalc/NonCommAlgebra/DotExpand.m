@@ -14,7 +14,7 @@
 
 
 DotExpand::usage =
-"DotExpand[expr] expands DOT products in expr.";
+"DotExpand[exp] expands dot products in exp.";
 
 (* ------------------------------------------------------------------------ *)
 

@@ -166,9 +166,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Isolate",
   ButtonNote->"Isolate"],
  "."
-}], "Text",
- CellTags->"FRH",
- CellID->1874942431]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -203,7 +201,7 @@ Cell[BoxData[
    RowBox[{"Hold", "[", 
     RowBox[{"2", "-", "2"}], "]"}]}], "]"}]], "Input",
  CellTags->"FRH",
- CellLabel->"In[1]:=",
+ CellLabel->"In[150]:=",
  CellID->1505003969],
 
 Cell[BoxData[
@@ -215,8 +213,7 @@ Cell[BoxData[
       RowBox[{"2", "-", "2"}], "]"}]}], "+", "1", "-", "1"}], "]"}], 
   TraditionalForm]], "Output",
  CellTags->"FRH",
- CellLabel->"Out[1]=",
- CellID->1110463745]
+ CellLabel->"Out[150]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -224,14 +221,13 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"FRH", "[", "%", "]"}]], "Input",
  CellTags->"FRH",
- CellLabel->"In[2]:=",
+ CellLabel->"In[151]:=",
  CellID->1714875295],
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
  CellTags->"FRH",
- CellLabel->"Out[2]=",
- CellID->313757423]
+ CellLabel->"Out[151]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -244,9 +240,9 @@ Cell[BoxData[
      RowBox[{
       RowBox[{"x", "^", "3"}], "-", "x", "-", "1"}], "==", "0"}], "]"}], ",", 
    "x", ",", 
-   RowBox[{"IsolateNames", "\[Rule]", "hh"}]}], "]"}]], "Input",
+   RowBox[{"IsolateNames", "\[Rule]", "KK"}]}], "]"}]], "Input",
  CellTags->"FRH",
- CellLabel->"In[3]:=",
+ CellLabel->"In[159]:=",
  CellID->971664034],
 
 Cell[BoxData[
@@ -256,45 +252,120 @@ Cell[BoxData[
     RowBox[{"{", 
      RowBox[{"x", "\[Rule]", 
       TagBox[
-       RowBox[{"hh", "(", "670", ")"}],
+       RowBox[{"KK", "(", "510", ")"}],
        HoldForm]}], "}"}], ",", 
     RowBox[{"{", 
      RowBox[{"x", "\[Rule]", 
       TagBox[
-       RowBox[{"hh", "(", "673", ")"}],
+       RowBox[{"KK", "(", "513", ")"}],
        HoldForm]}], "}"}], ",", 
     RowBox[{"{", 
      RowBox[{"x", "\[Rule]", 
       TagBox[
-       RowBox[{"hh", "(", "674", ")"}],
+       RowBox[{"KK", "(", "514", ")"}],
        HoldForm]}], "}"}]}], "}"}], TraditionalForm]], "Output",
  CellTags->"FRH",
- CellLabel->"Out[3]=",
- CellID->529538815]
+ CellLabel->"Out[159]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FRH", "[", 
-  RowBox[{"hh", "[", "3", "]"}], "]"}]], "Input",
+ RowBox[{"FRH", "[", "%", "]"}]], "Input",
  CellTags->"FRH",
- CellLabel->"In[4]:=",
+ CellLabel->"In[160]:=",
  CellID->866394763],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{"hh", "(", "3", ")"}], TraditionalForm]], "Output",
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"x", "\[Rule]", 
+      RowBox[{
+       RowBox[{
+        FractionBox["1", "3"], " ", 
+        RadicalBox[
+         RowBox[{
+          FractionBox["27", "2"], "-", 
+          FractionBox[
+           RowBox[{"3", " ", 
+            SqrtBox["69"]}], "2"]}], "3"]}], "+", 
+       FractionBox[
+        RadicalBox[
+         RowBox[{
+          FractionBox["1", "2"], " ", 
+          RowBox[{"(", 
+           RowBox[{"9", "+", 
+            SqrtBox["69"]}], ")"}]}], "3"], 
+        SuperscriptBox["3", 
+         RowBox[{"2", "/", "3"}]]]}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{
+         FractionBox["1", "6"], " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "+", 
+           RowBox[{"\[ImaginaryI]", " ", 
+            SqrtBox["3"]}]}], ")"}], " ", 
+         RadicalBox[
+          RowBox[{
+           FractionBox["27", "2"], "-", 
+           FractionBox[
+            RowBox[{"3", " ", 
+             SqrtBox["69"]}], "2"]}], "3"]}]}], "-", 
+       FractionBox[
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "-", 
+           RowBox[{"\[ImaginaryI]", " ", 
+            SqrtBox["3"]}]}], ")"}], " ", 
+         RadicalBox[
+          RowBox[{
+           FractionBox["1", "2"], " ", 
+           RowBox[{"(", 
+            RowBox[{"9", "+", 
+             SqrtBox["69"]}], ")"}]}], "3"]}], 
+        RowBox[{"2", " ", 
+         SuperscriptBox["3", 
+          RowBox[{"2", "/", "3"}]]}]]}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{
+         FractionBox["1", "6"], " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "-", 
+           RowBox[{"\[ImaginaryI]", " ", 
+            SqrtBox["3"]}]}], ")"}], " ", 
+         RadicalBox[
+          RowBox[{
+           FractionBox["27", "2"], "-", 
+           FractionBox[
+            RowBox[{"3", " ", 
+             SqrtBox["69"]}], "2"]}], "3"]}]}], "-", 
+       FractionBox[
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "+", 
+           RowBox[{"\[ImaginaryI]", " ", 
+            SqrtBox["3"]}]}], ")"}], " ", 
+         RadicalBox[
+          RowBox[{
+           FractionBox["1", "2"], " ", 
+           RowBox[{"(", 
+            RowBox[{"9", "+", 
+             SqrtBox["69"]}], ")"}]}], "3"]}], 
+        RowBox[{"2", " ", 
+         SuperscriptBox["3", 
+          RowBox[{"2", "/", "3"}]]}]]}]}], "}"}]}], "}"}], 
+  TraditionalForm]], "Output",
  CellTags->"FRH",
- CellLabel->"Out[4]=",
- CellID->166257414]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{"Clear", "[", "hh", "]"}]], "Input",
- CellTags->"FRH",
- CellLabel->"In[5]:=",
- CellID->1669049321]
+ CellLabel->"Out[160]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -358,12 +429,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{979, Automatic}, {Automatic, 177}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

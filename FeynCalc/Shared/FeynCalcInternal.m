@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Changes certain objects ("Symbols") into the FeynCalc
@@ -31,12 +31,25 @@ End[]
 
 Begin["`FeynCalcInternal`Private`"]
 
+sfadim::usage="";
+cfadim::usage="";
 fadim::usage="";
 repeated::usage="";
+fchntmp::usage="";
+cfadEtaSign::usage="";
+gfadEtaSign::usage="";
+sfadEtaSign::usage="";
+head::usage="";
+
+tmp1::usage="";
+tmp2::usage="";
+holdDOT::usage="";
 
 FCI = FeynCalcInternal;
 
-Options[FeynCalcInternal] = {FinalSubstitutions -> {}};
+Options[FeynCalcInternal] = {
+	FinalSubstitutions -> {}
+};
 
 SetAttributes[FeynCalcInternal, HoldFirst];
 
@@ -77,6 +90,7 @@ FeynCalcInternal[x_, opts___Rule] :=
 			MetricTensor :> metricT,
 			DiracMatrix  :> diracM,
 			DiracSlash :> diracS,
+			DIDelta :> didelta,
 			FourVector :> fourV,
 			SD :> sdeltacont,
 			SDF :> sfdeltacont,
@@ -87,10 +101,14 @@ FeynCalcInternal[x_, opts___Rule] :=
 			SUNFDeltaContract :> sfdeltacontr,
 			SUNT :> sunTint,
 			SUNTF :> sunTFint,
+			SFAD :> sfadint,
 			FAD :> fadint,
+			GFAD :> gfadint,
+			CFAD :> cfadint,
 			FVD :> fvd,
 			FVE :> fve,
 			FV :> fv,
+			DCHN :> fchn,
 			LeviCivita :> levicivita,
 			LC :> lc,
 			LCD :> lcd,
@@ -107,8 +125,51 @@ FeynCalcInternal[x_, opts___Rule] :=
 			SPD :> spd,
 			SPE :> spe,
 			SO :> so,
-			SOD :> sod},
-			{PropagatorDenominator :> propagatorD},
+			SOD :> sod,
+
+			TC :> tc,
+			CV :> cv,
+			CVD :> cvd,
+			CVE :> cve,
+
+			KD :> kd,
+			KDD :> kdd,
+			KDE :> kde,
+
+			CSP :> csp,
+			CSPD :> cspd,
+			CSPE :> cspe,
+
+			CLC :> clc,
+			CLCD :> clcd,
+
+			TGA :> tga,
+			CGA :> cga,
+			CGAD :> cgad,
+			CGAE :> cgae,
+
+			CGS :> cgs,
+			CGSD :> cgsd,
+			CGSE :> cgse,
+
+			SI :> si,
+			SID :> sid,
+			SIE :> sie,
+
+			SIS :> sis,
+			SISD :> sisd,
+			SISE :> sise,
+
+			CSI :> csi,
+			CSID :> csid,
+			CSIE :> csie,
+
+			CSIS :> csis,
+			CSISD :> csisd,
+			CSISE :> csise
+
+
+			},
 			{ScalarProduct :> scalarP},
 			{Dot -> DOT},
 			{ChiralityProjector[1] :> DiracGamma[6]},
@@ -124,6 +185,8 @@ FeynCalcInternal[x_, opts___Rule] :=
 		If[ru =!={}, ReplaceRepeated[x//.{
 			LC[a___][b___] :> lcl[{a},{b}],
 			LCD[a___][b___] :> lcdl[{a},{b}],
+			CLC[a___][b___] :> clcl[{a},{b}],
+			CLCD[a___][b___] :> clcdl[{a},{b}],
 			LeviCivita[a___][b___] :> levicivital[{a},{b}]}, Dispatch[ru], MaxIterations -> 20] /.
 				{mt :> MT,
 				fv :>  FV} /. Dispatch[revru], x
@@ -148,6 +211,9 @@ metricT[x__] :=
 
 metricT[x_, x_,op_:{}] :=
 	(Dimension/.op/.Options[MetricTensor]);
+
+didelta[i_,j_]:=
+	DiracIndexDelta[DiracIndex[i],DiracIndex[j]];
 
 Options[diracM] = {Dimension -> 4, FCI -> True};
 
@@ -219,17 +285,37 @@ fourV[x_, y_, OptionsPattern[]] :=
 	Pair[LorentzIndex[y,OptionValue[Dimension]],
 	Momentum[x,OptionValue[Dimension]]]/; FreeQ[x, Plus];
 
-propagatorD[x_] :=
-	propagatorD[x, 0] /; FreeQ2[x, {Pattern, Pair, ScalarProduct}];
+dirIndex[a_Spinor]:=
+	a;
 
-propagatorD[x_, y_] := (propagatorD[x, y] =
-	PropagatorDenominator[MomentumExpand[ Momentum[x,D] ],y]) /;FreeQ2[x,{Momentum, Pattern,HoldForm}];
+dirIndex[a_]/;Head[a]=!=Spinor:=
+	DiracIndex[a/.DiracIndex->Identity];
 
-propagatorD[x_, y_] := (propagatorD[x, y] =
-	PropagatorDenominator[x//MomentumExpand, y]) /; (FreeQ[{x,y}, Pattern] ) &&	(MomentumExpand[x] =!= x);
+fchn[a: (_Spinor | _SpinorUBar | _SpinorVBar),b_]:=
+	(
+	fchntmp=FCI[{a,b}];
+	DiracChain[fchntmp[[1]],dirIndex[fchntmp[[2]]]]
+	)/; !MemberQ[{Spinor,SpinorU,SpinorV,SpinorUBar,SpinorVBar},Head[b]];
 
-propagatorD[x_, y_] :=
-	PropagatorDenominator[x, y] /; (MomentumExpand[x] === x);
+
+fchn[a_,b : (_Spinor | _SpinorU | _SpinorV)]:=
+	(
+	fchntmp=FCI[{a,b}];
+	DiracChain[dirIndex[fchntmp[[1]]],fchntmp[[2]]]
+	)/; !MemberQ[{Spinor,SpinorU,SpinorV,SpinorUBar,SpinorVBar},Head[a]];
+
+fchn[a : (_Spinor | _SpinorUBar | _SpinorVBar), b : (_Spinor | _SpinorU | _SpinorV)]:=
+	(
+	fchntmp=FCI[{a,b}];
+	DiracChain[fchntmp[[1]],fchntmp[[2]]]
+	);
+
+
+fchn[a_,b_,c_]:=
+	(
+	fchntmp=FCI[{a,b,c}];
+	DiracChain[fchntmp[[1]],dirIndex[fchntmp[[2]]],dirIndex[fchntmp[[3]]]]
+	);
 
 sunTint[x__] :=
 	sunT[x] /. sunT -> SUNT;
@@ -274,13 +360,67 @@ scalarP[ x_, y_,opt___BlankNullSequence] :=
 		Pair[x, y]
 	];
 
+cfadint[a___, b_, opts:OptionsPattern[]] :=
+	(
+	cfadint[Sequence@@(head [a,b] //. head[x___, y_, z___]/; Head[y]=!=List :> head[x,{y,0},z]),opts]
+	)/;!MatchQ[{a,b},{__List}] && !OptionQ[b];
+
+cfadint[a___List, b_List/; !OptionQ[b], opts:OptionsPattern[]] :=
+	(
+	cfadim = OptionValue[CFAD,{opts},Dimension];
+	cfadEtaSign = OptionValue[CFAD,{opts},EtaSign];
+	cfadint2 @@ Map[#&, {a,b}]
+	);
+
+gfadint[a___, b_, opts:OptionsPattern[]] :=
+	(
+	gfadint[Sequence@@(head [a,b] //. head[x___, y_, z___]/; Head[y]=!=List :> head[x,{{y,1},1},z]),opts]
+	)/;!MatchQ[{a,b},{__List}] && !OptionQ[b];
+
+gfadint[a___List, b_List/; !OptionQ[b], opts:OptionsPattern[]] :=
+	(
+	gfadEtaSign = OptionValue[GFAD,{opts},EtaSign];
+	FeynAmpDenominator @@ Map[gpropp, FCI[{a,b}]]
+	);
+
+sfadint[a___, b_, opts:OptionsPattern[]] :=
+	(
+	sfadint[Sequence@@(head [a,b] //. head[x___, y_, z___]/; Head[y]=!=List :> head[x,{y,0},z]),opts]
+	)/;!MatchQ[{a,b},{__List}] && !OptionQ[b];
+
+sfadint[a___List, b_List/; !OptionQ[b], opts:OptionsPattern[]] :=
+	(
+	sfadim = OptionValue[SFAD,{opts},Dimension];
+	sfadEtaSign = OptionValue[SFAD,{opts},EtaSign];
+	sfadint2 @@ Map[#&, {a,b}]
+	);
+
+gpropp[{ex_, n_:1}]:=
+	GenericPropagatorDenominator[ex, {n, gfadEtaSign}];
+
+gpropp[{{ex_}, n_:1}]:=
+	GenericPropagatorDenominator[ex, {n, gfadEtaSign}];
+
+gpropp[{{ex_, s_}, n_:1}]:=
+	GenericPropagatorDenominator[ex, {n,s}];
+
 fadint[a__, opts:OptionsPattern[]] :=
 	(fadim = OptionValue[FAD,{opts},Dimension];
 	fadint2 @@ Map[Flatten[{#}]&, {a}]);
 
+fadint2[b__List] :=
+	FeynAmpDenominator @@ Map[propp, {b}/.Repeated->repeated];
+
+cfadint2[b__List] :=
+	FeynAmpDenominator @@ Map[cpropp[#,cfadim,cfadEtaSign]&, {b}/. Repeated->repeated];
+
+sfadint2[b__List] :=
+	FeynAmpDenominator @@ Map[spropp[#,sfadim,sfadEtaSign]&, {b}/. Repeated->repeated];
+
 propp[{x_}]:=
 	PropagatorDenominator[Momentum[x, fadim],0]//MomentumExpand;
 
+(* Pattern matching related *)
 propp[{repeated[{x_, m_}]}]:=
 	Repeated[PropagatorDenominator[Momentum[x, fadim],
 	m] // MomentumExpand];
@@ -289,8 +429,65 @@ propp[{x_, m_}]:=
 	PropagatorDenominator[Momentum[x, fadim],
 	m] // MomentumExpand;
 
-fadint2[b__List] :=
-	FeynAmpDenominator @@ Map[propp, {b}/.Repeated->repeated];
+
+cproppMomPart[{ex1_,ex2_}, dim_]:=
+	{CartesianMomentum[ex1, dim], ex2}//MomentumExpand;
+
+cproppMomPart[ex_/;Head[ex]=!=List, dim_]:=
+	{CartesianMomentum[ex, dim],0}//MomentumExpand;
+
+
+cproppMassPart[{m2_, etasign_}, _]:=
+	{m2,etasign};
+
+(*If the sign of I*eta is not specified, we take the default option! *)
+cproppMassPart[m2_/;Head[m2]=!=List, etaOpt_]:=
+	{m2, etaOpt};
+
+cproppMassPart[{m2_/;Head[m2]=!=List}, etaOpt_]:=
+	{m2, etaOpt};
+
+
+cpropp[{a_}, dim_, etaOpt_]:=
+	cpropp[{a,  0 , 1}, dim, etaOpt];
+
+cpropp[{a_,  b_ , n_:1}, dim_, etaOpt_]:=
+	(
+	tmp1= cproppMomPart[a/. DOT->holdDOT /. holdDOT[x_,y_]:> CartesianPair[CartesianMomentum[x,dim],CartesianMomentum[y,dim]],dim];
+	tmp2= cproppMassPart[b, etaOpt];
+	CartesianPropagatorDenominator[tmp1[[1]], tmp1[[2]], tmp2[[1]],{n, tmp2[[2]]}]
+	);
+
+
+sproppMomPart[{ex1_,ex2_}, dim_]:=
+	{Momentum[ex1, dim], ex2}//MomentumExpand;
+
+sproppMomPart[ex_/;Head[ex]=!=List, dim_]:=
+	{Momentum[ex, dim],0}//MomentumExpand;
+
+(*Notice that m^2 has the minus sign by default!*)
+sproppMassPart[{m2_, etasign_}, _]:=
+	{-m2,etasign};
+
+(*If the sign of I*eta is not specified, we take the default option! *)
+sproppMassPart[m2_/;Head[m2]=!=List, etaOpt_]:=
+	{-m2, etaOpt};
+
+sproppMassPart[{m2_/;Head[m2]=!=List}, etaOpt_]:=
+	{-m2, etaOpt};
+
+
+spropp[{a_}, dim_, etaOpt_]:=
+	spropp[{a,  0 , 1}, dim, etaOpt];
+
+spropp[{a_,  b_ , n_:1}, dim_, etaOpt_]:=
+	(
+	tmp1= sproppMomPart[a/. DOT->holdDOT /. holdDOT[x_,y_]:> Pair[Momentum[x,dim],Momentum[y,dim]],dim];
+	tmp2= sproppMassPart[b, etaOpt];
+	StandardPropagatorDenominator[tmp1[[1]], tmp1[[2]], tmp2[[1]],{n, tmp2[[2]]}]
+	);
+
+
 
 sp[a_,b_] :=
 	Pair[Momentum[a], Momentum[b]];
@@ -298,6 +495,14 @@ spd[a_,b_] :=
 	Pair[Momentum[a, D], Momentum[b,D]];
 spe[a_,b_] :=
 	Pair[Momentum[a, D-4], Momentum[b,D-4]];
+
+csp[a_,b_] :=
+	CartesianPair[CartesianMomentum[a], CartesianMomentum[b]];
+cspd[a_,b_] :=
+	CartesianPair[CartesianMomentum[a, D-1], CartesianMomentum[b,D-1]];
+cspe[a_,b_] :=
+	CartesianPair[CartesianMomentum[a, D-4], CartesianMomentum[b,D-4]];
+
 so[a_] :=
 	Pair[Momentum[a], Momentum[OPEDelta]];
 sod[a_] :=
@@ -309,12 +514,30 @@ fve[a_,b_] :=
 	Pair[Momentum[a, D-4], LorentzIndex[b,D-4]];
 fv[a_,b_] :=
 	Pair[Momentum[a], LorentzIndex[b]];
+
+tc[a_]:=
+	TemporalPair[TemporalMomentum[a],ExplicitLorentzIndex[0]];
+cvd[a_,b_] :=
+	CartesianPair[CartesianMomentum[a, D-1], CartesianIndex[b, D-1]];
+cve[a_,b_] :=
+	CartesianPair[CartesianMomentum[a, D-4], CartesianIndex[b,D-4]];
+cv[a_,b_] :=
+	CartesianPair[CartesianMomentum[a], CartesianIndex[b]];
+
+
 mt[a_,b_] :=
 	Pair[LorentzIndex[a], LorentzIndex[b]];
 mtd[a_,b_] :=
 	Pair[LorentzIndex[a, D], LorentzIndex[b, D]];
 mte[a_,b_] :=
 	Pair[LorentzIndex[a, D-4], LorentzIndex[b, D-4]];
+
+kd[a_,b_] :=
+	CartesianPair[CartesianIndex[a], CartesianIndex[b]];
+kdd[a_,b_] :=
+	CartesianPair[CartesianIndex[a, D-1], CartesianIndex[b, D-1]];
+kde[a_,b_] :=
+	CartesianPair[CartesianIndex[a, D-4], CartesianIndex[b, D-4]];
 
 gs[a_] :=
 	DiracGamma[Momentum[a]];
@@ -343,26 +566,90 @@ gae[a_Integer] :=
 	DiracGamma[ExplicitLorentzIndex[a,D-4],D-4]/; (a=!=5 && a=!=6 && a=!=7);
 
 
-lc[a__]  := (Eps@@Join[(LorentzIndex/@{a}),{Dimension->4}])/;
-	FreeQ[{a},Rule] && (Length[{a}] === 4);
+tga[] :=
+	DiracGamma[ExplicitLorentzIndex[0]];
 
-lcd[a__]  := (Eps@@Join[(LorentzIndex[#,D]&/@{a}),{Dimension->D}])/;
-	FreeQ[{a},Rule] && (Length[{a}] === 4);
+cga[a_] :=
+	DiracGamma[CartesianIndex[a]]/; !IntegerQ[a];
+cgad[a_] :=
+	DiracGamma[CartesianIndex[a,D-1],D]/; !IntegerQ[a];
+cgae[a_] :=
+	DiracGamma[CartesianIndex[a,D-4],D-4]/; !IntegerQ[a];
 
-lcl[{x___},{y___}]:= (Eps@@Join[LorentzIndex/@{x},
-	Momentum/@{y},{Dimension->4}]/;	Length[Join[{x},{y}]]===4);
+cgs[a_] :=
+	DiracGamma[CartesianMomentum[a]]/; !IntegerQ[a];
+cgsd[a_] :=
+	DiracGamma[CartesianMomentum[a,D-1],D]/; !IntegerQ[a];
+cgse[a_] :=
+	DiracGamma[CartesianMomentum[a,D-4],D-4]/; !IntegerQ[a];
 
-lcdl[{x___},{y___}]:= (Eps@@Join[Map[LorentzIndex[#, D]& ,{x}],
-	Map[Momentum[#, D]& ,{y}],{Dimension->D}]/;	Length[Join[{x},{y}]]===4);
+si[a_] :=
+	PauliSigma[LorentzIndex[a]]/; !IntegerQ[a];
+sid[a_] :=
+	PauliSigma[LorentzIndex[a, D],D-1]/; !IntegerQ[a];
+sie[a_] :=
+	PauliSigma[LorentzIndex[a, D-4],D-4]/; !IntegerQ[a];
+
+sis[a_] :=
+	PauliSigma[Momentum[a]]/; !IntegerQ[a];
+sisd[a_] :=
+	PauliSigma[Momentum[a, D],D-1]/; !IntegerQ[a];
+sise[a_] :=
+	PauliSigma[Momentum[a, D-4],D-4]/; !IntegerQ[a];
+
+
+csi[a_] :=
+	PauliSigma[CartesianIndex[a]]/; !IntegerQ[a];
+csid[a_] :=
+	PauliSigma[CartesianIndex[a, D-1],D-1]/; !IntegerQ[a];
+csie[a_] :=
+	PauliSigma[CartesianIndex[a, D-4],D-4]/; !IntegerQ[a];
+
+csis[a_] :=
+	PauliSigma[CartesianMomentum[a]]/; !IntegerQ[a];
+csisd[a_] :=
+	PauliSigma[CartesianMomentum[a, D-1],D-1]/; !IntegerQ[a];
+csise[a_] :=
+	PauliSigma[CartesianMomentum[a, D-4],D-4]/; !IntegerQ[a];
+
+lc[a__]:=
+	Eps@@(LorentzIndex/@{a})/; FreeQ[{a},Rule] && (Length[{a}] === 4);
+
+lcd[a__]:=
+	Eps@@(LorentzIndex[#,D]&/@{a})/;FreeQ[{a},Rule] && (Length[{a}] === 4);
+
+clc[a__]:=
+	Eps@@(CartesianIndex/@{a})/; FreeQ[{a},Rule] && (Length[{a}] === 3);
+
+clcd[a__]:=
+	Eps@@(CartesianIndex[#,D-1]&/@{a})/;FreeQ[{a},Rule] && (Length[{a}] === 3);
+
+lcl[{x___},{y___}]:=
+	(Eps@@Join[LorentzIndex/@{x}, Momentum/@{y}]/; Length[Join[{x},{y}]]===4);
+
+lcdl[{x___},{y___}]:=
+	(Eps@@Join[Map[LorentzIndex[#, D]& ,{x}], Map[Momentum[#, D]& ,{y}]]/;	Length[Join[{x},{y}]]===4);
+
+clcl[{x___},{y___}]:=
+	(Eps@@Join[CartesianIndex/@{x}, CartesianMomentum/@{y}]/;	Length[Join[{x},{y}]]===3);
+
+clcdl[{x___},{y___}]:=
+	(Eps@@Join[Map[CartesianIndex[#, D-1]& ,{x}], Map[CartesianMomentum[#, D-1]& ,{y}]]/; Length[Join[{x},{y}]]===3);
+
+
+clcl[{x___},{y___}]:=
+	(Eps@@Join[CartesianIndex/@{x}, CartesianMomentum/@{y}]/;	Length[Join[{x},{y}]]===3);
+
+clcdl[{x___},{y___}]:=
+	(Eps@@Join[Map[CartesianIndex[#, D-1]& ,{x}], Map[CartesianMomentum[#, D-1]& ,{y}]]/; Length[Join[{x},{y}]]===3);
+
 
 levicivita[x:Except[_?OptionQ].., opts:OptionsPattern[LeviCivita]] :=
-	Eps@@Join[(LorentzIndex[#,OptionValue[LeviCivita,{opts},Dimension]]&/@{x}),
-	{Dimension->OptionValue[LeviCivita,{opts},Dimension]}]/; Length[{x}]===4;
+	Eps@@Join[(LorentzIndex[#,OptionValue[LeviCivita,{opts},Dimension]]&/@{x})]/; Length[{x}]===4;
 
 levicivital[{x:Except[_?OptionQ]..., opts1:OptionsPattern[LeviCivita]},{y:Except[_?OptionQ]..., opts2:OptionsPattern[LeviCivita]}] :=
 	Eps@@Join[Map[LorentzIndex[#, OptionValue[LeviCivita,{opts1},Dimension]]& ,{x}],
-	Map[Momentum[#, OptionValue[LeviCivita,{opts1},Dimension]]& ,{y}],
-	{Dimension->OptionValue[LeviCivita,{opts1},Dimension]}]/; Length[{x,y}]===4 &&
+	Map[Momentum[#, OptionValue[LeviCivita,{opts1},Dimension]]& ,{y}]]/; Length[{x,y}]===4 &&
 	OptionValue[LeviCivita,{opts1},Dimension]===OptionValue[LeviCivita,{opts2},Dimension];
 
 tosunf[a_, b_, c_] :=

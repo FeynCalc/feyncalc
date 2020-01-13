@@ -3,69 +3,91 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11858,        393]
-NotebookOptionsPosition[      7967,        279]
-NotebookOutlinePosition[     10868,        356]
-CellTagsIndexPosition[     10750,        350]
+NotebookDataLength[     12503,        411]
+NotebookOptionsPosition[      8867,        307]
+NotebookOutlinePosition[     11616,        379]
+CellTagsIndexPosition[     11498,        373]
 WindowTitle->TrickIntegrate
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/TrickIntegrate\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/TrickIntegrate"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Epsilon\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Epsilon"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/TrickIntegrate\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/TrickIntegrate"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 TrickIntegrate.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$158869], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/TrickIntegrate", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$277359], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/TrickIntegrate", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +95,18 @@ TrickIntegrate.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["TrickIntegrate", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["TrickIntegrate", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -151,7 +183,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1642198825],
+ CellID->415536027],
 
 Cell[CellGroupData[{
 
@@ -161,7 +193,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->667432360],
+ CellID->854168379],
 
 Cell[CellGroupData[{
 
@@ -197,12 +229,11 @@ Cell[BoxData[
     RowBox[{"{", 
      RowBox[{"t", ",", "0", ",", "1"}], "}"}]}], "]"}], 
   TraditionalForm]], "Output",
- ImageSize->{286, 21},
+ ImageSize->{284, 21},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"TrickIntegrate",
- CellLabel->"Out[1]=",
- CellID->308907212]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -235,12 +266,11 @@ Cell[BoxData[
     RowBox[{"{", 
      RowBox[{"t", ",", "0", ",", "1"}], "}"}]}], "]"}], 
   TraditionalForm]], "Output",
- ImageSize->{252, 21},
+ ImageSize->{249, 21},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"TrickIntegrate",
- CellLabel->"Out[2]=",
- CellID->1473267114]
+ CellLabel->"Out[2]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -270,9 +300,7 @@ Cell[TextData[{
   ButtonNote->"Epsilon"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"TrickIntegrate",
- CellID->1095920169]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -280,7 +308,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{278, Automatic}, {Automatic, 28}},
 WindowTitle->"TrickIntegrate",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -289,10 +317,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 26, 22.012411}", 
+   "built" -> "{2020, 1, 5, 19, 3, 39.483603}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -303,12 +331,12 @@ trick for the definite integral of ((1 - t) a Epsilon - 1 g[t]) from 0 to 1, \
 yielding g[1]/a/Epsilon + Hold[Integrate][(1 - t) a Epsilon - 1 \
 (g[t]-g[1]),{t,0,1}]. TrickIntegrate[t a Epsilon - 1 g[t], t] gives g[0]/(a \
 Epsilon)+ Hold[Integrate][t a Epsilon - 1 (g[t]-g[0]),{t,0,1}], provided g[1] \
-and g[0] exist.", "synonyms" -> {}, "title" -> "TrickIntegrate", 
-    "titlemodifier" -> "", "windowtitle" -> "TrickIntegrate", "type" -> 
-    "Symbol", "uri" -> "FeynCalc/ref/TrickIntegrate"}, "SearchTextTranslated" -> 
-  ""},
+and g[0] exist.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "TrickIntegrate", "titlemodifier" -> "", "windowtitle" -> 
+    "TrickIntegrate", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/TrickIntegrate"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -317,7 +345,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -326,75 +354,65 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4750, 138, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[5739, 170, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1642198825]},
+   CellID->415536027]},
  "TrickIntegrate"->{
-  Cell[5383, 167, 382, 13, 27, "Input",
+  Cell[6371, 199, 382, 13, 27, "Input",
    CellTags->"TrickIntegrate",
    CellID->1216797415],
-  Cell[5768, 182, 622, 22, 42, "Output",
-   CellTags->"TrickIntegrate",
-   CellID->308907212],
-  Cell[6427, 209, 328, 11, 27, "Input",
+  Cell[6756, 214, 602, 21, 42, "Output",
+   CellTags->"TrickIntegrate"],
+  Cell[7395, 240, 328, 11, 27, "Input",
    CellTags->"TrickIntegrate",
    CellID->256517011],
-  Cell[6758, 222, 568, 20, 42, "Output",
-   CellTags->"TrickIntegrate",
-   CellID->1473267114],
-  Cell[7694, 265, 231, 9, 32, "Text",
-   CellTags->"TrickIntegrate",
-   CellID->1095920169]}
+  Cell[7726, 253, 547, 19, 42, "Output",
+   CellTags->"TrickIntegrate"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10111, 327},
- {"TrickIntegrate", 10253, 331}
+ {"PrimaryExamplesSection", 10998, 355},
+ {"TrickIntegrate", 11139, 359}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[586, 21, 2270, 52, 51, "AnchorBarGrid",
+Cell[586, 21, 3025, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2859, 75, 57, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2919, 78, 1806, 56, 159, "Usage",
+Cell[3614, 97, 291, 11, 45, "ObjectNameGrid"],
+Cell[3908, 110, 1806, 56, 165, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4750, 138, 388, 15, 31, "PrimaryExamplesSection",
+Cell[5739, 170, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1642198825],
+ CellID->415536027],
 Cell[CellGroupData[{
-Cell[5163, 157, 195, 6, 25, "ExampleSection",
- CellID->667432360],
+Cell[6151, 189, 195, 6, 26, "ExampleSection",
+ CellID->854168379],
 Cell[CellGroupData[{
-Cell[5383, 167, 382, 13, 27, "Input",
+Cell[6371, 199, 382, 13, 27, "Input",
  CellTags->"TrickIntegrate",
  CellID->1216797415],
-Cell[5768, 182, 622, 22, 42, "Output",
- CellTags->"TrickIntegrate",
- CellID->308907212]
+Cell[6756, 214, 602, 21, 42, "Output",
+ CellTags->"TrickIntegrate"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6427, 209, 328, 11, 27, "Input",
+Cell[7395, 240, 328, 11, 27, "Input",
  CellTags->"TrickIntegrate",
  CellID->256517011],
-Cell[6758, 222, 568, 20, 42, "Output",
- CellTags->"TrickIntegrate",
- CellID->1473267114]
+Cell[7726, 253, 547, 19, 42, "Output",
+ CellTags->"TrickIntegrate"]
 }, Open  ]]
 }, Open  ]],
-Cell[7353, 246, 31, 0, 29, "SectionFooterSpacer"]
+Cell[8300, 276, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7421, 251, 270, 12, 31, "SeeAlsoSection",
+Cell[8368, 281, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7694, 265, 231, 9, 32, "Text",
- CellTags->"TrickIntegrate",
- CellID->1095920169]
+Cell[8641, 295, 184, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[7940, 277, 23, 0, 42, "FooterCell"]
+Cell[8840, 305, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

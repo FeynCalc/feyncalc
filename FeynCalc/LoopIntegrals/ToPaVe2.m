@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Converts scalar direct Passarino Veltman to PaVe functions	*)
@@ -30,8 +30,14 @@ Begin["`ToPaVe2`Private`"]
 Options[ToPaVe2] = {
 };
 
-ToPaVe2[expr_, OptionsPattern[]] :=
+ToPaVe2[expr_PaVe, OptionsPattern[]]:=
+	expr;
+
+ToPaVe2[expr_/;Head[expr]=!=PaVe, OptionsPattern[]] :=
 	Block[{ex},
+
+
+
 		If[ !OptionValue[PaVe, PaVeAutoReduce],
 			ex =expr /. {
 				A0[m_, OptionsPattern[]] :> PaVe[0,{},{m}],

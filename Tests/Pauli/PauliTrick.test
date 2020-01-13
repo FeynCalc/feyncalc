@@ -1,0 +1,169 @@
+
+
+(* :Title: PauliTrick.test											*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for PauliTrick			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Pauli`fcstPauliTrick =
+({
+{"fcstPauliTrick-ID1", "PauliTrick[0]", "0"},
+{"fcstPauliTrick-ID2", "PauliTrick[a]", "a"},
+{"fcstPauliTrick-ID3", "PauliTrick[SI[mu,mu]]", "-2"},
+{"fcstPauliTrick-ID4", "PauliTrick[CSI[i,i]]", "3"},
+{"fcstPauliTrick-ID5", "PauliTrick[SID[mu,mu]]", "2 - D"},
+{"fcstPauliTrick-ID6", "PauliTrick[CSID[i,i]]", "-1 + D"},
+{"fcstPauliTrick-ID7", "PauliTrick[SIE[mu,mu]]", "4 - D"},
+{"fcstPauliTrick-ID8", "PauliTrick[CSIE[i,i]]", "-4 + D"},
+{"fcstPauliTrick-ID9", "PauliTrick[SIS[p,p]]",
+"Pair[Momentum[p], Momentum[p]]"},
+{"fcstPauliTrick-ID10", "PauliTrick[CSIS[p,p]]",
+"CartesianPair[CartesianMomentum[p], CartesianMomentum[p]]"},
+{"fcstPauliTrick-ID11", "PauliTrick[SISD[p,p]]",
+"Pair[Momentum[p, D], Momentum[p, D]]"},
+{"fcstPauliTrick-ID12", "PauliTrick[CSISD[p,p]]",
+"CartesianPair[CartesianMomentum[p, -1 + D], CartesianMomentum[p, -1 + D]]"},
+{"fcstPauliTrick-ID13", "PauliTrick[SISE[p,p]]",
+"Pair[Momentum[p, -4 + D], Momentum[p, -4 + D]]"},
+{"fcstPauliTrick-ID14", "PauliTrick[CSISE[p,p]]",
+"CartesianPair[CartesianMomentum[p, -4 + D], CartesianMomentum[p, -4 + D]]"},
+{"fcstPauliTrick-ID15",
+"MatchQ[PauliTrick[CSI[i,j]]//Contract,\[IndentingNewLine]CartesianPair[\
+CartesianIndex[i],CartesianIndex[j]]+\[ImaginaryI] \
+Eps[CartesianIndex[i],CartesianIndex[j],CartesianIndex[a_]] PauliSigma[CartesianIndex[a_]]]",
+"True"},
+{"fcstPauliTrick-ID16", "PauliTrick[CSI[i,j,i,j]]//Contract",
+"-3"},
+{"fcstPauliTrick-ID17", "PauliTrick[CSI[i,j,i]]//Contract",
+"-PauliSigma[CartesianIndex[j]]"},
+{"fcstPauliTrick-ID18",
+"PauliTrick[CSIS[p1].CSI[i].CSIS[p2]]//Contract",
+"(-I)*Eps[CartesianIndex[i], CartesianMomentum[p1], CartesianMomentum[p2]] - \
+CartesianPair[CartesianMomentum[p1], CartesianMomentum[p2]]*PauliSigma[CartesianIndex[i]] + \
+CartesianPair[CartesianIndex[i], CartesianMomentum[p2]]*PauliSigma[CartesianMomentum[p1]] + \
+CartesianPair[CartesianIndex[i], CartesianMomentum[p1]]*PauliSigma[CartesianMomentum[p2]]"},
+{"fcstPauliTrick-ID19", "PauliTrick[CSI[a,i,b]]//Contract",
+"(-I)*Eps[CartesianIndex[a], CartesianIndex[b], CartesianIndex[i]] + CartesianPair[CartesianIndex[b], \
+CartesianIndex[i]]*PauliSigma[CartesianIndex[a]] + CartesianPair[CartesianIndex[a], \
+CartesianIndex[i]]*PauliSigma[CartesianIndex[b]] - CartesianPair[CartesianIndex[a], \
+CartesianIndex[b]]*PauliSigma[CartesianIndex[i]]"},
+{"fcstPauliTrick-ID20",
+"MatchQ[FCSetPauliSigmaScheme[\"Naive\"]; PauliTrick[CSID[i,j]],\
+\[IndentingNewLine]CartesianPair[CartesianIndex[i,-1+D],CartesianIndex[j,-1+D]]+\[ImaginaryI] \
+Eps[CartesianIndex[i,-1+D],CartesianIndex[j,-1+D],CartesianIndex[a_,-1+D]] \
+PauliSigma[CartesianIndex[a_,D-1],D-1]]", "True"},
+{"fcstPauliTrick-ID21",
+"FCSetPauliSigmaScheme[\"None\"]; PauliTrick[CSID[i,j]]",
+"PauliSigma[CartesianIndex[i, -1 + D], -1 + D] . PauliSigma[CartesianIndex[j, -1 + \
+D], -1 + D]"},
+{"fcstPauliTrick-ID22", "PauliTrick[CSI[i, j, i], PauliReduce -> False, FCE -> True]",
+"-CSI[j]"}
+});
+
+Tests`Pauli`fcstPauliTrickAnticommutator =
+({
+{"fcstPauliTrickAnticommutator-ID1",
+"CSID[i,j,i]//PauliTrick//Contract//Simplify",
+"-((-3 + D)*PauliSigma[CartesianIndex[j, -1 + D], -1 + D])"},
+{"fcstPauliTrickAnticommutator-ID2",
+"CSID[i,j,k,i]//PauliTrick//Contract//Simplify",
+"(-3 + D)*PauliSigma[CartesianIndex[j, -1 + D], -1 + D] . \
+PauliSigma[CartesianIndex[k, -1 + D], -1 + D] + 2*PauliSigma[CartesianIndex[k, -1 + \
+D], -1 + D] . PauliSigma[CartesianIndex[j, -1 + D], -1 + D]"},
+{"fcstPauliTrickAnticommutator-ID3",
+"CSID[i,j,k,l,i]//PauliTrick//Contract//Simplify",
+"-((-3 + D)*PauliSigma[CartesianIndex[j, -1 + D], -1 + D] . \
+PauliSigma[CartesianIndex[k, -1 + D], -1 + D] . PauliSigma[CartesianIndex[l, -1 + D], \
+-1 + D]) - 2*PauliSigma[CartesianIndex[j, -1 + D], -1 + D] . \
+PauliSigma[CartesianIndex[l, -1 + D], -1 + D] . PauliSigma[CartesianIndex[k, -1 + D], \
+-1 + D] + 2*PauliSigma[CartesianIndex[k, -1 + D], -1 + D] . \
+PauliSigma[CartesianIndex[l, -1 + D], -1 + D] . PauliSigma[CartesianIndex[j, -1 + D], \
+-1 + D]"},
+{"fcstPauliTrickAnticommutator-ID4",
+"CSISD[p].CSID[j].CSISD[p]//PauliTrick",
+"-(CartesianPair[CartesianMomentum[p, -1 + D], CartesianMomentum[p, -1 + \
+D]]*PauliSigma[CartesianIndex[j, -1 + D], -1 + D]) + 2*CartesianPair[CartesianIndex[j, -1 + \
+D], CartesianMomentum[p, -1 + D]]*PauliSigma[CartesianMomentum[p, -1 + D], -1 + D]"},
+{"fcstPauliTrickAnticommutator-ID5",
+"CSISD[p].CSID[j,k].CSISD[p]//PauliTrick",
+"CartesianPair[CartesianMomentum[p, -1 + D], CartesianMomentum[p, -1 + D]]*PauliSigma[CartesianIndex[j, -1 + D],
+-1 + D] . PauliSigma[CartesianIndex[k, -1 + D], -1 + D] + 2*(-(CartesianPair[CartesianIndex[k, -1 + D],
+CartesianMomentum[p, -1 + D]]*PauliSigma[CartesianIndex[j, -1 + D], -1 + D] . PauliSigma[CartesianMomentum[p,
+-1 + D], -1 + D]) + CartesianPair[CartesianIndex[j, -1 + D], CartesianMomentum[p,
+-1 + D]]*PauliSigma[CartesianIndex[k, -1 + D], -1 + D] . PauliSigma[CartesianMomentum[p, -1 + D], -1 + D])"},
+{"fcstPauliTrickAnticommutator-ID6",
+"CSISD[p].CSID[j,k,l].CSISD[p]//PauliTrick",
+"-(CartesianPair[CartesianMomentum[p, -1 + D], CartesianMomentum[p, -1 + D]]*PauliSigma[CartesianIndex[j,
+-1 + D], -1 + D] . PauliSigma[CartesianIndex[k, -1 + D], -1 + D] . PauliSigma[CartesianIndex[l,
+-1 + D], -1 + D]) + 2*(CartesianPair[CartesianIndex[l, -1 + D], CartesianMomentum[p,
+-1 + D]]*PauliSigma[CartesianIndex[j, -1 + D], -1 + D] . PauliSigma[CartesianIndex[k,
+-1 + D], -1 + D] . PauliSigma[CartesianMomentum[p, -1 + D], -1 + D] -
+CartesianPair[CartesianIndex[k, -1 + D], CartesianMomentum[p, -1 + D]]*PauliSigma[CartesianIndex[j,
+-1 + D], -1 + D] . PauliSigma[CartesianIndex[l, -1 + D], -1 + D] . PauliSigma[CartesianMomentum[p,
+-1 + D], -1 + D] + CartesianPair[CartesianIndex[j, -1 + D], CartesianMomentum[p,
+-1 + D]]*PauliSigma[CartesianIndex[k, -1 + D], -1 + D] . PauliSigma[CartesianIndex[l,
+-1 + D], -1 + D] . PauliSigma[CartesianMomentum[p, -1 + D], -1 + D])"},
+{"fcstPauliTrickAnticommutator-ID7",
+"CSI[i,j,i]//PauliTrick[#,PauliReduce\[Rule]False]&\
+//Contract//Simplify", "-PauliSigma[CartesianIndex[j]]"},
+{"fcstPauliTrickAnticommutator-ID8",
+"CSI[i,j,k,i]//PauliTrick[#,PauliReduce\[Rule]False]&\
+//Contract//Simplify",
+"PauliSigma[CartesianIndex[j]] . PauliSigma[CartesianIndex[k]] + \
+2*PauliSigma[CartesianIndex[k]] . PauliSigma[CartesianIndex[j]]"},
+{"fcstPauliTrickAnticommutator-ID9",
+"CSI[i,j,k,l,i]//PauliTrick[#,PauliReduce\[Rule]False]&\
+//Contract//Simplify",
+"-PauliSigma[CartesianIndex[j]] . PauliSigma[CartesianIndex[k]] . \
+PauliSigma[CartesianIndex[l]] - 2*PauliSigma[CartesianIndex[j]] . \
+PauliSigma[CartesianIndex[l]] . PauliSigma[CartesianIndex[k]] + \
+2*PauliSigma[CartesianIndex[k]] . PauliSigma[CartesianIndex[l]] . \
+PauliSigma[CartesianIndex[j]]"},
+{"fcstPauliTrickAnticommutator-ID10",
+"CSIS[p].CSI[j].CSIS[p]//PauliTrick[#,PauliReduce\[Rule]False]&\
+//Contract//Simplify",
+"-(CartesianPair[CartesianMomentum[p], CartesianMomentum[p]]*PauliSigma[CartesianIndex[j]]) + \
+2*CartesianPair[CartesianIndex[j], CartesianMomentum[p]]*PauliSigma[CartesianMomentum[p]]"},
+{"fcstPauliTrickAnticommutator-ID11",
+"CSIS[p].CSI[j,k].CSIS[p]//PauliTrick[#,PauliReduce\[Rule]False]&\
+//Contract//Simplify",
+"CartesianPair[CartesianMomentum[p], CartesianMomentum[p]]*PauliSigma[CartesianIndex[j]] . \
+PauliSigma[CartesianIndex[k]] - 2*CartesianPair[CartesianIndex[k], \
+CartesianMomentum[p]]*PauliSigma[CartesianIndex[j]] . PauliSigma[CartesianMomentum[p]] + \
+2*CartesianPair[CartesianIndex[j], CartesianMomentum[p]]*PauliSigma[CartesianIndex[k]] . \
+PauliSigma[CartesianMomentum[p]]"},
+{"fcstPauliTrickAnticommutator-ID12",
+"CSIS[p].CSI[j,k,l].CSIS[p]//PauliTrick[#,PauliReduce\[Rule]False]&\
+//Contract//Simplify",
+"-(CartesianPair[CartesianMomentum[p], CartesianMomentum[p]]*PauliSigma[CartesianIndex[j]] . \
+PauliSigma[CartesianIndex[k]] . PauliSigma[CartesianIndex[l]]) + 2*CartesianPair[CartesianIndex[l], \
+CartesianMomentum[p]]*PauliSigma[CartesianIndex[j]] . PauliSigma[CartesianIndex[k]] . \
+PauliSigma[CartesianMomentum[p]] - 2*CartesianPair[CartesianIndex[k], \
+CartesianMomentum[p]]*PauliSigma[CartesianIndex[j]] . PauliSigma[CartesianIndex[l]] . \
+PauliSigma[CartesianMomentum[p]] + 2*CartesianPair[CartesianIndex[j], \
+CartesianMomentum[p]]*PauliSigma[CartesianIndex[k]] . PauliSigma[CartesianIndex[l]] . \
+PauliSigma[CartesianMomentum[p]]"},
+{"fcstPauliTrickAnticommutator-ID13",
+"Contract[PauliTrick[PauliTrick[CSI[i,j,i],PauliReduce\[Rule]False]\
+-CSI[i,j,i]]]//FCCanonicalizeDummyIndices//EpsEvaluate", "0"},
+{"fcstPauliTrickAnticommutator-ID14",
+"Contract[PauliTrick[PauliTrick[CSI[i,j,k,i],PauliReduce\[Rule]\
+False]-CSI[i,j,k,i]]]//FCCanonicalizeDummyIndices//EpsEvaluate",
+"0"},
+{"fcstPauliTrickAnticommutator-ID15",
+"Contract[PauliTrick[PauliTrick[CSI[i,j,k,l,i],PauliReduce\[Rule]\
+False]-CSI[i,j,k,l,i]]]//FCCanonicalizeDummyIndices//EpsEvaluate",
+"0"},
+{"fcstPauliTrickAnticommutator-ID16",
+"Contract[PauliTrick[PauliTrick[CSIS[p].CSI[j].CSIS[p],PauliReduce\
+\[Rule]False]-CSIS[p].CSI[j].CSIS[p]]]\
+//FCCanonicalizeDummyIndices//EpsEvaluate", "0"}
+});

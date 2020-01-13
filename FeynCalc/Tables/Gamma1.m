@@ -61,7 +61,7 @@ Which[(al + ga > 2) && (be + de >2),
 			2*PolyGamma[2, -2 + be + de] + 4*Zeta[3]))/(48*Gamma[be]*Gamma[de])
 			),
 			(be === 1) && (de === 1) && (al+ga>2),
-bd1 = ( (-2*Gamma[-2 + al + ga])/(Epsilon*Gamma[al]*Gamma[ga]) -
+(*bd1 = *)( (-2*Gamma[-2 + al + ga])/(Epsilon*Gamma[al]*Gamma[ga]) -
 	(Gamma[-2 + al + ga]*(EulerGamma - PolyGamma[0, -2 + al + ga]))/
 	(Gamma[al]*Gamma[ga]) - (Epsilon*Gamma[-2 + al + ga]*
 		(6*EulerGamma^2 + Pi^2 - 12*EulerGamma*PolyGamma[0, -2 + al + ga] +
@@ -77,7 +77,7 @@ bd1 = ( (-2*Gamma[-2 + al + ga])/(Epsilon*Gamma[al]*Gamma[ga]) -
 			2*PolyGamma[2, -2 + al + ga] + 4*Zeta[3]))/(48*Gamma[al]*Gamma[ga])
 			),
 		(al===1) && (be===1) && (ga===1) && (de===1),
-ag1bd1 = ( 4/Epsilon^2 + (4*EulerGamma)/Epsilon +
+(*ag1bd1 = *)( 4/Epsilon^2 + (4*EulerGamma)/Epsilon +
 	(12*EulerGamma^2 + Pi^2)/6 +
 	(Epsilon*(4*EulerGamma^3 + EulerGamma*Pi^2 + 2*Zeta[3]))/6 +
 	(Epsilon^2*(240*EulerGamma^4 + 120*EulerGamma^2*Pi^2 + 7*Pi^4 +

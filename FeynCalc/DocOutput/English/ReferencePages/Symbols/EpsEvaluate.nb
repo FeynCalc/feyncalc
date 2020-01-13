@@ -3,69 +3,94 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12571,        443]
-NotebookOptionsPosition[      8611,        319]
-NotebookOutlinePosition[     11395,        398]
-CellTagsIndexPosition[     11280,        392]
+NotebookDataLength[     14844,        522]
+NotebookOptionsPosition[     10834,        398]
+NotebookOutlinePosition[     13445,        471]
+CellTagsIndexPosition[     13330,        465]
 WindowTitle->EpsEvaluate
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/EpsEvaluate\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/EpsEvaluate"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Contract\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Contract"], "\<\"Eps\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Eps"], "\<\"LC\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/LC"], "\<\"Trick\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Trick"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/EpsEvaluate\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/EpsEvaluate"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 EpsEvaluate.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$49731], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/EpsEvaluate", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$78925], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/EpsEvaluate", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,16 +98,27 @@ EpsEvaluate.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["EpsEvaluate", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["EpsEvaluate", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"EpsEvaluate", "[", "expr", "]"}]], "InlineFormula"],
-     " \[LineSeparator]",
-     "applies total antisymmetry and linearity (w.r.t. Momentum's) to all \
-Levi-Civita tensors (Eps') in expr."
+     " \[LineSeparator]applies total antisymmetry and linearity (w.r.t. \
+momenta) to all Levi-Civita tensors (Eps') in expr."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -90,6 +126,57 @@ Levi-Civita tensors (Eps') in expr."
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}},
  CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1134527267],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "EpsEvaluate", "]"}]], "Input",
+ CellLabel->"In[705]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"Momentum", "\[Rule]", "All"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{275, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[705]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -108,7 +195,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1157327986],
+ CellID->1045845675],
 
 Cell[CellGroupData[{
 
@@ -118,26 +205,29 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2006863315],
+ CellID->227360342],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Trick", "[", 
-  RowBox[{
-   RowBox[{"LeviCivita", "[", 
-    RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], "]"}], 
-   " ", 
-   RowBox[{"FourVector", "[", 
-    RowBox[{
-     RowBox[{"p", "+", "q"}], ",", "\[Sigma]"}], "]"}]}], "]"}]], "Input",
+ RowBox[{
+  RowBox[{"Contract", "[", 
+   RowBox[{
+    RowBox[{"LC", "[", 
+     RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], "]"}], 
+    " ", 
+    RowBox[{"FV", "[", 
+     RowBox[{
+      RowBox[{"p", "+", "q"}], ",", "\[Sigma]"}], "]"}]}], "]"}], "//", 
+  "MomentumCombine"}]], "Input",
  CellTags->"EpsEvaluate",
  CellLabel->"In[1]:=",
  CellID->684764895],
 
 Cell[BoxData[
  FormBox[
-  SuperscriptBox["\[Epsilon]", 
+  SuperscriptBox[
+   OverscriptBox["\[Epsilon]", "_"], 
    RowBox[{
     FormBox[
      FormBox["\[Mu]",
@@ -162,12 +252,11 @@ Cell[BoxData[
          TraditionalForm], "_"]}],
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
- ImageSize->{70, 21},
+ ImageSize->{77, 17},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"EpsEvaluate",
- CellLabel->"Out[1]=",
- CellID->440945173]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -181,7 +270,8 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{
-   SuperscriptBox["\[Epsilon]", 
+   SuperscriptBox[
+    OverscriptBox["\[Epsilon]", "_"], 
     RowBox[{
      FormBox[
       FormBox["\[Mu]",
@@ -200,7 +290,8 @@ Cell[BoxData[
        FormBox["p",
         TraditionalForm], "_"],
       TraditionalForm]}]], "+", 
-   SuperscriptBox["\[Epsilon]", 
+   SuperscriptBox[
+    OverscriptBox["\[Epsilon]", "_"], 
     RowBox[{
      FormBox[
       FormBox["\[Mu]",
@@ -219,12 +310,11 @@ Cell[BoxData[
        FormBox["q",
         TraditionalForm], "_"],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- ImageSize->{117, 21},
+ ImageSize->{125, 17},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"EpsEvaluate",
- CellLabel->"Out[2]=",
- CellID->352429971]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -239,30 +329,21 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"Eps", "[", 
    RowBox[{
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Mu]", ",", "D"}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Nu]", ",", "D"}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Rho]", ",", "D"}], "]"}], ",", 
-    RowBox[{"Momentum", "[", "p", "]"}], ",", 
-    RowBox[{"Dimension", "\[Rule]", "D"}]}], "]"}], "+", 
+    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
+    RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}], ",", 
+    RowBox[{"LorentzIndex", "[", "\[Rho]", "]"}], ",", 
+    RowBox[{"Momentum", "[", "p", "]"}]}], "]"}], "+", 
   RowBox[{"Eps", "[", 
    RowBox[{
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Mu]", ",", "D"}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Nu]", ",", "D"}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Rho]", ",", "D"}], "]"}], ",", 
-    RowBox[{"Momentum", "[", "q", "]"}], ",", 
-    RowBox[{"Dimension", "\[Rule]", "D"}]}], "]"}]}]], "Output",
- ImageSize->{408, 67},
+    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
+    RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}], ",", 
+    RowBox[{"LorentzIndex", "[", "\[Rho]", "]"}], ",", 
+    RowBox[{"Momentum", "[", "q", "]"}]}], "]"}]}]], "Output",
+ ImageSize->{559, 33},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"EpsEvaluate",
- CellLabel->"Out[3]//StandardForm=",
- CellID->746268781]
+ CellLabel->"Out[3]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -298,10 +379,10 @@ Cell[TextData[{
   ButtonNote->"Eps"],
   FontFamily->"Verdana"],
  ", ",
- StyleBox[ButtonBox["LeviCivita",
+ StyleBox[ButtonBox["LC",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/LeviCivita",
-  ButtonNote->"LeviCivita"],
+  ButtonData->"paclet:FeynCalc/ref/LC",
+  ButtonNote->"LC"],
   FontFamily->"Verdana"],
  ", ",
  StyleBox[ButtonBox["Trick",
@@ -310,9 +391,7 @@ Cell[TextData[{
   ButtonNote->"Trick"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"EpsEvaluate",
- CellID->1755604338]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -329,22 +408,22 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 18, 31.633847}", 
+   "built" -> "{2020, 1, 5, 18, 55, 8.290141}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
     "EpsEvaluate[expr] applies total antisymmetry and linearity (w.r.t. \
-Momentum's) to all Levi-Civita tensors (Eps') in expr.", "synonyms" -> {}, 
-    "title" -> "EpsEvaluate", "titlemodifier" -> "", "windowtitle" -> 
-    "EpsEvaluate", "type" -> "Symbol", "uri" -> "FeynCalc/ref/EpsEvaluate"}, 
-  "SearchTextTranslated" -> ""},
+momenta) to all Levi-Civita tensors (Eps') in expr.", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "EpsEvaluate", "titlemodifier" -> "", 
+    "windowtitle" -> "EpsEvaluate", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/EpsEvaluate"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -353,7 +432,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -362,89 +441,89 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3379, 95, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[5876, 182, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1157327986]},
+   CellID->1045845675]},
  "EpsEvaluate"->{
-  Cell[4013, 124, 353, 11, 27, "Input",
+  Cell[6509, 211, 388, 13, 27, "Input",
    CellTags->"EpsEvaluate",
    CellID->684764895],
-  Cell[4369, 137, 754, 32, 42, "Output",
-   CellTags->"EpsEvaluate",
-   CellID->440945173],
-  Cell[5160, 174, 132, 4, 27, "Input",
+  Cell[6900, 226, 758, 32, 38, "Output",
+   CellTags->"EpsEvaluate"],
+  Cell[7695, 263, 132, 4, 27, "Input",
    CellTags->"EpsEvaluate",
    CellID->84932068],
-  Cell[5295, 180, 1072, 46, 42, "Output",
-   CellTags->"EpsEvaluate",
-   CellID->352429971],
-  Cell[6404, 231, 135, 4, 27, "Input",
+  Cell[7830, 269, 1102, 47, 38, "Output",
+   CellTags->"EpsEvaluate"],
+  Cell[8969, 321, 135, 4, 27, "Input",
    CellTags->"EpsEvaluate",
    CellID->1124825353],
-  Cell[6542, 237, 969, 27, 101, "Output",
-   CellTags->"EpsEvaluate",
-   CellID->746268781],
-  Cell[7879, 287, 690, 27, 32, "Text",
-   CellTags->"EpsEvaluate",
-   CellID->1755604338]}
+  Cell[9107, 327, 695, 18, 69, "Output",
+   CellTags->"EpsEvaluate"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10478, 363},
- {"EpsEvaluate", 10616, 367}
+ {"PrimaryExamplesSection", 12685, 442},
+ {"EpsEvaluate", 12824, 446}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[583, 21, 2257, 52, 51, "AnchorBarGrid",
+Cell[583, 21, 3244, 77, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2843, 75, 54, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2900, 78, 454, 13, 83, "Usage",
+Cell[3830, 100, 288, 11, 45, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4143, 115, 442, 12, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3379, 95, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4610, 131, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1134527267],
+Cell[5352, 157, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[CellGroupData[{
+Cell[5408, 161, 95, 2, 70, "Input"],
+Cell[5506, 165, 309, 10, 37, "Output"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5876, 182, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1157327986],
+ CellID->1045845675],
 Cell[CellGroupData[{
-Cell[3792, 114, 196, 6, 25, "ExampleSection",
- CellID->2006863315],
+Cell[6289, 201, 195, 6, 26, "ExampleSection",
+ CellID->227360342],
 Cell[CellGroupData[{
-Cell[4013, 124, 353, 11, 27, "Input",
+Cell[6509, 211, 388, 13, 27, "Input",
  CellTags->"EpsEvaluate",
  CellID->684764895],
-Cell[4369, 137, 754, 32, 42, "Output",
- CellTags->"EpsEvaluate",
- CellID->440945173]
+Cell[6900, 226, 758, 32, 38, "Output",
+ CellTags->"EpsEvaluate"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5160, 174, 132, 4, 27, "Input",
+Cell[7695, 263, 132, 4, 27, "Input",
  CellTags->"EpsEvaluate",
  CellID->84932068],
-Cell[5295, 180, 1072, 46, 42, "Output",
- CellTags->"EpsEvaluate",
- CellID->352429971]
+Cell[7830, 269, 1102, 47, 38, "Output",
+ CellTags->"EpsEvaluate"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6404, 231, 135, 4, 27, "Input",
+Cell[8969, 321, 135, 4, 27, "Input",
  CellTags->"EpsEvaluate",
  CellID->1124825353],
-Cell[6542, 237, 969, 27, 101, "Output",
- CellTags->"EpsEvaluate",
- CellID->746268781]
+Cell[9107, 327, 695, 18, 69, "Output",
+ CellTags->"EpsEvaluate"]
 }, Open  ]]
 }, Open  ]],
-Cell[7538, 268, 31, 0, 29, "SectionFooterSpacer"]
+Cell[9829, 349, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7606, 273, 270, 12, 31, "SeeAlsoSection",
+Cell[9897, 354, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7879, 287, 690, 27, 32, "Text",
- CellTags->"EpsEvaluate",
- CellID->1755604338]
+Cell[10170, 368, 622, 25, 56, "SeeAlso"]
 }, Open  ]],
-Cell[8584, 317, 23, 0, 42, "FooterCell"]
+Cell[10807, 396, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

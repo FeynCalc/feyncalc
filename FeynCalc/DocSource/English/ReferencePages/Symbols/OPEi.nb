@@ -191,14 +191,13 @@ Cell[CellGroupData[{
 
 Cell[BoxData["OPEi"], "Input",
  CellTags->"OPEi",
- CellLabel->"In[1]:=",
+ CellLabel->"In[35]:=",
  CellID->1513541744],
 
 Cell[BoxData[
  FormBox["i", TraditionalForm]], "Output",
  CellTags->"OPEi",
- CellLabel->"Out[1]=",
- CellID->1058262689]
+ CellLabel->"Out[35]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -210,7 +209,7 @@ Cell[BoxData[
    " ", "OPEn", ",", " ", "OPEo", ",", " ", "PositiveInteger"}], 
   "]"}]], "Input",
  CellTags->"OPEi",
- CellLabel->"In[2]:=",
+ CellLabel->"In[36]:=",
  CellID->1628297296],
 
 Cell[BoxData[
@@ -220,8 +219,7 @@ Cell[BoxData[
    "True", ",", "True", ",", "True", ",", "True", ",", "True", ",", "True", 
     ",", "True"}], "}"}], TraditionalForm]], "Output",
  CellTags->"OPEi",
- CellLabel->"Out[2]=",
- CellID->1847732928]
+ CellLabel->"Out[36]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -266,7 +264,7 @@ Cell[BoxData[
      RowBox[{"(", 
       RowBox[{"2", "OPEo"}], ")"}]}]}], "}"}], "]"}]], "Input",
  CellTags->"OPEi",
- CellLabel->"In[3]:=",
+ CellLabel->"In[37]:=",
  CellID->233448399],
 
 Cell[BoxData[
@@ -275,13 +273,10 @@ Cell[BoxData[
    RowBox[{"1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1"}], 
    "}"}], TraditionalForm]], "Output",
  CellTags->"OPEi",
- CellLabel->"Out[3]=",
- CellID->1115714619]
+ CellLabel->"Out[37]="]
 }, Open  ]],
 
-Cell["Re has been changed:", "Text",
- CellTags->"OPEi",
- CellID->920512070],
+Cell["Re has been changed:", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -302,7 +297,7 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"Re", "[", "OPEi", "]"}], ">", "1"}]}], "}"}]], "Input",
  CellTags->"OPEi",
- CellLabel->"In[4]:=",
+ CellLabel->"In[38]:=",
  CellID->631981450],
 
 Cell[BoxData[
@@ -324,8 +319,7 @@ Cell[BoxData[
      RowBox[{"Re", "(", "i", ")"}], ">", "1"}]}], "}"}], 
   TraditionalForm]], "Output",
  CellTags->"OPEi",
- CellLabel->"Out[4]=",
- CellID->1830261914]
+ CellLabel->"Out[38]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -349,7 +343,7 @@ Cell[BoxData[
       RowBox[{"-", "OPEi"}], " ", "+", " ", "OPEm"}], "]"}], " ", ">", " ", 
     "2"}]}], "}"}]], "Input",
  CellTags->"OPEi",
- CellLabel->"In[5]:=",
+ CellLabel->"In[39]:=",
  CellID->1153963056],
 
 Cell[BoxData[
@@ -367,8 +361,7 @@ Cell[BoxData[
       RowBox[{"m", "-", "i"}], ")"}], ">", "2"}]}], "}"}], 
   TraditionalForm]], "Output",
  CellTags->"OPEi",
- CellLabel->"Out[5]=",
- CellID->480392578]
+ CellLabel->"Out[39]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -390,7 +383,7 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"Re", "[", "OPEm", "]"}], ">", "1"}]}], "}"}]], "Input",
  CellTags->"OPEi",
- CellLabel->"In[6]:=",
+ CellLabel->"In[40]:=",
  CellID->1255237485],
 
 Cell[BoxData[
@@ -412,8 +405,7 @@ Cell[BoxData[
      RowBox[{"Re", "(", "m", ")"}], ">", "1"}]}], "}"}], 
   TraditionalForm]], "Output",
  CellTags->"OPEi",
- CellLabel->"Out[6]=",
- CellID->718023073]
+ CellLabel->"Out[40]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -478,12 +470,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{718, Automatic}, {Automatic, 138}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

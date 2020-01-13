@@ -160,7 +160,6 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  ButtonBox["LorentzIndex",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/LorentzIndex",
@@ -171,9 +170,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Pair",
   ButtonNote->"Pair"],
  "."
-}], "Text",
- CellTags->"ExplicitLorentzIndex",
- CellID->617137688]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -208,7 +205,7 @@ Cell[BoxData[
    RowBox[{"LorentzIndex", "[", "1", "]"}], ",", 
    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}]}], "]"}]], "Input",
  CellTags->"ExplicitLorentzIndex",
- CellLabel->"In[1]:=",
+ CellLabel->"In[740]:=",
  CellID->537373072],
 
 Cell[BoxData[
@@ -217,20 +214,15 @@ Cell[BoxData[
    OverscriptBox["g", "_"], 
    RowBox[{
     FormBox[
-     FormBox[
-      FormBox["1",
-       TraditionalForm],
+     FormBox["1",
       TraditionalForm],
      TraditionalForm], 
     FormBox[
-     FormBox[
-      FormBox["\[Mu]",
-       TraditionalForm],
+     FormBox["\[Mu]",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"ExplicitLorentzIndex",
- CellLabel->"Out[1]=",
- CellID->1531481784]
+ CellLabel->"Out[740]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -238,7 +230,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"%", "//", "StandardForm"}]], "Input",
  CellTags->"ExplicitLorentzIndex",
- CellLabel->"In[2]:=",
+ CellLabel->"In[741]:=",
  CellID->93969146],
 
 Cell[BoxData[
@@ -247,8 +239,7 @@ Cell[BoxData[
    RowBox[{"ExplicitLorentzIndex", "[", "1", "]"}], ",", 
    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}]}], "]"}]], "Output",
  CellTags->"ExplicitLorentzIndex",
- CellLabel->"Out[2]//StandardForm=",
- CellID->551395089]
+ CellLabel->"Out[741]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -313,12 +304,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{962, Automatic}, {Automatic, 210}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

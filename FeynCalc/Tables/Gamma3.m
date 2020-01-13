@@ -22,7 +22,11 @@ End[]
 
 Begin["`Gamma3`Private`"]
 
-Options[Gamma3] = {EpsilonOrder -> 3};
+gamma3::usage="";
+
+Options[Gamma3] = {
+	EpsilonOrder -> 3
+};
 
 Gamma3[al_ /;Head[al]=!=Integer, be_, ga_, ep_,___Rule] :=
 Gamma[al+be+ga+ep-4-Epsilon]/Gamma[al+be+ep-2-Epsilon/2]/Gamma[ga] *

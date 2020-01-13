@@ -1,0 +1,37 @@
+
+
+(* :Title: DiracChainFactor.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for DiracChainFactor	*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Dirac`fcstDiracChainFactor =
+({
+{"fcstDiracChainFactor-ID1",
+"DiracChainFactor[DCHN[GA[mu].GA[$AL[$31]].GA[mu] \
+FV[p,$AL[$31]],i,j]]",
+"DiracChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[LorentzIndex[$AL[$31]]] . DiracGamma[LorentzIndex[mu]], \
+DiracIndex[i], DiracIndex[j]]*Pair[LorentzIndex[$AL[$31]], \
+Momentum[p]]"},
+{"fcstDiracChainFactor-ID2",
+"DiracChainFactor[DCHN[GA[mu].GA[$AL[$31]].GA[mu]x,i,j]]",
+"x*DiracChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[LorentzIndex[$AL[$31]]] . DiracGamma[LorentzIndex[mu]], \
+DiracIndex[i], DiracIndex[j]]"},
+{"fcstDiracChainFactor-ID3",
+"DiracChainFactor[DCHN[GA[mu].z.GA[$AL[$31]].GA[mu]x,i,j]]",
+"x*z*DiracChain[DiracGamma[LorentzIndex[mu]] . \
+DiracGamma[LorentzIndex[$AL[$31]]] . DiracGamma[LorentzIndex[mu]], \
+DiracIndex[i], DiracIndex[j]]"},
+{"fcstDiracChainFactor-ID4", "DiracChainFactor[DCHN[(x.y.z),i,j]]",
+"DiracChain[1, DiracIndex[i], DiracIndex[j]]*x . y . z"}
+});

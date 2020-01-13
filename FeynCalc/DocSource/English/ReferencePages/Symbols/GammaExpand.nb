@@ -165,9 +165,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/GammaEpsilon",
   ButtonNote->"GammaEpsilon"],
  "."
-}], "Text",
- CellTags->"GammaExpand",
- CellID->1346477755]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -201,7 +199,7 @@ Cell[BoxData[
   RowBox[{"Gamma", "[", 
    RowBox[{"2", " ", "+", " ", "Epsilon"}], "]"}], "]"}]], "Input",
  CellTags->"GammaExpand",
- CellLabel->"In[1]:=",
+ CellLabel->"In[196]:=",
  CellID->53996644],
 
 Cell[BoxData[
@@ -215,8 +213,7 @@ Cell[BoxData[
        TagBox["\[CurlyEpsilon]", TraditionalForm], "+", "1"}]},
     "Gamma"]}], TraditionalForm]], "Output",
  CellTags->"GammaExpand",
- CellLabel->"Out[1]=",
- CellID->388026766]
+ CellLabel->"Out[196]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -227,7 +224,7 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"-", "3"}], "+", "Epsilon"}], "]"}], "]"}]], "Input",
  CellTags->"GammaExpand",
- CellLabel->"In[2]:=",
+ CellLabel->"In[197]:=",
  CellID->1712828018],
 
 Cell[BoxData[
@@ -252,8 +249,7 @@ Cell[BoxData[
     TagBox["\[CurlyEpsilon]",
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"GammaExpand",
- CellLabel->"Out[2]=",
- CellID->842543076]
+ CellLabel->"Out[197]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -263,7 +259,7 @@ Cell[BoxData[
   RowBox[{"Gamma", "[", 
    RowBox[{"1", " ", "+", " ", "Epsilon"}], "]"}], "]"}]], "Input",
  CellTags->"GammaExpand",
- CellLabel->"In[3]:=",
+ CellLabel->"In[198]:=",
  CellID->509676592],
 
 Cell[BoxData[
@@ -272,8 +268,7 @@ Cell[BoxData[
       TagBox["\[CurlyEpsilon]", TraditionalForm], "+", "1"}]},
    "Gamma"], TraditionalForm]], "Output",
  CellTags->"GammaExpand",
- CellLabel->"Out[3]=",
- CellID->861147229]
+ CellLabel->"Out[198]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -338,12 +333,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{959, Automatic}, {Automatic, 261}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

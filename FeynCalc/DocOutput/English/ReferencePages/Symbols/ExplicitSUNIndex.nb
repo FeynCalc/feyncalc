@@ -3,69 +3,96 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8708,        290]
-NotebookOptionsPosition[      5521,        195]
-NotebookOutlinePosition[      7928,        261]
-CellTagsIndexPosition[      7810,        255]
+NotebookDataLength[      9716,        314]
+NotebookOptionsPosition[      6652,        225]
+NotebookOutlinePosition[      9017,        289]
+CellTagsIndexPosition[      8899,        283]
 WindowTitle->ExplicitSUNIndex
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/ExplicitSUNIndex\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/ExplicitSUNIndex"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FCI\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FCI"], "\<\"SUNDelta\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SUNDelta"], "\<\"SUNF\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SUNF"], "\<\"SUNIndex\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/SUNIndex"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/ExplicitSUNIndex\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/ExplicitSUNIndex"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 ExplicitSUNIndex.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$53854], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/ExplicitSUNIndex", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$86035], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/ExplicitSUNIndex", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,18 +100,25 @@ ExplicitSUNIndex.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["ExplicitSUNIndex", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["ExplicitSUNIndex", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"ExplicitSUNIndex", "[", "ind", "]"}]], "InlineFormula"],
-     " \[LineSeparator]",
-     "is a specific SU(",
-     StyleBox["N",
-      FontSlant->"Italic"],
-     ") index, i.e., ind is an integer."
+     " \[LineSeparator] is a specific SU(N) index in the adjoint \
+representation, i.e. ind is an integer."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -110,7 +144,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->843626271],
+ CellID->1221262894],
 
 Cell[CellGroupData[{
 
@@ -120,7 +154,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1752506694],
+ CellID->482876599],
 
 Cell[CellGroupData[{
 
@@ -132,12 +166,11 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox["1", TraditionalForm]], "Output",
- ImageSize->{11, 15},
+ ImageSize->{11, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ExplicitSUNIndex",
- CellLabel->"Out[1]=",
- CellID->835416034]
+ CellLabel->"Out[1]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -161,7 +194,6 @@ Cell[TextData[{
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  StyleBox[ButtonBox["FCI",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/FCI",
@@ -186,9 +218,7 @@ Cell[TextData[{
   ButtonNote->"SUNIndex"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"ExplicitSUNIndex",
- CellID->1491985045]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -196,7 +226,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 WindowTitle->"ExplicitSUNIndex",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -205,21 +235,22 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 18, 49.571935}", 
+   "built" -> "{2020, 1, 5, 18, 55, 27.182038}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
-    "ExplicitSUNIndex[ind] is a specific SU(N) index, i.e., ind is an \
-integer.", "synonyms" -> {}, "title" -> "ExplicitSUNIndex", "titlemodifier" -> 
-    "", "windowtitle" -> "ExplicitSUNIndex", "type" -> "Symbol", "uri" -> 
+    "ExplicitSUNIndex[ind] is a specific SU(N) index in the adjoint \
+representation, i.e. ind is an integer.", "synonyms" -> {}, "tabletags" -> {},
+     "title" -> "ExplicitSUNIndex", "titlemodifier" -> "", "windowtitle" -> 
+    "ExplicitSUNIndex", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/ExplicitSUNIndex"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -227,8 +258,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -237,61 +269,53 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3414, 97, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4629, 131, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->843626271]},
+   CellID->1221262894]},
  "ExplicitSUNIndex"->{
-  Cell[4047, 126, 143, 4, 27, "Input",
+  Cell[5262, 160, 143, 4, 27, "Input",
    CellTags->"ExplicitSUNIndex",
    CellID->902504379],
-  Cell[4193, 132, 217, 7, 36, "Output",
-   CellTags->"ExplicitSUNIndex",
-   CellID->835416034],
-  Cell[4778, 162, 701, 28, 31, "Text",
-   CellTags->"ExplicitSUNIndex",
-   CellID->1491985045]}
+  Cell[5408, 166, 197, 6, 35, "Output",
+   CellTags->"ExplicitSUNIndex"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7357, 238},
- {"ExplicitSUNIndex", 7499, 242}
+ {"PrimaryExamplesSection", 8562, 270},
+ {"ExplicitSUNIndex", 8706, 274}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[588, 21, 2277, 52, 51, "AnchorBarGrid",
+Cell[588, 21, 3290, 79, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2868, 75, 59, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2930, 78, 459, 15, 83, "Usage",
+Cell[3881, 102, 293, 11, 45, "ObjectNameGrid"],
+Cell[4177, 115, 427, 12, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3414, 97, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4629, 131, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->843626271],
+ CellID->1221262894],
 Cell[CellGroupData[{
-Cell[3826, 116, 196, 6, 25, "ExampleSection",
- CellID->1752506694],
+Cell[5042, 150, 195, 6, 26, "ExampleSection",
+ CellID->482876599],
 Cell[CellGroupData[{
-Cell[4047, 126, 143, 4, 27, "Input",
+Cell[5262, 160, 143, 4, 27, "Input",
  CellTags->"ExplicitSUNIndex",
  CellID->902504379],
-Cell[4193, 132, 217, 7, 36, "Output",
- CellTags->"ExplicitSUNIndex",
- CellID->835416034]
+Cell[5408, 166, 197, 6, 35, "Output",
+ CellTags->"ExplicitSUNIndex"]
 }, Open  ]]
 }, Open  ]],
-Cell[4437, 143, 31, 0, 29, "SectionFooterSpacer"]
+Cell[5632, 176, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4505, 148, 270, 12, 31, "SeeAlsoSection",
+Cell[5700, 181, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[4778, 162, 701, 28, 31, "Text",
- CellTags->"ExplicitSUNIndex",
- CellID->1491985045]
+Cell[5973, 195, 637, 25, 56, "SeeAlso"]
 }, Open  ]],
-Cell[5494, 193, 23, 0, 42, "FooterCell"]
+Cell[6625, 223, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

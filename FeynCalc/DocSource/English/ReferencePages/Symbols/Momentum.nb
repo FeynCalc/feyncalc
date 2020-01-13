@@ -182,9 +182,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/MomentumExpand",
   ButtonNote->"MomentumExpand"],
  "."
-}], "Text",
- CellTags->"Momentum",
- CellID->1626096776]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -211,16 +209,14 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell["This is a four dimensional momentum.", "Text",
- CellTags->"Momentum",
- CellID->44749889],
+Cell["This is a 4-dimensional momentum.", "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Momentum", "[", "p", "]"}]], "Input",
  CellTags->"Momentum",
- CellLabel->"In[1]:=",
+ CellLabel->"In[44]:=",
  CellID->600679238],
 
 Cell[BoxData[
@@ -229,16 +225,13 @@ Cell[BoxData[
    FormBox["p",
     TraditionalForm], "_"], TraditionalForm]], "Output",
  CellTags->"Momentum",
- CellLabel->"Out[1]=",
- CellID->798967831]
+ CellLabel->"Out[44]="]
 }, Open  ]],
 
 Cell["\<\
 As an optional second argument the dimension must be specified if it is \
 different from 4.\
-\>", "Text",
- CellTags->"Momentum",
- CellID->799788808],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -246,46 +239,39 @@ Cell[BoxData[
  RowBox[{"Momentum", "[", 
   RowBox[{"p", ",", "D"}], "]"}]], "Input",
  CellTags->"Momentum",
- CellLabel->"In[2]:=",
+ CellLabel->"In[45]:=",
  CellID->298033535],
 
 Cell[BoxData[
  FormBox["p", TraditionalForm]], "Output",
  CellTags->"Momentum",
- CellLabel->"Out[2]=",
- CellID->1920158684]
+ CellLabel->"Out[45]="]
 }, Open  ]],
 
-Cell["The dimension index is supressed in the output.", "Text",
- CellTags->"Momentum",
- CellID->179507545],
+Cell["The dimension index is supressed in the output.", "Notes"],
 
 Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"Momentum", "[", 
-   RowBox[{"p", ",", "d"}], "]"}], "//", "StandardForm"}]], "Input",
- CellTags->"Momentum",
- CellLabel->"In[3]:=",
- CellID->22007276],
 
 Cell[BoxData[
  RowBox[{"Momentum", "[", 
-  RowBox[{"p", ",", "d"}], "]"}]], "Output",
+  RowBox[{"p", ",", "d"}], "]"}]], "Input",
  CellTags->"Momentum",
- CellLabel->"Out[3]//StandardForm=",
- CellID->60455233]
+ CellLabel->"In[46]:=",
+ CellID->22007276],
+
+Cell[BoxData[
+ FormBox["p", TraditionalForm]], "Output",
+ CellTags->"Momentum",
+ CellLabel->"Out[46]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"a1", "=", 
-  RowBox[{"Momentum", "[", 
-   RowBox[{"-", "q"}], "]"}]}]], "Input",
+ RowBox[{"Momentum", "[", 
+  RowBox[{"-", "q"}], "]"}]], "Input",
  CellTags->"Momentum",
- CellLabel->"In[4]:=",
+ CellLabel->"In[47]:=",
  CellID->1076166182],
 
 Cell[BoxData[
@@ -295,37 +281,35 @@ Cell[BoxData[
     FormBox["q",
      TraditionalForm], "_"]}], TraditionalForm]], "Output",
  CellTags->"Momentum",
- CellLabel->"Out[4]=",
- CellID->1153531189]
+ CellLabel->"Out[47]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"a1", "//", "StandardForm"}]], "Input",
+ RowBox[{"%", "//", "StandardForm"}]], "Input",
  CellTags->"Momentum",
- CellLabel->"In[5]:=",
+ CellLabel->"In[48]:=",
  CellID->1156784400],
 
 Cell[BoxData[
  RowBox[{"-", 
   RowBox[{"Momentum", "[", "q", "]"}]}]], "Output",
  CellTags->"Momentum",
- CellLabel->"Out[5]//StandardForm=",
- CellID->129102697]
+ CellLabel->"Out[48]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"a2", " ", "=", " ", 
+ RowBox[{" ", 
   RowBox[{
    RowBox[{"Momentum", "[", 
     RowBox[{"p", "-", "q"}], "]"}], " ", "+", " ", 
    RowBox[{"Momentum", "[", 
     RowBox[{"2", "q"}], "]"}]}]}]], "Input",
  CellTags->"Momentum",
- CellLabel->"In[6]:=",
+ CellLabel->"In[49]:=",
  CellID->1010535805],
 
 Cell[BoxData[
@@ -346,16 +330,15 @@ Cell[BoxData[
      FormBox["q",
       TraditionalForm], "_"]}]}], TraditionalForm]], "Output",
  CellTags->"Momentum",
- CellLabel->"Out[6]=",
- CellID->1815470309]
+ CellLabel->"Out[49]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"a2", "//", "StandardForm"}]], "Input",
+ RowBox[{"%", "//", "StandardForm"}]], "Input",
  CellTags->"Momentum",
- CellLabel->"In[7]:=",
+ CellLabel->"In[50]:=",
  CellID->856207433],
 
 Cell[BoxData[
@@ -365,17 +348,16 @@ Cell[BoxData[
   RowBox[{"2", " ", 
    RowBox[{"Momentum", "[", "q", "]"}]}]}]], "Output",
  CellTags->"Momentum",
- CellLabel->"Out[7]//StandardForm=",
- CellID->1334247030]
+ CellLabel->"Out[50]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"a2", "//", "MomentumExpand"}], "//", "StandardForm"}]], "Input",
+  RowBox[{"%%", "//", "MomentumExpand"}], "//", "StandardForm"}]], "Input",
  CellTags->"Momentum",
- CellLabel->"In[8]:=",
+ CellLabel->"In[51]:=",
  CellID->265634009],
 
 Cell[BoxData[
@@ -383,25 +365,23 @@ Cell[BoxData[
   RowBox[{"Momentum", "[", "p", "]"}], "+", 
   RowBox[{"Momentum", "[", "q", "]"}]}]], "Output",
  CellTags->"Momentum",
- CellLabel->"Out[8]//StandardForm=",
- CellID->748631793]
+ CellLabel->"Out[51]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"a2", "//", "MomentumCombine"}], "//", "StandardForm"}]], "Input",
+  RowBox[{"%%%", "//", "MomentumCombine"}], "//", "StandardForm"}]], "Input",
  CellTags->"Momentum",
- CellLabel->"In[9]:=",
+ CellLabel->"In[52]:=",
  CellID->168866988],
 
 Cell[BoxData[
  RowBox[{"Momentum", "[", 
   RowBox[{"p", "+", "q"}], "]"}]], "Output",
  CellTags->"Momentum",
- CellLabel->"Out[9]//StandardForm=",
- CellID->2082587543]
+ CellLabel->"Out[52]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -413,23 +393,15 @@ Cell[BoxData[
     RowBox[{"Momentum", "[", "p", "]"}], ",", "d"}], "]"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"Momentum",
- CellLabel->"In[10]:=",
+ CellLabel->"In[53]:=",
  CellID->1679956191],
 
 Cell[BoxData[
  RowBox[{"Momentum", "[", 
   RowBox[{"p", ",", "d"}], "]"}]], "Output",
  CellTags->"Momentum",
- CellLabel->"Out[10]//StandardForm=",
- CellID->932042446]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{"Clear", "[", 
-  RowBox[{"a1", ",", "a2"}], "]"}]], "Input",
- CellTags->"Momentum",
- CellLabel->"In[11]:=",
- CellID->919568834]
+ CellLabel->"Out[53]//StandardForm="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -493,12 +465,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{667, Automatic}, {Automatic, 33}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

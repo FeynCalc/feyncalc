@@ -188,16 +188,12 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell["Examples", "Subsubsection",
- CellTags->"Dimension",
- CellID->269185513],
-
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "MetricTensor", "]"}]], "Input",
+ RowBox[{"Options", "[", "ScalarProduct", "]"}]], "Input",
  CellTags->"Dimension",
- CellLabel->"In[1]:=",
+ CellLabel->"In[601]:=",
  CellID->48360105],
 
 Cell[BoxData[
@@ -205,193 +201,56 @@ Cell[BoxData[
   RowBox[{"{", 
    RowBox[{
     RowBox[{"Dimension", "\[Rule]", "4"}], ",", 
-    RowBox[{"FeynCalcInternal", "\[Rule]", "True"}]}], "}"}], 
-  TraditionalForm]], "Output",
+    RowBox[{"FeynCalcInternal", "\[Rule]", "True"}], ",", 
+    RowBox[{"SetDimensions", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"4", ",", "D"}], "}"}]}]}], "}"}], TraditionalForm]], "Output",
  CellTags->"Dimension",
- CellLabel->"Out[1]=",
- CellID->1017306369]
+ CellLabel->"Out[601]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{"MetricTensor", "[", 
-   RowBox[{"m", ",", "n", ",", 
-    RowBox[{"Dimension", "\[Rule]", "d"}]}], "]"}], 
-  RowBox[{"DiracMatrix", "[", 
-   RowBox[{"\[Alpha]", ",", 
-    RowBox[{"Dimension", "\[Rule]", "d"}]}], "]"}]}]], "Input",
+ RowBox[{"ScalarProduct", "[", 
+  RowBox[{"m", ",", "n", ",", 
+   RowBox[{"Dimension", "\[Rule]", "d"}]}], "]"}]], "Input",
  CellTags->"Dimension",
- CellLabel->"In[2]:=",
+ CellLabel->"In[602]:=",
  CellID->1811829745],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   SuperscriptBox["\[Gamma]", 
-    FormBox[
-     FormBox["\[Alpha]",
-      TraditionalForm],
-     TraditionalForm]], " ", 
    FormBox[
-    SuperscriptBox["g", 
-     RowBox[{
-      FormBox[
-       FormBox[
-        FormBox["m",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox[
-        FormBox["n",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm]}]],
+    FormBox["m",
+     TraditionalForm],
+    TraditionalForm], 
+   FormBox["\<\"\[CenterDot]\"\>",
+    TraditionalForm], 
+   FormBox[
+    FormBox["n",
+     TraditionalForm],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"Dimension",
- CellLabel->"Out[2]=",
- CellID->1365396948]
-}, Open  ]],
-
-Cell["\<\
-The dimension of the indices is not shown by default but can be inspected \
-easily.\
-\>", "Text",
- CellTags->"Dimension",
- CellID->1652643284],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{
-   RowBox[{"MetricTensor", "[", 
-    RowBox[{"m", ",", "n", ",", 
-     RowBox[{"Dimension", "\[Rule]", "d"}]}], "]"}], 
-   RowBox[{"DiracMatrix", "[", 
-    RowBox[{"\[Alpha]", ",", 
-     RowBox[{"Dimension", "\[Rule]", "d"}]}], "]"}]}], "//", 
-  "StandardForm"}]], "Input",
- CellTags->"Dimension",
- CellLabel->"In[3]:=",
- CellID->799099233],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"DiracGamma", "[", 
-   RowBox[{
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Alpha]", ",", "d"}], "]"}], ",", "d"}], "]"}], " ", 
-  RowBox[{"Pair", "[", 
-   RowBox[{
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"m", ",", "d"}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"n", ",", "d"}], "]"}]}], "]"}]}]], "Output",
- CellTags->"Dimension",
- CellLabel->"Out[3]//StandardForm=",
- CellID->379657902]
-}, Open  ]],
-
-Cell["\<\
-Setting the global variable $LorentzIndices to True will display the \
-dimension (if different from 4) as a subscript.\
-\>", "Text",
- CellTags->"Dimension",
- CellID->1658312621],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"$LorentzIndices", "=", "True"}], ";"}]], "Input",
- CellTags->"Dimension",
- CellLabel->"In[4]:=",
- CellID->136991377],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"MetricTensor", "[", 
-   RowBox[{"\[Alpha]", ",", "\[Beta]", ",", 
-    RowBox[{"Dimension", "\[Rule]", "n"}]}], "]"}], 
-  RowBox[{"DiracMatrix", "[", 
-   RowBox[{"\[Alpha]", ",", 
-    RowBox[{"Dimension", "\[Rule]", "n"}]}], "]"}]}]], "Input",
- CellTags->"Dimension",
- CellLabel->"In[5]:=",
- CellID->1877198136],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   SuperscriptBox["\[Gamma]", 
-    FormBox[
-     SubscriptBox[
-      FormBox["\[Alpha]",
-       TraditionalForm], 
-      FormBox["n",
-       TraditionalForm]],
-     TraditionalForm]], " ", 
-   FormBox[
-    SuperscriptBox["g", 
-     RowBox[{
-      FormBox[
-       FormBox[
-        SubscriptBox[
-         FormBox["\[Alpha]",
-          TraditionalForm], 
-         FormBox["n",
-          TraditionalForm]],
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox[
-        SubscriptBox[
-         FormBox["\[Beta]",
-          TraditionalForm], 
-         FormBox["n",
-          TraditionalForm]],
-        TraditionalForm],
-       TraditionalForm]}]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- CellTags->"Dimension",
- CellLabel->"Out[5]=",
- CellID->1953179545]
+ CellLabel->"Out[602]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"%", "//", "StandardForm"}]], "Input",
- CellTags->"Dimension",
- CellLabel->"In[6]:=",
- CellID->40947459],
+ CellLabel->"In[603]:="],
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{"DiracGamma", "[", 
-   RowBox[{
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Alpha]", ",", "n"}], "]"}], ",", "n"}], "]"}], " ", 
-  RowBox[{"Pair", "[", 
-   RowBox[{
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Alpha]", ",", "n"}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Beta]", ",", "n"}], "]"}]}], "]"}]}]], "Output",
- CellTags->"Dimension",
- CellLabel->"Out[6]//StandardForm=",
- CellID->1903897849]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"$LorentzIndices", "=", "False"}], ";"}]], "Input",
- CellTags->"Dimension",
- CellLabel->"In[7]:=",
- CellID->889371773]
+ RowBox[{"Pair", "[", 
+  RowBox[{
+   RowBox[{"Momentum", "[", 
+    RowBox[{"m", ",", "d"}], "]"}], ",", 
+   RowBox[{"Momentum", "[", 
+    RowBox[{"n", ",", "d"}], "]"}]}], "]"}]], "Output",
+ CellLabel->"Out[603]//StandardForm="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -455,12 +314,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{939, Automatic}, {Automatic, 156}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

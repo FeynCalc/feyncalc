@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2018 Rolf Mertig
-	Copyright (C) 1997-2018 Frederik Orellana
-	Copyright (C) 2014-2018 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Writes expressions to files 									*)
@@ -61,6 +61,7 @@ optFFDP::usage="";
 w2Verbose::usage="";
 finsubst::usage="";
 pagewidth::usage="";
+optFormatType::usage="";
 
 Options[Write2] = {
 	D0Convention -> 0,
@@ -95,7 +96,7 @@ Write2[file_String, expr:Except[_?OptionQ].., OptionsPattern[]] :=
 
 		If[	OptionValue[FCVerbose]===False,
 			w2Verbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				w2Verbose=OptionValue[FCVerbose]
 			];
 		];
@@ -410,7 +411,7 @@ vhf[n_. y_HoldForm] :=
 	Block[ {kk, qq},
 		FCPrint[2,"Write2: vhf: Entering with ", n y];
 		kk = y[[1, 0]];
-		(Table[ HoldForm @@ {qq[ii]}, {ii, y[[1,1]]} ] /. qq -> kk)/.finsubst
+		(Table[ HoldForm @@ {qq[i]}, {i, y[[1,1]]} ] /. qq -> kk)/.finsubst
 	] /; NumberQ[n];
 
 vhf[y_] :=
@@ -446,7 +447,7 @@ pww[x_,1/2] :=
 pww[x_, rat_Rational] :=
 	(Power[x,N[rat]]/. xxx_Real/; optFFDP :> fhead[xxx]);
 pww[x_, he_] :=
-	((x^he)/. xxx_Real/; optFFDP :> fhead[xxx]) /; Head[he]=!=Rational;
+	((x^he)/. z_Real/; optFFDP :> fhead[z]) /; Head[he]=!=Rational;
 
 fhead[x_]:=
 	x/; Head[x]=!=Real && FreeQ2[{x},{Pattern,Blank}];

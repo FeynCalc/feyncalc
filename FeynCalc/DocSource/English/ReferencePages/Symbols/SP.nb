@@ -183,9 +183,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/ScalarProduct",
   ButtonNote->"ScalarProduct"],
  "."
-}], "Text",
- CellTags->"SP",
- CellID->468161499]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -250,8 +248,7 @@ Cell[BoxData[
       TraditionalForm], "2"],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"SP",
- CellLabel->"Out[1]=",
- CellID->1148967332]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -272,13 +269,15 @@ Cell[BoxData[
    FormBox["\<\"(\"\>",
     TraditionalForm], 
    FormBox[
-    RowBox[{
-     OverscriptBox[
-      FormBox["p",
-       TraditionalForm], "_"], "-", 
-     OverscriptBox[
-      FormBox["q",
-       TraditionalForm], "_"]}],
+    FormBox[
+     RowBox[{
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"], "-", 
+      OverscriptBox[
+       FormBox["q",
+        TraditionalForm], "_"]}],
+     TraditionalForm],
     TraditionalForm], 
    FormBox["\<\")\"\>",
     TraditionalForm], 
@@ -287,20 +286,21 @@ Cell[BoxData[
    FormBox["\<\"(\"\>",
     TraditionalForm], 
    FormBox[
-    RowBox[{
-     RowBox[{"2", " ", 
+    FormBox[
+     RowBox[{
+      RowBox[{"2", " ", 
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"]}], "+", 
       OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"]}], "+", 
-     OverscriptBox[
-      FormBox["q",
-       TraditionalForm], "_"]}],
+       FormBox["q",
+        TraditionalForm], "_"]}],
+     TraditionalForm],
     TraditionalForm], 
    FormBox["\<\")\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"SP",
- CellLabel->"Out[2]=",
- CellID->53518921]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -347,8 +347,7 @@ Cell[BoxData[
        TraditionalForm], "_"],
      TraditionalForm], "2"]}], TraditionalForm]], "Output",
  CellTags->"SP",
- CellLabel->"Out[3]=",
- CellID->21872907]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -393,8 +392,7 @@ Cell[BoxData[
        TraditionalForm], "_"],
      TraditionalForm], "2"]}], TraditionalForm]], "Output",
  CellTags->"SP",
- CellLabel->"Out[4]=",
- CellID->988669305]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -411,8 +409,7 @@ Cell[BoxData[
  RowBox[{"SP", "[", 
   RowBox[{"a", ",", "b"}], "]"}]], "Output",
  CellTags->"SP",
- CellLabel->"Out[5]//StandardForm=",
- CellID->591158186]
+ CellLabel->"Out[5]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -433,8 +430,7 @@ Cell[BoxData[
    RowBox[{"Momentum", "[", "a", "]"}], ",", 
    RowBox[{"Momentum", "[", "b", "]"}]}], "]"}]], "Output",
  CellTags->"SP",
- CellLabel->"Out[6]//StandardForm=",
- CellID->504879117]
+ CellLabel->"Out[6]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -454,8 +450,7 @@ Cell[BoxData[
  RowBox[{"SP", "[", 
   RowBox[{"a", ",", "b"}], "]"}]], "Output",
  CellTags->"SP",
- CellLabel->"Out[7]//StandardForm=",
- CellID->1698640474]
+ CellLabel->"Out[7]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -520,12 +515,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{570, Automatic}, {Automatic, 57}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

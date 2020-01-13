@@ -240,22 +240,16 @@ Cell[BoxData[
            RowBox[{"m", "+", "2"}]], "-", 
           FractionBox["8", 
            RowBox[{"m", "-", "1"}]]}], ")"}], " ", 
-        FormBox[
-         SuperscriptBox["g", 
-          RowBox[{
-           FormBox[
-            FormBox[
-             FormBox["mu",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["nu",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]}]],
-         TraditionalForm], " ", 
+        SuperscriptBox["g", 
+         RowBox[{
+          FormBox[
+           FormBox["mu",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["nu",
+            TraditionalForm],
+           TraditionalForm]}]], " ", 
         SuperscriptBox[
          RowBox[{"(", 
           RowBox[{
@@ -284,32 +278,24 @@ Cell[BoxData[
           FormBox["p",
            TraditionalForm],
           TraditionalForm], "2"], " ", 
-        FormBox[
-         SuperscriptBox[
-          FormBox[
-           FormBox["\[CapitalDelta]",
-            TraditionalForm],
-           TraditionalForm], 
-          FormBox[
-           FormBox[
-            FormBox["mu",
-             TraditionalForm],
-            TraditionalForm],
-           TraditionalForm]],
-         TraditionalForm], " ", 
-        FormBox[
-         SuperscriptBox[
-          FormBox[
-           FormBox["\[CapitalDelta]",
-            TraditionalForm],
-           TraditionalForm], 
-          FormBox[
-           FormBox[
-            FormBox["nu",
-             TraditionalForm],
-            TraditionalForm],
-           TraditionalForm]],
-         TraditionalForm], " ", 
+        SuperscriptBox[
+         FormBox[
+          FormBox["\[CapitalDelta]",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["mu",
+           TraditionalForm],
+          TraditionalForm]], " ", 
+        SuperscriptBox[
+         FormBox[
+          FormBox["\[CapitalDelta]",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["nu",
+           TraditionalForm],
+          TraditionalForm]], " ", 
         SuperscriptBox[
          RowBox[{"(", 
           RowBox[{
@@ -352,63 +338,46 @@ Cell[BoxData[
         RowBox[{"(", 
          RowBox[{
           RowBox[{
-           FormBox[
-            SuperscriptBox[
-             FormBox[
-              FormBox["p",
-               TraditionalForm],
-              TraditionalForm], 
-             FormBox[
-              FormBox[
-               FormBox["mu",
-                TraditionalForm],
-               TraditionalForm],
-              TraditionalForm]],
-            TraditionalForm], " ", 
-           FormBox[
-            SuperscriptBox[
-             FormBox[
-              FormBox["\[CapitalDelta]",
-               TraditionalForm],
-              TraditionalForm], 
-             FormBox[
-              FormBox[
-               FormBox["nu",
-                TraditionalForm],
-               TraditionalForm],
-              TraditionalForm]],
-            TraditionalForm]}], "+", 
+           SuperscriptBox[
+            FormBox[
+             FormBox["p",
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox[
+             FormBox["mu",
+              TraditionalForm],
+             TraditionalForm]], " ", 
+           SuperscriptBox[
+            FormBox[
+             FormBox["\[CapitalDelta]",
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox[
+             FormBox["nu",
+              TraditionalForm],
+             TraditionalForm]]}], "+", 
           RowBox[{
-           FormBox[
-            SuperscriptBox[
-             FormBox[
-              FormBox["\[CapitalDelta]",
-               TraditionalForm],
-              TraditionalForm], 
-             FormBox[
-              FormBox[
-               FormBox["mu",
-                TraditionalForm],
-               TraditionalForm],
-              TraditionalForm]],
-            TraditionalForm], " ", 
-           FormBox[
-            SuperscriptBox[
-             FormBox[
-              FormBox["p",
-               TraditionalForm],
-              TraditionalForm], 
-             FormBox[
-              FormBox[
-               FormBox["nu",
-                TraditionalForm],
-               TraditionalForm],
-              TraditionalForm]],
-            TraditionalForm]}]}], ")"}]}]}], ")"}]}]}]}], 
+           SuperscriptBox[
+            FormBox[
+             FormBox["\[CapitalDelta]",
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox[
+             FormBox["mu",
+              TraditionalForm],
+             TraditionalForm]], " ", 
+           SuperscriptBox[
+            FormBox[
+             FormBox["p",
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox[
+             FormBox["nu",
+              TraditionalForm],
+             TraditionalForm]]}]}], ")"}]}]}], ")"}]}]}]}], 
   TraditionalForm]], "Output",
  CellTags->"Twist2CounterOperator",
- CellLabel->"Out[1]=",
- CellID->246528770]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -461,8 +430,7 @@ Cell[BoxData[
    TagBox["\[CurlyEpsilon]",
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"Twist2CounterOperator",
- CellLabel->"Out[2]=",
- CellID->773930559]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -503,19 +471,15 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm]], " ", 
      SubsuperscriptBox["g", "s", "3"], " ", 
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        FormBox["\[CapitalDelta]",
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["mu",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm], " ", 
+     SuperscriptBox[
+      FormBox[
+       FormBox["\[CapitalDelta]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["mu",
+        TraditionalForm],
+       TraditionalForm]], " ", 
      SubscriptBox["S", "n"], " ", 
      RowBox[{"(", 
       RowBox[{
@@ -608,8 +572,7 @@ Cell[BoxData[
             TraditionalForm],
            TraditionalForm]}]}]]}], ")"}]}]}]}], TraditionalForm]], "Output",
  CellTags->"Twist2CounterOperator",
- CellLabel->"Out[3]=",
- CellID->1953247697]
+ CellLabel->"Out[3]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -674,12 +637,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{538, Automatic}, {Automatic, -8}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

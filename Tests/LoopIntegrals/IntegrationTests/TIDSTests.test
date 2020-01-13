@@ -489,114 +489,89 @@ j]*FVD[qst, \[Alpha]] + 4*(2 - D)*FVD[qst, j]*FVD[qst, \[Alpha]] + \
 "TID[GA[7].GSD[p-q].GAD[\[Nu]].GAD[\[Alpha]]FVD[q,\[Mu]] \
 FVD[pst-qst-kst,\[Alpha]]FVD[kst,\[Mu]]FVD[kst,\[Nu]]FAD[pst-qst-kst,\
 kst+qst,kst,kst],kst]//FCE",
-"((2*(2 - D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6] + 2*(-2 + \
-D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6] + (2 - D)*GSD[p] . GSD[qst] . \
-GSD[qst] . GA[6] + 2*(-2 + D)*GSD[p] . GSD[qst] . GSD[qst] . GA[6] - \
-2*(2 - D)*GSD[q] . GSD[qst] . GSD[pst] . GA[6] - 2*(-2 + D)*GSD[q] . \
-GSD[qst] . GSD[pst] . GA[6] - (2 - D)*GSD[q] . GSD[qst] . GSD[qst] . \
-GA[6] - 2*(-2 + D)*GSD[q] . GSD[qst] . GSD[qst] . GA[6])*FAD[kst, \
-kst, kst - qst]*SPD[q, qst])/((2 - D)*m^2) + (FAD[kst, kst - pst + \
-qst]*((-2 + D)*GSD[p] . GSD[pst] . GSD[pst] . GA[6]*SPD[pst, q] + (-2 \
-+ D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] - 2*(-1 + \
-D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] + D*GSD[p] . \
-GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] - 2*(-1 + D)*GSD[p] . \
-GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] + D*GSD[p] . GSD[qst] . \
-GSD[qst] . GA[6]*SPD[pst, q] - (-2 + D)*GSD[q] . GSD[pst] . GSD[pst] \
-. GA[6]*SPD[pst, q] - (-2 + D)*GSD[q] . GSD[qst] . GSD[pst] . \
-GA[6]*SPD[pst, q] + 2*(-1 + D)*GSD[q] . GSD[qst] . GSD[pst] . \
-GA[6]*SPD[pst, q] - D*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, \
-q] + 2*(-1 + D)*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] - \
-D*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] - 2*(-1 + \
-D)*GSD[p] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, qst] + D*GSD[p] . \
-GSD[pst] . GSD[pst] . GA[6]*SPD[q, qst] - 2*(-1 + D)*GSD[p] . \
-GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] + D*GSD[p] . GSD[qst] . \
-GSD[pst] . GA[6]*SPD[q, qst] + 2*(-1 + D)*GSD[q] . GSD[pst] . \
-GSD[pst] . GA[6]*SPD[q, qst] - D*GSD[q] . GSD[pst] . GSD[pst] . \
-GA[6]*SPD[q, qst] + 2*(-1 + D)*GSD[q] . GSD[qst] . GSD[pst] . \
-GA[6]*SPD[q, qst] - D*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, \
-qst]))/((2 - D)*m^4) - (FAD[kst, kst - pst]*(m^2*GSD[p] . GSD[q] . \
-GSD[pst] . GA[6] + m^2*GSD[p] . GSD[qst] . GSD[q] . GA[6] - \
-m^2*GSD[q] . GSD[q] . GSD[pst] . GA[6] - m^2*GSD[q] . GSD[qst] . \
-GSD[q] . GA[6] + (-2 + D)*GSD[p] . GSD[pst] . GSD[pst] . \
-GA[6]*SPD[pst, q] + (-2 + D)*GSD[p] . GSD[qst] . GSD[pst] . \
-GA[6]*SPD[pst, q] - 2*(-1 + D)*GSD[p] . GSD[qst] . GSD[pst] . \
-GA[6]*SPD[pst, q] - 2*(-1 + D)*GSD[p] . GSD[qst] . GSD[qst] . \
-GA[6]*SPD[pst, q] - (-2 + D)*GSD[q] . GSD[pst] . GSD[pst] . \
-GA[6]*SPD[pst, q] - (-2 + D)*GSD[q] . GSD[qst] . GSD[pst] . \
-GA[6]*SPD[pst, q] + 2*(-1 + D)*GSD[q] . GSD[qst] . GSD[pst] . \
-GA[6]*SPD[pst, q] + 2*(-1 + D)*GSD[q] . GSD[qst] . GSD[qst] . \
-GA[6]*SPD[pst, q] - 2*(-1 + D)*GSD[p] . GSD[pst] . GSD[pst] . \
-GA[6]*SPD[q, qst] + 2*(-1 + D)*GSD[p] . GSD[qst] . GSD[pst] . \
-GA[6]*SPD[q, qst] + 4*(-1 + D)*GSD[p] . GSD[qst] . GSD[qst] . \
-GA[6]*SPD[q, qst] + 2*(-1 + D)*GSD[q] . GSD[pst] . GSD[pst] . \
-GA[6]*SPD[q, qst] - 2*(-1 + D)*GSD[q] . GSD[qst] . GSD[pst] . \
-GA[6]*SPD[q, qst] - 4*(-1 + D)*GSD[q] . GSD[qst] . GSD[qst] . \
-GA[6]*SPD[q, qst]))/((2 - D)*m^4) + (FAD[kst, kst - qst]*(m^2*GSD[p] \
-. GSD[q] . GSD[pst] . GA[6] + m^2*GSD[p] . GSD[qst] . GSD[q] . GA[6] \
-- m^2*GSD[q] . GSD[q] . GSD[pst] . GA[6] - m^2*GSD[q] . GSD[qst] . \
-GSD[q] . GA[6] - D*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] - \
-D*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] + D*GSD[q] . \
-GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] + D*GSD[q] . GSD[qst] . \
-GSD[qst] . GA[6]*SPD[pst, q] - D*GSD[p] . GSD[pst] . GSD[pst] . \
-GA[6]*SPD[q, qst] + 4*(-1 + D)*GSD[p] . GSD[qst] . GSD[pst] . \
-GA[6]*SPD[q, qst] - D*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, \
-qst] + 4*(-1 + D)*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst] + \
-D*GSD[q] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, qst] - 4*(-1 + \
-D)*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] + D*GSD[q] . \
-GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] - 4*(-1 + D)*GSD[q] . \
-GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst]))/((2 - D)*m^4) - (FAD[kst, \
-kst - pst, kst - qst]*(m^2*GSD[p] . GSD[q] . GSD[pst] . GA[6] + \
-m^2*GSD[p] . GSD[qst] . GSD[q] . GA[6] - m^2*GSD[q] . GSD[q] . \
-GSD[pst] . GA[6] - m^2*GSD[q] . GSD[qst] . GSD[q] . GA[6] - (2 - \
-D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] - D*GSD[p] . \
-GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] - D*GSD[p] . GSD[qst] . \
-GSD[qst] . GA[6]*SPD[pst, q] + (2 - D)*GSD[q] . GSD[qst] . GSD[pst] . \
-GA[6]*SPD[pst, q] + D*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, \
-q] + D*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] - (2 - \
-D)*GSD[p] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, qst] - D*GSD[p] . \
-GSD[pst] . GSD[pst] . GA[6]*SPD[q, qst] + 3*(2 - D)*GSD[p] . GSD[qst] \
-. GSD[pst] . GA[6]*SPD[q, qst] + 4*(-1 + D)*GSD[p] . GSD[qst] . \
-GSD[pst] . GA[6]*SPD[q, qst] - D*GSD[p] . GSD[qst] . GSD[pst] . \
-GA[6]*SPD[q, qst] + 2*(2 - D)*GSD[p] . GSD[qst] . GSD[qst] . \
-GA[6]*SPD[q, qst] + 4*(-1 + D)*GSD[p] . GSD[qst] . GSD[qst] . \
-GA[6]*SPD[q, qst] + (2 - D)*GSD[q] . GSD[pst] . GSD[pst] . \
-GA[6]*SPD[q, qst] + D*GSD[q] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, \
-qst] - 3*(2 - D)*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] - \
-4*(-1 + D)*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] + \
-D*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] - 2*(2 - D)*GSD[q] \
-. GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst] - 4*(-1 + D)*GSD[q] . \
-GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst]))/((2 - D)*m^2) + (FAD[kst, \
-kst, kst - pst + qst]*(2*GSD[p] . GSD[qst] . GSD[pst] . \
-GA[6]*SPD[pst, q] - (2 - D)*GSD[p] . GSD[qst] . GSD[pst] . \
-GA[6]*SPD[pst, q] - D*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, \
-q] + 2*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] - D*GSD[p] . \
-GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] - 2*GSD[q] . GSD[qst] . \
-GSD[pst] . GA[6]*SPD[pst, q] + (2 - D)*GSD[q] . GSD[qst] . GSD[pst] . \
-GA[6]*SPD[pst, q] + D*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, \
-q] - 2*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] + D*GSD[q] . \
-GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] + 2*GSD[p] . GSD[pst] . \
-GSD[pst] . GA[6]*SPD[q, qst] - (2 - D)*GSD[p] . GSD[pst] . GSD[pst] . \
-GA[6]*SPD[q, qst] - D*GSD[p] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, \
-qst] - 2*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] + (2 - \
-D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] - 2*(-2 + \
-D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] + 4*(-1 + \
-D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] - D*GSD[p] . \
-GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] - 4*GSD[p] . GSD[qst] . \
-GSD[qst] . GA[6]*SPD[q, qst] + (2 - D)*GSD[p] . GSD[qst] . GSD[qst] . \
-GA[6]*SPD[q, qst] - 2*(-2 + D)*GSD[p] . GSD[qst] . GSD[qst] . \
-GA[6]*SPD[q, qst] + 4*(-1 + D)*GSD[p] . GSD[qst] . GSD[qst] . \
-GA[6]*SPD[q, qst] - 2*GSD[q] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, \
-qst] + (2 - D)*GSD[q] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, qst] + \
-D*GSD[q] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, qst] + 2*GSD[q] . \
-GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] - (2 - D)*GSD[q] . GSD[qst] . \
-GSD[pst] . GA[6]*SPD[q, qst] + 2*(-2 + D)*GSD[q] . GSD[qst] . \
-GSD[pst] . GA[6]*SPD[q, qst] - 4*(-1 + D)*GSD[q] . GSD[qst] . \
-GSD[pst] . GA[6]*SPD[q, qst] + D*GSD[q] . GSD[qst] . GSD[pst] . \
-GA[6]*SPD[q, qst] + 4*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, \
-qst] - (2 - D)*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst] + \
-2*(-2 + D)*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst] - 4*(-1 + \
-D)*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst]))/((2 - \
-D)*m^2)"},
+"(GSD[p] . GSD[qst] . GSD[pst] . GA[6] - GSD[p] . GSD[qst] . GSD[qst] . GA[6] - GSD[q] . GSD[qst] . GSD[pst] . GA[6] +
+GSD[q] . GSD[qst] . GSD[qst] . GA[6])*FAD[kst, kst - pst, kst - qst, kst - qst]*SPD[q, qst] -
+((-2 + 2*(2 - D) + D)*(GSD[p] . GSD[qst] . GSD[pst] . GA[6] - GSD[p] . GSD[qst] . GSD[qst] . GA[6] -
+	GSD[q] . GSD[qst] . GSD[pst] . GA[6] + GSD[q] . GSD[qst] . GSD[qst] . GA[6])*
+FAD[kst, kst - qst, kst - qst, kst - pst]*SPD[q, qst])/(2 - D) -
+(FAD[kst, kst - pst]*(m^2*GSD[p] . GSD[q] . GSD[pst] . GA[6] - m^2*GSD[p] . GSD[q] . GSD[qst] . GA[6] -
+	m^2*GSD[q] . GSD[q] . GSD[pst] . GA[6] + m^2*GSD[q] . GSD[q] . GSD[qst] . GA[6] -
+	(2 - D)*m^2*GSD[p] . GA[6]*SPD[pst, q] + (2 - D)*m^2*GSD[q] . GA[6]*SPD[pst, q] +
+	(-2 + D)*GSD[p] . GSD[pst] . GSD[pst] . GA[6]*SPD[pst, q] - (-2 + D)*GSD[p] . GSD[pst] . GSD[qst] . GA[6]*
+	 SPD[pst, q] - 2*(-1 + D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] +
+	2*(-1 + D)*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] - (-2 + D)*GSD[q] . GSD[pst] . GSD[pst] . GA[6]*
+	 SPD[pst, q] + (-2 + D)*GSD[q] . GSD[pst] . GSD[qst] . GA[6]*SPD[pst, q] +
+	2*(-1 + D)*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] - 2*(-1 + D)*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*
+	 SPD[pst, q] + 2*(2 - D)*m^2*GSD[p] . GA[6]*SPD[q, qst] - 2*(2 - D)*m^2*GSD[q] . GA[6]*SPD[q, qst] -
+	2*(-1 + D)*GSD[p] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, qst] + 2*(-1 + D)*GSD[p] . GSD[pst] . GSD[qst] . GA[6]*
+	 SPD[q, qst] + 4*(-1 + D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] -
+	4*(-1 + D)*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst] + 2*(-1 + D)*GSD[q] . GSD[pst] . GSD[pst] . GA[6]*
+	 SPD[q, qst] - 2*(-1 + D)*GSD[q] . GSD[pst] . GSD[qst] . GA[6]*SPD[q, qst] -
+	4*(-1 + D)*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] + 4*(-1 + D)*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*
+	 SPD[q, qst]))/((2 - D)*m^4) + (FAD[kst, kst - pst + qst]*(m^2*GSD[p] . GSD[q] . GSD[pst] . GA[6] -
+	m^2*GSD[p] . GSD[q] . GSD[qst] . GA[6] - m^2*GSD[q] . GSD[q] . GSD[pst] . GA[6] +
+	m^2*GSD[q] . GSD[q] . GSD[qst] . GA[6] - (2 - D)*m^2*GSD[p] . GA[6]*SPD[pst, q] +
+	(2 - D)*m^2*GSD[q] . GA[6]*SPD[pst, q] + (-2 + D)*GSD[p] . GSD[pst] . GSD[pst] . GA[6]*SPD[pst, q] -
+	(-2 + D)*GSD[p] . GSD[pst] . GSD[qst] . GA[6]*SPD[pst, q] - 2*(-1 + D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*
+	 SPD[pst, q] + 2*(-1 + D)*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] -
+	(-2 + D)*GSD[q] . GSD[pst] . GSD[pst] . GA[6]*SPD[pst, q] + (-2 + D)*GSD[q] . GSD[pst] . GSD[qst] . GA[6]*
+	 SPD[pst, q] + 2*(-1 + D)*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] -
+	2*(-1 + D)*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] + (2 - D)*m^2*GSD[p] . GA[6]*SPD[q, qst] -
+	(2 - D)*m^2*GSD[q] . GA[6]*SPD[q, qst] - 2*(-1 + D)*GSD[p] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, qst] +
+	2*(-1 + D)*GSD[p] . GSD[pst] . GSD[qst] . GA[6]*SPD[q, qst] + 4*(-1 + D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*
+	 SPD[q, qst] - 4*(-1 + D)*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst] +
+	2*(-1 + D)*GSD[q] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, qst] - 2*(-1 + D)*GSD[q] . GSD[pst] . GSD[qst] . GA[6]*
+	 SPD[q, qst] - 4*(-1 + D)*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] +
+	4*(-1 + D)*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst]))/((2 - D)*m^4) +
+(FAD[kst, kst - qst]*(m^2*GSD[p] . GSD[q] . GSD[pst] . GA[6] - m^2*GSD[p] . GSD[q] . GSD[qst] . GA[6] -
+	m^2*GSD[q] . GSD[q] . GSD[pst] . GA[6] + m^2*GSD[q] . GSD[q] . GSD[qst] . GA[6] -
+	D*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] + D*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] +
+	D*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] - D*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] +
+	(2 - D)*m^2*GSD[p] . GA[6]*SPD[q, qst] - (2 - D)*m^2*GSD[q] . GA[6]*SPD[q, qst] -
+	D*GSD[p] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, qst] + D*GSD[p] . GSD[pst] . GSD[qst] . GA[6]*SPD[q, qst] +
+	4*(-1 + D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] - 4*(-1 + D)*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*
+	 SPD[q, qst] + D*GSD[q] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, qst] - D*GSD[q] . GSD[pst] . GSD[qst] . GA[6]*
+	 SPD[q, qst] - 4*(-1 + D)*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] +
+	4*(-1 + D)*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst]))/((2 - D)*m^4) -
+(FAD[kst, kst - qst, kst - pst]*(m^2*GSD[p] . GSD[q] . GSD[pst] . GA[6] - m^2*GSD[p] . GSD[q] . GSD[qst] . GA[6] -
+	m^2*GSD[q] . GSD[q] . GSD[pst] . GA[6] + m^2*GSD[q] . GSD[q] . GSD[qst] . GA[6] -
+	(2 - D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] - D*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] +
+	(2 - D)*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] + D*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] +
+	(2 - D)*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] + D*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] -
+	(2 - D)*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] - D*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] -
+	D*GSD[p] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, qst] + D*GSD[p] . GSD[pst] . GSD[qst] . GA[6]*SPD[q, qst] -
+	(2 - D)*GSD[p] . GSD[pst - 2*qst] . GSD[pst] . GA[6]*SPD[q, qst] +
+	(2 - D)*GSD[p] . GSD[pst - 2*qst] . GSD[qst] . GA[6]*SPD[q, qst] + 2*(2 - D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*
+	 SPD[q, qst] + 4*(-1 + D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] -
+	2*(2 - D)*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst] - 4*(-1 + D)*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*
+	 SPD[q, qst] + D*GSD[q] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, qst] - D*GSD[q] . GSD[pst] . GSD[qst] . GA[6]*
+	 SPD[q, qst] + (2 - D)*GSD[q] . GSD[pst - 2*qst] . GSD[pst] . GA[6]*SPD[q, qst] -
+	(2 - D)*GSD[q] . GSD[pst - 2*qst] . GSD[qst] . GA[6]*SPD[q, qst] - 2*(2 - D)*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*
+	 SPD[q, qst] - 4*(-1 + D)*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] +
+	2*(2 - D)*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst] + 4*(-1 + D)*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*
+	 SPD[q, qst]))/((2 - D)*m^2) + (FAD[kst, kst, kst - pst + qst]*(2*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] -
+	(2 - D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] - D*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] -
+	2*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] + (2 - D)*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] +
+	D*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] - 2*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] +
+	(2 - D)*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] + D*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[pst, q] +
+	2*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] - (2 - D)*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] -
+	D*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[pst, q] + 2*GSD[p] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, qst] -
+	D*GSD[p] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, qst] - 2*GSD[p] . GSD[pst] . GSD[qst] . GA[6]*SPD[q, qst] +
+	D*GSD[p] . GSD[pst] . GSD[qst] . GA[6]*SPD[q, qst] - (2 - D)*GSD[p] . GSD[pst - qst] . GSD[pst] . GA[6]*SPD[q, qst] +
+	(2 - D)*GSD[p] . GSD[pst - qst] . GSD[qst] . GA[6]*SPD[q, qst] - 4*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] +
+	(2 - D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] - 2*(-2 + D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*
+	 SPD[q, qst] + 4*(-1 + D)*GSD[p] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] +
+	4*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst] - (2 - D)*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst] +
+	2*(-2 + D)*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst] - 4*(-1 + D)*GSD[p] . GSD[qst] . GSD[qst] . GA[6]*
+	 SPD[q, qst] - 2*GSD[q] . GSD[pst] . GSD[pst] . GA[6]*SPD[q, qst] + D*GSD[q] . GSD[pst] . GSD[pst] . GA[6]*
+	 SPD[q, qst] + 2*GSD[q] . GSD[pst] . GSD[qst] . GA[6]*SPD[q, qst] - D*GSD[q] . GSD[pst] . GSD[qst] . GA[6]*
+	 SPD[q, qst] + (2 - D)*GSD[q] . GSD[pst - qst] . GSD[pst] . GA[6]*SPD[q, qst] -
+	(2 - D)*GSD[q] . GSD[pst - qst] . GSD[qst] . GA[6]*SPD[q, qst] + 4*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] -
+	(2 - D)*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] + 2*(-2 + D)*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*
+	 SPD[q, qst] - 4*(-1 + D)*GSD[q] . GSD[qst] . GSD[pst] . GA[6]*SPD[q, qst] -
+	4*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst] + (2 - D)*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst] -
+	2*(-2 + D)*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*SPD[q, qst] + 4*(-1 + D)*GSD[q] . GSD[qst] . GSD[qst] . GA[6]*
+	 SPD[q, qst]))/((2 - D)*m^2)"},
 {"fcitTIDSTests-ID11",
 "TID[FVD[pst-qst-kst,\[Alpha]]FAD[pst-qst-kst,{pst-qst-kst,m},kst+\
 qst,kst],kst]//FCE",

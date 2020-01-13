@@ -3,69 +3,91 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10084,        356]
-NotebookOptionsPosition[      6225,        233]
-NotebookOutlinePosition[      8932,        311]
-CellTagsIndexPosition[      8822,        305]
+NotebookDataLength[     10502,        360]
+NotebookOptionsPosition[      6874,        248]
+NotebookOutlinePosition[      9467,        321]
+CellTagsIndexPosition[      9357,        315]
 WindowTitle->OPEDelta
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/OPEDelta\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/OPEDelta"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/OPEDelta.\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Twist2QuarkOperator\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Twist2QuarkOperator"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/OPEDelta\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/OPEDelta"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/OPEDelta.\
 html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$110681], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/OPEDelta", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$194467], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/OPEDelta", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +95,18 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["OPEDelta", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["OPEDelta", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -107,7 +139,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->599204391],
+ CellID->1236723403],
 
 Cell[CellGroupData[{
 
@@ -117,12 +149,12 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1945637181],
+ CellID->2114371267],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FourVector", "[", 
+ RowBox[{"FV", "[", 
   RowBox[{"OPEDelta", ",", "\[Mu]"}], "]"}]], "Input",
  CellTags->"OPEDelta",
  CellLabel->"In[1]:=",
@@ -136,17 +168,14 @@ Cell[BoxData[
      TraditionalForm],
     TraditionalForm], 
    FormBox[
-    FormBox[
-     FormBox["\[Mu]",
-      TraditionalForm],
+    FormBox["\[Mu]",
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
- ImageSize->{24, 17},
+ ImageSize->{25, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"OPEDelta",
- CellLabel->"Out[1]=",
- CellID->568278769]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -159,18 +188,12 @@ Cell[BoxData[
  CellID->1662840966],
 
 Cell[BoxData[
- FormBox[
-  SuperscriptBox[
-   FormBox[
-    FormBox["\[CapitalDelta]",
-     TraditionalForm],
-    TraditionalForm], "2"], TraditionalForm]], "Output",
- ImageSize->{23, 18},
+ FormBox["0", TraditionalForm]], "Output",
+ ImageSize->{13, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"OPEDelta",
- CellLabel->"Out[2]=",
- CellID->1005702488]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -183,18 +206,12 @@ Cell[BoxData[
  CellID->766618795],
 
 Cell[BoxData[
- FormBox[
-  SuperscriptBox[
-   FormBox[
-    FormBox["\[CapitalDelta]",
-     TraditionalForm],
-    TraditionalForm], "2"], TraditionalForm]], "Output",
- ImageSize->{23, 18},
+ FormBox["0", TraditionalForm]], "Output",
+ ImageSize->{13, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"OPEDelta",
- CellLabel->"Out[3]=",
- CellID->1002463011]
+ CellLabel->"Out[3]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -224,9 +241,7 @@ Cell[TextData[{
   ButtonNote->"Twist2QuarkOperator"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"OPEDelta",
- CellID->1239185621]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -243,21 +258,21 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 22, 56.190802}", 
+   "built" -> "{2020, 1, 5, 19, 0, 8.928947}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
     "OPEDelta is a lightlike axial vector as used e.g. in the operator \
-product expansion in QCD.", "synonyms" -> {}, "title" -> "OPEDelta", 
-    "titlemodifier" -> "", "windowtitle" -> "OPEDelta", "type" -> "Symbol", 
-    "uri" -> "FeynCalc/ref/OPEDelta"}, "SearchTextTranslated" -> ""},
+product expansion in QCD.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "OPEDelta", "titlemodifier" -> "", "windowtitle" -> "OPEDelta", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/OPEDelta"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -265,8 +280,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -275,89 +291,77 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3302, 94, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4315, 126, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->599204391]},
+   CellID->1236723403]},
  "OPEDelta"->{
-  Cell[3935, 123, 162, 5, 27, "Input",
+  Cell[4949, 155, 154, 5, 27, "Input",
    CellTags->"OPEDelta",
    CellID->82705691],
-  Cell[4100, 130, 429, 18, 38, "Output",
-   CellTags->"OPEDelta",
-   CellID->568278769],
-  Cell[4566, 153, 151, 5, 27, "Input",
+  Cell[5106, 162, 371, 15, 35, "Output",
+   CellTags->"OPEDelta"],
+  Cell[5514, 182, 151, 5, 27, "Input",
    CellTags->"OPEDelta",
    CellID->1662840966],
-  Cell[4720, 160, 318, 12, 39, "Output",
-   CellTags->"OPEDelta",
-   CellID->1005702488],
-  Cell[5075, 177, 158, 5, 27, "Input",
+  Cell[5668, 189, 189, 6, 35, "Output",
+   CellTags->"OPEDelta"],
+  Cell[5894, 200, 158, 5, 27, "Input",
    CellTags->"OPEDelta",
    CellID->766618795],
-  Cell[5236, 184, 318, 12, 39, "Output",
-   CellTags->"OPEDelta",
-   CellID->1002463011],
-  Cell[5922, 219, 261, 9, 32, "Text",
-   CellTags->"OPEDelta",
-   CellID->1239185621]}
+  Cell[6055, 207, 189, 6, 35, "Output",
+   CellTags->"OPEDelta"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8047, 276},
- {"OPEDelta", 8181, 280}
+ {"PrimaryExamplesSection", 8737, 292},
+ {"OPEDelta", 8873, 296}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[580, 21, 2245, 52, 51, "AnchorBarGrid",
+Cell[580, 21, 3024, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2828, 75, 51, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2882, 78, 395, 12, 82, "Usage",
+Cell[3607, 97, 285, 11, 45, "ObjectNameGrid"],
+Cell[3895, 110, 395, 12, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3302, 94, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4315, 126, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->599204391],
+ CellID->1236723403],
 Cell[CellGroupData[{
-Cell[3714, 113, 196, 6, 25, "ExampleSection",
- CellID->1945637181],
+Cell[4728, 145, 196, 6, 26, "ExampleSection",
+ CellID->2114371267],
 Cell[CellGroupData[{
-Cell[3935, 123, 162, 5, 27, "Input",
+Cell[4949, 155, 154, 5, 27, "Input",
  CellTags->"OPEDelta",
  CellID->82705691],
-Cell[4100, 130, 429, 18, 38, "Output",
- CellTags->"OPEDelta",
- CellID->568278769]
+Cell[5106, 162, 371, 15, 35, "Output",
+ CellTags->"OPEDelta"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4566, 153, 151, 5, 27, "Input",
+Cell[5514, 182, 151, 5, 27, "Input",
  CellTags->"OPEDelta",
  CellID->1662840966],
-Cell[4720, 160, 318, 12, 39, "Output",
- CellTags->"OPEDelta",
- CellID->1005702488]
+Cell[5668, 189, 189, 6, 35, "Output",
+ CellTags->"OPEDelta"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5075, 177, 158, 5, 27, "Input",
+Cell[5894, 200, 158, 5, 27, "Input",
  CellTags->"OPEDelta",
  CellID->766618795],
-Cell[5236, 184, 318, 12, 39, "Output",
- CellTags->"OPEDelta",
- CellID->1002463011]
+Cell[6055, 207, 189, 6, 35, "Output",
+ CellTags->"OPEDelta"]
 }, Open  ]]
 }, Open  ]],
-Cell[5581, 200, 31, 0, 29, "SectionFooterSpacer"]
+Cell[6271, 217, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5649, 205, 270, 12, 31, "SeeAlsoSection",
+Cell[6339, 222, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[5922, 219, 261, 9, 32, "Text",
- CellTags->"OPEDelta",
- CellID->1239185621]
+Cell[6612, 236, 220, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[6198, 231, 23, 0, 42, "FooterCell"]
+Cell[6847, 246, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

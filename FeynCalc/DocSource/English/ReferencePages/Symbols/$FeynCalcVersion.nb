@@ -186,22 +186,17 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell["Examples", "Subsubsection",
- CellTags->"$FeynCalcVersion",
- CellID->1483320671],
-
 Cell[CellGroupData[{
 
 Cell[BoxData["$FeynCalcVersion"], "Input",
  CellTags->"$FeynCalcVersion",
- CellLabel->"In[1]:=",
+ CellLabel->"In[188]:=",
  CellID->806604709],
 
 Cell[BoxData[
- FormBox["\<\"9.0.0\"\>", TraditionalForm]], "Output",
+ FormBox["\<\"9.3.0\"\>", TraditionalForm]], "Output",
  CellTags->"$FeynCalcVersion",
- CellLabel->"Out[1]=",
- CellID->1396918294]
+ CellLabel->"Out[188]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -266,12 +261,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

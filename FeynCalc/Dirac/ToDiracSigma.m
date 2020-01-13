@@ -5,9 +5,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Introduces DiracSigma											*)
@@ -15,13 +15,13 @@
 (* ------------------------------------------------------------------------ *)
 
 ToDiracSigma::usage =
-"ToDiracSigma[ex,x,y] substitutes the neighboring Gamma matrices x and y by \
-DiracSigma and the metric tensor, e.g. ToDiracSigma[GA[i,j],GA[i],GA[j]] \
-gives MT[i, j] - I DiracSigma[GA[i], GA[j]].";
+"ToDiracSigma[exp,x,y] substitutes the neighboring Dirac matrices x and y by \
+DiracSigma and the metric tensor.";
 
-ToDiracSigma::noddim =
-"Error. ToDiracSigma does not work with Dirac matrices in other dimensions than 4. \
-Evaluation aborted.";
+ToDiracSigma::failmsg =
+"Error! ToDiracSigma has encountered a fatal problem and must abort the computation. \
+The problem reads: `1`"
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -30,32 +30,42 @@ End[]
 Begin["`ToDiracSigma`Private`"]
 
 Options[ToDiracSigma] = {
-	FCI -> False,
-	DotSimplify -> True
+	DotSimplify -> True,
+	FCE			-> False,
+	FCI			-> False
 }
 
 ToDiracSigma[expr_, xx_, yy_, OptionsPattern[]] :=
-	Block[{x = FCI[xx], y = FCI[yy], ex},
+	Block[{x, y,  ex, holdDOT},
 
-	If[ OptionValue[FCI],
-			ex = expr,
-			ex = FCI[expr]
-	];
+		If[ OptionValue[FCI],
+				ex = expr;
+				{x,y} = FCI[{xx,yy}],
+				{ex,x,y} = FCI[{expr,xx,yy}]
+		];
 
-	If[ !MatchQ[x,DiracGamma[_]] || !MatchQ[y,DiracGamma[_]],
-		Message[ToDiracSigma::noddim];
-		Abort[]
-	];
+		If[ !MatchQ[x,DiracGamma[_]] || !MatchQ[y,DiracGamma[_]],
+			Message[ToDiracSigma::failmsg,"Only Dirac matrices in 4 dimensions are supported."];
+			Abort[]
+		];
 
-	ex = (ex /. DOT[a___, x, y, b___] :> (- I DOT[a, DiracSigma[x, y], b] + Pair[First[x], First[y]] DOT[a, b]) /. DOT[] -> 1);
+		ex = ex /. DOT -> holdDOT;
 
-	If[ OptionValue[DotSimplify],
-		ex = DotSimplify[ex]
-	];
+		ex = (ex //. holdDOT[a___, x, y, b___] :> (- I holdDOT[a, DiracSigma[x, y], b] + Pair[First[x], First[y]] holdDOT[a, b]));
 
-	ex
+		ex = ex /. holdDOT[] -> 1 /. holdDOT -> DOT;
 
-]
+		If[ OptionValue[DotSimplify],
+			ex = DotSimplify[ex, FCI->True]
+		];
+
+		If[ OptionValue[FCE],
+			ex = FCE[ex]
+		];
+
+		ex
+
+	]
 
 FCPrint[1,"ToDiracSigma.m loaded"];
 End[]

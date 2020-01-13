@@ -1,0 +1,33 @@
+
+
+(* :Title: fcstFCLoopMixedIntegralQ.test							*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for
+				fcstFCLoopMixedIntegralQ							*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopMixedIntegralQ =
+({
+{"fcstFCLoopMixedIntegralQ-ID1",
+"FCLoopMixedIntegralQ[FCI[FVD[p, mu] CFAD[q, q - p]]]", "True"},
+{"fcstFCLoopMixedIntegralQ-ID2",
+"FCLoopMixedIntegralQ[FCI[FVD[p, mu] FAD[q, q - p]]]", "False"},
+{"fcstFCLoopMixedIntegralQ-ID3",
+"FCLoopMixedIntegralQ[FCI[FVD[p, mu] SFAD[q, q - p]]]", "False"},
+{"fcstFCLoopMixedIntegralQ-ID4",
+"FCLoopMixedIntegralQ[FCI[CVD[p, mu] SFAD[q, q - p]]]", "True"},
+{"fcstFCLoopMixedIntegralQ-ID5",
+"FCLoopMixedIntegralQ[
+FeynAmpDenominatorCombine[GFAD[TC[q] + EN] SFAD[q]]]", "True"},
+{"fcstFCLoopMixedIntegralQ-ID6",
+"FCLoopMixedIntegralQ[
+FeynAmpDenominatorCombine[GFAD[TC[q] + EN] CFAD[q]]]", "True"}
+});

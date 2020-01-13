@@ -172,9 +172,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/UnDeclareNonCommutative",
   ButtonNote->"UnDeclareNonCommutative"],
  "."
-}], "Text",
- CellTags->"DeclareNonCommutative",
- CellID->716831943]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -210,9 +208,7 @@ Cell[BoxData[
 Cell["\<\
 As a side effect of DeclareNonCommutative x is declared to be of data type \
 NonCommutative.\
-\>", "Text",
- CellTags->"DeclareNonCommutative",
- CellID->836055796],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -220,21 +216,20 @@ Cell[BoxData[
  RowBox[{"DataType", "[", 
   RowBox[{"x", ",", "NonCommutative"}], "]"}]], "Input",
  CellTags->"DeclareNonCommutative",
- CellLabel->"In[2]:=",
+ CellLabel->"In[587]:=",
  CellID->903276535],
 
 Cell[BoxData[
  FormBox["True", TraditionalForm]], "Output",
  CellTags->"DeclareNonCommutative",
- CellLabel->"Out[2]=",
- CellID->2100185008]
+ CellLabel->"Out[587]="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{"DeclareNonCommutative", "[", 
   RowBox[{"y", ",", "z"}], "]"}]], "Input",
  CellTags->"DeclareNonCommutative",
- CellLabel->"In[3]:=",
+ CellLabel->"In[588]:=",
  CellID->429692038],
 
 Cell[CellGroupData[{
@@ -244,7 +239,7 @@ Cell[BoxData[
   RowBox[{"a", ",", "x", ",", "y", ",", "z", ",", "NonCommutative"}], 
   "]"}]], "Input",
  CellTags->"DeclareNonCommutative",
- CellLabel->"In[4]:=",
+ CellLabel->"In[589]:=",
  CellID->498899039],
 
 Cell[BoxData[
@@ -253,15 +248,14 @@ Cell[BoxData[
    RowBox[{"False", ",", "True", ",", "True", ",", "True"}], "}"}], 
   TraditionalForm]], "Output",
  CellTags->"DeclareNonCommutative",
- CellLabel->"Out[4]=",
- CellID->1479757554]
+ CellLabel->"Out[589]="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{"UnDeclareNonCommutative", "[", 
   RowBox[{"x", ",", "y", ",", "z"}], "]"}]], "Input",
  CellTags->"DeclareNonCommutative",
- CellLabel->"In[5]:=",
+ CellLabel->"In[590]:=",
  CellID->660830730],
 
 Cell[CellGroupData[{
@@ -271,7 +265,7 @@ Cell[BoxData[
   RowBox[{"a", ",", "x", ",", "y", ",", "z", ",", "NonCommutative"}], 
   "]"}]], "Input",
  CellTags->"DeclareNonCommutative",
- CellLabel->"In[6]:=",
+ CellLabel->"In[591]:=",
  CellID->1927435284],
 
 Cell[BoxData[
@@ -280,8 +274,7 @@ Cell[BoxData[
    RowBox[{"False", ",", "False", ",", "False", ",", "False"}], "}"}], 
   TraditionalForm]], "Output",
  CellTags->"DeclareNonCommutative",
- CellLabel->"Out[6]=",
- CellID->1909095440]
+ CellLabel->"Out[591]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -346,12 +339,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{692, Automatic}, {Automatic, 218}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

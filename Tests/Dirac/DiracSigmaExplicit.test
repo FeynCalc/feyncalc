@@ -1,0 +1,61 @@
+
+
+(* :Title: DiracSigmaExplicit.test											*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for DiracSigmaExplicit       *)
+
+(* ------------------------------------------------------------------------ *)
+
+
+
+Tests`Dirac`fcstDiracSigmaExplicit =
+({
+{"fcstDiracSigmaExplicit-ID1",
+"DiracSigmaExplicit[DiracSigma[GA[i],GA[j]],FCE\[Rule]True]",
+"(I/2)*(GA[i] . GA[j] - GA[j] . GA[i])"},
+{"fcstDiracSigmaExplicit-ID2",
+"DiracSigmaExplicit[GS[p].DiracSigma[GA[i],GA[j]].GS[q],FCE\[Rule]\
+True]", "(I/2)*(GS[p] . GA[i] . GA[j] . GS[q] - GS[p] . GA[j] . GA[i] \
+. GS[q])"},
+{"fcstDiracSigmaExplicit-ID3",
+"DiracSigmaExplicit[GS[p].(4DiracSigma[GA[i],GA[j]]).GS[q],FCE\
+\[Rule]True]",
+"(2*I)*(GS[p] . GA[i] . GA[j] . GS[q] - GS[p] . GA[j] . GA[i] . \
+GS[q])"},
+{"fcstDiracSigmaExplicit-ID4",
+"DiracSigmaExplicit[GS[p].(3SUNT[a].DiracSigma[GA[i],GA[j]]).GS[q],\
+FCE\[Rule]True]",
+"GS[p] . (((3*I)/2)*(SUNT[a] . GA[i] . GA[j] - SUNT[a] . GA[j] . \
+GA[i])) . GS[q]"},
+{"fcstDiracSigmaExplicit-ID5",
+"DiracSigmaExplicit[DiracSigma[GAD[i],GAD[j]],FCE\[Rule]True]",
+"(I/2)*(GAD[i] . GAD[j] - GAD[j] . GAD[i])"},
+{"fcstDiracSigmaExplicit-ID6",
+"DiracSigmaExplicit[DiracSigma[GAD[i],GA[j]],FCE\[Rule]True]",
+"(-I/2)*(GA[j] . GAD[i] - GAD[i] . GA[j])"},
+{"fcstDiracSigma-ID7",
+"DiracSigmaExplicit[DiracSigma[TGA[],CGA[i]],FCE\[Rule]True]",
+"I*TGA[] . CGA[i]"},
+{"fcstDiracSigma-ID8",
+"DiracSigmaExplicit[DiracSigma[TGA[],CGAD[i]],FCE\[Rule]True]",
+"I*TGA[] . CGAD[i]"},
+{"fcstDiracSigma-ID9",
+"DiracSigmaExplicit[DiracSigma[CGA[i],TGA[]],FCE\[Rule]True]",
+"(-I)*TGA[] . CGA[i]"},
+{"fcstDiracSigma-ID10",
+"DiracSigmaExplicit[DiracSigma[CGAD[i],TGA[]],FCE\[Rule]True]",
+"(-I)*TGA[] . CGAD[i]"},
+{"fcstDiracSigma-ID11",
+"DiracSigmaExplicit[DiracSigma[CGA[i],CGA[j]],FCE\[Rule]True]",
+"I*(CGA[i] . CGA[j] + KD[i, j])"},
+{"fcstDiracSigma-ID12",
+"DiracSigmaExplicit[DiracSigma[CGAD[i],CGAD[j]],FCE\[Rule]True]",
+"I*(CGAD[i] . CGAD[j] + KDD[i, j])"}
+});

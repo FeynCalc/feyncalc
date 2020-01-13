@@ -28,12 +28,13 @@ End[]
 
 Begin["`TensorFunction`Private`"]
 
-Options[TensorFunction] = {Dimension -> 4};
+Options[TensorFunction] = {
+	Dimension -> 4
+};
 
 TensorFunction[ef_, munu___,last_/;Head[last]=!=Rule, OptionsPattern[]] :=
-	Block[ {f, dim, at="", patt},
+	Block[ {f, dim, at=""},
 		dim = OptionValue[Dimension];
-		patt = {Pattern,Sequence,BlankSequence,BlankNullSequence};
 
 		If[ Head[ef] === List && Length[ef] === 2,
 			f  = First[ef];
@@ -49,9 +50,9 @@ TensorFunction[ef_, munu___,last_/;Head[last]=!=Rule, OptionsPattern[]] :=
 					SetAttributes@@{tf, Orderless},
 					at === "A",
 					Evaluate[tf[a__]] :=
-						Condition[Signature[{a}] Apply[tf, Sort[{a}]],!OrderedQ[{a}] && FreeQ2[{a},patt]];
+						Condition[Signature[{a}] Apply[tf, Sort[{a}]],!OrderedQ[{a}] && FCPatternFreeQ[{a}]];
 					Evaluate[tf[a__]] :=
-						Condition[0,Signature[{a}]===0 && FreeQ2[{a},patt]],
+						Condition[0,Signature[{a}]===0 && FCPatternFreeQ[{a}]],
 					True,
 					Message[TensorFunction::usym,at];
 					Abort[]
@@ -60,7 +61,7 @@ TensorFunction[ef_, munu___,last_/;Head[last]=!=Rule, OptionsPattern[]] :=
 
 			(* Any tensor function contracted with a null vector is zero *)
 			Evaluate[tf[a___,0,b___]] :=
-				Condition[0,FreeQ2[{a,b},patt]];
+				Condition[0,FCPatternFreeQ[{a,b}]];
 
 			tf@@(Map[LorentzIndex[#, dim]&, {munu,last}])
 		]

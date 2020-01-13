@@ -119,31 +119,37 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"ScalarProduct", "[", 
    RowBox[{"p", ",", " ", "q"}], "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "is the input for scalar product. ScalarProduct[p] is equivalent to \
-ScalarProduct[p, p]. Expansion of sums of momenta in ScalarProduct is done \
-with ExpandScalarProduct. Scalar product may be set, e.g., ScalarProduct[a, \
-b] = ",
- Cell[BoxData[
-  FormBox[
-   RowBox[{"m", "^", "2"}], TraditionalForm]]],
- "; but a and b must not contain sums. Note that ScalarProduct[a, b] = ",
- Cell[BoxData[
-  FormBox[
-   RowBox[{"m", "^", "2"}], TraditionalForm]]],
- " actually sets also: Pair[Momentum[a, ___], Momentum[b, ___]] = ",
- Cell[BoxData[
-  FormBox[
-   RowBox[{"m", "^", "2"}], TraditionalForm]]],
- ". It is encouraged to always set ScalarProduct's ",
+ " \[LineSeparator] is the input for the scalar product of two Lorentz \
+vectors p and q. ScalarProduct[p] is equivalent to ScalarProduct[p, p]. \
+Expansion of sums of momenta in ScalarProduct is done with \
+ExpandScalarProduct. Scalar products may be set, e.g. via ScalarProduct[a, b] \
+= m^2; but a and b may not contain sums. Note that ScalarProduct[a, b] = m^2 \
+actually sets Lorentzian scalar products in different dimensions specified by \
+the value of the SetDimensions option. It is highly recommended to set \
+ScalarProduct's ",
  StyleBox["before",
   FontWeight->"Bold"],
- " any calculation. This improves the performance of FeynCalc ."
+ " any calculation. This improves the performance of FeynCalc.."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "ScalarProduct", "]"}]], "Input",
+ CellLabel->"In[312]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Dimension", "\[Rule]", "4"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "True"}], ",", 
+    RowBox[{"SetDimensions", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"4", ",", "D"}], "}"}]}]}], "}"}], TraditionalForm]], "Output",
+ CellLabel->"Out[312]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -179,7 +185,6 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  ButtonBox["Calc",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/Calc",
@@ -215,9 +220,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/SPD",
   ButtonNote->"SPD"],
  "."
-}], "Text",
- CellTags->"ScalarProduct",
- CellID->912859437]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -269,8 +272,7 @@ Cell[BoxData[
       TraditionalForm], "_"],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"ScalarProduct",
- CellLabel->"Out[1]=",
- CellID->785575855]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -299,19 +301,20 @@ Cell[BoxData[
      FormBox["\<\"(\"\>",
       TraditionalForm], 
      FormBox[
-      RowBox[{
-       OverscriptBox[
-        FormBox["p",
-         TraditionalForm], "_"], "+", 
-       OverscriptBox[
-        FormBox["q",
-         TraditionalForm], "_"]}],
+      FormBox[
+       RowBox[{
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"], "+", 
+        OverscriptBox[
+         FormBox["q",
+          TraditionalForm], "_"]}],
+       TraditionalForm],
       TraditionalForm], 
      FormBox["\<\")\"\>",
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"ScalarProduct",
- CellLabel->"Out[2]=",
- CellID->1751795401]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -332,8 +335,7 @@ Cell[BoxData[
       TraditionalForm], "_"],
     TraditionalForm], "2"], TraditionalForm]], "Output",
  CellTags->"ScalarProduct",
- CellLabel->"Out[3]=",
- CellID->170285827]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -353,8 +355,7 @@ Cell[BoxData[
       TraditionalForm], "_"],
     TraditionalForm], "2"], TraditionalForm]], "Output",
  CellTags->"ScalarProduct",
- CellLabel->"Out[4]=",
- CellID->794666024]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -373,8 +374,7 @@ Cell[BoxData[
    RowBox[{"Momentum", "[", "p", "]"}], ",", 
    RowBox[{"Momentum", "[", "q", "]"}]}], "]"}]], "Output",
  CellTags->"ScalarProduct",
- CellLabel->"Out[5]//StandardForm=",
- CellID->2085175923]
+ CellLabel->"Out[5]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -397,8 +397,7 @@ Cell[BoxData[
    RowBox[{"Momentum", "[", 
     RowBox[{"q", ",", "D"}], "]"}]}], "]"}]], "Output",
  CellTags->"ScalarProduct",
- CellLabel->"Out[6]//StandardForm=",
- CellID->1965353289]
+ CellLabel->"Out[6]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -418,8 +417,7 @@ Cell[BoxData[
  FormBox[
   FractionBox["s", "2"], TraditionalForm]], "Output",
  CellTags->"ScalarProduct",
- CellLabel->"Out[7]=",
- CellID->622238783]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -491,8 +489,7 @@ Cell[BoxData[
      TraditionalForm]}], "+", 
    FractionBox["s", "2"]}], TraditionalForm]], "Output",
  CellTags->"ScalarProduct",
- CellLabel->"Out[8]=",
- CellID->1856511612]
+ CellLabel->"Out[8]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -564,8 +561,7 @@ Cell[BoxData[
      TraditionalForm]}], "+", 
    FractionBox["s", "2"]}], TraditionalForm]], "Output",
  CellTags->"ScalarProduct",
- CellLabel->"Out[9]=",
- CellID->1175433176]
+ CellLabel->"Out[9]="]
 }, Open  ]],
 
 Cell[BoxData[
@@ -636,12 +632,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 684},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{779, Automatic}, {Automatic, 200}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

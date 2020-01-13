@@ -25,7 +25,7 @@ Options[AnomalousDimension] = {Polarization -> 1, Simplify->FullSimplify};
 AnomalousDimension[es_, opt___Rule] := AnomalousDimension[es, OPEm, opt];
 
 AnomalousDimension[es_, m_Symbol, opt___Rule] :=
-Block[{pol, s, s1, s2, s1t, s2t, s12,s21,s12t,d3,s3t,
+Block[{pol, s, s1, s2, s1t, s2t, s12,s21,s12t,d3,s3t,s3,
 			S1,S2,S12,S12t,S21,S3,S3t,S1t,S2t,ST,sim,simfun,n=m},
 simfun = Simplify /. {opt} /. Options[AnomalousDimension];
 If[simfun === FullSimplify,
@@ -44,7 +44,7 @@ If[simfun === FullSimplify,
 	sim[3n^4+6n^3+16n^2+13n-3] =  -3 + n*(1 + n)*(13 + 3*n*(1 + n));
 	sim[n^6+3n^5+5n^4+n^3-8n^2+2n+4] =
 			4 + n*(2 + n*(-8 + n*(1 + n*(5 + n*(3 + n)))));
-	sim[zz_] := FullSimplify[z]
+	sim[z_] := FullSimplify[z]
 	];
 s = ToString[es];
 s1  =  SumS[1, m-1]; S1  =  SumS[1, m];

@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary: 	Tools for working with FeynCalc's unit tests				*)
@@ -31,7 +31,10 @@ valid FeynCalc expression."
 FUnitCreateUnitTestsTypesetting::usage = \
 "FUnitCreateUnitTestsTypesetting[TestName,Tests] is like FUnitCreateUnitTests \
 but with the sole purpose of creating unit tests for typesetting, \
-i.e. the TraditionalForm output."
+i.e. the TraditionalForm output. Notice that when creating typesetting tests, \
+the list elements must not be strings, i.e. li = {FV[p,mu], FV[q,nu]}. Then \
+FUnitCreateUnitTestsTypesetting[fcstFV,li] does the job and the output (copied as\
+Input Text) can be directly pasted into the test file."
 
 AddMakeBoxes::usage =
 "AddMakeBoxes is an option for FUnitCreateUnitTestsTypesetting, which \
@@ -43,22 +46,44 @@ End[]
 
 Begin["`FUnitTools`Private`"];
 
-$FUnitToolsVersion="0.1";
+$FUnitToolsVersion="0.2";
 
 $FUnitToolsDirectory =
 ToFileName[{$FeynCalcDirectory, "AddOns", "FUnitTools"}];
 
 Options[FUnitCreateUnitTestsTypesetting] = {
-	AddMakeBoxes -> True
+	AddMakeBoxes -> True,
+	"ZeroIDValue" -> 0
 };
 
-FUnitCreateUnitTests[n_String, l_List] :=
-	MapIndexed[{n <> "-ID" <> ToString[First[#2]], #, ToString[ToExpression[#], FormatType -> InputForm]} &, l];
+Options[FUnitCreateUnitTests] = {
+	AddMakeBoxes -> True,
+	"ZeroIDValue" -> 0
+};
+
+Options[FUnitExtractUnitTests] = {
+	Names -> False
+};
+
+FUnitCreateUnitTests[n_String, l_List, OptionsPattern[]] :=
+	MapIndexed[{n <> "-ID" <>
+		If[ StringQ[OptionValue["ZeroIDValue"]],
+				ToString[OptionValue["ZeroIDValue"]]<>ToString[First[#2]],
+				ToString[OptionValue["ZeroIDValue"]+First[#2]]
+		],
+		#, ToString[ToExpression[#], FormatType -> InputForm]} &, l]
+
+
 
 FUnitCreateUnitTestsTypesetting[n_String, l_List, OptionsPattern[]] :=
-	MapIndexed[{n <> "-ID" <> ToString[First[#2]],
+	MapIndexed[{n <> "-ID" <>
+
+		If[ StringQ[OptionValue["ZeroIDValue"]],
+				ToString[OptionValue["ZeroIDValue"]]<>ToString[First[#2]],
+				ToString[OptionValue["ZeroIDValue"]+First[#2]]
+		],
 		If[OptionValue[AddMakeBoxes],
-			StringReplace[ToString[System`MakeBoxees[#, TraditionalForm]],
+			StringReplace[ToString[System`MakeBoxees[#, TraditionalForm], InputForm],
 			"MakeBoxees" -> "MakeBoxes"],
 			ToString[#]
 		],
@@ -69,17 +94,20 @@ FUnitCreateUnitTestsTypesetting[n_String, l_List, OptionsPattern[]] :=
 			],
 		InputForm, CharacterEncoding -> "Unicode"]} &, l];
 
-FUnitExtractUnitTests[{dir__, file_}, testVar_] :=
+FUnitExtractUnitTests[{dir__, file_}, testVar_, OptionsPattern[]] :=
 	Module[{li},
 		Get[FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", dir,	file <> ".test"}]];
 		li = "Tests`" <> First[{dir}] <> "`" <> testVar;
 		li = ToExpression[li];
-		Map[#[[2]] &, li]
+		If[	OptionValue[Names],
+			Map[#[[1;;2]] &, li],
+			Map[#[[2]] &, li]
+		]
 	];
 
 
 (* Print startup message *)
-If[ Global`$FeynCalcStartupMessages =!= False,
+If[ $FeynCalcStartupMessages =!= False,
 	Print[Style["FUnitTools ", "Text", Bold], Style[$FUnitToolsVersion <> " loaded.", "Text"]]
 ];
 

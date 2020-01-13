@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for ToLarin					*)
@@ -17,12 +17,15 @@ Tests`Dirac`fcstToLarin = {
 {"fcstToLarin-ID1","MatchQ[(tmp = ToLarin[GAD[i1, i2, i3, i4, i5, i6].GA[5]]; FCE[tmp]),
 1/6 I GAD[i1].GAD[i2].GAD[i3].GAD[i4].GAD[i5].GAD[x_].GAD[y_].GAD[
 	z_] LCD[x_, y_, z_, i6]]","True"},
-{"fcstToLarin-ID2","MatchQ[(tmp =
+{"fcstToLarin-ID2","FCE[EpsEvaluate[
+FCCanonicalizeDummyIndices[
 ToLarin[DiracTrace[GAD[i1, i2, i3, i4, i5, i6].GA[5]] DiracTrace[
-	GAD[i1, j2, j3, j4, j5, j6].GA[5]]]; FCE[tmp]),
-DiracTrace[
-1/6 I GAD[i1].GAD[i2].GAD[i3].GAD[i4].GAD[i5].GAD[a_].GAD[b_].GAD[
-	c_] LCD[a_, b_, c_, i6]] DiracTrace[
-1/6 I GAD[i1].GAD[j2].GAD[j3].GAD[j4].GAD[j5].GAD[d_].GAD[e_].GAD[
-	f_] LCD[d_, e_, f_, j6]]]","True"}
+	  GAD[i1, j2, j3, j4, j5, j6].GA[5]]],
+LorentzIndexNames -> {al, be, ga, mu, nu, rho, si}]]]","-(1/36) DiracTrace[
+GAD[al].GAD[i2].GAD[i3].GAD[i4].GAD[i5].GAD[be].GAD[ga].GAD[
+	mu]] DiracTrace[
+GAD[al].GAD[j2].GAD[j3].GAD[j4].GAD[j5].GAD[nu].GAD[rho].GAD[
+	si]] LCD[be, ga, i6, mu] LCD[j6, nu, rho, si]"},
+{"fcstToLarin-ID3","FCE[ToLarin[GAD[i1, i2, i3, i4, i5].CGA[i6].GA[5]]]",
+"GAD[i1].GAD[i2].GAD[i3].GAD[i4].GAD[i5].CGA[i6].GA[5]"}
 }

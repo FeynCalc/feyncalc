@@ -3,69 +3,98 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16279,        613]
-NotebookOptionsPosition[     11352,        449]
-NotebookOutlinePosition[     14590,        546]
-CellTagsIndexPosition[     14481,        540]
+NotebookDataLength[     16420,        598]
+NotebookOptionsPosition[     12097,        460]
+NotebookOutlinePosition[     15006,        544]
+CellTagsIndexPosition[     14897,        538]
 WindowTitle->Trick
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/Trick\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/Trick"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/Trick.\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Calc\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Calc"], "\<\"Contract\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Contract"], "\<\"DiracTrick\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracTrick"], "\<\"DotSimplify\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DotSimplify"], "\<\"DiracTrick\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/DiracTrick"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/Trick\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/Trick"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/Trick.\
 html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$159539], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], "FeynCalc/ref/Trick", 
-            ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$278225], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], "FeynCalc/ref/Trick",
+              ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +102,18 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Trick", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Trick", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -108,7 +147,9 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1991856433],
+ CellID->1172406000],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
  "Basic Examples",
@@ -116,13 +157,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->525356883],
-
-Cell[CellGroupData[{
-
-Cell[BoxData["Examples"], "Subsubsection",
- CellTags->"Trick",
- CellID->890627813],
+ CellID->558656035],
 
 Cell[TextData[{
  "This calculates ",
@@ -137,10 +172,7 @@ Cell[TextData[{
   FormBox[
    SubsuperscriptBox["g", "\[Nu]", "\[Nu]"], TraditionalForm]]],
  " in D dimensions."
-}], "Text",
- ZeroWidthTimes->True,
- CellTags->"Trick",
- CellID->1624506888],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
@@ -168,12 +200,11 @@ Cell[BoxData[
       FormBox["\[Nu]",
        TraditionalForm],
       TraditionalForm]], ",", "D"}], "}"}], TraditionalForm]], "Output",
- ImageSize->{56, 20},
+ ImageSize->{59, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Trick",
- CellLabel->"Out[1]=",
- CellID->472477170]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -196,76 +227,61 @@ Cell[BoxData[
  FormBox[
   RowBox[{
    FormBox[
-    FormBox[
-     SuperscriptBox[
-      OverscriptBox["g", "_"], 
-      RowBox[{
-       FormBox[
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]}]],
-     TraditionalForm],
+    SuperscriptBox[
+     OverscriptBox["g", "_"], 
+     RowBox[{
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]}]],
     TraditionalForm], " ", 
    FormBox[
-    FormBox[
-     SuperscriptBox[
-      RowBox[{"(", 
-       FormBox[
-        FormBox[
-         RowBox[{
-          OverscriptBox[
-           FormBox["q",
-            TraditionalForm], "_"], "-", 
-          OverscriptBox[
-           FormBox["p",
-            TraditionalForm], "_"]}],
-         TraditionalForm],
-        TraditionalForm], ")"}], 
+    SuperscriptBox[
+     RowBox[{"(", 
       FormBox[
        FormBox[
-        FormBox["\[Nu]",
-         TraditionalForm],
+        RowBox[{
+         OverscriptBox[
+          FormBox["q",
+           TraditionalForm], "_"], "-", 
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"]}],
         TraditionalForm],
-       TraditionalForm]],
-     TraditionalForm],
+       TraditionalForm], ")"}], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]],
     TraditionalForm], " ", 
    FormBox[
-    FormBox[
-     SuperscriptBox[
-      RowBox[{"(", 
-       FormBox[
-        FormBox[
-         RowBox[{
-          OverscriptBox[
-           FormBox["p",
-            TraditionalForm], "_"], "+", 
-          OverscriptBox[
-           FormBox["r",
-            TraditionalForm], "_"]}],
-         TraditionalForm],
-        TraditionalForm], ")"}], 
+    SuperscriptBox[
+     RowBox[{"(", 
       FormBox[
        FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
+        RowBox[{
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"], "+", 
+         OverscriptBox[
+          FormBox["r",
+           TraditionalForm], "_"]}],
         TraditionalForm],
-       TraditionalForm]],
-     TraditionalForm],
+       TraditionalForm], ")"}], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{155, 20},
+ ImageSize->{170, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Trick",
- CellLabel->"Out[2]=",
- CellID->379098985]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -324,12 +340,11 @@ Cell[BoxData[
       FormBox["r",
        TraditionalForm], "_"],
      TraditionalForm]}]}], TraditionalForm]], "Output",
- ImageSize->{158, 20},
+ ImageSize->{185, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Trick",
- CellLabel->"Out[3]=",
- CellID->1886505726]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -359,12 +374,11 @@ Cell[BoxData[
       FormBox["e",
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
- ImageSize->{79, 19},
+ ImageSize->{94, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Trick",
- CellLabel->"Out[4]=",
- CellID->272166616]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -381,16 +395,15 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"GA", "[", "d", "]"}], ".", 
    RowBox[{"GA", "[", "e", "]"}]}]}]], "Output",
- ImageSize->{137, 15},
+ ImageSize->{142, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Trick",
- CellLabel->"Out[5]//StandardForm=",
- CellID->1559426683]
+ CellLabel->"Out[5]//StandardForm="]
+}, Open  ]]
 }, Open  ]],
 
 Cell["", "SectionFooterSpacer"]
-}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -440,17 +453,15 @@ Cell[TextData[{
   ButtonNote->"DiracTrick"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"Trick",
- CellID->633331234]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{808, 911},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"Trick",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -459,10 +470,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 26, 25.273573}", 
+   "built" -> "{2020, 1, 5, 19, 3, 41.642366}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -470,11 +481,11 @@ TaggingRules->{
     "None", "summary" -> 
     "Trick[exp] performs several basic simplifications without expansion. \
 Trick[exp] uses Contract, DotSimplify and SUNDeltaContract.", 
-    "synonyms" -> {}, "title" -> "Trick", "titlemodifier" -> "", 
-    "windowtitle" -> "Trick", "type" -> "Symbol", "uri" -> 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "Trick", "titlemodifier" -> 
+    "", "windowtitle" -> "Trick", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/Trick"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -482,8 +493,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -492,129 +504,102 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3350, 95, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4715, 134, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1991856433]},
+   CellID->1172406000]},
  "Trick"->{
-  Cell[3961, 122, 82, 2, 35, "Subsubsection",
-   CellTags->"Trick",
-   CellID->890627813],
-  Cell[4046, 126, 397, 16, 35, "Text",
-   CellTags->"Trick",
-   CellID->1624506888],
-  Cell[4468, 146, 368, 12, 27, "Input",
+  Cell[5685, 178, 368, 12, 27, "Input",
    CellTags->"Trick",
    CellID->1470455200],
-  Cell[4839, 160, 394, 15, 41, "Output",
-   CellTags->"Trick",
-   CellID->472477170],
-  Cell[5270, 180, 348, 12, 27, "Input",
+  Cell[6056, 192, 374, 14, 37, "Output",
+   CellTags->"Trick"],
+  Cell[6467, 211, 348, 12, 27, "Input",
    CellTags->"Trick",
    CellID->1607408478],
-  Cell[5621, 194, 1722, 73, 41, "Output",
-   CellTags->"Trick",
-   CellID->379098985],
-  Cell[7380, 272, 122, 4, 27, "Input",
+  Cell[6818, 225, 1369, 58, 37, "Output",
+   CellTags->"Trick"],
+  Cell[8224, 288, 122, 4, 27, "Input",
    CellTags->"Trick",
    CellID->1357228781],
-  Cell[7505, 278, 1227, 53, 41, "Output",
-   CellTags->"Trick",
-   CellID->1886505726],
-  Cell[8769, 336, 244, 7, 27, "Input",
+  Cell[8349, 294, 1206, 52, 39, "Output",
+   CellTags->"Trick"],
+  Cell[9592, 351, 244, 7, 27, "Input",
    CellTags->"Trick",
    CellID->542077909],
-  Cell[9016, 345, 547, 21, 40, "Output",
-   CellTags->"Trick",
-   CellID->272166616],
-  Cell[9600, 371, 151, 5, 27, "Input",
+  Cell[9839, 360, 527, 20, 40, "Output",
+   CellTags->"Trick"],
+  Cell[10403, 385, 151, 5, 27, "Input",
    CellTags->"Trick",
    CellID->1364919880],
-  Cell[9754, 378, 319, 10, 49, "Output",
-   CellTags->"Trick",
-   CellID->1559426683],
-  Cell[10441, 411, 869, 33, 70, "Text",
-   CellTags->"Trick",
-   CellID->633331234]}
+  Cell[10557, 392, 298, 9, 51, "Output",
+   CellTags->"Trick"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 13204, 493},
- {"Trick", 13336, 497}
+ {"PrimaryExamplesSection", 13991, 505},
+ {"Trick", 14124, 509}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[577, 21, 2233, 52, 51, "AnchorBarGrid",
+Cell[577, 21, 3364, 81, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2813, 75, 48, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2864, 78, 461, 13, 98, "Usage",
+Cell[3944, 104, 282, 11, 45, "ObjectNameGrid"],
+Cell[4229, 117, 461, 13, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3350, 95, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4715, 134, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1991856433],
-Cell[3741, 112, 195, 6, 25, "ExampleSection",
- CellID->525356883],
+ CellID->1172406000],
 Cell[CellGroupData[{
-Cell[3961, 122, 82, 2, 35, "Subsubsection",
- CellTags->"Trick",
- CellID->890627813],
-Cell[4046, 126, 397, 16, 35, "Text",
- CellTags->"Trick",
- CellID->1624506888],
+Cell[5128, 153, 195, 6, 26, "ExampleSection",
+ CellID->558656035],
+Cell[5326, 161, 334, 13, 35, "Notes"],
 Cell[CellGroupData[{
-Cell[4468, 146, 368, 12, 27, "Input",
+Cell[5685, 178, 368, 12, 27, "Input",
  CellTags->"Trick",
  CellID->1470455200],
-Cell[4839, 160, 394, 15, 41, "Output",
- CellTags->"Trick",
- CellID->472477170]
+Cell[6056, 192, 374, 14, 37, "Output",
+ CellTags->"Trick"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5270, 180, 348, 12, 27, "Input",
+Cell[6467, 211, 348, 12, 27, "Input",
  CellTags->"Trick",
  CellID->1607408478],
-Cell[5621, 194, 1722, 73, 41, "Output",
- CellTags->"Trick",
- CellID->379098985]
+Cell[6818, 225, 1369, 58, 37, "Output",
+ CellTags->"Trick"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7380, 272, 122, 4, 27, "Input",
+Cell[8224, 288, 122, 4, 27, "Input",
  CellTags->"Trick",
  CellID->1357228781],
-Cell[7505, 278, 1227, 53, 41, "Output",
- CellTags->"Trick",
- CellID->1886505726]
+Cell[8349, 294, 1206, 52, 39, "Output",
+ CellTags->"Trick"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8769, 336, 244, 7, 27, "Input",
+Cell[9592, 351, 244, 7, 27, "Input",
  CellTags->"Trick",
  CellID->542077909],
-Cell[9016, 345, 547, 21, 40, "Output",
- CellTags->"Trick",
- CellID->272166616]
+Cell[9839, 360, 527, 20, 40, "Output",
+ CellTags->"Trick"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9600, 371, 151, 5, 27, "Input",
+Cell[10403, 385, 151, 5, 27, "Input",
  CellTags->"Trick",
  CellID->1364919880],
-Cell[9754, 378, 319, 10, 49, "Output",
- CellTags->"Trick",
- CellID->1559426683]
-}, Open  ]],
-Cell[10088, 391, 31, 0, 70, "SectionFooterSpacer"]
+Cell[10557, 392, 298, 9, 51, "Output",
+ CellTags->"Trick"]
 }, Open  ]]
 }, Open  ]],
-Cell[CellGroupData[{
-Cell[10168, 397, 270, 12, 70, "SeeAlsoSection",
- CellID->1255426704],
-Cell[10441, 411, 869, 33, 70, "Text",
- CellTags->"Trick",
- CellID->633331234]
+Cell[10882, 405, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
-Cell[11325, 447, 23, 0, 70, "FooterCell"]
+Cell[CellGroupData[{
+Cell[10950, 410, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[11223, 424, 832, 31, 56, "SeeAlso"]
+}, Open  ]],
+Cell[12070, 458, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

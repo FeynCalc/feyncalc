@@ -166,9 +166,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/SimplifyPolyLog",
   ButtonNote->"SimplifyPolyLog"],
  "."
-}], "Text",
- CellTags->"Hill",
- CellID->227965464]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -201,7 +199,7 @@ Cell[BoxData[
  RowBox[{"Hill", "[", 
   RowBox[{"a", ",", "b"}], "]"}]], "Input",
  CellTags->"Hill",
- CellLabel->"In[1]:=",
+ CellLabel->"In[210]:=",
  CellID->921040788],
 
 Cell[BoxData[
@@ -277,8 +275,7 @@ Cell[BoxData[
    FractionBox[
     SuperscriptBox["\[Pi]", "2"], "6"]}], TraditionalForm]], "Output",
  CellTags->"Hill",
- CellLabel->"Out[1]=",
- CellID->263318949]
+ CellLabel->"Out[210]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -291,14 +288,13 @@ Cell[BoxData[
    RowBox[{"b", "\[RuleDelayed]", " ", ".656"}]}], " ", "//", " ", 
   "Chop"}]], "Input",
  CellTags->"Hill",
- CellLabel->"In[2]:=",
+ CellLabel->"In[211]:=",
  CellID->814240014],
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
  CellTags->"Hill",
- CellLabel->"Out[2]=",
- CellID->1038506621]
+ CellLabel->"Out[211]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -312,7 +308,7 @@ Cell[BoxData[
       RowBox[{"x", " ", "y"}]}], "]"}], "//", "PowerExpand"}], "//", 
    "SimplifyPolyLog"}], "//", "Expand"}]], "Input",
  CellTags->"Hill",
- CellLabel->"In[3]:=",
+ CellLabel->"In[212]:=",
  CellID->209270855],
 
 Cell[BoxData[
@@ -347,8 +343,7 @@ Cell[BoxData[
      RowBox[{"1", "-", "y"}], ")"}], " ", 
     RowBox[{"log", "(", "y", ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"Hill",
- CellLabel->"Out[3]=",
- CellID->336046460]
+ CellLabel->"Out[212]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -362,14 +357,13 @@ Cell[BoxData[
     RowBox[{"y", "\[Rule]", " ", ".6"}]}], "//", "N"}], "//", 
   "Chop"}]], "Input",
  CellTags->"Hill",
- CellLabel->"In[4]:=",
+ CellLabel->"In[213]:=",
  CellID->1494969413],
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
  CellTags->"Hill",
- CellLabel->"Out[4]=",
- CellID->1646571531]
+ CellLabel->"Out[213]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -434,12 +428,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{856, Automatic}, {Automatic, 261}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

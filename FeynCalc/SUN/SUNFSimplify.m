@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Simplifies expressions that contain SU(N) indices in the
@@ -15,8 +15,8 @@
 (* ------------------------------------------------------------------------ *)
 
 SUNFSimplify::usage = "
-SUNFSimplify[expr] simplifies expression that contain SU(N) indices in the \
-fundamental representation";
+SUNFSimplify[exp] is an auxiliary function that simplifies expressions \
+containing SU(N) indices in the fundamental representation.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -29,7 +29,10 @@ SetAttributes[SUNFSimplify, Listable];
 
 fci[z_ /; FreeQ[z, Pattern]] := (fci[z] = FCI[z]);
 
-Options[SUNFSimplify] = {SUNNToCACF->True ,Explicit->False};
+Options[SUNFSimplify] = {
+	Explicit	-> False,
+	SUNNToCACF	-> True
+};
 
 SUNFSimplify[expr_, OptionsPattern[]] :=
 	Block[ {temp = fci[expr],simplify},

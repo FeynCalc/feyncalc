@@ -123,8 +123,25 @@ Cell[TextData[{
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "AnomalousDimension", "]"}]], "Input",
+ CellTags->"AnomalousDimension",
+ CellLabel->"In[1]:=",
+ CellID->1953214619],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Polarization", "\[Rule]", "1"}], ",", 
+    RowBox[{"Simplify", "\[Rule]", "FullSimplify"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"AnomalousDimension",
+ CellLabel->"Out[1]=",
+ CellID->1686866166]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -176,9 +193,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/SumT",
   ButtonNote->"SumT"],
  "."
-}], "Text",
- CellTags->"AnomalousDimension",
- CellID->1774979938]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -205,29 +220,7 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "AnomalousDimension", "]"}]], "Input",
- CellTags->"AnomalousDimension",
- CellLabel->"In[1]:=",
- CellID->1953214619],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Polarization", "\[Rule]", "1"}], ",", 
-    RowBox[{"Simplify", "\[Rule]", "FullSimplify"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"AnomalousDimension",
- CellLabel->"Out[1]=",
- CellID->1686866166]
-}, Open  ]],
-
-Cell["Polarized case:", "Text",
- CellTags->"AnomalousDimension",
- CellID->2007063734],
+Cell["Polarized case:", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -236,7 +229,7 @@ Cell[BoxData[
   RowBox[{"AnomalousDimension", ",", 
    RowBox[{"Polarization", "\[Rule]", "1"}]}], "]"}]], "Input",
  CellTags->"AnomalousDimension",
- CellLabel->"In[2]:=",
+ CellLabel->"In[196]:=",
  CellID->1676073016],
 
 Cell[BoxData[
@@ -247,8 +240,7 @@ Cell[BoxData[
     RowBox[{"Simplify", "\[Rule]", "FullSimplify"}]}], "}"}], 
   TraditionalForm]], "Output",
  CellTags->"AnomalousDimension",
- CellLabel->"Out[2]=",
- CellID->455353582]
+ CellLabel->"Out[196]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -259,16 +251,14 @@ Cell[TextData[{
     RowBox[{
      RowBox[{"(", "0", ")"}], " "}]], TraditionalForm]]],
  "polarized:"
-}], "Text",
- CellTags->"AnomalousDimension",
- CellID->1291876789],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"AnomalousDimension", "[", "gnsqq0", "]"}]], "Input",
  CellTags->"AnomalousDimension",
- CellLabel->"In[3]:=",
+ CellLabel->"In[197]:=",
  CellID->146201031],
 
 Cell[BoxData[
@@ -288,8 +278,7 @@ Cell[BoxData[
       RowBox[{"m", "+", "1"}]], "-", "6"}], ")"}]}], 
   TraditionalForm]], "Output",
  CellTags->"AnomalousDimension",
- CellLabel->"Out[3]=",
- CellID->615808229]
+ CellLabel->"Out[197]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -300,16 +289,14 @@ Cell[TextData[{
     RowBox[{
      RowBox[{"(", "0", ")"}], " "}]], TraditionalForm]]],
  "polarized:"
-}], "Text",
- CellTags->"AnomalousDimension",
- CellID->1792202903],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"AnomalousDimension", "[", "gsqg0", "]"}]], "Input",
  CellTags->"AnomalousDimension",
- CellLabel->"In[4]:=",
+ CellLabel->"In[198]:=",
  CellID->1170655896],
 
 Cell[BoxData[
@@ -322,8 +309,7 @@ Cell[BoxData[
       RowBox[{"m", "+", "1"}]]}], ")"}], " ", 
    SubscriptBox["T", "f"]}], TraditionalForm]], "Output",
  CellTags->"AnomalousDimension",
- CellLabel->"Out[4]=",
- CellID->2056489351]
+ CellLabel->"Out[198]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -334,16 +320,14 @@ Cell[TextData[{
     RowBox[{
      RowBox[{"(", "0", ")"}], " "}]], TraditionalForm]]],
  "polarized:"
-}], "Text",
- CellTags->"AnomalousDimension",
- CellID->1242785256],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"AnomalousDimension", "[", "gsgq0", "]"}]], "Input",
  CellTags->"AnomalousDimension",
- CellLabel->"In[5]:=",
+ CellLabel->"In[199]:=",
  CellID->1302484886],
 
 Cell[BoxData[
@@ -356,8 +340,7 @@ Cell[BoxData[
      FractionBox["8", "m"]}], ")"}], " ", 
    SubscriptBox["C", "F"]}], TraditionalForm]], "Output",
  CellTags->"AnomalousDimension",
- CellLabel->"Out[5]=",
- CellID->339795493]
+ CellLabel->"Out[199]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -368,16 +351,14 @@ Cell[TextData[{
     RowBox[{
      RowBox[{"(", "0", ")"}], " "}]], TraditionalForm]]],
  "polarized:"
-}], "Text",
- CellTags->"AnomalousDimension",
- CellID->102826276],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"AnomalousDimension", "[", "gsgg0", "]"}]], "Input",
  CellTags->"AnomalousDimension",
- CellLabel->"In[6]:=",
+ CellLabel->"In[200]:=",
  CellID->255541888],
 
 Cell[BoxData[
@@ -401,8 +382,7 @@ Cell[BoxData[
     RowBox[{"8", " ", 
      SubscriptBox["T", "f"]}], "3"]}], TraditionalForm]], "Output",
  CellTags->"AnomalousDimension",
- CellLabel->"Out[6]=",
- CellID->724940306]
+ CellLabel->"Out[200]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -413,16 +393,14 @@ Cell[TextData[{
     RowBox[{
      RowBox[{"(", "0", ")"}], " "}]], TraditionalForm]]],
  "polarized:"
-}], "Text",
- CellTags->"AnomalousDimension",
- CellID->1117022044],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"AnomalousDimension", "[", "gpsqq1", "]"}]], "Input",
  CellTags->"AnomalousDimension",
- CellLabel->"In[7]:=",
+ CellLabel->"In[201]:=",
  CellID->1738556670],
 
 Cell[BoxData[
@@ -448,8 +426,7 @@ Cell[BoxData[
    SubscriptBox["C", "F"], " ", 
    SubscriptBox["T", "f"]}], TraditionalForm]], "Output",
  CellTags->"AnomalousDimension",
- CellLabel->"Out[7]=",
- CellID->297175504]
+ CellLabel->"Out[201]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -460,16 +437,14 @@ Cell[TextData[{
     RowBox[{
      RowBox[{"(", "1", ")"}], " "}]], TraditionalForm]]],
  "polarized:"
-}], "Text",
- CellTags->"AnomalousDimension",
- CellID->1509439590],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"AnomalousDimension", "[", "gnsqq1", "]"}]], "Input",
  CellTags->"AnomalousDimension",
- CellLabel->"In[8]:=",
+ CellLabel->"In[202]:=",
  CellID->1025475425],
 
 Cell[BoxData[
@@ -690,8 +665,7 @@ Cell[BoxData[
           RowBox[{"m", "+", "1"}], ")"}], "2"]}]], "-", 
       FractionBox["2", "3"]}], ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"AnomalousDimension",
- CellLabel->"Out[8]=",
- CellID->1707320400]
+ CellLabel->"Out[202]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -702,16 +676,14 @@ Cell[TextData[{
     RowBox[{
      RowBox[{"(", "1", ")"}], " "}]], TraditionalForm]]],
  "polarized:"
-}], "Text",
- CellTags->"AnomalousDimension",
- CellID->26937910],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"AnomalousDimension", "[", "gsqg1", "]"}]], "Input",
  CellTags->"AnomalousDimension",
- CellLabel->"In[9]:=",
+ CellLabel->"In[204]:=",
  CellID->1790656955],
 
 Cell[BoxData[
@@ -854,8 +826,7 @@ Cell[BoxData[
          RowBox[{"m", "+", "1"}], ")"}], "3"]]}], ")"}]}]}], 
   TraditionalForm]], "Output",
  CellTags->"AnomalousDimension",
- CellLabel->"Out[9]=",
- CellID->578210880]
+ CellLabel->"Out[204]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -866,16 +837,14 @@ Cell[TextData[{
     RowBox[{
      RowBox[{"(", "1", ")"}], " "}]], TraditionalForm]]],
  "polarized:"
-}], "Text",
- CellTags->"AnomalousDimension",
- CellID->1644657872],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"AnomalousDimension", "[", "gsgq1", "]"}]], "Input",
  CellTags->"AnomalousDimension",
- CellLabel->"In[10]:=",
+ CellLabel->"In[205]:=",
  CellID->1820360375],
 
 Cell[BoxData[
@@ -1090,8 +1059,7 @@ Cell[BoxData[
          RowBox[{"m", "+", "1"}], ")"}], "3"]]}], ")"}]}]}], 
   TraditionalForm]], "Output",
  CellTags->"AnomalousDimension",
- CellLabel->"Out[10]=",
- CellID->1694165204]
+ CellLabel->"Out[205]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -1102,16 +1070,14 @@ Cell[TextData[{
     RowBox[{
      RowBox[{"(", "1", ")"}], " "}]], TraditionalForm]]],
  "polarized:"
-}], "Text",
- CellTags->"AnomalousDimension",
- CellID->462099557],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"AnomalousDimension", "[", "gsgg1", "]"}]], "Input",
  CellTags->"AnomalousDimension",
- CellLabel->"In[11]:=",
+ CellLabel->"In[206]:=",
  CellID->1613754345],
 
 Cell[BoxData[
@@ -1280,8 +1246,7 @@ Cell[BoxData[
     SubscriptBox["C", "F"], " ", 
     SubscriptBox["T", "f"]}]}], TraditionalForm]], "Output",
  CellTags->"AnomalousDimension",
- CellLabel->"Out[11]=",
- CellID->1244918806]
+ CellLabel->"Out[206]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -1292,16 +1257,14 @@ Cell[TextData[{
     RowBox[{
      RowBox[{"(", "1", ")"}], " "}]], TraditionalForm]]],
  "polarized (different representation):"
-}], "Text",
- CellTags->"AnomalousDimension",
- CellID->721182810],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"AnomalousDimension", "[", "GSGG1", "]"}]], "Input",
  CellTags->"AnomalousDimension",
- CellLabel->"In[12]:=",
+ CellLabel->"In[207]:=",
  CellID->889064365],
 
 Cell[BoxData[
@@ -1443,8 +1406,7 @@ Cell[BoxData[
        RowBox[{"m", "+", "1"}], ")"}], "3"]}]]}], TraditionalForm]], "Output",
  
  CellTags->"AnomalousDimension",
- CellLabel->"Out[12]=",
- CellID->1840404969]
+ CellLabel->"Out[207]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -1456,9 +1418,7 @@ Cell[TextData[{
     RowBox[{
      RowBox[{"(", "1", ")"}], " "}]], TraditionalForm]]],
  ":"
-}], "Text",
- CellTags->"AnomalousDimension",
- CellID->1805318835],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
@@ -1471,7 +1431,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"ij", ",", "1", ",", "17", ",", "2"}], "}"}]}], "]"}]], "Input",
  CellTags->"AnomalousDimension",
- CellLabel->"In[13]:=",
+ CellLabel->"In[208]:=",
  CellID->621534472],
 
 Cell[BoxData[
@@ -1481,8 +1441,7 @@ Cell[BoxData[
    "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", 
     ",", "0"}], "}"}], TraditionalForm]], "Output",
  CellTags->"AnomalousDimension",
- CellLabel->"Out[13]=",
- CellID->494342750]
+ CellLabel->"Out[208]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -1547,12 +1506,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{397, Automatic}, {Automatic, -8}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

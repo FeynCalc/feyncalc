@@ -168,9 +168,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/PowerFactor",
   ButtonNote->"PowerFactor"],
  "."
-}], "Text",
- CellTags->"Power2",
- CellID->1979787947]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -204,7 +202,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"-", "a"}], ",", "b"}], "]"}]], "Input",
  CellTags->"Power2",
- CellLabel->"In[1]:=",
+ CellLabel->"In[16]:=",
  CellID->1628207625],
 
 Cell[BoxData[
@@ -213,8 +211,7 @@ Cell[BoxData[
    RowBox[{"(", 
     RowBox[{"-", "a"}], ")"}], "b"], TraditionalForm]], "Output",
  CellTags->"Power2",
- CellLabel->"Out[1]=",
- CellID->1555519313]
+ CellLabel->"Out[16]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -224,7 +221,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"-", "a"}], ",", "b"}], "]"}]], "Input",
  CellTags->"Power2",
- CellLabel->"In[2]:=",
+ CellLabel->"In[17]:=",
  CellID->1450604516],
 
 Cell[BoxData[
@@ -237,8 +234,7 @@ Cell[BoxData[
     SuperscriptBox["a", "b"],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"Power2",
- CellLabel->"Out[2]=",
- CellID->1786215167]
+ CellLabel->"Out[17]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -303,12 +299,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{594, Automatic}, {Automatic, 156}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

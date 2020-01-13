@@ -160,15 +160,12 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  ButtonBox["B0",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/B0",
   ButtonNote->"B0"],
  "."
-}], "Text",
- CellTags->"B0Unique",
- CellID->993329416]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -195,9 +192,7 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell["By default transformation is done.", "Text",
- CellTags->"B0Unique",
- CellID->1633725722],
+Cell["By default no transformation is done.", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -205,8 +200,33 @@ Cell[BoxData[
  RowBox[{"B0", "[", 
   RowBox[{"0", ",", "0", ",", "s"}], "]"}]], "Input",
  CellTags->"B0Unique",
- CellLabel->"In[1]:=",
+ CellLabel->"In[28]:=",
  CellID->539333149],
+
+Cell[BoxData[
+ FormBox[
+  TagBox[
+   FormBox[
+    RowBox[{
+     SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+     RowBox[{"0", ",", "0", ",", "s"}], ")"}],
+    TraditionalForm],
+   HoldForm], TraditionalForm]], "Output",
+ CellTags->"B0Unique",
+ CellLabel->"Out[28]="]
+}, Open  ]],
+
+Cell["With B0Real\[Rule]True following transformation is applied", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"B0", "[", 
+  RowBox[{"0", ",", "0", ",", "s", ",", 
+   RowBox[{"B0Unique", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellTags->"B0Unique",
+ CellLabel->"In[30]:=",
+ CellID->224258616],
 
 Cell[BoxData[
  FormBox[
@@ -221,57 +241,7 @@ Cell[BoxData[
      HoldForm],
     TraditionalForm], "+", "1"}], TraditionalForm]], "Output",
  CellTags->"B0Unique",
- CellLabel->"Out[1]=",
- CellID->2030362910]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "B0", "]"}]], "Input",
- CellTags->"B0Unique",
- CellLabel->"In[2]:=",
- CellID->1904628151],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"BReduce", "\[Rule]", "False"}], ",", 
-    RowBox[{"B0Unique", "\[Rule]", "True"}], ",", 
-    RowBox[{"B0Real", "\[Rule]", "True"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"B0Unique",
- CellLabel->"Out[2]=",
- CellID->226407255]
-}, Open  ]],
-
-Cell["With B0Real\[Rule]False, nothing happens.", "Text",
- CellTags->"B0Unique",
- CellID->1308469818],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"B0", "[", 
-  RowBox[{"0", ",", "0", ",", "s", ",", 
-   RowBox[{"B0Unique", "\[Rule]", "False"}]}], "]"}]], "Input",
- CellTags->"B0Unique",
- CellLabel->"In[3]:=",
- CellID->224258616],
-
-Cell[BoxData[
- FormBox[
-  TagBox[
-   FormBox[
-    RowBox[{
-     SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
-     RowBox[{"0", ",", "0", ",", "s"}], ")"}],
-    TraditionalForm],
-   HoldForm], TraditionalForm]], "Output",
- CellTags->"B0Unique",
- CellLabel->"Out[3]=",
- CellID->1908481089]
+ CellLabel->"Out[30]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -336,12 +306,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{857, Automatic}, {Automatic, 183}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

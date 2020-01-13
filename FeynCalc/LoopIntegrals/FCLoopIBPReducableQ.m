@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Returns True if the integral contains propagators raised to
@@ -17,8 +17,8 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopIBPReducableQ::usage =
-"FCLoopBasisIncompleteQ[int] checks if the integral contains propagators raised to
-integer powers";
+"FCLoopIBPReducableQ[int] checks if the integral contains propagators raised to
+integer powers.";
 
 FCLoopIBPReducableQ::failmsg =
 "ErroFCLoopIBPReducableQ has encountered a fatal problem and must abort the computation. \
@@ -32,9 +32,13 @@ Begin["`FCLoopBasis`Private`"]
 (* Safe for memoization *)
 FCLoopIBPReducableQ[sps_. fad_FeynAmpDenominator]:=
 	MemSet[FCLoopIBPReducableQ[sps fad],
-		Block[{fadList,res},
+		Block[{fadList,res, propPowers},
+
 			fadList = Sort[List@@fad];
-			res = (fadList=!=Union[fadList] || MatchQ[sps, _. Power[Pair[__], _]]);
+
+			propPowers = Union[Flatten[{1,Cases[List@@fad, (StandardPropagatorDenominator|CartesianPropagatorDenominator|GenericPropagatorDenominator)[__,{n_,_}]:>n, Infinity]}]];
+
+			res = (fadList=!=Union[fadList] || MatchQ[sps, _. Power[(Pair|CartesianPair)[__], _]] || MatchQ[propPowers,{1,__}]);
 			res
 		]
 	];

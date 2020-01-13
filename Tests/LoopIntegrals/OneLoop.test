@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for OneLoop			*)
@@ -15,22 +15,17 @@
 
 Tests`LoopIntegrals`fcstOneLoop = {
 
-{"fcstOneLoop-ID1","OneLoop[q, -I/Pi^ 2 FeynAmpDenominator[PropagatorDenominator[q, m]]]","A0[m^2]"},
-{"fcstOneLoop-ID2","OneLoop[q, (I el^2)/(16 Pi^4)/(1 - D)*
-	FeynAmpDenominator[PropagatorDenominator[q, mf],
-		PropagatorDenominator[q - k, mf]]*
-	DiracTrace[(mf + DiracSlash[q - k]).DiracMatrix[
-		mu].(mf + DiracSlash[q]).DiracMatrix[mu]],
-	Factoring -> True] /. ScalarProduct[k, k] -> k2 /.
-	mf^2 -> mf2 // Simplify","-(el^2*(2*(-2 + D)*A0[mf2] - ((-2 + D)*k2 + 4*mf2)*B0[k2, mf2, mf2]))/(8*(-1 + D)*Pi^2)"},
+{"fcstOneLoop-ID1","OneLoop[q, -I/Pi^ 2 FAD[{q, m}]]","A0[m^2]"},
+{"fcstOneLoop-ID2","OneLoop[q, (I el^2)/(16 Pi^4)/(1 - D)*FAD[{q, mf}, {q - k, mf}]*
+	DiracTrace[(mf + GSD[-k + q]).GAD[mu].(mf + GSD[q]).GAD[mu]],
+	Factoring -> True] /. ScalarProduct[k, k] -> k2 /. mf^2 -> mf2 // FullSimplify",
+	"(el^2*(-2*(-2 + D)*A0[mf2] + ((-2 + D)*k2 + 4*mf2)*B0[k2, mf2, mf2]))/(8*(-1 + D)*Pi^2)"},
 {"fcstOneLoop-ID3","OneLoop[q, xxx + FAD[{q,m}]]","xxx + I \[Pi]^2 A0[m^2]"},
 {"fcstOneLoop-ID4","OneLoop[k,
-32 M FeynAmpDenominator[PropagatorDenominator[k, M],
-PropagatorDenominator[k - q1 - q2, M],
-PropagatorDenominator[k - q1, M]] Pair[Momentum[k],
-Momentum[Polarization[q1, I, Transversality -> True]]] Pair[
-Momentum[k],
-Momentum[Polarization[q2, I, Transversality -> True]]]]","(32*I)*M*Pi^2*(-(Pair[Momentum[q1],
+32 M FAD[{k, M}, {k - q1 - q2, M}, {k - q1, M}] Pair[Momentum[k, D],
+Momentum[Polarization[q1, I, Transversality -> True], D]] Pair[
+Momentum[k, D],
+Momentum[Polarization[q2, I, Transversality -> True], D]]]","(32*I)*M*Pi^2*(-(Pair[Momentum[q1],
 Momentum[Polarization[q2, I, Transversality -> True]]]*Pair[Momentum[q2],
 Momentum[Polarization[q1, I, Transversality -> True]]]*PaVe[2, {Pair[Momentum[q1],
 Momentum[q1]], Pair[Momentum[q1], Momentum[q1]] + 2*Pair[Momentum[q1], Momentum[q2]] +
@@ -46,8 +41,8 @@ Momentum[q1]], Pair[Momentum[q1], Momentum[q1]] + 2*Pair[Momentum[q1], Momentum[
 Pair[Momentum[q2], Momentum[q2]], Pair[Momentum[q2], Momentum[q2]]}, {M^2, M^2, M^2},
 PaVeAutoOrder -> True, PaVeAutoReduce -> True])"},
 {"fcstOneLoop-ID5","OneLoop[q, FAD[q, q - p1]]","I Pi^2 B0[Pair[Momentum[p1], Momentum[p1]], 0, 0]"},
-{"fcstOneLoop-ID6","OneLoop[q1, ((-I)*GA[mu]).(m + GS[q1]).GA[nu].(m +
-GS[q1]).((-I)*GA[mu])*FAD[{q1, 0}, {q1, 0}, {-p + q1, 0}]]//FCE",
+{"fcstOneLoop-ID6","OneLoop[q1, ((-I)*GAD[mu]).(m + GSD[q1]).GAD[nu].(m + GSD[q1]).((-I)*GAD[mu])*
+FAD[{q1, 0}, {q1, 0}, {-p + q1, 0}]] // FCE",
 	"-I \[Pi]^2 (2 D m C0[0, SP[p, p], SP[p, p], 0, 0, 0] FV[p,
 	nu] - (2 - D) B0[SP[p, p], 0, 0] GA[nu] + (2 - D) m^2 C0[0,
 	SP[p, p], SP[p, p], 0, 0, 0] GA[nu] +
@@ -63,13 +58,850 @@ GS[q1]).((-I)*GA[mu])*FAD[{q1, 0}, {q1, 0}, {-p + q1, 0}]]//FCE",
 0, {0, 0, SP[p1, p1], SP[p1, p1] - 2 SP[p1, p2] + SP[p2, p2],
 SP[p2, p2], 0, SP[p1, p1], SP[p2, p2], SP[p1, p1], SP[p2, p2]}, {0,
 	0, 0, 0, m^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]"},
-{"fcstOneLoop-ID8","Simplify[ChangeDimension[
-OneLoop[q,
-	FVD[q, mu]  FAD[{q, 0}, {q + p1, 0}, {q + p2, 0}, {q + p3,
-	0}, {q + p4, 0}]], D] -
-TID[FVD[q,
-	mu]  FAD[{q, 0}, {q + p1, 0}, {q + p2, 0}, {q + p3, 0}, {q + p4,
-	0}], q, UsePaVeBasis -> True]]",
-"0"},
-{"fcstOneLoop-ID9","OneLoop[k, FVD[k1, al] FAD[k, m]]","0"}
+{"fcstOneLoop-ID8","OneLoop[q,FCI@FAD[{q, m0}, {q + p1, m1}, {q + p2, m2}, {q + p3, m3},
+{q + p4, m4}]] // PaVeOrder // FCE",
+"(I \[Pi]^2 (8 D0[SP[p1, p1], SP[p2, p2],
+	SP[p2, p2] - 2 SP[p2, p3] + SP[p3, p3],
+	SP[p1, p1] - 2 SP[p1, p3] + SP[p3, p3],
+	SP[p1, p1] - 2 SP[p1, p2] + SP[p2, p2], SP[p3, p3], m1^2, m0^2,
+		m2^2, m3^2] (m0^2 SP[p1, p3]^2 SP[p2, p2] -
+		m4^2 SP[p1, p3]^2 SP[p2, p2] -
+		m0^2 SP[p1, p3] SP[p1, p4] SP[p2, p2] +
+		m3^2 SP[p1, p3] SP[p1, p4] SP[p2, p2] -
+		2 m0^2 SP[p1, p2] SP[p1, p3] SP[p2, p3] +
+		2 m4^2 SP[p1, p2] SP[p1, p3] SP[p2, p3] +
+		m0^2 SP[p1, p2] SP[p1, p4] SP[p2, p3] -
+		m3^2 SP[p1, p2] SP[p1, p4] SP[p2, p3] +
+		m0^2 SP[p1, p3] SP[p1, p4] SP[p2, p3] -
+		m2^2 SP[p1, p3] SP[p1, p4] SP[p2, p3] +
+		SP[p1, p3] SP[p1, p4] SP[p2, p2] SP[p2, p3] +
+		m0^2 SP[p1, p1] SP[p2, p3]^2 - m4^2 SP[p1, p1] SP[p2, p3]^2 -
+		m0^2 SP[p1, p4] SP[p2, p3]^2 + m1^2 SP[p1, p4] SP[p2, p3]^2 -
+		SP[p1, p1] SP[p1, p4] SP[p2, p3]^2 +
+		m0^2 SP[p1, p2] SP[p1, p3] SP[p2, p4] -
+		m3^2 SP[p1, p2] SP[p1, p3] SP[p2, p4] -
+		m0^2 SP[p1, p3]^2 SP[p2, p4] + m2^2 SP[p1, p3]^2 SP[p2, p4] -
+		SP[p1, p3]^2 SP[p2, p2] SP[p2, p4] -
+		m0^2 SP[p1, p1] SP[p2, p3] SP[p2, p4] +
+		m3^2 SP[p1, p1] SP[p2, p3] SP[p2, p4] +
+		m0^2 SP[p1, p3] SP[p2, p3] SP[p2, p4] -
+		m1^2 SP[p1, p3] SP[p2, p3] SP[p2, p4] +
+		SP[p1, p1] SP[p1, p3] SP[p2, p3] SP[p2, p4] +
+		m0^2 SP[p1, p2]^2 SP[p3, p3] - m4^2 SP[p1, p2]^2 SP[p3, p3] -
+		m0^2 SP[p1, p2] SP[p1, p4] SP[p3, p3] +
+		m2^2 SP[p1, p2] SP[p1, p4] SP[p3, p3] -
+		m0^2 SP[p1, p1] SP[p2, p2] SP[p3, p3] +
+		m4^2 SP[p1, p1] SP[p2, p2] SP[p3, p3] +
+		m0^2 SP[p1, p4] SP[p2, p2] SP[p3, p3] -
+		m1^2 SP[p1, p4] SP[p2, p2] SP[p3, p3] +
+		SP[p1, p1] SP[p1, p4] SP[p2, p2] SP[p3, p3] -
+		SP[p1, p2] SP[p1, p4] SP[p2, p2] SP[p3, p3] -
+		SP[p1, p3] SP[p1, p4] SP[p2, p2] SP[p3, p3] +
+		SP[p1, p2] SP[p1, p4] SP[p2, p3] SP[p3, p3] +
+		m0^2 SP[p1, p1] SP[p2, p4] SP[p3, p3] -
+		m2^2 SP[p1, p1] SP[p2, p4] SP[p3, p3] -
+		m0^2 SP[p1, p2] SP[p2, p4] SP[p3, p3] +
+		m1^2 SP[p1, p2] SP[p2, p4] SP[p3, p3] -
+		SP[p1, p1] SP[p1, p2] SP[p2, p4] SP[p3, p3] +
+		SP[p1, p2] SP[p1, p3] SP[p2, p4] SP[p3, p3] +
+		SP[p1, p1] SP[p2, p2] SP[p2, p4] SP[p3, p3] -
+		SP[p1, p1] SP[p2, p3] SP[p2, p4] SP[p3, p3] -
+		m0^2 SP[p1, p2]^2 SP[p3, p4] + m3^2 SP[p1, p2]^2 SP[p3, p4] +
+		m0^2 SP[p1, p2] SP[p1, p3] SP[p3, p4] -
+		m2^2 SP[p1, p2] SP[p1, p3] SP[p3, p4] +
+		m0^2 SP[p1, p1] SP[p2, p2] SP[p3, p4] -
+		m3^2 SP[p1, p1] SP[p2, p2] SP[p3, p4] -
+		m0^2 SP[p1, p3] SP[p2, p2] SP[p3, p4] +
+		m1^2 SP[p1, p3] SP[p2, p2] SP[p3, p4] -
+		SP[p1, p1] SP[p1, p3] SP[p2, p2] SP[p3, p4] +
+		SP[p1, p2] SP[p1, p3] SP[p2, p2] SP[p3, p4] -
+		m0^2 SP[p1, p1] SP[p2, p3] SP[p3, p4] +
+		m2^2 SP[p1, p1] SP[p2, p3] SP[p3, p4] +
+		m0^2 SP[p1, p2] SP[p2, p3] SP[p3, p4] -
+		m1^2 SP[p1, p2] SP[p2, p3] SP[p3, p4] +
+		SP[p1, p1] SP[p1, p2] SP[p2, p3] SP[p3, p4] -
+		SP[p1, p1] SP[p2, p2] SP[p2, p3] SP[p3, p4] -
+		SP[p1, p2]^2 SP[p3, p3] SP[p3, p4] +
+		SP[p1, p1] SP[p2, p2] SP[p3, p3] SP[p3, p4] +
+		SP[p1, p3]^2 SP[p2, p2] SP[p4, p4] -
+		2 SP[p1, p2] SP[p1, p3] SP[p2, p3] SP[p4, p4] +
+		SP[p1, p1] SP[p2, p3]^2 SP[p4, p4] +
+		SP[p1, p2]^2 SP[p3, p3] SP[p4, p4] -
+		SP[p1, p1] SP[p2, p2] SP[p3, p3] SP[p4, p4]) -
+	8 D0[SP[p1, p1], SP[p2, p2],
+	SP[p2, p2] - 2 SP[p2, p4] + SP[p4, p4],
+	SP[p1, p1] - 2 SP[p1, p4] + SP[p4, p4],
+	SP[p1, p1] - 2 SP[p1, p2] + SP[p2, p2], SP[p4, p4], m1^2, m0^2,
+		m2^2, m4^2] (m0^2 SP[p1, p3] SP[p1, p4] SP[p2, p2] -
+		m4^2 SP[p1, p3] SP[p1, p4] SP[p2, p2] -
+		m0^2 SP[p1, p4]^2 SP[p2, p2] + m3^2 SP[p1, p4]^2 SP[p2, p2] -
+		m0^2 SP[p1, p2] SP[p1, p4] SP[p2, p3] +
+		m4^2 SP[p1, p2] SP[p1, p4] SP[p2, p3] +
+		m0^2 SP[p1, p4]^2 SP[p2, p3] - m2^2 SP[p1, p4]^2 SP[p2, p3] +
+		SP[p1, p4]^2 SP[p2, p2] SP[p2, p3] -
+		m0^2 SP[p1, p2] SP[p1, p3] SP[p2, p4] +
+		m4^2 SP[p1, p2] SP[p1, p3] SP[p2, p4] +
+		2 m0^2 SP[p1, p2] SP[p1, p4] SP[p2, p4] -
+		2 m3^2 SP[p1, p2] SP[p1, p4] SP[p2, p4] -
+		m0^2 SP[p1, p3] SP[p1, p4] SP[p2, p4] +
+		m2^2 SP[p1, p3] SP[p1, p4] SP[p2, p4] -
+		SP[p1, p3] SP[p1, p4] SP[p2, p2] SP[p2, p4] +
+		m0^2 SP[p1, p1] SP[p2, p3] SP[p2, p4] -
+		m4^2 SP[p1, p1] SP[p2, p3] SP[p2, p4] -
+		m0^2 SP[p1, p4] SP[p2, p3] SP[p2, p4] +
+		m1^2 SP[p1, p4] SP[p2, p3] SP[p2, p4] -
+		SP[p1, p1] SP[p1, p4] SP[p2, p3] SP[p2, p4] -
+		m0^2 SP[p1, p1] SP[p2, p4]^2 + m3^2 SP[p1, p1] SP[p2, p4]^2 +
+		m0^2 SP[p1, p3] SP[p2, p4]^2 - m1^2 SP[p1, p3] SP[p2, p4]^2 +
+		SP[p1, p1] SP[p1, p3] SP[p2, p4]^2 -
+		SP[p1, p4]^2 SP[p2, p2] SP[p3, p3] +
+		2 SP[p1, p2] SP[p1, p4] SP[p2, p4] SP[p3, p3] -
+		SP[p1, p1] SP[p2, p4]^2 SP[p3, p3] +
+		m0^2 SP[p1, p2]^2 SP[p3, p4] - m4^2 SP[p1, p2]^2 SP[p3, p4] -
+		m0^2 SP[p1, p2] SP[p1, p4] SP[p3, p4] +
+		m2^2 SP[p1, p2] SP[p1, p4] SP[p3, p4] -
+		m0^2 SP[p1, p1] SP[p2, p2] SP[p3, p4] +
+		m4^2 SP[p1, p1] SP[p2, p2] SP[p3, p4] +
+		m0^2 SP[p1, p4] SP[p2, p2] SP[p3, p4] -
+		m1^2 SP[p1, p4] SP[p2, p2] SP[p3, p4] +
+		SP[p1, p1] SP[p1, p4] SP[p2, p2] SP[p3, p4] -
+		SP[p1, p2] SP[p1, p4] SP[p2, p2] SP[p3, p4] +
+		m0^2 SP[p1, p1] SP[p2, p4] SP[p3, p4] -
+		m2^2 SP[p1, p1] SP[p2, p4] SP[p3, p4] -
+		m0^2 SP[p1, p2] SP[p2, p4] SP[p3, p4] +
+		m1^2 SP[p1, p2] SP[p2, p4] SP[p3, p4] -
+		SP[p1, p1] SP[p1, p2] SP[p2, p4] SP[p3, p4] +
+		SP[p1, p1] SP[p2, p2] SP[p2, p4] SP[p3, p4] -
+		m0^2 SP[p1, p2]^2 SP[p4, p4] + m3^2 SP[p1, p2]^2 SP[p4, p4] +
+		m0^2 SP[p1, p2] SP[p1, p3] SP[p4, p4] -
+		m2^2 SP[p1, p2] SP[p1, p3] SP[p4, p4] +
+		m0^2 SP[p1, p1] SP[p2, p2] SP[p4, p4] -
+		m3^2 SP[p1, p1] SP[p2, p2] SP[p4, p4] -
+		m0^2 SP[p1, p3] SP[p2, p2] SP[p4, p4] +
+		m1^2 SP[p1, p3] SP[p2, p2] SP[p4, p4] -
+		SP[p1, p1] SP[p1, p3] SP[p2, p2] SP[p4, p4] +
+		SP[p1, p2] SP[p1, p3] SP[p2, p2] SP[p4, p4] +
+		SP[p1, p3] SP[p1, p4] SP[p2, p2] SP[p4, p4] -
+		m0^2 SP[p1, p1] SP[p2, p3] SP[p4, p4] +
+		m2^2 SP[p1, p1] SP[p2, p3] SP[p4, p4] +
+		m0^2 SP[p1, p2] SP[p2, p3] SP[p4, p4] -
+		m1^2 SP[p1, p2] SP[p2, p3] SP[p4, p4] +
+		SP[p1, p1] SP[p1, p2] SP[p2, p3] SP[p4, p4] -
+		SP[p1, p2] SP[p1, p4] SP[p2, p3] SP[p4, p4] -
+		SP[p1, p1] SP[p2, p2] SP[p2, p3] SP[p4, p4] -
+		SP[p1, p2] SP[p1, p3] SP[p2, p4] SP[p4, p4] +
+		SP[p1, p1] SP[p2, p3] SP[p2, p4] SP[p4, p4] -
+		SP[p1, p2]^2 SP[p3, p3] SP[p4, p4] +
+		SP[p1, p1] SP[p2, p2] SP[p3, p3] SP[p4, p4] +
+		SP[p1, p2]^2 SP[p3, p4] SP[p4, p4] -
+		SP[p1, p1] SP[p2, p2] SP[p3, p4] SP[p4, p4]) +
+	8 D0[SP[p1, p1], SP[p3, p3],
+	SP[p3, p3] - 2 SP[p3, p4] + SP[p4, p4],
+	SP[p1, p1] - 2 SP[p1, p4] + SP[p4, p4],
+	SP[p1, p1] - 2 SP[p1, p3] + SP[p3, p3], SP[p4, p4], m1^2, m0^2,
+		m3^2, m4^2] (m0^2 SP[p1, p3] SP[p1, p4] SP[p2, p3] -
+		m4^2 SP[p1, p3] SP[p1, p4] SP[p2, p3] -
+		m0^2 SP[p1, p4]^2 SP[p2, p3] + m3^2 SP[p1, p4]^2 SP[p2, p3] -
+		m0^2 SP[p1, p3]^2 SP[p2, p4] + m4^2 SP[p1, p3]^2 SP[p2, p4] +
+		m0^2 SP[p1, p3] SP[p1, p4] SP[p2, p4] -
+		m3^2 SP[p1, p3] SP[p1, p4] SP[p2, p4] -
+		m0^2 SP[p1, p2] SP[p1, p4] SP[p3, p3] +
+		m4^2 SP[p1, p2] SP[p1, p4] SP[p3, p3] +
+		m0^2 SP[p1, p4]^2 SP[p3, p3] - m2^2 SP[p1, p4]^2 SP[p3, p3] +
+		SP[p1, p4]^2 SP[p2, p2] SP[p3, p3] -
+		SP[p1, p4]^2 SP[p2, p3] SP[p3, p3] +
+		m0^2 SP[p1, p1] SP[p2, p4] SP[p3, p3] -
+		m4^2 SP[p1, p1] SP[p2, p4] SP[p3, p3] -
+		m0^2 SP[p1, p4] SP[p2, p4] SP[p3, p3] +
+		m1^2 SP[p1, p4] SP[p2, p4] SP[p3, p3] -
+		SP[p1, p1] SP[p1, p4] SP[p2, p4] SP[p3, p3] +
+		SP[p1, p3] SP[p1, p4] SP[p2, p4] SP[p3, p3] +
+		m0^2 SP[p1, p2] SP[p1, p3] SP[p3, p4] -
+		m4^2 SP[p1, p2] SP[p1, p3] SP[p3, p4] +
+		m0^2 SP[p1, p2] SP[p1, p4] SP[p3, p4] -
+		m3^2 SP[p1, p2] SP[p1, p4] SP[p3, p4] -
+		2 m0^2 SP[p1, p3] SP[p1, p4] SP[p3, p4] +
+		2 m2^2 SP[p1, p3] SP[p1, p4] SP[p3, p4] -
+		2 SP[p1, p3] SP[p1, p4] SP[p2, p2] SP[p3, p4] -
+		m0^2 SP[p1, p1] SP[p2, p3] SP[p3, p4] +
+		m4^2 SP[p1, p1] SP[p2, p3] SP[p3, p4] +
+		m0^2 SP[p1, p4] SP[p2, p3] SP[p3, p4] -
+		m1^2 SP[p1, p4] SP[p2, p3] SP[p3, p4] +
+		SP[p1, p1] SP[p1, p4] SP[p2, p3] SP[p3, p4] -
+		m0^2 SP[p1, p1] SP[p2, p4] SP[p3, p4] +
+		m3^2 SP[p1, p1] SP[p2, p4] SP[p3, p4] +
+		m0^2 SP[p1, p3] SP[p2, p4] SP[p3, p4] -
+		m1^2 SP[p1, p3] SP[p2, p4] SP[p3, p4] +
+		SP[p1, p1] SP[p1, p3] SP[p2, p4] SP[p3, p4] +
+		SP[p1, p2] SP[p1, p4] SP[p3, p3] SP[p3, p4] -
+		SP[p1, p1] SP[p2, p4] SP[p3, p3] SP[p3, p4] +
+		m0^2 SP[p1, p1] SP[p3, p4]^2 - m2^2 SP[p1, p1] SP[p3, p4]^2 -
+		m0^2 SP[p1, p2] SP[p3, p4]^2 + m1^2 SP[p1, p2] SP[p3, p4]^2 -
+		SP[p1, p1] SP[p1, p2] SP[p3, p4]^2 +
+		SP[p1, p1] SP[p2, p2] SP[p3, p4]^2 -
+		m0^2 SP[p1, p2] SP[p1, p3] SP[p4, p4] +
+		m3^2 SP[p1, p2] SP[p1, p3] SP[p4, p4] +
+		m0^2 SP[p1, p3]^2 SP[p4, p4] - m2^2 SP[p1, p3]^2 SP[p4, p4] +
+		SP[p1, p3]^2 SP[p2, p2] SP[p4, p4] +
+		m0^2 SP[p1, p1] SP[p2, p3] SP[p4, p4] -
+		m3^2 SP[p1, p1] SP[p2, p3] SP[p4, p4] -
+		m0^2 SP[p1, p3] SP[p2, p3] SP[p4, p4] +
+		m1^2 SP[p1, p3] SP[p2, p3] SP[p4, p4] -
+		SP[p1, p1] SP[p1, p3] SP[p2, p3] SP[p4, p4] +
+		SP[p1, p3] SP[p1, p4] SP[p2, p3] SP[p4, p4] -
+		SP[p1, p3]^2 SP[p2, p4] SP[p4, p4] -
+		m0^2 SP[p1, p1] SP[p3, p3] SP[p4, p4] +
+		m2^2 SP[p1, p1] SP[p3, p3] SP[p4, p4] +
+		m0^2 SP[p1, p2] SP[p3, p3] SP[p4, p4] -
+		m1^2 SP[p1, p2] SP[p3, p3] SP[p4, p4] +
+		SP[p1, p1] SP[p1, p2] SP[p3, p3] SP[p4, p4] -
+		SP[p1, p2] SP[p1, p3] SP[p3, p3] SP[p4, p4] -
+		SP[p1, p2] SP[p1, p4] SP[p3, p3] SP[p4, p4] -
+		SP[p1, p1] SP[p2, p2] SP[p3, p3] SP[p4, p4] +
+		SP[p1, p1] SP[p2, p3] SP[p3, p3] SP[p4, p4] +
+		SP[p1, p1] SP[p2, p4] SP[p3, p3] SP[p4, p4] +
+		SP[p1, p2] SP[p1, p3] SP[p3, p4] SP[p4, p4] -
+		SP[p1, p1] SP[p2, p3] SP[p3, p4] SP[p4, p4]) -
+	8 D0[SP[p2, p2], SP[p3, p3],
+	SP[p3, p3] - 2 SP[p3, p4] + SP[p4, p4],
+	SP[p2, p2] - 2 SP[p2, p4] + SP[p4, p4],
+	SP[p2, p2] - 2 SP[p2, p3] + SP[p3, p3], SP[p4, p4], m2^2, m0^2,
+		m3^2, m4^2] (m0^2 SP[p1, p4] SP[p2, p3]^2 -
+		m4^2 SP[p1, p4] SP[p2, p3]^2 -
+		m0^2 SP[p1, p3] SP[p2, p3] SP[p2, p4] +
+		m4^2 SP[p1, p3] SP[p2, p3] SP[p2, p4] -
+		m0^2 SP[p1, p4] SP[p2, p3] SP[p2, p4] +
+		m3^2 SP[p1, p4] SP[p2, p3] SP[p2, p4] +
+		m0^2 SP[p1, p3] SP[p2, p4]^2 - m3^2 SP[p1, p3] SP[p2, p4]^2 -
+		m0^2 SP[p1, p4] SP[p2, p2] SP[p3, p3] +
+		m4^2 SP[p1, p4] SP[p2, p2] SP[p3, p3] +
+		m0^2 SP[p1, p2] SP[p2, p4] SP[p3, p3] -
+		m4^2 SP[p1, p2] SP[p2, p4] SP[p3, p3] +
+		m0^2 SP[p1, p4] SP[p2, p4] SP[p3, p3] -
+		m2^2 SP[p1, p4] SP[p2, p4] SP[p3, p3] +
+		SP[p1, p4] SP[p2, p2] SP[p2, p4] SP[p3, p3] -
+		SP[p1, p4] SP[p2, p3] SP[p2, p4] SP[p3, p3] -
+		m0^2 SP[p2, p4]^2 SP[p3, p3] + m1^2 SP[p2, p4]^2 SP[p3, p3] -
+		SP[p1, p1] SP[p2, p4]^2 SP[p3, p3] +
+		SP[p1, p3] SP[p2, p4]^2 SP[p3, p3] +
+		m0^2 SP[p1, p3] SP[p2, p2] SP[p3, p4] -
+		m4^2 SP[p1, p3] SP[p2, p2] SP[p3, p4] +
+		m0^2 SP[p1, p4] SP[p2, p2] SP[p3, p4] -
+		m3^2 SP[p1, p4] SP[p2, p2] SP[p3, p4] -
+		m0^2 SP[p1, p2] SP[p2, p3] SP[p3, p4] +
+		m4^2 SP[p1, p2] SP[p2, p3] SP[p3, p4] -
+		m0^2 SP[p1, p4] SP[p2, p3] SP[p3, p4] +
+		m2^2 SP[p1, p4] SP[p2, p3] SP[p3, p4] -
+		SP[p1, p4] SP[p2, p2] SP[p2, p3] SP[p3, p4] -
+		m0^2 SP[p1, p2] SP[p2, p4] SP[p3, p4] +
+		m3^2 SP[p1, p2] SP[p2, p4] SP[p3, p4] -
+		m0^2 SP[p1, p3] SP[p2, p4] SP[p3, p4] +
+		m2^2 SP[p1, p3] SP[p2, p4] SP[p3, p4] -
+		SP[p1, p3] SP[p2, p2] SP[p2, p4] SP[p3, p4] +
+		2 m0^2 SP[p2, p3] SP[p2, p4] SP[p3, p4] -
+		2 m1^2 SP[p2, p3] SP[p2, p4] SP[p3, p4] +
+		2 SP[p1, p1] SP[p2, p3] SP[p2, p4] SP[p3, p4] +
+		SP[p1, p4] SP[p2, p2] SP[p3, p3] SP[p3, p4] -
+		SP[p1, p2] SP[p2, p4] SP[p3, p3] SP[p3, p4] +
+		m0^2 SP[p1, p2] SP[p3, p4]^2 - m2^2 SP[p1, p2] SP[p3, p4]^2 -
+		m0^2 SP[p2, p2] SP[p3, p4]^2 + m1^2 SP[p2, p2] SP[p3, p4]^2 -
+		SP[p1, p1] SP[p2, p2] SP[p3, p4]^2 +
+		SP[p1, p2] SP[p2, p2] SP[p3, p4]^2 -
+		m0^2 SP[p1, p3] SP[p2, p2] SP[p4, p4] +
+		m3^2 SP[p1, p3] SP[p2, p2] SP[p4, p4] +
+		m0^2 SP[p1, p2] SP[p2, p3] SP[p4, p4] -
+		m3^2 SP[p1, p2] SP[p2, p3] SP[p4, p4] +
+		m0^2 SP[p1, p3] SP[p2, p3] SP[p4, p4] -
+		m2^2 SP[p1, p3] SP[p2, p3] SP[p4, p4] +
+		SP[p1, p3] SP[p2, p2] SP[p2, p3] SP[p4, p4] -
+		m0^2 SP[p2, p3]^2 SP[p4, p4] + m1^2 SP[p2, p3]^2 SP[p4, p4] -
+		SP[p1, p1] SP[p2, p3]^2 SP[p4, p4] +
+		SP[p1, p4] SP[p2, p3]^2 SP[p4, p4] -
+		SP[p1, p3] SP[p2, p3] SP[p2, p4] SP[p4, p4] -
+		m0^2 SP[p1, p2] SP[p3, p3] SP[p4, p4] +
+		m2^2 SP[p1, p2] SP[p3, p3] SP[p4, p4] +
+		m0^2 SP[p2, p2] SP[p3, p3] SP[p4, p4] -
+		m1^2 SP[p2, p2] SP[p3, p3] SP[p4, p4] +
+		SP[p1, p1] SP[p2, p2] SP[p3, p3] SP[p4, p4] -
+		SP[p1, p2] SP[p2, p2] SP[p3, p3] SP[p4, p4] -
+		SP[p1, p3] SP[p2, p2] SP[p3, p3] SP[p4, p4] -
+		SP[p1, p4] SP[p2, p2] SP[p3, p3] SP[p4, p4] +
+		SP[p1, p2] SP[p2, p3] SP[p3, p3] SP[p4, p4] +
+		SP[p1, p2] SP[p2, p4] SP[p3, p3] SP[p4, p4] +
+		SP[p1, p3] SP[p2, p2] SP[p3, p4] SP[p4, p4] -
+		SP[p1, p2] SP[p2, p3] SP[p3, p4] SP[p4, p4]) -
+	8 D0[SP[p1, p1] - 2 SP[p1, p2] + SP[p2, p2],
+	SP[p1, p1] - 2 SP[p1, p3] + SP[p3, p3],
+	SP[p3, p3] - 2 SP[p3, p4] + SP[p4, p4],
+	SP[p2, p2] - 2 SP[p2, p4] + SP[p4, p4],
+	SP[p2, p2] - 2 SP[p2, p3] + SP[p3, p3],
+	SP[p1, p1] - 2 SP[p1, p4] + SP[p4, p4], m2^2, m1^2, m3^2,
+	m4^2] (m0^2 SP[p1, p3]^2 SP[p2, p2] -
+		m4^2 SP[p1, p3]^2 SP[p2, p2] -
+		2 m0^2 SP[p1, p3] SP[p1, p4] SP[p2, p2] +
+		m3^2 SP[p1, p3] SP[p1, p4] SP[p2, p2] +
+		m4^2 SP[p1, p3] SP[p1, p4] SP[p2, p2] +
+		m0^2 SP[p1, p4]^2 SP[p2, p2] - m3^2 SP[p1, p4]^2 SP[p2, p2] -
+		2 m0^2 SP[p1, p2] SP[p1, p3] SP[p2, p3] +
+		2 m4^2 SP[p1, p2] SP[p1, p3] SP[p2, p3] +
+		2 m0^2 SP[p1, p2] SP[p1, p4] SP[p2, p3] -
+		m3^2 SP[p1, p2] SP[p1, p4] SP[p2, p3] -
+		m4^2 SP[p1, p2] SP[p1, p4] SP[p2, p3] +
+		2 m0^2 SP[p1, p3] SP[p1, p4] SP[p2, p3] -
+		m2^2 SP[p1, p3] SP[p1, p4] SP[p2, p3] -
+		m4^2 SP[p1, p3] SP[p1, p4] SP[p2, p3] -
+		2 m0^2 SP[p1, p4]^2 SP[p2, p3] +
+		m2^2 SP[p1, p4]^2 SP[p2, p3] + m3^2 SP[p1, p4]^2 SP[p2, p3] +
+		SP[p1, p3] SP[p1, p4] SP[p2, p2] SP[p2, p3] -
+		SP[p1, p4]^2 SP[p2, p2] SP[p2, p3] +
+		m0^2 SP[p1, p1] SP[p2, p3]^2 - m4^2 SP[p1, p1] SP[p2, p3]^2 -
+		2 m0^2 SP[p1, p4] SP[p2, p3]^2 +
+		m1^2 SP[p1, p4] SP[p2, p3]^2 + m4^2 SP[p1, p4] SP[p2, p3]^2 -
+		SP[p1, p1] SP[p1, p4] SP[p2, p3]^2 +
+		2 SP[p1, p4]^2 SP[p2, p3]^2 +
+		2 m0^2 SP[p1, p2] SP[p1, p3] SP[p2, p4] -
+		m3^2 SP[p1, p2] SP[p1, p3] SP[p2, p4] -
+		m4^2 SP[p1, p2] SP[p1, p3] SP[p2, p4] -
+		2 m0^2 SP[p1, p3]^2 SP[p2, p4] +
+		m2^2 SP[p1, p3]^2 SP[p2, p4] + m4^2 SP[p1, p3]^2 SP[p2, p4] -
+		2 m0^2 SP[p1, p2] SP[p1, p4] SP[p2, p4] +
+		2 m3^2 SP[p1, p2] SP[p1, p4] SP[p2, p4] +
+		2 m0^2 SP[p1, p3] SP[p1, p4] SP[p2, p4] -
+		m2^2 SP[p1, p3] SP[p1, p4] SP[p2, p4] -
+		m3^2 SP[p1, p3] SP[p1, p4] SP[p2, p4] -
+		SP[p1, p3]^2 SP[p2, p2] SP[p2, p4] +
+		SP[p1, p3] SP[p1, p4] SP[p2, p2] SP[p2, p4] -
+		2 m0^2 SP[p1, p1] SP[p2, p3] SP[p2, p4] +
+		m3^2 SP[p1, p1] SP[p2, p3] SP[p2, p4] +
+		m4^2 SP[p1, p1] SP[p2, p3] SP[p2, p4] +
+		2 m0^2 SP[p1, p3] SP[p2, p3] SP[p2, p4] -
+		m1^2 SP[p1, p3] SP[p2, p3] SP[p2, p4] -
+		m4^2 SP[p1, p3] SP[p2, p3] SP[p2, p4] +
+		SP[p1, p1] SP[p1, p3] SP[p2, p3] SP[p2, p4] +
+		2 m0^2 SP[p1, p4] SP[p2, p3] SP[p2, p4] -
+		m1^2 SP[p1, p4] SP[p2, p3] SP[p2, p4] -
+		m3^2 SP[p1, p4] SP[p2, p3] SP[p2, p4] +
+		SP[p1, p1] SP[p1, p4] SP[p2, p3] SP[p2, p4] -
+		4 SP[p1, p3] SP[p1, p4] SP[p2, p3] SP[p2, p4] +
+		m0^2 SP[p1, p1] SP[p2, p4]^2 - m3^2 SP[p1, p1] SP[p2, p4]^2 -
+		2 m0^2 SP[p1, p3] SP[p2, p4]^2 +
+		m1^2 SP[p1, p3] SP[p2, p4]^2 + m3^2 SP[p1, p3] SP[p2, p4]^2 -
+		SP[p1, p1] SP[p1, p3] SP[p2, p4]^2 +
+		2 SP[p1, p3]^2 SP[p2, p4]^2 + m0^2 SP[p1, p2]^2 SP[p3, p3] -
+		m4^2 SP[p1, p2]^2 SP[p3, p3] -
+		2 m0^2 SP[p1, p2] SP[p1, p4] SP[p3, p3] +
+		m2^2 SP[p1, p2] SP[p1, p4] SP[p3, p3] +
+		m4^2 SP[p1, p2] SP[p1, p4] SP[p3, p3] +
+		m0^2 SP[p1, p4]^2 SP[p3, p3] - m2^2 SP[p1, p4]^2 SP[p3, p3] -
+		m0^2 SP[p1, p1] SP[p2, p2] SP[p3, p3] +
+		m4^2 SP[p1, p1] SP[p2, p2] SP[p3, p3] +
+		2 m0^2 SP[p1, p4] SP[p2, p2] SP[p3, p3] -
+		m1^2 SP[p1, p4] SP[p2, p2] SP[p3, p3] -
+		m4^2 SP[p1, p4] SP[p2, p2] SP[p3, p3] +
+		SP[p1, p1] SP[p1, p4] SP[p2, p2] SP[p3, p3] -
+		SP[p1, p2] SP[p1, p4] SP[p2, p2] SP[p3, p3] -
+		SP[p1, p3] SP[p1, p4] SP[p2, p2] SP[p3, p3] +
+		SP[p1, p2] SP[p1, p4] SP[p2, p3] SP[p3, p3] -
+		SP[p1, p4]^2 SP[p2, p3] SP[p3, p3] +
+		2 m0^2 SP[p1, p1] SP[p2, p4] SP[p3, p3] -
+		m2^2 SP[p1, p1] SP[p2, p4] SP[p3, p3] -
+		m4^2 SP[p1, p1] SP[p2, p4] SP[p3, p3] -
+		2 m0^2 SP[p1, p2] SP[p2, p4] SP[p3, p3] +
+		m1^2 SP[p1, p2] SP[p2, p4] SP[p3, p3] +
+		m4^2 SP[p1, p2] SP[p2, p4] SP[p3, p3] -
+		SP[p1, p1] SP[p1, p2] SP[p2, p4] SP[p3, p3] +
+		SP[p1, p2] SP[p1, p3] SP[p2, p4] SP[p3, p3] -
+		2 m0^2 SP[p1, p4] SP[p2, p4] SP[p3, p3] +
+		m1^2 SP[p1, p4] SP[p2, p4] SP[p3, p3] +
+		m2^2 SP[p1, p4] SP[p2, p4] SP[p3, p3] -
+		SP[p1, p1] SP[p1, p4] SP[p2, p4] SP[p3, p3] +
+		2 SP[p1, p2] SP[p1, p4] SP[p2, p4] SP[p3, p3] +
+		SP[p1, p3] SP[p1, p4] SP[p2, p4] SP[p3, p3] +
+		SP[p1, p1] SP[p2, p2] SP[p2, p4] SP[p3, p3] -
+		SP[p1, p4] SP[p2, p2] SP[p2, p4] SP[p3, p3] -
+		SP[p1, p1] SP[p2, p3] SP[p2, p4] SP[p3, p3] +
+		SP[p1, p4] SP[p2, p3] SP[p2, p4] SP[p3, p3] +
+		m0^2 SP[p2, p4]^2 SP[p3, p3] - m1^2 SP[p2, p4]^2 SP[p3, p3] -
+		SP[p1, p3] SP[p2, p4]^2 SP[p3, p3] -
+		2 m0^2 SP[p1, p2]^2 SP[p3, p4] +
+		m3^2 SP[p1, p2]^2 SP[p3, p4] + m4^2 SP[p1, p2]^2 SP[p3, p4] +
+		2 m0^2 SP[p1, p2] SP[p1, p3] SP[p3, p4] -
+		m2^2 SP[p1, p2] SP[p1, p3] SP[p3, p4] -
+		m4^2 SP[p1, p2] SP[p1, p3] SP[p3, p4] +
+		2 m0^2 SP[p1, p2] SP[p1, p4] SP[p3, p4] -
+		m2^2 SP[p1, p2] SP[p1, p4] SP[p3, p4] -
+		m3^2 SP[p1, p2] SP[p1, p4] SP[p3, p4] -
+		2 m0^2 SP[p1, p3] SP[p1, p4] SP[p3, p4] +
+		2 m2^2 SP[p1, p3] SP[p1, p4] SP[p3, p4] +
+		2 m0^2 SP[p1, p1] SP[p2, p2] SP[p3, p4] -
+		m3^2 SP[p1, p1] SP[p2, p2] SP[p3, p4] -
+		m4^2 SP[p1, p1] SP[p2, p2] SP[p3, p4] -
+		2 m0^2 SP[p1, p3] SP[p2, p2] SP[p3, p4] +
+		m1^2 SP[p1, p3] SP[p2, p2] SP[p3, p4] +
+		m4^2 SP[p1, p3] SP[p2, p2] SP[p3, p4] -
+		SP[p1, p1] SP[p1, p3] SP[p2, p2] SP[p3, p4] +
+		SP[p1, p2] SP[p1, p3] SP[p2, p2] SP[p3, p4] -
+		2 m0^2 SP[p1, p4] SP[p2, p2] SP[p3, p4] +
+		m1^2 SP[p1, p4] SP[p2, p2] SP[p3, p4] +
+		m3^2 SP[p1, p4] SP[p2, p2] SP[p3, p4] -
+		SP[p1, p1] SP[p1, p4] SP[p2, p2] SP[p3, p4] +
+		SP[p1, p2] SP[p1, p4] SP[p2, p2] SP[p3, p4] +
+		2 SP[p1, p3] SP[p1, p4] SP[p2, p2] SP[p3, p4] -
+		2 m0^2 SP[p1, p1] SP[p2, p3] SP[p3, p4] +
+		m2^2 SP[p1, p1] SP[p2, p3] SP[p3, p4] +
+		m4^2 SP[p1, p1] SP[p2, p3] SP[p3, p4] +
+		2 m0^2 SP[p1, p2] SP[p2, p3] SP[p3, p4] -
+		m1^2 SP[p1, p2] SP[p2, p3] SP[p3, p4] -
+		m4^2 SP[p1, p2] SP[p2, p3] SP[p3, p4] +
+		SP[p1, p1] SP[p1, p2] SP[p2, p3] SP[p3, p4] +
+		2 m0^2 SP[p1, p4] SP[p2, p3] SP[p3, p4] -
+		m1^2 SP[p1, p4] SP[p2, p3] SP[p3, p4] -
+		m2^2 SP[p1, p4] SP[p2, p3] SP[p3, p4] +
+		SP[p1, p1] SP[p1, p4] SP[p2, p3] SP[p3, p4] -
+		4 SP[p1, p2] SP[p1, p4] SP[p2, p3] SP[p3, p4] -
+		SP[p1, p1] SP[p2, p2] SP[p2, p3] SP[p3, p4] +
+		SP[p1, p4] SP[p2, p2] SP[p2, p3] SP[p3, p4] -
+		2 m0^2 SP[p1, p1] SP[p2, p4] SP[p3, p4] +
+		m2^2 SP[p1, p1] SP[p2, p4] SP[p3, p4] +
+		m3^2 SP[p1, p1] SP[p2, p4] SP[p3, p4] +
+		2 m0^2 SP[p1, p2] SP[p2, p4] SP[p3, p4] -
+		m1^2 SP[p1, p2] SP[p2, p4] SP[p3, p4] -
+		m3^2 SP[p1, p2] SP[p2, p4] SP[p3, p4] +
+		SP[p1, p1] SP[p1, p2] SP[p2, p4] SP[p3, p4] +
+		2 m0^2 SP[p1, p3] SP[p2, p4] SP[p3, p4] -
+		m1^2 SP[p1, p3] SP[p2, p4] SP[p3, p4] -
+		m2^2 SP[p1, p3] SP[p2, p4] SP[p3, p4] +
+		SP[p1, p1] SP[p1, p3] SP[p2, p4] SP[p3, p4] -
+		4 SP[p1, p2] SP[p1, p3] SP[p2, p4] SP[p3, p4] -
+		SP[p1, p1] SP[p2, p2] SP[p2, p4] SP[p3, p4] +
+		SP[p1, p3] SP[p2, p2] SP[p2, p4] SP[p3, p4] -
+		2 m0^2 SP[p2, p3] SP[p2, p4] SP[p3, p4] +
+		2 m1^2 SP[p2, p3] SP[p2, p4] SP[p3, p4] +
+		2 SP[p1, p1] SP[p2, p3] SP[p2, p4] SP[p3, p4] -
+		SP[p1, p2]^2 SP[p3, p3] SP[p3, p4] +
+		SP[p1, p2] SP[p1, p4] SP[p3, p3] SP[p3, p4] +
+		SP[p1, p1] SP[p2, p2] SP[p3, p3] SP[p3, p4] -
+		SP[p1, p4] SP[p2, p2] SP[p3, p3] SP[p3, p4] -
+		SP[p1, p1] SP[p2, p4] SP[p3, p3] SP[p3, p4] +
+		SP[p1, p2] SP[p2, p4] SP[p3, p3] SP[p3, p4] +
+		m0^2 SP[p1, p1] SP[p3, p4]^2 - m2^2 SP[p1, p1] SP[p3, p4]^2 -
+		2 m0^2 SP[p1, p2] SP[p3, p4]^2 +
+		m1^2 SP[p1, p2] SP[p3, p4]^2 + m2^2 SP[p1, p2] SP[p3, p4]^2 -
+		SP[p1, p1] SP[p1, p2] SP[p3, p4]^2 +
+		2 SP[p1, p2]^2 SP[p3, p4]^2 + m0^2 SP[p2, p2] SP[p3, p4]^2 -
+		m1^2 SP[p2, p2] SP[p3, p4]^2 -
+		SP[p1, p2] SP[p2, p2] SP[p3, p4]^2 +
+		m0^2 SP[p1, p2]^2 SP[p4, p4] - m3^2 SP[p1, p2]^2 SP[p4, p4] -
+		2 m0^2 SP[p1, p2] SP[p1, p3] SP[p4, p4] +
+		m2^2 SP[p1, p2] SP[p1, p3] SP[p4, p4] +
+		m3^2 SP[p1, p2] SP[p1, p3] SP[p4, p4] +
+		m0^2 SP[p1, p3]^2 SP[p4, p4] - m2^2 SP[p1, p3]^2 SP[p4, p4] -
+		m0^2 SP[p1, p1] SP[p2, p2] SP[p4, p4] +
+		m3^2 SP[p1, p1] SP[p2, p2] SP[p4, p4] +
+		2 m0^2 SP[p1, p3] SP[p2, p2] SP[p4, p4] -
+		m1^2 SP[p1, p3] SP[p2, p2] SP[p4, p4] -
+		m3^2 SP[p1, p3] SP[p2, p2] SP[p4, p4] +
+		SP[p1, p1] SP[p1, p3] SP[p2, p2] SP[p4, p4] -
+		SP[p1, p2] SP[p1, p3] SP[p2, p2] SP[p4, p4] -
+		SP[p1, p3] SP[p1, p4] SP[p2, p2] SP[p4, p4] +
+		2 m0^2 SP[p1, p1] SP[p2, p3] SP[p4, p4] -
+		m2^2 SP[p1, p1] SP[p2, p3] SP[p4, p4] -
+		m3^2 SP[p1, p1] SP[p2, p3] SP[p4, p4] -
+		2 m0^2 SP[p1, p2] SP[p2, p3] SP[p4, p4] +
+		m1^2 SP[p1, p2] SP[p2, p3] SP[p4, p4] +
+		m3^2 SP[p1, p2] SP[p2, p3] SP[p4, p4] -
+		SP[p1, p1] SP[p1, p2] SP[p2, p3] SP[p4, p4] -
+		2 m0^2 SP[p1, p3] SP[p2, p3] SP[p4, p4] +
+		m1^2 SP[p1, p3] SP[p2, p3] SP[p4, p4] +
+		m2^2 SP[p1, p3] SP[p2, p3] SP[p4, p4] -
+		SP[p1, p1] SP[p1, p3] SP[p2, p3] SP[p4, p4] +
+		2 SP[p1, p2] SP[p1, p3] SP[p2, p3] SP[p4, p4] +
+		SP[p1, p2] SP[p1, p4] SP[p2, p3] SP[p4, p4] +
+		SP[p1, p3] SP[p1, p4] SP[p2, p3] SP[p4, p4] +
+		SP[p1, p1] SP[p2, p2] SP[p2, p3] SP[p4, p4] -
+		SP[p1, p3] SP[p2, p2] SP[p2, p3] SP[p4, p4] +
+		m0^2 SP[p2, p3]^2 SP[p4, p4] - m1^2 SP[p2, p3]^2 SP[p4, p4] -
+		SP[p1, p4] SP[p2, p3]^2 SP[p4, p4] +
+		SP[p1, p2] SP[p1, p3] SP[p2, p4] SP[p4, p4] -
+		SP[p1, p3]^2 SP[p2, p4] SP[p4, p4] -
+		SP[p1, p1] SP[p2, p3] SP[p2, p4] SP[p4, p4] +
+		SP[p1, p3] SP[p2, p3] SP[p2, p4] SP[p4, p4] -
+		m0^2 SP[p1, p1] SP[p3, p3] SP[p4, p4] +
+		m2^2 SP[p1, p1] SP[p3, p3] SP[p4, p4] +
+		2 m0^2 SP[p1, p2] SP[p3, p3] SP[p4, p4] -
+		m1^2 SP[p1, p2] SP[p3, p3] SP[p4, p4] -
+		m2^2 SP[p1, p2] SP[p3, p3] SP[p4, p4] +
+		SP[p1, p1] SP[p1, p2] SP[p3, p3] SP[p4, p4] -
+		SP[p1, p2] SP[p1, p3] SP[p3, p3] SP[p4, p4] -
+		SP[p1, p2] SP[p1, p4] SP[p3, p3] SP[p4, p4] -
+		m0^2 SP[p2, p2] SP[p3, p3] SP[p4, p4] +
+		m1^2 SP[p2, p2] SP[p3, p3] SP[p4, p4] -
+		2 SP[p1, p1] SP[p2, p2] SP[p3, p3] SP[p4, p4] +
+		SP[p1, p2] SP[p2, p2] SP[p3, p3] SP[p4, p4] +
+		SP[p1, p3] SP[p2, p2] SP[p3, p3] SP[p4, p4] +
+		SP[p1, p4] SP[p2, p2] SP[p3, p3] SP[p4, p4] +
+		SP[p1, p1] SP[p2, p3] SP[p3, p3] SP[p4, p4] -
+		SP[p1, p2] SP[p2, p3] SP[p3, p3] SP[p4, p4] +
+		SP[p1, p1] SP[p2, p4] SP[p3, p3] SP[p4, p4] -
+		SP[p1, p2] SP[p2, p4] SP[p3, p3] SP[p4, p4] -
+		SP[p1, p2]^2 SP[p3, p4] SP[p4, p4] +
+		SP[p1, p2] SP[p1, p3] SP[p3, p4] SP[p4, p4] +
+		SP[p1, p1] SP[p2, p2] SP[p3, p4] SP[p4, p4] -
+		SP[p1, p3] SP[p2, p2] SP[p3, p4] SP[p4, p4] -
+		SP[p1, p1] SP[p2, p3] SP[p3, p4] SP[p4, p4] +
+		SP[p1, p2] SP[p2, p3] SP[p3, p4] SP[p4,
+		p4])))/(2 m4^2 (4 m0^4 SP[p1, p2]^2 -
+	8 m0^2 m3^2 SP[p1, p2]^2 + 4 m3^4 SP[p1, p2]^2 -
+	8 m0^4 SP[p1, p2] SP[p1, p3] +
+	8 m0^2 m2^2 SP[p1, p2] SP[p1, p3] +
+	8 m0^2 m3^2 SP[p1, p2] SP[p1, p3] -
+	8 m2^2 m3^2 SP[p1, p2] SP[p1, p3] + 4 m0^4 SP[p1, p3]^2 -
+	8 m0^2 m2^2 SP[p1, p3]^2 + 4 m2^4 SP[p1, p3]^2 -
+	4 m0^4 SP[p1, p1] SP[p2, p2] +
+	8 m0^2 m3^2 SP[p1, p1] SP[p2, p2] -
+	4 m3^4 SP[p1, p1] SP[p2, p2] + 8 m0^4 SP[p1, p3] SP[p2, p2] -
+	8 m0^2 m1^2 SP[p1, p3] SP[p2, p2] -
+	8 m0^2 m3^2 SP[p1, p3] SP[p2, p2] +
+	8 m1^2 m3^2 SP[p1, p3] SP[p2, p2] +
+	8 m0^2 SP[p1, p1] SP[p1, p3] SP[p2, p2] -
+	8 m3^2 SP[p1, p1] SP[p1, p3] SP[p2, p2] -
+	8 m0^2 SP[p1, p2] SP[p1, p3] SP[p2, p2] +
+	8 m3^2 SP[p1, p2] SP[p1, p3] SP[p2, p2] -
+	8 m0^2 SP[p1, p3]^2 SP[p2, p2] -
+	8 m2^2 SP[p1, p3]^2 SP[p2, p2] + 4 SP[p1, p3]^2 SP[p2, p2]^2 +
+	8 m0^4 SP[p1, p1] SP[p2, p3] -
+	8 m0^2 m2^2 SP[p1, p1] SP[p2, p3] -
+	8 m0^2 m3^2 SP[p1, p1] SP[p2, p3] +
+	8 m2^2 m3^2 SP[p1, p1] SP[p2, p3] -
+	8 m0^4 SP[p1, p2] SP[p2, p3] +
+	8 m0^2 m1^2 SP[p1, p2] SP[p2, p3] +
+	8 m0^2 m3^2 SP[p1, p2] SP[p2, p3] -
+	8 m1^2 m3^2 SP[p1, p2] SP[p2, p3] -
+	8 m0^2 SP[p1, p1] SP[p1, p2] SP[p2, p3] +
+	8 m3^2 SP[p1, p1] SP[p1, p2] SP[p2, p3] -
+	8 m0^4 SP[p1, p3] SP[p2, p3] +
+	8 m0^2 m1^2 SP[p1, p3] SP[p2, p3] +
+	8 m0^2 m2^2 SP[p1, p3] SP[p2, p3] -
+	8 m1^2 m2^2 SP[p1, p3] SP[p2, p3] -
+	8 m0^2 SP[p1, p1] SP[p1, p3] SP[p2, p3] +
+	8 m2^2 SP[p1, p1] SP[p1, p3] SP[p2, p3] +
+	32 m0^2 SP[p1, p2] SP[p1, p3] SP[p2, p3] +
+	8 m0^2 SP[p1, p1] SP[p2, p2] SP[p2, p3] -
+	8 m3^2 SP[p1, p1] SP[p2, p2] SP[p2, p3] -
+	8 m0^2 SP[p1, p3] SP[p2, p2] SP[p2, p3] +
+	8 m1^2 SP[p1, p3] SP[p2, p2] SP[p2, p3] -
+	8 SP[p1, p1] SP[p1, p3] SP[p2, p2] SP[p2, p3] +
+	4 m0^4 SP[p2, p3]^2 - 8 m0^2 m1^2 SP[p2, p3]^2 +
+	4 m1^4 SP[p2, p3]^2 - 8 m0^2 SP[p1, p1] SP[p2, p3]^2 -
+	8 m1^2 SP[p1, p1] SP[p2, p3]^2 + 4 SP[p1, p1]^2 SP[p2, p3]^2 -
+	4 m0^4 SP[p1, p1] SP[p3, p3] +
+	8 m0^2 m2^2 SP[p1, p1] SP[p3, p3] -
+	4 m2^4 SP[p1, p1] SP[p3, p3] + 8 m0^4 SP[p1, p2] SP[p3, p3] -
+	8 m0^2 m1^2 SP[p1, p2] SP[p3, p3] -
+	8 m0^2 m2^2 SP[p1, p2] SP[p3, p3] +
+	8 m1^2 m2^2 SP[p1, p2] SP[p3, p3] +
+	8 m0^2 SP[p1, p1] SP[p1, p2] SP[p3, p3] -
+	8 m2^2 SP[p1, p1] SP[p1, p2] SP[p3, p3] -
+	8 m0^2 SP[p1, p2]^2 SP[p3, p3] -
+	8 m3^2 SP[p1, p2]^2 SP[p3, p3] -
+	8 m0^2 SP[p1, p2] SP[p1, p3] SP[p3, p3] +
+	8 m2^2 SP[p1, p2] SP[p1, p3] SP[p3, p3] -
+	4 m0^4 SP[p2, p2] SP[p3, p3] +
+	8 m0^2 m1^2 SP[p2, p2] SP[p3, p3] -
+	4 m1^4 SP[p2, p2] SP[p3, p3] -
+	8 m0^2 SP[p1, p1] SP[p2, p2] SP[p3, p3] +
+	8 m1^2 SP[p1, p1] SP[p2, p2] SP[p3, p3] +
+	8 m2^2 SP[p1, p1] SP[p2, p2] SP[p3, p3] +
+	8 m3^2 SP[p1, p1] SP[p2, p2] SP[p3, p3] -
+	4 SP[p1, p1]^2 SP[p2, p2] SP[p3, p3] +
+	8 m0^2 SP[p1, p2] SP[p2, p2] SP[p3, p3] -
+	8 m1^2 SP[p1, p2] SP[p2, p2] SP[p3, p3] +
+	8 SP[p1, p1] SP[p1, p2] SP[p2, p2] SP[p3, p3] +
+	8 m0^2 SP[p1, p3] SP[p2, p2] SP[p3, p3] -
+	8 m1^2 SP[p1, p3] SP[p2, p2] SP[p3, p3] +
+	8 SP[p1, p1] SP[p1, p3] SP[p2, p2] SP[p3, p3] -
+	8 SP[p1, p2] SP[p1, p3] SP[p2, p2] SP[p3, p3] -
+	4 SP[p1, p1] SP[p2, p2]^2 SP[p3, p3] +
+	8 m0^2 SP[p1, p1] SP[p2, p3] SP[p3, p3] -
+	8 m2^2 SP[p1, p1] SP[p2, p3] SP[p3, p3] -
+	8 m0^2 SP[p1, p2] SP[p2, p3] SP[p3, p3] +
+	8 m1^2 SP[p1, p2] SP[p2, p3] SP[p3, p3] -
+	8 SP[p1, p1] SP[p1, p2] SP[p2, p3] SP[p3, p3] +
+	8 SP[p1, p1] SP[p2, p2] SP[p2, p3] SP[p3, p3] +
+	4 SP[p1, p2]^2 SP[p3, p3]^2 -
+	4 SP[p1, p1] SP[p2, p2] SP[p3,
+		p3]^2) + (-2 m3^2 (-2 m2^2 (-2 m1^2 (m0^2 + m4^2 -
+			SP[p4, p4]) + (m0^2 + m1^2 - SP[p1, p1]) (m1^2 + m4^2 -
+				SP[p1, p1] + 2 SP[p1, p4] - SP[p4, p4])) + (m1^2 +
+			m2^2 - SP[p1, p1] + 2 SP[p1, p2] -
+
+			SP[p2, p2]) (-(m1^2 + m2^2 - SP[p1, p1] + 2 SP[p1, p2] -
+				SP[p2, p2]) (m0^2 + m4^2 - SP[p4, p4]) + (m0^2 +
+			m2^2 - SP[p2, p2]) (m1^2 + m4^2 - SP[p1, p1] +
+			2 SP[p1, p4] - SP[p4, p4])) + (-2 m1^2 (m0^2 + m2^2 -
+			SP[p2, p2]) + (m0^2 + m1^2 - SP[p1, p1]) (m1^2 + m2^2 -
+				SP[p1, p1] + 2 SP[p1, p2] - SP[p2, p2])) (m2^2 +
+			m4^2 - SP[p2, p2] + 2 SP[p2, p4] - SP[p4, p4])) + (m2^2 +
+		m3^2 - SP[p2, p2] + 2 SP[p2, p3] -
+		SP[p3, p3]) (-(m2^2 + m3^2 - SP[p2, p2] + 2 SP[p2, p3] -
+			SP[p3, p3]) (-2 m1^2 (m0^2 + m4^2 - SP[p4, p4]) + (m0^2 +
+				m1^2 - SP[p1, p1]) (m1^2 + m4^2 - SP[p1, p1] +
+			2 SP[p1, p4] - SP[p4, p4])) + (m1^2 + m2^2 -
+			SP[p1, p1] + 2 SP[p1, p2] -
+			SP[p2, p2]) (-(m1^2 + m3^2 - SP[p1, p1] + 2 SP[p1, p3] -
+				SP[p3, p3]) (m0^2 + m4^2 - SP[p4, p4]) + (m0^2 +
+			m3^2 - SP[p3, p3]) (m1^2 + m4^2 - SP[p1, p1] +
+			2 SP[p1, p4] - SP[p4, p4])) + (-2 m1^2 (m0^2 + m3^2 -
+			SP[p3, p3]) + (m0^2 + m1^2 - SP[p1, p1]) (m1^2 + m3^2 -
+				SP[p1, p1] + 2 SP[p1, p3] - SP[p3, p3])) (m2^2 +
+			m4^2 - SP[p2, p2] + 2 SP[p2, p4] - SP[p4, p4])) - (m1^2 +
+		m3^2 - SP[p1, p1] + 2 SP[p1, p3] -
+		SP[p3, p3]) (-(m2^2 + m3^2 - SP[p2, p2] + 2 SP[p2, p3] -
+			SP[p3, p3]) (-(m1^2 + m2^2 - SP[p1, p1] + 2 SP[p1, p2] -
+				SP[p2, p2]) (m0^2 + m4^2 - SP[p4, p4]) + (m0^2 +
+			m2^2 - SP[p2, p2]) (m1^2 + m4^2 - SP[p1, p1] +
+			2 SP[p1, p4] - SP[p4, p4])) +
+		2 m2^2 (-(m1^2 + m3^2 - SP[p1, p1] + 2 SP[p1, p3] -
+				SP[p3, p3]) (m0^2 + m4^2 - SP[p4, p4]) + (m0^2 +
+			m3^2 - SP[p3, p3]) (m1^2 + m4^2 - SP[p1, p1] +
+			2 SP[p1, p4] -
+			SP[p4, p4])) + (-(m1^2 + m2^2 - SP[p1, p1] +
+				2 SP[p1, p2] - SP[p2, p2]) (m0^2 + m3^2 -
+			SP[p3, p3]) + (m0^2 + m2^2 - SP[p2, p2]) (m1^2 + m3^2 -
+				SP[p1, p1] + 2 SP[p1, p3] - SP[p3, p3])) (m2^2 +
+			m4^2 - SP[p2, p2] + 2 SP[p2, p4] -
+			SP[p4, p4])) + (-2 m2^2 (-2 m1^2 (m0^2 + m3^2 -
+			SP[p3, p3]) + (m0^2 + m1^2 - SP[p1, p1]) (m1^2 + m3^2 -
+				SP[p1, p1] + 2 SP[p1, p3] - SP[p3, p3])) + (m1^2 +
+			m2^2 - SP[p1, p1] + 2 SP[p1, p2] -
+			SP[p2, p2]) (-(m1^2 + m2^2 - SP[p1, p1] + 2 SP[p1, p2] -
+				SP[p2, p2]) (m0^2 + m3^2 - SP[p3, p3]) + (m0^2 +
+			m2^2 - SP[p2, p2]) (m1^2 + m3^2 - SP[p1, p1] +
+			2 SP[p1, p3] - SP[p3, p3])) + (-2 m1^2 (m0^2 + m2^2 -
+			SP[p2, p2]) + (m0^2 + m1^2 - SP[p1, p1]) (m1^2 + m2^2 -
+				SP[p1, p1] + 2 SP[p1, p2] - SP[p2, p2])) (m2^2 +
+			m3^2 - SP[p2, p2] + 2 SP[p2, p3] - SP[p3, p3])) (m3^2 +
+		m4^2 - SP[p3, p3] + 2 SP[p3, p4] - SP[p4, p4])) (m0^2 +
+	m4^2 - SP[p4, p4]) - (m3^2 + m4^2 - SP[p3, p3] + 2 SP[p3, p4] -
+	SP[p4, p4]) (-(m0^2 + m3^2 -
+		SP[p3, p3]) (-2 m2^2 (-2 m1^2 (m0^2 + m4^2 -
+			SP[p4, p4]) + (m0^2 + m1^2 - SP[p1, p1]) (m1^2 + m4^2 -
+				SP[p1, p1] + 2 SP[p1, p4] - SP[p4, p4])) + (m1^2 +
+			m2^2 - SP[p1, p1] + 2 SP[p1, p2] -
+			SP[p2, p2]) (-(m1^2 + m2^2 - SP[p1, p1] + 2 SP[p1, p2] -
+				SP[p2, p2]) (m0^2 + m4^2 - SP[p4, p4]) + (m0^2 +
+			m2^2 - SP[p2, p2]) (m1^2 + m4^2 - SP[p1, p1] +
+			2 SP[p1, p4] - SP[p4, p4])) + (-2 m1^2 (m0^2 + m2^2 -
+			SP[p2, p2]) + (m0^2 + m1^2 - SP[p1, p1]) (m1^2 + m2^2 -
+				SP[p1, p1] + 2 SP[p1, p2] - SP[p2, p2])) (m2^2 +
+			m4^2 - SP[p2, p2] + 2 SP[p2, p4] -
+			SP[p4, p4])) + (-2 m0^4 SP[p1, p1] +
+		4 m0^2 m2^2 SP[p1, p1] - 2 m2^4 SP[p1, p1] +
+		4 m0^4 SP[p1, p2] - 4 m0^2 m1^2 SP[p1, p2] -
+		4 m0^2 m2^2 SP[p1, p2] + 4 m1^2 m2^2 SP[p1, p2] +
+		4 m0^2 SP[p1, p1] SP[p1, p2] -
+		4 m2^2 SP[p1, p1] SP[p1, p2] - 8 m0^2 SP[p1, p2]^2 -
+		2 m0^4 SP[p2, p2] + 4 m0^2 m1^2 SP[p2, p2] -
+		2 m1^4 SP[p2, p2] + 4 m1^2 SP[p1, p1] SP[p2, p2] +
+		4 m2^2 SP[p1, p1] SP[p2, p2] - 2 SP[p1, p1]^2 SP[p2, p2] +
+		4 m0^2 SP[p1, p2] SP[p2, p2] -
+		4 m1^2 SP[p1, p2] SP[p2, p2] +
+		4 SP[p1, p1] SP[p1, p2] SP[p2, p2] -
+		2 SP[p1, p1] SP[p2, p2]^2) (m3^2 + m4^2 - SP[p3, p3] +
+		2 SP[p3, p4] - SP[p4, p4]) + (m1^2 + m3^2 - SP[p1, p1] +
+		2 SP[p1, p3] -
+		SP[p3, p3]) ((m0^2 + m2^2 -
+			SP[p2, p2]) (-(m1^2 + m2^2 - SP[p1, p1] + 2 SP[p1, p2] -
+				SP[p2, p2]) (m0^2 + m4^2 - SP[p4, p4]) + (m0^2 +
+			m2^2 - SP[p2, p2]) (m1^2 + m4^2 - SP[p1, p1] +
+			2 SP[p1, p4] - SP[p4, p4])) + (-m0^4 + m0^2 m1^2 +
+			m0^2 m2^2 - m1^2 m2^2 - m0^2 SP[p1, p1] +
+			m2^2 SP[p1, p1] + 4 m0^2 SP[p1, p2] - m0^2 SP[p2, p2] +
+			m1^2 SP[p2, p2] - SP[p1, p1] SP[p2, p2]) (m2^2 + m4^2 -
+			SP[p2, p2] + 2 SP[p2, p4] - SP[p4, p4]) -
+		2 m2^2 (-m0^4 + m0^2 m1^2 + m0^2 m4^2 - m1^2 m4^2 -
+			m0^2 SP[p1, p1] + m4^2 SP[p1, p1] + 4 m0^2 SP[p1, p4] -
+			m0^2 SP[p4, p4] + m1^2 SP[p4, p4] -
+			SP[p1, p1] SP[p4, p4])) - (m2^2 + m3^2 - SP[p2, p2] +
+		2 SP[p2, p3] -
+		SP[p3, p3]) ((m0^2 + m2^2 -
+			SP[p2, p2]) (-2 m1^2 (m0^2 + m4^2 - SP[p4, p4]) + (m0^2 +
+			m1^2 - SP[p1, p1]) (m1^2 + m4^2 - SP[p1, p1] +
+			2 SP[p1, p4] - SP[p4, p4])) + (4 m0^2 m1^2 - (m0^2 +
+			m1^2 - SP[p1, p1])^2) (m2^2 + m4^2 - SP[p2, p2] +
+			2 SP[p2, p4] - SP[p4, p4]) - (m1^2 + m2^2 - SP[p1, p1] +
+			2 SP[p1, p2] - SP[p2, p2]) (-m0^4 + m0^2 m1^2 +
+			m0^2 m4^2 - m1^2 m4^2 - m0^2 SP[p1, p1] +
+			m4^2 SP[p1, p1] + 4 m0^2 SP[p1, p4] - m0^2 SP[p4, p4] +
+			m1^2 SP[p4, p4] - SP[p1, p1] SP[p4, p4]))) + (m2^2 +
+	m4^2 - SP[p2, p2] + 2 SP[p2, p4] -
+	SP[p4, p4]) (-(m0^2 + m3^2 -
+		SP[p3, p3]) (-(m2^2 + m3^2 - SP[p2, p2] + 2 SP[p2, p3] -
+			SP[p3, p3]) (-2 m1^2 (m0^2 + m4^2 - SP[p4, p4]) + (m0^2 +
+				m1^2 - SP[p1, p1]) (m1^2 + m4^2 - SP[p1, p1] +
+			2 SP[p1, p4] - SP[p4, p4])) + (m1^2 + m2^2 -
+			SP[p1, p1] + 2 SP[p1, p2] -
+			SP[p2, p2]) (-(m1^2 + m3^2 - SP[p1, p1] + 2 SP[p1, p3] -
+				SP[p3, p3]) (m0^2 + m4^2 - SP[p4, p4]) + (m0^2 +
+			m3^2 - SP[p3, p3]) (m1^2 + m4^2 - SP[p1, p1] +
+			2 SP[p1, p4] - SP[p4, p4])) + (-2 m1^2 (m0^2 + m3^2 -
+			SP[p3, p3]) + (m0^2 + m1^2 - SP[p1, p1]) (m1^2 + m3^2 -
+				SP[p1, p1] + 2 SP[p1, p3] - SP[p3, p3])) (m2^2 +
+			m4^2 - SP[p2, p2] + 2 SP[p2, p4] - SP[p4, p4])) + ((m0^2 +
+			m2^2 -
+			SP[p2, p2]) (-2 m1^2 (m0^2 + m3^2 - SP[p3, p3]) + (m0^2 +
+			m1^2 - SP[p1, p1]) (m1^2 + m3^2 - SP[p1, p1] +
+			2 SP[p1, p3] - SP[p3, p3])) + (4 m0^2 m1^2 - (m0^2 +
+			m1^2 - SP[p1, p1])^2) (m2^2 + m3^2 - SP[p2, p2] +
+			2 SP[p2, p3] - SP[p3, p3]) - (m1^2 + m2^2 - SP[p1, p1] +
+			2 SP[p1, p2] - SP[p2, p2]) (-m0^4 + m0^2 m1^2 +
+			m0^2 m3^2 - m1^2 m3^2 - m0^2 SP[p1, p1] +
+			m3^2 SP[p1, p1] + 4 m0^2 SP[p1, p3] - m0^2 SP[p3, p3] +
+			m1^2 SP[p3, p3] - SP[p1, p1] SP[p3, p3])) (m3^2 + m4^2 -
+		SP[p3, p3] + 2 SP[p3, p4] - SP[p4, p4]) -
+	2 m3^2 ((m0^2 + m2^2 -
+			SP[p2, p2]) (-2 m1^2 (m0^2 + m4^2 - SP[p4, p4]) + (m0^2 +
+			m1^2 - SP[p1, p1]) (m1^2 + m4^2 - SP[p1, p1] +
+			2 SP[p1, p4] - SP[p4, p4])) + (4 m0^2 m1^2 - (m0^2 +
+			m1^2 - SP[p1, p1])^2) (m2^2 + m4^2 - SP[p2, p2] +
+			2 SP[p2, p4] - SP[p4, p4]) - (m1^2 + m2^2 - SP[p1, p1] +
+			2 SP[p1, p2] - SP[p2, p2]) (-m0^4 + m0^2 m1^2 +
+			m0^2 m4^2 - m1^2 m4^2 - m0^2 SP[p1, p1] +
+			m4^2 SP[p1, p1] + 4 m0^2 SP[p1, p4] - m0^2 SP[p4, p4] +
+			m1^2 SP[p4, p4] - SP[p1, p1] SP[p4, p4])) + (m1^2 + m3^2 -
+		SP[p1, p1] + 2 SP[p1, p3] -
+		SP[p3, p3]) ((m0^2 + m2^2 -
+
+			SP[p2, p2]) (-(m1^2 + m3^2 - SP[p1, p1] + 2 SP[p1, p3] -
+				SP[p3, p3]) (m0^2 + m4^2 - SP[p4, p4]) + (m0^2 +
+			m3^2 - SP[p3, p3]) (m1^2 + m4^2 - SP[p1, p1] +
+			2 SP[p1, p4] - SP[p4, p4])) + (-m0^4 + m0^2 m1^2 +
+			m0^2 m3^2 - m1^2 m3^2 - m0^2 SP[p1, p1] +
+			m3^2 SP[p1, p1] + 4 m0^2 SP[p1, p3] - m0^2 SP[p3, p3] +
+			m1^2 SP[p3, p3] - SP[p1, p1] SP[p3, p3]) (m2^2 + m4^2 -
+			SP[p2, p2] + 2 SP[p2, p4] - SP[p4, p4]) - (m2^2 + m3^2 -
+			SP[p2, p2] + 2 SP[p2, p3] - SP[p3, p3]) (-m0^4 +
+			m0^2 m1^2 + m0^2 m4^2 - m1^2 m4^2 - m0^2 SP[p1, p1] +
+			m4^2 SP[p1, p1] + 4 m0^2 SP[p1, p4] - m0^2 SP[p4, p4] +
+			m1^2 SP[p4, p4] - SP[p1, p1] SP[p4, p4]))) - (m1^2 +
+	m4^2 - SP[p1, p1] + 2 SP[p1, p4] -
+	SP[p4, p4]) (-(m0^2 + m3^2 -
+		SP[p3, p3]) (-(m2^2 + m3^2 - SP[p2, p2] + 2 SP[p2, p3] -
+			SP[p3, p3]) (-(m1^2 + m2^2 - SP[p1, p1] + 2 SP[p1, p2] -
+				SP[p2, p2]) (m0^2 + m4^2 - SP[p4, p4]) + (m0^2 +
+			m2^2 - SP[p2, p2]) (m1^2 + m4^2 - SP[p1, p1] +
+			2 SP[p1, p4] - SP[p4, p4])) +
+		2 m2^2 (-(m1^2 + m3^2 - SP[p1, p1] + 2 SP[p1, p3] -
+				SP[p3, p3]) (m0^2 + m4^2 - SP[p4, p4]) + (m0^2 +
+			m3^2 - SP[p3, p3]) (m1^2 + m4^2 - SP[p1, p1] +
+			2 SP[p1, p4] -
+			SP[p4, p4])) + (-(m1^2 + m2^2 - SP[p1, p1] +
+				2 SP[p1, p2] - SP[p2, p2]) (m0^2 + m3^2 -
+			SP[p3, p3]) + (m0^2 + m2^2 - SP[p2, p2]) (m1^2 + m3^2 -
+				SP[p1, p1] + 2 SP[p1, p3] - SP[p3, p3])) (m2^2 +
+			m4^2 - SP[p2, p2] + 2 SP[p2, p4] - SP[p4, p4])) + ((m0^2 +
+			m2^2 -
+			SP[p2, p2]) (-(m1^2 + m2^2 - SP[p1, p1] + 2 SP[p1, p2] -
+				SP[p2, p2]) (m0^2 + m3^2 - SP[p3, p3]) + (m0^2 +
+			m2^2 - SP[p2, p2]) (m1^2 + m3^2 - SP[p1, p1] +
+			2 SP[p1, p3] - SP[p3, p3])) + (-m0^4 + m0^2 m1^2 +
+			m0^2 m2^2 - m1^2 m2^2 - m0^2 SP[p1, p1] +
+			m2^2 SP[p1, p1] + 4 m0^2 SP[p1, p2] - m0^2 SP[p2, p2] +
+			m1^2 SP[p2, p2] - SP[p1, p1] SP[p2, p2]) (m2^2 + m3^2 -
+			SP[p2, p2] + 2 SP[p2, p3] - SP[p3, p3]) -
+		2 m2^2 (-m0^4 + m0^2 m1^2 + m0^2 m3^2 - m1^2 m3^2 -
+			m0^2 SP[p1, p1] + m3^2 SP[p1, p1] + 4 m0^2 SP[p1, p3] -
+			m0^2 SP[p3, p3] + m1^2 SP[p3, p3] -
+			SP[p1, p1] SP[p3, p3])) (m3^2 + m4^2 - SP[p3, p3] +
+		2 SP[p3, p4] - SP[p4, p4]) -
+	2 m3^2 ((m0^2 + m2^2 -
+			SP[p2, p2]) (-(m1^2 + m2^2 - SP[p1, p1] + 2 SP[p1, p2] -
+				SP[p2, p2]) (m0^2 + m4^2 - SP[p4, p4]) + (m0^2 +
+			m2^2 - SP[p2, p2]) (m1^2 + m4^2 - SP[p1, p1] +
+			2 SP[p1, p4] - SP[p4, p4])) + (-m0^4 + m0^2 m1^2 +
+			m0^2 m2^2 - m1^2 m2^2 - m0^2 SP[p1, p1] +
+			m2^2 SP[p1, p1] + 4 m0^2 SP[p1, p2] - m0^2 SP[p2, p2] +
+			m1^2 SP[p2, p2] - SP[p1, p1] SP[p2, p2]) (m2^2 + m4^2 -
+			SP[p2, p2] + 2 SP[p2, p4] - SP[p4, p4]) -
+		2 m2^2 (-m0^4 + m0^2 m1^2 + m0^2 m4^2 - m1^2 m4^2 -
+			m0^2 SP[p1, p1] + m4^2 SP[p1, p1] + 4 m0^2 SP[p1, p4] -
+			m0^2 SP[p4, p4] + m1^2 SP[p4, p4] -
+			SP[p1, p1] SP[p4, p4])) + (m2^2 + m3^2 - SP[p2, p2] +
+		2 SP[p2, p3] -
+		SP[p3, p3]) ((m0^2 + m2^2 -
+			SP[p2, p2]) (-(m1^2 + m3^2 - SP[p1, p1] + 2 SP[p1, p3] -
+				SP[p3, p3]) (m0^2 + m4^2 - SP[p4, p4]) + (m0^2 +
+			m3^2 - SP[p3, p3]) (m1^2 + m4^2 - SP[p1, p1] +
+			2 SP[p1, p4] - SP[p4, p4])) + (-m0^4 + m0^2 m1^2 +
+			m0^2 m3^2 - m1^2 m3^2 - m0^2 SP[p1, p1] +
+			m3^2 SP[p1, p1] + 4 m0^2 SP[p1, p3] - m0^2 SP[p3, p3] +
+			m1^2 SP[p3, p3] - SP[p1, p1] SP[p3, p3]) (m2^2 + m4^2 -
+			SP[p2, p2] + 2 SP[p2, p4] - SP[p4, p4]) - (m2^2 + m3^2 -
+			SP[p2, p2] + 2 SP[p2, p3] - SP[p3, p3]) (-m0^4 +
+			m0^2 m1^2 + m0^2 m4^2 - m1^2 m4^2 - m0^2 SP[p1, p1] +
+			m4^2 SP[p1, p1] + 4 m0^2 SP[p1, p4] - m0^2 SP[p4, p4] +
+			m1^2 SP[p4, p4] - SP[p1, p1] SP[p4, p4]))))"},
+{"fcstOneLoop-ID9","OneLoop[k, 1/(I Pi^2) FAD[{k}, {k, mW}] GSD[k]]","0"},
+{"fcstOneLoop-ID10","PaVeReduce[(OneLoop[q, Contract[MTD[mu, nu] FVD[q, mu] FVD[q,nu] FAD[{q, Subscript[m, 0]}, {q + p1, m1}]],
+OneLoopSimplify -> False] //ChangeDimension[#, D] &) - (Contract[MTD[mu, nu] ChangeDimension[
+OneLoop[q, FVD[q, mu] FVD[q, nu] FAD[{q, Subscript[m, 0]}, {q + p1, m1}], OneLoopSimplify -> False], D]])]","0"},
+{"fcstOneLoop-ID11","OneLoop[q1, FAD[{q1, MG}, {p3 + q1, MB}, {p3 + p4 + q1, MT}] FVD[q1, mu]] // FCE",
+"-I \[Pi]^2 (C0[SP[p3, p3], SP[p4, p4],
+	SP[p3, p3] + 2 SP[p3, p4] + SP[p4, p4], MG^2, MB^2, MT^2] FV[p3,
+	mu] + FV[p3, mu] PaVe[ 1, {SP[p3, p3], SP[p3, p3] + 2 SP[p3, p4] + SP[p4, p4],
+	SP[p4, p4]}, {MB^2, MG^2, MT^2}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True] - FV[p4, mu] PaVe[
+	2, {SP[p3, p3], SP[p3, p3] + 2 SP[p3, p4] + SP[p4, p4],
+	SP[p4, p4]}, {MB^2, MG^2, MT^2}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True])"},
+
+{"fcstOneLoop-ID11","FCSetDiracGammaScheme[\"BMHV\"]; \n
+res= FCE[OneLoop[q,
+SpinorUBar[p3, ms].GA[6].(GS[q] + mt).GA[7].PolarizationVector[p2,
+	mu].(2*FV[q, mu] + 2*FV[p1, mu] + FV[p2, mu]).SpinorU[p1,
+	mb] FAD[{q, mt}, {q + p1, mh}, {q + p1 + p2, mh}]]] \n
+	FCSetDiracGammaScheme[\"NDR\"]; \n res",
+	"I*Pi^2*(2*PaVe[0, 0, {SP[p1, p1], SP[p1, p1] + 2*SP[p1, p2] + SP[p2, p2], SP[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*
+StandardMatrixElement[Spinor[Momentum[p3], ms, 1] . GS[Polarization[p2, I]] . GA[7] . Spinor[Momentum[p1], mb, 1]] +
+(2*mb*PaVe[1, {SP[p1, p1], SP[p1, p1] + 2*SP[p1, p2] + SP[p2, p2], SP[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True] +
+	2*mb*PaVe[1, 1, {SP[p1, p1], SP[p1, p1] + 2*SP[p1, p2] + SP[p2, p2], SP[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True])*
+StandardMatrixElement[Spinor[Momentum[p3], ms, 1] . GA[6] . Spinor[Momentum[p1], mb, 1]*SP[p1, Polarization[p2, I]]] -
+2*PaVe[1, 2, {SP[p1, p1], SP[p1, p1] + 2*SP[p1, p2] + SP[p2, p2], SP[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*
+StandardMatrixElement[Spinor[Momentum[p3], ms, 1] . GS[p2] . GA[7] . Spinor[Momentum[p1], mb, 1]*SP[p1, Polarization[p2, I]]] +
+(-(mb*C0[SP[p1, p1], SP[p2, p2], SP[p1, p1] + 2*SP[p1, p2] + SP[p2, p2], mt^2, mh^2, mh^2]) -
+	mb*PaVe[1, {SP[p1, p1], SP[p1, p1] + 2*SP[p1, p2] + SP[p2, p2], SP[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True] -
+	2*mb*PaVe[2, {SP[p1, p1], SP[p1, p1] + 2*SP[p1, p2] + SP[p2, p2], SP[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True] -
+	2*mb*PaVe[1, 2, {SP[p1, p1], SP[p1, p1] + 2*SP[p1, p2] + SP[p2, p2], SP[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True])*
+StandardMatrixElement[Spinor[Momentum[p3], ms, 1] . GA[6] . Spinor[Momentum[p1], mb, 1]*SP[p2, Polarization[p2, I]]] +
+(PaVe[2, {SP[p1, p1], SP[p1, p1] + 2*SP[p1, p2] + SP[p2, p2], SP[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True] +
+	2*PaVe[2, 2, {SP[p1, p1], SP[p1, p1] + 2*SP[p1, p2] + SP[p2, p2], SP[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True])*
+StandardMatrixElement[Spinor[Momentum[p3], ms, 1] . GS[p2] . GA[7] . Spinor[Momentum[p1], mb, 1]*SP[p2, Polarization[p2, I]]])"},
+{"fcstOneLoop-ID12","OneLoop[k,
+FVD[k, a] SPD[k, p] SPD[k] FAD[{k, my}, {k + p - q, mw}, {k + p + q, mw}], FCE -> True] //
+Collect2[#, FeynCalc`Package`PaVeHeadsList] &","((I/8)*my^2*Pi^2*B0[SP[p, p] - 2*SP[p, q] + SP[q, q], mw^2, my^2]*(FV[p, a] - FV[q, a])*(mw^2 - my^2 - SP[p, p] + 2*SP[p, q] - SP[q, q]))/
+(SP[p, p] - 2*SP[p, q] + SP[q, q]) + ((I/8)*my^2*Pi^2*B0[SP[p, p] + 2*SP[p, q] + SP[q, q], mw^2, my^2]*(FV[p, a] + FV[q, a])*
+(mw^2 - my^2 - SP[p, p] - 2*SP[p, q] - SP[q, q]))/(SP[p, p] + 2*SP[p, q] + SP[q, q]) -
+(2*I)*Pi^2*FV[q, a]*PaVe[1, {4*SP[q, q], SP[p, p] + 2*SP[p, q] + SP[q, q], SP[p, p] - 2*SP[p, q] + SP[q, q]}, {mw^2, mw^2, my^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True]*(SP[p, p] + SP[p, q])*(SP[p, p] + 2*SP[p, q] + SP[q, q]) +
+I*Pi^2*(FV[p, a] - FV[q, a])*PaVe[2, {4*SP[q, q], SP[p, p] + 2*SP[p, q] + SP[q, q], SP[p, p] - 2*SP[p, q] + SP[q, q]}, {mw^2, mw^2, my^2},
+PaVeAutoOrder -> True, PaVeAutoReduce -> True]*(SP[p, p] + SP[p, q])*(SP[p, p] + 2*SP[p, q] + SP[q, q]) +
+((I/4)*my^2*Pi^2*A0[my^2]*(FV[p, a]*SP[p, p] - 2*FV[q, a]*SP[p, q] + FV[p, a]*SP[q, q]))/
+((SP[p, p] - 2*SP[p, q] + SP[q, q])*(SP[p, p] + 2*SP[p, q] + SP[q, q])) +
+I*Pi^2*FV[q, a]*PaVe[1, {4*SP[q, q], SP[p, p] - 2*SP[p, q] + SP[q, q], SP[p, p] + 2*SP[p, q] + SP[q, q]}, {mw^2, mw^2, my^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True]*(-(mw^2*my^2) + my^4 + my^2*SP[p, p] - 2*SP[p, p]^2 - 6*SP[p, p]*SP[p, q] - 4*SP[p, q]^2 + my^2*SP[q, q] - 2*SP[p, p]*SP[q, q] -
+2*SP[p, q]*SP[q, q]) + (I/2)*Pi^2*(FV[p, a] + FV[q, a])*PaVe[2, {4*SP[q, q], SP[p, p] - 2*SP[p, q] + SP[q, q], SP[p, p] + 2*SP[p, q] + SP[q, q]},
+{mw^2, mw^2, my^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*(-(mw^2*my^2) + my^4 + my^2*SP[p, p] - 2*SP[p, p]^2 - 6*SP[p, p]*SP[p, q] -
+4*SP[p, q]^2 + my^2*SP[q, q] - 2*SP[p, p]*SP[q, q] - 2*SP[p, q]*SP[q, q]) +
+(I/2)*Pi^2*C0[4*SP[q, q], SP[p, p] - 2*SP[p, q] + SP[q, q], SP[p, p] + 2*SP[p, q] + SP[q, q], mw^2, mw^2, my^2]*
+(-(mw^2*my^2*FV[p, a]) + my^4*FV[p, a] - mw^2*my^2*FV[q, a] + my^4*FV[q, a] + my^2*FV[p, a]*SP[p, p] + my^2*FV[q, a]*SP[p, p] - 4*FV[q, a]*SP[p, p]^2 -
+12*FV[q, a]*SP[p, p]*SP[p, q] - 8*FV[q, a]*SP[p, q]^2 + my^2*FV[p, a]*SP[q, q] + my^2*FV[q, a]*SP[q, q] - 4*FV[q, a]*SP[p, p]*SP[q, q] -
+4*FV[q, a]*SP[p, q]*SP[q, q]) + ((I/2)*Pi^2*B0[4*SP[q, q], mw^2, mw^2]*(-2*mw^2*FV[q, a]*SP[p, q] + 2*mw^2*FV[p, a]*SP[q, q] - my^2*FV[p, a]*SP[q, q] +
+	D*my^2*FV[p, a]*SP[q, q] - 2*FV[p, a]*SP[p, p]*SP[q, q] + 2*D*FV[p, a]*SP[p, p]*SP[q, q] + 2*FV[q, a]*SP[p, q]*SP[q, q] - 2*FV[p, a]*SP[q, q]^2))/
+((-1 + D)*SP[q, q]) + ((I/4)*Pi^2*A0[mw^2]*(4*FV[q, a]*SP[p, p]^2*SP[p, q] - 2*D*FV[q, a]*SP[p, p]^2*SP[p, q] - 16*FV[q, a]*SP[p, q]^3 +
+	8*D*FV[q, a]*SP[p, q]^3 - my^2*FV[p, a]*SP[p, p]*SP[q, q] + D*my^2*FV[p, a]*SP[p, p]*SP[q, q] - 2*FV[p, a]*SP[p, p]^2*SP[q, q] +
+	2*my^2*FV[q, a]*SP[p, q]*SP[q, q] - 2*D*my^2*FV[q, a]*SP[p, q]*SP[q, q] + 8*FV[q, a]*SP[p, p]*SP[p, q]*SP[q, q] -
+	4*D*FV[q, a]*SP[p, p]*SP[p, q]*SP[q, q] + 8*FV[p, a]*SP[p, q]^2*SP[q, q] - my^2*FV[p, a]*SP[q, q]^2 + D*my^2*FV[p, a]*SP[q, q]^2 -
+	4*FV[p, a]*SP[p, p]*SP[q, q]^2 + 4*FV[q, a]*SP[p, q]*SP[q, q]^2 - 2*D*FV[q, a]*SP[p, q]*SP[q, q]^2 - 2*FV[p, a]*SP[q, q]^3))/
+((-1 + D)*(-SP[p, p] + 2*SP[p, q] - SP[q, q])*SP[q, q]*(SP[p, p] + 2*SP[p, q] + SP[q, q]))"},
+{"fcstOneLoop-ID13","OneLoop[q, FAD[{q, m1}, {p + q - k, m2}]]//FCE","I \[Pi]^2 B0[SP[k, k] - 2 SP[k, p] + SP[p, p], m1^2, m2^2]"}
 }

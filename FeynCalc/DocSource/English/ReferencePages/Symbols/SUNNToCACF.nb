@@ -190,9 +190,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/CF",
   ButtonNote->"CF"],
  "."
-}], "Text",
- CellTags->"SUNNToCACF",
- CellID->124208571]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -230,7 +228,7 @@ Cell[BoxData[
      RowBox[{"SUNIndex", "[", "a", "]"}]}], "]"}], ",", 
    RowBox[{"SUNNToCACF", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"SUNNToCACF",
- CellLabel->"In[1]:=",
+ CellLabel->"In[7]:=",
  CellID->1879564079],
 
 Cell[BoxData[
@@ -239,8 +237,7 @@ Cell[BoxData[
    SubscriptBox["C", "A"], " ", 
    SubscriptBox["C", "F"]}], TraditionalForm]], "Output",
  CellTags->"SUNNToCACF",
- CellLabel->"Out[1]=",
- CellID->573481763]
+ CellLabel->"Out[7]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -305,12 +302,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{862, Automatic}, {237, Automatic}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

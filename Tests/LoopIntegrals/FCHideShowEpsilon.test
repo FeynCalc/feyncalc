@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for FCHideEpsilon and
@@ -44,7 +44,11 @@ b + b^2) Log[4Pi]]", "(a + b)^2*SMP[\"Delta\"]"},
 "SMP[\"Delta_UV\"]"},
 {"fcstFCEpsilonHide-ID10",
 "FCHideEpsilon[2/EpsilonIR - EulerGamma + Log[4 Pi], D -> 4 - Epsilon]",
-"SMP[\"Delta_IR\"]"}
+"SMP[\"Delta_IR\"]"},
+{"fcstFCEpsilonHide-ID11",
+"FCHideEpsilon[1/Epsilon - EulerGamma + Log[4 Pi] + Log[ScaleMu^2/m^2],
+D -> 4 - 2 Epsilon, Subtract -> EulerGamma - Log[4 Pi] - Log[ScaleMu^2/m^2]]",
+"SMP[\"Delta\"]"}
 });
 
 Tests`LoopIntegrals`fcstFCShowEpsilon =
@@ -55,10 +59,12 @@ Tests`LoopIntegrals`fcstFCShowEpsilon =
 "EpsilonUV^(-1) - EulerGamma + Log[4*Pi]"},
 {"fcstFCEpsilonShow-ID3", "FCShowEpsilon[SMP[\"Delta_IR\"]]",
 "EpsilonIR^(-1) - EulerGamma + Log[4*Pi]"},
-{"fcstFCEpsilonShow-ID1", "FCShowEpsilon[SMP[\"Delta\"],D->4- Epsilon]",
+{"fcstFCEpsilonShow-ID4", "FCShowEpsilon[SMP[\"Delta\"],D->4- Epsilon]",
 "2 Epsilon^(-1) - EulerGamma + Log[4*Pi]"},
-{"fcstFCEpsilonShow-ID2", "FCShowEpsilon[SMP[\"Delta_UV\"],D->4- Epsilon]",
+{"fcstFCEpsilonShow-ID5", "FCShowEpsilon[SMP[\"Delta_UV\"],D->4- Epsilon]",
 "2 EpsilonUV^(-1) - EulerGamma + Log[4*Pi]"},
-{"fcstFCEpsilonShow-ID3", "FCShowEpsilon[SMP[\"Delta_IR\"],D->4- Epsilon]",
-"2 EpsilonIR^(-1) - EulerGamma + Log[4*Pi]"}
+{"fcstFCEpsilonShow-ID6", "FCShowEpsilon[SMP[\"Delta_IR\"],D->4- Epsilon]",
+"2 EpsilonIR^(-1) - EulerGamma + Log[4*Pi]"},
+{"fcstFCEpsilonShow-ID7", "FCShowEpsilon[SMP[\"Delta\"],Subtract -> EulerGamma - Log[4 Pi] - Log[ScaleMu^2/m^2]]",
+"Epsilon^(-1) - EulerGamma + Log[4*Pi]+Log[ScaleMu^2/m^2]"}
 });

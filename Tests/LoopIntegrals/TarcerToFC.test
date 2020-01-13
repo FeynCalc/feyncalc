@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for TarcerToFC			*)
@@ -25,10 +25,31 @@ q2]^2"},
 "TarcerToFC[Tarcer`TJI[D, Pair[Momentum[p, D], Momentum[p, D]], \
 {{1, 0}, {1, 0}, {1, 0}}],{q1,q2}]//FCE", "FAD[q1, q1 - q2, -p + q2]"},
 {"fcstTarcerToFC-ID3",
-"TarcerToFC[Tarcer`TBI[D, pp^2, {{1, 0}, {1, 0}}],{q1,q2}]//FCE",
-"FAD[q1, -pp + q1]"},
+"TarcerToFC[Tarcer`TBI[D, pp^2, {{1, 0}, {1, 0}}],{q1,q2}]",
+"Tarcer`TBI[D, pp^2, {{1, 0}, {1, 0}}]"},
 {"fcstTarcerToFC-ID4",
 "TarcerToFC[Tarcer`TAI[D, 0, {{1, m}}],{q1,q2}]//FCE",
-"FAD[{q1, m}]"}
+"FAD[{q1, m}]"},
+{"fcstTarcerToFC-ID5",
+"TarcerToFC[Tarcer`TFI[d, M^2, OPEDelta, {1, 3}, {{2, M}, {1, 0}, {1, 0}, {1, M}, {1, M}}], {q1, q2}]",
+"TarcerToFC[Tarcer`TFI[d, M^2, OPEDelta, {1, 3}, {{2, M}, {1, 0}, {1, 0}, {1, M}, {1, M}}], {q1, q2}]"},
+{"fcstTarcerToFC-ID6",
+"TarcerToFC[(mG^2*(FVD[q, Lor1]*FVD[q, Lor2] -
+	MTD[Lor1, Lor2]*SPD[q, q])* Tarcer`TFI[2 + D,
+	SPD[q, q], {{5, I*mG}, {2, mM}, {0, 0}, {0, 0}, {0,0}}])/(2*(-1 + D)), {q1, q2}] // FCE",
+"(1/(2 (-1 + D)))mG^2 FAD[{q1, I mG}, {q1, I mG}, {q1, I mG}, {q1,
+I mG}, {q1, I mG}, {q2, mM}, {q2, mM},
+Dimension -> 2 + D] (FVD[q, Lor1] FVD[q, Lor2] -
+MTD[Lor1, Lor2] SPD[q, q])"},
+{"fcstTarcerToFC-ID7",
+"TarcerToFC[Tarcer`TBI[D, pp^2, {{1, 0}, {1, 0}}], {q1, q2},
+ScalarProduct -> {{pp^2, p1}}, FCE -> True]",
+"FAD[q1, -p1 + q1]"},
+{"fcstTarcerToFC-ID8",
+"TarcerToFC[a1 Tarcer`TBI[D, pp^2, {{1, 0}, {1, 0}}] +
+b1 Tarcer`TBI[D, mm1, {{1, 0}, {1, 0}}], {q1, q2},
+ScalarProduct -> {{pp^2, p1}, {mm1, p1}},
+FCE -> True]",
+"a1 FAD[q1, -p1 + q1] + b1 FAD[q1, -p1 + q1]"}
 });
 

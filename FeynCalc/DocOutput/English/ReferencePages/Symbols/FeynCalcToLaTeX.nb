@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5615,        150]
-NotebookOptionsPosition[      3532,         96]
-NotebookOutlinePosition[      5537,        146]
-CellTagsIndexPosition[      5494,        143]
+NotebookDataLength[      7393,        217]
+NotebookOptionsPosition[      5089,        155]
+NotebookOutlinePosition[      7082,        206]
+CellTagsIndexPosition[      7039,        203]
 WindowTitle->FeynCalcToLaTeX
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ FeynCalcToLaTeX.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$68550], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$135667], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FeynCalcToLaTeX", ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -73,24 +74,82 @@ FeynCalcToLaTeX.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["FeynCalcToLaTeX", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["FeynCalcToLaTeX", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
-      RowBox[{"FeynCalcToLaTeX", "[", "expr", "]"}]], "InlineFormula"],
-     " \[LineSeparator]",
-     "generates LaTeX with line-breaking  for expr. \nFeynCalcToLaTeX[expr, \
-500] generates LaTeX for expr where 500 is the Window width  setting for the \
-Mathematica frontend. Increasing its value will generate less line breaks."
+      RowBox[{"FeynCalcToLaTeX", "[", "exp", "]"}]], "InlineFormula"],
+     " \[LineSeparator]generates LaTeX with line-breaking  for ",
+     Cell[BoxData["exp"], "InlineFormula"],
+     "."
+    }]]},
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"FeynCalcToLaTeX", "[", 
+       RowBox[{"expr", ",", "500"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]generates LaTeX for ",
+     Cell[BoxData["exp"], "InlineFormula"],
+     " where 500 is the Window width  setting for the Mathematica frontend. \
+Increasing its value will generate less line breaks."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
  GridBoxBackground->{
-  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {None, {None}}, 
    "RowsIndexed" -> {}}},
- CellID->982511436],
+ CellID->2010081510],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[TextData[{
+ "This function appears to be broken in the recent ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " versions, most likely it will be rewritten from scratch in a future \
+version of FeynCalc."
+}], "Notes",
+ CellID->1067943069]
+}, Closed]],
 
 Cell[" ", "FooterCell"]
 },
@@ -106,23 +165,24 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 19, 52.976412}", 
+   "built" -> "{2020, 1, 5, 18, 57, 41.035316}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
-    "FeynCalcToLaTeX[expr] generates LaTeX with line-breaking for expr. \
-FeynCalcToLaTeX[expr, 500] generates LaTeX for expr where 500 is the Window \
+    "FeynCalcToLaTeX[exp] generates LaTeX with line-breaking for exp. \
+FeynCalcToLaTeX[expr, 500] generates LaTeX for exp where 500 is the Window \
 width setting for the Mathematica frontend. Increasing its value will \
-generate less line breaks.", "synonyms" -> {}, "title" -> "FeynCalcToLaTeX", 
-    "titlemodifier" -> "", "windowtitle" -> "FeynCalcToLaTeX", "type" -> 
-    "Symbol", "uri" -> "FeynCalc/ref/FeynCalcToLaTeX"}},
+generate less line breaks.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "FeynCalcToLaTeX", "titlemodifier" -> "", "windowtitle" -> 
+    "FeynCalcToLaTeX", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/FeynCalcToLaTeX"}},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -131,7 +191,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -145,13 +205,20 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[587, 21, 2273, 52, 70, "AnchorBarGrid",
+Cell[587, 21, 2302, 53, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2863, 75, 58, 1, 70, "ObjectName",
- CellID->1224892054],
-Cell[2924, 78, 578, 14, 70, "Usage",
- CellID->982511436],
-Cell[3505, 94, 23, 0, 70, "FooterCell"]
+Cell[2892, 76, 292, 11, 70, "ObjectNameGrid"],
+Cell[3187, 89, 821, 22, 70, "Usage",
+ CellID->2010081510],
+Cell[CellGroupData[{
+Cell[4033, 115, 730, 24, 70, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1],
+Cell[4766, 141, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[4800, 143, 247, 7, 70, "Notes",
+ CellID->1067943069]
+}, Closed]],
+Cell[5062, 153, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

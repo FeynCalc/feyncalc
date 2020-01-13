@@ -183,9 +183,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/SUNSimplify",
   ButtonNote->"SUNSimplify"],
  "."
-}], "Text",
- CellTags->"SUND",
- CellID->37121422]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -218,7 +216,7 @@ Cell[BoxData[
  RowBox[{"SUND", "[", 
   RowBox[{"a", ",", "b", ",", "c"}], "]"}]], "Input",
  CellTags->"SUND",
- CellLabel->"In[1]:=",
+ CellLabel->"In[39]:=",
  CellID->1395182696],
 
 Cell[BoxData[
@@ -232,19 +230,17 @@ Cell[BoxData[
     FormBox["c",
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"SUND",
- CellLabel->"Out[1]=",
- CellID->257225185]
+ CellLabel->"Out[39]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"tt", "=", 
-  RowBox[{"SUND", "[", 
-   RowBox[{"a", ",", "b", ",", "c", ",", 
-    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]}]], "Input",
+ RowBox[{"SUND", "[", 
+  RowBox[{"a", ",", "b", ",", "c", ",", 
+   RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"SUND",
- CellLabel->"In[2]:=",
+ CellLabel->"In[40]:=",
  CellID->1361287318],
 
 Cell[BoxData[
@@ -305,8 +301,7 @@ Cell[BoxData[
       FormBox["\<\")\"\>",
        TraditionalForm]}], ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"SUND",
- CellLabel->"Out[2]=",
- CellID->229657836]
+ CellLabel->"Out[40]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -315,7 +310,7 @@ Cell[BoxData[
  RowBox[{"SUND", "[", 
   RowBox[{"c", ",", "a", ",", "b"}], "]"}]], "Input",
  CellTags->"SUND",
- CellLabel->"In[3]:=",
+ CellLabel->"In[41]:=",
  CellID->875422809],
 
 Cell[BoxData[
@@ -329,8 +324,7 @@ Cell[BoxData[
     FormBox["c",
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"SUND",
- CellLabel->"Out[3]=",
- CellID->1988918016]
+ CellLabel->"Out[41]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -339,7 +333,7 @@ Cell[BoxData[
  RowBox[{"SUND", "[", 
   RowBox[{"a", ",", "b", ",", "b"}], "]"}]], "Input",
  CellTags->"SUND",
- CellLabel->"In[4]:=",
+ CellLabel->"In[42]:=",
  CellID->2104582579],
 
 Cell[BoxData[
@@ -353,8 +347,7 @@ Cell[BoxData[
     FormBox["b",
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"SUND",
- CellLabel->"Out[4]=",
- CellID->1040614065]
+ CellLabel->"Out[42]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -367,7 +360,7 @@ Cell[BoxData[
    RowBox[{"SUND", "[", 
     RowBox[{"a", ",", "b", ",", "c"}], "]"}]}], "]"}]], "Input",
  CellTags->"SUND",
- CellLabel->"In[5]:=",
+ CellLabel->"In[43]:=",
  CellID->1572742744],
 
 Cell[BoxData[
@@ -379,8 +372,7 @@ Cell[BoxData[
      SubsuperscriptBox["C", "A", "2"]}], ")"}], " ", 
    SubscriptBox["C", "F"]}], TraditionalForm]], "Output",
  CellTags->"SUND",
- CellLabel->"Out[5]=",
- CellID->1608432966]
+ CellLabel->"Out[43]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -397,7 +389,7 @@ Cell[BoxData[
     RowBox[{"SUNNToCACF", "\[Rule]", "False"}]}], "]"}], "//", 
   "Factor2"}]], "Input",
  CellTags->"SUND",
- CellLabel->"In[6]:=",
+ CellLabel->"In[44]:=",
  CellID->2028272220],
 
 Cell[BoxData[
@@ -411,8 +403,7 @@ Cell[BoxData[
      RowBox[{"4", "-", 
       SuperscriptBox["N", "2"]}], ")"}]}], "N"], TraditionalForm]], "Output",
  CellTags->"SUND",
- CellLabel->"Out[6]=",
- CellID->576134912]
+ CellLabel->"Out[44]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -429,7 +420,7 @@ Cell[BoxData[
     RowBox[{"SUNNToCACF", "\[Rule]", "False"}]}], "]"}], "//", 
   "Factor2"}]], "Input",
  CellTags->"SUND",
- CellLabel->"In[7]:=",
+ CellLabel->"In[45]:=",
  CellID->1938547204],
 
 Cell[BoxData[
@@ -451,8 +442,7 @@ Cell[BoxData[
          TraditionalForm],
         TraditionalForm]}]]}], "N"]}], TraditionalForm]], "Output",
  CellTags->"SUND",
- CellLabel->"Out[7]=",
- CellID->985891006]
+ CellLabel->"Out[45]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -463,15 +453,14 @@ Cell[BoxData[
    RowBox[{"a", ",", "b", ",", "c"}], "]"}], "//", "StandardForm"}]], "Input",
  
  CellTags->"SUND",
- CellLabel->"In[8]:=",
+ CellLabel->"In[46]:=",
  CellID->1197762042],
 
 Cell[BoxData[
  RowBox[{"SUND", "[", 
   RowBox[{"a", ",", "b", ",", "c"}], "]"}]], "Output",
  CellTags->"SUND",
- CellLabel->"Out[8]//StandardForm=",
- CellID->702924348]
+ CellLabel->"Out[46]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -483,7 +472,7 @@ Cell[BoxData[
     RowBox[{"a", ",", "b", ",", "c"}], "]"}], "//", "FCI"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"SUND",
- CellLabel->"In[9]:=",
+ CellLabel->"In[47]:=",
  CellID->1553275724],
 
 Cell[BoxData[
@@ -493,8 +482,7 @@ Cell[BoxData[
    RowBox[{"SUNIndex", "[", "b", "]"}], ",", 
    RowBox[{"SUNIndex", "[", "c", "]"}]}], "]"}]], "Output",
  CellTags->"SUND",
- CellLabel->"Out[9]//StandardForm=",
- CellID->1657792981]
+ CellLabel->"Out[47]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -507,22 +495,15 @@ Cell[BoxData[
      RowBox[{"a", ",", "b", ",", "c"}], "]"}], "//", "FCI"}], "//", "FCE"}], "//",
    "StandardForm"}]], "Input",
  CellTags->"SUND",
- CellLabel->"In[10]:=",
+ CellLabel->"In[48]:=",
  CellID->1610675678],
 
 Cell[BoxData[
  RowBox[{"SUND", "[", 
   RowBox[{"a", ",", "b", ",", "c"}], "]"}]], "Output",
  CellTags->"SUND",
- CellLabel->"Out[10]//StandardForm=",
- CellID->1049412344]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{"Clear", "[", "tt", "]"}]], "Input",
- CellTags->"SUND",
- CellLabel->"In[11]:=",
- CellID->619973322]
+ CellLabel->"Out[48]//StandardForm="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -586,12 +567,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{296, Automatic}, {Automatic, 38}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

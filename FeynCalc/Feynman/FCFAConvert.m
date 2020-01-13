@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  FCFAConvert converts a FeynArts amplitude to FeynCalc      *)
@@ -58,34 +58,41 @@ End[]
 Begin["`FCFAConvert`Private`"]
 
 Options[FCFAConvert] = {
-	ChangeDimension -> False,
-	DropSumOver -> False,
-	FinalSubstitutions->{},
-	IncomingMomenta->{},
-	List -> True,
-	LoopMomenta->{},
-	LorentzIndexNames->{},
-	OutgoingMomenta->{},
-	SMP -> False,
-	SUNFIndexNames->{},
-	SUNIndexNames->{},
-	TransversePolarizationVectors->{},
-	UndoChiralSplittings -> False
+	ChangeDimension 				-> False,
+	Contract 						-> False,
+	DropSumOver 					-> False,
+	FCFADiracChainJoin				-> True,
+	FeynAmpDenominatorCombine		-> True,
+	FinalSubstitutions				-> {},
+	IncomingMomenta					-> {},
+	List 							-> True,
+	LoopMomenta						-> {},
+	LorentzIndexNames				-> {},
+	OutgoingMomenta					-> {},
+	Prefactor 						-> 1,
+	SMP 							-> False,
+	SUNFIndexNames					-> {},
+	SUNIndexNames					-> {},
+	TransversePolarizationVectors	-> {},
+	UndoChiralSplittings 			-> False
 	};
 
-FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[__][diags__], OptionsPattern[]] :=
+FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[__][diags___], OptionsPattern[]] :=
 	Block[ {	diagsConverted,repRuleMomenta,repRuleLorentzIndices,
 				repRulePolVectors,inMoms,outMoms,liNames,polVecs,loopMoms,dim,
-				sunNames, sunfNames, repRuleSUNIndices, repRuleSUNFIndices},
+				sunNames, sunfNames, repRuleSUNIndices, repRuleSUNFIndices,
+				prefactor},
 
-		inMoms		=	OptionValue[IncomingMomenta];
-		outMoms		=	OptionValue[OutgoingMomenta];
-		loopMoms	=	OptionValue[LoopMomenta];
-		liNames		=	OptionValue[LorentzIndexNames];
-		sunNames	=	OptionValue[SUNIndexNames];
-		sunfNames	=	OptionValue[SUNFIndexNames];
-		polVecs		=	OptionValue[TransversePolarizationVectors];
-		dim			=	OptionValue[ChangeDimension];
+		inMoms		= OptionValue[IncomingMomenta];
+		outMoms		= OptionValue[OutgoingMomenta];
+		loopMoms	= OptionValue[LoopMomenta];
+		liNames		= OptionValue[LorentzIndexNames];
+		sunNames	= OptionValue[SUNIndexNames];
+		sunfNames	= OptionValue[SUNFIndexNames];
+		polVecs		= OptionValue[TransversePolarizationVectors];
+		dim			= OptionValue[ChangeDimension];
+		prefactor	= OptionValue[Prefactor];
+
 
 		repRuleMomenta={};
 		repRuleLorentzIndices={};
@@ -95,7 +102,10 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[__][diags__], OptionsPattern[]]
 
 		diagsConverted= Map[#[[3]]&,{diags}];
 
-		diagsConverted = FCPrepareFAAmp[diagsConverted,UndoChiralSplittings->OptionValue[UndoChiralSplittings],SMP->OptionValue[SMP]];
+		diagsConverted = FCPrepareFAAmp[diagsConverted,UndoChiralSplittings->OptionValue[UndoChiralSplittings],SMP->OptionValue[SMP],
+			FeynAmpDenominatorCombine->OptionValue[FeynAmpDenominatorCombine]];
+
+		diagsConverted = prefactor diagsConverted;
 
 		If[	OptionValue[DropSumOver],
 			diagsConverted = diagsConverted/.FeynArts`SumOver[___]:> 1
@@ -132,12 +142,20 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[__][diags__], OptionsPattern[]]
 			diagsConverted= ChangeDimension[diagsConverted,dim]
 		];
 
+		If[	TrueQ[OptionValue[Contract]],
+			diagsConverted = Contract[#,FCI->True]&/@diagsConverted
+		];
+
 		If[	!OptionValue[List],
 			diagsConverted = Total[diagsConverted]
 		];
 
 		If[	OptionValue[FinalSubstitutions]=!={},
 			diagsConverted = diagsConverted /. OptionValue[FinalSubstitutions]
+		];
+
+		If[	!FreeQ[diagsConverted,DiracIndex] && OptionValue[FCFADiracChainJoin],
+			diagsConverted = FCFADiracChainJoin[diagsConverted,FCI->True]
 		];
 
 		Return[diagsConverted]

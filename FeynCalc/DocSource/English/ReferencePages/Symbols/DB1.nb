@@ -168,9 +168,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/B1",
   ButtonNote->"B1"],
  "."
-}], "Text",
- CellTags->"DB1",
- CellID->489076083]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -211,52 +209,55 @@ Cell[BoxData[
       SubscriptBox["m", "2"], "2"]}], "]"}], ",", 
    SubscriptBox["p", "2"]}], "]"}]], "Input",
  CellTags->"DB1",
- CellLabel->"In[1]:=",
+ CellLabel->"In[539]:=",
  CellID->1972383299],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   RowBox[{"-", 
-    FractionBox[
-     RowBox[{
-      RowBox[{"(", 
-       RowBox[{
-        SubsuperscriptBox["m", "2", "2"], "-", 
-        SubsuperscriptBox["m", "1", "2"]}], ")"}], " ", 
-      RowBox[{"(", 
-       RowBox[{
-        FormBox[
-         TagBox[
-          FormBox[
-           RowBox[{
-            SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
-            RowBox[{
-             SubscriptBox["p", "2"], ",", 
-             SubsuperscriptBox["m", "1", "2"], ",", 
-             SubsuperscriptBox["m", "2", "2"]}], ")"}],
-           TraditionalForm],
-          HoldForm],
-         TraditionalForm], "-", 
-        FormBox[
-         TagBox[
-          FormBox[
-           RowBox[{
-            SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
-            RowBox[{"0", ",", 
-             SubsuperscriptBox["m", "1", "2"], ",", 
-             SubsuperscriptBox["m", "2", "2"]}], ")"}],
-           TraditionalForm],
-          HoldForm],
-         TraditionalForm]}], ")"}]}], 
-     RowBox[{"2", " ", 
-      SubsuperscriptBox["p", "2", "2"]}]]}], "+", 
    FractionBox[
     RowBox[{
      RowBox[{"(", 
       RowBox[{
-       SubsuperscriptBox["m", "2", "2"], "-", 
-       SubsuperscriptBox["m", "1", "2"]}], ")"}], " ", 
+       SubsuperscriptBox["m", "1", "2"], "-", 
+       SubsuperscriptBox["m", "2", "2"], "+", 
+       SubscriptBox["p", "2"]}], ")"}], " ", 
+     FormBox[
+      TagBox[
+       FormBox[
+        RowBox[{
+         SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+         RowBox[{
+          SubscriptBox["p", "2"], ",", 
+          SubsuperscriptBox["m", "1", "2"], ",", 
+          SubsuperscriptBox["m", "2", "2"]}], ")"}],
+        TraditionalForm],
+       HoldForm],
+      TraditionalForm]}], 
+    RowBox[{"2", " ", 
+     SubsuperscriptBox["p", "2", "2"]}]], "-", 
+   FractionBox[
+    FormBox[
+     TagBox[
+      FormBox[
+       RowBox[{
+        SubscriptBox["\<\"B\"\>", "\<\"0\"\>"], "(", 
+        RowBox[{
+         SubscriptBox["p", "2"], ",", 
+         SubsuperscriptBox["m", "1", "2"], ",", 
+         SubsuperscriptBox["m", "2", "2"]}], ")"}],
+       TraditionalForm],
+      HoldForm],
+     TraditionalForm], 
+    RowBox[{"2", " ", 
+     SubscriptBox["p", "2"]}]], "-", 
+   FractionBox[
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       SubsuperscriptBox["m", "1", "2"], "-", 
+       SubsuperscriptBox["m", "2", "2"], "+", 
+       SubscriptBox["p", "2"]}], ")"}], " ", 
      RowBox[{"DB0", "(", 
       RowBox[{
        SubscriptBox["p", "2"], ",", 
@@ -264,17 +265,32 @@ Cell[BoxData[
        SubsuperscriptBox["m", "2", "2"]}], ")"}]}], 
     RowBox[{"2", " ", 
      SubscriptBox["p", "2"]}]], "-", 
-   RowBox[{
-    FractionBox["1", "2"], " ", 
-    RowBox[{"DB0", "(", 
-     RowBox[{
-      SubscriptBox["p", "2"], ",", 
-      SubsuperscriptBox["m", "1", "2"], ",", 
-      SubsuperscriptBox["m", "2", "2"]}], ")"}]}]}], 
-  TraditionalForm]], "Output",
+   FractionBox[
+    FormBox[
+     TagBox[
+      FormBox[
+       RowBox[{
+        SubscriptBox["\<\"A\"\>", "\<\"0\"\>"], "(", 
+        SubsuperscriptBox["m", "1", "2"], ")"}],
+       TraditionalForm],
+      HoldForm],
+     TraditionalForm], 
+    RowBox[{"2", " ", 
+     SubsuperscriptBox["p", "2", "2"]}]], "+", 
+   FractionBox[
+    FormBox[
+     TagBox[
+      FormBox[
+       RowBox[{
+        SubscriptBox["\<\"A\"\>", "\<\"0\"\>"], "(", 
+        SubsuperscriptBox["m", "2", "2"], ")"}],
+       TraditionalForm],
+      HoldForm],
+     TraditionalForm], 
+    RowBox[{"2", " ", 
+     SubsuperscriptBox["p", "2", "2"]}]]}], TraditionalForm]], "Output",
  CellTags->"DB1",
- CellLabel->"Out[1]=",
- CellID->369404311]
+ CellLabel->"Out[539]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -339,12 +355,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{1144, Automatic}, {Automatic, 137}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

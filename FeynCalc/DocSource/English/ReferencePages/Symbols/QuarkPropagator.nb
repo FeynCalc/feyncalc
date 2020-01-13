@@ -118,14 +118,50 @@ Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
   RowBox[{"QuarkPropagator", "[", "p", "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "is the massless quark propagator. QuarkPropagator[{p,m}] or gives the quark \
-propagator with mass m."
+ " \[LineSeparator]is the massless quark propagator.\n",
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{"QuarkPropagator", "[", 
+   RowBox[{"{", 
+    RowBox[{"p", ",", "m"}], "}"}], "]"}]], "InlineFormula"],
+ " \[LineSeparator]gives the quark propagator with mass ",
+ Cell[BoxData["m"], "InlineFormula"],
+ "."
 }], "Usage",
- CellID->982511436],
+ CellID->2010081510],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[TextData[{
+ Cell[BoxData["QP"], "InlineFormula"],
+ " can be used as an abbreviation of ",
+ ButtonBox["QuarkPropagator",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/QuarkPropagator",
+  ButtonNote->"QuarkPropagator"],
+ "."
+}], "Notes",
+ CellID->1067943069],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "QuarkPropagator", "]"}]], "Input",
+ CellLabel->"In[50]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"CounterTerm", "\[Rule]", "False"}], ",", 
+    RowBox[{"CouplingConstant", "\[Rule]", 
+     SubscriptBox["g", "s"]}], ",", 
+    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
+    RowBox[{"Explicit", "\[Rule]", "False"}], ",", 
+    RowBox[{"Loop", "\[Rule]", "0"}], ",", 
+    RowBox[{"\[CapitalOmega]", "\[Rule]", "False"}], ",", 
+    RowBox[{"Polarization", "\[Rule]", "0"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[50]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -171,9 +207,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/QuarkGluonVertex",
   ButtonNote->"QuarkGluonVertex"],
  "."
-}], "Text",
- CellTags->"QuarkPropagator",
- CellID->704256164]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -203,37 +237,11 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "QuarkPropagator", "]"}]], "Input",
- CellTags->"QuarkPropagator",
- CellLabel->"In[2]:=",
- CellID->1137505588],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"CounterTerm", "\[Rule]", "False"}], ",", 
-    RowBox[{"CouplingConstant", "\[Rule]", 
-     SubscriptBox["g", "s"]}], ",", 
-    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
-    RowBox[{"Explicit", "\[Rule]", "False"}], ",", 
-    RowBox[{"Loop", "\[Rule]", "0"}], ",", 
-    RowBox[{"\[CapitalOmega]", "\[Rule]", "False"}], ",", 
-    RowBox[{"Polarization", "\[Rule]", "0"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"QuarkPropagator",
- CellLabel->"Out[2]=",
- CellID->759410596]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"QuarkPropagator", "[", 
   RowBox[{"p", ",", 
    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"QuarkPropagator",
- CellLabel->"In[5]:=",
+ CellLabel->"In[51]:=",
  CellID->1589814930],
 
 Cell[BoxData[
@@ -245,12 +253,19 @@ Cell[BoxData[
       FormBox["p",
        TraditionalForm],
       TraditionalForm]}]}], 
-   SuperscriptBox[
-    FormBox["p",
-     TraditionalForm], "2"]], TraditionalForm]], "Output",
+   InterpretationBox[
+    SuperscriptBox[
+     FormBox[
+      FormBox["p",
+       TraditionalForm],
+      TraditionalForm], "2"],
+    SequenceForm[
+     FeynCalc`Pair[
+      FeynCalc`Momentum[$CellContext`p, D], 
+      FeynCalc`Momentum[$CellContext`p, D]]],
+    Editable->False]], TraditionalForm]], "Output",
  CellTags->"QuarkPropagator",
- CellLabel->"Out[5]=",
- CellID->1709152205]
+ CellLabel->"Out[51]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -262,7 +277,7 @@ Cell[BoxData[
     RowBox[{"p", ",", "m"}], "}"}], ",", 
    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"QuarkPropagator",
- CellLabel->"In[6]:=",
+ CellLabel->"In[52]:=",
  CellID->1965811029],
 
 Cell[BoxData[
@@ -276,14 +291,80 @@ Cell[BoxData[
         FormBox["p",
          TraditionalForm],
         TraditionalForm]}]}], ")"}]}], 
-   RowBox[{
-    SuperscriptBox[
-     FormBox["p",
-      TraditionalForm], "2"], "-", 
-    SuperscriptBox["m", "2"]}]], TraditionalForm]], "Output",
+   InterpretationBox[
+    RowBox[{
+     SuperscriptBox[
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+     "\[InvisibleSpace]", 
+     SuperscriptBox["m", "2"]}],
+    SequenceForm[
+     FeynCalc`Pair[
+      FeynCalc`Momentum[$CellContext`p, D], 
+      FeynCalc`Momentum[$CellContext`p, D]], "-", $CellContext`m^2],
+    Editable->False]], TraditionalForm]], "Output",
  CellTags->"QuarkPropagator",
- CellLabel->"Out[6]=",
- CellID->545226998]
+ CellLabel->"Out[52]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"QP", "[", 
+  RowBox[{"{", 
+   RowBox[{"p", ",", "m"}], "}"}], "]"}]], "Input",
+ CellLabel->"In[53]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["\[CapitalPi]", "q"], "(", 
+   FormBox["p",
+    TraditionalForm], ")"}], TraditionalForm]], "Output",
+ CellLabel->"Out[53]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Explicit", "[", "%", "]"}]], "Input",
+ CellLabel->"In[54]:="],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{"\[ImaginaryI]", " ", 
+    RowBox[{"(", 
+     RowBox[{"m", "+", 
+      RowBox[{"\[Gamma]", "\[CenterDot]", 
+       FormBox[
+        FormBox["p",
+         TraditionalForm],
+        TraditionalForm]}]}], ")"}]}], 
+   InterpretationBox[
+    RowBox[{
+     SuperscriptBox[
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+     "\[InvisibleSpace]", 
+     SuperscriptBox["m", "2"]}],
+    SequenceForm[
+     FeynCalc`Pair[
+      FeynCalc`Momentum[$CellContext`p, D], 
+      FeynCalc`Momentum[$CellContext`p, D]], "-", $CellContext`m^2],
+    Editable->False]], TraditionalForm]], "Output",
+ CellLabel->"Out[54]="]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -348,12 +429,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{896, Automatic}, {Automatic, 179}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

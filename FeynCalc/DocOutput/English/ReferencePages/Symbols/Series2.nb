@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     26106,        928]
-NotebookOptionsPosition[     19042,        689]
-NotebookOutlinePosition[     23443,        821]
-CellTagsIndexPosition[     23332,        815]
+NotebookDataLength[     26379,        933]
+NotebookOptionsPosition[     19839,        719]
+NotebookOutlinePosition[     23808,        834]
+CellTagsIndexPosition[     23697,        828]
 WindowTitle->Series2
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$135091], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$230275], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Series2", ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -73,8 +74,20 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Series2", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Series2", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -97,39 +110,40 @@ e, n] is equivalent to Series2[f, {e, 0, n}]."
 
 Cell[CellGroupData[{
 
-Cell[TextData[{
- Cell[BoxData[
-  InterpretationBox[
-   StyleBox[
-    GraphicsBox[{},
-     BaselinePosition->Baseline,
-     ImageSize->{6, 0}],
-    CacheGraphics->False],
-   Spacer[6]]]],
- "Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "PrimaryExamplesSection",
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
- CellTags->"PrimaryExamplesSection",
- CellID->1131879300],
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->284019266],
 
-Cell[CellGroupData[{
-
-Cell[TextData[{
- "Basic Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "ExampleSection", "ExampleSection",
- WholeCellGroupOpener->True,
- CellID->1970642065],
+Cell["", "SectionHeaderSpacer"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Options", "[", "Series2", "]"}]], "Input",
  CellTags->"Series2",
- CellLabel->"In[1]:=",
+ CellLabel->"In[3]:=",
  CellID->1435843837],
 
 Cell[BoxData[
@@ -145,13 +159,43 @@ Cell[BoxData[
         Function[{}, EulerGamma]], "\[Rule]", "0"}], "}"}]}], ",", 
     RowBox[{"SimplifyPolyLog", "\[Rule]", "True"}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{372, 35},
+ ImageSize->{565, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Series2",
- CellLabel->"Out[1]=",
- CellID->1982660957]
+ CellLabel->"Out[3]="]
+}, Open  ]]
+}, Closed]]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1304305929],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1549648249],
 
 Cell[CellGroupData[{
 
@@ -167,7 +211,7 @@ Cell[BoxData[
      RowBox[{"\[Delta]", "/", "2"}], ")"}]}], ",", "\[Delta]", ",", "1"}], 
   "]"}]], "Input",
  CellTags->"Series2",
- CellLabel->"In[2]:=",
+ CellLabel->"In[1]:=",
  CellID->785606174],
 
 Cell[BoxData[
@@ -181,12 +225,11 @@ Cell[BoxData[
     FractionBox["1", "2"], " ", "\[Delta]", " ", 
     RowBox[{"log", "(", "x", ")"}]}], "+", "1"}], TraditionalForm]], "Output",\
 
- ImageSize->{206, 41},
+ ImageSize->{208, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Series2",
- CellLabel->"Out[2]=",
- CellID->78273571]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -196,7 +239,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"Gamma", "[", "x", "]"}], ",", "x", ",", "1"}], "]"}]], "Input",
  CellTags->"Series2",
- CellLabel->"In[3]:=",
+ CellLabel->"In[2]:=",
  CellID->1445520007],
 
 Cell[BoxData[
@@ -206,12 +249,11 @@ Cell[BoxData[
     FractionBox["1", "2"], " ", 
     RowBox[{"\[Zeta]", "(", "2", ")"}], " ", "x"}], "+", 
    FractionBox["1", "x"]}], TraditionalForm]], "Output",
- ImageSize->{91, 41},
+ ImageSize->{95, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Series2",
- CellLabel->"Out[3]=",
- CellID->1484488938]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -223,7 +265,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}]], "Input",
  CellTags->"Series2",
- CellLabel->"In[4]:=",
+ CellLabel->"In[3]:=",
  CellID->1607149077],
 
 Cell[BoxData[
@@ -250,12 +292,11 @@ Cell[BoxData[
    SeriesData[$CellContext`x, 0, {
     1, -EulerGamma, Rational[1, 12] (6 EulerGamma^2 + Pi^2)}, -1, 2, 1],
    Editable->False], TraditionalForm]], "Output",
- ImageSize->{228, 41},
+ ImageSize->{234, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Series2",
- CellLabel->"Out[4]=",
- CellID->406465977]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -265,7 +306,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"Gamma", "[", "x", "]"}], ",", "x", ",", "2"}], "]"}]], "Input",
  CellTags->"Series2",
- CellLabel->"In[5]:=",
+ CellLabel->"In[4]:=",
  CellID->113546639],
 
 Cell[BoxData[
@@ -281,12 +322,11 @@ Cell[BoxData[
     FractionBox["1", "2"], " ", 
     RowBox[{"\[Zeta]", "(", "2", ")"}], " ", "x"}], "+", 
    FractionBox["1", "x"]}], TraditionalForm]], "Output",
- ImageSize->{172, 45},
+ ImageSize->{177, 38},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Series2",
- CellLabel->"Out[5]=",
- CellID->503684567]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -299,7 +339,7 @@ Cell[BoxData[
     RowBox[{"FinalSubstitutions", "\[Rule]", 
      RowBox[{"{", "}"}]}]}], "]"}], "//", "FullSimplify"}]], "Input",
  CellTags->"Series2",
- CellLabel->"In[6]:=",
+ CellLabel->"In[5]:=",
  CellID->31680807],
 
 Cell[BoxData[
@@ -333,12 +373,11 @@ Cell[BoxData[
        TagBox["\[DoubledGamma]",
         Function[{}, EulerGamma]], "2"], " ", "x"}], "+", 
      FractionBox["6", "x"]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{443, 43},
+ ImageSize->{454, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Series2",
- CellLabel->"Out[6]=",
- CellID->607384212]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -358,7 +397,7 @@ Cell[BoxData[
         "}"}]}], "]"}], "//", "Normal"}], "//", "Expand"}], "//", 
   "FullSimplify"}]], "Input",
  CellTags->"Series2",
- CellLabel->"In[7]:=",
+ CellLabel->"In[6]:=",
  CellID->1418084636],
 
 Cell[BoxData[
@@ -393,19 +432,16 @@ Cell[BoxData[
        TagBox["\[DoubledGamma]",
         Function[{}, EulerGamma]], "2"], " ", "x"}], "+", 
      FractionBox["12", "x"]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{435, 43},
+ ImageSize->{439, 36},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Series2",
- CellLabel->"Out[7]=",
- CellID->743143408]
+ CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell["\<\
 There is a table of expansions of special hypergeometric functions.\
-\>", "Text",
- CellTags->"Series2",
- CellID->659671376],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -424,7 +460,7 @@ Cell[BoxData[
        RowBox[{"OPEm", "+", "Epsilon"}]}], "}"}], ",", "1"}], "]"}], ",", 
    "Epsilon", ",", "1"}], "]"}]], "Input",
  CellTags->"Series2",
- CellLabel->"In[8]:=",
+ CellLabel->"In[7]:=",
  CellID->1447119838],
 
 Cell[BoxData[
@@ -450,12 +486,11 @@ Cell[BoxData[
       TraditionalForm], " ", 
      TemplateBox[{"1","m"},
       "PolyGamma2"]}], "2"], "+", "1"}], TraditionalForm]], "Output",
- ImageSize->{297, 47},
+ ImageSize->{302, 39},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Series2",
- CellLabel->"Out[8]=",
- CellID->1252077467]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -477,7 +512,7 @@ Cell[BoxData[
         RowBox[{"Epsilon", " ", "+", " ", "OPEm"}]}], "}"}], ",", "  ", "1"}],
       "]"}], ",", "Epsilon", ",", "1"}], "]"}]}]], "Input",
  CellTags->"Series2",
- CellLabel->"In[9]:=",
+ CellLabel->"In[8]:=",
  CellID->1777911067],
 
 Cell[BoxData[
@@ -514,12 +549,11 @@ Cell[BoxData[
      FormBox[
       RowBox[{"m", "-", "1"}],
       TraditionalForm], ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{493, 41},
+ ImageSize->{502, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Series2",
- CellLabel->"Out[9]=",
- CellID->859590251]
+ CellLabel->"Out[8]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -530,7 +564,7 @@ Cell[BoxData[
    RowBox[{"1", " ", "+", " ", 
     RowBox[{"2", " ", "Epsilon"}]}], ",", "x"}], "]"}]], "Input",
  CellTags->"Series2",
- CellLabel->"In[10]:=",
+ CellLabel->"In[9]:=",
  CellID->1986693903],
 
 Cell[BoxData[
@@ -539,12 +573,11 @@ Cell[BoxData[
       RowBox[{"2", " ", 
         TagBox["\[CurlyEpsilon]", TraditionalForm]}], "+", "1"}],"x"},
    "Hypergeometric2F1"], TraditionalForm]], "Output",
- ImageSize->{133, 15},
+ ImageSize->{133, 17},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Series2",
- CellLabel->"Out[10]=",
- CellID->444344105]
+ CellLabel->"Out[9]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -553,7 +586,7 @@ Cell[BoxData[
  RowBox[{"Series2", "[", 
   RowBox[{"%", ",", "Epsilon", ",", "3"}], "]"}]], "Input",
  CellTags->"Series2",
- CellLabel->"In[11]:=",
+ CellLabel->"In[10]:=",
  CellID->180283674],
 
 Cell[BoxData[
@@ -661,12 +694,11 @@ Cell[BoxData[
       TraditionalForm], "3"], " ", 
     TemplateBox[{"3"},
      "Zeta"]}], "+", "1"}], TraditionalForm]], "Output",
- ImageSize->{471, 136},
+ ImageSize->{481, 122},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Series2",
- CellLabel->"Out[11]=",
- CellID->1006368312]
+ CellLabel->"Out[10]="]
 }, Open  ]],
 
 Cell[TextData[{
@@ -679,9 +711,7 @@ Cell[TextData[{
      SubscriptBox["F", "1"]}]}], TraditionalForm]]],
  " tabulated in Series2.m. The interested user can consult the source code \
 (search for HYPERLIST)."
-}], "Text",
- CellTags->"Series2",
- CellID->1023055054]
+}], "Notes"]
 }, Open  ]]
 }, Open  ]],
 
@@ -690,7 +720,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{278, Automatic}, {Automatic, 28}},
 WindowTitle->"Series2",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -699,10 +729,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 24, 37.140927}", 
+   "built" -> "{2020, 1, 5, 19, 1, 37.652259}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -712,11 +742,11 @@ TaggingRules->{
 Gamma-bug in Mathematica versions smaller than 5.0) equivalent to Series, \
 except that it applies Normal on the result and has an option \
 FinalSubstitutions. Series2[f, e, n] is equivalent to Series2[f, {e, 0, n}].",
-     "synonyms" -> {}, "title" -> "Series2", "titlemodifier" -> "", 
-    "windowtitle" -> "Series2", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/Series2"}, "SearchTextTranslated" -> ""},
+     "synonyms" -> {}, "tabletags" -> {}, "title" -> "Series2", 
+    "titlemodifier" -> "", "windowtitle" -> "Series2", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/Series2"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -725,7 +755,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -733,203 +763,178 @@ StyleDefinitions->Notebook[{
 (* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
- "PrimaryExamplesSection"->{
-  Cell[3544, 99, 388, 15, 31, "PrimaryExamplesSection",
-   CellTags->"PrimaryExamplesSection",
-   CellID->1131879300]},
  "Series2"->{
-  Cell[4178, 128, 132, 4, 27, "Input",
+  Cell[4625, 142, 132, 4, 70, "Input",
    CellTags->"Series2",
    CellID->1435843837],
-  Cell[4313, 134, 585, 18, 56, "Output",
-   CellTags->"Series2",
-   CellID->1982660957],
-  Cell[4935, 157, 356, 13, 27, "Input",
+  Cell[4760, 148, 564, 17, 37, "Output",
+   CellTags->"Series2"],
+  Cell[6019, 201, 356, 13, 27, "Input",
    CellTags->"Series2",
    CellID->785606174],
-  Cell[5294, 172, 461, 16, 62, "Output",
-   CellTags->"Series2",
-   CellID->78273571],
-  Cell[5792, 193, 192, 6, 27, "Input",
+  Cell[6378, 216, 442, 15, 56, "Output",
+   CellTags->"Series2"],
+  Cell[6857, 236, 192, 6, 27, "Input",
    CellTags->"Series2",
    CellID->1445520007],
-  Cell[5987, 201, 347, 12, 62, "Output",
-   CellTags->"Series2",
-   CellID->1484488938],
-  Cell[6371, 218, 240, 8, 27, "Input",
+  Cell[7052, 244, 326, 11, 56, "Output",
+   CellTags->"Series2"],
+  Cell[7415, 260, 240, 8, 27, "Input",
    CellTags->"Series2",
    CellID->1607149077],
-  Cell[6614, 228, 911, 29, 62, "Output",
-   CellTags->"Series2",
-   CellID->406465977],
-  Cell[7562, 262, 191, 6, 27, "Input",
+  Cell[7658, 270, 891, 28, 56, "Output",
+   CellTags->"Series2"],
+  Cell[8586, 303, 191, 6, 27, "Input",
    CellTags->"Series2",
    CellID->113546639],
-  Cell[7756, 270, 490, 18, 66, "Output",
-   CellTags->"Series2",
-   CellID->503684567],
-  Cell[8283, 293, 306, 9, 27, "Input",
+  Cell[8780, 311, 470, 17, 59, "Output",
+   CellTags->"Series2"],
+  Cell[9287, 333, 306, 9, 27, "Input",
    CellTags->"Series2",
    CellID->31680807],
-  Cell[8592, 304, 1099, 36, 64, "Output",
-   CellTags->"Series2",
-   CellID->607384212],
-  Cell[9728, 345, 478, 16, 45, "Input",
+  Cell[9596, 344, 1079, 35, 56, "Output",
+   CellTags->"Series2"],
+  Cell[10712, 384, 478, 16, 45, "Input",
    CellTags->"Series2",
    CellID->1418084636],
-  Cell[10209, 363, 1105, 37, 64, "Output",
-   CellTags->"Series2",
-   CellID->743143408],
-  Cell[11329, 403, 133, 4, 32, "Text",
-   CellTags->"Series2",
-   CellID->659671376],
-  Cell[11487, 411, 502, 16, 45, "Input",
+  Cell[11193, 402, 1085, 36, 57, "Output",
+   CellTags->"Series2"],
+  Cell[12410, 447, 502, 16, 45, "Input",
    CellTags->"Series2",
    CellID->1447119838],
-  Cell[11992, 429, 754, 28, 68, "Output",
-   CellTags->"Series2",
-   CellID->1252077467],
-  Cell[12783, 462, 596, 18, 45, "Input",
+  Cell[12915, 465, 733, 27, 60, "Output",
+   CellTags->"Series2"],
+  Cell[13685, 497, 596, 18, 45, "Input",
    CellTags->"Series2",
    CellID->1777911067],
-  Cell[13382, 482, 1093, 39, 62, "Output",
-   CellTags->"Series2",
-   CellID->859590251],
-  Cell[14512, 526, 261, 7, 27, "Input",
+  Cell[14284, 517, 1073, 38, 56, "Output",
+   CellTags->"Series2"],
+  Cell[15394, 560, 260, 7, 27, "Input",
    CellTags->"Series2",
    CellID->1986693903],
-  Cell[14776, 535, 398, 11, 36, "Output",
-   CellTags->"Series2",
-   CellID->444344105],
-  Cell[15211, 551, 165, 5, 27, "Input",
+  Cell[15657, 569, 377, 10, 38, "Output",
+   CellTags->"Series2"],
+  Cell[16071, 584, 165, 5, 27, "Input",
    CellTags->"Series2",
    CellID->180283674],
-  Cell[15379, 558, 3222, 110, 157, "Output",
-   CellTags->"Series2",
-   CellID->1006368312],
-  Cell[18616, 671, 372, 12, 53, "Text",
-   CellTags->"Series2",
-   CellID->1023055054]}
+  Cell[16239, 591, 3201, 109, 143, "Output",
+   CellTags->"Series2"]},
+ "PrimaryExamplesSection"->{
+  Cell[5385, 172, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1304305929]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 21058, 735},
- {"Series2", 21192, 739}
+ {"Series2", 21825, 765},
+ {"PrimaryExamplesSection", 23553, 821}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[579, 21, 2241, 52, 51, "AnchorBarGrid",
+Cell[579, 21, 2269, 53, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2823, 75, 50, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2876, 78, 643, 17, 115, "Usage",
+Cell[2851, 76, 284, 11, 45, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[3160, 91, 643, 17, 119, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3544, 99, 388, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->1131879300],
+Cell[3828, 112, 738, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->284019266],
+Cell[4569, 138, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[3957, 118, 196, 6, 25, "ExampleSection",
- CellID->1970642065],
-Cell[CellGroupData[{
-Cell[4178, 128, 132, 4, 27, "Input",
+Cell[4625, 142, 132, 4, 70, "Input",
  CellTags->"Series2",
  CellID->1435843837],
-Cell[4313, 134, 585, 18, 56, "Output",
- CellTags->"Series2",
- CellID->1982660957]
+Cell[4760, 148, 564, 17, 37, "Output",
+ CellTags->"Series2"]
+}, Open  ]]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4935, 157, 356, 13, 27, "Input",
+Cell[5385, 172, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1304305929],
+Cell[CellGroupData[{
+Cell[5798, 191, 196, 6, 26, "ExampleSection",
+ CellID->1549648249],
+Cell[CellGroupData[{
+Cell[6019, 201, 356, 13, 27, "Input",
  CellTags->"Series2",
  CellID->785606174],
-Cell[5294, 172, 461, 16, 62, "Output",
- CellTags->"Series2",
- CellID->78273571]
+Cell[6378, 216, 442, 15, 56, "Output",
+ CellTags->"Series2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5792, 193, 192, 6, 27, "Input",
+Cell[6857, 236, 192, 6, 27, "Input",
  CellTags->"Series2",
  CellID->1445520007],
-Cell[5987, 201, 347, 12, 62, "Output",
- CellTags->"Series2",
- CellID->1484488938]
+Cell[7052, 244, 326, 11, 56, "Output",
+ CellTags->"Series2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6371, 218, 240, 8, 27, "Input",
+Cell[7415, 260, 240, 8, 27, "Input",
  CellTags->"Series2",
  CellID->1607149077],
-Cell[6614, 228, 911, 29, 62, "Output",
- CellTags->"Series2",
- CellID->406465977]
+Cell[7658, 270, 891, 28, 56, "Output",
+ CellTags->"Series2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7562, 262, 191, 6, 27, "Input",
+Cell[8586, 303, 191, 6, 27, "Input",
  CellTags->"Series2",
  CellID->113546639],
-Cell[7756, 270, 490, 18, 66, "Output",
- CellTags->"Series2",
- CellID->503684567]
+Cell[8780, 311, 470, 17, 59, "Output",
+ CellTags->"Series2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8283, 293, 306, 9, 27, "Input",
+Cell[9287, 333, 306, 9, 27, "Input",
  CellTags->"Series2",
  CellID->31680807],
-Cell[8592, 304, 1099, 36, 64, "Output",
- CellTags->"Series2",
- CellID->607384212]
+Cell[9596, 344, 1079, 35, 56, "Output",
+ CellTags->"Series2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9728, 345, 478, 16, 45, "Input",
+Cell[10712, 384, 478, 16, 45, "Input",
  CellTags->"Series2",
  CellID->1418084636],
-Cell[10209, 363, 1105, 37, 64, "Output",
- CellTags->"Series2",
- CellID->743143408]
+Cell[11193, 402, 1085, 36, 57, "Output",
+ CellTags->"Series2"]
 }, Open  ]],
-Cell[11329, 403, 133, 4, 32, "Text",
- CellTags->"Series2",
- CellID->659671376],
+Cell[12293, 441, 92, 2, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[11487, 411, 502, 16, 45, "Input",
+Cell[12410, 447, 502, 16, 45, "Input",
  CellTags->"Series2",
  CellID->1447119838],
-Cell[11992, 429, 754, 28, 68, "Output",
- CellTags->"Series2",
- CellID->1252077467]
+Cell[12915, 465, 733, 27, 60, "Output",
+ CellTags->"Series2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12783, 462, 596, 18, 45, "Input",
+Cell[13685, 497, 596, 18, 45, "Input",
  CellTags->"Series2",
  CellID->1777911067],
-Cell[13382, 482, 1093, 39, 62, "Output",
- CellTags->"Series2",
- CellID->859590251]
+Cell[14284, 517, 1073, 38, 56, "Output",
+ CellTags->"Series2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14512, 526, 261, 7, 27, "Input",
+Cell[15394, 560, 260, 7, 27, "Input",
  CellTags->"Series2",
  CellID->1986693903],
-Cell[14776, 535, 398, 11, 36, "Output",
- CellTags->"Series2",
- CellID->444344105]
+Cell[15657, 569, 377, 10, 38, "Output",
+ CellTags->"Series2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15211, 551, 165, 5, 27, "Input",
+Cell[16071, 584, 165, 5, 27, "Input",
  CellTags->"Series2",
  CellID->180283674],
-Cell[15379, 558, 3222, 110, 157, "Output",
- CellTags->"Series2",
- CellID->1006368312]
+Cell[16239, 591, 3201, 109, 143, "Output",
+ CellTags->"Series2"]
 }, Open  ]],
-Cell[18616, 671, 372, 12, 53, "Text",
- CellTags->"Series2",
- CellID->1023055054]
+Cell[19455, 703, 330, 10, 50, "Notes"]
 }, Open  ]]
 }, Open  ]],
-Cell[19015, 687, 23, 0, 42, "FooterCell"]
+Cell[19812, 717, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

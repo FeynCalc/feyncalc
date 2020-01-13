@@ -176,9 +176,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
   ButtonNote->"DiracSimplify"],
  "."
-}], "Text",
- CellTags->"$MU",
- CellID->58635825]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -205,10 +203,6 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell["Examples", "Subsubsection",
- CellTags->"$MU",
- CellID->1771415745],
-
 Cell[CellGroupData[{
 
 Cell[BoxData["$MU"], "Input",
@@ -221,29 +215,7 @@ Cell[BoxData[
  CellTags->"$MU",
  CellLabel->"Out[1]=",
  CellID->418655578]
-}, Open  ]],
-
-Cell[TextData[{
- "See also: ",
- " ",
- ButtonBox["Chisholm",
-  BaseStyle->"AddOnsLink",
-  ButtonData:>"Chisholm",
-  ButtonNote->"Chisholm"],
- ", ",
- ButtonBox["Contract",
-  BaseStyle->"AddOnsLink",
-  ButtonData:>"Contract",
-  ButtonNote->"Contract"],
- ", ",
- ButtonBox["DiracSimplify",
-  BaseStyle->"AddOnsLink",
-  ButtonData:>"DiracSimplify",
-  ButtonNote->"DiracSimplify"],
- "."
-}], "Text",
- CellTags->"$MU",
- CellID->265635386]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -307,12 +279,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

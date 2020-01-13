@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11973,        409]
-NotebookOptionsPosition[      7757,        275]
-NotebookOutlinePosition[     10780,        361]
-CellTagsIndexPosition[     10672,        355]
+NotebookDataLength[     11755,        402]
+NotebookOptionsPosition[      7914,        282]
+NotebookOutlinePosition[     10744,        362]
+CellTagsIndexPosition[     10635,        356]
 WindowTitle->Cases2
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$24552], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$34796], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/Cases2",
              ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -73,8 +74,18 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Cases2", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Cases2", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -111,7 +122,9 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->419675880],
+ CellID->292765766],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
  "Basic Examples",
@@ -119,13 +132,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->831323002],
-
-Cell[CellGroupData[{
-
-Cell[BoxData["Examples"], "Subsubsection",
- CellTags->"Cases2",
- CellID->645978510],
+ CellID->1337546765],
 
 Cell[CellGroupData[{
 
@@ -150,12 +157,11 @@ Cell[BoxData[
     RowBox[{"f", "(", "b", ")"}], ",", 
     RowBox[{"f", "(", 
      RowBox[{"c", ",", "d"}], ")"}]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{143, 15},
+ ImageSize->{156, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Cases2",
- CellLabel->"Out[1]=",
- CellID->1245535704]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -181,12 +187,11 @@ Cell[BoxData[
     RowBox[{"sin", "(", "x", ")"}], ",", 
     RowBox[{"sin", "(", 
      RowBox[{"y", "-", "z"}], ")"}]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{169, 15},
+ ImageSize->{179, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Cases2",
- CellLabel->"Out[2]=",
- CellID->1551461505]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -218,12 +223,11 @@ Cell[BoxData[
     RowBox[{"sin", "(", "x", ")"}], ",", 
     RowBox[{"sin", "(", 
      RowBox[{"y", "-", "z"}], ")"}]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{242, 15},
+ ImageSize->{261, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Cases2",
- CellLabel->"Out[3]=",
- CellID->1202203267]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -233,9 +237,9 @@ Cell[BoxData[
   RowBox[{
    RowBox[{
     RowBox[{
-     RowBox[{"DiracSlash", "[", "p", "]"}], ".", 
-     RowBox[{"DiracSlash", "[", "q", "]"}]}], "+", 
-    RowBox[{"ScalarProduct", "[", 
+     RowBox[{"GS", "[", "p", "]"}], ".", 
+     RowBox[{"GS", "[", "q", "]"}]}], "+", 
+    RowBox[{"SP", "[", 
      RowBox[{"p", ",", "p"}], "]"}]}], ",", "Dot"}], "]"}]], "Input",
  CellTags->"Cases2",
  CellLabel->"In[4]:=",
@@ -246,27 +250,30 @@ Cell[BoxData[
   RowBox[{"{", 
    RowBox[{
     RowBox[{"(", 
-     RowBox[{
-      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-      FormBox[
-       OverscriptBox[
-        FormBox["p",
-         TraditionalForm], "_"],
-       TraditionalForm]}], ")"}], ".", 
+     FormBox[
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["p",
+          TraditionalForm], "_"],
+        TraditionalForm]}],
+      TraditionalForm], ")"}], ".", 
     RowBox[{"(", 
-     RowBox[{
-      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-      FormBox[
-       OverscriptBox[
-        FormBox["q",
-         TraditionalForm], "_"],
-       TraditionalForm]}], ")"}]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{105, 18},
+     FormBox[
+      RowBox[{
+       OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+       FormBox[
+        OverscriptBox[
+         FormBox["q",
+          TraditionalForm], "_"],
+        TraditionalForm]}],
+      TraditionalForm], ")"}]}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{113, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Cases2",
- CellLabel->"Out[4]=",
- CellID->896832184]
+ CellLabel->"Out[4]="]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -285,10 +292,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 16, 44.122016}", 
+   "built" -> "{2020, 1, 5, 18, 53, 8.115539}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -297,11 +304,12 @@ TaggingRules->{
     "Cases2[expr, f] returns a list of all objects in expr with head f. \
 Cases2[expr,f] is equivalent to Cases2[{expr},f[___],Infinity]//Union. \
 Cases2[expr, f, g, ...] or Cases2[expr, {f,g, ...}] is equivalent to \
-Cases[{expr},f[___] | g[___] ...] .", "synonyms" -> {}, "title" -> "Cases2", 
-    "titlemodifier" -> "", "windowtitle" -> "Cases2", "type" -> "Symbol", 
-    "uri" -> "FeynCalc/ref/Cases2"}, "SearchTextTranslated" -> ""},
+Cases[{expr},f[___] | g[___] ...] .", "synonyms" -> {}, "tabletags" -> {}, 
+    "title" -> "Cases2", "titlemodifier" -> "", "windowtitle" -> "Cases2", 
+    "type" -> "Symbol", "uri" -> "FeynCalc/ref/Cases2"}, 
+  "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -310,7 +318,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -319,98 +327,83 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3503, 98, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3765, 109, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->419675880]},
+   CellID->292765766]},
  "Cases2"->{
-  Cell[4113, 125, 83, 2, 35, "Subsubsection",
-   CellTags->"Cases2",
-   CellID->645978510],
-  Cell[4221, 131, 324, 11, 31, "Input",
+  Cell[4398, 138, 324, 11, 33, "Input",
    CellTags->"Cases2",
    CellID->1924250367],
-  Cell[4548, 144, 382, 13, 36, "Output",
-   CellTags->"Cases2",
-   CellID->1245535704],
-  Cell[4967, 162, 331, 11, 27, "Input",
+  Cell[4725, 151, 361, 12, 37, "Output",
+   CellTags->"Cases2"],
+  Cell[5123, 168, 331, 11, 27, "Input",
    CellTags->"Cases2",
    CellID->1264635109],
-  Cell[5301, 175, 386, 13, 36, "Output",
-   CellTags->"Cases2",
-   CellID->1551461505],
-  Cell[5724, 193, 446, 15, 27, "Input",
+  Cell[5457, 181, 365, 12, 37, "Output",
+   CellTags->"Cases2"],
+  Cell[5859, 198, 446, 15, 27, "Input",
    CellTags->"Cases2",
    CellID->1159301950],
-  Cell[6173, 210, 462, 15, 36, "Output",
-   CellTags->"Cases2",
-   CellID->1202203267],
-  Cell[6672, 230, 345, 11, 27, "Input",
+  Cell[6308, 215, 441, 14, 37, "Output",
+   CellTags->"Cases2"],
+  Cell[6786, 234, 318, 11, 27, "Input",
    CellTags->"Cases2",
    CellID->775837316],
-  Cell[7020, 243, 671, 25, 39, "Output",
-   CellTags->"Cases2",
-   CellID->896832184]}
+  Cell[7107, 247, 741, 28, 37, "Output",
+   CellTags->"Cases2"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9726, 320},
- {"Cases2", 9858, 324}
+ {"PrimaryExamplesSection", 9871, 328},
+ {"Cases2", 10004, 332}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[578, 21, 2236, 52, 51, "AnchorBarGrid",
+Cell[578, 21, 2264, 53, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2817, 75, 49, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2869, 78, 609, 16, 115, "Usage",
+Cell[2845, 76, 283, 11, 45, "ObjectNameGrid"],
+Cell[3131, 89, 609, 16, 119, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3503, 98, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3765, 109, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->419675880],
-Cell[3893, 115, 195, 6, 25, "ExampleSection",
- CellID->831323002],
+ CellID->292765766],
 Cell[CellGroupData[{
-Cell[4113, 125, 83, 2, 35, "Subsubsection",
- CellTags->"Cases2",
- CellID->645978510],
+Cell[4177, 128, 196, 6, 26, "ExampleSection",
+ CellID->1337546765],
 Cell[CellGroupData[{
-Cell[4221, 131, 324, 11, 31, "Input",
+Cell[4398, 138, 324, 11, 33, "Input",
  CellTags->"Cases2",
  CellID->1924250367],
-Cell[4548, 144, 382, 13, 36, "Output",
- CellTags->"Cases2",
- CellID->1245535704]
+Cell[4725, 151, 361, 12, 37, "Output",
+ CellTags->"Cases2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4967, 162, 331, 11, 27, "Input",
+Cell[5123, 168, 331, 11, 27, "Input",
  CellTags->"Cases2",
  CellID->1264635109],
-Cell[5301, 175, 386, 13, 36, "Output",
- CellTags->"Cases2",
- CellID->1551461505]
+Cell[5457, 181, 365, 12, 37, "Output",
+ CellTags->"Cases2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5724, 193, 446, 15, 27, "Input",
+Cell[5859, 198, 446, 15, 27, "Input",
  CellTags->"Cases2",
  CellID->1159301950],
-Cell[6173, 210, 462, 15, 36, "Output",
- CellTags->"Cases2",
- CellID->1202203267]
+Cell[6308, 215, 441, 14, 37, "Output",
+ CellTags->"Cases2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6672, 230, 345, 11, 27, "Input",
+Cell[6786, 234, 318, 11, 27, "Input",
  CellTags->"Cases2",
  CellID->775837316],
-Cell[7020, 243, 671, 25, 39, "Output",
- CellTags->"Cases2",
- CellID->896832184]
+Cell[7107, 247, 741, 28, 37, "Output",
+ CellTags->"Cases2"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[7730, 273, 23, 0, 42, "FooterCell"]
+Cell[7887, 280, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

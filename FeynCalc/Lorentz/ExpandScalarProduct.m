@@ -1,7 +1,17 @@
-(* ------------------------------------------------------------------------ *)
-(* ------------------------------------------------------------------------ *)
+(* ::Package:: *)
 
-(* :Summary: ExpandScalarProduct expands scalar products *)
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+
+(* :Title: ExpandScalarProduct												*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary: Expansion of scalar products and vectors						*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -22,54 +32,83 @@ End[]
 Begin["`ExpandScalarProduct`Private`"]
 
 ScalarProductExpand = ExpandScalarProduct;
-tmpHead;
+tmpHead::usage="";
+objects::usage="";
 
 Options[ExpandScalarProduct] = {
 	EpsEvaluate -> False,
-	FCI -> True,
-	Momentum -> All
+	FCE 		-> False,
+	FCI 		-> False,
+	Full 		-> True,
+	Momentum 	-> All
 };
 
-ExpandScalarProduct[x_, OptionsPattern[]] :=
-	Block[ {nx = x, pali,moms},
+ExpandScalarProduct[expr_, OptionsPattern[]] :=
+	Block[ {ex, pairList, pairListExpanded, moms, protect, momentum, relevant, null1, null2},
 
 		moms = OptionValue[Momentum];
 
-		If[ OptionValue[FCI],
-			nx = FCI[nx]
+		If[ moms=!=All && Head[moms]=!=List,
+			moms = {moms}
 		];
+
+		objects = Join[$FCTensorList,{TemporalPair}];
+
+		If[ !OptionValue[FCI],
+			ex = FCI[expr],
+			ex = expr
+		];
+
 
 		(* This is to speed up things when dealing with tirival scalar products *)
-		If[	MatchQ[nx, Pair[Momentum[_, ___], Momentum[_, ___]]] && FreeQ[nx,Plus],
-			Return[nx]
+		If[	MatchQ[ex, Pair[Momentum[_, ___], Momentum[_, ___]] | CartesianPair[CartesianMomentum[_, ___], CartesianMomentum[_, ___]]] && FreeQ[ex,Plus],
+			Return[ex]
 		];
 
-		If[ FreeQ2[nx,$FCTensorList],
-			Return[nx]
+
+		If[ FreeQ2[ex,objects],
+			Return[ex]
+		];
+
+
+		relevant = Cases[ex + null1 + null2, (Alternatives @@ objects)[a_, b___] /; !FreeQ[{a, b}, Plus], Infinity];
+
+		If[relevant==={},
+			Return[ex],
+			relevant = relevant//Sort//DeleteDuplicates
 		];
 
 		If [moms===All,
-			pali = Select[Cases2[nx, $FCTensorList], !FreeQ2[#, TensorArgsList]&],
-			pali = Select[Cases2[nx, $FCTensorList], (!FreeQ2[#, TensorArgsList] && !FreeQ2[#, moms])&]
+			pairList = Select[Cases2[relevant, objects], !FreeQ2[#, TensorArgsList]&];
+			pairListExpanded = pairList,
+			pairList = Select[Cases2[relevant, objects], (!FreeQ2[#, TensorArgsList] && !FreeQ2[#, moms])&];
+			If[ TrueQ[!OptionValue[Full]],
+				pairListExpanded = pairList //. {
+					Momentum[c_. mom_ + rest_: 0, dim___] /; MemberQ[moms, mom] :> momentum[c mom + protect[rest], dim],
+					Momentum[rest_, dim___] /; FreeQ[rest, moms] :> momentum[protect[rest], dim]
+				} /. momentum -> Momentum,
+				pairListExpanded = pairList
+			]
 		];
 
-		If[ pali =!= {},
-			nx = nx /. Dispatch[Thread[pali -> pairexpand[pali]]]
+		If[ pairList =!= {},
+			pairListExpanded =  (pairexpand/@pairListExpanded) /. protect -> Identity;
+			ex = ex /. Dispatch[Thread[Rule[pairList,pairListExpanded]]]
 		];
 
-		If[	OptionValue[EpsEvaluate],
-			nx = EpsEvaluate[nx,FCI->True,Momentum->OptionValue[Momentum]]
+		If[	OptionValue[EpsEvaluate] && !FreeQ[ex,Eps],
+			ex = EpsEvaluate[ex,FCI->True,Momentum->OptionValue[Momentum]]
 		];
 
-		nx
+		If[	OptionValue[FCE],
+			ex = FCE[ex]
+		];
+
+		ex
 	];
 
-(* TODO this is a legacy syntax that one should get rid of! *)
-ExpandScalarProduct[x_, y:Except[_?OptionQ], OptionsPattern[]] :=
-	scevdoit[Pair,x, y];
-
 pairexpand[x_] :=
-	x /. (head : (Alternatives @@ $FCTensorList))[arg__]/; head=!=Eps :>scevdoit[head,arg] ;
+	x /. (head : (Alternatives @@ objects))[arg__]/; head=!=Eps :>scevdoit[head,arg] ;
 
 scevdoit[head_,arg__] :=
 	Distribute[tmpHead@@(Expand[MomentumExpand/@{arg}])]/.tmpHead->head;

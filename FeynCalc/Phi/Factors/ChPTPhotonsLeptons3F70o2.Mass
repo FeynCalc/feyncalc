@@ -1,6 +1,0 @@
--(CouplingConstant[QED[1], RenormalizationState[0]]^2*
-(-1 + 16*Pi^2*CouplingConstant[ChPTPhotonsLeptons3[4], 37,
-	RenormalizationState[1]] + 16*Pi^2*CouplingConstant[
-	ChPTPhotonsLeptons3[4], 38, RenormalizationState[1]] +
-	3*Log[ParticleMass[Fermion[7], RenormalizationState[0]]^2/ScaleMu^2])*
-ParticleMass[Fermion[7], RenormalizationState[0]])/(16*Pi^2)

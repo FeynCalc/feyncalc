@@ -121,13 +121,23 @@ Cell[TextData[{
    RowBox[{
     RowBox[{"f", "[", "x", "]"}], ",", "x", ",", 
     RowBox[{"{", 
-     RowBox[{"li1", ",", "li2", ",", "..."}], "}"}], ",", "opts"}], "]"}]], 
+     RowBox[{"li1", ",", "li2", ",", "..."}], "}"}]}], "]"}]], 
   "InlineFormula"],
- " \[LineSeparator]",
- "is a covariant derivative of f[x] with respect to space-time variables x \
-and with Lorentz indices li1, li2,... CovariantFieldDerivative has only \
-typesetting definitions by default. The user is must supply his/her own \
-definition of the actual function."
+ " \[LineSeparator]is a covariant derivative of ",
+ Cell[BoxData[
+  RowBox[{"f", "[", "x", "]"}]], "InlineFormula"],
+ " with respect to space-time variables ",
+ Cell[BoxData["x"], "InlineFormula"],
+ " and with Lorentz indices ",
+ Cell[BoxData[
+  RowBox[{"li1", ",", " ", "li2", ",", "..."}]], "InlineFormula"],
+ ". ",
+ ButtonBox["CovariantFieldDerivative",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/CovariantFieldDerivative",
+  ButtonNote->"CovariantFieldDerivative"],
+ " has only typesetting definitions by default. The user is must supply \
+his/her own definition of the actual function."
 }], "Usage",
  CellID->982511436],
 
@@ -183,9 +193,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/FieldDerivative",
   ButtonNote->"FieldDerivative"],
  "."
-}], "Text",
- CellTags->"CovariantFieldDerivative",
- CellID->1307362516]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -223,7 +231,7 @@ Cell[BoxData[
       RowBox[{"{", "\[Mu]", "}"}]}], "]"}], "[", "x", "]"}], ",", "x", ",", 
    RowBox[{"{", "\[Mu]", "}"}]}], "]"}]], "Input",
  CellTags->"CovariantFieldDerivative",
- CellLabel->"In[1]:=",
+ CellLabel->"In[18]:=",
  CellID->2083449432],
 
 Cell[BoxData[
@@ -251,8 +259,7 @@ Cell[BoxData[
     TraditionalForm,
     Editable->True], ")"}], TraditionalForm]], "Output",
  CellTags->"CovariantFieldDerivative",
- CellLabel->"Out[1]=",
- CellID->1282830456]
+ CellLabel->"Out[18]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -317,12 +324,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{560, Automatic}, {35, Automatic}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

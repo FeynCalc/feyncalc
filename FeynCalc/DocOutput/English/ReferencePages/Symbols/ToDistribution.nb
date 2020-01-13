@@ -3,69 +3,91 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     18998,        666]
-NotebookOptionsPosition[     12704,        469]
-NotebookOutlinePosition[     16735,        581]
-CellTagsIndexPosition[     16617,        575]
+NotebookDataLength[     17750,        607]
+NotebookOptionsPosition[     12704,        456]
+NotebookOutlinePosition[     16029,        545]
+CellTagsIndexPosition[     15911,        539]
 WindowTitle->ToDistribution
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/ToDistribution\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/ToDistribution"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"PlusDistribution\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/PlusDistribution"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/ToDistribution\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/ToDistribution"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 ToDistribution.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$156497], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/ToDistribution", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$272112], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/ToDistribution", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +95,20 @@ ToDistribution.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["ToDistribution", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["ToDistribution", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -97,6 +131,59 @@ Epsilon^2/2 Log[1-x]^2/(1-x)^2 + a^3 Epsilon^3/6 Log[1-x]^3/(1-x)^2."
 
 Cell[CellGroupData[{
 
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1744104550],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "ToDistribution", "]"}]], "Input",
+ CellTags->"ToDistribution",
+ CellLabel->"In[1]:=",
+ CellID->1833387073],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"PlusDistribution", "\[Rule]", "Identity"}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{172, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"ToDistribution",
+ CellLabel->"Out[1]=",
+ CellID->1934939097]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell[TextData[{
  Cell[BoxData[
   InterpretationBox[
@@ -112,7 +199,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1180526592],
+ CellID->1249684736],
 
 Cell[CellGroupData[{
 
@@ -122,52 +209,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1758559147],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "ToDistribution", "]"}]], "Input",
- CellTags->"ToDistribution",
- CellLabel->"In[1]:=",
- CellID->1833387073],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{"PlusDistribution", "\[Rule]", "Identity"}], "}"}], 
-  TraditionalForm]], "Output",
- ImageSize->{192, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"ToDistribution",
- CellLabel->"Out[1]=",
- CellID->1934939097]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"SetOptions", "[", 
-  RowBox[{"ToDistribution", ",", 
-   RowBox[{"PlusDistribution", "\[Rule]", "PlusDistribution"}]}], 
-  "]"}]], "Input",
- CellTags->"ToDistribution",
- CellLabel->"In[2]:=",
- CellID->1230244334],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{"PlusDistribution", "\[Rule]", "PlusDistribution"}], "}"}], 
-  TraditionalForm]], "Output",
- ImageSize->{244, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"ToDistribution",
- CellLabel->"Out[2]=",
- CellID->1029752620]
-}, Open  ]],
+ CellID->2124724330],
 
 Cell[CellGroupData[{
 
@@ -178,87 +220,60 @@ Cell[BoxData[
     RowBox[{"(", 
      RowBox[{"1", "-", "x"}], ")"}], "^", 
     RowBox[{"(", 
-     RowBox[{"Epsilon", "-", "1"}], ")"}]}], ",", "x"}], "]"}]], "Input",
+     RowBox[{"Epsilon", "-", "1"}], ")"}]}], ",", "x", ",", 
+   RowBox[{"PlusDistribution", "\[Rule]", "pd"}]}], "]"}]], "Input",
  CellTags->"ToDistribution",
- CellLabel->"In[3]:=",
+ CellLabel->"In[1]:=",
  CellID->1094502312],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
+   RowBox[{
+    FractionBox["1", "6"], " ", 
+    SuperscriptBox[
+     TagBox["\[CurlyEpsilon]",
+      TraditionalForm], "3"], " ", 
+    RowBox[{"pd", "(", 
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["log", "3"], "(", 
+       RowBox[{"1", "-", "x"}], ")"}], 
+      RowBox[{"1", "-", "x"}]], ")"}]}], "+", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    SuperscriptBox[
+     TagBox["\[CurlyEpsilon]",
+      TraditionalForm], "2"], " ", 
+    RowBox[{"pd", "(", 
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["log", "2"], "(", 
+       RowBox[{"1", "-", "x"}], ")"}], 
+      RowBox[{"1", "-", "x"}]], ")"}]}], "+", 
+   RowBox[{
+    TagBox["\[CurlyEpsilon]",
+     TraditionalForm], " ", 
+    RowBox[{"pd", "(", 
+     FractionBox[
+      RowBox[{"log", "(", 
+       RowBox[{"1", "-", "x"}], ")"}], 
+      RowBox[{"1", "-", "x"}]], ")"}]}], "+", 
+   RowBox[{"pd", "(", 
+    FractionBox["1", 
+     RowBox[{"1", "-", "x"}]], ")"}], "+", 
    FractionBox[
     RowBox[{"\[Delta]", "(", 
      FormBox[
       RowBox[{"1", "-", "x"}],
       TraditionalForm], ")"}], 
     TagBox["\[CurlyEpsilon]",
-     TraditionalForm]], "+", 
-   RowBox[{
-    FractionBox["1", "6"], " ", 
-    SuperscriptBox[
-     TagBox["\[CurlyEpsilon]",
-      TraditionalForm], "3"], " ", 
-    SubscriptBox[
-     RowBox[{"(", 
-      FractionBox[
-       RowBox[{
-        SuperscriptBox["log", "3"], "(", 
-        RowBox[{"1", "-", "x"}], ")"}], 
-       RowBox[{"1", "-", "x"}]], ")"}], "+"]}], "+", 
-   RowBox[{
-    FractionBox["1", "2"], " ", 
-    SuperscriptBox[
-     TagBox["\[CurlyEpsilon]",
-      TraditionalForm], "2"], " ", 
-    SubscriptBox[
-     RowBox[{"(", 
-      FractionBox[
-       RowBox[{
-        SuperscriptBox["log", "2"], "(", 
-        RowBox[{"1", "-", "x"}], ")"}], 
-       RowBox[{"1", "-", "x"}]], ")"}], "+"]}], "+", 
-   RowBox[{
-    TagBox["\[CurlyEpsilon]",
-     TraditionalForm], " ", 
-    SubscriptBox[
-     RowBox[{"(", 
-      FractionBox[
-       RowBox[{"log", "(", 
-        RowBox[{"1", "-", "x"}], ")"}], 
-       RowBox[{"1", "-", "x"}]], ")"}], "+"]}], "+", 
-   SubscriptBox[
-    RowBox[{"(", 
-     FractionBox["1", 
-      RowBox[{"1", "-", "x"}]], ")"}], "+"]}], TraditionalForm]], "Output",
- ImageSize->{549, 49},
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ ImageSize->{319, 82},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ToDistribution",
- CellLabel->"Out[3]=",
- CellID->271495299]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"SetOptions", "[", 
-  RowBox[{"ToDistribution", ",", 
-   RowBox[{"PlusDistribution", "\[Rule]", "Identity"}]}], "]"}]], "Input",
- CellTags->"ToDistribution",
- CellLabel->"In[4]:=",
- CellID->94609941],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{"PlusDistribution", "\[Rule]", "Identity"}], "}"}], 
-  TraditionalForm]], "Output",
- ImageSize->{192, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"ToDistribution",
- CellLabel->"Out[4]=",
- CellID->430041707]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -270,9 +285,10 @@ Cell[BoxData[
     RowBox[{"(", 
      RowBox[{"1", "-", "x"}], ")"}], "^", 
     RowBox[{"(", 
-     RowBox[{"Epsilon", "-", "2"}], ")"}]}], ",", "x"}], "]"}]], "Input",
+     RowBox[{"Epsilon", "-", "2"}], ")"}]}], ",", "x", ",", 
+   RowBox[{"PlusDistribution", "\[Rule]", "Identity"}]}], "]"}]], "Input",
  CellTags->"ToDistribution",
- CellLabel->"In[5]:=",
+ CellLabel->"In[2]:=",
  CellID->1034527004],
 
 Cell[BoxData[
@@ -324,12 +340,11 @@ Cell[BoxData[
     SuperscriptBox[
      RowBox[{"(", 
       RowBox[{"1", "-", "x"}], ")"}], "2"]]}], TraditionalForm]], "Output",
- ImageSize->{465, 50},
+ ImageSize->{479, 43},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ToDistribution",
- CellLabel->"Out[5]=",
- CellID->454332293]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -348,7 +363,7 @@ Cell[BoxData[
      RowBox[{"GenerateConditions", "\[Rule]", "False"}]}], "]"}], ",", 
    "Epsilon", ",", "3"}], "]"}]], "Input",
  CellTags->"ToDistribution",
- CellLabel->"In[6]:=",
+ CellLabel->"In[3]:=",
  CellID->941654875],
 
 Cell[BoxData[
@@ -363,36 +378,11 @@ Cell[BoxData[
      TraditionalForm], "2"], "-", 
    TagBox["\[CurlyEpsilon]",
     TraditionalForm], "-", "1"}], TraditionalForm]], "Output",
- ImageSize->{109, 18},
+ ImageSize->{113, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ToDistribution",
- CellLabel->"Out[6]=",
- CellID->1061431105]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "@", "Integrate"}]], "Input",
- CellTags->"ToDistribution",
- CellLabel->"In[7]:=",
- CellID->1737951035],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Assumptions", "\[RuleDelayed]", "$Assumptions"}], ",", 
-    RowBox[{"GenerateConditions", "\[Rule]", "Automatic"}], ",", 
-    RowBox[{"PrincipalValue", "\[Rule]", "False"}]}], "}"}], 
-  TraditionalForm]], "Output",
- ImageSize->{577, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"ToDistribution",
- CellLabel->"Out[7]=",
- CellID->1658308803]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -410,7 +400,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}]], "Input",
  CellTags->"ToDistribution",
- CellLabel->"In[8]:=",
+ CellLabel->"In[4]:=",
  CellID->1539995997],
 
 Cell[BoxData[
@@ -425,12 +415,11 @@ Cell[BoxData[
      TraditionalForm], "2"], "-", 
    TagBox["\[CurlyEpsilon]",
     TraditionalForm], "-", "1"}], TraditionalForm]], "Output",
- ImageSize->{109, 18},
+ ImageSize->{113, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ToDistribution",
- CellLabel->"Out[8]=",
- CellID->2114127907]
+ CellLabel->"Out[4]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -460,9 +449,7 @@ Cell[TextData[{
   ButtonNote->"PlusDistribution"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"ToDistribution",
- CellID->277620007]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -470,7 +457,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 WindowTitle->"ToDistribution",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -479,10 +466,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 26, 11.228565}", 
+   "built" -> "{2020, 1, 5, 19, 3, 26.212225}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -493,11 +480,12 @@ Epsilon) DeltaFunction[1-x] + 1/(1-x) + a Epsilon Log[1-x]/(1-x) + 1/2 a^2 \
 Epsilon^2 Log[1-x]^2/(1-x)] and (1-x)^(a Epsilon - 2) in exp by -1/(a \
 Epsilon) DeltaFunctionPrime[1-x] + 1/(1-x)^2 + (a Epsilon) Log[1-x]/(1-x)^2 + \
 a^2 Epsilon^2/2 Log[1-x]^2/(1-x)^2 + a^3 Epsilon^3/6 Log[1-x]^3/(1-x)^2.", 
-    "synonyms" -> {}, "title" -> "ToDistribution", "titlemodifier" -> "", 
-    "windowtitle" -> "ToDistribution", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/ToDistribution"}, "SearchTextTranslated" -> ""},
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "ToDistribution", 
+    "titlemodifier" -> "", "windowtitle" -> "ToDistribution", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/ToDistribution"}, "SearchTextTranslated" -> 
+  ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -505,8 +493,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -514,160 +503,112 @@ StyleDefinitions->Notebook[{
 (* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
- "PrimaryExamplesSection"->{
-  Cell[3672, 99, 388, 15, 31, "PrimaryExamplesSection",
-   CellTags->"PrimaryExamplesSection",
-   CellID->1180526592]},
  "ToDistribution"->{
-  Cell[4306, 128, 146, 4, 27, "Input",
+  Cell[5499, 163, 146, 4, 70, "Input",
    CellTags->"ToDistribution",
    CellID->1833387073],
-  Cell[4455, 134, 295, 10, 36, "Output",
+  Cell[5648, 169, 295, 10, 37, "Output",
    CellTags->"ToDistribution",
    CellID->1934939097],
-  Cell[4787, 149, 235, 7, 27, "Input",
-   CellTags->"ToDistribution",
-   CellID->1230244334],
-  Cell[5025, 158, 303, 10, 36, "Output",
-   CellTags->"ToDistribution",
-   CellID->1029752620],
-  Cell[5365, 173, 295, 10, 27, "Input",
+  Cell[6638, 215, 351, 11, 27, "Input",
    CellTags->"ToDistribution",
    CellID->1094502312],
-  Cell[5663, 185, 1443, 52, 70, "Output",
-   CellTags->"ToDistribution",
-   CellID->271495299],
-  Cell[7143, 242, 222, 6, 27, "Input",
-   CellTags->"ToDistribution",
-   CellID->94609941],
-  Cell[7368, 250, 294, 10, 36, "Output",
-   CellTags->"ToDistribution",
-   CellID->430041707],
-  Cell[7699, 265, 295, 10, 27, "Input",
+  Cell[6992, 228, 1332, 47, 103, "Output",
+   CellTags->"ToDistribution"],
+  Cell[8361, 280, 357, 11, 27, "Input",
    CellTags->"ToDistribution",
    CellID->1034527004],
-  Cell[7997, 277, 1485, 54, 71, "Output",
-   CellTags->"ToDistribution",
-   CellID->454332293],
-  Cell[9519, 336, 478, 15, 53, "Input",
+  Cell[8721, 293, 1465, 53, 64, "Output",
+   CellTags->"ToDistribution"],
+  Cell[10223, 351, 478, 15, 54, "Input",
    CellTags->"ToDistribution",
    CellID->941654875],
-  Cell[10000, 353, 477, 17, 39, "Output",
-   CellTags->"ToDistribution",
-   CellID->1061431105],
-  Cell[10514, 375, 136, 4, 27, "Input",
-   CellTags->"ToDistribution",
-   CellID->1737951035],
-  Cell[10653, 381, 440, 13, 36, "Output",
-   CellTags->"ToDistribution",
-   CellID->1658308803],
-  Cell[11130, 399, 427, 14, 27, "Input",
+  Cell[10704, 368, 456, 16, 37, "Output",
+   CellTags->"ToDistribution"],
+  Cell[11197, 389, 427, 14, 27, "Input",
    CellTags->"ToDistribution",
    CellID->1539995997],
-  Cell[11560, 415, 477, 17, 39, "Output",
-   CellTags->"ToDistribution",
-   CellID->2114127907],
-  Cell[12405, 455, 257, 9, 31, "Text",
-   CellTags->"ToDistribution",
-   CellID->277620007]}
+  Cell[11627, 405, 456, 16, 37, "Output",
+   CellTags->"ToDistribution"]},
+ "PrimaryExamplesSection"->{
+  Cell[6004, 186, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1249684736]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 14834, 516},
- {"ToDistribution", 14975, 520}
+ {"ToDistribution", 14869, 505},
+ {"PrimaryExamplesSection", 15767, 532}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[586, 21, 2270, 52, 51, "AnchorBarGrid",
+Cell[586, 21, 3043, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2859, 75, 57, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2919, 78, 728, 17, 131, "Usage",
+Cell[3632, 97, 291, 11, 45, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[3948, 112, 728, 17, 136, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3672, 99, 388, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->1180526592],
+Cell[4701, 133, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1744104550],
+Cell[5443, 159, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[4085, 118, 196, 6, 25, "ExampleSection",
- CellID->1758559147],
-Cell[CellGroupData[{
-Cell[4306, 128, 146, 4, 27, "Input",
+Cell[5499, 163, 146, 4, 70, "Input",
  CellTags->"ToDistribution",
  CellID->1833387073],
-Cell[4455, 134, 295, 10, 36, "Output",
+Cell[5648, 169, 295, 10, 37, "Output",
  CellTags->"ToDistribution",
  CellID->1934939097]
+}, Open  ]]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4787, 149, 235, 7, 27, "Input",
- CellTags->"ToDistribution",
- CellID->1230244334],
-Cell[5025, 158, 303, 10, 36, "Output",
- CellTags->"ToDistribution",
- CellID->1029752620]
-}, Open  ]],
+Cell[6004, 186, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1249684736],
 Cell[CellGroupData[{
-Cell[5365, 173, 295, 10, 27, "Input",
+Cell[6417, 205, 196, 6, 26, "ExampleSection",
+ CellID->2124724330],
+Cell[CellGroupData[{
+Cell[6638, 215, 351, 11, 27, "Input",
  CellTags->"ToDistribution",
  CellID->1094502312],
-Cell[5663, 185, 1443, 52, 70, "Output",
- CellTags->"ToDistribution",
- CellID->271495299]
+Cell[6992, 228, 1332, 47, 103, "Output",
+ CellTags->"ToDistribution"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7143, 242, 222, 6, 27, "Input",
- CellTags->"ToDistribution",
- CellID->94609941],
-Cell[7368, 250, 294, 10, 36, "Output",
- CellTags->"ToDistribution",
- CellID->430041707]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[7699, 265, 295, 10, 27, "Input",
+Cell[8361, 280, 357, 11, 27, "Input",
  CellTags->"ToDistribution",
  CellID->1034527004],
-Cell[7997, 277, 1485, 54, 71, "Output",
- CellTags->"ToDistribution",
- CellID->454332293]
+Cell[8721, 293, 1465, 53, 64, "Output",
+ CellTags->"ToDistribution"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9519, 336, 478, 15, 53, "Input",
+Cell[10223, 351, 478, 15, 54, "Input",
  CellTags->"ToDistribution",
  CellID->941654875],
-Cell[10000, 353, 477, 17, 39, "Output",
- CellTags->"ToDistribution",
- CellID->1061431105]
+Cell[10704, 368, 456, 16, 37, "Output",
+ CellTags->"ToDistribution"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10514, 375, 136, 4, 27, "Input",
- CellTags->"ToDistribution",
- CellID->1737951035],
-Cell[10653, 381, 440, 13, 36, "Output",
- CellTags->"ToDistribution",
- CellID->1658308803]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[11130, 399, 427, 14, 27, "Input",
+Cell[11197, 389, 427, 14, 27, "Input",
  CellTags->"ToDistribution",
  CellID->1539995997],
-Cell[11560, 415, 477, 17, 39, "Output",
- CellTags->"ToDistribution",
- CellID->2114127907]
+Cell[11627, 405, 456, 16, 37, "Output",
+ CellTags->"ToDistribution"]
 }, Open  ]]
 }, Open  ]],
-Cell[12064, 436, 31, 0, 29, "SectionFooterSpacer"]
+Cell[12110, 425, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12132, 441, 270, 12, 31, "SeeAlsoSection",
+Cell[12178, 430, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[12405, 455, 257, 9, 31, "Text",
- CellTags->"ToDistribution",
- CellID->277620007]
+Cell[12451, 444, 211, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[12677, 467, 23, 0, 42, "FooterCell"]
+Cell[12677, 454, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

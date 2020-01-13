@@ -3,69 +3,93 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     19317,        708]
-NotebookOptionsPosition[     14541,        556]
-NotebookOutlinePosition[     17705,        647]
-CellTagsIndexPosition[     17588,        641]
+NotebookDataLength[     26212,        920]
+NotebookOptionsPosition[     21822,        784]
+NotebookOutlinePosition[     24607,        862]
+CellTagsIndexPosition[     24490,        856]
 WindowTitle->FourLaplacian
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/FourLaplacian\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/FourLaplacian"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FourDivergence\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FourDivergence"], "\<\"RussianTrick\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/RussianTrick"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/FourLaplacian\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/FourLaplacian"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 FourLaplacian.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$74390], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/FourLaplacian", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$143271], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/FourLaplacian", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +97,20 @@ FourLaplacian.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["FourLaplacian", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["FourLaplacian", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -106,6 +142,54 @@ Cell[BoxData[GridBox[{
 
 Cell[CellGroupData[{
 
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1034393011],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "FourLaplacian", "]"}]], "Input",
+ CellLabel->"In[118]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"Dimension", "\[Rule]", "D"}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{112, 14},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[118]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell[TextData[{
  Cell[BoxData[
   InterpretationBox[
@@ -121,7 +205,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->583071690],
+ CellID->2132342538],
 
 Cell[CellGroupData[{
 
@@ -131,27 +215,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1509023846],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "FourLaplacian", "]"}]], "Input",
- CellTags->"FourLaplacian",
- CellLabel->"In[1]:=",
- CellID->244662667],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{"Dimension", "\[Rule]", "D"}], "}"}], TraditionalForm]], "Output",
- ImageSize->{119, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"FourLaplacian",
- CellLabel->"Out[1]=",
- CellID->1107918748]
-}, Open  ]],
+ CellID->2050018979],
 
 Cell[CellGroupData[{
 
@@ -159,7 +223,7 @@ Cell[BoxData[
  RowBox[{"SP", "[", 
   RowBox[{"q", ",", "q"}], "]"}]], "Input",
  CellTags->"FourLaplacian",
- CellLabel->"In[2]:=",
+ CellLabel->"In[1]:=",
  CellID->678691277],
 
 Cell[BoxData[
@@ -170,12 +234,11 @@ Cell[BoxData[
      FormBox["q",
       TraditionalForm], "_"],
     TraditionalForm], "2"], TraditionalForm]], "Output",
- ImageSize->{22, 20},
+ ImageSize->{26, 18},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FourLaplacian",
- CellLabel->"Out[2]=",
- CellID->614689358]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -184,18 +247,17 @@ Cell[BoxData[
  RowBox[{"FourLaplacian", "[", 
   RowBox[{"%", ",", "q", ",", "q"}], "]"}]], "Input",
  CellTags->"FourLaplacian",
- CellLabel->"In[3]:=",
+ CellLabel->"In[2]:=",
  CellID->1086572094],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"2", " ", "D"}], TraditionalForm]], "Output",
- ImageSize->{27, 15},
+ ImageSize->{31, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FourLaplacian",
- CellLabel->"Out[3]=",
- CellID->1928361141]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -209,7 +271,7 @@ Cell[BoxData[
     RowBox[{"q", ",", 
      RowBox[{"q", "-", "p"}]}], "]"}]}], "//", "FCI"}]], "Input",
  CellTags->"FourLaplacian",
- CellLabel->"In[4]:=",
+ CellLabel->"In[3]:=",
  CellID->1385775268],
 
 Cell[BoxData[
@@ -229,22 +291,44 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm]}], ")"}], "m"], 
    RowBox[{
-    SuperscriptBox[
-     FormBox["q",
-      TraditionalForm], "2"], ".", 
-    SuperscriptBox[
-     RowBox[{"(", 
-      RowBox[{
+    InterpretationBox[
+     SuperscriptBox[
+      FormBox[
        FormBox["q",
-        TraditionalForm], "-", 
-       FormBox["p",
-        TraditionalForm]}], ")"}], "2"]}]], TraditionalForm]], "Output",
- ImageSize->{84, 48},
+        TraditionalForm],
+       TraditionalForm], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[$CellContext`q, D], 
+       FeynCalc`Momentum[$CellContext`q, D]]],
+     Editable->False], ".", 
+    InterpretationBox[
+     SuperscriptBox[
+      RowBox[{
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox["q",
+           TraditionalForm], "-", 
+          FormBox["p",
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], "2"],
+     SequenceForm[
+      FeynCalc`Pair[-FeynCalc`Momentum[$CellContext`p, D] + 
+       FeynCalc`Momentum[$CellContext`q, D], -
+        FeynCalc`Momentum[$CellContext`p, D] + 
+       FeynCalc`Momentum[$CellContext`q, D]]],
+     Editable->False]}]], TraditionalForm]], "Output",
+ ImageSize->{99, 41},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FourLaplacian",
- CellLabel->"Out[4]=",
- CellID->1120525938]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -253,15 +337,170 @@ Cell[BoxData[
  RowBox[{"FourLaplacian", "[", 
   RowBox[{"%", ",", "q", ",", " ", "q"}], "]"}]], "Input",
  CellTags->"FourLaplacian",
- CellLabel->"In[5]:=",
+ CellLabel->"In[4]:=",
  CellID->1428791386],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   RowBox[{"-", 
+   FormBox[
+    RowBox[{"-", 
+     FractionBox[
+      RowBox[{"2", " ", 
+       RowBox[{"(", 
+        RowBox[{"D", "+", 
+         RowBox[{"2", " ", "m"}]}], ")"}], " ", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{
+          FormBox[
+           FormBox["\[CapitalDelta]",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox["\<\"\[CenterDot]\"\>",
+           TraditionalForm], 
+          FormBox[
+           FormBox["q",
+            TraditionalForm],
+           TraditionalForm]}], ")"}], "m"]}], 
+      RowBox[{
+       SuperscriptBox[
+        RowBox[{"(", 
+         InterpretationBox[
+          SuperscriptBox[
+           FormBox[
+            FormBox["q",
+             TraditionalForm],
+            TraditionalForm], "2"],
+          SequenceForm[
+           FeynCalc`Pair[
+            FeynCalc`Momentum[$CellContext`q, D], 
+            FeynCalc`Momentum[$CellContext`q, D]]],
+          Editable->False], ")"}], "2"], ".", 
+       InterpretationBox[
+        SuperscriptBox[
+         RowBox[{
+          FormBox["\<\"(\"\>",
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            RowBox[{
+             FormBox["q",
+              TraditionalForm], "-", 
+             FormBox["p",
+              TraditionalForm]}],
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox["\<\")\"\>",
+           TraditionalForm]}], "2"],
+        SequenceForm[
+         FeynCalc`Pair[
+          FeynCalc`Momentum[-$CellContext`p + $CellContext`q, D], 
+          FeynCalc`Momentum[-$CellContext`p + $CellContext`q, D]]],
+        Editable->False]}]]}],
+    TraditionalForm], "+", 
+   FormBox[
     FractionBox[
-     RowBox[{"2", " ", "D", " ", 
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"2", " ", "D", " ", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{
+           FormBox[
+            FormBox["\[CapitalDelta]",
+             TraditionalForm],
+            TraditionalForm], 
+           FormBox["\<\"\[CenterDot]\"\>",
+            TraditionalForm], 
+           FormBox[
+            FormBox["q",
+             TraditionalForm],
+            TraditionalForm]}], ")"}], "m"]}]}], "+", 
+      RowBox[{"4", " ", "m", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         FormBox[
+          FormBox["\[CapitalDelta]",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox["\<\"\[CenterDot]\"\>",
+          TraditionalForm], 
+         FormBox[
+          FormBox["p",
+           TraditionalForm],
+          TraditionalForm]}], ")"}], " ", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{
+          FormBox[
+           FormBox["\[CapitalDelta]",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox["\<\"\[CenterDot]\"\>",
+           TraditionalForm], 
+          FormBox[
+           FormBox["q",
+            TraditionalForm],
+           TraditionalForm]}], ")"}], 
+        RowBox[{"m", "-", "1"}]]}], "-", 
+      RowBox[{"4", " ", "m", " ", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{
+          FormBox[
+           FormBox["\[CapitalDelta]",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox["\<\"\[CenterDot]\"\>",
+           TraditionalForm], 
+          FormBox[
+           FormBox["q",
+            TraditionalForm],
+           TraditionalForm]}], ")"}], "m"]}]}], 
+     RowBox[{
+      InterpretationBox[
+       SuperscriptBox[
+        FormBox[
+         FormBox["q",
+          TraditionalForm],
+         TraditionalForm], "2"],
+       SequenceForm[
+        FeynCalc`Pair[
+         FeynCalc`Momentum[$CellContext`q, D], 
+         FeynCalc`Momentum[$CellContext`q, D]]],
+       Editable->False], ".", 
+      SuperscriptBox[
+       InterpretationBox[
+        SuperscriptBox[
+         RowBox[{
+          FormBox["\<\"(\"\>",
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            RowBox[{
+             FormBox["q",
+              TraditionalForm], "-", 
+             FormBox["p",
+              TraditionalForm]}],
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox["\<\")\"\>",
+           TraditionalForm]}], "2"],
+        SequenceForm[
+         FeynCalc`Pair[
+          FeynCalc`Momentum[-$CellContext`p + $CellContext`q, D], 
+          FeynCalc`Momentum[-$CellContext`p + $CellContext`q, D]]],
+        Editable->False], "2"]}]],
+    TraditionalForm], "+", 
+   FormBox[
+    FractionBox[
+     RowBox[{"8", " ", 
+      SuperscriptBox[
+       FormBox[
+        FormBox["q",
+         TraditionalForm],
+        TraditionalForm], "2"], " ", 
       SuperscriptBox[
        RowBox[{"(", 
         RowBox[{
@@ -278,240 +517,231 @@ Cell[BoxData[
      RowBox[{
       SuperscriptBox[
        RowBox[{"(", 
+        InterpretationBox[
+         SuperscriptBox[
+          FormBox[
+           FormBox["q",
+            TraditionalForm],
+           TraditionalForm], "2"],
+         SequenceForm[
+          FeynCalc`Pair[
+           FeynCalc`Momentum[$CellContext`q, D], 
+           FeynCalc`Momentum[$CellContext`q, D]]],
+         Editable->False], ")"}], "3"], ".", 
+      InterpretationBox[
+       SuperscriptBox[
         RowBox[{
-         FormBox["q",
-          TraditionalForm], "-", 
+         FormBox["\<\"(\"\>",
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           RowBox[{
+            FormBox["q",
+             TraditionalForm], "-", 
+            FormBox["p",
+             TraditionalForm]}],
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox["\<\")\"\>",
+          TraditionalForm]}], "2"],
+       SequenceForm[
+        FeynCalc`Pair[
+         FeynCalc`Momentum[-$CellContext`p + $CellContext`q, D], 
+         FeynCalc`Momentum[-$CellContext`p + $CellContext`q, D]]],
+       Editable->False]}]],
+    TraditionalForm], "+", 
+   FormBox[
+    FractionBox[
+     RowBox[{
+      RowBox[{"8", " ", 
+       SuperscriptBox[
+        FormBox[
          FormBox["p",
-          TraditionalForm]}], ")"}], "2"], ".", 
-      SuperscriptBox[
+          TraditionalForm],
+         TraditionalForm], "2"], " ", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{
+          FormBox[
+           FormBox["\[CapitalDelta]",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox["\<\"\[CenterDot]\"\>",
+           TraditionalForm], 
+          FormBox[
+           FormBox["q",
+            TraditionalForm],
+           TraditionalForm]}], ")"}], "m"]}], "-", 
+      RowBox[{"16", " ", 
        RowBox[{"(", 
         RowBox[{
-         FormBox["q",
-          TraditionalForm], "-", 
-         FormBox["p",
-          TraditionalForm]}], ")"}], "2"]}]]}], "-", 
-   FractionBox[
-    RowBox[{"2", " ", "D", " ", 
-     SuperscriptBox[
-      RowBox[{"(", 
-       RowBox[{
-        FormBox[
-         FormBox["\[CapitalDelta]",
-          TraditionalForm],
-         TraditionalForm], 
-        FormBox["\<\"\[CenterDot]\"\>",
-         TraditionalForm], 
-        FormBox[
-         FormBox["q",
-          TraditionalForm],
-         TraditionalForm]}], ")"}], "m"]}], 
-    RowBox[{
-     SuperscriptBox[
-      FormBox["q",
-       TraditionalForm], "2"], ".", 
-     SuperscriptBox[
-      FormBox["q",
-       TraditionalForm], "2"]}]], "+", 
-   FractionBox[
-    RowBox[{
-     SuperscriptBox[
-      FormBox[
-       FormBox["\[CapitalDelta]",
-        TraditionalForm],
-       TraditionalForm], "2"], " ", 
-     RowBox[{"(", 
-      RowBox[{"m", "-", "1"}], ")"}], " ", "m", " ", 
-     SuperscriptBox[
-      RowBox[{"(", 
-       RowBox[{
-        FormBox[
-         FormBox["\[CapitalDelta]",
-          TraditionalForm],
-         TraditionalForm], 
-        FormBox["\<\"\[CenterDot]\"\>",
-         TraditionalForm], 
-        FormBox[
-         FormBox["q",
-          TraditionalForm],
-         TraditionalForm]}], ")"}], 
-      RowBox[{"m", "-", "2"}]]}], 
-    RowBox[{
-     SuperscriptBox[
-      FormBox["q",
-       TraditionalForm], "2"], ".", 
-     SuperscriptBox[
-      RowBox[{"(", 
-       RowBox[{
-        FormBox["q",
-         TraditionalForm], "-", 
-        FormBox["p",
-         TraditionalForm]}], ")"}], "2"]}]], "-", 
-   FractionBox[
-    RowBox[{"4", " ", "m", " ", 
-     SuperscriptBox[
-      RowBox[{"(", 
-       RowBox[{
-        FormBox[
-         FormBox["\[CapitalDelta]",
-          TraditionalForm],
-         TraditionalForm], 
-        FormBox["\<\"\[CenterDot]\"\>",
-         TraditionalForm], 
-        FormBox[
-         FormBox["q",
-          TraditionalForm],
-         TraditionalForm]}], ")"}], 
-      RowBox[{"m", "-", "1"}]], " ", 
-     RowBox[{"(", 
-      RowBox[{
-       RowBox[{
-        FormBox[
-         FormBox["\[CapitalDelta]",
-          TraditionalForm],
-         TraditionalForm], 
-        FormBox["\<\"\[CenterDot]\"\>",
-         TraditionalForm], 
-        FormBox[
-         FormBox["q",
-          TraditionalForm],
-         TraditionalForm]}], "-", 
-       RowBox[{
-        FormBox[
-         FormBox["\[CapitalDelta]",
-          TraditionalForm],
-         TraditionalForm], 
-        FormBox["\<\"\[CenterDot]\"\>",
-         TraditionalForm], 
-        FormBox[
-         FormBox["p",
-          TraditionalForm],
-         TraditionalForm]}]}], ")"}]}], 
-    RowBox[{
-     SuperscriptBox[
-      RowBox[{"(", 
-       RowBox[{
-        FormBox["q",
-         TraditionalForm], "-", 
-        FormBox["p",
-         TraditionalForm]}], ")"}], "2"], ".", 
-     SuperscriptBox[
-      RowBox[{"(", 
-       RowBox[{
-        FormBox["q",
-         TraditionalForm], "-", 
-        FormBox["p",
-         TraditionalForm]}], ")"}], "2"]}]], "+", 
-   FractionBox[
-    RowBox[{"8", " ", 
-     RowBox[{"(", 
-      RowBox[{
-       RowBox[{"-", 
-        RowBox[{"2", " ", 
-         RowBox[{"(", 
-          RowBox[{
-           FormBox[
-            FormBox["p",
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox["\<\"\[CenterDot]\"\>",
-            TraditionalForm], 
-           FormBox[
-            FormBox["q",
-             TraditionalForm],
-            TraditionalForm]}], ")"}]}]}], "+", 
+         FormBox[
+          FormBox["p",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox["\<\"\[CenterDot]\"\>",
+          TraditionalForm], 
+         FormBox[
+          FormBox["q",
+           TraditionalForm],
+          TraditionalForm]}], ")"}], " ", 
        SuperscriptBox[
-        FormBox[
-         FormBox["p",
-          TraditionalForm],
-         TraditionalForm], "2"], "+", 
+        RowBox[{"(", 
+         RowBox[{
+          FormBox[
+           FormBox["\[CapitalDelta]",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox["\<\"\[CenterDot]\"\>",
+           TraditionalForm], 
+          FormBox[
+           FormBox["q",
+            TraditionalForm],
+           TraditionalForm]}], ")"}], "m"]}], "+", 
+      RowBox[{"8", " ", 
        SuperscriptBox[
         FormBox[
          FormBox["q",
           TraditionalForm],
-         TraditionalForm], "2"]}], ")"}], " ", 
-     SuperscriptBox[
-      RowBox[{"(", 
-       RowBox[{
-        FormBox[
-         FormBox["\[CapitalDelta]",
-          TraditionalForm],
-         TraditionalForm], 
-        FormBox["\<\"\[CenterDot]\"\>",
-         TraditionalForm], 
-        FormBox[
-         FormBox["q",
-          TraditionalForm],
-         TraditionalForm]}], ")"}], "m"]}], 
-    RowBox[{
-     SuperscriptBox[
-      RowBox[{"(", 
-       RowBox[{
-        FormBox["q",
-         TraditionalForm], "-", 
-        FormBox["p",
-         TraditionalForm]}], ")"}], "2"], ".", 
-     SuperscriptBox[
-      RowBox[{"(", 
-       RowBox[{
-        FormBox["q",
-         TraditionalForm], "-", 
-        FormBox["p",
-         TraditionalForm]}], ")"}], "2"]}]], "-", 
-   FractionBox[
-    RowBox[{"4", " ", "m", " ", 
-     SuperscriptBox[
-      RowBox[{"(", 
-       RowBox[{
-        FormBox[
-         FormBox["\[CapitalDelta]",
-          TraditionalForm],
-         TraditionalForm], 
-        FormBox["\<\"\[CenterDot]\"\>",
-         TraditionalForm], 
+         TraditionalForm], "2"], " ", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{
+          FormBox[
+           FormBox["\[CapitalDelta]",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox["\<\"\[CenterDot]\"\>",
+           TraditionalForm], 
+          FormBox[
+           FormBox["q",
+            TraditionalForm],
+           TraditionalForm]}], ")"}], "m"]}]}], 
+     RowBox[{
+      InterpretationBox[
+       SuperscriptBox[
         FormBox[
          FormBox["q",
           TraditionalForm],
-         TraditionalForm]}], ")"}], "m"]}], 
-    RowBox[{
-     SuperscriptBox[
-      FormBox["q",
-       TraditionalForm], "2"], ".", 
-     SuperscriptBox[
-      FormBox["q",
-       TraditionalForm], "2"]}]], "+", 
-   FractionBox[
-    RowBox[{"8", " ", 
-     SuperscriptBox[
-      FormBox[
-       FormBox["q",
-        TraditionalForm],
-       TraditionalForm], "2"], " ", 
-     SuperscriptBox[
-      RowBox[{"(", 
-       RowBox[{
-        FormBox[
-         FormBox["\[CapitalDelta]",
-          TraditionalForm],
-         TraditionalForm], 
-        FormBox["\<\"\[CenterDot]\"\>",
-         TraditionalForm], 
+         TraditionalForm], "2"],
+       SequenceForm[
+        FeynCalc`Pair[
+         FeynCalc`Momentum[$CellContext`q, D], 
+         FeynCalc`Momentum[$CellContext`q, D]]],
+       Editable->False], ".", 
+      SuperscriptBox[
+       InterpretationBox[
+        SuperscriptBox[
+         RowBox[{
+          FormBox["\<\"(\"\>",
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            RowBox[{
+             FormBox["q",
+              TraditionalForm], "-", 
+             FormBox["p",
+              TraditionalForm]}],
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox["\<\")\"\>",
+           TraditionalForm]}], "2"],
+        SequenceForm[
+         FeynCalc`Pair[
+          FeynCalc`Momentum[-$CellContext`p + $CellContext`q, D], 
+          FeynCalc`Momentum[-$CellContext`p + $CellContext`q, D]]],
+        Editable->False], "3"]}]],
+    TraditionalForm], "+", 
+   FormBox[
+    FractionBox[
+     RowBox[{
+      RowBox[{"8", " ", 
+       SuperscriptBox[
         FormBox[
          FormBox["q",
           TraditionalForm],
-         TraditionalForm]}], ")"}], "m"]}], 
-    RowBox[{
-     SuperscriptBox[
-      FormBox["q",
-       TraditionalForm], "2"], ".", 
-     SuperscriptBox[
-      FormBox["q",
-       TraditionalForm], "2"]}]]}], TraditionalForm]], "Output",
- ImageSize->{437, 170},
+         TraditionalForm], "2"], " ", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{
+          FormBox[
+           FormBox["\[CapitalDelta]",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox["\<\"\[CenterDot]\"\>",
+           TraditionalForm], 
+          FormBox[
+           FormBox["q",
+            TraditionalForm],
+           TraditionalForm]}], ")"}], "m"]}], "-", 
+      RowBox[{"8", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         FormBox[
+          FormBox["p",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox["\<\"\[CenterDot]\"\>",
+          TraditionalForm], 
+         FormBox[
+          FormBox["q",
+           TraditionalForm],
+          TraditionalForm]}], ")"}], " ", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{
+          FormBox[
+           FormBox["\[CapitalDelta]",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox["\<\"\[CenterDot]\"\>",
+           TraditionalForm], 
+          FormBox[
+           FormBox["q",
+            TraditionalForm],
+           TraditionalForm]}], ")"}], "m"]}]}], 
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"(", 
+        InterpretationBox[
+         SuperscriptBox[
+          FormBox[
+           FormBox["q",
+            TraditionalForm],
+           TraditionalForm], "2"],
+         SequenceForm[
+          FeynCalc`Pair[
+           FeynCalc`Momentum[$CellContext`q, D], 
+           FeynCalc`Momentum[$CellContext`q, D]]],
+         Editable->False], ")"}], "2"], ".", 
+      SuperscriptBox[
+       InterpretationBox[
+        SuperscriptBox[
+         RowBox[{
+          FormBox["\<\"(\"\>",
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            RowBox[{
+             FormBox["q",
+              TraditionalForm], "-", 
+             FormBox["p",
+              TraditionalForm]}],
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox["\<\")\"\>",
+           TraditionalForm]}], "2"],
+        SequenceForm[
+         FeynCalc`Pair[
+          FeynCalc`Momentum[-$CellContext`p + $CellContext`q, D], 
+          FeynCalc`Momentum[-$CellContext`p + $CellContext`q, D]]],
+        Editable->False], "2"]}]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{569, 155},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FourLaplacian",
- CellLabel->"Out[5]=",
- CellID->290457260]
+ CellLabel->"Out[4]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -547,9 +777,7 @@ Cell[TextData[{
   ButtonNote->"RussianTrick"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"FourLaplacian",
- CellID->736385282]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -566,22 +794,22 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 20, 16.881340}", 
+   "built" -> "{2020, 1, 5, 18, 58, 0.569268}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
     "FourLaplacian[exp, p, q] is \\[PartialD]/\\[PartialD]p\\[Mu] \
-\\[PartialD]/\\[PartialD]q\\[Mu] exp.", "synonyms" -> {}, "title" -> 
-    "FourLaplacian", "titlemodifier" -> "", "windowtitle" -> "FourLaplacian", 
-    "type" -> "Symbol", "uri" -> "FeynCalc/ref/FourLaplacian"}, 
-  "SearchTextTranslated" -> ""},
+\\[PartialD]/\\[PartialD]q\\[Mu] exp.", "synonyms" -> {}, "tabletags" -> {}, 
+    "title" -> "FourLaplacian", "titlemodifier" -> "", "windowtitle" -> 
+    "FourLaplacian", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/FourLaplacian"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -590,7 +818,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -599,117 +827,101 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3729, 108, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[6046, 192, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->583071690]},
+   CellID->2132342538]},
  "FourLaplacian"->{
-  Cell[4362, 137, 143, 4, 27, "Input",
-   CellTags->"FourLaplacian",
-   CellID->244662667],
-  Cell[4508, 143, 277, 9, 36, "Output",
-   CellTags->"FourLaplacian",
-   CellID->1107918748],
-  Cell[4822, 157, 149, 5, 27, "Input",
+  Cell[6680, 221, 149, 5, 27, "Input",
    CellTags->"FourLaplacian",
    CellID->678691277],
-  Cell[4974, 164, 335, 13, 41, "Output",
-   CellTags->"FourLaplacian",
-   CellID->614689358],
-  Cell[5346, 182, 171, 5, 27, "Input",
+  Cell[6832, 228, 315, 12, 39, "Output",
+   CellTags->"FourLaplacian"],
+  Cell[7184, 245, 171, 5, 27, "Input",
    CellTags->"FourLaplacian",
    CellID->1086572094],
-  Cell[5520, 189, 238, 8, 36, "Output",
-   CellTags->"FourLaplacian",
-   CellID->1928361141],
-  Cell[5795, 202, 283, 10, 27, "Input",
+  Cell[7358, 252, 217, 7, 35, "Output",
+   CellTags->"FourLaplacian"],
+  Cell[7612, 264, 283, 10, 27, "Input",
    CellTags->"FourLaplacian",
    CellID->1385775268],
-  Cell[6081, 214, 800, 32, 69, "Output",
-   CellTags->"FourLaplacian",
-   CellID->1120525938],
-  Cell[6918, 251, 176, 5, 27, "Input",
+  Cell[7898, 276, 1474, 54, 62, "Output",
+   CellTags->"FourLaplacian"],
+  Cell[9409, 335, 176, 5, 27, "Input",
    CellTags->"FourLaplacian",
    CellID->1428791386],
-  Cell[7097, 258, 6613, 255, 191, "Output",
-   CellTags->"FourLaplacian",
-   CellID->290457260],
-  Cell[14078, 536, 421, 15, 70, "Text",
-   CellTags->"FourLaplacian",
-   CellID->736385282]}
+  Cell[9588, 342, 11448, 401, 176, "Output",
+   CellTags->"FourLaplacian"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 16393, 600},
- {"FourLaplacian", 16533, 604}
+ {"PrimaryExamplesSection", 23661, 828},
+ {"FourLaplacian", 23802, 832}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[585, 21, 2265, 52, 51, "AnchorBarGrid",
+Cell[585, 21, 3137, 76, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2853, 75, 56, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2912, 78, 792, 26, 86, "Usage",
+Cell[3725, 99, 290, 11, 45, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4040, 114, 792, 26, 88, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3729, 108, 387, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->583071690],
+Cell[4857, 144, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1034393011],
+Cell[5599, 170, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[4141, 127, 196, 6, 25, "ExampleSection",
- CellID->1509023846],
-Cell[CellGroupData[{
-Cell[4362, 137, 143, 4, 27, "Input",
- CellTags->"FourLaplacian",
- CellID->244662667],
-Cell[4508, 143, 277, 9, 36, "Output",
- CellTags->"FourLaplacian",
- CellID->1107918748]
+Cell[5655, 174, 97, 2, 70, "Input"],
+Cell[5755, 178, 230, 7, 35, "Output"]
+}, Open  ]]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4822, 157, 149, 5, 27, "Input",
+Cell[6046, 192, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->2132342538],
+Cell[CellGroupData[{
+Cell[6459, 211, 196, 6, 26, "ExampleSection",
+ CellID->2050018979],
+Cell[CellGroupData[{
+Cell[6680, 221, 149, 5, 27, "Input",
  CellTags->"FourLaplacian",
  CellID->678691277],
-Cell[4974, 164, 335, 13, 41, "Output",
- CellTags->"FourLaplacian",
- CellID->614689358]
+Cell[6832, 228, 315, 12, 39, "Output",
+ CellTags->"FourLaplacian"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5346, 182, 171, 5, 27, "Input",
+Cell[7184, 245, 171, 5, 27, "Input",
  CellTags->"FourLaplacian",
  CellID->1086572094],
-Cell[5520, 189, 238, 8, 36, "Output",
- CellTags->"FourLaplacian",
- CellID->1928361141]
+Cell[7358, 252, 217, 7, 35, "Output",
+ CellTags->"FourLaplacian"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5795, 202, 283, 10, 27, "Input",
+Cell[7612, 264, 283, 10, 27, "Input",
  CellTags->"FourLaplacian",
  CellID->1385775268],
-Cell[6081, 214, 800, 32, 69, "Output",
- CellTags->"FourLaplacian",
- CellID->1120525938]
+Cell[7898, 276, 1474, 54, 62, "Output",
+ CellTags->"FourLaplacian"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6918, 251, 176, 5, 27, "Input",
+Cell[9409, 335, 176, 5, 27, "Input",
  CellTags->"FourLaplacian",
  CellID->1428791386],
-Cell[7097, 258, 6613, 255, 191, "Output",
- CellTags->"FourLaplacian",
- CellID->290457260]
+Cell[9588, 342, 11448, 401, 176, "Output",
+ CellTags->"FourLaplacian"]
 }, Open  ]]
 }, Open  ]],
-Cell[13737, 517, 31, 0, 70, "SectionFooterSpacer"]
+Cell[21063, 747, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13805, 522, 270, 12, 70, "SeeAlsoSection",
+Cell[21131, 752, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[14078, 536, 421, 15, 70, "Text",
- CellTags->"FourLaplacian",
- CellID->736385282]
+Cell[21404, 766, 376, 13, 56, "SeeAlso"]
 }, Open  ]],
-Cell[14514, 554, 23, 0, 70, "FooterCell"]
+Cell[21795, 782, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

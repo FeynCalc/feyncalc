@@ -181,9 +181,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/RHI2FC",
   ButtonNote->"RHI2FC"],
  "."
-}], "Text",
- CellTags->"RHI2FC",
- CellID->2129471313]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -194,8 +192,6 @@ Cell["More About", "MoreAboutSection",
 Cell["XXXX", "MoreAbout",
  CellID->1665078683]
 }, Open  ]],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[
  InterpretationBox[GridBox[{
@@ -209,12 +205,6 @@ Cell[BoxData[
    }],
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
-
-Cell[BoxData[""], "Input",
- CellTags->"RHI2FC",
- CellLabel->"In[1]:=",
- CellID->729912401]
-}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -277,12 +267,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{799, Automatic}, {Automatic, 168}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

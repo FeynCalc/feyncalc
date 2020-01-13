@@ -117,9 +117,9 @@ Cell["IntermediateSubstitutions", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData["IntermediateSubstitutions"], "InlineFormula"],
- " \[LineSeparator]",
- "is an option for OneLoop. All substitutions indicated hereby are done at an \
-intermediate stage of the calculation."
+ " \[LineSeparator]is an option of various FeynCalc functions. All \
+substitutions indicated hereby are done at an intermediate stage of the \
+calculation."
 }], "Usage",
  CellID->982511436],
 
@@ -165,9 +165,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/OneLoop",
   ButtonNote->"OneLoop"],
  "."
-}], "Text",
- CellTags->"IntermediateSubstitutions",
- CellID->294086386]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -253,12 +251,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{1185, Automatic}, {Automatic, 126}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

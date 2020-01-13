@@ -167,9 +167,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/HypergeometricIR",
   ButtonNote->"HypergeometricIR"],
  "."
-}], "Text",
- CellTags->"HypExplicit",
- CellID->762625741]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -202,7 +200,7 @@ Cell[BoxData[
  RowBox[{"Hypergeometric2F1", "[", 
   RowBox[{"a", ",", "b", ",", "c", ",", "z"}], "]"}]], "Input",
  CellTags->"HypExplicit",
- CellLabel->"In[1]:=",
+ CellLabel->"In[214]:=",
  CellID->713088732],
 
 Cell[BoxData[
@@ -210,8 +208,7 @@ Cell[BoxData[
   TemplateBox[{"a","b","c","z"},
    "Hypergeometric2F1"], TraditionalForm]], "Output",
  CellTags->"HypExplicit",
- CellLabel->"Out[1]=",
- CellID->2050064924]
+ CellLabel->"Out[214]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -220,7 +217,7 @@ Cell[BoxData[
  RowBox[{"HypExplicit", "[", 
   RowBox[{"%", ",", "\[Nu]"}], "]"}]], "Input",
  CellTags->"HypExplicit",
- CellLabel->"In[2]:=",
+ CellLabel->"In[215]:=",
  CellID->335460950],
 
 Cell[BoxData[
@@ -244,8 +241,7 @@ Cell[BoxData[
     TemplateBox[{RowBox[{"c", "+", "\[Nu]"}]},
      "Gamma"]}]], TraditionalForm]], "Output",
  CellTags->"HypExplicit",
- CellLabel->"Out[2]=",
- CellID->1212116493]
+ CellLabel->"Out[215]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -258,7 +254,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"d", ",", "e"}], "}"}], ",", "z"}], "]"}]], "Input",
  CellTags->"HypExplicit",
- CellLabel->"In[3]:=",
+ CellLabel->"In[216]:=",
  CellID->1980165795],
 
 Cell[BoxData[
@@ -316,8 +312,7 @@ Cell[BoxData[
     Selectable->False],
    HypergeometricPFQ], TraditionalForm]], "Output",
  CellTags->"HypExplicit",
- CellLabel->"Out[3]=",
- CellID->1891206830]
+ CellLabel->"Out[216]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -326,7 +321,7 @@ Cell[BoxData[
  RowBox[{"HypExplicit", "[", 
   RowBox[{"%", ",", "\[Nu]"}], "]"}]], "Input",
  CellTags->"HypExplicit",
- CellLabel->"In[4]:=",
+ CellLabel->"In[217]:=",
  CellID->1855078663],
 
 Cell[BoxData[
@@ -358,8 +353,7 @@ Cell[BoxData[
     TemplateBox[{RowBox[{"e", "+", "\[Nu]"}]},
      "Gamma"]}]], TraditionalForm]], "Output",
  CellTags->"HypExplicit",
- CellLabel->"Out[4]=",
- CellID->1089581291]
+ CellLabel->"Out[217]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -424,12 +418,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{829, Automatic}, {Automatic, 157}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

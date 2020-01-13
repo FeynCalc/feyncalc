@@ -3,69 +3,101 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17314,        613]
-NotebookOptionsPosition[     11845,        445]
-NotebookOutlinePosition[     15439,        544]
-CellTagsIndexPosition[     15318,        538]
+NotebookDataLength[     18343,        633]
+NotebookOptionsPosition[     13307,        483]
+NotebookOutlinePosition[     16654,        573]
+CellTagsIndexPosition[     16533,        567]
 WindowTitle->LeftRightPartialD
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/LeftRightPartialD\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/LeftRightPartialD"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"ExplicitPartialD\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ExplicitPartialD"], "\<\"ExpandPartialD\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ExpandPartialD"], "\<\"FCPartialD\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FCPartialD"], "\<\"LeftPartialD\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/LeftPartialD"], "\<\"LeftRightPartialD2\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/LeftRightPartialD2"], "\<\"RightPartialD\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/RightPartialD"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/LeftRightPartialD\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/LeftRightPartialD"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 LeftRightPartialD.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$98962], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/LeftRightPartialD", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$179444], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/LeftRightPartialD", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +105,18 @@ LeftRightPartialD.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["LeftRightPartialD", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["LeftRightPartialD", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -125,7 +167,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1628042135],
+ CellID->679018927],
 
 Cell[CellGroupData[{
 
@@ -135,7 +177,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1062363671],
+ CellID->1737714940],
 
 Cell[CellGroupData[{
 
@@ -153,12 +195,11 @@ Cell[BoxData[
     FormBox["\[Mu]",
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
- ImageSize->{25, 27},
+ ImageSize->{24, 24},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"LeftRightPartialD",
- CellLabel->"Out[1]=",
- CellID->1132769852]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -187,12 +228,11 @@ Cell[BoxData[
        FormBox["\[Mu]",
         TraditionalForm],
        TraditionalForm]]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{85, 41},
+ ImageSize->{83, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"LeftRightPartialD",
- CellLabel->"Out[2]=",
- CellID->215900493]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -221,12 +261,11 @@ Cell[BoxData[
      TraditionalForm], 
     FormBox["\[Nu]",
      TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{47, 27},
+ ImageSize->{49, 24},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"LeftRightPartialD",
- CellLabel->"Out[3]=",
- CellID->1398421327]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -244,18 +283,19 @@ Cell[BoxData[
    RowBox[{"(", 
     RowBox[{
      RowBox[{
-      SubscriptBox["\[PartialD]", 
+      SubscriptBox[
+       RowBox[{"(", "\[PartialD]"}], 
        FormBox[
         FormBox["\[Mu]",
          TraditionalForm],
         TraditionalForm]], 
-      SubsuperscriptBox[
+      SubscriptBox[
        FormBox["A",
         TraditionalForm], 
        FormBox[
         FormBox["\[Nu]",
          TraditionalForm],
-        TraditionalForm], "\[Null]"]}], "-", 
+        TraditionalForm]], ")"}], "-", 
      RowBox[{
       SubscriptBox[
        OverscriptBox["\[PartialD]", "\[LeftArrow]"], 
@@ -268,12 +308,11 @@ Cell[BoxData[
         TraditionalForm], 
        FormBox["\[Nu]",
         TraditionalForm]]}]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{126, 41},
+ ImageSize->{146, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"LeftRightPartialD",
- CellLabel->"Out[4]=",
- CellID->1245680526]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -310,12 +349,11 @@ Cell[BoxData[
      TraditionalForm], 
     FormBox["\[Rho]",
      TraditionalForm]]}], TraditionalForm]], "Output",
- ImageSize->{69, 27},
+ ImageSize->{74, 24},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"LeftRightPartialD",
- CellLabel->"Out[5]=",
- CellID->488945383]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -338,44 +376,47 @@ Cell[BoxData[
         TraditionalForm], 
        FormBox["\[Mu]",
         TraditionalForm]], ".", 
-      RowBox[{
-       SubscriptBox["\[PartialD]", 
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm]], 
-       SubsuperscriptBox[
-        FormBox["A",
-         TraditionalForm], 
-        FormBox[
-         FormBox["\[Rho]",
-          TraditionalForm],
-         TraditionalForm], "\[Null]"]}]}], "-", 
+      RowBox[{"(", 
+       RowBox[{
+        SubscriptBox[
+         RowBox[{"(", "\[PartialD]"}], 
+         FormBox[
+          FormBox["\[Nu]",
+           TraditionalForm],
+          TraditionalForm]], 
+        SubscriptBox[
+         FormBox["A",
+          TraditionalForm], 
+         FormBox[
+          FormBox["\[Rho]",
+           TraditionalForm],
+          TraditionalForm]], ")"}], ")"}]}], "-", 
      RowBox[{
-      RowBox[{
-       SubscriptBox["\[PartialD]", 
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm]], 
-       SubsuperscriptBox[
-        FormBox["A",
-         TraditionalForm], 
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm], "\[Null]"]}], ".", 
+      RowBox[{"(", 
+       RowBox[{
+        SubscriptBox[
+         RowBox[{"(", "\[PartialD]"}], 
+         FormBox[
+          FormBox["\[Nu]",
+           TraditionalForm],
+          TraditionalForm]], 
+        SubscriptBox[
+         FormBox["A",
+          TraditionalForm], 
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm]], ")"}], ")"}], ".", 
       SubscriptBox[
        FormBox["A",
         TraditionalForm], 
        FormBox["\[Rho]",
         TraditionalForm]]}]}], ")"}]}], TraditionalForm]], "Output",
- ImageSize->{162, 41},
+ ImageSize->{228, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"LeftRightPartialD",
- CellLabel->"Out[6]=",
- CellID->1968825715]
+ CellLabel->"Out[6]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -399,7 +440,6 @@ Cell[TextData[{
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  StyleBox[ButtonBox["ExplicitPartialD",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/ExplicitPartialD",
@@ -436,9 +476,7 @@ Cell[TextData[{
   ButtonNote->"RightPartialD"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"LeftRightPartialD",
- CellID->2130291841]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -455,10 +493,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 22, 5.391576}", 
+   "built" -> "{2020, 1, 5, 18, 59, 30.726278}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -467,12 +505,12 @@ TaggingRules->{
     "LeftRightPartialD[mu] denotes OverscriptBox[\\[PartialD], \\ \
 \\[LeftRightArrow]]TraditionalForm\\`TraditionalForm\\`\\[Mu]\\ , acting to \
 the left and right. ExplicitPartialD[LeftRightPartialD[\\[Mu]]] gives 1/2 \
-(RightPartialD[\\[Mu]] - LeftPartialD[\\[Mu]]).", "synonyms" -> {}, "title" -> 
-    "LeftRightPartialD", "titlemodifier" -> "", "windowtitle" -> 
-    "LeftRightPartialD", "type" -> "Symbol", "uri" -> 
+(RightPartialD[\\[Mu]] - LeftPartialD[\\[Mu]]).", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "LeftRightPartialD", "titlemodifier" -> "", 
+    "windowtitle" -> "LeftRightPartialD", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/LeftRightPartialD"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -481,7 +519,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -490,131 +528,113 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3893, 112, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[5425, 154, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1628042135]},
+   CellID->679018927]},
  "LeftRightPartialD"->{
-  Cell[4527, 141, 149, 4, 27, "Input",
+  Cell[6058, 183, 149, 4, 27, "Input",
    CellTags->"LeftRightPartialD",
    CellID->538126232],
-  Cell[4679, 147, 365, 13, 48, "Output",
-   CellTags->"LeftRightPartialD",
-   CellID->1132769852],
-  Cell[5081, 165, 144, 4, 27, "Input",
+  Cell[6210, 189, 344, 12, 45, "Output",
+   CellTags->"LeftRightPartialD"],
+  Cell[6591, 206, 144, 4, 27, "Input",
    CellTags->"LeftRightPartialD",
    CellID->438418910],
-  Cell[5228, 171, 631, 23, 62, "Output",
-   CellTags->"LeftRightPartialD",
-   CellID->215900493],
-  Cell[5896, 199, 281, 8, 27, "Input",
+  Cell[6738, 212, 611, 22, 56, "Output",
+   CellTags->"LeftRightPartialD"],
+  Cell[7386, 239, 281, 8, 27, "Input",
    CellTags->"LeftRightPartialD",
    CellID->1906170176],
-  Cell[6180, 209, 493, 19, 48, "Output",
-   CellTags->"LeftRightPartialD",
-   CellID->1398421327],
-  Cell[6710, 233, 142, 4, 27, "Input",
+  Cell[7670, 249, 472, 18, 45, "Output",
+   CellTags->"LeftRightPartialD"],
+  Cell[8179, 272, 142, 4, 27, "Input",
    CellTags->"LeftRightPartialD",
    CellID->521183313],
-  Cell[6855, 239, 940, 36, 62, "Output",
-   CellTags->"LeftRightPartialD",
-   CellID->1245680526],
-  Cell[7832, 280, 399, 11, 45, "Input",
+  Cell[8324, 278, 931, 36, 56, "Output",
+   CellTags->"LeftRightPartialD"],
+  Cell[9292, 319, 399, 11, 45, "Input",
    CellTags->"LeftRightPartialD",
    CellID->146402203],
-  Cell[8234, 293, 602, 24, 48, "Output",
-   CellTags->"LeftRightPartialD",
-   CellID->488945383],
-  Cell[8873, 322, 143, 4, 27, "Input",
+  Cell[9694, 332, 582, 23, 45, "Output",
+   CellTags->"LeftRightPartialD"],
+  Cell[10313, 360, 143, 4, 27, "Input",
    CellTags->"LeftRightPartialD",
    CellID->1596263636],
-  Cell[9019, 328, 1264, 49, 62, "Output",
-   CellTags->"LeftRightPartialD",
-   CellID->1968825715],
-  Cell[10651, 400, 1152, 40, 52, "Text",
-   CellTags->"LeftRightPartialD",
-   CellID->2130291841]}
+  Cell[10459, 366, 1351, 52, 56, "Output",
+   CellTags->"LeftRightPartialD"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 13878, 491},
- {"LeftRightPartialD", 14023, 495}
+ {"PrimaryExamplesSection", 15327, 529},
+ {"LeftRightPartialD", 15471, 533}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[589, 21, 2281, 52, 51, "AnchorBarGrid",
+Cell[589, 21, 3579, 84, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2873, 75, 60, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2936, 78, 932, 30, 112, "Usage",
+Cell[4171, 107, 294, 11, 45, "ObjectNameGrid"],
+Cell[4468, 120, 932, 30, 113, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3893, 112, 388, 15, 31, "PrimaryExamplesSection",
+Cell[5425, 154, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1628042135],
+ CellID->679018927],
 Cell[CellGroupData[{
-Cell[4306, 131, 196, 6, 25, "ExampleSection",
- CellID->1062363671],
+Cell[5837, 173, 196, 6, 26, "ExampleSection",
+ CellID->1737714940],
 Cell[CellGroupData[{
-Cell[4527, 141, 149, 4, 27, "Input",
+Cell[6058, 183, 149, 4, 27, "Input",
  CellTags->"LeftRightPartialD",
  CellID->538126232],
-Cell[4679, 147, 365, 13, 48, "Output",
- CellTags->"LeftRightPartialD",
- CellID->1132769852]
+Cell[6210, 189, 344, 12, 45, "Output",
+ CellTags->"LeftRightPartialD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5081, 165, 144, 4, 27, "Input",
+Cell[6591, 206, 144, 4, 27, "Input",
  CellTags->"LeftRightPartialD",
  CellID->438418910],
-Cell[5228, 171, 631, 23, 62, "Output",
- CellTags->"LeftRightPartialD",
- CellID->215900493]
+Cell[6738, 212, 611, 22, 56, "Output",
+ CellTags->"LeftRightPartialD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5896, 199, 281, 8, 27, "Input",
+Cell[7386, 239, 281, 8, 27, "Input",
  CellTags->"LeftRightPartialD",
  CellID->1906170176],
-Cell[6180, 209, 493, 19, 48, "Output",
- CellTags->"LeftRightPartialD",
- CellID->1398421327]
+Cell[7670, 249, 472, 18, 45, "Output",
+ CellTags->"LeftRightPartialD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6710, 233, 142, 4, 27, "Input",
+Cell[8179, 272, 142, 4, 27, "Input",
  CellTags->"LeftRightPartialD",
  CellID->521183313],
-Cell[6855, 239, 940, 36, 62, "Output",
- CellTags->"LeftRightPartialD",
- CellID->1245680526]
+Cell[8324, 278, 931, 36, 56, "Output",
+ CellTags->"LeftRightPartialD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7832, 280, 399, 11, 45, "Input",
+Cell[9292, 319, 399, 11, 45, "Input",
  CellTags->"LeftRightPartialD",
  CellID->146402203],
-Cell[8234, 293, 602, 24, 48, "Output",
- CellTags->"LeftRightPartialD",
- CellID->488945383]
+Cell[9694, 332, 582, 23, 45, "Output",
+ CellTags->"LeftRightPartialD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8873, 322, 143, 4, 27, "Input",
+Cell[10313, 360, 143, 4, 27, "Input",
  CellTags->"LeftRightPartialD",
  CellID->1596263636],
-Cell[9019, 328, 1264, 49, 62, "Output",
- CellTags->"LeftRightPartialD",
- CellID->1968825715]
+Cell[10459, 366, 1351, 52, 56, "Output",
+ CellTags->"LeftRightPartialD"]
 }, Open  ]]
 }, Open  ]],
-Cell[10310, 381, 31, 0, 29, "SectionFooterSpacer"]
+Cell[11837, 422, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10378, 386, 270, 12, 31, "SeeAlsoSection",
+Cell[11905, 427, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[10651, 400, 1152, 40, 52, "Text",
- CellTags->"LeftRightPartialD",
- CellID->2130291841]
+Cell[12178, 441, 1087, 37, 56, "SeeAlso"]
 }, Open  ]],
-Cell[11818, 443, 23, 0, 42, "FooterCell"]
+Cell[13280, 481, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

@@ -119,16 +119,39 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"FourDivergence", "[", 
    RowBox[{"exp", ",", " ", 
-    RowBox[{"FourVector", "[", 
+    RowBox[{"FV", "[", 
      RowBox[{"p", ",", " ", "mu"}], "]"}]}], "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "calculates the partial derivative of exp w.r.t. p(mu). FourDivergence[exp, \
-FourVector[p, mu], FourVector[p,nu], ...]gives the multiple derivative."
+ " \[LineSeparator]calculates the partial derivative of exp w.r.t ",
+ Cell[BoxData[
+  SuperscriptBox["p", "\[Mu]"]], "InlineFormula"],
+ ". FourDivergence[exp, FV[p, mu], FV[p,nu], ...] gives the multiple \
+derivative."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "FourDivergence", "]"}]], "Input",
+ CellLabel->"In[298]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Abort", "\[Rule]", "True"}], ",", 
+    RowBox[{"ApartFF", "\[Rule]", "False"}], ",", 
+    RowBox[{"Contract", "\[Rule]", "True"}], ",", 
+    RowBox[{"Collecting", "\[Rule]", "True"}], ",", 
+    RowBox[{"EpsEvaluate", "\[Rule]", "True"}], ",", 
+    RowBox[{"ExpandScalarProduct", "\[Rule]", "True"}], ",", 
+    RowBox[{"Factoring", "\[Rule]", "Factor"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[298]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -169,9 +192,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/RussianTrick",
   ButtonNote->"RussianTrick"],
  "."
-}], "Text",
- CellTags->"FourDivergence",
- CellID->1618281503]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -201,11 +222,10 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t", "=", 
-  RowBox[{"ScalarProduct", "[", 
-   RowBox[{"p", ",", "q"}], "]"}]}]], "Input",
+ RowBox[{"SP", "[", 
+  RowBox[{"p", ",", "q"}], "]"}]], "Input",
  CellTags->"FourDivergence",
- CellLabel->"In[1]:=",
+ CellLabel->"In[112]:=",
  CellID->1686706616],
 
 Cell[BoxData[
@@ -224,19 +244,18 @@ Cell[BoxData[
       TraditionalForm], "_"],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"FourDivergence",
- CellLabel->"Out[1]=",
- CellID->712819199]
+ CellLabel->"Out[112]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"FourDivergence", "[", 
-  RowBox[{"t", ",", 
-   RowBox[{"FourVector", "[", 
+  RowBox[{"%", ",", 
+   RowBox[{"FV", "[", 
     RowBox[{"q", ",", "\[Mu]"}], "]"}]}], "]"}]], "Input",
  CellTags->"FourDivergence",
- CellLabel->"In[2]:=",
+ CellLabel->"In[113]:=",
  CellID->1594453358],
 
 Cell[BoxData[
@@ -248,25 +267,21 @@ Cell[BoxData[
       TraditionalForm], "_"],
     TraditionalForm], 
    FormBox[
-    FormBox[
-     FormBox["\[Mu]",
-      TraditionalForm],
+    FormBox["\[Mu]",
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"FourDivergence",
- CellLabel->"Out[2]=",
- CellID->1032930238]
+ CellLabel->"Out[113]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t", "=", 
-  RowBox[{"ScalarProduct", "[", 
-   RowBox[{
-    RowBox[{"p", "-", "k"}], ",", "q"}], "]"}]}]], "Input",
+ RowBox[{"SP", "[", 
+  RowBox[{
+   RowBox[{"p", "-", "k"}], ",", "q"}], "]"}]], "Input",
  CellTags->"FourDivergence",
- CellLabel->"In[3]:=",
+ CellLabel->"In[114]:=",
  CellID->1521326595],
 
 Cell[BoxData[
@@ -275,13 +290,15 @@ Cell[BoxData[
    FormBox["\<\"(\"\>",
     TraditionalForm], 
    FormBox[
-    RowBox[{
-     OverscriptBox[
-      FormBox["p",
-       TraditionalForm], "_"], "-", 
-     OverscriptBox[
-      FormBox["k",
-       TraditionalForm], "_"]}],
+    FormBox[
+     RowBox[{
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"], "-", 
+      OverscriptBox[
+       FormBox["k",
+        TraditionalForm], "_"]}],
+     TraditionalForm],
     TraditionalForm], 
    FormBox["\<\")\"\>",
     TraditionalForm], 
@@ -293,49 +310,90 @@ Cell[BoxData[
       TraditionalForm], "_"],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"FourDivergence",
- CellLabel->"Out[3]=",
- CellID->2094801531]
+ CellLabel->"Out[114]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"FourDivergence", "[", 
-  RowBox[{"t", ",", 
-   RowBox[{"FourVector", "[", 
-    RowBox[{
-     RowBox[{"k", "-", "p"}], ",", "\[Mu]"}], "]"}]}], "]"}]], "Input",
+  RowBox[{"%", ",", 
+   RowBox[{"FV", "[", 
+    RowBox[{"k", ",", "\[Mu]"}], "]"}]}], "]"}]], "Input",
  CellTags->"FourDivergence",
- CellLabel->"In[4]:=",
+ CellLabel->"In[115]:=",
  CellID->822682822],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"-", 
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      OverscriptBox[
-       FormBox["q",
-        TraditionalForm], "_"],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox["\[Mu]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm]}], TraditionalForm]], "Output",
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"FourDivergence",
- CellLabel->"Out[4]=",
- CellID->1487482336]
+ CellLabel->"Out[115]="]
 }, Open  ]],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[
- RowBox[{"Clear", "[", "t", "]"}]], "Input",
- CellTags->"FourDivergence",
- CellLabel->"In[5]:=",
- CellID->1056090995]
+ RowBox[{"SFAD", "[", 
+  RowBox[{"{", 
+   RowBox[{"p", ",", 
+    RowBox[{"m", "^", "2"}]}], "}"}], "]"}]], "Input",
+ CellLabel->"In[116]:="],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox["1", 
+   TemplateBox[{"\"(\"",SuperscriptBox[
+      FormBox[
+       FormBox["p", TraditionalForm], TraditionalForm], 2],RowBox[{"-", 
+       SuperscriptBox["m", "2"]}],"\"+\"",
+     RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+    "RowDefault"]], TraditionalForm]], "Output",
+ CellLabel->"Out[116]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FourDivergence", "[", 
+  RowBox[{"%", ",", 
+   RowBox[{"FVD", "[", 
+    RowBox[{"p", ",", "\[Nu]"}], "]"}]}], "]"}]], "Input",
+ CellLabel->"In[117]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", 
+   FractionBox[
+    RowBox[{"2", " ", 
+     SuperscriptBox[
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["\[Nu]",
+        TraditionalForm],
+       TraditionalForm]]}], 
+    SuperscriptBox[
+     TemplateBox[{"\"(\"",SuperscriptBox[
+        FormBox[
+         FormBox["p", TraditionalForm], TraditionalForm], 2],RowBox[{"-", 
+         SuperscriptBox["m", "2"]}],"\"+\"",
+       RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+      "RowDefault"], "2"]]}], TraditionalForm]], "Output",
+ CellLabel->"Out[117]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -399,12 +457,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{872, Automatic}, {Automatic, 151}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

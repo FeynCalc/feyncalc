@@ -29,13 +29,16 @@ End[]
 
 Begin["`Private`"]
 
+dum::usage="";
+de::usage="";
+
 Options[FeynmanReduce] = {Dimension->D,Flatten->True,Expand->True};
 
 FeynmanReduce[exp_Plus,params_List:dum,opts___Rule] :=
 	FeynmanReduce[#,params,opts]&/@exp;
 FeynmanReduce[exp_Times,params_List:dum,opts___Rule] :=
 	Times@@(FeynmanReduce[#,params,opts]& /@
-	(de = Select[ List@@exp,MatchQ[#,DOT[ints:(Integratedx[_,_,_]..),
+	(de = Select[ List@@exp,MatchQ[#,DOT[(*ints:*)(Integratedx[_,_,_]..),
 	r_?(FreeQ[#,Integratedx]&)]]& ])) * Times@@Complement[List@@exp,de];
 
 FeynmanReduce[DOT[ints:(Integratedx[_,_,_]..),
@@ -48,9 +51,9 @@ FeynmanReduce[DOT[ints:(Integratedx[_,_,_]..),
 
 
 FeynmanReduce[exp_,params_List:dum,opts___Rule] :=
-	Block[ {ps,ex,ints,cprul,al,pp,PP,cpp,cPP,
+	Block[ {ps,ex,cprul,al,cpp,cPP,
 	go,a,intss,dumf,dumff,dim,dr,ss,ppex,PPex,sym,
-	p,ruls,r,rr,rrr,l,min,inc,un},
+	ruls,rr,rrr,l,min,inc,un},
 		go = False;
 		dim = Dimension/.Flatten[{opts}]/.Options[FeynmanReduce];
 		dr = r_^(b_?(!FreeQ[#,dim]&)):>r^(b/.dim->4);

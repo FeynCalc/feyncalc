@@ -3,69 +3,93 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8335,        274]
-NotebookOptionsPosition[      5147,        178]
-NotebookOutlinePosition[      7572,        245]
-CellTagsIndexPosition[      7460,        239]
+NotebookDataLength[     10293,        344]
+NotebookOptionsPosition[      7067,        247]
+NotebookOutlinePosition[      9318,        309]
+CellTagsIndexPosition[      9206,        303]
 WindowTitle->QuarkField
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/QuarkField\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/QuarkField"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/QuarkField.\
-html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$125461], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/QuarkField", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"AntiQuarkField\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/AntiQuarkField"], "\<\"QuantumField\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/QuantumField"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/QuarkField\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/QuarkField"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
+QuarkField.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$217846], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/QuarkField", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,15 +97,25 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["QuarkField", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["QuarkField", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData["QuarkField"], "InlineFormula"],
-     " \[LineSeparator]",
-     "is the name of a fermionic field. QuarkField is just a name with no \
-functional properties. Only typesetting rules are attached."
+     " \[LineSeparator]is the name of a fermionic field."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -89,6 +123,44 @@ functional properties. Only typesetting rules are attached."
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}},
  CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1129859403],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell["\<\
+This is just a name with no functional properties. Only typesetting rules are \
+attached.\
+\>", "Notes",
+ CellID->1067943069]
+}, Closed]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -107,7 +179,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1602133664],
+ CellID->445214421],
 
 Cell[CellGroupData[{
 
@@ -117,7 +189,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->148769325],
+ CellID->1688325336],
 
 Cell[CellGroupData[{
 
@@ -128,12 +200,11 @@ Cell[BoxData["QuarkField"], "Input",
 
 Cell[BoxData[
  FormBox["\[Psi]", TraditionalForm]], "Output",
- ImageSize->{16, 15},
+ ImageSize->{15, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"QuarkField",
- CellLabel->"Out[1]=",
- CellID->753517076]
+ CellLabel->"Out[1]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -169,9 +240,7 @@ Cell[TextData[{
   ButtonNote->"QuantumField"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"QuarkField",
- CellID->1398753735]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -179,7 +248,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 WindowTitle->"QuarkField",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -188,22 +257,20 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 23, 56.408064}", 
+   "built" -> "{2020, 1, 5, 19, 1, 7.285329}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
-    "None", "summary" -> 
-    "QuarkField is the name of a fermionic field. QuarkField is just a name \
-with no functional properties. Only typesetting rules are attached.", 
-    "synonyms" -> {}, "title" -> "QuarkField", "titlemodifier" -> "", 
-    "windowtitle" -> "QuarkField", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/QuarkField"}, "SearchTextTranslated" -> ""},
+    "None", "summary" -> "QuarkField is the name of a fermionic field.", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "QuarkField", 
+    "titlemodifier" -> "", "windowtitle" -> "QuarkField", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/QuarkField"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -211,8 +278,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -221,61 +289,63 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3361, 94, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[5344, 166, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1602133664]},
+   CellID->445214421]},
  "QuarkField"->{
-  Cell[3994, 123, 105, 3, 27, "Input",
+  Cell[5977, 195, 105, 3, 27, "Input",
    CellTags->"QuarkField",
    CellID->1364163366],
-  Cell[4102, 128, 216, 7, 36, "Output",
-   CellTags->"QuarkField",
-   CellID->753517076],
-  Cell[4686, 158, 419, 15, 31, "Text",
-   CellTags->"QuarkField",
-   CellID->1398753735]}
+  Cell[6085, 200, 196, 6, 37, "Output",
+   CellTags->"QuarkField"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7029, 222},
- {"QuarkField", 7166, 226}
+ {"PrimaryExamplesSection", 8887, 290},
+ {"QuarkField", 9024, 294}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[582, 21, 2253, 52, 51, "AnchorBarGrid",
+Cell[582, 21, 3125, 76, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2838, 75, 53, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2894, 78, 442, 12, 97, "Usage",
+Cell[3710, 99, 287, 11, 45, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4022, 114, 337, 10, 84, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3361, 94, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4384, 128, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1129859403],
+Cell[5126, 154, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[5160, 156, 135, 4, 70, "Notes",
+ CellID->1067943069]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5344, 166, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1602133664],
+ CellID->445214421],
 Cell[CellGroupData[{
-Cell[3774, 113, 195, 6, 25, "ExampleSection",
- CellID->148769325],
+Cell[5756, 185, 196, 6, 26, "ExampleSection",
+ CellID->1688325336],
 Cell[CellGroupData[{
-Cell[3994, 123, 105, 3, 27, "Input",
+Cell[5977, 195, 105, 3, 27, "Input",
  CellTags->"QuarkField",
  CellID->1364163366],
-Cell[4102, 128, 216, 7, 36, "Output",
- CellTags->"QuarkField",
- CellID->753517076]
+Cell[6085, 200, 196, 6, 37, "Output",
+ CellTags->"QuarkField"]
 }, Open  ]]
 }, Open  ]],
-Cell[4345, 139, 31, 0, 29, "SectionFooterSpacer"]
+Cell[6308, 210, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4413, 144, 270, 12, 31, "SeeAlsoSection",
+Cell[6376, 215, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[4686, 158, 419, 15, 31, "Text",
- CellTags->"QuarkField",
- CellID->1398753735]
+Cell[6649, 229, 376, 13, 56, "SeeAlso"]
 }, Open  ]],
-Cell[5120, 176, 23, 0, 42, "FooterCell"]
+Cell[7040, 245, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

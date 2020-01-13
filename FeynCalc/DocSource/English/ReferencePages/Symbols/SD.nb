@@ -119,11 +119,8 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"SD", "[", 
    RowBox[{"i", ",", " ", "j"}], "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "is the (FeynCalc-external) Kronecker-delta for SU(",
- StyleBox["N",
-  FontSlant->"Italic"],
- ") with color indices i and j. SD[i,j] is transformed into \
+ " \[LineSeparator]denotes the SU(N) Kronecker delta with color indices i and \
+j in the adjoint represnetation. SD[i,j] is transformed into \
 SUNDelta[SUNIndex[i],SUNIndex[j]] by FeynCalcInternal."
 }], "Usage",
  CellID->982511436],
@@ -170,9 +167,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/SUNDelta",
   ButtonNote->"SUNDelta"],
  "."
-}], "Text",
- CellTags->"SD",
- CellID->2009139529]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -205,7 +200,7 @@ Cell[BoxData[
  RowBox[{"SD", "[", 
   RowBox[{"a", ",", "b"}], "]"}]], "Input",
  CellTags->"SD",
- CellLabel->"In[1]:=",
+ CellLabel->"In[34]:=",
  CellID->476174335],
 
 Cell[BoxData[
@@ -217,8 +212,7 @@ Cell[BoxData[
     FormBox["b",
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"SD",
- CellLabel->"Out[1]=",
- CellID->181124899]
+ CellLabel->"Out[34]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -227,7 +221,7 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"%", "//", "FCI"}], "//", "StandardForm"}]], "Input",
  CellTags->"SD",
- CellLabel->"In[2]:=",
+ CellLabel->"In[35]:=",
  CellID->1096492812],
 
 Cell[BoxData[
@@ -236,8 +230,7 @@ Cell[BoxData[
    RowBox[{"SUNIndex", "[", "a", "]"}], ",", 
    RowBox[{"SUNIndex", "[", "b", "]"}]}], "]"}]], "Output",
  CellTags->"SD",
- CellLabel->"Out[2]//StandardForm=",
- CellID->2135323799]
+ CellLabel->"Out[35]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -246,15 +239,14 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"%", "//", "FCE"}], "//", "StandardForm"}]], "Input",
  CellTags->"SD",
- CellLabel->"In[3]:=",
+ CellLabel->"In[36]:=",
  CellID->315527863],
 
 Cell[BoxData[
  RowBox[{"SD", "[", 
   RowBox[{"a", ",", "b"}], "]"}]], "Output",
  CellTags->"SD",
- CellLabel->"Out[3]//StandardForm=",
- CellID->850743885]
+ CellLabel->"Out[36]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -319,12 +311,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{876, Automatic}, {Automatic, 175}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

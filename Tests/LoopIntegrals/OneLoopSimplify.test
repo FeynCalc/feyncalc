@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for OneLoopSimplify			*)
@@ -39,7 +39,7 @@ HoldForm[_]) Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]]","True"},
 "OneLoopSimplify[FVD[p, i] SPD[p, k] FAD[{p}, {p, m}], p] // FCE",
 "(FAD[{p, m}] FVD[k, i])/D"},
 {"fcstOneLoopSimplify-ID8",
-"OneLoopSimplify[FV[p, i] FV[p, j] FAD[{p}, {p, m}], p] // FCE",
+"OneLoopSimplify[FVD[p, i] FVD[p, j] FAD[{p}, {p, m}], p] // FCE",
 "(FAD[{p, m}] MTD[i, j])/D"},
 {"fcstOneLoopSimplify-ID9",
 " OneLoopSimplify[
@@ -49,23 +49,32 @@ GAD[mu].(1/2 Fal (1 - GA[5]) +
 	nu].(1/2 Fbe (1 - GA[5]) + 1/2 FbeCC (1 + GA[5])) FAD[{k - p,
 	mF}, {k, mV},
 	k] (-FVD[k, mu] FVD[k, nu] + MTD[mu, nu] SPD[k, k]), k] // FCE",
-"-((-2 + D)*FAD[{k, mF}]*(-(Fal*Fbe*GSD[p] . GA[5]) + FalCC*FbeCC*GSD[p] . GA[5] + Fal*Fbe*GSD[p] + FalCC*FbeCC*GSD[p]))/
-(4*SPD[p, p]) - (FAD[k, {k - p, mF}]*(-(Fal*Fbe*GSD[p] . GA[5]) + FalCC*FbeCC*GSD[p] . GA[5] + Fal*Fbe*GSD[p] + FalCC*FbeCC*GSD[p])*
-(mF^2 - SPD[p, p])^2)/(4*mV^2*SPD[p, p]) +
-(FAD[{k, mV}]*(-(Fal*Fbe*GSD[p] . GA[5]) + FalCC*FbeCC*GSD[p] . GA[5] + Fal*Fbe*GSD[p] + FalCC*FbeCC*GSD[p])*
-(mF^2 - 2*mV^2 + D*mV^2 - SPD[p, p]))/(4*mV^2*SPD[p, p]) -
-(FAD[{k, mF}, {k - p, mV}]*(Fal*Fbe*mF^4*GSD[p] . GA[5] - FalCC*FbeCC*mF^4*GSD[p] . GA[5] - 3*Fal*Fbe*mF^2*mV^2*GSD[p] . GA[5] +
-	D*Fal*Fbe*mF^2*mV^2*GSD[p] . GA[5] + 3*FalCC*FbeCC*mF^2*mV^2*GSD[p] . GA[5] - D*FalCC*FbeCC*mF^2*mV^2*GSD[p] . GA[5] +
-	2*Fal*Fbe*mV^4*GSD[p] . GA[5] - D*Fal*Fbe*mV^4*GSD[p] . GA[5] - 2*FalCC*FbeCC*mV^4*GSD[p] . GA[5] +
-	D*FalCC*FbeCC*mV^4*GSD[p] . GA[5] - Fal*Fbe*mF^4*GSD[p] - FalCC*FbeCC*mF^4*GSD[p] + 3*Fal*Fbe*mF^2*mV^2*GSD[p] -
-	D*Fal*Fbe*mF^2*mV^2*GSD[p] + 3*FalCC*FbeCC*mF^2*mV^2*GSD[p] - D*FalCC*FbeCC*mF^2*mV^2*GSD[p] - 2*Fal*Fbe*mV^4*GSD[p] +
-	D*Fal*Fbe*mV^4*GSD[p] - 2*FalCC*FbeCC*mV^4*GSD[p] + D*FalCC*FbeCC*mV^4*GSD[p] + 2*FalCC*Fbe*M*mV^2*SPD[p, p] -
-	2*D*FalCC*Fbe*M*mV^2*SPD[p, p] + 2*Fal*FbeCC*Mcc*mV^2*SPD[p, p] - 2*D*Fal*FbeCC*Mcc*mV^2*SPD[p, p] -
-	2*Fal*Fbe*mF^2*GSD[p] . GA[5]*SPD[p, p] + 2*FalCC*FbeCC*mF^2*GSD[p] . GA[5]*SPD[p, p] - 3*Fal*Fbe*mV^2*GSD[p] . GA[5]*SPD[p, p] +
-	D*Fal*Fbe*mV^2*GSD[p] . GA[5]*SPD[p, p] + 3*FalCC*FbeCC*mV^2*GSD[p] . GA[5]*SPD[p, p] -
-	D*FalCC*FbeCC*mV^2*GSD[p] . GA[5]*SPD[p, p] - 2*FalCC*Fbe*M*mV^2*GA[5]*SPD[p, p] + 2*D*FalCC*Fbe*M*mV^2*GA[5]*SPD[p, p] +
-	2*Fal*FbeCC*Mcc*mV^2*GA[5]*SPD[p, p] - 2*D*Fal*FbeCC*Mcc*mV^2*GA[5]*SPD[p, p] + 2*Fal*Fbe*mF^2*GSD[p]*SPD[p, p] +
-	2*FalCC*FbeCC*mF^2*GSD[p]*SPD[p, p] + 3*Fal*Fbe*mV^2*GSD[p]*SPD[p, p] - D*Fal*Fbe*mV^2*GSD[p]*SPD[p, p] +
-	3*FalCC*FbeCC*mV^2*GSD[p]*SPD[p, p] - D*FalCC*FbeCC*mV^2*GSD[p]*SPD[p, p] + Fal*Fbe*GSD[p] . GA[5]*SPD[p, p]^2 -
-	FalCC*FbeCC*GSD[p] . GA[5]*SPD[p, p]^2 - Fal*Fbe*GSD[p]*SPD[p, p]^2 - FalCC*FbeCC*GSD[p]*SPD[p, p]^2))/(4*mV^2*SPD[p, p])"}
+"((2 - D)*(FalCC*FbeCC*GSD[p] . GA[6] + Fal*Fbe*GSD[p] . GA[7])*FAD[{k, mF}])/(2*SPD[p, p]) -
+((FalCC*FbeCC*GSD[p] . GA[6] + Fal*Fbe*GSD[p] . GA[7])*FAD[k, {k - p, mF}]*(mF^2 - SPD[p, p])^2)/(2*mV^2*SPD[p, p]) +
+((FalCC*FbeCC*GSD[p] . GA[6] + Fal*Fbe*GSD[p] . GA[7])*FAD[{k, mV}]*(mF^2 - 2*mV^2 + D*mV^2 - SPD[p, p]))/(2*mV^2*SPD[p, p]) +
+(FAD[{k, mF}, {k - p, mV}]*(FalCC*FbeCC*mF^4*GSD[p] . GA[6] - 3*FalCC*FbeCC*mF^2*mV^2*GSD[p] . GA[6] +
+	D*FalCC*FbeCC*mF^2*mV^2*GSD[p] . GA[6] + 2*FalCC*FbeCC*mV^4*GSD[p] . GA[6] - D*FalCC*FbeCC*mV^4*GSD[p] . GA[6] +
+	Fal*Fbe*mF^4*GSD[p] . GA[7] - 3*Fal*Fbe*mF^2*mV^2*GSD[p] . GA[7] + D*Fal*Fbe*mF^2*mV^2*GSD[p] . GA[7] +
+	2*Fal*Fbe*mV^4*GSD[p] . GA[7] - D*Fal*Fbe*mV^4*GSD[p] . GA[7] - 2*FalCC*FbeCC*mF^2*GSD[p] . GA[6]*SPD[p, p] -
+	3*FalCC*FbeCC*mV^2*GSD[p] . GA[6]*SPD[p, p] + D*FalCC*FbeCC*mV^2*GSD[p] . GA[6]*SPD[p, p] -
+	2*Fal*Fbe*mF^2*GSD[p] . GA[7]*SPD[p, p] - 3*Fal*Fbe*mV^2*GSD[p] . GA[7]*SPD[p, p] + D*Fal*Fbe*mV^2*GSD[p] . GA[7]*SPD[p, p] -
+	2*Fal*FbeCC*Mcc*mV^2*GA[6]*SPD[p, p] + 2*D*Fal*FbeCC*Mcc*mV^2*GA[6]*SPD[p, p] - 2*FalCC*Fbe*M*mV^2*GA[7]*SPD[p, p] +
+	2*D*FalCC*Fbe*M*mV^2*GA[7]*SPD[p, p] + FalCC*FbeCC*GSD[p] . GA[6]*SPD[p, p]^2 + Fal*Fbe*GSD[p] . GA[7]*SPD[p, p]^2))/
+(2*mV^2*SPD[p, p])"},
+{"fcstOneLoopSimplify-ID10",
+"$KeepLogDivergentScalelessIntegrals = True; \n
+res=OneLoopSimplify[(-I GAD[Lor2] SMP[\"g_s\"] SUNTF[{Glu3}, Col2,
+Col3]).(M + GSD[q]).(-I GAD[Lor1] SMP[\"g_s\"] SUNTF[{Glu3}, Col3,
+Col1]) ((1 - GaugeXi) FAD[{q, M}, -p + q, -p + q] FVD[p - q,
+Lor2] FVD[-p + q, Lor1] + FAD[{q, M}, -p + q] MTD[Lor1, Lor2]), q, FCE -> True];
+$KeepLogDivergentScalelessIntegrals = False; \n res",
+"(CF*(2 - D)*FAD[{q, M}]*GSD[p]*SDF[Col1, Col2]*SMP[\"g_s\"]^2)/
+(2*SPD[p, p]) + (CF*(1 - GaugeXi)*FAD[q, q]*GSD[p]*SDF[Col1, Col2]*
+SMP[\"g_s\"]^2*(M^2 - SPD[p, p]))/(2*SPD[p, p]) +
+(CF*(1 - GaugeXi)*FAD[q, q, {-p + q, M}]*GSD[p]*SDF[Col1, Col2]*
+SMP[\"g_s\"]^2*(M^2 - SPD[p, p])^2)/(2*SPD[p, p]) -
+(CF*FAD[q, {-p + q, M}]*SDF[Col1, Col2]*SMP[\"g_s\"]^2*
+(3*M^2*GSD[p] - D*M^2*GSD[p] - GaugeXi*M^2*GSD[p] - 2*M*SPD[p, p] +
+2*D*M*SPD[p, p] + 2*GaugeXi*M*SPD[p, p] + 3*GSD[p]*SPD[p, p] -
+D*GSD[p]*SPD[p, p] - GaugeXi*GSD[p]*SPD[p, p]))/(2*SPD[p, p])"}
 }

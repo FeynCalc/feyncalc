@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Scalar gluon vertex											*)
@@ -17,11 +17,9 @@
 
 ScalarGluonVertex::usage =
 "ScalarGluonVertex[{p}, {q}, {mu,a}] or ScalarGluonVertex[ p,  q,  mu, a ] yields \
-the scalar-scalar-gluon vertex (p and q are incoming momenta).
-
-ScalarGluonVertex[{mu,a}, {nu,b}] yields the scalar-scalar-gluon-gluon vertex \
-(p and q are incoming momenta).
-
+the scalar-scalar-gluon vertex, where p and q are incoming momenta. \n
+ScalarGluonVertex[{mu,a}, {nu,b}] yields the scalar-scalar-gluon-gluon vertex, \
+where p and q are incoming momenta.\n
 The dimension  and the name of the coupling constant are determined by the \
 options Dimension and CouplingConstant.";
 
@@ -37,11 +35,6 @@ Options[ScalarGluonVertex] = {
 	Dimension -> D,
 	Gauge -> 1
 };
-
-{l, c} = MakeFeynCalcPrivateContext /@ {"l", "c"};
-
-ScalarGluonVertex[x___, i_Integer, y___] :=
-	ScalarGluonVertex[x, l[i], c[i], y];
 
 (* 3 - vertex *)
 ScalarGluonVertex[x1_,x2_,x3_,x4_, opts:OptionsPattern[]] :=

@@ -27,7 +27,7 @@ End[]
 
 Begin["`Integrate3`Private`"]
 
-mcheck[y_Integer?Positive] := True;
+mcheck[_Integer?Positive] := True;
 mcheck[y_] := If[Variables[y] === {}, False,
 										DataType[First[Variables[y]], PositiveInteger]
 									];
@@ -101,7 +101,7 @@ iT[DeltaFunctionPrime[1-x_] f_., {x_, 0, 1}] :> (D[f, x]/.x->1),
 iT[DeltaFunctionDoublePrime[1-x_] f_., {x_, 0, 1}] :> (D[f, x, x]/.x->1),
 *)
 
-iT[en_Integer,{x_,0,1}] :> en,
+iT[en_Integer,{_,0,1}] :> en,
 
 iT[PolyLog[2,1-x_] / (1-x_)^2,{x_,0,1}] :>
 		(FCPrint[3,"DISTRIBUTION sense "];
@@ -771,7 +771,7 @@ Zeta2*Log[1 - u] + Log[1 - u]^3/6 -
 
 (* w1 *)
 (*I137I*)
-(*X*)iT[(x_^n_?mcheck) DeltaFunction[1-x_],
+(*X*)iT[(x_^_?mcheck) DeltaFunction[1-x_],
 						{x_,0,1}] :> 1,
 
 (* w2 *)
@@ -2368,7 +2368,7 @@ Log[2]^2*Zeta2 + 1/3*Log[2]^4
 (*X*)iT[(Log[1-x_]^2)/x_, {x_,0,1}] :>2*Zeta[3]
 ,
 (*RX34*)
-(*X*)iT[Log[1-x]^2*x^-1, {x_,0,1}] :> 2*Zeta[3]
+(*X*)iT[Log[1-x_]^2*x_^-1, {x_,0,1}] :> 2*Zeta[3]
 ,
 (*RX39*)
 (*X*)iT[ Log[1 + (x_)]^2/(x_), {x_,0,1}] :> 1/4*Zeta[3]

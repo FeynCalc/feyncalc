@@ -51,7 +51,7 @@ Options[OPEIntegrateDelta] = {
 OPEIntegrateDelta[expr_, x_, m_, ops___Rule] :=
 	Block[ {tt, locdim, null, xmpart, fypart, lpa, new, dim, reg, nonreg,
 	mint, ppi, kernel, rkern, f1, kfa, intsave, eporder, res,ttii,
-	ttx, finsub},
+	ttx, finsub, fy, ttnox, ttp},
 		eporder = EpsilonOrder /. {ops} /. Options[OPEIntegrateDelta];
 		dim     = Dimension /. {ops} /. Options[OPEIntegrateDelta];
 		finsub = FinalSubstitutions /. {ops} /. Options[OPEIntegrateDelta];

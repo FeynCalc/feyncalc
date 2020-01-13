@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for fcstFCLoopIBPReducableQ	*)
@@ -29,5 +29,41 @@ Tests`LoopIntegrals`fcstFCLoopIBPReducableQ =
 "FCLoopIBPReducableQ[FCI[SPD[q,q]^2FAD[{q,0,1},{q+p,m,2}]]]",
 "True"},
 {"fcstFCLoopIBPReducableQ-ID7",
-"FCLoopIBPReducableQ[FCI[SPD[q,r]FAD[{q,0,1},{q+p,m,2}]]]", "True"}
+"FCLoopIBPReducableQ[FCI[SPD[q,r]FAD[{q,0,1},{q+p,m,2}]]]", "True"},
+{"fcstFCLoopIBPReducableQ-ID8",
+"FCLoopIBPReducableQ[FCI[CFAD[{q,0,1}]]]", "False"},
+{"fcstFCLoopIBPReducableQ-ID9",
+"FCLoopIBPReducableQ[FCI[CFAD[{q,0,2}]]]", "True"},
+{"fcstFCLoopIBPReducableQ-ID10",
+"FCLoopIBPReducableQ[FCI[CSPD[q,q]CFAD[{q,0,1}]]]", "False"},
+{"fcstFCLoopIBPReducableQ-ID11",
+"FCLoopIBPReducableQ[FCI[CSPD[q,q]^2CFAD[{q,0,1}]]]", "True"},
+{"fcstFCLoopIBPReducableQ-ID12",
+"FCLoopIBPReducableQ[FCI[CSPD[q,q]^2CFAD[{q,0,1},{q+p,m,2}]]]",
+"True"},
+{"fcstFCLoopIBPReducableQ-ID13",
+"FCLoopIBPReducableQ[FCI[CSPD[q,r]CFAD[{q,0,1},{q+p,m,2}]]]",
+"True"},
+{"fcstFCLoopIBPReducableQ-ID14",
+"FCLoopIBPReducableQ[FCI[GFAD[{q,1}]]]", "False"},
+{"fcstFCLoopIBPReducableQ-ID15",
+"FCLoopIBPReducableQ[FCI[GFAD[{q,2}]]]", "True"},
+{"FCLoopIBPReducableQ-ID16",
+"FCLoopIBPReducableQ[FCI[SFAD[{q,0,1}]]]", "False"},
+{"FCLoopIBPReducableQ-ID17",
+"FCLoopIBPReducableQ[FCI[SFAD[{q,0,2}]]]", "True"},
+{"FCLoopIBPReducableQ-ID18",
+"FCLoopIBPReducableQ[FCI[SPD[q,q]SFAD[{q,0,1}]]]", "False"},
+{"FCLoopIBPReducableQ-ID19",
+"FCLoopIBPReducableQ[FCI[SPD[q,q]^2SFAD[{q,0,1}]]]", "True"},
+{"FCLoopIBPReducableQ-ID20",
+"FCLoopIBPReducableQ[FCI[SPD[q,q]^2SFAD[{q,0,1},{q+p,m,2}]]]",
+"True"},
+{"FCLoopIBPReducableQ-ID21",
+"FCLoopIBPReducableQ[FCI[SPD[q,r]SFAD[{q,0,1},{q+p,m,2}]]]",
+"True"},
+{"FCLoopIBPReducableQ-ID22",
+"FCLoopIBPReducableQ[FCI[SFAD[{q,1}]]]", "False"},
+{"FCLoopIBPReducableQ-ID23",
+"FCLoopIBPReducableQ[FCI[SFAD[{q,2}]]]", "False"}
 });

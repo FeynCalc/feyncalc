@@ -1,0 +1,654 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     17922,        644]
+NotebookOptionsPosition[     13669,        511]
+NotebookOutlinePosition[     15912,        569]
+CellTagsIndexPosition[     15827,        564]
+WindowTitle->FCChargeConjugateTransposed
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"SpinorChainTranspose\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/SpinorChainTranspose"], "\<\"DiracGamma\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracGamma"], "\<\"Spinor\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Spinor"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->
+         False], {"\<\"FeynCalc/ref/FCChargeConjugateTransposed\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/FCChargeConjugateTransposed"]}, Visible -> 
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
+FCChargeConjugateTransposed.html"], StandardForm]], "Input", 
+              TextClipboardType -> "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$93562], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/FCChargeConjugateTransposed", ".html"]], None}]}]},
+       
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[TextData[{
+ Cell["FCChargeConjugateTransposed", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"FCChargeConjugateTransposed", "[", "exp", "]"}]], 
+      "InlineFormula"],
+     " \[LineSeparator]represents the application of the charge conjugation \
+operator to the transposed of ",
+     Cell[BoxData["exp"], "InlineFormula"],
+     ", i.e. ",
+     Cell[BoxData[
+      RowBox[{"C", " ", 
+       SuperscriptBox["exp", "T"], " ", 
+       SuperscriptBox["C", 
+        RowBox[{"-", "1"}]]}]], "InlineFormula"],
+     ". Here ",
+     Cell[BoxData["exp"], "InlineFormula"],
+     " is understood to be a single Dirac matrix or a chain thereof."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->875591338],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[TextData[{
+ "The option setting ",
+ Cell[BoxData["Explicit"], "InlineFormula"],
+ " determines whether the explicit result is returned or whether it is left \
+in the unevaluated form."
+}], "Notes",
+ CellID->184725283],
+
+Cell[TextData[{
+ "The unevaluated form will be also maintained if the function does not know \
+how to obtain ",
+ Cell[BoxData[
+  RowBox[{"C", " ", 
+   SuperscriptBox["exp", "T"], " ", 
+   SuperscriptBox["C", 
+    RowBox[{"-", "1"}]]}]], "InlineFormula"],
+ " from the given ",
+ Cell[BoxData["exp"], "InlineFormula"],
+ "."
+}], "Notes",
+ CellID->407289918],
+
+Cell[TextData[{
+ "The shortcut for ",
+ ButtonBox["FCChargeConjugateTransposed",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCChargeConjugateTransposed",
+  ButtonNote->"FCChargeConjugateTransposed"],
+ " is ",
+ ButtonBox["FCCCT",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCCCT",
+  ButtonNote->"FCCCT"],
+ "."
+}], "Notes",
+ CellID->798826111],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "FCChargeConjugateTransposed", "]"}]], "Input",
+ CellLabel->"In[95]:=",
+ CellID->1284994965],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"DotSimplify", "\[Rule]", "True"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCDiracIsolate", "\[Rule]", "True"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"Explicit", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{428, 35},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[95]=",
+ CellID->1548124228]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->712369333],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->1799623507],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GA", "[", 
+  RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]"}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->219403019],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm], ".", 
+   FormBox[
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Rho]",
+       TraditionalForm],
+      TraditionalForm]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ ImageSize->{74, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->1595078624]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCChargeConjugateTransposed", "[", "%", "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->1159741749],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"C", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     FormBox[
+      RowBox[{
+       FormBox[
+        SuperscriptBox[
+         OverscriptBox["\[Gamma]", "_"], 
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm], ".", 
+       FormBox[
+        SuperscriptBox[
+         OverscriptBox["\[Gamma]", "_"], 
+         FormBox[
+          FormBox["\[Nu]",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm], ".", 
+       FormBox[
+        SuperscriptBox[
+         OverscriptBox["\[Gamma]", "_"], 
+         FormBox[
+          FormBox["\[Rho]",
+           TraditionalForm],
+          TraditionalForm]],
+        TraditionalForm]}],
+      TraditionalForm], ")"}], "T"], 
+   SuperscriptBox["C", 
+    RowBox[{"-", "1"}]]}], TraditionalForm]], "Output",
+ ImageSize->{148, 22},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->1515265426]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCChargeConjugateTransposed", "[", 
+  RowBox[{
+   RowBox[{"GA", "[", 
+    RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]"}], "]"}], ",", 
+   RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->1573360164],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", 
+   RowBox[{
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Rho]",
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Nu]",
+       TraditionalForm],
+      TraditionalForm]], ".", 
+    SuperscriptBox[
+     OverscriptBox["\[Gamma]", "_"], 
+     FormBox[
+      FormBox["\[Mu]",
+       TraditionalForm],
+      TraditionalForm]]}]}], TraditionalForm]], "Output",
+ ImageSize->{85, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->2077641577]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GA", "[", "5", "]"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->1664135997],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   OverscriptBox["\[Gamma]", "_"], 
+   FormBox["5",
+    TraditionalForm]], TraditionalForm]], "Output",
+ ImageSize->{23, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[4]=",
+ CellID->867971904]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FCCCT", "[", "%", "]"}]], "Input",
+ CellLabel->"In[5]:=",
+ CellID->873144111],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"C", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     FormBox[
+      FormBox[
+       SuperscriptBox[
+        OverscriptBox["\[Gamma]", "_"], 
+        FormBox["5",
+         TraditionalForm]],
+       TraditionalForm],
+      TraditionalForm], ")"}], "T"], 
+   SuperscriptBox["C", 
+    RowBox[{"-", "1"}]]}], TraditionalForm]], "Output",
+ ImageSize->{97, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[5]=",
+ CellID->377584760]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "//", "Explicit"}]], "Input",
+ CellLabel->"In[6]:=",
+ CellID->227446180],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   OverscriptBox["\[Gamma]", "_"], 
+   FormBox["5",
+    TraditionalForm]], TraditionalForm]], "Output",
+ ImageSize->{23, 19},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[6]=",
+ CellID->1395716452]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["SpinorChainTranspose",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/SpinorChainTranspose",
+  ButtonNote->"SpinorChainTranspose"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["DiracGamma",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracGamma",
+  ButtonNote->"DiracGamma"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["Spinor",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Spinor",
+  ButtonNote->"Spinor"],
+  FontFamily->"Verdana"],
+ "."
+}], "SeeAlso",
+ CellID->655647701]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"FCChargeConjugateTransposed",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2020, 1, 5, 18, 55, 45.978520}", 
+    "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "FCChargeConjugateTransposed[exp] represents the application of the \
+charge conjugation operator to the transposed of exp, i.e. C exp^T C -1. Here \
+exp is understood to be a single Dirac matrix or a chain thereof.", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "FCChargeConjugateTransposed", "titlemodifier" -> "", "windowtitle" -> 
+    "FCChargeConjugateTransposed", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/FCChargeConjugateTransposed"}, "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[7575, 240, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->712369333]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 15684, 557}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[599, 21, 3322, 81, 53, "AnchorBarGrid",
+ CellID->1],
+Cell[3924, 104, 304, 11, 45, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4253, 119, 801, 23, 102, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[5079, 146, 738, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->875591338],
+Cell[5820, 172, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[5854, 174, 221, 6, 70, "Notes",
+ CellID->184725283],
+Cell[6078, 182, 353, 12, 70, "Notes",
+ CellID->407289918],
+Cell[6434, 196, 366, 13, 70, "Notes",
+ CellID->798826111],
+Cell[CellGroupData[{
+Cell[6825, 213, 131, 3, 70, "Input",
+ CellID->1284994965],
+Cell[6959, 218, 555, 15, 56, "Output",
+ CellID->1548124228]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7575, 240, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->712369333],
+Cell[CellGroupData[{
+Cell[7987, 259, 196, 6, 26, "ExampleSection",
+ CellID->1799623507],
+Cell[CellGroupData[{
+Cell[8208, 269, 144, 4, 27, "Input",
+ CellID->219403019],
+Cell[8355, 275, 746, 31, 37, "Output",
+ CellID->1595078624]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9138, 311, 124, 3, 27, "Input",
+ CellID->1159741749],
+Cell[9265, 316, 1003, 38, 43, "Output",
+ CellID->1515265426]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10305, 359, 265, 7, 27, "Input",
+ CellID->1573360164],
+Cell[10573, 368, 663, 26, 37, "Output",
+ CellID->2077641577]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11273, 399, 99, 3, 27, "Input",
+ CellID->1664135997],
+Cell[11375, 404, 275, 10, 40, "Output",
+ CellID->867971904]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11687, 419, 101, 3, 27, "Input",
+ CellID->873144111],
+Cell[11791, 424, 491, 19, 40, "Output",
+ CellID->377584760]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12319, 448, 100, 3, 27, "Input",
+ CellID->227446180],
+Cell[12422, 453, 276, 10, 40, "Output",
+ CellID->1395716452]
+}, Open  ]]
+}, Open  ]],
+Cell[12725, 467, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12793, 472, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[13066, 486, 561, 20, 56, "SeeAlso",
+ CellID->655647701]
+}, Open  ]],
+Cell[13642, 509, 23, 0, 41, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

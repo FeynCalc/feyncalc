@@ -28,8 +28,19 @@ End[]
 
 Begin["`Solve`Private`"]
 
-Options[Solve2] = {Factoring -> Factor2, FinalSubstitutions -> {}};
-Options[Solve3] = {Factoring -> False, FinalSubstitutions -> {}, ParallelMap -> False};
+sol3Verbose::usage="";
+
+Options[Solve2] = {
+	Factoring -> Factor2,
+	FinalSubstitutions -> {}
+};
+
+Options[Solve3] = {
+	FCVerbose 			-> False,
+	Factoring 			-> False,
+	FinalSubstitutions	-> {},
+	ParallelMap 		-> False
+};
 
 Solve2[a_/;Head[a]=!=List, b__] :=
 	Solve2[{a}, b];
@@ -39,7 +50,7 @@ Solve2[a_, b_/;Head[b]=!=List, c___] :=
 Solve2[ai_List, bii_, ops___Rule] :=
 	Block[{fixeq, temp, re, factor , finsub, a, b, bi,dumsub, dum},
 		bi = Flatten[{bii}];
-		dumsub = Table[bi[[ij]] -> dum[ij],{ij,Length[bi]}];
+		dumsub = Table[bi[[r]] -> dum[r],{r,Length[bi]}];
 		a = Flatten[{ai}] /. dumsub;
 		b = Last/@dumsub;
 		factor = Factoring /. {ops} /. Options[Solve2];
@@ -63,12 +74,36 @@ Solve2[ai_List, bii_, ops___Rule] :=
 Solve3[a_/;Head[a]=!=List, b__] :=
 	Solve3[{a}, b];
 
-Solve3[eqq_List, clii_List, ops___Rule] :=
-	Block[{cli = clii, factor , finsub,newel, lneq, neqh,isol, neq, newneq,
-		col,  new, res = {}, parmap, pmap, starttime = AbsoluteTime[]},
-		factor = Factoring /. {ops} /. Options[Solve3];
-		finsub = FinalSubstitutions/. {ops} /. Options[Solve3];
-		parmap = ParallelMap /. {ops} /. Options[Solve3];
+Solve3[eqq_List, clii_List, OptionsPattern[]] :=
+	Block[{cli = clii, factor, factorSpecial, optFactoring, finsub,newel, lneq, neqh,isol, neq, newneq,
+		col,  new, res = {}, parmap, pmap, starttime = AbsoluteTime[], neq1},
+
+		optFactoring = OptionValue[Factoring];
+		finsub = OptionValue[FinalSubstitutions];
+		parmap = OptionValue[ParallelMap];
+
+		If [OptionValue[FCVerbose]===False,
+			sol3Verbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				sol3Verbose=OptionValue[FCVerbose]
+			];
+		];
+
+		Switch[optFactoring,
+			False,
+				factor = Identity;
+				factorSpecial = Identity,
+			True|Factor2,
+				factor = Factor2;
+				factorSpecial = Identity,
+			{_, _},
+				factor = optFactoring[[1]];
+				factorSpecial = optFactoring[[2]],
+			_,
+				factor = optFactoring;
+				factorSpecial = optFactoring
+		];
+
 		(* High - school algorithm *)
 
 		isol[xy__] :=
@@ -78,8 +113,8 @@ Solve3[eqq_List, clii_List, ops___Rule] :=
 			];
 
 		With[{cli = cli},
-			col = ( FCPrint[2," Collect with Factor "];
-			Collect[#, cli, Factor] ) &
+			col = ( FCPrint[2," Collect with ", factorSpecial];
+			Collect[#, cli, factorSpecial] ) &
 		];
 
 		If[TrueQ[parmap],
@@ -100,16 +135,27 @@ Solve3[eqq_List, clii_List, ops___Rule] :=
 
 		neq = eqq /. Equal[a_, b_] :> (a-b);
 		For[i = 1, i <= Length[eqq], i++,
+			If[ i>Length[cli],
+				Break[];
+			];
 			If[!FreeQ[neq, cli[[i]]],
-				FCPrint[1,"solve3 i = ",i,"    time used : ",
-				Round[(starttime-AbsoluteTime[])/60], " minutes" ];
+				FCPrint[1,"solve3 i = ",i,"    time used : ", Round[(starttime-AbsoluteTime[])/60], " minutes", FCDoControl->sol3Verbose];
 				While[FreeQ[neq1 = (*col[*)neq[[1]] /. res(*]*), cli[[i]]],
-					FCPrint[2,"rotating ", i];
+					FCPrint[2,"rotating ", i, FCDoControl->sol3Verbose];
 					neq = RotateLeft[neq = Prepend[Rest[neq],neq1]]
 				];
-				FCPrint[2,"solving for ",cli[[i]]];
+				FCPrint[2,"solving for ",cli[[i]], FCDoControl->sol3Verbose];
 				(*{neq1,cli[[i]]}>>"neq1.s";*)
-				new = Solve2[neq1, cli[[i]], Factoring -> False][[1]];
+
+
+				FCPrint[1,"Solve3: Calling Solve2.", FCDoControl->sol3Verbose];
+				new = Solve2[neq1, cli[[i]], Factoring -> factor][[1]];
+
+				(*new = Solve[neq1, cli[[i]]];*)
+				FCPrint[1,"Solve3: Solve2 done.", FCDoControl->sol3Verbose];
+				FCPrint[3,"Solve3: new:", new, FCDoControl->sol3Verbose];
+
+
 				(*
 				FCPrint[3,"solution = ",new//InputForm];
 				new >>"new.s";
@@ -118,18 +164,23 @@ Solve3[eqq_List, clii_List, ops___Rule] :=
 				CHANGE 20100110
 				new = new[[1]] -> Collect2[new[[2]], cli, Factoring -> Factor2];
 				*)
-				new = new[[1]] -> Collect[new[[2]], cli, Factor];
+
+				FCPrint[3,"Solve3: Calling Collect.", FCDoControl->sol3Verbose];
+				new = new[[1]] -> Collect[new[[2]], cli, factorSpecial];
+				FCPrint[3,"Solve3: Collect done.", FCDoControl->sol3Verbose];
+
 				If[!FreeQ2[new[[2]], cli],
+					FCPrint[3,"Solve3: Applying Cancel.", FCDoControl->sol3Verbose];
 					new = new[[1]] -> Map[Cancel, new[[2]]];
 				];
-				FCPrint[3,"solution = ",new//InputForm];
+				FCPrint[3,"solution = ",new//InputForm, FCDoControl->sol3Verbose];
 					neq = Rest[neq];
 				If[i>1,
 					res = Append[specsimp[res, new], new],
 					res = {new}
 				];
 				If[i<Length[eqq],
-					FCPrint[1,"UPDATING ", LeafCount @ neq];
+					FCPrint[1,"UPDATING ", LeafCount @ neq, FCDoControl->sol3Verbose];
 					newneq = {};
 					(*
 					neqh = Hold@@{neq};
@@ -150,10 +201,11 @@ Solve3[eqq_List, clii_List, ops___Rule] :=
 					Clear[newel];
 					];
 					neq = newneq; *)
-					FCPrint[1,"leafcount neq = ", LeafCount[neq]];
+					FCPrint[1,"leafcount neq = ", LeafCount[neq], FCDoControl->sol3Verbose];
 				];
 			];
 		];
+		FCPrint[1,"Solve3: Main loop done.", FCDoControl->sol3Verbose];
 		res = res /. finsub;
 		If[factor =!= False,
 			res = pmap[(#[[1]] -> factor[#[[2]]])&,	res]

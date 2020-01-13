@@ -1,0 +1,40 @@
+
+
+(* :Title: FreeIndexFreeQ.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FreeIndexFreeQ	*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Lorentz`fcstFreeIndexFreeQ =
+({
+{"fcstFreeIndexFreeQ-ID1", "FreeIndexFreeQ[0,{LorentzIndex}]",
+"True"},
+{"fcstFreeIndexFreeQ-ID2", "FreeIndexFreeQ[a,{LorentzIndex}]",
+"True"},
+{"fcstFreeIndexFreeQ-ID3",
+"FreeIndexFreeQ[FCI[FV[p,i]],{LorentzIndex}]", "False"},
+{"fcstFreeIndexFreeQ-ID4",
+"FreeIndexFreeQ[FCI[FV[p,i]],{CartesianIndex}]", "True"},
+{"fcstFreeIndexFreeQ-ID5",
+"FreeIndexFreeQ[FCI[FV[p,i]^2],{LorentzIndex}]", "True"},
+{"fcstFreeIndexFreeQ-ID6",
+"FreeIndexFreeQ[FCI[FV[p1,i]+FV[p2,i]+FV[p3,i]MT[j,j]],{\
+LorentzIndex}]", "False"},
+{"fcstFreeIndexFreeQ-ID7",
+"FreeIndexFreeQ[FCI[FV[p,mu]FV[q,mu]FV[t,bh].GA[bh]+GS[nh]],{\
+LorentzIndex}]", "True"},
+{"fcstFreeIndexFreeQ-ID8",
+"FreeIndexFreeQ[FCI[FV[p,mu]FV[q,mu]FV[t,bh]+GA[nh]],{LorentzIndex}\
+]", "False"},
+{"fcstFreeIndexFreeQ-ID9",
+"FreeIndexFreeQ[FCI[FV[p,mu]FV[q,mu]FV[t,bh].GA[bh]+GS[nh]],{\
+LorentzIndex}]", "True"}
+});

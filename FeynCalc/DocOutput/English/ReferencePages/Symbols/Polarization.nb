@@ -3,69 +3,95 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15842,        538]
-NotebookOptionsPosition[      9737,        350]
-NotebookOutlinePosition[     13839,        461]
-CellTagsIndexPosition[     13723,        455]
+NotebookDataLength[     16391,        543]
+NotebookOptionsPosition[     10702,        374]
+NotebookOutlinePosition[     14589,        476]
+CellTagsIndexPosition[     14473,        470]
 WindowTitle->Polarization
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/Polarization\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/Polarization"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"PolarizationVector\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/PolarizationVector"], "\<\"PolarizationSum\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/PolarizationSum"], "\<\"DoPolarizationSums\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/DoPolarizationSums"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/Polarization\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/Polarization"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 Polarization.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$119266], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/Polarization", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$209425], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/Polarization", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,24 +99,32 @@ Polarization.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Polarization", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Polarization", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"Polarization", "[", "k", "]"}]], "InlineFormula"],
-     " \[LineSeparator]",
-     "is the head of a polarization momentum with (incoming) momentum k. A \
-slashed polarization vector (e1(k) slash) has to be entered as \
-DiracSlash[Polarization[k]]. The internal representation for a polarization \
-vector e1 corresponding to a boson with four momentum k is: Momentum[ \
-Polarization[ k, I ] ]. With this notation transversality of polarization \
-vectors is provided, i.e. , Pair[ Momentum[k], Momentum[ Polarization[k, I] ] \
-] yields 0. Polarization[k,-I] denotes the complex conjugate polarization. \
-Polarization is also an option of various functions related to the operator \
-product expansion. The setting 0 denotes the unpolarized and 1 the polarized \
-case."
+     " \[LineSeparator]is the head of a polarization momentum with (incoming) \
+momentum k. A slashed polarization vector (e1(k) slash) has to be entered as \
+GS[Polarization[k]]. The internal representation for a polarization vector e1 \
+corresponding to a boson with four momentum k is: Momentum[ Polarization[ k, \
+I ] ]. With this notation transversality of polarization vectors is provided, \
+i.e. , Pair[ Momentum[k], Momentum[ Polarization[k, I] ] ] yields 0. \
+Polarization[k,-I] denotes the complex conjugate polarization. Polarization \
+is also an option of various functions related to the operator product \
+expansion. The setting 0 denotes the unpolarized and 1 the polarized case."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -116,7 +150,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1534973530],
+ CellID->1400570862],
 
 Cell[CellGroupData[{
 
@@ -126,7 +160,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->276449574],
+ CellID->1428208848],
 
 Cell[CellGroupData[{
 
@@ -140,12 +174,11 @@ Cell[BoxData[
  FormBox[
   RowBox[{"Polarization", "(", 
    RowBox[{"k", ",", "\[ImaginaryI]"}], ")"}], TraditionalForm]], "Output",
- ImageSize->{117, 15},
+ ImageSize->{112, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Polarization",
- CellLabel->"Out[1]=",
- CellID->503395489]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -160,12 +193,11 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{"Polarization", "[", 
   RowBox[{"k", ",", "\[ImaginaryI]"}], "]"}]], "Output",
- ImageSize->{150, 15},
+ ImageSize->{149, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Polarization",
- CellLabel->"Out[2]//StandardForm=",
- CellID->1532058091]
+ CellLabel->"Out[2]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -183,12 +215,11 @@ Cell[BoxData[
   RowBox[{"Polarization", "(", 
    RowBox[{"k", ",", 
     RowBox[{"-", "\[ImaginaryI]"}]}], ")"}], TraditionalForm]], "Output",
- ImageSize->{127, 15},
+ ImageSize->{123, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Polarization",
- CellLabel->"Out[3]=",
- CellID->1609141955]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -206,18 +237,17 @@ Cell[BoxData[
  RowBox[{"Polarization", "[", 
   RowBox[{"k", ",", 
    RowBox[{"-", "\[ImaginaryI]"}]}], "]"}]], "Output",
- ImageSize->{159, 15},
+ ImageSize->{158, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Polarization",
- CellLabel->"Out[4]//StandardForm=",
- CellID->1652128522]
+ CellLabel->"Out[4]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DiracSlash", "[", 
+ RowBox[{"GS", "[", 
   RowBox[{"Polarization", "[", "k", "]"}], "]"}]], "Input",
  CellTags->"Polarization",
  CellLabel->"In[5]:=",
@@ -233,19 +263,18 @@ Cell[BoxData[
      FormBox["k",
       TraditionalForm], ")"}],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{53, 15},
+ ImageSize->{58, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Polarization",
- CellLabel->"Out[5]=",
- CellID->665542938]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"DiracSlash", "[", 
+  RowBox[{"GS", "[", 
    RowBox[{"Polarization", "[", "k", "]"}], "]"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"Polarization",
@@ -253,16 +282,14 @@ Cell[BoxData[
  CellID->710690441],
 
 Cell[BoxData[
- RowBox[{"DiracGamma", "[", 
-  RowBox[{"Momentum", "[", 
-   RowBox[{"Polarization", "[", 
-    RowBox[{"k", ",", "\[ImaginaryI]"}], "]"}], "]"}], "]"}]], "Output",
- ImageSize->{331, 15},
+ RowBox[{"GS", "[", 
+  RowBox[{"Polarization", "[", 
+   RowBox[{"k", ",", "\[ImaginaryI]"}], "]"}], "]"}]], "Output",
+ ImageSize->{182, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Polarization",
- CellLabel->"Out[6]//StandardForm=",
- CellID->1978838604]
+ CellLabel->"Out[6]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -294,12 +321,11 @@ Cell[BoxData[
      FormBox["k",
       TraditionalForm], ")"}],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{55, 19},
+ ImageSize->{63, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Polarization",
- CellLabel->"Out[7]=",
- CellID->149210740]
+ CellLabel->"Out[7]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -341,17 +367,15 @@ Cell[TextData[{
   ButtonNote->"DoPolarizationSums"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"Polarization",
- CellID->1965130928]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{808, 911},
+WindowMargins->{{278, Automatic}, {Automatic, 28}},
 WindowTitle->"Polarization",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -360,10 +384,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 23, 31.541132}", 
+   "built" -> "{2020, 1, 5, 19, 0, 46.412929}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -371,19 +395,19 @@ TaggingRules->{
     "None", "summary" -> 
     "Polarization[k] is the head of a polarization momentum with (incoming) \
 momentum k. A slashed polarization vector (e1(k) slash) has to be entered as \
-DiracSlash[Polarization[k]]. The internal representation for a polarization \
-vector e1 corresponding to a boson with four momentum k is: \
-Momentum[Polarization[k, I ] ]. With this notation transversality of \
-polarization vectors is provided, i.e. , Pair[Momentum[k], \
-Momentum[Polarization[k, I] ] ] yields 0. Polarization[k,-I] denotes the \
-complex conjugate polarization. Polarization is also an option of various \
-functions related to the operator product expansion. The setting 0 denotes \
-the unpolarized and 1 the polarized case.", "synonyms" -> {}, "title" -> 
-    "Polarization", "titlemodifier" -> "", "windowtitle" -> "Polarization", 
-    "type" -> "Symbol", "uri" -> "FeynCalc/ref/Polarization"}, 
-  "SearchTextTranslated" -> ""},
+GS[Polarization[k]]. The internal representation for a polarization vector e1 \
+corresponding to a boson with four momentum k is: Momentum[Polarization[k, I \
+] ]. With this notation transversality of polarization vectors is provided, \
+i.e. , Pair[Momentum[k], Momentum[Polarization[k, I] ] ] yields 0. \
+Polarization[k,-I] denotes the complex conjugate polarization. Polarization \
+is also an option of various functions related to the operator product \
+expansion. The setting 0 denotes the unpolarized and 1 the polarized case.", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "Polarization", 
+    "titlemodifier" -> "", "windowtitle" -> "Polarization", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/Polarization"}, "SearchTextTranslated" -> 
+  ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -391,8 +415,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -401,145 +426,125 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3960, 103, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[5174, 137, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1534973530]},
+   CellID->1400570862]},
  "Polarization"->{
-  Cell[4593, 132, 135, 4, 27, "Input",
+  Cell[5808, 166, 135, 4, 27, "Input",
    CellTags->"Polarization",
    CellID->438222688],
-  Cell[4731, 138, 289, 9, 36, "Output",
-   CellTags->"Polarization",
-   CellID->503395489],
-  Cell[5057, 152, 170, 5, 27, "Input",
+  Cell[5946, 172, 269, 8, 37, "Output",
+   CellTags->"Polarization"],
+  Cell[6252, 185, 170, 5, 27, "Input",
    CellTags->"Polarization",
    CellID->790373903],
-  Cell[5230, 159, 274, 8, 49, "Output",
-   CellTags->"Polarization",
-   CellID->1532058091],
-  Cell[5541, 172, 177, 6, 27, "Input",
+  Cell[6425, 192, 253, 7, 51, "Output",
+   CellTags->"Polarization"],
+  Cell[6715, 204, 177, 6, 27, "Input",
    CellTags->"Polarization",
    CellID->211711632],
-  Cell[5721, 180, 310, 10, 36, "Output",
-   CellTags->"Polarization",
-   CellID->1609141955],
-  Cell[6068, 195, 212, 7, 27, "Input",
+  Cell[6895, 212, 289, 9, 37, "Output",
+   CellTags->"Polarization"],
+  Cell[7221, 226, 212, 7, 27, "Input",
    CellTags->"Polarization",
    CellID->36512114],
-  Cell[6283, 204, 293, 9, 49, "Output",
-   CellTags->"Polarization",
-   CellID->1652128522],
-  Cell[6613, 218, 172, 5, 27, "Input",
+  Cell[7436, 235, 272, 8, 51, "Output",
+   CellTags->"Polarization"],
+  Cell[7745, 248, 164, 5, 27, "Input",
    CellTags->"Polarization",
    CellID->734957023],
-  Cell[6788, 225, 420, 15, 36, "Output",
-   CellTags->"Polarization",
-   CellID->665542938],
-  Cell[7245, 245, 211, 7, 27, "Input",
+  Cell[7912, 255, 400, 14, 37, "Output",
+   CellTags->"Polarization"],
+  Cell[8349, 274, 203, 7, 27, "Input",
    CellTags->"Polarization",
    CellID->710690441],
-  Cell[7459, 254, 349, 10, 49, "Output",
-   CellTags->"Polarization",
-   CellID->1978838604],
-  Cell[7845, 269, 320, 9, 27, "Input",
+  Cell[8555, 283, 283, 8, 51, "Output",
+   CellTags->"Polarization"],
+  Cell[8875, 296, 320, 9, 27, "Input",
    CellTags->"Polarization",
    CellID->1314823646],
-  Cell[8168, 280, 528, 21, 40, "Output",
-   CellTags->"Polarization",
-   CellID->149210740],
-  Cell[9064, 324, 631, 21, 31, "Text",
-   CellTags->"Polarization",
-   CellID->1965130928]}
+  Cell[9198, 307, 508, 20, 37, "Output",
+   CellTags->"Polarization"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12178, 402},
- {"Polarization", 12318, 406}
+ {"PrimaryExamplesSection", 13180, 427},
+ {"Polarization", 13320, 431}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[584, 21, 2262, 52, 51, "AnchorBarGrid",
+Cell[584, 21, 3261, 78, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2849, 75, 55, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2907, 78, 1028, 21, 177, "Usage",
+Cell[3848, 101, 289, 11, 45, "ObjectNameGrid"],
+Cell[4140, 114, 1009, 19, 171, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3960, 103, 388, 15, 31, "PrimaryExamplesSection",
+Cell[5174, 137, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1534973530],
+ CellID->1400570862],
 Cell[CellGroupData[{
-Cell[4373, 122, 195, 6, 25, "ExampleSection",
- CellID->276449574],
+Cell[5587, 156, 196, 6, 26, "ExampleSection",
+ CellID->1428208848],
 Cell[CellGroupData[{
-Cell[4593, 132, 135, 4, 27, "Input",
+Cell[5808, 166, 135, 4, 27, "Input",
  CellTags->"Polarization",
  CellID->438222688],
-Cell[4731, 138, 289, 9, 36, "Output",
- CellTags->"Polarization",
- CellID->503395489]
+Cell[5946, 172, 269, 8, 37, "Output",
+ CellTags->"Polarization"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5057, 152, 170, 5, 27, "Input",
+Cell[6252, 185, 170, 5, 27, "Input",
  CellTags->"Polarization",
  CellID->790373903],
-Cell[5230, 159, 274, 8, 49, "Output",
- CellTags->"Polarization",
- CellID->1532058091]
+Cell[6425, 192, 253, 7, 51, "Output",
+ CellTags->"Polarization"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5541, 172, 177, 6, 27, "Input",
+Cell[6715, 204, 177, 6, 27, "Input",
  CellTags->"Polarization",
  CellID->211711632],
-Cell[5721, 180, 310, 10, 36, "Output",
- CellTags->"Polarization",
- CellID->1609141955]
+Cell[6895, 212, 289, 9, 37, "Output",
+ CellTags->"Polarization"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6068, 195, 212, 7, 27, "Input",
+Cell[7221, 226, 212, 7, 27, "Input",
  CellTags->"Polarization",
  CellID->36512114],
-Cell[6283, 204, 293, 9, 49, "Output",
- CellTags->"Polarization",
- CellID->1652128522]
+Cell[7436, 235, 272, 8, 51, "Output",
+ CellTags->"Polarization"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6613, 218, 172, 5, 27, "Input",
+Cell[7745, 248, 164, 5, 27, "Input",
  CellTags->"Polarization",
  CellID->734957023],
-Cell[6788, 225, 420, 15, 36, "Output",
- CellTags->"Polarization",
- CellID->665542938]
+Cell[7912, 255, 400, 14, 37, "Output",
+ CellTags->"Polarization"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7245, 245, 211, 7, 27, "Input",
+Cell[8349, 274, 203, 7, 27, "Input",
  CellTags->"Polarization",
  CellID->710690441],
-Cell[7459, 254, 349, 10, 49, "Output",
- CellTags->"Polarization",
- CellID->1978838604]
+Cell[8555, 283, 283, 8, 51, "Output",
+ CellTags->"Polarization"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7845, 269, 320, 9, 27, "Input",
+Cell[8875, 296, 320, 9, 27, "Input",
  CellTags->"Polarization",
  CellID->1314823646],
-Cell[8168, 280, 528, 21, 40, "Output",
- CellTags->"Polarization",
- CellID->149210740]
+Cell[9198, 307, 508, 20, 37, "Output",
+ CellTags->"Polarization"]
 }, Open  ]]
 }, Open  ]],
-Cell[8723, 305, 31, 0, 29, "SectionFooterSpacer"]
+Cell[9733, 331, 31, 0, 70, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8791, 310, 270, 12, 31, "SeeAlsoSection",
+Cell[9801, 336, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[9064, 324, 631, 21, 31, "Text",
- CellTags->"Polarization",
- CellID->1965130928]
+Cell[10074, 350, 586, 19, 70, "SeeAlso"]
 }, Open  ]],
-Cell[9710, 348, 23, 0, 42, "FooterCell"]
+Cell[10675, 372, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for SUNSimplify              *)
@@ -16,7 +16,7 @@
 Tests`SUN`fcstSUNSimplify = {
 {"fcstSUNSimplify-ID1","SUNSimplify[1]","1"},
 {"fcstSUNSimplify-ID2","SUNSimplify[SUNT[a].SUNT[b].SUNT[a]]",
-	"-(1/2) (CA - 2 CF) SUNT[SUNIndex[b]]"},
+	"-((CA - 2*CF)*SUNT[SUNIndex[b]])/2"},
 {"fcstSUNSimplify-ID3","SUNSimplify[SUNF[a, c, d].SUNF[b, c, d]]",
 	"CA SUNDelta[SUNIndex[a], SUNIndex[b]]"},
 {"fcstSUNSimplify-ID4","SUNSimplify[SUNF[a, b, c].SUNT[b].SUNT[c]]",
@@ -72,6 +72,20 @@ Tests`SUN`fcstSUNSimplify = {
 {"fcstSUNSimplify-ID25","SUNSimplify[
 SUNTrace[SUNF[a, c, g] SUNF[b, e, h] SUNF[d, g,
 	h] SUNT[a].SUNT[b].SUNT[c].SUNT[d].SUNT[e]], Explicit -> True]",
-	"1/4 I CA^2 CF"}
+	"1/4 I CA^2 CF"},
+{"fcstSUNSimplify-ID26","SUNSimplify[SUND[a, e, r] SUND[b, d, r] SUND[a, b, s] SUND[d, e, s],
+Explicit -> True]",
+	"(4 - CA^2) (12 - CA^2) (CA - 2 CF) CF"},
+{"fcstSUNSimplify-ID27","SUNSimplify[SUNF[a, b, c]^2]",
+	"2 CA^2 CF"},
+{"fcstSUNSimplify-ID28","SUNSimplify[SUND[a, b, c]^2]",
+	"-2 (4 - CA^2) CF"},
+{"fcstSUNSimplify-ID27","SUNSimplify[SUNF[a, b, c]^2, SUNNToCACF -> False]",
+	"SUNN (-1 + SUNN^2)"},
+{"fcstSUNSimplify-ID28","SUNSimplify[SUND[a, b, c]^2, SUNNToCACF -> False]",
+	"-(((4 - SUNN^2) (-1 + SUNN^2))/SUNN)"},
+{"fcstSUNSimplify-ID29","SUNSimplify[SUNF[a, b, c] SUNT[b]]",
+	"I (SUNT[SUNIndex[a]].SUNT[SUNIndex[c]] -
+SUNT[SUNIndex[c]].SUNT[SUNIndex[a]])"}
 };
 

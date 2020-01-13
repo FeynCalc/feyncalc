@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for
@@ -54,5 +54,123 @@ ApartFF[FAD[{qp, m}, {qp - q}, {qp, M, 2}, {qp - q, M, 2}], {qp}], qp]",
 	"FAD[{qp, M}, {qp, M}, {-q + qp, M}]"},
 {"fcstFeynAmpDenominatorSimplify-ID15",
 	"FDS[FAD[{qp, M}, {-q + qp, M, 2}], qp] // FCE",
-	"FAD[{qp, M}, {qp, M}, {-q + qp, M}]"}
+	"FAD[{qp, M}, {qp, M}, {-q + qp, M}]"},
+{"fcstFeynAmpDenominatorSimplify-ID16",
+	"FDS[FAD[p1, p4, p3, p2]] // FCE",
+	"FAD[p1, p2, p3, p4]"},
+{"fcstFeynAmpDenominatorSimplify-ID17",
+	"FCE[FDS[x1 FAD[{q1 + p, m}, {q2, m}, {q1 + p - q2}, {q1}] + x2 FAD[{q1 + p, m}, {q1 + p}, {q2, m}], q1, q2]]",
+	"x2*FAD[q1, {q1, m}, {q2, m}] + x1*FAD[{q1, m}, {q2, m}, -p + q1, q1 - q2]"},
+{"fcstFeynAmpDenominatorSimplify-ID18",
+	"FDS[SPD[q1, p] SPD[q2, p] SPD[q3, p] FAD[{q1, m}, {q2, m}, {q3,m}, {q1 - q2}, {q2 - q3}, {q1 - q3}], q1, q2, q3]",
+	"0"},
+{"fcstFeynAmpDenominatorSimplify-ID19",
+"FDS[FAD[{q1,m2},{q2,m1}],q1,q2,FCE\[Rule]True]",
+"FAD[{q1, m1}, {q2, m2}]"},
+{"fcstFeynAmpDenominatorSimplify-ID20",
+"FDS[FAD[{q1,m2},{q2,m1}]-FAD[{q2,m2},{q1,m1}],q1,q2,FCE\[Rule]\
+True]", "0"},
+{"fcstFeynAmpDenominatorSimplify-ID21",
+"FDS[FAD[{q2,m}] FAD[q1,{-p2+q1,m}]-FAD[{q1,m}] \
+FAD[q2,{-p2+q2,m}],q1,q2]", "0"},
+{"fcstFeynAmpDenominatorSimplify-ID22",
+"FDS[(1/(4 (1-D)))FAD[q2,-p1+q2] FAD[q1,q1,-p1+q1] (D FVD[p1,mu] \
+FVD[p1,nu]-MTD[mu,nu] SPD[p1,p1])-(1/(4 (1-D)))FAD[q1,-p1+q1] \
+FAD[q2,q2,-p1+q2] (D FVD[p1,mu] FVD[p1,nu]-MTD[mu,nu] \
+SPD[p1,p1]),q1,q2]", "0"},
+{"fcstFeynAmpDenominatorSimplify-ID13",
+"FDS[FeynAmpDenominator[
+	PropagatorDenominator[Momentum[p1] + Momentum[p2], 0]]^3] // FCE",
+"FAD[p1 + p2, p1 + p2, p1 + p2, Dimension -> 4]"},
+{"fcstFeynAmpDenominatorSimplify-ID14",
+"FDS[(FeynAmpDenominator[
+	PropagatorDenominator[Momentum[p1] + Momentum[p2], 0]]^2 -
+FeynAmpDenominator[
+	PropagatorDenominator[Momentum[p1] + Momentum[p2], 0],
+	PropagatorDenominator[Momentum[p1] + Momentum[p2], 0]])]",
+"0"},
+
+{"fcstFeynAmpDenominatorSimplify-ID15",
+"FDS[-FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0],
+	PropagatorDenominator[
+	1/2 (-Momentum[k1, D] - Momentum[k2, D]) + Momentum[l, D], m]] -
+FeynAmpDenominator[PropagatorDenominator[Momentum[l, D], 0],
+PropagatorDenominator[-Momentum[k1, D] - Momentum[k2, D] +
+	1/2 (Momentum[k1, D] + Momentum[k2, D]) + Momentum[l, D],
+	m]] , l, FCE -> True]",
+"-2*FAD[l, {-k1/2 - k2/2 + l, m}]"},
+{"fcstFeynAmpDenominatorSimplify-ID16",
+"FDS[FVD[l, mu] FAD[{l, m}, {l + p, m}] GFAD[{SPD[l, p], 1}], l,
+FCE -> True]",
+"FAD[{l, m}, {l + p, m}] FVD[l, mu] GFAD[{{SPD[l, p], 1}, 1}]"},
+{"fcstFeynAmpDenominatorSimplify-ID17",
+"FDS[FAD[q1, q1 + p, q2, q2 + p], q1, q2,
+FeynAmpDenominatorCombine -> False, FCE -> True]",
+"FAD[q1, -p + q1] FAD[q2, -p + q2]"},
+{"fcstFeynAmpDenominatorSimplify-ID18","FDS[CFAD[q, {q - p, 0, 2}], q, FCE -> True]",
+	"CFAD[{{q, 0}, {0, -1}, 1}, {{-p + q, 0}, {0, -1}, 2}]"},
+{"fcstFeynAmpDenominatorSimplify-ID19","FDS[SFAD[q, {q - p, 0, 2}], q, FCE -> True]",
+	"SFAD[{{q, 0}, {0, 1}, 1}, {{-p + q, 0}, {0, 1}, 2}]"},
+{"fcstFeynAmpDenominatorSimplify-ID20","FDS[SFAD[{{0, (k1 + k3).n}, {0, 1}, 1}], k1, k2, FCE->True]",
+	"0"},
+{"fcstFeynAmpDenominatorSimplify-ID21",
+"FDS[SFAD[-k2-k3-k1],k1,k2,k3,Rename\[Rule]False,\
+DetectLoopTopologies\[Rule]False,FCE\[Rule]True]",
+"SFAD[{{k1 + k2 + k3, 0}, {0, 1}, 1}]"},
+{"fcstFeynAmpDenominatorSimplify-ID22",
+"FDS[CFAD[-k2-k3-k1],k1,k2,k3,Rename\[Rule]False,\
+DetectLoopTopologies\[Rule]False,FCE\[Rule]True]",
+"CFAD[{{k1 + k2 + k3, 0}, {0, -1}, 1}]"},
+{"fcstFeynAmpDenominatorSimplify-ID23",
+"FDS[SFAD[-k2-k3-k1],k1,k2,Rename\[Rule]False,DetectLoopTopologies\
+\[Rule]False,FCE\[Rule]True]", "SFAD[{{k1 + k2 + k3, 0}, {0, 1}, 1}]"},
+{"fcstFeynAmpDenominatorSimplify-ID24",
+"FDS[CFAD[-k2-k3-k1],k1,k2,Rename\[Rule]False,DetectLoopTopologies\
+\[Rule]False,FCE\[Rule]True]", "CFAD[{{k1 + k2 + k3, 0}, {0, -1}, 1}]"},
+{"fcstFeynAmpDenominatorSimplify-ID25",
+"FDS[SFAD[q, q - p, {{0, q.k}}], q, FCE -> True]", "SFAD[{{q, 0},
+{0, 1}, 1}, {{0, k.q}, {0, 1}, 1}, {{p - q, 0}, {0, 1},
+1}]"},
+{"fcstFeynAmpDenominatorSimplify-ID26",
+"FDS[SFAD[q, q - p, {{0, q.k}}], q, FCE -> True]",
+"SFAD[{{q, 0}, {0, 1}, 1}, {{0, k.q}, {0, 1}, 1}, {{p - q, 0}, {0, 1},1}]"},
+{"fcstFeynAmpDenominatorSimplify-ID27",
+"FDS[SFAD[q, q - p, {{q, q.k}}], q, FCE -> True]",
+"SFAD[{{q, 0}, {0, 1}, 1}, {{-p + q, 0}, {0, 1}, 1}, {{q, k.q}, {0, 1},1}]"},
+{"fcstFeynAmpDenominatorSimplify-ID28",
+"FDS[SFAD[{{0, p.q}}], q]","0"},
+{"fcstFeynAmpDenominatorSimplify-ID29",
+"FDS[SFAD[{{p, p.q}}], q, FCE -> True]","SFAD[{{p, p.q}, {0, 1}, 1}]"},
+{"fcstFeynAmpDenominatorSimplify-ID30",
+"FDS[SFAD[{{0, p.q}, m^2}], q]","0"},
+{"fcstFeynAmpDenominatorSimplify-ID31",
+"FDS[TC[q]^2 SFAD[q] CVD[q, i] CVD[q, j], q,FCE->True]",
+"CVD[q, i] CVD[q, j] SFAD[{{q, 0}, {0, 1}, 1}] TC[q]^2"},
+{"fcstFeynAmpDenominatorSimplify-ID32",
+"FDS[SFAD[{{0,2q.(p+r)},0,2}],q,FCE->True]", "0"},
+{"fcstFeynAmpDenominatorSimplify-ID33",
+"FDS[SFAD[{{0,2q.(p+r)}},{{0,2q.(p+b)}}],q,FCE->True]", "0"},
+{"fcstFeynAmpDenominatorSimplify-ID34",
+"FDS[SFAD[q,{{0,2q.(p+r)},0,2}],q,FCE->True]",
+"SFAD[{{q, 0}, {0, 1}, 1}, {{0, 2*q . (p + r)}, {0, 1}, 2}]"},
+{"fcstFeynAmpDenominatorSimplify-ID35",
+"FDS[CFAD[{{0,2q.(p+r)},0,2}],q,FCE->True]", "0"},
+{"fcstFeynAmpDenominatorSimplify-ID36",
+"FDS[CFAD[{{0,2q.(p+r)}},{{0,2q.(p+b)}}],q]", "0"},
+{"fcstFeynAmpDenominatorSimplify-ID37",
+"FDS[CFAD[q,{{0,2q.(p+r)},0,2}],q,FCE->True]",
+"CFAD[{{q, 0}, {0, -1}, 1}, {{0, 2*q . (p + r)}, {0, -1}, 2}]"},
+{"fcstFeynAmpDenominatorSimplify-ID38",
+"FDS[TC[q]SFAD[q],q,FCE->True]", "0"},
+{"fcstFeynAmpDenominatorSimplify-ID39",
+"FDS[TC[q]^2SFAD[q],q,FCE->True]",
+"SFAD[{{q, 0}, {0, 1}, 1}]*TC[q]^2"},
+{"fcstFeynAmpDenominatorSimplify-ID40",
+"FDS[CFAD[{q,0,2}],q,FCE->True]", "0"},
+{"fcstFeynAmpDenominatorSimplify-ID41",
+"FDS[(FAD[{l, m1}, {l - p, m2}] SPD[l, p2]^2 (GSD[p2] SPD[p, p] -
+GSD[p] SPD[p, p2]))/(-SPD[p, p2]^2 +
+SPD[p, p] SPD[p2, p2]) - (FAD[{l, m1}, {l + p, m2}] SPD[l,
+p2]^2 (GSD[p2] SPD[p, p] - GSD[p] SPD[p, p2]))/(-SPD[p, p2]^2 +
+SPD[p, p] SPD[p2, p2]), l]", "0"}
 }

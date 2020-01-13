@@ -182,9 +182,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/FeynCalcInternal",
   ButtonNote->"FeynCalcInternal"],
  "."
-}], "Text",
- CellTags->"FeynCalcForm",
- CellID->1584845220]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -211,9 +209,7 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell["This is the normal notebook display:", "Text",
- CellTags->"FeynCalcForm",
- CellID->1383220456],
+Cell["This is the normal notebook display:", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -224,7 +220,7 @@ Cell[BoxData[
    RowBox[{"SUNT", "[", "b", "]"}], ".", 
    RowBox[{"SUNT", "[", "c", "]"}]}], "]"}]], "Input",
  CellTags->"FeynCalcForm",
- CellLabel->"In[1]:=",
+ CellLabel->"In[94]:=",
  CellID->1625719649],
 
 Cell[BoxData[
@@ -255,34 +251,32 @@ Cell[BoxData[
    FormBox["\<\")\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"FeynCalcForm",
- CellLabel->"Out[1]=",
- CellID->2135875157]
+ CellLabel->"Out[94]="]
 }, Open  ]],
 
 Cell["\<\
 This is the shorthand (terminal) display (easy-to-read form):\
-\>", "Text",
- CellTags->"FeynCalcForm",
- CellID->981626969],
+\>", "Notes"],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"$PrePrint", " ", "=", " ", "FeynCalcForm"}], ";"}]], "Input",
  CellTags->"FeynCalcForm",
- CellLabel->"In[2]:=",
+ CellLabel->"In[95]:=",
  CellID->1192476093],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"SetOptions", "[", 
-   RowBox[{"$FrontEnd", ",", 
+   RowBox[{"$FrontEndSession", ",", 
     RowBox[{"Evaluate", "[", 
      RowBox[{
       RowBox[{"(", 
        RowBox[{
         RowBox[{"Options", "[", 
-         RowBox[{"$FrontEnd", ",", "\"\<CommonDefaultFormatTypes\>\""}], 
-         "]"}], "/.", 
+         RowBox[{
+         "$FrontEndSession", ",", "\"\<CommonDefaultFormatTypes\>\""}], "]"}],
+         "/.", 
         RowBox[{
          RowBox[{"(", 
           RowBox[{"\"\<Output\>\"", "\[Rule]", "_"}], ")"}], "\[Rule]", 
@@ -291,7 +285,7 @@ Cell[BoxData[
        ")"}], "[", 
       RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "]"}], ";"}]], "Input",
  CellTags->"FeynCalcForm",
- CellLabel->"In[3]:=",
+ CellLabel->"In[96]:=",
  CellID->204502333],
 
 Cell[CellGroupData[{
@@ -303,42 +297,43 @@ Cell[BoxData[
    RowBox[{"SUNT", "[", "b", "]"}], ".", 
    RowBox[{"SUNT", "[", "c", "]"}]}], "]"}]], "Input",
  CellTags->"FeynCalcForm",
- CellLabel->"In[4]:=",
+ CellLabel->"In[97]:=",
  CellID->1641498185],
 
 Cell[OutputFormData["\<\
 SUNTrace[SUNT[SUNIndex[a]] . SUNT[SUNIndex[b]] . 
   SUNT[SUNIndex[c]]]\
 \>", "\<\
-tr[T[a] T[b] T[c]]\
+SUNTrace[SUNT[SUNIndex[a]] . SUNT[SUNIndex[b]] . 
+
+
+   SUNT[SUNIndex[c]]]\
 \>"], "Output",
  CellTags->"FeynCalcForm",
- CellLabel->"Out[4]=",
- CellID->1930690446]
+ CellLabel->"Out[97]="]
 }, Open  ]],
 
-Cell["Reset to normal notebook display:", "Text",
- CellTags->"FeynCalcForm",
- CellID->1776666281],
+Cell["Reset to normal notebook display:", "Notes"],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"$PrePrint", "=."}], ";"}]], "Input",
  CellTags->"FeynCalcForm",
- CellLabel->"In[5]:=",
+ CellLabel->"In[98]:=",
  CellID->1847759077],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"SetOptions", "[", 
-   RowBox[{"$FrontEnd", ",", 
+   RowBox[{"$FrontEndSession", ",", 
     RowBox[{"Evaluate", "[", 
      RowBox[{
       RowBox[{"(", 
        RowBox[{
         RowBox[{"Options", "[", 
-         RowBox[{"$FrontEnd", ",", "\"\<CommonDefaultFormatTypes\>\""}], 
-         "]"}], "/.", 
+         RowBox[{
+         "$FrontEndSession", ",", "\"\<CommonDefaultFormatTypes\>\""}], "]"}],
+         "/.", 
         RowBox[{
          RowBox[{"(", 
           RowBox[{"\"\<Output\>\"", "\[Rule]", "_"}], ")"}], "\[Rule]", 
@@ -347,8 +342,48 @@ Cell[BoxData[
         ")"}], "[", 
       RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "]"}], ";"}]], "Input",
  CellTags->"FeynCalcForm",
- CellLabel->"In[6]:=",
- CellID->803099917]
+ CellLabel->"In[99]:=",
+ CellID->803099917],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SUNTrace", "[", 
+  RowBox[{
+   RowBox[{"SUNT", "[", "a", "]"}], ".", 
+   RowBox[{"SUNT", "[", "b", "]"}], ".", 
+   RowBox[{"SUNT", "[", "c", "]"}]}], "]"}]], "Input",
+ CellLabel->"In[100]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox["\<\"tr\"\>",
+    TraditionalForm], 
+   FormBox["\<\"(\"\>",
+    TraditionalForm], 
+   FormBox[
+    RowBox[{
+     SuperscriptBox["T", 
+      FormBox[
+       FormBox["a",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox["T", 
+      FormBox[
+       FormBox["b",
+        TraditionalForm],
+       TraditionalForm]], ".", 
+     SuperscriptBox["T", 
+      FormBox[
+       FormBox["c",
+        TraditionalForm],
+       TraditionalForm]]}],
+    TraditionalForm], 
+   FormBox["\<\")\"\>",
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellLabel->"Out[100]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -412,12 +447,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{608, Automatic}, {Automatic, 62}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

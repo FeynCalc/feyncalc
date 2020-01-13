@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for DiracTrace  			*)
@@ -75,12 +75,12 @@ Momentum[q2]])"},
 {"fcstDiracTrace-ID28",
 "DiracTrace[GA[i,j,k,7,l,m],DiracTraceEvaluate\[Rule]True]", "0"},
 {"fcstDiracTrace-ID29",
-"$BreitMaison = True; (DiracTrace[GAD[i1, i2, i3, i4, i5, i6].GA[5],
+"FCSetDiracGammaScheme[\"BMHV\"]; (DiracTrace[GAD[i1, i2, i3, i4, i5, i6].GA[5],
 	DiracTraceEvaluate -> True] -
 DiracTrace[GAD[i1, i2, i3, i4, i5, i6].GA[5],
 	DiracTraceEvaluate -> True, West -> False]) // Simplify", "0"},
 {"fcstDiracTrace-ID30",
-"$BreitMaison = False; \n DeclareNonCommutative[ncA]; \n Tr[GA[i, j].ncA.GA[k, l], FCVerbose -> 0] // FCE",
+"FCSetDiracGammaScheme[\"NDR\"]; \n DeclareNonCommutative[ncA]; \n Tr[GA[i, j].ncA.GA[k, l], FCVerbose -> 0] // FCE",
 "DiracTrace[GA[i].GA[j].ncA.GA[k].GA[l]]"},
 {"fcstDiracTrace-ID31",
 "DiracTrace[DiracTrace[GA[i, j]], DiracTraceEvaluate -> True] // FCE",
@@ -91,6 +91,170 @@ DiracTrace[GAD[i1, i2, i3, i4, i5, i6].GA[5],
 {"fcstDiracTrace-ID33",
 "DiracTrace[DiracSigma[GA[a], GA[b]].GA[a].GA[b],
 DiracTraceEvaluate -> True]",
-"-48 I"}
-}
-);
+"-48 I"},
+{"fcstDiracTrace-ID34",
+"DiracTrace[CGA[i, j], DiracTraceEvaluate -> True]",
+"-4 CartesianPair[CartesianIndex[i], CartesianIndex[j]]"},
+{"fcstDiracTrace-ID35",
+"DiracTrace[CGA[i, j, k, l].GA[5], DiracTraceEvaluate -> True]",
+"0"},
+{"fcstDiracTrace-ID36",
+"DiracTrace[CGS[i, j, k, l].GA[5], DiracTraceEvaluate -> True]",
+"0"},
+{"fcstDiracTrace-ID37",
+"DiracTrace[CGA[i, j, k, l], DiracTraceEvaluate -> True] // FCE",
+"4 (KD[i, l] KD[j, k] - KD[i, k] KD[j, l] + KD[i, j] KD[k, l])"},
+{"fcstDiracTrace-ID38",
+"DiracTrace[CGAD[i, j, k, l], DiracTraceEvaluate -> True] // FCE",
+"4 (KDD[i, l] KDD[j, k] - KDD[i, k] KDD[j, l] + KDD[i, j] KDD[k, l])"},
+{"fcstDiracTrace-ID39",
+"DiracTrace[CGA[i].GA[mu], DiracTraceEvaluate -> True]",
+"4 Pair[CartesianIndex[i], LorentzIndex[mu]]"},
+{"fcstDiracTrace-ID40",
+"DiracTrace[GSD[q].GSD[p1] + GSD[q].GSD[p2], DiracTraceEvaluate -> True]",
+"4 (Pair[Momentum[p1, D], Momentum[q, D]] +
+Pair[Momentum[p2, D], Momentum[q, D]])"},
+{"fcstDiracTrace-ID41",
+"DiracTrace[GS[a + i, b, c, d, e, f, g, h], DiracTraceEvaluate -> True, FCE -> True]",
+"4*(SP[a, h]*SP[b, g]*SP[c, f]*SP[d, e] - SP[a, g]*SP[b, h]*SP[c, f]*SP[d, e] - SP[a, h]*SP[b, f]*SP[c, g]*SP[d, e] + SP[a, f]*SP[b, h]*SP[c, g]*SP[d, e] +
+SP[a, g]*SP[b, f]*SP[c, h]*SP[d, e] - SP[a, f]*SP[b, g]*SP[c, h]*SP[d, e] - SP[a, h]*SP[b, g]*SP[c, e]*SP[d, f] + SP[a, g]*SP[b, h]*SP[c, e]*SP[d, f] +
+SP[a, h]*SP[b, e]*SP[c, g]*SP[d, f] - SP[a, e]*SP[b, h]*SP[c, g]*SP[d, f] - SP[a, g]*SP[b, e]*SP[c, h]*SP[d, f] + SP[a, e]*SP[b, g]*SP[c, h]*SP[d, f] +
+SP[a, h]*SP[b, f]*SP[c, e]*SP[d, g] - SP[a, f]*SP[b, h]*SP[c, e]*SP[d, g] - SP[a, h]*SP[b, e]*SP[c, f]*SP[d, g] + SP[a, e]*SP[b, h]*SP[c, f]*SP[d, g] +
+SP[a, f]*SP[b, e]*SP[c, h]*SP[d, g] - SP[a, e]*SP[b, f]*SP[c, h]*SP[d, g] - SP[a, g]*SP[b, f]*SP[c, e]*SP[d, h] + SP[a, f]*SP[b, g]*SP[c, e]*SP[d, h] +
+SP[a, g]*SP[b, e]*SP[c, f]*SP[d, h] - SP[a, e]*SP[b, g]*SP[c, f]*SP[d, h] - SP[a, f]*SP[b, e]*SP[c, g]*SP[d, h] + SP[a, e]*SP[b, f]*SP[c, g]*SP[d, h] +
+SP[a, h]*SP[b, g]*SP[c, d]*SP[e, f] - SP[a, g]*SP[b, h]*SP[c, d]*SP[e, f] - SP[a, h]*SP[b, d]*SP[c, g]*SP[e, f] + SP[a, d]*SP[b, h]*SP[c, g]*SP[e, f] +
+SP[a, g]*SP[b, d]*SP[c, h]*SP[e, f] - SP[a, d]*SP[b, g]*SP[c, h]*SP[e, f] + SP[a, h]*SP[b, c]*SP[d, g]*SP[e, f] - SP[a, c]*SP[b, h]*SP[d, g]*SP[e, f] +
+SP[a, b]*SP[c, h]*SP[d, g]*SP[e, f] + SP[b, i]*SP[c, h]*SP[d, g]*SP[e, f] - SP[b, h]*SP[c, i]*SP[d, g]*SP[e, f] - SP[a, g]*SP[b, c]*SP[d, h]*SP[e, f] +
+SP[a, c]*SP[b, g]*SP[d, h]*SP[e, f] - SP[a, b]*SP[c, g]*SP[d, h]*SP[e, f] - SP[b, i]*SP[c, g]*SP[d, h]*SP[e, f] + SP[b, g]*SP[c, i]*SP[d, h]*SP[e, f] +
+SP[b, h]*SP[c, g]*SP[d, i]*SP[e, f] - SP[b, g]*SP[c, h]*SP[d, i]*SP[e, f] - SP[a, h]*SP[b, f]*SP[c, d]*SP[e, g] + SP[a, f]*SP[b, h]*SP[c, d]*SP[e, g] +
+SP[a, h]*SP[b, d]*SP[c, f]*SP[e, g] - SP[a, d]*SP[b, h]*SP[c, f]*SP[e, g] - SP[a, f]*SP[b, d]*SP[c, h]*SP[e, g] + SP[a, d]*SP[b, f]*SP[c, h]*SP[e, g] -
+SP[a, h]*SP[b, c]*SP[d, f]*SP[e, g] + SP[a, c]*SP[b, h]*SP[d, f]*SP[e, g] - SP[a, b]*SP[c, h]*SP[d, f]*SP[e, g] - SP[b, i]*SP[c, h]*SP[d, f]*SP[e, g] +
+SP[b, h]*SP[c, i]*SP[d, f]*SP[e, g] + SP[a, f]*SP[b, c]*SP[d, h]*SP[e, g] - SP[a, c]*SP[b, f]*SP[d, h]*SP[e, g] + SP[a, b]*SP[c, f]*SP[d, h]*SP[e, g] +
+SP[b, i]*SP[c, f]*SP[d, h]*SP[e, g] - SP[b, f]*SP[c, i]*SP[d, h]*SP[e, g] - SP[b, h]*SP[c, f]*SP[d, i]*SP[e, g] + SP[b, f]*SP[c, h]*SP[d, i]*SP[e, g] +
+SP[a, g]*SP[b, f]*SP[c, d]*SP[e, h] - SP[a, f]*SP[b, g]*SP[c, d]*SP[e, h] - SP[a, g]*SP[b, d]*SP[c, f]*SP[e, h] + SP[a, d]*SP[b, g]*SP[c, f]*SP[e, h] +
+SP[a, f]*SP[b, d]*SP[c, g]*SP[e, h] - SP[a, d]*SP[b, f]*SP[c, g]*SP[e, h] + SP[a, g]*SP[b, c]*SP[d, f]*SP[e, h] - SP[a, c]*SP[b, g]*SP[d, f]*SP[e, h] +
+SP[a, b]*SP[c, g]*SP[d, f]*SP[e, h] + SP[b, i]*SP[c, g]*SP[d, f]*SP[e, h] - SP[b, g]*SP[c, i]*SP[d, f]*SP[e, h] - SP[a, f]*SP[b, c]*SP[d, g]*SP[e, h] +
+SP[a, c]*SP[b, f]*SP[d, g]*SP[e, h] - SP[a, b]*SP[c, f]*SP[d, g]*SP[e, h] - SP[b, i]*SP[c, f]*SP[d, g]*SP[e, h] + SP[b, f]*SP[c, i]*SP[d, g]*SP[e, h] +
+SP[b, g]*SP[c, f]*SP[d, i]*SP[e, h] - SP[b, f]*SP[c, g]*SP[d, i]*SP[e, h] - SP[b, h]*SP[c, g]*SP[d, f]*SP[e, i] + SP[b, g]*SP[c, h]*SP[d, f]*SP[e, i] +
+SP[b, h]*SP[c, f]*SP[d, g]*SP[e, i] - SP[b, f]*SP[c, h]*SP[d, g]*SP[e, i] - SP[b, g]*SP[c, f]*SP[d, h]*SP[e, i] + SP[b, f]*SP[c, g]*SP[d, h]*SP[e, i] +
+SP[a, h]*SP[b, e]*SP[c, d]*SP[f, g] - SP[a, e]*SP[b, h]*SP[c, d]*SP[f, g] - SP[a, h]*SP[b, d]*SP[c, e]*SP[f, g] + SP[a, d]*SP[b, h]*SP[c, e]*SP[f, g] +
+SP[a, e]*SP[b, d]*SP[c, h]*SP[f, g] - SP[a, d]*SP[b, e]*SP[c, h]*SP[f, g] + SP[a, h]*SP[b, c]*SP[d, e]*SP[f, g] - SP[a, c]*SP[b, h]*SP[d, e]*SP[f, g] +
+SP[a, b]*SP[c, h]*SP[d, e]*SP[f, g] + SP[b, i]*SP[c, h]*SP[d, e]*SP[f, g] - SP[b, h]*SP[c, i]*SP[d, e]*SP[f, g] - SP[a, e]*SP[b, c]*SP[d, h]*SP[f, g] +
+SP[a, c]*SP[b, e]*SP[d, h]*SP[f, g] - SP[a, b]*SP[c, e]*SP[d, h]*SP[f, g] - SP[b, i]*SP[c, e]*SP[d, h]*SP[f, g] + SP[b, e]*SP[c, i]*SP[d, h]*SP[f, g] +
+SP[b, h]*SP[c, e]*SP[d, i]*SP[f, g] - SP[b, e]*SP[c, h]*SP[d, i]*SP[f, g] + SP[a, d]*SP[b, c]*SP[e, h]*SP[f, g] - SP[a, c]*SP[b, d]*SP[e, h]*SP[f, g] +
+SP[a, b]*SP[c, d]*SP[e, h]*SP[f, g] + SP[b, i]*SP[c, d]*SP[e, h]*SP[f, g] - SP[b, d]*SP[c, i]*SP[e, h]*SP[f, g] + SP[b, c]*SP[d, i]*SP[e, h]*SP[f, g] -
+SP[b, h]*SP[c, d]*SP[e, i]*SP[f, g] + SP[b, d]*SP[c, h]*SP[e, i]*SP[f, g] - SP[b, c]*SP[d, h]*SP[e, i]*SP[f, g] - SP[a, g]*SP[b, e]*SP[c, d]*SP[f, h] +
+SP[a, e]*SP[b, g]*SP[c, d]*SP[f, h] + SP[a, g]*SP[b, d]*SP[c, e]*SP[f, h] - SP[a, d]*SP[b, g]*SP[c, e]*SP[f, h] - SP[a, e]*SP[b, d]*SP[c, g]*SP[f, h] +
+SP[a, d]*SP[b, e]*SP[c, g]*SP[f, h] - SP[a, g]*SP[b, c]*SP[d, e]*SP[f, h] + SP[a, c]*SP[b, g]*SP[d, e]*SP[f, h] - SP[a, b]*SP[c, g]*SP[d, e]*SP[f, h] -
+SP[b, i]*SP[c, g]*SP[d, e]*SP[f, h] + SP[b, g]*SP[c, i]*SP[d, e]*SP[f, h] + SP[a, e]*SP[b, c]*SP[d, g]*SP[f, h] - SP[a, c]*SP[b, e]*SP[d, g]*SP[f, h] +
+SP[a, b]*SP[c, e]*SP[d, g]*SP[f, h] + SP[b, i]*SP[c, e]*SP[d, g]*SP[f, h] - SP[b, e]*SP[c, i]*SP[d, g]*SP[f, h] - SP[b, g]*SP[c, e]*SP[d, i]*SP[f, h] +
+SP[b, e]*SP[c, g]*SP[d, i]*SP[f, h] - SP[a, d]*SP[b, c]*SP[e, g]*SP[f, h] + SP[a, c]*SP[b, d]*SP[e, g]*SP[f, h] - SP[a, b]*SP[c, d]*SP[e, g]*SP[f, h] -
+SP[b, i]*SP[c, d]*SP[e, g]*SP[f, h] + SP[b, d]*SP[c, i]*SP[e, g]*SP[f, h] - SP[b, c]*SP[d, i]*SP[e, g]*SP[f, h] + SP[b, g]*SP[c, d]*SP[e, i]*SP[f, h] -
+SP[b, d]*SP[c, g]*SP[e, i]*SP[f, h] + SP[b, c]*SP[d, g]*SP[e, i]*SP[f, h] + SP[b, h]*SP[c, g]*SP[d, e]*SP[f, i] - SP[b, g]*SP[c, h]*SP[d, e]*SP[f, i] -
+SP[b, h]*SP[c, e]*SP[d, g]*SP[f, i] + SP[b, e]*SP[c, h]*SP[d, g]*SP[f, i] + SP[b, g]*SP[c, e]*SP[d, h]*SP[f, i] - SP[b, e]*SP[c, g]*SP[d, h]*SP[f, i] +
+SP[b, h]*SP[c, d]*SP[e, g]*SP[f, i] - SP[b, d]*SP[c, h]*SP[e, g]*SP[f, i] + SP[b, c]*SP[d, h]*SP[e, g]*SP[f, i] - SP[b, g]*SP[c, d]*SP[e, h]*SP[f, i] +
+SP[b, d]*SP[c, g]*SP[e, h]*SP[f, i] - SP[b, c]*SP[d, g]*SP[e, h]*SP[f, i] + SP[a, f]*SP[b, e]*SP[c, d]*SP[g, h] - SP[a, e]*SP[b, f]*SP[c, d]*SP[g, h] -
+SP[a, f]*SP[b, d]*SP[c, e]*SP[g, h] + SP[a, d]*SP[b, f]*SP[c, e]*SP[g, h] + SP[a, e]*SP[b, d]*SP[c, f]*SP[g, h] - SP[a, d]*SP[b, e]*SP[c, f]*SP[g, h] +
+SP[a, f]*SP[b, c]*SP[d, e]*SP[g, h] - SP[a, c]*SP[b, f]*SP[d, e]*SP[g, h] + SP[a, b]*SP[c, f]*SP[d, e]*SP[g, h] + SP[b, i]*SP[c, f]*SP[d, e]*SP[g, h] -
+SP[b, f]*SP[c, i]*SP[d, e]*SP[g, h] - SP[a, e]*SP[b, c]*SP[d, f]*SP[g, h] + SP[a, c]*SP[b, e]*SP[d, f]*SP[g, h] - SP[a, b]*SP[c, e]*SP[d, f]*SP[g, h] -
+SP[b, i]*SP[c, e]*SP[d, f]*SP[g, h] + SP[b, e]*SP[c, i]*SP[d, f]*SP[g, h] + SP[b, f]*SP[c, e]*SP[d, i]*SP[g, h] - SP[b, e]*SP[c, f]*SP[d, i]*SP[g, h] +
+SP[a, d]*SP[b, c]*SP[e, f]*SP[g, h] - SP[a, c]*SP[b, d]*SP[e, f]*SP[g, h] + SP[a, b]*SP[c, d]*SP[e, f]*SP[g, h] + SP[b, i]*SP[c, d]*SP[e, f]*SP[g, h] -
+SP[b, d]*SP[c, i]*SP[e, f]*SP[g, h] + SP[b, c]*SP[d, i]*SP[e, f]*SP[g, h] - SP[b, f]*SP[c, d]*SP[e, i]*SP[g, h] + SP[b, d]*SP[c, f]*SP[e, i]*SP[g, h] -
+SP[b, c]*SP[d, f]*SP[e, i]*SP[g, h] + SP[b, e]*SP[c, d]*SP[f, i]*SP[g, h] - SP[b, d]*SP[c, e]*SP[f, i]*SP[g, h] + SP[b, c]*SP[d, e]*SP[f, i]*SP[g, h] -
+SP[b, h]*SP[c, f]*SP[d, e]*SP[g, i] + SP[b, f]*SP[c, h]*SP[d, e]*SP[g, i] + SP[b, h]*SP[c, e]*SP[d, f]*SP[g, i] - SP[b, e]*SP[c, h]*SP[d, f]*SP[g, i] -
+SP[b, f]*SP[c, e]*SP[d, h]*SP[g, i] + SP[b, e]*SP[c, f]*SP[d, h]*SP[g, i] - SP[b, h]*SP[c, d]*SP[e, f]*SP[g, i] + SP[b, d]*SP[c, h]*SP[e, f]*SP[g, i] -
+SP[b, c]*SP[d, h]*SP[e, f]*SP[g, i] + SP[b, f]*SP[c, d]*SP[e, h]*SP[g, i] - SP[b, d]*SP[c, f]*SP[e, h]*SP[g, i] + SP[b, c]*SP[d, f]*SP[e, h]*SP[g, i] -
+SP[b, e]*SP[c, d]*SP[f, h]*SP[g, i] + SP[b, d]*SP[c, e]*SP[f, h]*SP[g, i] - SP[b, c]*SP[d, e]*SP[f, h]*SP[g, i] + SP[b, g]*SP[c, f]*SP[d, e]*SP[h, i] -
+SP[b, f]*SP[c, g]*SP[d, e]*SP[h, i] - SP[b, g]*SP[c, e]*SP[d, f]*SP[h, i] + SP[b, e]*SP[c, g]*SP[d, f]*SP[h, i] + SP[b, f]*SP[c, e]*SP[d, g]*SP[h, i] -
+SP[b, e]*SP[c, f]*SP[d, g]*SP[h, i] + SP[b, g]*SP[c, d]*SP[e, f]*SP[h, i] - SP[b, d]*SP[c, g]*SP[e, f]*SP[h, i] + SP[b, c]*SP[d, g]*SP[e, f]*SP[h, i] -
+SP[b, f]*SP[c, d]*SP[e, g]*SP[h, i] + SP[b, d]*SP[c, f]*SP[e, g]*SP[h, i] - SP[b, c]*SP[d, f]*SP[e, g]*SP[h, i] + SP[b, e]*SP[c, d]*SP[f, g]*SP[h, i] -
+SP[b, d]*SP[c, e]*SP[f, g]*SP[h, i] + SP[b, c]*SP[d, e]*SP[f, g]*SP[h, i])"},
+{"fcstDiracTrace-ID42",
+"DiracTrace[GS[a, b, c, d, e, f, g, h + i], DiracTraceEvaluate -> True, FCE -> True]",
+"4*(SP[a, h]*SP[b, g]*SP[c, f]*SP[d, e] + SP[a, i]*SP[b, g]*SP[c, f]*SP[d, e] - SP[a, g]*SP[b, h]*SP[c, f]*SP[d, e] - SP[a, g]*SP[b, i]*SP[c, f]*SP[d, e] -
+SP[a, h]*SP[b, f]*SP[c, g]*SP[d, e] - SP[a, i]*SP[b, f]*SP[c, g]*SP[d, e] + SP[a, f]*SP[b, h]*SP[c, g]*SP[d, e] + SP[a, f]*SP[b, i]*SP[c, g]*SP[d, e] +
+SP[a, g]*SP[b, f]*SP[c, h]*SP[d, e] - SP[a, f]*SP[b, g]*SP[c, h]*SP[d, e] + SP[a, g]*SP[b, f]*SP[c, i]*SP[d, e] - SP[a, f]*SP[b, g]*SP[c, i]*SP[d, e] -
+SP[a, h]*SP[b, g]*SP[c, e]*SP[d, f] - SP[a, i]*SP[b, g]*SP[c, e]*SP[d, f] + SP[a, g]*SP[b, h]*SP[c, e]*SP[d, f] + SP[a, g]*SP[b, i]*SP[c, e]*SP[d, f] +
+SP[a, h]*SP[b, e]*SP[c, g]*SP[d, f] + SP[a, i]*SP[b, e]*SP[c, g]*SP[d, f] - SP[a, e]*SP[b, h]*SP[c, g]*SP[d, f] - SP[a, e]*SP[b, i]*SP[c, g]*SP[d, f] -
+SP[a, g]*SP[b, e]*SP[c, h]*SP[d, f] + SP[a, e]*SP[b, g]*SP[c, h]*SP[d, f] - SP[a, g]*SP[b, e]*SP[c, i]*SP[d, f] + SP[a, e]*SP[b, g]*SP[c, i]*SP[d, f] +
+SP[a, h]*SP[b, f]*SP[c, e]*SP[d, g] + SP[a, i]*SP[b, f]*SP[c, e]*SP[d, g] - SP[a, f]*SP[b, h]*SP[c, e]*SP[d, g] - SP[a, f]*SP[b, i]*SP[c, e]*SP[d, g] -
+SP[a, h]*SP[b, e]*SP[c, f]*SP[d, g] - SP[a, i]*SP[b, e]*SP[c, f]*SP[d, g] + SP[a, e]*SP[b, h]*SP[c, f]*SP[d, g] + SP[a, e]*SP[b, i]*SP[c, f]*SP[d, g] +
+SP[a, f]*SP[b, e]*SP[c, h]*SP[d, g] - SP[a, e]*SP[b, f]*SP[c, h]*SP[d, g] + SP[a, f]*SP[b, e]*SP[c, i]*SP[d, g] - SP[a, e]*SP[b, f]*SP[c, i]*SP[d, g] -
+SP[a, g]*SP[b, f]*SP[c, e]*SP[d, h] + SP[a, f]*SP[b, g]*SP[c, e]*SP[d, h] + SP[a, g]*SP[b, e]*SP[c, f]*SP[d, h] - SP[a, e]*SP[b, g]*SP[c, f]*SP[d, h] -
+SP[a, f]*SP[b, e]*SP[c, g]*SP[d, h] + SP[a, e]*SP[b, f]*SP[c, g]*SP[d, h] - SP[a, g]*SP[b, f]*SP[c, e]*SP[d, i] + SP[a, f]*SP[b, g]*SP[c, e]*SP[d, i] +
+SP[a, g]*SP[b, e]*SP[c, f]*SP[d, i] - SP[a, e]*SP[b, g]*SP[c, f]*SP[d, i] - SP[a, f]*SP[b, e]*SP[c, g]*SP[d, i] + SP[a, e]*SP[b, f]*SP[c, g]*SP[d, i] +
+SP[a, h]*SP[b, g]*SP[c, d]*SP[e, f] + SP[a, i]*SP[b, g]*SP[c, d]*SP[e, f] - SP[a, g]*SP[b, h]*SP[c, d]*SP[e, f] - SP[a, g]*SP[b, i]*SP[c, d]*SP[e, f] -
+SP[a, h]*SP[b, d]*SP[c, g]*SP[e, f] - SP[a, i]*SP[b, d]*SP[c, g]*SP[e, f] + SP[a, d]*SP[b, h]*SP[c, g]*SP[e, f] + SP[a, d]*SP[b, i]*SP[c, g]*SP[e, f] +
+SP[a, g]*SP[b, d]*SP[c, h]*SP[e, f] - SP[a, d]*SP[b, g]*SP[c, h]*SP[e, f] + SP[a, g]*SP[b, d]*SP[c, i]*SP[e, f] - SP[a, d]*SP[b, g]*SP[c, i]*SP[e, f] +
+SP[a, h]*SP[b, c]*SP[d, g]*SP[e, f] + SP[a, i]*SP[b, c]*SP[d, g]*SP[e, f] - SP[a, c]*SP[b, h]*SP[d, g]*SP[e, f] - SP[a, c]*SP[b, i]*SP[d, g]*SP[e, f] +
+SP[a, b]*SP[c, h]*SP[d, g]*SP[e, f] + SP[a, b]*SP[c, i]*SP[d, g]*SP[e, f] - SP[a, g]*SP[b, c]*SP[d, h]*SP[e, f] + SP[a, c]*SP[b, g]*SP[d, h]*SP[e, f] -
+SP[a, b]*SP[c, g]*SP[d, h]*SP[e, f] - SP[a, g]*SP[b, c]*SP[d, i]*SP[e, f] + SP[a, c]*SP[b, g]*SP[d, i]*SP[e, f] - SP[a, b]*SP[c, g]*SP[d, i]*SP[e, f] -
+SP[a, h]*SP[b, f]*SP[c, d]*SP[e, g] - SP[a, i]*SP[b, f]*SP[c, d]*SP[e, g] + SP[a, f]*SP[b, h]*SP[c, d]*SP[e, g] + SP[a, f]*SP[b, i]*SP[c, d]*SP[e, g] +
+SP[a, h]*SP[b, d]*SP[c, f]*SP[e, g] + SP[a, i]*SP[b, d]*SP[c, f]*SP[e, g] - SP[a, d]*SP[b, h]*SP[c, f]*SP[e, g] - SP[a, d]*SP[b, i]*SP[c, f]*SP[e, g] -
+SP[a, f]*SP[b, d]*SP[c, h]*SP[e, g] + SP[a, d]*SP[b, f]*SP[c, h]*SP[e, g] - SP[a, f]*SP[b, d]*SP[c, i]*SP[e, g] + SP[a, d]*SP[b, f]*SP[c, i]*SP[e, g] -
+SP[a, h]*SP[b, c]*SP[d, f]*SP[e, g] - SP[a, i]*SP[b, c]*SP[d, f]*SP[e, g] + SP[a, c]*SP[b, h]*SP[d, f]*SP[e, g] + SP[a, c]*SP[b, i]*SP[d, f]*SP[e, g] -
+SP[a, b]*SP[c, h]*SP[d, f]*SP[e, g] - SP[a, b]*SP[c, i]*SP[d, f]*SP[e, g] + SP[a, f]*SP[b, c]*SP[d, h]*SP[e, g] - SP[a, c]*SP[b, f]*SP[d, h]*SP[e, g] +
+SP[a, b]*SP[c, f]*SP[d, h]*SP[e, g] + SP[a, f]*SP[b, c]*SP[d, i]*SP[e, g] - SP[a, c]*SP[b, f]*SP[d, i]*SP[e, g] + SP[a, b]*SP[c, f]*SP[d, i]*SP[e, g] +
+SP[a, g]*SP[b, f]*SP[c, d]*SP[e, h] - SP[a, f]*SP[b, g]*SP[c, d]*SP[e, h] - SP[a, g]*SP[b, d]*SP[c, f]*SP[e, h] + SP[a, d]*SP[b, g]*SP[c, f]*SP[e, h] +
+SP[a, f]*SP[b, d]*SP[c, g]*SP[e, h] - SP[a, d]*SP[b, f]*SP[c, g]*SP[e, h] + SP[a, g]*SP[b, c]*SP[d, f]*SP[e, h] - SP[a, c]*SP[b, g]*SP[d, f]*SP[e, h] +
+SP[a, b]*SP[c, g]*SP[d, f]*SP[e, h] - SP[a, f]*SP[b, c]*SP[d, g]*SP[e, h] + SP[a, c]*SP[b, f]*SP[d, g]*SP[e, h] - SP[a, b]*SP[c, f]*SP[d, g]*SP[e, h] +
+SP[a, g]*SP[b, f]*SP[c, d]*SP[e, i] - SP[a, f]*SP[b, g]*SP[c, d]*SP[e, i] - SP[a, g]*SP[b, d]*SP[c, f]*SP[e, i] + SP[a, d]*SP[b, g]*SP[c, f]*SP[e, i] +
+SP[a, f]*SP[b, d]*SP[c, g]*SP[e, i] - SP[a, d]*SP[b, f]*SP[c, g]*SP[e, i] + SP[a, g]*SP[b, c]*SP[d, f]*SP[e, i] - SP[a, c]*SP[b, g]*SP[d, f]*SP[e, i] +
+SP[a, b]*SP[c, g]*SP[d, f]*SP[e, i] - SP[a, f]*SP[b, c]*SP[d, g]*SP[e, i] + SP[a, c]*SP[b, f]*SP[d, g]*SP[e, i] - SP[a, b]*SP[c, f]*SP[d, g]*SP[e, i] +
+SP[a, h]*SP[b, e]*SP[c, d]*SP[f, g] + SP[a, i]*SP[b, e]*SP[c, d]*SP[f, g] - SP[a, e]*SP[b, h]*SP[c, d]*SP[f, g] - SP[a, e]*SP[b, i]*SP[c, d]*SP[f, g] -
+SP[a, h]*SP[b, d]*SP[c, e]*SP[f, g] - SP[a, i]*SP[b, d]*SP[c, e]*SP[f, g] + SP[a, d]*SP[b, h]*SP[c, e]*SP[f, g] + SP[a, d]*SP[b, i]*SP[c, e]*SP[f, g] +
+SP[a, e]*SP[b, d]*SP[c, h]*SP[f, g] - SP[a, d]*SP[b, e]*SP[c, h]*SP[f, g] + SP[a, e]*SP[b, d]*SP[c, i]*SP[f, g] - SP[a, d]*SP[b, e]*SP[c, i]*SP[f, g] +
+SP[a, h]*SP[b, c]*SP[d, e]*SP[f, g] + SP[a, i]*SP[b, c]*SP[d, e]*SP[f, g] - SP[a, c]*SP[b, h]*SP[d, e]*SP[f, g] - SP[a, c]*SP[b, i]*SP[d, e]*SP[f, g] +
+SP[a, b]*SP[c, h]*SP[d, e]*SP[f, g] + SP[a, b]*SP[c, i]*SP[d, e]*SP[f, g] - SP[a, e]*SP[b, c]*SP[d, h]*SP[f, g] + SP[a, c]*SP[b, e]*SP[d, h]*SP[f, g] -
+SP[a, b]*SP[c, e]*SP[d, h]*SP[f, g] - SP[a, e]*SP[b, c]*SP[d, i]*SP[f, g] + SP[a, c]*SP[b, e]*SP[d, i]*SP[f, g] - SP[a, b]*SP[c, e]*SP[d, i]*SP[f, g] +
+SP[a, d]*SP[b, c]*SP[e, h]*SP[f, g] - SP[a, c]*SP[b, d]*SP[e, h]*SP[f, g] + SP[a, b]*SP[c, d]*SP[e, h]*SP[f, g] + SP[a, d]*SP[b, c]*SP[e, i]*SP[f, g] -
+SP[a, c]*SP[b, d]*SP[e, i]*SP[f, g] + SP[a, b]*SP[c, d]*SP[e, i]*SP[f, g] - SP[a, g]*SP[b, e]*SP[c, d]*SP[f, h] + SP[a, e]*SP[b, g]*SP[c, d]*SP[f, h] +
+SP[a, g]*SP[b, d]*SP[c, e]*SP[f, h] - SP[a, d]*SP[b, g]*SP[c, e]*SP[f, h] - SP[a, e]*SP[b, d]*SP[c, g]*SP[f, h] + SP[a, d]*SP[b, e]*SP[c, g]*SP[f, h] -
+SP[a, g]*SP[b, c]*SP[d, e]*SP[f, h] + SP[a, c]*SP[b, g]*SP[d, e]*SP[f, h] - SP[a, b]*SP[c, g]*SP[d, e]*SP[f, h] + SP[a, e]*SP[b, c]*SP[d, g]*SP[f, h] -
+SP[a, c]*SP[b, e]*SP[d, g]*SP[f, h] + SP[a, b]*SP[c, e]*SP[d, g]*SP[f, h] - SP[a, d]*SP[b, c]*SP[e, g]*SP[f, h] + SP[a, c]*SP[b, d]*SP[e, g]*SP[f, h] -
+SP[a, b]*SP[c, d]*SP[e, g]*SP[f, h] - SP[a, g]*SP[b, e]*SP[c, d]*SP[f, i] + SP[a, e]*SP[b, g]*SP[c, d]*SP[f, i] + SP[a, g]*SP[b, d]*SP[c, e]*SP[f, i] -
+SP[a, d]*SP[b, g]*SP[c, e]*SP[f, i] - SP[a, e]*SP[b, d]*SP[c, g]*SP[f, i] + SP[a, d]*SP[b, e]*SP[c, g]*SP[f, i] - SP[a, g]*SP[b, c]*SP[d, e]*SP[f, i] +
+SP[a, c]*SP[b, g]*SP[d, e]*SP[f, i] - SP[a, b]*SP[c, g]*SP[d, e]*SP[f, i] + SP[a, e]*SP[b, c]*SP[d, g]*SP[f, i] - SP[a, c]*SP[b, e]*SP[d, g]*SP[f, i] +
+SP[a, b]*SP[c, e]*SP[d, g]*SP[f, i] - SP[a, d]*SP[b, c]*SP[e, g]*SP[f, i] + SP[a, c]*SP[b, d]*SP[e, g]*SP[f, i] - SP[a, b]*SP[c, d]*SP[e, g]*SP[f, i] +
+SP[a, f]*SP[b, e]*SP[c, d]*SP[g, h] - SP[a, e]*SP[b, f]*SP[c, d]*SP[g, h] - SP[a, f]*SP[b, d]*SP[c, e]*SP[g, h] + SP[a, d]*SP[b, f]*SP[c, e]*SP[g, h] +
+SP[a, e]*SP[b, d]*SP[c, f]*SP[g, h] - SP[a, d]*SP[b, e]*SP[c, f]*SP[g, h] + SP[a, f]*SP[b, c]*SP[d, e]*SP[g, h] - SP[a, c]*SP[b, f]*SP[d, e]*SP[g, h] +
+SP[a, b]*SP[c, f]*SP[d, e]*SP[g, h] - SP[a, e]*SP[b, c]*SP[d, f]*SP[g, h] + SP[a, c]*SP[b, e]*SP[d, f]*SP[g, h] - SP[a, b]*SP[c, e]*SP[d, f]*SP[g, h] +
+SP[a, d]*SP[b, c]*SP[e, f]*SP[g, h] - SP[a, c]*SP[b, d]*SP[e, f]*SP[g, h] + SP[a, b]*SP[c, d]*SP[e, f]*SP[g, h] + SP[a, f]*SP[b, e]*SP[c, d]*SP[g, i] -
+SP[a, e]*SP[b, f]*SP[c, d]*SP[g, i] - SP[a, f]*SP[b, d]*SP[c, e]*SP[g, i] + SP[a, d]*SP[b, f]*SP[c, e]*SP[g, i] + SP[a, e]*SP[b, d]*SP[c, f]*SP[g, i] -
+SP[a, d]*SP[b, e]*SP[c, f]*SP[g, i] + SP[a, f]*SP[b, c]*SP[d, e]*SP[g, i] - SP[a, c]*SP[b, f]*SP[d, e]*SP[g, i] + SP[a, b]*SP[c, f]*SP[d, e]*SP[g, i] -
+SP[a, e]*SP[b, c]*SP[d, f]*SP[g, i] + SP[a, c]*SP[b, e]*SP[d, f]*SP[g, i] - SP[a, b]*SP[c, e]*SP[d, f]*SP[g, i] + SP[a, d]*SP[b, c]*SP[e, f]*SP[g, i] -
+SP[a, c]*SP[b, d]*SP[e, f]*SP[g, i] + SP[a, b]*SP[c, d]*SP[e, f]*SP[g, i])"},
+{"fcstDiracTrace-ID43",
+"DiracTrace[GS[p, k, d, c].GA[5].GS[t, z], DiracTraceEvaluate -> True, FCE -> True]",
+"(4*I)*(-(SP[t, z]*LC[][c, d, k, p]) + SP[k, p]*LC[][c, d, t, z] - SP[d, p]*LC[][c, k, t, z] + SP[d, k]*LC[][c, p, t, z] -
+SP[c, z]*LC[][d, k, p, t] + SP[c, t]*LC[][d, k, p, z])"},
+{"fcstDiracTrace-ID44",
+"DiracTrace[GA[5].GS[t, z].GS[p, k, d, c], DiracTraceEvaluate -> True, FCE -> True]",
+"(4*I)*(-(SP[t, z]*LC[][c, d, k, p]) + SP[k, p]*LC[][c, d, t, z] - SP[d, p]*LC[][c, k, t, z] + SP[d, k]*LC[][c, p, t, z] -
+SP[c, z]*LC[][d, k, p, t] + SP[c, t]*LC[][d, k, p, z])"},
+{"fcstDiracTrace-ID45",
+"DiracTrace[(GS[p2] + m).(GS[a, pp] - GS[pp, a]).(GS[p1] + m),DiracTraceEvaluate -> True, FCE -> True]",
+"8 (SP[a, p2] SP[p1, pp] - SP[a, p1] SP[p2, pp])"},
+{"fcstDiracTrace-ID46",
+"FCSetDiracGammaScheme[\"BMHV\"];
+tmp = (DiracTrace[GAD[i1, i2, i3].GA[6].GAD[i5, i6, i7].GA[6],
+	DiracTraceEvaluate -> True] -
+DiracTrace[GAD[i1, i2, i3].((1 + GA[5])/2).GAD[i5, i6, i7].((1 + GA[5])/2),
+	DiracTraceEvaluate -> True]); FCSetDiracGammaScheme[\"NDR\"];\n tmp","0"},
+{"fcstDiracTrace-ID46",
+"FCSetDiracGammaScheme[\"NDR-Drop\"];
+tmp = (DiracTrace[GAD[i1, i2, i3,5,i5, i6, i7],
+	DiracTraceEvaluate -> True]); FCSetDiracGammaScheme[\"NDR\"];\n tmp","0"},
+{"fcstDiracTrace-ID47", "DiracTrace[DOT[1, 0], DiracTraceEvaluate -> True]","0"},
+{"fcstDiracTrace-ID48", "DiracTrace[DOT[1, 1], DiracTraceEvaluate -> True]","4"},
+{"fcstDiracTrace-ID49", "DiracTrace[DOT[a, b], DiracTraceEvaluate -> True]","4 a b"},
+{"fcstDiracTrace-ID50", "DiracTrace[DOT[3,1,2,1], DiracTraceEvaluate -> True]","24"},
+{"fcstDiracTrace-ID51", "DiracTrace[DOT[1, 1], DiracTraceEvaluate -> True,
+FCDiracIsolate -> False]", "4"},
+{"fcstDiracTrace-ID52", "DiracTrace[GA[mu, nu], DiracTraceEvaluate -> True,
+FCDiracIsolate -> False]", "4 Pair[LorentzIndex[mu], LorentzIndex[nu]]"},
+{"fcstDiracTrace-ID53", "DiracTrace[DiracSigma[GA[mu], GA[nu]].GA[rho, si],
+DiracTraceEvaluate -> True, FCDiracIsolate -> False]", "4 I (Pair[LorentzIndex[mu], LorentzIndex[si]] Pair[LorentzIndex[nu],
+	LorentzIndex[rho]] - Pair[LorentzIndex[mu], LorentzIndex[rho]] Pair[LorentzIndex[nu],
+	LorentzIndex[si]])"}
+});

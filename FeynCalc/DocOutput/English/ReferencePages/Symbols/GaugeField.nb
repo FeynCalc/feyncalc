@@ -3,69 +3,93 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9467,        321]
-NotebookOptionsPosition[      5878,        211]
-NotebookOutlinePosition[      8502,        284]
-CellTagsIndexPosition[      8390,        278]
+NotebookDataLength[     10303,        342]
+NotebookOptionsPosition[      6900,        241]
+NotebookOutlinePosition[      9433,        310]
+CellTagsIndexPosition[      9321,        304]
 WindowTitle->GaugeField
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/GaugeField\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/GaugeField"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/GaugeField.\
-html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$80630], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/GaugeField", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FieldStrength\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/FieldStrength"], "\<\"QuantumField\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/QuantumField"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/GaugeField\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/GaugeField"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
+GaugeField.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$152690], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/GaugeField", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +97,18 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["GaugeField", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["GaugeField", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -108,7 +142,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1690208121],
+ CellID->550294348],
 
 Cell[CellGroupData[{
 
@@ -118,7 +152,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->585064115],
+ CellID->1849237363],
 
 Cell[CellGroupData[{
 
@@ -129,12 +163,11 @@ Cell[BoxData["GaugeField"], "Input",
 
 Cell[BoxData[
  FormBox["A", TraditionalForm]], "Output",
- ImageSize->{15, 15},
+ ImageSize->{19, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"GaugeField",
- CellLabel->"Out[1]=",
- CellID->501755105]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -161,12 +194,11 @@ Cell[BoxData[
     FormBox["a",
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
- ImageSize->{24, 19},
+ ImageSize->{29, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"GaugeField",
- CellLabel->"Out[2]=",
- CellID->511347556]
+ CellLabel->"Out[2]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -202,9 +234,7 @@ Cell[TextData[{
   ButtonNote->"QuantumField"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"GaugeField",
- CellID->1344551251]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -212,7 +242,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"GaugeField",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -221,10 +251,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 20, 44.703538}", 
+   "built" -> "{2020, 1, 5, 18, 58, 24.791362}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -232,11 +262,11 @@ TaggingRules->{
     "None", "summary" -> 
     "GaugeField is just a name. No functional properties are associated with \
 it. GaugeField is used as default setting for the option QuantumField of \
-FieldStrength.", "synonyms" -> {}, "title" -> "GaugeField", "titlemodifier" -> 
-    "", "windowtitle" -> "GaugeField", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/GaugeField"}, "SearchTextTranslated" -> ""},
+FieldStrength.", "synonyms" -> {}, "tabletags" -> {}, "title" -> "GaugeField",
+     "titlemodifier" -> "", "windowtitle" -> "GaugeField", "type" -> "Symbol",
+     "uri" -> "FeynCalc/ref/GaugeField"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -244,8 +274,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 29}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -254,75 +285,65 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3383, 95, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4488, 129, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1690208121]},
+   CellID->550294348]},
  "GaugeField"->{
-  Cell[4016, 124, 105, 3, 27, "Input",
+  Cell[5121, 158, 105, 3, 27, "Input",
    CellTags->"GaugeField",
    CellID->1050712800],
-  Cell[4124, 129, 211, 7, 36, "Output",
-   CellTags->"GaugeField",
-   CellID->501755105],
-  Cell[4372, 141, 256, 7, 27, "Input",
+  Cell[5229, 163, 191, 6, 35, "Output",
+   CellTags->"GaugeField"],
+  Cell[5457, 174, 256, 7, 27, "Input",
    CellTags->"GaugeField",
    CellID->1376527682],
-  Cell[4631, 150, 421, 18, 40, "Output",
-   CellTags->"GaugeField",
-   CellID->511347556],
-  Cell[5420, 191, 416, 15, 32, "Text",
-   CellTags->"GaugeField",
-   CellID->1344551251]}
+  Cell[5716, 183, 401, 17, 40, "Output",
+   CellTags->"GaugeField"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7778, 255},
- {"GaugeField", 7915, 259}
+ {"PrimaryExamplesSection", 8843, 286},
+ {"GaugeField", 8980, 290}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[582, 21, 2252, 52, 51, "AnchorBarGrid",
+Cell[582, 21, 3123, 76, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2837, 75, 53, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2893, 78, 465, 13, 97, "Usage",
+Cell[3708, 99, 287, 11, 45, "ObjectNameGrid"],
+Cell[3998, 112, 465, 13, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3383, 95, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4488, 129, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1690208121],
+ CellID->550294348],
 Cell[CellGroupData[{
-Cell[3796, 114, 195, 6, 25, "ExampleSection",
- CellID->585064115],
+Cell[4900, 148, 196, 6, 26, "ExampleSection",
+ CellID->1849237363],
 Cell[CellGroupData[{
-Cell[4016, 124, 105, 3, 27, "Input",
+Cell[5121, 158, 105, 3, 27, "Input",
  CellTags->"GaugeField",
  CellID->1050712800],
-Cell[4124, 129, 211, 7, 36, "Output",
- CellTags->"GaugeField",
- CellID->501755105]
+Cell[5229, 163, 191, 6, 35, "Output",
+ CellTags->"GaugeField"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4372, 141, 256, 7, 27, "Input",
+Cell[5457, 174, 256, 7, 27, "Input",
  CellTags->"GaugeField",
  CellID->1376527682],
-Cell[4631, 150, 421, 18, 40, "Output",
- CellTags->"GaugeField",
- CellID->511347556]
+Cell[5716, 183, 401, 17, 40, "Output",
+ CellTags->"GaugeField"]
 }, Open  ]]
 }, Open  ]],
-Cell[5079, 172, 31, 0, 29, "SectionFooterSpacer"]
+Cell[6144, 204, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5147, 177, 270, 12, 31, "SeeAlsoSection",
+Cell[6212, 209, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[5420, 191, 416, 15, 32, "Text",
- CellTags->"GaugeField",
- CellID->1344551251]
+Cell[6485, 223, 373, 13, 56, "SeeAlso"]
 }, Open  ]],
-Cell[5851, 209, 23, 0, 42, "FooterCell"]
+Cell[6873, 239, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Factors traces using linearity							    *)
@@ -28,7 +28,8 @@ End[]
 Begin["`FCTraceFactor`Private`"]
 
 Options[FCTraceFactor] = {
-	FCI -> False
+	FCI -> False,
+	FCE -> False
 };
 
 FCTraceFactor[expr_, OptionsPattern[]] :=
@@ -49,6 +50,10 @@ FCTraceFactor[expr_, OptionsPattern[]] :=
 
 		If[ diracTraces =!= {},
 			res = ex /. Dispatch[Thread[diracTraces -> tracefactor[diracTraces]]]
+		];
+
+		If[	OptionValue[FCE],
+			res = FCE[res]
 		];
 
 		res

@@ -124,8 +124,28 @@ Feynman rule functions QuarkGluonVertex, GluonPropagator, QuarkPropagator."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "CounterTerm", "]"}]], "Input",
+ CellLabel->"In[527]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"CouplingConstant", "\[Rule]", 
+     SubscriptBox["g", "s"]}], ",", 
+    RowBox[{"Dimension", "\[Rule]", 
+     RowBox[{
+      TagBox["\[CurlyEpsilon]",
+       TraditionalForm], "+", "4"}]}], ",", 
+    RowBox[{"Gauge", "\[Rule]", "1"}], ",", 
+    RowBox[{"QuarkMass", "\[Rule]", 
+     RowBox[{"FCGV", "(", "\<\"M\"\>", ")"}]}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[527]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -181,9 +201,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/QuarkPropagator",
   ButtonNote->"QuarkPropagator"],
  "."
-}], "Text",
- CellTags->"CounterTerm",
- CellID->257706146]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -215,7 +233,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"CounterTerm", "[", "Zm", "]"}]], "Input",
  CellTags->"CounterTerm",
- CellLabel->"In[1]:=",
+ CellLabel->"In[526]:=",
  CellID->1995023941],
 
 Cell[BoxData[
@@ -270,8 +288,7 @@ Cell[BoxData[
      TagBox["\[CurlyEpsilon]",
       TraditionalForm]}]], "+", "1"}], TraditionalForm]], "Output",
  CellTags->"CounterTerm",
- CellLabel->"Out[1]=",
- CellID->1407493113]
+ CellLabel->"Out[526]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -336,12 +353,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{739, Automatic}, {Automatic, 77}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

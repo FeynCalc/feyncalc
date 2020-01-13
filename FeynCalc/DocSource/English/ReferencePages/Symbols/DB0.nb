@@ -169,9 +169,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/B0",
   ButtonNote->"B0"],
  "."
-}], "Text",
- CellTags->"DB0",
- CellID->1206126123]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -212,7 +210,7 @@ Cell[BoxData[
       SubscriptBox["m", "2"], "2"]}], "]"}], ",", 
    SubscriptBox["p", "2"]}], "]"}]], "Input",
  CellTags->"DB0",
- CellLabel->"In[1]:=",
+ CellLabel->"In[535]:=",
  CellID->1086692886],
 
 Cell[BoxData[
@@ -223,8 +221,7 @@ Cell[BoxData[
     SubsuperscriptBox["m", "1", "2"], ",", 
     SubsuperscriptBox["m", "2", "2"]}], ")"}], TraditionalForm]], "Output",
  CellTags->"DB0",
- CellLabel->"Out[1]=",
- CellID->758313713]
+ CellLabel->"Out[535]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -289,12 +286,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{964, Automatic}, {Automatic, 121}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

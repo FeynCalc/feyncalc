@@ -1,0 +1,1696 @@
+
+
+(* :Title: PaVeUVPart.test                                          	    	*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for PaVeUVPart			  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`PaVeUVPart =
+({
+{"fcstPaVeUVPart-ID1", "PaVeUVPart[A0[m^2]]", "(-2*m^2)/(-4 + D)"},
+{"fcstPaVeUVPart-ID2",
+"PaVeUVPart[A0[m^2],FCLoopExtract\[Rule]False,Prefactor\[Rule]cc]",
+	"(-2*cc*m^2)/(-4 + D)"},
+{"fcstPaVeUVPart-ID3",
+"PaVeUVPart[x+y B0[SPD[p,p],0,\!\(\*SuperscriptBox[\(M\), \
+\(2\)]\)]]", "(-4*x + D*x - 2*y)/(-4 + D)"},
+{"fcstPaVeUVPart-ID4",
+"PaVeUVPart[x+ y \
+C0[0,SPD[p,p],SPD[p,p],0,0,\!\(\*SuperscriptBox[\(M\), \(2\)]\)]]",
+"x"},
+{"fcstPaVeUVPart-ID5",
+"PaVeUVPart[PaVe[0,0,{p10,p12,p20},{m1^2,m2^2,m3^2}]]",
+"-1/(2*(-4 + D))"},
+{"fcstPaVeUVPart-ID6",
+"PaVeUVPart[PaVe[0,0,0,0,0,0,{p10,p12,p23,0,p20,p13},{m1^2,m2^2,m3^\
+2,m4^2}]]",
+"(-5*m1^2 - 5*m2^2 - 5*m3^2 - 5*m4^2 + p10 + p12 + p13 + p20 + \
+p23)/(480*(-4 + D))"},
+{"fcstPaVeUVPart-ID7",
+"PaVeUVPart[PaVe[0, {SPD[p1, p1]}, {m0^2, m1^2}]]",
+"-2/(-4 + D)"},
+{"fcstPaVeUVPart-ID8",
+"PaVeUVPart[PaVe[1, {SPD[p1, p1]}, {m0^2, m1^2}]]",
+"(-4 + D)^(-1)"},
+{"fcstPaVeUVPart-ID9",
+"PaVeUVPart[PaVe[0, 0, {SPD[p1, p1]}, {m0^2, m1^2}]]",
+"(-3*m0^2 - 3*m1^2 + Pair[Momentum[p1, D], Momentum[p1, \
+D]])/(6*(-4 + D))"},
+{"fcstPaVeUVPart-ID10",
+"PaVeUVPart[PaVe[1, 1, {SPD[p1, p1]}, {m0^2, m1^2}]]",
+"-2/(3*(-4 + D))"},
+{"fcstPaVeUVPart-ID11",
+"PaVeUVPart[PaVe[0, 0, 1, {SPD[p1, p1]}, {m0^2, m1^2}]]",
+"(2*m0^2 + 4*m1^2 - Pair[Momentum[p1, D], Momentum[p1, \
+D]])/(12*(-4 + D))"},
+{"fcstPaVeUVPart-ID12",
+"PaVeUVPart[PaVe[1, 1, 1, {SPD[p1, p1]}, {m0^2, m1^2}]]",
+"1/(2*(-4 + D))"},
+{"fcstPaVeUVPart-ID13",
+"PaVeUVPart[PaVe[0, 0, 0, 0, {SPD[p1, p1]}, {m0^2, m1^2}]]",
+"(-10*m0^4 - 10*m0^2*m1^2 - 10*m1^4 + 5*m0^2*Pair[Momentum[p1, D], \
+Momentum[p1, D]] + 5*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+Pair[Momentum[p1, D], Momentum[p1, D]]^2)/(120*(-4 + D))"},
+{"fcstPaVeUVPart-ID14",
+"PaVeUVPart[PaVe[0, 0, 1, 1, {SPD[p1, p1]}, {m0^2, m1^2}]]",
+"(-5*m0^2 - 15*m1^2 + 3*Pair[Momentum[p1, D], Momentum[p1, \
+D]])/(60*(-4 + D))"},
+{"fcstPaVeUVPart-ID15",
+"PaVeUVPart[PaVe[1, 1, 1, 1, {SPD[p1, p1]}, {m0^2, m1^2}]]",
+"-2/(5*(-4 + D))"},
+{"fcstPaVeUVPart-ID16",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, {SPD[p1, p1]}, {m0^2, m1^2}]]",
+"(5*m0^4 + 10*m0^2*m1^2 + 15*m1^4 - 4*m0^2*Pair[Momentum[p1, D], \
+Momentum[p1, D]] - 6*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+Pair[Momentum[p1, D], Momentum[p1, D]]^2)/(240*(-4 + D))"},
+{"fcstPaVeUVPart-ID17",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, {SPD[p1, p1]}, {m0^2, m1^2}]]",
+"(3*m0^2 + 12*m1^2 - 2*Pair[Momentum[p1, D], Momentum[p1, \
+D]])/(60*(-4 + D))"},
+{"fcstPaVeUVPart-ID18",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, {SPD[p1, p1]}, {m0^2, m1^2}]]",
+"1/(3*(-4 + D))"},
+{"fcstPaVeUVPart-ID19",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, {SPD[p1, p1]}, {m0^2, m1^2}]]",
+"(-35*m0^6 - 35*m0^4*m1^2 - 35*m0^2*m1^4 - 35*m1^6 + \
+21*m0^4*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+28*m0^2*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+21*m1^4*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+7*m0^2*Pair[Momentum[p1, D], Momentum[p1, D]]^2 - \
+7*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]]^2 + Pair[Momentum[p1, \
+D], Momentum[p1, D]]^3)/(3360*(-4 + D))"},
+{"fcstPaVeUVPart-ID20",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 1, {SPD[p1, p1]}, {m0^2, m1^2}]]",
+"(-7*m0^4 - 21*m0^2*m1^2 - 42*m1^4 + 7*m0^2*Pair[Momentum[p1, D], \
+Momentum[p1, D]] + 14*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+2*Pair[Momentum[p1, D], Momentum[p1, D]]^2)/(840*(-4 + D))"},
+{"fcstPaVeUVPart-ID21",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 1, {SPD[p1, p1]}, {m0^2, m1^2}]]",
+"(-7*m0^2 - 35*m1^2 + 5*Pair[Momentum[p1, D], Momentum[p1, \
+D]])/(210*(-4 + D))"},
+{"fcstPaVeUVPart-ID22",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 1, {SPD[p1, p1]}, {m0^2, m1^2}]]",
+"-2/(7*(-4 + D))"},
+{"fcstPaVeUVPart-ID23",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, 1, {SPD[p1, p1]}, {m0^2, \
+m1^2}]]",
+"(14*m0^6 + 28*m0^4*m1^2 + 42*m0^2*m1^4 + 56*m1^6 - \
+14*m0^4*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+28*m0^2*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+28*m1^4*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+6*m0^2*Pair[Momentum[p1, D], Momentum[p1, D]]^2 + \
+8*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]]^2 - Pair[Momentum[p1, \
+D], Momentum[p1, D]]^3)/(6720*(-4 + D))"},
+{"fcstPaVeUVPart-ID24",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 1, 1, {SPD[p1, p1]}, {m0^2, \
+m1^2}]]",
+"(14*m0^4 + 56*m0^2*m1^2 + 140*m1^4 - 16*m0^2*Pair[Momentum[p1, \
+D], Momentum[p1, D]] - 40*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]] \
++ 5*Pair[Momentum[p1, D], Momentum[p1, D]]^2)/(3360*(-4 + D))"},
+{"fcstPaVeUVPart-ID25",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 1, 1, {SPD[p1, p1]}, {m0^2, \
+m1^2}]]",
+"(4*m0^2 + 24*m1^2 - 3*Pair[Momentum[p1, D], Momentum[p1, \
+D]])/(168*(-4 + D))"},
+{"fcstPaVeUVPart-ID26",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 1, 1, {SPD[p1, p1]}, {m0^2, \
+m1^2}]]", "1/(4*(-4 + D))"},
+{"fcstPaVeUVPart-ID27",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, 0, 0, {SPD[p1, p1]}, {m0^2, \
+m1^2}]]",
+"(-126*m0^8 - 126*m0^6*m1^2 - 126*m0^4*m1^4 - 126*m0^2*m1^6 - \
+126*m1^8 + 84*m0^6*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+126*m0^4*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+126*m0^2*m1^4*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+84*m1^6*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+36*m0^4*Pair[Momentum[p1, D], Momentum[p1, D]]^2 - \
+54*m0^2*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]]^2 - \
+36*m1^4*Pair[Momentum[p1, D], Momentum[p1, D]]^2 + \
+9*m0^2*Pair[Momentum[p1, D], Momentum[p1, D]]^3 + \
+9*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]]^3 - Pair[Momentum[p1, \
+D], Momentum[p1, D]]^4)/(120960*(-4 + D))"},
+{"fcstPaVeUVPart-ID28",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, 1, 1, {SPD[p1, p1]}, {m0^2, \
+m1^2}]]",
+"(-42*m0^6 - 126*m0^4*m1^2 - 252*m0^2*m1^4 - 420*m1^6 + \
+54*m0^4*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+144*m0^2*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+180*m1^4*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+27*m0^2*Pair[Momentum[p1, D], Momentum[p1, D]]^2 - \
+45*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]]^2 + \
+5*Pair[Momentum[p1, D], Momentum[p1, D]]^3)/(60480*(-4 + D))"},
+{"fcstPaVeUVPart-ID29",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 1, 1, 1, {SPD[p1, p1]}, {m0^2, \
+m1^2}]]",
+"(-12*m0^4 - 60*m0^2*m1^2 - 180*m1^4 + 15*m0^2*Pair[Momentum[p1, \
+D], Momentum[p1, D]] + 45*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]] \
+- 5*Pair[Momentum[p1, D], Momentum[p1, D]]^2)/(5040*(-4 + D))"},
+{"fcstPaVeUVPart-ID30",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 1, 1, 1, {SPD[p1, p1]}, {m0^2, \
+m1^2}]]",
+"(-9*m0^2 - 63*m1^2 + 7*Pair[Momentum[p1, D], Momentum[p1, \
+D]])/(504*(-4 + D))"},
+{"fcstPaVeUVPart-ID31",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 1, 1, 1, {SPD[p1, p1]}, {m0^2, \
+m1^2}]]", "-2/(9*(-4 + D))"},
+{"fcstPaVeUVPart-ID32",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, 0, 0, 1, {SPD[p1, p1]}, {m0^2, \
+m1^2}]]",
+"(42*m0^8 + 84*m0^6*m1^2 + 126*m0^4*m1^4 + 168*m0^2*m1^6 + \
+210*m1^8 - 48*m0^6*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+108*m0^4*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+144*m0^2*m1^4*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+120*m1^6*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+27*m0^4*Pair[Momentum[p1, D], Momentum[p1, D]]^2 + \
+54*m0^2*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]]^2 + \
+45*m1^4*Pair[Momentum[p1, D], Momentum[p1, D]]^2 - \
+8*m0^2*Pair[Momentum[p1, D], Momentum[p1, D]]^3 - \
+10*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]]^3 + Pair[Momentum[p1, \
+D], Momentum[p1, D]]^4)/(241920*(-4 + D))"},
+{"fcstPaVeUVPart-ID33",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, 1, 1, 1, {SPD[p1, p1]}, {m0^2, \
+m1^2}]]",
+"(6*m0^6 + 24*m0^4*m1^2 + 60*m0^2*m1^4 + 120*m1^6 - \
+9*m0^4*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+30*m0^2*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+45*m1^4*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+5*m0^2*Pair[Momentum[p1, D], Momentum[p1, D]]^2 + \
+10*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]]^2 - Pair[Momentum[p1, \
+D], Momentum[p1, D]]^3)/(20160*(-4 + D))"},
+{"fcstPaVeUVPart-ID34",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 1, 1, 1, 1, {SPD[p1, p1]}, {m0^2, \
+m1^2}]]",
+"(15*m0^4 + 90*m0^2*m1^2 + 315*m1^4 - 20*m0^2*Pair[Momentum[p1, \
+D], Momentum[p1, D]] - 70*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]] \
++ 7*Pair[Momentum[p1, D], Momentum[p1, D]]^2)/(10080*(-4 + D))"},
+{"fcstPaVeUVPart-ID35",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 1, 1, 1, 1, {SPD[p1, p1]}, {m0^2, \
+m1^2}]]",
+"(5*m0^2 + 40*m1^2 - 4*Pair[Momentum[p1, D], Momentum[p1, \
+D]])/(360*(-4 + D))"},
+{"fcstPaVeUVPart-ID36",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 1, 1, 1, 1, {SPD[p1, p1]}, {m0^2, \
+m1^2}]]", "1/(5*(-4 + D))"},
+{"fcstPaVeUVPart-ID37",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, {SPD[p1, p1]}, \
+{m0^2, m1^2}]]",
+"(-462*m0^10 - 462*m0^8*m1^2 - 462*m0^6*m1^4 - 462*m0^4*m1^6 - \
+462*m0^2*m1^8 - 462*m1^10 + 330*m0^8*Pair[Momentum[p1, D], \
+Momentum[p1, D]] + 528*m0^6*m1^2*Pair[Momentum[p1, D], Momentum[p1, \
+D]] + 594*m0^4*m1^4*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+528*m0^2*m1^6*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+330*m1^8*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+165*m0^6*Pair[Momentum[p1, D], Momentum[p1, D]]^2 - \
+297*m0^4*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]]^2 - \
+297*m0^2*m1^4*Pair[Momentum[p1, D], Momentum[p1, D]]^2 - \
+165*m1^6*Pair[Momentum[p1, D], Momentum[p1, D]]^2 + \
+55*m0^4*Pair[Momentum[p1, D], Momentum[p1, D]]^3 + \
+88*m0^2*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]]^3 + \
+55*m1^4*Pair[Momentum[p1, D], Momentum[p1, D]]^3 - \
+11*m0^2*Pair[Momentum[p1, D], Momentum[p1, D]]^4 - \
+11*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]]^4 + Pair[Momentum[p1, \
+D], Momentum[p1, D]]^5)/(5322240*(-4 + D))"},
+{"fcstPaVeUVPart-ID38",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, 0, 0, 1, 1, {SPD[p1, p1]}, \
+{m0^2, m1^2}]]",
+"(-66*m0^8 - 198*m0^6*m1^2 - 396*m0^4*m1^4 - 660*m0^2*m1^6 - \
+990*m1^8 + 99*m0^6*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+297*m0^4*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+495*m0^2*m1^4*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+495*m1^6*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+66*m0^4*Pair[Momentum[p1, D], Momentum[p1, D]]^2 - \
+165*m0^2*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]]^2 - \
+165*m1^4*Pair[Momentum[p1, D], Momentum[p1, D]]^2 + \
+22*m0^2*Pair[Momentum[p1, D], Momentum[p1, D]]^3 + \
+33*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]]^3 - \
+3*Pair[Momentum[p1, D], Momentum[p1, D]]^4)/(1330560*(-4 + D))"},
+{"fcstPaVeUVPart-ID39",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, 1, 1, 1, 1, {SPD[p1, p1]}, \
+{m0^2, m1^2}]]",
+"(-33*m0^6 - 165*m0^4*m1^2 - 495*m0^2*m1^4 - 1155*m1^6 + \
+55*m0^4*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+220*m0^2*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+385*m1^4*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+33*m0^2*Pair[Momentum[p1, D], Momentum[p1, D]]^2 - \
+77*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]]^2 + \
+7*Pair[Momentum[p1, D], Momentum[p1, D]]^3)/(221760*(-4 + D))"},
+{"fcstPaVeUVPart-ID40",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 1, 1, 1, 1, 1, {SPD[p1, p1]}, \
+{m0^2, m1^2}]]",
+"(-55*m0^4 - 385*m0^2*m1^2 - 1540*m1^4 + 77*m0^2*Pair[Momentum[p1, \
+D], Momentum[p1, D]] + 308*m1^2*Pair[Momentum[p1, D], Momentum[p1, \
+D]] - 28*Pair[Momentum[p1, D], Momentum[p1, D]]^2)/(55440*(-4 + \
+D))"},
+{"fcstPaVeUVPart-ID41",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 1, 1, 1, 1, 1, {SPD[p1, p1]}, \
+{m0^2, m1^2}]]",
+"(-11*m0^2 - 99*m1^2 + 9*Pair[Momentum[p1, D], Momentum[p1, \
+D]])/(990*(-4 + D))"},
+{"fcstPaVeUVPart-ID42",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, {SPD[p1, p1]}, \
+{m0^2, m1^2}]]", "-2/(11*(-4 + D))"},
+{"fcstPaVeUVPart-ID43",
+"PaVeUVPart[PaVe[1, {SPD[p1, p1], p12, SPD[p2, p2]}, {m0^2, m1^2, \
+m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID44",
+"PaVeUVPart[PaVe[2, {SPD[p1, p1], p12, SPD[p2, p2]}, {m0^2, m1^2, \
+m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID45",
+"PaVeUVPart[PaVe[0, 0, {SPD[p1, p1], p12, SPD[p2, p2]}, {m0^2, \
+m1^2, m2^2}]]", "-1/(2*(-4 + D))"},
+{"fcstPaVeUVPart-ID46",
+"PaVeUVPart[PaVe[1, 1, {SPD[p1, p1], p12, SPD[p2, p2]}, {m0^2, \
+m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID47",
+"PaVeUVPart[PaVe[1, 2, {SPD[p1, p1], p12, SPD[p2, p2]}, {m0^2, \
+m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID48",
+"PaVeUVPart[PaVe[2, 2, {SPD[p1, p1], p12, SPD[p2, p2]}, {m0^2, \
+m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID49",
+"PaVeUVPart[PaVe[0, 0, 1, {SPD[p1, p1], p12, SPD[p2, p2]}, {m0^2, \
+m1^2, m2^2}]]", "1/(6*(-4 + D))"},
+{"fcstPaVeUVPart-ID50",
+"PaVeUVPart[PaVe[0, 0, 2, {SPD[p1, p1], p12, SPD[p2, p2]}, {m0^2, \
+m1^2, m2^2}]]", "1/(6*(-4 + D))"},
+{"fcstPaVeUVPart-ID51",
+"PaVeUVPart[PaVe[1, 1, 1, {SPD[p1, p1], p12, SPD[p2, p2]}, {m0^2, \
+m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID52",
+"PaVeUVPart[PaVe[1, 1, 2, {SPD[p1, p1], p12, SPD[p2, p2]}, {m0^2, \
+m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID53",
+"PaVeUVPart[PaVe[1, 2, 2, {SPD[p1, p1], p12, SPD[p2, p2]}, {m0^2, \
+m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID54",
+"PaVeUVPart[PaVe[2, 2, 2, {SPD[p1, p1], p12, SPD[p2, p2]}, {m0^2, \
+m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID55",
+"PaVeUVPart[PaVe[0, 0, 0, 0, {SPD[p1, p1], p12, SPD[p2, p2]}, \
+{m0^2, m1^2, m2^2}]]",
+"(-4*m0^2 - 4*m1^2 - 4*m2^2 + p12 + Pair[Momentum[p1, D], \
+Momentum[p1, D]] + Pair[Momentum[p2, D], Momentum[p2, D]])/(48*(-4 + \
+D))"},
+{"fcstPaVeUVPart-ID56",
+"PaVeUVPart[PaVe[0, 0, 1, 1, {SPD[p1, p1], p12, SPD[p2, p2]}, \
+{m0^2, m1^2, m2^2}]]", "-1/(12*(-4 + D))"},
+{"fcstPaVeUVPart-ID57",
+"PaVeUVPart[PaVe[0, 0, 1, 2, {SPD[p1, p1], p12, SPD[p2, p2]}, \
+{m0^2, m1^2, m2^2}]]", "-1/(24*(-4 + D))"},
+{"fcstPaVeUVPart-ID58",
+"PaVeUVPart[PaVe[0, 0, 2, 2, {SPD[p1, p1], p12, SPD[p2, p2]}, \
+{m0^2, m1^2, m2^2}]]", "-1/(12*(-4 + D))"},
+{"fcstPaVeUVPart-ID59",
+"PaVeUVPart[PaVe[1, 1, 1, 1, {SPD[p1, p1], p12, SPD[p2, p2]}, \
+{m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID60",
+"PaVeUVPart[PaVe[1, 1, 1, 2, {SPD[p1, p1], p12, SPD[p2, p2]}, \
+{m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID61",
+"PaVeUVPart[PaVe[1, 1, 2, 2, {SPD[p1, p1], p12, SPD[p2, p2]}, \
+{m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID62",
+"PaVeUVPart[PaVe[1, 2, 2, 2, {SPD[p1, p1], p12, SPD[p2, p2]}, \
+{m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID63",
+"PaVeUVPart[PaVe[2, 2, 2, 2, {SPD[p1, p1], p12, SPD[p2, p2]}, \
+{m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID64",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, {SPD[p1, p1], p12, SPD[p2, p2]}, \
+{m0^2, m1^2, m2^2}]]",
+"(5*m0^2 + 10*m1^2 + 5*m2^2 - 2*p12 - 2*Pair[Momentum[p1, D], \
+Momentum[p1, D]] - Pair[Momentum[p2, D], Momentum[p2, D]])/(240*(-4 + \
+D))"},
+{"fcstPaVeUVPart-ID65",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 2, {SPD[p1, p1], p12, SPD[p2, p2]}, \
+{m0^2, m1^2, m2^2}]]",
+"(5*m0^2 + 5*m1^2 + 10*m2^2 - 2*p12 - Pair[Momentum[p1, D], \
+Momentum[p1, D]] - 2*Pair[Momentum[p2, D], Momentum[p2, D]])/(240*(-4 \
++ D))"},
+{"fcstPaVeUVPart-ID66",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, {SPD[p1, p1], p12, SPD[p2, p2]}, \
+{m0^2, m1^2, m2^2}]]", "1/(20*(-4 + D))"},
+{"fcstPaVeUVPart-ID67",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 2, {SPD[p1, p1], p12, SPD[p2, p2]}, \
+{m0^2, m1^2, m2^2}]]", "1/(60*(-4 + D))"},
+{"fcstPaVeUVPart-ID68",
+"PaVeUVPart[PaVe[0, 0, 1, 2, 2, {SPD[p1, p1], p12, SPD[p2, p2]}, \
+{m0^2, m1^2, m2^2}]]", "1/(60*(-4 + D))"},
+{"fcstPaVeUVPart-ID69",
+"PaVeUVPart[PaVe[0, 0, 2, 2, 2, {SPD[p1, p1], p12, SPD[p2, p2]}, \
+{m0^2, m1^2, m2^2}]]", "1/(20*(-4 + D))"},
+{"fcstPaVeUVPart-ID70",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, {SPD[p1, p1], p12, SPD[p2, p2]}, \
+{m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID71",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 2, {SPD[p1, p1], p12, SPD[p2, p2]}, \
+{m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID72",
+"PaVeUVPart[PaVe[1, 1, 1, 2, 2, {SPD[p1, p1], p12, SPD[p2, p2]}, \
+{m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID73",
+"PaVeUVPart[PaVe[1, 1, 2, 2, 2, {SPD[p1, p1], p12, SPD[p2, p2]}, \
+{m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID74",
+"PaVeUVPart[PaVe[1, 2, 2, 2, 2, {SPD[p1, p1], p12, SPD[p2, p2]}, \
+{m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID75",
+"PaVeUVPart[PaVe[2, 2, 2, 2, 2, {SPD[p1, p1], p12, SPD[p2, p2]}, \
+{m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID76",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]",
+"(-15*m0^4 - 15*m0^2*m1^2 - 15*m1^4 - 15*m0^2*m2^2 - 15*m1^2*m2^2 \
+- 15*m2^4 + 3*m0^2*p12 + 6*m1^2*p12 + 6*m2^2*p12 - p12^2 + \
+6*m0^2*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+6*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+3*m2^2*Pair[Momentum[p1, D], Momentum[p1, D]] - p12*Pair[Momentum[p1, \
+D], Momentum[p1, D]] - Pair[Momentum[p1, D], Momentum[p1, D]]^2 + \
+6*m0^2*Pair[Momentum[p2, D], Momentum[p2, D]] + \
+3*m1^2*Pair[Momentum[p2, D], Momentum[p2, D]] + \
+6*m2^2*Pair[Momentum[p2, D], Momentum[p2, D]] - p12*Pair[Momentum[p2, \
+D], Momentum[p2, D]] - Pair[Momentum[p1, D], Momentum[p1, \
+D]]*Pair[Momentum[p2, D], Momentum[p2, D]] - Pair[Momentum[p2, D], \
+Momentum[p2, D]]^2)/(1440*(-4 + D))"},
+{"fcstPaVeUVPart-ID77",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 1, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]",
+"(-6*m0^2 - 18*m1^2 - 6*m2^2 + 3*p12 + 3*Pair[Momentum[p1, D], \
+Momentum[p1, D]] + Pair[Momentum[p2, D], Momentum[p2, D]])/(720*(-4 + \
+D))"},
+{"fcstPaVeUVPart-ID78",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]",
+"(-3*m0^2 - 6*m1^2 - 6*m2^2 + 2*p12 + Pair[Momentum[p1, D], \
+Momentum[p1, D]] + Pair[Momentum[p2, D], Momentum[p2, D]])/(720*(-4 + \
+D))"},
+{"fcstPaVeUVPart-ID79",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 2, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]",
+"(-6*m0^2 - 6*m1^2 - 18*m2^2 + 3*p12 + Pair[Momentum[p1, D], \
+Momentum[p1, D]] + 3*Pair[Momentum[p2, D], Momentum[p2, D]])/(720*(-4 \
++ D))"},
+{"fcstPaVeUVPart-ID80",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 1, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "-1/(30*(-4 + D))"},
+{"fcstPaVeUVPart-ID81",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "-1/(120*(-4 + D))"},
+{"fcstPaVeUVPart-ID82",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 2, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "-1/(180*(-4 + D))"},
+{"fcstPaVeUVPart-ID83",
+"PaVeUVPart[PaVe[0, 0, 1, 2, 2, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "-1/(120*(-4 + D))"},
+{"fcstPaVeUVPart-ID84",
+"PaVeUVPart[PaVe[0, 0, 2, 2, 2, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "-1/(30*(-4 + D))"},
+{"fcstPaVeUVPart-ID85",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 1, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID86",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID87",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 2, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID88",
+"PaVeUVPart[PaVe[1, 1, 1, 2, 2, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID89",
+"PaVeUVPart[PaVe[1, 1, 2, 2, 2, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID90",
+"PaVeUVPart[PaVe[1, 2, 2, 2, 2, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID91",
+"PaVeUVPart[PaVe[2, 2, 2, 2, 2, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID92",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, 1, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]",
+"(21*m0^4 + 42*m0^2*m1^2 + 63*m1^4 + 21*m0^2*m2^2 + 42*m1^2*m2^2 + \
+21*m2^4 - 7*m0^2*p12 - 21*m1^2*p12 - 14*m2^2*p12 + 3*p12^2 - \
+14*m0^2*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+21*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+7*m2^2*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+3*p12*Pair[Momentum[p1, D], Momentum[p1, D]] + 3*Pair[Momentum[p1, \
+D], Momentum[p1, D]]^2 - 7*m0^2*Pair[Momentum[p2, D], Momentum[p2, \
+D]] - 7*m1^2*Pair[Momentum[p2, D], Momentum[p2, D]] - \
+7*m2^2*Pair[Momentum[p2, D], Momentum[p2, D]] + \
+2*p12*Pair[Momentum[p2, D], Momentum[p2, D]] + 2*Pair[Momentum[p1, \
+D], Momentum[p1, D]]*Pair[Momentum[p2, D], Momentum[p2, D]] + \
+Pair[Momentum[p2, D], Momentum[p2, D]]^2)/(10080*(-4 + D))"},
+{"fcstPaVeUVPart-ID93",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]",
+"(21*m0^4 + 21*m0^2*m1^2 + 21*m1^4 + 42*m0^2*m2^2 + 42*m1^2*m2^2 + \
+63*m2^4 - 7*m0^2*p12 - 14*m1^2*p12 - 21*m2^2*p12 + 3*p12^2 - \
+7*m0^2*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+7*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+7*m2^2*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+2*p12*Pair[Momentum[p1, D], Momentum[p1, D]] + Pair[Momentum[p1, D], \
+Momentum[p1, D]]^2 - 14*m0^2*Pair[Momentum[p2, D], Momentum[p2, D]] - \
+7*m1^2*Pair[Momentum[p2, D], Momentum[p2, D]] - \
+21*m2^2*Pair[Momentum[p2, D], Momentum[p2, D]] + \
+3*p12*Pair[Momentum[p2, D], Momentum[p2, D]] + 2*Pair[Momentum[p1, \
+D], Momentum[p1, D]]*Pair[Momentum[p2, D], Momentum[p2, D]] + \
+3*Pair[Momentum[p2, D], Momentum[p2, D]]^2)/(10080*(-4 + D))"},
+{"fcstPaVeUVPart-ID94",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 1, 1, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]",
+"(7*m0^2 + 28*m1^2 + 7*m2^2 - 4*p12 - 4*Pair[Momentum[p1, D], \
+Momentum[p1, D]] - Pair[Momentum[p2, D], Momentum[p2, D]])/(1680*(-4 \
++ D))"},
+{"fcstPaVeUVPart-ID95",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 1, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]",
+"(7*m0^2 + 21*m1^2 + 14*m2^2 - 6*p12 - 3*Pair[Momentum[p1, D], \
+Momentum[p1, D]] - 2*Pair[Momentum[p2, D], Momentum[p2, \
+D]])/(5040*(-4 + D))"},
+{"fcstPaVeUVPart-ID96",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 2, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]",
+"(7*m0^2 + 14*m1^2 + 21*m2^2 - 6*p12 - 2*Pair[Momentum[p1, D], \
+Momentum[p1, D]] - 3*Pair[Momentum[p2, D], Momentum[p2, \
+D]])/(5040*(-4 + D))"},
+{"fcstPaVeUVPart-ID97",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 2, 2, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]",
+"(7*m0^2 + 7*m1^2 + 28*m2^2 - 4*p12 - Pair[Momentum[p1, D], \
+Momentum[p1, D]] - 4*Pair[Momentum[p2, D], Momentum[p2, \
+D]])/(1680*(-4 + D))"},
+{"fcstPaVeUVPart-ID98",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 1, 1, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "1/(42*(-4 + D))"},
+{"fcstPaVeUVPart-ID99",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 1, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "1/(210*(-4 + D))"},
+{"fcstPaVeUVPart-ID100",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 2, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "1/(420*(-4 + D))"},
+{"fcstPaVeUVPart-ID101",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 2, 2, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "1/(420*(-4 + D))"},
+{"fcstPaVeUVPart-ID102",
+"PaVeUVPart[PaVe[0, 0, 1, 2, 2, 2, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "1/(210*(-4 + D))"},
+{"fcstPaVeUVPart-ID103",
+"PaVeUVPart[PaVe[0, 0, 2, 2, 2, 2, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "1/(42*(-4 + D))"},
+{"fcstPaVeUVPart-ID104",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 1, 1, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID105",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 1, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID106",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 2, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID107",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 2, 2, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID108",
+"PaVeUVPart[PaVe[1, 1, 1, 2, 2, 2, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID109",
+"PaVeUVPart[PaVe[1, 1, 2, 2, 2, 2, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID110",
+"PaVeUVPart[PaVe[1, 2, 2, 2, 2, 2, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID111",
+"PaVeUVPart[PaVe[2, 2, 2, 2, 2, 2, 2, {SPD[p1, p1], p12, SPD[p2, \
+p2]}, {m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID112",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, 0, 0, {SPD[p1, p1], p12, \
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}]]",
+"(-168*m0^6 - 168*m0^4*m1^2 - 168*m0^2*m1^4 - 168*m1^6 - \
+168*m0^4*m2^2 - 168*m0^2*m1^2*m2^2 - 168*m1^4*m2^2 - 168*m0^2*m2^4 - \
+168*m1^2*m2^4 - 168*m2^6 + 28*m0^4*p12 + 56*m0^2*m1^2*p12 + \
+84*m1^4*p12 + 56*m0^2*m2^2*p12 + 112*m1^2*m2^2*p12 + 84*m2^4*p12 - \
+8*m0^2*p12^2 - 24*m1^2*p12^2 - 24*m2^2*p12^2 + 3*p12^3 + \
+84*m0^4*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+112*m0^2*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+84*m1^4*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+56*m0^2*m2^2*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+56*m1^2*m2^2*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+28*m2^4*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+16*m0^2*p12*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+24*m1^2*p12*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+16*m2^2*p12*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+3*p12^2*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+24*m0^2*Pair[Momentum[p1, D], Momentum[p1, D]]^2 - \
+24*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]]^2 - \
+8*m2^2*Pair[Momentum[p1, D], Momentum[p1, D]]^2 + \
+3*p12*Pair[Momentum[p1, D], Momentum[p1, D]]^2 + 3*Pair[Momentum[p1, \
+D], Momentum[p1, D]]^3 + 84*m0^4*Pair[Momentum[p2, D], Momentum[p2, \
+D]] + 56*m0^2*m1^2*Pair[Momentum[p2, D], Momentum[p2, D]] + \
+28*m1^4*Pair[Momentum[p2, D], Momentum[p2, D]] + \
+112*m0^2*m2^2*Pair[Momentum[p2, D], Momentum[p2, D]] + \
+56*m1^2*m2^2*Pair[Momentum[p2, D], Momentum[p2, D]] + \
+84*m2^4*Pair[Momentum[p2, D], Momentum[p2, D]] - \
+16*m0^2*p12*Pair[Momentum[p2, D], Momentum[p2, D]] - \
+16*m1^2*p12*Pair[Momentum[p2, D], Momentum[p2, D]] - \
+24*m2^2*p12*Pair[Momentum[p2, D], Momentum[p2, D]] + \
+3*p12^2*Pair[Momentum[p2, D], Momentum[p2, D]] - \
+24*m0^2*Pair[Momentum[p1, D], Momentum[p1, D]]*Pair[Momentum[p2, D], \
+Momentum[p2, D]] - 16*m1^2*Pair[Momentum[p1, D], Momentum[p1, \
+D]]*Pair[Momentum[p2, D], Momentum[p2, D]] - \
+16*m2^2*Pair[Momentum[p1, D], Momentum[p1, D]]*Pair[Momentum[p2, D], \
+Momentum[p2, D]] + 4*p12*Pair[Momentum[p1, D], Momentum[p1, \
+D]]*Pair[Momentum[p2, D], Momentum[p2, D]] + 3*Pair[Momentum[p1, D], \
+Momentum[p1, D]]^2*Pair[Momentum[p2, D], Momentum[p2, D]] - \
+24*m0^2*Pair[Momentum[p2, D], Momentum[p2, D]]^2 - \
+8*m1^2*Pair[Momentum[p2, D], Momentum[p2, D]]^2 - \
+24*m2^2*Pair[Momentum[p2, D], Momentum[p2, D]]^2 + \
+3*p12*Pair[Momentum[p2, D], Momentum[p2, D]]^2 + 3*Pair[Momentum[p1, \
+D], Momentum[p1, D]]*Pair[Momentum[p2, D], Momentum[p2, D]]^2 + \
+3*Pair[Momentum[p2, D], Momentum[p2, D]]^3)/(161280*(-4 + D))"},
+{"fcstPaVeUVPart-ID113",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, 1, 1, {SPD[p1, p1], p12, \
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}]]",
+"(-28*m0^4 - 84*m0^2*m1^2 - 168*m1^4 - 28*m0^2*m2^2 - 84*m1^2*m2^2 \
+- 28*m2^4 + 12*m0^2*p12 + 48*m1^2*p12 + 24*m2^2*p12 - 6*p12^2 + \
+24*m0^2*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+48*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+12*m2^2*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+6*p12*Pair[Momentum[p1, D], Momentum[p1, D]] - 6*Pair[Momentum[p1, \
+D], Momentum[p1, D]]^2 + 8*m0^2*Pair[Momentum[p2, D], Momentum[p2, \
+D]] + 12*m1^2*Pair[Momentum[p2, D], Momentum[p2, D]] + \
+8*m2^2*Pair[Momentum[p2, D], Momentum[p2, D]] - \
+3*p12*Pair[Momentum[p2, D], Momentum[p2, D]] - 3*Pair[Momentum[p1, \
+D], Momentum[p1, D]]*Pair[Momentum[p2, D], Momentum[p2, D]] - \
+Pair[Momentum[p2, D], Momentum[p2, D]]^2)/(40320*(-4 + D))"},
+{"fcstPaVeUVPart-ID114",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, 1, 2, {SPD[p1, p1], p12, \
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}]]",
+"(-28*m0^4 - 56*m0^2*m1^2 - 84*m1^4 - 56*m0^2*m2^2 - 112*m1^2*m2^2 \
+- 84*m2^4 + 16*m0^2*p12 + 48*m1^2*p12 + 48*m2^2*p12 - 9*p12^2 + \
+16*m0^2*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+24*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+16*m2^2*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+6*p12*Pair[Momentum[p1, D], Momentum[p1, D]] - 3*Pair[Momentum[p1, \
+D], Momentum[p1, D]]^2 + 16*m0^2*Pair[Momentum[p2, D], Momentum[p2, \
+D]] + 16*m1^2*Pair[Momentum[p2, D], Momentum[p2, D]] + \
+24*m2^2*Pair[Momentum[p2, D], Momentum[p2, D]] - \
+6*p12*Pair[Momentum[p2, D], Momentum[p2, D]] - 4*Pair[Momentum[p1, \
+D], Momentum[p1, D]]*Pair[Momentum[p2, D], Momentum[p2, D]] - \
+3*Pair[Momentum[p2, D], Momentum[p2, D]]^2)/(80640*(-4 + D))"},
+{"fcstPaVeUVPart-ID115",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, 2, 2, {SPD[p1, p1], p12, \
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}]]",
+"(-28*m0^4 - 28*m0^2*m1^2 - 28*m1^4 - 84*m0^2*m2^2 - 84*m1^2*m2^2 \
+- 168*m2^4 + 12*m0^2*p12 + 24*m1^2*p12 + 48*m2^2*p12 - 6*p12^2 + \
+8*m0^2*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+8*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+12*m2^2*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+3*p12*Pair[Momentum[p1, D], Momentum[p1, D]] - Pair[Momentum[p1, D], \
+Momentum[p1, D]]^2 + 24*m0^2*Pair[Momentum[p2, D], Momentum[p2, D]] + \
+12*m1^2*Pair[Momentum[p2, D], Momentum[p2, D]] + \
+48*m2^2*Pair[Momentum[p2, D], Momentum[p2, D]] - \
+6*p12*Pair[Momentum[p2, D], Momentum[p2, D]] - 3*Pair[Momentum[p1, \
+D], Momentum[p1, D]]*Pair[Momentum[p2, D], Momentum[p2, D]] - \
+6*Pair[Momentum[p2, D], Momentum[p2, D]]^2)/(40320*(-4 + D))"},
+{"fcstPaVeUVPart-ID116",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 1, 1, 1, {SPD[p1, p1], p12, \
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}]]",
+"(-8*m0^2 - 40*m1^2 - 8*m2^2 + 5*p12 + 5*Pair[Momentum[p1, D], \
+Momentum[p1, D]] + Pair[Momentum[p2, D], Momentum[p2, D]])/(3360*(-4 \
++ D))"},
+{"fcstPaVeUVPart-ID117",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 1, 1, 2, {SPD[p1, p1], p12, \
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}]]",
+"(-4*m0^2 - 16*m1^2 - 8*m2^2 + 4*p12 + 2*Pair[Momentum[p1, D], \
+Momentum[p1, D]] + Pair[Momentum[p2, D], Momentum[p2, D]])/(6720*(-4 \
++ D))"},
+{"fcstPaVeUVPart-ID118",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 1, 2, 2, {SPD[p1, p1], p12, \
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}]]",
+"(-8*m0^2 - 24*m1^2 - 24*m2^2 + 9*p12 + 3*Pair[Momentum[p1, D], \
+Momentum[p1, D]] + 3*Pair[Momentum[p2, D], Momentum[p2, \
+D]])/(20160*(-4 + D))"},
+{"fcstPaVeUVPart-ID119",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 2, 2, 2, {SPD[p1, p1], p12, \
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}]]",
+"(-4*m0^2 - 8*m1^2 - 16*m2^2 + 4*p12 + Pair[Momentum[p1, D], \
+Momentum[p1, D]] + 2*Pair[Momentum[p2, D], Momentum[p2, \
+D]])/(6720*(-4 + D))"},
+{"fcstPaVeUVPart-ID120",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 2, 2, 2, 2, {SPD[p1, p1], p12, \
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}]]",
+"(-8*m0^2 - 8*m1^2 - 40*m2^2 + 5*p12 + Pair[Momentum[p1, D], \
+Momentum[p1, D]] + 5*Pair[Momentum[p2, D], Momentum[p2, \
+D]])/(3360*(-4 + D))"},
+{"fcstPaVeUVPart-ID121",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 1, 1, 1, {SPD[p1, p1], p12, \
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}]]", "-1/(56*(-4 + D))"},
+{"fcstPaVeUVPart-ID122",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 1, 1, 2, {SPD[p1, p1], p12, \
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}]]", "-1/(336*(-4 + D))"},
+{"fcstPaVeUVPart-ID123",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 1, 2, 2, {SPD[p1, p1], p12, \
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}]]", "-1/(840*(-4 + D))"},
+{"fcstPaVeUVPart-ID124",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 2, 2, 2, {SPD[p1, p1], p12, \
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}]]", "-1/(1120*(-4 + D))"},
+{"fcstPaVeUVPart-ID125",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 2, 2, 2, 2, {SPD[p1, p1], p12, \
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}]]", "-1/(840*(-4 + D))"},
+{"fcstPaVeUVPart-ID126",
+"PaVeUVPart[PaVe[0, 0, 1, 2, 2, 2, 2, 2, {SPD[p1, p1], p12, \
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}]]", "-1/(336*(-4 + D))"},
+{"fcstPaVeUVPart-ID127",
+"PaVeUVPart[PaVe[0, 0, 2, 2, 2, 2, 2, 2, {SPD[p1, p1], p12, \
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}]]", "-1/(56*(-4 + D))"},
+{"fcstPaVeUVPart-ID128",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 1, 1, 1, {SPD[p1, p1], p12, \
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID129",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 1, 1, 2, {SPD[p1, p1], p12, \
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID130",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 1, 2, 2, {SPD[p1, p1], p12, \
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID131",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 2, 2, 2, {SPD[p1, p1], p12, \
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID132",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 2, 2, 2, 2, {SPD[p1, p1], p12, \
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID133",
+"PaVeUVPart[PaVe[1, 1, 1, 2, 2, 2, 2, 2, {SPD[p1, p1], p12, \
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID134",
+"PaVeUVPart[PaVe[1, 1, 2, 2, 2, 2, 2, 2, {SPD[p1, p1], p12, \
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID135",
+"PaVeUVPart[PaVe[1, 2, 2, 2, 2, 2, 2, 2, {SPD[p1, p1], p12, \
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID136",
+"PaVeUVPart[PaVe[2, 2, 2, 2, 2, 2, 2, 2, {SPD[p1, p1], p12, \
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}]]", "0"},
+{"fcstPaVeUVPart-ID137",
+"PaVeUVPart[PaVe[1, {SPD[p1, p1], p12, p23, SPD[p3, p3], SPD[p2, \
+p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID138",
+"PaVeUVPart[PaVe[2, {SPD[p1, p1], p12, p23, SPD[p3, p3], SPD[p2, \
+p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID139",
+"PaVeUVPart[PaVe[3, {SPD[p1, p1], p12, p23, SPD[p3, p3], SPD[p2, \
+p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID140",
+"PaVeUVPart[PaVe[0, 0, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID141",
+"PaVeUVPart[PaVe[1, 1, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID142",
+"PaVeUVPart[PaVe[1, 2, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID143",
+"PaVeUVPart[PaVe[2, 2, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID144",
+"PaVeUVPart[PaVe[2, 3, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID145",
+"PaVeUVPart[PaVe[3, 3, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID146",
+"PaVeUVPart[PaVe[0, 0, 1, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID147",
+"PaVeUVPart[PaVe[0, 0, 2, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID148",
+"PaVeUVPart[PaVe[0, 0, 3, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID149",
+"PaVeUVPart[PaVe[1, 1, 1, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID150",
+"PaVeUVPart[PaVe[1, 1, 2, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID151",
+"PaVeUVPart[PaVe[1, 1, 3, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID152",
+"PaVeUVPart[PaVe[1, 2, 2, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID153",
+"PaVeUVPart[PaVe[1, 2, 3, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID154",
+"PaVeUVPart[PaVe[1, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID155",
+"PaVeUVPart[PaVe[2, 2, 2, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID156",
+"PaVeUVPart[PaVe[2, 2, 3, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID157",
+"PaVeUVPart[PaVe[2, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID158",
+"PaVeUVPart[PaVe[3, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID159",
+"PaVeUVPart[PaVe[0, 0, 0, 0, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "-1/(12*(-4 + D))"},
+{"fcstPaVeUVPart-ID160",
+"PaVeUVPart[PaVe[0, 0, 1, 1, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID161",
+"PaVeUVPart[PaVe[0, 0, 1, 2, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID162",
+"PaVeUVPart[PaVe[0, 0, 1, 3, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID163",
+"PaVeUVPart[PaVe[0, 0, 2, 2, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID164",
+"PaVeUVPart[PaVe[0, 0, 2, 3, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID165",
+"PaVeUVPart[PaVe[0, 0, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID166",
+"PaVeUVPart[PaVe[1, 1, 1, 1, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID167",
+"PaVeUVPart[PaVe[1, 1, 1, 2, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID168",
+"PaVeUVPart[PaVe[1, 1, 1, 3, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID169",
+"PaVeUVPart[PaVe[1, 1, 2, 2, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID170",
+"PaVeUVPart[PaVe[1, 1, 2, 3, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID171",
+"PaVeUVPart[PaVe[1, 1, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID172",
+"PaVeUVPart[PaVe[1, 2, 2, 2, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID173",
+"PaVeUVPart[PaVe[1, 2, 2, 3, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID174",
+"PaVeUVPart[PaVe[1, 2, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID175",
+"PaVeUVPart[PaVe[1, 3, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID176",
+"PaVeUVPart[PaVe[2, 2, 2, 2, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID177",
+"PaVeUVPart[PaVe[2, 2, 2, 3, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID178",
+"PaVeUVPart[PaVe[2, 2, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID179",
+"PaVeUVPart[PaVe[2, 3, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID180",
+"PaVeUVPart[PaVe[3, 3, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, p3], \
+SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID181",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"1/(48*(-4 + D))"},
+{"fcstPaVeUVPart-ID182",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 2, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"1/(48*(-4 + D))"},
+{"fcstPaVeUVPart-ID183",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"1/(48*(-4 + D))"},
+{"fcstPaVeUVPart-ID184",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID185",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 2, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID186",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID187",
+"PaVeUVPart[PaVe[0, 0, 1, 2, 2, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID188",
+"PaVeUVPart[PaVe[0, 0, 1, 2, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID189",
+"PaVeUVPart[PaVe[0, 0, 1, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID190",
+"PaVeUVPart[PaVe[0, 0, 2, 2, 2, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID191",
+"PaVeUVPart[PaVe[0, 0, 2, 2, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID192",
+"PaVeUVPart[PaVe[0, 0, 2, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID193",
+"PaVeUVPart[PaVe[0, 0, 3, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID194",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID195",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 2, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID196",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID197",
+"PaVeUVPart[PaVe[1, 1, 1, 2, 2, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID198",
+"PaVeUVPart[PaVe[1, 1, 1, 2, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID199",
+"PaVeUVPart[PaVe[1, 1, 1, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID200",
+"PaVeUVPart[PaVe[1, 1, 2, 2, 2, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID201",
+"PaVeUVPart[PaVe[1, 1, 2, 2, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID202",
+"PaVeUVPart[PaVe[1, 1, 2, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID203",
+"PaVeUVPart[PaVe[1, 1, 3, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID204",
+"PaVeUVPart[PaVe[1, 2, 2, 2, 2, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID205",
+"PaVeUVPart[PaVe[1, 2, 2, 2, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID206",
+"PaVeUVPart[PaVe[1, 2, 2, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID207",
+"PaVeUVPart[PaVe[1, 2, 3, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID208",
+"PaVeUVPart[PaVe[1, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID209",
+"PaVeUVPart[PaVe[2, 2, 2, 2, 2, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID210",
+"PaVeUVPart[PaVe[2, 2, 2, 2, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID211",
+"PaVeUVPart[PaVe[2, 2, 2, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID212",
+"PaVeUVPart[PaVe[2, 2, 3, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID213",
+"PaVeUVPart[PaVe[2, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID214",
+"PaVeUVPart[PaVe[3, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID215",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"(-5*m0^2 - 5*m1^2 - 5*m2^2 - 5*m3^2 + p12 + p13 + p23 + \
+Pair[Momentum[p1, D], Momentum[p1, D]] + Pair[Momentum[p2, D], \
+Momentum[p2, D]] + Pair[Momentum[p3, D], Momentum[p3, D]])/(480*(-4 + \
+D))"},
+{"fcstPaVeUVPart-ID216",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 1, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"-1/(120*(-4 + D))"},
+{"fcstPaVeUVPart-ID217",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 2, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"-1/(240*(-4 + D))"},
+{"fcstPaVeUVPart-ID218",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"-1/(240*(-4 + D))"},
+{"fcstPaVeUVPart-ID219",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 2, 2, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"-1/(120*(-4 + D))"},
+{"fcstPaVeUVPart-ID220",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 2, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"-1/(240*(-4 + D))"},
+{"fcstPaVeUVPart-ID221",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"-1/(120*(-4 + D))"},
+{"fcstPaVeUVPart-ID222",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 1, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID223",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 2, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID224",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID225",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 2, 2, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID226",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 2, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID227",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID228",
+"PaVeUVPart[PaVe[0, 0, 1, 2, 2, 2, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID229",
+"PaVeUVPart[PaVe[0, 0, 1, 2, 2, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID230",
+"PaVeUVPart[PaVe[0, 0, 1, 2, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID231",
+"PaVeUVPart[PaVe[0, 0, 1, 3, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID232",
+"PaVeUVPart[PaVe[0, 0, 2, 2, 2, 2, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID233",
+"PaVeUVPart[PaVe[0, 0, 2, 2, 2, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID234",
+"PaVeUVPart[PaVe[0, 0, 2, 2, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID235",
+"PaVeUVPart[PaVe[0, 0, 2, 3, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID236",
+"PaVeUVPart[PaVe[0, 0, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID237",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 1, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID238",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 2, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID239",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID240",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 2, 2, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID241",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 2, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID242",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID243",
+"PaVeUVPart[PaVe[1, 1, 1, 2, 2, 2, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID244",
+"PaVeUVPart[PaVe[1, 1, 1, 2, 2, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID245",
+"PaVeUVPart[PaVe[1, 1, 1, 2, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID246",
+"PaVeUVPart[PaVe[1, 1, 1, 3, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID247",
+"PaVeUVPart[PaVe[1, 1, 2, 2, 2, 2, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID248",
+"PaVeUVPart[PaVe[1, 1, 2, 2, 2, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID249",
+"PaVeUVPart[PaVe[1, 1, 2, 2, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID250",
+"PaVeUVPart[PaVe[1, 1, 2, 3, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID251",
+"PaVeUVPart[PaVe[1, 1, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID252",
+"PaVeUVPart[PaVe[1, 2, 2, 2, 2, 2, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID253",
+"PaVeUVPart[PaVe[1, 2, 2, 2, 2, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID254",
+"PaVeUVPart[PaVe[1, 2, 2, 2, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID255",
+"PaVeUVPart[PaVe[1, 2, 2, 3, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID256",
+"PaVeUVPart[PaVe[1, 2, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID257",
+"PaVeUVPart[PaVe[1, 3, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID258",
+"PaVeUVPart[PaVe[2, 2, 2, 2, 2, 2, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID259",
+"PaVeUVPart[PaVe[2, 2, 2, 2, 2, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID260",
+"PaVeUVPart[PaVe[2, 2, 2, 2, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID261",
+"PaVeUVPart[PaVe[2, 2, 2, 3, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID262",
+"PaVeUVPart[PaVe[2, 2, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID263",
+"PaVeUVPart[PaVe[2, 3, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID264",
+"PaVeUVPart[PaVe[3, 3, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, SPD[p3, \
+p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID265",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, 1, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"(6*m0^2 + 12*m1^2 + 6*m2^2 + 6*m3^2 - 2*p12 - 2*p13 - p23 - \
+2*Pair[Momentum[p1, D], Momentum[p1, D]] - Pair[Momentum[p2, D], \
+Momentum[p2, D]] - Pair[Momentum[p3, D], Momentum[p3, D]])/(2880*(-4 \
++ D))"},
+{"fcstPaVeUVPart-ID266",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"(6*m0^2 + 6*m1^2 + 12*m2^2 + 6*m3^2 - 2*p12 - p13 - 2*p23 - \
+Pair[Momentum[p1, D], Momentum[p1, D]] - 2*Pair[Momentum[p2, D], \
+Momentum[p2, D]] - Pair[Momentum[p3, D], Momentum[p3, D]])/(2880*(-4 \
++ D))"},
+{"fcstPaVeUVPart-ID267",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"(6*m0^2 + 6*m1^2 + 6*m2^2 + 12*m3^2 - p12 - 2*p13 - 2*p23 - \
+Pair[Momentum[p1, D], Momentum[p1, D]] - Pair[Momentum[p2, D], \
+Momentum[p2, D]] - 2*Pair[Momentum[p3, D], Momentum[p3, \
+D]])/(2880*(-4 + D))"},
+{"fcstPaVeUVPart-ID268",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 1, 1, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"1/(240*(-4 + D))"},
+{"fcstPaVeUVPart-ID269",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 1, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"1/(720*(-4 + D))"},
+{"fcstPaVeUVPart-ID270",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 1, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"1/(720*(-4 + D))"},
+{"fcstPaVeUVPart-ID271",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"1/(720*(-4 + D))"},
+{"fcstPaVeUVPart-ID272",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"1/(1440*(-4 + D))"},
+{"fcstPaVeUVPart-ID273",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"1/(720*(-4 + D))"},
+{"fcstPaVeUVPart-ID274",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 2, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"1/(240*(-4 + D))"},
+{"fcstPaVeUVPart-ID275",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 2, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"1/(720*(-4 + D))"},
+{"fcstPaVeUVPart-ID276",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 2, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"1/(720*(-4 + D))"},
+{"fcstPaVeUVPart-ID277",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"1/(240*(-4 + D))"},
+{"fcstPaVeUVPart-ID278",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 1, 1, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID279",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 1, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID280",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 1, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID281",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID282",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID283",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID284",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 2, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID285",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 2, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID286",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 2, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID287",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID288",
+"PaVeUVPart[PaVe[0, 0, 1, 2, 2, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID289",
+"PaVeUVPart[PaVe[0, 0, 1, 2, 2, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID290",
+"PaVeUVPart[PaVe[0, 0, 1, 2, 2, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID291",
+"PaVeUVPart[PaVe[0, 0, 1, 2, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID292",
+"PaVeUVPart[PaVe[0, 0, 1, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID293",
+"PaVeUVPart[PaVe[0, 0, 2, 2, 2, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID294",
+"PaVeUVPart[PaVe[0, 0, 2, 2, 2, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID295",
+"PaVeUVPart[PaVe[0, 0, 2, 2, 2, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID296",
+"PaVeUVPart[PaVe[0, 0, 2, 2, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID297",
+"PaVeUVPart[PaVe[0, 0, 2, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID298",
+"PaVeUVPart[PaVe[0, 0, 3, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID299",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 1, 1, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID300",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 1, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID301",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 1, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID302",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID303",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID304",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID305",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 2, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID306",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 2, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID307",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 2, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID308",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID309",
+"PaVeUVPart[PaVe[1, 1, 1, 2, 2, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID310",
+"PaVeUVPart[PaVe[1, 1, 1, 2, 2, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID311",
+"PaVeUVPart[PaVe[1, 1, 1, 2, 2, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID312",
+"PaVeUVPart[PaVe[1, 1, 1, 2, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID313",
+"PaVeUVPart[PaVe[1, 1, 1, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID314",
+"PaVeUVPart[PaVe[1, 1, 2, 2, 2, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID315",
+"PaVeUVPart[PaVe[1, 1, 2, 2, 2, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID316",
+"PaVeUVPart[PaVe[1, 1, 2, 2, 2, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID317",
+"PaVeUVPart[PaVe[1, 1, 2, 2, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID318",
+"PaVeUVPart[PaVe[1, 1, 2, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID319",
+"PaVeUVPart[PaVe[1, 1, 3, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID320",
+"PaVeUVPart[PaVe[1, 2, 2, 2, 2, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID321",
+"PaVeUVPart[PaVe[1, 2, 2, 2, 2, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID322",
+"PaVeUVPart[PaVe[1, 2, 2, 2, 2, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID323",
+"PaVeUVPart[PaVe[1, 2, 2, 2, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID324",
+"PaVeUVPart[PaVe[1, 2, 2, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID325",
+"PaVeUVPart[PaVe[1, 2, 3, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID326",
+"PaVeUVPart[PaVe[1, 3, 3, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID327",
+"PaVeUVPart[PaVe[2, 2, 2, 2, 2, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID328",
+"PaVeUVPart[PaVe[2, 2, 2, 2, 2, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID329",
+"PaVeUVPart[PaVe[2, 2, 2, 2, 2, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID330",
+"PaVeUVPart[PaVe[2, 2, 2, 2, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID331",
+"PaVeUVPart[PaVe[2, 2, 2, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID332",
+"PaVeUVPart[PaVe[2, 2, 3, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID333",
+"PaVeUVPart[PaVe[2, 3, 3, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID334",
+"PaVeUVPart[PaVe[3, 3, 3, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID335",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, 0, 0, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"(-42*m0^4 - 42*m0^2*m1^2 - 42*m1^4 - 42*m0^2*m2^2 - 42*m1^2*m2^2 \
+- 42*m2^4 - 42*m0^2*m3^2 - 42*m1^2*m3^2 - 42*m2^2*m3^2 - 42*m3^4 + \
+7*m0^2*p12 + 14*m1^2*p12 + 14*m2^2*p12 + 7*m3^2*p12 - 2*p12^2 + \
+7*m0^2*p13 + 14*m1^2*p13 + 7*m2^2*p13 + 14*m3^2*p13 - 2*p12*p13 - \
+2*p13^2 + 7*m0^2*p23 + 7*m1^2*p23 + 14*m2^2*p23 + 14*m3^2*p23 - \
+2*p12*p23 - 2*p13*p23 - 2*p23^2 + 14*m0^2*Pair[Momentum[p1, D], \
+Momentum[p1, D]] + 14*m1^2*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+7*m2^2*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+7*m3^2*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+2*p12*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+2*p13*Pair[Momentum[p1, D], Momentum[p1, D]] - p23*Pair[Momentum[p1, \
+D], Momentum[p1, D]] - 2*Pair[Momentum[p1, D], Momentum[p1, D]]^2 + \
+14*m0^2*Pair[Momentum[p2, D], Momentum[p2, D]] + \
+7*m1^2*Pair[Momentum[p2, D], Momentum[p2, D]] + \
+14*m2^2*Pair[Momentum[p2, D], Momentum[p2, D]] + \
+7*m3^2*Pair[Momentum[p2, D], Momentum[p2, D]] - \
+2*p12*Pair[Momentum[p2, D], Momentum[p2, D]] - p13*Pair[Momentum[p2, \
+D], Momentum[p2, D]] - 2*p23*Pair[Momentum[p2, D], Momentum[p2, D]] - \
+2*Pair[Momentum[p1, D], Momentum[p1, D]]*Pair[Momentum[p2, D], \
+Momentum[p2, D]] - 2*Pair[Momentum[p2, D], Momentum[p2, D]]^2 + \
+14*m0^2*Pair[Momentum[p3, D], Momentum[p3, D]] + \
+7*m1^2*Pair[Momentum[p3, D], Momentum[p3, D]] + \
+7*m2^2*Pair[Momentum[p3, D], Momentum[p3, D]] + \
+14*m3^2*Pair[Momentum[p3, D], Momentum[p3, D]] - \
+p12*Pair[Momentum[p3, D], Momentum[p3, D]] - 2*p13*Pair[Momentum[p3, \
+D], Momentum[p3, D]] - 2*p23*Pair[Momentum[p3, D], Momentum[p3, D]] - \
+2*Pair[Momentum[p1, D], Momentum[p1, D]]*Pair[Momentum[p3, D], \
+Momentum[p3, D]] - 2*Pair[Momentum[p2, D], Momentum[p2, \
+D]]*Pair[Momentum[p3, D], Momentum[p3, D]] - 2*Pair[Momentum[p3, D], \
+Momentum[p3, D]]^2)/(40320*(-4 + D))"},
+{"fcstPaVeUVPart-ID336",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, 1, 1, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"(-7*m0^2 - 21*m1^2 - 7*m2^2 - 7*m3^2 + 3*p12 + 3*p13 + p23 + \
+3*Pair[Momentum[p1, D], Momentum[p1, D]] + Pair[Momentum[p2, D], \
+Momentum[p2, D]] + Pair[Momentum[p3, D], Momentum[p3, D]])/(10080*(-4 \
++ D))"},
+{"fcstPaVeUVPart-ID337",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, 1, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"(-7*m0^2 - 14*m1^2 - 14*m2^2 - 7*m3^2 + 4*p12 + 2*p13 + 2*p23 + \
+2*Pair[Momentum[p1, D], Momentum[p1, D]] + 2*Pair[Momentum[p2, D], \
+Momentum[p2, D]] + Pair[Momentum[p3, D], Momentum[p3, D]])/(20160*(-4 \
++ D))"},
+{"fcstPaVeUVPart-ID338",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, 1, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"(-7*m0^2 - 14*m1^2 - 7*m2^2 - 14*m3^2 + 2*p12 + 4*p13 + 2*p23 + \
+2*Pair[Momentum[p1, D], Momentum[p1, D]] + Pair[Momentum[p2, D], \
+Momentum[p2, D]] + 2*Pair[Momentum[p3, D], Momentum[p3, \
+D]])/(20160*(-4 + D))"},
+{"fcstPaVeUVPart-ID339",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"(-7*m0^2 - 7*m1^2 - 21*m2^2 - 7*m3^2 + 3*p12 + p13 + 3*p23 + \
+Pair[Momentum[p1, D], Momentum[p1, D]] + 3*Pair[Momentum[p2, D], \
+Momentum[p2, D]] + Pair[Momentum[p3, D], Momentum[p3, D]])/(10080*(-4 \
++ D))"},
+{"fcstPaVeUVPart-ID340",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"(-7*m0^2 - 7*m1^2 - 14*m2^2 - 14*m3^2 + 2*p12 + 2*p13 + 4*p23 + \
+Pair[Momentum[p1, D], Momentum[p1, D]] + 2*Pair[Momentum[p2, D], \
+Momentum[p2, D]] + 2*Pair[Momentum[p3, D], Momentum[p3, \
+D]])/(20160*(-4 + D))"},
+{"fcstPaVeUVPart-ID341",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 0, 0, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"(-7*m0^2 - 7*m1^2 - 7*m2^2 - 21*m3^2 + p12 + 3*p13 + 3*p23 + \
+Pair[Momentum[p1, D], Momentum[p1, D]] + Pair[Momentum[p2, D], \
+Momentum[p2, D]] + 3*Pair[Momentum[p3, D], Momentum[p3, \
+D]])/(10080*(-4 + D))"},
+{"fcstPaVeUVPart-ID342",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 1, 1, 1, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"-1/(420*(-4 + D))"},
+{"fcstPaVeUVPart-ID343",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 1, 1, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"-1/(1680*(-4 + D))"},
+{"fcstPaVeUVPart-ID344",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 1, 1, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"-1/(1680*(-4 + D))"},
+{"fcstPaVeUVPart-ID345",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 1, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"-1/(2520*(-4 + D))"},
+{"fcstPaVeUVPart-ID346",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 1, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"-1/(5040*(-4 + D))"},
+{"fcstPaVeUVPart-ID347",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 1, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"-1/(2520*(-4 + D))"},
+{"fcstPaVeUVPart-ID348",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 2, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"-1/(1680*(-4 + D))"},
+{"fcstPaVeUVPart-ID349",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 2, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"-1/(5040*(-4 + D))"},
+{"fcstPaVeUVPart-ID350",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 2, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"-1/(5040*(-4 + D))"},
+{"fcstPaVeUVPart-ID351",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 1, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"-1/(1680*(-4 + D))"},
+{"fcstPaVeUVPart-ID352",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 2, 2, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"-1/(420*(-4 + D))"},
+{"fcstPaVeUVPart-ID353",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 2, 2, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"-1/(1680*(-4 + D))"},
+{"fcstPaVeUVPart-ID354",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 2, 2, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"-1/(2520*(-4 + D))"},
+{"fcstPaVeUVPart-ID355",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 2, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"-1/(1680*(-4 + D))"},
+{"fcstPaVeUVPart-ID356",
+"PaVeUVPart[PaVe[0, 0, 0, 0, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]",
+"-1/(420*(-4 + D))"},
+{"fcstPaVeUVPart-ID357",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 1, 1, 1, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID358",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 1, 1, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID359",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 1, 1, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID360",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 1, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID361",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 1, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID362",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 1, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID363",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 2, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID364",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 2, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID365",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 2, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID366",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 1, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID367",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 2, 2, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID368",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 2, 2, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID369",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 2, 2, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID370",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 2, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID371",
+"PaVeUVPart[PaVe[0, 0, 1, 1, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID372",
+"PaVeUVPart[PaVe[0, 0, 1, 2, 2, 2, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID373",
+"PaVeUVPart[PaVe[0, 0, 1, 2, 2, 2, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID374",
+"PaVeUVPart[PaVe[0, 0, 1, 2, 2, 2, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID375",
+"PaVeUVPart[PaVe[0, 0, 1, 2, 2, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID376",
+"PaVeUVPart[PaVe[0, 0, 1, 2, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID377",
+"PaVeUVPart[PaVe[0, 0, 1, 3, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID378",
+"PaVeUVPart[PaVe[0, 0, 2, 2, 2, 2, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID379",
+"PaVeUVPart[PaVe[0, 0, 2, 2, 2, 2, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID380",
+"PaVeUVPart[PaVe[0, 0, 2, 2, 2, 2, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID381",
+"PaVeUVPart[PaVe[0, 0, 2, 2, 2, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID382",
+"PaVeUVPart[PaVe[0, 0, 2, 2, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID383",
+"PaVeUVPart[PaVe[0, 0, 2, 3, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID384",
+"PaVeUVPart[PaVe[0, 0, 3, 3, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID385",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 1, 1, 1, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID386",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 1, 1, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID387",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 1, 1, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID388",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 1, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID389",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 1, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID390",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 1, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID391",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 2, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID392",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 2, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID393",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 2, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID394",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 1, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID395",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 2, 2, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID396",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 2, 2, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID397",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 2, 2, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID398",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 2, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID399",
+"PaVeUVPart[PaVe[1, 1, 1, 1, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID400",
+"PaVeUVPart[PaVe[1, 1, 1, 2, 2, 2, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID401",
+"PaVeUVPart[PaVe[1, 1, 1, 2, 2, 2, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID402",
+"PaVeUVPart[PaVe[1, 1, 1, 2, 2, 2, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID403",
+"PaVeUVPart[PaVe[1, 1, 1, 2, 2, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID404",
+"PaVeUVPart[PaVe[1, 1, 1, 2, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID405",
+"PaVeUVPart[PaVe[1, 1, 1, 3, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID406",
+"PaVeUVPart[PaVe[1, 1, 2, 2, 2, 2, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID407",
+"PaVeUVPart[PaVe[1, 1, 2, 2, 2, 2, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID408",
+"PaVeUVPart[PaVe[1, 1, 2, 2, 2, 2, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID409",
+"PaVeUVPart[PaVe[1, 1, 2, 2, 2, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID410",
+"PaVeUVPart[PaVe[1, 1, 2, 2, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID411",
+"PaVeUVPart[PaVe[1, 1, 2, 3, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID412",
+"PaVeUVPart[PaVe[1, 1, 3, 3, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID413",
+"PaVeUVPart[PaVe[1, 2, 2, 2, 2, 2, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID414",
+"PaVeUVPart[PaVe[1, 2, 2, 2, 2, 2, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID415",
+"PaVeUVPart[PaVe[1, 2, 2, 2, 2, 2, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID416",
+"PaVeUVPart[PaVe[1, 2, 2, 2, 2, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID417",
+"PaVeUVPart[PaVe[1, 2, 2, 2, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID418",
+"PaVeUVPart[PaVe[1, 2, 2, 3, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID419",
+"PaVeUVPart[PaVe[1, 2, 3, 3, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID420",
+"PaVeUVPart[PaVe[2, 2, 2, 2, 2, 2, 2, 2, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID421",
+"PaVeUVPart[PaVe[2, 2, 2, 2, 2, 2, 2, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID422",
+"PaVeUVPart[PaVe[2, 2, 2, 2, 2, 2, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID423",
+"PaVeUVPart[PaVe[2, 2, 2, 2, 2, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID424",
+"PaVeUVPart[PaVe[2, 2, 2, 2, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID425",
+"PaVeUVPart[PaVe[2, 2, 2, 3, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID426",
+"PaVeUVPart[PaVe[2, 2, 3, 3, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID427",
+"PaVeUVPart[PaVe[2, 3, 3, 3, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID428",
+"PaVeUVPart[PaVe[3, 3, 3, 3, 3, 3, 3, 3, {SPD[p1, p1], p12, p23, \
+SPD[p3, p3], SPD[p2, p2], p13}, {m0^2, m1^2, m2^2, m3^2}]]", "0"},
+{"fcstPaVeUVPart-ID429",
+"TID[SPD[k] FAD[{k + q1, m1}, {k + q2, m2}]/(I Pi^2), k,
+UsePaVeBasis -> True, ToPaVe -> True] //PaVeUVPart[#, FCE -> True] &",
+"-((2 (m1^2 + m2^2 + SPD[q1, q2]))/(-4 + D))"},
+{"fcstPaVeUVPart-ID430",
+"TID[SPD[k, p1]^3 FAD[k, {k + q1, m1}, {k + q2, m2}]/(I Pi^2), k,
+UsePaVeBasis -> True, ToPaVe -> True] //
+PaVeUVPart[#, FCE -> True] &",
+"(SPD[p1, p1] SPD[p1, q1] + SPD[p1, p1] SPD[p1, q2])/(2 (-4 + D))"},
+{"fcstPaVeUVPart-ID431",
+"TID[SPD[k, p1]^8 FAD[{k, m0}, {k, m1, 2}, {k, m2}]/(I Pi^2), k,
+UsePaVeBasis -> True, ToPaVe -> True] //
+PaVeUVPart[#, FCE -> True] &",
+"-((7 (m0^4 + 2 m0^2 m1^2 + 3 m1^4 + m0^2 m2^2 + 2 m1^2 m2^2 +
+m2^4) SPD[p1, p1]^4)/(64 (-4 + D)))"}
+});

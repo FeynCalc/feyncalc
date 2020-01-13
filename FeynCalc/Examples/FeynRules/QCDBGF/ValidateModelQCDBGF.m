@@ -4,12 +4,12 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Validates FeynArts model for QCD in background field 
+(* :Summary:  Validates FeynArts model for QCD in background field
 				formalism                                                   *)
 
 (* ------------------------------------------------------------------------ *)
@@ -25,9 +25,11 @@ If[ $FrontEnd === Null,
 		Print["Validation of the FeynArts model for QCD in background field formalism"];
 ];
 If[$Notebooks === False, $FeynCalcStartupMessages = False];
-$LoadFeynArts= True;
+$LoadAddOns={"FeynArts"};
 <<FeynCalc`
 $FAVerbose = 0;
+
+FCCheckVersion[9,3,0];
 
 
 (* ::Section:: *)
@@ -45,12 +47,12 @@ top1To2 = CreateTopologies[0,1 -> 2];
 top2To2 = CreateTopologies[0,2 -> 2];
 
 
-compFu1To2[x_]:=FCFAConvert[FCPrepareFAAmp[CreateFeynAmp[x, Truncated -> True,PreFactor->1]],
+compFu1To2[x_]:=FCFAConvert[CreateFeynAmp[x, Truncated -> True,PreFactor->1],
 IncomingMomenta->{p1},OutgoingMomenta->{p2,p3},UndoChiralSplittings->True,
 DropSumOver->True,List->False,SMP->True]//Contract;
 
 
-compFu2To2[x_]:=FCFAConvert[FCPrepareFAAmp[CreateFeynAmp[x, Truncated -> True,PreFactor->1]],
+compFu2To2[x_]:=FCFAConvert[CreateFeynAmp[x, Truncated -> True,PreFactor->1],
 IncomingMomenta->{p1,p2},OutgoingMomenta->{p3,p4},UndoChiralSplittings->True,
 DropSumOver->True,List->False,SMP->True]//Contract;
 
@@ -112,8 +114,8 @@ compFu2To2[DiagramExtract[diagsFA[top2To2,{V[5],V[5]},{V[5],V[5]}],1]]]//FCCanon
 ggbDiag=InsertFields[top1To2, {V[50,{a}]} ->{V[5,{b}],V[5,{c}]},
 InsertionLevel -> {Classes},Model -> FileNameJoin[{"QCDBGF","QCDBGF"}],
 GenericModel->FileNameJoin[{"QCDBGF","QCDBGF"}]];
-ggbAbbott=-(((FV[q, nu] + FV[-p + r, nu]*GaugeXi[G])*MT[la, mu]*SMP["g_s"]*SUNF[a, b, c])/GaugeXi[G]) + FV[-q + r, mu]*MT[la, nu]*SMP["g_s"]*SUNF[a, b, c] + 
- ((FV[r, la] + FV[-p + q, la]*GaugeXi[G])*MT[mu, nu]*SMP["g_s"]*SUNF[a, b, c])/GaugeXi[G];
+ggbAbbott=-(((FV[q, nu] + FV[-p + r, nu]*GaugeXi[G])*MT[la, mu]*SMP["g_s"]*SUNF[a, b, c])/GaugeXi[G]) + FV[-q + r, mu]*MT[la, nu]*SMP["g_s"]*SUNF[a, b, c] +
+((FV[r, la] + FV[-p + q, la]*GaugeXi[G])*MT[mu, nu]*SMP["g_s"]*SUNF[a, b, c])/GaugeXi[G];
 ggbVertexFR=FCFAConvert[CreateFeynAmp[ggbDiag, Truncated -> True,PreFactor->-1,GaugeRules->{}],
 IncomingMomenta->{-p},OutgoingMomenta->{q,r},UndoChiralSplittings->True,
 DropSumOver->True,List->False,SMP->True,LorentzIndexNames->{mu,nu,la}]//FCE//Collect2[#,MT,Factoring->FullSimplify]&//MomentumCombine
@@ -129,7 +131,7 @@ InsertionLevel -> {Classes},Model -> FileNameJoin[{"QCDBGF","QCDBGF"}],
 GenericModel->FileNameJoin[{"QCDBGF","QCDBGF"}]];
 ghghbFR=FCFAConvert[CreateFeynAmp[ghghbDiag, Truncated -> True,PreFactor->-1,GaugeRules->{}],
 IncomingMomenta->{-p},OutgoingMomenta->{-q,r},UndoChiralSplittings->True,
-DropSumOver->True,List->False,SMP->True,LorentzIndexNames->{mu,nu,la}]//FCE//FCI//MomentumCombine2
+DropSumOver->True,List->False,SMP->True,LorentzIndexNames->{mu,nu,la}]//FCE//FCI//MomentumCombine
 ghghbAbbott=FV[p + q, mu]*SMP["g_s"]*SUNF[a, b, c];
 diff7=FCI[(ghghbAbbott-ghghbFR)]
 
@@ -141,14 +143,14 @@ diff7=FCI[(ghghbAbbott-ghghbFR)]
 ggbbDiag=InsertFields[top2To2, {V[50,{a}],V[5,{d}]} ->{V[5,{b}],V[50,{c}]},
 InsertionLevel -> {Classes},Model -> FileNameJoin[{"QCDBGF","QCDBGF"}],
 GenericModel->FileNameJoin[{"QCDBGF","QCDBGF"}]];
-ggbbAbbott=((-I)*(MT[la, rho]*MT[mu, nu] + GaugeXi[G]*(-(MT[la, nu]*MT[mu, rho]) + MT[la, mu]*MT[nu, rho]))*SMP["g_s"]^2*SUNF[a, d, x]*SUNF[b, c, x])/GaugeXi[G] + 
- I*(-(MT[la, rho]*MT[mu, nu]) + MT[la, nu]*MT[mu, rho])*SMP["g_s"]^2*SUNF[a, c, x]*SUNF[b, d, x] + 
- (I*(MT[la, nu]*MT[mu, rho] + GaugeXi[G]*(-(MT[la, rho]*MT[mu, nu]) + MT[la, mu]*MT[nu, rho]))*SMP["g_s"]^2*SUNF[a, b, x]*SUNF[c, d, x])/GaugeXi[G];
+ggbbAbbott=((-I)*(MT[la, rho]*MT[mu, nu] + GaugeXi[G]*(-(MT[la, nu]*MT[mu, rho]) + MT[la, mu]*MT[nu, rho]))*SMP["g_s"]^2*SUNF[a, d, x]*SUNF[b, c, x])/GaugeXi[G] +
+I*(-(MT[la, rho]*MT[mu, nu]) + MT[la, nu]*MT[mu, rho])*SMP["g_s"]^2*SUNF[a, c, x]*SUNF[b, d, x] +
+(I*(MT[la, nu]*MT[mu, rho] + GaugeXi[G]*(-(MT[la, rho]*MT[mu, nu]) + MT[la, mu]*MT[nu, rho]))*SMP["g_s"]^2*SUNF[a, b, x]*SUNF[c, d, x])/GaugeXi[G];
 ggbbVertexFR=FCFAConvert[CreateFeynAmp[DiagramExtract[ggbbDiag,{1}], Truncated -> True,PreFactor->-1,GaugeRules->{}],
 IncomingMomenta->{-p},OutgoingMomenta->{q,r},UndoChiralSplittings->True,
 DropSumOver->True,List->False,SMP->True,LorentzIndexNames->{mu,nu,rho,la}]//FCE//FCCanonicalizeDummyIndices[#,SUNIndexNames->{x}]&//
 Collect2[#,SUNF,Factoring->FullSimplify]&
-diff8=FCI[(ggbbAbbott-ggbbVertexFR)]
+diff8=FCI[(ggbbAbbott-ggbbVertexFR)]//FCCanonicalizeDummyIndices
 
 
 (* ::Subsection:: *)

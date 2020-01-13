@@ -25,13 +25,16 @@ End[]
 
 Begin["`PaVeOrder`Private`"]
 
-Options[PaVeOrder] = {PaVeOrderList -> {}};
+Options[PaVeOrder] = {
+	PaVeOrderList -> {}
+};
 
 (* smallLL is intermediately introduced for SmallVariable *)
 (* PaVeOrderdef *)
 PaVeOrder[expr_,opt___Rule] :=
 	Block[ {new, dordering, opli, cordering,
 	be0, be1, aa0, be11, be00, dordering0,j,nulL },
+
 		opli = PaVeOrderList/.{opt}/. Options[PaVeOrder];
 		If[ opli === False,
 			new = expr,
@@ -84,9 +87,9 @@ cord[a_,b_,c_, m1_,m2_,m3_] :=
 				];
 			];
 			varg = Variables[arg];
-			For[iv = 1,iv<=Length[varg],iv++,
-				If[ (!FreeQ[six, varg[[iv]]^2]) && FreeQ[arg,varg[[iv]]^2],
-					arg = arg/.varg[[iv]]->(varg[[iv]]^2)
+			For[r = 1,r<=Length[varg],r++,
+				If[ (!FreeQ[six, varg[[r]]^2]) && FreeQ[arg,varg[[r]]^2],
+					arg = arg/.varg[[r]]->(varg[[r]]^2)
 				];
 			];
 			puref = func[Apply[or,(stringmatchq[slot[1], #]& /@ tomatch[arg])
@@ -130,9 +133,9 @@ cord[a_,b_,c_, m1_,m2_,m3_] :=
 				];
 			];
 			varg = Variables[arg];
-			For[iv = 1,iv<=Length[varg],iv++,
-				If[ (!FreeQ[ten, varg[[iv]]^2]) && FreeQ[arg,varg[[iv]]^2],
-					arg = arg/.varg[[iv]]->(varg[[iv]]^2)
+			For[r = 1,r<=Length[varg],r++,
+				If[ (!FreeQ[ten, varg[[r]]^2]) && FreeQ[arg,varg[[r]]^2],
+					arg = arg/.varg[[r]]->(varg[[r]]^2)
 				];
 			];
 			puref = func[Apply[or,(stringmatchq[slot[1], #]& /@ tomatch[arg])

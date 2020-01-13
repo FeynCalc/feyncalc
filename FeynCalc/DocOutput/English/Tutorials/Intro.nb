@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     42465,       1241]
-NotebookOptionsPosition[     32796,        930]
-NotebookOutlinePosition[     38226,       1084]
-CellTagsIndexPosition[     37928,       1071]
+NotebookDataLength[     41730,       1213]
+NotebookOptionsPosition[     32206,        908]
+NotebookOutlinePosition[     37579,       1059]
+CellTagsIndexPosition[     37285,       1046]
 WindowTitle->Short introduction
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$173992], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$298881], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/tutorial/Intro", ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -84,118 +85,124 @@ Cell[BoxData[GridBox[{
      Cell["Starting FeynCalc"],"paclet:FeynCalc/tutorial/Intro#1726202394",
       GraphicsBox[
        TagBox[
-        RasterBox[{{{128, 128, 128, 32}, {128, 128, 128, 16}, {128, 128, 128, 
-         0}, {128, 128, 128, 0}, {128, 128, 128, 0}, {128, 128, 128, 0}, {128,
-          128, 128, 0}, {128, 128, 128, 48}}, {{128, 128, 128, 48}, {128, 128,
-          128, 239}, {128, 128, 128, 112}, {128, 128, 128, 0}, {128, 128, 128,
-          0}, {128, 128, 128, 16}, {128, 128, 128, 143}, {128, 128, 128, 
-         239}}, {{128, 128, 128, 0}, {128, 128, 128, 64}, {128, 128, 128, 
-         223}, {128, 128, 128, 191}, {128, 128, 128, 112}, {128, 128, 128, 
-         223}, {128, 128, 128, 191}, {128, 128, 128, 32}}, {{128, 128, 128, 
-         32}, {128, 128, 128, 16}, {128, 128, 128, 16}, {128, 128, 128, 
-         175}, {128, 128, 128, 255}, {128, 128, 128, 127}, {128, 128, 128, 
-         0}, {128, 128, 128, 48}}, {{128, 128, 128, 48}, {128, 128, 128, 
-         239}, {128, 128, 128, 112}, {128, 128, 128, 0}, {128, 128, 128, 
-         16}, {128, 128, 128, 16}, {128, 128, 128, 143}, {128, 128, 128, 
-         239}}, {{128, 128, 128, 0}, {128, 128, 128, 64}, {128, 128, 128, 
-         223}, {128, 128, 128, 191}, {128, 128, 128, 112}, {128, 128, 128, 
-         223}, {128, 128, 128, 191}, {128, 128, 128, 32}}, {{128, 128, 128, 
-         0}, {128, 128, 128, 0}, {128, 128, 128, 16}, {128, 128, 128, 175}, {
-         128, 128, 128, 255}, {128, 128, 128, 127}, {128, 128, 128, 0}, {128, 
-         128, 128, 0}}, {{128, 128, 128, 0}, {128, 128, 128, 0}, {128, 128, 
-         128, 0}, {128, 128, 128, 0}, {128, 128, 128, 16}, {128, 128, 128, 
-         0}, {128, 128, 128, 0}, {128, 128, 128, 0}}}, {{0, 8}, {8, 0}}, {0, 
-         255}, ColorFunction -> RGBColor], 
+        RasterBox[
+        RawArray["UnsignedInteger8",{{{128, 128, 128, 32}, {128, 128, 128, 
+          16}, {128, 128, 128, 0}, {128, 128, 128, 0}, {128, 128, 128, 0}, {
+          128, 128, 128, 0}, {128, 128, 128, 0}, {128, 128, 128, 48}}, {{128, 
+          128, 128, 48}, {128, 128, 128, 239}, {128, 128, 128, 112}, {128, 
+          128, 128, 0}, {128, 128, 128, 0}, {128, 128, 128, 16}, {128, 128, 
+          128, 143}, {128, 128, 128, 239}}, {{128, 128, 128, 0}, {128, 128, 
+          128, 64}, {128, 128, 128, 223}, {128, 128, 128, 191}, {128, 128, 
+          128, 112}, {128, 128, 128, 223}, {128, 128, 128, 191}, {128, 128, 
+          128, 32}}, {{128, 128, 128, 32}, {128, 128, 128, 16}, {128, 128, 
+          128, 16}, {128, 128, 128, 175}, {128, 128, 128, 255}, {128, 128, 
+          128, 127}, {128, 128, 128, 0}, {128, 128, 128, 48}}, {{128, 128, 
+          128, 48}, {128, 128, 128, 239}, {128, 128, 128, 112}, {128, 128, 
+          128, 0}, {128, 128, 128, 16}, {128, 128, 128, 16}, {128, 128, 128, 
+          143}, {128, 128, 128, 239}}, {{128, 128, 128, 0}, {128, 128, 128, 
+          64}, {128, 128, 128, 223}, {128, 128, 128, 191}, {128, 128, 128, 
+          112}, {128, 128, 128, 223}, {128, 128, 128, 191}, {128, 128, 128, 
+          32}}, {{128, 128, 128, 0}, {128, 128, 128, 0}, {128, 128, 128, 
+          16}, {128, 128, 128, 175}, {128, 128, 128, 255}, {128, 128, 128, 
+          127}, {128, 128, 128, 0}, {128, 128, 128, 0}}, {{128, 128, 128, 
+          0}, {128, 128, 128, 0}, {128, 128, 128, 0}, {128, 128, 128, 0}, {
+          128, 128, 128, 16}, {128, 128, 128, 0}, {128, 128, 128, 0}, {128, 
+          128, 128, 0}}}], {{0, 8}, {8, 0}}, {0, 255}, ColorFunction -> 
+         RGBColor], 
         BoxForm`ImageTag[
         "Byte", ColorSpace -> "RGB", Interleaving -> True, Magnification -> 
-         Automatic], Selectable -> False], BaseStyle -> "ImageGraphics", 
-       ImageSizeRaw -> {8, 8}, PlotRange -> {{0, 8}, {0, 8}}, 
-       ImageSize -> {8, 9}],GraphicsBox[
+         Automatic], Selectable -> False], DefaultBaseStyle -> 
+       "ImageGraphics", ImageSizeRaw -> {8, 8}, PlotRange -> {{0, 8}, {0, 8}},
+        ImageSize -> {8, 9}],GraphicsBox[
        TagBox[
-        RasterBox[{{{229, 95, 28, 32}, {229, 95, 28, 16}, {229, 95, 28, 0}, {
-         229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 
-         0}, {229, 95, 28, 48}}, {{229, 95, 28, 48}, {229, 95, 28, 239}, {229,
-          95, 28, 112}, {229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 
-         16}, {229, 95, 28, 143}, {229, 95, 28, 239}}, {{229, 95, 28, 0}, {
-         229, 95, 28, 64}, {229, 95, 28, 223}, {229, 95, 28, 191}, {229, 95, 
-         28, 112}, {229, 95, 28, 223}, {229, 95, 28, 191}, {229, 95, 28, 
-         32}}, {{229, 95, 28, 32}, {229, 95, 28, 16}, {229, 95, 28, 16}, {229,
-          95, 28, 175}, {229, 95, 28, 255}, {229, 95, 28, 127}, {229, 95, 28, 
-         0}, {229, 95, 28, 48}}, {{229, 95, 28, 48}, {229, 95, 28, 239}, {229,
-          95, 28, 112}, {229, 95, 28, 0}, {229, 95, 28, 16}, {229, 95, 28, 
-         16}, {229, 95, 28, 143}, {229, 95, 28, 239}}, {{229, 95, 28, 0}, {
-         229, 95, 28, 64}, {229, 95, 28, 223}, {229, 95, 28, 191}, {229, 95, 
-         28, 112}, {229, 95, 28, 223}, {229, 95, 28, 191}, {229, 95, 28, 
-         32}}, {{229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 16}, {229, 
-         95, 28, 175}, {229, 95, 28, 255}, {229, 95, 28, 127}, {229, 95, 28, 
-         0}, {229, 95, 28, 0}}, {{229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95,
-          28, 0}, {229, 95, 28, 0}, {229, 95, 28, 16}, {229, 95, 28, 0}, {229,
-          95, 28, 0}, {229, 95, 28, 0}}}, {{0, 8}, {8, 0}}, {0, 255}, 
-         ColorFunction -> RGBColor], 
+        RasterBox[
+        RawArray["UnsignedInteger8",{{{229, 95, 28, 32}, {229, 95, 28, 16}, {
+          229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 
+          0}, {229, 95, 28, 0}, {229, 95, 28, 48}}, {{229, 95, 28, 48}, {229, 
+          95, 28, 239}, {229, 95, 28, 112}, {229, 95, 28, 0}, {229, 95, 28, 
+          0}, {229, 95, 28, 16}, {229, 95, 28, 143}, {229, 95, 28, 239}}, {{
+          229, 95, 28, 0}, {229, 95, 28, 64}, {229, 95, 28, 223}, {229, 95, 
+          28, 191}, {229, 95, 28, 112}, {229, 95, 28, 223}, {229, 95, 28, 
+          191}, {229, 95, 28, 32}}, {{229, 95, 28, 32}, {229, 95, 28, 16}, {
+          229, 95, 28, 16}, {229, 95, 28, 175}, {229, 95, 28, 255}, {229, 95, 
+          28, 127}, {229, 95, 28, 0}, {229, 95, 28, 48}}, {{229, 95, 28, 
+          48}, {229, 95, 28, 239}, {229, 95, 28, 112}, {229, 95, 28, 0}, {229,
+           95, 28, 16}, {229, 95, 28, 16}, {229, 95, 28, 143}, {229, 95, 28, 
+          239}}, {{229, 95, 28, 0}, {229, 95, 28, 64}, {229, 95, 28, 223}, {
+          229, 95, 28, 191}, {229, 95, 28, 112}, {229, 95, 28, 223}, {229, 95,
+           28, 191}, {229, 95, 28, 32}}, {{229, 95, 28, 0}, {229, 95, 28, 
+          0}, {229, 95, 28, 16}, {229, 95, 28, 175}, {229, 95, 28, 255}, {229,
+           95, 28, 127}, {229, 95, 28, 0}, {229, 95, 28, 0}}, {{229, 95, 28, 
+          0}, {229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 
+          28, 16}, {229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 0}}}], {{
+         0, 8}, {8, 0}}, {0, 255}, ColorFunction -> RGBColor], 
         BoxForm`ImageTag[
         "Byte", ColorSpace -> "RGB", Interleaving -> True, Magnification -> 
-         Automatic], Selectable -> False], BaseStyle -> "ImageGraphics", 
-       ImageSizeRaw -> {8, 8}, PlotRange -> {{0, 8}, {0, 8}}, 
-       ImageSize -> {8, 9}]},
+         Automatic], Selectable -> False], DefaultBaseStyle -> 
+       "ImageGraphics", ImageSizeRaw -> {8, 8}, PlotRange -> {{0, 8}, {0, 8}},
+        ImageSize -> {8, 9}]},
      "GrayLinkWithIcon",
      BaseStyle->{"TutorialJumpBoxLink"}], 
     TemplateBox[{
      Cell["Example Calculations"],"paclet:FeynCalc/tutorial/Intro#1007300369",
       GraphicsBox[
        TagBox[
-        RasterBox[{{{128, 128, 128, 32}, {128, 128, 128, 16}, {128, 128, 128, 
-         0}, {128, 128, 128, 0}, {128, 128, 128, 0}, {128, 128, 128, 0}, {128,
-          128, 128, 0}, {128, 128, 128, 48}}, {{128, 128, 128, 48}, {128, 128,
-          128, 239}, {128, 128, 128, 112}, {128, 128, 128, 0}, {128, 128, 128,
-          0}, {128, 128, 128, 16}, {128, 128, 128, 143}, {128, 128, 128, 
-         239}}, {{128, 128, 128, 0}, {128, 128, 128, 64}, {128, 128, 128, 
-         223}, {128, 128, 128, 191}, {128, 128, 128, 112}, {128, 128, 128, 
-         223}, {128, 128, 128, 191}, {128, 128, 128, 32}}, {{128, 128, 128, 
-         32}, {128, 128, 128, 16}, {128, 128, 128, 16}, {128, 128, 128, 
-         175}, {128, 128, 128, 255}, {128, 128, 128, 127}, {128, 128, 128, 
-         0}, {128, 128, 128, 48}}, {{128, 128, 128, 48}, {128, 128, 128, 
-         239}, {128, 128, 128, 112}, {128, 128, 128, 0}, {128, 128, 128, 
-         16}, {128, 128, 128, 16}, {128, 128, 128, 143}, {128, 128, 128, 
-         239}}, {{128, 128, 128, 0}, {128, 128, 128, 64}, {128, 128, 128, 
-         223}, {128, 128, 128, 191}, {128, 128, 128, 112}, {128, 128, 128, 
-         223}, {128, 128, 128, 191}, {128, 128, 128, 32}}, {{128, 128, 128, 
-         0}, {128, 128, 128, 0}, {128, 128, 128, 16}, {128, 128, 128, 175}, {
-         128, 128, 128, 255}, {128, 128, 128, 127}, {128, 128, 128, 0}, {128, 
-         128, 128, 0}}, {{128, 128, 128, 0}, {128, 128, 128, 0}, {128, 128, 
-         128, 0}, {128, 128, 128, 0}, {128, 128, 128, 16}, {128, 128, 128, 
-         0}, {128, 128, 128, 0}, {128, 128, 128, 0}}}, {{0, 8}, {8, 0}}, {0, 
-         255}, ColorFunction -> RGBColor], 
+        RasterBox[
+        RawArray["UnsignedInteger8",{{{128, 128, 128, 32}, {128, 128, 128, 
+          16}, {128, 128, 128, 0}, {128, 128, 128, 0}, {128, 128, 128, 0}, {
+          128, 128, 128, 0}, {128, 128, 128, 0}, {128, 128, 128, 48}}, {{128, 
+          128, 128, 48}, {128, 128, 128, 239}, {128, 128, 128, 112}, {128, 
+          128, 128, 0}, {128, 128, 128, 0}, {128, 128, 128, 16}, {128, 128, 
+          128, 143}, {128, 128, 128, 239}}, {{128, 128, 128, 0}, {128, 128, 
+          128, 64}, {128, 128, 128, 223}, {128, 128, 128, 191}, {128, 128, 
+          128, 112}, {128, 128, 128, 223}, {128, 128, 128, 191}, {128, 128, 
+          128, 32}}, {{128, 128, 128, 32}, {128, 128, 128, 16}, {128, 128, 
+          128, 16}, {128, 128, 128, 175}, {128, 128, 128, 255}, {128, 128, 
+          128, 127}, {128, 128, 128, 0}, {128, 128, 128, 48}}, {{128, 128, 
+          128, 48}, {128, 128, 128, 239}, {128, 128, 128, 112}, {128, 128, 
+          128, 0}, {128, 128, 128, 16}, {128, 128, 128, 16}, {128, 128, 128, 
+          143}, {128, 128, 128, 239}}, {{128, 128, 128, 0}, {128, 128, 128, 
+          64}, {128, 128, 128, 223}, {128, 128, 128, 191}, {128, 128, 128, 
+          112}, {128, 128, 128, 223}, {128, 128, 128, 191}, {128, 128, 128, 
+          32}}, {{128, 128, 128, 0}, {128, 128, 128, 0}, {128, 128, 128, 
+          16}, {128, 128, 128, 175}, {128, 128, 128, 255}, {128, 128, 128, 
+          127}, {128, 128, 128, 0}, {128, 128, 128, 0}}, {{128, 128, 128, 
+          0}, {128, 128, 128, 0}, {128, 128, 128, 0}, {128, 128, 128, 0}, {
+          128, 128, 128, 16}, {128, 128, 128, 0}, {128, 128, 128, 0}, {128, 
+          128, 128, 0}}}], {{0, 8}, {8, 0}}, {0, 255}, ColorFunction -> 
+         RGBColor], 
         BoxForm`ImageTag[
         "Byte", ColorSpace -> "RGB", Interleaving -> True, Magnification -> 
-         Automatic], Selectable -> False], BaseStyle -> "ImageGraphics", 
-       ImageSizeRaw -> {8, 8}, PlotRange -> {{0, 8}, {0, 8}}, 
-       ImageSize -> {8, 9}],GraphicsBox[
+         Automatic], Selectable -> False], DefaultBaseStyle -> 
+       "ImageGraphics", ImageSizeRaw -> {8, 8}, PlotRange -> {{0, 8}, {0, 8}},
+        ImageSize -> {8, 9}],GraphicsBox[
        TagBox[
-        RasterBox[{{{229, 95, 28, 32}, {229, 95, 28, 16}, {229, 95, 28, 0}, {
-         229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 
-         0}, {229, 95, 28, 48}}, {{229, 95, 28, 48}, {229, 95, 28, 239}, {229,
-          95, 28, 112}, {229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 
-         16}, {229, 95, 28, 143}, {229, 95, 28, 239}}, {{229, 95, 28, 0}, {
-         229, 95, 28, 64}, {229, 95, 28, 223}, {229, 95, 28, 191}, {229, 95, 
-         28, 112}, {229, 95, 28, 223}, {229, 95, 28, 191}, {229, 95, 28, 
-         32}}, {{229, 95, 28, 32}, {229, 95, 28, 16}, {229, 95, 28, 16}, {229,
-          95, 28, 175}, {229, 95, 28, 255}, {229, 95, 28, 127}, {229, 95, 28, 
-         0}, {229, 95, 28, 48}}, {{229, 95, 28, 48}, {229, 95, 28, 239}, {229,
-          95, 28, 112}, {229, 95, 28, 0}, {229, 95, 28, 16}, {229, 95, 28, 
-         16}, {229, 95, 28, 143}, {229, 95, 28, 239}}, {{229, 95, 28, 0}, {
-         229, 95, 28, 64}, {229, 95, 28, 223}, {229, 95, 28, 191}, {229, 95, 
-         28, 112}, {229, 95, 28, 223}, {229, 95, 28, 191}, {229, 95, 28, 
-         32}}, {{229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 16}, {229, 
-         95, 28, 175}, {229, 95, 28, 255}, {229, 95, 28, 127}, {229, 95, 28, 
-         0}, {229, 95, 28, 0}}, {{229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95,
-          28, 0}, {229, 95, 28, 0}, {229, 95, 28, 16}, {229, 95, 28, 0}, {229,
-          95, 28, 0}, {229, 95, 28, 0}}}, {{0, 8}, {8, 0}}, {0, 255}, 
-         ColorFunction -> RGBColor], 
+        RasterBox[
+        RawArray["UnsignedInteger8",{{{229, 95, 28, 32}, {229, 95, 28, 16}, {
+          229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 
+          0}, {229, 95, 28, 0}, {229, 95, 28, 48}}, {{229, 95, 28, 48}, {229, 
+          95, 28, 239}, {229, 95, 28, 112}, {229, 95, 28, 0}, {229, 95, 28, 
+          0}, {229, 95, 28, 16}, {229, 95, 28, 143}, {229, 95, 28, 239}}, {{
+          229, 95, 28, 0}, {229, 95, 28, 64}, {229, 95, 28, 223}, {229, 95, 
+          28, 191}, {229, 95, 28, 112}, {229, 95, 28, 223}, {229, 95, 28, 
+          191}, {229, 95, 28, 32}}, {{229, 95, 28, 32}, {229, 95, 28, 16}, {
+          229, 95, 28, 16}, {229, 95, 28, 175}, {229, 95, 28, 255}, {229, 95, 
+          28, 127}, {229, 95, 28, 0}, {229, 95, 28, 48}}, {{229, 95, 28, 
+          48}, {229, 95, 28, 239}, {229, 95, 28, 112}, {229, 95, 28, 0}, {229,
+           95, 28, 16}, {229, 95, 28, 16}, {229, 95, 28, 143}, {229, 95, 28, 
+          239}}, {{229, 95, 28, 0}, {229, 95, 28, 64}, {229, 95, 28, 223}, {
+          229, 95, 28, 191}, {229, 95, 28, 112}, {229, 95, 28, 223}, {229, 95,
+           28, 191}, {229, 95, 28, 32}}, {{229, 95, 28, 0}, {229, 95, 28, 
+          0}, {229, 95, 28, 16}, {229, 95, 28, 175}, {229, 95, 28, 255}, {229,
+           95, 28, 127}, {229, 95, 28, 0}, {229, 95, 28, 0}}, {{229, 95, 28, 
+          0}, {229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 
+          28, 16}, {229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 0}}}], {{
+         0, 8}, {8, 0}}, {0, 255}, ColorFunction -> RGBColor], 
         BoxForm`ImageTag[
         "Byte", ColorSpace -> "RGB", Interleaving -> True, Magnification -> 
-         Automatic], Selectable -> False], BaseStyle -> "ImageGraphics", 
-       ImageSizeRaw -> {8, 8}, PlotRange -> {{0, 8}, {0, 8}}, 
-       ImageSize -> {8, 9}]},
+         Automatic], Selectable -> False], DefaultBaseStyle -> 
+       "ImageGraphics", ImageSizeRaw -> {8, 8}, PlotRange -> {{0, 8}, {0, 8}},
+        ImageSize -> {8, 9}]},
      "GrayLinkWithIcon",
      BaseStyle->{"TutorialJumpBoxLink"}]},
    {
@@ -203,59 +210,62 @@ Cell[BoxData[GridBox[{
      Cell["Extra subpackages"],"paclet:FeynCalc/tutorial/Intro#2100607586",
       GraphicsBox[
        TagBox[
-        RasterBox[{{{128, 128, 128, 32}, {128, 128, 128, 16}, {128, 128, 128, 
-         0}, {128, 128, 128, 0}, {128, 128, 128, 0}, {128, 128, 128, 0}, {128,
-          128, 128, 0}, {128, 128, 128, 48}}, {{128, 128, 128, 48}, {128, 128,
-          128, 239}, {128, 128, 128, 112}, {128, 128, 128, 0}, {128, 128, 128,
-          0}, {128, 128, 128, 16}, {128, 128, 128, 143}, {128, 128, 128, 
-         239}}, {{128, 128, 128, 0}, {128, 128, 128, 64}, {128, 128, 128, 
-         223}, {128, 128, 128, 191}, {128, 128, 128, 112}, {128, 128, 128, 
-         223}, {128, 128, 128, 191}, {128, 128, 128, 32}}, {{128, 128, 128, 
-         32}, {128, 128, 128, 16}, {128, 128, 128, 16}, {128, 128, 128, 
-         175}, {128, 128, 128, 255}, {128, 128, 128, 127}, {128, 128, 128, 
-         0}, {128, 128, 128, 48}}, {{128, 128, 128, 48}, {128, 128, 128, 
-         239}, {128, 128, 128, 112}, {128, 128, 128, 0}, {128, 128, 128, 
-         16}, {128, 128, 128, 16}, {128, 128, 128, 143}, {128, 128, 128, 
-         239}}, {{128, 128, 128, 0}, {128, 128, 128, 64}, {128, 128, 128, 
-         223}, {128, 128, 128, 191}, {128, 128, 128, 112}, {128, 128, 128, 
-         223}, {128, 128, 128, 191}, {128, 128, 128, 32}}, {{128, 128, 128, 
-         0}, {128, 128, 128, 0}, {128, 128, 128, 16}, {128, 128, 128, 175}, {
-         128, 128, 128, 255}, {128, 128, 128, 127}, {128, 128, 128, 0}, {128, 
-         128, 128, 0}}, {{128, 128, 128, 0}, {128, 128, 128, 0}, {128, 128, 
-         128, 0}, {128, 128, 128, 0}, {128, 128, 128, 16}, {128, 128, 128, 
-         0}, {128, 128, 128, 0}, {128, 128, 128, 0}}}, {{0, 8}, {8, 0}}, {0, 
-         255}, ColorFunction -> RGBColor], 
+        RasterBox[
+        RawArray["UnsignedInteger8",{{{128, 128, 128, 32}, {128, 128, 128, 
+          16}, {128, 128, 128, 0}, {128, 128, 128, 0}, {128, 128, 128, 0}, {
+          128, 128, 128, 0}, {128, 128, 128, 0}, {128, 128, 128, 48}}, {{128, 
+          128, 128, 48}, {128, 128, 128, 239}, {128, 128, 128, 112}, {128, 
+          128, 128, 0}, {128, 128, 128, 0}, {128, 128, 128, 16}, {128, 128, 
+          128, 143}, {128, 128, 128, 239}}, {{128, 128, 128, 0}, {128, 128, 
+          128, 64}, {128, 128, 128, 223}, {128, 128, 128, 191}, {128, 128, 
+          128, 112}, {128, 128, 128, 223}, {128, 128, 128, 191}, {128, 128, 
+          128, 32}}, {{128, 128, 128, 32}, {128, 128, 128, 16}, {128, 128, 
+          128, 16}, {128, 128, 128, 175}, {128, 128, 128, 255}, {128, 128, 
+          128, 127}, {128, 128, 128, 0}, {128, 128, 128, 48}}, {{128, 128, 
+          128, 48}, {128, 128, 128, 239}, {128, 128, 128, 112}, {128, 128, 
+          128, 0}, {128, 128, 128, 16}, {128, 128, 128, 16}, {128, 128, 128, 
+          143}, {128, 128, 128, 239}}, {{128, 128, 128, 0}, {128, 128, 128, 
+          64}, {128, 128, 128, 223}, {128, 128, 128, 191}, {128, 128, 128, 
+          112}, {128, 128, 128, 223}, {128, 128, 128, 191}, {128, 128, 128, 
+          32}}, {{128, 128, 128, 0}, {128, 128, 128, 0}, {128, 128, 128, 
+          16}, {128, 128, 128, 175}, {128, 128, 128, 255}, {128, 128, 128, 
+          127}, {128, 128, 128, 0}, {128, 128, 128, 0}}, {{128, 128, 128, 
+          0}, {128, 128, 128, 0}, {128, 128, 128, 0}, {128, 128, 128, 0}, {
+          128, 128, 128, 16}, {128, 128, 128, 0}, {128, 128, 128, 0}, {128, 
+          128, 128, 0}}}], {{0, 8}, {8, 0}}, {0, 255}, ColorFunction -> 
+         RGBColor], 
         BoxForm`ImageTag[
         "Byte", ColorSpace -> "RGB", Interleaving -> True, Magnification -> 
-         Automatic], Selectable -> False], BaseStyle -> "ImageGraphics", 
-       ImageSizeRaw -> {8, 8}, PlotRange -> {{0, 8}, {0, 8}}, 
-       ImageSize -> {8, 9}],GraphicsBox[
+         Automatic], Selectable -> False], DefaultBaseStyle -> 
+       "ImageGraphics", ImageSizeRaw -> {8, 8}, PlotRange -> {{0, 8}, {0, 8}},
+        ImageSize -> {8, 9}],GraphicsBox[
        TagBox[
-        RasterBox[{{{229, 95, 28, 32}, {229, 95, 28, 16}, {229, 95, 28, 0}, {
-         229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 
-         0}, {229, 95, 28, 48}}, {{229, 95, 28, 48}, {229, 95, 28, 239}, {229,
-          95, 28, 112}, {229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 
-         16}, {229, 95, 28, 143}, {229, 95, 28, 239}}, {{229, 95, 28, 0}, {
-         229, 95, 28, 64}, {229, 95, 28, 223}, {229, 95, 28, 191}, {229, 95, 
-         28, 112}, {229, 95, 28, 223}, {229, 95, 28, 191}, {229, 95, 28, 
-         32}}, {{229, 95, 28, 32}, {229, 95, 28, 16}, {229, 95, 28, 16}, {229,
-          95, 28, 175}, {229, 95, 28, 255}, {229, 95, 28, 127}, {229, 95, 28, 
-         0}, {229, 95, 28, 48}}, {{229, 95, 28, 48}, {229, 95, 28, 239}, {229,
-          95, 28, 112}, {229, 95, 28, 0}, {229, 95, 28, 16}, {229, 95, 28, 
-         16}, {229, 95, 28, 143}, {229, 95, 28, 239}}, {{229, 95, 28, 0}, {
-         229, 95, 28, 64}, {229, 95, 28, 223}, {229, 95, 28, 191}, {229, 95, 
-         28, 112}, {229, 95, 28, 223}, {229, 95, 28, 191}, {229, 95, 28, 
-         32}}, {{229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 16}, {229, 
-         95, 28, 175}, {229, 95, 28, 255}, {229, 95, 28, 127}, {229, 95, 28, 
-         0}, {229, 95, 28, 0}}, {{229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95,
-          28, 0}, {229, 95, 28, 0}, {229, 95, 28, 16}, {229, 95, 28, 0}, {229,
-          95, 28, 0}, {229, 95, 28, 0}}}, {{0, 8}, {8, 0}}, {0, 255}, 
-         ColorFunction -> RGBColor], 
+        RasterBox[
+        RawArray["UnsignedInteger8",{{{229, 95, 28, 32}, {229, 95, 28, 16}, {
+          229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 
+          0}, {229, 95, 28, 0}, {229, 95, 28, 48}}, {{229, 95, 28, 48}, {229, 
+          95, 28, 239}, {229, 95, 28, 112}, {229, 95, 28, 0}, {229, 95, 28, 
+          0}, {229, 95, 28, 16}, {229, 95, 28, 143}, {229, 95, 28, 239}}, {{
+          229, 95, 28, 0}, {229, 95, 28, 64}, {229, 95, 28, 223}, {229, 95, 
+          28, 191}, {229, 95, 28, 112}, {229, 95, 28, 223}, {229, 95, 28, 
+          191}, {229, 95, 28, 32}}, {{229, 95, 28, 32}, {229, 95, 28, 16}, {
+          229, 95, 28, 16}, {229, 95, 28, 175}, {229, 95, 28, 255}, {229, 95, 
+          28, 127}, {229, 95, 28, 0}, {229, 95, 28, 48}}, {{229, 95, 28, 
+          48}, {229, 95, 28, 239}, {229, 95, 28, 112}, {229, 95, 28, 0}, {229,
+           95, 28, 16}, {229, 95, 28, 16}, {229, 95, 28, 143}, {229, 95, 28, 
+          239}}, {{229, 95, 28, 0}, {229, 95, 28, 64}, {229, 95, 28, 223}, {
+          229, 95, 28, 191}, {229, 95, 28, 112}, {229, 95, 28, 223}, {229, 95,
+           28, 191}, {229, 95, 28, 32}}, {{229, 95, 28, 0}, {229, 95, 28, 
+          0}, {229, 95, 28, 16}, {229, 95, 28, 175}, {229, 95, 28, 255}, {229,
+           95, 28, 127}, {229, 95, 28, 0}, {229, 95, 28, 0}}, {{229, 95, 28, 
+          0}, {229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 
+          28, 16}, {229, 95, 28, 0}, {229, 95, 28, 0}, {229, 95, 28, 0}}}], {{
+         0, 8}, {8, 0}}, {0, 255}, ColorFunction -> RGBColor], 
         BoxForm`ImageTag[
         "Byte", ColorSpace -> "RGB", Interleaving -> True, Magnification -> 
-         Automatic], Selectable -> False], BaseStyle -> "ImageGraphics", 
-       ImageSizeRaw -> {8, 8}, PlotRange -> {{0, 8}, {0, 8}}, 
-       ImageSize -> {8, 9}]},
+         Automatic], Selectable -> False], DefaultBaseStyle -> 
+       "ImageGraphics", ImageSizeRaw -> {8, 8}, PlotRange -> {{0, 8}, {0, 8}},
+        ImageSize -> {8, 9}]},
      "GrayLinkWithIcon",
      BaseStyle->{"TutorialJumpBoxLink"}], ""}
   }]], "TutorialJumpBox"],
@@ -473,7 +483,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox["\<\"/media/Data/Projects/Physics/FeynCalc/FeynCalc/Examples\"\>", 
   TraditionalForm]], "Output",
- ImageSize->{397, 15},
+ ImageSize->{367, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[24]=",
@@ -557,7 +567,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox["\<\"/home/vs/.Mathematica/Applications\"\>", 
   TraditionalForm]], "Output",
- ImageSize->{247, 15},
+ ImageSize->{226, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[26]=",
@@ -641,46 +651,11 @@ The directory  \"FeynCalc\" contains various files and subdirectories \
 belonging to third-party packages which are not necessary to run 'standard' \
 FeynCalc calculations and which do not use the autoloading conventions of \
 FeynCalc. These packages are not initialized by default when starting \
-FeynCalc. Loading them can be switched on and off by setting appropiate \
+FeynCalc. Loading them can be switched on and off by setting appropriate \
 variables to False or True before loading FeynCalc.\
 \>", "Text",
  CellTags->"About Extras",
  CellID->953459903],
-
-Cell[BoxData[
- FormBox[
-  StyleBox[
-   FrameBox[
-    StyleBox[GridBox[{
-       {
-        StyleBox["$LoadTARCER",
-         FontFamily->"Courier"], 
-        RowBox[{
-        "Specifies", " ", "if", " ", "TARCER", " ", "should", " ", "be", " ", 
-         "loaded", " ", "by", " ", "FeynCalc"}]},
-       {
-        StyleBox["$LoadPhi",
-         FontFamily->"Courier"], 
-        RowBox[{
-        "Specifies", " ", "if", " ", "PHI", " ", "should", " ", "be", " ", 
-         "loaded", " ", "by", " ", "FeynCalc"}]},
-       {
-        StyleBox["$LoadFeynArts",
-         FontFamily->"Courier"], 
-        RowBox[{
-        "Specifies", " ", "if", " ", "FeynArts", " ", "should", " ", "be", 
-         " ", "loaded", " ", "by", " ", "FeynCalc"}]}
-      },
-      GridBoxAlignment->{
-       "Columns" -> {Right, {Left}}, "ColumnsIndexed" -> {}, 
-        "Rows" -> {{Baseline}}, "RowsIndexed" -> {}}],
-     GridBoxOptions->{
-     GridBoxDividers->{
-      "Columns" -> {{False}}, "ColumnsIndexed" -> {}, "Rows" -> {{False}}, 
-       "RowsIndexed" -> {}}}]], "2ColumnBox"], TraditionalForm]], "Text",
- Background->None,
- CellTags->"About Extras",
- CellID->2108182812],
 
 Cell[CellGroupData[{
 
@@ -710,7 +685,8 @@ TARCER is distributed with FeynCalc. To have FeynCalc load TARCER, evaluate\
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"$LoadTARCER", "=", "True"}], ";"}]], "Input",
+  RowBox[{"$LoadAddOns", "=", 
+   RowBox[{"{", "\"\<TARCER\>\"", "}"}]}], ";"}]], "Input",
  CellTags->"tarcer",
  CellID->843778896],
 
@@ -851,7 +827,7 @@ Cell[BoxData["$FeynArtsDirectory"], "Input",
 Cell[BoxData[
  FormBox["\<\"/media/Data/Projects/Physics/FeynCalc/FeynCalc/FeynArts\"\>", 
   TraditionalForm]], "Output",
- ImageSize->{393, 15},
+ ImageSize->{364, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[13]=",
@@ -868,7 +844,8 @@ Cell[TextData[{
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"$LoadFeynArts", "=", "True"}], ";"}]], "Input",
+  RowBox[{"$LoadAddOns", "=", 
+   RowBox[{"{", "\"\<FeynArts\>\"", "}"}]}], ";"}]], "Input",
  CellLabel->"In[16]:=",
  CellID->342627804],
 
@@ -883,7 +860,8 @@ appear. Hit OK. Wait until the patching process finishes. Then restart ",
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"$LoadFeynArts", "=", "True"}], ";"}]], "Input",
+  RowBox[{"$LoadAddOns", "=", 
+   RowBox[{"{", "\"\<FeynArts\>\"", "}"}]}], ";"}]], "Input",
  CellLabel->"In[18]:=",
  CellID->1900750623],
 
@@ -917,7 +895,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox["\<\"/media/Data/Projects/Physics/FeynCalc/FeynCalc/Examples\"\>", 
   TraditionalForm]], "Output",
- ImageSize->{397, 15},
+ ImageSize->{367, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[24]=",
@@ -931,7 +909,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 WindowTitle->"Short introduction",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "TutorialColor", 
@@ -940,10 +918,9 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "ExampleCounter" -> 1, "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> 
-  None, "RootCaptions" -> "", 
-  "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 27, 29.193972}", 
+    Left], "ExampleCounter" -> 1, "NeedPlatMsgIn" -> None, "RootCaptions" -> 
+  "", "Metadata" -> {
+   "built" -> "{2020, 1, 5, 19, 4, 31.052818}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -961,11 +938,12 @@ code. Some functions for input of objects like p^\[Mu],\[Gamma]^\[Nu],g^\[Mu] \
 \[Nu], \[CurlyEpsilon]^\[Mu] \[Nu] \[Rho] \[Sigma], etc. (abbreviations in \
 parentheses) are: GA (Dirac matrix), GS (Dirac slash), FV (4-vector), LC \
 (Levi-Civita tensor), MT (metric tensor), Spinor, SUNDelta, SUNFDelta, SUNF, \
-SP (scalar product)", "synonyms" -> {}, "title" -> "Short introduction", 
-    "titlemodifier" -> "", "windowtitle" -> "Short introduction", "type" -> 
-    "Tutorial", "uri" -> "FeynCalc/tutorial/Intro"}, "SearchTextTranslated" -> 
-  ""},
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+SP (scalar product)", "synonyms" -> {}, "tabletags" -> 
+    DocumentationBuild`Make`Private`tabletaggingrules$298733, "title" -> 
+    "Short introduction", "titlemodifier" -> "", "windowtitle" -> 
+    "Short introduction", "type" -> "Tutorial", "uri" -> 
+    "FeynCalc/tutorial/Intro"}, "SearchTextTranslated" -> ""},
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -983,7 +961,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["TutorialRelatedLinksSection"], 
     CellGroupingRules -> {"SectionGrouping", 30}]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -992,77 +970,74 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "intro"->{
-  Cell[17139, 345, 94, 2, 32, "Text",
+  Cell[17584, 355, 94, 2, 33, "Text",
    CellTags->"intro",
    CellID->1227796187],
-  Cell[18986, 420, 111, 2, 32, "Text",
+  Cell[19431, 430, 111, 2, 33, "Text",
    CellTags->"intro",
    CellID->1006364145],
-  Cell[20750, 489, 559, 21, 54, "Text",
+  Cell[21195, 499, 559, 21, 61, "Text",
    CellTags->"intro",
    CellID->716203363],
-  Cell[21312, 512, 114, 2, 32, "Text",
+  Cell[21757, 522, 114, 2, 33, "Text",
    CellTags->"intro",
    CellID->1566592169],
-  Cell[21429, 516, 470, 13, 39, "SmallText",
+  Cell[21874, 526, 470, 13, 39, "SmallText",
    CellTags->{"intro", "introfoot"},
    CellID->721081683]},
  "introfoot"->{
-  Cell[21429, 516, 470, 13, 39, "SmallText",
+  Cell[21874, 526, 470, 13, 39, "SmallText",
    CellTags->{"intro", "introfoot"},
    CellID->721081683]},
  "Load FeynCalc"->{
-  Cell[21924, 533, 96, 2, 62, "Section",
+  Cell[22369, 543, 96, 2, 63, "Section",
    CellTags->{"Load FeynCalc", "start"},
    CellID->1726202394]},
  "start"->{
-  Cell[21924, 533, 96, 2, 62, "Section",
+  Cell[22369, 543, 96, 2, 63, "Section",
    CellTags->{"Load FeynCalc", "start"},
    CellID->1726202394]},
  "About Extras"->{
-  Cell[24450, 633, 107, 3, 62, "Section",
+  Cell[24895, 643, 107, 3, 63, "Section",
    PageBreakAbove->True,
    CellTags->"About Extras",
    CellID->2100607586],
-  Cell[24560, 638, 494, 9, 112, "Text",
+  Cell[25005, 648, 495, 9, 117, "Text",
    CellTags->"About Extras",
-   CellID->953459903],
-  Cell[25057, 649, 1147, 33, 64, "Text",
-   CellTags->"About Extras",
-   CellID->2108182812]},
+   CellID->953459903]},
  "tarcer"->{
-  Cell[26229, 686, 69, 2, 51, "Subsection",
+  Cell[25525, 661, 69, 2, 52, "Subsection",
    CellTags->"tarcer",
    CellID->906844505],
-  Cell[26825, 710, 121, 4, 27, "Input",
+  Cell[26121, 685, 155, 5, 27, "Input",
    CellTags->"tarcer",
    CellID->843778896]},
  "phi"->{
-  Cell[27231, 729, 64, 2, 51, "Subsection",
+  Cell[26561, 705, 64, 2, 52, "Subsection",
    CellTags->"phi",
    CellID->932055296],
-  Cell[27298, 733, 501, 11, 112, "Text",
+  Cell[26628, 709, 501, 11, 117, "Text",
    CellTags->"phi",
    CellID->1893421836],
-  Cell[27802, 746, 89, 2, 32, "Text",
+  Cell[27132, 722, 89, 2, 33, "Text",
    CellTags->"phi",
    CellID->528666319],
-  Cell[27894, 750, 115, 4, 27, "Input",
+  Cell[27224, 726, 115, 4, 27, "Input",
    CellTags->"phi",
    CellID->798844745],
-  Cell[28012, 756, 146, 5, 32, "Text",
+  Cell[27342, 732, 146, 5, 33, "Text",
    CellTags->"phi",
    CellID->1295431310],
-  Cell[28161, 763, 289, 10, 32, "Text",
+  Cell[27491, 739, 289, 10, 33, "Text",
    CellTags->"phi",
    CellID->1431249758]},
  "Example Calculations"->{
-  Cell[32017, 896, 126, 3, 62, "Section",
+  Cell[31427, 874, 126, 3, 63, "Section",
    PageBreakAbove->True,
    CellTags->{"Example Calculations", "ex"},
    CellID->1007300369]},
  "ex"->{
-  Cell[32017, 896, 126, 3, 62, "Section",
+  Cell[31427, 874, 126, 3, 63, "Section",
    PageBreakAbove->True,
    CellTags->{"Example Calculations", "ex"},
    CellID->1007300369]}
@@ -1070,179 +1045,176 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"intro", 35752, 993},
- {"introfoot", 36213, 1009},
- {"Load FeynCalc", 36339, 1013},
- {"start", 36458, 1017},
- {"About Extras", 36584, 1021},
- {"tarcer", 36904, 1032},
- {"phi", 37091, 1039},
- {"Example Calculations", 37622, 1058},
- {"ex", 37768, 1063}
+ {"intro", 35203, 971},
+ {"introfoot", 35664, 987},
+ {"Load FeynCalc", 35790, 991},
+ {"start", 35909, 995},
+ {"About Extras", 36035, 999},
+ {"tarcer", 36261, 1007},
+ {"phi", 36448, 1014},
+ {"Example Calculations", 36979, 1033},
+ {"ex", 37125, 1038}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[590, 21, 2255, 52, 51, "AnchorBarGrid",
+Cell[590, 21, 2283, 53, 53, "AnchorBarGrid",
  CellID->1],
 Cell[CellGroupData[{
-Cell[2870, 77, 55, 1, 46, "Title",
+Cell[2898, 78, 55, 1, 47, "Title",
  CellID->509267359],
-Cell[2928, 80, 11800, 180, 64, "TutorialJumpBox"],
-Cell[14731, 262, 855, 20, 156, "Text",
+Cell[2956, 81, 12217, 189, 66, "TutorialJumpBox"],
+Cell[15176, 272, 855, 20, 164, "Text",
  CellID->1534169418],
-Cell[15589, 284, 508, 15, 53, "Text",
+Cell[16034, 294, 508, 15, 55, "Text",
  CellID->1157525339],
-Cell[16100, 301, 1036, 42, 52, "Text",
+Cell[16545, 311, 1036, 42, 54, "Text",
  CellID->757206658],
-Cell[17139, 345, 94, 2, 32, "Text",
+Cell[17584, 355, 94, 2, 33, "Text",
  CellTags->"intro",
  CellID->1227796187],
-Cell[17236, 349, 1747, 69, 72, "Text",
+Cell[17681, 359, 1747, 69, 75, "Text",
  CellID->833014432],
-Cell[18986, 420, 111, 2, 32, "Text",
+Cell[19431, 430, 111, 2, 33, "Text",
  CellTags->"intro",
  CellID->1006364145],
-Cell[19100, 424, 741, 30, 32, "Text",
+Cell[19545, 434, 741, 30, 33, "Text",
  CellID->571834673],
-Cell[19844, 456, 177, 4, 52, "Text",
+Cell[20289, 466, 177, 4, 54, "Text",
  CellID->4750988],
 Cell[CellGroupData[{
-Cell[20046, 464, 192, 6, 27, "Input",
+Cell[20491, 474, 192, 6, 27, "Input",
  CellID->1220639322],
-Cell[20241, 472, 254, 7, 36, "Output",
+Cell[20686, 482, 254, 7, 37, "Output",
  CellID->1760930313]
 }, Open  ]],
-Cell[20510, 482, 237, 5, 72, "Text",
+Cell[20955, 492, 237, 5, 75, "Text",
  CellID->1833132382],
-Cell[20750, 489, 559, 21, 54, "Text",
+Cell[21195, 499, 559, 21, 61, "Text",
  CellTags->"intro",
  CellID->716203363],
-Cell[21312, 512, 114, 2, 32, "Text",
+Cell[21757, 522, 114, 2, 33, "Text",
  CellTags->"intro",
  CellID->1566592169],
-Cell[21429, 516, 470, 13, 39, "SmallText",
+Cell[21874, 526, 470, 13, 39, "SmallText",
  CellTags->{"intro", "introfoot"},
  CellID->721081683],
 Cell[CellGroupData[{
-Cell[21924, 533, 96, 2, 62, "Section",
+Cell[22369, 543, 96, 2, 63, "Section",
  CellTags->{"Load FeynCalc", "start"},
  CellID->1726202394],
-Cell[22023, 537, 253, 7, 52, "Text",
+Cell[22468, 547, 253, 7, 54, "Text",
  CellID->846823627],
 Cell[CellGroupData[{
-Cell[22301, 548, 196, 6, 27, "Input",
+Cell[22746, 558, 196, 6, 27, "Input",
  CellID->1006438652],
-Cell[22500, 556, 232, 7, 36, "Output",
+Cell[22945, 566, 232, 7, 37, "Output",
  CellID->205843633]
 }, Open  ]],
-Cell[22747, 566, 390, 11, 72, "Text",
+Cell[23192, 576, 390, 11, 95, "Text",
  CellID->469196418],
-Cell[23140, 579, 484, 14, 91, "Text",
+Cell[23585, 589, 484, 14, 95, "Text",
  CellID->434623157],
-Cell[23627, 595, 173, 6, 32, "Text",
+Cell[24072, 605, 173, 6, 33, "Text",
  CellID->13342743],
-Cell[23803, 603, 135, 4, 27, "Input",
+Cell[24248, 613, 135, 4, 27, "Input",
  CellID->2016141554],
-Cell[23941, 609, 50, 1, 32, "Text",
+Cell[24386, 619, 50, 1, 33, "Text",
  CellID->491195527],
-Cell[23994, 612, 36, 1, 31, "Text",
+Cell[24439, 622, 36, 1, 32, "Text",
  CellID->351638376],
-Cell[24033, 615, 380, 13, 52, "Text",
+Cell[24478, 625, 380, 13, 75, "Text",
  CellID->430968534]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[24450, 633, 107, 3, 62, "Section",
+Cell[24895, 643, 107, 3, 63, "Section",
  PageBreakAbove->True,
  CellTags->"About Extras",
  CellID->2100607586],
-Cell[24560, 638, 494, 9, 112, "Text",
+Cell[25005, 648, 495, 9, 117, "Text",
  CellTags->"About Extras",
  CellID->953459903],
-Cell[25057, 649, 1147, 33, 64, "Text",
- CellTags->"About Extras",
- CellID->2108182812],
 Cell[CellGroupData[{
-Cell[26229, 686, 69, 2, 51, "Subsection",
+Cell[25525, 661, 69, 2, 52, "Subsection",
  CellTags->"tarcer",
  CellID->906844505],
-Cell[26301, 690, 398, 13, 53, "Text",
+Cell[25597, 665, 398, 13, 55, "Text",
  CellID->1972678903],
-Cell[26702, 705, 120, 3, 32, "Text",
+Cell[25998, 680, 120, 3, 33, "Text",
  CellID->1513547103],
-Cell[26825, 710, 121, 4, 27, "Input",
+Cell[26121, 685, 155, 5, 27, "Input",
  CellTags->"tarcer",
  CellID->843778896],
-Cell[26949, 716, 245, 8, 32, "Text",
+Cell[26279, 692, 245, 8, 53, "Text",
  CellID->998781867]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[27231, 729, 64, 2, 51, "Subsection",
+Cell[26561, 705, 64, 2, 52, "Subsection",
  CellTags->"phi",
  CellID->932055296],
-Cell[27298, 733, 501, 11, 112, "Text",
+Cell[26628, 709, 501, 11, 117, "Text",
  CellTags->"phi",
  CellID->1893421836],
-Cell[27802, 746, 89, 2, 32, "Text",
+Cell[27132, 722, 89, 2, 33, "Text",
  CellTags->"phi",
  CellID->528666319],
-Cell[27894, 750, 115, 4, 27, "Input",
+Cell[27224, 726, 115, 4, 27, "Input",
  CellTags->"phi",
  CellID->798844745],
-Cell[28012, 756, 146, 5, 32, "Text",
+Cell[27342, 732, 146, 5, 33, "Text",
  CellTags->"phi",
  CellID->1295431310],
-Cell[28161, 763, 289, 10, 32, "Text",
+Cell[27491, 739, 289, 10, 33, "Text",
  CellTags->"phi",
  CellID->1431249758]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[28487, 778, 51, 1, 51, "Subsection",
+Cell[27817, 754, 51, 1, 52, "Subsection",
  CellID->1026891602],
-Cell[28541, 781, 987, 29, 115, "Text",
+Cell[27871, 757, 987, 29, 120, "Text",
  CellID->1730838623],
-Cell[29531, 812, 343, 6, 92, "Text",
+Cell[28861, 788, 343, 6, 96, "Text",
  CellID->1031127518],
-Cell[29877, 820, 380, 7, 92, "Text",
+Cell[29207, 796, 380, 7, 96, "Text",
  CellID->791617764],
-Cell[30260, 829, 327, 6, 91, "Text",
+Cell[29590, 805, 327, 6, 95, "Text",
  CellID->895418169],
-Cell[30590, 837, 218, 5, 52, "Text",
+Cell[29920, 813, 218, 5, 54, "Text",
  CellID->2088550082],
 Cell[CellGroupData[{
-Cell[30833, 846, 88, 2, 27, "Input",
+Cell[30163, 822, 88, 2, 27, "Input",
  CellID->606741564],
-Cell[30924, 850, 254, 7, 36, "Output",
+Cell[30254, 826, 254, 7, 37, "Output",
  CellID->1253899115]
 }, Open  ]],
-Cell[31193, 860, 141, 6, 32, "Text",
+Cell[30523, 836, 141, 6, 33, "Text",
  CellID->1310937107],
-Cell[31337, 868, 126, 4, 27, "Input",
+Cell[30667, 844, 166, 5, 27, "Input",
  CellID->342627804],
-Cell[31466, 874, 283, 7, 72, "Text",
+Cell[30836, 851, 283, 7, 75, "Text",
  CellID->570125418],
-Cell[31752, 883, 127, 4, 27, "Input",
+Cell[31122, 860, 167, 5, 27, "Input",
  CellID->1900750623],
-Cell[31882, 889, 86, 1, 32, "Text",
+Cell[31292, 867, 86, 1, 33, "Text",
  CellID->1315560355]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[32017, 896, 126, 3, 62, "Section",
+Cell[31427, 874, 126, 3, 63, "Section",
  PageBreakAbove->True,
  CellTags->{"Example Calculations", "ex"},
  CellID->1007300369],
-Cell[32146, 901, 111, 3, 32, "Text",
+Cell[31556, 879, 111, 3, 33, "Text",
  CellID->1268182373],
 Cell[CellGroupData[{
-Cell[32282, 908, 192, 6, 27, "Input",
+Cell[31692, 886, 192, 6, 27, "Input",
  CellID->1877395502],
-Cell[32477, 916, 253, 7, 36, "Output",
+Cell[31887, 894, 253, 7, 37, "Output",
  CellID->727521100]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[32769, 928, 23, 0, 42, "FooterCell"]
+Cell[32179, 906, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

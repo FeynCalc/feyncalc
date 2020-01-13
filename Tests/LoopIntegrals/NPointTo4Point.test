@@ -1,0 +1,518 @@
+
+
+(* :Title: NPointTo4Point.test                                              	    *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for NPointTo4Point	  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`NPointTo4Point =
+({
+{"fcstNPointTo4Point-ID1", "FCClearScalarProducts[]; \n NPointTo4Point[
+FCI@FAD[{q, m0}, {q + p1, 0}, {q + p2, 0}, {q + p3, 0}, {q + p4,
+	0}], q, FCE -> True,FCVerbose->-1]", "(8 FAD[{q, m0}, p1 + q, p2 + q,
+	p3 + q] (m0^2 SPD[p1, p3]^2 SPD[p2, p2] -
+	m0^2 SPD[p1, p3] SPD[p1, p4] SPD[p2, p2] -
+	2 m0^2 SPD[p1, p2] SPD[p1, p3] SPD[p2, p3] +
+	m0^2 SPD[p1, p2] SPD[p1, p4] SPD[p2, p3] +
+	m0^2 SPD[p1, p3] SPD[p1, p4] SPD[p2, p3] +
+	SPD[p1, p3] SPD[p1, p4] SPD[p2, p2] SPD[p2, p3] +
+	m0^2 SPD[p1, p1] SPD[p2, p3]^2 -
+	m0^2 SPD[p1, p4] SPD[p2, p3]^2 -
+	SPD[p1, p1] SPD[p1, p4] SPD[p2, p3]^2 +
+	m0^2 SPD[p1, p2] SPD[p1, p3] SPD[p2, p4] -
+	m0^2 SPD[p1, p3]^2 SPD[p2, p4] -
+	SPD[p1, p3]^2 SPD[p2, p2] SPD[p2, p4] -
+	m0^2 SPD[p1, p1] SPD[p2, p3] SPD[p2, p4] +
+	m0^2 SPD[p1, p3] SPD[p2, p3] SPD[p2, p4] +
+	SPD[p1, p1] SPD[p1, p3] SPD[p2, p3] SPD[p2, p4] +
+	m0^2 SPD[p1, p2]^2 SPD[p3, p3] -
+	m0^2 SPD[p1, p2] SPD[p1, p4] SPD[p3, p3] -
+	m0^2 SPD[p1, p1] SPD[p2, p2] SPD[p3, p3] +
+	m0^2 SPD[p1, p4] SPD[p2, p2] SPD[p3, p3] +
+	SPD[p1, p1] SPD[p1, p4] SPD[p2, p2] SPD[p3, p3] -
+	SPD[p1, p2] SPD[p1, p4] SPD[p2, p2] SPD[p3, p3] -
+	SPD[p1, p3] SPD[p1, p4] SPD[p2, p2] SPD[p3, p3] +
+	SPD[p1, p2] SPD[p1, p4] SPD[p2, p3] SPD[p3, p3] +
+	m0^2 SPD[p1, p1] SPD[p2, p4] SPD[p3, p3] -
+	m0^2 SPD[p1, p2] SPD[p2, p4] SPD[p3, p3] -
+	SPD[p1, p1] SPD[p1, p2] SPD[p2, p4] SPD[p3, p3] +
+	SPD[p1, p2] SPD[p1, p3] SPD[p2, p4] SPD[p3, p3] +
+	SPD[p1, p1] SPD[p2, p2] SPD[p2, p4] SPD[p3, p3] -
+	SPD[p1, p1] SPD[p2, p3] SPD[p2, p4] SPD[p3, p3] -
+	m0^2 SPD[p1, p2]^2 SPD[p3, p4] +
+	m0^2 SPD[p1, p2] SPD[p1, p3] SPD[p3, p4] +
+	m0^2 SPD[p1, p1] SPD[p2, p2] SPD[p3, p4] -
+	m0^2 SPD[p1, p3] SPD[p2, p2] SPD[p3, p4] -
+	SPD[p1, p1] SPD[p1, p3] SPD[p2, p2] SPD[p3, p4] +
+	SPD[p1, p2] SPD[p1, p3] SPD[p2, p2] SPD[p3, p4] -
+	m0^2 SPD[p1, p1] SPD[p2, p3] SPD[p3, p4] +
+	m0^2 SPD[p1, p2] SPD[p2, p3] SPD[p3, p4] +
+	SPD[p1, p1] SPD[p1, p2] SPD[p2, p3] SPD[p3, p4] -
+	SPD[p1, p1] SPD[p2, p2] SPD[p2, p3] SPD[p3, p4] -
+	SPD[p1, p2]^2 SPD[p3, p3] SPD[p3, p4] +
+	SPD[p1, p1] SPD[p2, p2] SPD[p3, p3] SPD[p3, p4] +
+	SPD[p1, p3]^2 SPD[p2, p2] SPD[p4, p4] -
+	2 SPD[p1, p2] SPD[p1, p3] SPD[p2, p3] SPD[p4, p4] +
+	SPD[p1, p1] SPD[p2, p3]^2 SPD[p4, p4] +
+	SPD[p1, p2]^2 SPD[p3, p3] SPD[p4, p4] -
+	SPD[p1, p1] SPD[p2, p2] SPD[p3, p3] SPD[p4, p4]) -
+8 FAD[{q, m0}, p1 + q, p2 + q,
+	p4 + q] (m0^2 SPD[p1, p3] SPD[p1, p4] SPD[p2, p2] -
+	m0^2 SPD[p1, p4]^2 SPD[p2, p2] -
+	m0^2 SPD[p1, p2] SPD[p1, p4] SPD[p2, p3] +
+	m0^2 SPD[p1, p4]^2 SPD[p2, p3] +
+	SPD[p1, p4]^2 SPD[p2, p2] SPD[p2, p3] -
+	m0^2 SPD[p1, p2] SPD[p1, p3] SPD[p2, p4] +
+	2 m0^2 SPD[p1, p2] SPD[p1, p4] SPD[p2, p4] -
+	m0^2 SPD[p1, p3] SPD[p1, p4] SPD[p2, p4] -
+	SPD[p1, p3] SPD[p1, p4] SPD[p2, p2] SPD[p2, p4] +
+	m0^2 SPD[p1, p1] SPD[p2, p3] SPD[p2, p4] -
+	m0^2 SPD[p1, p4] SPD[p2, p3] SPD[p2, p4] -
+	SPD[p1, p1] SPD[p1, p4] SPD[p2, p3] SPD[p2, p4] -
+	m0^2 SPD[p1, p1] SPD[p2, p4]^2 +
+	m0^2 SPD[p1, p3] SPD[p2, p4]^2 +
+	SPD[p1, p1] SPD[p1, p3] SPD[p2, p4]^2 -
+	SPD[p1, p4]^2 SPD[p2, p2] SPD[p3, p3] +
+	2 SPD[p1, p2] SPD[p1, p4] SPD[p2, p4] SPD[p3, p3] -
+	SPD[p1, p1] SPD[p2, p4]^2 SPD[p3, p3] +
+	m0^2 SPD[p1, p2]^2 SPD[p3, p4] -
+	m0^2 SPD[p1, p2] SPD[p1, p4] SPD[p3, p4] -
+	m0^2 SPD[p1, p1] SPD[p2, p2] SPD[p3, p4] +
+	m0^2 SPD[p1, p4] SPD[p2, p2] SPD[p3, p4] +
+	SPD[p1, p1] SPD[p1, p4] SPD[p2, p2] SPD[p3, p4] -
+	SPD[p1, p2] SPD[p1, p4] SPD[p2, p2] SPD[p3, p4] +
+	m0^2 SPD[p1, p1] SPD[p2, p4] SPD[p3, p4] -
+	m0^2 SPD[p1, p2] SPD[p2, p4] SPD[p3, p4] -
+	SPD[p1, p1] SPD[p1, p2] SPD[p2, p4] SPD[p3, p4] +
+	SPD[p1, p1] SPD[p2, p2] SPD[p2, p4] SPD[p3, p4] -
+	m0^2 SPD[p1, p2]^2 SPD[p4, p4] +
+	m0^2 SPD[p1, p2] SPD[p1, p3] SPD[p4, p4] +
+	m0^2 SPD[p1, p1] SPD[p2, p2] SPD[p4, p4] -
+	m0^2 SPD[p1, p3] SPD[p2, p2] SPD[p4, p4] -
+	SPD[p1, p1] SPD[p1, p3] SPD[p2, p2] SPD[p4, p4] +
+	SPD[p1, p2] SPD[p1, p3] SPD[p2, p2] SPD[p4, p4] +
+	SPD[p1, p3] SPD[p1, p4] SPD[p2, p2] SPD[p4, p4] -
+	m0^2 SPD[p1, p1] SPD[p2, p3] SPD[p4, p4] +
+	m0^2 SPD[p1, p2] SPD[p2, p3] SPD[p4, p4] +
+	SPD[p1, p1] SPD[p1, p2] SPD[p2, p3] SPD[p4, p4] -
+	SPD[p1, p2] SPD[p1, p4] SPD[p2, p3] SPD[p4, p4] -
+	SPD[p1, p1] SPD[p2, p2] SPD[p2, p3] SPD[p4, p4] -
+	SPD[p1, p2] SPD[p1, p3] SPD[p2, p4] SPD[p4, p4] +
+	SPD[p1, p1] SPD[p2, p3] SPD[p2, p4] SPD[p4, p4] -
+	SPD[p1, p2]^2 SPD[p3, p3] SPD[p4, p4] +
+	SPD[p1, p1] SPD[p2, p2] SPD[p3, p3] SPD[p4, p4] +
+	SPD[p1, p2]^2 SPD[p3, p4] SPD[p4, p4] -
+	SPD[p1, p1] SPD[p2, p2] SPD[p3, p4] SPD[p4, p4]) +
+8 FAD[{q, m0}, p1 + q, p3 + q,
+	p4 + q] (m0^2 SPD[p1, p3] SPD[p1, p4] SPD[p2, p3] -
+	m0^2 SPD[p1, p4]^2 SPD[p2, p3] -
+	m0^2 SPD[p1, p3]^2 SPD[p2, p4] +
+	m0^2 SPD[p1, p3] SPD[p1, p4] SPD[p2, p4] -
+	m0^2 SPD[p1, p2] SPD[p1, p4] SPD[p3, p3] +
+	m0^2 SPD[p1, p4]^2 SPD[p3, p3] +
+	SPD[p1, p4]^2 SPD[p2, p2] SPD[p3, p3] -
+	SPD[p1, p4]^2 SPD[p2, p3] SPD[p3, p3] +
+	m0^2 SPD[p1, p1] SPD[p2, p4] SPD[p3, p3] -
+	m0^2 SPD[p1, p4] SPD[p2, p4] SPD[p3, p3] -
+	SPD[p1, p1] SPD[p1, p4] SPD[p2, p4] SPD[p3, p3] +
+	SPD[p1, p3] SPD[p1, p4] SPD[p2, p4] SPD[p3, p3] +
+	m0^2 SPD[p1, p2] SPD[p1, p3] SPD[p3, p4] +
+	m0^2 SPD[p1, p2] SPD[p1, p4] SPD[p3, p4] -
+	2 m0^2 SPD[p1, p3] SPD[p1, p4] SPD[p3, p4] -
+	2 SPD[p1, p3] SPD[p1, p4] SPD[p2, p2] SPD[p3, p4] -
+	m0^2 SPD[p1, p1] SPD[p2, p3] SPD[p3, p4] +
+	m0^2 SPD[p1, p4] SPD[p2, p3] SPD[p3, p4] +
+	SPD[p1, p1] SPD[p1, p4] SPD[p2, p3] SPD[p3, p4] -
+	m0^2 SPD[p1, p1] SPD[p2, p4] SPD[p3, p4] +
+	m0^2 SPD[p1, p3] SPD[p2, p4] SPD[p3, p4] +
+	SPD[p1, p1] SPD[p1, p3] SPD[p2, p4] SPD[p3, p4] +
+	SPD[p1, p2] SPD[p1, p4] SPD[p3, p3] SPD[p3, p4] -
+	SPD[p1, p1] SPD[p2, p4] SPD[p3, p3] SPD[p3, p4] +
+	m0^2 SPD[p1, p1] SPD[p3, p4]^2 -
+	m0^2 SPD[p1, p2] SPD[p3, p4]^2 -
+	SPD[p1, p1] SPD[p1, p2] SPD[p3, p4]^2 +
+	SPD[p1, p1] SPD[p2, p2] SPD[p3, p4]^2 -
+	m0^2 SPD[p1, p2] SPD[p1, p3] SPD[p4, p4] +
+	m0^2 SPD[p1, p3]^2 SPD[p4, p4] +
+	SPD[p1, p3]^2 SPD[p2, p2] SPD[p4, p4] +
+	m0^2 SPD[p1, p1] SPD[p2, p3] SPD[p4, p4] -
+	m0^2 SPD[p1, p3] SPD[p2, p3] SPD[p4, p4] -
+	SPD[p1, p1] SPD[p1, p3] SPD[p2, p3] SPD[p4, p4] +
+	SPD[p1, p3] SPD[p1, p4] SPD[p2, p3] SPD[p4, p4] -
+	SPD[p1, p3]^2 SPD[p2, p4] SPD[p4, p4] -
+	m0^2 SPD[p1, p1] SPD[p3, p3] SPD[p4, p4] +
+	m0^2 SPD[p1, p2] SPD[p3, p3] SPD[p4, p4] +
+	SPD[p1, p1] SPD[p1, p2] SPD[p3, p3] SPD[p4, p4] -
+	SPD[p1, p2] SPD[p1, p3] SPD[p3, p3] SPD[p4, p4] -
+	SPD[p1, p2] SPD[p1, p4] SPD[p3, p3] SPD[p4, p4] -
+	SPD[p1, p1] SPD[p2, p2] SPD[p3, p3] SPD[p4, p4] +
+	SPD[p1, p1] SPD[p2, p3] SPD[p3, p3] SPD[p4, p4] +
+	SPD[p1, p1] SPD[p2, p4] SPD[p3, p3] SPD[p4, p4] +
+	SPD[p1, p2] SPD[p1, p3] SPD[p3, p4] SPD[p4, p4] -
+	SPD[p1, p1] SPD[p2, p3] SPD[p3, p4] SPD[p4, p4]) -
+8 FAD[{q, m0}, p2 + q, p3 + q,
+	p4 + q] (m0^2 SPD[p1, p4] SPD[p2, p3]^2 -
+	m0^2 SPD[p1, p3] SPD[p2, p3] SPD[p2, p4] -
+	m0^2 SPD[p1, p4] SPD[p2, p3] SPD[p2, p4] +
+	m0^2 SPD[p1, p3] SPD[p2, p4]^2 -
+	m0^2 SPD[p1, p4] SPD[p2, p2] SPD[p3, p3] +
+	m0^2 SPD[p1, p2] SPD[p2, p4] SPD[p3, p3] +
+	m0^2 SPD[p1, p4] SPD[p2, p4] SPD[p3, p3] +
+	SPD[p1, p4] SPD[p2, p2] SPD[p2, p4] SPD[p3, p3] -
+	SPD[p1, p4] SPD[p2, p3] SPD[p2, p4] SPD[p3, p3] -
+	m0^2 SPD[p2, p4]^2 SPD[p3, p3] -
+	SPD[p1, p1] SPD[p2, p4]^2 SPD[p3, p3] +
+	SPD[p1, p3] SPD[p2, p4]^2 SPD[p3, p3] +
+	m0^2 SPD[p1, p3] SPD[p2, p2] SPD[p3, p4] +
+	m0^2 SPD[p1, p4] SPD[p2, p2] SPD[p3, p4] -
+	m0^2 SPD[p1, p2] SPD[p2, p3] SPD[p3, p4] -
+	m0^2 SPD[p1, p4] SPD[p2, p3] SPD[p3, p4] -
+	SPD[p1, p4] SPD[p2, p2] SPD[p2, p3] SPD[p3, p4] -
+	m0^2 SPD[p1, p2] SPD[p2, p4] SPD[p3, p4] -
+	m0^2 SPD[p1, p3] SPD[p2, p4] SPD[p3, p4] -
+	SPD[p1, p3] SPD[p2, p2] SPD[p2, p4] SPD[p3, p4] +
+	2 m0^2 SPD[p2, p3] SPD[p2, p4] SPD[p3, p4] +
+	2 SPD[p1, p1] SPD[p2, p3] SPD[p2, p4] SPD[p3, p4] +
+	SPD[p1, p4] SPD[p2, p2] SPD[p3, p3] SPD[p3, p4] -
+	SPD[p1, p2] SPD[p2, p4] SPD[p3, p3] SPD[p3, p4] +
+	m0^2 SPD[p1, p2] SPD[p3, p4]^2 -
+	m0^2 SPD[p2, p2] SPD[p3, p4]^2 -
+	SPD[p1, p1] SPD[p2, p2] SPD[p3, p4]^2 +
+	SPD[p1, p2] SPD[p2, p2] SPD[p3, p4]^2 -
+	m0^2 SPD[p1, p3] SPD[p2, p2] SPD[p4, p4] +
+	m0^2 SPD[p1, p2] SPD[p2, p3] SPD[p4, p4] +
+	m0^2 SPD[p1, p3] SPD[p2, p3] SPD[p4, p4] +
+	SPD[p1, p3] SPD[p2, p2] SPD[p2, p3] SPD[p4, p4] -
+	m0^2 SPD[p2, p3]^2 SPD[p4, p4] -
+	SPD[p1, p1] SPD[p2, p3]^2 SPD[p4, p4] +
+	SPD[p1, p4] SPD[p2, p3]^2 SPD[p4, p4] -
+	SPD[p1, p3] SPD[p2, p3] SPD[p2, p4] SPD[p4, p4] -
+	m0^2 SPD[p1, p2] SPD[p3, p3] SPD[p4, p4] +
+	m0^2 SPD[p2, p2] SPD[p3, p3] SPD[p4, p4] +
+	SPD[p1, p1] SPD[p2, p2] SPD[p3, p3] SPD[p4, p4] -
+	SPD[p1, p2] SPD[p2, p2] SPD[p3, p3] SPD[p4, p4] -
+	SPD[p1, p3] SPD[p2, p2] SPD[p3, p3] SPD[p4, p4] -
+	SPD[p1, p4] SPD[p2, p2] SPD[p3, p3] SPD[p4, p4] +
+	SPD[p1, p2] SPD[p2, p3] SPD[p3, p3] SPD[p4, p4] +
+	SPD[p1, p2] SPD[p2, p4] SPD[p3, p3] SPD[p4, p4] +
+	SPD[p1, p3] SPD[p2, p2] SPD[p3, p4] SPD[p4, p4] -
+	SPD[p1, p2] SPD[p2, p3] SPD[p3, p4] SPD[p4, p4]) -
+8 FAD[p1 + q, p2 + q, p3 + q,
+	p4 + q] (m0^2 SPD[p1, p3]^2 SPD[p2, p2] -
+	2 m0^2 SPD[p1, p3] SPD[p1, p4] SPD[p2, p2] +
+	m0^2 SPD[p1, p4]^2 SPD[p2, p2] -
+	2 m0^2 SPD[p1, p2] SPD[p1, p3] SPD[p2, p3] +
+	2 m0^2 SPD[p1, p2] SPD[p1, p4] SPD[p2, p3] +
+	2 m0^2 SPD[p1, p3] SPD[p1, p4] SPD[p2, p3] -
+	2 m0^2 SPD[p1, p4]^2 SPD[p2, p3] +
+	SPD[p1, p3] SPD[p1, p4] SPD[p2, p2] SPD[p2, p3] -
+	SPD[p1, p4]^2 SPD[p2, p2] SPD[p2, p3] +
+	m0^2 SPD[p1, p1] SPD[p2, p3]^2 -
+	2 m0^2 SPD[p1, p4] SPD[p2, p3]^2 -
+	SPD[p1, p1] SPD[p1, p4] SPD[p2, p3]^2 +
+	2 SPD[p1, p4]^2 SPD[p2, p3]^2 +
+	2 m0^2 SPD[p1, p2] SPD[p1, p3] SPD[p2, p4] -
+	2 m0^2 SPD[p1, p3]^2 SPD[p2, p4] -
+	2 m0^2 SPD[p1, p2] SPD[p1, p4] SPD[p2, p4] +
+	2 m0^2 SPD[p1, p3] SPD[p1, p4] SPD[p2, p4] -
+	SPD[p1, p3]^2 SPD[p2, p2] SPD[p2, p4] +
+	SPD[p1, p3] SPD[p1, p4] SPD[p2, p2] SPD[p2, p4] -
+	2 m0^2 SPD[p1, p1] SPD[p2, p3] SPD[p2, p4] +
+	2 m0^2 SPD[p1, p3] SPD[p2, p3] SPD[p2, p4] +
+	SPD[p1, p1] SPD[p1, p3] SPD[p2, p3] SPD[p2, p4] +
+	2 m0^2 SPD[p1, p4] SPD[p2, p3] SPD[p2, p4] +
+	SPD[p1, p1] SPD[p1, p4] SPD[p2, p3] SPD[p2, p4] -
+	4 SPD[p1, p3] SPD[p1, p4] SPD[p2, p3] SPD[p2, p4] +
+	m0^2 SPD[p1, p1] SPD[p2, p4]^2 -
+	2 m0^2 SPD[p1, p3] SPD[p2, p4]^2 -
+	SPD[p1, p1] SPD[p1, p3] SPD[p2, p4]^2 +
+	2 SPD[p1, p3]^2 SPD[p2, p4]^2 +
+	m0^2 SPD[p1, p2]^2 SPD[p3, p3] -
+	2 m0^2 SPD[p1, p2] SPD[p1, p4] SPD[p3, p3] +
+	m0^2 SPD[p1, p4]^2 SPD[p3, p3] -
+	m0^2 SPD[p1, p1] SPD[p2, p2] SPD[p3, p3] +
+	2 m0^2 SPD[p1, p4] SPD[p2, p2] SPD[p3, p3] +
+	SPD[p1, p1] SPD[p1, p4] SPD[p2, p2] SPD[p3, p3] -
+	SPD[p1, p2] SPD[p1, p4] SPD[p2, p2] SPD[p3, p3] -
+	SPD[p1, p3] SPD[p1, p4] SPD[p2, p2] SPD[p3, p3] +
+	SPD[p1, p2] SPD[p1, p4] SPD[p2, p3] SPD[p3, p3] -
+	SPD[p1, p4]^2 SPD[p2, p3] SPD[p3, p3] +
+	2 m0^2 SPD[p1, p1] SPD[p2, p4] SPD[p3, p3] -
+	2 m0^2 SPD[p1, p2] SPD[p2, p4] SPD[p3, p3] -
+	SPD[p1, p1] SPD[p1, p2] SPD[p2, p4] SPD[p3, p3] +
+	SPD[p1, p2] SPD[p1, p3] SPD[p2, p4] SPD[p3, p3] -
+	2 m0^2 SPD[p1, p4] SPD[p2, p4] SPD[p3, p3] -
+	SPD[p1, p1] SPD[p1, p4] SPD[p2, p4] SPD[p3, p3] +
+	2 SPD[p1, p2] SPD[p1, p4] SPD[p2, p4] SPD[p3, p3] +
+	SPD[p1, p3] SPD[p1, p4] SPD[p2, p4] SPD[p3, p3] +
+	SPD[p1, p1] SPD[p2, p2] SPD[p2, p4] SPD[p3, p3] -
+	SPD[p1, p4] SPD[p2, p2] SPD[p2, p4] SPD[p3, p3] -
+	SPD[p1, p1] SPD[p2, p3] SPD[p2, p4] SPD[p3, p3] +
+	SPD[p1, p4] SPD[p2, p3] SPD[p2, p4] SPD[p3, p3] +
+	m0^2 SPD[p2, p4]^2 SPD[p3, p3] -
+	SPD[p1, p3] SPD[p2, p4]^2 SPD[p3, p3] -
+	2 m0^2 SPD[p1, p2]^2 SPD[p3, p4] +
+	2 m0^2 SPD[p1, p2] SPD[p1, p3] SPD[p3, p4] +
+	2 m0^2 SPD[p1, p2] SPD[p1, p4] SPD[p3, p4] -
+	2 m0^2 SPD[p1, p3] SPD[p1, p4] SPD[p3, p4] +
+	2 m0^2 SPD[p1, p1] SPD[p2, p2] SPD[p3, p4] -
+	2 m0^2 SPD[p1, p3] SPD[p2, p2] SPD[p3, p4] -
+	SPD[p1, p1] SPD[p1, p3] SPD[p2, p2] SPD[p3, p4] +
+	SPD[p1, p2] SPD[p1, p3] SPD[p2, p2] SPD[p3, p4] -
+	2 m0^2 SPD[p1, p4] SPD[p2, p2] SPD[p3, p4] -
+	SPD[p1, p1] SPD[p1, p4] SPD[p2, p2] SPD[p3, p4] +
+	SPD[p1, p2] SPD[p1, p4] SPD[p2, p2] SPD[p3, p4] +
+	2 SPD[p1, p3] SPD[p1, p4] SPD[p2, p2] SPD[p3, p4] -
+	2 m0^2 SPD[p1, p1] SPD[p2, p3] SPD[p3, p4] +
+	2 m0^2 SPD[p1, p2] SPD[p2, p3] SPD[p3, p4] +
+	SPD[p1, p1] SPD[p1, p2] SPD[p2, p3] SPD[p3, p4] +
+	2 m0^2 SPD[p1, p4] SPD[p2, p3] SPD[p3, p4] +
+	SPD[p1, p1] SPD[p1, p4] SPD[p2, p3] SPD[p3, p4] -
+	4 SPD[p1, p2] SPD[p1, p4] SPD[p2, p3] SPD[p3, p4] -
+	SPD[p1, p1] SPD[p2, p2] SPD[p2, p3] SPD[p3, p4] +
+	SPD[p1, p4] SPD[p2, p2] SPD[p2, p3] SPD[p3, p4] -
+	2 m0^2 SPD[p1, p1] SPD[p2, p4] SPD[p3, p4] +
+	2 m0^2 SPD[p1, p2] SPD[p2, p4] SPD[p3, p4] +
+	SPD[p1, p1] SPD[p1, p2] SPD[p2, p4] SPD[p3, p4] +
+	2 m0^2 SPD[p1, p3] SPD[p2, p4] SPD[p3, p4] +
+	SPD[p1, p1] SPD[p1, p3] SPD[p2, p4] SPD[p3, p4] -
+	4 SPD[p1, p2] SPD[p1, p3] SPD[p2, p4] SPD[p3, p4] -
+	SPD[p1, p1] SPD[p2, p2] SPD[p2, p4] SPD[p3, p4] +
+	SPD[p1, p3] SPD[p2, p2] SPD[p2, p4] SPD[p3, p4] -
+	2 m0^2 SPD[p2, p3] SPD[p2, p4] SPD[p3, p4] +
+	2 SPD[p1, p1] SPD[p2, p3] SPD[p2, p4] SPD[p3, p4] -
+	SPD[p1, p2]^2 SPD[p3, p3] SPD[p3, p4] +
+	SPD[p1, p2] SPD[p1, p4] SPD[p3, p3] SPD[p3, p4] +
+	SPD[p1, p1] SPD[p2, p2] SPD[p3, p3] SPD[p3, p4] -
+	SPD[p1, p4] SPD[p2, p2] SPD[p3, p3] SPD[p3, p4] -
+	SPD[p1, p1] SPD[p2, p4] SPD[p3, p3] SPD[p3, p4] +
+	SPD[p1, p2] SPD[p2, p4] SPD[p3, p3] SPD[p3, p4] +
+	m0^2 SPD[p1, p1] SPD[p3, p4]^2 -
+	2 m0^2 SPD[p1, p2] SPD[p3, p4]^2 -
+	SPD[p1, p1] SPD[p1, p2] SPD[p3, p4]^2 +
+	2 SPD[p1, p2]^2 SPD[p3, p4]^2 + m0^2 SPD[p2, p2] SPD[p3, p4]^2 -
+	SPD[p1, p2] SPD[p2, p2] SPD[p3, p4]^2 +
+	m0^2 SPD[p1, p2]^2 SPD[p4, p4] -
+	2 m0^2 SPD[p1, p2] SPD[p1, p3] SPD[p4, p4] +
+	m0^2 SPD[p1, p3]^2 SPD[p4, p4] -
+	m0^2 SPD[p1, p1] SPD[p2, p2] SPD[p4, p4] +
+	2 m0^2 SPD[p1, p3] SPD[p2, p2] SPD[p4, p4] +
+	SPD[p1, p1] SPD[p1, p3] SPD[p2, p2] SPD[p4, p4] -
+	SPD[p1, p2] SPD[p1, p3] SPD[p2, p2] SPD[p4, p4] -
+	SPD[p1, p3] SPD[p1, p4] SPD[p2, p2] SPD[p4, p4] +
+	2 m0^2 SPD[p1, p1] SPD[p2, p3] SPD[p4, p4] -
+	2 m0^2 SPD[p1, p2] SPD[p2, p3] SPD[p4, p4] -
+	SPD[p1, p1] SPD[p1, p2] SPD[p2, p3] SPD[p4, p4] -
+	2 m0^2 SPD[p1, p3] SPD[p2, p3] SPD[p4, p4] -
+	SPD[p1, p1] SPD[p1, p3] SPD[p2, p3] SPD[p4, p4] +
+	2 SPD[p1, p2] SPD[p1, p3] SPD[p2, p3] SPD[p4, p4] +
+	SPD[p1, p2] SPD[p1, p4] SPD[p2, p3] SPD[p4, p4] +
+	SPD[p1, p3] SPD[p1, p4] SPD[p2, p3] SPD[p4, p4] +
+	SPD[p1, p1] SPD[p2, p2] SPD[p2, p3] SPD[p4, p4] -
+	SPD[p1, p3] SPD[p2, p2] SPD[p2, p3] SPD[p4, p4] +
+	m0^2 SPD[p2, p3]^2 SPD[p4, p4] -
+	SPD[p1, p4] SPD[p2, p3]^2 SPD[p4, p4] +
+	SPD[p1, p2] SPD[p1, p3] SPD[p2, p4] SPD[p4, p4] -
+	SPD[p1, p3]^2 SPD[p2, p4] SPD[p4, p4] -
+	SPD[p1, p1] SPD[p2, p3] SPD[p2, p4] SPD[p4, p4] +
+	SPD[p1, p3] SPD[p2, p3] SPD[p2, p4] SPD[p4, p4] -
+	m0^2 SPD[p1, p1] SPD[p3, p3] SPD[p4, p4] +
+	2 m0^2 SPD[p1, p2] SPD[p3, p3] SPD[p4, p4] +
+	SPD[p1, p1] SPD[p1, p2] SPD[p3, p3] SPD[p4, p4] -
+	SPD[p1, p2] SPD[p1, p3] SPD[p3, p3] SPD[p4, p4] -
+	SPD[p1, p2] SPD[p1, p4] SPD[p3, p3] SPD[p4, p4] -
+	m0^2 SPD[p2, p2] SPD[p3, p3] SPD[p4, p4] -
+	2 SPD[p1, p1] SPD[p2, p2] SPD[p3, p3] SPD[p4, p4] +
+	SPD[p1, p2] SPD[p2, p2] SPD[p3, p3] SPD[p4, p4] +
+	SPD[p1, p3] SPD[p2, p2] SPD[p3, p3] SPD[p4, p4] +
+	SPD[p1, p4] SPD[p2, p2] SPD[p3, p3] SPD[p4, p4] +
+	SPD[p1, p1] SPD[p2, p3] SPD[p3, p3] SPD[p4, p4] -
+	SPD[p1, p2] SPD[p2, p3] SPD[p3, p3] SPD[p4, p4] +
+	SPD[p1, p1] SPD[p2, p4] SPD[p3, p3] SPD[p4, p4] -
+	SPD[p1, p2] SPD[p2, p4] SPD[p3, p3] SPD[p4, p4] -
+	SPD[p1, p2]^2 SPD[p3, p4] SPD[p4, p4] +
+	SPD[p1, p2] SPD[p1, p3] SPD[p3, p4] SPD[p4, p4] +
+	SPD[p1, p1] SPD[p2, p2] SPD[p3, p4] SPD[p4, p4] -
+	SPD[p1, p3] SPD[p2, p2] SPD[p3, p4] SPD[p4, p4] -
+	SPD[p1, p1] SPD[p2, p3] SPD[p3, p4] SPD[p4, p4] +
+	SPD[p1, p2] SPD[p2, p3] SPD[p3, p4] SPD[p4,
+		p4]))/(-(-SPD[p1, p1] + 2 SPD[p1, p4] -
+	SPD[p4, p4]) ((-2 m0^4 SPD[p1, p2] + 2 m0^4 SPD[p1, p3] +
+		2 m0^4 SPD[p2, p2] + 2 m0^2 SPD[p1, p1] SPD[p2, p2] -
+		2 m0^2 SPD[p1, p2] SPD[p2, p2] -
+		4 m0^2 SPD[p1, p3] SPD[p2, p2] +
+		2 SPD[p1, p3] SPD[p2, p2]^2 - 2 m0^4 SPD[p2, p3] -
+		2 m0^2 SPD[p1, p1] SPD[p2, p3] +
+		8 m0^2 SPD[p1, p2] SPD[p2, p3] -
+		2 m0^2 SPD[p2, p2] SPD[p2, p3] -
+		2 SPD[p1, p1] SPD[p2, p2] SPD[p2, p3] -
+		2 m0^2 SPD[p1, p2] SPD[p3, p3] +
+		2 m0^2 SPD[p2, p2] SPD[p3, p3] +
+		2 SPD[p1, p1] SPD[p2, p2] SPD[p3, p3] -
+		2 SPD[p1, p2] SPD[p2, p2] SPD[p3, p3]) (-SPD[p3, p3] +
+		2 SPD[p3, p4] - SPD[p4, p4]) + (-SPD[p2, p2] +
+		2 SPD[p2, p3] - SPD[p3, p3]) (-2 m0^4 SPD[p1, p3] +
+		2 m0^4 SPD[p1, p4] - 2 m0^2 SPD[p1, p3] SPD[p2, p2] +
+		2 m0^2 SPD[p1, p4] SPD[p2, p2] + 2 m0^4 SPD[p2, p3] +
+		2 m0^2 SPD[p1, p1] SPD[p2, p3] -
+		8 m0^2 SPD[p1, p4] SPD[p2, p3] - 2 m0^4 SPD[p2, p4] -
+		2 m0^2 SPD[p1, p1] SPD[p2, p4] +
+		8 m0^2 SPD[p1, p3] SPD[p2, p4] +
+		2 m0^2 SPD[p1, p4] SPD[p3, p3] +
+		2 SPD[p1, p4] SPD[p2, p2] SPD[p3, p3] -
+		2 m0^2 SPD[p2, p4] SPD[p3, p3] -
+		2 SPD[p1, p1] SPD[p2, p4] SPD[p3, p3] -
+		2 m0^2 SPD[p1, p3] SPD[p4, p4] -
+		2 SPD[p1, p3] SPD[p2, p2] SPD[p4, p4] +
+		2 m0^2 SPD[p2, p3] SPD[p4, p4] +
+		2 SPD[p1, p1] SPD[p2, p3] SPD[p4, p4]) - (m0^2 -
+		SPD[p3, p3]) ((-2 m0^2 SPD[p1, p2] + 2 m0^2 SPD[p1, p3] +
+			m0^2 SPD[p2, p2] + SPD[p1, p1] SPD[p2, p2] -
+			2 SPD[p1, p3] SPD[p2, p2] - m0^2 SPD[p3, p3] -
+			SPD[p1, p1] SPD[p3, p3] +
+			2 SPD[p1, p2] SPD[p3, p3]) (-SPD[p2, p2] + 2 SPD[p2, p4] -
+			SPD[p4, p4]) - (-SPD[p2, p2] + 2 SPD[p2, p3] -
+			SPD[p3, p3]) (-2 m0^2 SPD[p1, p2] + 2 m0^2 SPD[p1, p4] +
+			m0^2 SPD[p2, p2] + SPD[p1, p1] SPD[p2, p2] -
+			2 SPD[p1, p4] SPD[p2, p2] - m0^2 SPD[p4, p4] -
+			SPD[p1, p1] SPD[p4, p4] +
+			2 SPD[p1, p2] SPD[p4, p4]))) + (-SPD[p2, p2] +
+	2 SPD[p2, p4] -
+	SPD[p4, p4]) ((-2 m0^4 SPD[p1, p1] + 2 m0^4 SPD[p1, p2] +
+		2 m0^2 SPD[p1, p1] SPD[p1, p2] + 2 m0^4 SPD[p1, p3] +
+		2 m0^2 SPD[p1, p1] SPD[p1, p3] -
+		8 m0^2 SPD[p1, p2] SPD[p1, p3] -
+		2 m0^2 SPD[p1, p1] SPD[p2, p2] +
+		2 m0^2 SPD[p1, p3] SPD[p2, p2] +
+		2 SPD[p1, p1] SPD[p1, p3] SPD[p2, p2] - 2 m0^4 SPD[p2, p3] +
+		4 m0^2 SPD[p1, p1] SPD[p2, p3] -
+		2 SPD[p1, p1]^2 SPD[p2, p3] -
+		2 m0^2 SPD[p1, p1] SPD[p3, p3] +
+		2 m0^2 SPD[p1, p2] SPD[p3, p3] +
+		2 SPD[p1, p1] SPD[p1, p2] SPD[p3, p3] -
+		2 SPD[p1, p1] SPD[p2, p2] SPD[p3, p3]) (-SPD[p3, p3] +
+		2 SPD[p3, p4] - SPD[p4, p4]) + (-SPD[p1, p1] +
+		2 SPD[p1, p3] - SPD[p3, p3]) (-2 m0^4 SPD[p1, p3] +
+		2 m0^4 SPD[p1, p4] - 2 m0^2 SPD[p1, p3] SPD[p2, p2] +
+		2 m0^2 SPD[p1, p4] SPD[p2, p2] + 2 m0^4 SPD[p2, p3] +
+		2 m0^2 SPD[p1, p1] SPD[p2, p3] -
+		8 m0^2 SPD[p1, p4] SPD[p2, p3] - 2 m0^4 SPD[p2, p4] -
+		2 m0^2 SPD[p1, p1] SPD[p2, p4] +
+		8 m0^2 SPD[p1, p3] SPD[p2, p4] +
+		2 m0^2 SPD[p1, p4] SPD[p3, p3] +
+		2 SPD[p1, p4] SPD[p2, p2] SPD[p3, p3] -
+		2 m0^2 SPD[p2, p4] SPD[p3, p3] -
+		2 SPD[p1, p1] SPD[p2, p4] SPD[p3, p3] -
+		2 m0^2 SPD[p1, p3] SPD[p4, p4] -
+		2 SPD[p1, p3] SPD[p2, p2] SPD[p4, p4] +
+		2 m0^2 SPD[p2, p3] SPD[p4, p4] +
+		2 SPD[p1, p1] SPD[p2, p3] SPD[p4, p4]) - (m0^2 -
+		SPD[p3, p3]) (-(m0^2 SPD[p1, p1] - 2 m0^2 SPD[p1, p2] +
+			SPD[p1, p1] SPD[p2, p2] + 2 m0^2 SPD[p2, p3] -
+			2 SPD[p1, p1] SPD[p2, p3] - m0^2 SPD[p3, p3] +
+			2 SPD[p1, p2] SPD[p3, p3] -
+			SPD[p2, p2] SPD[p3, p3]) (-SPD[p1, p1] + 2 SPD[p1, p4] -
+			SPD[p4, p4]) + (-SPD[p1, p1] + 2 SPD[p1, p3] -
+			SPD[p3, p3]) (m0^2 SPD[p1, p1] - 2 m0^2 SPD[p1, p2] +
+			SPD[p1, p1] SPD[p2, p2] + 2 m0^2 SPD[p2, p4] -
+			2 SPD[p1, p1] SPD[p2, p4] - m0^2 SPD[p4, p4] +
+			2 SPD[p1, p2] SPD[p4, p4] -
+			SPD[p2, p2] SPD[p4, p4]))) + (m0^2 -
+	SPD[p4, p4]) (((m0^2 - SPD[p1, p1]) (-SPD[p1, p1] +
+			2 SPD[p1, p2] - SPD[p2, p2]) (-SPD[p2, p2] +
+			2 SPD[p2, p3] - SPD[p3, p3]) + (-SPD[p1, p1] +
+			2 SPD[p1, p2] - SPD[p2, p2]) (-2 m0^2 SPD[p1, p2] +
+			2 m0^2 SPD[p1, p3] + m0^2 SPD[p2, p2] +
+			SPD[p1, p1] SPD[p2, p2] - 2 SPD[p1, p3] SPD[p2, p2] -
+			m0^2 SPD[p3, p3] - SPD[p1, p1] SPD[p3, p3] +
+			2 SPD[p1, p2] SPD[p3, p3])) (-SPD[p3, p3] +
+		2 SPD[p3, p4] - SPD[p4, p4]) - (-SPD[p1, p1] +
+		2 SPD[p1, p3] -
+		SPD[p3, p3]) ((-2 m0^2 SPD[p1, p2] + 2 m0^2 SPD[p1, p3] +
+			m0^2 SPD[p2, p2] + SPD[p1, p1] SPD[p2, p2] -
+			2 SPD[p1, p3] SPD[p2, p2] - m0^2 SPD[p3, p3] -
+			SPD[p1, p1] SPD[p3, p3] +
+			2 SPD[p1, p2] SPD[p3, p3]) (-SPD[p2, p2] + 2 SPD[p2, p4] -
+			SPD[p4, p4]) - (-SPD[p2, p2] + 2 SPD[p2, p3] -
+			SPD[p3, p3]) (-2 m0^2 SPD[p1, p2] + 2 m0^2 SPD[p1, p4] +
+			m0^2 SPD[p2, p2] + SPD[p1, p1] SPD[p2, p2] -
+			2 SPD[p1, p4] SPD[p2, p2] - m0^2 SPD[p4, p4] -
+			SPD[p1, p1] SPD[p4, p4] +
+			2 SPD[p1, p2] SPD[p4, p4])) + (-SPD[p2, p2] +
+		2 SPD[p2, p3] -
+		SPD[p3, p3]) (-(m0^2 SPD[p1, p1] - 2 m0^2 SPD[p1, p2] +
+			SPD[p1, p1] SPD[p2, p2] + 2 m0^2 SPD[p2, p3] -
+			2 SPD[p1, p1] SPD[p2, p3] - m0^2 SPD[p3, p3] +
+			2 SPD[p1, p2] SPD[p3, p3] -
+			SPD[p2, p2] SPD[p3, p3]) (-SPD[p1, p1] + 2 SPD[p1, p4] -
+			SPD[p4, p4]) + (-SPD[p1, p1] + 2 SPD[p1, p3] -
+			SPD[p3, p3]) (m0^2 SPD[p1, p1] - 2 m0^2 SPD[p1, p2] +
+			SPD[p1, p1] SPD[p2, p2] + 2 m0^2 SPD[p2, p4] -
+			2 SPD[p1, p1] SPD[p2, p4] - m0^2 SPD[p4, p4] +
+			2 SPD[p1, p2] SPD[p4, p4] -
+			SPD[p2, p2] SPD[p4, p4]))) - (-SPD[p3, p3] +
+	2 SPD[p3, p4] -
+	SPD[p4, p4]) (-(-2 m0^4 SPD[p1, p1] + 2 m0^4 SPD[p1, p2] +
+		2 m0^2 SPD[p1, p1] SPD[p1, p2] + 2 m0^4 SPD[p1, p3] +
+		2 m0^2 SPD[p1, p1] SPD[p1, p3] -
+		8 m0^2 SPD[p1, p2] SPD[p1, p3] -
+		2 m0^2 SPD[p1, p1] SPD[p2, p2] +
+		2 m0^2 SPD[p1, p3] SPD[p2, p2] +
+		2 SPD[p1, p1] SPD[p1, p3] SPD[p2, p2] -
+		2 m0^4 SPD[p2, p3] + 4 m0^2 SPD[p1, p1] SPD[p2, p3] -
+		2 SPD[p1, p1]^2 SPD[p2, p3] -
+		2 m0^2 SPD[p1, p1] SPD[p3, p3] +
+		2 m0^2 SPD[p1, p2] SPD[p3, p3] +
+		2 SPD[p1, p1] SPD[p1, p2] SPD[p3, p3] -
+		2 SPD[p1, p1] SPD[p2, p2] SPD[p3, p3]) (-SPD[p2, p2] +
+		2 SPD[p2, p4] - SPD[p4, p4]) - (-SPD[p1, p1] +
+		2 SPD[p1, p2] - SPD[p2, p2]) (-2 m0^4 SPD[p1, p2] +
+		2 m0^4 SPD[p1, p4] + 2 m0^2 SPD[p1, p4] SPD[p2, p2] +
+		2 m0^4 SPD[p2, p3] + 2 m0^2 SPD[p1, p1] SPD[p2, p3] -
+		8 m0^2 SPD[p1, p4] SPD[p2, p3] -
+		2 m0^2 SPD[p1, p2] SPD[p3, p3] +
+		2 m0^2 SPD[p1, p4] SPD[p3, p3] +
+		2 SPD[p1, p4] SPD[p2, p2] SPD[p3, p3] - 2 m0^4 SPD[p3, p4] -
+		2 m0^2 SPD[p1, p1] SPD[p3, p4] +
+		8 m0^2 SPD[p1, p2] SPD[p3, p4] -
+		2 m0^2 SPD[p2, p2] SPD[p3, p4] -
+		2 SPD[p1, p1] SPD[p2, p2] SPD[p3, p4] -
+		2 m0^2 SPD[p1, p2] SPD[p4, p4] +
+		2 m0^2 SPD[p2, p3] SPD[p4, p4] +
+		2 SPD[p1, p1] SPD[p2, p3] SPD[p4, p4] -
+		2 SPD[p1, p2] SPD[p3, p3] SPD[p4, p4]) + (m0^2 -
+		SPD[p2, p2]) (-(m0^2 SPD[p1, p1] - 2 m0^2 SPD[p1, p3] -
+			m0^2 SPD[p2, p2] + 2 SPD[p1, p3] SPD[p2, p2] +
+			2 m0^2 SPD[p2, p3] - 2 SPD[p1, p1] SPD[p2, p3] +
+			SPD[p1, p1] SPD[p3, p3] -
+			SPD[p2, p2] SPD[p3, p3]) (-SPD[p1, p1] + 2 SPD[p1, p4] -
+			SPD[p4, p4]) + (-SPD[p1, p1] + 2 SPD[p1, p2] -
+			SPD[p2, p2]) (m0^2 SPD[p1, p1] - 2 m0^2 SPD[p1, p3] +
+			SPD[p1, p1] SPD[p3, p3] + 2 m0^2 SPD[p3, p4] -
+			2 SPD[p1, p1] SPD[p3, p4] - m0^2 SPD[p4, p4] +
+			2 SPD[p1, p3] SPD[p4, p4] - SPD[p3, p3] SPD[p4, p4]))))"},
+{"fcstNPointTo4Point-ID2", "NPointTo4Point[FCI@FAD[{q, m0}, {q, 0}, {q, 0}, {q, 0}, {q, 0}], q,
+FCE -> True]", "FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], m0],
+PropagatorDenominator[Momentum[q, D], 0],
+PropagatorDenominator[Momentum[q, D], 0],
+PropagatorDenominator[Momentum[q, D], 0],
+PropagatorDenominator[Momentum[q, D], 0]]"},
+{"fcstNPointTo4Point-ID3", "NPointTo4Point[0, q]", "0"},
+{"fcstNPointTo4Point-ID4",
+"NPointTo4Point[
+FCI[FVD[q, mu] FAD[{q, m0}, {q + p1, m1}, {q + p2, m2}, {q + p3,m3}, {q + p4, m4}]], q]", "
+FeynAmpDenominator[PropagatorDenominator[Momentum[q, D], m0],
+PropagatorDenominator[Momentum[p1, D] + Momentum[q, D], m1],
+PropagatorDenominator[Momentum[p2, D] + Momentum[q, D], m2],
+PropagatorDenominator[Momentum[p3, D] + Momentum[q, D], m3],
+PropagatorDenominator[Momentum[p4, D] + Momentum[q, D], m4]] Pair[
+LorentzIndex[mu, D], Momentum[q, D]]"}
+})

@@ -123,8 +123,19 @@ Cell[TextData[{
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "OPESumExplicit", "]"}]], "Input",
+ CellLabel->"In[28]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"Assumptions", "\[Rule]", "True"}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[28]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -170,9 +181,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/OPESumSimplify",
   ButtonNote->"OPESumSimplify"],
  "."
-}], "Text",
- CellTags->"OPESumExplicit",
- CellID->1999250698]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -202,19 +211,18 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t1", "=", 
-  RowBox[{"OPESum", "[", 
+ RowBox[{"OPESum", "[", 
+  RowBox[{
    RowBox[{
-    RowBox[{
-     RowBox[{"A", "^", "i"}], 
-     RowBox[{"B", "^", 
-      RowBox[{"(", 
-       RowBox[{"m", "-", "i", "-", "3"}], ")"}]}]}], ",", 
-    RowBox[{"{", 
-     RowBox[{"i", ",", "0", ",", 
-      RowBox[{"m", "-", "3"}]}], "}"}]}], "]"}]}]], "Input",
+    RowBox[{"A", "^", "i"}], 
+    RowBox[{"B", "^", 
+     RowBox[{"(", 
+      RowBox[{"m", "-", "i", "-", "3"}], ")"}]}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "0", ",", 
+     RowBox[{"m", "-", "3"}]}], "}"}]}], "]"}]], "Input",
  CellTags->"OPESumExplicit",
- CellLabel->"In[1]:=",
+ CellLabel->"In[29]:=",
  CellID->448095633],
 
 Cell[BoxData[
@@ -232,16 +240,15 @@ Cell[BoxData[
        RowBox[{"-", "3"}], "-", "i", "+", "m"}]]}]}],
    HoldForm], TraditionalForm]], "Output",
  CellTags->"OPESumExplicit",
- CellLabel->"Out[1]=",
- CellID->1524447392]
+ CellLabel->"Out[29]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"OPESumExplicit", "[", "t1", "]"}]], "Input",
+ RowBox[{"OPESumExplicit", "[", "%", "]"}]], "Input",
  CellTags->"OPESumExplicit",
- CellLabel->"In[2]:=",
+ CellLabel->"In[30]:=",
  CellID->21429542],
 
 Cell[BoxData[
@@ -260,14 +267,13 @@ Cell[BoxData[
      TraditionalForm], 
     RowBox[{"A", "-", "B"}]]}], TraditionalForm]], "Output",
  CellTags->"OPESumExplicit",
- CellLabel->"Out[2]=",
- CellID->110967973]
+ CellLabel->"Out[30]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t2", " ", "=", " ", 
+ RowBox[{" ", 
   RowBox[{"OPESum", "[", 
    RowBox[{
     RowBox[{
@@ -284,7 +290,7 @@ Cell[BoxData[
      RowBox[{"j", ",", "0", ",", 
       RowBox[{"m", "-", "4"}]}], "}"}]}], "]"}]}]], "Input",
  CellTags->"OPESumExplicit",
- CellLabel->"In[3]:=",
+ CellLabel->"In[32]:=",
  CellID->1082502911],
 
 Cell[BoxData[
@@ -314,16 +320,15 @@ Cell[BoxData[
        RowBox[{"-", "j"}], "+", "m", "-", "4"}]]}],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"OPESumExplicit",
- CellLabel->"Out[3]=",
- CellID->643122567]
+ CellLabel->"Out[32]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"OPESumExplicit", "[", "t2", "]"}]], "Input",
+ RowBox[{"OPESumExplicit", "[", "%", "]"}]], "Input",
  CellTags->"OPESumExplicit",
- CellLabel->"In[4]:=",
+ CellLabel->"In[33]:=",
  CellID->773320980],
 
 Cell[BoxData[
@@ -392,17 +397,8 @@ Cell[BoxData[
      RowBox[{"(", 
       RowBox[{"b", "-", "c"}], ")"}]}]]}], TraditionalForm]], "Output",
  CellTags->"OPESumExplicit",
- CellLabel->"Out[4]=",
- CellID->1923019791]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"Clear", "[", 
-   RowBox[{"t1", ",", "t2"}], "]"}], ";"}]], "Input",
- CellTags->"OPESumExplicit",
- CellLabel->"In[5]:=",
- CellID->363319919]
+ CellLabel->"Out[33]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -466,12 +462,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{769, Automatic}, {Automatic, 51}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

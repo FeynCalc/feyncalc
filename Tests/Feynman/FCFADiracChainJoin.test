@@ -1,0 +1,182 @@
+
+
+(* :Title: FCFADiracChainJoin.test											*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCFADiracChainJoin 		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Feynman`fcstFCFADiracChainJoin = {
+
+{"fcstFCFADiracChainJoin-ID1","FCFADiracChainJoin[-(1/(16 \[Pi]^4)) I el^2 DCHN[
+Spinor[-Momentum[p, D], me, 1], Dir1] DCHN[
+Spinor[Momentum[q, D], me, 1], Dir2] DCHN[GAD[Lor1], Dir1,
+Dir3] DCHN[GAD[Lor2], Dir2, Dir4] DCHN[me - GSD[k], Dir3,
+Dir4] FAD[{k, me}, k - q] MTD[Lor1, Lor2], FCE -> True]",
+"-(1/(16 \[Pi]^4))*I el^2 Spinor[Momentum[q, D], me, 1].GAD[
+	Lor2].(-(me + GSD[k]).GAD[Lor1]).Spinor[Momentum[p, D], me,
+	1] FAD[{k, me}, k - q] MTD[Lor1, Lor2]"},
+
+{"fcstFCFADiracChainJoin-ID2","FCFADiracChainJoin[{DCHN[Spinor[-Momentum[p1, D], mb, 1], Dir1] DCHN[
+	Spinor[-Momentum[p2, D], ms, 1], Dir2] DCHN[
+	Spinor[Momentum[p3, D], ms, 1], Dir3] DCHN[
+	Spinor[Momentum[p4, D], mb, 1],
+	Dir4] (8 I  DiracChain[
+	DiracGamma[LorentzIndex[Ind404, D], D].GA[7], DiracIndex[Dir1],
+		DiracIndex[Dir2]] DiracChain[
+	DiracGamma[LorentzIndex[Ind404, D], D].GA[7], DiracIndex[Dir4],
+		DiracIndex[
+		Dir3]] (F1T SDF[colInB, colOutS] SDF[colInS, colOutB] +
+		F1 SDF[colInB, colInS] SDF[colOutB, colOutS]) +
+	8 I  DiracChain[DiracGamma[LorentzIndex[Ind403, D], D].GA[7],
+	DiracIndex[Dir1], DiracIndex[Dir3]] DiracChain[
+	DiracGamma[LorentzIndex[Ind403, D], D].GA[7], DiracIndex[Dir4],
+		DiracIndex[
+		Dir2]] (F1 SDF[colInB, colOutS] SDF[colInS, colOutB] +
+		F1T SDF[colInB, colInS] SDF[colOutB, colOutS]) +
+	8 I tauPref DCHN[GA[7], Dir1, Dir2] DCHN[GA[7], Dir4,
+	Dir3] (F2T SDF[colInB, colOutS] SDF[colInS, colOutB] +
+		F2 SDF[colInB, colInS] SDF[colOutB, colOutS]) +
+	8 I  DCHN[GA[7], Dir1, Dir3] DCHN[GA[7], Dir4,
+	Dir2] (F2 SDF[colInB, colOutS] SDF[colInS, colOutB] +
+		F2T SDF[colInB, colInS] SDF[colOutB, colOutS]))}, FCE -> True]",
+"{-8 I Spinor[-Momentum[p1, D], mb, 1].GAD[Ind404].GA[7].Spinor[
+	Momentum[p2, D], ms, 1] Spinor[Momentum[p4, D], mb, 1].GAD[
+	Ind404].GA[7].Spinor[-Momentum[p3, D], ms,
+	1] (F1T SDF[colInB, colOutS] SDF[colInS, colOutB] +
+	F1 SDF[colInB, colInS] SDF[colOutB, colOutS]) +
+8 I Spinor[-Momentum[p1, D], mb, 1].GAD[Ind403].GA[
+	7].Spinor[-Momentum[p3, D], ms, 1] Spinor[Momentum[p4, D], mb,
+	1].GAD[Ind403].GA[7].Spinor[Momentum[p2, D], ms,
+	1] (F1 SDF[colInB, colOutS] SDF[colInS, colOutB] +
+	F1T SDF[colInB, colInS] SDF[colOutB, colOutS]) -
+8 I tauPref Spinor[-Momentum[p1, D], mb, 1].GA[7].Spinor[
+	Momentum[p2, D], ms, 1] Spinor[Momentum[p4, D], mb, 1].GA[
+	7].Spinor[-Momentum[p3, D], ms,
+	1] (F2T SDF[colInB, colOutS] SDF[colInS, colOutB] +
+	F2 SDF[colInB, colInS] SDF[colOutB, colOutS]) +
+8 I Spinor[-Momentum[p1, D], mb, 1].GA[7].Spinor[-Momentum[p3, D],
+	ms, 1] Spinor[Momentum[p4, D], mb, 1].GA[7].Spinor[
+	Momentum[p2, D], ms,
+	1] (F2 SDF[colInB, colOutS] SDF[colInS, colOutB] +
+	F2T SDF[colInB, colInS] SDF[colOutB, colOutS])}"},
+{"fcstFCFADiracChainJoin-ID3",
+"FCFADiracChainJoin[e^2 DCHN[Spinor[-Momentum[p1],me,1],Dir1]
+DCHN[Spinor[-Momentum[p2],me,1],Dir2] DCHN[me+GS[-k1+p2],Dir3,Dir4]
+DCHN[GS[Polarization[k1,-I,Transversality->True]],Dir2,Dir4]
+DCHN[GS[Polarization[k2,-I,Transversality->True]],Dir1,Dir3]
+FAD[{k1-p2,me},Dimension->4]+e^2 DCHN[Spinor[-Momentum[p1],me,1],Dir1]
+DCHN[Spinor[-Momentum[p2],me,1],Dir2] DCHN[me+GS[-k2+p2],Dir3,Dir4]
+DCHN[GS[Polarization[k1,-I,Transversality->True]],Dir1,Dir3]
+DCHN[GS[Polarization[k2,-I,Transversality->True]],Dir2,Dir4] FAD[{k2-p2,me},Dimension->4],FCE->True]",
+"e^2 Spinor[-Momentum[p2], me, 1].GS[
+	Polarization[k1, -I,
+	Transversality ->
+	True]].(-(me - GS[-k1 + p2]).GS[
+	Polarization[k2, -I, Transversality -> True]]).Spinor[
+	Momentum[p1], me, 1] FAD[{k1 - p2, me}, Dimension -> 4] +
+e^2 Spinor[-Momentum[p2], me, 1].GS[
+	Polarization[k2, -I,
+	Transversality ->
+	True]].(-(me - GS[-k2 + p2]).GS[
+	Polarization[k1, -I, Transversality -> True]]).Spinor[
+	Momentum[p1], me, 1] FAD[{k2 - p2, me}, Dimension -> 4]"},
+{"fcstFCFADiracChainJoin-ID4","FCFADiracChainJoin[e^2 DCHN[Spinor[Momentum[k1],me,1],Dir3]
+DCHN[Spinor[Momentum[k2],me,1],Dir4] DCHN[Spinor[-Momentum[p1],me,1],Dir1]
+DCHN[Spinor[-Momentum[p2],me,1],Dir2] DCHN[GA[Lor2],Dir1,Dir4]
+DCHN[GA[Lor2],Dir2,Dir3] FAD[k1-p2,Dimension->4]+
+e^2 DCHN[Spinor[Momentum[k1],me,1],Dir3] DCHN[Spinor[Momentum[k2],me,1],Dir4]
+DCHN[Spinor[-Momentum[p1],me,1],Dir1] DCHN[Spinor[-Momentum[p2],me,1],Dir2]
+DCHN[GA[Lor2],Dir1,Dir3] DCHN[GA[Lor2],Dir2,Dir4] FAD[k2-p2,Dimension->4],FCE->True]",
+"e^2 Spinor[-Momentum[p1], me, 1].GA[Lor2].Spinor[-Momentum[k2], me,
+	1] Spinor[-Momentum[p2], me, 1].GA[Lor2].Spinor[-Momentum[k1], me,
+	1] FAD[k1 - p2, Dimension -> 4] -
+e^2 Spinor[-Momentum[p1], me, 1].GA[Lor2].Spinor[-Momentum[k1], me,
+	1] Spinor[-Momentum[p2], me, 1].GA[Lor2].Spinor[-Momentum[k2], me,
+	1] FAD[k2 - p2, Dimension -> 4]"},
+{"fcstFCFADiracChainJoin-ID5","FCFADiracChainJoin[
+I gs^2 DCHN[Spinor[-Momentum[p1, D], mb, 1], Dir1] DCHN[
+Spinor[-Momentum[p2, D], ms, 1], Dir2] DCHN[
+Spinor[Momentum[p3, D], ms, 1], Dir3] DCHN[
+Spinor[Momentum[p4, D], mb, 1], Dir4] DCHN[GAD[Lor1], Dir5,
+Dir7] DCHN[GAD[Lor2], Dir1, Dir9] DCHN[mb + GSD[p2 - p3 - p4 - q1],
+	Dir9, Dir10] DCHN[mc + GSD[-p3 - p4 - q1 - q2], Dir11,
+Dir12] DCHN[mc - GSD[q2], Dir5, Dir6] DCHN[mc + GSD[q1 + q2], Dir7,
+	Dir8] FAD[{q1, MGl}, {q2, mc}, {q1 + q2, mc}, {-p2 + p3 + p4 + q1,
+	mb}, {p3 + p4 + q1 + q2, mc}] MTD[Lor1,
+Lor2] (4 I heffPref ORIG DCHN[GAD[Ind26].GA[7], Dir10, Dir6] DCHN[
+	GAD[Ind26].GA[7], Dir11,
+	Dir2] (C1 SDF[Col5, Col8] SDF[Col7, colInS] +
+	C2 SDF[Col5, Col7] SDF[Col8, colInS]) +
+	4 I FIERZ heffPref DCHN[GAD[Ind27].GA[7], Dir10, Dir2] DCHN[
+	GAD[Ind27].GA[7], Dir11,
+	Dir6] (C1 SDF[Col5, Col8] SDF[Col7, colInS] +
+	C2 SDF[Col5, Col7] SDF[Col8, colInS])) (4 I heffPref ORIG DCHN[
+	GAD[Ind24].GA[7], Dir4, Dir12] DCHN[GAD[Ind24].GA[7], Dir8,
+	Dir3] (C2 SDF[Col6, colOutS] SDF[Col8, colOutB] +
+	C1 SDF[Col6, Col8] SDF[colOutB, colOutS]) +
+	4 I FIERZ heffPref DCHN[GAD[Ind25].GA[7], Dir4, Dir3] DCHN[
+	GAD[Ind25].GA[7], Dir8,
+	Dir12] (C2 SDF[Col6, colOutS] SDF[Col8, colOutB] +
+	C1 SDF[Col6, Col8] SDF[colOutB, colOutS])) SUNTF[{Glu5}, Col5,
+Col6] SUNTF[{Glu5}, colInB, Col7], FCE -> True]",
+"16 I FIERZ^2 gs^2 heffPref^2 DiracTrace[
+GAD[Ind27].GA[7].(mc + GSD[q2]).GAD[Lor1].(mc + GSD[q1 + q2]).GAD[
+	Ind25].GA[7].(mc - GSD[-p3 - p4 - q1 - q2])] Spinor[
+	Momentum[p4, D], mb, 1].GAD[Ind25].GA[7].Spinor[-Momentum[p3, D],
+	ms, 1] Spinor[-Momentum[p1, D], mb, 1].GAD[
+	Lor2].(mb + GSD[p2 - p3 - p4 - q1]).GAD[Ind27].GA[7].Spinor[
+	Momentum[p2, D], ms, 1] FAD[{q1, MGl}, {q2, mc}, {q1 + q2,
+	mc}, {-p2 + p3 + p4 + q1, mb}, {p3 + p4 + q1 + q2, mc}] MTD[Lor1,
+Lor2] (C1 SDF[Col5, Col8] SDF[Col7, colInS] +
+	C2 SDF[Col5, Col7] SDF[Col8, colInS]) (C2 SDF[Col6, colOutS] SDF[
+	Col8, colOutB] +
+	C1 SDF[Col6, Col8] SDF[colOutB, colOutS]) SUNTF[{Glu5}, Col5,
+Col6] SUNTF[{Glu5}, colInB, Col7] -
+16 I FIERZ gs^2 heffPref^2 ORIG Spinor[-Momentum[p1, D], mb, 1].GAD[
+	Lor2].(mb + GSD[p2 - p3 - p4 - q1]).GAD[Ind27].GA[7].Spinor[
+	Momentum[p2, D], ms, 1] Spinor[Momentum[p3, D], ms, 1].GA[7].GAD[
+	Ind24].(mc - GSD[q1 + q2]).GAD[
+	Lor1].(mc - GSD[q2]).(-GA[7].GAD[Ind27]).(mc +
+	GSD[-p3 - p4 - q1 - q2]).(-GA[7].GAD[Ind24]).Spinor[-Momentum[p4,
+	D], mb, 1] FAD[{q1, MGl}, {q2, mc}, {q1 + q2,
+	mc}, {-p2 + p3 + p4 + q1, mb}, {p3 + p4 + q1 + q2, mc}] MTD[Lor1,
+Lor2] (C1 SDF[Col5, Col8] SDF[Col7, colInS] +
+	C2 SDF[Col5, Col7] SDF[Col8, colInS]) (C2 SDF[Col6, colOutS] SDF[
+	Col8, colOutB] +
+	C1 SDF[Col6, Col8] SDF[colOutB, colOutS]) SUNTF[{Glu5}, Col5,
+Col6] SUNTF[{Glu5}, colInB, Col7] -
+16 I gs^2 heffPref^2 ORIG^2 Spinor[-Momentum[p2, D], ms,
+	1].(-GA[7].GAD[Ind26]).(mc +
+	GSD[-p3 - p4 - q1 - q2]).(-GA[7].GAD[Ind24]).Spinor[-Momentum[p4,
+	D], mb, 1] Spinor[Momentum[p3, D], ms, 1].GA[7].GAD[
+	Ind24].(mc - GSD[q1 + q2]).GAD[Lor1].(mc - GSD[q2]).GA[7].GAD[
+	Ind26].(mb - GSD[p2 - p3 - p4 - q1]).GAD[Lor2].Spinor[
+	Momentum[p1, D], mb, 1] FAD[{q1, MGl}, {q2, mc}, {q1 + q2,
+	mc}, {-p2 + p3 + p4 + q1, mb}, {p3 + p4 + q1 + q2, mc}] MTD[Lor1,
+Lor2] (C1 SDF[Col5, Col8] SDF[Col7, colInS] +
+	C2 SDF[Col5, Col7] SDF[Col8, colInS]) (C2 SDF[Col6, colOutS] SDF[
+	Col8, colOutB] +
+	C1 SDF[Col6, Col8] SDF[colOutB, colOutS]) SUNTF[{Glu5}, Col5,
+Col6] SUNTF[{Glu5}, colInB, Col7] +
+16 I FIERZ gs^2 heffPref^2 ORIG Spinor[Momentum[p4, D], mb, 1].GAD[
+	Ind25].GA[7].Spinor[-Momentum[p3, D], ms,
+	1] Spinor[-Momentum[p1, D], mb, 1].GAD[
+	Lor2].(mb + GSD[p2 - p3 - p4 - q1]).GAD[Ind26].GA[
+	7].(mc + GSD[q2]).GAD[Lor1].(mc + GSD[q1 + q2]).GAD[Ind25].GA[
+	7].(mc - GSD[-p3 - p4 - q1 - q2]).GAD[Ind26].GA[7].Spinor[
+	Momentum[p2, D], ms, 1] FAD[{q1, MGl}, {q2, mc}, {q1 + q2,
+	mc}, {-p2 + p3 + p4 + q1, mb}, {p3 + p4 + q1 + q2, mc}] MTD[Lor1,
+Lor2] (C1 SDF[Col5, Col8] SDF[Col7, colInS] +
+	C2 SDF[Col5, Col7] SDF[Col8, colInS]) (C2 SDF[Col6, colOutS] SDF[
+	Col8, colOutB] +
+	C1 SDF[Col6, Col8] SDF[colOutB, colOutS]) SUNTF[{Glu5}, Col5,
+Col6] SUNTF[{Glu5}, colInB, Col7]"}
+};

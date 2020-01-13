@@ -1,0 +1,409 @@
+
+
+(* :Title: ToStandardMatrixElement.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for ToStandardMatrixElement	*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Feynman`fcstToStandardMatrixElement =
+({
+{"fcstToStandardMatrixElement-ID1", "ToStandardMatrixElement[1]",
+"1"},
+{"fcstToStandardMatrixElement-ID2",
+"ToStandardMatrixElement[GA[i,k]]",
+"StandardMatrixElement[DiracGamma[LorentzIndex[i]] . \
+DiracGamma[LorentzIndex[k]]]"},
+{"fcstToStandardMatrixElement-ID3",
+"ToStandardMatrixElement[SUNT[a]]",
+"StandardMatrixElement[SUNT[SUNIndex[a]]]"},
+{"fcstToStandardMatrixElement-ID4",
+"ToStandardMatrixElement[SUNT[a]GA[i,k]+x]",
+"x + StandardMatrixElement[DiracGamma[LorentzIndex[i]] . \
+DiracGamma[LorentzIndex[k]]*SUNT[SUNIndex[a]]]"},
+{"fcstToStandardMatrixElement-ID5",
+"ToStandardMatrixElement[x \
+SpinorUBar[p2,m2].GA[6].SpinorV[p1,m1]+y \
+SpinorUBar[p2,m2].GA[7].SpinorV[p1,m1]]",
+"x*StandardMatrixElement[Spinor[Momentum[p2], m2, 1] . \
+DiracGamma[6] . Spinor[-Momentum[p1], m1, 1]] + \
+y*StandardMatrixElement[Spinor[Momentum[p2], m2, 1] . DiracGamma[7] . \
+Spinor[-Momentum[p1], m1, 1]]"},
+{"fcstToStandardMatrixElement-ID6",
+"ToStandardMatrixElement[x \
+SpinorUBar[p2,m2].GA[6].SpinorV[p1,m1]+y \
+SpinorUBar[p2,m2].GA[7].SpinorV[p1,m1],DiracSubstitute67\[Rule]True]",
+	"x*StandardMatrixElement[Spinor[Momentum[p2], m2, 1] . \
+DiracGamma[6] . Spinor[-Momentum[p1], m1, 1]] + \
+y*StandardMatrixElement[Spinor[Momentum[p2], m2, 1] . DiracGamma[7] . \
+Spinor[-Momentum[p1], m1, 1]]"},
+{"fcstToStandardMatrixElement-ID7",
+"ToStandardMatrixElement[-\!\(\*SuperscriptBox[\(gs\), \(2\)]\) \
+Spinor[Momentum[p2],m,1].GS[Polarization[k2,-\[ImaginaryI],\
+Transversality\[Rule]True]].(m+GS[k2+p2]).GS[Polarization[k1,\
+\[ImaginaryI],Transversality\[Rule]True]].Spinor[Momentum[p1],m,1] \
+FAD[{-k2-p2,m},Dimension\[Rule]4] SUNTF[{Glu2},Col5,Col1] \
+SUNTF[{Glu4},Col3,Col5]-\!\(\*SuperscriptBox[\(gs\), \(2\)]\) \
+Spinor[Momentum[p2],m,1].GS[Polarization[k1,\[ImaginaryI],\
+Transversality\[Rule]True]].(m+GS[-k1+p2]).GS[Polarization[k2,-\
+\[ImaginaryI],Transversality\[Rule]True]].Spinor[Momentum[p1],m,1] \
+FAD[{k1-p2,m},Dimension\[Rule]4] SUNTF[{Glu2},Col3,Col5] \
+SUNTF[{Glu4},Col5,Col1]+2 \[ImaginaryI] \!\(\*SuperscriptBox[\(gs\), \
+\(2\)]\) Spinor[Momentum[p2],m,1].GS[Polarization[k1,\[ImaginaryI],\
+Transversality\[Rule]True]].Spinor[Momentum[p1],m,1] \
+FAD[-k1+k2,Dimension\[Rule]4] \
+SP[k1,Polarization[k2,-\[ImaginaryI],Transversality\[Rule]True]] \
+SUNF[Glu2,Glu4,Glu5] SUNTF[{Glu5},Col3,Col1]+2 \[ImaginaryI] \
+\!\(\*SuperscriptBox[\(gs\), \(2\)]\) \
+Spinor[Momentum[p2],m,1].GS[Polarization[k2,-\[ImaginaryI],\
+Transversality\[Rule]True]].Spinor[Momentum[p1],m,1] \
+FAD[-k1+k2,Dimension\[Rule]4] \
+SP[k2,Polarization[k1,\[ImaginaryI],Transversality\[Rule]True]] \
+SUNF[Glu2,Glu4,Glu5] SUNTF[{Glu5},Col3,Col1]+\[ImaginaryI] \
+\!\(\*SuperscriptBox[\(gs\), \(2\)]\) \
+Spinor[Momentum[p2],m,1].GS[-k1-k2].Spinor[Momentum[p1],m,1] \
+FAD[-k1+k2,Dimension\[Rule]4] \
+SP[Polarization[k1,\[ImaginaryI],Transversality\[Rule]True],\
+Polarization[k2,-\[ImaginaryI],Transversality\[Rule]True]] \
+SUNF[Glu2,Glu4,Glu5] SUNTF[{Glu5},Col3,Col1]]",
+"-(gs^2*FeynAmpDenominator[PropagatorDenominator[-Momentum[k2] - \
+Momentum[p2], m]]*StandardMatrixElement[Spinor[Momentum[p2], m, 1] . \
+DiracGamma[Momentum[k2]] . DiracGamma[Momentum[Polarization[k1, I, \
+Transversality -> True]]] . DiracGamma[Momentum[Polarization[k2, -I, \
+Transversality -> True]]] . DiracGamma[6] . Spinor[Momentum[p1], m, \
+1]*SUNTF[{SUNIndex[Glu2]}, SUNFIndex[Col5], \
+SUNFIndex[Col1]]*SUNTF[{SUNIndex[Glu4]}, SUNFIndex[Col3], \
+SUNFIndex[Col5]]]) - \
+gs^2*FeynAmpDenominator[PropagatorDenominator[-Momentum[k2] - \
+Momentum[p2], m]]*StandardMatrixElement[Spinor[Momentum[p2], m, 1] . \
+DiracGamma[Momentum[k2]] . DiracGamma[Momentum[Polarization[k1, I, \
+Transversality -> True]]] . DiracGamma[Momentum[Polarization[k2, -I, \
+Transversality -> True]]] . DiracGamma[7] . Spinor[Momentum[p1], m, \
+1]*SUNTF[{SUNIndex[Glu2]}, SUNFIndex[Col5], \
+SUNFIndex[Col1]]*SUNTF[{SUNIndex[Glu4]}, SUNFIndex[Col3], \
+SUNFIndex[Col5]]] - \
+2*gs^2*FeynAmpDenominator[PropagatorDenominator[-Momentum[k2] - \
+Momentum[p2], m]]*StandardMatrixElement[Spinor[Momentum[p2], m, 1] . \
+DiracGamma[Momentum[Polarization[k1, I, Transversality -> True]]] . \
+DiracGamma[6] . Spinor[Momentum[p1], m, 1]*Pair[Momentum[p2], \
+Momentum[Polarization[k2, -I, Transversality -> \
+True]]]*SUNTF[{SUNIndex[Glu2]}, SUNFIndex[Col5], \
+SUNFIndex[Col1]]*SUNTF[{SUNIndex[Glu4]}, SUNFIndex[Col3], \
+SUNFIndex[Col5]]] - \
+2*gs^2*FeynAmpDenominator[PropagatorDenominator[-Momentum[k2] - \
+Momentum[p2], m]]*StandardMatrixElement[Spinor[Momentum[p2], m, 1] . \
+DiracGamma[Momentum[Polarization[k1, I, Transversality -> True]]] . \
+DiracGamma[7] . Spinor[Momentum[p1], m, 1]*Pair[Momentum[p2], \
+Momentum[Polarization[k2, -I, Transversality -> \
+True]]]*SUNTF[{SUNIndex[Glu2]}, SUNFIndex[Col5], \
+SUNFIndex[Col1]]*SUNTF[{SUNIndex[Glu4]}, SUNFIndex[Col3], \
+SUNFIndex[Col5]]] + \
+2*gs^2*FeynAmpDenominator[PropagatorDenominator[-Momentum[k2] - \
+Momentum[p2], m]]*StandardMatrixElement[Spinor[Momentum[p2], m, 1] . \
+DiracGamma[Momentum[k2]] . DiracGamma[6] . Spinor[Momentum[p1], m, \
+1]*Pair[Momentum[Polarization[k1, I, Transversality -> True]], \
+Momentum[Polarization[k2, -I, Transversality -> \
+True]]]*SUNTF[{SUNIndex[Glu2]}, SUNFIndex[Col5], \
+SUNFIndex[Col1]]*SUNTF[{SUNIndex[Glu4]}, SUNFIndex[Col3], \
+SUNFIndex[Col5]]] + \
+2*gs^2*FeynAmpDenominator[PropagatorDenominator[-Momentum[k2] - \
+Momentum[p2], m]]*StandardMatrixElement[Spinor[Momentum[p2], m, 1] . \
+DiracGamma[Momentum[k2]] . DiracGamma[7] . Spinor[Momentum[p1], m, \
+1]*Pair[Momentum[Polarization[k1, I, Transversality -> True]], \
+Momentum[Polarization[k2, -I, Transversality -> \
+True]]]*SUNTF[{SUNIndex[Glu2]}, SUNFIndex[Col5], \
+SUNFIndex[Col1]]*SUNTF[{SUNIndex[Glu4]}, SUNFIndex[Col3], \
+SUNFIndex[Col5]]] - \
+gs^2*FeynAmpDenominator[PropagatorDenominator[Momentum[k1] - \
+Momentum[p2], m]]*StandardMatrixElement[Spinor[Momentum[p2], m, 1] . \
+DiracGamma[Momentum[k1]] . DiracGamma[Momentum[Polarization[k1, I, \
+Transversality -> True]]] . DiracGamma[Momentum[Polarization[k2, -I, \
+Transversality -> True]]] . DiracGamma[6] . Spinor[Momentum[p1], m, \
+1]*SUNTF[{SUNIndex[Glu2]}, SUNFIndex[Col3], \
+SUNFIndex[Col5]]*SUNTF[{SUNIndex[Glu4]}, SUNFIndex[Col5], \
+SUNFIndex[Col1]]] - \
+gs^2*FeynAmpDenominator[PropagatorDenominator[Momentum[k1] - \
+Momentum[p2], m]]*StandardMatrixElement[Spinor[Momentum[p2], m, 1] . \
+DiracGamma[Momentum[k1]] . DiracGamma[Momentum[Polarization[k1, I, \
+Transversality -> True]]] . DiracGamma[Momentum[Polarization[k2, -I, \
+Transversality -> True]]] . DiracGamma[7] . Spinor[Momentum[p1], m, \
+1]*SUNTF[{SUNIndex[Glu2]}, SUNFIndex[Col3], \
+SUNFIndex[Col5]]*SUNTF[{SUNIndex[Glu4]}, SUNFIndex[Col5], \
+SUNFIndex[Col1]]] - \
+2*gs^2*FeynAmpDenominator[PropagatorDenominator[Momentum[k1] - \
+Momentum[p2], m]]*StandardMatrixElement[Spinor[Momentum[p2], m, 1] . \
+DiracGamma[Momentum[Polarization[k2, -I, Transversality -> True]]] . \
+DiracGamma[6] . Spinor[Momentum[p1], m, 1]*Pair[Momentum[p2], \
+Momentum[Polarization[k1, I, Transversality -> \
+True]]]*SUNTF[{SUNIndex[Glu2]}, SUNFIndex[Col3], \
+SUNFIndex[Col5]]*SUNTF[{SUNIndex[Glu4]}, SUNFIndex[Col5], \
+SUNFIndex[Col1]]] - \
+2*gs^2*FeynAmpDenominator[PropagatorDenominator[Momentum[k1] - \
+Momentum[p2], m]]*StandardMatrixElement[Spinor[Momentum[p2], m, 1] . \
+DiracGamma[Momentum[Polarization[k2, -I, Transversality -> True]]] . \
+DiracGamma[7] . Spinor[Momentum[p1], m, 1]*Pair[Momentum[p2], \
+Momentum[Polarization[k1, I, Transversality -> \
+True]]]*SUNTF[{SUNIndex[Glu2]}, SUNFIndex[Col3], \
+SUNFIndex[Col5]]*SUNTF[{SUNIndex[Glu4]}, SUNFIndex[Col5], \
+SUNFIndex[Col1]]] + \
+(2*I)*gs^2*FeynAmpDenominator[PropagatorDenominator[-Momentum[k1] + \
+Momentum[k2], 0]]*StandardMatrixElement[Spinor[Momentum[p2], m, 1] . \
+DiracGamma[Momentum[Polarization[k1, I, Transversality -> True]]] . \
+DiracGamma[6] . Spinor[Momentum[p1], m, 1]*Pair[Momentum[k1], \
+Momentum[Polarization[k2, -I, Transversality -> \
+True]]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], \
+SUNIndex[Glu5]]*SUNTF[{SUNIndex[Glu5]}, SUNFIndex[Col3], \
+SUNFIndex[Col1]]] + \
+(2*I)*gs^2*FeynAmpDenominator[PropagatorDenominator[-Momentum[k1] + \
+Momentum[k2], 0]]*StandardMatrixElement[Spinor[Momentum[p2], m, 1] . \
+DiracGamma[Momentum[Polarization[k1, I, Transversality -> True]]] . \
+DiracGamma[7] . Spinor[Momentum[p1], m, 1]*Pair[Momentum[k1], \
+Momentum[Polarization[k2, -I, Transversality -> \
+True]]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], \
+SUNIndex[Glu5]]*SUNTF[{SUNIndex[Glu5]}, SUNFIndex[Col3], \
+SUNFIndex[Col1]]] + \
+(2*I)*gs^2*FeynAmpDenominator[PropagatorDenominator[-Momentum[k1] + \
+Momentum[k2], 0]]*StandardMatrixElement[Spinor[Momentum[p2], m, 1] . \
+DiracGamma[Momentum[Polarization[k2, -I, Transversality -> True]]] . \
+DiracGamma[6] . Spinor[Momentum[p1], m, 1]*Pair[Momentum[k2], \
+Momentum[Polarization[k1, I, Transversality -> \
+True]]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], \
+SUNIndex[Glu5]]*SUNTF[{SUNIndex[Glu5]}, SUNFIndex[Col3], \
+SUNFIndex[Col1]]] + \
+(2*I)*gs^2*FeynAmpDenominator[PropagatorDenominator[-Momentum[k1] + \
+Momentum[k2], 0]]*StandardMatrixElement[Spinor[Momentum[p2], m, 1] . \
+DiracGamma[Momentum[Polarization[k2, -I, Transversality -> True]]] . \
+DiracGamma[7] . Spinor[Momentum[p1], m, 1]*Pair[Momentum[k2], \
+Momentum[Polarization[k1, I, Transversality -> \
+True]]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], \
+SUNIndex[Glu5]]*SUNTF[{SUNIndex[Glu5]}, SUNFIndex[Col3], \
+SUNFIndex[Col1]]] - \
+I*gs^2*FeynAmpDenominator[PropagatorDenominator[-Momentum[k1] + \
+Momentum[k2], 0]]*StandardMatrixElement[Spinor[Momentum[p2], m, 1] . \
+DiracGamma[Momentum[k1]] . DiracGamma[6] . Spinor[Momentum[p1], m, \
+1]*Pair[Momentum[Polarization[k1, I, Transversality -> True]], \
+Momentum[Polarization[k2, -I, Transversality -> \
+True]]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], \
+SUNIndex[Glu5]]*SUNTF[{SUNIndex[Glu5]}, SUNFIndex[Col3], \
+SUNFIndex[Col1]]] - \
+I*gs^2*FeynAmpDenominator[PropagatorDenominator[-Momentum[k1] + \
+Momentum[k2], 0]]*StandardMatrixElement[Spinor[Momentum[p2], m, 1] . \
+DiracGamma[Momentum[k1]] . DiracGamma[7] . Spinor[Momentum[p1], m, \
+1]*Pair[Momentum[Polarization[k1, I, Transversality -> True]], \
+Momentum[Polarization[k2, -I, Transversality -> \
+True]]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], \
+SUNIndex[Glu5]]*SUNTF[{SUNIndex[Glu5]}, SUNFIndex[Col3], \
+SUNFIndex[Col1]]] - \
+I*gs^2*FeynAmpDenominator[PropagatorDenominator[-Momentum[k1] + \
+Momentum[k2], 0]]*StandardMatrixElement[Spinor[Momentum[p2], m, 1] . \
+DiracGamma[Momentum[k2]] . DiracGamma[6] . Spinor[Momentum[p1], m, \
+1]*Pair[Momentum[Polarization[k1, I, Transversality -> True]], \
+Momentum[Polarization[k2, -I, Transversality -> \
+True]]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], \
+SUNIndex[Glu5]]*SUNTF[{SUNIndex[Glu5]}, SUNFIndex[Col3], \
+SUNFIndex[Col1]]] - \
+I*gs^2*FeynAmpDenominator[PropagatorDenominator[-Momentum[k1] + \
+Momentum[k2], 0]]*StandardMatrixElement[Spinor[Momentum[p2], m, 1] . \
+DiracGamma[Momentum[k2]] . DiracGamma[7] . Spinor[Momentum[p1], m, \
+1]*Pair[Momentum[Polarization[k1, I, Transversality -> True]], \
+Momentum[Polarization[k2, -I, Transversality -> \
+True]]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], \
+SUNIndex[Glu5]]*SUNTF[{SUNIndex[Glu5]}, SUNFIndex[Col3], \
+SUNFIndex[Col1]]]"},
+{"fcstToStandardMatrixElement-ID8",
+"ToStandardMatrixElement[x SpinorUBar[p2,m2].SpinorV[p1,m1]+y \
+SpinorUBar[p2,m2].GA[7].SpinorV[p1,m1]]",
+"x*StandardMatrixElement[Spinor[Momentum[p2], m2, 1] . \
+DiracGamma[6] . Spinor[-Momentum[p1], m1, 1]] + (x + \
+y)*StandardMatrixElement[Spinor[Momentum[p2], m2, 1] . DiracGamma[7] \
+. Spinor[-Momentum[p1], m1, 1]]"},
+{"fcstToStandardMatrixElement-ID9",
+"ToStandardMatrixElement[x SpinorUBar[p2,m2].SpinorV[p1,m1]+y \
+SpinorUBar[p2,m2].GA[7].SpinorV[p1,m1],SpinorChainChiralSplit->False]\
+", "x*StandardMatrixElement[Spinor[Momentum[p2], m2, 1] . \
+Spinor[-Momentum[p1], m1, 1]] + \
+y*StandardMatrixElement[Spinor[Momentum[p2], m2, 1] . DiracGamma[7] . \
+Spinor[-Momentum[p1], m1, 1]]"},
+{"fcstToStandardMatrixElement-ID10",
+"ToStandardMatrixElement[x \
+SpinorUBar[p2,m2].GA[5].SpinorV[p1,m1]+y \
+SpinorUBar[p2,m2].GA[7].SpinorV[p1,m1],DiracSubstitute5\[Rule]False]",
+	"x*StandardMatrixElement[Spinor[Momentum[p2], m2, 1] . \
+DiracGamma[5] . Spinor[-Momentum[p1], m1, 1]] + \
+y*StandardMatrixElement[Spinor[Momentum[p2], m2, 1] . DiracGamma[7] . \
+Spinor[-Momentum[p1], m1, 1]]"},
+{"fcstToStandardMatrixElement-ID11",
+"ToStandardMatrixElement[GA[nu], Spinor -> True,FCE->True]",
+	"GA[nu]"},
+{"fcstToStandardMatrixElement-ID12",
+"ToStandardMatrixElement[-(1/\[Pi]^2)
+	I (2 I \[Pi]^2 Spinor[Momentum[p3], ms, 1].GS[
+	Polarization[p2, I]].GA[7].Spinor[Momentum[p1], mb, 1] PaVe[0,
+	0, {SPD[p1, p1], SPD[p1, p1] + 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True] +
+	2 I \[Pi]^2 Spinor[Momentum[p3], ms, 1].GS[p1].GA[7].Spinor[
+	Momentum[p1], mb, 1] PaVe[1,
+	1, {SPD[p1, p1], SPD[p1, p1] + 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True] SP[p1, Polarization[p2, I]] +
+	I \[Pi]^2 Spinor[Momentum[p3], ms, 1].GS[p1].GA[7].Spinor[
+	Momentum[p1], mb, 1] PaVe[
+	1, {SPD[p1, p1], SPD[p1, p1] + 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True] (2 SP[p1, Polarization[p2, I]] -
+	SP[p2, Polarization[p2, I]]) -
+	I \[Pi]^2 C0[SPD[p1, p1], SPD[p2, p2],
+	SPD[p1, p1] + 2 SPD[p1, p2] + SPD[p2, p2], mt^2, mh^2,
+	mh^2] Spinor[Momentum[p3], ms, 1].GS[p1].GA[7].Spinor[
+	Momentum[p1], mb, 1] SP[p2, Polarization[p2, I]] -
+	I \[Pi]^2 (2 Spinor[Momentum[p3], ms, 1].GS[p1].GA[7].Spinor[
+		Momentum[p1], mb, 1] -
+	Spinor[Momentum[p3], ms, 1].GS[p2].GA[7].Spinor[Momentum[p1],
+		mb, 1]) PaVe[
+	2, {SPD[p1, p1], SPD[p1, p1] + 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True] SP[p2, Polarization[p2, I]] +
+	2 I \[Pi]^2 Spinor[Momentum[p3], ms, 1].GS[p2].GA[7].Spinor[
+	Momentum[p1], mb, 1] PaVe[2,
+	2, {SPD[p1, p1], SPD[p1, p1] + 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True] SP[p2, Polarization[p2, I]] -
+	2 I \[Pi]^2 PaVe[1,
+	2, {SPD[p1, p1], SPD[p1, p1] + 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True,
+	PaVeAutoReduce ->
+	True] (Spinor[Momentum[p3], ms, 1].GS[p2].GA[7].Spinor[
+		Momentum[p1], mb, 1] SP[p1, Polarization[p2, I]] +
+	Spinor[Momentum[p3], ms, 1].GS[p1].GA[7].Spinor[Momentum[p1],
+		mb, 1] SP[p2, Polarization[p2, I]])),FCE->True]",
+	"2*PaVe[0, 0, {SPD[p1, p1], SPD[p1, p1] + 2*SPD[p1, p2] + SPD[p2, p2], SPD[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*
+StandardMatrixElement[Spinor[Momentum[p3], ms, 1] . GS[Polarization[p2, I]] . GA[7] . Spinor[Momentum[p1], mb, 1]] +
+2*mb*(PaVe[1, {SPD[p1, p1], SPD[p1, p1] + 2*SPD[p1, p2] + SPD[p2, p2], SPD[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True] +
+PaVe[1, 1, {SPD[p1, p1], SPD[p1, p1] + 2*SPD[p1, p2] + SPD[p2, p2], SPD[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True])*
+StandardMatrixElement[Spinor[Momentum[p3], ms, 1] . GA[6] . Spinor[Momentum[p1], mb, 1]*SP[p1, Polarization[p2, I]]] -
+2*PaVe[1, 2, {SPD[p1, p1], SPD[p1, p1] + 2*SPD[p1, p2] + SPD[p2, p2], SPD[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*
+StandardMatrixElement[Spinor[Momentum[p3], ms, 1] . GS[p2] . GA[7] . Spinor[Momentum[p1], mb, 1]*SP[p1, Polarization[p2, I]]] -
+mb*(C0[SPD[p1, p1], SPD[p2, p2], SPD[p1, p1] + 2*SPD[p1, p2] + SPD[p2, p2], mt^2, mh^2, mh^2] + PaVe[1, {SPD[p1, p1], SPD[p1, p1] + 2*SPD[p1, p2] + SPD[p2, p2], SPD[p2, p2]},
+	{mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True] + 2*PaVe[2, {SPD[p1, p1], SPD[p1, p1] + 2*SPD[p1, p2] + SPD[p2, p2], SPD[p2, p2]}, {mh^2, mt^2, mh^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True] + 2*PaVe[1, 2, {SPD[p1, p1], SPD[p1, p1] + 2*SPD[p1, p2] + SPD[p2, p2], SPD[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True])*StandardMatrixElement[Spinor[Momentum[p3], ms, 1] . GA[6] . Spinor[Momentum[p1], mb, 1]*SP[p2, Polarization[p2, I]]] +
+(PaVe[2, {SPD[p1, p1], SPD[p1, p1] + 2*SPD[p1, p2] + SPD[p2, p2], SPD[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True] +
+2*PaVe[2, 2, {SPD[p1, p1], SPD[p1, p1] + 2*SPD[p1, p2] + SPD[p2, p2], SPD[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True])*
+StandardMatrixElement[Spinor[Momentum[p3], ms, 1] . GS[p2] . GA[7] . Spinor[Momentum[p1], mb, 1]*SP[p2, Polarization[p2, I]]]"},
+
+
+
+
+
+{"fcstToStandardMatrixElement-ID12",
+"ToStandardMatrixElement[-(1/\[Pi]^2)
+	I (2 I \[Pi]^2 Spinor[Momentum[p3], ms, 1].GS[
+	Polarization[p2, I]].GA[7].Spinor[Momentum[p1], mb, 1] PaVe[0,
+	0, {SPD[p1, p1], SPD[p1, p1] + 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True] +
+	2 I \[Pi]^2 Spinor[Momentum[p3], ms, 1].GS[p1].GA[7].Spinor[
+	Momentum[p1], mb, 1] PaVe[1,
+	1, {SPD[p1, p1], SPD[p1, p1] + 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True] SP[p1, Polarization[p2, I]] +
+	I \[Pi]^2 Spinor[Momentum[p3], ms, 1].GS[p1].GA[7].Spinor[
+	Momentum[p1], mb, 1] PaVe[
+	1, {SPD[p1, p1], SPD[p1, p1] + 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True] (2 SP[p1, Polarization[p2, I]] -
+	SP[p2, Polarization[p2, I]]) -
+	I \[Pi]^2 C0[SPD[p1, p1], SPD[p2, p2],
+	SPD[p1, p1] + 2 SPD[p1, p2] + SPD[p2, p2], mt^2, mh^2,
+	mh^2] Spinor[Momentum[p3], ms, 1].GS[p1].GA[7].Spinor[
+	Momentum[p1], mb, 1] SP[p2, Polarization[p2, I]] -
+	I \[Pi]^2 (2 Spinor[Momentum[p3], ms, 1].GS[p1].GA[7].Spinor[
+		Momentum[p1], mb, 1] -
+	Spinor[Momentum[p3], ms, 1].GS[p2].GA[7].Spinor[Momentum[p1],
+		mb, 1]) PaVe[
+	2, {SPD[p1, p1], SPD[p1, p1] + 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True] SP[p2, Polarization[p2, I]] +
+	2 I \[Pi]^2 Spinor[Momentum[p3], ms, 1].GS[p2].GA[7].Spinor[
+	Momentum[p1], mb, 1] PaVe[2,
+	2, {SPD[p1, p1], SPD[p1, p1] + 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True] SP[p2, Polarization[p2, I]] -
+	2 I \[Pi]^2 PaVe[1,
+	2, {SPD[p1, p1], SPD[p1, p1] + 2 SPD[p1, p2] + SPD[p2, p2],
+	SPD[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True,
+	PaVeAutoReduce ->
+	True] (Spinor[Momentum[p3], ms, 1].GS[p2].GA[7].Spinor[
+		Momentum[p1], mb, 1] SP[p1, Polarization[p2, I]] +
+	Spinor[Momentum[p3], ms, 1].GS[p1].GA[7].Spinor[Momentum[p1],
+		mb, 1] SP[p2, Polarization[p2, I]])),FCE->True,ChangeDimension->D]",
+	"2*PaVe[0, 0, {SPD[p1, p1], SPD[p1, p1] + 2*SPD[p1, p2] + SPD[p2, p2], SPD[p2, p2]}, {mh^2, mt^2, mh^2},
+PaVeAutoOrder -> True, PaVeAutoReduce -> True]*StandardMatrixElement[
+Spinor[Momentum[p3, D], ms, 1] . GSD[Polarization[p2, I]] . GA[7] . Spinor[Momentum[p1, D], mb, 1]] +
+2*mb*(PaVe[1, {SPD[p1, p1], SPD[p1, p1] + 2*SPD[p1, p2] + SPD[p2, p2], SPD[p2, p2]}, {mh^2, mt^2, mh^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True] +
+PaVe[1, 1, {SPD[p1, p1], SPD[p1, p1] + 2*SPD[p1, p2] + SPD[p2, p2], SPD[p2, p2]}, {mh^2, mt^2, mh^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])*StandardMatrixElement[
+Spinor[Momentum[p3, D], ms, 1] . GA[6] . Spinor[Momentum[p1, D], mb, 1]*SPD[p1, Polarization[p2, I]]] -
+2*PaVe[1, 2, {SPD[p1, p1], SPD[p1, p1] + 2*SPD[p1, p2] + SPD[p2, p2], SPD[p2, p2]}, {mh^2, mt^2, mh^2},
+PaVeAutoOrder -> True, PaVeAutoReduce -> True]*StandardMatrixElement[
+Spinor[Momentum[p3, D], ms, 1] . GSD[p2] . GA[7] . Spinor[Momentum[p1, D], mb, 1]*
+	SPD[p1, Polarization[p2, I]]] -
+mb*(C0[SPD[p1, p1], SPD[p2, p2], SPD[p1, p1] + 2*SPD[p1, p2] + SPD[p2, p2], mt^2, mh^2, mh^2] +
+PaVe[1, {SPD[p1, p1], SPD[p1, p1] + 2*SPD[p1, p2] + SPD[p2, p2], SPD[p2, p2]}, {mh^2, mt^2, mh^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True] +
+2*PaVe[2, {SPD[p1, p1], SPD[p1, p1] + 2*SPD[p1, p2] + SPD[p2, p2], SPD[p2, p2]}, {mh^2, mt^2, mh^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True] +
+2*PaVe[1, 2, {SPD[p1, p1], SPD[p1, p1] + 2*SPD[p1, p2] + SPD[p2, p2], SPD[p2, p2]}, {mh^2, mt^2, mh^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])*StandardMatrixElement[
+Spinor[Momentum[p3, D], ms, 1] . GA[6] . Spinor[Momentum[p1, D], mb, 1]*SPD[p2, Polarization[p2, I]]] +
+(PaVe[2, {SPD[p1, p1], SPD[p1, p1] + 2*SPD[p1, p2] + SPD[p2, p2], SPD[p2, p2]}, {mh^2, mt^2, mh^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True] +
+2*PaVe[2, 2, {SPD[p1, p1], SPD[p1, p1] + 2*SPD[p1, p2] + SPD[p2, p2], SPD[p2, p2]}, {mh^2, mt^2, mh^2},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True])*StandardMatrixElement[
+Spinor[Momentum[p3, D], ms, 1] . GSD[p2] . GA[7] . Spinor[Momentum[p1, D], mb, 1]*
+	SPD[p2, Polarization[p2, I]]]"},
+{"fcstToStandardMatrixElement-ID13",
+"ToStandardMatrixElement[
+Spinor[-Momentum[p1, D], mb, 1].GAD[mu].GAD[nu].GA[7].Spinor[
+	Momentum[p3, D], ms, 1] Spinor[Momentum[p1, D], mb, 1].GAD[
+	nu].GAD[mu].GA[7].Spinor[-Momentum[p2, D], ms, 1]] //
+FCCanonicalizeDummyIndices[#, LorentzIndexNames -> {mu, nu},
+FCE -> True] &","2 D StandardMatrixElement[
+Spinor[-Momentum[p1, D], mb, 1].GA[7].Spinor[Momentum[p3, D], ms,
+	1] Spinor[Momentum[p1, D], mb, 1].GA[7].Spinor[-Momentum[p2, D],
+	ms, 1]] -
+StandardMatrixElement[
+Spinor[-Momentum[p1, D], mb, 1].GAD[mu].GAD[nu].GA[7].Spinor[
+	Momentum[p3, D], ms, 1] Spinor[Momentum[p1, D], mb, 1].GAD[
+	mu].GAD[nu].GA[7].Spinor[-Momentum[p2, D], ms, 1]]"},
+{"fcstToStandardMatrixElement-ID14", "ToStandardMatrixElement[
+SpinorUBar[p1].GA[mu, nu].SpinorV[p2] SpinorVBar[p3].GA[mu,
+	nu].SpinorU[p4] +
+SpinorUBar[p1].GA[al, be].SpinorV[p2] SpinorVBar[p3].GA[al,
+	be].SpinorU[p4], LorentzIndexNames -> {i1, i2}, FCE -> True]",
+"2 StandardMatrixElement[
+Spinor[Momentum[p1], 0, 1].GA[i1].GA[i2].GA[
+	6].Spinor[-Momentum[p2], 0, 1] Spinor[-Momentum[p3], 0, 1].GA[
+	i1].GA[i2].GA[6].Spinor[Momentum[p4], 0, 1]] +
+2 StandardMatrixElement[
+Spinor[Momentum[p1], 0, 1].GA[i1].GA[i2].GA[
+	7].Spinor[-Momentum[p2], 0, 1] Spinor[-Momentum[p3], 0, 1].GA[
+	i1].GA[i2].GA[6].Spinor[Momentum[p4], 0, 1]] +
+2 StandardMatrixElement[
+Spinor[Momentum[p1], 0, 1].GA[i1].GA[i2].GA[
+	6].Spinor[-Momentum[p2], 0, 1] Spinor[-Momentum[p3], 0, 1].GA[
+	i1].GA[i2].GA[7].Spinor[Momentum[p4], 0, 1]] +
+2 StandardMatrixElement[
+Spinor[Momentum[p1], 0, 1].GA[i1].GA[i2].GA[
+	7].Spinor[-Momentum[p2], 0, 1] Spinor[-Momentum[p3], 0, 1].GA[
+	i1].GA[i2].GA[7].Spinor[Momentum[p4], 0, 1]]"}
+});

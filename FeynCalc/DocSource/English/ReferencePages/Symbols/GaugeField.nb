@@ -170,9 +170,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/QuantumField",
   ButtonNote->"QuantumField"],
  "."
-}], "Text",
- CellTags->"GaugeField",
- CellID->1344551251]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -203,14 +201,13 @@ Cell[CellGroupData[{
 
 Cell[BoxData["GaugeField"], "Input",
  CellTags->"GaugeField",
- CellLabel->"In[1]:=",
+ CellLabel->"In[199]:=",
  CellID->1050712800],
 
 Cell[BoxData[
  FormBox["A", TraditionalForm]], "Output",
  CellTags->"GaugeField",
- CellLabel->"Out[1]=",
- CellID->501755105]
+ CellLabel->"Out[199]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -221,7 +218,7 @@ Cell[BoxData[
    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
    RowBox[{"SUNIndex", "[", "a", "]"}]}], "]"}]], "Input",
  CellTags->"GaugeField",
- CellLabel->"In[2]:=",
+ CellLabel->"In[200]:=",
  CellID->1376527682],
 
 Cell[BoxData[
@@ -238,8 +235,7 @@ Cell[BoxData[
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"GaugeField",
- CellLabel->"Out[2]=",
- CellID->511347556]
+ CellLabel->"Out[200]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -304,12 +300,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{853, Automatic}, {Automatic, 235}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

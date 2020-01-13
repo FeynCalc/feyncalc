@@ -1,0 +1,30 @@
+M$ModelName = "Phi3";
+
+M$Information = {
+  Authors      -> {"V. Shtabovenko"},
+  Institutions -> {"Technische Universität München"},
+  Emails       -> {"v.shtabovenko@tum.de"},
+  Date         -> "September 1, 2016"
+};
+
+M$Parameters =
+Join[{g == {ParameterType ->
+    Internal}}, (# == {ParameterType -> External}) & /@ {Zm, Zphi, Zg}]
+
+M$ClassesDescription = {
+
+  S[1] == {
+      ClassName     -> phi,
+      ParticleName    -> "\[Phi]",
+      PropagatorLabel -> "\[Phi]",
+      SelfConjugate -> True,
+      Mass -> Mphi
+  }
+
+};
+
+LPhi3 = LPhi3R + LPhi3CT;
+
+LPhi3R = 1/2 del[phi, mu] del[phi, mu] - 1/2 Mphi^2*phi^2 - 1/(3!) g*phi^3;
+
+LPhi3CT =  1/2 FR$CT (Zphi-1) del[phi, mu] del[phi, mu] - 1/2 FR$CT Mphi^2 (Zm Zphi-1)*phi^2 - 1/(3!) FR$CT (Zg Zphi^(3/2)-1)*g*phi^3;

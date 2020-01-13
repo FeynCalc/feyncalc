@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for ToDiracSigma                 *)
@@ -26,5 +26,13 @@ Tests`Dirac`fcstToDiracSigma =
 {"fcstToDiracSigma-ID4",
 "DiracSigmaExplicit[DiracSigma[DiracGamma[LorentzIndex[i]],\
 DiracGamma[LorentzIndex[j]]]]//ToDiracSigma[#,GA[i],GA[j]]&\
-//ToDiracSigma[#,GA[j],GA[i]]&//FCE", "DiracSigma[GA[i], GA[j]]"}
+//ToDiracSigma[#,GA[j],GA[i]]&//FCE", "DiracSigma[GA[i], GA[j]]"},
+
+{"fcstToDiracSigma-ID5", "ToDiracSigma[CGA[i, j], CGA[i], CGA[j]] // FCE","-I DiracSigma[CGA[i], CGA[j]] - KD[i, j]"},
+{"fcstToDiracSigma-ID6", "ToDiracSigma[CGA[i, j], CGA[m], CGA[j]] // FCE","CGA[i].CGA[j]"},
+{"fcstToDiracSigma-ID7", "ToDiracSigma[CGA[i, j, k], CGA[i], CGA[j]] // FCE","-I DiracSigma[CGA[i], CGA[j]].CGA[k] - CGA[k] KD[i, j]"},
+{"fcstToDiracSigma-ID8", "DiracSigmaExplicit[
+	DiracSigma[DiracGamma[CartesianIndex[i]], DiracGamma[CartesianIndex[j]]]] //
+ToDiracSigma[#, CGA[i], CGA[j]] & //
+ToDiracSigma[#, CGA[j], CGA[i]] & // FCE","DiracSigma[CGA[i], CGA[j]]"}
 })

@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     18632,        656]
-NotebookOptionsPosition[     11642,        434]
-NotebookOutlinePosition[     16243,        563]
-CellTagsIndexPosition[     16072,        556]
+NotebookDataLength[     18488,        642]
+NotebookOptionsPosition[     12051,        446]
+NotebookOutlinePosition[     16271,        559]
+CellTagsIndexPosition[     16100,        552]
 WindowTitle->Isolate
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$95484], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$173667], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Isolate", ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -73,8 +74,20 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Isolate", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Isolate", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -96,6 +109,64 @@ abbreviations may be specified with the option IsolateNames."
 
 Cell[CellGroupData[{
 
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->773008384],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Isolate", "]"}]], "Input",
+ CellTags->"Isolate",
+ CellLabel->"In[79]:=",
+ CellID->2088060696],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"IsolateNames", "\[Rule]", "KK"}], ",", 
+    RowBox[{"IsolatePrint", "\[Rule]", "False"}], ",", 
+    RowBox[{"IsolateFast", "\[Rule]", "False"}], ",", 
+    RowBox[{"IsolateSplit", "\[Rule]", "\[Infinity]"}], ",", 
+    RowBox[{"IsolateTimes", "\[Rule]", "False"}], ",", 
+    RowBox[{"IsolatePlus", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{371, 34},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"Isolate",
+ CellLabel->"Out[79]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell[TextData[{
  Cell[BoxData[
   InterpretationBox[
@@ -111,7 +182,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1728614717],
+ CellID->476043383],
 
 Cell[CellGroupData[{
 
@@ -121,33 +192,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1400364295],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "Isolate", "]"}]], "Input",
- CellTags->"Isolate",
- CellLabel->"In[1]:=",
- CellID->2088060696],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"IsolateNames", "\[Rule]", "KK"}], ",", 
-    RowBox[{"IsolatePrint", "\[Rule]", "False"}], ",", 
-    RowBox[{"IsolateSplit", "\[Rule]", "\[Infinity]"}], ",", 
-    RowBox[{"IsolateTimes", "\[Rule]", "False"}], ",", 
-    RowBox[{"IsolatePlus", "\[Rule]", "False"}]}], "}"}], 
-  TraditionalForm]], "Output",
- ImageSize->{402, 35},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"Isolate",
- CellLabel->"Out[1]=",
- CellID->2033547322]
-}, Open  ]],
+ CellID->704436246],
 
 Cell[CellGroupData[{
 
@@ -156,20 +201,19 @@ Cell[BoxData[
   RowBox[{"Isolate", "[", 
    RowBox[{"a", "+", "b"}], "]"}]}]], "Input",
  CellTags->"Isolate",
- CellLabel->"In[2]:=",
+ CellLabel->"In[1]:=",
  CellID->1761911845],
 
 Cell[BoxData[
  FormBox[
   TagBox[
-   RowBox[{"KK", "(", "682", ")"}],
+   RowBox[{"KK", "(", "24", ")"}],
    HoldForm], TraditionalForm]], "Output",
- ImageSize->{57, 15},
+ ImageSize->{54, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Isolate",
- CellLabel->"Out[2]=",
- CellID->2009964510]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -187,7 +231,7 @@ Cell[BoxData[
        RowBox[{"c", "+", "d"}], ")"}], " ", "f"}], " ", "+", " ", "e"}], ",", 
     "f"}], "]"}]}]], "Input",
  CellTags->"Isolate",
- CellLabel->"In[3]:=",
+ CellLabel->"In[2]:=",
  CellID->1164516818],
 
 Cell[BoxData[
@@ -195,18 +239,17 @@ Cell[BoxData[
   RowBox[{"e", "+", 
    RowBox[{"f", " ", 
     TagBox[
-     RowBox[{"KK", "(", "682", ")"}],
+     RowBox[{"KK", "(", "24", ")"}],
      HoldForm]}], "+", 
    RowBox[{"f", " ", 
     TagBox[
-     RowBox[{"KK", "(", "683", ")"}],
+     RowBox[{"KK", "(", "25", ")"}],
      HoldForm]}]}], TraditionalForm]], "Output",
- ImageSize->{174, 15},
+ ImageSize->{173, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Isolate",
- CellLabel->"Out[3]=",
- CellID->416280036]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -214,25 +257,24 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"StandardForm", "[", "t1", "]"}]], "Input",
  CellTags->"Isolate",
- CellLabel->"In[4]:=",
+ CellLabel->"In[3]:=",
  CellID->810104736],
 
 Cell[BoxData[
  RowBox[{"e", "+", 
   RowBox[{"f", " ", 
    TagBox[
-    RowBox[{"KK", "[", "682", "]"}],
+    RowBox[{"KK", "[", "24", "]"}],
     HoldForm]}], "+", 
   RowBox[{"f", " ", 
    TagBox[
-    RowBox[{"KK", "[", "683", "]"}],
+    RowBox[{"KK", "[", "25", "]"}],
     HoldForm]}]}]], "Output",
- ImageSize->{183, 15},
+ ImageSize->{166, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Isolate",
- CellLabel->"Out[4]//StandardForm=",
- CellID->1069603345]
+ CellLabel->"Out[3]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -242,7 +284,7 @@ Cell[BoxData[
   RowBox[{"t0", ",", " ", "t1", ",", " ", 
    RowBox[{"ReleaseHold", "[", "t1", "]"}]}], "}"}]], "Input",
  CellTags->"Isolate",
- CellLabel->"In[5]:=",
+ CellLabel->"In[4]:=",
  CellID->113729976],
 
 Cell[BoxData[
@@ -250,16 +292,16 @@ Cell[BoxData[
   RowBox[{"{", 
    RowBox[{
     TagBox[
-     RowBox[{"KK", "(", "682", ")"}],
+     RowBox[{"KK", "(", "24", ")"}],
      HoldForm], ",", 
     RowBox[{"e", "+", 
      RowBox[{"f", " ", 
       TagBox[
-       RowBox[{"KK", "(", "682", ")"}],
+       RowBox[{"KK", "(", "24", ")"}],
        HoldForm]}], "+", 
      RowBox[{"f", " ", 
       TagBox[
-       RowBox[{"KK", "(", "683", ")"}],
+       RowBox[{"KK", "(", "25", ")"}],
        HoldForm]}]}], ",", 
     RowBox[{
      RowBox[{"f", " ", 
@@ -269,12 +311,11 @@ Cell[BoxData[
       RowBox[{"(", 
        RowBox[{"c", "+", "d"}], ")"}]}], "+", "e"}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{410, 15},
+ ImageSize->{423, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Isolate",
- CellLabel->"Out[5]=",
- CellID->743594287]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -298,7 +339,7 @@ Cell[BoxData[
     RowBox[{"a", ",", "d"}], "}"}], ",", 
    RowBox[{"IsolateNames", "\[Rule]", "fF"}]}], "]"}]], "Input",
  CellTags->"Isolate",
- CellLabel->"In[6]:=",
+ CellLabel->"In[5]:=",
  CellID->689489417],
 
 Cell[BoxData[
@@ -306,20 +347,19 @@ Cell[BoxData[
   RowBox[{
    RowBox[{
     TagBox[
-     RowBox[{"fF", "(", "685", ")"}],
+     RowBox[{"fF", "(", "27", ")"}],
      HoldForm], " ", 
     RowBox[{"a", "(", "z", ")"}]}], "+", 
    RowBox[{
     TagBox[
-     RowBox[{"fF", "(", "684", ")"}],
+     RowBox[{"fF", "(", "26", ")"}],
      HoldForm], " ", 
     RowBox[{"d", "(", "z", ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{183, 15},
+ ImageSize->{175, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Isolate",
- CellLabel->"Out[6]=",
- CellID->2124185985]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -327,30 +367,29 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"??", "fF"}]], "Input",
  CellTags->"Isolate",
- CellLabel->"In[7]:=",
+ CellLabel->"In[6]:=",
  CellID->1089652184],
 
 Cell[CellGroupData[{
 
 Cell["Global`fF", "Print", "PrintUsage",
- CellTags->{"Info-5c3dc742-bd47-47d4-be3e-c64284c792e1", "Isolate"},
- CellID->811343181],
+ CellTags->{"Info-e2b39ee4-0424-4b02-a1ac-880dc8e10ae5", "Isolate"}],
 
 Cell[BoxData[
  InterpretationBox[GridBox[{
     {GridBox[{
        {
         RowBox[{
-         RowBox[{"fF", "[", "684", "]"}], "=", 
+         RowBox[{"fF", "[", "26", "]"}], "=", 
          RowBox[{"y", "+", "z"}]}]},
        {" "},
        {
         RowBox[{
-         RowBox[{"fF", "[", "685", "]"}], "=", 
+         RowBox[{"fF", "[", "27", "]"}], "=", 
          RowBox[{"b", "+", 
           RowBox[{"c", " ", 
            RowBox[{"\<\"HoldForm\"\>", "[", 
-            RowBox[{"fF", "[", "684", "]"}], "]"}]}]}]}]}
+            RowBox[{"fF", "[", "26", "]"}], "]"}]}]}]}]}
       },
       BaselinePosition->{Baseline, {1, 1}},
       GridBoxAlignment->{
@@ -366,8 +405,7 @@ Cell[BoxData[
      "RowsIndexed" -> {}}],
   Definition[$CellContext`fF],
   Editable->False]], "Print",
- CellTags->{"Info-5c3dc742-bd47-47d4-be3e-c64284c792e1", "Isolate"},
- CellID->1424099393]
+ CellTags->{"Info-e2b39ee4-0424-4b02-a1ac-880dc8e10ae5", "Isolate"}]
 }, Open  ]]
 }, Open  ]],
 
@@ -380,52 +418,26 @@ Cell[BoxData[
    RowBox[{"IsolateNames", "\[Rule]", "l"}], ",", 
    RowBox[{"IsolateSplit", "\[Rule]", "15"}]}], "]"}]], "Input",
  CellTags->"Isolate",
- CellLabel->"In[8]:=",
+ CellLabel->"In[7]:=",
  CellID->2019918870],
 
 Cell[BoxData[
  FormBox[
   TagBox[
-   RowBox[{"l", "(", "687", ")"}],
+   RowBox[{"l", "(", "29", ")"}],
    HoldForm], TraditionalForm]], "Output",
- ImageSize->{45, 15},
+ ImageSize->{41, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Isolate",
- CellLabel->"Out[8]=",
- CellID->1344566773]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   RowBox[{"l", "[", "2", "]"}], ",", 
-   RowBox[{"l", "[", "1", "]"}]}], "}"}]], "Input",
- CellTags->"Isolate",
- CellLabel->"In[9]:=",
- CellID->727095247],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"l", "(", "2", ")"}], ",", 
-    RowBox[{"l", "(", "1", ")"}]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{78, 15},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"Isolate",
- CellLabel->"Out[9]=",
- CellID->1999836335]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{"Clear", "[", 
   RowBox[{"t0", ",", "t1", ",", "l", ",", "fF"}], "]"}]], "Input",
  CellTags->"Isolate",
- CellLabel->"In[10]:=",
+ CellLabel->"In[8]:=",
  CellID->808271947]
 }, Open  ]]
 }, Open  ]],
@@ -444,10 +456,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 21, 50.343751}", 
+   "built" -> "{2020, 1, 5, 18, 59, 15.670179}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -458,11 +470,11 @@ TaggingRules->{
 varlist] substitutes KK[i] for all subsums in expr which are free of any \
 occurence of a member of the list varlist. Instead of KK any other head or a \
 list of names of the abbreviations may be specified with the option \
-IsolateNames.", "synonyms" -> {}, "title" -> "Isolate", "titlemodifier" -> "",
-     "windowtitle" -> "Isolate", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/Isolate"}, "SearchTextTranslated" -> ""},
+IsolateNames.", "synonyms" -> {}, "tabletags" -> {}, "title" -> "Isolate", 
+    "titlemodifier" -> "", "windowtitle" -> "Isolate", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/Isolate"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -470,8 +482,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -479,185 +492,158 @@ StyleDefinitions->Notebook[{
 (* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
- "PrimaryExamplesSection"->{
-  Cell[3607, 98, 388, 15, 31, "PrimaryExamplesSection",
-   CellTags->"PrimaryExamplesSection",
-   CellID->1728614717]},
  "Isolate"->{
-  Cell[4241, 127, 132, 4, 27, "Input",
+  Cell[4689, 141, 133, 4, 70, "Input",
    CellTags->"Isolate",
    CellID->2088060696],
-  Cell[4376, 133, 522, 15, 56, "Output",
-   CellTags->"Isolate",
-   CellID->2033547322],
-  Cell[4935, 153, 174, 6, 27, "Input",
+  Cell[4825, 147, 557, 15, 55, "Output",
+   CellTags->"Isolate"],
+  Cell[6075, 198, 174, 6, 27, "Input",
    CellTags->"Isolate",
    CellID->1761911845],
-  Cell[5112, 161, 265, 10, 36, "Output",
-   CellTags->"Isolate",
-   CellID->2009964510],
-  Cell[5414, 176, 396, 14, 27, "Input",
+  Cell[6252, 206, 243, 9, 37, "Output",
+   CellTags->"Isolate"],
+  Cell[6532, 220, 396, 14, 27, "Input",
    CellTags->"Isolate",
    CellID->1164516818],
-  Cell[5813, 192, 414, 16, 36, "Output",
-   CellTags->"Isolate",
-   CellID->416280036],
-  Cell[6264, 213, 131, 4, 27, "Input",
+  Cell[6931, 236, 392, 15, 37, "Output",
+   CellTags->"Isolate"],
+  Cell[7360, 256, 131, 4, 27, "Input",
    CellTags->"Isolate",
    CellID->810104736],
-  Cell[6398, 219, 392, 15, 49, "Output",
-   CellTags->"Isolate",
-   CellID->1069603345],
-  Cell[6827, 239, 199, 6, 27, "Input",
+  Cell[7494, 262, 369, 14, 51, "Output",
+   CellTags->"Isolate"],
+  Cell[7900, 281, 199, 6, 27, "Input",
    CellTags->"Isolate",
    CellID->113729976],
-  Cell[7029, 247, 751, 29, 36, "Output",
-   CellTags->"Isolate",
-   CellID->743594287],
-  Cell[7817, 281, 578, 20, 27, "Input",
+  Cell[8102, 289, 728, 28, 37, "Output",
+   CellTags->"Isolate"],
+  Cell[8867, 322, 578, 20, 27, "Input",
    CellTags->"Isolate",
    CellID->689489417],
-  Cell[8398, 303, 465, 18, 36, "Output",
-   CellTags->"Isolate",
-   CellID->2124185985],
-  Cell[8900, 326, 112, 4, 27, "Input",
+  Cell[9448, 344, 442, 17, 37, "Output",
+   CellTags->"Isolate"],
+  Cell[9927, 366, 112, 4, 27, "Input",
    CellTags->"Isolate",
    CellID->1089652184],
-  Cell[9037, 334, 129, 2, 42, "Print",
-   CellTags->{"Info-5c3dc742-bd47-47d4-be3e-c64284c792e1", "Isolate"},
-   CellID->811343181],
-  Cell[9169, 338, 1071, 31, 56, "Print",
-   CellTags->{"Info-5c3dc742-bd47-47d4-be3e-c64284c792e1", "Isolate"},
-   CellID->1424099393],
-  Cell[10289, 375, 296, 8, 27, "Input",
+  Cell[10064, 374, 109, 1, 42, "Print",
+   CellTags->{"Info-e2b39ee4-0424-4b02-a1ac-880dc8e10ae5", "Isolate"}],
+  Cell[10176, 377, 1047, 30, 57, "Print",
+   CellTags->{"Info-e2b39ee4-0424-4b02-a1ac-880dc8e10ae5", "Isolate"}],
+  Cell[11272, 413, 296, 8, 27, "Input",
    CellTags->"Isolate",
    CellID->2019918870],
-  Cell[10588, 385, 264, 10, 36, "Output",
-   CellTags->"Isolate",
-   CellID->1344566773],
-  Cell[10889, 400, 195, 7, 27, "Input",
-   CellTags->"Isolate",
-   CellID->727095247],
-  Cell[11087, 409, 316, 11, 36, "Output",
-   CellTags->"Isolate",
-   CellID->1999836335],
-  Cell[11418, 423, 170, 5, 27, "Input",
+  Cell[11571, 423, 242, 9, 37, "Output",
+   CellTags->"Isolate"],
+  Cell[11828, 435, 169, 5, 27, "Input",
    CellTags->"Isolate",
    CellID->808271947]},
- "Info-5c3dc742-bd47-47d4-be3e-c64284c792e1"->{
-  Cell[9037, 334, 129, 2, 42, "Print",
-   CellTags->{"Info-5c3dc742-bd47-47d4-be3e-c64284c792e1", "Isolate"},
-   CellID->811343181],
-  Cell[9169, 338, 1071, 31, 56, "Print",
-   CellTags->{"Info-5c3dc742-bd47-47d4-be3e-c64284c792e1", "Isolate"},
-   CellID->1424099393]}
+ "PrimaryExamplesSection"->{
+  Cell[5443, 169, 387, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->476043383]},
+ "Info-e2b39ee4-0424-4b02-a1ac-880dc8e10ae5"->{
+  Cell[10064, 374, 109, 1, 42, "Print",
+   CellTags->{"Info-e2b39ee4-0424-4b02-a1ac-880dc8e10ae5", "Isolate"}],
+  Cell[10176, 377, 1047, 30, 57, "Print",
+   CellTags->{"Info-e2b39ee4-0424-4b02-a1ac-880dc8e10ae5", "Isolate"}]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 13745, 481},
- {"Isolate", 13879, 485},
- {"Info-5c3dc742-bd47-47d4-be3e-c64284c792e1", 15779, 546}
+ {"Isolate", 14182, 494},
+ {"PrimaryExamplesSection", 15682, 540},
+ {"Info-e2b39ee4-0424-4b02-a1ac-880dc8e10ae5", 15850, 544}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[579, 21, 2240, 52, 51, "AnchorBarGrid",
+Cell[579, 21, 2269, 53, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2822, 75, 50, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2875, 78, 707, 16, 129, "Usage",
+Cell[2851, 76, 284, 11, 45, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[3160, 91, 707, 16, 136, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3607, 98, 388, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->1728614717],
+Cell[3892, 111, 738, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->773008384],
+Cell[4633, 137, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[4020, 117, 196, 6, 25, "ExampleSection",
- CellID->1400364295],
-Cell[CellGroupData[{
-Cell[4241, 127, 132, 4, 27, "Input",
+Cell[4689, 141, 133, 4, 70, "Input",
  CellTags->"Isolate",
  CellID->2088060696],
-Cell[4376, 133, 522, 15, 56, "Output",
- CellTags->"Isolate",
- CellID->2033547322]
+Cell[4825, 147, 557, 15, 55, "Output",
+ CellTags->"Isolate"]
+}, Open  ]]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4935, 153, 174, 6, 27, "Input",
+Cell[5443, 169, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->476043383],
+Cell[CellGroupData[{
+Cell[5855, 188, 195, 6, 26, "ExampleSection",
+ CellID->704436246],
+Cell[CellGroupData[{
+Cell[6075, 198, 174, 6, 27, "Input",
  CellTags->"Isolate",
  CellID->1761911845],
-Cell[5112, 161, 265, 10, 36, "Output",
- CellTags->"Isolate",
- CellID->2009964510]
+Cell[6252, 206, 243, 9, 37, "Output",
+ CellTags->"Isolate"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5414, 176, 396, 14, 27, "Input",
+Cell[6532, 220, 396, 14, 27, "Input",
  CellTags->"Isolate",
  CellID->1164516818],
-Cell[5813, 192, 414, 16, 36, "Output",
- CellTags->"Isolate",
- CellID->416280036]
+Cell[6931, 236, 392, 15, 37, "Output",
+ CellTags->"Isolate"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6264, 213, 131, 4, 27, "Input",
+Cell[7360, 256, 131, 4, 27, "Input",
  CellTags->"Isolate",
  CellID->810104736],
-Cell[6398, 219, 392, 15, 49, "Output",
- CellTags->"Isolate",
- CellID->1069603345]
+Cell[7494, 262, 369, 14, 51, "Output",
+ CellTags->"Isolate"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6827, 239, 199, 6, 27, "Input",
+Cell[7900, 281, 199, 6, 27, "Input",
  CellTags->"Isolate",
  CellID->113729976],
-Cell[7029, 247, 751, 29, 36, "Output",
- CellTags->"Isolate",
- CellID->743594287]
+Cell[8102, 289, 728, 28, 37, "Output",
+ CellTags->"Isolate"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7817, 281, 578, 20, 27, "Input",
+Cell[8867, 322, 578, 20, 27, "Input",
  CellTags->"Isolate",
  CellID->689489417],
-Cell[8398, 303, 465, 18, 36, "Output",
- CellTags->"Isolate",
- CellID->2124185985]
+Cell[9448, 344, 442, 17, 37, "Output",
+ CellTags->"Isolate"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8900, 326, 112, 4, 27, "Input",
+Cell[9927, 366, 112, 4, 27, "Input",
  CellTags->"Isolate",
  CellID->1089652184],
 Cell[CellGroupData[{
-Cell[9037, 334, 129, 2, 42, "Print",
- CellTags->{"Info-5c3dc742-bd47-47d4-be3e-c64284c792e1", "Isolate"},
- CellID->811343181],
-Cell[9169, 338, 1071, 31, 56, "Print",
- CellTags->{"Info-5c3dc742-bd47-47d4-be3e-c64284c792e1", "Isolate"},
- CellID->1424099393]
+Cell[10064, 374, 109, 1, 42, "Print",
+ CellTags->{"Info-e2b39ee4-0424-4b02-a1ac-880dc8e10ae5", "Isolate"}],
+Cell[10176, 377, 1047, 30, 57, "Print",
+ CellTags->{"Info-e2b39ee4-0424-4b02-a1ac-880dc8e10ae5", "Isolate"}]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10289, 375, 296, 8, 27, "Input",
+Cell[11272, 413, 296, 8, 27, "Input",
  CellTags->"Isolate",
  CellID->2019918870],
-Cell[10588, 385, 264, 10, 36, "Output",
- CellTags->"Isolate",
- CellID->1344566773]
+Cell[11571, 423, 242, 9, 37, "Output",
+ CellTags->"Isolate"]
 }, Open  ]],
-Cell[CellGroupData[{
-Cell[10889, 400, 195, 7, 27, "Input",
- CellTags->"Isolate",
- CellID->727095247],
-Cell[11087, 409, 316, 11, 36, "Output",
- CellTags->"Isolate",
- CellID->1999836335]
-}, Open  ]],
-Cell[11418, 423, 170, 5, 27, "Input",
+Cell[11828, 435, 169, 5, 27, "Input",
  CellTags->"Isolate",
  CellID->808271947]
 }, Open  ]]
 }, Open  ]],
-Cell[11615, 432, 23, 0, 42, "FooterCell"]
+Cell[12024, 444, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

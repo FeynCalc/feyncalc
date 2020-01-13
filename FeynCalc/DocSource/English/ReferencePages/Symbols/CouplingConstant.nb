@@ -117,19 +117,20 @@ Cell["CouplingConstant", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData["CouplingConstant"], "InlineFormula"],
- " \[LineSeparator]",
- "is an option for several Feynman rule functions and for CovariantD and \
-FieldStrength.\nIn the convention of the subpackage PHI, CouplingConstant is \
-also the head of coupling constants.  CouplingConstant takes three extra \
-optional arguments, with head RenormalizationState, RenormalizationScheme and \
-ExpansionState respectively.  E.g. CouplingConstant[QED[1]] is the unit \
-charge, CouplingConstant[ChPT2[4],1] is the first of the coupling constants \
-of the lagrangian ChPT2[4].  CouplingConstant[a_,b_,c___][i_] := \
-CouplingConstant[a,b,RenormalizationState[i],c]."
+ " \[LineSeparator]is an option for several Feynman rule functions and for \
+CovariantD and FieldStrength."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
+Cell["\<\
+In the convention of the subpackage PHI, CouplingConstant is also the head of \
+coupling constants.  CouplingConstant takes three extra optional arguments, \
+with head RenormalizationState, RenormalizationScheme and ExpansionState \
+respectively.  E.g. CouplingConstant[QED[1]] is the unit charge, \
+CouplingConstant[ChPT2[4],1] is the first of the coupling constants of the \
+lagrangian ChPT2[4].  CouplingConstant[a_,b_,c___][i_] := \
+CouplingConstant[a,b,RenormalizationState[i],c].\
+\>", "Notes",
  CellID->1067943069]
 }, Open  ]],
 
@@ -175,15 +176,8 @@ Cell[TextData[{
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/FieldStrength",
   ButtonNote->"FieldStrength"],
- ", ",
- ButtonBox["\"PHI - A Mathematica package for ChPT calculations\"",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/phi",
-  ButtonNote->"phi"],
  "."
-}], "Text",
- CellTags->"CouplingConstant",
- CellID->1805142582]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -269,12 +263,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{630, Automatic}, {Automatic, 73}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

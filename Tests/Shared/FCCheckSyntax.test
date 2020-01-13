@@ -1,0 +1,112 @@
+
+
+(* :Title: FCCheckSyntax.test                                               *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCCheckSyntax  			*)
+
+(* ------------------------------------------------------------------------ *)
+
+
+
+Tests`Shared`fcstFCCheckSyntaxLorentz =
+({
+{"fcstFCCheckSyntaxLorentz-ID1",
+"CheckAbort[FCCheckSyntax[FV[p,mu]],True]", "FV[p, mu]"},
+{"fcstFCCheckSyntaxLorentz-ID2",
+"CheckAbort[FCCheckSyntax[FV[p,mu]+FV[p,nu]],True]", "True"},
+{"fcstFCCheckSyntaxLorentz-ID3",
+"CheckAbort[FCCheckSyntax[FV[p,mu]FV[p,mu]],True]",
+"FV[p, mu]^2"},
+{"fcstFCCheckSyntaxLorentz-ID4",
+"CheckAbort[FCCheckSyntax[FV[p,mu]FV[p,mu]FV[p,mu]],True]", "True"},
+{"fcstFCCheckSyntaxLorentz-ID5",
+"CheckAbort[FCCheckSyntax[FV[p,mu]FV[p,mu]+FV[p,nu]FV[p,nu]],True]\
+", "FV[p, mu]^2 + FV[p, nu]^2"},
+{"fcstFCCheckSyntaxLorentz-ID6",
+"CheckAbort[FCCheckSyntax[FV[p,mu]FV[p,mu]+FV[p,nu]FV[p,nu]FV[p,\
+rho]],True]", "True"}
+});
+
+Tests`Shared`fcstFCCheckSyntaxCartesian =
+({
+{"fcstFCCheckSyntaxCartesian-ID1",
+"CheckAbort[FCCheckSyntax[CV[p,i]],True]", "CV[p, i]"},
+{"fcstFCCheckSyntaxCartesian-ID2",
+"CheckAbort[FCCheckSyntax[CV[p,i]+CV[p,j]],True]", "True"},
+{"fcstFCCheckSyntaxCartesian-ID3",
+"CheckAbort[FCCheckSyntax[CV[p,i]CV[p,i]],True]", "CV[p, i]^2"},
+{"fcstFCCheckSyntaxCartesian-ID4",
+"CheckAbort[FCCheckSyntax[CV[p,i]CV[p,i]CV[p,i]],True]",
+"CV[p, i]^3"},
+{"fcstFCCheckSyntaxCartesian-ID5",
+"CheckAbort[FCCheckSyntax[CV[p,i]CV[p,i]+CV[p,j]CV[p,j]],True]",
+"True"},
+{"fcstFCCheckSyntaxCartesian-ID6",
+"CheckAbort[FCCheckSyntax[CV[p,i]CV[p,i]+CV[p,j]CV[p,j]CV[p,k]],\
+True]", "True"}
+})
+
+Tests`Shared`fcstFCCheckSyntaxColor =
+({
+{"fcstFCCheckSyntaxColor-ID1",
+"CheckAbort[FCCheckSyntax[SUNT[a]],True]", "SUNT[a]"},
+{"fcstFCCheckSyntaxColor-ID2",
+"CheckAbort[FCCheckSyntax[SUNT[a]+SUNT[b]],True]", "True"},
+{"fcstFCCheckSyntaxColor-ID3",
+"CheckAbort[FCCheckSyntax[SUNT[mu]SUNT[mu]],True]", "SUNT[mu]^2"},
+{"fcstFCCheckSyntaxColor-ID4",
+"CheckAbort[FCCheckSyntax[SUNT[mu]^2SUNT[nu]],True]", "True"},
+{"fcstFCCheckSyntaxColor-ID5",
+"CheckAbort[FCCheckSyntax[SUNT[nu].(SUNT[mu]^2).SUNT[rho]],True]",
+"SUNT[nu] . SUNT[mu]^2 . SUNT[rho]"},
+{"fcstFCCheckSyntaxColor-ID6",
+"CheckAbort[FCCheckSyntax[SUNT[nu].(SUNT[mu]^3).SUNT[rho]],True]",
+"True"},
+{"fcstFCCheckSyntaxColor-ID7",
+"CheckAbort[FCCheckSyntax[SUNT[a, b] SUNT[c]],True]", "True"}
+})
+
+Tests`Shared`fcstFCCheckSyntaxDirac =
+({
+{"fcstFCCheckSyntaxDirac-ID1",
+"CheckAbort[FCCheckSyntax[GA[mu]],True]", "GA[mu]"},
+{"fcstFCCheckSyntaxDirac-ID2",
+"CheckAbort[FCCheckSyntax[GA[mu]+GA[nu]],True]", "True"},
+{"fcstFCCheckSyntaxDirac-ID3",
+"CheckAbort[FCCheckSyntax[GA[mu]GA[mu]],True]", "GA[mu]^2"},
+{"fcstFCCheckSyntaxDirac-ID4",
+"CheckAbort[FCCheckSyntax[GA[mu]^2GA[nu]],True]", "True"},
+{"fcstFCCheckSyntaxDirac-ID5",
+"CheckAbort[FCCheckSyntax[GA[nu].(GA[mu]^2).GA[rho]],True]",
+"GA[nu] . GA[mu]^2 . GA[rho]"},
+{"fcstFCCheckSyntaxDirac-ID6",
+"CheckAbort[FCCheckSyntax[GA[nu].(GA[mu]^3).GA[rho]],True]", "True"},
+{"fcstFCCheckSyntaxDirac-ID7",
+"CheckAbort[FCCheckSyntax[GA[a, b] GA[c]],True]", "True"}
+})
+
+Tests`Shared`fcstFCCheckSyntaxPauli =
+({
+{"fcstFCCheckSyntaxPauli-ID1",
+"CheckAbort[FCCheckSyntax[SI[mu]],True]", "SI[mu]"},
+{"fcstFCCheckSyntaxPauli-ID2",
+"CheckAbort[FCCheckSyntax[SI[mu]+SI[nu]],True]", "True"},
+{"fcstFCCheckSyntaxPauli-ID3",
+"CheckAbort[FCCheckSyntax[SI[mu]SI[mu]],True]", "SI[mu]^2"},
+{"fcstFCCheckSyntaxPauli-ID4",
+"CheckAbort[FCCheckSyntax[SI[mu]^2SI[nu]],True]", "True"},
+{"fcstFCCheckSyntaxPauli-ID5",
+"CheckAbort[FCCheckSyntax[SI[nu].(SI[mu]^2).SI[rho]],True]",
+"SI[nu] . SI[mu]^2 . SI[rho]"},
+{"fcstFCCheckSyntaxPauli-ID6",
+"CheckAbort[FCCheckSyntax[SI[nu].(SI[mu]^3).SI[rho]],True]", "True"},
+{"fcstFCCheckSyntaxPauli-ID7",
+"CheckAbort[FCCheckSyntax[SI[a, b] SI[c]],True]", "True"}
+})

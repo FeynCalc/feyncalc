@@ -124,8 +124,26 @@ an option of DiracSimplify."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell["\<\
+DiracSigmaExplict is also an option of various FeynCalc functions that handle \
+the Dirac algebra\
+\>", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "DiracSigmaExplicit", "]"}]], "Input",
+ CellLabel->"In[60]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[60]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -161,14 +179,18 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
+ ButtonBox["DiracGamma",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracGamma",
+  ButtonNote->"DiracGamma"],
+ ", ",
  ButtonBox["DiracSigma",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/DiracSigma",
   ButtonNote->"DiracSigma"],
  "."
-}], "Text",
- CellTags->"DiracSigmaExplicit",
- CellID->1461748259]
+}], "SeeAlso",
+ CellID->1822030255]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -203,7 +225,7 @@ Cell[BoxData[
    RowBox[{"GA", "[", "\[Alpha]", "]"}], ",", 
    RowBox[{"GA", "[", "\[Beta]", "]"}]}], "]"}]], "Input",
  CellTags->"DiracSigmaExplicit",
- CellLabel->"In[1]:=",
+ CellLabel->"In[61]:=",
  CellID->535100858],
 
 Cell[BoxData[
@@ -215,8 +237,7 @@ Cell[BoxData[
     FormBox["\[Beta]",
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"DiracSigmaExplicit",
- CellLabel->"Out[1]=",
- CellID->1064329329]
+ CellLabel->"Out[61]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -224,7 +245,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"DiracSigmaExplicit", "[", "%", "]"}]], "Input",
  CellTags->"DiracSigmaExplicit",
- CellLabel->"In[2]:=",
+ CellLabel->"In[62]:=",
  CellID->280405798],
 
 Cell[BoxData[
@@ -260,8 +281,115 @@ Cell[BoxData[
          TraditionalForm],
         TraditionalForm]]}]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"DiracSigmaExplicit",
- CellLabel->"Out[2]=",
- CellID->1384105478]
+ CellLabel->"Out[62]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"GSD", "[", "p", "]"}], ".", 
+  RowBox[{"DiracSigma", "[", 
+   RowBox[{
+    RowBox[{"GAD", "[", "\[Mu]", "]"}], ",", 
+    RowBox[{"GAD", "[", "\[Nu]", "]"}]}], "]"}], ".", 
+  RowBox[{"GSD", "[", "q", "]"}]}]], "Input",
+ CellLabel->"In[63]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{"\[Gamma]", "\[CenterDot]", 
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], ".", 
+   SuperscriptBox["\[Sigma]", 
+    RowBox[{
+     FormBox["\[Mu]",
+      TraditionalForm], 
+     FormBox["\[Nu]",
+      TraditionalForm]}]], ".", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{"\[Gamma]", "\[CenterDot]", 
+      FormBox[
+       FormBox["q",
+        TraditionalForm],
+       TraditionalForm]}],
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[63]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSigmaExplicit", "[", "%", "]"}]], "Input",
+ CellLabel->"In[64]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox["1", "2"], " ", "\[ImaginaryI]", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"\[Gamma]", "\[CenterDot]", 
+        FormBox[
+         FormBox["p",
+          TraditionalForm],
+         TraditionalForm]}], ")"}], ".", 
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      RowBox[{"(", 
+       RowBox[{"\[Gamma]", "\[CenterDot]", 
+        FormBox[
+         FormBox["q",
+          TraditionalForm],
+         TraditionalForm]}], ")"}]}], "-", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"\[Gamma]", "\[CenterDot]", 
+        FormBox[
+         FormBox["p",
+          TraditionalForm],
+         TraditionalForm]}], ")"}], ".", 
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      SuperscriptBox["\[Gamma]", 
+       FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm]], ".", 
+      RowBox[{"(", 
+       RowBox[{"\[Gamma]", "\[CenterDot]", 
+        FormBox[
+         FormBox["q",
+          TraditionalForm],
+         TraditionalForm]}], ")"}]}]}], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[64]="]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -326,12 +454,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{1207, Automatic}, {Automatic, 137}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

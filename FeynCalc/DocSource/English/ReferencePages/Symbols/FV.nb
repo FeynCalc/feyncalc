@@ -180,19 +180,12 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/FVD",
   ButtonNote->"FVD"],
  ", ",
- ButtonBox["FourVector",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/FourVector",
-  ButtonNote->"FourVector"],
- ", ",
  ButtonBox["Pair",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/Pair",
   ButtonNote->"Pair"],
  "."
-}], "Text",
- CellTags->"FV",
- CellID->449809030]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -225,28 +218,23 @@ Cell[BoxData[
  RowBox[{"FV", "[", 
   RowBox[{"p", ",", "\[Mu]"}], "]"}]], "Input",
  CellTags->"FV",
- CellLabel->"In[1]:=",
+ CellLabel->"In[161]:=",
  CellID->1800701132],
 
 Cell[BoxData[
  FormBox[
-  FormBox[
-   SuperscriptBox[
-    FormBox[
-     OverscriptBox[
-      FormBox["p",
-       TraditionalForm], "_"],
-     TraditionalForm], 
-    FormBox[
-     FormBox[
-      FormBox["\[Mu]",
-       TraditionalForm],
-      TraditionalForm],
-     TraditionalForm]],
-   TraditionalForm], TraditionalForm]], "Output",
+  SuperscriptBox[
+   FormBox[
+    OverscriptBox[
+     FormBox["p",
+      TraditionalForm], "_"],
+    TraditionalForm], 
+   FormBox[
+    FormBox["\[Mu]",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"FV",
- CellLabel->"Out[1]=",
- CellID->1773215925]
+ CellLabel->"Out[161]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -256,35 +244,30 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"p", "-", "q"}], ",", "\[Mu]"}], "]"}]], "Input",
  CellTags->"FV",
- CellLabel->"In[2]:=",
+ CellLabel->"In[162]:=",
  CellID->1600944575],
 
 Cell[BoxData[
  FormBox[
-  FormBox[
-   SuperscriptBox[
-    RowBox[{"(", 
-     FormBox[
-      FormBox[
-       RowBox[{
-        OverscriptBox[
-         FormBox["p",
-          TraditionalForm], "_"], "-", 
-        OverscriptBox[
-         FormBox["q",
-          TraditionalForm], "_"]}],
-       TraditionalForm],
-      TraditionalForm], ")"}], 
+  SuperscriptBox[
+   RowBox[{"(", 
     FormBox[
      FormBox[
-      FormBox["\[Mu]",
-       TraditionalForm],
+      RowBox[{
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"], "-", 
+       OverscriptBox[
+        FormBox["q",
+         TraditionalForm], "_"]}],
       TraditionalForm],
-     TraditionalForm]],
-   TraditionalForm], TraditionalForm]], "Output",
+     TraditionalForm], ")"}], 
+   FormBox[
+    FormBox["\[Mu]",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"FV",
- CellLabel->"Out[2]=",
- CellID->1009721662]
+ CellLabel->"Out[162]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -294,15 +277,14 @@ Cell[BoxData[
   RowBox[{"FV", "[", 
    RowBox[{"p", ",", "\[Mu]"}], "]"}], "//", "StandardForm"}]], "Input",
  CellTags->"FV",
- CellLabel->"In[3]:=",
+ CellLabel->"In[163]:=",
  CellID->2031151174],
 
 Cell[BoxData[
  RowBox[{"FV", "[", 
   RowBox[{"p", ",", "\[Mu]"}], "]"}]], "Output",
  CellTags->"FV",
- CellLabel->"Out[3]//StandardForm=",
- CellID->732230663]
+ CellLabel->"Out[163]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -314,7 +296,7 @@ Cell[BoxData[
     RowBox[{"p", ",", "\[Mu]"}], "]"}], "]"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"FV",
- CellLabel->"In[4]:=",
+ CellLabel->"In[164]:=",
  CellID->1187758267],
 
 Cell[BoxData[
@@ -323,16 +305,11 @@ Cell[BoxData[
    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
    RowBox[{"Momentum", "[", "p", "]"}]}], "]"}]], "Output",
  CellTags->"FV",
- CellLabel->"Out[4]//StandardForm=",
- CellID->1070070718]
+ CellLabel->"Out[164]//StandardForm="]
 }, Open  ]],
 
-Cell["\<\
-There is no special function to expand momenta in FV; ExpandScalarProduct \
-does the job.\
-\>", "Text",
- CellTags->"FV",
- CellID->1859479702],
+Cell["ExpandScalarProduct is used to expand momenta in FV", "Notes",
+ CellID->97927264],
 
 Cell[CellGroupData[{
 
@@ -341,67 +318,33 @@ Cell[BoxData[
   RowBox[{"FV", "[", 
    RowBox[{
     RowBox[{"p", "-", "q"}], ",", "\[Mu]"}], "]"}], "]"}]], "Input",
- CellTags->"FV",
- CellLabel->"In[5]:=",
- CellID->260687674],
+ CellLabel->"In[165]:=",
+ CellID->1140711302],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox["\[Mu]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], "-", 
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      OverscriptBox[
-       FormBox["q",
-        TraditionalForm], "_"],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox["\[Mu]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- CellTags->"FV",
- CellLabel->"Out[5]=",
- CellID->1212809923]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"StandardForm", "[", "%", "]"}]], "Input",
- CellTags->"FV",
- CellLabel->"In[6]:=",
- CellID->306111649],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"Pair", "[", 
-   RowBox[{
-    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
-    RowBox[{"Momentum", "[", "p", "]"}]}], "]"}], "-", 
-  RowBox[{"Pair", "[", 
-   RowBox[{
-    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
-    RowBox[{"Momentum", "[", "q", "]"}]}], "]"}]}]], "Output",
- CellTags->"FV",
- CellLabel->"Out[6]//StandardForm=",
- CellID->1086258444]
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm]], "-", 
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ CellLabel->"Out[165]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -466,12 +409,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{804, Automatic}, {Automatic, 65}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

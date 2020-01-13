@@ -1,0 +1,33 @@
+
+
+(* :Title: EpsContractFreeQ.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for EpsContractFreeQ	*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Lorentz`fcstEpsContractFreeQ =
+({
+{"fcstEpsContractFreeQ-ID1", "EpsContractFreeQ[0]", "True"},
+{"fcstEpsContractFreeQ-ID2",
+"EpsContractFreeQ[FCI[LC[p1,p2,p3,p4]]]", "True"},
+{"fcstEpsContractFreeQ-ID3",
+"EpsContractFreeQ[FCI[LC[p1,p2,p3,p4]^2]]", "False"},
+{"fcstEpsContractFreeQ-ID4",
+"EpsContractFreeQ[xxx \
+Sum[Eps[LorentzIndex[i[s]],LorentzIndex[j[s]],LorentzIndex[k[s]],\
+LorentzIndex[l[s]]],{s,1,5000}]]", "True"},
+{"fcstEpsContractFreeQ-ID5",
+"EpsContractFreeQ[xxx \
+Sum[Eps[LorentzIndex[i[s]],LorentzIndex[j[s]],LorentzIndex[k[s]],\
+LorentzIndex[l[s]]],{s,1,5000}]+FCI[LC[][p1,p2,p3,p4]LC[][p5,p6,p7,p8]\
+]]", "False"},
+{"fcstEpsContractFreeQ-ID6", Null, "Null"}
+});

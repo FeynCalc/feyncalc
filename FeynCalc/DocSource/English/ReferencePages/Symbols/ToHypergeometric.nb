@@ -195,9 +195,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/HypergeometricSE",
   ButtonNote->"HypergeometricSE"],
  "."
-}], "Text",
- CellTags->"ToHypergeometric",
- CellID->811059910]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -257,8 +255,7 @@ Cell[BoxData[
    TemplateBox[{RowBox[{"b", "+", "c", "+", "2"}]},
     "Gamma"]], TraditionalForm]], "Output",
  CellTags->"ToHypergeometric",
- CellLabel->"Out[1]=",
- CellID->309474484]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -295,8 +292,7 @@ Cell[BoxData[
    TemplateBox[{"c"},
     "Gamma"]], TraditionalForm]], "Output",
  CellTags->"ToHypergeometric",
- CellLabel->"Out[2]=",
- CellID->730361964]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -334,8 +330,7 @@ Cell[BoxData[
    TemplateBox[{RowBox[{"b", "+", "c", "+", "2"}]},
     "Gamma"]], TraditionalForm]], "Output",
  CellTags->"ToHypergeometric",
- CellLabel->"Out[3]=",
- CellID->602855066]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -374,8 +369,7 @@ Cell[BoxData[
    TemplateBox[{"c"},
     "Gamma"]], TraditionalForm]], "Output",
  CellTags->"ToHypergeometric",
- CellLabel->"Out[4]=",
- CellID->1693879110]
+ CellLabel->"Out[4]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -440,12 +434,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{694, Automatic}, {Automatic, 134}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

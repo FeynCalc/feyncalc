@@ -179,9 +179,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/FeynCalcInternal",
   ButtonNote->"FeynCalcInternal"],
  "."
-}], "Text",
- CellTags->"FC",
- CellID->121401811]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -210,7 +208,7 @@ Cell[BoxData[
 
 Cell[BoxData["FI"], "Input",
  CellTags->"FC",
- CellLabel->"In[1]:=",
+ CellLabel->"In[752]:=",
  CellID->907505833],
 
 Cell[CellGroupData[{
@@ -222,18 +220,17 @@ Cell[BoxData[
    RowBox[{"DiracGamma", "[", 
     RowBox[{"Momentum", "[", "p", "]"}], "]"}]}], "}"}]], "Input",
  CellTags->"FC",
- CellLabel->"In[2]:=",
+ CellLabel->"In[753]:=",
  CellID->2003442189],
 
 Cell["{DiracGamma[5], DiracGamma[Momentum[p]]}", "Output",
  CellTags->"FC",
- CellLabel->"Out[2]=",
- CellID->914835770]
+ CellLabel->"Out[753]="]
 }, Open  ]],
 
 Cell[BoxData["FC"], "Input",
  CellTags->"FC",
- CellLabel->"In[3]:=",
+ CellLabel->"In[754]:=",
  CellID->119415853],
 
 Cell[CellGroupData[{
@@ -245,7 +242,7 @@ Cell[BoxData[
    RowBox[{"DiracGamma", "[", 
     RowBox[{"Momentum", "[", "p", "]"}], "]"}]}], "}"}]], "Input",
  CellTags->"FC",
- CellLabel->"In[4]:=",
+ CellLabel->"In[755]:=",
  CellID->1977687896],
 
 Cell[BoxData[
@@ -264,8 +261,7 @@ Cell[BoxData[
         TraditionalForm], "_"],
       TraditionalForm]}]}], "}"}], TraditionalForm]], "Output",
  CellTags->"FC",
- CellLabel->"Out[4]=",
- CellID->832664174]
+ CellLabel->"Out[755]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -330,12 +326,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{1267, Automatic}, {Automatic, 276}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

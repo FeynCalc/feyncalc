@@ -1,0 +1,50 @@
+
+
+(* :Title: DiracChainCombine.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for DiracChainCombine	*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Dirac`fcstDiracChainCombine =
+({
+{"fcstDiracChainCombine-ID1",
+"DiracChainCombine[DCHN[GS[p],i,j]+DCHN[GS[q],i,j],FCE\[Rule]True]\
+", "DCHN[GS[p] + GS[q], i, j]"},
+{"fcstDiracChainCombine-ID2",
+"DiracChainCombine[DCHN[GS[p],SpinorUBar[p1,m],j]+DCHN[GS[q],\
+SpinorUBar[p1,m],j],FCE\[Rule]True]",
+"DCHN[GS[p] + GS[q], Spinor[Momentum[p1], m, 1], j]"},
+{"fcstDiracChainCombine-ID3",
+"DiracChainCombine[DCHN[GS[p],i,SpinorU[p1,m]]+DCHN[GS[q],i,\
+SpinorU[p1,m]],FCE\[Rule]True]",
+"DCHN[GS[p] + GS[q], i, Spinor[Momentum[p1], m, 1]]"},
+{"fcstDiracChainCombine-ID4",
+"DiracChainCombine[DCHN[GS[p],SpinorVBar[p2,m2],SpinorU[p1,m1]]+\
+DCHN[GS[q],SpinorVBar[p2,m2],SpinorU[p1,m1]],FCE\[Rule]True]",
+"DCHN[GS[p] + GS[q], Spinor[-Momentum[p2], m2, 1], \
+Spinor[Momentum[p1], m1, 1]]"},
+{"fcstDiracChainCombine-ID5",
+"DiracChainCombine[DCHN[GS[p],i,j]+DCHN[GS[q],i,j],\
+DiracGammaCombine\[Rule]True,FCE\[Rule]True]", "DCHN[GS[p + q], i, j]"},
+{"fcstDiracChainCombine-ID6",
+"DiracChainCombine[(DCHN[GSD[q], Dir3, Dir4] FAD[{k, me}])/(
+2 SPD[q, q]) + 1/(2 SPD[q, q]) FAD[k, {k - q, me}] (-2 DCHN[GSD[q], Dir3, Dir4] SPD[q, q] +
+2 DCHN[1, Dir3, Dir4] me SPD[q, q] + DCHN[GSD[q], Dir3, Dir4] (-me^2 + SPD[q, q])), FCE -> True]",
+	"(DCHN[GSD[q], Dir3, Dir4] FAD[{k, me}])/(2 SPD[q, q]) + (
+DCHN[2 me SPD[q, q] - 2 GSD[q] SPD[q, q] +
+	GSD[q] (-me^2 + SPD[q, q]), Dir3, Dir4] FAD[k, {k - q, me}])/(
+2 SPD[q, q])"},
+{"fcstDiracChainCombine-ID7",
+"DiracChainCombine[
+DCHN[1, i, j] DCHN[1, k, l] + DCHN[1, k, l] DCHN[GA[5], i, j] +
+DCHN[1, i, j] DCHN[GA[5], k, l] +
+DCHN[GA[5], i, j] DCHN[GA[5], k, l], FCE->True]", "DCHN[1 + GA[5], i, j] DCHN[1 + GA[5], k, l]"}
+})

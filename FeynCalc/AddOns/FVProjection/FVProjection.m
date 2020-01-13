@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary: 	Toy add-on for FeynCalc for obtaining transverse and
@@ -19,19 +19,19 @@
 
 FVProjectionT::usage=
 "FVProjectionT[x_,mu_,p_] returns the transverse component of the 4-vector \
-x^mu with respect to the the 4-vector p";
+x^mu with respect to the 4-vector p";
 
 FVProjectionL::usage=
 "FVProjectionL[x_,mu_,p_] returns the longitudinal component of the 4-vector \
-x^mu with respect to the the 4-vector p";
+x^mu with respect to the 4-vector p";
 
 FVProjectorT::usage=
 "FVProjectorT[mu,nu,p] returns the transverse projector with respect to \
-the the 4-vector p";
+the 4-vector p";
 
 FVProjectorL::usage=
 "FVProjectorL[mu,nu,p] returns the longitudinal projector with respect to \
-the the 4-vector p";
+the 4-vector p";
 
 $FVProjectionVersion::usage=
 "$FVProjectionVersion is the string that represents the version of FVProjection";
@@ -126,7 +126,7 @@ projection[x_, p_, mu_, nu_,  type_, {dim_,fce_}]:=
 
 
 (* Print startup message *)
-If[ Global`$FeynCalcStartupMessages =!= False,
+If[ $FeynCalcStartupMessages =!= False,
 	Print[Style["FVProjector ", "Text", Bold], Style[$FVProjectionVersion <> " loaded.", "Text"]]
 ];
 

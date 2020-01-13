@@ -78,6 +78,13 @@ IFPDOff[exp_,qu__] :=
 	If[ FreeQ[exp, IFPD],
 		exp,
 		Block[ {int,qq,sub,t1,t2,t3,t4},
+
+			If[	!FreeQ2[{exp}, FeynCalc`Package`NRStuff],
+				Message[FeynCalc::nrfail];
+				Abort[]
+			];
+
+
 			int = Apply[Hold, {exp}];
 			qq = {qu} /. Momentum[a_,___] :> a;
 			t2 = Cases2[int, IFPD];
@@ -90,7 +97,7 @@ IFPDOff[exp_,qu__] :=
 			int = int /. sub;
 			int = Operate[# /. Hold -> Identity&, int];
 			int = int /. FEP[a_, b_]^n_Integer?Negative :>
-								(ExpandScalarProduct[a, a] - b^2)^(-n);
+								(ExpandScalarProduct[Pair[a, a]] - b^2)^(-n);
 			int = int /. {FEP :> FP, IFPD :> ifex};
 			int
 		]

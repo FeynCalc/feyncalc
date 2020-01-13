@@ -1,5 +1,4 @@
-			timingstart = AbsoluteTime[];
-$LoadTARCER=$LoadPhi=False;
+timingstart = AbsoluteTime[];
 <<FeynCalc`;
 
 (* See also: http://forums.wolfram.com/mathgroup/archive/2003/Oct/msg00516.html *)

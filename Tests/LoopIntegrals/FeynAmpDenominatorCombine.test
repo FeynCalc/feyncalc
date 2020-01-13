@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for
@@ -17,5 +17,51 @@
 Tests`LoopIntegrals`fcstFeynAmpDenominatorCombine = {
 {"fcstFeynAmpDenominatorCombine-ID1",
 	"FeynAmpDenominatorCombine[FAD[q] FAD[q - p]] // FCE",
-	"FAD[q, -p + q]"}
+	"FAD[q, -p + q]"},
+{"fcstFeynAmpDenominatorCombine-ID2",
+	"FeynAmpDenominatorCombine[GFAD[{SPD[q1, p] SPD[q2, p], 2}] FAD[{p, m}]]",
+	"FeynAmpDenominator[GenericPropagatorDenominator[
+Pair[Momentum[p, D], Momentum[q1, D]] Pair[Momentum[p, D],
+	Momentum[q2, D]], {2, 1}],
+PropagatorDenominator[Momentum[p, D], m]]"},
+{"fcstFeynAmpDenominatorCombine-ID3",
+	"FeynAmpDenominatorCombine[ SFAD[{SPD[q1, p] SPD[q2, p], 2}] FAD[{p, m}]]",
+	"FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], m],
+StandardPropagatorDenominator[
+Momentum[Pair[Momentum[p, D], Momentum[q1, D]] Pair[Momentum[p, D],
+	Momentum[q2, D]], D], 0, -2, {1, 1}]]"},
+{"fcstFeynAmpDenominatorCombine-ID4",
+	"FeynAmpDenominatorCombine[
+FeynAmpDenominator[CartesianPropagatorDenominator[
+CartesianMomentum[p, -1 + D] - CartesianMomentum[q, -1 + D],0, 0,
+{1, -1}]]*FeynAmpDenominator[CartesianPropagatorDenominator[
+CartesianMomentum[q, -1 + D], 0, 0, {1, -1}]], FCE -> True]",
+	"CFAD[{{q, 0}, {0, -1}, 1}, {{p - q, 0}, {0, -1}, 1}]"},
+{"fcstFeynAmpDenominatorCombine-ID5",
+	"FeynAmpDenominatorCombine[
+FeynAmpDenominator[StandardPropagatorDenominator[
+		Momentum[p, D] - Momentum[q,  D], 0, 0,
+		{1, -1}]]*FeynAmpDenominator[StandardPropagatorDenominator[
+		Momentum[q, D], 0, 0, {1, -1}]], FCE -> True]",
+"SFAD[{{q, 0}, {0, -1}, 1}, {{p - q, 0}, {0, -1}, 1}]"},
+{"fcstFeynAmpDenominatorCombine-ID6",
+	"FeynAmpDenominatorCombine[
+SFAD[{{q1, 0}, {0, -1}, 1}] SFAD[{{-p + q1, 0}, {0, -1},
+	1}] SFAD[{{q1 - q2, 0}, {0, -1}, 1}] SFAD[{{q2, 0}, {0, -1}, 1}],
+FCE -> True]",
+"SFAD[{{q1, 0}, {0, -1}, 1}, {{q2, 0}, {0, -1},
+1}, {{-p + q1, 0}, {0, -1}, 1}, {{q1 - q2, 0}, {0, -1}, 1}]"},
+
+{"fcstFeynAmpDenominatorCombine-ID7",
+	"FeynAmpDenominatorCombine[
+CFAD[{{q1, 0}, {0, -1}, 1}] CFAD[{{-p + q1, 0}, {0, -1},
+	1}] CFAD[{{q1 - q2, 0}, {0, -1}, 1}] CFAD[{{q2, 0}, {0, -1}, 1}],
+FCE -> True]",
+"CFAD[{{q1, 0}, {0, -1}, 1}, {{q2, 0}, {0, -1},
+1}, {{-p + q1, 0}, {0, -1}, 1}, {{q1 - q2, 0}, {0, -1}, 1}]"},
+{"fcstFeynAmpDenominatorCombine-ID8",
+	"FeynAmpDenominatorCombine[
+FAD[p3] FAD[p1 + p2] FAD[q + p2] FAD[q, q + p1], Momentum -> {q},
+FCE -> True]",
+"FAD[p1 + p2] FAD[p3] FAD[p2 + q] FAD[q, p1 + q]"}
 }

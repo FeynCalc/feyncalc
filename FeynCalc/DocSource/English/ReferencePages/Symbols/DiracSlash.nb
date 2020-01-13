@@ -118,26 +118,44 @@ Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
   RowBox[{"DiracSlash", "[", "p", "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "is the contraction ",
+ " \[LineSeparator]is the contraction ",
  Cell[BoxData[
   FormBox[
    RowBox[{
     SuperscriptBox["p", "\[Mu]"], 
     SubscriptBox["\[Gamma]", 
      RowBox[{"\[Mu]", " "}]]}], TraditionalForm]]],
- "(FourVector[p, ",
+ "(FV[p, ",
  Cell[BoxData[
   FormBox["\[Mu]", TraditionalForm]]],
- "] DiracMatrix[",
+ "] GA[",
  Cell[BoxData[
   FormBox["\[Mu]", TraditionalForm]]],
- "]). Products of those can be entered in the form DiracSlash[p1, p2, ...]."
+ "]). Products of those can be entered in the form GS[p1, p2, ...]."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell["\<\
+The shortcut DiracSlash is deprecated, please use GS instead!\
+\>", "Notes",
+ CellID->1067943069],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "DiracSlash", "]"}]], "Input",
+ CellLabel->"In[83]:=",
+ CellID->1215792887],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Dimension", "\[Rule]", "4"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "True"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[83]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -173,44 +191,17 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- ButtonBox["DiracGammaExpand",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracGammaExpand",
-  ButtonNote->"DiracGammaExpand"],
- ", ",
- ButtonBox["DiracGamma",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracGamma",
-  ButtonNote->"DiracGamma"],
- ", ",
- ButtonBox["DiracMatrix",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracMatrix",
-  ButtonNote->"DiracMatrix"],
- ", ",
- ButtonBox["DiracSimplify",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
-  ButtonNote->"DiracSimplify"],
- ", ",
- ButtonBox["DiracTrick",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracTrick",
-  ButtonNote->"DiracTrick"],
- ", ",
  ButtonBox["GS",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/GS",
   ButtonNote->"GS"],
  ", ",
- ButtonBox["GSD",
+ ButtonBox["FCI",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/GSD",
-  ButtonNote->"GSD"],
+  ButtonData:>"paclet:FeynCalc/ref/FCI",
+  ButtonNote->"FCI"],
  "."
-}], "Text",
- CellTags->"DiracSlash",
- CellID->1970754340]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -237,26 +228,6 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "DiracSlash", "]"}]], "Input",
- CellTags->"DiracSlash",
- CellLabel->"In[1]:=",
- CellID->1930775738],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Dimension", "\[Rule]", "4"}], ",", 
-    RowBox[{"FeynCalcInternal", "\[Rule]", "True"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"DiracSlash",
- CellLabel->"Out[1]=",
- CellID->286229782]
-}, Open  ]],
-
 Cell[TextData[{
  "This is q-slash, i.e., ",
  Cell[BoxData[
@@ -265,16 +236,14 @@ Cell[TextData[{
     SuperscriptBox["\[Gamma]", "\[Mu]"], 
     RowBox[{
      SubscriptBox["q", "\[Mu]"], "."}]}], TraditionalForm]]]
-}], "Text",
- CellTags->"DiracSlash",
- CellID->754243775],
+}], "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"DiracSlash", "[", "q", "]"}]], "Input",
  CellTags->"DiracSlash",
- CellLabel->"In[2]:=",
+ CellLabel->"In[333]:=",
  CellID->1250007007],
 
 Cell[BoxData[
@@ -287,8 +256,7 @@ Cell[BoxData[
       TraditionalForm], "_"],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"DiracSlash",
- CellLabel->"Out[2]=",
- CellID->302151266]
+ CellLabel->"Out[333]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -298,7 +266,7 @@ Cell[BoxData[
   RowBox[{"DiracSlash", "[", "p", "]"}], ".", 
   RowBox[{"DiracSlash", "[", "q", "]"}]}]], "Input",
  CellTags->"DiracSlash",
- CellLabel->"In[3]:=",
+ CellLabel->"In[334]:=",
  CellID->751525159],
 
 Cell[BoxData[
@@ -321,8 +289,7 @@ Cell[BoxData[
         TraditionalForm], "_"],
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"DiracSlash",
- CellLabel->"Out[3]=",
- CellID->1980224843]
+ CellLabel->"Out[334]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -331,7 +298,7 @@ Cell[BoxData[
  RowBox[{"DiracSlash", "[", 
   RowBox[{"p", ",", "q"}], "]"}]], "Input",
  CellTags->"DiracSlash",
- CellLabel->"In[4]:=",
+ CellLabel->"In[335]:=",
  CellID->1690251158],
 
 Cell[BoxData[
@@ -354,17 +321,19 @@ Cell[BoxData[
         TraditionalForm], "_"],
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"DiracSlash",
- CellLabel->"Out[4]=",
- CellID->1504514628]
+ CellLabel->"Out[335]="]
 }, Open  ]],
+
+Cell["\<\
+DiracSlash is scheduled for removal in the future versions of FeynCalc. The \
+safe alternative is to use GS.\
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"GS", "[", "p", "]"}]], "Input",
- CellTags->"DiracSlash",
- CellLabel->"In[5]:=",
- CellID->2044929662],
+ CellLabel->"In[341]:="],
 
 Cell[BoxData[
  FormBox[
@@ -375,48 +344,53 @@ Cell[BoxData[
      FormBox["p",
       TraditionalForm], "_"],
     TraditionalForm]}], TraditionalForm]], "Output",
- CellTags->"DiracSlash",
- CellLabel->"Out[5]=",
- CellID->1319428342]
+ CellLabel->"Out[341]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GSD", "[", "p", "]"}]], "Input",
+ CellLabel->"In[342]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"\[Gamma]", "\[CenterDot]", 
+   FormBox[
+    FormBox["p",
+     TraditionalForm],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellLabel->"Out[342]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"DiracSlash", "[", "q", "]"}], "//", "StandardForm"}]], "Input",
- CellTags->"DiracSlash",
- CellLabel->"In[6]:=",
- CellID->1554186442],
+  RowBox[{"FCI", "[", 
+   RowBox[{"GS", "[", "p", "]"}], "]"}], "===", 
+  RowBox[{"DiracSlash", "[", "p", "]"}]}]], "Input",
+ CellLabel->"In[345]:="],
 
 Cell[BoxData[
- RowBox[{"DiracGamma", "[", 
-  RowBox[{"Momentum", "[", "q", "]"}], "]"}]], "Output",
- CellTags->"DiracSlash",
- CellLabel->"Out[6]//StandardForm=",
- CellID->1796628764]
+ FormBox["True", TraditionalForm]], "Output",
+ CellLabel->"Out[345]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
+  RowBox[{"FCI", "[", 
+   RowBox[{"GSD", "[", "p", "]"}], "]"}], "===", 
   RowBox[{"DiracSlash", "[", 
-   RowBox[{"q", ",", 
-    RowBox[{"Dimension", "\[Rule]", "n"}]}], "]"}], "//", 
-  "StandardForm"}]], "Input",
- CellTags->"DiracSlash",
- CellLabel->"In[7]:=",
- CellID->841649305],
+   RowBox[{"p", ",", 
+    RowBox[{"Dimension", "\[Rule]", "D"}]}], "]"}]}]], "Input",
+ CellLabel->"In[346]:="],
 
 Cell[BoxData[
- RowBox[{"DiracGamma", "[", 
-  RowBox[{
-   RowBox[{"Momentum", "[", 
-    RowBox[{"q", ",", "n"}], "]"}], ",", "n"}], "]"}]], "Output",
- CellTags->"DiracSlash",
- CellLabel->"Out[7]//StandardForm=",
- CellID->59747004]
+ FormBox["True", TraditionalForm]], "Output",
+ CellLabel->"Out[346]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -452,7 +426,7 @@ Cell[BoxData[
  InterpretationBox[Cell["XXXX", "ExampleSubsection"],
   $Line = 0; Null]], "ExampleSubsection",
  CellID->1295379749]
-}, Closed]],
+}, Open  ]],
 
 Cell[BoxData[
  InterpretationBox[Cell["Applications", "ExampleSection"],
@@ -481,12 +455,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{1320, Automatic}, {Automatic, 160}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

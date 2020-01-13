@@ -19,6 +19,8 @@ End[]
 
 Begin["`TLIFP`Private`"]
 
+rule2F1::usage="";
+tli::usage="";
 (* 15. Feb 1996; *)
 
 (* General parametrizations for graph #1, #2, #3, #4 *)
@@ -28,13 +30,18 @@ Begin["`TLIFP`Private`"]
 (* Map[Integrate[#, {t, 0, 1}, {u, 0, 1}], ...] is understood *)
 
 
-Options[TLIFP] = { FeynmanParameterNames ->
-											{FCGV["x"], FCGV["t"], FCGV["u"], FCGV["s"],
-												FCGV["y"]},
-									GammaExpand -> True,
-									Momentum -> FCGV["p"],
-									Print -> True
-								};
+Options[TLIFP] = {
+	FeynmanParameterNames	-> {
+		FCGV["x"],
+		FCGV["t"],
+		FCGV["u"],
+		FCGV["s"],
+		FCGV["y"]
+	},
+	GammaExpand				-> True,
+	Momentum				-> FCGV["p"],
+	Print					-> True
+};
 
 TLIFP[exp_, opt___Rule] :=
 	Block[ {tlifp, so,x,t,u,s,y,p, r1,r2,r3,gaex, simp, comment, MCH, integ, pinteg},
@@ -59,7 +66,7 @@ TLIFP[exp_, opt___Rule] :=
 		integ[yy_] :=
 			True /; DataType[yy, PositiveInteger] === True;
 		(* check for integer*)
-		pinteg[yy_Integer?Positive] :=
+		pinteg[_Integer?Positive] :=
 			True;  (* check for positive integer*)
 		pinteg[yy_ /; DataType[yy, PositiveInteger] === True] :=
 			True;
@@ -92,7 +99,7 @@ TLIFP[exp_, opt___Rule] :=
 				(1 - t*u)^(4 - a1 - a2 - a4 - a5 + Epsilon)
 			)
 			) /. {Dot :> Times, EulerGamma :> 0, y :> 1 - x}
-				   ) /; 2 - a2 - a4 > 0;
+				) /; 2 - a2 - a4 > 0;
 
 
 		(* ************************   tlifp, RFP1ende   ************************ *)
@@ -124,7 +131,7 @@ TLIFP[exp_, opt___Rule] :=
 				(1 - t*u)^(-2 + a4 - Epsilon/2)
 			)
 			) /. {Dot :> Times, EulerGamma :> 0, y :> 1 - x}
-				   ) /; 2 - a2 - a4 <= 0;
+				) /; 2 - a2 - a4 <= 0;
 		(*************************   tlifp, RFP2ende  ************************ *)
 
 
@@ -150,7 +157,7 @@ TLIFP[exp_, opt___Rule] :=
 			(t^(-1 + a2)*(1 - t)^(-3 + a1 + a5 - Epsilon/2)*
 				(1 - t*u)^(4 - a1 - a2 - a4 - a5 + Epsilon))
 			) /. {Dot :> Times, EulerGamma :> 0}
-				   ) /; 2 - a2 - a4 + Epsilon/2 > 0;
+				) /; 2 - a2 - a4 + Epsilon/2 > 0;
 		(* ************************   tlifp, RFP3prime  ***********************  *)
 
 
@@ -175,7 +182,7 @@ TLIFP[exp_, opt___Rule] :=
 			(t^(-3 + a1 + a5 - Epsilon/2)*(1 - t)^(-1 + a2)*
 				(1 - t*u)^(-2 + a4 - Epsilon/2))
 			) /. {Dot :> Times, EulerGamma :> 0}
-				   ) /;  2 - a2 - a4 <= 0;
+				) /;  2 - a2 - a4 <= 0;
 		(* ************************   tlifp, RFP4 prime  ********************  *)
 
 		(* ************************   tlifp, RFP5     ************************ *)
@@ -195,7 +202,7 @@ TLIFP[exp_, opt___Rule] :=
 				Gamma[4 - a2 - a4 + Epsilon + g2 + g4])) .
 			(x^a3 (1 - x)^(3 - a1 - 2 a3 + Epsilon + g3))
 			) /. {Dot :> Times, EulerGamma :> 0}
-				   );
+				);
 
 		(* ************************   tlifp, RFP5     ************************ *)
 
@@ -218,7 +225,7 @@ TLIFP[exp_, opt___Rule] :=
 				E^(Epsilon*EulerGamma)
 			)
 			) /. {Dot :> Times, EulerGamma :> 0}
-				   );
+				);
 		(* ************************   tlifp, RFP5b     ************************ *)
 
 
@@ -249,7 +256,7 @@ TLIFP[exp_, opt___Rule] :=
 						(1 - u)^(-1 + a4 + g2) * (1 - (1 - x) u)^(-1)
 				)
 			) /. {Dot :> Times, EulerGamma :> 0}
-				   );
+				);
 		(* ************************   tlifp, RFP6     *********************** *)
 
 		(* ************************   tlifp, RFP7     ************************ *)
@@ -281,7 +288,7 @@ TLIFP[exp_, opt___Rule] :=
 				((1 - u)*u*(1 - x)^2 + t*x)^(4 - a1 - a3 - a4 - a5 + Epsilon)
 			)
 			) /. {Dot :> Times, EulerGamma :> 0}
-				   );
+				);
 		(* ************************   tlifp, RFP7  ************************ *)
 
 
@@ -314,7 +321,7 @@ TLIFP[exp_, opt___Rule] :=
 				(t*u + (1 - u)*x)^(4 - a1 - a2 - a4 - a5 + Epsilon)
 			)
 			) /. {Dot :> Times, EulerGamma :> 0}
-				   ) /; a2 =!= 0;
+				) /; a2 =!= 0;
 		(* ************************   tlifp, RFP8  ************************ *)
 
 		(* ************************   tlifp, RFP8b     ************************ *)
@@ -341,7 +348,7 @@ TLIFP[exp_, opt___Rule] :=
 				(1 - u*(1 - 1/x))^(4 - a1 - a4 - a5 + Epsilon)
 			)
 			) /. {Dot :> Times, EulerGamma :> 0}
-				   );
+				);
 		(* ************************   tlifp, RFP8b  ************************ *)
 		(* ************************   tlifp, RFP8c     ************************ *)
 		(* Caution:  Handle the x -> 1 behaviour with care ******************* *)
@@ -376,7 +383,7 @@ TLIFP[exp_, opt___Rule] :=
 				(t*u + x - u*x)^(4 - a1 - a3 - a4 - a5 + Epsilon)
 			)
 			) /. {Dot :> Times, EulerGamma :> 0}
-				   );
+				);
 		(* ************************   tlifp, RFP8c  ************************ *)
 
 
@@ -407,7 +414,7 @@ TLIFP[exp_, opt___Rule] :=
 				(t*(1 - x) + (1 - u)*u*x^2)^(4 - a2 - a3 - a4 - a5 + Epsilon)
 			)
 			) /. {Dot :> Times, EulerGamma :> 0}
-				   );
+				);
 		(* ************************   tlifp, RFP9  ************************ *)
 
 
@@ -463,7 +470,7 @@ TLIFP[exp_, opt___Rule] :=
 			)
 			)
 			) /. {Dot :> Times, EulerGamma :> 0, y :> 1 - x}
-				   );
+				);
 		(* ************************   tlifp, RFP12  ************************ *)
 		(* ************************   tlifp, RFP13     ************************ *)
 		tlifp[tLI[{g1_?integ, g2_?integ, g3_?integ, g4_?integ, m_},
@@ -520,7 +527,7 @@ TLIFP[exp_, opt___Rule] :=
 			)
 			)
 			) /. {Dot :> Times, EulerGamma :> 0, y :> 1 - x}
-				   );
+				);
 		(* ************************   tlifp, RFP13  ************************ *)
 		(* ************************   tlifp, RFP14     ************************ *)
 		tlifp[tLI[{g1_?integ, g2_?integ, g3_?integ, g4_?integ, m_},
@@ -558,7 +565,7 @@ TLIFP[exp_, opt___Rule] :=
 			)
 			)
 			) /. {Dot :> Times, EulerGamma :> 0}
-				   );
+				);
 		(* ************************   tlifp, RFP14  ************************ *)
 		(* ************************   tlifp, RFP15     ************************ *)
 		tlifp[tLI[{g1_?integ, g2_?integ, g3_?integ, g4_?integ, m_},
@@ -582,7 +589,7 @@ TLIFP[exp_, opt___Rule] :=
 				(u + x - u*x)^g1*(1 - u + u*x)^g4
 			)
 			) /. {Dot :> Times, EulerGamma :> 0}
-				   );
+				);
 
 		(* For g1 = g4 = 0 integrable in closed Form *********************** *)
 		(* ************************   tlifp, RFP15  ************************ *)
@@ -682,7 +689,7 @@ TLIFP[exp_, opt___Rule] :=
 			)
 			)
 			) /. {Dot :> Times, EulerGamma :> 0}
-				   ) /; integ[g5] && integ[g1];
+				) /; integ[g5] && integ[g1];
 		(* ************************   tlifp, RFP17  ************************ *)
 		(* ************************   tlifp, RFP18     ************************ *)
 		tlifp[tLI[{g1_ /; MCH[g1], g2_ /; MCH[g2], g3_?integ, g4_?integ, g5_?integ},
@@ -715,7 +722,7 @@ TLIFP[exp_, opt___Rule] :=
 				-((1 - y)/((1 - x)*y))]
 			)
 			) /. {Dot :> Times, EulerGamma :> 0}
-				   );
+				);
 		(* ************************   tlifp, RFP18  ************************ *)
 		(* ************************   tlifp, RFP19  ************************ *)
 		tlifp[tLI[{g1_ /; MCH[g1], g2_?integ, g3_?integ, g4_?integ, g5_ /;MCH[g5]},
@@ -742,7 +749,7 @@ TLIFP[exp_, opt___Rule] :=
 						-2 + a3 + a5 - Epsilon/2, -2 + a3 + a4 + a5 - Epsilon/2,
 						-(y/(x*(1 - y)))])/Gamma[-2 + a3 + a4 + a5 - Epsilon/2]
 			) /. {Dot :> Times, EulerGamma :> 0}
-				   );
+				);
 		(* ************************   tlifp, RFP19  ************************ *)
 
 		(* ************************   tlifp, RFP21     ************************ *)
@@ -777,7 +784,7 @@ TLIFP[exp_, opt___Rule] :=
 				(4 - a1 - a2 - a3 - a4 - a5 + Epsilon)
 			)
 			) /. {Dot :> Times, EulerGamma :> 0}
-				   );
+				);
 		(* ************************   tlifp, RFP21  ************************ *)
 
 		(* ************************   tlifp, RFP22     ************************ *)
@@ -804,7 +811,7 @@ TLIFP[exp_, opt___Rule] :=
 			(1 - s*t*x)^(-4 + a2 + a4 + a5 - Epsilon - g2 - g4 - g5)
 			)
 			) /. {Dot :> Times, EulerGamma :> 0}
-				   );
+				);
 		(* ************************   tlifp, RFP22  ************************ *)
 
 
@@ -832,7 +839,7 @@ TLIFP[exp_, opt___Rule] :=
 				Gamma[4 - a2 - a4 + Epsilon + g2 + g4])
 			)
 			) /. {Dot :> Times, EulerGamma :> 0}
-				   );
+				);
 		(* ************************   tlifp, RFP23  ************************ *)
 
 		(* ************************   tlifp, RFP24     ************************ *)
@@ -858,7 +865,7 @@ TLIFP[exp_, opt___Rule] :=
 			(Gamma[-2 + a3 + a4 + a5 - Epsilon/2]*Gamma[4 - a4 - a5 + Epsilon + g4 + g5])
 			)
 			) /. {Dot :> Times, EulerGamma :> 0}
-				   );
+				);
 		(* ************************   tlifp, RFP24  ************************ *)
 
 
@@ -875,8 +882,8 @@ TLIFP[exp_, opt___Rule] :=
 							]
 				] :=
 			(comment["using PR1"];
-			 tlifp[tLI[{m, g4, g3, g2, 0}, {{a1, M}, {a4, M}, a3, a2, 0}]]
-				   );
+			tlifp[tLI[{m, g4, g3, g2, 0}, {{a1, M}, {a4, M}, a3, a2, 0}]]
+				);
 
 		(* PR2 *)
 		(* 1 <--> 3, 2 <--> 4 ALLGEMEIN *)
@@ -887,11 +894,11 @@ TLIFP[exp_, opt___Rule] :=
 						]
 				] :=
 			(comment["using PR2"];
-			 (-1)^g5 tlifp[tLI[{g3, g4, g1, g2, g5},
-												 {{a3, M}, a4, a1, {a2, M}, {a5, M}}
-											 ]
-									 ]
-				  );
+			(-1)^g5 tlifp[tLI[{g3, g4, g1, g2, g5},
+												{{a3, M}, a4, a1, {a2, M}, {a5, M}}
+											]
+									]
+				);
 
 		(* PR3 *)
 		(* 1 <--> 4, 2 <--> 3 ALLGEMEIN *)
@@ -903,10 +910,10 @@ TLIFP[exp_, opt___Rule] :=
 						]
 					] :=
 			(comment["using PR3"];
-			 tlifp[tLI[{m, g3, g2, g1, g5},
-								 {{a4, M}, a3, a2, {a1, M}, {a5,M}}]
-					 ]
-			   );
+			tlifp[tLI[{m, g3, g2, g1, g5},
+								{{a4, M}, a3, a2, {a1, M}, {a5,M}}]
+					]
+			);
 
 		(* PR4 *)
 		tlifp[tLI[{m_ /; MCH[m], g2_, g3_, g4_, g5_},
@@ -914,10 +921,10 @@ TLIFP[exp_, opt___Rule] :=
 						]
 				] :=
 			(comment["using PR4"];
-			 tlifp[tLI[{m, g5, g3, g4, g2},
-								 {{a1, M}, {a5, M}, a3, 0, a2}]
-						 ]
-				   );
+			tlifp[tLI[{m, g5, g3, g4, g2},
+								{{a1, M}, {a5, M}, a3, 0, a2}]
+						]
+				);
 
 		(* PR5 *)
 		tlifp[tLI[{m_ /; MCH[m], g2_, g3_, g4_, g5_},
@@ -926,11 +933,11 @@ TLIFP[exp_, opt___Rule] :=
 						]
 				] :=
 			(comment["using PR5"];
-			 (-1)^g5 tlifp[ tLI[{g2, m, g4, g3, g5},
-												 {{a2, M}, {a1, M}, 0, a3, a5}
-												 ]
-									 ]
-				   );
+			(-1)^g5 tlifp[ tLI[{g2, m, g4, g3, g5},
+												{{a2, M}, {a1, M}, 0, a3, a5}
+												]
+									]
+				);
 
 		(* PR6 *)
 		tlifp[ tLI[{0, g2_?integ, g3_?integ, g4_?integ, m_ /; MCH[m]},
@@ -940,11 +947,11 @@ TLIFP[exp_, opt___Rule] :=
 							]
 				] :=
 			(comment["using PR6"];
-			 (-1)^g3 tlifp[tLI[{m, g4, 0, g2, g3},
-												 {{a5, M}, {a4, M}, 0, a2, a3}
-											 ]
-									 ]
-				   );
+			(-1)^g3 tlifp[tLI[{m, g4, 0, g2, g3},
+												{{a5, M}, {a4, M}, 0, a2, a3}
+											]
+									]
+				);
 
 		(* PR7 *)
 		tlifp[ tLI[{m_, g2_?integ, g3_?integ, g4_?integ, 0},
@@ -955,8 +962,8 @@ TLIFP[exp_, opt___Rule] :=
 							]
 				] :=
 			(comment["using PR7"];
-			 tlifp[tLI[{m, g4, g3, g2, 0}, {{a1,M}, {a4,M}, a3, a2, 0}]]
-				   );
+			tlifp[tLI[{m, g4, g3, g2, 0}, {{a1,M}, {a4,M}, a3, a2, 0}]]
+				);
 
 		(* PR8 *)
 		tlifp[ tLI[{m_, g2_?integ, g3_?integ, g4_?integ, 0},
@@ -967,8 +974,8 @@ TLIFP[exp_, opt___Rule] :=
 							]
 				] :=
 			(comment["using PR8"];
-			 tlifp[tLI[{m, g4, g3, g2, 0}, {{a1,M}, {a4,M}, a3, a2, 0}]]
-				   );
+			tlifp[tLI[{m, g4, g3, g2, 0}, {{a1,M}, {a4,M}, a3, a2, 0}]]
+				);
 
 		(* PR9 *)
 		tlifp[ tLI[{g1_, g2_, g3_, g4_, g5_},
@@ -977,8 +984,8 @@ TLIFP[exp_, opt___Rule] :=
 							}]
 				] :=
 			(comment["using PR9"];
-			 tlifp[tLI[{g4, g3, g2, g1, g5}, {{a4, M}, {a3, M}, a2, a1, 0}]]
-				   );
+			tlifp[tLI[{g4, g3, g2, g1, g5}, {{a4, M}, {a3, M}, a2, a1, 0}]]
+				);
 
 		(* PR10 *)
 		tlifp[tLI[{g1_, 0, g3_, g4_, m_ /; MCH[m]},
@@ -987,9 +994,9 @@ TLIFP[exp_, opt___Rule] :=
 						]
 				] :=
 			(comment["using PR10"];
-			 (-1)^(m) (-1)^g4 *
-			 tLI[{m, g3, 0, g1, g4}, {{a5, M}, a3, 0, {a1, M}, {a4, M}}]
-				   );
+			(-1)^(m) (-1)^g4 *
+			tLI[{m, g3, 0, g1, g4}, {{a5, M}, a3, 0, {a1, M}, {a4, M}}]
+				);
 
 		(* PR11 *)
 		tlifp[tLI[{g1_, g2_, 0, g4_, g5_},
@@ -997,10 +1004,10 @@ TLIFP[exp_, opt___Rule] :=
 						]
 				] :=
 			(comment["using PR11"];
-			 (-1)^g5 tlifp[tLI[{g2, g5, g4, 0, g1},
-												 {0, a5, a4, 0, {a1, M}}]
-										 ]
-				   );
+			(-1)^g5 tlifp[tLI[{g2, g5, g4, 0, g1},
+												{0, a5, a4, 0, {a1, M}}]
+										]
+				);
 
 		(* PR12 *)
 		tlifp[tLI[{g1_, g2_, 0_, g4_, g5_},
@@ -1008,8 +1015,8 @@ TLIFP[exp_, opt___Rule] :=
 						]
 				] :=
 			(comment["using PR12"];
-			 tlifp[(-1)^g5 * tLI[{g3, g4, g1, g2, g5}, {0, a4, a1, 0, {a5, M}}]]
-				  );
+			tlifp[(-1)^g5 * tLI[{(*g3*)0(*?? VS*), g4, g1, g2, g5}, {0, a4, a1, 0, {a5, M}}]]
+				);
 
 		(* PR13 *)
 		tlifp[tLI[{g1_, m_ /; MCH[m], g3_, g4_, 0},
@@ -1019,8 +1026,8 @@ TLIFP[exp_, opt___Rule] :=
 						]
 				] :=
 			(comment["using PR13"];
-			 tlifp[ tLI[{m, g1, g4, g3, 0}, { {a2,M}, {a1,M}, a4, a3, 0}]]
-				  );
+			tlifp[ tLI[{m, g1, g4, g3, 0}, { {a2,M}, {a1,M}, a4, a3, 0}]]
+				);
 
 		(* PR14 *)
 		tlifp[tLI[{g1_,  m_ /; MCH[m], g3_, g4_, g5_},
@@ -1030,11 +1037,11 @@ TLIFP[exp_, opt___Rule] :=
 						]
 				] :=
 			(comment["using PR14"];
-			 (-1)^g5 tlifp[ tLI[{m, g1, g4, g3, g5},
-													 {0, a1, a4, {a3, M}, {a5, M}}
-												 ]
-										 ]
-				   );
+			(-1)^g5 tlifp[ tLI[{m, g1, g4, g3, g5},
+													{0, a1, a4, {a3, M}, {a5, M}}
+												]
+										]
+				);
 
 		(* PR15 *)
 		tlifp[tLI[{g1_,  g2_, g3_, g4_, m_ /; MCH[m]},
@@ -1044,11 +1051,11 @@ TLIFP[exp_, opt___Rule] :=
 						]
 				] :=
 			(comment["using PR15"];
-			 tlifp[ tLI[{g4, g3, g2, g1, m},
-								 {{a4, M}, 0, a2, {a1, M}, {a5, M}}
-								 ]
-						 ]
-				   );
+			tlifp[ tLI[{g4, g3, g2, g1, m},
+								{{a4, M}, 0, a2, {a1, M}, {a5, M}}
+								]
+						]
+				);
 
 		(* PR16 *) (* correction  04/15 *)
 		tlifp[tLI[{g1_?NonNegative, m_, 0, g4_?integ, g5_?integ},
@@ -1058,14 +1065,14 @@ TLIFP[exp_, opt___Rule] :=
 						]
 				] :=
 			(comment["using PR16"];
-			 (-1)^g5 Sum[Binomial[g1, i] (-1)^(g1-i) *
-									 tlifp[ tLI[{m+i, g5+g1-i, g4, 0, 0},
-															 {{a2, M}, {a5, M}, a4, 0, 0}
-														 ]
-												 ],
-									 {i, 0, g1}
-									 ]
-				   );
+			(-1)^g5 Sum[Binomial[g1, i] (-1)^(g1-i) *
+									tlifp[ tLI[{m+i, g5+g1-i, g4, 0, 0},
+															{{a2, M}, {a5, M}, a4, 0, 0}
+														]
+												],
+									{i, 0, g1}
+									]
+				);
 
 		(* PR17 *)
 		tlifp[tLI[{0, m_, 1, g4_?integ, g5_?integ},
@@ -1075,14 +1082,14 @@ TLIFP[exp_, opt___Rule] :=
 						]
 				] :=
 			(comment["using PR17"];
-			 tlifp[ tLI[{0, m, 0, g4 + 1, g5},
-									 {0, {a2, M}, 0, a4, {a5, M}}
-								 ] -
-							 tLI[{0, m, 0, g4  ,  g5 + 1},
-									 {0, {a2, M}, 0, a4, {a5, M}}
-								 ]
-						 ]
-				   );
+			tlifp[ tLI[{0, m, 0, g4 + 1, g5},
+									{0, {a2, M}, 0, a4, {a5, M}}
+								] -
+							tLI[{0, m, 0, g4  ,  g5 + 1},
+									{0, {a2, M}, 0, a4, {a5, M}}
+								]
+						]
+				);
 
 
 		(* ********************************************************************* *)
@@ -1099,9 +1106,9 @@ TLIFP[exp_, opt___Rule] :=
 				] :=
 			so[r] *
 			tlihyp[tLI[{m, 1, g3, g4, g5}, {{a1, M}, 0, a3, {a4, M}, {a5,M}}]
-					   ]  -
+					]  -
 			tlihyp[tLI[{m, 1, g3, g4+1,g5}, {{a1, M}, 0, a3, {a4, M}, {a5,M}}]
-					   ];
+					];
 		tlihyp[tLI[{m_, 1, g3_?integ, g4_?integ, g5_?integ},
 							{{a1_?integ, M_Symbol}, 0, a3_?integ,
 							{a4_?integ, M_Symbol}, {a5_?integ, M_Symbol}}
@@ -1109,9 +1116,9 @@ TLIFP[exp_, opt___Rule] :=
 				] :=
 			so[r] *
 			tlihyp[tLI[{m, 0, g3, g4, g5}, {{a1, M}, 0, a3, {a4, M}, {a5,M}}]
-					   ]  -
+					]  -
 			tlihyp[tLI[{m, 0, g3, g4+1,g5}, {{a1, M}, 0, a3, {a4, M}, {a5,M}}]
-					   ];
+					];
 		tlihyp[tLI[{m_ , 0, g3_?integ, g4_?integ, g5_?integ},
 							{{a1_?integ, M_Symbol}, 0, a3_?integ,
 							{a4_?integ, M_Symbol}, {a5_?integ, M_Symbol}}
@@ -1151,7 +1158,7 @@ TLIFP[exp_, opt___Rule] :=
 												- y^2/(4 x (x+y))]
 			)
 			) /. {Dot :> Times, EulerGamma :> 0, y :> 1 - x}
-				   )/.rule2F1;
+				)/.rule2F1;
 		(* ************************   tlihyp, RHYP5  ************************ *)
 
 
@@ -1209,9 +1216,9 @@ TLIFP[exp_, opt___Rule] :=
 						]
 					] :=
 			so[r] tlihyp[tLI[{g1, m, 0, g4, g5}, {{a1, M}, {a2, M}, 0, a4, a5}]
-									   ] -
-					   tlihyp[tLI[{g1+1, m, 0, g4, g5}, {{a1, M}, {a2, M}, 0, a4, a5}]
-									   ];
+									] -
+					tlihyp[tLI[{g1+1, m, 0, g4, g5}, {{a1, M}, {a2, M}, 0, a4, a5}]
+									];
 		tlihyp[tLI[{g1_?integ, m_ , 0, g4_?integ, g5_?integ},
 							{{a1_?pinteg, M_Symbol}, {a2_?pinteg, M_Symbol}, 0,
 									a4_?pinteg, a5_?pinteg}
@@ -1257,7 +1264,7 @@ TLIFP[exp_, opt___Rule] :=
 							Gamma[-4 + a1 + a2 + 2*a5 - Epsilon - g5])
 			)
 			) /. {Dot :> Times, EulerGamma :> 0, y :> 1 - x}
-				   )/.rule2F1;
+				)/.rule2F1;
 		(* ************************   tlihyp, RHYP3ende  ************************ *)
 
 
@@ -1296,7 +1303,7 @@ TLIFP[exp_, opt___Rule] :=
 					Gamma[a2 + a4 + g1 + g5])
 			)
 			)/.{Dot :> Times, EulerGamma :> 0}
-				   )/.rule2F1;
+				)/.rule2F1;
 		(* ************************   tlihyp, RHYP6ende  ************************ *)
 
 
@@ -1322,7 +1329,7 @@ TLIFP[exp_, opt___Rule] :=
 				Exp[-I Pi Epsilon/2]
 			)
 			)/.{Dot :> Times, EulerGamma :> 0}
-				   )/.rule2F1;
+				)/.rule2F1;
 		(* ************************   tlihyp, RHYP7ende  ************************ *)
 
 
@@ -1345,7 +1352,7 @@ TLIFP[exp_, opt___Rule] :=
 				(1 - x)^(4+Epsilon-a2-2*a4+g4-1)
 			)
 			)/.{Dot :> Times, EulerGamma :> 0}
-				   )/.rule2F1;
+				)/.rule2F1;
 		(* ************************   tlihyp, RHYP8ende  ************************ *)
 
 
@@ -1356,18 +1363,18 @@ TLIFP[exp_, opt___Rule] :=
 				] :=
 			so[r] *
 			tlihyp[tLI[{m, 1, g3, g4, g5}, {{a1, M}, 0, a3, a4, a5}]
-					   ]  -
+					]  -
 			tlihyp[tLI[{m, 1, g3, g4+1,g5}, {{a1, M}, 0, a3, a4, a5}]
-					   ];
+					];
 		tlihyp[tLI[{m_, 1, g3_, g4_, g5_},
 							{{a1_?pinteg, M_Symbol}, 0, a3_?integ, a4_?pinteg, a5_?pinteg}
 						]
 				] :=
 			so[r] *
 			tlihyp[tLI[{m, 0, g3, g4, g5}, {{a1, M}, 0, a3, a4, a5}]
-					   ]  -
+					]  -
 			tlihyp[tLI[{m, 0, g3, g4+1,g5}, {{a1, M}, 0, a3, a4, a5}]
-					   ];
+					];
 		tlihyp[tLI[{m_, 0, g3_, g4_, g5_},
 							{{a1_?pinteg, M_Symbol}, 0, a3_?integ, a4_?pinteg, a5_?pinteg}
 							]
@@ -1388,7 +1395,7 @@ TLIFP[exp_, opt___Rule] :=
 				(1 - x)^(8+2*Epsilon-a1-2*a3-2*a4-2*a5+g3+g4+g5-1)
 			)
 			)/.{Dot :> Times, EulerGamma :> 0}
-				   )/.rule2F1;
+				)/.rule2F1;
 		(* ************************   tlihyp, RHYP9ende  ************************ *)
 		(* FORMER TLIHYP  end*)
 		r1 = exp /. {TLI :> tli, TLI2 :> tli};

@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for Tdec	                *)
@@ -85,7 +85,13 @@ Dimension -> D, List -> False, UseTIDL -> False, FCE -> True]",
 (FVD[k1, $3047]*FVD[k1, $3488]*MTD[$3050, $3489]*(4*SPD[k1, q1]^2*SPD[k1, q2]^2 - D^2*SPD[k1, q1]^2*SPD[k1, q2]^2 - 2*SPD[k1, k1]*SPD[k1, q2]^2*SPD[q1, q1] + D^2*SPD[k1, k1]*SPD[k1, q2]^2*SPD[q1, q1] -
 	4*SPD[k1, k1]*SPD[k1, q1]*SPD[k1, q2]*SPD[q1, q2] + 2*SPD[k1, k1]^2*SPD[q1, q2]^2 + D*SPD[k1, k1]*SPD[k1, q1]^2*SPD[q2, q2] - D*SPD[k1, k1]^2*SPD[q1, q1]*SPD[q2, q2]))/((2 - D)*(1 - D^2)*SPD[k1, k1]^3) +
 (FVD[k1, $3050]*FVD[k1, $3489]*MTD[$3047, $3488]*(4*SPD[k1, q1]^2*SPD[k1, q2]^2 - D^2*SPD[k1, q1]^2*SPD[k1, q2]^2 + D*SPD[k1, k1]*SPD[k1, q2]^2*SPD[q1, q1] - 4*SPD[k1, k1]*SPD[k1, q1]*SPD[k1, q2]*SPD[q1, q2] +
-	2*SPD[k1, k1]^2*SPD[q1, q2]^2 - 2*SPD[k1, k1]*SPD[k1, q1]^2*SPD[q2, q2] + D^2*SPD[k1, k1]*SPD[k1, q1]^2*SPD[q2, q2] - D*SPD[k1, k1]^2*SPD[q1, q1]*SPD[q2, q2]))/((2 - D)*(1 - D^2)*SPD[k1, k1]^3)"}
+	2*SPD[k1, k1]^2*SPD[q1, q2]^2 - 2*SPD[k1, k1]*SPD[k1, q1]^2*SPD[q2, q2] + D^2*SPD[k1, k1]*SPD[k1, q1]^2*SPD[q2, q2] - D*SPD[k1, k1]^2*SPD[q1, q1]*SPD[q2, q2]))/((2 - D)*(1 - D^2)*SPD[k1, k1]^3)"},
+{"fcstTdec-ID17","Tdec[{{l, i1}, {l, i2}}, {p1}, Head -> mom]",
+	"{{X1 -> D, X2 -> SPD[l, l], X3 -> SPD[l, mom[p1]],
+X4 -> SPD[mom[p1],
+	mom[p1]]}, -(((X1 X3^2 - X2 X4) FVD[mom[p1], i1] FVD[mom[p1],
+	i2])/((1 - X1) X4^2)) + ((X3^2 - X2 X4) MTD[i1,
+	i2])/((1 - X1) X4)}"}
 };
 
 Tests`LoopIntegrals`fcstTdecNegativeMomenta = ({

@@ -31,7 +31,7 @@ OPESum[0,_] :=
 	0;
 
 
-OPESum[__, {_,0,m_Integer?Negative},___List] :=
+OPESum[__, {_,0,_Integer?Negative},___List] :=
 	0;
 
 OPESum[a_, {i_, j_, n_Integer/; n>=0}, any___] :=

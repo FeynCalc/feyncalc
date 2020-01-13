@@ -15,12 +15,8 @@
 (* ------------------------------------------------------------------------ *)
 
 SUNSimplify::usage =
-"SUNSimplify simplifies products of SUNT (and complex conjugated)
-matrices. Renaming of dummy indices may be performed.
-If the option SUNTrace is set to False, then any SUNT-matrices are
-taken out of DiracTrace[...]; otherwise a color-trace is taken (by
-SUNTrace) before taking the SUN-objects in front of DiracTrace[...].
-Whether SUNF is replaced by traces is determined by the option Explicit.";
+"SUNSimplify[exp] simplifies products of SUNT and SUNTF \
+matrices in the expression.";
 
 SUNFJacobi::usage="SUNFJacobi is an option for SUNSimplify, indicating
 whether the Jacobi identity should be used.";
@@ -41,6 +37,9 @@ Begin["`SUNSimplify`Private`"]
 *)
 
 (* *********************************************************************** *)
+
+suntrace::usage="";
+sunt::usage="";
 
 fcis[z_ /; FreeQ[z, Pattern]] :=
 	(fcis[z] = FeynCalcInternal[z]);
@@ -396,12 +395,16 @@ sunsimp[x_, opts___Rule] := (*MemSet[sunsimp[x, opts],*)
 					SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] *
 						dotT[aa___, SUNT[yy_SUNIndex], SUNT[zz_SUNIndex], bb___] :>
 						I/2 SUNN dotT[aa,SUNT[xx],bb] /; noint[yy,zz],
-						SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] *
-							SUNT[xx_SUNIndex]  :>
-					I DOT[SUNT[zz] , SUNT[yy]] - I DOT[SUNT[yy] , SUNT[zz]] /; noint[xx],
-						SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] *
-							SUNT[zz_SUNIndex] :>
-					I DOT[SUNT[yy] , SUNT[xx]] - I DOT[SUNT[xx] , SUNT[yy]] /; noint[zz]
+
+					SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] SUNT[xx_SUNIndex]  :>
+						I DOT[SUNT[zz] , SUNT[yy]] - I DOT[SUNT[yy] , SUNT[zz]] /; noint[xx],
+
+					SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] SUNT[zz_SUNIndex] :>
+						I DOT[SUNT[yy] , SUNT[xx]] - I DOT[SUNT[xx] , SUNT[yy]] /; noint[zz],
+
+					SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] SUNT[yy_SUNIndex] :>
+						I DOT[SUNT[xx] , SUNT[zz]] - I DOT[SUNT[zz] , SUNT[xx]] /; noint[yy]
+
 					}  /. dotT[] -> 1 //. {dotT[a___,1,b___] :> dotT[a,b]} /.
 							dotT[] -> 1 /. dotT -> DOT;
 			If[ sft === True,
@@ -507,27 +510,7 @@ sunsimp[x_, opts___Rule] := (*MemSet[sunsimp[x, opts],*)
 								} /. sUNF -> SUNF;
 			];
 
-			(*Dropped ComplexIndex. F.Orellana, 20/2-2003*)
-			(*If[!FreeQ[temp, ComplexIndex],
-				temp = temp /. DOT -> dooot /.
-				{
-				(SUNT[SUNIndex[a_]] /; FreeQ[{a}, ComplexIndex]) *
-				SUNT[SUNIndex[ComplexIndex[b_]]] :>
-				DOT[SUNTrace[SUNT[SUNIndex[a]] , SUNT[SUNIndex[b]]] ],
 
-				(SUNT[SUNIndex[ComplexIndex[a_]]] ) *
-				dooot[(b:SUNT[SUNIndex[_]]..) /; FreeQ[{b}, ComplexIndex]]  :>
-				DOT[SUNTrace[SUNT[SUNIndex[a]] , b] ],
-
-				(SUNT[SUNIndex[a_ /; FreeQ[{a}, ComplexIndex]] ]) *
-				dooot[b:SUNT[SUNIndex[ComplexIndex[_]]]..]  :>
-				DOT[SUNTrace[SUNT[SUNIndex[a]] , b] ],
-
-				dooot[(a:SUNT[SUNIndex[_]]..) /; FreeQ[{a}, ComplexIndex]] *
-				dooot[b:SUNT[SUNIndex[ComplexIndex[_]]]..] :>
-				SUNTrace[dooot @@ Join[{a}, Reverse[{b}]/.ComplexIndex -> Identity]]
-				} /. dooot -> DOT;
-			];*)
 			If[ !FreeQ[temp, SUNIndex],
 				temp = temp /. sunsi;
 			];

@@ -124,8 +124,27 @@ better than Solve for systems involving rational polyonomials."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Solve3", "]"}]], "Input",
+ CellTags->"Solve3",
+ CellLabel->"In[26]:=",
+ CellID->1333669928],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
+    RowBox[{"Factoring", "\[Rule]", "False"}], ",", 
+    RowBox[{"FinalSubstitutions", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"ParallelMap", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"Solve3",
+ CellLabel->"Out[26]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -191,28 +210,6 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "Solve3", "]"}]], "Input",
- CellTags->"Solve3",
- CellLabel->"In[1]:=",
- CellID->1333669928],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Factoring", "\[Rule]", "False"}], ",", 
-    RowBox[{"FinalSubstitutions", "\[Rule]", 
-     RowBox[{"{", "}"}]}], ",", 
-    RowBox[{"ParallelMap", "\[Rule]", "False"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"Solve3",
- CellLabel->"Out[1]=",
- CellID->1579913582]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"Solve3", "[", 
   RowBox[{
    RowBox[{"{", 
@@ -226,7 +223,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"x", ",", "y"}], "}"}]}], "]"}]], "Input",
  CellTags->"Solve3",
- CellLabel->"In[2]:=",
+ CellLabel->"In[27]:=",
  CellID->1175774569],
 
 Cell[BoxData[
@@ -242,8 +239,7 @@ Cell[BoxData[
     RowBox[{"y", "\[Rule]", 
      RowBox[{"d", "+", "p"}]}]}], "}"}], TraditionalForm]], "Output",
  CellTags->"Solve3",
- CellLabel->"Out[2]=",
- CellID->158619342]
+ CellLabel->"Out[27]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -308,12 +304,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{889, Automatic}, {Automatic, -8}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

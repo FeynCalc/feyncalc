@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for ApartFF			  		*)
@@ -35,7 +35,7 @@ Tests`LoopIntegrals`fcstApartFF =
 {"fcstApartFF-ID11",
 "ApartFF[SPD[q2,p]SPD[q1,p]FAD[{q1,m},{q2,m},q1-p,q2-p,q2-q1],{q1,\
 q2}]//FCE",
-"-FAD[{q1, m}, -p + q2, q1 - q2]/2 + FAD[{q1, m}, {q2, m}, -q1 + q2]/4 +
+"-FAD[{q1, m}, -p + q2, q1 - q2]/2 + FAD[{q1, m}, {q2, m}, q1 - q2]/4 +
 (FAD[q2, q1, {-p + q1, m}, q1 - q2]*(m^2 + SPD[p, p]))/2 -
 (FAD[{q1, m}, {q2, m}, q1 - q2, -p + q1]*(m^2 + SPD[p, p]))/2 +
 (FAD[{q1, m}, {q2, m}, -p + q2, q1 - q2, -p + q1]*(m^2 + SPD[p, p])^2)/4"},
@@ -76,5 +76,90 @@ tmp = ApartFF[FAD[q, {-(p/2) + q, m}, {p/2 + q, m}, {p/2 + q, m}], {q}]//FCE; \n
 {"fcstApartFF-ID23","FCClearScalarProducts[]; \n SPD[p, p] = 4 m^2; \n
 tmp = ApartFF[FAD[{k1 - p/2 + q, m}, {k1 - p/2 + q, m}, {p/2 + q, m}, q, {-(p/2) + q, m}], {q}]//FCE; \n FCClearScalarProducts[]; \n tmp
 ","-FAD[q, {-(p/2) + q, m}, {-(p/2) + q, m}, {-k1 + p/2 + q, m}, {-k1 + p/2 + q, m}] + 2 FAD[{q, m}, {-k1 + q, m}, {-k1 + q, m},
-{-p + q, m}, {-p + q, m}]"}
+{-p + q, m}, {-p + q, m}]"},
+{"fcstApartFF-ID24","ApartFF[SPD[k1, p] SPD[p, p] FAD[{p, m0}], {p}, MaxIterations -> 1, FDS -> False] // FCE",
+"FAD[{p, m0}] SPD[k1, p] SPD[p, p]"},
+{"fcstApartFF-ID25","ApartFF[SPD[k1, p] SPD[p, p] FAD[{p, m0}], {p}, MaxIterations -> 2, FDS -> False] // FCE",
+"m0^2 FAD[{p, m0}] SPD[k1, p]"},
+{"fcstApartFF-ID26",
+"ApartFF[SPD[l,-p1+p3+p2]SFAD[{l,m1^2},{l-p1+p3+p2,m3^2},l-p1+p2,l-\
+k1],{l},FDS\[Rule]False,FCE\[Rule]True]",
+"1/2 SFAD[{{l, 0}, {m1^2, 1}, 1}, {{-k1 + l, 0}, {0, 1},
+	1}, {{l - p1 + p2, 0}, {0, 1}, 1}] -
+1/2 SFAD[{{-k1 + l, 0}, {0, 1}, 1}, {{l - p1 + p2, 0}, {0, 1},
+	1}, {{l - p1 + p2 + p3, 0}, {m3^2, 1}, 1}] -
+1/2 SFAD[{{l, 0}, {m1^2, 1}, 1}, {{-k1 + l, 0}, {0, 1},
+	1}, {{l - p1 + p2, 0}, {0, 1},
+	1}, {{l - p1 + p2 + p3, 0}, {m3^2, 1}, 1}] (m1^2 - m3^2 +
+	SPD[p1, p1] - 2 SPD[p1, p2] - 2 SPD[p1, p3] + SPD[p2, p2] +
+	2 SPD[p2, p3] + SPD[p3, p3])"},
+{"fcstApartFF-ID27",
+"ApartFF[SPD[l,-p1+p3+p2]SFAD[{l,-m1^2},{l-p1+p3+p2,-m3^2},l-p1+p2,\
+l-k1],{l},FDS\[Rule]False,FCE\[Rule]True]",
+"SFAD[{{l, 0}, {-m1^2, 1}, 1}, {{-k1 + l, 0}, {0, 1}, 1},
+{{l - p1 + p2, 0}, {0, 1}, 1}]/2 -
+SFAD[{{-k1 + l, 0}, {0, 1}, 1}, {{l - p1 + p2, 0}, {0, 1}, 1},
+{{l - p1 + p2 + p3, 0}, {-m3^2, 1}, 1}]/2 +
+(SFAD[{{l, 0}, {-m1^2, 1}, 1}, {{-k1 + l, 0}, {0, 1}, 1},
+	{{l - p1 + p2, 0}, {0, 1}, 1}, {{l - p1 + p2 + p3, 0}, {-m3^2, 1}, 1}]*
+(m1^2 - m3^2 - SPD[p1, p1] + 2*SPD[p1, p2] + 2*SPD[p1, p3] -
+	SPD[p2, p2] - 2*SPD[p2, p3] - SPD[p3, p3]))/2"},
+{"fcstApartFF-ID28",
+"ApartFF[CSPD[l,-p1+p3+p2]CFAD[{l,m1^2},{l-p1+p3+p2,m3^2},l-p1+p2,\
+l-k1],{l},FDS\[Rule]False,FCE\[Rule]True]",
+"CFAD[{{l, 0}, {m1^2, -1}, 1}, {{-k1 + l, 0}, {0, -1}, 1},
+{{l - p1 + p2, 0}, {0, -1}, 1}]/2 -
+CFAD[{{-k1 + l, 0}, {0, -1}, 1}, {{l - p1 + p2, 0}, {0, -1}, 1},
+{{l - p1 + p2 + p3, 0}, {m3^2, -1}, 1}]/2 +
+(CFAD[{{l, 0}, {m1^2, -1}, 1}, {{-k1 + l, 0}, {0, -1}, 1},
+	{{l - p1 + p2, 0}, {0, -1}, 1}, {{l - p1 + p2 + p3, 0}, {m3^2, -1}, 1}]*
+(m1^2 - m3^2 - CSPD[p1, p1] + 2*CSPD[p1, p2] + 2*CSPD[p1, p3] -
+	CSPD[p2, p2] - 2*CSPD[p2, p3] - CSPD[p3, p3]))/2"},
+{"fcstApartFF-ID29",
+"ApartFF[FAD[l,{k1+k2+l-p2,MC},{k1+l,MC}]SPD[k1,l],{l},FDS\[Rule]\
+False,FCE\[Rule]True]",
+"FAD[l, {k1 + k2 + l - p2, MC}]/2 - FAD[{k1 + l, MC}, {k1 + k2 + l \
+- p2, MC}]/2 + (FAD[{k1 + k2 + l - p2, MC}, l, {k1 + l, MC}]*(MC^2 - \
+SPD[k1, k1]))/2"},
+{"fcstApartFF-ID30",
+"ApartFF[SFAD[l,{k1+k2+l-p2,MC^2},{k1+l,MC^2}]SPD[k1,l],{l},FDS\
+\[Rule]False,FCE\[Rule]True]",
+"SFAD[{{l, 0}, {0, 1}, 1}, {{k1 + k2 + l - p2, 0}, {MC^2, 1}, 1}]/2 -
+SFAD[{{k1 + l, 0}, {MC^2, 1}, 1}, {{k1 + k2 + l - p2, 0}, {MC^2, 1}, 1}]/
+2 + (SFAD[{{l, 0}, {0, 1}, 1}, {{k1 + l, 0}, {MC^2, 1}, 1},
+	{{k1 + k2 + l - p2, 0}, {MC^2, 1}, 1}]*(MC^2 - SPD[k1, k1]))/2"},
+{"fcstApartFF-ID31",
+"ApartFF[SFAD[l,{k1+k2+l-p2,-MC^2},{k1+l,-MC^2}]SPD[k1,l],{l},FDS\
+\[Rule]False,FCE\[Rule]True]",
+"SFAD[{{l, 0}, {0, 1}, 1}, {{k1 + k2 + l - p2, 0}, {-MC^2, 1}, 1}]/2 -
+SFAD[{{k1 + l, 0}, {-MC^2, 1}, 1}, {{k1 + k2 + l - p2, 0}, {-MC^2, 1}, 1}]/
+2 - (SFAD[{{l, 0}, {0, 1}, 1}, {{k1 + l, 0}, {-MC^2, 1}, 1},
+	{{k1 + k2 + l - p2, 0}, {-MC^2, 1}, 1}]*(MC^2 + SPD[k1, k1]))/2"},
+{"fcstApartFF-ID32",
+"ApartFF[CFAD[l,{k1+k2+l-p2,MC^2},{k1+l,MC^2}]CSPD[k1,l],{l},FDS\
+\[Rule]False,FCE\[Rule]True]",
+"CFAD[{{l, 0}, {0, -1}, 1}, {{k1 + k2 + l - p2, 0}, {MC^2, -1}, 1}]/2 -
+CFAD[{{k1 + l, 0}, {MC^2, -1}, 1}, {{k1 + k2 + l - p2, 0}, {MC^2, -1}, 1}]/
+2 - (CFAD[{{l, 0}, {0, -1}, 1}, {{k1 + l, 0}, {MC^2, -1}, 1},
+	{{k1 + k2 + l - p2, 0}, {MC^2, -1}, 1}]*(MC^2 + CSPD[k1, k1]))/2"},
+{"fcstApartFF-ID33",
+"ApartFF[SPD[q2, p] SPD[q1, p] FAD[{q1, m}, {q2, m}, q1 - p, q2 - p,
+q2 - q1, q1], {q1, q2}, Numerator -> False, FCE -> True]",
+"-((FAD[q1, {q2, m}, -p + q2, q1 - q2, -p + q1] SPD[p, q1] SPD[p, q2])/
+m^2) + (FAD[{q1, m}, {q2, m}, -p + q2, q1 - q2, -p + q1] SPD[p,
+q1] SPD[p, q2])/m^2"},
+{"fcstApartFF-ID34", "ApartFF[FVD[q, i] FVD[q, j], {q}]","0"},
+{"fcstApartFF-ID35", "ApartFF[FVD[q, i] FVD[q, j] SFAD[{q, m, -1}], {q}]","0"},
+{"fcstApartFF-ID36", "ApartFF[CVD[q, i] CVD[q, j] CFAD[{q, mm}, {q, m, -1}], {q},
+FCE -> True]","(m - mm) CFAD[{{q, 0}, {mm, -1}, 1}] CVD[q, i] CVD[q, j]"},
+{"fcstApartFF-ID34",
+"ApartFF[CTdec[{{q, i}, {q, j}}, {p}, List -> False] CFAD[q,q + p], {q}, FCE -> True]",
+"(CFAD[{{q, 0}, {0, -1}, 1}, {{p + q, 0}, {0, -1},
+1}] (-CVD[p, i] CVD[p, j] + D CVD[p, i] CVD[p, j] -
+CSPD[p, p] KDD[i, j]))/(4 (-2 + D))"},
+{"fcstApartFF-ID35", "ApartFF[TC[q] GFAD[(TC[q] - x)] SFAD[{{0, p.q}, x}], {q}, FCE -> True]",
+"GFAD[{{-x + TC[q], 1}, 1}] SFAD[{{0, p.q}, {x, 1}, 1}] TC[q]"},
+{"fcstApartFF-ID36", "ApartFF[TC[q] GFAD[(TC[q] - x)] SFAD[{{0, p.q}, x}], {q},
+TemporalMomentum -> True, FCE -> True]",
+"x GFAD[{{-x + TC[q], 1}, 1}] SFAD[{{0, p.q}, {x, 1}, 1}]"}
 })

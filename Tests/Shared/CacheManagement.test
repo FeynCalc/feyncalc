@@ -2,9 +2,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for cache management			*)
@@ -20,8 +20,8 @@ Tests`Shared`fcstCacheManagement = {
 	"SP[a, c] + SP[a, d] + SP[b, c] + SP[b, d]"},
 {"fcstCacheManagement-ID4","FCClearScalarProducts[] \n FCUseCache[ExpandScalarProduct, {SP[a + b, c + d]},
 	{Momentum -> {e}}] // FCE",	"SP[a + b, c + d]"},
-{"fcstCacheManagement-ID5","FCClearScalarProducts[] \n (Table[FCUseCache[
-	ExpandScalarProduct, {SP[a + b + c (d + e), c + e + 2 (h + j)]}], {i, 1, 15000}] //	AbsoluteTiming)[[1]] < 1.0",	"True"},
+{"fcstCacheManagement-ID5","FCClearScalarProducts[] \n ((Table[FCUseCache[
+	ExpandScalarProduct, {SP[a + b + c (d + e), c + e + 2 (h + j)]}], {i, 1, 10000}] //	AbsoluteTiming)[[1]] < 2.0 || $VersionNumber<10.)",	"True"},
 {"fcstCacheManagement-ID6","FCClearCache[ExpandScalarProduct] \n FCShowCache[ExpandScalarProduct]",	"{}"}
 
 };

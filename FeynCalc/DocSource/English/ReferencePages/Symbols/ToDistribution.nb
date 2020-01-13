@@ -128,8 +128,23 @@ Cell[TextData[{
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "ToDistribution", "]"}]], "Input",
+ CellTags->"ToDistribution",
+ CellLabel->"In[1]:=",
+ CellID->1833387073],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"PlusDistribution", "\[Rule]", "Identity"}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"ToDistribution",
+ CellLabel->"Out[1]=",
+ CellID->1934939097]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -170,9 +185,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/PlusDistribution",
   ButtonNote->"PlusDistribution"],
  "."
-}], "Text",
- CellTags->"ToDistribution",
- CellID->277620007]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -202,126 +215,63 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "ToDistribution", "]"}]], "Input",
- CellTags->"ToDistribution",
- CellLabel->"In[1]:=",
- CellID->1833387073],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{"PlusDistribution", "\[Rule]", "Identity"}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"ToDistribution",
- CellLabel->"Out[1]=",
- CellID->1934939097]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"SetOptions", "[", 
-  RowBox[{"ToDistribution", ",", 
-   RowBox[{"PlusDistribution", "\[Rule]", "PlusDistribution"}]}], 
-  "]"}]], "Input",
- CellTags->"ToDistribution",
- CellLabel->"In[2]:=",
- CellID->1230244334],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{"PlusDistribution", "\[Rule]", "PlusDistribution"}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"ToDistribution",
- CellLabel->"Out[2]=",
- CellID->1029752620]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{"ToDistribution", "[", 
   RowBox[{
    RowBox[{
     RowBox[{"(", 
      RowBox[{"1", "-", "x"}], ")"}], "^", 
     RowBox[{"(", 
-     RowBox[{"Epsilon", "-", "1"}], ")"}]}], ",", "x"}], "]"}]], "Input",
+     RowBox[{"Epsilon", "-", "1"}], ")"}]}], ",", "x", ",", 
+   RowBox[{"PlusDistribution", "\[Rule]", "pd"}]}], "]"}]], "Input",
  CellTags->"ToDistribution",
- CellLabel->"In[3]:=",
+ CellLabel->"In[10]:=",
  CellID->1094502312],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
+   RowBox[{
+    FractionBox["1", "6"], " ", 
+    SuperscriptBox[
+     TagBox["\[CurlyEpsilon]",
+      TraditionalForm], "3"], " ", 
+    RowBox[{"pd", "(", 
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["log", "3"], "(", 
+       RowBox[{"1", "-", "x"}], ")"}], 
+      RowBox[{"1", "-", "x"}]], ")"}]}], "+", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    SuperscriptBox[
+     TagBox["\[CurlyEpsilon]",
+      TraditionalForm], "2"], " ", 
+    RowBox[{"pd", "(", 
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["log", "2"], "(", 
+       RowBox[{"1", "-", "x"}], ")"}], 
+      RowBox[{"1", "-", "x"}]], ")"}]}], "+", 
+   RowBox[{
+    TagBox["\[CurlyEpsilon]",
+     TraditionalForm], " ", 
+    RowBox[{"pd", "(", 
+     FractionBox[
+      RowBox[{"log", "(", 
+       RowBox[{"1", "-", "x"}], ")"}], 
+      RowBox[{"1", "-", "x"}]], ")"}]}], "+", 
+   RowBox[{"pd", "(", 
+    FractionBox["1", 
+     RowBox[{"1", "-", "x"}]], ")"}], "+", 
    FractionBox[
     RowBox[{"\[Delta]", "(", 
      FormBox[
       RowBox[{"1", "-", "x"}],
       TraditionalForm], ")"}], 
     TagBox["\[CurlyEpsilon]",
-     TraditionalForm]], "+", 
-   RowBox[{
-    FractionBox["1", "6"], " ", 
-    SuperscriptBox[
-     TagBox["\[CurlyEpsilon]",
-      TraditionalForm], "3"], " ", 
-    SubscriptBox[
-     RowBox[{"(", 
-      FractionBox[
-       RowBox[{
-        SuperscriptBox["log", "3"], "(", 
-        RowBox[{"1", "-", "x"}], ")"}], 
-       RowBox[{"1", "-", "x"}]], ")"}], "+"]}], "+", 
-   RowBox[{
-    FractionBox["1", "2"], " ", 
-    SuperscriptBox[
-     TagBox["\[CurlyEpsilon]",
-      TraditionalForm], "2"], " ", 
-    SubscriptBox[
-     RowBox[{"(", 
-      FractionBox[
-       RowBox[{
-        SuperscriptBox["log", "2"], "(", 
-        RowBox[{"1", "-", "x"}], ")"}], 
-       RowBox[{"1", "-", "x"}]], ")"}], "+"]}], "+", 
-   RowBox[{
-    TagBox["\[CurlyEpsilon]",
-     TraditionalForm], " ", 
-    SubscriptBox[
-     RowBox[{"(", 
-      FractionBox[
-       RowBox[{"log", "(", 
-        RowBox[{"1", "-", "x"}], ")"}], 
-       RowBox[{"1", "-", "x"}]], ")"}], "+"]}], "+", 
-   SubscriptBox[
-    RowBox[{"(", 
-     FractionBox["1", 
-      RowBox[{"1", "-", "x"}]], ")"}], "+"]}], TraditionalForm]], "Output",
+     TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"ToDistribution",
- CellLabel->"Out[3]=",
- CellID->271495299]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"SetOptions", "[", 
-  RowBox[{"ToDistribution", ",", 
-   RowBox[{"PlusDistribution", "\[Rule]", "Identity"}]}], "]"}]], "Input",
- CellTags->"ToDistribution",
- CellLabel->"In[4]:=",
- CellID->94609941],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{"PlusDistribution", "\[Rule]", "Identity"}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"ToDistribution",
- CellLabel->"Out[4]=",
- CellID->430041707]
+ CellLabel->"Out[10]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -333,9 +283,10 @@ Cell[BoxData[
     RowBox[{"(", 
      RowBox[{"1", "-", "x"}], ")"}], "^", 
     RowBox[{"(", 
-     RowBox[{"Epsilon", "-", "2"}], ")"}]}], ",", "x"}], "]"}]], "Input",
+     RowBox[{"Epsilon", "-", "2"}], ")"}]}], ",", "x", ",", 
+   RowBox[{"PlusDistribution", "\[Rule]", "Identity"}]}], "]"}]], "Input",
  CellTags->"ToDistribution",
- CellLabel->"In[5]:=",
+ CellLabel->"In[11]:=",
  CellID->1034527004],
 
 Cell[BoxData[
@@ -388,8 +339,7 @@ Cell[BoxData[
      RowBox[{"(", 
       RowBox[{"1", "-", "x"}], ")"}], "2"]]}], TraditionalForm]], "Output",
  CellTags->"ToDistribution",
- CellLabel->"Out[5]=",
- CellID->454332293]
+ CellLabel->"Out[11]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -408,7 +358,7 @@ Cell[BoxData[
      RowBox[{"GenerateConditions", "\[Rule]", "False"}]}], "]"}], ",", 
    "Epsilon", ",", "3"}], "]"}]], "Input",
  CellTags->"ToDistribution",
- CellLabel->"In[6]:=",
+ CellLabel->"In[12]:=",
  CellID->941654875],
 
 Cell[BoxData[
@@ -424,29 +374,7 @@ Cell[BoxData[
    TagBox["\[CurlyEpsilon]",
     TraditionalForm], "-", "1"}], TraditionalForm]], "Output",
  CellTags->"ToDistribution",
- CellLabel->"Out[6]=",
- CellID->1061431105]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "@", "Integrate"}]], "Input",
- CellTags->"ToDistribution",
- CellLabel->"In[7]:=",
- CellID->1737951035],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Assumptions", "\[RuleDelayed]", "$Assumptions"}], ",", 
-    RowBox[{"GenerateConditions", "\[Rule]", "Automatic"}], ",", 
-    RowBox[{"PrincipalValue", "\[Rule]", "False"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"ToDistribution",
- CellLabel->"Out[7]=",
- CellID->1658308803]
+ CellLabel->"Out[12]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -464,7 +392,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}]], "Input",
  CellTags->"ToDistribution",
- CellLabel->"In[8]:=",
+ CellLabel->"In[14]:=",
  CellID->1539995997],
 
 Cell[BoxData[
@@ -480,8 +408,7 @@ Cell[BoxData[
    TagBox["\[CurlyEpsilon]",
     TraditionalForm], "-", "1"}], TraditionalForm]], "Output",
  CellTags->"ToDistribution",
- CellLabel->"Out[8]=",
- CellID->2114127907]
+ CellLabel->"Out[14]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -546,12 +473,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{757, Automatic}, {Automatic, 101}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

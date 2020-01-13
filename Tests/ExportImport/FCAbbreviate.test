@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for FCAbbreviate	  			*)
@@ -14,13 +14,13 @@
 (* ------------------------------------------------------------------------ *)
 
 Tests`ExportImport`fcstFCAbbreviate = ({
-{"fcstCompleteSquare-ID1", "FCAbbreviate[(a + I b)^2, {}, {}]",
+{"fcstFCAbbreviate-ID1", "FCAbbreviate[(a + I b)^2, {}, {}]",
 "{{}, {}, {a -> var1, b -> var2}}"},
-{"fcstCompleteSquare-ID2", "FCAbbreviate[SPD[p, k] FAD[{q, SMP[\"m_e\"]}, {q + p, m}], {q}, {p, k},
+{"fcstFCAbbreviate-ID2", "FCAbbreviate[SPD[p, k] FAD[{q, SMP[\"m_e\"]}, {q + p, m}], {q}, {p, k},
 Head -> spd]",
 "{{spd[k, k] -> sp1, spd[k, p] -> sp2, spd[p, p] -> sp3}, {SMP[\"m_e\"] -> sm1},
 {m -> var1}}"},
-{"fcstCompleteSquare-ID3", "FCClearScalarProducts[]; \n SPD[p1, p1] = 0; \n SPD[p2, p2] = 0; \n SPD[p3, p3] = 0; \n
+{"fcstFCAbbreviate-ID3", "FCClearScalarProducts[]; \n SPD[p1, p1] = 0; \n SPD[p2, p2] = 0; \n SPD[p3, p3] = 0; \n
 SPD[p1, p2] = s/2; \n SPD[p1, p3] = -(s + t)/2; \n SPD[p2, p3] = t/2; \n FCAbbreviate[
 SPD[p2, p3] FAD[q, q - p1 - p2, q - p1 - p2 - p3], {q}, {p1, p2, p3},Head -> spd]",
 "{{spd[p1, p1] -> 0, spd[p1, p2] -> var1/2, spd[p1, p3] -> (-var1 - var2)/2,

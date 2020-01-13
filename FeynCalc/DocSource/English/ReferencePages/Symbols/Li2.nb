@@ -159,15 +159,12 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  ButtonBox["Li3",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/Li3",
   ButtonNote->"Li3"],
  "."
-}], "Text",
- CellTags->"Li2",
- CellID->75864768]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -199,7 +196,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Li2", "[", "x", "]"}]], "Input",
  CellTags->"Li2",
- CellLabel->"In[1]:=",
+ CellLabel->"In[7]:=",
  CellID->870020060],
 
 Cell[BoxData[
@@ -207,8 +204,7 @@ Cell[BoxData[
   TemplateBox[{"2","x"},
    "PolyLog"], TraditionalForm]], "Output",
  CellTags->"Li2",
- CellLabel->"Out[1]=",
- CellID->118594315]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -216,7 +212,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Li2", "//", "StandardForm"}]], "Input",
  CellTags->"Li2",
- CellLabel->"In[2]:=",
+ CellLabel->"In[8]:=",
  CellID->1201153887],
 
 Cell[BoxData[
@@ -224,8 +220,7 @@ Cell[BoxData[
   RowBox[{"PolyLog", "[", 
    RowBox[{"2", ",", "#1"}], "]"}], "&"}]], "Output",
  CellTags->"Li2",
- CellLabel->"Out[2]//StandardForm=",
- CellID->798709898]
+ CellLabel->"Out[8]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -239,7 +234,7 @@ Cell[BoxData[
       RowBox[{"1", "-", "x"}], "]"}], "x"], 
     RowBox[{"\[DifferentialD]", "x"}]}]}]}]], "Input",
  CellTags->"Li2",
- CellLabel->"In[3]:=",
+ CellLabel->"In[9]:=",
  CellID->80483927],
 
 Cell[BoxData[
@@ -247,8 +242,7 @@ Cell[BoxData[
   TemplateBox[{"2","x"},
    "PolyLog"], TraditionalForm]], "Output",
  CellTags->"Li2",
- CellLabel->"Out[3]=",
- CellID->788521289]
+ CellLabel->"Out[9]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -313,12 +307,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{1154, Automatic}, {Automatic, 189}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

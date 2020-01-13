@@ -116,18 +116,33 @@ Cell["SUNSimplify", "ObjectName",
 
 Cell[TextData[{
  Cell["   ", "ModInfo"],
- Cell[BoxData["SUNSimplify"], "InlineFormula"],
- " \[LineSeparator]",
- "simplifies products of SUNT (and complex conjugated) matrices. Basic \
-renaming of dummy indices is done. If the option SUNTrace is set to False, \
-then any SUNT-matrices are taken out of DiracTrace[...]; otherwise a \
-color-trace is taken (by SUNTrace) before taking the SUN-objects in front of \
-DiracTrace[...]."
+ Cell[BoxData[
+  RowBox[{"SUNSimplify", "[", "exp", "]"}]], "InlineFormula"],
+ " \[LineSeparator]simplifies products of SUNT and SUNTF matrices in the \
+expression."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "SUNSimplify", "]"}]], "Input",
+ CellLabel->"In[60]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Expanding", "\[Rule]", "False"}], ",", 
+    RowBox[{"Explicit", "\[Rule]", "False"}], ",", 
+    RowBox[{"Factoring", "\[Rule]", "False"}], ",", 
+    RowBox[{"SUNIndexRename", "\[Rule]", "True"}], ",", 
+    RowBox[{"SUNFJacobi", "\[Rule]", "False"}], ",", 
+    RowBox[{"SUNNToCACF", "\[Rule]", "True"}], ",", 
+    RowBox[{"SUNTrace", "\[Rule]", "False"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[60]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -163,19 +178,32 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- ButtonBox["Trick",
+ ButtonBox["SUNTrace",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/Trick",
-  ButtonNote->"Trick"],
+  ButtonData:>"paclet:FeynCalc/ref/SUNTrace",
+  ButtonNote->"SUNTrace"],
  ", ",
- ButtonBox["CalcColorFactor",
+ ButtonBox["SUNT",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/CalcColorFactor",
-  ButtonNote->"CalcColorFactor"],
+  ButtonData:>"paclet:FeynCalc/ref/SUNT",
+  ButtonNote->"SUNT"],
+ ", ",
+ ButtonBox["SUNTF",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SUNTF",
+  ButtonNote->"SUNTF"],
+ ", ",
+ ButtonBox["SUNF",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SUNF",
+  ButtonNote->"SUNF"],
+ ", ",
+ ButtonBox["SUND",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SUND",
+  ButtonNote->"SUND"],
  "."
-}], "Text",
- CellTags->"SUNSimplify",
- CellID->1451213327]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -205,39 +233,13 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "SUNSimplify", "]"}]], "Input",
+ RowBox[{
+  RowBox[{"SUNDelta", "[", 
+   RowBox[{"a", ",", "b"}], "]"}], " ", 
+  RowBox[{"SUNDelta", "[", 
+   RowBox[{"b", ",", "c"}], "]"}]}]], "Input",
  CellTags->"SUNSimplify",
- CellLabel->"In[1]:=",
- CellID->287772200],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Expanding", "\[Rule]", "False"}], ",", 
-    RowBox[{"Explicit", "\[Rule]", "False"}], ",", 
-    RowBox[{"Factoring", "\[Rule]", "False"}], ",", 
-    RowBox[{"SUNIndexRename", "\[Rule]", "True"}], ",", 
-    RowBox[{"SUNFJacobi", "\[Rule]", "False"}], ",", 
-    RowBox[{"SUNNToCACF", "\[Rule]", "True"}], ",", 
-    RowBox[{"SUNTrace", "\[Rule]", "False"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"SUNSimplify",
- CellLabel->"Out[1]=",
- CellID->291333912]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"t1", "=", 
-  RowBox[{
-   RowBox[{"SUNDelta", "[", 
-    RowBox[{"a", ",", "b"}], "]"}], " ", 
-   RowBox[{"SUNDelta", "[", 
-    RowBox[{"b", ",", "c"}], "]"}]}]}]], "Input",
- CellTags->"SUNSimplify",
- CellLabel->"In[2]:=",
+ CellLabel->"In[61]:=",
  CellID->1698138274],
 
 Cell[BoxData[
@@ -256,16 +258,15 @@ Cell[BoxData[
      FormBox["c",
       TraditionalForm]}]]}], TraditionalForm]], "Output",
  CellTags->"SUNSimplify",
- CellLabel->"Out[2]=",
- CellID->1129385138]
+ CellLabel->"Out[61]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SUNSimplify", "[", "t1", "]"}]], "Input",
+ RowBox[{"SUNSimplify", "[", "%", "]"}]], "Input",
  CellTags->"SUNSimplify",
- CellLabel->"In[3]:=",
+ CellLabel->"In[62]:=",
  CellID->1520473065],
 
 Cell[BoxData[
@@ -281,19 +282,23 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"SUNSimplify",
- CellLabel->"Out[3]=",
- CellID->1288692360]
+ CellLabel->"Out[62]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t2", "=", 
-  RowBox[{
-   RowBox[{"SUNT", "[", "a", "]"}], ".", 
-   RowBox[{"SUNT", "[", "a", "]"}]}]}]], "Input",
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SUNT", "[", "a", "]"}], ".", 
+  RowBox[{"SUNT", "[", "a", "]"}]}]], "Input",
  CellTags->"SUNSimplify",
- CellLabel->"In[4]:=",
+ CellLabel->"In[63]:=",
  CellID->1992995975],
 
 Cell[BoxData[
@@ -306,35 +311,34 @@ Cell[BoxData[
     FormBox["a",
      TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"SUNSimplify",
- CellLabel->"Out[4]=",
- CellID->1292635919]
+ CellLabel->"Out[63]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SUNSimplify", "[", "t2", "]"}]], "Input",
+ RowBox[{"SUNSimplify", "[", "%", "]"}]], "Input",
  CellTags->"SUNSimplify",
- CellLabel->"In[5]:=",
+ CellLabel->"In[64]:=",
  CellID->1767152339],
 
 Cell[BoxData[
  FormBox[
   SubscriptBox["C", "F"], TraditionalForm]], "Output",
  CellTags->"SUNSimplify",
- CellLabel->"Out[5]=",
- CellID->2143185906]
+ CellLabel->"Out[64]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"SUNSimplify", "[", 
-  RowBox[{"t2", ",", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"SUNT", "[", "a", "]"}], ".", 
+    RowBox[{"SUNT", "[", "a", "]"}]}], ",", 
    RowBox[{"SUNNToCACF", "\[Rule]", "False"}]}], "]"}]], "Input",
- CellTags->"SUNSimplify",
- CellLabel->"In[6]:=",
- CellID->671897568],
+ CellLabel->"In[65]:="],
 
 Cell[BoxData[
  FormBox[
@@ -342,22 +346,26 @@ Cell[BoxData[
    RowBox[{
     SuperscriptBox["N", "2"], "-", "1"}], 
    RowBox[{"2", " ", "N"}]], TraditionalForm]], "Output",
- CellTags->"SUNSimplify",
- CellLabel->"Out[6]=",
- CellID->1286035113]
+ CellLabel->"Out[65]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t3", "=", 
-  RowBox[{
-   RowBox[{"SUNF", "[", 
-    RowBox[{"a", ",", "r", ",", "s"}], "]"}], 
-   RowBox[{"SUNF", "[", 
-    RowBox[{"b", ",", "r", ",", "s"}], "]"}]}]}]], "Input",
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SUNF", "[", 
+   RowBox[{"a", ",", "r", ",", "s"}], "]"}], 
+  RowBox[{"SUNF", "[", 
+   RowBox[{"b", ",", "r", ",", "s"}], "]"}]}]], "Input",
  CellTags->"SUNSimplify",
- CellLabel->"In[7]:=",
+ CellLabel->"In[66]:=",
  CellID->1014117597],
 
 Cell[BoxData[
@@ -380,16 +388,15 @@ Cell[BoxData[
      FormBox["s",
       TraditionalForm]}]]}], TraditionalForm]], "Output",
  CellTags->"SUNSimplify",
- CellLabel->"Out[7]=",
- CellID->1079109643]
+ CellLabel->"Out[66]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SUNSimplify", "[", "t3", "]"}]], "Input",
+ RowBox[{"SUNSimplify", "[", "%", "]"}]], "Input",
  CellTags->"SUNSimplify",
- CellLabel->"In[8]:=",
+ CellLabel->"In[67]:=",
  CellID->399652098],
 
 Cell[BoxData[
@@ -407,53 +414,50 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
  CellTags->"SUNSimplify",
- CellLabel->"Out[8]=",
- CellID->911807905]
+ CellLabel->"Out[67]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t4", "=", 
-  RowBox[{
-   RowBox[{"SUNF", "[", 
-    RowBox[{"a", ",", "b", ",", "c"}], "]"}], " ", ".", " ", 
-   RowBox[{"SUNF", "[", 
-    RowBox[{"a", ",", "b", ",", "c"}], "]"}]}]}]], "Input",
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SUNF", "[", 
+   RowBox[{"a", ",", "b", ",", "c"}], "]"}], "  ", 
+  RowBox[{"SUNF", "[", 
+   RowBox[{"a", ",", "b", ",", "c"}], "]"}]}]], "Input",
  CellTags->"SUNSimplify",
- CellLabel->"In[9]:=",
+ CellLabel->"In[68]:=",
  CellID->772128503],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{
-   SuperscriptBox["f", 
-    RowBox[{
-     FormBox["a",
-      TraditionalForm], 
-     FormBox["b",
-      TraditionalForm], 
-     FormBox["c",
-      TraditionalForm]}]], ".", 
-   SuperscriptBox["f", 
-    RowBox[{
-     FormBox["a",
-      TraditionalForm], 
-     FormBox["b",
-      TraditionalForm], 
-     FormBox["c",
-      TraditionalForm]}]]}], TraditionalForm]], "Output",
+  SuperscriptBox[
+   RowBox[{"(", 
+    SuperscriptBox["f", 
+     RowBox[{
+      FormBox["a",
+       TraditionalForm], 
+      FormBox["b",
+       TraditionalForm], 
+      FormBox["c",
+       TraditionalForm]}]], ")"}], "2"], TraditionalForm]], "Output",
  CellTags->"SUNSimplify",
- CellLabel->"Out[9]=",
- CellID->1265853983]
+ CellLabel->"Out[68]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SUNSimplify", "[", "t4", "]"}]], "Input",
+ RowBox[{"SUNSimplify", "[", "%", "]"}]], "Input",
  CellTags->"SUNSimplify",
- CellLabel->"In[10]:=",
+ CellLabel->"In[69]:=",
  CellID->1437762377],
 
 Cell[BoxData[
@@ -462,21 +466,26 @@ Cell[BoxData[
    SubsuperscriptBox["C", "A", "2"], " ", 
    SubscriptBox["C", "F"]}], TraditionalForm]], "Output",
  CellTags->"SUNSimplify",
- CellLabel->"Out[10]=",
- CellID->1672514552]
+ CellLabel->"Out[69]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t5", "=", 
-  RowBox[{
-   RowBox[{"SUNF", "[", 
-    RowBox[{"a", ",", "b", ",", "c"}], "]"}], " ", 
-   RowBox[{"SUNF", "[", 
-    RowBox[{"d", ",", "b", ",", "c"}], "]"}]}]}]], "Input",
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SUNF", "[", 
+   RowBox[{"a", ",", "b", ",", "c"}], "]"}], " ", 
+  RowBox[{"SUNF", "[", 
+   RowBox[{"d", ",", "b", ",", "c"}], "]"}]}]], "Input",
  CellTags->"SUNSimplify",
- CellLabel->"In[11]:=",
+ CellLabel->"In[70]:=",
  CellID->1679024090],
 
 Cell[BoxData[
@@ -499,16 +508,15 @@ Cell[BoxData[
      FormBox["c",
       TraditionalForm]}]]}], TraditionalForm]], "Output",
  CellTags->"SUNSimplify",
- CellLabel->"Out[11]=",
- CellID->457488683]
+ CellLabel->"Out[70]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SUNSimplify", "[", "t5", "]"}]], "Input",
+ RowBox[{"SUNSimplify", "[", "%", "]"}]], "Input",
  CellTags->"SUNSimplify",
- CellLabel->"In[12]:=",
+ CellLabel->"In[71]:=",
  CellID->1377676076],
 
 Cell[BoxData[
@@ -526,21 +534,26 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
  CellTags->"SUNSimplify",
- CellLabel->"Out[12]=",
- CellID->1011263721]
+ CellLabel->"Out[71]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t6", "=", 
-  RowBox[{
-   RowBox[{"SUNF", "[", 
-    RowBox[{"a", ",", "b", ",", "c"}], "]"}], " ", 
-   RowBox[{"SUND", "[", 
-    RowBox[{"d", ",", "b", ",", "c"}], "]"}]}]}]], "Input",
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SUNF", "[", 
+   RowBox[{"a", ",", "b", ",", "c"}], "]"}], " ", 
+  RowBox[{"SUND", "[", 
+   RowBox[{"d", ",", "b", ",", "c"}], "]"}]}]], "Input",
  CellTags->"SUNSimplify",
- CellLabel->"In[13]:=",
+ CellLabel->"In[72]:=",
  CellID->188501571],
 
 Cell[BoxData[
@@ -563,42 +576,49 @@ Cell[BoxData[
      FormBox["c",
       TraditionalForm]}]]}], TraditionalForm]], "Output",
  CellTags->"SUNSimplify",
- CellLabel->"Out[13]=",
- CellID->2102673396]
+ CellLabel->"Out[72]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"SUNSimplify", "[", 
-  RowBox[{"t6", ",", 
+  RowBox[{"%", ",", 
    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"SUNSimplify",
- CellLabel->"In[14]:=",
+ CellLabel->"In[73]:=",
  CellID->181805532],
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
  CellTags->"SUNSimplify",
- CellLabel->"Out[14]=",
- CellID->1858289382]
+ CellLabel->"Out[73]="]
+}, Open  ]]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SUND", "[", 
+   RowBox[{"a", ",", "b", ",", "c"}], "]"}], " ", 
+  RowBox[{"SUND", "[", 
+   RowBox[{"a", ",", "b", ",", "c"}], "]"}]}]], "Input"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"SUNSimplify", "[", 
-   RowBox[{
-    RowBox[{
-     RowBox[{"SUND", "[", 
-      RowBox[{"a", ",", "b", ",", "c"}], "]"}], " ", 
-     RowBox[{"SUND", "[", 
-      RowBox[{"a", ",", "b", ",", "c"}], "]"}]}], ",", 
+   RowBox[{"%", ",", 
     RowBox[{"SUNNToCACF", "\[Rule]", "False"}]}], "]"}], "//", 
   "Factor2"}]], "Input",
  CellTags->"SUNSimplify",
- CellLabel->"In[15]:=",
+ CellLabel->"In[75]:=",
  CellID->1466861165],
 
 Cell[BoxData[
@@ -612,8 +632,7 @@ Cell[BoxData[
      RowBox[{"4", "-", 
       SuperscriptBox["N", "2"]}], ")"}]}], "N"], TraditionalForm]], "Output",
  CellTags->"SUNSimplify",
- CellLabel->"Out[15]=",
- CellID->1818146513]
+ CellLabel->"Out[75]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -628,9 +647,9 @@ Cell[BoxData[
      RowBox[{"SUND", "[", 
       RowBox[{"e", ",", "b", ",", "c"}], "]"}]}], ",", 
     RowBox[{"SUNNToCACF", "\[Rule]", "False"}]}], "]"}], "//", 
-  "FullSimplify"}]], "Input",
+  "Simplify"}]], "Input",
  CellTags->"SUNSimplify",
- CellLabel->"In[16]:=",
+ CellLabel->"In[76]:=",
  CellID->1134202251],
 
 Cell[BoxData[
@@ -651,9 +670,15 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm]}]]}], "N"], TraditionalForm]], "Output",
  CellTags->"SUNSimplify",
- CellLabel->"Out[16]=",
- CellID->1693476425]
+ CellLabel->"Out[76]="]
+}, Open  ]]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
 
 Cell[CellGroupData[{
 
@@ -664,7 +689,7 @@ Cell[BoxData[
     RowBox[{"a", ",", "b", ",", "c"}], "]"}], ",", 
    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"SUNSimplify",
- CellLabel->"In[17]:=",
+ CellLabel->"In[77]:=",
  CellID->741099718],
 
 Cell[BoxData[
@@ -724,8 +749,7 @@ Cell[BoxData[
       FormBox["\<\")\"\>",
        TraditionalForm]}]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"SUNSimplify",
- CellLabel->"Out[17]=",
- CellID->65535242]
+ CellLabel->"Out[77]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -737,7 +761,7 @@ Cell[BoxData[
     RowBox[{"a", ",", "b", ",", "c"}], "]"}], ",", 
    RowBox[{"Explicit", "\[Rule]", "True"}]}], "]"}]], "Input",
  CellTags->"SUNSimplify",
- CellLabel->"In[18]:=",
+ CellLabel->"In[78]:=",
  CellID->721833298],
 
 Cell[BoxData[
@@ -796,21 +820,58 @@ Cell[BoxData[
       FormBox["\<\")\"\>",
        TraditionalForm]}]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"SUNSimplify",
- CellLabel->"Out[18]=",
- CellID->101677935]
+ CellLabel->"Out[78]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"SUNSimplify", "[", 
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SUNF", "[", 
+   RowBox[{"a", ",", "b", ",", "c"}], "]"}], " ", 
+  RowBox[{"SUNT", "[", 
+   RowBox[{"c", ",", "b", ",", "a"}], "]"}]}]], "Input",
+ CellLabel->"In[80]:="],
+
+Cell[BoxData[
+ FormBox[
   RowBox[{
-   RowBox[{"SUNF", "[", 
-    RowBox[{"a", ",", "b", ",", "c"}], "]"}], " ", 
-   RowBox[{"SUNT", "[", 
-    RowBox[{"c", ",", "b", ",", "a"}], "]"}]}], "]"}]], "Input",
+   SuperscriptBox["f", 
+    RowBox[{
+     FormBox["a",
+      TraditionalForm], 
+     FormBox["b",
+      TraditionalForm], 
+     FormBox["c",
+      TraditionalForm]}]], " ", 
+   FormBox[
+    RowBox[{
+     SuperscriptBox["T", 
+      FormBox["c",
+       TraditionalForm]], ".", 
+     SuperscriptBox["T", 
+      FormBox["b",
+       TraditionalForm]], ".", 
+     SuperscriptBox["T", 
+      FormBox["a",
+       TraditionalForm]]}],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellLabel->"Out[80]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SUNSimplify", "[", "%", "]"}]], "Input",
  CellTags->"SUNSimplify",
- CellLabel->"In[19]:=",
+ CellLabel->"In[81]:=",
  CellID->1477873564],
 
 Cell[BoxData[
@@ -821,27 +882,32 @@ Cell[BoxData[
    SubscriptBox["C", "A"], " ", 
    SubscriptBox["C", "F"]}], TraditionalForm]], "Output",
  CellTags->"SUNSimplify",
- CellLabel->"Out[19]=",
- CellID->1237531474]
+ CellLabel->"Out[81]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t7", "=", 
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
   RowBox[{
-   RowBox[{
-    RowBox[{"SUNF", "[", 
-     RowBox[{"a", ",", "b", ",", "e"}], "]"}], 
-    RowBox[{"SUNF", "[", 
-     RowBox[{"c", ",", "d", ",", "e"}], "]"}]}], "+", 
-   RowBox[{
-    RowBox[{"SUNF", "[", 
-     RowBox[{"a", ",", "b", ",", "z"}], "]"}], 
-    RowBox[{"SUNF", "[", 
-     RowBox[{"c", ",", "d", ",", "z"}], "]"}]}]}]}]], "Input",
+   RowBox[{"SUNF", "[", 
+    RowBox[{"a", ",", "b", ",", "e"}], "]"}], 
+   RowBox[{"SUNF", "[", 
+    RowBox[{"c", ",", "d", ",", "e"}], "]"}]}], "+", 
+  RowBox[{
+   RowBox[{"SUNF", "[", 
+    RowBox[{"a", ",", "b", ",", "z"}], "]"}], 
+   RowBox[{"SUNF", "[", 
+    RowBox[{"c", ",", "d", ",", "z"}], "]"}]}]}]], "Input",
  CellTags->"SUNSimplify",
- CellLabel->"In[20]:=",
+ CellLabel->"In[82]:=",
  CellID->1820847009],
 
 Cell[BoxData[
@@ -882,18 +948,17 @@ Cell[BoxData[
       FormBox["z",
        TraditionalForm]}]]}]}], TraditionalForm]], "Output",
  CellTags->"SUNSimplify",
- CellLabel->"Out[20]=",
- CellID->1452581872]
+ CellLabel->"Out[82]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"SUNSimplify", "[", 
-  RowBox[{"t7", ",", 
+  RowBox[{"%", ",", 
    RowBox[{"Explicit", "\[Rule]", "False"}]}], "]"}]], "Input",
  CellTags->"SUNSimplify",
- CellLabel->"In[21]:=",
+ CellLabel->"In[83]:=",
  CellID->1998126322],
 
 Cell[BoxData[
@@ -928,85 +993,60 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
  CellTags->"SUNSimplify",
- CellLabel->"Out[21]=",
- CellID->465120276]
+ CellLabel->"Out[83]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
  RowBox[{"SUNSimplify", "[", 
-  RowBox[{"t7", ",", 
+  RowBox[{"%", ",", 
    RowBox[{"Explicit", "\[Rule]", "False"}], ",", 
    RowBox[{"SUNIndexRename", "\[Rule]", "False"}]}], "]"}]], "Input",
  CellTags->"SUNSimplify",
- CellLabel->"In[22]:=",
+ CellLabel->"In[84]:=",
  CellID->891597542],
 
 Cell[BoxData[
  FormBox[
-  RowBox[{
-   RowBox[{
-    SuperscriptBox["f", 
-     RowBox[{
-      FormBox[
-       FormBox["a",
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox["b",
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox["e",
-        TraditionalForm],
-       TraditionalForm]}]], " ", 
-    SuperscriptBox["f", 
-     RowBox[{
-      FormBox[
-       FormBox["c",
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox["d",
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox["e",
-        TraditionalForm],
-       TraditionalForm]}]]}], "+", 
-   RowBox[{
-    SuperscriptBox["f", 
-     RowBox[{
-      FormBox[
-       FormBox["a",
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox["b",
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox["z",
-        TraditionalForm],
-       TraditionalForm]}]], " ", 
-    SuperscriptBox["f", 
-     RowBox[{
-      FormBox[
-       FormBox["c",
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox["d",
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox["z",
-        TraditionalForm],
-       TraditionalForm]}]]}]}], TraditionalForm]], "Output",
+  RowBox[{"2", " ", 
+   SuperscriptBox["f", 
+    RowBox[{
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["b",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["e",
+       TraditionalForm],
+      TraditionalForm]}]], " ", 
+   SuperscriptBox["f", 
+    RowBox[{
+     FormBox[
+      FormBox["c",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["d",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["e",
+       TraditionalForm],
+      TraditionalForm]}]]}], TraditionalForm]], "Output",
  CellTags->"SUNSimplify",
- CellLabel->"Out[22]=",
- CellID->219600628]
+ CellLabel->"Out[84]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1014,10 +1054,10 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"SUNSimplify", "[", 
   RowBox[{"1", "-", 
-   RowBox[{"SUNDelta", "[", 
+   RowBox[{"SD", "[", 
     RowBox[{"i", ",", "i"}], "]"}]}], "]"}]], "Input",
  CellTags->"SUNSimplify",
- CellLabel->"In[23]:=",
+ CellLabel->"In[87]:=",
  CellID->1242397694],
 
 Cell[BoxData[
@@ -1025,135 +1065,112 @@ Cell[BoxData[
   RowBox[{"2", "-", 
    SubsuperscriptBox["C", "A", "2"]}], TraditionalForm]], "Output",
  CellTags->"SUNSimplify",
- CellLabel->"Out[23]=",
- CellID->896501730]
+ CellLabel->"Out[87]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t8", "=", 
-  RowBox[{"DiracTrace", "[", 
-   RowBox[{
-    RowBox[{"f", "[", 
-     RowBox[{"SUNIndex", "[", "a", "]"}], "]"}], 
-    RowBox[{
-     RowBox[{"DiracMatrix", "[", "\[Mu]", "]"}], ".", 
-     RowBox[{"DiracMatrix", "[", "\[Nu]", "]"}]}]}], "]"}]}]], "Input",
- CellTags->"SUNSimplify",
- CellLabel->"In[24]:=",
- CellID->1263731064],
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
- FormBox[
-  RowBox[{"tr", "(", 
-   FormBox[
-    RowBox[{
-     RowBox[{"f", "(", 
-      FormBox["a",
-       TraditionalForm], ")"}], " ", 
-     RowBox[{
-      SuperscriptBox[
-       OverscriptBox["\[Gamma]", "_"], 
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
-        TraditionalForm]], ".", 
-      SuperscriptBox[
-       OverscriptBox["\[Gamma]", "_"], 
-       FormBox[
-        FormBox["\[Nu]",
-         TraditionalForm],
-        TraditionalForm]]}]}],
-    TraditionalForm], ")"}], TraditionalForm]], "Output",
- CellTags->"SUNSimplify",
- CellLabel->"Out[24]=",
- CellID->1605009291]
+ RowBox[{"SUNSimplify", "[", 
+  RowBox[{
+   RowBox[{"SUNF", "[", 
+    RowBox[{"a", ",", "b", ",", "c"}], "]"}], " ", 
+   RowBox[{"SUND", "[", 
+    RowBox[{"d", ",", "b", ",", "c"}], "]"}]}], "]"}]], "Input",
+ CellTags->"SUNTrace",
+ CellLabel->"In[111]:=",
+ CellID->1959336477],
+
+Cell[BoxData[
+ FormBox["0", TraditionalForm]], "Output",
+ CellTags->"SUNTrace",
+ CellLabel->"Out[111]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"SUNSimplify", "[", 
-  RowBox[{"t8", ",", 
-   RowBox[{"SUNTrace", "\[Rule]", "False"}]}], "]"}]], "Input",
- CellTags->"SUNSimplify",
- CellLabel->"In[25]:=",
- CellID->2092725674],
+  RowBox[{
+   RowBox[{"SUNF", "[", 
+    RowBox[{"a", ",", "b", ",", "c"}], "]"}], " ", 
+   RowBox[{"SUND", "[", 
+    RowBox[{"a", ",", "b", ",", "d"}], "]"}]}], "]"}]], "Input",
+ CellTags->"SUNTrace",
+ CellLabel->"In[112]:=",
+ CellID->849009416],
 
 Cell[BoxData[
- FormBox[
-  RowBox[{"tr", "(", 
-   FormBox[
-    RowBox[{
-     RowBox[{"f", "(", 
-      FormBox["a",
-       TraditionalForm], ")"}], " ", 
-     RowBox[{
-      SuperscriptBox[
-       OverscriptBox["\[Gamma]", "_"], 
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
-        TraditionalForm]], ".", 
-      SuperscriptBox[
-       OverscriptBox["\[Gamma]", "_"], 
-       FormBox[
-        FormBox["\[Nu]",
-         TraditionalForm],
-        TraditionalForm]]}]}],
-    TraditionalForm], ")"}], TraditionalForm]], "Output",
- CellTags->"SUNSimplify",
- CellLabel->"Out[25]=",
- CellID->819509111]
+ FormBox["0", TraditionalForm]], "Output",
+ CellTags->"SUNTrace",
+ CellLabel->"Out[112]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"SUNSimplify", "[", 
-  RowBox[{"t8", ",", 
-   RowBox[{"SUNTrace", "\[Rule]", "True"}]}], "]"}]], "Input",
- CellTags->"SUNSimplify",
- CellLabel->"In[26]:=",
- CellID->41710248],
+  RowBox[{
+   RowBox[{"SUNF", "[", 
+    RowBox[{"a", ",", "b", ",", "c"}], "]"}], " ", 
+   RowBox[{"SUND", "[", 
+    RowBox[{"a", ",", "d", ",", "c"}], "]"}]}], "]"}]], "Input",
+ CellTags->"SUNTrace",
+ CellLabel->"In[113]:=",
+ CellID->1231032711],
+
+Cell[BoxData[
+ FormBox["0", TraditionalForm]], "Output",
+ CellTags->"SUNTrace",
+ CellLabel->"Out[113]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SUNSimplify", "[", 
+  RowBox[{
+   RowBox[{"SUND", "[", 
+    RowBox[{"a", ",", "b", ",", "c"}], "]"}], " ", 
+   RowBox[{"SUND", "[", 
+    RowBox[{"d", ",", "b", ",", "c"}], "]"}]}], "]"}]], "Input",
+ CellTags->"SUNTrace",
+ CellLabel->"In[114]:=",
+ CellID->1107366946],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   RowBox[{"f", "(", 
-    FormBox["a",
-     TraditionalForm], ")"}], " ", 
-   SubscriptBox["C", "A"], " ", 
-   RowBox[{"tr", "(", 
-    FormBox[
-     RowBox[{
-      SuperscriptBox[
-       OverscriptBox["\[Gamma]", "_"], 
-       FormBox[
-        FormBox["\[Mu]",
-         TraditionalForm],
-        TraditionalForm]], ".", 
-      SuperscriptBox[
-       OverscriptBox["\[Gamma]", "_"], 
-       FormBox[
-        FormBox["\[Nu]",
-         TraditionalForm],
-        TraditionalForm]]}],
-     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
- CellTags->"SUNSimplify",
- CellLabel->"Out[26]=",
- CellID->737195172]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{"Clear", "[", 
-  RowBox[{
-  "t1", ",", "t2", ",", "t3", ",", "t4", ",", "t5", ",", "t6", ",", "t7", ",",
-    "t8"}], "]"}]], "Input",
- CellTags->"SUNSimplify",
- CellLabel->"In[27]:=",
- CellID->244792958]
+   RowBox[{"-", 
+    RowBox[{"(", 
+     RowBox[{"4", "-", 
+      SubsuperscriptBox["C", "A", "2"]}], ")"}]}], " ", 
+   SuperscriptBox["\[Delta]", 
+    RowBox[{
+     FormBox[
+      FormBox["a",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["d",
+       TraditionalForm],
+      TraditionalForm]}]], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     SubscriptBox["C", "A"], "-", 
+     RowBox[{"2", " ", 
+      SubscriptBox["C", "F"]}]}], ")"}]}], TraditionalForm]], "Output",
+ CellTags->"SUNTrace",
+ CellLabel->"Out[114]="]
+}, Open  ]]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1216,13 +1233,15 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{863, 822},
+WindowMargins->{{Automatic, 1}, {32, Automatic}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

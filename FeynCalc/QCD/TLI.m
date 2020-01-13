@@ -75,26 +75,26 @@ TLI[{m_, 1, 0, 0, 0}, {{2, M_}, 0, 1, {1, M_}, {1, M_}}, opt___Rule] :=
 
 (* true 0's *)
 
-TLI[{a_,b_,0,d_,0}, {n1_Integer, nm2_,0,nm4_,0}, ___Rule] :=
+TLI[{_,_,0,_,0}, {_Integer, _,0,_,0}, ___Rule] :=
 	0;
 
 (*NEW0997*)
-TLI[{a_,b_,c_,0,0}, {nm1_, 0, nm3_, n4_Integer,0}, ___Rule] :=
+TLI[{_,_,_,0,0}, {_, 0, _, _Integer,0}, ___Rule] :=
 	0;
 
 TLI[{a_ /; !MatchQ[a, _Integer?Negative],
 		b_  /; !MatchQ[b, _Integer?Negative],0,0,0},
-		{{n1_,m1_},{n2_,m2_}, 0,0,0}, ___Rule] :=
+		{{_,_},{_,_}, 0,0,0}, ___Rule] :=
 	0 /; (a + b) > 0;
 
 (* this assumes that m is generic; thus: don't use this for
 m=0 *)
 
-TLI[{a_, b_, 0,0,e_}, {x_, y_, 0, 0, z_}, opt___Rule] :=
+TLI[{a_, b_, 0,0,e_}, {_, _, 0, 0, _}, ___Rule] :=
 	0 /;
 	(Head[a]=!=Integer) ||  (Head[b]=!=Integer) || (Head[e]=!=Integer);
 
-TLI[{0,0,a_, b_, e_}, {0, 0, x_, y_, z_}, opt___Rule] :=
+TLI[{0,0,a_, b_, e_}, {0, 0, _, _, _}, ___Rule] :=
 	0 /;
 	(Head[a]=!=Integer) ||  (Head[b]=!=Integer) || (Head[e]=!=Integer);
 
@@ -102,8 +102,7 @@ TLI[{0,0,a_, b_, e_}, {0, 0, x_, y_, z_}, opt___Rule] :=
 
 (* special cases ; all checked by TARCER *)
 
-TLI[{0, 0, 0, 1, 0}, {m_, 0, 0, 0, 0}, {{2, M_}, {1, M_}, 1, 0, 1},
-opt___Rule] :=
+TLI[{0, 0, 0, 1, 0}, {m_, 0, 0, 0, 0}, {{2, M_}, {1, M_}, 1, 0, 1}, ___Rule] :=
 	-TLI[{m, 0, 0, 0, 0}, {1, 0, 1, 0, {1, M}}]/(4*M^2) +
 	TLI[{m, 0, 0, 0, 0}, {1, 1, 1, 0, {1, M}}]/4 +
 	TLI[{m, 0, 0, 0, 0}, {{1, M}, 0, 1, 0, {1, M}}]/(4*M^2) -
@@ -111,19 +110,19 @@ opt___Rule] :=
 	TLI[{m, 0, 0, 0, 0}, {{2, M}, 1, 1, 0, 0}]/4 +
 	M^2*TLI[{m, 0, 0, 0, 0}, {{2, M}, 1, 1, 0, {1, M}}];
 
-TLI[{1, m_, 0, 0, 0}, {{1, M_}, {1, M_}, 0, 1, 1}, opt___Rule] :=
+TLI[{1, m_, 0, 0, 0}, {{1, M_}, {1, M_}, 0, 1, 1}, ___Rule] :=
 	TLI[{0, 1 + m, 0, 0, 0}, {{1, M}, 1, 0, 1, 0}]/(2*M^2) -
 		TLI[{0, 1 + m, 0, 0, 0}, {{1, M}, 1, 0, 1, 1}]/2 -
 		TLI[{0, 1 + m, 0, 0, 0}, {{1, M}, {1, M}, 0, 1, 0}]/(2*M^2) +
 		TLI[{0, 1 + m, 0, 0, 0}, {{1, M}, {1, M}, 0, 1, 1}];
 
-	TLI[{1, m_, 0, 0, 0}, {{1, M_}, {2, M_}, 0, 0, 1}, opt___Rule] :=
+	TLI[{1, m_, 0, 0, 0}, {{1, M_}, {2, M_}, 0, 0, 1}, ___Rule] :=
 		TLI[{0, 1 + m, 0, 0, 0}, {{1, M}, 1, 0, 0, 1}]/(2*M^2) -
 			TLI[{0, 1 + m, 0, 0, 0}, {{1, M}, {1, M}, 0, 0, 1}]/(2*M^2) -
 			TLI[{0, 1 + m, 0, 0, 0}, {{1, M}, {2, M}, 0, 0, 0}]/(2*M^2) +
 			TLI[{0, 1 + m, 0, 0, 0}, {{1, M}, {2, M}, 0, 0, 1}];
 
-	TLI[{1, m_, 0, 0, 0}, {{1, M_}, {2, M_}, 0, 1, 1}, opt___Rule] :=
+	TLI[{1, m_, 0, 0, 0}, {{1, M_}, {2, M_}, 0, 1, 1}, ___Rule] :=
 		-TLI[{0, 1 + m, 0, 0, 0}, {{1, M}, 1, 0, 1, 0}]/(2*M^4) +
 			TLI[{0, 1 + m, 0, 0, 0}, {{1, M}, 1, 0, 1, 1}]/(2*M^2) +
 			TLI[{0, 1 + m, 0, 0, 0}, {{1, M}, {1, M}, 0, 1, 0}]/(2*M^4) -
@@ -231,13 +230,13 @@ TLI[{a1_, a2_Integer?Positive, a3_, a4_, m_/;Head[m]=!=Integer},
 (* this generates Delta.p *)
 sod[rul___Rule] :=
 	FeynCalcInternal[SOD[Momentum /. {rul} /.
-							 Options[TLI]]];
+							Options[TLI]]];
 	ma[i_] :=
 		StyleBox[i//ToString,
-												   FontColor -> RGBColor[0,0,1]
-											   ];
+												FontColor -> RGBColor[0,0,1]
+											];
 
-	ma[{i_, m_}] :=
+	ma[{i_, _}] :=
 		StyleBox[ToString[i],
 														FontWeight -> "Bold",
 														FontColor -> RGBColor[1,0,0]

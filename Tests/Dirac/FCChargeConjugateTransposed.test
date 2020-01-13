@@ -1,0 +1,104 @@
+
+
+(* :Title: FCChargeConjugateTransposed.test                                                  *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCChargeConjugateTransposed               *)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Dirac`fcstFCChargeConjugateTransposed =
+({
+{"fcstFCChargeConjugateTransposed-ID1", "FCCCT[0]", "0"},
+{"fcstFCChargeConjugateTransposed-ID2", "FCCCT[1]", "1"},
+{"fcstFCChargeConjugateTransposed-ID3",
+"FCCCT[GA[i],Explicit\[Rule]True]", "-DiracGamma[LorentzIndex[i]]"},
+{"fcstFCChargeConjugateTransposed-ID4",
+"FCCCT[GAD[i],Explicit\[Rule]True]",
+"-DiracGamma[LorentzIndex[i, D], D]"},
+{"fcstFCChargeConjugateTransposed-ID5",
+"FCCCT[GAD[i],Explicit\[Rule]True,FCDiracIsolate\[Rule]False]",
+"-DiracGamma[LorentzIndex[i, D], D]"},
+{"fcstFCChargeConjugateTransposed-ID6",
+"FCCCT[GS[p],Explicit\[Rule]True]", "-DiracGamma[Momentum[p]]"},
+{"fcstFCChargeConjugateTransposed-ID7",
+"FCCCT[GSD[p],Explicit\[Rule]True]",
+"-DiracGamma[Momentum[p, D], D]"},
+{"fcstFCChargeConjugateTransposed-ID8",
+"FCCCT[GA[5],Explicit\[Rule]True]", "DiracGamma[5]"},
+{"fcstFCChargeConjugateTransposed-ID9",
+"FCCCT[GA[6],Explicit\[Rule]True]", "DiracGamma[6]"},
+{"fcstFCChargeConjugateTransposed-ID10",
+"FCCCT[GA[7],Explicit\[Rule]True]", "DiracGamma[7]"},
+{"fcstFCChargeConjugateTransposed-ID11",
+"FCCCT[1/2(1+GA[5]),Explicit\[Rule]True]", "1/2 + DiracGamma[5]/2"},
+{"fcstFCChargeConjugateTransposed-ID12",
+"FCCCT[1/2(1+GA[mu,5]),Explicit\[Rule]True]",
+"1/2 - DiracGamma[5] . DiracGamma[LorentzIndex[mu]]/2"},
+{"fcstFCChargeConjugateTransposed-ID13",
+"FCCCT[GS[p]+m,Explicit\[Rule]True]",
+"m - DiracGamma[Momentum[p]]"},
+{"fcstFCChargeConjugateTransposed-ID14",
+"FCCCT[GSD[p]+m,Explicit\[Rule]True]",
+"m - DiracGamma[Momentum[p, D], D]"},
+{"fcstFCChargeConjugateTransposed-ID15",
+"FCCCT[GA[mu].(GS[p]+m).GA[nu],Explicit\[Rule]True]",
+"DiracGamma[LorentzIndex[nu]] . (m - DiracGamma[Momentum[p]]) . \
+DiracGamma[LorentzIndex[mu]]"},
+{"fcstFCChargeConjugateTransposed-ID16",
+"FCCCT[GA[6].GS[l].GA[7],Explicit\[Rule]True]",
+"-DiracGamma[7] . DiracGamma[Momentum[l]] . DiracGamma[6]"},
+{"fcstFCChargeConjugateTransposed-ID17",
+"FCCCT[GA[6].GS[l].SUNT[a].GA[7].SUNT[b],Explicit\[Rule]True]",
+"-(DiracGamma[7] . DiracGamma[Momentum[l]] . \
+DiracGamma[6]*FCChargeConjugateTransposed[SUNT[SUNIndex[a]] . \
+SUNT[SUNIndex[b]], Explicit -> False])"},
+{"fcstFCChargeConjugateTransposed-ID18",
+"FCCCT[DiracSigma[GAD[a],GAD[b]],Explicit\[Rule]True]",
+"-DiracSigma[DiracGamma[LorentzIndex[a, D], D], \
+DiracGamma[LorentzIndex[b, D], D]]"},
+{"fcstFCChargeConjugateTransposed-ID19",
+"FCCCT[DiracSigma[GAD[a],GA[5]],Explicit\[Rule]True]",
+"(-I/2)*DiracGamma[5] . DiracGamma[LorentzIndex[a, D], D] + \
+(I/2)*DiracGamma[LorentzIndex[a, D], D] . DiracGamma[5]"},
+{"fcstFCChargeConjugateTransposed-ID20",
+"FCCCT[DiracSigma[GA[5],GA[6]],Explicit\[Rule]True]",
+"(-I/2)*DiracGamma[5] . DiracGamma[6] + (I/2)*DiracGamma[6] . \
+DiracGamma[5]"},
+{"fcstFCChargeConjugateTransposed-ID21",
+"DeclareNonCommutative[AAA1];
+	FCCCT[GA[mu].AAA1.(GS[p]+m).GA[nu],Explicit\[Rule]True]",
+"DiracGamma[LorentzIndex[nu]] . (m - DiracGamma[Momentum[p]]) . \
+FCChargeConjugateTransposed[AAA1, Explicit -> False] . \
+DiracGamma[LorentzIndex[mu]]"},
+{"fcstFCChargeConjugateTransposed-ID22",
+"UnDeclareNonCommutative[AAA1];
+	FCCCT[SpinorUBar[p1].GA[mu].(GS[p]+m).GA[nu].SpinorU[p2],Explicit\
+\[Rule]True]",
+"FCChargeConjugateTransposed[Spinor[Momentum[p1], 0, 1] . \
+DiracGamma[LorentzIndex[mu]] . (m + DiracGamma[Momentum[p]]) . \
+DiracGamma[LorentzIndex[nu]] . Spinor[Momentum[p2], 0, 1], Explicit -> \
+False]"},
+{"fcstFCChargeConjugateTransposed-ID23",
+"FCCCT[SpinorUBar[p1].GA[mu].(GS[p]+m).GA[nu].SpinorU[p2],Explicit\
+\[Rule]True,FCDiracIsolate\[Rule]False]",
+"FCChargeConjugateTransposed[Spinor[Momentum[p1], 0, 1] . \
+DiracGamma[LorentzIndex[mu]] . (m + DiracGamma[Momentum[p]]) . \
+DiracGamma[LorentzIndex[nu]] . Spinor[Momentum[p2], 0, 1], Explicit -> \
+False, FCDiracIsolate -> False]"},
+{"fcstFCChargeConjugateTransposed-ID24",
+"FCChargeConjugateTransposed[DCHN[GA[mu, 5, nu], i, j],
+Explicit -> True, FCE -> True]","DCHN[GA[nu].GA[5].GA[mu], j, i]"},
+{"fcstFCChargeConjugateTransposed-ID25",
+"FCChargeConjugateTransposed[DCHN[GA[mu, 5, nu], SpinorUBar[p], i],
+Explicit -> True, FCE -> True]","FCChargeConjugateTransposed[
+DCHN[GA[mu].GA[5].GA[nu], Spinor[Momentum[p], 0, 1], i],
+Explicit -> False, FeynCalcExternal -> True]"}
+});
+

@@ -9,10 +9,10 @@
 (* ------------------------------------------------------------------------ *)
 
 FCF::usage=
-"FCF is a short form for FeynCalcForm.";
+"FCF[exp] is a short form for FeynCalcForm[exp].";
 
 FeynCalcForm::usage=
-"FeynCalcForm[expr] changes the printed output to an easy to read \
+"FeynCalcForm[exp] changes the printed output to an easy to read \
 form. Whether the result of FeynCalcForm[expr] is displayed \
 or not, depends on the setting of $PrePrint. \
 $PrePrint = FeynCalcForm forces displaying everything \
@@ -25,6 +25,9 @@ Begin["`Package`"]
 End[]
 
 Begin["`FeynCalcForm`Private`"]
+
+fcdot2::usage="";
+hold::usage="";
 
 FCF = FeynCalcForm;
 
@@ -121,7 +124,7 @@ didl[x_,___]:=
 
 Format[fcdot2[a_,b__]] := Infix[fcdot2[a,b], " "];
 (* ??? *)
-fcdot2[x-y,x-rd];
+(*fcdot2[x-y,x-rd];*)
 Format[fcdot2[a_]] := a;
 
 diF[x_-4]:=
@@ -157,7 +160,7 @@ ditr[x_,___] :=
 	"tr"[x];
 
 fdprop[a__] :=
-	1 / denfa[dudu[a]];
+	1 / denfa[hold[a]];
 compind[a_] :=
 	If[Head[a] === Symbol,
 		StringJoin[ToString[a],"*"], a "*"];
@@ -191,15 +194,13 @@ plusdi[a_] :=
 	Subscript[SequenceForm["(", a, ")"], " + "];
 
 feynCalcForm[x_,opt___Rule]:=
-	Block[{xxxx = Evaluate[x], subs},
+	Block[{xxxx = Evaluate[x], subs, fcdot, diracsldid},
 		subs = FinalSubstitutions /. {opt} /. Options[FeynCalcForm];
 		xxxx = xxxx /. subs;
 		xxxx = xxxx/.(n_Real Second)->timefix[n];
 		xxxx = (xxxx/.
 				DOT:>fcdot /. SUNN :> "N"/. SUNTrace :> "tr"  /. LeviCivita[lv__] :> epsd[lv] /.
 				Eps[vl__] :> epsd[vl] /. MetricTensor[v_, w_, OptionsPattern[]] :> "g"[v, w]  /.
-				(*  FourVector[Subscript[p_,s_], mu_] :>
-					(SequenceForm@@Flatten[ {sumst[p[s]],"[",mu,"]"}])/.*)
 				ScalarProduct[ v_,v_ ] :> v^2 /. ScalarProduct[v_ w_] :>
 				(SequenceForm@@Flatten[ {v//sumst ,{"."},w//sumst} ]) /.
 				(* PolarizationVector[ka_, mu_, ___] :> "ep"[ka, mu]  /. *)
@@ -242,8 +243,6 @@ feynCalcForm[x_,opt___Rule]:=
 					DiracGamma[Momentum[v_,di_],di_] :>
 						DiracSlash[v, Dimension -> 4]
 				} /.
-				DiracGammaT[aa_,___]:>
-					"gat"[aa] /.
 				{
 					DiracGamma[5] :> "ga[5]",
 					DiracGamma[6] :> "ga[6]",
@@ -267,8 +266,7 @@ feynCalcForm[x_,opt___Rule]:=
 				If[(Dimension /. Options[DiracSlash]) =!= 4,
 					DiracSlash[v__]:>
 						diracsldid[(Dimension /. Options[DiracSlash])][v]/.
-					diracsldid :>
-						diracsldi,
+					diracsldid :> diracsldi,
 							{}
 				]/.
 				DiracSlash[aa_] :>
@@ -364,10 +362,6 @@ feynCalcForm[x_,opt___Rule]:=
 					feynden[v]/.
 				PropagatorDenominator[v__] :>
 					fdprop[v]/.
-				Lower[v_,___] :>
-					v /.
-				Upper[v_,___] :>
-					v /.
 				Momentum[v__] :>
 					didm[v]  /.
 				LorentzIndex[v__] :>

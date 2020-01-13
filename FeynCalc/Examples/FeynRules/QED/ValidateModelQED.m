@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Validates FeynArts model for QED                             *)
@@ -24,9 +24,11 @@ If[ $FrontEnd === Null,
 		Print["Validation of the FeynArts model for QED"];
 ];
 If[$Notebooks === False, $FeynCalcStartupMessages = False];
-$LoadFeynArts= True;
+$LoadAddOns={"FeynArts"};
 <<FeynCalc`
 $FAVerbose = 0;
+
+FCCheckVersion[9,3,0];
 
 
 (* ::Section:: *)
@@ -43,7 +45,7 @@ FAPatch[PatchModelsOnly->True];
 top1To2 = CreateTopologies[0,1 -> 2];
 
 
-compFu1To2[x_]:=FCFAConvert[FCPrepareFAAmp[CreateFeynAmp[x, Truncated -> True,PreFactor->1]],
+compFu1To2[x_]:=FCFAConvert[CreateFeynAmp[x, Truncated -> True,PreFactor->1],
 IncomingMomenta->{p1},OutgoingMomenta->{p2,p3},UndoChiralSplittings->True,
 DropSumOver->True,List->False,SMP->True]//Contract;
 

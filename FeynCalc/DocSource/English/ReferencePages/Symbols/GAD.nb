@@ -117,13 +117,13 @@ Cell["GAD", "ObjectName",
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{"GAD", "[", "mu", "]"}]], "InlineFormula"],
+  RowBox[{"GAD", "[", "\[Mu]", "]"}]], "InlineFormula"],
  " \[LineSeparator]",
  "can be used as input for a D-dimensional ",
  Cell[BoxData[
   FormBox[
-   SubscriptBox["\[Gamma]", 
-    RowBox[{"\[Mu]", " "}]], TraditionalForm]]],
+   SubscriptBox[
+    SuperscriptBox["\[Gamma]", "\[Mu]"], " "], TraditionalForm]]],
  "and is transformed into DiracGamma[LorentzIndex[",
  Cell[BoxData[
   FormBox["\[Mu]", TraditionalForm]]],
@@ -178,10 +178,10 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- ButtonBox["DiracMatrix",
+ ButtonBox["DiracGamma",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracMatrix",
-  ButtonNote->"DiracMatrix"],
+  ButtonData:>"paclet:FeynCalc/ref/DiracGamma",
+  ButtonNote->"DiracGamma"],
  ", ",
  ButtonBox["GA",
   BaseStyle->"Link",
@@ -193,9 +193,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/GS",
   ButtonNote->"GS"],
  "."
-}], "Text",
- CellTags->"GAD",
- CellID->127950767]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -227,7 +225,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"GAD", "[", "\[Mu]", "]"}]], "Input",
  CellTags->"GAD",
- CellLabel->"In[1]:=",
+ CellLabel->"In[144]:=",
  CellID->617064291],
 
 Cell[BoxData[
@@ -238,8 +236,7 @@ Cell[BoxData[
      TraditionalForm],
     TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"GAD",
- CellLabel->"Out[1]=",
- CellID->1066808251]
+ CellLabel->"Out[144]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -251,7 +248,7 @@ Cell[BoxData[
   RowBox[{"GAD", "[", 
    RowBox[{"\[Nu]", ",", "\[Mu]"}], "]"}]}]], "Input",
  CellTags->"GAD",
- CellLabel->"In[2]:=",
+ CellLabel->"In[145]:=",
  CellID->1166403079],
 
 Cell[BoxData[
@@ -288,8 +285,7 @@ Cell[BoxData[
        TraditionalForm]],
      TraditionalForm]}]}], TraditionalForm]], "Output",
  CellTags->"GAD",
- CellLabel->"Out[2]=",
- CellID->1547742824]
+ CellLabel->"Out[145]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -299,7 +295,7 @@ Cell[BoxData[
   RowBox[{"FCI", "[", 
    RowBox[{"GAD", "[", "\[Mu]", "]"}], "]"}], "]"}]], "Input",
  CellTags->"GAD",
- CellLabel->"In[3]:=",
+ CellLabel->"In[146]:=",
  CellID->1483888506],
 
 Cell[BoxData[
@@ -308,8 +304,7 @@ Cell[BoxData[
    RowBox[{"LorentzIndex", "[", 
     RowBox[{"\[Mu]", ",", "D"}], "]"}], ",", "D"}], "]"}]], "Output",
  CellTags->"GAD",
- CellLabel->"Out[3]//StandardForm=",
- CellID->129946086]
+ CellLabel->"Out[146]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -319,7 +314,7 @@ Cell[BoxData[
   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], 
   "]"}]], "Input",
  CellTags->"GAD",
- CellLabel->"In[4]:=",
+ CellLabel->"In[147]:=",
  CellID->193869943],
 
 Cell[BoxData[
@@ -354,8 +349,7 @@ Cell[BoxData[
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"GAD",
- CellLabel->"Out[4]=",
- CellID->1706461221]
+ CellLabel->"Out[147]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -366,7 +360,7 @@ Cell[BoxData[
    RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], "]"}], 
   "]"}]], "Input",
  CellTags->"GAD",
- CellLabel->"In[5]:=",
+ CellLabel->"In[148]:=",
  CellID->488289901],
 
 Cell[BoxData[
@@ -376,8 +370,7 @@ Cell[BoxData[
   RowBox[{"GAD", "[", "\[Rho]", "]"}], ".", 
   RowBox[{"GAD", "[", "\[Sigma]", "]"}]}]], "Output",
  CellTags->"GAD",
- CellLabel->"Out[5]//StandardForm=",
- CellID->20038506]
+ CellLabel->"Out[148]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -390,7 +383,7 @@ Cell[BoxData[
     RowBox[{"GSD", "[", "p", "]"}], "+", "m"}], ")"}], ".", 
   RowBox[{"GAD", "[", "\[Beta]", "]"}]}]], "Input",
  CellTags->"GAD",
- CellLabel->"In[6]:=",
+ CellLabel->"In[149]:=",
  CellID->1528585205],
 
 Cell[BoxData[
@@ -420,8 +413,7 @@ Cell[BoxData[
       TraditionalForm]],
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"GAD",
- CellLabel->"Out[6]=",
- CellID->1687383827]
+ CellLabel->"Out[149]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -486,12 +478,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{1103, Automatic}, {Automatic, 134}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

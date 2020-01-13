@@ -119,10 +119,21 @@ Cell[TextData[{
  Cell[BoxData[
   RowBox[{"LC", "[", 
    RowBox[{"m", ",", "n", ",", "r", ",", "s"}], "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "evaluates to 4-dimensional LeviCivita[m,n,r,s] by virtue of applying \
-FeynCalcInternal. LC[m,...][p, ...] evaluates to 4-dimensional \
-LeviCivita[m,...][p,...] applying FeynCalcInternal."
+ " \[LineSeparator]evaluates to 4-dimensional ",
+ Cell[BoxData[
+  SuperscriptBox["\[Epsilon]", 
+   RowBox[{"m", " ", "n", " ", "r", " ", "s"}]]], "InlineFormula"],
+ " by virtue of applying FeynCalcInternal. LC[m,...][p, ...] evaluates to \
+4-dimensional ",
+ Cell[BoxData[
+  RowBox[{
+   SuperscriptBox["\[Epsilon]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"m", " ", ".."}], " ", "\[Mu]"}], " ", ".."}]], 
+   SubscriptBox["p", 
+    RowBox[{"\[Mu]", " ", ".."}]]}]], "InlineFormula"],
+ " applying FeynCalcInternal."
 }], "Usage",
  CellID->982511436],
 
@@ -163,19 +174,17 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- ButtonBox["LeviCivita",
+ ButtonBox["Eps",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/LeviCivita",
-  ButtonNote->"LeviCivita"],
+  ButtonData:>"paclet:FeynCalc/ref/Eps",
+  ButtonNote->"Eps"],
  ", ",
  ButtonBox["LCD",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/LCD",
   ButtonNote->"LCD"],
  "."
-}], "Text",
- CellTags->"LC",
- CellID->283409041]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -214,7 +223,8 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox[
-  SuperscriptBox["\[Epsilon]", 
+  SuperscriptBox[
+   OverscriptBox["\[Epsilon]", "_"], 
    RowBox[{
     FormBox[
      FormBox["\[Mu]",
@@ -233,8 +243,7 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"LC",
- CellLabel->"Out[1]=",
- CellID->1184653612]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -247,7 +256,8 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox[
-  SuperscriptBox["\[Epsilon]", 
+  SuperscriptBox[
+   OverscriptBox["\[Epsilon]", "_"], 
    RowBox[{
     FormBox[
      FormBox["\[Mu]",
@@ -266,8 +276,7 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"LC",
- CellLabel->"Out[2]=",
- CellID->513333789]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -286,8 +295,7 @@ Cell[BoxData[
    RowBox[{"LorentzIndex", "[", "\[Rho]", "]"}], ",", 
    RowBox[{"LorentzIndex", "[", "\[Sigma]", "]"}]}], "]"}]], "Output",
  CellTags->"LC",
- CellLabel->"Out[3]//StandardForm=",
- CellID->979116929]
+ CellLabel->"Out[3]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -303,7 +311,8 @@ Cell[BoxData[
 
 Cell[BoxData[
  FormBox[
-  SuperscriptBox["\[Epsilon]", 
+  SuperscriptBox[
+   OverscriptBox["\[Epsilon]", "_"], 
    RowBox[{
     FormBox[
      FormBox["\[Mu]",
@@ -324,8 +333,7 @@ Cell[BoxData[
        TraditionalForm], "_"],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"LC",
- CellLabel->"Out[4]=",
- CellID->1590586499]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -345,8 +353,7 @@ Cell[BoxData[
    RowBox[{"Momentum", "[", "p", "]"}], ",", 
    RowBox[{"Momentum", "[", "q", "]"}]}], "]"}]], "Output",
  CellTags->"LC",
- CellLabel->"Out[5]//StandardForm=",
- CellID->1014807484]
+ CellLabel->"Out[5]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -386,8 +393,7 @@ Cell[BoxData[
         TraditionalForm], "_"],
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"LC",
- CellLabel->"Out[6]=",
- CellID->218829035]
+ CellLabel->"Out[6]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -452,12 +458,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{1124, Automatic}, {Automatic, 84}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

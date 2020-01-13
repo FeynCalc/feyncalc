@@ -1,0 +1,25 @@
+Tests`Dirac`fcitDiracSimplify =
+({
+{"fcitDiracSimplify-ID1",
+"TimeConstrained[
+FCClearScalarProducts[]; {SP[p] = m^2, SP[p1] = m^2, SP[p2] = m^2,
+SP[k1] = 0, SP[k2] = 0, SP[q] = u^2, SP[q, s] = 0};
+Line13 := (GS[p2] - m).GA[be1].(GS[p1] + m).GA[be].(GS[p] - m).GA[
+	al1].GS[k2].GA[al].(1 - GA[5]);
+Line14 :=
+GS[k1].GA[al1].(GS[q] - GS[p1] - GS[p2] - u).GA[
+	be1].(GS[q] - u).(1 + GA[5].GS[s]).GA[
+	be].(GS[q] - GS[p1] - GS[p] - u).GA[al].(1 - GA[5]);
+Line15 := (GS[p] - m).GA[be1].(GS[p1] + m).GA[be].(GS[p2] - m).GA[
+	al1].GS[k2].GA[al].(1 - GA[5]);
+Line16 :=
+GS[k1].GA[al1].(GS[q] - GS[p1] - GS[p] - u).GA[
+	be1].(GS[q] - u).(1 + GA[5].GS[s]).GA[
+	be].(GS[q] - GS[p1] - GS[p2] - u).GA[al].(1 - GA[5]);
+Tr13 = DiracTrace[Line13];
+Tr14 = DiracTrace[Line14];
+Tr15 = DiracTrace[Line15];
+Tr16 = DiracTrace[Line16];
+res = DiracSimplify[Tr13 Tr14 + Tr15 Tr16];, If[$VersionNumber>=9,80,160]];
+LeafCount[res] > 13000", "True"}
+});

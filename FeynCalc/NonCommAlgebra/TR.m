@@ -24,68 +24,70 @@ Begin["`TR`Private`"]
 
 trVerbose::usage="";
 
-Options[ TR ] = {
-	Contract -> 400000,
-	DiracTraceEvaluate -> True,
-	EpsContract           -> True,
-	Explicit           -> True,
-	Expand			   -> True,
-	Factoring          -> Automatic,
+Options[TR] = {
+	Contract			-> True,
+	DiracTraceEvaluate	-> True,
+	EpsContract			-> True,
+	Expand				-> True,
+	Explicit			-> True,
+	FCE					-> False,
 	FCVerbose			-> True,
-	FeynCalcExternal   -> False,
-	Mandelstam         -> {},
+	Factoring			-> Automatic,
+	Mandelstam			-> {},
 	PairCollect			-> False,
 	SUNNToCACF			-> False,
-	SUNTrace           -> False,
-	Schouten           -> 0,
-	TraceOfOne         -> 4,
+	SUNTrace			-> False,
+	Schouten			-> 0,
+	TraceOfOne			-> 4,
 	West				-> True
 };
 
 
-TR[x_, rul:OptionsPattern[]] :=
-	Block[{tt=FeynCalcInternal[x], doot, diractr, dit, fcex, diractrev, sunntocacf,
+TR[expr_, rul:OptionsPattern[]] :=
+	Block[{ex, doot, diractr, dit, fcex, diractrev, sunntocacf,
 		diracTraceOpts,sunTraceOpts,trOpts},
 
 		If [OptionValue[FCVerbose]===False,
 			trVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				trVerbose=OptionValue[FCVerbose]
 			];
 		];
 
-		FCPrint[1,"TR: Entering with: ", tt, FCDoControl->trVerbose];
+		FCPrint[1,"TR: Entering with: ", expr, FCDoControl->trVerbose];
 
-		diractrev = OptionValue[DiracTraceEvaluate];
-		sunntocacf = OptionValue[SUNNToCACF];
-		trOpts = Flatten[Join[{rul}, FilterRules[Options[TR], Except[{rul}]]]];
-		diracTraceOpts = Flatten[FilterRules[Options[trOpts], Options[DiracTrace]]];
-		sunTraceOpts = Flatten[FilterRules[Options[trOpts], Options[SUNTrace]]];
+		ex=FeynCalcInternal[expr];
 
-		If[!FreeQ[x,CF|CA],
+		diractrev		= OptionValue[DiracTraceEvaluate];
+		sunntocacf		= OptionValue[SUNNToCACF];
+		trOpts 			= Flatten[Join[{rul}, FilterRules[Options[TR], Except[{rul}]]]];
+		diracTraceOpts	= Flatten[FilterRules[Options[trOpts], Options[DiracTrace]]];
+		sunTraceOpts	= Flatten[FilterRules[Options[trOpts], Options[SUNTrace]]];
+
+		If[!FreeQ2[ex, {CF,CA}],
 			sunntocacf = True
 		];
 
 		If[OptionValue[Explicit],
-			tt = Explicit[tt]
+			ex = Explicit[ex]
 		];
 
-		If[OptionValue[SUNTrace] && !FreeQ2[tt, {SUNIndex,ExplicitSUNIndex}],
+		If[OptionValue[SUNTrace] && !FreeQ2[ex, {SUNIndex,ExplicitSUNIndex}],
 			FCPrint[1,"TR: Computing the SU(N) trace.", FCDoControl->trVerbose];
-			tt = DiracTrace[tt,diracTraceOpts];
-			tt = SUNSimplify[tt, SUNNToCACF -> sunntocacf, SUNTrace -> True, Explicit -> False];
-			tt = tt /. (DiracTraceEvaluate -> False) :>	(DiracTraceEvaluate -> diractrev) //
+			ex = DiracTrace[ex,diracTraceOpts];
+			ex = SUNSimplify[ex, SUNNToCACF -> sunntocacf, SUNTrace -> True, Explicit -> False];
+			ex = ex /. (DiracTraceEvaluate -> False) :>	(DiracTraceEvaluate -> diractrev) //
 			SUNSimplify[#, SUNTrace -> False, SUNNToCACF -> sunntocacf, Explicit -> False]&,
 
-			If[FreeQ[tt, SUNIndex|ExplicitSUNIndex],
-				tt = DiracTrace[tt, diracTraceOpts];
+			If[FreeQ[ex, SUNIndex|ExplicitSUNIndex],
+				ex = DiracTrace[ex, diracTraceOpts];
 				If[	OptionValue[SUNTrace],
-					tt = SUNSimplify[tt, SUNTrace -> True, SUNNToCACF -> sunntocacf, Explicit -> False]
+					ex = SUNSimplify[ex, SUNTrace -> True, SUNNToCACF -> sunntocacf, Explicit -> False]
 				];
-						tt = tt /. (DiracTraceEvaluate -> False) :> (DiracTraceEvaluate -> diractrev) //
+						ex = ex /. (DiracTraceEvaluate -> False) :> (DiracTraceEvaluate -> diractrev) //
 						SUNSimplify[#, SUNTrace -> False, SUNNToCACF -> sunntocacf, Explicit -> False]&,
-						(*!FreeQ[tt, SUNIndex|ExplicitSUNIndex] -> !SUNTrace*)
-						tt = DiracTrace[Trick[tt]// SUNSimplify[#, SUNNToCACF -> sunntocacf,
+						(*!FreeQ[ex, SUNIndex|ExplicitSUNIndex] -> !SUNTrace*)
+						ex = DiracTrace[Trick[ex]// SUNSimplify[#, SUNNToCACF -> sunntocacf,
 						SUNTrace -> OptionValue[SUNTrace],	Explicit -> OptionValue[Explicit]]&, diracTraceOpts]
 			]
 		];
@@ -94,14 +96,14 @@ TR[x_, rul:OptionsPattern[]] :=
 		FCPrint[4,"TR: Options for Dirac trace: ", {diracTraceOpts}, FCDoControl->trVerbose];
 		diractr[y__] :=
 			(DiracTrace @@ Join[{y}, diracTraceOpts]);
-		tt = tt /. DiracTrace -> diractr;
+		ex = ex /. DiracTrace -> diractr;
 
-		If[	OptionValue[FeynCalcExternal],
-			tt = FeynCalcExternal[tt]
+		If[	OptionValue[FCE],
+			ex = FCE[ex]
 		];
 
-		FCPrint[1,"TR: Leaving with: ",tt, FCDoControl->trVerbose];
-		tt
+		FCPrint[1,"TR: Leaving with: ", ex, FCDoControl->trVerbose];
+		ex
 	];
 
 FCPrint[1,"TR.m loaded"];

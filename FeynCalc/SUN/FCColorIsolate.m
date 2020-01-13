@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Isolates colored objects										*)
@@ -16,10 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 FCColorIsolate::usage =
-"FCColorIsolate[expr,{q1,q2,...}] wraps colored objetcts (SUNT,SUNF,...) into heads \
-specified by the user " <> ToString[
-Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/FCColorIsolate"],
-StandardForm];
+"FCColorIsolate[exp] wraps colored objects (SUNT,SUNF etc.) into heads \
+specified by the user.";
 
 FCColorIsolate::fail =
 "FCColorIsolate failed to isolate colored objects in `1`!";
@@ -30,27 +28,42 @@ End[]
 Begin["`FCColorIsolate`Private`"]
 
 Options[FCColorIsolate] = {
-	ClearHeads -> {FCGV["ColorObject"]},
-	Collecting -> True,
-	DotSimplify -> True,
-	ExceptHeads -> {},
-	Expanding -> True,
-	FCI -> False,
-	Factoring -> Factor,
-	Head -> FCGV["ColorObject"],
-	Isolate -> False,
-	IsolateNames -> KK,
-	IsolateFast -> False,
-	SUNT -> True,
-	SUNF -> True,
-	SUND -> True,
-	SUNTrace -> True
+	ClearHeads		-> {FCGV["ColorObject"]},
+	Collecting		-> True,
+	DotSimplify		-> True,
+	ExceptHeads 	-> {},
+	Expanding		-> True,
+	FCE				-> False,
+	FCI				-> False,
+	Factoring		-> Factor,
+	Head			-> FCGV["ColorObject"],
+	Isolate			-> False,
+	IsolateFast		-> False,
+	IsolateNames	-> KK,
+	SUND 			-> True,
+	SUNF 			-> True,
+	SUNT 			-> True,
+	SUNTrace 		-> True,
+	TimeConstrained	-> 3
 };
 
-FCColorIsolate[expr_, OptionsPattern[]] :=
-	Block[ {res, null1, null2, ex,tmp, head, restHead},
 
-		head = OptionValue[Head];
+FCColorIsolate[expr_List, opts:OptionsPattern[]]:=
+	FCColorIsolate[#, opts]&/@expr;
+
+FCColorIsolate[expr_/; Head[expr]=!=List, OptionsPattern[]] :=
+	Block[ {res, null1, null2, ex,tmp, head, optHead, headR, relevantHeads},
+
+		optHead = OptionValue[Head];
+
+		relevantHeads = Complement[FeynCalc`Package`SUNHeadsList, OptionValue[ExceptHeads]];
+
+		If[MatchQ[optHead,{_,_}],
+			{head, headR} = optHead,
+
+			head = optHead;
+			headR = Identity
+		];
 
 		If[OptionValue[FCI],
 			ex = expr/. (Map[Rule[#, Identity] &, OptionValue[ClearHeads]]),
@@ -58,26 +71,26 @@ FCColorIsolate[expr_, OptionsPattern[]] :=
 		];
 
 
-		If[	FreeQ2[ex,SUNHeadsList],
-			Return[ex]
+		If[	FreeQ2[ex,relevantHeads],
+			Return[restHead[ex] /. restHead -> headR]
 		];
 
 		If[	OptionValue[Expanding],
-			ex = Expand2[ex, SUNHeadsList];
+			ex = Expand2[ex, relevantHeads];
 		];
 
 		(*	and out of the DOTs	*)
 		If[	OptionValue[DotSimplify] && !FreeQ[ex,DOT],
-			tmp = FCSplit[ex, SUNHeadsList, Expanding->OptionValue[Expanding]];
+			tmp = FCSplit[ex, relevantHeads, Expanding->OptionValue[Expanding]];
 			ex = tmp[[1]]+ DotSimplify[tmp[[2]],Expanding->False]
 		];
 
 		If[	OptionValue[Collecting],
-			ex = Collect2[ex,SUNHeadsList,Factoring->OptionValue[Factoring]];
+			ex = Collect2[ex,relevantHeads,Factoring->OptionValue[Factoring],TimeConstrained->OptionValue[TimeConstrained]];
 		];
 
-		res = (Map[(restHead[SelectFree[#, SUNHeadsList]]*
-				head[SelectNotFree[#, SUNHeadsList]]) &,
+		res = (Map[(restHead[SelectFree[#, relevantHeads]]*
+				head[SelectNotFree[#, relevantHeads]]) &,
 				ex + null1 + null2] /. {null1 | null2 -> 0} /.
 			head[1] -> 1);
 		res = res /. {head[x_] /; !FreeQ2[x, OptionValue[ExceptHeads]] :> x};
@@ -105,20 +118,27 @@ FCColorIsolate[expr_, OptionsPattern[]] :=
 			res = res //. head[(x_SUND)^n_. y_.] :> x^n head[y];
 		];
 
-		res = res //. head[x_]/; FreeQ2[x,SUNHeadsList] :> x;
+		res = res //. head[x_]/; FreeQ2[x,relevantHeads] :> x;
 
 		If[	OptionValue[Isolate],
 			res = res/. restHead[x_]:> Isolate[x,IsolateNames->OptionValue[IsolateNames],IsolateFast->OptionValue[IsolateFast]],
-			res = res /. restHead -> Identity
+			res = res /. restHead[0]->0 /. restHead -> headR;
 		];
 
-		If [ !FreeQ[res/. head[__] :> 1, SUNHeadsList] & ,
+		If [ !FreeQ[res/. head[__] :> 1, relevantHeads] & ,
 			Message[FCColorIsolate::fail, ex];
 			Abort[]
 		];
 
+		If[	OptionValue[FCE],
+			res = FCE[res]
+		];
+
 		res
 	];
+
+restHead[0]=
+	0;
 
 FCPrint[1,"FCColorIsolate.m loaded."];
 End[]

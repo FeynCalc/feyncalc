@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Cancels loop-momentum dependent scalar products in the
@@ -40,11 +40,11 @@ spcVerbose::usage="";
 SPC = ScalarProductCancel;
 
 Options[ScalarProductCancel] = {
-	ChangeDimension -> D,
-	FCI -> False,
-	FCVerbose -> False,
-	FDS -> True,
-	FeynAmpDenominatorCombine -> True
+	ChangeDimension				-> D,
+	FCI 						-> False,
+	FCVerbose 					-> False,
+	FDS 						-> True,
+	FeynAmpDenominatorCombine	-> True
 };
 
 SetAttributes[ScalarProductCancel, Listable];
@@ -66,9 +66,15 @@ ScalarProductCancel[int_, qs___, qlast_, OptionsPattern[]]:=
 ScalarProductCancel[int_, qs___, qlast_ , OptionsPattern[]]:=
 	Block[{exp,rank,tmp,tmpHead,null1,null2,res, maxRank},
 
+
+		If[	!FreeQ2[{int}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		If [OptionValue[FCVerbose]===False,
 			spcVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				spcVerbose=OptionValue[FCVerbose]
 			];
 		];
@@ -365,7 +371,7 @@ canCancelQP[int_,qs_List]:=
 			that differ only in the mass are equivalent for our purposes, we set
 			all masses to zero, to avoid duplicates. Furthermore, we ignore all
 			the propagators that do not depend on any of the loop momenta from the qs List	*)
-		props = Union[Cases[ex, PropagatorDenominator[moms_, _]/;!FreeQ2[moms,qs] :> (Expand[moms] /. Momentum[x_, _ : 4] :> x),Infinity]];
+		props = Union[Cases[ex, PropagatorDenominator[m_, _]/;!FreeQ2[m,qs] :> (Expand[m] /. Momentum[x_, _ : 4] :> x),Infinity]];
 
 		(* 	List of all the unique propagators that depend on the loop momentum and are
 			written such that they match the propagators in props. Note that here we account

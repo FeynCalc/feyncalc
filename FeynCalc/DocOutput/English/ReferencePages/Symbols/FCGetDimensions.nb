@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8736,        277]
-NotebookOptionsPosition[      5600,        187]
-NotebookOutlinePosition[      7956,        246]
-CellTagsIndexPosition[      7872,        241]
+NotebookDataLength[     10396,        354]
+NotebookOptionsPosition[      7119,        255]
+NotebookOutlinePosition[      9305,        313]
+CellTagsIndexPosition[      9221,        308]
 WindowTitle->FCGetDimensions
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ FCGetDimensions.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$59327], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$100154], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FCGetDimensions", ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -73,18 +74,28 @@ FCGetDimensions.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["FCGetDimensions", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["FCGetDimensions", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"FCGetDimensions", "[", "expr", "]"}]], "InlineFormula"],
      " \[LineSeparator]is an auxiliary function that determines the \
-dimensions \\in which 4-momenta and Dirac matrices of the given expression \
-are defined. The result is returned as a list, e.g. {4}, {D} or {4,D,D-4} \
-etc. This is useful if one want to be sure that all quantities inside a \
-particular expression are purely 4-dimensional or purely D-dimensional."
+dimensions in which 4-momenta and Dirac matrices of the given expression are \
+defined. "
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -92,6 +103,63 @@ particular expression are purely 4-dimensional or purely D-dimensional."
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}},
  CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->2044233403],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[TextData[{
+ "The result is returned as a list, e.g. ",
+ Cell[BoxData[
+  RowBox[{"{", "4", "}"}]], "InlineFormula"],
+ ", ",
+ Cell[BoxData[
+  RowBox[{"{", "D", "}"}]], "InlineFormula"],
+ " or ",
+ Cell[BoxData[
+  RowBox[{"{", 
+   RowBox[{"4", ",", "D", ",", 
+    RowBox[{"D", "-", "4"}]}], "}"}]], "InlineFormula"],
+ " etc. "
+}], "Notes",
+ CellID->1067943069],
+
+Cell[TextData[{
+ "This is useful if one wants to be sure that all quantities inside a \
+particular expression are purely ",
+ Cell[BoxData["4"], "InlineFormula"],
+ "-dimensional or purely ",
+ Cell[BoxData["D"], "InlineFormula"],
+ "-dimensional."
+}], "Notes"]
+}, Closed]]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -110,7 +178,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1252627147],
+ CellID->158367676],
 
 Cell[CellGroupData[{
 
@@ -120,7 +188,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2109004658],
+ CellID->966743805],
 
 Cell[CellGroupData[{
 
@@ -133,7 +201,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{"{", "4", "}"}], TraditionalForm]], "Output",
- ImageSize->{26, 15},
+ ImageSize->{25, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[1]=",
@@ -151,7 +219,7 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{"{", "D", "}"}], TraditionalForm]], "Output",
- ImageSize->{29, 15},
+ ImageSize->{31, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]=",
@@ -174,7 +242,7 @@ Cell[BoxData[
   RowBox[{"{", 
    RowBox[{"4", ",", 
     RowBox[{"D", "-", "4"}]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{70, 15},
+ ImageSize->{74, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[3]=",
@@ -187,8 +255,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{808, 911},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"FCGetDimensions",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -197,25 +265,23 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 19, 12.675205}", 
+   "built" -> "{2020, 1, 5, 18, 56, 4.451963}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
     "FCGetDimensions[expr] is an auxiliary function that determines the \
-dimensions \\in which 4-momenta and Dirac matrices of the given expression \
-are defined. The result is returned as a list, e.g. {4}, {D} or {4,D,D-4} \
-etc. This is useful if one want to be sure that all quantities inside a \
-particular expression are purely 4-dimensional or purely D-dimensional.", 
-    "synonyms" -> {}, "title" -> "FCGetDimensions", "titlemodifier" -> "", 
-    "windowtitle" -> "FCGetDimensions", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/FCGetDimensions"}, "SearchTextTranslated" -> ""},
+dimensions in which 4-momenta and Dirac matrices of the given expression are \
+defined. ", "synonyms" -> {}, "tabletags" -> {}, "title" -> "FCGetDimensions",
+     "titlemodifier" -> "", "windowtitle" -> "FCGetDimensions", "type" -> 
+    "Symbol", "uri" -> "FeynCalc/ref/FCGetDimensions"}, 
+  "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -223,8 +289,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -233,52 +300,62 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3638, 97, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[5159, 165, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1252627147]}
+   CellID->158367676]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7729, 234}
+ {"PrimaryExamplesSection", 9078, 301}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[587, 21, 2273, 52, 51, "AnchorBarGrid",
+Cell[587, 21, 2302, 53, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2863, 75, 58, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2924, 78, 689, 15, 129, "Usage",
+Cell[2892, 76, 292, 11, 45, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[3209, 91, 479, 13, 101, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3638, 97, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3713, 108, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->2044233403],
+Cell[4455, 134, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[4489, 136, 361, 14, 70, "Notes",
+ CellID->1067943069],
+Cell[4853, 152, 257, 7, 70, "Notes"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5159, 165, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1252627147],
+ CellID->158367676],
 Cell[CellGroupData[{
-Cell[4051, 116, 196, 6, 25, "ExampleSection",
- CellID->2109004658],
+Cell[5571, 184, 195, 6, 26, "ExampleSection",
+ CellID->966743805],
 Cell[CellGroupData[{
-Cell[4272, 126, 140, 4, 27, "Input",
+Cell[5791, 194, 140, 4, 27, "Input",
  CellID->794908219],
-Cell[4415, 132, 210, 7, 36, "Output",
+Cell[5934, 200, 210, 7, 35, "Output",
  CellID->2110485460]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4662, 144, 141, 4, 27, "Input",
+Cell[6181, 212, 141, 4, 27, "Input",
  CellID->166685856],
-Cell[4806, 150, 210, 7, 36, "Output",
+Cell[6325, 218, 210, 7, 35, "Output",
  CellID->1698743533]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5053, 162, 219, 7, 27, "Input",
+Cell[6572, 230, 219, 7, 27, "Input",
  CellID->396565854],
-Cell[5275, 171, 259, 9, 36, "Output",
+Cell[6794, 239, 259, 9, 35, "Output",
  CellID->1155109353]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[5573, 185, 23, 0, 42, "FooterCell"]
+Cell[7092, 253, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

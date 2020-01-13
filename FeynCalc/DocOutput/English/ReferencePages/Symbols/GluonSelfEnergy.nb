@@ -3,69 +3,97 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     20029,        708]
-NotebookOptionsPosition[     15828,        579]
-NotebookOutlinePosition[     18720,        660]
-CellTagsIndexPosition[     18601,        654]
+NotebookDataLength[     19555,        685]
+NotebookOptionsPosition[     15800,        572]
+NotebookOutlinePosition[     18314,        641]
+CellTagsIndexPosition[     18195,        635]
 WindowTitle->GluonSelfEnergy
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/GluonSelfEnergy\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/GluonSelfEnergy"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"GluonPropagator\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/GluonPropagator"], "\<\"GluonGhostVertex\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/GluonGhostVertex"], "\<\"GluonVertex\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/GluonVertex"], "\<\"GhostPropagator\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/GhostPropagator"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/GluonSelfEnergy\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/GluonSelfEnergy"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 GluonSelfEnergy.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$83724], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/GluonSelfEnergy", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$158049], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/GluonSelfEnergy", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +101,20 @@ GluonSelfEnergy.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["GluonSelfEnergy", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["GluonSelfEnergy", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -82,11 +122,10 @@ Cell[BoxData[GridBox[{
       RowBox[{"GluonSelfEnergy", "[", 
        RowBox[{
         RowBox[{"{", 
-         RowBox[{"mu", ",", " ", "a"}], "}"}], ",", " ", 
+         RowBox[{"\[Mu]", ",", " ", "a"}], "}"}], ",", " ", 
         RowBox[{"{", 
-         RowBox[{"nu", ",", "b"}], "}"}]}], "]"}]], "InlineFormula"],
-     " \[LineSeparator]",
-     "yields the 1-loop Gluon selfenergy."
+         RowBox[{"\[Nu]", ",", "b"}], "}"}]}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]yields the 1-loop gluon selfenergy."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -97,44 +136,39 @@ Cell[BoxData[GridBox[{
 
 Cell[CellGroupData[{
 
-Cell[TextData[{
- Cell[BoxData[
-  InterpretationBox[
-   StyleBox[
-    GraphicsBox[{},
-     BaselinePosition->Baseline,
-     ImageSize->{6, 0}],
-    CacheGraphics->False],
-   Spacer[6]]]],
- "Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "PrimaryExamplesSection",
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
- CellTags->"PrimaryExamplesSection",
- CellID->2095789182],
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1101359715],
 
-Cell[TextData[{
- "Basic Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "ExampleSection", "ExampleSection",
- WholeCellGroupOpener->True,
- CellID->1191212838],
-
-Cell[CellGroupData[{
-
-Cell[BoxData["Examples"], "Subsubsection",
- CellTags->"GluonSelfEnergy",
- CellID->115800890],
+Cell["", "SectionHeaderSpacer"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Options", "[", "GluonSelfEnergy", "]"}]], "Input",
- CellTags->"GluonSelfEnergy",
- CellLabel->"In[1]:=",
- CellID->1632878111],
+ CellLabel->"In[11]:="],
 
 Cell[BoxData[
  FormBox[
@@ -159,13 +193,42 @@ Cell[BoxData[
     RowBox[{"Momentum", "\[Rule]", 
      RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}]}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{362, 64},
+ ImageSize->{563, 43},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"GluonSelfEnergy",
- CellLabel->"Out[1]=",
- CellID->22082021]
+ CellLabel->"Out[11]="]
+}, Open  ]]
+}, Closed]]
 }, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->402777423],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->822962424],
 
 Cell[CellGroupData[{
 
@@ -175,9 +238,10 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"\[Mu]", ",", "a"}], "}"}], ",", 
    RowBox[{"{", 
-    RowBox[{"\[Nu]", ",", "b"}], "}"}]}], "]"}]], "Input",
+    RowBox[{"\[Nu]", ",", "b"}], "}"}], ",", 
+   RowBox[{"Momentum", "\[Rule]", "p"}]}], "]"}]], "Input",
  CellTags->"GluonSelfEnergy",
- CellLabel->"In[2]:=",
+ CellLabel->"In[1]:=",
  CellID->407959539],
 
 Cell[BoxData[
@@ -207,57 +271,40 @@ Cell[BoxData[
     RowBox[{"(", 
      RowBox[{
       RowBox[{
-       FormBox[
-        SuperscriptBox[
-         FormBox[
-          FormBox[
-           RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
-           TraditionalForm],
-          TraditionalForm], 
-         FormBox[
-          FormBox[
-           FormBox["\[Mu]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm]],
-        TraditionalForm], " ", 
-       FormBox[
-        SuperscriptBox[
-         FormBox[
-          FormBox[
-           RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
-           TraditionalForm],
-          TraditionalForm], 
-         FormBox[
-          FormBox[
-           FormBox["\[Nu]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm]],
-        TraditionalForm]}], "-", 
+       SuperscriptBox[
+        FormBox[
+         FormBox["p",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]], " ", 
+       SuperscriptBox[
+        FormBox[
+         FormBox["p",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]]}], "-", 
       RowBox[{
        SuperscriptBox[
         FormBox[
-         FormBox[
-          RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
+         FormBox["p",
           TraditionalForm],
          TraditionalForm], "2"], " ", 
-       FormBox[
-        SuperscriptBox["g", 
-         RowBox[{
-          FormBox[
-           FormBox[
-            FormBox["\[Mu]",
-             TraditionalForm],
-            TraditionalForm],
-           TraditionalForm], 
-          FormBox[
-           FormBox[
-            FormBox["\[Nu]",
-             TraditionalForm],
-            TraditionalForm],
-           TraditionalForm]}]],
-        TraditionalForm]}]}], ")"}]}], "+", 
+       SuperscriptBox["g", 
+        RowBox[{
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["\[Nu]",
+           TraditionalForm],
+          TraditionalForm]}]]}]}], ")"}]}], "+", 
    RowBox[{"\[ImaginaryI]", " ", 
     RowBox[{"(", 
      RowBox[{
@@ -281,63 +328,45 @@ Cell[BoxData[
     RowBox[{"(", 
      RowBox[{
       RowBox[{
-       FormBox[
-        SuperscriptBox[
-         FormBox[
-          FormBox[
-           RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
-           TraditionalForm],
-          TraditionalForm], 
-         FormBox[
-          FormBox[
-           FormBox["\[Mu]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm]],
-        TraditionalForm], " ", 
-       FormBox[
-        SuperscriptBox[
-         FormBox[
-          FormBox[
-           RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
-           TraditionalForm],
-          TraditionalForm], 
-         FormBox[
-          FormBox[
-           FormBox["\[Nu]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm]],
-        TraditionalForm]}], "-", 
+       SuperscriptBox[
+        FormBox[
+         FormBox["p",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]], " ", 
+       SuperscriptBox[
+        FormBox[
+         FormBox["p",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]]}], "-", 
       RowBox[{
        SuperscriptBox[
         FormBox[
-         FormBox[
-          RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
+         FormBox["p",
           TraditionalForm],
          TraditionalForm], "2"], " ", 
-       FormBox[
-        SuperscriptBox["g", 
-         RowBox[{
-          FormBox[
-           FormBox[
-            FormBox["\[Mu]",
-             TraditionalForm],
-            TraditionalForm],
-           TraditionalForm], 
-          FormBox[
-           FormBox[
-            FormBox["\[Nu]",
-             TraditionalForm],
-            TraditionalForm],
-           TraditionalForm]}]],
-        TraditionalForm]}]}], ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{458, 93},
+       SuperscriptBox["g", 
+        RowBox[{
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["\[Nu]",
+           TraditionalForm],
+          TraditionalForm]}]]}]}], ")"}]}]}], TraditionalForm]], "Output",
+ ImageSize->{331, 75},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"GluonSelfEnergy",
- CellLabel->"Out[2]=",
- CellID->793043844]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -349,9 +378,10 @@ Cell[BoxData[
     RowBox[{"\[Mu]", ",", "a"}], "}"}], ",", 
    RowBox[{"{", 
     RowBox[{"\[Nu]", ",", "b"}], "}"}], ",", 
-   RowBox[{"Gauge", "\[Rule]", "\[Xi]"}]}], "]"}]], "Input",
+   RowBox[{"Gauge", "\[Rule]", "\[Xi]"}], ",", 
+   RowBox[{"Momentum", "\[Rule]", "q"}]}], "]"}]], "Input",
  CellTags->"GluonSelfEnergy",
- CellLabel->"In[3]:=",
+ CellLabel->"In[2]:=",
  CellID->1914387770],
 
 Cell[BoxData[
@@ -392,57 +422,40 @@ Cell[BoxData[
     RowBox[{"(", 
      RowBox[{
       RowBox[{
-       FormBox[
-        SuperscriptBox[
-         FormBox[
-          FormBox[
-           RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
-           TraditionalForm],
-          TraditionalForm], 
-         FormBox[
-          FormBox[
-           FormBox["\[Mu]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm]],
-        TraditionalForm], " ", 
-       FormBox[
-        SuperscriptBox[
-         FormBox[
-          FormBox[
-           RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
-           TraditionalForm],
-          TraditionalForm], 
-         FormBox[
-          FormBox[
-           FormBox["\[Nu]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm]],
-        TraditionalForm]}], "-", 
+       SuperscriptBox[
+        FormBox[
+         FormBox["q",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]], " ", 
+       SuperscriptBox[
+        FormBox[
+         FormBox["q",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]]}], "-", 
       RowBox[{
        SuperscriptBox[
         FormBox[
-         FormBox[
-          RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
+         FormBox["q",
           TraditionalForm],
          TraditionalForm], "2"], " ", 
-       FormBox[
-        SuperscriptBox["g", 
-         RowBox[{
-          FormBox[
-           FormBox[
-            FormBox["\[Mu]",
-             TraditionalForm],
-            TraditionalForm],
-           TraditionalForm], 
-          FormBox[
-           FormBox[
-            FormBox["\[Nu]",
-             TraditionalForm],
-            TraditionalForm],
-           TraditionalForm]}]],
-        TraditionalForm]}]}], ")"}]}], "+", 
+       SuperscriptBox["g", 
+        RowBox[{
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["\[Nu]",
+           TraditionalForm],
+          TraditionalForm]}]]}]}], ")"}]}], "+", 
    RowBox[{"\[ImaginaryI]", " ", 
     RowBox[{"(", 
      RowBox[{
@@ -466,67 +479,49 @@ Cell[BoxData[
     RowBox[{"(", 
      RowBox[{
       RowBox[{
-       FormBox[
-        SuperscriptBox[
-         FormBox[
-          FormBox[
-           RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
-           TraditionalForm],
-          TraditionalForm], 
-         FormBox[
-          FormBox[
-           FormBox["\[Mu]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm]],
-        TraditionalForm], " ", 
-       FormBox[
-        SuperscriptBox[
-         FormBox[
-          FormBox[
-           RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
-           TraditionalForm],
-          TraditionalForm], 
-         FormBox[
-          FormBox[
-           FormBox["\[Nu]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm]],
-        TraditionalForm]}], "-", 
+       SuperscriptBox[
+        FormBox[
+         FormBox["q",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm]], " ", 
+       SuperscriptBox[
+        FormBox[
+         FormBox["q",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]]}], "-", 
       RowBox[{
        SuperscriptBox[
         FormBox[
-         FormBox[
-          RowBox[{"FCGV", "(", "\<\"p\"\>", ")"}],
+         FormBox["q",
           TraditionalForm],
          TraditionalForm], "2"], " ", 
-       FormBox[
-        SuperscriptBox["g", 
-         RowBox[{
-          FormBox[
-           FormBox[
-            FormBox["\[Mu]",
-             TraditionalForm],
-            TraditionalForm],
-           TraditionalForm], 
-          FormBox[
-           FormBox[
-            FormBox["\[Nu]",
-             TraditionalForm],
-            TraditionalForm],
-           TraditionalForm]}]],
-        TraditionalForm]}]}], ")"}]}]}], TraditionalForm]], "Output",
- ImageSize->{443, 144},
+       SuperscriptBox["g", 
+        RowBox[{
+         FormBox[
+          FormBox["\[Mu]",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["\[Nu]",
+           TraditionalForm],
+          TraditionalForm]}]]}]}], ")"}]}]}], TraditionalForm]], "Output",
+ ImageSize->{539, 120},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"GluonSelfEnergy",
- CellLabel->"Out[3]=",
- CellID->722359513]
+ CellLabel->"Out[2]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell["", "SectionFooterSpacer"]
-}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -552,6 +547,12 @@ Cell[TextData[{
   ButtonNote->"GluonPropagator"],
   FontFamily->"Verdana"],
  ", ",
+ StyleBox[ButtonBox["GluonGhostVertex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/GluonGhostVertex",
+  ButtonNote->"GluonGhostVertex"],
+  FontFamily->"Verdana"],
+ ", ",
  StyleBox[ButtonBox["GluonVertex",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/GluonVertex",
@@ -563,24 +564,16 @@ Cell[TextData[{
   ButtonData->"paclet:FeynCalc/ref/GhostPropagator",
   ButtonNote->"GhostPropagator"],
   FontFamily->"Verdana"],
- ", ",
- StyleBox[ButtonBox["GluonGhostVertex",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/GluonGhostVertex",
-  ButtonNote->"GluonGhostVertex"],
-  FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"GluonSelfEnergy",
- CellID->1505167912]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{808, 911},
+WindowMargins->{{278, Automatic}, {Automatic, 28}},
 WindowTitle->"GluonSelfEnergy",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -589,21 +582,22 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 20, 58.781887}", 
+   "built" -> "{2020, 1, 5, 18, 58, 37.982017}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
-    "GluonSelfEnergy[{mu, a}, {nu, b}] yields the 1-loop Gluon selfenergy.", 
-    "synonyms" -> {}, "title" -> "GluonSelfEnergy", "titlemodifier" -> "", 
-    "windowtitle" -> "GluonSelfEnergy", "type" -> "Symbol", "uri" -> 
+    "GluonSelfEnergy[{\\[Mu], a}, {\\[Nu], b}] yields the 1-loop gluon \
+selfenergy.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "GluonSelfEnergy", "titlemodifier" -> "", "windowtitle" -> 
+    "GluonSelfEnergy", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/GluonSelfEnergy"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -611,8 +605,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 0}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -621,95 +616,77 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3492, 99, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[6689, 205, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->2095789182]},
+   CellID->402777423]},
  "GluonSelfEnergy"->{
-  Cell[4104, 126, 92, 2, 35, "Subsubsection",
-   CellTags->"GluonSelfEnergy",
-   CellID->115800890],
-  Cell[4221, 132, 148, 4, 27, "Input",
-   CellTags->"GluonSelfEnergy",
-   CellID->1632878111],
-  Cell[4372, 138, 942, 28, 85, "Output",
-   CellTags->"GluonSelfEnergy",
-   CellID->22082021],
-  Cell[5351, 171, 270, 9, 27, "Input",
+  Cell[7321, 234, 317, 10, 27, "Input",
    CellTags->"GluonSelfEnergy",
    CellID->407959539],
-  Cell[5624, 182, 4152, 157, 114, "Output",
-   CellTags->"GluonSelfEnergy",
-   CellID->793043844],
-  Cell[9813, 344, 319, 10, 27, "Input",
+  Cell[7641, 246, 3130, 122, 96, "Output",
+   CellTags->"GluonSelfEnergy"],
+  Cell[10808, 373, 366, 11, 27, "Input",
    CellTags->"GluonSelfEnergy",
    CellID->1914387770],
-  Cell[10135, 356, 4496, 168, 165, "Output",
-   CellTags->"GluonSelfEnergy",
-   CellID->722359513],
-  Cell[14999, 547, 787, 27, 70, "Text",
-   CellTags->"GluonSelfEnergy",
-   CellID->1505167912]}
+  Cell[11177, 386, 3474, 133, 141, "Output",
+   CellTags->"GluonSelfEnergy"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 17659, 622},
- {"GluonSelfEnergy", 17801, 626}
+ {"PrimaryExamplesSection", 17683, 617},
+ {"GluonSelfEnergy", 17825, 621}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[587, 21, 2273, 52, 51, "AnchorBarGrid",
+Cell[587, 21, 3363, 80, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2863, 75, 58, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2924, 78, 543, 17, 82, "Usage",
+Cell[3953, 103, 292, 11, 45, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4270, 118, 540, 16, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3492, 99, 388, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->2095789182],
-Cell[3883, 116, 196, 6, 25, "ExampleSection",
- CellID->1191212838],
+Cell[4835, 138, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1101359715],
+Cell[5577, 164, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[4104, 126, 92, 2, 35, "Subsubsection",
- CellTags->"GluonSelfEnergy",
- CellID->115800890],
-Cell[CellGroupData[{
-Cell[4221, 132, 148, 4, 27, "Input",
- CellTags->"GluonSelfEnergy",
- CellID->1632878111],
-Cell[4372, 138, 942, 28, 85, "Output",
- CellTags->"GluonSelfEnergy",
- CellID->22082021]
+Cell[5633, 168, 98, 2, 70, "Input"],
+Cell[5734, 172, 894, 26, 64, "Output"]
+}, Open  ]]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5351, 171, 270, 9, 27, "Input",
+Cell[6689, 205, 387, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->402777423],
+Cell[CellGroupData[{
+Cell[7101, 224, 195, 6, 26, "ExampleSection",
+ CellID->822962424],
+Cell[CellGroupData[{
+Cell[7321, 234, 317, 10, 27, "Input",
  CellTags->"GluonSelfEnergy",
  CellID->407959539],
-Cell[5624, 182, 4152, 157, 114, "Output",
- CellTags->"GluonSelfEnergy",
- CellID->793043844]
+Cell[7641, 246, 3130, 122, 96, "Output",
+ CellTags->"GluonSelfEnergy"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9813, 344, 319, 10, 27, "Input",
+Cell[10808, 373, 366, 11, 27, "Input",
  CellTags->"GluonSelfEnergy",
  CellID->1914387770],
-Cell[10135, 356, 4496, 168, 165, "Output",
- CellTags->"GluonSelfEnergy",
- CellID->722359513]
-}, Open  ]],
-Cell[14646, 527, 31, 0, 70, "SectionFooterSpacer"]
+Cell[11177, 386, 3474, 133, 141, "Output",
+ CellTags->"GluonSelfEnergy"]
 }, Open  ]]
 }, Open  ]],
-Cell[CellGroupData[{
-Cell[14726, 533, 270, 12, 70, "SeeAlsoSection",
- CellID->1255426704],
-Cell[14999, 547, 787, 27, 70, "Text",
- CellTags->"GluonSelfEnergy",
- CellID->1505167912]
+Cell[14678, 523, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
-Cell[15801, 577, 23, 0, 70, "FooterCell"]
+Cell[CellGroupData[{
+Cell[14746, 528, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[15019, 542, 739, 25, 56, "SeeAlso"]
+}, Open  ]],
+Cell[15773, 570, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

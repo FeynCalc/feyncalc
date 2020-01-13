@@ -1,0 +1,645 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     21604,        635]
+NotebookOptionsPosition[     18006,        526]
+NotebookOutlinePosition[     20310,        588]
+CellTagsIndexPosition[     20190,        582]
+WindowTitle->ToStandardMatrixElement
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"DiracSubstitute5\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracSubstitute5"], "\<\"DiracGamma\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/DiracGamma"], "\<\"ToDiracGamma67\"\>":>
+       Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/ToDiracGamma67"], "\<\"Spinor\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/Spinor"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/ToStandardMatrixElement\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/ToStandardMatrixElement"]}, Visible -> 
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
+ToStandardMatrixElement.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$275161], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/ToStandardMatrixElement", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[TextData[{
+ Cell["ToStandardMatrixElement", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"ToStandardMatrixElement", "[", "exp", "]"}]], "InlineFormula"],
+     
+     " \[LineSeparator]wraps Dirac structures, color structures and \
+polarization vectors with the head StandardMatrixElement."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1295997546],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[TextData[{
+ "The idea of having standard matrix elements stems from A. Denner's \
+\"Techniques for the calculation of electroweak radiative corrections at the \
+one-loop level and results for W-physics at LEP200\", cf. ",
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["arXiv:0709.1075"]],"https://arxiv.org/abs/0709.1075"},
+   "WebLink",
+   BaseStyle->{"Notes"}]]],
+ "."
+}], "Notes",
+ CellID->244417769],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "ToStandardMatrixElement", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1473107891],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"ChangeDimension", "\[Rule]", "False"}], ",", 
+    RowBox[{"DiracOrder", "\[Rule]", "True"}], ",", 
+    RowBox[{"DiracSubstitute5", "\[Rule]", "True"}], ",", 
+    RowBox[{"DiracSubstitute67", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCColorIsolate", "\[Rule]", "True"}], ",", 
+    RowBox[{"FCDiracIsolate", "\[Rule]", "True"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
+    RowBox[{"Factoring", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"Factor", ",", "5000"}], "}"}]}], ",", 
+    RowBox[{"Polarization", "\[Rule]", "True"}], ",", 
+    RowBox[{"SirlinSimplify", "\[Rule]", "False"}], ",", 
+    RowBox[{"Spinor", "\[Rule]", "False"}], ",", 
+    RowBox[{"SpinorChainChiralSplit", "\[Rule]", "True"}], ",", 
+    RowBox[{"SpinorChainTrick", "\[Rule]", "False"}], ",", 
+    RowBox[{"TimeConstrained", "\[Rule]", "3"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ ImageSize->{538, 91},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]="]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1328592495],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->418264240],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Spinor", "[", 
+    RowBox[{
+     RowBox[{"Momentum", "[", 
+      RowBox[{"k2", ",", "D"}], "]"}], ",", "0", ",", "1"}], "]"}], ".", 
+   RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 
+   RowBox[{"Spinor", "[", 
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"Momentum", "[", 
+       RowBox[{"k1", ",", "D"}], "]"}]}], ",", "0", ",", "1"}], "]"}]}], "*", 
+  
+  RowBox[{
+   RowBox[{"Spinor", "[", 
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"Momentum", "[", 
+       RowBox[{"ps", ",", "D"}], "]"}]}], ",", 
+     RowBox[{"SMP", "[", "\"\<m_s\>\"", "]"}], ",", "1"}], "]"}], ".", 
+   RowBox[{"GAD", "[", "\[Mu]", "]"}], ".", 
+   RowBox[{"Spinor", "[", 
+    RowBox[{
+     RowBox[{"Momentum", "[", 
+      RowBox[{"pd", ",", "D"}], "]"}], ",", 
+     RowBox[{"SMP", "[", "\"\<m_d\>\"", "]"}], ",", "1"}], "]"}]}]}]], "Input",\
+
+ CellLabel->"In[1]:=",
+ CellID->779626914],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      FormBox["\<\"\[CurlyPhi]\"\>",
+       TraditionalForm], 
+      FormBox["\<\"(\"\>",
+       TraditionalForm], 
+      FormBox[
+       FormBox["k2",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox["\<\")\"\>",
+       TraditionalForm]}], ")"}], ".", 
+    FormBox[
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox["\<\"\[CurlyPhi]\"\>",
+       TraditionalForm], 
+      FormBox["\<\"(\"\>",
+       TraditionalForm], 
+      FormBox[
+       RowBox[{"-", 
+        FormBox["k1",
+         TraditionalForm]}],
+       TraditionalForm], 
+      FormBox["\<\")\"\>",
+       TraditionalForm]}], ")"}]}], " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      FormBox["\<\"\[CurlyPhi]\"\>",
+       TraditionalForm], 
+      FormBox["\<\"(\"\>",
+       TraditionalForm], 
+      FormBox[
+       RowBox[{"-", 
+        FormBox["ps",
+         TraditionalForm]}],
+       TraditionalForm], 
+      FormBox["\<\",\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox["m", "s"],
+       TraditionalForm], 
+      FormBox["\<\")\"\>",
+       TraditionalForm]}], ")"}], ".", 
+    FormBox[
+     SuperscriptBox["\[Gamma]", 
+      FormBox[
+       FormBox["\[Mu]",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], ".", 
+    RowBox[{"(", 
+     RowBox[{
+      FormBox["\<\"\[CurlyPhi]\"\>",
+       TraditionalForm], 
+      FormBox["\<\"(\"\>",
+       TraditionalForm], 
+      FormBox[
+       FormBox["pd",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox["\<\",\"\>",
+       TraditionalForm], 
+      FormBox[
+       SubscriptBox["m", "d"],
+       TraditionalForm], 
+      FormBox["\<\")\"\>",
+       TraditionalForm]}], ")"}]}]}], TraditionalForm]], "Output",
+ ImageSize->{387, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->1972655282]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ToStandardMatrixElement", "[", "%", "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->626624448],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[RasterBox[CompressedData["
+1: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
+C3ZpF32y/EE0FPcOrfn+QpXhPzRVmQcSzVYh9B9EjPTsukuiZmhRV178eX96
+lenZVntlYnvvXkuv1vJKRGsNZTSOrULKCjnmeuTZX9IXXg4Bp909uxyX/nTu
+uPKWPlWUtzd066b/3FX1lS8O67dD3RZ39RxidqmpKEpNTLopMz8HVfe2vu3S
+fXeh2nDOdWgVbnjsX5M60q1dbJb+hlNTcug9/wUXpIrqG6V0KxhIUZpNEGZK
+LdkV+JLrsEPFan31me3xcg/DZ90aIXy+DMcV/+32A/u2TA9xDzTLWhPYJs6O
+hVcnv7nYr2ujx1zqst8X9vdu9szTTz/zwmtdIub9kkf4yjep40M0shu/LerS
+tFnghtN5RSmzPZ9t6j95W7JEcmS85z+eavKQp/7ps+KWed2VZy/267UlX8XU
+UnV2mKfnsDOm1/i1GbEfrMjitFJmhLWGMh7HFiFlhRzzYqV+6SsjcVnAv551
+n5qQkltrlttcAk6/ezY/Lp3hdG7+SsiMpes2rPli4ty9hic2VX+Gefedu3X/
+vriFUzdlNS4/8ptLujz/D4/YLNPFT2VJ2p4Yj+ddovZcr8hP3jLE5bmWo/ff
+Kss+viq4+YudVicbnkUq7sUPcW/eccxeCd3+IkXpppI0Uzr57R1j/Fq7dY+c
+OGfOyLffCY/debXx5+UsmC95zvqI4QeK1Dpl3vquAZvNs9Z4M2wTZ8/Cq9NU
+npn54bJMszmUpU8J28i06EXX0RK00gtzwr+8bPQo1byFiKowYcSHe2gXn/hg
++VCiCikzvALuoOMyvoHljFpyaObufL61XiPNPlOs0JQdH/V62IkKYs4hRemn
+UtBMPUDYfFF/gId2+a++oKkL4nt1Y9w0h4mz9zfX5PmH137/R5HJUddf+6J3
+9CWWj2uQOlqAPP/IhnXHC5VMLUQ0pb8OcutiwQcCrD6UWELKtjG+AXfEcRlO
+59W5fE5nVckfe38nrGOxoC0/GRU8L+HYwbjlO7OJT3+RokxTKWCmHiBwvnSK
+nGWdffWP7tSFCX38F96gL5WcJs4B72rQKsrKFUZ/C6rPjfUN/rWUfQWpUUdL
+0NQXV5oOZd5C3ofyY307RiQUWvi9TWsPJYKQMiMs4PY9LrX0akJM22eb9V55
+5Gq1w7/ljxQldjTgiJnSSi/O8GvTbezSDQve7Tls4wXaT7hwmzi8JAcAAOyM
+7cpjfdbcIMMHMqpO9wsiPdsCAADnBOURAAAAAAAAAAAAAAAAAAAAAPAkoy7a
+F9qhnY+vr6+Pp4v3dG4v+gPAzkD+LjYgf7fErK2tvXv6juGtAeqCPUPmZgh+
+KQwADED+7iAgf7cuVjNrP4Kqu1Gx6fxejg8APZC/iwF8r82qWM+s/RCq7kZO
+S6N5latYgfxdxED+Lgogf6dtEYL1zNoPoOru4ElsKjzI363VUUyIP0UhfycC
++ftjLX83oJYkDIo+z3gzCPm7tTqKD5GnKOTvdED+rhOz/F3HJtem6u7AcWYX
+j8ZA/m6tjqJE7CkK+TsNkL9D/g75O1cgf+czFEcgfye3QP4Os7YAIH/nBOTv
+kL/TtED+DrO2GZC/63+G/F3EKQr5Oy2Qv3NBnGZtViB/5wDk7zrI3+laIH+H
+WVsAkL83bBLyd6ZxIH8nt0D+DrM2XyB/N9kg5O+M40D+TmyB/B1mbTsB+bsJ
+kL9D/g75O7GFiFOYtW0A5O+mQP4O+Tvk78QW8j48+WZtmwD5O1+QosSOBiB/
+Z8ApX5IDAADsQP4OAAB2BuURAAAAAAAAAAAAAAAAAAAAAPAEAHc2EC/qon2h
+Hdr5+Pr6+ni6eE/n9rZJYGugd4c7G4gdC1JUW3v39B3DqyvUBXuGzM0Q/GYi
+pwR6d+sCdzYQOVZL0UdQdTcqNp2focHpwTfXrIqzuLOZgd5dxFgvRR9C1d3I
+aWk07xN2HNC7Q+8uBPG6s6F3twviT9EHUHV38CQ2HyP07tC7//9X4M6G3l3c
+iDxFDaglCYOizzOuV0DvDr27MXBnQ+8ucsSeooa6O3Cc2f2NMdC7E1ugd4c7
+WwDQu3MAencd9O50LdC7w50tAOjdOQG9O/TuNC3Qu8OdbQb07vqfoXcXcYpC
+704L9O5cEKc7mxXo3TkAvbsOene6Fujd4c4WAPTuDZuE3p1pHOjdyS3Qu8Od
+zRfo3U02CL074zjQuxNboHeHO9tOQO9uAvTu0LtD705sIeIU7mwbAL27KdC7
+Q+8OvTuxhbwPT7472yZA784XpCixowHo3RlwypfkAAAAO9C7AwCAnUF5BAAA
+AAAAAAAAAAAAAAAAAAA83sCdDUQOUlSUQO8OdzYQO0hRBwG9u3WBOxuIHKSo
+GMA316yKs7izmYHeXcQ4S4pC7w69u3DE6M6G3t0uIEWFd4TeHXp3ixCpOxt6
+d/uAFIXeXcDGoXd/Ut3Z0LvbCaSok+vdhQC9OyPidWdzAXp3DkDvroPena7F
+joUXenfOQ3EFenfo3U1wmhR1Er27EKB3Z0LU7mzo3fU/Q+8u4hR9svXuFgG9
+OxfE6c5mBXp3DkDvroPena7FjoUXevfHxp3NCvTuDZuE3p1pHOjdyS32/FQD
+9O6PizubGejdTTYIvTvjONC7E1vs+jleUbnI4c6G3t0M6N2tPxT07qQW6N3p
+W4g4hTvbBkDvbgr07tC7Q+9ObCHvw5PvzrYJ0LvzBSlK7GgAencGnPIlOQAA
+wA707gAAYGdQHgEA4PHhfwEGIAc=
+    "], {{0, 89}, {467, 0}}, {0, 255},
+    ColorFunction->RGBColor],
+   BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
+   Selectable->False],
+  DefaultBaseStyle->"ImageGraphics",
+  ImageSize->Automatic,
+  ImageSizeRaw->{467, 89},
+  PlotRange->{{0, 467}, {0, 89}}]], "Output",
+ ImageSize->{471, 89},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellTags->"RasterizedOutput",
+ CellLabel->"Out[2]=",
+ CellID->527411267]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "See Also"
+}], "SeeAlsoSection",
+ WholeCellGroupOpener->True,
+ CellID->1255426704],
+
+Cell[TextData[{
+ StyleBox[ButtonBox["DiracSubstitute5",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracSubstitute5",
+  ButtonNote->"DiracSubstitute5"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["DiracGamma",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/DiracGamma",
+  ButtonNote->"DiracGamma"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["ToDiracGamma67",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/ToDiracGamma67",
+  ButtonNote->"ToDiracGamma67"],
+  FontFamily->"Verdana"],
+ ", ",
+ StyleBox[ButtonBox["Spinor",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/Spinor",
+  ButtonNote->"Spinor"],
+  FontFamily->"Verdana"],
+ "."
+}], "SeeAlso",
+ CellID->655647701]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowTitle->"ToStandardMatrixElement",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2020, 1, 5, 19, 3, 34.127295}", 
+    "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
+    "None", "summary" -> 
+    "ToStandardMatrixElement[exp] wraps Dirac structures, color structures \
+and polarization vectors with the head StandardMatrixElement.", 
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "ToStandardMatrixElement",
+     "titlemodifier" -> "", "windowtitle" -> "ToStandardMatrixElement", 
+    "type" -> "Symbol", "uri" -> "FeynCalc/ref/ToStandardMatrixElement"}, 
+  "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[7368, 217, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1328592495]},
+ "RasterizedOutput"->{
+  Cell[11131, 370, 5739, 102, 110, "Output",
+   CellTags->"RasterizedOutput",
+   CellID->527411267]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 19921, 571},
+ {"RasterizedOutput", 20065, 575}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[595, 21, 3387, 81, 53, "AnchorBarGrid",
+ CellID->1],
+Cell[3985, 104, 300, 11, 45, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[4310, 119, 461, 13, 85, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[4796, 136, 739, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1295997546],
+Cell[5538, 162, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[5572, 164, 412, 11, 70, "Notes",
+ CellID->244417769],
+Cell[CellGroupData[{
+Cell[6009, 179, 126, 3, 70, "Input",
+ CellID->1473107891],
+Cell[6138, 184, 1169, 26, 112, "Output"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7368, 217, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1328592495],
+Cell[CellGroupData[{
+Cell[7781, 236, 195, 6, 26, "ExampleSection",
+ CellID->418264240],
+Cell[CellGroupData[{
+Cell[8001, 246, 905, 29, 64, "Input",
+ CellID->779626914],
+Cell[8909, 277, 2063, 83, 38, "Output",
+ CellID->1972655282]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11009, 365, 119, 3, 27, "Input",
+ CellID->626624448],
+Cell[11131, 370, 5739, 102, 110, "Output",
+ CellTags->"RasterizedOutput",
+ CellID->527411267]
+}, Open  ]]
+}, Open  ]],
+Cell[16897, 476, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16965, 481, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[17238, 495, 726, 26, 56, "SeeAlso",
+ CellID->655647701]
+}, Open  ]],
+Cell[17979, 524, 23, 0, 41, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -32,7 +32,7 @@ Cell["FeynCalc`", "Categorization",
  CellLabel->"Context",
  CellID->468444828],
 
-Cell["FeynCalc/ref/Completes", "Categorization",
+Cell["FeynCalc/ref/CompleteSquare", "Categorization",
  CellLabel->"URI"]
 }, Open  ]],
 
@@ -111,13 +111,13 @@ Cell["XXXX", "Details",
 
 Cell[CellGroupData[{
 
-Cell["Completes", "ObjectName",
+Cell["CompleteSquare", "ObjectName",
  CellID->1224892054],
 
 Cell[TextData[{
  Cell["   ", "ModInfo"],
- Cell[BoxData["Completes"], "InlineFormula"],
- " \[LineSeparator]",
+ Cell[BoxData["CompleteSquare"], "InlineFormula"],
+ " \[LineSeparator]completes ",
  "the square of a second order polynomial in the momentum x. CompleteSquare[a \
 ",
  Cell[BoxData[
@@ -220,85 +220,34 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t1", "=", 
-  RowBox[{
-   RowBox[{"5", 
-    RowBox[{"SP", "[", 
-     RowBox[{
-      RowBox[{
-       RowBox[{"2", "p"}], "+", 
-       RowBox[{"3", "r"}]}], ",", 
-      RowBox[{"p", "+", "r"}]}], "]"}]}], "//", "FCI"}]}]], "Input",
- CellLabel->"In[2]:=",
+ RowBox[{"5", 
+  RowBox[{"SP", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"2", "p"}], "+", 
+     RowBox[{"3", "r"}]}], ",", 
+    RowBox[{"p", "+", "r"}]}], "]"}]}]], "Input",
+ CellLabel->"In[433]:=",
  CellID->42990982],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"5", " ", 
    RowBox[{"(", 
-    RowBox[{
-     FormBox["\<\"(\"\>",
-      TraditionalForm], 
-     FormBox[
-      RowBox[{
-       OverscriptBox[
-        FormBox["p",
-         TraditionalForm], "_"], "+", 
-       OverscriptBox[
-        FormBox["r",
-         TraditionalForm], "_"]}],
-      TraditionalForm], 
-     FormBox["\<\")\"\>",
-      TraditionalForm], 
-     FormBox["\<\"\[CenterDot]\"\>",
-      TraditionalForm], 
-     FormBox["\<\"(\"\>",
-      TraditionalForm], 
-     FormBox[
-      RowBox[{
-       RowBox[{"2", " ", 
-        OverscriptBox[
-         FormBox["p",
-          TraditionalForm], "_"]}], "+", 
-       RowBox[{"3", " ", 
-        OverscriptBox[
-         FormBox["r",
-          TraditionalForm], "_"]}]}],
-      TraditionalForm], 
-     FormBox["\<\")\"\>",
-      TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
- CellLabel->"Out[2]=",
- CellID->1644370118]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"t2", "=", 
-  RowBox[{"CompleteSquare", "[", 
-   RowBox[{"t1", ",", "p"}], "]"}]}]], "Input",
- CellTags->"CompleteSquare",
- CellLabel->"In[3]:=",
- CellID->1825124248],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   RowBox[{"10", " ", 
-    RowBox[{"(", 
+    FormBox[
      RowBox[{
       FormBox["\<\"(\"\>",
        TraditionalForm], 
       FormBox[
-       RowBox[{
-        OverscriptBox[
-         FormBox["p",
-          TraditionalForm], "_"], "+", 
-        FractionBox[
-         RowBox[{"5", " ", 
-          OverscriptBox[
-           FormBox["r",
-            TraditionalForm], "_"]}], "4"]}],
+       FormBox[
+        RowBox[{
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"], "+", 
+         OverscriptBox[
+          FormBox["r",
+           TraditionalForm], "_"]}],
+        TraditionalForm],
        TraditionalForm], 
       FormBox["\<\")\"\>",
        TraditionalForm], 
@@ -307,18 +256,56 @@ Cell[BoxData[
       FormBox["\<\"(\"\>",
        TraditionalForm], 
       FormBox[
-       RowBox[{
-        OverscriptBox[
-         FormBox["p",
-          TraditionalForm], "_"], "+", 
-        FractionBox[
-         RowBox[{"5", " ", 
+       FormBox[
+        RowBox[{
+         RowBox[{"2", " ", 
+          OverscriptBox[
+           FormBox["p",
+            TraditionalForm], "_"]}], "+", 
+         RowBox[{"3", " ", 
           OverscriptBox[
            FormBox["r",
-            TraditionalForm], "_"]}], "4"]}],
+            TraditionalForm], "_"]}]}],
+        TraditionalForm],
        TraditionalForm], 
       FormBox["\<\")\"\>",
-       TraditionalForm]}], ")"}]}], "-", 
+       TraditionalForm]}],
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[433]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CompleteSquare", "[", 
+  RowBox[{"%", ",", "p"}], "]"}]], "Input",
+ CellTags->"CompleteSquare",
+ CellLabel->"In[434]:=",
+ CellID->1825124248],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"10", " ", 
+    SuperscriptBox[
+     RowBox[{
+      FormBox["\<\"(\"\>",
+       TraditionalForm], 
+      FormBox[
+       FormBox[
+        RowBox[{
+         OverscriptBox[
+          FormBox["p",
+           TraditionalForm], "_"], "+", 
+         FractionBox[
+          RowBox[{"5", " ", 
+           OverscriptBox[
+            FormBox["r",
+             TraditionalForm], "_"]}], "4"]}],
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox["\<\")\"\>",
+       TraditionalForm]}], "2"]}], "-", 
    FractionBox[
     RowBox[{"5", " ", 
      SuperscriptBox[
@@ -328,8 +315,7 @@ Cell[BoxData[
          TraditionalForm], "_"],
        TraditionalForm], "2"]}], "8"]}], TraditionalForm]], "Output",
  CellTags->"CompleteSquare",
- CellLabel->"Out[3]=",
- CellID->332224925]
+ CellLabel->"Out[434]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -337,26 +323,33 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{
   RowBox[{
-   RowBox[{"t1", "-", "t2"}], "//", "ScalarProductExpand"}], "//", 
+   RowBox[{"%", "-", "%%"}], "//", "ScalarProductExpand"}], "//", 
   "Expand"}]], "Input",
  CellTags->"CompleteSquare",
- CellLabel->"In[4]:=",
+ CellLabel->"In[435]:=",
  CellID->1768514898],
 
 Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
  CellTags->"CompleteSquare",
- CellLabel->"Out[4]=",
- CellID->2142949469]
+ CellLabel->"Out[435]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"CompleteSquare", "[", 
-  RowBox[{"t1", ",", "p", ",", "q"}], "]"}]], "Input",
+  RowBox[{
+   RowBox[{"5", 
+    RowBox[{"SP", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"2", "p"}], "+", 
+       RowBox[{"3", "r"}]}], ",", 
+      RowBox[{"p", "+", "r"}]}], "]"}]}], ",", "p", ",", "q"}], 
+  "]"}]], "Input",
  CellTags->"CompleteSquare",
- CellLabel->"In[5]:=",
+ CellLabel->"In[436]:=",
  CellID->1850431752],
 
 Cell[BoxData[
@@ -394,16 +387,8 @@ Cell[BoxData[
           TraditionalForm], "_"]}], "4"]}]}]}], "}"}], 
   TraditionalForm]], "Output",
  CellTags->"CompleteSquare",
- CellLabel->"Out[5]=",
- CellID->468779431]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{"Clear", "[", 
-  RowBox[{"t1", ",", "t2"}], "]"}]], "Input",
- CellTags->"CompleteSquare",
- CellLabel->"In[6]:=",
- CellID->1021144564]
+ CellLabel->"Out[436]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -467,12 +452,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{1045, Automatic}, {Automatic, 164}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

@@ -3,69 +3,92 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7558,        214]
-NotebookOptionsPosition[      4773,        140]
-NotebookOutlinePosition[      7287,        203]
-CellTagsIndexPosition[      7209,        198]
+NotebookDataLength[      8773,        265]
+NotebookOptionsPosition[      6460,        200]
+NotebookOutlinePosition[      8319,        249]
+CellTagsIndexPosition[      8276,        246]
 WindowTitle->CouplingConstant
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/CouplingConstant\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/CouplingConstant"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/\
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"CovariantD\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/CovariantD"], "\<\"FieldStrength\"\>":>
+       Documentation`HelpLookup["paclet:FeynCalc/ref/FieldStrength"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/CouplingConstant\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/CouplingConstant"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
 CouplingConstant.html"], StandardForm]], "Input", TextClipboardType -> 
-             "PlainText"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$32809], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/CouplingConstant", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$48204], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/CouplingConstant", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,21 +96,24 @@ CouplingConstant.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["CouplingConstant", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["CouplingConstant", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData["CouplingConstant"], "InlineFormula"],
-     " \[LineSeparator]",
-     "is an option for several Feynman rule functions and for CovariantD and \
-FieldStrength.\nIn the convention of the subpackage PHI, CouplingConstant is \
-also the head of coupling constants.  CouplingConstant takes three extra \
-optional arguments, with head RenormalizationState, RenormalizationScheme and \
-ExpansionState respectively.  E.g. CouplingConstant[QED[1]] is the unit \
-charge, CouplingConstant[ChPT2[4],1] is the first of the coupling constants \
-of the lagrangian ChPT2[4].  CouplingConstant[a_,b_,c___][i_] := \
-CouplingConstant[a,b,RenormalizationState[i],c]."
+     " \[LineSeparator]is an option for several Feynman rule functions and \
+for CovariantD and FieldStrength."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -95,6 +121,48 @@ CouplingConstant[a,b,RenormalizationState[i],c]."
   "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
    "RowsIndexed" -> {}}},
  CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell["\<\
+In the convention of the subpackage PHI, CouplingConstant is also the head of \
+coupling constants.  CouplingConstant takes three extra optional arguments, \
+with head RenormalizationState, RenormalizationScheme and ExpansionState \
+respectively.  E.g. CouplingConstant[QED[1]] is the unit charge, \
+CouplingConstant[ChPT2[4],1] is the first of the coupling constants of the \
+lagrangian ChPT2[4].  CouplingConstant[a_,b_,c___][i_] := \
+CouplingConstant[a,b,RenormalizationState[i],c].\
+\>", "Notes",
+ CellID->1067943069]
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -124,16 +192,8 @@ Cell[TextData[{
   ButtonData->"paclet:FeynCalc/ref/FieldStrength",
   ButtonNote->"FieldStrength"],
   FontFamily->"Verdana"],
- ", ",
- StyleBox[ButtonBox["\"PHI - A Mathematica package for ChPT calculations\"",
-  BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/phi",
-  ButtonNote->"phi"],
-  FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"CouplingConstant",
- CellID->1805142582]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -150,29 +210,22 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 17, 20.280403}", 
+   "built" -> "{2020, 1, 5, 18, 53, 45.220402}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
     "CouplingConstant is an option for several Feynman rule functions and for \
-CovariantD and FieldStrength. In the convention of the subpackage PHI, \
-CouplingConstant is also the head of coupling constants. CouplingConstant \
-takes three extra optional arguments, with head RenormalizationState, \
-RenormalizationScheme and ExpansionState respectively. E.g. \
-CouplingConstant[QED[1]] is the unit charge, CouplingConstant[ChPT2[4],1] is \
-the first of the coupling constants of the lagrangian ChPT2[4]. \
-CouplingConstant[a_,b_,c___][i_] := \
-CouplingConstant[a,b,RenormalizationState[i],c].", "synonyms" -> {}, "title" -> 
+CovariantD and FieldStrength.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
     "CouplingConstant", "titlemodifier" -> "", "windowtitle" -> 
     "CouplingConstant", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/CouplingConstant"}},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -181,41 +234,39 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
 
 (* Internal cache information *)
 (*CellTagsOutline
-CellTagsIndex->{
- "CouplingConstant"->{
-  Cell[4121, 114, 610, 21, 70, "Text",
-   CellTags->"CouplingConstant",
-   CellID->1805142582]}
- }
+CellTagsIndex->{}
 *)
 (*CellTagsIndex
-CellTagsIndex->{
- {"CouplingConstant", 7089, 191}
- }
+CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[588, 21, 2277, 52, 70, "AnchorBarGrid",
+Cell[588, 21, 3134, 75, 70, "AnchorBarGrid",
  CellID->1],
-Cell[2868, 75, 59, 1, 70, "ObjectName",
- CellID->1224892054],
-Cell[2930, 78, 893, 18, 70, "Usage",
+Cell[3725, 98, 293, 11, 70, "ObjectNameGrid"],
+Cell[4021, 111, 397, 11, 70, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3848, 100, 270, 12, 70, "SeeAlsoSection",
+Cell[4443, 126, 730, 24, 70, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->1],
+Cell[5176, 152, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[5210, 154, 531, 9, 70, "Notes",
+ CellID->1067943069]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[5778, 168, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[4121, 114, 610, 21, 70, "Text",
- CellTags->"CouplingConstant",
- CellID->1805142582]
+Cell[6051, 182, 367, 13, 70, "SeeAlso"]
 }, Open  ]],
-Cell[4746, 138, 23, 0, 70, "FooterCell"]
+Cell[6433, 198, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

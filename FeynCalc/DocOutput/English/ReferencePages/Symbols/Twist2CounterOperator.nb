@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     20006,        674]
-NotebookOptionsPosition[     16108,        560]
-NotebookOutlinePosition[     18995,        637]
-CellTagsIndexPosition[     18870,        631]
+NotebookDataLength[     19173,        642]
+NotebookOptionsPosition[     15375,        534]
+NotebookOutlinePosition[     18237,        609]
+CellTagsIndexPosition[     18112,        603]
 WindowTitle->Twist2CounterOperator
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ Twist2CounterOperator.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$160577], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$279551], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Twist2CounterOperator", ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -73,8 +74,18 @@ Twist2CounterOperator.html"], StandardForm]], "Input", TextClipboardType ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Twist2CounterOperator", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Twist2CounterOperator", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -112,7 +123,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1882335034],
+ CellID->1185385773],
 
 Cell[CellGroupData[{
 
@@ -122,7 +133,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1747945603],
+ CellID->1655180484],
 
 Cell[CellGroupData[{
 
@@ -173,22 +184,16 @@ Cell[BoxData[
            RowBox[{"m", "+", "2"}]], "-", 
           FractionBox["8", 
            RowBox[{"m", "-", "1"}]]}], ")"}], " ", 
-        FormBox[
-         SuperscriptBox["g", 
-          RowBox[{
-           FormBox[
-            FormBox[
-             FormBox["mu",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm], 
-           FormBox[
-            FormBox[
-             FormBox["nu",
-              TraditionalForm],
-             TraditionalForm],
-            TraditionalForm]}]],
-         TraditionalForm], " ", 
+        SuperscriptBox["g", 
+         RowBox[{
+          FormBox[
+           FormBox["mu",
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox[
+           FormBox["nu",
+            TraditionalForm],
+           TraditionalForm]}]], " ", 
         SuperscriptBox[
          RowBox[{"(", 
           RowBox[{
@@ -217,32 +222,24 @@ Cell[BoxData[
           FormBox["p",
            TraditionalForm],
           TraditionalForm], "2"], " ", 
-        FormBox[
-         SuperscriptBox[
-          FormBox[
-           FormBox["\[CapitalDelta]",
-            TraditionalForm],
-           TraditionalForm], 
-          FormBox[
-           FormBox[
-            FormBox["mu",
-             TraditionalForm],
-            TraditionalForm],
-           TraditionalForm]],
-         TraditionalForm], " ", 
-        FormBox[
-         SuperscriptBox[
-          FormBox[
-           FormBox["\[CapitalDelta]",
-            TraditionalForm],
-           TraditionalForm], 
-          FormBox[
-           FormBox[
-            FormBox["nu",
-             TraditionalForm],
-            TraditionalForm],
-           TraditionalForm]],
-         TraditionalForm], " ", 
+        SuperscriptBox[
+         FormBox[
+          FormBox["\[CapitalDelta]",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["mu",
+           TraditionalForm],
+          TraditionalForm]], " ", 
+        SuperscriptBox[
+         FormBox[
+          FormBox["\[CapitalDelta]",
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox[
+          FormBox["nu",
+           TraditionalForm],
+          TraditionalForm]], " ", 
         SuperscriptBox[
          RowBox[{"(", 
           RowBox[{
@@ -285,66 +282,49 @@ Cell[BoxData[
         RowBox[{"(", 
          RowBox[{
           RowBox[{
-           FormBox[
-            SuperscriptBox[
-             FormBox[
-              FormBox["p",
-               TraditionalForm],
-              TraditionalForm], 
-             FormBox[
-              FormBox[
-               FormBox["mu",
-                TraditionalForm],
-               TraditionalForm],
-              TraditionalForm]],
-            TraditionalForm], " ", 
-           FormBox[
-            SuperscriptBox[
-             FormBox[
-              FormBox["\[CapitalDelta]",
-               TraditionalForm],
-              TraditionalForm], 
-             FormBox[
-              FormBox[
-               FormBox["nu",
-                TraditionalForm],
-               TraditionalForm],
-              TraditionalForm]],
-            TraditionalForm]}], "+", 
+           SuperscriptBox[
+            FormBox[
+             FormBox["p",
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox[
+             FormBox["mu",
+              TraditionalForm],
+             TraditionalForm]], " ", 
+           SuperscriptBox[
+            FormBox[
+             FormBox["\[CapitalDelta]",
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox[
+             FormBox["nu",
+              TraditionalForm],
+             TraditionalForm]]}], "+", 
           RowBox[{
-           FormBox[
-            SuperscriptBox[
-             FormBox[
-              FormBox["\[CapitalDelta]",
-               TraditionalForm],
-              TraditionalForm], 
-             FormBox[
-              FormBox[
-               FormBox["mu",
-                TraditionalForm],
-               TraditionalForm],
-              TraditionalForm]],
-            TraditionalForm], " ", 
-           FormBox[
-            SuperscriptBox[
-             FormBox[
-              FormBox["p",
-               TraditionalForm],
-              TraditionalForm], 
-             FormBox[
-              FormBox[
-               FormBox["nu",
-                TraditionalForm],
-               TraditionalForm],
-              TraditionalForm]],
-            TraditionalForm]}]}], ")"}]}]}], ")"}]}]}]}], 
+           SuperscriptBox[
+            FormBox[
+             FormBox["\[CapitalDelta]",
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox[
+             FormBox["mu",
+              TraditionalForm],
+             TraditionalForm]], " ", 
+           SuperscriptBox[
+            FormBox[
+             FormBox["p",
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox[
+             FormBox["nu",
+              TraditionalForm],
+             TraditionalForm]]}]}], ")"}]}]}], ")"}]}]}]}], 
   TraditionalForm]], "Output",
- ImageSize->{544, 143},
+ ImageSize->{566, 118},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Twist2CounterOperator",
- CellLabel->"Out[1]=",
- CellID->246528770]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -396,12 +376,11 @@ Cell[BoxData[
      RowBox[{"m", "-", "1"}]]}], 
    TagBox["\[CurlyEpsilon]",
     TraditionalForm]], TraditionalForm]], "Output",
- ImageSize->{379, 54},
+ ImageSize->{417, 56},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Twist2CounterOperator",
- CellLabel->"Out[2]=",
- CellID->773930559]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -442,19 +421,15 @@ Cell[BoxData[
         TraditionalForm],
        TraditionalForm]], " ", 
      SubsuperscriptBox["g", "s", "3"], " ", 
-     FormBox[
-      SuperscriptBox[
-       FormBox[
-        FormBox["\[CapitalDelta]",
-         TraditionalForm],
-        TraditionalForm], 
-       FormBox[
-        FormBox[
-         FormBox["mu",
-          TraditionalForm],
-         TraditionalForm],
-        TraditionalForm]],
-      TraditionalForm], " ", 
+     SuperscriptBox[
+      FormBox[
+       FormBox["\[CapitalDelta]",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["mu",
+        TraditionalForm],
+       TraditionalForm]], " ", 
      SubscriptBox["S", "n"], " ", 
      RowBox[{"(", 
       RowBox[{
@@ -546,12 +521,11 @@ Cell[BoxData[
            FormBox["p2",
             TraditionalForm],
            TraditionalForm]}]}]]}], ")"}]}]}]}], TraditionalForm]], "Output",
- ImageSize->{432, 100},
+ ImageSize->{439, 89},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Twist2CounterOperator",
- CellLabel->"Out[3]=",
- CellID->1953247697]
+ CellLabel->"Out[3]="]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -561,7 +535,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"Twist2CounterOperator",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -570,10 +544,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 26, 30.212380}", 
+   "built" -> "{2020, 1, 5, 19, 3, 45.164331}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -581,12 +555,12 @@ TaggingRules->{
     "None", "summary" -> 
     "Twist2CounterOperator[p, mu, nu, a, b, 5]; Twist2CounterOperator[p, 7] : \
 (7); Twist2CounterOperator[p1,p2,{p3,mu,a}, 1] (p1: incoming quark momentum, \
-p3: incoming gluon (count1)).", "synonyms" -> {}, "title" -> 
+p3: incoming gluon (count1)).", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
     "Twist2CounterOperator", "titlemodifier" -> "", "windowtitle" -> 
     "Twist2CounterOperator", "type" -> "Symbol", "uri" -> 
     "FeynCalc/ref/Twist2CounterOperator"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -594,8 +568,9 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+    StyleData["Output"], CellContext -> "Global`"]}, 
+  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -604,78 +579,71 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3586, 99, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3848, 110, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1882335034]},
+   CellID->1185385773]},
  "Twist2CounterOperator"->{
-  Cell[4220, 128, 222, 6, 27, "Input",
+  Cell[4482, 139, 222, 6, 27, "Input",
    CellTags->"Twist2CounterOperator",
    CellID->1762178901],
-  Cell[4445, 136, 5992, 210, 164, "Output",
-   CellTags->"Twist2CounterOperator",
-   CellID->246528770],
-  Cell[10474, 351, 177, 5, 27, "Input",
+  Cell[4707, 147, 5132, 179, 139, "Output",
+   CellTags->"Twist2CounterOperator"],
+  Cell[9876, 331, 177, 5, 27, "Input",
    CellTags->"Twist2CounterOperator",
    CellID->1568458682],
-  Cell[10654, 358, 1257, 45, 75, "Output",
-   CellTags->"Twist2CounterOperator",
-   CellID->773930559],
-  Cell[11948, 408, 260, 7, 27, "Input",
+  Cell[10056, 338, 1237, 44, 77, "Output",
+   CellTags->"Twist2CounterOperator"],
+  Cell[11330, 387, 260, 7, 27, "Input",
    CellTags->"Twist2CounterOperator",
    CellID->1910103980],
-  Cell[12211, 417, 3831, 136, 121, "Output",
-   CellTags->"Twist2CounterOperator",
-   CellID->1953247697]}
+  Cell[11593, 396, 3716, 131, 110, "Output",
+   CellTags->"Twist2CounterOperator"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 18077, 605},
- {"Twist2CounterOperator", 18225, 609}
+ {"PrimaryExamplesSection", 17386, 580},
+ {"Twist2CounterOperator", 17535, 584}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[593, 21, 2298, 52, 51, "AnchorBarGrid",
+Cell[593, 21, 2326, 53, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2894, 75, 64, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2961, 78, 600, 17, 99, "Usage",
+Cell[2922, 76, 298, 11, 45, "ObjectNameGrid"],
+Cell[3223, 89, 600, 17, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3586, 99, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3848, 110, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1882335034],
+ CellID->1185385773],
 Cell[CellGroupData[{
-Cell[3999, 118, 196, 6, 25, "ExampleSection",
- CellID->1747945603],
+Cell[4261, 129, 196, 6, 26, "ExampleSection",
+ CellID->1655180484],
 Cell[CellGroupData[{
-Cell[4220, 128, 222, 6, 27, "Input",
+Cell[4482, 139, 222, 6, 27, "Input",
  CellTags->"Twist2CounterOperator",
  CellID->1762178901],
-Cell[4445, 136, 5992, 210, 164, "Output",
- CellTags->"Twist2CounterOperator",
- CellID->246528770]
+Cell[4707, 147, 5132, 179, 139, "Output",
+ CellTags->"Twist2CounterOperator"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10474, 351, 177, 5, 27, "Input",
+Cell[9876, 331, 177, 5, 27, "Input",
  CellTags->"Twist2CounterOperator",
  CellID->1568458682],
-Cell[10654, 358, 1257, 45, 75, "Output",
- CellTags->"Twist2CounterOperator",
- CellID->773930559]
+Cell[10056, 338, 1237, 44, 77, "Output",
+ CellTags->"Twist2CounterOperator"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11948, 408, 260, 7, 27, "Input",
+Cell[11330, 387, 260, 7, 27, "Input",
  CellTags->"Twist2CounterOperator",
  CellID->1910103980],
-Cell[12211, 417, 3831, 136, 121, "Output",
- CellTags->"Twist2CounterOperator",
- CellID->1953247697]
+Cell[11593, 396, 3716, 131, 110, "Output",
+ CellTags->"Twist2CounterOperator"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[16081, 558, 23, 0, 70, "FooterCell"]
+Cell[15348, 532, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

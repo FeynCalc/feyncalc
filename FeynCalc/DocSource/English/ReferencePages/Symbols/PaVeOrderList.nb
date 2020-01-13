@@ -160,7 +160,6 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- "See also: ",
  ButtonBox["PaVeOrder",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/PaVeOrder",
@@ -181,9 +180,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/D0",
   ButtonNote->"D0"],
  "."
-}], "Text",
- CellTags->"PaVeOrderList",
- CellID->1960294739]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -269,12 +266,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{830, Automatic}, {Automatic, 266}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

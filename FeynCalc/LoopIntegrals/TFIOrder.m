@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Orders the arguments of some TFI functions in a
@@ -17,7 +17,7 @@
 (* ------------------------------------------------------------------------ *)
 
 TFIOrder::usage =
-"TFIOrder[expr] orders the arguments of some TFI functions in a \
+"TFIOrder[exp] orders the arguments of some TFI functions in exp in a \
 standard way.";
 
 
@@ -32,6 +32,12 @@ Options[TFIOrder] = {};
 
 TFIOrder[expr_, OptionsPattern[]] :=
 	Block[{res,repRule},
+
+		If[	!FreeQ2[{expr}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		repRule= {
 			(*Symmetry under the interchang q1 <-> q2*)
 			Tarcer`TFI[d_, p_, {{1, m1_}, {1, m2_}, {1, m3_}, {1, m4_}, {1, m5_}}] /; ! OrderedQ[{m1, m2}] :>

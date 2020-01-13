@@ -22,8 +22,11 @@ End[]
 
 Begin["`ConvoluteTable`Private`"]
 
+cT::usage="";
+cTcT::usage="";
+
 ConvoluteTable[f_, g_, opt___Rule] :=
-ConvoluteTable[f, g, FCGV[ToString[Unique["x"]]], opt];
+ConvoluteTable[f, g, FCGV["x"], opt];
 
 ConvoluteTable[if_, ig_, x_,___Rule] :=
 cTab[if,ig,x];

@@ -199,9 +199,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/SumT",
   ButtonNote->"SumT"],
  "."
-}], "Text",
- CellTags->"SumP",
- CellID->1699670739]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -246,8 +244,7 @@ Cell[BoxData[
     RowBox[{"m", "-", "1"}],
     TraditionalForm], "\[NoBreak]", ")"}], TraditionalForm]], "Output",
  CellTags->"SumP",
- CellLabel->"Out[1]=",
- CellID->850869174]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -268,8 +265,7 @@ Cell[BoxData[
     RowBox[{"m", "-", "1"}],
     TraditionalForm], "\[NoBreak]", ")"}], TraditionalForm]], "Output",
  CellTags->"SumP",
- CellLabel->"Out[2]=",
- CellID->1599542692]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -288,8 +284,7 @@ Cell[BoxData[
    FormBox["m",
     TraditionalForm], "\[NoBreak]", ")"}], TraditionalForm]], "Output",
  CellTags->"SumP",
- CellLabel->"Out[3]=",
- CellID->440466816]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -305,8 +300,7 @@ Cell[BoxData[
  FormBox[
   FractionBox["25", "12"], TraditionalForm]], "Output",
  CellTags->"SumP",
- CellLabel->"Out[4]=",
- CellID->1429863848]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -330,8 +324,7 @@ Cell[BoxData[
  FormBox[
   FractionBox["25", "12"], TraditionalForm]], "Output",
  CellTags->"SumP",
- CellLabel->"Out[5]=",
- CellID->1088247533]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -375,8 +368,7 @@ Cell[BoxData[
       FractionBox["n", "2"],
       TraditionalForm], ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"SumP",
- CellLabel->"Out[6]=",
- CellID->703036669]
+ CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -392,8 +384,7 @@ Cell[BoxData[
  FormBox[
   FractionBox["25", "12"], TraditionalForm]], "Output",
  CellTags->"SumP",
- CellLabel->"Out[7]=",
- CellID->454708211]
+ CellLabel->"Out[7]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -458,12 +449,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

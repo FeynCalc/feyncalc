@@ -1,0 +1,45 @@
+
+
+(* :Title: PauliSigmaExpand.test											*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for PauliSigmaExpand			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Pauli`fcstPauliSigmaExpand = {
+{"fcstPauliSigmaExpand-ID1","PauliSigmaExpand[SIS[q].SIS[p - q]] // FCE",
+	"SIS[q].(SIS[p] - SIS[q])"},
+{"fcstPauliSigmaExpand-ID2","PauliSigmaExpand[SIS[a + b].SIS[c + d], Momentum -> {a}] // FCE",
+	"(SIS[a] + SIS[b]).SIS[c + d]"},
+{"fcstPauliSigmaExpand-ID3","PauliSigmaExpand[SIS[a + b].SIS[c + d], Momentum -> {c}] // FCE",
+	"SIS[a + b].(SIS[c] + SIS[d])"},
+{"fcstPauliSigmaExpand-ID4","PauliSigmaExpand[SIS[a + b].SIS[c + d], Momentum -> All] // FCE",
+	"(SIS[a] + SIS[b]).(SIS[c] + SIS[d])"},
+{"fcstPauliSigmaExpand-ID5","PauliSigmaExpand[
+PauliSigma[5 Momentum[a] + c Momentum[b + d] + Momentum[e]]] // FCE","5 SIS[a] + c (SIS[b] + SIS[d]) + SIS[e]"},
+{"fcstPauliSigmaExpand-ID6","PauliSigmaExpand[PauliSigma[5 Momentum[a, D] +
+	c Momentum[b + d, D] + Momentum[e, D], D-1]] // FCE",
+	"5*SISD[a] + c*(SISD[b] + SISD[d]) + SISD[e]"},
+{"fcstPauliSigmaExpand-ID7","PauliSigmaExpand[CSIS[q].CSIS[p - q]] // FCE",
+	"CSIS[q].(CSIS[p] - CSIS[q])"},
+{"fcstPauliSigmaExpand-ID8","PauliSigmaExpand[CSIS[a + b].CSIS[c + d], Momentum -> {a}] // FCE",
+	"(CSIS[a] + CSIS[b]).CSIS[c + d]"},
+{"fcstPauliSigmaExpand-ID9","PauliSigmaExpand[CSIS[a + b].CSIS[c + d], Momentum -> {c}] // FCE",
+	"CSIS[a + b].(CSIS[c] + CSIS[d])"},
+{"fcstPauliSigmaExpand-ID10","PauliSigmaExpand[CSIS[a + b].CSIS[c + d], Momentum -> All] // FCE",
+	"(CSIS[a] + CSIS[b]).(CSIS[c] + CSIS[d])"},
+{"fcstPauliSigmaExpand-ID11","PauliSigmaExpand[PauliSigma[5 CartesianMomentum[a] + c CartesianMomentum[b + d] + CartesianMomentum[e]]] // FCE",
+	"5 CSIS[a] + c (CSIS[b] + CSIS[d]) + CSIS[e]"},
+{"fcstPauliSigmaExpand-ID12","PauliSigmaExpand[
+PauliSigma[
+5 CartesianMomentum[a, D - 1] + c CartesianMomentum[b + d, D - 1] +
+	CartesianMomentum[e, D - 1], D-1]] // FCE",
+	"5 CSISD[a] + c (CSISD[b] + CSISD[d]) + CSISD[e]"}
+};

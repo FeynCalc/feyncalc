@@ -2,9 +2,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  	Test Suite for FeynCalc via MUnit. Doesn't require Wolfram
@@ -16,8 +16,16 @@
 $FeynCalcStartupMessages = False;
 
 If[testType===3,
-	$LoadTARCER=True;
+	If[	!ValueQ[$LoadAddOns],
+		$LoadAddOns={"TARCER"},
+		$LoadAddOns=Join[$LoadAddOns,{"TARCER"}]
+	];
 	WriteString["stdout","Tests for TARCER.\n"]
+];
+
+If[testType===4,
+	$LoadPhi=True;
+	WriteString["stdout","Tests for PHI.\n"]
 ];
 
 <<FeynCalc`
@@ -38,7 +46,7 @@ FCPrint[0,"Starting FeynCalc Test Suite on Mathematica ", $VersionNumber, "\n", 
 Which[
 testType===1,
 fcTestList = Select[(FileNames["*.mt", FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", "*"}]]),
-	StringFreeQ[#, ___ ~~ "TARCER" ~~ ___] &],
+	(StringFreeQ[#, ___ ~~ "TARCER" ~~ ___] && StringFreeQ[#, ___ ~~ "PHI" ~~ ___])&],
 testType===2,
 fcTestList = Select[StringCases[
 FileNames["*.mt",
@@ -48,17 +56,30 @@ Infinity], RegularExpression[".*IntegrationTests.*"]]//Flatten,  StringFreeQ[#, 
 testType===3,
 fcTestList =Select[(FileNames["*.mt", FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", "*"}]]),
 	!StringFreeQ[#, ___ ~~ "TARCER" ~~ ___] &],
+(* PHI *)
+testType===4,
+fcTestList =Select[(FileNames["*.mt", FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", "*"}]]),
+	!StringFreeQ[#, ___ ~~ "PHI" ~~ ___] &],
 True,
 FCPrint[0,"Error! Uknown test type",UseWriteString->True];
 Exit[]
 ];
 
-If [onlyTest=!="" && Head[onlyTest]===String,
-str = ".*"<>ToString[onlyTest]<>".*";
-fcTestList = StringCases[fcTestList,RegularExpression[str]]//Flatten;
-FCPrint[0,"Only following tests will be checked: ", fcTestList,UseWriteString->True];
-FCPrint[0,"\n",UseWriteString->True]
-]
+If[	onlyTest=!="" && Head[onlyTest]===String,
+	strList = StringSplit[ToString[onlyTest],"|"];
+	str = RegularExpression[(".*" <> # <> ".*")]& /@ strList;
+	fcTestList = StringCases[fcTestList,Alternatives@@str]//Flatten;
+	FCPrint[0,"Only following tests will be checked: ", fcTestList,UseWriteString->True];
+	FCPrint[0,"\n",UseWriteString->True]
+];
+
+If[	onlySubTest=!="" && Head[onlySubTest]===String,
+	strList = StringSplit[ToString[onlySubTest],"|"];
+	$OnlySubTest = RegularExpression[(".*" <> # <> ".*")]& /@ strList,
+	$OnlySubTest=""
+];
+
+SetAttributes[test, HoldAllComplete];
 
 testRunner/@fcTestList;
 FCPrint[0,"\n",UseWriteString->True];

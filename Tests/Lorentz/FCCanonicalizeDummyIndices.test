@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for
@@ -92,7 +92,53 @@ QuantumField[FCPartialD[LorentzIndex[\[Nu]]], GaugeField,
 	LorentzIndex[c_], SUNIndex[b_]].QuantumField[
 	FCPartialD[LorentzIndex[a_]], GaugeField, LorentzIndex[c_],
 	SUNIndex[b_]]]","True"},
-{"fcstFCCanonicalizeDummyIndices-ID12","FCCanonicalizeDummyIndices[
+{"fcstFCCanonicalizeDummyIndices-ID14","MatchQ[tmp =
+FCCanonicalizeDummyIndices[
+CVD[q, mu] CVD[p, mu] + CVD[q, nu] CVD[p, nu]]; FCE[tmp],
+2 CVD[p, i_] CVD[q, i_]]","True"},
+{"fcstFCCanonicalizeDummyIndices-ID15","FCCanonicalizeDummyIndices[
+Uncontract[CSP[q, p]^4, q, p, CartesianPair -> All],
+CartesianIndexNames -> {i, j, k, l}, FCE -> True]","CV[p, i] CV[p, j] CV[p, k] CV[p, l] CV[q, i] CV[q, j] CV[q, k] CV[q,l]"},
+{"fcstFCCanonicalizeDummyIndices-ID16","MatchQ[FCCanonicalizeDummyIndices[
+CV[p1, mu] (CV[p2, nu] CV[p3, nu] + CV[p2, rho] CV[p3, rho]),
+FCE -> True], 2 CV[p1, mu] CV[p2, a_] CV[p3, a_]]","True"},
+{"fcstFCCanonicalizeDummyIndices-ID17","MatchQ[FCCanonicalizeDummyIndices[
+FV[p, i] FV[q, i] CV[p, i] CV[q, i] +
+CV[p, j] CV[q, j] FV[p, j] FV[q, j], FCE -> True],
+2 CV[p, b_] CV[q, b_] FV[p, a_] FV[q, a_]]","True"},
+{"fcstFCCanonicalizeDummyIndices-ID18","MatchQ[FCCanonicalizeDummyIndices[
+FV[p, i] FV[p, i] CV[p, i] CV[p, i] +
+CV[p, j] CV[p, j] FV[p, j] FV[p, j], FCE -> True],
+2 CV[p, a_]^2 FV[p, b_]^2]","True"},
+{"fcstFCCanonicalizeDummyIndices-ID19","MatchQ[FCCanonicalizeDummyIndices[SUNT[a, a].GA[i].(GS[p] + m).GA[i],
+DotSimplify -> False, Head -> {SUNIndex}, FCE -> True],
+SUNT[a_].SUNT[a_].GA[i].(m + GS[p]).GA[i]]","True"},
+{"fcstFCCanonicalizeDummyIndices-ID20","MatchQ[FCCanonicalizeDummyIndices[
+SUNT[a, a].CGA[i].(CGS[p] + m).CGA[i], DotSimplify -> False,
+Head -> {SUNIndex}, FCE -> True],
+SUNT[a_].SUNT[a_].CGA[i].(m + CGS[p]).CGA[i]]","True"},
+{"fcstFCCanonicalizeDummyIndices-ID21",
+"MatchQ[FCCanonicalizeDummyIndices[GAD[i].GAD[i] + GAD[i].GAE[i], FCE -> True],
+GAD[FCGV[a_]].GAD[FCGV[a_]] + GAD[FCGV[a_]].GAE[FCGV[a_]]]","True"},
+{"fcstFCCanonicalizeDummyIndices-ID22",
+"MatchQ[FCCanonicalizeDummyIndices[CGAD[i].CGAD[i] + CGAD[i].CGAE[i],
+FCE -> True], CGAD[FCGV[a_]].CGAD[FCGV[a_]] + CGAD[FCGV[a_]].CGAE[FCGV[a_]]]","True"},
+{"fcstFCCanonicalizeDummyIndices-ID23",
+"FCCanonicalizeDummyIndices[
+DiracTrace[(-  GAD[Lor2].GSD[a1].GA[6] - GAD[Lor2].GSD[a1].GA[7] +
+	GAD[Lor2].GSD[pPh].GSD[a1].GA[6])] Spinor[Momentum[p1, D], 0,
+	1].GAD[Lor2].GA[6].Spinor[-Momentum[p2, D], 0, 1],
+LorentzIndexNames -> {lor}, FCE -> True]","-DiracTrace[GAD[lor].GSD[a1].GA[6]] Spinor[Momentum[p1, D], 0, 1].GAD[
+	lor].GA[6].Spinor[-Momentum[p2, D], 0, 1] -
+DiracTrace[
+GAD[lor].GSD[a1].GA[7]] Spinor[Momentum[p1, D], 0, 1].GAD[lor].GA[
+	6].Spinor[-Momentum[p2, D], 0, 1] +
+DiracTrace[
+GAD[lor].GSD[pPh].GSD[a1].GA[6]] Spinor[Momentum[p1, D], 0, 1].GAD[
+	lor].GA[6].Spinor[-Momentum[p2, D], 0, 1]"},
+
+{"fcstFCCanonicalizeDummyIndices-ID24",
+"FCCanonicalizeDummyIndices[
 Spinor[Momentum[pE2, D], 0,
 	1].(-((I EL GA[6] me)/(Sqrt[2] me sw))).(GSD[-k + pE2 - pS] +
 	me).(-((I EL GA[7] me)/(
@@ -103,124 +149,42 @@ Spinor[Momentum[pE2, D], 0,
 	I EL mU VUb GA[7])/(Sqrt[2] me sw) - (I EL VUb GA[6] mb)/(
 	Sqrt[2] me sw)).Spinor[Momentum[pB, D], mb, 1] FAD[{k,
 	mU}, {k + pS, Sqrt[GaugeXi[W]] me}, {k - pE2 + pS,
-	me}, {k - pE1 - pE2 + pS, Sqrt[GaugeXi[W]] me}]]","(EL^2*mb*mU^2*VUb*Spinor[-Momentum[pS, D], ms, 1] . DiracGamma[6] .
-	DiracGamma[6] . Spinor[Momentum[pB, D], mb, 1]*
-(-(EL^2*me*Spinor[Momentum[pE2, D], 0, 1] . DiracGamma[6] .
-		DiracGamma[7] . Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2) -
-	(EL^2*Spinor[Momentum[pE2, D], 0, 1] . DiracGamma[6] .
-	DiracGamma[Momentum[-k + pE2 - pS, D], D] . DiracGamma[7] .
-	Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2))*
-FeynAmpDenominator[PropagatorDenominator[Momentum[k, D], mU],
-	PropagatorDenominator[Momentum[k, D] + Momentum[pS, D],
-	me*Sqrt[GaugeXi[W]]], PropagatorDenominator[
-	Momentum[k, D] - Momentum[pE2, D] + Momentum[pS, D], me],
-	PropagatorDenominator[Momentum[k, D] - Momentum[pE1, D] -
-	Momentum[pE2, D] + Momentum[pS, D], me*Sqrt[GaugeXi[W]]]]*
-SUNFDelta[SUNFIndex[Col1], SUNFIndex[Col2]])/(2*me^2*sw^2) -
-(EL^2*mU^3*VUb*Spinor[-Momentum[pS, D], ms, 1] . DiracGamma[6] .
-	DiracGamma[7] . Spinor[Momentum[pB, D], mb, 1]*
-(-(EL^2*me*Spinor[Momentum[pE2, D], 0, 1] . DiracGamma[6] .
-		DiracGamma[7] . Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2) -
-	(EL^2*Spinor[Momentum[pE2, D], 0, 1] . DiracGamma[6] .
-	DiracGamma[Momentum[-k + pE2 - pS, D], D] . DiracGamma[7] .
-	Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2))*
-FeynAmpDenominator[PropagatorDenominator[Momentum[k, D], mU],
-	PropagatorDenominator[Momentum[k, D] + Momentum[pS, D],
-	me*Sqrt[GaugeXi[W]]], PropagatorDenominator[
-	Momentum[k, D] - Momentum[pE2, D] + Momentum[pS, D], me],
-	PropagatorDenominator[Momentum[k, D] - Momentum[pE1, D] -
-	Momentum[pE2, D] + Momentum[pS, D], me*Sqrt[GaugeXi[W]]]]*
-SUNFDelta[SUNFIndex[Col1], SUNFIndex[Col2]])/(2*me^2*sw^2) -
-(EL^2*mb*ms*mU*VUb*Spinor[-Momentum[pS, D], ms, 1] . DiracGamma[7] .
-	DiracGamma[6] . Spinor[Momentum[pB, D], mb, 1]*
-(-(EL^2*me*Spinor[Momentum[pE2, D], 0, 1] . DiracGamma[6] .
-		DiracGamma[7] . Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2) -
-	(EL^2*Spinor[Momentum[pE2, D], 0, 1] . DiracGamma[6] .
-	DiracGamma[Momentum[-k + pE2 - pS, D], D] . DiracGamma[7] .
-	Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2))*
-FeynAmpDenominator[PropagatorDenominator[Momentum[k, D], mU],
-	PropagatorDenominator[Momentum[k, D] + Momentum[pS, D],
-	me*Sqrt[GaugeXi[W]]], PropagatorDenominator[
-	Momentum[k, D] - Momentum[pE2, D] + Momentum[pS, D], me],
-	PropagatorDenominator[Momentum[k, D] - Momentum[pE1, D] -
-	Momentum[pE2, D] + Momentum[pS, D], me*Sqrt[GaugeXi[W]]]]*
-SUNFDelta[SUNFIndex[Col1], SUNFIndex[Col2]])/(2*me^2*sw^2) +
-(EL^2*ms*mU^2*VUb*Spinor[-Momentum[pS, D], ms, 1] . DiracGamma[7] .
-	DiracGamma[7] . Spinor[Momentum[pB, D], mb, 1]*
-(-(EL^2*me*Spinor[Momentum[pE2, D], 0, 1] . DiracGamma[6] .
-		DiracGamma[7] . Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2) -
-	(EL^2*Spinor[Momentum[pE2, D], 0, 1] . DiracGamma[6] .
-	DiracGamma[Momentum[-k + pE2 - pS, D], D] . DiracGamma[7] .
-	Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2))*
-FeynAmpDenominator[PropagatorDenominator[Momentum[k, D], mU],
-	PropagatorDenominator[Momentum[k, D] + Momentum[pS, D],
-	me*Sqrt[GaugeXi[W]]], PropagatorDenominator[
-	Momentum[k, D] - Momentum[pE2, D] + Momentum[pS, D], me],
-	PropagatorDenominator[Momentum[k, D] - Momentum[pE1, D] -
-	Momentum[pE2, D] + Momentum[pS, D], me*Sqrt[GaugeXi[W]]]]*
-SUNFDelta[SUNFIndex[Col1], SUNFIndex[Col2]])/(2*me^2*sw^2) +
-(EL^2*mb*mU*VUb*
-(-(EL^2*me*Spinor[Momentum[pE2, D], 0, 1] . DiracGamma[6] .
-		DiracGamma[7] . Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2) -
-	(EL^2*Spinor[Momentum[pE2, D], 0, 1] . DiracGamma[6] .
-	DiracGamma[Momentum[-k + pE2 - pS, D], D] . DiracGamma[7] .
-	Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2))*
-Spinor[-Momentum[pS, D], ms, 1] . DiracGamma[6] .
-	DiracGamma[Momentum[k, D], D] . DiracGamma[6] .
-	Spinor[Momentum[pB, D], mb, 1]*FeynAmpDenominator[
-	PropagatorDenominator[Momentum[k, D], mU], PropagatorDenominator[
-	Momentum[k, D] + Momentum[pS, D], me*Sqrt[GaugeXi[W]]],
-	PropagatorDenominator[Momentum[k, D] - Momentum[pE2, D] +
+	me}, {k - pE1 - pE2 + pS, Sqrt[GaugeXi[W]] me}], FCE -> True]",
+"Spinor[Momentum[pE2, D], 0, 1] . (((-I)*EL*DiracGamma[6])/(Sqrt[2]*sw)) .
+(me + DiracGamma[Momentum[-k + pE2 - pS, D], D]) .
+(((-I)*EL*DiracGamma[7])/(Sqrt[2]*sw)) . Spinor[-Momentum[pE1, D], 0, 1]*
+Spinor[-Momentum[pS, D], ms, 1] .
+((I*EL*mU*DiracGamma[6]*SUNFDelta[SUNFIndex[Col1], SUNFIndex[Col2]])/
+	(Sqrt[2]*me*sw) - (I*EL*ms*DiracGamma[7]*SUNFDelta[SUNFIndex[Col1],
+	SUNFIndex[Col2]])/(Sqrt[2]*me*sw)) .
+(mU + DiracGamma[Momentum[k, D], D]) .
+(((-I)*EL*mb*VUb*DiracGamma[6])/(Sqrt[2]*me*sw) +
+(I*EL*mU*VUb*DiracGamma[7])/(Sqrt[2]*me*sw)) .
+Spinor[Momentum[pB, D], mb, 1]*FeynAmpDenominator[
+PropagatorDenominator[Momentum[k, D], mU], PropagatorDenominator[
+Momentum[k, D] + Momentum[pS, D], me*Sqrt[GaugeXi[W]]],
+PropagatorDenominator[Momentum[k, D] - Momentum[pE2, D] +
 	Momentum[pS, D], me], PropagatorDenominator[
-	Momentum[k, D] - Momentum[pE1, D] - Momentum[pE2, D] +
-	Momentum[pS, D], me*Sqrt[GaugeXi[W]]]]*SUNFDelta[SUNFIndex[Col1],
-	SUNFIndex[Col2]])/(2*me^2*sw^2) -
-(EL^2*mU^2*VUb*(-(EL^2*me*Spinor[Momentum[pE2, D], 0, 1] .
-		DiracGamma[6] . DiracGamma[7] . Spinor[-Momentum[pE1, D], 0, 1])/
-	(2*sw^2) - (EL^2*Spinor[Momentum[pE2, D], 0, 1] . DiracGamma[6] .
-	DiracGamma[Momentum[-k + pE2 - pS, D], D] . DiracGamma[7] .
-	Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2))*
-Spinor[-Momentum[pS, D], ms, 1] . DiracGamma[6] .
-	DiracGamma[Momentum[k, D], D] . DiracGamma[7] .
-	Spinor[Momentum[pB, D], mb, 1]*FeynAmpDenominator[
-	PropagatorDenominator[Momentum[k, D], mU], PropagatorDenominator[
-	Momentum[k, D] + Momentum[pS, D], me*Sqrt[GaugeXi[W]]],
-	PropagatorDenominator[Momentum[k, D] - Momentum[pE2, D] +
-	Momentum[pS, D], me], PropagatorDenominator[
-	Momentum[k, D] - Momentum[pE1, D] - Momentum[pE2, D] +
-	Momentum[pS, D], me*Sqrt[GaugeXi[W]]]]*SUNFDelta[SUNFIndex[Col1],
-	SUNFIndex[Col2]])/(2*me^2*sw^2) -
-(EL^2*mb*ms*VUb*
-(-(EL^2*me*Spinor[Momentum[pE2, D], 0, 1] . DiracGamma[6] .
-		DiracGamma[7] . Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2) -
-	(EL^2*Spinor[Momentum[pE2, D], 0, 1] . DiracGamma[6] .
-	DiracGamma[Momentum[-k + pE2 - pS, D], D] . DiracGamma[7] .
-	Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2))*
-Spinor[-Momentum[pS, D], ms, 1] . DiracGamma[7] .
-	DiracGamma[Momentum[k, D], D] . DiracGamma[6] .
-	Spinor[Momentum[pB, D], mb, 1]*FeynAmpDenominator[
-	PropagatorDenominator[Momentum[k, D], mU], PropagatorDenominator[
-	Momentum[k, D] + Momentum[pS, D], me*Sqrt[GaugeXi[W]]],
-	PropagatorDenominator[Momentum[k, D] - Momentum[pE2, D] +
-	Momentum[pS, D], me], PropagatorDenominator[
-	Momentum[k, D] - Momentum[pE1, D] - Momentum[pE2, D] +
-	Momentum[pS, D], me*Sqrt[GaugeXi[W]]]]*SUNFDelta[SUNFIndex[Col1],
-	SUNFIndex[Col2]])/(2*me^2*sw^2) +
-(EL^2*ms*mU*VUb*
-(-(EL^2*me*Spinor[Momentum[pE2, D], 0, 1] . DiracGamma[6] .
-		DiracGamma[7] . Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2) -
-	(EL^2*Spinor[Momentum[pE2, D], 0, 1] . DiracGamma[6] .
-	DiracGamma[Momentum[-k + pE2 - pS, D], D] . DiracGamma[7] .
-	Spinor[-Momentum[pE1, D], 0, 1])/(2*sw^2))*
-Spinor[-Momentum[pS, D], ms, 1] . DiracGamma[7] .
-	DiracGamma[Momentum[k, D], D] . DiracGamma[7] .
-	Spinor[Momentum[pB, D], mb, 1]*FeynAmpDenominator[
-	PropagatorDenominator[Momentum[k, D], mU], PropagatorDenominator[
-	Momentum[k, D] + Momentum[pS, D], me*Sqrt[GaugeXi[W]]],
-	PropagatorDenominator[Momentum[k, D] - Momentum[pE2, D] +
-	Momentum[pS, D], me], PropagatorDenominator[
-	Momentum[k, D] - Momentum[pE1, D] - Momentum[pE2, D] +
-	Momentum[pS, D], me*Sqrt[GaugeXi[W]]]]*SUNFDelta[SUNFIndex[Col1],
-	SUNFIndex[Col2]])/(2*me^2*sw^2)"}
-
+Momentum[k, D] - Momentum[pE1, D] - Momentum[pE2, D] + Momentum[pS, D],
+me*Sqrt[GaugeXi[W]]]]"},
+{"fcstFCCanonicalizeDummyIndices-ID25",
+"MatchQ[FCCanonicalizeDummyIndices[
+DCHN[SpinorUBar[p1], i] DCHN[SpinorV[p1], j] DIDelta[i, j],
+FCE -> True],
+DIDelta[a_FCGV, b_FCGV] DCHN[Spinor[-Momentum[p1], 0, 1],
+b_FCGV] DCHN[Spinor[Momentum[p1], 0, 1], a_FCGV]]", "True"},
+{"fcstFCCanonicalizeDummyIndices-ID26",
+"FCCanonicalizeDummyIndices[DiracChain[DiracGamma[LorentzIndex[mu]].(m +
+	DiracGamma[LorentzIndex[j]] Pair[LorentzIndex[j],
+	Momentum[p]]).DiracGamma[LorentzIndex[nu]], DiracIndex[i],
+DiracIndex[j]], LorentzIndexNames -> {al}, FCE -> True]",
+"m DCHN[GA[mu].GA[nu], i, j] + DCHN[GA[mu].GA[al].GA[nu], i, j] FV[p, al]"},
+{"fcstFCCanonicalizeDummyIndices-ID27",
+"FCCanonicalizeDummyIndices[
+DCHN[Spinor[-Momentum[p1], m1, 1], $AL[$42]] DCHN[
+Spinor[Momentum[p2], m2, 1], $AL[$43]] DCHN[
+GA[5].GA[nu].GA[mu], $AL[$42], $AL[$43]],
+DiracIndexNames -> {i, j}, FCE -> True]",
+"DCHN[Spinor[-Momentum[p1], m1, 1], i] DCHN[
+Spinor[Momentum[p2], m2, 1], j] DCHN[GA[5].GA[nu].GA[mu], i, j]"}
 });

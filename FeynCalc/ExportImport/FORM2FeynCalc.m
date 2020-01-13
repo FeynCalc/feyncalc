@@ -56,6 +56,7 @@ Replace -> {   (*     "d_" -> "SUNDelta",*)
 							"Li2" -> "(PolyLog[2,#]&)",
 							"li2" -> "(PolyLog[2,#]&)",
 							"Li3" -> "(PolyLog[3,#]&)",
+							"Li4" -> "(PolyLog[4,#]&)",
 							"li3" -> "(PolyLog[3,#]&)",
 							"S12(1 - y)" -> "Nielsen[1,2,1-y]",
 							"[d_(1-x)]"  -> "DeltaFunction[1-x]",
@@ -93,12 +94,17 @@ FORM2FeynCalc[fi_,ru___Rule] :=
 	FORM2FeynCalc[fi, False, ru];
 
 
-FORM2FeynCalc[fi_, exprs___, lastexpr_ /; Head[lastexpr] =!= Rule,
-				ru___Rule] :=
-	Block[ {file, dim, ff, ffj, hh, dott, parsit, rr, vectors, indices,
-	stringrules, vv, rv, nof, holdform , dotrule, holdplus,
-	myDot,myfile
-	},
+FORM2FeynCalc[fi_, exprs___, lastexpr_ /; Head[lastexpr] =!= Rule, ru___Rule] :=
+	Block[{	file, dim, ff, ffj, hh, dott, parsit, rr, vectors, indices,
+			stringrules, vv, rv, nof, holdform , dotrule, holdplus,
+			myDot,myfile, set, vecs, vecsubs, rli},
+
+
+		If[	!FreeQ2[{fi,exprs}, FeynCalc`Package`NRStuff],
+			Message[FeynCalc::nrfail];
+			Abort[]
+		];
+
 		Map[Unset, Hold[exprs, lastexpr]];
 		dim = Dimension /. {ru}/. Options[FORM2FeynCalc];
 		holdform = HoldForm /. {ru}/. Options[FORM2FeynCalc];
@@ -150,7 +156,7 @@ FORM2FeynCalc[fi_, exprs___, lastexpr_ /; Head[lastexpr] =!= Rule,
 				"0"<>#,
 				#
 			]&[ToString[a]];
-		vecsubs = Table[vecs[[ij]]->toexp["C"<>count[ij]],{ij,Length[vecs]}];
+		vecsubs = Table[vecs[[r]]->toexp["C"<>count[r]],{r,Length[vecs]}];
 
 
 		(* XXX *)

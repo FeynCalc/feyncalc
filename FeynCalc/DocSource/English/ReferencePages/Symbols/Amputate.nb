@@ -125,8 +125,26 @@ also p.q1 and p.q2; Pair\[Rule]All amputates all except OPEDelta."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "Amputate", "]"}]], "Input",
+ CellTags->"Amputate",
+ CellLabel->"In[194]:=",
+ CellID->1884550851],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
+    RowBox[{"Pair", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"Unique", "\[Rule]", "True"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"Amputate",
+ CellLabel->"Out[194]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -167,29 +185,27 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/DiracGamma",
   ButtonNote->"DiracGamma"],
  ", ",
- ButtonBox["DiracMatrix",
+ ButtonBox["GA",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracMatrix",
-  ButtonNote->"DiracMatrix"],
+  ButtonData:>"paclet:FeynCalc/ref/GA",
+  ButtonNote->"GA"],
  ", ",
  ButtonBox["DiracSimplify",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
   ButtonNote->"DiracSimplify"],
  ", ",
- ButtonBox["DiracSlash",
+ ButtonBox["GS",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/DiracSlash",
-  ButtonNote->"DiracSlash"],
+  ButtonData:>"paclet:FeynCalc/ref/GS",
+  ButtonNote->"GS"],
  ", ",
  ButtonBox["DiracTrick",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/DiracTrick",
   ButtonNote->"DiracTrick"],
  "."
-}], "Text",
- CellTags->"Amputate",
- CellID->1266124166]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -219,57 +235,38 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "Amputate", "]"}]], "Input",
- CellTags->"Amputate",
- CellLabel->"In[1]:=",
- CellID->1884550851],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
-    RowBox[{"Pair", "\[Rule]", 
-     RowBox[{"{", "}"}]}], ",", 
-    RowBox[{"Unique", "\[Rule]", "True"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"Amputate",
- CellLabel->"Out[1]=",
- CellID->697719830]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
  RowBox[{
-  RowBox[{"DiracSlash", "[", "p", "]"}], ".", 
-  RowBox[{"DiracSlash", "[", "q", "]"}]}]], "Input",
+  RowBox[{"GS", "[", "p", "]"}], ".", 
+  RowBox[{"GS", "[", "q", "]"}]}]], "Input",
  CellTags->"Amputate",
- CellLabel->"In[2]:=",
+ CellLabel->"In[27]:=",
  CellID->479729855],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
    RowBox[{"(", 
-    RowBox[{
-     OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-     FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm]}], ")"}], ".", 
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["p",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], ".", 
    RowBox[{"(", 
-    RowBox[{
-     OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
-     FormBox[
-      OverscriptBox[
-       FormBox["q",
-        TraditionalForm], "_"],
-      TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
+    FormBox[
+     RowBox[{
+      OverscriptBox["\[Gamma]", "_"], "\[CenterDot]", 
+      FormBox[
+       OverscriptBox[
+        FormBox["q",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
  CellTags->"Amputate",
- CellLabel->"Out[2]=",
- CellID->1732499360]
+ CellLabel->"Out[27]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -278,27 +275,23 @@ Cell[BoxData[
  RowBox[{"Amputate", "[", 
   RowBox[{"%", ",", "q"}], "]"}]], "Input",
  CellTags->"Amputate",
- CellLabel->"In[3]:=",
+ CellLabel->"In[28]:=",
  CellID->1612122659],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FormBox[
-    SuperscriptBox[
+   SuperscriptBox[
+    FormBox[
+     FormBox["q",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      FormBox["q",
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$2188", "\[InvisibleApplication]", 
-         RowBox[{"(", "1", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
+      RowBox[{"$AL$41318", "\[InvisibleApplication]", 
+       RowBox[{"(", "1", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]], " ", 
    RowBox[{
     RowBox[{"(", 
      RowBox[{
@@ -311,13 +304,12 @@ Cell[BoxData[
     SuperscriptBox["\[Gamma]", 
      FormBox[
       FormBox[
-       RowBox[{"$AL$2188", "\[InvisibleApplication]", 
+       RowBox[{"$AL$41318", "\[InvisibleApplication]", 
         RowBox[{"(", "1", ")"}]}],
        TraditionalForm],
       TraditionalForm]]}]}], TraditionalForm]], "Output",
  CellTags->"Amputate",
- CellLabel->"Out[3]=",
- CellID->42958207]
+ CellLabel->"Out[28]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -382,12 +374,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{714, Automatic}, {Automatic, 143}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

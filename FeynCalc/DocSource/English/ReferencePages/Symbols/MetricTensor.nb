@@ -124,8 +124,27 @@ Cell[TextData[{
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell["\<\
+The shortcut MetricTensor is deprecated, please use MT instead!\
+\>", "Notes",
+ CellID->1067943069],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "MetricTensor", "]"}]], "Input",
+ CellLabel->"In[25]:=",
+ CellID->1215792887],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Dimension", "\[Rule]", "4"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "True"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[25]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -161,16 +180,6 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- ButtonBox["FeynCalcExternal",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/FeynCalcExternal",
-  ButtonNote->"FeynCalcExternal"],
- ", ",
- ButtonBox["FCE",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/FCE",
-  ButtonNote->"FCE"],
- ", ",
  ButtonBox["FCI",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/FCI",
@@ -186,9 +195,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/MTD",
   ButtonNote->"MTD"],
  "."
-}], "Text",
- CellTags->"MetricTensor",
- CellID->309904132]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -221,7 +228,7 @@ Cell[BoxData[
  RowBox[{"MetricTensor", "[", 
   RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}]], "Input",
  CellTags->"MetricTensor",
- CellLabel->"In[1]:=",
+ CellLabel->"In[651]:=",
  CellID->187143262],
 
 Cell[BoxData[
@@ -230,20 +237,15 @@ Cell[BoxData[
    OverscriptBox["g", "_"], 
    RowBox[{
     FormBox[
-     FormBox[
-      FormBox["\[Alpha]",
-       TraditionalForm],
+     FormBox["\[Alpha]",
       TraditionalForm],
      TraditionalForm], 
     FormBox[
-     FormBox[
-      FormBox["\[Beta]",
-       TraditionalForm],
+     FormBox["\[Beta]",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"MetricTensor",
- CellLabel->"Out[1]=",
- CellID->1323519245]
+ CellLabel->"Out[651]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -251,15 +253,11 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Contract", "[", 
   RowBox[{"%", " ", "%"}], "]"}]], "Input",
- CellTags->"MetricTensor",
- CellLabel->"In[2]:=",
- CellID->888467606],
+ CellLabel->"In[652]:="],
 
 Cell[BoxData[
  FormBox["4", TraditionalForm]], "Output",
- CellTags->"MetricTensor",
- CellLabel->"Out[2]=",
- CellID->116818789]
+ CellLabel->"Out[652]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -267,9 +265,9 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"MetricTensor", "[", 
   RowBox[{"\[Alpha]", ",", "\[Beta]", ",", 
-   RowBox[{"Dimension", "\[Rule]", "n"}]}], "]"}]], "Input",
+   RowBox[{"Dimension", "\[Rule]", "D"}]}], "]"}]], "Input",
  CellTags->"MetricTensor",
- CellLabel->"In[3]:=",
+ CellLabel->"In[653]:=",
  CellID->524835668],
 
 Cell[BoxData[
@@ -277,20 +275,15 @@ Cell[BoxData[
   SuperscriptBox["g", 
    RowBox[{
     FormBox[
-     FormBox[
-      FormBox["\[Alpha]",
-       TraditionalForm],
+     FormBox["\[Alpha]",
       TraditionalForm],
      TraditionalForm], 
     FormBox[
-     FormBox[
-      FormBox["\[Beta]",
-       TraditionalForm],
+     FormBox["\[Beta]",
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"MetricTensor",
- CellLabel->"Out[3]=",
- CellID->1803847759]
+ CellLabel->"Out[653]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -299,14 +292,13 @@ Cell[BoxData[
  RowBox[{"Contract", "[", 
   RowBox[{"%", " ", "%"}], "]"}]], "Input",
  CellTags->"MetricTensor",
- CellLabel->"In[4]:=",
+ CellLabel->"In[654]:=",
  CellID->125271051],
 
 Cell[BoxData[
- FormBox["n", TraditionalForm]], "Output",
+ FormBox["D", TraditionalForm]], "Output",
  CellTags->"MetricTensor",
- CellLabel->"Out[4]=",
- CellID->1132028331]
+ CellLabel->"Out[654]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -316,7 +308,7 @@ Cell[BoxData[
   RowBox[{"MetricTensor", "[", 
    RowBox[{"a", ",", "b"}], "]"}], "]"}]], "Input",
  CellTags->"MetricTensor",
- CellLabel->"In[5]:=",
+ CellLabel->"In[655]:=",
  CellID->1318549517],
 
 Cell[BoxData[
@@ -325,70 +317,90 @@ Cell[BoxData[
    RowBox[{"LorentzIndex", "[", "a", "]"}], ",", 
    RowBox[{"LorentzIndex", "[", "b", "]"}]}], "]"}]], "Output",
  CellTags->"MetricTensor",
- CellLabel->"Out[5]//StandardForm=",
- CellID->1708064740]
+ CellLabel->"Out[655]//StandardForm="]
 }, Open  ]],
 
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"StandardForm", "[", 
-  RowBox[{"MetricTensor", "[", 
-   RowBox[{"a", ",", "b", ",", 
-    RowBox[{"Dimension", "\[Rule]", "D"}]}], "]"}], "]"}]], "Input",
- CellTags->"MetricTensor",
- CellLabel->"In[6]:=",
- CellID->1544242781],
-
-Cell[BoxData[
- RowBox[{"Pair", "[", 
-  RowBox[{
-   RowBox[{"LorentzIndex", "[", 
-    RowBox[{"a", ",", "D"}], "]"}], ",", 
-   RowBox[{"LorentzIndex", "[", 
-    RowBox[{"b", ",", "D"}], "]"}]}], "]"}]], "Output",
- CellTags->"MetricTensor",
- CellLabel->"Out[6]//StandardForm=",
- CellID->2135349923]
-}, Open  ]],
+Cell["\<\
+MetricTensor is scheduled for removal in the future versions of FeynCalc. The \
+safe alternative is to use MT.\
+\>", "Notes"],
 
 Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"StandardForm", "[", 
-  RowBox[{"FCE", "[", 
-   RowBox[{"MetricTensor", "[", 
-    RowBox[{"a", ",", "b"}], "]"}], "]"}], "]"}]], "Input",
- CellTags->"MetricTensor",
- CellLabel->"In[7]:=",
- CellID->912797684],
 
 Cell[BoxData[
  RowBox[{"MT", "[", 
-  RowBox[{"a", ",", "b"}], "]"}]], "Output",
- CellTags->"MetricTensor",
- CellLabel->"Out[7]//StandardForm=",
- CellID->489293900]
+  RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]], "Input",
+ CellLabel->"In[658]:="],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   OverscriptBox["g", "_"], 
+   RowBox[{
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Nu]",
+      TraditionalForm],
+     TraditionalForm]}]], TraditionalForm]], "Output",
+ CellLabel->"Out[658]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"StandardForm", "[", 
-  RowBox[{"FCE", "[", 
-   RowBox[{"MetricTensor", "[", 
-    RowBox[{"a", ",", "b", ",", 
-     RowBox[{"Dimension", "\[Rule]", "D"}]}], "]"}], "]"}], "]"}]], "Input",
- CellTags->"MetricTensor",
- CellLabel->"In[8]:=",
- CellID->1275057625],
+ RowBox[{"MTD", "[", 
+  RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]], "Input",
+ CellLabel->"In[659]:="],
 
 Cell[BoxData[
- RowBox[{"MTD", "[", 
-  RowBox[{"a", ",", "b"}], "]"}]], "Output",
- CellTags->"MetricTensor",
- CellLabel->"Out[8]//StandardForm=",
- CellID->1657208619]
+ FormBox[
+  SuperscriptBox["g", 
+   RowBox[{
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Nu]",
+      TraditionalForm],
+     TraditionalForm]}]], TraditionalForm]], "Output",
+ CellLabel->"Out[659]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FCI", "[", 
+   RowBox[{"MT", "[", 
+    RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], "]"}], "===", 
+  RowBox[{"MetricTensor", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}]}]], "Input",
+ CellLabel->"In[660]:="],
+
+Cell[BoxData[
+ FormBox["True", TraditionalForm]], "Output",
+ CellLabel->"Out[660]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FCI", "[", 
+   RowBox[{"MTD", "[", 
+    RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], "]"}], "===", 
+  RowBox[{"MetricTensor", "[", 
+   RowBox[{"\[Mu]", ",", "\[Nu]", ",", 
+    RowBox[{"Dimension", "\[Rule]", "D"}]}], "]"}]}]], "Input",
+ CellLabel->"In[661]:="],
+
+Cell[BoxData[
+ FormBox["True", TraditionalForm]], "Output",
+ CellLabel->"Out[661]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -424,7 +436,7 @@ Cell[BoxData[
  InterpretationBox[Cell["XXXX", "ExampleSubsection"],
   $Line = 0; Null]], "ExampleSubsection",
  CellID->1295379749]
-}, Closed]],
+}, Open  ]],
 
 Cell[BoxData[
  InterpretationBox[Cell["Applications", "ExampleSection"],
@@ -452,13 +464,15 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{938, 1002},
+WindowMargins->{{851, Automatic}, {Automatic, 37}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

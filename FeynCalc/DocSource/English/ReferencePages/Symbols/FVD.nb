@@ -182,19 +182,12 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/FV",
   ButtonNote->"FV"],
  ", ",
- ButtonBox["FourVector",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/FourVector",
-  ButtonNote->"FourVector"],
- ", ",
  ButtonBox["Pair",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/Pair",
   ButtonNote->"Pair"],
  "."
-}], "Text",
- CellTags->"FVD",
- CellID->213085227]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -227,27 +220,22 @@ Cell[BoxData[
  RowBox[{"FVD", "[", 
   RowBox[{"p", ",", "\[Mu]"}], "]"}]], "Input",
  CellTags->"FVD",
- CellLabel->"In[1]:=",
+ CellLabel->"In[166]:=",
  CellID->1179313259],
 
 Cell[BoxData[
  FormBox[
-  FormBox[
-   SuperscriptBox[
-    FormBox[
-     FormBox["p",
-      TraditionalForm],
-     TraditionalForm], 
-    FormBox[
-     FormBox[
-      FormBox["\[Mu]",
-       TraditionalForm],
-      TraditionalForm],
-     TraditionalForm]],
-   TraditionalForm], TraditionalForm]], "Output",
+  SuperscriptBox[
+   FormBox[
+    FormBox["p",
+     TraditionalForm],
+    TraditionalForm], 
+   FormBox[
+    FormBox["\[Mu]",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"FVD",
- CellLabel->"Out[1]=",
- CellID->523628619]
+ CellLabel->"Out[166]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -257,33 +245,28 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"p", "-", "q"}], ",", "\[Mu]"}], "]"}]], "Input",
  CellTags->"FVD",
- CellLabel->"In[2]:=",
+ CellLabel->"In[167]:=",
  CellID->4229236],
 
 Cell[BoxData[
  FormBox[
-  FormBox[
-   SuperscriptBox[
-    RowBox[{"(", 
-     FormBox[
-      FormBox[
-       RowBox[{
-        FormBox["p",
-         TraditionalForm], "-", 
-        FormBox["q",
-         TraditionalForm]}],
-       TraditionalForm],
-      TraditionalForm], ")"}], 
+  SuperscriptBox[
+   RowBox[{"(", 
     FormBox[
      FormBox[
-      FormBox["\[Mu]",
-       TraditionalForm],
+      RowBox[{
+       FormBox["p",
+        TraditionalForm], "-", 
+       FormBox["q",
+        TraditionalForm]}],
       TraditionalForm],
-     TraditionalForm]],
-   TraditionalForm], TraditionalForm]], "Output",
+     TraditionalForm], ")"}], 
+   FormBox[
+    FormBox["\[Mu]",
+     TraditionalForm],
+    TraditionalForm]], TraditionalForm]], "Output",
  CellTags->"FVD",
- CellLabel->"Out[2]=",
- CellID->1285947653]
+ CellLabel->"Out[167]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -293,15 +276,14 @@ Cell[BoxData[
   RowBox[{"FVD", "[", 
    RowBox[{"p", ",", "\[Mu]"}], "]"}], "//", "StandardForm"}]], "Input",
  CellTags->"FVD",
- CellLabel->"In[3]:=",
+ CellLabel->"In[168]:=",
  CellID->417689841],
 
 Cell[BoxData[
  RowBox[{"FVD", "[", 
   RowBox[{"p", ",", "\[Mu]"}], "]"}]], "Output",
  CellTags->"FVD",
- CellLabel->"Out[3]//StandardForm=",
- CellID->1974189044]
+ CellLabel->"Out[168]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -313,7 +295,7 @@ Cell[BoxData[
     RowBox[{"p", ",", "\[Mu]"}], "]"}], "]"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"FVD",
- CellLabel->"In[4]:=",
+ CellLabel->"In[169]:=",
  CellID->387897032],
 
 Cell[BoxData[
@@ -324,13 +306,10 @@ Cell[BoxData[
    RowBox[{"Momentum", "[", 
     RowBox[{"p", ",", "D"}], "]"}]}], "]"}]], "Output",
  CellTags->"FVD",
- CellLabel->"Out[4]//StandardForm=",
- CellID->2132317319]
+ CellLabel->"Out[169]//StandardForm="]
 }, Open  ]],
 
-Cell["There is no special function to expand momenta in FVD.", "Text",
- CellTags->"FVD",
- CellID->1109547966],
+Cell["There is no special function to expand momenta in FVD.", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -340,41 +319,32 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"p", "-", "q"}], ",", "\[Mu]"}], "]"}], "]"}]], "Input",
  CellTags->"FVD",
- CellLabel->"In[5]:=",
+ CellLabel->"In[170]:=",
  CellID->117451470],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      FormBox["p",
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox["\[Mu]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], "-", 
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      FormBox["q",
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox["\[Mu]",
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm]}], TraditionalForm]], "Output",
+   SuperscriptBox[
+    FormBox[
+     FormBox["p",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm]], "-", 
+   SuperscriptBox[
+    FormBox[
+     FormBox["q",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox[
+     FormBox["\[Mu]",
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
  CellTags->"FVD",
- CellLabel->"Out[5]=",
- CellID->1622123785]
+ CellLabel->"Out[170]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -382,7 +352,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"StandardForm", "[", "%", "]"}]], "Input",
  CellTags->"FVD",
- CellLabel->"In[6]:=",
+ CellLabel->"In[171]:=",
  CellID->1697636138],
 
 Cell[BoxData[
@@ -400,8 +370,7 @@ Cell[BoxData[
     RowBox[{"Momentum", "[", 
      RowBox[{"q", ",", "D"}], "]"}]}], "]"}]}]], "Output",
  CellTags->"FVD",
- CellLabel->"Out[6]//StandardForm=",
- CellID->779988217]
+ CellLabel->"Out[171]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -466,12 +435,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{920, Automatic}, {Automatic, 150}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

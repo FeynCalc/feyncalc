@@ -61,11 +61,13 @@ End[]
 
 Begin["`Hypergeometric`Private`"]
 
+tohyp::usage="";
+
 Options[HypergeometricAC] = {Collect2 -> True};
 
 HypergeometricAC[n_Integer][exp_, opt___Rule] :=
 	Block[ {g = Gamma, A1, A2, B1, B2, f21 = Hypergeometric2F1,
-	res, colopt, vars},
+	res, colopt, vars, hyp},
 		colopt = Collect2 /. {opt} /. Options[HypergeometricAC];
 		A1[a_,b_,c_] :=
 			g[c] g[c-a-b]/g[c-a]/g[c-b];

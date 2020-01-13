@@ -118,14 +118,29 @@ Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
   RowBox[{"EpsEvaluate", "[", "expr", "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "applies total antisymmetry and linearity (w.r.t. Momentum's) to all \
-Levi-Civita tensors (Eps') in expr."
+ " \[LineSeparator]applies total antisymmetry and linearity (w.r.t. momenta) \
+to all Levi-Civita tensors (Eps') in expr."
 }], "Usage",
  CellID->982511436],
 
 Cell["XXXX", "Notes",
- CellID->1067943069]
+ CellID->1067943069],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "EpsEvaluate", "]"}]], "Input",
+ CellLabel->"In[705]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"Momentum", "\[Rule]", "All"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellLabel->"Out[705]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -171,19 +186,17 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Eps",
   ButtonNote->"Eps"],
  ", ",
- ButtonBox["LeviCivita",
+ ButtonBox["LC",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/LeviCivita",
-  ButtonNote->"LeviCivita"],
+  ButtonData:>"paclet:FeynCalc/ref/LC",
+  ButtonNote->"LC"],
  ", ",
  ButtonBox["Trick",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/Trick",
   ButtonNote->"Trick"],
  "."
-}], "Text",
- CellTags->"EpsEvaluate",
- CellID->1755604338]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -213,21 +226,24 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Trick", "[", 
-  RowBox[{
-   RowBox[{"LeviCivita", "[", 
-    RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], "]"}], 
-   " ", 
-   RowBox[{"FourVector", "[", 
-    RowBox[{
-     RowBox[{"p", "+", "q"}], ",", "\[Sigma]"}], "]"}]}], "]"}]], "Input",
+ RowBox[{
+  RowBox[{"Contract", "[", 
+   RowBox[{
+    RowBox[{"LC", "[", 
+     RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], "]"}], 
+    " ", 
+    RowBox[{"FV", "[", 
+     RowBox[{
+      RowBox[{"p", "+", "q"}], ",", "\[Sigma]"}], "]"}]}], "]"}], "//", 
+  "MomentumCombine"}]], "Input",
  CellTags->"EpsEvaluate",
- CellLabel->"In[1]:=",
+ CellLabel->"In[710]:=",
  CellID->684764895],
 
 Cell[BoxData[
  FormBox[
-  SuperscriptBox["\[Epsilon]", 
+  SuperscriptBox[
+   OverscriptBox["\[Epsilon]", "_"], 
    RowBox[{
     FormBox[
      FormBox["\[Mu]",
@@ -253,8 +269,7 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"EpsEvaluate",
- CellLabel->"Out[1]=",
- CellID->440945173]
+ CellLabel->"Out[710]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -262,13 +277,14 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"EpsEvaluate", "[", "%", "]"}]], "Input",
  CellTags->"EpsEvaluate",
- CellLabel->"In[2]:=",
+ CellLabel->"In[711]:=",
  CellID->84932068],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   SuperscriptBox["\[Epsilon]", 
+   SuperscriptBox[
+    OverscriptBox["\[Epsilon]", "_"], 
     RowBox[{
      FormBox[
       FormBox["\[Mu]",
@@ -287,7 +303,8 @@ Cell[BoxData[
        FormBox["p",
         TraditionalForm], "_"],
       TraditionalForm]}]], "+", 
-   SuperscriptBox["\[Epsilon]", 
+   SuperscriptBox[
+    OverscriptBox["\[Epsilon]", "_"], 
     RowBox[{
      FormBox[
       FormBox["\[Mu]",
@@ -307,8 +324,7 @@ Cell[BoxData[
         TraditionalForm], "_"],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
  CellTags->"EpsEvaluate",
- CellLabel->"Out[2]=",
- CellID->352429971]
+ CellLabel->"Out[711]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -316,34 +332,25 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"StandardForm", "[", "%", "]"}]], "Input",
  CellTags->"EpsEvaluate",
- CellLabel->"In[3]:=",
+ CellLabel->"In[712]:=",
  CellID->1124825353],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"Eps", "[", 
    RowBox[{
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Mu]", ",", "D"}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Nu]", ",", "D"}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Rho]", ",", "D"}], "]"}], ",", 
-    RowBox[{"Momentum", "[", "p", "]"}], ",", 
-    RowBox[{"Dimension", "\[Rule]", "D"}]}], "]"}], "+", 
+    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
+    RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}], ",", 
+    RowBox[{"LorentzIndex", "[", "\[Rho]", "]"}], ",", 
+    RowBox[{"Momentum", "[", "p", "]"}]}], "]"}], "+", 
   RowBox[{"Eps", "[", 
    RowBox[{
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Mu]", ",", "D"}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Nu]", ",", "D"}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Rho]", ",", "D"}], "]"}], ",", 
-    RowBox[{"Momentum", "[", "q", "]"}], ",", 
-    RowBox[{"Dimension", "\[Rule]", "D"}]}], "]"}]}]], "Output",
+    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
+    RowBox[{"LorentzIndex", "[", "\[Nu]", "]"}], ",", 
+    RowBox[{"LorentzIndex", "[", "\[Rho]", "]"}], ",", 
+    RowBox[{"Momentum", "[", "q", "]"}]}], "]"}]}]], "Output",
  CellTags->"EpsEvaluate",
- CellLabel->"Out[3]//StandardForm=",
- CellID->746268781]
+ CellLabel->"Out[712]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -408,12 +415,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{1018, Automatic}, {Automatic, 161}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

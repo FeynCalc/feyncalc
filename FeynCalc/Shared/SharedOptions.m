@@ -6,14 +6,19 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Options shared by various FeynCalc objects and functions	    *)
 
 (* ------------------------------------------------------------------------ *)
+
+CartesianIndexNames::usage =
+"CartesianIndexNames is an option for FCCanonicalizeDummyIndices \
+and other functions. It renames the generic dummy Cartesian indices to the indices \
+in the supplied list.";
 
 ClearHeads::usage = "ClearHeads is an option of FCLoopIsolate, FCDiracIsolate \
 and other functions. It takes a list of heads that will be replaced by Identity in \
@@ -23,8 +28,7 @@ finally want to apply the isolating function again to pull out the simplified ex
 out of the old heads.";
 
 Collecting::usage =
-"Collecting is an option of Contract2, ApartFF, SquareAmplitude, \
-Series2, TID and related functions. Setting it to True will trigger \
+"Collecting is an option of multiple functions. Setting it to True will trigger \
 some kind of collecting of the result.";
 
 CouplingConstant::usage =
@@ -32,35 +36,36 @@ CouplingConstant::usage =
 for CovariantD and FieldStrength.";
 
 Dimension::usage =
-"Dimension is an option for DiracMatrix, DiracSlash, FourVector, \
-LeviCivita, MetricTensor, SetMandelstam, OneLoop and ScalarProduct. \
-The default setting is sometimes 4, sometimes D. \
+"Dimension is an option for SetMandelstam, ScalarProduct, FAD \
+and other symbols or functions. The default setting is sometimes 4, sometimes D. \
 The setting should always be 4, a symbol (D, n, ...), or \
 (D-4), (n-4), ... .";
 
-DimensionalReduction::usage=
-"DimensionalReduction is an option for TID and OneLoopSimplify.";
+DiracIndexNames::usage =
+"DiracIndexNames is an option for FCFAConvert, FCCanonicalizeDummyIndices \
+and other functions. It renames the generic dummy Dirac indices to the indices \
+in the supplied list.";
 
 DiracTraceEvaluate::usage =
-"DiracTraceEvaluate is an option for DiracTrace and TR. \
-If set to False, DiracTrace remains unevaluated.";
+"DiracTraceEvaluate is an option for DiracTrace, DiracSimplify and \
+some other functions. If set to False, Dirac traces remain unevaluated.";
 
 Divideout::usage =
 "Divideout is an option for OPEInt and OPEInsert. \
 The setting is divided out at the end.";
 
-EpsContract::usage=
-"EpsContract is an option of Contract specifying whether Levi-Civita \
-tensors Eps[...] will be contracted, i.e., products \
-of two Eps are replaced via the determinant formula.";
-
-EpsDiscard::usage=
-"EpsDiscard is an option for FeynCalc2FORM and SquareAmplitude. \
-If set to True all Levi-Civita tensors are replaced by 0 after contraction.";
-
 EpsilonOrder::usage =
 "EpsilonOrder is an option of OPEIntegrateDelta and RHI. The setting \
 determines the order n (Epsilon^n) which should be kept.";
+
+EtaSign::usage =
+"EtaSign is an option for SFAD, GFAD, CFAD and other objects representing \
+propagators. It specifies the default sign of the I \[Eta] prescription  in the \
+propagators, e.g. for standard Feynman propagators the value 1 corresponds to \
+1/( p^2-m^2 + I \[Eta]), while the value -1 sets 1/( p^2-m^2 - I \[Eta]). \
+Notice that if the sign of I \[Eta] is already specified in the propagator, \
+e.g. CFAD[{q,{m^2,1}}], then this specification always overrides the EtaSign \
+option. Hence CFAD[{q,{m^2,1}}, EtaSign->-1] still has the positive I \[Eta].";
 
 ExceptHeads::usage = "ExceptHeads is an option of FCLoopIsolate, \
 FCDiracIsolate and other functions. It takes a list of heads that  \
@@ -79,26 +84,23 @@ only a limited set of simplifications \
 performed. For DotSimplity, it determines \
 whether noncommutative expansion is done.";
 
-FCCheckSyntax::usage = "FCCheckSyntax is an option for several FeynCalc \
-functions that require correct syntax in order to produce sensible results. \
-If set to True, those functions will try to check the syntax of the input
-expressions to detect possible inconsistencies (which mostly come from the
-users not familiar with FeynCalc). However, on large expressions such checks
-may cost a lot of performance, which is why this option is set to False \
-by default.";
-
 Factoring::usage = "Factoring is an option for Collect2, Contract, \
 Tr and more functions. If set to True, the result will be \
 factored, using Factor2. If set to any function f, this function \
 will be used.";
 
 ExtraFactor::usage=
-"ExtraFactor is an option for SquareAmplitude, FermionSpinSum and \
+"ExtraFactor is an option for FermionSpinSum and \
 DoPolarizationSums. The setting ExtraFactor -> fa \
 multiplies the whole amplitude with the factor fa before squaring.";
 
 Factorout::usage =
 "Factorout is an option for OPEInt and OPEIntegrate.";
+
+FCJoinDOTs::usage =
+"FCJoinDOTs is an option for DotSimplify and other functions that use \
+DotSimplify internally. When set to True, DotSimplify will try to rewrite \
+expressions like A.X.B + A.Y.B as A.(X+Y).B.";
 
 FCVerbose::usage =
 "FCVerbose is an option for several functions that allows to specify \
@@ -149,9 +151,15 @@ FeynAmpDenominatorSimplify. It may be set to a list of the form: \
 {FCIntegral[ ... ] :> bla, ...}.";
 
 IntermediateSubstitutions::usage =
-"IntermediateSubstitutions is an option for OneLoop and \
-and SquareAmplitude. All substitutions indicated hereby are done at \
+"IntermediateSubstitutions is an option of various FeynCalc functions. \
+All substitutions indicated hereby are done at \
 an intermediate stage of the calculation.";
+
+InsideDiracTrace::usage =
+"InsideDiracTrace is an option of DiracSimplify and some other functions \
+dealing with Dirac algebra. If set to True, the function assumes to operate \
+inside a Dirac trace, i.e., products of an odd number \
+of Dirac matrices are discarded.";
 
 IsolateNames::usage =
 "IsolateNames is an option for Isolate and Collect2. \
@@ -175,6 +183,11 @@ in the supplied list.";
 PaVeIntegralHeads::usage=
 "PaVeIntegralHeads is an option for FCLoopIsolate, FCLoopSplit and other \
 functions. It gives a list of heads that denote Passarino-Veltman integrals";
+
+PauliReduce::usage=
+"PauliReduce is an option for PauliTrick and other functions. It specifies \
+whether a chain of Pauli matrices should be reduced to at most one matrix by
+rewriting every pair of matrices in terms of commutator and anticommutator.";
 
 Mandelstam::usage =
 "Mandelstam is an option for DiracTrace, OneLoop, OneLoopSum, Tr \
@@ -206,9 +219,30 @@ specifying in which order the arguments of D0 are to be permuted.";
 
 QuarkMass::usage= "QuarkMass is an option of Amplitude.";
 
-SpinPolarizationSum::usage=
-"SpinPolarizationSum is an option for SquareAmplitude and \
-FermionSpinSum. The set (pure) function acts on the usual spin sum.";
+SchoutenAllowZeroGain::usage=
+"SchoutenAllowZeroGain is an option for FCSchoutenBruteForce and other \
+functions that attempt to simplify the input expression by applying Schouten's \
+identity. When set to True, the algorithm would apply Schouten's identity \
+to the given expression even if this does not decrease the total number of terms \
+in the expression. This is sometimes useful when the algorithm gets stuck and
+cannot find further transformation that would make the expression shorter.";
+
+SchoutenAllowNegativeGain::usage=
+"SchoutenAllowZeroGain is an option for FCSchoutenBruteForce and other \
+functions that attempt to simplify the input expression by applying Schouten's \
+identity. It is similar to SchoutenAllowZeroGain with the difference that even \
+transformations that increase the total number of terms might be applied in an \
+attempt to  arrive to shorter expressions at a later stage.";
+
+SetDimensions::usage =
+"SetDimensions is an option for ScalarProduct, CartesianScalarProduct and \
+various FCLoopBasis* functions. For scalar products it specifies the dimensions \
+for which the scalar products will be set when ScalarProduct or CartesianScalarProduct  \
+are used with the equality sign, e.g. in ScalarProduct[a, b] = m^2. By default, the \
+scalar products are set for 4 and D dimensions. By changing this option \
+the user can add other dimensions or delete the exising ones. In case of the FCLoopBasis*
+functions this option specifies the dimensions of the loop and external momenta to be taken \
+into account when extracting the propagator basis.";
 
 SUNIndexNames::usage =
 "SUNIndexNames is an option for FCFAConvert, FCCanonicalizeDummyIndices \
@@ -225,7 +259,7 @@ SUNNToCACF::usage=
 operator eigenvalues CA (=N) and CF (=(N^2-1)/(2 N)) are introduced.";
 
 TraceOfOne::usage =
-"TraceOfOne is an option for Tr and DiracTrace. \
+"TraceOfOne is an option for Tr, DiracTrace and DiracChainJoin \
 Its setting determines the value of the unit trace.";
 
 VirtualBoson::usage =
@@ -236,17 +270,16 @@ that is not massless. This is usueful when computing processes \
 that involve a virtual photon as an external state."
 
 West::usage =
-"West is an option for DiracTrace, TR and other functions that deal \
-with traces of Dirac matrices. It applies only to the computation of \
-D-dimensional chiral traces (i.e. those that involve one gamma5) in the \
-Breitenlohner-Maison-t'Hooft-Veltman (BMHV) scheme. If set to True, such \
-traces will be computed according to formula  (A.5) from \
-Comp. Phys. Comm 77 (1993) 286-298, which is also known as West's formula.";
+"West is an option for DiracTrace and several other functions that deal \
+with traces of Dirac matrices. The option applies only to the computation \
+of D-dimensional traces with an odd number of \[Gamma]^5 in the \
+Breitenlohner-Maison-t'Hooft-Veltman (BMHV) scheme. With West->True (default setting), \
+such traces are computed according to formula  (A.5) from Comp. Phys. Comm 77 (1993) \
+286-298, which is also known as West's formula.";
 
 WriteOut::usage =
-"WriteOut is an option for OneLoop and SquareAmplitude. \
-If set to True, the result of OneLoop will be written to a \
-file called \"name.res\", where name is the first argument of OneLoop.";
+"WriteOut is an option for OneLoop and several other functions. It is responsible \
+for saving the results to a file .";
 
 WriteOutPaVe::usage=
 "WriteOutPaVe is an option for PaVeReduce and OneLoopSum. \

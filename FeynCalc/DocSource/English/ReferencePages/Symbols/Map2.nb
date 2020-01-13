@@ -167,9 +167,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/NTerms",
   ButtonNote->"NTerms"],
  "."
-}], "Text",
- CellTags->"Map2",
- CellID->435233862]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -203,7 +201,7 @@ Cell[BoxData[
   RowBox[{"f", ",", 
    RowBox[{"a", "-", "b"}]}], "]"}]], "Input",
  CellTags->"Map2",
- CellLabel->"In[1]:=",
+ CellLabel->"In[40]:=",
  CellID->194230717],
 
 Cell[BoxData[
@@ -213,8 +211,7 @@ Cell[BoxData[
    RowBox[{"f", "(", 
     RowBox[{"-", "b"}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"Map2",
- CellLabel->"Out[1]=",
- CellID->979511779]
+ CellLabel->"Out[40]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -223,15 +220,14 @@ Cell[BoxData[
  RowBox[{"Map2", "[", 
   RowBox[{"f", ",", "x"}], "]"}]], "Input",
  CellTags->"Map2",
- CellLabel->"In[2]:=",
+ CellLabel->"In[41]:=",
  CellID->1407522381],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"f", "(", "x", ")"}], TraditionalForm]], "Output",
  CellTags->"Map2",
- CellLabel->"Out[2]=",
- CellID->1491769424]
+ CellLabel->"Out[41]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -242,7 +238,7 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], "]"}]], "Input",
  CellTags->"Map2",
- CellLabel->"In[3]:=",
+ CellLabel->"In[42]:=",
  CellID->1867340703],
 
 Cell[BoxData[
@@ -252,8 +248,7 @@ Cell[BoxData[
     RowBox[{"a", ",", "b", ",", "c"}], "}"}], ")"}], 
   TraditionalForm]], "Output",
  CellTags->"Map2",
- CellLabel->"Out[3]=",
- CellID->1614084211]
+ CellLabel->"Out[42]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -262,15 +257,14 @@ Cell[BoxData[
  RowBox[{"Map2", "[", 
   RowBox[{"f", ",", "1"}], "]"}]], "Input",
  CellTags->"Map2",
- CellLabel->"In[4]:=",
+ CellLabel->"In[43]:=",
  CellID->722460655],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"f", "(", "1", ")"}], TraditionalForm]], "Output",
  CellTags->"Map2",
- CellLabel->"Out[4]=",
- CellID->1998194589]
+ CellLabel->"Out[43]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -335,12 +329,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{489, Automatic}, {Automatic, 130}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

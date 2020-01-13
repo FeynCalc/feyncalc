@@ -124,8 +124,50 @@ loop momentum q"
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "TID", "]"}]], "Input",
+ CellTags->"TID",
+ CellLabel->"In[26]:=",
+ CellID->1576573941],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"ApartFF", "\[Rule]", "True"}], ",", 
+    RowBox[{"Check", "\[Rule]", "True"}], ",", 
+    RowBox[{"Collecting", "\[Rule]", "True"}], ",", 
+    RowBox[{"Contract", "\[Rule]", "True"}], ",", 
+    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
+    RowBox[{"DiracSimplify", "\[Rule]", "True"}], ",", 
+    RowBox[{"DiracTrace", "\[Rule]", "True"}], ",", 
+    RowBox[{"EpsEvaluate", "\[Rule]", "True"}], ",", 
+    RowBox[{"ExpandScalarProduct", "\[Rule]", "True"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FCLoopRemoveNegativePropagatorPowers", "\[Rule]", "True"}], ",", 
+    
+    RowBox[{"FCLoopMixedToCartesianAndTemporal", "\[Rule]", "True"}], ",", 
+    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynAmpDenominatorSimplify", "\[Rule]", "True"}], ",", 
+    RowBox[{"Factoring", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"Factor2", ",", "5000"}], "}"}]}], ",", 
+    RowBox[{"FeynAmpDenominatorCombine", "\[Rule]", "True"}], ",", 
+    RowBox[{"GenPaVe", "\[Rule]", "False"}], ",", 
+    RowBox[{"Isolate", "\[Rule]", "False"}], ",", 
+    RowBox[{"PaVeAutoOrder", "\[Rule]", "True"}], ",", 
+    RowBox[{"PaVeAutoReduce", "\[Rule]", "True"}], ",", 
+    RowBox[{"PauliTrick", "\[Rule]", "True"}], ",", 
+    RowBox[{"ToPaVe", "\[Rule]", "False"}], ",", 
+    RowBox[{"UsePaVeBasis", "\[Rule]", "False"}], ",", 
+    RowBox[{"TimeConstrained", "\[Rule]", "3"}]}], "}"}], 
+  TraditionalForm]], "Output",
+ CellTags->"TID",
+ CellLabel->"Out[26]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -171,9 +213,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/TIDL",
   ButtonNote->"TIDL"],
  "."
-}], "Text",
- CellTags->"TID",
- CellID->930175642]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -199,44 +239,6 @@ Cell[BoxData[
    }],
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "TID", "]"}]], "Input",
- CellTags->"TID",
- CellLabel->"In[12]:=",
- CellID->1576573941],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"ChangeDimension", "\[Rule]", "D"}], ",", 
-    RowBox[{"Collecting", "\[Rule]", "True"}], ",", 
-    RowBox[{"Contract", "\[Rule]", "True"}], ",", 
-    RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
-    RowBox[{"DimensionalReduction", "\[Rule]", "False"}], ",", 
-    RowBox[{"DiracSimplify", "\[Rule]", "True"}], ",", 
-    RowBox[{"DiracTrace", "\[Rule]", "True"}], ",", 
-    RowBox[{"ExpandScalarProduct", "\[Rule]", "True"}], ",", 
-    RowBox[{"EpsEvaluate", "\[Rule]", "True"}], ",", 
-    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
-    RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
-    RowBox[{"FeynAmpDenominatorCombine", "\[Rule]", "True"}], ",", 
-    RowBox[{"FeynAmpDenominatorSimplify", "\[Rule]", "True"}], ",", 
-    RowBox[{"GenPaVe", "\[Rule]", "False"}], ",", 
-    RowBox[{"PaVeAutoOrder", "\[Rule]", "True"}], ",", 
-    RowBox[{"PaVeAutoReduce", "\[Rule]", "True"}], ",", 
-    RowBox[{"ApartFF", "\[Rule]", "True"}], ",", 
-    RowBox[{"Isolate", "\[Rule]", "False"}], ",", 
-    RowBox[{"UsePaVeBasis", "\[Rule]", "False"}], ",", 
-    RowBox[{"ToPaVe", "\[Rule]", "False"}]}], "}"}], 
-  TraditionalForm]], "Output",
- CellTags->"TID",
- CellLabel->"Out[12]=",
- CellID->1697860323]
-}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -316,20 +318,16 @@ Cell[TextData[{
  "By default, all the tensor integrals are reduced to the Passarino-Veltman \
 scalar integrals ",
  Cell[BoxData[
-  SubscriptBox["A", "0"]], "InlineFormula",
-  FormatType->"StandardForm"],
+  SubscriptBox["A", "0"]], "InlineFormula"],
  ", ",
  Cell[BoxData[
-  SubscriptBox["B", "0"]], "InlineFormula",
-  FormatType->"StandardForm"],
+  SubscriptBox["B", "0"]], "InlineFormula"],
  ", ",
  Cell[BoxData[
-  SubscriptBox["C", "0"]], "InlineFormula",
-  FormatType->"StandardForm"],
+  SubscriptBox["C", "0"]], "InlineFormula"],
  ", ",
  Cell[BoxData[
-  SubscriptBox["D", "0"]], "InlineFormula",
-  FormatType->"StandardForm"],
+  SubscriptBox["D", "0"]], "InlineFormula"],
  " etc. "
 }], "Notes",
  CellID->538152640],
@@ -2505,9 +2503,10 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 684},
-WindowMargins->{{239, Automatic}, {Automatic, -8}},
+WindowMargins->{{683, Automatic}, {Automatic, 118}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",

@@ -4,16 +4,16 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for FCGetDimensions  		*)
 
 (* ------------------------------------------------------------------------ *)
 
-Tests`Lorenz`fcstFCGetDimensions =
+Tests`Lorentz`fcstFCGetDimensions =
 ({
 {"fcstFCGetDimensions-ID1", "FCGetDimensions[0]", "{}"},
 {"fcstFCGetDimensions-ID2", "FCGetDimensions[x]", "{}"},
@@ -28,5 +28,20 @@ Tests`Lorenz`fcstFCGetDimensions =
 {"fcstFCGetDimensions-ID8", "FCGetDimensions[GAD[p]]", "{D}"},
 {"fcstFCGetDimensions-ID9", "FCGetDimensions[GAE[p]]", "{-4 + D}"},
 {"fcstFCGetDimensions-ID10", "FCGetDimensions[GSD[p]+GA[x]]",
-"{4, D}"}
+"{4, D}"},
+{"fcstFCGetDimensions-ID11", "FCGetDimensions[DiracGamma[CartesianIndex[i]]]", "{3,4}"},
+{"fcstFCGetDimensions-ID12", "FCGetDimensions[DiracGamma[CartesianIndex[i, D - 1], D]]", "{D-1,D}"},
+{"fcstFCGetDimensions-ID13", "FCGetDimensions[DiracGamma[CartesianIndex[i, D - 4], D - 4]]", "{D-4}"},
+{"fcstFCGetDimensions-ID14", "FCGetDimensions[DiracGamma[CartesianMomentum[p]]]", "{3,4}"},
+{"fcstFCGetDimensions-ID15", "FCGetDimensions[DiracGamma[CartesianMomentum[p, D - 1], D]]", "{D-1,D}"},
+{"fcstFCGetDimensions-ID16", "FCGetDimensions[DiracGamma[CartesianMomentum[p, D - 4], D - 4]]", "{D-4}"},
+{"fcstFCGetDimensions-ID17", "FCGetDimensions[DiracGamma[CartesianPair[CartesianMomentum[p], CartesianIndex[i]]]]", "{3,4}"},
+{"fcstFCGetDimensions-ID18", "FCGetDimensions[PauliSigma[CartesianMomentum[p]]]", "{3}"},
+{"fcstFCGetDimensions-ID19", "FCGetDimensions[PauliSigma[Momentum[p]]]", "{3,4}"},
+{"fcstFCGetDimensions-ID20", "FCGetDimensions[CV[p, i], ChangeDimension -> True]", "{4}"},
+{"fcstFCGetDimensions-ID21", "FCGetDimensions[CVD[p, i], ChangeDimension -> True]", "{D}"},
+{"fcstFCGetDimensions-ID22", "FCGetDimensions[PauliSigma[CartesianMomentum[p]], ChangeDimension -> True]", "{3,4}"},
+{"fcstFCGetDimensions-ID23", "FCGetDimensions[GAD[5, mu], FreeQ -> {DiracGamma[5]}]", "{D}"},
+{"fcstFCGetDimensions-ID23", "FCGetDimensions[GAD[5, mu,6,nu,7], FreeQ -> {DiracGamma[5],DiracGamma[6],DiracGamma[7]}]", "{D}"},
+{"fcstFCGetDimensions-ID24", "FCGetDimensions[TC[p] GAD[mu], FreeQ -> {TemporalPair[__]}]", "{D}"}
 });

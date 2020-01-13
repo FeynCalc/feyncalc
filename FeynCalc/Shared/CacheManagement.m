@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2016 Rolf Mertig
-	Copyright (C) 1997-2016 Frederik Orellana
-	Copyright (C) 2014-2016 Vladyslav Shtabovenko
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
 (* :Summary: 	Functions for managing memoization in FeynCalc				*)
@@ -54,11 +54,14 @@ SetAttributes[cachedToString, HoldAll]
 whiteListNames = {
 	ExpandScalarProduct,
 	PairContract,
-	FCFastContract
+	FCFastContract,
+	FeynCalc`NPointTo4Point`Private`getDet,
+	FeynCalc`SimplifyPolyLog`Private`simplifyArgument,
+	FeynCalc`FCApart`Private`pfracRaw
 };
 
 FCUseCache[fcFunc_, args_List, opts_List: {}] :=
-	Block[{fullOpts, cachedHead,depArgs},
+	Block[{fullOpts, cachedHead,depArgs, standardSet},
 		fullOpts = Sort[Flatten[Join[opts, FilterRules[Options[fcFunc], Except[opts]]]]];
 		cachedHead=ToExpression["cacheFunc"<>ToString[fcFunc]];
 
@@ -69,31 +72,25 @@ FCUseCache[fcFunc_, args_List, opts_List: {}] :=
 			Abort[]
 		];
 
+		standardSet = DownValues[#]&/@{
+				Pair, CartesianPair, TemporalPair, ScalarProduct, CartesianScalarProduct,
+				Momentum, CartesianMomentum, TemporalMomentum, SP, SPD, SPE, CSP, CSPD, CSPE, TC
+		};
+		standardSet = Join[standardSet,{FeynCalc`Package`DiracGammaScheme, FeynCalc`Package`PauliSigmaScheme}];
+
 		Which[
 			fcFunc === ExpandScalarProduct,
-				depArgs = cachedToString[{	DownValues[Pair],
-											DownValues[ScalarProduct],
-											DownValues[SP],
-											DownValues[SPD],
-											DownValues[SPE],
-											$BreitMaison,
-											$Larin}],
+				depArgs = cachedToString[standardSet],
 			fcFunc === PairContract,
-				depArgs = cachedToString[{	DownValues[Pair],
-											DownValues[ScalarProduct],
-											DownValues[SP],
-											DownValues[SPD],
-											DownValues[SPE],
-											$BreitMaison,
-											$Larin}],
+				depArgs = cachedToString[standardSet],
 			fcFunc === FCFastContract,
-				depArgs = cachedToString[{	DownValues[Pair],
-											DownValues[ScalarProduct],
-											DownValues[SP],
-											DownValues[SPD],
-											DownValues[SPE],
-											$BreitMaison,
-											$Larin}],
+				depArgs = cachedToString[standardSet],
+			fcFunc === FeynCalc`NPointTo4Point`Private`getDet,
+				depArgs = cachedToString[standardSet],
+			fcFunc === FeynCalc`SimplifyPolyLog`Private`simplifyArgument,
+				depArgs = cachedToString[standardSet],
+			fcFunc === FeynCalc`FCApart`Private`pfracRaw,
+				depArgs = cachedToString[standardSet],
 			True,
 				Message[FCUseCache::blacklist,fcFunc];
 				Abort[]

@@ -3,69 +3,91 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     22426,        848]
-NotebookOptionsPosition[     15575,        621]
-NotebookOutlinePosition[     19784,        746]
-CellTagsIndexPosition[     19670,        740]
+NotebookDataLength[     22354,        832]
+NotebookOptionsPosition[     16212,        635]
+NotebookOutlinePosition[     19872,        740]
+CellTagsIndexPosition[     19758,        734]
 WindowTitle->Uncontract
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[GridBox[{
-   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[Cell[BoxData[
-     ActionMenuBox[
-      FrameBox[
-       InterpretationBox[Cell[TextData[{
-         "URL",
-         StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
-          StripOnInput->False]
-        }]],
-        TextCell[
-         Row[{"URL", 
-           Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
-       StripOnInput->False], {"\<\"FeynCalc/ref/Uncontract\"\>":>
-      None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell["FeynCalc/ref/Uncontract"]}, Visible -> False]]; 
-       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
-      Delimiter, "\<\"Copy web URL\"\>":>
-      Module[{DocumentationSearch`Private`nb$}, 
-       DocumentationSearch`Private`nb$ = NotebookPut[
-          Notebook[{
-            Cell[
-             BoxData[
-              MakeBoxes[
-               Hyperlink[
-               "http://reference.wolfram.com/language/FeynCalc/ref/Uncontract.\
-html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible -> 
-           False]]; SelectionMove[
-        DocumentationSearch`Private`nb$, All, Notebook]; 
-       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
-       NotebookClose[DocumentationSearch`Private`nb$]; 
-       Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
-        NotebookLocate[{
-          URL[
-           StringJoin[
-            If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$162625], 
-             "http://reference.wolfram.com/system-modeler/", 
-             "http://reference.wolfram.com/language/"], 
-            "FeynCalc/ref/Uncontract", ".html"]], None}]}]},
-      Appearance->None,
-      MenuAppearance->Automatic]],
-     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+   {Cell["FEYN CALC SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "See Also",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"See Also", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Contract\"\>":>Documentation`HelpLookup[
+       "paclet:FeynCalc/ref/Contract"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"SeeAlso"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"FeynCalc/ref/Uncontract\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["FeynCalc/ref/Uncontract"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/FeynCalc/ref/\
+Uncontract.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$282616], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "FeynCalc/ref/Uncontract", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
      Scaled[0.65], {
@@ -73,8 +95,20 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Uncontract", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Uncontract", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -96,32 +130,33 @@ all momenta except OPEDelta."
 
 Cell[CellGroupData[{
 
-Cell[TextData[{
- Cell[BoxData[
-  InterpretationBox[
-   StyleBox[
-    GraphicsBox[{},
-     BaselinePosition->Baseline,
-     ImageSize->{6, 0}],
-    CacheGraphics->False],
-   Spacer[6]]]],
- "Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "PrimaryExamplesSection",
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
- CellTags->"PrimaryExamplesSection",
- CellID->538819923],
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->434876890],
 
-Cell[CellGroupData[{
-
-Cell[TextData[{
- "Basic Examples",
- "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
-}], "ExampleSection", "ExampleSection",
- WholeCellGroupOpener->True,
- CellID->1212192788],
+Cell["", "SectionHeaderSpacer"],
 
 Cell[CellGroupData[{
 
@@ -141,29 +176,61 @@ Cell[BoxData[
      RowBox[{"{", "}"}]}], ",", 
     RowBox[{"Unique", "\[Rule]", "True"}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{552, 15},
+ ImageSize->{506, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Uncontract",
  CellLabel->"Out[1]=",
  CellID->659553310]
+}, Open  ]]
+}, Closed]]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1177662485],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->101891162],
+
+Cell[CellGroupData[{
+
 Cell[BoxData[
- RowBox[{"t1", " ", "=", " ", 
+ RowBox[{" ", 
   RowBox[{
-   RowBox[{"LeviCivita", "[", 
+   RowBox[{"LC", "[", 
     RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], "[", 
    RowBox[{"p", ",", "q"}], "]"}]}]], "Input",
  CellTags->"Uncontract",
- CellLabel->"In[2]:=",
+ CellLabel->"In[1]:=",
  CellID->851114003],
 
 Cell[BoxData[
  FormBox[
-  SuperscriptBox["\[Epsilon]", 
+  SuperscriptBox[
+   OverscriptBox["\[Epsilon]", "_"], 
    RowBox[{
     FormBox[
      FormBox["\[Mu]",
@@ -183,43 +250,39 @@ Cell[BoxData[
       FormBox["q",
        TraditionalForm], "_"],
      TraditionalForm]}]], TraditionalForm]], "Output",
- ImageSize->{54, 21},
+ ImageSize->{61, 17},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Uncontract",
- CellLabel->"Out[2]=",
- CellID->1899728699]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Uncontract", "[", 
-  RowBox[{"t1", ",", " ", "p"}], "]"}]], "Input",
+  RowBox[{"%", ",", " ", "p"}], "]"}]], "Input",
  CellTags->"Uncontract",
- CellLabel->"In[3]:=",
+ CellLabel->"In[2]:=",
  CellID->1865320721],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FormBox[
-    SuperscriptBox[
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$44995", "\[InvisibleApplication]", 
-         RowBox[{"(", "1", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   SuperscriptBox["\[Epsilon]", 
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$343", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox[
+    OverscriptBox["\[Epsilon]", "_"], 
     RowBox[{
      FormBox[
       FormBox["\[Mu]",
@@ -231,8 +294,8 @@ Cell[BoxData[
       TraditionalForm], 
      FormBox[
       FormBox[
-       RowBox[{"$AL$44995", "\[InvisibleApplication]", 
-        RowBox[{"(", "1", ")"}]}],
+       RowBox[{"$AL", "\[InvisibleApplication]", 
+        RowBox[{"(", "$343", ")"}]}],
        TraditionalForm],
       TraditionalForm], 
      FormBox[
@@ -240,21 +303,19 @@ Cell[BoxData[
        FormBox["q",
         TraditionalForm], "_"],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
- ImageSize->{194, 23},
+ ImageSize->{173, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Uncontract",
- CellLabel->"Out[3]=",
- CellID->203669378]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"t2", "=", 
-  RowBox[{"DiracSlash", "[", "p", "]"}]}]], "Input",
+ RowBox[{"GS", "[", "p", "]"}]], "Input",
  CellTags->"Uncontract",
- CellLabel->"In[4]:=",
+ CellLabel->"In[3]:=",
  CellID->1250693732],
 
 Cell[BoxData[
@@ -266,21 +327,20 @@ Cell[BoxData[
      FormBox["p",
       TraditionalForm], "_"],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{33, 17},
+ ImageSize->{38, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Uncontract",
- CellLabel->"Out[4]=",
- CellID->581231134]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Uncontract", "[", 
-  RowBox[{"t2", ",", " ", "p"}], "]"}]], "Input",
+  RowBox[{"%", ",", " ", "p"}], "]"}]], "Input",
  CellTags->"Uncontract",
- CellLabel->"In[5]:=",
+ CellLabel->"In[4]:=",
  CellID->1980864082],
 
 Cell[BoxData[
@@ -290,121 +350,113 @@ Cell[BoxData[
     OverscriptBox["\[Gamma]", "_"], 
     FormBox[
      FormBox[
-      RowBox[{"$AL$45000", "\[InvisibleApplication]", 
-       RowBox[{"(", "1", ")"}]}],
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$344", ")"}]}],
       TraditionalForm],
      TraditionalForm]], " ", 
-   FormBox[
-    SuperscriptBox[
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$45000", "\[InvisibleApplication]", 
-         RowBox[{"(", "1", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{164, 22},
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$344", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ ImageSize->{140, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Uncontract",
- CellLabel->"Out[5]=",
- CellID->382965877]
+ CellLabel->"Out[4]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Uncontract", "[", 
-  RowBox[{"t1", ",", " ", "p", ",", "q"}], "]"}]], "Input",
+  RowBox[{
+   RowBox[{
+    RowBox[{"LC", "[", 
+     RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], "[", 
+    RowBox[{"p", ",", "q"}], "]"}], ",", " ", "p", ",", "q"}], "]"}]], "Input",\
+
  CellTags->"Uncontract",
- CellLabel->"In[6]:=",
+ CellLabel->"In[5]:=",
  CellID->1016696995],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FormBox[
-    SuperscriptBox[
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], 
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$347", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      FormBox[
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$346", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   RowBox[{"(", 
+    RowBox[{"-", 
+     SuperscriptBox[
+      OverscriptBox["\[Epsilon]", "_"], 
+      RowBox[{
        FormBox[
-        RowBox[{"$AL$45005", "\[InvisibleApplication]", 
-         RowBox[{"(", "1", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      OverscriptBox[
-       FormBox["q",
-        TraditionalForm], "_"],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
+        FormBox["\[Mu]",
+         TraditionalForm],
+        TraditionalForm], 
        FormBox[
-        RowBox[{"$AL$45004", "\[InvisibleApplication]", 
-         RowBox[{"(", "1", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   SuperscriptBox["\[Epsilon]", 
-    RowBox[{
-     FormBox[
-      FormBox["\[Mu]",
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox["\[Nu]",
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       RowBox[{"$AL$45005", "\[InvisibleApplication]", 
-        RowBox[{"(", "1", ")"}]}],
-       TraditionalForm],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       RowBox[{"$AL$45004", "\[InvisibleApplication]", 
-        RowBox[{"(", "1", ")"}]}],
-       TraditionalForm],
-      TraditionalForm]}]]}], TraditionalForm]], "Output",
- ImageSize->{335, 22},
+        FormBox["\[Nu]",
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{"$AL", "\[InvisibleApplication]", 
+          RowBox[{"(", "$346", ")"}]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{"$AL", "\[InvisibleApplication]", 
+          RowBox[{"(", "$347", ")"}]}],
+         TraditionalForm],
+        TraditionalForm]}]]}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{307, 22},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Uncontract",
- CellLabel->"Out[6]=",
- CellID->337635539]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
-Cell["By default scalar products are not uncontracted.", "Text",
- CellTags->"Uncontract",
- CellID->1308085383],
+Cell["By default scalar products are not uncontracted.", "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Uncontract", "[", 
   RowBox[{
-   RowBox[{"ScalarProduct", "[", 
+   RowBox[{"SP", "[", 
     RowBox[{"p", ",", "q"}], "]"}], ",", " ", "q"}], "]"}]], "Input",
  CellTags->"Uncontract",
- CellLabel->"In[7]:=",
+ CellLabel->"In[6]:=",
  CellID->618827731],
 
 Cell[BoxData[
@@ -422,72 +474,60 @@ Cell[BoxData[
      FormBox["q",
       TraditionalForm], "_"],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{35, 17},
+ ImageSize->{43, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Uncontract",
- CellLabel->"Out[7]=",
- CellID->545272743]
+ CellLabel->"Out[6]="]
 }, Open  ]],
 
 Cell["With the option Pair\[Rule]All they are \
-\[OpenCurlyDoubleQuote]uncontracted \[CloseCurlyDoubleQuote].", "Text",
- CellTags->"Uncontract",
- CellID->1560681362],
+\[OpenCurlyDoubleQuote]uncontracted \[CloseCurlyDoubleQuote].", "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Uncontract", "[", 
   RowBox[{
-   RowBox[{"ScalarProduct", "[", 
+   RowBox[{"SP", "[", 
     RowBox[{"p", ",", "q"}], "]"}], ",", "q", ",", 
    RowBox[{"Pair", "\[Rule]", "All"}]}], "]"}]], "Input",
  CellTags->"Uncontract",
- CellLabel->"In[8]:=",
+ CellLabel->"In[7]:=",
  CellID->765993198],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FormBox[
-    SuperscriptBox[
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], 
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$349", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$45013", "\[InvisibleApplication]", 
-         RowBox[{"(", "1", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      OverscriptBox[
-       FormBox["q",
-        TraditionalForm], "_"],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$45013", "\[InvisibleApplication]", 
-         RowBox[{"(", "1", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{164, 22},
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$349", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ ImageSize->{143, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Uncontract",
- CellLabel->"Out[8]=",
- CellID->7406466]
+ CellLabel->"Out[7]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -496,94 +536,70 @@ Cell[BoxData[
  RowBox[{"Uncontract", "[", 
   RowBox[{
    RowBox[{
-    RowBox[{"ScalarProduct", "[", 
+    RowBox[{"SP", "[", 
      RowBox[{"p", ",", "q"}], "]"}], "^", "2"}], ",", "q", ",", 
    RowBox[{"Pair", "\[Rule]", "All"}]}], "]"}]], "Input",
  CellTags->"Uncontract",
- CellLabel->"In[9]:=",
+ CellLabel->"In[8]:=",
  CellID->1461988505],
 
 Cell[BoxData[
  FormBox[
   RowBox[{
-   FormBox[
-    SuperscriptBox[
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], 
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$350", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["p",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$45017", "\[InvisibleApplication]", 
-         RowBox[{"(", "1", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   FormBox[
-    SuperscriptBox[
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$351", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      OverscriptBox[
-       FormBox["p",
-        TraditionalForm], "_"],
-      TraditionalForm], 
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$350", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]], " ", 
+   SuperscriptBox[
+    FormBox[
+     OverscriptBox[
+      FormBox["q",
+       TraditionalForm], "_"],
+     TraditionalForm], 
+    FormBox[
      FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$45017", "\[InvisibleApplication]", 
-         RowBox[{"(", "2", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      OverscriptBox[
-       FormBox["q",
-        TraditionalForm], "_"],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$45017", "\[InvisibleApplication]", 
-         RowBox[{"(", "1", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm], " ", 
-   FormBox[
-    SuperscriptBox[
-     FormBox[
-      OverscriptBox[
-       FormBox["q",
-        TraditionalForm], "_"],
-      TraditionalForm], 
-     FormBox[
-      FormBox[
-       FormBox[
-        RowBox[{"$AL$45017", "\[InvisibleApplication]", 
-         RowBox[{"(", "2", ")"}]}],
-        TraditionalForm],
-       TraditionalForm],
-      TraditionalForm]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{327, 22},
+      RowBox[{"$AL", "\[InvisibleApplication]", 
+       RowBox[{"(", "$351", ")"}]}],
+      TraditionalForm],
+     TraditionalForm]]}], TraditionalForm]], "Output",
+ ImageSize->{285, 19},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Uncontract",
- CellLabel->"Out[9]=",
- CellID->1916509902]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{"Clear", "[", 
-  RowBox[{"t1", ",", "t2"}], "]"}]], "Input",
- CellTags->"Uncontract",
- CellLabel->"In[10]:=",
- CellID->1699220508]
+ CellLabel->"Out[8]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell["", "SectionFooterSpacer"]
@@ -612,9 +628,7 @@ Cell[TextData[{
   ButtonNote->"Contract"],
   FontFamily->"Verdana"],
  "."
-}], "Text",
- CellTags->"Uncontract",
- CellID->1158023183]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[" ", "FooterCell"]
@@ -622,7 +636,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 WindowTitle->"Uncontract",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -631,10 +645,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 26, 39.650508}", 
+   "built" -> "{2020, 1, 5, 19, 3, 52.967433}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -643,11 +657,11 @@ TaggingRules->{
     "Uncontract[exp, q1, q2, ...] uncontracts Eps and DiracGamma. \
 Uncontract[exp, q1, q2, Pair -> {p}] uncontracts also p.q1 and p.q2; the \
 option Pair -> All uncontracts all momenta except OPEDelta.", 
-    "synonyms" -> {}, "title" -> "Uncontract", "titlemodifier" -> "", 
-    "windowtitle" -> "Uncontract", "type" -> "Symbol", "uri" -> 
-    "FeynCalc/ref/Uncontract"}, "SearchTextTranslated" -> ""},
+    "synonyms" -> {}, "tabletags" -> {}, "title" -> "Uncontract", 
+    "titlemodifier" -> "", "windowtitle" -> "Uncontract", "type" -> "Symbol", 
+    "uri" -> "FeynCalc/ref/Uncontract"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -656,7 +670,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -664,192 +678,162 @@ StyleDefinitions->Notebook[{
 (* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
- "PrimaryExamplesSection"->{
-  Cell[3519, 98, 387, 15, 31, "PrimaryExamplesSection",
-   CellTags->"PrimaryExamplesSection",
-   CellID->538819923]},
  "Uncontract"->{
-  Cell[4152, 127, 138, 4, 27, "Input",
+  Cell[5330, 162, 138, 4, 70, "Input",
    CellTags->"Uncontract",
    CellID->1318320011],
-  Cell[4293, 133, 477, 15, 36, "Output",
+  Cell[5471, 168, 477, 15, 37, "Output",
    CellTags->"Uncontract",
    CellID->659553310],
-  Cell[4807, 153, 251, 8, 27, "Input",
+  Cell[6642, 219, 227, 8, 27, "Input",
    CellTags->"Uncontract",
    CellID->851114003],
-  Cell[5061, 163, 634, 27, 42, "Output",
-   CellTags->"Uncontract",
-   CellID->1899728699],
-  Cell[5732, 195, 161, 5, 27, "Input",
+  Cell[6872, 229, 637, 27, 38, "Output",
+   CellTags->"Uncontract"],
+  Cell[7546, 261, 160, 5, 27, "Input",
    CellTags->"Uncontract",
    CellID->1865320721],
-  Cell[5896, 202, 1111, 45, 44, "Output",
-   CellTags->"Uncontract",
-   CellID->203669378],
-  Cell[7044, 252, 156, 5, 27, "Input",
+  Cell[7709, 268, 1020, 41, 40, "Output",
+   CellTags->"Uncontract"],
+  Cell[8766, 314, 124, 4, 27, "Input",
    CellTags->"Uncontract",
    CellID->1250693732],
-  Cell[7203, 259, 373, 14, 38, "Output",
-   CellTags->"Uncontract",
-   CellID->581231134],
-  Cell[7613, 278, 161, 5, 27, "Input",
+  Cell[8893, 320, 353, 13, 37, "Output",
+   CellTags->"Uncontract"],
+  Cell[9283, 338, 160, 5, 27, "Input",
    CellTags->"Uncontract",
    CellID->1980864082],
-  Cell[7777, 285, 827, 32, 43, "Output",
-   CellTags->"Uncontract",
-   CellID->382965877],
-  Cell[8641, 322, 171, 5, 27, "Input",
+  Cell[9446, 345, 711, 27, 40, "Output",
+   CellTags->"Uncontract"],
+  Cell[10194, 377, 291, 10, 27, "Input",
    CellTags->"Uncontract",
    CellID->1016696995],
-  Cell[8815, 329, 1555, 62, 43, "Output",
-   CellTags->"Uncontract",
-   CellID->337635539],
-  Cell[10385, 394, 110, 2, 32, "Text",
-   CellTags->"Uncontract",
-   CellID->1308085383],
-  Cell[10520, 400, 225, 7, 27, "Input",
+  Cell[10488, 389, 1458, 56, 43, "Output",
+   CellTags->"Uncontract"],
+  Cell[12051, 452, 214, 7, 27, "Input",
    CellTags->"Uncontract",
    CellID->618827731],
-  Cell[10748, 409, 481, 20, 38, "Output",
-   CellTags->"Uncontract",
-   CellID->545272743],
-  Cell[11244, 432, 165, 3, 32, "Text",
-   CellTags->"Uncontract",
-   CellID->1560681362],
-  Cell[11434, 439, 265, 8, 27, "Input",
+  Cell[12268, 461, 461, 19, 37, "Output",
+   CellTags->"Uncontract"],
+  Cell[12889, 488, 254, 8, 27, "Input",
    CellTags->"Uncontract",
    CellID->765993198],
-  Cell[11702, 449, 985, 40, 43, "Output",
-   CellTags->"Uncontract",
-   CellID->7406466],
-  Cell[12724, 494, 292, 9, 27, "Input",
+  Cell[13146, 498, 781, 31, 40, "Output",
+   CellTags->"Uncontract"],
+  Cell[13964, 534, 281, 9, 27, "Input",
    CellTags->"Uncontract",
    CellID->1461988505],
-  Cell[13019, 505, 1760, 72, 43, "Output",
-   CellTags->"Uncontract",
-   CellID->1916509902],
-  Cell[14794, 580, 153, 5, 27, "Input",
-   CellTags->"Uncontract",
-   CellID->1699220508],
-  Cell[15303, 607, 230, 9, 31, "Text",
-   CellTags->"Uncontract",
-   CellID->1158023183]}
+  Cell[14248, 545, 1367, 55, 40, "Output",
+   CellTags->"Uncontract"]},
+ "PrimaryExamplesSection"->{
+  Cell[6009, 190, 388, 15, 31, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1177662485]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 17514, 666},
- {"Uncontract", 17650, 670}
+ {"Uncontract", 18122, 680},
+ {"PrimaryExamplesSection", 19614, 727}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[582, 21, 2253, 52, 51, "AnchorBarGrid",
+Cell[582, 21, 3011, 74, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2838, 75, 53, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2894, 78, 600, 16, 98, "Usage",
+Cell[3596, 97, 287, 11, 45, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[3908, 112, 600, 16, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3519, 98, 387, 15, 31, "PrimaryExamplesSection",
- CellTags->"PrimaryExamplesSection",
- CellID->538819923],
+Cell[4533, 132, 738, 24, 31, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->434876890],
+Cell[5274, 158, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[3931, 117, 196, 6, 25, "ExampleSection",
- CellID->1212192788],
-Cell[CellGroupData[{
-Cell[4152, 127, 138, 4, 27, "Input",
+Cell[5330, 162, 138, 4, 70, "Input",
  CellTags->"Uncontract",
  CellID->1318320011],
-Cell[4293, 133, 477, 15, 36, "Output",
+Cell[5471, 168, 477, 15, 37, "Output",
  CellTags->"Uncontract",
  CellID->659553310]
+}, Open  ]]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4807, 153, 251, 8, 27, "Input",
+Cell[6009, 190, 388, 15, 31, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1177662485],
+Cell[CellGroupData[{
+Cell[6422, 209, 195, 6, 26, "ExampleSection",
+ CellID->101891162],
+Cell[CellGroupData[{
+Cell[6642, 219, 227, 8, 27, "Input",
  CellTags->"Uncontract",
  CellID->851114003],
-Cell[5061, 163, 634, 27, 42, "Output",
- CellTags->"Uncontract",
- CellID->1899728699]
+Cell[6872, 229, 637, 27, 38, "Output",
+ CellTags->"Uncontract"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5732, 195, 161, 5, 27, "Input",
+Cell[7546, 261, 160, 5, 27, "Input",
  CellTags->"Uncontract",
  CellID->1865320721],
-Cell[5896, 202, 1111, 45, 44, "Output",
- CellTags->"Uncontract",
- CellID->203669378]
+Cell[7709, 268, 1020, 41, 40, "Output",
+ CellTags->"Uncontract"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7044, 252, 156, 5, 27, "Input",
+Cell[8766, 314, 124, 4, 27, "Input",
  CellTags->"Uncontract",
  CellID->1250693732],
-Cell[7203, 259, 373, 14, 38, "Output",
- CellTags->"Uncontract",
- CellID->581231134]
+Cell[8893, 320, 353, 13, 37, "Output",
+ CellTags->"Uncontract"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7613, 278, 161, 5, 27, "Input",
+Cell[9283, 338, 160, 5, 27, "Input",
  CellTags->"Uncontract",
  CellID->1980864082],
-Cell[7777, 285, 827, 32, 43, "Output",
- CellTags->"Uncontract",
- CellID->382965877]
+Cell[9446, 345, 711, 27, 40, "Output",
+ CellTags->"Uncontract"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8641, 322, 171, 5, 27, "Input",
+Cell[10194, 377, 291, 10, 27, "Input",
  CellTags->"Uncontract",
  CellID->1016696995],
-Cell[8815, 329, 1555, 62, 43, "Output",
- CellTags->"Uncontract",
- CellID->337635539]
+Cell[10488, 389, 1458, 56, 43, "Output",
+ CellTags->"Uncontract"]
 }, Open  ]],
-Cell[10385, 394, 110, 2, 32, "Text",
- CellTags->"Uncontract",
- CellID->1308085383],
+Cell[11961, 448, 65, 0, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[10520, 400, 225, 7, 27, "Input",
+Cell[12051, 452, 214, 7, 27, "Input",
  CellTags->"Uncontract",
  CellID->618827731],
-Cell[10748, 409, 481, 20, 38, "Output",
- CellTags->"Uncontract",
- CellID->545272743]
+Cell[12268, 461, 461, 19, 37, "Output",
+ CellTags->"Uncontract"]
 }, Open  ]],
-Cell[11244, 432, 165, 3, 32, "Text",
- CellTags->"Uncontract",
- CellID->1560681362],
+Cell[12744, 483, 120, 1, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[11434, 439, 265, 8, 27, "Input",
+Cell[12889, 488, 254, 8, 27, "Input",
  CellTags->"Uncontract",
  CellID->765993198],
-Cell[11702, 449, 985, 40, 43, "Output",
- CellTags->"Uncontract",
- CellID->7406466]
+Cell[13146, 498, 781, 31, 40, "Output",
+ CellTags->"Uncontract"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12724, 494, 292, 9, 27, "Input",
+Cell[13964, 534, 281, 9, 27, "Input",
  CellTags->"Uncontract",
  CellID->1461988505],
-Cell[13019, 505, 1760, 72, 43, "Output",
- CellTags->"Uncontract",
- CellID->1916509902]
+Cell[14248, 545, 1367, 55, 40, "Output",
+ CellTags->"Uncontract"]
+}, Open  ]]
 }, Open  ]],
-Cell[14794, 580, 153, 5, 27, "Input",
- CellTags->"Uncontract",
- CellID->1699220508]
-}, Open  ]],
-Cell[14962, 588, 31, 0, 29, "SectionFooterSpacer"]
+Cell[15642, 604, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15030, 593, 270, 12, 31, "SeeAlsoSection",
+Cell[15710, 609, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[15303, 607, 230, 9, 31, "Text",
- CellTags->"Uncontract",
- CellID->1158023183]
+Cell[15983, 623, 187, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[15548, 619, 23, 0, 42, "FooterCell"]
+Cell[16185, 633, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

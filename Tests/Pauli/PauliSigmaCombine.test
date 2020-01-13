@@ -1,0 +1,47 @@
+
+
+(* :Title: PauliSigmaCombine.test											*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for PauliSigmaCombine			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Pauli`fcstPauliSigmaCombine =
+({
+{"fcstPauliSigmaCombine-ID1",
+"PauliSigmaCombine[SIS[p]+SIS[q],FCE\[Rule]True]", "SIS[p + q]"},
+{"fcstPauliSigmaCombine-ID2",
+"PauliSigmaCombine[SIS[p]+SISD[q],FCE\[Rule]True]", "SIS[p] + SISD[q]"},
+{"fcstPauliSigmaCombine-ID3",
+"PauliSigmaCombine[SIS[p]+SIS[q]+m,FCE\[Rule]True]", "m + SIS[p + q]"},
+{"fcstPauliSigmaCombine-ID4",
+"PauliSigmaCombine[SI[i].(SIS[p]+SIS[q]+m).SI[j],FCE\[Rule]True]",
+"SI[i] . (m + SIS[p + q]) . SI[j]"},
+{"fcstPauliSigmaCombine-ID5",
+"PauliSigmaCombine[SI[i].(2SIS[p]+3SIS[q]+m).SI[j],FCE\[Rule]True]",
+"SI[i] . (m + SIS[2*p + 3*q]) . SI[j]"},
+{"fcstPauliSigmaCombine-ID6",
+"PauliSigmaCombine[SI[i].(2SIS[p]+3SIS[p]+m).SI[j],FCE\[Rule]True]",
+"SI[i] . (m + 5*SIS[p]) . SI[j]"},
+{"fcstPauliSigmaCombine-ID7",
+"PauliSigmaCombine[CSIS[p] + CSIS[q], FCE -> True]", "CSIS[p + q]"},
+{"fcstPauliSigmaCombine-ID8",
+"PauliSigmaCombine[CSIS[p] + CSISD[q], FCE -> True]", "CSIS[p] + CSISD[q]"},
+{"fcstPauliSigmaCombine-ID9",
+"PauliSigmaCombine[CSIS[p] + CSIS[q] + m, FCE -> True]", "m + CSIS[p + q]"},
+{"fcstPauliSigmaCombine-ID10",
+"PauliSigmaCombine[CSI[i].(CSIS[p] + CSIS[q] + m).CSI[j], FCE -> True]", "CSI[i].(m + CSIS[p + q]).CSI[j]"},
+{"fcstPauliSigmaCombine-ID11",
+"PauliSigmaCombine[CSI[i].(2 CSIS[p] + 3 CSIS[q] + m).CSI[j],
+FCE -> True]", "CSI[i].(m + CSIS[2 p + 3 q]).CSI[j]"},
+{"fcstPauliSigmaCombine-ID12",
+"PauliSigmaCombine[CSI[i].(2 CSIS[p] + 3 CSIS[p] + m).CSI[j],
+FCE -> True]", "CSI[i].(m + 5 CSIS[p]).CSI[j]"}
+});

@@ -121,19 +121,52 @@ Cell[TextData[{
    RowBox[{
     RowBox[{"f", "[", "x", "]"}], ",", "x", ",", "li1", ",", "li2", ",", 
     "..."}], "]"}]], "InlineFormula"],
- " \[LineSeparator]",
- "is the derivative of f[x] with respect to space-time variables x and with \
-Lorentz indices li1, li2, ..., where li1, li2, ... have head LorentzIndex. \
-FieldDerivative[f[x],x,li1,li2,...] can be given as \
-FieldDerivative[f[x],x,{l1,l2,...}], where l1 is li1 without the head, ... \
-FieldDerivative is defined only for objects with head QuantumField[...]. If \
-the space-time derivative of other objects is wanted, the corresponding rule \
-must be specified."
+ " \[LineSeparator] is the derivative of f[x] with respect to space-time \
+variables x and with Lorentz indices li1, li2, ...,  where li1, li2, ... have \
+head ",
+ ButtonBox["LorentzIndex",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/LorentzIndex",
+  ButtonNote->"LorentzIndex"],
+ "."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[TextData[{
+ Cell[BoxData[
+  RowBox[{"FieldDerivative", "[", 
+   RowBox[{
+    RowBox[{"f", "[", "x", "]"}], ",", "x", ",", "li1", ",", "li2", ",", 
+    "..."}], "]"}]], "InlineFormula"],
+ " can be given as ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{"FieldDerivative", "[", 
+    RowBox[{
+     RowBox[{"f", "[", "x", "]"}], ",", "x", ",", 
+     RowBox[{"{", 
+      RowBox[{"l1", ",", "l2", ",", "..."}], "}"}]}], "]"}], ","}]], 
+  "InlineFormula"],
+ " where ",
+ Cell[BoxData["l1"], "InlineFormula"],
+ " is ",
+ Cell[BoxData["li1"], "InlineFormula"],
+ " without the head."
+}], "Notes"],
+
+Cell[TextData[{
+ ButtonBox["FieldDerivative",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/FieldDerivative",
+  ButtonNote->"FieldDerivative"],
+ "  is defined only for objects with head ",
+ ButtonBox["QuantumField",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/QuantumField",
+  ButtonNote->"QuantumField"],
+ ". If the space-time derivative of other objects is wanted, the \
+corresponding rule must be specified."
+}], "Notes"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -174,14 +207,12 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/FCPartialD",
   ButtonNote->"FCPartialD"],
  ", ",
- ButtonBox["ExpandPartialD",
+ ButtonBox["ExpandParitalD",
   BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/ExpandPartialD",
-  ButtonNote->"ExpandPartialD"],
+  ButtonData:>"paclet:FeynCalc/ref/ExpandParitalD",
+  ButtonNote->"ExpandParitalD"],
  "."
-}], "Text",
- CellTags->"FieldDerivative",
- CellID->1023535536]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -229,7 +260,7 @@ Cell[BoxData[
     RowBox[{"D", ",", 
      RowBox[{"{", "\[Sigma]", "}"}]}], "]"}], "[", "y", "]"}]}]], "Input",
  CellTags->"FieldDerivative",
- CellLabel->"In[1]:=",
+ CellLabel->"In[193]:=",
  CellID->1922686463],
 
 Cell[BoxData[
@@ -260,8 +291,7 @@ Cell[BoxData[
      FormBox["\[Sigma]",
       TraditionalForm]], "(", "y", ")"}]}], TraditionalForm]], "Output",
  CellTags->"FieldDerivative",
- CellLabel->"Out[1]=",
- CellID->841917756]
+ CellLabel->"Out[193]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -272,7 +302,7 @@ Cell[BoxData[
    RowBox[{"%", ",", "x", ",", 
     RowBox[{"{", "\[Mu]", "}"}]}], "]"}], "//", "DotExpand"}]], "Input",
  CellTags->"FieldDerivative",
- CellLabel->"In[2]:=",
+ CellLabel->"In[194]:=",
  CellID->626008050],
 
 Cell[BoxData[
@@ -294,18 +324,19 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"(", 
       RowBox[{
-       SubscriptBox["\[PartialD]", 
+       SubscriptBox[
+        RowBox[{"(", "\[PartialD]"}], 
         FormBox[
          FormBox["\[Mu]",
           TraditionalForm],
          TraditionalForm]], 
-       SubsuperscriptBox[
+       SubscriptBox[
         FormBox["C",
          TraditionalForm], 
         FormBox[
          FormBox["\[Rho]",
           TraditionalForm],
-         TraditionalForm], "\[Null]"]}], ")"}], "\[InvisibleApplication]", 
+         TraditionalForm]], ")"}], ")"}], "\[InvisibleApplication]", 
      RowBox[{"(", "x", ")"}]}], ".", 
     RowBox[{
      SubscriptBox[
@@ -317,18 +348,19 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"(", 
       RowBox[{
-       SubscriptBox["\[PartialD]", 
+       SubscriptBox[
+        RowBox[{"(", "\[PartialD]"}], 
         FormBox[
          FormBox["\[Mu]",
           TraditionalForm],
          TraditionalForm]], 
-       SubsuperscriptBox[
+       SubscriptBox[
         FormBox["A",
          TraditionalForm], 
         FormBox[
          FormBox["\[Mu]",
           TraditionalForm],
-         TraditionalForm], "\[Null]"]}], ")"}], "\[InvisibleApplication]", 
+         TraditionalForm]], ")"}], ")"}], "\[InvisibleApplication]", 
      RowBox[{"(", "x", ")"}]}], ".", 
     RowBox[{
      SubscriptBox[
@@ -349,8 +381,7 @@ Cell[BoxData[
       FormBox["\[Sigma]",
        TraditionalForm]], "(", "y", ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"FieldDerivative",
- CellLabel->"Out[2]=",
- CellID->1663127681]
+ CellLabel->"Out[194]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -358,10 +389,10 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{
   RowBox[{"FieldDerivative", "[", 
-   RowBox[{"%", ",", "y", ",", 
+   RowBox[{"%%", ",", "y", ",", 
     RowBox[{"{", "\[Nu]", "}"}]}], "]"}], "//", "DotExpand"}]], "Input",
  CellTags->"FieldDerivative",
- CellLabel->"In[3]:=",
+ CellLabel->"In[195]:=",
  CellID->1996069937],
 
 Cell[BoxData[
@@ -381,36 +412,27 @@ Cell[BoxData[
       FormBox["\[Nu]",
        TraditionalForm]], "(", "y", ")"}], ".", 
     RowBox[{
-     RowBox[{"(", 
-      RowBox[{
-       SubscriptBox["\[PartialD]", 
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm]], 
-       SubsuperscriptBox[
-        FormBox["C",
-         TraditionalForm], 
-        FormBox[
-         FormBox["\[Rho]",
-          TraditionalForm],
-         TraditionalForm], "\[Null]"]}], ")"}], "\[InvisibleApplication]", 
-     RowBox[{"(", "x", ")"}]}], ".", 
+     SubscriptBox[
+      FormBox["C",
+       TraditionalForm], 
+      FormBox["\[Rho]",
+       TraditionalForm]], "(", "x", ")"}], ".", 
     RowBox[{
      RowBox[{"(", 
       RowBox[{
-       SubscriptBox["\[PartialD]", 
+       SubscriptBox[
+        RowBox[{"(", "\[PartialD]"}], 
         FormBox[
          FormBox["\[Nu]",
           TraditionalForm],
          TraditionalForm]], 
-       SubsuperscriptBox[
+       SubscriptBox[
         FormBox["D",
          TraditionalForm], 
         FormBox[
          FormBox["\[Sigma]",
           TraditionalForm],
-         TraditionalForm], "\[Null]"]}], ")"}], "\[InvisibleApplication]", 
+         TraditionalForm]], ")"}], ")"}], "\[InvisibleApplication]", 
      RowBox[{"(", "y", ")"}]}]}], "+", 
    RowBox[{
     RowBox[{
@@ -422,118 +444,19 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"(", 
       RowBox[{
-       SubscriptBox["\[PartialD]", 
+       SubscriptBox[
+        RowBox[{"(", "\[PartialD]"}], 
         FormBox[
          FormBox["\[Nu]",
           TraditionalForm],
          TraditionalForm]], 
-       SubsuperscriptBox[
+       SubscriptBox[
         FormBox["B",
          TraditionalForm], 
         FormBox[
          FormBox["\[Nu]",
           TraditionalForm],
-         TraditionalForm], "\[Null]"]}], ")"}], "\[InvisibleApplication]", 
-     RowBox[{"(", "y", ")"}]}], ".", 
-    RowBox[{
-     RowBox[{"(", 
-      RowBox[{
-       SubscriptBox["\[PartialD]", 
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm]], 
-       SubsuperscriptBox[
-        FormBox["C",
-         TraditionalForm], 
-        FormBox[
-         FormBox["\[Rho]",
-          TraditionalForm],
-         TraditionalForm], "\[Null]"]}], ")"}], "\[InvisibleApplication]", 
-     RowBox[{"(", "x", ")"}]}], ".", 
-    RowBox[{
-     SubscriptBox[
-      FormBox["D",
-       TraditionalForm], 
-      FormBox["\[Sigma]",
-       TraditionalForm]], "(", "y", ")"}]}], "+", 
-   RowBox[{
-    RowBox[{
-     RowBox[{"(", 
-      RowBox[{
-       SubscriptBox["\[PartialD]", 
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm]], 
-       SubsuperscriptBox[
-        FormBox["A",
-         TraditionalForm], 
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm], "\[Null]"]}], ")"}], "\[InvisibleApplication]", 
-     RowBox[{"(", "x", ")"}]}], ".", 
-    RowBox[{
-     SubscriptBox[
-      FormBox["B",
-       TraditionalForm], 
-      FormBox["\[Nu]",
-       TraditionalForm]], "(", "y", ")"}], ".", 
-    RowBox[{
-     SubscriptBox[
-      FormBox["C",
-       TraditionalForm], 
-      FormBox["\[Rho]",
-       TraditionalForm]], "(", "x", ")"}], ".", 
-    RowBox[{
-     RowBox[{"(", 
-      RowBox[{
-       SubscriptBox["\[PartialD]", 
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm]], 
-       SubsuperscriptBox[
-        FormBox["D",
-         TraditionalForm], 
-        FormBox[
-         FormBox["\[Sigma]",
-          TraditionalForm],
-         TraditionalForm], "\[Null]"]}], ")"}], "\[InvisibleApplication]", 
-     RowBox[{"(", "y", ")"}]}]}], "+", 
-   RowBox[{
-    RowBox[{
-     RowBox[{"(", 
-      RowBox[{
-       SubscriptBox["\[PartialD]", 
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm]], 
-       SubsuperscriptBox[
-        FormBox["A",
-         TraditionalForm], 
-        FormBox[
-         FormBox["\[Mu]",
-          TraditionalForm],
-         TraditionalForm], "\[Null]"]}], ")"}], "\[InvisibleApplication]", 
-     RowBox[{"(", "x", ")"}]}], ".", 
-    RowBox[{
-     RowBox[{"(", 
-      RowBox[{
-       SubscriptBox["\[PartialD]", 
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm]], 
-       SubsuperscriptBox[
-        FormBox["B",
-         TraditionalForm], 
-        FormBox[
-         FormBox["\[Nu]",
-          TraditionalForm],
-         TraditionalForm], "\[Null]"]}], ")"}], "\[InvisibleApplication]", 
+         TraditionalForm]], ")"}], ")"}], "\[InvisibleApplication]", 
      RowBox[{"(", "y", ")"}]}], ".", 
     RowBox[{
      SubscriptBox[
@@ -548,8 +471,7 @@ Cell[BoxData[
       FormBox["\[Sigma]",
        TraditionalForm]], "(", "y", ")"}]}]}], TraditionalForm]], "Output",
  CellTags->"FieldDerivative",
- CellLabel->"Out[3]=",
- CellID->785636748]
+ CellLabel->"Out[195]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -614,12 +536,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{1013, Automatic}, {Automatic, 163}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

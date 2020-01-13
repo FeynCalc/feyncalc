@@ -182,9 +182,7 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/Eps",
   ButtonNote->"Eps"],
  "."
-}], "Text",
- CellTags->"ChangeDimension",
- CellID->1962733391]
+}], "SeeAlso"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -215,9 +213,7 @@ Cell["\<\
 Remember that LorentzIndex[mu, 4] is simplified to LorentzIndex[mu] and \
 Momentum[p, 4] to Momentum[p]. Thus the fullowing objects are defined in four \
 dimensions.\
-\>", "Text",
- CellTags->"ChangeDimension",
- CellID->1522324479],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -227,7 +223,7 @@ Cell[BoxData[
    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", " ", 
    RowBox[{"Momentum", "[", "p", "]"}]}], "}"}]], "Input",
  CellTags->"ChangeDimension",
- CellLabel->"In[1]:=",
+ CellLabel->"In[289]:=",
  CellID->1127631822],
 
 Cell[BoxData[
@@ -240,8 +236,7 @@ Cell[BoxData[
      FormBox["p",
       TraditionalForm], "_"]}], "}"}], TraditionalForm]], "Output",
  CellTags->"ChangeDimension",
- CellLabel->"Out[1]=",
- CellID->621481036]
+ CellLabel->"Out[289]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -250,7 +245,7 @@ Cell[BoxData[
  RowBox[{"ChangeDimension", "[", 
   RowBox[{"%", ",", " ", "D"}], "]"}]], "Input",
  CellTags->"ChangeDimension",
- CellLabel->"In[2]:=",
+ CellLabel->"In[290]:=",
  CellID->2044492451],
 
 Cell[BoxData[
@@ -262,8 +257,7 @@ Cell[BoxData[
     FormBox["p",
      TraditionalForm]}], "}"}], TraditionalForm]], "Output",
  CellTags->"ChangeDimension",
- CellLabel->"Out[2]=",
- CellID->1291415822]
+ CellLabel->"Out[290]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -271,7 +265,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"%", "//", "StandardForm"}]], "Input",
  CellTags->"ChangeDimension",
- CellLabel->"In[3]:=",
+ CellLabel->"In[291]:=",
  CellID->1689591331],
 
 Cell[BoxData[
@@ -282,15 +276,12 @@ Cell[BoxData[
    RowBox[{"Momentum", "[", 
     RowBox[{"p", ",", "D"}], "]"}]}], "}"}]], "Output",
  CellTags->"ChangeDimension",
- CellLabel->"Out[3]//StandardForm=",
- CellID->2101335861]
+ CellLabel->"Out[291]//StandardForm="]
 }, Open  ]],
 
 Cell["\<\
 This changes all non-4-dimensional objects to 4-dimensional ones.\
-\>", "Text",
- CellTags->"ChangeDimension",
- CellID->906094166],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -300,7 +291,7 @@ Cell[BoxData[
    RowBox[{"%%", ",", " ", "4"}], "]"}], " ", "//", " ", 
   "StandardForm"}]], "Input",
  CellTags->"ChangeDimension",
- CellLabel->"In[4]:=",
+ CellLabel->"In[292]:=",
  CellID->898970803],
 
 Cell[BoxData[
@@ -309,13 +300,10 @@ Cell[BoxData[
    RowBox[{"LorentzIndex", "[", "\[Mu]", "]"}], ",", 
    RowBox[{"Momentum", "[", "p", "]"}]}], "}"}]], "Output",
  CellTags->"ChangeDimension",
- CellLabel->"Out[4]//StandardForm=",
- CellID->2072157462]
+ CellLabel->"Out[292]//StandardForm="]
 }, Open  ]],
 
-Cell["Consider the following list of 4- and D-dimensional object.", "Text",
- CellTags->"ChangeDimension",
- CellID->169525226],
+Cell["Consider the following list of 4- and D-dimensional object.", "Notes"],
 
 Cell[CellGroupData[{
 
@@ -334,7 +322,7 @@ Cell[BoxData[
      RowBox[{"\[Mu]", ",", "\[Nu]"}], "]"}], " ", 
     RowBox[{"f", "[", "D", "]"}]}]}], "}"}]], "Input",
  CellTags->"ChangeDimension",
- CellLabel->"In[5]:=",
+ CellLabel->"In[296]:=",
  CellID->931498160],
 
 Cell[BoxData[
@@ -360,23 +348,17 @@ Cell[BoxData[
          TraditionalForm]],
        TraditionalForm]}], " ", 
      FormBox[
-      FormBox[
-       SuperscriptBox[
-        OverscriptBox["g", "_"], 
-        RowBox[{
-         FormBox[
-          FormBox[
-           FormBox["\[Mu]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm], 
-         FormBox[
-          FormBox[
-           FormBox["\[Nu]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm]}]],
-       TraditionalForm],
+      SuperscriptBox[
+       OverscriptBox["g", "_"], 
+       RowBox[{
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]}]],
       TraditionalForm]}], ",", 
     RowBox[{
      RowBox[{"f", "(", "D", ")"}], " ", 
@@ -396,35 +378,28 @@ Cell[BoxData[
          TraditionalForm]],
        TraditionalForm]}], " ", 
      FormBox[
-      FormBox[
-       SuperscriptBox["g", 
-        RowBox[{
-         FormBox[
-          FormBox[
-           FormBox["\[Mu]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm], 
-         FormBox[
-          FormBox[
-           FormBox["\[Nu]",
-            TraditionalForm],
-           TraditionalForm],
-          TraditionalForm]}]],
-       TraditionalForm],
+      SuperscriptBox["g", 
+       RowBox[{
+        FormBox[
+         FormBox["\[Mu]",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["\[Nu]",
+          TraditionalForm],
+         TraditionalForm]}]],
       TraditionalForm]}]}], "}"}], TraditionalForm]], "Output",
  CellTags->"ChangeDimension",
- CellLabel->"Out[5]=",
- CellID->1897534885]
+ CellLabel->"Out[296]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DiracTrick", "[", 
-  RowBox[{"Contract", "[", "%", "]"}], "]"}]], "Input",
+ RowBox[{"DiracTrick", "/@", 
+  RowBox[{"Contract", "/@", "%"}]}]], "Input",
  CellTags->"ChangeDimension",
- CellLabel->"In[6]:=",
+ CellLabel->"In[297]:=",
  CellID->2067421250],
 
 Cell[BoxData[
@@ -434,20 +409,17 @@ Cell[BoxData[
     RowBox[{"D", " ", 
      RowBox[{"f", "(", "D", ")"}]}]}], "}"}], TraditionalForm]], "Output",
  CellTags->"ChangeDimension",
- CellLabel->"Out[6]=",
- CellID->1845092262]
+ CellLabel->"Out[297]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"DiracTrick", "[", 
-  RowBox[{"Contract", "[", 
+ RowBox[{"DiracTrick", "/@", 
+  RowBox[{"Contract", "/@", 
    RowBox[{"ChangeDimension", "[", 
-    RowBox[{"%%", ",", "n"}], "]"}], "]"}], "]"}]], "Input",
- CellTags->"ChangeDimension",
- CellLabel->"In[7]:=",
- CellID->443072956],
+    RowBox[{"%%", ",", "n"}], "]"}]}]}]], "Input",
+ CellLabel->"In[298]:="],
 
 Cell[BoxData[
  FormBox[
@@ -455,57 +427,27 @@ Cell[BoxData[
    RowBox[{"n", ",", 
     RowBox[{"n", " ", 
      RowBox[{"f", "(", "D", ")"}]}]}], "}"}], TraditionalForm]], "Output",
- CellTags->"ChangeDimension",
- CellLabel->"Out[7]=",
- CellID->1862585362]
+ CellLabel->"Out[298]="]
 }, Open  ]],
 
 Cell["\<\
 Any explicit occurence of D (like in f(D)) is not replaced by ChangeDimension.\
-\>", "Text",
- CellTags->"ChangeDimension",
- CellID->1415828575],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"SetOptions", "[", 
-   RowBox[{"LeviCivita", ",", 
-    RowBox[{"Dimension", "\[Rule]", "D"}]}], "]"}], ";"}]], "Input",
- CellTags->"ChangeDimension",
- CellLabel->"In[8]:=",
- CellID->1024340055],
-
-Cell["\<\
-The option Dimension of Eps must be changed too, since with the default \
-setting Dimension\[Rule]4 the arguments of Eps are automatically changed to 4 \
-dimensions.\
-\>", "Text",
- CellTags->"ChangeDimension",
- CellID->811356604],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"SetOptions", "[", 
-   RowBox[{"Eps", ",", 
-    RowBox[{"Dimension", "\[Rule]", "D"}]}], "]"}], ";"}]], "Input",
- CellTags->"ChangeDimension",
- CellLabel->"In[9]:=",
- CellID->1043083810],
+\>", "Notes"],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"a1", " ", "=", " ", 
-  RowBox[{"LeviCivita", "[", 
-   RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], 
-   "]"}]}]], "Input",
+ RowBox[{"LC", "[", 
+  RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], 
+  "]"}]], "Input",
  CellTags->"ChangeDimension",
- CellLabel->"In[10]:=",
+ CellLabel->"In[32]:=",
  CellID->2013502188],
 
 Cell[BoxData[
  FormBox[
-  SuperscriptBox["\[Epsilon]", 
+  SuperscriptBox[
+   OverscriptBox["\[Epsilon]", "_"], 
    RowBox[{
     FormBox[
      FormBox["\[Mu]",
@@ -524,23 +466,23 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"ChangeDimension",
- CellLabel->"Out[10]=",
- CellID->1195831407]
+ CellLabel->"Out[32]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"a2", " ", "=", " ", 
+ RowBox[{" ", 
   RowBox[{"ChangeDimension", "[", 
-   RowBox[{"a1", ",", "4"}], "]"}]}]], "Input",
+   RowBox[{"%", ",", "D"}], "]"}]}]], "Input",
  CellTags->"ChangeDimension",
- CellLabel->"In[11]:=",
+ CellLabel->"In[33]:=",
  CellID->1364188329],
 
 Cell[BoxData[
  FormBox[
-  SuperscriptBox["\[Epsilon]", 
+  SuperscriptBox[
+   OverscriptBox["\[Epsilon]", ""], 
    RowBox[{
     FormBox[
      FormBox["\[Mu]",
@@ -559,8 +501,7 @@ Cell[BoxData[
       TraditionalForm],
      TraditionalForm]}]], TraditionalForm]], "Output",
  CellTags->"ChangeDimension",
- CellLabel->"Out[11]=",
- CellID->454924559]
+ CellLabel->"Out[33]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -568,9 +509,9 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Factor2", "[", 
   RowBox[{"Contract", "[", 
-   SuperscriptBox["a1", "2"], "]"}], "]"}]], "Input",
+   SuperscriptBox["%", "2"], "]"}], "]"}]], "Input",
  CellTags->"ChangeDimension",
- CellLabel->"In[12]:=",
+ CellLabel->"In[34]:=",
  CellID->1260742676],
 
 Cell[BoxData[
@@ -583,43 +524,27 @@ Cell[BoxData[
    RowBox[{"(", 
     RowBox[{"3", "-", "D"}], ")"}], " ", "D"}], TraditionalForm]], "Output",
  CellTags->"ChangeDimension",
- CellLabel->"Out[12]=",
- CellID->712801039]
+ CellLabel->"Out[34]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Contract", "[", 
-  SuperscriptBox["a2", "2"], "]"}]], "Input",
+  SuperscriptBox[
+   RowBox[{"LC", "[", 
+    RowBox[{"\[Mu]", ",", "\[Nu]", ",", "\[Rho]", ",", "\[Sigma]"}], "]"}], 
+   "2"], "]"}]], "Input",
  CellTags->"ChangeDimension",
- CellLabel->"In[13]:=",
+ CellLabel->"In[35]:=",
  CellID->1971885587],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"-", "24"}], TraditionalForm]], "Output",
  CellTags->"ChangeDimension",
- CellLabel->"Out[13]=",
- CellID->1523338400]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"SetOptions", "[", 
-   RowBox[{"Eps", ",", 
-    RowBox[{"Dimension", "\[Rule]", "4"}]}], "]"}], ";"}]], "Input",
- CellTags->"ChangeDimension",
- CellLabel->"In[14]:=",
- CellID->1454834336],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"Clear", "[", 
-   RowBox[{"a1", ",", "a2"}], "]"}], ";"}]], "Input",
- CellTags->"ChangeDimension",
- CellLabel->"In[15]:=",
- CellID->696058695]
+ CellLabel->"Out[35]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -683,12 +608,14 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{931, Automatic}, {Automatic, 74}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

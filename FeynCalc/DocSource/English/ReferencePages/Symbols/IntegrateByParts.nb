@@ -128,8 +128,21 @@ integral over t from 0 to 1."
 }], "Usage",
  CellID->982511436],
 
-Cell["XXXX", "Notes",
- CellID->1067943069]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "IntegrateByParts", "]"}]], "Input",
+ CellTags->"IntegrateByParts",
+ CellLabel->"In[89]:=",
+ CellID->1168038147],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"{", 
+   RowBox[{"Hold", "\[Rule]", "False"}], "}"}], TraditionalForm]], "Output",
+ CellTags->"IntegrateByParts",
+ CellLabel->"Out[89]="]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -192,73 +205,28 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[
- RowBox[{"Options", "[", "IntegrateByParts", "]"}]], "Input",
- CellTags->"IntegrateByParts",
- CellLabel->"In[1]:=",
- CellID->1168038147],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{"{", 
-   RowBox[{"Hold", "\[Rule]", "False"}], "}"}], TraditionalForm]], "Output",
- CellTags->"IntegrateByParts",
- CellLabel->"Out[1]=",
- CellID->247717548]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"IntegrateByParts", "[", 
-  RowBox[{
+ RowBox[{"(*", 
+  RowBox[{"IntegrateByParts", "[", 
    RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"1", "-", "t"}], ")"}], "^", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"a", " ", "Epsilon"}], "-", "1"}], ")"}]}], " ", 
+     RowBox[{"g", "[", "t", "]"}]}], ",", 
     RowBox[{
      RowBox[{"(", 
       RowBox[{"1", "-", "t"}], ")"}], "^", 
      RowBox[{"(", 
       RowBox[{
-       RowBox[{"a", " ", "Epsilon"}], "-", "1"}], ")"}]}], " ", 
-    RowBox[{"g", "[", "t", "]"}]}], ",", 
-   RowBox[{
-    RowBox[{"(", 
-     RowBox[{"1", "-", "t"}], ")"}], "^", 
-    RowBox[{"(", 
-     RowBox[{
-      RowBox[{"a", " ", "Epsilon"}], "-", "1"}], ")"}]}], ",", "t"}], 
-  "]"}]], "Input",
+       RowBox[{"a", " ", "Epsilon"}], "-", "1"}], ")"}]}], ",", "t"}], "]"}], 
+  "*)"}]], "Input",
  CellTags->"IntegrateByParts",
- CellLabel->"In[2]:=",
- CellID->328713984],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   FractionBox[
-    RowBox[{
-     SuperscriptBox[
-      RowBox[{"(", 
-       RowBox[{"1", "-", "t"}], ")"}], 
-      RowBox[{"a", " ", 
-       TagBox["\[CurlyEpsilon]",
-        TraditionalForm]}]], " ", 
-     RowBox[{
-      SuperscriptBox["g", "\[Prime]",
-       MultilineFunction->None], "(", "t", ")"}]}], 
-    RowBox[{"a", " ", 
-     TagBox["\[CurlyEpsilon]",
-      TraditionalForm]}]], "+", 
-   FractionBox[
-    RowBox[{"g", "(", "0", ")"}], 
-    RowBox[{"a", " ", 
-     TagBox["\[CurlyEpsilon]",
-      TraditionalForm]}]]}], TraditionalForm]], "Output",
- CellTags->"IntegrateByParts",
- CellLabel->"Out[2]=",
- CellID->2082695933]
-}, Open  ]]
+ CellLabel->"In[91]:=",
+ CellID->328713984]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -321,13 +289,15 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{706, 776},
+WindowMargins->{{858, Automatic}, {Automatic, -8}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
+CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+

@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 10.3' *)
+(* CreatedBy='Mathematica 10.4' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14661,        518]
-NotebookOptionsPosition[      9366,        346]
-NotebookOutlinePosition[     12917,        450]
-CellTagsIndexPosition[     12804,        444]
+NotebookDataLength[      9335,        309]
+NotebookOptionsPosition[      6049,        210]
+NotebookOutlinePosition[      8555,        279]
+CellTagsIndexPosition[      8444,        273]
 WindowTitle->Dimension
 WindowFrame->Normal*)
 
@@ -59,12 +59,13 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$37999], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$60770], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Dimension", ".html"]], None}]}]},
       Appearance->None,
-      MenuAppearance->Automatic]],
+      MenuAppearance->Automatic,
+      MenuStyle->"URLMenu"]],
      LineSpacing->{1.4, 0}]], "AnchorBar"]}
   }]], "AnchorBarGrid",
  GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
@@ -73,8 +74,18 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
    "RowsIndexed" -> {}}},
  CellID->1],
 
-Cell["Dimension", "ObjectName",
- CellID->1224892054],
+Cell[TextData[{
+ Cell["Dimension", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
 
 Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
@@ -108,7 +119,9 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1659906149],
+ CellID->1146652023],
+
+Cell[CellGroupData[{
 
 Cell[TextData[{
  "Basic Examples",
@@ -116,18 +129,12 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->764784368],
-
-Cell[CellGroupData[{
-
-Cell["Examples", "Subsubsection",
- CellTags->"Dimension",
- CellID->269185513],
+ CellID->649710797],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Options", "[", "MetricTensor", "]"}]], "Input",
+ RowBox[{"Options", "[", "ScalarProduct", "]"}]], "Input",
  CellTags->"Dimension",
  CellLabel->"In[1]:=",
  CellID->48360105],
@@ -137,26 +144,23 @@ Cell[BoxData[
   RowBox[{"{", 
    RowBox[{
     RowBox[{"Dimension", "\[Rule]", "4"}], ",", 
-    RowBox[{"FeynCalcInternal", "\[Rule]", "True"}]}], "}"}], 
-  TraditionalForm]], "Output",
- ImageSize->{281, 15},
+    RowBox[{"FeynCalcInternal", "\[Rule]", "True"}], ",", 
+    RowBox[{"SetDimensions", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"4", ",", "D"}], "}"}]}]}], "}"}], TraditionalForm]], "Output",
+ ImageSize->{414, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Dimension",
- CellLabel->"Out[1]=",
- CellID->1017306369]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{"MetricTensor", "[", 
-   RowBox[{"m", ",", "n", ",", 
-    RowBox[{"Dimension", "\[Rule]", "d"}]}], "]"}], 
-  RowBox[{"DiracMatrix", "[", 
-   RowBox[{"\[Alpha]", ",", 
-    RowBox[{"Dimension", "\[Rule]", "d"}]}], "]"}]}]], "Input",
+ RowBox[{"ScalarProduct", "[", 
+  RowBox[{"m", ",", "n", ",", 
+   RowBox[{"Dimension", "\[Rule]", "d"}]}], "]"}]], "Input",
  CellTags->"Dimension",
  CellLabel->"In[2]:=",
  CellID->1811829745],
@@ -164,181 +168,41 @@ Cell[BoxData[
 Cell[BoxData[
  FormBox[
   RowBox[{
-   SuperscriptBox["\[Gamma]", 
-    FormBox[
-     FormBox["\[Alpha]",
-      TraditionalForm],
-     TraditionalForm]], " ", 
    FormBox[
-    SuperscriptBox["g", 
-     RowBox[{
-      FormBox[
-       FormBox[
-        FormBox["m",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox[
-        FormBox["n",
-         TraditionalForm],
-        TraditionalForm],
-       TraditionalForm]}]],
-    TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{61, 17},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"Dimension",
- CellLabel->"Out[2]=",
- CellID->1365396948]
-}, Open  ]],
-
-Cell["\<\
-The dimension of the indices is not shown by default but can be inspected \
-easily.\
-\>", "Text",
- CellTags->"Dimension",
- CellID->1652643284],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{
-   RowBox[{"MetricTensor", "[", 
-    RowBox[{"m", ",", "n", ",", 
-     RowBox[{"Dimension", "\[Rule]", "d"}]}], "]"}], 
-   RowBox[{"DiracMatrix", "[", 
-    RowBox[{"\[Alpha]", ",", 
-     RowBox[{"Dimension", "\[Rule]", "d"}]}], "]"}]}], "//", 
-  "StandardForm"}]], "Input",
- CellTags->"Dimension",
- CellLabel->"In[3]:=",
- CellID->799099233],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"DiracGamma", "[", 
-   RowBox[{
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Alpha]", ",", "d"}], "]"}], ",", "d"}], "]"}], " ", 
-  RowBox[{"Pair", "[", 
-   RowBox[{
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"m", ",", "d"}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"n", ",", "d"}], "]"}]}], "]"}]}]], "Output",
- ImageSize->{370, 33},
- ImageMargins->{{0, 0}, {0, 0}},
- ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"Dimension",
- CellLabel->"Out[3]//StandardForm=",
- CellID->379657902]
-}, Open  ]],
-
-Cell["\<\
-Setting the global variable $LorentzIndices to True will display the \
-dimension (if different from 4) as a subscript.\
-\>", "Text",
- CellTags->"Dimension",
- CellID->1658312621],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"$LorentzIndices", "=", "True"}], ";"}]], "Input",
- CellTags->"Dimension",
- CellLabel->"In[4]:=",
- CellID->136991377],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"MetricTensor", "[", 
-   RowBox[{"\[Alpha]", ",", "\[Beta]", ",", 
-    RowBox[{"Dimension", "\[Rule]", "n"}]}], "]"}], 
-  RowBox[{"DiracMatrix", "[", 
-   RowBox[{"\[Alpha]", ",", 
-    RowBox[{"Dimension", "\[Rule]", "n"}]}], "]"}]}]], "Input",
- CellTags->"Dimension",
- CellLabel->"In[5]:=",
- CellID->1877198136],
-
-Cell[BoxData[
- FormBox[
-  RowBox[{
-   SuperscriptBox["\[Gamma]", 
-    FormBox[
-     SubscriptBox[
-      FormBox["\[Alpha]",
-       TraditionalForm], 
-      FormBox["n",
-       TraditionalForm]],
-     TraditionalForm]], " ", 
+    FormBox["m",
+     TraditionalForm],
+    TraditionalForm], 
+   FormBox["\<\"\[CenterDot]\"\>",
+    TraditionalForm], 
    FormBox[
-    SuperscriptBox["g", 
-     RowBox[{
-      FormBox[
-       FormBox[
-        SubscriptBox[
-         FormBox["\[Alpha]",
-          TraditionalForm], 
-         FormBox["n",
-          TraditionalForm]],
-        TraditionalForm],
-       TraditionalForm], 
-      FormBox[
-       FormBox[
-        SubscriptBox[
-         FormBox["\[Beta]",
-          TraditionalForm], 
-         FormBox["n",
-          TraditionalForm]],
-        TraditionalForm],
-       TraditionalForm]}]],
+    FormBox["n",
+     TraditionalForm],
     TraditionalForm]}], TraditionalForm]], "Output",
- ImageSize->{84, 19},
+ ImageSize->{41, 14},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Dimension",
- CellLabel->"Out[5]=",
- CellID->1953179545]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"%", "//", "StandardForm"}]], "Input",
- CellTags->"Dimension",
- CellLabel->"In[6]:=",
- CellID->40947459],
+ CellLabel->"In[3]:="],
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{"DiracGamma", "[", 
-   RowBox[{
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Alpha]", ",", "n"}], "]"}], ",", "n"}], "]"}], " ", 
-  RowBox[{"Pair", "[", 
-   RowBox[{
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Alpha]", ",", "n"}], "]"}], ",", 
-    RowBox[{"LorentzIndex", "[", 
-     RowBox[{"\[Beta]", ",", "n"}], "]"}]}], "]"}]}]], "Output",
- ImageSize->{372, 33},
+ RowBox[{"Pair", "[", 
+  RowBox[{
+   RowBox[{"Momentum", "[", 
+    RowBox[{"m", ",", "d"}], "]"}], ",", 
+   RowBox[{"Momentum", "[", 
+    RowBox[{"n", ",", "d"}], "]"}]}], "]"}]], "Output",
+ ImageSize->{297, 15},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
- CellTags->"Dimension",
- CellLabel->"Out[6]//StandardForm=",
- CellID->1903897849]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"$LorentzIndices", "=", "False"}], ";"}]], "Input",
- CellTags->"Dimension",
- CellLabel->"In[7]:=",
- CellID->889371773]
+ CellLabel->"Out[3]//StandardForm="]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -356,10 +220,10 @@ TaggingRules->{
         ButtonBox[
         "FeynCalc", ButtonData -> "paclet:FeynCalc/guide/FeynCalc", 
          BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
-    Left], "HasOptions" -> False, "ExampleCounter" -> 1, 
-  "ExamplePageLinks" -> {}, "NeedPlatMsgIn" -> None, "RootCaptions" -> "", 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2016, 8, 21, 21, 17, 42.638995}", 
+   "built" -> "{2020, 1, 5, 18, 54, 18.671578}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -367,12 +231,12 @@ TaggingRules->{
     "None", "summary" -> 
     "Dimension is an option of several functions and denotes the number of \
 space-time dimensions. Possible settings are: 4, n, d, D, ... ,the variable \
-does not matter, but it should have Head Symbol.", "synonyms" -> {}, "title" -> 
-    "Dimension", "titlemodifier" -> "", "windowtitle" -> "Dimension", "type" -> 
-    "Symbol", "uri" -> "FeynCalc/ref/Dimension"}, "SearchTextTranslated" -> 
-  ""},
+does not matter, but it should have Head Symbol.", "synonyms" -> {}, 
+    "tabletags" -> {}, "title" -> "Dimension", "titlemodifier" -> "", 
+    "windowtitle" -> "Dimension", "type" -> "Symbol", "uri" -> 
+    "FeynCalc/ref/Dimension"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[
@@ -381,7 +245,7 @@ StyleDefinitions->Notebook[{
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
     StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (December 10, 2015)", 
+  FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
 (* End of Notebook Content *)
@@ -390,136 +254,63 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3412, 95, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[3674, 106, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1659906149]},
+   CellID->1146652023]},
  "Dimension"->{
-  Cell[4023, 122, 77, 2, 35, "Subsubsection",
-   CellTags->"Dimension",
-   CellID->269185513],
-  Cell[4125, 128, 137, 4, 27, "Input",
+  Cell[4307, 135, 138, 4, 27, "Input",
    CellTags->"Dimension",
    CellID->48360105],
-  Cell[4265, 134, 350, 12, 36, "Output",
-   CellTags->"Dimension",
-   CellID->1017306369],
-  Cell[4652, 151, 332, 10, 27, "Input",
+  Cell[4448, 141, 432, 13, 37, "Output",
+   CellTags->"Dimension"],
+  Cell[4917, 159, 205, 6, 27, "Input",
    CellTags->"Dimension",
    CellID->1811829745],
-  Cell[4987, 163, 680, 29, 38, "Output",
-   CellTags->"Dimension",
-   CellID->1365396948],
-  Cell[5682, 195, 152, 5, 32, "Text",
-   CellTags->"Dimension",
-   CellID->1652643284],
-  Cell[5859, 204, 375, 12, 45, "Input",
-   CellTags->"Dimension",
-   CellID->799099233],
-  Cell[6237, 218, 543, 17, 67, "Output",
-   CellTags->"Dimension",
-   CellID->379657902],
-  Cell[6795, 238, 187, 5, 52, "Text",
-   CellTags->"Dimension",
-   CellID->1658312621],
-  Cell[6985, 245, 151, 5, 27, "Input",
-   CellTags->"Dimension",
-   CellID->136991377],
-  Cell[7161, 254, 345, 10, 27, "Input",
-   CellTags->"Dimension",
-   CellID->1877198136],
-  Cell[7509, 266, 912, 38, 40, "Output",
-   CellTags->"Dimension",
-   CellID->1953179545],
-  Cell[8458, 309, 127, 4, 27, "Input",
-   CellTags->"Dimension",
-   CellID->40947459],
-  Cell[8588, 315, 557, 17, 67, "Output",
-   CellTags->"Dimension",
-   CellID->1903897849],
-  Cell[9160, 335, 152, 5, 27, "Input",
-   CellTags->"Dimension",
-   CellID->889371773]}
+  Cell[5125, 167, 406, 17, 35, "Output",
+   CellTags->"Dimension"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 11300, 391},
- {"Dimension", 11436, 395}
+ {"PrimaryExamplesSection", 7971, 255},
+ {"Dimension", 8108, 259}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[581, 21, 2248, 52, 51, "AnchorBarGrid",
+Cell[581, 21, 2276, 53, 53, "AnchorBarGrid",
  CellID->1],
-Cell[2832, 75, 52, 1, 42, "ObjectName",
- CellID->1224892054],
-Cell[2887, 78, 500, 13, 97, "Usage",
+Cell[2860, 76, 286, 11, 45, "ObjectNameGrid"],
+Cell[3149, 89, 500, 13, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3412, 95, 388, 15, 31, "PrimaryExamplesSection",
+Cell[3674, 106, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1659906149],
-Cell[3803, 112, 195, 6, 25, "ExampleSection",
- CellID->764784368],
+ CellID->1146652023],
 Cell[CellGroupData[{
-Cell[4023, 122, 77, 2, 35, "Subsubsection",
- CellTags->"Dimension",
- CellID->269185513],
+Cell[4087, 125, 195, 6, 26, "ExampleSection",
+ CellID->649710797],
 Cell[CellGroupData[{
-Cell[4125, 128, 137, 4, 27, "Input",
+Cell[4307, 135, 138, 4, 27, "Input",
  CellTags->"Dimension",
  CellID->48360105],
-Cell[4265, 134, 350, 12, 36, "Output",
- CellTags->"Dimension",
- CellID->1017306369]
+Cell[4448, 141, 432, 13, 37, "Output",
+ CellTags->"Dimension"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4652, 151, 332, 10, 27, "Input",
+Cell[4917, 159, 205, 6, 27, "Input",
  CellTags->"Dimension",
  CellID->1811829745],
-Cell[4987, 163, 680, 29, 38, "Output",
- CellTags->"Dimension",
- CellID->1365396948]
-}, Open  ]],
-Cell[5682, 195, 152, 5, 32, "Text",
- CellTags->"Dimension",
- CellID->1652643284],
-Cell[CellGroupData[{
-Cell[5859, 204, 375, 12, 45, "Input",
- CellTags->"Dimension",
- CellID->799099233],
-Cell[6237, 218, 543, 17, 67, "Output",
- CellTags->"Dimension",
- CellID->379657902]
-}, Open  ]],
-Cell[6795, 238, 187, 5, 52, "Text",
- CellTags->"Dimension",
- CellID->1658312621],
-Cell[6985, 245, 151, 5, 27, "Input",
- CellTags->"Dimension",
- CellID->136991377],
-Cell[CellGroupData[{
-Cell[7161, 254, 345, 10, 27, "Input",
- CellTags->"Dimension",
- CellID->1877198136],
-Cell[7509, 266, 912, 38, 40, "Output",
- CellTags->"Dimension",
- CellID->1953179545]
+Cell[5125, 167, 406, 17, 35, "Output",
+ CellTags->"Dimension"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8458, 309, 127, 4, 27, "Input",
- CellTags->"Dimension",
- CellID->40947459],
-Cell[8588, 315, 557, 17, 67, "Output",
- CellTags->"Dimension",
- CellID->1903897849]
-}, Open  ]],
-Cell[9160, 335, 152, 5, 27, "Input",
- CellTags->"Dimension",
- CellID->889371773]
+Cell[5568, 189, 84, 2, 27, "Input"],
+Cell[5655, 193, 328, 10, 51, "Output"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[9339, 344, 23, 0, 42, "FooterCell"]
+Cell[6022, 208, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

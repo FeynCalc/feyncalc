@@ -1,26 +1,25 @@
 Tests`LoopIntegrals`fcitTIDPTests =
 ({
 {"fcitTIDPTests-ID1","
-$Larin = True; \n $BreitMaison = False; \n exp =
+FCSetDiracGammaScheme[\"Larin\"]; \n exp =
 Spinor[-Momentum[pv1, D], 0, 1].GAD[i1].GA[5].Spinor[
 	Momentum[pv2, D], 0, 1] Spinor[Momentum[pv4, D], 0, 1].GAD[
 	i2].GSD[q].GAD[i1].GA[5].GSD[q].GAD[i2].Spinor[-Momentum[pv3, D],
 	0, 1] FAD[q, pv3 + q, -(pv1 + pv2 - pv3) + q] Spinor[Momentum[pv2, D], 0,
 	1].GAD[n2].Spinor[-Momentum[pv1, D], 0, 1] Spinor[-Momentum[pv3, D], 0, 1].GAD[n2].Spinor[Momentum[pv4, D], 0, 1]; \n
-Factor2[TID[(FermionSpinSum[exp] /. DiracTrace -> Tr /. pv4 -> pv1 + pv2 - pv3), q, ToPaVe -> True] //PropagatorDenominatorExplicit // Simplify] -
+Factor2[TID[(FermionSpinSum[exp] /. DiracTrace -> Tr /. pv4 -> pv1 + pv2 - pv3), q, ToPaVe -> True] //FeynAmpDenominatorExplicit // Simplify] -
 Factor2[(((FermionSpinSum[TID[exp, q, ToPaVe -> True]] /. DiracTrace -> Tr /. pv4 -> pv1 + pv2 - pv3) // Contract)) // Simplify]", "0"},
-{"fcitTIDPTests-ID2","
-$Larin = False; \n $BreitMaison = True; \n
+{"fcitTIDPTests-ID2","FCSetDiracGammaScheme[\"BMHV\"]; \n
 exp = Spinor[-Momentum[pv1, D], 0, 1].GAD[i1].GA[5].Spinor[Momentum[pv2, D], 0, 1] Spinor[Momentum[pv4, D], 0,
 1].GAD[i2].GSD[q].GAD[i1].GA[5].GSD[q].GAD[i2].Spinor[-Momentum[pv3, D],0, 1] FAD[q,pv3 + q,
 -(pv1 + pv2 - pv3) + q] Spinor[Momentum[pv2, D], 0,1].GAD[n2].Spinor[-Momentum[pv1, D], 0,1] Spinor[-Momentum[pv3, D],
 0, 1].GAD[n2].Spinor[Momentum[pv4, D], 0, 1]; Factor2[TID[(FermionSpinSum[exp] /. DiracTrace -> Tr /.
-pv4 -> pv1 + pv2 - pv3), q, ToPaVe -> True] // PropagatorDenominatorExplicit // Simplify] - Factor2[(((FermionSpinSum[TID[exp, q, ToPaVe -> True]] /.
+pv4 -> pv1 + pv2 - pv3), q, ToPaVe -> True] // FeynAmpDenominatorExplicit // Simplify] - Factor2[(((FermionSpinSum[TID[exp, q, ToPaVe -> True]] /.
 		DiracTrace -> Tr /. pv4 -> pv1 + pv2 - pv3) // Contract) /. Momentum[(a : pv1 | pv2 | pv3 | pv4), D | D - 4] :> Momentum[a]) // Simplify]", "0"},
 
 
 {"fcitTIDPTests-ID3","
-$Larin = False; \n $BreitMaison = False; \n OneLoop[q,(CA*gc^2*SD[b, c]*(-(FAD[q, q, q, -p + q, -p + q]*FVD[q, mu]*FVD[q, nu]*SPD[p, p]^3) + FAD[q, q, q, -p + q, -p + q, -p + q]*FVD[q, mu]*FVD[q, nu]*
+FCSetDiracGammaScheme[\"NDR\"]; \n OneLoop[q,(CA*gc^2*SD[b, c]*(-(FAD[q, q, q, -p + q, -p + q]*FVD[q, mu]*FVD[q, nu]*SPD[p, p]^3) + FAD[q, q, q, -p + q, -p + q, -p + q]*FVD[q, mu]*FVD[q, nu]*
 	SPD[p, p]^4 + 3*FAD[q, q, q, -p + q, -p + q]*FVD[p, nu]*FVD[q, mu]*SPD[p, p]^2*SPD[p, q] + 3*FAD[q, q, q, -p + q, -p + q]*FVD[p, mu]*FVD[q, nu]*
 	SPD[p, p]^2*SPD[p, q] - 2*FAD[q, q, q, -p + q, -p + q]*FVD[q, mu]*FVD[q, nu]*SPD[p, p]^2*SPD[p, q] -
 FAD[q, q, q, -p + q, -p + q, -p + q]*FVD[p, nu]*FVD[q, mu]*SPD[p, p]^3*SPD[p, q] - FAD[q, q, q, -p + q, -p + q, -p + q]*FVD[p, mu]*FVD[q, nu]*
@@ -60,46 +59,95 @@ FAD[q, q, -p + q, -p + q]*(MTD[mu, nu]*(5*SPD[p, p]^3 + SPD[p, p]^2*(-12*SPD[p, 
 	FVD[q, mu]*(FVD[p, nu]*(-((-3 + D)*SPD[p, p]^2) + SPD[p, p]*(2*(-5 + 2*D)*SPD[p, q] + (5 - 3*D)*SPD[q, q]) -
 		(2*SPD[p, q] - SPD[q, q])*(2*(-2 + D)*SPD[p, q] + (3 - 2*D)*SPD[q, q])) + FVD[q, nu]*((-2 + D)*SPD[p, p]^2 + 4*(-2 + D)*SPD[p, q]^2 +
 		4*(3 - 2*D)*SPD[p, q]*SPD[q, q] + 2*(-3 + 2*D)*SPD[q, q]^2 + SPD[p, p]*(-4*(-2 + D)*SPD[p, q] + 2*(-3 + 2*D)*SPD[q, q]))))))/2]//FCE",
-"I*Pi^2*(2*CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[1, {0, SP[p, p], SP[p, p]}, {0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SD[b, c]*SP[p, p] +
-(CA*gc^2*D0[0, 0, SP[p, p], SP[p, p], 0, SP[p, p], 0, 0, 0, 0]*FV[p, mu]*FV[p, nu]*SD[b, c]*SP[p, p]^2)/4 -
-2*CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[2, {0, SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p]}, {0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*
-SD[b, c]*SP[p, p]^2 - 2*CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[3, {0, 0, SP[p, p], 0, SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p]}, {0, 0, 0, 0, 0},
-	PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^3 - 2*CA*gc^2*FV[p, mu]*FV[p, nu]*
-PaVe[4, {0, 0, SP[p, p], 0, SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p]}, {0, 0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*
-SD[b, c]*SP[p, p]^3 - CA*gc^2*MT[mu, nu]*PaVe[0, 0, {0, 0, SP[p, p], 0, SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p]}, {0, 0, 0, 0, 0},
-	PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^3 - CA*gc^2*FV[p, mu]*FV[p, nu]*
-PaVe[3, 3, {0, 0, SP[p, p], 0, SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p]}, {0, 0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*
-SD[b, c]*SP[p, p]^3 - 2*CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[3, 4, {0, 0, SP[p, p], 0, SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p]},
-	{0, 0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^3 -
-CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[4, 4, {0, 0, SP[p, p], 0, SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p]}, {0, 0, 0, 0, 0},
-	PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^3 +
-(CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[0, {0, 0, SP[p, p], 0, 0, SP[p, p], 0, SP[p, p], SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p], SP[p, p]},
-	{0, 0, 0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^4)/8 +
-(CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[3, {0, 0, SP[p, p], 0, 0, SP[p, p], 0, SP[p, p], SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p], SP[p, p]},
-	{0, 0, 0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^4)/2 +
-(CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[4, {0, 0, SP[p, p], 0, 0, SP[p, p], 0, SP[p, p], SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p], SP[p, p]},
-	{0, 0, 0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^4)/2 +
-(CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[5, {0, 0, SP[p, p], 0, 0, SP[p, p], 0, SP[p, p], SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p], SP[p, p]},
-	{0, 0, 0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^4)/2 +
-(CA*gc^2*MT[mu, nu]*PaVe[0, 0, {0, 0, SP[p, p], 0, 0, SP[p, p], 0, SP[p, p], SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p], SP[p, p]},
-	{0, 0, 0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^4)/2 +
-(CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[3, 3, {0, 0, SP[p, p], 0, 0, SP[p, p], 0, SP[p, p], SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p], SP[p, p]},
-	{0, 0, 0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^4)/2 +
-CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[3, 4, {0, 0, SP[p, p], 0, 0, SP[p, p], 0, SP[p, p], SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p], SP[p, p]},
-	{0, 0, 0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^4 +
-CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[3, 5, {0, 0, SP[p, p], 0, 0, SP[p, p], 0, SP[p, p], SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p], SP[p, p]},
-	{0, 0, 0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^4 +
-(CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[4, 4, {0, 0, SP[p, p], 0, 0, SP[p, p], 0, SP[p, p], SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p], SP[p, p]},
-	{0, 0, 0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^4)/2 +
-CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[4, 5, {0, 0, SP[p, p], 0, 0, SP[p, p], 0, SP[p, p], SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p], SP[p, p]},
-	{0, 0, 0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^4 +
-(CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[5, 5, {0, 0, SP[p, p], 0, 0, SP[p, p], 0, SP[p, p], SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p], SP[p, p]},
-	{0, 0, 0, 0, 0, 0}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^4)/2 +
-(CA*gc^2*B0[SP[p, p], 0, 0]*SD[b, c]*(2*FV[p, mu]*FV[p, nu] - D*FV[p, mu]*FV[p, nu] - 3*MT[mu, nu]*SP[p, p]))/4 -
-(CA*gc^2*D0[0, SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], 0, 0, 0, 0]*SD[b, c]*SP[p, p]^2*(5*FV[p, mu]*FV[p, nu] - 2*MT[mu, nu]*SP[p, p]))/4 -
-(CA*gc^2*PaVe[0, {0, 0, SP[p, p], 0, SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p]}, {0, 0, 0, 0, 0}, PaVeAutoOrder -> True,
-	PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^3*(2*FV[p, mu]*FV[p, nu] + MT[mu, nu]*SP[p, p]))/4 +
-(CA*gc^2*C0[0, SP[p, p], SP[p, p], 0, 0, 0]*SD[b, c]*SP[p, p]*(-4*FV[p, mu]*FV[p, nu] + 5*MT[mu, nu]*SP[p, p]))/4)"},
+"I*Pi^2*((CA*gc^2*B0[SP[p, p], 0, 0]*FV[p, mu]*FV[p, nu]*SD[b, c])/2 -
+(CA*D*gc^2*B0[SP[p, p], 0, 0]*FV[p, mu]*FV[p, nu]*SD[b, c])/2 +
+(CA*D*gc^2*B0[SP[p, p], 0, 0]*FV[p, mu]*FV[p, nu]*SD[b, c])/(4*(1 - D)) -
+(CA*D^2*gc^2*B0[SP[p, p], 0, 0]*FV[p, mu]*FV[p, nu]*SD[b, c])/
+(4*(1 - D)) - CA*gc^2*C0[0, SP[p, p], SP[p, p], 0, 0, 0]*FV[p, mu]*
+FV[p, nu]*SD[b, c]*SP[p, p] - (CA*gc^2*B0[SP[p, p], 0, 0]*MT[mu, nu]*
+	SD[b, c]*SP[p, p])/2 - (CA*gc^2*B0[SP[p, p], 0, 0]*MT[mu, nu]*SD[b, c]*
+	SP[p, p])/(4*(1 - D)) + (CA*D*gc^2*B0[SP[p, p], 0, 0]*MT[mu, nu]*
+	SD[b, c]*SP[p, p])/(4*(1 - D)) + 2*CA*gc^2*FV[p, mu]*FV[p, nu]*
+PaVe[1, {0, SP[p, p], SP[p, p]}, {0, 0, 0}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True]*SD[b, c]*SP[p, p] +
+(CA*gc^2*D0[0, 0, SP[p, p], SP[p, p], 0, SP[p, p], 0, 0, 0, 0]*FV[p, mu]*
+	FV[p, nu]*SD[b, c]*SP[p, p]^2)/4 -
+(5*CA*gc^2*D0[0, SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], 0, 0, 0, 0]*
+	FV[p, mu]*FV[p, nu]*SD[b, c]*SP[p, p]^2)/4 +
+(5*CA*gc^2*C0[0, SP[p, p], SP[p, p], 0, 0, 0]*MT[mu, nu]*SD[b, c]*
+	SP[p, p]^2)/4 - 2*CA*gc^2*FV[p, mu]*FV[p, nu]*
+PaVe[2, {0, SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p]}, {0, 0, 0, 0},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^2 +
+(CA*gc^2*D0[0, SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], 0, 0, 0, 0]*
+	MT[mu, nu]*SD[b, c]*SP[p, p]^3)/2 -
+(CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[0, {0, 0, SP[p, p], 0, SP[p, p], 0,
+	SP[p, p], SP[p, p], SP[p, p], SP[p, p]}, {0, 0, 0, 0, 0},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^3)/
+2 - 2*CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[3, {0, 0, SP[p, p], 0, SP[p, p],
+	0, SP[p, p], SP[p, p], SP[p, p], SP[p, p]}, {0, 0, 0, 0, 0},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^3 -
+2*CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[4, {0, 0, SP[p, p], 0, SP[p, p], 0,
+	SP[p, p], SP[p, p], SP[p, p], SP[p, p]}, {0, 0, 0, 0, 0},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^3 -
+CA*gc^2*MT[mu, nu]*PaVe[0, 0, {0, 0, SP[p, p], 0, SP[p, p], 0, SP[p, p],
+	SP[p, p], SP[p, p], SP[p, p]}, {0, 0, 0, 0, 0}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^3 -
+CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[3, 3, {0, 0, SP[p, p], 0, SP[p, p], 0,
+	SP[p, p], SP[p, p], SP[p, p], SP[p, p]}, {0, 0, 0, 0, 0},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^3 -
+2*CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[3, 4, {0, 0, SP[p, p], 0, SP[p, p], 0,
+	SP[p, p], SP[p, p], SP[p, p], SP[p, p]}, {0, 0, 0, 0, 0},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^3 -
+CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[4, 4, {0, 0, SP[p, p], 0, SP[p, p], 0,
+	SP[p, p], SP[p, p], SP[p, p], SP[p, p]}, {0, 0, 0, 0, 0},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^3 -
+(CA*gc^2*MT[mu, nu]*PaVe[0, {0, 0, SP[p, p], 0, SP[p, p], 0, SP[p, p],
+	SP[p, p], SP[p, p], SP[p, p]}, {0, 0, 0, 0, 0},
+	PaVeAutoOrder -> True, PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^4)/
+4 + (CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[0, {0, 0, SP[p, p], 0, 0,
+	SP[p, p], 0, SP[p, p], SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p],
+	SP[p, p], SP[p, p]}, {0, 0, 0, 0, 0, 0}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^4)/8 +
+(CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[3, {0, 0, SP[p, p], 0, 0, SP[p, p], 0,
+	SP[p, p], SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p],
+	SP[p, p]}, {0, 0, 0, 0, 0, 0}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^4)/2 +
+(CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[4, {0, 0, SP[p, p], 0, 0, SP[p, p], 0,
+	SP[p, p], SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p],
+	SP[p, p]}, {0, 0, 0, 0, 0, 0}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^4)/2 +
+(CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[5, {0, 0, SP[p, p], 0, 0, SP[p, p], 0,
+	SP[p, p], SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p],
+	SP[p, p]}, {0, 0, 0, 0, 0, 0}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^4)/2 +
+(CA*gc^2*MT[mu, nu]*PaVe[0, 0, {0, 0, SP[p, p], 0, 0, SP[p, p], 0,
+	SP[p, p], SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p],
+	SP[p, p]}, {0, 0, 0, 0, 0, 0}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^4)/2 +
+(CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[3, 3, {0, 0, SP[p, p], 0, 0, SP[p, p],
+	0, SP[p, p], SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p],
+	SP[p, p]}, {0, 0, 0, 0, 0, 0}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^4)/2 +
+CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[3, 4, {0, 0, SP[p, p], 0, 0, SP[p, p],
+	0, SP[p, p], SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p],
+	SP[p, p]}, {0, 0, 0, 0, 0, 0}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^4 +
+CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[3, 5, {0, 0, SP[p, p], 0, 0, SP[p, p],
+	0, SP[p, p], SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p],
+	SP[p, p]}, {0, 0, 0, 0, 0, 0}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^4 +
+(CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[4, 4, {0, 0, SP[p, p], 0, 0, SP[p, p],
+	0, SP[p, p], SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p],
+	SP[p, p]}, {0, 0, 0, 0, 0, 0}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^4)/2 +
+CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[4, 5, {0, 0, SP[p, p], 0, 0, SP[p, p],
+	0, SP[p, p], SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p],
+	SP[p, p]}, {0, 0, 0, 0, 0, 0}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^4 +
+(CA*gc^2*FV[p, mu]*FV[p, nu]*PaVe[5, 5, {0, 0, SP[p, p], 0, 0, SP[p, p],
+	0, SP[p, p], SP[p, p], 0, SP[p, p], SP[p, p], SP[p, p], SP[p, p],
+	SP[p, p]}, {0, 0, 0, 0, 0, 0}, PaVeAutoOrder -> True,
+	PaVeAutoReduce -> True]*SD[b, c]*SP[p, p]^4)/2)"},
 
 {"fcitTIDPTests-ID4","OneLoop[q,(CA*gc^2*SD[b, c]*(-(FAD[q, q, q, -p + q, -p + q]*FVD[q, mu]*FVD[q, nu]*SPD[p, p]^3) + FAD[q, q, q, -p + q, -p + q, -p + q]*FVD[q, mu]*FVD[q, nu]*
 	SPD[p, p]^4 + 3*FAD[q, q, q, -p + q, -p + q]*FVD[p, nu]*FVD[q, mu]*SPD[p, p]^2*SPD[p, q] + 3*FAD[q, q, q, -p + q, -p + q]*FVD[p, mu]*FVD[q, nu]*
