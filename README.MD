@@ -16,7 +16,7 @@ Development of FeynCalc costs a lot of effort and is done on a largely voluntari
 To support the developers and increase their academic visibility, please acknowledge our work
 when you use FeynCalc in your research. You can do so by citing the following FeynCalc papers:
 
-* V. Shtabovenko, R. Mertig and F. Orellana, P3H-20-002, TTP19-020, TUM-EFT 130/19, arXiv:2001.xxxxx.
+* V. Shtabovenko, R. Mertig and F. Orellana, P3H-20-002, TTP19-020, TUM-EFT 130/19, arXiv:2001.04407.
 
 * V. Shtabovenko, R. Mertig and F. Orellana, "New Developments in FeynCalc 9.0",
 Comput. Phys. Commun., 207, 432--444, 2016, arXiv:1601.01167.
