@@ -318,7 +318,7 @@ If[ $FeynCalcStartupMessages =!= False,
 	Style[" If you use FeynCalc in your research, please cite","Text"]];
 
 
-	Print [Style[" \[Bullet] V. Shtabovenko, R. Mertig and F. Orellana, P3H-20-002, TTP19-020, TUM-EFT 130/19, arXiv:2001.xxxxx","Text"]];
+	Print [Style[" \[Bullet] V. Shtabovenko, R. Mertig and F. Orellana, P3H-20-002, TTP19-020, TUM-EFT 130/19, arXiv:2001.04407","Text"]];
 	Print [Style[" \[Bullet] V. Shtabovenko, R. Mertig and F. Orellana, Comput. Phys. Commun., 207, 432-444, 2016, arXiv:1601.01167","Text"]];
 	Print [Style[" \[Bullet] R. Mertig, M. B\[ODoubleDot]hm, and A. Denner, Comput. Phys. Commun., 64, 345-359, 1991.","Text"]]
 	];
