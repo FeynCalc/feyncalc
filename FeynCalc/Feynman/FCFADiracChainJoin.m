@@ -133,7 +133,7 @@ FCFADiracChainJoin[expr_, OptionsPattern[]] :=
 
 		FCPrint[1, "FCFADiracChainJoin: Inserting Dirac objects back.", FCDoControl->dchjVerbose];
 		time=AbsoluteTime[];
-		repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
+		repRule = Thread[Rule[diracObjects,diracObjectsEval]];
 		FCPrint[3,"FCFADiracChainJoin: repRule: ",repRule , FCDoControl->dchjVerbose];
 		res =  ( tmp/. Dispatch[repRule]);
 		FCPrint[1, "FCFADiracChainJoin: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dchjVerbose];
