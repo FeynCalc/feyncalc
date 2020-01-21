@@ -15,13 +15,17 @@
 (* ------------------------------------------------------------------------ *)
 
 SUNSimplify::usage =
-"SUNSimplify[exp] simplifies products of SUNT and SUNTF \
-matrices in the expression.";
+"SUNSimplify simplifies products of SUNT (and complex conjugated) \
+matrices. Renaming of dummy indices may be performed. \
+If the option SUNTrace is set to False, then any SUNT-matrices are \
+taken out of DiracTrace[...]; otherwise a color-trace is taken (by \
+SUNTrace) before taking the SUN-objects in front of DiracTrace[...]. \
+Whether SUNF is replaced by traces is determined by the option Explicit.";
 
-SUNFJacobi::usage="SUNFJacobi is an option for SUNSimplify, indicating
+SUNFJacobi::usage="SUNFJacobi is an option for SUNSimplify, indicating \
 whether the Jacobi identity should be used.";
 
-SUNIndexRename::usage= "SUNIndexRename is an option of SUNSimplify. If set to
+SUNIndexRename::usage= "SUNIndexRename is an option of SUNSimplify. If set to \
 False, no automatic renaming of dummy indices is done.";
 
 (* ------------------------------------------------------------------------ *)
@@ -31,6 +35,9 @@ End[]
 
 Begin["`SUNSimplify`Private`"]
 
+sunSiVerbose::usage="";
+dummy::usage="";
+dotT::usage="";
 
 (* repeat basically SUNTrace here, since several subfunctions are
 	needed anyway
@@ -38,11 +45,6 @@ Begin["`SUNSimplify`Private`"]
 
 (* *********************************************************************** *)
 
-suntrace::usage="";
-sunt::usage="";
-
-fcis[z_ /; FreeQ[z, Pattern]] :=
-	(fcis[z] = FeynCalcInternal[z]);
 (* change SUNT' which are multiplied with each other to lambdaT's *)
 lambdaT[1] =
 	1;
@@ -141,6 +143,14 @@ Options[Rename] = {
 	Expanding -> False
 };
 
+
+(* Added check for integers - noint. F.Orellana, 24/9-2000 *)
+noint[x___] :=
+	Not[Or @@
+		Join[IntegerQ /@ {x}, IntegerQ /@
+	({x} /. {SUNIndex -> Identity,
+			ExplicitSUNIndex -> Identity})]];
+
 SetAttributes[Rename, Listable];
 
 Rename[exp_,ru___Rule] :=
@@ -161,80 +171,50 @@ Rename[exp_,ru___Rule] :=
 				(ste2 suI[ste])/.dumy->1
 			](* /. suI -> Identity*);
 
-		(* Added check for integers - noint. F.Orellana, 24/9-2000 *)
-		noint[x___] :=
-			Not[Or @@
-				Join[IntegerQ /@ {x}, IntegerQ /@
-			({x} /. {SUNIndex -> Identity,
-					ExplicitSUNIndex -> Identity})]];
-		subst = { suI[SUNT[SUNIndex[ii_]] ff_] :>
-					( (sam[ii, uh[]];
-					(SUNT[SUNIndex[ii]] (ff /. suI -> Identity)) /.
-					SUNIndex[ii]-> uh[])
-					)/;
-					(!FreeQ[ff,SUNIndex[ii]]) && FreeQ[ii,dummy[_]],
+		subst = {
+			suI[SUNT[SUNIndex[ii_]] ff_] :>
+				((sam[ii, uh[]]; SUNT[SUNIndex[ii]] (ff /. suI -> Identity) /.
+					SUNIndex[ii]-> uh[]))/; !FreeQ[ff,SUNIndex[ii]] && FreeQ[ii,dummy[_]],
 
-				DOT[ A___,SUNT[SUNIndex[ii_]], B___,
-							SUNT[SUNIndex[ii_]], Z___]      :>
-					(sam[ii, uh[]];
-					DOT[ A,SUNT[SUNIndex[ii]],B,SUNT[SUNIndex[ii]],Z ] /.
-						SUNIndex[ii] -> uh[]
-					) /; FreeQ[ii, dummy[_]] ,
+			DOT[ A___,SUNT[SUNIndex[ii_]], B___, SUNT[SUNIndex[ii_]], Z___] :>
+				(sam[ii, uh[]]; DOT[ A,SUNT[SUNIndex[ii]],B,SUNT[SUNIndex[ii]],Z ] /.
+					SUNIndex[ii] -> uh[]) /; FreeQ[ii, dummy[_]],
 
-		(*
-				suI[SUNTrace[DOT[ A___,SUNT[SUNIndex[jj_]], B___]] ff_]   :>
-					(sam[jj, uh[]]; (sTr[DOT[ A,SUNT[SUNIndex[jj]],B ]] ff
-									) /. SUNIndex[jj] -> uh[] /. sTr -> SUNTrace
-					)/; !FreeQ2[ff,{SUNIndex[jj]}] && FreeQ[jj,dummy[_]],
-		*)
+			suI[DOT[ A___,SUNT[SUNIndex[jj_]], B___] ff_] :>
+				(sam[jj, uh[]]; (DOT[ A,SUNT[SUNIndex[jj]],B ] ff) /. SUNIndex[jj] -> uh[])/;
+					!FreeQ[ff,SUNIndex[jj]] && FreeQ[jj,dummy[_]],
 
-				suI[DOT[ A___,SUNT[SUNIndex[jj_]], B___] ff_]   :>
-					(
+			suI[SUNF[A___,SUNIndex[ij_],B___] SUNF[V___,SUNIndex[ij_],W___] ff_] :>
+				(sam[ij, uh[]]; (SUNF[A, SUNIndex[ij], B] SUNF[V, SUNIndex[ij], W] ff)/. SUNIndex[ij] -> uh[])/; FreeQ[ij, dummy[_]],
 
-				sam[jj, uh[]];
-				(DOT[ A,SUNT[SUNIndex[jj]],B ] ff
-					) /. SUNIndex[jj] -> uh[]
-					)/; !FreeQ[ff,SUNIndex[jj]] && FreeQ[jj,dummy[_]],
-				suI[SUNF[A___,SUNIndex[ij_],B___] *
-					SUNF[V___,SUNIndex[ij_],W___] ff_] :>
-					(sam[ij, uh[]];
-					(SUNF[A, SUNIndex[ij], B] *
-					SUNF[V, SUNIndex[ij], W] ff
-					)/. SUNIndex[ij] -> uh[]
-					)/; FreeQ[ij, dummy[_]],
-				suI[ SUNF[SUNIndex[a_], SUNIndex[ci4_], SUNIndex[ci6_]]*
-					SUNF[SUNIndex[b_], SUNIndex[ci4_], SUNIndex[ci7_]]*
-					SUNF[SUNIndex[c_], SUNIndex[ci6_], SUNIndex[ci7_]] ef_.
-					] :> (ef SUNN/2 SUNF[SUNIndex[a],SUNIndex[b],SUNIndex[c]]) /; noint[ci4,ci6,ci7],
-				suI[ SUNF[SUNIndex[ci4_], SUNIndex[ci6_],SUNIndex[a_]]*
-					SUNF[SUNIndex[ci4_], SUNIndex[ci7_],SUNIndex[b_]]*
-					SUNF[SUNIndex[ci6_], SUNIndex[ci7_],SUNIndex[c_]] ef_.
-					] :> (ef SUNN/2 SUNF[SUNIndex[a],SUNIndex[b],SUNIndex[c]]) /; noint[ci4,ci6,ci7],
-				suI[ SUNF[SUNIndex[a_], SUNIndex[ci4_], SUNIndex[ci6_]]*
-					SUNF[SUNIndex[b_], SUNIndex[ci4_], SUNIndex[ci6_]] ef_.
-					] :> (ef SUNN SUNDelta[SUNIndex[a], SUNIndex[b]]) /; noint[ci4,ci6],
-				suI[SUNF[A___,SUNIndex[ij_],B___] ff_] :>
-					(sam[ij, uh[]];
-					(SUNF[A,SUNIndex[ij],B] ff
-					)/. SUNIndex[ij] -> uh[]
-					)/; !FreeQ[ff, SUNIndex[ij]] && FreeQ[ij, dummy[_]]
+			suI[ SUNF[SUNIndex[a_], SUNIndex[ci4_], SUNIndex[ci6_]] SUNF[SUNIndex[b_], SUNIndex[ci4_], SUNIndex[ci7_]]*
+			SUNF[SUNIndex[c_], SUNIndex[ci6_], SUNIndex[ci7_]] ef_.] :>
+				(ef SUNN/2 SUNF[SUNIndex[a],SUNIndex[b],SUNIndex[c]]) /; noint[ci4,ci6,ci7],
+
+			suI[ SUNF[SUNIndex[ci4_], SUNIndex[ci6_],SUNIndex[a_]] SUNF[SUNIndex[ci4_], SUNIndex[ci7_],SUNIndex[b_]]*
+			SUNF[SUNIndex[ci6_], SUNIndex[ci7_],SUNIndex[c_]] ef_.] :>
+				(ef SUNN/2 SUNF[SUNIndex[a],SUNIndex[b],SUNIndex[c]]) /; noint[ci4,ci6,ci7],
+
+			suI[ SUNF[SUNIndex[a_], SUNIndex[ci4_], SUNIndex[ci6_]]	SUNF[SUNIndex[b_], SUNIndex[ci4_], SUNIndex[ci6_]] ef_.] :>
+				(ef SUNN SUNDelta[SUNIndex[a], SUNIndex[b]]) /; noint[ci4,ci6],
+
+			suI[SUNF[A___,SUNIndex[ij_],B___] ff_] :>
+				(sam[ij, uh[]]; (SUNF[A,SUNIndex[ij],B] ff)/. SUNIndex[ij] -> uh[])/;
+				!FreeQ[ff, SUNIndex[ij]] && FreeQ[ij, dummy[_]]
 					,
-				suI[SUNF[SUNIndex[a1_], SUNIndex[ci4_], SUNIndex[ci5_]]*
-			SUNF[SUNIndex[a2_], SUNIndex[ci5_], SUNIndex[e_]]*
-			SUNF[SUNIndex[a3_], SUNIndex[ci4_], SUNIndex[e_]] ef_.
-					] :> -ef CA/2 SUNF[SUNIndex[a1],SUNIndex[a2],SUNIndex[a3]] /; noint[ci4,ci5]
+			suI[SUNF[SUNIndex[a1_], SUNIndex[ci4_], SUNIndex[ci5_]] SUNF[SUNIndex[a2_], SUNIndex[ci5_], SUNIndex[e_]]*
+			SUNF[SUNIndex[a3_], SUNIndex[ci4_], SUNIndex[e_]] ef_.] :>
+				-ef CA/2 SUNF[SUNIndex[a1],SUNIndex[a2],SUNIndex[a3]] /; noint[ci4,ci5]
 					,
-				suI[SUNF[SUNIndex[a1_], SUNIndex[ci4_], SUNIndex[ci5_]]*
-			SUNF[SUNIndex[a2_], SUNIndex[ci4_], SUNIndex[e_]]*
-			SUNF[SUNIndex[a3_], SUNIndex[ci5_], SUNIndex[e_]] ef_.
-					] :> ef CA/2 SUNF[SUNIndex[a1],SUNIndex[a2],SUNIndex[a3]] /; noint[ci4,ci5]
+			suI[SUNF[SUNIndex[a1_], SUNIndex[ci4_], SUNIndex[ci5_]]	SUNF[SUNIndex[a2_], SUNIndex[ci4_], SUNIndex[e_]]*
+			SUNF[SUNIndex[a3_], SUNIndex[ci5_], SUNIndex[e_]] ef_.] :>
+				ef CA/2 SUNF[SUNIndex[a1],SUNIndex[a2],SUNIndex[a3]] /; noint[ci4,ci5]
 					,
-				suI[SUNF[SUNIndex[a1_], SUNIndex[ci4_], SUNIndex[ci5_]]*
-			SUNF[SUNIndex[a2_], SUNIndex[a3_], SUNIndex[e_]]*
-			SUNF[SUNIndex[ci4_], SUNIndex[ci5_], SUNIndex[e_]] ef_.
-					] :> ef CA SUNF[SUNIndex[a1],SUNIndex[a2],SUNIndex[a3]] /; noint[ci4,ci5]
-					,
-			SUNF[a_,b_,c_]^2 :> 2CA^2 CF /; noint[a,b,c]
+			suI[SUNF[SUNIndex[a1_], SUNIndex[ci4_], SUNIndex[ci5_]]	SUNF[SUNIndex[a2_], SUNIndex[a3_], SUNIndex[e_]]*
+			SUNF[SUNIndex[ci4_], SUNIndex[ci5_], SUNIndex[e_]] ef_.] :>
+				ef CA SUNF[SUNIndex[a1],SUNIndex[a2],SUNIndex[a3]] /; noint[ci4,ci5],
+
+			SUNF[a_,b_,c_]^2 :> 2 CA^2 CF /; noint[a,b,c]
 					,
 		(* SUNDRULES*)
 			SUND[a_,b_,c_]^2 :> -2 (4-CA^2) CF /; noint[a,b,c],
@@ -246,8 +226,8 @@ Rename[exp_,ru___Rule] :=
 			SUNF[a_,b_,e_] SUNF[c_,d_,e_] :>  2/SUNN SUNDelta[a,b] SUNDelta[c,d] +
 			SUND[a,c,e] SUND[b,d,e] - SUND[a,d,e] SUND[b,c,e]
 		*)
-				};
-		(* CHANGE 28.6. 93 *)
+		};
+
 		suff[x_] :=
 			x /; FreeQ[x, SUNIndex];
 
@@ -266,6 +246,7 @@ Rename[exp_,ru___Rule] :=
 		suff[x_] :=
 			FixedPoint[(uh[] = uuh[];
 						(suii[#]/.subst)/.suI->Identity)&, x, 42];
+
 		If[ expan === True,
 			FCPrint[2,"expanding w.r.t. sunf done "];
 			new = Expand2[new, SUNIndex];
@@ -298,205 +279,236 @@ setdel[
 HoldPattern[sunTRACEcyc[dottt[z:sunttt[_]..]]] /.dottt->DOT/.sunttt->SUNT ,
 sunTRACE[DOT@@RotateLeft[{z}, Position[{z},Last[Sort[{z}]]][[1,1]]]]];
 
+
+	sunsi3 = {
+				(* f^abc T^a T^b T^c + permutations *)
+
+				sunf[r1___, zz_SUNIndex, r2___, yy_SUNIndex, r3___] dotT[aa___, SUNT[xx_SUNIndex], SUNT[yy_SUNIndex], SUNT[zz_SUNIndex], bb___] :>
+					(*(-1)^(Length[{r2}]+1) sunf[r3, r1, r2, yy, zz] dotT[aa, SUNT[xx], SUNT[yy], SUNT[zz], bb]*)
+					(-1)^(Length[{r2}]+1) I/2 CA CF dotT[aa,bb] /; {r3,r1,r2} === {xx},
+
+
+				sunf[r1___, yy_SUNIndex, r2___, zz_SUNIndex, r3___] dotT[aa___, SUNT[xx_SUNIndex], SUNT[yy_SUNIndex], SUNT[zz_SUNIndex], bb___] :>
+					(*(-1)^(Length[{r2}]) sunf[r3, r1, r2, yy, zz] dotT[aa, SUNT[xx], SUNT[yy], SUNT[zz], bb]*)
+					(-1)^(Length[{r2}]) I/2 CA CF dotT[aa,bb] /; {r3,r1,r2} === {xx}
+			};
+
+			sunsi2 = {
+				(* f^abc T^a T^b + permutations *)
+
+				sunf[r1___, zz_SUNIndex, r2___, yy_SUNIndex, r3___] dotT[aa___, SUNT[yy_SUNIndex], SUNT[zz_SUNIndex], bb___] :>
+					(* (-1)^(Length[{r2}]+1) sunf[r3, r1, r2, yy, zz] dotT[aa, SUNT[yy], SUNT[zz], bb] *)
+					(-1)^(Length[{r2}]+1) I/2 SUNN dotT[aa,SUNT[r3, r1, r2],bb],
+
+				sunf[r1___, yy_SUNIndex, r2___, zz_SUNIndex, r3___] dotT[aa___, SUNT[yy_SUNIndex], SUNT[zz_SUNIndex], bb___] :>
+					(* (-1)^(Length[{r2}]) sunf[r3, r1, r2, yy, zz] dotT[aa, SUNT[yy], SUNT[zz], bb] *)
+					(-1)^(Length[{r2}]) I/2 SUNN dotT[aa,SUNT[r3, r1, r2],bb]
+			};
+
+			sunsi1 = {
+				(* f^abc T^a + permutations *)
+				sunf[r1___,xx_SUNIndex, r2___] SUNT[xx_SUNIndex]  :>
+					I DOT[SUNT[Last[{r2,r1}]] , SUNT[First[{r2,r1}]]] - I DOT[SUNT[First[{r2,r1}]] , SUNT[Last[{r2,r1}]]]/; Length[{r2,r1}]===2
+			};
+
+
+			sunsi = {
+				(* T^a T^a *)
+				dotT[xx___, SUNT[a_SUNIndex], SUNT[a_SUNIndex], yy___] :>
+					((SUNN^2 -1)/(2 SUNN) dotT[xx,yy]),
+				(* T^a T^b T^a *)
+				dotT[xx___, SUNT[a_SUNIndex], SUNT[b_SUNIndex], SUNT[a_SUNIndex], yy___] :>
+					((-1)/(2 SUNN) dotT[xx, SUNT[b], yy]),
+
+				(* general algorithm: T_i T_a = I T_c f_iac + T_a T_i *)
+
+				dotT[xx___, SUNT[i_SUNIndex], SUNT[a_SUNIndex], d:SUNT[_SUNIndex].. , SUNT[i_SUNIndex], e___] :>
+					(dummy=Unique["cc"];
+					I sunf[i,a,SUNIndex[dummy]]  DOT[xx, SUNT[SUNIndex[dummy]], d, SUNT[i], e] +
+					dotT[xx, SUNT[a], SUNT[i], d, SUNT[i], e]),
+
+
+				sunf[r1___, i_SUNIndex, r2___, j_SUNIndex, r3___] dotT[xx___, SUNT[i_SUNIndex], SUNT[a_SUNIndex], d:SUNT[_SUNIndex]... , SUNT[j_SUNIndex], e___] :>
+					(dummy=Unique["cc"];
+					I sunf[r1, i, r2, j, r3] sunf[i,a,SUNIndex[dummy]]  DOT[xx, SUNT[SUNIndex[dummy]], d, SUNT[j], e] +
+					sunf[r1, i, r2, j, r3] dotT[xx, SUNT[a], SUNT[i], d, SUNT[j], e])/; FreeQ2[{a,d},{r1,r2,r3,i,j}],
+
+
+				sunf[r1___, j_SUNIndex, r2___, i_SUNIndex, r3___] dotT[xx___, SUNT[i_SUNIndex], SUNT[a_SUNIndex], d:SUNT[_SUNIndex]... , SUNT[j_SUNIndex], e___] :>
+					(dummy=Unique["cc"];
+					I sunf[r1, j, r2, i, r3] sunf[i,a,SUNIndex[dummy]]  DOT[xx, SUNT[SUNIndex[dummy]], d, SUNT[j], e] +
+					sunf[r1, j, r2, i, r3] dotT[xx, SUNT[a], SUNT[i], d, SUNT[j], e])/; FreeQ2[{a,d},{r1,r2,r3,i,j}]
+
+
+			};
+
+
+
 (*SUNSimplifydef*)
 SetAttributes[SUNSimplify, Listable];
+
 Options[SUNSimplify] = {
-	Expanding    -> False,
-	Explicit     -> False,
-	Factoring    -> False,
-	SUNIndexRename -> True,
-	SUNFJacobi   -> False,
-	SUNNToCACF   -> True,
-	SUNTrace   -> False (*True*) (*Changed 4/9-2002. Frederik Orellana*)
+	Expanding		-> False,
+	Explicit		-> False,
+	Factoring		-> False,
+	FCI 			-> False,
+	FCVerbose 		-> False,
+	SUNIndexRename	-> True,
+	SUNFJacobi		-> False,
+	SUNNToCACF		-> True,
+	SUNTrace		-> False
 };
 
-SUNSimplify[x_, opts___Rule] :=
-	FixedPoint[sunsimp[#, opts]&, x, 6] /. dtr -> DiracTrace;
 
-(* RM20120113: uncomment MemSet, so different Option settings done with SetOptions do have an effect *)
 
-sunsimp[x_, opts___Rule] := (*MemSet[sunsimp[x, opts],*)
-	Block[ {af, temp = fcis[x], sft, sunf, suntraceoption,surule, diractr,doot,
-		expan,sunsi, jac, expanding, Factoring,ntemp,dotT, sunindexrename, tfac = 1},
-		expanding = Expanding /. {opts} /. Options[SUNSimplify];
-		Factoring = Factoring/. {opts} /. Options[SUNSimplify];
-		sunindexrename = SUNIndexRename /. {opts} /. Options[SUNSimplify];
-		af = SUNNToCACF /. {opts} /. Options[SUNSimplify];
-		sft = Explicit /. {opts} /. Options[SUNSimplify];
-		jac = SUNFJacobi /. {opts} /. Options[SUNSimplify];
-		suntraceoption = SUNTrace /. {opts} /. Options[SUNSimplify];
+(* Main entry point *)
+SUNSimplify[x_, opts:OptionsPattern[]] :=
+	FixedPoint[sunsimp[#, Flatten[Join[{opts}, FilterRules[Options[SUNSimplify], Except[{opts}]]]]]&, x, 6] /. dtr -> DiracTrace;
+
+Options[sunsimp] = Options[SUNSimplify];
+
+sunsimp[expr_, opts:OptionsPattern[]] :=
+	Block[ {sunntocacf, ex, temp, explicit, sunf, suntraceoption,surule, diractr,doot,
+		expan, expanding, factoring,ntemp, tfac = 1, time},
+
+		expanding = OptionValue[SUNSimplify,{opts},Expanding];
+		factoring = OptionValue[SUNSimplify,{opts},Factoring];
+		sunntocacf = OptionValue[SUNSimplify,{opts},SUNNToCACF];
+		explicit = OptionValue[SUNSimplify,{opts},Explicit];
+		suntraceoption = OptionValue[SUNSimplify,{opts},SUNTrace];
+
+		If [OptionValue[FCVerbose]===False,
+			sunSiVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+				sunSiVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		If[	OptionValue[FCI],
+			ex = expr,
+			ex = FCI[expr]
+		];
+		temp = ex;
+
+		FCPrint[1, "SUNSimplify: Entering.", FCDoControl->sunSiVerbose];
+		FCPrint[3, "SUNSimplify: Entering with ", temp, FCDoControl->sunSiVerbose];
+
 		If[ Head[temp] === Times,
 			tfac = Select[temp,  FreeQ2[#, {SUNIndex, SUNFIndex, SUNN, CA, CF}]&];
 			temp = Select[temp, !FreeQ2[#, {SUNIndex, SUNFIndex, SUNN, CA, CF}]&];
 		];
+
+
 		If[ !FreeQ[temp, SUNFIndex],
-			temp = SUNFSimplify[temp, SUNNToCACF->af, Explicit->sft];
+			time=AbsoluteTime[];
+			FCPrint[1, "SUNSimplify: Applying SUNFSimplify.", FCDoControl->sunSiVerbose];
+			temp = SUNFSimplify[temp, SUNNToCACF->sunntocacf, Explicit->explicit];
+			FCPrint[1, "SUNSimplify: Done applying SUNFSimplify, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->sunSiVerbose];
 		];
-		temp = temp /. SUNDelta -> SUNDeltaContract/.
-				SUNF[a_,b_,c_,d_SUNIndex] :> SUNF[a,b,c,d, Explicit->True];
-		If[ (!FreeQ[temp, SUNIndex]) || (!FreeQ[temp, SUNN]) ||
-			(*Added 4/9-2002. Frederik Orellana*) suntraceoption,
-			sunsi = {
-					DOT[xx___, SUNT[a_SUNIndex],
-								SUNT[a_SUNIndex], yy___] :>
-					((SUNN^2 -1)/(2 SUNN) dotT[xx,yy]) /; noint[a],
-					DOT[xx___, SUNT[a_SUNIndex], SUNT[b_SUNIndex],
-								SUNT[a_SUNIndex], yy___] :>
-					((-1)/(2 SUNN) dotT[xx, SUNT[b], yy]) /; noint[a],
 
-			(* general algorithm
-				T_i T_a = I T_c f_iac + T_a T_i
-			*)
+		(*TODO Add
 
-			(*
-			this does not really work ...
-					DOT[xx___, SUNT[i_SUNIndex],
-								SUNT[a_SUNIndex],
-								d:SUNT[_SUNIndex].. ,
-								SUNT[i_SUNIndex], e___] :>
-					(
-			FCPrint[3,"using commutator in SUNSimplify"];
-					dumi=Unique["cc"];
-					I SUNF[i,a,SUNIndex[dumi]]*
-						DOT[xx, SUNT[SUNIndex[dumi]], d, SUNT[i], e] +
-						DOT[xx, SUNT[a], SUNT[i], d, SUNT[i], e]
-					) /; noint[i],
-			*)
+		SUNF[a,b,c,d]
+		SUNF[a,b]
+		SUNF[]
 
-					SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] *
-						dotT[aa___, SUNT[xx_SUNIndex], SUNT[yy_SUNIndex],
-									SUNT[zz_SUNIndex], bb___] :>
-						I/2 CA CF dotT[aa,bb] /; noint[xx,yy,zz],
+		*)
 
-					SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] *
-						dotT[aa___, SUNT[xx_SUNIndex], SUNT[zz_SUNIndex],
-									SUNT[yy_SUNIndex], bb___] :>
-						-I/2 CA CF dotT[aa,bb] /; noint[xx,yy,zz],
+		time=AbsoluteTime[];
+		FCPrint[1, "SUNSimplify: Applying SUNDeltaContract.", FCDoControl->sunSiVerbose];
+		temp = temp /. SUNDelta -> SUNDeltaContract/. SUNF[a_,b_,c_,d_SUNIndex] :> SUNF[a,b,c,d, Explicit->True];
+		FCPrint[1, "SUNSimplify: Done applying SUNDeltaContract, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->sunSiVerbose];
+		FCPrint[3, "SUNSimplify: After  SUNDeltaContract", temp, FCDoControl->sunSiVerbose];
 
-					SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] *
-						dotT[aa___, SUNT[zz_SUNIndex], SUNT[xx_SUNIndex],
-									SUNT[yy_SUNIndex], bb___] :>
-						I/2 CA CF dotT[aa,bb] /; noint[xx,yy,zz],
+		If[ !FreeQ[temp, SUNIndex] || !FreeQ[temp, SUNN] || suntraceoption,
 
-					SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] *
-						dotT[aa___, SUNT[yy_SUNIndex], SUNT[xx_SUNIndex],
-									SUNT[zz_SUNIndex], bb___] :>
-						-I/2 CA CF dotT[aa,bb] /; noint[xx,yy,zz],
 
-					SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] *
-						dotT[aa___, SUNT[yy_SUNIndex], SUNT[zz_SUNIndex],
-									SUNT[xx_SUNIndex], bb___] :>
-						I/2 CA CF dotT[aa,bb] /; noint[xx,yy,zz],
-
-					SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] *
-						dotT[aa___, SUNT[zz_SUNIndex], SUNT[yy_SUNIndex],
-							bb___] :>
-						-I/2 SUNN dotT[aa,SUNT[xx],bb] /; noint[yy,zz],
-					SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] *
-						dotT[aa___, SUNT[yy_SUNIndex], SUNT[zz_SUNIndex], bb___] :>
-						I/2 SUNN dotT[aa,SUNT[xx],bb] /; noint[yy,zz],
-
-					SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] SUNT[xx_SUNIndex]  :>
-						I DOT[SUNT[zz] , SUNT[yy]] - I DOT[SUNT[yy] , SUNT[zz]] /; noint[xx],
-
-					SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] SUNT[zz_SUNIndex] :>
-						I DOT[SUNT[yy] , SUNT[xx]] - I DOT[SUNT[xx] , SUNT[yy]] /; noint[zz],
-
-					SUNF[xx_SUNIndex, yy_SUNIndex, zz_SUNIndex] SUNT[yy_SUNIndex] :>
-						I DOT[SUNT[xx] , SUNT[zz]] - I DOT[SUNT[zz] , SUNT[xx]] /; noint[yy]
-
-					}  /. dotT[] -> 1 //. {dotT[a___,1,b___] :> dotT[a,b]} /.
-							dotT[] -> 1 /. dotT -> DOT;
-			If[ sft === True,
+			If[ explicit,
 				sunfL[a__] :=
 					SUNF[a, Explicit -> True];
+
 				sundL[a__] :=
 					SUND[a, Explicit -> True],
+(*
 				SetOptions[SUND, Explicit-> False];
 				SetOptions[SUNF, Explicit-> False];
+*)
 				sundL[a__] :=
 					SUND[a];
 				sunfL[a__] :=
 					SUNF[a]
 			];
-			(*
-			If[True,
-				If[!FreeQ[temp, DiracGamma],
-					temp = DotSimplify[temp,Expanding->False]];
-					temp = temp /. DOT[a___diracgamma, b___sunt] :>
-								(DOT[a] DOT[b])
-				];
-			*)
 
-			(* CHANGE Rolf Mertig 20060215 : better to do this here:*)
-			temp = temp //. sunsi;
-			If[ sunindexrename === True,
-				FCPrint[1,"renaming in SUNSimplify"];
+			time=AbsoluteTime[];
+			FCPrint[1, "SUNSimplify: Applying simplification rules.", FCDoControl->sunSiVerbose];
+			temp = FixedPoint[Expand2[(# /. SUNTrace -> sunTrace /. DOT -> dotT /. SUNF -> sunf //. sunsi //. sunsi3 //. sunsi2 //. sunsi1 //. sunsi /. dotT[] -> 1 //.
+				{dotT[a___,1,b___] :> dotT[a,b]} /. dotT[] -> 1),{SUNF,SUNT}]&, temp]/. dotT -> DOT /. sunf ->SUNF /. sunTrace ->SUNTrace;
+			FCPrint[1, "SUNSimplify: Done applying simplification rules, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->sunSiVerbose];
+			FCPrint[3, "SUNSimplify: After applying simplification rules, ", temp, FCDoControl->sunSiVerbose];
+
+
+			If[ OptionValue[SUNSimplify,{opts},SUNIndexRename],
+				time=AbsoluteTime[];
+				FCPrint[1, "SUNSimplify: Renaming.", FCDoControl->sunSiVerbose];
 				temp = Rename[temp, Expanding -> expanding];
-				FCPrint[1,"renaming in SUNSimplify done"];
+				FCPrint[1, "SUNSimplify: Renaming done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->sunSiVerbose];
+				FCPrint[3, "SUNSimplify: After renaming, ", temp, FCDoControl->sunSiVerbose];
 			];
-			If[ True,
-				If[ !FreeQ[temp, DiracTrace],
-					If[ suntraceoption === True,
-						surule = {(* Added 4/9-2002. Frederik Orellana.
-									Expressions without SUNT
-									(proportional to the identity matrix)
-									were not SUNTrace'd *)
-								diractr[dd_Times , dops___Rule] :>
-								SUNTrace[SelectNotFree[dd, SUNIndex]]*
-									dtr[SelectFree[dd, SUNIndex], dops] /;
-									FreeQ[dd, SUNT[___]],
-								diractr[dd_?((Head[#]=!=Times)&) , ___Rule] :>
-								SUNTrace[dtr[dd]]/;
-									FreeQ[dd, SUNT[___]],
 
-								(*Added Times to avoid SelectNotFree[a+b,SUNIndex] --> 0*)
-								diractr[doot[xx__sunt] dd_. , dops___Rule] :>
-								SUNTrace[DOT[xx] SelectNotFree[dd, SUNIndex]]*
-									DiracTrace[SelectFree[dd, SUNIndex], dops],
-								diractr[doot[xx__sunt, y__] dd_., dops___Rule] :>
-								SUNTrace[DOT[xx] SelectNotFree[dd, SUNIndex]] *
-									DiracTrace[doot[y] SelectFree[dd, SUNIndex], dops ] /;
-									FreeQ[{y}, SUNIndex],
-								diractr[doot[SUNT[_], dd_], ___Rule] :> 0 /;
-									FreeQ2[dd,{SUNIndex,SUNT}],
-								diractr[SUNT[_]  dd_., ___Rule] :> 0 /;
-									FreeQ2[dd,{SUNIndex,SUNT}]
-								},
-						surule = {diractr[doot[xx__sunt] dd_. , dops___Rule] :>
-									DOT[xx] SelectNotFree[dd, SUNIndex] *
-									DiracTrace[SelectFree[dd, SUNIndex], dops],
-								diractr[doot[xx__sunt, y__] dd_. , dops___Rule] :>
-									DOT[xx] SelectNotFree[dd, SUNIndex] *
-									DiracTrace[doot[y] SelectFree[dd, SUNIndex], dops] /;
-									FreeQ[{y}, SUNIndex]
-								}
-					];
-					temp = temp /. DiracTrace -> diractr /.
-												DOT -> doot /. surule /.
-												doot -> DOT /. diractr -> DiracTrace/.
-												SUNDelta -> SUNDeltaContract /.
-												SUNDeltaContract->SUNDelta
-				]
+
+			If[ !FreeQ[temp, DiracTrace],
+				If[ suntraceoption === True,
+					surule = {(* Added 4/9-2002. Frederik Orellana.
+								Expressions without SUNT
+								(proportional to the identity matrix)
+								were not SUNTrace'd *)
+							diractr[dd_Times , dops___Rule] :>
+							SUNTrace[SelectNotFree[dd, SUNIndex]]*
+								dtr[SelectFree[dd, SUNIndex], dops] /;
+								FreeQ[dd, SUNT[___]],
+							diractr[dd_?((Head[#]=!=Times)&) , ___Rule] :>
+							SUNTrace[dtr[dd]]/;
+								FreeQ[dd, SUNT[___]],
+
+							(*Added Times to avoid SelectNotFree[a+b,SUNIndex] --> 0*)
+							diractr[doot[xx__sunt] dd_. , dops___Rule] :>
+							SUNTrace[DOT[xx] SelectNotFree[dd, SUNIndex]]*
+								DiracTrace[SelectFree[dd, SUNIndex], dops],
+							diractr[doot[xx__sunt, y__] dd_., dops___Rule] :>
+							SUNTrace[DOT[xx] SelectNotFree[dd, SUNIndex]] *
+								DiracTrace[doot[y] SelectFree[dd, SUNIndex], dops ] /;
+								FreeQ[{y}, SUNIndex],
+							diractr[doot[SUNT[_], dd_], ___Rule] :> 0 /;
+								FreeQ2[dd,{SUNIndex,SUNT}],
+							diractr[SUNT[_]  dd_., ___Rule] :> 0 /;
+								FreeQ2[dd,{SUNIndex,SUNT}]
+							},
+					surule = {diractr[doot[xx__sunt] dd_. , dops___Rule] :>
+								DOT[xx] SelectNotFree[dd, SUNIndex] *
+								DiracTrace[SelectFree[dd, SUNIndex], dops],
+							diractr[doot[xx__sunt, y__] dd_. , dops___Rule] :>
+								DOT[xx] SelectNotFree[dd, SUNIndex] *
+								DiracTrace[doot[y] SelectFree[dd, SUNIndex], dops] /;
+								FreeQ[{y}, SUNIndex]
+							}
+				];
+				temp = temp /. DiracTrace -> diractr /.
+											DOT -> doot /. surule /.
+											doot -> DOT /. diractr -> DiracTrace/.
+											SUNDelta -> SUNDeltaContract /.
+											SUNDeltaContract->SUNDelta
 			];
-			If[ FreeQ2[temp, {SUNTrace}] && sft === False,
-			(*
-				expan = Identity, expan = Expand2(*All*)[#, SUNIndex]&
-			*)
-			(*XXX*)
+
+			If[ FreeQ2[temp, {SUNTrace}] && !explicit,
 				expan = Identity,
 				expan = Expand2(*All*)[#, SUNIndex]&
 			];
-			temp = FixedPoint[expan, temp /. SUNTrace -> sunTRACEcyc /.
-									DOT -> gm2lambdaT /.lambdaT -> SUNT /.
-									sunTRACEcyc -> SUNTrace /.
-								sunTRACE -> SUNTrace /. {SUNF :> sunfL, SUND :> sundL}
-							];
-			If[ jac === True && !FreeQ[temp, SUNF],
-				temp = temp /. SUNF -> sUNF /.
-								(sUNF[a_, b_, c_] * sUNF[d_, c_, e_] ) ->
-								(- sUNF[a, b, c] sUNF[d, e, c]) /.
-								(sUNF[a_, b_, c_] * sUNF[c_, d_, e_] ) ->
+			temp = FixedPoint[expan, temp /. SUNTrace -> sunTRACEcyc /. DOT -> gm2lambdaT /.lambdaT -> SUNT /.
+				sunTRACEcyc -> SUNTrace /. sunTRACE -> SUNTrace /. {SUNF :> sunfL, SUND :> sundL} ];
+
+			If[ OptionValue[SUNSimplify,{opts},SUNFJacobi] && !FreeQ[temp, SUNF],
+				temp = temp /. SUNF -> sUNF /. (sUNF[a_, b_, c_] sUNF[d_, c_, e_] ) ->
+					(- sUNF[a, b, c] sUNF[d, e, c]) /. (sUNF[a_, b_, c_] sUNF[c_, d_, e_] ) ->
 									(sUNF[a, b, c] sUNF[d, e, c])/.
 								{ sUNF[SUNIndex[a_], SUNIndex[c_], SUNIndex[e_]]*
 								sUNF[SUNIndex[b_], SUNIndex[d_], SUNIndex[e_]] :>
@@ -512,9 +524,15 @@ sunsimp[x_, opts___Rule] := (*MemSet[sunsimp[x, opts],*)
 
 
 			If[ !FreeQ[temp, SUNIndex],
-				temp = temp /. sunsi;
+				time=AbsoluteTime[];
+				FCPrint[1, "SUNSimplify: Applying simplification rules.", FCDoControl->sunSiVerbose];
+				temp = FixedPoint[Expand2[(# /. SUNTrace -> sunTrace /. DOT -> dotT /. SUNF -> sunf //. sunsi //. sunsi3 //. sunsi2 //. sunsi1 //. sunsi /. dotT[] -> 1 //.
+				{dotT[a___,1,b___] :> dotT[a,b]} /. dotT[] -> 1),{SUNF,SUNT}]&, temp]/. dotT -> DOT /. sunf ->SUNF /. sunTrace ->SUNTrace;
+				FCPrint[1, "SUNSimplify: Done applying simplification rules, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->sunSiVerbose];
+				FCPrint[3, "SUNSimplify: After applying simplification rules, ", temp, FCDoControl->sunSiVerbose]
 			];
-			If[ expanding === True,
+
+			If[ expanding,
 				temp = Expand[temp],
 				If[ LeafCount[temp] < 242 && Head[temp] === Plus,
 					ntemp = Expand[temp];
@@ -523,24 +541,19 @@ sunsimp[x_, opts___Rule] := (*MemSet[sunsimp[x, opts],*)
 					]
 				];
 			];
-			If[ Factoring === True,
+			If[ factoring === True,
 				temp = Factor2[temp, FactorFull -> False]
 			];
 		](*thatsthemainIf*);
-		If[ af === True,
+		If[ sunntocacf,
 			If[ LeafCount[temp] < 1442(* RM20120113: exteneded the limit *),
 				temp = Factor2[temp /. {CA ->SUNN, CF -> (SUNN^2-1)/(2 SUNN)}, FactorFull -> False]
 			];
-			temp = temp /. (1-SUNN^2) -> (-CF 2 CA) /.
-					SUNN -> CA /. (-1 + CA^2)->(2 CA CF);
-			temp = temp /.
+			temp = temp /. (1-SUNN^2) -> (-CF 2 CA) /. SUNN -> CA /. (-1 + CA^2)->(2 CA CF);
 			(* RM20120113 added this in response to http://www.feyncalc.org/forum/0682.html, which is not a real bug, but well *)
-				( ((2 - CA^2) CF )/CA ) ->(CF (CA - 4 CF));
-			temp = temp /.
-					(1-CA^2) -> (-2 CA CF) /.
-					(1/CA) -> (CA - 2 CF) /.
-					((1 - CA^2)*(CA - 2*CF)) -> (-2*CF) /.
-					(CA (CA-2 CF)) -> 1,
+			temp = temp /. (((2 - CA^2) CF )/CA ) ->(CF (CA - 4 CF));
+			temp = temp /. (1-CA^2) -> (-2 CA CF) /. (1/CA) -> (CA - 2 CF) /. ((1 - CA^2)*(CA - 2*CF)) -> (-2*CF) /.
+				(CA (CA-2 CF)) -> 1,
 			temp = temp /. CA -> SUNN /. CF -> ((SUNN^2-1)/(2 SUNN))
 		];
 		If[ tfac =!= 1,
@@ -552,7 +565,7 @@ sunsimp[x_, opts___Rule] := (*MemSet[sunsimp[x, opts],*)
 		];
 		temp = DotSimplify[temp, Expanding -> False];
 		temp
-	](*] *);
+	];
 
 FCPrint[1,"SUNSimplify.m loaded."];
 End[]
