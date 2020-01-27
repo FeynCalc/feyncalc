@@ -530,7 +530,16 @@ Cell[BoxData[
        TraditionalForm],
       TraditionalForm]}]]}], TraditionalForm]], "Output",
  CellLabel->"Out[34]="]
-}, Open  ]]
+}, Open  ]],
+
+Cell["\<\
+You can also use this trick in QCD, provided that unphysical degress of \
+freedom are subtracted using ghosts at a later stage. Notice that in this \
+case you should not make the polarization vectors transverse using the \
+Transversality option. Furthermore, the averaging over the polarizations of \
+the initial gluons must done on the physical amplitude squared, i.e. after \
+the ghost contributions have been subtracted.\
+\>", "Notes"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2472,13 +2481,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{877, 832},
-WindowMargins->{{1351, Automatic}, {155, Automatic}},
+WindowMargins->{{354, Automatic}, {Automatic, 16}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

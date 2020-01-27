@@ -409,6 +409,234 @@ Cell[BoxData[
  FormBox["0", TraditionalForm]], "Output",
  CellTags->"PolarizationVector",
  CellLabel->"Out[15]="]
+}, Open  ]],
+
+Cell[TextData[{
+ "Suppose that you are using unphysical polarization vectors for massless \
+gauge bosons and intend to remove the unphysical degrees of freedom at a \
+later stage using ghosts. In this case you must not use ",
+ StyleBox["Transversality\[Rule]True", "InlineFormula"],
+ ", since your polarization vectors are not transverse. Otherwise the result \
+will be inconsistent."
+}], "Notes"],
+
+Cell["\<\
+Here everything is correct, we can use the gauge trick with unphysical \
+polarization vectors.\
+\>", "Notes"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FCClearScalarProducts", "[", "]"}], ";", 
+  RowBox[{
+   RowBox[{"SP", "[", "k1", "]"}], "=", "0"}], ";", 
+  RowBox[{
+   RowBox[{"SP", "[", "k2", "]"}], "=", "0"}], ";"}]], "Input",
+ CellLabel->"In[27]:="],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\:0435\:04451", "=", 
+  RowBox[{
+   RowBox[{"SP", "[", 
+    RowBox[{"k1", ",", 
+     RowBox[{"Polarization", "[", 
+      RowBox[{"k1", ",", "I"}], "]"}]}], "]"}], " ", 
+   RowBox[{"SP", "[", 
+    RowBox[{"k2", ",", 
+     RowBox[{"Polarization", "[", 
+      RowBox[{"k1", ",", 
+       RowBox[{"-", "I"}]}], "]"}]}], "]"}], " ", 
+   RowBox[{"SP", "[", 
+    RowBox[{"k1", ",", 
+     RowBox[{"Polarization", "[", 
+      RowBox[{"k2", ",", "I"}], "]"}]}], "]"}], " ", 
+   RowBox[{"SP", "[", 
+    RowBox[{"k2", ",", 
+     RowBox[{"Polarization", "[", 
+      RowBox[{"k2", ",", 
+       RowBox[{"-", "I"}]}], "]"}]}], "]"}]}]}]], "Input",
+ CellLabel->"In[28]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      FormBox[
+       OverscriptBox[
+        FormBox["k1",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       RowBox[{
+        OverscriptBox["\[CurlyEpsilon]", "_"], "(", 
+        FormBox["k1",
+         TraditionalForm], ")"}],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], " ", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      FormBox[
+       OverscriptBox[
+        FormBox["k2",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       RowBox[{
+        SuperscriptBox[
+         OverscriptBox["\[CurlyEpsilon]", "_"], "*"], "(", 
+        FormBox["k2",
+         TraditionalForm], ")"}],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], " ", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      FormBox[
+       OverscriptBox[
+        FormBox["k1",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       RowBox[{
+        OverscriptBox["\[CurlyEpsilon]", "_"], "(", 
+        FormBox["k2",
+         TraditionalForm], ")"}],
+       TraditionalForm]}],
+     TraditionalForm], ")"}], " ", 
+   RowBox[{"(", 
+    FormBox[
+     RowBox[{
+      FormBox[
+       OverscriptBox[
+        FormBox["k2",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       RowBox[{
+        SuperscriptBox[
+         OverscriptBox["\[CurlyEpsilon]", "_"], "*"], "(", 
+        FormBox["k1",
+         TraditionalForm], ")"}],
+       TraditionalForm]}],
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[28]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\:0435\:04451", "//", 
+   RowBox[{
+    RowBox[{"DoPolarizationSums", "[", 
+     RowBox[{"#", ",", "k1", ",", "0"}], "]"}], "&"}]}], "//", 
+  RowBox[{
+   RowBox[{"DoPolarizationSums", "[", 
+    RowBox[{"#", ",", "k2", ",", "0"}], "]"}], "&"}]}]], "Input",
+ CellLabel->"In[29]:="],
+
+Cell[BoxData[
+ FormBox[
+  SuperscriptBox[
+   RowBox[{
+    FormBox["\<\"(\"\>",
+     TraditionalForm], 
+    FormBox[
+     RowBox[{
+      FormBox[
+       OverscriptBox[
+        FormBox["k1",
+         TraditionalForm], "_"],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       OverscriptBox[
+        FormBox["k2",
+         TraditionalForm], "_"],
+       TraditionalForm]}],
+     TraditionalForm], 
+    FormBox["\<\")\"\>",
+     TraditionalForm]}], "2"], TraditionalForm]], "Output",
+ CellLabel->"Out[29]="]
+}, Open  ]],
+
+Cell[TextData[{
+ "Here we erroneously set  ",
+ StyleBox["Transversality\[Rule]True", "InlineFormula"],
+ "  and consequently obtain a wrong result. In pure QED the full result \
+(physical amplitude squared) would still come out correct owing to Ward \
+identities, but e.g. in QCD this would not be the case."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\:0435\:04452", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"SP", "[", 
+     RowBox[{"k1", ",", 
+      RowBox[{"Polarization", "[", 
+       RowBox[{"k1", ",", "I", ",", 
+        RowBox[{"Transversality", "\[Rule]", "True"}]}], "]"}]}], "]"}], " ", 
+    
+    RowBox[{"SP", "[", 
+     RowBox[{"k2", ",", 
+      RowBox[{"Polarization", "[", 
+       RowBox[{"k1", ",", 
+        RowBox[{"-", "I"}], ",", 
+        RowBox[{"Transversality", "\[Rule]", "True"}]}], "]"}]}], "]"}], " ", 
+    
+    RowBox[{"SP", "[", 
+     RowBox[{"k1", ",", 
+      RowBox[{"Polarization", "[", 
+       RowBox[{"k2", ",", "I", ",", 
+        RowBox[{"Transversality", "\[Rule]", "True"}]}], "]"}]}], "]"}], " ", 
+    
+    RowBox[{"SP", "[", 
+     RowBox[{"k2", ",", 
+      RowBox[{"Polarization", "[", 
+       RowBox[{"k2", ",", 
+        RowBox[{"-", "I"}], ",", 
+        RowBox[{"Transversality", "\[Rule]", "True"}]}], "]"}]}], "]"}]}], "//",
+    "FCI"}]}]], "Input",
+ CellLabel->"In[30]:="],
+
+Cell[BoxData[
+ FormBox["0", TraditionalForm]], "Output",
+ CellLabel->"Out[30]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\:0435\:04452", "//", 
+   RowBox[{
+    RowBox[{"DoPolarizationSums", "[", 
+     RowBox[{"#", ",", "k1", ",", "0"}], "]"}], "&"}]}], "//", 
+  RowBox[{
+   RowBox[{"DoPolarizationSums", "[", 
+    RowBox[{"#", ",", "k2", ",", "0"}], "]"}], "&"}]}]], "Input",
+ CellLabel->"In[31]:="],
+
+Cell[BoxData[
+ FormBox["0", TraditionalForm]], "Output",
+ CellLabel->"Out[31]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -473,13 +701,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{634, Automatic}, {Automatic, 140}},
+WindowMargins->{{614, Automatic}, {28, Automatic}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
