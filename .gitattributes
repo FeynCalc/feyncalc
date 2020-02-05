@@ -6,8 +6,8 @@
 *.conf linguist-language=Mathematica
 *.Fac linguist-language=Mathematica
 Tests export-ignore
-FeynCalc/DocSource
-FeynCalc/DocOutput export-ignore
+FeynCalc/DocSource export-ignore
+FeynCalc/DocOutput
 FeynCalc/Phi export-ignore
 install.m export-ignore
 .project export-ignore
