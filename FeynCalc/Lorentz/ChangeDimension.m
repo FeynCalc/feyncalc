@@ -47,19 +47,16 @@ ChangeDimension[ex_, dim_, OptionsPattern[]] :=
 			expr = FCI[ex]
 		];
 
-		Switch[ dim,
-			4,
-				lorentzDim = 4;
-				cartesianDim = 3,
+
+		Switch[Together[dim+4],
+			(* For dim being D-4 we need to put both Lorentz and Cartesian dimensions to D-4 *)
 			_Symbol,
 				lorentzDim = dim;
-				cartesianDim = dim-1,
-			_Symbol -4,
-				lorentzDim = dim;
 				cartesianDim = dim,
+			(* Otherwise the Cartesian dimension is one unit less than the Lorentz dimension *)
 			_,
-			Message[ChangeDimension::failmsg, "Unsupported choice of dimension!"];
-			Abort[]
+				lorentzDim = dim;
+				cartesianDim = dim-1
 		];
 
 		tmp = expr /. DiracChain -> holdDiracChain /. DiracGamma -> holdDiracGamma /. PauliSigma -> holdPauliSigma /. Pair-> holdPair /. CartesianPair->holdCartesianPair  /. Eps -> holdEps;
