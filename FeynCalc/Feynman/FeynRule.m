@@ -55,7 +55,7 @@ sununique[a_] :=
 	pluc[xx__] :=
 		If[ !FreeQ[{xx}, SUNIndex],
 			Map[(#/.Plus->((Factor1 /@ Collect[Plus[##],Variables[Plus[##]]] )&))&,
-				Factor1 /@ Collect2[Plus[xx], SUNIndex|ExplicitSUNIndex, Factoring -> False]],
+				Factor1 /@ Collect2[Plus[xx], SUNIndex,ExplicitSUNIndex, Factoring -> False]],
 			Map[Factor1,
 				Collect2[Plus[xx], {Pair[LorentzIndex[_], LorentzIndex[_]] },
 						Factoring->False] ]
@@ -96,7 +96,7 @@ frex[nl_] :=
 							];
 				(* get a list of all LorentzIndex *)
 				lorindlist = Cases2[nla, LorentzIndex];
-				sunindlist = Cases2[nla, SUNIndex|ExplicitSUNIndex];
+				sunindlist = Cases2[nla, SUNIndex,ExplicitSUNIndex];
 				(* select those which occur an even number of times *)
 				newlorlist = {};
 				newsunlist = {};
@@ -508,7 +508,7 @@ FeynRule[lag_, fii_List, ru___Rule] :=
 			FCPrint[1, "FeynRule: After DotSimplify ", nlag, FCDoControl->frVerbose];
 
 			If[ !FreeQ[nlag, SUNDelta],
-				nlag = Expand2[nlag, SUNIndex|ExplicitSUNIndex]/.SUNDelta-> SUNDeltaContract/.
+				nlag = Expand2[nlag, {SUNIndex,ExplicitSUNIndex}]/.SUNDelta-> SUNDeltaContract/.
 				SUNDeltaContract->SUNDelta
 			];
 
@@ -746,8 +746,8 @@ FeynRule[lag_, fii_List, ru___Rule] :=
 					];
 					result = result /. Power2 -> Power,
 
-					If[ !FreeQ[result, SUNIndex|ExplicitSUNIndex],
-						result = Collect2[result, SUNIndex|ExplicitSUNIndex, Factoring -> False, Expanding -> False];
+					If[ !FreeQ2[result, {SUNIndex,ExplicitSUNIndex}],
+						result = Collect2[result, SUNIndex,ExplicitSUNIndex, Factoring -> False, Expanding -> False];
 					];
 					FCPrint[1, "collect2ing done; ", FCDoControl->frVerbose];
 					If[ LeafCount[result]<1000,
@@ -783,11 +783,11 @@ FeynRule[lag_, fii_List, ru___Rule] :=
 (* ******************************************************************** *)
 
 feinarbeit[fey_Times, pl_List] :=
-	SelectNotFree[fey, SUNIndex|ExplicitSUNIndex]  *
-	feinarbeit[SelectFree[fey,  SUNIndex|ExplicitSUNIndex], pl] /; !FreeQ[fey,
-	SUNIndex|ExplicitSUNIndex];
+	SelectNotFree[fey, SUNIndex,ExplicitSUNIndex]  *
+	feinarbeit[SelectFree[fey,  SUNIndex,ExplicitSUNIndex], pl] /; !FreeQ2[fey,
+	{SUNIndex,ExplicitSUNIndex}];
 
-feinarbeit[fey_ /; FreeQ[fey, SUNIndex|ExplicitSUNIndex], pli_List] :=
+feinarbeit[fey_ /; FreeQ2[fey, {SUNIndex,ExplicitSUNIndex}], pli_List] :=
 	Block[ {uniqli,onepm, onemm, resu, legs, fop, foop, ores, nopres,
 	ple,pleps,power3,schau},
 		If[ FreeQ[fey, OPEDelta],
