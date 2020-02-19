@@ -358,6 +358,205 @@ Cell[BoxData[
      RowBox[{"D", "-", "4"}], ")"}]}]], TraditionalForm]], "Output",
  CellLabel->"Out[75]=",
  CellID->146736684]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"int", "=", 
+  RowBox[{
+   RowBox[{"FVD", "[", 
+    RowBox[{
+     RowBox[{"k", "+", "p"}], ",", "rho"}], "]"}], 
+   RowBox[{"FVD", "[", 
+    RowBox[{
+     RowBox[{"k", "+", "p"}], ",", "si"}], "]"}], 
+   RowBox[{"FAD", "[", 
+    RowBox[{"k", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"k", "+", "p"}], ",", "0", ",", "2"}], "}"}]}], 
+    "]"}]}]}]], "Input",
+ CellLabel->"In[10]:="],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{
+    FormBox[
+     SuperscriptBox[
+      RowBox[{"(", 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox["k",
+           TraditionalForm], "+", 
+          FormBox["p",
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], ")"}], 
+      FormBox[
+       FormBox["rho",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm], " ", 
+    FormBox[
+     SuperscriptBox[
+      RowBox[{"(", 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox["k",
+           TraditionalForm], "+", 
+          FormBox["p",
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], ")"}], 
+      FormBox[
+       FormBox["si",
+        TraditionalForm],
+       TraditionalForm]],
+     TraditionalForm]}], 
+   RowBox[{
+    InterpretationBox[
+     SuperscriptBox[
+      FormBox[
+       FormBox["k",
+        TraditionalForm],
+       TraditionalForm], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[$CellContext`k, D], 
+       FeynCalc`Momentum[$CellContext`k, D]]],
+     Editable->False], ".", 
+    SuperscriptBox[
+     InterpretationBox[
+      SuperscriptBox[
+       RowBox[{
+        FormBox["\<\"(\"\>",
+         TraditionalForm], 
+        FormBox[
+         FormBox[
+          RowBox[{
+           FormBox["k",
+            TraditionalForm], "+", 
+           FormBox["p",
+            TraditionalForm]}],
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox["\<\")\"\>",
+         TraditionalForm]}], "2"],
+      SequenceForm[
+       FeynCalc`Pair[
+        FeynCalc`Momentum[$CellContext`k + $CellContext`p, D], 
+        FeynCalc`Momentum[$CellContext`k + $CellContext`p, D]]],
+      Editable->False], "2"]}]], TraditionalForm]], "Output",
+ CellLabel->"Out[10]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"TID", "[", 
+  RowBox[{"int", ",", "k", ",", 
+   RowBox[{"UsePaVeBasis", "\[Rule]", "True"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"%", "//", 
+  RowBox[{
+   RowBox[{"PaVeUVPart", "[", 
+    RowBox[{"#", ",", 
+     RowBox[{"FCE", "\[Rule]", "True"}]}], "]"}], "&"}]}]}], "Input",
+ CellLabel->"In[12]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"\[ImaginaryI]", " ", 
+    SuperscriptBox["\[Pi]", "2"], " ", 
+    SuperscriptBox["g", 
+     RowBox[{
+      FormBox[
+       FormBox["rho",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox[
+       FormBox["si",
+        TraditionalForm],
+       TraditionalForm]}]], " ", 
+    FormBox[
+     RowBox[{
+      SubscriptBox["\<\"C\"\>", "\<\"00\"\>"], "(", 
+      RowBox[{"0", ",", 
+       SuperscriptBox[
+        FormBox[
+         FormBox["p",
+          TraditionalForm],
+         TraditionalForm], "2"], ",", 
+       SuperscriptBox[
+        FormBox[
+         FormBox["p",
+          TraditionalForm],
+         TraditionalForm], "2"], ",", "0", ",", "0", ",", "0"}], ")"}],
+     TraditionalForm]}], "+", 
+   RowBox[{"\[ImaginaryI]", " ", 
+    SuperscriptBox["\[Pi]", "2"], " ", 
+    SuperscriptBox[
+     FormBox[
+      FormBox["p",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["rho",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    SuperscriptBox[
+     FormBox[
+      FormBox["p",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox[
+      FormBox["si",
+       TraditionalForm],
+      TraditionalForm]], " ", 
+    FormBox[
+     RowBox[{
+      SubscriptBox["\<\"C\"\>", "\<\"22\"\>"], "(", 
+      RowBox[{"0", ",", 
+       SuperscriptBox[
+        FormBox[
+         FormBox["p",
+          TraditionalForm],
+         TraditionalForm], "2"], ",", 
+       SuperscriptBox[
+        FormBox[
+         FormBox["p",
+          TraditionalForm],
+         TraditionalForm], "2"], ",", "0", ",", "0", ",", "0"}], ")"}],
+     TraditionalForm]}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[12]="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"-", 
+   FractionBox[
+    RowBox[{"\[ImaginaryI]", " ", 
+     SuperscriptBox["\[Pi]", "2"], " ", 
+     FormBox[
+      SuperscriptBox["g", 
+       RowBox[{
+        FormBox[
+         FormBox["rho",
+          TraditionalForm],
+         TraditionalForm], 
+        FormBox[
+         FormBox["si",
+          TraditionalForm],
+         TraditionalForm]}]],
+      TraditionalForm]}], 
+    RowBox[{"2", " ", 
+     RowBox[{"(", 
+      RowBox[{"D", "-", "4"}], ")"}]}]]}], TraditionalForm]], "Output",
+ CellLabel->"Out[13]="]
 }, Open  ]]
 }, Open  ]],
 
@@ -422,12 +621,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{722, Automatic}, {Automatic, 253}},
+WindowMargins->{{482, Automatic}, {Automatic, 75}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+
