@@ -86,15 +86,28 @@ PropagatorDenominator[Momentum[LoopMom1 - OutMom1], 0]]*Pair[LorentzIndex[Lor1],
 {"fcstFCPrepareFAAmp-ID8","MatchQ[FCPrepareFAAmp[
 Times[FeynArts`IndexSum[
 	Times[FeynArts`DiracObject[Global`FADiracMatrix[a],
-	   Global`FAChiralityProjector[-1]][
-	  FeynArts`Index[Global`Dirac, 1],
-	  FeynArts`Index[Global`Dirac, 3]],
-	 FeynArts`DiracObject[Global`FADiracMatrix[a],
-	   Global`FAChiralityProjector[-1]][
-	  FeynArts`Index[Global`Dirac, 4],
-	  FeynArts`Index[Global`Dirac, 2]]], List[a, 1, 4]]]],
+	Global`FAChiralityProjector[-1]][
+	FeynArts`Index[Global`Dirac, 1],
+	FeynArts`Index[Global`Dirac, 3]],
+	FeynArts`DiracObject[Global`FADiracMatrix[a],
+	Global`FAChiralityProjector[-1]][
+	FeynArts`Index[Global`Dirac, 4],
+	FeynArts`Index[Global`Dirac, 2]]], List[a, 1, 4]]]],
 DiracChain[DiracGamma[z_LorentzIndex].DiracGamma[7],
 DiracIndex[Dir1], DiracIndex[Dir3]] DiracChain[
 DiracGamma[z_LorentzIndex].DiracGamma[7], DiracIndex[Dir4],
-DiracIndex[Dir2]]]","True"}
+DiracIndex[Dir2]]]","True"},
+{"fcstFCPrepareFAAmp-ID9","MatchQ[tmp =
+FCPrepareFAAmp[
+FeynArts`IndexSum[
+	DiracChain[
+	DiracGamma[LorentzIndex[a, D], D].DiracGamma[LorentzIndex[b, D],
+		D].DiracGamma[LorentzIndex[c, D], D].DiracGamma[7],
+	DiracIndex[Dir4], DiracIndex[Dir8]] DiracChain[
+	DiracGamma[LorentzIndex[a, D], D].DiracGamma[LorentzIndex[b, D],
+		D].DiracGamma[LorentzIndex[c, D], D].DiracGamma[7],
+	DiracIndex[Dir6], DiracIndex[Dir2]], {a, 1, 4}, {b, 1, 4}, {c,
+	1, 4}]]; FCE[tmp],
+DCHN[GAD[Ind116_].GAD[Ind117_].GAD[Ind118_].GA[7], Dir4, Dir8] DCHN[
+GAD[Ind116_].GAD[Ind117_].GAD[Ind118_].GA[7], Dir6, Dir2]]","True"}
 };

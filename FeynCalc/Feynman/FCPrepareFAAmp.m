@@ -77,7 +77,10 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 
 		replist0 = {
 			NonCommutative[x__] :> FeynArts`FANonCommutative[x],
-			FeynArts`IndexSum[x_, {ind_, _, _}] /; Length[Cases[x, ind, Infinity, Heads -> True]] == 2 && FreeQ[x,FeynArts`IndexSum] :> (tmp = Unique["Ind"] ; x /. ind -> tmp)
+			FeynArts`IndexSum[x_, {ind_, _, _}, moreinds__] /; Length[Cases[x, ind, Infinity, Heads -> True]] == 2 && FreeQ[x, FeynArts`IndexSum] :>
+				(tmp = Unique["Ind"]; FeynArts`IndexSum[x /. ind -> tmp, moreinds]),
+			FeynArts`IndexSum[x_, {ind_, _, _}] /; Length[Cases[x, ind, Infinity, Heads -> True]] == 2 && FreeQ[x,FeynArts`IndexSum] :>
+				(tmp = Unique["Ind"] ; x /. ind -> tmp)
 		};
 
 		replist1 = {FeynArts`Index[Global`Lorentz, x_] :> LorentzIndex[ToExpression["Lor" <> ToString[x]]],
