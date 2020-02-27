@@ -98,7 +98,7 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 					Global`FADiracMatrix[x_] :> DiracGamma[LorentzIndex[x]],
 					Global`FAScalarProduct[x_,y_] :> Pair[Momentum[x],Momentum[y]],
 					Global`FADiracSlash[x_] :> DiracGamma[Momentum[x]],
-					Global`FADiracSpinor :> Spinor,
+					Global`FADiracSpinor[x_,re__] :> Spinor[Momentum[x], re],
 					FeynArts`FALeviCivita :> Eps,
 					Global`FADiracTrace :> DiracTrace,
 					Global`FAFourVector[x_,y_] :> Pair[Momentum[x],y],

@@ -33,7 +33,7 @@ DiracGamma[LorentzIndex[d]] . DiracGamma[LorentzIndex[a]] . DiracGamma[LorentzIn
 {"fcstDiracSimplify-ID12","DiracSimplify[DiracMatrix[6] .DiracMatrix[mu, Dimension -> D]]",
 "DiracGamma[LorentzIndex[mu]] . DiracGamma[7] + DiracGamma[LorentzIndex[mu, -4 + D], -4 + D] . DiracGamma[6]"},
 {"fcstDiracSimplify-ID13","FCSetDiracGammaScheme[\"NDR\"];\nDiracSimplify[DiracMatrix[6] .DiracMatrix[mu, Dimension -> D]]","DiracGamma[LorentzIndex[mu, D], D] . DiracGamma[7]"},
-{"fcstDiracSimplify-ID14","DiracSimplify[Spinor[p1, m1].(DiracSlash[p2]).DiracMatrix[7].Spinor[p2,m2]] // FCE",
+{"fcstDiracSimplify-ID14","DiracSimplify[Spinor[Momentum[p1], m1].(DiracSlash[p2]).DiracMatrix[7].Spinor[Momentum[p2],m2]] // FCE",
 "m2*Spinor[Momentum[p1], m1, 1].GA[6].Spinor[Momentum[p2], m2, 1]"},
 {"fcstDiracSimplify-ID15",
 "DiracSimplify[Spinor[-Momentum[p2],0,1].GS[Polarization[k1,-I]].GS[k1].GS[Polarization[k2,-I]].GA[7].Spinor[Momentum[p1],0,1],DiracSubstitute67->True]//FCE",
@@ -187,10 +187,33 @@ c2 DiracTrace[GA[mu, nu]]},FCE->True]","{4 c1 m - 2 c1 GS[p], 4 c2 MT[mu, nu]}"}
 	p2].DiracSigma[GA[mu], GA[nu]].SpinorV[q2],
 -SpinorUBar[p].GA[mu, nu].SpinorV[q] SpinorUBar[p2].DiracSigma[
 	GA[mu], GA[nu]].SpinorV[q2]},
-LorentzIndexNames -> Table[mu[i], {i, 1, 10}]]]","0"}
+LorentzIndexNames -> Table[mu[i], {i, 1, 10}]]]","0"},
+{"fcstDiracSimplify-ID42","DiracSimplify[
+Spinor[-Momentum[p1, D], mb, 1].GAD[Lor2].GA[7].GAD[$AL[$1649]].GAD[
+	Ind95].GAD[Ind108].GAD[Ind115].GA[7].Spinor[-Momentum[p4, D], 0,
+	1] Spinor[Momentum[p3, D], 0, 1].GAD[Ind95].GAD[Ind108].GAD[
+	Ind115].GA[7].GAD[$AL[$1649]].GAD[Lor2].GA[7].Spinor[
+	Momentum[p2, D], 0, 1], DiracOrder -> True,
+LorentzIndexNames -> {i1, i2, i3, i4, i5}, FCE -> True]","-64 Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GA[
+	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
+	1].GAD[i1].GA[7].Spinor[Momentum[p2, D], 0, 1] +
+112 D Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GA[
+	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
+	1].GAD[i1].GA[7].Spinor[Momentum[p2, D], 0, 1] -
+24 D^2 Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GA[
+	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
+	1].GAD[i1].GA[7].Spinor[Momentum[p2, D], 0, 1] -
+36 Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i2].GAD[i3].GA[
+	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
+	1].GAD[i1].GAD[i2].GAD[i3].GA[7].Spinor[Momentum[p2, D], 0, 1] +
+14 D Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i2].GAD[i3].GA[
+	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
+	1].GAD[i1].GAD[i2].GAD[i3].GA[7].Spinor[Momentum[p2, D], 0, 1] -
+Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i2].GAD[i3].GAD[i4].GAD[
+	i5].GA[7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D],
+	0, 1].GAD[i1].GAD[i2].GAD[i3].GAD[i4].GAD[i5].GA[7].Spinor[
+	Momentum[p2, D], 0, 1]"}
 };
-
-
 
 
 Tests`Dirac`fcstDiracSimplifySirlin =

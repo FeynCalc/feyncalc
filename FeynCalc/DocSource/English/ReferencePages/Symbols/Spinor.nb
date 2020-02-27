@@ -268,6 +268,26 @@ Cell[TextData[{
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/SpinorVBar",
   ButtonNote->"SpinorVBar"],
+ ", ",
+ ButtonBox["SpinorUBarD",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SpinorUBarD",
+  ButtonNote->"SpinorUBarD"],
+ ", ",
+ ButtonBox["SpinorUD",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SpinorUD",
+  ButtonNote->"SpinorUD"],
+ ", ",
+ ButtonBox["SpinorVD",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SpinorVD",
+  ButtonNote->"SpinorVD"],
+ ", ",
+ ButtonBox["SpinorVBarD",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SpinorVBarD",
+  ButtonNote->"SpinorVBarD"],
  "."
 }], "SeeAlso"]
 }, Open  ]],
@@ -299,9 +319,10 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Spinor", "[", "p", "]"}]], "Input",
+ RowBox[{"Spinor", "[", 
+  RowBox[{"Momentum", "[", "p", "]"}], "]"}]], "Input",
  CellTags->"Spinor",
- CellLabel->"In[28]:=",
+ CellLabel->"In[1]:=",
  CellID->1573141935],
 
 Cell[BoxData[
@@ -319,16 +340,17 @@ Cell[BoxData[
    FormBox["\<\")\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"Spinor",
- CellLabel->"Out[28]="]
+ CellLabel->"Out[1]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"Spinor", "[", 
-  RowBox[{"p", ",", "m"}], "]"}]], "Input",
+  RowBox[{
+   RowBox[{"Momentum", "[", "p", "]"}], ",", "m"}], "]"}]], "Input",
  CellTags->"Spinor",
- CellLabel->"In[29]:=",
+ CellLabel->"In[2]:=",
  CellID->67205944],
 
 Cell[BoxData[
@@ -350,7 +372,7 @@ Cell[BoxData[
    FormBox["\<\")\"\>",
     TraditionalForm]}], TraditionalForm]], "Output",
  CellTags->"Spinor",
- CellLabel->"Out[29]="]
+ CellLabel->"Out[2]="]
 }, Open  ]],
 
 Cell["\<\
@@ -364,18 +386,21 @@ Cell[BoxData[
  RowBox[{
   RowBox[{
    RowBox[{"Spinor", "[", 
-    RowBox[{"p", ",", "m"}], "]"}], ".", 
+    RowBox[{
+     RowBox[{"Momentum", "[", "p", "]"}], ",", "m"}], "]"}], ".", 
    RowBox[{"Spinor", "[", 
-    RowBox[{"p", ",", "m"}], "]"}]}], "//", "DiracSimplify"}]], "Input",
+    RowBox[{
+     RowBox[{"Momentum", "[", "p", "]"}], ",", "m"}], "]"}]}], "//", 
+  "DiracSimplify"}]], "Input",
  CellTags->"Spinor",
- CellLabel->"In[30]:=",
+ CellLabel->"In[3]:=",
  CellID->540190510],
 
 Cell[BoxData[
  FormBox[
   RowBox[{"2", " ", "m"}], TraditionalForm]], "Output",
  CellTags->"Spinor",
- CellLabel->"Out[30]="]
+ CellLabel->"Out[3]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -385,10 +410,11 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"Spinor", "[", 
     RowBox[{
-     RowBox[{"-", "p"}], ",", "m"}], "]"}], ".", 
+     RowBox[{"-", 
+      RowBox[{"Momentum", "[", "p", "]"}]}], ",", "m"}], "]"}], ".", 
    RowBox[{"GS", "[", "p", "]"}]}], "]"}]], "Input",
  CellTags->"Spinor",
- CellLabel->"In[26]:=",
+ CellLabel->"In[5]:=",
  CellID->654515033],
 
 Cell[BoxData[
@@ -414,16 +440,18 @@ Cell[BoxData[
      FormBox["\<\")\"\>",
       TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
  CellTags->"Spinor",
- CellLabel->"Out[26]="]
+ CellLabel->"Out[5]="]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"Spinor", "[", "p", "]"}], "//", "StandardForm"}]], "Input",
+  RowBox[{"Spinor", "[", 
+   RowBox[{"Momentum", "[", "p", "]"}], "]"}], "//", 
+  "StandardForm"}]], "Input",
  CellTags->"Spinor",
- CellLabel->"In[32]:=",
+ CellLabel->"In[6]:=",
  CellID->864077691],
 
 Cell[BoxData[
@@ -431,7 +459,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"Momentum", "[", "p", "]"}], ",", "0", ",", "1"}], "]"}]], "Output",
  CellTags->"Spinor",
- CellLabel->"Out[32]//StandardForm="]
+ CellLabel->"Out[6]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -440,10 +468,11 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"ChangeDimension", "[", 
    RowBox[{
-    RowBox[{"Spinor", "[", "p", "]"}], ",", "D"}], "]"}], "//", 
+    RowBox[{"Spinor", "[", 
+     RowBox[{"Momentum", "[", "p", "]"}], "]"}], ",", "D"}], "]"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"Spinor",
- CellLabel->"In[34]:=",
+ CellLabel->"In[7]:=",
  CellID->39280367],
 
 Cell[BoxData[
@@ -452,7 +481,7 @@ Cell[BoxData[
    RowBox[{"Momentum", "[", 
     RowBox[{"p", ",", "D"}], "]"}], ",", "0", ",", "1"}], "]"}]], "Output",
  CellTags->"Spinor",
- CellLabel->"Out[34]//StandardForm="]
+ CellLabel->"Out[7]//StandardForm="]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -460,9 +489,11 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{
   RowBox[{"Spinor", "[", 
-   RowBox[{"p", ",", "m"}], "]"}], "//", "StandardForm"}]], "Input",
+   RowBox[{
+    RowBox[{"Momentum", "[", "p", "]"}], ",", "m"}], "]"}], "//", 
+  "StandardForm"}]], "Input",
  CellTags->"Spinor",
- CellLabel->"In[35]:=",
+ CellLabel->"In[8]:=",
  CellID->1410615258],
 
 Cell[BoxData[
@@ -470,7 +501,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"Momentum", "[", "p", "]"}], ",", "m", ",", "1"}], "]"}]], "Output",
  CellTags->"Spinor",
- CellLabel->"Out[35]//StandardForm="]
+ CellLabel->"Out[8]//StandardForm="]
 }, Open  ]],
 
 Cell["SmallVariable's are discarded by Spinor.", "Notes"],
@@ -480,11 +511,12 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{
   RowBox[{"Spinor", "[", 
-   RowBox[{"p", ",", 
+   RowBox[{
+    RowBox[{"Momentum", "[", "p", "]"}], ",", 
     RowBox[{"SmallVariable", "[", "m", "]"}]}], "]"}], "//", 
   "StandardForm"}]], "Input",
  CellTags->"Spinor",
- CellLabel->"In[37]:=",
+ CellLabel->"In[9]:=",
  CellID->557218901],
 
 Cell[BoxData[
@@ -492,7 +524,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"Momentum", "[", "p", "]"}], ",", "0", ",", "1"}], "]"}]], "Output",
  CellTags->"Spinor",
- CellLabel->"Out[37]//StandardForm="]
+ CellLabel->"Out[9]//StandardForm="]
 }, Open  ]]
 }, Open  ]],
 
@@ -556,14 +588,14 @@ Cell[BoxData[
  CellID->589267740]
 }, Open  ]]
 },
-WindowSize->{700, 770},
-WindowMargins->{{1091, Automatic}, {Automatic, 33}},
+WindowSize->{1061, 770},
+WindowMargins->{{356, Automatic}, {38, Automatic}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

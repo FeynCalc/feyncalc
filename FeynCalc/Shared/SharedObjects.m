@@ -487,12 +487,20 @@ SPE[p, q] is transformed into Pair[Momentum[p, D-4],Momentum[q, D-4]] \
 by FeynCalcInternal.";
 
 Spinor::usage =
-"Spinor[p, m] represents a Dirac spinor. \
-Which of the spinors u, v,u_bar or v_bar \
-is understood, depends on the sign of the momentum (p) \
-argument and the relative position of GS[p]: \
-Spinor[sign p, mass]  is that spinor which yields \
-sign*mass*Spinor[p, mass] if the Dirac equation is applied .";
+"Spinor[Momentum[p], m] represents a Dirac spinor. \
+Which of the spinors u, v, ubar or vbar \
+is understood, depends on the sign of the Momentum[p] \
+argument and the relative position inside a chain of \
+Dirac matries. \n \n
+Spinor[Momentum[p],m] means ubar(p,m) if it stands at the beginning of the chain.\n
+Spinor[Momentum[p],m] means u(p,m) if it stands at the end of the chain.\n
+Spinor[-Momentum[p],m] means vbar(p,m) if it stands at the beginning of the chain.\n
+Spinor[-Momentum[p],m] means v(p,m) if it stands at the end of the chain.\n
+Spinors of fermions of mass m are normalized to have \
+ubar(p,m) u(p,m) = 2m and vbar(p,m) v(p,m) = -2m. \n
+Notice that Spinor is an FCI-symbol. For user input please use \
+FCE-symbols SpinorU, SpinorUBar, SpinorV, SpinorVBar as well as \
+SpinorUD, SpinorUBarD, SpinorVD, SpinorVBarD.";
 
 SpinorU::usage =
 "SpinorU[p, m] denotes a u-spinor that depends on the \
@@ -1934,10 +1942,11 @@ SPE[a_] :=
 
 HoldPattern[Spinor[a__,{1}]] :=
 	Spinor[a];
-
+(*
 Spinor[n_. x_/; (FCPatternFreeQ[{x}]&&FreeQ2[x, {Momentum, Hold, HoldForm}]), y___/;FCPatternFreeQ[{y}]] :=
 	(Spinor[n x, y] = Spinor[n Momentum[x], y]) /;
 	(FCPatternFreeQ[{n, x, y}] && (n^2)===1);
+*)
 (*
 Spinor[kk_.+ n_. Momentum[ a_Plus, dim_ : 4], m_, y___] :=
 	Spinor[kk+ n Momentum[a, dim], m, y] =

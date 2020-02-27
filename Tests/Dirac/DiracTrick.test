@@ -23,8 +23,8 @@ Tests`Dirac`fcstDiracTrickACoreProperties =
 {"fcstDiracTrickCoreProperties-ID3",
 "DiracTrick[GA[i].m.GA[k]]//FCE", "m*GA[i] . GA[k]"},
 {"fcstDiracTrickCoreProperties-ID4",
-"DiracTrick[Spinor[p1, m1].GA[i].Spinor[p2, m2].Spinor[p3, \
-m3].GA[j].Spinor[p4,m4]]//FCE",
+"DiracTrick[Spinor[Momentum[p1], m1].GA[i].Spinor[Momentum[p2], m2].Spinor[Momentum[p3], \
+m3].GA[j].Spinor[Momentum[p4],m4]]//FCE",
 "Spinor[Momentum[p1], m1, 1] . GA[i] . Spinor[Momentum[p2], m2, \
 1]*Spinor[Momentum[p3], m3, 1] . GA[j] . Spinor[Momentum[p4], m4, 1]"},
 {"fcstDiracTrickCoreProperties-ID5",

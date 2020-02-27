@@ -74,7 +74,7 @@ DiracIndex[j], DiracIndex[k]], FCE -> True]", "DIDelta[i,k]"},
 DCHN[1,i,j],FCE\[Rule]True]",
 "Spinor[Momentum[p1], m1, 1] . Spinor[-Momentum[p2], m2, 1]"},
 {"fcstDiracChainJoin-ID16",
-"DiracChainJoin[DCHN[Spinor[p1,m1],i]DCHN[j,Spinor[p2,m2]]DCHN[\
+"DiracChainJoin[DCHN[Spinor[Momentum[p1],m1],i]DCHN[j,Spinor[Momentum[p2],m2]]DCHN[\
 1,i,j],FCE\[Rule]True]",
 "Spinor[Momentum[p1], m1, 1] . Spinor[Momentum[p2], m2, 1]"},
 {"fcstDiracChainJoin-ID17",
@@ -82,11 +82,11 @@ DCHN[1,i,j],FCE\[Rule]True]",
 DIDelta[i,j],FCE\[Rule]True]",
 "Spinor[Momentum[p1], m1, 1] . Spinor[-Momentum[p2], m2, 1]"},
 {"fcstDiracChainJoin-ID18",
-"DiracChainJoin[DCHN[Spinor[p1,m1],i]DCHN[j,Spinor[p2,m2]]\
+"DiracChainJoin[DCHN[Spinor[Momentum[p1],m1],i]DCHN[j,Spinor[Momentum[p2],m2]]\
 DIDelta[i,j],FCE\[Rule]True]",
 "Spinor[Momentum[p1], m1, 1] . Spinor[Momentum[p2], m2, 1]"},
 {"fcstDiracChainJoin-ID19",
-"DiracChainJoin[DCHN[Spinor[p1,m1],i]DCHN[Spinor[p2,m2],j]\
+"DiracChainJoin[DCHN[Spinor[Momentum[p1],m1],i]DCHN[Spinor[Momentum[p2],m2],j]\
 DIDelta[i,j],FCE\[Rule]True]",
 "DCHN[Spinor[Momentum[p1], m1, 1], j]*DCHN[Spinor[Momentum[p2], \
 m2, 1], j]"},
@@ -95,7 +95,7 @@ m2, 1], j]"},
 FCE -> True]",
 "DCHN[Spinor[p1, m], j] DCHN[GA[mu], i, j]"},
 {"fcstDiracChainJoin-ID21",
-"DiracChainJoin[DCHN[Spinor[p1, m], j] DCHN[Spinor[p2, m], i],
+"DiracChainJoin[DCHN[Spinor[Momentum[p1], m], j] DCHN[Spinor[Momentum[p2], m], i],
 FCE -> True]",
 "DCHN[Spinor[Momentum[p1], m, 1], j] DCHN[Spinor[Momentum[p2], m, 1],
 i]"},
