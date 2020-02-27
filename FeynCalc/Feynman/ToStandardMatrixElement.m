@@ -114,7 +114,7 @@ ToStandardMatrixElement[expr_/;Head[expr]=!=List, OptionsPattern[]]:=
 			time=AbsoluteTime[];
 			FCPrint[1, "ToStandardMatrixElement: Applying FCDiracIsolate.", FCDoControl->tsmeVerbose];
 			ex = FCDiracIsolate[ex, Polarization->OptionValue[Polarization], FCI->True, Head->dhead, Collecting->False, ExceptHeads -> OptionValue[ExceptHeads],
-				LorentzIndex -> OptionValue[LorentzIndex], CartesianIndex -> OptionValue[CartesianIndex]];
+				LorentzIndex -> OptionValue[LorentzIndex], CartesianIndex -> OptionValue[CartesianIndex], FCJoinDOTs->False];
 			FCPrint[1, "ToStandardMatrixElement: FCDiracIsolate done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tsmeVerbose];
 			FCPrint[3, "ToStandardMatrixElement: After FCDiracIsolate: ", ex, FCDoControl->tsmeVerbose]
 		];

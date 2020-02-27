@@ -405,5 +405,10 @@ Spinor[Momentum[p1], 0, 1].GA[i1].GA[i2].GA[
 2 StandardMatrixElement[
 Spinor[Momentum[p1], 0, 1].GA[i1].GA[i2].GA[
 	7].Spinor[-Momentum[p2], 0, 1] Spinor[-Momentum[p3], 0, 1].GA[
-	i1].GA[i2].GA[7].Spinor[Momentum[p4], 0, 1]]"}
+	i1].GA[i2].GA[7].Spinor[Momentum[p4], 0, 1]]"},
+{"fcstToStandardMatrixElement-ID15", "ToStandardMatrixElement[SpinorUBar[p, m].GA[mu].SpinorV[q, M],
+FCE -> True]","StandardMatrixElement[
+Spinor[Momentum[p], m, 1].GA[mu].GA[6].Spinor[-Momentum[q], M, 1]] +
+StandardMatrixElement[
+Spinor[Momentum[p], m, 1].GA[mu].GA[7].Spinor[-Momentum[q], M, 1]]"}
 });
