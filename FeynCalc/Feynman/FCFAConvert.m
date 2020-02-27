@@ -65,6 +65,7 @@ Options[FCFAConvert] = {
 	FeynAmpDenominatorCombine		-> True,
 	FinalSubstitutions				-> {},
 	IncomingMomenta					-> {},
+	InitialSubstitutions			-> {},
 	List 							-> True,
 	LoopMomenta						-> {},
 	LorentzIndexNames				-> {},
@@ -138,6 +139,11 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[__][diags___], OptionsPattern[]
 		diagsConverted = diagsConverted/.repRuleMomenta/.repRuleLorentzIndices/.repRuleSUNIndices/.
 			repRuleSUNFIndices/. repRulePolVectors;
 
+
+		If[	OptionValue[InitialSubstitutions]=!={},
+			diagsConverted = diagsConverted /. OptionValue[InitialSubstitutions]
+		];
+
 		If[	OptionValue[ChangeDimension]=!=False,
 			diagsConverted= ChangeDimension[diagsConverted,dim]
 		];
@@ -150,12 +156,12 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[__][diags___], OptionsPattern[]
 			diagsConverted = Total[diagsConverted]
 		];
 
-		If[	OptionValue[FinalSubstitutions]=!={},
-			diagsConverted = diagsConverted /. OptionValue[FinalSubstitutions]
-		];
-
 		If[	!FreeQ[diagsConverted,DiracIndex] && OptionValue[FCFADiracChainJoin],
 			diagsConverted = FCFADiracChainJoin[diagsConverted,FCI->True]
+		];
+
+		If[	OptionValue[FinalSubstitutions]=!={},
+			diagsConverted = diagsConverted /. OptionValue[FinalSubstitutions]
 		];
 
 		Return[diagsConverted]
