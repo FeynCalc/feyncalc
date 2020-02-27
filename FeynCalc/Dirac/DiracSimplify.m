@@ -83,6 +83,9 @@ Options[DiracSimplify] = {
 };
 
 
+DiracSimplify[a_ == b_, opts:OptionsPattern[]] :=
+	DiracSimplify[a,opts] == DiracSimplify[b,opts];
+
 DiracSimplify[expr_List, opts:OptionsPattern[]] :=
 	DiracSimplify[#, opts]&/@expr;
 

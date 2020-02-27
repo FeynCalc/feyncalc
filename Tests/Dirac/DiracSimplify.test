@@ -212,7 +212,9 @@ LorentzIndexNames -> {i1, i2, i3, i4, i5}, FCE -> True]","-64 Spinor[-Momentum[p
 Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i2].GAD[i3].GAD[i4].GAD[
 	i5].GA[7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D],
 	0, 1].GAD[i1].GAD[i2].GAD[i3].GAD[i4].GAD[i5].GA[7].Spinor[
-	Momentum[p2, D], 0, 1]"}
+	Momentum[p2, D], 0, 1]"},
+{"fcstDiracSimplify-ID43","DiracSimplify[a GS[p.p] + b GS[q.p.q] == c GS[p], FCE -> True]",
+"a SP[p, p] + 2 b GS[q] SP[p, q] - b GS[p] SP[q, q] == c GS[p]"}
 };
 
 
