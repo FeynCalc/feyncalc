@@ -99,7 +99,7 @@ FCFADiracChainJoin[expr_, OptionsPattern[]] :=
 
 		tmp = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->False, DiracGammaCombine->False, FCJoinDOTs-> False,
 			DiracSigmaExplicit->False, LorentzIndex->False, Spinor->False, DiracGamma->False, DiracChain->True,
-			Factoring -> False];
+			Factoring -> False, Expanding->False];
 		diracObjects = Cases[tmp+null1+null2, dsHead[_], Infinity]//Sort//DeleteDuplicates;
 
 		FCPrint[1, "FCFADiracChainJoin: Done isolating spinor chains, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dchjVerbose];
