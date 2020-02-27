@@ -36,6 +36,7 @@ Options[ToStandardMatrixElement] = {
 	CartesianIndex			-> False,
 	CartesianIndexNames		-> {},
 	ChangeDimension 		-> False,
+	ClearHeads				-> {StandardMatrixElement},
 	DiracOrder 				-> True,
 	DiracSimplify			-> True,
 	DiracEquation			-> True,
@@ -66,7 +67,7 @@ ToStandardMatrixElement[expr_List, opts:OptionsPattern[]]:=
 	ToStandardMatrixElement[#, opts]&/@expr;
 
 ToStandardMatrixElement[expr_/;Head[expr]=!=List, OptionsPattern[]]:=
-	Block[{ex,res,time, chead, dhead, holdDOT, optTimeConstrained},
+	Block[{ex,res,time, chead, dhead, holdDOT, optTimeConstrained,optClearHeads},
 
 
 		If [OptionValue[FCVerbose]===False,
@@ -77,6 +78,7 @@ ToStandardMatrixElement[expr_/;Head[expr]=!=List, OptionsPattern[]]:=
 		];
 
 		optTimeConstrained = OptionValue[TimeConstrained];
+		optClearHeads = OptionValue[ClearHeads];
 
 		FCPrint[1,"ToStandardMatrixElement: Entering.", FCDoControl->tsmeVerbose];
 		FCPrint[3,"ToStandardMatrixElement: Entering with: ", expr, FCDoControl->tsmeVerbose];
@@ -87,6 +89,9 @@ ToStandardMatrixElement[expr_/;Head[expr]=!=List, OptionsPattern[]]:=
 			ex = FCI[expr]
 		];
 
+		If[	optClearHeads=!={},
+			ex = ex/. (Map[Rule[#, Identity] &, optClearHeads])
+		];
 
 		If[	OptionValue[DiracSimplify],
 			time=AbsoluteTime[];
