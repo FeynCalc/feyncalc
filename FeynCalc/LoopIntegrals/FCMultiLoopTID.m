@@ -63,7 +63,10 @@ Options[FCMultiLoopTID] = {
 	TimeConstrained		-> 3
 };
 
-FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
+FCMultiLoopTID[expr_List, qs_List/; FreeQ[qs, OptionQ], opts:OptionsPattern[]] :=
+	FCMultiLoopTID[#, qs, opts]&/@expr;
+
+FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 	Block[{	n, ex, rest, loopInts, intsUnique, repRule, solsList,
 			null1, null2, res,  tmpli, time, mltidIsolate, optFactoring,
 			optTimeConstrained},
@@ -256,7 +259,7 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 		If[	OptionValue[Collecting],
 			time=AbsoluteTime[];
 			FCPrint[1, "FCMultiLoopTID: Applying Collect2.", FCDoControl->mltidVerbose];
-			res = Collect2[res,FeynAmpDenominator,Sequence@@qs];
+			res = Collect2[res,FeynAmpDenominator,Sequence@@qs, Factoring -> optFactoring, TimeConstrained -> optTimeConstrained];
 			FCPrint[3,"FCMultiLoopTID: After Collect2: ", res, FCDoControl->mltidVerbose];
 			FCPrint[1, "FCMultiLoopTID: Done applying Collect2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose]
 		];
