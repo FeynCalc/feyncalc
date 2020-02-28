@@ -31,6 +31,9 @@ The problem reads: `1`"
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
+
+diracChainContract;
+
 End[]
 
 Begin["`DiracSimplify`Private`"]
@@ -53,33 +56,34 @@ optToDiracGamma67::usage="";
 
 
 Options[DiracSimplify] = {
-	Contract			-> True,
-	DiracChain			-> True,
-	DiracChainJoin		-> True,
-	DiracEquation		-> True,
-	DiracGammaCombine	-> False,
-	DiracOrder			-> False,
-	DiracSigmaExplicit	-> True,
-	DiracSubstitute5	-> False,
-	DiracSubstitute67	-> False,
-	DiracTrace			-> True,
-	DiracTraceEvaluate	-> True,
-	EpsContract			-> True,
-	Expand2				-> True,
-	ExpandScalarProduct	-> True,
-	Expanding			-> True,
-	FCCheckSyntax		-> False,
-	FCDiracIsolate		-> True,
-	FCE					-> False,
-	FCI    				-> False,
-	FCVerbose			-> False,
-	Factoring			-> False,
-	InsideDiracTrace    -> False,
-	LorentzIndexNames	-> {},
-	CartesianIndexNames	-> {},
-	SirlinSimplify		-> True,
-	SpinorChainTrick	-> True,
-	ToDiracGamma67		-> True
+	CartesianIndexNames			-> {},
+	Contract					-> True,
+	DiracChain					-> True,
+	DiracChainJoin				-> True,
+	DiracEquation				-> True,
+	DiracGammaCombine			-> False,
+	DiracOrder					-> False,
+	DiracSigmaExplicit			-> True,
+	DiracSubstitute5			-> False,
+	DiracSubstitute67			-> False,
+	DiracTrace					-> True,
+	DiracTraceEvaluate			-> True,
+	EpsContract					-> True,
+	Expand2						-> True,
+	ExpandScalarProduct			-> True,
+	Expanding					-> True,
+	FCCanonicalizeDummyIndices	-> False,
+	FCCheckSyntax				-> False,
+	FCDiracIsolate				-> True,
+	FCE							-> False,
+	FCI    						-> False,
+	FCVerbose					-> False,
+	Factoring					-> False,
+	InsideDiracTrace    		-> False,
+	LorentzIndexNames			-> {},
+	SirlinSimplify				-> False,
+	SpinorChainTrick			-> True,
+	ToDiracGamma67				-> True
 };
 
 
@@ -90,8 +94,11 @@ DiracSimplify[expr_List, opts:OptionsPattern[]] :=
 	DiracSimplify[#, opts]&/@expr;
 
 DiracSimplify[expr_/;Head[expr]=!=List, OptionsPattern[]] :=
-	Block[{ex,res,time, null1, null2, holdDOT, freePart=0, dsPart, diracObjects,
-			diracObjectsEval, repRule, tmp, tmpHead},
+	Block[{ex,res, time, null1, null2, holdDOT, freePart=0, dsPart, diracObjects,
+			diracObjectsEval, repRule, tmp, tmpHead, dsHead, dsHeadAll, diracObjectsAll,
+			diracObjectsAllEval, optFCCanonicalizeDummyIndices, timeTotal},
+
+		timeTotal = AbsoluteTime[];
 
 		If [OptionValue[FCVerbose]===False,
 			dsVerbose=$VeryVerbose,
@@ -100,19 +107,24 @@ DiracSimplify[expr_/;Head[expr]=!=List, OptionsPattern[]] :=
 			];
 		];
 
-		optContract				= OptionValue[Contract];
-		optDiracEquation		= OptionValue[DiracEquation];
-		optDiracGammaCombine	= OptionValue[DiracGammaCombine];
-		optDiracOrder			= OptionValue[DiracOrder];
-		optDiracSigmaExplicit	= OptionValue[DiracSigmaExplicit];
-		optDiracSubstitute5		= OptionValue[DiracSubstitute5];
-		optDiracSubstitute67	= OptionValue[DiracSubstitute67];
-		optDiracTraceEvaluate   = OptionValue[DiracTraceEvaluate];
-		optEpsContract			= OptionValue[EpsContract];
-		optExpandScalarProduct	= OptionValue[ExpandScalarProduct];
-		optExpanding  			= OptionValue[Expanding];
-		optInsideDiracTrace		= OptionValue[InsideDiracTrace];
-		optToDiracGamma67		= OptionValue[ToDiracGamma67];
+		optContract						= OptionValue[Contract];
+		optDiracEquation				= OptionValue[DiracEquation];
+		optDiracGammaCombine			= OptionValue[DiracGammaCombine];
+		optDiracOrder					= OptionValue[DiracOrder];
+		optDiracSigmaExplicit			= OptionValue[DiracSigmaExplicit];
+		optDiracSubstitute5				= OptionValue[DiracSubstitute5];
+		optDiracSubstitute67			= OptionValue[DiracSubstitute67];
+		optDiracTraceEvaluate   		= OptionValue[DiracTraceEvaluate];
+		optEpsContract					= OptionValue[EpsContract];
+		optExpandScalarProduct			= OptionValue[ExpandScalarProduct];
+		optExpanding  					= OptionValue[Expanding];
+		optInsideDiracTrace				= OptionValue[InsideDiracTrace];
+		optToDiracGamma67				= OptionValue[ToDiracGamma67];
+		optFCCanonicalizeDummyIndices	= OptionValue[FCCanonicalizeDummyIndices];
+
+		If[ OptionValue[LorentzIndexNames]=!={} || OptionValue[CartesianIndexNames]=!={},
+			optFCCanonicalizeDummyIndices = True
+		];
 
 		If[ OptionValue[Factoring] === Automatic,
 			optFactoring =
@@ -150,44 +162,53 @@ DiracSimplify[expr_/;Head[expr]=!=List, OptionsPattern[]] :=
 			FCPrint[1,"DiracSimplify: Normal mode.", FCDoControl->dsVerbose];
 			time=AbsoluteTime[];
 			FCPrint[1, "DiracSimplify: Extracting Dirac objects.", FCDoControl->dsVerbose];
-			(* 	First of all we need to extract all the Dirac structures in the input. *)
+
+			(* 	First of all we need to extract all Dirac structures in the input. *)
 			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracGammaCombine],
 				DiracSigmaExplicit->OptionValue[DiracSigmaExplicit], LorentzIndex->True, CartesianIndex->True,
-				ToDiracGamma67->optToDiracGamma67, DiracChain->OptionValue[DiracChain]];
+				ToDiracGamma67->optToDiracGamma67, DiracChain->OptionValue[DiracChain], Split->dsHeadAll];
 
 			If[	!FreeQ[ex,DiracTrace] && !OptionValue[DiracTrace],
 				ex = ex /. dsHead[zz_]/; !FreeQ[zz,DiracTrace] :> zz
 			];
 
-			{freePart,dsPart} = FCSplit[ex,{dsHead}];
+			{freePart,dsPart} = FCSplit[ex,{dsHeadAll}];
+
 			FCPrint[3,"DiracSimplify: dsPart: ",dsPart , FCDoControl->dsVerbose];
 			FCPrint[3,"DiracSimplify: freePart: ",freePart , FCDoControl->dsVerbose];
 			FCPrint[1, "DiracSimplify: Done extracting Dirac objects, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 
 			diracObjects = Cases[dsPart+null1+null2, dsHead[_], Infinity]//Sort//DeleteDuplicates;
+			diracObjectsAll = Cases[dsPart+null1+null2, dsHeadAll[_], Infinity]//Sort//DeleteDuplicates;
 			diracObjectsEval = diracObjects;
+
 			FCPrint[3,"DiracSimplify: diracObjects: ", diracObjects , FCDoControl->dsVerbose];
 
-			If[ optDiracTraceEvaluate,
+			If[ OptionValue[Contract],
+				time=AbsoluteTime[];
+				FCPrint[1, "DiracSimplify: Doing index contractions.", FCDoControl->dsVerbose];
+				diracObjectsEval = diracChainContract[diracObjectsEval];
+				FCPrint[1, "DiracSimplify: Index contractions done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
+				FCPrint[3, "DiracSimplify: diracObjectsEval after index contractions: ", diracObjectsEval , FCDoControl->dsVerbose];
+
+			];
+
+			If[ optDiracTraceEvaluate && !FreeQ[diracObjectsEval,DiracTrace],
 				time=AbsoluteTime[];
 				FCPrint[1, "DiracSimplify: Calculating Dirac traces.", FCDoControl->dsVerbose];
 				diracObjectsEval = diracObjectsEval /. DiracTrace[zz_, opts:OptionsPattern[]] :> DiracTrace[zz,
 					DiracTraceEvaluate->True, Expand-> optExpandScalarProduct, opts];
 				FCPrint[1, "DiracSimplify: Done calculating Dirac traces, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
-				FCPrint[3,"DiracSimplify: diracObjects after calcuating Dirac traces: ", diracObjectsEval , FCDoControl->dsVerbose];
-
-				diracObjectsEval
-
-
+				FCPrint[3, "DiracSimplify: diracObjectsEval after calcuating Dirac traces: ", diracObjectsEval , FCDoControl->dsVerbose]
 			];
 
-			If[ OptionValue[DiracChainJoin],
+			If[ OptionValue[DiracChainJoin] && !FreeQ[diracObjectsEval,DiracChain],
 				time=AbsoluteTime[];
 				FCPrint[1, "DiracSimplify: Contracting Dirac indices.", FCDoControl->dsVerbose];
 				diracObjectsEval = diracObjectsEval /. dsHead[x_]/;!FreeQ[x,DiracChain] :>
 					DiracChainJoin[x, FCI->True, FCDiracIsolate->False];
-				FCPrint[1, "DiracSimplify: Done calculating Dirac traces, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
-				FCPrint[3,"DiracSimplify: diracObjects after calcuating Dirac traces: ", diracObjects , FCDoControl->dsVerbose]
+				FCPrint[1, "DiracSimplify: Done contracting Dirac indices, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
+				FCPrint[3,"DiracSimplify: diracObjectsEval after contracting Dirac indices: ", diracObjects , FCDoControl->dsVerbose]
 			];
 
 			time=AbsoluteTime[];
@@ -205,12 +226,12 @@ DiracSimplify[expr_/;Head[expr]=!=List, OptionsPattern[]] :=
 				Abort[]
 			];
 
-			FCPrint[1, "DiracSimplify: Inserting Dirac objects back.", FCDoControl->dsVerbose];
+			FCPrint[1, "DiracSimplify: Inserting Dirac objects back into products.", FCDoControl->dsVerbose];
 			time=AbsoluteTime[];
 			repRule = Thread[Rule[diracObjects,diracObjectsEval]];
 			FCPrint[3,"DiracSimplify: repRule: ", repRule, FCDoControl->dsVerbose];
-			tmp =  (dsPart /. Dispatch[repRule]);
-			FCPrint[1, "DiracSimplify: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose],
+			diracObjectsAllEval = diracObjectsAll /. dsHeadAll->Identity /. Dispatch[repRule];
+			FCPrint[1, "DiracSimplify: Done inserting Dirac objects back into products, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose],
 
 			(*
 				This is a fast mode for input that is already isolated, e.g. for calling DiracSimplify/@exprList
@@ -235,42 +256,42 @@ DiracSimplify[expr_/;Head[expr]=!=List, OptionsPattern[]] :=
 			If[ !FreeQ2[tmp,{FeynCalc`Package`diracTrickEvalFastFromDiracSimplifySingle,diracSimplifyEval,holdDOT}],
 				Message[DiracSimplify::failmsg,"Evaluation of isolated objects failed."];
 				Abort[]
-			]
-		];
-
-		FCPrint[3, "DiracSimplify: Intermediate result: ", tmp, FCDoControl->dsVerbose];
-
-		(* To simplify products of spinor chains we need to work with the full expression	*)
-		If[	!FreeQ[tmp,Spinor],
-
-
-			If[	OptionValue[SpinorChainTrick],
-
-				FCPrint[1, "DiracSimplify: Applying SpinorChainTrick.", FCDoControl->dsVerbose];
-				time=AbsoluteTime[];
-				tmp = SpinorChainTrick[tmp, FCI->True,DiracGammaCombine->optDiracGammaCombine, DiracSigmaExplicit->False,
-					LorentzIndexNames->OptionValue[LorentzIndexNames], CartesianIndexNames->OptionValue[CartesianIndexNames]];
-
-				FCPrint[1,"DiracSimplify: Done applying SpinorChainTrick, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
-				FCPrint[3, "DiracSimplify: After SpinorChainTrick: ", tmp, FCDoControl->dsVerbose];
 			];
 
+			diracObjectsAllEval = tmp;
+			diracObjectsAll = dsHeadAll[tmp];
+			dsPart = diracObjectsAll
 
-			If [ OptionValue[SirlinSimplify] && FCGetDimensions[tmp]==={4},
+		];
+		FCPrint[3, "DiracSimplify: Intermediate result: ", diracObjectsAllEval, FCDoControl->dsVerbose];
 
-				FCPrint[1, "DiracSimplify: Applying SirlinSimplify.", FCDoControl->dsVerbose];
-				time=AbsoluteTime[];
-				tmp = SirlinSimplify[tmp, FCI->True,DiracGammaCombine->optDiracGammaCombine, DiracSigmaExplicit->False, SpinorChainTrick->False];
+		(*
+			Here we need to take care of simplifications that can be done only when the full
+			Dirac structure in each term is taken into account, i.e. not just single chains but
+			the products of all chains. This is handled by SpinorChainTrick
+		*)
 
-				FCPrint[1,"DiracSimplify: Done applying SirlinSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
-				FCPrint[3, "DiracSimplify: AfteSirlinSimplify: ", tmp, FCDoControl->dsVerbose]
-			]
-
+		If[	OptionValue[SpinorChainTrick],
+			FCPrint[1, "DiracSimplify: Applying SpinorChainTrick.", FCDoControl->dsVerbose];
+			time=AbsoluteTime[];
+			diracObjectsAllEval = SpinorChainTrick[diracObjectsAllEval, FCI->True,FCDiracIsolate->List, DiracOrder -> optDiracOrder,
+				FCCanonicalizeDummyIndices->optFCCanonicalizeDummyIndices, DiracEquation-> optDiracEquation,
+				Contract -> optContract, LorentzIndexNames->OptionValue[LorentzIndexNames],
+				CartesianIndexNames->OptionValue[CartesianIndexNames], SirlinSimplify-> OptionValue[SirlinSimplify]];
+			FCPrint[1,"DiracSimplify: Done applying SpinorChainTrick, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
+			FCPrint[3, "DiracSimplify: After SpinorChainTrick: ", diracObjectsAllEval, FCDoControl->dsVerbose];
 		];
 
 
+		FCPrint[1, "DiracSimplify: Creating the final replacement rule.", FCDoControl->dsVerbose];
+		time=AbsoluteTime[];
+		repRule = Thread[Rule[diracObjectsAll,diracObjectsAllEval]];
+		tmp =  (dsPart /. Dispatch[repRule]);
+		tmp = tmp/.dsHeadAll->Identity;
 
 		res = freePart + tmp;
+		FCPrint[3,"DiracSimplify: repRule: ", repRule, FCDoControl->dsVerbose];
+		FCPrint[1, "DiracSimplify: Final replacement rule done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 
 		If[	optExpanding && OptionValue[Expand2],
 			time=AbsoluteTime[];
@@ -285,8 +306,8 @@ DiracSimplify[expr_/;Head[expr]=!=List, OptionsPattern[]] :=
 			res = FCE[res]
 		];
 
-		(*res = ex;*)
 		FCPrint[1,"DiracSimplify: Leaving.", FCDoControl->dsVerbose];
+		FCPrint[1,"DiracSimplify: Total timing: ", N[AbsoluteTime[] - timeTotal, 4], FCDoControl->dsVerbose];
 		FCPrint[3,"DiracSimplify: Leaving with ", res, FCDoControl->dsVerbose];
 		res
 	];
@@ -311,7 +332,7 @@ diracSimplifyEval[expr_]:=
 				afterwards
 
 			6) 	If the expression contains spinors
-				6.1) If needed, apply the Dirac equation
+				6.1) If needed, apply Dirac equation
 				6.2) If needed, apply Sirlin's relations
 
 			7)	If needed, order the remaining Dirac matrices canonically
@@ -363,15 +384,15 @@ diracSimplifyEval[expr_]:=
 
 			If[	optContract=!=False && !DummyIndexFreeQ[tmp,{LorentzIndex,CartesianIndex}],
 				time2=AbsoluteTime[];
-				FCPrint[2, "DiracSimplify: diracSimplifyEval: Applying Contract.", FCDoControl->dsVerbose];
-				tmp = Contract[tmp, Expanding->True, EpsContract-> False, Factoring->False];
-				FCPrint[2, "DiracSimplify: diracSimplifyEval: Contract done, timing: ", N[AbsoluteTime[] - time2, 4] , FCDoControl->dsVerbose];
-				FCPrint[3, "DiracSimplify: diracSimplifyEval: After Contract: ", tmp, FCDoControl->dsVerbose];
+				FCPrint[2, "DiracSimplify: diracSimplifyEval: Doing index contractions.", FCDoControl->dsVerbose];
+				tmp = diracChainContract[tmp];
+				FCPrint[2, "DiracSimplify: diracSimplifyEval: Index contractions done, timing: ", N[AbsoluteTime[] - time2, 4] , FCDoControl->dsVerbose];
+				FCPrint[3, "DiracSimplify: diracSimplifyEval: After index contractions: ", tmp, FCDoControl->dsVerbose];
 
 				time2=AbsoluteTime[];
 				FCPrint[2, "DiracSimplify: diracSimplifyEval: Applying EpsContract.", FCDoControl->dsVerbose];
 				If[	optEpsContract,
-					tmp = EpsContract[tmp,FCI->True]
+					tmp = EpsContract[tmp,FCI->True]//EpsEvaluate[#,FCI->True]&
 				];
 				FCPrint[2, "DiracSimplify: diracSimplifyEval: EpsContract done, timing: ", N[AbsoluteTime[] - time2, 4] , FCDoControl->dsVerbose];
 				FCPrint[3, "DiracSimplify: diracSimplifyEval: After EpsContract: ", tmp, FCDoControl->dsVerbose];
@@ -389,14 +410,15 @@ diracSimplifyEval[expr_]:=
 		(* Doing index contractions *)
 		If[	optContract=!=False && !DummyIndexFreeQ[tmp,{LorentzIndex,CartesianIndex}],
 			time2=AbsoluteTime[];
-			FCPrint[2, "DiracSimplify: diracSimplifyEval: Applying Contract.", FCDoControl->dsVerbose];
-			tmp = Contract[tmp, EpsContract-> False];
-			FCPrint[2, "DiracSimplify: diracSimplifyEval: Contract done, timing: ", N[AbsoluteTime[] - time2, 4] , FCDoControl->dsVerbose];
+			FCPrint[2, "DiracSimplify: diracSimplifyEval: Doing index contractions.", FCDoControl->dsVerbose];
+			tmp = diracChainContract[tmp];
+			FCPrint[2, "DiracSimplify: diracSimplifyEval: Index contractions done, timing: ", N[AbsoluteTime[] - time2, 4] , FCDoControl->dsVerbose];
+			FCPrint[3, "DiracSimplify: diracSimplifyEval: After index contractions: ", tmp, FCDoControl->dsVerbose];
 
 			time2=AbsoluteTime[];
 			FCPrint[2, "DiracSimplify: diracSimplifyEval: Applying EpsContract.", FCDoControl->dsVerbose];
 				If[	optEpsContract,
-					tmp = EpsContract[tmp,FCI->True]
+					tmp = EpsContract[tmp,FCI->True]//EpsEvaluate[#,FCI->True]&
 				];
 			FCPrint[2, "DiracSimplify: diracSimplifyEval: EpsContract done, timing: ", N[AbsoluteTime[] - time2, 4] , FCDoControl->dsVerbose];
 			FCPrint[3, "DiracSimplify: diracSimplifyEval: After EpsContract: ", tmp, FCDoControl->dsVerbose];
@@ -416,22 +438,6 @@ diracSimplifyEval[expr_]:=
 			tmp = DiracSigmaExplicit[tmp,FCI->True]
 		];
 
-		(* 	Canonical ordering of the Dirac matrices.	*)
-		If[ optDiracOrder,
-				time2=AbsoluteTime[];
-				FCPrint[2,"DiracSimplify: diracSimplifyEval: Applying DiracOrder.", FCDoControl->dsVerbose];
-				tmp = DiracOrder[tmp, FCI->True, FCJoinDOTs->OptionValue[Expanding]];
-				FCPrint[2,"DiracSimplify:diracSimplifyEvale: Done applying DiracOrder, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose]
-		];
-
-
-		(*	Expansion of Dirac slashes	*)
-		(*
-		If[	optDiracGammaExpand,
-			FCPrint[1,"DiracSimplify: diracSimplifyEval: Expanding Dirac slashes.", FCDoControl->dsVerbose];
-			tmp = DiracGammaExpand[tmp,FCI->True];
-
-		];*)
 
 
 		(*	Substituting the explicit values of the chiral projectors	*)
@@ -495,6 +501,16 @@ diracSimplifyEval[expr_]:=
 
 
 	]/;Head[expr]=!=DiracChain;
+
+diracChainContract[ex_]:=
+	ex/; FreeQ2[ex,{Pair,CartesianPair,PairContract,CartesianPairContract}];
+
+diracChainContract[ex_]:=
+	(
+	Expand2[ex,{Pair,CartesianPair,PairContract,CartesianPairContract}]/. CartesianPair -> CartesianPairContract /. Pair -> PairContract /.
+	CartesianPairContract -> CartesianPair /. PairContract -> Pair
+	)/; !FreeQ2[ex, {Pair,CartesianPair,PairContract,CartesianPairContract}];
+
 
 FCPrint[1,"DiracSimplify.m loaded."];
 End[]

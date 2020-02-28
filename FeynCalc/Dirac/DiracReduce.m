@@ -41,6 +41,7 @@ Options[DiracReduce] = {
 	Contract 			-> True,
 	DiracGammaCombine	-> True,
 	DiracSimplify		-> False,
+	DiracOrder			-> True,
 	DotSimplify			-> True,
 	FCE					-> False,
 	FCI					-> False,
@@ -93,8 +94,10 @@ DiracReduce[expr_, OptionsPattern[]] :=
 		tmp = Chisholm[tmp,FCI->True, DiracSimplify -> False];
 		FCPrint[3, "DiracReduce: After Chisholm: ", tmp, FCDoControl->drVerbose];
 
+		If[	OptionValue[DiracOrder],
 		tmp = DiracOrder[tmp, FCI->True];
 		FCPrint[3, "DiracReduce: After DiracOrder: ", tmp, FCDoControl->drVerbose];
+		];
 
 		tmp = Chisholm[tmp,FCI->True,DiracSimplify->False,Mode->2];
 		FCPrint[3, "DiracReduce: After Chisholm: ", tmp, FCDoControl->drVerbose];
@@ -103,7 +106,7 @@ DiracReduce[expr_, OptionsPattern[]] :=
 		FCPrint[3, "DiracReduce: After introducing DiracSigma: ", tmp, FCDoControl->drVerbose];
 
 		If[	diracSimplify,
-			tmp = DiracSimplify[tmp, DiracSigmaExplicit -> False, FCI->True];
+			tmp = DiracSimplify[tmp, DiracSigmaExplicit -> False, FCI->True, FCCanonicalizeDummyIndices->True];
 			FCPrint[3, "DiracReduce: After DiracSimplify: ", tmp, FCDoControl->drVerbose]
 		];
 

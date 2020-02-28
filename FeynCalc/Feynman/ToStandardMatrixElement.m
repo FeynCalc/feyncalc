@@ -55,7 +55,6 @@ Options[ToStandardMatrixElement] = {
 	SirlinSimplify 			-> False,
 	Spinor 					-> False,
 	SpinorChainChiralSplit	-> True,
-	SpinorChainTrick 		-> True,
 	TimeConstrained 		-> 3
 }
 
@@ -97,7 +96,7 @@ ToStandardMatrixElement[expr_/;Head[expr]=!=List, OptionsPattern[]]:=
 			time=AbsoluteTime[];
 			FCPrint[1, "ToStandardMatrixElement: Applying DiracSimplify.", FCDoControl->tsmeVerbose];
 			ex = DiracSimplify[ex, FCI->True, DiracOrder->OptionValue[DiracOrder], DiracSubstitute67->OptionValue[DiracSubstitute67],
-				DiracSubstitute5->OptionValue[DiracSubstitute5], SpinorChainTrick->OptionValue[SpinorChainTrick], SirlinSimplify->OptionValue[SirlinSimplify],
+				DiracSubstitute5->OptionValue[DiracSubstitute5], SirlinSimplify->OptionValue[SirlinSimplify],
 				DiracEquation->OptionValue[DiracEquation], LorentzIndexNames-> OptionValue[LorentzIndexNames],
 				CartesianIndexNames-> OptionValue[CartesianIndexNames]];
 			FCPrint[1, "ToStandardMatrixElement: DiracSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tsmeVerbose];
