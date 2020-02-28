@@ -164,21 +164,21 @@ FCSetDiracGammaScheme[\"NDR\"]; \n tmp",
 "2*CGA[i] . TGA[]"},
 {"fcstDiracOrder-ID53",
 "DiracOrder[DCHN[GA[j, i, l, k], a, b],FCE->True]",
-"DCHN[GA[i].GA[j].GA[k].GA[l] - 2 GA[k].GA[l] MT[i, j] -
-2 GA[i].GA[j] MT[k, l] + 4 MT[i, j] MT[k, l], a, b]"},
+"DCHN[GA[i].GA[j].GA[k].GA[l] - 2*GA[i].GA[j]*MT[k, l] +
+2*MT[i, j]*(-GA[k].GA[l] + 2*MT[k, l]), a, b]"},
 {"fcstDiracOrder-ID54",
 "DiracOrder[
 Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i2].GAD[i3].GAD[i4].GAD[
 	i5].GA[7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D],
 	0, 1].GAD[i5].GAD[i4].GAD[i1].GAD[i2].GAD[i3].GA[7].Spinor[
 	Momentum[p2, D], 0, 1], FCE -> True]",
-"8 (2 - D) D Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GA[
+"(16 D - 8 D^2) Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GA[
 	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i1].GA[7].Spinor[Momentum[p2, D], 0, 1] -
-8 (2 - 4 D + D^2) Spinor[-Momentum[p1, D], mb, 1].GAD[i2].GA[
+	1].GAD[i1].GA[7].Spinor[Momentum[p2, D], 0, 1] + (-16 + 32 D -
+	8 D^2) Spinor[-Momentum[p1, D], mb, 1].GAD[i2].GA[
 	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i2].GA[7].Spinor[Momentum[p2, D], 0, 1] -
-8 (6 - 6 D + D^2) Spinor[-Momentum[p1, D], mb, 1].GAD[i3].GA[
+	1].GAD[i2].GA[7].Spinor[Momentum[p2, D], 0, 1] + (-48 + 48 D -
+	8 D^2) Spinor[-Momentum[p1, D], mb, 1].GAD[i3].GA[
 	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
 	1].GAD[i3].GA[7].Spinor[Momentum[p2, D], 0, 1] +
 8 D Spinor[-Momentum[p1, D], mb, 1].GAD[i4].GA[
@@ -189,25 +189,28 @@ Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i2].GAD[i3].GAD[i4].GAD[
 	1].GAD[i5].GA[7].Spinor[Momentum[p2, D], 0, 1] +
 2 D Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i2].GAD[i3].GA[
 	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i1].GAD[i2].GAD[i3].GA[7].Spinor[Momentum[p2, D], 0, 1] -
-2 (2 - D) Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i2].GAD[i4].GA[
-	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i1].GAD[i2].GAD[i4].GA[7].Spinor[Momentum[p2, D], 0, 1] +
+	1].GAD[i1].GAD[i2].GAD[i3].GA[7].Spinor[Momentum[p2, D], 0,
+	1] + (-4 + 2 D) Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[
+	i2].GAD[i4].GA[7].Spinor[-Momentum[p4, D], 0, 1] Spinor[
+	Momentum[p3, D], 0, 1].GAD[i1].GAD[i2].GAD[i4].GA[7].Spinor[
+	Momentum[p2, D], 0, 1] +
 2 D Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i2].GAD[i5].GA[
 	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i1].GAD[i2].GAD[i5].GA[7].Spinor[Momentum[p2, D], 0, 1] -
-2 (4 - D) Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i3].GAD[i4].GA[
+	1].GAD[i1].GAD[i2].GAD[i5].GA[7].Spinor[Momentum[p2, D], 0,
+	1] + (-8 + 2 D) Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[
+	i3].GAD[i4].GA[7].Spinor[-Momentum[p4, D], 0, 1] Spinor[
+	Momentum[p3, D], 0, 1].GAD[i1].GAD[i3].GAD[i4].GA[7].Spinor[
+	Momentum[p2, D], 0, 1] + (-4 + 2 D) Spinor[-Momentum[p1, D], mb,
+	1].GAD[i1].GAD[i3].GAD[i5].GA[7].Spinor[-Momentum[p4, D], 0,
+	1] Spinor[Momentum[p3, D], 0, 1].GAD[i1].GAD[i3].GAD[i5].GA[
+	7].Spinor[Momentum[p2, D], 0, 1] + (-12 +
+	2 D) Spinor[-Momentum[p1, D], mb, 1].GAD[i2].GAD[i3].GAD[i4].GA[
 	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i1].GAD[i3].GAD[i4].GA[7].Spinor[Momentum[p2, D], 0, 1] -
-2 (2 - D) Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i3].GAD[i5].GA[
-	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i1].GAD[i3].GAD[i5].GA[7].Spinor[Momentum[p2, D], 0, 1] -
-2 (6 - D) Spinor[-Momentum[p1, D], mb, 1].GAD[i2].GAD[i3].GAD[i4].GA[
-	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i2].GAD[i3].GAD[i4].GA[7].Spinor[Momentum[p2, D], 0, 1] -
-2 (4 - D) Spinor[-Momentum[p1, D], mb, 1].GAD[i2].GAD[i3].GAD[i5].GA[
-	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i2].GAD[i3].GAD[i5].GA[7].Spinor[Momentum[p2, D], 0, 1] -
+	1].GAD[i2].GAD[i3].GAD[i4].GA[7].Spinor[Momentum[p2, D], 0,
+	1] + (-8 + 2 D) Spinor[-Momentum[p1, D], mb, 1].GAD[i2].GAD[
+	i3].GAD[i5].GA[7].Spinor[-Momentum[p4, D], 0, 1] Spinor[
+	Momentum[p3, D], 0, 1].GAD[i2].GAD[i3].GAD[i5].GA[7].Spinor[
+	Momentum[p2, D], 0, 1] -
 Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i2].GAD[i3].GAD[i4].GAD[
 	i5].GA[7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D],
 	0, 1].GAD[i1].GAD[i2].GAD[i3].GAD[i4].GAD[i5].GA[7].Spinor[
@@ -218,46 +221,49 @@ Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i2].GAD[i3].GAD[i4].GAD[
 	i5].GA[7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D],
 	0, 1].GAD[i5].GAD[i4].GAD[i3].GAD[i2].GAD[i1].GA[7].Spinor[
 	Momentum[p2, D], 0, 1], FCE->True]",
-"-4 (4 - 3 D) D Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GA[
+"(-16 D + 12 D^2) Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GA[
 	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i1].GA[7].Spinor[Momentum[p2, D], 0, 1] +
-4 (4 - 10 D + 3 D^2) Spinor[-Momentum[p1, D], mb, 1].GAD[i2].GA[
+	1].GAD[i1].GA[7].Spinor[Momentum[p2, D], 0, 1] + (16 - 40 D +
+	12 D^2) Spinor[-Momentum[p1, D], mb, 1].GAD[i2].GA[
 	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i2].GA[7].Spinor[Momentum[p2, D], 0, 1] +
-12 (2 - D)^2 Spinor[-Momentum[p1, D], mb, 1].GAD[i3].GA[
+	1].GAD[i2].GA[7].Spinor[Momentum[p2, D], 0, 1] + (48 - 48 D +
+	12 D^2) Spinor[-Momentum[p1, D], mb, 1].GAD[i3].GA[
 	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i3].GA[7].Spinor[Momentum[p2, D], 0, 1] +
-4 (4 - 10 D + 3 D^2) Spinor[-Momentum[p1, D], mb, 1].GAD[i4].GA[
+	1].GAD[i3].GA[7].Spinor[Momentum[p2, D], 0, 1] + (16 - 40 D +
+	12 D^2) Spinor[-Momentum[p1, D], mb, 1].GAD[i4].GA[
 	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i4].GA[7].Spinor[Momentum[p2, D], 0, 1] -
-4 (4 - 3 D) D Spinor[-Momentum[p1, D], mb, 1].GAD[i5].GA[
+	1].GAD[i4].GA[7].Spinor[Momentum[p2, D], 0, 1] + (-16 D +
+	12 D^2) Spinor[-Momentum[p1, D], mb, 1].GAD[i5].GA[
 	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
 	1].GAD[i5].GA[7].Spinor[Momentum[p2, D], 0, 1] -
 2 D Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i2].GAD[i3].GA[
 	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i1].GAD[i2].GAD[i3].GA[7].Spinor[Momentum[p2, D], 0, 1] +
-2 (2 - D) Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i2].GAD[i4].GA[
-	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i1].GAD[i2].GAD[i4].GA[7].Spinor[Momentum[p2, D], 0, 1] -
+	1].GAD[i1].GAD[i2].GAD[i3].GA[7].Spinor[Momentum[p2, D], 0,
+	1] + (4 - 2 D) Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[
+	i2].GAD[i4].GA[7].Spinor[-Momentum[p4, D], 0, 1] Spinor[
+	Momentum[p3, D], 0, 1].GAD[i1].GAD[i2].GAD[i4].GA[7].Spinor[
+	Momentum[p2, D], 0, 1] -
 2 D Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i2].GAD[i5].GA[
 	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i1].GAD[i2].GAD[i5].GA[7].Spinor[Momentum[p2, D], 0, 1] +
-2 (4 - D) Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i3].GAD[i4].GA[
-	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i1].GAD[i3].GAD[i4].GA[7].Spinor[Momentum[p2, D], 0, 1] +
-2 (2 - D) Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i3].GAD[i5].GA[
-	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i1].GAD[i3].GAD[i5].GA[7].Spinor[Momentum[p2, D], 0, 1] -
+	1].GAD[i1].GAD[i2].GAD[i5].GA[7].Spinor[Momentum[p2, D], 0,
+	1] + (8 - 2 D) Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[
+	i3].GAD[i4].GA[7].Spinor[-Momentum[p4, D], 0, 1] Spinor[
+	Momentum[p3, D], 0, 1].GAD[i1].GAD[i3].GAD[i4].GA[7].Spinor[
+	Momentum[p2, D], 0, 1] + (4 - 2 D) Spinor[-Momentum[p1, D], mb,
+	1].GAD[i1].GAD[i3].GAD[i5].GA[7].Spinor[-Momentum[p4, D], 0,
+	1] Spinor[Momentum[p3, D], 0, 1].GAD[i1].GAD[i3].GAD[i5].GA[
+	7].Spinor[Momentum[p2, D], 0, 1] -
 2 D Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i4].GAD[i5].GA[
 	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i1].GAD[i4].GAD[i5].GA[7].Spinor[Momentum[p2, D], 0, 1] +
-2 (6 - D) Spinor[-Momentum[p1, D], mb, 1].GAD[i2].GAD[i3].GAD[i4].GA[
-	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i2].GAD[i3].GAD[i4].GA[7].Spinor[Momentum[p2, D], 0, 1] +
-2 (4 - D) Spinor[-Momentum[p1, D], mb, 1].GAD[i2].GAD[i3].GAD[i5].GA[
-	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i2].GAD[i3].GAD[i5].GA[7].Spinor[Momentum[p2, D], 0, 1] +
-2 (2 - D) Spinor[-Momentum[p1, D], mb, 1].GAD[i2].GAD[i4].GAD[i5].GA[
+	1].GAD[i1].GAD[i4].GAD[i5].GA[7].Spinor[Momentum[p2, D], 0,
+	1] + (12 - 2 D) Spinor[-Momentum[p1, D], mb, 1].GAD[i2].GAD[
+	i3].GAD[i4].GA[7].Spinor[-Momentum[p4, D], 0, 1] Spinor[
+	Momentum[p3, D], 0, 1].GAD[i2].GAD[i3].GAD[i4].GA[7].Spinor[
+	Momentum[p2, D], 0, 1] + (8 - 2 D) Spinor[-Momentum[p1, D], mb,
+	1].GAD[i2].GAD[i3].GAD[i5].GA[7].Spinor[-Momentum[p4, D], 0,
+	1] Spinor[Momentum[p3, D], 0, 1].GAD[i2].GAD[i3].GAD[i5].GA[
+	7].Spinor[Momentum[p2, D], 0, 1] + (4 -
+	2 D) Spinor[-Momentum[p1, D], mb, 1].GAD[i2].GAD[i4].GAD[i5].GA[
 	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
 	1].GAD[i2].GAD[i4].GAD[i5].GA[7].Spinor[Momentum[p2, D], 0, 1] -
 2 D Spinor[-Momentum[p1, D], mb, 1].GAD[i3].GAD[i4].GAD[i5].GA[
@@ -267,52 +273,55 @@ Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i2].GAD[i3].GAD[i4].GAD[
 	i5].GA[7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D],
 	0, 1].GAD[i1].GAD[i2].GAD[i3].GAD[i4].GAD[i5].GA[7].Spinor[
 	Momentum[p2, D], 0, 1]"},
-{"fcstDiracOrder-ID54",
+{"fcstDiracOrder-ID56",
 "DiracOrder[
 Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GA[7].GAD[i2].GAD[i3].GAD[
 	i4].GAD[i5].GA[7].Spinor[-Momentum[p4, D], 0, 1] Spinor[
 	Momentum[p3, D], 0, 1].GAD[i5].GAD[i4].GAD[6].GAD[i3].GAD[i2].GAD[
 	i1].GA[7].Spinor[Momentum[p2, D], 0, 1], FCE -> True]",
-"-4 (4 - 3 D) D Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GA[
+"(-16 D + 12 D^2) Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GA[
 	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i1].GA[7].Spinor[Momentum[p2, D], 0, 1] +
-4 (4 - 10 D + 3 D^2) Spinor[-Momentum[p1, D], mb, 1].GAD[i2].GA[
+	1].GAD[i1].GA[7].Spinor[Momentum[p2, D], 0, 1] + (16 - 40 D +
+	12 D^2) Spinor[-Momentum[p1, D], mb, 1].GAD[i2].GA[
 	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i2].GA[7].Spinor[Momentum[p2, D], 0, 1] +
-12 (2 - D)^2 Spinor[-Momentum[p1, D], mb, 1].GAD[i3].GA[
+	1].GAD[i2].GA[7].Spinor[Momentum[p2, D], 0, 1] + (48 - 48 D +
+	12 D^2) Spinor[-Momentum[p1, D], mb, 1].GAD[i3].GA[
 	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i3].GA[7].Spinor[Momentum[p2, D], 0, 1] +
-4 (4 - 10 D + 3 D^2) Spinor[-Momentum[p1, D], mb, 1].GAD[i4].GA[
+	1].GAD[i3].GA[7].Spinor[Momentum[p2, D], 0, 1] + (16 - 40 D +
+	12 D^2) Spinor[-Momentum[p1, D], mb, 1].GAD[i4].GA[
 	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i4].GA[7].Spinor[Momentum[p2, D], 0, 1] -
-4 (4 - 3 D) D Spinor[-Momentum[p1, D], mb, 1].GAD[i5].GA[
+	1].GAD[i4].GA[7].Spinor[Momentum[p2, D], 0, 1] + (-16 D +
+	12 D^2) Spinor[-Momentum[p1, D], mb, 1].GAD[i5].GA[
 	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
 	1].GAD[i5].GA[7].Spinor[Momentum[p2, D], 0, 1] -
 2 D Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i2].GAD[i3].GA[
 	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i1].GAD[i2].GAD[i3].GA[7].Spinor[Momentum[p2, D], 0, 1] +
-2 (2 - D) Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i2].GAD[i4].GA[
-	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i1].GAD[i2].GAD[i4].GA[7].Spinor[Momentum[p2, D], 0, 1] -
+	1].GAD[i1].GAD[i2].GAD[i3].GA[7].Spinor[Momentum[p2, D], 0,
+	1] + (4 - 2 D) Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[
+	i2].GAD[i4].GA[7].Spinor[-Momentum[p4, D], 0, 1] Spinor[
+	Momentum[p3, D], 0, 1].GAD[i1].GAD[i2].GAD[i4].GA[7].Spinor[
+	Momentum[p2, D], 0, 1] -
 2 D Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i2].GAD[i5].GA[
 	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i1].GAD[i2].GAD[i5].GA[7].Spinor[Momentum[p2, D], 0, 1] +
-2 (4 - D) Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i3].GAD[i4].GA[
-	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i1].GAD[i3].GAD[i4].GA[7].Spinor[Momentum[p2, D], 0, 1] +
-2 (2 - D) Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i3].GAD[i5].GA[
-	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i1].GAD[i3].GAD[i5].GA[7].Spinor[Momentum[p2, D], 0, 1] -
+	1].GAD[i1].GAD[i2].GAD[i5].GA[7].Spinor[Momentum[p2, D], 0,
+	1] + (8 - 2 D) Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[
+	i3].GAD[i4].GA[7].Spinor[-Momentum[p4, D], 0, 1] Spinor[
+	Momentum[p3, D], 0, 1].GAD[i1].GAD[i3].GAD[i4].GA[7].Spinor[
+	Momentum[p2, D], 0, 1] + (4 - 2 D) Spinor[-Momentum[p1, D], mb,
+	1].GAD[i1].GAD[i3].GAD[i5].GA[7].Spinor[-Momentum[p4, D], 0,
+	1] Spinor[Momentum[p3, D], 0, 1].GAD[i1].GAD[i3].GAD[i5].GA[
+	7].Spinor[Momentum[p2, D], 0, 1] -
 2 D Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i4].GAD[i5].GA[
 	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i1].GAD[i4].GAD[i5].GA[7].Spinor[Momentum[p2, D], 0, 1] +
-2 (6 - D) Spinor[-Momentum[p1, D], mb, 1].GAD[i2].GAD[i3].GAD[i4].GA[
-	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i2].GAD[i3].GAD[i4].GA[7].Spinor[Momentum[p2, D], 0, 1] +
-2 (4 - D) Spinor[-Momentum[p1, D], mb, 1].GAD[i2].GAD[i3].GAD[i5].GA[
-	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
-	1].GAD[i2].GAD[i3].GAD[i5].GA[7].Spinor[Momentum[p2, D], 0, 1] +
-2 (2 - D) Spinor[-Momentum[p1, D], mb, 1].GAD[i2].GAD[i4].GAD[i5].GA[
+	1].GAD[i1].GAD[i4].GAD[i5].GA[7].Spinor[Momentum[p2, D], 0,
+	1] + (12 - 2 D) Spinor[-Momentum[p1, D], mb, 1].GAD[i2].GAD[
+	i3].GAD[i4].GA[7].Spinor[-Momentum[p4, D], 0, 1] Spinor[
+	Momentum[p3, D], 0, 1].GAD[i2].GAD[i3].GAD[i4].GA[7].Spinor[
+	Momentum[p2, D], 0, 1] + (8 - 2 D) Spinor[-Momentum[p1, D], mb,
+	1].GAD[i2].GAD[i3].GAD[i5].GA[7].Spinor[-Momentum[p4, D], 0,
+	1] Spinor[Momentum[p3, D], 0, 1].GAD[i2].GAD[i3].GAD[i5].GA[
+	7].Spinor[Momentum[p2, D], 0, 1] + (4 -
+	2 D) Spinor[-Momentum[p1, D], mb, 1].GAD[i2].GAD[i4].GAD[i5].GA[
 	7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0,
 	1].GAD[i2].GAD[i4].GAD[i5].GA[7].Spinor[Momentum[p2, D], 0, 1] -
 2 D Spinor[-Momentum[p1, D], mb, 1].GAD[i3].GAD[i4].GAD[i5].GA[
@@ -321,7 +330,142 @@ Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GA[7].GAD[i2].GAD[i3].GAD[
 Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i2].GAD[i3].GAD[i4].GAD[
 	i5].GA[7].Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D],
 	0, 1].GAD[i1].GAD[i2].GAD[i3].GAD[i4].GAD[i5].GA[7].Spinor[
-	Momentum[p2, D], 0, 1]"}
+	Momentum[p2, D], 0, 1]"},
+{"fcstDiracOrder-ID57",
+"DiracOrder[(ms Spinor[-Momentum[p1, D], mb, 1].GAD[Lor1].GA[
+	6].Spinor[-Momentum[p3, D], ms, 1] -
+	Spinor[-Momentum[p1, D], mb, 1].GAD[Lor1].GSD[p4].GA[
+	7].Spinor[-Momentum[p3, D], ms, 1] +
+	Spinor[-Momentum[p1, D], mb, 1].GAD[Lor1].(GSD[p2] + GSD[q]).GA[
+	7].Spinor[-Momentum[p3, D], ms,
+	1]) (-ms Spinor[Momentum[p4, D], mb, 1].GAD[Lor1].GA[6].Spinor[
+	Momentum[p2, D], ms, 1] +
+	Spinor[Momentum[p4, D], mb, 1].GSD[q].GAD[Lor1].GA[7].Spinor[
+	Momentum[p2, D], ms, 1] +
+	2 Spinor[Momentum[p4, D], mb, 1].GA[7].Spinor[Momentum[p2, D], ms,
+		1] FVD[p2, Lor1]), FCE -> True]",
+"2 ms Spinor[Momentum[p4, D], mb, 1].GA[7].Spinor[Momentum[p2, D], ms,
+	1] Spinor[-Momentum[p1, D], mb, 1].GSD[p2].GA[
+	6].Spinor[-Momentum[p3, D], ms, 1] -
+ms^2 Spinor[-Momentum[p1, D], mb, 1].GAD[Lor1].GA[
+	6].Spinor[-Momentum[p3, D], ms, 1] Spinor[Momentum[p4, D], mb,
+	1].GAD[Lor1].GA[6].Spinor[Momentum[p2, D], ms, 1] +
+ms Spinor[Momentum[p4, D], mb, 1].GAD[Lor1].GA[6].Spinor[
+	Momentum[p2, D], ms, 1] Spinor[-Momentum[p1, D], mb, 1].GAD[
+	Lor1].GSD[p4].GA[7].Spinor[-Momentum[p3, D], ms, 1] -
+ms (Spinor[Momentum[p4, D], mb, 1].GAD[Lor1].GA[6].Spinor[
+	Momentum[p2, D], ms, 1] Spinor[-Momentum[p1, D], mb, 1].GAD[
+	Lor1].GSD[p2].GA[7].Spinor[-Momentum[p3, D], ms, 1] +
+	Spinor[Momentum[p4, D], mb, 1].GAD[Lor1].GA[6].Spinor[
+	Momentum[p2, D], ms, 1] Spinor[-Momentum[p1, D], mb, 1].GAD[
+	Lor1].GSD[q].GA[7].Spinor[-Momentum[p3, D], ms, 1]) -
+2 Spinor[Momentum[p4, D], mb, 1].GA[7].Spinor[Momentum[p2, D], ms,
+	1] Spinor[-Momentum[p1, D], mb, 1].GSD[p2].GSD[p4].GA[
+	7].Spinor[-Momentum[p3, D], ms, 1] +
+2 Spinor[Momentum[p4, D], mb, 1].GA[7].Spinor[Momentum[p2, D], ms,
+	1] Spinor[-Momentum[p1, D], mb, 1].GSD[p4].GSD[q].GA[
+	7].Spinor[-Momentum[p3, D], ms, 1] +
+2 Spinor[Momentum[p4, D], mb, 1].GA[7].Spinor[Momentum[p2, D], ms,
+	1] Spinor[-Momentum[p1, D], mb, 1].GSD[q].GSD[p2].GA[
+	7].Spinor[-Momentum[p3, D], ms, 1] -
+Spinor[-Momentum[p1, D], mb, 1].GAD[Lor1].GSD[p2].GA[
+	7].Spinor[-Momentum[p3, D], ms, 1] Spinor[Momentum[p4, D], mb,
+	1].GAD[Lor1].GSD[q].GA[7].Spinor[Momentum[p2, D], ms, 1] +
+Spinor[-Momentum[p1, D], mb, 1].GAD[Lor1].GSD[p4].GA[
+	7].Spinor[-Momentum[p3, D], ms, 1] Spinor[Momentum[p4, D], mb,
+	1].GAD[Lor1].GSD[q].GA[7].Spinor[Momentum[p2, D], ms, 1] -
+Spinor[-Momentum[p1, D], mb, 1].GAD[Lor1].GSD[q].GA[
+	7].Spinor[-Momentum[p3, D], ms, 1] Spinor[Momentum[p4, D], mb,
+	1].GAD[Lor1].GSD[q].GA[7].Spinor[Momentum[p2, D], ms, 1] +
+ms (2 Spinor[Momentum[p4, D], mb, 1].GA[7].Spinor[Momentum[p2, D],
+	ms, 1] Spinor[-Momentum[p1, D], mb, 1].GSD[q].GA[
+	6].Spinor[-Momentum[p3, D], ms, 1] -
+	Spinor[-Momentum[p1, D], mb, 1].GAD[Lor1].GA[
+	6].Spinor[-Momentum[p3, D], ms, 1] Spinor[Momentum[p4, D], mb,
+	1].GAD[Lor1].GSD[q].GA[7].Spinor[Momentum[p2, D], ms, 1]) +
+2 (Spinor[Momentum[p4, D], mb, 1].GA[7].Spinor[Momentum[p2, D], ms,
+	1] Spinor[-Momentum[p1, D], mb, 1].GSD[p2].GSD[q].GA[
+	7].Spinor[-Momentum[p3, D], ms, 1] +
+	Spinor[-Momentum[p1, D], mb, 1].GA[7].Spinor[-Momentum[p3, D], ms,
+		1] Spinor[Momentum[p4, D], mb, 1].GA[7].Spinor[
+	Momentum[p2, D], ms, 1] SPD[p2, p2]) -
+4 Spinor[-Momentum[p1, D], mb, 1].GA[7].Spinor[-Momentum[p3, D], ms,
+	1] Spinor[Momentum[p4, D], mb, 1].GA[7].Spinor[Momentum[p2, D],
+	ms, 1] SPD[p4, q] +
+2 Spinor[-Momentum[p1, D], mb, 1].GA[7].Spinor[-Momentum[p3, D], ms,
+	1] Spinor[Momentum[p4, D], mb, 1].GA[7].Spinor[Momentum[p2, D],
+	ms, 1] SPD[q, q]"},
+{"fcstDiracOrder-ID58",
+"DiracOrder[(ms Spinor[-Momentum[p1, D], mb, 1].DiracGamma[
+	LorentzIndex[Lor1, D], D].DiracGamma[
+	6].Spinor[-Momentum[p3, D], ms, 1] -
+	Spinor[-Momentum[p1, D], mb, 1].DiracGamma[LorentzIndex[Lor1, D],
+	D].DiracGamma[Momentum[p4, D], D].DiracGamma[
+	7].Spinor[-Momentum[p3, D], ms, 1] +
+	Spinor[-Momentum[p1, D], mb, 1].DiracGamma[LorentzIndex[Lor1, D],
+	D].(DiracGamma[Momentum[p2, D], D] +
+	DiracGamma[Momentum[q, D], D]).DiracGamma[
+	7].Spinor[-Momentum[p3, D], ms,
+	1]) (-ms Spinor[Momentum[p4, D], mb, 1].DiracGamma[
+	LorentzIndex[Lor1, D], D].DiracGamma[6].Spinor[Momentum[p2, D],
+		ms, 1] +
+	Spinor[Momentum[p4, D], mb, 1].DiracGamma[Momentum[q, D],
+	D].DiracGamma[LorentzIndex[Lor1, D], D].DiracGamma[7].Spinor[
+	Momentum[p2, D], ms, 1] +
+	2 Spinor[Momentum[p4, D], mb, 1].DiracGamma[7].Spinor[
+	Momentum[p2, D], ms, 1] Pair[LorentzIndex[Lor1, D],
+	Momentum[p2, D]]), FCE -> True]",
+"   2 ms Spinor[Momentum[p4, D], mb, 1].GA[7].Spinor[Momentum[p2, D], ms,
+	1] Spinor[-Momentum[p1, D], mb, 1].GSD[p2].GA[
+	6].Spinor[-Momentum[p3, D], ms, 1] -
+ms^2 Spinor[-Momentum[p1, D], mb, 1].GAD[Lor1].GA[
+	6].Spinor[-Momentum[p3, D], ms, 1] Spinor[Momentum[p4, D], mb,
+	1].GAD[Lor1].GA[6].Spinor[Momentum[p2, D], ms, 1] +
+ms Spinor[Momentum[p4, D], mb, 1].GAD[Lor1].GA[6].Spinor[
+	Momentum[p2, D], ms, 1] Spinor[-Momentum[p1, D], mb, 1].GAD[
+	Lor1].GSD[p4].GA[7].Spinor[-Momentum[p3, D], ms, 1] -
+ms (Spinor[Momentum[p4, D], mb, 1].GAD[Lor1].GA[6].Spinor[
+	Momentum[p2, D], ms, 1] Spinor[-Momentum[p1, D], mb, 1].GAD[
+	Lor1].GSD[p2].GA[7].Spinor[-Momentum[p3, D], ms, 1] +
+	Spinor[Momentum[p4, D], mb, 1].GAD[Lor1].GA[6].Spinor[
+	Momentum[p2, D], ms, 1] Spinor[-Momentum[p1, D], mb, 1].GAD[
+	Lor1].GSD[q].GA[7].Spinor[-Momentum[p3, D], ms, 1]) -
+2 Spinor[Momentum[p4, D], mb, 1].GA[7].Spinor[Momentum[p2, D], ms,
+	1] Spinor[-Momentum[p1, D], mb, 1].GSD[p2].GSD[p4].GA[
+	7].Spinor[-Momentum[p3, D], ms, 1] +
+2 Spinor[Momentum[p4, D], mb, 1].GA[7].Spinor[Momentum[p2, D], ms,
+	1] Spinor[-Momentum[p1, D], mb, 1].GSD[p4].GSD[q].GA[
+	7].Spinor[-Momentum[p3, D], ms, 1] +
+2 Spinor[Momentum[p4, D], mb, 1].GA[7].Spinor[Momentum[p2, D], ms,
+	1] Spinor[-Momentum[p1, D], mb, 1].GSD[q].GSD[p2].GA[
+	7].Spinor[-Momentum[p3, D], ms, 1] -
+Spinor[-Momentum[p1, D], mb, 1].GAD[Lor1].GSD[p2].GA[
+	7].Spinor[-Momentum[p3, D], ms, 1] Spinor[Momentum[p4, D], mb,
+	1].GAD[Lor1].GSD[q].GA[7].Spinor[Momentum[p2, D], ms, 1] +
+Spinor[-Momentum[p1, D], mb, 1].GAD[Lor1].GSD[p4].GA[
+	7].Spinor[-Momentum[p3, D], ms, 1] Spinor[Momentum[p4, D], mb,
+	1].GAD[Lor1].GSD[q].GA[7].Spinor[Momentum[p2, D], ms, 1] -
+Spinor[-Momentum[p1, D], mb, 1].GAD[Lor1].GSD[q].GA[
+	7].Spinor[-Momentum[p3, D], ms, 1] Spinor[Momentum[p4, D], mb,
+	1].GAD[Lor1].GSD[q].GA[7].Spinor[Momentum[p2, D], ms, 1] +
+ms (2 Spinor[Momentum[p4, D], mb, 1].GA[7].Spinor[Momentum[p2, D],
+	ms, 1] Spinor[-Momentum[p1, D], mb, 1].GSD[q].GA[
+	6].Spinor[-Momentum[p3, D], ms, 1] -
+	Spinor[-Momentum[p1, D], mb, 1].GAD[Lor1].GA[
+	6].Spinor[-Momentum[p3, D], ms, 1] Spinor[Momentum[p4, D], mb,
+	1].GAD[Lor1].GSD[q].GA[7].Spinor[Momentum[p2, D], ms, 1]) +
+2 (Spinor[Momentum[p4, D], mb, 1].GA[7].Spinor[Momentum[p2, D], ms,
+	1] Spinor[-Momentum[p1, D], mb, 1].GSD[p2].GSD[q].GA[
+	7].Spinor[-Momentum[p3, D], ms, 1] +
+	Spinor[-Momentum[p1, D], mb, 1].GA[7].Spinor[-Momentum[p3, D], ms,
+		1] Spinor[Momentum[p4, D], mb, 1].GA[7].Spinor[
+	Momentum[p2, D], ms, 1] SPD[p2, p2]) -
+4 Spinor[-Momentum[p1, D], mb, 1].GA[7].Spinor[-Momentum[p3, D], ms,
+	1] Spinor[Momentum[p4, D], mb, 1].GA[7].Spinor[Momentum[p2, D],
+	ms, 1] SPD[p4, q] +
+2 Spinor[-Momentum[p1, D], mb, 1].GA[7].Spinor[-Momentum[p3, D], ms,
+	1] Spinor[Momentum[p4, D], mb, 1].GA[7].Spinor[Momentum[p2, D],
+	ms, 1] SPD[q, q]"}
 });
 
 

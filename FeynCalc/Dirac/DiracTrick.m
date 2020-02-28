@@ -88,7 +88,7 @@ diracTrickEvalFastFromDiracSimplifySingle[DiracChain[diracObject_,i_,j_], {tmpHe
 
 DiracTrick[expr_,OptionsPattern[]] :=
 	Block[{	res, tmp, ex, null1, null2, holdDOT, freePart, dsPart, diracObjects,
-			diracObjectsEval, repRule, time, dsHead},
+			diracObjectsEval, repRule, time, dsHead, optFCDiracIsolate},
 
 		(*	Algorithm of DiracTrick:
 
@@ -129,6 +129,7 @@ DiracTrick[expr_,OptionsPattern[]] :=
 		*)
 
 		optJoin = OptionValue[FCJoinDOTs];
+		optFCDiracIsolate = OptionValue[FCDiracIsolate];
 
 		If [OptionValue[FCVerbose]===False,
 			diTrVerbose=$VeryVerbose,
@@ -156,14 +157,17 @@ DiracTrick[expr_,OptionsPattern[]] :=
 
 
 
-		If[	OptionValue[FCDiracIsolate],
+		If[	optFCDiracIsolate===True || Head[optFCDiracIsolate]===List,
 			(*	This is the standard mode for calling DiracTrick	*)
 			FCPrint[1,"DiracTrick: Normal mode.", FCDoControl->diTrVerbose];
 			time=AbsoluteTime[];
 			FCPrint[1, "DiracTrick: Extracting Dirac objects.", FCDoControl->diTrVerbose];
 			(* 	First of all we need to extract all the Dirac structures in the input. *)
-			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracGammaCombine],
-				FCJoinDOTs -> optJoin, LorentzIndex->True, ToDiracGamma67-> OptionValue[ToDiracGamma67], DiracChain->OptionValue[DiracChain]];
+			If[	TrueQ[Head[optFCDiracIsolate]===List],
+				ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, optFCDiracIsolate],
+				ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracGammaCombine],
+					FCJoinDOTs -> optJoin, LorentzIndex->True, ToDiracGamma67-> OptionValue[ToDiracGamma67], DiracChain->OptionValue[DiracChain]];
+			];
 
 			{freePart,dsPart} = FCSplit[ex,{dsHead}];
 			FCPrint[3,"DiracTrick: dsPart: ",dsPart , FCDoControl->diTrVerbose];

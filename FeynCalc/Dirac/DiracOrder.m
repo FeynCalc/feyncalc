@@ -42,6 +42,7 @@ tmp::usage="";
 Options[DiracOrder] = {
 	DiracGammaCombine	-> False,
 	DiracTrick 			-> True,
+	DotSimplify			-> True,
 	FCDiracIsolate		-> True,
 	FCE					-> False,
 	FCI					-> False,
@@ -85,7 +86,8 @@ DiracOrder[expr_, orderList_List/; (!OptionQ[orderList] || orderList==={}), Opti
 			time=AbsoluteTime[];
 			FCPrint[1, "DiracOrder: Extracting Dirac objects.", FCDoControl->doVerbose];
 			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracChain->True,
-				DiracGammaCombine->OptionValue[DiracGammaCombine], FCJoinDOTs->OptionValue[FCJoinDOTs], Split->False];
+				DiracGammaCombine->OptionValue[DiracGammaCombine], FCJoinDOTs->OptionValue[FCJoinDOTs], Split->False,
+				LorentzIndex->True, CartesianIndex->True];
 
 
 			{freePart,dsPart} = FCSplit[ex,{dsHead}];
@@ -124,10 +126,20 @@ DiracOrder[expr_, orderList_List/; (!OptionQ[orderList] || orderList==={}), Opti
 			FCPrint[1, "DiracOrder: Inserting Dirac objects back.", FCDoControl->doVerbose];
 			diracObjectsEval = diracObjectsEval /. holdDOT[]->1 /.holdDOT->DOT /. PairContract->Pair;
 
+			If[	OptionValue[DotSimplify],
+				time=AbsoluteTime[];
+				FCPrint[1, "DiracOrder: Applying DotSimplify.", FCDoControl->doVerbose];
+				diracObjectsEval = DotSimplify[#,FCI->True, Expanding->True]&/@diracObjectsEval;
+				FCPrint[1, "DiracOrder: Done applying DotSimplify,timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->doVerbose];
+				FCPrint[3, "DiracOrder: After DotSimplify: ", diracObjectsEval, FCDoControl->doVerbose];
+			];
+
+
 			If[	(OptionValue[DiracTrick]===True || OptionValue[DiracTrick]===Last)  && FreeQ[orderList,ExplicitLorentzIndex[0]],
 				time=AbsoluteTime[];
 				FCPrint[1, "DiracOrder: Applying DiracTrick.", FCDoControl->doVerbose];
-				diracObjectsEval = DiracTrick[#,FCI->True]&/@diracObjectsEval;
+				diracObjectsEval = DiracTrick[#,FCI->True, FCDiracIsolate -> {DotSimplify -> False, Expanding -> False,
+					FCJoinDOTs -> False, DiracGammaCombine -> False, Factoring -> False}]&/@diracObjectsEval;
 				diracObjectsEval =FeynCalc`Package`diracChainContract /@ diracObjectsEval;
 				FCPrint[1, "DiracOrder: Done applying DiracTrick,timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->doVerbose];
 				FCPrint[3, "DiracOrder: After DiracTrick: ", diracObjectsEval, FCDoControl->doVerbose];
