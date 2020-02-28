@@ -50,7 +50,7 @@ Options[DiracChainJoin] = {
 	FCE 			-> False,
 	FCI 			-> False,
 	FCVerbose		-> False,
-	Factoring		-> True,
+	Factoring		-> {Factor2, 5000},
 	TraceOfOne		-> 4
 };
 
