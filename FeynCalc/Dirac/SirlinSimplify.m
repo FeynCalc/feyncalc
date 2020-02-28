@@ -105,7 +105,7 @@ SirlinSimplify[expr_, OptionsPattern[]] :=
 		time=AbsoluteTime[];
 
 		tmp = FCDiracIsolate[tmp,FCI->True,Head->dsHead, DotSimplify->False, DiracGammaCombine->optDiracGammaCombine, FCJoinDOTs-> OptionValue[FCJoinDOTs],
-			DiracSigmaExplicit->optDiracSigmaExplicit, LorentzIndex->False, Spinor->Join, DiracGamma->False, Factoring -> OptionValue[Factoring]];
+			DiracSigmaExplicit->optDiracSigmaExplicit, LorentzIndex->False, Split->False, DiracGamma->False, Factoring -> OptionValue[Factoring]];
 
 		FCPrint[1, "SirlinSimplify: Done isolating spinor chains, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->sisVerbose];
 		FCPrint[3, "SirlinSimplify: After FCDiracIsolate ", tmp, FCDoControl->sisVerbose];

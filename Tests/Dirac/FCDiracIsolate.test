@@ -122,7 +122,7 @@ dch[Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[p3].GAD[Lor1].Spinor[Momentum[p1
 	Momentum[p], m, 1].GA[k].Spinor[Momentum[p], m, 1] +
 6 Spinor[Momentum[k], m, 1].GA[$MU[$39]].GA[5].Spinor[Momentum[k],
 	m, 1] Spinor[Momentum[p], m, 1].GA[$MU[$39]].GA[5].Spinor[
-	Momentum[p], m, 1], Spinor -> Join, Head -> dch,FCE->True]",
+	Momentum[p], m, 1], Split -> False, Head -> dch,FCE->True]",
 "4 dch[Spinor[Momentum[k], m, 1].GA[i].Spinor[Momentum[k], m,
 	1] Spinor[Momentum[p], m, 1].GA[i].Spinor[Momentum[p], m, 1]] +
 2 dch[Spinor[Momentum[k], m, 1].GA[j].Spinor[Momentum[k], m,
@@ -162,7 +162,7 @@ a (2 Spinor[Momentum[p - q], m1, 1].GA[b].Spinor[Momentum[p], m1,
 	m2 Spinor[Momentum[p + q], m2, 1].Spinor[Momentum[p], m2, 1] MT[
 	a, b] + 4 Spinor[Momentum[p + q], m2, 1].GS[q].Spinor[
 		Momentum[p], m2, 1] MT[a, b]), LorentzIndex -> All,
-FCJoinDOTs -> True, Spinor -> Join, Head -> dsHead] // FCE",
+FCJoinDOTs -> True, Split -> False, Head -> dsHead] // FCE",
 "32 a dsHead[
 Spinor[Momentum[p - q], m1, 1].GA[b].Spinor[Momentum[p], m1,
 	1] Spinor[Momentum[p + q], m2, 1].GA[b].Spinor[Momentum[p], m2,
@@ -287,6 +287,27 @@ FCDiracIsolate[#, DiracGammaCombine -> False, Head -> {dch, re},
 FCJoinDOTs -> False, FCE -> True] &"},
 {"fcstFCDiracIsolate-ID32", "FCDiracIsolate[x,Head->{di,re}]", "re[x]"},
 {"fcstFCDiracIsolate-ID33", "FCDiracIsolate[{GA[i], GS[p]}, Head -> di, FCE -> True]",
-"{di[GA[i]], di[GS[p]]}"}
+"{di[GA[i]], di[GS[p]]}"},
+{"fcstFCDiracIsolate-ID34", "FCDiracIsolate[
+a SpinorUBar[p1, m].GA[mu].SpinorU[p2, m] SpinorVBar[p3, m].GA[
+	mu].SpinorV[p4, m] +
+b SpinorUBar[p1, m].GA[nu, rho].SpinorU[p2, m] SpinorVBar[p3, m].GA[
+	nu, rho].SpinorV[p4, m] +
+c SpinorUBar[p1, m].GA[nu].GS[q].SpinorU[p2, m] SpinorVBar[p3,
+	m].GA[nu].GS[q2].SpinorV[p4, m], Head -> dch,
+Split -> dAll, FCE -> True]",
+"a dAll[dch[
+	Spinor[Momentum[p1], m, 1].GA[mu].Spinor[Momentum[p2], m,
+	1]] dch[Spinor[-Momentum[p3], m, 1].GA[
+	mu].Spinor[-Momentum[p4], m, 1]]] +
+b dAll[dch[
+	Spinor[Momentum[p1], m, 1].GA[nu].GA[rho].Spinor[Momentum[p2], m,
+		1]] dch[
+	Spinor[-Momentum[p3], m, 1].GA[nu].GA[rho].Spinor[-Momentum[p4],
+	m, 1]]] +
+c dAll[dch[
+	Spinor[Momentum[p1], m, 1].GA[nu].GS[q].Spinor[Momentum[p2], m,
+	1]] dch[Spinor[-Momentum[p3], m, 1].GA[nu].GS[
+	q2].Spinor[-Momentum[p4], m, 1]]]"}
 });
 

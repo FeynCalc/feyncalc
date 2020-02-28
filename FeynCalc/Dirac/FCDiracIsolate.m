@@ -29,6 +29,8 @@ End[]
 
 Begin["`FCDiracIsolate`Private`"]
 
+tmp::usage="";
+
 Options[FCDiracIsolate] = {
 	CartesianIndex		-> False,
 	ClearHeads			-> {FCGV["DiracChain"]},
@@ -73,7 +75,8 @@ FCDiracIsolate[expr_List, opts:OptionsPattern[]]:=
 FCDiracIsolate[expr_/; Head[expr]=!=List, OptionsPattern[]] :=
 	Block[{	res, null1, null2, ex,tmp, head, selectionList,
 			time, fcdiVerbose, headsList, headsOrig, optTimeConstrained,
-			optHead, headR, allHeads, allHeadsEval, headNoMatrix},
+			optHead, headR, allHeads, allHeadsEval, headNoMatrix, collectList,
+			optSplit},
 
 		If [OptionValue[FCVerbose]===False,
 			fcdiVerbose=$VeryVerbose,
@@ -83,8 +86,10 @@ FCDiracIsolate[expr_/; Head[expr]=!=List, OptionsPattern[]] :=
 		];
 
 		optTimeConstrained = OptionValue[TimeConstrained];
+		optSplit = OptionValue[Split];
 		headsOrig =  Complement[DiracHeadsList,OptionValue[ExceptHeads]];
 		headsList = headsOrig;
+		collectList = headsList;
 
 		If[	OptionValue[Polarization],
 			headsList = Join[headsList,{Polarization}];
@@ -96,6 +101,16 @@ FCDiracIsolate[expr_/; Head[expr]=!=List, OptionsPattern[]] :=
 
 		If[	OptionValue[CartesianIndex]===All,
 			headsList = Join[headsList,{CartesianIndex}];
+		];
+
+		If [ OptionValue[Polarization]=!=False,
+			collectList = Join[collectList,{Polarization}]
+		];
+		If [ OptionValue[LorentzIndex]=!=False,
+			collectList = Join[collectList,{LorentzIndex}]
+		];
+		If [ OptionValue[CartesianIndex]=!=False,
+			collectList = Join[collectList,{CartesianIndex}]
 		];
 
 		optHead = OptionValue[Head];
@@ -170,12 +185,13 @@ FCDiracIsolate[expr_/; Head[expr]=!=List, OptionsPattern[]] :=
 		If[	OptionValue[Collecting],
 			time=AbsoluteTime[];
 			FCPrint[1, "FCDiracIsolate: Applying Collect2.", FCDoControl->fcdiVerbose];
-			ex = Collect2[ex,headsList,Factoring->OptionValue[Factoring],TimeConstrained->optTimeConstrained];
-			FCPrint[1, "FCDiracIsolate: Done applying Collect2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose]
+			ex = Collect2[ex,collectList,Factoring->OptionValue[Factoring],TimeConstrained->optTimeConstrained];
+			FCPrint[1, "FCDiracIsolate: Done applying Collect2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
+			FCPrint[3, "FCDiracIsolate: After Collect2: ", ex, FCDoControl->fcdiVerbose]
 		];
 
 		time=AbsoluteTime[];
-		FCPrint[1, "FCDiracIsolate: Handling Lorentz and Cartesian indices.", FCDoControl->fcdiVerbose];
+		FCPrint[1, "FCDiracIsolate: Isolating heads.", FCDoControl->fcdiVerbose];
 		If[ OptionValue[LorentzIndex]===True || OptionValue[CartesianIndex]===True,
 			res = (Map[(selectionList=makeSelectionList[#,headsList]; restHead[SelectFree[#, selectionList]] head[SelectNotFree[#, selectionList]])&,
 				ex + null1 + null2] /. {null1 | null2 -> 0} /. head[1] -> 1),
@@ -183,7 +199,7 @@ FCDiracIsolate[expr_/; Head[expr]=!=List, OptionsPattern[]] :=
 			res = (Map[(restHead[SelectFree[#, headsList]] head[SelectNotFree[#, headsList]]) &,
 				ex + null1 + null2] /. {null1 | null2 -> 0} /. head[1] -> 1)
 		];
-		FCPrint[1, "FCDiracIsolate: Done handling Lorentz and Cartesian indices, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
+		FCPrint[1, "FCDiracIsolate: Done isolating heads, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
 
 		If[ Together[(res /. restHead|head -> Identity)-ex] =!= 0,
 			Message[FCDiracIsolate::fail, ex];
@@ -195,65 +211,72 @@ FCDiracIsolate[expr_/; Head[expr]=!=List, OptionsPattern[]] :=
 
 		allHeadsEval = allHeadsEval /. {head[x_] /; !FreeQ2[x, OptionValue[ExceptHeads]] :> x};
 
-
-		If[	OptionValue[Split],
+		If[optSplit=!=False,
 			time=AbsoluteTime[];
 			FCPrint[1, "FCDiracIsolate: Doing splittings.", FCDoControl->fcdiVerbose];
+			Switch[optSplit,
+				True,
+				allHeadsEval = chainSplit[allHeadsEval,head],
+				_Symbol,
+				allHeadsEval = allHeadsEval /. head[x_]:> optSplit[chainSplit[head[x],head]],
+				_,
+				Null
+			];
 
+			FCPrint[1, "FCDiracIsolate: Splittings done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose]
+
+		];
+
+(*
+		If[	OptionValue[Split],
+
+			allHeadsEval = chainSplit[allHeadsEval,head];
+			(*
 			allHeadsEval  = allHeadsEval //. head[a_holdDOT b_]/; !FreeQ[b, holdDOT] :> head[a] head[b];
 
 			If[	!FreeQ[allHeadsEval,Spinor],
 				allHeadsEval  = allHeadsEval /. {
 					head[holdDOT[r1___,a_Spinor,b___,c_Spinor, d_Spinor, e___, f_Spinor, r2___]]/;FreeQ[{r1,b,e,r2}, Spinor] :>
 						head[holdDOT[a,b,c]] head[holdDOT[d,e,f]] head[holdDOT[r1,r2]]}
-			];
-			FCPrint[1, "FCDiracIsolate: Splittings done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose]
-		];
+			];*)
+
+		];*)
 
 		time=AbsoluteTime[];
 		FCPrint[1, "FCDiracIsolate: Removing unneeded isolations.", FCDoControl->fcdiVerbose];
 
 		(* Here we unisolate objects that are not needed *)
-		If[	!OptionValue[DiracTrace],
+		If[	!OptionValue[DiracTrace] && !FreeQ[allHeadsEval,DiracTrace],
 			allHeadsEval = allHeadsEval //. head[x_DiracTrace y_.] :> x head[y]
 		];
 
-		If[	!OptionValue[DiracChain],
+		If[	!OptionValue[DiracChain] && !FreeQ[allHeadsEval,DiracChain],
 			allHeadsEval = allHeadsEval //. head[x_DiracChain y_.] :> x head[y] //.
 			head[holdDOT[x__] y_.]/; !FreeQ[{x},DiracChain] :> holdDOT[x] head[y]
 		];
 
-		If[	!OptionValue[DiracGamma],
+		If[	!OptionValue[DiracGamma] && !FreeQ[allHeadsEval/. _DiracChain :> Unique["dch"], DiracGamma],
 			allHeadsEval = allHeadsEval //. head[x_DiracGamma y_.] :> x head[y] //.
 			head[holdDOT[x__] y_.]/; FreeQ[{x},Spinor] && !FreeQ[{x},DiracGamma] :> holdDOT[x] head[y]
 		];
 
-		If[	OptionValue[Spinor]===False,
-			allHeadsEval = allHeadsEval //. head[holdDOT[x__] y_.]/; !FreeQ[{x},Spinor] :> holdDOT[x] head[y],
+		FCPrint[1, "FCDiracIsolate: Done removing unneeded isolations, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
 
-
-			If[	OptionValue[Spinor]===Join,
-					allHeadsEval = allHeadsEval //.
-					head[holdDOT[a_Spinor,b___,c_Spinor] x_.] head[holdDOT[d_Spinor,e___,f_Spinor] y_.]/; FreeQ[{b,e},Spinor] :>
-						head[holdDOT[a,b,c] holdDOT[d,e,f] x y]
-			]
-
+		If[	OptionValue[Spinor]===False && !FreeQ[allHeadsEval,Spinor],
+			allHeadsEval = allHeadsEval //. head[holdDOT[x__] y_.]/; !FreeQ[{x},Spinor] :> holdDOT[x] head[y]
 		];
-
 
 		allHeadsEval = allHeadsEval /. holdDOT->DOT //. head[x_]/; FreeQ2[x,headsList] :> x;
 
 		res = res /. Dispatch[Thread[Rule[allHeads,allHeadsEval]]];
 
-		FCPrint[1, "FCDiracIsolate: Done removing unneeded isolations, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
-
+		FCPrint[1, "FCDiracIsolate: Handling nondirac pieces.", FCDoControl->fcdiVerbose];
+		time=AbsoluteTime[];
 		If[	OptionValue[Isolate],
-			time=AbsoluteTime[];
-			FCPrint[1, "FCDiracIsolate: Applying Isolate.", FCDoControl->fcdiVerbose];
 			res = res/. restHead[x_]:> Isolate[x,IsolateNames->OptionValue[IsolateNames],IsolateFast->OptionValue[IsolateFast]],
 			res = res /. restHead[0]->0 /. restHead -> headR;
-			FCPrint[1, "FCDiracIsolate: Done applying Isolate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
 		];
+		FCPrint[1, "FCDiracIsolate: Done handling nondirac pieces, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
 
 		tmp = headsList;
 
@@ -280,6 +303,17 @@ FCDiracIsolate[expr_/; Head[expr]=!=List, OptionsPattern[]] :=
 		res
 	];
 
+
+chainSplit[ex_, head_]:=
+	(
+		tmp  = ex //. head[a_holdDOT b_]/; !FreeQ[b, holdDOT] :> head[a] head[b];
+		If[	!FreeQ[tmp,Spinor],
+			tmp  = tmp /. {
+				head[holdDOT[r1___,a_Spinor,b___,c_Spinor, d_Spinor, e___, f_Spinor, r2___]]/;FreeQ[{r1,b,e,r2}, Spinor] :>
+					head[holdDOT[a,b,c]] head[holdDOT[d,e,f]] head[holdDOT[r1,r2]]}
+		];
+		tmp
+	);
 restHead[0]=
 	0;
 
