@@ -99,6 +99,10 @@ Explicit -> True, FCE -> True]","DCHN[GA[nu].GA[5].GA[mu], j, i]"},
 "FCChargeConjugateTransposed[DCHN[GA[mu, 5, nu], SpinorUBar[p], i],
 Explicit -> True, FCE -> True]","FCChargeConjugateTransposed[
 DCHN[GA[mu].GA[5].GA[nu], Spinor[Momentum[p], 0, 1], i],
-Explicit -> False, FeynCalcExternal -> True]"}
+Explicit -> False, FeynCalcExternal -> True]"},
+{"fcstFCChargeConjugateTransposed-ID26","FCCCT[GA[i] == x, Explicit -> True, FCE -> True]",
+"-GA[i] == x"},
+{"fcstFCChargeConjugateTransposed-ID27","FCCCT[{GA[i], GS[p]}, Explicit -> True, FCE -> True]",
+"{-GA[i], -GS[p]}"}
 });
 

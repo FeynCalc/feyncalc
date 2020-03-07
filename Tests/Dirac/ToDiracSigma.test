@@ -34,5 +34,9 @@ DiracGamma[LorentzIndex[j]]]]//ToDiracSigma[#,GA[i],GA[j]]&\
 {"fcstToDiracSigma-ID8", "DiracSigmaExplicit[
 	DiracSigma[DiracGamma[CartesianIndex[i]], DiracGamma[CartesianIndex[j]]]] //
 ToDiracSigma[#, CGA[i], CGA[j]] & //
-ToDiracSigma[#, CGA[j], CGA[i]] & // FCE","DiracSigma[CGA[i], CGA[j]]"}
+ToDiracSigma[#, CGA[j], CGA[i]] & // FCE","DiracSigma[CGA[i], CGA[j]]"},
+{"fcstToDiracSigma-ID9", "ToDiracSigma[GA[i, j] == x, GA[i], GA[j], FCE -> True]",
+"-I DiracSigma[GA[i], GA[j]] + MT[i, j] == x"},
+{"fcstToDiracSigma-ID10", "ToDiracSigma[{GA[i, j], GA[j, i]}, GA[i], GA[j], FCE -> True]",
+"{-I DiracSigma[GA[i], GA[j]] + MT[i, j], GA[j].GA[i]}"}
 })

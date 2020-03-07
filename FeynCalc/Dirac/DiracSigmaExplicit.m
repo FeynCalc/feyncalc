@@ -39,7 +39,13 @@ Options[DiracSigmaExplicit] = {
 	FCVerbose	-> False
 };
 
-DiracSigmaExplicit[expr_, OptionsPattern[]] :=
+DiracSigmaExplicit[a_ == b_, opts:OptionsPattern[]] :=
+	DiracSigmaExplicit[a,opts] == DiracSigmaExplicit[b,opts];
+
+DiracSigmaExplicit[expr_List, opts:OptionsPattern[]]:=
+	DiracSigmaExplicit[#, opts]&/@expr;
+
+DiracSigmaExplicit[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 	Block[{ex, res, holdDOT, tmp},
 
 		If [OptionValue[FCVerbose]===False,

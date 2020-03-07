@@ -50,7 +50,13 @@ Options[DiracChainExpand] = {
 	Momentum 			-> All
 };
 
-DiracChainExpand[expr_, OptionsPattern[]] :=
+DiracChainExpand[a_ == b_, opts:OptionsPattern[]] :=
+	DiracChainExpand[a,opts] == DiracChainExpand[b,opts];
+
+DiracChainExpand[expr_List, opts:OptionsPattern[]]:=
+	DiracChainExpand[#, opts]&/@expr;
+
+DiracChainExpand[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 	Block[{ex, null1, null2, uniqList, solsList, repRule, ruleDelayed, res, rhs},
 
 	momList 			= OptionValue[Momentum];

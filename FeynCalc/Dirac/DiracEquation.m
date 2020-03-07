@@ -35,20 +35,26 @@ Options[DiracEquation] = {
 	FCE -> False
 };
 
-DiracEquation[ex_, OptionsPattern[]] :=
-	Block[{expr,res},
+DiracEquation[a_ == b_, opts:OptionsPattern[]] :=
+	DiracEquation[a,opts] == DiracEquation[b,opts];
+
+DiracEquation[expr_List, opts:OptionsPattern[]]:=
+	DiracEquation[#, opts]&/@expr;
+
+DiracEquation[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
+	Block[{ex,res},
 
 		If[	!OptionValue[FCI],
-			expr  = FCI[ex],
-			expr  = ex
+			ex  = FCI[expr],
+			ex  = expr
 		];
 
 		(* If there are no spinors or no Dirac matrices, then we can't apply the Dirac equation	*)
-		If[	FreeQ2[expr, {Spinor,DiracGamma}],
-			Return[expr];
+		If[	FreeQ2[ex, {Spinor,DiracGamma}],
+			Return[ex];
 		];
 
-		res  = DotSimplify[FixedPoint[diraceq,expr,5]/.PairContract->Pair, Expanding->False];
+		res  = DotSimplify[FixedPoint[diraceq,ex,5]/.PairContract->Pair, Expanding->False];
 
 		If[ OptionValue[FCE],
 			res = FCE[res]

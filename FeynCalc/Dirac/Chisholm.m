@@ -49,7 +49,13 @@ Options[Chisholm] = {
 	NonCommutative 		-> True
 };
 
-Chisholm[expr_, OptionsPattern[]] :=
+Chisholm[a_ == b_, opts:OptionsPattern[]] :=
+	Chisholm[a,opts] == Chisholm[b,opts];
+
+Chisholm[expr_List, opts:OptionsPattern[]]:=
+	Chisholm[#, opts]&/@expr;
+
+Chisholm[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 	Block[{ex, tmp, tmpli, tmpli1, tmpli2, terms,rest,res, holdDOT, eps, freePart, dsPart, diracObjects,
 			diracObjectsEval, null1, null2, dsHead, time, repRule, mode, chisholmRule1, chisholmRule2, maxIterations,
 			nonComm, chisholmRuleInsideTrace},

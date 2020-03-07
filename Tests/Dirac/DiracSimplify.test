@@ -222,7 +222,9 @@ Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i2].GAD[i3].GAD[i4].GAD[
 	6]] DiracTrace[(me + GS[p1]).GA[7].DiracGamma[
 	LorentzIndex[$AL[$123]]].GA[6].(me + GS[p2]).GA[7].GA[Lor1].GA[
 	6]], FCE -> True]",
-"(16 e^4 SP[k1, p2] SP[k2, p1])/s^2"}
+"(16 e^4 SP[k1, p2] SP[k2, p1])/s^2"},
+{"fcstDiracSimplify-ID45","DiracSimplify[{GS[p, p].GA[mu], GS[p].GA[mu].GS[p]}, FCE -> True]",
+"{GA[mu] SP[p, p], 2 FV[p, mu] GS[p] - GA[mu] SP[p, p]}"}
 };
 
 

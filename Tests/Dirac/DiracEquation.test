@@ -267,5 +267,10 @@ Spinor[Momentum[p1, D], m1, 1].GAD[mu].GA[7].Spinor[Momentum[p2, D],
 	Momentum[p2, D], m2, 1] +
 m1 Spinor[-Momentum[p1, D], m1, 1].GAD[mu].GA[
 	7].Spinor[-Momentum[p3, D], m2, 1] Spinor[Momentum[p1, D], m1,
-	1].GAD[mu].GA[7].Spinor[Momentum[p2, D], m2, 1]"}
+	1].GAD[mu].GA[7].Spinor[Momentum[p2, D], m2, 1]"},
+{"fcstDiracEquation-ID59","DiracEquation[GS[p].SpinorU[p, m] == x, FCE -> True]",
+"m Spinor[Momentum[p], m, 1] == x"},
+{"fcstDiracEquation-ID60","DiracEquation[{GS[p].SpinorU[p, m],
+GS[p].SpinorV[p, m]}, FCE -> True]",
+"{m Spinor[Momentum[p], m, 1], -m Spinor[-Momentum[p], m, 1]}"}
 }

@@ -57,5 +57,10 @@ GA[i])) . GS[q]"},
 "I*(CGA[i] . CGA[j] + KD[i, j])"},
 {"fcstDiracSigma-ID12",
 "DiracSigmaExplicit[DiracSigma[CGAD[i],CGAD[j]],FCE\[Rule]True]",
-"I*(CGAD[i] . CGAD[j] + KDD[i, j])"}
+"I*(CGAD[i] . CGAD[j] + KDD[i, j])"},
+{"fcstDiracSigmaExplicit-ID13", "DiracSigmaExplicit[DiracSigma[GA[i], GA[j]] == x, FCE -> True]","1/2 I (GA[i].GA[j] - GA[j].GA[i]) == x"},
+{"fcstDiracSigmaExplicit-ID14", "DiracSigmaExplicit[{DiracSigma[GA[i], GA[j]] == x,
+DiracSigma[GS[p], GA[j]] == x
+}, FCE -> True]","{1/2 I (GA[i].GA[j] - GA[j].GA[i]) ==
+x, -(1/2) I (GA[j].GS[p] - GS[p].GA[j]) == x}"}
 });

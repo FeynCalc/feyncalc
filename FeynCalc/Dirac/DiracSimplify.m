@@ -93,7 +93,7 @@ DiracSimplify[a_ == b_, opts:OptionsPattern[]] :=
 DiracSimplify[expr_List, opts:OptionsPattern[]] :=
 	DiracSimplify[#, opts]&/@expr;
 
-DiracSimplify[expr_/;Head[expr]=!=List, OptionsPattern[]] :=
+DiracSimplify[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 	Block[{ex,res, time, null1, null2, holdDOT, freePart=0, dsPart, diracObjects,
 			diracObjectsEval, repRule, tmp, tmpHead, dsHead, dsHeadAll, diracObjectsAll,
 			diracObjectsAllEval, optFCCanonicalizeDummyIndices, timeTotal},

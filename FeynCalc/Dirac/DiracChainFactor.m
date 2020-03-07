@@ -32,7 +32,13 @@ Options[DiracChainFactor] = {
 	FCE -> False
 };
 
-DiracChainFactor[expr_, OptionsPattern[]] :=
+DiracChainFactor[a_ == b_, opts:OptionsPattern[]] :=
+	DiracChainFactor[a,opts] == DiracChainFactor[b,opts];
+
+DiracChainFactor[expr_List, opts:OptionsPattern[]]:=
+	DiracChainFactor[#, opts]&/@expr;
+
+DiracChainFactor[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 	Block[ {ex, moms,res, diracChains},
 
 		If[ OptionValue[FCI],

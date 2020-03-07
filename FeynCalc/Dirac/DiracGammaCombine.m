@@ -32,7 +32,13 @@ Options[DiracGammaCombine] = {
 	FCI -> False
 };
 
-DiracGammaCombine[expr_, OptionsPattern[]] :=
+DiracGammaCombine[a_ == b_, opts:OptionsPattern[]] :=
+	DiracGammaCombine[a,opts] == DiracGammaCombine[b,opts];
+
+DiracGammaCombine[expr_List, opts:OptionsPattern[]]:=
+	DiracGammaCombine[#, opts]&/@expr;
+
+DiracGammaCombine[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 	Block[{	ex, tmp, res, holdDOT, freePart, diracPart, holdPlus, diracList, diracListEval, repRule,
 			null1, null2},
 

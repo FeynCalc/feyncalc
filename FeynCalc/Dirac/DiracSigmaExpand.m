@@ -37,7 +37,13 @@ Options[DiracSigmaExpand] = {
 	Momentum			-> All
 };
 
-DiracSigmaExpand[expr_, OptionsPattern[]] :=
+DiracSigmaExpand[a_ == b_, opts:OptionsPattern[]] :=
+	DiracSigmaExpand[a,opts] == DiracSigmaExpand[b,opts];
+
+DiracSigmaExpand[expr_List, opts:OptionsPattern[]]:=
+	DiracSigmaExpand[#, opts]&/@expr;
+
+DiracSigmaExpand[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 	Block[{ex,null1,null2, uniqList, repRule, momList,rud, uniqListEval,res},
 
 	momList = OptionValue[Momentum];

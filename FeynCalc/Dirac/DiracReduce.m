@@ -50,10 +50,13 @@ Options[DiracReduce] = {
 	FinalSubstitutions	-> {DiracBasis -> Identity}
 };
 
+DiracReduce[a_ == b_, opts:OptionsPattern[]] :=
+	DiracReduce[a,opts] == DiracReduce[b,opts];
+
 DiracReduce[expr_List, opts:OptionsPattern[]] :=
 	Map[DiracReduce[#,opts]&,expr];
 
-DiracReduce[expr_, OptionsPattern[]] :=
+DiracReduce[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 	Block[ {ex, tmp, spart, null1, null2, res, finsub, factoring,diracSimplify, li1, li2},
 
 		finsub = OptionValue[FinalSubstitutions];

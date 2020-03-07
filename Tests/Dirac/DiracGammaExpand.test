@@ -44,5 +44,8 @@ DiracGamma[
 	"5 CGSD[a] + c (CGSD[b] + CGSD[d]) + CGSD[e]"},
 {"fcstDiracGammaExpand-ID13","DiracGammaExpand[DiracSigma[x GSD[p + q], 3 GSD[r + s]], FCE -> True]",
 	"3 x (DiracSigma[GSD[p], GSD[r]] + DiracSigma[GSD[p], GSD[s]] +
-DiracSigma[GSD[q], GSD[r]] + DiracSigma[GSD[q], GSD[s]])"}
+DiracSigma[GSD[q], GSD[r]] + DiracSigma[GSD[q], GSD[s]])"},
+{"fcstDiracGammaExpand-ID14","DiracGammaExpand[GS[q].GS[p - q] == x, FCE -> True]","GS[q].(GS[p] - GS[q]) == x"},
+{"fcstDiracGammaExpand-ID15","DiracGammaExpand[{GS[q].GS[p - q], GS[q1].GS[p - q2]}, FCE -> True]",
+"{GS[q].(GS[p] - GS[q]), GS[q1].(GS[p] - GS[q2])}"}
 };

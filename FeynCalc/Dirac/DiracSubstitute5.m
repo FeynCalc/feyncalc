@@ -37,7 +37,13 @@ Options[DiracSubstitute5] = {
 	FCI -> False
 };
 
-DiracSubstitute5[expr_, OptionsPattern[]] :=
+DiracSubstitute5[a_ == b_, opts:OptionsPattern[]] :=
+	DiracSubstitute5[a,opts] == DiracSubstitute5[b,opts];
+
+DiracSubstitute5[expr_List, opts:OptionsPattern[]]:=
+	DiracSubstitute5[#, opts]&/@expr;
+
+DiracSubstitute5[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 	Block[{ex, res, holdDOT},
 
 		If[ OptionValue[FCI],

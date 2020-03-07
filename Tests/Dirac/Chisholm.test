@@ -223,5 +223,10 @@ I DCHN[GA[i].GA[5], a, b] LC[j, k][p, q] -
 I DCHN[GS[p].GA[5], a, b] LC[i, j, k][q] +
 I DCHN[GA[mu].GA[5], a, b] FV[q, k] LC[i, j, mu][p] +
 I DCHN[GA[mu].GA[5], a, b] FV[q, j] LC[i, k, mu][p] +
-I DCHN[GA[mu].GA[5], a, b] FV[p, i] LC[j, k, mu][q]"}
+I DCHN[GA[mu].GA[5], a, b] FV[p, i] LC[j, k, mu][q]"},
+{"fcstChisholm-ID30", "Chisholm[GA[mu, nu, rho] LC[mu, nu, rho, si] == x, FCE -> True]",
+"-6 I GA[si].GA[5] == x"},
+{"fcstChisholm-ID31", "Chisholm[{GA[mu, nu, rho] LC[mu, nu, rho, si],
+GA[nu, mu, rho] LC[mu, nu, rho, si]}, FCE -> True]",
+"{-6 I GA[si].GA[5], 6 I GA[si].GA[5]}"}
 })

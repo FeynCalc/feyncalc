@@ -37,7 +37,13 @@ Options[DiracSubstitute67] = {
 	FCI -> False
 };
 
-DiracSubstitute67[expr_, OptionsPattern[]] :=
+DiracSubstitute67[a_ == b_, opts:OptionsPattern[]] :=
+	DiracSubstitute67[a,opts] == DiracSubstitute67[b,opts];
+
+DiracSubstitute67[expr_List, opts:OptionsPattern[]]:=
+	DiracSubstitute67[#, opts]&/@expr;
+
+DiracSubstitute67[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 	Block[{ex, res, holdDOT},
 
 		If[ OptionValue[FCI],

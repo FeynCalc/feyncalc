@@ -94,5 +94,10 @@ FCE -> True]","-Spinor[-Momentum[q], 0, 1].GA[nu].GA[5].GA[mu].Spinor[Momentum[p
 {"fcstSpinorChainTranspose-ID19","SpinorChainTranspose[DCHN[SpinorVBar[p], SpinorU[q]], FCE -> True]",
 	"-Spinor[-Momentum[q], 0, 1].Spinor[Momentum[p], 0, 1]"},
 {"fcstSpinorChainTranspose-ID20","SpinorChainTranspose[DCHN[1, SpinorVBar[p], SpinorU[q]], FCE -> True]",
-	"-Spinor[-Momentum[q], 0, 1].Spinor[Momentum[p], 0, 1]"}
+	"-Spinor[-Momentum[q], 0, 1].Spinor[Momentum[p], 0, 1]"},
+{"fcstSpinorChainTranspose-ID21","SpinorChainTranspose[SpinorVBarD[p1, m1].SpinorVD[p2, m2] == x,
+FCE -> True]", "-Spinor[Momentum[p2, D], m2, 1].Spinor[Momentum[p1, D], m1, 1] == x"},
+{"fcstSpinorChainTranspose-ID22","SpinorChainTranspose[{SpinorVBarD[p1, m1].SpinorVD[p2, m2],
+SpinorUBarD[p1, m1].SpinorUD[p2, m2]}, FCE -> True]", "{-Spinor[Momentum[p2, D], m2, 1].Spinor[Momentum[p1, D], m1, 1],
+Spinor[Momentum[p1, D], m1, 1].Spinor[Momentum[p2, D], m2, 1]}"}
 });

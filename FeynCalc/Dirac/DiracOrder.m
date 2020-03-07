@@ -51,10 +51,16 @@ Options[DiracOrder] = {
 	MaxIterations		-> Infinity
 };
 
+DiracOrder[a_ == b_, rest___] :=
+	DiracOrder[a,rest] == DiracOrder[b,rest];
+
+DiracOrder[expr_List, rest___]:=
+	DiracOrder[#, rest]&/@expr;
+
 DiracOrder[expr_, (opts:OptionsPattern[])/;opts=!={}] :=
 	DiracOrder[expr, {}, opts];
 
-DiracOrder[expr_, orderList_List/; (!OptionQ[orderList] || orderList==={}), OptionsPattern[]]:=
+DiracOrder[expr_/; !MemberQ[{List,Equal},expr], orderList_List/; (!OptionQ[orderList] || orderList==={}), OptionsPattern[]]:=
 	Block[{	ex,res,dsHead,dsPart,freePart,null1,null2,diracObjects,
 			tmp, maxIterations, diracObjectsEval, repRule,time},
 

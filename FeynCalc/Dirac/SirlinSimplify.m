@@ -56,7 +56,13 @@ Options[SirlinSimplify] = {
 	SpinorChainTrick 			-> True
 };
 
-SirlinSimplify[expr_, OptionsPattern[]] :=
+SirlinSimplify[a_ == b_, opts:OptionsPattern[]] :=
+	SirlinSimplify[a,opts] == SirlinSimplify[b,opts];
+
+SirlinSimplify[expr_List, opts:OptionsPattern[]]:=
+	SirlinSimplify[#, opts]&/@expr;
+
+SirlinSimplify[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 	Block[{ex, tmp,  res, diracObjects, diracObjectsEval, null1, null2, dsHead, time, repRule, mode,
 			optDiracSigmaExplicit, optDiracGammaCombine, optContract, optFCCanonicalizeDummyIndices
 			},

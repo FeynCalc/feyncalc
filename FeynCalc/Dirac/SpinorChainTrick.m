@@ -57,6 +57,12 @@ Options[SpinorChainTrick] = {
 	TimeConstrained 			-> 3
 };
 
+SpinorChainTrick[a_ == b_, opts:OptionsPattern[]] :=
+	SpinorChainTrick[a,opts] == SpinorChainTrick[b,opts];
+
+SpinorChainTrick[expr_List, opts:OptionsPattern[]]:=
+	(SpinorChainTrick[#, opts]&/@expr)/; OptionValue[FCDiracIsolate]=!=List;
+
 SpinorChainTrick[expr_, OptionsPattern[]] :=
 	Block[{ex, tmp,  dsIso, freePart,dsPart, null1, null2, time, diracObjects, optDiracSigmaExplicit,
 		optDiracGammaCombine, diracObjectsEval, repRule, res, timeAll, dsHead,
@@ -71,7 +77,6 @@ SpinorChainTrick[expr_, OptionsPattern[]] :=
 		optDiracEquation				= OptionValue[DiracEquation];
 		optDiracOrder					= OptionValue[DiracOrder];
 		optFCCanonicalizeDummyIndices	= OptionValue[FCCanonicalizeDummyIndices];
-
 
 		If[ OptionValue[FCI],
 			ex = expr,
@@ -205,7 +210,7 @@ SpinorChainTrick[expr_, OptionsPattern[]] :=
 
 		res
 
-	];
+	]/; (!MemberQ[{Equal},expr] || (Head[expr]===List && OptionValue[FCDiracIsolate]===List));
 
 (* 4 and D *)
 spinorChainTrickEval[c_. holdDOT[a1___, DiracGamma[LorentzIndex[arg_]], b1___] holdDOT[a2___, DiracGamma[LorentzIndex[arg_, dim_Symbol], dim_Symbol], b2___]]:=

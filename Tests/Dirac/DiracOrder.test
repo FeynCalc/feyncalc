@@ -465,7 +465,12 @@ ms (2 Spinor[Momentum[p4, D], mb, 1].GA[7].Spinor[Momentum[p2, D],
 	ms, 1] SPD[p4, q] +
 2 Spinor[-Momentum[p1, D], mb, 1].GA[7].Spinor[-Momentum[p3, D], ms,
 	1] Spinor[Momentum[p4, D], mb, 1].GA[7].Spinor[Momentum[p2, D],
-	ms, 1] SPD[q, q]"}
+	ms, 1] SPD[q, q]"},
+{"fcstDiracOrder-ID59", "DiracOrder[GA[nu, mu, al] == x, FCE -> True]",
+"-GA[al].GA[mu].GA[nu] + 2 GA[nu] MT[al, mu] - 2 GA[mu] MT[al, nu] + 2 GA[al] MT[mu, nu] == x"},
+{"fcstDiracOrder-ID60", "DiracOrder[{GA[nu, mu, al], GA[nu, rho, al]}, FCE -> True]",
+"{-GA[al].GA[mu].GA[nu] + 2 GA[nu] MT[al, mu] - 2 GA[mu] MT[al, nu] +
+2 GA[al] MT[mu, nu], GA[al].GA[nu].GA[rho] - 2 GA[rho] MT[al, nu] + 2 GA[nu] MT[al, rho]}"}
 });
 
 

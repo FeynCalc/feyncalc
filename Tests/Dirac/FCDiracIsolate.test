@@ -308,6 +308,9 @@ b dAll[dch[
 c dAll[dch[
 	Spinor[Momentum[p1], m, 1].GA[nu].GS[q].Spinor[Momentum[p2], m,
 	1]] dch[Spinor[-Momentum[p3], m, 1].GA[nu].GS[
-	q2].Spinor[-Momentum[p4], m, 1]]]"}
+	q2].Spinor[-Momentum[p4], m, 1]]]"},
+{"fcstFCDiracIsolate-ID35", "FCDiracIsolate[GA[i] == x, Head -> dch, FCE -> True]", "dch[GA[i]] == x"},
+{"fcstFCDiracIsolate-ID36", "FCDiracIsolate[{GA[i], GS[p]}, Head -> dch, FCE -> True]",
+"{dch[GA[i]], dch[GS[p]]}"}
 });
 

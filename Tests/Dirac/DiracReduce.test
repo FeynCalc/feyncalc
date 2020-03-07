@@ -212,7 +212,7 @@ QMass SP[p1, {L, I}] SP[Polarization[kg, -I], Polarization[kp, -I]] -
 QMass SP[p2, {L, I}] SP[Polarization[kg, -I],
 Polarization[kp, -I]] +
 GS[{L, I}] (SP[kg, Polarization[kp, -I]] SP[kp,
-	  Polarization[kg, -I]] -
+	Polarization[kg, -I]] -
 	SP[kg, Polarization[kg, -I]] SP[kp, Polarization[kp, -I]] -
 	SP[kp, Polarization[kp, -I]] SP[p1, Polarization[kg, -I]] +
 	SP[kp, Polarization[kg, -I]] SP[p1, Polarization[kp, -I]] +
@@ -226,17 +226,17 @@ GS[{L, I}] (SP[kg, Polarization[kp, -I]] SP[kp,
 	SP[kp, p1] SP[Polarization[kg, -I], Polarization[kp, -I]] -
 	SP[p1, p2] SP[Polarization[kg, -I], Polarization[kp, -I]]) +
 GS[kp] (-SP[kg, Polarization[kp, -I]] SP[{L, I},
-	  Polarization[kg, -I]] -
+	Polarization[kg, -I]] -
 	SP[p1, Polarization[kp, -I]] SP[{L, I}, Polarization[kg, -I]] +
 	SP[kg, {L, I}] SP[Polarization[kg, -I], Polarization[kp, -I]] +
 	SP[p1, {L, I}] SP[Polarization[kg, -I], Polarization[kp, -I]]) +
 GS[p2] (-SP[kg, Polarization[kp, -I]] SP[{L, I},
-	  Polarization[kg, -I]] -
+	Polarization[kg, -I]] -
 	SP[p1, Polarization[kp, -I]] SP[{L, I}, Polarization[kg, -I]] +
 	SP[kg, {L, I}] SP[Polarization[kg, -I], Polarization[kp, -I]] +
 	SP[p1, {L, I}] SP[Polarization[kg, -I], Polarization[kp, -I]]) +
 GS[kg + p1] (SP[kp, Polarization[kp, -I]] SP[{L, I},
-	  Polarization[kg, -I]] +
+	Polarization[kg, -I]] +
 	SP[p2, Polarization[kp, -I]] SP[{L, I}, Polarization[kg, -I]] -
 	SP[kp, Polarization[kg, -I]] SP[{L, I}, Polarization[kp, -I]] -
 	SP[p2, Polarization[kg, -I]] SP[{L, I}, Polarization[kp, -I]] +
@@ -292,5 +292,8 @@ Polarization[kp, -I]]"},
 FCCanonicalizeDummyIndices[#, LorentzIndexNames -> {mu},
 FCE -> True] &","I DCHN[GA[mu].GA[5], a, b] LC[i, j, k, mu] +
 DCHN[GA[k], a, b] MT[i, j] - DCHN[GA[j], a, b] MT[i, k] +
-DCHN[GA[i], a, b] MT[j, k]"}
+DCHN[GA[i], a, b] MT[j, k]"},
+{"fcstDiracReduce-ID15","DiracReduce[GS[p1, p2] == x, FCE -> True]","-I DiracSigma[GS[p1], GS[p2]] + SP[p1, p2] == x"},
+{"fcstDiracReduce-ID16","DiracReduce[{GS[p1, p2], GS[q1, q2]}, FCE -> True]","{-I DiracSigma[GS[p1], GS[p2]] +
+SP[p1, p2], -I DiracSigma[GS[q1], GS[q2]] + SP[q1, q2]}"}
 }

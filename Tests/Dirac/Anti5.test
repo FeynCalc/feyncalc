@@ -115,7 +115,9 @@ Tests`Dirac`fcstAnti5ToTheRight = {
 	2 CGAE[i].CGAE[j].CGAE[k].GA[5]))"},
 {"fcstAnti5ToTheRight-ID30.4","Anti5[GA[5].CGAE[i], 1] // FCE", "CGAE[i].GA[5]"},
 {"fcstAnti5ToTheRight-ID30.5","Anti5[GA[5].CGAE[i, j, k]] // FCE", "CGAE[i].GA[5].CGAE[j].CGAE[k]"},
-{"fcstAnti5ToTheRight-ID30.6","Anti5[GA[5].CGAE[i, j, k], Infinity] // FCE", "CGAE[i].CGAE[j].CGAE[k].GA[5]"}
+{"fcstAnti5ToTheRight-ID30.6","Anti5[GA[5].CGAE[i, j, k], Infinity] // FCE", "CGAE[i].CGAE[j].CGAE[k].GA[5]"},
+{"fcstAnti5ToTheRight-ID31","Anti5[{GA[5, mu, nu], GA[6, rho]}, FCE -> True]", "{-GA[mu].GA[5].GA[nu], GA[rho].GA[7]}"},
+{"fcstAnti5ToTheRight-ID32","Anti5[GA[5, mu, nu] == x, FCE -> True]", "-GA[mu].GA[5].GA[nu] == x"}
 };
 
 

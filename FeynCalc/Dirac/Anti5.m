@@ -54,10 +54,16 @@ Options[Anti5] = {
 	FCVerbose		-> False
 };
 
-Anti5[expr_, opts:OptionsPattern[]] :=
+Anti5[a_ == b_, rest___] :=
+	Anti5[a,rest] == Anti5[b,rest];
+
+Anti5[expr_List, rest___]:=
+	Anti5[#, rest]&/@expr;
+
+Anti5[expr_/; !MemberQ[{List,Equal},expr], opts:OptionsPattern[]] :=
 	Anti5[expr, 1, opts];
 
-Anti5[expr_, n_/; !OptionQ[n] && MatchQ[n, Infinity | -Infinity | _Integer], OptionsPattern[]] :=
+Anti5[expr_/; !MemberQ[{List,Equal},expr], n_/; !OptionQ[n] && MatchQ[n, Infinity | -Infinity | _Integer], OptionsPattern[]] :=
 	Block[ {new = 0,ex,terms,rest,res, eps, freePart, dsPart, diracObjects,
 			diracObjectsEval, null1, null2, dsHead, time, repRule},
 

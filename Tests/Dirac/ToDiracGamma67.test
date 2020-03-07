@@ -57,5 +57,9 @@ Tests`Dirac`fcstToDiracGamma67 =
 "GA[mu] . GA[5] . GA[nu]"},
 {"fcstToDiracGamma67-ID16",
 "ToDiracGamma67[GA[mu,5,nu],All\[Rule]True,FCE\[Rule]True]",
-"GA[mu] . (GA[6] - GA[7]) . GA[nu]"}
+"GA[mu] . (GA[6] - GA[7]) . GA[nu]"},
+{"fcstToDiracGamma67-ID17","ToDiracGamma67[4 (1 + GA[5]) == x, FCE -> True]",
+"8 GA[6] == x"},
+{"fcstToDiracGamma67-ID18","ToDiracGamma67[{4 (1 + GA[5]), 2 (1 + GA[5])}, FCE -> True]",
+"{8 GA[6], 4 GA[6]}"}
 });

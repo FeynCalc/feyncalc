@@ -54,7 +54,13 @@ Options[DiracChainJoin] = {
 	TraceOfOne		-> 4
 };
 
-DiracChainJoin[expr_, OptionsPattern[]] :=
+DiracChainJoin[a_ == b_, opts:OptionsPattern[]] :=
+	DiracChainJoin[a,opts] == DiracChainJoin[b,opts];
+
+DiracChainJoin[expr_List, opts:OptionsPattern[]]:=
+	DiracChainJoin[#, opts]&/@expr;
+
+DiracChainJoin[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 	Block[{	ex, tmp,  res, diracObjects, diracObjectsEval, null1, null2,
 			dsHead, time, repRule},
 

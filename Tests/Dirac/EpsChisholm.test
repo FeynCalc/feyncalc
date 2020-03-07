@@ -127,5 +127,11 @@ I CGA[a].CGA[k].GA[5] KD[b, c]"},
 "-I DCHN[GA[j1].GA[j2].GA[j3].GA[mu].GA[5], a, b] +
 I DCHN[GA[j3].GA[mu].GA[5], a, b] MT[j1, j2] -
 I DCHN[GA[j2].GA[mu].GA[5], a, b] MT[j1, j3] +
-I DCHN[GA[j1].GA[mu].GA[5], a, b] MT[j2, j3]"}
+I DCHN[GA[j1].GA[mu].GA[5], a, b] MT[j2, j3]"},
+{"fcstEpsChisholm-ID11","EpsChisholm[GA[mu, nu] LC[mu, nu][p, q] == x, FCE -> True]",
+"-I GS[p].GS[q].GA[5] + I GS[q].GS[p].GA[5] == x"},
+{"fcstEpsChisholm-ID12","EpsChisholm[{GA[mu, nu] LC[mu, nu][p, q],
+GA[mu, nu] LC[mu, nu][a, b]}, FCE -> True]",
+"{-I GS[p].GS[q].GA[5] + I GS[q].GS[p].GA[5], -I GS[a].GS[b].GA[5] +
+I GS[b].GS[a].GA[5]}"}
 });
