@@ -33,23 +33,26 @@ Options[FCTraceFactor] = {
 };
 
 FCTraceFactor[expr_, OptionsPattern[]] :=
-	Block[ {ex, moms,res, diracTraces},
+	Block[ {ex, moms,res, diracTraces, pauliTraces,
+			ruleDirac, rulePauli},
 
 		If[ OptionValue[FCI],
 			ex = expr,
 			ex = FCI[expr]
 		];
 
-		If[ FreeQ2[ex,{DiracTrace}],
+		If[ FreeQ2[ex,{DiracTrace,PauliTrace}],
 			Return[ex]
 		];
 
-
-
 		diracTraces = Cases2[ex, DiracTrace];
+		pauliTraces = Cases2[ex, PauliTrace];
 
-		If[ diracTraces =!= {},
-			res = ex /. Dispatch[Thread[diracTraces -> tracefactor[diracTraces]]]
+		ruleDirac = Thread[diracTraces -> diracTracefactor[diracTraces]];
+		rulePauli = Thread[pauliTraces -> pauliTracefactor[pauliTraces]];
+
+		If[ diracTraces =!= {} || pauliTraces=!={},
+			res = ex /. Dispatch[ruleDirac] /. Dispatch[rulePauli]
 		];
 
 		If[	OptionValue[FCE],
@@ -59,10 +62,15 @@ FCTraceFactor[expr_, OptionsPattern[]] :=
 		res
 	];
 
-tracefactor[x_] :=
+diracTracefactor[x_] :=
 	x /. DOT -> holdDOT /. DiracTrace->factorDirac /. factorDirac[] -> DiracTrace[1] /.
 	holdDOT[] -> Sequence[] /.
 	factorDirac -> DiracTrace /. holdDOT->DOT;
+
+pauliTracefactor[x_] :=
+	x /. DOT -> holdDOT /. PauliTrace->factorPauli /. factorPauli[] -> PauliTrace[1] /.
+	holdDOT[] -> Sequence[] /.
+	factorPauli -> PauliTrace /. holdDOT->DOT;
 
 holdDOT[a___,b_,c___]:=
 	b holdDOT[a,c]/; NonCommFreeQ[b];
@@ -79,9 +87,30 @@ factorDirac[a_factorDirac b_.] :=
 factorDirac[a_SUNTrace b_.] :=
 	a factorDirac[b];
 
+factorDirac[a_PauliTrace b_.] :=
+	a factorDirac[b];
+
 factorDirac[a_ b_] :=
 	a factorDirac[b]/; NonCommFreeQ[a] && !NonCommFreeQ[b];
 
 
+factorPauli[a_] :=
+	a factorPauli[]/; NonCommFreeQ[a];
+
+factorPauli[a_factorPauli b_.] :=
+	a factorPauli[b];
+
+factorPauli[a_SUNTrace b_.] :=
+	a factorPauli[b];
+
+factorPauli[a_DiracTrace b_.] :=
+	a factorPauli[b];
+
+factorPauli[a_ b_] :=
+	a factorPauli[b]/; NonCommFreeQ[a] && !NonCommFreeQ[b];
+
+
+
 FCPrint[1,"FCTraceFactor.m loaded."];
 End[]
+

@@ -33,7 +33,9 @@ fctreVerbose::usage="";
 
 Options[FCTraceExpand] = {
 	DiracGammaExpand				-> True,
+	PauliSigmaExpand				-> True,
 	DiracTrace						-> True,
+	PauliTrace						-> True,
 	DotSimplify						-> True,
 	FCE								-> False,
 	FCI								-> False,
@@ -45,11 +47,12 @@ Options[FCTraceExpand] = {
 };
 
 FCTraceExpand[expr_, OptionsPattern[]] :=
-	Block[ {ex, moms,res, diracTraces,diracTraces2, sunTraces,sunTraces2},
+	Block[{	ex, moms,res, diracTraces,diracTraces2, sunTraces,sunTraces2,
+			pauliTraces, pauliTraces2},
 
-		moms = OptionValue[Momentum];
-		dotSimp = OptionValue[DotSimplify];
-		propPres = OptionValue[PreservePropagatorStructures];
+		moms 		= OptionValue[Momentum];
+		dotSimp 	= OptionValue[DotSimplify];
+		propPres	= OptionValue[PreservePropagatorStructures];
 
 		If [OptionValue[FCVerbose]===False,
 			fctreVerbose=$VeryVerbose,
@@ -66,7 +69,7 @@ FCTraceExpand[expr_, OptionsPattern[]] :=
 		FCPrint[1, "FCTraceExpand: Entering.", FCDoControl->fctreVerbose];
 		FCPrint[3, "FCTraceExpand: Entering with", ex, FCDoControl->fctreVerbose];
 
-		If[ FreeQ2[ex,{DiracTrace, SUNTrace}],
+		If[ FreeQ2[ex,{DiracTrace, PauliTrace, SUNTrace}],
 			Return[ex]
 		];
 
@@ -114,6 +117,36 @@ FCTraceExpand[expr_, OptionsPattern[]] :=
 			];
 		];
 
+
+		If[	OptionValue[PauliTrace],
+			FCPrint[1, "FCTraceExpand: Expanding Pauli traces.", FCDoControl->fctreVerbose];
+			If [moms===All,
+				pauliTraces = Cases2[ex, PauliTrace],
+				pauliTraces = Select[Cases2[ex, PauliTrace], !FreeQ2[#, moms]&]
+			];
+
+			pauliTraces2 = pauliTraces;
+			FCPrint[1, "FCTraceExpand: Done expanding Pauli traces: ", pauliTraces2, FCDoControl->fctreVerbose];
+
+			If [OptionValue[PauliSigmaExpand],
+				FCPrint[1, "FCTraceExpand: Applying PauliSigmaExpand to the Pauli traces", FCDoControl->fctreVerbose];
+				pauliTraces2 = PauliSigmaExpand[#,FCI->True]&/@pauliTraces2;
+				FCPrint[3, "FCTraceExpand: After applying PauliSigmaExpand ", pauliTraces2,  FCDoControl->fctreVerbose]
+			];
+
+			If[	OptionValue[FCTraceFactor],
+				FCPrint[1, "FCTraceExpand: Applying FCTraceFactor to the Pauli traces", FCDoControl->fctreVerbose];
+				pauliTraces2 = FCTraceFactor/@pauliTraces2;
+				FCPrint[3, "FCTraceExpand: After applying FCTraceFactor ", pauliTraces2,  FCDoControl->fctreVerbose]
+			];
+
+			If[ pauliTraces =!= {},
+				FCPrint[1, "FCTraceExpand: Expanding Pauli traces.", FCDoControl->fctreVerbose];
+				ex = ex /. Dispatch[Thread[pauliTraces -> traceexpand[pauliTraces2]]];
+				FCPrint[3, "FCTraceExpand: After the expansion of Pauli traces: ", ex,  FCDoControl->fctreVerbose]
+			];
+		];
+
 		FCPrint[3, "FCTraceExpand: Intermediate result ", ex,  FCDoControl->fctreVerbose];
 
 		If[	OptionValue[FCTraceFactor],
@@ -136,19 +169,25 @@ FCTraceExpand[expr_, OptionsPattern[]] :=
 	];
 
 traceexpand[x_] :=
-	x /. {DiracTrace->expandDirac, SUNTrace->expandColor};
+	x /. {DiracTrace->expandDirac, PauliTrace->expandPauli, SUNTrace->expandColor};
 
 expandDirac[x_] :=
 	If [dotSimp,
 		Distribute[DiracTrace@(Expand[DotSimplify[x,PreservePropagatorStructures->propPres,FCI->True]])],
 		Distribute[DiracTrace@(Expand[x])]
-	]
+	];
+
+expandPauli[x_] :=
+	If [dotSimp,
+		Distribute[PauliTrace@(Expand[DotSimplify[x,PreservePropagatorStructures->propPres,FCI->True]])],
+		Distribute[PauliTrace@(Expand[x])]
+	];
 
 expandColor[x_] :=
 	If [dotSimp,
 		Distribute[SUNTrace@(Expand[DotSimplify[x,PreservePropagatorStructures->propPres,FCI->True]])],
 		Distribute[SUNTrace@(Expand[x])]
-	]
+	];
 
 FCPrint[1,"FCTraceExpand.m loaded."];
 End[]

@@ -118,5 +118,51 @@ DiracTrace[
 SUNT[SUNIndex[b]].SUNT[SUNIndex[a]] DiracGamma[
 	Momentum[q]].DiracGamma[LorentzIndex[mu]].DiracGamma[
 	6].DiracGamma[Momentum[q]].DiracGamma[
-	LorentzIndex[mu]].DiracGamma[7]]"}
+	LorentzIndex[mu]].DiracGamma[7]]"},
+{"fcstFCTraceExpand-ID19",
+"FCTraceExpand[PauliTrace[CSI[i]],FCE->True]",
+"PauliTrace[CSI[i]]"},
+{"fcstFCTraceExpand-ID20",
+"FCTraceExpand[PauliTrace[CSI[i]+CSI[j]],FCE->True]",
+"PauliTrace[CSI[i]] + PauliTrace[CSI[j]]"},
+{"fcstFCTraceExpand-ID21",
+"FCTraceExpand[PauliTrace[CSIS[p]],FCE->True]",
+"PauliTrace[CSIS[p]]"},
+{"fcstFCTraceExpand-ID22",
+"FCTraceExpand[PauliTrace[CSIS[p+b]],PauliSigmaExpand->False,\
+FCE->True]", "PauliTrace[CSIS[b + p]]"},
+{"fcstFCTraceExpand-ID23",
+"FCTraceExpand[PauliTrace[CSI[i,i]+CSI[j,j]],FCE->True]",
+"PauliTrace[CSI[i] . CSI[i]] + PauliTrace[CSI[j] . CSI[j]]"},
+{"fcstFCTraceExpand-ID24",
+"FCTraceExpand[PauliTrace[CSI[i, i] + CSI[j, j].PauliTrace[CSI[a] \
++ CSI[b]]]] // FCE",
+"PauliTrace[CSI[i] . CSI[i]] + PauliTrace[CSI[j] . CSI[j] . \
+PauliTrace[CSI[a]]] + PauliTrace[CSI[j] . CSI[j] . \
+PauliTrace[CSI[b]]]"},
+{"fcstFCTraceExpand-ID25",
+"FCTraceExpand[PauliTrace[CSI[i, i] + CSI[j, j] PauliTrace[CSI[a] \
++ CSI[b]]]] // FCE",
+"PauliTrace[CSI[i] . CSI[i]] + \
+PauliTrace[CSI[a]]*PauliTrace[CSI[j] . CSI[j]] + \
+PauliTrace[CSI[b]]*PauliTrace[CSI[j] . CSI[j]]"},
+{"fcstFCTraceExpand-ID26",
+"FCTraceExpand[PauliTrace[CSI[i, i] +CSI[j, j] PauliTrace[CSI[a] + \
+CSI[b] PauliTrace[CSI[x]]]]] // FCE",
+"PauliTrace[CSI[i] . CSI[i]] + \
+PauliTrace[CSI[a]]*PauliTrace[CSI[j] . CSI[j]] + \
+PauliTrace[CSI[b]]*PauliTrace[CSI[x]]*PauliTrace[CSI[j] . CSI[j]]"},
+{"fcstFCTraceExpand-ID27",
+"FCTraceExpand[PauliTrace[CSIS[x]+CSIS[y]]+PauliTrace[CSIS[y]+CSIS[\
+z]],Momentum\[Rule]{z},FCE->True]",
+"PauliTrace[CSIS[y]] + PauliTrace[CSIS[x] + CSIS[y]] + \
+PauliTrace[CSIS[z]]"},
+{"fcstFCTraceExpand-ID28",
+"FCTraceExpand[PauliTrace[CSIS[x] + CSIS[y]], PauliTrace -> \
+False,FCE->True]", "PauliTrace[CSIS[x] + CSIS[y]]"},
+{"fcstFCTraceExpand-ID29",
+"PauliTrace[CGSD[k+p].CSI[j].CGSD[l-p].CSID[nu].CGSD[l].CSID[la].\
+CGSD[k+l]]//FCTraceExpand//FCE",
+"PauliTrace[CSI[j] . CSID[nu] . CSID[la]*CGSD[k + p] . CGSD[l - p] \
+. CGSD[l] . CGSD[k + l]]"}
 })
