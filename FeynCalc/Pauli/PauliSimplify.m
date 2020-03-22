@@ -59,7 +59,7 @@ Options[PauliSimplify] = {
 	FCVerbose			-> False,
 	Factoring			-> False,
 	PauliOrder			-> False,
-	PauliReduce 		-> True,
+	PauliReduce 		-> False,
 	PauliSigmaCombine	-> False
 	(*PauliTraceEvaluate	-> True,*)
 };

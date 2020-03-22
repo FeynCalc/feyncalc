@@ -49,7 +49,7 @@ Options[PauliTrick] = {
 	FCPauliIsolate -> True,
 	FCVerbose -> False,
 	PauliSigmaCombine -> False,
-	PauliReduce -> True
+	PauliReduce -> False
 };
 
 pauliTrickEvalFastFromPauliSimplifyList[pauliObjects_List, {(*optInsidePauliTrace*)_, (*optPauliOrder*)_}]:=
