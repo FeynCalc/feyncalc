@@ -166,6 +166,11 @@ IsolateNames::usage =
 Its default setting is KK. Instead of a symbol the \
 setting may also be a list with the names of the abbrevations.";
 
+InsidePauliTrace::usage =
+"InsidePauliTrace is an option of PauliSimplify and some other functions \
+dealing with Pauli algebra. If set to True, the function assumes to operate \
+inside a Pauli trace.";
+
 KK::usage =
 "KK[i] is the default setting of IsolateNames, \
 which is the head of abbreviations used by Isolate. \
@@ -200,6 +205,10 @@ setting should be: Mandelstam -> {}.";
 PairCollect::usage =
 "PairCollect is an option for DiracTrace specifying if \
 the result is collected with respect to Pair's.";
+
+PauliTraceEvaluate::usage =
+"PauliTraceEvaluate is an option for PauliTrace, PauliSimplify and \
+some other functions. If set to False, Pauli traces remain unevaluated.";
 
 PaVeAutoReduce::usage =
 "PaVEAutoConvert is an option of PaVe and other functions that work with PaVe functions. \

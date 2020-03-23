@@ -128,15 +128,18 @@ DiracTrick[expr_,OptionsPattern[]] :=
 
 		*)
 
-		optJoin = OptionValue[FCJoinDOTs];
-		optFCDiracIsolate = OptionValue[FCDiracIsolate];
-
 		If [OptionValue[FCVerbose]===False,
 			diTrVerbose=$VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				diTrVerbose=OptionValue[FCVerbose]
 			];
 		];
+
+
+		optJoin 			= OptionValue[FCJoinDOTs];
+		optFCDiracIsolate	= OptionValue[FCDiracIsolate];
+		insideDiracTrace	= OptionValue[InsideDiracTrace];
+
 
 		FCPrint[1, "DiracTrick. Entering.", FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrick: Entering with ", expr, FCDoControl->diTrVerbose];
@@ -146,15 +149,11 @@ DiracTrick[expr_,OptionsPattern[]] :=
 			ex = FCI[expr]
 		];
 
-		If[	OptionValue[InsideDiracTrace],
-			insideDiracTrace = True,
-			insideDiracTrace = False
-		];
+
 
 		If[ FreeQ2[ex,DiracHeadsList],
 			Return[ex]
 		];
-
 
 
 		If[	optFCDiracIsolate===True || Head[optFCDiracIsolate]===List,

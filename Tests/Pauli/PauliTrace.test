@@ -1,0 +1,468 @@
+
+
+(* :Title: PauliTrace.test													*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for PauliTrace				*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Pauli`fcstPauliTrace =
+({
+{"fcstPauliTrace-ID1",
+"PauliTrace[CSI[i],PauliTraceEvaluate\[Rule]True,FCE\[Rule]True]",
+"0"},
+{"fcstPauliTrace-ID2",
+"PauliTrace[CSI[i,j],PauliTraceEvaluate\[Rule]True,FCE\[Rule]True]\
+", "2*KD[i, j]"},
+{"fcstPauliTrace-ID3",
+"PauliTrace[CSI[i,j,k],PauliTraceEvaluate\[Rule]True,FCE\[Rule]\
+True]", "(2*I)*CLC[i, j, k]"},
+{"fcstPauliTrace-ID4",
+"PauliTrace[CSI[i,j,k,l],PauliTraceEvaluate\[Rule]True,FCE\[Rule]\
+True]", "2*(KD[i, l]*KD[j, k] - KD[i, k]*KD[j, l] + KD[i, j]*KD[k, \
+l])"},
+{"fcstPauliTrace-ID5",
+"PauliTrace[CSI[i,j,k,l,m],PauliTraceEvaluate\[Rule]True,FCE\[Rule]\
+True]", "(2*I)*(CLC[k, l, m]*KD[i, j] - CLC[j, l, m]*KD[i, k] + \
+CLC[i, l, m]*KD[j, k] + CLC[i, j, k]*KD[l, m])"},
+{"fcstPauliTrace-ID6",
+"PauliTrace[CSI[i,j,k,l,m,n],PauliTraceEvaluate\[Rule]True,FCE\
+\[Rule]True]",
+"2*(KD[i, n]*KD[j, m]*KD[k, l] - KD[i, m]*KD[j, n]*KD[k, l] - \
+KD[i, n]*KD[j, l]*KD[k, m] + KD[i, l]*KD[j, n]*KD[k, m] + KD[i, \
+m]*KD[j, l]*KD[k, n] - KD[i, l]*KD[j, m]*KD[k, n] + KD[i, n]*KD[j, \
+k]*KD[l, m] - KD[i, k]*KD[j, n]*KD[l, m] + KD[i, j]*KD[k, n]*KD[l, m] \
+- KD[i, m]*KD[j, k]*KD[l, n] + KD[i, k]*KD[j, m]*KD[l, n] - KD[i, \
+j]*KD[k, m]*KD[l, n] + KD[i, l]*KD[j, k]*KD[m, n] - KD[i, k]*KD[j, \
+l]*KD[m, n] + KD[i, j]*KD[k, l]*KD[m, n])"},
+{"fcstPauliTrace-ID7",
+"PauliTrace[CSI[i,j,k,l,m,n,o],PauliTraceEvaluate\[Rule]True,FCE\
+\[Rule]True]",
+"(2*I)*(CLC[m, n, o]*KD[i, l]*KD[j, k] - CLC[l, n, o]*KD[i, \
+m]*KD[j, k] - CLC[m, n, o]*KD[i, k]*KD[j, l] + CLC[l, n, o]*KD[i, \
+k]*KD[j, m] + CLC[m, n, o]*KD[i, j]*KD[k, l] - CLC[l, n, o]*KD[i, \
+j]*KD[k, m] + CLC[k, n, o]*KD[i, j]*KD[l, m] - CLC[j, n, o]*KD[i, \
+k]*KD[l, m] + CLC[i, n, o]*KD[j, k]*KD[l, m] + CLC[i, j, k]*KD[l, \
+o]*KD[m, n] - CLC[i, j, k]*KD[l, n]*KD[m, o] + CLC[k, l, m]*KD[i, \
+j]*KD[n, o] - CLC[j, l, m]*KD[i, k]*KD[n, o] + CLC[i, l, m]*KD[j, \
+k]*KD[n, o] + CLC[i, j, k]*KD[l, m]*KD[n, o])"},
+{"fcstPauliTrace-ID8",
+"PauliTrace[CSI[i,j,k,l,m,n,o,p],PauliTraceEvaluate\[Rule]True,FCE\
+\[Rule]True]",
+"2*(KD[i, p]*KD[j, o]*KD[k, n]*KD[l, m] - KD[i, o]*KD[j, p]*KD[k, \
+n]*KD[l, m] - KD[i, p]*KD[j, n]*KD[k, o]*KD[l, m] + KD[i, n]*KD[j, \
+p]*KD[k, o]*KD[l, m] + KD[i, o]*KD[j, n]*KD[k, p]*KD[l, m] - KD[i, \
+n]*KD[j, o]*KD[k, p]*KD[l, m] - KD[i, p]*KD[j, o]*KD[k, m]*KD[l, n] + \
+KD[i, o]*KD[j, p]*KD[k, m]*KD[l, n] + KD[i, p]*KD[j, m]*KD[k, \
+o]*KD[l, n] - KD[i, m]*KD[j, p]*KD[k, o]*KD[l, n] - KD[i, o]*KD[j, \
+m]*KD[k, p]*KD[l, n] + KD[i, m]*KD[j, o]*KD[k, p]*KD[l, n] + KD[i, \
+p]*KD[j, n]*KD[k, m]*KD[l, o] - KD[i, n]*KD[j, p]*KD[k, m]*KD[l, o] - \
+KD[i, p]*KD[j, m]*KD[k, n]*KD[l, o] + KD[i, m]*KD[j, p]*KD[k, \
+n]*KD[l, o] + KD[i, n]*KD[j, m]*KD[k, p]*KD[l, o] - KD[i, m]*KD[j, \
+n]*KD[k, p]*KD[l, o] - KD[i, o]*KD[j, n]*KD[k, m]*KD[l, p] + KD[i, \
+n]*KD[j, o]*KD[k, m]*KD[l, p] + KD[i, o]*KD[j, m]*KD[k, n]*KD[l, p] - \
+KD[i, m]*KD[j, o]*KD[k, n]*KD[l, p] - KD[i, n]*KD[j, m]*KD[k, \
+o]*KD[l, p] + KD[i, m]*KD[j, n]*KD[k, o]*KD[l, p] + KD[i, p]*KD[j, \
+o]*KD[k, l]*KD[m, n] - KD[i, o]*KD[j, p]*KD[k, l]*KD[m, n] - KD[i, \
+p]*KD[j, l]*KD[k, o]*KD[m, n] + KD[i, l]*KD[j, p]*KD[k, o]*KD[m, n] + \
+KD[i, o]*KD[j, l]*KD[k, p]*KD[m, n] - KD[i, l]*KD[j, o]*KD[k, \
+p]*KD[m, n] + KD[i, p]*KD[j, k]*KD[l, o]*KD[m, n] - KD[i, k]*KD[j, \
+p]*KD[l, o]*KD[m, n] + KD[i, j]*KD[k, p]*KD[l, o]*KD[m, n] - KD[i, \
+o]*KD[j, k]*KD[l, p]*KD[m, n] + KD[i, k]*KD[j, o]*KD[l, p]*KD[m, n] - \
+KD[i, j]*KD[k, o]*KD[l, p]*KD[m, n] - KD[i, p]*KD[j, n]*KD[k, \
+l]*KD[m, o] + KD[i, n]*KD[j, p]*KD[k, l]*KD[m, o] + KD[i, p]*KD[j, \
+l]*KD[k, n]*KD[m, o] - KD[i, l]*KD[j, p]*KD[k, n]*KD[m, o] - KD[i, \
+n]*KD[j, l]*KD[k, p]*KD[m, o] + KD[i, l]*KD[j, n]*KD[k, p]*KD[m, o] - \
+KD[i, p]*KD[j, k]*KD[l, n]*KD[m, o] + KD[i, k]*KD[j, p]*KD[l, \
+n]*KD[m, o] - KD[i, j]*KD[k, p]*KD[l, n]*KD[m, o] + KD[i, n]*KD[j, \
+k]*KD[l, p]*KD[m, o] - KD[i, k]*KD[j, n]*KD[l, p]*KD[m, o] + KD[i, \
+j]*KD[k, n]*KD[l, p]*KD[m, o] + KD[i, o]*KD[j, n]*KD[k, l]*KD[m, p] - \
+KD[i, n]*KD[j, o]*KD[k, l]*KD[m, p] - KD[i, o]*KD[j, l]*KD[k, \
+n]*KD[m, p] + KD[i, l]*KD[j, o]*KD[k, n]*KD[m, p] + KD[i, n]*KD[j, \
+l]*KD[k, o]*KD[m, p] - KD[i, l]*KD[j, n]*KD[k, o]*KD[m, p] + KD[i, \
+o]*KD[j, k]*KD[l, n]*KD[m, p] - KD[i, k]*KD[j, o]*KD[l, n]*KD[m, p] + \
+KD[i, j]*KD[k, o]*KD[l, n]*KD[m, p] - KD[i, n]*KD[j, k]*KD[l, \
+o]*KD[m, p] + KD[i, k]*KD[j, n]*KD[l, o]*KD[m, p] - KD[i, j]*KD[k, \
+n]*KD[l, o]*KD[m, p] + KD[i, p]*KD[j, m]*KD[k, l]*KD[n, o] - KD[i, \
+m]*KD[j, p]*KD[k, l]*KD[n, o] - KD[i, p]*KD[j, l]*KD[k, m]*KD[n, o] + \
+KD[i, l]*KD[j, p]*KD[k, m]*KD[n, o] + KD[i, m]*KD[j, l]*KD[k, \
+p]*KD[n, o] - KD[i, l]*KD[j, m]*KD[k, p]*KD[n, o] + KD[i, p]*KD[j, \
+k]*KD[l, m]*KD[n, o] - KD[i, k]*KD[j, p]*KD[l, m]*KD[n, o] + KD[i, \
+j]*KD[k, p]*KD[l, m]*KD[n, o] - KD[i, m]*KD[j, k]*KD[l, p]*KD[n, o] + \
+KD[i, k]*KD[j, m]*KD[l, p]*KD[n, o] - KD[i, j]*KD[k, m]*KD[l, \
+p]*KD[n, o] + KD[i, l]*KD[j, k]*KD[m, p]*KD[n, o] - KD[i, k]*KD[j, \
+l]*KD[m, p]*KD[n, o] + KD[i, j]*KD[k, l]*KD[m, p]*KD[n, o] - KD[i, \
+o]*KD[j, m]*KD[k, l]*KD[n, p] + KD[i, m]*KD[j, o]*KD[k, l]*KD[n, p] + \
+KD[i, o]*KD[j, l]*KD[k, m]*KD[n, p] - KD[i, l]*KD[j, o]*KD[k, \
+m]*KD[n, p] - KD[i, m]*KD[j, l]*KD[k, o]*KD[n, p] + KD[i, l]*KD[j, \
+m]*KD[k, o]*KD[n, p] - KD[i, o]*KD[j, k]*KD[l, m]*KD[n, p] + KD[i, \
+k]*KD[j, o]*KD[l, m]*KD[n, p] - KD[i, j]*KD[k, o]*KD[l, m]*KD[n, p] + \
+KD[i, m]*KD[j, k]*KD[l, o]*KD[n, p] - KD[i, k]*KD[j, m]*KD[l, \
+o]*KD[n, p] + KD[i, j]*KD[k, m]*KD[l, o]*KD[n, p] - KD[i, l]*KD[j, \
+k]*KD[m, o]*KD[n, p] + KD[i, k]*KD[j, l]*KD[m, o]*KD[n, p] - KD[i, \
+j]*KD[k, l]*KD[m, o]*KD[n, p] + KD[i, n]*KD[j, m]*KD[k, l]*KD[o, p] - \
+KD[i, m]*KD[j, n]*KD[k, l]*KD[o, p] - KD[i, n]*KD[j, l]*KD[k, \
+m]*KD[o, p] + KD[i, l]*KD[j, n]*KD[k, m]*KD[o, p] + KD[i, m]*KD[j, \
+l]*KD[k, n]*KD[o, p] - KD[i, l]*KD[j, m]*KD[k, n]*KD[o, p] + KD[i, \
+n]*KD[j, k]*KD[l, m]*KD[o, p] - KD[i, k]*KD[j, n]*KD[l, m]*KD[o, p] + \
+KD[i, j]*KD[k, n]*KD[l, m]*KD[o, p] - KD[i, m]*KD[j, k]*KD[l, \
+n]*KD[o, p] + KD[i, k]*KD[j, m]*KD[l, n]*KD[o, p] - KD[i, j]*KD[k, \
+m]*KD[l, n]*KD[o, p] + KD[i, l]*KD[j, k]*KD[m, n]*KD[o, p] - KD[i, \
+k]*KD[j, l]*KD[m, n]*KD[o, p] + KD[i, j]*KD[k, l]*KD[m, n]*KD[o, p])"},
+{"fcstPauliTrace-ID9",
+"PauliTrace[CSI[i,a,j,k,a],PauliTraceEvaluate\[Rule]True,FCE\[Rule]\
+True]", "(-2*I)*CLC[i, j, k]"},
+{"fcstPauliTrace-ID10",
+"PauliTrace[CSI[i,a,j,b,k,a],PauliTraceEvaluate\[Rule]True,FCE\
+\[Rule]True]",
+"-2*(KD[b, k]*KD[i, j] + KD[b, j]*KD[i, k] - KD[b, i]*KD[j, k])"},
+{"fcstPauliTrace-ID11",
+"PauliTrace[CSID[a,i,k,a],PauliTraceEvaluate\[Rule]True,FCE\[Rule]\
+True]", "2*(-1 + D)*KDD[i, k]"},
+{"fcstPauliTrace-ID12",
+"PauliTrace[CSIS[p1],PauliTraceEvaluate\[Rule]True,FCE\[Rule]True]\
+", "0"},
+{"fcstPauliTrace-ID13",
+"PauliTrace[CSIS[p1,p2],PauliTraceEvaluate\[Rule]True,FCE\[Rule]\
+True]", "2*CSP[p1, p2]"},
+{"fcstPauliTrace-ID14",
+"PauliTrace[CSIS[p1,p2,p3],PauliTraceEvaluate\[Rule]True,FCE\[Rule]\
+True]", "(2*I)*CLC[][p1, p2, p3]"},
+{"fcstPauliTrace-ID15",
+"PauliTrace[CSIS[p1,p2,p3,p4],PauliTraceEvaluate\[Rule]True,FCE\
+\[Rule]True]",
+"2*(CSP[p1, p4]*CSP[p2, p3] - CSP[p1, p3]*CSP[p2, p4] + CSP[p1, \
+p2]*CSP[p3, p4])"},
+{"fcstPauliTrace-ID16",
+"PauliTrace[CSIS[p1,p2,p3,p4,p5],PauliTraceEvaluate\[Rule]True,FCE\
+\[Rule]True]",
+"(2*I)*(CSP[p4, p5]*CLC[][p1, p2, p3] + CSP[p2, p3]*CLC[][p1, p4, \
+p5] - CSP[p1, p3]*CLC[][p2, p4, p5] + CSP[p1, p2]*CLC[][p3, p4, p5])"},
+{"fcstPauliTrace-ID17",
+"PauliTrace[CSIS[p1,p2,p3,p4,p5,p6],PauliTraceEvaluate\[Rule]True,\
+FCE\[Rule]True]",
+"2*(CSP[p1, p6]*CSP[p2, p5]*CSP[p3, p4] - CSP[p1, p5]*CSP[p2, \
+p6]*CSP[p3, p4] - CSP[p1, p6]*CSP[p2, p4]*CSP[p3, p5] + CSP[p1, \
+p4]*CSP[p2, p6]*CSP[p3, p5] + CSP[p1, p5]*CSP[p2, p4]*CSP[p3, p6] - \
+CSP[p1, p4]*CSP[p2, p5]*CSP[p3, p6] + CSP[p1, p6]*CSP[p2, p3]*CSP[p4, \
+p5] - CSP[p1, p3]*CSP[p2, p6]*CSP[p4, p5] + CSP[p1, p2]*CSP[p3, \
+p6]*CSP[p4, p5] - CSP[p1, p5]*CSP[p2, p3]*CSP[p4, p6] + CSP[p1, \
+p3]*CSP[p2, p5]*CSP[p4, p6] - CSP[p1, p2]*CSP[p3, p5]*CSP[p4, p6] + \
+CSP[p1, p4]*CSP[p2, p3]*CSP[p5, p6] - CSP[p1, p3]*CSP[p2, p4]*CSP[p5, \
+p6] + CSP[p1, p2]*CSP[p3, p4]*CSP[p5, p6])"},
+{"fcstPauliTrace-ID18",
+"PauliTrace[CSIS[p1,p2,p3,p4,p5,p6,p7],PauliTraceEvaluate\[Rule]\
+True,FCE\[Rule]True]",
+"(2*I)*(CSP[p4, p7]*CSP[p5, p6]*CLC[][p1, p2, p3] - CSP[p4, \
+p6]*CSP[p5, p7]*CLC[][p1, p2, p3] + CSP[p4, p5]*CSP[p6, p7]*CLC[][p1, \
+p2, p3] + CSP[p2, p3]*CSP[p6, p7]*CLC[][p1, p4, p5] + CSP[p2, \
+p3]*CSP[p4, p5]*CLC[][p1, p6, p7] - CSP[p1, p3]*CSP[p6, p7]*CLC[][p2, \
+p4, p5] - CSP[p1, p3]*CSP[p4, p5]*CLC[][p2, p6, p7] + CSP[p1, \
+p2]*CSP[p6, p7]*CLC[][p3, p4, p5] + CSP[p1, p2]*CSP[p4, p5]*CLC[][p3, \
+p6, p7] - CSP[p1, p5]*CSP[p2, p3]*CLC[][p4, p6, p7] + CSP[p1, \
+p3]*CSP[p2, p5]*CLC[][p4, p6, p7] - CSP[p1, p2]*CSP[p3, p5]*CLC[][p4, \
+p6, p7] + CSP[p1, p4]*CSP[p2, p3]*CLC[][p5, p6, p7] - CSP[p1, \
+p3]*CSP[p2, p4]*CLC[][p5, p6, p7] + CSP[p1, p2]*CSP[p3, p4]*CLC[][p5, \
+p6, p7])"},
+{"fcstPauliTrace-ID19",
+"PauliTrace[CSIS[p1,p2,p3,p4,p5,p6,p7,p],PauliTraceEvaluate\[Rule]\
+True,FCE\[Rule]True]",
+"2*(CSP[p, p7]*CSP[p1, p6]*CSP[p2, p5]*CSP[p3, p4] - CSP[p, \
+p6]*CSP[p1, p7]*CSP[p2, p5]*CSP[p3, p4] - CSP[p, p7]*CSP[p1, \
+p5]*CSP[p2, p6]*CSP[p3, p4] + CSP[p, p5]*CSP[p1, p7]*CSP[p2, \
+p6]*CSP[p3, p4] + CSP[p, p6]*CSP[p1, p5]*CSP[p2, p7]*CSP[p3, p4] - \
+CSP[p, p5]*CSP[p1, p6]*CSP[p2, p7]*CSP[p3, p4] - CSP[p, p7]*CSP[p1, \
+p6]*CSP[p2, p4]*CSP[p3, p5] + CSP[p, p6]*CSP[p1, p7]*CSP[p2, \
+p4]*CSP[p3, p5] + CSP[p, p7]*CSP[p1, p4]*CSP[p2, p6]*CSP[p3, p5] - \
+CSP[p, p4]*CSP[p1, p7]*CSP[p2, p6]*CSP[p3, p5] - CSP[p, p6]*CSP[p1, \
+p4]*CSP[p2, p7]*CSP[p3, p5] + CSP[p, p4]*CSP[p1, p6]*CSP[p2, \
+p7]*CSP[p3, p5] + CSP[p, p7]*CSP[p1, p5]*CSP[p2, p4]*CSP[p3, p6] - \
+CSP[p, p5]*CSP[p1, p7]*CSP[p2, p4]*CSP[p3, p6] - CSP[p, p7]*CSP[p1, \
+p4]*CSP[p2, p5]*CSP[p3, p6] + CSP[p, p4]*CSP[p1, p7]*CSP[p2, \
+p5]*CSP[p3, p6] + CSP[p, p5]*CSP[p1, p4]*CSP[p2, p7]*CSP[p3, p6] - \
+CSP[p, p4]*CSP[p1, p5]*CSP[p2, p7]*CSP[p3, p6] - CSP[p, p6]*CSP[p1, \
+p5]*CSP[p2, p4]*CSP[p3, p7] + CSP[p, p5]*CSP[p1, p6]*CSP[p2, \
+p4]*CSP[p3, p7] + CSP[p, p6]*CSP[p1, p4]*CSP[p2, p5]*CSP[p3, p7] - \
+CSP[p, p4]*CSP[p1, p6]*CSP[p2, p5]*CSP[p3, p7] - CSP[p, p5]*CSP[p1, \
+p4]*CSP[p2, p6]*CSP[p3, p7] + CSP[p, p4]*CSP[p1, p5]*CSP[p2, \
+p6]*CSP[p3, p7] + CSP[p, p7]*CSP[p1, p6]*CSP[p2, p3]*CSP[p4, p5] - \
+CSP[p, p6]*CSP[p1, p7]*CSP[p2, p3]*CSP[p4, p5] - CSP[p, p7]*CSP[p1, \
+p3]*CSP[p2, p6]*CSP[p4, p5] + CSP[p, p3]*CSP[p1, p7]*CSP[p2, \
+p6]*CSP[p4, p5] + CSP[p, p6]*CSP[p1, p3]*CSP[p2, p7]*CSP[p4, p5] - \
+CSP[p, p3]*CSP[p1, p6]*CSP[p2, p7]*CSP[p4, p5] + CSP[p, p7]*CSP[p1, \
+p2]*CSP[p3, p6]*CSP[p4, p5] - CSP[p, p2]*CSP[p1, p7]*CSP[p3, \
+p6]*CSP[p4, p5] + CSP[p, p1]*CSP[p2, p7]*CSP[p3, p6]*CSP[p4, p5] - \
+CSP[p, p6]*CSP[p1, p2]*CSP[p3, p7]*CSP[p4, p5] + CSP[p, p2]*CSP[p1, \
+p6]*CSP[p3, p7]*CSP[p4, p5] - CSP[p, p1]*CSP[p2, p6]*CSP[p3, \
+p7]*CSP[p4, p5] - CSP[p, p7]*CSP[p1, p5]*CSP[p2, p3]*CSP[p4, p6] + \
+CSP[p, p5]*CSP[p1, p7]*CSP[p2, p3]*CSP[p4, p6] + CSP[p, p7]*CSP[p1, \
+p3]*CSP[p2, p5]*CSP[p4, p6] - CSP[p, p3]*CSP[p1, p7]*CSP[p2, \
+p5]*CSP[p4, p6] - CSP[p, p5]*CSP[p1, p3]*CSP[p2, p7]*CSP[p4, p6] + \
+CSP[p, p3]*CSP[p1, p5]*CSP[p2, p7]*CSP[p4, p6] - CSP[p, p7]*CSP[p1, \
+p2]*CSP[p3, p5]*CSP[p4, p6] + CSP[p, p2]*CSP[p1, p7]*CSP[p3, \
+p5]*CSP[p4, p6] - CSP[p, p1]*CSP[p2, p7]*CSP[p3, p5]*CSP[p4, p6] + \
+CSP[p, p5]*CSP[p1, p2]*CSP[p3, p7]*CSP[p4, p6] - CSP[p, p2]*CSP[p1, \
+p5]*CSP[p3, p7]*CSP[p4, p6] + CSP[p, p1]*CSP[p2, p5]*CSP[p3, \
+p7]*CSP[p4, p6] + CSP[p, p6]*CSP[p1, p5]*CSP[p2, p3]*CSP[p4, p7] - \
+CSP[p, p5]*CSP[p1, p6]*CSP[p2, p3]*CSP[p4, p7] - CSP[p, p6]*CSP[p1, \
+p3]*CSP[p2, p5]*CSP[p4, p7] + CSP[p, p3]*CSP[p1, p6]*CSP[p2, \
+p5]*CSP[p4, p7] + CSP[p, p5]*CSP[p1, p3]*CSP[p2, p6]*CSP[p4, p7] - \
+CSP[p, p3]*CSP[p1, p5]*CSP[p2, p6]*CSP[p4, p7] + CSP[p, p6]*CSP[p1, \
+p2]*CSP[p3, p5]*CSP[p4, p7] - CSP[p, p2]*CSP[p1, p6]*CSP[p3, \
+p5]*CSP[p4, p7] + CSP[p, p1]*CSP[p2, p6]*CSP[p3, p5]*CSP[p4, p7] - \
+CSP[p, p5]*CSP[p1, p2]*CSP[p3, p6]*CSP[p4, p7] + CSP[p, p2]*CSP[p1, \
+p5]*CSP[p3, p6]*CSP[p4, p7] - CSP[p, p1]*CSP[p2, p5]*CSP[p3, \
+p6]*CSP[p4, p7] + CSP[p, p7]*CSP[p1, p4]*CSP[p2, p3]*CSP[p5, p6] - \
+CSP[p, p4]*CSP[p1, p7]*CSP[p2, p3]*CSP[p5, p6] - CSP[p, p7]*CSP[p1, \
+p3]*CSP[p2, p4]*CSP[p5, p6] + CSP[p, p3]*CSP[p1, p7]*CSP[p2, \
+p4]*CSP[p5, p6] + CSP[p, p4]*CSP[p1, p3]*CSP[p2, p7]*CSP[p5, p6] - \
+CSP[p, p3]*CSP[p1, p4]*CSP[p2, p7]*CSP[p5, p6] + CSP[p, p7]*CSP[p1, \
+p2]*CSP[p3, p4]*CSP[p5, p6] - CSP[p, p2]*CSP[p1, p7]*CSP[p3, \
+p4]*CSP[p5, p6] + CSP[p, p1]*CSP[p2, p7]*CSP[p3, p4]*CSP[p5, p6] - \
+CSP[p, p4]*CSP[p1, p2]*CSP[p3, p7]*CSP[p5, p6] + CSP[p, p2]*CSP[p1, \
+p4]*CSP[p3, p7]*CSP[p5, p6] - CSP[p, p1]*CSP[p2, p4]*CSP[p3, \
+p7]*CSP[p5, p6] + CSP[p, p3]*CSP[p1, p2]*CSP[p4, p7]*CSP[p5, p6] - \
+CSP[p, p2]*CSP[p1, p3]*CSP[p4, p7]*CSP[p5, p6] + CSP[p, p1]*CSP[p2, \
+p3]*CSP[p4, p7]*CSP[p5, p6] - CSP[p, p6]*CSP[p1, p4]*CSP[p2, \
+p3]*CSP[p5, p7] + CSP[p, p4]*CSP[p1, p6]*CSP[p2, p3]*CSP[p5, p7] + \
+CSP[p, p6]*CSP[p1, p3]*CSP[p2, p4]*CSP[p5, p7] - CSP[p, p3]*CSP[p1, \
+p6]*CSP[p2, p4]*CSP[p5, p7] - CSP[p, p4]*CSP[p1, p3]*CSP[p2, \
+p6]*CSP[p5, p7] + CSP[p, p3]*CSP[p1, p4]*CSP[p2, p6]*CSP[p5, p7] - \
+CSP[p, p6]*CSP[p1, p2]*CSP[p3, p4]*CSP[p5, p7] + CSP[p, p2]*CSP[p1, \
+p6]*CSP[p3, p4]*CSP[p5, p7] - CSP[p, p1]*CSP[p2, p6]*CSP[p3, \
+p4]*CSP[p5, p7] + CSP[p, p4]*CSP[p1, p2]*CSP[p3, p6]*CSP[p5, p7] - \
+CSP[p, p2]*CSP[p1, p4]*CSP[p3, p6]*CSP[p5, p7] + CSP[p, p1]*CSP[p2, \
+p4]*CSP[p3, p6]*CSP[p5, p7] - CSP[p, p3]*CSP[p1, p2]*CSP[p4, \
+p6]*CSP[p5, p7] + CSP[p, p2]*CSP[p1, p3]*CSP[p4, p6]*CSP[p5, p7] - \
+CSP[p, p1]*CSP[p2, p3]*CSP[p4, p6]*CSP[p5, p7] + CSP[p, p5]*CSP[p1, \
+p4]*CSP[p2, p3]*CSP[p6, p7] - CSP[p, p4]*CSP[p1, p5]*CSP[p2, \
+p3]*CSP[p6, p7] - CSP[p, p5]*CSP[p1, p3]*CSP[p2, p4]*CSP[p6, p7] + \
+CSP[p, p3]*CSP[p1, p5]*CSP[p2, p4]*CSP[p6, p7] + CSP[p, p4]*CSP[p1, \
+p3]*CSP[p2, p5]*CSP[p6, p7] - CSP[p, p3]*CSP[p1, p4]*CSP[p2, \
+p5]*CSP[p6, p7] + CSP[p, p5]*CSP[p1, p2]*CSP[p3, p4]*CSP[p6, p7] - \
+CSP[p, p2]*CSP[p1, p5]*CSP[p3, p4]*CSP[p6, p7] + CSP[p, p1]*CSP[p2, \
+p5]*CSP[p3, p4]*CSP[p6, p7] - CSP[p, p4]*CSP[p1, p2]*CSP[p3, \
+p5]*CSP[p6, p7] + CSP[p, p2]*CSP[p1, p4]*CSP[p3, p5]*CSP[p6, p7] - \
+CSP[p, p1]*CSP[p2, p4]*CSP[p3, p5]*CSP[p6, p7] + CSP[p, p3]*CSP[p1, \
+p2]*CSP[p4, p5]*CSP[p6, p7] - CSP[p, p2]*CSP[p1, p3]*CSP[p4, \
+p5]*CSP[p6, p7] + CSP[p, p1]*CSP[p2, p3]*CSP[p4, p5]*CSP[p6, p7])"},
+{"fcstPauliTrace-ID20",
+"FCSetPauliSigmaScheme[\"Naive\"];PauliTrace[CSID[i],\
+PauliTraceEvaluate\[Rule]True,FCE\[Rule]True]", "0"},
+{"fcstPauliTrace-ID21",
+"PauliTrace[CSID[i,j],PauliTraceEvaluate\[Rule]True,FCE\[Rule]True]\
+", "2*KDD[i, j]"},
+{"fcstPauliTrace-ID22",
+"PauliTrace[CSID[i,j,k],PauliTraceEvaluate\[Rule]True,FCE\[Rule]\
+True]", "PauliTrace[CSID[i] . CSID[j] . CSID[k]]"},
+{"fcstPauliTrace-ID23",
+"PauliTrace[CSID[i,j,k,l],PauliTraceEvaluate\[Rule]True,FCE\[Rule]\
+True]", "2*(KDD[i, l]*KDD[j, k] - KDD[i, k]*KDD[j, l] + KDD[i, \
+j]*KDD[k, l])"},
+{"fcstPauliTrace-ID24",
+"PauliTrace[CSID[i,j,k,l,m],PauliTraceEvaluate\[Rule]True,FCE\
+\[Rule]True]",
+"PauliTrace[CSID[i] . CSID[j] . CSID[k] . CSID[l] . CSID[m]]"},
+{"fcstPauliTrace-ID25",
+"PauliTrace[CSID[i,j,k,l,m,n],PauliTraceEvaluate\[Rule]True,FCE\
+\[Rule]True]",
+"2*(KDD[i, n]*KDD[j, m]*KDD[k, l] - KDD[i, m]*KDD[j, n]*KDD[k, l] \
+- KDD[i, n]*KDD[j, l]*KDD[k, m] + KDD[i, l]*KDD[j, n]*KDD[k, m] + \
+KDD[i, m]*KDD[j, l]*KDD[k, n] - KDD[i, l]*KDD[j, m]*KDD[k, n] + \
+KDD[i, n]*KDD[j, k]*KDD[l, m] - KDD[i, k]*KDD[j, n]*KDD[l, m] + \
+KDD[i, j]*KDD[k, n]*KDD[l, m] - KDD[i, m]*KDD[j, k]*KDD[l, n] + \
+KDD[i, k]*KDD[j, m]*KDD[l, n] - KDD[i, j]*KDD[k, m]*KDD[l, n] + \
+KDD[i, l]*KDD[j, k]*KDD[m, n] - KDD[i, k]*KDD[j, l]*KDD[m, n] + \
+KDD[i, j]*KDD[k, l]*KDD[m, n])"},
+{"fcstPauliTrace-ID26",
+"PauliTrace[CSID[i,j,k,l,m,n,o],PauliTraceEvaluate\[Rule]True,FCE\
+\[Rule]True]",
+"PauliTrace[CSID[i] . CSID[j] . CSID[k] . CSID[l] . CSID[m] . \
+CSID[n] . CSID[o]]"},
+{"fcstPauliTrace-ID27",
+"PauliTrace[CSID[i,j,k,l,m,n,o,p],PauliTraceEvaluate\[Rule]True,\
+FCE\[Rule]True]",
+"2*(KDD[i, p]*KDD[j, o]*KDD[k, n]*KDD[l, m] - KDD[i, o]*KDD[j, \
+p]*KDD[k, n]*KDD[l, m] - KDD[i, p]*KDD[j, n]*KDD[k, o]*KDD[l, m] + \
+KDD[i, n]*KDD[j, p]*KDD[k, o]*KDD[l, m] + KDD[i, o]*KDD[j, n]*KDD[k, \
+p]*KDD[l, m] - KDD[i, n]*KDD[j, o]*KDD[k, p]*KDD[l, m] - KDD[i, \
+p]*KDD[j, o]*KDD[k, m]*KDD[l, n] + KDD[i, o]*KDD[j, p]*KDD[k, \
+m]*KDD[l, n] + KDD[i, p]*KDD[j, m]*KDD[k, o]*KDD[l, n] - KDD[i, \
+m]*KDD[j, p]*KDD[k, o]*KDD[l, n] - KDD[i, o]*KDD[j, m]*KDD[k, \
+p]*KDD[l, n] + KDD[i, m]*KDD[j, o]*KDD[k, p]*KDD[l, n] + KDD[i, \
+p]*KDD[j, n]*KDD[k, m]*KDD[l, o] - KDD[i, n]*KDD[j, p]*KDD[k, \
+m]*KDD[l, o] - KDD[i, p]*KDD[j, m]*KDD[k, n]*KDD[l, o] + KDD[i, \
+m]*KDD[j, p]*KDD[k, n]*KDD[l, o] + KDD[i, n]*KDD[j, m]*KDD[k, \
+p]*KDD[l, o] - KDD[i, m]*KDD[j, n]*KDD[k, p]*KDD[l, o] - KDD[i, \
+o]*KDD[j, n]*KDD[k, m]*KDD[l, p] + KDD[i, n]*KDD[j, o]*KDD[k, \
+m]*KDD[l, p] + KDD[i, o]*KDD[j, m]*KDD[k, n]*KDD[l, p] - KDD[i, \
+m]*KDD[j, o]*KDD[k, n]*KDD[l, p] - KDD[i, n]*KDD[j, m]*KDD[k, \
+o]*KDD[l, p] + KDD[i, m]*KDD[j, n]*KDD[k, o]*KDD[l, p] + KDD[i, \
+p]*KDD[j, o]*KDD[k, l]*KDD[m, n] - KDD[i, o]*KDD[j, p]*KDD[k, \
+l]*KDD[m, n] - KDD[i, p]*KDD[j, l]*KDD[k, o]*KDD[m, n] + KDD[i, \
+l]*KDD[j, p]*KDD[k, o]*KDD[m, n] + KDD[i, o]*KDD[j, l]*KDD[k, \
+p]*KDD[m, n] - KDD[i, l]*KDD[j, o]*KDD[k, p]*KDD[m, n] + KDD[i, \
+p]*KDD[j, k]*KDD[l, o]*KDD[m, n] - KDD[i, k]*KDD[j, p]*KDD[l, \
+o]*KDD[m, n] + KDD[i, j]*KDD[k, p]*KDD[l, o]*KDD[m, n] - KDD[i, \
+o]*KDD[j, k]*KDD[l, p]*KDD[m, n] + KDD[i, k]*KDD[j, o]*KDD[l, \
+p]*KDD[m, n] - KDD[i, j]*KDD[k, o]*KDD[l, p]*KDD[m, n] - KDD[i, \
+p]*KDD[j, n]*KDD[k, l]*KDD[m, o] + KDD[i, n]*KDD[j, p]*KDD[k, \
+l]*KDD[m, o] + KDD[i, p]*KDD[j, l]*KDD[k, n]*KDD[m, o] - KDD[i, \
+l]*KDD[j, p]*KDD[k, n]*KDD[m, o] - KDD[i, n]*KDD[j, l]*KDD[k, \
+p]*KDD[m, o] + KDD[i, l]*KDD[j, n]*KDD[k, p]*KDD[m, o] - KDD[i, \
+p]*KDD[j, k]*KDD[l, n]*KDD[m, o] + KDD[i, k]*KDD[j, p]*KDD[l, \
+n]*KDD[m, o] - KDD[i, j]*KDD[k, p]*KDD[l, n]*KDD[m, o] + KDD[i, \
+n]*KDD[j, k]*KDD[l, p]*KDD[m, o] - KDD[i, k]*KDD[j, n]*KDD[l, \
+p]*KDD[m, o] + KDD[i, j]*KDD[k, n]*KDD[l, p]*KDD[m, o] + KDD[i, \
+o]*KDD[j, n]*KDD[k, l]*KDD[m, p] - KDD[i, n]*KDD[j, o]*KDD[k, \
+l]*KDD[m, p] - KDD[i, o]*KDD[j, l]*KDD[k, n]*KDD[m, p] + KDD[i, \
+l]*KDD[j, o]*KDD[k, n]*KDD[m, p] + KDD[i, n]*KDD[j, l]*KDD[k, \
+o]*KDD[m, p] - KDD[i, l]*KDD[j, n]*KDD[k, o]*KDD[m, p] + KDD[i, \
+o]*KDD[j, k]*KDD[l, n]*KDD[m, p] - KDD[i, k]*KDD[j, o]*KDD[l, \
+n]*KDD[m, p] + KDD[i, j]*KDD[k, o]*KDD[l, n]*KDD[m, p] - KDD[i, \
+n]*KDD[j, k]*KDD[l, o]*KDD[m, p] + KDD[i, k]*KDD[j, n]*KDD[l, \
+o]*KDD[m, p] - KDD[i, j]*KDD[k, n]*KDD[l, o]*KDD[m, p] + KDD[i, \
+p]*KDD[j, m]*KDD[k, l]*KDD[n, o] - KDD[i, m]*KDD[j, p]*KDD[k, \
+l]*KDD[n, o] - KDD[i, p]*KDD[j, l]*KDD[k, m]*KDD[n, o] + KDD[i, \
+l]*KDD[j, p]*KDD[k, m]*KDD[n, o] + KDD[i, m]*KDD[j, l]*KDD[k, \
+p]*KDD[n, o] - KDD[i, l]*KDD[j, m]*KDD[k, p]*KDD[n, o] + KDD[i, \
+p]*KDD[j, k]*KDD[l, m]*KDD[n, o] - KDD[i, k]*KDD[j, p]*KDD[l, \
+m]*KDD[n, o] + KDD[i, j]*KDD[k, p]*KDD[l, m]*KDD[n, o] - KDD[i, \
+m]*KDD[j, k]*KDD[l, p]*KDD[n, o] + KDD[i, k]*KDD[j, m]*KDD[l, \
+p]*KDD[n, o] - KDD[i, j]*KDD[k, m]*KDD[l, p]*KDD[n, o] + KDD[i, \
+l]*KDD[j, k]*KDD[m, p]*KDD[n, o] - KDD[i, k]*KDD[j, l]*KDD[m, \
+p]*KDD[n, o] + KDD[i, j]*KDD[k, l]*KDD[m, p]*KDD[n, o] - KDD[i, \
+o]*KDD[j, m]*KDD[k, l]*KDD[n, p] + KDD[i, m]*KDD[j, o]*KDD[k, \
+l]*KDD[n, p] + KDD[i, o]*KDD[j, l]*KDD[k, m]*KDD[n, p] - KDD[i, \
+l]*KDD[j, o]*KDD[k, m]*KDD[n, p] - KDD[i, m]*KDD[j, l]*KDD[k, \
+o]*KDD[n, p] + KDD[i, l]*KDD[j, m]*KDD[k, o]*KDD[n, p] - KDD[i, \
+o]*KDD[j, k]*KDD[l, m]*KDD[n, p] + KDD[i, k]*KDD[j, o]*KDD[l, \
+m]*KDD[n, p] - KDD[i, j]*KDD[k, o]*KDD[l, m]*KDD[n, p] + KDD[i, \
+m]*KDD[j, k]*KDD[l, o]*KDD[n, p] - KDD[i, k]*KDD[j, m]*KDD[l, \
+o]*KDD[n, p] + KDD[i, j]*KDD[k, m]*KDD[l, o]*KDD[n, p] - KDD[i, \
+l]*KDD[j, k]*KDD[m, o]*KDD[n, p] + KDD[i, k]*KDD[j, l]*KDD[m, \
+o]*KDD[n, p] - KDD[i, j]*KDD[k, l]*KDD[m, o]*KDD[n, p] + KDD[i, \
+n]*KDD[j, m]*KDD[k, l]*KDD[o, p] - KDD[i, m]*KDD[j, n]*KDD[k, \
+l]*KDD[o, p] - KDD[i, n]*KDD[j, l]*KDD[k, m]*KDD[o, p] + KDD[i, \
+l]*KDD[j, n]*KDD[k, m]*KDD[o, p] + KDD[i, m]*KDD[j, l]*KDD[k, \
+n]*KDD[o, p] - KDD[i, l]*KDD[j, m]*KDD[k, n]*KDD[o, p] + KDD[i, \
+n]*KDD[j, k]*KDD[l, m]*KDD[o, p] - KDD[i, k]*KDD[j, n]*KDD[l, \
+m]*KDD[o, p] + KDD[i, j]*KDD[k, n]*KDD[l, m]*KDD[o, p] - KDD[i, \
+m]*KDD[j, k]*KDD[l, n]*KDD[o, p] + KDD[i, k]*KDD[j, m]*KDD[l, \
+n]*KDD[o, p] - KDD[i, j]*KDD[k, m]*KDD[l, n]*KDD[o, p] + KDD[i, \
+l]*KDD[j, k]*KDD[m, n]*KDD[o, p] - KDD[i, k]*KDD[j, l]*KDD[m, \
+n]*KDD[o, p] + KDD[i, j]*KDD[k, l]*KDD[m, n]*KDD[o, p])"},
+{"fcstPauliTrace-ID28",
+"FCSetPauliSigmaScheme[\"None\"];PauliTrace[CSID[i],\
+PauliTraceEvaluate\[Rule]True,FCE\[Rule]True]", "0"},
+{"fcstPauliTrace-ID29",
+"PauliTrace[CSID[i,j],PauliTraceEvaluate\[Rule]True,FCE\[Rule]True]\
+", "2*KDD[i, j]"},
+{"fcstPauliTrace-ID30",
+"PauliTrace[CSID[i,j,k],PauliTraceEvaluate\[Rule]True,FCE\[Rule]\
+True]", "PauliTrace[CSID[i] . CSID[j] . CSID[k]]"},
+{"fcstPauliTrace-ID31",
+"PauliTrace[CSID[i,j,k,l],PauliTraceEvaluate\[Rule]True,FCE\[Rule]\
+True]", "2*(KDD[i, l]*KDD[j, k] - KDD[i, k]*KDD[j, l] + KDD[i, \
+j]*KDD[k, l])"},
+{"fcstPauliTrace-ID32",
+"PauliTrace[CSID[i,j,k,l,m],PauliTraceEvaluate\[Rule]True,FCE\
+\[Rule]True]",
+"PauliTrace[CSID[i] . CSID[j] . CSID[k] . CSID[l] . CSID[m]]"},
+{"fcstPauliTrace-ID33",
+"PauliTrace[CSID[i,j,k,l,m,n],PauliTraceEvaluate\[Rule]True,FCE\
+\[Rule]True]",
+"2*(KDD[i, n]*KDD[j, m]*KDD[k, l] - KDD[i, m]*KDD[j, n]*KDD[k, l] \
+- KDD[i, n]*KDD[j, l]*KDD[k, m] + KDD[i, l]*KDD[j, n]*KDD[k, m] + \
+KDD[i, m]*KDD[j, l]*KDD[k, n] - KDD[i, l]*KDD[j, m]*KDD[k, n] + \
+KDD[i, n]*KDD[j, k]*KDD[l, m] - KDD[i, k]*KDD[j, n]*KDD[l, m] + \
+KDD[i, j]*KDD[k, n]*KDD[l, m] - KDD[i, m]*KDD[j, k]*KDD[l, n] + \
+KDD[i, k]*KDD[j, m]*KDD[l, n] - KDD[i, j]*KDD[k, m]*KDD[l, n] + \
+KDD[i, l]*KDD[j, k]*KDD[m, n] - KDD[i, k]*KDD[j, l]*KDD[m, n] + \
+KDD[i, j]*KDD[k, l]*KDD[m, n])"},
+{"fcstPauliTrace-ID34",
+"PauliTrace[CSID[i,j,k,l,m,n,o],PauliTraceEvaluate\[Rule]True,FCE\
+\[Rule]True]",
+"PauliTrace[CSID[i] . CSID[j] . CSID[k] . CSID[l] . CSID[m] . \
+CSID[n] . CSID[o]]"},
+{"fcstPauliTrace-ID35",
+"PauliTrace[CSID[i,j,k,l,m,n,o,p],PauliTraceEvaluate\[Rule]True,\
+FCE\[Rule]True]",
+"2*(KDD[i, p]*KDD[j, o]*KDD[k, n]*KDD[l, m] - KDD[i, o]*KDD[j, \
+p]*KDD[k, n]*KDD[l, m] - KDD[i, p]*KDD[j, n]*KDD[k, o]*KDD[l, m] + \
+KDD[i, n]*KDD[j, p]*KDD[k, o]*KDD[l, m] + KDD[i, o]*KDD[j, n]*KDD[k, \
+p]*KDD[l, m] - KDD[i, n]*KDD[j, o]*KDD[k, p]*KDD[l, m] - KDD[i, \
+p]*KDD[j, o]*KDD[k, m]*KDD[l, n] + KDD[i, o]*KDD[j, p]*KDD[k, \
+m]*KDD[l, n] + KDD[i, p]*KDD[j, m]*KDD[k, o]*KDD[l, n] - KDD[i, \
+m]*KDD[j, p]*KDD[k, o]*KDD[l, n] - KDD[i, o]*KDD[j, m]*KDD[k, \
+p]*KDD[l, n] + KDD[i, m]*KDD[j, o]*KDD[k, p]*KDD[l, n] + KDD[i, \
+p]*KDD[j, n]*KDD[k, m]*KDD[l, o] - KDD[i, n]*KDD[j, p]*KDD[k, \
+m]*KDD[l, o] - KDD[i, p]*KDD[j, m]*KDD[k, n]*KDD[l, o] + KDD[i, \
+m]*KDD[j, p]*KDD[k, n]*KDD[l, o] + KDD[i, n]*KDD[j, m]*KDD[k, \
+p]*KDD[l, o] - KDD[i, m]*KDD[j, n]*KDD[k, p]*KDD[l, o] - KDD[i, \
+o]*KDD[j, n]*KDD[k, m]*KDD[l, p] + KDD[i, n]*KDD[j, o]*KDD[k, \
+m]*KDD[l, p] + KDD[i, o]*KDD[j, m]*KDD[k, n]*KDD[l, p] - KDD[i, \
+m]*KDD[j, o]*KDD[k, n]*KDD[l, p] - KDD[i, n]*KDD[j, m]*KDD[k, \
+o]*KDD[l, p] + KDD[i, m]*KDD[j, n]*KDD[k, o]*KDD[l, p] + KDD[i, \
+p]*KDD[j, o]*KDD[k, l]*KDD[m, n] - KDD[i, o]*KDD[j, p]*KDD[k, \
+l]*KDD[m, n] - KDD[i, p]*KDD[j, l]*KDD[k, o]*KDD[m, n] + KDD[i, \
+l]*KDD[j, p]*KDD[k, o]*KDD[m, n] + KDD[i, o]*KDD[j, l]*KDD[k, \
+p]*KDD[m, n] - KDD[i, l]*KDD[j, o]*KDD[k, p]*KDD[m, n] + KDD[i, \
+p]*KDD[j, k]*KDD[l, o]*KDD[m, n] - KDD[i, k]*KDD[j, p]*KDD[l, \
+o]*KDD[m, n] + KDD[i, j]*KDD[k, p]*KDD[l, o]*KDD[m, n] - KDD[i, \
+o]*KDD[j, k]*KDD[l, p]*KDD[m, n] + KDD[i, k]*KDD[j, o]*KDD[l, \
+p]*KDD[m, n] - KDD[i, j]*KDD[k, o]*KDD[l, p]*KDD[m, n] - KDD[i, \
+p]*KDD[j, n]*KDD[k, l]*KDD[m, o] + KDD[i, n]*KDD[j, p]*KDD[k, \
+l]*KDD[m, o] + KDD[i, p]*KDD[j, l]*KDD[k, n]*KDD[m, o] - KDD[i, \
+l]*KDD[j, p]*KDD[k, n]*KDD[m, o] - KDD[i, n]*KDD[j, l]*KDD[k, \
+p]*KDD[m, o] + KDD[i, l]*KDD[j, n]*KDD[k, p]*KDD[m, o] - KDD[i, \
+p]*KDD[j, k]*KDD[l, n]*KDD[m, o] + KDD[i, k]*KDD[j, p]*KDD[l, \
+n]*KDD[m, o] - KDD[i, j]*KDD[k, p]*KDD[l, n]*KDD[m, o] + KDD[i, \
+n]*KDD[j, k]*KDD[l, p]*KDD[m, o] - KDD[i, k]*KDD[j, n]*KDD[l, \
+p]*KDD[m, o] + KDD[i, j]*KDD[k, n]*KDD[l, p]*KDD[m, o] + KDD[i, \
+o]*KDD[j, n]*KDD[k, l]*KDD[m, p] - KDD[i, n]*KDD[j, o]*KDD[k, \
+l]*KDD[m, p] - KDD[i, o]*KDD[j, l]*KDD[k, n]*KDD[m, p] + KDD[i, \
+l]*KDD[j, o]*KDD[k, n]*KDD[m, p] + KDD[i, n]*KDD[j, l]*KDD[k, \
+o]*KDD[m, p] - KDD[i, l]*KDD[j, n]*KDD[k, o]*KDD[m, p] + KDD[i, \
+o]*KDD[j, k]*KDD[l, n]*KDD[m, p] - KDD[i, k]*KDD[j, o]*KDD[l, \
+n]*KDD[m, p] + KDD[i, j]*KDD[k, o]*KDD[l, n]*KDD[m, p] - KDD[i, \
+n]*KDD[j, k]*KDD[l, o]*KDD[m, p] + KDD[i, k]*KDD[j, n]*KDD[l, \
+o]*KDD[m, p] - KDD[i, j]*KDD[k, n]*KDD[l, o]*KDD[m, p] + KDD[i, \
+p]*KDD[j, m]*KDD[k, l]*KDD[n, o] - KDD[i, m]*KDD[j, p]*KDD[k, \
+l]*KDD[n, o] - KDD[i, p]*KDD[j, l]*KDD[k, m]*KDD[n, o] + KDD[i, \
+l]*KDD[j, p]*KDD[k, m]*KDD[n, o] + KDD[i, m]*KDD[j, l]*KDD[k, \
+p]*KDD[n, o] - KDD[i, l]*KDD[j, m]*KDD[k, p]*KDD[n, o] + KDD[i, \
+p]*KDD[j, k]*KDD[l, m]*KDD[n, o] - KDD[i, k]*KDD[j, p]*KDD[l, \
+m]*KDD[n, o] + KDD[i, j]*KDD[k, p]*KDD[l, m]*KDD[n, o] - KDD[i, \
+m]*KDD[j, k]*KDD[l, p]*KDD[n, o] + KDD[i, k]*KDD[j, m]*KDD[l, \
+p]*KDD[n, o] - KDD[i, j]*KDD[k, m]*KDD[l, p]*KDD[n, o] + KDD[i, \
+l]*KDD[j, k]*KDD[m, p]*KDD[n, o] - KDD[i, k]*KDD[j, l]*KDD[m, \
+p]*KDD[n, o] + KDD[i, j]*KDD[k, l]*KDD[m, p]*KDD[n, o] - KDD[i, \
+o]*KDD[j, m]*KDD[k, l]*KDD[n, p] + KDD[i, m]*KDD[j, o]*KDD[k, \
+l]*KDD[n, p] + KDD[i, o]*KDD[j, l]*KDD[k, m]*KDD[n, p] - KDD[i, \
+l]*KDD[j, o]*KDD[k, m]*KDD[n, p] - KDD[i, m]*KDD[j, l]*KDD[k, \
+o]*KDD[n, p] + KDD[i, l]*KDD[j, m]*KDD[k, o]*KDD[n, p] - KDD[i, \
+o]*KDD[j, k]*KDD[l, m]*KDD[n, p] + KDD[i, k]*KDD[j, o]*KDD[l, \
+m]*KDD[n, p] - KDD[i, j]*KDD[k, o]*KDD[l, m]*KDD[n, p] + KDD[i, \
+m]*KDD[j, k]*KDD[l, o]*KDD[n, p] - KDD[i, k]*KDD[j, m]*KDD[l, \
+o]*KDD[n, p] + KDD[i, j]*KDD[k, m]*KDD[l, o]*KDD[n, p] - KDD[i, \
+l]*KDD[j, k]*KDD[m, o]*KDD[n, p] + KDD[i, k]*KDD[j, l]*KDD[m, \
+o]*KDD[n, p] - KDD[i, j]*KDD[k, l]*KDD[m, o]*KDD[n, p] + KDD[i, \
+n]*KDD[j, m]*KDD[k, l]*KDD[o, p] - KDD[i, m]*KDD[j, n]*KDD[k, \
+l]*KDD[o, p] - KDD[i, n]*KDD[j, l]*KDD[k, m]*KDD[o, p] + KDD[i, \
+l]*KDD[j, n]*KDD[k, m]*KDD[o, p] + KDD[i, m]*KDD[j, l]*KDD[k, \
+n]*KDD[o, p] - KDD[i, l]*KDD[j, m]*KDD[k, n]*KDD[o, p] + KDD[i, \
+n]*KDD[j, k]*KDD[l, m]*KDD[o, p] - KDD[i, k]*KDD[j, n]*KDD[l, \
+m]*KDD[o, p] + KDD[i, j]*KDD[k, n]*KDD[l, m]*KDD[o, p] - KDD[i, \
+m]*KDD[j, k]*KDD[l, n]*KDD[o, p] + KDD[i, k]*KDD[j, m]*KDD[l, \
+n]*KDD[o, p] - KDD[i, j]*KDD[k, m]*KDD[l, n]*KDD[o, p] + KDD[i, \
+l]*KDD[j, k]*KDD[m, n]*KDD[o, p] - KDD[i, k]*KDD[j, l]*KDD[m, \
+n]*KDD[o, p] + KDD[i, j]*KDD[k, l]*KDD[m, n]*KDD[o, p])"}
+});

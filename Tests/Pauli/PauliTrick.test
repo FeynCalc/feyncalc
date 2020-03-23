@@ -164,3 +164,42 @@ PauliSigma[CartesianMomentum[p]]"},
 "Contract[PauliTrick[PauliTrick[CSIS[p].CSI[j].CSIS[p]]-CSIS[p].CSI[j].CSIS[p]]]\
 //FCCanonicalizeDummyIndices//EpsEvaluate", "0"}
 });
+
+Tests`Pauli`fcstPauliTrickInsidePauliTrace =
+({
+{"fcstPauliTrickInsidePauliTrace-ID1",
+"PauliTrick[CSI[i],InsidePauliTrace\[Rule]True,FCE->True]", "0"},
+{"fcstPauliTrickInsidePauliTrace-ID2",
+"PauliTrick[CSID[i],InsidePauliTrace\[Rule]True,FCE->True]", "0"},
+{"fcstPauliTrickInsidePauliTrace-ID3",
+"PauliTrick[CSIS[p],InsidePauliTrace\[Rule]True,FCE->True]", "0"},
+{"fcstPauliTrickInsidePauliTrace-ID4",
+"PauliTrick[CSISD[p],InsidePauliTrace\[Rule]True,FCE->True]",
+"0"},
+{"fcstPauliTrickInsidePauliTrace-ID5",
+"PauliTrick[CSI[i,i],InsidePauliTrace\[Rule]True,FCE->True]",
+"3"},
+{"fcstPauliTrickInsidePauliTrace-ID6",
+"PauliTrick[CSID[i,i],InsidePauliTrace\[Rule]True,FCE->True]",
+"-1 + D"},
+{"fcstPauliTrickInsidePauliTrace-ID7",
+"PauliTrick[CSIS[p,p],InsidePauliTrace\[Rule]True,FCE->True]",
+"CSP[p, p]"},
+{"fcstPauliTrickInsidePauliTrace-ID8",
+"PauliTrick[CSISD[p,p],InsidePauliTrace\[Rule]True,FCE->True]",
+"CSPD[p, p]"},
+{"fcstPauliTrickInsidePauliTrace-ID9",
+"PauliTrick[SI[i],InsidePauliTrace\[Rule]True,FCE->True]", "SI[i]"},
+{"fcstPauliTrickInsidePauliTrace-ID10",
+"PauliTrick[SID[i],InsidePauliTrace\[Rule]True,FCE->True]",
+"SID[i]"},
+{"fcstPauliTrickInsidePauliTrace-ID11",
+"PauliTrick[SIS[p],InsidePauliTrace\[Rule]True,FCE->True]",
+"SIS[p]"},
+{"fcstPauliTrickInsidePauliTrace-ID12",
+"PauliTrick[SISD[p],InsidePauliTrace\[Rule]True,FCE->True]",
+"SISD[p]"},
+{"fcstPauliTrickInsidePauliTrace-ID13",
+"PauliTrick[CSI[i, j, k], InsidePauliTrace -> True, FCE -> True]",
+"CSI[i].CSI[j].CSI[k]"}
+})
