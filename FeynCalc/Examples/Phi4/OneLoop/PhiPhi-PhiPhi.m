@@ -132,10 +132,10 @@ amp[2]=(amp[1]/.loopInt)//Simplify
 
 
 ampFull[0]=Expand[(amp[2]+ampCT[0])/.
-	SMP["d_g^MSbar"] ->(3*g^2*SMP["Delta"])/(32*Pi^2)]
+	{SMP["d_g^MSbar"] ->(3*g*SMP["Delta"])/(32*Pi^2),Zphi->1}]
 
 
-FCCompareResults[FreeQ[ampFull,SMP["Delta"]],True,
+FCCompareResults[FreeQ[ampFull[0],SMP["Delta"]],True,
 Text->{"\tThe UV divergence is cancelled by the counter-term:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 
@@ -164,3 +164,6 @@ Text->{"\tCompare to Peskin and Schroeder, An Introduction to QFT, \
 Ex 10.4:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
+
+
+
