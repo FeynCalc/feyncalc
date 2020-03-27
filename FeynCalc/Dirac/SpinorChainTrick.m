@@ -203,7 +203,7 @@ SpinorChainTrick[expr_, OptionsPattern[]] :=
 		];
 
 		FCPrint[1, "SpinorChainTrick: Leaving.", FCDoControl->spchtrVerbose];
-		FCPrint[1, "SpinorChainTrick: Total time:", N[AbsoluteTime[] - timeAll, 4], FCDoControl->spchtrVerbose];
+		FCPrint[1, "SpinorChainTrick: Total time: ", N[AbsoluteTime[] - timeAll, 4], FCDoControl->spchtrVerbose];
 		FCPrint[3, "SpinorChainTrick: Leaving with ", res, FCDoControl->spchtrVerbose];
 
 

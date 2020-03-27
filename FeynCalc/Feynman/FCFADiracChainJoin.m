@@ -119,7 +119,7 @@ FCFADiracChainJoin[expr_, OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		diracObjectsEval = Map[(diracChainEvalM[#])&, (diracObjects/.dsHead->Identity)];
 
-		FCPrint[3, "FCFADiracChainJoin: After diracChainEvalM:", diracObjectsEval, FCDoControl->dchjVerbose];
+		FCPrint[3, "FCFADiracChainJoin: After diracChainEvalM: ", diracObjectsEval, FCDoControl->dchjVerbose];
 
 		diracObjectsEval = diracObjectsEval /. diracChainEvalM -> diracChainEvalS /. diracChainEvalS -> diracChainEvalSign;
 

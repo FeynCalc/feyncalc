@@ -97,7 +97,7 @@ FeynCalc2FORM[ file_:"tFc2F", xy_, OptionsPattern[]] :=
 		];
 
 		FCPrint[1, "FeynCalc2FORM: Entering.", FCDoControl->fc2fVerbose];
-		FCPrint[3, "FeynCalc2FORM: Entering with:", xy, FCDoControl->fc2fVerbose];
+		FCPrint[3, "FeynCalc2FORM: Entering with: ", xy, FCDoControl->fc2fVerbose];
 
 		If[ Head[xy] === Equal,
 			x = xy[[1]];
@@ -167,16 +167,16 @@ FeynCalc2FORM[ file_:"tFc2F", xy_, OptionsPattern[]] :=
 				Map[Variables, Cases[holdy/.DOT->Times, h_ /;(!MemberQ[{LorentzIndex,Momentum,DiracGamma,Eps, DiracTrace,Pair, Symbol}, Head[y]]),Infinity]]]
 			];
 
-		FCPrint[2, "FeynCalc2FORM: preliminary noatomic:", noatomic, FCDoControl->fc2fVerbose];
+		FCPrint[2, "FeynCalc2FORM: preliminary noatomic: ", noatomic, FCDoControl->fc2fVerbose];
 
 		noatomic = Select[noatomic, (!MemberQ[{LorentzIndex,Momentum,DiracGamma,Eps, DiracTrace,Symbol,Pair, Polarization, String}, Head[#]])&];
 
-		FCPrint[2, "FeynCalc2FORM: final noatomic:", noatomic, FCDoControl->fc2fVerbose];
+		FCPrint[2, "FeynCalc2FORM: final noatomic: ", noatomic, FCDoControl->fc2fVerbose];
 
 		(* replace the non-Symbol arguments of LorentzIndex and Momentum by Symbols *)
 		nosyml = Select[Join[momentumlist, lors], Head[#] =!= Symbol &];
 		lm2form = Table[ nosyml[[i]] -> ToExpression[ StringJoin[ OptionValue[FORMAbbreviations][[2]], ToString[i] ] ], {i, Length[nosyml]}];
-		FCPrint[2, "FeynCalc2FORM: Replacement table for the non-Symbol arguments of LorentzIndex and Momentum:", lm2form, FCDoControl->fc2fVerbose];
+		FCPrint[2, "FeynCalc2FORM: Replacement table for the non-Symbol arguments of LorentzIndex and Momentum: ", lm2form, FCDoControl->fc2fVerbose];
 
 		(* get all other atomic variables *)         (* see p. 725  *)
 
@@ -184,11 +184,11 @@ FeynCalc2FORM[ file_:"tFc2F", xy_, OptionsPattern[]] :=
 		other = Union[other,SelectFree[Union[Cases[FCI[((SP @@ #) & /@ $ScalarProducts)]/.lm2form, _Symbol, -1]], Join[lors, momentumlist,(lm2form /. Rule[_, b_] :> b)]]];
 
 
-		FCPrint[2, "FeynCalc2FORM: other:", other, FCDoControl->fc2fVerbose];
+		FCPrint[2, "FeynCalc2FORM: other: ", other, FCDoControl->fc2fVerbose];
 
 		(* for the reverse substitutions *)
 		form2l = Map[Reverse, lm2form];
-		FCPrint[2, "FeynCalc2FORM: form2l :", form2l, FCDoControl->fc2fVerbose];
+		FCPrint[2, "FeynCalc2FORM: form2l : ", form2l, FCDoControl->fc2fVerbose];
 
 		index4list = lors4 /. lm2form;
 		indexnlist = lorsn /. lm2form;
@@ -219,15 +219,15 @@ FeynCalc2FORM[ file_:"tFc2F", xy_, OptionsPattern[]] :=
 
 		(* construct the list of substitutions for all noatomics *)
 		n2form  = Table[ noatomic[[i]] -> ToExpression[ StringJoin[ OptionValue[FORMAbbreviations][[1]], ToString[i] ] ], {i, Length[noatomic]}];
-		FCPrint[2, "FeynCalc2FORM: n2form :", n2form, FCDoControl->fc2fVerbose];
+		FCPrint[2, "FeynCalc2FORM: n2form : ", n2form, FCDoControl->fc2fVerbose];
 
 
 		form2fc = Join[form2l, Map[Reverse, n2form]];
 
-		FCPrint[2, "FeynCalc2FORM: form2fc :", form2fc, FCDoControl->fc2fVerbose];
+		FCPrint[2, "FeynCalc2FORM: form2fc : ", form2fc, FCDoControl->fc2fVerbose];
 
 		newsymlist = noatomic /. n2form;
-		FCPrint[2, "FeynCalc2FORM: preliminary newsymlist:", newsymlist, FCDoControl->fc2fVerbose];
+		FCPrint[2, "FeynCalc2FORM: preliminary newsymlist: ", newsymlist, FCDoControl->fc2fVerbose];
 
 		newsymlist = Join[other, newsymlist];
 
@@ -236,7 +236,7 @@ FeynCalc2FORM[ file_:"tFc2F", xy_, OptionsPattern[]] :=
 			AppendTo[newsymlist, I]
 		];*)
 
-		FCPrint[2, "FeynCalc2FORM: final newsymlist:", newsymlist, FCDoControl->fc2fVerbose];
+		FCPrint[2, "FeynCalc2FORM: final newsymlist: ", newsymlist, FCDoControl->fc2fVerbose];
 
 
 
@@ -297,7 +297,7 @@ FeynCalc2FORM[ file_:"tFc2F", xy_, OptionsPattern[]] :=
 
 
 
-		FCPrint[2, "FeynCalc2FORM: Preliminary list of id statements:", idlist, FCDoControl->fc2fVerbose];
+		FCPrint[2, "FeynCalc2FORM: Preliminary list of id statements: ", idlist, FCDoControl->fc2fVerbose];
 
 		idlist = idlist /. lm2form /. n2form;
 
@@ -308,7 +308,7 @@ FeynCalc2FORM[ file_:"tFc2F", xy_, OptionsPattern[]] :=
 			nidlist = Table[{polvecs[[j]], polvecs[[j,1]],0},{j,Length[polvecs]}];
 			nidlist = nidlist /. lm2form;
 			idlist = Join[idlist, nidlist];
-			FCPrint[3, "FeynCalc2FORM: List of id statements  after adding polarization vectors:", idlist, FCDoControl->fc2fVerbose]
+			FCPrint[3, "FeynCalc2FORM: List of id statements  after adding polarization vectors: ", idlist, FCDoControl->fc2fVerbose]
 		];
 
 

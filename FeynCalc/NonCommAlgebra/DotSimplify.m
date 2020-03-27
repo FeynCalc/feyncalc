@@ -289,7 +289,7 @@ DotSimplify[expr_, OptionsPattern[]] :=
 					(Distribute[dlin[a]] //. dlin[h___, n_Integer c_, b___] :> (n dlin[h, c, b]));
 			];
 			FCPrint[1, "DotSimplify: Done working out commutators and anti-commutators, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
-			FCPrint[3, "DotSimplify: After working out commutators and anti-commutators:", x, FCDoControl->dsVerbose];
+			FCPrint[3, "DotSimplify: After working out commutators and anti-commutators: ", x, FCDoControl->dsVerbose];
 
 			If[	OptionValue[FCJoinDOTs] && !OptionValue[Expanding],
 				time=AbsoluteTime[];
@@ -343,7 +343,7 @@ DotSimplify[expr_, OptionsPattern[]] :=
 				(y /. DOT -> dlin0 /. dlin0 -> dlin  //. dlin[a__] :> dlin1[{}, a] //. dlin1[{a___}] :> DOT[a] /. DOT -> DOTcomm) /. dlin -> DOT;
 			x = FixedPoint[simpf, x, maxIterations];
 
-			FCPrint[4, "DotSimplify: After simpf:", x, FCDoControl->dsVerbose];
+			FCPrint[4, "DotSimplify: After simpf: ", x, FCDoControl->dsVerbose];
 
 			If[	!FreeQ[x, DiracChain],
 				time=AbsoluteTime[];
@@ -356,7 +356,7 @@ DotSimplify[expr_, OptionsPattern[]] :=
 			x = x/. sunTrace -> SUNTrace /. holdDOT -> DOT;
 
 			FCPrint[1, "DotSimplify: Non-commutative expansions done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
-			FCPrint[3, "DotSimplify: After doing non-commutative expansion:", x, FCDoControl->dsVerbose];
+			FCPrint[3, "DotSimplify: After doing non-commutative expansion: ", x, FCDoControl->dsVerbose];
 
 			x
 		];

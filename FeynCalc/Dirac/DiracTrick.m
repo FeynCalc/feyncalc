@@ -529,15 +529,15 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 		gamma5Present = !FreeQ2[ex,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
 		noncommPresent = !NonCommFreeQ[ex/.DiracGamma->diga];
 
-		FCPrint[3, "DiracTrick: diracTrickEval: g^5 present:", gamma5Present, FCDoControl->diTrVerbose];
-		FCPrint[3, "DiracTrick: diracTrickEval: unknown non-commutative objects present:", noncommPresent, FCDoControl->diTrVerbose];
+		FCPrint[3, "DiracTrick: diracTrickEval: g^5 present: ", gamma5Present, FCDoControl->diTrVerbose];
+		FCPrint[3, "DiracTrick: diracTrickEval: unknown non-commutative objects present: ", noncommPresent, FCDoControl->diTrVerbose];
 
 		res = res/. DOT -> holdDOT;
 
 		If[	gamma5Present,
 			res = res /. holdDOT -> commonGamma5Properties /. commonGamma5Properties -> holdDOT;
 			gamma5Present = !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
-			FCPrint[3, "DiracTrick: diracTrickEval: after applying simplifications related to g^5:", res, FCDoControl->diTrVerbose];
+			FCPrint[3, "DiracTrick: diracTrickEval: after applying simplifications related to g^5: ", res, FCDoControl->diTrVerbose];
 		];
 
 		If[ FreeQ2[res,DiracHeadsList],
@@ -572,7 +572,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 
 		noncommPresent = !NonCommFreeQ[res/.DiracGamma->diga];
 
-		FCPrint[3, "DiracTrick: diracTrickEval: Dimensions:", dim, FCDoControl->diTrVerbose];
+		FCPrint[3, "DiracTrick: diracTrickEval: Dimensions: ", dim, FCDoControl->diTrVerbose];
 
 		If[	gamma5Present,
 

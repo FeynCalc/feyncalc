@@ -105,9 +105,9 @@ FCSchoutenBruteForce[expr_, epsvars_List, vars_List/;(!OptionQ[vars] || vars==={
 			lengthResSchouten = Length[resSchouten];
 
 			If[	lengthResSchouten<=lengthOriginal,
-				FCPrint[1, "FCSchoutenBruteForce. Extra gain from Schouten:", lengthOriginal-lengthResSchouten, FCDoControl->fcsbVerbose];
+				FCPrint[1, "FCSchoutenBruteForce. Extra gain from Schouten: ", lengthOriginal-lengthResSchouten, FCDoControl->fcsbVerbose];
 				ex = resSchouten,
-				FCPrint[1, "FCSchoutenBruteForce: Applying Schouten did not make the expression shorter:", lengthOriginal-lengthResSchouten, FCDoControl->fcsbVerbose]
+				FCPrint[1, "FCSchoutenBruteForce: Applying Schouten did not make the expression shorter: ", lengthOriginal-lengthResSchouten, FCDoControl->fcsbVerbose]
 			]
 		];
 
@@ -125,8 +125,8 @@ FCSchoutenBruteForce[expr_, epsvars_List, vars_List/;(!OptionQ[vars] || vars==={
 
 		FCPrint[1, "FCSchoutenBruteForce: There are ", Length[epsInds], " possible Eps arguments." FCDoControl->fcsbVerbose];
 		FCPrint[1, "FCSchoutenBruteForce: There are ", Length[moms], " possible scalar product arguments." FCDoControl->fcsbVerbose];
-		FCPrint[3, "FCSchoutenBruteForce: moms:", moms, FCDoControl->fcsbVerbose];
-		FCPrint[3, "FCSchoutenBruteForce: vars:", vars, FCDoControl->fcsbVerbose];
+		FCPrint[3, "FCSchoutenBruteForce: moms: ", moms, FCDoControl->fcsbVerbose];
+		FCPrint[3, "FCSchoutenBruteForce: vars: ", vars, FCDoControl->fcsbVerbose];
 
 		sublists = Subsets[moms, {2}];
 		sublists = Join[sublists,Map[{#,#}&,moms]];
@@ -163,7 +163,7 @@ FCSchoutenBruteForce[expr_, epsvars_List, vars_List/;(!OptionQ[vars] || vars==={
 		combos = Union[combos] /. {0,_} -> Unevaluated[Sequence[]] /.
 			{a_,a_} -> Unevaluated[Sequence[]] /. {a_,_}/;FreeQ[ex,a] :> Unevaluated[Sequence[]];
 
-		FCPrint[1, "FCSchoutenBruteForce: Done Preparing the list of possible replacements, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->fcsbVerbose];
+		FCPrint[1, "FCSchoutenBruteForce: Done Preparing the list of possible replacements, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcsbVerbose];
 		FCPrint[3, "FCSchoutenBruteForce: List of possible replacements: ", combos, FCDoControl->fcsbVerbose];
 
 
@@ -182,7 +182,7 @@ FCSchoutenBruteForce[expr_, epsvars_List, vars_List/;(!OptionQ[vars] || vars==={
 
 		list = Sort[list, (#1[[1]] > #2[[1]]) &];
 
-		FCPrint[1, "FCSchoutenBruteForce: Done checking replacements, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->fcsbVerbose];
+		FCPrint[1, "FCSchoutenBruteForce: Done checking replacements, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcsbVerbose];
 		FCPrint[3, "FCSchoutenBruteForce: List of possible replacements: ", list, FCDoControl->fcsbVerbose];
 
 		repRule = {{},{}};

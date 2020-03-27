@@ -290,7 +290,7 @@ pauliTraceEvaluate[expr_/;!FreeQ[expr,PauliSigma], opts:OptionsPattern[]] :=
 					Abort[]
 				];
 
-				FCPrint[1,"PauliTrace: pauliTraceEvaluate: Done sorting matrices canonically, timing:", N[AbsoluteTime[] - time2, 4], FCDoControl->paTrVerbose];
+				FCPrint[1,"PauliTrace: pauliTraceEvaluate: Done sorting matrices canonically, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->paTrVerbose];
 				FCPrint[3,"PauliTrace: pauliTraceEvaluate: After sorting matrices canonically: ", tmp, FCDoControl->paTrVerbose]
 			];
 

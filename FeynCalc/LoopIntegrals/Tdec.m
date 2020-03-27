@@ -440,7 +440,7 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 		FCPrint[3, "Tdec: symmetrized tensor basis ",basis, FCDoControl->tdecVerbose];
 		(* list of tensor coefficients for which we need to solve our linear equations *)
 		ccli =  Cases[basis,CC[__],Infinity];
-		FCPrint[3, "Tdec: ccli:", ccli, FCDoControl->tdecVerbose];
+		FCPrint[3, "Tdec: ccli: ", ccli, FCDoControl->tdecVerbose];
 
 		(* 	out of the tensor coefficients we create tensor structures that will be contracted
 			with the original tensor equations to get a system of linear (scalar) equations *)
@@ -475,7 +475,6 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 					{ii, Length[proli]}];
 		FCPrint[1, "Tdec: Done building a system of scalar equations, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tdecVerbose];
 
-		Print["here"];
 		FCPrint[1, "Tdec: Number of tensor equations to solve: ", Length[eqli], FCDoControl->tdecVerbose];
 		FCPrint[3, "eqli = ", TableForm[eqli], FCDoControl->tdecVerbose];
 		FCPrint[1, "solving ", Length[ccli], FCDoControl->tdecVerbose];
@@ -518,7 +517,7 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 				FCPrint[1, "Tdec: Solve3 bytecount", ByteCount[solu], FCDoControl->tdecVerbose]
 			];
 
-			FCPrint[3, "Tdec: solu:", Normal[solu], FCDoControl->tdecVerbose];
+			FCPrint[3, "Tdec: solu: ", Normal[solu], FCDoControl->tdecVerbose];
 			nttt = Collect[tt[[2]], Map[First, scqli]];
 			If[ fce,
 				nttt = FeynCalcExternal[nttt]
@@ -527,7 +526,7 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 				solu = solu /. Map[Reverse, seqli];
 			];
 			solu = solu /. Dispatch[Map[Reverse, scqli]];
-			FCPrint[3, "Tdec: solu:", Normal[solu], FCDoControl->tdecVerbose];
+			FCPrint[3, "Tdec: solu: ", Normal[solu], FCDoControl->tdecVerbose];
 			tt = nttt /. Dispatch[solu];
 		];
 

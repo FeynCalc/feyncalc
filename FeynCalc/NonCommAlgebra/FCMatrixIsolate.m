@@ -113,7 +113,7 @@ FCMatrixIsolate[expr_/;Head[expr]=!=List, OptionsPattern[]] :=
 			optsSUN	= FilterRules[optFCColorIsolate[[2]], Except[Head]]
 		];
 
-		FCPrint[1,"FCMatrixIsolate: Ordering of isolations:", optOrdering,  FCDoControl->fcmiVerbose];
+		FCPrint[1,"FCMatrixIsolate: Ordering of isolations: ", optOrdering,  FCDoControl->fcmiVerbose];
 		optOrdering = optOrdering /. {FCDiracIsolate -> isolateDirac, FCPauliIsolate -> isolatePauli, FCColorIsolate -> isolateSUN};
 
 		ex = relevantPart[ex];
@@ -122,7 +122,7 @@ FCMatrixIsolate[expr_/;Head[expr]=!=List, OptionsPattern[]] :=
 		FCPrint[1, "FCMatrixIsolate: Applying isolating functions.", FCDoControl->fcmiVerbose];
 		ex = Fold[#2[#1] &, ex, optOrdering];
 		FCPrint[1, "FCMatrixIsolate: Done applying isolating functions, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcmiVerbose];
-		FCPrint[3, "FCMatrixIsolate: After applying isolating functions:", ex, FCDoControl->fcmiVerbose];
+		FCPrint[3, "FCMatrixIsolate: After applying isolating functions: ", ex, FCDoControl->fcmiVerbose];
 
 		res = ex /. relevantPart-> OptionValue[Head];
 
