@@ -173,8 +173,10 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 
 
 
-
 		vectorSet= FCLoopBasisExtract[scalarTerm, lmoms, SetDimensions->OptionValue[SetDimensions]];
+
+		FCPrint[3,"FCApart: vectorSet: ",vectorSet, FCDoControl->fcaVerbose];
+
 
 		(* All the partial fractioning is done by pfrac *)
 		time=AbsoluteTime[];

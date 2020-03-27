@@ -130,6 +130,7 @@ Options[FCLoopBasisExtract] = {
 	FCE 			-> False,
 	FCVerbose		-> False,
 	FCTopology		-> False,
+	Rest			-> None,
 	SetDimensions	-> {3, 4, D, D-1}
 };
 
@@ -219,14 +220,21 @@ rulePropagatorPowersToOne = {
 };
 
 (* FADs *)
+
+(*
 auxIntegralToPropagators[Power[exp_FeynAmpDenominator, n_Integer?Positive], lmoms_List]:=
 	ConstantArray[SelectNotFree[FeynAmpDenominatorSplit[exp, FCI->True, MomentumExpand->False, List->True],lmoms], n]/; Length[List@@exp]>1;
-
+*)
 auxIntegralToPropagators[Power[exp_FeynAmpDenominator, n_Integer?Positive], _]:=
 	ConstantArray[{exp}, n]/; Length[List@@exp]===1;
-
+(*
 auxIntegralToPropagators[exp_FeynAmpDenominator, lmoms_List]:=
 	SelectNotFree[FeynAmpDenominatorSplit[exp, FCI->True, MomentumExpand->False, List->True],lmoms]/; Length[List@@exp]>1 && Head[exp]=!=Power;
+*)
+
+
+auxIntegralToPropagators[a_FeynAmpDenominator b_FeynAmpDenominator c_., lmoms_]:=
+	{auxIntegralToPropagators[a, lmoms],auxIntegralToPropagators[b c, lmoms]};
 
 auxIntegralToPropagators[exp_FeynAmpDenominator, _]:=
 	{exp}/; Length[List@@exp]===1;
@@ -258,7 +266,7 @@ auxIntegralToPropagators2[exp_, lmoms_]:=
 
 
 FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
-	Block[{exp, tmp, res, dummy, expAsList, rest},
+	Block[{exp, tmp, res, dummy, expAsList, rest, listHead},
 
 		If [OptionValue[FCVerbose]===False,
 			itpVerbose=$VeryVerbose,
@@ -278,6 +286,10 @@ FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 		];
 		FCPrint[1,"FCLoopBasisIntegralToPropagators: Entering.", FCDoControl->itpVerbose];
 		FCPrint[3,"FCLoopBasisIntegralToPropagators: Entering with ", exp, FCDoControl->itpVerbose];
+
+		exp = FeynAmpDenominatorSplit[exp,FCI->True,MomentumExpand->False];
+
+		FCPrint[3,"FCLoopBasisIntegralToPropagators: After FeynAmpDenominatorSplit: ", exp, FCDoControl->itpVerbose];
 
 		If[	!MemberQ[{Power, Times,FeynAmpDenominator,Pair,CartesianPair,TemporalPair,List},Head[exp]] || FreeQ2[exp,lmoms],
 			Message[FCLoopBasisIntegralToPropagators::failmsg,"The input expression does not seem to be a valid loop integral."];
@@ -332,13 +344,15 @@ FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 			Abort[]
 		];
 
+		(*
 		tmp = tmp /. {
 			(h : StandardPropagatorDenominator|CartesianPropagatorDenominator|GenericPropagatorDenominator)[a__, {n_Integer, s_}]/;
 				Abs[n]=!=1 :> Sequence@@ConstantArray[h[a,  {Sign[n],s}], Abs[n]]
-		};
+		};*)
 
 		tmp = auxIntegralToPropagators[#,lmoms]&/@tmp;
 
+		FCPrint[3,"FCLoopBasisIntegralToPropagators: After auxIntegralToPropagators: ", tmp, FCDoControl->itpVerbose];
 
 		(*
 			This  tricky construction is needed to handle integrals with scalar products like
@@ -358,11 +372,29 @@ FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 
 		If[	OptionValue[Tally],
 			res = Tally[Flatten[tmp]];
+
+
+			FCPrint[3,"FCLoopBasisIntegralToPropagators: After Tally: ", res, FCDoControl->itpVerbose];
+			res = res /. {
+				{FeynAmpDenominator[h_[a__, {n_, s_}]], k_}/; MatchQ[n,_Integer?Positive|_Symbol] :>
+					{FeynAmpDenominator[h[a,{1,s}]], n k}
+			};
+
+			res = listHead@@res /. {
+			listHead[r1___,{a_,n1_},r2___,{a_,n2_},r3___] :> listHead[r1,{a,n1+n2},r2,r3]
+				};
+			res = List@@res;
+
+			FCPrint[3,"FCLoopBasisIntegralToPropagators: After handling symbolic powers: ", res, FCDoControl->itpVerbose];
+
 			(* TODO Need the possibility to have a custom sort function *)
 			(*TODO For the future one might add a better sorting *)
 			If[OptionValue[Sort],
-				res = Sort[res,(#1[[1]]>#2[[1]])&]
+				res = Sort[res,(LeafCount[#1[[1]]]<LeafCount[#2[[1]]])&]
 			];
+
+			FCPrint[3,"FCLoopBasisIntegralToPropagators: After Sort: ", res, FCDoControl->itpVerbose];
+
 
 			(*	This extra check should catch things like SFAD[{{0, p1.q}, {0, 1}, -1}] SFAD[{{0, p1.q}, {0, 1}, 2}].	*)
 			If[ Length[First[Transpose[res]]]=!=Length[Union[First[Transpose[res]]/. Dispatch[rulePropagatorPowersToOne]]],
@@ -370,7 +402,8 @@ FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 				Abort[]
 			],
 
-			res = DeleteDuplicates[Flatten[tmp]/.Dispatch[rulePropagatorPowers]];
+			(*No tally*)
+			res = DeleteDuplicates[Flatten[tmp]/.Dispatch[rulePropagatorPowers]/. Sign[_Symbol] -> 1];
 
 			If[OptionValue[Sort],
 				res = Sort[res]
@@ -583,14 +616,14 @@ FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 		FCPrint[3,"FCLoopBasisExtract: Entering with: ", expr, FCDoControl->fclbeVerbose];
 		FCPrint[3,"FCLoopBasisExtract: Loop momenta: ", loopmoms, FCDoControl->fclbeVerbose];
 
-		If[	!FCLoopNonIntegerPropagatorPowersFreeQ[expr],
+		(*If[	!FCLoopNonIntegerPropagatorPowersFreeQ[expr],
 			Message[FCLoopBasisExtract::failmsg, "Integrals with noninteger propagator powers are not supported."];
 			Abort[]
-		];
+		];*)
 
 		useToSFAD = !FreeQ[expr, StandardPropagatorDenominator];
 
-		integralBasis = FCLoopBasisIntegralToPropagators[expr, loopmoms, FCI->True, Rest->None, Negative->True, Tally->True,
+		integralBasis = FCLoopBasisIntegralToPropagators[expr, loopmoms, FCI->True, Rest->OptionValue[Rest], Negative->True, Tally->True,
 			Pair->True,CartesianPair->True, ToSFAD->useToSFAD, MomentumCombine -> True, ExpandScalarProduct->True,
 			Sort->False
 		];
@@ -831,7 +864,7 @@ FCLoopBasisOverdeterminedQ[expr_, lmoms_List, OptionsPattern[]] :=
 		FCPrint[3,"FCLoopBasisOverdeterminedQ: Entering with: ", ex, FCDoControl->fclbVerbose];
 		FCPrint[3,"FCLoopBasisOverdeterminedQ: Loop momenta: ", lmoms, FCDoControl->fclbVerbose];
 
-		vecs= FCLoopBasisExtract[ex, lmoms, SetDimensions->OptionValue[SetDimensions]];
+		vecs= FCLoopBasisExtract[ex, lmoms, SetDimensions->OptionValue[SetDimensions], Rest->False];
 
 		FCPrint[3,"FCLoopBasisOverdeterminedQ: Output of extractBasisVectors: ", vecs, FCDoControl->fclbVerbose];
 
