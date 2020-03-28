@@ -534,14 +534,17 @@ FCReloadFunctionFromFile[fun_, file_String] :=
 	Null
 ];
 
+FCProductSplit[expr_, {}, OptionsPattern[]]:=
+	{expr,1};
+
 FCProductSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
-	Block[{dummy,exprAsList,pow,free,notfree},
+	Block[{dummy1,dummy2,exprAsList,pow,free,notfree},
 		If[	NTerms[expr,Expand->False] > 1,
 			Message[FCProductSplit::failmsg,"The input expression is not a product"];
 			Abort[]
 		];
 
-		exprAsList = List@@(expr*dummy);
+		exprAsList = List@@(expr*dummy1*dummy2);
 		If[	!FreeQ[exprAsList,Power],
 			exprAsList /. Power -> pow //. {
 				{a___,pow[b_,n_Integer?Positive],c___} :> {a,Sequence@@ConstantArray[b,n],c},
@@ -549,7 +552,7 @@ FCProductSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
 			} /. pow -> Power
 		];
 
-		free = SelectFree[exprAsList,vars] /. dummy :> Unevaluated[Sequence[]];
+		free = SelectFree[exprAsList,vars] /. dummy1|dummy2 :> Unevaluated[Sequence[]];
 		notfree = SelectNotFree[exprAsList,vars];
 
 		free = Times@@free;

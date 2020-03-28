@@ -156,7 +156,11 @@ Tests`Shared`fcstSharedToolsFCProductSplit =
 {"fcstSharedToolsFCProductSplit-ID7",
 "FCProductSplit[(a^2+b)*b*(c+d),{a,c}]", "{b, (a^2 + b)*(c + d)}"},
 {"fcstSharedToolsFCProductSplit-ID8",
-"FCProductSplit[1/(-1+2 eps),{Foo}]", "{1/(2 eps-1),1}"}
+"FCProductSplit[1/(-1+2 eps),{Foo}]", "{1/(2 eps-1),1}"},
+{"fcstSharedToolsFCProductSplit-ID9", "FCProductSplit[1, {x, y, z}]",
+"{1, 1}"},
+{"fcstSharedToolsFCProductSplit-ID10", "FCProductSplit[a b c, {}]",
+"{a b c, 1}"}
 });
 
 Tests`Shared`fcstSharedToolsFCSplit = {
