@@ -60,8 +60,15 @@ Options[PauliSimplify] = {
 	PauliOrder			-> False,
 	PauliReduce 		-> False,
 	PauliSigmaCombine	-> False,
+	PauliTrace			-> True,
 	PauliTraceEvaluate	-> True
 };
+
+PauliSimplify[a_ == b_, opts:OptionsPattern[]] :=
+	PauliSimplify[a,opts] == PauliSimplify[b,opts];
+
+PauliSimplify[expr_List, opts:OptionsPattern[]] :=
+	PauliSimplify[#, opts]&/@expr;
 
 PauliSimplify[expr_, OptionsPattern[]] :=
 	Block[{ex,res,time, null1, null2, holdDOT, freePart=0, psPart, pauliObjects,
