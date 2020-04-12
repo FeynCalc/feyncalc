@@ -170,7 +170,7 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 		FCPrint[1, "FCMultiLoopTID: Done uncontracting Lorentz indices, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
 		FCPrint[3, "FCMultiLoopTID: After Uncontract: ", ex, FCDoControl->mltidVerbose];
 
-		If[ (FeynCalc`Package`DiracGammaScheme === "BMHV") && !FreeQ[ex,LorentzIndex],
+		If[ (FeynCalc`Package`DiracGammaScheme === "BMHV") && !FreeQ2[ex,{LorentzIndex,CartesianIndex}],
 			time=AbsoluteTime[];
 			FCPrint[1, "FCMultiLoopTID: Handling 4 and D-4 dimensional loop momenta.", FCDoControl->mltidVerbose];
 			ex = ex /. {
@@ -179,9 +179,9 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 				Pair[Momentum[q_],LorentzIndex[i_]]/; MemberQ[qs,q] :>
 					(tmpli=Unique[];  Pair[Momentum[q,n],LorentzIndex[tmpli,n]] Pair[LorentzIndex[tmpli],LorentzIndex[i]]),
 
-				CartesianPair[CartesianMomentum[q,n-4],CartesianIndex[i_,n-4]]:>
+				CartesianPair[CartesianMomentum[q_,n-4],CartesianIndex[i_,n-4]]/; MemberQ[qs,q] :>
 					(tmpli=Unique[];  CartesianPair[CartesianMomentum[q,n-1],CartesianIndex[tmpli,n-1]] CartesianPair[CartesianIndex[tmpli,n-4],CartesianIndex[i,n-4]]),
-				CartesianPair[CartesianMomentum[q],CartesianIndex[i_]]:>
+				CartesianPair[CartesianMomentum[q_],CartesianIndex[i_]]/; MemberQ[qs,q] :>
 					(tmpli=Unique[];  CartesianPair[CartesianMomentum[q,n-1],CartesianIndex[tmpli,n-1]] CartesianPair[CartesianIndex[tmpli],CartesianIndex[i]])
 			};
 			If[ !FreeQ2[ex, {Pair[Momentum[q,n-4],LorentzIndex[_,n-4]],Pair[Momentum[q],LorentzIndex[_]],
