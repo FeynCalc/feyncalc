@@ -63,7 +63,8 @@ Options[FCApart] = {
 
 FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 	Block[{ex,vectorSet,res,check, scalarTerm, vectorTerm=1, pref=1, tmp,
-		scaleless1=0,scaleless2=0,time, optFactoring, optTimeConstrained},
+		scaleless1=0,scaleless2=0,time, optFactoring, optTimeConstrained,
+		rd, dt, extraTensors},
 
 		If [OptionValue[FCVerbose]===False,
 			fcaVerbose=$VeryVerbose,
@@ -108,7 +109,7 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 			FCPrint[3,"FCApart: After the initial cancelling of scalar products ", ex, FCDoControl->fcaVerbose]
 		];
 
-		(*	To bring the propagators into a proper form.
+		(*	This brings the propagators into a proper form.
 			However, this might also mess up the signs of the
 			propagators in the already fixed topology, so if FDS is set to False,
 			this simplification should not be done as well!	*)
@@ -127,13 +128,17 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 			Return[ex];
 		];
 
+		extraTensors = Cases[SelectNotFree2[DownValues[DataType], FCTensor] /. RuleDelayed -> rd /. DataType -> dt /.
+			HoldPattern -> Identity, rd[dt[a_, FCTensor], True] :> a, Infinity];
+		extraTensors = SelectFree[extraTensors,{Eps,Pair,CartesianPair}];
+
+		FCPrint[2,"FCApart: Extra tensors to consider for determining the vector part: ", extraTensors, FCDoControl->fcaVerbose];
+
 
 		(*	Partial fractioning should work also for loop integrals that contain loop momenta
 			with uncontracted indices, or loop momenta contracted with Epsilon tensors and Dirac gammas	*)
-		If[	!FreeQ2[ex,{LorentzIndex,CartesianIndex,Eps,DiracGamma}],
-			scalarTerm = SelectFree[ex, LorentzIndex,CartesianIndex,Eps,DiracGamma];
-			vectorTerm = SelectNotFree[ex, LorentzIndex,CartesianIndex,Eps,DiracGamma];
-
+		If[	!FreeQ2[ex,Join[{LorentzIndex,CartesianIndex,Eps,DiracGamma},extraTensors]],
+			{scalarTerm,vectorTerm} = FCProductSplit[ex,Join[{LorentzIndex,CartesianIndex,Eps,DiracGamma},extraTensors]];
 			If[	scalarTerm*vectorTerm =!= ex || !FreeQ2[scalarTerm,{LorentzIndex,CartesianIndex}],
 				Message[FCApart::error, ex];
 				Abort[]
