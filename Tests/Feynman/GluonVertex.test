@@ -1,6 +1,4 @@
-
-
-(* :Title: Twist2GluonOperator.test                                                 *)
+(* :Title: GluonVertex.test                                                 *)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -9,19 +7,45 @@
 	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Framework independent unit tests for Twist2GluonOperator	  			*)
+(* :Summary:  Framework independent unit tests for GluonVertex	  			*)
 
 (* ------------------------------------------------------------------------ *)
 
-Tests`Feynman`fcstTwist2GluonOperator = {
+Tests`QCD`fcstGluonVertex = {
 
-{"fcstTwist2GluonOperator-ID1","Twist2GluonOperator[p, {mu, a}, {nu, b}]",
-"1/2 (1 + Power2[-1, OPEm]) SUNDelta[SUNIndex[a],SUNIndex[b]] Twist2GluonOperator[
-Momentum[p, D], {LorentzIndex[mu, D]}, {LorentzIndex[nu, D]}]"},
-{"fcstTwist2GluonOperator-ID2","Twist2GluonOperator[p, {mu, a}, {nu, b}, Explicit -> True]// FCE",
-"1/2 (1 + (-1)^OPEm) SD[a, b] SOD[p]^(-2 +
-OPEm) (-(FVD[OPEDelta, nu] FVD[p, mu] +
-	FVD[OPEDelta, mu] FVD[p, nu]) SOD[p] + MTD[mu, nu] SOD[p]^2 +
-FVD[OPEDelta, mu] FVD[OPEDelta, nu] SPD[p, p])"}
-
+{"fcstGluonVertex-ID1","MatchQ[GluonVertex[{p, mu, a}, {q, nu, b}, {r, rho, c}, {s, si, d},
+Explicit -> True] //
+FCE, -I Gstrong^2 ((-MTD[mu, rho] MTD[nu, si] +
+	MTD[mu, nu] MTD[rho, si]) SUNF[SUNIndex[a], SUNIndex[d],
+	SUNIndex[FCGV[x_String]]] SUNF[SUNIndex[b], SUNIndex[c],
+	SUNIndex[FCGV[x_String]]] + (-MTD[mu, si] MTD[nu, rho] +
+	MTD[mu, nu] MTD[rho, si]) SUNF[SUNIndex[a], SUNIndex[c],
+	SUNIndex[FCGV[x_String]]] SUNF[SUNIndex[b], SUNIndex[d],
+	SUNIndex[FCGV[x_String]]] + (-MTD[mu, si] MTD[nu, rho] +
+	MTD[mu, rho] MTD[nu, si]) SUNF[SUNIndex[a], SUNIndex[b],
+	SUNIndex[FCGV[x_String]]] SUNF[SUNIndex[c], SUNIndex[d],
+	SUNIndex[FCGV[x_String]]])]","True"},
+{"fcstGluonVertex-ID2","GluonVertex[{p, mu, a}, {q, nu, b}, {r, rho, c},
+Explicit -> True] // FCE","Gstrong (FVD[p - q, rho] MTD[mu, nu] + FVD[-p + r, nu] MTD[mu, rho] +
+FVD[q - r, mu] MTD[nu, rho]) SUNF[a, b, c]"},
+{"fcstGluonVertex-ID3","GluonVertex[{p, mu, a}, {q, 0, b}, {k, 0, c}, Explicit -> True]",
+"(Pair[ExplicitLorentzIndex[0], LorentzIndex[mu]] Pair[
+	ExplicitLorentzIndex[0], Momentum[k, D] - Momentum[p, D]] +
+Pair[ExplicitLorentzIndex[0], LorentzIndex[mu]] Pair[
+	ExplicitLorentzIndex[0], Momentum[p, D] - Momentum[q, D]] +
+Pair[LorentzIndex[mu, D], -Momentum[k, D] + Momentum[q, D]]) SMP[\"g_s\"]*
+SUNF[SUNIndex[a], SUNIndex[b], SUNIndex[c]]"},
+{"fcstGluonVertex-ID4","GluonVertex[{p, mu, a}, {q, 0, b}, {k, 0, c}, {r, nu, d},
+Explicit -> True]// FCCanonicalizeDummyIndices[#, SUNIndexNames -> {c1, c2}] &",
+"-(((-I)*Pair[ExplicitLorentzIndex[0], LorentzIndex[mu]]*Pair[ExplicitLorentzIndex[0],
+LorentzIndex[nu]]*SMP[\"g_s\"]^2 + I*Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*SMP[\"g_s\"]^2)*
+SUNF[SUNIndex[a], SUNIndex[c], SUNIndex[c1]]*SUNF[SUNIndex[b], SUNIndex[c1], SUNIndex[d]]) -
+((-I)*Pair[ExplicitLorentzIndex[0], LorentzIndex[mu]]*Pair[ExplicitLorentzIndex[0],
+LorentzIndex[nu]]*SMP[\"g_s\"]^2 + I*Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*SMP[\"g_s\"]^2)*
+SUNF[SUNIndex[a], SUNIndex[b], SUNIndex[c1]]*SUNF[SUNIndex[c], SUNIndex[c1], SUNIndex[d]]"}
 };
+
+
+
+
+
