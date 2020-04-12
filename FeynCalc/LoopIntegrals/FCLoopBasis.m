@@ -376,7 +376,7 @@ FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 
 			FCPrint[3,"FCLoopBasisIntegralToPropagators: After Tally: ", res, FCDoControl->itpVerbose];
 			res = res /. {
-				{FeynAmpDenominator[h_[a__, {n_, s_}]], k_}/; MatchQ[n,_Integer?Positive|_Symbol] :>
+				{FeynAmpDenominator[h_[a__, {n_, s_}]], k_}/; MatchQ[n,_Integer?Positive|_Symbol] || Variables[n]=!={} :>
 					{FeynAmpDenominator[h[a,{1,s}]], n k}
 			};
 
