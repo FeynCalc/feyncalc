@@ -443,5 +443,21 @@ P] GFAD[{{EN - V0 + Sqrt[CSPD[k, k]], 1}, 1}] +
 1/4 CFAD[{{k - P, 0}, {0, -1}, 1}] CSPD[P,
 P] GFAD[{{EN - V0 + Sqrt[CSPD[k, k]], 1}, 1}] +
 1/4 CFAD[{{k, 0}, {0, -1}, 1}, {{k - P, 0}, {0, -1}, 1}] CSPD[P,
-P]^2 GFAD[{{EN - V0 + Sqrt[CSPD[k, k]], 1}, 1}]"}
+P]^2 GFAD[{{EN - V0 + Sqrt[CSPD[k, k]], 1}, 1}]"},
+{"fcstFCApart-ID55",
+"DeclareFCTensor[myR1]; \n DeclareNonCommutative[myR1]; \n
+tmp = FCApart[myR1[CartesianMomentum[P]] CFAD[P - k, {P, c^2}], {P},FCE->True]; \n
+UnDeclareFCTensor[myR1]; \n UnDeclareNonCommutative[myR1]; tmp",
+"CFAD[{{-k + P, 0}, {0, -1}, 1}, {{P, 0}, {c^2, -1}, 1}] myR1[
+CartesianMomentum[P]]"},
+{"fcstFCApart-ID56",
+"DeclareFCTensor[myR1]; \n DeclareNonCommutative[myR1]; \n
+tmp = FCApart[myR1[CartesianMomentum[P]] CSPD[P, k] CFAD[
+	P - k, {P, c^2}], {P}, FCE->True]; \n
+UnDeclareFCTensor[myR1]; \n UnDeclareNonCommutative[myR1]; tmp",
+"-(1/2) CFAD[{{P, 0}, {0, -1}, 1}, {{k + P, 0}, {c^2, -1}, 1}] (c^2 -
+	CSPD[k, k]) myR1[CartesianMomentum[k]] -
+1/2 CFAD[{{P, 0}, {c^2, -1}, 1}] myR1[CartesianMomentum[P]] -
+1/2 CFAD[{{P, 0}, {0, -1}, 1}, {{k + P, 0}, {c^2, -1}, 1}] (c^2 -
+	CSPD[k, k]) myR1[CartesianMomentum[P]]"}
 })
