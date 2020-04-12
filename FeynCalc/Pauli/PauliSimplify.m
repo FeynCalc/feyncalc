@@ -45,8 +45,6 @@ optContract::usage="";
 optPauliReduce::usage="";
 
 Options[PauliSimplify] = {
-	(*InsidePauliTrace    -> False,*)
-	(*PauliTrace			-> True,*)
 	Contract			-> True,
 	EpsContract			-> True,
 	Expand2				-> True,
@@ -126,11 +124,11 @@ PauliSimplify[expr_, OptionsPattern[]] :=
 			ex = FCPauliIsolate[ex,FCI->True,Head->psHead, DotSimplify->True, PauliSigmaCombine->OptionValue[PauliSigmaCombine],
 				LorentzIndex->True, CartesianIndex->True];
 
-			(*
+
 			If[	!FreeQ[ex,PauliTrace] && !OptionValue[PauliTrace],
 				ex = ex /. psHead[zz_]/; !FreeQ[zz,PauliTrace] :> zz
 			];
-			*)
+
 
 			{freePart,psPart} = FCSplit[ex,{psHead}];
 			FCPrint[3,"PauliSimplify: psPart: ",psPart , FCDoControl->psVerbose];
