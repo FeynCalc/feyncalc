@@ -1,6 +1,4 @@
-
-
-(* :Title: GluonVertex.test                                                 *)
+(* :Title: Twist2GluonOperator.test                                                 *)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -9,26 +7,18 @@
 	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Framework independent unit tests for GluonVertex	  			*)
+(* :Summary:  Framework independent unit tests for Twist2GluonOperator	  			*)
 
 (* ------------------------------------------------------------------------ *)
 
-Tests`QCD`fcstGluonVertex = {
+Tests`Feynman`fcstGluonVertex = {
 
-{"fcstGluonVertex-ID1","MatchQ[GluonVertex[{p, mu, a}, {q, nu, b}, {r, rho, c}, {s, si, d},
-Explicit -> True] //
-FCE, -I Gstrong^2 ((-MTD[mu, rho] MTD[nu, si] +
-	MTD[mu, nu] MTD[rho, si]) SUNF[SUNIndex[a], SUNIndex[d],
-	SUNIndex[FCGV[x_String]]] SUNF[SUNIndex[b], SUNIndex[c],
-	SUNIndex[FCGV[x_String]]] + (-MTD[mu, si] MTD[nu, rho] +
-	MTD[mu, nu] MTD[rho, si]) SUNF[SUNIndex[a], SUNIndex[c],
-	SUNIndex[FCGV[x_String]]] SUNF[SUNIndex[b], SUNIndex[d],
-	SUNIndex[FCGV[x_String]]] + (-MTD[mu, si] MTD[nu, rho] +
-	MTD[mu, rho] MTD[nu, si]) SUNF[SUNIndex[a], SUNIndex[b],
-	SUNIndex[FCGV[x_String]]] SUNF[SUNIndex[c], SUNIndex[d],
-	SUNIndex[FCGV[x_String]]])]","True"},
-{"fcstGluonVertex-ID2","GluonVertex[{p, mu, a}, {q, nu, b}, {r, rho, c},
-Explicit -> True] // FCE","Gstrong (FVD[p - q, rho] MTD[mu, nu] + FVD[-p + r, nu] MTD[mu, rho] +
-FVD[q - r, mu] MTD[nu, rho]) SUNF[a, b, c]"}
-
+{"fcstTwist2GluonOperator-ID1","Twist2GluonOperator[p, {mu, a}, {nu, b}]",
+"1/2 (1 + Power2[-1, OPEm]) SUNDelta[SUNIndex[a],SUNIndex[b]] Twist2GluonOperator[
+Momentum[p, D], {LorentzIndex[mu, D]}, {LorentzIndex[nu, D]}]"},
+{"fcstTwist2GluonOperator-ID2","Twist2GluonOperator[p, {mu, a}, {nu, b}, Explicit -> True]// FCE",
+"1/2 (1 + (-1)^OPEm) SD[a, b] SOD[p]^(-2 +
+OPEm) (-(FVD[OPEDelta, nu] FVD[p, mu] +
+	FVD[OPEDelta, mu] FVD[p, nu]) SOD[p] + MTD[mu, nu] SOD[p]^2 +
+FVD[OPEDelta, mu] FVD[OPEDelta, nu] SPD[p, p])"}
 };

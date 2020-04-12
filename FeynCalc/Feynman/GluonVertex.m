@@ -70,7 +70,7 @@ GluonVertex[{pi_, mui_, ai_}, {qi_, nui_, bi_}, {ki_, lai_, ci_}, opt:OptionsPat
 		ope   = OptionValue[OPE];
 		expl  = OptionValue[Explicit];
 		{a,b,c} = Map[SUNIndex[#]&, {ai,bi,ci}];
-		{mu,nu,la} = Map[LorentzIndex[#, dim]&, {mui,nui,lai}] // lorfix;
+		{mu,nu,la} = Map[LorentzIndex[#, dim]&, {mui,nui,lai} /. ExplicitLorentzIndex[0]->0] // lorfix;
 		{p,q,k}    = Map[Momentum[#, dim]&, {pi,qi,ki}]//momfix;
 		gl3v = SUNF[a,b,c] Apply[GluonVertex, Join[{ {p,mu}, {q,nu}, {k,la} },
 		Select[{opt}, FreeQ[#, OPE]&]]];
@@ -84,7 +84,7 @@ GluonVertex[{pi_, mui_}, {qi_, nui_}, {ki_, lai_}, OptionsPattern[]] :=
 	Block[ {coup, dim, p, q, k, mu, nu, la},
 		dim   = OptionValue[Dimension];
 		coup  = OptionValue[CouplingConstant];
-		{mu,nu,la} = Map[LorentzIndex[#, dim]&, {mui,nui,lai}] // lorfix;
+		{mu,nu,la} = Map[LorentzIndex[#, dim]&, {mui,nui,lai} /. ExplicitLorentzIndex[0]->0] // lorfix;
 		{p,q,k}    = Map[Momentum[#, dim]&, {pi,qi,ki}]//momfix;
 		coup MomentumCombine[(Pair[q - k, mu] Pair[nu, la] + Pair[k - p, nu] Pair[la, mu] +
 		Pair[p - q, la] Pair[mu, nu]),LeafCount -> 1000]
@@ -105,7 +105,7 @@ GluonVertex[{p___, mui_, ai_}, {q___, nui_, bi_}, {r___, lai_, ci_}, {s___, sii_
 		coup  = OptionValue[CouplingConstant];
 		dim   = OptionValue[Dimension];
 		ope   = OptionValue[OPE];
-		{mu,nu,la,si} = Map[LorentzIndex[#, dim]&, {mui,nui,lai,sii}] // lorfix;
+		{mu,nu,la,si} = Map[LorentzIndex[#, dim]&, {mui,nui,lai,sii}/. ExplicitLorentzIndex[0]->0] // lorfix;
 		{a,b,c,d}    = Map[SUNIndex[#]&, {ai,bi,ci,di}]//momfix;
 		e = SUNIndex[FCGV[ToString[Unique["u"]]]];
 		gl4v = - I coup^2 ( SUNF[a,b,e] SUNF[c,d,e] (Pair[mu,la] Pair[nu,si] - Pair[mu,si] Pair[nu,la]) +
