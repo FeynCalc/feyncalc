@@ -133,5 +133,8 @@ SUNFIndex[Col2]], 1].DiracGamma[7].Spinor[Momentum[p3],
 MassFQ[Index[I3Gen, 3], SUNFIndex[Col3]],1])]]",
 "Spinor[Momentum[p3], MassFQ[Index[I3Gen, 3], SUNFIndex[Col3]],
 1].DiracGamma[6].Spinor[-Momentum[p2],
-MassFu[Index[I3Gen, 2], SUNFIndex[Col2]], 1]"}
+MassFu[Index[I3Gen, 2], SUNFIndex[Col2]], 1]"},
+{"fcstComplexConjugate-ID35",
+"ComplexConjugate[fun[I, a_, b_]]",
+	"fun[-I, a_, b_]"}
 };

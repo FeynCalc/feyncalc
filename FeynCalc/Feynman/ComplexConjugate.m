@@ -37,7 +37,7 @@ Begin["`ComplexConjugate`Private`"]
 ccjVerbose::usage="";
 holdDOT::usage="";
 holdDOTReversed::usage="";
-
+hold::usage="";
 
 (* for large expressions it is better to not use DotSimplify *)
 Options[ComplexConjugate] = {
@@ -54,12 +54,23 @@ Options[ComplexConjugate] = {
 ComplexConjugate[expr_List, opts:OptionsPattern[]]:=
 	ComplexConjugate[#,opts]&/@expr;
 
-ComplexConjugate[expr_/;Head[expr]=!=List, OptionsPattern[]]:=
+
+ComplexConjugate[a_ == b_, opts:OptionsPattern[]] :=
+	ComplexConjugate[a,opts] == ComplexConjugate[b,opts];
+
+ComplexConjugate[(h:Rule|RuleDelayed)[a_,b_], opts:OptionsPattern[]] :=
+	hold[ComplexConjugate[a,opts],ComplexConjugate[b,opts]] /. hold -> h;
+
+
+Collect2[x_List, y__] :=
+	Collect2[#, y]& /@ x;
+
+ComplexConjugate[expr_/;!MemberQ[{List,Equal,Rule,RuleDelayed},Head[expr]], OptionsPattern[]]:=
 	Block[{	ex,res,optConjugate, ruleConjugate, ru, time,
 			prefList, diracList, sunList, pauliList,
 			prefHead, pauliHead, sunHead, diracHead,
 			prefListEval, diracListEval, sunListEval, pauliListEval,
-			repRule, ccRules},
+			repRule, ccRules, pattern, blank},
 
 		optConjugate	= OptionValue[Conjugate];
 
@@ -174,16 +185,18 @@ ComplexConjugate[expr_/;Head[expr]=!=List, OptionsPattern[]]:=
 			Thread[Rule[pauliList,pauliListEval]],
 			Thread[Rule[sunList,sunListEval]],
 			Thread[Rule[prefList,prefListEval]]
-		];
+		] /. {Pattern->pattern, Blank->blank};
 
-		res = ex /. Dispatch[repRule];
+		res = ex /. {Pattern->pattern, Blank->blank} /. Dispatch[repRule] /. {pattern->Pattern, blank->Blank};
+
+		FCPrint[3,"ComplexConjugate: After the main replacement rule: ", res, FCDoControl->ccjVerbose];
 
 		If[	OptionValue[FCRenameDummyIndices],
 			time = AbsoluteTime[];
 			FCPrint[1,"ComplexConjugate: Renaming dummy indices in the final result.", FCDoControl->ccjVerbose];
 			res = FCRenameDummyIndices[res, FCI->True];
 			FCPrint[1,"ComplexConjugate: Done renaming dummy indices in the final result, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->ccjVerbose];
-			FCPrint[3,"ComplexConjugate: After FCRenameDummyIndices: ", ex, FCDoControl->ccjVerbose]
+			FCPrint[3,"ComplexConjugate: After FCRenameDummyIndices: ", res, FCDoControl->ccjVerbose]
 		];
 
 		If[	optConjugate=!={} && Head[optConjugate]===List,
