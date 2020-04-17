@@ -60,7 +60,8 @@ Options[FCMultiLoopTID] = {
 	FCI					-> False,
 	FCVerbose			-> False,
 	FDS					-> True,
-	TimeConstrained		-> 3
+	TimeConstrained		-> 3,
+	Uncontract			-> {Polarization}
 };
 
 FCMultiLoopTID[expr_List, qs_List/; FreeQ[qs, OptionQ], opts:OptionsPattern[]] :=
@@ -69,10 +70,12 @@ FCMultiLoopTID[expr_List, qs_List/; FreeQ[qs, OptionQ], opts:OptionsPattern[]] :
 FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 	Block[{	n, ex, rest, loopInts, intsUnique, repRule, solsList,
 			null1, null2, res,  tmpli, time, mltidIsolate, optFactoring,
-			optTimeConstrained},
+			optTimeConstrained, optUncontract},
 
 		optFactoring = OptionValue[Factoring];
 		optTimeConstrained = OptionValue[TimeConstrained];
+
+		optUncontract = OptionValue[Uncontract];
 
 		If [OptionValue[FCVerbose]===False,
 			mltidVerbose=$VeryVerbose,
@@ -152,7 +155,7 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 		FCPrint[1, "FCMultiLoopTID: Uncontracting Lorentz indices.", FCDoControl->mltidVerbose];
 
 
-		ex = Uncontract[ex, Sequence@@qs, Pair -> {Polarization}, CartesianPair-> {Polarization}, FCI->True];
+		ex = Uncontract[ex, Sequence@@qs, Pair -> optUncontract, CartesianPair-> optUncontract, FCI->True];
 
 		If[	!FreeQ[ex,DiracTrace],
 			FCPrint[1, "FCMultiLoopTID: Applying FCTraceExpand.", FCDoControl->mltidVerbose];
