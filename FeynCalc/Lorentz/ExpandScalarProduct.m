@@ -108,7 +108,15 @@ ExpandScalarProduct[expr_, OptionsPattern[]] :=
 	];
 
 pairexpand[x_] :=
-	x /. (head : (Alternatives @@ objects))[arg__]/; head=!=Eps :>scevdoit[head,arg] ;
+	x /. (head : (Alternatives @@ objects))[arg__]/; head=!=Eps :>scevdoit[head,arg] //. {
+
+		(head : (Alternatives @@ objects))[arg1___, z_ n_?NumberQ, arg2___]/; head=!=Eps :>
+			n head[arg1,z,arg2],
+
+		(head : (Alternatives @@ objects))[arg1___, z_ n_/;DataType[n,FCVariable], arg2___]/; head=!=Eps :>
+			n head[arg1,z,arg2]
+	};
+
 
 scevdoit[head_,arg__] :=
 	Distribute[tmpHead@@(Expand[MomentumExpand/@{arg}])]/.tmpHead->head;
