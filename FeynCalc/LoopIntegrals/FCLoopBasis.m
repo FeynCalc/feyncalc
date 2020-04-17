@@ -257,7 +257,11 @@ auxIntegralToPropagators[pref_. exp_CartesianPair, lmoms_]:=
 
 (* This one should catch all nonstandard propagators.	*)
 auxIntegralToPropagators2[pref0_. Power[exp_, n_Integer?Positive], lmoms_]:=
-	ConstantArray[FeynAmpDenominator[GenericPropagatorDenominator[exp, {-1, optEtaSign[[3]]}]], n]/; !FreeQ2[exp,lmoms] && FreeQ2[pref0,lmoms];
+	ConstantArray[FeynAmpDenominator[GenericPropagatorDenominator[pow[pref0,1/n] exp, {-1, optEtaSign[[3]]}]], n]/; !FreeQ2[exp,lmoms] && FreeQ2[pref0,lmoms];
+
+
+auxIntegralToPropagators2[pref0_. Power[exp_, n_Rational?Positive/; Numerator[n]===1], lmoms_]:=
+	FeynAmpDenominator[GenericPropagatorDenominator[ pref0 Power[exp,n], {-1, optEtaSign[[3]]}]]/; !FreeQ2[exp,lmoms] && FreeQ2[pref0,lmoms];
 
 auxIntegralToPropagators2[exp_, lmoms_]:=
 	FeynAmpDenominator[GenericPropagatorDenominator[exp, {-1, optEtaSign[[3]]}]]/; !FreeQ2[exp,lmoms] && Head[exp]=!=Power;
@@ -363,6 +367,8 @@ FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 		tmp = tmp /. auxIntegralToPropagators -> auxIntegralToPropagators2 /.
 			pow[a_Integer?Negative, b_]/; MatchQ[1/b, _Integer?Positive] :> - Power[-a,1/b] /.
 			pow -> Power;
+
+		FCPrint[3,"FCLoopBasisIntegralToPropagators: After auxIntegralToPropagators: ", tmp, FCDoControl->itpVerbose];
 
 		If[	!FreeQ2[tmp,{auxIntegralToPropagators,auxIntegralToPropagators2}],
 			Message[FCLoopBasisIntegralToPropagators::failmsg, "Failed to extract the propagators."];

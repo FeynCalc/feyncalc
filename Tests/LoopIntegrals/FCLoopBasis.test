@@ -1028,7 +1028,19 @@ p3,p1},FCE\[Rule]True]",
 SPD[p3, p3] + 2*SPD[p3, q1] + SPD[q1, q1]}, {SPD[p1, p1], SPD[p1, \
 p3], SPD[p1, q], SPD[p1, q1], SPD[p3, p3], SPD[p3, q], SPD[p3, q1]}, \
 {1, n, 3}, {SFAD[{{0, p1 . q}, {0, 1}, 1}], SFAD[{{-p1 + p3, 0}, {0, \
-1}, 1}], SFAD[{{p3 + q1, 0}, {m3^2, 1}, 1}]}}"}
+1}, 1}], SFAD[{{p3 + q1, 0}, {m3^2, 1}, 1}]}}"},
+{"fcstFCLoopBasisIntegralToPropagators-ID60",
+"FCLoopBasisIntegralToPropagators[
+Sqrt[CSPD[k]] GFAD[Sqrt[CSPD[k]] - x], {k}, FCE -> True]",
+"{GFAD[{{-x + Sqrt[CSPD[k, k]], 1}, 1}],
+GFAD[{{Sqrt[CSPD[k, k]], 1}, -1}]}"},
+{"fcstFCLoopBasisIntegralToPropagators-ID61",
+"FCLoopBasisExtract[
+GFAD[{{CSPD[k, k] x[1] + (CSPD[k, k - 2 p] + CSPD[p, p]) x[2], 1},
+	1 + s}] CFAD[{k, -c^2}], {k}, FCE -> True]",
+"{{CSPD[k, k]*x[1] + CSPD[k, k]*x[2] - 2*CSPD[k, p]*x[2] +
+CSPD[p, p]*x[2], -c^2 + CSPD[k, k]}, {CSPD[k, k], CSPD[k, p]}, {1 + s, 1},
+{GFAD[{{CSPD[k, k]*x[1] + (CSPD[k, k - 2*p] + CSPD[p, p])*x[2], 1}, 1}], CFAD[{{k, 0}, {-c^2, -1}, 1}]}}"}
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisCreateScalarProducts =
