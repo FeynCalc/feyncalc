@@ -374,7 +374,8 @@ cfadint[a___List, b_List/; !OptionQ[b], opts:OptionsPattern[]] :=
 
 gfadint[a___, b_, opts:OptionsPattern[]] :=
 	(
-	gfadint[Sequence@@(head [a,b] //. head[x___, y_, z___]/; Head[y]=!=List :> head[x,{{y,1},1},z]),opts]
+	gfadEtaSign = OptionValue[GFAD,{opts},EtaSign];
+	gfadint[Sequence@@(head [a,b] //. head[x___, y_, z___]/; Head[y]=!=List :> head[x,{{y,gfadEtaSign},1},z]),opts]
 	)/;!MatchQ[{a,b},{__List}] && !OptionQ[b];
 
 gfadint[a___List, b_List/; !OptionQ[b], opts:OptionsPattern[]] :=

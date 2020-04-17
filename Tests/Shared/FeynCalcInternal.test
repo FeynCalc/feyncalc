@@ -1676,8 +1676,13 @@ m1^2*x, {n, 1}]]"},
 {"fcstFeynCalcInternal-ID444",
 "SFAD[{0, {m2^2 - m1^2*x, -1}, n}]//FCI",
 "FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
-m1^2*x, {n, -1}]]"}
-
+m1^2*x, {n, -1}]]"},
+{"fcstFeynCalcInternal-ID445",
+"GFAD[Sqrt[CSPD[k]], EtaSign -> -1] // FCI",
+"FeynAmpDenominator[
+GenericPropagatorDenominator[Sqrt[
+CartesianPair[CartesianMomentum[k, -1 + D],
+CartesianMomentum[k, -1 + D]]], {1, -1}]]"}
 };
 
 
