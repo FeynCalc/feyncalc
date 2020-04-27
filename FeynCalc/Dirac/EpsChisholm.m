@@ -84,17 +84,21 @@ EpsChisholm[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 
 		FCPrint[1, "EpsChisholm: Done extracting Dirac objects, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->esVerbose];
 
+		FCPrint[3, "EpsChisholm: diracObjects: ", diracObjects, FCDoControl->esVerbose];
+
 		time=AbsoluteTime[];
 
 		diracObjectsEval = diracObjects/. Eps->eeps /. DOT->holdDOT //. {
 			dsHead[m_. holdDOT[x__] eeps[a___, LorentzIndex[in_], b__]]/;!FreeQ[{x},in] :>
-				(-1^Length[{b}]) dsHead[m eeps2[a, b, LorentzIndex[in]] holdDOT[x]],
+				((-1)^Length[{b}]) dsHead[m eeps2[a, b, LorentzIndex[in]] holdDOT[x]],
 
 			dsHead[m_. DiracChain[holdDOT[x__],z1_, z2_] eeps[a___, LorentzIndex[in_], b__]]/;!FreeQ[{x},in] :>
-				(-1^Length[{b}]) dsHead[m eeps2[a, b, LorentzIndex[in]] DiracChain[holdDOT[x],z1,z2]]
+				((-1)^Length[{b}]) dsHead[m eeps2[a, b, LorentzIndex[in]] DiracChain[holdDOT[x],z1,z2]]
 		};
 
 		diracObjectsEval = diracObjectsEval/.eeps2->eeps;
+
+		FCPrint[3, "EpsChisholm: diracObjects after eps reordering: ", diracObjectsEval, FCDoControl->esVerbose];
 
 		diracObjectsEval = diracObjectsEval //. dsHead[m_. holdDOT[x___, DiracGamma[in_LorentzIndex],y___] eeps[a_,b_,c_,in_LorentzIndex]] :>
 		(Conjugate[$LeviCivitaSign] I ( dsHead[m holdDOT[x,DiracGamma[a], DiracGamma[b], DiracGamma[c], DiracGamma[5],y]]
