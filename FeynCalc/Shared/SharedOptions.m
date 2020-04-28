@@ -54,6 +54,12 @@ Divideout::usage =
 "Divideout is an option for OPEInt and OPEInsert. \
 The setting is divided out at the end.";
 
+DropScaleless::usage =
+"DropScaleless is an option for FCLoopIsolate, ApartFF, FourDivergence \
+and other functions. When set to True, all the loop integrals \
+that do not contain a FeynAmpDenominator, i.e. consist of only \
+scalar products but no denominators, are set to zero.";
+
 EpsilonOrder::usage =
 "EpsilonOrder is an option of OPEIntegrateDelta and RHI. The setting \
 determines the order n (Epsilon^n) which should be kept.";
