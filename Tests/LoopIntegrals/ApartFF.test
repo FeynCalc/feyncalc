@@ -160,5 +160,36 @@ CSPD[p, p] KDD[i, j]))/(4 (-2 + D))"},
 "GFAD[{{-x + TC[q], 1}, 1}] SFAD[{{0, p.q}, {x, 1}, 1}] TC[q]"},
 {"fcstApartFF-ID36", "ApartFF[TC[q] GFAD[(TC[q] - x)] SFAD[{{0, p.q}, x}], {q},
 TemporalMomentum -> True, FCE -> True]",
-"x GFAD[{{-x + TC[q], 1}, 1}] SFAD[{{0, p.q}, {x, 1}, 1}]"}
+"x GFAD[{{-x + TC[q], 1}, 1}] SFAD[{{0, p.q}, {x, 1}, 1}]"},
+{"fcstApartFF-ID37", "ApartFF[CFAD[{{k - p, 0}, {0, -1}, 1}] CSPD[k,
+	p]  GFAD[{{Sqrt[CSPD[k, k]], 1}, 1}] CFAD[k], CSPD[k], {k}] //
+ApartFF[#, {k}] &//FCE",
+"-(CFAD[{{k, 0}, {0, -1}, 1}]*Sqrt[CSPD[k, k]])/2 + (CFAD[{{k - p, 0}, {0, -1}, 1}]*Sqrt[CSPD[k, k]])/2 +
+(CFAD[{{k, 0}, {0, -1}, 1}, {{k - p, 0}, {0, -1}, 1}]*Sqrt[CSPD[k, k]]*CSPD[p, p])/2"},
+{"fcstApartFF-ID38",
+"ApartFF[(SFAD[{{0,k.l}}]FAD[p-k]SPD[k,p])FAD[k],SPD[k],{k}]\
+//ApartFF[#,{k},FCE->True]&",
+"(SFAD[{{0, k . l}, {0, 1}, 1}, {{-k + p, 0}, {0, 1}, 1}]*SPD[k, \
+k])/2 + (SFAD[{{0, k . l}, {0, 1}, 1}, {{k - p, 0}, {0, 1}, \
+1}]*SPD[p, p])/2"},
+{"fcstApartFF-ID39",
+"ApartFF[(CFAD[p-k]CSPD[k,p])CFAD[k],CSPD[k],{k},FCE->True]",
+"-(CFAD[{{k, 0}, {0, -1}, 1}]*CSPD[k, k])/2 + (CFAD[{{-k + p, 0}, \
+{0, -1}, 1}]*CSPD[k, k])/2 + (CFAD[{{k, 0}, {0, -1}, 1}, {{-k + p, \
+0}, {0, -1}, 1}]*CSPD[k, k]*CSPD[p, p])/2"},
+{"fcstApartFF-ID40",
+"ApartFF[CFAD[{{k-p,0},{0,-1},1}] CSPD[k,p]  GFAD[{{\!\(\*SqrtBox[\
+\(CSPD[k, k]\)]\),1},1}]CFAD[k],CSPD[k],{k}]//ApartFF[#,{k}]&//FCE",
+"-(CFAD[{{k, 0}, {0, -1}, 1}]*Sqrt[CSPD[k, k]])/2 + (CFAD[{{k - p, \
+0}, {0, -1}, 1}]*Sqrt[CSPD[k, k]])/2 + (CFAD[{{k, 0}, {0, -1}, 1}, \
+{{k - p, 0}, {0, -1}, 1}]*Sqrt[CSPD[k, k]]*CSPD[p, p])/2"},
+{"fcstApartFF-ID41",
+"ApartFF[(x + CFAD[p - k] CSPD[k]) CFAD[k], CSPD[k], {k}, FCE -> True]",
+"x CFAD[{{k, 0}, {0, -1}, 1}] CSPD[k, k] +
+CFAD[{{-k + p, 0}, {0, -1}, 1}] CSPD[k, k]"},
+{"fcstApartFF-ID42",
+"ApartFF[(x + CFAD[p - k] CSPD[k]) CFAD[k], CSPD[k], {k},
+Numerator -> False, FCE -> True]",
+"x CFAD[{{k, 0}, {0, -1}, 1}] CSPD[k, k] +
+CFAD[{{k, 0}, {0, -1}, 1}, {{-k + p, 0}, {0, -1}, 1}] CSPD[k, k]^2"}
 })

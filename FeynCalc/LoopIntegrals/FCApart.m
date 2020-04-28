@@ -61,10 +61,19 @@ Options[FCApart] = {
 	TimeConstrained 	-> 3
 };
 
-FCApart[expr_, lmoms_List, OptionsPattern[]] :=
+FCApart[expr_, lmoms_List, opts:OptionsPattern[]] :=
+	FCApart[expr, 1, lmoms, opts];
+
+FCApart[expr_, extraPiece_, lmoms_List, OptionsPattern[]] :=
 	Block[{ex,vectorSet,res,check, scalarTerm, vectorTerm=1, pref=1, tmp,
 		scaleless1=0,scaleless2=0,time, optFactoring, optTimeConstrained,
-		rd, dt, extraTensors},
+		rd, dt, extraTensors, optFDS, optDropScaleless},
+
+		optFDS 				= OptionValue[FDS];
+		optDropScaleless	= OptionValue[DropScaleless];
+		counter 			= OptionValue[MaxIterations];
+		optFactoring 		= OptionValue[Factoring];
+		optTimeConstrained 	= OptionValue[TimeConstrained];
 
 		If [OptionValue[FCVerbose]===False,
 			fcaVerbose=$VeryVerbose,
@@ -78,11 +87,21 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 			ex = expr
 		];
 
-		counter 			= OptionValue[MaxIterations];
-		optFactoring 		= OptionValue[Factoring];
-		optTimeConstrained 	= OptionValue[TimeConstrained];
 
-		FCPrint[3,"FCApart: Entering with ", ex, FCDoControl->fcaVerbose];
+		FCPrint[3,"FCApart: Entering with: ", ex, FCDoControl->fcaVerbose];
+		FCPrint[3,"FCApart: Extra piece: ", extraPiece, FCDoControl->fcaVerbose];
+
+		(*
+			The usage of extraPiece indicates that ApartFF/FCApart operates only on a part of the full
+			loop integral. Therefore, we are not allowed to discard seemingly scaleless integrals
+			or perform shifts in loop momenta. All this should be done in a second run of ApartFF/FCApart
+			without an extraPiece.
+		*)
+		If[	extraPiece =!= 1,
+			FCPrint[1,"FCApart: extraPiece=!=1, disabling FDS and DropScaleless.", FCDoControl->fcaVerbose];
+			optFDS = False;
+			optDropScaleless = False;
+		];
 
 		If[	!MatchQ[ExpandAll[ex], _. FeynAmpDenominator[y__] /; ! FreeQ2[{y}, lmoms]] ||
 			SelectFree[ExpandAll[ex],Sequence@@lmoms]=!=1,
@@ -101,9 +120,9 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 		(*
 			We need to cancel things like p.q/(p.q+i Eta) before invoking FCLoopBasis functions!
 		*)
-		If[!FreeQ2[ex, {StandardPropagatorDenominator, CartesianPropagatorDenominator}],
+		If[!FreeQ2[ex, {StandardPropagatorDenominator, CartesianPropagatorDenominator, GenericPropagatorDenominator}],
 			ex = cancelSP[ex];
-			ex = ex /. fadHold[r___, (h: StandardPropagatorDenominator|CartesianPropagatorDenominator)[a__, {n_, s_}], t___]/;n<0 :>
+			ex = ex /. fadHold[r___, (h: StandardPropagatorDenominator|CartesianPropagatorDenominator|GenericPropagatorDenominator)[a__, {n_, s_}], t___]/;n<0 :>
 				fadHold[r,t] FeynAmpDenominatorExplicit[FeynAmpDenominator[h[a, {n, s}]],FCI->True, ExpandScalarProduct->OptionValue[ExpandScalarProduct]];
 			ex = ex /. fadHold[] -> 1 /. fadHold-> FeynAmpDenominator;
 			FCPrint[3,"FCApart: After the initial cancelling of scalar products ", ex, FCDoControl->fcaVerbose]
@@ -113,13 +132,19 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 			However, this might also mess up the signs of the
 			propagators in the already fixed topology, so if FDS is set to False,
 			this simplification should not be done as well!	*)
-		If[	OptionValue[FDS],
+		If[	optFDS,
 			ex = ex /. FeynAmpDenominator -> FeynCalc`Package`feynsimp[lmoms]
 		];
 
 
 		If [ FreeQ2[ex,lmoms],
 			FCPrint[3,"FCApart: The intermediate expression contains no loop integrals ", ex, FCDoControl->fcaVerbose];
+
+			If[	optDropScaleless,
+				Return[0]
+			];
+
+			ex = ex*extraPiece;
 
 			If[	OptionValue[FCE],
 				ex = FCE[ex]
@@ -145,9 +170,28 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 			],
 			scalarTerm = ex
 		];
+
+		vectorTerm = extraPiece*vectorTerm;
+
 		FCPrint[3,"FCApart: Vector term ", vectorTerm, FCDoControl->fcaVerbose];
 		FCPrint[3,"FCApart: Scalar term ", scalarTerm, FCDoControl->fcaVerbose];
 
+
+
+		If[FreeQ[scalarTerm,FeynAmpDenominator],
+
+			If[	optDropScaleless,
+				scalarTerm = 0
+			];
+
+			ex = vectorTerm scalarTerm;
+
+			If[	OptionValue[FCE],
+				ex = FCE[ex]
+			];
+
+			Return[ex]
+		];
 
 		(* If the integral can't be partial fractioned any further, then we have nothing to do here *)
 		If[	!FCLoopBasisOverdeterminedQ[scalarTerm,lmoms, SetDimensions->OptionValue[SetDimensions], FCI->True],
@@ -156,6 +200,8 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 			If[	OptionValue[FCE],
 				ex = FCE[ex]
 			];
+
+			ex = ex*extraPiece;
 
 			Return[ex];
 		];
@@ -176,7 +222,7 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 		(*	Otherwise, we need to first obtain the list of polynomials that appear in the integral
 			plus their vector representation.	*)
 
-
+		FCPrint[3,"FCApart: Final scalar term ", scalarTerm, FCDoControl->fcaVerbose];
 
 		vectorSet= FCLoopBasisExtract[scalarTerm, lmoms, SetDimensions->OptionValue[SetDimensions]];
 
@@ -206,6 +252,9 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 
 		res = FCLoopRemoveNegativePropagatorPowers[res,FCI->True,FCLoopPropagatorPowersCombine -> False];
 
+
+
+
 		If [OptionValue[Collecting],
 			res = Collect2[res, Join[{FeynAmpDenominator},lmoms], Factoring->optFactoring, TimeConstrained->optTimeConstrained]
 		];
@@ -213,17 +262,17 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 		FCPrint[3,"FCApart: Preliminary result converted back to FeynCalc notation ", res, FCDoControl->fcaVerbose];
 
 
-		(* 	Check that the sum of the resulting integrals brought to the commond denominator
+		(* 	Check that the sum of the resulting integrals brought to the common denominator
 			is identical to the original integral *)
 		If [OptionValue[Check],
-			If[	check=Together[FeynAmpDenominatorExplicit[ex] - Together[FeynAmpDenominatorExplicit[res]]]; check=!=0,
+			If[	check=Together[FeynAmpDenominatorExplicit[ex*extraPiece] - Together[FeynAmpDenominatorExplicit[res]]]; check=!=0,
 				Message[FCApart::checkfail,ToString[ex,InputForm]];
 				FCPrint[0, StandardForm[check]];
 				Abort[]
 			]
 		];
 
-		If [OptionValue[FDS],
+		If[	optFDS,
 			res = FDS[res, Sequence@@lmoms];
 			If [OptionValue[Collecting],
 				res = Collect2[res, Join[{FeynAmpDenominator},lmoms], Factoring->optFactoring, TimeConstrained->optTimeConstrained]
@@ -232,7 +281,7 @@ FCApart[expr_, lmoms_List, OptionsPattern[]] :=
 
 		FCPrint[3,"FCApart: Preliminary result after FDS ", res, FCDoControl->fcaVerbose];
 
-		If [OptionValue[DropScaleless],
+		If[	optDropScaleless,
 			FCPrint[1,"FCApart: Dropping integrals that are scaleless in DR", res, FCDoControl->fcaVerbose];
 			tmp = res;
 			{scaleless1,res} = FCSplit[res,lmoms];
@@ -440,7 +489,11 @@ cancelSP[ex_]:=
 					fadHold[r1, CartesianPropagatorDenominator[0, b, 0, {n - 1, s}], r2],
 
 		Power[b_CartesianPair,m_] fadHold[r1___, CartesianPropagatorDenominator[0, b_CartesianPair, 0, {n_, s_}],r2___] :>
-					fadHold[r1, CartesianPropagatorDenominator[0, b, 0, {n - m, s}], r2]
+					fadHold[r1, CartesianPropagatorDenominator[0, b, 0, {n - m, s}], r2],
+
+		Power[b_CartesianPair,m1_.] fadHold[r1___, GenericPropagatorDenominator[Power[b_CartesianPair,m2_], {n_, s_}],r2___] :>
+					fadHold[r1, CartesianPropagatorDenominator[0, b^m2, 0, {n - m1/m2, s}], r2]
+
 	}] /. fadHold[r1___, (StandardPropagatorDenominator|CartesianPropagatorDenominator)[__, {0, _}], r2___] :> fadHold[r1,r2];
 
 

@@ -20,14 +20,20 @@ Apart1::usage =
 but it fixes a Mathematica bug.";
 
 Apart2::usage =
-"Apart2[expr] partial fractions very simple 1-loop integrals " <> ToString[
-Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/Apart2"],
-StandardForm]
+"Apart2[expr] partial fractions simple propagators of the form \
+1/[(q^2-m1^2)(q^2-m2^2)].";
 
 ApartFF::usage =
-"ApartFF[amp,{q1,q2,...}] partial fractions loop integrals " <> ToString[
-Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/ApartFF"],
-StandardForm]
+"ApartFF[amp,{q1,q2,...}] partial fractions loop integrals by decomposing \
+them into simpler integrals that contain only linearly independent propagators. \
+It uses FCApart as a backend and works and is suitable also for multiloop integrals.
+
+ApartFF[amp*extraPiece1,extraPiece2,{q1,q2,...}] is a special working mode of \
+ApartFF, where the final result of partial fractioning amp*extraPiece1 \
+is multiplied by extraPiece2. It is understood, that extraPiece1*extraPiece2 should \
+be unity, e.g. when extraPiece1 is an FAD, while extraPiece is an SPD inverse to it. \
+This mode should be useful for nonstandard integrals where the desired partial fraction
+decomposition can be performed only after multiplying amp with extraPiece1."
 
 Apart3::usage =
 "Apart3[expr, x] is equivalent to Map2[Factor2, Collect2[Apart1[expr,x],x]].";
@@ -47,20 +53,9 @@ End[]
 Begin["`Apart`Private`"]
 
 affVerbose::usage="";
-
-Apart1[expr_, x_] :=
-	Block[ {i},
-		If[ FreeQ[expr, Complex],
-			Apart[expr,x],
-			Apart[expr /. Complex[0,a_] :> i a, x] /. i->I
-		]
-	];
-
-Options[Apart2]= {
-	Factoring->True,
-	ExcludeMasses->{}
-};
-
+optExcludeMasses::usage="";
+optSqrt::usage="";
+factFun::usage="";
 
 (*	FeynAmpDenominator is an internal option to make ApartFF behave like SPC,
 	i.e. block partial fractioning on loop integrals that don't contain scalar products *)
@@ -83,27 +78,69 @@ Options[ApartFF] = {
 	TimeConstrained 			-> 3
 };
 
-Apart2[y_, OptionsPattern[]] :=
-	Block[{factoring,factFun,exclM},
-	factoring = OptionValue[Factoring];
-	exclM  = OptionValue[ExcludeMasses];
+Options[Apart2]= {
+	Factoring		->	True,
+	FCE				->	False,
+	FCI				->	False,
+	ExcludeMasses	->	{},
+	Sqrt			->	True
+};
 
-	If[factoring,
-		factFun=Factor2,
-		factFun=Identity,
-		factFun=factoring
+Apart1[expr_, x_] :=
+	Block[ {i},
+		If[ FreeQ[expr, Complex],
+			Apart[expr,x],
+			Apart[expr /. Complex[0,a_] :> i a, x] /. i->I
+		]
 	];
-	feynampdenpartfrac[a___, PropagatorDenominator[qpe1_, m1_], b___,
-	PropagatorDenominator[qpe1_, m2_], c___] :=
-		factFun[(1/(m1^2 - m2^2) *
-		(FeynAmpDenominator[a, PropagatorDenominator[qpe1, m1], b, c] -
-		FeynAmpDenominator[a, b, PropagatorDenominator[qpe1, m2], c]))] /;
-		(m1 =!= m2) && FreeQ2[{m1,m2},exclM];
 
+Apart2[expr_, OptionsPattern[]] :=
+	Block[{ex, res, optFactoring, factFun, exclM},
 
-	(FeynCalcInternal[y] //. FeynAmpDenominator -> feynampdenpartfrac) /.
-	feynampdenpartfrac -> FeynAmpDenominator
+		optFactoring		= OptionValue[Factoring];
+		optExcludeMasses	= OptionValue[ExcludeMasses];
+		optSqrt				= OptionValue[Sqrt];
+
+		If[ OptionValue[FCI],
+			ex = expr,
+			ex = FCI[expr]
+		];
+
+		If[	optFactoring,
+			factFun = Factor2,
+			factFun = Identity,
+			factFun = optFactoring
+		];
+
+		res = ex//. FeynAmpDenominator -> feynampdenpartfrac /.
+			feynampdenpartfrac -> FeynAmpDenominator;
+
+		If[ OptionValue[FCE],
+			res = FCE[res]
+		];
+
+		res
 ];
+
+
+feynampdenpartfrac[a___, PropagatorDenominator[qpe1_, m1_], b___, PropagatorDenominator[qpe1_, m2_], c___] :=
+	factFun[1/(m1^2 - m2^2) * (
+			FeynAmpDenominator[a, PropagatorDenominator[qpe1, m1], b, c] -
+			FeynAmpDenominator[a, b, PropagatorDenominator[qpe1, m2], c]
+			)] /; (m1 =!= m2) && FreeQ2[{m1,m2},optExcludeMasses];
+
+feynampdenpartfrac[a___, cpd : CartesianPropagatorDenominator[mom_CartesianMomentum, 0, mm_ : 0, {1, _}], b___,
+						gpd : GenericPropagatorDenominator[(c1_ :0) + (c2_. Sqrt[CartesianPair[mom_CartesianMomentum, mom_CartesianMomentum]]), {1, _}], c___] :=
+	factFun[(c1 - c2 Sqrt[CartesianPair[mom, mom]])/(c1^2 + c2^2 mm) FeynAmpDenominator[a, b, cpd, c] +
+			c2^2/(c1^2 + c2^2 mm) FeynAmpDenominator[a, gpd, b, c]
+	]/; optSqrt;
+
+feynampdenpartfrac[a___, gpd : GenericPropagatorDenominator[(c1_ :0) + (c2_. Sqrt[CartesianPair[mom_CartesianMomentum, mom_CartesianMomentum]]), {1, _}], b___,
+						cpd : CartesianPropagatorDenominator[mom_CartesianMomentum, 0, mm_ : 0, {1, _}], c___] :=
+	factFun[(c1 - c2 Sqrt[CartesianPair[mom, mom]])/(c1^2 + c2^2 mm) FeynAmpDenominator[a, cpd, b, c] +
+			c2^2/(c1^2 + c2^2 mm) FeynAmpDenominator[a, b, gpd, c]
+	]/; optSqrt;
+
 Apart3[expr_, x_] :=
 	Map2[Factor2, Collect2[Apart1[expr,x],x]];
 
