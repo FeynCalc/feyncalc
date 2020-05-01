@@ -124,9 +124,7 @@ Cell[TextData[{
   "InlineFormula"],
  " \[LineSeparator]partial fractions loop integrals by decomposing them into \
 simpler integrals that contain only linearly independent propagators. It uses \
-FCApart as a backend and works and is suitable also for multiloop integrals. \
-ApartFF effectively replaces the older function Apart2 and \
-ScalarProductCancel which are now considered legacy."
+FCApart as a backend and works and is suitable also for multiloop integrals."
 }], "Usage",
  CellID->982511436],
 
@@ -137,17 +135,33 @@ Cell[TextData[{
  " as the backend for partial fractioning. The latter implements an algorithm \
 which is very much based on the work and code of F. Feng (arXiv:1204.2314) \
 that seems\tto employ a variety Leinartas's algorithm (see arXiv:1206.4740 \
-for its description). Unlike Feng's\t$Apart that works on general \
-multivariate polynomials,\t\t\t\t",
+for its description). Unlike Feng's $Apart that works on general multivariate \
+polynomials,\t ",
  StyleBox["FCApart", "Input"],
  " is tailored to work only with FeynCalc's ",
  StyleBox["FeynAmpDenominator", "Input"],
  " and ",
  StyleBox["Pair", "Input"],
- " objects, i.e. it is less general. For the original $Apart see ",
- "https://github.com/F-Feng/APart"
+ " objects, i.e. it is less general. For the original $Apart see \
+https://github.com/F-Feng/APart"
 }], "Notes",
  CellID->610107001],
+
+Cell[TextData[{
+ Cell[BoxData[
+  RowBox[{"ApartFF", "[", 
+   RowBox[{
+    RowBox[{"amp", "*", "extraPiece1"}], ",", " ", "extraPiece2", ",", 
+    RowBox[{"{", 
+     RowBox[{"q1", ",", "q2", ",", "..."}], "}"}]}], "]"}]], 
+  "InlineFormula"],
+ " is a special working mode of ApartFF, where the final result of partial \
+fractioning amp*extraPiece1 is multiplied by extraPiece2. It is understood, \
+that extraPiece1*extraPiece2 should be unity, e.g. when extraPiece1 is an \
+FAD, while extraPiece is an SPD inverse to it. This mode should be useful for \
+nonstandard integrals where the desired partial fraction decomposition can be \
+performed only after multiplying amp with extraPiece1"
+}], "Notes"],
 
 Cell[CellGroupData[{
 
@@ -3342,6 +3356,1023 @@ Cell[BoxData[
     TraditionalForm]}], TraditionalForm]], "Output",
  CellLabel->"Out[38]="]
 }, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[TextData[{
+ "If the partial fractioning should be performed only w. r. t. the \
+denominators but not numerators, use ",
+ Cell[BoxData[
+  RowBox[{"Numerator", "\[Rule]", "False"}]], "InlineFormula"]
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"int", "=", 
+  RowBox[{
+   RowBox[{"FAD", "[", 
+    RowBox[{"k", ",", 
+     RowBox[{"p", "-", "k"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "m"}], "}"}]}], "]"}], 
+   RowBox[{"SPD", "[", 
+    RowBox[{"p", ",", "k"}], "]"}]}]}]], "Input",
+ CellLabel->"In[9]:="],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   FormBox[
+    RowBox[{
+     FormBox[
+      FormBox["k",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox["\<\"\[CenterDot]\"\>",
+      TraditionalForm], 
+     FormBox[
+      FormBox["p",
+       TraditionalForm],
+      TraditionalForm]}],
+    TraditionalForm], 
+   RowBox[{
+    InterpretationBox[
+     SuperscriptBox[
+      FormBox[
+       FormBox["k",
+        TraditionalForm],
+       TraditionalForm], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[$CellContext`k, D], 
+       FeynCalc`Momentum[$CellContext`k, D]]],
+     Editable->False], ".", 
+    InterpretationBox[
+     SuperscriptBox[
+      RowBox[{
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox["p",
+           TraditionalForm], "-", 
+          FormBox["k",
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[-$CellContext`k + $CellContext`p, D], 
+       FeynCalc`Momentum[-$CellContext`k + $CellContext`p, D]]],
+     Editable->False], ".", 
+    RowBox[{"(", 
+     InterpretationBox[
+      RowBox[{
+       SuperscriptBox[
+        FormBox[
+         FormBox["k",
+          TraditionalForm],
+         TraditionalForm], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+       "\[InvisibleSpace]", 
+       SuperscriptBox["m", "2"]}],
+      SequenceForm[
+       FeynCalc`Pair[
+        FeynCalc`Momentum[$CellContext`k, D], 
+        FeynCalc`Momentum[$CellContext`k, D]], "-", $CellContext`m^2],
+      Editable->False], ")"}]}]], TraditionalForm]], "Output",
+ CellLabel->"Out[9]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ApartFF", "[", 
+  RowBox[{"int", ",", 
+   RowBox[{"{", "k", "}"}]}], "]"}]], "Input",
+ CellLabel->"In[10]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["m", "2"], "+", 
+      SuperscriptBox[
+       FormBox[
+        FormBox["p",
+         TraditionalForm],
+        TraditionalForm], "2"]}], 
+     RowBox[{"2", " ", 
+      SuperscriptBox["m", "2"], " ", 
+      RowBox[{
+       InterpretationBox[
+        SuperscriptBox[
+         FormBox[
+          FormBox["k",
+           TraditionalForm],
+          TraditionalForm], "2"],
+        SequenceForm[
+         FeynCalc`Pair[
+          FeynCalc`Momentum[$CellContext`k, D], 
+          FeynCalc`Momentum[$CellContext`k, D]]],
+        Editable->False], ".", 
+       RowBox[{"(", 
+        InterpretationBox[
+         RowBox[{
+          SuperscriptBox[
+           RowBox[{
+            FormBox["\<\"(\"\>",
+             TraditionalForm], 
+            FormBox[
+             FormBox[
+              RowBox[{
+               FormBox["k",
+                TraditionalForm], "-", 
+               FormBox["p",
+                TraditionalForm]}],
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox["\<\")\"\>",
+             TraditionalForm]}], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+          "\[InvisibleSpace]", 
+          SuperscriptBox["m", "2"]}],
+         SequenceForm[
+          FeynCalc`Pair[
+          FeynCalc`Momentum[$CellContext`k, D] - 
+           FeynCalc`Momentum[$CellContext`p, D], 
+           FeynCalc`Momentum[$CellContext`k, D] - 
+           FeynCalc`Momentum[$CellContext`p, D]], "-", $CellContext`m^2],
+         Editable->False], ")"}]}]}]],
+    TraditionalForm], "+", 
+   FormBox[
+    RowBox[{"-", 
+     FractionBox["1", 
+      RowBox[{"2", " ", 
+       SuperscriptBox["m", "2"], " ", 
+       RowBox[{"(", 
+        InterpretationBox[
+         RowBox[{
+          SuperscriptBox[
+           FormBox[
+            FormBox["k",
+             TraditionalForm],
+            TraditionalForm], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+          "\[InvisibleSpace]", 
+          SuperscriptBox["m", "2"]}],
+         SequenceForm[
+          FeynCalc`Pair[
+           FeynCalc`Momentum[$CellContext`k, D], 
+           FeynCalc`Momentum[$CellContext`k, D]], "-", $CellContext`m^2],
+         Editable->False], ")"}]}]]}],
+    TraditionalForm], "-", 
+   FormBox[
+    FractionBox[
+     SuperscriptBox[
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm], "2"], 
+     RowBox[{"2", " ", 
+      SuperscriptBox["m", "2"], " ", 
+      RowBox[{
+       InterpretationBox[
+        SuperscriptBox[
+         FormBox[
+          FormBox["k",
+           TraditionalForm],
+          TraditionalForm], "2"],
+        SequenceForm[
+         FeynCalc`Pair[
+          FeynCalc`Momentum[$CellContext`k, D], 
+          FeynCalc`Momentum[$CellContext`k, D]]],
+        Editable->False], ".", 
+       InterpretationBox[
+        SuperscriptBox[
+         RowBox[{
+          FormBox["\<\"(\"\>",
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            RowBox[{
+             FormBox["k",
+              TraditionalForm], "-", 
+             FormBox["p",
+              TraditionalForm]}],
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox["\<\")\"\>",
+           TraditionalForm]}], "2"],
+        SequenceForm[
+         FeynCalc`Pair[
+         FeynCalc`Momentum[$CellContext`k, D] - 
+          FeynCalc`Momentum[$CellContext`p, D], 
+          FeynCalc`Momentum[$CellContext`k, D] - 
+          FeynCalc`Momentum[$CellContext`p, D]]],
+        Editable->False]}]}]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellLabel->"Out[10]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ApartFF", "[", 
+  RowBox[{"int", ",", 
+   RowBox[{"{", "k", "}"}], ",", 
+   RowBox[{"Numerator", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellLabel->"In[11]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    FractionBox[
+     RowBox[{
+      FormBox[
+       FormBox["k",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm]}], 
+     RowBox[{
+      SuperscriptBox["m", "2"], " ", 
+      RowBox[{
+       InterpretationBox[
+        SuperscriptBox[
+         FormBox[
+          FormBox["k",
+           TraditionalForm],
+          TraditionalForm], "2"],
+        SequenceForm[
+         FeynCalc`Pair[
+          FeynCalc`Momentum[$CellContext`k, D], 
+          FeynCalc`Momentum[$CellContext`k, D]]],
+        Editable->False], ".", 
+       RowBox[{"(", 
+        InterpretationBox[
+         RowBox[{
+          SuperscriptBox[
+           RowBox[{
+            FormBox["\<\"(\"\>",
+             TraditionalForm], 
+            FormBox[
+             FormBox[
+              RowBox[{
+               FormBox["k",
+                TraditionalForm], "-", 
+               FormBox["p",
+                TraditionalForm]}],
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox["\<\")\"\>",
+             TraditionalForm]}], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+          "\[InvisibleSpace]", 
+          SuperscriptBox["m", "2"]}],
+         SequenceForm[
+          FeynCalc`Pair[
+          FeynCalc`Momentum[$CellContext`k, D] - 
+           FeynCalc`Momentum[$CellContext`p, D], 
+           FeynCalc`Momentum[$CellContext`k, D] - 
+           FeynCalc`Momentum[$CellContext`p, D]], "-", $CellContext`m^2],
+         Editable->False], ")"}]}]}]],
+    TraditionalForm], "-", 
+   FormBox[
+    FractionBox[
+     RowBox[{
+      FormBox[
+       FormBox["k",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm]}], 
+     RowBox[{
+      SuperscriptBox["m", "2"], " ", 
+      RowBox[{
+       InterpretationBox[
+        SuperscriptBox[
+         FormBox[
+          FormBox["k",
+           TraditionalForm],
+          TraditionalForm], "2"],
+        SequenceForm[
+         FeynCalc`Pair[
+          FeynCalc`Momentum[$CellContext`k, D], 
+          FeynCalc`Momentum[$CellContext`k, D]]],
+        Editable->False], ".", 
+       InterpretationBox[
+        SuperscriptBox[
+         RowBox[{
+          FormBox["\<\"(\"\>",
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            RowBox[{
+             FormBox["k",
+              TraditionalForm], "-", 
+             FormBox["p",
+              TraditionalForm]}],
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox["\<\")\"\>",
+           TraditionalForm]}], "2"],
+        SequenceForm[
+         FeynCalc`Pair[
+         FeynCalc`Momentum[$CellContext`k, D] - 
+          FeynCalc`Momentum[$CellContext`p, D], 
+          FeynCalc`Momentum[$CellContext`k, D] - 
+          FeynCalc`Momentum[$CellContext`p, D]]],
+        Editable->False]}]}]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellLabel->"Out[11]="]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"ClearAll", "[", "int", "]"}]], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[TextData[{
+ "Using ",
+ Cell[BoxData[
+  RowBox[{"FeynAmpDenominator", "\[Rule]", "False"}]], "InlineFormula"],
+ " we can specify that integrals without numerators should not be partial \
+fractioned"
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"int", "=", 
+  RowBox[{
+   RowBox[{"FAD", "[", 
+    RowBox[{"k", ",", 
+     RowBox[{"p", "-", "k"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "m"}], "}"}]}], "]"}], 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"SPD", "[", "q", "]"}], "+", 
+     RowBox[{"SPD", "[", 
+      RowBox[{"p", ",", "k"}], "]"}]}], ")"}]}]}]], "Input",
+ CellLabel->"In[5]:="],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{
+    FormBox[
+     RowBox[{
+      FormBox[
+       FormBox["k",
+        TraditionalForm],
+       TraditionalForm], 
+      FormBox["\<\"\[CenterDot]\"\>",
+       TraditionalForm], 
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm]}],
+     TraditionalForm], "+", 
+    FormBox[
+     SuperscriptBox[
+      FormBox[
+       FormBox["q",
+        TraditionalForm],
+       TraditionalForm], "2"],
+     TraditionalForm]}], 
+   RowBox[{
+    InterpretationBox[
+     SuperscriptBox[
+      FormBox[
+       FormBox["k",
+        TraditionalForm],
+       TraditionalForm], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[$CellContext`k, D], 
+       FeynCalc`Momentum[$CellContext`k, D]]],
+     Editable->False], ".", 
+    InterpretationBox[
+     SuperscriptBox[
+      RowBox[{
+       FormBox["\<\"(\"\>",
+        TraditionalForm], 
+       FormBox[
+        FormBox[
+         RowBox[{
+          FormBox["p",
+           TraditionalForm], "-", 
+          FormBox["k",
+           TraditionalForm]}],
+         TraditionalForm],
+        TraditionalForm], 
+       FormBox["\<\")\"\>",
+        TraditionalForm]}], "2"],
+     SequenceForm[
+      FeynCalc`Pair[
+       FeynCalc`Momentum[-$CellContext`k + $CellContext`p, D], 
+       FeynCalc`Momentum[-$CellContext`k + $CellContext`p, D]]],
+     Editable->False], ".", 
+    RowBox[{"(", 
+     InterpretationBox[
+      RowBox[{
+       SuperscriptBox[
+        FormBox[
+         FormBox["k",
+          TraditionalForm],
+         TraditionalForm], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+       "\[InvisibleSpace]", 
+       SuperscriptBox["m", "2"]}],
+      SequenceForm[
+       FeynCalc`Pair[
+        FeynCalc`Momentum[$CellContext`k, D], 
+        FeynCalc`Momentum[$CellContext`k, D]], "-", $CellContext`m^2],
+      Editable->False], ")"}]}]], TraditionalForm]], "Output",
+ CellLabel->"Out[5]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ApartFF", "[", 
+  RowBox[{"int", ",", 
+   RowBox[{"{", "k", "}"}]}], "]"}]], "Input",
+ CellLabel->"In[6]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["m", "2"], "+", 
+      SuperscriptBox[
+       FormBox[
+        FormBox["p",
+         TraditionalForm],
+        TraditionalForm], "2"], "+", 
+      RowBox[{"2", " ", 
+       SuperscriptBox[
+        FormBox[
+         FormBox["q",
+          TraditionalForm],
+         TraditionalForm], "2"]}]}], 
+     RowBox[{"2", " ", 
+      SuperscriptBox["m", "2"], " ", 
+      RowBox[{
+       InterpretationBox[
+        SuperscriptBox[
+         FormBox[
+          FormBox["k",
+           TraditionalForm],
+          TraditionalForm], "2"],
+        SequenceForm[
+         FeynCalc`Pair[
+          FeynCalc`Momentum[$CellContext`k, D], 
+          FeynCalc`Momentum[$CellContext`k, D]]],
+        Editable->False], ".", 
+       RowBox[{"(", 
+        InterpretationBox[
+         RowBox[{
+          SuperscriptBox[
+           RowBox[{
+            FormBox["\<\"(\"\>",
+             TraditionalForm], 
+            FormBox[
+             FormBox[
+              RowBox[{
+               FormBox["k",
+                TraditionalForm], "-", 
+               FormBox["p",
+                TraditionalForm]}],
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox["\<\")\"\>",
+             TraditionalForm]}], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+          "\[InvisibleSpace]", 
+          SuperscriptBox["m", "2"]}],
+         SequenceForm[
+          FeynCalc`Pair[
+          FeynCalc`Momentum[$CellContext`k, D] - 
+           FeynCalc`Momentum[$CellContext`p, D], 
+           FeynCalc`Momentum[$CellContext`k, D] - 
+           FeynCalc`Momentum[$CellContext`p, D]], "-", $CellContext`m^2],
+         Editable->False], ")"}]}]}]],
+    TraditionalForm], "+", 
+   FormBox[
+    RowBox[{"-", 
+     FractionBox["1", 
+      RowBox[{"2", " ", 
+       SuperscriptBox["m", "2"], " ", 
+       RowBox[{"(", 
+        InterpretationBox[
+         RowBox[{
+          SuperscriptBox[
+           FormBox[
+            FormBox["k",
+             TraditionalForm],
+            TraditionalForm], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+          "\[InvisibleSpace]", 
+          SuperscriptBox["m", "2"]}],
+         SequenceForm[
+          FeynCalc`Pair[
+           FeynCalc`Momentum[$CellContext`k, D], 
+           FeynCalc`Momentum[$CellContext`k, D]], "-", $CellContext`m^2],
+         Editable->False], ")"}]}]]}],
+    TraditionalForm], "-", 
+   FormBox[
+    FractionBox[
+     RowBox[{
+      SuperscriptBox[
+       FormBox[
+        FormBox["p",
+         TraditionalForm],
+        TraditionalForm], "2"], "+", 
+      RowBox[{"2", " ", 
+       SuperscriptBox[
+        FormBox[
+         FormBox["q",
+          TraditionalForm],
+         TraditionalForm], "2"]}]}], 
+     RowBox[{"2", " ", 
+      SuperscriptBox["m", "2"], " ", 
+      RowBox[{
+       InterpretationBox[
+        SuperscriptBox[
+         FormBox[
+          FormBox["k",
+           TraditionalForm],
+          TraditionalForm], "2"],
+        SequenceForm[
+         FeynCalc`Pair[
+          FeynCalc`Momentum[$CellContext`k, D], 
+          FeynCalc`Momentum[$CellContext`k, D]]],
+        Editable->False], ".", 
+       InterpretationBox[
+        SuperscriptBox[
+         RowBox[{
+          FormBox["\<\"(\"\>",
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            RowBox[{
+             FormBox["k",
+              TraditionalForm], "-", 
+             FormBox["p",
+              TraditionalForm]}],
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox["\<\")\"\>",
+           TraditionalForm]}], "2"],
+        SequenceForm[
+         FeynCalc`Pair[
+         FeynCalc`Momentum[$CellContext`k, D] - 
+          FeynCalc`Momentum[$CellContext`p, D], 
+          FeynCalc`Momentum[$CellContext`k, D] - 
+          FeynCalc`Momentum[$CellContext`p, D]]],
+        Editable->False]}]}]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellLabel->"Out[6]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ApartFF", "[", 
+  RowBox[{"int", ",", 
+   RowBox[{"{", "k", "}"}], ",", 
+   RowBox[{"FeynAmpDenominator", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellLabel->"In[7]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    FractionBox[
+     SuperscriptBox[
+      FormBox[
+       FormBox["q",
+        TraditionalForm],
+       TraditionalForm], "2"], 
+     RowBox[{
+      InterpretationBox[
+       SuperscriptBox[
+        FormBox[
+         FormBox["k",
+          TraditionalForm],
+         TraditionalForm], "2"],
+       SequenceForm[
+        FeynCalc`Pair[
+         FeynCalc`Momentum[$CellContext`k, D], 
+         FeynCalc`Momentum[$CellContext`k, D]]],
+       Editable->False], ".", 
+      InterpretationBox[
+       SuperscriptBox[
+        RowBox[{
+         FormBox["\<\"(\"\>",
+          TraditionalForm], 
+         FormBox[
+          FormBox[
+           RowBox[{
+            FormBox["p",
+             TraditionalForm], "-", 
+            FormBox["k",
+             TraditionalForm]}],
+           TraditionalForm],
+          TraditionalForm], 
+         FormBox["\<\")\"\>",
+          TraditionalForm]}], "2"],
+       SequenceForm[
+        FeynCalc`Pair[-FeynCalc`Momentum[$CellContext`k, D] + 
+         FeynCalc`Momentum[$CellContext`p, D], -
+          FeynCalc`Momentum[$CellContext`k, D] + 
+         FeynCalc`Momentum[$CellContext`p, D]]],
+       Editable->False], ".", 
+      RowBox[{"(", 
+       InterpretationBox[
+        RowBox[{
+         SuperscriptBox[
+          FormBox[
+           FormBox["k",
+            TraditionalForm],
+           TraditionalForm], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+         "\[InvisibleSpace]", 
+         SuperscriptBox["m", "2"]}],
+        SequenceForm[
+         FeynCalc`Pair[
+          FeynCalc`Momentum[$CellContext`k, D], 
+          FeynCalc`Momentum[$CellContext`k, D]], "-", $CellContext`m^2],
+        Editable->False], ")"}]}]],
+    TraditionalForm], "+", 
+   FormBox[
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["m", "2"], "+", 
+      SuperscriptBox[
+       FormBox[
+        FormBox["p",
+         TraditionalForm],
+        TraditionalForm], "2"]}], 
+     RowBox[{"2", " ", 
+      SuperscriptBox["m", "2"], " ", 
+      RowBox[{
+       InterpretationBox[
+        SuperscriptBox[
+         FormBox[
+          FormBox["k",
+           TraditionalForm],
+          TraditionalForm], "2"],
+        SequenceForm[
+         FeynCalc`Pair[
+          FeynCalc`Momentum[$CellContext`k, D], 
+          FeynCalc`Momentum[$CellContext`k, D]]],
+        Editable->False], ".", 
+       RowBox[{"(", 
+        InterpretationBox[
+         RowBox[{
+          SuperscriptBox[
+           RowBox[{
+            FormBox["\<\"(\"\>",
+             TraditionalForm], 
+            FormBox[
+             FormBox[
+              RowBox[{
+               FormBox["k",
+                TraditionalForm], "-", 
+               FormBox["p",
+                TraditionalForm]}],
+              TraditionalForm],
+             TraditionalForm], 
+            FormBox["\<\")\"\>",
+             TraditionalForm]}], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+          "\[InvisibleSpace]", 
+          SuperscriptBox["m", "2"]}],
+         SequenceForm[
+          FeynCalc`Pair[
+          FeynCalc`Momentum[$CellContext`k, D] - 
+           FeynCalc`Momentum[$CellContext`p, D], 
+           FeynCalc`Momentum[$CellContext`k, D] - 
+           FeynCalc`Momentum[$CellContext`p, D]], "-", $CellContext`m^2],
+         Editable->False], ")"}]}]}]],
+    TraditionalForm], "+", 
+   FormBox[
+    RowBox[{"-", 
+     FractionBox["1", 
+      RowBox[{"2", " ", 
+       SuperscriptBox["m", "2"], " ", 
+       RowBox[{"(", 
+        InterpretationBox[
+         RowBox[{
+          SuperscriptBox[
+           FormBox[
+            FormBox["k",
+             TraditionalForm],
+            TraditionalForm], "2"], "\[InvisibleSpace]", "\<\"-\"\>", 
+          "\[InvisibleSpace]", 
+          SuperscriptBox["m", "2"]}],
+         SequenceForm[
+          FeynCalc`Pair[
+           FeynCalc`Momentum[$CellContext`k, D], 
+           FeynCalc`Momentum[$CellContext`k, D]], "-", $CellContext`m^2],
+         Editable->False], ")"}]}]]}],
+    TraditionalForm], "-", 
+   FormBox[
+    FractionBox[
+     SuperscriptBox[
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm], "2"], 
+     RowBox[{"2", " ", 
+      SuperscriptBox["m", "2"], " ", 
+      RowBox[{
+       InterpretationBox[
+        SuperscriptBox[
+         FormBox[
+          FormBox["k",
+           TraditionalForm],
+          TraditionalForm], "2"],
+        SequenceForm[
+         FeynCalc`Pair[
+          FeynCalc`Momentum[$CellContext`k, D], 
+          FeynCalc`Momentum[$CellContext`k, D]]],
+        Editable->False], ".", 
+       InterpretationBox[
+        SuperscriptBox[
+         RowBox[{
+          FormBox["\<\"(\"\>",
+           TraditionalForm], 
+          FormBox[
+           FormBox[
+            RowBox[{
+             FormBox["k",
+              TraditionalForm], "-", 
+             FormBox["p",
+              TraditionalForm]}],
+            TraditionalForm],
+           TraditionalForm], 
+          FormBox["\<\")\"\>",
+           TraditionalForm]}], "2"],
+        SequenceForm[
+         FeynCalc`Pair[
+         FeynCalc`Momentum[$CellContext`k, D] - 
+          FeynCalc`Momentum[$CellContext`p, D], 
+          FeynCalc`Momentum[$CellContext`k, D] - 
+          FeynCalc`Momentum[$CellContext`p, D]]],
+        Editable->False]}]}]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellLabel->"Out[7]="]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"ClearAll", "[", "int", "]"}]], "Input",
+ CellLabel->"In[8]:="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell["\<\
+The extraPiece-trick is useful for cases where a direct partial fractioning \
+is not possible\
+\>", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"int", "=", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"SFAD", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", 
+         RowBox[{"k", ".", "l"}]}], "}"}], "}"}], ",", 
+      RowBox[{"p", "-", "k"}]}], "]"}], 
+    RowBox[{"SPD", "[", 
+     RowBox[{"k", ",", "p"}], "]"}]}], ")"}]}]], "Input",
+ CellLabel->"In[13]:="],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   FormBox[
+    RowBox[{
+     FormBox[
+      FormBox["k",
+       TraditionalForm],
+      TraditionalForm], 
+     FormBox["\<\"\[CenterDot]\"\>",
+      TraditionalForm], 
+     FormBox[
+      FormBox["p",
+       TraditionalForm],
+      TraditionalForm]}],
+    TraditionalForm], 
+   RowBox[{
+    TemplateBox[{"\"(\"",RowBox[{
+        FormBox[
+         FormBox["k", TraditionalForm], TraditionalForm], 
+        FormBox["\"\[CenterDot]\"", TraditionalForm], 
+        FormBox[
+         FormBox["l", TraditionalForm], TraditionalForm]}],"\"+\"",
+      RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+     "RowDefault"], ".", 
+    TemplateBox[{"\"(\"",RowBox[{
+        SuperscriptBox[
+         RowBox[{
+           FormBox["\"(\"", TraditionalForm], 
+           FormBox[
+            FormBox[
+             RowBox[{
+               FormBox["p", TraditionalForm], "-", 
+               FormBox["k", TraditionalForm]}], TraditionalForm], 
+            TraditionalForm], 
+           FormBox["\")\"", TraditionalForm]}], 2]}],"\"+\"",
+      RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+     "RowDefault"]}]], TraditionalForm]], "Output",
+ CellLabel->"Out[13]="]
+}, Open  ]],
+
+Cell[TextData[{
+ "Here ",
+ StyleBox["ApartFF", "Input"],
+ " cannot do anything "
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ApartFF", "[", 
+  RowBox[{"int", ",", 
+   RowBox[{"{", "k", "}"}]}], "]"}]], "Input",
+ CellLabel->"In[14]:="],
+
+Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{
+    FormBox[
+     FormBox["k",
+      TraditionalForm],
+     TraditionalForm], 
+    FormBox["\<\"\[CenterDot]\"\>",
+     TraditionalForm], 
+    FormBox[
+     FormBox["p",
+      TraditionalForm],
+     TraditionalForm]}], 
+   RowBox[{
+    TemplateBox[{"\"(\"",RowBox[{
+        FormBox[
+         FormBox["k", TraditionalForm], TraditionalForm], 
+        FormBox["\"\[CenterDot]\"", TraditionalForm], 
+        FormBox[
+         FormBox["l", TraditionalForm], TraditionalForm]}],"\"+\"",
+      RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+     "RowDefault"], ".", 
+    TemplateBox[{"\"(\"",RowBox[{
+        SuperscriptBox[
+         RowBox[{
+           FormBox["\"(\"", TraditionalForm], 
+           FormBox[
+            FormBox[
+             RowBox[{
+               FormBox["p", TraditionalForm], "-", 
+               FormBox["k", TraditionalForm]}], TraditionalForm], 
+            TraditionalForm], 
+           FormBox["\")\"", TraditionalForm]}], 2]}],"\"+\"",
+      RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+     "RowDefault"]}]], TraditionalForm]], "Output",
+ CellLabel->"Out[14]="]
+}, Open  ]],
+
+Cell["\<\
+Multiplying the integral with unity FAD[k]*SPD[k] we can cast into a more \
+desirable form\
+\>", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ApartFF", "[", 
+   RowBox[{
+    RowBox[{"int", " ", 
+     RowBox[{"FAD", "[", "k", "]"}]}], ",", 
+    RowBox[{"SPD", "[", "k", "]"}], ",", 
+    RowBox[{"{", "k", "}"}]}], "]"}], "//", 
+  RowBox[{
+   RowBox[{"ApartFF", "[", 
+    RowBox[{"#", ",", 
+     RowBox[{"{", "k", "}"}]}], "]"}], "&"}]}]], "Input",
+ CellLabel->"In[15]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FormBox[
+    FractionBox[
+     SuperscriptBox[
+      FormBox[
+       FormBox["k",
+        TraditionalForm],
+       TraditionalForm], "2"], 
+     RowBox[{"2", " ", 
+      RowBox[{
+       TemplateBox[{"\"(\"",RowBox[{
+           FormBox[
+            FormBox["k", TraditionalForm], TraditionalForm], 
+           FormBox["\"\[CenterDot]\"", TraditionalForm], 
+           FormBox[
+            FormBox["l", TraditionalForm], TraditionalForm]}],"\"+\"",
+         RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+        "RowDefault"], ".", 
+       TemplateBox[{"\"(\"",RowBox[{
+           SuperscriptBox[
+            RowBox[{
+              FormBox["\"(\"", TraditionalForm], 
+              FormBox[
+               FormBox[
+                RowBox[{
+                  FormBox["p", TraditionalForm], "-", 
+                  FormBox["k", TraditionalForm]}], TraditionalForm], 
+               TraditionalForm], 
+              FormBox["\")\"", TraditionalForm]}], 2]}],"\"+\"",
+         RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+        "RowDefault"]}]}]],
+    TraditionalForm], "+", 
+   FormBox[
+    FractionBox[
+     SuperscriptBox[
+      FormBox[
+       FormBox["p",
+        TraditionalForm],
+       TraditionalForm], "2"], 
+     RowBox[{"2", " ", 
+      RowBox[{
+       TemplateBox[{"\"(\"",RowBox[{
+           FormBox[
+            FormBox["k", TraditionalForm], TraditionalForm], 
+           FormBox["\"\[CenterDot]\"", TraditionalForm], 
+           FormBox[
+            FormBox["l", TraditionalForm], TraditionalForm]}],"\"+\"",
+         RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+        "RowDefault"], ".", 
+       TemplateBox[{"\"(\"",RowBox[{
+           SuperscriptBox[
+            RowBox[{
+              FormBox["\"(\"", TraditionalForm], 
+              FormBox[
+               FormBox[
+                RowBox[{
+                  FormBox["k", TraditionalForm], "-", 
+                  FormBox["p", TraditionalForm]}], TraditionalForm], 
+               TraditionalForm], 
+              FormBox["\")\"", TraditionalForm]}], 2]}],"\"+\"",
+         RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+        "RowDefault"]}]}]],
+    TraditionalForm]}], TraditionalForm]], "Output",
+ CellLabel->"Out[15]="]
+}, Open  ]],
+
+Cell[TextData[{
+ "We need a second call to ",
+ StyleBox["ApartFF", "Input"],
+ " since the first execution doesn't drop scaleless integrals or perform any \
+shifts in the denominators."
+}], "Notes"],
+
+Cell[BoxData[
+ RowBox[{"ClearAll", "[", "int", "]"}]], "Input",
+ CellLabel->"In[16]:="]
 }, Open  ]]
 }, Open  ]],
 
@@ -3406,12 +4437,12 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 740},
-WindowMargins->{{793, Automatic}, {Automatic, 241}},
+WindowMargins->{{376, Automatic}, {Automatic, 39}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

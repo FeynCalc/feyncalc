@@ -144,12 +144,18 @@ feynampdenpartfrac[a___, gpd : GenericPropagatorDenominator[(c1_ :0) + (c2_. Sqr
 Apart3[expr_, x_] :=
 	Map2[Factor2, Collect2[Apart1[expr,x],x]];
 
-ApartFF[int_, lmoms_List , OptionsPattern[]]:=
+ApartFF[int_, lmoms_List , opts:OptionsPattern[]]:=
+	ApartFF[int, 1, lmoms , opts];
+
+
+ApartFF[int_, extraPiece_, lmoms_List , OptionsPattern[]]:=
 	Block[{	exp,tmp,loopHead,null1,null2,res,rest,
 			loopInts,intsUnique,solsList,repRule, time,
-			optCollecting, tcRepList},
+			optCollecting, tcRepList, optFDS, optDropScaleless},
 
-		optCollecting = OptionValue[Collecting];
+		optCollecting 		= OptionValue[Collecting];
+		optFDS 				= OptionValue[FDS];
+		optDropScaleless	= OptionValue[DropScaleless];
 
 		If [OptionValue[FCVerbose]===False,
 			affVerbose=$VeryVerbose,
@@ -170,6 +176,20 @@ ApartFF[int_, lmoms_List , OptionsPattern[]]:=
 		FCPrint[1, "ApartFF: Entering.", FCDoControl->affVerbose];
 		FCPrint[3, "ApartFF: Entering with ", exp, FCDoControl->affVerbose];
 		FCPrint[3, "ApartFF: Loop momenta are ", lmoms, FCDoControl->affVerbose];
+
+
+		(*
+			The usage of extraPiece indicates that ApartFF/FCApart operates only on a part of the full
+			loop integral. Therefore, we are not allowed to discard seemingly scaleless integrals
+			or perform shifts in loop momenta. All this should be done in a second run of ApartFF/FCApart
+			without an extraPiece.
+		*)
+		If[	extraPiece =!= 1,
+			FCPrint[1,"ApartFF: extraPiece=!=1, disabling FDS and DropScaleless.", FCDoControl->affVerbose];
+			optFDS = False;
+			optDropScaleless = False;
+		];
+
 
 
 		(*
@@ -197,10 +217,10 @@ ApartFF[int_, lmoms_List , OptionsPattern[]]:=
 
 		If[	OptionValue[FeynAmpDenominator],
 			rest  = tmp[[1]];
-			loopInts = FCLoopIsolate[Plus@@tmp[[2;;4]], lmoms, FCI->True, Head->loopHead, DropScaleless->True, PaVe->False, Numerator->OptionValue[Numerator]],
-
+			loopInts = FCLoopIsolate[Plus@@tmp[[2;;4]], lmoms, FCI->True, Head->loopHead, DropScaleless->optDropScaleless, PaVe->False, Numerator->OptionValue[Numerator]],
+			(*FDS->False means that pure denominator integrals are omitted*)
 			rest  = tmp[[1]]+tmp[[2]];
-			loopInts = FCLoopIsolate[Plus@@tmp[[3;;4]], lmoms, FCI->True, Head->loopHead, DropScaleless->True, PaVe->False, Numerator->OptionValue[Numerator]]
+			loopInts = FCLoopIsolate[Plus@@tmp[[3;;4]], lmoms, FCI->True, Head->loopHead, DropScaleless->optDropScaleless, PaVe->False, Numerator->OptionValue[Numerator]]
 		];
 
 
@@ -219,7 +239,7 @@ ApartFF[int_, lmoms_List , OptionsPattern[]]:=
 		solsList = MapIndexed[ (If[ OptionValue[FCProgressBar],
 									FCProgressBar["ApartFF: Processing integral ",First[#2],Length[intsUnique]]
 								];
-			FCApart[#1,lmoms,FCI->True,FDS->OptionValue[FDS],DropScaleless->OptionValue[DropScaleless],
+			FCApart[#1, extraPiece, lmoms, FCI->True, FDS->optFDS, DropScaleless->optDropScaleless,
 			MaxIterations->OptionValue[MaxIterations],SetDimensions->OptionValue[SetDimensions]])&,(intsUnique/.loopHead->Identity)];
 
 		FCPrint[1, "ApartFF: Done applying FCApart, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->affVerbose];
@@ -237,7 +257,7 @@ ApartFF[int_, lmoms_List , OptionsPattern[]]:=
 
 		time=AbsoluteTime[];
 		FCPrint[1, "ApartFF: Inserting simplified integrals back into the original expression.", FCDoControl->affVerbose];
-		res = FeynAmpDenominatorCombine[rest + (loopInts/.repRule)];
+		res = FeynAmpDenominatorCombine[rest*extraPiece + (loopInts/.repRule)];
 		FCPrint[1, "ApartFF: Done inserting simplified integrals, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->affVerbose];
 
 
