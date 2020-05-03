@@ -2075,6 +2075,10 @@ CartesianIndex[x_/;FCPatternFreeQ[{x}], 3] :=
 CartesianIndex[_, 0] :=
 	0;
 
+(* To allow things like CVD[p,CartesianIndex[i,D-1]]  ... *)
+CartesianIndex[CartesianIndex[in_, dim_ :3], dim_ :3] :=
+	CartesianIndex[in,dim];
+
 CartesianIndex[_Integer, ___] :=
 	(
 	Message[SharedObjects::failmsg,"Explicit cartesian indices are not supported"];
