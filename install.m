@@ -402,7 +402,10 @@ InstallFeynCalc[OptionsPattern[]]:=
 		WriteString["stdout", "done! \n"];
 
 		(* To have the documentation available immediately after installing FeynCalc (following the advice of Szabolcs Horv'at) *)
-		RebuildPacletData[];
+		If[	$VersionNumber >= 12.1,
+			PacletDataRebuild[],
+			RebuildPacletData[]
+		];
 
 		(* Generate FCConfig.m	*)
 		WriteString["stdout", "Creating the configuration file ... "];
