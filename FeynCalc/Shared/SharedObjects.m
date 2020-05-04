@@ -1639,6 +1639,15 @@ LorentzIndex[_, 0] :=
 LorentzIndex[in_Integer?NonNegative,dim_ :4] :=
 	ExplicitLorentzIndex[in,dim];
 
+(*to make things like
+	GluonVertex[{k, CartesianIndex[j, D - 1], e}, {p - k, 0, g}, {-p, 0, f}]
+evaluate properly *)
+LorentzIndex[CartesianIndex[i_]] :=
+	CartesianIndex[i];
+
+LorentzIndex[CartesianIndex[i_, dim_ - 1], dim_] :=
+	CartesianIndex[i, dim - 1]
+
 Momentum[x_ GaugeXi[y_], dim_:4] :=
 	GaugeXi[y] Momentum[x,dim];
 

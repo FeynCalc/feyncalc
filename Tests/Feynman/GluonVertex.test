@@ -42,7 +42,10 @@ LorentzIndex[nu]]*SMP[\"g_s\"]^2 + I*Pair[LorentzIndex[mu, D], LorentzIndex[nu, 
 SUNF[SUNIndex[a], SUNIndex[c], SUNIndex[c1]]*SUNF[SUNIndex[b], SUNIndex[c1], SUNIndex[d]]) -
 ((-I)*Pair[ExplicitLorentzIndex[0], LorentzIndex[mu]]*Pair[ExplicitLorentzIndex[0],
 LorentzIndex[nu]]*SMP[\"g_s\"]^2 + I*Pair[LorentzIndex[mu, D], LorentzIndex[nu, D]]*SMP[\"g_s\"]^2)*
-SUNF[SUNIndex[a], SUNIndex[b], SUNIndex[c1]]*SUNF[SUNIndex[c], SUNIndex[c1], SUNIndex[d]]"}
+SUNF[SUNIndex[a], SUNIndex[b], SUNIndex[c1]]*SUNF[SUNIndex[c], SUNIndex[c1], SUNIndex[d]]"},
+{"fcstGluonVertex-ID5","GluonVertex[{k, CartesianIndex[j, D - 1], e}, {p - k, 0, g}, {-p, 0,
+	f}] // Explicit // FCE",
+"-((-CVD[k, j] + 2*CVD[p, j])*SMP[\"g_s\"]*SUNF[e, f, g])"}
 };
 
 
