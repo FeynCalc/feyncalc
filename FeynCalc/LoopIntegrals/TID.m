@@ -104,7 +104,11 @@ Options[TID] = {
 TID[am_ , {q_}, opts:OptionsPattern[]] :=
 	TID[am, q, opts]
 
-TID[am_ , q_, OptionsPattern[]] :=
+
+TID[am_List, q_/; Head[q]=!=List, opts:OptionsPattern[]]:=
+	Map[TID[#,q,opts]&,am];
+
+TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 	Block[ {n, t0, t1, t3, t4, t5, t6, null1, null2, qrule,
 		res,nres,irrelevant = 0, contractlabel, fds, iter,sp,tp,
 		loopIntegral, wrapped,loopList,repIndexList,canIndexList,uniqueCanIndexList,
@@ -589,7 +593,7 @@ TID[am_ , q_, OptionsPattern[]] :=
 
 		res
 
-	]/; Head[q]=!=List;
+	];
 
 tidSingleIntegral[int_, q_ , n_, pavebasis_] :=
 	Block[{ ex=int,res,rank,
