@@ -140,9 +140,6 @@ crossSectionTotalMuon=PowerExpand[crossSectionTotal/.{SMP["m_u"]->0,
 (*Check the final results*)
 
 
-knownResults
-
-
 knownResults = {
 	(SMP["G_F"]^2*(s - SMP["m_mu"]^2)^2*SMP["V_ud", -I]*SMP["V_ud", I])/(Pi*s)
 };
