@@ -162,8 +162,8 @@ FCApart[expr_, extraPiece_, lmoms_List, OptionsPattern[]] :=
 
 		(*	Partial fractioning should work also for loop integrals that contain loop momenta
 			with uncontracted indices, or loop momenta contracted with Epsilon tensors and Dirac gammas	*)
-		If[	!FreeQ2[ex,Join[{LorentzIndex,CartesianIndex,Eps,DiracGamma},extraTensors]],
-			{scalarTerm,vectorTerm} = FCProductSplit[ex,Join[{LorentzIndex,CartesianIndex,Eps,DiracGamma},extraTensors]];
+		If[	!FreeQ2[ex,Join[{LorentzIndex,CartesianIndex,Eps,DiracGamma,PauliSigma},extraTensors]],
+			{scalarTerm,vectorTerm} = FCProductSplit[ex,Join[{LorentzIndex,CartesianIndex,Eps,DiracGamma,PauliSigma},extraTensors]];
 			If[	scalarTerm*vectorTerm =!= ex || !FreeQ2[scalarTerm,{LorentzIndex,CartesianIndex}],
 				Message[FCApart::error, ex];
 				Abort[]

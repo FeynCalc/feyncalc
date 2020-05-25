@@ -191,5 +191,8 @@ CFAD[{{-k + p, 0}, {0, -1}, 1}] CSPD[k, k]"},
 "ApartFF[(x + CFAD[p - k] CSPD[k]) CFAD[k], CSPD[k], {k},
 Numerator -> False, FCE -> True]",
 "x CFAD[{{k, 0}, {0, -1}, 1}] CSPD[k, k] +
-CFAD[{{k, 0}, {0, -1}, 1}, {{-k + p, 0}, {0, -1}, 1}] CSPD[k, k]^2"}
+CFAD[{{k, 0}, {0, -1}, 1}, {{-k + p, 0}, {0, -1}, 1}] CSPD[k, k]^2"},
+{"fcstApartFF-ID43",
+"ApartFF[CSISD[k] CFAD[k, k - p], {k}, FCE -> True]",
+"CFAD[{{k, 0}, {0, -1}, 1}, {{k - p, 0}, {0, -1}, 1}] CSISD[k]"}
 })
