@@ -861,7 +861,7 @@ removeNonloop[expr_,q_]:=
 
 tidConvert[expr_, q_]:=
 	Block[{ex=expr,qQQprepare,getfdp,res,temp},
-		FCPrint[2, "TID: tidConvert: Entering with ", expr];
+		FCPrint[4, "TID: tidConvert: Entering with ", expr, FCDoControl->tidVerbose];
 		getfdp[w__] :=
 			(ffdp@@(First/@(MomentumCombine[{w},FCI->True,FV->False,SP->False] /. q->0)) /. Momentum[a_,___] :> a)/;
 				FreeQ[{w}, (PropagatorDenominator|StandardPropagatorDenominator)[_ Momentum[q, ___] + _., __]];
@@ -882,14 +882,14 @@ tidConvert[expr_, q_]:=
 			Message[TID::failmsg, "tidConvert failed to prepare the integral " <> ToString[res]];
 			Abort[]
 		];
-		FCPrint[4, "TID: tidConvert: Leaving with ", res];
+		FCPrint[4, "TID: tidConvert: Leaving with ", res, FCDoControl->tidVerbose];
 		res
 	]/; Head[expr]=!=Plus && MatchQ[expr,(FeynAmpDenominator[(x : (PropagatorDenominator|StandardPropagatorDenominator)[__] ..)] /;
 		!FreeQ[{x}, q]) Times[Pair[Momentum[q, ___], LorentzIndex[_, ___]] ..]];
 
 tidConvert[expr_, q_]:=
 	Block[{ex=expr,qQQprepare,getfdp,res,temp},
-		FCPrint[2, "TID: tidConvert: Entering with ", expr];
+		FCPrint[4, "TID: tidConvert: Entering with ", expr, FCDoControl->tidVerbose];
 		getfdp[w__] :=
 			(ffdp@@(First/@(MomentumCombine[{w},FCI->True,FV->False,SP->False] /. q->0)) /. CartesianMomentum[a_,___] :> a)/;
 				FreeQ[{w}, CartesianPropagatorDenominator[_ CartesianMomentum[q, ___] + _., __]];
@@ -914,14 +914,14 @@ tidConvert[expr_, q_]:=
 	zero in DR *)
 tidConvert[expr_, q_]:=
 	(
-	FCPrint[2, "TID: tidConvert: Dropping the scaleless integral ", expr, FCDoControl->tidVerbose];
+	FCPrint[4, "TID: tidConvert: Dropping the scaleless integral ", expr, FCDoControl->tidVerbose];
 	0
 	)/; Head[expr]=!=Plus && MatchQ[expr,Pair[Momentum[q, ___], LorentzIndex[_, ___]] |
 		HoldPattern[Times[Pair[Momentum[q, ___], LorentzIndex[_, ___]] ..]]];
 
 tidConvert[expr_, q_]:=
 	(
-	FCPrint[2, "TID: tidConvert: Dropping the scaleless integral ", expr, FCDoControl->tidVerbose];
+	FCPrint[4, "TID: tidConvert: Dropping the scaleless integral ", expr, FCDoControl->tidVerbose];
 	0
 	)/; Head[expr]=!=Plus && MatchQ[expr,CartesianPair[CartesianMomentum[q, ___], CartesianIndex[_, ___]] |
 		HoldPattern[Times[CartesianPair[CartesianMomentum[q, ___], CartesianIndex[_, ___]] ..]]];
