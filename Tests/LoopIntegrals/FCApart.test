@@ -486,5 +486,9 @@ D]]]*FeynAmpDenominator[CartesianPropagatorDenominator[\
 CartesianMomentum[k, -1 + D] - CartesianMomentum[p, -1 + D], 0, 0, \
 {1, -1}]]"},
 {"fcstFCApart-ID62",
-"FCApart[Sqrt[CSPD[k]]^2GFAD[Sqrt[CSPD[k]]],{k}]", "0"}
+"FCApart[Sqrt[CSPD[k]]^2GFAD[Sqrt[CSPD[k]]],{k}]", "0"},
+{"fcstFCApart-ID63",
+"FCApart[CFAD[{{k, 0}, {0, -1}, 1}, {{k, 0}, {0, -1},
+	1}, {{k - p, 0}, {0, -1}, 1}] CSPD[k, k]^(3/2), {k}, FCE -> True]",
+	"CFAD[{{k, 0}, {0, -1}, 1}, {{k - p, 0}, {0, -1}, 1}] Sqrt[CSPD[k, k]]"}
 })

@@ -1040,7 +1040,13 @@ GFAD[{{CSPD[k, k] x[1] + (CSPD[k, k - 2 p] + CSPD[p, p]) x[2], 1},
 	1 + s}] CFAD[{k, -c^2}], {k}, FCE -> True]",
 "{{CSPD[k, k]*x[1] + CSPD[k, k]*x[2] - 2*CSPD[k, p]*x[2] +
 CSPD[p, p]*x[2], -c^2 + CSPD[k, k]}, {CSPD[k, k], CSPD[k, p]}, {1 + s, 1},
-{GFAD[{{CSPD[k, k]*x[1] + (CSPD[k, k - 2*p] + CSPD[p, p])*x[2], 1}, 1}], CFAD[{{k, 0}, {-c^2, -1}, 1}]}}"}
+{GFAD[{{CSPD[k, k]*x[1] + (CSPD[k, k - 2*p] + CSPD[p, p])*x[2], 1}, 1}], CFAD[{{k, 0}, {-c^2, -1}, 1}]}}"},
+{"fcstFCLoopBasisIntegralToPropagators-ID62",
+"FCLoopBasisIntegralToPropagators[
+FCI[CFAD[{{k, 0}, {0, -1}, 1}, {{k, 0}, {0, -1},
+	1}, {{k - p, 0}, {0, -1}, 1}] Sqrt[CSPD[k, k]] CSPD[k,
+	k]], {k}] // FCE","{CFAD[{{0, Sqrt[k.k]}, {0, -1}, -1}], CFAD[{{0, k.k}, {0, -1}, -1}],
+CFAD[{{k, 0}, {0, -1}, 1}], CFAD[{{k - p, 0}, {0, -1}, 1}]}"}
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisCreateScalarProducts =

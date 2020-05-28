@@ -252,6 +252,11 @@ auxIntegralToPropagators[pref_. exp_Pair, lmoms_]:=
 auxIntegralToPropagators[pref0_. Power[pref_. exp_CartesianPair, n_Integer?Positive], lmoms_]:=
 	ConstantArray[FeynAmpDenominator[CartesianPropagatorDenominator[0, pow[pref0,1/n] pref exp, 0, {-1, optEtaSign[[2]]}]], n]/; FreeQ2[{pref,pref0},lmoms];
 
+
+auxIntegralToPropagators[pref0_. Power[pref_. exp_CartesianPair, n_Rational?Positive/; Denominator[n]===2 && Numerator[n]>=3], lmoms_]:=
+	Join[ConstantArray[FeynAmpDenominator[CartesianPropagatorDenominator[0, pow[pref0,1/(n-1/2)] pref exp, 0, {-1, optEtaSign[[2]]}]], (n-1/2)],
+		{FeynAmpDenominator[CartesianPropagatorDenominator[0, pow[pref0,1/2] Sqrt[pref] Sqrt[exp], 0, {-1, optEtaSign[[2]]}]]}]/; FreeQ2[{pref,pref0},lmoms];
+
 auxIntegralToPropagators[pref_. exp_CartesianPair, lmoms_]:=
 	FeynAmpDenominator[CartesianPropagatorDenominator[0, pref exp, 0, {-1, optEtaSign[[2]]}]]/; FreeQ2[pref,lmoms];
 
