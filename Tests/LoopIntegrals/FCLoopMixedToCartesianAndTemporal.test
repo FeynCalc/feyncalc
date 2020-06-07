@@ -78,8 +78,8 @@ FCE->True]", "-CFAD[{{0, p . q}, {-(TC[p]*TC[q]), -1}, 3}]"},
 {"fcstFCLoopMixedToCartesianAndTemporal-ID19",
 "FCLoopMixedToCartesianAndTemporal[ \
 FCI[TC[k]FAD[{k,m3},{k-pH,m2},{k-pE1,pPH}]],{k},FCE\[Rule]True]",
-"-(CFAD[{{k, 0}, {-m3^2 - TC[k]^2, -1}, 1}, {{k - pH, 0}, {-m2^2 - \
-TC[k - pH]^2, -1}, 1}, {{k - pE1, 0}, {-pPH^2 - TC[k - pE1]^2, -1}, \
+"-(CFAD[{{k, 0}, {m3^2 - TC[k]^2, -1}, 1}, {{k - pH, 0}, {m2^2 - \
+TC[k - pH]^2, -1}, 1}, {{k - pE1, 0}, {pPH^2 - TC[k - pE1]^2, -1}, \
 1}]*TC[k])"},
 {"fcstFCLoopMixedToCartesianAndTemporal-ID20",
 "FCLoopMixedToCartesianAndTemporal[FCI[TC[k] FVD[k,mu] \

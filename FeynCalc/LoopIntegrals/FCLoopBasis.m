@@ -318,7 +318,8 @@ FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 		];
 
 		If[	OptionValue[ToSFAD] && !FreeQ[expAsList,PropagatorDenominator],
-			expAsList = ToSFAD[expAsList]
+			expAsList = ToSFAD[expAsList];
+			FCPrint[3,"FCLoopBasisIntegralToPropagators: After ToSFAD: ", expAsList, FCDoControl->itpVerbose];
 		];
 
 
