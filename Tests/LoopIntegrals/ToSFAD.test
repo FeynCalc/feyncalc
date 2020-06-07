@@ -40,41 +40,41 @@ Tests`LoopIntegrals`ToSFAD =
 0, 0, {1, 1}]]"},
 {"fcstToSFAD-ID11", "ToSFAD[FCI[FAD[{p,m}]]]",
 "FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], \
-0, m^2, {1, 1}]]"},
+0, -m^2, {1, 1}]]"},
 {"fcstToSFAD-ID12", "ToSFAD[FCI[FAD[{p,m,2}]]]",
 "FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], \
-0, m^2, {1, 1}], StandardPropagatorDenominator[Momentum[p, D], 0, \
-m^2, {1, 1}]]"},
+0, -m^2, {1, 1}], StandardPropagatorDenominator[Momentum[p, D], 0, \
+-m^2, {1, 1}]]"},
 {"fcstToSFAD-ID13", "ToSFAD[FCI[FAD[{p,m},q]]]",
 "FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], \
-0, m^2, {1, 1}], StandardPropagatorDenominator[Momentum[q, D], 0, 0, \
+0, -m^2, {1, 1}], StandardPropagatorDenominator[Momentum[q, D], 0, 0, \
 {1, 1}]]"},
 {"fcstToSFAD-ID14", "ToSFAD[FCI[FAD[{p,m1},q,{r-q,m2,2}]]]",
 "FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], \
-0, m1^2, {1, 1}], StandardPropagatorDenominator[Momentum[q, D], 0, 0, \
+0, -m1^2, {1, 1}], StandardPropagatorDenominator[Momentum[q, D], 0, 0, \
 {1, 1}], StandardPropagatorDenominator[-Momentum[q, D] + Momentum[r, \
-D], 0, m2^2, {1, 1}], StandardPropagatorDenominator[-Momentum[q, D] + \
-Momentum[r, D], 0, m2^2, {1, 1}]]"},
+D], 0, -m2^2, {1, 1}], StandardPropagatorDenominator[-Momentum[q, D] + \
+Momentum[r, D], 0, -m2^2, {1, 1}]]"},
 {"fcstToSFAD-ID15",
 "ToSFAD[FCI[FAD[{p,m},q]FAD[{p,m1},q,{r-q,m2,2}]]]",
 "FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], \
-0, m^2, {1, 1}], StandardPropagatorDenominator[Momentum[q, D], 0, 0, \
+0, -m^2, {1, 1}], StandardPropagatorDenominator[Momentum[q, D], 0, 0, \
 {1, 1}]]*FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, \
-D], 0, m1^2, {1, 1}], StandardPropagatorDenominator[Momentum[q, D], \
+D], 0, -m1^2, {1, 1}], StandardPropagatorDenominator[Momentum[q, D], \
 0, 0, {1, 1}], StandardPropagatorDenominator[-Momentum[q, D] + \
-Momentum[r, D], 0, m2^2, {1, 1}], \
+Momentum[r, D], 0, -m2^2, {1, 1}], \
 StandardPropagatorDenominator[-Momentum[q, D] + Momentum[r, D], 0, \
-m2^2, {1, 1}]]"},
+-m2^2, {1, 1}]]"},
 {"fcstToSFAD-ID16",
 "ToSFAD[FCI[x+FAD[{p,m},q]FAD[{p,m1},q,{r-q,m2,2}]]]",
 "x + FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, \
-D], 0, m^2, {1, 1}], StandardPropagatorDenominator[Momentum[q, D], 0, \
+D], 0, -m^2, {1, 1}], StandardPropagatorDenominator[Momentum[q, D], 0, \
 0, {1, 1}]]*FeynAmpDenominator[StandardPropagatorDenominator[Momentum[\
-p, D], 0, m1^2, {1, 1}], StandardPropagatorDenominator[Momentum[q, \
+p, D], 0, -m1^2, {1, 1}], StandardPropagatorDenominator[Momentum[q, \
 D], 0, 0, {1, 1}], StandardPropagatorDenominator[-Momentum[q, D] + \
-Momentum[r, D], 0, m2^2, {1, 1}], \
+Momentum[r, D], 0, -m2^2, {1, 1}], \
 StandardPropagatorDenominator[-Momentum[q, D] + Momentum[r, D], 0, \
-m2^2, {1, 1}]]"},
+-m2^2, {1, 1}]]"},
 {"fcstToSFAD-ID17",
 "ToSFAD[FAD[p, Dimension -> X]]",
 "SFAD[{{p, 0}, {0, 1}, 1}, Dimension -> X]"}

@@ -65,7 +65,7 @@ ToSFAD[expr_, OptionsPattern[]] :=
 		};
 
 		pdsConverted = pds /. {
-			PropagatorDenominator[a_,b_] :> StandardPropagatorDenominator[a,0,b^2,{1, optEtaSign}]
+			PropagatorDenominator[a_,b_] :> StandardPropagatorDenominator[a,0,-b^2,{1, optEtaSign}]
 		};
 
 		ruleFads = Thread[Rule[fads,fadsConverted]];
