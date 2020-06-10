@@ -146,7 +146,7 @@ FeynmanParametrize1[exp_,q_,opt___Rule] :=
 			FCPrint[1,"Added extra parameter names ", par]
 		];
 		FCPrint[2,"Simplifying expression"];
-		res1 = ExpandProductExpand[FeynAmpDenominatorCombine[exp//.
+		res1 = ExpandScalarProduct[FeynAmpDenominatorCombine[exp//.
 				(*First flatten out DOT products with Integratedx's*)
 				If[ (Flatten/.Flatten[{opt}]/.Options[FeynmanParametrize1])===True,
 					(b_?(((!FreeQ[#,q])&&FreeQ[#,Integratedx])&))*
@@ -190,7 +190,7 @@ FeynmanParametrize1[exp_,q_,opt___Rule] :=
 								efpar=!=epar,
 
 							(* No integration *)
-							ExpandProductExpand[Times[rr]/.If[ efpar===fpar,
+							ExpandScalarProduct[Times[rr]/.If[ efpar===fpar,
 																{},
 																squarerule
 															]],
@@ -204,7 +204,7 @@ FeynmanParametrize1[exp_,q_,opt___Rule] :=
 							FCPrint[1,"Expanding and replacing tensor terms with integrated terms, using integration momentum ",
 									endrule[[2]], " and coefficient ", co];
 							(rebug = Replace[
-							(undebug = Uncontract[Expand[ExpandProductExpand[
+							(undebug = Uncontract[Expand[ExpandScalarProduct[
 									Times@@Replace[{rr}, E^(_?(!FreeQ[#,qq]&)) -> 1 , 1] /.
 									squarerule]], y[[1]], Pair -> All]),
 
