@@ -373,5 +373,44 @@ FCSetDiracGammaScheme[\"NDR\"]; \n tmp",
 (CFAD[{{P, 0}, {0, -1}, 1}, {{k + P, 0}, {c^2, -1}, 1}]*(c^2 -
 CSPD[k, k])*CV[k, i])/(2*CSPD[k, k])"},
 {"fcstFCMultiLoopTID-ID29", "FCMultiLoopTID[FAD[p, p - q] SPD[p, n], {p}, Uncontract -> {p},
-FCE -> True]","(FAD[p, p - q]*SPD[n, q])/2"}
+FCE -> True]","(FAD[p, p - q]*SPD[n, q])/2"},
+
+
+{"fcstFCMultiLoopTID-ID30",
+"FCSetDiracGammaScheme[\"BMHV\"];\n
+tmp = FCMultiLoopTID[SPE[q1, q1] SPD[q1, k1] FVE[q1, mu] FAD[q1 - k1, q1, q1], {q1},
+FCE -> True]; \n
+FCSetDiracGammaScheme[\"NDR\"]; \n tmp",
+"(1/4 FAD[q1, -k1 + q1] FVE[k1, mu] SPE[k1, k1] - (1/(16 (1 - D)))
+FAD[q1, q1, -k1 + q1] FVE[k1, mu] SPD[k1,
+k1] (2 SPD[k1, k1] - D SPD[k1, k1] + 2 SPE[k1, k1] + D SPE[k1, k1]))"},
+{"fcstFCMultiLoopTID-ID31",
+"FCClearScalarProducts[]; \n FCSetDiracGammaScheme[\"BMHV\"];\n
+tmp = FCMultiLoopTID[SPE[q1, q1] FAD[q1 - k1, q1, q1], {q1}, FCE -> True]; \n
+FCSetDiracGammaScheme[\"NDR\"]; \n tmp",
+"((FAD[q1, -k1 + q1] (4 SPD[k1, k1] - D SPD[k1, k1] + 2 SPE[k1, k1] -
+	D SPE[k1, k1]))/(2 (1 - D) SPD[k1, k1]) - (
+FAD[q1, q1, -k1 + q1] (4 SPD[k1, k1] - D SPD[k1, k1] +
+	D SPE[k1, k1]))/(4 (1 - D)))"},
+{"fcstFCMultiLoopTID-ID32",
+"FCSetDiracGammaScheme[\"BMHV\"];\n
+tmp = FCMultiLoopTID[
+SPE[q1, k1] SPE[q2, k1] FVE[q1, \[Mu]] FAD[q1 - k1, q2 + q1, q1,
+q2], {q1, q2}, FCE -> True]; \n
+FCSetDiracGammaScheme[\"NDR\"]; \n tmp",
+"(-((FAD[q1, q1 - q2, -k1 + q2] FVE[k1, \[Mu]] SPE[k1,
+	k1] (-SPD[k1, k1] + SPE[k1, k1]))/(
+2 (1 - D) SPD[k1, k1])) - (1/((1 - D) SPD[k1, k1]^2))
+FAD[q1, q1 - q2, -k1 + q2] FVE[k1, \[Mu]] SPD[q1, q2] SPE[k1,
+k1] (-SPD[k1, k1] +
+	SPE[k1, k1]) - (FAD[q1, q1 - q2, -k1 + q2] FVE[k1, \[Mu]] SPD[k1,
+	q1] SPE[k1,
+	k1] (-SPD[k1, k1] + 2 SPE[k1, k1] - D SPE[k1, k1]))/(4 (1 -
+	D) SPD[k1, k1]^2) + (FAD[q1, q2, q1 - q2, -k1 + q2] FVE[
+	k1, \[Mu]] SPD[k1, q1] SPE[k1,
+	k1] (-3 SPD[k1, k1] + 2 SPE[k1, k1] + D SPE[k1, k1]))/(4 (1 -
+	D) SPD[k1, k1]) + (FAD[q1, q1 - q2, -k1 + q2] FVE[
+	k1, \[Mu]] SPD[k1, q1] SPD[k1, q2] SPE[k1,
+	k1] (-3 SPD[k1, k1] + 2 SPE[k1, k1] + D SPE[k1, k1]))/(2 (1 -
+	D) SPD[k1, k1]^3))"}
 })

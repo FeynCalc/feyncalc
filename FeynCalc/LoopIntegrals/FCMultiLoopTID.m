@@ -25,13 +25,6 @@ FCMultiLoopTID::failmsg =
 "Error! FCMultiLoopTID has encountered a fatal problem and must abort the \
 computation. The problem reads: `1`"
 
-
-FCMultiLoopTID::nomulti =
-"Warning! Your input contains 1-loop tensor integrals that depend on the given \
-loop momenta but no multi-loop tensor integrals. FCMultiLoopTID does not perform \
-1-loop tensor decompositions. For that you should use TID. The input expression \
-will not be processed further.";
-
 FCMultiLoopTID::gramzero =
 "Warning! One of the multi-loop tensor integrals contains vanishing Gram determinants. \
 FCMultiLoopTID cannot handle such cases properly.";
@@ -70,7 +63,7 @@ FCMultiLoopTID[expr_List, qs_List/; FreeQ[qs, OptionQ], opts:OptionsPattern[]] :
 FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 	Block[{	n, ex, rest, loopInts, intsUnique, repRule, solsList,
 			null1, null2, res,  tmpli, time, mltidIsolate, optFactoring,
-			optTimeConstrained, optUncontract},
+			optTimeConstrained, optUncontract, pairUncontract, cpairUncontract},
 
 		optFactoring = OptionValue[Factoring];
 		optTimeConstrained = OptionValue[TimeConstrained];
@@ -154,8 +147,13 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 		time=AbsoluteTime[];
 		FCPrint[1, "FCMultiLoopTID: Uncontracting Lorentz indices.", FCDoControl->mltidVerbose];
 
+		pairUncontract = Join[optUncontract,(Momentum[#, n - 4]&/@qs),(Momentum/@qs)];
+		cpairUncontract = Join[optUncontract,(CartesianMomentum[#, n - 4]&/@qs),(CartesianMomentum/@qs)];
 
-		ex = Uncontract[ex, Sequence@@qs, Pair -> optUncontract, CartesianPair-> optUncontract, FCI->True];
+		FCPrint[2, "FCMultiLoopTID: Lorentz vectors to be uncontracted: ", pairUncontract, FCDoControl->mltidVerbose];
+		FCPrint[2, "FCMultiLoopTID: Cartesian vectors to be uncontracted: ", cpairUncontract, FCDoControl->mltidVerbose];
+
+		ex = Uncontract[ex, Sequence@@qs, Pair -> pairUncontract, CartesianPair-> cpairUncontract, FCI->True];
 
 		If[	!FreeQ[ex,DiracTrace],
 			FCPrint[1, "FCMultiLoopTID: Applying FCTraceExpand.", FCDoControl->mltidVerbose];

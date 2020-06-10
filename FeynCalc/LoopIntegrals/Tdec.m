@@ -50,10 +50,6 @@ Tdec::tencon =
 "Tdec failed to generate the list of tensors to convert the tensor equation into a \
 linear system. Evaluation aborted!";
 
-Tdec::indices =
-"Tdec has detected that the integral contains loop momenta with idential Lorentz indices. \
-Evaluation aborted!";
-
 Tdec::failmsg =
 "Error! TID has encountered a fatal problem and must abort the computation. \
 The problem reads: `1`"
@@ -358,11 +354,6 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 
 		If [!FreeQ2[$ScalarProducts, mlis],
 			Message[Tdec::looprules];
-			Abort[]
-		];
-
-		If[Sort[lis]=!=Union[lis],
-			Message[Tdec::indices];
 			Abort[]
 		];
 
