@@ -1222,15 +1222,15 @@ Tests`Dirac`fcstDiracTrick = {
 {"fcstDiracTrick-ID28","DiracTrick[GAD[mu, 7].GSD[p1 - q].GAD[nu, rho, 6],
 InsideDiracTrace -> True, Evaluate -> False,
 FCE -> True]", "GAD[mu].GSD[p1 - q].GAD[nu].GAD[rho].GA[6]"},
-{"fcstDiracTrick-ID29","FCSetDiracGammaScheme[\"NDR-Drop\"]; \n
+{"fcstDiracTrick-ID29","FCSetDiracGammaScheme[\"NDR-Discard\"]; \n
 tmp = DiracTrick[GAD[mu, nu, rho, si, 5], InsideDiracTrace -> True,
 Evaluate -> False]; \n
 FCSetDiracGammaScheme[\"NDR\"]; \n tmp", "0"},
-{"fcstDiracTrick-ID30","FCSetDiracGammaScheme[\"NDR-Drop\"]; \n
+{"fcstDiracTrick-ID30","FCSetDiracGammaScheme[\"NDR-Discard\"]; \n
 tmp = DiracTrick[GAD[mu, nu, rho, si, 6], InsideDiracTrace -> True,
 Evaluate -> False, FCE -> True]; \n
 FCSetDiracGammaScheme[\"NDR\"]; \n tmp", "1/2 GAD[mu].GAD[nu].GAD[rho].GAD[si]"},
-{"fcstDiracTrick-ID31","FCSetDiracGammaScheme[\"NDR-Drop\"]; \n
+{"fcstDiracTrick-ID31","FCSetDiracGammaScheme[\"NDR-Discard\"]; \n
 tmp = DiracTrick[GAD[mu, nu, rho, si, 6], InsideDiracTrace -> True,
 Evaluate -> False, FCE -> True]; \n
 FCSetDiracGammaScheme[\"NDR\"]; \n tmp", "1/2 GAD[mu].GAD[nu].GAD[rho].GAD[si]"}
@@ -1767,7 +1767,7 @@ InsideDiracTrace -> True] // FCE",
 InsideDiracTrace -> True] // FCE",
 "4 SP[q, 2 p + q]"},
 {"fcstDiracTrickInsideDiracTrace-ID32",
-"FCSetDiracGammaScheme[\"NDR-Drop\"]; \n
+"FCSetDiracGammaScheme[\"NDR-Discard\"]; \n
 tmp = DiracTrick[GA[5].GS[pp1].GA[5], InsideDiracTrace -> True]; \n
 FCSetDiracGammaScheme[\"NDR\"]; \n tmp","0"}
 });

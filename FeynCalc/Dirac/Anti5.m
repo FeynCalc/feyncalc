@@ -193,7 +193,7 @@ anti5MoveRight[r_. holdDOT[b___, ch: (DiracGamma[5|6|7] | (_. DiracGamma[6] + _.
 anti5MoveRight[r_. ch:holdDOT[___, (DiracGamma[5|6|7] | (_. DiracGamma[6] + _. DiracGamma[7])), d__], Infinity] :=
 	r anti5MoveRight[FixedPoint[(# /. chiralTrickAnticommutingDDimRight -> commonGamma5Properties /. commonGamma5Properties -> chiralTrickAnticommutingDDimRight)&,
 	chiralTrickAnticommutingDDimRight@@ch]/. chiralTrickAnticommutingDDimRight->holdDOT, Infinity]/;
-	MemberQ[{"NDR","NDR-Drop"},FeynCalc`Package`DiracGammaScheme] && FreeQ[r,holdDOT] &&
+	MemberQ[{"NDR","NDR-Discard"},FeynCalc`Package`DiracGammaScheme] && FreeQ[r,holdDOT] &&
 	(MatchQ[FCGetDimensions[{d}, FreeQ->{DiracGamma[5],DiracGamma[6],DiracGamma[7]}, ChangeDimension->True],{_Symbol}]);
 
 (*			-> Limited number of rearrangements	*)
@@ -201,7 +201,7 @@ anti5MoveRight[r_. holdDOT[b___, ch: (DiracGamma[5|6|7] | (_. DiracGamma[6] + _.
 	r anti5MoveRight[FixedPoint[(# /. chiralTrickAnticommutingDDimRight -> commonGamma5Properties /. commonGamma5Properties -> chiralTrickAnticommutingDDimRight)&,
 	chiralTrickAnticommutingDDimRight@@Join[{b}/. DiracGamma->diga,{ch,c}, {d} /. DiracGamma->diga]]/.
 	chiralTrickAnticommutingDDimRight->holdDOT /.diga->DiracGamma, n+1]/;
-	MemberQ[{"NDR","NDR-Drop"},FeynCalc`Package`DiracGammaScheme] && FreeQ[r,holdDOT] && (n+1<=max) &&
+	MemberQ[{"NDR","NDR-Discard"},FeynCalc`Package`DiracGammaScheme] && FreeQ[r,holdDOT] && (n+1<=max) &&
 	MatchQ[FCGetDimensions[{c}, FreeQ->{DiracGamma[5],DiracGamma[6],DiracGamma[7]}, ChangeDimension->True],{_Symbol}];
 
 (*	------------------------------------------------------------------------------	*)
@@ -254,7 +254,7 @@ anti5MoveLeft[r_. holdDOT[b___, c_, ch:(DiracGamma[5|6|7] | (_. DiracGamma[6] + 
 anti5MoveLeft[r_. ch:holdDOT[d__, (DiracGamma[5|6|7] | (_. DiracGamma[6] + _. DiracGamma[7])), ___], -Infinity] :=
 	r anti5MoveLeft[FixedPoint[(# /. chiralTrickAnticommutingDDimLeft -> commonGamma5Properties /. commonGamma5Properties -> chiralTrickAnticommutingDDimLeft)&,
 							chiralTrickAnticommutingDDimLeft@@ch]/. chiralTrickAnticommutingDDimLeft->holdDOT, -Infinity]/;
-	MemberQ[{"NDR","NDR-Drop"},FeynCalc`Package`DiracGammaScheme] && FreeQ[r,holdDOT] &&
+	MemberQ[{"NDR","NDR-Discard"},FeynCalc`Package`DiracGammaScheme] && FreeQ[r,holdDOT] &&
 	(MatchQ[FCGetDimensions[{d}, FreeQ->{DiracGamma[5],DiracGamma[6],DiracGamma[7]}, ChangeDimension->True],{_Symbol}]);
 
 (*			-> Limited number of rearrangements	*)
@@ -262,7 +262,7 @@ anti5MoveLeft[r_. holdDOT[b___, c_, ch:(DiracGamma[5|6|7] | (_. DiracGamma[6] + 
 	r anti5MoveLeft[FixedPoint[(# /. chiralTrickAnticommutingDDimLeft -> commonGamma5Properties /. commonGamma5Properties -> chiralTrickAnticommutingDDimLeft)&,
 							chiralTrickAnticommutingDDimLeft@@Join[{b}/. DiracGamma->diga,{c,ch}, {d} /. DiracGamma->diga]]/.
 							chiralTrickAnticommutingDDimLeft->holdDOT /.diga->DiracGamma, n-1]/;
-		MemberQ[{"NDR","NDR-Drop"},FeynCalc`Package`DiracGammaScheme] && FreeQ[r,holdDOT] && (max<=n-1) &&
+		MemberQ[{"NDR","NDR-Discard"},FeynCalc`Package`DiracGammaScheme] && FreeQ[r,holdDOT] && (max<=n-1) &&
 		MatchQ[FCGetDimensions[{c}, FreeQ->{DiracGamma[5],DiracGamma[6],DiracGamma[7]}, ChangeDimension->True],{_Symbol}];
 
 (*	------------------------------------------------------------------------------	*)

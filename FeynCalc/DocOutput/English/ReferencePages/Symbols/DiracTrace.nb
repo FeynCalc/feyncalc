@@ -2710,14 +2710,14 @@ Cell[TextData[{
  Cell[BoxData[
   SuperscriptBox["\[Gamma]", "5"]], "InlineFormula"],
  " ",
- " do not contribute to your final result, use the new NDR-Drop scheme to put \
+ " do not contribute to your final result, use the new NDR-Discard scheme to put \
 them to zero"
 }], "ExampleText",
  CellID->2003592022],
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"FCSetDiracGammaScheme", "[", "\"\<NDR-Drop\>\"", "]"}], 
+  RowBox[{"FCSetDiracGammaScheme", "[", "\"\<NDR-Discard\>\"", "]"}], 
   ";"}]], "Input",
  CellLabel->"In[1]:="],
 

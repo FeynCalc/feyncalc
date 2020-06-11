@@ -472,14 +472,14 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"FCSetDiracGammaScheme", "[", "\"\<NDR-Drop\>\"", "]"}]], "Input",
+ RowBox[{"FCSetDiracGammaScheme", "[", "\"\<NDR-Discard\>\"", "]"}]], "Input",
  CellChangeTimes->{{3.777993466463647*^9, 3.7779934668019953`*^9}, {
   3.777994158092473*^9, 3.777994158893331*^9}},
  CellLabel->"In[75]:=",
  CellID->1854871493],
 
 Cell[BoxData[
- FormBox["\<\"NDR-Drop\"\>", TraditionalForm]], "Output",
+ FormBox["\<\"NDR-Discard\"\>", TraditionalForm]], "Output",
  CellChangeTimes->{
   3.7779934671030617`*^9, 3.77799415937857*^9, {3.777994215442657*^9, 
    3.777994221003694*^9}},
@@ -488,7 +488,7 @@ Cell[BoxData[
 }, Open  ]],
 
 Cell["\<\
-If you know that such traces do not contribute, use NDR-Drop scheme to put \
+If you know that such traces do not contribute, use NDR-Discard scheme to put \
 them to zero\
 \>", "ExampleText",
  CellChangeTimes->{{3.77799361089997*^9, 3.7779936391985693`*^9}, {

@@ -20,7 +20,7 @@
 
               FCSetDiracGammaScheme["NDR"]
 
-* Added a new scheme for handling g^5: `"NDR-Drop"`. It is like `"NDR"` but all the remaining traces with one g^5 (that NDR can't evaluate) are set to zero. It is meant to be applied in calculations where we know in advance that g^5 does not pose any issues. (031368f5)
+* Added a new scheme for handling g^5: `"NDR-Discard"`. It is like `"NDR"` but all the remaining traces with one g^5 (that NDR can't evaluate) are set to zero. It is meant to be applied in calculations where we know in advance that g^5 does not pose any issues. (031368f5)
 
 * Modified `ComplexConjugate` to automatically apply `FCRenameDummyIndices`. This can be turned off using the option named the same way. (d7708286)
 
@@ -979,7 +979,7 @@ function that is probably useful only in very special cases. The syntax is ident
 * Improved `DiracTrace` to evaluate simple traces before entering the main evaluation function via `DiracTrick`. (d60a0b6b)
 * Improved `DiracSimplify` not to miss certain contractions. (6a01f4dd)
 * Allowed `DiracChain` symbols to factor out an overall numerical coefficient. (e71bf706)
-* Added additional simplifications in `DiracTrick` for the `NDR-Drop` scheme. (021c5030)
+* Added additional simplifications in `DiracTrick` for the `NDR-Discard` scheme. (021c5030)
 * Added fast mode to `DiracTrace`. (53d2e07a)
 * Modified `DiracEquation` not to mess up the chiral structure of the input expressions. (43799615)
 * Refactored `Anti5` to call `DiracTrick` for all g^5-related manipulations. (f3a23a7f)

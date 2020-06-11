@@ -399,7 +399,7 @@ diracTraceEvaluate[expr_/;!FreeQ[expr,DiracGamma], opts:OptionsPattern[]] :=
 						traceListChiral = traceListChiral/. spurHead -> noSpur,
 
 					(*	NDR-Discard	*)
-					"NDR-Drop",
+					"NDR-Discard",
 						traceListChiral = ConstantArray[0, Length[traceListChiral]],
 
 					(*	Larin	*)

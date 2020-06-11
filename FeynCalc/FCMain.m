@@ -484,7 +484,7 @@ FCDisableTraditionalFormOutput[]:=
 
 
 FCSetDiracGammaScheme[s_String]:=
-	If[	MatchQ[s,"NDR"|"NDR-Drop"|"BMHV"|"Larin"],
+	If[	MatchQ[s,"NDR"|"NDR-Discard"|"BMHV"|"Larin"],
 		FeynCalc`Package`DiracGammaScheme = s,
 		Message[FeynCalc::failmsg, "Unknown scheme for Dirac matrices in D dimensions."];
 		Abort[]
