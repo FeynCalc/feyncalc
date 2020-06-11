@@ -357,6 +357,12 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 			Abort[]
 		];
 
+		(* One of the examples why this is needed: Tdec[{{l, mu1}, {l, mu1}, {l, mu3}}, {p}] *)
+		If[Sort[lis]=!=Union[lis],
+			Message[Tdec::failmsg, "Loop momenta with identical indices cannot be handled correctly."];
+			Abort[]
+		];
+
 		(* detect if we are dealing with a multiloop integral	*)
 		If[ Length@Union[mlis]=!=1,
 			multiLoop=True;
