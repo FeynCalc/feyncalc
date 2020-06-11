@@ -80,7 +80,7 @@ Options[Tdec] =	{
 	List 				-> True,
 	UseParallelization	-> True,
 	UseTIDL 			-> True,
-	UseFerSolve			-> True
+	UseFerSolve			-> False
 };
 
 SetAttributes[symmMT,Orderless];

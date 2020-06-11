@@ -63,12 +63,16 @@ FCMultiLoopTID[expr_List, qs_List/; FreeQ[qs, OptionQ], opts:OptionsPattern[]] :
 FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 	Block[{	n, ex, rest, loopInts, intsUnique, repRule, solsList,
 			null1, null2, res,  tmpli, time, mltidIsolate, optFactoring,
-			optTimeConstrained, optUncontract, pairUncontract, cpairUncontract},
+			optTimeConstrained, optUncontract, nonDmoms, nonDcmoms,
+			pairUncontract, cpairUncontract},
 
-		optFactoring = OptionValue[Factoring];
-		optTimeConstrained = OptionValue[TimeConstrained];
+		optFactoring 		= OptionValue[Factoring];
+		optTimeConstrained	= OptionValue[TimeConstrained];
+		optUncontract 		= OptionValue[Uncontract];
+		n 					= OptionValue[Dimension];
 
-		optUncontract = OptionValue[Uncontract];
+		nonDmoms  = Join[(Momentum[#, n - 4] & /@ qs),(Momentum/@ qs)];
+		nonDcmoms = Join[(CartesianMomentum[#, n - 4] & /@ qs),(CartesianMomentum/@ qs)];
 
 		If [OptionValue[FCVerbose]===False,
 			mltidVerbose=$VeryVerbose,
@@ -89,8 +93,6 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 
 		FCPrint[1,"FCMultiLoopTID: Entering. ", FCDoControl->mltidVerbose];
 		FCPrint[3,"FCMultiLoopTID: Entering FCMultiLoopTID with: ", ex, FCDoControl->mltidVerbose];
-
-		n = OptionValue[Dimension];
 
 		If[ FreeQ2[ex,qs],
 			Return[ex]
@@ -127,7 +129,7 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 		];
 
 		ex = Collect2[ex, qs, Factoring -> optFactoring, TimeConstrained -> optTimeConstrained, IsolateNames -> mltidIsolate]  /.
-			(h: Pair|FeynAmpDenominator)[x__] /; !FreeQ[{x}, q] :> FRH[h[x], IsolateNames->mltidIsolate];
+			(h: Pair|FeynAmpDenominator)[x__] /; !FreeQ[{x}, q_]/; MemberQ[qs,q] :> FRH[h[x], IsolateNames->mltidIsolate];
 
 		(* Single out relevant loop momenta *)
 		time=AbsoluteTime[];
@@ -147,8 +149,8 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 		time=AbsoluteTime[];
 		FCPrint[1, "FCMultiLoopTID: Uncontracting Lorentz indices.", FCDoControl->mltidVerbose];
 
-		pairUncontract = Join[optUncontract,(Momentum[#, n - 4]&/@qs),(Momentum/@qs)];
-		cpairUncontract = Join[optUncontract,(CartesianMomentum[#, n - 4]&/@qs),(CartesianMomentum/@qs)];
+		pairUncontract  = Join[optUncontract, nonDmoms];
+		cpairUncontract = Join[optUncontract, nonDcmoms];
 
 		FCPrint[2, "FCMultiLoopTID: Lorentz vectors to be uncontracted: ", pairUncontract, FCDoControl->mltidVerbose];
 		FCPrint[2, "FCMultiLoopTID: Cartesian vectors to be uncontracted: ", cpairUncontract, FCDoControl->mltidVerbose];
@@ -185,11 +187,12 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 				CartesianPair[CartesianMomentum[q_],CartesianIndex[i_]]/; MemberQ[qs,q] :>
 					(tmpli=Unique[];  CartesianPair[CartesianMomentum[q,n-1],CartesianIndex[tmpli,n-1]] CartesianPair[CartesianIndex[tmpli],CartesianIndex[i]])
 			};
-			If[ !FreeQ2[ex, {Pair[Momentum[q,n-4],LorentzIndex[_,n-4]],Pair[Momentum[q],LorentzIndex[_]],
-					CartesianPair[CartesianMomentum[q,n-4],CartesianIndex[_,n-4]],CartesianPair[CartesianMomentum[q],CartesianIndex[_]]}],
+
+			If[ !FreeQ2[ex, Join[nonDmoms,nonDcmoms]],
 				Message[FCMultiLoopTID::failmsg,"Failed to eliminate 4 and D-4 dimensional loop momenta."];
 				Abort[]
 			];
+
 			FCPrint[2,"FCMultiLoopTID: Tensor parts after handling 4 and D-4 dimensional loop momenta: ", ex, FCDoControl->mltidVerbose];
 			FCPrint[1, "FCMultiLoopTID: Done handling 4 and D-4 dimensional loop momenta, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
 		];
