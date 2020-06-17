@@ -88,6 +88,10 @@ is useful for converting the output of different diagram generators such as \
 FeynArts or QGAF into the FeynCalc notation. It uses memoization to improve the \
 performance."
 
+FCMapWithProgressBar::usage =
+"FCMapWithProgressBar[f, expr] is like Map[f,@expr] but with a graphical
+progress bar to show the progress of the evaluation.";
+
 FCPatternFreeQ::usage =
 "FCPatternFreeQ[{exp}] yields True if {exp} does not contain any \
 pattern objects, e.g. Pattern, Blank, BlankSequence and BlankNullSequence. \n
@@ -247,7 +251,10 @@ which every element li satisfies a criterium pj[li] with pj from p and \
 appends the subset of remaining unmatched elements.";
 
 XYT::usage=
-"XYT[exp, x,y] transforms  (x y)^m away ..."
+"XYT[exp, x,y] transforms  (x y)^m away ...";
+
+FCMapWithProgressBar::failmsg = "Error! FCMapWithProgressBar has encountered a fatal problem and must abort the computation. \n
+The problem reads: `1`";
 
 FCProductSplit::failmsg = "Error! FCProductSplit has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`";
@@ -511,6 +518,31 @@ FCMakeIndex[x_String, y_Integer, head_: Identity] :=
 	MemSet[	FCMakeIndex[x, y, head],
 			head[ToExpression[x <> "Minus" <> ToString[-y]]]
 	]/; y < 0;
+
+
+FCMapWithProgressBar[x_, y_, OptionsPattern[]] :=
+	Block[{iter = 0, len= Length[y], xNew, res},
+
+		If[	Head[x] =!= Function,
+			Message[FCMapWithProgressBar::failmsg,"The head of the first argument must be a Function"];
+			Abort[]
+		];
+
+		If[	$FrontEnd===Null,
+			(*No FrontEnd*)
+			FCPrint[0, "Unfortunately, the progress bar requires the graphical Front End."];
+			(*TODO: Command line implementation, cf. https://mathematica.stackexchange.com/questions/183632/any-ergonomic-tools-for-the-command-line-kernel *)
+			res = Map[x,y],
+			(*FrontEnd is available*)
+			xNew = x /. Function[z_] :> Function[CompoundExpression[iter++, z]];
+			Monitor[
+				res = Map[xNew, y],
+				Grid[{{ProgressIndicator[iter, {1, len}]}, {Row[{iter, "/", len}]}}]
+			]
+		];
+
+		res
+	];
 
 FCFactorOut[expr_,pref_,OptionsPattern[]]:=
 	pref OptionValue[Head][OptionValue[Factoring][expr/pref]];
