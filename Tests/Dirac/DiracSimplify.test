@@ -224,7 +224,10 @@ Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i2].GAD[i3].GAD[i4].GAD[
 	6]], FCE -> True]",
 "(16 e^4 SP[k1, p2] SP[k2, p1])/s^2"},
 {"fcstDiracSimplify-ID45","DiracSimplify[{GS[p, p].GA[mu], GS[p].GA[mu].GS[p]}, FCE -> True]",
-"{GA[mu] SP[p, p], 2 FV[p, mu] GS[p] - GA[mu] SP[p, p]}"}
+"{GA[mu] SP[p, p], 2 FV[p, mu] GS[p] - GA[mu] SP[p, p]}"},
+{"fcstDiracSimplify-ID46",
+"DiracSimplify[GAD[mu].(GSD[p + q] + m).GAD[mu],FCE->True]",
+"D m + 2 GSD[p] - D GSD[p] + 2 GSD[q] - D GSD[q]"}
 };
 
 
@@ -451,10 +454,7 @@ MT[al,tau] MT[be,rho]]", "True"},
 SpinorU[p4,m4],FCE\[Rule]True,SirlinSimplify->True],\[IndentingNewLine]16 \
 Spinor[Momentum[p3],m3,1].GA[a_].GA[7].Spinor[Momentum[p1],m1,1] \
 Spinor[Momentum[p4],m4,1].GA[a_].GA[6].Spinor[Momentum[p4],m4,1] \
-MT[al,tau] MT[be,rho]]", "True"},
-{"fcstDiracSimplifySirlin-ID27",
-"DiracSimplify[GAD[mu].(GSD[p + q] + m).GAD[mu]]",
-"D m + 2 GSD[p] - D GSD[p] + 2 GSD[q] - D GSD[q]"}
+MT[al,tau] MT[be,rho]]", "True"}
 });
 
 
