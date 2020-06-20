@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16071,        555]
+NotebookDataLength[     16015,        554]
 NotebookOptionsPosition[     10799,        395]
-NotebookOutlinePosition[     14249,        489]
-CellTagsIndexPosition[     14129,        483]
+NotebookOutlinePosition[     14193,        488]
+CellTagsIndexPosition[     14073,        482]
 WindowTitle->PartialIntegrate
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ PartialIntegrate.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$201988], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$202996], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/PartialIntegrate", ".html"]], None}]}]},
@@ -133,7 +133,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1636965545],
+ CellID->492886887],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -177,7 +177,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1910558346],
+ CellID->1614921283],
 
 Cell[CellGroupData[{
 
@@ -187,7 +187,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->740972048],
+ CellID->1308039257],
 
 Cell[CellGroupData[{
 
@@ -408,7 +408,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 19, 0, 26.375258}", 
+   "built" -> "{2020, 6, 20, 19, 9, 17.175232}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -429,8 +429,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -440,10 +439,10 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PartialIntegrate"->{
-  Cell[4622, 141, 150, 4, 70, "Input",
+  Cell[4621, 141, 150, 4, 70, "Input",
    CellTags->"PartialIntegrate",
    CellID->1554098382],
-  Cell[4775, 147, 291, 10, 37, "Output",
+  Cell[4774, 147, 291, 10, 37, "Output",
    CellTags->"PartialIntegrate",
    CellID->1807152704],
   Cell[5760, 193, 343, 11, 27, "Input",
@@ -475,15 +474,15 @@ CellTagsIndex->{
    CellTags->"PartialIntegrate",
    CellID->1553816606]},
  "PrimaryExamplesSection"->{
-  Cell[5127, 164, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[5126, 164, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1910558346]}
+   CellID->1614921283]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PartialIntegrate", 12805, 441},
- {"PrimaryExamplesSection", 13985, 476}
+ {"PartialIntegrate", 12749, 440},
+ {"PrimaryExamplesSection", 13929, 475}
  }
 *)
 (*NotebookFileOutline
@@ -495,27 +494,27 @@ Cell[CellGroupData[{
 Cell[3215, 91, 584, 16, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3824, 111, 739, 24, 31, "NotesSection",
+Cell[3824, 111, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1636965545],
-Cell[4566, 137, 31, 0, 70, "SectionHeaderSpacer"],
+ CellID->492886887],
+Cell[4565, 137, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[4622, 141, 150, 4, 70, "Input",
+Cell[4621, 141, 150, 4, 70, "Input",
  CellTags->"PartialIntegrate",
  CellID->1554098382],
-Cell[4775, 147, 291, 10, 37, "Output",
+Cell[4774, 147, 291, 10, 37, "Output",
  CellTags->"PartialIntegrate",
  CellID->1807152704]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5127, 164, 388, 15, 31, "PrimaryExamplesSection",
+Cell[5126, 164, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1910558346],
+ CellID->1614921283],
 Cell[CellGroupData[{
-Cell[5540, 183, 195, 6, 26, "ExampleSection",
- CellID->740972048],
+Cell[5539, 183, 196, 6, 26, "ExampleSection",
+ CellID->1308039257],
 Cell[CellGroupData[{
 Cell[5760, 193, 343, 11, 27, "Input",
  CellTags->"PartialIntegrate",

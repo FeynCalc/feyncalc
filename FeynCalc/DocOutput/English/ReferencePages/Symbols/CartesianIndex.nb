@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11606,        387]
+NotebookDataLength[     11550,        386]
 NotebookOptionsPosition[      7658,        268]
-NotebookOutlinePosition[     10397,        342]
-CellTagsIndexPosition[     10283,        336]
+NotebookOutlinePosition[     10341,        341]
+CellTagsIndexPosition[     10227,        335]
 WindowTitle->CartesianIndex
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ CartesianIndex.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$32114], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$32219], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/CartesianIndex", ".html"]], None}]}]},
@@ -142,7 +142,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1933641052],
+ CellID->1978337280],
 
 Cell[CellGroupData[{
 
@@ -152,7 +152,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1779288678],
+ CellID->1703966141],
 
 Cell["This denotes a 3-dimensional Cartesian index.", "Notes",
  CellID->1041402073],
@@ -281,7 +281,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 53, 0.531766}", 
+   "built" -> "{2020, 6, 20, 19, 2, 38.003223}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -304,8 +304,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -317,7 +316,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4640, 129, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1933641052]},
+   CellID->1978337280]},
  "LorentzIndex"->{
   Cell[5360, 161, 138, 4, 27, "Input",
    CellTags->"LorentzIndex",
@@ -335,8 +334,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9748, 316},
- {"LorentzIndex", 9888, 320}
+ {"PrimaryExamplesSection", 9692, 315},
+ {"LorentzIndex", 9832, 319}
  }
 *)
 (*NotebookFileOutline
@@ -349,10 +348,10 @@ Cell[4035, 112, 580, 13, 119, "Usage",
 Cell[CellGroupData[{
 Cell[4640, 129, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1933641052],
+ CellID->1978337280],
 Cell[CellGroupData[{
 Cell[5053, 148, 196, 6, 26, "ExampleSection",
- CellID->1779288678],
+ CellID->1703966141],
 Cell[5252, 156, 83, 1, 32, "Notes",
  CellID->1041402073],
 Cell[CellGroupData[{

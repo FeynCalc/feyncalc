@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8435,        268]
+NotebookDataLength[      8380,        267]
 NotebookOptionsPosition[      5585,        186]
-NotebookOutlinePosition[      7822,        244]
-CellTagsIndexPosition[      7738,        239]
+NotebookOutlinePosition[      7767,        243]
+CellTagsIndexPosition[      7683,        238]
 WindowTitle->Complement1
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Complement1.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$44597], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$44702], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Complement1", ".html"]], None}]}]},
@@ -120,7 +120,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->395011177],
+ CellID->945059737],
 
 Cell[CellGroupData[{
 
@@ -130,7 +130,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1826473269],
+ CellID->1868983192],
 
 Cell[CellGroupData[{
 
@@ -149,7 +149,7 @@ Cell[BoxData[
  FormBox[
   RowBox[{"{", 
    RowBox[{"e", ",", "f"}], "}"}], TraditionalForm]], "Output",
- ImageSize->{46, 14},
+ ImageSize->{46, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[1]=",
@@ -173,7 +173,7 @@ Cell[BoxData[
  FormBox[
   RowBox[{"{", 
    RowBox[{"e", ",", "f", ",", "e"}], "}"}], TraditionalForm]], "Output",
- ImageSize->{65, 14},
+ ImageSize->{65, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]=",
@@ -187,7 +187,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"Complement1",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -199,7 +199,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 53, 34.890501}", 
+   "built" -> "{2020, 6, 20, 19, 3, 7.859070}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -220,8 +220,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 29}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -233,12 +232,12 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3761, 107, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->395011177]}
+   CellID->945059737]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7595, 232}
+ {"PrimaryExamplesSection", 7540, 231}
  }
 *)
 (*NotebookFileOutline
@@ -251,20 +250,20 @@ Cell[3162, 89, 574, 14, 102, "Usage",
 Cell[CellGroupData[{
 Cell[3761, 107, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->395011177],
+ CellID->945059737],
 Cell[CellGroupData[{
 Cell[4173, 126, 196, 6, 26, "ExampleSection",
- CellID->1826473269],
+ CellID->1868983192],
 Cell[CellGroupData[{
 Cell[4394, 136, 301, 9, 27, "Input",
  CellID->96347288],
-Cell[4698, 147, 233, 8, 35, "Output",
+Cell[4698, 147, 233, 8, 37, "Output",
  CellID->621941775]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[4968, 160, 304, 9, 27, "Input",
  CellID->1748046804],
-Cell[5275, 171, 244, 8, 35, "Output",
+Cell[5275, 171, 244, 8, 37, "Output",
  CellID->1849514241]
 }, Open  ]]
 }, Open  ]]

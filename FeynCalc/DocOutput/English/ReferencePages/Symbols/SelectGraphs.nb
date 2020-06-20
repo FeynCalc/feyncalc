@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7553,        217]
+NotebookDataLength[      7555,        217]
 NotebookOptionsPosition[      5172,        156]
-NotebookOutlinePosition[      7346,        209]
-CellTagsIndexPosition[      7303,        206]
+NotebookOutlinePosition[      7348,        209]
+CellTagsIndexPosition[      7305,        206]
 WindowTitle->SelectGraphs
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ SelectGraphs.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$228960], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$229977], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/SelectGraphs", ".html"]], None}]}]},
@@ -169,7 +169,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 19, 1, 34.410470}", 
+   "built" -> "{2020, 6, 20, 19, 10, 18.845005}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

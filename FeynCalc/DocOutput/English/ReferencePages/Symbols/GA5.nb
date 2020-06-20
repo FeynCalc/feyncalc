@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9823,        335]
-NotebookOptionsPosition[      6629,        235]
-NotebookOutlinePosition[      8985,        303]
-CellTagsIndexPosition[      8880,        297]
+NotebookDataLength[      9761,        334]
+NotebookOptionsPosition[      6627,        235]
+NotebookOutlinePosition[      8925,        302]
+CellTagsIndexPosition[      8820,        296]
 WindowTitle->GA5
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ Cell[BoxData[GridBox[{
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$148690], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$149698], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/GA5", 
              ".html"]], None}]}]},
@@ -140,7 +140,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1661467686],
+ CellID->733126830],
 
 Cell[CellGroupData[{
 
@@ -150,7 +150,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1558667183],
+ CellID->601895162],
 
 Cell[CellGroupData[{
 
@@ -248,7 +248,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 58, 15.088315}", 
+   "built" -> "{2020, 6, 20, 19, 7, 17.703498}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -267,8 +267,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -278,26 +277,26 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4376, 127, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4376, 127, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1661467686]},
+   CellID->733126830]},
  "GA5"->{
-  Cell[5010, 156, 89, 3, 27, "Input",
+  Cell[5008, 156, 89, 3, 27, "Input",
    CellTags->"GA5",
    CellID->51140118],
-  Cell[5102, 161, 273, 10, 40, "Output",
+  Cell[5100, 161, 273, 10, 40, "Output",
    CellTags->"GA5"],
-  Cell[5412, 176, 122, 4, 27, "Input",
+  Cell[5410, 176, 122, 4, 27, "Input",
    CellTags->"GA5",
    CellID->306400430],
-  Cell[5537, 182, 207, 6, 51, "Output",
+  Cell[5535, 182, 207, 6, 51, "Output",
    CellTags->"GA5"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8440, 279},
- {"GA5", 8571, 283}
+ {"PrimaryExamplesSection", 8381, 278},
+ {"GA5", 8511, 282}
  }
 *)
 (*NotebookFileOutline
@@ -308,35 +307,35 @@ Cell[3712, 99, 280, 11, 45, "ObjectNameGrid"],
 Cell[3995, 112, 356, 11, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4376, 127, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4376, 127, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1661467686],
+ CellID->733126830],
 Cell[CellGroupData[{
-Cell[4789, 146, 196, 6, 26, "ExampleSection",
- CellID->1558667183],
+Cell[4788, 146, 195, 6, 26, "ExampleSection",
+ CellID->601895162],
 Cell[CellGroupData[{
-Cell[5010, 156, 89, 3, 27, "Input",
+Cell[5008, 156, 89, 3, 27, "Input",
  CellTags->"GA5",
  CellID->51140118],
-Cell[5102, 161, 273, 10, 40, "Output",
+Cell[5100, 161, 273, 10, 40, "Output",
  CellTags->"GA5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5412, 176, 122, 4, 27, "Input",
+Cell[5410, 176, 122, 4, 27, "Input",
  CellTags->"GA5",
  CellID->306400430],
-Cell[5537, 182, 207, 6, 51, "Output",
+Cell[5535, 182, 207, 6, 51, "Output",
  CellTags->"GA5"]
 }, Open  ]]
 }, Open  ]],
-Cell[5771, 192, 31, 0, 29, "SectionFooterSpacer"]
+Cell[5769, 192, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5839, 197, 270, 12, 31, "SeeAlsoSection",
+Cell[5837, 197, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6112, 211, 475, 19, 56, "SeeAlso"]
+Cell[6110, 211, 475, 19, 56, "SeeAlso"]
 }, Open  ]],
-Cell[6602, 233, 23, 0, 41, "FooterCell"]
+Cell[6600, 233, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

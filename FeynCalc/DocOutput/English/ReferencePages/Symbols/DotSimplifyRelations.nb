@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7115,        211]
+NotebookDataLength[      7116,        211]
 NotebookOptionsPosition[      4971,        153]
-NotebookOutlinePosition[      6908,        203]
-CellTagsIndexPosition[      6865,        200]
+NotebookOutlinePosition[      6909,        203]
+CellTagsIndexPosition[      6866,        200]
 WindowTitle->DotSimplifyRelations
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ DotSimplifyRelations.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$75837], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$75957], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/DotSimplifyRelations", ".html"]], None}]}]},
@@ -166,7 +166,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 55, 0.360744}", 
+   "built" -> "{2020, 6, 20, 19, 4, 23.923212}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

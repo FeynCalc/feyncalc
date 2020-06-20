@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     43066,       1592]
-NotebookOptionsPosition[     36707,       1392]
-NotebookOutlinePosition[     39392,       1465]
-CellTagsIndexPosition[     39270,       1459]
+NotebookDataLength[     43068,       1592]
+NotebookOptionsPosition[     36708,       1392]
+NotebookOutlinePosition[     39393,       1465]
+CellTagsIndexPosition[     39271,       1459]
 WindowTitle->ComplexConjugate
 WindowFrame->Normal*)
 
@@ -83,7 +83,7 @@ ComplexConjugate.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$45490], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$45595], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/ComplexConjugate", ".html"]], None}]}]},
@@ -155,7 +155,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->426363996],
+ CellID->1529286106],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -212,7 +212,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1876031002],
+ CellID->1702587635],
 
 Cell[CellGroupData[{
 
@@ -222,7 +222,7 @@ Cell[TextData[{
  Cell["(4)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1613801871],
+ CellID->2110068628],
 
 Cell[TextData[{
  ButtonBox["ComplexConjugate",
@@ -1405,7 +1405,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 53, 37.373424}", 
+   "built" -> "{2020, 6, 20, 19, 3, 10.040372}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1435,31 +1435,31 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[6434, 199, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[6435, 199, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1876031002]},
+   CellID->1702587635]},
  "ComplexConjugate"->{
-  Cell[21640, 761, 201, 6, 27, "Input",
+  Cell[21641, 761, 201, 6, 27, "Input",
    CellTags->"ComplexConjugate",
    CellID->1865346448],
-  Cell[21844, 769, 749, 31, 40, "Output",
+  Cell[21845, 769, 749, 31, 40, "Output",
    CellTags->"ComplexConjugate"],
-  Cell[22630, 805, 144, 4, 27, "Input",
+  Cell[22631, 805, 144, 4, 27, "Input",
    CellTags->"ComplexConjugate",
    CellID->1483149425],
-  Cell[22777, 811, 749, 31, 40, "Output",
+  Cell[22778, 811, 749, 31, 40, "Output",
    CellTags->"ComplexConjugate"],
-  Cell[32639, 1225, 144, 4, 27, "Input",
+  Cell[32640, 1225, 144, 4, 27, "Input",
    CellTags->"ComplexConjugate",
    CellID->1414819233],
-  Cell[32786, 1231, 814, 31, 42, "Output",
+  Cell[32787, 1231, 814, 31, 42, "Output",
    CellTags->"ComplexConjugate"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 38581, 1436},
- {"ComplexConjugate", 38725, 1440}
+ {"PrimaryExamplesSection", 38582, 1436},
+ {"ComplexConjugate", 38726, 1440}
  }
 *)
 (*NotebookFileOutline
@@ -1471,129 +1471,129 @@ Cell[CellGroupData[{
 Cell[4171, 116, 492, 13, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4688, 133, 738, 24, 31, "NotesSection",
+Cell[4688, 133, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->426363996],
-Cell[5429, 159, 31, 0, 70, "SectionHeaderSpacer"],
-Cell[5463, 161, 157, 3, 70, "Notes"],
-Cell[5623, 166, 116, 4, 70, "Notes"],
+ CellID->1529286106],
+Cell[5430, 159, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[5464, 161, 157, 3, 48, "Notes"],
+Cell[5624, 166, 116, 4, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[5764, 174, 100, 2, 70, "Input"],
-Cell[5867, 178, 506, 14, 56, "Output"]
+Cell[5765, 174, 100, 2, 27, "Input"],
+Cell[5868, 178, 506, 14, 56, "Output"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6434, 199, 388, 15, 31, "PrimaryExamplesSection",
+Cell[6435, 199, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1876031002],
+ CellID->1702587635],
 Cell[CellGroupData[{
-Cell[6847, 218, 196, 6, 26, "ExampleSection",
- CellID->1613801871],
-Cell[7046, 226, 525, 15, 49, "Notes"],
+Cell[6848, 218, 196, 6, 26, "ExampleSection",
+ CellID->2110068628],
+Cell[7047, 226, 525, 15, 49, "Notes"],
 Cell[CellGroupData[{
-Cell[7596, 245, 2050, 56, 189, "Input"],
-Cell[9649, 303, 6776, 242, 118, "Output"]
+Cell[7597, 245, 2050, 56, 189, "Input"],
+Cell[9650, 303, 6776, 242, 118, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16462, 550, 105, 2, 9, "ExampleDelimiter"],
-Cell[16570, 554, 202, 4, 49, "Notes"],
+Cell[16463, 550, 105, 2, 9, "ExampleDelimiter"],
+Cell[16571, 554, 202, 4, 49, "Notes"],
 Cell[CellGroupData[{
-Cell[16797, 562, 82, 2, 27, "Input"],
-Cell[16882, 566, 295, 11, 37, "Output"]
+Cell[16798, 562, 82, 2, 27, "Input"],
+Cell[16883, 566, 295, 11, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17214, 582, 92, 2, 27, "Input"],
-Cell[17309, 586, 295, 11, 37, "Output"]
+Cell[17215, 582, 92, 2, 27, "Input"],
+Cell[17310, 586, 295, 11, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17641, 602, 78, 2, 27, "Input"],
-Cell[17722, 606, 255, 9, 40, "Output"]
+Cell[17642, 602, 78, 2, 27, "Input"],
+Cell[17723, 606, 255, 9, 40, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18014, 620, 92, 2, 27, "Input"],
-Cell[18109, 624, 277, 10, 40, "Output"]
+Cell[18015, 620, 92, 2, 27, "Input"],
+Cell[18110, 624, 277, 10, 40, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18423, 639, 604, 18, 63, "Input"],
-Cell[19030, 659, 1321, 48, 42, "Output"]
+Cell[18424, 639, 604, 18, 63, "Input"],
+Cell[19031, 659, 1321, 48, 42, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[20388, 712, 92, 2, 27, "Input"],
-Cell[20483, 716, 1120, 40, 42, "Output"]
+Cell[20389, 712, 92, 2, 27, "Input"],
+Cell[20484, 716, 1120, 40, 42, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[21640, 761, 201, 6, 27, "Input",
+Cell[21641, 761, 201, 6, 27, "Input",
  CellTags->"ComplexConjugate",
  CellID->1865346448],
-Cell[21844, 769, 749, 31, 40, "Output",
+Cell[21845, 769, 749, 31, 40, "Output",
  CellTags->"ComplexConjugate"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[22630, 805, 144, 4, 27, "Input",
+Cell[22631, 805, 144, 4, 27, "Input",
  CellTags->"ComplexConjugate",
  CellID->1483149425],
-Cell[22777, 811, 749, 31, 40, "Output",
+Cell[22778, 811, 749, 31, 40, "Output",
  CellTags->"ComplexConjugate"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[23575, 848, 105, 2, 9, "ExampleDelimiter"],
-Cell[23683, 852, 238, 7, 32, "Notes"],
+Cell[23576, 848, 105, 2, 9, "ExampleDelimiter"],
+Cell[23684, 852, 238, 7, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[23946, 863, 281, 8, 27, "Input"],
-Cell[24230, 873, 907, 37, 37, "Output"]
+Cell[23947, 863, 281, 8, 27, "Input"],
+Cell[24231, 873, 907, 37, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[25174, 915, 92, 2, 27, "Input"],
-Cell[25269, 919, 1234, 45, 40, "Output"]
+Cell[25175, 915, 92, 2, 27, "Input"],
+Cell[25270, 919, 1234, 45, 40, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[26540, 969, 245, 8, 27, "Input"],
-Cell[26788, 979, 1104, 46, 43, "Output"]
+Cell[26541, 969, 245, 8, 27, "Input"],
+Cell[26789, 979, 1104, 46, 43, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[27929, 1030, 92, 2, 27, "Input"],
-Cell[28024, 1034, 1281, 48, 43, "Output"]
+Cell[27930, 1030, 92, 2, 27, "Input"],
+Cell[28025, 1034, 1281, 48, 43, "Output"]
 }, Open  ]],
-Cell[29320, 1085, 294, 9, 32, "Notes"],
+Cell[29321, 1085, 294, 9, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[29639, 1098, 377, 11, 45, "Input"],
-Cell[30019, 1111, 965, 40, 43, "Output"]
+Cell[29640, 1098, 377, 11, 45, "Input"],
+Cell[30020, 1111, 965, 40, 43, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[31033, 1157, 105, 2, 9, "ExampleDelimiter"],
-Cell[31141, 1161, 171, 5, 32, "Notes"],
+Cell[31034, 1157, 105, 2, 9, "ExampleDelimiter"],
+Cell[31142, 1161, 171, 5, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[31337, 1170, 311, 10, 27, "Input"],
-Cell[31651, 1182, 951, 38, 42, "Output"]
+Cell[31338, 1170, 311, 10, 27, "Input"],
+Cell[31652, 1182, 951, 38, 42, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[32639, 1225, 144, 4, 27, "Input",
+Cell[32640, 1225, 144, 4, 27, "Input",
  CellTags->"ComplexConjugate",
  CellID->1414819233],
-Cell[32786, 1231, 814, 31, 42, "Output",
+Cell[32787, 1231, 814, 31, 42, "Output",
  CellTags->"ComplexConjugate"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[33637, 1267, 485, 15, 45, "Input"],
-Cell[34125, 1284, 867, 34, 43, "Output"]
+Cell[33638, 1267, 485, 15, 45, "Input"],
+Cell[34126, 1284, 867, 34, 43, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[35029, 1323, 84, 2, 27, "Input"],
-Cell[35116, 1327, 604, 17, 86, "Output"]
+Cell[35030, 1323, 84, 2, 27, "Input"],
+Cell[35117, 1327, 604, 17, 86, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[35759, 1349, 31, 0, 29, "SectionFooterSpacer"]
+Cell[35760, 1349, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[35827, 1354, 270, 12, 31, "SeeAlsoSection",
+Cell[35828, 1354, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[36100, 1368, 565, 19, 56, "SeeAlso"]
+Cell[36101, 1368, 565, 19, 56, "SeeAlso"]
 }, Open  ]],
-Cell[36680, 1390, 23, 0, 41, "FooterCell"]
+Cell[36681, 1390, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

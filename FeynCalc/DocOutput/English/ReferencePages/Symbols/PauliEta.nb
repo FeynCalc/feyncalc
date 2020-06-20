@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9459,        324]
-NotebookOptionsPosition[      6427,        231]
-NotebookOutlinePosition[      8542,        288]
-CellTagsIndexPosition[      8458,        283]
+NotebookDataLength[      9405,        323]
+NotebookOptionsPosition[      6428,        231]
+NotebookOutlinePosition[      8487,        287]
+CellTagsIndexPosition[      8403,        282]
 WindowTitle->PauliEta
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$202856], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$203864], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/PauliEta", ".html"]], None}]}]},
@@ -120,7 +120,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1806999093],
+ CellID->1544634769],
 
 Cell[CellGroupData[{
 
@@ -130,7 +130,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->242148617],
+ CellID->1151271030],
 
 Cell[CellGroupData[{
 
@@ -244,7 +244,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 19, 0, 28.570365}", 
+   "built" -> "{2020, 6, 20, 19, 9, 19.045537}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -264,8 +264,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -277,12 +276,12 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3666, 107, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1806999093]}
+   CellID->1544634769]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8314, 276}
+ {"PrimaryExamplesSection", 8259, 275}
  }
 *)
 (*NotebookFileOutline
@@ -295,37 +294,37 @@ Cell[3144, 89, 497, 14, 85, "Usage",
 Cell[CellGroupData[{
 Cell[3666, 107, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1806999093],
+ CellID->1544634769],
 Cell[CellGroupData[{
-Cell[4079, 126, 195, 6, 26, "ExampleSection",
- CellID->242148617],
+Cell[4079, 126, 196, 6, 26, "ExampleSection",
+ CellID->1151271030],
 Cell[CellGroupData[{
-Cell[4299, 136, 105, 3, 27, "Input",
+Cell[4300, 136, 105, 3, 27, "Input",
  CellID->1157004633],
-Cell[4407, 141, 191, 6, 37, "Output",
+Cell[4408, 141, 191, 6, 37, "Output",
  CellID->277278612]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4635, 152, 122, 4, 27, "Input",
+Cell[4636, 152, 122, 4, 27, "Input",
  CellID->717279545],
-Cell[4760, 158, 224, 7, 40, "Output",
+Cell[4761, 158, 224, 7, 40, "Output",
  CellID->1183914614]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5021, 170, 221, 7, 27, "Input",
+Cell[5022, 170, 221, 7, 27, "Input",
  CellID->1769020709],
-Cell[5245, 179, 504, 18, 40, "Output",
+Cell[5246, 179, 504, 18, 40, "Output",
  CellID->193595258]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5786, 202, 108, 3, 27, "Input",
+Cell[5787, 202, 108, 3, 27, "Input",
  CellID->306922129],
-Cell[5897, 207, 464, 17, 40, "Output",
+Cell[5898, 207, 464, 17, 40, "Output",
  CellID->1685683644]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[6400, 229, 23, 0, 41, "FooterCell"]
+Cell[6401, 229, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7451,        234]
-NotebookOptionsPosition[      4615,        151]
-NotebookOutlinePosition[      6949,        215]
-CellTagsIndexPosition[      6831,        209]
+NotebookDataLength[      7399,        233]
+NotebookOptionsPosition[      4616,        151]
+NotebookOutlinePosition[      6896,        214]
+CellTagsIndexPosition[      6778,        208]
 WindowTitle->$FeynCalcVersion
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ FeynCalcVersion.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$293576], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$294601], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/$FeynCalcVersion", ".html"]], None}]}]},
@@ -117,7 +117,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->614101205],
+ CellID->1430595685],
 
 Cell[CellGroupData[{
 
@@ -127,7 +127,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->211792166],
+ CellID->198432094],
 
 Cell[CellGroupData[{
 
@@ -152,7 +152,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{268, Automatic}, {Automatic, 20}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"$FeynCalcVersion",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -164,7 +164,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 19, 4, 19.178713}", 
+   "built" -> "{2020, 6, 20, 19, 12, 50.214459}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -184,8 +184,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -195,21 +194,21 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3589, 104, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3589, 104, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->614101205]},
+   CellID->1430595685]},
  "$FeynCalcVersion"->{
-  Cell[4221, 133, 116, 3, 27, "Input",
+  Cell[4222, 133, 116, 3, 27, "Input",
    CellTags->"$FeynCalcVersion",
    CellID->806604709],
-  Cell[4340, 138, 209, 6, 35, "Output",
+  Cell[4341, 138, 209, 6, 35, "Output",
    CellTags->"$FeynCalcVersion"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 6495, 196},
- {"$FeynCalcVersion", 6638, 200}
+ {"PrimaryExamplesSection", 6441, 195},
+ {"$FeynCalcVersion", 6585, 199}
  }
 *)
 (*NotebookFileOutline
@@ -220,22 +219,22 @@ Cell[2897, 76, 293, 11, 45, "ObjectNameGrid"],
 Cell[3193, 89, 371, 11, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3589, 104, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3589, 104, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->614101205],
+ CellID->1430595685],
 Cell[CellGroupData[{
-Cell[4001, 123, 195, 6, 26, "ExampleSection",
- CellID->211792166],
+Cell[4002, 123, 195, 6, 26, "ExampleSection",
+ CellID->198432094],
 Cell[CellGroupData[{
-Cell[4221, 133, 116, 3, 27, "Input",
+Cell[4222, 133, 116, 3, 27, "Input",
  CellTags->"$FeynCalcVersion",
  CellID->806604709],
-Cell[4340, 138, 209, 6, 35, "Output",
+Cell[4341, 138, 209, 6, 35, "Output",
  CellTags->"$FeynCalcVersion"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[4588, 149, 23, 0, 41, "FooterCell"]
+Cell[4589, 149, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

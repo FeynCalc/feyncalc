@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11518,        383]
-NotebookOptionsPosition[      7594,        264]
-NotebookOutlinePosition[     10314,        339]
-CellTagsIndexPosition[     10197,        333]
+NotebookDataLength[     11524,        383]
+NotebookOptionsPosition[      7596,        264]
+NotebookOutlinePosition[     10318,        339]
+CellTagsIndexPosition[     10201,        333]
 WindowTitle->TimedIntegrate
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ TimedIntegrate.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$268584], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$269609], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/TimedIntegrate", ".html"]], None}]}]},
@@ -131,7 +131,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->504061400],
+ CellID->1465063175],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -182,7 +182,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1378897368],
+ CellID->1399041497],
 
 Cell[CellGroupData[{
 
@@ -192,7 +192,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->461202344],
+ CellID->1863124705],
 
 Cell["This should reach to be done", "Notes"],
 
@@ -265,7 +265,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{278, Automatic}, {Automatic, 28}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"TimedIntegrate",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -277,7 +277,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 19, 3, 17.826767}", 
+   "built" -> "{2020, 6, 20, 19, 11, 51.420995}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -308,32 +308,32 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "TimedIntegrate"->{
-  Cell[4555, 139, 144, 4, 70, "Input",
+  Cell[4556, 139, 144, 4, 27, "Input",
    CellTags->"TimedIntegrate",
    CellID->92169636],
-  Cell[4702, 145, 530, 17, 37, "Output",
+  Cell[4703, 145, 530, 17, 37, "Output",
    CellTags->"TimedIntegrate",
    CellID->1160941869],
-  Cell[5974, 200, 323, 10, 27, "Input",
+  Cell[5976, 200, 323, 10, 27, "Input",
    CellTags->"TimedIntegrate",
    CellID->2109784600],
-  Cell[6300, 212, 213, 7, 35, "Output",
+  Cell[6302, 212, 213, 7, 35, "Output",
    CellTags->"TimedIntegrate"],
-  Cell[6584, 226, 407, 12, 27, "Input",
+  Cell[6586, 226, 407, 12, 27, "Input",
    CellTags->"TimedIntegrate",
    CellID->2007698884],
-  Cell[6994, 240, 534, 17, 43, "Output",
+  Cell[6996, 240, 534, 17, 43, "Output",
    CellTags->"TimedIntegrate"]},
  "PrimaryExamplesSection"->{
-  Cell[5293, 169, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[5294, 169, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1378897368]}
+   CellID->1399041497]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"TimedIntegrate", 9500, 309},
- {"PrimaryExamplesSection", 10053, 326}
+ {"TimedIntegrate", 9504, 309},
+ {"PrimaryExamplesSection", 10057, 326}
  }
 *)
 (*NotebookFileOutline
@@ -345,46 +345,46 @@ Cell[CellGroupData[{
 Cell[3203, 91, 530, 14, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3758, 109, 738, 24, 31, "NotesSection",
+Cell[3758, 109, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->504061400],
-Cell[4499, 135, 31, 0, 70, "SectionHeaderSpacer"],
+ CellID->1465063175],
+Cell[4500, 135, 31, 0, 14, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[4555, 139, 144, 4, 70, "Input",
+Cell[4556, 139, 144, 4, 27, "Input",
  CellTags->"TimedIntegrate",
  CellID->92169636],
-Cell[4702, 145, 530, 17, 37, "Output",
+Cell[4703, 145, 530, 17, 37, "Output",
  CellTags->"TimedIntegrate",
  CellID->1160941869]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5293, 169, 388, 15, 31, "PrimaryExamplesSection",
+Cell[5294, 169, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1378897368],
+ CellID->1399041497],
 Cell[CellGroupData[{
-Cell[5706, 188, 195, 6, 26, "ExampleSection",
- CellID->461202344],
-Cell[5904, 196, 45, 0, 32, "Notes"],
+Cell[5707, 188, 196, 6, 26, "ExampleSection",
+ CellID->1863124705],
+Cell[5906, 196, 45, 0, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[5974, 200, 323, 10, 27, "Input",
+Cell[5976, 200, 323, 10, 27, "Input",
  CellTags->"TimedIntegrate",
  CellID->2109784600],
-Cell[6300, 212, 213, 7, 35, "Output",
+Cell[6302, 212, 213, 7, 35, "Output",
  CellTags->"TimedIntegrate"]
 }, Open  ]],
-Cell[6528, 222, 31, 0, 32, "Notes"],
+Cell[6530, 222, 31, 0, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[6584, 226, 407, 12, 27, "Input",
+Cell[6586, 226, 407, 12, 27, "Input",
  CellTags->"TimedIntegrate",
  CellID->2007698884],
-Cell[6994, 240, 534, 17, 43, "Output",
+Cell[6996, 240, 534, 17, 43, "Output",
  CellTags->"TimedIntegrate"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[7567, 262, 23, 0, 41, "FooterCell"]
+Cell[7569, 262, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

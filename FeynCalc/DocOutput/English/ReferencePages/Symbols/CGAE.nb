@@ -80,7 +80,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$36579], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$36684], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/CGAE", 
              ".html"]], None}]}]},
@@ -143,7 +143,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->112009639],
+ CellID->402587995],
 
 Cell[CellGroupData[{
 
@@ -153,7 +153,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->295644711],
+ CellID->916245103],
 
 Cell[CellGroupData[{
 
@@ -453,7 +453,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{278, Automatic}, {Automatic, 28}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"CGAE",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -465,7 +465,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 53, 13.006323}", 
+   "built" -> "{2020, 6, 20, 19, 2, 48.844078}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -498,7 +498,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4527, 130, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->112009639]},
+   CellID->402587995]},
  "GA"->{
   Cell[5159, 159, 117, 4, 27, "Input",
    CellTags->"GA",
@@ -548,10 +548,10 @@ Cell[3928, 111, 574, 15, 103, "Usage",
 Cell[CellGroupData[{
 Cell[4527, 130, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->112009639],
+ CellID->402587995],
 Cell[CellGroupData[{
 Cell[4939, 149, 195, 6, 26, "ExampleSection",
- CellID->295644711],
+ CellID->916245103],
 Cell[CellGroupData[{
 Cell[5159, 159, 117, 4, 27, "Input",
  CellTags->"GA",

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     39960,       1533]
-NotebookOptionsPosition[     33935,       1335]
-NotebookOutlinePosition[     37295,       1433]
-CellTagsIndexPosition[     37181,       1427]
+NotebookDataLength[     39901,       1532]
+NotebookOptionsPosition[     33933,       1335]
+NotebookOutlinePosition[     37238,       1432]
+CellTagsIndexPosition[     37124,       1426]
 WindowTitle->SUNTrace
 WindowFrame->Normal*)
 
@@ -83,7 +83,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$262000], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$263025], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/SUNTrace", ".html"]], None}]}]},
@@ -154,7 +154,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1392268612],
+ CellID->467789216],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -194,7 +194,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1412979261],
+ CellID->188971861],
 
 Cell[CellGroupData[{
 
@@ -204,7 +204,7 @@ Cell[TextData[{
  Cell["(4)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->785766225],
+ CellID->409600144],
 
 Cell[CellGroupData[{
 
@@ -1348,7 +1348,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 19, 3, 1.706140}", 
+   "built" -> "{2020, 6, 20, 19, 11, 36.231937}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1366,8 +1366,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -1377,57 +1376,57 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[5794, 181, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[5793, 181, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1412979261]},
+   CellID->188971861]},
  "SUNTrace"->{
-  Cell[6881, 232, 127, 4, 27, "Input",
+  Cell[6879, 232, 127, 4, 27, "Input",
    CellTags->"SUNTrace",
    CellID->401315043],
-  Cell[7011, 238, 418, 17, 60, "Output",
+  Cell[7009, 238, 418, 17, 60, "Output",
    CellTags->"SUNTrace"],
-  Cell[7596, 266, 193, 6, 27, "Input",
+  Cell[7594, 266, 193, 6, 27, "Input",
    CellTags->"SUNTrace",
    CellID->2065971662],
-  Cell[7792, 274, 741, 31, 40, "Output",
+  Cell[7790, 274, 741, 31, 40, "Output",
    CellTags->"SUNTrace"],
-  Cell[8570, 310, 257, 8, 27, "Input",
+  Cell[8568, 310, 257, 8, 27, "Input",
    CellTags->"SUNTrace",
    CellID->438695313],
-  Cell[8830, 320, 900, 38, 60, "Output",
+  Cell[8828, 320, 900, 38, 60, "Output",
    CellTags->"SUNTrace"],
-  Cell[9909, 370, 202, 6, 27, "Input",
+  Cell[9907, 370, 202, 6, 27, "Input",
    CellTags->"SUNTrace",
    CellID->973332873],
-  Cell[10114, 378, 880, 37, 40, "Output",
+  Cell[10112, 378, 880, 37, 40, "Output",
    CellTags->"SUNTrace",
    CellID->538427953],
-  Cell[11031, 420, 267, 8, 27, "Input",
+  Cell[11029, 420, 267, 8, 27, "Input",
    CellTags->"SUNTrace",
    CellID->414539651],
-  Cell[11301, 430, 5254, 217, 144, "Output",
+  Cell[11299, 430, 5254, 217, 144, "Output",
    CellTags->"SUNTrace"],
-  Cell[16592, 652, 193, 6, 27, "Input",
+  Cell[16590, 652, 193, 6, 27, "Input",
    CellTags->"SUNTrace",
    CellID->485058595],
-  Cell[16788, 660, 860, 36, 40, "Output",
+  Cell[16786, 660, 860, 36, 40, "Output",
    CellTags->"SUNTrace"],
-  Cell[17827, 708, 278, 8, 27, "Input",
+  Cell[17825, 708, 278, 8, 27, "Input",
    CellTags->"SUNTrace",
    CellID->1348500704],
-  Cell[18108, 718, 13414, 503, 379, "Output",
+  Cell[18106, 718, 13414, 503, 379, "Output",
    CellTags->"SUNTrace"],
-  Cell[31559, 1226, 194, 6, 27, "Input",
+  Cell[31557, 1226, 194, 6, 27, "Input",
    CellTags->"SUNTrace",
    CellID->1337618063],
-  Cell[31756, 1234, 979, 41, 40, "Output",
+  Cell[31754, 1234, 979, 41, 40, "Output",
    CellTags->"SUNTrace"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 35746, 1378},
- {"SUNTrace", 35882, 1382}
+ {"PrimaryExamplesSection", 35690, 1377},
+ {"SUNTrace", 35825, 1381}
  }
 *)
 (*NotebookFileOutline
@@ -1439,102 +1438,102 @@ Cell[CellGroupData[{
 Cell[4209, 116, 372, 12, 84, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4606, 132, 739, 24, 31, "NotesSection",
+Cell[4606, 132, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1392268612],
-Cell[5348, 158, 31, 0, 70, "SectionHeaderSpacer"],
+ CellID->467789216],
+Cell[5347, 158, 31, 0, 14, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[5404, 162, 91, 2, 70, "Input"],
-Cell[5498, 166, 235, 8, 37, "Output"]
+Cell[5403, 162, 91, 2, 27, "Input"],
+Cell[5497, 166, 235, 8, 37, "Output"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5794, 181, 388, 15, 31, "PrimaryExamplesSection",
+Cell[5793, 181, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1412979261],
+ CellID->188971861],
 Cell[CellGroupData[{
-Cell[6207, 200, 195, 6, 26, "ExampleSection",
- CellID->785766225],
+Cell[6205, 200, 195, 6, 26, "ExampleSection",
+ CellID->409600144],
 Cell[CellGroupData[{
-Cell[6427, 210, 103, 3, 27, "Input"],
-Cell[6533, 215, 311, 12, 38, "Output"]
+Cell[6425, 210, 103, 3, 27, "Input"],
+Cell[6531, 215, 311, 12, 38, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6881, 232, 127, 4, 27, "Input",
+Cell[6879, 232, 127, 4, 27, "Input",
  CellTags->"SUNTrace",
  CellID->401315043],
-Cell[7011, 238, 418, 17, 60, "Output",
+Cell[7009, 238, 418, 17, 60, "Output",
  CellTags->"SUNTrace"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7466, 260, 105, 2, 9, "ExampleDelimiter"],
+Cell[7464, 260, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[7596, 266, 193, 6, 27, "Input",
+Cell[7594, 266, 193, 6, 27, "Input",
  CellTags->"SUNTrace",
  CellID->2065971662],
-Cell[7792, 274, 741, 31, 40, "Output",
+Cell[7790, 274, 741, 31, 40, "Output",
  CellTags->"SUNTrace"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8570, 310, 257, 8, 27, "Input",
+Cell[8568, 310, 257, 8, 27, "Input",
  CellTags->"SUNTrace",
  CellID->438695313],
-Cell[8830, 320, 900, 38, 60, "Output",
+Cell[8828, 320, 900, 38, 60, "Output",
  CellTags->"SUNTrace"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9779, 364, 105, 2, 9, "ExampleDelimiter"],
+Cell[9777, 364, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[9909, 370, 202, 6, 27, "Input",
+Cell[9907, 370, 202, 6, 27, "Input",
  CellTags->"SUNTrace",
  CellID->973332873],
-Cell[10114, 378, 880, 37, 40, "Output",
+Cell[10112, 378, 880, 37, 40, "Output",
  CellTags->"SUNTrace",
  CellID->538427953]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11031, 420, 267, 8, 27, "Input",
+Cell[11029, 420, 267, 8, 27, "Input",
  CellTags->"SUNTrace",
  CellID->414539651],
-Cell[11301, 430, 5254, 217, 144, "Output",
+Cell[11299, 430, 5254, 217, 144, "Output",
  CellTags->"SUNTrace"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16592, 652, 193, 6, 27, "Input",
+Cell[16590, 652, 193, 6, 27, "Input",
  CellTags->"SUNTrace",
  CellID->485058595],
-Cell[16788, 660, 860, 36, 40, "Output",
+Cell[16786, 660, 860, 36, 40, "Output",
  CellTags->"SUNTrace"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17697, 702, 105, 2, 9, "ExampleDelimiter"],
+Cell[17695, 702, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[17827, 708, 278, 8, 27, "Input",
+Cell[17825, 708, 278, 8, 27, "Input",
  CellTags->"SUNTrace",
  CellID->1348500704],
-Cell[18108, 718, 13414, 503, 379, "Output",
+Cell[18106, 718, 13414, 503, 379, "Output",
  CellTags->"SUNTrace"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[31559, 1226, 194, 6, 27, "Input",
+Cell[31557, 1226, 194, 6, 27, "Input",
  CellTags->"SUNTrace",
  CellID->1337618063],
-Cell[31756, 1234, 979, 41, 40, "Output",
+Cell[31754, 1234, 979, 41, 40, "Output",
  CellTags->"SUNTrace"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[32774, 1280, 31, 0, 29, "SectionFooterSpacer"]
+Cell[32772, 1280, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[32842, 1285, 270, 12, 31, "SeeAlsoSection",
+Cell[32840, 1285, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[33115, 1299, 778, 31, 56, "SeeAlso"]
+Cell[33113, 1299, 778, 31, 56, "SeeAlso"]
 }, Open  ]],
-Cell[33908, 1333, 23, 0, 41, "FooterCell"]
+Cell[33906, 1333, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

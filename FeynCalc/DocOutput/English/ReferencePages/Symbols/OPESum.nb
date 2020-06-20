@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16484,        587]
+NotebookDataLength[     16427,        586]
 NotebookOptionsPosition[     12556,        463]
-NotebookOutlinePosition[     15275,        541]
-CellTagsIndexPosition[     15165,        535]
+NotebookOutlinePosition[     15218,        540]
+CellTagsIndexPosition[     15108,        534]
 WindowTitle->OPESum
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$197547], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$198555], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/OPESum", ".html"]], None}]}]},
@@ -145,7 +145,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1624710317],
+ CellID->1329867771],
 
 Cell[CellGroupData[{
 
@@ -155,7 +155,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1809286407],
+ CellID->1248533031],
 
 Cell[CellGroupData[{
 
@@ -464,7 +464,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{268, Automatic}, {Automatic, 20}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"OPESum",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -476,7 +476,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 19, 0, 15.999798}", 
+   "built" -> "{2020, 6, 20, 19, 9, 7.629741}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -495,8 +495,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -508,7 +507,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4523, 132, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1624710317]},
+   CellID->1329867771]},
  "OPESum"->{
   Cell[5157, 161, 442, 15, 27, "Input",
    CellTags->"OPESum",
@@ -534,8 +533,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 14401, 507},
- {"OPESum", 14535, 511}
+ {"PrimaryExamplesSection", 14344, 506},
+ {"OPESum", 14478, 510}
  }
 *)
 (*NotebookFileOutline
@@ -548,10 +547,10 @@ Cell[3979, 112, 519, 16, 85, "Usage",
 Cell[CellGroupData[{
 Cell[4523, 132, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1624710317],
+ CellID->1329867771],
 Cell[CellGroupData[{
 Cell[4936, 151, 196, 6, 26, "ExampleSection",
- CellID->1809286407],
+ CellID->1248533031],
 Cell[CellGroupData[{
 Cell[5157, 161, 442, 15, 27, "Input",
  CellTags->"OPESum",

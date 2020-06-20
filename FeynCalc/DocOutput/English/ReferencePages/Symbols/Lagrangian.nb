@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17358,        595]
-NotebookOptionsPosition[     12639,        453]
-NotebookOutlinePosition[     15898,        541]
-CellTagsIndexPosition[     15784,        535]
+NotebookDataLength[     17303,        594]
+NotebookOptionsPosition[     12640,        453]
+NotebookOutlinePosition[     15842,        540]
+CellTagsIndexPosition[     15728,        534]
 WindowTitle->Lagrangian
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ Lagrangian.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$177220], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$178228], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/Lagrangian", ".html"]], None}]}]},
@@ -144,7 +144,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->550561036],
+ CellID->955704647],
 
 Cell[CellGroupData[{
 
@@ -154,7 +154,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->612130881],
+ CellID->1520574417],
 
 Cell[CellGroupData[{
 
@@ -454,7 +454,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{268, Automatic}, {Automatic, 20}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"Lagrangian",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -466,7 +466,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 59, 24.593071}", 
+   "built" -> "{2020, 6, 20, 19, 8, 20.149505}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -490,8 +490,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -503,39 +502,39 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4649, 131, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->550561036]},
+   CellID->955704647]},
  "Lagrangian"->{
-  Cell[5281, 160, 141, 4, 27, "Input",
+  Cell[5282, 160, 141, 4, 27, "Input",
    CellTags->"Lagrangian",
    CellID->345064330],
-  Cell[5425, 166, 915, 32, 56, "Output",
+  Cell[5426, 166, 915, 32, 56, "Output",
    CellTags->"Lagrangian"],
-  Cell[6441, 205, 142, 4, 27, "Input",
+  Cell[6442, 205, 142, 4, 27, "Input",
    CellTags->"Lagrangian",
    CellID->1741218479],
-  Cell[6586, 211, 1362, 48, 56, "Output",
+  Cell[6587, 211, 1362, 48, 56, "Output",
    CellTags->"Lagrangian"],
-  Cell[7985, 264, 142, 4, 27, "Input",
+  Cell[7986, 264, 142, 4, 27, "Input",
    CellTags->"Lagrangian",
    CellID->1557246101],
-  Cell[8130, 270, 1988, 70, 56, "Output",
+  Cell[8131, 270, 1988, 70, 56, "Output",
    CellTags->"Lagrangian"],
-  Cell[10155, 345, 141, 4, 27, "Input",
+  Cell[10156, 345, 141, 4, 27, "Input",
    CellTags->"Lagrangian",
    CellID->249786913],
-  Cell[10299, 351, 727, 26, 40, "Output",
+  Cell[10300, 351, 727, 26, 40, "Output",
    CellTags->"Lagrangian"],
-  Cell[11063, 382, 142, 4, 27, "Input",
+  Cell[11064, 382, 142, 4, 27, "Input",
    CellTags->"Lagrangian",
    CellID->1220998815],
-  Cell[11208, 388, 834, 30, 40, "Output",
+  Cell[11209, 388, 834, 30, 40, "Output",
    CellTags->"Lagrangian"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 14824, 502},
- {"Lagrangian", 14961, 506}
+ {"PrimaryExamplesSection", 14768, 501},
+ {"Lagrangian", 14905, 505}
  }
 *)
 (*NotebookFileOutline
@@ -548,55 +547,55 @@ Cell[3886, 110, 738, 17, 136, "Usage",
 Cell[CellGroupData[{
 Cell[4649, 131, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->550561036],
+ CellID->955704647],
 Cell[CellGroupData[{
-Cell[5061, 150, 195, 6, 26, "ExampleSection",
- CellID->612130881],
+Cell[5061, 150, 196, 6, 26, "ExampleSection",
+ CellID->1520574417],
 Cell[CellGroupData[{
-Cell[5281, 160, 141, 4, 27, "Input",
+Cell[5282, 160, 141, 4, 27, "Input",
  CellTags->"Lagrangian",
  CellID->345064330],
-Cell[5425, 166, 915, 32, 56, "Output",
+Cell[5426, 166, 915, 32, 56, "Output",
  CellTags->"Lagrangian"]
 }, Open  ]],
-Cell[6355, 201, 61, 0, 32, "Notes"],
+Cell[6356, 201, 61, 0, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[6441, 205, 142, 4, 27, "Input",
+Cell[6442, 205, 142, 4, 27, "Input",
  CellTags->"Lagrangian",
  CellID->1741218479],
-Cell[6586, 211, 1362, 48, 56, "Output",
+Cell[6587, 211, 1362, 48, 56, "Output",
  CellTags->"Lagrangian"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7985, 264, 142, 4, 27, "Input",
+Cell[7986, 264, 142, 4, 27, "Input",
  CellTags->"Lagrangian",
  CellID->1557246101],
-Cell[8130, 270, 1988, 70, 56, "Output",
+Cell[8131, 270, 1988, 70, 56, "Output",
  CellTags->"Lagrangian"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10155, 345, 141, 4, 27, "Input",
+Cell[10156, 345, 141, 4, 27, "Input",
  CellTags->"Lagrangian",
  CellID->249786913],
-Cell[10299, 351, 727, 26, 40, "Output",
+Cell[10300, 351, 727, 26, 40, "Output",
  CellTags->"Lagrangian"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11063, 382, 142, 4, 27, "Input",
+Cell[11064, 382, 142, 4, 27, "Input",
  CellTags->"Lagrangian",
  CellID->1220998815],
-Cell[11208, 388, 834, 30, 40, "Output",
+Cell[11209, 388, 834, 30, 40, "Output",
  CellTags->"Lagrangian"]
 }, Open  ]]
 }, Open  ]],
-Cell[12069, 422, 31, 0, 29, "SectionFooterSpacer"]
+Cell[12070, 422, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12137, 427, 270, 12, 31, "SeeAlsoSection",
+Cell[12138, 427, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[12410, 441, 187, 7, 56, "SeeAlso"]
+Cell[12411, 441, 187, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[12612, 451, 23, 0, 41, "FooterCell"]
+Cell[12613, 451, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

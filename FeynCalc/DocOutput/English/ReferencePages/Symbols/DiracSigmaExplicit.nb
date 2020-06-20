@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16131,        566]
-NotebookOptionsPosition[     11937,        439]
-NotebookOutlinePosition[     14525,        509]
-CellTagsIndexPosition[     14403,        503]
+NotebookDataLength[     16076,        565]
+NotebookOptionsPosition[     11938,        439]
+NotebookOutlinePosition[     14469,        508]
+CellTagsIndexPosition[     14347,        502]
 WindowTitle->DiracSigmaExplicit
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ DiracSigmaExplicit.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$68604], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$68709], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/DiracSigmaExplicit", ".html"]], None}]}]},
@@ -152,7 +152,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1574253360],
+ CellID->1336835901],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -199,7 +199,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->648926233],
+ CellID->2134562691],
 
 Cell[CellGroupData[{
 
@@ -209,7 +209,7 @@ Cell[TextData[{
  Cell["(2)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1114432583],
+ CellID->2075195717],
 
 Cell[CellGroupData[{
 
@@ -440,7 +440,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{268, Automatic}, {Automatic, 20}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"DiracSigmaExplicit",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -452,7 +452,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 54, 39.563366}", 
+   "built" -> "{2020, 6, 20, 19, 4, 5.802075}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -473,8 +473,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -484,26 +483,26 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[5940, 186, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[5940, 186, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->648926233]},
+   CellID->2134562691]},
  "DiracSigmaExplicit"->{
-  Cell[6573, 215, 235, 7, 27, "Input",
+  Cell[6574, 215, 235, 7, 27, "Input",
    CellTags->"DiracSigmaExplicit",
    CellID->535100858],
-  Cell[6811, 224, 334, 12, 37, "Output",
+  Cell[6812, 224, 334, 12, 37, "Output",
    CellTags->"DiracSigmaExplicit"],
-  Cell[7182, 241, 147, 4, 27, "Input",
+  Cell[7183, 241, 147, 4, 27, "Input",
    CellTags->"DiracSigmaExplicit",
    CellID->280405798],
-  Cell[7332, 247, 990, 36, 56, "Output",
+  Cell[7333, 247, 990, 36, 56, "Output",
    CellTags->"DiracSigmaExplicit"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 13886, 485},
- {"DiracSigmaExplicit", 14031, 489}
+ {"PrimaryExamplesSection", 13829, 484},
+ {"DiracSigmaExplicit", 13975, 488}
  }
 *)
 (*NotebookFileOutline
@@ -517,7 +516,7 @@ Cell[4049, 113, 460, 13, 85, "Usage",
 Cell[CellGroupData[{
 Cell[4534, 130, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1574253360],
+ CellID->1336835901],
 Cell[5276, 156, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[5310, 158, 122, 3, 70, "Notes"],
 Cell[CellGroupData[{
@@ -527,47 +526,47 @@ Cell[5561, 169, 318, 10, 37, "Output"]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5940, 186, 387, 15, 31, "PrimaryExamplesSection",
+Cell[5940, 186, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->648926233],
+ CellID->2134562691],
 Cell[CellGroupData[{
-Cell[6352, 205, 196, 6, 26, "ExampleSection",
- CellID->1114432583],
+Cell[6353, 205, 196, 6, 26, "ExampleSection",
+ CellID->2075195717],
 Cell[CellGroupData[{
-Cell[6573, 215, 235, 7, 27, "Input",
+Cell[6574, 215, 235, 7, 27, "Input",
  CellTags->"DiracSigmaExplicit",
  CellID->535100858],
-Cell[6811, 224, 334, 12, 37, "Output",
+Cell[6812, 224, 334, 12, 37, "Output",
  CellTags->"DiracSigmaExplicit"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7182, 241, 147, 4, 27, "Input",
+Cell[7183, 241, 147, 4, 27, "Input",
  CellTags->"DiracSigmaExplicit",
  CellID->280405798],
-Cell[7332, 247, 990, 36, 56, "Output",
+Cell[7333, 247, 990, 36, 56, "Output",
  CellTags->"DiracSigmaExplicit"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8359, 288, 105, 2, 9, "ExampleDelimiter"],
+Cell[8360, 288, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[8489, 294, 275, 8, 27, "Input"],
-Cell[8767, 304, 708, 28, 37, "Output"]
+Cell[8490, 294, 275, 8, 27, "Input"],
+Cell[8768, 304, 708, 28, 37, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9512, 337, 94, 2, 27, "Input"],
-Cell[9609, 341, 1527, 55, 56, "Output"]
+Cell[9513, 337, 94, 2, 27, "Input"],
+Cell[9610, 341, 1527, 55, 56, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[11175, 401, 31, 0, 29, "SectionFooterSpacer"]
+Cell[11176, 401, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11243, 406, 270, 12, 31, "SeeAlsoSection",
+Cell[11244, 406, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[11516, 420, 379, 14, 56, "SeeAlso",
+Cell[11517, 420, 379, 14, 56, "SeeAlso",
  CellID->1822030255]
 }, Open  ]],
-Cell[11910, 437, 23, 0, 70, "FooterCell"]
+Cell[11911, 437, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11710,        402]
-NotebookOptionsPosition[      7759,        278]
-NotebookOutlinePosition[     10512,        356]
-CellTagsIndexPosition[     10404,        350]
+NotebookDataLength[     11705,        402]
+NotebookOptionsPosition[      7757,        278]
+NotebookOutlinePosition[     10509,        356]
+CellTagsIndexPosition[     10401,        350]
 WindowTitle->FreeQ2
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$145045], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$146053], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/FreeQ2", ".html"]], None}]}]},
@@ -145,7 +145,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1958716986],
+ CellID->849454148],
 
 Cell[CellGroupData[{
 
@@ -155,7 +155,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1349107249],
+ CellID->935437921],
 
 Cell[CellGroupData[{
 
@@ -291,7 +291,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 58, 5.320880}", 
+   "built" -> "{2020, 6, 20, 19, 7, 9.019898}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -321,36 +321,36 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4607, 132, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4607, 132, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1958716986]},
+   CellID->849454148]},
  "FreeQ2"->{
-  Cell[5241, 161, 265, 9, 27, "Input",
+  Cell[5239, 161, 265, 9, 27, "Input",
    CellTags->"FreeQ2",
    CellID->1955436628],
-  Cell[5509, 172, 191, 6, 35, "Output",
+  Cell[5507, 172, 191, 6, 35, "Output",
    CellTags->"FreeQ2"],
-  Cell[5737, 183, 259, 9, 27, "Input",
+  Cell[5735, 183, 259, 9, 27, "Input",
    CellTags->"FreeQ2",
    CellID->486516925],
-  Cell[5999, 194, 190, 6, 35, "Output",
+  Cell[5997, 194, 190, 6, 35, "Output",
    CellTags->"FreeQ2"],
-  Cell[6226, 205, 152, 5, 27, "Input",
+  Cell[6224, 205, 152, 5, 27, "Input",
    CellTags->"FreeQ2",
    CellID->1336030699],
-  Cell[6381, 212, 190, 6, 35, "Output",
+  Cell[6379, 212, 190, 6, 35, "Output",
    CellTags->"FreeQ2"],
-  Cell[6608, 223, 180, 6, 27, "Input",
+  Cell[6606, 223, 180, 6, 27, "Input",
    CellTags->"FreeQ2",
    CellID->544368653],
-  Cell[6791, 231, 191, 6, 35, "Output",
+  Cell[6789, 231, 191, 6, 35, "Output",
    CellTags->"FreeQ2"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 9648, 322},
- {"FreeQ2", 9782, 326}
+ {"PrimaryExamplesSection", 9646, 322},
+ {"FreeQ2", 9779, 326}
  }
 *)
 (*NotebookFileOutline
@@ -361,49 +361,49 @@ Cell[3675, 98, 283, 11, 45, "ObjectNameGrid"],
 Cell[3961, 111, 621, 17, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4607, 132, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4607, 132, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1958716986],
+ CellID->849454148],
 Cell[CellGroupData[{
-Cell[5020, 151, 196, 6, 26, "ExampleSection",
- CellID->1349107249],
+Cell[5019, 151, 195, 6, 26, "ExampleSection",
+ CellID->935437921],
 Cell[CellGroupData[{
-Cell[5241, 161, 265, 9, 27, "Input",
+Cell[5239, 161, 265, 9, 27, "Input",
  CellTags->"FreeQ2",
  CellID->1955436628],
-Cell[5509, 172, 191, 6, 35, "Output",
+Cell[5507, 172, 191, 6, 35, "Output",
  CellTags->"FreeQ2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5737, 183, 259, 9, 27, "Input",
+Cell[5735, 183, 259, 9, 27, "Input",
  CellTags->"FreeQ2",
  CellID->486516925],
-Cell[5999, 194, 190, 6, 35, "Output",
+Cell[5997, 194, 190, 6, 35, "Output",
  CellTags->"FreeQ2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6226, 205, 152, 5, 27, "Input",
+Cell[6224, 205, 152, 5, 27, "Input",
  CellTags->"FreeQ2",
  CellID->1336030699],
-Cell[6381, 212, 190, 6, 35, "Output",
+Cell[6379, 212, 190, 6, 35, "Output",
  CellTags->"FreeQ2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6608, 223, 180, 6, 27, "Input",
+Cell[6606, 223, 180, 6, 27, "Input",
  CellTags->"FreeQ2",
  CellID->544368653],
-Cell[6791, 231, 191, 6, 35, "Output",
+Cell[6789, 231, 191, 6, 35, "Output",
  CellTags->"FreeQ2"]
 }, Open  ]]
 }, Open  ]],
-Cell[7009, 241, 31, 0, 29, "SectionFooterSpacer"]
+Cell[7007, 241, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7077, 246, 270, 12, 31, "SeeAlsoSection",
+Cell[7075, 246, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[7350, 260, 367, 13, 56, "SeeAlso"]
+Cell[7348, 260, 367, 13, 56, "SeeAlso"]
 }, Open  ]],
-Cell[7732, 276, 23, 0, 41, "FooterCell"]
+Cell[7730, 276, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

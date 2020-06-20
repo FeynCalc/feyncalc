@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14578,        521]
+NotebookDataLength[     14521,        520]
 NotebookOptionsPosition[     10284,        383]
-NotebookOutlinePosition[     13233,        468]
-CellTagsIndexPosition[     13126,        462]
+NotebookOutlinePosition[     13176,        467]
+CellTagsIndexPosition[     13069,        461]
 WindowTitle->LCD
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ Cell[BoxData[GridBox[{
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$177664], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$178672], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/LCD", 
              ".html"]], None}]}]},
@@ -154,7 +154,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->288407350],
+ CellID->413101153],
 
 Cell[CellGroupData[{
 
@@ -164,7 +164,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1781901275],
+ CellID->1945499528],
 
 Cell[CellGroupData[{
 
@@ -290,7 +290,7 @@ Cell[BoxData[
     RowBox[{"p", ",", "D"}], "]"}], ",", 
    RowBox[{"Momentum", "[", 
     RowBox[{"q", ",", "D"}], "]"}]}], "]"}]], "Output",
- ImageSize->{608, 15},
+ ImageSize->{424, 33},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"LCD",
@@ -383,8 +383,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{808, 911},
-WindowMargins->{{268, Automatic}, {Automatic, 20}},
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"LCD",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -396,7 +396,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 59, 25.757254}", 
+   "built" -> "{2020, 6, 20, 19, 8, 21.249212}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -417,8 +417,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -430,7 +429,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4847, 141, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->288407350]},
+   CellID->413101153]},
  "LCD"->{
   Cell[5480, 170, 183, 6, 27, "Input",
    CellTags->"LCD",
@@ -450,7 +449,7 @@ CellTagsIndex->{
   Cell[7813, 274, 148, 5, 27, "Input",
    CellTags->"LCD",
    CellID->531209658],
-  Cell[7964, 281, 503, 15, 51, "Output",
+  Cell[7964, 281, 503, 15, 69, "Output",
    CellTags->"LCD"],
   Cell[8504, 301, 417, 14, 27, "Input",
    CellTags->"LCD",
@@ -461,8 +460,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12250, 429},
- {"LCD", 12380, 433}
+ {"PrimaryExamplesSection", 12193, 428},
+ {"LCD", 12323, 432}
  }
 *)
 (*NotebookFileOutline
@@ -475,10 +474,10 @@ Cell[3907, 111, 915, 26, 105, "Usage",
 Cell[CellGroupData[{
 Cell[4847, 141, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->288407350],
+ CellID->413101153],
 Cell[CellGroupData[{
 Cell[5259, 160, 196, 6, 26, "ExampleSection",
- CellID->1781901275],
+ CellID->1945499528],
 Cell[CellGroupData[{
 Cell[5480, 170, 183, 6, 27, "Input",
  CellTags->"LCD",
@@ -504,7 +503,7 @@ Cell[CellGroupData[{
 Cell[7813, 274, 148, 5, 27, "Input",
  CellTags->"LCD",
  CellID->531209658],
-Cell[7964, 281, 503, 15, 51, "Output",
+Cell[7964, 281, 503, 15, 69, "Output",
  CellTags->"LCD"]
 }, Open  ]],
 Cell[CellGroupData[{
@@ -518,11 +517,11 @@ Cell[8924, 317, 637, 25, 37, "Output",
 Cell[9588, 346, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9656, 351, 270, 12, 31, "SeeAlsoSection",
+Cell[9656, 351, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[9929, 365, 313, 13, 56, "SeeAlso"]
+Cell[9929, 365, 313, 13, 70, "SeeAlso"]
 }, Open  ]],
-Cell[10257, 381, 23, 0, 41, "FooterCell"]
+Cell[10257, 381, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

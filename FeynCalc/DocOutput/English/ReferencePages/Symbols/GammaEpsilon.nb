@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16058,        557]
-NotebookOptionsPosition[     11887,        430]
-NotebookOutlinePosition[     14728,        509]
-CellTagsIndexPosition[     14612,        503]
+NotebookDataLength[     16005,        556]
+NotebookOptionsPosition[     11888,        430]
+NotebookOutlinePosition[     14674,        508]
+CellTagsIndexPosition[     14558,        502]
 WindowTitle->GammaEpsilon
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ GammaEpsilon.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$151369], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$152377], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/GammaEpsilon", ".html"]], None}]}]},
@@ -142,7 +142,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->76090078],
+ CellID->1966569867],
 
 Cell[CellGroupData[{
 
@@ -152,7 +152,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1264124567],
+ CellID->814497628],
 
 Cell["\<\
 If the argument is of the form (1+a Epsilon) the result is not calculated but \
@@ -443,7 +443,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 58, 21.513053}", 
+   "built" -> "{2020, 6, 20, 19, 7, 23.328388}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -463,8 +463,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -474,36 +473,36 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4468, 129, 386, 15, 31, "PrimaryExamplesSection",
+  Cell[4468, 129, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->76090078]},
+   CellID->1966569867]},
  "GammaEpsilon"->{
-  Cell[5218, 163, 188, 6, 27, "Input",
+  Cell[5219, 163, 188, 6, 27, "Input",
    CellTags->"GammaEpsilon",
    CellID->584681345],
-  Cell[5409, 171, 1448, 51, 109, "Output",
+  Cell[5410, 171, 1448, 51, 109, "Output",
    CellTags->"GammaEpsilon"],
-  Cell[6894, 227, 188, 6, 27, "Input",
+  Cell[6895, 227, 188, 6, 27, "Input",
    CellTags->"GammaEpsilon",
    CellID->862497870],
-  Cell[7085, 235, 1196, 44, 61, "Output",
+  Cell[7086, 235, 1196, 44, 61, "Output",
    CellTags->"GammaEpsilon"],
-  Cell[8386, 286, 141, 4, 27, "Input",
+  Cell[8387, 286, 141, 4, 27, "Input",
    CellTags->"GammaEpsilon",
    CellID->910709306],
-  Cell[8530, 292, 2197, 78, 111, "Output",
+  Cell[8531, 292, 2197, 78, 111, "Output",
    CellTags->"GammaEpsilon"],
-  Cell[10764, 375, 135, 4, 27, "Input",
+  Cell[10765, 375, 135, 4, 27, "Input",
    CellTags->"GammaEpsilon",
    CellID->766916522],
-  Cell[10902, 381, 223, 8, 37, "Output",
+  Cell[10903, 381, 223, 8, 37, "Output",
    CellTags->"GammaEpsilon"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 13796, 475},
- {"GammaEpsilon", 13934, 479}
+ {"PrimaryExamplesSection", 13740, 474},
+ {"GammaEpsilon", 13880, 478}
  }
 *)
 (*NotebookFileOutline
@@ -514,51 +513,51 @@ Cell[3704, 99, 289, 11, 45, "ObjectNameGrid"],
 Cell[3996, 112, 447, 13, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4468, 129, 386, 15, 31, "PrimaryExamplesSection",
+Cell[4468, 129, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->76090078],
+ CellID->1966569867],
 Cell[CellGroupData[{
-Cell[4879, 148, 196, 6, 26, "ExampleSection",
- CellID->1264124567],
-Cell[5078, 156, 115, 3, 32, "Notes"],
+Cell[4881, 148, 195, 6, 26, "ExampleSection",
+ CellID->814497628],
+Cell[5079, 156, 115, 3, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[5218, 163, 188, 6, 27, "Input",
+Cell[5219, 163, 188, 6, 27, "Input",
  CellTags->"GammaEpsilon",
  CellID->584681345],
-Cell[5409, 171, 1448, 51, 109, "Output",
+Cell[5410, 171, 1448, 51, 109, "Output",
  CellTags->"GammaEpsilon"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6894, 227, 188, 6, 27, "Input",
+Cell[6895, 227, 188, 6, 27, "Input",
  CellTags->"GammaEpsilon",
  CellID->862497870],
-Cell[7085, 235, 1196, 44, 61, "Output",
+Cell[7086, 235, 1196, 44, 61, "Output",
  CellTags->"GammaEpsilon"]
 }, Open  ]],
-Cell[8296, 282, 65, 0, 32, "Notes"],
+Cell[8297, 282, 65, 0, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[8386, 286, 141, 4, 27, "Input",
+Cell[8387, 286, 141, 4, 27, "Input",
  CellTags->"GammaEpsilon",
  CellID->910709306],
-Cell[8530, 292, 2197, 78, 111, "Output",
+Cell[8531, 292, 2197, 78, 111, "Output",
  CellTags->"GammaEpsilon"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10764, 375, 135, 4, 27, "Input",
+Cell[10765, 375, 135, 4, 27, "Input",
  CellTags->"GammaEpsilon",
  CellID->766916522],
-Cell[10902, 381, 223, 8, 37, "Output",
+Cell[10903, 381, 223, 8, 37, "Output",
  CellTags->"GammaEpsilon"]
 }, Open  ]]
 }, Open  ]],
-Cell[11152, 393, 31, 0, 29, "SectionFooterSpacer"]
+Cell[11153, 393, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11220, 398, 270, 12, 31, "SeeAlsoSection",
+Cell[11221, 398, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[11493, 412, 352, 13, 56, "SeeAlso"]
+Cell[11494, 412, 352, 13, 56, "SeeAlso"]
 }, Open  ]],
-Cell[11860, 428, 23, 0, 41, "FooterCell"]
+Cell[11861, 428, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

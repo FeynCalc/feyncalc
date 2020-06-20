@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9233,        308]
+NotebookDataLength[      9178,        307]
 NotebookOptionsPosition[      6299,        220]
-NotebookOutlinePosition[      8559,        283]
-CellTagsIndexPosition[      8454,        277]
+NotebookOutlinePosition[      8504,        282]
+CellTagsIndexPosition[      8399,        276]
 WindowTitle->DB0
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ Cell[BoxData[GridBox[{
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$56770], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$56875], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/DB0", 
              ".html"]], None}]}]},
@@ -143,7 +143,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->345618728],
+ CellID->2039647848],
 
 Cell[CellGroupData[{
 
@@ -153,7 +153,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2095234350],
+ CellID->119283877],
 
 Cell[CellGroupData[{
 
@@ -220,8 +220,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{808, 911},
-WindowMargins->{{268, Automatic}, {Automatic, 20}},
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"DB0",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -233,7 +233,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 54, 8.350308}", 
+   "built" -> "{2020, 6, 20, 19, 3, 37.446789}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -252,8 +252,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 29}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -263,9 +262,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4385, 130, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4385, 130, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->345618728]},
+   CellID->2039647848]},
  "DB0"->{
   Cell[5018, 159, 358, 13, 33, "Input",
    CellTags->"DB0",
@@ -276,8 +275,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 8154, 264},
- {"DB0", 8284, 268}
+ {"PrimaryExamplesSection", 8098, 263},
+ {"DB0", 8229, 267}
  }
 *)
 (*NotebookFileOutline
@@ -288,12 +287,12 @@ Cell[3546, 97, 280, 11, 45, "ObjectNameGrid"],
 Cell[3829, 110, 531, 16, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4385, 130, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4385, 130, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->345618728],
+ CellID->2039647848],
 Cell[CellGroupData[{
-Cell[4797, 149, 196, 6, 26, "ExampleSection",
- CellID->2095234350],
+Cell[4798, 149, 195, 6, 26, "ExampleSection",
+ CellID->119283877],
 Cell[CellGroupData[{
 Cell[5018, 159, 358, 13, 33, "Input",
  CellTags->"DB0",

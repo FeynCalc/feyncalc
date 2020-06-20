@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     29906,       1138]
+NotebookDataLength[     29849,       1137]
 NotebookOptionsPosition[     22747,        907]
-NotebookOutlinePosition[     26397,       1011]
-CellTagsIndexPosition[     26283,       1005]
+NotebookOutlinePosition[     26340,       1010]
+CellTagsIndexPosition[     26226,       1004]
 WindowTitle->DiracOrder
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ DiracOrder.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$67182], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$67287], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/DiracOrder", ".html"]], None}]}]},
@@ -163,7 +163,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1168226821],
+ CellID->465350948],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -202,7 +202,7 @@ Cell[BoxData[
     RowBox[{"FCVerbose", "\[Rule]", "False"}], ",", 
     RowBox[{"MaxIterations", "\[Rule]", "\[Infinity]"}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{433, 53},
+ ImageSize->{433, 54},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[159]="]
@@ -227,7 +227,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->981129014],
+ CellID->1249294874],
 
 Cell[CellGroupData[{
 
@@ -237,7 +237,7 @@ Cell[TextData[{
  Cell["(5)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->368538720],
+ CellID->745384244],
 
 Cell[CellGroupData[{
 
@@ -920,7 +920,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 54, 35.739581}", 
+   "built" -> "{2020, 6, 20, 19, 4, 2.272385}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -940,8 +940,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -951,9 +950,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[6954, 214, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[6953, 214, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->981129014]},
+   CellID->1249294874]},
  "DiracOrder"->{
   Cell[7586, 243, 179, 6, 27, "Input",
    CellTags->"DiracOrder",
@@ -1004,8 +1003,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 24682, 952},
- {"DiracOrder", 24819, 956}
+ {"PrimaryExamplesSection", 24624, 951},
+ {"DiracOrder", 24762, 955}
  }
 *)
 (*NotebookFileOutline
@@ -1017,24 +1016,24 @@ Cell[CellGroupData[{
 Cell[4015, 114, 788, 23, 148, "Usage",
  CellID->2090318364],
 Cell[CellGroupData[{
-Cell[4828, 141, 739, 24, 31, "NotesSection",
+Cell[4828, 141, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1168226821],
-Cell[5570, 167, 31, 0, 70, "SectionHeaderSpacer"],
-Cell[5604, 169, 508, 14, 70, "Notes"],
+ CellID->465350948],
+Cell[5569, 167, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[5603, 169, 508, 14, 66, "Notes"],
 Cell[CellGroupData[{
-Cell[6137, 187, 94, 2, 70, "Input"],
-Cell[6234, 191, 659, 16, 74, "Output"]
+Cell[6136, 187, 94, 2, 27, "Input"],
+Cell[6233, 191, 659, 16, 75, "Output"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6954, 214, 387, 15, 31, "PrimaryExamplesSection",
+Cell[6953, 214, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->981129014],
+ CellID->1249294874],
 Cell[CellGroupData[{
 Cell[7366, 233, 195, 6, 26, "ExampleSection",
- CellID->368538720],
+ CellID->745384244],
 Cell[CellGroupData[{
 Cell[7586, 243, 179, 6, 27, "Input",
  CellTags->"DiracOrder",

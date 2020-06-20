@@ -79,7 +79,7 @@ TrickIntegrate.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$277359], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$278384], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/TrickIntegrate", ".html"]], None}]}]},
@@ -183,7 +183,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->415536027],
+ CellID->1896793450],
 
 Cell[CellGroupData[{
 
@@ -193,7 +193,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->854168379],
+ CellID->86587233],
 
 Cell[CellGroupData[{
 
@@ -308,7 +308,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{278, Automatic}, {Automatic, 28}},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 WindowTitle->"TrickIntegrate",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -320,7 +320,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 19, 3, 39.483603}", 
+   "built" -> "{2020, 6, 20, 19, 12, 11.807526}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -354,9 +354,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[5739, 170, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[5739, 170, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->415536027]},
+   CellID->1896793450]},
  "TrickIntegrate"->{
   Cell[6371, 199, 382, 13, 27, "Input",
    CellTags->"TrickIntegrate",
@@ -372,7 +372,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10998, 355},
+ {"PrimaryExamplesSection", 10997, 355},
  {"TrickIntegrate", 11139, 359}
  }
 *)
@@ -384,12 +384,12 @@ Cell[3614, 97, 291, 11, 45, "ObjectNameGrid"],
 Cell[3908, 110, 1806, 56, 165, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[5739, 170, 387, 15, 31, "PrimaryExamplesSection",
+Cell[5739, 170, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->415536027],
+ CellID->1896793450],
 Cell[CellGroupData[{
-Cell[6151, 189, 195, 6, 26, "ExampleSection",
- CellID->854168379],
+Cell[6152, 189, 194, 6, 26, "ExampleSection",
+ CellID->86587233],
 Cell[CellGroupData[{
 Cell[6371, 199, 382, 13, 27, "Input",
  CellTags->"TrickIntegrate",

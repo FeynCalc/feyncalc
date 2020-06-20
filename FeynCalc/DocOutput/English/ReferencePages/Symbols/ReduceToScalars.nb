@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7262,        217]
+NotebookDataLength[      7263,        217]
 NotebookOptionsPosition[      5149,        159]
-NotebookOutlinePosition[      7054,        209]
-CellTagsIndexPosition[      7011,        206]
+NotebookOutlinePosition[      7055,        209]
+CellTagsIndexPosition[      7012,        206]
 WindowTitle->ReduceToScalars
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ ReduceToScalars.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$220962], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$221979], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/ReduceToScalars", ".html"]], None}]}]},
@@ -172,7 +172,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 19, 1, 15.154057}", 
+   "built" -> "{2020, 6, 20, 19, 10, 0.917928}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12549,        381]
-NotebookOptionsPosition[      8607,        280]
-NotebookOutlinePosition[     11804,        355]
-CellTagsIndexPosition[     11681,        349]
+NotebookDataLength[     12496,        380]
+NotebookOptionsPosition[      8608,        280]
+NotebookOutlinePosition[     11750,        354]
+CellTagsIndexPosition[     11627,        348]
 WindowTitle->Twist2GluonOperator
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ Twist2GluonOperator.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$279983], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$281008], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/Twist2GluonOperator", ".html"]], None}]}]},
@@ -155,7 +155,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1700890378],
+ CellID->767073940],
 
 Cell[CellGroupData[{
 
@@ -165,7 +165,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->45328809],
+ CellID->1636802674],
 
 Cell["The setting All for Explicit performs the sums.", "Notes"],
 
@@ -293,7 +293,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 19, 3, 46.332445}", 
+   "built" -> "{2020, 6, 20, 19, 12, 18.183879}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -324,8 +324,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 0}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -335,21 +334,21 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[5382, 142, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[5382, 142, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1700890378]},
+   CellID->767073940]},
  "Twist2GluonOperator"->{
-  Cell[6081, 173, 493, 13, 45, "Input",
+  Cell[6082, 173, 493, 13, 45, "Input",
    CellTags->"Twist2GluonOperator",
    CellID->1893252067],
-  Cell[6577, 188, 1400, 57, 43, "Output",
+  Cell[6578, 188, 1400, 57, 43, "Output",
    CellTags->"Twist2GluonOperator"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 11331, 336},
- {"Twist2GluonOperator", 11478, 340}
+ {"PrimaryExamplesSection", 11278, 335},
+ {"Twist2GluonOperator", 11424, 339}
  }
 *)
 (*NotebookFileOutline
@@ -360,29 +359,29 @@ Cell[3663, 97, 296, 11, 45, "ObjectNameGrid"],
 Cell[3962, 110, 1395, 28, 222, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[5382, 142, 388, 15, 31, "PrimaryExamplesSection",
+Cell[5382, 142, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1700890378],
+ CellID->767073940],
 Cell[CellGroupData[{
-Cell[5795, 161, 194, 6, 26, "ExampleSection",
- CellID->45328809],
-Cell[5992, 169, 64, 0, 32, "Notes"],
+Cell[5794, 161, 196, 6, 26, "ExampleSection",
+ CellID->1636802674],
+Cell[5993, 169, 64, 0, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[6081, 173, 493, 13, 45, "Input",
+Cell[6082, 173, 493, 13, 45, "Input",
  CellTags->"Twist2GluonOperator",
  CellID->1893252067],
-Cell[6577, 188, 1400, 57, 43, "Output",
+Cell[6578, 188, 1400, 57, 43, "Output",
  CellTags->"Twist2GluonOperator"]
 }, Open  ]]
 }, Open  ]],
-Cell[8004, 249, 31, 0, 29, "SectionFooterSpacer"]
+Cell[8005, 249, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8072, 254, 270, 12, 31, "SeeAlsoSection",
+Cell[8073, 254, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[8345, 268, 220, 7, 56, "SeeAlso"]
+Cell[8346, 268, 220, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[8580, 278, 23, 0, 41, "FooterCell"]
+Cell[8581, 278, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

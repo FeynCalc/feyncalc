@@ -81,7 +81,7 @@ FeynmanDoIntegrals.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$136106], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$137114], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/FeynmanDoIntegrals", ".html"]], None}]}]},
@@ -172,7 +172,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->2049594611],
+ CellID->1127425025],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -256,7 +256,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{278, Automatic}, {Automatic, 28}},
 WindowTitle->"FeynmanDoIntegrals",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -268,7 +268,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 57, 41.998169}", 
+   "built" -> "{2020, 6, 20, 19, 6, 48.505340}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -339,7 +339,7 @@ Cell[4082, 114, 1819, 32, 291, "Usage",
 Cell[CellGroupData[{
 Cell[5926, 150, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->2049594611],
+ CellID->1127425025],
 Cell[6668, 176, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
 Cell[6724, 180, 156, 4, 70, "Input",

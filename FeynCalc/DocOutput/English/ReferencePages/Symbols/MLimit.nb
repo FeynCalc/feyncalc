@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7720,        250]
-NotebookOptionsPosition[      4981,        168]
-NotebookOutlinePosition[      7235,        231]
-CellTagsIndexPosition[      7127,        225]
+NotebookDataLength[      7668,        249]
+NotebookOptionsPosition[      4982,        168]
+NotebookOutlinePosition[      7182,        230]
+CellTagsIndexPosition[      7074,        224]
 WindowTitle->MLimit
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$184725], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$185733], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], "FeynCalc/ref/MLimit",
              ".html"]], None}]}]},
@@ -119,7 +119,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->595846432],
+ CellID->1834770960],
 
 Cell[CellGroupData[{
 
@@ -129,7 +129,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2022648806],
+ CellID->1118423252],
 
 Cell[CellGroupData[{
 
@@ -169,7 +169,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"MLimit",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -181,7 +181,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 59, 43.815787}", 
+   "built" -> "{2020, 6, 20, 19, 8, 37.965980}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -200,8 +200,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -211,21 +210,21 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[3589, 106, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[3589, 106, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->595846432]},
+   CellID->1834770960]},
  "MLimit"->{
-  Cell[4222, 135, 503, 18, 27, "Input",
+  Cell[4223, 135, 503, 18, 27, "Input",
    CellTags->"MLimit",
    CellID->1100919712],
-  Cell[4728, 155, 187, 6, 35, "Output",
+  Cell[4729, 155, 187, 6, 35, "Output",
    CellTags->"MLimit"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 6819, 212},
- {"MLimit", 6952, 216}
+ {"PrimaryExamplesSection", 6765, 211},
+ {"MLimit", 6899, 215}
  }
 *)
 (*NotebookFileOutline
@@ -236,22 +235,22 @@ Cell[2846, 76, 283, 11, 45, "ObjectNameGrid"],
 Cell[3132, 89, 432, 13, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3589, 106, 387, 15, 31, "PrimaryExamplesSection",
+Cell[3589, 106, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->595846432],
+ CellID->1834770960],
 Cell[CellGroupData[{
-Cell[4001, 125, 196, 6, 26, "ExampleSection",
- CellID->2022648806],
+Cell[4002, 125, 196, 6, 26, "ExampleSection",
+ CellID->1118423252],
 Cell[CellGroupData[{
-Cell[4222, 135, 503, 18, 27, "Input",
+Cell[4223, 135, 503, 18, 27, "Input",
  CellTags->"MLimit",
  CellID->1100919712],
-Cell[4728, 155, 187, 6, 35, "Output",
+Cell[4729, 155, 187, 6, 35, "Output",
  CellTags->"MLimit"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[4954, 166, 23, 0, 41, "FooterCell"]
+Cell[4955, 166, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

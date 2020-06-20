@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15673,        550]
+NotebookDataLength[     15674,        550]
 NotebookOptionsPosition[     11946,        437]
-NotebookOutlinePosition[     14444,        506]
-CellTagsIndexPosition[     14333,        500]
+NotebookOutlinePosition[     14445,        506]
+CellTagsIndexPosition[     14334,        500]
 WindowTitle->FeynAmp
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$132958], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$133966], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/FeynAmp", ".html"]], None}]}]},
@@ -152,7 +152,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1386052971],
+ CellID->957939954],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -181,7 +181,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->618300883],
+ CellID->1964290227],
 
 Cell[CellGroupData[{
 
@@ -191,7 +191,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->493798849],
+ CellID->908628951],
 
 Cell["\<\
 This is a 1-loop gluon self-energy amplitude (ignoring factors of (2 \[Pi])).\
@@ -450,7 +450,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 57, 34.080536}", 
+   "built" -> "{2020, 6, 20, 19, 6, 40.743763}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -481,9 +481,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[5461, 168, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[5460, 168, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->618300883]},
+   CellID->1964290227]},
  "FeynAmp"->{
   Cell[6200, 202, 864, 23, 45, "Input",
    CellTags->"FeynAmp",
@@ -500,7 +500,7 @@ CellTagsIndex->{
 (*CellTagsIndex
 CellTagsIndex->{
  {"PrimaryExamplesSection", 13865, 482},
- {"FeynAmp", 13999, 486}
+ {"FeynAmp", 14000, 486}
  }
 *)
 (*NotebookFileOutline
@@ -512,21 +512,21 @@ Cell[CellGroupData[{
 Cell[3891, 112, 555, 14, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4471, 130, 739, 24, 31, "NotesSection",
+Cell[4471, 130, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1386052971],
-Cell[5213, 156, 31, 0, 70, "SectionHeaderSpacer"],
-Cell[5247, 158, 165, 4, 70, "Notes",
+ CellID->957939954],
+Cell[5212, 156, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[5246, 158, 165, 4, 70, "Notes",
  CellID->1067943069]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5461, 168, 387, 15, 31, "PrimaryExamplesSection",
+Cell[5460, 168, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->618300883],
+ CellID->1964290227],
 Cell[CellGroupData[{
 Cell[5873, 187, 195, 6, 26, "ExampleSection",
- CellID->493798849],
+ CellID->908628951],
 Cell[6071, 195, 104, 3, 32, "Notes"],
 Cell[CellGroupData[{
 Cell[6200, 202, 864, 23, 45, "Input",

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21768,        775]
+NotebookDataLength[     21709,        774]
 NotebookOptionsPosition[     17387,        636]
-NotebookOutlinePosition[     19590,        694]
-CellTagsIndexPosition[     19505,        689]
+NotebookOutlinePosition[     19531,        693]
+CellTagsIndexPosition[     19446,        688]
 WindowTitle->FCAbbreviate
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ FCAbbreviate.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$91358], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$91478], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/FCAbbreviate", ".html"]], None}]}]},
@@ -163,7 +163,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->688775925],
+ CellID->2127155690],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -204,7 +204,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->61453323],
+ CellID->363152497],
 
 Cell[CellGroupData[{
 
@@ -214,7 +214,7 @@ Cell[TextData[{
  Cell["(3)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1020454811],
+ CellID->62154981],
 
 Cell[CellGroupData[{
 
@@ -261,7 +261,7 @@ Cell[BoxData[
       RowBox[{"a", "\[Rule]", "var1"}], ",", 
       RowBox[{"b", "\[Rule]", "var2"}]}], "}"}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{190, 14},
+ ImageSize->{190, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[2]=",
@@ -637,7 +637,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 WindowTitle->"FCAbbreviate",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -649,7 +649,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 55, 40.033876}", 
+   "built" -> "{2020, 6, 20, 19, 4, 58.834394}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -670,8 +670,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 29}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -681,14 +680,14 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[6154, 191, 386, 15, 31, "PrimaryExamplesSection",
+  Cell[6155, 191, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->61453323]}
+   CellID->363152497]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 19363, 682}
+ {"PrimaryExamplesSection", 19303, 681}
  }
 *)
 (*NotebookFileOutline
@@ -700,25 +699,25 @@ Cell[CellGroupData[{
 Cell[4013, 114, 795, 23, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4833, 141, 738, 24, 31, "NotesSection",
+Cell[4833, 141, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->688775925],
-Cell[5574, 167, 31, 0, 70, "SectionHeaderSpacer"],
-Cell[5608, 169, 82, 1, 70, "Notes",
+ CellID->2127155690],
+Cell[5575, 167, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[5609, 169, 82, 1, 70, "Notes",
  CellID->1067943069],
-Cell[5693, 172, 250, 7, 70, "Notes",
+Cell[5694, 172, 250, 7, 70, "Notes",
  CellID->1817456068],
-Cell[5946, 181, 159, 4, 70, "Notes",
+Cell[5947, 181, 159, 4, 70, "Notes",
  CellID->681548532]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6154, 191, 386, 15, 31, "PrimaryExamplesSection",
+Cell[6155, 191, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->61453323],
+ CellID->363152497],
 Cell[CellGroupData[{
-Cell[6565, 210, 196, 6, 26, "ExampleSection",
- CellID->1020454811],
+Cell[6567, 210, 194, 6, 26, "ExampleSection",
+ CellID->62154981],
 Cell[CellGroupData[{
 Cell[6786, 220, 165, 6, 27, "Input",
  CellID->1146726217],
@@ -728,7 +727,7 @@ Cell[6954, 228, 301, 11, 39, "Output",
 Cell[CellGroupData[{
 Cell[7292, 244, 179, 6, 27, "Input",
  CellID->629151375],
-Cell[7474, 252, 411, 15, 35, "Output",
+Cell[7474, 252, 411, 15, 37, "Output",
  CellID->1275389888]
 }, Open  ]],
 Cell[CellGroupData[{
@@ -753,30 +752,30 @@ Cell[11315, 402, 125, 3, 9, "ExampleDelimiter",
 Cell[11443, 407, 975, 36, 130, "Input",
  CellID->1470202347],
 Cell[CellGroupData[{
-Cell[12443, 447, 297, 9, 27, "Input",
+Cell[12443, 447, 297, 9, 70, "Input",
  CellID->259423854],
 Cell[12743, 458, 2149, 74, 59, "Output",
  CellID->133229952]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14929, 537, 273, 8, 27, "Input",
+Cell[14929, 537, 273, 8, 70, "Input",
  CellID->1709010853],
 Cell[15205, 547, 1279, 41, 96, "Output",
  CellID->392823810]
 }, Open  ]],
-Cell[16499, 591, 112, 3, 27, "Input",
+Cell[16499, 591, 112, 3, 70, "Input",
  CellID->982517436]
 }, Open  ]]
 }, Open  ]],
-Cell[16638, 598, 31, 0, 29, "SectionFooterSpacer"]
+Cell[16638, 598, 31, 0, 70, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16706, 603, 270, 12, 31, "SeeAlsoSection",
+Cell[16706, 603, 270, 12, 70, "SeeAlsoSection",
  CellID->1255426704],
-Cell[16979, 617, 366, 14, 56, "SeeAlso",
+Cell[16979, 617, 366, 14, 70, "SeeAlso",
  CellID->121601550]
 }, Open  ]],
-Cell[17360, 634, 23, 0, 41, "FooterCell"]
+Cell[17360, 634, 23, 0, 70, "FooterCell"]
 }
 ]
 *)

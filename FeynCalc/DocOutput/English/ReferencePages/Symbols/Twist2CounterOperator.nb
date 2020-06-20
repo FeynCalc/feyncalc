@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     19173,        642]
+NotebookDataLength[     19118,        641]
 NotebookOptionsPosition[     15375,        534]
-NotebookOutlinePosition[     18237,        609]
-CellTagsIndexPosition[     18112,        603]
+NotebookOutlinePosition[     18182,        608]
+CellTagsIndexPosition[     18057,        602]
 WindowTitle->Twist2CounterOperator
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ Twist2CounterOperator.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$279551], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$280576], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/Twist2CounterOperator", ".html"]], None}]}]},
@@ -123,7 +123,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1185385773],
+ CellID->1182741447],
 
 Cell[CellGroupData[{
 
@@ -133,7 +133,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1655180484],
+ CellID->1021331494],
 
 Cell[CellGroupData[{
 
@@ -535,7 +535,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{268, Automatic}, {Automatic, 20}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"Twist2CounterOperator",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -547,7 +547,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 19, 3, 45.164331}", 
+   "built" -> "{2020, 6, 20, 19, 12, 17.089018}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -568,8 +568,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -581,7 +580,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[3848, 110, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1185385773]},
+   CellID->1182741447]},
  "Twist2CounterOperator"->{
   Cell[4482, 139, 222, 6, 27, "Input",
    CellTags->"Twist2CounterOperator",
@@ -602,8 +601,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 17386, 580},
- {"Twist2CounterOperator", 17535, 584}
+ {"PrimaryExamplesSection", 17331, 579},
+ {"Twist2CounterOperator", 17480, 583}
  }
 *)
 (*NotebookFileOutline
@@ -616,10 +615,10 @@ Cell[3223, 89, 600, 17, 102, "Usage",
 Cell[CellGroupData[{
 Cell[3848, 110, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1185385773],
+ CellID->1182741447],
 Cell[CellGroupData[{
 Cell[4261, 129, 196, 6, 26, "ExampleSection",
- CellID->1655180484],
+ CellID->1021331494],
 Cell[CellGroupData[{
 Cell[4482, 139, 222, 6, 27, "Input",
  CellTags->"Twist2CounterOperator",
