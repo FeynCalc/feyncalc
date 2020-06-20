@@ -586,6 +586,9 @@ gfadTypeset[{{ex_,s_},n_}, _] :=
 cfadTypeset[ex_/;Head[ex]=!=List, dim_, etaOpt_] :=
 	cfadTypeset[{{ex,0},{0,etaOpt}}, dim, etaOpt];
 
+cfadTypeset[{ex_/;Head[ex]=!=List}, dim_, etaOpt_] :=
+	cfadTypeset[{{ex,0},{0,etaOpt}}, dim, etaOpt];
+
 cfadTypeset[{ex_/;Head[ex]=!=List, rest__}, dim_, etaOpt_] :=
 	cfadTypeset[{{ex,0},rest}, dim, etaOpt];
 
@@ -594,7 +597,6 @@ cfadTypeset[{a_List, m2_/;Head[m2]=!=List, rest___}, dim_, etaOpt_] :=
 
 cfadTypeset[{a_List}, dim_, etaOpt_] :=
 	cfadTypeset[{a,{0,etaOpt},1}, dim, etaOpt];
-
 
 (* When updating cfadTypeset, please check that
 
@@ -623,7 +625,8 @@ CFAD[{{p, p.q}, -m}],
 CFAD[{{p, p.q}, m1 + m2}],
 CFAD[{{p, p.q}, m1 - m2}],
 CFAD[{{p, p.q}, -m1 + m2}],
-CFAD[{{p, p.q}, -m1 - m2}]
+CFAD[{{p, p.q}, -m1 - m2}],
+CFAD[{p}]
 }
 
 is displayed correctly!
@@ -710,6 +713,9 @@ cfadTypeset[{{ex1_, ex2_}, {m2_,etasign_}, n_: (1)}, dim_, _] :=
 sfadTypeset[ex_/;Head[ex]=!=List, dim_, etaOpt_] :=
 	sfadTypeset[{{ex,0},{0,etaOpt}}, dim, etaOpt];
 
+sfadTypeset[{ex_/;Head[ex]=!=List}, dim_, etaOpt_] :=
+	sfadTypeset[{{ex,0},{0,etaOpt}}, dim, etaOpt];
+
 sfadTypeset[{ex_/;Head[ex]=!=List, rest__}, dim_, etaOpt_] :=
 	sfadTypeset[{{ex,0},rest}, dim, etaOpt];
 
@@ -746,15 +752,14 @@ SFAD[{{p, p.q}, -m}],
 SFAD[{{p, p.q}, m1 + m2}],
 SFAD[{{p, p.q}, m1 - m2}],
 SFAD[{{p, p.q}, -m1 + m2}],
-SFAD[{{p, p.q}, -m1 - m2}]
-
-
+SFAD[{{p, p.q}, -m1 - m2}],
+SFAD[{p}]
 }
 is displayed correctly!
 
 *)
 
-sfadTypeset[{{ex1_, ex2_}, {m2_,etasign_}, n_: (1)}, dim_, _] :=
+sfadTypeset[{{ex1_, ex2_}, {m2_, etasign_}, n_: (1)}, dim_, _] :=
 	(
 	m2Exp=Expand[-m2];
 	Row[{"(",

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14554,        513]
-NotebookOptionsPosition[     10890,        401]
-NotebookOutlinePosition[     13197,        465]
-CellTagsIndexPosition[     13085,        459]
+NotebookDataLength[     14497,        512]
+NotebookOptionsPosition[     10889,        401]
+NotebookOutlinePosition[     13141,        464]
+CellTagsIndexPosition[     13029,        458]
 WindowTitle->SMVertex
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$240402], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$241419], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/SMVertex", ".html"]], None}]}]},
@@ -149,7 +149,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->523475446],
+ CellID->146878900],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -191,7 +191,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->766392537],
+ CellID->25357848],
 
 Cell[CellGroupData[{
 
@@ -201,7 +201,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1266283360],
+ CellID->1851885498],
 
 Cell["This is the photon-W-W vertex (all momenta ingoing)", "Notes"],
 
@@ -401,8 +401,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{808, 911},
-WindowMargins->{{278, Automatic}, {Automatic, 28}},
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"SMVertex",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -414,7 +414,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 19, 2, 2.767169}", 
+   "built" -> "{2020, 6, 20, 19, 10, 45.208298}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -434,8 +434,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -445,21 +444,21 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[5560, 178, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[5560, 178, 386, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->766392537]},
+   CellID->25357848]},
  "SMVertex"->{
-  Cell[6264, 209, 241, 7, 27, "Input",
+  Cell[6263, 209, 241, 7, 27, "Input",
    CellTags->"SMVertex",
    CellID->1911879451],
-  Cell[6508, 218, 2508, 97, 40, "Output",
+  Cell[6507, 218, 2508, 97, 40, "Output",
    CellTags->"SMVertex"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12770, 446},
- {"SMVertex", 12905, 450}
+ {"PrimaryExamplesSection", 12715, 445},
+ {"SMVertex", 12849, 449}
  }
 *)
 (*NotebookFileOutline
@@ -473,48 +472,48 @@ Cell[3885, 112, 400, 11, 85, "Usage",
 Cell[CellGroupData[{
 Cell[4310, 127, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->523475446],
-Cell[5051, 153, 31, 0, 70, "SectionHeaderSpacer"],
+ CellID->146878900],
+Cell[5051, 153, 31, 0, 14, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[5107, 157, 91, 2, 70, "Input"],
+Cell[5107, 157, 91, 2, 27, "Input"],
 Cell[5201, 161, 298, 10, 37, "Output"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5560, 178, 387, 15, 31, "PrimaryExamplesSection",
+Cell[5560, 178, 386, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->766392537],
+ CellID->25357848],
 Cell[CellGroupData[{
-Cell[5972, 197, 196, 6, 26, "ExampleSection",
- CellID->1266283360],
-Cell[6171, 205, 68, 0, 32, "Notes"],
+Cell[5971, 197, 196, 6, 26, "ExampleSection",
+ CellID->1851885498],
+Cell[6170, 205, 68, 0, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[6264, 209, 241, 7, 27, "Input",
+Cell[6263, 209, 241, 7, 27, "Input",
  CellTags->"SMVertex",
  CellID->1911879451],
-Cell[6508, 218, 2508, 97, 40, "Output",
+Cell[6507, 218, 2508, 97, 40, "Output",
  CellTags->"SMVertex"]
 }, Open  ]],
-Cell[9031, 318, 41, 0, 32, "Notes"],
+Cell[9030, 318, 41, 0, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[9097, 322, 94, 2, 27, "Input"],
-Cell[9194, 326, 482, 16, 63, "Output"]
+Cell[9096, 322, 94, 2, 27, "Input"],
+Cell[9193, 326, 482, 16, 63, "Output"]
 }, Open  ]],
-Cell[9691, 345, 48, 0, 32, "Notes"],
+Cell[9690, 345, 48, 0, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[9764, 349, 94, 2, 27, "Input"],
-Cell[9861, 353, 462, 16, 58, "Output"]
+Cell[9763, 349, 94, 2, 27, "Input"],
+Cell[9860, 353, 462, 16, 58, "Output"]
 }, Open  ]]
 }, Open  ]],
-Cell[10350, 373, 31, 0, 29, "SectionFooterSpacer"]
+Cell[10349, 373, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10418, 378, 270, 12, 31, "SeeAlsoSection",
+Cell[10417, 378, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[10691, 392, 157, 4, 70, "SeeAlso"]
+Cell[10690, 392, 157, 4, 56, "SeeAlso"]
 }, Open  ]],
-Cell[10863, 399, 23, 0, 70, "FooterCell"]
+Cell[10862, 399, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

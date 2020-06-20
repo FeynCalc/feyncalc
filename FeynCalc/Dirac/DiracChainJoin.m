@@ -50,11 +50,17 @@ Options[DiracChainJoin] = {
 	FCE 			-> False,
 	FCI 			-> False,
 	FCVerbose		-> False,
-	Factoring		-> True,
+	Factoring		-> {Factor2, 5000},
 	TraceOfOne		-> 4
 };
 
-DiracChainJoin[expr_, OptionsPattern[]] :=
+DiracChainJoin[a_ == b_, opts:OptionsPattern[]] :=
+	DiracChainJoin[a,opts] == DiracChainJoin[b,opts];
+
+DiracChainJoin[expr_List, opts:OptionsPattern[]]:=
+	DiracChainJoin[#, opts]&/@expr;
+
+DiracChainJoin[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 	Block[{	ex, tmp,  res, diracObjects, diracObjectsEval, null1, null2,
 			dsHead, time, repRule},
 
@@ -120,9 +126,9 @@ DiracChainJoin[expr_, OptionsPattern[]] :=
 
 			FCPrint[1, "DiracChainJoin: Inserting Dirac objects back.", FCDoControl->dchjVerbose];
 			time=AbsoluteTime[];
-			repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
+			repRule = Thread[Rule[diracObjects,diracObjectsEval]];
 			FCPrint[3,"DiracChainJoin: repRule: ",repRule , FCDoControl->dchjVerbose];
-			res =  ( tmp/.repRule);
+			res =  (tmp/. Dispatch[repRule]);
 			FCPrint[1, "DiracChainJoin: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dchjVerbose],
 
 			(*Fast mode*)

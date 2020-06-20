@@ -48,5 +48,18 @@ m2],Head\[Rule]dhead]",
 "dhead[Spinor[Momentum[p1], m1, 1] . DiracGamma[Momentum[p, D], D] \
 . DiracGamma[6] . Spinor[-Momentum[p2], m2, 1]] - \
 dhead[Spinor[Momentum[p1], m1, 1] . DiracGamma[Momentum[p, D], D] . \
-DiracGamma[7] . Spinor[-Momentum[p2], m2, 1]]"}
+DiracGamma[7] . Spinor[-Momentum[p2], m2, 1]]"},
+{"fcstSpinorChainChiralSplit-ID7", "SpinorChainChiralSplit[
+SpinorUBar[p1, m1].GSD[p].GA[5].SpinorV[p2, m2] == x, FCE -> True]",
+"Spinor[Momentum[p1], m1, 1].GSD[p].GA[6].Spinor[-Momentum[p2], m2,
+	1] - Spinor[Momentum[p1], m1, 1].GSD[p].GA[
+	7].Spinor[-Momentum[p2], m2, 1] == x"},
+{"fcstSpinorChainChiralSplit-ID8",
+"SpinorChainChiralSplit[{SpinorUBar[p1, m1].GSD[p].GA[5].SpinorV[p2,m2],
+SpinorUBar[p1, m1].GSD[p].GS[p1].GA[6].SpinorV[p2, m2]},
+FCE -> True]","{Spinor[Momentum[p1], m1, 1].GSD[p].GA[6].Spinor[-Momentum[p2], m2,
+	1] - Spinor[Momentum[p1], m1, 1].GSD[p].GA[
+	7].Spinor[-Momentum[p2], m2, 1],
+Spinor[Momentum[p1], m1, 1].GSD[p].GS[p1].GA[6].Spinor[-Momentum[p2],
+	m2, 1]}"}
 });

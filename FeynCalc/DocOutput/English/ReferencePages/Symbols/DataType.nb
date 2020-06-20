@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     25911,        961]
+NotebookDataLength[     25912,        961]
 NotebookOptionsPosition[     17435,        683]
-NotebookOutlinePosition[     22260,        826]
-CellTagsIndexPosition[     22148,        820]
+NotebookOutlinePosition[     22261,        826]
+CellTagsIndexPosition[     22149,        820]
 WindowTitle->DataType
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$56303], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$56408], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/DataType", ".html"]], None}]}]},
@@ -156,7 +156,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1205239117],
+ CellID->732831778],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -227,7 +227,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1658663371],
+ CellID->1130400685],
 
 Cell[CellGroupData[{
 
@@ -237,7 +237,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->28126502],
+ CellID->395178312],
 
 Cell["NonCommutative is just a data-type.", "Notes"],
 
@@ -684,7 +684,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{278, Automatic}, {Automatic, 28}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"DataType",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -696,7 +696,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 54, 6.998476}", 
+   "built" -> "{2020, 6, 20, 19, 3, 36.261267}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -728,9 +728,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[6576, 214, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[6575, 214, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1658663371]},
+   CellID->1130400685]},
  "DataType"->{
   Cell[7241, 243, 240, 8, 27, "Input",
    CellTags->"DataType",
@@ -819,8 +819,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 19451, 729},
- {"DataType", 19587, 733}
+ {"PrimaryExamplesSection", 19452, 729},
+ {"DataType", 19588, 733}
  }
 *)
 (*NotebookFileOutline
@@ -832,22 +832,22 @@ Cell[CellGroupData[{
 Cell[3928, 113, 681, 17, 119, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4634, 134, 739, 24, 31, "NotesSection",
+Cell[4634, 134, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1205239117],
-Cell[5376, 160, 31, 0, 70, "SectionHeaderSpacer"],
-Cell[5410, 162, 834, 32, 70, "Notes",
+ CellID->732831778],
+Cell[5375, 160, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[5409, 162, 834, 32, 49, "Notes",
  CellID->1067943069],
-Cell[6247, 196, 280, 12, 70, "Notes"]
+Cell[6246, 196, 280, 12, 32, "Notes"]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6576, 214, 388, 15, 31, "PrimaryExamplesSection",
+Cell[6575, 214, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1658663371],
+ CellID->1130400685],
 Cell[CellGroupData[{
-Cell[6989, 233, 194, 6, 26, "ExampleSection",
- CellID->28126502],
+Cell[6988, 233, 195, 6, 26, "ExampleSection",
+ CellID->395178312],
 Cell[7186, 241, 52, 0, 32, "Notes"],
 Cell[7241, 243, 240, 8, 27, "Input",
  CellTags->"DataType",

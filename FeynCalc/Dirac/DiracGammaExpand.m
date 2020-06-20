@@ -37,7 +37,13 @@ Options[DiracGammaExpand] = {
 	Momentum -> All
 };
 
-DiracGammaExpand[expr_, OptionsPattern[]] :=
+DiracGammaExpand[a_ == b_, opts:OptionsPattern[]] :=
+	DiracGammaExpand[a,opts] == DiracGammaExpand[b,opts];
+
+DiracGammaExpand[expr_List, opts:OptionsPattern[]]:=
+	DiracGammaExpand[#, opts]&/@expr;
+
+DiracGammaExpand[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 	Block[{ex, null1, null2, uniqList, solsList, repRule, momList, ruleDelayed, res},
 
 	momList = OptionValue[Momentum];

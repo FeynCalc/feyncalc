@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9243,        297]
-NotebookOptionsPosition[      6382,        213]
-NotebookOutlinePosition[      8633,        274]
-CellTagsIndexPosition[      8565,        269]
+NotebookDataLength[      9187,        296]
+NotebookOptionsPosition[      6381,        213]
+NotebookOutlinePosition[      8578,        273]
+CellTagsIndexPosition[      8510,        268]
 WindowTitle->FC2RHI
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$90464], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$90584], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/FC2RHI", ".html"]], None}]}]},
@@ -155,7 +155,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->2033600335],
+ CellID->482627959],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -174,7 +174,7 @@ Cell[BoxData[
     RowBox[{"Dimension", "\[Rule]", "D"}], ",", 
     RowBox[{"IncludePair", "\[Rule]", "True"}], ",", 
     RowBox[{"Do", "\[Rule]", "True"}]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{306, 14},
+ ImageSize->{306, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"FC2RHI",
@@ -214,7 +214,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"FC2RHI",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -226,7 +226,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 55, 37.608336}", 
+   "built" -> "{2020, 6, 20, 19, 4, 56.804081}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -248,8 +248,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -259,16 +258,16 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "FC2RHI"->{
-  Cell[5335, 163, 131, 4, 70, "Input",
+  Cell[5334, 163, 131, 4, 70, "Input",
    CellTags->"FC2RHI",
    CellID->744239659],
-  Cell[5469, 169, 365, 11, 35, "Output",
+  Cell[5468, 169, 365, 11, 37, "Output",
    CellTags->"FC2RHI"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"FC2RHI", 8391, 260}
+ {"FC2RHI", 8336, 259}
  }
 *)
 (*NotebookFileOutline
@@ -280,25 +279,25 @@ Cell[CellGroupData[{
 Cell[3871, 112, 641, 17, 119, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4537, 133, 739, 24, 31, "NotesSection",
+Cell[4537, 133, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->2033600335],
-Cell[5279, 159, 31, 0, 70, "SectionHeaderSpacer"],
+ CellID->482627959],
+Cell[5278, 159, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[5335, 163, 131, 4, 70, "Input",
+Cell[5334, 163, 131, 4, 70, "Input",
  CellTags->"FC2RHI",
  CellID->744239659],
-Cell[5469, 169, 365, 11, 35, "Output",
+Cell[5468, 169, 365, 11, 37, "Output",
  CellTags->"FC2RHI"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5895, 187, 270, 12, 31, "SeeAlsoSection",
+Cell[5894, 187, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6168, 201, 172, 7, 56, "SeeAlso"]
+Cell[6167, 201, 172, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[6355, 211, 23, 0, 41, "FooterCell"]
+Cell[6354, 211, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

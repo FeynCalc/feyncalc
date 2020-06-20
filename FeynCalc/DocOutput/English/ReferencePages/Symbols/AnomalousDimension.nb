@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     50887,       1772]
+NotebookDataLength[     50886,       1772]
 NotebookOptionsPosition[     42581,       1518]
-NotebookOutlinePosition[     47051,       1642]
-CellTagsIndexPosition[     46927,       1636]
+NotebookOutlinePosition[     47050,       1642]
+CellTagsIndexPosition[     46926,       1636]
 WindowTitle->AnomalousDimension
 WindowFrame->Normal*)
 
@@ -82,7 +82,7 @@ AnomalousDimension.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$22229], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$22283], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/AnomalousDimension", ".html"]], None}]}]},
@@ -153,7 +153,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->730833760],
+ CellID->146672567],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -199,7 +199,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->398661237],
+ CellID->1859396561],
 
 Cell[CellGroupData[{
 
@@ -209,7 +209,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1902264668],
+ CellID->176273479],
 
 Cell["Polarized case:", "Notes"],
 
@@ -1464,7 +1464,7 @@ Cell[BoxData[
    RowBox[{
    "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", 
     ",", "0"}], "}"}], TraditionalForm]], "Output",
- ImageSize->{169, 14},
+ ImageSize->{169, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"AnomalousDimension",
@@ -1519,7 +1519,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 31}},
 WindowTitle->"AnomalousDimension",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -1531,7 +1531,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 52, 34.453606}", 
+   "built" -> "{2020, 6, 20, 19, 2, 12.709765}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1625,18 +1625,18 @@ CellTagsIndex->{
   Cell[41003, 1448, 315, 10, 27, "Input",
    CellTags->"AnomalousDimension",
    CellID->621534472],
-  Cell[41321, 1460, 327, 10, 35, "Output",
+  Cell[41321, 1460, 327, 10, 37, "Output",
    CellTags->"AnomalousDimension"]},
  "PrimaryExamplesSection"->{
-  Cell[5954, 186, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[5954, 186, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->398661237]}
+   CellID->1859396561]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"AnomalousDimension", 44423, 1562},
- {"PrimaryExamplesSection", 46784, 1629}
+ {"AnomalousDimension", 44421, 1562},
+ {"PrimaryExamplesSection", 46782, 1629}
  }
 *)
 (*NotebookFileOutline
@@ -1650,7 +1650,7 @@ Cell[4137, 115, 415, 12, 85, "Usage",
 Cell[CellGroupData[{
 Cell[4577, 131, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->730833760],
+ CellID->146672567],
 Cell[5318, 157, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
 Cell[5374, 161, 154, 4, 70, "Input",
@@ -1663,12 +1663,12 @@ Cell[5531, 167, 362, 12, 37, "Output",
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5954, 186, 387, 15, 31, "PrimaryExamplesSection",
+Cell[5954, 186, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->398661237],
+ CellID->1859396561],
 Cell[CellGroupData[{
-Cell[6366, 205, 196, 6, 26, "ExampleSection",
- CellID->1902264668],
+Cell[6367, 205, 195, 6, 26, "ExampleSection",
+ CellID->176273479],
 Cell[6565, 213, 32, 0, 32, "Notes"],
 Cell[CellGroupData[{
 Cell[6622, 217, 226, 6, 27, "Input",
@@ -1677,7 +1677,7 @@ Cell[6622, 217, 226, 6, 27, "Input",
 Cell[6851, 225, 341, 11, 37, "Output",
  CellTags->"AnomalousDimension"]
 }, Open  ]],
-Cell[7207, 239, 210, 8, 41, "Notes"],
+Cell[7207, 239, 210, 8, 42, "Notes"],
 Cell[CellGroupData[{
 Cell[7442, 251, 152, 4, 27, "Input",
  CellTags->"AnomalousDimension",
@@ -1685,7 +1685,7 @@ Cell[7442, 251, 152, 4, 27, "Input",
 Cell[7597, 257, 549, 20, 55, "Output",
  CellTags->"AnomalousDimension"]
 }, Open  ]],
-Cell[8161, 280, 209, 8, 41, "Notes"],
+Cell[8161, 280, 209, 8, 42, "Notes"],
 Cell[CellGroupData[{
 Cell[8395, 292, 152, 4, 27, "Input",
  CellTags->"AnomalousDimension",
@@ -1693,7 +1693,7 @@ Cell[8395, 292, 152, 4, 27, "Input",
 Cell[8550, 298, 371, 13, 57, "Output",
  CellTags->"AnomalousDimension"]
 }, Open  ]],
-Cell[8936, 314, 209, 8, 41, "Notes"],
+Cell[8936, 314, 209, 8, 42, "Notes"],
 Cell[CellGroupData[{
 Cell[9170, 326, 152, 4, 27, "Input",
  CellTags->"AnomalousDimension",
@@ -1701,7 +1701,7 @@ Cell[9170, 326, 152, 4, 27, "Input",
 Cell[9325, 332, 370, 13, 55, "Output",
  CellTags->"AnomalousDimension"]
 }, Open  ]],
-Cell[9710, 348, 209, 8, 41, "Notes"],
+Cell[9710, 348, 209, 8, 42, "Notes"],
 Cell[CellGroupData[{
 Cell[9944, 360, 151, 4, 27, "Input",
  CellTags->"AnomalousDimension",
@@ -1709,7 +1709,7 @@ Cell[9944, 360, 151, 4, 27, "Input",
 Cell[10098, 366, 681, 24, 57, "Output",
  CellTags->"AnomalousDimension"]
 }, Open  ]],
-Cell[10794, 393, 210, 8, 41, "Notes"],
+Cell[10794, 393, 210, 8, 42, "Notes"],
 Cell[CellGroupData[{
 Cell[11029, 405, 153, 4, 27, "Input",
  CellTags->"AnomalousDimension",
@@ -1717,7 +1717,7 @@ Cell[11029, 405, 153, 4, 27, "Input",
 Cell[11185, 411, 776, 26, 61, "Output",
  CellTags->"AnomalousDimension"]
 }, Open  ]],
-Cell[11976, 440, 210, 8, 41, "Notes"],
+Cell[11976, 440, 210, 8, 42, "Notes"],
 Cell[CellGroupData[{
 Cell[12211, 452, 153, 4, 27, "Input",
  CellTags->"AnomalousDimension",
@@ -1725,7 +1725,7 @@ Cell[12211, 452, 153, 4, 27, "Input",
 Cell[12367, 458, 6694, 221, 406, "Output",
  CellTags->"AnomalousDimension"]
 }, Open  ]],
-Cell[19076, 682, 209, 8, 41, "Notes"],
+Cell[19076, 682, 209, 8, 42, "Notes"],
 Cell[CellGroupData[{
 Cell[19310, 694, 152, 4, 27, "Input",
  CellTags->"AnomalousDimension",
@@ -1733,7 +1733,7 @@ Cell[19310, 694, 152, 4, 27, "Input",
 Cell[19465, 700, 4204, 143, 278, "Output",
  CellTags->"AnomalousDimension"]
 }, Open  ]],
-Cell[23684, 846, 209, 8, 41, "Notes"],
+Cell[23684, 846, 209, 8, 42, "Notes"],
 Cell[CellGroupData[{
 Cell[23918, 858, 152, 4, 27, "Input",
  CellTags->"AnomalousDimension",
@@ -1741,7 +1741,7 @@ Cell[23918, 858, 152, 4, 27, "Input",
 Cell[24073, 864, 6310, 215, 375, "Output",
  CellTags->"AnomalousDimension"]
 }, Open  ]],
-Cell[30398, 1082, 209, 8, 41, "Notes"],
+Cell[30398, 1082, 209, 8, 42, "Notes"],
 Cell[CellGroupData[{
 Cell[30632, 1094, 153, 4, 27, "Input",
  CellTags->"AnomalousDimension",
@@ -1749,7 +1749,7 @@ Cell[30632, 1094, 153, 4, 27, "Input",
 Cell[30788, 1100, 4999, 169, 302, "Output",
  CellTags->"AnomalousDimension"]
 }, Open  ]],
-Cell[35802, 1272, 236, 8, 41, "Notes"],
+Cell[35802, 1272, 236, 8, 42, "Notes"],
 Cell[CellGroupData[{
 Cell[36063, 1284, 152, 4, 27, "Input",
  CellTags->"AnomalousDimension",
@@ -1757,12 +1757,12 @@ Cell[36063, 1284, 152, 4, 27, "Input",
 Cell[36218, 1290, 4468, 142, 313, "Output",
  CellTags->"AnomalousDimension"]
 }, Open  ]],
-Cell[40701, 1435, 277, 9, 41, "Notes"],
+Cell[40701, 1435, 277, 9, 42, "Notes"],
 Cell[CellGroupData[{
 Cell[41003, 1448, 315, 10, 27, "Input",
  CellTags->"AnomalousDimension",
  CellID->621534472],
-Cell[41321, 1460, 327, 10, 35, "Output",
+Cell[41321, 1460, 327, 10, 37, "Output",
  CellTags->"AnomalousDimension"]
 }, Open  ]]
 }, Open  ]],

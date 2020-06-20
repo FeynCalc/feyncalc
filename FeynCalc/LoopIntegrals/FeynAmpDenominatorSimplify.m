@@ -55,6 +55,7 @@ fdsVerbose::usage="";
 loopHead::usage="";
 cLoopHead::usage="";
 sLoopHead::usage="";
+mLoopHead::usage="";
 null1::usage="";
 null2::usage="";
 
@@ -172,6 +173,7 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 		time=AbsoluteTime[];
 		solsList = intsUnique /. {
 			(loopHead|sLoopHead|cLoopHead)[z_,{l_}] :> fdsOneLoop[z,l],
+			mLoopHead[z_,{l_}] :> (ToSFAD[z] /. FeynAmpDenominator :> feynord[{l}]),
 			loopHead[z_,{l1_,l2_}] :> multiLoopHead[oldFeynAmpDenominatorSimplify[z,l1,l2,opt]],
 			loopHead[z_,{l1_,l2_, l3__}] :> multiLoopHead[fdsMultiLoop[z,l1,l2,l3]],
 			sLoopHead[z_,{_,__}] :> z,
@@ -352,9 +354,6 @@ procanCFAD[a_, rest__] :=
 			CartesianPropagatorDenominator[Expand[tt /. one -> 1], rest]
 		]
 	]/; a=!=0;
-
-
-
 
 fdsOneLoop[loopInt : (_. FeynAmpDenominator[props__]), q_]:=
 	Block[{tmp,res,tmpNew,solsList,repRule,sps,fad},
@@ -1849,12 +1848,13 @@ integralClassify[loopHead[x_,y_]]:=
 			!FreeQ2[x,{StandardPropagatorDenominator}],
 		(* SFAD *)
 		sLoopHead[x,y],
-		FreeQ2[x,{PropagatorDenominator,StadndardPropagatorDenominator,GenericPropagatorDenominator}] &&
+		FreeQ2[x,{PropagatorDenominator,StandardPropagatorDenominator,GenericPropagatorDenominator}] &&
 			!FreeQ2[x,{CartesianPropagatorDenominator}],
 		(* CFAD *)
 		cLoopHead[x,y],
 		True,
-		x
+		(* mixture of different propagators *)
+		mLoopHead[x,y]
 	]];
 
 

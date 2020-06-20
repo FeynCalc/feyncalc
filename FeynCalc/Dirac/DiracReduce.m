@@ -41,6 +41,7 @@ Options[DiracReduce] = {
 	Contract 			-> True,
 	DiracGammaCombine	-> True,
 	DiracSimplify		-> False,
+	DiracOrder			-> True,
 	DotSimplify			-> True,
 	FCE					-> False,
 	FCI					-> False,
@@ -49,10 +50,13 @@ Options[DiracReduce] = {
 	FinalSubstitutions	-> {DiracBasis -> Identity}
 };
 
+DiracReduce[a_ == b_, opts:OptionsPattern[]] :=
+	DiracReduce[a,opts] == DiracReduce[b,opts];
+
 DiracReduce[expr_List, opts:OptionsPattern[]] :=
 	Map[DiracReduce[#,opts]&,expr];
 
-DiracReduce[expr_, OptionsPattern[]] :=
+DiracReduce[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 	Block[ {ex, tmp, spart, null1, null2, res, finsub, factoring,diracSimplify, li1, li2},
 
 		finsub = OptionValue[FinalSubstitutions];
@@ -82,35 +86,53 @@ DiracReduce[expr_, OptionsPattern[]] :=
 		tmp = ex /. {DiracGamma[6] :> (1/2 + DiracGamma[5]/2), DiracGamma[7] :> (1/2 - DiracGamma[5]/2)};
 
 		If[	OptionValue[DiracGammaCombine],
+			FCPrint[1, "DiracReduce: Applying DiracGammaCombine.", FCDoControl->drVerbose];
 			tmp = DiracGammaCombine[tmp,FCI->True]
 		];
 
 		If[	OptionValue[DotSimplify],
+			FCPrint[1, "DiracReduce: Applying DotSimplify.", FCDoControl->drVerbose];
 			tmp = DotSimplify[tmp,FCI->True]
 		];
 
 		(* Chisholm identity recursively *)
+		FCPrint[1, "DiracReduce: Applying Chisholm.", FCDoControl->drVerbose];
+
+
+
 		tmp = Chisholm[tmp,FCI->True, DiracSimplify -> False];
 		FCPrint[3, "DiracReduce: After Chisholm: ", tmp, FCDoControl->drVerbose];
 
-		tmp = DiracOrder[tmp, FCI->True];
-		FCPrint[3, "DiracReduce: After DiracOrder: ", tmp, FCDoControl->drVerbose];
 
+
+		If[	OptionValue[DiracOrder],
+			FCPrint[1, "DiracReduce: Applying DiracOrder.", FCDoControl->drVerbose];
+			tmp = DiracOrder[tmp, FCI->True];
+			FCPrint[3, "DiracReduce: After DiracOrder: ", tmp, FCDoControl->drVerbose];
+		];
+
+		FCPrint[1, "DiracReduce: Applying Chisholm (mode 2).", FCDoControl->drVerbose];
 		tmp = Chisholm[tmp,FCI->True,DiracSimplify->False,Mode->2];
 		FCPrint[3, "DiracReduce: After Chisholm: ", tmp, FCDoControl->drVerbose];
 
+		FCPrint[1, "DiracReduce: Introducing DiracSigma.", FCDoControl->drVerbose];
 		tmp = tmp /. DOT[DiracGamma[a_[xx_]], DiracGamma[b_[yy_]]] :> (-I DiracSigma[DiracGamma[a[xx]], DiracGamma[b[yy]]]+Pair[b[yy], a[xx]]);
 		FCPrint[3, "DiracReduce: After introducing DiracSigma: ", tmp, FCDoControl->drVerbose];
 
 		If[	diracSimplify,
-			tmp = DiracSimplify[tmp, DiracSigmaExplicit -> False, FCI->True];
+			FCPrint[1, "DiracReduce: Applying DiracSimplify.", FCDoControl->drVerbose];
+			tmp = DiracSimplify[tmp, DiracSigmaExplicit -> False, FCI->True, FCCanonicalizeDummyIndices->True];
 			FCPrint[3, "DiracReduce: After DiracSimplify: ", tmp, FCDoControl->drVerbose]
 		];
 
+		FCPrint[1, "DiracReduce: Applying Collect2.", FCDoControl->drVerbose];
 		tmp = Collect2[tmp, DiracGamma, Factoring -> factoring];
-		FCPrint[2,"collecting done"];
+
+
+
 
 		(* get the S - part *)
+		FCPrint[1, "DiracReduce: Extracting the S-piece.", FCDoControl->drVerbose];
 		spart = SelectFree[tmp + null1 + null2, DiracGamma] /. null1|null2 :> 0;
 		tmp = tmp - spart;
 

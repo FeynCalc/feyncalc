@@ -88,7 +88,7 @@ diracTrickEvalFastFromDiracSimplifySingle[DiracChain[diracObject_,i_,j_], {tmpHe
 
 DiracTrick[expr_,OptionsPattern[]] :=
 	Block[{	res, tmp, ex, null1, null2, holdDOT, freePart, dsPart, diracObjects,
-			diracObjectsEval, repRule, time, dsHead},
+			diracObjectsEval, repRule, time, dsHead, optFCDiracIsolate},
 
 		(*	Algorithm of DiracTrick:
 
@@ -128,14 +128,18 @@ DiracTrick[expr_,OptionsPattern[]] :=
 
 		*)
 
-		optJoin = OptionValue[FCJoinDOTs];
-
 		If [OptionValue[FCVerbose]===False,
 			diTrVerbose=$VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				diTrVerbose=OptionValue[FCVerbose]
 			];
 		];
+
+
+		optJoin 			= OptionValue[FCJoinDOTs];
+		optFCDiracIsolate	= OptionValue[FCDiracIsolate];
+		insideDiracTrace	= OptionValue[InsideDiracTrace];
+
 
 		FCPrint[1, "DiracTrick. Entering.", FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrick: Entering with ", expr, FCDoControl->diTrVerbose];
@@ -145,25 +149,24 @@ DiracTrick[expr_,OptionsPattern[]] :=
 			ex = FCI[expr]
 		];
 
-		If[	OptionValue[InsideDiracTrace],
-			insideDiracTrace = True,
-			insideDiracTrace = False
-		];
+
 
 		If[ FreeQ2[ex,DiracHeadsList],
 			Return[ex]
 		];
 
 
-
-		If[	OptionValue[FCDiracIsolate],
+		If[	optFCDiracIsolate===True || Head[optFCDiracIsolate]===List,
 			(*	This is the standard mode for calling DiracTrick	*)
 			FCPrint[1,"DiracTrick: Normal mode.", FCDoControl->diTrVerbose];
 			time=AbsoluteTime[];
 			FCPrint[1, "DiracTrick: Extracting Dirac objects.", FCDoControl->diTrVerbose];
 			(* 	First of all we need to extract all the Dirac structures in the input. *)
-			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracGammaCombine],
-				FCJoinDOTs -> optJoin, LorentzIndex->True, ToDiracGamma67-> OptionValue[ToDiracGamma67], DiracChain->OptionValue[DiracChain]];
+			If[	TrueQ[Head[optFCDiracIsolate]===List],
+				ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, optFCDiracIsolate],
+				ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracGammaCombine],
+					FCJoinDOTs -> optJoin, LorentzIndex->True, ToDiracGamma67-> OptionValue[ToDiracGamma67], DiracChain->OptionValue[DiracChain]];
+			];
 
 			{freePart,dsPart} = FCSplit[ex,{dsHead}];
 			FCPrint[3,"DiracTrick: dsPart: ",dsPart , FCDoControl->diTrVerbose];
@@ -310,12 +313,12 @@ diracTrickEvalFast[DOT[b___DiracGamma,di_DiracGamma,c__DiracGamma]] :=
 
 diracTrickEvalFast[DOT[x__DiracGamma, DiracGamma[5]]]:=
 	0/; FreeQ2[{x},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && EvenQ[Length[{x}]] && insideDiracTrace &&
-	MatchQ[FCGetDimensions[{x}],{_Symbol}] && 	(FeynCalc`Package`DiracGammaScheme === "NDR-Drop");
+	MatchQ[FCGetDimensions[{x}],{_Symbol}] && 	(FeynCalc`Package`DiracGammaScheme === "NDR-Discard");
 
 
 diracTrickEvalFast[DOT[x__DiracGamma, DiracGamma[6|7]]]:=
 	1/2 diracTrickEvalFast[DOT[x]]/; FreeQ2[{x},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && EvenQ[Length[{x}]] && insideDiracTrace &&
-	MatchQ[FCGetDimensions[{x}],{_Symbol}] && 	(FeynCalc`Package`DiracGammaScheme === "NDR-Drop");
+	MatchQ[FCGetDimensions[{x}],{_Symbol}] && 	(FeynCalc`Package`DiracGammaScheme === "NDR-Discard");
 
 diracTrickEvalFast[DOT[DiracGamma[(arg1:_[_, dim1___]),dim1___], DiracGamma[(arg2:_[_, dim2___]), dim2___]]] :=
 	FCUseCache[ExpandScalarProduct,{PairContract[arg1,arg2] /. PairContract->Pair},{}]/; insideDiracTrace;
@@ -378,39 +381,39 @@ diracTrickEvalFast[DOT[b___, DiracGamma[(hh1:6|7)],DiracGamma[(hh2:6|7)], c___]]
 
 
 diracTrickEvalFast[DOT[b___,DiracGamma[5], c:DiracGamma[_[_,_],_].. , d___]] :=
-	(-1)^Length[{c}] diracTrickEvalFast[DOT[ b,c,DiracGamma[5],d]]/; MemberQ[{"NDR","NDR-Drop"},FeynCalc`Package`DiracGammaScheme] &&
+	(-1)^Length[{c}] diracTrickEvalFast[DOT[ b,c,DiracGamma[5],d]]/; MemberQ[{"NDR","NDR-Discard"},FeynCalc`Package`DiracGammaScheme] &&
 		MatchQ[FCGetDimensions[{c}],{_Symbol}];
 
 diracTrickEvalFast[DOT[b___,DiracGamma[(h:6|7)], c:DiracGamma[_[_,_],_].. ,d___]] :=
-	diracTrickEvalFast[DOT[ b,c,DiracGamma[h],d]]/; EvenQ[Length[{c}]] && MemberQ[{"NDR","NDR-Drop"},FeynCalc`Package`DiracGammaScheme] &&
+	diracTrickEvalFast[DOT[ b,c,DiracGamma[h],d]]/; EvenQ[Length[{c}]] && MemberQ[{"NDR","NDR-Discard"},FeynCalc`Package`DiracGammaScheme] &&
 		MatchQ[FCGetDimensions[{c}],{_Symbol}];
 
 diracTrickEvalFast[DOT[b___,DiracGamma[(h:6|7)], c:DiracGamma[_[_,_],_].. ,d___]] :=
-	diracTrickEvalFast[DOT[ b,c,DiracGamma[ga67Switch1[h]],d]]/; OddQ[Length[{c}]] && MemberQ[{"NDR","NDR-Drop"},FeynCalc`Package`DiracGammaScheme] &&
+	diracTrickEvalFast[DOT[ b,c,DiracGamma[ga67Switch1[h]],d]]/; OddQ[Length[{c}]] && MemberQ[{"NDR","NDR-Discard"},FeynCalc`Package`DiracGammaScheme] &&
 		MatchQ[FCGetDimensions[{c}],{_Symbol}];
 
 diracTrickEvalFast[DOT[___,DiracGamma[(h:6|7)],DiracGamma[_[_,_],_], DiracGamma[(h:6|7)], ___]] :=
-	0/; MemberQ[{"NDR","NDR-Drop"},FeynCalc`Package`DiracGammaScheme];
+	0/; MemberQ[{"NDR","NDR-Discard"},FeynCalc`Package`DiracGammaScheme];
 
 diracTrickEvalFast[DOT[b___,DiracGamma[(h1:6|7)],(dg:DiracGamma[_[_,_],_]), DiracGamma[(h2:6|7)], c___]] :=
-	diracTrickEvalFast[DOT[b, dg, DiracGamma[h2], c]]/; h1=!=h2 && MemberQ[{"NDR","NDR-Drop"},FeynCalc`Package`DiracGammaScheme] &&
+	diracTrickEvalFast[DOT[b, dg, DiracGamma[h2], c]]/; h1=!=h2 && MemberQ[{"NDR","NDR-Discard"},FeynCalc`Package`DiracGammaScheme] &&
 		MatchQ[FCGetDimensions[{dg}],{_Symbol}];
 
 diracTrickEvalFast[DOT[b___, DiracGamma[(h1:6|7)],(dg:DiracGamma[_[_,_],_]), xy:DiracGamma[_[_] ].. , DiracGamma[(h2:6|7)], c___]] :=
-	diracTrickEvalFast[DOT[b, dg, xy, DiracGamma[h2], c]]/; EvenQ[Length[{xy}]] && h1=!=h2 && MemberQ[{"NDR","NDR-Drop"},FeynCalc`Package`DiracGammaScheme] &&
+	diracTrickEvalFast[DOT[b, dg, xy, DiracGamma[h2], c]]/; EvenQ[Length[{xy}]] && h1=!=h2 && MemberQ[{"NDR","NDR-Discard"},FeynCalc`Package`DiracGammaScheme] &&
 		MatchQ[FCGetDimensions[{dg,xy}],{_Symbol}];
 
 diracTrickEvalFast[DOT[___, DiracGamma[(h:6|7)],(dg:DiracGamma[_[_,_],_]), xy:DiracGamma[_[_] ].. , DiracGamma[(h:6|7)], ___]] :=
-	0/; EvenQ[Length[{xy}]] && MemberQ[{"NDR","NDR-Drop"},FeynCalc`Package`DiracGammaScheme]  &&
+	0/; EvenQ[Length[{xy}]] && MemberQ[{"NDR","NDR-Discard"},FeynCalc`Package`DiracGammaScheme]  &&
 		MatchQ[FCGetDimensions[{dg,xy}],{_Symbol}];
 
 
 diracTrickEvalFast[DOT[___, DiracGamma[(h1:6|7)],(dg:DiracGamma[_[_,_],_]), xy:DiracGamma[_[_,_],_].. , DiracGamma[(h2:6|7)], ___]] :=
-	0/; OddQ[Length[{xy}]] && h1=!=h2 && MemberQ[{"NDR","NDR-Drop"},FeynCalc`Package`DiracGammaScheme]  &&
+	0/; OddQ[Length[{xy}]] && h1=!=h2 && MemberQ[{"NDR","NDR-Discard"},FeynCalc`Package`DiracGammaScheme]  &&
 		MatchQ[FCGetDimensions[{dg,xy}],{_Symbol}];
 
 diracTrickEvalFast[DOT[b___, DiracGamma[(h:6|7)],(dg:DiracGamma[_[_,_],_]), xy:DiracGamma[_[_,_],_].. , DiracGamma[(h:6|7)], c___]] :=
-	diracTrickEvalFast[DOT[b, dg, xy, DiracGamma[h], c]]/; OddQ[Length[{xy}]]  && MemberQ[{"NDR","NDR-Drop"},FeynCalc`Package`DiracGammaScheme]  &&
+	diracTrickEvalFast[DOT[b, dg, xy, DiracGamma[h], c]]/; OddQ[Length[{xy}]]  && MemberQ[{"NDR","NDR-Discard"},FeynCalc`Package`DiracGammaScheme]  &&
 		MatchQ[FCGetDimensions[{dg,xy}],{_Symbol}];
 
 
@@ -456,7 +459,7 @@ diracTrickEval[ex_DiracGamma]:=
 diracTrickEval[ex_/;Head[ex]=!=DiracGamma]:=
 	Which[
 		(*	NDR, inside Trace	*)
-		MemberQ[{"NDR","NDR-Drop"},FeynCalc`Package`DiracGammaScheme] && insideDiracTrace,
+		MemberQ[{"NDR","NDR-Discard"},FeynCalc`Package`DiracGammaScheme] && insideDiracTrace,
 		diracTrickEvalCachedNDRInsideTrace[ex],
 		(*	Larin, inside Trace	*)
 		(FeynCalc`Package`DiracGammaScheme === "Larin") && insideDiracTrace,
@@ -465,7 +468,7 @@ diracTrickEval[ex_/;Head[ex]=!=DiracGamma]:=
 		(FeynCalc`Package`DiracGammaScheme === "BMHV") && insideDiracTrace,
 		diracTrickEvalCachedBMHVInsideTrace[ex],
 		(*	NDR	*)
-		MemberQ[{"NDR","NDR-Drop"},FeynCalc`Package`DiracGammaScheme],
+		MemberQ[{"NDR","NDR-Discard"},FeynCalc`Package`DiracGammaScheme],
 		diracTrickEvalCachedNDR[ex],
 		(*	Larin	*)
 		(FeynCalc`Package`DiracGammaScheme === "Larin"),
@@ -526,15 +529,15 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 		gamma5Present = !FreeQ2[ex,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
 		noncommPresent = !NonCommFreeQ[ex/.DiracGamma->diga];
 
-		FCPrint[3, "DiracTrick: diracTrickEval: g^5 present:", gamma5Present, FCDoControl->diTrVerbose];
-		FCPrint[3, "DiracTrick: diracTrickEval: unknown non-commutative objects present:", noncommPresent, FCDoControl->diTrVerbose];
+		FCPrint[3, "DiracTrick: diracTrickEval: g^5 present: ", gamma5Present, FCDoControl->diTrVerbose];
+		FCPrint[3, "DiracTrick: diracTrickEval: unknown non-commutative objects present: ", noncommPresent, FCDoControl->diTrVerbose];
 
 		res = res/. DOT -> holdDOT;
 
 		If[	gamma5Present,
 			res = res /. holdDOT -> commonGamma5Properties /. commonGamma5Properties -> holdDOT;
 			gamma5Present = !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
-			FCPrint[3, "DiracTrick: diracTrickEval: after applying simplifications related to g^5:", res, FCDoControl->diTrVerbose];
+			FCPrint[3, "DiracTrick: diracTrickEval: after applying simplifications related to g^5: ", res, FCDoControl->diTrVerbose];
 		];
 
 		If[ FreeQ2[res,DiracHeadsList],
@@ -569,7 +572,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 
 		noncommPresent = !NonCommFreeQ[res/.DiracGamma->diga];
 
-		FCPrint[3, "DiracTrick: diracTrickEval: Dimensions:", dim, FCDoControl->diTrVerbose];
+		FCPrint[3, "DiracTrick: diracTrickEval: Dimensions: ", dim, FCDoControl->diTrVerbose];
 
 		If[	gamma5Present,
 
@@ -584,7 +587,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 							commonGamma5Properties -> chiralTrickAnticommuting4DimRight)&,res];
 						res = res /. chiralTrickAnticommuting4DimRight -> holdDOT,
 					(* Purely D-dimensional and NDR -> use anticommuting g^5 *)
-					MatchQ[dim,{_Symbol}] && MemberQ[{"NDR","NDR-Drop"},FeynCalc`Package`DiracGammaScheme],
+					MatchQ[dim,{_Symbol}] && MemberQ[{"NDR","NDR-Discard"},FeynCalc`Package`DiracGammaScheme],
 						FCPrint[2, "DiracTrick: diracTrickEval: Purely D-dim, NDR.", FCDoControl->diTrVerbose];
 						res = res /. holdDOT -> chiralTrickAnticommutingDDimRight;
 						res = FixedPoint[(# /. chiralTrickAnticommutingDDimRight -> commonGamma5Properties /.

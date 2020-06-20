@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     19623,        717]
+NotebookDataLength[     19568,        716]
 NotebookOptionsPosition[     14016,        534]
-NotebookOutlinePosition[     17408,        633]
-CellTagsIndexPosition[     17296,        627]
+NotebookOutlinePosition[     17353,        632]
+CellTagsIndexPosition[     17241,        626]
 WindowTitle->SUNDelta
 WindowFrame->Normal*)
 
@@ -88,7 +88,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$255145], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$256170], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/SUNDelta", ".html"]], None}]}]},
@@ -149,7 +149,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1175478356],
+ CellID->2143300140],
 
 Cell[CellGroupData[{
 
@@ -159,7 +159,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1406820232],
+ CellID->1872895176],
 
 Cell[CellGroupData[{
 
@@ -534,8 +534,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{808, 911},
-WindowMargins->{{268, Automatic}, {Automatic, 20}},
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"SUNDelta",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -547,7 +547,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 19, 2, 42.435654}", 
+   "built" -> "{2020, 6, 20, 19, 11, 20.080486}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -567,8 +567,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -580,7 +579,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4816, 136, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1175478356]},
+   CellID->2143300140]},
  "SUNDelta"->{
   Cell[5450, 165, 222, 7, 27, "Input",
    CellTags->"SUNDelta",
@@ -607,7 +606,7 @@ CellTagsIndex->{
    CellID->892399657],
   Cell[9633, 352, 305, 9, 51, "Output",
    CellTags->"SUNDelta"],
-  Cell[10199, 373, 578, 18, 45, "Input",
+  Cell[10199, 373, 578, 18, 62, "Input",
    CellTags->"SUNDelta",
    CellID->69005829],
   Cell[10780, 393, 628, 27, 38, "Output",
@@ -626,8 +625,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 15897, 579},
- {"SUNDelta", 16033, 583}
+ {"PrimaryExamplesSection", 15842, 578},
+ {"SUNDelta", 15978, 582}
  }
 *)
 (*NotebookFileOutline
@@ -640,10 +639,10 @@ Cell[4331, 119, 460, 13, 85, "Usage",
 Cell[CellGroupData[{
 Cell[4816, 136, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1175478356],
+ CellID->2143300140],
 Cell[CellGroupData[{
 Cell[5229, 155, 196, 6, 26, "ExampleSection",
- CellID->1406820232],
+ CellID->1872895176],
 Cell[CellGroupData[{
 Cell[5450, 165, 222, 7, 27, "Input",
  CellTags->"SUNDelta",
@@ -690,7 +689,7 @@ Cell[9633, 352, 305, 9, 51, "Output",
 Cell[9953, 364, 221, 5, 49, "Notes",
  CellID->879136127],
 Cell[CellGroupData[{
-Cell[10199, 373, 578, 18, 45, "Input",
+Cell[10199, 373, 578, 18, 62, "Input",
  CellTags->"SUNDelta",
  CellID->69005829],
 Cell[10780, 393, 628, 27, 38, "Output",

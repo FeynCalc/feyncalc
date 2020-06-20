@@ -80,7 +80,7 @@ Cell[BoxData[GridBox[{
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$31673], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$31778], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/CA", 
              ".html"]], None}]}]},
@@ -145,7 +145,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1253702121],
+ CellID->1338547254],
 
 Cell[CellGroupData[{
 
@@ -155,7 +155,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1260543835],
+ CellID->1659149539],
 
 Cell[CellGroupData[{
 
@@ -249,8 +249,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{808, 911},
-WindowMargins->{{268, Automatic}, {Automatic, 20}},
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"CA",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -262,7 +262,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 52, 59.334402}", 
+   "built" -> "{2020, 6, 20, 19, 2, 36.983322}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -293,7 +293,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4431, 132, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1253702121]},
+   CellID->1338547254]},
  "CA"->{
   Cell[5065, 161, 88, 3, 27, "Input",
    CellTags->"CA",
@@ -328,10 +328,10 @@ Cell[3930, 111, 476, 17, 85, "Usage",
 Cell[CellGroupData[{
 Cell[4431, 132, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1253702121],
+ CellID->1338547254],
 Cell[CellGroupData[{
 Cell[4844, 151, 196, 6, 26, "ExampleSection",
- CellID->1260543835],
+ CellID->1659149539],
 Cell[CellGroupData[{
 Cell[5065, 161, 88, 3, 27, "Input",
  CellTags->"CA",

@@ -28,12 +28,6 @@ depend on all of the given loop momenta. Integrals \
 that depend only on some of the loop momenta will be treated \
 as non-loop terms and remain non-isolated."
 
-DropScaleless::usage =
-"DropScaleless is an option for FCLoopIsolate. When set to True, \
-all the loop integrals that do not contain FeynAmpDenominator, \
-i.e. contain only scalar products but no denominators, are set \
-to zero.";
-
 FCLoopIsolate::fail =
 "FCLoopIsolate failed to isolate loop integrals in `1`!";
 

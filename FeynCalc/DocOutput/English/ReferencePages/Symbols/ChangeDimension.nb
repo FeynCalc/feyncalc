@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21807,        787]
+NotebookDataLength[     21753,        786]
 NotebookOptionsPosition[     15162,        581]
-NotebookOutlinePosition[     19104,        691]
-CellTagsIndexPosition[     18985,        685]
+NotebookOutlinePosition[     19050,        690]
+CellTagsIndexPosition[     18931,        684]
 WindowTitle->ChangeDimension
 WindowFrame->Normal*)
 
@@ -85,7 +85,7 @@ ChangeDimension.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$38810], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$38915], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/ChangeDimension", ".html"]], None}]}]},
@@ -147,7 +147,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->568861151],
+ CellID->1921134416],
 
 Cell[CellGroupData[{
 
@@ -157,7 +157,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1995069426],
+ CellID->520839750],
 
 Cell["\<\
 Remember that LorentzIndex[mu, 4] is simplified to LorentzIndex[mu] and \
@@ -351,7 +351,7 @@ Cell[BoxData[
           TraditionalForm],
          TraditionalForm]}]],
       TraditionalForm]}]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{225, 19},
+ ImageSize->{224, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"ChangeDimension",
@@ -582,7 +582,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 31}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"ChangeDimension",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -594,7 +594,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 53, 19.013365}", 
+   "built" -> "{2020, 6, 20, 19, 2, 54.153074}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -615,8 +615,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -626,9 +625,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4739, 134, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[4739, 134, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->568861151]},
+   CellID->1921134416]},
  "ChangeDimension"->{
   Cell[5565, 169, 231, 7, 27, "Input",
    CellTags->"ChangeDimension",
@@ -653,7 +652,7 @@ CellTagsIndex->{
   Cell[7983, 271, 500, 16, 27, "Input",
    CellTags->"ChangeDimension",
    CellID->931498160],
-  Cell[8486, 289, 1707, 68, 40, "Output",
+  Cell[8486, 289, 1707, 68, 37, "Output",
    CellTags->"ChangeDimension"],
   Cell[10230, 362, 164, 5, 27, "Input",
    CellTags->"ChangeDimension",
@@ -684,8 +683,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 17121, 627},
- {"ChangeDimension", 17263, 631}
+ {"PrimaryExamplesSection", 17066, 626},
+ {"ChangeDimension", 17209, 630}
  }
 *)
 (*NotebookFileOutline
@@ -696,12 +695,12 @@ Cell[3904, 103, 292, 11, 45, "ObjectNameGrid"],
 Cell[4199, 116, 515, 14, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4739, 134, 387, 15, 31, "PrimaryExamplesSection",
+Cell[4739, 134, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->568861151],
+ CellID->1921134416],
 Cell[CellGroupData[{
-Cell[5151, 153, 196, 6, 26, "ExampleSection",
- CellID->1995069426],
+Cell[5152, 153, 195, 6, 26, "ExampleSection",
+ CellID->520839750],
 Cell[5350, 161, 190, 4, 49, "Notes"],
 Cell[CellGroupData[{
 Cell[5565, 169, 231, 7, 27, "Input",
@@ -737,7 +736,7 @@ Cell[CellGroupData[{
 Cell[7983, 271, 500, 16, 27, "Input",
  CellTags->"ChangeDimension",
  CellID->931498160],
-Cell[8486, 289, 1707, 68, 40, "Output",
+Cell[8486, 289, 1707, 68, 37, "Output",
  CellTags->"ChangeDimension"]
 }, Open  ]],
 Cell[CellGroupData[{

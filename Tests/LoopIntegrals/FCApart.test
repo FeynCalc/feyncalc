@@ -459,5 +459,36 @@ UnDeclareFCTensor[myR1]; \n UnDeclareNonCommutative[myR1]; tmp",
 	CSPD[k, k]) myR1[CartesianMomentum[k]] -
 1/2 CFAD[{{P, 0}, {c^2, -1}, 1}] myR1[CartesianMomentum[P]] -
 1/2 CFAD[{{P, 0}, {0, -1}, 1}, {{k + P, 0}, {c^2, -1}, 1}] (c^2 -
-	CSPD[k, k]) myR1[CartesianMomentum[P]]"}
+	CSPD[k, k]) myR1[CartesianMomentum[P]]"},
+{"fcstFCApart-ID57",
+"FCApart[CFAD[{{k-p,0},{0,-1},1}] CSPD[k,p]  GFAD[{{\!\(\*SqrtBox[\
+\(CSPD[k, k]\)]\),1},1}]CFAD[k],CSPD[k],{k},FCE\[Rule]True]",
+"-(CFAD[{{k, 0}, {0, -1}, 1}]*CSPD[k, k]*GFAD[{{Sqrt[CSPD[k, k]], \
+1}, 1}])/2 + (CFAD[{{k - p, 0}, {0, -1}, 1}]*CSPD[k, \
+k]*GFAD[{{Sqrt[CSPD[k, k]], 1}, 1}])/2 + (CFAD[{{k, 0}, {0, -1}, 1}, \
+{{k - p, 0}, {0, -1}, 1}]*CSPD[k, k]*CSPD[p, p]*GFAD[{{Sqrt[CSPD[k, \
+k]], 1}, 1}])/2"},
+{"fcstFCApart-ID58",
+"FCApart[SPD[k]^2SFAD[{{0,k.k}}],{k},DropScaleless\[Rule]False]",
+"Pair[Momentum[k, D], Momentum[k, D]]"},
+{"fcstFCApart-ID59",
+"FCApart[Sqrt[CSPD[k]]^3GFAD[Sqrt[CSPD[k]]],{k}]", "0"},
+{"fcstFCApart-ID60",
+"FCApart[Sqrt[CSPD[k]]^3GFAD[Sqrt[CSPD[k]]],{k},DropScaleless\
+\[Rule]False]",
+"CartesianPair[CartesianMomentum[k, -1 + D], CartesianMomentum[k, \
+-1 + D]]"},
+{"fcstFCApart-ID61",
+"FCApart[Sqrt[CSPD[k]]^2GFAD[Sqrt[CSPD[k]]]CFAD[p-k],{k}]",
+"Sqrt[CartesianPair[CartesianMomentum[k, -1 + D], \
+CartesianMomentum[k, -1 + \
+D]]]*FeynAmpDenominator[CartesianPropagatorDenominator[\
+CartesianMomentum[k, -1 + D] - CartesianMomentum[p, -1 + D], 0, 0, \
+{1, -1}]]"},
+{"fcstFCApart-ID62",
+"FCApart[Sqrt[CSPD[k]]^2GFAD[Sqrt[CSPD[k]]],{k}]", "0"},
+{"fcstFCApart-ID63",
+"FCApart[CFAD[{{k, 0}, {0, -1}, 1}, {{k, 0}, {0, -1},
+	1}, {{k - p, 0}, {0, -1}, 1}] CSPD[k, k]^(3/2), {k}, FCE -> True]",
+	"CFAD[{{k, 0}, {0, -1}, 1}, {{k - p, 0}, {0, -1}, 1}] Sqrt[CSPD[k, k]]"}
 })

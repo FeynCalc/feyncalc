@@ -357,7 +357,9 @@ Tests`Lorentz`fcstContractCartesian = {
 {"fcstContractCartesian-ID1","FCE[Contract[FVD[v1, mu] FVD[v2, nu] Pair[LorentzIndex[mu], CartesianIndex[i]] Pair[ LorentzIndex[nu], CartesianIndex[i]]]]","CSP[v1, v2]"},
 {"fcstContractCartesian-ID2","Contract[3 +I CLC[i, j,aa] (CSI[j] KD[i, aa] + I CLC[aa, i, bb] (I CLC[bb, j, cc] CSI[cc] + KD[j, bb]))]","-3"},
 {"fcstContractCartesian-ID3","Simplify[LorentzToCartesian[
-Contract[LC[0][p1, p2, p3] LC[0][q1, q2, q3]]] - Contract[EpsEvaluate[LC[0][p1, p2, p3] LC[0][q1, q2, q3]]]]","0"}
+Contract[LC[0][p1, p2, p3] LC[0][q1, q2, q3]]] - Contract[EpsEvaluate[LC[0][p1, p2, p3] LC[0][q1, q2, q3]]]]","0"},
+{"fcstContractCartesian-ID4","Contract[CLC[i2, a, i1] KD[b, i1] KD[c, i2] -CLC[i1, a, i3] CLC[i3, b, i4] CLC[i4, c, i2] KD[i1, i2],FCE -> True]",
+"2 CLC[a, b, c]"}
 }
 
 

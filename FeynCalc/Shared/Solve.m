@@ -153,7 +153,7 @@ Solve3[eqq_List, clii_List, OptionsPattern[]] :=
 
 				(*new = Solve[neq1, cli[[i]]];*)
 				FCPrint[1,"Solve3: Solve2 done.", FCDoControl->sol3Verbose];
-				FCPrint[3,"Solve3: new:", new, FCDoControl->sol3Verbose];
+				FCPrint[3,"Solve3: new: ", new, FCDoControl->sol3Verbose];
 
 
 				(*

@@ -329,7 +329,7 @@ the commutator of two Pauli matrices, which involves a Levi-Civita \
 tensor. The latter is not a well-defined quantity in D-1 dimensions. \
 Following schemes are supported: \
 
-\"None\" - This is the default value. The anticommutator relation is not \
+\"None\" - This is the default value. The commutator relation is not \
 applied to D-1 dimensional Pauli matrices.
 
 \"Naive\" - Naively apply the commutator relation in D-1-dimensions, i.e. \
@@ -484,7 +484,7 @@ FCDisableTraditionalFormOutput[]:=
 
 
 FCSetDiracGammaScheme[s_String]:=
-	If[	MatchQ[s,"NDR"|"NDR-Drop"|"BMHV"|"Larin"],
+	If[	MatchQ[s,"NDR"|"NDR-Discard"|"BMHV"|"Larin"],
 		FeynCalc`Package`DiracGammaScheme = s,
 		Message[FeynCalc::failmsg, "Unknown scheme for Dirac matrices in D dimensions."];
 		Abort[]

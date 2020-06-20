@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9262,        296]
-NotebookOptionsPosition[      6044,        204]
-NotebookOutlinePosition[      8515,        270]
-CellTagsIndexPosition[      8384,        264]
+NotebookDataLength[      9205,        295]
+NotebookOptionsPosition[      6043,        204]
+NotebookOutlinePosition[      8459,        269]
+CellTagsIndexPosition[      8328,        263]
 WindowTitle->$FortranContinuationCharacter
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ FortranContinuationCharacter.html"], StandardForm]], "Input",
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$294004], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$295029], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/$FortranContinuationCharacter", ".html"]], 
@@ -141,7 +141,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1696140808],
+ CellID->1045633138],
 
 Cell[CellGroupData[{
 
@@ -151,7 +151,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1341373379],
+ CellID->231789583],
 
 Cell[CellGroupData[{
 
@@ -217,7 +217,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 19, 4, 20.184533}", 
+   "built" -> "{2020, 6, 20, 19, 12, 51.229540}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -238,8 +238,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -251,20 +250,20 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4434, 128, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1696140808]},
+   CellID->1045633138]},
  "$FortranContinuationCharacter"->{
-  Cell[5068, 157, 143, 3, 27, "Input",
+  Cell[5067, 157, 143, 3, 27, "Input",
    CellTags->"$FortranContinuationCharacter",
    CellID->1374118326],
-  Cell[5214, 162, 239, 7, 35, "Output",
+  Cell[5213, 162, 239, 7, 35, "Output",
    CellTags->"$FortranContinuationCharacter",
    CellID->1216489439]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7984, 250},
- {"$FortranContinuationCharacter", 8141, 254}
+ {"PrimaryExamplesSection", 7928, 249},
+ {"$FortranContinuationCharacter", 8085, 253}
  }
 *)
 (*NotebookFileOutline
@@ -277,27 +276,27 @@ Cell[4032, 113, 377, 11, 84, "Usage",
 Cell[CellGroupData[{
 Cell[4434, 128, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1696140808],
+ CellID->1045633138],
 Cell[CellGroupData[{
-Cell[4847, 147, 196, 6, 26, "ExampleSection",
- CellID->1341373379],
+Cell[4847, 147, 195, 6, 26, "ExampleSection",
+ CellID->231789583],
 Cell[CellGroupData[{
-Cell[5068, 157, 143, 3, 27, "Input",
+Cell[5067, 157, 143, 3, 27, "Input",
  CellTags->"$FortranContinuationCharacter",
  CellID->1374118326],
-Cell[5214, 162, 239, 7, 35, "Output",
+Cell[5213, 162, 239, 7, 35, "Output",
  CellTags->"$FortranContinuationCharacter",
  CellID->1216489439]
 }, Open  ]]
 }, Open  ]],
-Cell[5480, 173, 31, 0, 29, "SectionFooterSpacer"]
+Cell[5479, 173, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5548, 178, 270, 12, 31, "SeeAlsoSection",
+Cell[5547, 178, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[5821, 192, 181, 7, 56, "SeeAlso"]
+Cell[5820, 192, 181, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[6017, 202, 23, 0, 41, "FooterCell"]
+Cell[6016, 202, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

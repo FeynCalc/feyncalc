@@ -35,7 +35,7 @@ $LoadAddOns={"FeynArts"};
 <<FeynCalc`
 $FAVerbose = 0;
 
-FCCheckVersion[9,3,0];
+FCCheckVersion[9,3,1];
 
 
 (* ::Section:: *)
@@ -66,7 +66,7 @@ Paint[diags, ColumnsXRows -> {1, 1}, Numbering -> Simple,
 
 (* ::Text:: *)
 (*The 1/(2Pi)^D prefactor is implicit. We need to replace e with -e to be compatible*)
-(*with the convnention D^mu = d^mu + ie A^mu*)
+(*with the convention D^mu = d^mu + ie A^mu*)
 
 
 amp[0] = FCFAConvert[CreateFeynAmp[diags,PreFactor->1],

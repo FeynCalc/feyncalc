@@ -178,7 +178,7 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 
 		nx = nx/factorOut;
 
-		FCPrint[2,"Collect2: After factoring out ", factorOut, " :", nx,  FCDoControl->cl2Verbose];
+		FCPrint[2,"Collect2: After factoring out ", factorOut, " : ", nx,  FCDoControl->cl2Verbose];
 
 
 
@@ -285,8 +285,8 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1,"Collect2: Computing CoefficientArrays.", FCDoControl->cl2Verbose];
 		coeffArray = CoefficientArrays[nx,tv];
-		FCPrint[1,"Collect2: CoefficientArrays ready, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
-		FCPrint[3,"Collect2: CoefficientArrays:", coeffArray, FCDoControl->cl2Verbose];
+		FCPrint[1,"Collect2: CoefficientArrays ready, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
+		FCPrint[3,"Collect2: CoefficientArrays: ", coeffArray, FCDoControl->cl2Verbose];
 
 		time=AbsoluteTime[];
 		FCPrint[1,"Collect2: Collecting the monomials.", FCDoControl->cl2Verbose];
@@ -302,7 +302,7 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 
 		new =  Sum[dotHold[coeffHead[coeffArray[[i]]] , Sequence @@ Table[tvm, {i - 1}]], {i, 2, Length[coeffArray]}];
 
-		FCPrint[1,"Collect2: Done collecting the monomials, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
+		FCPrint[1,"Collect2: Done collecting the monomials, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
 		FCPrint[3,"Collect2: prelminiary new: ", new, FCDoControl->cl2Verbose];
 		time=AbsoluteTime[];
 		FCPrint[1,"Collect2: Obtaining the final result.", FCDoControl->cl2Verbose];
@@ -319,7 +319,7 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 
 		new = new/.dotHold-> Dot;
 
-		FCPrint[1,"Collect2: The final result is ready, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
+		FCPrint[1,"Collect2: The final result is ready, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
 		FCPrint[3,"Collect2: new: ", new, FCDoControl->cl2Verbose];
 
 		If[	!FreeQ2[lin,monomList],
@@ -335,20 +335,20 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 			lin = Isolate[ FRH[lin/.holdForm->Identity, IsolateNames->{tempIso,optIsolateNames}], IsolateNames->optIsolateNames, IsolateFast->optIsolateFast],
 			lin = FRH[lin/.holdForm->Identity, IsolateNames->{tempIso,optIsolateNames}]
 		];
-		FCPrint[1,"Collect2: Done releasing tempIso, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
+		FCPrint[1,"Collect2: Done releasing tempIso, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
 
 		If[	secondHead=!=Null,
 			time=AbsoluteTime[];
 			FCPrint[1,"Collect2: Applying secondHead.", FCDoControl->cl2Verbose];
 			lin = secondHead[lin,1] /. secondHead[0,_] -> 0;
 			new = secondHead/@(new + null1 + null2) /. secondHead[null1|null2]->0 /. secondHead[a_firstHead b_]:> secondHead[b,a];
-			FCPrint[1,"Collect2: Done applying secondHead, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
+			FCPrint[1,"Collect2: Done applying secondHead, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
 		];
 
 		time=AbsoluteTime[];
 		FCPrint[1,"Collect2: Putting re togehter.", FCDoControl->cl2Verbose];
 		re = ((new + lin) /. lk[ka_][j_] -> holdForm[ka[j]] /.	frx->Plus);
-		FCPrint[1,"Collect2: Done putting re togehter, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
+		FCPrint[1,"Collect2: Done putting re togehter, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
 
 		(*Just a small consistency check *)
 		If[	optIsolateNames =!= False,
@@ -359,7 +359,7 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 		];
 
 
-		FCPrint[1,"Collect2: Done releasing tempIso, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
+		FCPrint[1,"Collect2: Done releasing tempIso, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
 
 		If[ccflag,
 			re = re /. compCON -> ComplexConjugate

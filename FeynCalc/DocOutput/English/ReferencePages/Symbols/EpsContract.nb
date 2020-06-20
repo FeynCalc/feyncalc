@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12513,        435]
+NotebookDataLength[     12514,        435]
 NotebookOptionsPosition[      8901,        326]
-NotebookOutlinePosition[     11416,        395]
-CellTagsIndexPosition[     11301,        389]
+NotebookOutlinePosition[     11417,        395]
+CellTagsIndexPosition[     11302,        389]
 WindowTitle->EpsContract
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ EpsContract.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$78043], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$78163], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/EpsContract", ".html"]], None}]}]},
@@ -142,7 +142,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1606407450],
+ CellID->1717369497],
 
 Cell[CellGroupData[{
 
@@ -152,7 +152,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->698680576],
+ CellID->813365375],
 
 Cell[CellGroupData[{
 
@@ -326,8 +326,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{808, 911},
-WindowMargins->{{268, Automatic}, {Automatic, 20}},
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"EpsContract",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -339,7 +339,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 55, 6.061578}", 
+   "built" -> "{2020, 6, 20, 19, 4, 28.943424}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -372,7 +372,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4517, 129, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1606407450]},
+   CellID->1717369497]},
  "EpsContract"->{
   Cell[6440, 216, 185, 6, 27, "Input",
    CellTags->"EpsContract",
@@ -388,8 +388,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10816, 371},
- {"EpsContract", 10955, 375}
+ {"PrimaryExamplesSection", 10817, 371},
+ {"EpsContract", 10956, 375}
  }
 *)
 (*NotebookFileOutline
@@ -397,15 +397,15 @@ Notebook[{
 Cell[583, 21, 3107, 76, 53, "AnchorBarGrid",
  CellID->1],
 Cell[3693, 99, 288, 11, 45, "ObjectNameGrid"],
-Cell[3984, 112, 508, 13, 101, "Usage",
+Cell[3984, 112, 508, 13, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
 Cell[4517, 129, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1606407450],
+ CellID->1717369497],
 Cell[CellGroupData[{
 Cell[4930, 148, 195, 6, 26, "ExampleSection",
- CellID->698680576],
+ CellID->813365375],
 Cell[CellGroupData[{
 Cell[5150, 158, 145, 4, 27, "Input"],
 Cell[5298, 164, 567, 24, 35, "Output"]

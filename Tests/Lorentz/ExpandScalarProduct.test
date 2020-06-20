@@ -86,5 +86,9 @@ SP[p3, q4]"}, {"fcstExpandScalarProduct-ID22",
 {"fcstExpandScalarProduct-ID22",
 "ExpandScalarProduct[Pair[Momentum[k + P], Momentum[Polarization[k + P, I]]]]",
 "Pair[Momentum[k], Momentum[Polarization[k + P, I]]] +
-Pair[Momentum[P], Momentum[Polarization[k + P, I]]]"}
+Pair[Momentum[P], Momentum[Polarization[k + P, I]]]"},
+{"fcstExpandScalarProduct-ID23",
+"DeclareFCTensor[r]; tmp = r[-CartesianMomentum[k, -1 + D]] // ExpandScalarProduct; \n
+UnDeclareFCTensor[r]; tmp
+","-r[CartesianMomentum[k, -1 + D]]"}
 }

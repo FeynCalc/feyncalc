@@ -51,5 +51,10 @@ GSD[p+q],3GSD[r+s]],DiracGammaExpand\[Rule]True,FCE\[Rule]True]",
 DiracSigma[GSD[q], GSD[r]] + DiracSigma[GSD[q], GSD[s]])"},
 {"fcstDiracSigmaExpand-ID10",
 "DiracSigmaExpand[DiracSigma[GSD[p]+GSD[q],GAD[mu]],FCE\[Rule]True]\
-", "-DiracSigma[GAD[mu], GSD[p]] - DiracSigma[GAD[mu], GSD[q]]"}
+", "-DiracSigma[GAD[mu], GSD[p]] - DiracSigma[GAD[mu], GSD[q]]"},
+{"fcstDiracSigmaExpand-ID11", "DiracSigmaExpand[DiracSigma[GSD[p] + GSD[q], GSD[r + x]] == x,
+FCE -> True]", "DiracSigma[GSD[p], GSD[r + x]] + DiracSigma[GSD[q], GSD[r + x]] == x"},
+{"fcstDiracSigmaExpand-ID12", "DiracSigmaExpand[{DiracSigma[GSD[p] + GSD[q], GSD[r + x]],
+DiracSigma[GSD[a] + GSD[b], GSD[r + x]]}, FCE -> True]", "{DiracSigma[GSD[p], GSD[r + x]] + DiracSigma[GSD[q], GSD[r + x]],
+DiracSigma[GSD[a], GSD[r + x]] + DiracSigma[GSD[b], GSD[r + x]]}"}
 });

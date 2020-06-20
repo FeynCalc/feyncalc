@@ -81,7 +81,7 @@ Cell[BoxData[GridBox[{
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$161227], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$162235], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], "FeynCalc/ref/GS", 
              ".html"]], None}]}]},
@@ -156,7 +156,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1090110818],
+ CellID->1261089462],
 
 Cell[CellGroupData[{
 
@@ -166,7 +166,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->808016956],
+ CellID->291639673],
 
 Cell[CellGroupData[{
 
@@ -397,7 +397,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{278, Automatic}, {Automatic, 28}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"GS",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -409,7 +409,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 58, 45.520183}", 
+   "built" -> "{2020, 6, 20, 19, 7, 44.861481}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -443,7 +443,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[5004, 143, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1090110818]},
+   CellID->1261089462]},
  "GS"->{
   Cell[5637, 172, 116, 4, 27, "Input",
    CellTags->"GS",
@@ -488,10 +488,10 @@ Cell[4005, 112, 974, 27, 105, "Usage",
 Cell[CellGroupData[{
 Cell[5004, 143, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1090110818],
+ CellID->1261089462],
 Cell[CellGroupData[{
 Cell[5417, 162, 195, 6, 26, "ExampleSection",
- CellID->808016956],
+ CellID->291639673],
 Cell[CellGroupData[{
 Cell[5637, 172, 116, 4, 27, "Input",
  CellTags->"GS",

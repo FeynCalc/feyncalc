@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7550,        221]
+NotebookDataLength[      7552,        221]
 NotebookOptionsPosition[      5353,        162]
-NotebookOutlinePosition[      7341,        213]
-CellTagsIndexPosition[      7298,        210]
+NotebookOutlinePosition[      7343,        213]
+CellTagsIndexPosition[      7300,        210]
 WindowTitle->$BreitMaison
 WindowFrame->Normal*)
 
@@ -82,7 +82,7 @@ BreitMaison.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$290978], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$292003], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/$BreitMaison", ".html"]], None}]}]},
@@ -175,7 +175,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 19, 4, 12.967783}", 
+   "built" -> "{2020, 6, 20, 19, 12, 44.011783}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

@@ -33,5 +33,11 @@ DiracIndex[i], DiracIndex[j]]"},
 DiracGamma[LorentzIndex[$AL[$31]]] . DiracGamma[LorentzIndex[mu]], \
 DiracIndex[i], DiracIndex[j]]"},
 {"fcstDiracChainFactor-ID4", "DiracChainFactor[DCHN[(x.y.z),i,j]]",
-"DiracChain[1, DiracIndex[i], DiracIndex[j]]*x . y . z"}
+"DiracChain[1, DiracIndex[i], DiracIndex[j]]*x . y . z"},
+{"fcstDiracChainFactor-ID5","DiracChainFactor[DCHN[GA[mu].GA[nu].GA[mu] FV[p, nu], i, j] == x,
+FCE -> True]","DCHN[GA[mu].GA[nu].GA[mu], i, j] FV[p, nu] == x"},
+{"fcstDiracChainFactor-ID6","DiracChainFactor[{DCHN[GA[mu].GA[nu].GA[mu] FV[p, nu], i, j],
+DCHN[GA[mu].GA[s].GA[mu] FV[p, s], i, j]
+}, FCE -> True]","{DCHN[GA[mu].GA[nu].GA[mu], i, j] FV[p, nu],
+DCHN[GA[mu].GA[s].GA[mu], i, j] FV[p, s]}"}
 });

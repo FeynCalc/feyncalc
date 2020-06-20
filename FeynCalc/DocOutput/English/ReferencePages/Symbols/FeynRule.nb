@@ -79,7 +79,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$138323], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$139331], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/FeynRule", ".html"]], None}]}]},
@@ -156,7 +156,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->290293433],
+ CellID->395908320],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -246,7 +246,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->449434060],
+ CellID->833699013],
 
 Cell[CellGroupData[{
 
@@ -256,7 +256,7 @@ Cell[TextData[{
  Cell["(5)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->152723255],
+ CellID->511073477],
 
 Cell[TextData[{
  "Derive the Feyman rule for the ",
@@ -3475,8 +3475,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{808, 911},
-WindowMargins->{{278, Automatic}, {Automatic, 28}},
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"FeynRule",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -3488,7 +3488,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 57, 47.257891}", 
+   "built" -> "{2020, 6, 20, 19, 6, 53.098117}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -3520,7 +3520,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[7416, 233, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->449434060]},
+   CellID->833699013]},
  "FeynRule"->{
   Cell[74761, 2806, 379, 11, 45, "Input",
    CellTags->"FeynRule",
@@ -3546,14 +3546,14 @@ Cell[3899, 112, 600, 18, 85, "Usage",
 Cell[CellGroupData[{
 Cell[4524, 134, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->290293433],
-Cell[5265, 160, 31, 0, 70, "SectionHeaderSpacer"],
-Cell[5299, 162, 194, 6, 70, "Notes"],
-Cell[5496, 170, 256, 7, 70, "Notes"],
-Cell[5755, 179, 673, 19, 70, "Notes",
+ CellID->395908320],
+Cell[5265, 160, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[5299, 162, 194, 6, 32, "Notes"],
+Cell[5496, 170, 256, 7, 32, "Notes"],
+Cell[5755, 179, 673, 19, 84, "Notes",
  CellID->1067943069],
 Cell[CellGroupData[{
-Cell[6453, 202, 91, 2, 70, "Input"],
+Cell[6453, 202, 91, 2, 27, "Input"],
 Cell[6547, 206, 808, 20, 75, "Output"]
 }, Open  ]]
 }, Closed]]
@@ -3561,10 +3561,10 @@ Cell[6547, 206, 808, 20, 75, "Output"]
 Cell[CellGroupData[{
 Cell[7416, 233, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->449434060],
+ CellID->833699013],
 Cell[CellGroupData[{
 Cell[7828, 252, 195, 6, 26, "ExampleSection",
- CellID->152723255],
+ CellID->511073477],
 Cell[8026, 260, 143, 5, 32, "Notes"],
 Cell[CellGroupData[{
 Cell[8194, 269, 214, 7, 27, "Input"],

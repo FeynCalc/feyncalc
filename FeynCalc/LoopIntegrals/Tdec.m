@@ -50,10 +50,6 @@ Tdec::tencon =
 "Tdec failed to generate the list of tensors to convert the tensor equation into a \
 linear system. Evaluation aborted!";
 
-Tdec::indices =
-"Tdec has detected that the integral contains loop momenta with idential Lorentz indices. \
-Evaluation aborted!";
-
 Tdec::failmsg =
 "Error! TID has encountered a fatal problem and must abort the computation. \
 The problem reads: `1`"
@@ -65,7 +61,7 @@ Begin["`Package`"]
 (*	Just write down the most general decomposition, without solving any linear
 	equations. This is meant to be called from TID	*)
 BasisOnly;
-
+UseFerSolve;
 
 End[]
 
@@ -83,7 +79,8 @@ Options[Tdec] =	{
 	Head				-> Identity,
 	List 				-> True,
 	UseParallelization	-> True,
-	UseTIDL 			-> True
+	UseTIDL 			-> True,
+	UseFerSolve			-> False
 };
 
 SetAttributes[symmMT,Orderless];
@@ -253,7 +250,7 @@ CCSymmetrize[ins_List, li_List, syms_List/;Length[syms]>0] :=
 		Since the number of symmetries can be in principle quite large, we employ the Cycles-notation.
 		*)
 
-		FCPrint[1, "Tdec: CCSymmetrize: Entering with ", {ins,li,syms}, "" , FCDoControl->tdecVerbose];
+		FCPrint[3, "Tdec: CCSymmetrize: Entering with ", {ins,li,syms}, "" , FCDoControl->tdecVerbose];
 
 
 		detPos[x_] :=
@@ -282,6 +279,7 @@ CCSymmetrize[ins_List, li_List, syms_List/;Length[syms]>0] :=
 		];
 
 		FCPrint[3, "Tdec: CCSymmetrize: Permutation groups ", permGroup, "" , FCDoControl->tdecVerbose];
+
 		tmp = Sort[Permute[li,permGroup]];
 		tmpList = Transpose[{ins,#}]&/@tmp;
 		tmp = Transpose[{ins,First[tmp]}];
@@ -323,7 +321,7 @@ Tdec[exp_:1, {a_/;Head[a] =!=List, b_/;Head[b]=!=List}, pli_List/;FreeQ[pli,Opti
 
 Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]] :=
 	Block[ {tt, factor, dim, proli, nccli, ccli, pli,
-			eqli, neqli,  nttt,listlabel, fce,
+			eqli, neqli,  nttt,listlabel, fce, time, time1,
 			veqli, seqli, scqli, solu,ii,ex,ce,xy, optHead,
 			extMom,basisonly,multiLoop=False,lis,mlis,basis,multiLoopSyms={}},
 
@@ -359,8 +357,9 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 			Abort[]
 		];
 
+		(* One of the examples why this is needed: Tdec[{{l, mu1}, {l, mu1}, {l, mu3}}, {p}] *)
 		If[Sort[lis]=!=Union[lis],
-			Message[Tdec::indices];
+			Message[Tdec::failmsg, "Loop momenta with identical indices cannot be handled correctly."];
 			Abort[]
 		];
 
@@ -396,19 +395,35 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 
 
 		(* generate (non-symmetric) tensor basis *)
+		time=AbsoluteTime[];
+		FCPrint[1, "Tdec: Generating the tensor basis", FCDoControl->tdecVerbose];
 		basis = fullBasis[lis,pli,dim];
-		FCPrint[2, "Tdec: non-symmetric tensor basis ",basis, FCDoControl->tdecVerbose];
+		FCPrint[1, "Tdec: Done generating the tensor basis, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tdecVerbose];
+		FCPrint[3, "Tdec: Non-symmetric tensor basis ",basis, FCDoControl->tdecVerbose];
+
+		FCPrint[1, "Tdec: Symmetrizing the tensor basis", FCDoControl->tdecVerbose];
+		time=AbsoluteTime[];
 		(* symmetrize the tensor basis *)
 		If[!multiLoop,
 			(* symmetrizing the basis for 1-loop is really trivial...	*)
 			basis = (basis /. CC[a_, _] :> CC[Sort[a]]) // Collect[#, CC[__]] &,
 			If[multiLoopSyms=!={},
-				basis = (basis/. CC[x__] :> CC[CCSymmetrize[x, multiLoopSyms]])// Collect[#, CC[__]] &,
+				time1=AbsoluteTime[];
+				FCPrint[1, "Tdec: Applying CCSymmetrize", FCDoControl->tdecVerbose];
+				FCPrint[1, "Tdec: Need to check ", Length[Cases2[basis,CC]], " pieces", FCDoControl->tdecVerbose];
+				basis = (basis/. CC[x__] :> CC[CCSymmetrize[x, multiLoopSyms]]);
+				FCPrint[1, "Tdec: Done applying CCSymmetrize, timing: ", N[AbsoluteTime[] - time1, 4], FCDoControl->tdecVerbose];
+
+				time1=AbsoluteTime[];
+				FCPrint[1, "Tdec: Applying Collect", FCDoControl->tdecVerbose];
+				basis =  Collect[basis, CC[__]];
+				FCPrint[1, "Tdec: Done applying Collect, timing: ", N[AbsoluteTime[] - time1, 4], FCDoControl->tdecVerbose],
 				(*	a general multiloop integral doesn't necessarily has to have any symmetrices
 					in the indices	*)
 				basis = (basis/. CC[x__] :> CC[Transpose[{x}]])// Collect[#, CC[__]] &
 			]
 		];
+		FCPrint[1, "Tdec: Done symmetrizing the tensor basis, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tdecVerbose];
 
 		(* if we were requested to provide only the symmetric tensor basis, we stop here *)
 		If[	basisonly,
@@ -418,10 +433,11 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 				Return[(basis/.extMom->optHead/.CC[xx__]:> FCGV["PaVe"][xx])]
 			]
 		];
-		FCPrint[1, "Tdec: symmetrized tensor basis ",basis, FCDoControl->tdecVerbose];
+
+		FCPrint[3, "Tdec: symmetrized tensor basis ",basis, FCDoControl->tdecVerbose];
 		(* list of tensor coefficients for which we need to solve our linear equations *)
 		ccli =  Cases[basis,CC[__],Infinity];
-		FCPrint[2, "Tdec: ccli:", ccli, FCDoControl->tdecVerbose];
+		FCPrint[3, "Tdec: ccli: ", ccli, FCDoControl->tdecVerbose];
 
 		(* 	out of the tensor coefficients we create tensor structures that will be contracted
 			with the original tensor equations to get a system of linear (scalar) equations *)
@@ -429,7 +445,7 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 			proli= ccli /. CC[x__] :> ccProjOneLoop[x, lis, pli, dim],
 			proli= ccli /. CC[x__] :> ccProjMultiLoop[x, pli, dim]
 		];
-		FCPrint[2, "Tdec: proli after ccProj ",proli, FCDoControl->tdecVerbose];
+		FCPrint[3, "Tdec: proli after ccProj ",proli, FCDoControl->tdecVerbose];
 		proli = Sort[proli];
 
 		If[!FreeQ2[proli,{ccProjOneLoop,ccProjMultiLoop}],
@@ -440,17 +456,24 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 		(* tt is the actual tensor equation that has to be solved *)
 		tt = Equal[Times @@ (Pair[Momentum[#[[1]],dim], LorentzIndex[#[[2]],dim]] & /@ li),basis];
 
-		FCPrint[1, "Tdec: tt is ", tt, FCDoControl->tdecVerbose];
-		FCPrint[1, "Tdec: contracting tt with ", proli, FCDoControl->tdecVerbose];
+		FCPrint[3, "Tdec: tt is ", tt, FCDoControl->tdecVerbose];
+		FCPrint[3, "Tdec: contracting tt with ", proli, FCDoControl->tdecVerbose];
 		(* 	eqli is the linear system that is built out of tt after contractions with
 			the elements of proli *)
+
+		FCPrint[1, "Tdec:  Need to contract a tensor equation with ", Length[tt[[2]]], " terms with ", Length[proli],
+			" projectors. ", FCDoControl->tdecVerbose];
+
+
+		FCPrint[1, "Tdec:  Building a system of scalar equations.", FCDoControl->tdecVerbose];
+		time=AbsoluteTime[];
 		eqli = 	Table[FCPrint[1, "ii = ", ii, FCDoControl->tdecVerbose];
 				Equal[Expand[(tt[[1]] proli[[ii]]),Pair]/.Pair->PairContract/.PairContract->Pair,(tt[[2]] proli[[ii]])]/.Pair->PairContract/.PairContract->Pair,
 					{ii, Length[proli]}];
+		FCPrint[1, "Tdec: Done building a system of scalar equations, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tdecVerbose];
 
-
-		FCPrint[1, "Length of eqli = ", Length[eqli], FCDoControl->tdecVerbose];
-		FCPrint[1, "eqli = ", TableForm[eqli], FCDoControl->tdecVerbose];
+		FCPrint[1, "Tdec: Number of tensor equations to solve: ", Length[eqli], FCDoControl->tdecVerbose];
+		FCPrint[3, "eqli = ", TableForm[eqli], FCDoControl->tdecVerbose];
 		FCPrint[1, "solving ", Length[ccli], FCDoControl->tdecVerbose];
 
 		(*	introduce abbreviations to simplify the solving process	*)
@@ -462,7 +485,7 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 		ccli = ccli /. scqli;
 		(* Let us collect common coefficients in each equation to make solving even faster	*)
 		neqli = Map[Replace[#,Equal[a_, b_] :> Equal[a, Collect[b, ccli]]] &, neqli];
-		FCPrint[1, "neqli = ", TableForm[neqli], FCDoControl->tdecVerbose];
+		FCPrint[3, "neqli = ", TableForm[neqli], FCDoControl->tdecVerbose];
 		(*Before computing the decomposition formula, check if the result
 		is already available in the TIDL database *)
 		If[ OptionValue[UseTIDL] && TIDL[li,pli,Dimension->dim]=!=Apply[Times,
@@ -470,7 +493,7 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 			FCPrint[1, "This decomposition formula is available in TIDL, skipping
 				calculation.", FCDoControl->tdecVerbose];
 			tt = TIDL[li,pli,Dimension->dim];
-			FCPrint[1, "Result from TIDL: ", tt, FCDoControl->tdecVerbose];
+			FCPrint[3, "Result from TIDL: ", tt, FCDoControl->tdecVerbose];
 			If[ listlabel,
 				tt = FeynCalcInternal[FeynCalcExternal[tt] /. Dispatch[FeynCalcExternal[seqli]]];
 			],
@@ -482,11 +505,16 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 			FCPrint[2, "Tdec: Solving: ", neqli, FCDoControl->tdecVerbose];
 			FCPrint[2, "Tdec: For: ", ccli, FCDoControl->tdecVerbose];
 
-			solu = Solve3[neqli, ccli, Factoring -> factor, ParallelMap->OptionValue[UseParallelization]];
+			If[	FeynCalc`Package`FeynHelpersLoaded===True && OptionValue[UseFerSolve],
+				solu = FeynCalc`FerSolve[neqli,ccli],
 
-			FCPrint[1, "Tdec: Solve3 done. Used memory: ", MemoryInUse[], FCDoControl->tdecVerbose];
-			FCPrint[1, "Tdec: Solve3 bytecount", ByteCount[solu], FCDoControl->tdecVerbose];
-			FCPrint[2, "Tdec: solu:", Normal[solu], FCDoControl->tdecVerbose];
+				FCPrint[1, "Tdec: Using Solve3", FCDoControl->tdecVerbose];
+				solu = Solve3[neqli, ccli, Factoring -> factor, ParallelMap->OptionValue[UseParallelization]];
+				FCPrint[1, "Tdec: Solve3 done. Used memory: ", MemoryInUse[], FCDoControl->tdecVerbose];
+				FCPrint[1, "Tdec: Solve3 bytecount", ByteCount[solu], FCDoControl->tdecVerbose]
+			];
+
+			FCPrint[3, "Tdec: solu: ", Normal[solu], FCDoControl->tdecVerbose];
 			nttt = Collect[tt[[2]], Map[First, scqli]];
 			If[ fce,
 				nttt = FeynCalcExternal[nttt]
@@ -495,7 +523,7 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 				solu = solu /. Map[Reverse, seqli];
 			];
 			solu = solu /. Dispatch[Map[Reverse, scqli]];
-			FCPrint[2, "Tdec: solu:", Normal[solu], FCDoControl->tdecVerbose];
+			FCPrint[3, "Tdec: solu: ", Normal[solu], FCDoControl->tdecVerbose];
 			tt = nttt /. Dispatch[solu];
 		];
 

@@ -13,30 +13,30 @@
 
 (* ------------------------------------------------------------------------ *)
 
-Tests`Pauli`fcstPauliSimplfyChains =
+Tests`Pauli`fcstPauliSimplifyChains =
 ({
-{"fcstPauliSimplfyChains-ID1",
-"PauliSimplify[CSIS[p].CSI[j1].CSIS[p],PauliReduce\[Rule]False,\
+{"fcstPauliSimplifyChains-ID1",
+"PauliSimplify[CSIS[p].CSI[j1].CSIS[p],\
 FCE->True]", "-(CSI[j1]*CSP[p, p]) + 2*CSIS[p]*CV[p, j1]"},
-{"fcstPauliSimplfyChains-ID2",
-"PauliSimplify[CSIS[p].CSI[j1,j2].CSIS[p],PauliReduce\[Rule]False,\
+{"fcstPauliSimplifyChains-ID2",
+"PauliSimplify[CSIS[p].CSI[j1,j2].CSIS[p],\
 FCE->True]",
 "CSP[p, p]*CSI[j1] . CSI[j2] - 2*CV[p, j2]*CSI[j1] . CSIS[p] + \
 2*CV[p, j1]*CSI[j2] . CSIS[p]"},
-{"fcstPauliSimplfyChains-ID3",
+{"fcstPauliSimplifyChains-ID3",
 "PauliSimplify[CSIS[p].CSI[j1,j2,j3].CSIS[p],PauliReduce\[Rule]\
 False,FCE->True]",
 "-(CSP[p, p]*CSI[j1] . CSI[j2] . CSI[j3]) + 2*CV[p, j3]*CSI[j1] . \
 CSI[j2] . CSIS[p] - 2*CV[p, j2]*CSI[j1] . CSI[j3] . CSIS[p] + 2*CV[p, \
 j1]*CSI[j2] . CSI[j3] . CSIS[p]"},
-{"fcstPauliSimplfyChains-ID4",
+{"fcstPauliSimplifyChains-ID4",
 "PauliSimplify[CSIS[p].CSI[j1,j2,j3,j4].CSIS[p],PauliReduce\[Rule]\
 False,FCE->True]",
 "CSP[p, p]*CSI[j1] . CSI[j2] . CSI[j3] . CSI[j4] - 2*CV[p, \
 j4]*CSI[j1] . CSI[j2] . CSI[j3] . CSIS[p] + 2*CV[p, j3]*CSI[j1] . \
 CSI[j2] . CSI[j4] . CSIS[p] - 2*CV[p, j2]*CSI[j1] . CSI[j3] . CSI[j4] \
 . CSIS[p] + 2*CV[p, j1]*CSI[j2] . CSI[j3] . CSI[j4] . CSIS[p]"},
-{"fcstPauliSimplfyChains-ID5",
+{"fcstPauliSimplifyChains-ID5",
 "PauliSimplify[CSIS[p].CSI[j1,j2,j3,j4,j5].CSIS[p],PauliReduce\
 \[Rule]False,FCE->True]",
 "-(CSP[p, p]*CSI[j1] . CSI[j2] . CSI[j3] . CSI[j4] . CSI[j5]) + \
@@ -45,9 +45,9 @@ j4]*CSI[j1] . CSI[j2] . CSI[j3] . CSI[j5] . CSIS[p] + 2*CV[p, \
 j3]*CSI[j1] . CSI[j2] . CSI[j4] . CSI[j5] . CSIS[p] - 2*CV[p, \
 j2]*CSI[j1] . CSI[j3] . CSI[j4] . CSI[j5] . CSIS[p] + 2*CV[p, \
 j1]*CSI[j2] . CSI[j3] . CSI[j4] . CSI[j5] . CSIS[p]"},
-{"fcstPauliSimplfyChains-ID6",
+{"fcstPauliSimplifyChains-ID6",
 "PauliSimplify[CSIS[p].CSI[j1,j2,j3,j4,j5,j6,j7].CSIS[p],\
-PauliReduce\[Rule]False,FCE->True]",
+FCE->True]",
 "-(CSP[p, p]*CSI[j1] . CSI[j2] . CSI[j3] . CSI[j4] . CSI[j5] . \
 CSI[j6] . CSI[j7]) + 2*CV[p, j7]*CSI[j1] . CSI[j2] . CSI[j3] . \
 CSI[j4] . CSI[j5] . CSI[j6] . CSIS[p] - 2*CV[p, j6]*CSI[j1] . CSI[j2] \
@@ -59,9 +59,9 @@ CSI[j5] . CSI[j6] . CSI[j7] . CSIS[p] - 2*CV[p, j2]*CSI[j1] . CSI[j3] \
 . CSI[j4] . CSI[j5] . CSI[j6] . CSI[j7] . CSIS[p] + 2*CV[p, \
 j1]*CSI[j2] . CSI[j3] . CSI[j4] . CSI[j5] . CSI[j6] . CSI[j7] . \
 CSIS[p]"},
-{"fcstPauliSimplfyChains-ID7",
+{"fcstPauliSimplifyChains-ID7",
 "PauliSimplify[CSIS[p].CSI[j1,j2,j3,j4,j5,j6,j7,j8].CSIS[p],\
-PauliReduce\[Rule]False,FCE->True]",
+FCE->True]",
 "CSP[p, p]*CSI[j1] . CSI[j2] . CSI[j3] . CSI[j4] . CSI[j5] . \
 CSI[j6] . CSI[j7] . CSI[j8] - 2*CV[p, j8]*CSI[j1] . CSI[j2] . CSI[j3] \
 . CSI[j4] . CSI[j5] . CSI[j6] . CSI[j7] . CSIS[p] + 2*CV[p, \
@@ -75,9 +75,9 @@ CSI[j5] . CSI[j6] . CSI[j7] . CSI[j8] . CSIS[p] - 2*CV[p, j2]*CSI[j1] \
 . CSI[j3] . CSI[j4] . CSI[j5] . CSI[j6] . CSI[j7] . CSI[j8] . CSIS[p] \
 + 2*CV[p, j1]*CSI[j2] . CSI[j3] . CSI[j4] . CSI[j5] . CSI[j6] . \
 CSI[j7] . CSI[j8] . CSIS[p]"},
-{"fcstPauliSimplfyChains-ID8",
+{"fcstPauliSimplifyChains-ID8",
 "PauliSimplify[CSIS[p].CSI[j1,j2,j3,j4,j5,j6,j7,j8,j9].CSIS[p],\
-PauliReduce\[Rule]False,FCE->True]",
+FCE->True]",
 "-(CSP[p, p]*CSI[j1] . CSI[j2] . CSI[j3] . CSI[j4] . CSI[j5] . \
 CSI[j6] . CSI[j7] . CSI[j8] . CSI[j9]) + 2*CV[p, j9]*CSI[j1] . \
 CSI[j2] . CSI[j3] . CSI[j4] . CSI[j5] . CSI[j6] . CSI[j7] . CSI[j8] . \
@@ -94,9 +94,9 @@ CSIS[p] - 2*CV[p, j2]*CSI[j1] . CSI[j3] . CSI[j4] . CSI[j5] . CSI[j6] \
 . CSI[j7] . CSI[j8] . CSI[j9] . CSIS[p] + 2*CV[p, j1]*CSI[j2] . \
 CSI[j3] . CSI[j4] . CSI[j5] . CSI[j6] . CSI[j7] . CSI[j8] . CSI[j9] . \
 CSIS[p]"},
-{"fcstPauliSimplfyChains-ID9",
+{"fcstPauliSimplifyChains-ID9",
 "PauliSimplify[CSIS[p].CSI[j1,j2,j3,j4,j5,j6,j7,j8,j9,j10].CSIS[p],\
-PauliReduce\[Rule]False,FCE->True]",
+FCE->True]",
 "2*CV[p, j9]*CSI[j1] . CSI[j2] . CSI[j3] . CSI[j4] . CSI[j5] . \
 CSI[j6] . CSI[j7] . CSI[j8] . CSI[j10] . CSIS[p] + CSP[p, p]*CSI[j1] \
 . CSI[j2] . CSI[j3] . CSI[j4] . CSI[j5] . CSI[j6] . CSI[j7] . CSI[j8] \
@@ -116,21 +116,21 @@ CSI[j10] . CSIS[p] - 2*CV[p, j2]*CSI[j1] . CSI[j3] . CSI[j4] . \
 CSI[j5] . CSI[j6] . CSI[j7] . CSI[j8] . CSI[j9] . CSI[j10] . CSIS[p] \
 + 2*CV[p, j1]*CSI[j2] . CSI[j3] . CSI[j4] . CSI[j5] . CSI[j6] . \
 CSI[j7] . CSI[j8] . CSI[j9] . CSI[j10] . CSIS[p]"},
-{"fcstPauliSimplfyChains-ID10",
-"PauliSimplify[CSISD[p].CSID[j1].CSISD[p],PauliReduce\[Rule]False,\
+{"fcstPauliSimplifyChains-ID10",
+"PauliSimplify[CSISD[p].CSID[j1].CSISD[p],\
 FCE->True]", "-(CSID[j1]*CSPD[p, p]) + 2*CSISD[p]*CVD[p, j1]"},
-{"fcstPauliSimplfyChains-ID11",
+{"fcstPauliSimplifyChains-ID11",
 "PauliSimplify[CSISD[p].CSID[j1,j2].CSISD[p],PauliReduce\[Rule]\
 False,FCE->True]",
 "CSPD[p, p]*CSID[j1] . CSID[j2] - 2*CVD[p, j2]*CSID[j1] . CSISD[p] \
 + 2*CVD[p, j1]*CSID[j2] . CSISD[p]"},
-{"fcstPauliSimplfyChains-ID12",
+{"fcstPauliSimplifyChains-ID12",
 "PauliSimplify[CSISD[p].CSID[j1,j2,j3].CSISD[p],PauliReduce\[Rule]\
 False,FCE->True]",
 "-(CSPD[p, p]*CSID[j1] . CSID[j2] . CSID[j3]) + 2*CVD[p, \
 j3]*CSID[j1] . CSID[j2] . CSISD[p] - 2*CVD[p, j2]*CSID[j1] . CSID[j3] \
 . CSISD[p] + 2*CVD[p, j1]*CSID[j2] . CSID[j3] . CSISD[p]"},
-{"fcstPauliSimplfyChains-ID13",
+{"fcstPauliSimplifyChains-ID13",
 "PauliSimplify[CSISD[p].CSID[j1,j2,j3,j4].CSISD[p],PauliReduce\
 \[Rule]False,FCE->True]",
 "CSPD[p, p]*CSID[j1] . CSID[j2] . CSID[j3] . CSID[j4] - 2*CVD[p, \
@@ -138,7 +138,7 @@ j4]*CSID[j1] . CSID[j2] . CSID[j3] . CSISD[p] + 2*CVD[p, j3]*CSID[j1] \
 . CSID[j2] . CSID[j4] . CSISD[p] - 2*CVD[p, j2]*CSID[j1] . CSID[j3] . \
 CSID[j4] . CSISD[p] + 2*CVD[p, j1]*CSID[j2] . CSID[j3] . CSID[j4] . \
 CSISD[p]"},
-{"fcstPauliSimplfyChains-ID14",
+{"fcstPauliSimplifyChains-ID14",
 "PauliSimplify[CSISD[p].CSID[j1,j2,j3,j4,j5].CSISD[p],PauliReduce\
 \[Rule]False,FCE->True]",
 "-(CSPD[p, p]*CSID[j1] . CSID[j2] . CSID[j3] . CSID[j4] . \
@@ -148,9 +148,9 @@ CSISD[p] + 2*CVD[p, j3]*CSID[j1] . CSID[j2] . CSID[j4] . CSID[j5] . \
 CSISD[p] - 2*CVD[p, j2]*CSID[j1] . CSID[j3] . CSID[j4] . CSID[j5] . \
 CSISD[p] + 2*CVD[p, j1]*CSID[j2] . CSID[j3] . CSID[j4] . CSID[j5] . \
 CSISD[p]"},
-{"fcstPauliSimplfyChains-ID15",
+{"fcstPauliSimplifyChains-ID15",
 "PauliSimplify[CSISD[p].CSID[j1,j2,j3,j4,j5,j6,j7].CSISD[p],\
-PauliReduce\[Rule]False,FCE->True]",
+FCE->True]",
 "-(CSPD[p, p]*CSID[j1] . CSID[j2] . CSID[j3] . CSID[j4] . CSID[j5] \
 . CSID[j6] . CSID[j7]) + 2*CVD[p, j7]*CSID[j1] . CSID[j2] . CSID[j3] \
 . CSID[j4] . CSID[j5] . CSID[j6] . CSISD[p] - 2*CVD[p, j6]*CSID[j1] . \
@@ -162,9 +162,9 @@ CSID[j2] . CSID[j4] . CSID[j5] . CSID[j6] . CSID[j7] . CSISD[p] - \
 2*CVD[p, j2]*CSID[j1] . CSID[j3] . CSID[j4] . CSID[j5] . CSID[j6] . \
 CSID[j7] . CSISD[p] + 2*CVD[p, j1]*CSID[j2] . CSID[j3] . CSID[j4] . \
 CSID[j5] . CSID[j6] . CSID[j7] . CSISD[p]"},
-{"fcstPauliSimplfyChains-ID16",
+{"fcstPauliSimplifyChains-ID16",
 "PauliSimplify[CSISD[p].CSID[j1,j2,j3,j4,j5,j6,j7,j8].CSISD[p],\
-PauliReduce\[Rule]False,FCE->True]",
+FCE->True]",
 "CSPD[p, p]*CSID[j1] . CSID[j2] . CSID[j3] . CSID[j4] . CSID[j5] . \
 CSID[j6] . CSID[j7] . CSID[j8] - 2*CVD[p, j8]*CSID[j1] . CSID[j2] . \
 CSID[j3] . CSID[j4] . CSID[j5] . CSID[j6] . CSID[j7] . CSISD[p] + \
@@ -179,9 +179,9 @@ CSID[j7] . CSID[j8] . CSISD[p] - 2*CVD[p, j2]*CSID[j1] . CSID[j3] . \
 CSID[j4] . CSID[j5] . CSID[j6] . CSID[j7] . CSID[j8] . CSISD[p] + \
 2*CVD[p, j1]*CSID[j2] . CSID[j3] . CSID[j4] . CSID[j5] . CSID[j6] . \
 CSID[j7] . CSID[j8] . CSISD[p]"},
-{"fcstPauliSimplfyChains-ID17",
+{"fcstPauliSimplifyChains-ID17",
 "PauliSimplify[CSISD[p].CSID[j1,j2,j3,j4,j5,j6,j7,j8,j9].CSISD[p],\
-PauliReduce\[Rule]False,FCE->True]",
+FCE->True]",
 "-(CSPD[p, p]*CSID[j1] . CSID[j2] . CSID[j3] . CSID[j4] . CSID[j5] \
 . CSID[j6] . CSID[j7] . CSID[j8] . CSID[j9]) + 2*CVD[p, j9]*CSID[j1] \
 . CSID[j2] . CSID[j3] . CSID[j4] . CSID[j5] . CSID[j6] . CSID[j7] . \
@@ -199,9 +199,9 @@ CSID[j9] . CSISD[p] - 2*CVD[p, j2]*CSID[j1] . CSID[j3] . CSID[j4] . \
 CSID[j5] . CSID[j6] . CSID[j7] . CSID[j8] . CSID[j9] . CSISD[p] + \
 2*CVD[p, j1]*CSID[j2] . CSID[j3] . CSID[j4] . CSID[j5] . CSID[j6] . \
 CSID[j7] . CSID[j8] . CSID[j9] . CSISD[p]"},
-{"fcstPauliSimplfyChains-ID18",
+{"fcstPauliSimplifyChains-ID18",
 "PauliSimplify[CSISD[p].CSID[j1,j2,j3,j4,j5,j6,j7,j8,j9,j10].CSISD[\
-p],PauliReduce\[Rule]False,FCE->True]",
+p],FCE->True]",
 "2*CVD[p, j9]*CSID[j1] . CSID[j2] . CSID[j3] . CSID[j4] . CSID[j5] \
 . CSID[j6] . CSID[j7] . CSID[j8] . CSID[j10] . CSISD[p] + CSPD[p, \
 p]*CSID[j1] . CSID[j2] . CSID[j3] . CSID[j4] . CSID[j5] . CSID[j6] . \
@@ -223,32 +223,29 @@ CSID[j4] . CSID[j5] . CSID[j6] . CSID[j7] . CSID[j8] . CSID[j9] . \
 CSID[j10] . CSISD[p] + 2*CVD[p, j1]*CSID[j2] . CSID[j3] . CSID[j4] . \
 CSID[j5] . CSID[j6] . CSID[j7] . CSID[j8] . CSID[j9] . CSID[j10] . \
 CSISD[p]"},
-{"fcstPauliSimplfyChains-ID19",
-"PauliSimplify[CSI[i,j1,i],PauliReduce\[Rule]False,FCE->True]",
+{"fcstPauliSimplifyChains-ID19",
+"PauliSimplify[CSI[i,j1,i],FCE->True]",
 "-CSI[j1]"},
-{"fcstPauliSimplfyChains-ID20",
-"PauliSimplify[CSI[i,j1,j2,i],PauliReduce\[Rule]False,FCE->True]",
+{"fcstPauliSimplifyChains-ID20",
+"PauliSimplify[CSI[i,j1,j2,i],FCE->True]",
 "CSI[j1] . CSI[j2] + 2*CSI[j2] . CSI[j1]"},
-{"fcstPauliSimplfyChains-ID21",
-"PauliSimplify[CSI[i,j1,j2,j3,i],PauliReduce\[Rule]False,FCE->True]\
+{"fcstPauliSimplifyChains-ID21",
+"PauliSimplify[CSI[i,j1,j2,j3,i],FCE->True]\
 ", "-CSI[j1] . CSI[j2] . CSI[j3] - 2*CSI[j1] . CSI[j3] . CSI[j2] + \
 2*CSI[j2] . CSI[j3] . CSI[j1]"},
-{"fcstPauliSimplfyChains-ID22",
-"PauliSimplify[CSI[i,j1,j2,j3,j4,i],PauliReduce\[Rule]False,\
-FCE->True]",
+{"fcstPauliSimplifyChains-ID22",
+"PauliSimplify[CSI[i,j1,j2,j3,j4,i],FCE->True]",
 "CSI[j1] . CSI[j2] . CSI[j3] . CSI[j4] + 2*CSI[j1] . CSI[j2] . \
 CSI[j4] . CSI[j3] - 2*CSI[j1] . CSI[j3] . CSI[j4] . CSI[j2] + \
 2*CSI[j2] . CSI[j3] . CSI[j4] . CSI[j1]"},
-{"fcstPauliSimplfyChains-ID23",
-"PauliSimplify[CSI[i,j1,j2,j3,j4,j5,i],PauliReduce\[Rule]False,\
-FCE->True]",
+{"fcstPauliSimplifyChains-ID23",
+"PauliSimplify[CSI[i,j1,j2,j3,j4,j5,i],FCE->True]",
 "-CSI[j1] . CSI[j2] . CSI[j3] . CSI[j4] . CSI[j5] - 2*CSI[j1] . \
 CSI[j2] . CSI[j3] . CSI[j5] . CSI[j4] + 2*CSI[j1] . CSI[j2] . CSI[j4] \
 . CSI[j5] . CSI[j3] - 2*CSI[j1] . CSI[j3] . CSI[j4] . CSI[j5] . \
 CSI[j2] + 2*CSI[j2] . CSI[j3] . CSI[j4] . CSI[j5] . CSI[j1]"},
-{"fcstPauliSimplfyChains-ID24",
-"PauliSimplify[CSI[i,j1,j2,j3,j4,j5,j6,j7,i],PauliReduce\[Rule]\
-False,FCE->True]",
+{"fcstPauliSimplifyChains-ID24",
+"PauliSimplify[CSI[i,j1,j2,j3,j4,j5,j6,j7,i],FCE->True]",
 "-CSI[j1] . CSI[j2] . CSI[j3] . CSI[j4] . CSI[j5] . CSI[j6] . \
 CSI[j7] - 2*CSI[j1] . CSI[j2] . CSI[j3] . CSI[j4] . CSI[j5] . CSI[j7] \
 . CSI[j6] + 2*CSI[j1] . CSI[j2] . CSI[j3] . CSI[j4] . CSI[j6] . \
@@ -257,9 +254,8 @@ CSI[j7] . CSI[j5] - 2*CSI[j1] . CSI[j2] . CSI[j3] . CSI[j5] . CSI[j6] \
 CSI[j6] . CSI[j7] . CSI[j3] - 2*CSI[j1] . CSI[j3] . CSI[j4] . CSI[j5] \
 . CSI[j6] . CSI[j7] . CSI[j2] + 2*CSI[j2] . CSI[j3] . CSI[j4] . \
 CSI[j5] . CSI[j6] . CSI[j7] . CSI[j1]"},
-{"fcstPauliSimplfyChains-ID25",
-"PauliSimplify[CSI[i,j1,j2,j3,j4,j5,j6,j7,j8,i],PauliReduce\[Rule]\
-False,FCE->True]",
+{"fcstPauliSimplifyChains-ID25",
+"PauliSimplify[CSI[i,j1,j2,j3,j4,j5,j6,j7,j8,i],FCE->True]",
 "CSI[j1] . CSI[j2] . CSI[j3] . CSI[j4] . CSI[j5] . CSI[j6] . \
 CSI[j7] . CSI[j8] + 2*CSI[j1] . CSI[j2] . CSI[j3] . CSI[j4] . CSI[j5] \
 . CSI[j6] . CSI[j8] . CSI[j7] - 2*CSI[j1] . CSI[j2] . CSI[j3] . \
@@ -270,9 +266,8 @@ CSI[j4] . CSI[j5] . CSI[j7] . CSI[j8] . CSI[j6] + 2*CSI[j1] . CSI[j2] \
 CSI[j7] . CSI[j8] . CSI[j3] - 2*CSI[j1] . CSI[j3] . CSI[j4] . CSI[j5] \
 . CSI[j6] . CSI[j7] . CSI[j8] . CSI[j2] + 2*CSI[j2] . CSI[j3] . \
 CSI[j4] . CSI[j5] . CSI[j6] . CSI[j7] . CSI[j8] . CSI[j1]"},
-{"fcstPauliSimplfyChains-ID26",
-"PauliSimplify[CSI[i,j1,j2,j3,j4,j5,j6,j7,j8,j9,i],PauliReduce\
-\[Rule]False,FCE->True]",
+{"fcstPauliSimplifyChains-ID26",
+"PauliSimplify[CSI[i,j1,j2,j3,j4,j5,j6,j7,j8,j9,i],FCE->True]",
 "-CSI[j1] . CSI[j2] . CSI[j3] . CSI[j4] . CSI[j5] . CSI[j6] . \
 CSI[j7] . CSI[j8] . CSI[j9] - 2*CSI[j1] . CSI[j2] . CSI[j3] . CSI[j4] \
 . CSI[j5] . CSI[j6] . CSI[j7] . CSI[j9] . CSI[j8] + 2*CSI[j1] . \
@@ -286,38 +281,34 @@ CSI[j7] . CSI[j8] . CSI[j9] . CSI[j3] - 2*CSI[j1] . CSI[j3] . CSI[j4] \
 . CSI[j5] . CSI[j6] . CSI[j7] . CSI[j8] . CSI[j9] . CSI[j2] + \
 2*CSI[j2] . CSI[j3] . CSI[j4] . CSI[j5] . CSI[j6] . CSI[j7] . CSI[j8] \
 . CSI[j9] . CSI[j1]"},
-{"fcstPauliSimplfyChains-ID27",
-"PauliSimplify[CSID[i,j1,i],PauliReduce\[Rule]False,FCE->True]",
+{"fcstPauliSimplifyChains-ID27",
+"PauliSimplify[CSID[i,j1,i],FCE->True]",
 "3*CSID[j1] - D*CSID[j1]"},
-{"fcstPauliSimplfyChains-ID28",
-"PauliSimplify[CSID[i,j1,j2,i],PauliReduce\[Rule]False,FCE->True]",
+{"fcstPauliSimplifyChains-ID28",
+"PauliSimplify[CSID[i,j1,j2,i],FCE->True]",
 	"-3*CSID[j1] . CSID[j2] + D*CSID[j1] . CSID[j2] + 2*CSID[j2] . \
 CSID[j1]"},
-{"fcstPauliSimplfyChains-ID29",
-"PauliSimplify[CSID[i,j1,j2,j3,i],PauliReduce\[Rule]False,\
-FCE->True]",
+{"fcstPauliSimplifyChains-ID29",
+"PauliSimplify[CSID[i,j1,j2,j3,i],FCE->True]",
 "3*CSID[j1] . CSID[j2] . CSID[j3] - D*CSID[j1] . CSID[j2] . \
 CSID[j3] - 2*CSID[j1] . CSID[j3] . CSID[j2] + 2*CSID[j2] . CSID[j3] . \
 CSID[j1]"},
-{"fcstPauliSimplfyChains-ID30",
-"PauliSimplify[CSID[i,j1,j2,j3,j4,i],PauliReduce\[Rule]False,\
-FCE->True]",
+{"fcstPauliSimplifyChains-ID30",
+"PauliSimplify[CSID[i,j1,j2,j3,j4,i],FCE->True]",
 "-3*CSID[j1] . CSID[j2] . CSID[j3] . CSID[j4] + D*CSID[j1] . \
 CSID[j2] . CSID[j3] . CSID[j4] + 2*CSID[j1] . CSID[j2] . CSID[j4] . \
 CSID[j3] - 2*CSID[j1] . CSID[j3] . CSID[j4] . CSID[j2] + 2*CSID[j2] . \
 CSID[j3] . CSID[j4] . CSID[j1]"},
-{"fcstPauliSimplfyChains-ID31",
-"PauliSimplify[CSID[i,j1,j2,j3,j4,j5,i],PauliReduce\[Rule]False,\
-FCE->True]",
+{"fcstPauliSimplifyChains-ID31",
+"PauliSimplify[CSID[i,j1,j2,j3,j4,j5,i],FCE->True]",
 "3*CSID[j1] . CSID[j2] . CSID[j3] . CSID[j4] . CSID[j5] - \
 D*CSID[j1] . CSID[j2] . CSID[j3] . CSID[j4] . CSID[j5] - 2*CSID[j1] . \
 CSID[j2] . CSID[j3] . CSID[j5] . CSID[j4] + 2*CSID[j1] . CSID[j2] . \
 CSID[j4] . CSID[j5] . CSID[j3] - 2*CSID[j1] . CSID[j3] . CSID[j4] . \
 CSID[j5] . CSID[j2] + 2*CSID[j2] . CSID[j3] . CSID[j4] . CSID[j5] . \
 CSID[j1]"},
-{"fcstPauliSimplfyChains-ID32",
-"PauliSimplify[CSID[i,j1,j2,j3,j4,j5,j6,j7,i],PauliReduce\[Rule]\
-False,FCE->True]",
+{"fcstPauliSimplifyChains-ID32",
+"PauliSimplify[CSID[i,j1,j2,j3,j4,j5,j6,j7,i],FCE->True]",
 "3*CSID[j1] . CSID[j2] . CSID[j3] . CSID[j4] . CSID[j5] . CSID[j6] \
 . CSID[j7] - D*CSID[j1] . CSID[j2] . CSID[j3] . CSID[j4] . CSID[j5] . \
 CSID[j6] . CSID[j7] - 2*CSID[j1] . CSID[j2] . CSID[j3] . CSID[j4] . \
@@ -328,9 +319,8 @@ CSID[j2] . CSID[j4] . CSID[j5] . CSID[j6] . CSID[j7] . CSID[j3] - \
 2*CSID[j1] . CSID[j3] . CSID[j4] . CSID[j5] . CSID[j6] . CSID[j7] . \
 CSID[j2] + 2*CSID[j2] . CSID[j3] . CSID[j4] . CSID[j5] . CSID[j6] . \
 CSID[j7] . CSID[j1]"},
-{"fcstPauliSimplfyChains-ID33",
-"PauliSimplify[CSID[i,j1,j2,j3,j4,j5,j6,j7,j8,i],PauliReduce\[Rule]\
-False,FCE->True]",
+{"fcstPauliSimplifyChains-ID33",
+"PauliSimplify[CSID[i,j1,j2,j3,j4,j5,j6,j7,j8,i],FCE->True]",
 "-3*CSID[j1] . CSID[j2] . CSID[j3] . CSID[j4] . CSID[j5] . \
 CSID[j6] . CSID[j7] . CSID[j8] + D*CSID[j1] . CSID[j2] . CSID[j3] . \
 CSID[j4] . CSID[j5] . CSID[j6] . CSID[j7] . CSID[j8] + 2*CSID[j1] . \
@@ -344,9 +334,8 @@ CSID[j7] . CSID[j8] . CSID[j3] - 2*CSID[j1] . CSID[j3] . CSID[j4] . \
 CSID[j5] . CSID[j6] . CSID[j7] . CSID[j8] . CSID[j2] + 2*CSID[j2] . \
 CSID[j3] . CSID[j4] . CSID[j5] . CSID[j6] . CSID[j7] . CSID[j8] . \
 CSID[j1]"},
-{"fcstPauliSimplfyChains-ID34",
-"PauliSimplify[CSID[i,j1,j2,j3,j4,j5,j6,j7,j8,j9,i],PauliReduce\
-\[Rule]False,FCE->True]",
+{"fcstPauliSimplifyChains-ID34",
+"PauliSimplify[CSID[i,j1,j2,j3,j4,j5,j6,j7,j8,j9,i],FCE->True]",
 "3*CSID[j1] . CSID[j2] . CSID[j3] . CSID[j4] . CSID[j5] . CSID[j6] \
 . CSID[j7] . CSID[j8] . CSID[j9] - D*CSID[j1] . CSID[j2] . CSID[j3] . \
 CSID[j4] . CSID[j5] . CSID[j6] . CSID[j7] . CSID[j8] . CSID[j9] - \

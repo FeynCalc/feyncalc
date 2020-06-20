@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6960,        209]
+NotebookDataLength[      6961,        209]
 NotebookOptionsPosition[      4874,        152]
-NotebookOutlinePosition[      6753,        201]
-CellTagsIndexPosition[      6710,        198]
+NotebookOutlinePosition[      6754,        201]
+CellTagsIndexPosition[      6711,        198]
 WindowTitle->InitialFunction
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ InitialFunction.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$167841], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$168849], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/InitialFunction", ".html"]], None}]}]},
@@ -165,7 +165,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 59, 1.298241}", 
+   "built" -> "{2020, 6, 20, 19, 7, 59.541390}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

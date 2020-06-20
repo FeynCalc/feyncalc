@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     82809,       2951]
-NotebookOptionsPosition[     68414,       2482]
-NotebookOutlinePosition[     76050,       2701]
-CellTagsIndexPosition[     75934,       2695]
+NotebookDataLength[     82804,       2951]
+NotebookOptionsPosition[     68412,       2482]
+NotebookOutlinePosition[     76047,       2701]
+CellTagsIndexPosition[     75931,       2695]
 WindowTitle->Integrate2
 WindowFrame->Normal*)
 
@@ -88,7 +88,7 @@ Integrate2.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$169633], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$170641], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/Integrate2", ".html"]], None}]}]},
@@ -171,7 +171,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1661719191],
+ CellID->106623255],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -203,7 +203,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1066608491],
+ CellID->572860895],
 
 Cell[CellGroupData[{
 
@@ -213,7 +213,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->656544217],
+ CellID->439476420],
 
 Cell[CellGroupData[{
 
@@ -2064,7 +2064,7 @@ Cell[BoxData[
  FormBox[
   RowBox[{"{", 
    RowBox[{"0.047429`", ",", "0"}], "}"}], TraditionalForm]], "Output",
- ImageSize->{88, 14},
+ ImageSize->{88, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
@@ -2096,7 +2096,7 @@ Cell[BoxData[
  FormBox[
   RowBox[{"{", 
    RowBox[{"0.028382`", ",", "0"}], "}"}], TraditionalForm]], "Output",
- ImageSize->{88, 14},
+ ImageSize->{88, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Integrate2",
@@ -2482,8 +2482,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{808, 911},
-WindowMargins->{{278, Automatic}, {Automatic, 28}},
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"Integrate2",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -2495,7 +2495,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 59, 5.463432}", 
+   "built" -> "{2020, 6, 20, 19, 8, 3.276881}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -2533,169 +2533,169 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[6745, 190, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[6744, 190, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1066608491]},
+   CellID->572860895]},
  "Integrate2"->{
-  Cell[7378, 219, 443, 16, 27, "Input",
+  Cell[7376, 219, 443, 16, 27, "Input",
    CellTags->"Integrate2",
    CellID->524907050],
-  Cell[7824, 237, 442, 16, 55, "Output",
+  Cell[7822, 237, 442, 16, 55, "Output",
    CellTags->"Integrate2"],
-  Cell[8472, 265, 299, 10, 27, "Input",
+  Cell[8470, 265, 299, 10, 27, "Input",
    CellTags->"Integrate2",
    CellID->546710902],
-  Cell[8774, 277, 316, 10, 37, "Output",
+  Cell[8772, 277, 316, 10, 37, "Output",
    CellTags->"Integrate2"],
-  Cell[9127, 292, 293, 10, 27, "Input",
+  Cell[9125, 292, 293, 10, 27, "Input",
    CellTags->"Integrate2",
    CellID->89878903],
-  Cell[9423, 304, 431, 15, 55, "Output",
+  Cell[9421, 304, 431, 15, 55, "Output",
    CellTags->"Integrate2"],
-  Cell[9891, 324, 355, 12, 27, "Input",
+  Cell[9889, 324, 355, 12, 27, "Input",
    CellTags->"Integrate2",
    CellID->1742557754],
-  Cell[10249, 338, 661, 23, 59, "Output",
+  Cell[10247, 338, 661, 23, 59, "Output",
    CellTags->"Integrate2"],
-  Cell[10947, 366, 336, 11, 27, "Input",
+  Cell[10945, 366, 336, 11, 27, "Input",
    CellTags->"Integrate2",
    CellID->1356840886],
-  Cell[11286, 379, 219, 7, 37, "Output",
+  Cell[11284, 379, 219, 7, 37, "Output",
    CellTags->"Integrate2"],
-  Cell[13086, 444, 289, 10, 27, "Input",
+  Cell[13084, 444, 289, 10, 27, "Input",
    CellTags->"Integrate2",
    CellID->1084770727],
-  Cell[13378, 456, 191, 6, 35, "Output",
+  Cell[13376, 456, 191, 6, 35, "Output",
    CellTags->"Integrate2"],
-  Cell[14234, 492, 336, 11, 27, "Input",
+  Cell[14232, 492, 336, 11, 27, "Input",
    CellTags->"Integrate2",
    CellID->1725124689],
-  Cell[14573, 505, 191, 6, 35, "Output",
+  Cell[14571, 505, 191, 6, 35, "Output",
    CellTags->"Integrate2"],
-  Cell[14801, 516, 405, 14, 27, "Input",
+  Cell[14799, 516, 405, 14, 27, "Input",
    CellTags->"Integrate2",
    CellID->1940746510],
-  Cell[15209, 532, 249, 8, 37, "Output",
+  Cell[15207, 532, 249, 8, 37, "Output",
    CellTags->"Integrate2"],
-  Cell[15495, 545, 435, 15, 27, "Input",
+  Cell[15493, 545, 435, 15, 27, "Input",
    CellTags->"Integrate2",
    CellID->582396558],
-  Cell[15933, 562, 264, 10, 55, "Output",
+  Cell[15931, 562, 264, 10, 55, "Output",
    CellTags->"Integrate2"],
-  Cell[16234, 577, 347, 12, 27, "Input",
+  Cell[16232, 577, 347, 12, 27, "Input",
    CellTags->"Integrate2",
    CellID->845490247],
-  Cell[16584, 591, 246, 9, 37, "Output",
+  Cell[16582, 591, 246, 9, 37, "Output",
    CellTags->"Integrate2"],
-  Cell[16867, 605, 374, 13, 27, "Input",
+  Cell[16865, 605, 374, 13, 27, "Input",
    CellTags->"Integrate2",
    CellID->1121674397],
-  Cell[17244, 620, 396, 14, 56, "Output",
+  Cell[17242, 620, 396, 14, 56, "Output",
    CellTags->"Integrate2"],
-  Cell[17677, 639, 333, 11, 27, "Input",
+  Cell[17675, 639, 333, 11, 27, "Input",
    CellTags->"Integrate2",
    CellID->1584122311],
-  Cell[18013, 652, 275, 9, 37, "Output",
+  Cell[18011, 652, 275, 9, 37, "Output",
    CellTags->"Integrate2"],
-  Cell[18325, 666, 301, 10, 27, "Input",
+  Cell[18323, 666, 301, 10, 27, "Input",
    CellTags->"Integrate2",
    CellID->1907301251],
-  Cell[18629, 678, 383, 14, 55, "Output",
+  Cell[18627, 678, 383, 14, 55, "Output",
    CellTags->"Integrate2"],
-  Cell[19049, 697, 465, 16, 27, "Input",
+  Cell[19047, 697, 465, 16, 27, "Input",
    CellTags->"Integrate2",
    CellID->1237143526],
-  Cell[19517, 715, 556, 19, 60, "Output",
+  Cell[19515, 715, 556, 19, 60, "Output",
    CellTags->"Integrate2"],
-  Cell[20110, 739, 741, 25, 45, "Input",
+  Cell[20108, 739, 741, 25, 45, "Input",
    CellTags->"Integrate2",
    CellID->2080558124],
-  Cell[20854, 766, 5608, 188, 372, "Output",
+  Cell[20852, 766, 5608, 188, 372, "Output",
    CellTags->"Integrate2"],
-  Cell[26499, 959, 490, 17, 27, "Input",
+  Cell[26497, 959, 490, 17, 27, "Input",
    CellTags->"Integrate2",
    CellID->204763000],
-  Cell[26992, 978, 906, 32, 56, "Output",
+  Cell[26990, 978, 906, 32, 56, "Output",
    CellTags->"Integrate2"],
-  Cell[27935, 1015, 587, 20, 70, "Input",
+  Cell[27933, 1015, 587, 20, 70, "Input",
    CellTags->"Integrate2",
    CellID->1234589200],
-  Cell[28525, 1037, 5325, 180, 206, "Output",
+  Cell[28523, 1037, 5325, 180, 206, "Output",
    CellTags->"Integrate2"],
-  Cell[33887, 1222, 162, 5, 27, "Input",
+  Cell[33885, 1222, 162, 5, 27, "Input",
    CellTags->"Integrate2",
    CellID->1839623139],
-  Cell[34052, 1229, 1777, 56, 139, "Output",
+  Cell[34050, 1229, 1777, 56, 139, "Output",
    CellTags->"Integrate2"],
-  Cell[35866, 1290, 124, 4, 27, "Input",
+  Cell[35864, 1290, 124, 4, 27, "Input",
    CellTags->"Integrate2",
    CellID->1653791497],
-  Cell[35993, 1296, 212, 6, 35, "Output",
+  Cell[35991, 1296, 212, 6, 35, "Output",
    CellTags->"Integrate2"],
-  Cell[36242, 1307, 704, 24, 78, "Input",
+  Cell[36240, 1307, 704, 24, 78, "Input",
    CellTags->"Integrate2",
    CellID->1526670238],
-  Cell[36949, 1333, 3820, 144, 194, "Output",
+  Cell[36947, 1333, 3820, 144, 194, "Output",
    CellTags->"Integrate2"],
-  Cell[40806, 1482, 169, 5, 27, "Input",
+  Cell[40804, 1482, 169, 5, 27, "Input",
    CellTags->"Integrate2",
    CellID->20428829],
-  Cell[40978, 1489, 195, 6, 35, "Output",
+  Cell[40976, 1489, 195, 6, 35, "Output",
    CellTags->"Integrate2"],
-  Cell[41210, 1500, 387, 13, 27, "Input",
+  Cell[41208, 1500, 387, 13, 27, "Input",
    CellTags->"Integrate2",
    CellID->512808203],
-  Cell[41600, 1515, 192, 6, 35, "Output",
+  Cell[41598, 1515, 192, 6, 35, "Output",
    CellTags->"Integrate2"],
-  Cell[41945, 1531, 302, 9, 29, "Input",
+  Cell[41943, 1531, 302, 9, 29, "Input",
    CellTags->"Integrate2",
    CellID->18981591],
-  Cell[42250, 1542, 5465, 177, 394, "Output",
+  Cell[42248, 1542, 5465, 177, 394, "Output",
    CellTags->"Integrate2"],
-  Cell[57844, 2051, 249, 9, 27, "Input",
+  Cell[57842, 2051, 249, 9, 27, "Input",
    CellTags->"Integrate2",
    CellID->182134904],
-  Cell[58096, 2062, 247, 8, 35, "Output",
+  Cell[58094, 2062, 247, 8, 37, "Output",
    CellTags->"Integrate2"],
-  Cell[58524, 2080, 345, 12, 27, "Input",
+  Cell[58522, 2080, 345, 12, 27, "Input",
    CellTags->"Integrate2",
    CellID->237838384],
-  Cell[58872, 2094, 247, 8, 35, "Output",
+  Cell[58870, 2094, 247, 8, 37, "Output",
    CellTags->"Integrate2"],
-  Cell[59134, 2105, 146, 5, 27, "Input",
+  Cell[59132, 2105, 146, 5, 27, "Input",
    CellTags->"Integrate2",
    CellID->1890146765],
-  Cell[59305, 2114, 336, 11, 27, "Input",
+  Cell[59303, 2114, 336, 11, 27, "Input",
    CellTags->"Integrate2",
    CellID->593727658],
-  Cell[59644, 2127, 220, 7, 37, "Output",
+  Cell[59642, 2127, 220, 7, 37, "Output",
    CellTags->"Integrate2"],
-  Cell[59901, 2139, 345, 12, 33, "Input",
+  Cell[59899, 2139, 345, 12, 33, "Input",
    CellTags->"Integrate2",
    CellID->1759046432],
-  Cell[60249, 2153, 327, 11, 56, "Output",
+  Cell[60247, 2153, 327, 11, 56, "Output",
    CellTags->"Integrate2"],
-  Cell[60613, 2169, 119, 4, 27, "Input",
+  Cell[60611, 2169, 119, 4, 27, "Input",
    CellTags->"Integrate2",
    CellID->1795528063],
-  Cell[60735, 2175, 211, 6, 35, "Output",
+  Cell[60733, 2175, 211, 6, 35, "Output",
    CellTags->"Integrate2"],
-  Cell[60983, 2186, 344, 12, 33, "Input",
+  Cell[60981, 2186, 344, 12, 33, "Input",
    CellTags->"Integrate2",
    CellID->190638847],
-  Cell[61330, 2200, 211, 6, 35, "Output",
+  Cell[61328, 2200, 211, 6, 35, "Output",
    CellTags->"Integrate2"],
-  Cell[61578, 2211, 401, 14, 33, "Input",
+  Cell[61576, 2211, 401, 14, 33, "Input",
    CellTags->"Integrate2",
    CellID->1701338238],
-  Cell[61982, 2227, 5031, 190, 332, "Output",
+  Cell[61980, 2227, 5031, 190, 332, "Output",
    CellTags->"Integrate2"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 70818, 2534},
- {"Integrate2", 70956, 2538}
+ {"PrimaryExamplesSection", 70816, 2534},
+ {"Integrate2", 70953, 2538}
  }
 *)
 (*NotebookFileOutline
@@ -2707,252 +2707,252 @@ Cell[CellGroupData[{
 Cell[4376, 121, 1123, 24, 173, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[5524, 149, 739, 24, 31, "NotesSection",
+Cell[5524, 149, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1661719191],
-Cell[6266, 175, 31, 0, 70, "SectionHeaderSpacer"],
-Cell[6300, 177, 396, 7, 70, "Notes",
+ CellID->106623255],
+Cell[6265, 175, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[6299, 177, 396, 7, 83, "Notes",
  CellID->1067943069]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6745, 190, 388, 15, 31, "PrimaryExamplesSection",
+Cell[6744, 190, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1066608491],
+ CellID->572860895],
 Cell[CellGroupData[{
-Cell[7158, 209, 195, 6, 26, "ExampleSection",
- CellID->656544217],
+Cell[7156, 209, 195, 6, 26, "ExampleSection",
+ CellID->439476420],
 Cell[CellGroupData[{
-Cell[7378, 219, 443, 16, 27, "Input",
+Cell[7376, 219, 443, 16, 27, "Input",
  CellTags->"Integrate2",
  CellID->524907050],
-Cell[7824, 237, 442, 16, 55, "Output",
+Cell[7822, 237, 442, 16, 55, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
-Cell[8281, 256, 166, 5, 32, "Notes"],
+Cell[8279, 256, 166, 5, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[8472, 265, 299, 10, 27, "Input",
+Cell[8470, 265, 299, 10, 27, "Input",
  CellTags->"Integrate2",
  CellID->546710902],
-Cell[8774, 277, 316, 10, 37, "Output",
+Cell[8772, 277, 316, 10, 37, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9127, 292, 293, 10, 27, "Input",
+Cell[9125, 292, 293, 10, 27, "Input",
  CellTags->"Integrate2",
  CellID->89878903],
-Cell[9423, 304, 431, 15, 55, "Output",
+Cell[9421, 304, 431, 15, 55, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9891, 324, 355, 12, 27, "Input",
+Cell[9889, 324, 355, 12, 27, "Input",
  CellTags->"Integrate2",
  CellID->1742557754],
-Cell[10249, 338, 661, 23, 59, "Output",
+Cell[10247, 338, 661, 23, 59, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10947, 366, 336, 11, 27, "Input",
+Cell[10945, 366, 336, 11, 27, "Input",
  CellTags->"Integrate2",
  CellID->1356840886],
-Cell[11286, 379, 219, 7, 37, "Output",
+Cell[11284, 379, 219, 7, 37, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
-Cell[11520, 389, 1541, 51, 86, "Notes"],
+Cell[11518, 389, 1541, 51, 86, "Notes"],
 Cell[CellGroupData[{
-Cell[13086, 444, 289, 10, 27, "Input",
+Cell[13084, 444, 289, 10, 27, "Input",
  CellTags->"Integrate2",
  CellID->1084770727],
-Cell[13378, 456, 191, 6, 35, "Output",
+Cell[13376, 456, 191, 6, 35, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
-Cell[13584, 465, 625, 23, 67, "Notes"],
+Cell[13582, 465, 625, 23, 67, "Notes"],
 Cell[CellGroupData[{
-Cell[14234, 492, 336, 11, 27, "Input",
+Cell[14232, 492, 336, 11, 27, "Input",
  CellTags->"Integrate2",
  CellID->1725124689],
-Cell[14573, 505, 191, 6, 35, "Output",
+Cell[14571, 505, 191, 6, 35, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14801, 516, 405, 14, 27, "Input",
+Cell[14799, 516, 405, 14, 27, "Input",
  CellTags->"Integrate2",
  CellID->1940746510],
-Cell[15209, 532, 249, 8, 37, "Output",
+Cell[15207, 532, 249, 8, 37, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15495, 545, 435, 15, 27, "Input",
+Cell[15493, 545, 435, 15, 27, "Input",
  CellTags->"Integrate2",
  CellID->582396558],
-Cell[15933, 562, 264, 10, 55, "Output",
+Cell[15931, 562, 264, 10, 55, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16234, 577, 347, 12, 27, "Input",
+Cell[16232, 577, 347, 12, 27, "Input",
  CellTags->"Integrate2",
  CellID->845490247],
-Cell[16584, 591, 246, 9, 37, "Output",
+Cell[16582, 591, 246, 9, 37, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16867, 605, 374, 13, 27, "Input",
+Cell[16865, 605, 374, 13, 27, "Input",
  CellTags->"Integrate2",
  CellID->1121674397],
-Cell[17244, 620, 396, 14, 56, "Output",
+Cell[17242, 620, 396, 14, 56, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17677, 639, 333, 11, 27, "Input",
+Cell[17675, 639, 333, 11, 27, "Input",
  CellTags->"Integrate2",
  CellID->1584122311],
-Cell[18013, 652, 275, 9, 37, "Output",
+Cell[18011, 652, 275, 9, 37, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18325, 666, 301, 10, 27, "Input",
+Cell[18323, 666, 301, 10, 27, "Input",
  CellTags->"Integrate2",
  CellID->1907301251],
-Cell[18629, 678, 383, 14, 55, "Output",
+Cell[18627, 678, 383, 14, 55, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19049, 697, 465, 16, 27, "Input",
+Cell[19047, 697, 465, 16, 27, "Input",
  CellTags->"Integrate2",
  CellID->1237143526],
-Cell[19517, 715, 556, 19, 60, "Output",
+Cell[19515, 715, 556, 19, 60, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[20110, 739, 741, 25, 45, "Input",
+Cell[20108, 739, 741, 25, 45, "Input",
  CellTags->"Integrate2",
  CellID->2080558124],
-Cell[20854, 766, 5608, 188, 372, "Output",
+Cell[20852, 766, 5608, 188, 372, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[26499, 959, 490, 17, 27, "Input",
+Cell[26497, 959, 490, 17, 27, "Input",
  CellTags->"Integrate2",
  CellID->204763000],
-Cell[26992, 978, 906, 32, 56, "Output",
+Cell[26990, 978, 906, 32, 56, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[27935, 1015, 587, 20, 70, "Input",
+Cell[27933, 1015, 587, 20, 70, "Input",
  CellTags->"Integrate2",
  CellID->1234589200],
-Cell[28525, 1037, 5325, 180, 206, "Output",
+Cell[28523, 1037, 5325, 180, 206, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[33887, 1222, 162, 5, 27, "Input",
+Cell[33885, 1222, 162, 5, 27, "Input",
  CellTags->"Integrate2",
  CellID->1839623139],
-Cell[34052, 1229, 1777, 56, 139, "Output",
+Cell[34050, 1229, 1777, 56, 139, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[35866, 1290, 124, 4, 27, "Input",
+Cell[35864, 1290, 124, 4, 27, "Input",
  CellTags->"Integrate2",
  CellID->1653791497],
-Cell[35993, 1296, 212, 6, 35, "Output",
+Cell[35991, 1296, 212, 6, 35, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[36242, 1307, 704, 24, 78, "Input",
+Cell[36240, 1307, 704, 24, 78, "Input",
  CellTags->"Integrate2",
  CellID->1526670238],
-Cell[36949, 1333, 3820, 144, 194, "Output",
+Cell[36947, 1333, 3820, 144, 194, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[40806, 1482, 169, 5, 27, "Input",
+Cell[40804, 1482, 169, 5, 27, "Input",
  CellTags->"Integrate2",
  CellID->20428829],
-Cell[40978, 1489, 195, 6, 35, "Output",
+Cell[40976, 1489, 195, 6, 35, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[41210, 1500, 387, 13, 27, "Input",
+Cell[41208, 1500, 387, 13, 27, "Input",
  CellTags->"Integrate2",
  CellID->512808203],
-Cell[41600, 1515, 192, 6, 35, "Output",
+Cell[41598, 1515, 192, 6, 35, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
-Cell[41807, 1524, 113, 3, 32, "Notes"],
+Cell[41805, 1524, 113, 3, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[41945, 1531, 302, 9, 29, "Input",
+Cell[41943, 1531, 302, 9, 29, "Input",
  CellTags->"Integrate2",
  CellID->18981591],
-Cell[42250, 1542, 5465, 177, 394, "Output",
+Cell[42248, 1542, 5465, 177, 394, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[47752, 1724, 79, 2, 27, "Input"],
-Cell[47834, 1728, 9973, 318, 605, "Output"]
+Cell[47750, 1724, 79, 2, 27, "Input"],
+Cell[47832, 1728, 9973, 318, 605, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[57844, 2051, 249, 9, 27, "Input",
+Cell[57842, 2051, 249, 9, 27, "Input",
  CellTags->"Integrate2",
  CellID->182134904],
-Cell[58096, 2062, 247, 8, 35, "Output",
+Cell[58094, 2062, 247, 8, 37, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
-Cell[58358, 2073, 141, 3, 49, "Notes"],
+Cell[58356, 2073, 141, 3, 49, "Notes"],
 Cell[CellGroupData[{
-Cell[58524, 2080, 345, 12, 27, "Input",
+Cell[58522, 2080, 345, 12, 27, "Input",
  CellTags->"Integrate2",
  CellID->237838384],
-Cell[58872, 2094, 247, 8, 35, "Output",
+Cell[58870, 2094, 247, 8, 37, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
-Cell[59134, 2105, 146, 5, 27, "Input",
+Cell[59132, 2105, 146, 5, 27, "Input",
  CellTags->"Integrate2",
  CellID->1890146765],
 Cell[CellGroupData[{
-Cell[59305, 2114, 336, 11, 27, "Input",
+Cell[59303, 2114, 336, 11, 27, "Input",
  CellTags->"Integrate2",
  CellID->593727658],
-Cell[59644, 2127, 220, 7, 37, "Output",
+Cell[59642, 2127, 220, 7, 37, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[59901, 2139, 345, 12, 33, "Input",
+Cell[59899, 2139, 345, 12, 33, "Input",
  CellTags->"Integrate2",
  CellID->1759046432],
-Cell[60249, 2153, 327, 11, 56, "Output",
+Cell[60247, 2153, 327, 11, 56, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[60613, 2169, 119, 4, 27, "Input",
+Cell[60611, 2169, 119, 4, 27, "Input",
  CellTags->"Integrate2",
  CellID->1795528063],
-Cell[60735, 2175, 211, 6, 35, "Output",
+Cell[60733, 2175, 211, 6, 35, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[60983, 2186, 344, 12, 33, "Input",
+Cell[60981, 2186, 344, 12, 33, "Input",
  CellTags->"Integrate2",
  CellID->190638847],
-Cell[61330, 2200, 211, 6, 35, "Output",
+Cell[61328, 2200, 211, 6, 35, "Output",
  CellTags->"Integrate2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[61578, 2211, 401, 14, 33, "Input",
+Cell[61576, 2211, 401, 14, 33, "Input",
  CellTags->"Integrate2",
  CellID->1701338238],
-Cell[61982, 2227, 5031, 190, 332, "Output",
+Cell[61980, 2227, 5031, 190, 332, "Output",
  CellTags->"Integrate2"]
 }, Open  ]]
 }, Open  ]],
-Cell[67040, 2421, 31, 0, 29, "SectionFooterSpacer"]
+Cell[67038, 2421, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[67108, 2426, 270, 12, 31, "SeeAlsoSection",
+Cell[67106, 2426, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[67381, 2440, 991, 37, 56, "SeeAlso"]
+Cell[67379, 2440, 991, 37, 56, "SeeAlso"]
 }, Open  ]],
-Cell[68387, 2480, 23, 0, 41, "FooterCell"]
+Cell[68385, 2480, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

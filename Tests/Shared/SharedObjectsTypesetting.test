@@ -1,4 +1,4 @@
-
+s
 
 (* :Title: SharedObjectsTypesetting.test 									*)
 
@@ -11111,3 +11111,21 @@ TraditionalForm], TraditionalForm]}], \"\\\"-\\\"\", RowBox[{\"\
 \[ImaginaryI]\", \" \", \"\\\"\[Eta]\\\"\"}], \"\\\")\\\"\"}, \
 \"RowDefault\"]], TraditionalForm]"}
 });
+
+
+Tests`Shared`fcstSharedObjectsTypesettingCustomRules =
+{
+{"fcstSharedObjectsTypesettingCustomRules-ID1",
+"MakeBoxes[im[{\"f_em\",\"3P2\"}],TraditionalForm]",
+"\"Im \\!\\(\\*SubscriptBox[\\(f\\), \
+\\(em\\)]\\)\\!\\(\\*SuperscriptBox[\\\"\\\", \
+3]\\)\\!\\(\\*SuperscriptBox[P, 0]\\)\""},
+{"fcstSharedObjectsTypesettingCustomRules-ID2",
+"MakeBoxes[pp1,TraditionalForm]", "SubscriptBox[\"p\", \"1\"]"},
+{"fcstSharedObjectsTypesettingCustomRules-ID3",
+"MakeBoxes[n0,TraditionalForm]", "SubscriptBox[\"n\", \"0\"]"},
+{"fcstSharedObjectsTypesettingCustomRules-ID4",
+"MakeBoxes[m12,TraditionalForm]",
+"SubsuperscriptBox[\"m\", \"1\", \"2\"]"}
+}
+

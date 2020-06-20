@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8648,        271]
+NotebookDataLength[      8647,        271]
 NotebookOptionsPosition[      5736,        188]
-NotebookOutlinePosition[      7990,        247]
-CellTagsIndexPosition[      7906,        242]
+NotebookOutlinePosition[      7989,        247]
+CellTagsIndexPosition[      7905,        242]
 WindowTitle->FCCheckVersion
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ FCCheckVersion.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$94443], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$95015], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FCCheckVersion", ".html"]], None}]}]},
@@ -201,7 +201,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 55, 48.565102}", 
+   "built" -> "{2020, 6, 20, 19, 5, 7.222814}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -241,7 +241,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 7771, 235}
+ {"PrimaryExamplesSection", 7770, 235}
  }
 *)
 (*NotebookFileOutline

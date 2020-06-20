@@ -43,7 +43,14 @@ Options[SpinorChainChiralSplit] = {
 	Head				-> Identity
 };
 
-SpinorChainChiralSplit[expr_, OptionsPattern[]] :=
+
+SpinorChainChiralSplit[a_ == b_, opts:OptionsPattern[]] :=
+	SpinorChainChiralSplit[a,opts] == SpinorChainChiralSplit[b,opts];
+
+SpinorChainChiralSplit[expr_List, opts:OptionsPattern[]]:=
+	SpinorChainChiralSplit[#, opts]&/@expr;
+
+SpinorChainChiralSplit[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 	Block[{ex, tmp, dsHead, dsIso, freePart,dsPart, null1, null2, time, diracObjects, diracObjectsEval, repRule, res, optHead},
 
 		optHead	= OptionValue[Head];

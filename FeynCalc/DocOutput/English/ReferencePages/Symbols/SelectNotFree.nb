@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15584,        547]
-NotebookOptionsPosition[     10172,        376]
-NotebookOutlinePosition[     13484,        470]
-CellTagsIndexPosition[     13367,        464]
+NotebookDataLength[     15531,        546]
+NotebookOptionsPosition[     10173,        376]
+NotebookOutlinePosition[     13430,        469]
+CellTagsIndexPosition[     13313,        463]
 WindowTitle->SelectNotFree
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ SelectNotFree.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$229405], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$230422], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/SelectNotFree", ".html"]], None}]}]},
@@ -155,7 +155,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->645962762],
+ CellID->620893306],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -185,7 +185,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1930666558],
+ CellID->1053383164],
 
 Cell[CellGroupData[{
 
@@ -195,7 +195,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->654434760],
+ CellID->2060906223],
 
 Cell[CellGroupData[{
 
@@ -377,7 +377,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{268, Automatic}, {Automatic, 20}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"SelectNotFree",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -389,7 +389,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 19, 1, 35.406203}", 
+   "built" -> "{2020, 6, 20, 19, 10, 19.673827}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -409,8 +409,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{418, Automatic}, {Automatic, -8}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -422,49 +421,49 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[5666, 172, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1930666558]},
+   CellID->1053383164]},
  "SelectNotFree"->{
-  Cell[6299, 201, 224, 7, 27, "Input",
+  Cell[6300, 201, 224, 7, 27, "Input",
    CellTags->"SelectNotFree",
    CellID->153420744],
-  Cell[6526, 210, 246, 8, 37, "Output",
+  Cell[6527, 210, 246, 8, 37, "Output",
    CellTags->"SelectNotFree"],
-  Cell[6809, 223, 294, 9, 27, "Input",
+  Cell[6810, 223, 294, 9, 27, "Input",
    CellTags->"SelectNotFree",
    CellID->1797995414],
-  Cell[7106, 234, 256, 8, 37, "Output",
+  Cell[7107, 234, 256, 8, 37, "Output",
    CellTags->"SelectNotFree"],
-  Cell[7399, 247, 160, 5, 27, "Input",
+  Cell[7400, 247, 160, 5, 27, "Input",
    CellTags->"SelectNotFree",
    CellID->425208057],
-  Cell[7562, 254, 194, 6, 35, "Output",
+  Cell[7563, 254, 194, 6, 35, "Output",
    CellTags->"SelectNotFree"],
-  Cell[7793, 265, 185, 6, 27, "Input",
+  Cell[7794, 265, 185, 6, 27, "Input",
    CellTags->"SelectNotFree",
    CellID->1246254585],
-  Cell[7981, 273, 194, 6, 35, "Output",
+  Cell[7982, 273, 194, 6, 35, "Output",
    CellTags->"SelectNotFree"],
-  Cell[8212, 284, 161, 5, 27, "Input",
+  Cell[8213, 284, 161, 5, 27, "Input",
    CellTags->"SelectNotFree",
    CellID->2055901328],
-  Cell[8376, 291, 194, 6, 35, "Output",
+  Cell[8377, 291, 194, 6, 35, "Output",
    CellTags->"SelectNotFree"],
-  Cell[8607, 302, 161, 5, 27, "Input",
+  Cell[8608, 302, 161, 5, 27, "Input",
    CellTags->"SelectNotFree",
    CellID->1090066922],
-  Cell[8771, 309, 194, 6, 35, "Output",
+  Cell[8772, 309, 194, 6, 35, "Output",
    CellTags->"SelectNotFree"],
-  Cell[9002, 320, 189, 6, 27, "Input",
+  Cell[9003, 320, 189, 6, 27, "Input",
    CellTags->"SelectNotFree",
    CellID->803164089],
-  Cell[9194, 328, 222, 7, 37, "Output",
+  Cell[9195, 328, 222, 7, 37, "Output",
    CellTags->"SelectNotFree"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12057, 421},
- {"SelectNotFree", 12198, 425}
+ {"PrimaryExamplesSection", 12003, 420},
+ {"SelectNotFree", 12144, 424}
  }
 *)
 (*NotebookFileOutline
@@ -478,7 +477,7 @@ Cell[4012, 113, 541, 16, 85, "Usage",
 Cell[CellGroupData[{
 Cell[4578, 133, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->645962762],
+ CellID->620893306],
 Cell[5319, 159, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[5353, 161, 264, 5, 70, "Notes",
  CellID->1067943069]
@@ -487,68 +486,68 @@ Cell[5353, 161, 264, 5, 70, "Notes",
 Cell[CellGroupData[{
 Cell[5666, 172, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1930666558],
+ CellID->1053383164],
 Cell[CellGroupData[{
-Cell[6079, 191, 195, 6, 26, "ExampleSection",
- CellID->654434760],
+Cell[6079, 191, 196, 6, 26, "ExampleSection",
+ CellID->2060906223],
 Cell[CellGroupData[{
-Cell[6299, 201, 224, 7, 27, "Input",
+Cell[6300, 201, 224, 7, 27, "Input",
  CellTags->"SelectNotFree",
  CellID->153420744],
-Cell[6526, 210, 246, 8, 37, "Output",
+Cell[6527, 210, 246, 8, 37, "Output",
  CellTags->"SelectNotFree"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6809, 223, 294, 9, 27, "Input",
+Cell[6810, 223, 294, 9, 27, "Input",
  CellTags->"SelectNotFree",
  CellID->1797995414],
-Cell[7106, 234, 256, 8, 37, "Output",
+Cell[7107, 234, 256, 8, 37, "Output",
  CellTags->"SelectNotFree"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7399, 247, 160, 5, 27, "Input",
+Cell[7400, 247, 160, 5, 27, "Input",
  CellTags->"SelectNotFree",
  CellID->425208057],
-Cell[7562, 254, 194, 6, 35, "Output",
+Cell[7563, 254, 194, 6, 35, "Output",
  CellTags->"SelectNotFree"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7793, 265, 185, 6, 27, "Input",
+Cell[7794, 265, 185, 6, 27, "Input",
  CellTags->"SelectNotFree",
  CellID->1246254585],
-Cell[7981, 273, 194, 6, 35, "Output",
+Cell[7982, 273, 194, 6, 35, "Output",
  CellTags->"SelectNotFree"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8212, 284, 161, 5, 27, "Input",
+Cell[8213, 284, 161, 5, 27, "Input",
  CellTags->"SelectNotFree",
  CellID->2055901328],
-Cell[8376, 291, 194, 6, 35, "Output",
+Cell[8377, 291, 194, 6, 35, "Output",
  CellTags->"SelectNotFree"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8607, 302, 161, 5, 27, "Input",
+Cell[8608, 302, 161, 5, 27, "Input",
  CellTags->"SelectNotFree",
  CellID->1090066922],
-Cell[8771, 309, 194, 6, 35, "Output",
+Cell[8772, 309, 194, 6, 35, "Output",
  CellTags->"SelectNotFree"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9002, 320, 189, 6, 27, "Input",
+Cell[9003, 320, 189, 6, 27, "Input",
  CellTags->"SelectNotFree",
  CellID->803164089],
-Cell[9194, 328, 222, 7, 37, "Output",
+Cell[9195, 328, 222, 7, 37, "Output",
  CellTags->"SelectNotFree"]
 }, Open  ]]
 }, Open  ]],
-Cell[9443, 339, 31, 0, 29, "SectionFooterSpacer"]
+Cell[9444, 339, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9511, 344, 270, 12, 31, "SeeAlsoSection",
+Cell[9512, 344, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[9784, 358, 346, 13, 56, "SeeAlso"]
+Cell[9785, 358, 346, 13, 56, "SeeAlso"]
 }, Open  ]],
-Cell[10145, 374, 23, 0, 41, "FooterCell"]
+Cell[10146, 374, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

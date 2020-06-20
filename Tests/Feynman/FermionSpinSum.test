@@ -16,14 +16,14 @@
 Tests`Feynman`fcstFermionSpinSum =
 ({
 {"fcstFermionSpinSum-ID1",
-"FermionSpinSum[Spinor[p1, m1].GA[i].GA[5].Spinor[p2, m2] * \
-Spinor[p2, m2].GA[5].GA[i].Spinor[p1, m1]]//FCE",
+"FermionSpinSum[Spinor[Momentum@p1, m1].GA[i].GA[5].Spinor[Momentum@p2, m2] * \
+Spinor[Momentum@p2, m2].GA[5].GA[i].Spinor[Momentum@p1, m1]]//FCE",
 "DiracTrace[(m1 + GS[p1]) . GA[i] . GA[5] . (m2 + GS[p2]) . GA[5] \
 . GA[i]]"},
 {"fcstFermionSpinSum-ID2",
-"FermionSpinSum[Spinor[p1, m1].GA[i].GA[5].Spinor[p2, m2] \
-Spinor[k1, m3].GA[j].GA[5].Spinor[k2,m4] Spinor[k2, \
-m4].GA[5].GA[j].Spinor[k1, m3]*Spinor[p2, m2].GA[5].GA[i].Spinor[p1, \
+"FermionSpinSum[Spinor[Momentum@p1, m1].GA[i].GA[5].Spinor[Momentum@p2, m2] \
+Spinor[Momentum@k1, m3].GA[j].GA[5].Spinor[Momentum@k2,m4] Spinor[Momentum@k2, \
+m4].GA[5].GA[j].Spinor[Momentum@k1, m3]*Spinor[Momentum@p2, m2].GA[5].GA[i].Spinor[Momentum@p1, \
 m1]]//FCE",
 "DiracTrace[(m3 + GS[k1]) . GA[j] . GA[5] . (m4 + GS[k2]) . GA[5] \
 . GA[j]]*DiracTrace[(m1 + GS[p1]) . GA[i] . GA[5] . (m2 + GS[p2]) . \
@@ -33,13 +33,13 @@ GA[5] . GA[i]]"},
 {"fcstFermionSpinSum-ID4", "FermionSpinSum[{a,b,c}]//FCE",
 "{a, b, c}"},
 {"fcstFermionSpinSum-ID5",
-"FermionSpinSum[Spinor[p1, m1].GA[i].GA[5].Spinor[p2, m2] \
-Spinor[p2, m2].GA[5].GA[i].Spinor[p1, m1]+a+b]//FCE",
+"FermionSpinSum[Spinor[Momentum@p1, m1].GA[i].GA[5].Spinor[Momentum@p2, m2] \
+Spinor[Momentum@p2, m2].GA[5].GA[i].Spinor[Momentum@p1, m1]+a+b]//FCE",
 "a + b + DiracTrace[(m1 + GS[p1]) . GA[i] . GA[5] . (m2 + GS[p2]) \
 . GA[5] . GA[i]]"},
 {"fcstFermionSpinSum-ID6",
-"FermionSpinSum[Spinor[p1, m1].GA[i].GA[5].Spinor[p2, m2] \
-Spinor[p2, m2].GA[5].GA[i].Spinor[p1, m1]+a+b,ExtraFactor->2]//FCE",
+"FermionSpinSum[Spinor[Momentum@p1, m1].GA[i].GA[5].Spinor[Momentum@p2, m2] \
+Spinor[Momentum@p2, m2].GA[5].GA[i].Spinor[Momentum@p1, m1]+a+b,ExtraFactor->2]//FCE",
 "2*(a + b + DiracTrace[(m1 + GS[p1]) . GA[i] . GA[5] . (m2 + \
 GS[p2]) . GA[5] . GA[i]])"},
 {"fcstFermionSpinSum-ID7",
@@ -47,7 +47,7 @@ GS[p2]) . GA[5] . GA[i]])"},
 mq])*ComplexConjugate[SpinorUBar[p, mp].SpinorV[q, mq]]]//FCE",
 "DiracTrace[(mp + GS[p]) . (-mq + GS[q])]"},
 {"fcstFermionSpinSum-ID8",
-"FermionSpinSum[Spinor[pp, m].(GA[mu] f1 + GA[mu, 5] fa).Spinor[p, \
+"FermionSpinSum[Spinor[Momentum@pp, m].(GA[mu] f1 + GA[mu, 5] fa).Spinor[Momentum@p, \
 m] Spinor[Momentum[p], m, 1].(-fa GA[5].GA[nu] + f1 GA[nu]).Spinor[
 	Momentum[pp], m, 1]] // ReplaceAll[#, DiracTrace -> Tr] & // FCE",
 	"4*(f1^2*FV[p, nu]*FV[pp, mu] + fa^2*FV[p, nu]*FV[pp, mu] + \
@@ -63,32 +63,32 @@ SpinorU[p,m],D]]//FCE",
 SpinorV[p,m],D]]//FCE",
 "DiracTrace[(-m + GSD[p]) . GSD[p1] . GSD[p2]]"},
 {"fcstFermionSpinSum-ID11",
-"FermionSpinSum[ChangeDimension[Spinor[p1, \
-m1].GA[i].GA[5].Spinor[p2, m2] * Spinor[p2, \
-m2].GA[5].GA[i].Spinor[p1, m1],m]]//FCE",
+"FermionSpinSum[ChangeDimension[Spinor[Momentum@p1, \
+m1].GA[i].GA[5].Spinor[Momentum@p2, m2] * Spinor[Momentum@p2, \
+m2].GA[5].GA[i].Spinor[Momentum@p1, m1],m]]//FCE",
 "DiracTrace[(m1 + DiracGamma[Momentum[p1, m], m]) . \
 DiracGamma[LorentzIndex[i, m], m] . GA[5] . (m2 + \
 DiracGamma[Momentum[p2, m], m]) . GA[5] . DiracGamma[LorentzIndex[i, \
 m], m]]"},
 {"fcstFermionSpinSum-ID12",
-"FermionSpinSum[ChangeDimension[Spinor[p1, \
-m1].GA[i].GA[5].Spinor[p2, m2] * Spinor[p2, \
-m2].GA[5].GA[i].Spinor[p1, m1],m],Momentum\[Rule]{p1}]//FCE",
+"FermionSpinSum[ChangeDimension[Spinor[Momentum@p1, \
+m1].GA[i].GA[5].Spinor[Momentum@p2, m2] * Spinor[Momentum@p2, \
+m2].GA[5].GA[i].Spinor[Momentum@p1, m1],m],Momentum\[Rule]{p1}]//FCE",
 "Spinor[Momentum[p2, m], m2, 1] . GA[5] . \
 DiracGamma[LorentzIndex[i, m], m] . (m1 + DiracGamma[Momentum[p1, m], \
 m]) . DiracGamma[LorentzIndex[i, m], m] . GA[5] . Spinor[Momentum[p2, \
 m], m2, 1]"},
 {"fcstFermionSpinSum-ID13",
-"FermionSpinSum[ChangeDimension[Spinor[p1, \
-m1].GA[i].GA[5].Spinor[p2, m2] * Spinor[p2, \
-m2].GA[5].GA[i].Spinor[p1, m1],m],Momentum\[Rule]{p2}]//FCE",
+"FermionSpinSum[ChangeDimension[Spinor[Momentum@p1, \
+m1].GA[i].GA[5].Spinor[Momentum@p2, m2] * Spinor[Momentum@p2, \
+m2].GA[5].GA[i].Spinor[Momentum@p1, m1],m],Momentum\[Rule]{p2}]//FCE",
 "Spinor[Momentum[p1, m], m1, 1] . DiracGamma[LorentzIndex[i, m], \
 m] . GA[5] . (m2 + DiracGamma[Momentum[p2, m], m]) . GA[5] . \
 DiracGamma[LorentzIndex[i, m], m] . Spinor[Momentum[p1, m], m1, 1]"},
 {"fcstFermionSpinSum-ID14",
-"FermionSpinSum[ChangeDimension[Spinor[p1, \
-m1].GA[i].GA[5].Spinor[p2, m2] * Spinor[p2, \
-m2].GA[5].GA[i].Spinor[p1, m1],m],Momentum\[Rule]{p1,p2}]//FCE",
+"FermionSpinSum[ChangeDimension[Spinor[Momentum@p1, \
+m1].GA[i].GA[5].Spinor[Momentum@p2, m2] * Spinor[Momentum@p2, \
+m2].GA[5].GA[i].Spinor[Momentum@p1, m1],m],Momentum\[Rule]{p1,p2}]//FCE",
 "DiracTrace[(m1 + DiracGamma[Momentum[p1, m], m]) . \
 DiracGamma[LorentzIndex[i, m], m] . GA[5] . (m2 + \
 DiracGamma[Momentum[p2, m], m]) . GA[5] . DiracGamma[LorentzIndex[i, \
@@ -207,9 +207,9 @@ FCE -> True]",
 "-DiracTrace[(GS[k1] + MNeu[1]) . GA[6] . (me - GS[k2]) . GA[7] . \
 (GS[p1] - MNeu[1]) . GA[7] . (me + GS[p2]) . GA[6]]"},
 {"fcstFermionSpinSum-ID32", "FermionSpinSum[
-Spinor[p1, m1].GA[i].GA[5].Spinor[p2, m2] Spinor[k1, m3].GA[j].GA[
-	5].Spinor[k2, m4] Spinor[k2, m4].GA[5].GA[j].Spinor[k1, m3]*
-Spinor[p2, m2].GA[5].GA[i].Spinor[p1, m1], Head -> spSum,
+Spinor[Momentum@p1, m1].GA[i].GA[5].Spinor[Momentum@p2, m2] Spinor[Momentum@k1, m3].GA[j].GA[
+	5].Spinor[Momentum@k2, m4] Spinor[Momentum@k2, m4].GA[5].GA[j].Spinor[Momentum@k1, m3]*
+Spinor[Momentum@p2, m2].GA[5].GA[i].Spinor[Momentum@p1, m1], Head -> spSum,
 FCE -> True]",
 "DiracTrace[
 spSum[m3 + GS[k1]].GA[j].GA[5].spSum[m4 + GS[k2]].GA[5].GA[j]] DiracTrace[

@@ -40,5 +40,32 @@ Tests`LoopIntegrals`fcstApart2 = {
 {"fcstApart2-ID5","Apart2[FAD[k, {k, m1 + m2}, {k, m3 + m4}],Factoring->False]// FCE",
 	"-((-((FAD[k] - FAD[{k, m3 + m4}])/(m3 + m4)^2) - (
 	FAD[{k, m1 + m2}] - FAD[{k, m3 + m4}])/((m1 + m2)^2 - (m3 + m4)^2))/
-	(m1 + m2)^2)"}
+	(m1 + m2)^2)"},
+{"fcstApart-ID6",
+"Apart2[FeynAmpDenominator[CartesianPropagatorDenominator[\
+CartesianMomentum[k,-1+D],0,0,{1,-1}],CartesianPropagatorDenominator[\
+CartesianMomentum[k,-1+D]-CartesianMomentum[p,-1+D],0,0,{1,-1}],\
+GenericPropagatorDenominator[DE-\!\(\*SqrtBox[\(CartesianPair[\
+CartesianMomentum[k, \(-1\) + D], CartesianMomentum[k, \(-1\) + \
+D]]\)]\),{1,1}]],FCE\[Rule]True]",
+"(DE*CFAD[{{k - p, 0}, {0, -1}, 1}, {{k, 0}, {0, -1}, 1}] + \
+CFAD[{{k - p, 0}, {0, -1}, 1}, {{k, 0}, {0, -1}, 1}]*Sqrt[CSPD[k, k]] \
++ CFAD[{{k - p, 0}, {0, -1}, 1}]*GFAD[{{DE - Sqrt[CSPD[k, k]], 1}, \
+1}])/DE^2"},
+{"fcstApart-ID7",
+"Apart2[CFAD[{{k,0},{0,-1},1},{{k-p,0},{0,-1},1}]GFAD[{{DE-\!\(\*\
+SqrtBox[\(CSPD[k, \
+k]\)]\),1},1}]//FeynAmpDenominatorCombine,FCE\[Rule]True]",
+"(DE*CFAD[{{k, 0}, {0, -1}, 1}, {{k - p, 0}, {0, -1}, 1}] + \
+CFAD[{{k, 0}, {0, -1}, 1}, {{k - p, 0}, {0, -1}, 1}]*Sqrt[CSPD[k, k]] \
++ CFAD[{{k - p, 0}, {0, -1}, 1}]*GFAD[{{DE - Sqrt[CSPD[k, k]], 1}, \
+1}])/DE^2"},
+{"fcstApart-ID8",
+"Apart2[CFAD[{{k,0},{+m^2,-1},1},{{k-p,0},{0,-1},1}]GFAD[{{DE-\!\(\
+\*SqrtBox[\(CSPD[k, k]\)]\),1},1}]//FeynAmpDenominatorCombine,FCE\
+\[Rule]True]",
+"(DE*CFAD[{{k, 0}, {m^2, -1}, 1}, {{k - p, 0}, {0, -1}, 1}] + \
+CFAD[{{k, 0}, {m^2, -1}, 1}, {{k - p, 0}, {0, -1}, 1}]*Sqrt[CSPD[k, \
+k]] + CFAD[{{k - p, 0}, {0, -1}, 1}]*GFAD[{{DE - Sqrt[CSPD[k, k]], \
+1}, 1}])/(DE^2 + m^2)"}
 };

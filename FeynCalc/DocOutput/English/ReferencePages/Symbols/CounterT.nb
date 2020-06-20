@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13849,        459]
+NotebookDataLength[     13846,        459]
 NotebookOptionsPosition[     10917,        372]
-NotebookOutlinePosition[     13159,        434]
-CellTagsIndexPosition[     13047,        428]
+NotebookOutlinePosition[     13156,        434]
+CellTagsIndexPosition[     13044,        428]
 WindowTitle->CounterT
 WindowFrame->Normal*)
 
@@ -83,7 +83,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$47766], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$47871], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/CounterT", ".html"]], None}]}]},
@@ -143,7 +143,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->236252029],
+ CellID->884128254],
 
 Cell[CellGroupData[{
 
@@ -153,7 +153,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2042467455],
+ CellID->1235637076],
 
 Cell[CellGroupData[{
 
@@ -373,7 +373,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 WindowTitle->"CounterT",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -385,7 +385,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 53, 43.977584}", 
+   "built" -> "{2020, 6, 20, 19, 3, 15.987645}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -416,7 +416,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4520, 130, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->236252029]},
+   CellID->884128254]},
  "CounterT"->{
   Cell[5153, 159, 302, 7, 27, "Input",
    CellTags->"CounterT",
@@ -427,8 +427,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12731, 415},
- {"CounterT", 12866, 419}
+ {"PrimaryExamplesSection", 12728, 415},
+ {"CounterT", 12863, 419}
  }
 *)
 (*NotebookFileOutline
@@ -441,10 +441,10 @@ Cell[4094, 114, 401, 12, 85, "Usage",
 Cell[CellGroupData[{
 Cell[4520, 130, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->236252029],
+ CellID->884128254],
 Cell[CellGroupData[{
 Cell[4932, 149, 196, 6, 26, "ExampleSection",
- CellID->2042467455],
+ CellID->1235637076],
 Cell[CellGroupData[{
 Cell[5153, 159, 302, 7, 27, "Input",
  CellTags->"CounterT",

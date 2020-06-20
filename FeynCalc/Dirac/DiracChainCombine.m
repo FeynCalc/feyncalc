@@ -54,7 +54,13 @@ Options[DiracChainCombine] = {
 	FCI 				-> False
 };
 
-DiracChainCombine[expr_, OptionsPattern[]] :=
+DiracChainCombine[a_ == b_, opts:OptionsPattern[]] :=
+	DiracChainCombine[a,opts] == DiracChainCombine[b,opts];
+
+DiracChainCombine[expr_List, opts:OptionsPattern[]]:=
+	DiracChainCombine[#, opts]&/@expr;
+
+DiracChainCombine[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 	Block[{ex, res, rules=rulesMain},
 
 		optDiracGammaCombine = OptionValue[DiracGammaCombine];

@@ -30,9 +30,16 @@ Options[ToDiracGamma67] = {
 	DotSimplify -> False,
 	FCE 		-> False,
 	FCI 		-> False
-}
+};
 
-ToDiracGamma67[expr_, OptionsPattern[]] :=
+
+ToDiracGamma67[a_ == b_, opts:OptionsPattern[]] :=
+	ToDiracGamma67[a,opts] == ToDiracGamma67[b,opts];
+
+ToDiracGamma67[expr_List, opts:OptionsPattern[]]:=
+	ToDiracGamma67[#, opts]&/@expr;
+
+ToDiracGamma67[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 	Block[{ex},
 
 		If[ OptionValue[FCI],

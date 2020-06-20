@@ -35,7 +35,8 @@ DataType::usage =
 "DataType[exp, type] = True   defines the object exp to have datatype type. \
 DataType[exp1, exp2, ..., type] defines the objects exp1, exp2, ... to \
 have datatype type. The default setting is DataType[__, _]:=False. \
-To assign a certain data type, do e.g.: DataType[x, PositiveInteger] = True.";
+To assign a certain data type, do e.g.: DataType[x, PositiveInteger] = True. \n
+DataType[] show the list of available datatypes.";
 
 Begin["`Package`"]
 End[]
@@ -45,6 +46,16 @@ End[]
 Begin["`DataType`Private`"]
 
 set::usage="";
+
+DataType[] = {
+	FreeIndex,
+	GrassmannParity,
+	NegativeInteger,
+	PositiveInteger,
+	PositiveNumber,
+	FCTensor,
+	FCVariable
+}
 
 DataType[_] :=
 	(Message[DataType::argrx, DataType, 1, "2 or more"];

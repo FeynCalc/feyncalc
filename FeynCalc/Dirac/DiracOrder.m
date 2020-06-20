@@ -11,17 +11,17 @@
 	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Lexicographic ordering of Dirac matrices						*)
+(* :Summary:  Canonical ordering of Dirac matrices							*)
 
 (* ------------------------------------------------------------------------ *)
 
 DiracOrder::usage =
-"DiracOrder[exp] orders the Dirac matrices in exp lexicographically. \
+"DiracOrder[exp] orders the Dirac matrices in exp canonically. \
 DiracOrder[exp, orderlist] orders the Dirac matrices in exp according \
 to orderlist.\n
 DiracOrder is also an option of DiracSimplify and some other functions dealing \
 with Dirac algebra. If set to True, the function DiracOrder will be applied to \
-the intermediate result to reorder the Dirac matrices lexicographically.
+the intermediate result to reorder the Dirac matrices canonically.
 ";
 
 DiracOrder::failmsg =
@@ -42,6 +42,7 @@ tmp::usage="";
 Options[DiracOrder] = {
 	DiracGammaCombine	-> False,
 	DiracTrick 			-> True,
+	DotSimplify			-> True,
 	FCDiracIsolate		-> True,
 	FCE					-> False,
 	FCI					-> False,
@@ -50,11 +51,18 @@ Options[DiracOrder] = {
 	MaxIterations		-> Infinity
 };
 
+DiracOrder[a_ == b_, rest___] :=
+	DiracOrder[a,rest] == DiracOrder[b,rest];
+
+DiracOrder[expr_List, rest___]:=
+	DiracOrder[#, rest]&/@expr;
+
 DiracOrder[expr_, (opts:OptionsPattern[])/;opts=!={}] :=
 	DiracOrder[expr, {}, opts];
 
-DiracOrder[expr_, orderList_List/; (!OptionQ[orderList] || orderList==={}), OptionsPattern[]]:=
-	Block[{ex,res,dsHead,dsPart,freePart,null1,null2,diracObjects,tmp, maxIterations, diracObjectsEval, repRule,time},
+DiracOrder[expr_/; !MemberQ[{List,Equal},expr], orderList_List/; (!OptionQ[orderList] || orderList==={}), OptionsPattern[]]:=
+	Block[{	ex,res,dsHead,dsPart,freePart,null1,null2,diracObjects,
+			tmp, maxIterations, diracObjectsEval, repRule,time},
 
 		maxIterations = OptionValue[MaxIterations];
 
@@ -78,12 +86,14 @@ DiracOrder[expr_, orderList_List/; (!OptionQ[orderList] || orderList==={}), Opti
 		FCPrint[3, "DiracOrder: Entering with ", ex, FCDoControl->doVerbose];
 
 		If[	OptionValue[FCDiracIsolate],
+
 			(* This is the normal mode which works well both for large and small expressions *)
 			FCPrint[1, "DiracOrder: Normal mode.", FCDoControl->doVerbose];
 			time=AbsoluteTime[];
 			FCPrint[1, "DiracOrder: Extracting Dirac objects.", FCDoControl->doVerbose];
 			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracChain->True,
-				DiracGammaCombine->OptionValue[DiracGammaCombine], FCJoinDOTs->OptionValue[FCJoinDOTs]];
+				DiracGammaCombine->OptionValue[DiracGammaCombine], FCJoinDOTs->OptionValue[FCJoinDOTs], Split->False,
+				LorentzIndex->True, CartesianIndex->True];
 
 
 			{freePart,dsPart} = FCSplit[ex,{dsHead}];
@@ -93,26 +103,56 @@ DiracOrder[expr_, orderList_List/; (!OptionQ[orderList] || orderList==={}), Opti
 			diracObjects = Cases[dsPart+null1+null2, dsHead[_], Infinity]//DeleteDuplicates//Sort;
 			FCPrint[1, "DiracOrder: Done extracting Dirac objects, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->doVerbose];
 
+			diracObjectsEval = diracObjects;
+
+			If[	OptionValue[DiracTrick]===True,
+				time=AbsoluteTime[];
+				FCPrint[1, "DiracOrder: Applying DiracTrick.", FCDoControl->doVerbose];
+				diracObjectsEval = DiracTrick[#,FCI->True]&/@diracObjectsEval;
+				diracObjectsEval =FeynCalc`Package`diracChainContract /@ diracObjectsEval;
+				FCPrint[1, "DiracOrder: Done applying DiracTrick,timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->doVerbose];
+				FCPrint[3, "DiracOrder: After DiracTrick: ", diracObjectsEval, FCDoControl->doVerbose];
+			];
+
 			time=AbsoluteTime[];
 			If[orderList=!={},
 				FCPrint[1, "DiracOrder: Ordering according to: ", orderList, FCDoControl->doVerbose];
-				diracObjectsEval = Map[diracOrderCustom[#,orderList]&, (diracObjects/. DOT -> holdDOT/.dsHead->Identity)];
+				diracObjectsEval = Map[diracOrderCustom[#,orderList]&, (diracObjectsEval/. DOT -> holdDOT/.dsHead->Identity)];
 				FCPrint[1, "DiracOrder: Ordering done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->doVerbose],
 
-				FCPrint[1, "DiracOrder. Using lexicographic ordering.", FCDoControl->doVerbose];
-				diracObjectsEval = Map[diracOrderLex[#,maxIterations]&, (diracObjects/. DOT -> holdDOT/.dsHead->Identity)];
+				FCPrint[1, "DiracOrder. Using canonical ordering.", FCDoControl->doVerbose];
+				diracObjectsEval = Map[diracOrderLex[#,maxIterations]&, (diracObjectsEval/. DOT -> holdDOT/.dsHead->Identity)];
 				FCPrint[1, "DiracOrder: Ordering done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->doVerbose]
 			];
 
+			FCPrint[3, "DiracOrder: Intermediate result: ", diracObjectsEval, FCDoControl->doVerbose];
+
+
 			time=AbsoluteTime[];
 			FCPrint[1, "DiracOrder: Inserting Dirac objects back.", FCDoControl->doVerbose];
+			diracObjectsEval = diracObjectsEval /. holdDOT[]->1 /.holdDOT->DOT /. PairContract->Pair;
 
-			diracObjectsEval = diracObjectsEval /. holdDOT[]->1 /.holdDOT->DOT /. PairContract -> Pair;
-			If[	!FreeQ[diracObjectsEval,CartesianPair],
-				diracObjectsEval = diracObjectsEval/. CartesianPair->CartesianPairContract /. CartesianPairContract->CartesianPair
+			If[	OptionValue[DotSimplify],
+				time=AbsoluteTime[];
+				FCPrint[1, "DiracOrder: Applying DotSimplify.", FCDoControl->doVerbose];
+				diracObjectsEval = DotSimplify[#,FCI->True, Expanding->True]&/@diracObjectsEval;
+				FCPrint[1, "DiracOrder: Done applying DotSimplify,timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->doVerbose];
+				FCPrint[3, "DiracOrder: After DotSimplify: ", diracObjectsEval, FCDoControl->doVerbose];
+			];
+
+
+			If[	(OptionValue[DiracTrick]===True || OptionValue[DiracTrick]===Last)  && FreeQ[orderList,ExplicitLorentzIndex[0]],
+				time=AbsoluteTime[];
+				FCPrint[1, "DiracOrder: Applying DiracTrick.", FCDoControl->doVerbose];
+				diracObjectsEval = DiracTrick[#,FCI->True, FCDiracIsolate -> {DotSimplify -> False, Expanding -> False,
+					FCJoinDOTs -> False, DiracGammaCombine -> False, Factoring -> False}]&/@diracObjectsEval;
+				diracObjectsEval =FeynCalc`Package`diracChainContract /@ diracObjectsEval;
+				FCPrint[1, "DiracOrder: Done applying DiracTrick,timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->doVerbose];
+				FCPrint[3, "DiracOrder: After DiracTrick: ", diracObjectsEval, FCDoControl->doVerbose];
 			];
 
 			repRule = Thread[Rule[diracObjects, diracObjectsEval]];
+
 			FCPrint[3,"DiracOrder: repRule: ",repRule , FCDoControl->doVerbose];
 			tmp = freePart + (dsPart/. Dispatch[repRule]);
 			FCPrint[1, "DiracOrder: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->doVerbose];
@@ -133,23 +173,21 @@ DiracOrder[expr_, orderList_List/; (!OptionQ[orderList] || orderList==={}), Opti
 				FCPrint[1, "DiracOrder: Ordering done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->doVerbose]
 
 			];
-			tmp = tmp/. holdDOT[]->1 /.holdDOT->DOT /. PairContract -> Pair;
-			If[	!FreeQ[diracObjectsEval,CartesianPair],
-				diracObjectsEval = diracObjectsEval/. CartesianPair->CartesianPairContract /. CartesianPairContract->CartesianPair
-			];
+			tmp = tmp/. holdDOT[]->1 /.holdDOT->DOT /. PairContract->Pair;
+			tmp = FeynCalc`Package`diracChainContract[tmp];
+
+			If[	OptionValue[DiracTrick] && FreeQ[orderList,ExplicitLorentzIndex[0]],
+				time=AbsoluteTime[];
+				FCPrint[1, "DiracOrder: Applying DiracTrick.", FCDoControl->doVerbose];
+				tmp = DiracTrick[tmp,FCI->True];
+				tmp = FeynCalc`Package`diracChainContract[tmp];
+				FCPrint[1, "DiracOrder: Done applying DiracTrick,timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->doVerbose]
+			]
 
 		];
 
 
 		res = tmp;
-
-		(* If orderingList contains an ExplicitLorentzIndex[0], do not apply DiracTrick, since it would mess up the ordering!	*)
-		If[	OptionValue[DiracTrick] && FreeQ[orderList,ExplicitLorentzIndex[0]],
-				time=AbsoluteTime[];
-				FCPrint[1, "DiracOrder: Applying DiracTrick.", FCDoControl->doVerbose];
-				res = DiracTrick[res, FCI->True];
-				FCPrint[1, "DiracOrder: Done applying DiracTrick,timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->doVerbose]
-		];
 
 		FCPrint[1, "DiracOrder: Leaving.", FCDoControl->doVerbose];
 		FCPrint[3, "DiracOrder: Leaving with ", res, FCDoControl->doVerbose];
@@ -163,7 +201,7 @@ DiracOrder[expr_, orderList_List/; (!OptionQ[orderList] || orderList==={}), Opti
 	];
 
 diracOrderLex[x_, maxIterations_]:=
-	FixedPoint[(# /. {
+	FixedPoint[(FeynCalc`Package`diracChainContract[#] /. {
 		holdDOT[a___,DiracGamma[(h1:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[ar1__], dim1_:4],DiracGamma[(h2:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[ar2__], dim2_:4],b___]/;
 			!OrderedQ[{h1[First[{ar1}],dim1],h2[First[{ar2}],dim2]}] && h1[First[{ar1}],dim1]=!=h2[First[{ar2}],dim2] :>
 			-holdDOT[a, DiracGamma[h2[ar2],dim2], DiracGamma[h1[ar1],dim1] ,b] +
@@ -182,7 +220,7 @@ diracOrderLex[x_, maxIterations_]:=
 	})&, x, maxIterations]
 
 customOrdering[x_, currentElement_]:=
-	x //. {
+	FeynCalc`Package`diracChainContract[x] //. {
 		holdDOT[a___,DiracGamma[(h1:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[ar1__], dim1_:4],
 			DiracGamma[(h2:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[ar2__], dim2_:4],b___]/;
 			!FreeQ[h2[First[{ar2}],dim2],currentElement] && h1[First[{ar1}],dim1]=!=h2[First[{ar2}],dim2] :>

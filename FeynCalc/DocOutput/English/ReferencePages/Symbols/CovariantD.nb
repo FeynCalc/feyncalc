@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     46324,       1621]
-NotebookOptionsPosition[     36914,       1328]
-NotebookOutlinePosition[     42415,       1476]
-CellTagsIndexPosition[     42299,       1470]
+NotebookDataLength[     46328,       1621]
+NotebookOptionsPosition[     36916,       1328]
+NotebookOutlinePosition[     42417,       1476]
+CellTagsIndexPosition[     42301,       1470]
 WindowTitle->CovariantD
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$48725], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$48830], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/CovariantD", ".html"]], None}]}]},
@@ -229,7 +229,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->29485513],
+ CellID->1013191662],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -287,7 +287,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->691651515],
+ CellID->892444633],
 
 Cell[CellGroupData[{
 
@@ -297,7 +297,7 @@ Cell[TextData[{
  Cell["(4)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->769036159],
+ CellID->699025235],
 
 Cell[CellGroupData[{
 
@@ -1341,7 +1341,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 53, 46.547141}", 
+   "built" -> "{2020, 6, 20, 19, 3, 17.965171}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1381,96 +1381,96 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "CovariantD"->{
-  Cell[8076, 246, 140, 4, 70, "Input",
+  Cell[8078, 246, 140, 4, 70, "Input",
    CellTags->"CovariantD",
    CellID->1136125130],
-  Cell[8219, 252, 529, 15, 56, "Output",
+  Cell[8221, 252, 529, 15, 56, "Output",
    CellTags->"CovariantD"],
-  Cell[9441, 303, 135, 4, 27, "Input",
+  Cell[9443, 303, 135, 4, 27, "Input",
    CellTags->"CovariantD",
    CellID->691762283],
-  Cell[9579, 309, 251, 9, 39, "Output",
+  Cell[9581, 309, 251, 9, 39, "Output",
    CellTags->"CovariantD"],
-  Cell[9867, 323, 168, 5, 27, "Input",
+  Cell[9869, 323, 168, 5, 27, "Input",
    CellTags->"CovariantD",
    CellID->631235757],
-  Cell[10038, 330, 352, 14, 43, "Output",
+  Cell[10040, 330, 352, 14, 43, "Output",
    CellTags->"CovariantD"],
-  Cell[10427, 349, 199, 6, 27, "Input",
+  Cell[10429, 349, 199, 6, 27, "Input",
    CellTags->"CovariantD",
    CellID->1730385129],
-  Cell[10629, 357, 814, 32, 46, "Output",
+  Cell[10631, 357, 814, 32, 46, "Output",
    CellTags->"CovariantD"],
-  Cell[12226, 424, 139, 4, 27, "Input",
+  Cell[12228, 424, 139, 4, 27, "Input",
    CellTags->"CovariantD",
    CellID->1980257576],
-  Cell[12368, 430, 261, 9, 37, "Output",
+  Cell[12370, 430, 261, 9, 37, "Output",
    CellTags->"CovariantD"],
-  Cell[12666, 444, 171, 5, 27, "Input",
+  Cell[12668, 444, 171, 5, 27, "Input",
    CellTags->"CovariantD",
    CellID->840690314],
-  Cell[12840, 451, 362, 14, 41, "Output",
+  Cell[12842, 451, 362, 14, 41, "Output",
    CellTags->"CovariantD"],
-  Cell[13239, 470, 220, 6, 27, "Input",
+  Cell[13241, 470, 220, 6, 27, "Input",
    CellTags->"CovariantD",
    CellID->82457380],
-  Cell[13462, 478, 1013, 41, 44, "Output",
+  Cell[13464, 478, 1013, 41, 44, "Output",
    CellTags->"CovariantD"],
-  Cell[14512, 524, 201, 6, 27, "Input",
+  Cell[14514, 524, 201, 6, 27, "Input",
    CellTags->"CovariantD",
    CellID->570341066],
-  Cell[14716, 532, 834, 32, 44, "Output",
+  Cell[14718, 532, 834, 32, 44, "Output",
    CellTags->"CovariantD"],
-  Cell[15587, 569, 206, 6, 27, "Input",
+  Cell[15589, 569, 206, 6, 27, "Input",
    CellTags->"CovariantD",
    CellID->1557639505],
-  Cell[15796, 577, 2053, 79, 48, "Output",
+  Cell[15798, 577, 2053, 79, 48, "Output",
    CellTags->"CovariantD"],
-  Cell[18605, 691, 234, 7, 27, "Input",
+  Cell[18607, 691, 234, 7, 27, "Input",
    CellTags->"CovariantD",
    CellID->1826343413],
-  Cell[18842, 700, 642, 25, 43, "Output",
+  Cell[18844, 700, 642, 25, 43, "Output",
    CellTags->"CovariantD"],
-  Cell[19991, 750, 234, 7, 27, "Input",
+  Cell[19993, 750, 234, 7, 27, "Input",
    CellTags->"CovariantD",
    CellID->1721350899],
-  Cell[20228, 759, 2418, 85, 68, "Output",
+  Cell[20230, 759, 2418, 85, 68, "Output",
    CellTags->"CovariantD"],
-  Cell[22851, 857, 234, 7, 27, "Input",
+  Cell[22853, 857, 234, 7, 27, "Input",
    CellTags->"CovariantD",
    CellID->1002319987],
-  Cell[23088, 866, 6000, 192, 156, "Output",
+  Cell[23090, 866, 6000, 192, 156, "Output",
    CellTags->"CovariantD"],
-  Cell[29125, 1063, 199, 6, 27, "Input",
+  Cell[29127, 1063, 199, 6, 27, "Input",
    CellTags->"CovariantD",
    CellID->608320512],
-  Cell[29327, 1071, 426, 16, 43, "Output",
+  Cell[29329, 1071, 426, 16, 43, "Output",
    CellTags->"CovariantD"],
-  Cell[29790, 1092, 213, 7, 27, "Input",
+  Cell[29792, 1092, 213, 7, 27, "Input",
    CellTags->"CovariantD",
    CellID->512528140],
-  Cell[30006, 1101, 4929, 153, 127, "Output",
+  Cell[30008, 1101, 4929, 153, 127, "Output",
    CellTags->"CovariantD"],
-  Cell[34972, 1259, 241, 8, 27, "Input",
+  Cell[34974, 1259, 241, 8, 27, "Input",
    CellTags->"CovariantD",
    CellID->790160491],
-  Cell[35216, 1269, 639, 17, 86, "Output",
+  Cell[35218, 1269, 639, 17, 86, "Output",
    CellTags->"CovariantD"],
-  Cell[35892, 1291, 258, 8, 27, "Input",
+  Cell[35894, 1291, 258, 8, 27, "Input",
    CellTags->"CovariantD",
    CellID->160329117],
-  Cell[36153, 1301, 683, 19, 86, "Output",
+  Cell[36155, 1301, 683, 19, 86, "Output",
    CellTags->"CovariantD"]},
  "PrimaryExamplesSection"->{
-  Cell[8809, 274, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[8811, 274, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->691651515]}
+   CellID->892444633]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"CovariantD", 39550, 1382},
- {"PrimaryExamplesSection", 42156, 1463}
+ {"CovariantD", 39552, 1382},
+ {"PrimaryExamplesSection", 42158, 1463}
  }
 *)
 (*NotebookFileOutline
@@ -1481,148 +1481,148 @@ Cell[2865, 76, 287, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
 Cell[3177, 91, 3844, 112, 497, "Usage"],
 Cell[CellGroupData[{
-Cell[7046, 207, 737, 24, 31, "NotesSection",
+Cell[7046, 207, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->29485513],
-Cell[7786, 233, 31, 0, 70, "SectionHeaderSpacer"],
-Cell[7820, 235, 231, 7, 70, "Notes"],
+ CellID->1013191662],
+Cell[7788, 233, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[7822, 235, 231, 7, 70, "Notes"],
 Cell[CellGroupData[{
-Cell[8076, 246, 140, 4, 70, "Input",
+Cell[8078, 246, 140, 4, 70, "Input",
  CellTags->"CovariantD",
  CellID->1136125130],
-Cell[8219, 252, 529, 15, 56, "Output",
+Cell[8221, 252, 529, 15, 56, "Output",
  CellTags->"CovariantD"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8809, 274, 387, 15, 31, "PrimaryExamplesSection",
+Cell[8811, 274, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->691651515],
+ CellID->892444633],
 Cell[CellGroupData[{
-Cell[9221, 293, 195, 6, 26, "ExampleSection",
- CellID->769036159],
+Cell[9223, 293, 195, 6, 26, "ExampleSection",
+ CellID->699025235],
 Cell[CellGroupData[{
-Cell[9441, 303, 135, 4, 27, "Input",
+Cell[9443, 303, 135, 4, 27, "Input",
  CellTags->"CovariantD",
  CellID->691762283],
-Cell[9579, 309, 251, 9, 39, "Output",
+Cell[9581, 309, 251, 9, 39, "Output",
  CellTags->"CovariantD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9867, 323, 168, 5, 27, "Input",
+Cell[9869, 323, 168, 5, 27, "Input",
  CellTags->"CovariantD",
  CellID->631235757],
-Cell[10038, 330, 352, 14, 43, "Output",
+Cell[10040, 330, 352, 14, 43, "Output",
  CellTags->"CovariantD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10427, 349, 199, 6, 27, "Input",
+Cell[10429, 349, 199, 6, 27, "Input",
  CellTags->"CovariantD",
  CellID->1730385129],
-Cell[10629, 357, 814, 32, 46, "Output",
+Cell[10631, 357, 814, 32, 46, "Output",
  CellTags->"CovariantD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11480, 394, 105, 2, 9, "ExampleDelimiter"],
-Cell[11588, 398, 613, 22, 49, "Notes"],
+Cell[11482, 394, 105, 2, 9, "ExampleDelimiter"],
+Cell[11590, 398, 613, 22, 49, "Notes"],
 Cell[CellGroupData[{
-Cell[12226, 424, 139, 4, 27, "Input",
+Cell[12228, 424, 139, 4, 27, "Input",
  CellTags->"CovariantD",
  CellID->1980257576],
-Cell[12368, 430, 261, 9, 37, "Output",
+Cell[12370, 430, 261, 9, 37, "Output",
  CellTags->"CovariantD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12666, 444, 171, 5, 27, "Input",
+Cell[12668, 444, 171, 5, 27, "Input",
  CellTags->"CovariantD",
  CellID->840690314],
-Cell[12840, 451, 362, 14, 41, "Output",
+Cell[12842, 451, 362, 14, 41, "Output",
  CellTags->"CovariantD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13239, 470, 220, 6, 27, "Input",
+Cell[13241, 470, 220, 6, 27, "Input",
  CellTags->"CovariantD",
  CellID->82457380],
-Cell[13462, 478, 1013, 41, 44, "Output",
+Cell[13464, 478, 1013, 41, 44, "Output",
  CellTags->"CovariantD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14512, 524, 201, 6, 27, "Input",
+Cell[14514, 524, 201, 6, 27, "Input",
  CellTags->"CovariantD",
  CellID->570341066],
-Cell[14716, 532, 834, 32, 44, "Output",
+Cell[14718, 532, 834, 32, 44, "Output",
  CellTags->"CovariantD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15587, 569, 206, 6, 27, "Input",
+Cell[15589, 569, 206, 6, 27, "Input",
  CellTags->"CovariantD",
  CellID->1557639505],
-Cell[15796, 577, 2053, 79, 48, "Output",
+Cell[15798, 577, 2053, 79, 48, "Output",
  CellTags->"CovariantD"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17898, 662, 105, 2, 9, "ExampleDelimiter"],
-Cell[18006, 666, 574, 21, 42, "Notes"],
+Cell[17900, 662, 105, 2, 9, "ExampleDelimiter"],
+Cell[18008, 666, 574, 21, 42, "Notes"],
 Cell[CellGroupData[{
-Cell[18605, 691, 234, 7, 27, "Input",
+Cell[18607, 691, 234, 7, 27, "Input",
  CellTags->"CovariantD",
  CellID->1826343413],
-Cell[18842, 700, 642, 25, 43, "Output",
+Cell[18844, 700, 642, 25, 43, "Output",
  CellTags->"CovariantD"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19533, 731, 105, 2, 9, "ExampleDelimiter"],
-Cell[19641, 735, 325, 11, 33, "Notes"],
+Cell[19535, 731, 105, 2, 9, "ExampleDelimiter"],
+Cell[19643, 735, 325, 11, 33, "Notes"],
 Cell[CellGroupData[{
-Cell[19991, 750, 234, 7, 27, "Input",
+Cell[19993, 750, 234, 7, 27, "Input",
  CellTags->"CovariantD",
  CellID->1721350899],
-Cell[20228, 759, 2418, 85, 68, "Output",
+Cell[20230, 759, 2418, 85, 68, "Output",
  CellTags->"CovariantD"]
 }, Open  ]],
-Cell[22661, 847, 165, 6, 33, "Notes"],
+Cell[22663, 847, 165, 6, 33, "Notes"],
 Cell[CellGroupData[{
-Cell[22851, 857, 234, 7, 27, "Input",
+Cell[22853, 857, 234, 7, 27, "Input",
  CellTags->"CovariantD",
  CellID->1002319987],
-Cell[23088, 866, 6000, 192, 156, "Output",
+Cell[23090, 866, 6000, 192, 156, "Output",
  CellTags->"CovariantD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[29125, 1063, 199, 6, 27, "Input",
+Cell[29127, 1063, 199, 6, 27, "Input",
  CellTags->"CovariantD",
  CellID->608320512],
-Cell[29327, 1071, 426, 16, 43, "Output",
+Cell[29329, 1071, 426, 16, 43, "Output",
  CellTags->"CovariantD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[29790, 1092, 213, 7, 27, "Input",
+Cell[29792, 1092, 213, 7, 27, "Input",
  CellTags->"CovariantD",
  CellID->512528140],
-Cell[30006, 1101, 4929, 153, 127, "Output",
+Cell[30008, 1101, 4929, 153, 127, "Output",
  CellTags->"CovariantD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[34972, 1259, 241, 8, 27, "Input",
+Cell[34974, 1259, 241, 8, 27, "Input",
  CellTags->"CovariantD",
  CellID->790160491],
-Cell[35216, 1269, 639, 17, 86, "Output",
+Cell[35218, 1269, 639, 17, 86, "Output",
  CellTags->"CovariantD"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[35892, 1291, 258, 8, 27, "Input",
+Cell[35894, 1291, 258, 8, 27, "Input",
  CellTags->"CovariantD",
  CellID->160329117],
-Cell[36153, 1301, 683, 19, 86, "Output",
+Cell[36155, 1301, 683, 19, 86, "Output",
  CellTags->"CovariantD"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[36887, 1326, 23, 0, 41, "FooterCell"]
+Cell[36889, 1326, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6771,        206]
+NotebookDataLength[      6770,        206]
 NotebookOptionsPosition[      4784,        151]
-NotebookOutlinePosition[      6564,        198]
-CellTagsIndexPosition[      6521,        195]
+NotebookOutlinePosition[      6563,        198]
+CellTagsIndexPosition[      6520,        195]
 WindowTitle->CombineGraphs
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ CombineGraphs.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$42825], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$42930], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/CombineGraphs", ".html"]], None}]}]},
@@ -164,7 +164,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 53, 30.319164}", 
+   "built" -> "{2020, 6, 20, 19, 3, 3.949736}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

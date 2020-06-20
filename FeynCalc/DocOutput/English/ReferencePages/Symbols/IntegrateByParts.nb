@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9648,        315]
+NotebookDataLength[      9588,        314]
 NotebookOptionsPosition[      6332,        217]
-NotebookOutlinePosition[      8825,        285]
-CellTagsIndexPosition[      8707,        279]
+NotebookOutlinePosition[      8765,        284]
+CellTagsIndexPosition[      8647,        278]
 WindowTitle->IntegrateByParts
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ IntegrateByParts.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$171428], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$172436], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/IntegrateByParts", ".html"]], None}]}]},
@@ -134,7 +134,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1668615542],
+ CellID->751564616],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -150,7 +150,7 @@ Cell[BoxData[
  FormBox[
   RowBox[{"{", 
    RowBox[{"Hold", "\[Rule]", "False"}], "}"}], TraditionalForm]], "Output",
- ImageSize->{95, 14},
+ ImageSize->{95, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"IntegrateByParts",
@@ -176,7 +176,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->532919514],
+ CellID->1289378673],
 
 Cell[CellGroupData[{
 
@@ -186,7 +186,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2112475075],
+ CellID->1050582824],
 
 Cell[BoxData[
  RowBox[{"(*", 
@@ -218,7 +218,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 WindowTitle->"IntegrateByParts",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -230,7 +230,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 59, 10.136089}", 
+   "built" -> "{2020, 6, 20, 19, 8, 7.209782}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -251,8 +251,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -262,24 +261,24 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "IntegrateByParts"->{
-  Cell[4597, 142, 151, 4, 70, "Input",
+  Cell[4596, 142, 151, 4, 70, "Input",
    CellTags->"IntegrateByParts",
    CellID->1168038147],
-  Cell[4751, 148, 258, 8, 35, "Output",
+  Cell[4750, 148, 258, 8, 37, "Output",
    CellTags->"IntegrateByParts"],
   Cell[5681, 190, 597, 21, 27, "Input",
    CellTags->"IntegrateByParts",
    CellID->328713984]},
  "PrimaryExamplesSection"->{
-  Cell[5070, 163, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[5069, 163, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->532919514]}
+   CellID->1289378673]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"IntegrateByParts", 8268, 263},
- {"PrimaryExamplesSection", 8564, 272}
+ {"IntegrateByParts", 8207, 262},
+ {"PrimaryExamplesSection", 8503, 271}
  }
 *)
 (*NotebookFileOutline
@@ -291,26 +290,26 @@ Cell[CellGroupData[{
 Cell[3215, 91, 559, 17, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[3799, 112, 739, 24, 31, "NotesSection",
+Cell[3799, 112, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1668615542],
-Cell[4541, 138, 31, 0, 70, "SectionHeaderSpacer"],
+ CellID->751564616],
+Cell[4540, 138, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[4597, 142, 151, 4, 70, "Input",
+Cell[4596, 142, 151, 4, 70, "Input",
  CellTags->"IntegrateByParts",
  CellID->1168038147],
-Cell[4751, 148, 258, 8, 35, "Output",
+Cell[4750, 148, 258, 8, 37, "Output",
  CellTags->"IntegrateByParts"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5070, 163, 387, 15, 31, "PrimaryExamplesSection",
+Cell[5069, 163, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->532919514],
+ CellID->1289378673],
 Cell[CellGroupData[{
 Cell[5482, 182, 196, 6, 26, "ExampleSection",
- CellID->2112475075],
+ CellID->1050582824],
 Cell[5681, 190, 597, 21, 27, "Input",
  CellTags->"IntegrateByParts",
  CellID->328713984]

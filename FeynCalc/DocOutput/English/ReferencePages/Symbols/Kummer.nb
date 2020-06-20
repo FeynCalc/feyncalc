@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     65232,       2282]
+NotebookDataLength[     65231,       2282]
 NotebookOptionsPosition[     50593,       1773]
-NotebookOutlinePosition[     58340,       2012]
-CellTagsIndexPosition[     58228,       2006]
+NotebookOutlinePosition[     58339,       2012]
+CellTagsIndexPosition[     58227,       2006]
 WindowTitle->Kummer
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$176750], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$177758], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/Kummer", ".html"]], None}]}]},
@@ -142,7 +142,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1622183496],
+ CellID->671352331],
 
 Cell[CellGroupData[{
 
@@ -152,7 +152,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->842763816],
+ CellID->1849867123],
 
 Cell[CellGroupData[{
 
@@ -1773,8 +1773,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{808, 911},
-WindowMargins->{{278, Automatic}, {Automatic, 28}},
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"Kummer",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -1786,7 +1786,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 59, 23.123162}", 
+   "built" -> "{2020, 6, 20, 19, 8, 18.804850}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1817,21 +1817,21 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4478, 129, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4478, 129, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1622183496]},
+   CellID->671352331]},
  "Kummer"->{
-  Cell[5111, 158, 354, 10, 27, "Input",
+  Cell[5111, 158, 354, 10, 45, "Input",
    CellTags->"Kummer",
    CellID->318247247],
   Cell[5468, 170, 537, 17, 41, "Output",
    CellTags->"Kummer"],
-  Cell[6042, 192, 355, 10, 27, "Input",
+  Cell[6042, 192, 355, 10, 45, "Input",
    CellTags->"Kummer",
    CellID->1547382498],
   Cell[6400, 204, 552, 18, 54, "Output",
    CellTags->"Kummer"],
-  Cell[6989, 227, 353, 10, 27, "Input",
+  Cell[6989, 227, 353, 10, 45, "Input",
    CellTags->"Kummer",
    CellID->87779889],
   Cell[7345, 239, 552, 18, 54, "Output",
@@ -2006,7 +2006,7 @@ CellTagsIndex->{
 (*CellTagsIndex
 CellTagsIndex->{
  {"PrimaryExamplesSection", 52520, 1818},
- {"Kummer", 52654, 1822}
+ {"Kummer", 52653, 1822}
  }
 *)
 (*NotebookFileOutline
@@ -2017,28 +2017,28 @@ Cell[3591, 97, 283, 11, 45, "ObjectNameGrid"],
 Cell[3877, 110, 576, 15, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4478, 129, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4478, 129, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1622183496],
+ CellID->671352331],
 Cell[CellGroupData[{
-Cell[4891, 148, 195, 6, 26, "ExampleSection",
- CellID->842763816],
+Cell[4890, 148, 196, 6, 26, "ExampleSection",
+ CellID->1849867123],
 Cell[CellGroupData[{
-Cell[5111, 158, 354, 10, 27, "Input",
+Cell[5111, 158, 354, 10, 45, "Input",
  CellTags->"Kummer",
  CellID->318247247],
 Cell[5468, 170, 537, 17, 41, "Output",
  CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6042, 192, 355, 10, 27, "Input",
+Cell[6042, 192, 355, 10, 45, "Input",
  CellTags->"Kummer",
  CellID->1547382498],
 Cell[6400, 204, 552, 18, 54, "Output",
  CellTags->"Kummer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6989, 227, 353, 10, 27, "Input",
+Cell[6989, 227, 353, 10, 45, "Input",
  CellTags->"Kummer",
  CellID->87779889],
 Cell[7345, 239, 552, 18, 54, "Output",

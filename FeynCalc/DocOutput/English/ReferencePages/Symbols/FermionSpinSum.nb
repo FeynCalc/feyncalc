@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     25402,        927]
-NotebookOptionsPosition[     19341,        736]
-NotebookOutlinePosition[     22687,        830]
-CellTagsIndexPosition[     22569,        824]
+NotebookDataLength[     25349,        926]
+NotebookOptionsPosition[     19343,        736]
+NotebookOutlinePosition[     22632,        829]
+CellTagsIndexPosition[     22514,        823]
 WindowTitle->FermionSpinSum
 WindowFrame->Normal*)
 
@@ -82,7 +82,7 @@ FermionSpinSum.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$129816], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$130824], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/FermionSpinSum", ".html"]], None}]}]},
@@ -154,7 +154,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1819187881],
+ CellID->1721176650],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -213,7 +213,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->632377296],
+ CellID->905555107],
 
 Cell[CellGroupData[{
 
@@ -223,7 +223,7 @@ Cell[TextData[{
  Cell["(2)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->76620452],
+ CellID->1872893834],
 
 Cell["\<\
 FeynCalc uses the customary relativistic normalization of the spinors.\
@@ -749,7 +749,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 57, 25.496689}", 
+   "built" -> "{2020, 6, 20, 19, 6, 33.394449}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -769,8 +769,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -782,49 +781,49 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[6576, 200, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->632377296]},
+   CellID->905555107]},
  "FermionSpinSum"->{
-  Cell[7305, 233, 314, 10, 27, "Input",
+  Cell[7307, 233, 314, 10, 27, "Input",
    CellTags->"FermionSpinSum",
    CellID->278938360],
-  Cell[7622, 245, 598, 24, 37, "Output",
+  Cell[7624, 245, 598, 24, 37, "Output",
    CellTags->"FermionSpinSum"],
-  Cell[8257, 274, 139, 4, 27, "Input",
+  Cell[8259, 274, 139, 4, 27, "Input",
    CellTags->"FermionSpinSum",
    CellID->505730343],
-  Cell[8399, 280, 466, 17, 37, "Output",
+  Cell[8401, 280, 466, 17, 37, "Output",
    CellTags->"FermionSpinSum"],
-  Cell[8902, 302, 139, 4, 27, "Input",
+  Cell[8904, 302, 139, 4, 27, "Input",
    CellTags->"FermionSpinSum",
    CellID->1201144341],
-  Cell[9044, 308, 218, 7, 35, "Output",
+  Cell[9046, 308, 218, 7, 35, "Output",
    CellTags->"FermionSpinSum"],
-  Cell[9299, 320, 315, 10, 27, "Input",
+  Cell[9301, 320, 315, 10, 27, "Input",
    CellTags->"FermionSpinSum",
    CellID->1209998846],
-  Cell[9617, 332, 598, 24, 37, "Output",
+  Cell[9619, 332, 598, 24, 37, "Output",
    CellTags->"FermionSpinSum"],
-  Cell[10252, 361, 139, 4, 27, "Input",
+  Cell[10254, 361, 139, 4, 27, "Input",
    CellTags->"FermionSpinSum",
    CellID->723398437],
-  Cell[10394, 367, 466, 17, 37, "Output",
+  Cell[10396, 367, 466, 17, 37, "Output",
    CellTags->"FermionSpinSum"],
-  Cell[10897, 389, 138, 4, 27, "Input",
+  Cell[10899, 389, 138, 4, 27, "Input",
    CellTags->"FermionSpinSum",
    CellID->680865455],
-  Cell[11038, 395, 237, 8, 35, "Output",
+  Cell[11040, 395, 237, 8, 35, "Output",
    CellTags->"FermionSpinSum"],
-  Cell[11442, 414, 321, 10, 27, "Input",
+  Cell[11444, 414, 321, 10, 27, "Input",
    CellTags->"FermionSpinSum",
    CellID->1094170176],
-  Cell[11766, 426, 862, 34, 40, "Output",
+  Cell[11768, 426, 862, 34, 40, "Output",
    CellTags->"FermionSpinSum"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 21232, 781},
- {"FermionSpinSum", 21373, 785}
+ {"PrimaryExamplesSection", 21177, 780},
+ {"FermionSpinSum", 21318, 784}
  }
 *)
 (*NotebookFileOutline
@@ -838,7 +837,7 @@ Cell[4128, 115, 460, 13, 85, "Usage",
 Cell[CellGroupData[{
 Cell[4613, 132, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1819187881],
+ CellID->1721176650],
 Cell[5355, 158, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[5389, 160, 65, 0, 70, "Notes"],
 Cell[5457, 162, 132, 4, 70, "Notes"],
@@ -851,84 +850,84 @@ Cell[5713, 174, 802, 19, 75, "Output"]
 Cell[CellGroupData[{
 Cell[6576, 200, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->632377296],
+ CellID->905555107],
 Cell[CellGroupData[{
-Cell[6988, 219, 194, 6, 26, "ExampleSection",
- CellID->76620452],
-Cell[7185, 227, 95, 2, 32, "Notes"],
+Cell[6988, 219, 196, 6, 26, "ExampleSection",
+ CellID->1872893834],
+Cell[7187, 227, 95, 2, 32, "Notes"],
 Cell[CellGroupData[{
-Cell[7305, 233, 314, 10, 27, "Input",
+Cell[7307, 233, 314, 10, 27, "Input",
  CellTags->"FermionSpinSum",
  CellID->278938360],
-Cell[7622, 245, 598, 24, 37, "Output",
+Cell[7624, 245, 598, 24, 37, "Output",
  CellTags->"FermionSpinSum"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8257, 274, 139, 4, 27, "Input",
+Cell[8259, 274, 139, 4, 27, "Input",
  CellTags->"FermionSpinSum",
  CellID->505730343],
-Cell[8399, 280, 466, 17, 37, "Output",
+Cell[8401, 280, 466, 17, 37, "Output",
  CellTags->"FermionSpinSum"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8902, 302, 139, 4, 27, "Input",
+Cell[8904, 302, 139, 4, 27, "Input",
  CellTags->"FermionSpinSum",
  CellID->1201144341],
-Cell[9044, 308, 218, 7, 35, "Output",
+Cell[9046, 308, 218, 7, 35, "Output",
  CellTags->"FermionSpinSum"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9299, 320, 315, 10, 27, "Input",
+Cell[9301, 320, 315, 10, 27, "Input",
  CellTags->"FermionSpinSum",
  CellID->1209998846],
-Cell[9617, 332, 598, 24, 37, "Output",
+Cell[9619, 332, 598, 24, 37, "Output",
  CellTags->"FermionSpinSum"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10252, 361, 139, 4, 27, "Input",
+Cell[10254, 361, 139, 4, 27, "Input",
  CellTags->"FermionSpinSum",
  CellID->723398437],
-Cell[10394, 367, 466, 17, 37, "Output",
+Cell[10396, 367, 466, 17, 37, "Output",
  CellTags->"FermionSpinSum"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10897, 389, 138, 4, 27, "Input",
+Cell[10899, 389, 138, 4, 27, "Input",
  CellTags->"FermionSpinSum",
  CellID->680865455],
-Cell[11038, 395, 237, 8, 35, "Output",
+Cell[11040, 395, 237, 8, 35, "Output",
  CellTags->"FermionSpinSum"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11312, 408, 105, 2, 9, "ExampleDelimiter"],
+Cell[11314, 408, 105, 2, 9, "ExampleDelimiter"],
 Cell[CellGroupData[{
-Cell[11442, 414, 321, 10, 27, "Input",
+Cell[11444, 414, 321, 10, 27, "Input",
  CellTags->"FermionSpinSum",
  CellID->1094170176],
-Cell[11766, 426, 862, 34, 40, "Output",
+Cell[11768, 426, 862, 34, 40, "Output",
  CellTags->"FermionSpinSum"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12665, 465, 115, 3, 27, "Input"],
-Cell[12783, 470, 2213, 83, 43, "Output"]
+Cell[12667, 465, 115, 3, 27, "Input"],
+Cell[12785, 470, 2213, 83, 43, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15033, 558, 90, 2, 27, "Input"],
-Cell[15126, 562, 1495, 52, 43, "Output"]
+Cell[15035, 558, 90, 2, 27, "Input"],
+Cell[15128, 562, 1495, 52, 43, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16658, 619, 89, 2, 27, "Input"],
-Cell[16750, 623, 1640, 65, 42, "Output"]
+Cell[16660, 619, 89, 2, 27, "Input"],
+Cell[16752, 623, 1640, 65, 42, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[18429, 693, 31, 0, 29, "SectionFooterSpacer"]
+Cell[18431, 693, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18497, 698, 270, 12, 31, "SeeAlsoSection",
+Cell[18499, 698, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[18770, 712, 529, 19, 56, "SeeAlso"]
+Cell[18772, 712, 529, 19, 56, "SeeAlso"]
 }, Open  ]],
-Cell[19314, 734, 23, 0, 41, "FooterCell"]
+Cell[19316, 734, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

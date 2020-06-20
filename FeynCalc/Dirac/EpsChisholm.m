@@ -37,9 +37,13 @@ Options[EpsChisholm] = {
 	FCVerbose	-> False
 };
 
+EpsChisholm[a_ == b_, opts:OptionsPattern[]] :=
+	EpsChisholm[a,opts] == EpsChisholm[b,opts];
 
+EpsChisholm[expr_List, opts:OptionsPattern[]]:=
+	EpsChisholm[#, opts]&/@expr;
 
-EpsChisholm[expr_, OptionsPattern[]] :=
+EpsChisholm[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 	Block[ {new = 0,ex,terms,rest,res, holdDOT, eps, freePart, dsPart, diracObjects,
 			diracObjectsEval, null1, null2, dsHead, time, repRule},
 

@@ -37,6 +37,8 @@ End[]
 
 Begin["`SMP`Private`"]
 
+DataType[SMP, FCVariable] = True;
+
 (*	Number of flavors	*)
 
 SMP /:

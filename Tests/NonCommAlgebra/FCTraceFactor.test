@@ -41,5 +41,35 @@ b)]]//FCE",
 "FCTraceFactor[
 DiracTrace[(x*(GS[p1] + M)).GA[mu].SI[xx].SUNT[
 	a].(y*(GS[p2] + M).GA[nu])], FCE -> True]",
-"x y DiracTrace[(M + GS[p1]).GA[mu].SI[xx].SUNT[a].(M + GS[p2]).GA[nu]]"}
+"x y DiracTrace[(M + GS[p1]).GA[mu].SI[xx].SUNT[a].(M + GS[p2]).GA[nu]]"},
+{"fcstFCTraceFactor-ID10", "FCTraceFactor[PauliTrace[2]]//FCE",
+"2*PauliTrace[1]"},
+{"fcstFCTraceFactor-ID11",
+"FCTraceFactor[PauliTrace[(2).CSI[i]]]//FCE",
+"2*PauliTrace[CSI[i]]"},
+{"fcstFCTraceFactor-ID12",
+"FCTraceFactor[PauliTrace[(2).(3*CSI[i])]]//FCE",
+"6*PauliTrace[CSI[i]]"},
+{"fcstFCTraceFactor-ID13",
+"FCTraceFactor[PauliTrace[(2).(3).(4)]]//FCE",
+"24*PauliTrace[1]"},
+{"fcstFCTraceFactor-ID14",
+"FCTraceFactor[PauliTrace[(2).(0).(4)]]//FCE", "0"},
+{"fcstFCTraceFactor-ID15",
+"FCTraceFactor[PauliTrace[(x*(CGS[p1]+M)).CSI[mu].SUNT[a].(y*(CGS[\
+p2]+M).CSI[nu])]]//FCE",
+"x*y*PauliTrace[(M + CGS[p1]) . CSI[mu] . SUNT[a] . (M + CGS[p2]) \
+. CSI[nu]]"},
+{"fcstFCTraceFactor-ID16",
+"FCTraceFactor[PauliTrace[(a+b).(a-b).PauliTrace[CSI[i].c.CSI[j]].(\
+a+b)]]//FCE",
+"(a - b)*(a + b)^2*c*PauliTrace[PauliTrace[CSI[i] . CSI[j]]]"},
+{"fcstFCTraceFactor-ID17",
+"PauliTrace[PauliTrace[CSI[i, j]] CSI[k, l]] // FCTraceFactor // \
+FCE", "PauliTrace[CSI[i] . CSI[j]]*PauliTrace[CSI[k] . CSI[l]]"},
+{"fcstFCTraceFactor-ID18",
+"FCTraceFactor[PauliTrace[(x*(CGS[p1] + M)).CSI[mu].SI[xx].SUNT[
+	a].(y*(CGS[p2] + M).CSI[nu])], FCE -> True]",
+"x*y*PauliTrace[(M + CGS[p1]) . CSI[mu] . SI[xx] . SUNT[a] . (M + \
+CGS[p2]) . CSI[nu]]"}
 })

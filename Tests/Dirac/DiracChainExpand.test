@@ -71,5 +71,13 @@ FCE -> True]",
 {"fcstDiracChainExpand-ID13",
 "DiracChainExpand[DCHN[-FVD[p, mu] GA[mu] + m, Dir3, Dir4],
 FCE -> True, DiracChainFactor -> False]",
-"m DCHN[1, Dir3, Dir4] + DCHN[-FVD[p, mu] GA[mu], Dir3, Dir4]"}
+"m DCHN[1, Dir3, Dir4] + DCHN[-FVD[p, mu] GA[mu], Dir3, Dir4]"},
+{"fcstDiracChainExpand-ID14",
+"DiracChainExpand[DCHN[GS[p] + m, i, j] == x, FCE -> True]",
+"m DCHN[1, i, j] + DCHN[GS[p], i, j] == x"},
+{"fcstDiracChainExpand-ID15",
+"DiracChainExpand[{DCHN[GS[p] + m, i, j], DCHN[GS[q] + m, i, j]},
+FCE -> True]",
+"{m DCHN[1, i, j] + DCHN[GS[p], i, j],
+m DCHN[1, i, j] + DCHN[GS[q], i, j]}"}
 })

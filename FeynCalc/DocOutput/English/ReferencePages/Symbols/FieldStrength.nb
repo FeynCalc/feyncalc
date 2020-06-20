@@ -79,7 +79,7 @@ FieldStrength.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$139240], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$140248], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/FieldStrength", ".html"]], None}]}]},
@@ -183,7 +183,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1193771266],
+ CellID->1191137323],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -259,7 +259,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->380314619],
+ CellID->864585437],
 
 Cell[CellGroupData[{
 
@@ -269,7 +269,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->362136222],
+ CellID->102887294],
 
 Cell[CellGroupData[{
 
@@ -582,8 +582,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{808, 911},
-WindowMargins->{{278, Automatic}, {Automatic, 28}},
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"FieldStrength",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -595,7 +595,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 57, 50.417948}", 
+   "built" -> "{2020, 6, 20, 19, 6, 55.843601}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -661,7 +661,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[7823, 246, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->380314619]}
+   CellID->864585437]}
  }
 *)
 (*CellTagsIndex
@@ -681,7 +681,7 @@ Cell[3934, 112, 1594, 45, 156, "Usage",
 Cell[CellGroupData[{
 Cell[5553, 161, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1193771266],
+ CellID->1191137323],
 Cell[6295, 187, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[6329, 189, 231, 6, 70, "Notes"],
 Cell[6563, 197, 453, 15, 70, "Notes"],
@@ -697,10 +697,10 @@ Cell[7190, 222, 572, 17, 56, "Output",
 Cell[CellGroupData[{
 Cell[7823, 246, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->380314619],
+ CellID->864585437],
 Cell[CellGroupData[{
 Cell[8235, 265, 195, 6, 26, "ExampleSection",
- CellID->362136222],
+ CellID->102887294],
 Cell[CellGroupData[{
 Cell[8455, 275, 168, 5, 27, "Input",
  CellTags->"FieldStrength",
@@ -737,14 +737,14 @@ Cell[13043, 473, 1819, 77, 43, "Output",
  CellTags->"FieldStrength"]
 }, Open  ]]
 }, Open  ]],
-Cell[14889, 554, 31, 0, 70, "SectionFooterSpacer"]
+Cell[14889, 554, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14957, 559, 270, 12, 70, "SeeAlsoSection",
+Cell[14957, 559, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[15230, 573, 184, 4, 70, "SeeAlso"]
+Cell[15230, 573, 184, 4, 56, "SeeAlso"]
 }, Open  ]],
-Cell[15429, 580, 23, 0, 70, "FooterCell"]
+Cell[15429, 580, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

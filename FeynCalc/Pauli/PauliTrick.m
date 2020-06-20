@@ -40,6 +40,8 @@ pauliReduce::usage="";
 optJoin::usage="";
 pasi::usage="";
 tmpli::usage="";
+insidePauliTrace::usage="";
+pauliOrder::usage="";
 
 Options[PauliTrick] = {
 	Expanding -> False,
@@ -48,32 +50,33 @@ Options[PauliTrick] = {
 	FCJoinDOTs -> False,
 	FCPauliIsolate -> True,
 	FCVerbose -> False,
+	InsidePauliTrace -> False,
 	PauliSigmaCombine -> False,
-	PauliReduce -> True
+	PauliReduce -> False
 };
 
-pauliTrickEvalFastFromPauliSimplifyList[pauliObjects_List, {(*optInsidePauliTrace*)_, (*optPauliOrder*)_}]:=
-	Block[{(*tmp1,tmp2,*) res},
-		(*tmp1 = insideDiracTrace;
-		tmp2 = diracOrder;
-		insideDiracTrace = optInsidePauliTrace;
-		pauliOrder = optPauliOrder;*)
+pauliTrickEvalFastFromPauliSimplifyList[pauliObjects_List, {optInsidePauliTrace_, optPauliOrder_}]:=
+	Block[{tmp1,tmp2, res},
+		tmp1 = insidePauliTrace;
+		tmp2 = pauliOrder;
+		insidePauliTrace = optInsidePauliTrace;
+		pauliOrder = optPauliOrder;
 		res = (pauliTrickEvalFast/@pauliObjects) /. pauliTrickEvalFast->Identity;
-		(*insidePauliTrace = tmp1;
-		diracOrder = tmp2;*)
+		insidePauliTrace = tmp1;
+		pauliOrder = tmp2;
 		res
 	];
 
 
-pauliTrickEvalFastFromPauliSimplifySingle[pauliObject_, {tmpHead_, (*optInsidePauliTrace*)_, (*optPauliOrder*)_}]:=
-	Block[{(*tmp1,tmp2,*) res},
-		(*tmp1 = insideDiracTrace;
-		tmp2 = diracOrder;
-		insideDiracTrace = optInsidePauliTrace;
-		diracOrder = optPauliOrder;*)
+pauliTrickEvalFastFromPauliSimplifySingle[pauliObject_, {tmpHead_, optInsidePauliTrace_, optPauliOrder_}]:=
+	Block[{tmp1,tmp2, res},
+		tmp1 = insidePauliTrace;
+		tmp2 = pauliOrder;
+		insidePauliTrace = optInsidePauliTrace;
+		pauliOrder = optPauliOrder;
 		res = pauliTrickEvalFast[pauliObject] /. pauliTrickEvalFast->tmpHead;
-		(*insideDiracTrace = tmp1;
-		diracOrder = tmp2;*)
+		insidePauliTrace = tmp1;
+		pauliOrder = tmp2;
 		res
 	];
 
@@ -95,8 +98,9 @@ PauliTrick[expr_,OptionsPattern[]] :=
 				xx)		Then we do all the simplifications.
 		*)
 
-		optJoin = OptionValue[FCJoinDOTs];
-		pauliReduce = OptionValue[PauliReduce];
+		optJoin 			= OptionValue[FCJoinDOTs];
+		pauliReduce 		= OptionValue[PauliReduce];
+		insidePauliTrace	= OptionValue[InsidePauliTrace];
 
 		If [OptionValue[FCVerbose]===False,
 			paTrVerbose=$VeryVerbose,
@@ -137,13 +141,13 @@ PauliTrick[expr_,OptionsPattern[]] :=
 			FCPrint[3,"PauliTrick: pauliObjects: ",pauliObjects , FCDoControl->paTrVerbose];
 
 			time=AbsoluteTime[];
-			FCPrint[1, "PauliTrick: Applying PauliTrickEval", FCDoControl->paTrVerbose];
+			FCPrint[1, "PauliTrick: Applying pauliTrickEval", FCDoControl->paTrVerbose];
 
-			pauliObjectsEval = Map[(pauliTrickEvalFast[#]/. pauliTrickEvalFast->PauliTrickEval)&, (pauliObjects/.paHead->Identity)];
-			FCPrint[3,"PauliTrick: After PauliTrickEval: ", pauliObjectsEval, FCDoControl->paTrVerbose];
-			FCPrint[1,"PauliTrick: PauliTrickEval done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->paTrVerbose];
+			pauliObjectsEval = Map[(pauliTrickEvalFast[#]/. pauliTrickEvalFast->pauliTrickEval)&, (pauliObjects/.paHead->Identity)];
+			FCPrint[3,"PauliTrick: After pauliTrickEval: ", pauliObjectsEval, FCDoControl->paTrVerbose];
+			FCPrint[1,"PauliTrick: pauliTrickEval done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->paTrVerbose];
 
-			If[ !FreeQ2[pauliObjectsEval,{pauliTrickEvalFast,PauliTrickEval,holdDOT}],
+			If[ !FreeQ2[pauliObjectsEval,{pauliTrickEvalFast,pauliTrickEval,holdDOT}],
 				Message[PauliTrick::failmsg,"Evaluation of isolated objects failed."];
 				Abort[]
 			];
@@ -164,10 +168,10 @@ PauliTrick[expr_,OptionsPattern[]] :=
 			FCPrint[3,"PauliTrick: After pauliTrickEvalFast: ", res , FCDoControl->paTrVerbose];
 
 			If[ !FreeQ2[res,{PauliHeadsList,pauliTrickEvalFast}],
-				res = res /. pauliTrickEvalFast->PauliTrickEval
+				res = res /. pauliTrickEvalFast->pauliTrickEval
 			];
 
-			If[ !FreeQ2[res,{pauliTrickEvalFast,PauliTrickEval,holdDOT}],
+			If[ !FreeQ2[res,{pauliTrickEvalFast,pauliTrickEval,holdDOT}],
 				Message[PauliTrick::failmsg,"Evaluation of isolated objects failed."];
 				Abort[]
 			]
@@ -194,9 +198,14 @@ PauliTrick[expr_,OptionsPattern[]] :=
 	];
 
 (* Here we can quickly handle trivial contractions of short expressions *)
-
 pauliTrickEvalFast[ex:PauliSigma[__]]:=
-	ex;
+	ex/; !insidePauliTrace;
+
+pauliTrickEvalFast[PauliSigma[(_CartesianMomentum | _CartesianIndex), ___]]:=
+	0/; insidePauliTrace;
+
+pauliTrickEvalFast[ex:PauliSigma[(_Momentum | _LorentzIndex), ___]]:=
+	ex/; insidePauliTrace;
 
 pauliTrickEvalFast[DOT[b___,PauliSigma[l_LorentzIndex, dim_:3], PauliSigma[l_LorentzIndex, dim_:3], d___]] :=
 	(FeynCalc`Package`MetricT  + FeynCalc`Package`MetricS dim) pauliTrickEvalFast[DOT[ b,d ]]/;!MatchQ[dim,_Symbol-4];
@@ -213,18 +222,70 @@ pauliTrickEvalFast[DOT[b___,PauliSigma[c_Momentum, dim___], PauliSigma[c_Momentu
 pauliTrickEvalFast[DOT[b___,PauliSigma[c_CartesianMomentum, dim___], PauliSigma[c_CartesianMomentum, dim___], d___ ]] :=
 	FCUseCache[ExpandScalarProduct,{CartesianPair[c,c]},{}] pauliTrickEvalFast[DOT[b,d]];
 
-
-
 pauliTrickEvalFast[DOT[]]:=
 	1;
 
-PauliTrickEval[ex_/;Head[ex]=!=PauliSigma]:=
+
+diracTrickEval[ex:PauliSigma[__]]:=
+	ex/; !insidePauliTrace;
+
+diracTrickEval[PauliSigma[(_CartesianMomentum | _CartesianIndex), ___]]:=
+	0/; insidePauliTrace;
+
+diracTrickEval[ex:PauliSigma[(_Momentum | _LorentzIndex), ___]]:=
+	ex/; insidePauliTrace;
+
+
+pauliTrickEval[ex_/;Head[ex]=!=PauliSigma]:=
+	Which[
+		(*	None, inside Trace	*)
+		(FeynCalc`Package`PauliSigmaScheme === "None") && insidePauliTrace,
+		pauliTrickEvalCachedNoneInsideTrace[ex],
+		(*	Naive, inside Trace *)
+		(FeynCalc`Package`PauliSigmaScheme === "Naive") && insidePauliTrace,
+		pauliTrickEvalCachedNaiveInsideTrace[ex],
+
+		(*	None	*)
+		(FeynCalc`Package`PauliSigmaScheme === "None"),
+		pauliTrickEvalCachedNoneInsideTrace[ex],
+		(*	Naive *)
+		(FeynCalc`Package`PauliSigmaScheme === "Naive"),
+		pauliTrickEvalCachedNaiveInsideTrace[ex],
+
+		(* Else *)
+		True,
+		Message[PauliTrick::failmsg, "Unknown scheme for Pauli matrices"];
+		Abort[]
+	]/; ex=!=0;
+
+
+pauliTrickEvalCachedNoneInsideTrace[x_] :=
+	pauliTrickEvalInternal[x];
+
+pauliTrickEvalCachedNaiveInsideTrace[x_] :=
+	pauliTrickEvalInternal[x];
+
+pauliTrickEvalCachedNone[x_] :=
+	pauliTrickEvalInternal[x];
+
+pauliTrickEvalCachedNaive[x_] :=
+	pauliTrickEvalInternal[x];
+
+pauliTrickEvalInternal[ex_/;Head[ex]=!=PauliSigma]:=
 	Block[{res=ex, holdDOT, time, dim, noncommPresent,null1,null2,paHead},
 
-		FCPrint[1, "PauliTrick: PauliTrickEval: Entering.", FCDoControl->paTrVerbose];
-		FCPrint[3, "PauliTrick: PauliTrickEval: Entering with", ex , FCDoControl->paTrVerbose];
+		FCPrint[1, "PauliTrick: pauliTrickEval: Entering.", FCDoControl->paTrVerbose];
+		FCPrint[3, "PauliTrick: pauliTrickEval: Entering with", ex , FCDoControl->paTrVerbose];
 
-		res = res/. DOT -> holdDOT;
+		If[	insidePauliTrace,
+			time=AbsoluteTime[];
+			FCPrint[2, "DiracTrick: pauliTrickEval: Applying pauliTraceSimplify ", FCDoControl->paTrVerbose];
+			res = pauliTraceSimplify[res] /. DOT -> holdDOT /. pauliTraceSimplify[holdDOT[x__]] :> pauliTraceSimplify[x]/.
+			pauliTraceSimplify -> holdDOT;
+			FCPrint[1,"PauliTrick: pauliTrickEval: pauliTraceSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->paTrVerbose];
+			FCPrint[3, "PauliTrick: pauliTrickEval: After pauliTraceSimplify ", res, FCDoControl->paTrVerbose],
+			res = res /. DOT -> holdDOT;
+		];
 
 		If[	!FreeQ[res,Pair],
 			res = Expand2[res,Pair]/. Pair->PairContract /. PairContract->Pair;
@@ -243,34 +304,43 @@ PauliTrickEval[ex_/;Head[ex]=!=PauliSigma]:=
 
 
 		noncommPresent = !NonCommFreeQ[res/.PauliSigma->pasi];
-		FCPrint[3, "PauliTrick: PauliTrickEval: unknown non-commutative objects present:", noncommPresent, FCDoControl->paTrVerbose];
+		FCPrint[3, "PauliTrick: pauliTrickEval: unknown non-commutative objects present: ", noncommPresent, FCDoControl->paTrVerbose];
 
-		FCPrint[3, "PauliTrick: PauliTrickEval: Dimensions:", dim, FCDoControl->paTrVerbose];
+		FCPrint[3, "PauliTrick: pauliTrickEval: Dimensions: ", dim, FCDoControl->paTrVerbose];
 
 
-		FCPrint[1, "PauliTrick: PauliTrickEval: Doing simplifications.", FCDoControl->paTrVerbose];
+		FCPrint[1, "PauliTrick: pauliTrickEval: Doing simplifications.", FCDoControl->paTrVerbose];
 		Which[
 			(* Purely 4- or 3-dimensional *)
 			MatchQ[dim,{}|{3}|{4}|{3,4}],
-				FCPrint[1, "PauliTrick: PauliTrickEval: Purely 4-dim.", FCDoControl->paTrVerbose];
+				FCPrint[1, "PauliTrick: pauliTrickEval: Purely 4-dim.", FCDoControl->paTrVerbose];
 				res = res /. holdDOT -> pauli4Dim /. pauli4Dim -> holdDOT;
-				FCPrint[3, "PauliTrick: PauliTrickEval: After pauli4Dim: ", res, FCDoControl->paTrVerbose],
+				FCPrint[3, "PauliTrick: pauliTrickEval: After pauli4Dim: ", res, FCDoControl->paTrVerbose],
 			(* Purely D-dimensional *)
 			MatchQ[dim,{_Symbol-1}|{_Symbol}|{_Symbol,_Symbol-1}|{_Symbol-1,_Symbol}],
-				FCPrint[1, "PauliTrick: PauliTrickEval: Purely D-dim.", FCDoControl->paTrVerbose];
+				FCPrint[1, "PauliTrick: pauliTrickEval: Purely D-dim.", FCDoControl->paTrVerbose];
 				res = res /. holdDOT -> pauliDDim /. pauliDDim -> holdDOT;
-				FCPrint[3, "PauliTrick: PauliTrickEval: After pauliDDim: ", res, FCDoControl->paTrVerbose],
+				FCPrint[3, "PauliTrick: pauliTrickEval: After pauliDDim: ", res, FCDoControl->paTrVerbose],
 			(* Anything else is most likely an error *)
 				True,
 					Message[PauliTrick::failmsg,"Unsupported combination of dimensions!"];
 					Abort[]
 		];
-		FCPrint[1, "PauliTrick: PauliTrickEval: Done with simplifications.", FCDoControl->paTrVerbose];
+		FCPrint[1, "PauliTrick: pauliTrickEval: Done with simplifications.", FCDoControl->paTrVerbose];
 
 		res = res /. holdDOT -> DOT;
 
-		FCPrint[1, "PauliTrick: PauliTrickEval: Leaving.", FCDoControl->paTrVerbose];
-		FCPrint[3, "PauliTrick: PauliTrickEval: Leaving with ", res, FCDoControl->paTrVerbose];
+		If[	insidePauliTrace && res=!=0,
+			time=AbsoluteTime[];
+			FCPrint[2, "DiracTrick: pauliTrickEval: Applying pauliTraceSimplify ", FCDoControl->paTrVerbose];
+			res = pauliTraceSimplify[res] /. DOT -> holdDOT /. pauliTraceSimplify[holdDOT[x__]] :> pauliTraceSimplify[x]/.
+			pauliTraceSimplify -> DOT /. holdDOT->DOT;
+			FCPrint[1,"PauliTrick: pauliTrickEval: pauliTraceSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->paTrVerbose];
+			FCPrint[3, "PauliTrick: pauliTrickEval: After pauliTraceSimplify ", res, FCDoControl->paTrVerbose]
+		];
+
+		FCPrint[1, "PauliTrick: pauliTrickEval: Leaving.", FCDoControl->paTrVerbose];
+		FCPrint[3, "PauliTrick: pauliTrickEval: Leaving with ", res, FCDoControl->paTrVerbose];
 		res
 	];
 
@@ -380,5 +450,18 @@ pauliDDim[b___,	PauliSigma[(c1: _CartesianMomentum | _CartesianIndex),dim_-1],
 	+ 2 FCUseCache[ExpandScalarProduct,{CartesianPair[c1,c2]},{}] pauliDDim[b, ch, PauliSigma[c1,dim-1], d]
 	)/; FeynCalc`Package`PauliSigmaScheme=!="Naive";
 *)
+
+pauliTraceSimplify[] :=
+	1;
+
+pauliTraceSimplify[___,0,___] :=
+	0;
+
+pauliTraceSimplify[PauliSigma[(c1: _CartesianMomentum | _CartesianIndex),___], PauliSigma[(c2: _CartesianMomentum | _CartesianIndex), ___]] :=
+	FCUseCache[ExpandScalarProduct,{CartesianPair[c1,c2]},{}];
+
+
+
+
 FCPrint[1,"PauliTrick.m loaded."];
 End[]

@@ -128,5 +128,11 @@ GA[mu[1]].GA[mu[2]]] Spinor[Momentum[p], 0, 1].GA[mu[1]].GA[
 	mu[2]].Spinor[-Momentum[q], 0, 1] +
 x2 DiracTrace[
 GA[mu[1]].GA[mu[2]]] Spinor[Momentum[p], 0, 1].GA[mu[2]].GA[
-	mu[1]].Spinor[-Momentum[q], 0, 1]"}
+	mu[1]].Spinor[-Momentum[q], 0, 1]"},
+{"fcstSpinorChainTrick-ID13", "SpinorChainTrick[SpinorUBar[p1, m1].GA[mu].SpinorU[p2, m2] == x,
+FCE -> True]", "Spinor[Momentum[p1], m1, 1].GA[mu].Spinor[Momentum[p2], m2, 1] == x"},
+{"fcstSpinorChainTrick-ID14", "SpinorChainTrick[{SpinorUBar[p1, m1].GA[mu].SpinorU[p2, m2],
+SpinorUBar[p1, m1].GA[nu].SpinorU[p2, m2]}, FCE -> True]",
+"{Spinor[Momentum[p1], m1, 1].GA[mu].Spinor[Momentum[p2], m2, 1],
+Spinor[Momentum[p1], m1, 1].GA[nu].Spinor[Momentum[p2], m2, 1]}"}
 });

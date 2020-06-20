@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9359,        264]
+NotebookDataLength[      9302,        263]
 NotebookOptionsPosition[      6123,        180]
-NotebookOutlinePosition[      8865,        246]
-CellTagsIndexPosition[      8784,        241]
+NotebookOutlinePosition[      8808,        245]
+CellTagsIndexPosition[      8727,        240]
 WindowTitle->FeynmanParametrize1
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ FeynmanParametrize1.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$136981], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$137989], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/FeynmanParametrize1", ".html"]], None}]}]},
@@ -138,7 +138,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->213672981],
+ CellID->670498134],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -181,7 +181,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{268, Automatic}, {Automatic, 20}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"FeynmanParametrize1",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -193,7 +193,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 57, 43.842434}", 
+   "built" -> "{2020, 6, 20, 19, 6, 50.170895}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -220,8 +220,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -240,7 +239,7 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"FeynmanParametrize1", 8583, 232}
+ {"FeynmanParametrize1", 8526, 231}
  }
 *)
 (*NotebookFileOutline
@@ -254,7 +253,7 @@ Cell[3233, 91, 1029, 21, 171, "Usage",
 Cell[CellGroupData[{
 Cell[4287, 116, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->213672981],
+ CellID->670498134],
 Cell[5028, 142, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
 Cell[5084, 146, 158, 4, 70, "Input",

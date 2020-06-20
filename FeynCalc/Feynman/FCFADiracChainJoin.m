@@ -99,7 +99,7 @@ FCFADiracChainJoin[expr_, OptionsPattern[]] :=
 
 		tmp = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->False, DiracGammaCombine->False, FCJoinDOTs-> False,
 			DiracSigmaExplicit->False, LorentzIndex->False, Spinor->False, DiracGamma->False, DiracChain->True,
-			Factoring -> False];
+			Factoring -> False, Expanding->False];
 		diracObjects = Cases[tmp+null1+null2, dsHead[_], Infinity]//Sort//DeleteDuplicates;
 
 		FCPrint[1, "FCFADiracChainJoin: Done isolating spinor chains, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dchjVerbose];
@@ -119,7 +119,7 @@ FCFADiracChainJoin[expr_, OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		diracObjectsEval = Map[(diracChainEvalM[#])&, (diracObjects/.dsHead->Identity)];
 
-		FCPrint[3, "FCFADiracChainJoin: After diracChainEvalM:", diracObjectsEval, FCDoControl->dchjVerbose];
+		FCPrint[3, "FCFADiracChainJoin: After diracChainEvalM: ", diracObjectsEval, FCDoControl->dchjVerbose];
 
 		diracObjectsEval = diracObjectsEval /. diracChainEvalM -> diracChainEvalS /. diracChainEvalS -> diracChainEvalSign;
 
@@ -133,7 +133,7 @@ FCFADiracChainJoin[expr_, OptionsPattern[]] :=
 
 		FCPrint[1, "FCFADiracChainJoin: Inserting Dirac objects back.", FCDoControl->dchjVerbose];
 		time=AbsoluteTime[];
-		repRule = MapThread[Rule[#1,#2]&,{diracObjects,diracObjectsEval}];
+		repRule = Thread[Rule[diracObjects,diracObjectsEval]];
 		FCPrint[3,"FCFADiracChainJoin: repRule: ",repRule , FCDoControl->dchjVerbose];
 		res =  ( tmp/. Dispatch[repRule]);
 		FCPrint[1, "FCFADiracChainJoin: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dchjVerbose];

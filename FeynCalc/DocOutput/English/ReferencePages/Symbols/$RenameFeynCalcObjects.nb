@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7885,        227]
+NotebookDataLength[      7887,        227]
 NotebookOptionsPosition[      5460,        163]
-NotebookOutlinePosition[      7516,        214]
-CellTagsIndexPosition[      7473,        211]
+NotebookOutlinePosition[      7518,        214]
+CellTagsIndexPosition[      7475,        211]
 WindowTitle->$RenameFeynCalcObjects
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ RenameFeynCalcObjects.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$297942], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$298967], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/$RenameFeynCalcObjects", ".html"]], None}]}]},
@@ -176,7 +176,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 19, 4, 29.304776}", 
+   "built" -> "{2020, 6, 20, 19, 12, 59.644357}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

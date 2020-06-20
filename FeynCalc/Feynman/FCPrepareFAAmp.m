@@ -98,7 +98,8 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 					Global`FADiracMatrix[x_] :> DiracGamma[LorentzIndex[x]],
 					Global`FAScalarProduct[x_,y_] :> Pair[Momentum[x],Momentum[y]],
 					Global`FADiracSlash[x_] :> DiracGamma[Momentum[x]],
-					Global`FADiracSpinor :> Spinor,
+					Global`FADiracSpinor[x_,re__] :> Spinor[Momentum[x], re],
+					Global`MajoranaSpinor[x_,re__] :> Spinor[Momentum[x], re],
 					FeynArts`FALeviCivita :> Eps,
 					Global`FADiracTrace :> DiracTrace,
 					Global`FAFourVector[x_,y_] :> Pair[Momentum[x],y],
@@ -111,7 +112,8 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 													SUNF[a,b,tempvar]SUNF[tempvar,c,d]),
 					Global`FASUNF[a_,b_,c_] :> SUNF[a,b,c],
 					Global`dSUN[a_,b_,c_] :> SUND[a,b,c],
-					Global`FASUNT :> SUNTF,
+					Global`FASUNT[a_,b_,c_,d_] :> SUNTF[{a,b},c,d],
+					Global`FASUNT[a_,b_,c_] :> SUNTF[a,b,c],
 					FeynArts`IndexDelta[a: (_SUNFIndex| _ExplicitSUNFIndex), b:(_SUNFIndex| _ExplicitSUNFIndex)]:> SUNFDelta[a,b],
 					FeynArts`IndexDelta[a: (_SUNIndex| _ExplicitSUNIndex), b:(_SUNIndex| _ExplicitSUNIndex)]:> SUNDelta[a,b],
 					FeynArts`FAFeynAmp :> FeynAmp,
@@ -121,8 +123,7 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 						FeynArts`FAPropagatorDenominator[a_,b_,n_Integer] :> Sequence@@Table[PropagatorDenominator[Momentum[a],b],{j,1,n}]
 						})),
 					FeynArts`FAGaugeXi :> GaugeXi,
-					FeynArts`FANonCommutative :> DOT,
-					Global`MajoranaSpinor :> Spinor
+					FeynArts`FANonCommutative :> DOT
 					}];
 		replist3 = {
 			FeynArts`FermionChain :> DOT,

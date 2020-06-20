@@ -25,13 +25,6 @@ FCMultiLoopTID::failmsg =
 "Error! FCMultiLoopTID has encountered a fatal problem and must abort the \
 computation. The problem reads: `1`"
 
-
-FCMultiLoopTID::nomulti =
-"Warning! Your input contains 1-loop tensor integrals that depend on the given \
-loop momenta but no multi-loop tensor integrals. FCMultiLoopTID does not perform \
-1-loop tensor decompositions. For that you should use TID. The input expression \
-will not be processed further.";
-
 FCMultiLoopTID::gramzero =
 "Warning! One of the multi-loop tensor integrals contains vanishing Gram determinants. \
 FCMultiLoopTID cannot handle such cases properly.";
@@ -60,16 +53,26 @@ Options[FCMultiLoopTID] = {
 	FCI					-> False,
 	FCVerbose			-> False,
 	FDS					-> True,
-	TimeConstrained		-> 3
+	TimeConstrained		-> 3,
+	Uncontract			-> {Polarization}
 };
 
-FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
+FCMultiLoopTID[expr_List, qs_List/; FreeQ[qs, OptionQ], opts:OptionsPattern[]] :=
+	FCMultiLoopTID[#, qs, opts]&/@expr;
+
+FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 	Block[{	n, ex, rest, loopInts, intsUnique, repRule, solsList,
 			null1, null2, res,  tmpli, time, mltidIsolate, optFactoring,
-			optTimeConstrained},
+			optTimeConstrained, optUncontract, nonDmoms, nonDcmoms,
+			pairUncontract, cpairUncontract},
 
-		optFactoring = OptionValue[Factoring];
-		optTimeConstrained = OptionValue[TimeConstrained];
+		optFactoring 		= OptionValue[Factoring];
+		optTimeConstrained	= OptionValue[TimeConstrained];
+		optUncontract 		= OptionValue[Uncontract];
+		n 					= OptionValue[Dimension];
+
+		nonDmoms  = Join[(Momentum[#, n - 4] & /@ qs),(Momentum/@ qs)];
+		nonDcmoms = Join[(CartesianMomentum[#, n - 4] & /@ qs),(CartesianMomentum/@ qs)];
 
 		If [OptionValue[FCVerbose]===False,
 			mltidVerbose=$VeryVerbose,
@@ -90,8 +93,6 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 
 		FCPrint[1,"FCMultiLoopTID: Entering. ", FCDoControl->mltidVerbose];
 		FCPrint[3,"FCMultiLoopTID: Entering FCMultiLoopTID with: ", ex, FCDoControl->mltidVerbose];
-
-		n = OptionValue[Dimension];
 
 		If[ FreeQ2[ex,qs],
 			Return[ex]
@@ -128,7 +129,7 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 		];
 
 		ex = Collect2[ex, qs, Factoring -> optFactoring, TimeConstrained -> optTimeConstrained, IsolateNames -> mltidIsolate]  /.
-			(h: Pair|FeynAmpDenominator)[x__] /; !FreeQ[{x}, q] :> FRH[h[x], IsolateNames->mltidIsolate];
+			(h: Pair|FeynAmpDenominator)[x__] /; !FreeQ[{x}, q_]/; MemberQ[qs,q] :> FRH[h[x], IsolateNames->mltidIsolate];
 
 		(* Single out relevant loop momenta *)
 		time=AbsoluteTime[];
@@ -148,8 +149,13 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1, "FCMultiLoopTID: Uncontracting Lorentz indices.", FCDoControl->mltidVerbose];
 
+		pairUncontract  = Join[optUncontract, nonDmoms];
+		cpairUncontract = Join[optUncontract, nonDcmoms];
 
-		ex = Uncontract[ex, Sequence@@qs, Pair -> {Polarization}, CartesianPair-> {Polarization}, FCI->True];
+		FCPrint[2, "FCMultiLoopTID: Lorentz vectors to be uncontracted: ", pairUncontract, FCDoControl->mltidVerbose];
+		FCPrint[2, "FCMultiLoopTID: Cartesian vectors to be uncontracted: ", cpairUncontract, FCDoControl->mltidVerbose];
+
+		ex = Uncontract[ex, Sequence@@qs, Pair -> pairUncontract, CartesianPair-> cpairUncontract, FCI->True];
 
 		If[	!FreeQ[ex,DiracTrace],
 			FCPrint[1, "FCMultiLoopTID: Applying FCTraceExpand.", FCDoControl->mltidVerbose];
@@ -181,11 +187,12 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 				CartesianPair[CartesianMomentum[q_],CartesianIndex[i_]]/; MemberQ[qs,q] :>
 					(tmpli=Unique[];  CartesianPair[CartesianMomentum[q,n-1],CartesianIndex[tmpli,n-1]] CartesianPair[CartesianIndex[tmpli],CartesianIndex[i]])
 			};
-			If[ !FreeQ2[ex, {Pair[Momentum[q,n-4],LorentzIndex[_,n-4]],Pair[Momentum[q],LorentzIndex[_]],
-					CartesianPair[CartesianMomentum[q,n-4],CartesianIndex[_,n-4]],CartesianPair[CartesianMomentum[q],CartesianIndex[_]]}],
+
+			If[ !FreeQ2[ex, Join[nonDmoms,nonDcmoms]],
 				Message[FCMultiLoopTID::failmsg,"Failed to eliminate 4 and D-4 dimensional loop momenta."];
 				Abort[]
 			];
+
 			FCPrint[2,"FCMultiLoopTID: Tensor parts after handling 4 and D-4 dimensional loop momenta: ", ex, FCDoControl->mltidVerbose];
 			FCPrint[1, "FCMultiLoopTID: Done handling 4 and D-4 dimensional loop momenta, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
 		];
@@ -256,7 +263,7 @@ FCMultiLoopTID[expr_ , qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 		If[	OptionValue[Collecting],
 			time=AbsoluteTime[];
 			FCPrint[1, "FCMultiLoopTID: Applying Collect2.", FCDoControl->mltidVerbose];
-			res = Collect2[res,FeynAmpDenominator,Sequence@@qs];
+			res = Collect2[res,FeynAmpDenominator,Sequence@@qs, Factoring -> optFactoring, TimeConstrained -> optTimeConstrained];
 			FCPrint[3,"FCMultiLoopTID: After Collect2: ", res, FCDoControl->mltidVerbose];
 			FCPrint[1, "FCMultiLoopTID: Done applying Collect2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose]
 		];

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17647,        604]
-NotebookOptionsPosition[     13394,        471]
-NotebookOutlinePosition[     16208,        550]
-CellTagsIndexPosition[     16098,        544]
+NotebookDataLength[     25011,        836]
+NotebookOptionsPosition[     20497,        691]
+NotebookOutlinePosition[     23161,        768]
+CellTagsIndexPosition[     23051,        762]
 WindowTitle->Apart2
 WindowFrame->Normal*)
 
@@ -82,7 +82,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$24499], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$24561], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/Apart2", ".html"]], None}]}]},
@@ -117,9 +117,8 @@ Cell[BoxData[GridBox[{
    {"", Cell[TextData[{
      Cell[BoxData[
       RowBox[{"Apart2", "[", "expr", "]"}]], "InlineFormula"],
-     " \[LineSeparator]partial fractions very simple 1-loop integrals of the \
-form 1/[(q^2-m1^2)(q^2-m2^2)]. Since FeynCalc 9 this function is deprecated. \
-Please use ApartFF instead."
+     " \[LineSeparator]partial fractions propagators of the form \
+1/[(q^2-m1^2)(q^2-m2^2)]."
     }]]}
   }]], "Usage",
  GridBoxOptions->{
@@ -154,7 +153,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1451633961],
+ CellID->1590245146],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -163,7 +162,7 @@ Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"Options", "[", "Apart2", "]"}]], "Input",
  CellTags->"Apart2",
- CellLabel->"In[223]:=",
+ CellLabel->"In[1]:=",
  CellID->1571464480],
 
 Cell[BoxData[
@@ -171,13 +170,17 @@ Cell[BoxData[
   RowBox[{"{", 
    RowBox[{
     RowBox[{"Factoring", "\[Rule]", "True"}], ",", 
+    RowBox[{"FeynCalcExternal", "\[Rule]", "False"}], ",", 
+    RowBox[{"FeynCalcInternal", "\[Rule]", "False"}], ",", 
     RowBox[{"ExcludeMasses", "\[Rule]", 
-     RowBox[{"{", "}"}]}]}], "}"}], TraditionalForm]], "Output",
- ImageSize->{242, 16},
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"Sqrt", "\[Rule]", "True"}]}], "}"}], TraditionalForm]], "Output",\
+
+ ImageSize->{371, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Apart2",
- CellLabel->"Out[223]="]
+ CellLabel->"Out[1]="]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
@@ -195,21 +198,21 @@ Cell[TextData[{
    Spacer[6]]]],
  "Examples",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
+ Cell["(2)", "ExampleCount"]
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1660425432],
+ CellID->1725280948],
 
 Cell[CellGroupData[{
 
 Cell[TextData[{
  "Basic Examples",
  "\[NonBreakingSpace]\[NonBreakingSpace]",
- Cell["(1)", "ExampleCount"]
+ Cell["(2)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->29687880],
+ CellID->356488489],
 
 Cell[CellGroupData[{
 
@@ -418,11 +421,228 @@ Cell[BoxData[
   RowBox[{
    SuperscriptBox["m", "2"], "-", 
    SuperscriptBox["M", "2"]}]]], "Output",
- ImageSize->{317, 34},
+ ImageSize->{317, 35},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"Apart2",
  CellLabel->"Out[3]//StandardForm="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[TextData[{
+ "Apart2 can also handle Cartesian propagators with square roots. To disable \
+this mode use ",
+ Cell[BoxData[
+  RowBox[{"Sqrt", "\[Rule]", "False"}]], "InlineFormula"],
+ " "
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"int", "=", 
+  RowBox[{
+   RowBox[{"CFAD", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"k", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"+", 
+          RowBox[{"m", "^", "2"}]}], ",", 
+         RowBox[{"-", "1"}]}], "}"}], ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"k", "-", "p"}], ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", 
+         RowBox[{"-", "1"}]}], "}"}], ",", "1"}], "}"}]}], "]"}], 
+   RowBox[{"GFAD", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"DE", "-", 
+         SqrtBox[
+          RowBox[{"CSPD", "[", 
+           RowBox[{"k", ",", "k"}], "]"}]]}], ",", "1"}], "}"}], ",", "1"}], 
+     "}"}], "]"}]}]}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1827687893],
+
+Cell[BoxData[
+ FormBox[
+  FormBox[
+   FractionBox["1", 
+    RowBox[{
+     TemplateBox[{"\"(\"",RowBox[{"DE", "-", 
+         SqrtBox[
+          FormBox[
+           SuperscriptBox[
+            FormBox[
+             FormBox[
+              StyleBox["k", Bold, StripOnInput -> False], TraditionalForm], 
+             TraditionalForm], 2], TraditionalForm]]}],"\"+\"",
+       RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+      "RowDefault"], " ", 
+     RowBox[{
+      TemplateBox[{"\"(\"",SuperscriptBox[
+         FormBox[
+          FormBox[
+           StyleBox["k", Bold, StripOnInput -> False], TraditionalForm], 
+          TraditionalForm], 2],"\"+\"",SuperscriptBox["m", "2"],"\"-\"",
+        RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+       "RowDefault"], ".", 
+      TemplateBox[{"\"(\"",RowBox[{
+          SuperscriptBox[
+           RowBox[{
+             FormBox["\"(\"", TraditionalForm], 
+             FormBox[
+              FormBox[
+               RowBox[{
+                 FormBox[
+                  StyleBox["k", Bold, StripOnInput -> False], 
+                  TraditionalForm], "-", 
+                 FormBox[
+                  StyleBox["p", Bold, StripOnInput -> False], 
+                  TraditionalForm]}], TraditionalForm], TraditionalForm], 
+             FormBox["\")\"", TraditionalForm]}], 2]}],"\"-\"",
+        RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+       "RowDefault"]}]}]],
+   TraditionalForm], TraditionalForm]], "Output",
+ ImageSize->{339, 47},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"int", "//", "FeynAmpDenominatorCombine"}], "//", 
+  "Apart2"}]], "Input",
+ CellLabel->"In[2]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox["1", 
+    RowBox[{
+     SuperscriptBox["DE", "2"], "+", 
+     SuperscriptBox["m", "2"]}]], 
+   RowBox[{"(", 
+    RowBox[{
+     FormBox[
+      FractionBox["DE", 
+       RowBox[{
+        TemplateBox[{"\"(\"",SuperscriptBox[
+           FormBox[
+            FormBox[
+             StyleBox["k", Bold, StripOnInput -> False], TraditionalForm], 
+            TraditionalForm], 2],"\"+\"",SuperscriptBox["m", "2"],"\"-\"",
+          RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+         "RowDefault"], ".", 
+        TemplateBox[{"\"(\"",RowBox[{
+            SuperscriptBox[
+             RowBox[{
+               FormBox["\"(\"", TraditionalForm], 
+               FormBox[
+                FormBox[
+                 RowBox[{
+                   FormBox[
+                    StyleBox["k", Bold, StripOnInput -> False], 
+                    TraditionalForm], "-", 
+                   FormBox[
+                    StyleBox["p", Bold, StripOnInput -> False], 
+                    TraditionalForm]}], TraditionalForm], TraditionalForm], 
+               FormBox["\")\"", TraditionalForm]}], 2]}],"\"-\"",
+          RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+         "RowDefault"]}]],
+      TraditionalForm], "+", 
+     FormBox[
+      FractionBox["1", 
+       RowBox[{
+        TemplateBox[{"\"(\"",RowBox[{"DE", "-", 
+            SqrtBox[
+             SuperscriptBox[
+              FormBox[
+               FormBox[
+                StyleBox["k", Bold, StripOnInput -> False], TraditionalForm], 
+               TraditionalForm], 2]]}],"\"+\"",
+          RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+         "RowDefault"], ".", 
+        TemplateBox[{"\"(\"",RowBox[{
+            SuperscriptBox[
+             RowBox[{
+               FormBox["\"(\"", TraditionalForm], 
+               FormBox[
+                FormBox[
+                 RowBox[{
+                   FormBox[
+                    StyleBox["k", Bold, StripOnInput -> False], 
+                    TraditionalForm], "-", 
+                   FormBox[
+                    StyleBox["p", Bold, StripOnInput -> False], 
+                    TraditionalForm]}], TraditionalForm], TraditionalForm], 
+               FormBox["\")\"", TraditionalForm]}], 2]}],"\"-\"",
+          RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+         "RowDefault"]}]],
+      TraditionalForm], "+", 
+     FormBox[
+      FractionBox[
+       SqrtBox[
+        SuperscriptBox[
+         FormBox[
+          FormBox[
+           StyleBox["k",
+            StripOnInput->False,
+            FontWeight->Bold],
+           TraditionalForm],
+          TraditionalForm], "2"]], 
+       RowBox[{
+        TemplateBox[{"\"(\"",SuperscriptBox[
+           FormBox[
+            FormBox[
+             StyleBox["k", Bold, StripOnInput -> False], TraditionalForm], 
+            TraditionalForm], 2],"\"+\"",SuperscriptBox["m", "2"],"\"-\"",
+          RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+         "RowDefault"], ".", 
+        TemplateBox[{"\"(\"",RowBox[{
+            SuperscriptBox[
+             RowBox[{
+               FormBox["\"(\"", TraditionalForm], 
+               FormBox[
+                FormBox[
+                 RowBox[{
+                   FormBox[
+                    StyleBox["k", Bold, StripOnInput -> False], 
+                    TraditionalForm], "-", 
+                   FormBox[
+                    StyleBox["p", Bold, StripOnInput -> False], 
+                    TraditionalForm]}], TraditionalForm], TraditionalForm], 
+               FormBox["\")\"", TraditionalForm]}], 2]}],"\"-\"",
+          RowBox[{"\[ImaginaryI]", " ", "\"\[Eta]\""}],"\")\""},
+         "RowDefault"]}]],
+      TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
+ ImageSize->{509, 118},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]="]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"ClearAll", "[", "int", "]"}]], "Input",
+ CellLabel->"In[3]:="]
 }, Open  ]]
 }, Open  ]],
 
@@ -471,7 +691,7 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
+WindowSize->{808, 840},
 WindowMargins->{{268, Automatic}, {Automatic, 20}},
 WindowTitle->"Apart2",
 TaggingRules->{
@@ -484,15 +704,14 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 52, 40.594627}", 
+   "built" -> "{2020, 6, 20, 19, 2, 19.052222}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
     "Feyn Calc Symbol", "language" -> "en", "paclet" -> "FeynCalc", "status" -> 
     "None", "summary" -> 
-    "Apart2[expr] partial fractions very simple 1-loop integrals of the form \
-1/[(q^2-m1^2)(q^2-m2^2)]. Since FeynCalc 9 this function is deprecated. \
-Please use ApartFF instead.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "Apart2[expr] partial fractions propagators of the form \
+1/[(q^2-m1^2)(q^2-m2^2)].", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
     "Apart2", "titlemodifier" -> "", "windowtitle" -> "Apart2", "type" -> 
     "Symbol", "uri" -> "FeynCalc/ref/Apart2"}, "SearchTextTranslated" -> ""},
 CellContext->"Global`",
@@ -504,8 +723,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -515,36 +733,36 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "Apart2"->{
-  Cell[5390, 162, 132, 4, 70, "Input",
+  Cell[5297, 161, 130, 4, 70, "Input",
    CellTags->"Apart2",
    CellID->1571464480],
-  Cell[5525, 168, 343, 11, 37, "Output",
+  Cell[5430, 167, 510, 15, 56, "Output",
    CellTags->"Apart2"],
-  Cell[6561, 215, 276, 10, 27, "Input",
+  Cell[6634, 218, 276, 10, 27, "Input",
    CellTags->"Apart2",
    CellID->1580962822],
-  Cell[6840, 227, 1756, 59, 64, "Output",
+  Cell[6913, 230, 1756, 59, 64, "Output",
    CellTags->"Apart2"],
-  Cell[8633, 291, 123, 4, 27, "Input",
+  Cell[8706, 294, 123, 4, 27, "Input",
    CellTags->"Apart2",
    CellID->867958772],
-  Cell[8759, 297, 2905, 93, 84, "Output",
+  Cell[8832, 300, 2905, 93, 84, "Output",
    CellTags->"Apart2"],
-  Cell[11701, 395, 159, 5, 27, "Input",
+  Cell[11774, 398, 159, 5, 27, "Input",
    CellTags->"Apart2",
    CellID->168515472],
-  Cell[11863, 402, 604, 22, 70, "Output",
+  Cell[11936, 405, 604, 22, 71, "Output",
    CellTags->"Apart2"]},
  "PrimaryExamplesSection"->{
-  Cell[5929, 186, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[6001, 189, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1660425432]}
+   CellID->1725280948]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Apart2", 15317, 516},
- {"PrimaryExamplesSection", 15954, 537}
+ {"Apart2", 22270, 734},
+ {"PrimaryExamplesSection", 22907, 755}
  }
 *)
 (*NotebookFileOutline
@@ -553,59 +771,73 @@ Cell[578, 21, 3181, 77, 53, "AnchorBarGrid",
  CellID->1],
 Cell[3762, 100, 283, 11, 45, "ObjectNameGrid"],
 Cell[CellGroupData[{
-Cell[4070, 115, 497, 13, 102, "Usage",
+Cell[4070, 115, 404, 12, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4592, 132, 739, 24, 31, "NotesSection",
+Cell[4499, 131, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1451633961],
-Cell[5334, 158, 31, 0, 70, "SectionHeaderSpacer"],
+ CellID->1590245146],
+Cell[5241, 157, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[5390, 162, 132, 4, 70, "Input",
+Cell[5297, 161, 130, 4, 70, "Input",
  CellTags->"Apart2",
  CellID->1571464480],
-Cell[5525, 168, 343, 11, 37, "Output",
+Cell[5430, 167, 510, 15, 56, "Output",
  CellTags->"Apart2"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5929, 186, 388, 15, 31, "PrimaryExamplesSection",
+Cell[6001, 189, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1660425432],
+ CellID->1725280948],
 Cell[CellGroupData[{
-Cell[6342, 205, 194, 6, 26, "ExampleSection",
- CellID->29687880],
+Cell[6414, 208, 195, 6, 26, "ExampleSection",
+ CellID->356488489],
 Cell[CellGroupData[{
-Cell[6561, 215, 276, 10, 27, "Input",
+Cell[6634, 218, 276, 10, 27, "Input",
  CellTags->"Apart2",
  CellID->1580962822],
-Cell[6840, 227, 1756, 59, 64, "Output",
+Cell[6913, 230, 1756, 59, 64, "Output",
  CellTags->"Apart2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8633, 291, 123, 4, 27, "Input",
+Cell[8706, 294, 123, 4, 27, "Input",
  CellTags->"Apart2",
  CellID->867958772],
-Cell[8759, 297, 2905, 93, 84, "Output",
+Cell[8832, 300, 2905, 93, 84, "Output",
  CellTags->"Apart2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11701, 395, 159, 5, 27, "Input",
+Cell[11774, 398, 159, 5, 27, "Input",
  CellTags->"Apart2",
  CellID->168515472],
-Cell[11863, 402, 604, 22, 70, "Output",
+Cell[11936, 405, 604, 22, 71, "Output",
  CellTags->"Apart2"]
-}, Open  ]]
-}, Open  ]],
-Cell[12494, 428, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12562, 433, 270, 12, 31, "SeeAlsoSection",
- CellID->1255426704],
-Cell[12835, 447, 517, 19, 70, "SeeAlso"]
+Cell[12577, 432, 105, 2, 9, "ExampleDelimiter"],
+Cell[12685, 436, 203, 6, 32, "Notes"],
+Cell[CellGroupData[{
+Cell[12913, 446, 924, 33, 58, "Input",
+ CellID->1827687893],
+Cell[13840, 481, 1593, 43, 68, "Output"]
 }, Open  ]],
-Cell[13367, 469, 23, 0, 70, "FooterCell"]
+Cell[CellGroupData[{
+Cell[15470, 529, 131, 4, 27, "Input"],
+Cell[15604, 535, 3865, 104, 139, "Output"]
+}, Open  ]],
+Cell[19484, 642, 86, 2, 27, "Input"]
+}, Open  ]]
+}, Open  ]],
+Cell[19597, 648, 31, 0, 29, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19665, 653, 270, 12, 31, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[19938, 667, 517, 19, 56, "SeeAlso"]
+}, Open  ]],
+Cell[20470, 689, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

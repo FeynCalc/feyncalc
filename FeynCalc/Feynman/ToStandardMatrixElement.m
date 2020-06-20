@@ -36,6 +36,7 @@ Options[ToStandardMatrixElement] = {
 	CartesianIndex			-> False,
 	CartesianIndexNames		-> {},
 	ChangeDimension 		-> False,
+	ClearHeads				-> {StandardMatrixElement},
 	DiracOrder 				-> True,
 	DiracSimplify			-> True,
 	DiracEquation			-> True,
@@ -54,7 +55,6 @@ Options[ToStandardMatrixElement] = {
 	SirlinSimplify 			-> False,
 	Spinor 					-> False,
 	SpinorChainChiralSplit	-> True,
-	SpinorChainTrick 		-> True,
 	TimeConstrained 		-> 3
 }
 
@@ -66,7 +66,7 @@ ToStandardMatrixElement[expr_List, opts:OptionsPattern[]]:=
 	ToStandardMatrixElement[#, opts]&/@expr;
 
 ToStandardMatrixElement[expr_/;Head[expr]=!=List, OptionsPattern[]]:=
-	Block[{ex,res,time, chead, dhead, holdDOT, optTimeConstrained},
+	Block[{ex,res,time, chead, dhead, holdDOT, optTimeConstrained,optClearHeads},
 
 
 		If [OptionValue[FCVerbose]===False,
@@ -77,6 +77,7 @@ ToStandardMatrixElement[expr_/;Head[expr]=!=List, OptionsPattern[]]:=
 		];
 
 		optTimeConstrained = OptionValue[TimeConstrained];
+		optClearHeads = OptionValue[ClearHeads];
 
 		FCPrint[1,"ToStandardMatrixElement: Entering.", FCDoControl->tsmeVerbose];
 		FCPrint[3,"ToStandardMatrixElement: Entering with: ", expr, FCDoControl->tsmeVerbose];
@@ -87,12 +88,15 @@ ToStandardMatrixElement[expr_/;Head[expr]=!=List, OptionsPattern[]]:=
 			ex = FCI[expr]
 		];
 
+		If[	optClearHeads=!={},
+			ex = ex/. (Map[Rule[#, Identity] &, optClearHeads])
+		];
 
 		If[	OptionValue[DiracSimplify],
 			time=AbsoluteTime[];
 			FCPrint[1, "ToStandardMatrixElement: Applying DiracSimplify.", FCDoControl->tsmeVerbose];
 			ex = DiracSimplify[ex, FCI->True, DiracOrder->OptionValue[DiracOrder], DiracSubstitute67->OptionValue[DiracSubstitute67],
-				DiracSubstitute5->OptionValue[DiracSubstitute5], SpinorChainTrick->OptionValue[SpinorChainTrick], SirlinSimplify->OptionValue[SirlinSimplify],
+				DiracSubstitute5->OptionValue[DiracSubstitute5], SirlinSimplify->OptionValue[SirlinSimplify],
 				DiracEquation->OptionValue[DiracEquation], LorentzIndexNames-> OptionValue[LorentzIndexNames],
 				CartesianIndexNames-> OptionValue[CartesianIndexNames]];
 			FCPrint[1, "ToStandardMatrixElement: DiracSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tsmeVerbose];
@@ -114,7 +118,7 @@ ToStandardMatrixElement[expr_/;Head[expr]=!=List, OptionsPattern[]]:=
 			time=AbsoluteTime[];
 			FCPrint[1, "ToStandardMatrixElement: Applying FCDiracIsolate.", FCDoControl->tsmeVerbose];
 			ex = FCDiracIsolate[ex, Polarization->OptionValue[Polarization], FCI->True, Head->dhead, Collecting->False, ExceptHeads -> OptionValue[ExceptHeads],
-				LorentzIndex -> OptionValue[LorentzIndex], CartesianIndex -> OptionValue[CartesianIndex]];
+				LorentzIndex -> OptionValue[LorentzIndex], CartesianIndex -> OptionValue[CartesianIndex], FCJoinDOTs->False];
 			FCPrint[1, "ToStandardMatrixElement: FCDiracIsolate done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tsmeVerbose];
 			FCPrint[3, "ToStandardMatrixElement: After FCDiracIsolate: ", ex, FCDoControl->tsmeVerbose]
 		];

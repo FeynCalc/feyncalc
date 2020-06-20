@@ -34,7 +34,7 @@ End[]
 Begin["`PauliSimplify`Private`"]
 
 psVerbose::usage="";
-(*optInsidePauliTrace::usage="";*)
+optInsidePauliTrace::usage="";
 optExpanding::usage="";
 optExpandScalarProduct::usage="";
 optPauliSigmaCombine::usage="";
@@ -45,8 +45,6 @@ optContract::usage="";
 optPauliReduce::usage="";
 
 Options[PauliSimplify] = {
-	(*InsidePauliTrace    -> False,*)
-	(*PauliTrace			-> True,*)
 	Contract			-> True,
 	EpsContract			-> True,
 	Expand2				-> True,
@@ -58,11 +56,19 @@ Options[PauliSimplify] = {
 	FCPauliIsolate		-> True,
 	FCVerbose			-> False,
 	Factoring			-> False,
+	InsidePauliTrace    -> False,
 	PauliOrder			-> False,
-	PauliReduce 		-> True,
-	PauliSigmaCombine	-> False
-	(*PauliTraceEvaluate	-> True,*)
+	PauliReduce 		-> False,
+	PauliSigmaCombine	-> False,
+	PauliTrace			-> True,
+	PauliTraceEvaluate	-> True
 };
+
+PauliSimplify[a_ == b_, opts:OptionsPattern[]] :=
+	PauliSimplify[a,opts] == PauliSimplify[b,opts];
+
+PauliSimplify[expr_List, opts:OptionsPattern[]] :=
+	PauliSimplify[#, opts]&/@expr;
 
 PauliSimplify[expr_, OptionsPattern[]] :=
 	Block[{ex,res,time, null1, null2, holdDOT, freePart=0, psPart, pauliObjects,
@@ -82,7 +88,7 @@ PauliSimplify[expr_, OptionsPattern[]] :=
 		optExpandScalarProduct	= OptionValue[ExpandScalarProduct];
 		optExpanding  			= OptionValue[Expanding];
 		optPauliReduce			= OptionValue[PauliReduce];
-		(*optInsidePauliTrace		= OptionValue[InsidePauliTrace];*)
+		optInsidePauliTrace		= OptionValue[InsidePauliTrace];
 
 
 		If[ OptionValue[Factoring] === Automatic,
@@ -125,11 +131,11 @@ PauliSimplify[expr_, OptionsPattern[]] :=
 			ex = FCPauliIsolate[ex,FCI->True,Head->psHead, DotSimplify->True, PauliSigmaCombine->OptionValue[PauliSigmaCombine],
 				LorentzIndex->True, CartesianIndex->True];
 
-			(*
+
 			If[	!FreeQ[ex,PauliTrace] && !OptionValue[PauliTrace],
 				ex = ex /. psHead[zz_]/; !FreeQ[zz,PauliTrace] :> zz
 			];
-			*)
+
 
 			{freePart,psPart} = FCSplit[ex,{psHead}];
 			FCPrint[3,"PauliSimplify: psPart: ",psPart , FCDoControl->psVerbose];
@@ -140,7 +146,7 @@ PauliSimplify[expr_, OptionsPattern[]] :=
 			pauliObjectsEval = pauliObjects;
 			FCPrint[3,"PauliSimplify: pauliObjects: ", pauliObjects , FCDoControl->psVerbose];
 
-			(*
+
 			If[ OptionValue[PauliTraceEvaluate],
 				time=AbsoluteTime[];
 				FCPrint[1, "PauliSimplify: Calculating Pauli traces.", FCDoControl->psVerbose];
@@ -150,13 +156,13 @@ PauliSimplify[expr_, OptionsPattern[]] :=
 				FCPrint[3,"PauliSimplify: pauliObjects after calcuating Pauli traces: ", pauliObjects , FCDoControl->psVerbose]
 
 			];
-			*)
+
 
 			time=AbsoluteTime[];
 			FCPrint[1, "PauliSimplify: Applying pauliSimplifyEval", FCDoControl->psVerbose];
 
 			pauliObjectsEval = FeynCalc`Package`pauliTrickEvalFastFromPauliSimplifyList[(pauliObjectsEval/.psHead->Identity),
-				{False,False(*optInsidePauliTrace,optPauliOrder*)}];
+				{optInsidePauliTrace,optPauliOrder}];
 
 			pauliObjectsEval = pauliSimplifyEval/@pauliObjectsEval;
 
@@ -179,7 +185,7 @@ PauliSimplify[expr_, OptionsPattern[]] :=
 				from internal functions	*)
 			FCPrint[1,"PauliSimplify: Fast mode.", FCDoControl->psVerbose];
 
-			tmp = FeynCalc`Package`pauliTrickEvalFastFromPauliSimplifySingle[ex, {tmpHead,False,False(* optInsidePauliTrace,optPauliOrder*)}];
+			tmp = FeynCalc`Package`pauliTrickEvalFastFromPauliSimplifySingle[ex, {tmpHead,False, optInsidePauliTrace,optPauliOrder}];
 
 			(* It might happen that after pauliTrickEvalFast there are no Pauli matrices left.*)
 
@@ -244,7 +250,7 @@ pauliSimplifyEval[expr_]:=
 		If[ !FreeQ[tmp, PauliSigma],
 			time=AbsoluteTime[];
 			FCPrint[1,"PauliSimplify: pauliSimplifyEval: Applying PauliTrick.", FCDoControl->psVerbose];
-			tmp = PauliTrick[tmp, FCI -> True, (*InsidePauliTrace-> optInsidePauliTrace,*) FCPauliIsolate->False, PauliReduce->optPauliReduce];
+			tmp = PauliTrick[tmp, FCI -> True, InsidePauliTrace-> optInsidePauliTrace, FCPauliIsolate->False, PauliReduce->optPauliReduce];
 			FCPrint[1,"PauliSimplify: pauliSimplifyEval: PauliTrick done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->psVerbose];
 			FCPrint[3,"PauliSimplify: pauliSimplifyEval: After PauliTrick: ", tmp, FCDoControl->psVerbose]
 		];
@@ -285,7 +291,7 @@ pauliSimplifyEval[expr_]:=
 
 			time2=AbsoluteTime[];
 			FCPrint[1,"PauliSimplify: pauliSimplifyEval: Applying PauliTrick.", FCDoControl->psVerbose];
-			tmp = PauliTrick[tmp, FCI -> True, (*InsidePauliTrace-> optInsidePauliTrace,*) FCJoinDOTs->False, PauliReduce->optPauliReduce];
+			tmp = PauliTrick[tmp, FCI -> True, InsidePauliTrace-> optInsidePauliTrace, FCJoinDOTs->False, PauliReduce->optPauliReduce];
 			FCPrint[1,"PauliSimplify: pauliSimplifyEval: PauliTrick done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->psVerbose];
 			FCPrint[3,"PauliSimplify: pauliSimplifyEval: After PauliTrick: ", tmp, FCDoControl->psVerbose];
 		];

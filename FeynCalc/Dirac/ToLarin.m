@@ -31,7 +31,13 @@ Options[ToLarin] = {
 	FCI			-> False
 };
 
-ToLarin[expr_, OptionsPattern[]] :=
+ToLarin[a_ == b_, opts:OptionsPattern[]] :=
+	ToLarin[a,opts] == ToLarin[b,opts];
+
+ToLarin[expr_List, opts:OptionsPattern[]]:=
+	ToLarin[#, opts]&/@expr;
+
+ToLarin[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 	Block[ {ex,fi1,fi2,fi3,drsi,res, dotHold, dim},
 
 		dim 	= OptionValue[Dimension];

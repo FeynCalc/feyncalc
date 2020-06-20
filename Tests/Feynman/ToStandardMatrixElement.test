@@ -373,9 +373,9 @@ Spinor[Momentum[p3, D], ms, 1] . GSD[p2] . GA[7] . Spinor[Momentum[p1, D], mb, 1
 	SPD[p2, Polarization[p2, I]]]"},
 {"fcstToStandardMatrixElement-ID13",
 "ToStandardMatrixElement[
-Spinor[-Momentum[p1, D], mb, 1].GAD[mu].GAD[nu].GA[7].Spinor[
+Spinor[-Momentum[p1, D], mb, 1].GAD[mu1].GAD[nu1].GA[7].Spinor[
 	Momentum[p3, D], ms, 1] Spinor[Momentum[p1, D], mb, 1].GAD[
-	nu].GAD[mu].GA[7].Spinor[-Momentum[p2, D], ms, 1]] //
+	nu1].GAD[mu1].GA[7].Spinor[-Momentum[p2, D], ms, 1]] //
 FCCanonicalizeDummyIndices[#, LorentzIndexNames -> {mu, nu},
 FCE -> True] &","2 D StandardMatrixElement[
 Spinor[-Momentum[p1, D], mb, 1].GA[7].Spinor[Momentum[p3, D], ms,
@@ -405,5 +405,16 @@ Spinor[Momentum[p1], 0, 1].GA[i1].GA[i2].GA[
 2 StandardMatrixElement[
 Spinor[Momentum[p1], 0, 1].GA[i1].GA[i2].GA[
 	7].Spinor[-Momentum[p2], 0, 1] Spinor[-Momentum[p3], 0, 1].GA[
-	i1].GA[i2].GA[7].Spinor[Momentum[p4], 0, 1]]"}
+	i1].GA[i2].GA[7].Spinor[Momentum[p4], 0, 1]]"},
+{"fcstToStandardMatrixElement-ID15", "ToStandardMatrixElement[SpinorUBar[p, m].GA[mu].SpinorV[q, M],
+FCE -> True]","StandardMatrixElement[
+Spinor[Momentum[p], m, 1].GA[mu].GA[6].Spinor[-Momentum[q], M, 1]] +
+StandardMatrixElement[
+Spinor[Momentum[p], m, 1].GA[mu].GA[7].Spinor[-Momentum[q], M, 1]]"},
+{"fcstToStandardMatrixElement-ID16", "ToStandardMatrixElement[
+StandardMatrixElement[SpinorUBar[p, m].GA[mu].SpinorV[q, M]],
+FCE -> True]","StandardMatrixElement[
+Spinor[Momentum[p], m, 1].GA[mu].GA[6].Spinor[-Momentum[q], M, 1]] +
+StandardMatrixElement[
+Spinor[Momentum[p], m, 1].GA[mu].GA[7].Spinor[-Momentum[q], M, 1]]"}
 });

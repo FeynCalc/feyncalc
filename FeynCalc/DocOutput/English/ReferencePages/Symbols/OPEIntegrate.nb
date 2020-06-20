@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9022,        287]
-NotebookOptionsPosition[      6581,        217]
-NotebookOutlinePosition[      8477,        267]
-CellTagsIndexPosition[      8434,        264]
+NotebookDataLength[      8967,        286]
+NotebookOptionsPosition[      6582,        217]
+NotebookOutlinePosition[      8421,        266]
+CellTagsIndexPosition[      8378,        263]
 WindowTitle->OPEIntegrate
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ OPEIntegrate.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$195781], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$196789], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/OPEIntegrate", ".html"]], None}]}]},
@@ -151,7 +151,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->132546791],
+ CellID->1471658893],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -217,8 +217,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{808, 911},
-WindowMargins->{{268, Automatic}, {Automatic, 20}},
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"OPEIntegrate",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -230,7 +230,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 19, 0, 12.036129}", 
+   "built" -> "{2020, 6, 20, 19, 9, 3.727510}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -250,8 +250,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 29}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -273,22 +272,22 @@ Cell[CellGroupData[{
 Cell[3910, 112, 436, 13, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4371, 129, 738, 24, 31, "NotesSection",
+Cell[4371, 129, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->132546791],
-Cell[5112, 155, 31, 0, 70, "SectionHeaderSpacer"],
+ CellID->1471658893],
+Cell[5113, 155, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
-Cell[5168, 159, 95, 2, 70, "Input"],
-Cell[5266, 163, 767, 21, 56, "Output"]
+Cell[5169, 159, 95, 2, 70, "Input"],
+Cell[5267, 163, 767, 21, 56, "Output"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6094, 191, 270, 12, 31, "SeeAlsoSection",
+Cell[6095, 191, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[6367, 205, 172, 7, 56, "SeeAlso"]
+Cell[6368, 205, 172, 7, 56, "SeeAlso"]
 }, Open  ]],
-Cell[6554, 215, 23, 0, 41, "FooterCell"]
+Cell[6555, 215, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

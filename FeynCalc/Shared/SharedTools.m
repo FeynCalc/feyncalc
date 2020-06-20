@@ -46,6 +46,16 @@ FCAntiSymmetrize::usage=
 "FCAntiSymmetrize[expr, {a1, a2, ...}] antisymmetrizes expr with respect \
 to the variables a1, a2, ... ";
 
+FCAttachTypesettingRule::usage=
+"FCAttachTypesettingRules[expr, ...] attaches a specific TraditionalForm \
+typesetting rule to expr. It doesn't change any properties of expr apart \
+from adding a FormatValue with a MakeBoxes rule. Following choices are possible \n
+FCAttachTypesettingRule[expr_, str]
+FCAttachTypesettingRules[expr, {SubscriptBox, var, sub}]
+FCAttachTypesettingRules[expr, {SuperscriptBox, var, sup}]
+FCAttachTypesettingRules[expr, {SubsuperscriptBox, var, sub, sup}]\n
+Use FCRemoveTypesettingRules to remove all typesetting rules attached to expr.";
+
 FCCheckVersion::usage=
 "FCCheckVersion[major,minor,build] checks if the current version of FeynCalc \
 is larger or equal than marjor.minor.build. For example, FCCheckVersion[9,3,0] \
@@ -99,6 +109,10 @@ for FeynCalc developers, which allows one to debug/improve internal functions \
 and test the results without restarting the kernel. Depending on the complexity \
 of the given function, there might also be unknown side effects. The function is \
 not meant to be invoked by the normal users. ";
+
+FCRemoveTypesettingRules::usage =
+"FCRemoveTypesettingRules[expr] removes all typesetting rules attached to expr.
+Effectively it sets the FormatValues of expr to an empty list.";
 
 FCReplaceAll::usage=
 "FCReplaceAll[exp, ru1, ...] is like ReplaceAll, but it also allows to apply multiple \
@@ -410,6 +424,21 @@ ExpandAll2[expr_] :=
 					#
 		] &, expr];
 
+FCAttachTypesettingRule[expr_, {SubscriptBox, var_, sub_}] :=
+	expr /: MakeBoxes[expr, TraditionalForm] :=
+		SubscriptBox[ToString[var], ToString[sub]];
+
+FCAttachTypesettingRule[expr_, {SuperscriptBox, var_, sup_}] :=
+	expr /: MakeBoxes[expr, TraditionalForm] :=
+		SuperscriptBox[ToString[var], ToString[sup]];
+
+FCAttachTypesettingRule[expr_, {SubsuperscriptBox, var_, sub_, sup_}] :=
+	expr /: MakeBoxes[expr, TraditionalForm] :=
+		SubsuperscriptBox[ToString[var], ToString[sub], ToString[sup]];
+
+FCAttachTypesettingRule[expr_, obs_String] :=
+	expr /: MakeBoxes[expr, TraditionalForm] := obs;
+
 FCAntiSymmetrize[x_,v_List] :=
 	Block[{su},
 		su[y_, {a__}, {b__}] := y /. Thread[{a} -> {b}];
@@ -534,14 +563,17 @@ FCReloadFunctionFromFile[fun_, file_String] :=
 	Null
 ];
 
+FCProductSplit[expr_, {}, OptionsPattern[]]:=
+	{expr,1};
+
 FCProductSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
-	Block[{dummy,exprAsList,pow,free,notfree},
+	Block[{dummy1,dummy2,exprAsList,pow,free,notfree},
 		If[	NTerms[expr,Expand->False] > 1,
 			Message[FCProductSplit::failmsg,"The input expression is not a product"];
 			Abort[]
 		];
 
-		exprAsList = List@@(expr*dummy);
+		exprAsList = List@@(expr*dummy1*dummy2);
 		If[	!FreeQ[exprAsList,Power],
 			exprAsList /. Power -> pow //. {
 				{a___,pow[b_,n_Integer?Positive],c___} :> {a,Sequence@@ConstantArray[b,n],c},
@@ -549,7 +581,7 @@ FCProductSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
 			} /. pow -> Power
 		];
 
-		free = SelectFree[exprAsList,vars] /. dummy :> Unevaluated[Sequence[]];
+		free = SelectFree[exprAsList,vars] /. dummy1|dummy2 :> Unevaluated[Sequence[]];
 		notfree = SelectNotFree[exprAsList,vars];
 
 		free = Times@@free;
@@ -563,6 +595,14 @@ FCProductSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
 		{free,notfree}
 	];
 
+FCRemoveTypesettingRules[expr_List] :=
+	FCRemoveTypesettingRules/@expr;
+
+FCRemoveTypesettingRules[expr_Symbol] :=
+	(FormatValues[expr] = {};);
+
+FCRemoveTypesettingRules[fun_[args__]] :=
+	(FormatValues[fun] = SelectFree2[FormatValues[fun],fun[args]];);
 
 FCReplaceAll[ex_, ru_] :=
 	ReplaceAll[ex, ru];

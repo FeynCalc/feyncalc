@@ -270,5 +270,19 @@ Spinor[Momentum[p3],m3,1].GA[liS463_].GA[6].Spinor[Momentum[p4],m4,1] \
 MT[rho,tau]+(1+la1) (1-la2) \
 Spinor[Momentum[p1],m1,1].GA[liS463_].GA[6].Spinor[Momentum[p2],m2,1] \
 Spinor[Momentum[p3],m3,1].GA[liS463_].GA[7].Spinor[Momentum[p4],m4,1] \
-MT[rho,tau]]", "True"}
+MT[rho,tau]]", "True"},
+{"fcstSirlinSimplify-ID29","SirlinSimplify[
+SpinorUBar[p3, m3].GA[mu, nu, 7].SpinorU[p1, m1] SpinorUBar[p4,
+	m4].GA[nu, mu, 6].SpinorU[p2, m2] == х, FCE -> True]",
+	"4 Spinor[Momentum[p3], m3, 1].GA[7].Spinor[Momentum[p1], m1,
+	1] Spinor[Momentum[p4], m4, 1].GA[6].Spinor[Momentum[p2], m2,
+	1] == х"},
+{"fcstSirlinSimplify-ID30","SirlinSimplify[{SpinorUBar[p3, m3].GA[mu, nu, 7].SpinorU[p1,
+	m1] SpinorUBar[p4, m4].GA[nu, mu, 6].SpinorU[p2, m2],
+SpinorUBar[p3, m3].GA[nu, mu, 7].SpinorU[p1, m1] SpinorUBar[p4,
+	m4].GA[mu, nu, 6].SpinorU[p2, m2]}, FCE -> True]",
+	"{4 Spinor[Momentum[p3], m3, 1].GA[7].Spinor[Momentum[p1], m1,
+	1] Spinor[Momentum[p4], m4, 1].GA[6].Spinor[Momentum[p2], m2, 1],
+4 Spinor[Momentum[p3], m3, 1].GA[7].Spinor[Momentum[p1], m1,
+	1] Spinor[Momentum[p4], m4, 1].GA[6].Spinor[Momentum[p2], m2, 1]}"}
 });

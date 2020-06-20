@@ -65,6 +65,7 @@ Options[FCFAConvert] = {
 	FeynAmpDenominatorCombine		-> True,
 	FinalSubstitutions				-> {},
 	IncomingMomenta					-> {},
+	InitialSubstitutions			-> {},
 	List 							-> True,
 	LoopMomenta						-> {},
 	LorentzIndexNames				-> {},
@@ -77,11 +78,12 @@ Options[FCFAConvert] = {
 	UndoChiralSplittings 			-> False
 	};
 
-FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[__][diags___], OptionsPattern[]] :=
+FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[infos__][diags___], OptionsPattern[]] :=
 	Block[ {	diagsConverted,repRuleMomenta,repRuleLorentzIndices,
 				repRulePolVectors,inMoms,outMoms,liNames,polVecs,loopMoms,dim,
 				sunNames, sunfNames, repRuleSUNIndices, repRuleSUNFIndices,
-				prefactor},
+				prefactor, inFAMoms, outFAMoms, loopFAMoms, lorentzIndices,
+				sunIndices, sunfIndices},
 
 		inMoms		= OptionValue[IncomingMomenta];
 		outMoms		= OptionValue[OutgoingMomenta];
@@ -93,14 +95,16 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[__][diags___], OptionsPattern[]
 		dim			= OptionValue[ChangeDimension];
 		prefactor	= OptionValue[Prefactor];
 
-
-		repRuleMomenta={};
+		repRuleMomenta = {};
 		repRuleLorentzIndices={};
 		repRuleSUNIndices={};
 		repRuleSUNFIndices={};
 		repRulePolVectors={};
 
 		diagsConverted= Map[#[[3]]&,{diags}];
+
+		loopFAMoms = Cases[{diags},System`Integral[lm__] :> {lm}, Infinity]//Flatten//Union;
+		{inFAMoms,outFAMoms} = FeynArts`Process /. {infos} /. Rule[a_List,b_List]:>{Transpose[a][[2]],Transpose[b][[2]]};
 
 		diagsConverted = FCPrepareFAAmp[diagsConverted,UndoChiralSplittings->OptionValue[UndoChiralSplittings],SMP->OptionValue[SMP],
 			FeynAmpDenominatorCombine->OptionValue[FeynAmpDenominatorCombine]];
@@ -111,32 +115,78 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[__][diags___], OptionsPattern[]
 			diagsConverted = diagsConverted/.FeynArts`SumOver[___]:> 1
 		];
 
-		If[	inMoms=!={},
-			repRuleMomenta = MapIndexed[Rule[ToExpression["InMom"<>ToString[First[#2]]],#1]&,inMoms]
+		lorentzIndices	= Cases[diagsConverted, LorentzIndex[in_,___] :> in]//Union;
+		sunIndices 		= Cases[diagsConverted, SUNIndex[in_,___] :> in]//Union;
+		sunfIndices 	= Cases[diagsConverted, SUNFIndex[in_,___] :> in]//Union;
+
+
+		Switch[inMoms,
+			_List,
+			repRuleMomenta = MapIndexed[Rule[ToExpression["InMom"<>ToString[First[#2]]],#1]&,inMoms],
+			_Symbol,
+			repRuleMomenta = Table[Rule[ToExpression["InMom"<>ToString[i]],ToExpression[ToString[inMoms]<>ToString[i]]],{i,1,Length[inFAMoms]}],
+			_,
+			Null
 		];
-		If[	outMoms=!={},
-			repRuleMomenta = Join[repRuleMomenta,MapIndexed[Rule[ToExpression["OutMom"<>ToString[First[#2]]],#1]&,outMoms]]
+
+		Switch[outMoms,
+			_List,
+			repRuleMomenta =  Join[repRuleMomenta,MapIndexed[Rule[ToExpression["OutMom"<>ToString[First[#2]]],#1]&,outMoms]],
+			_Symbol,
+			repRuleMomenta = Join[repRuleMomenta,Table[Rule[ToExpression["OutMom"<>ToString[i]],ToExpression[ToString[outMoms]<>ToString[i]]],{i,1,Length[outFAMoms]}]],
+			_,
+			Null
 		];
-		If[	loopMoms=!={},
-			repRuleMomenta = Join[repRuleMomenta,MapIndexed[Rule[ToExpression["LoopMom"<>ToString[First[#2]]],#1]&,loopMoms]]
+
+		Switch[loopMoms,
+			_List,
+			repRuleMomenta =  Join[repRuleMomenta,MapIndexed[Rule[ToExpression["LoopMom"<>ToString[First[#2]]],#1]&,loopMoms]],
+			_Symbol,
+			repRuleMomenta = Join[repRuleMomenta,Table[Rule[ToExpression["LoopMom"<>ToString[i]],ToExpression[ToString[loopMoms]<>ToString[i]]],{i,1,Length[loopFAMoms]}]],
+			_,
+			Null
 		];
-		If[	liNames=!={},
-			repRuleLorentzIndices = MapIndexed[Rule[ToExpression["Lor"<>ToString[First[#2]]],#1]&,liNames]
+
+		Switch[liNames,
+			_List,
+			repRuleLorentzIndices = MapIndexed[Rule[ToExpression["Lor"<>ToString[First[#2]]],#1]&,liNames],
+			_Symbol,
+			repRuleLorentzIndices = Table[Rule[ToExpression["Lor"<>ToString[i]],ToExpression[ToString[liNames]<>ToString[i]]],{i,1,Length[lorentzIndices]}],
+			_,
+			Null
 		];
-		If[	sunNames=!={},
-			repRuleSUNIndices = MapIndexed[Rule[ToExpression["Glu"<>ToString[First[#2]]],#1]&,sunNames]
+
+		Switch[sunNames,
+			_List,
+			repRuleSUNIndices = MapIndexed[Rule[ToExpression["Glu"<>ToString[First[#2]]],#1]&,sunNames],
+			_Symbol,
+			repRuleSUNIndices = Table[Rule[ToExpression["Glu"<>ToString[i]],ToExpression[ToString[sunNames]<>ToString[i]]],{i,1,Length[sunIndices]}],
+			_,
+			Null
 		];
-		If[	sunfNames=!={},
-			repRuleSUNFIndices = MapIndexed[Rule[ToExpression["Col"<>ToString[First[#2]]],#1]&,sunfNames]
+
+		Switch[sunfNames,
+			_List,
+			repRuleSUNFIndices = MapIndexed[Rule[ToExpression["Col"<>ToString[First[#2]]],#1]&,sunfNames],
+			_Symbol,
+			repRuleSUNFIndices = Table[Rule[ToExpression["Col"<>ToString[i]],ToExpression[ToString[sunfNames]<>ToString[i]]],{i,1,Length[sunfIndices]}],
+			_,
+			Null
 		];
+
 
 		If[	polVecs=!={},
 			repRulePolVectors = Map[Rule[Polarization[#,Pattern[x,BlankNullSequence[]]],
 				Polarization[#,x,Transversality->True]]&,polVecs]
 		];
 
-		diagsConverted = diagsConverted/.repRuleMomenta/.repRuleLorentzIndices/.repRuleSUNIndices/.
-			repRuleSUNFIndices/. repRulePolVectors;
+		diagsConverted = diagsConverted /. Dispatch[repRuleMomenta] /. Dispatch[repRuleLorentzIndices] /. Dispatch[repRuleSUNIndices] /.
+			Dispatch[repRuleSUNFIndices] /. repRulePolVectors;
+
+
+		If[	OptionValue[InitialSubstitutions]=!={},
+			diagsConverted = diagsConverted /. OptionValue[InitialSubstitutions]
+		];
 
 		If[	OptionValue[ChangeDimension]=!=False,
 			diagsConverted= ChangeDimension[diagsConverted,dim]
@@ -150,12 +200,12 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[__][diags___], OptionsPattern[]
 			diagsConverted = Total[diagsConverted]
 		];
 
-		If[	OptionValue[FinalSubstitutions]=!={},
-			diagsConverted = diagsConverted /. OptionValue[FinalSubstitutions]
-		];
-
 		If[	!FreeQ[diagsConverted,DiracIndex] && OptionValue[FCFADiracChainJoin],
 			diagsConverted = FCFADiracChainJoin[diagsConverted,FCI->True]
+		];
+
+		If[	OptionValue[FinalSubstitutions]=!={},
+			diagsConverted = diagsConverted /. OptionValue[FinalSubstitutions]
 		];
 
 		Return[diagsConverted]

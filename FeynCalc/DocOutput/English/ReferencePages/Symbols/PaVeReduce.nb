@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     47038,       1415]
-NotebookOptionsPosition[     40712,       1208]
-NotebookOutlinePosition[     44493,       1320]
-CellTagsIndexPosition[     44377,       1314]
+NotebookDataLength[     47032,       1415]
+NotebookOptionsPosition[     40709,       1208]
+NotebookOutlinePosition[     44490,       1320]
+CellTagsIndexPosition[     44374,       1314]
 WindowTitle->PaVeReduce
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ PaVeReduce.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$207652], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$208660], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/PaVeReduce", ".html"]], None}]}]},
@@ -152,7 +152,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1713910284],
+ CellID->1846006980],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -184,7 +184,7 @@ Cell[BoxData[
     RowBox[{"WriteOutPaVe", "\[Rule]", "False"}], ",", 
     RowBox[{"MaxIterations", "\[Rule]", "\[Infinity]"}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{456, 71},
+ ImageSize->{456, 73},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"PaVeReduce",
@@ -211,7 +211,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1536895706],
+ CellID->620988512],
 
 Cell[CellGroupData[{
 
@@ -221,7 +221,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1759687694],
+ CellID->46054929],
 
 Cell[CellGroupData[{
 
@@ -1148,7 +1148,7 @@ D*MW2**4*S**2*T*1.84D3)\"\>"},
     Column],
    Function[BoxForm`e$, 
     TableForm[BoxForm`e$]]], TraditionalForm]], "Output",
- ImageSize->{461, 1272},
+ ImageSize->{461, 1280},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellTags->"PaVeReduce",
@@ -1221,7 +1221,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 19, 0, 41.675133}", 
+   "built" -> "{2020, 6, 20, 19, 9, 30.531811}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1254,67 +1254,67 @@ CellTagsIndex->{
   Cell[5266, 160, 139, 4, 70, "Input",
    CellTags->"PaVeReduce",
    CellID->1685498711],
-  Cell[5408, 166, 994, 25, 92, "Output",
+  Cell[5408, 166, 994, 25, 94, "Output",
    CellTags->"PaVeReduce",
    CellID->458544387],
-  Cell[7097, 227, 539, 17, 45, "Input",
+  Cell[7094, 227, 539, 17, 45, "Input",
    CellTags->"PaVeReduce",
    CellID->311139632],
-  Cell[7639, 246, 266, 10, 37, "Output",
+  Cell[7636, 246, 266, 10, 37, "Output",
    CellTags->"PaVeReduce",
    CellID->516283693],
-  Cell[7942, 261, 124, 4, 27, "Input",
+  Cell[7939, 261, 124, 4, 27, "Input",
    CellTags->"PaVeReduce",
    CellID->927282004],
-  Cell[8069, 267, 5286, 178, 282, "Output",
+  Cell[8066, 267, 5286, 178, 282, "Output",
    CellTags->"PaVeReduce",
    CellID->1592936160],
-  Cell[13392, 450, 509, 16, 45, "Input",
+  Cell[13389, 450, 509, 16, 45, "Input",
    CellTags->"PaVeReduce",
    CellID->1031771651],
-  Cell[13904, 468, 634, 22, 55, "Output",
+  Cell[13901, 468, 634, 22, 55, "Output",
    CellTags->"PaVeReduce",
    CellID->1972744154],
-  Cell[14575, 495, 416, 13, 45, "Input",
+  Cell[14572, 495, 416, 13, 45, "Input",
    CellTags->"PaVeReduce",
    CellID->2052937684],
-  Cell[14994, 510, 902, 27, 85, "Output",
+  Cell[14991, 510, 902, 27, 85, "Output",
    CellTags->"PaVeReduce",
    CellID->1778677368],
-  Cell[15911, 540, 227, 8, 27, "Input",
+  Cell[15908, 540, 227, 8, 27, "Input",
    CellTags->"PaVeReduce",
    CellID->1002068234],
-  Cell[16141, 550, 179, 6, 27, "Input",
+  Cell[16138, 550, 179, 6, 27, "Input",
    CellTags->"PaVeReduce",
    CellID->175960789],
-  Cell[16345, 560, 696, 20, 45, "Input",
+  Cell[16342, 560, 696, 20, 45, "Input",
    CellTags->"PaVeReduce",
    CellID->1868254708],
-  Cell[17044, 582, 16051, 437, 845, "Output",
+  Cell[17041, 582, 16051, 437, 845, "Output",
    CellTags->"PaVeReduce",
    CellID->775966781],
-  Cell[33110, 1022, 285, 9, 27, "Input",
+  Cell[33107, 1022, 285, 9, 27, "Input",
    CellTags->"PaVeReduce",
    CellID->1848976065],
-  Cell[33420, 1035, 392, 12, 45, "Input",
+  Cell[33417, 1035, 392, 12, 45, "Input",
    CellTags->"PaVeReduce",
    CellID->193852328],
-  Cell[33815, 1049, 5837, 106, 1308, "Output",
+  Cell[33812, 1049, 5837, 106, 1316, "Output",
    CellTags->"PaVeReduce",
    CellID->2020509582],
-  Cell[39667, 1158, 293, 9, 27, "Input",
+  Cell[39664, 1158, 293, 9, 27, "Input",
    CellTags->"PaVeReduce",
    CellID->793776799]},
  "PrimaryExamplesSection"->{
-  Cell[6463, 198, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[6463, 198, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1536895706]}
+   CellID->620988512]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PaVeReduce", 42545, 1252},
- {"PrimaryExamplesSection", 44233, 1307}
+ {"PaVeReduce", 42543, 1252},
+ {"PrimaryExamplesSection", 44231, 1307}
  }
 *)
 (*NotebookFileOutline
@@ -1328,95 +1328,95 @@ Cell[4003, 114, 440, 12, 85, "Usage",
 Cell[CellGroupData[{
 Cell[4468, 130, 739, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->1713910284],
+ CellID->1846006980],
 Cell[5210, 156, 31, 0, 70, "SectionHeaderSpacer"],
 Cell[CellGroupData[{
 Cell[5266, 160, 139, 4, 70, "Input",
  CellTags->"PaVeReduce",
  CellID->1685498711],
-Cell[5408, 166, 994, 25, 92, "Output",
+Cell[5408, 166, 994, 25, 94, "Output",
  CellTags->"PaVeReduce",
  CellID->458544387]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6463, 198, 388, 15, 31, "PrimaryExamplesSection",
+Cell[6463, 198, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1536895706],
+ CellID->620988512],
 Cell[CellGroupData[{
-Cell[6876, 217, 196, 6, 26, "ExampleSection",
- CellID->1759687694],
+Cell[6875, 217, 194, 6, 26, "ExampleSection",
+ CellID->46054929],
 Cell[CellGroupData[{
-Cell[7097, 227, 539, 17, 45, "Input",
+Cell[7094, 227, 539, 17, 45, "Input",
  CellTags->"PaVeReduce",
  CellID->311139632],
-Cell[7639, 246, 266, 10, 37, "Output",
+Cell[7636, 246, 266, 10, 37, "Output",
  CellTags->"PaVeReduce",
  CellID->516283693]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7942, 261, 124, 4, 27, "Input",
+Cell[7939, 261, 124, 4, 27, "Input",
  CellTags->"PaVeReduce",
  CellID->927282004],
-Cell[8069, 267, 5286, 178, 282, "Output",
+Cell[8066, 267, 5286, 178, 282, "Output",
  CellTags->"PaVeReduce",
  CellID->1592936160]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13392, 450, 509, 16, 45, "Input",
+Cell[13389, 450, 509, 16, 45, "Input",
  CellTags->"PaVeReduce",
  CellID->1031771651],
-Cell[13904, 468, 634, 22, 55, "Output",
+Cell[13901, 468, 634, 22, 55, "Output",
  CellTags->"PaVeReduce",
  CellID->1972744154]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14575, 495, 416, 13, 45, "Input",
+Cell[14572, 495, 416, 13, 45, "Input",
  CellTags->"PaVeReduce",
  CellID->2052937684],
-Cell[14994, 510, 902, 27, 85, "Output",
+Cell[14991, 510, 902, 27, 85, "Output",
  CellTags->"PaVeReduce",
  CellID->1778677368]
 }, Open  ]],
-Cell[15911, 540, 227, 8, 27, "Input",
+Cell[15908, 540, 227, 8, 27, "Input",
  CellTags->"PaVeReduce",
  CellID->1002068234],
-Cell[16141, 550, 179, 6, 27, "Input",
+Cell[16138, 550, 179, 6, 27, "Input",
  CellTags->"PaVeReduce",
  CellID->175960789],
 Cell[CellGroupData[{
-Cell[16345, 560, 696, 20, 45, "Input",
+Cell[16342, 560, 696, 20, 45, "Input",
  CellTags->"PaVeReduce",
  CellID->1868254708],
-Cell[17044, 582, 16051, 437, 845, "Output",
+Cell[17041, 582, 16051, 437, 845, "Output",
  CellTags->"PaVeReduce",
  CellID->775966781]
 }, Open  ]],
-Cell[33110, 1022, 285, 9, 27, "Input",
+Cell[33107, 1022, 285, 9, 27, "Input",
  CellTags->"PaVeReduce",
  CellID->1848976065],
 Cell[CellGroupData[{
-Cell[33420, 1035, 392, 12, 45, "Input",
+Cell[33417, 1035, 392, 12, 45, "Input",
  CellTags->"PaVeReduce",
  CellID->193852328],
-Cell[33815, 1049, 5837, 106, 1308, "Output",
+Cell[33812, 1049, 5837, 106, 1316, "Output",
  CellTags->"PaVeReduce",
  CellID->2020509582]
 }, Open  ]],
-Cell[39667, 1158, 293, 9, 27, "Input",
+Cell[39664, 1158, 293, 9, 27, "Input",
  CellTags->"PaVeReduce",
  CellID->793776799]
 }, Open  ]],
-Cell[39975, 1170, 31, 0, 29, "SectionFooterSpacer"]
+Cell[39972, 1170, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[40043, 1175, 270, 12, 31, "SeeAlsoSection",
+Cell[40040, 1175, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[40316, 1189, 354, 14, 56, "SeeAlso",
+Cell[40313, 1189, 354, 14, 56, "SeeAlso",
  CellID->939950363]
 }, Open  ]],
-Cell[40685, 1206, 23, 0, 41, "FooterCell"]
+Cell[40682, 1206, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

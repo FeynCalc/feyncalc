@@ -35,35 +35,52 @@ spchtrVerbose::usage="";
 
 Options[SpinorChainTrick] = {
 	CartesianIndexNames			-> {},
+	Collecting					-> True,
 	Contract 					-> True,
+	DiracChain					-> True,
 	DiracEquation				-> True,
 	DiracGammaCombine			-> False,
+	DiracOrder					-> False,
 	DiracSigmaExplicit			-> True,
 	DiracTrick					-> True,
 	DotSimplify					-> True,
 	FCCanonicalizeDummyIndices	-> True,
+	FCDiracIsolate				-> True,
 	FCE							-> False,
 	FCI							-> False,
 	FCJoinDOTs					-> True,
 	FCVerbose					-> False,
 	Factoring					-> {Factor2, 5000},
-	LorentzIndexNames			-> {}
+	LorentzIndexNames			-> {},
+	PairContract 				-> True,
+	SirlinSimplify				-> False,
+	TimeConstrained 			-> 3
 };
 
-SpinorChainTrick[expr_, OptionsPattern[]] :=
-	Block[{ex, tmp, dsHead, dsIso, freePart,dsPart, null1, null2, time, diracObjects, optDiracSigmaExplicit,
-		optDiracGammaCombine, diracObjectsEval, repRule, res},
+SpinorChainTrick[a_ == b_, opts:OptionsPattern[]] :=
+	SpinorChainTrick[a,opts] == SpinorChainTrick[b,opts];
 
-		optDiracSigmaExplicit	= OptionValue[DiracSigmaExplicit];
-		optDiracGammaCombine	= OptionValue[DiracGammaCombine];
+SpinorChainTrick[expr_List, opts:OptionsPattern[]]:=
+	(SpinorChainTrick[#, opts]&/@expr)/; OptionValue[FCDiracIsolate]=!=List;
+
+SpinorChainTrick[expr_, OptionsPattern[]] :=
+	Block[{ex, tmp,  dsIso, freePart,dsPart, null1, null2, time, diracObjects, optDiracSigmaExplicit,
+		optDiracGammaCombine, diracObjectsEval, repRule, res, timeAll, dsHead,
+		optFCDiracIsolate, optDiracEquation, optDiracOrder, optFCCanonicalizeDummyIndices,
+		liPrefix,ciPrefix,liNames,ciNames},
+
+		timeAll=AbsoluteTime[];
+
+		optDiracSigmaExplicit			= OptionValue[DiracSigmaExplicit];
+		optDiracGammaCombine			= OptionValue[DiracGammaCombine];
+		optFCDiracIsolate 				= OptionValue[FCDiracIsolate];
+		optDiracEquation				= OptionValue[DiracEquation];
+		optDiracOrder					= OptionValue[DiracOrder];
+		optFCCanonicalizeDummyIndices	= OptionValue[FCCanonicalizeDummyIndices];
 
 		If[ OptionValue[FCI],
 			ex = expr,
 			ex = FCI[expr]
-		];
-
-		If[	FreeQ[ex,Spinor],
-			Return[ex]
 		];
 
 		If[	OptionValue[FCVerbose]===False,
@@ -77,94 +94,123 @@ SpinorChainTrick[expr_, OptionsPattern[]] :=
 		FCPrint[1, "SpinorChainTrick. Entering.", FCDoControl->spchtrVerbose];
 		FCPrint[3, "SpinorChainTrick: Entering with ", ex, FCDoControl->spchtrVerbose];
 
-		FCPrint[1, "SpinorChainTrick: Isolating spinor chains.", FCDoControl->spchtrVerbose];
-		time=AbsoluteTime[];
-		tmp = FCDiracIsolate[ex,FCI->True, Head->dsHead, DotSimplify->True, DiracGammaCombine->optDiracGammaCombine,
-				DiracSigmaExplicit->optDiracSigmaExplicit, LorentzIndex->All, Spinor->Join, DiracGamma->False, FCJoinDOTs-> OptionValue[FCJoinDOTs],
-				Isolate->True, IsolateNames->dsIso, Factoring -> False, FCTraceExpand->True](* /. dsHead->Identity*);
-		FCPrint[1, "SpinorChainTrick: Done isolating spinor chains, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchtrVerbose];
-		FCPrint[3, "SpinorChainTrick: After FCDiracIsolate ", tmp, FCDoControl->spchtrVerbose];
-
-		If[	OptionValue[FCCanonicalizeDummyIndices],
-			FCPrint[1, "SpinorChainTrick: Canonicalize dummy Lorentz and Cartesian indices.", FCDoControl->spchtrVerbose];
+		Switch[optFCDiracIsolate,
+			True,
+			(*Normal mode*)
 			time=AbsoluteTime[];
-
-			tmp = FCCanonicalizeDummyIndices[tmp , FCI->True, Head->{LorentzIndex,CartesianIndex}, DotSimplify->False,
-				LorentzIndexNames-> OptionValue[LorentzIndexNames], CartesianIndexNames-> OptionValue[CartesianIndexNames]];
-			FCPrint[1, "SpinorChainTrick: Done canonicalize dummy Lorentz and Cartesian indices, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchtrVerbose];
-			FCPrint[3, "SpinorChainTrick: After FCCanonicalizeDummyIndices ", tmp, FCDoControl->spchtrVerbose]
-		];
-
-
-		If[	OptionValue[Contract],
-			FCPrint[1, "SpinorChainTrick: Applying Contract.", FCDoControl->spchtrVerbose];
-			time=AbsoluteTime[];
-			tmp = tmp /. dsHead[x_] :> Contract[x, FCI->True];
-			FCPrint[1, "SpinorChainTrick: Contract done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchtrVerbose];
-			FCPrint[3, "SpinorChainTrick: After Contract ", tmp, FCDoControl->spchtrVerbose]
-		];
-
-		tmp = FRH[tmp, IsolateNames->dsIso];
-
-		FCPrint[1, "SpinorChainTrick: Isolating spinor chains (again).", FCDoControl->spchtrVerbose];
-		time=AbsoluteTime[];
-		tmp = FCDiracIsolate[tmp,FCI->True,Head->dsHead, DotSimplify->False, DiracGammaCombine->optDiracGammaCombine, FCJoinDOTs-> OptionValue[FCJoinDOTs],
-			DiracSigmaExplicit->False, LorentzIndex->All, Spinor->Join, DiracGamma->False, Factoring -> OptionValue[Factoring]];
-		FCPrint[1, "SpinorChainTrick: Done isolating spinor chains, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchtrVerbose];
-		FCPrint[3, "SpinorChainTrick: After second FCDiracIsolate ", tmp, FCDoControl->spchtrVerbose];
-
-
-		diracObjects = Cases[tmp+null1+null2, dsHead[_], Infinity]//Sort//DeleteDuplicates;
-		FCPrint[3,"SpinorChainTrick: diracObjects: ", diracObjects , FCDoControl->spchtrVerbose];
-
-
-		FCPrint[1, "SpinorChainTrick: Simplifying products of spinor chains.", FCDoControl->spchtrVerbose];
-		time=AbsoluteTime[];
-		diracObjectsEval = Map[(spinorChainTrickEval[#])&, (diracObjects/.dsHead->Identity/. DOT->holdDOT)] /. spinorChainTrickEval -> Identity /. holdDOT->DOT;
-		FCPrint[1, "SpinorChainTrick: Done simplifying products of spinor chains, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchtrVerbose];
-		FCPrint[3, "SpinorChainTrick: diracObjectsEval: ", diracObjectsEval, FCDoControl->spchtrVerbose];
-
-
-		If[	OptionValue[DiracEquation],
-			FCPrint[1, "SpinorChainTrick: Applying Dirac equation to the products of spinor chains.", FCDoControl->spchtrVerbose];
-			time=AbsoluteTime[];
-			diracObjectsEval = Map[DiracEquation[#,FCI->True]&, diracObjectsEval];
-			FCPrint[1, "SpinorChainTrick: Done applying Dirac equation, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchtrVerbose];
-			FCPrint[3, "SpinorChainTrick: diracObjectsEval: ", diracObjectsEval, FCDoControl->spchtrVerbose];
-		];
-
-		If[	OptionValue[DiracTrick],
-			FCPrint[1, "SpinorChainTrick: Applying DiracTrick to the products of spinor chains.", FCDoControl->spchtrVerbose];
-			time=AbsoluteTime[];
-			diracObjectsEval = Map[DiracTrick[#,FCI->True]&, diracObjectsEval];
-			FCPrint[1, "SpinorChainTrick: Done applying DiracTrick, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchtrVerbose];
-			FCPrint[3, "SpinorChainTrick: diracObjectsEval: ", diracObjectsEval, FCDoControl->spchtrVerbose];
-		];
-
-		If[ !FreeQ2[diracObjectsEval,{spinorChainTrickEval,holdDOT}],
-			Message[SpinorChainTrick::failmsg,"Evaluation of isolated objects failed."];
+			FCPrint[1, "SpinorChainTrick: Isolating spinor chains.", FCDoControl->spchtrVerbose];
+			tmp = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->optDiracGammaCombine,
+				DiracSigmaExplicit->optDiracSigmaExplicit, LorentzIndex->All, CartesianIndex->All,
+				DiracChain->OptionValue[DiracChain], Split->False];
+			diracObjects = Cases[tmp+null1+null2, dsHead[_], Infinity]//Sort//DeleteDuplicates;
+			diracObjectsEval = diracObjects /. dsHead->Identity;
+			FCPrint[1, "SpinorChainTrick: Done isolating spinor chains, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchtrVerbose];
+			FCPrint[3, "SpinorChainTrick: After FCDiracIsolate ", diracObjectsEval, FCDoControl->spchtrVerbose],
+			False,
+			(*Fast mode, no FCDiracIsolate*)
+			diracObjects = dsHead[ex];
+			diracObjectsEval = ex;
+			tmp = dsHead[ex],
+			List,
+			(*	Special mode, the input is already a list of isolated objects and should be returned in the same form *)
+			diracObjectsEval = ex,
+			_,
+			Message[SpinorChainTrick::failmsg,"Unknown value for the FCDiracIsolate option"];
 			Abort[]
 		];
 
-		FCPrint[1, "SpinorChainTrick: Inserting Dirac objects back.", FCDoControl->spchtrVerbose];
-		time=AbsoluteTime[];
-		repRule = Thread[Rule[diracObjects, diracObjectsEval]];
-		FCPrint[3,"SpinorChainTrick: repRule: ",repRule , FCDoControl->spchtrVerbose];
-		res =  ( tmp/. Dispatch[repRule]);
-		FCPrint[1, "SpinorChainTrick: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchtrVerbose];
+		If[ OptionValue[Contract],
+				time=AbsoluteTime[];
+				FCPrint[1, "SpinorChainTrick: Doing index contractions.", FCDoControl->spchtrVerbose];
+				diracObjectsEval = FeynCalc`Package`diracChainContract/@diracObjectsEval;
+				FCPrint[1, "SpinorChainTrick: Index contractions done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchtrVerbose];
+				FCPrint[3, "SpinorChainTrick: diracObjectsEval after index contractions: ", diracObjectsEval, FCDoControl->spchtrVerbose];
+		];
+
+		If[	!MatchQ[FCGetDimensions[diracObjectsEval],{_}],
+			time=AbsoluteTime[];
+			FCPrint[1, "SpinorChainTrick: Applying spinorChainTrickEval.", FCDoControl->spchtrVerbose];
+			diracObjectsEval =	Map[(spinorChainTrickEval[# /. DOT->holdDOT]/. spinorChainTrickEval->Identity /. holdDOT->DOT)&, diracObjectsEval];
+			FCPrint[1, "SpinorChainTrick: Done applying spinorChainTrickEval, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchtrVerbose];
+			FCPrint[3, "SpinorChainTrick: diracObjectsEval after spinorChainTrickEval: ", diracObjectsEval, FCDoControl->spchtrVerbose];
+		];
+
+		(*	Dirac equation	*)
+		If[	!FreeQ[diracObjectsEval,Spinor] && optDiracEquation,
+			time=AbsoluteTime[];
+			FCPrint[2,"SpinorChainTrick: Applying DiracEquation.", FCDoControl->spchtrVerbose];
+			diracObjectsEval = DiracEquation[#, FCI->True]&/@diracObjectsEval;
+			FCPrint[2,"SpinorChainTrick: DiracEquation done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchtrVerbose];
+			FCPrint[3,"SpinorChainTrick: After DiracEquation: ", diracObjectsEval, FCDoControl->spchtrVerbose];
+		];
+
+		If [ OptionValue[SirlinSimplify] && FCGetDimensions[diracObjectsEval]==={4},
+
+				FCPrint[1, "SpinorChainTrick: Applying SirlinSimplify.", FCDoControl->spchtrVerbose];
+				time=AbsoluteTime[];
+				diracObjectsEval = SirlinSimplify[#, FCI->True,DiracGammaCombine->optDiracGammaCombine, DiracSigmaExplicit->False,
+						SpinorChainTrick->False]&/@diracObjectsEval;
+
+				FCPrint[1,"SpinorChainTrick: Done applying SirlinSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchtrVerbose];
+				FCPrint[3, "SpinorChainTrick: After SirlinSimplify: ", diracObjectsEval, FCDoControl->spchtrVerbose]
+		];
+
+		(* 	Canonical ordering of Dirac matrices.	*)
+		If[ optDiracOrder,
+				time=AbsoluteTime[];
+				FCPrint[1,"SpinorChainTrick: Applying DiracOrder.", FCDoControl->spchtrVerbose];
+				diracObjectsEval = DiracOrder[#, FCI->True, FCJoinDOTs->False, DiracTrick->Last]&/@diracObjectsEval;
+				FCPrint[1,"SpinorChainTrick: Done applying DiracOrder, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchtrVerbose];
+				FCPrint[3, "SpinorChainTrick: After DiracOrder: ", diracObjectsEval, FCDoControl->spchtrVerbose]
+		];
+
+		If[ optFCCanonicalizeDummyIndices,
+			time=AbsoluteTime[];
+			FCPrint[1,"SpinorChainTrick: Applying FCCanonicalizeDummyIndices.", FCDoControl->spchtrVerbose];
+			liPrefix=ToString[Unique["LI"]];
+			ciPrefix=ToString[Unique["LI"]];
+			liNames=Table[FCGV[liPrefix<>ToString[i]], {i,1,Length[Cases2[diracObjectsEval, LorentzIndex]]}];
+			ciNames=Table[FCGV[ciPrefix<>ToString[i]], {i,1,Length[Cases2[diracObjectsEval, CartesianIndex]]}];
+			diracObjectsEval = FCCanonicalizeDummyIndices[#, FCI->True,
+				LorentzIndexNames->Join[OptionValue[LorentzIndexNames],liNames],
+				CartesianIndexNames->Join[OptionValue[CartesianIndexNames],ciNames],
+				Head -> {LorentzIndex, CartesianIndex, DiracIndex}, DotSimplify->False]&/@diracObjectsEval;
+			FCPrint[1,"SpinorChainTrick: Done applying FCCanonicalizeDummyIndices, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchtrVerbose]
+		];
+
+
+
+		If[	TrueQ[optFCDiracIsolate===List],
+			Return[diracObjectsEval],
+			FCPrint[1, "SpinorChainTrick: Inserting Dirac objects back.", FCDoControl->spchtrVerbose];
+			time=AbsoluteTime[];
+			repRule = Thread[Rule[diracObjects, diracObjectsEval]];
+			FCPrint[3,"SpinorChainTrick: repRule: ",repRule , FCDoControl->spchtrVerbose];
+			res =  ( tmp/. Dispatch[repRule]);
+			FCPrint[1, "SpinorChainTrick: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchtrVerbose]
+		];
+
+		If[	OptionValue[Collecting],
+			time=AbsoluteTime[];
+			FCPrint[1, "SpinorChainTrick: Applying Collect2.", FCDoControl->spchtrVerbose];
+			res = Collect2[res, FeynCalc`Package`DiracHeadsList, Factoring->OptionValue[Factoring], TimeConstrained->OptionValue[TimeConstrained] ];
+			FCPrint[1, "SpinorChainTrick: Collect2 done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->spchtrVerbose];
+			FCPrint[3, "SpinorChainTrick: After Collect2: ", res, FCDoControl->spchtrVerbose]
+		];
 
 		If[ OptionValue[FCE],
 			res = FCE[res]
 		];
 
 		FCPrint[1, "SpinorChainTrick: Leaving.", FCDoControl->spchtrVerbose];
+		FCPrint[1, "SpinorChainTrick: Total time: ", N[AbsoluteTime[] - timeAll, 4], FCDoControl->spchtrVerbose];
 		FCPrint[3, "SpinorChainTrick: Leaving with ", res, FCDoControl->spchtrVerbose];
 
 
 
 		res
 
-	];
+	]/; (!MemberQ[{Equal},expr] || (Head[expr]===List && OptionValue[FCDiracIsolate]===List));
 
 (* 4 and D *)
 spinorChainTrickEval[c_. holdDOT[a1___, DiracGamma[LorentzIndex[arg_]], b1___] holdDOT[a2___, DiracGamma[LorentzIndex[arg_, dim_Symbol], dim_Symbol], b2___]]:=

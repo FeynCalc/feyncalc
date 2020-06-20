@@ -40,9 +40,17 @@ If[ Names["Tests`Shared`fcstSharedObjectsCheckAbort"]=!={},
 ];
 
 If[ Names["Tests`Shared`fcstSharedObjectsTypesetting*"]=!={} && $VersionNumber >= 10,
+
+	FCAttachTypesettingRule[im[{"f_em","3P2"}],"Im \!\(\*SubscriptBox[\(f\), \(em\)]\)\!\(\*SuperscriptBox[\"\", \
+3]\)\!\(\*SuperscriptBox[P, 0]\)"];
+	FCAttachTypesettingRule[pp1,{SubscriptBox,p,1}];
+	FCAttachTypesettingRule[n0,{SubscriptBox,n,0}];
+	FCAttachTypesettingRule[m12,{SubsuperscriptBox,m,1,2}];
+
 	tmpTest = Map[test[StringReplace[ToString[(ToExpression[#[[2]]]),InputForm, CharacterEncoding -> "Unicode"]," " ->""],StringReplace[(#[[3]])," " ->""],testID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`Shared`fcstSharedObjectsTypesetting*"])];
-	tmpTest = tmpTest /. testID->TestID /. test -> Test
+	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+	FCRemoveTypesettingRules[{im[{"f_em","3P2"}], pp1, n0, m12}]
 ];
 
 If[ Names["Tests`Shared`fcstFCCheckSyntax*"]=!={},

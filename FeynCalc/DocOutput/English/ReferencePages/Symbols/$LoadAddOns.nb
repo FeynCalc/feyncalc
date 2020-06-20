@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5670,        158]
+NotebookDataLength[      5672,        158]
 NotebookOptionsPosition[      3694,        106]
-NotebookOutlinePosition[      5606,        155]
-CellTagsIndexPosition[      5563,        152]
+NotebookOutlinePosition[      5608,        155]
+CellTagsIndexPosition[      5565,        152]
 WindowTitle->$LoadAddOns
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ LoadAddOns.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$296193], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$297218], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/$LoadAddOns", ".html"]], None}]}]},
@@ -119,7 +119,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 19, 4, 25.091827}", 
+   "built" -> "{2020, 6, 20, 19, 12, 55.834693}", 
     "history" -> {"9.3", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 

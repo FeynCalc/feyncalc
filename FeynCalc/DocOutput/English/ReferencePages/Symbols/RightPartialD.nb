@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13515,        469]
+NotebookDataLength[     13516,        469]
 NotebookOptionsPosition[      9162,        333]
-NotebookOutlinePosition[     12072,        416]
-CellTagsIndexPosition[     11955,        410]
+NotebookOutlinePosition[     12073,        416]
+CellTagsIndexPosition[     11956,        410]
 WindowTitle->RightPartialD
 WindowFrame->Normal*)
 
@@ -83,7 +83,7 @@ RightPartialD.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$224089], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$225106], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/RightPartialD", ".html"]], None}]}]},
@@ -147,7 +147,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1777068154],
+ CellID->1844477344],
 
 Cell[CellGroupData[{
 
@@ -157,7 +157,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->2097032936],
+ CellID->1653875352],
 
 Cell[CellGroupData[{
 
@@ -346,7 +346,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 19, 1, 22.076186}", 
+   "built" -> "{2020, 6, 20, 19, 10, 7.435607}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -378,7 +378,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[4626, 134, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1777068154]},
+   CellID->1844477344]},
  "RightPartialD"->{
   Cell[5260, 163, 140, 4, 27, "Input",
    CellTags->"RightPartialD",
@@ -409,8 +409,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 10970, 377},
- {"RightPartialD", 11111, 381}
+ {"PrimaryExamplesSection", 10971, 377},
+ {"RightPartialD", 11112, 381}
  }
 *)
 (*NotebookFileOutline
@@ -423,10 +423,10 @@ Cell[4114, 114, 487, 16, 88, "Usage",
 Cell[CellGroupData[{
 Cell[4626, 134, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1777068154],
+ CellID->1844477344],
 Cell[CellGroupData[{
 Cell[5039, 153, 196, 6, 26, "ExampleSection",
- CellID->2097032936],
+ CellID->1653875352],
 Cell[CellGroupData[{
 Cell[5260, 163, 140, 4, 27, "Input",
  CellTags->"RightPartialD",

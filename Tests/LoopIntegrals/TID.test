@@ -875,11 +875,11 @@ nu])*GenPaVe[{1, 2}, {{0, m0}, {-p1, m1}, {-p2, m2}}] + FVD[p2, \
 mu]*FVD[p2, nu]*GenPaVe[{2, 2}, {{0, m0}, {-p1, m1}, {-p2, m2}}] + \
 GenPaVe[{0, 0}, {{0, m0}, {-p1, m1}, {-p2, m2}}]*MTD[mu, nu]"},
 {"fcstTID-ID39", "TID[FVD[q,mu]SFAD[-q,q-p]FAD[q-p],q,FCE->True]",
-"FAD[-p + q]*FVD[q, mu]*SFAD[{{q, 0}, {0, 1}, 1}, {{-p + q, 0}, \
-{0, 1}, 1}]"},
+"(FVD[p, mu]*SFAD[{{q, 0}, {0, 1}, 1}, {{q, 0}, {0, 1}, 1}, {{-p + q, 0},
+{0, 1}, 1}])/2 - (FVD[p, mu]*SFAD[{{q, 0}, {0, 1}, 1}, {{-p + q, 0}, {0, 1}, 1}])/(2*SPD[p, p])"},
 {"fcstTID-ID40", "TID[FVD[q,mu]SFAD[q,q-p]FAD[q-p],q,FCE->True]",
-"FAD[-p + q]*FVD[q, mu]*SFAD[{{q, 0}, {0, 1}, 1}, {{-p + q, 0}, \
-{0, 1}, 1}]"},
+"(FVD[p, mu]*SFAD[{{q, 0}, {0, 1}, 1}, {{q, 0}, {0, 1}, 1},
+{{-p + q, 0}, {0, 1}, 1}])/2 - (FVD[p, mu]*SFAD[{{q, 0}, {0, 1}, 1}, {{-p + q, 0}, {0, 1}, 1}])/(2*SPD[p, p])"},
 {"fcstTID-ID41", "TID[FVD[q,mu]SFAD[q,q-p,{{0,q.k}}],q,FCE->True]",
 "FVD[q, mu]*SFAD[{{0, k . q}, {0, 1}, 1}, {{q, 0}, {0, 1}, 1}, {{p \
 - q, 0}, {0, 1}, 1}]"},

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10220,        345]
+NotebookDataLength[     10219,        345]
 NotebookOptionsPosition[      6851,        243]
-NotebookOutlinePosition[      9286,        311]
-CellTagsIndexPosition[      9176,        305]
+NotebookOutlinePosition[      9285,        311]
+CellTagsIndexPosition[      9175,        305]
 WindowTitle->B0Unique
 WindowFrame->Normal*)
 
@@ -79,7 +79,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]},
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$27206], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$27311], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/B0Unique", ".html"]], None}]}]},
@@ -139,7 +139,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1501296835],
+ CellID->858293551],
 
 Cell[CellGroupData[{
 
@@ -149,7 +149,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->791572088],
+ CellID->1908271233],
 
 Cell["By default no transformation is done.", "Notes"],
 
@@ -256,7 +256,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 52, 47.637956}", 
+   "built" -> "{2020, 6, 20, 19, 2, 26.869980}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -286,9 +286,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4323, 126, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4323, 126, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1501296835]},
+   CellID->858293551]},
  "B0Unique"->{
   Cell[5013, 157, 154, 5, 27, "Input",
    CellTags->"B0Unique",
@@ -305,7 +305,7 @@ CellTagsIndex->{
 (*CellTagsIndex
 CellTagsIndex->{
  {"PrimaryExamplesSection", 8708, 287},
- {"B0Unique", 8844, 291}
+ {"B0Unique", 8843, 291}
  }
 *)
 (*NotebookFileOutline
@@ -316,12 +316,12 @@ Cell[3571, 97, 285, 11, 45, "ObjectNameGrid"],
 Cell[3859, 110, 439, 12, 102, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4323, 126, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4323, 126, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1501296835],
+ CellID->858293551],
 Cell[CellGroupData[{
-Cell[4736, 145, 195, 6, 26, "ExampleSection",
- CellID->791572088],
+Cell[4735, 145, 196, 6, 26, "ExampleSection",
+ CellID->1908271233],
 Cell[4934, 153, 54, 0, 32, "Notes"],
 Cell[CellGroupData[{
 Cell[5013, 157, 154, 5, 27, "Input",

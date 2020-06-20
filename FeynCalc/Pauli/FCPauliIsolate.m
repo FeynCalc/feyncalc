@@ -39,8 +39,9 @@ Options[FCPauliIsolate] = {
 	FCE 				-> False,
 	FCI					-> False,
 	FCJoinDOTs			-> True,
+	FCTraceExpand		-> False,
 	FCVerbose			-> False,
-	Factoring 			-> Factor,
+	Factoring 			-> {Factor2, 5000},
 	Head 				-> FCGV["PauliChain"],
 	Isolate 			-> False,
 	IsolateFast 		-> False,
@@ -49,6 +50,7 @@ Options[FCPauliIsolate] = {
 	PauliEta 			-> True,
 	PauliSigma 			-> True,
 	PauliSigmaCombine	-> True,
+	PauliTrace			-> True,
 	PauliXi				-> True,
 	Polarization		-> False,
 	Split				-> True,
@@ -61,13 +63,19 @@ makeSelectionList[expr_,heads_List]:=
 			Cases[SelectNotFree[expr, heads],  l: (_LorentzIndex| _CartesianIndex) :> l[[1]] ,Infinity]]]
 ];
 
+holdDOT[]=1;
+
+FCPauliIsolate[a_ == b_, opts:OptionsPattern[]] :=
+	FCPauliIsolate[a,opts] == FCPauliIsolate[b,opts];
+
 FCPauliIsolate[expr_List, opts:OptionsPattern[]]:=
 	FCPauliIsolate[#, opts]&/@expr;
 
-FCPauliIsolate[expr_/;Head[expr]=!=List, OptionsPattern[]] :=
-	Block[{	res, null1, null2, ex,tmp, head, selectionList, lorHead,
-			tmpHead,tmpHead2, time, fcpiVerbose, headsList,
-			optTimeConstrained, optHead, headR},
+FCPauliIsolate[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
+	Block[{	res, null1, null2, ex,tmp, head, selectionList,
+			tmpHead, time, fcpiVerbose, headsList, headsOrig,
+			optTimeConstrained, optHead, headR, collectList, optSplit,
+			allHeads, allHeadsEval},
 
 		If [OptionValue[FCVerbose]===False,
 			fcpiVerbose=$VeryVerbose,
@@ -77,7 +85,11 @@ FCPauliIsolate[expr_/;Head[expr]=!=List, OptionsPattern[]] :=
 		];
 
 		optTimeConstrained = OptionValue[TimeConstrained];
-		headsList =  PauliHeadsList;
+		optSplit = OptionValue[Split];
+		headsOrig =  Complement[PauliHeadsList,OptionValue[ExceptHeads]];
+		headsList = headsOrig;
+		collectList = headsList;
+
 
 		If[	OptionValue[Polarization],
 			headsList = Join[headsList,{Polarization}];
@@ -89,6 +101,16 @@ FCPauliIsolate[expr_/;Head[expr]=!=List, OptionsPattern[]] :=
 
 		If[	OptionValue[CartesianIndex]===All,
 			headsList = Join[headsList,{CartesianIndex}];
+		];
+
+		If [ OptionValue[Polarization]=!=False,
+			collectList = Join[collectList,{Polarization}]
+		];
+		If [ OptionValue[LorentzIndex]=!=False,
+			collectList = Join[collectList,{LorentzIndex}]
+		];
+		If [ OptionValue[CartesianIndex]=!=False,
+			collectList = Join[collectList,{CartesianIndex}]
 		];
 
 		optHead = OptionValue[Head];
@@ -137,17 +159,24 @@ FCPauliIsolate[expr_/;Head[expr]=!=List, OptionsPattern[]] :=
 			FCPrint[3, "FCPauliIsolate: After DotSimplify: ", ex, FCDoControl->fcpiVerbose]
 		];
 
+		If[	OptionValue[FCTraceExpand],
+			time=AbsoluteTime[];
+			FCPrint[1, "FCPauliIsolate: Applying FCTraceExpand.", FCDoControl->fcpiVerbose];
+			ex = FCTraceExpand[ex, FCI->True, SUNTrace->False];
+			FCPrint[1, "FCPauliIsolate: Done applying FCTraceExpand, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcpiVerbose];
+			FCPrint[3, "FCPauliIsolate: After FCTraceExpand: ", ex, FCDoControl->fcpiVerbose]
+		];
+
 		If[	OptionValue[Collecting],
 			time=AbsoluteTime[];
 			FCPrint[1, "FCPauliIsolate: Applying Collect2.", FCDoControl->fcpiVerbose];
 			ex = Collect2[ex,headsList,Factoring->OptionValue[Factoring],TimeConstrained->optTimeConstrained];
-			FCPrint[1, "FCPauliIsolate: Done applying Collect2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcpiVerbose]
+			FCPrint[1, "FCPauliIsolate: Done applying Collect2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcpiVerbose];
+			FCPrint[3, "FCPauliIsolate: After Collect2: ", ex, FCDoControl->fcpiVerbose]
 		];
 
-
-
 		time=AbsoluteTime[];
-		FCPrint[1, "FCPauliIsolate: Handling Lorentz and Cartesian indices.", FCDoControl->fcpiVerbose];
+		FCPrint[1, "FCPauliIsolate: Isolating heads.", FCDoControl->fcpiVerbose];
 		If[ OptionValue[LorentzIndex]===True || OptionValue[CartesianIndex]===True,
 			res = (Map[(selectionList=makeSelectionList[#,headsList]; restHead[SelectFree[#, selectionList]] head[SelectNotFree[#, selectionList]])&,
 				ex + null1 + null2] /. {null1 | null2 -> 0} /. head[1] -> 1),
@@ -155,11 +184,9 @@ FCPauliIsolate[expr_/;Head[expr]=!=List, OptionsPattern[]] :=
 			res = (Map[(restHead[SelectFree[#, headsList]] head[SelectNotFree[#, headsList]]) &,
 				ex + null1 + null2] /. {null1 | null2 -> 0} /. head[1] -> 1)
 		];
-		FCPrint[1, "FCPauliIsolate: Done handling Lorentz and Cartesian indices, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcpiVerbose];
+		FCPrint[1, "FCPauliIsolate: Done isolating heads, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcpiVerbose];
 
-		res = res /. {head[x_] /; !FreeQ2[x, OptionValue[ExceptHeads]] :> x};
-
-		If[ Together[(res /. restHead|head|tmpHead|lorHead|tmpHead2 -> Identity)-ex] =!= 0,
+		If[ Together[(res /. restHead|head -> Identity)-ex] =!= 0,
 			Message[FCPauliIsolate::fail, ex];
 			Abort[]
 		];
@@ -176,6 +203,11 @@ FCPauliIsolate[expr_/;Head[expr]=!=List, OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1, "FCPauliIsolate: Removing unneeded isolations.", FCDoControl->fcpiVerbose];
 		(* Here we unisolate objects that are not needed *)
+
+
+		If[	!OptionValue[PauliTrace] && !FreeQ[res,PauliTrace],
+			res = res //. head[x_PauliTrace y_.] :> x head[y]
+		];
 
 		If[	!OptionValue[PauliSigma],
 			res = res //. head[x_PauliSigma y_.] :> x head[y] //.

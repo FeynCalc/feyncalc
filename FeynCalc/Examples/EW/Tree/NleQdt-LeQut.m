@@ -35,7 +35,7 @@ $LoadAddOns={"FeynArts"};
 <<FeynCalc`
 $FAVerbose = 0;
 
-FCCheckVersion[9,3,0];
+FCCheckVersion[9,3,1];
 
 
 (* ::Section:: *)
@@ -138,9 +138,6 @@ crossSectionTotalMuon=PowerExpand[crossSectionTotal/.{SMP["m_u"]->0,
 
 (* ::Section:: *)
 (*Check the final results*)
-
-
-knownResults
 
 
 knownResults = {

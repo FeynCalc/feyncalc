@@ -58,11 +58,17 @@ FCChargeConjugateTransposed /:
 	MakeBoxes[FCChargeConjugateTransposed[ex_, OptionsPattern[]], TraditionalForm] :=
 		RowBox[{"C", SuperscriptBox[RowBox[{"(", TBox[ex], ")"}], "T"], SuperscriptBox["C", "-1"]}];
 
+FCChargeConjugateTransposed[a_ == b_, opts:OptionsPattern[]] :=
+	FCChargeConjugateTransposed[a,opts] == FCChargeConjugateTransposed[b,opts];
+
+FCChargeConjugateTransposed[expr_List, opts:OptionsPattern[]]:=
+	FCChargeConjugateTransposed[#, opts]&/@expr;
+
 FCChargeConjugateTransposed[ex_, OptionsPattern[]]:=
 	ex/; NonCommFreeQ[ex] && FCPatternFreeQ[{ex}];
 
 
-FCChargeConjugateTransposed[expr_, opts:OptionsPattern[]] :=
+FCChargeConjugateTransposed[expr_/; !MemberQ[{List,Equal},expr], opts:OptionsPattern[]] :=
 	Block[ {ex, time,dsHead,nonDsHead,diracObjects,
 		nonDiracObjects,diracObjectsEval,nonDiracObjectsEval,null1,null2, repRule1,repRule2,res},
 

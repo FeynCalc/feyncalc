@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     42383,       1550]
+NotebookDataLength[     42326,       1549]
 NotebookOptionsPosition[     35070,       1321]
-NotebookOutlinePosition[     38951,       1428]
-CellTagsIndexPosition[     38830,       1422]
+NotebookOutlinePosition[     38894,       1427]
+CellTagsIndexPosition[     38773,       1421]
 WindowTitle->GluonPropagator
 WindowFrame->Normal*)
 
@@ -87,7 +87,7 @@ GluonPropagator.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$157593], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$158601], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/GluonPropagator", ".html"]], None}]}]},
@@ -186,7 +186,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->2079292544],
+ CellID->625150897],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -272,7 +272,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1965231034],
+ CellID->1140230058],
 
 Cell[CellGroupData[{
 
@@ -282,7 +282,7 @@ Cell[TextData[{
  Cell["(5)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->104593034],
+ CellID->1867840360],
 
 Cell[CellGroupData[{
 
@@ -1334,7 +1334,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 58, 36.674137}", 
+   "built" -> "{2020, 6, 20, 19, 7, 37.022128}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -1356,8 +1356,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -1367,9 +1366,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[8229, 259, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[8228, 259, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1965231034]},
+   CellID->1140230058]},
  "GluonPropagator"->{
   Cell[8862, 288, 206, 6, 27, "Input",
    CellTags->"GluonPropagator",
@@ -1421,8 +1420,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 37093, 1368},
- {"GluonPropagator", 37236, 1372}
+ {"PrimaryExamplesSection", 37036, 1367},
+ {"GluonPropagator", 37179, 1371}
  }
 *)
 (*NotebookFileOutline
@@ -1434,27 +1433,27 @@ Cell[CellGroupData[{
 Cell[4370, 120, 1332, 40, 148, "Usage",
  CellID->2010081510],
 Cell[CellGroupData[{
-Cell[5727, 164, 739, 24, 31, "NotesSection",
+Cell[5727, 164, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->2079292544],
-Cell[6469, 190, 31, 0, 70, "SectionHeaderSpacer"],
-Cell[6503, 192, 250, 8, 70, "Notes"],
-Cell[6756, 202, 356, 13, 70, "Notes",
+ CellID->625150897],
+Cell[6468, 190, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[6502, 192, 250, 8, 32, "Notes"],
+Cell[6755, 202, 356, 13, 32, "Notes",
  CellID->1067943069],
-Cell[7115, 217, 386, 12, 70, "Notes"],
+Cell[7114, 217, 386, 12, 49, "Notes"],
 Cell[CellGroupData[{
-Cell[7526, 233, 99, 2, 70, "Input"],
-Cell[7628, 237, 540, 15, 56, "Output"]
+Cell[7525, 233, 99, 2, 27, "Input"],
+Cell[7627, 237, 540, 15, 56, "Output"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8229, 259, 388, 15, 31, "PrimaryExamplesSection",
+Cell[8228, 259, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1965231034],
+ CellID->1140230058],
 Cell[CellGroupData[{
-Cell[8642, 278, 195, 6, 26, "ExampleSection",
- CellID->104593034],
+Cell[8641, 278, 196, 6, 26, "ExampleSection",
+ CellID->1867840360],
 Cell[CellGroupData[{
 Cell[8862, 288, 206, 6, 27, "Input",
  CellTags->"GluonPropagator",

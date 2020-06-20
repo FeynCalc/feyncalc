@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7529,        232]
+NotebookDataLength[      7475,        231]
 NotebookOptionsPosition[      5168,        166]
-NotebookOutlinePosition[      7088,        216]
-CellTagsIndexPosition[      7045,        213]
+NotebookOutlinePosition[      7034,        215]
+CellTagsIndexPosition[      6991,        212]
 WindowTitle->CalculateCounterTerm
 WindowFrame->Normal*)
 
@@ -59,7 +59,7 @@ CalculateCounterTerm.html"], StandardForm]], "Input", TextClipboardType ->
           URL[
            StringJoin[
             If[
-             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$31238], 
+             TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$31343], 
              "http://reference.wolfram.com/system-modeler/", 
              "http://reference.wolfram.com/language/"], 
             "FeynCalc/ref/CalculateCounterTerm", ".html"]], None}]}]},
@@ -130,7 +130,7 @@ Cell[TextData[Cell[BoxData[
   Method->"Preemptive"]]]], "NotesSection",
  WholeCellGroupOpener->True,
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->468041515],
+ CellID->708151047],
 
 Cell["", "SectionHeaderSpacer"],
 
@@ -154,7 +154,7 @@ Cell[BoxData[
      RowBox[{"{", 
       RowBox[{"D", "\[Rule]", "4"}], "}"}]}]}], "}"}], 
   TraditionalForm]], "Output",
- ImageSize->{306, 14},
+ ImageSize->{306, 16},
  ImageMargins->{{0, 0}, {0, 0}},
  ImageRegion->{{0, 1}, {0, 1}},
  CellLabel->"Out[240]="]
@@ -167,7 +167,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"CalculateCounterTerm",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -179,7 +179,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 52, 58.155752}", 
+   "built" -> "{2020, 6, 20, 19, 2, 35.994088}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -199,8 +199,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -224,12 +223,12 @@ Cell[3238, 91, 420, 13, 85, "Usage",
 Cell[CellGroupData[{
 Cell[3683, 108, 738, 24, 31, "NotesSection",
  CellGroupingRules->{"SectionGrouping", 50},
- CellID->468041515],
-Cell[4424, 134, 31, 0, 70, "SectionHeaderSpacer"],
-Cell[4458, 136, 144, 3, 70, "Notes"],
+ CellID->708151047],
+Cell[4424, 134, 31, 0, 14, "SectionHeaderSpacer"],
+Cell[4458, 136, 144, 3, 49, "Notes"],
 Cell[CellGroupData[{
-Cell[4627, 143, 104, 2, 70, "Input"],
-Cell[4734, 147, 368, 12, 35, "Output"]
+Cell[4627, 143, 104, 2, 27, "Input"],
+Cell[4734, 147, 368, 12, 37, "Output"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]],

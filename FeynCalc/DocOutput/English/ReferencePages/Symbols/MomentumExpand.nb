@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16410,        584]
-NotebookOptionsPosition[     11229,        423]
-NotebookOutlinePosition[     14574,        517]
-CellTagsIndexPosition[     14456,        511]
+NotebookDataLength[     16348,        583]
+NotebookOptionsPosition[     11227,        423]
+NotebookOutlinePosition[     14514,        516]
+CellTagsIndexPosition[     14396,        510]
 WindowTitle->MomentumExpand
 WindowFrame->Normal*)
 
@@ -81,7 +81,7 @@ MomentumExpand.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$185599], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$186607], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/MomentumExpand", ".html"]], None}]}]},
@@ -142,7 +142,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1642036370],
+ CellID->223417773],
 
 Cell[CellGroupData[{
 
@@ -152,7 +152,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1027830822],
+ CellID->898264850],
 
 Cell[CellGroupData[{
 
@@ -423,8 +423,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{808, 911},
-WindowMargins->{{268, Automatic}, {Automatic, 20}},
+WindowSize->{725, 750},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"MomentumExpand",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -436,7 +436,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 18, 59, 46.307170}", 
+   "built" -> "{2020, 6, 20, 19, 8, 40.072838}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -456,8 +456,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -467,51 +466,51 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[4492, 129, 388, 15, 31, "PrimaryExamplesSection",
+  Cell[4492, 129, 387, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1642036370]},
+   CellID->223417773]},
  "MomentumExpand"->{
-  Cell[5126, 158, 236, 7, 27, "Input",
+  Cell[5124, 158, 236, 7, 27, "Input",
    CellTags->"MomentumExpand",
    CellID->2119019213],
-  Cell[5365, 167, 274, 8, 51, "Output",
+  Cell[5363, 167, 274, 8, 51, "Output",
    CellTags->"MomentumExpand"],
-  Cell[5676, 180, 185, 6, 27, "Input",
+  Cell[5674, 180, 185, 6, 27, "Input",
    CellTags->"MomentumExpand",
    CellID->840853851],
-  Cell[5864, 188, 696, 29, 37, "Output",
+  Cell[5862, 188, 696, 29, 37, "Output",
    CellTags->"MomentumExpand"],
-  Cell[6597, 222, 133, 4, 27, "Input",
+  Cell[6595, 222, 133, 4, 27, "Input",
    CellTags->"MomentumExpand",
    CellID->422127778],
-  Cell[6733, 228, 332, 10, 51, "Output",
+  Cell[6731, 228, 332, 10, 51, "Output",
    CellTags->"MomentumExpand"],
-  Cell[7102, 243, 229, 7, 27, "Input",
+  Cell[7100, 243, 229, 7, 27, "Input",
    CellTags->"MomentumExpand",
    CellID->1994358378],
-  Cell[7334, 252, 696, 29, 37, "Output",
+  Cell[7332, 252, 696, 29, 37, "Output",
    CellTags->"MomentumExpand"],
-  Cell[8067, 286, 134, 4, 27, "Input",
+  Cell[8065, 286, 134, 4, 27, "Input",
    CellTags->"MomentumExpand",
    CellID->1059717092],
-  Cell[8204, 292, 369, 11, 51, "Output",
+  Cell[8202, 292, 369, 11, 51, "Output",
    CellTags->"MomentumExpand"],
-  Cell[8610, 308, 253, 8, 27, "Input",
+  Cell[8608, 308, 253, 8, 27, "Input",
    CellTags->"MomentumExpand",
    CellID->242711247],
-  Cell[8866, 318, 928, 39, 37, "Output",
+  Cell[8864, 318, 928, 39, 37, "Output",
    CellTags->"MomentumExpand"],
-  Cell[9831, 362, 133, 4, 27, "Input",
+  Cell[9829, 362, 133, 4, 27, "Input",
    CellTags->"MomentumExpand",
    CellID->277317176],
-  Cell[9967, 368, 452, 14, 51, "Output",
+  Cell[9965, 368, 452, 14, 51, "Output",
    CellTags->"MomentumExpand"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 13126, 468},
- {"MomentumExpand", 13268, 472}
+ {"PrimaryExamplesSection", 13067, 467},
+ {"MomentumExpand", 13208, 471}
  }
 *)
 (*NotebookFileOutline
@@ -522,70 +521,70 @@ Cell[3746, 99, 291, 11, 45, "ObjectNameGrid"],
 Cell[4040, 112, 427, 13, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[4492, 129, 388, 15, 31, "PrimaryExamplesSection",
+Cell[4492, 129, 387, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1642036370],
+ CellID->223417773],
 Cell[CellGroupData[{
-Cell[4905, 148, 196, 6, 26, "ExampleSection",
- CellID->1027830822],
+Cell[4904, 148, 195, 6, 26, "ExampleSection",
+ CellID->898264850],
 Cell[CellGroupData[{
-Cell[5126, 158, 236, 7, 27, "Input",
+Cell[5124, 158, 236, 7, 27, "Input",
  CellTags->"MomentumExpand",
  CellID->2119019213],
-Cell[5365, 167, 274, 8, 51, "Output",
+Cell[5363, 167, 274, 8, 51, "Output",
  CellTags->"MomentumExpand"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5676, 180, 185, 6, 27, "Input",
+Cell[5674, 180, 185, 6, 27, "Input",
  CellTags->"MomentumExpand",
  CellID->840853851],
-Cell[5864, 188, 696, 29, 37, "Output",
+Cell[5862, 188, 696, 29, 37, "Output",
  CellTags->"MomentumExpand"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6597, 222, 133, 4, 27, "Input",
+Cell[6595, 222, 133, 4, 27, "Input",
  CellTags->"MomentumExpand",
  CellID->422127778],
-Cell[6733, 228, 332, 10, 51, "Output",
+Cell[6731, 228, 332, 10, 51, "Output",
  CellTags->"MomentumExpand"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7102, 243, 229, 7, 27, "Input",
+Cell[7100, 243, 229, 7, 27, "Input",
  CellTags->"MomentumExpand",
  CellID->1994358378],
-Cell[7334, 252, 696, 29, 37, "Output",
+Cell[7332, 252, 696, 29, 37, "Output",
  CellTags->"MomentumExpand"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8067, 286, 134, 4, 27, "Input",
+Cell[8065, 286, 134, 4, 27, "Input",
  CellTags->"MomentumExpand",
  CellID->1059717092],
-Cell[8204, 292, 369, 11, 51, "Output",
+Cell[8202, 292, 369, 11, 51, "Output",
  CellTags->"MomentumExpand"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8610, 308, 253, 8, 27, "Input",
+Cell[8608, 308, 253, 8, 27, "Input",
  CellTags->"MomentumExpand",
  CellID->242711247],
-Cell[8866, 318, 928, 39, 37, "Output",
+Cell[8864, 318, 928, 39, 37, "Output",
  CellTags->"MomentumExpand"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9831, 362, 133, 4, 27, "Input",
+Cell[9829, 362, 133, 4, 27, "Input",
  CellTags->"MomentumExpand",
  CellID->277317176],
-Cell[9967, 368, 452, 14, 51, "Output",
+Cell[9965, 368, 452, 14, 51, "Output",
  CellTags->"MomentumExpand"]
 }, Open  ]]
 }, Open  ]],
-Cell[10446, 386, 31, 0, 29, "SectionFooterSpacer"]
+Cell[10444, 386, 31, 0, 29, "SectionFooterSpacer"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10514, 391, 270, 12, 31, "SeeAlsoSection",
+Cell[10512, 391, 270, 12, 31, "SeeAlsoSection",
  CellID->1255426704],
-Cell[10787, 405, 400, 13, 56, "SeeAlso"]
+Cell[10785, 405, 400, 13, 56, "SeeAlso"]
 }, Open  ]],
-Cell[11202, 421, 23, 0, 70, "FooterCell"]
+Cell[11200, 421, 23, 0, 41, "FooterCell"]
 }
 ]
 *)

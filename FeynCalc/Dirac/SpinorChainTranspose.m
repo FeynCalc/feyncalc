@@ -54,7 +54,13 @@ Options[SpinorChainTranspose] = {
 	TimeConstrained -> 3
 };
 
-SpinorChainTranspose[expr_, OptionsPattern[]] :=
+SpinorChainTranspose[a_ == b_, opts:OptionsPattern[]] :=
+	SpinorChainTranspose[a,opts] == SpinorChainTranspose[b,opts];
+
+SpinorChainTranspose[expr_List, opts:OptionsPattern[]]:=
+	SpinorChainTranspose[#, opts]&/@expr;
+
+SpinorChainTranspose[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 	Block[{ex, tmp, dsHead, freePart,dsPart, null1, null2, time, diracObjects, diracObjectsEval,
 		repRule, res, optHead, optSelect, chainPatterns},
 

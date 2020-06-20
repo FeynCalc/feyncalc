@@ -76,7 +76,7 @@ Contract3[expr_Times, opts:OptionsPattern[]] :=
 
 
 		FCPrint[1,"Contract: Contract3: Entering.", FCDoControl->cnVerbose];
-		FCPrint[3,"Contract: Contract3: Entering with:", expr, FCDoControl->cnVerbose];
+		FCPrint[3,"Contract: Contract3: Entering with: ", expr, FCDoControl->cnVerbose];
 
 		If[ !FreeQ2[ex, {DiracGamma,DiracChain,Eps}],
 			FCPrint[1,"Contract: Contract3: Expression contains DiracGamma or Eps. Passing to Contract.", FCDoControl->cnVerbose];
@@ -111,8 +111,8 @@ Contract3[expr_Times, opts:OptionsPattern[]] :=
 		];
 		FCPrint[1,"Contract: Contract3: Splitting done. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
 
-		FCPrint[3,"Contract: Contract3: Part free of Lorentz indices:", nonli, FCDoControl->cnVerbose];
-		FCPrint[3,"Contract: Contract3: Part with Lorentz indices:", lipa, FCDoControl->cnVerbose];
+		FCPrint[3,"Contract: Contract3: Part free of Lorentz indices: ", nonli, FCDoControl->cnVerbose];
+		FCPrint[3,"Contract: Contract3: Part with Lorentz indices: ", lipa, FCDoControl->cnVerbose];
 
 
 
@@ -127,7 +127,7 @@ Contract3[expr_Times, opts:OptionsPattern[]] :=
 
 			res = nec nonli;
 			FCPrint[1,"Contract: Contract3: Leaving.", FCDoControl->cnVerbose];
-			FCPrint[3,"Contract: Contract3: Leaving with:",res, FCDoControl->cnVerbose];
+			FCPrint[3,"Contract: Contract3: Leaving with: ",res, FCDoControl->cnVerbose];
 			Return[res]
 		];
 
@@ -476,8 +476,8 @@ Contract[expr_, z:OptionsPattern[]] :=
 					True,
 					tmpFin = cartesianContract[tmp,z]
 			];
-			FCPrint[1,"Contract: mainContract done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
-			FCPrint[3, "Contract: After mainContract: ", tmpFin, FCDoControl->cnVerbose],
+			FCPrint[1,"Contract: cartesianContract done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
+			FCPrint[3, "Contract: After cartesianContract: ", tmpFin, FCDoControl->cnVerbose],
 
 			tmpFin = tmp
 		];
@@ -505,20 +505,21 @@ Contract[expr_, z:OptionsPattern[]] :=
 			FCPrint[1,"Contract: Expansion done: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
 		];
 
-		If[ !FreeQ[tmpFin, Eps],
-			time=AbsoluteTime[];
-			FCPrint[1,"Contract: Applying EpsEvaluate.", FCDoControl->cnVerbose];
-			If[	!FreeQ[tmpFin, Eps],
-				tmpFin = EpsEvaluate[tmpFin,FCI->True];
-			];
 
-			If[	renameOpt,
-				time=AbsoluteTime[];
-				FCPrint[1,"Contract: Renaming dummy indices in epsilon tensors.", FCDoControl->cnVerbose];
-				tmpFin = doubleindex[Expand2[ EpsEvaluate[tmpFin,FCI->True], Eps]];
-				FCPrint[1,"Contract: Renaming done: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
-			]
+
+		If[	!FreeQ[tmpFin, Eps],
+			FCPrint[1,"Contract: Applying EpsEvaluate.", FCDoControl->cnVerbose];
+			tmpFin = EpsEvaluate[tmpFin,FCI->True];
+			FCPrint[3,"Contract: After EpsEvaluate: ", tmpFin, FCDoControl->cnVerbose];
 		];
+
+		If[	renameOpt && !FreeQ[tmpFin, Eps],
+			time=AbsoluteTime[];
+			FCPrint[1,"Contract: Renaming dummy indices in epsilon tensors.", FCDoControl->cnVerbose];
+			tmpFin = doubleindex[Expand2[ EpsEvaluate[tmpFin,FCI->True], Eps]];
+			FCPrint[1,"Contract: Renaming done: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
+		];
+
 
 
 		If[ epsContractOpt,
@@ -568,19 +569,6 @@ Contract[expr_, z:OptionsPattern[]] :=
 
 		];
 
-		If[ epsContractOpt,
-			time=AbsoluteTime[];
-			FCPrint[1,"Contract: Applying EpsEvaluate.", FCDoControl->cnVerbose];
-			If[	!FreeQ[tmpFin, Eps],
-				tmpFin = EpsEvaluate[tmpFin,FCI->True];
-			];
-			If[	!FreeQ[noDummy, Eps],
-				noDummy = EpsEvaluate[noDummy,FCI->True];
-			];
-			FCPrint[1,"Contract: EpsEvaluate done: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
-		];
-
-
 		If[	!FreeQ[tmpFin,Pair] && !DummyIndexFreeQ[tmpFin,{LorentzIndex,CartesianIndex}],
 			time=AbsoluteTime[];
 			FCPrint[1,"Contract: Applying PairContract.", FCDoControl->cnVerbose];
@@ -596,6 +584,21 @@ Contract[expr_, z:OptionsPattern[]] :=
 			FCPrint[1,"Contract: Applying CartesianPairContract.", FCDoControl->cnVerbose];
 			tmpFin = tmpFin /. CartesianPair-> CartesianPairContract /. CartesianPairContract -> CartesianPair;
 			FCPrint[1,"Contract: CartesianPairContract done: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
+		];
+
+
+		If[ epsContractOpt,
+			time=AbsoluteTime[];
+			FCPrint[1,"Contract: Applying EpsEvaluate.", FCDoControl->cnVerbose];
+			If[	!FreeQ[tmpFin, Eps],
+				tmpFin = EpsEvaluate[tmpFin,FCI->True];
+				FCPrint[3,"Contract: After EpsEvaluate: ", tmpFin, FCDoControl->cnVerbose];
+			];
+			If[	!FreeQ[noDummy, Eps],
+				noDummy = EpsEvaluate[noDummy,FCI->True];
+				FCPrint[3,"Contract: After EpsEvaluate: ", noDummy, FCDoControl->cnVerbose];
+			];
+			FCPrint[1,"Contract: EpsEvaluate done: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
 		];
 
 		(*Here we can unite the two*)
@@ -631,7 +634,7 @@ Contract[expr_, z:OptionsPattern[]] :=
 		];
 
 		FCPrint[1, "Contract: Leaving. ", FCDoControl->cnVerbose];
-		FCPrint[3, "Contract: Leaving with :", res, FCDoControl->cnVerbose];
+		FCPrint[3, "Contract: Leaving with : ", res, FCDoControl->cnVerbose];
 		res
 	]/; Head[expr]=!=List;
 

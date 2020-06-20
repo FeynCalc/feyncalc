@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14208,        501]
+NotebookDataLength[     14153,        500]
 NotebookOptionsPosition[     10373,        379]
-NotebookOutlinePosition[     12805,        448]
-CellTagsIndexPosition[     12694,        442]
+NotebookOutlinePosition[     12750,        447]
+CellTagsIndexPosition[     12639,        441]
 WindowTitle->SpinorV
 WindowFrame->Normal*)
 
@@ -92,7 +92,7 @@ html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, Visible ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$249345], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$250370], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/SpinorV", ".html"]], None}]}]},
@@ -161,7 +161,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->930877862],
+ CellID->1567023148],
 
 Cell[CellGroupData[{
 
@@ -171,7 +171,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->1178405923],
+ CellID->421541224],
 
 Cell[CellGroupData[{
 
@@ -379,8 +379,8 @@ Cell[" ", "FooterCell"]
 },
 Saveable->False,
 ScreenStyleEnvironment->"Working",
-WindowSize->{725, 750},
-WindowMargins->{{-10, Automatic}, {Automatic, -8}},
+WindowSize->{808, 840},
+WindowMargins->{{278, Automatic}, {Automatic, 28}},
 WindowTitle->"SpinorV",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -392,7 +392,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 19, 2, 26.503755}", 
+   "built" -> "{2020, 6, 20, 19, 11, 6.347038}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -412,8 +412,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -423,9 +422,9 @@ StyleDefinitions->Notebook[{
 (*CellTagsOutline
 CellTagsIndex->{
  "PrimaryExamplesSection"->{
-  Cell[5216, 148, 387, 15, 31, "PrimaryExamplesSection",
+  Cell[5216, 148, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->930877862]},
+   CellID->1567023148]},
  "SpinorU"->{
   Cell[5849, 177, 149, 5, 27, "Input",
    CellTags->"SpinorU",
@@ -441,8 +440,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12231, 424},
- {"SpinorU", 12365, 428}
+ {"PrimaryExamplesSection", 12175, 423},
+ {"SpinorU", 12310, 427}
  }
 *)
 (*NotebookFileOutline
@@ -453,12 +452,12 @@ Cell[4244, 110, 284, 11, 45, "ObjectNameGrid"],
 Cell[4531, 123, 660, 21, 85, "Usage",
  CellID->982511436],
 Cell[CellGroupData[{
-Cell[5216, 148, 387, 15, 31, "PrimaryExamplesSection",
+Cell[5216, 148, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->930877862],
+ CellID->1567023148],
 Cell[CellGroupData[{
-Cell[5628, 167, 196, 6, 26, "ExampleSection",
- CellID->1178405923],
+Cell[5629, 167, 195, 6, 26, "ExampleSection",
+ CellID->421541224],
 Cell[CellGroupData[{
 Cell[5849, 177, 149, 5, 27, "Input",
  CellTags->"SpinorU",

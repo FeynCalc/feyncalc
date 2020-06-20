@@ -35,7 +35,13 @@ Options[ToDiracSigma] = {
 	FCI			-> False
 }
 
-ToDiracSigma[expr_, xx_, yy_, OptionsPattern[]] :=
+ToDiracSigma[a_ == b_, opts:OptionsPattern[]] :=
+	ToDiracSigma[a,opts] == ToDiracSigma[b,opts];
+
+ToDiracSigma[expr_List, opts:OptionsPattern[]]:=
+	ToDiracSigma[#, opts]&/@expr;
+
+ToDiracSigma[expr_/; !MemberQ[{List,Equal},expr], xx_, yy_, OptionsPattern[]] :=
 	Block[{x, y,  ex, holdDOT},
 
 		If[ OptionValue[FCI],

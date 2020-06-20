@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15094,        525]
+NotebookDataLength[     15038,        524]
 NotebookOptionsPosition[     10722,        396]
-NotebookOutlinePosition[     13834,        479]
-CellTagsIndexPosition[     13717,        473]
+NotebookOutlinePosition[     13778,        478]
+CellTagsIndexPosition[     13661,        472]
 WindowTitle->PowerSimplify
 WindowFrame->Normal*)
 
@@ -80,7 +80,7 @@ PowerSimplify.html"], StandardForm]], "Input", TextClipboardType ->
            URL[
             StringJoin[
              If[
-              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$212966], 
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$213983], 
               "http://reference.wolfram.com/system-modeler/", 
               "http://reference.wolfram.com/language/"], 
              "FeynCalc/ref/PowerSimplify", ".html"]], None}]}]},
@@ -249,7 +249,7 @@ Cell[TextData[{
 }], "PrimaryExamplesSection",
  WholeCellGroupOpener->True,
  CellTags->"PrimaryExamplesSection",
- CellID->1388239057],
+ CellID->1517706190],
 
 Cell[CellGroupData[{
 
@@ -259,7 +259,7 @@ Cell[TextData[{
  Cell["(1)", "ExampleCount"]
 }], "ExampleSection", "ExampleSection",
  WholeCellGroupOpener->True,
- CellID->889816326],
+ CellID->135394918],
 
 Cell[CellGroupData[{
 
@@ -397,7 +397,7 @@ Cell[" ", "FooterCell"]
 Saveable->False,
 ScreenStyleEnvironment->"Working",
 WindowSize->{725, 750},
-WindowMargins->{{268, Automatic}, {Automatic, 20}},
+WindowMargins->{{-10, Automatic}, {Automatic, -8}},
 WindowTitle->"PowerSimplify",
 TaggingRules->{
  "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
@@ -409,7 +409,7 @@ TaggingRules->{
     Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
   None, "RootCaptions" -> "", 
   "Metadata" -> {
-   "built" -> "{2020, 1, 5, 19, 0, 55.190344}", 
+   "built" -> "{2020, 6, 20, 19, 9, 43.113338}", 
     "history" -> {"9.0", "", "", ""}, "context" -> "FeynCalc`", 
     "keywords" -> {}, "specialkeywords" -> {}, 
     "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
@@ -433,8 +433,7 @@ StyleDefinitions->Notebook[{
    Cell[
     StyleData["Input"], CellContext -> "Global`"], 
    Cell[
-    StyleData["Output"], CellContext -> "Global`"]}, 
-  WindowMargins -> {{428, Automatic}, {Automatic, 60}}, Visible -> False, 
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
   FrontEndVersion -> "10.4 for Linux x86 (64-bit) (April 11, 2016)", 
   StyleDefinitions -> "Default.nb"]
 ]
@@ -446,7 +445,7 @@ CellTagsIndex->{
  "PrimaryExamplesSection"->{
   Cell[7269, 236, 388, 15, 31, "PrimaryExamplesSection",
    CellTags->"PrimaryExamplesSection",
-   CellID->1388239057]},
+   CellID->1517706190]},
  "PowerSimplify"->{
   Cell[7902, 265, 252, 9, 27, "Input",
    CellTags->"PowerSimplify",
@@ -472,8 +471,8 @@ CellTagsIndex->{
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"PrimaryExamplesSection", 12897, 445},
- {"PowerSimplify", 13038, 449}
+ {"PrimaryExamplesSection", 12841, 444},
+ {"PowerSimplify", 12982, 448}
  }
 *)
 (*NotebookFileOutline
@@ -486,10 +485,10 @@ Cell[3982, 111, 3262, 121, 144, "Usage",
 Cell[CellGroupData[{
 Cell[7269, 236, 388, 15, 31, "PrimaryExamplesSection",
  CellTags->"PrimaryExamplesSection",
- CellID->1388239057],
+ CellID->1517706190],
 Cell[CellGroupData[{
 Cell[7682, 255, 195, 6, 26, "ExampleSection",
- CellID->889816326],
+ CellID->135394918],
 Cell[CellGroupData[{
 Cell[7902, 265, 252, 9, 27, "Input",
  CellTags->"PowerSimplify",
