@@ -3807,6 +3807,22 @@ Cell[TextData[{
  CellID->593077025],
 
 Cell[TextData[{
+ Cell[TextData[ButtonBox["FCAttachTypesettingRule",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCAttachTypesettingRule"]], 
+  "InlineFunctionSans"],
+ ", ",
+ Cell[TextData[ButtonBox["FCRemoveTypesettingRules",
+  BaseStyle->"Link",
+  ButtonData->"paclet:FeynCalc/ref/FCRemoveTypesettingRules"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " custom typesetting rules"
+}], "GuideText",
+ CellID->1383043437],
+
+Cell[TextData[{
  Cell[TextData[ButtonBox["FCFAConvert",
   BaseStyle->"Link",
   ButtonData->"paclet:FeynCalc/ref/FCFAConvert"]], "InlineFunctionSans"],
@@ -4389,7 +4405,7 @@ Cell["Related Links", "GuideRelatedLinksSection",
  CellID->415694148]
 },
 WindowSize->{1194, 889},
-WindowMargins->{{Automatic, 577}, {196, Automatic}},
+WindowMargins->{{Automatic, 193}, {34, Automatic}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 TrackCellChangeTimes->False,
