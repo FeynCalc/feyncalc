@@ -451,7 +451,10 @@ MT[al,tau] MT[be,rho]]", "True"},
 SpinorU[p4,m4],FCE\[Rule]True,SirlinSimplify->True],\[IndentingNewLine]16 \
 Spinor[Momentum[p3],m3,1].GA[a_].GA[7].Spinor[Momentum[p1],m1,1] \
 Spinor[Momentum[p4],m4,1].GA[a_].GA[6].Spinor[Momentum[p4],m4,1] \
-MT[al,tau] MT[be,rho]]", "True"}
+MT[al,tau] MT[be,rho]]", "True"},
+{"fcstDiracSimplifySirlin-ID27",
+"DiracSimplify[GAD[mu].(GSD[p + q] + m).GAD[mu]]",
+"D m + 2 GSD[p] - D GSD[p] + 2 GSD[q] - D GSD[q]"}
 });
 
 
