@@ -9,43 +9,65 @@
 ## New functions and symbols
 
 * `FCAttachTypesettingRule` and `FCRemoveTypesettingRules` for attaching/removing custom TraditionalForm typesetting rules to arbitrary symbols. (a71398aa)
+
 	* Example: Make p1, p2, p3 and p4 look nice with proper subscripts
 		MapThread[FCAttachTypesettingRule[#1, {SubscriptBox, "p", #2}] &, {{p1, p2, p3, p4}, Range[4]}];
 
 ## New options, features and other improvements
 
-* Marked `SMP`s as `FCVariables`. (716e43f4)
-* Added a more complete tutorial to the documentation. (1c195531)
-* Improved the documentation on `DiracSimplify`. (87c69fee)
-* Improved the handling of new propagators in `FDS`. (d9debc6b)
+
+#### Loop integrals
+
 * Improved debugging output in `TID`. (d26142ce)
 * Improved `TID` to work on lists of amplitudes. (55e053d8)
-* Applied the `Collect2` time constrained trick to `FCLoopSplit` to avoid slow downs on large expressions. (6afd0667)
-* Modified the behavior of LorentzIndex when the argument is a `CartesianIndex`. This should allow for using spatial/temporal pieces of the built-in QCD vertices. (b7b622b7)
-* Modified `Explicit` to allow for adding extra symbols that remain unevaluated unless `Explicit` is set to `True`. (01e66c02)
-* Modified `CartesianIndex` to have `CartesianIndex[CartesianIndex[i]]` evaluating to `CartesianIndex[i]`. (59fb4ad4)
-* Added new feature to `FCFAConvert`: The options `IncomingMomenta`, `OutgoingMomenta`, `LoopMomenta`, `LorentzIndexNames` and `SUNFIndexNames` can be set to a symbol (e.g. `p`), in which case it will be automatically extended to `p1`,`p2`,`p3` etc. (254655a1)
-* Improved `Apart2` to partial fraction Cartesian propagators with square roots. (c84d09fa)
-* Improved `ApartFF` for nonstandard integrals by adding the extraPiece-Mode. By multiplying the integral with unity consisting of a suitably chosen numerator and denominator one can often cast integrals into a desired form which would not be achievable automatically otherwise. (142f1977)
-* Moved the `DropScaleless` option to `SharedOptions.m` (e73b0624)
-* Improved debugging output in `DiracReduce`. (792b9dbc)
-* Added new option Uncontract to `FCMultiLoopTID`. This allows to tell the function to uncontract specified momenta from scalar products and perform reduction on the resulting tensor integrals. Effectively, the function will then behave similarly to TID. (2026592a)
+	* Example:
+		TID[{FVD[p, mu] FAD[p, p - q], FVD[p, mu] FVD[p, nu] FAD[{p, m}]}, p]
+
 * Improved `FCLoopBasisIntegralToPropagators` to work with rational powers of scalar products. (4ba4f565)
-* Improved `ExpandScalarProduct` to expand momenta inside functions declared as tensors. (4867d56d)
+	* Example:
+		FCLoopBasisIntegralToPropagators[Sqrt[CSPD[k]] GFAD[Sqrt[CSPD[k]] - x], {k}]
+		
 * Improved `FCLoopBasis` to handle propagator powers that are polynomials in symbolic variables. (1b61bb27)
-* Improved `PauliSimplify` to handle lists and equations. (2a5f6a14)
-* Added missing `PauliTrace` option to `PauliSimplify`. (256fd91a)
-* Improved `ComplexConjugate` to properly handle input with patterns. (fd00a9f6)
-* Made the behavior of `FCProductSplit` more consistent. (1c72f055)
+* Improved `Apart2` to partial fraction Cartesian propagators with square roots. (c84d09fa)
+	* Example:
+		Apart2[CFAD[{{k, 0}, {+m^2, -1}, 1}, {{k - p, 0}, {0, -1}, 1}] GFAD[{{DE - +Sqrt[CSPD[k, k]], 1}, 1}] // FeynAmpDenominatorCombine]
+
+* Improved `ApartFF` for nonstandard integrals by adding the extraPiece-Mode. By multiplying the integral with unity consisting of a suitably chosen numerator and denominator one can often cast integrals into a desired form which would not be achievable automatically otherwise. (142f1977)
+	* Example: 
+		ApartFF[(SFAD[{{0, k.l}}] FAD[p - k] SPD[k, p]) FAD[k], SPD[k], {k}] // ApartFF[#, {k}, FCE -> True] &
+
+* Moved the `DropScaleless` option to `SharedOptions.m` (e73b0624)
+* Added new option `Uncontract` to `FCMultiLoopTID`. This allows to tell the function to uncontract specified momenta from scalar products and perform reduction on the resulting tensor integrals. Effectively, the function will then behave similarly to TID. (2026592a)
+	* Example: 
+		FCMultiLoopTID[FAD[p, p - q] SPD[p, n], {p}, Uncontract -> {p}]
+
 * Improved `FCLoopIntegralToPropagator` and `FCLoopBasisExtract` to handle symbolic propagator powers. (6738905f)
-* Added support for Pauli trace calculations in 3 dimensions. (670e65d8)
-* Improved `Contract` for cartesian Eps tensors. (bc067a35)
-* Set `PauliReduce` to `False` by default in the Pauli algebra routines. (d7f1536b)
+* Made the second `Collect2` in `FCMultiLoopTID` respect the `Factoring` and `TimeConstrained` options. (c3a73213)
+* Added an extra example to the documentation of `PaVeUVPart`. (b3a24af2)
+* Improved the handling of new propagators in `FDS`. (d9debc6b)
 * Added experimental support for `FerSolve` from `FeynHelpers` in `Tdec`. (30e01011)
-* Improved `FCPauliIsolate` to support Pauli traces. (ad30040d)
-* Improved `FCTraceFactor` and `FCTraceFactor` to work with Pauli traces. (737a4065)
-* Improved Dirac algebra related functions to handle lists and equalities in a proper way. (4ca64662)
-* Added new option InitialSubstitutions in `FCFAConvert`. If the user wants to omit some vertices by setting their coupling constants to zero, it is better to do this before `Contract` and `FCFADiracChainJoin` using this option. (b412da8c)
+
+### Tensors
+
+
+* Improved `ExpandScalarProduct` to expand momenta inside functions declared as tensors. (4867d56d)
+
+	* Example:
+		DeclareFCTensor[r]; tmp = r[-CartesianMomentum[k, -1 + D]] // ExpandScalarProduct
+
+* Modified `CartesianIndex` to have `CartesianIndex[CartesianIndex[i]]` evaluating to `CartesianIndex[i]`. (59fb4ad4)
+
+* Modified the behavior of `LorentzIndex` when the argument is a `CartesianIndex`. This should allow for using spatial/temporal pieces of the built-in QCD vertices. (b7b622b7)
+	* Example:
+		GluonVertex[{k, CartesianIndex[j, D - 1], e}, {p - k, 0, g}, {-p, 0, +f}] // Explicit
+
+* Improved `Contract` for cartesian `Eps` tensors. (bc067a35)
+	* Example:
+		Contract[CLC[i2, a, i1] KD[b, i1] KD[c, i2] -   CLC[i1, a, i3] CLC[i3, b, i4] CLC[i4, c, i2] KD[i1, i2]]
+
+### Dirac algebra
+
+* Improved debugging output in `DiracReduce`. (792b9dbc)
 * Small improvement in `DiracChainJoin`. (d49beefa)
 * Improved `DiracSimplify` and `SpinorChainTrick` for expression containing multiple products of Dirac spinors. However, to avoid unnecessary slowdowns from now on we will not canonicalize indices and apply Sirlin relations by default. When needed, those can be always enabled via options. (71c65fb4)
 * Improved `DiracOrder` to ensure that the indices are always correctly ordered, even when we have products of multiple Dirac chains. (5660dbe4)
@@ -53,10 +75,38 @@
 * Improved `DiracOrder` to ensure that the indices are always correctly ordered, even when we have products of multiple Dirac chains. (7144716f)
 * Small performance improvement in `FCFADiracChainJoin`. (93346737)
 * Improved `DiracSimplify` to work also for equations. (d6e14877)
+	* Example:
+		DiracSimplify[a GS[p.p] + b GS[q.p.q] == c1 GS[p] + c2 GS[q],  FCE -> True]
+
+* Improved Dirac algebra related functions to handle lists and equalities in a proper way. (4ca64662)
+* Improved the documentation on `DiracSimplify`. (87c69fee)
+### Pauli algebra
+
+* Improved `PauliSimplify` to handle lists and equations. (2a5f6a14)
+* Added missing `PauliTrace` option to `PauliSimplify`. (256fd91a)
+* Added support for Pauli trace calculations in 3 dimensions. (670e65d8)
+	* Example:
+		PauliTrace[CSI[i, j, k, l, m, n], PauliTraceEvaluate -> True]
+
+* Set `PauliReduce` to `False` by default in the Pauli algebra routines. (d7f1536b)
+* Improved `FCPauliIsolate` to support Pauli traces. (ad30040d)
+* Improved `FCTraceFactor` and `FCTraceFactor` to work with Pauli traces. (737a4065)
+
+### Miscellaneous
+
+* Marked `SMP`s as `FCVariables`. (716e43f4)
+* Added a more complete tutorial to the documentation. (1c195531)
+* Applied the `Collect2` time constrained trick to `FCLoopSplit` to avoid slow downs on large expressions. (6afd0667)
+* Modified `Explicit` to allow for adding extra symbols that remain unevaluated unless `Explicit` is set to `True`. (01e66c02)
+* Added new feature to `FCFAConvert`: The options `IncomingMomenta`, `OutgoingMomenta`, `LoopMomenta`, `LorentzIndexNames` and `SUNFIndexNames` can be set to a symbol (e.g. `p`), in which case it will be automatically extended to `p1`,`p2`,`p3` etc. (254655a1)
+* Improved `ComplexConjugate` to properly handle input with patterns. (fd00a9f6)
+* Made the behavior of `FCProductSplit` more consistent. (1c72f055)
+	* Example:
+		FCProductSplit[a b c, {}]
+
+* Added new option `InitialSubstitutions` in `FCFAConvert`. If the user wants to omit some vertices by setting their coupling constants to zero, it is better to do this before `Contract` and `FCFADiracChainJoin` using this option. (b412da8c)
 * Added new option `ClearHeads` to `ToStandardMatrixElement`. This allows to apply the function to expressions that are already wrapped into `StandardMatrixElement` heads. (c5c6dd1c)
-* Made the second `Collect2` in `FCMultiLoopTID` respect the `Factoring` and `TimeConstrained` options. (c3a73213)
 * Added code for generating Markdown files out of FeynCalc example notebooks. (0fd06bc8)
-* Added an extra example to the documentation of `PaVeUVPart`. (b3a24af2)
 * Removed `DocSource` from export-ignore to avoid missing documentation when using automatic installer. (f742fb1c)
 * Added a list of available datatypes that is shown when calling `DataType[]`. (663c093b)
 * Updated documentation on `PolarizationVector` to clarify the meaning of the option `Transversality->True`. (764c9e52)
