@@ -997,7 +997,7 @@ Options[Polarization] = {Transversality -> False};
 	Instead we should use a syntax checker function that will be applied to the given expression *)
 DiracHeadsList = {DiracGamma,Spinor,DiracSigma,DiracChain, DiracIndexDelta, DiracTrace};
 
-PauliHeadsList = {PauliSigma,PauliXi,PauliEta};
+PauliHeadsList = {PauliSigma,PauliXi,PauliEta, PauliChain, PauliIndexDelta, PauliTrace};
 
 SUNHeadsList = {SUNT,SUNTF,SUNF,SUNIndex,SUNFIndex,SUNDelta,SUNN,CA,CF};
 
