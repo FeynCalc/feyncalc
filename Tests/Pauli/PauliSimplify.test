@@ -350,5 +350,8 @@ CSID[j8] . CSID[j9] . CSID[j4] + 2*CSID[j1] . CSID[j2] . CSID[j4] . \
 CSID[j5] . CSID[j6] . CSID[j7] . CSID[j8] . CSID[j9] . CSID[j3] - \
 2*CSID[j1] . CSID[j3] . CSID[j4] . CSID[j5] . CSID[j6] . CSID[j7] . \
 CSID[j8] . CSID[j9] . CSID[j2] + 2*CSID[j2] . CSID[j3] . CSID[j4] . \
-CSID[j5] . CSID[j6] . CSID[j7] . CSID[j8] . CSID[j9] . CSID[j1]"}
+CSID[j5] . CSID[j6] . CSID[j7] . CSID[j8] . CSID[j9] . CSID[j1]"},
+{"fcstPauliSimplifyChains-ID35",
+"PauliSimplify[PauliTrace[1]]",
+"PauliSimplify[PauliTrace[1]]"}
 });
