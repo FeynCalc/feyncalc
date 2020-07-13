@@ -265,7 +265,10 @@ FCApart[expr_, extraPiece_, lmoms_List, OptionsPattern[]] :=
 		(* 	Check that the sum of the resulting integrals brought to the common denominator
 			is identical to the original integral *)
 		If [OptionValue[Check],
-			If[	check=Together[FeynAmpDenominatorExplicit[ex*extraPiece] - Together[FeynAmpDenominatorExplicit[res]]]; check=!=0,
+			If[	check=
+					Together[FeynAmpDenominatorExplicit[ex*extraPiece] -
+					Together[FeynAmpDenominatorExplicit[res]]]//ExpandScalarProduct[#,FCI->True]&//Together;
+				check=!=0,
 				Message[FCApart::checkfail,ToString[ex,InputForm]];
 				FCPrint[0, StandardForm[check]];
 				Abort[]

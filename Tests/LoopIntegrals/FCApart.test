@@ -490,5 +490,29 @@ CartesianMomentum[k, -1 + D] - CartesianMomentum[p, -1 + D], 0, 0, \
 {"fcstFCApart-ID63",
 "FCApart[CFAD[{{k, 0}, {0, -1}, 1}, {{k, 0}, {0, -1},
 	1}, {{k - p, 0}, {0, -1}, 1}] CSPD[k, k]^(3/2), {k}, FCE -> True]",
-	"CFAD[{{k, 0}, {0, -1}, 1}, {{k - p, 0}, {0, -1}, 1}] Sqrt[CSPD[k, k]]"}
+	"CFAD[{{k, 0}, {0, -1}, 1}, {{k - p, 0}, {0, -1}, 1}] Sqrt[CSPD[k, k]]"},
+{"fcstFCApart-ID64","FCClearScalarProducts[]; \n SPD[pPh] = 0; \n  SPD[pZ] = mZ^2; \n SPD[pH] = mH^2; \n
+SPD[pPh, pH] = (mH^2 - mZ^2)/2; \n SPD[pZ, pPh] = (mH^2 - mZ^2)/2; \n
+tmp = FCApart[FAD[{k, mW}, {k, mW Sqrt[GaugeXi[W]]}, {k - pZ,
+mW Sqrt[GaugeXi[W]]}, {k - pPh - pZ, mW Sqrt[GaugeXi[W]]}] SPD[k, -k + 2 (pPh + pZ)] SPD[k,
+Polarization[pZ, -I]] SPD[k,Polarization[pPh, -I, Transversality -> True]], {k}, FCE -> True]; \n FCClearScalarProducts[]; \n tmp
+","(FAD[{k, mW}, {k - pZ, mW*Sqrt[GaugeXi[W]]}]*SPD[k, Polarization[pZ, -I]]*SPD[k, Polarization[pPh, -I, Transversality -> True]])/
+(mW^2*(-1 + GaugeXi[W])) - (FAD[{k, mW*Sqrt[GaugeXi[W]]}, {k - pZ, mW*Sqrt[GaugeXi[W]]}]*SPD[k, Polarization[pZ, -I]]*
+SPD[k, Polarization[pPh, -I, Transversality -> True]])/(mW^2*(-1 + GaugeXi[W])) +
+(FAD[{k, mW*Sqrt[GaugeXi[W]]}, {k + pPh, mW*Sqrt[GaugeXi[W]]}, {k - pZ, mW}]*(-mH^2 + mW^2*GaugeXi[W])*SPD[k, Polarization[pZ, -I]]*
+SPD[k, Polarization[pPh, -I, Transversality -> True]])/(mW^2*(-1 + GaugeXi[W])) -
+(FAD[{k, mW*Sqrt[GaugeXi[W]]}, {k + pPh, mW*Sqrt[GaugeXi[W]]}, {k - pZ, mW*Sqrt[GaugeXi[W]]}]*(-mH^2 + mW^2*GaugeXi[W])*
+SPD[k, Polarization[pZ, -I]]*SPD[k, Polarization[pPh, -I, Transversality -> True]])/(mW^2*(-1 + GaugeXi[W])) -
+(FAD[{k, mW*Sqrt[GaugeXi[W]]}, {k + pPh, mW*Sqrt[GaugeXi[W]]}, {k - pZ, mW}]*(-mH^2 + mW^2*GaugeXi[W])*
+SPD[k, Polarization[pPh, -I, Transversality -> True]]*SPD[pZ, Polarization[pZ, -I]])/(mW^2*(-1 + GaugeXi[W])) +
+(FAD[{k, mW*Sqrt[GaugeXi[W]]}, {k + pPh, mW*Sqrt[GaugeXi[W]]}, {k - pZ, mW*Sqrt[GaugeXi[W]]}]*(-mH^2 + mW^2*GaugeXi[W])*
+SPD[k, Polarization[pPh, -I, Transversality -> True]]*SPD[pZ, Polarization[pZ, -I]])/(mW^2*(-1 + GaugeXi[W])) -
+(FAD[{k, mW*Sqrt[GaugeXi[W]]}, {k + pPh, mW*Sqrt[GaugeXi[W]]}, {k - pZ, mW}]*(-mH^2 + mW^2*GaugeXi[W])*SPD[k, Polarization[pZ, -I]]*
+SPD[pZ, Polarization[pPh, -I, Transversality -> True]])/(mW^2*(-1 + GaugeXi[W])) +
+(FAD[{k, mW*Sqrt[GaugeXi[W]]}, {k + pPh, mW*Sqrt[GaugeXi[W]]}, {k - pZ, mW*Sqrt[GaugeXi[W]]}]*(-mH^2 + mW^2*GaugeXi[W])*
+SPD[k, Polarization[pZ, -I]]*SPD[pZ, Polarization[pPh, -I, Transversality -> True]])/(mW^2*(-1 + GaugeXi[W])) +
+(FAD[{k, mW*Sqrt[GaugeXi[W]]}, {k + pPh, mW*Sqrt[GaugeXi[W]]}, {k - pZ, mW}]*(-mH^2 + mW^2*GaugeXi[W])*SPD[pZ, Polarization[pZ, -I]]*
+SPD[pZ, Polarization[pPh, -I, Transversality -> True]])/(mW^2*(-1 + GaugeXi[W])) -
+(FAD[{k, mW*Sqrt[GaugeXi[W]]}, {k + pPh, mW*Sqrt[GaugeXi[W]]}, {k - pZ, mW*Sqrt[GaugeXi[W]]}]*(-mH^2 + mW^2*GaugeXi[W])*
+SPD[pZ, Polarization[pZ, -I]]*SPD[pZ, Polarization[pPh, -I, Transversality -> True]])/(mW^2*(-1 + GaugeXi[W]))"}
 })
