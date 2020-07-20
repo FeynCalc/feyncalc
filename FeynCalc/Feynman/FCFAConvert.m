@@ -49,6 +49,11 @@ in the FeynArts diagrams will be dropped. Those symbols are usually not needed \
 in FeynCalc where Einstein summation always applies, but they might be kept \
 for other purposes.";
 
+FCFAConvert::sumOverWarn =
+"You are omitting SumOver objects that may represent a nontrivial summation. \
+This may lead to a loss of overall factors multiplying some of your diagrams. \
+Please make sure that this is really what you want.";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -83,7 +88,7 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[infos__][diags___], OptionsPatt
 				repRulePolVectors,inMoms,outMoms,liNames,polVecs,loopMoms,dim,
 				sunNames, sunfNames, repRuleSUNIndices, repRuleSUNFIndices,
 				prefactor, inFAMoms, outFAMoms, loopFAMoms, lorentzIndices,
-				sunIndices, sunfIndices},
+				sunIndices, sunfIndices, sumOverInds},
 
 		inMoms		= OptionValue[IncomingMomenta];
 		outMoms		= OptionValue[OutgoingMomenta];
@@ -111,7 +116,22 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[infos__][diags___], OptionsPatt
 
 		diagsConverted = prefactor diagsConverted;
 
+		(*
+			If SumOver contains an index that is not present in the diagram (e.g. SUNFIndex),
+			then it generates a nontrivial overall prefactor (e.g. SUNN) so that one may not
+			naively discard SumOver in such diagrams! An example would be a quark triangle loop,
+			where all external particles are not colored. Since the SM Model of FeynArts doesn't
+			contain color deltas for quark-boson vertices (except for QCD vertices), it is important
+			to warn the	user who wants to remove SumOver in such diagrams.
+		 *)
 		If[	OptionValue[DropSumOver],
+			If[	!FreeQ[diagsConverted,FeynArts`SumOver],
+				sumOverInds=Cases[diagsConverted,FeynArts`SumOver[a_,__]:>a,Infinity]//Union;
+
+				If[!FreeQ[Map[Function[x,Map[Count[x,#,Infinity]&,sumOverInds]],diagsConverted],1],
+					Message[FCFAConvert::sumOverWarn]
+				]
+			];
 			diagsConverted = diagsConverted/.FeynArts`SumOver[___]:> 1
 		];
 
