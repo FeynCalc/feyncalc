@@ -1,0 +1,227 @@
+
+
+(* :Title: FCSymanzikPolynomials.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCSymanzikPolynomials	*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCSymanzikPolynomials =
+({
+{"fcstFCSymanzikPolynomials-ID1",
+"FCSymanzikPolynomials[FAD[{q1,0}],{q1},Names\[Rule]x,FCE->True]",
+"{x[1], 0, {{x[1], FAD[q1], 1}}, {{x[1]}}}"},
+{"fcstFCSymanzikPolynomials-ID2",
+"FCSymanzikPolynomials[FAD[{q1,m1}],{q1},Names\[Rule]x,FCE->True]",
+	"{x[1], m1^2*x[1]^2, {{x[1], FAD[{q1, m1}], 1}}, {{x[1]}}}"},
+{"fcstFCSymanzikPolynomials-ID3",
+"FCSymanzikPolynomials[FAD[{q1+p1,m1}],{q1},Names\[Rule]x,\
+FCE->True]",
+"{x[1], m1^2*x[1]^2, {{x[1], FAD[{p1 + q1, m1}], 1}}, {{x[1]}}}"},
+{"fcstFCSymanzikPolynomials-ID4",
+"FCSymanzikPolynomials[FAD[{q1+2p1,m1}],{q1},Names\[Rule]x,\
+FCE->True]",
+"{x[1], m1^2*x[1]^2, {{x[1], FAD[{2*p1 + q1, m1}], 1}}, {{x[1]}}}"},
+{"fcstFCSymanzikPolynomials-ID5",
+"FCSymanzikPolynomials[FAD[{q1+n \
+p1,m1}],{q1},Names\[Rule]x,FCE->True]",
+"{x[1], m1^2*x[1]^2, {{x[1], FAD[{n*p1 + q1, m1}], 1}}, {{x[1]}}}"},
+{"fcstFCSymanzikPolynomials-ID6",
+"FCSymanzikPolynomials[FAD[{q1,m1},{q1,m2}],{q1},Names\[Rule]x,\
+FCE->True]",
+"{x[1] + x[2], (x[1] + x[2])*(m1^2*x[1] + m2^2*x[2]), {{x[1], \
+FAD[{q1, m1}], 1}, {x[2], FAD[{q1, m2}], 1}}, {{x[1] + x[2]}}}"},
+{"fcstFCSymanzikPolynomials-ID7",
+"FCSymanzikPolynomials[FAD[{q1,m1},{q1}],{q1},Names\[Rule]x,\
+FCE->True]",
+"{x[1] + x[2],
+m1^2*x[2]*(x[1] + x[2]), {{x[1], FAD[q1], 1}, {x[2], FAD[{q1, m1}],
+1}}, {{x[1] + x[2]}}}"},
+{"fcstFCSymanzikPolynomials-ID8",
+"FCSymanzikPolynomials[FAD[{q1},{q1,m2}],{q1},Names\[Rule]x,\
+FCE->True]",
+"{x[1] + x[2], m2^2*x[2]*(x[1] + x[2]), {{x[1], FAD[q1], 1}, \
+{x[2], FAD[{q1, m2}], 1}}, {{x[1] + x[2]}}}"},
+{"fcstFCSymanzikPolynomials-ID9",
+"FCSymanzikPolynomials[FAD[{q1+p1,m1},{q1+p2,m2}],{q1},Names\[Rule]\
+x,FCE->True]",
+"{x[1] + x[2], m1^2*x[1]^2 + m1^2*x[1]*x[2] + m2^2*x[1]*x[2] - \
+SPD[p1, p1]*x[1]*x[2] + 2*SPD[p1, p2]*x[1]*x[2] - SPD[p2, \
+p2]*x[1]*x[2] + m2^2*x[2]^2, {{x[1], FAD[{p1 + q1, m1}], 1}, {x[2], \
+FAD[{p2 + q1, m2}], 1}}, {{x[1] + x[2]}}}"},
+{"fcstFCSymanzikPolynomials-ID10",
+"FCSymanzikPolynomials[FAD[{q1,m1},{q1-p1+p2,m2}],{q1},Names\[Rule]\
+x,FCE->True]",
+"{x[1] + x[2], m1^2*x[1]^2 + m1^2*x[1]*x[2] + m2^2*x[1]*x[2] - \
+SPD[p1, p1]*x[1]*x[2] + 2*SPD[p1, p2]*x[1]*x[2] - SPD[p2, \
+p2]*x[1]*x[2] + m2^2*x[2]^2, {{x[1], FAD[{q1, m1}], 1}, {x[2], \
+FAD[{-p1 + p2 + q1, m2}], 1}}, {{x[1] + x[2]}}}"},
+{"fcstFCSymanzikPolynomials-ID11",
+"FCSymanzikPolynomials[SPD[q1,p1]FAD[{q1,m1},{q1-p1+p2,m2}],{q1},\
+Names\[Rule]x,Reduce\[Rule]True,FCE->True]",
+"{x[2] + x[3], m1^2*x[2]^2 + (m1^2 + m2^2 - SPD[p2, p2])*x[2]*x[3] \
++ SPD[p1, p2]*(1 + x[2] - x[3])*x[3] + m2^2*x[3]^2 + (SPD[p1, \
+p1]*(x[1]^2 - 4*x[1]*x[3] - 4*x[2]*x[3]))/4, {{x[1], SPD[p1, q1], \
+-1}, {x[2], FAD[{q1, m1}], 1}, {x[3], FAD[{-p1 + p2 + q1, m2}], 1}}, \
+{{x[2] + x[3]}}}"},
+{"fcstFCSymanzikPolynomials-ID12",
+"FCSymanzikPolynomials[SPD[q1,p1]FAD[{q1,m1},{q1-p1+p2,m2}],{q1},\
+Names\[Rule]x,Reduce\[Rule]False,FCE->True]",
+"{x[2] + x[3], (SPD[p1, p1]*x[1]^2 + 4*m1^2*x[2]^2 - 4*SPD[p1, \
+p1]*x[1]*x[3] + 4*SPD[p1, p2]*x[1]*x[3] + 4*m1^2*x[2]*x[3] + \
+4*m2^2*x[2]*x[3] - 4*SPD[p1, p1]*x[2]*x[3] + 8*SPD[p1, p2]*x[2]*x[3] \
+- 4*SPD[p2, p2]*x[2]*x[3] + 4*m2^2*x[3]^2)/4, {{x[1], SPD[p1, q1], \
+-1}, {x[2], FAD[{q1, m1}], 1}, {x[3], FAD[{-p1 + p2 + q1, m2}], 1}}, \
+{{x[2] + x[3]}}}"},
+{"fcstFCSymanzikPolynomials-ID13",
+"FCSymanzikPolynomials[FAD[{q1,m1},{q1-p1+p2,m2}],{q1},Names\[Rule]\
+x,Reduce\[Rule]True,FCE->True]",
+"{1, m1^2 - (m1^2 - m2^2 + SPD[p2, p2])*x[2] + SPD[p1, p1]*(-1 + \
+x[2])*x[2] - 2*SPD[p1, p2]*(-1 + x[2])*x[2] + SPD[p2, p2]*x[2]^2, \
+{{x[1], FAD[{q1, m1}], 1}, {x[2], FAD[{-p1 + p2 + q1, m2}], 1}}, \
+{{1}}}"},
+{"fcstFCSymanzikPolynomials-ID14",
+"FCSymanzikPolynomials[FAD[{q1,m1},{q1-p1+p2,m2}],{q1},Names\[Rule]\
+x,Reduce\[Rule]True,FCE->True]",
+"{1, m1^2 - (m1^2 - m2^2 + SPD[p2, p2])*x[2] + SPD[p1, p1]*(-1 + \
+x[2])*x[2] - 2*SPD[p1, p2]*(-1 + x[2])*x[2] + SPD[p2, p2]*x[2]^2, \
+{{x[1], FAD[{q1, m1}], 1}, {x[2], FAD[{-p1 + p2 + q1, m2}], 1}}, \
+{{1}}}"},
+{"fcstFCSymanzikPolynomials-ID15",
+"FCSymanzikPolynomials[{SPD[q1]-m1^2},{q1},Names\[Rule]x,FCE\[Rule]\
+True]", "{x[1], m1^2*x[1]^2, {{x[1], GFAD[{{-m1^2 + SPD[q1, q1], 1}, \
+-1}], -1}}, {{x[1]}}}"},
+{"fcstFCSymanzikPolynomials-ID16",
+"FCSymanzikPolynomials[{SPD[q1]-m1^2,SPD[p1,q1]},{q1},Names\[Rule]\
+x,FCE\[Rule]True]",
+"{x[1], (4*m1^2*x[1]^2 + SPD[p1, p1]*x[2]^2)/4, {{x[1], \
+GFAD[{{-m1^2 + SPD[q1, q1], 1}, -1}], -1}, {x[2], SPD[p1, q1], -1}}, \
+{{x[1]}}}"},
+{"fcstFCSymanzikPolynomials-ID17",
+"FCSymanzikPolynomials[{FAD[{q1,m1}]},{q1},Names\[Rule]x,FCE\[Rule]\
+True]", "{x[1], m1^2*x[1]^2, {{x[1], FAD[{q1, m1}], 1}}, {{x[1]}}}"},
+{"fcstFCSymanzikPolynomials-ID18",
+"FCSymanzikPolynomials[FAD[{q1,m1}],{q1},Names\[Rule]x,FCE\[Rule]\
+True]", "{x[1], m1^2*x[1]^2, {{x[1], FAD[{q1, m1}], 1}}, {{x[1]}}}"},
+{"fcstFCSymanzikPolynomials-ID19",
+"FCSymanzikPolynomials[{SPD[q1]-m1^2,SPD[q1-p1]},{q1},Names\[Rule]\
+x,FCE\[Rule]True]",
+"{x[1] + x[2], x[1]*(m1^2*x[1] + m1^2*x[2] - SPD[p1, p1]*x[2]), \
+{{x[1], GFAD[{{-m1^2 + SPD[q1, q1], 1}, -1}], -1}, {x[2], SPD[p1, p1] \
+- 2*SPD[p1, q1] + SPD[q1, q1], -1}}, {{x[1] + x[2]}}}"},
+{"fcstFCSymanzikPolynomials-ID20",
+"FCSymanzikPolynomials[{FAD[{q1,m1}],FAD[q1-p1]},{q1},Names\[Rule]\
+x,FCE\[Rule]True]",
+"{x[1] + x[2], x[1]*(m1^2*x[1] + m1^2*x[2] - SPD[p1, p1]*x[2]), \
+{{x[1], FAD[{q1, m1}], 1}, {x[2], FAD[-p1 + q1], 1}}, {{x[1] + \
+x[2]}}}"},
+{"fcstFCSymanzikPolynomials-ID21",
+"FCSymanzikPolynomials[FAD[{q1,m1}]FAD[q1-p1],{q1},Names\[Rule]x,\
+FCE\[Rule]True]",
+"{x[1] + x[2], x[1]*(m1^2*x[1] + m1^2*x[2] - SPD[p1, p1]*x[2]), \
+{{x[1], FAD[{q1, m1}], 1}, {x[2], FAD[-p1 + q1], 1}}, {{x[1] + \
+x[2]}}}"},
+{"fcstFCSymanzikPolynomials-ID22",
+"FCSymanzikPolynomials[FAD[{p1,m},p1+q1,p3,p1-p3],{p1,p3},Names\
+\[Rule]x,FCE\[Rule]True]",
+"{x[1]*x[2] + x[1]*x[3] + x[2]*x[3] + x[2]*x[4] + x[3]*x[4], m^2*x[1]^2*x[2] +
+m^2*x[1]^2*x[3] + m^2*x[1]*x[2]*x[3] + m^2*x[1]*x[2]*x[4] - SPD[q1, q1]*x[1]*x[2]*x[4] +
+m^2*x[1]*x[3]*x[4] - SPD[q1, q1]*x[1]*x[3]*x[4] - SPD[q1, q1]*x[2]*x[3]*x[4], {{x[1],
+FAD[{p1, m}], 1}, {x[2], FAD[p1 - p3], 1}, {x[3], FAD[p3], 1}, {x[4], FAD[p1 + q1],
+1}}, {{x[1] + x[2] + x[4], -x[2]}, {-x[2], x[2] + x[3]}}}"},
+{"fcstFCSymanzikPolynomials-ID23",
+"FCSymanzikPolynomials[{SPD[q1]-m1^2},{q1},Names\[Rule]x,FCE\[Rule]\
+True]", "{x[1], m1^2*x[1]^2, {{x[1], GFAD[{{-m1^2 + SPD[q1, q1], 1}, \
+-1}], -1}}, {{x[1]}}}"},
+{"fcstFCSymanzikPolynomials-ID24",
+"FCSymanzikPolynomials[{SPD[q1]-m1^2,SPD[p1,q1]},{q1},Names\[Rule]\
+x,FCE\[Rule]True]",
+"{x[1], (4*m1^2*x[1]^2 + SPD[p1, p1]*x[2]^2)/4, {{x[1], \
+GFAD[{{-m1^2 + SPD[q1, q1], 1}, -1}], -1}, {x[2], SPD[p1, q1], -1}}, \
+{{x[1]}}}"},
+{"fcstFCSymanzikPolynomials-ID25",
+"FCSymanzikPolynomials[{FAD[{q1,m1}]},{q1},Names\[Rule]x,FCE\[Rule]\
+True]", "{x[1], m1^2*x[1]^2, {{x[1], FAD[{q1, m1}], 1}}, {{x[1]}}}"},
+{"fcstFCSymanzikPolynomials-ID26",
+"FCSymanzikPolynomials[FAD[{q1,m1}],{q1},Names\[Rule]x,FCE\[Rule]\
+True]", "{x[1], m1^2*x[1]^2, {{x[1], FAD[{q1, m1}], 1}}, {{x[1]}}}"},
+{"fcstFCSymanzikPolynomials-ID27",
+"FCSymanzikPolynomials[{SPD[q1]-m1^2,SPD[q1-p1]},{q1},Names\[Rule]\
+x,FCE\[Rule]True]",
+"{x[1] + x[2], x[1]*(m1^2*x[1] + m1^2*x[2] - SPD[p1, p1]*x[2]), \
+{{x[1], GFAD[{{-m1^2 + SPD[q1, q1], 1}, -1}], -1}, {x[2], SPD[p1, p1] \
+- 2*SPD[p1, q1] + SPD[q1, q1], -1}}, {{x[1] + x[2]}}}"},
+{"fcstFCSymanzikPolynomials-ID28",
+"FCSymanzikPolynomials[{FAD[{q1,m1}],FAD[q1-p1]},{q1},Names\[Rule]\
+x,FCE\[Rule]True]",
+"{x[1] + x[2], x[1]*(m1^2*x[1] + m1^2*x[2] - SPD[p1, p1]*x[2]), \
+{{x[1], FAD[{q1, m1}], 1}, {x[2], FAD[-p1 + q1], 1}}, {{x[1] + \
+x[2]}}}"},
+{"fcstFCSymanzikPolynomials-ID29",
+"FCSymanzikPolynomials[FAD[{q1,m1}]FAD[q1-p1],{q1},Names\[Rule]x,\
+FCE\[Rule]True]",
+"{x[1] + x[2], x[1]*(m1^2*x[1] + m1^2*x[2] - SPD[p1, p1]*x[2]), \
+{{x[1], FAD[{q1, m1}], 1}, {x[2], FAD[-p1 + q1], 1}}, {{x[1] + \
+x[2]}}}"},
+{"fcstFCSymanzikPolynomials-ID30",
+"FCSymanzikPolynomials[FAD[{p1,m},p1+q1,p3,p1-p3],{p1,p3},Names\
+\[Rule]x,FCE\[Rule]True]",
+"{x[1]*x[2] + x[1]*x[3] + x[2]*x[3] + x[2]*x[4] + x[3]*x[4],
+m^2*x[1]^2*x[2] + m^2*x[1]^2*x[3] + m^2*x[1]*x[2]*x[3] +
+m^2*x[1]*x[2]*x[4] - SPD[q1, q1]*x[1]*x[2]*x[4] +
+m^2*x[1]*x[3]*x[4] - SPD[q1, q1]*x[1]*x[3]*x[4] -
+SPD[q1, q1]*x[2]*x[3]*x[4], {{x[1], FAD[{p1, m}], 1}, {x[2],
+FAD[p1 - p3], 1}, {x[3], FAD[p3], 1}, {x[4], FAD[p1 + q1],
+1}}, {{x[1] + x[2] + x[4], -x[2]}, {-x[2], x[2] + x[3]}}}"},
+{"fcstFCSymanzikPolynomials-ID31",
+"FCSymanzikPolynomials[FAD[{q,m0},{q-p1,m1}],{q},Names\[Rule]x,FCE\
+\[Rule]True]",
+"{x[1] + x[2], m0^2*x[1]^2 + m0^2*x[1]*x[2] + m1^2*x[1]*x[2] - \
+SPD[p1, p1]*x[1]*x[2] + m1^2*x[2]^2, {{x[1], FAD[{q, m0}], 1}, {x[2], \
+FAD[{-p1 + q, m1}], 1}}, {{x[1] + x[2]}}}"},
+{"fcstFCSymanzikPolynomials-ID32",
+"FCSymanzikPolynomials[FAD[{q,m0},{q-p1,m1},{q-p2,m2}],{q},Names\
+\[Rule]x,FCE\[Rule]True]",
+"{x[1] + x[2] + x[3], m0^2*x[1]^2 + m0^2*x[1]*x[2] + \
+m1^2*x[1]*x[2] - SPD[p1, p1]*x[1]*x[2] + m1^2*x[2]^2 + m0^2*x[1]*x[3] \
++ m2^2*x[1]*x[3] - SPD[p2, p2]*x[1]*x[3] + m1^2*x[2]*x[3] + \
+m2^2*x[2]*x[3] - SPD[p1, p1]*x[2]*x[3] + 2*SPD[p1, p2]*x[2]*x[3] - \
+SPD[p2, p2]*x[2]*x[3] + m2^2*x[3]^2, {{x[1], FAD[{q, m0}], 1}, {x[2], \
+FAD[{-p1 + q, m1}], 1}, {x[3], FAD[{-p2 + q, m2}], 1}}, {{x[1] + x[2] \
++ x[3]}}}"},
+{"fcstFCSymanzikPolynomials-ID33",
+"FCSymanzikPolynomials[FAD[{q,m0},{q-p1,m1},{q-p2,m2},{q-p3,m3}],{\
+q},Names\[Rule]x,FCE\[Rule]True]",
+"{x[1] + x[2] + x[3] + x[4], m0^2*x[1]^2 + m0^2*x[1]*x[2] + \
+m1^2*x[1]*x[2] - SPD[p1, p1]*x[1]*x[2] + m1^2*x[2]^2 + m0^2*x[1]*x[3] \
++ m2^2*x[1]*x[3] - SPD[p2, p2]*x[1]*x[3] + m1^2*x[2]*x[3] + \
+m2^2*x[2]*x[3] - SPD[p1, p1]*x[2]*x[3] + 2*SPD[p1, p2]*x[2]*x[3] - \
+SPD[p2, p2]*x[2]*x[3] + m2^2*x[3]^2 + m0^2*x[1]*x[4] + m3^2*x[1]*x[4] \
+- SPD[p3, p3]*x[1]*x[4] + m1^2*x[2]*x[4] + m3^2*x[2]*x[4] - SPD[p1, \
+p1]*x[2]*x[4] + 2*SPD[p1, p3]*x[2]*x[4] - SPD[p3, p3]*x[2]*x[4] + \
+m2^2*x[3]*x[4] + m3^2*x[3]*x[4] - SPD[p2, p2]*x[3]*x[4] + 2*SPD[p2, \
+p3]*x[3]*x[4] - SPD[p3, p3]*x[3]*x[4] + m3^2*x[4]^2, {{x[1], FAD[{q, \
+m0}], 1}, {x[2], FAD[{-p1 + q, m1}], 1}, {x[3], FAD[{-p2 + q, m2}], \
+1}, {x[4], FAD[{-p3 + q, m3}], 1}}, {{x[1] + x[2] + x[3] + x[4]}}}"},
+{"fcstFCSymanzikPolynomials-ID34",
+"FCSymanzikPolynomials[SFAD[{p, m^2, n}], {p}, Names -> x,
+Indexed -> False, FCE -> True]",
+"{x1, m^2 x1^2, {{x1, SFAD[{{p, 0}, {m^2, 1}, 1}], n}}, {{x1}}}"},
+{"fcstFCSymanzikPolynomials-ID35",
+"FCSymanzikPolynomials[GFAD[SPD[p] - m^2], {p}, Names -> x,
+Indexed -> False, FCE -> True]",
+"{x1, m^2 x1^2, {{x1, GFAD[{{-m^2 + SPD[p, p], 1}, 1}], 1}}, {{x1}}}"},
+{"fcstFCSymanzikPolynomials-ID36",
+"FCSymanzikPolynomials[GFAD[SPD[p] - m^2] FAD[{p, m}], {p}, Names -> x,
+Indexed -> False, FCE -> True]",
+"{x1 + x2,
+m^2 (x1 + x2)^2, {{x1, GFAD[{{-m^2 + SPD[p, p], 1}, 1}], 1}, {x2,
+FAD[{p, m}], 1}}, {{x1 + x2}}}"}
+});
