@@ -1,0 +1,58 @@
+
+
+(* :Title: FCFeynmanParametrize.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCFeynmanParametrize		*)
+
+(* ------------------------------------------------------------------------ *)
+
+
+Tests`LoopIntegrals`fcstFCFeynmanParametrize =
+({
+{"fcstFCFeynmanParametrize-ID1",
+"FCFeynmanParametrize[SFAD[{p,0,n}],{p},Names\[Rule]x,Indexed\
+\[Rule]False,Simplify\[Rule]True]",
+"{0, ((-1)^n*Gamma[-D/2 + n])/Gamma[n], {}}"},
+{"fcstFCFeynmanParametrize-ID2",
+"FCFeynmanParametrize[SFAD[{p,m^2}],{p},Names\[Rule]x,Indexed\
+\[Rule]False,Simplify\[Rule]True]",
+"{(m^2)^(-1 + D/2), -Gamma[1 - D/2], {}}"},
+{"fcstFCFeynmanParametrize-ID3",
+"FCFeynmanParametrize[SFAD[{p,m^2,n}],{p},Names\[Rule]x,Indexed\
+\[Rule]False,Simplify\[Rule]True]",
+"{(m^2)^((D - 2*n)/2), ((-1)^n*Gamma[-D/2 + n])/Gamma[n], {}}"},
+{"fcstFCFeynmanParametrize-ID4",
+"FCFeynmanParametrize[SFAD[{p,0,1},{p+q,0,1}],{p},Names\[Rule]x,\
+FCReplaceD\[Rule]{D->4-2ep},FCE\[Rule]True,Names\[Rule]x,Indexed\
+\[Rule]False]",
+"{(x1 + x2)^(-2 + 2*ep)*(-(x1*x2*SPD[q, q]))^(-2 + (4 - 2*ep)/2), \
+Gamma[2 + (-4 + 2*ep)/2], {x1, x2}}"},
+{"fcstFCFeynmanParametrize-ID5",
+"FCFeynmanParametrize[SFAD[{p,0,n1},{p+q,0,n2}],{p},Names\[Rule]x,\
+FCReplaceD\[Rule]{D->4-2ep},FCE\[Rule]True,Names\[Rule]x,Indexed\
+\[Rule]False]",
+"{x1^(-1 + n1)*x2^(-1 + n2)*(x1 + x2)^(-4 + 2*ep + n1 + \
+n2)*(-(x1*x2*SPD[q, q]))^((4 - 2*ep)/2 - n1 - n2), ((-1)^(n1 + \
+n2)*Gamma[(-4 + 2*ep)/2 + n1 + n2])/(Gamma[n1]*Gamma[n2]), {x1, x2}}"},
+{"fcstFCFeynmanParametrize-ID6",
+"FCFeynmanParametrize[SFAD[{p1,mb^2},p3,p1+q,{p3+q,mb^2},{p1-p3,mb^\
+2}],{p1,p3},Names\[Rule]x,Indexed\[Rule]False,Simplify\[Rule]True,\
+FinalSubstitutions\[Rule]{FCI[SPD[q]]\[Rule]mb^2}]",
+"{(x4*(x3 + x5) + x1*(x2 + x3 + x5) + x2*(x3 + x4 + x5))^(5 - \
+(3*D)/2)*(mb^2*(x4*x5^2 + x1^2*(x2 + x3 + x5) + x2^2*(x3 + x4 + x5) + \
+x2*x5*(2*x4 + x5) + x1*(x2^2 + x5^2 + 2*x2*(x3 + x5))))^(-5 + D), \
+-Gamma[5 - D], {x1, x2, x3, x4, x5}}"},
+{"fcstFCFeynmanParametrize-ID7",
+"FCFeynmanParametrize[SFAD[p3,{p1+q,mb^2},p1-p3],{p1,p3},Names\
+\[Rule]x,Indexed\[Rule]False,Simplify\[Rule]True,FinalSubstitutions\
+\[Rule]{FCI[SPD[q]]\[Rule]mb^2},FCReplaceD\[Rule]{D->4-2Epsilon}]",
+"{(mb^2*(x1 + x2)*x3^2)^(1 - 2*Epsilon)*(x2*x3 + x1*(x2 + \
+x3))^(3*(-1 + Epsilon)), -Gamma[-1 + 2*Epsilon], {x1, x2, x3}}"}
+});
