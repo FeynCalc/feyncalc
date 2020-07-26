@@ -43,26 +43,32 @@ null2::usage="";
 isCartesian::usage="";
 
 Options[FCSymanzikPolynomials] = {
+	"FeynmanParameterJoin"	-> False,
+	CartesianIndexNames		-> FCGV["i"],
+	Check					-> True,
 	FCE						-> False,
 	FCI						-> False,
 	FCVerbose				-> False,
 	Factoring 				-> Factor2,
 	FinalSubstitutions		-> {},
 	Indexed					-> True,
+	LorentzIndexNames		-> FCGV["mu"],
 	Names					-> FCGV["x"],
-	Reduce					-> False,
-	"FeynmanParameterJoin"	-> False
+	Reduce					-> False
 };
 
 
 FCSymanzikPolynomials[expr_, lmoms_List /; ! OptionQ[lmoms], OptionsPattern[]] :=
-	Block[{	feynX, propProduct, tmp, symF, symU, ex, spd, mtmp,
+	Block[{	feynX, propProduct, tmp, symF, symU, ex, spd, qkspd, mtmp,
 			matrix, nDenoms, res, constraint, tmp0, powers, optFactoring,
-			optFinalSubstitutions, optNames, aux1, aux2, nProps},
+			optFinalSubstitutions, optNames, aux1, aux2, nProps, fpJ, fpQ, li, ci,
+			null1, null2},
 
 		optNames				= OptionValue[Names];
 		optFactoring 			= OptionValue[Factoring];
 		optFinalSubstitutions	= OptionValue[FinalSubstitutions];
+		li						= OptionValue[LorentzIndexNames];
+		ci						= OptionValue[CartesianIndexNames];
 
 		If [OptionValue[FCVerbose]===False,
 			fcszVerbose=$VeryVerbose,
@@ -117,8 +123,7 @@ FCSymanzikPolynomials[expr_, lmoms_List /; ! OptionQ[lmoms], OptionsPattern[]] :
 		];
 
 
-		tmp = FCLoopBasisExtract[ex, lmoms, SetDimensions->{dim}];
-
+		tmp = FCLoopBasisExtract[ex, lmoms, SetDimensions->{dim}, SortBy -> Function[x, x[[2]] < 0]];
 
 		FCPrint[3,"FCSymanzikPolynomials: List of denominators: ", tmp, FCDoControl->fcszVerbose];
 
@@ -147,16 +152,32 @@ FCSymanzikPolynomials[expr_, lmoms_List /; ! OptionQ[lmoms], OptionsPattern[]] :
 			Return[res]
 		];
 
+		(* In the following we extract M, Q and J from our expression for (k^T.M.k - 2 Q.k + J) *)
 		If[ !isCartesian,
 
 			tmp0 = tmp //. {
-				Pair[Momentum[a_, dim], Momentum[b_, dim]] /; MemberQ[lmoms, a] && MemberQ[lmoms, b] :> spd[a, b]
+				Pair[Momentum[a_, dim], Momentum[b_, dim]] /; MemberQ[lmoms, a] && MemberQ[lmoms, b] :> spd[a, b],
+				Pair[Momentum[a_, dim], Momentum[b_, dim]] /; !MemberQ[lmoms, a] && MemberQ[lmoms, b] :> qkspd[a, b]
 			},
 
 			tmp0 = tmp //. {
-				CartesianPair[CartesianMomentum[a_, dim], CartesianMomentum[b_, dim]] /; MemberQ[lmoms, a] && MemberQ[lmoms, b] :> spd[a, b]
+				CartesianPair[CartesianMomentum[a_, dim], CartesianMomentum[b_, dim]] /; MemberQ[lmoms, a] && MemberQ[lmoms, b] :> spd[a, b],
+				CartesianPair[CartesianMomentum[a_, dim], CartesianMomentum[b_, dim]] /; !MemberQ[lmoms, a] && MemberQ[lmoms, b] :> qkspd[a, b]
 			}
 		];
+
+		fpJ = SelectFree2[tmp0 + null1 + null2,{spd,qkspd}] /. null1|null2 -> 0;
+		FCPrint[3,"FCSymanzikPolynomials: fpJ: ", fpJ, FCDoControl->fcszVerbose];
+
+		fpQ = SelectNotFree2[tmp0 + null1 + null2,qkspd] /. null1|null2 -> 0;
+
+		FCPrint[3,"FCSymanzikPolynomials: raw fpQ: ", fpQ, FCDoControl->fcszVerbose];
+
+		If[ !isCartesian,
+			fpQ = Map[ReplaceAll[SelectNotFree2[(-1/2) fpQ + null1 + null2, #], qkspd[a_, #] :> Pair[Momentum[a,dim], LorentzIndex[li,dim]]] &, lmoms],
+			fpQ = Map[ReplaceAll[SelectNotFree2[(-1/2) fpQ + null1 + null2, #], qkspd[a_, #] :> CartesianPair[CartesianMomentum[a,dim], CartesianIndex[ci,dim]]] &, lmoms];
+		];
+		FCPrint[3,"FCSymanzikPolynomials: final fpQ: ", fpQ, FCDoControl->fcszVerbose];
 
 		(* symmetrization, otherwise the M-matrix will not come out right! *)
 		tmp0 = tmp0 /. spd[a_,b_]:> 1/2 (spd[a,b] + spd[b,a]);
@@ -178,14 +199,27 @@ FCSymanzikPolynomials[expr_, lmoms_List /; ! OptionQ[lmoms], OptionsPattern[]] :
 
 		If[	Simplify[Det[matrix]-symU]=!=0 || !SymmetricMatrixQ[matrix],
 			Message[FCSymanzikPolynomials::failmsg,"Something went wrong when calculating the matrix M!"];
-
+			Abort[]
 		];
 
 
 		If[ !isCartesian,
 			(*The extra minus sign in symF comes from pulling out (-1)^N in the Minkowski case *)
-			res = {symU, -Together[symU symF], powers, matrix},
-			res = {symU, Together[symU symF], powers, matrix};
+			res = {symU, -Together[symU symF], powers, matrix, fpQ, fpJ},
+			res = {symU, Together[symU symF], powers, matrix, fpQ, fpJ};
+		];
+
+		(*
+		Global`VV1 = Det[matrix](Contract[fpQ.Inverse[matrix].fpQ]-fpJ);
+		Global`VV2 = res[[2]];
+		*)
+
+		If[ OptionValue[Check],
+			If[Factor[Together[Det[matrix](ExpandScalarProduct[Contract[fpQ.Inverse[matrix].fpQ,FCI->True],FCI->True]-fpJ)-res[[2]]]]=!=0,
+				Message[FCSymanzikPolynomials::failmsg,"The obtained Q and J are incorrect."];
+
+				Abort[]
+			]
 		];
 
 		FCPrint[3,"FCSymanzikPolynomials: Preliminary result: ", res, FCDoControl->fcszVerbose];
@@ -258,7 +292,7 @@ buildF[{oldSymU_, oldSymF_}, lmom_] :=
 
 		];
 
-		FCPrint[3,"FCSymanzikPolynomials: buildF: tmp after combinging the scalar products: ", tmp, FCDoControl->fcszVerbose];
+		FCPrint[3,"FCSymanzikPolynomials: buildF: tmp after combining the scalar products: ", tmp, FCDoControl->fcszVerbose];
 
 		num = (SelectNotFree2[tmp + null1 + null2, lmom])^2 /. null1 | null2 -> 0;
 
@@ -271,7 +305,7 @@ buildF[{oldSymU_, oldSymF_}, lmom_] :=
 		J = SelectFree2[tmp + null1 + null2, {lmom, lmsq}] /. null1 | null2 -> 0;
 
 		FCPrint[3,"FCSymanzikPolynomials: buildF: J: ", J, FCDoControl->fcszVerbose];
-
+		Global`FCJ = J;
 		res = J - num/(4 lambda);
 
 		FCPrint[3,"FCSymanzikPolynomials: buildF: res: ", res, FCDoControl->fcszVerbose];
