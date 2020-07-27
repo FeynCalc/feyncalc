@@ -345,7 +345,7 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 
 			FCPrint[1, "TID: Applying FCLoopIsolate.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
-			wrapped = FCLoopIsolate[t1,{q},Head->loopIntegral, FCI->True];
+			wrapped = FCLoopIsolate[t1,{q},Head->loopIntegral, PaVe->False, FCI->True];
 			FCPrint[1, "TID: Done applying FCLoopIsolate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 
 			If[ OptionValue[FCLoopMixedToCartesianAndTemporal] && !FreeQ2[{wrapped,irrelevant},{CartesianMomentum,TemporalMomentum}],
@@ -357,11 +357,11 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 						ExplicitLorentzIndex[0] :> holdExplicitLorentzIndex[0],
 						TemporalMomentum[x_]/;FreeQ[x,q] :> holdTemporalMomentum[x],
 						TemporalPair[x__]/;FreeQ[{x},q] :> holdTemporalPair[x]
-					},{q},Head->loopIntegral, FCI->True];
+					},{q},Head->loopIntegral, PaVe->False, FCI->True];
 
 				FCPrint[1, "TID: Done applying FCLoopMixedToCartesianAndTemporal, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 
-				irrelevant = FCLoopIsolate[irrelevant,{q},Head->loopIntegral, FCI->True] /.
+				irrelevant = FCLoopIsolate[irrelevant,{q},Head->loopIntegral, PaVe->False, FCI->True] /.
 					loopIntegral[y_]/;FCLoopMixedIntegralQ[y] :> FCLoopMixedToCartesianAndTemporal[y,{q}] /. loopIntegral-> Identity
 			];
 

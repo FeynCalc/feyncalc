@@ -76,7 +76,7 @@ ToPaVe[expr_, q_, OptionsPattern[]] :=
 		ex = FCLoopSplit[ex,{q}, FCI->True];
 		irrel = ex[[1]]+ex[[3]]+ex[[4]];
 		rel = ex[[2]];
-		rel = FCLoopIsolate[rel,{q},Head->loopInt, FCI->True, GFAD->False, CFAD->False, SFAD->True];
+		rel = FCLoopIsolate[rel,{q},Head->loopInt, FCI->True, GFAD->False, CFAD->False, SFAD->True, PaVe->False];
 
 		loopList = Cases2[rel,loopInt];
 

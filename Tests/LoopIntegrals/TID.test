@@ -1027,5 +1027,7 @@ DiracSimplify -> False, FCE -> True]",
 {"fcstTID-ID54","TID[DiracTrace[GAD[mu].(GSD[q] + m).GAD[nu, rho, 5]] FAD[q, q - p], q,
 DiracSimplify -> False, FCE -> True]",
 "1/2 (2 m DiracTrace[GAD[mu].GAD[nu].GAD[rho].GA[5]] +
-DiracTrace[GAD[mu].GSD[p].GAD[nu].GAD[rho].GA[5]]) FAD[q, -p + q]"}
+DiracTrace[GAD[mu].GSD[p].GAD[nu].GAD[rho].GA[5]]) FAD[q, -p + q]"},
+{"fcstTID-ID55","TID[A0[m1] FVD[q, mu] FAD[q, q - p], q, FCE -> True]",
+"1/2 A0[m1] FAD[q, -p + q] FVD[p, mu]"}
 };
