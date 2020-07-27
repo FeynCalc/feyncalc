@@ -25,6 +25,10 @@ FermionSpinSum::spinorsleft =
 "Error! After applying FermionSpinSum to all spinor chains the output \
 still contains spinors.";
 
+FermionSpinSum::fcctleft =
+"Warning! The output contains structures wrapped into FCChargeConjugateTransposed. \
+Those must necessarily be simplified before the computation of Dirac traces.";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -35,17 +39,17 @@ Begin["`FermionSpinSum`Private`"]
 fssVerbose::usage="";
 
 Options[FermionSpinSum] = {
-	Collecting -> True,
-	DotSimplify -> True,
-	ExtraFactor -> 1,
-	FCE -> False,
-	FCI -> False,
-	FCTraceFactor -> True,
-	FCVerbose -> False,
-	Factoring -> Factor,
-	Head -> Identity,
-	Momentum -> All,
-	SpinorChainTranspose -> True
+	Collecting				-> True,
+	DotSimplify				-> True,
+	ExtraFactor				-> 1,
+	FCE						-> False,
+	FCI						-> False,
+	FCTraceFactor			-> True,
+	FCVerbose				-> False,
+	Factoring				-> Factor,
+	Head 					-> Identity,
+	Momentum 				-> All,
+	SpinorChainTranspose	-> True
 };
 
 FermionSpinSum[expr_List, opts:OptionsPattern[]]:=
@@ -137,7 +141,16 @@ FermionSpinSum[expr_, OptionsPattern[]] :=
 
 		If[	!FreeQ[ex,FCChargeConjugateTransposed],
 			ex = ex /. FCChargeConjugateTransposed[spinPolarizationSum[x_],r___]:>
-				spinPolarizationSum[FCChargeConjugateTransposed[x,Explicit->True,r]]
+				spinPolarizationSum[FCChargeConjugateTransposed[x,Explicit->True,r]];
+			If[ OptionValue[DotSimplify],
+				FCPrint[1, "FermionSpinSum: Applying DotSimplify to FCCCTs.", FCDoControl->fssVerbose];
+				ex = ex /. FCChargeConjugateTransposed[x_,r__] :> FCChargeConjugateTransposed[x,DotSimplify->True,Explicit->True,r];
+				FCPrint[1,"FermionSpinSum: Applying DotSimplify done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fssVerbose];
+				FCPrint[3,"FermionSpinSum: After DotSimplify: ", ex, FCDoControl->fssVerbose];
+				If[ !FreeQ[ex,FCChargeConjugateTransposed],
+					Message[FermionSpinSum::fcctleft]
+				]
+			]
 		];
 
 		If[ OptionValue[DotSimplify],
@@ -145,7 +158,8 @@ FermionSpinSum[expr_, OptionsPattern[]] :=
 			FCPrint[1, "FermionSpinSum: Applying DotSimplify.", FCDoControl->fssVerbose];
 			ex = ex /. spinPolarizationSum[x_]:> spinPolarizationSum[DotSimplify[x,Expanding->False,FCI->True]];
 			FCPrint[1,"FermionSpinSum: Applying DotSimplify done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fssVerbose];
-			FCPrint[3,"FermionSpinSum: After DotSimplify: ", ex, FCDoControl->fssVerbose];
+			FCPrint[3,"FermionSpinSum: After DotSimplify: ", ex, FCDoControl->fssVerbose]
+
 		];
 
 		If[ optSpinPolarizationSum===Identity && OptionValue[FCTraceFactor],
@@ -153,7 +167,7 @@ FermionSpinSum[expr_, OptionsPattern[]] :=
 			FCPrint[1, "FermionSpinSum: Applying FCTraceFactor.", FCDoControl->fssVerbose];
 			ex = ex /. DiracTrace[x_]/;!FreeQ[x,spinPolarizationSum] :> FCTraceFactor[DiracTrace[(x/.spinPolarizationSum->Identity)],FCI->True];
 			FCPrint[1,"FermionSpinSum: Applying FCTraceFactor done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fssVerbose];
-			FCPrint[3,"FermionSpinSum: After FCTraceFactor: ", ex, FCDoControl->fssVerbose];
+			FCPrint[3,"FermionSpinSum: After FCTraceFactor: ", ex, FCDoControl->fssVerbose]
 		];
 
 		If[	!FreeQ[ex,spinPolarizationSum],
