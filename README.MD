@@ -10,6 +10,10 @@ algebraic calculations in quantum field theory and elementary particle physics.
 
 Visit our [wiki](https://github.com/FeynCalc/feyncalc/wiki) to learn more about FeynCalc!
 
+# Forum
+
+You can ask your questions about FeynCalc or participate in the related discussions in our [forum](https://github.com/FeynCalc/feyncalc/discussions) powered by GitHub Discussions (currently in beta)
+
 # Using FeynCalc in your research
 
 Development of FeynCalc costs a lot of effort and is done on a largely voluntarily basis.
