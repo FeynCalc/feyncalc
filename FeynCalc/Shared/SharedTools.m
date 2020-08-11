@@ -88,6 +88,11 @@ is useful for converting the output of different diagram generators such as \
 FeynArts or QGAF into the FeynCalc notation. It uses memoization to improve the \
 performance."
 
+FCMakeSymbols::usage=
+"FCMakeSymbols[name, range, type] generates a list or a sequence of symbols \
+(depending on the value of type) by attaching elements of the list range to \
+name. For example, FCMakeSymbols[mu, Range[1, 3], List] returns {mu1,mu2,mu3}."
+
 FCPatternFreeQ::usage =
 "FCPatternFreeQ[{exp}] yields True if {exp} does not contain any \
 pattern objects, e.g. Pattern, Blank, BlankSequence and BlankNullSequence. \n
@@ -259,6 +264,9 @@ FCReloadFunctionFromFile::failmsg = "Error! FCReloadFunctionFromFile has encount
 The problem reads: `1`";
 
 FCDuplicateFreeQ::failmsg = "Error! FCDuplicateFreeQ has encountered a fatal problem and must abort the computation. \n
+The problem reads: `1`";
+
+FCMakeSymbols::failmsg = "Error! FCMakeSymbols has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`";
 
 Begin["`Package`"]
@@ -511,6 +519,24 @@ FCMakeIndex[x_String, y_Integer, head_: Identity] :=
 	MemSet[	FCMakeIndex[x, y, head],
 			head[ToExpression[x <> "Minus" <> ToString[-y]]]
 	]/; y < 0;
+
+FCMakeSymbols[name_, range_List, type_, OptionsPattern[]] :=
+	Block[{res, body},
+		body = ToString[name];
+		res = Map[ToExpression[(body <> ToString[#])] &, range];
+		Switch[type,
+			List,
+				True,
+			Sequence,
+				res = Sequence @@ res,
+			_,
+				Message[FCMakeSymbols::failmsg, "Unknown type!"];
+				Abort[]
+		];
+	res
+	];
+
+
 
 FCFactorOut[expr_,pref_,OptionsPattern[]]:=
 	pref OptionValue[Head][OptionValue[Factoring][expr/pref]];
