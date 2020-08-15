@@ -1,0 +1,2693 @@
+
+
+(* :Title: GordonSimplify.test												*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for GordonSimplify			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Dirac`fcstGordonSimplify =
+{
+{"fcstGordonSimplify-ID1", "GordonSimplify[0]", "0"},
+{"fcstGordonSimplify-ID2",
+"GordonSimplify[SpinorUBar[p1,m1].GS[p].SpinorU[p2,m2],FCE\[Rule]\
+True]", "(I*Spinor[Momentum[p1], m1, 1] . DiracSigma[GS[p], GS[p1 - \
+p2]] . Spinor[Momentum[p2], m2, 1])/(m1 + m2) + (Spinor[Momentum[p1], \
+m1, 1] . Spinor[Momentum[p2], m2, 1]*SP[p, p1 + p2])/(m1 + m2)"},
+{"fcstGordonSimplify-ID3",
+"GordonSimplify[SpinorUBar[p1,m1].CGA[i].SpinorU[p2,m2],FCE\[Rule]\
+True]", "(CV[p1 + p2, i]*Spinor[Momentum[p1], m1, 1] . \
+Spinor[Momentum[p2], m2, 1])/(m1 + m2) + (I*Spinor[Momentum[p1], m1, \
+1] . DiracSigma[CGA[i], GS[p1 - p2]] . Spinor[Momentum[p2], m2, \
+1])/(m1 + m2)"},
+{"fcstGordonSimplify-ID4",
+"GordonSimplify[SpinorUBar[p1,m1].CGS[p].SpinorU[p2,m2],FCE\[Rule]\
+True]", "(CSP[p, p1 + p2]*Spinor[Momentum[p1], m1, 1] . \
+Spinor[Momentum[p2], m2, 1])/(m1 + m2) + (I*Spinor[Momentum[p1], m1, \
+1] . DiracSigma[CGS[p], GS[p1 - p2]] . Spinor[Momentum[p2], m2, \
+1])/(m1 + m2)"},
+{"fcstGordonSimplify-ID5",
+"GordonSimplify[SpinorUBar[p1,m].GA[mu,5].SpinorV[p2,m]SpinorVBar[\
+q1,m].GA[mu,5].SpinorU[q2,m],FCE\[Rule]True]",
+"(((I/2)*Spinor[Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . GA[5] . Spinor[-Momentum[p2], m, 1])/m + (Spinor[Momentum[p1], \
+m, 1] . GA[5] . Spinor[-Momentum[p2], m, 1]*FV[p1 + p2, \
+mu])/(2*m))*(((-I/2)*Spinor[-Momentum[q1], m, 1] . DiracSigma[GA[mu], \
+GS[q1 - q2]] . GA[5] . Spinor[Momentum[q2], m, 1])/m - \
+(Spinor[-Momentum[q1], m, 1] . GA[5] . Spinor[Momentum[q2], m, \
+1]*FV[q1 + q2, mu])/(2*m))"},
+{"fcstGordonSimplify-ID6",
+"GordonSimplify[-Spinor[Momentum[p2,D],ME,1].GAD[Lor1].Spinor[\
+Momentum[p1,D],ME,1] \
+(x1)+Spinor[Momentum[p2,D],ME,1].Spinor[Momentum[p1,D],ME,1] \
+(FVD[p1,Lor1]+FVD[p2,Lor1]) x2,FCE\[Rule]True]",
+"x2*Spinor[Momentum[p2, D], ME, 1] . Spinor[Momentum[p1, D], ME, \
+1]*(FVD[p1, Lor1] + FVD[p2, Lor1]) - x1*(((I/2)*Spinor[Momentum[p2, \
+D], ME, 1] . DiracSigma[GAD[Lor1], GSD[-p1 + p2]] . \
+Spinor[Momentum[p1, D], ME, 1])/ME + (Spinor[Momentum[p2, D], ME, 1] \
+. Spinor[Momentum[p1, D], ME, 1]*FVD[p1 + p2, Lor1])/(2*ME))"}
+};
+
+Tests`Dirac`fcstGordonSimplifyGenericGeneric =
+({
+{"fcstGordonSimplifyGenericGeneric-ID1",
+"GordonSimplify[SpinorUBar[p1,m1]. \
+GA[mu].SpinorU[p2,m2],FCE->True]",
+"(I*Spinor[Momentum[p1], m1, 1] . DiracSigma[GA[mu], GS[p1 - p2]] \
+. Spinor[Momentum[p2], m2, 1])/(m1 + m2) + (Spinor[Momentum[p1], m1, \
+1] . Spinor[Momentum[p2], m2, 1]*FV[p1 + p2, mu])/(m1 + m2)"},
+{"fcstGordonSimplifyGenericGeneric-ID2",
+"GordonSimplify[SpinorVBar[p1,m1]. \
+GA[mu].SpinorV[p2,m2],FCE->True]",
+"((-I)*Spinor[-Momentum[p1], m1, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . Spinor[-Momentum[p2], m2, 1])/(m1 + m2) - \
+(Spinor[-Momentum[p1], m1, 1] . Spinor[-Momentum[p2], m2, 1]*FV[p1 + \
+p2, mu])/(m1 + m2)"},
+{"fcstGordonSimplifyGenericGeneric-ID3",
+"GordonSimplify[SpinorUBar[p1,m1]. \
+GA[mu].SpinorV[p2,m2],FCE->True]",
+"(I*Spinor[Momentum[p1], m1, 1] . DiracSigma[GA[mu], GS[p1 - p2]] \
+. Spinor[-Momentum[p2], m2, 1])/(m1 - m2) + (Spinor[Momentum[p1], m1, \
+1] . Spinor[-Momentum[p2], m2, 1]*FV[p1 + p2, mu])/(m1 - m2)"},
+{"fcstGordonSimplifyGenericGeneric-ID4",
+"GordonSimplify[SpinorVBar[p1,m1]. \
+GA[mu].SpinorU[p2,m2],FCE->True]",
+"((-I)*Spinor[-Momentum[p1], m1, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . Spinor[Momentum[p2], m2, 1])/(m1 - m2) - \
+(Spinor[-Momentum[p1], m1, 1] . Spinor[Momentum[p2], m2, 1]*FV[p1 + \
+p2, mu])/(m1 - m2)"},
+{"fcstGordonSimplifyGeneric-ID5",
+"GordonSimplify[SpinorUBar[p1,m]. GA[mu].SpinorU[p2,m],FCE->True]",
+	"((I/2)*Spinor[Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . Spinor[Momentum[p2], m, 1])/m + (Spinor[Momentum[p1], m, 1] . \
+Spinor[Momentum[p2], m, 1]*FV[p1 + p2, mu])/(2*m)"},
+{"fcstGordonSimplifyGeneric-ID6",
+"GordonSimplify[SpinorVBar[p1,m]. GA[mu].SpinorV[p2,m],FCE->True]",
+	"((-I/2)*Spinor[-Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . Spinor[-Momentum[p2], m, 1])/m - (Spinor[-Momentum[p1], m, 1] \
+. Spinor[-Momentum[p2], m, 1]*FV[p1 + p2, mu])/(2*m)"},
+{"fcstGordonSimplifyGeneric-ID7",
+"GordonSimplify[SpinorUBar[p1,m]. GA[mu].SpinorV[p2,m],FCE->True]",
+	"Spinor[Momentum[p1], m, 1] . GA[mu] . Spinor[-Momentum[p2], m, \
+1]"},
+{"fcstGordonSimplifyGeneric-ID8",
+"GordonSimplify[SpinorVBar[p1,m]. GA[mu].SpinorU[p2,m],FCE->True]",
+	"Spinor[-Momentum[p1], m, 1] . GA[mu] . Spinor[Momentum[p2], m, \
+1]"},
+{"fcstGordonSimplifyGeneric-ID9",
+"GordonSimplify[SpinorUBar[p1,0]. GA[mu].SpinorU[p2,m],FCE->True]",
+	"(I*Spinor[Momentum[p1], 0, 1] . DiracSigma[GA[mu], GS[p1 - p2]] \
+. Spinor[Momentum[p2], m, 1])/m + (Spinor[Momentum[p1], 0, 1] . \
+Spinor[Momentum[p2], m, 1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID10",
+"GordonSimplify[SpinorVBar[p1,0]. GA[mu].SpinorV[p2,m],FCE->True]",
+	"((-I)*Spinor[-Momentum[p1], 0, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . Spinor[-Momentum[p2], m, 1])/m - (Spinor[-Momentum[p1], 0, 1] \
+. Spinor[-Momentum[p2], m, 1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID11",
+"GordonSimplify[SpinorUBar[p1,0]. GA[mu].SpinorV[p2,m],FCE->True]",
+	"((-I)*Spinor[Momentum[p1], 0, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . Spinor[-Momentum[p2], m, 1])/m - (Spinor[Momentum[p1], 0, 1] . \
+Spinor[-Momentum[p2], m, 1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID12",
+"GordonSimplify[SpinorVBar[p1,0]. GA[mu].SpinorU[p2,m],FCE->True]",
+	"(I*Spinor[-Momentum[p1], 0, 1] . DiracSigma[GA[mu], GS[p1 - p2]] \
+. Spinor[Momentum[p2], m, 1])/m + (Spinor[-Momentum[p1], 0, 1] . \
+Spinor[Momentum[p2], m, 1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID13",
+"GordonSimplify[SpinorUBar[p1,m]. GA[mu].SpinorU[p2,0],FCE->True]",
+	"(I*Spinor[Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - p2]] \
+. Spinor[Momentum[p2], 0, 1])/m + (Spinor[Momentum[p1], m, 1] . \
+Spinor[Momentum[p2], 0, 1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID14",
+"GordonSimplify[SpinorVBar[p1,m]. GA[mu].SpinorV[p2,0],FCE->True]",
+	"((-I)*Spinor[-Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . Spinor[-Momentum[p2], 0, 1])/m - (Spinor[-Momentum[p1], m, 1] \
+. Spinor[-Momentum[p2], 0, 1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID15",
+"GordonSimplify[SpinorUBar[p1,m]. GA[mu].SpinorV[p2,0],FCE->True]",
+	"(I*Spinor[Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - p2]] \
+. Spinor[-Momentum[p2], 0, 1])/m + (Spinor[Momentum[p1], m, 1] . \
+Spinor[-Momentum[p2], 0, 1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID16",
+"GordonSimplify[SpinorVBar[p1,m]. GA[mu].SpinorU[p2,0],FCE->True]",
+	"((-I)*Spinor[-Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . Spinor[Momentum[p2], 0, 1])/m - (Spinor[-Momentum[p1], m, 1] . \
+Spinor[Momentum[p2], 0, 1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID17",
+"GordonSimplify[SpinorUBar[p1,0]. GA[mu].SpinorU[p2,0],FCE->True]",
+	"Spinor[Momentum[p1], 0, 1] . GA[mu] . Spinor[Momentum[p2], 0, \
+1]"},
+{"fcstGordonSimplifyGeneric-ID18",
+"GordonSimplify[SpinorVBar[p1,0]. GA[mu].SpinorV[p2,0],FCE->True]",
+	"Spinor[-Momentum[p1], 0, 1] . GA[mu] . Spinor[-Momentum[p2], 0, \
+1]"},
+{"fcstGordonSimplifyGeneric-ID19",
+"GordonSimplify[SpinorUBar[p1,0]. GA[mu].SpinorV[p2,0],FCE->True]",
+	"Spinor[Momentum[p1], 0, 1] . GA[mu] . Spinor[-Momentum[p2], 0, \
+1]"},
+{"fcstGordonSimplifyGeneric-ID20",
+"GordonSimplify[SpinorVBar[p1,0]. GA[mu].SpinorU[p2,0],FCE->True]",
+	"Spinor[-Momentum[p1], 0, 1] . GA[mu] . Spinor[Momentum[p2], 0, \
+1]"},
+{"fcstGordonSimplifyGeneric-ID21",
+"GordonSimplify[SpinorUBar[p,m]. GA[mu].SpinorU[p,m],FCE->True]",
+"(Spinor[Momentum[p], m, 1] . Spinor[Momentum[p], m, 1]*FV[p, \
+mu])/m"},
+{"fcstGordonSimplifyGeneric-ID22",
+"GordonSimplify[SpinorVBar[p,m]. GA[mu].SpinorV[p,m],FCE->True]",
+"-((Spinor[-Momentum[p], m, 1] . Spinor[-Momentum[p], m, 1]*FV[p, \
+mu])/m)"},
+{"fcstGordonSimplifyGeneric-ID23",
+"GordonSimplify[SpinorUBar[p,m]. GA[mu].SpinorV[p,m],FCE->True]",
+"Spinor[Momentum[p], m, 1] . GA[mu] . Spinor[-Momentum[p], m, \
+1]"},
+{"fcstGordonSimplifyGeneric-ID24",
+"GordonSimplify[SpinorVBar[p,m]. GA[mu].SpinorU[p,m],FCE->True]",
+"Spinor[-Momentum[p], m, 1] . GA[mu] . Spinor[Momentum[p], m, \
+1]"},
+{"fcstGordonSimplifyGeneric-ID25",
+"GordonSimplify[SpinorUBar[p,0]. GA[mu].SpinorU[p,0],FCE->True]",
+"Spinor[Momentum[p], 0, 1] . GA[mu] . Spinor[Momentum[p], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID26",
+"GordonSimplify[SpinorVBar[p,0]. GA[mu].SpinorV[p,0],FCE->True]",
+"Spinor[-Momentum[p], 0, 1] . GA[mu] . Spinor[-Momentum[p], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID27",
+"GordonSimplify[SpinorUBar[p,0]. GA[mu].SpinorV[p,0],FCE->True]",
+"Spinor[Momentum[p], 0, 1] . GA[mu] . Spinor[-Momentum[p], 0, \
+1]"},
+{"fcstGordonSimplifyGeneric-ID28",
+"GordonSimplify[SpinorVBar[p,0]. GA[mu].SpinorU[p,0],FCE->True]",
+"Spinor[-Momentum[p], 0, 1] . GA[mu] . Spinor[Momentum[p], 0, \
+1]"},
+{"fcstGordonSimplifyGeneric-ID29",
+"GordonSimplify[SpinorUBar[p1,m1]. \
+GA[mu,5].SpinorU[p2,m2],FCE->True]",
+"(I*Spinor[Momentum[p1], m1, 1] . DiracSigma[GA[mu], GS[p1 - p2]] \
+. GA[5] . Spinor[Momentum[p2], m2, 1])/(m1 - m2) + \
+(Spinor[Momentum[p1], m1, 1] . GA[5] . Spinor[Momentum[p2], m2, \
+1]*FV[p1 + p2, mu])/(m1 - m2)"},
+{"fcstGordonSimplifyGeneric-ID30",
+"GordonSimplify[SpinorVBar[p1,m1]. \
+GA[mu,5].SpinorV[p2,m2],FCE->True]",
+"((-I)*Spinor[-Momentum[p1], m1, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . GA[5] . Spinor[-Momentum[p2], m2, 1])/(m1 - m2) - \
+(Spinor[-Momentum[p1], m1, 1] . GA[5] . Spinor[-Momentum[p2], m2, \
+1]*FV[p1 + p2, mu])/(m1 - m2)"},
+{"fcstGordonSimplifyGeneric-ID31",
+"GordonSimplify[SpinorUBar[p1,m1]. \
+GA[mu,5].SpinorV[p2,m2],FCE->True]",
+"(I*Spinor[Momentum[p1], m1, 1] . DiracSigma[GA[mu], GS[p1 - p2]] \
+. GA[5] . Spinor[-Momentum[p2], m2, 1])/(m1 + m2) + \
+(Spinor[Momentum[p1], m1, 1] . GA[5] . Spinor[-Momentum[p2], m2, \
+1]*FV[p1 + p2, mu])/(m1 + m2)"},
+{"fcstGordonSimplifyGeneric-ID32",
+"GordonSimplify[SpinorVBar[p1,m1]. \
+GA[mu,5].SpinorU[p2,m2],FCE->True]",
+"((-I)*Spinor[-Momentum[p1], m1, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . GA[5] . Spinor[Momentum[p2], m2, 1])/(m1 + m2) - \
+(Spinor[-Momentum[p1], m1, 1] . GA[5] . Spinor[Momentum[p2], m2, \
+1]*FV[p1 + p2, mu])/(m1 + m2)"},
+{"fcstGordonSimplifyGeneric-ID33",
+"GordonSimplify[SpinorUBar[p1,m]. \
+GA[mu,5].SpinorU[p2,m],FCE->True]",
+"Spinor[Momentum[p1], m, 1] . GA[mu] . GA[5] . \
+Spinor[Momentum[p2], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID34",
+"GordonSimplify[SpinorVBar[p1,m]. \
+GA[mu,5].SpinorV[p2,m],FCE->True]",
+"Spinor[-Momentum[p1], m, 1] . GA[mu] . GA[5] . \
+Spinor[-Momentum[p2], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID35",
+"GordonSimplify[SpinorUBar[p1,m]. \
+GA[mu,5].SpinorV[p2,m],FCE->True]",
+"((I/2)*Spinor[Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . GA[5] . Spinor[-Momentum[p2], m, 1])/m + (Spinor[Momentum[p1], \
+m, 1] . GA[5] . Spinor[-Momentum[p2], m, 1]*FV[p1 + p2, mu])/(2*m)"},
+{"fcstGordonSimplifyGeneric-ID36",
+"GordonSimplify[SpinorVBar[p1,m]. \
+GA[mu,5].SpinorU[p2,m],FCE->True]",
+"((-I/2)*Spinor[-Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . GA[5] . Spinor[Momentum[p2], m, 1])/m - (Spinor[-Momentum[p1], \
+m, 1] . GA[5] . Spinor[Momentum[p2], m, 1]*FV[p1 + p2, mu])/(2*m)"},
+{"fcstGordonSimplifyGeneric-ID37",
+"GordonSimplify[SpinorUBar[p1,0]. \
+GA[mu,5].SpinorU[p2,m],FCE->True]",
+"((-I)*Spinor[Momentum[p1], 0, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . GA[5] . Spinor[Momentum[p2], m, 1])/m - (Spinor[Momentum[p1], \
+0, 1] . GA[5] . Spinor[Momentum[p2], m, 1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID38",
+"GordonSimplify[SpinorVBar[p1,0]. \
+GA[mu,5].SpinorV[p2,m],FCE->True]",
+"(I*Spinor[-Momentum[p1], 0, 1] . DiracSigma[GA[mu], GS[p1 - p2]] \
+. GA[5] . Spinor[-Momentum[p2], m, 1])/m + (Spinor[-Momentum[p1], 0, \
+1] . GA[5] . Spinor[-Momentum[p2], m, 1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID39",
+"GordonSimplify[SpinorUBar[p1,0]. \
+GA[mu,5].SpinorV[p2,m],FCE->True]",
+"(I*Spinor[Momentum[p1], 0, 1] . DiracSigma[GA[mu], GS[p1 - p2]] . \
+GA[5] . Spinor[-Momentum[p2], m, 1])/m + (Spinor[Momentum[p1], 0, 1] \
+. GA[5] . Spinor[-Momentum[p2], m, 1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID40",
+"GordonSimplify[SpinorVBar[p1,0]. \
+GA[mu,5].SpinorU[p2,m],FCE->True]",
+"((-I)*Spinor[-Momentum[p1], 0, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . GA[5] . Spinor[Momentum[p2], m, 1])/m - (Spinor[-Momentum[p1], \
+0, 1] . GA[5] . Spinor[Momentum[p2], m, 1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID41",
+"GordonSimplify[SpinorUBar[p1,m]. \
+GA[mu,5].SpinorU[p2,0],FCE->True]",
+"(I*Spinor[Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - p2]] . \
+GA[5] . Spinor[Momentum[p2], 0, 1])/m + (Spinor[Momentum[p1], m, 1] . \
+GA[5] . Spinor[Momentum[p2], 0, 1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID42",
+"GordonSimplify[SpinorVBar[p1,m]. \
+GA[mu,5].SpinorV[p2,0],FCE->True]",
+"((-I)*Spinor[-Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . GA[5] . Spinor[-Momentum[p2], 0, 1])/m - \
+(Spinor[-Momentum[p1], m, 1] . GA[5] . Spinor[-Momentum[p2], 0, \
+1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID43",
+"GordonSimplify[SpinorUBar[p1,m]. \
+GA[mu,5].SpinorV[p2,0],FCE->True]",
+"(I*Spinor[Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - p2]] . \
+GA[5] . Spinor[-Momentum[p2], 0, 1])/m + (Spinor[Momentum[p1], m, 1] \
+. GA[5] . Spinor[-Momentum[p2], 0, 1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID44",
+"GordonSimplify[SpinorVBar[p1,m]. \
+GA[mu,5].SpinorU[p2,0],FCE->True]",
+"((-I)*Spinor[-Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . GA[5] . Spinor[Momentum[p2], 0, 1])/m - (Spinor[-Momentum[p1], \
+m, 1] . GA[5] . Spinor[Momentum[p2], 0, 1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID45",
+"GordonSimplify[SpinorUBar[p1,0]. \
+GA[mu,5].SpinorU[p2,0],FCE->True]",
+"Spinor[Momentum[p1], 0, 1] . GA[mu] . GA[5] . \
+Spinor[Momentum[p2], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID46",
+"GordonSimplify[SpinorVBar[p1,0]. \
+GA[mu,5].SpinorV[p2,0],FCE->True]",
+"Spinor[-Momentum[p1], 0, 1] . GA[mu] . GA[5] . \
+Spinor[-Momentum[p2], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID47",
+"GordonSimplify[SpinorUBar[p1,0]. \
+GA[mu,5].SpinorV[p2,0],FCE->True]",
+"Spinor[Momentum[p1], 0, 1] . GA[mu] . GA[5] . \
+Spinor[-Momentum[p2], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID48",
+"GordonSimplify[SpinorVBar[p1,0]. \
+GA[mu,5].SpinorU[p2,0],FCE->True]",
+"Spinor[-Momentum[p1], 0, 1] . GA[mu] . GA[5] . \
+Spinor[Momentum[p2], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID49",
+"GordonSimplify[SpinorUBar[p,m]. GA[mu,5].SpinorU[p,m],FCE->True]",
+	"Spinor[Momentum[p], m, 1] . GA[mu] . GA[5] . Spinor[Momentum[p], \
+m, 1]"},
+{"fcstGordonSimplifyGeneric-ID50",
+"GordonSimplify[SpinorVBar[p,m]. GA[mu,5].SpinorV[p,m],FCE->True]",
+	"Spinor[-Momentum[p], m, 1] . GA[mu] . GA[5] . \
+Spinor[-Momentum[p], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID51",
+"GordonSimplify[SpinorUBar[p,m]. GA[mu,5].SpinorV[p,m],FCE->True]",
+	"(Spinor[Momentum[p], m, 1] . GA[5] . Spinor[-Momentum[p], m, \
+1]*FV[p, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID52",
+"GordonSimplify[SpinorVBar[p,m]. GA[mu,5].SpinorU[p,m],FCE->True]",
+	"-((Spinor[-Momentum[p], m, 1] . GA[5] . Spinor[Momentum[p], m, \
+1]*FV[p, mu])/m)"},
+{"fcstGordonSimplifyGeneric-ID53",
+"GordonSimplify[SpinorUBar[p,0]. GA[mu,5].SpinorU[p,0],FCE->True]",
+	"Spinor[Momentum[p], 0, 1] . GA[mu] . GA[5] . Spinor[Momentum[p], \
+0, 1]"},
+{"fcstGordonSimplifyGeneric-ID54",
+"GordonSimplify[SpinorVBar[p,0]. GA[mu,5].SpinorV[p,0],FCE->True]",
+	"Spinor[-Momentum[p], 0, 1] . GA[mu] . GA[5] . \
+Spinor[-Momentum[p], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID55",
+"GordonSimplify[SpinorUBar[p,0]. GA[mu,5].SpinorV[p,0],FCE->True]",
+	"Spinor[Momentum[p], 0, 1] . GA[mu] . GA[5] . \
+Spinor[-Momentum[p], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID56",
+"GordonSimplify[SpinorVBar[p,0]. GA[mu,5].SpinorU[p,0],FCE->True]",
+	"Spinor[-Momentum[p], 0, 1] . GA[mu] . GA[5] . \
+Spinor[Momentum[p], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID57",
+"GordonSimplify[SpinorUBar[p1,m1]. \
+GA[mu,6].SpinorU[p2,m2],FCE->True]",
+"(I*Spinor[Momentum[p1], m1, 1] . DiracSigma[GA[mu], GS[p1 - p2]] \
+. GA[6] . Spinor[Momentum[p2], m2, 1])/m1 - (m2*Spinor[Momentum[p1], \
+m1, 1] . GA[mu] . GA[7] . Spinor[Momentum[p2], m2, 1])/m1 + \
+(Spinor[Momentum[p1], m1, 1] . GA[6] . Spinor[Momentum[p2], m2, \
+1]*FV[p1 + p2, mu])/m1"},
+{"fcstGordonSimplifyGeneric-ID58",
+"GordonSimplify[SpinorVBar[p1,m1]. \
+GA[mu,6].SpinorV[p2,m2],FCE->True]",
+"((-I)*Spinor[-Momentum[p1], m1, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . GA[6] . Spinor[-Momentum[p2], m2, 1])/m1 - \
+(m2*Spinor[-Momentum[p1], m1, 1] . GA[mu] . GA[7] . \
+Spinor[-Momentum[p2], m2, 1])/m1 - (Spinor[-Momentum[p1], m1, 1] . \
+GA[6] . Spinor[-Momentum[p2], m2, 1]*FV[p1 + p2, mu])/m1"},
+{"fcstGordonSimplifyGeneric-ID59",
+"GordonSimplify[SpinorUBar[p1,m1]. \
+GA[mu,6].SpinorV[p2,m2],FCE->True]",
+"(I*Spinor[Momentum[p1], m1, 1] . DiracSigma[GA[mu], GS[p1 - p2]] \
+. GA[6] . Spinor[-Momentum[p2], m2, 1])/m1 + (m2*Spinor[Momentum[p1], \
+m1, 1] . GA[mu] . GA[7] . Spinor[-Momentum[p2], m2, 1])/m1 + \
+(Spinor[Momentum[p1], m1, 1] . GA[6] . Spinor[-Momentum[p2], m2, \
+1]*FV[p1 + p2, mu])/m1"},
+{"fcstGordonSimplifyGeneric-ID60",
+"GordonSimplify[SpinorVBar[p1,m1]. \
+GA[mu,6].SpinorU[p2,m2],FCE->True]",
+"((-I)*Spinor[-Momentum[p1], m1, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . GA[6] . Spinor[Momentum[p2], m2, 1])/m1 + \
+(m2*Spinor[-Momentum[p1], m1, 1] . GA[mu] . GA[7] . \
+Spinor[Momentum[p2], m2, 1])/m1 - (Spinor[-Momentum[p1], m1, 1] . \
+GA[6] . Spinor[Momentum[p2], m2, 1]*FV[p1 + p2, mu])/m1"},
+{"fcstGordonSimplifyGeneric-ID61",
+"GordonSimplify[SpinorUBar[p1,m]. \
+GA[mu,6].SpinorU[p2,m],FCE->True]",
+"(I*Spinor[Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - p2]] . \
+GA[6] . Spinor[Momentum[p2], m, 1])/m - Spinor[Momentum[p1], m, 1] . \
+GA[mu] . GA[7] . Spinor[Momentum[p2], m, 1] + (Spinor[Momentum[p1], \
+m, 1] . GA[6] . Spinor[Momentum[p2], m, 1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID62",
+"GordonSimplify[SpinorVBar[p1,m]. \
+GA[mu,6].SpinorV[p2,m],FCE->True]",
+"((-I)*Spinor[-Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . GA[6] . Spinor[-Momentum[p2], m, 1])/m - Spinor[-Momentum[p1], \
+m, 1] . GA[mu] . GA[7] . Spinor[-Momentum[p2], m, 1] - \
+(Spinor[-Momentum[p1], m, 1] . GA[6] . Spinor[-Momentum[p2], m, \
+1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID63",
+"GordonSimplify[SpinorUBar[p1,m]. \
+GA[mu,6].SpinorV[p2,m],FCE->True]",
+"(I*Spinor[Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - p2]] . \
+GA[6] . Spinor[-Momentum[p2], m, 1])/m + Spinor[Momentum[p1], m, 1] . \
+GA[mu] . GA[7] . Spinor[-Momentum[p2], m, 1] + (Spinor[Momentum[p1], \
+m, 1] . GA[6] . Spinor[-Momentum[p2], m, 1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID64",
+"GordonSimplify[SpinorVBar[p1,m]. \
+GA[mu,6].SpinorU[p2,m],FCE->True]",
+"((-I)*Spinor[-Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . GA[6] . Spinor[Momentum[p2], m, 1])/m + Spinor[-Momentum[p1], \
+m, 1] . GA[mu] . GA[7] . Spinor[Momentum[p2], m, 1] - \
+(Spinor[-Momentum[p1], m, 1] . GA[6] . Spinor[Momentum[p2], m, \
+1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID65",
+"GordonSimplify[SpinorUBar[p1,m1]. GA[mu,6].SpinorU[p2,m2],Inverse\
+\[Rule]{m2},FCE->True]",
+"(I*Spinor[Momentum[p1], m1, 1] . DiracSigma[GA[mu], GS[p1 - p2]] \
+. GA[7] . Spinor[Momentum[p2], m2, 1])/m2 - (m1*Spinor[Momentum[p1], \
+m1, 1] . GA[mu] . GA[7] . Spinor[Momentum[p2], m2, 1])/m2 + \
+(Spinor[Momentum[p1], m1, 1] . GA[7] . Spinor[Momentum[p2], m2, \
+1]*FV[p1 + p2, mu])/m2"},
+{"fcstGordonSimplifyGeneric-ID66",
+"GordonSimplify[SpinorVBar[p1,m1]. GA[mu,6].SpinorV[p2,m2],Inverse\
+\[Rule]{m2},FCE->True]",
+"((-I)*Spinor[-Momentum[p1], m1, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . GA[7] . Spinor[-Momentum[p2], m2, 1])/m2 - \
+(m1*Spinor[-Momentum[p1], m1, 1] . GA[mu] . GA[7] . \
+Spinor[-Momentum[p2], m2, 1])/m2 - (Spinor[-Momentum[p1], m1, 1] . \
+GA[7] . Spinor[-Momentum[p2], m2, 1]*FV[p1 + p2, mu])/m2"},
+{"fcstGordonSimplifyGeneric-ID67",
+"GordonSimplify[SpinorUBar[p1,m1]. GA[mu,6].SpinorV[p2,m2],Inverse\
+\[Rule]{m2},FCE->True]",
+"((-I)*Spinor[Momentum[p1], m1, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . GA[7] . Spinor[-Momentum[p2], m2, 1])/m2 + \
+(m1*Spinor[Momentum[p1], m1, 1] . GA[mu] . GA[7] . \
+Spinor[-Momentum[p2], m2, 1])/m2 - (Spinor[Momentum[p1], m1, 1] . \
+GA[7] . Spinor[-Momentum[p2], m2, 1]*FV[p1 + p2, mu])/m2"},
+{"fcstGordonSimplifyGeneric-ID68",
+"GordonSimplify[SpinorVBar[p1,m1]. GA[mu,6].SpinorU[p2,m2],Inverse\
+\[Rule]{m2},FCE->True]",
+"(I*Spinor[-Momentum[p1], m1, 1] . DiracSigma[GA[mu], GS[p1 - p2]] \
+. GA[7] . Spinor[Momentum[p2], m2, 1])/m2 + (m1*Spinor[-Momentum[p1], \
+m1, 1] . GA[mu] . GA[7] . Spinor[Momentum[p2], m2, 1])/m2 + \
+(Spinor[-Momentum[p1], m1, 1] . GA[7] . Spinor[Momentum[p2], m2, \
+1]*FV[p1 + p2, mu])/m2"},
+{"fcstGordonSimplifyGeneric-ID69",
+"GordonSimplify[SpinorUBar[p1,m]. GA[mu,6].SpinorU[p2,m],Inverse\
+\[Rule]{m2},FCE->True]",
+"Spinor[Momentum[p1], m, 1] . GA[mu] . GA[6] . \
+Spinor[Momentum[p2], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID70",
+"GordonSimplify[SpinorVBar[p1,m]. GA[mu,6].SpinorV[p2,m],Inverse\
+\[Rule]{m2},FCE->True]",
+"Spinor[-Momentum[p1], m, 1] . GA[mu] . GA[6] . \
+Spinor[-Momentum[p2], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID71",
+"GordonSimplify[SpinorUBar[p1,m]. GA[mu,6].SpinorV[p2,m],Inverse\
+\[Rule]{m2},FCE->True]",
+"Spinor[Momentum[p1], m, 1] . GA[mu] . GA[6] . \
+Spinor[-Momentum[p2], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID72",
+"GordonSimplify[SpinorVBar[p1,m]. GA[mu,6].SpinorU[p2,m],Inverse\
+\[Rule]{m2},FCE->True]",
+"Spinor[-Momentum[p1], m, 1] . GA[mu] . GA[6] . \
+Spinor[Momentum[p2], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID73",
+"GordonSimplify[SpinorUBar[p1,0]. \
+GA[mu,6].SpinorU[p2,m],FCE->True]",
+"Spinor[Momentum[p1], 0, 1] . GA[mu] . GA[6] . \
+Spinor[Momentum[p2], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID74",
+"GordonSimplify[SpinorVBar[p1,0]. \
+GA[mu,6].SpinorV[p2,m],FCE->True]",
+"Spinor[-Momentum[p1], 0, 1] . GA[mu] . GA[6] . \
+Spinor[-Momentum[p2], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID75",
+"GordonSimplify[SpinorUBar[p1,0]. \
+GA[mu,6].SpinorV[p2,m],FCE->True]",
+"Spinor[Momentum[p1], 0, 1] . GA[mu] . GA[6] . \
+Spinor[-Momentum[p2], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID76",
+"GordonSimplify[SpinorVBar[p1,0]. \
+GA[mu,6].SpinorU[p2,m],FCE->True]",
+"Spinor[-Momentum[p1], 0, 1] . GA[mu] . GA[6] . \
+Spinor[Momentum[p2], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID77",
+"GordonSimplify[SpinorUBar[p1,m]. \
+GA[mu,6].SpinorU[p2,0],FCE->True]",
+"(I*Spinor[Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - p2]] . \
+GA[6] . Spinor[Momentum[p2], 0, 1])/m + (Spinor[Momentum[p1], m, 1] . \
+GA[6] . Spinor[Momentum[p2], 0, 1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID78",
+"GordonSimplify[SpinorVBar[p1,m]. \
+GA[mu,6].SpinorV[p2,0],FCE->True]",
+"((-I)*Spinor[-Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . GA[6] . Spinor[-Momentum[p2], 0, 1])/m - \
+(Spinor[-Momentum[p1], m, 1] . GA[6] . Spinor[-Momentum[p2], 0, \
+1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID79",
+"GordonSimplify[SpinorUBar[p1,m]. \
+GA[mu,6].SpinorV[p2,0],FCE->True]",
+"(I*Spinor[Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - p2]] . \
+GA[6] . Spinor[-Momentum[p2], 0, 1])/m + (Spinor[Momentum[p1], m, 1] \
+. GA[6] . Spinor[-Momentum[p2], 0, 1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID80",
+"GordonSimplify[SpinorVBar[p1,m]. \
+GA[mu,6].SpinorU[p2,0],FCE->True]",
+"((-I)*Spinor[-Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . GA[6] . Spinor[Momentum[p2], 0, 1])/m - (Spinor[-Momentum[p1], \
+m, 1] . GA[6] . Spinor[Momentum[p2], 0, 1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID81",
+"GordonSimplify[SpinorUBar[p1,0]. \
+GA[mu,6].SpinorU[p2,0],FCE->True]",
+"Spinor[Momentum[p1], 0, 1] . GA[mu] . GA[6] . \
+Spinor[Momentum[p2], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID82",
+"GordonSimplify[SpinorVBar[p1,0]. \
+GA[mu,6].SpinorV[p2,0],FCE->True]",
+"Spinor[-Momentum[p1], 0, 1] . GA[mu] . GA[6] . \
+Spinor[-Momentum[p2], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID83",
+"GordonSimplify[SpinorUBar[p1,0]. \
+GA[mu,6].SpinorV[p2,0],FCE->True]",
+"Spinor[Momentum[p1], 0, 1] . GA[mu] . GA[6] . \
+Spinor[-Momentum[p2], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID84",
+"GordonSimplify[SpinorVBar[p1,0]. \
+GA[mu,6].SpinorU[p2,0],FCE->True]",
+"Spinor[-Momentum[p1], 0, 1] . GA[mu] . GA[6] . \
+Spinor[Momentum[p2], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID85",
+"GordonSimplify[SpinorUBar[p,m]. GA[mu,6].SpinorU[p,m],FCE->True]",
+	"-Spinor[Momentum[p], m, 1] . GA[mu] . GA[7] . \
+Spinor[Momentum[p], m, 1] + (2*Spinor[Momentum[p], m, 1] . GA[6] . \
+Spinor[Momentum[p], m, 1]*FV[p, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID86",
+"GordonSimplify[SpinorVBar[p,m]. GA[mu,6].SpinorV[p,m],FCE->True]",
+	"-Spinor[-Momentum[p], m, 1] . GA[mu] . GA[7] . \
+Spinor[-Momentum[p], m, 1] - (2*Spinor[-Momentum[p], m, 1] . GA[6] . \
+Spinor[-Momentum[p], m, 1]*FV[p, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID87",
+"GordonSimplify[SpinorUBar[p,m]. GA[mu,6].SpinorV[p,m],FCE->True]",
+	"Spinor[Momentum[p], m, 1] . GA[mu] . GA[7] . \
+Spinor[-Momentum[p], m, 1] + (2*Spinor[Momentum[p], m, 1] . GA[6] . \
+Spinor[-Momentum[p], m, 1]*FV[p, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID88",
+"GordonSimplify[SpinorVBar[p,m]. GA[mu,6].SpinorU[p,m],FCE->True]",
+	"Spinor[-Momentum[p], m, 1] . GA[mu] . GA[7] . \
+Spinor[Momentum[p], m, 1] - (2*Spinor[-Momentum[p], m, 1] . GA[6] . \
+Spinor[Momentum[p], m, 1]*FV[p, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID89",
+"GordonSimplify[SpinorUBar[p,0]. GA[mu,6].SpinorU[p,0],FCE->True]",
+	"Spinor[Momentum[p], 0, 1] . GA[mu] . GA[6] . Spinor[Momentum[p], \
+0, 1]"},
+{"fcstGordonSimplifyGeneric-ID90",
+"GordonSimplify[SpinorVBar[p,0]. GA[mu,6].SpinorV[p,0],FCE->True]",
+	"Spinor[-Momentum[p], 0, 1] . GA[mu] . GA[6] . \
+Spinor[-Momentum[p], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID91",
+"GordonSimplify[SpinorUBar[p,0]. GA[mu,6].SpinorV[p,0],FCE->True]",
+	"Spinor[Momentum[p], 0, 1] . GA[mu] . GA[6] . \
+Spinor[-Momentum[p], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID92",
+"GordonSimplify[SpinorVBar[p,0]. GA[mu,6].SpinorU[p,0],FCE->True]",
+	"Spinor[-Momentum[p], 0, 1] . GA[mu] . GA[6] . \
+Spinor[Momentum[p], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID93",
+"GordonSimplify[SpinorUBar[p1,m1]. \
+GA[mu,7].SpinorU[p2,m2],FCE->True]",
+"Spinor[Momentum[p1], m1, 1] . GA[mu] . GA[7] . \
+Spinor[Momentum[p2], m2, 1]"},
+{"fcstGordonSimplifyGeneric-ID94",
+"GordonSimplify[SpinorVBar[p1,m1]. \
+GA[mu,7].SpinorV[p2,m2],FCE->True]",
+"Spinor[-Momentum[p1], m1, 1] . GA[mu] . GA[7] . \
+Spinor[-Momentum[p2], m2, 1]"},
+{"fcstGordonSimplifyGeneric-ID95",
+"GordonSimplify[SpinorUBar[p1,m1]. \
+GA[mu,7].SpinorV[p2,m2],FCE->True]",
+"Spinor[Momentum[p1], m1, 1] . GA[mu] . GA[7] . \
+Spinor[-Momentum[p2], m2, 1]"},
+{"fcstGordonSimplifyGeneric-ID96",
+"GordonSimplify[SpinorVBar[p1,m1]. \
+GA[mu,7].SpinorU[p2,m2],FCE->True]",
+"Spinor[-Momentum[p1], m1, 1] . GA[mu] . GA[7] . \
+Spinor[Momentum[p2], m2, 1]"},
+{"fcstGordonSimplifyGeneric-ID97",
+"GordonSimplify[SpinorUBar[p1,m]. \
+GA[mu,7].SpinorU[p2,m],FCE->True]",
+"Spinor[Momentum[p1], m, 1] . GA[mu] . GA[7] . \
+Spinor[Momentum[p2], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID98",
+"GordonSimplify[SpinorVBar[p1,m]. \
+GA[mu,7].SpinorV[p2,m],FCE->True]",
+"Spinor[-Momentum[p1], m, 1] . GA[mu] . GA[7] . \
+Spinor[-Momentum[p2], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID99",
+"GordonSimplify[SpinorUBar[p1,m]. \
+GA[mu,7].SpinorV[p2,m],FCE->True]",
+"Spinor[Momentum[p1], m, 1] . GA[mu] . GA[7] . \
+Spinor[-Momentum[p2], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID100",
+"GordonSimplify[SpinorVBar[p1,m]. \
+GA[mu,7].SpinorU[p2,m],FCE->True]",
+"Spinor[-Momentum[p1], m, 1] . GA[mu] . GA[7] . \
+Spinor[Momentum[p2], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID101",
+"GordonSimplify[SpinorUBar[p1,0]. \
+GA[mu,7].SpinorU[p2,m],FCE->True]",
+"Spinor[Momentum[p1], 0, 1] . GA[mu] . GA[7] . \
+Spinor[Momentum[p2], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID102",
+"GordonSimplify[SpinorVBar[p1,0]. \
+GA[mu,7].SpinorV[p2,m],FCE->True]",
+"Spinor[-Momentum[p1], 0, 1] . GA[mu] . GA[7] . \
+Spinor[-Momentum[p2], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID103",
+"GordonSimplify[SpinorUBar[p1,0]. \
+GA[mu,7].SpinorV[p2,m],FCE->True]",
+"Spinor[Momentum[p1], 0, 1] . GA[mu] . GA[7] . \
+Spinor[-Momentum[p2], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID104",
+"GordonSimplify[SpinorVBar[p1,0]. \
+GA[mu,7].SpinorU[p2,m],FCE->True]",
+"Spinor[-Momentum[p1], 0, 1] . GA[mu] . GA[7] . \
+Spinor[Momentum[p2], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID105",
+"GordonSimplify[SpinorUBar[p1,m]. \
+GA[mu,7].SpinorU[p2,0],FCE->True]",
+"Spinor[Momentum[p1], m, 1] . GA[mu] . GA[7] . \
+Spinor[Momentum[p2], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID106",
+"GordonSimplify[SpinorVBar[p1,m]. \
+GA[mu,7].SpinorV[p2,0],FCE->True]",
+"Spinor[-Momentum[p1], m, 1] . GA[mu] . GA[7] . \
+Spinor[-Momentum[p2], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID107",
+"GordonSimplify[SpinorUBar[p1,m]. \
+GA[mu,7].SpinorV[p2,0],FCE->True]",
+"Spinor[Momentum[p1], m, 1] . GA[mu] . GA[7] . \
+Spinor[-Momentum[p2], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID108",
+"GordonSimplify[SpinorVBar[p1,m]. \
+GA[mu,7].SpinorU[p2,0],FCE->True]",
+"Spinor[-Momentum[p1], m, 1] . GA[mu] . GA[7] . \
+Spinor[Momentum[p2], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID109",
+"GordonSimplify[SpinorUBar[p1,0]. \
+GA[mu,7].SpinorU[p2,0],FCE->True]",
+"Spinor[Momentum[p1], 0, 1] . GA[mu] . GA[7] . \
+Spinor[Momentum[p2], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID110",
+"GordonSimplify[SpinorVBar[p1,0]. \
+GA[mu,7].SpinorV[p2,0],FCE->True]",
+"Spinor[-Momentum[p1], 0, 1] . GA[mu] . GA[7] . \
+Spinor[-Momentum[p2], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID111",
+"GordonSimplify[SpinorUBar[p1,0]. \
+GA[mu,7].SpinorV[p2,0],FCE->True]",
+"Spinor[Momentum[p1], 0, 1] . GA[mu] . GA[7] . \
+Spinor[-Momentum[p2], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID112",
+"GordonSimplify[SpinorVBar[p1,0]. \
+GA[mu,7].SpinorU[p2,0],FCE->True]",
+"Spinor[-Momentum[p1], 0, 1] . GA[mu] . GA[7] . \
+Spinor[Momentum[p2], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID113",
+"GordonSimplify[SpinorUBar[p,m]. GA[mu,7].SpinorU[p,m],FCE->True]",
+	"Spinor[Momentum[p], m, 1] . GA[mu] . GA[7] . Spinor[Momentum[p], \
+m, 1]"},
+{"fcstGordonSimplifyGeneric-ID114",
+"GordonSimplify[SpinorVBar[p,m]. GA[mu,7].SpinorV[p,m],FCE->True]",
+	"Spinor[-Momentum[p], m, 1] . GA[mu] . GA[7] . \
+Spinor[-Momentum[p], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID115",
+"GordonSimplify[SpinorUBar[p,m]. GA[mu,7].SpinorV[p,m],FCE->True]",
+	"Spinor[Momentum[p], m, 1] . GA[mu] . GA[7] . \
+Spinor[-Momentum[p], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID116",
+"GordonSimplify[SpinorVBar[p,m]. GA[mu,7].SpinorU[p,m],FCE->True]",
+	"Spinor[-Momentum[p], m, 1] . GA[mu] . GA[7] . \
+Spinor[Momentum[p], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID117",
+"GordonSimplify[SpinorUBar[p,0]. GA[mu,7].SpinorU[p,0],FCE->True]",
+	"Spinor[Momentum[p], 0, 1] . GA[mu] . GA[7] . Spinor[Momentum[p], \
+0, 1]"},
+{"fcstGordonSimplifyGeneric-ID118",
+"GordonSimplify[SpinorVBar[p,0]. GA[mu,7].SpinorV[p,0],FCE->True]",
+	"Spinor[-Momentum[p], 0, 1] . GA[mu] . GA[7] . \
+Spinor[-Momentum[p], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID119",
+"GordonSimplify[SpinorUBar[p,0]. GA[mu,7].SpinorV[p,0],FCE->True]",
+	"Spinor[Momentum[p], 0, 1] . GA[mu] . GA[7] . \
+Spinor[-Momentum[p], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID120",
+"GordonSimplify[SpinorVBar[p,0]. GA[mu,7].SpinorU[p,0],FCE->True]",
+	"Spinor[-Momentum[p], 0, 1] . GA[mu] . GA[7] . \
+Spinor[Momentum[p], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID121",
+"GordonSimplify[SpinorUBar[p1,m1]. GA[mu,7].SpinorU[p2,m2],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"(I*Spinor[Momentum[p1], m1, 1] . DiracSigma[GA[mu], GS[p1 - p2]] \
+. GA[7] . Spinor[Momentum[p2], m2, 1])/m1 - (m2*Spinor[Momentum[p1], \
+m1, 1] . GA[mu] . GA[6] . Spinor[Momentum[p2], m2, 1])/m1 + \
+(Spinor[Momentum[p1], m1, 1] . GA[7] . Spinor[Momentum[p2], m2, \
+1]*FV[p1 + p2, mu])/m1"},
+{"fcstGordonSimplifyGeneric-ID122",
+"GordonSimplify[SpinorVBar[p1,m1]. GA[mu,7].SpinorV[p2,m2],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"((-I)*Spinor[-Momentum[p1], m1, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . GA[7] . Spinor[-Momentum[p2], m2, 1])/m1 - \
+(m2*Spinor[-Momentum[p1], m1, 1] . GA[mu] . GA[6] . \
+Spinor[-Momentum[p2], m2, 1])/m1 - (Spinor[-Momentum[p1], m1, 1] . \
+GA[7] . Spinor[-Momentum[p2], m2, 1]*FV[p1 + p2, mu])/m1"},
+{"fcstGordonSimplifyGeneric-ID123",
+"GordonSimplify[SpinorUBar[p1,m1]. GA[mu,7].SpinorV[p2,m2],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"(I*Spinor[Momentum[p1], m1, 1] . DiracSigma[GA[mu], GS[p1 - p2]] \
+. GA[7] . Spinor[-Momentum[p2], m2, 1])/m1 + (m2*Spinor[Momentum[p1], \
+m1, 1] . GA[mu] . GA[6] . Spinor[-Momentum[p2], m2, 1])/m1 + \
+(Spinor[Momentum[p1], m1, 1] . GA[7] . Spinor[-Momentum[p2], m2, \
+1]*FV[p1 + p2, mu])/m1"},
+{"fcstGordonSimplifyGeneric-ID124",
+"GordonSimplify[SpinorVBar[p1,m1]. GA[mu,7].SpinorU[p2,m2],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"((-I)*Spinor[-Momentum[p1], m1, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . GA[7] . Spinor[Momentum[p2], m2, 1])/m1 + \
+(m2*Spinor[-Momentum[p1], m1, 1] . GA[mu] . GA[6] . \
+Spinor[Momentum[p2], m2, 1])/m1 - (Spinor[-Momentum[p1], m1, 1] . \
+GA[7] . Spinor[Momentum[p2], m2, 1]*FV[p1 + p2, mu])/m1"},
+{"fcstGordonSimplifyGeneric-ID125",
+"GordonSimplify[SpinorUBar[p1,m]. GA[mu,7].SpinorU[p2,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"(I*Spinor[Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - p2]] . \
+GA[7] . Spinor[Momentum[p2], m, 1])/m - Spinor[Momentum[p1], m, 1] . \
+GA[mu] . GA[6] . Spinor[Momentum[p2], m, 1] + (Spinor[Momentum[p1], \
+m, 1] . GA[7] . Spinor[Momentum[p2], m, 1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID126",
+"GordonSimplify[SpinorVBar[p1,m]. GA[mu,7].SpinorV[p2,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"((-I)*Spinor[-Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . GA[7] . Spinor[-Momentum[p2], m, 1])/m - Spinor[-Momentum[p1], \
+m, 1] . GA[mu] . GA[6] . Spinor[-Momentum[p2], m, 1] - \
+(Spinor[-Momentum[p1], m, 1] . GA[7] . Spinor[-Momentum[p2], m, \
+1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID127",
+"GordonSimplify[SpinorUBar[p1,m]. GA[mu,7].SpinorV[p2,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"(I*Spinor[Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - p2]] . \
+GA[7] . Spinor[-Momentum[p2], m, 1])/m + Spinor[Momentum[p1], m, 1] . \
+GA[mu] . GA[6] . Spinor[-Momentum[p2], m, 1] + (Spinor[Momentum[p1], \
+m, 1] . GA[7] . Spinor[-Momentum[p2], m, 1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID128",
+"GordonSimplify[SpinorVBar[p1,m]. GA[mu,7].SpinorU[p2,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"((-I)*Spinor[-Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . GA[7] . Spinor[Momentum[p2], m, 1])/m + Spinor[-Momentum[p1], \
+m, 1] . GA[mu] . GA[6] . Spinor[Momentum[p2], m, 1] - \
+(Spinor[-Momentum[p1], m, 1] . GA[7] . Spinor[Momentum[p2], m, \
+1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID129",
+"GordonSimplify[SpinorUBar[p1,0]. GA[mu,7].SpinorU[p2,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p1], 0, 1] . GA[mu] . GA[7] . \
+Spinor[Momentum[p2], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID130",
+"GordonSimplify[SpinorVBar[p1,0]. GA[mu,7].SpinorV[p2,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p1], 0, 1] . GA[mu] . GA[7] . \
+Spinor[-Momentum[p2], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID131",
+"GordonSimplify[SpinorUBar[p1,0]. GA[mu,7].SpinorV[p2,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p1], 0, 1] . GA[mu] . GA[7] . \
+Spinor[-Momentum[p2], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID132",
+"GordonSimplify[SpinorVBar[p1,0]. GA[mu,7].SpinorU[p2,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p1], 0, 1] . GA[mu] . GA[7] . \
+Spinor[Momentum[p2], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID133",
+"GordonSimplify[SpinorUBar[p1,m]. GA[mu,7].SpinorU[p2,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"(I*Spinor[Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - p2]] . \
+GA[7] . Spinor[Momentum[p2], 0, 1])/m + (Spinor[Momentum[p1], m, 1] . \
+GA[7] . Spinor[Momentum[p2], 0, 1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID134",
+"GordonSimplify[SpinorVBar[p1,m]. GA[mu,7].SpinorV[p2,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"((-I)*Spinor[-Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . GA[7] . Spinor[-Momentum[p2], 0, 1])/m - \
+(Spinor[-Momentum[p1], m, 1] . GA[7] . Spinor[-Momentum[p2], 0, \
+1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID135",
+"GordonSimplify[SpinorUBar[p1,m]. GA[mu,7].SpinorV[p2,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"(I*Spinor[Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - p2]] . \
+GA[7] . Spinor[-Momentum[p2], 0, 1])/m + (Spinor[Momentum[p1], m, 1] \
+. GA[7] . Spinor[-Momentum[p2], 0, 1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID136",
+"GordonSimplify[SpinorVBar[p1,m]. GA[mu,7].SpinorU[p2,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"((-I)*Spinor[-Momentum[p1], m, 1] . DiracSigma[GA[mu], GS[p1 - \
+p2]] . GA[7] . Spinor[Momentum[p2], 0, 1])/m - (Spinor[-Momentum[p1], \
+m, 1] . GA[7] . Spinor[Momentum[p2], 0, 1]*FV[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID137",
+"GordonSimplify[SpinorUBar[p1,0]. GA[mu,7].SpinorU[p2,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p1], 0, 1] . GA[mu] . GA[7] . \
+Spinor[Momentum[p2], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID138",
+"GordonSimplify[SpinorVBar[p1,0]. GA[mu,7].SpinorV[p2,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p1], 0, 1] . GA[mu] . GA[7] . \
+Spinor[-Momentum[p2], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID139",
+"GordonSimplify[SpinorUBar[p1,0]. GA[mu,7].SpinorV[p2,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p1], 0, 1] . GA[mu] . GA[7] . \
+Spinor[-Momentum[p2], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID140",
+"GordonSimplify[SpinorVBar[p1,0]. GA[mu,7].SpinorU[p2,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p1], 0, 1] . GA[mu] . GA[7] . \
+Spinor[Momentum[p2], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID141",
+"GordonSimplify[SpinorUBar[p,m]. GA[mu,7].SpinorU[p,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"-Spinor[Momentum[p], m, 1] . GA[mu] . GA[6] . Spinor[Momentum[p], \
+m, 1] + (2*Spinor[Momentum[p], m, 1] . GA[7] . Spinor[Momentum[p], m, \
+1]*FV[p, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID142",
+"GordonSimplify[SpinorVBar[p,m]. GA[mu,7].SpinorV[p,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"-Spinor[-Momentum[p], m, 1] . GA[mu] . GA[6] . \
+Spinor[-Momentum[p], m, 1] - (2*Spinor[-Momentum[p], m, 1] . GA[7] . \
+Spinor[-Momentum[p], m, 1]*FV[p, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID143",
+"GordonSimplify[SpinorUBar[p,m]. GA[mu,7].SpinorV[p,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p], m, 1] . GA[mu] . GA[6] . Spinor[-Momentum[p], \
+m, 1] + (2*Spinor[Momentum[p], m, 1] . GA[7] . Spinor[-Momentum[p], \
+m, 1]*FV[p, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID144",
+"GordonSimplify[SpinorVBar[p,m]. GA[mu,7].SpinorU[p,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p], m, 1] . GA[mu] . GA[6] . Spinor[Momentum[p], \
+m, 1] - (2*Spinor[-Momentum[p], m, 1] . GA[7] . Spinor[Momentum[p], \
+m, 1]*FV[p, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID145",
+"GordonSimplify[SpinorUBar[p,0]. GA[mu,7].SpinorU[p,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p], 0, 1] . GA[mu] . GA[7] . Spinor[Momentum[p], \
+0, 1]"},
+{"fcstGordonSimplifyGeneric-ID146",
+"GordonSimplify[SpinorVBar[p,0]. GA[mu,7].SpinorV[p,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p], 0, 1] . GA[mu] . GA[7] . \
+Spinor[-Momentum[p], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID147",
+"GordonSimplify[SpinorUBar[p,0]. GA[mu,7].SpinorV[p,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p], 0, 1] . GA[mu] . GA[7] . Spinor[-Momentum[p], \
+0, 1]"},
+{"fcstGordonSimplifyGeneric-ID148",
+"GordonSimplify[SpinorVBar[p,0]. GA[mu,7].SpinorU[p,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p], 0, 1] . GA[mu] . GA[7] . Spinor[Momentum[p], \
+0, 1]"},
+{"fcstGordonSimplifyGeneric-ID149",
+"GordonSimplify[SpinorUBarD[p1,m1]. \
+GAD[mu].SpinorUD[p2,m2],FCE->True]",
+"(I*Spinor[Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . Spinor[Momentum[p2, D], m2, 1])/(m1 + m2) + \
+(Spinor[Momentum[p1, D], m1, 1] . Spinor[Momentum[p2, D], m2, \
+1]*FVD[p1 + p2, mu])/(m1 + m2)"},
+{"fcstGordonSimplifyGeneric-ID150",
+"GordonSimplify[SpinorVBarD[p1,m1]. \
+GAD[mu].SpinorVD[p2,m2],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], \
+GSD[p1 - p2]] . Spinor[-Momentum[p2, D], m2, 1])/(m1 + m2) - \
+(Spinor[-Momentum[p1, D], m1, 1] . Spinor[-Momentum[p2, D], m2, \
+1]*FVD[p1 + p2, mu])/(m1 + m2)"},
+{"fcstGordonSimplifyGeneric-ID151",
+"GordonSimplify[SpinorUBarD[p1,m1]. \
+GAD[mu].SpinorVD[p2,m2],FCE->True]",
+"(I*Spinor[Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . Spinor[-Momentum[p2, D], m2, 1])/(m1 - m2) + \
+(Spinor[Momentum[p1, D], m1, 1] . Spinor[-Momentum[p2, D], m2, \
+1]*FVD[p1 + p2, mu])/(m1 - m2)"},
+{"fcstGordonSimplifyGeneric-ID152",
+"GordonSimplify[SpinorVBarD[p1,m1]. \
+GAD[mu].SpinorUD[p2,m2],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], \
+GSD[p1 - p2]] . Spinor[Momentum[p2, D], m2, 1])/(m1 - m2) - \
+(Spinor[-Momentum[p1, D], m1, 1] . Spinor[Momentum[p2, D], m2, \
+1]*FVD[p1 + p2, mu])/(m1 - m2)"},
+{"fcstGordonSimplifyGeneric-ID153",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu].SpinorUD[p2,m],FCE->True]",
+"((I/2)*Spinor[Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . Spinor[Momentum[p2, D], m, 1])/m + (Spinor[Momentum[p1, D], \
+m, 1] . Spinor[Momentum[p2, D], m, 1]*FVD[p1 + p2, mu])/(2*m)"},
+{"fcstGordonSimplifyGeneric-ID154",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu].SpinorVD[p2,m],FCE->True]",
+"((-I/2)*Spinor[-Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], \
+GSD[p1 - p2]] . Spinor[-Momentum[p2, D], m, 1])/m - \
+(Spinor[-Momentum[p1, D], m, 1] . Spinor[-Momentum[p2, D], m, \
+1]*FVD[p1 + p2, mu])/(2*m)"},
+{"fcstGordonSimplifyGeneric-ID155",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu].SpinorVD[p2,m],FCE->True]",
+"Spinor[Momentum[p1, D], m, 1] . GAD[mu] . Spinor[-Momentum[p2, \
+D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID156",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu].SpinorUD[p2,m],FCE->True]",
+"Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . Spinor[Momentum[p2, \
+D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID157",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu].SpinorUD[p2,m],FCE->True]",
+"(I*Spinor[Momentum[p1, D], 0, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . Spinor[Momentum[p2, D], m, 1])/m + (Spinor[Momentum[p1, D], 0, \
+1] . Spinor[Momentum[p2, D], m, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID158",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu].SpinorVD[p2,m],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], 0, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . Spinor[-Momentum[p2, D], m, 1])/m - (Spinor[-Momentum[p1, \
+D], 0, 1] . Spinor[-Momentum[p2, D], m, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID159",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu].SpinorVD[p2,m],FCE->True]",
+"((-I)*Spinor[Momentum[p1, D], 0, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . Spinor[-Momentum[p2, D], m, 1])/m - (Spinor[Momentum[p1, D], \
+0, 1] . Spinor[-Momentum[p2, D], m, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID160",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu].SpinorUD[p2,m],FCE->True]",
+"(I*Spinor[-Momentum[p1, D], 0, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . Spinor[Momentum[p2, D], m, 1])/m + (Spinor[-Momentum[p1, D], \
+0, 1] . Spinor[Momentum[p2, D], m, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID161",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu].SpinorUD[p2,0],FCE->True]",
+"(I*Spinor[Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . Spinor[Momentum[p2, D], 0, 1])/m + (Spinor[Momentum[p1, D], m, \
+1] . Spinor[Momentum[p2, D], 0, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID162",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu].SpinorVD[p2,0],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . Spinor[-Momentum[p2, D], 0, 1])/m - (Spinor[-Momentum[p1, \
+D], m, 1] . Spinor[-Momentum[p2, D], 0, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID163",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu].SpinorVD[p2,0],FCE->True]",
+"(I*Spinor[Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . Spinor[-Momentum[p2, D], 0, 1])/m + (Spinor[Momentum[p1, D], \
+m, 1] . Spinor[-Momentum[p2, D], 0, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID164",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu].SpinorUD[p2,0],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . Spinor[Momentum[p2, D], 0, 1])/m - (Spinor[-Momentum[p1, D], \
+m, 1] . Spinor[Momentum[p2, D], 0, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID165",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu].SpinorUD[p2,0],FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . Spinor[Momentum[p2, D], \
+0, 1]"},
+{"fcstGordonSimplifyGeneric-ID166",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu].SpinorVD[p2,0],FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . Spinor[-Momentum[p2, \
+D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID167",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu].SpinorVD[p2,0],FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . Spinor[-Momentum[p2, \
+D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID168",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu].SpinorUD[p2,0],FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . Spinor[Momentum[p2, \
+D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID169",
+"GordonSimplify[SpinorUBarD[p,m]. \
+GAD[mu].SpinorUD[p,m],FCE->True]",
+"(Spinor[Momentum[p, D], m, 1] . Spinor[Momentum[p, D], m, \
+1]*FVD[p, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID170",
+"GordonSimplify[SpinorVBarD[p,m]. \
+GAD[mu].SpinorVD[p,m],FCE->True]",
+"-((Spinor[-Momentum[p, D], m, 1] . Spinor[-Momentum[p, D], m, \
+1]*FVD[p, mu])/m)"},
+{"fcstGordonSimplifyGeneric-ID171",
+"GordonSimplify[SpinorUBarD[p,m]. \
+GAD[mu].SpinorVD[p,m],FCE->True]",
+"Spinor[Momentum[p, D], m, 1] . GAD[mu] . Spinor[-Momentum[p, D], \
+m, 1]"},
+{"fcstGordonSimplifyGeneric-ID172",
+"GordonSimplify[SpinorVBarD[p,m]. \
+GAD[mu].SpinorUD[p,m],FCE->True]",
+"Spinor[-Momentum[p, D], m, 1] . GAD[mu] . Spinor[Momentum[p, D], \
+m, 1]"},
+{"fcstGordonSimplifyGeneric-ID173",
+"GordonSimplify[SpinorUBarD[p,0]. \
+GAD[mu].SpinorUD[p,0],FCE->True]",
+"Spinor[Momentum[p, D], 0, 1] . GAD[mu] . Spinor[Momentum[p, D], \
+0, 1]"},
+{"fcstGordonSimplifyGeneric-ID174",
+"GordonSimplify[SpinorVBarD[p,0]. \
+GAD[mu].SpinorVD[p,0],FCE->True]",
+"Spinor[-Momentum[p, D], 0, 1] . GAD[mu] . Spinor[-Momentum[p, D], \
+0, 1]"},
+{"fcstGordonSimplifyGeneric-ID175",
+"GordonSimplify[SpinorUBarD[p,0]. \
+GAD[mu].SpinorVD[p,0],FCE->True]",
+"Spinor[Momentum[p, D], 0, 1] . GAD[mu] . Spinor[-Momentum[p, D], \
+0, 1]"},
+{"fcstGordonSimplifyGeneric-ID176",
+"GordonSimplify[SpinorVBarD[p,0]. \
+GAD[mu].SpinorUD[p,0],FCE->True]",
+"Spinor[-Momentum[p, D], 0, 1] . GAD[mu] . Spinor[Momentum[p, D], \
+0, 1]"},
+{"fcstGordonSimplifyGeneric-ID177",
+"GordonSimplify[SpinorUBarD[p1,m1]. \
+GAD[mu,5].SpinorUD[p2,m2],FCE->True]",
+"(I*Spinor[Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[5] . Spinor[Momentum[p2, D], m2, 1])/(m1 - m2) + \
+(Spinor[Momentum[p1, D], m1, 1] . GA[5] . Spinor[Momentum[p2, D], m2, \
+1]*FVD[p1 + p2, mu])/(m1 - m2)"},
+{"fcstGordonSimplifyGeneric-ID178",
+"GordonSimplify[SpinorVBarD[p1,m1]. \
+GAD[mu,5].SpinorVD[p2,m2],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], \
+GSD[p1 - p2]] . GA[5] . Spinor[-Momentum[p2, D], m2, 1])/(m1 - m2) - \
+(Spinor[-Momentum[p1, D], m1, 1] . GA[5] . Spinor[-Momentum[p2, D], \
+m2, 1]*FVD[p1 + p2, mu])/(m1 - m2)"},
+{"fcstGordonSimplifyGeneric-ID179",
+"GordonSimplify[SpinorUBarD[p1,m1]. \
+GAD[mu,5].SpinorVD[p2,m2],FCE->True]",
+"(I*Spinor[Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[5] . Spinor[-Momentum[p2, D], m2, 1])/(m1 + m2) + \
+(Spinor[Momentum[p1, D], m1, 1] . GA[5] . Spinor[-Momentum[p2, D], \
+m2, 1]*FVD[p1 + p2, mu])/(m1 + m2)"},
+{"fcstGordonSimplifyGeneric-ID180",
+"GordonSimplify[SpinorVBarD[p1,m1]. \
+GAD[mu,5].SpinorUD[p2,m2],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], \
+GSD[p1 - p2]] . GA[5] . Spinor[Momentum[p2, D], m2, 1])/(m1 + m2) - \
+(Spinor[-Momentum[p1, D], m1, 1] . GA[5] . Spinor[Momentum[p2, D], \
+m2, 1]*FVD[p1 + p2, mu])/(m1 + m2)"},
+{"fcstGordonSimplifyGeneric-ID181",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,5].SpinorUD[p2,m],FCE->True]",
+"Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GA[5] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID182",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,5].SpinorVD[p2,m],FCE->True]",
+"Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[5] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID183",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,5].SpinorVD[p2,m],FCE->True]",
+"((I/2)*Spinor[Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . GA[5] . Spinor[-Momentum[p2, D], m, 1])/m + \
+(Spinor[Momentum[p1, D], m, 1] . GA[5] . Spinor[-Momentum[p2, D], m, \
+1]*FVD[p1 + p2, mu])/(2*m)"},
+{"fcstGordonSimplifyGeneric-ID184",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,5].SpinorUD[p2,m],FCE->True]",
+"((-I/2)*Spinor[-Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], \
+GSD[p1 - p2]] . GA[5] . Spinor[Momentum[p2, D], m, 1])/m - \
+(Spinor[-Momentum[p1, D], m, 1] . GA[5] . Spinor[Momentum[p2, D], m, \
+1]*FVD[p1 + p2, mu])/(2*m)"},
+{"fcstGordonSimplifyGeneric-ID185",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu,5].SpinorUD[p2,m],FCE->True]",
+"((-I)*Spinor[Momentum[p1, D], 0, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . GA[5] . Spinor[Momentum[p2, D], m, 1])/m - \
+(Spinor[Momentum[p1, D], 0, 1] . GA[5] . Spinor[Momentum[p2, D], m, \
+1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID186",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu,5].SpinorVD[p2,m],FCE->True]",
+"(I*Spinor[-Momentum[p1, D], 0, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[5] . Spinor[-Momentum[p2, D], m, 1])/m + \
+(Spinor[-Momentum[p1, D], 0, 1] . GA[5] . Spinor[-Momentum[p2, D], m, \
+1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID187",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu,5].SpinorVD[p2,m],FCE->True]",
+"(I*Spinor[Momentum[p1, D], 0, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[5] . Spinor[-Momentum[p2, D], m, 1])/m + \
+(Spinor[Momentum[p1, D], 0, 1] . GA[5] . Spinor[-Momentum[p2, D], m, \
+1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID188",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu,5].SpinorUD[p2,m],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], 0, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . GA[5] . Spinor[Momentum[p2, D], m, 1])/m - \
+(Spinor[-Momentum[p1, D], 0, 1] . GA[5] . Spinor[Momentum[p2, D], m, \
+1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID189",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,5].SpinorUD[p2,0],FCE->True]",
+"(I*Spinor[Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[5] . Spinor[Momentum[p2, D], 0, 1])/m + \
+(Spinor[Momentum[p1, D], m, 1] . GA[5] . Spinor[Momentum[p2, D], 0, \
+1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID190",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,5].SpinorVD[p2,0],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . GA[5] . Spinor[-Momentum[p2, D], 0, 1])/m - \
+(Spinor[-Momentum[p1, D], m, 1] . GA[5] . Spinor[-Momentum[p2, D], 0, \
+1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID191",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,5].SpinorVD[p2,0],FCE->True]",
+"(I*Spinor[Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[5] . Spinor[-Momentum[p2, D], 0, 1])/m + \
+(Spinor[Momentum[p1, D], m, 1] . GA[5] . Spinor[-Momentum[p2, D], 0, \
+1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID192",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,5].SpinorUD[p2,0],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . GA[5] . Spinor[Momentum[p2, D], 0, 1])/m - \
+(Spinor[-Momentum[p1, D], m, 1] . GA[5] . Spinor[Momentum[p2, D], 0, \
+1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID193",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu,5].SpinorUD[p2,0],FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[5] . \
+Spinor[Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID194",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu,5].SpinorVD[p2,0],FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[5] . \
+Spinor[-Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID195",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu,5].SpinorVD[p2,0],FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[5] . \
+Spinor[-Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID196",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu,5].SpinorUD[p2,0],FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[5] . \
+Spinor[Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID197",
+"GordonSimplify[SpinorUBarD[p,m]. \
+GAD[mu,5].SpinorUD[p,m],FCE->True]",
+"Spinor[Momentum[p, D], m, 1] . GAD[mu] . GA[5] . \
+Spinor[Momentum[p, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID198",
+"GordonSimplify[SpinorVBarD[p,m]. \
+GAD[mu,5].SpinorVD[p,m],FCE->True]",
+"Spinor[-Momentum[p, D], m, 1] . GAD[mu] . GA[5] . \
+Spinor[-Momentum[p, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID199",
+"GordonSimplify[SpinorUBarD[p,m]. \
+GAD[mu,5].SpinorVD[p,m],FCE->True]",
+"(Spinor[Momentum[p, D], m, 1] . GA[5] . Spinor[-Momentum[p, D], \
+m, 1]*FVD[p, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID200",
+"GordonSimplify[SpinorVBarD[p,m]. \
+GAD[mu,5].SpinorUD[p,m],FCE->True]",
+"-((Spinor[-Momentum[p, D], m, 1] . GA[5] . Spinor[Momentum[p, D], \
+m, 1]*FVD[p, mu])/m)"},
+{"fcstGordonSimplifyGeneric-ID201",
+"GordonSimplify[SpinorUBarD[p,0]. \
+GAD[mu,5].SpinorUD[p,0],FCE->True]",
+"Spinor[Momentum[p, D], 0, 1] . GAD[mu] . GA[5] . \
+Spinor[Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID202",
+"GordonSimplify[SpinorVBarD[p,0]. \
+GAD[mu,5].SpinorVD[p,0],FCE->True]",
+"Spinor[-Momentum[p, D], 0, 1] . GAD[mu] . GA[5] . \
+Spinor[-Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID203",
+"GordonSimplify[SpinorUBarD[p,0]. \
+GAD[mu,5].SpinorVD[p,0],FCE->True]",
+"Spinor[Momentum[p, D], 0, 1] . GAD[mu] . GA[5] . \
+Spinor[-Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID204",
+"GordonSimplify[SpinorVBarD[p,0]. \
+GAD[mu,5].SpinorUD[p,0],FCE->True]",
+"Spinor[-Momentum[p, D], 0, 1] . GAD[mu] . GA[5] . \
+Spinor[Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID205",
+"GordonSimplify[SpinorUBarD[p1,m1]. \
+GAD[mu,6].SpinorUD[p2,m2],FCE->True]",
+"(I*Spinor[Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[6] . Spinor[Momentum[p2, D], m2, 1])/m1 - \
+(m2*Spinor[Momentum[p1, D], m1, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], m2, 1])/m1 + (Spinor[Momentum[p1, D], m1, 1] \
+. GA[6] . Spinor[Momentum[p2, D], m2, 1]*FVD[p1 + p2, mu])/m1"},
+{"fcstGordonSimplifyGeneric-ID206",
+"GordonSimplify[SpinorVBarD[p1,m1]. \
+GAD[mu,6].SpinorVD[p2,m2],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], \
+GSD[p1 - p2]] . GA[6] . Spinor[-Momentum[p2, D], m2, 1])/m1 - \
+(m2*Spinor[-Momentum[p1, D], m1, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m2, 1])/m1 - (Spinor[-Momentum[p1, D], m1, \
+1] . GA[6] . Spinor[-Momentum[p2, D], m2, 1]*FVD[p1 + p2, mu])/m1"},
+{"fcstGordonSimplifyGeneric-ID207",
+"GordonSimplify[SpinorUBarD[p1,m1]. \
+GAD[mu,6].SpinorVD[p2,m2],FCE->True]",
+"(I*Spinor[Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[6] . Spinor[-Momentum[p2, D], m2, 1])/m1 + \
+(m2*Spinor[Momentum[p1, D], m1, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m2, 1])/m1 + (Spinor[Momentum[p1, D], m1, 1] \
+. GA[6] . Spinor[-Momentum[p2, D], m2, 1]*FVD[p1 + p2, mu])/m1"},
+{"fcstGordonSimplifyGeneric-ID208",
+"GordonSimplify[SpinorVBarD[p1,m1]. \
+GAD[mu,6].SpinorUD[p2,m2],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], \
+GSD[p1 - p2]] . GA[6] . Spinor[Momentum[p2, D], m2, 1])/m1 + \
+(m2*Spinor[-Momentum[p1, D], m1, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], m2, 1])/m1 - (Spinor[-Momentum[p1, D], m1, 1] \
+. GA[6] . Spinor[Momentum[p2, D], m2, 1]*FVD[p1 + p2, mu])/m1"},
+{"fcstGordonSimplifyGeneric-ID209",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,6].SpinorUD[p2,m],FCE->True]",
+"(I*Spinor[Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[6] . Spinor[Momentum[p2, D], m, 1])/m - Spinor[Momentum[p1, \
+D], m, 1] . GAD[mu] . GA[7] . Spinor[Momentum[p2, D], m, 1] + \
+(Spinor[Momentum[p1, D], m, 1] . GA[6] . Spinor[Momentum[p2, D], m, \
+1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID210",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,6].SpinorVD[p2,m],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . GA[6] . Spinor[-Momentum[p2, D], m, 1])/m - \
+Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m, 1] - (Spinor[-Momentum[p1, D], m, 1] . \
+GA[6] . Spinor[-Momentum[p2, D], m, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID211",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,6].SpinorVD[p2,m],FCE->True]",
+"(I*Spinor[Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[6] . Spinor[-Momentum[p2, D], m, 1])/m + \
+Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m, 1] + (Spinor[Momentum[p1, D], m, 1] . \
+GA[6] . Spinor[-Momentum[p2, D], m, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID212",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,6].SpinorUD[p2,m],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . GA[6] . Spinor[Momentum[p2, D], m, 1])/m + \
+Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], m, 1] - (Spinor[-Momentum[p1, D], m, 1] . \
+GA[6] . Spinor[Momentum[p2, D], m, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID213",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu,6].SpinorUD[p2,m],FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID214",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu,6].SpinorVD[p2,m],FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID215",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu,6].SpinorVD[p2,m],FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID216",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu,6].SpinorUD[p2,m],FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID217",
+"GordonSimplify[SpinorUBarD[p1,m1]. \
+GAD[mu,6].SpinorUD[p2,m2],Inverse\[Rule]{m2},FCE->True]",
+"(I*Spinor[Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[7] . Spinor[Momentum[p2, D], m2, 1])/m2 - \
+(m1*Spinor[Momentum[p1, D], m1, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], m2, 1])/m2 + (Spinor[Momentum[p1, D], m1, 1] \
+. GA[7] . Spinor[Momentum[p2, D], m2, 1]*FVD[p1 + p2, mu])/m2"},
+{"fcstGordonSimplifyGeneric-ID218",
+"GordonSimplify[SpinorVBarD[p1,m1]. \
+GAD[mu,6].SpinorVD[p2,m2],Inverse\[Rule]{m2},FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], \
+GSD[p1 - p2]] . GA[7] . Spinor[-Momentum[p2, D], m2, 1])/m2 - \
+(m1*Spinor[-Momentum[p1, D], m1, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m2, 1])/m2 - (Spinor[-Momentum[p1, D], m1, \
+1] . GA[7] . Spinor[-Momentum[p2, D], m2, 1]*FVD[p1 + p2, mu])/m2"},
+{"fcstGordonSimplifyGeneric-ID219",
+"GordonSimplify[SpinorUBarD[p1,m1]. \
+GAD[mu,6].SpinorVD[p2,m2],Inverse\[Rule]{m2},FCE->True]",
+"((-I)*Spinor[Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . GA[7] . Spinor[-Momentum[p2, D], m2, 1])/m2 + \
+(m1*Spinor[Momentum[p1, D], m1, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m2, 1])/m2 - (Spinor[Momentum[p1, D], m1, 1] \
+. GA[7] . Spinor[-Momentum[p2, D], m2, 1]*FVD[p1 + p2, mu])/m2"},
+{"fcstGordonSimplifyGeneric-ID220",
+"GordonSimplify[SpinorVBarD[p1,m1]. \
+GAD[mu,6].SpinorUD[p2,m2],Inverse\[Rule]{m2},FCE->True]",
+"(I*Spinor[-Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[7] . Spinor[Momentum[p2, D], m2, 1])/m2 + \
+(m1*Spinor[-Momentum[p1, D], m1, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], m2, 1])/m2 + (Spinor[-Momentum[p1, D], m1, 1] \
+. GA[7] . Spinor[Momentum[p2, D], m2, 1]*FVD[p1 + p2, mu])/m2"},
+{"fcstGordonSimplifyGeneric-ID221",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,6].SpinorUD[p2,m],Inverse\[Rule]{m2},FCE->True]",
+"Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID222",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,6].SpinorVD[p2,m],Inverse\[Rule]{m2},FCE->True]",
+"Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID223",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,6].SpinorVD[p2,m],Inverse\[Rule]{m2},FCE->True]",
+"Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID224",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,6].SpinorUD[p2,m],Inverse\[Rule]{m2},FCE->True]",
+"Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID225",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,6].SpinorUD[p2,0],FCE->True]",
+"(I*Spinor[Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[6] . Spinor[Momentum[p2, D], 0, 1])/m + \
+(Spinor[Momentum[p1, D], m, 1] . GA[6] . Spinor[Momentum[p2, D], 0, \
+1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID226",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,6].SpinorVD[p2,0],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . GA[6] . Spinor[-Momentum[p2, D], 0, 1])/m - \
+(Spinor[-Momentum[p1, D], m, 1] . GA[6] . Spinor[-Momentum[p2, D], 0, \
+1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID227",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,6].SpinorVD[p2,0],FCE->True]",
+"(I*Spinor[Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[6] . Spinor[-Momentum[p2, D], 0, 1])/m + \
+(Spinor[Momentum[p1, D], m, 1] . GA[6] . Spinor[-Momentum[p2, D], 0, \
+1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID228",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,6].SpinorUD[p2,0],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . GA[6] . Spinor[Momentum[p2, D], 0, 1])/m - \
+(Spinor[-Momentum[p1, D], m, 1] . GA[6] . Spinor[Momentum[p2, D], 0, \
+1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID229",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu,6].SpinorUD[p2,0],FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID230",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu,6].SpinorVD[p2,0],FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID231",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu,6].SpinorVD[p2,0],FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID232",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu,6].SpinorUD[p2,0],FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID233",
+"GordonSimplify[SpinorUBarD[p,m]. \
+GAD[mu,6].SpinorUD[p,m],FCE->True]",
+"-Spinor[Momentum[p, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p, D], m, 1] + (2*Spinor[Momentum[p, D], m, 1] . \
+GA[6] . Spinor[Momentum[p, D], m, 1]*FVD[p, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID234",
+"GordonSimplify[SpinorVBarD[p,m]. \
+GAD[mu,6].SpinorVD[p,m],FCE->True]",
+"-Spinor[-Momentum[p, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p, D], m, 1] - (2*Spinor[-Momentum[p, D], m, 1] . \
+GA[6] . Spinor[-Momentum[p, D], m, 1]*FVD[p, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID235",
+"GordonSimplify[SpinorUBarD[p,m]. \
+GAD[mu,6].SpinorVD[p,m],FCE->True]",
+"Spinor[Momentum[p, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p, D], m, 1] + (2*Spinor[Momentum[p, D], m, 1] . \
+GA[6] . Spinor[-Momentum[p, D], m, 1]*FVD[p, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID236",
+"GordonSimplify[SpinorVBarD[p,m]. \
+GAD[mu,6].SpinorUD[p,m],FCE->True]",
+"Spinor[-Momentum[p, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p, D], m, 1] - (2*Spinor[-Momentum[p, D], m, 1] . \
+GA[6] . Spinor[Momentum[p, D], m, 1]*FVD[p, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID237",
+"GordonSimplify[SpinorUBarD[p,0]. \
+GAD[mu,6].SpinorUD[p,0],FCE->True]",
+"Spinor[Momentum[p, D], 0, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID238",
+"GordonSimplify[SpinorVBarD[p,0]. \
+GAD[mu,6].SpinorVD[p,0],FCE->True]",
+"Spinor[-Momentum[p, D], 0, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID239",
+"GordonSimplify[SpinorUBarD[p,0]. \
+GAD[mu,6].SpinorVD[p,0],FCE->True]",
+"Spinor[Momentum[p, D], 0, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID240",
+"GordonSimplify[SpinorVBarD[p,0]. \
+GAD[mu,6].SpinorUD[p,0],FCE->True]",
+"Spinor[-Momentum[p, D], 0, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID241",
+"GordonSimplify[SpinorUBarD[p1,m1]. \
+GAD[mu,7].SpinorUD[p2,m2],FCE->True]",
+"Spinor[Momentum[p1, D], m1, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], m2, 1]"},
+{"fcstGordonSimplifyGeneric-ID242",
+"GordonSimplify[SpinorVBarD[p1,m1]. \
+GAD[mu,7].SpinorVD[p2,m2],FCE->True]",
+"Spinor[-Momentum[p1, D], m1, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m2, 1]"},
+{"fcstGordonSimplifyGeneric-ID243",
+"GordonSimplify[SpinorUBarD[p1,m1]. \
+GAD[mu,7].SpinorVD[p2,m2],FCE->True]",
+"Spinor[Momentum[p1, D], m1, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m2, 1]"},
+{"fcstGordonSimplifyGeneric-ID244",
+"GordonSimplify[SpinorVBarD[p1,m1]. \
+GAD[mu,7].SpinorUD[p2,m2],FCE->True]",
+"Spinor[-Momentum[p1, D], m1, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], m2, 1]"},
+{"fcstGordonSimplifyGeneric-ID245",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,7].SpinorUD[p2,m],FCE->True]",
+"Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID246",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,7].SpinorVD[p2,m],FCE->True]",
+"Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID247",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,7].SpinorVD[p2,m],FCE->True]",
+"Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID248",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,7].SpinorUD[p2,m],FCE->True]",
+"Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID249",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu,7].SpinorUD[p2,m],FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID250",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu,7].SpinorVD[p2,m],FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID251",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu,7].SpinorVD[p2,m],FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID252",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu,7].SpinorUD[p2,m],FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID253",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,7].SpinorUD[p2,0],FCE->True]",
+"Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID254",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,7].SpinorVD[p2,0],FCE->True]",
+"Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID255",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,7].SpinorVD[p2,0],FCE->True]",
+"Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID256",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,7].SpinorUD[p2,0],FCE->True]",
+"Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID257",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu,7].SpinorUD[p2,0],FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID258",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu,7].SpinorVD[p2,0],FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID259",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu,7].SpinorVD[p2,0],FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID260",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu,7].SpinorUD[p2,0],FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID261",
+"GordonSimplify[SpinorUBarD[p,m]. \
+GAD[mu,7].SpinorUD[p,m],FCE->True]",
+"Spinor[Momentum[p, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID262",
+"GordonSimplify[SpinorVBarD[p,m]. \
+GAD[mu,7].SpinorVD[p,m],FCE->True]",
+"Spinor[-Momentum[p, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID263",
+"GordonSimplify[SpinorUBarD[p,m]. \
+GAD[mu,7].SpinorVD[p,m],FCE->True]",
+"Spinor[Momentum[p, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID264",
+"GordonSimplify[SpinorVBarD[p,m]. \
+GAD[mu,7].SpinorUD[p,m],FCE->True]",
+"Spinor[-Momentum[p, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID265",
+"GordonSimplify[SpinorUBarD[p,0]. \
+GAD[mu,7].SpinorUD[p,0],FCE->True]",
+"Spinor[Momentum[p, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID266",
+"GordonSimplify[SpinorVBarD[p,0]. \
+GAD[mu,7].SpinorVD[p,0],FCE->True]",
+"Spinor[-Momentum[p, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID267",
+"GordonSimplify[SpinorUBarD[p,0]. \
+GAD[mu,7].SpinorVD[p,0],FCE->True]",
+"Spinor[Momentum[p, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID268",
+"GordonSimplify[SpinorVBarD[p,0]. \
+GAD[mu,7].SpinorUD[p,0],FCE->True]",
+"Spinor[-Momentum[p, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID269",
+"GordonSimplify[SpinorUBarD[p1,m1]. \
+GAD[mu,7].SpinorUD[p2,m2],Select\[Rule]{{Spinor[__],DiracGamma[__],\
+DiracGamma[5],Spinor[__]},{Spinor[__],DiracGamma[__],DiracGamma[7],\
+Spinor[__]},{Spinor[__],DiracGamma[__],Spinor[__]}},FCE->True]",
+"(I*Spinor[Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[7] . Spinor[Momentum[p2, D], m2, 1])/m1 - \
+(m2*Spinor[Momentum[p1, D], m1, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p2, D], m2, 1])/m1 + (Spinor[Momentum[p1, D], m1, 1] \
+. GA[7] . Spinor[Momentum[p2, D], m2, 1]*FVD[p1 + p2, mu])/m1"},
+{"fcstGordonSimplifyGeneric-ID270",
+"GordonSimplify[SpinorVBarD[p1,m1]. \
+GAD[mu,7].SpinorVD[p2,m2],Select\[Rule]{{Spinor[__],DiracGamma[__],\
+DiracGamma[5],Spinor[__]},{Spinor[__],DiracGamma[__],DiracGamma[7],\
+Spinor[__]},{Spinor[__],DiracGamma[__],Spinor[__]}},FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], \
+GSD[p1 - p2]] . GA[7] . Spinor[-Momentum[p2, D], m2, 1])/m1 - \
+(m2*Spinor[-Momentum[p1, D], m1, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p2, D], m2, 1])/m1 - (Spinor[-Momentum[p1, D], m1, \
+1] . GA[7] . Spinor[-Momentum[p2, D], m2, 1]*FVD[p1 + p2, mu])/m1"},
+{"fcstGordonSimplifyGeneric-ID271",
+"GordonSimplify[SpinorUBarD[p1,m1]. \
+GAD[mu,7].SpinorVD[p2,m2],Select\[Rule]{{Spinor[__],DiracGamma[__],\
+DiracGamma[5],Spinor[__]},{Spinor[__],DiracGamma[__],DiracGamma[7],\
+Spinor[__]},{Spinor[__],DiracGamma[__],Spinor[__]}},FCE->True]",
+"(I*Spinor[Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[7] . Spinor[-Momentum[p2, D], m2, 1])/m1 + \
+(m2*Spinor[Momentum[p1, D], m1, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p2, D], m2, 1])/m1 + (Spinor[Momentum[p1, D], m1, 1] \
+. GA[7] . Spinor[-Momentum[p2, D], m2, 1]*FVD[p1 + p2, mu])/m1"},
+{"fcstGordonSimplifyGeneric-ID272",
+"GordonSimplify[SpinorVBarD[p1,m1]. \
+GAD[mu,7].SpinorUD[p2,m2],Select\[Rule]{{Spinor[__],DiracGamma[__],\
+DiracGamma[5],Spinor[__]},{Spinor[__],DiracGamma[__],DiracGamma[7],\
+Spinor[__]},{Spinor[__],DiracGamma[__],Spinor[__]}},FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], \
+GSD[p1 - p2]] . GA[7] . Spinor[Momentum[p2, D], m2, 1])/m1 + \
+(m2*Spinor[-Momentum[p1, D], m1, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p2, D], m2, 1])/m1 - (Spinor[-Momentum[p1, D], m1, 1] \
+. GA[7] . Spinor[Momentum[p2, D], m2, 1]*FVD[p1 + p2, mu])/m1"},
+{"fcstGordonSimplifyGeneric-ID273",
+"GordonSimplify[SpinorUBarD[p1,m]. GAD[mu,7].SpinorUD[p2,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"(I*Spinor[Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[7] . Spinor[Momentum[p2, D], m, 1])/m - Spinor[Momentum[p1, \
+D], m, 1] . GAD[mu] . GA[6] . Spinor[Momentum[p2, D], m, 1] + \
+(Spinor[Momentum[p1, D], m, 1] . GA[7] . Spinor[Momentum[p2, D], m, \
+1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID274",
+"GordonSimplify[SpinorVBarD[p1,m]. GAD[mu,7].SpinorVD[p2,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . GA[7] . Spinor[-Momentum[p2, D], m, 1])/m - \
+Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p2, D], m, 1] - (Spinor[-Momentum[p1, D], m, 1] . \
+GA[7] . Spinor[-Momentum[p2, D], m, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID275",
+"GordonSimplify[SpinorUBarD[p1,m]. GAD[mu,7].SpinorVD[p2,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"(I*Spinor[Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[7] . Spinor[-Momentum[p2, D], m, 1])/m + \
+Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p2, D], m, 1] + (Spinor[Momentum[p1, D], m, 1] . \
+GA[7] . Spinor[-Momentum[p2, D], m, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID276",
+"GordonSimplify[SpinorVBarD[p1,m]. GAD[mu,7].SpinorUD[p2,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . GA[7] . Spinor[Momentum[p2, D], m, 1])/m + \
+Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p2, D], m, 1] - (Spinor[-Momentum[p1, D], m, 1] . \
+GA[7] . Spinor[Momentum[p2, D], m, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID277",
+"GordonSimplify[SpinorUBarD[p1,0]. GAD[mu,7].SpinorUD[p2,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID278",
+"GordonSimplify[SpinorVBarD[p1,0]. GAD[mu,7].SpinorVD[p2,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID279",
+"GordonSimplify[SpinorUBarD[p1,0]. GAD[mu,7].SpinorVD[p2,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID280",
+"GordonSimplify[SpinorVBarD[p1,0]. GAD[mu,7].SpinorUD[p2,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID281",
+"GordonSimplify[SpinorUBarD[p1,m]. GAD[mu,7].SpinorUD[p2,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"(I*Spinor[Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[7] . Spinor[Momentum[p2, D], 0, 1])/m + \
+(Spinor[Momentum[p1, D], m, 1] . GA[7] . Spinor[Momentum[p2, D], 0, \
+1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID282",
+"GordonSimplify[SpinorVBarD[p1,m]. GAD[mu,7].SpinorVD[p2,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . GA[7] . Spinor[-Momentum[p2, D], 0, 1])/m - \
+(Spinor[-Momentum[p1, D], m, 1] . GA[7] . Spinor[-Momentum[p2, D], 0, \
+1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID283",
+"GordonSimplify[SpinorUBarD[p1,m]. GAD[mu,7].SpinorVD[p2,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"(I*Spinor[Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[7] . Spinor[-Momentum[p2, D], 0, 1])/m + \
+(Spinor[Momentum[p1, D], m, 1] . GA[7] . Spinor[-Momentum[p2, D], 0, \
+1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID284",
+"GordonSimplify[SpinorVBarD[p1,m]. GAD[mu,7].SpinorUD[p2,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . GA[7] . Spinor[Momentum[p2, D], 0, 1])/m - \
+(Spinor[-Momentum[p1, D], m, 1] . GA[7] . Spinor[Momentum[p2, D], 0, \
+1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID285",
+"GordonSimplify[SpinorUBarD[p1,0]. GAD[mu,7].SpinorUD[p2,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID286",
+"GordonSimplify[SpinorVBarD[p1,0]. GAD[mu,7].SpinorVD[p2,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID287",
+"GordonSimplify[SpinorUBarD[p1,0]. GAD[mu,7].SpinorVD[p2,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID288",
+"GordonSimplify[SpinorVBarD[p1,0]. GAD[mu,7].SpinorUD[p2,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID289",
+"GordonSimplify[SpinorUBarD[p,m]. GAD[mu,7].SpinorUD[p,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"-Spinor[Momentum[p, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p, D], m, 1] + (2*Spinor[Momentum[p, D], m, 1] . \
+GA[7] . Spinor[Momentum[p, D], m, 1]*FVD[p, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID290",
+"GordonSimplify[SpinorVBarD[p,m]. GAD[mu,7].SpinorVD[p,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"-Spinor[-Momentum[p, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p, D], m, 1] - (2*Spinor[-Momentum[p, D], m, 1] . \
+GA[7] . Spinor[-Momentum[p, D], m, 1]*FVD[p, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID291",
+"GordonSimplify[SpinorUBarD[p,m]. GAD[mu,7].SpinorVD[p,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p, D], m, 1] + (2*Spinor[Momentum[p, D], m, 1] . \
+GA[7] . Spinor[-Momentum[p, D], m, 1]*FVD[p, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID292",
+"GordonSimplify[SpinorVBarD[p,m]. GAD[mu,7].SpinorUD[p,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p, D], m, 1] - (2*Spinor[-Momentum[p, D], m, 1] . \
+GA[7] . Spinor[Momentum[p, D], m, 1]*FVD[p, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID293",
+"GordonSimplify[SpinorUBarD[p,0]. GAD[mu,7].SpinorUD[p,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID294",
+"GordonSimplify[SpinorVBarD[p,0]. GAD[mu,7].SpinorVD[p,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID295",
+"GordonSimplify[SpinorUBarD[p,0]. GAD[mu,7].SpinorVD[p,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}}]",
+"Spinor[Momentum[p, D], 0, 1] . DiracGamma[LorentzIndex[mu, D], D] \
+. DiracGamma[7] . Spinor[-Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID296",
+"FCSetDiracGammaScheme[\"BMHV\"]; \
+GordonSimplify[SpinorUBarD[p1,m1]. \
+GAD[mu].SpinorUD[p2,m2],FCE->True]",
+"(I*Spinor[Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . Spinor[Momentum[p2, D], m2, 1])/(m1 + m2) + \
+(Spinor[Momentum[p1, D], m1, 1] . Spinor[Momentum[p2, D], m2, \
+1]*FVD[p1 + p2, mu])/(m1 + m2)"},
+{"fcstGordonSimplifyGeneric-ID297",
+"GordonSimplify[SpinorVBarD[p1,m1]. \
+GAD[mu].SpinorVD[p2,m2],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], \
+GSD[p1 - p2]] . Spinor[-Momentum[p2, D], m2, 1])/(m1 + m2) - \
+(Spinor[-Momentum[p1, D], m1, 1] . Spinor[-Momentum[p2, D], m2, \
+1]*FVD[p1 + p2, mu])/(m1 + m2)"},
+{"fcstGordonSimplifyGeneric-ID298",
+"GordonSimplify[SpinorUBarD[p1,m1]. \
+GAD[mu].SpinorVD[p2,m2],FCE->True]",
+"(I*Spinor[Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . Spinor[-Momentum[p2, D], m2, 1])/(m1 - m2) + \
+(Spinor[Momentum[p1, D], m1, 1] . Spinor[-Momentum[p2, D], m2, \
+1]*FVD[p1 + p2, mu])/(m1 - m2)"},
+{"fcstGordonSimplifyGeneric-ID299",
+"GordonSimplify[SpinorVBarD[p1,m1]. \
+GAD[mu].SpinorUD[p2,m2],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], \
+GSD[p1 - p2]] . Spinor[Momentum[p2, D], m2, 1])/(m1 - m2) - \
+(Spinor[-Momentum[p1, D], m1, 1] . Spinor[Momentum[p2, D], m2, \
+1]*FVD[p1 + p2, mu])/(m1 - m2)"},
+{"fcstGordonSimplifyGeneric-ID300",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu].SpinorUD[p2,m],FCE->True]",
+"((I/2)*Spinor[Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . Spinor[Momentum[p2, D], m, 1])/m + (Spinor[Momentum[p1, D], \
+m, 1] . Spinor[Momentum[p2, D], m, 1]*FVD[p1 + p2, mu])/(2*m)"},
+{"fcstGordonSimplifyGeneric-ID301",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu].SpinorVD[p2,m],FCE->True]",
+"((-I/2)*Spinor[-Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], \
+GSD[p1 - p2]] . Spinor[-Momentum[p2, D], m, 1])/m - \
+(Spinor[-Momentum[p1, D], m, 1] . Spinor[-Momentum[p2, D], m, \
+1]*FVD[p1 + p2, mu])/(2*m)"},
+{"fcstGordonSimplifyGeneric-ID302",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu].SpinorVD[p2,m],FCE->True]",
+"Spinor[Momentum[p1, D], m, 1] . GAD[mu] . Spinor[-Momentum[p2, \
+D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID303",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu].SpinorUD[p2,m],FCE->True]",
+"Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . Spinor[Momentum[p2, \
+D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID304",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu].SpinorUD[p2,m],FCE->True]",
+"(I*Spinor[Momentum[p1, D], 0, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . Spinor[Momentum[p2, D], m, 1])/m + (Spinor[Momentum[p1, D], 0, \
+1] . Spinor[Momentum[p2, D], m, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID305",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu].SpinorVD[p2,m],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], 0, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . Spinor[-Momentum[p2, D], m, 1])/m - (Spinor[-Momentum[p1, \
+D], 0, 1] . Spinor[-Momentum[p2, D], m, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID306",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu].SpinorVD[p2,m],FCE->True]",
+"((-I)*Spinor[Momentum[p1, D], 0, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . Spinor[-Momentum[p2, D], m, 1])/m - (Spinor[Momentum[p1, D], \
+0, 1] . Spinor[-Momentum[p2, D], m, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID307",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu].SpinorUD[p2,m],FCE->True]",
+"(I*Spinor[-Momentum[p1, D], 0, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . Spinor[Momentum[p2, D], m, 1])/m + (Spinor[-Momentum[p1, D], \
+0, 1] . Spinor[Momentum[p2, D], m, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID308",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu].SpinorUD[p2,0],FCE->True]",
+"(I*Spinor[Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . Spinor[Momentum[p2, D], 0, 1])/m + (Spinor[Momentum[p1, D], m, \
+1] . Spinor[Momentum[p2, D], 0, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID309",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu].SpinorVD[p2,0],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . Spinor[-Momentum[p2, D], 0, 1])/m - (Spinor[-Momentum[p1, \
+D], m, 1] . Spinor[-Momentum[p2, D], 0, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID310",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu].SpinorVD[p2,0],FCE->True]",
+"(I*Spinor[Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . Spinor[-Momentum[p2, D], 0, 1])/m + (Spinor[Momentum[p1, D], \
+m, 1] . Spinor[-Momentum[p2, D], 0, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID311",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu].SpinorUD[p2,0],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . Spinor[Momentum[p2, D], 0, 1])/m - (Spinor[-Momentum[p1, D], \
+m, 1] . Spinor[Momentum[p2, D], 0, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID312",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu].SpinorUD[p2,0],FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . Spinor[Momentum[p2, D], \
+0, 1]"},
+{"fcstGordonSimplifyGeneric-ID313",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu].SpinorVD[p2,0],FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . Spinor[-Momentum[p2, \
+D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID314",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu].SpinorVD[p2,0],FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . Spinor[-Momentum[p2, \
+D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID315",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu].SpinorUD[p2,0],FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . Spinor[Momentum[p2, \
+D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID316",
+"GordonSimplify[SpinorUBarD[p,m]. \
+GAD[mu].SpinorUD[p,m],FCE->True]",
+"(Spinor[Momentum[p, D], m, 1] . Spinor[Momentum[p, D], m, \
+1]*FVD[p, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID317",
+"GordonSimplify[SpinorVBarD[p,m]. \
+GAD[mu].SpinorVD[p,m],FCE->True]",
+"-((Spinor[-Momentum[p, D], m, 1] . Spinor[-Momentum[p, D], m, \
+1]*FVD[p, mu])/m)"},
+{"fcstGordonSimplifyGeneric-ID318",
+"GordonSimplify[SpinorUBarD[p,m]. \
+GAD[mu].SpinorVD[p,m],FCE->True]",
+"Spinor[Momentum[p, D], m, 1] . GAD[mu] . Spinor[-Momentum[p, D], \
+m, 1]"},
+{"fcstGordonSimplifyGeneric-ID319",
+"GordonSimplify[SpinorVBarD[p,m]. \
+GAD[mu].SpinorUD[p,m],FCE->True]",
+"Spinor[-Momentum[p, D], m, 1] . GAD[mu] . Spinor[Momentum[p, D], \
+m, 1]"},
+{"fcstGordonSimplifyGeneric-ID320",
+"GordonSimplify[SpinorUBarD[p,0]. \
+GAD[mu].SpinorUD[p,0],FCE->True]",
+"Spinor[Momentum[p, D], 0, 1] . GAD[mu] . Spinor[Momentum[p, D], \
+0, 1]"},
+{"fcstGordonSimplifyGeneric-ID321",
+"GordonSimplify[SpinorVBarD[p,0]. \
+GAD[mu].SpinorVD[p,0],FCE->True]",
+"Spinor[-Momentum[p, D], 0, 1] . GAD[mu] . Spinor[-Momentum[p, D], \
+0, 1]"},
+{"fcstGordonSimplifyGeneric-ID322",
+"GordonSimplify[SpinorUBarD[p,0]. \
+GAD[mu].SpinorVD[p,0],FCE->True]",
+"Spinor[Momentum[p, D], 0, 1] . GAD[mu] . Spinor[-Momentum[p, D], \
+0, 1]"},
+{"fcstGordonSimplifyGeneric-ID323",
+"GordonSimplify[SpinorVBarD[p,0]. \
+GAD[mu].SpinorUD[p,0],FCE->True]",
+"Spinor[-Momentum[p, D], 0, 1] . GAD[mu] . Spinor[Momentum[p, D], \
+0, 1]"},
+{"fcstGordonSimplifyGeneric-ID324",
+"GordonSimplify[SpinorUBarD[p1,m1]. \
+GAD[mu,5].SpinorUD[p2,m2],FCE->True]",
+"(I*Spinor[Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[5] . Spinor[Momentum[p2, D], m2, 1])/(m1 - m2) - \
+(2*Spinor[Momentum[p1, D], m1, 1] . GAD[mu] . GSE[p2] . GA[5] . \
+Spinor[Momentum[p2, D], m2, 1])/(m1 - m2) + (Spinor[Momentum[p1, D], \
+m1, 1] . GA[5] . Spinor[Momentum[p2, D], m2, 1]*FVD[p1 + p2, mu])/(m1 \
+- m2)"},
+{"fcstGordonSimplifyGeneric-ID325",
+"GordonSimplify[SpinorVBarD[p1,m1]. \
+GAD[mu,5].SpinorVD[p2,m2],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], \
+GSD[p1 - p2]] . GA[5] . Spinor[-Momentum[p2, D], m2, 1])/(m1 - m2) + \
+(2*Spinor[-Momentum[p1, D], m1, 1] . GAD[mu] . GSE[p2] . GA[5] . \
+Spinor[-Momentum[p2, D], m2, 1])/(m1 - m2) - (Spinor[-Momentum[p1, \
+D], m1, 1] . GA[5] . Spinor[-Momentum[p2, D], m2, 1]*FVD[p1 + p2, \
+mu])/(m1 - m2)"},
+{"fcstGordonSimplifyGeneric-ID326",
+"GordonSimplify[SpinorUBarD[p1,m1]. \
+GAD[mu,5].SpinorVD[p2,m2],FCE->True]",
+"(I*Spinor[Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[5] . Spinor[-Momentum[p2, D], m2, 1])/(m1 + m2) - \
+(2*Spinor[Momentum[p1, D], m1, 1] . GAD[mu] . GSE[p2] . GA[5] . \
+Spinor[-Momentum[p2, D], m2, 1])/(m1 + m2) + (Spinor[Momentum[p1, D], \
+m1, 1] . GA[5] . Spinor[-Momentum[p2, D], m2, 1]*FVD[p1 + p2, \
+mu])/(m1 + m2)"},
+{"fcstGordonSimplifyGeneric-ID327",
+"GordonSimplify[SpinorVBarD[p1,m1]. \
+GAD[mu,5].SpinorUD[p2,m2],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m1, 1] . DiracSigma[GAD[mu], \
+GSD[p1 - p2]] . GA[5] . Spinor[Momentum[p2, D], m2, 1])/(m1 + m2) + \
+(2*Spinor[-Momentum[p1, D], m1, 1] . GAD[mu] . GSE[p2] . GA[5] . \
+Spinor[Momentum[p2, D], m2, 1])/(m1 + m2) - (Spinor[-Momentum[p1, D], \
+m1, 1] . GA[5] . Spinor[Momentum[p2, D], m2, 1]*FVD[p1 + p2, mu])/(m1 \
++ m2)"},
+{"fcstGordonSimplifyGeneric-ID328",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,5].SpinorUD[p2,m],FCE->True]",
+"Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GA[5] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID329",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,5].SpinorVD[p2,m],FCE->True]",
+"Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[5] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID330",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,5].SpinorVD[p2,m],FCE->True]",
+"((I/2)*Spinor[Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . GA[5] . Spinor[-Momentum[p2, D], m, 1])/m - \
+Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GSE[p2] . GA[5] . \
+Spinor[-Momentum[p2, D], m, 1]/m + (Spinor[Momentum[p1, D], m, 1] . \
+GA[5] . Spinor[-Momentum[p2, D], m, 1]*FVD[p1 + p2, mu])/(2*m)"},
+{"fcstGordonSimplifyGeneric-ID331",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,5].SpinorUD[p2,m],FCE->True]",
+"((-I/2)*Spinor[-Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], \
+GSD[p1 - p2]] . GA[5] . Spinor[Momentum[p2, D], m, 1])/m + \
+Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GSE[p2] . GA[5] . \
+Spinor[Momentum[p2, D], m, 1]/m - (Spinor[-Momentum[p1, D], m, 1] . \
+GA[5] . Spinor[Momentum[p2, D], m, 1]*FVD[p1 + p2, mu])/(2*m)"},
+{"fcstGordonSimplifyGeneric-ID332",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu,5].SpinorUD[p2,m],FCE->True]",
+"((-I)*Spinor[Momentum[p1, D], 0, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . GA[5] . Spinor[Momentum[p2, D], m, 1])/m + \
+(2*Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GSE[p2] . GA[5] . \
+Spinor[Momentum[p2, D], m, 1])/m - (Spinor[Momentum[p1, D], 0, 1] . \
+GA[5] . Spinor[Momentum[p2, D], m, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID333",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu,5].SpinorVD[p2,m],FCE->True]",
+"(I*Spinor[-Momentum[p1, D], 0, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[5] . Spinor[-Momentum[p2, D], m, 1])/m - \
+(2*Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GSE[p2] . GA[5] . \
+Spinor[-Momentum[p2, D], m, 1])/m + (Spinor[-Momentum[p1, D], 0, 1] . \
+GA[5] . Spinor[-Momentum[p2, D], m, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID334",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu,5].SpinorVD[p2,m],FCE->True]",
+"(I*Spinor[Momentum[p1, D], 0, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[5] . Spinor[-Momentum[p2, D], m, 1])/m - \
+(2*Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GSE[p2] . GA[5] . \
+Spinor[-Momentum[p2, D], m, 1])/m + (Spinor[Momentum[p1, D], 0, 1] . \
+GA[5] . Spinor[-Momentum[p2, D], m, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID335",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu,5].SpinorUD[p2,m],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], 0, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . GA[5] . Spinor[Momentum[p2, D], m, 1])/m + \
+(2*Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GSE[p2] . GA[5] . \
+Spinor[Momentum[p2, D], m, 1])/m - (Spinor[-Momentum[p1, D], 0, 1] . \
+GA[5] . Spinor[Momentum[p2, D], m, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID336",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,5].SpinorUD[p2,0],FCE->True]",
+"(I*Spinor[Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[5] . Spinor[Momentum[p2, D], 0, 1])/m - \
+(2*Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GSE[p2] . GA[5] . \
+Spinor[Momentum[p2, D], 0, 1])/m + (Spinor[Momentum[p1, D], m, 1] . \
+GA[5] . Spinor[Momentum[p2, D], 0, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID337",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,5].SpinorVD[p2,0],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . GA[5] . Spinor[-Momentum[p2, D], 0, 1])/m + \
+(2*Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GSE[p2] . GA[5] . \
+Spinor[-Momentum[p2, D], 0, 1])/m - (Spinor[-Momentum[p1, D], m, 1] . \
+GA[5] . Spinor[-Momentum[p2, D], 0, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID338",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,5].SpinorVD[p2,0],FCE->True]",
+"(I*Spinor[Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 - \
+p2]] . GA[5] . Spinor[-Momentum[p2, D], 0, 1])/m - \
+(2*Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GSE[p2] . GA[5] . \
+Spinor[-Momentum[p2, D], 0, 1])/m + (Spinor[Momentum[p1, D], m, 1] . \
+GA[5] . Spinor[-Momentum[p2, D], 0, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID339",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,5].SpinorUD[p2,0],FCE->True]",
+"((-I)*Spinor[-Momentum[p1, D], m, 1] . DiracSigma[GAD[mu], GSD[p1 \
+- p2]] . GA[5] . Spinor[Momentum[p2, D], 0, 1])/m + \
+(2*Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GSE[p2] . GA[5] . \
+Spinor[Momentum[p2, D], 0, 1])/m - (Spinor[-Momentum[p1, D], m, 1] . \
+GA[5] . Spinor[Momentum[p2, D], 0, 1]*FVD[p1 + p2, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID340",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu,5].SpinorUD[p2,0],FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[5] . \
+Spinor[Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID341",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu,5].SpinorVD[p2,0],FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[5] . \
+Spinor[-Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID342",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu,5].SpinorVD[p2,0],FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[5] . \
+Spinor[-Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID343",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu,5].SpinorUD[p2,0],FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[5] . \
+Spinor[Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID344",
+"GordonSimplify[SpinorUBarD[p,m]. \
+GAD[mu,5].SpinorUD[p,m],FCE->True]",
+"Spinor[Momentum[p, D], m, 1] . GAD[mu] . GA[5] . \
+Spinor[Momentum[p, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID345",
+"GordonSimplify[SpinorVBarD[p,m]. \
+GAD[mu,5].SpinorVD[p,m],FCE->True]",
+"Spinor[-Momentum[p, D], m, 1] . GAD[mu] . GA[5] . \
+Spinor[-Momentum[p, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID346",
+"GordonSimplify[SpinorUBarD[p,m]. \
+GAD[mu,5].SpinorVD[p,m],FCE->True]",
+"-(Spinor[Momentum[p, D], m, 1] . GAD[mu] . GSE[p] . GA[5] . \
+Spinor[-Momentum[p, D], m, 1]/m) + (Spinor[Momentum[p, D], m, 1] . \
+GA[5] . Spinor[-Momentum[p, D], m, 1]*FVD[p, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID347",
+"GordonSimplify[SpinorVBarD[p,m]. \
+GAD[mu,5].SpinorUD[p,m],FCE->True]",
+"Spinor[-Momentum[p, D], m, 1] . GAD[mu] . GSE[p] . GA[5] . \
+Spinor[Momentum[p, D], m, 1]/m - (Spinor[-Momentum[p, D], m, 1] . \
+GA[5] . Spinor[Momentum[p, D], m, 1]*FVD[p, mu])/m"},
+{"fcstGordonSimplifyGeneric-ID348",
+"GordonSimplify[SpinorUBarD[p,0]. \
+GAD[mu,5].SpinorUD[p,0],FCE->True]",
+"Spinor[Momentum[p, D], 0, 1] . GAD[mu] . GA[5] . \
+Spinor[Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID349",
+"GordonSimplify[SpinorVBarD[p,0]. \
+GAD[mu,5].SpinorVD[p,0],FCE->True]",
+"Spinor[-Momentum[p, D], 0, 1] . GAD[mu] . GA[5] . \
+Spinor[-Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID350",
+"GordonSimplify[SpinorUBarD[p,0]. \
+GAD[mu,5].SpinorVD[p,0],FCE->True]",
+"Spinor[Momentum[p, D], 0, 1] . GAD[mu] . GA[5] . \
+Spinor[-Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID351",
+"GordonSimplify[SpinorVBarD[p,0]. \
+GAD[mu,5].SpinorUD[p,0],FCE->True]",
+"Spinor[-Momentum[p, D], 0, 1] . GAD[mu] . GA[5] . \
+Spinor[Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID352",
+"GordonSimplify[SpinorUBarD[p1,m1]. \
+GAD[mu,6].SpinorUD[p2,m2],FCE->True]",
+"Spinor[Momentum[p1, D], m1, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p2, D], m2, 1]"},
+{"fcstGordonSimplifyGeneric-ID353",
+"GordonSimplify[SpinorVBarD[p1,m1]. \
+GAD[mu,6].SpinorVD[p2,m2],FCE->True]",
+"Spinor[-Momentum[p1, D], m1, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p2, D], m2, 1]"},
+{"fcstGordonSimplifyGeneric-ID354",
+"GordonSimplify[SpinorUBarD[p1,m1]. \
+GAD[mu,6].SpinorVD[p2,m2],FCE->True]",
+"Spinor[Momentum[p1, D], m1, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p2, D], m2, 1]"},
+{"fcstGordonSimplifyGeneric-ID355",
+"GordonSimplify[SpinorVBarD[p1,m1]. \
+GAD[mu,6].SpinorUD[p2,m2],FCE->True]",
+"Spinor[-Momentum[p1, D], m1, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p2, D], m2, 1]"},
+{"fcstGordonSimplifyGeneric-ID356",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,6].SpinorUD[p2,m],FCE->True]",
+"Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID357",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,6].SpinorVD[p2,m],FCE->True]",
+"Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID358",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,6].SpinorVD[p2,m],FCE->True]",
+"Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID359",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,6].SpinorUD[p2,m],FCE->True]",
+"Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID360",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu,6].SpinorUD[p2,m],FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID361",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu,6].SpinorVD[p2,m],FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID362",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu,6].SpinorVD[p2,m],FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID363",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu,6].SpinorUD[p2,m],FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID364",
+"GordonSimplify[SpinorUBarD[p1,m1]. \
+GAD[mu,6].SpinorUD[p2,m2],Inverse\[Rule]{m2},FCE->True]",
+"Spinor[Momentum[p1, D], m1, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p2, D], m2, 1]"},
+{"fcstGordonSimplifyGeneric-ID365",
+"GordonSimplify[SpinorVBarD[p1,m1]. \
+GAD[mu,6].SpinorVD[p2,m2],Inverse\[Rule]{m2},FCE->True]",
+"Spinor[-Momentum[p1, D], m1, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p2, D], m2, 1]"},
+{"fcstGordonSimplifyGeneric-ID366",
+"GordonSimplify[SpinorUBarD[p1,m1]. \
+GAD[mu,6].SpinorVD[p2,m2],Inverse\[Rule]{m2},FCE->True]",
+"Spinor[Momentum[p1, D], m1, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p2, D], m2, 1]"},
+{"fcstGordonSimplifyGeneric-ID367",
+"GordonSimplify[SpinorVBarD[p1,m1]. \
+GAD[mu,6].SpinorUD[p2,m2],Inverse\[Rule]{m2},FCE->True]",
+"Spinor[-Momentum[p1, D], m1, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p2, D], m2, 1]"},
+{"fcstGordonSimplifyGeneric-ID368",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,6].SpinorUD[p2,m],Inverse\[Rule]{m2},FCE->True]",
+"Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID369",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,6].SpinorVD[p2,m],Inverse\[Rule]{m2},FCE->True]",
+"Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID370",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,6].SpinorVD[p2,m],Inverse\[Rule]{m2},FCE->True]",
+"Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID371",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,6].SpinorUD[p2,m],Inverse\[Rule]{m2},FCE->True]",
+"Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID372",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,6].SpinorUD[p2,0],FCE->True]",
+"Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID373",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,6].SpinorVD[p2,0],FCE->True]",
+"Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID374",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,6].SpinorVD[p2,0],FCE->True]",
+"Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID375",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,6].SpinorUD[p2,0],FCE->True]",
+"Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID376",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu,6].SpinorUD[p2,0],FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID377",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu,6].SpinorVD[p2,0],FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID378",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu,6].SpinorVD[p2,0],FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID379",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu,6].SpinorUD[p2,0],FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID380",
+"GordonSimplify[SpinorUBarD[p,m]. \
+GAD[mu,6].SpinorUD[p,m],FCE->True]",
+"Spinor[Momentum[p, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID381",
+"GordonSimplify[SpinorVBarD[p,m]. \
+GAD[mu,6].SpinorVD[p,m],FCE->True]",
+"Spinor[-Momentum[p, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID382",
+"GordonSimplify[SpinorUBarD[p,m]. \
+GAD[mu,6].SpinorVD[p,m],FCE->True]",
+"Spinor[Momentum[p, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID383",
+"GordonSimplify[SpinorVBarD[p,m]. \
+GAD[mu,6].SpinorUD[p,m],FCE->True]",
+"Spinor[-Momentum[p, D], m, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID384",
+"GordonSimplify[SpinorUBarD[p,0]. \
+GAD[mu,6].SpinorUD[p,0],FCE->True]",
+"Spinor[Momentum[p, D], 0, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID385",
+"GordonSimplify[SpinorVBarD[p,0]. \
+GAD[mu,6].SpinorVD[p,0],FCE->True]",
+"Spinor[-Momentum[p, D], 0, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID386",
+"GordonSimplify[SpinorUBarD[p,0]. \
+GAD[mu,6].SpinorVD[p,0],FCE->True]",
+"Spinor[Momentum[p, D], 0, 1] . GAD[mu] . GA[6] . \
+Spinor[-Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID387",
+"GordonSimplify[SpinorVBarD[p,0]. \
+GAD[mu,6].SpinorUD[p,0],FCE->True]",
+"Spinor[-Momentum[p, D], 0, 1] . GAD[mu] . GA[6] . \
+Spinor[Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID388",
+"GordonSimplify[SpinorUBarD[p1,m1]. \
+GAD[mu,7].SpinorUD[p2,m2],FCE->True]",
+"Spinor[Momentum[p1, D], m1, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], m2, 1]"},
+{"fcstGordonSimplifyGeneric-ID389",
+"GordonSimplify[SpinorVBarD[p1,m1]. \
+GAD[mu,7].SpinorVD[p2,m2],FCE->True]",
+"Spinor[-Momentum[p1, D], m1, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m2, 1]"},
+{"fcstGordonSimplifyGeneric-ID390",
+"GordonSimplify[SpinorUBarD[p1,m1]. \
+GAD[mu,7].SpinorVD[p2,m2],FCE->True]",
+"Spinor[Momentum[p1, D], m1, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m2, 1]"},
+{"fcstGordonSimplifyGeneric-ID391",
+"GordonSimplify[SpinorVBarD[p1,m1]. \
+GAD[mu,7].SpinorUD[p2,m2],FCE->True]",
+"Spinor[-Momentum[p1, D], m1, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], m2, 1]"},
+{"fcstGordonSimplifyGeneric-ID392",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,7].SpinorUD[p2,m],FCE->True]",
+"Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID393",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,7].SpinorVD[p2,m],FCE->True]",
+"Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID394",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,7].SpinorVD[p2,m],FCE->True]",
+"Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID395",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,7].SpinorUD[p2,m],FCE->True]",
+"Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID396",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu,7].SpinorUD[p2,m],FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID397",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu,7].SpinorVD[p2,m],FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID398",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu,7].SpinorVD[p2,m],FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID399",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu,7].SpinorUD[p2,m],FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID400",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,7].SpinorUD[p2,0],FCE->True]",
+"Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID401",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,7].SpinorVD[p2,0],FCE->True]",
+"Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID402",
+"GordonSimplify[SpinorUBarD[p1,m]. \
+GAD[mu,7].SpinorVD[p2,0],FCE->True]",
+"Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID403",
+"GordonSimplify[SpinorVBarD[p1,m]. \
+GAD[mu,7].SpinorUD[p2,0],FCE->True]",
+"Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID404",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu,7].SpinorUD[p2,0],FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID405",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu,7].SpinorVD[p2,0],FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID406",
+"GordonSimplify[SpinorUBarD[p1,0]. \
+GAD[mu,7].SpinorVD[p2,0],FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID407",
+"GordonSimplify[SpinorVBarD[p1,0]. \
+GAD[mu,7].SpinorUD[p2,0],FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID408",
+"GordonSimplify[SpinorUBarD[p,m]. \
+GAD[mu,7].SpinorUD[p,m],FCE->True]",
+"Spinor[Momentum[p, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID409",
+"GordonSimplify[SpinorVBarD[p,m]. \
+GAD[mu,7].SpinorVD[p,m],FCE->True]",
+"Spinor[-Momentum[p, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID410",
+"GordonSimplify[SpinorUBarD[p,m]. \
+GAD[mu,7].SpinorVD[p,m],FCE->True]",
+"Spinor[Momentum[p, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID411",
+"GordonSimplify[SpinorVBarD[p,m]. \
+GAD[mu,7].SpinorUD[p,m],FCE->True]",
+"Spinor[-Momentum[p, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID412",
+"GordonSimplify[SpinorUBarD[p,0]. \
+GAD[mu,7].SpinorUD[p,0],FCE->True]",
+"Spinor[Momentum[p, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID413",
+"GordonSimplify[SpinorVBarD[p,0]. \
+GAD[mu,7].SpinorVD[p,0],FCE->True]",
+"Spinor[-Momentum[p, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID414",
+"GordonSimplify[SpinorUBarD[p,0]. \
+GAD[mu,7].SpinorVD[p,0],FCE->True]",
+"Spinor[Momentum[p, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID415",
+"GordonSimplify[SpinorVBarD[p,0]. \
+GAD[mu,7].SpinorUD[p,0],FCE->True]",
+"Spinor[-Momentum[p, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID416",
+"GordonSimplify[SpinorUBarD[p1,m1]. \
+GAD[mu,7].SpinorUD[p2,m2],Select\[Rule]{{Spinor[__],DiracGamma[__],\
+DiracGamma[5],Spinor[__]},{Spinor[__],DiracGamma[__],DiracGamma[7],\
+Spinor[__]},{Spinor[__],DiracGamma[__],Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p1, D], m1, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], m2, 1]"},
+{"fcstGordonSimplifyGeneric-ID417",
+"GordonSimplify[SpinorVBarD[p1,m1]. \
+GAD[mu,7].SpinorVD[p2,m2],Select\[Rule]{{Spinor[__],DiracGamma[__],\
+DiracGamma[5],Spinor[__]},{Spinor[__],DiracGamma[__],DiracGamma[7],\
+Spinor[__]},{Spinor[__],DiracGamma[__],Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p1, D], m1, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m2, 1]"},
+{"fcstGordonSimplifyGeneric-ID418",
+"GordonSimplify[SpinorUBarD[p1,m1]. \
+GAD[mu,7].SpinorVD[p2,m2],Select\[Rule]{{Spinor[__],DiracGamma[__],\
+DiracGamma[5],Spinor[__]},{Spinor[__],DiracGamma[__],DiracGamma[7],\
+Spinor[__]},{Spinor[__],DiracGamma[__],Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p1, D], m1, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m2, 1]"},
+{"fcstGordonSimplifyGeneric-ID419",
+"GordonSimplify[SpinorVBarD[p1,m1]. \
+GAD[mu,7].SpinorUD[p2,m2],Select\[Rule]{{Spinor[__],DiracGamma[__],\
+DiracGamma[5],Spinor[__]},{Spinor[__],DiracGamma[__],DiracGamma[7],\
+Spinor[__]},{Spinor[__],DiracGamma[__],Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p1, D], m1, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], m2, 1]"},
+{"fcstGordonSimplifyGeneric-ID420",
+"GordonSimplify[SpinorUBarD[p1,m]. GAD[mu,7].SpinorUD[p2,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID421",
+"GordonSimplify[SpinorVBarD[p1,m]. GAD[mu,7].SpinorVD[p2,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID422",
+"GordonSimplify[SpinorUBarD[p1,m]. GAD[mu,7].SpinorVD[p2,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID423",
+"GordonSimplify[SpinorVBarD[p1,m]. GAD[mu,7].SpinorUD[p2,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID424",
+"GordonSimplify[SpinorUBarD[p1,0]. GAD[mu,7].SpinorUD[p2,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID425",
+"GordonSimplify[SpinorVBarD[p1,0]. GAD[mu,7].SpinorVD[p2,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID426",
+"GordonSimplify[SpinorUBarD[p1,0]. GAD[mu,7].SpinorVD[p2,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID427",
+"GordonSimplify[SpinorVBarD[p1,0]. GAD[mu,7].SpinorUD[p2,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID428",
+"GordonSimplify[SpinorUBarD[p1,m]. GAD[mu,7].SpinorUD[p2,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID429",
+"GordonSimplify[SpinorVBarD[p1,m]. GAD[mu,7].SpinorVD[p2,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID430",
+"GordonSimplify[SpinorUBarD[p1,m]. GAD[mu,7].SpinorVD[p2,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID431",
+"GordonSimplify[SpinorVBarD[p1,m]. GAD[mu,7].SpinorUD[p2,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p1, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID432",
+"GordonSimplify[SpinorUBarD[p1,0]. GAD[mu,7].SpinorUD[p2,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID433",
+"GordonSimplify[SpinorVBarD[p1,0]. GAD[mu,7].SpinorVD[p2,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID434",
+"GordonSimplify[SpinorUBarD[p1,0]. GAD[mu,7].SpinorVD[p2,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID435",
+"GordonSimplify[SpinorVBarD[p1,0]. GAD[mu,7].SpinorUD[p2,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p1, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p2, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID436",
+"GordonSimplify[SpinorUBarD[p,m]. GAD[mu,7].SpinorUD[p,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID437",
+"GordonSimplify[SpinorVBarD[p,m]. GAD[mu,7].SpinorVD[p,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID438",
+"GordonSimplify[SpinorUBarD[p,m]. GAD[mu,7].SpinorVD[p,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID439",
+"GordonSimplify[SpinorVBarD[p,m]. GAD[mu,7].SpinorUD[p,m],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p, D], m, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p, D], m, 1]"},
+{"fcstGordonSimplifyGeneric-ID440",
+"GordonSimplify[SpinorUBarD[p,0]. GAD[mu,7].SpinorUD[p,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[Momentum[p, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID441",
+"GordonSimplify[SpinorVBarD[p,0]. GAD[mu,7].SpinorVD[p,0],Select\
+\[Rule]{{Spinor[__],DiracGamma[__],DiracGamma[5],Spinor[__]},{Spinor[_\
+_],DiracGamma[__],DiracGamma[7],Spinor[__]},{Spinor[__],DiracGamma[__]\
+,Spinor[__]}},FCE->True]",
+"Spinor[-Momentum[p, D], 0, 1] . GAD[mu] . GA[7] . \
+Spinor[-Momentum[p, D], 0, 1]"},
+{"fcstGordonSimplifyGeneric-ID442",
+"tmp=GordonSimplify[SpinorUBarD[p,0]. \
+GAD[mu,7].SpinorVD[p,0],Select\[Rule]{{Spinor[__],DiracGamma[__],\
+DiracGamma[5],Spinor[__]},{Spinor[__],DiracGamma[__],DiracGamma[7],\
+Spinor[__]},{Spinor[__],DiracGamma[__],Spinor[__]}}];
+FCSetDiracGammaScheme[\"BMHV\"]; tmp",
+"Spinor[Momentum[p, D], 0, 1] . DiracGamma[LorentzIndex[mu, D], D] \
+. DiracGamma[7] . Spinor[-Momentum[p, D], 0, 1]"}
+});
