@@ -684,7 +684,13 @@ GFAD[{{CSPD[k, k] x[1] + (CSPD[k, k - 2 p] + CSPD[p, p]) x[2], 1},
 "{{CSPD[k, k]*x[1] + CSPD[k, k]*x[2] - 2*CSPD[k, p]*x[2] + CSPD[p, p]*x[2],
 -c^2 + CSPD[k, k]}, {CSPD[k, k], CSPD[k, p]}, {1 + s, 1},
 {GFAD[{{CSPD[k, k]*x[1] + (CSPD[k, k - 2*p] +
-CSPD[p, p])*x[2], 1}, 1}], CFAD[{{k, 0}, {-c^2, -1}, 1}]}}"}
+CSPD[p, p])*x[2], 1}, 1}], CFAD[{{k, 0}, {-c^2, -1}, 1}]}}"},
+{"fcstFCLoopBasisExtract-ID29","FCLoopBasisExtract[SFAD[p, p - q] SPD[p, q], {p},
+SortBy -> Function[x, x[[2]] < 0], FCE -> True]",
+"{{SPD[p, p], SPD[p, p] - 2 SPD[p, q] + SPD[q, q],
+SPD[p, q]}, {SPD[p, p], SPD[p, q]}, {1,
+1, -1}, {SFAD[{{p, 0}, {0, 1}, 1}], SFAD[{{p - q, 0}, {0, 1}, 1}],
+SPD[p, q]}}"}
 };
 
 Tests`LoopIntegrals`fcstFCLoopBasisGetSize =

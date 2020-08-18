@@ -131,7 +131,8 @@ Options[FCLoopBasisExtract] = {
 	FCVerbose		-> False,
 	FCTopology		-> False,
 	Rest			-> None,
-	SetDimensions	-> {3, 4, D, D-1}
+	SetDimensions	-> {3, 4, D, D-1},
+	SortBy			-> Identity
 };
 
 Options[FCLoopBasisIncompleteQ] = {
@@ -597,7 +598,7 @@ FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 	Block[{	expr, coeffs, lmoms,allmoms, extmoms, basisElements,
 			availableDims, dims, res, useToSFAD, integralBasis, integralBasisT,
 			coeffsPair, coeffsCartesianPair, coeffsTemporalPair,
-			lorentzianDims, cartesianDims, null1, null2, aux},
+			lorentzianDims, cartesianDims, null1, null2, aux, optSortBy},
 
 		If [OptionValue[FCVerbose]===False,
 				fclbeVerbose=$VeryVerbose,
@@ -606,7 +607,8 @@ FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 				];
 		];
 
-		dims = OptionValue[SetDimensions];
+		dims		= OptionValue[SetDimensions];
+		optSortBy	= OptionValue[SortBy];
 
 		If[	dims==={},
 			Message[FCLoopBasisExtract::failmsg,"The list of dimensions cannot be empty."];
@@ -645,6 +647,12 @@ FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 		integralBasis = Join[SelectNotFree[integralBasis,Pair,CartesianPair],SelectFree[integralBasis,Pair,CartesianPair]];
 
 		FCPrint[3,"FCLoopBasisExtract: Reshuffled integral basis: ", integralBasis, FCDoControl->fclbeVerbose];
+
+		If[	optSortBy=!=Identity,
+			integralBasis = SortBy[integralBasis, optSortBy];
+			FCPrint[3,"FCLoopBasisExtract: Sorted integral basis: ", integralBasis, FCDoControl->fclbeVerbose]
+		];
+
 
 		integralBasisT = Transpose[integralBasis];
 
