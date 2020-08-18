@@ -19,15 +19,15 @@ Tests`LoopIntegrals`fcstFCFeynmanParametrize =
 {"fcstFCFeynmanParametrize-ID1",
 "FCFeynmanParametrize[SFAD[{p,0,n}],{p},Names\[Rule]x,Indexed\
 \[Rule]False,Simplify\[Rule]True]",
-"{0, ((-1)^n*Gamma[-D/2 + n])/Gamma[n], {}}"},
+"{1, 0, {}}"},
 {"fcstFCFeynmanParametrize-ID2",
 "FCFeynmanParametrize[SFAD[{p,m^2}],{p},Names\[Rule]x,Indexed\
 \[Rule]False,Simplify\[Rule]True]",
-"{(m^2)^(-1 + D/2), -Gamma[1 - D/2], {}}"},
+"{1, -((m^2)^(-1 + D/2)*Gamma[1 - D/2]), {}}"},
 {"fcstFCFeynmanParametrize-ID3",
 "FCFeynmanParametrize[SFAD[{p,m^2,n}],{p},Names\[Rule]x,Indexed\
 \[Rule]False,Simplify\[Rule]True]",
-"{(m^2)^((D - 2*n)/2), ((-1)^n*Gamma[-D/2 + n])/Gamma[n], {}}"},
+"{1, ((-1)^n*(m^2)^((D - 2*n)/2)*Gamma[-D/2 + n])/Gamma[n], {}}"},
 {"fcstFCFeynmanParametrize-ID4",
 "FCFeynmanParametrize[SFAD[{p,0,1},{p+q,0,1}],{p},Names\[Rule]x,\
 FCReplaceD\[Rule]{D->4-2ep},FCE\[Rule]True,Names\[Rule]x,Indexed\
@@ -54,5 +54,47 @@ x2*x5*(2*x4 + x5) + x1*(x2^2 + x5^2 + 2*x2*(x3 + x5))))^(-5 + D), \
 \[Rule]x,Indexed\[Rule]False,Simplify\[Rule]True,FinalSubstitutions\
 \[Rule]{FCI[SPD[q]]\[Rule]mb^2},FCReplaceD\[Rule]{D->4-2Epsilon}]",
 "{(mb^2*(x1 + x2)*x3^2)^(1 - 2*Epsilon)*(x2*x3 + x1*(x2 + \
-x3))^(3*(-1 + Epsilon)), -Gamma[-1 + 2*Epsilon], {x1, x2, x3}}"}
+x3))^(3*(-1 + Epsilon)), -Gamma[-1 + 2*Epsilon], {x1, x2, x3}}"},
+{"fcstFCFeynmanParametrize-ID8",
+"FCFeynmanParametrize[SFAD[{p,m}]SPD[p,q],{p},Names\[Rule]x,\
+FCReplaceD\[Rule]{D->4-2Epsilon},Simplify\[Rule]True]",
+"{1, 0, {}}"},
+{"fcstFCFeynmanParametrize-ID9",
+"FCFeynmanParametrize[SFAD[p,p-q]SPD[p,q],{p},Names\[Rule]x,\
+FCReplaceD\[Rule]{D->4-2Epsilon},Simplify\[Rule]True]",
+"{((-(Pair[Momentum[q, D], Momentum[q, D]]*x[1]*x[2]))^(1 - \
+Epsilon)*(x[1] + x[2])^(-3 + 2*Epsilon))/x[1], -((-1 + \
+Epsilon)*Gamma[-1 + Epsilon]), {x[1], x[2]}}"},
+{"fcstFCFeynmanParametrize-ID10",
+"FCFeynmanParametrize[SFAD[{p,-m^2},p-q1,p-q2]SPD[p,q1]^2 \
+SPD[p,q2],{p},Names\[Rule]x,FCReplaceD\[Rule]{D->4-2Epsilon},Simplify\
+\[Rule]True]",
+"{((x[1] + x[2] + x[3])^(-4 + 2*Epsilon)*(-16*Pair[Momentum[q1, \
+D], Momentum[q2, D]]*(Pair[Momentum[q1, D], Momentum[q1, D]]*x[2] + \
+Pair[Momentum[q1, D], Momentum[q2, D]]*x[3]) - 8*Pair[Momentum[q1, \
+D], Momentum[q1, D]]*(Pair[Momentum[q1, D], Momentum[q2, D]]*x[2] + \
+Pair[Momentum[q2, D], Momentum[q2, D]]*x[3]) - \
+(16*Epsilon*(Pair[Momentum[q1, D], Momentum[q1, D]]*x[2] + \
+Pair[Momentum[q1, D], Momentum[q2, D]]*x[3])^2*(Pair[Momentum[q1, D], \
+Momentum[q2, D]]*x[2] + Pair[Momentum[q2, D], Momentum[q2, \
+D]]*x[3]))/(m^2*x[1]^2 + m^2*x[1]*x[2] + m^2*x[1]*x[3] - \
+2*Pair[Momentum[q1, D], Momentum[q2, D]]*x[2]*x[3] + \
+Pair[Momentum[q2, D], Momentum[q2, D]]*(x[1] + x[2])*x[3] + \
+Pair[Momentum[q1, D], Momentum[q1, D]]*x[2]*(x[1] + \
+x[3]))))/(-(m^2*x[1]^2) - m^2*x[1]*x[2] - m^2*x[1]*x[3] + \
+2*Pair[Momentum[q1, D], Momentum[q2, D]]*x[2]*x[3] - \
+Pair[Momentum[q2, D], Momentum[q2, D]]*(x[1] + x[2])*x[3] - \
+Pair[Momentum[q1, D], Momentum[q1, D]]*x[2]*(x[1] + x[3]))^Epsilon, \
+-((4 - 2*Epsilon)*(1 - Epsilon)*Gamma[-2 + Epsilon])/32, {x[1], x[2], \
+x[3]}}"},
+{"fcstFCFeynmanParametrize-ID11",
+"FCFeynmanParametrize[SFAD[p,p-q,{{0,p.q},0,Epsilon-2}],{p},Names\
+\[Rule]x,FCReplaceD\[Rule]{D->4-2Epsilon},Simplify\[Rule]True]",
+"{((x[1] + x[2])^(-4 + 3*Epsilon)*x[3]^(-3 + Epsilon)*(4*x[1]*x[2] \
++ 8*(-1 + 2*Epsilon)*x[2]^2 - 4*(-3 + 4*Epsilon)*x[2]*x[3] + (-3 + \
+4*Epsilon)*x[3]^2))/(-(Pair[Momentum[q, D], Momentum[q, \
+D]]*(4*x[1]*x[2] + (4*x[2] - x[3])*x[3])))^(2*Epsilon), \
+((-1)^Epsilon*4^(-1 + 2*Epsilon)*(-1 + Epsilon)*Gamma[-2 + \
+2*Epsilon]*Pair[Momentum[q, D], Momentum[q, D]]^2)/Gamma[-2 + \
+Epsilon], {x[1], x[2], x[3]}}"}
 });
