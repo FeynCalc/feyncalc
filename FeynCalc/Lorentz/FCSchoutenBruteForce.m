@@ -44,7 +44,7 @@ Options[FCSchoutenBruteForce] = {
 	Schouten 					-> False,
 	SchoutenAllowNegativeGain	-> False,
 	SchoutenAllowZeroGain		-> False,
-	Take -> 1
+	Take 						-> 1
 };
 
 checkSchouten[x_, repRule_]:=
@@ -76,7 +76,7 @@ FCSchoutenBruteForce[expr_, epsvars_List, vars_List/;(!OptionQ[vars] || vars==={
 
 
 		FCPrint[1, "FCSchoutenBruteForce: Entering.", FCDoControl->fcsbVerbose];
-		FCPrint[3, "FCSchoutenBruteForce: Entering with ", ex, FCDoControl->fcsbVerbose];
+		FCPrint[3, "FCSchoutenBruteForce: Entering with ", expr, FCDoControl->fcsbVerbose];
 
 		If[	OptionValue[FCI],
 			ex = expr,
