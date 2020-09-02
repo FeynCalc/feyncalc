@@ -567,19 +567,24 @@ FCProductSplit[expr_, {}, OptionsPattern[]]:=
 	{expr,1};
 
 FCProductSplit[expr_, vars_List /; vars =!= {}, OptionsPattern[]] :=
-	Block[{dummy1,dummy2,exprAsList,pow,free,notfree},
+	Block[{dummy1,dummy2,exprAsList,pow,free,notfree,list},
 		If[	NTerms[expr,Expand->False] > 1,
 			Message[FCProductSplit::failmsg,"The input expression is not a product"];
 			Abort[]
 		];
 
-		exprAsList = List@@(expr*dummy1*dummy2);
+		(*
+			Using List instead of list may mess up powers inside functions.
+			We don't want to touch those at all
+		*)
+		exprAsList = list@@(expr*dummy1*dummy2);
 		If[	!FreeQ[exprAsList,Power],
 			exprAsList /. Power -> pow //. {
-				{a___,pow[b_,n_Integer?Positive],c___} :> {a,Sequence@@ConstantArray[b,n],c},
-				{a___,pow[b_,n_Integer?Negative],c___} :> {a,Sequence@@ConstantArray[1/b,-n],c}
+				list[a___,pow[b_,n_Integer?Positive],c___] :> list[a,Sequence@@ConstantArray[b,n],c],
+				list[a___,pow[b_,n_Integer?Negative],c___] :> list[a,Sequence@@ConstantArray[1/b,-n],c]
 			} /. pow -> Power
 		];
+		exprAsList = exprAsList/.list->List;
 
 		free = SelectFree[exprAsList,vars] /. dummy1|dummy2 :> Unevaluated[Sequence[]];
 		notfree = SelectNotFree[exprAsList,vars];

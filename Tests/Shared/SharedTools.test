@@ -160,7 +160,9 @@ Tests`Shared`fcstSharedToolsFCProductSplit =
 {"fcstSharedToolsFCProductSplit-ID9", "FCProductSplit[1, {x, y, z}]",
 "{1, 1}"},
 {"fcstSharedToolsFCProductSplit-ID10", "FCProductSplit[a b c, {}]",
-"{a b c, 1}"}
+"{a b c, 1}"},
+{"fcstSharedToolsFCProductSplit-ID11", "FCProductSplit[(D - 2)/(D - 3) B0[mH^2, mt^2, mt^2], {B0}]",
+"{(-2 + D)/(-3 + D), B0[mH^2, mt^2, mt^2]}"}
 });
 
 Tests`Shared`fcstSharedToolsFCSplit = {
