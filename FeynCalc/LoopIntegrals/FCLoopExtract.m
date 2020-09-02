@@ -48,6 +48,7 @@ Options[FCLoopExtract] = {
 	MultiLoop 					-> False,
 	Numerator 					-> True,
 	PaVe 						-> True,
+	PaVeIntegralHeads 			-> FeynCalc`Package`PaVeHeadsList,
 	SFAD 						-> True,
 	TimeConstrained				-> 3
 };
@@ -76,22 +77,25 @@ FCLoopExtract[ex_, lmoms_, loopHead_, OptionsPattern[]] :=
 		];
 
 		rest  = Plus@@tmp[[irrel]];
-		loopInts = FCLoopIsolate[Plus@@tmp[[rel]], lmoms, FCI->True, Head->loopHead,
-									FAD  -> OptionValue[FAD],
-									CFAD -> OptionValue[CFAD],
-									SFAD -> OptionValue[SFAD],
-									Collecting -> OptionValue[Collecting],
-									DropScaleless-> OptionValue[DropScaleless],
-									MultiLoop-> OptionValue[MultiLoop],
-									PaVe-> OptionValue[PaVe],
-									Numerator-> OptionValue[Numerator],
-									ExpandScalarProduct -> OptionValue[ExpandScalarProduct],
-									Full -> OptionValue[Full],
-									Factoring->OptionValue[Factoring],
-									FCLoopIBPReducableQ->OptionValue[FCLoopIBPReducableQ],
-									GFAD -> OptionValue[GFAD],
-									Factoring -> OptionValue[Factoring],
-									TimeConstrained -> OptionValue[TimeConstrained]
+		loopInts = FCLoopIsolate[Plus@@tmp[[rel]], lmoms,
+									CFAD 				-> OptionValue[CFAD],
+									Collecting			-> OptionValue[Collecting],
+									DropScaleless		-> OptionValue[DropScaleless],
+									ExpandScalarProduct	-> OptionValue[ExpandScalarProduct],
+									FAD					-> OptionValue[FAD],
+									FCI					-> True,
+									FCLoopIBPReducableQ	-> OptionValue[FCLoopIBPReducableQ],
+									Factoring			-> OptionValue[Factoring],
+									Factoring			-> OptionValue[Factoring],
+									Full				-> OptionValue[Full],
+									GFAD				-> OptionValue[GFAD],
+									Head				-> loopHead,
+									MultiLoop			-> OptionValue[MultiLoop],
+									Numerator			-> OptionValue[Numerator],
+									PaVe				-> OptionValue[PaVe],
+									PaVeIntegralHeads	-> OptionValue[PaVeIntegralHeads],
+									SFAD				-> OptionValue[SFAD],
+									TimeConstrained		-> OptionValue[TimeConstrained]
 		];
 
 		If[ OptionValue[FCLoopBasisSplit],
