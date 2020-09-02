@@ -1,0 +1,52 @@
+
+
+(* :Title: PaVeLimitTo4.test                                          	    	*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for PaVeLimitTo4			  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`PaVeLimitTo4 =
+({
+{"fcstPaVeLimitTo4-ID1", "PaVeLimitTo4[FAD[p,p-q],FCE\[Rule]True]",
+"FAD[p, p - q]"},
+{"fcstPaVeLimitTo4-ID2",
+"PaVeLimitTo4[SPD[p,q](D-2)(D-1)/(D-2)B0[pp,mm1,mm2]+x,FCE\[Rule]\
+True]", "x - 2*SP[p, q] + 3*PaVe[0, {pp}, {mm1, mm2}]*SP[p, q]"},
+{"fcstPaVeLimitTo4-ID3",
+"PaVeLimitTo4[((4*I)*Pi^2*B0[0, m^2, m^2]*MTD[mu, nu])/D + \
+((4*I)*m^2*Pi^2*C0[0, 0, 0, m^2, m^2, \
+m^2]*MTD[mu,nu])/D,FCE\[Rule]True]",
+"(I/2)*Pi^2*MT[mu, nu] + I*Pi^2*MT[mu, nu]*PaVe[0, {0}, {m^2, \
+m^2}] + I*m^2*Pi^2*MT[mu, nu]*PaVe[0, {0, 0, 0}, {m^2, m^2, m^2}]"},
+{"fcstPaVeLimitTo4-ID4",
+"PaVeLimitTo4[((-2*I)*(-4 + D)*e*gs^2*mt^2*Pi^2*B0[mH^2, mt^2, \
+mt^2]*SD[Glu2, Glu3]*(-2*SPD[k1, Polarization[k2, -I, Transversality -> \
+True]]*SPD[k2, Polarization[k1, -I, Transversality -> True]] + \
+mH^2*SPD[Polarization[k1, -I, Transversality -> True], \
+Polarization[k2, -I, Transversality -> True]]))/((-2 + \
+D)*mH^2*mW*sinW) - (I*e*gs^2*mt^2*(-2*mH^2 + D*mH^2 - \
+8*mt^2)*Pi^2*C0[0, 0, mH^2, mt^2, mt^2, mt^2]*SD[Glu2, Glu3]*     \
+(-2*SPD[k1, Polarization[k2, -I, Transversality -> True]]*SPD[k2, \
+Polarization[k1, -I, Transversality ->True]] + \
+mH^2*SPD[Polarization[k1, -I,Transversality -> True], \
+Polarization[k2, -I, Transversality -> True]]))/((-2 + \
+D)*mH^2*mW*sinW),FCE\[Rule]True]",
+"((-2*I)*e*gs^2*mt^2*Pi^2*SD[Glu2, Glu3]*(2*SP[k1, \
+Polarization[k2, -I, Transversality -> True]]*SP[k2, Polarization[k1, \
+-I, Transversality -> True]] - mH^2*SP[Polarization[k1, -I, \
+Transversality -> True], Polarization[k2, -I, Transversality -> \
+True]]))/(mH^2*mW*sinW) + (I*e*gs^2*mt^2*(mH^2 - 4*mt^2)*Pi^2*PaVe[0, \
+{0, 0, mH^2}, {mt^2, mt^2, mt^2}]*SD[Glu2, Glu3]*(2*SP[k1, \
+Polarization[k2, -I, Transversality -> True]]*SP[k2, Polarization[k1, \
+-I, Transversality -> True]] - mH^2*SP[Polarization[k1, -I, \
+Transversality -> True], Polarization[k2, -I, Transversality -> \
+True]]))/(mH^2*mW*sinW)"}
+})

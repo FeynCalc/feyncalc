@@ -94,7 +94,9 @@ Options[TID] = {
 	Isolate 								-> False,
 	PaVeAutoOrder 							-> True,
 	PaVeAutoReduce 							-> True,
+	PaVeLimitTo4 							-> False,
 	PauliSimplify 							-> True,
+	Prefactor								-> 1,
 	TimeConstrained 						-> 3,
 	ToPaVe									-> False,
 	UsePaVeBasis 							-> False
@@ -152,6 +154,8 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 		pavear 			= OptionValue[PaVeAutoReduce];
 		genpave 		= OptionValue[GenPaVe];
 
+		(* Multiply the input expression by the prefactor *)
+		t0 = OptionValue[Prefactor] t0;
 
 		If[ FreeQ[t0,q],
 			Return[t0]
@@ -402,7 +406,7 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 					];
 				];
 
-				(* Here we reduce the unique tensor integrals to scalar integrals *)
+				(* Here we reduce our unique tensor integrals to scalar integrals *)
 
 				FCPrint[1,"TID: Reducing ", Length[uniqueCanIndexList], " unique 1-loop tensor integrals.", FCDoControl->tidVerbose];
 				time=AbsoluteTime[];
@@ -568,6 +572,20 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 		];
 
 		res = res //. {holdExplicitLorentzIndex->ExplicitLorentzIndex, holdTemporalMomentum->TemporalMomentum,holdTemporalPair->TemporalPair, q0->q};
+
+		If[ OptionValue[PaVeLimitTo4],
+
+			time=AbsoluteTime[];
+			FCPrint[1, "TID: Applying PaVeLimitTo4.", FCDoControl->tidVerbose];
+
+			If[	!FreeQ[res,tidIsolate],
+				Message[TID::failmsg, "PaVeLimitTo4 cannot be applied to results with isolated prefactors."];
+				Abort[]
+			];
+			res = PaVeLimitTo4[res,FCI->True];
+			FCPrint[1, "TID: Done applying PaVeLimitTo4, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
+			FCPrint[3, "TID: After PaVeLimitTo4: ", res , FCDoControl->tidVerbose]
+		];
 
 
 		If[	optExpandScalarProduct,

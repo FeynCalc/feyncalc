@@ -160,7 +160,7 @@ $LeviCivitaSign=I which would give eps^{0123} = -I.";
 $LimitTo4::usage =
 "$LimitTo4 is a global variable that determines whether \
 UV-divergent Passarino-Veltman functions are simplified by \
-taking the limit D-4 -> 0. A general UV-finite \
+taking the limit D-4 -> 0. A general IR-finite \
 Passarino-Veltman function can be written as \
 PaVe = a/(D-4) + b + O(Epsilon), with a being the prefactor \
 of the pole and b being the finite part. Therefore, products \
