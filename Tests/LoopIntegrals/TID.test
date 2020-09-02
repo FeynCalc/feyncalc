@@ -1029,5 +1029,10 @@ DiracSimplify -> False, FCE -> True]",
 "1/2 (2 m DiracTrace[GAD[mu].GAD[nu].GAD[rho].GA[5]] +
 DiracTrace[GAD[mu].GSD[p].GAD[nu].GAD[rho].GA[5]]) FAD[q, -p + q]"},
 {"fcstTID-ID55","TID[A0[m1] FVD[q, mu] FAD[q, q - p], q, FCE -> True]",
-"1/2 A0[m1] FAD[q, -p + q] FVD[p, mu]"}
+"1/2 A0[m1] FAD[q, -p + q] FVD[p, mu]"},
+{"fcstTID-ID56","TID[FVD[p, mu] FVD[p, nu] FAD[p, p - q], p, Prefactor -> x,
+PaVeLimitTo4 -> True, ToPaVe -> True, FCE -> True]",
+"1/18 I \[Pi]^2 x (FV[q, mu] FV[q, nu] - MT[mu, nu] SP[q, q]) +
+1/12 I \[Pi]^2 x PaVe[0, {SP[q, q]}, {0, 0}] (4 FV[q, mu] FV[q, nu] -
+	MT[mu, nu] SP[q, q])"}
 };
