@@ -194,5 +194,11 @@ Numerator -> False, FCE -> True]",
 CFAD[{{k, 0}, {0, -1}, 1}, {{-k + p, 0}, {0, -1}, 1}] CSPD[k, k]^2"},
 {"fcstApartFF-ID43",
 "ApartFF[CSISD[k] CFAD[k, k - p], {k}, FCE -> True]",
-"CFAD[{{k, 0}, {0, -1}, 1}, {{k - p, 0}, {0, -1}, 1}] CSISD[k]"}
+"CFAD[{{k, 0}, {0, -1}, 1}, {{k - p, 0}, {0, -1}, 1}] CSISD[k]"},
+{"fcstApartFF-ID44",
+"ApartFF[SFAD[{{0, (v2.p)}}] SFAD[{{0, (v1.p)}}, {{0, (v1.p - v2.p)},
+	y}], SPD[v2, p], {v1, v2}, FDS -> False, FCVerbose -> 0] //
+ApartFF[#, {v1, v2},FCE->True] &",
+"-(SFAD[{{0, p.v1}, {0, 1}, 1}]/y) +
+SFAD[{{0, p.v1}, {0, 1}, 1}, {{0, p.(v1 - v2)}, {y, 1}, 1}]"}
 })
