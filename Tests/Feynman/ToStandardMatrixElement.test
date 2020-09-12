@@ -416,5 +416,17 @@ StandardMatrixElement[SpinorUBar[p, m].GA[mu].SpinorV[q, M]],
 FCE -> True]","StandardMatrixElement[
 Spinor[Momentum[p], m, 1].GA[mu].GA[6].Spinor[-Momentum[q], M, 1]] +
 StandardMatrixElement[
-Spinor[Momentum[p], m, 1].GA[mu].GA[7].Spinor[-Momentum[q], M, 1]]"}
+Spinor[Momentum[p], m, 1].GA[mu].GA[7].Spinor[-Momentum[q], M, 1]]"},
+{"fcstToStandardMatrixElement-ID17", "ToStandardMatrixElement[
+x SpinorUBarD[p].GAD[mu].SpinorUD[p] + y SpinorUBarD[p].SpinorUD[p],
+SpinorChainEvaluate -> False, FCE -> True]","y StandardMatrixElement[
+Spinor[Momentum[p, D], 0, 1].GA[6].Spinor[Momentum[p, D], 0, 1]] +
+y StandardMatrixElement[
+Spinor[Momentum[p, D], 0, 1].GA[7].Spinor[Momentum[p, D], 0, 1]] +
+x StandardMatrixElement[
+Spinor[Momentum[p, D], 0, 1].GAD[mu].GA[6].Spinor[Momentum[p, D],
+	0, 1]] +
+x StandardMatrixElement[
+Spinor[Momentum[p, D], 0, 1].GAD[mu].GA[7].Spinor[Momentum[p, D],
+	0, 1]]"}
 });

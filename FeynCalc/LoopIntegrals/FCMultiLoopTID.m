@@ -42,19 +42,21 @@ Begin["`FCMultiLoopTID`Private`"]
 mltidVerbose::usage="";
 
 Options[FCMultiLoopTID] = {
-	ApartFF				-> True,
-	Collecting			-> True,
-	Contract			-> True,
-	Dimension			-> D,
-	DiracSimplify		-> True,
-	ExpandScalarProduct -> True,
-	Factoring 			-> {Factor2, 5000},
-	FCE					-> False,
-	FCI					-> False,
-	FCVerbose			-> False,
-	FDS					-> True,
-	TimeConstrained		-> 3,
-	Uncontract			-> {Polarization}
+	ApartFF						-> True,
+	Collecting					-> True,
+	Contract					-> True,
+	Dimension					-> D,
+	DiracSimplify				-> True,
+	DiracSpinorNormalization	-> "Relativistic",
+	ExpandScalarProduct			-> True,
+	Factoring 					-> {Factor2, 5000},
+	FCE							-> False,
+	FCI							-> False,
+	FCVerbose					-> False,
+	FDS							-> True,
+	SpinorChainEvaluate			-> True,
+	TimeConstrained				-> 3,
+	Uncontract					-> {Polarization}
 };
 
 FCMultiLoopTID[expr_List, qs_List/; FreeQ[qs, OptionQ], opts:OptionsPattern[]] :=
@@ -113,7 +115,8 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 		If[	OptionValue[DiracSimplify] && !FreeQ2[ex,{DiracGamma,DiracSigma,Spinor}],
 			time=AbsoluteTime[];
 			FCPrint[1, "FCMultiLoopTID: Applying DiracSimplify.", FCDoControl->mltidVerbose];
-			ex = DiracSimplify[ex, FCI->True];
+			ex = DiracSimplify[ex, FCI->True, SpinorChainEvaluate -> OptionValue[SpinorChainEvaluate],
+				DiracSpinorNormalization -> OptionValue[DiracSpinorNormalization]];
 			FCPrint[3,"FCMultiLoopTID: After DiracSimplify: ", ex, FCDoControl->mltidVerbose];
 			FCPrint[1, "FCMultiLoopTID: Done applying DiracSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose]
 		];

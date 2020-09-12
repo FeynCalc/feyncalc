@@ -44,21 +44,23 @@ Begin["`OneLoopSimplify`Private`"]
 olsVerbose::usage="";
 
 Options[OneLoopSimplify] = {
-	Collecting 			-> True,
-	Dimension 			-> D,
-	DiracSimplify 		-> True,
-	ExpandScalarProduct -> True,
-	FCE 				-> False,
-	FCI 				-> False,
-	FCVerbose 			-> False,
-	Factoring 			-> Automatic,
-	FinalSubstitutions	-> {},
-	OPE1Loop			-> False,
-	PowerSimplify		-> True,
-	SUNNToCACF			-> True,
-	SUNTrace			-> False,
-	ToPaVe				-> False,
-	UsePaVeBasis		-> False
+	Collecting 					-> True,
+	Dimension 					-> D,
+	DiracSimplify 				-> True,
+	DiracSpinorNormalization	-> "Relativistic",
+	ExpandScalarProduct 		-> True,
+	FCE 						-> False,
+	FCI 						-> False,
+	FCVerbose 					-> False,
+	Factoring 					-> Automatic,
+	FinalSubstitutions			-> {},
+	OPE1Loop					-> False,
+	PowerSimplify				-> True,
+	SpinorChainEvaluate 		-> True,
+	SUNNToCACF					-> True,
+	SUNTrace					-> False,
+	ToPaVe						-> False,
+	UsePaVeBasis				-> False
 };
 
 (*Do we really need to support this syntax???*)
@@ -153,7 +155,8 @@ OneLoopSimplify[expr_, qu_, OptionsPattern[]] :=
 		If[	!FreeQ2[tmp, FeynCalc`Package`DiracHeadsList] && optDiracSimplify,
 			time=AbsoluteTime[];
 			FCPrint[1, "OneLoopSimplify: Applying DiracSimplify.", FCDoControl->olsVerbose];
-			tmp = DiracSimplify[tmp, FCI->True];
+			tmp = DiracSimplify[tmp, FCI->True, SpinorChainEvaluate -> OptionValue[SpinorChainEvaluate],
+				DiracSpinorNormalization -> OptionValue[DiracSpinorNormalization]];
 			FCPrint[1, "OneLoopSimplify: DiracSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->olsVerbose];
 			FCPrint[3, "OneLoopSimplify: After DiracSimplify: ", tmp, FCDoControl->olsVerbose]
 		];
@@ -177,7 +180,8 @@ OneLoopSimplify[expr_, qu_, OptionsPattern[]] :=
 
 		time=AbsoluteTime[];
 		FCPrint[1, "OneLoopSimplify: Applying TID.", FCDoControl->olsVerbose];
-		tmp =  TID[tmp,  q, Dimension -> dim, FCI->True, DiracSimplify -> optDiracSimplify, ToPaVe->OptionValue[ToPaVe], UsePaVeBasis->OptionValue[UsePaVeBasis]];
+		tmp =  TID[tmp,  q, Dimension -> dim, FCI->True, DiracSimplify -> optDiracSimplify, ToPaVe->OptionValue[ToPaVe], UsePaVeBasis->OptionValue[UsePaVeBasis],
+				SpinorChainEvaluate -> OptionValue[SpinorChainEvaluate], DiracSpinorNormalization -> OptionValue[DiracSpinorNormalization]];
 		FCPrint[1, "OneLoopSimplify: TID done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->olsVerbose];
 		FCPrint[3, "OneLoopSimplify: After TID: ", tmp, FCDoControl->olsVerbose];
 
@@ -189,7 +193,8 @@ OneLoopSimplify[expr_, qu_, OptionsPattern[]] :=
 		If[	!FreeQ2[tmp, FeynCalc`Package`DiracHeadsList] && optDiracSimplify,
 			time=AbsoluteTime[];
 			FCPrint[1, "OneLoopSimplify: Applying DiracSimplify.", FCDoControl->olsVerbose];
-			tmp = DiracSimplify[tmp, FCI->True];
+			tmp = DiracSimplify[tmp, FCI->True, SpinorChainEvaluate -> OptionValue[SpinorChainEvaluate],
+				DiracSpinorNormalization -> OptionValue[DiracSpinorNormalization]];
 			FCPrint[1, "OneLoopSimplify: DiracSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->olsVerbose];
 			FCPrint[3, "OneLoopSimplify: After DiracSimplify: ", tmp, FCDoControl->olsVerbose]
 		];

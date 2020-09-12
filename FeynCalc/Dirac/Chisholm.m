@@ -34,19 +34,21 @@ Begin["`Chisholm`Private`"]
 chVerbose::usage="";
 
 Options[Chisholm] = {
-	Contract 			-> True,
-	DiracSigmaExplicit	-> False,
-	DiracSimplify		-> True,
-	DotSimplify			-> True,
-	FCDiracIsolate		-> True,
-	FCE					-> False,
-	FCI					-> False,
-	FCJoinDOTs			-> True,
-	FCVerbose			-> False,
-	InsideDiracTrace	-> False,
-	MaxIterations		-> Infinity,
-	Mode				-> 1,
-	NonCommutative 		-> True
+	Contract 					-> True,
+	DiracSigmaExplicit			-> False,
+	DiracSimplify				-> True,
+	DiracSpinorNormalization	-> "Relativistic",
+	DotSimplify					-> True,
+	FCDiracIsolate				-> True,
+	FCE							-> False,
+	FCI							-> False,
+	FCJoinDOTs					-> True,
+	FCVerbose					-> False,
+	InsideDiracTrace			-> False,
+	MaxIterations				-> Infinity,
+	Mode						-> 1,
+	NonCommutative 				-> True,
+	SpinorChainEvaluate			-> True
 };
 
 Chisholm[a_ == b_, opts:OptionsPattern[]] :=
@@ -261,7 +263,9 @@ Chisholm[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 		If[	OptionValue[DiracSimplify],
 				time=AbsoluteTime[];
 				FCPrint[1, "Chisholm: Applying DiracSimplify.", FCDoControl->chVerbose];
-				res = DiracSimplify[res, FCI->True, DiracSigmaExplicit->OptionValue[DiracSigmaExplicit]];
+				res = DiracSimplify[res, FCI->True, DiracSigmaExplicit->OptionValue[DiracSigmaExplicit],
+					SpinorChainEvaluate -> OptionValue[SpinorChainEvaluate],
+					DiracSpinorNormalization -> OptionValue[DiracSpinorNormalization]];
 				FCPrint[1, "Chisholm: Done applying DiracSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->chVerbose]
 		];
 

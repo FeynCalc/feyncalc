@@ -322,6 +322,11 @@ Cell[TextData[{
   ButtonData:>"paclet:FeynCalc/ref/SpinorChainTrick",
   ButtonNote->"SpinorChainTrick"],
  ", ",
+ ButtonBox["SpinorChainEvaluate",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/SpinorChainEvaluate",
+  ButtonNote->"SpinorChainEvaluate"],
+ ", ",
  ButtonBox["ToDiracGamma67",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/ToDiracGamma67",
@@ -7472,6 +7477,114 @@ Cell[BoxData[
         TraditionalForm]}], ")"}]}]}]}], TraditionalForm]], "Output",
  CellLabel->"Out[17]="]
 }, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter"],
+
+Cell[TextData[{
+ ButtonBox["DiracSimplify",
+  BaseStyle->"Link",
+  ButtonData:>"paclet:FeynCalc/ref/DiracSimplify",
+  ButtonNote->"DiracSimplify"],
+ " automatically evaluates suitable spinor products with equal momenta, e.g."
+}], "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ex", "=", 
+  RowBox[{
+   RowBox[{"SpinorUBar", "[", 
+    RowBox[{"p", ",", "m"}], "]"}], ".", 
+   RowBox[{"SpinorU", "[", 
+    RowBox[{"p", ",", "m"}], "]"}]}]}]], "Input",
+ CellLabel->"In[20]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    OverscriptBox["u", "_"], "(", 
+    FormBox["p",
+     TraditionalForm], ",", 
+    FormBox["m",
+     TraditionalForm], ")"}], ".", 
+   RowBox[{"u", "(", 
+    FormBox["p",
+     TraditionalForm], ",", 
+    FormBox["m",
+     TraditionalForm], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[20]="]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", "ex", "]"}]], "Input",
+ CellLabel->"In[21]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"2", " ", "m"}], TraditionalForm]], "Output",
+ CellLabel->"Out[21]="]
+}, Open  ]],
+
+Cell["\<\
+This behavior can be turned off by setting the option SpinorChainEvaluate to \
+False\
+\>", "Notes"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DiracSimplify", "[", 
+  RowBox[{"ex", ",", 
+   RowBox[{"SpinorChainEvaluate", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellLabel->"In[22]:="],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     FormBox["\<\"\[CurlyPhi]\"\>",
+      TraditionalForm], 
+     FormBox["\<\"(\"\>",
+      TraditionalForm], 
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox["\<\",\"\>",
+      TraditionalForm], 
+     FormBox["m",
+      TraditionalForm], 
+     FormBox["\<\")\"\>",
+      TraditionalForm]}], ")"}], ".", 
+   RowBox[{"(", 
+    RowBox[{
+     FormBox["\<\"\[CurlyPhi]\"\>",
+      TraditionalForm], 
+     FormBox["\<\"(\"\>",
+      TraditionalForm], 
+     FormBox[
+      OverscriptBox[
+       FormBox["p",
+        TraditionalForm], "_"],
+      TraditionalForm], 
+     FormBox["\<\",\"\>",
+      TraditionalForm], 
+     FormBox["m",
+      TraditionalForm], 
+     FormBox["\<\")\"\>",
+      TraditionalForm]}], ")"}]}], TraditionalForm]], "Output",
+ CellLabel->"Out[22]="]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -7536,7 +7649,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{894, 989},
-WindowMargins->{{Automatic, 200}, {Automatic, -8}},
+WindowMargins->{{Automatic, 190}, {Automatic, -8}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,

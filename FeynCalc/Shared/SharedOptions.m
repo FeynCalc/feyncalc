@@ -46,6 +46,17 @@ DiracIndexNames::usage =
 and other functions. It renames the generic dummy Dirac indices to the indices \
 in the supplied list.";
 
+DiracSpinorNormalization::usage=
+"DiracSpinorNormalization is an option for SpinorChainEvaluate, DiracSimplify and other \
+functions. It specifies the normalization of the spinor inner products ubar(p).u(p)
+and vbar(p).v(p). Following values are supported: \n
+
+\"Relativistic\" - this is the standard value corresponding to ubar(p).u(p) = 2m,
+vbar(p).v(p) =  -2m. \n
+\"Rest\" - this sets ubar(p).u(p) = 1, vbar(p).v(p) = -1. \n
+\"Nonrelativistic\" - this sets ubar(p).u(p) = m/p^0, vbar(p).v(p) = -m/p^0. \n
+.";
+
 DiracTraceEvaluate::usage =
 "DiracTraceEvaluate is an option for DiracTrace, DiracSimplify and \
 some other functions. If set to False, Dirac traces remain unevaluated.";
