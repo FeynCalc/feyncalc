@@ -38,16 +38,18 @@ Begin["`DiracReduce`Private`"]
 drVerbose::usage="";
 
 Options[DiracReduce] = {
-	Contract 			-> True,
-	DiracGammaCombine	-> True,
-	DiracSimplify		-> False,
-	DiracOrder			-> True,
-	DotSimplify			-> True,
-	FCE					-> False,
-	FCI					-> False,
-	FCVerbose			-> False,
-	Factoring			-> False,
-	FinalSubstitutions	-> {DiracBasis -> Identity}
+	Contract 					-> True,
+	DiracGammaCombine			-> True,
+	DiracSimplify				-> False,
+	DiracSpinorNormalization	-> "Relativistic",
+	DiracOrder					-> True,
+	DotSimplify					-> True,
+	FCE							-> False,
+	FCI							-> False,
+	FCVerbose					-> False,
+	Factoring					-> False,
+	FinalSubstitutions			-> {DiracBasis -> Identity},
+	SpinorChainEvaluate			-> True
 };
 
 DiracReduce[a_ == b_, opts:OptionsPattern[]] :=
@@ -100,7 +102,8 @@ DiracReduce[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 
 
 
-		tmp = Chisholm[tmp,FCI->True, DiracSimplify -> False];
+		tmp = Chisholm[tmp,FCI->True, DiracSimplify -> False, SpinorChainEvaluate -> OptionValue[SpinorChainEvaluate],
+			DiracSpinorNormalization -> OptionValue[DiracSpinorNormalization]];
 		FCPrint[3, "DiracReduce: After Chisholm: ", tmp, FCDoControl->drVerbose];
 
 
@@ -112,7 +115,8 @@ DiracReduce[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 		];
 
 		FCPrint[1, "DiracReduce: Applying Chisholm (mode 2).", FCDoControl->drVerbose];
-		tmp = Chisholm[tmp,FCI->True,DiracSimplify->False,Mode->2];
+		tmp = Chisholm[tmp,FCI->True,DiracSimplify->False,Mode->2, SpinorChainEvaluate -> OptionValue[SpinorChainEvaluate],
+			DiracSpinorNormalization -> OptionValue[DiracSpinorNormalization]];
 		FCPrint[3, "DiracReduce: After Chisholm: ", tmp, FCDoControl->drVerbose];
 
 		FCPrint[1, "DiracReduce: Introducing DiracSigma.", FCDoControl->drVerbose];
@@ -121,7 +125,8 @@ DiracReduce[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 
 		If[	diracSimplify,
 			FCPrint[1, "DiracReduce: Applying DiracSimplify.", FCDoControl->drVerbose];
-			tmp = DiracSimplify[tmp, DiracSigmaExplicit -> False, FCI->True, FCCanonicalizeDummyIndices->True];
+			tmp = DiracSimplify[tmp, DiracSigmaExplicit -> False, FCI->True, FCCanonicalizeDummyIndices->True, SpinorChainEvaluate -> OptionValue[SpinorChainEvaluate],
+			DiracSpinorNormalization -> OptionValue[DiracSpinorNormalization]];
 			FCPrint[3, "DiracReduce: After DiracSimplify: ", tmp, FCDoControl->drVerbose]
 		];
 

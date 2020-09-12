@@ -79,6 +79,7 @@ Options[TID] = {
 	Contract 								-> True,
 	Dimension 								-> D,
 	DiracSimplify 							-> True,
+	DiracSpinorNormalization				-> "Relativistic",
 	DiracTrace 								-> True,
 	EpsEvaluate								-> True,
 	ExpandScalarProduct						-> True,
@@ -154,8 +155,6 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 		pavear 			= OptionValue[PaVeAutoReduce];
 		genpave 		= OptionValue[GenPaVe];
 
-		(* Multiply the input expression by the prefactor *)
-		t0 = OptionValue[Prefactor] t0;
 
 		If[ FreeQ[t0,q],
 			Return[t0]
@@ -218,7 +217,8 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 		If[	OptionValue[DiracSimplify] && !FreeQ2[t0,{DiracGamma,DiracSigma,Spinor}],
 			FCPrint[1, "TID: Applying DiracSimplify.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
-			t0 = DiracSimplify[t0,FCI->True, DiracTraceEvaluate->OptionValue[DiracTrace], Expand2->False];
+			t0 = DiracSimplify[t0,FCI->True, DiracTraceEvaluate->OptionValue[DiracTrace], Expand2->False,
+				SpinorChainEvaluate -> OptionValue[SpinorChainEvaluate], DiracSpinorNormalization -> OptionValue[DiracSpinorNormalization]];
 			FCPrint[1, "TID: Done applying DiracSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 			FCPrint[3, "TID: After DiracSimplify: ", t0 , FCDoControl->tidVerbose]
 		];

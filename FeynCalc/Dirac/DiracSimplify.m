@@ -53,7 +53,8 @@ optFactoring::usage="";
 optEpsContract::usage="";
 optContract::usage="";
 optToDiracGamma67::usage="";
-
+optSpinorChainEvaluate::usage="";
+optDiracSpinorNormalization::usage="";
 
 Options[DiracSimplify] = {
 	CartesianIndexNames			-> {},
@@ -64,6 +65,7 @@ Options[DiracSimplify] = {
 	DiracGammaCombine			-> False,
 	DiracOrder					-> False,
 	DiracSigmaExplicit			-> True,
+	DiracSpinorNormalization	-> "Relativistic",
 	DiracSubstitute5			-> False,
 	DiracSubstitute67			-> False,
 	DiracTrace					-> True,
@@ -83,6 +85,7 @@ Options[DiracSimplify] = {
 	LorentzIndexNames			-> {},
 	SirlinSimplify				-> False,
 	SpinorChainTrick			-> True,
+	SpinorChainEvaluate			-> True,
 	ToDiracGamma67				-> True
 };
 
@@ -121,6 +124,8 @@ DiracSimplify[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 		optInsideDiracTrace				= OptionValue[InsideDiracTrace];
 		optToDiracGamma67				= OptionValue[ToDiracGamma67];
 		optFCCanonicalizeDummyIndices	= OptionValue[FCCanonicalizeDummyIndices];
+		optSpinorChainEvaluate			= OptionValue[SpinorChainEvaluate];
+		optDiracSpinorNormalization		= OptionValue[DiracSpinorNormalization];
 
 		If[ OptionValue[LorentzIndexNames]=!={} || OptionValue[CartesianIndexNames]=!={},
 			optFCCanonicalizeDummyIndices = True
@@ -471,18 +476,13 @@ diracSimplifyEval[expr_]:=
 			FCPrint[3,"DiracSimplify: diracSimplifyEval: After DiracEquation: ", tmp, FCDoControl->dsVerbose];
 		];
 
-		(* 	Covariant normalization of ubar.u or vbar.v (as in Peskin and Schroeder).
-			The combinations ubar.v and vbar.u are orthogonal and hence vanish *)
-		If[	!FreeQ[tmp,Spinor],
+		(*	Spinor inner product	*)
+		If[	!FreeQ[tmp,Spinor] && optSpinorChainEvaluate,
 			time2=AbsoluteTime[];
-			FCPrint[2,"DiracSimplify: Applying spinor normalization on ", tmp, FCDoControl->dsVerbose];
-			FCPrint[2,"DiracSimplify: diracSimplifyEval: Spinor normalization done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose];
-			tmp = tmp/. DOT->holdDOT //.
-			{	holdDOT[Spinor[s_. Momentum[p__],m_, 1],Spinor[s_. Momentum[p__],m_, 1]] -> s 2 m,
-				holdDOT[Spinor[- Momentum[p__],m_, 1],Spinor[Momentum[p__],m_, 1]] -> 0,
-				holdDOT[Spinor[Momentum[p__],m_, 1],Spinor[- Momentum[p__],m_, 1]] -> 0} /.
-			holdDOT -> DOT;
-			FCPrint[3,"DiracSimplify: diracSimplifyEval: After spinor normalization: ", tmp, FCDoControl->dsVerbose];
+			FCPrint[2,"DiracSimplify: diracSimplifyEval: Applying SpinorChainEvaluate.", FCDoControl->dsVerbose];
+			tmp = SpinorChainEvaluate[tmp, FCI->True, DiracSpinorNormalization->optDiracSpinorNormalization];
+			FCPrint[2,"DiracSimplify: diracSimplifyEval: SpinorChainEvaluate done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose];
+			FCPrint[3,"DiracSimplify: diracSimplifyEval: After SpinorChainEvaluate: ", tmp, FCDoControl->dsVerbose];
 		];
 
 		(* Factoring	*)

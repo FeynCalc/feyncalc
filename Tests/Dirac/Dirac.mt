@@ -131,6 +131,14 @@ If[ Names["Tests`Dirac`fcstDiracChainExpand*"]=!={},
 	tmpTest = tmpTest /. testID->TestID /. test -> Test;
 ];
 
+FCSetDiracGammaScheme["NDR"];
+
+If[ Names["Tests`Dirac`fcstDiracChainExplicit*"]=!={},
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
+	Join@@(ToExpression/@Names["Tests`Dirac`fcstDiracChainExplicit*"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+];
+
 If[ Names["Tests`Dirac`fcstDiracChainFactor*"]=!={},
 	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`Dirac`fcstDiracChainFactor*"])];

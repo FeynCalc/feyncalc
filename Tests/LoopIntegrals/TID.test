@@ -1034,5 +1034,11 @@ DiracTrace[GAD[mu].GSD[p].GAD[nu].GAD[rho].GA[5]]) FAD[q, -p + q]"},
 PaVeLimitTo4 -> True, ToPaVe -> True, FCE -> True]",
 "1/18 I \[Pi]^2 x (FV[q, mu] FV[q, nu] - MT[mu, nu] SP[q, q]) +
 1/12 I \[Pi]^2 x PaVe[0, {SP[q, q]}, {0, 0}] (4 FV[q, mu] FV[q, nu] -
-	MT[mu, nu] SP[q, q])"}
+	MT[mu, nu] SP[q, q])"},
+{"fcstTID-ID57","TID[(x SpinorUBarD[p].GAD[nu].SpinorUD[p] +
+	y SpinorUBarD[p].SpinorUD[p]) FVD[l, mu] FAD[l, l - p], l,
+SpinorChainEvaluate -> False, FCE -> True]",
+"1/2 (y Spinor[Momentum[p, D], 0, 1].Spinor[Momentum[p, D], 0, 1] +
+x Spinor[Momentum[p, D], 0, 1].GAD[nu].Spinor[Momentum[p, D], 0,
+	1]) FAD[l, l - p] FVD[p, mu]"}
 };
