@@ -98,6 +98,7 @@ Options[TID] = {
 	PaVeLimitTo4 							-> False,
 	PauliSimplify 							-> True,
 	Prefactor								-> 1,
+	SpinorChainEvaluate						-> True,
 	TimeConstrained 						-> 3,
 	ToPaVe									-> False,
 	UsePaVeBasis 							-> False
@@ -155,6 +156,8 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 		pavear 			= OptionValue[PaVeAutoReduce];
 		genpave 		= OptionValue[GenPaVe];
 
+		(* Multiply the input expression by the prefactor *)
+		t0 = OptionValue[Prefactor] t0;
 
 		If[ FreeQ[t0,q],
 			Return[t0]
