@@ -20,7 +20,9 @@ Tdec::usage = "Tdec[{q,mu}, {p}]; \
 Tdec[{{qi, mu}, {qj, nu}, ...}, {p1, p2, ...}] or \
 Tdec[exp, {{qi, mu}, {qj, nu}, ...}, {p1, p2, ...}] \
 calculates the tensorial decomposition formulas for Lorentzian integrals. \
-The more common ones are saved in TIDL.";
+The more common ones are saved in TIDL. \n
+Symmetrization of the tensor basis is done using Pak's algorithm described in \
+arXiv:1111.0868";
 
 UseParallelization::usage =
 "UseParallelization is an option of Tdec. When set to True, \
@@ -226,87 +228,6 @@ fullBasis[lis_List, moms_List, dim_] :=
 		res
 	];
 
-(* 	CCSymmetrize symmetrizes the tensor basis for multiloop (starting with 2 loops) tensor integrals.
-	We start with 2 loops since for 1-loop integrals the symmetrization is much simpler and can be done
-	inside TID	*)
-CCSymmetrize[ins_List, li_List, syms_List/;Length[syms]>0] :=
-	Block[ {gg, detPos, detPos2, nonsymPart, symPart,tmp,permGroup,
-			res, mt, seq, tmpList},
-		(* small cross check *)
-		If[ Signature[Flatten[syms]] === 0 || Complement[Flatten[syms], li] =!= {},
-			Message[Tdec::basis];
-			Abort[]
-		];
-
-		(*
-		Here one has to be careful; We can exchange the indices according to the symmetries,
-		but we are not allowed to change the overall ordering. Consider for example
-		{{1,0,0},{nu,mu,rho},{nu,rho}}
-		{{1,0,0},{rho,mu,nu},{nu,rho}}
-		The ordering {1,0,0} is fixed by the tensor structure, i.e. we cannot
-		change it to say {0,1,0}. However, we can change the ordering in the second list, so that {nu,mu,rho}
-		becomes identical to {rho,mu,nu} because of the symmetry under nu<->rho.
-
-		Since the number of symmetries can be in principle quite large, we employ the Cycles-notation.
-		*)
-
-		FCPrint[3, "Tdec: CCSymmetrize: Entering with ", {ins,li,syms}, "" , FCDoControl->tdecVerbose];
-
-
-		detPos[x_] :=
-			Flatten[First@Position[li, #] & /@ x];
-		detPos2[x_] :=
-			detPos /@ x;
-		gg = detPos2[syms];
-
-
-		(*
-			We need to take into account that the maximal permutation group might miss
-			some of the symmetries. That is, smaller subgroups should be considered as well.
-		*)
-
-		gg = Map[If[	Length[#]>2,
-						seq[Subsets[#,{2,Length[#]}]],
-						{#}]&,
-			gg] /. seq->Sequence;
-		(* We obtain different permutations, sort them and take the first one.*)
-
-		permGroup = PermutationGroup[Map[Cycles[{#}]&,First[gg]]];
-
-		If[	!IntegerQ[GroupOrder[permGroup]],
-			Message[Tdec::failmsg, "Failed to build the correct permutation group."];
-			Abort[]
-		];
-
-		FCPrint[3, "Tdec: CCSymmetrize: Permutation groups ", permGroup, "" , FCDoControl->tdecVerbose];
-
-		tmp = Sort[Permute[li,permGroup]];
-		tmpList = Transpose[{ins,#}]&/@tmp;
-		tmp = Transpose[{ins,First[tmp]}];
-
-		FCPrint[3, "Tdec: CCSymmetrize: Intermediate result ", tmp, "" , FCDoControl->tdecVerbose];
-
-		(* Of course we still can (and should) reorder groups of indices that belong to different tensors.
-		For example, in {{0, i3}, {0, i4}, {1, i1}, {2, i2}, {1, i5}, {2, i6}, {0, i7}, {0, i8}} it is ok
-		to write it as {{0,i3},{0,i4},{0,i7},{0,i8},{1,i1},{1,i5},{2,i2},{2,i6}}.
-		Notice that we respected the fact that {{0, i3}, {0, i4} and {0, i7}, {0, i8} correspond to
-		g^{i3 i4} an g^{i7 i8} respectively.*)
-
-		tmpList = Map[(# //. {a___, {0, x_}, {0, y_}, b___} :> {a, symmMT[{0, x}, {0, y}], b})&,tmpList];
-
-		tmpList = Map[Join[Sort[Cases2[#, symmMT]], Sort[# /. symmMT[__] -> Unevaluated[Sequence[]]]]&, tmpList];
-
-		tmpList = tmpList /. symmMT -> Sequence;
-
-		tmpList = Sort[tmpList];
-
-		res = First[tmpList];
-
-		FCPrint[3, "Tdec: CCSymmetrize: Leaving with ", res, "" , FCDoControl->tdecVerbose];
-
-		res
-	];
-
 	(*    Loop integrals without external vectors and with an odd tensor rank are zero    *)
 Tdec[_:1, li : {{_, _} ..}, {}, OptionsPattern[]] :=
 	If[ OptionValue[List] && !OptionValue[BasisOnly],
@@ -321,9 +242,10 @@ Tdec[exp_:1, {a_/;Head[a] =!=List, b_/;Head[b]=!=List}, pli_List/;FreeQ[pli,Opti
 
 Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]] :=
 	Block[ {tt, factor, dim, proli, nccli, ccli, pli,
-			eqli, neqli,  nttt,listlabel, fce, time, time1,
-			veqli, seqli, scqli, solu,ii,ex,ce,xy, optHead,
-			extMom,basisonly,multiLoop=False,lis,mlis,basis,multiLoopSyms={}},
+			eqli, neqli,  nttt, listlabel, fce, time, time1,
+			veqli, seqli, scqli, solu,ii,ex,ce,xy, optHead, tmp,
+			extMom, basisonly, multiLoop=False, lis, mlis, basis, multiLoopSyms={},
+			dummyHead1, dummyHead2, symRules},
 
 		dim         = OptionValue[Dimension];
 		listlabel	= OptionValue[List];
@@ -373,11 +295,12 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 
 		(* Abort decomposition if there are vanishing Gram determinants, unless
 		we have a 1-point function or were requested just to provide the tensor basis *)
+		tt=Apply[Times, Map[Pair[Momentum[#[[1]],dim], LorentzIndex[#[[2]],dim]]&, li]];
 		If[!basisonly && ppli=!={},
 			FCPrint[1, "Tdec: Checking Gram determinant...", FCDoControl->tdecVerbose];
 			If[	FCGramDeterminant[ppli,Dimension->dim]===0,
 				FCPrint[1, "Tensor decomposition with Tdec is not possible due to vanishing Gram determinants", FCDoControl->tdecVerbose];
-				tt=Apply[Times, Map[Pair[Momentum[#[[1]],dim], LorentzIndex[#[[2]],dim]]&, li]];
+
 				seqli={};
 				If[ fce,
 					tt = FeynCalcExternal[tt];
@@ -399,7 +322,8 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 		FCPrint[1, "Tdec: Generating the tensor basis", FCDoControl->tdecVerbose];
 		basis = fullBasis[lis,pli,dim];
 		FCPrint[1, "Tdec: Done generating the tensor basis, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tdecVerbose];
-		FCPrint[3, "Tdec: Non-symmetric tensor basis ",basis, FCDoControl->tdecVerbose];
+		FCPrint[3, "Tdec: Non-symmetric tensor basis: ",basis, FCDoControl->tdecVerbose];
+
 
 		FCPrint[1, "Tdec: Symmetrizing the tensor basis", FCDoControl->tdecVerbose];
 		time=AbsoluteTime[];
@@ -407,23 +331,27 @@ Tdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]]
 		If[!multiLoop,
 			(* symmetrizing the basis for 1-loop is really trivial...	*)
 			basis = (basis /. CC[a_, _] :> CC[Sort[a]]) // Collect[#, CC[__]] &,
-			If[multiLoopSyms=!={},
-				time1=AbsoluteTime[];
-				FCPrint[1, "Tdec: Applying CCSymmetrize", FCDoControl->tdecVerbose];
-				FCPrint[1, "Tdec: Need to check ", Length[Cases2[basis,CC]], " pieces", FCDoControl->tdecVerbose];
-				basis = (basis/. CC[x__] :> CC[CCSymmetrize[x, multiLoopSyms]]);
-				FCPrint[1, "Tdec: Done applying CCSymmetrize, timing: ", N[AbsoluteTime[] - time1, 4], FCDoControl->tdecVerbose];
 
-				time1=AbsoluteTime[];
-				FCPrint[1, "Tdec: Applying Collect", FCDoControl->tdecVerbose];
-				basis =  Collect[basis, CC[__]];
-				FCPrint[1, "Tdec: Done applying Collect, timing: ", N[AbsoluteTime[] - time1, 4], FCDoControl->tdecVerbose],
-				(*	a general multiloop integral doesn't necessarily has to have any symmetrices
-					in the indices	*)
-				basis = (basis/. CC[x__] :> CC[Transpose[{x}]])// Collect[#, CC[__]] &
-			]
+			FCPrint[1, "Tdec: Symmetrizing the basis using Pak's algorithm.", FCDoControl->tdecVerbose];
+			time1=AbsoluteTime[];
+			tmp = Collect2[Contract[basis tt], Pair, Head -> {dummyHead1, dummyHead2}, Factoring -> ExpandAll];
+			tmp = Cases[tmp, dummyHead2[syms_Plus, _] :> List@@syms, Infinity];
+			symRules = Map[Thread[Rule[#,#[[1]]]] &, tmp];
+			symRules = Flatten[symRules] // Union // ReplaceAll[#, Rule[a_, a_] :> Unevaluated[Sequence[]]] &;
+			FCPrint[1, "Tdec: Done symmetrizing the basis, timing: ", N[AbsoluteTime[] - time1, 4], FCDoControl->tdecVerbose];
+			FCPrint[1, "Tdec: Number of detected symmetry relations: ", Length[symRules], FCDoControl->tdecVerbose];
+
+
+			time1=AbsoluteTime[];
+			FCPrint[1, "Tdec: Applying Collect", FCDoControl->tdecVerbose];
+			basis =  Collect[basis /. Dispatch[symRules] /. CC[x__] :> CC[Transpose[{x}]], CC[__]];
+			FCPrint[1, "Tdec: Done applying Collect, timing: ", N[AbsoluteTime[] - time1, 4], FCDoControl->tdecVerbose]
 		];
 		FCPrint[1, "Tdec: Done symmetrizing the tensor basis, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tdecVerbose];
+
+		(*
+		Global`ZZZ = symRules;
+		Abort[];*)
 
 		(* if we were requested to provide only the symmetric tensor basis, we stop here *)
 		If[	basisonly,
