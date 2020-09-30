@@ -612,8 +612,13 @@ findInternalVertices[intEdges_List, candidates_List, signs_List] :=
 		];
 		(*];*)
 
-		res = Transpose[intVertices];
+		If[	intVertices=!={},
+			res = Transpose[intVertices],
+			res = {}
+		];
+
 		If[res=!={},
+
 			res = First[res]
 		];
 		FCPrint[3, "FCLoopBasisIntegralToGraph: findInternalVertices: Leaving with: ", res, FCDoControl->lbtgVerbose];
