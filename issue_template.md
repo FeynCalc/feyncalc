@@ -14,6 +14,6 @@
 
   ```Check the output of Import[FileNameJoin[{$UserBaseDirectory, "Kernel", "init.m"}], "String"]``` 
 
-*  <summary>Please provide a minimal working example that illustrates the problem and works on a fresh kernel. Please explain the difference between the current behavior and the expected behavior.</summary>    
+*  <summary>Please provide a minimal working example that illustrates the problem and works on a fresh kernel. The example should be provided either by writing the code (as `InputForm`!) directly in the issue text  or by attaching a Mathematica notebook. Please do not post code samples as screenshots, PDF files etc.: Those essentially require us to retype everything by hand, which is annoying and also time consuming. Please explain the difference between the current behavior and the expected behavior.</summary>    
 
   ```Paste your code here```
