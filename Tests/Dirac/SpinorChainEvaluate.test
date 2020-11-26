@@ -1,6 +1,6 @@
 
 
-(* :Title: DiracChainExplicit.test										*)
+(* :Title: SpinorChainEvaluate.test										*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -9,11 +9,11 @@
 	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Framework independent unit tests for DiracChainExplicit	*)
+(* :Summary:  Framework independent unit tests for SpinorChainEvaluate	*)
 
 (* ------------------------------------------------------------------------ *)
 
-Tests`Dirac`fcstDiracChainExplicit =
+Tests`Dirac`fcstSpinorChainEvaluate =
 ({
 {"fcstSpinorChainEvaluate-ID1", "SpinorChainEvaluate[0]", "0"},
 {"fcstSpinorChainEvaluate-ID2", "SpinorChainEvaluate[x]", "x"},
@@ -326,3 +326,8 @@ TemporalMomentum[p]])"},
 DiracSpinorNormalization\[Rule]\"Rest\"]", "-1"},
 {"fcstSpinorChainEvaluate-ID104", Null, "Null"}
 });
+
+Tests`Dirac`fcstAbortSpinorChainEvaluate = {
+{"fcstAbortSpinorChainEvaluate-ID1","CheckAbort[SpinorChainEvaluate[SpinorUBar[p,m].SpinorU[p+p3,m]], True]",
+	"True"}
+}

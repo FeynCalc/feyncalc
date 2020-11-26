@@ -2691,3 +2691,10 @@ FCSetDiracGammaScheme[\"BMHV\"]; tmp",
 "Spinor[Momentum[p, D], 0, 1] . DiracGamma[LorentzIndex[mu, D], D] \
 . DiracGamma[7] . Spinor[-Momentum[p, D], 0, 1]"}
 });
+
+Tests`Dirac`fcstAbortGordonSimplify = {
+{"fcstAbortGordonSimplify-ID1","CheckAbort[
+GordonSimplify[SpinorUBar[p1, m1].GS[p].SpinorU[p2 + p3, m2]], True]",
+	"True"}
+}
+

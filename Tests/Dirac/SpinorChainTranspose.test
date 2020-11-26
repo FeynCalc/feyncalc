@@ -101,3 +101,9 @@ FCE -> True]", "-Spinor[Momentum[p2, D], m2, 1].Spinor[Momentum[p1, D], m1, 1] =
 SpinorUBarD[p1, m1].SpinorUD[p2, m2]}, FCE -> True]", "{-Spinor[Momentum[p2, D], m2, 1].Spinor[Momentum[p1, D], m1, 1],
 Spinor[Momentum[p1, D], m1, 1].Spinor[Momentum[p2, D], m2, 1]}"}
 });
+
+Tests`Dirac`fcstAbortSpinorChainTranspose = {
+{"fcstAbortSpinorChainTranspose-ID1","CheckAbort[SpinorChainTranspose[SpinorVBar[p1, m1].SpinorU[p2 + p3, m2]], True]",
+	"True"}
+}
+

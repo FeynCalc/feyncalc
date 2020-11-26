@@ -79,32 +79,6 @@ Spinor[Momentum[p1], m1, 1].GA[l1_].GA[rho].GA[
 	l2_].(1/2 + 1/2 la2 GA[5]).Spinor[Momentum[p4], m4, 1]
 ]",
 "True"},
-{"fcstSpinorChainTrick-ID10",
-"SpinorChainTrick[
-z (8 Spinor[Momentum[p - q], m1, 1].GA[b].Spinor[Momentum[p], m1,
-		1] (2 FV[p, a] - FV[q, a]) +
-	8 Spinor[Momentum[p - q], m1, 1].GA[a].Spinor[Momentum[p], m1,
-		1] (2 FV[p, b] - FV[q, b]) +
-	8 Spinor[Momentum[p - q], m1, 1].GS[q].Spinor[Momentum[p], m1,
-		1] MT[a,
-		b]) (4 Spinor[Momentum[p + q], m2, 1].GA[b].Spinor[
-		Momentum[p], m2, 1] (2 FV[p, a] + FV[q, a]) +
-	4 Spinor[Momentum[p + q], m2, 1].GA[a].Spinor[Momentum[p], m2,
-		1] (2 FV[p, b] + FV[q, b]) -
-	m2 Spinor[Momentum[p + q], m2, 1].Spinor[Momentum[p], m2, 1] MT[
-		a, b] + 4 Spinor[Momentum[p + q], m2, 1].GS[q].Spinor[
-		Momentum[p], m2, 1] MT[a, b])] //
-FCCanonicalizeDummyIndices[#,
-	LorentzIndexNames -> {mu, nu}] & // FCE",
-"224*m1*m2*z*Spinor[Momentum[p - q], m1, 1].Spinor[Momentum[p], m1, 1]*
-Spinor[Momentum[p + q], m2, 1].Spinor[Momentum[p], m2, 1] +
-240*m2*z*Spinor[Momentum[p + q], m2, 1].Spinor[Momentum[p], m2, 1]*
-Spinor[Momentum[p - q], m1, 1].GS[q].Spinor[Momentum[p], m1, 1] +
-64*z*Spinor[Momentum[p - q], m1, 1].GS[q].Spinor[Momentum[p], m1, 1]*
-Spinor[Momentum[p + q], m2, 1].GS[q].Spinor[Momentum[p], m2, 1] +
-64*z*Spinor[Momentum[p - q], m1, 1].GA[mu].Spinor[Momentum[p], m1,
-	1]*Spinor[Momentum[p + q], m2, 1].GA[mu].Spinor[Momentum[p], m2,
-	1]*(4*SP[p, p] - SP[q, q])"},
 {"fcstSpinorChainTrick-ID11",
 "MatchQ[SpinorChainTrick[
 SpinorUBar[p].GA[mu, nu].SpinorV[q] DiracTrace[

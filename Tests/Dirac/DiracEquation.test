@@ -246,17 +246,6 @@ D]]*Spinor[-Momentum[p, D], m, 1]"},
 "m*Spinor[-Momentum[p, D], m, 1] . DiracGamma[CartesianMomentum[r, -1 + \
 D], D] + 2*CartesianPair[CartesianMomentum[p, -1 + D], CartesianMomentum[r, -1 + \
 D]]*Spinor[-Momentum[p, D], m, 1]"},
-{"fcstDiracEquation-ID57",
-"DiracEquation[
-Spinor[Momentum[pE2, D], 0, 1].GAD[mu].GA[
-	7].Spinor[-Momentum[pE1, D], 0, 1] Spinor[
-	Momentum[pB, D] - Momentum[pE1, D] - Momentum[pE2, D], 0, 1].GSD[
-	pE1].GSD[pE1].GAD[mu].GA[7].Spinor[Momentum[pB, D], mB, 1]]",
-"Spinor[Momentum[pB, D] - Momentum[pE1, D] - Momentum[pE2, D], 0,
-1].DiracGamma[LorentzIndex[mu, D], D].DiracGamma[7].Spinor[
-Momentum[pB, D], mB, 1] Spinor[Momentum[pE2, D], 0, 1].DiracGamma[
-LorentzIndex[mu, D], D].DiracGamma[7].Spinor[-Momentum[pE1, D], 0,
-1] Pair[Momentum[pE1, D], Momentum[pE1, D]]"},
 {"fcstDiracEquation-ID58",
 "DiracEquation[
 Spinor[Momentum[p1, D], m1, 1].GAD[mu].GA[7].Spinor[Momentum[p2, D],
@@ -273,4 +262,9 @@ m1 Spinor[-Momentum[p1, D], m1, 1].GAD[mu].GA[
 {"fcstDiracEquation-ID60","DiracEquation[{GS[p].SpinorU[p, m],
 GS[p].SpinorV[p, m]}, FCE -> True]",
 "{m Spinor[Momentum[p], m, 1], -m Spinor[-Momentum[p], m, 1]}"}
+};
+
+Tests`Dirac`fcstAbortDiracEquation = {
+{"fcstAbortDiracEquation-ID1","CheckAbort[DiracEquation[GS[2 p1].SpinorVBar[2 p1, m]], True]",
+	"True"}
 }

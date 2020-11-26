@@ -138,3 +138,8 @@ MassFu[Index[I3Gen, 2], SUNFIndex[Col2]], 1]"},
 "ComplexConjugate[fun[I, a_, b_]]",
 	"fun[-I, a_, b_]"}
 };
+
+Tests`Feynman`fcstAbortComplexConjugate = {
+{"fcstAbortComplexConjugate-ID1","CheckAbort[ComplexConjugate[SpinorUBar[k].GA[mu].(1 - la GA[5]).SpinorU[p+p3, m]],True]",
+	"True"}
+};

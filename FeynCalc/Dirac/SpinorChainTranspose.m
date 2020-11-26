@@ -125,6 +125,15 @@ SpinorChainTranspose[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 		diracObjects = Cases[tmp+null1+null2, dsHead[_], Infinity]//Sort//DeleteDuplicates;
 
 		FCPrint[3,"SpinorChainTranspose: diracObjects: ", diracObjects , FCDoControl->sctrVerbose];
+
+		time=AbsoluteTime[];
+		FCPrint[1, "SpinorChainTranspose: Checking the spinor syntax.", FCDoControl->sctrVerbose];
+		If[	FeynCalc`Package`spinorSyntaxCorrectQ[diracObjects]=!=True,
+			Message[SpinorChainTranspose::failmsg, "The input contains Spinor objects with incorrect syntax."];
+			Abort[]
+		];
+		FCPrint[1,"SpinorChainTranspose: Checks done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->sctrVerbose];
+
 		FCPrint[1, "SpinorChainTranspose: Trasnposing spinor chains.", FCDoControl->sctrVerbose];
 
 		time=AbsoluteTime[];

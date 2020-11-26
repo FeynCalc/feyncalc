@@ -20,6 +20,10 @@ DiracEquation::usage =
 "DiracEquation[exp] applies the Dirac equation without \
 expanding exp. If expansions are necessary, use DiracSimplify.";
 
+DiracEquation::failmsg =
+"Error! DiracEquation has encountered a fatal problem and must abort the computation. \
+The problem reads: `1`";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -29,10 +33,12 @@ Begin["`DiracEquation`Private`"]
 
 HoldDOT::usage="";
 tmp::usage="";
+deqVerbose::usage="";
 
 Options[DiracEquation] = {
-	FCI -> False,
-	FCE -> False
+	FCI 		-> False,
+	FCE 		-> False,
+	FCVerbose 	-> False
 };
 
 DiracEquation[a_ == b_, opts:OptionsPattern[]] :=
@@ -42,7 +48,17 @@ DiracEquation[expr_List, opts:OptionsPattern[]]:=
 	DiracEquation[#, opts]&/@expr;
 
 DiracEquation[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
-	Block[{ex,res},
+	Block[{ex, res, time},
+
+		If [OptionValue[FCVerbose]===False,
+			deqVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				deqVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		FCPrint[1,"DiracEquation: Entering.", FCDoControl->deqVerbose];
+		FCPrint[3,"DiracEquation: Entering with: ", expr, FCDoControl->deqVerbose];
 
 		If[	!OptionValue[FCI],
 			ex  = FCI[expr],
@@ -54,11 +70,24 @@ DiracEquation[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 			Return[ex];
 		];
 
+		time=AbsoluteTime[];
+		FCPrint[1, "DiracEquation: Checking the spinor syntax.", FCDoControl->deqVerbose];
+		If[	FeynCalc`Package`spinorSyntaxCorrectQ[ex]=!=True,
+			Message[DiracEquation::failmsg, "The input contains Spinor objects with incorrect syntax."];
+			Abort[]
+		];
+		FCPrint[1,"DiracEquation: Checks done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->deqVerbose];
+
+
+
 		res  = DotSimplify[FixedPoint[diraceq,ex,5]/.PairContract->Pair, Expanding->False];
 
 		If[ OptionValue[FCE],
 			res = FCE[res]
 		];
+
+		FCPrint[1,"DiracEquation: Leaving.", FCDoControl->deqVerbose];
+		FCPrint[3,"DiracEquation: Leaving with: ", res, FCDoControl->deqVerbose];
 
 		res
 

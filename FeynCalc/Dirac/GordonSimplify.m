@@ -117,11 +117,21 @@ GordonSimplify[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 				dsHead[DOT[a_Spinor,b___,c_Spinor]]/;!MatchQ[holdDOT[a,b,c],chainPatterns] :> DOT[a,b,c]
 		};
 
-		FCPrint[3, "GordonSimplify: After Final selection: ", tmp, FCDoControl->gsVerbose];
+		FCPrint[3, "GordonSimplify: After the final selection: ", tmp, FCDoControl->gsVerbose];
 
 
 		diracObjects = Cases[tmp+null1+null2, dsHead[_], Infinity]//Sort//DeleteDuplicates;
-		FCPrint[3,"GordonSimplify: diracObjects: ", diracObjects , FCDoControl->gsVerbose];
+		FCPrint[3, "GordonSimplify: diracObjects: ", diracObjects , FCDoControl->gsVerbose];
+
+		time=AbsoluteTime[];
+		FCPrint[1, "GordonSimplify: Checking the spinor syntax.", FCDoControl->gsVerbose];
+		If[	FeynCalc`Package`spinorSyntaxCorrectQ[diracObjects]=!=True,
+			Message[GordonSimplify::failmsg, "The input contains Spinor objects with incorrect syntax."];
+			Abort[]
+		];
+		FCPrint[1,"GordonSimplify: Checks done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->gsVerbose];
+
+
 
 		FCPrint[1, "GordonSimplify: Rewriting suitable products of spinor chains.", FCDoControl->gsVerbose];
 		time=AbsoluteTime[];

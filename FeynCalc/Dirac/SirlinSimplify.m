@@ -121,6 +121,14 @@ SirlinSimplify[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 		diracObjects = Cases[tmp+null1+null2, dsHead[_], Infinity]//Sort//DeleteDuplicates;
 		FCPrint[3,"SirlinSimplify: diracObjects: ", diracObjects , FCDoControl->sisVerbose];
 
+		time=AbsoluteTime[];
+		FCPrint[1, "SirlinSimplify: Checking the spinor syntax.", FCDoControl->sisVerbose];
+		If[	FeynCalc`Package`spinorSyntaxCorrectQ[diracObjects]=!=True,
+			Message[SirlinSimplify::failmsg, "The input contains Spinor objects with incorrect syntax."];
+			Abort[]
+		];
+		FCPrint[1,"SirlinSimplify: Checks done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->sisVerbose];
+
 
 		FCPrint[1, "SirlinSimplify: Simplifying products of spinor chains.", FCDoControl->sisVerbose];
 		time=AbsoluteTime[];

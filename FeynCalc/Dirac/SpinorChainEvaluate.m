@@ -108,6 +108,14 @@ SpinorChainEvaluate[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 
 		FCPrint[3,"SpinorChainEvaluate: diracObjects: ", diracObjects , FCDoControl->spcheVerbose];
 
+		time=AbsoluteTime[];
+		FCPrint[1, "SpinorChainEvaluate: Checking the spinor syntax.", FCDoControl->spcheVerbose];
+		If[	FeynCalc`Package`spinorSyntaxCorrectQ[diracObjects]=!=True,
+			Message[SpinorChainEvaluate::failmsg, "The input contains Spinor objects with incorrect syntax."];
+			Abort[]
+		];
+		FCPrint[1,"SpinorChainEvaluate: Checks done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->spcheVerbose];
+
 
 		FCPrint[1, "SpinorChainEvaluate: Evaluating suitable spinor chains.", FCDoControl->spcheVerbose];
 		time=AbsoluteTime[];

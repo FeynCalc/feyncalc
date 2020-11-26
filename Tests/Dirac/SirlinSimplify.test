@@ -286,3 +286,10 @@ SpinorUBar[p3, m3].GA[nu, mu, 7].SpinorU[p1, m1] SpinorUBar[p4,
 4 Spinor[Momentum[p3], m3, 1].GA[7].Spinor[Momentum[p1], m1,
 	1] Spinor[Momentum[p4], m4, 1].GA[6].Spinor[Momentum[p2], m2, 1]}"}
 });
+
+Tests`Dirac`fcstAbortSirlinSimplify = {
+{"fcstAbortSirlinSimplify-ID1","CheckAbort[
+SirlinSimplify[SpinorUBar[p3, m3].GA[mu, rho, nu, 6].SpinorU[p1, m1] SpinorUBar[p4,m4].GA[mu, tau, nu, 6].SpinorU[p2 + p5, m2]], True]",
+	"True"}
+}
+
