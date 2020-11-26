@@ -102,13 +102,18 @@ DiracChainJoin[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 				DiracSigmaExplicit->False, LorentzIndex->False, Spinor->False, DiracGamma->False, DiracChain->True,
 				Factoring -> OptionValue[Factoring]];
 			diracObjects = Cases[tmp+null1+null2, dsHead[_], Infinity]//Sort//DeleteDuplicates;
-
 			FCPrint[1, "DiracChainJoin: Done isolating spinor chains, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dchjVerbose];
+
 			FCPrint[3, "DiracChainJoin: After FCDiracIsolate ", tmp, FCDoControl->dchjVerbose];
-
-
-
 			FCPrint[3,"DiracChainJoin: diracObjects: ", diracObjects , FCDoControl->dchjVerbose];
+
+			time=AbsoluteTime[];
+			FCPrint[1, "DiracChainJoin: Checking the spinor syntax.", FCDoControl->dchjVerbose];
+			If[	FeynCalc`Package`spinorSyntaxCorrectQ[diracObjects]=!=True,
+				Message[DiracChainJoin::failmsg, "The input contains Spinor objects with incorrect syntax."];
+				Abort[]
+			];
+			FCPrint[1,"DiracChainJoin: Checks done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->dchjVerbose];
 
 
 			FCPrint[1, "DiracChainJoin: Simplifying Dirac chains.", FCDoControl->dchjVerbose];
@@ -133,6 +138,17 @@ DiracChainJoin[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 
 			(*Fast mode*)
 			FCPrint[1, "DiracChainJoin: Using the fast mode.", FCDoControl->dchjVerbose];
+
+
+			time=AbsoluteTime[];
+			FCPrint[1, "DiracChainJoin: Checking the spinor syntax.", FCDoControl->dchjVerbose];
+			If[	FeynCalc`Package`spinorSyntaxCorrectQ[ex]=!=True,
+				Message[DiracChainJoin::failmsg, "The input contains Spinor objects with incorrect syntax."];
+				Abort[]
+			];
+			FCPrint[1,"DiracChainJoin: Checks done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->dchjVerbose];
+
+
 			res = diracChainEval[ex/. DOT->holdDOT] /.  diracChainEval -> Identity /. holdDOT->DOT ;
 			FCPrint[3, "DiracChainJoin: Result of the evaluation: ", res, FCDoControl->dchjVerbose]
 		];

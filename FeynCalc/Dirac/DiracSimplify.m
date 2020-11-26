@@ -33,6 +33,7 @@ The problem reads: `1`"
 Begin["`Package`"]
 
 diracChainContract;
+spinorSyntaxCorrectQ;
 
 End[]
 
@@ -511,6 +512,19 @@ diracChainContract[ex_]:=
 	CartesianPairContract -> CartesianPair /. PairContract -> Pair
 	)/; !FreeQ2[ex, {Pair,CartesianPair,PairContract,CartesianPairContract}];
 
+spinorSyntaxCorrectQ[ex_]:=
+	Block[{spinors, correct, check, null1, null2},
+		correct=True;
+		spinors = Cases2[ex+null1+null2,Spinor];
+		spinors = MomentumExpand[spinors];
+		If[	spinors=!={},
+			check = MatchQ[#,Spinor[s_. Momentum[p_/;Head[p]=!=Plus,dim_:4],__]/;(MemberQ[{1,-1},s])]&/@spinors;
+			If[	Union[check]=!={True},
+				correct=False
+			]
+		];
+		correct
+	];
 
 FCPrint[1,"DiracSimplify.m loaded."];
 End[]

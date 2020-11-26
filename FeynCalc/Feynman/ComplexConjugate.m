@@ -98,6 +98,13 @@ ComplexConjugate[expr_/;!MemberQ[{List,Equal,Rule,RuleDelayed},Head[expr]], Opti
 		FCPrint[1,"ComplexConjugate: Done applying FCMatrixIsolate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->ccjVerbose];
 		FCPrint[3,"ComplexConjugate: After FCMatrixIsolate: ", ex, FCDoControl->ccjVerbose];
 
+		time=AbsoluteTime[];
+		FCPrint[1, "ComplexConjugate: Checking the spinor syntax.", FCDoControl->ccjVerbose];
+		If[	FeynCalc`Package`spinorSyntaxCorrectQ[ex]=!=True,
+			Message[FermionSpinSum::failmsg, "The input contains Spinor objects with incorrect syntax."];
+			Abort[]
+		];
+
 		(*
 			If the matrix structure of the expression is too convoluted, we need to redo the isolation after applying
 			DotSimplify (this time with Expanding set to True)

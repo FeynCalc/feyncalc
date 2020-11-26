@@ -459,20 +459,22 @@ MT[al,tau] MT[be,rho]]", "True"}
 
 
 
-Tests`Dirac`fcstDiracSimplifyDotWarnings = {
-{"fcstDiracSimplifyDotWarnings-ID1","CheckAbort[DiracSimplify[GA[a] GA[b],FCCheckSyntax->True],True]",
+Tests`Dirac`fcstDiracSimplifyAbort = {
+{"fcstDiracSimplifyAbort-ID1","CheckAbort[DiracSimplify[GA[a] GA[b],FCCheckSyntax->True],True]",
 	"True"},
-{"fcstDiracSimplifyDotWarnings-ID2","CheckAbort[DiracSimplify[GA[a, b] GA[c],FCCheckSyntax->True],True]",
+{"fcstDiracSimplifyAbort-ID2","CheckAbort[DiracSimplify[GA[a, b] GA[c],FCCheckSyntax->True],True]",
 	"True"},
-{"fcstDiracSimplifyDotWarnings-ID3","CheckAbort[DiracSimplify[GA[a, b] GA[c, d],FCCheckSyntax->True],True]",
+{"fcstDiracSimplifyAbort-ID3","CheckAbort[DiracSimplify[GA[a, b] GA[c, d],FCCheckSyntax->True],True]",
 	"True"},
-{"fcstDiracSimplifyDotWarnings-ID4","CheckAbort[DiracSimplify[SUNT[a] SUNT[b],FCCheckSyntax->True],True]",
+{"fcstDiracSimplifyAbort-ID4","CheckAbort[DiracSimplify[SUNT[a] SUNT[b],FCCheckSyntax->True],True]",
 	"True"},
-{"fcstDiracSimplifyDotWarnings-ID5","CheckAbort[DiracSimplify[SUNT[a, b] SUNT[c],FCCheckSyntax->True],True]",
+{"fcstDiracSimplifyAbort-ID5","CheckAbort[DiracSimplify[SUNT[a, b] SUNT[c],FCCheckSyntax->True],True]",
 	"True"},
-{"fcstDiracSimplifyDotWarnings-ID6","CheckAbort[DiracSimplify[SUNT[a, b] SUNT[c, d],FCCheckSyntax->True],True]",
+{"fcstDiracSimplifyAbort-ID6","CheckAbort[DiracSimplify[SUNT[a, b] SUNT[c, d],FCCheckSyntax->True],True]",
 	"True"},
-{"fcstDiracSimplifyDotWarnings-ID7","CheckAbort[DiracSimplify[(GA[a] + M) GA[b],FCCheckSyntax->True],True]",
+{"fcstDiracSimplifyAbort-ID7","CheckAbort[DiracSimplify[(GA[a] + M) GA[b],FCCheckSyntax->True],True]",
+	"True"},
+{"fcstDiracSimplifyAbort-ID8","CheckAbort[DiracSimplify[GS[2 p1].SpinorVBar[2 p1, m]], True]",
 	"True"}
 }
 

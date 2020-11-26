@@ -101,13 +101,18 @@ FCFADiracChainJoin[expr_, OptionsPattern[]] :=
 			DiracSigmaExplicit->False, LorentzIndex->False, Spinor->False, DiracGamma->False, DiracChain->True,
 			Factoring -> False, Expanding->False];
 		diracObjects = Cases[tmp+null1+null2, dsHead[_], Infinity]//Sort//DeleteDuplicates;
-
 		FCPrint[1, "FCFADiracChainJoin: Done isolating spinor chains, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dchjVerbose];
 		FCPrint[3, "FCFADiracChainJoin: After FCDiracIsolate ", tmp, FCDoControl->dchjVerbose];
 
-
-
 		FCPrint[3,"FCFADiracChainJoin: diracObjects: ", diracObjects , FCDoControl->dchjVerbose];
+
+		time=AbsoluteTime[];
+		FCPrint[1, "FermionSpinSum: Checking the spinor syntax.", FCDoControl->dchjVerbose];
+		If[	FeynCalc`Package`spinorSyntaxCorrectQ[diracObjects]=!=True,
+			Message[FCFADiracChainJoin::failmsg, "The input contains Spinor objects with incorrect syntax."];
+			Abort[]
+		];
+		FCPrint[1,"FermionSpinSum: Checks done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->dchjVerbose];
 
 		If[	!FreeQ[diracObjects,FeynArts`IndexSum],
 			Message[FCFADiracChainJoin::indexsum];

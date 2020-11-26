@@ -180,3 +180,14 @@ Lor2] (C1 SDF[Col5, Col8] SDF[Col7, colInS] +
 	C1 SDF[Col6, Col8] SDF[colOutB, colOutS]) SUNTF[{Glu5}, Col5,
 Col6] SUNTF[{Glu5}, colInB, Col7]"}
 };
+
+
+Tests`Feynman`fcstAbortFCFADiracChainJoin = {
+{"fcstAbortFCFADiracChainJoin-ID1","CheckAbort[FCFADiracChainJoin[
+DCHN[Spinor[-Momentum[2 p1], me, 1], Dir1] DCHN[
+Spinor[-Momentum[p2], me, 1], Dir2] DCHN[me + GS[-k1 + p2], Dir3,
+Dir4] DCHN[GS[Polarization[k1, -I, Transversality -> True]], Dir2,
+Dir4] DCHN[GS[Polarization[k2, -I, Transversality -> True]], Dir1,
+Dir3]],True]",
+	"True"}
+};

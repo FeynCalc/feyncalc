@@ -25,8 +25,20 @@ If[	$OnlySubTest=!="",
 	Remove[testNames]
 ];
 
+stringCompare[a_,b_]:=If[ToString[a]===ToString[b],True,False];
+
+stringCompareIgnore[_,_]:=
+	True;
+
 FCClearScalarProducts[];
 ClearAll[M];
 
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
-	Join@@(ToExpression/@Names["Tests`Feynman`*"])];
+	Join@@(ToExpression/@Select[Names["Tests`Feynman`*"], !StringMatchQ[#, "*fcstAbort*"] &])];
+
+If[ Names["Tests`Feynman`fcstAbort*"]=!={},
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],(#[[4]]),testID->#[[1]],
+		MessagesEquivalenceFunction->stringCompareIgnore]&,
+		Join@@(ToExpression/@Names["Tests`Feynman`fcstAbort*"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test
+];

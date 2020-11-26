@@ -29,6 +29,10 @@ FermionSpinSum::fcctleft =
 "Warning! The output contains structures wrapped into FCChargeConjugateTransposed. \
 Those must necessarily be simplified before the computation of Dirac traces.";
 
+FermionSpinSum::failmsg =
+"Error! FermionSpinSum encountered a fatal problem and must abort the computation. \
+The problem reads: `1`"
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -90,6 +94,14 @@ FermionSpinSum[expr_, OptionsPattern[]] :=
 
 		time=AbsoluteTime[];
 		FCPrint[1, "FermionSpinSum: Applying the spin sum formula.", FCDoControl->fssVerbose];
+
+		time=AbsoluteTime[];
+		FCPrint[1, "FermionSpinSum: Checking the spinor syntax.", FCDoControl->fssVerbose];
+		If[	FeynCalc`Package`spinorSyntaxCorrectQ[ex]=!=True,
+			Message[FermionSpinSum::failmsg, "The input contains Spinor objects with incorrect syntax."];
+			Abort[]
+		];
+		FCPrint[1,"FermionSpinSum: Checks done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fssVerbose];
 
 		ex = ex //. {
 		(* Product of two spinor chains, Dirac spinors *)
