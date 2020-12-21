@@ -50,9 +50,11 @@ FCAttachTypesettingRule::usage=
 "FCAttachTypesettingRules[expr, ...] attaches a specific TraditionalForm \
 typesetting rule to expr. It doesn't change any properties of expr apart \
 from adding a FormatValue with a MakeBoxes rule. Following choices are possible \n
-FCAttachTypesettingRule[expr_, str]
+FCAttachTypesettingRule[expr, str]
+FCAttachTypesettingRule[expr, FormBox[...]]
 FCAttachTypesettingRules[expr, {SubscriptBox, var, sub}]
 FCAttachTypesettingRules[expr, {SuperscriptBox, var, sup}]
+FCAttachTypesettingRules[expr, {OverscriptBox, var, ov}]
 FCAttachTypesettingRules[expr, {SubsuperscriptBox, var, sub, sup}]\n
 Use FCRemoveTypesettingRules to remove all typesetting rules attached to expr.";
 
@@ -432,12 +434,19 @@ FCAttachTypesettingRule[expr_, {SuperscriptBox, var_, sup_}] :=
 	expr /: MakeBoxes[expr, TraditionalForm] :=
 		SuperscriptBox[ToString[var], ToString[sup]];
 
+FCAttachTypesettingRule[expr_, {OverscriptBox, var_, ovr_}] :=
+	expr /: MakeBoxes[expr, TraditionalForm] :=
+		OverscriptBox[ToString[var], ToString[ovr]];
+
 FCAttachTypesettingRule[expr_, {SubsuperscriptBox, var_, sub_, sup_}] :=
 	expr /: MakeBoxes[expr, TraditionalForm] :=
 		SubsuperscriptBox[ToString[var], ToString[sub], ToString[sup]];
 
 FCAttachTypesettingRule[expr_, obs_String] :=
 	expr /: MakeBoxes[expr, TraditionalForm] := obs;
+
+FCAttachTypesettingRule[expr_, fbox_FormBox] :=
+	expr /: MakeBoxes[expr, TraditionalForm] := fbox;
 
 FCAntiSymmetrize[x_,v_List] :=
 	Block[{su},
