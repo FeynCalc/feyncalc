@@ -105,7 +105,7 @@ feynmanJoin[a_, b_, var_]:=
 
 		FCPrint[4,"FCFeynmanParameterJoin: feynmanJoin: Entering with: ", {a,b}, FCDoControl->fcfpjVerbose];
 
-		{gfad,pref,vars} = FCSymanzikPolynomials[a b,  lmoms, "FeynmanParameterJoin" -> True,
+		{gfad,pref,vars} = FCFeynmanPrepare[a b,  lmoms, FCFeynmanParameterJoin -> True,
 				FinalSubstitutions -> optFinalSubstitutions, Indexed->optIndexed,
 				Names -> var, Factoring -> optFactoring];
 

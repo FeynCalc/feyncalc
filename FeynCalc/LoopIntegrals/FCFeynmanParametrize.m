@@ -18,7 +18,7 @@
 
 FCFeynmanParametrize::usage =
 "FCFeynmanParametrize[int,{q1,q2,...}] introduces Feynman parameters for the \
-scalar multi-loop integral int. Tensor integrals are not supported. The function \
+scalar multi-loop integral int.  The function \
 returns {fpInt,pref,vars}, where fpInt is the integrand without the prefactor, \
 pref is the prefactor free of Feynman parameters and vars is the list of integration \
 variables. The overall Dirac delta in the integrand is omitted unless the option \
@@ -47,10 +47,13 @@ Options[FCFeynmanParametrize] = {
 	FCI						-> False,
 	FCReplaceD				-> {},
 	FCVerbose				-> False,
+	(*Factoring 				-> {Factor2, 5000},*)
 	FinalSubstitutions		-> {},
 	Indexed					-> True,
 	Names					-> FCGV["x"],
+	Method					-> "Feynman",
 	Simplify				-> False,
+	(*TimeConstrained 		-> 3,*)
 	Variables				-> {}
 };
 
@@ -63,12 +66,14 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 	Block[{	res, optFinalSubstitutions, dim, uPoly, fPoly, pows, mat, powsT, propPowers,
 			propPowersHat, propPowersTilde, ppSymbols, ppSymbolsRule,
 			denPowers, zeroPowerProps, numPowers, numVars, zeroDenVars,
-			nM,nLoops,fPow,pref,fpInt, fpPref, optFCReplaceD, vars, optVariavbles, aux, ex, Q, J},
+			nM,nLoops,fPow,pref,fpInt, fpPref, optFCReplaceD, vars, optVariavbles,
+			aux, ex, Q, J, tensorPart, tensorRank, optMethod},
 
 		optFinalSubstitutions	= OptionValue[FinalSubstitutions];
 		dim						= OptionValue[Dimension];
 		optFCReplaceD			= OptionValue[FCReplaceD];
 		optVariavbles			= OptionValue[Variables];
+		optMethod				= OptionValue[Method];
 
 		If [OptionValue[FCVerbose]===False,
 			fcfpVerbose=$VeryVerbose,
@@ -91,11 +96,11 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 			(*Cartesian integral *)
 			!FreeQ[ex,Momentum] && !FreeQ[ex,CartesianMomentum],
 			(*Mixed integral*)
-			Message[FCSymanzikPolynomials::failmsg,"Integrals that simultaneously depend on Lorentz and Cartesian vectors are not supported."];
+			Message[FCFeynmanParametrize::failmsg,"Integrals that simultaneously depend on Lorentz and Cartesian vectors are not supported."];
 			Abort[]
 		];
 
-		{uPoly, fPoly, pows, mat, Q, J} = FCSymanzikPolynomials[ex,lmoms, FCI->True,
+		{uPoly, fPoly, pows, mat, Q, J, tensorPart, tensorRank} = FCFeynmanPrepare[ex,lmoms, FCI->True,
 			FinalSubstitutions->OptionValue[FinalSubstitutions], Names->OptionValue[Names], Indexed->OptionValue[Indexed]];
 
 
@@ -109,6 +114,7 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 		FCPrint[1,"FCFeynmanParametrize: pows: ", pows, FCDoControl->fcfpVerbose];
 		FCPrint[1,"FCFeynmanParametrize: Number of loops: ", nLoops, FCDoControl->fcfpVerbose];
 		FCPrint[1,"FCFeynmanParametrize: Sum of propagator powers: ", nM, FCDoControl->fcfpVerbose];
+		FCPrint[1,"FCFeynmanParametrize: Tensor part: ", tensorPart, FCDoControl->fcfpVerbose];
 
 		propPowers 	= Last[powsT];
 
@@ -170,7 +176,11 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 			fpPref = 1
 		];
 
-		fpInt =  Power[uPoly,fPow - dim/2]/Power[fPoly,fPow];
+		If[	tensorPart=!=1,
+			tensorPart = tensorPart /. FCGV["F"] -> fPoly;
+		];
+
+		fpInt =  Power[uPoly,fPow - dim/2 - tensorRank]/Power[fPoly,fPow]*tensorPart;
 
 		FCPrint[1,"FCFeynmanParametrize: fpPref: ", fpPref, FCDoControl->fcfpVerbose];
 		FCPrint[1,"FCFeynmanParametrize: pref: ", pref, FCDoControl->fcfpVerbose];
@@ -251,6 +261,10 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 		If[OptionValue[Simplify],
 			fpInt	= Simplify[fpInt, Assumptions->OptionValue[Assumptions]];
 			pref	= Simplify[pref, Assumptions->OptionValue[Assumptions]]
+		];
+
+		If[	Head[fpInt]=!=Times,
+			fpInt = Together[fpInt]
 		];
 
 		aux		= FCProductSplit[fpInt, vars];
