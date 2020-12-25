@@ -3198,13 +3198,13 @@ Cell[TextData[{
  CellID->1822975320],
 
 Cell[TextData[{
- Cell[TextData[ButtonBox["FeynmanParametrize",
+ Cell[TextData[ButtonBox["FCFeynmanParametrize",
   BaseStyle->"Link",
-  ButtonData->"paclet:FeynCalc/ref/FeynmanParametrize"]], 
+  ButtonData->"paclet:FeynCalc/ref/FCFeynmanParametrize"]], 
   "InlineFunctionSans"],
  " ",
  StyleBox["\[LongDash]", "GuideEmDash"],
- " introduces Feynman parametrization for some 1-loop integrals"
+ " introduces Feynman parametrization for multi-loop integrals"
 }], "GuideText",
  CellID->727371440],
 
@@ -4405,7 +4405,7 @@ Cell["Related Links", "GuideRelatedLinksSection",
  CellID->415694148]
 },
 WindowSize->{1194, 889},
-WindowMargins->{{Automatic, 193}, {34, Automatic}},
+WindowMargins->{{Automatic, 630}, {Automatic, 13}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 TrackCellChangeTimes->False,

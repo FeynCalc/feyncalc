@@ -162,11 +162,6 @@ Cell["See Also", "SeeAlsoSection",
  CellID->1255426704],
 
 Cell[TextData[{
- ButtonBox["FeynmanParametrize",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/FeynmanParametrize",
-  ButtonNote->"FeynmanParametrize"],
- ", ",
  ButtonBox["CalculateCounterTerm",
   BaseStyle->"Link",
   ButtonData:>"paclet:FeynCalc/ref/CalculateCounterTerm",
@@ -278,13 +273,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{680, Automatic}, {Automatic, 90}},
+WindowMargins->{{670, Automatic}, {Automatic, 82}},
 Visible->True,
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]

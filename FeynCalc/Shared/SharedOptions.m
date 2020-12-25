@@ -126,24 +126,6 @@ integer, all the debugging information inside the function will be given accordi
 to the value of FCVerbose, while the debugging output of other functions will \
 be still governed by the value of $VeryVerbose";
 
-FCIntegrate::usage=
-"FCIntegrate is an option of certain Feynman integral related functions. \
-It determines which integration function is used to evaluate analytic \
-integrals. Possible settings include Integrate, NIntegrate,
-(DOT[Integratedx@@#2, #1] &).";
-
-FCNIntegrate::usage=
-"FCNIntegrate is an option of certain Feynman integral related functions \
-which may return output containing both integrals that can be evaluated \
-and integrals that can only be evaluated numerically. \
-It then determines which integration function is used to evaluate numeric \
-integrals. Possible settings include NIntegrate, (0*#1)&, \
-(DOT[Integratedx@@#2, #1] &).";
-
-FeynmanParameterNames::usage=
-"FeynmanParameterNames is an option for FeynmanParametrize and \
-FeynmanParametrize.";
-
 FinalSubstitutions::usage =
 "FinalSubstitutions is an option for OneLoop, OneLoopSum, \
 Write2, FeynCalcExternal and FeynCalcInternal. All substitutions indicated \

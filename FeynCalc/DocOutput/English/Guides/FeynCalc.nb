@@ -434,9 +434,9 @@ Cell[BoxData[GridBox[{
        Documentation`HelpLookup[
        "paclet:FeynCalc/ref/FeynCalcInternal"], "\<\"FeynCalcToLaTeX\"\>":>
        Documentation`HelpLookup[
-       "paclet:FeynCalc/ref/FeynCalcToLaTeX"], "\<\"FeynmanParametrize\"\>":>
+       "paclet:FeynCalc/ref/FeynCalcToLaTeX"], "\<\"FCFeynmanParametrize\"\>":>
        Documentation`HelpLookup[
-       "paclet:FeynCalc/ref/FeynmanParametrize"], "\<\"FeynRule\"\>":>
+       "paclet:FeynCalc/ref/FCFeynmanParametrize"], "\<\"FeynRule\"\>":>
        Documentation`HelpLookup[
        "paclet:FeynCalc/ref/FeynRule"], "\<\"FieldDerivative\"\>":>
        Documentation`HelpLookup[
@@ -4780,7 +4780,7 @@ Cell[TextData[{
 Cell[TextData[{
  Cell[BoxData[
   TemplateBox[{Cell[
-     TextData["FeynmanParametrize"]],"paclet:FeynCalc/ref/FeynmanParametrize"},
+     TextData["FCFeynmanParametrize"]],"paclet:FeynCalc/ref/FCFeynmanParametrize"},
    "RefLink",
    BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
  " ",
