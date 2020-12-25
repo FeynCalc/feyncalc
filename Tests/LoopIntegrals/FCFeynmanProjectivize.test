@@ -1,0 +1,31 @@
+
+
+(* :Title: FCFeynmanProjectivize.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCFeynmanProjectivize	*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCFeynmanProjectivize =
+({
+{"fcstFCFeynmanProjectivize-ID1",
+"FCFeynmanProjectivize[(x[1] + x[2])^(-2 + 2*ep)/(mb2*(x[1]^2 + \
+x[1]*x[2] + x[2]^2))^ep,x,Assumptions->{mb2>0},FCVerbose\[Rule]-1]",
+"(x[1] + x[2])^(-2 + 2*ep)/(mb2*(x[1]^2 + x[1]*x[2] + x[2]^2))^ep"},
+{"fcstFCFeynmanProjectivize-ID2",
+"FCFeynmanProjectivize[(x[2]*x[3])^(3*(-1+ep))*((x[2]+x[3])*(Pair[\
+Momentum[q,D],Momentum[q,D]]*x[1]^2+mg2*x[2]*x[3]))^(1-2*ep),x,\
+Assumptions->{qq>0,mg2>0,x[1]>=0,x[2]>=0},FCVerbose\[Rule]-1]",
+"(((x[2]*x[3])/(x[1] + x[2] + x[3])^2)^(3*(-1 + \
+ep))*(((Pair[Momentum[q, D], Momentum[q, D]]*x[1]^2)/(x[1] + x[2] + \
+x[3])^2 + (mg2*x[2]*x[3])/(x[1] + x[2] + x[3])^2)*(x[2]/(x[1] + x[2] \
++ x[3]) + x[3]/(x[1] + x[2] + x[3])))^(1 - 2*ep))/(x[1] + x[2] + \
+x[3])^3"}
+});
