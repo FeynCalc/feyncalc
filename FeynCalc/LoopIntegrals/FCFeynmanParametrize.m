@@ -82,9 +82,9 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 			];
 		];
 
-		If[OptionValue[FCI],
+		If[	OptionValue[FCI],
 			ex = expr,
-			ex = FCI[expr]
+			{ex,optFinalSubstitutions} = FCI[{expr,optFinalSubstitutions}]
 		];
 
 		Which[
