@@ -86,7 +86,7 @@ FCFeynmanPrepare[expr_, lmoms_List /; ! OptionQ[lmoms], OptionsPattern[]] :=
 	Block[{	feynX, propProduct, tmp, symF, symU, ex, spd, qkspd, mtmp,
 			matrix, nDenoms, res, constraint, tmp0, powers,
 			optFinalSubstitutions, optNames, aux1, aux2, nProps, fpJ, fpQ,
-			null1, null2, tensorPart, scalarPart},
+			null1, null2, tensorPart, scalarPart, time},
 
 		optNames				= OptionValue[Names];
 		optFinalSubstitutions	= OptionValue[FinalSubstitutions];
@@ -169,8 +169,10 @@ FCFeynmanPrepare[expr_, lmoms_List /; ! OptionQ[lmoms], OptionsPattern[]] :=
 			{scalarPart, tensorPart} =  FCProductSplit[ex, {LorentzIndex, CartesianIndex}]
 		];
 
-
+		time=AbsoluteTime[];
+		FCPrint[1, "FCFeynmanPrepare: Calling FCLoopBasisExtract.", FCDoControl -> fcszVerbose];
 		tmp = FCLoopBasisExtract[scalarPart, lmoms, SetDimensions->{dim}, SortBy -> Function[x, x[[2]] < 0]];
+		FCPrint[1, "FCFeynmanPrepare: FCLoopBasisExtract done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose];
 
 		FCPrint[3,"FCFeynmanPrepare: List of denominators: ", tmp, FCDoControl->fcszVerbose];
 
@@ -199,6 +201,9 @@ FCFeynmanPrepare[expr_, lmoms_List /; ! OptionQ[lmoms], OptionsPattern[]] :=
 		];
 
 		(* In the following we extract M, Q and J from our expression for (k^T.M.k - 2 Q.k + J) *)
+
+		time=AbsoluteTime[];
+		FCPrint[1, "FCFeynmanPrepare: Constructing Q and J.", FCDoControl -> fcszVerbose];
 		If[ !isCartesian,
 
 			tmp0 = tmp //. {
@@ -225,6 +230,11 @@ FCFeynmanPrepare[expr_, lmoms_List /; ! OptionQ[lmoms], OptionsPattern[]] :=
 		];
 		FCPrint[3,"FCFeynmanPrepare: final fpQ: ", fpQ, FCDoControl->fcszVerbose];
 
+		FCPrint[1, "FCFeynmanPrepare: Q and J ready, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose];
+
+		time=AbsoluteTime[];
+		FCPrint[1, "FCFeynmanPrepare: Constructing M.", FCDoControl -> fcszVerbose];
+
 		(* symmetrization, otherwise the M-matrix will not come out right! *)
 		tmp0 = tmp0 /. spd[a_,b_]:> 1/2 (spd[a,b] + spd[b,a]);
 
@@ -237,14 +247,25 @@ FCFeynmanPrepare[expr_, lmoms_List /; ! OptionQ[lmoms], OptionsPattern[]] :=
 		matrix = (Outer[spd, lmoms, lmoms] /. a_spd :> Coefficient[mtmp, a]);
 		FCPrint[3,"FCFeynmanPrepare: M: ", matrix, FCDoControl->fcszVerbose];
 
+		FCPrint[1, "FCFeynmanPrepare: M ready, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose];
 
+
+		time=AbsoluteTime[];
+		FCPrint[1, "FCFeynmanPrepare: Constructing U and F.", FCDoControl -> fcszVerbose];
+
+		tmp = ExpandScalarProduct[tmp, Momentum -> lmoms, FCI -> True];
 		{symU, symF} = Fold[buildF, {1, tmp}, lmoms];
+
+		FCPrint[1, "FCFeynmanPrepare: U and F ready, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose];
 
 		FCPrint[3,"FCFeynmanPrepare: Raw U: ", symU, FCDoControl->fcszVerbose];
 		FCPrint[3,"FCFeynmanPrepare: Raw F: ", symF, FCDoControl->fcszVerbose];
 
 		If[	tensorPart=!=1,
-			tensorPart=buildN[tensorPart, symU, matrix, fpQ, powers, lmoms]
+			time=AbsoluteTime[];
+			FCPrint[1, "FCFeynmanPrepare: Constructing N.", FCDoControl -> fcszVerbose];
+			tensorPart=buildN[tensorPart, symU, matrix, fpQ, powers, lmoms];
+			FCPrint[1, "FCFeynmanPrepare: N ready, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose];
 		];
 
 		res = {symU, -Together[symU symF], powers, matrix, fpQ, fpJ, tensorPart, tensorRank};
@@ -252,7 +273,8 @@ FCFeynmanPrepare[expr_, lmoms_List /; ! OptionQ[lmoms], OptionsPattern[]] :=
 
 
 		If[ OptionValue[Check],
-
+			time=AbsoluteTime[];
+			FCPrint[1, "FCFeynmanPrepare: Checking the results.", FCDoControl -> fcszVerbose];
 			(* Check F *)
 			If[Factor[Together[symU*(ExpandScalarProduct[Contract[fpQ.Inverse[matrix].fpQ,FCI->True],FCI->True]-fpJ)-res[[2]]]]=!=0,
 				Message[FCFeynmanPrepare::failmsg,"The obtained Q and J are incorrect."];
@@ -263,7 +285,8 @@ FCFeynmanPrepare[expr_, lmoms_List /; ! OptionQ[lmoms], OptionsPattern[]] :=
 			If[	Simplify[Det[matrix]-symU]=!=0 || !SymmetricMatrixQ[matrix],
 				Message[FCFeynmanPrepare::failmsg,"Something went wrong when calculating the matrix M!"];
 				Abort[]
-			]
+			];
+			FCPrint[1, "FCFeynmanPrepare: Checks done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose]
 		];
 
 		FCPrint[3,"FCFeynmanPrepare: Preliminary result: ", res, FCDoControl->fcszVerbose];
@@ -274,14 +297,20 @@ FCFeynmanPrepare[expr_, lmoms_List /; ! OptionQ[lmoms], OptionsPattern[]] :=
 
 
 		If[	nDenoms>1 && OptionValue[Reduce],
+			time=AbsoluteTime[];
+			FCPrint[1, "FCFeynmanPrepare: Reducing the number of Feynman parameters.", FCDoControl -> fcszVerbose];
 			constraint = (Sum[feynX[[i]],{i,1,nDenoms}]==1);
 			FCPrint[3,"FCFeynmanPrepare: Constraint on the values of the Feynman parameters: ", constraint, FCDoControl->fcszVerbose];
-			res = Simplify[res,constraint]
+			res = Simplify[res,constraint];
+			FCPrint[1, "FCFeynmanPrepare: Reductions done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose]
 		];
 
 		If[	OptionValue[Collecting],
+			time=AbsoluteTime[];
+			FCPrint[1, "FCFeynmanPrepare: Collecting terms in the final result.", FCDoControl -> fcszVerbose];
 			res=Collect2[res,LorentzIndex,CartesianIndex, Factoring->OptionValue[Factoring], TimeConstrained->OptionValue[TimeConstrained]];
-			FCPrint[3,"FCFeynmanPrepare: After applying Collect2 to the result: ", res, FCDoControl->fcszVerbose];
+			FCPrint[1, "FCFeynmanPrepare: Done collecting terms, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose];
+			FCPrint[3,"FCFeynmanPrepare: After applying Collect2 to the result: ", res, FCDoControl->fcszVerbose]
 		];
 
 		If[	OptionValue[FCE],
@@ -400,68 +429,66 @@ buildN[tensorPart_, U_, M_, fpQ_, powers_, lmoms_List]:=
 	];
 
 buildF[{oldSymU_, oldSymF_}, lmom_] :=
-	Block[{tmp, lmsq, lambda, J, num, res},
+	Block[{tmp, lambda, J, num, res, time, time0, loopMark, numN, numD},
 
-		tmp = ExpandScalarProduct[oldSymF, Momentum -> lmom, FCI -> True];
-
-
-		If[ !isCartesian,
-			(*The extra minus sign in symF comes from pulling out (-1)^N *)
-			tmp = tmp /. Pair[Momentum[lmom, dim], Momentum[lmom, dim]] :> lmsq,
-			tmp = tmp /. CartesianPair[CartesianMomentum[lmom, dim], CartesianMomentum[lmom, dim]] :> lmsq
-		];
-
-
-
-		FCPrint[3,"FCFeynmanPrepare: buildF: tmp: ", tmp, FCDoControl->fcszVerbose];
 		FCPrint[3,"FCFeynmanPrepare: buildF: Current loop momentum: ", lmom, FCDoControl->fcszVerbose];
 
-		lambda = Coefficient[tmp, lmsq];
+		time0=AbsoluteTime[];
+
+		time=AbsoluteTime[];
+		FCPrint[2, "FCFeynmanPrepare: buildF: Extracting lambda.", FCDoControl -> fcszVerbose];
+
+		tmp = oldSymF /. x:(Momentum|CartesianMomentum)[lmom, dim] -> loopMark x;
+		lambda = Coefficient[tmp, loopMark, 2] /. {
+			Pair[Momentum[lmom, dim], Momentum[lmom, dim]] -> 1,
+			CartesianPair[CartesianMomentum[lmom, dim], CartesianMomentum[lmom, dim]] -> 1
+		};
+
+		FCPrint[2, "FCFeynmanPrepare: buildF: Done extracting lambda, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose];
+		FCPrint[3,"FCFeynmanPrepare: buildF: lambda: ", lambda, FCDoControl->fcszVerbose];
 
 		If[	lambda===0,
 			Message[FCFeynmanPrepare::failmsg,"The coefficient of one of the loop momenta squared is zero."];
 			Abort[]
 		];
 
-		tmp = Expand2[tmp, {Pair, CartesianPair, lmom}];
+		time=AbsoluteTime[];
+		FCPrint[2, "FCFeynmanPrepare: buildF: Extracting num and J.", FCDoControl -> fcszVerbose];
 
-		If[ !isCartesian,
-		tmp = tmp //.
-			{a_. Pair[Momentum[lmom, dim], x_] + b_. Pair[Momentum[lmom, dim], y_] /; FreeQ[{x, y}, lmom] :>
-				Pair[Momentum[lmom, dim], a x + b y]} /.
-			{Pair[Momentum[lmom, dim], Momentum[lmom, dim]] :> lmsq},
+		num = Together[Coefficient[tmp, loopMark, 1]];
+		{numN, numD} = {Numerator[num],  Denominator[num]};
 
-		tmp = tmp //.
-			{a_. CartesianPair[CartesianMomentum[lmom, dim], x_] + b_. CartesianPair[CartesianMomentum[lmom, dim], y_] /; FreeQ[{x, y}, lmom] :>
-				CartesianPair[CartesianMomentum[lmom, dim], a x + b y]} /.
-			{CartesianPair[CartesianMomentum[lmom, dim], CartesianMomentum[lmom, dim]] :> lmsq}
+		numN = Expand2[numN^2,lmom] /. {
 
-		];
+			Pair[Momentum[lmom, dim], x_] Pair[Momentum[lmom, dim], y_] :> ExpandScalarProduct[Pair[x, y], FCI -> True],
+			Pair[Momentum[lmom, dim], x_]^2  :> ExpandScalarProduct[Pair[x, x], FCI -> True],
 
-		FCPrint[3,"FCFeynmanPrepare: buildF: tmp after combining the scalar products: ", tmp, FCDoControl->fcszVerbose];
+			CartesianPair[CartesianMomentum[lmom, dim], x_] CartesianPair[CartesianMomentum[lmom, dim], y_] :>
+				ExpandScalarProduct[CartesianPair[x, y], FCI -> True],
+			CartesianPair[CartesianMomentum[lmom, dim], x_]^2  :> ExpandScalarProduct[CartesianPair[x, x], FCI -> True]
+		};
 
-		num = (SelectNotFree2[tmp + null1 + null2, lmom])^2 /. null1 | null2 -> 0;
+		num = numN/numD^2;
 
-		If[ !isCartesian,
-			num = num /. Pair[Momentum[lmom, ___], y_]^2 /; FreeQ[y, lmom] :> ExpandScalarProduct[Pair[y, y], FCI -> True],
-			num = num /. CartesianPair[CartesianMomentum[lmom, ___], y_]^2 /; FreeQ[y, lmom] :> ExpandScalarProduct[CartesianPair[y, y], FCI -> True]
-		];
+		J = Coefficient[tmp, loopMark, 0];
 
+		FCPrint[2, "FCFeynmanPrepare: buildF: Done extracting num and J, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose];
 
-		J = SelectFree2[tmp + null1 + null2, {lmom, lmsq}] /. null1 | null2 -> 0;
-
+		FCPrint[3,"FCFeynmanPrepare: buildF: num: ", num, FCDoControl->fcszVerbose];
 		FCPrint[3,"FCFeynmanPrepare: buildF: J: ", J, FCDoControl->fcszVerbose];
 
-		res = J - num/(4 lambda);
+		res = {oldSymU lambda, Together[J - num/(4 lambda)]};
 
 		FCPrint[3,"FCFeynmanPrepare: buildF: res: ", res, FCDoControl->fcszVerbose];
 
-		If[	!FreeQ2[res,{lmsq,lmom}],
+		If[	!FreeQ2[res, {lmom,loopMark}],
 			Message[FCFeynmanPrepare::failmsg,"buildF failed to eliminate one of the loop momenta."];
 			Abort[]
 		];
 
-		{oldSymU lambda, J - num/(4 lambda)}
+		FCPrint[2, "FCFeynmanPrepare: buildF: Total timing: ", N[AbsoluteTime[] - time0, 4], FCDoControl->fcszVerbose];
+
+		res
 ];
 
 
