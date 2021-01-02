@@ -49,7 +49,7 @@ FCLoopBasisIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 	Block[{	ex, props, allmoms, extmoms, lineMomenta, null1, null2,
 			intEdgesList, extEdgesList, numExtMoms,	numEdges, lmoms, optFactoring,
 			auxExtEdgesList, numIntVertices, numExtVertices, auxExternalMoms,
-			numVertices, res},
+			numVertices, res, uPoly, fPoly, pows, mat, Q, J, tensorPart, tensorRank},
 
 		If [OptionValue[FCVerbose]===False,
 			lbtgVerbose=$VeryVerbose,
@@ -68,7 +68,7 @@ FCLoopBasisIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 			ex = FCI[expr]
 		];
 
-		If [!FreeQ2[$ScalarProducts, {lmoms}],
+		If [!FreeQ2[$ScalarProducts, {lmomsRaw}],
 			Message[FCLoopBasisIntegralToGraph::failmsg, "Some of the loop momenta have scalar product rules attached to them."];
 			Abort[]
 		];
@@ -94,6 +94,14 @@ FCLoopBasisIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 
 		(*	All momenta that are not listed as loop momenta will be treated as external momenta.*)
 		extmoms = Complement[allmoms, lmoms];
+
+		{uPoly, fPoly, pows, mat, Q, J, tensorPart, tensorRank} =
+			FCFeynmanPrepare[ex, lmoms, FCI -> True, Check->False, Collecting -> False];
+
+		If[	FreeQ2[ExpandScalarProduct[fPoly,FCI->True],{Momentum,CartesianMomentum,TemporalMomentum}],
+			(*tadpole!*)
+			extmoms={}
+		];
 
 
 		FCPrint[1, "FCLoopBasisIntegralToGraph: Loop momenta: ", lmoms, FCDoControl->lbtgVerbose];
