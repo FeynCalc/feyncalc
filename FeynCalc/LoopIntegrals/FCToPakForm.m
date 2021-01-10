@@ -44,17 +44,13 @@ Options[FCToPakForm] = {
 	FCVerbose 					-> False,
 	Factoring					-> Factor,
 	FinalSubstitutions			-> {},
-	Function					-> Function[{U, F, pows, head, int}, {int, head[ExpandAll[U], ExpandAll[F], Transpose[pows]]}],
+	Function					-> Function[{U, F, charPoly, pows, head, int, sigma}, {int, head[ExpandAll[charPoly], Transpose[pows]]}],
 	Head						-> FCGV["PakFormHead"],
 	Indexed						-> True,
 	Names						-> FCGV["x"]
 };
 
-
-FCToPakForm[expr_List, lmoms_List, opts:OptionsPattern[]] :=
-	FCToPakForm[#, lmoms, opts]&/@expr;
-
-FCToPakForm[expr_/;Head[expr]=!=List, lmoms_List, OptionsPattern[]] :=
+FCToPakForm[expr_, lmoms_List, OptionsPattern[]] :=
 	Block[{	uPoly, fPoly, pows, mat, Q, J, tensorPart,
 			tensorRank, rulePowers, pPoly, pVars, sigma,
 			pVarsRepRule, powsReordered, powerMark, res, time,
@@ -114,12 +110,13 @@ FCToPakForm[expr_/;Head[expr]=!=List, lmoms_List, OptionsPattern[]] :=
 		powsReordered = Extract[pows, List /@ sigma];
 		uPoly = uPoly /. pVarsRepRule;
 		fPoly = fPoly /. pVarsRepRule;
+		pPoly = pPoly /. pVarsRepRule;
 
 		FCPrint[3, "FCToPakForm: Reordered propagators: ", powsReordered, FCDoControl -> fctpfVerbose];
 		FCPrint[3, "FCToPakForm: Reordered U polynomial: ", uPoly, FCDoControl -> fctpfVerbose];
 		FCPrint[3, "FCToPakForm: Reordered F polynomial: ", fPoly, FCDoControl -> fctpfVerbose];
 
-		res = OptionValue[Function][uPoly, fPoly, powsReordered, OptionValue[Head], expr];
+		res = OptionValue[Function][uPoly, fPoly, pPoly, powsReordered, OptionValue[Head], expr, sigma];
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
