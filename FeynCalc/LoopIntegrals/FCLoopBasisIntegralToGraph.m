@@ -49,7 +49,7 @@ FCLoopBasisIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 	Block[{	ex, props, allmoms, extmoms, lineMomenta, null1, null2,
 			intEdgesList, extEdgesList, numExtMoms,	numEdges, lmoms, optFactoring,
 			auxExtEdgesList, numIntVertices, numExtVertices, auxExternalMoms,
-			numVertices, res, uPoly, fPoly, pows, mat, Q, J, tensorPart, tensorRank},
+			numVertices, res, uPoly, fPoly, pows, mat, Q, J, tensorPart, tensorRank, dots},
 
 		If [OptionValue[FCVerbose]===False,
 			lbtgVerbose=$VeryVerbose,
@@ -109,9 +109,13 @@ FCLoopBasisIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 
 
 		props = FCLoopBasisIntegralToPropagators[ex, lmoms, FCI->True, Tally->True];
-		props = props /. {a_FeynAmpDenominator, i_Integer} /; i > 1 :> Sequence @@ Table[{a, 1}, {j, 1, i}];
 
+		FCPrint[3, "FCLoopBasisIntegralToGraph: After FCLoopBasisIntegralToPropagators: ", props, FCDoControl->lbtgVerbose];
+
+
+		dots  = Transpose[props][[2]];
 		props = Transpose[props][[1]];
+
 		(*	TODO add Cartesian propagators *)
 		props = FeynAmpDenominatorExplicit[1/props, ExpandScalarProduct -> False, FCE -> True] // ReplaceAll[#, SPD[a_, a_] :> a] &;
 
@@ -187,7 +191,7 @@ FCLoopBasisIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 		res = makeGraph[res];
 
 		res = res /. {
-			Labeled[a_,i_Integer?Positive] :> Labeled[a, Extract[props,{i}]],
+			Labeled[a_,i_Integer?Positive] :> Labeled[a, {Extract[props,{i}], Extract[dots,{i}]}],
 
 			Labeled[a_,i_Integer?Negative] :> Labeled[a, Extract[Join[auxExtEdgesList,extEdgesList],{i}][[2]]]
 		};
