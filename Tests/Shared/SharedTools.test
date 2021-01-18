@@ -133,6 +133,17 @@ Tests`Shared`fcstFCMakeIndex =
 "{Suna, Sun1, SunMinus4}"}
 };
 
+Tests`Shared`fcstFCMakeSymbols =
+({
+{"fcstFCMakeSymbols-ID1",
+"f[FCMakeSymbols[\"a\",Range[1,10],Sequence]]",
+"f[a1, a2, a3, a4, a5, a6, a7, a8, a9, a10]"},
+{"fcstFCMakeSymbols-ID2", "FCMakeSymbols[\"a\",Range[1,10],List]",
+"{a1, a2, a3, a4, a5, a6, a7, a8, a9, a10}"},
+{"fcstFCMakeSymbols-ID3", "FCMakeSymbols[a,{1,3},List]", "{a1, a3}"}
+
+});
+
 Tests`Shared`fcstSharedToolsFCPatternFreeQ = {
 {"fcstSharedToolsFCPatternFreeQ-ID1","FCPatternFreeQ[{0}]","True"},
 {"fcstSharedToolsFCPatternFreeQ-ID2","FCPatternFreeQ[{a_}]","False"},
