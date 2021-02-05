@@ -1,0 +1,75 @@
+(* :Title: Factor2.test														*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCMatchSolve				*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Shared`fcstFCMatchSolve =
+({
+{"fcstFCMatchSolve-ID1",
+"FCMatchSolve[(a+b)c,{c},FCVerbose\[Rule]-1]", "{b -> -a}"},
+{"fcstFCMatchSolve-ID2",
+"FCMatchSolve[(a+b+f)c,{c,f},FCVerbose\[Rule]-1]", "{b -> -a - f}"},
+{"fcstFCMatchSolve-ID3",
+"FCMatchSolve[-1/8*(tauPref*(-128+64*nc+160*nc^2-8*nc*zz14+4*nc*\
+zz44-16*evFlag[4,3,1]+8*nc*evFlag[4,3,1]-16*evFlag[5,3,1]+8*nc*evFlag[\
+5,3,1]+nc*evFlag[9,3,1]-2*evFlag[10,3,1]+nc^2*evFlag[10,3,1])*OP[Q])/\
+nc+(tauPref*(-96*nc-96*nc^2+4*nc*zz24-4*nc*zz44-16*evFlag[4,3,1]+24*\
+nc*evFlag[4,3,1]+16*nc^2*evFlag[4,3,1]+16*evFlag[5,3,1]-8*nc*evFlag[5,\
+3,1]-nc*evFlag[9,3,1]+nc*evFlag[9,4,1]+2*evFlag[10,3,1]-nc^2*evFlag[\
+10,3,1]-2*evFlag[10,4,1]+nc^2*evFlag[10,4,1])*OP[QS])/(4*nc),{OP[_],\
+nc,evFlag[__],tauPref},FCVerbose\[Rule]-1]",
+"{zz24 -> (128 + 32*nc - 64*nc^2 + 8*nc*zz14 + 32*evFlag[4, 3, 1] \
+- 32*nc*evFlag[4, 3, 1] - 16*nc^2*evFlag[4, 3, 1] - nc*evFlag[9, 4, \
+1] + 2*evFlag[10, 4, 1] - nc^2*evFlag[10, 4, 1])/(4*nc), zz44 -> (128 \
+- 64*nc - 160*nc^2 + 8*nc*zz14 + 16*evFlag[4, 3, 1] - 8*nc*evFlag[4, \
+3, 1] + 16*evFlag[5, 3, 1] - 8*nc*evFlag[5, 3, 1] - nc*evFlag[9, 3, \
+1] + 2*evFlag[10, 3, 1] - nc^2*evFlag[10, 3, 1])/(4*nc)}"},
+{"fcstFCMatchSolve-ID4","FCMatchSolve[(a4*(-1 + nc)*
+	tauPref*(-3*CMMC1^2 + 6*CMMC1^2*nc + 12*CMMC1*CMMC2*nc -
+	12*CMMC1*CMMC2*nc^2 - 12*CMMC2^2*nc^2 + 8*mcx11*nc^2 -
+	3*CMMC1^2*nc^3 + 6*CMMC1^2*z - 12*CMMC1^2*nc*z -
+	24*CMMC1*CMMC2*nc*z + 24*CMMC1*CMMC2*nc^2*z +
+	24*CMMC2^2*nc^2*z + 6*CMMC1^2*nc^3*z)*OP[E2QS])/(32*
+	nc^3) + (a4*(-1 + nc)*
+	tauPref*(-3*CMMC1^2 + 6*CMMC1^2*nc + 12*CMMC1*CMMC2*nc -
+	12*CMMC1*CMMC2*nc^2 - 12*CMMC2^2*nc^2 + 8*mcx11*nc^2 -
+	3*CMMC1^2*nc^3 + 6*CMMC1^2*z - 12*CMMC1^2*nc*z -
+	24*CMMC1*CMMC2*nc*z + 24*CMMC1*CMMC2*nc^2*z +
+	24*CMMC2^2*nc^2*z + 6*CMMC1^2*nc^3*z)*OP[E2QTS])/(32*
+	nc^3) - (a4*
+	tauPref*(-3*CMMC1^2 + 6*CMMC1^2*nc + 12*CMMC1*CMMC2*nc -
+	12*CMMC1*CMMC2*nc^2 - 12*CMMC2^2*nc^2 + 8*mcx11*nc^2 -
+	3*CMMC1^2*nc^3 + 6*CMMC1^2*z - 12*CMMC1^2*nc*z -
+	24*CMMC1*CMMC2*nc*z + 24*CMMC1*CMMC2*nc^2*z +
+	24*CMMC2^2*nc^2*z + 6*CMMC1^2*nc^3*z)*OP[E3Q])/(64*nc^3) + (a4*
+	tauPref*(-3*CMMC1^2 + 6*CMMC1^2*nc + 12*CMMC1*CMMC2*nc -
+	12*CMMC1*CMMC2*nc^2 - 12*CMMC2^2*nc^2 + 8*mcx11*nc^2 -
+	3*CMMC1^2*nc^3 + 6*CMMC1^2*z - 12*CMMC1^2*nc*z -
+	24*CMMC1*CMMC2*nc*z + 24*CMMC1*CMMC2*nc^2*z +
+	24*CMMC2^2*nc^2*z + 6*CMMC1^2*nc^3*z)*OP[E3QT])/(64*nc^2), {a4,
+OP[_], CMMC1, CMMC2, tauPref, nc, z}]",
+"{mcx11 -> (3*(CMMC1^2 - 2*CMMC1^2*nc - 4*CMMC1*CMMC2*nc +
+4*CMMC1*CMMC2*nc^2 + 4*CMMC2^2*nc^2 + CMMC1^2*nc^3)*(1 - 2*z))/(8*nc^2)}"},
+{"fcstFCMatchSolve-ID5",
+"FCMatchSolve[-1/8*(a4^2*(-1 + nc)*tauPref*xil*y41*OP[E11])/
+	nc - (a4^2*
+	tauPref*(180 - 48*aa111*nc + 146*nc^2 + 40*nc*nf - 18*y41 +
+	126*nc*y41 - 432*nc*evFlag[1, 1] - 1248*evFlag[2, 1] +
+	488*nc^2*evFlag[2, 1] - 32*nc*nf*evFlag[2, 1] -
+	48*nc*y41*evFlag[2, 1] - 288*evFlag[3, 1] -
+	12*evFlag[7, 2, 1] + 3*nc^2*evFlag[7, 2, 1])*OP[E11])/(48*
+	nc) - 3*a4^2*tauPref*y41*Log[m4^(-1)]*
+OP[E11] + (a4^2*tauPref*xil*y41*OP[E2QS])/(16*nc) - (a4^2*
+	tauPref*(16*aa511*nc - 7*y41 + 2*nc*y41)*OP[E2QS])/(16*nc), {OP,
+a4, Log, xil, nc, tauPref, evFlag, nf}]",
+"{aa511 -> 0, y41 -> 0, aa111 -> (180 + 146*nc^2 + 40*nc*nf - 432*nc*evFlag[1, 1] -
+1248*evFlag[2, 1] + 488*nc^2*evFlag[2, 1] - 32*nc*nf*evFlag[2, 1] - 288*evFlag[3, 1] - 12*evFlag[7, 2, 1] + 3*nc^2*evFlag[7, 2, 1])/(48*nc)}"}
+})
