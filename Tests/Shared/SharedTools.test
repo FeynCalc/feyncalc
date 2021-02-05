@@ -441,3 +441,54 @@ Tests`Shared`fcstFCDuplicateFreeQ =
 "FCDuplicateFreeQ[{{a,b},{a,c}},Function[{x,y},First[x]===First[y]]\
 ]", "False"}
 });
+
+Tests`Shared`fcstFCHighlight =
+({
+{"fcstFCHighlight-ID1", "FCHighlight[Expand[(a+b+c)^2],{}]",
+"FCHighlight[a^2 + 2*a*b + b^2 + 2*a*c + 2*b*c + c^2, {}]"},
+{"fcstFCHighlight-ID2", "FCHighlight[Expand[(a+b+c)^2],{a}]",
+"FCHighlight[a^2 + 2*a*b + b^2 + 2*a*c + 2*b*c + c^2, {a}]"},
+{"fcstFCHighlight-ID3", "FCHighlight[Expand[(a+b+c)^2],{{a,Red}}]",
+"b^2 + 2*b*c + c^2 + 2*b*Style[a, 14, RGBColor[1, 0, 0], Bold] + \
+2*c*Style[a, 14, RGBColor[1, 0, 0], Bold] + Style[a, 14, RGBColor[1, \
+0, 0], Bold]^2"},
+{"fcstFCHighlight-ID4",
+"FCHighlight[Expand[(a+b+c)^2],{{a,Red},{b,Blue}}]",
+"c^2 + 2*c*Style[a, 14, RGBColor[1, 0, 0], Bold] + Style[a, 14, \
+RGBColor[1, 0, 0], Bold]^2 + 2*c*Style[b, 14, RGBColor[0, 0, 1], \
+Bold] + 2*Style[a, 14, RGBColor[1, 0, 0], Bold]*Style[b, 14, \
+RGBColor[0, 0, 1], Bold] + Style[b, 14, RGBColor[0, 0, 1], Bold]^2"}
+});
+
+Tests`Shared`fcstVariables2 =
+({
+{"fcstVariables2-ID1", "Variables2[{a\[Rule]x1+y1,b\[Rule]x2+y2}]",
+"{a, b, x1, x2, y1, y2}"},
+{"fcstVariables2-ID2", "Variables2[a+b\[Equal]c+d]", "{a, b, c, d}"},
+{"fcstVariables2-ID3", "Variables2[{a+b\[Equal]c+d}]",
+"{a, b, c, d}"},
+{"fcstVariables2-ID4", "Variables2[a\[Rule]b]", "{a, b}"}
+})
+
+Tests`Shared`fcstCoefficient2 =
+({
+{"fcstCoefficient2-ID1",
+"Coefficient2[y0+ep y1+a4(1/ep x1 + x2 +x3 ep)+ a4^2(1/ep^2z1 \
++1/ep z2 + z3 +x4 ep),a4]", "x1/ep + x2 + ep*x3"},
+{"fcstCoefficient2-ID2",
+"Coefficient2[y0+ep y1+a4(1/ep x1 + x2 +x3 ep)+ a4^2(1/ep^2z1 \
++1/ep z2 + z3 +x4 ep),a4,2]", "ep*x4 + z1/ep^2 + z2/ep + z3"},
+{"fcstCoefficient2-ID3",
+"Coefficient2[y0+ep y1+a4(1/ep x1 + x2 +x3 ep)+ a4^2(1/ep^2z1 \
++1/ep z2 + z3 +x4 ep),{a4,2}]", "ep*x4 + z1/ep^2 + z2/ep + z3"},
+{"fcstCoefficient2-ID4",
+"Coefficient2[y0+ep y1+a4(1/ep x1 + x2 +x3 ep)+ a4^2(1/ep^2z1 \
++1/ep z2 + z3 +x4 ep),{a4,2},{ep,-1}]", "z2"},
+{"fcstCoefficient2-ID5",
+"Coefficient2[y0+ep y1+a4(1/ep x1 + x2 +x3 ep)+ a4^2(1/ep^2z1 \
++1/ep z2 + z3 +x4 ep),{a4,1},{ep,0}]", "x2"},
+{"fcstCoefficient2-ID6",
+"Coefficient2[y0+ep y1+a4(1/ep x1 + x2 +x3 ep)+ a4^2(1/ep^2z1 \
++1/ep z2 + z3 +x4 ep),a4,ep]", "x3"}
+})
+

@@ -22,6 +22,12 @@ Cases2[expr, f1, f2, ...] or \
 Cases2[expr, {f1, f2, ...}] is equivalent to \
 Cases[{expr}, f1[___] | f2[___] ..., Infinity]//Union.";
 
+
+Coefficient2::usage=
+"Coefficient2[exp, form1, form2, ...] is like Coefficient, but it also \
+allows to extracts coefficients  of form1, form2, ... sequentially. To \
+specify the power in formi, write it as {var,pow}";
+
 Combine::usage=
 "Combine[expr] puts terms in a sum over a common denominator, and \
 cancels factors in the result. Combine is similar to Together, \
@@ -81,6 +87,12 @@ is not available.";
 FCFactorOut::usage=
 "FCFactorOut[exp, pref] factors out pref out of exp. This is often need to \
 bring exp into a particular form that Mathematica refuses to give.";
+
+FCHighlight::usage=
+"FCHighlight[exp, {{symbol1, color1}, {symbol2, color2}, ...}] highlights the \
+given set of symbols in the output using Style and the provided colors. This \
+works only in the frontend and alters the input expression in such a way, that \
+it cannot be processed further (because of the introduced Style heads).";
 
 FCMakeIndex::usage=
 "FCMakeIndex[str1, str2, head] generates an index with the given head out \
@@ -253,6 +265,10 @@ SelectSplit::usage=
 which every element li satisfies a criterium pj[li] with pj from p and \
 appends the subset of remaining unmatched elements.";
 
+Variables2::usage=
+"Variables2[expr] is like Variables, but it also works on rules and equalities \
+as well as lists thereof. Variables2 always applies Union to the output.";
+
 XYT::usage=
 "XYT[exp, x,y] transforms  (x y)^m away ..."
 
@@ -313,6 +329,10 @@ Options[NTerms] = {
 	Expand -> True
 };
 
+Options[FCHighlight] = {
+	Style -> Function[x,Rule[x[[1]], Style[x[[1]], 14, x[[2]], Bold]]]
+};
+
 Options[FCSplit] = {
 	Expanding -> True
 };
@@ -334,6 +354,9 @@ Options[Power2] = {
 	Assumptions	-> True
 };
 
+Options[Variables2] = {
+};
+
 Cases2[expr_, {f___}, opts:OptionsPattern[]] :=
 	Cases2 @@ Prepend[{f,opts}, expr];
 
@@ -344,6 +367,18 @@ Cases2[expr_, f_, g__, opts:OptionsPattern[]] :=
 	Union[Cases[{expr}, Alternatives@@(HoldPattern[#[___]]&/@{f,g}),
 	Infinity, FilterRules[{opts}, Options[Cases]]]];
 
+
+Coefficient2[ex_, {var_, pow_}] :=
+	Coefficient[ex, var, pow];
+
+Coefficient2[ex_, var_, pow_Integer] :=
+	Coefficient[ex, var, pow];
+
+Coefficient2[ex_, form_] :=
+	Coefficient[ex, form]/; Head[form]=!=List;
+
+Coefficient2[ex_, form1_, form2__] :=
+	Fold[Coefficient2, ex, {form1, form2}]/; !MatchQ[{form2},{_Integer}];
 
 Combine[x_, OptionsPattern[]] :=
 	Block[{combinet1, combinet2, expanding, num, le},
@@ -558,6 +593,11 @@ FCGetNotebookDirectory[]:=
 		];
 		dir
 	];
+
+
+FCHighlight[expr_, hlist_List/; !(OptionQ[hlist] || hlist==={}), OptionsPattern[]] :=
+	(expr /. Map[OptionValue[Style][#]&, hlist])/; MatchQ[hlist,{__List}];
+
 
 FCPatternFreeQ[expr_List]:=
 	FreeQ2[expr, {Pattern, Blank,BlankSequence,BlankNullSequence, Alternatives}];
@@ -997,6 +1037,16 @@ SelectSplit[ex_, p_List, opts___Rule] :=
 		]], #
 		] &[(h @@ #) & /@ Append[res, Complement[exp, Join @@ res]]]
 	];
+
+
+Variables2[expr_List, opts : OptionsPattern[]] :=
+	Union[Flatten[Variables2[#, opts] & /@ expr]];
+
+Variables2[expr_, OptionsPattern[]] :=
+	Variables[expr] /; !MemberQ[{List, Equal, Rule, RuleDelayed}, Head[expr]];
+
+Variables2[(Equal | Rule | RuleDelayed)[a_, b_], OptionsPattern[]] :=
+	Union[Variables[a], Variables[b]];
 
 (* integral transformation only valid if nonsingular in x, y = 0,1 *)
 XYT[exp_, x_, y_] :=
