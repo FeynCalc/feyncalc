@@ -34,6 +34,7 @@ Begin["`ExpandScalarProduct`Private`"]
 ScalarProductExpand = ExpandScalarProduct;
 tmpHead::usage="";
 objects::usage="";
+optMomentum::usage="";
 
 Options[ExpandScalarProduct] = {
 	EpsEvaluate -> False,
@@ -44,12 +45,12 @@ Options[ExpandScalarProduct] = {
 };
 
 ExpandScalarProduct[expr_, OptionsPattern[]] :=
-	Block[ {ex, pairList, pairListExpanded, moms, protect, momentum, relevant, null1, null2},
+	Block[ {ex, pairList, pairListExpanded, protect, momentum, relevant, null1, null2},
 
-		moms = OptionValue[Momentum];
+		optMomentum = OptionValue[Momentum];
 
-		If[ moms=!=All && Head[moms]=!=List,
-			moms = {moms}
+		If[ optMomentum=!=All && Head[optMomentum]=!=List,
+			optMomentum = {optMomentum}
 		];
 
 		objects = Join[$FCTensorList,{TemporalPair}];
@@ -78,14 +79,14 @@ ExpandScalarProduct[expr_, OptionsPattern[]] :=
 			relevant = relevant//Sort//DeleteDuplicates
 		];
 
-		If [moms===All,
+		If [optMomentum===All,
 			pairList = Select[Cases2[relevant, objects], !FreeQ2[#, TensorArgsList]&];
 			pairListExpanded = pairList,
-			pairList = Select[Cases2[relevant, objects], (!FreeQ2[#, TensorArgsList] && !FreeQ2[#, moms])&];
+			pairList = Select[Cases2[relevant, objects], (!FreeQ2[#, TensorArgsList] && !FreeQ2[#, optMomentum])&];
 			If[ TrueQ[!OptionValue[Full]],
 				pairListExpanded = pairList //. {
-					Momentum[c_. mom_ + rest_: 0, dim___] /; MemberQ[moms, mom] :> momentum[c mom + protect[rest], dim],
-					Momentum[rest_, dim___] /; FreeQ[rest, moms] :> momentum[protect[rest], dim]
+					Momentum[c_. mom_ + rest_: 0, dim___] /; MemberQ[optMomentum, mom] :> momentum[c mom + protect[rest], dim],
+					Momentum[rest_, dim___] /; FreeQ[rest, optMomentum] :> momentum[protect[rest], dim]
 				} /. momentum -> Momentum,
 				pairListExpanded = pairList
 			]
@@ -119,7 +120,7 @@ pairexpand[x_] :=
 
 
 scevdoit[head_,arg__] :=
-	Distribute[tmpHead@@(Expand[MomentumExpand/@{arg}])]/.tmpHead->head;
+	Distribute[tmpHead@@(Expand[MomentumExpand[{arg},Momentum->optMomentum]])]/.tmpHead->head;
 
 FCPrint[1,"ExpandScalarProduct.m loaded."];
 End[]

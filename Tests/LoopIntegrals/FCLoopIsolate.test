@@ -63,7 +63,7 @@ GA[j] . GSD[i] . GA[5]*SUNT[a]*FCGV[\"LoopInt\"][FAD[{q, m}]*FVD[q, i]]"},
 {"fcstFCLoopIsolate-ID17","FCLoopIsolate[x*A0[m^2], {q}]","x FCGV[\"LoopInt\"][A0[m^2]]"},
 {"fcstFCLoopIsolate-ID17","FCLoopIsolate[SPD[q + k, p + l] FAD[{q, m}], {q}] // FCE","FCGV[\"LoopInt\"][FAD[{q, m}] SPD[l + p, k + q]]"},
 {"fcstFCLoopIsolate-ID18","FCLoopIsolate[SPD[q + k, p + l] FAD[{q, m}], {q},ExpandScalarProduct -> True] // FCE",
-"(SPD[k, l] + SPD[k, p]) FCGV[\"LoopInt\"][FAD[{q, m}]] + FCGV[\"LoopInt\"][FAD[{q, m}] SPD[l, q]] + FCGV[\"LoopInt\"][FAD[{q, m}] SPD[p, q]]"},
+"SPD[k, l + p]*FCGV[\"LoopInt\"][FAD[{q, m}]] + FCGV[\"LoopInt\"][FAD[{q, m}]*SPD[l + p, q]]"},
 {"fcstFCLoopIsolate-ID19","FCLoopIsolate[a FCI[FAD[{q, 0, 2}]] + b FCI[FAD[{q, 0, 1}]], {q},
 Head -> loop, FCLoopIBPReducableQ -> True] // FCE","b FAD[q] + a loop[FAD[q, q]]"},
 {"fcstFCLoopIsolate-ID20","FCLoopIsolate[Foobar[x], {}, PaVeIntegralHeads -> Join[OptionValue[FCLoopIsolate, PaVeIntegralHeads],
@@ -80,9 +80,9 @@ xx loopInt[FAD[l, l + p2, l + p2 - p3 - p4] FVD[l, Lor4] FVD[l, nu]] MTD[Lor3, m
 {"fcstFCLoopIsolate-ID24","FCLoopIsolate[xx FAD[l, l + p2, l + p2 - p3 - p4] FVD[l,
 nu] (FVD[p1, Lor4] + FVD[-l - p2 + p3 + p4, Lor4]) MTD[Lor3,mu] , {l}, ExpandScalarProduct -> True, Head -> loopInt] //
 FCE",
-"xx (FVD[p1, Lor4] - FVD[p2, Lor4] + FVD[p3, Lor4] + FVD[p4, Lor4]) loopInt[FAD[l, l + p2, l +
-p2 - p3 - p4] FVD[l, nu]] MTD[Lor3, mu] -xx loopInt[FAD[l, l + p2, l + p2 - p3 -
-p4] FVD[l, Lor4] FVD[l, nu]] MTD[Lor3, mu]"},
+"xx*(FVD[p1, Lor4] - FVD[p2 - p3 - p4, Lor4])*loopInt[FAD[l, l + p2, l + p2 - p3 -
+p4]*FVD[l, nu]]*MTD[Lor3, mu] - xx*loopInt[FAD[l, l + p2, l + p2 - p3 -
+p4]*FVD[l, Lor4]*FVD[l, nu]]*MTD[Lor3, mu]"},
 {"fcstFCLoopIsolate-ID25",
 "FCLoopIsolate[GFAD[{SPD[q1,p]SPD[q2,p],n}],{q1,q2},\
 Head->loopInt]//FCE",
@@ -132,9 +132,8 @@ a*TT2[CFAD[{{q1, 0}, {m, -1}, 1}]*CFAD[{{q3, 0}, {m, -1}, 1}]]"},
 {"fcstFCLoopIsolate-ID34",
 "FCLoopIsolate[CSPD[q+k,p+l] CFAD[{q,m}],{q},ExpandScalarProduct\
 \[Rule]True,FCE\[Rule]True]",
-"(CSPD[k, l] + CSPD[k, p])*FCGV[\"LoopInt\"][CFAD[{{q, 0}, {m, \
--1}, 1}]] + FCGV[\"LoopInt\"][CFAD[{{q, 0}, {m, -1}, 1}]*CSPD[l, q]] \
-+ FCGV[\"LoopInt\"][CFAD[{{q, 0}, {m, -1}, 1}]*CSPD[p, q]]"},
+"CSPD[k, l + p]*FCGV[\"LoopInt\"][CFAD[{{q, 0}, {m, -1}, 1}]] +
+FCGV[\"LoopInt\"][CFAD[{{q, 0}, {m, -1}, 1}]*CSPD[l + p, q]]"},
 {"fcstFCLoopIsolate-ID35",
 "FCLoopIsolate[a FCI[CFAD[{q,0,2}]]+b FCI[CFAD[{q,0,1}]],{q},Head\
 \[Rule]loop,FCLoopIBPReducableQ\[Rule]True,FCE\[Rule]True]",
@@ -145,12 +144,10 @@ a*TT2[CFAD[{{q1, 0}, {m, -1}, 1}]*CFAD[{{q3, 0}, {m, -1}, 1}]]"},
 (CVD[p1,Lor4]+CVD[-l-p2+p3+p4,Lor4]) \
 KDD[Lor3,mu],{l},ExpandScalarProduct\[Rule]True,Head\[Rule]loopInt,\
 FCE\[Rule]True]",
-"xx*(CVD[p1, Lor4] - CVD[p2, Lor4] + CVD[p3, Lor4] + CVD[p4, \
-Lor4])*KDD[Lor3, mu]*loopInt[CFAD[{{l, 0}, {0, -1}, 1}, {{l + p2, 0}, \
-{0, -1}, 1}, {{l + p2 - p3 - p4, 0}, {0, -1}, 1}]*CVD[l, nu]] - \
-xx*KDD[Lor3, mu]*loopInt[CFAD[{{l, 0}, {0, -1}, 1}, {{l + p2, 0}, {0, \
--1}, 1}, {{l + p2 - p3 - p4, 0}, {0, -1}, 1}]*CVD[l, Lor4]*CVD[l, \
-nu]]"},
+"xx*(CVD[p1, Lor4] - CVD[p2 - p3 - p4, Lor4])*KDD[Lor3, mu]*loopInt[CFAD[{{l, 0},
+{0, -1}, 1}, {{l + p2, 0}, {0, -1}, 1}, {{l + p2 - p3 - p4, 0}, {0, -1},
+1}]*CVD[l, nu]] - xx*KDD[Lor3, mu]*loopInt[CFAD[{{l, 0}, {0, -1}, 1},
+{{l + p2, 0}, {0, -1}, 1}, {{l + p2 - p3 - p4, 0}, {0, -1}, 1}]*CVD[l, Lor4]*CVD[l, nu]]"},
 {"fcstFCLoopIsolate-ID37",
 "FCLoopIsolate[SPD[q + k, p + l] FAD[{q, m}], {q}, Numerator -> False,
 Head -> loop, FCE -> True]",

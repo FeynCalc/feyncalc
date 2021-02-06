@@ -77,7 +77,7 @@ QuarkPropagator[{pi_, m_},  opt:OptionsPattern[]] :=
 			];
 			If[ !cou,
 				re = re + I (DiracGamma[Momentum[pi, dim], dim]+m) FeynAmpDenominator[
-				MomentumExpand[PropagatorDenominator[Momentum[pi,dim], m]]]
+				PropagatorDenominator[MomentumExpand[Momentum[pi,dim]], m]]
 			];
 			re
 		]

@@ -56,7 +56,7 @@ FeynAmpDenominatorSplit[expr_, OptionsPattern[]] :=
 
 
 		If[	OptionValue[MomentumExpand],
-			allFadsEval = MomentumExpand/@allFadsEval
+			allFadsEval = MomentumExpand[allFadsEval]
 		];
 
 		If[ momList=!=All && Head[momList]===List,
