@@ -43,7 +43,31 @@ Tests`Lorentz`fcstMomentumExpand = {
 {"fcstMomentumExpand-ID14","Momentum[p + Momentum[3 q], D - 4]//MomentumExpand",
 	"Momentum[p, -4 + D] + 3*Momentum[q, {4, -4 + D}]"},
 {"fcstMomentumExpand-ID15","Pair[LorentzIndex[mu, D], Momentum[l - q, D]] // MomentumExpand",
-	"Pair[LorentzIndex[mu, D], Momentum[l, D] - Momentum[q, D]]"}
+	"Pair[LorentzIndex[mu, D], Momentum[l, D] - Momentum[q, D]]"},
+{"fcstMomentumExpand-ID16",
+"MomentumExpand[Pair[Momentum[x+y+z,D],Momentum[a+b+c,D]],Momentum\
+\[Rule]{x}]",
+"Pair[Momentum[a + b + c, D], Momentum[x, D] + Momentum[y + z, \
+D]]"},
+{"fcstMomentumExpand-ID17",
+"MomentumExpand[CartesianPair[CartesianMomentum[x+y+z],\
+CartesianMomentum[a+b+c]],Momentum\[Rule]{x}]",
+"CartesianPair[CartesianMomentum[a + b + c], CartesianMomentum[x] \
++ CartesianMomentum[y + z]]"},
+{"fcstMomentumExpand-ID18",
+"MomentumExpand[TemporalPair[ExplicitLorentzIndex[0],\
+TemporalMomentum[x+y+z]],Momentum\[Rule]{x}]",
+"TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[x] + \
+TemporalMomentum[y + z]]"},
+{"fcstMomentumExpand-ID19",
+"MomentumExpand[Momentum[x+y+z,D],Momentum\[Rule]{x}]",
+"Momentum[x, D] + Momentum[y + z, D]"},
+{"fcstMomentumExpand-ID20",
+"MomentumExpand[CartesianMomentum[x+y+z],Momentum\[Rule]{x}]",
+"CartesianMomentum[x] + CartesianMomentum[y + z]"},
+{"fcstMomentumExpand-ID21",
+"MomentumExpand[TemporalMomentum[x+y+z],Momentum\[Rule]{x}]",
+"TemporalMomentum[x] + TemporalMomentum[y + z]"}
 };
 
 Tests`Lorentz`fcstMomentumExpandNR =
