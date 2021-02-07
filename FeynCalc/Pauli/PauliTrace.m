@@ -50,6 +50,7 @@ Options[PauliTrace] = {
 	Contract 			-> True,
 	PauliTraceEvaluate	-> False,
 	EpsContract			-> False,
+	EpsExpand			-> True,
 	Expand				-> True,
 	FCPauliIsolate		-> True,
 	FCVerbose			-> False,
@@ -446,10 +447,10 @@ pauliTraceEvaluate[expr_/;!FreeQ[expr,PauliSigma], opts:OptionsPattern[]] :=
 		If[ !FreeQ[tmp, Eps],
 			time=AbsoluteTime[];
 			FCPrint[1,"PauliTrace: pauliTraceEvaluate: Treating Eps tensors.", FCDoControl->paTrVerbose];
-			tmp = EpsEvaluate[tmp,FCI->True]//Expand;
+			tmp = EpsEvaluate[tmp,FCI->True, EpsExpand->OptionValue[PauliTrace,{opts},EpsExpand]]//Expand;
 			If[ (contract===True || (NumberQ[contract] && LeafCount[tmp] < contract)),
 				tmp = Contract[ tmp, EpsContract -> OptionValue[PauliTrace,{opts},EpsContract],
-								Expanding -> False, FCI->True];
+								Expanding -> False, FCI->True, EpsExpand->OptionValue[PauliTrace,{opts},EpsExpand]];
 			];
 		];
 

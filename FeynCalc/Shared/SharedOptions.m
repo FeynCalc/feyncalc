@@ -71,6 +71,11 @@ and other functions. When set to True, all the loop integrals \
 that do not contain a FeynAmpDenominator, i.e. consist of only \
 scalar products but no denominators, are set to zero.";
 
+EpsExpand::usage =
+"EpsExpand is an option for EpsEvaluate and other functions that use \
+EpsEvaluate internally. When set to False, sums of momenta in the Eps
+tensor will not be rewritten as a sum of Eps tensors.";
+
 EpsilonOrder::usage =
 "EpsilonOrder is an option of OPEIntegrateDelta and RHI. The setting \
 determines the order n (Epsilon^n) which should be kept.";

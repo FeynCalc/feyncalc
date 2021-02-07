@@ -157,7 +157,17 @@ DiracChain[GA[mu].(GS[p] + m).GA[nu], DiracIndex[i],
 {"fcstContractContractionsIn4dims-ID32","Contract[DCHN[FV[p, mu] GA[nu, mu, rho], i, j], FCE -> True]",
 	"DCHN[GA[nu].GS[p].GA[rho], i, j]"},
 {"fcstContractContractionsIn4dims-ID33","Contract[FV[p, mu] DCHN[GA[nu, mu, rho], i, j], FCE -> True]",
-	"DCHN[GA[nu].GS[p].GA[rho], i, j]"}
+	"DCHN[GA[nu].GS[p].GA[rho], i, j]"},
+{"fcstContractContractionsIn4dims-ID34","Contract[(-MT[al, xi] + (FV[P, al] FV[P, xi])/M^2) LC[al, mu, nu,
+be] LC[xi, ka, om, ep] FV[p1, mu] FV[p2, nu] FV[p3 - p4, be] FV[p1,
+	ka] FV[p2, om] FV[p3 - p4, ep], EpsExpand -> False,
+ExpandScalarProduct -> False, FCE -> True]",
+	"-((SP[P, p3 - p4]^2*SP[p1, p2]^2)/M^2) + (2*SP[P, p2]*SP[P, p3 - p4]*SP[p1, p2]*SP[p1, p3 - p4])/M^2 - (SP[P, p2]^2*SP[p1, p3 - p4]^2)/M^2 + (SP[P, p3 - p4]^2*SP[p1, p1]*SP[p2, p2])/M^2 -
+(2*SP[P, p1]*SP[P, p3 - p4]*SP[p1, p3 - p4]*SP[p2, p2])/M^2 - SP[p1, p3 - p4]^2*SP[p2, p2] + (SP[P, P]*SP[p1, p3 - p4]^2*SP[p2, p2])/M^2 - (2*SP[P, p2]*SP[P, p3 - p4]*SP[p1, p1]*SP[p2, p3 - p4])/M^2 +
+(2*SP[P, p1]*SP[P, p3 - p4]*SP[p1, p2]*SP[p2, p3 - p4])/M^2 + (2*SP[P, p1]*SP[P, p2]*SP[p1, p3 - p4]*SP[p2, p3 - p4])/M^2 + 2*SP[p1, p2]*SP[p1, p3 - p4]*SP[p2, p3 - p4] -
+(2*SP[P, P]*SP[p1, p2]*SP[p1, p3 - p4]*SP[p2, p3 - p4])/M^2 - (SP[P, p1]^2*SP[p2, p3 - p4]^2)/M^2 - SP[p1, p1]*SP[p2, p3 - p4]^2 + (SP[P, P]*SP[p1, p1]*SP[p2, p3 - p4]^2)/M^2 + (SP[P, p2]^2*SP[p1, p1]*SP[p3 - p4, p3 - p4])/M^2 -
+(2*SP[P, p1]*SP[P, p2]*SP[p1, p2]*SP[p3 - p4, p3 - p4])/M^2 - SP[p1, p2]^2*SP[p3 - p4, p3 - p4] + (SP[P, P]*SP[p1, p2]^2*SP[p3 - p4, p3 - p4])/M^2 + (SP[P, p1]^2*SP[p2, p2]*SP[p3 - p4, p3 - p4])/M^2 +
+SP[p1, p1]*SP[p2, p2]*SP[p3 - p4, p3 - p4] - (SP[P, P]*SP[p1, p1]*SP[p2, p2]*SP[p3 - p4, p3 - p4])/M^2"}
 };
 
 Tests`Lorentz`fcstContractDDims = {
@@ -288,7 +298,9 @@ Pair[LorentzIndex[i1], LorentzIndex[j2]]*Pair[LorentzIndex[i2], LorentzIndex[j1]
 	"Eps[LorentzIndex[i1, D], LorentzIndex[i2, D], LorentzIndex[i3, D], Momentum[p]]"},
 {"fcstContractDDims-ID14","LCD[i1, i2, i3, i4] FVD[p, i4] // Contract",
 	"Eps[LorentzIndex[i1, D], LorentzIndex[i2, D], LorentzIndex[i3, D], Momentum[p, D]]"},
-{"fcstContractDDims-ID15","Contract[PairContract[LorentzIndex[i, D], Momentum[p, D]]] // FCE","FVD[p, i]"}
+{"fcstContractDDims-ID15","Contract[PairContract[LorentzIndex[i, D], Momentum[p, D]]] // FCE","FVD[p, i]"},
+{"fcstContractDDims-ID16","Contract[LC[i1, i2, i3][p1 + p2 + p3] LC[i1, i2, i3][q1 + q2 + q3],
+EpsExpand -> False, FCE -> True]","-6 SP[p1 + p2 + p3, q1 + q2 + q3]"}
 };
 
 

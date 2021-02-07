@@ -287,6 +287,7 @@ Options[Contract] = {
 	Collecting      	-> True,
 	Contract3       	-> True,
 	EpsContract     	-> True,
+	EpsExpand    		-> True,
 	Expanding       	-> True,
 	ExpandScalarProduct -> True,
 	Factoring       	-> False,
@@ -305,10 +306,11 @@ Contract[l_List, opts:OptionsPattern[]] :=
 Contract[expr_, z:OptionsPattern[]] :=
 	Block[{ex, tmp, rest1=0,rest2=0,rest3=0,noDummy=0,nodot,
 		null1,null2,freeIndList,freeHead,tmpFin,res,expandOpt,
-		epsContractOpt,renameOpt,schoutenOpt,times,tmpList,time,tmpCheck},
+		epsContractOpt,renameOpt,schoutenOpt,times,tmpList,time,tmpCheck, epsExpandOpt},
 
 		expandOpt 		= OptionValue[Expanding];
 		epsContractOpt 	= OptionValue[EpsContract];
+		epsExpandOpt 	= OptionValue[EpsExpand];
 		renameOpt 		= OptionValue[Rename];
 		schoutenOpt 	= OptionValue[Schouten];
 		optExpandScalarProduct = OptionValue[ExpandScalarProduct];
@@ -509,14 +511,14 @@ Contract[expr_, z:OptionsPattern[]] :=
 
 		If[	!FreeQ[tmpFin, Eps],
 			FCPrint[1,"Contract: Applying EpsEvaluate.", FCDoControl->cnVerbose];
-			tmpFin = EpsEvaluate[tmpFin,FCI->True];
+			tmpFin = EpsEvaluate[tmpFin,FCI->True, EpsExpand->epsExpandOpt];
 			FCPrint[3,"Contract: After EpsEvaluate: ", tmpFin, FCDoControl->cnVerbose];
 		];
 
 		If[	renameOpt && !FreeQ[tmpFin, Eps],
 			time=AbsoluteTime[];
 			FCPrint[1,"Contract: Renaming dummy indices in epsilon tensors.", FCDoControl->cnVerbose];
-			tmpFin = doubleindex[Expand2[ EpsEvaluate[tmpFin,FCI->True], Eps]];
+			tmpFin = doubleindex[Expand2[ EpsEvaluate[tmpFin,FCI->True, EpsExpand->epsExpandOpt], Eps]];
 			FCPrint[1,"Contract: Renaming done: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
 		];
 
@@ -591,11 +593,11 @@ Contract[expr_, z:OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1,"Contract: Applying EpsEvaluate.", FCDoControl->cnVerbose];
 			If[	!FreeQ[tmpFin, Eps],
-				tmpFin = EpsEvaluate[tmpFin,FCI->True];
+				tmpFin = EpsEvaluate[tmpFin,FCI->True, EpsExpand->epsExpandOpt];
 				FCPrint[3,"Contract: After EpsEvaluate: ", tmpFin, FCDoControl->cnVerbose];
 			];
 			If[	!FreeQ[noDummy, Eps],
-				noDummy = EpsEvaluate[noDummy,FCI->True];
+				noDummy = EpsEvaluate[noDummy,FCI->True, EpsExpand->epsExpandOpt];
 				FCPrint[3,"Contract: After EpsEvaluate: ", noDummy, FCDoControl->cnVerbose];
 			];
 			FCPrint[1,"Contract: EpsEvaluate done: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];

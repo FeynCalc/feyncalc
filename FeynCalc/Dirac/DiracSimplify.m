@@ -56,6 +56,7 @@ optContract::usage="";
 optToDiracGamma67::usage="";
 optSpinorChainEvaluate::usage="";
 optDiracSpinorNormalization::usage="";
+optEpsExpand::usage="";
 
 Options[DiracSimplify] = {
 	CartesianIndexNames			-> {},
@@ -72,6 +73,7 @@ Options[DiracSimplify] = {
 	DiracTrace					-> True,
 	DiracTraceEvaluate			-> True,
 	EpsContract					-> True,
+	EpsExpand					-> True,
 	Expand2						-> True,
 	ExpandScalarProduct			-> True,
 	Expanding					-> True,
@@ -120,6 +122,7 @@ DiracSimplify[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 		optDiracSubstitute67			= OptionValue[DiracSubstitute67];
 		optDiracTraceEvaluate   		= OptionValue[DiracTraceEvaluate];
 		optEpsContract					= OptionValue[EpsContract];
+		optEpsExpand					= OptionValue[EpsExpand];
 		optExpandScalarProduct			= OptionValue[ExpandScalarProduct];
 		optExpanding  					= OptionValue[Expanding];
 		optInsideDiracTrace				= OptionValue[InsideDiracTrace];
@@ -398,7 +401,7 @@ diracSimplifyEval[expr_]:=
 				time2=AbsoluteTime[];
 				FCPrint[2, "DiracSimplify: diracSimplifyEval: Applying EpsContract.", FCDoControl->dsVerbose];
 				If[	optEpsContract,
-					tmp = EpsContract[tmp,FCI->True]//EpsEvaluate[#,FCI->True]&
+					tmp = EpsContract[tmp,FCI->True]//EpsEvaluate[#,FCI->True, EpsExpand->optEpsExpand]&
 				];
 				FCPrint[2, "DiracSimplify: diracSimplifyEval: EpsContract done, timing: ", N[AbsoluteTime[] - time2, 4] , FCDoControl->dsVerbose];
 				FCPrint[3, "DiracSimplify: diracSimplifyEval: After EpsContract: ", tmp, FCDoControl->dsVerbose];
@@ -424,7 +427,7 @@ diracSimplifyEval[expr_]:=
 			time2=AbsoluteTime[];
 			FCPrint[2, "DiracSimplify: diracSimplifyEval: Applying EpsContract.", FCDoControl->dsVerbose];
 				If[	optEpsContract,
-					tmp = EpsContract[tmp,FCI->True]//EpsEvaluate[#,FCI->True]&
+					tmp = EpsContract[tmp,FCI->True]//EpsEvaluate[#,FCI->True, EpsExpand->optEpsExpand]&
 				];
 			FCPrint[2, "DiracSimplify: diracSimplifyEval: EpsContract done, timing: ", N[AbsoluteTime[] - time2, 4] , FCDoControl->dsVerbose];
 			FCPrint[3, "DiracSimplify: diracSimplifyEval: After EpsContract: ", tmp, FCDoControl->dsVerbose];

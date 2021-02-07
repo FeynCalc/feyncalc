@@ -54,6 +54,7 @@ Options[DiracTrace] = {
 	Contract 			-> True,
 	DiracTraceEvaluate	-> False,
 	EpsContract			-> False,
+	EpsExpand			-> True,
 	Expand				-> True,
 	FCVerbose			-> False,
 	Factoring			-> Automatic,
@@ -490,10 +491,10 @@ diracTraceEvaluate[expr_/;!FreeQ[expr,DiracGamma], opts:OptionsPattern[]] :=
 		If[ !FreeQ[tmp, Eps],
 			time=AbsoluteTime[];
 			FCPrint[1,"DiracTrace: diracTraceEvaluate: Treating Eps tensors.", FCDoControl->diTrVerbose];
-			tmp = EpsEvaluate[tmp,FCI->True]//Expand;
+			tmp = EpsEvaluate[tmp,FCI->True, EpsExpand->OptionValue[DiracTrace,{opts},EpsExpand]]//Expand;
 			If[ (contract===True || (NumberQ[contract] && LeafCount[tmp] < contract)),
 				tmp = Contract[ tmp, EpsContract -> OptionValue[DiracTrace,{opts},EpsContract],
-								Schouten->schoutenopt, Expanding -> False, FCI->True];
+								Schouten->schoutenopt, Expanding -> False, FCI->True, EpsExpand->OptionValue[DiracTrace,{opts},EpsExpand]];
 			];
 		];
 

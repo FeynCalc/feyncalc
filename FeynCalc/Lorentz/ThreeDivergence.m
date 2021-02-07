@@ -41,7 +41,7 @@ can deactivate this message for the current session by evaluating \
 Off[ThreeDivergence::warn].";
 
 ThreeDivergence::warnLorentz =
-"Warning! The input expression also depends on the 4-momentum `1`. The derivatives of \
+"Warning! The input expression also depends on the 3-momentum `1`. The derivatives of \
 such quantities w.r.t the corresponding 3-vector are zero. Please check that \
 this is indeed intended. You can deactivate this message for the current session by \
 evaluating  Off[ThreeDivergence::warnLorentz].";
@@ -54,6 +54,7 @@ End[]
 Begin["`ThreeDivergence`Private`"]
 
 fdVerbose::usage="";
+optEpsExpand::usage="";
 
 Options[ThreeDivergence] = {
 	Abort 				-> True,
@@ -61,6 +62,7 @@ Options[ThreeDivergence] = {
 	Collecting			-> True,
 	Contract 			-> True,
 	EpsEvaluate 		-> True,
+	EpsExpand			-> True,
 	ExpandScalarProduct -> True,
 	FCE 				-> False,
 	FCI 				-> False,
@@ -69,7 +71,11 @@ Options[ThreeDivergence] = {
 };
 
 ThreeDivergence[expr_, cv:Except[_?OptionQ].., OptionsPattern[]] :=
-	Block[{ex, ve, tliflag = False, time, args, hold},
+	Block[{	ex, ve, tliflag = False, time, args, hold, optEpsEvaluate,
+			optEpsExpand},
+
+		optEpsEvaluate	= OptionValue[EpsEvaluate];
+		optEpsExpand	= OptionValue[EpsExpand];
 
 		If [OptionValue[FCVerbose]===False,
 			fdVerbose=$VeryVerbose,
@@ -108,7 +114,7 @@ ThreeDivergence[expr_, cv:Except[_?OptionQ].., OptionsPattern[]] :=
 		If[	OptionValue[Contract],
 			FCPrint[1, "ThreeDivergence: Applying Contract.", FCDoControl->fdVerbose];
 			time=AbsoluteTime[];
-			ex = Contract[ex, FCI->True];
+			ex = Contract[ex, FCI->True, EpsExpand->optEpsExpand];
 			FCPrint[1, "ThreeDivergence: Contract done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fdVerbose];
 			FCPrint[3, "ThreeDivergence: After Contract: ", ex, FCDoControl->fdVerbose]
 		];
@@ -116,7 +122,7 @@ ThreeDivergence[expr_, cv:Except[_?OptionQ].., OptionsPattern[]] :=
 		If[	OptionValue[ExpandScalarProduct],
 			FCPrint[1, "ThreeDivergence: Applying ExpandScalarProduct.", FCDoControl->fdVerbose];
 			time=AbsoluteTime[];
-			ex = ExpandScalarProduct[ex, FCI->True, EpsEvaluate->OptionValue[EpsEvaluate]];
+			ex = ExpandScalarProduct[ex, FCI->True, EpsEvaluate->optEpsEvaluate, EpsExpand->optEpsExpand];
 			FCPrint[1, "ThreeDivergence: ExpandScalarProduct done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fdVerbose];
 			FCPrint[3, "ThreeDivergence: After ExpandScalarProduct: ", ex, FCDoControl->fdVerbose]
 		];
@@ -239,8 +245,8 @@ threeDerivative[x_, ve_]:=
 			deriv[0,0,1,0][Eps][a__,p,c_] :> Eps[a,mu,c] ,
 			deriv[0,0,0,1][Eps][c__,p] :> Eps[c,mu],
 			deriv[1,0,0][Eps][p,c__] :> Eps[mu,c] ,
-			deriv[0,1,0][Eps][a_,p,c__] :> Eps[a,mu,c] ,
-			deriv[0,0,1][Eps][a__,p,c_] :> Eps[a,mu,c]
+			deriv[0,1,0][Eps][a_,p,c_] :> Eps[a,mu,c] ,
+			deriv[0,0,1][Eps][a__,p] :> Eps[a,mu]
 		} /. deriv -> Derivative;
 
 		repRuleFinal = Thread[Rule[dList,dListEval]];

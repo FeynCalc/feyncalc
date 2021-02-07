@@ -38,6 +38,7 @@ optMomentum::usage="";
 
 Options[ExpandScalarProduct] = {
 	EpsEvaluate -> False,
+	EpsExpand	-> True,
 	FCE 		-> False,
 	FCI 		-> False,
 	Full 		-> True,
@@ -98,7 +99,7 @@ ExpandScalarProduct[expr_, OptionsPattern[]] :=
 		];
 
 		If[	OptionValue[EpsEvaluate] && !FreeQ[ex,Eps],
-			ex = EpsEvaluate[ex,FCI->True,Momentum->OptionValue[Momentum]]
+			ex = EpsEvaluate[ex,FCI->True,Momentum->OptionValue[Momentum],EpsExpand->OptionValue[EpsExpand]]
 		];
 
 		If[	OptionValue[FCE],

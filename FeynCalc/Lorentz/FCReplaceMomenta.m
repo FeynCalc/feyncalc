@@ -39,6 +39,7 @@ fcrmVerbose::usage="";
 Options[FCReplaceMomenta] = {
 	Dimensions			-> All,
 	EpsEvaluate 		-> False,
+	EpsExpand 			-> True,
 	ExpandScalarProduct -> False,
 	FCE 				-> False,
 	FCI 				-> False,
@@ -125,8 +126,10 @@ FCReplaceMomenta[expr_, replacementRules_List/;replacementRules=!={},  OptionsPa
 
 		];
 
+		FCPrint[3,"FCReplaceMomenta: Relevant objects: ", relevantObjects, FCDoControl->fcrmVerbose];
+
 		If[ OptionValue[MomentumExpand],
-			relevantObjectsEval = MomentumExpand/@relevantObjects,
+			relevantObjectsEval = MomentumExpand[relevantObjects, Momentum->relevantMomenta],
 			relevantObjectsEval = relevantObjects
 		];
 
@@ -155,7 +158,7 @@ FCReplaceMomenta[expr_, replacementRules_List/;replacementRules=!={},  OptionsPa
 		relevantObjectsEval = relevantObjectsEval /. Dispatch[intermediateRepRule];
 
 
-		relevantObjectsEval = (MomentumExpand/@relevantObjectsEval) //. (h:sel)[x_ y_, dm___]/; MemberQ[vars,x] :>  x h[y, dm] ;
+		relevantObjectsEval = MomentumExpand[relevantObjectsEval, Momentum->relevantMomenta] //. (h:sel)[x_ y_, dm___]/; MemberQ[vars,x] :>  x h[y, dm] ;
 
 		finalRepRule = Thread[Rule[relevantObjects,relevantObjectsEval]];
 
@@ -170,7 +173,7 @@ FCReplaceMomenta[expr_, replacementRules_List/;replacementRules=!={},  OptionsPa
 		];
 
 		If [OptionValue[EpsEvaluate],
-			res = EpsEvaluate[res,FCI->True]
+			res = EpsEvaluate[res,FCI->True, EpsExpand->OptionValue[EpsExpand]]
 		];
 
 		If [OptionValue[ExpandScalarProduct],

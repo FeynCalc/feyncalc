@@ -44,15 +44,15 @@ insidePauliTrace::usage="";
 pauliOrder::usage="";
 
 Options[PauliTrick] = {
-	Expanding -> False,
-	FCE -> False,
-	FCI -> False,
-	FCJoinDOTs -> False,
-	FCPauliIsolate -> True,
-	FCVerbose -> False,
-	InsidePauliTrace -> False,
-	PauliSigmaCombine -> False,
-	PauliReduce -> False
+	Expanding			-> False,
+	FCE					-> False,
+	FCI					-> False,
+	FCJoinDOTs			-> False,
+	FCPauliIsolate		-> True,
+	FCVerbose			-> False,
+	InsidePauliTrace	-> False,
+	PauliSigmaCombine	-> False,
+	PauliReduce			-> False
 };
 
 pauliTrickEvalFastFromPauliSimplifyList[pauliObjects_List, {optInsidePauliTrace_, optPauliOrder_}]:=

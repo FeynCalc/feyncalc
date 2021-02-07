@@ -233,7 +233,13 @@ Spinor[-Momentum[p1, D], mb, 1].GAD[i1].GAD[i2].GAD[i3].GAD[i4].GAD[
 x SpinorUBarD[p].GAD[mu].SpinorUD[p] + y SpinorUBarD[p].SpinorUD[p],
 SpinorChainEvaluate -> False, FCE -> True]",
 "y Spinor[Momentum[p, D], 0, 1].Spinor[Momentum[p, D], 0, 1] +
-x Spinor[Momentum[p, D], 0, 1].GAD[mu].Spinor[Momentum[p, D], 0, 1]"}
+x Spinor[Momentum[p, D], 0, 1].GAD[mu].Spinor[Momentum[p, D], 0, 1]"},
+{"fcstDiracSimplify-ID48",
+"DiracSimplify[
+GSD[p] . GAD[mu] . GSD[p] LCD[mu][p1 + q1, p2 + q2, p3 + q3],
+EpsExpand -> False, FCE -> True]",
+"2 GSD[p] LCD[][p, p1 + q1, p2 + q2, p3 + q3] -
+GAD[mu] SPD[p, p] LCD[mu][p1 + q1, p2 + q2, p3 + q3]"}
 };
 
 

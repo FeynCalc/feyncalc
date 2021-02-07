@@ -464,5 +464,9 @@ m]*KDD[o, p] + KDD[i, j]*KDD[k, n]*KDD[l, m]*KDD[o, p] - KDD[i, \
 m]*KDD[j, k]*KDD[l, n]*KDD[o, p] + KDD[i, k]*KDD[j, m]*KDD[l, \
 n]*KDD[o, p] - KDD[i, j]*KDD[k, m]*KDD[l, n]*KDD[o, p] + KDD[i, \
 l]*KDD[j, k]*KDD[m, n]*KDD[o, p] - KDD[i, k]*KDD[j, l]*KDD[m, \
-n]*KDD[o, p] + KDD[i, j]*KDD[k, l]*KDD[m, n]*KDD[o, p])"}
+n]*KDD[o, p] + KDD[i, j]*KDD[k, l]*KDD[m, n]*KDD[o, p])"},
+{"fcstPauliTrace-ID36",
+"PauliTrace[CSIS[p1 + p2 + p3] . CSI[i1, i2],
+PauliTraceEvaluate -> True, EpsExpand -> False, FCE -> True]",
+"2 I CLC[i1, i2][p1 + p2 + p3]"}
 });

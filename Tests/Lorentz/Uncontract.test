@@ -205,5 +205,9 @@ LorentzIndexNames -> {mu}, FCE -> True]", "me DCHN[1, Dir3, Dir4] - DCHN[GAD[mu]
 {"fcstUncontract-ID59", "FCCanonicalizeDummyIndices[
 Uncontract[DCHN[GA[mu].(-GSD[k] + me).GA[nu], Dir3, Dir4], k],
 LorentzIndexNames -> {la}, FCE -> True]", "me DCHN[GA[mu].GA[nu], Dir3, Dir4] -
-DCHN[GA[mu].GAD[la].GA[nu], Dir3, Dir4] FVD[k, la]"}
+DCHN[GA[mu].GAD[la].GA[nu], Dir3, Dir4] FVD[k, la]"},
+{"fcstUncontract-ID60", "FCCanonicalizeDummyIndices[
+Uncontract[LC[i1, i2][q1 + q2 + q3, p1 + p2 + p3], q1],
+LorentzIndexNames -> {mu}, FCE -> True]", "-LC[i1, i2][p1 + p2 + p3, q2 + q3] +
+FV[q1, mu] LC[i1, i2, mu][p1 + p2 + p3]"}
 });

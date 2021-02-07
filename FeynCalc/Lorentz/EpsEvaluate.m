@@ -30,16 +30,19 @@ End[]
 
 Begin["`EpsEvaluate`Private`"]
 
+optMomentum::usage="";
+
 Options[EpsEvaluate] = {
+	EpsExpand	-> True,
 	FCE			-> False,
 	FCI 		-> False,
 	Momentum	-> All
 };
 
 EpsEvaluate[expr_, OptionsPattern[]]:=
-	Block[{ex, momList, uniqList, rud, repRule, null1, null2, res},
+	Block[{ex, uniqList, rud, repRule, null1, null2, res, epsEval},
 
-		momList = OptionValue[Momentum];
+		optMomentum = OptionValue[Momentum];
 
 		If[ !OptionValue[FCI],
 			ex = FCI[expr],
@@ -57,17 +60,21 @@ EpsEvaluate[expr_, OptionsPattern[]]:=
 
 		(*	If the user specified to perform expansion only for some
 			special momenta, let's do it	*)
-		If[ momList=!=All && Head[momList]===List,
-			uniqList = Select[uniqList, !FreeQ2[#, momList]&]
+		If[ optMomentum=!=All && Head[optMomentum]===List,
+			uniqList = Select[uniqList, !FreeQ2[#, optMomentum]&]
 		];
 
 		(* List of the expanded epsilons	*)
+		If[	OptionValue[EpsExpand],
+			epsEval = epsEvalMomExpand,
+			epsEval = epsEvalMomCombine
+		];
 
 		repRule = Thread[rud[uniqList, uniqList/.Eps->epsEval]];
 		repRule = repRule /. rud[a_, a_] :> Unevaluated@Sequence[] /. rud->RuleDelayed;
 
 		(* Simple cross check	*)
-		If[ !FreeQ2[repRule,{epsEval,epsEvalLinearity,epsEvalAntiSymm}],
+		If[ !FreeQ2[repRule,{epsEvalMomExpand,epsEvalMomCombine,epsEvalLinearity,epsEvalAntiSymm}],
 			Message[EpsEvaluate::failmsg, "Some expressions could not be evaluated."];
 			Abort[]
 		];
@@ -82,8 +89,12 @@ EpsEvaluate[expr_, OptionsPattern[]]:=
 
 	];
 
-epsEval[a_,b_,c__] :=
-	(Expand/@(Distribute[DOT[a,b,c]//MomentumExpand]))/.
+epsEvalMomExpand[a_,b_,c__] :=
+	(Expand/@( Distribute[MomentumExpand[DOT[a,b,c], Momentum->optMomentum]](**) ))/.
+	DOT->epsEvalLinearity/.epsEvalLinearity->epsEvalAntiSymm/.epsEvalAntiSymm -> epsEvalAntiSymm2 /. epsEvalAntiSymm2 -> Eps
+
+epsEvalMomCombine[a_,b_,c__] :=
+	(Expand/@( Distribute[MomentumCombine[DOT[a,b,c]]] ))/.
 	DOT->epsEvalLinearity/.epsEvalLinearity->epsEvalAntiSymm/.epsEvalAntiSymm -> epsEvalAntiSymm2 /. epsEvalAntiSymm2 -> Eps
 
 

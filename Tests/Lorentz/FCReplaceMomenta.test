@@ -30,7 +30,7 @@ Tests`Lorentz`fcstFCReplaceMomenta =
 {"fcstFCReplaceMomenta-ID5",
 "FCReplaceMomenta[SPD[p,q],{p\[Rule]a q1 +c q2 \
 },Dimensions\[Rule]{4,D},Variables\[Rule]{a,c}]",
-"Pair[Momentum[q, D], a*Momentum[q1, D] + c*Momentum[q2, D]]"},
+"Pair[Momentum[q, D], Momentum[a*q1 + c*q2, D]]"},
 {"fcstFCReplaceMomenta-ID6",
 "FCReplaceMomenta[SPD[p,q],{p\[Rule]a q1 +c q2 \
 },Dimensions\[Rule]{4,D},Variables\[Rule]{a,c},Head\[Rule]{DiracGamma}\
@@ -38,8 +38,7 @@ Tests`Lorentz`fcstFCReplaceMomenta =
 {"fcstFCReplaceMomenta-ID7",
 "FCReplaceMomenta[GSD[p]SPD[p,q],{p\[Rule]a q1 +c q2 },Dimensions\
 \[Rule]{4,D},Variables\[Rule]{a,c},Head\[Rule]{DiracGamma}]",
-"(a*DiracGamma[Momentum[q1, D], D] + c*DiracGamma[Momentum[q2, D], \
-D])*Pair[Momentum[p, D], Momentum[q, D]]"},
+"DiracGamma[Momentum[a*q1 + c*q2, D], D]*Pair[Momentum[p, D], Momentum[q, D]]"},
 {"fcstFCReplaceMomenta-ID8",
 "FCReplaceMomenta[Spinor[Momentum[p],m],{p\[Rule]a},Dimensions\[Rule]{4,D}]",
 	"Spinor[Momentum[p], m, 1]"},
@@ -84,5 +83,10 @@ FCE -> True]",
 CartesianPair[CartesianMomentum[kphat],
 CartesianMomentum[p2]], {p2 -> 1/2 P - Q},
 ExpandScalarProduct -> True,FCE->True]",
-"1/2 CSP[kphat, P] - CSP[kphat, Q]"}
+"1/2 CSP[kphat, P] - CSP[kphat, Q]"},
+{"fcstFCReplaceMomenta-ID10",
+"FCReplaceMomenta[LC[i1, i2][q1 + q2,
+p1 + p2 + p3], {q1 -> l1},EpsExpand -> False]",
+"Eps[LorentzIndex[i1], LorentzIndex[i2],
+Momentum[l1] + Momentum[q2],Momentum[p1 + p2 + p3]]"}
 });

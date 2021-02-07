@@ -82,6 +82,7 @@ Options[TID] = {
 	DiracSpinorNormalization				-> "Relativistic",
 	DiracTrace 								-> True,
 	EpsEvaluate								-> True,
+	EpsExpand								-> True,
 	ExpandScalarProduct						-> True,
 	FCE 									-> False,
 	FCI 									-> False,
@@ -118,11 +119,12 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 		loopIntegral, wrapped,loopList,repIndexList,canIndexList,uniqueCanIndexList,
 		solsList, repSolList, reversedRepIndexList,reducedLoopList,
 		finalRepList,isoContract,tmp,tempIsolate,loopListOrig, tmpli, time, time0, fclcOutput,
-		optExpandScalarProduct, noTID, fadCollect
+		optExpandScalarProduct, noTID, fadCollect, optEpsExpand
 	},
 
 		optExpandScalarProduct = OptionValue[ExpandScalarProduct];
 		optTimeConstrained = OptionValue[TimeConstrained];
+		optEpsExpand = OptionValue[EpsExpand];
 
 		If [OptionValue[FCVerbose]===False,
 			tidVerbose=$VeryVerbose,
@@ -167,7 +169,7 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 		If[	contractlabel && !FreeQ2[t0,{LorentzIndex,CartesianIndex}],
 			FCPrint[1, "TID: Applying Contract.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
-			t0 = Contract[t0, FCI->True, ExpandScalarProduct->optExpandScalarProduct];
+			t0 = Contract[t0, FCI->True, ExpandScalarProduct->optExpandScalarProduct, EpsExpand->optEpsExpand];
 			FCPrint[1, "TID: Done applying Contract, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 			FCPrint[3, "After Contract: ", t0 , FCDoControl->tidVerbose]
 		];
@@ -488,7 +490,7 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 
 					FCPrint[1, "TID: Applying Contract.", FCDoControl->tidVerbose];
 					time=AbsoluteTime[];
-					res = Contract[res,FCI->True, ExpandScalarProduct->optExpandScalarProduct]//
+					res = Contract[res,FCI->True, ExpandScalarProduct->optExpandScalarProduct, EpsExpand->optEpsExpand]//
 					ReplaceAll[#,Pair[z__]/;!FreeQ[{z},HoldForm]:>FRH[Pair[z]]]&//
 					ReplaceAll[#,CartesianPair[z__]/;!FreeQ[{z},HoldForm]:>FRH[CartesianPair[z]]]&;
 					FCPrint[1, "TID: Done applying Contract, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
@@ -603,7 +605,7 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 		If [OptionValue[EpsEvaluate] && !FreeQ[res,Eps],
 			FCPrint[1, "TID: Applying EpsEvaluate.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
-			res = EpsEvaluate[res, FCI->True];
+			res = EpsEvaluate[res, FCI->True, EpsExpand->optEpsExpand];
 			FCPrint[1, "TID: Done applying EpsEvaluate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 			FCPrint[3, "TID: After EpsEvaluate: ", res , FCDoControl->tidVerbose]
 		];

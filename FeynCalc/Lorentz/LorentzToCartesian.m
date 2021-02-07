@@ -39,6 +39,7 @@ Options[LorentzToCartesian] = {
 	DiracGammaExpand	-> True,
 	DotSimplify 		-> True,
 	EpsEvaluate			-> True,
+	EpsExpand			-> True,
 	ExpandScalarProduct -> True,
 	FCE 				-> False,
 	FCI 				-> False,
@@ -96,7 +97,7 @@ LorentzToCartesian[expr_, OptionsPattern[]]:=
 		If[	OptionValue[LC],
 			uniqListEval = uniqListEval /. Eps -> ltensorToCTensor /. ltensorToCTensor -> Eps;
 			If[ OptionValue[EpsEvaluate],
-				uniqListEval = EpsEvaluate[uniqListEval,FCI->True]
+				uniqListEval = EpsEvaluate[uniqListEval,FCI->True, EpsExpand->OptionValue[EpsExpand]]
 			];
 		];
 

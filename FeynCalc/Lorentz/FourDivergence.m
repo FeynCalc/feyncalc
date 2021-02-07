@@ -57,6 +57,7 @@ End[]
 Begin["`FourDivergence`Private`"]
 
 fdVerbose::usage="";
+optEpsExpand::usage="";
 
 PartialFourVector = FourDivergence;
 
@@ -66,6 +67,7 @@ Options[FourDivergence] = {
 	Collecting 			-> True,
 	Contract 			-> True,
 	EpsEvaluate 		-> True,
+	EpsExpand			-> True,
 	ExpandScalarProduct -> True,
 	FCE 				-> False,
 	FCI 				-> False,
@@ -74,7 +76,11 @@ Options[FourDivergence] = {
 };
 
 FourDivergence[expr_, fv:Except[_?OptionQ].., OptionsPattern[]] :=
-	Block[{ex, ve, tliflag = False, time, args, hold},
+	Block[{	ex, ve, tliflag = False, time, args, hold, optEpsEvaluate,
+			optEpsExpand},
+
+		optEpsEvaluate	= OptionValue[EpsEvaluate];
+		optEpsExpand	= OptionValue[EpsExpand];
 
 		If [OptionValue[FCVerbose]===False,
 			fdVerbose=$VeryVerbose,
@@ -124,7 +130,7 @@ FourDivergence[expr_, fv:Except[_?OptionQ].., OptionsPattern[]] :=
 		If[	OptionValue[Contract],
 			FCPrint[1, "FourDivergence: Applying Contract.", FCDoControl->fdVerbose];
 			time=AbsoluteTime[];
-			ex = Contract[ex, FCI->True];
+			ex = Contract[ex, FCI->True, EpsExpand->optEpsExpand];
 			FCPrint[1, "FourDivergence: Contract done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fdVerbose];
 			FCPrint[3, "FourDivergence: After Contract: ", ex, FCDoControl->fdVerbose]
 		];
@@ -132,7 +138,7 @@ FourDivergence[expr_, fv:Except[_?OptionQ].., OptionsPattern[]] :=
 		If[	OptionValue[ExpandScalarProduct],
 			FCPrint[1, "FourDivergence: Applying ExpandScalarProduct.", FCDoControl->fdVerbose];
 			time=AbsoluteTime[];
-			ex = ExpandScalarProduct[ex, FCI->True, EpsEvaluate->OptionValue[EpsEvaluate]];
+			ex = ExpandScalarProduct[ex, FCI->True, EpsEvaluate->optEpsEvaluate, EpsExpand->optEpsExpand];
 			FCPrint[1, "FourDivergence: ExpandScalarProduct done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fdVerbose];
 			FCPrint[3, "FourDivergence: After ExpandScalarProduct: ", ex, FCDoControl->fdVerbose]
 		];
