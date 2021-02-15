@@ -248,11 +248,11 @@ FCDiracIsolate[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 			head[holdDOT[x__] y_.]/; FreeQ[{x},Spinor] && !FreeQ[{x},DiracGamma] :> holdDOT[x] head[y]
 		];
 
-		FCPrint[1, "FCDiracIsolate: Done removing unneeded isolations, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
-
 		If[	OptionValue[Spinor]===False && !FreeQ[allHeadsEval,Spinor],
 			allHeadsEval = allHeadsEval //. head[holdDOT[x__] y_.]/; !FreeQ[{x},Spinor] :> holdDOT[x] head[y]
 		];
+
+		FCPrint[1, "FCDiracIsolate: Done removing unneeded isolations, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
 
 		allHeadsEval = allHeadsEval /. holdDOT->DOT //. head[x_]/; FreeQ2[x,headsList] :> x;
 
