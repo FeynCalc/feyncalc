@@ -125,5 +125,8 @@ x1*x2*SPD[p, p]))/2))/(x1 + x2)^D, Gamma[2 - D/2], {x1, x2}}"},
 nu])/2, {}}"},
 {"fcstFCFeynmanParametrize-ID16",
 "FCFeynmanParametrize[FAD[{q-p,m}],{q},Names\[Rule]x,Indexed\[Rule]\
-False,FCE\[Rule]True]", "{1, -((m^2)^(-1 + D/2)*Gamma[1 - D/2]), {}}"}
+False,FCE\[Rule]True]", "{1, -((m^2)^(-1 + D/2)*Gamma[1 - D/2]), {}}"},
+{"fcstFCFeynmanParametrize-ID17",
+"FCFeynmanParametrize[xxx FAD[{p, m}], {p}]",
+"{1, -((m^2)^(-1 + D/2)*xxx*Gamma[1 - D/2]), {}}"}
 });

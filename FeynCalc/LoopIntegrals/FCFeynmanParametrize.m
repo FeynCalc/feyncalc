@@ -67,7 +67,7 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 			propPowersHat, propPowersTilde, ppSymbols, ppSymbolsRule,
 			denPowers, zeroPowerProps, numPowers, numVars, zeroDenVars,
 			nM,nLoops,fPow,pref,fpInt, fpPref, optFCReplaceD, vars, optVariavbles,
-			aux, ex, Q, J, tensorPart, tensorRank, optMethod},
+			aux, ex, Q, J, tensorPart, tensorRank, optMethod, extraPref},
 
 		optFinalSubstitutions	= OptionValue[FinalSubstitutions];
 		dim						= OptionValue[Dimension];
@@ -99,6 +99,12 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 			Message[FCFeynmanParametrize::failmsg,"Integrals that simultaneously depend on Lorentz and Cartesian vectors are not supported."];
 			Abort[]
 		];
+
+		{extraPref, ex} = FCProductSplit[ex, Join[{lmoms},{FeynAmpDenominator, Pair, CartesianPair}]];
+
+		FCPrint[1,"FCFeynmanParametrize: Prefactor in the input: ", extraPref, FCDoControl->fcfpVerbose];
+
+		FCPrint[1,"FCFeynmanParametrize: Calling FCFeynmanPrepare.", FCDoControl->fcfpVerbose];
 
 		{uPoly, fPoly, pows, mat, Q, J, tensorPart, tensorRank} = FCFeynmanPrepare[ex,lmoms, FCI->True,
 			FinalSubstitutions->OptionValue[FinalSubstitutions], Names->OptionValue[Names], Indexed->OptionValue[Indexed]];
@@ -159,7 +165,7 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 		propPowers = Delete[propPowers,zeroPowerProps];
 		vars = Delete[First[powsT],zeroPowerProps];
 
-		pref = Gamma[fPow]/(Times @@ (Gamma /@ propPowers));
+		pref = extraPref*Gamma[fPow]/(Times @@ (Gamma /@ propPowers));
 
 		If[!isCartesian,
 			pref = pref*(-1)^nM
