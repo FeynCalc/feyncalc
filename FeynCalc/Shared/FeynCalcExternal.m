@@ -62,6 +62,8 @@ FeynCalcExternal[x_,opts___Rule] :=
 		ru = {
 			DiracIndexDelta :> diracdelta,
 			DiracChain :> diracchain,
+			PauliIndexDelta :> paulidelta,
+			PauliChain :> paulichain,
 			PauliSigma :> sigmaback,
 			DiracGamma :> diracback,
 			DiracSigma :> dirsig,
@@ -84,6 +86,8 @@ FeynCalcExternal[x_,opts___Rule] :=
 		vv = Cases2[x, {
 				DiracChain,
 				DiracIndexDelta,
+				PauliChain,
+				PauliIndexDelta,
 				CartesianPair,
 				DiracGamma,
 				DiracSigma,
@@ -120,6 +124,19 @@ diracchain[a_,b_,c_]:=
 	(
 	fermtmp=FCE[{a,b,c}];
 	(DCHN@@fermtmp) /. (DiracIndex|ExplicitDiracIndex) -> iDent
+	)
+
+
+paulidelta[i_,j_]:=
+	PIDelta[i,j] /. (PauliIndex|ExplicitPauliIndex) -> iDent;
+
+paulichain[a_,b_]:=
+	PCHN[FCE[a],b] /. (PauliIndex|ExplicitPauliIndex) -> iDent;
+
+paulichain[a_,b_,c_]:=
+	(
+	fermtmp=FCE[{a,b,c}];
+	(PCHN@@fermtmp) /. (PauliIndex|ExplicitPauliIndex) -> iDent
 	)
 
 dirsig[a__] :=

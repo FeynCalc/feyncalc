@@ -45,7 +45,7 @@ Options[FCMatrixIsolate] = {
 	FCDiracIsolate 	-> {FCGV["DiracObject"], {FCI->True, DiracChain->True, Expanding->False, FCJoinDOTs->False}},
 	FCE				-> False,
 	FCI				-> False,
-	FCPauliIsolate	-> {FCGV["PauliObject"], {FCI->True, Expanding->False, FCJoinDOTs->False}},
+	FCPauliIsolate	-> {FCGV["PauliObject"], {FCI->True, PauliChain->True, Expanding->False, FCJoinDOTs->False}},
 	FCVerbose 		-> False,
 	Factoring		-> Factor,
 	Head			-> Identity,

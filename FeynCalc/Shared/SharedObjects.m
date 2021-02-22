@@ -125,6 +125,11 @@ ExplicitDiracIndex::usage =
 "ExplicitDiracIndex[ind] is an explicit Dirac index, i.e., ind is \
 an integer.";
 
+ExplicitPauliIndex::usage =
+"ExplicitPauliIndex[ind] is an explicit Pauli index, i.e., ind is \
+an integer.";
+
+
 ExplicitLorentzIndex::usage =
 "ExplicitLorentzIndex[ind] is an explicit Lorentz index, i.e., ind is \
 an integer.";
@@ -144,16 +149,16 @@ FAD[{q1,m}, {q1-p,m}, q2, ...] is \
 (Translation into FeynCalc internal form is performed by \
 FeynCalcInternal.)";
 
-DCHN::usage =
-"DCHN[x,i,j] is a chain of Dirac matrices x and is transformed \
-into DiracChain[FCI[x],DiracIndex[i],DiracIndex[j]] by \
-FeynCalcInternal.";
-
 FCTopology::usage=
 "FCTopology[id, {prop1, prop2, ...}] denotes a topology with the identifier id \
 that is characterized by the propagators {prop1, prop2, ...}. The propagators \
 in the list do not necessarily have to form a valid basis, i.e. the basis may also \
 be incomplete or overdetermined.";
+
+DCHN::usage =
+"DCHN[x,i,j] is a chain of Dirac matrices x and is transformed \
+into DiracChain[FCI[x],DiracIndex[i],DiracIndex[j]] by \
+FeynCalcInternal.";
 
 DiracChain::usage =
 "DiracChain[x,i,j] denotes a chain of Dirac \
@@ -852,6 +857,40 @@ TemporalPair::usage =
 "TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p]] is a special pairing used in the internal \
 representation to denote p^0, the temporal components of a four momentum p.";
 
+PauliIndex::usage =
+"PauliIndex is the head of Pauli indices. \
+The internal representation of a two-dimensional \
+spinorial index i is PauliIndex[i]. If the first \
+argument is an integer, PauliIndex[i] turns into \
+ExplicitPauliIndex[i]. \n
+Pauli indices are the indices that denote the components \
+of Pauli matrices or spinors. They should not be confused with \
+the Cartesian indices attached to the Pauli matrices. For example \
+in case of si^i_jk, i is a Cartesian index, while j and k are \
+spinorial indices.";
+
+PauliIndexDelta::usage =
+"PauliIndexDelta[PauliIndex[i],PauliIndex[j]] is the Kronecker-delta \
+in the Pauli space with two explicit Pauli indices i and j.";
+
+PIDelta::usage =
+"PIDelta[i,j] is the Kronecker-delta in the Pauli space. PIDelta[i,j] is \
+transformed into PauliDelta[PauliIndex[i],PauliIndex[j]] by FeynCalcInternal.";
+
+PCHN::usage =
+"PCHN[x,i,j] is a chain of Pauli matrices x and is transformed \
+into PauliChain[FCI[x],PauliIndex[i],PauliIndex[j]] by \
+FeynCalcInternal.";
+
+PauliChain::usage =
+"PauliChain[x,i,j] denotes a chain of Pauli \
+matrices x, where the Pauli indices i and j \
+are explicit. For example, \
+PauliChain[PauliSigma[CartesianIndex[i]],PauliIndex[j],PauliIndex[k]] \
+denotes a standalone Pauli matrix s^i_jk. A PauliChain with only two \
+arguments denotes a spinor component, e.g. \
+PauliChain[PauliXi[I],PauliIndex[i]] stands for the i-th \
+component of  PauliXi[I]";
 
 (* ------------------------------------------------------------------------ *)
 Begin["`Package`"]
@@ -952,8 +991,11 @@ Protect[Conjugate];
 
 SetAttributes[DIDelta, Orderless];
 SetAttributes[DiracIndexDelta, Orderless];
+SetAttributes[PIDelta, Orderless];
+SetAttributes[PauliIndexDelta, Orderless];
 SetAttributes[ExplicitLorentzIndex, Constant];
 SetAttributes[ExplicitDiracIndex, Constant];
+SetAttributes[ExplicitPauliIndex, Constant];
 SetAttributes[ExplicitSUNIndex, {Constant, Flat, OneIdentity}];
 SetAttributes[ExplicitSUNFIndex, {Constant, Flat, OneIdentity}];
 SetAttributes[LorentzIndex, Constant];
@@ -2205,6 +2247,41 @@ PauliSigma[ExplicitLorentzIndex[0]]=
 
 PauliSigma[x_ n_ /; DataType[n, FCVariable], dim_: 3] :=
 	n PauliSigma[x, dim];
+
+
+(* Explicit Pauli indices *)
+
+PauliChain[0,__]:=
+	0;
+
+PauliChain[_,0]:=
+	0;
+
+PauliChain[1, (i:(_PauliEta|_PauliXi)), j : (_PauliIndex | _ExplicitPauliIndex)]:=
+	PauliChain[i,j];
+
+PauliChain[x_/;x=!=1, i_,j_]/; FreeQ2[{FCI[x]},PauliHeadsList] && FCPatternFreeQ[{x,i,j}]:=
+	x PauliChain[1, i,j];
+
+PauliChain[1, a:(_PauliEta|_PauliXi), b:(_PauliEta|_PauliXi)]:=
+	PauliChain[a,b];
+
+PauliChain[a_?NumberQ b_DOT, i_, j_]:=
+	a PauliChain[b,i,j];
+
+PCHN[0,__]:=
+	0;
+
+PCHN[_,0]:=
+	0;
+
+PCHN[1,a:(_PauliEta|_PauliXi),b:(_PauliEta|_PauliXi)]:=
+	PCHN[a,b];
+
+
+PauliIndex[i_Integer] :=
+	ExplicitPauliIndex[i];
+
 
 TemporalPair[0,_] :=
 	0;

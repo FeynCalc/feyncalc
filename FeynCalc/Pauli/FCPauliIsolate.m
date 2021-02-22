@@ -29,6 +29,8 @@ End[]
 
 Begin["`FCPauliIsolate`Private`"]
 
+tmp::usage="";
+
 Options[FCPauliIsolate] = {
 	CartesianIndex		-> False,
 	ClearHeads 			-> {FCGV["PauliChain"]},
@@ -47,6 +49,7 @@ Options[FCPauliIsolate] = {
 	IsolateFast 		-> False,
 	IsolateNames 		-> KK,
 	LorentzIndex 		-> False,
+	PauliChain			-> False,
 	PauliEta 			-> True,
 	PauliSigma 			-> True,
 	PauliSigmaCombine	-> True,
@@ -191,13 +194,26 @@ FCPauliIsolate[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 			Abort[]
 		];
 
-		If[	OptionValue[Split],
+		allHeads = Cases2[res,head];
+		allHeadsEval = allHeads /. DOT->holdDOT;
+
+		allHeadsEval = allHeadsEval /. {head[x_] /; !FreeQ2[x, OptionValue[ExceptHeads]] :> x};
+
+
+		If[optSplit=!=False,
 			time=AbsoluteTime[];
 			FCPrint[1, "FCPauliIsolate: Doing splittings.", FCDoControl->fcpiVerbose];
-			res = res /. DOT->holdDOT //. {head[a_holdDOT b_holdDOT c_.] :> head[a]head[b c],
-			head[holdDOT[r1___,(a: _PauliEta | _PauliXi),b___,(c: _PauliEta | _PauliXi), (d: _PauliEta | _PauliXi), e___, (f: _PauliEta | _PauliXi), r2___]]/;FreeQ2[{r1,b,e,r2}, {PauliEta,PauliXi}] :>
-				head[holdDOT[a,b,c]] head[holdDOT[d,e,f]] head[holdDOT[r1,r2]] }/. holdDOT[] ->1 /. holdDOT -> DOT;
+			Switch[optSplit,
+				True,
+				allHeadsEval = chainSplit[allHeadsEval,head],
+				_Symbol,
+				allHeadsEval = allHeadsEval /. head[x_]:> optSplit[chainSplit[head[x],head]],
+				_,
+				Null
+			];
+
 			FCPrint[1, "FCPauliIsolate: Splittings done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcpiVerbose]
+
 		];
 
 		time=AbsoluteTime[];
@@ -205,36 +221,49 @@ FCPauliIsolate[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 		(* Here we unisolate objects that are not needed *)
 
 
-		If[	!OptionValue[PauliTrace] && !FreeQ[res,PauliTrace],
-			res = res //. head[x_PauliTrace y_.] :> x head[y]
+		(* Here we unisolate objects that are not needed *)
+		If[	!OptionValue[PauliTrace] && !FreeQ[allHeadsEval,PauliTrace],
+			allHeadsEval = allHeadsEval //. head[x_PauliTrace y_.] :> x head[y]
 		];
 
-		If[	!OptionValue[PauliSigma],
-			res = res //. head[x_PauliSigma y_.] :> x head[y] //.
-			head[DOT[x__] y_.]/; FreeQ[{x},Spinor] && !FreeQ[{x},PauliSigma] :> DOT[x] head[y];
+		If[	!OptionValue[PauliChain] && !FreeQ[allHeadsEval,PauliChain],
+			allHeadsEval = allHeadsEval //. head[x_PauliChain y_.] :> x head[y] //.
+			head[holdDOT[x__] y_.]/; !FreeQ[{x},PauliChain] :> holdDOT[x] head[y]
 		];
 
-		If[	!OptionValue[PauliXi],
-			res = res //. head[DOT[x__] y_.]/; !FreeQ[{x},PauliXi] :> DOT[x] head[y];
+		If[	!OptionValue[PauliSigma] && !FreeQ[allHeadsEval/. _PauliChain :> Unique["pch"], PauliSigma],
+			allHeadsEval = allHeadsEval //. head[x_PauliSigma y_.] :> x head[y] //.
+			head[holdDOT[x__] y_.]/; FreeQ2[{x},{PauliXi,PauliEta}] && !FreeQ[{x},PauliSigma] :> holdDOT[x] head[y]
 		];
 
-		If[	!OptionValue[PauliEta],
-			res = res //. head[DOT[x__] y_.]/; !FreeQ[{x},PauliEta] :> DOT[x] head[y];
+		If[	OptionValue[PauliXi]===False && !FreeQ[allHeadsEval,PauliXi],
+			allHeadsEval = allHeadsEval //. head[holdDOT[x__] y_.]/; !FreeQ[{x},PauliXi] :> holdDOT[x] head[y]
 		];
 
-		res = res //. head[x_]/; FreeQ2[x,headsList] :> x;
+		If[	OptionValue[PauliEta]===False && !FreeQ[allHeadsEval,PauliEta],
+			allHeadsEval = allHeadsEval //. head[holdDOT[x__] y_.]/; !FreeQ[{x},PauliEta] :> holdDOT[x] head[y]
+		];
+
 
 		FCPrint[1, "FCPauliIsolate: Done removing unneeded isolations, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcpiVerbose];
 
+
+		allHeadsEval = allHeadsEval /. holdDOT->DOT //. head[x_]/; FreeQ2[x,headsList] :> x;
+
+		res = res /. Dispatch[Thread[Rule[allHeads,allHeadsEval]]];
+
+		FCPrint[1, "FCPauliIsolate: Handling nonpauli pieces.", FCDoControl->fcpiVerbose];
+		time=AbsoluteTime[];
 		If[	OptionValue[Isolate],
-			time=AbsoluteTime[];
-			FCPrint[1, "FCPauliIsolate: Applying Isolate.", FCDoControl->fcpiVerbose];
 			res = res/. restHead[x_]:> Isolate[x,IsolateNames->OptionValue[IsolateNames],IsolateFast->OptionValue[IsolateFast]],
 			res = res /. restHead[0]->0 /. restHead -> headR;
-			FCPrint[1, "FCPauliIsolate: Done applying Isolate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcpiVerbose];
 		];
+		FCPrint[1, "FCPauliIsolate: Done handling nondirac pieces, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcpiVerbose];
 
 		tmp = headsList;
+
+
+
 
 		If[ OptionValue[LorentzIndex]===True,
 			tmp = Join[tmp,{LorentzIndex}]
@@ -258,6 +287,18 @@ FCPauliIsolate[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 
 		res
 	];
+
+
+chainSplit[ex_, head_]:=
+	(
+		tmp  = ex //. head[a_holdDOT b_]/; !FreeQ[b, holdDOT] :> head[a] head[b];
+		If[	!FreeQ2[tmp,{PauliEta,PauliXi}],
+			tmp  = tmp /. {
+				head[holdDOT[r1___,(a: _PauliEta | _PauliXi),b___, (c: _PauliEta | _PauliXi), (d: _PauliEta | _PauliXi), e___, (f: _PauliEta | _PauliXi), r2___]]/;FreeQ2[{r1,b,e,r2}, {PauliEta,PauliXi}] :>
+					head[holdDOT[a,b,c]] head[holdDOT[d,e,f]] head[holdDOT[r1,r2]]}
+		];
+		tmp
+	);
 
 restHead[0]=
 	0;

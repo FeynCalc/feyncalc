@@ -48,7 +48,7 @@ Options[FCReplaceD] = {
 
 FCReplaceD[expr_, Rule[dim_Symbol, x_], OptionsPattern[]] :=
 	Block[{ex,vectorSet,res,check, scalarTerm, vectorTerm=1, pref=1, tmp,
-		scaleless1=0,scaleless2=0,ruleProtect,holddim,diga, pasi, dchn},
+		scaleless1=0,scaleless2=0,ruleProtect,holddim,diga, pasi, dchn, pchn},
 
 		FCPrint[1,"FCReplaceD: dim: " ,dim, FCDoControl->fcrdVerbose];
 
@@ -64,7 +64,7 @@ FCReplaceD[expr_, Rule[dim_Symbol, x_], OptionsPattern[]] :=
 			ex = expr
 		];
 
-		tmp = ex/. DiracChain->dchn /. DiracGamma -> diga /. PauliSigma -> pasi;
+		tmp = ex /. DiracChain->dchn /. PauliChain->pchn /. DiracGamma -> diga /. PauliSigma -> pasi;
 		tmp = tmp //. {	diga[a_,di_] :> diga[holddim[a,ToString[di,InputForm]]],
 						pasi[a_,di_] :> pasi[holddim[a,ToString[di,InputForm]]]};
 
@@ -97,7 +97,7 @@ FCReplaceD[expr_, Rule[dim_Symbol, x_], OptionsPattern[]] :=
 		res = res /. pasi[holddim[a_,str_String]] :> PauliSigma[a,ToExpression[str]];
 		res = res /. pasi[a_]/;Head[a]=!=holddim :> PauliSigma[a];
 
-		res = res /. dchn -> DiracChain;
+		res = res /. dchn -> DiracChain /. pchn -> PauliChain;
 
 		If[	!FreeQ2[res,{holddim,diga,pasi}],
 			Message[FCReplaceD::resfail];

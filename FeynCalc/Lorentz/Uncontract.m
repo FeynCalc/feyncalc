@@ -50,6 +50,7 @@ Options[Uncontract] = {
 	FCVerbose 			-> False,
 	Momentum 			-> True,
 	Pair 				-> {},
+	PauliChainExpand	-> True,
 	PauliSigma 			-> True,
 	Polarization 		-> True,
 	Square 				-> True
@@ -355,9 +356,13 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 				Message[Uncontract::failmsg,"Cannot uncontract negative or symbolic powers of expressions."];
 				Abort[]
 			];
+			tmp = (exp + null1 + null2) /. _FeynAmpDenominator :> Unique[];
+			allObjects = Cases[tmp /. _PauliChain :> Unique[], _PauliSigma, Infinity]//DeleteDuplicates//Sort;
 
-			allObjects = Cases[(exp + null1 + null2)/. _FeynAmpDenominator :> Unique[], _PauliSigma, Infinity]//DeleteDuplicates//Sort;
-			selectedObjects = SelectNotFree[allObjects, q];
+			If[	!FreeQ[exp,PauliChain],
+				allObjects = Join[allObjects, Cases[tmp, PauliChain[_,_,_], Infinity]//DeleteDuplicates//Sort];
+			];
+
 			If[ !OptionValue[Polarization],
 				selectedObjects = SelectFree[selectedObjects, Polarization];
 			];
@@ -423,6 +428,10 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 
 		If[	OptionValue[DiracChainExpand] && !FreeQ[res,DiracChain],
 			res = DiracChainExpand[res,FCI->True,Momentum->{q}]
+		];
+
+		If[	OptionValue[PauliChainExpand] && !FreeQ[res,PauliChain],
+			res = PauliChainExpand[res,FCI->True,Momentum->{q}]
 		];
 
 		FCPrint[1, "Uncontract: Intermediate result: " ,res, FCDoControl->ucVerbose];

@@ -186,5 +186,14 @@ Spinor[Momentum[p2], m2, 1], $AL[$43]] DCHN[
 GA[5].GA[nu].GA[mu], $AL[$42], $AL[$43]],
 DiracIndexNames -> {i, j}, FCE -> True]",
 "DCHN[Spinor[-Momentum[p1], m1, 1], i] DCHN[
-Spinor[Momentum[p2], m2, 1], j] DCHN[GA[5].GA[nu].GA[mu], i, j]"}
+Spinor[Momentum[p2], m2, 1], j] DCHN[GA[5].GA[nu].GA[mu], i, j]"},
+{"fcstFCCanonicalizeDummyIndices-ID28",
+"FCCanonicalizeDummyIndices[
+PauliChain[PauliSigma[CartesianIndex[a]] . (m +
+	PauliSigma[CartesianIndex[j]] Pair[CartesianIndex[j],
+	Momentum[p]]) . PauliSigma[CartesianIndex[b]], PauliIndex[i],
+PauliIndex[j]], CartesianIndexNames -> {al}, FCE -> True]",
+"m PCHN[CSI[a] . CSI[b], PauliIndex[i], PauliIndex[j]] +
+CV[p, al] PCHN[CSI[a] . CSI[al] . CSI[b], PauliIndex[i],
+PauliIndex[j]]"}
 });

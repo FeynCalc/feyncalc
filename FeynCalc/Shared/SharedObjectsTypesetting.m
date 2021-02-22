@@ -509,6 +509,108 @@ DIDelta /:
 	MakeBoxes[ DIDelta[i_,j_], TraditionalForm ]:=
 		SubscriptBox["\[Delta]",TBox[i,j]];
 
+
+
+
+
+
+
+
+(* Fermionic chains with 3 arguments *)
+
+(* (UBar.X)_i or (VBar.X)_j *)
+PauliChain /:
+	MakeBoxes[ PauliChain[a_, b : (PauliXi[Complex[0, -1]] | PauliEta[Complex[0, -1]]), ind : (_PauliIndex | _ExplicitPauliIndex)], TraditionalForm ]:=
+		SubscriptBox[RowBox[{"(",ToBoxes[b,TraditionalForm],".",ToBoxes[a,TraditionalForm],")"}],TBox[ind]];
+
+PCHN /:
+	MakeBoxes[ PCHN[a_, b : (PauliXi[Complex[0, -1]] | PauliEta[Complex[0, -1]]),
+		ind_/; !MemberQ[{PauliXi,PauliEta},Head[ind]]], TraditionalForm ]:=
+		ToBoxes[PauliChain[a,b,PauliIndex[ind]], TraditionalForm];
+
+(* (X.U)_i or (X.V)_j *)
+PauliChain /:
+	MakeBoxes[ PauliChain[a_, ind : (_PauliIndex | _ExplicitPauliIndex), b : (PauliXi[Complex[0, 1]] | PauliEta[Complex[0, 1]])], TraditionalForm ]:=
+		SubscriptBox[RowBox[{"(",ToBoxes[a,TraditionalForm],".",ToBoxes[b,TraditionalForm],")"}],TBox[ind]];
+
+PCHN /:
+	MakeBoxes[ PCHN[a_, ind_/; !MemberQ[{PauliXi,PauliEta},Head[ind]],
+		b : (PauliXi[Complex[0, 1]] | PauliEta[Complex[0, 1]])], TraditionalForm ]:=
+		ToBoxes[PauliChain[a,PauliIndex[ind],b], TraditionalForm];
+
+(* UBar.X.U, UBar.X.V, VBar.X.U or VBar.X.V  *)
+PauliChain /:
+	MakeBoxes[ PauliChain[a_,b : (PauliXi[Complex[0, -1]] | PauliEta[Complex[0, -1]]), c : (PauliXi[Complex[0, 1]] | PauliEta[Complex[0, 1]])], TraditionalForm ]:=
+		RowBox[{"(",ToBoxes[b,TraditionalForm],".",ToBoxes[a,TraditionalForm],".",ToBoxes[c,TraditionalForm],")"}];
+
+PCHN /:
+	MakeBoxes[ PCHN[a_, b : (PauliXi[Complex[0, -1]] | PauliEta[Complex[0, -1]]), c : (PauliXi[Complex[0, 1]] | PauliEta[Complex[0, 1]])], TraditionalForm ]:=
+		ToBoxes[PauliChain[a,b,c], TraditionalForm];
+
+(* X_ij  *)
+PauliChain /:
+	MakeBoxes[ PauliChain[a_, ind1 : (_PauliIndex | _ExplicitPauliIndex), ind2 : (_PauliIndex | _ExplicitPauliIndex)], TraditionalForm ]:=
+		SubscriptBox[RowBox[{"(",ToBoxes[a,TraditionalForm],")"}],TBox[ind1,ind2]];
+
+PCHN /:
+	MakeBoxes[ PCHN[a_,
+		ind1_/; !MemberQ[{PauliXi,PauliEta},Head[ind1]],
+		ind2_/; !MemberQ[{PauliXi,PauliEta},Head[ind2]]], TraditionalForm ]:=
+		ToBoxes[PauliChain[a,PauliIndex[ind1],PauliIndex[ind2]], TraditionalForm];
+
+(* Fermionic chains with 2 arguments *)
+
+(* UBar_i or VBar_i *)
+PauliChain /:
+	MakeBoxes[ PauliChain[a : (PauliXi[Complex[0, -1]] | PauliEta[Complex[0, -1]]), ind : (_PauliIndex | _ExplicitPauliIndex)], TraditionalForm ]:=
+		SubscriptBox[RowBox[{"(",ToBoxes[a,TraditionalForm],")"}],TBox[ind]];
+PCHN /:
+	MakeBoxes[ PCHN[a : (PauliXi[Complex[0, -1]] | PauliEta[Complex[0, -1]]),b_/;
+		!MemberQ[{PauliXi,PauliEta},Head[b]]], TraditionalForm ]:=
+		ToBoxes[PauliChain[a,PauliIndex[b]], TraditionalForm];
+
+(* U_i or V_i *)
+PauliChain /:
+	MakeBoxes[ PauliChain[ind : (_PauliIndex | _ExplicitPauliIndex), a : (PauliXi[Complex[0, 1]] | PauliEta[Complex[0, 1]])], TraditionalForm ]:=
+		SubscriptBox[RowBox[{"(",ToBoxes[a,TraditionalForm],")"}],TBox[ind]];
+
+PCHN /:
+	MakeBoxes[ PCHN[a_/; !MemberQ[{PauliXi,PauliEta},Head[a]], b_], TraditionalForm ]:=
+		ToBoxes[PauliChain[PauliIndex[a],b], TraditionalForm];
+
+(* UBar.U, UBar.V, VBar.U or VBar.V  *)
+PauliChain /:
+	MakeBoxes[ PauliChain[a :  (_PauliXi | _PauliEta),b:  (_PauliXi | _PauliEta)], TraditionalForm ]:=
+		RowBox[{"(",ToBoxes[a,TraditionalForm],".",ToBoxes[b,TraditionalForm],")"}];
+
+
+
+
+
+
+
+
+
+
+
+
+
+PCHN /:
+	MakeBoxes[ PCHN[a : (_PauliXi | _PauliEta), b : (_PauliXi | _PauliEta)], TraditionalForm ]:=
+		ToBoxes[PauliChain[a,b], TraditionalForm];
+
+PauliIndex /:
+	MakeBoxes[PauliIndex[p_], TraditionalForm]:=
+		ToBoxes[p, TraditionalForm];
+
+PauliIndexDelta /:
+	MakeBoxes[ PauliIndexDelta[(ind1: PauliIndex | ExplicitPauliIndex)[i_],(ind2: PauliIndex | ExplicitPauliIndex)[j_]], TraditionalForm ]:=
+		SubscriptBox["\[Delta]",TBox[ind1[i],ind2[j]]];
+
+PIDelta /:
+	MakeBoxes[ PIDelta[i_,j_], TraditionalForm ]:=
+		SubscriptBox["\[Delta]",TBox[i,j]];
+
 Eps /:
 	MakeBoxes[Eps[a__],TraditionalForm]:=
 		SuperscriptBox[OverscriptBox["\[Epsilon]",$TypesettingDimD], TBox[a]]/; Length[First[{a}]]===2;
@@ -531,6 +633,10 @@ EpsilonIR /:
 
 ExplicitDiracIndex /:
 	MakeBoxes[ ExplicitDiracIndex[p_], TraditionalForm]:=
+		ToBoxes[p, TraditionalForm];
+
+ExplicitPauliIndex /:
+	MakeBoxes[ ExplicitPauliIndex[p_], TraditionalForm]:=
 		ToBoxes[p, TraditionalForm];
 
 ExplicitLorentzIndex /:

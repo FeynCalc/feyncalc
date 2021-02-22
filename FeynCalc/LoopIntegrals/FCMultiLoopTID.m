@@ -143,6 +143,10 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 			ex = DiracChainExpand[ex,FCI->True,Momentum->qs]
 		];
 
+		If[	!FreeQ[ex,PauliChain],
+			ex = PauliChainExpand[ex,FCI->True,Momentum->qs]
+		];
+
 		FCPrint[1, "FCMultiLoopTID: Done expanding w.r.t the relevant loop momenta, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
 		FCPrint[3, "FCMultiLoopTID: After the expansion: ", ex, FCDoControl->mltidVerbose];
 
@@ -171,6 +175,10 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 
 		If[	!FreeQ[ex,DiracChain],
 			ex = DiracChainFactor[ex,FCI->True]
+		];
+
+		If[	!FreeQ[ex,PauliChain],
+			ex = PauliChainFactor[ex,FCI->True]
 		];
 
 		FCPrint[1, "FCMultiLoopTID: Done uncontracting Lorentz indices, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];

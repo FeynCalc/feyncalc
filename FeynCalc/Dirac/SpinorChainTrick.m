@@ -168,7 +168,7 @@ SpinorChainTrick[expr_, OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1,"SpinorChainTrick: Applying FCCanonicalizeDummyIndices.", FCDoControl->spchtrVerbose];
 			liPrefix=ToString[Unique["LI"]];
-			ciPrefix=ToString[Unique["LI"]];
+			ciPrefix=ToString[Unique["CI"]];
 			liNames=Table[FCGV[liPrefix<>ToString[i]], {i,1,Length[Cases2[diracObjectsEval, LorentzIndex]]}];
 			ciNames=Table[FCGV[ciPrefix<>ToString[i]], {i,1,Length[Cases2[diracObjectsEval, CartesianIndex]]}];
 			diracObjectsEval = FCCanonicalizeDummyIndices[#, FCI->True,

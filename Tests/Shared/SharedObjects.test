@@ -1241,3 +1241,244 @@ FCI // FCE",
 {"fcstSharedObjectsDiracIndex-ID67", "Head[DCHN[1,i,j]//FCI]",
 "DiracChain"}
 });
+
+
+Tests`Shared`fcstSharedObjectsPauliIndex =
+({
+{"fcstSharedObjectsPauliIndex-ID1", "PauliIndex[i]",
+"PauliIndex[i]"},
+{"fcstSharedObjectsPauliIndex-ID2", "PauliIndex[5]",
+"ExplicitPauliIndex[5]"},
+{"fcstSharedObjectsPauliIndex-ID3", "ExplicitPauliIndex[4]",
+"ExplicitPauliIndex[4]"},
+{"fcstSharedObjectsPauliIndex-ID4",
+"PauliIndexDelta[PauliIndex[i],PauliIndex[j]]",
+"PauliIndexDelta[PauliIndex[i], PauliIndex[j]]"},
+{"fcstSharedObjectsPauliIndex-ID5",
+"PauliIndexDelta[PauliIndex[1],PauliIndex[j]]",
+"PauliIndexDelta[ExplicitPauliIndex[1], PauliIndex[j]]"},
+{"fcstSharedObjectsPauliIndex-ID6",
+"PauliIndexDelta[PauliIndex[3],PauliIndex[1]]",
+"PauliIndexDelta[ExplicitPauliIndex[1], ExplicitPauliIndex[3]]"},
+{"fcstSharedObjectsPauliIndex-ID7",
+"PauliIndexDelta[PauliIndex[3],PauliIndex[3]]",
+"PauliIndexDelta[ExplicitPauliIndex[3], ExplicitPauliIndex[3]]"},
+{"fcstSharedObjectsPauliIndex-ID8",
+"PauliIndexDelta[ExplicitPauliIndex[1],ExplicitPauliIndex[2]]",
+"PauliIndexDelta[ExplicitPauliIndex[1], ExplicitPauliIndex[2]]"},
+{"fcstSharedObjectsPauliIndex-ID9",
+"PauliIndexDelta[ExplicitPauliIndex[3],ExplicitPauliIndex[3]]",
+"PauliIndexDelta[ExplicitPauliIndex[3], ExplicitPauliIndex[3]]"},
+{"fcstSharedObjectsPauliIndex-ID10",
+"PauliIndexDelta[PauliIndex[i],PauliIndex[i]]",
+"PauliIndexDelta[PauliIndex[i], PauliIndex[i]]"},
+{"fcstSharedObjectsPauliIndex-ID11",
+"PauliIndexDelta[PauliIndex[i],0]",
+"PauliIndexDelta[0, PauliIndex[i]]"},
+{"fcstSharedObjectsPauliIndex-ID12",
+"PauliChain[PauliSigma[CartesianIndex[mu]],PauliIndex[i],\
+PauliIndex[j]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]], PauliIndex[i], \
+PauliIndex[j]]"},
+{"fcstSharedObjectsPauliIndex-ID13",
+"PauliChain[PauliSigma[CartesianIndex[mu]],PauliIndex[1],\
+PauliIndex[j]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]], ExplicitPauliIndex[1], \
+PauliIndex[j]]"},
+{"fcstSharedObjectsPauliIndex-ID14",
+"PauliChain[PauliSigma[CartesianIndex[mu]],PauliIndex[3],\
+PauliIndex[1]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]], ExplicitPauliIndex[3], \
+ExplicitPauliIndex[1]]"},
+{"fcstSharedObjectsPauliIndex-ID15",
+"PauliChain[PauliSigma[CartesianIndex[mu]],PauliIndex[3],\
+PauliIndex[3]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]], ExplicitPauliIndex[3], \
+ExplicitPauliIndex[3]]"},
+{"fcstSharedObjectsPauliIndex-ID16",
+"PauliChain[PauliSigma[CartesianIndex[mu]],ExplicitPauliIndex[1],\
+ExplicitPauliIndex[2]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]], ExplicitPauliIndex[1], \
+ExplicitPauliIndex[2]]"},
+{"fcstSharedObjectsPauliIndex-ID17",
+"PauliChain[PauliSigma[CartesianIndex[mu]],ExplicitPauliIndex[3],\
+ExplicitPauliIndex[3]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]], ExplicitPauliIndex[3], \
+ExplicitPauliIndex[3]]"},
+{"fcstSharedObjectsPauliIndex-ID18",
+"PauliChain[PauliSigma[CartesianIndex[mu]],PauliIndex[i],\
+PauliIndex[i]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]], PauliIndex[i], \
+PauliIndex[i]]"},
+{"fcstSharedObjectsPauliIndex-ID19",
+"PauliChain[PauliSigma[CartesianIndex[mu]].PauliSigma[\
+CartesianMomentum[p,D],D],PauliIndex[i],PauliIndex[j]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D], D], PauliIndex[i], \
+PauliIndex[j]]"},
+{"fcstSharedObjectsPauliIndex-ID20",
+"PauliChain[PauliSigma[CartesianIndex[mu]].PauliSigma[\
+CartesianMomentum[p,D],D],PauliIndex[1],PauliIndex[j]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D], D], ExplicitPauliIndex[1], \
+PauliIndex[j]]"},
+{"fcstSharedObjectsPauliIndex-ID21",
+"PauliChain[PauliSigma[CartesianIndex[mu]].PauliSigma[\
+CartesianMomentum[p,D],D],PauliIndex[3],PauliIndex[1]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D], D], ExplicitPauliIndex[3], \
+ExplicitPauliIndex[1]]"},
+{"fcstSharedObjectsPauliIndex-ID22",
+"PauliChain[PauliSigma[CartesianIndex[mu]].PauliSigma[\
+CartesianMomentum[p,D],D],PauliIndex[3],PauliIndex[3]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D], D], ExplicitPauliIndex[3], \
+ExplicitPauliIndex[3]]"},
+{"fcstSharedObjectsPauliIndex-ID23",
+"PauliChain[PauliSigma[CartesianIndex[mu]].PauliSigma[\
+CartesianMomentum[p,D],D],ExplicitPauliIndex[1],ExplicitPauliIndex[2]]\
+", "PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D], D], ExplicitPauliIndex[1], \
+ExplicitPauliIndex[2]]"},
+{"fcstSharedObjectsPauliIndex-ID24",
+"PauliChain[PauliSigma[CartesianIndex[mu]].PauliSigma[\
+CartesianMomentum[p,D],D],ExplicitPauliIndex[3],ExplicitPauliIndex[3]]\
+", "PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D], D], ExplicitPauliIndex[3], \
+ExplicitPauliIndex[3]]"},
+{"fcstSharedObjectsPauliIndex-ID25",
+"PauliChain[PauliSigma[CartesianIndex[mu]].PauliSigma[\
+CartesianMomentum[p,D],D],PauliIndex[i],PauliIndex[i]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D], D], PauliIndex[i], \
+PauliIndex[i]]"},
+{"fcstSharedObjectsPauliIndex-ID26",
+"PauliChain[PauliSigma[CartesianIndex[mu]].(m+PauliSigma[\
+CartesianMomentum[p]]).PauliSigma[CartesianIndex[nu]],PauliIndex[1],\
+PauliIndex[j]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . (m + \
+PauliSigma[CartesianMomentum[p]]) . PauliSigma[CartesianIndex[nu]], \
+ExplicitPauliIndex[1], PauliIndex[j]]"},
+{"fcstSharedObjectsPauliIndex-ID27",
+"PauliChain[PauliSigma[CartesianIndex[mu]].(m+PauliSigma[\
+CartesianMomentum[p]]).PauliSigma[CartesianIndex[nu]],PauliIndex[3],\
+PauliIndex[1]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . (m + \
+PauliSigma[CartesianMomentum[p]]) . PauliSigma[CartesianIndex[nu]], \
+ExplicitPauliIndex[3], ExplicitPauliIndex[1]]"},
+{"fcstSharedObjectsPauliIndex-ID28",
+"PauliChain[PauliSigma[CartesianIndex[mu]].(m+PauliSigma[\
+CartesianMomentum[p]]).PauliSigma[CartesianIndex[nu]],PauliIndex[3],\
+PauliIndex[3]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . (m + \
+PauliSigma[CartesianMomentum[p]]) . PauliSigma[CartesianIndex[nu]], \
+ExplicitPauliIndex[3], ExplicitPauliIndex[3]]"},
+{"fcstSharedObjectsPauliIndex-ID29",
+"PauliChain[PauliSigma[CartesianIndex[mu]].(m+PauliSigma[\
+CartesianMomentum[p]]).PauliSigma[CartesianIndex[nu]],\
+ExplicitPauliIndex[1],ExplicitPauliIndex[2]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . (m + \
+PauliSigma[CartesianMomentum[p]]) . PauliSigma[CartesianIndex[nu]], \
+ExplicitPauliIndex[1], ExplicitPauliIndex[2]]"},
+{"fcstSharedObjectsPauliIndex-ID30",
+"PauliChain[PauliSigma[CartesianIndex[mu]].(m+PauliSigma[\
+CartesianMomentum[p]]).PauliSigma[CartesianIndex[nu]],\
+ExplicitPauliIndex[3],ExplicitPauliIndex[3]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . (m + \
+PauliSigma[CartesianMomentum[p]]) . PauliSigma[CartesianIndex[nu]], \
+ExplicitPauliIndex[3], ExplicitPauliIndex[3]]"},
+{"fcstSharedObjectsPauliIndex-ID31",
+"PauliChain[PauliSigma[CartesianIndex[mu]].(m+PauliSigma[\
+CartesianMomentum[p]]).PauliSigma[CartesianIndex[nu]],PauliIndex[i],\
+PauliIndex[i]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . (m + \
+PauliSigma[CartesianMomentum[p]]) . PauliSigma[CartesianIndex[nu]], \
+PauliIndex[i], PauliIndex[i]]"},
+{"fcstSharedObjectsPauliIndex-ID32",
+"PauliChain[PauliEta[-I],PauliIndex[i]]",
+"PauliChain[PauliEta[-I], PauliIndex[i]]"},
+{"fcstSharedObjectsPauliIndex-ID33",
+"PauliChain[PauliSigma[CartesianIndex[mu]].PauliSigma[\
+CartesianMomentum[p,D],D],PauliEta[-I],PauliIndex[j]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D], D], PauliEta[-I], PauliIndex[j]]"},
+{"fcstSharedObjectsPauliIndex-ID34",
+"PauliChain[PauliSigma[CartesianIndex[mu]].PauliSigma[\
+CartesianMomentum[p,D],D],PauliIndex[i],PauliXi[I]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D], D], PauliIndex[i], PauliXi[I]]"},
+{"fcstSharedObjectsPauliIndex-ID35",
+"PauliChain[PauliSigma[CartesianIndex[mu]].PauliSigma[\
+CartesianMomentum[p,D],D],PauliXi[-I],PauliEta[I]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D], D], PauliXi[-I], PauliEta[I]]"},
+{"fcstSharedObjectsPauliIndex-ID36",
+"PauliChain[1,PauliXi[-I],PauliEta[I]]",
+"PauliChain[PauliXi[-I], PauliEta[I]]"},
+{"fcstSharedObjectsPauliIndex-ID37", "PIDelta[i,j]",
+"PIDelta[i, j]"},
+{"fcstSharedObjectsPauliIndex-ID38", "PIDelta[i,2]",
+"PIDelta[2, i]"},
+{"fcstSharedObjectsPauliIndex-ID39", "PIDelta[1,2]",
+"PIDelta[1, 2]"},
+{"fcstSharedObjectsPauliIndex-ID40", "PIDelta[2,2]",
+"PIDelta[2, 2]"},
+{"fcstSharedObjectsPauliIndex-ID41", "PIDelta[i,i]",
+"PIDelta[i, i]"},
+{"fcstSharedObjectsPauliIndex-ID42", "PCHN[CSI[mu],i,j]",
+"PCHN[CSI[mu], i, j]"},
+{"fcstSharedObjectsPauliIndex-ID43", "PCHN[CSI[mu],1,j]",
+"PCHN[CSI[mu], 1, j]"},
+{"fcstSharedObjectsPauliIndex-ID44", "PCHN[CSI[mu],3,1]",
+"PCHN[CSI[mu], 3, 1]"},
+{"fcstSharedObjectsPauliIndex-ID45", "PCHN[CSI[mu],3,3]",
+"PCHN[CSI[mu], 3, 3]"},
+{"fcstSharedObjectsPauliIndex-ID46", "PCHN[CSI[mu],1,2]",
+"PCHN[CSI[mu], 1, 2]"},
+{"fcstSharedObjectsPauliIndex-ID47", "PCHN[CSI[mu],i,i]",
+"PCHN[CSI[mu], i, i]"},
+{"fcstSharedObjectsPauliIndex-ID48", "PCHN[CSI[mu].CSISD[p],i,j]",
+"PCHN[CSI[mu] . CSISD[p], i, j]"},
+{"fcstSharedObjectsPauliIndex-ID49", "PCHN[CSI[mu].CSISD[p],1,j]",
+"PCHN[CSI[mu] . CSISD[p], 1, j]"},
+{"fcstSharedObjectsPauliIndex-ID50", "PCHN[CSI[mu].CSISD[p],3,1]",
+"PCHN[CSI[mu] . CSISD[p], 3, 1]"},
+{"fcstSharedObjectsPauliIndex-ID51", "PCHN[CSI[mu].CSISD[p],3,3]",
+"PCHN[CSI[mu] . CSISD[p], 3, 3]"},
+{"fcstSharedObjectsPauliIndex-ID52", "PCHN[CSI[mu].CSISD[p],1,2]",
+"PCHN[CSI[mu] . CSISD[p], 1, 2]"},
+{"fcstSharedObjectsPauliIndex-ID53", "PCHN[CSI[mu].CSISD[p],i,i]",
+"PCHN[CSI[mu] . CSISD[p], i, i]"},
+{"fcstSharedObjectsPauliIndex-ID54",
+"PCHN[CSI[mu].(m+CSIS[p]).CSI[nu],1,j]",
+"PCHN[CSI[mu] . (m + CSIS[p]) . CSI[nu], 1, j]"},
+{"fcstSharedObjectsPauliIndex-ID55",
+"PCHN[CSI[mu].(m+CSIS[p]).CSI[nu],3,1]",
+"PCHN[CSI[mu] . (m + CSIS[p]) . CSI[nu], 3, 1]"},
+{"fcstSharedObjectsPauliIndex-ID56",
+"PCHN[CSI[mu].(m+CSIS[p]).CSI[nu],3,3]",
+"PCHN[CSI[mu] . (m + CSIS[p]) . CSI[nu], 3, 3]"},
+{"fcstSharedObjectsPauliIndex-ID57",
+"PCHN[CSI[mu].(m+CSIS[p]).CSI[nu],1,2]",
+"PCHN[CSI[mu] . (m + CSIS[p]) . CSI[nu], 1, 2]"},
+{"fcstSharedObjectsPauliIndex-ID58",
+"PCHN[CSI[mu].(m+CSIS[p]).CSI[nu],3,3]",
+"PCHN[CSI[mu] . (m + CSIS[p]) . CSI[nu], 3, 3]"},
+{"fcstSharedObjectsPauliIndex-ID59",
+"PCHN[CSI[mu].(m+CSIS[p]).CSI[nu],i,i]",
+"PCHN[CSI[mu] . (m + CSIS[p]) . CSI[nu], i, i]"},
+{"fcstSharedObjectsPauliIndex-ID60", "PCHN[PauliEta[-I],i]",
+"PCHN[PauliEta[-I], i]"},
+{"fcstSharedObjectsPauliIndex-ID61",
+"PCHN[CSI[mu].CSISD[p],PauliEta[-I],j]",
+"PCHN[CSI[mu] . CSISD[p], PauliEta[-I], j]"},
+{"fcstSharedObjectsPauliIndex-ID62",
+"PCHN[CSI[mu].CSISD[p],i,PauliXi[I]]",
+"PCHN[CSI[mu] . CSISD[p], i, PauliXi[I]]"},
+{"fcstSharedObjectsPauliIndex-ID63",
+"PCHN[CSI[mu].CSISD[p],PauliEta[-I],PauliXi[I]]",
+"PCHN[CSI[mu] . CSISD[p], PauliEta[-I], PauliXi[I]]"},
+{"fcstSharedObjectsPauliIndex-ID64",
+"PCHN[1,PauliEta[-I],PauliXi[I]]", "PCHN[PauliEta[-I], PauliXi[I]]"}
+})
+

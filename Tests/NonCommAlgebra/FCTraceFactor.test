@@ -63,7 +63,7 @@ p2]+M).CSI[nu])]]//FCE",
 {"fcstFCTraceFactor-ID16",
 "FCTraceFactor[PauliTrace[(a+b).(a-b).PauliTrace[CSI[i].c.CSI[j]].(\
 a+b)]]//FCE",
-"(a - b)*(a + b)^2*c*PauliTrace[PauliTrace[CSI[i] . CSI[j]]]"},
+"(a - b)*(a + b)^2*c*PauliTrace[1]*PauliTrace[CSI[i] . CSI[j]]"},
 {"fcstFCTraceFactor-ID17",
 "PauliTrace[PauliTrace[CSI[i, j]] CSI[k, l]] // FCTraceFactor // \
 FCE", "PauliTrace[CSI[i] . CSI[j]]*PauliTrace[CSI[k] . CSI[l]]"},

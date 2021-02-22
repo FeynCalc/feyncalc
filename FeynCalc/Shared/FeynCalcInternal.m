@@ -35,7 +35,8 @@ sfadim::usage="";
 cfadim::usage="";
 fadim::usage="";
 repeated::usage="";
-fchntmp::usage="";
+dchntmp::usage="";
+pchntmp::usage="";
 cfadEtaSign::usage="";
 gfadEtaSign::usage="";
 sfadEtaSign::usage="";
@@ -91,6 +92,7 @@ FeynCalcInternal[x_, opts___Rule] :=
 			DiracMatrix  :> diracM,
 			DiracSlash :> diracS,
 			DIDelta :> didelta,
+			PIDelta :> pidelta,
 			FourVector :> fourV,
 			SD :> sdeltacont,
 			SDF :> sfdeltacont,
@@ -108,7 +110,8 @@ FeynCalcInternal[x_, opts___Rule] :=
 			FVD :> fvd,
 			FVE :> fve,
 			FV :> fv,
-			DCHN :> fchn,
+			DCHN :> dchn,
+			PCHN :> pchn,
 			LeviCivita :> levicivita,
 			LC :> lc,
 			LCD :> lcd,
@@ -215,6 +218,9 @@ metricT[x_, x_,op_:{}] :=
 didelta[i_,j_]:=
 	DiracIndexDelta[DiracIndex[i],DiracIndex[j]];
 
+pidelta[i_,j_]:=
+	PauliIndexDelta[PauliIndex[i],PauliIndex[j]];
+
 Options[diracM] = {Dimension -> 4, FCI -> True};
 
 diracM[n_?NumberQ y:Except[_?OptionQ], opts:OptionsPattern[]] :=
@@ -291,30 +297,63 @@ dirIndex[a_Spinor]:=
 dirIndex[a_]/;Head[a]=!=Spinor:=
 	DiracIndex[a/.DiracIndex->Identity];
 
-fchn[a: (_Spinor | _SpinorUBar | _SpinorVBar),b_]:=
+dchn[a: (_Spinor | _SpinorUBar | _SpinorVBar),b_]:=
 	(
-	fchntmp=FCI[{a,b}];
-	DiracChain[fchntmp[[1]],dirIndex[fchntmp[[2]]]]
+	dchntmp=FCI[{a,b}];
+	DiracChain[dchntmp[[1]],dirIndex[dchntmp[[2]]]]
 	)/; !MemberQ[{Spinor,SpinorU,SpinorV,SpinorUBar,SpinorVBar},Head[b]];
 
 
-fchn[a_,b : (_Spinor | _SpinorU | _SpinorV)]:=
+dchn[a_,b : (_Spinor | _SpinorU | _SpinorV)]:=
 	(
-	fchntmp=FCI[{a,b}];
-	DiracChain[dirIndex[fchntmp[[1]]],fchntmp[[2]]]
+	dchntmp=FCI[{a,b}];
+	DiracChain[dirIndex[dchntmp[[1]]],dchntmp[[2]]]
 	)/; !MemberQ[{Spinor,SpinorU,SpinorV,SpinorUBar,SpinorVBar},Head[a]];
 
-fchn[a : (_Spinor | _SpinorUBar | _SpinorVBar), b : (_Spinor | _SpinorU | _SpinorV)]:=
+dchn[a : (_Spinor | _SpinorUBar | _SpinorVBar), b : (_Spinor | _SpinorU | _SpinorV)]:=
 	(
-	fchntmp=FCI[{a,b}];
-	DiracChain[fchntmp[[1]],fchntmp[[2]]]
+	dchntmp=FCI[{a,b}];
+	DiracChain[dchntmp[[1]],dchntmp[[2]]]
 	);
 
 
-fchn[a_,b_,c_]:=
+dchn[a_,b_,c_]:=
 	(
-	fchntmp=FCI[{a,b,c}];
-	DiracChain[fchntmp[[1]],dirIndex[fchntmp[[2]]],dirIndex[fchntmp[[3]]]]
+	dchntmp=FCI[{a,b,c}];
+	DiracChain[dchntmp[[1]],dirIndex[dchntmp[[2]]],dirIndex[dchntmp[[3]]]]
+	);
+
+
+paIndex[a: (_PauliXi | _PauliEta)]:=
+	a;
+
+paIndex[a_]:=
+	PauliIndex[a/.PauliIndex->Identity]/;!MemberQ[Head[a],{PauliXi,PauliEta}]
+
+pchn[a: (_PauliXi | _PauliEta),b_]:=
+	(
+	pchntmp=FCI[{a,b}];
+	PauliChain[pchntmp[[1]],paIndex[pchntmp[[2]]]]
+	)/; !MemberQ[{PauliXi,PauliEta},Head[b]];
+
+
+pchn[a_,b : (_PauliXi | _PauliEta)]:=
+	(
+	pchntmp=FCI[{a,b}];
+	PauliChain[paIndex[pchntmp[[1]]],pchntmp[[2]]]
+	)/; !MemberQ[{PauliXi,PauliEta},Head[a]];
+
+pchn[a : (_PauliXi | _PauliEta), b : (_PauliXi | _PauliEta)]:=
+	(
+	pchntmp=FCI[{a,b}];
+	PauliChain[pchntmp[[1]],pchntmp[[2]]]
+	);
+
+
+pchn[a_,b_,c_]:=
+	(
+	pchntmp=FCI[{a,b,c}];
+	PauliChain[pchntmp[[1]],paIndex[pchntmp[[2]]],paIndex[pchntmp[[3]]]]
 	);
 
 sunTint[x__] :=

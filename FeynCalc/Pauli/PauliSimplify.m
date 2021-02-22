@@ -57,6 +57,8 @@ Options[PauliSimplify] = {
 	FCVerbose			-> False,
 	Factoring			-> False,
 	InsidePauliTrace    -> False,
+	PauliChain			-> True,
+	PauliChainJoin		-> True,
 	PauliOrder			-> False,
 	PauliReduce 		-> False,
 	PauliSigmaCombine	-> False,
@@ -129,7 +131,7 @@ PauliSimplify[expr_, OptionsPattern[]] :=
 			FCPrint[1, "PauliSimplify: Extracting Pauli objects.", FCDoControl->psVerbose];
 			(* 	First of all we need to extract all the Pauli structures in the input. *)
 			ex = FCPauliIsolate[ex,FCI->True,Head->psHead, DotSimplify->True, PauliSigmaCombine->OptionValue[PauliSigmaCombine],
-				LorentzIndex->True, CartesianIndex->True];
+				LorentzIndex->True, CartesianIndex->True, PauliChain->OptionValue[PauliChain]];
 
 
 			If[	!FreeQ[ex,PauliTrace] && !OptionValue[PauliTrace],
@@ -154,7 +156,15 @@ PauliSimplify[expr_, OptionsPattern[]] :=
 					PauliTraceEvaluate->True, Expand-> optExpandScalarProduct, opts];
 				FCPrint[1, "PauliSimplify: Done calculating Pauli traces, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->psVerbose];
 				FCPrint[3,"PauliSimplify: pauliObjects after calcuating Pauli traces: ", pauliObjects , FCDoControl->psVerbose]
+			];
 
+			If[ OptionValue[PauliChainJoin] && !FreeQ[pauliObjectsEval,PauliChain],
+				time=AbsoluteTime[];
+				FCPrint[1, "PauliSimplify: Contracting Pauli indices.", FCDoControl->psVerbose];
+				pauliObjectsEval = pauliObjectsEval /. psHead[x_]/;!FreeQ[x,PauliChain] :>
+					PauliChainJoin[x, FCI->True, FCPauliIsolate->False];
+				FCPrint[1, "PauliSimplify: Done contracting Pauli indices, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->psVerbose];
+				FCPrint[3, "PauliSimplify: pauliObjectsEval after contracting Pauli indices: ", pauliObjects , FCDoControl->psVerbose]
 			];
 
 
@@ -223,6 +233,15 @@ PauliSimplify[expr_, OptionsPattern[]] :=
 		FCPrint[3,"PauliSimplify: Leaving with ", res, FCDoControl->psVerbose];
 		res
 	];
+
+
+(*TODO Figure out some way to treat spinors as well! *)
+pauliSimplifyEval[PauliChain[expr_,i_,j_]]:=
+	PauliChain[pauliSimplifyEval[expr],i,j]/; !optExpanding
+
+pauliSimplifyEval[PauliChain[expr_,i_,j_]]:=
+	PauliChainExpand[PauliChain[pauliSimplifyEval[expr],i,j], FCI->True]/; optExpanding
+
 
 pauliSimplifyEval[expr_]:=
 	Block[{tmp=expr, time, time2, res},
@@ -351,7 +370,7 @@ pauliSimplifyEval[expr_]:=
 		res
 
 
-	];
+	]/;Head[expr]=!=PauliChain;
 
 FCPrint[1,"PauliSimplify.m loaded."];
 End[]

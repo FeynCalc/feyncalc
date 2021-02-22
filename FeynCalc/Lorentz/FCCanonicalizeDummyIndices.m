@@ -61,6 +61,7 @@ Options[FCCanonicalizeDummyIndices] = {
 	LorentzIndexNames 	-> {},
 	Momentum			-> All,
 	NotMomentum			-> {},
+	PauliChainExpand	-> True,
 	SUNFIndexNames		-> {},
 	SUNIndexNames		-> {}
 };
@@ -142,6 +143,10 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 
 		If[ OptionValue[DiracChainExpand],
 			ex = DiracChainExpand[ex,FCI->True]
+		];
+
+		If[ OptionValue[PauliChainExpand],
+			ex = PauliChainExpand[ex,FCI->True]
 		];
 
 		tmp = Expand2[ex, indhead];

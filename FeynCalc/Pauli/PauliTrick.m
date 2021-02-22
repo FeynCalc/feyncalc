@@ -51,6 +51,7 @@ Options[PauliTrick] = {
 	FCPauliIsolate		-> True,
 	FCVerbose			-> False,
 	InsidePauliTrace	-> False,
+	PauliChain			-> True,
 	PauliSigmaCombine	-> False,
 	PauliReduce			-> False
 };
@@ -78,7 +79,10 @@ pauliTrickEvalFastFromPauliSimplifySingle[pauliObject_, {tmpHead_, optInsidePaul
 		insidePauliTrace = tmp1;
 		pauliOrder = tmp2;
 		res
-	];
+	]/; Head[pauliObject]=!=PauliChain;
+
+pauliTrickEvalFastFromPauliSimplifySingle[PauliChain[pauliObject_,i_,j_], {tmpHead_, optInsidePauliTrace_, optPauliOrder_}]:=
+	PauliChain[pauliTrickEvalFastFromPauliSimplifySingle[pauliObject, {tmpHead, optInsidePauliTrace, optPauliOrder}],i,j]
 
 PauliTrick[expr_,OptionsPattern[]] :=
 	Block[{	res, tmp, ex, null1, null2, holdDOT, freePart, paPart, pauliObjects,
@@ -130,7 +134,7 @@ PauliTrick[expr_,OptionsPattern[]] :=
 			FCPrint[1, "PauliTrick: Extracting Pauli objects.", FCDoControl->paTrVerbose];
 			(* 	First of all we need to extract all the Pauli structures in the input. *)
 			ex = FCPauliIsolate[ex,FCI->True,Head->paHead, DotSimplify->True, PauliSigmaCombine->OptionValue[PauliSigmaCombine],LorentzIndex->True,
-				FCJoinDOTs -> optJoin];
+				FCJoinDOTs -> optJoin, PauliChain->OptionValue[PauliChain]];
 
 			{freePart,paPart} = FCSplit[ex,{paHead}];
 			FCPrint[3,"PauliTrick: paPart: ",paPart , FCDoControl->paTrVerbose];
@@ -198,6 +202,10 @@ PauliTrick[expr_,OptionsPattern[]] :=
 	];
 
 (* Here we can quickly handle trivial contractions of short expressions *)
+
+pauliTrickEvalFast[PauliChain[x_, i_, j_]]:=
+	PauliChain[pauliTrickEvalFast[x],i,j];
+
 pauliTrickEvalFast[ex:PauliSigma[__]]:=
 	ex/; !insidePauliTrace;
 

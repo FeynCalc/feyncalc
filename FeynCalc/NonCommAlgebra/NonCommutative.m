@@ -138,20 +138,15 @@ UnDeclareAntiCommutator[a_, b_] :=
 		DownValues[AntiCommutator] = dw;
 	];
 
-(* Have traces treated as commutating objects. F.Orellana, 11/9-2002. *)
-
-excludeTraces = {_DiracTrace :> Unique["DiracTrace"], _SUNTrace :> Unique["SUNTrace"]};
-(*
-a : (DiracTrace |  SUNTrace)[__] :>
-(a /. (Rule[#, ToString[#]] & /@{DiracTrace, SUNTrace, Sequence @@ $NonComm}));
-*)
+excludeTraces = {_DiracTrace :> Unique["DiracTrace"],
+		_PauliTrace :> Unique["PauliTrace"], _SUNTrace :> Unique["SUNTrace"]};
 
 NonCommFreeQ[_?NumberQ] :=
 	True;
 
 NonCommFreeQ[x_] :=
 	MemSet[NonCommFreeQ[x],
-		If[ !FreeQ2[x,{DiracTrace,SUNTrace}],
+		If[ !FreeQ2[x,{DiracTrace,PauliTrace,SUNTrace}],
 				FreeQ2[x /. excludeTraces, $NonComm],
 				FreeQ2[x, $NonComm]
 		]
@@ -162,7 +157,7 @@ NonCommQ[_?NumberQ]   :=
 
 NonCommQ[x_] :=
 	MemSet[NonCommQ[x],
-		If[ !FreeQ2[x,{DiracTrace,SUNTrace}],
+		If[ !FreeQ2[x,{DiracTrace,PauliTrace,SUNTrace}],
 				!FreeQ2[x /. excludeTraces, $NonComm],
 				!FreeQ2[x, $NonComm]
 		]

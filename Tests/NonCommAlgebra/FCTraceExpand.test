@@ -137,9 +137,9 @@ FCE->True]", "PauliTrace[CSIS[b + p]]"},
 {"fcstFCTraceExpand-ID24",
 "FCTraceExpand[PauliTrace[CSI[i, i] + CSI[j, j].PauliTrace[CSI[a] \
 + CSI[b]]]] // FCE",
-"PauliTrace[CSI[i] . CSI[i]] + PauliTrace[CSI[j] . CSI[j] . \
-PauliTrace[CSI[a]]] + PauliTrace[CSI[j] . CSI[j] . \
-PauliTrace[CSI[b]]]"},
+"PauliTrace[CSI[i] . CSI[i]] +
+PauliTrace[CSI[a]]*PauliTrace[CSI[j] . CSI[j]] +
+PauliTrace[CSI[b]]*PauliTrace[CSI[j] . CSI[j]]"},
 {"fcstFCTraceExpand-ID25",
 "FCTraceExpand[PauliTrace[CSI[i, i] + CSI[j, j] PauliTrace[CSI[a] \
 + CSI[b]]]] // FCE",

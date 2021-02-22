@@ -203,3 +203,23 @@ Tests`Pauli`fcstPauliTrickInsidePauliTrace =
 "PauliTrick[CSI[i, j, k], InsidePauliTrace -> True, FCE -> True]",
 "CSI[i].CSI[j].CSI[k]"}
 })
+
+Tests`Pauli`fcstPauliTrickPauliChain =
+({
+{"fcstPauliTrickPauliChain-ID416",
+"PauliTrick[PCHN[CSIS[p].CSIS[q].CSIS[p],i,j],FCE\[Rule]True]",
+"PCHN[-(CSIS[q]*CSP[p, p]) + 2*CSIS[p]*CSP[p, q], i, j]"},
+{"fcstPauliTrickPauliChain-ID417",
+"PauliTrick[PCHN[CSIS[p].CSIS[q].CSIS[p],i,j],PauliChain\[Rule]\
+False,FCE\[Rule]True]", "PCHN[CSIS[p] . CSIS[q] . CSIS[p], i, j]"},
+{"fcstPauliTrickPauliChain-ID418",
+"PauliTrick[PCHN[CSIS[p].CSIS[q].CSIS[p],i,j]+PCHN[CSIS[q].CSIS[p].\
+CSIS[q],i,j],FCE\[Rule]True]",
+"PCHN[-(CSIS[q]*CSP[p, p]) + 2*CSIS[p]*CSP[p, q], i, j] + \
+PCHN[2*CSIS[q]*CSP[p, q] - CSIS[p]*CSP[q, q], i, j]"},
+{"fcstPauliTrickPauliChain-ID419",
+"PauliTrick[PCHN[CSIS[p].CSIS[q].CSIS[p],i,j]+PCHN[CSIS[q].CSIS[p].\
+CSIS[q],i,j],PauliChain\[Rule]False,FCE\[Rule]True]",
+"PCHN[CSIS[p] . CSIS[q] . CSIS[p], i, j] + PCHN[CSIS[q] . CSIS[p] \
+. CSIS[q], i, j]"}
+})

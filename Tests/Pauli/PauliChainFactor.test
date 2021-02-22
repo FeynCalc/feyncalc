@@ -1,0 +1,41 @@
+
+
+(* :Title: PauliChainFactor.test											*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for PauliChainFactor			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Dirac`fcstPauliChainFactor =
+({
+{"fcstPauliChainFactor-ID1",
+"PauliChainFactor[PCHN[CSI[mu].CSI[jj].CSI[mu] \
+CV[p,jj],i,j],FCE->True]",
+"CV[p, jj]*PCHN[CSI[mu] . CSI[jj] . CSI[mu], i, j]"},
+{"fcstPauliChainFactor-ID2",
+"PauliChainFactor[PCHN[CSI[mu].CSI[jj].CSI[mu]x,i,j],FCE->True]",
+"x*PCHN[CSI[mu] . CSI[jj] . CSI[mu], i, j]"},
+{"fcstPauliChainFactor-ID3",
+"PauliChainFactor[PCHN[CSI[mu].z.CSI[jj].CSI[mu]x,i,j],FCE->True]",
+	"x*z*PCHN[CSI[mu] . CSI[jj] . CSI[mu], i, j]"},
+{"fcstPauliChainFactor-ID4",
+"PauliChainFactor[PCHN[(x.y.z),i,j],FCE->True]",
+"x . y . z*PCHN[1, i, j]"},
+{"fcstPauliChainFactor-ID5",
+"PauliChainFactor[PCHN[CSI[mu].CSI[nu].CSI[mu] CV[p,nu],i,j]\
+\[Equal]x,FCE\[Rule]True]",
+"CV[p, nu]*PCHN[CSI[mu] . CSI[nu] . CSI[mu], i, j] == x"},
+{"fcstPauliChainFactor-ID6",
+"PauliChainFactor[{PCHN[CSI[mu].CSI[nu].CSI[mu] \
+CV[p,nu],i,j],PCHN[CSI[mu].CSI[s].CSI[mu] \
+CV[p,s],i,j]},FCE\[Rule]True]",
+"{CV[p, nu]*PCHN[CSI[mu] . CSI[nu] . CSI[mu], i, j], CV[p, \
+s]*PCHN[CSI[mu] . CSI[s] . CSI[mu], i, j]}"}
+})

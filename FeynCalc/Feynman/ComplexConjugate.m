@@ -94,7 +94,7 @@ ComplexConjugate[expr_/;!MemberQ[{List,Equal,Rule,RuleDelayed},Head[expr]], Opti
 		FCPrint[1,"ComplexConjugate: Applying FCMatrixIsolate.", FCDoControl->ccjVerbose];
 		ex = FCMatrixIsolate[ex,FCI->True, FCColorIsolate->{sunHead}, FCDiracIsolate->{diracHead,
 			{FCI->True, DiracChain->True, Expanding->False, FCJoinDOTs->False, DiracSigmaExplicit->True, DiracGammaCombine->False}},
-			FCPauliIsolate->{pauliHead}, Head->prefHead];
+			FCPauliIsolate->{pauliHead, PauliChain->True}, Head->prefHead];
 		FCPrint[1,"ComplexConjugate: Done applying FCMatrixIsolate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->ccjVerbose];
 		FCPrint[3,"ComplexConjugate: After FCMatrixIsolate: ", ex, FCDoControl->ccjVerbose];
 
@@ -115,22 +115,22 @@ ComplexConjugate[expr_/;!MemberQ[{List,Equal,Rule,RuleDelayed},Head[expr]], Opti
 			diracHead[z_]/; !FreeQ2[z,Join[FeynCalc`Package`PauliHeadsList,FeynCalc`Package`SUNHeadsList]] :>
 			FCMatrixIsolate[DotSimplify[z,FCI->True],FCI->True, FCColorIsolate->{sunHead}, FCDiracIsolate->{diracHead,
 			{FCI->True, DiracChain->True, Expanding->False, FCJoinDOTs->False, DiracSigmaExplicit->True, DiracGammaCombine->False}},
-			FCPauliIsolate->{pauliHead}, Head->prefHead]
+			FCPauliIsolate->{pauliHead, PauliChain->True}, Head->prefHead]
 		} /. {
 			pauliHead[z_]/; !FreeQ2[z,Join[FeynCalc`Package`DiracHeadsList,FeynCalc`Package`SUNHeadsList,{FCChargeConjugateTransposed}]] :>
 			FCMatrixIsolate[DotSimplify[z,FCI->True],FCI->True, FCColorIsolate->{sunHead}, FCDiracIsolate->{diracHead,
 			{FCI->True, DiracChain->True, Expanding->False, FCJoinDOTs->False, DiracSigmaExplicit->True, DiracGammaCombine->False}},
-			FCPauliIsolate->{pauliHead}, Head->prefHead]
+			FCPauliIsolate->{pauliHead, PauliChain->True}, Head->prefHead]
 		} /. {
 			sunHead[z_]/; !FreeQ2[z,Join[FeynCalc`Package`DiracHeadsList,FeynCalc`Package`PauliHeadsList]] :>
 			FCMatrixIsolate[DotSimplify[z,FCI->True],FCI->True, FCColorIsolate->{sunHead}, FCDiracIsolate->{diracHead,
 			{FCI->True, DiracChain->True, Expanding->False, FCJoinDOTs->False, DiracSigmaExplicit->True, DiracGammaCombine->False}},
-			FCPauliIsolate->{pauliHead}, Head->prefHead]
+			FCPauliIsolate->{pauliHead, PauliChain->True}, Head->prefHead]
 		} /. {
 			prefHead[z_]/; !FreeQ2[z,Join[FeynCalc`Package`DiracHeadsList,FeynCalc`Package`PauliHeadsList,FeynCalc`Package`SUNHeadsList,{DOT}]] :>
 			FCMatrixIsolate[DotSimplify[z,FCI->True],FCI->True, FCColorIsolate->{sunHead}, FCDiracIsolate->{diracHead,
 			{FCI->True, DiracChain->True, Expanding->False, FCJoinDOTs->False, DiracSigmaExplicit->True, DiracGammaCombine->False}},
-			FCPauliIsolate->{pauliHead}, Head->prefHead]
+			FCPauliIsolate->{pauliHead, PauliChain->True}, Head->prefHead]
 		};
 		FCPrint[1,"ComplexConjugate: Done applying additional isolations, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->ccjVerbose];
 		FCPrint[3,"ComplexConjugate: After additional isolations: ", ex, FCDoControl->ccjVerbose];
@@ -299,10 +299,10 @@ diracChainCC[DiracChain[i_, a_Spinor]]:=
 
 
 
-(*
+
 pauliChainCC[ex1_PauliChain ex2_]:=
 	pauliChainCC[ex1] pauliChainCC[ex2];
-*)
+
 
 (*
 	Even a standalone Pauli matrix is assumed to be part
@@ -333,7 +333,17 @@ pauliChainCC[ex_holdDOT]:=
 
 		res
 
-	];
+	]/; FreeQ[ex,PauliChain];
+
+
+pauliChainCC[PauliChain[a_, i_, j_]]:=
+	PauliChain[(pauliChainCC[a]/.pauliSigmaHold->PauliSigma/. holdDOTReversed->DOT),j,i];
+
+pauliChainCC[PauliChain[a_Spinor, i_]]:=
+	PauliChain[a,i];
+
+pauliChainCC[PauliChain[i_, a_Spinor]]:=
+	PauliChain[i,a];
 
 sunChainCC[ex:Except[_Plus | _Times]]:=
 	Block[{	res=ex},
