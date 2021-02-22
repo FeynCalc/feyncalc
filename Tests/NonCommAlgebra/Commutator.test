@@ -26,5 +26,8 @@ UnDeclareCommutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A1],
 QuantumField[A1]]; DotSimplify[
 ExpandPartialD[QuantumField[A1].QuantumField[A1].LeftPartialD[nu]]]",
 "QuantumField[A1].QuantumField[FCPartialD[LorentzIndex[nu]], A1] +
-QuantumField[FCPartialD[LorentzIndex[nu]], A1].QuantumField[A1]"}
+QuantumField[FCPartialD[LorentzIndex[nu]], A1].QuantumField[A1]"},
+{"Commutator-ID5","Commutator[a, b] = x1;
+Commutator[c, d] = x2; UnDeclareAllCommutators[]; Head[
+Commutator[a, b]]","Commutator"}
 };

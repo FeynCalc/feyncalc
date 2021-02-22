@@ -910,6 +910,9 @@ initialMomentumDownValues;
 initialCartesianMomentumDownValues;
 initialTemporalMomentumDownValues;
 
+initialCommutatorDownValues;
+initialAntiCommutatorDownValues
+
 DiracHeadsList;
 SUNHeadsList;
 TensorArgsList;
@@ -2331,6 +2334,8 @@ initialTemporalMomentumDownValues	= DownValues[TemporalMomentum];
 
 initialScalarProducts = $ScalarProducts;
 
+initialCommutatorDownValues 		= DownValues[Commutator];
+initialAntiCommutatorDownValues 	= DownValues[AntiCommutator];
 
 FCPrint[1,"SharedObjects loaded."];
 End[]

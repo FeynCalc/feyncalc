@@ -9,7 +9,7 @@
 	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Tests for non-commutativity									*)
+(* :Summary:  Non-commutative quantities									*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -63,6 +63,11 @@ UnDeclareCommutator::usage =
 "UnDeclareCommutator[a, b] undeclares the value assigned to the
 commutator of a and b.";
 
+UnDeclareAllCommutators::usage =
+"UnDeclareAllCommutators[] undeclares all user-defined commutators.";
+
+UnDeclareAllAntiCommutators::usage =
+"UnDeclareAllAntiCommutators[] undeclares all user-defined anticommutators.";
 
 (* ------------------------------------------------------------------------ *)
 Begin["`Package`"]
@@ -162,6 +167,16 @@ NonCommQ[x_] :=
 				!FreeQ2[x, $NonComm]
 		]
 	];
+
+UnDeclareAllAntiCommutators[OptionsPattern[]] :=
+	(
+		DownValues[AntiCommutator] = FeynCalc`Package`initialAntiCommutatorDownValues;
+	);
+
+UnDeclareAllCommutators[OptionsPattern[]] :=
+	(
+		DownValues[Commutator] = FeynCalc`Package`initialCommutatorDownValues;
+	);
 
 FCPrint[1,"NonCommutative loaded"];
 End[]

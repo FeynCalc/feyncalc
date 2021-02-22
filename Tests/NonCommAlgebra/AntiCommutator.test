@@ -27,5 +27,8 @@ QuantumField[FCPartialD[LorentzIndex[xxx_]], A1],
 QuantumField[A1]]; DotSimplify[
 ExpandPartialD[QuantumField[A1].QuantumField[A1].LeftPartialD[nu]]]",
 "QuantumField[A1].QuantumField[FCPartialD[LorentzIndex[nu]], A1] +
-QuantumField[FCPartialD[LorentzIndex[nu]], A1].QuantumField[A1]"}
+QuantumField[FCPartialD[LorentzIndex[nu]], A1].QuantumField[A1]"},
+{"AntiCommutator-ID5","AntiCommutator[a, b] = x1;
+AntiCommutator[c, d] = x2; UnDeclareAllAntiCommutators[]; \n
+Head[AntiCommutator[a, b]]","AntiCommutator"}
 };
