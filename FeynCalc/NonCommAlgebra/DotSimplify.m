@@ -58,6 +58,11 @@ End[]
 Begin["`DotSimplify`Private`"]
 
 dsVerbose::usage="";
+optExpanding::usage="";
+optDotSimplifyRelations::usage="";
+optMaxIterations::usage="";
+commutatorEvaluationRules::usage="";
+antiCommutatorEvaluationRules::usage="";
 
 DeclareNonCommutative[dotsimpHold];
 
@@ -78,18 +83,19 @@ Options[DotSimplify] = {
 	FCI								-> False,
 	FCJoinDOTs						-> True,
 	FCVerbose						-> False,
-	MaxIterations					-> 100,
-	PreservePropagatorStructures	-> False
+	optMaxIterations				-> 100,
+	PreservePropagatorStructures	-> False,
+	SortBy 	 						-> {Automatic,Automatic}
 };
 
 
 DotSimplify[expr_, OptionsPattern[]] :=
-	Block[ {pid, ne, dlin,dlin0, x, DOTcomm, cru, aru, commm, acommm, acom, cdoot,
-	sdoot,simpf, actorules, cotorules, acomall, comall, simrel,tic, dodot,holdDOT
-	,vars,xxX,yyY,condition,sameQ,orderedQ,hold, ex, sunTrace, tmpDOT,
-	holdDOTColor, holdDOTDirac, holdDOTPauli, holdDOTRest1, holdDOTRest2, holdDOTRest3,
-	nvar, time, time0, maxIterations, dlin1, momList, momListEval, momRule
-	},
+	Block[{	ne, x, ruleCommutator, ruleAntiCommutator, commm, acommm,
+			sdoot, actorules, cotorules,
+			vars,rest1,rest2,condition,sameQ,hold, ex, sunTrace, tmpDOT,
+			holdDOTColor, holdDOTDirac, holdDOTPauli, holdDOTRest1, holdDOTRest2, holdDOTRest3,
+			nvar, time, time0, momList, momListEval, momRule,
+			optSortBy, commSortBy, acommSortBy},
 
 		If [OptionValue[FCVerbose]===False,
 			dsVerbose=$VeryVerbose,
@@ -98,8 +104,10 @@ DotSimplify[expr_, OptionsPattern[]] :=
 			];
 		];
 
-		simrel = OptionValue[DotSimplifyRelations];
-		maxIterations = OptionValue[MaxIterations];
+		optExpanding			= OptionValue[Expanding];
+		optDotSimplifyRelations	= OptionValue[DotSimplifyRelations];
+		optMaxIterations		= OptionValue[optMaxIterations];
+		optSortBy				= OptionValue[SortBy];
 
 		FCPrint[1, "DotSimplify: Entering.", FCDoControl->dsVerbose];
 
@@ -144,7 +152,7 @@ DotSimplify[expr_, OptionsPattern[]] :=
 
 			time=AbsoluteTime[];
 			FCPrint[1, "DotSimplify: Applying DotSimplifyRelations.", FCDoControl->dsVerbose];
-			If[ simrel =!= {},
+			If[ optDotSimplifyRelations =!= {},
 				(*  If there are any supplied DotSimplifyRelations relations, we need to apply them*)
 				sru[aa_ :> bb_] :=
 					(DOT[xxXX___, Sequence @@ If[ Head[aa] === DOT,
@@ -154,7 +162,7 @@ DotSimplify[expr_, OptionsPattern[]] :=
 					(sdoot[xxXX, bb, yyYY] /. sdoot[] :> Sequence[] /. sdoot -> DOT));
 				sru[aa_ -> bb_] :=
 					sru[aa :> bb];
-				simrel = Map[sru, simrel];
+				optDotSimplifyRelations = Map[sru, optDotSimplifyRelations];
 			];
 			FCPrint[1, "DotSimplify: Done applying DotSimplifyRelations, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 			FCPrint[3, "DotSimplify: After DotSimplifyRelations: ", ex, FCDoControl->dsVerbose];
@@ -187,7 +195,7 @@ DotSimplify[expr_, OptionsPattern[]] :=
 
 			time=AbsoluteTime[];
 			FCPrint[1, "DotSimplify: Working out user-defined non-commutative objects.", FCDoControl->dsVerbose];
-			If[ simrel === {},
+			If[ optDotSimplifyRelations === {},
 				vars = Union[Variables[Cases[Cases2[ex,DOT] //. DOT[a___, n_?NumberQ o1_. + o2_:0, b___] :> DOT[a, o1 nvar[n]+o2, b], _, Infinity] ]];
 				If[ Union[Map[DataType[#, NonCommutative]&, vars]] === {True},
 					If[ FreeQ2[{DownValues[Commutator], DownValues[AntiCommutator]},vars],
@@ -212,86 +220,70 @@ DotSimplify[expr_, OptionsPattern[]] :=
 
 			];
 
-			pid[u_,_] :=
-				u;
-
 			(* This is for converting DownValues of Commutator and AntiCommutator to rules *)
-			cru[{commm[a_, b_], ww_}]/; FreeQ[{a,b},Pattern] :=
+			{commSortBy, acommSortBy} = optSortBy;
+
+			(* a.b = [a,b] + b.a *)
+			ruleCommutator[{commm[a_, b_], val_}]/; FCPatternFreeQ[{a,b}] :=
 				(RuleDelayed @@ {
-					cdoot[Pattern[xxX, BlankNullSequence[]], a, b, Pattern[yyY, BlankNullSequence[]]],
-					cdoot[xxX, ww, yyY] + cdoot[xxX, b, a,  yyY]} /.  cdoot[]-> 1 /. cdoot -> DOT
+					holdDOT[Pattern[rest1, BlankNullSequence[]], a, b, Pattern[rest2, BlankNullSequence[]]],
+					holdDOT[rest1, val, rest2] + holdDOT[rest1, b, a,  rest2]} /. holdDOT -> DOT
 				);
 
-			cru[{commm[a_, b_],	ww_}]/; !FreeQ[{a,b},Pattern] :=
+			ruleCommutator[{commm[a_, b_],	val_}]/; !FCPatternFreeQ[{a,b}] :=
 				(RuleDelayed @@ {
-					cdoot[Pattern[xxX, BlankNullSequence[]], a, b, Pattern[yyY, BlankNullSequence[]]],
-					condition[cdoot[xxX, ww, yyY] + cdoot[xxX, b/.Pattern -> pid, a/.Pattern -> pid,yyY],
-						(!orderedQ[{a /. Pattern :> pid, b /. Pattern :> pid}])]} /.  cdoot[]-> 1 /. cdoot -> DOT
+					holdDOT[Pattern[rest1, BlankNullSequence[]], a, b, Pattern[rest2, BlankNullSequence[]]],
+					condition[holdDOT[rest1, val, rest2] + holdDOT[rest1, b/.Pattern -> pid, a/.Pattern -> pid,rest2],
+						(!orderedQ[{a /. Pattern :> pid, b /. Pattern :> pid},commSortBy])]} /.  holdDOT -> DOT
 				) /. condition :> Condition /. orderedQ :> OrderedQ;
 
-			aru[{acommm[a_ , b_], ww_}]/; FreeQ[{a,b},Pattern] :=
+
+			ruleAntiCommutator[{acommm[a_ , b_], val_}]/; FCPatternFreeQ[{a,b}] :=
 				(RuleDelayed @@ {
-					cdoot[Pattern[xxX, BlankNullSequence[]], a, b, Pattern[yyY, BlankNullSequence[]]],
-					cdoot[xxX, ww, yyY] - cdoot[xxX, b, a,  yyY]} /.  cdoot[]-> 1 /. cdoot -> DOT);
+					holdDOT[Pattern[rest1, BlankNullSequence[]], a, b, Pattern[rest2, BlankNullSequence[]]],
+					holdDOT[rest1, val, rest2] - holdDOT[rest1, b, a,  rest2]} /. holdDOT -> DOT);
 
-			aru[{acommm[a_, b_], ww_ }]/; !FreeQ[{a,b},Pattern] :=
-				{
-					(RuleDelayed @@ {cdoot[ Pattern[xxX, BlankNullSequence[]], a, b, Pattern[yyY, BlankNullSequence[]]],
-					condition[ 1/2 cdoot[xxX, ww, yyY], sameQ[a /. Pattern :> pid, b /. Pattern :> pid]]} /.  cdoot[]-> 1 /.
-					cdoot -> DOT) /. {sameQ :> SameQ, condition :> Condition},
+			ruleAntiCommutator[{acommm[a_, b_], val_ }]/; !FCPatternFreeQ[{a,b}] := {
 
-					(RuleDelayed @@ {cdoot[Pattern[xxX, BlankNullSequence[]], a, b, Pattern[yyY, BlankNullSequence[]]],
-					condition[cdoot[xxX, ww, yyY] - cdoot[xxX, b/.Pattern -> pid, a/.Pattern -> pid ,  yyY],
-					(!orderedQ[{a /. Pattern :> pid, b /. Pattern :> pid}])]} /.  cdoot[]-> 1 /. cdoot -> DOT) /.
-					condition :> Condition /. orderedQ :> OrderedQ};
+					(* a.a = 1/2 {a,a}  *)
+					(RuleDelayed @@ {holdDOT[ Pattern[rest1, BlankNullSequence[]], a, b, Pattern[rest2, BlankNullSequence[]]],
+					condition[ 1/2 holdDOT[rest1, val, rest2], sameQ[a /. Pattern :> pid, b /. Pattern :> pid]]} /.
+						holdDOT -> DOT) /. {sameQ :> SameQ, condition :> Condition},
 
+					(* a.b = {a,b} - b.a *)
+					(RuleDelayed @@ {holdDOT[Pattern[rest1, BlankNullSequence[]], a, b, Pattern[rest2, BlankNullSequence[]]],
+					condition[holdDOT[rest1, val, rest2] - holdDOT[rest1, b/.Pattern -> pid, a/.Pattern -> pid ,  rest2],
+					(!orderedQ[{a /. Pattern :> pid, b /. Pattern :> pid},acommSortBy])]} /. holdDOT -> DOT) /.
+					condition :> Condition /. orderedQ :> OrderedQ
+			};
+
+			(*TODO Rewrite using FCCacheManager*)
 			cotorules[{}] = {};
 			cotorules[a__List] :=
 				(
-				cotorules[a] =
-					Select[Map[cru,	a /. (h:LeftPartialD|RightPartialD|FCPartialD|LeftRightPartialD|LeftRightPartialD2) -> hold[h]
-						/. Commutator -> commm /. HoldPattern :> Identity /. RuleDelayed -> List
-						], FreeQ[#, cru]&]
+				(*cotorules[a] =*)
+					Select[Map[ruleCommutator,	a /. (h:LeftPartialD|RightPartialD|FCPartialD|LeftRightPartialD|LeftRightPartialD2) -> hold[h]
+						/. Commutator -> commm /. HoldPattern :> Identity /. RuleDelayed -> List], FreeQ[#, ruleCommutator]&]
 				)/; a=!={};
 
 			actorules[{}] = {};
 			actorules[a__List] :=
 				(
-				actorules[a] = Select[Map[aru,	a /. (h:LeftPartialD|RightPartialD|FCPartialD|LeftRightPartialD|LeftRightPartialD2) -> hold[h]
-					/. AntiCommutator -> acommm /. HoldPattern :> Identity /. RuleDelayed -> List], FreeQ[#, aru]&]
+				(*actorules[a] = *)Select[Map[ruleAntiCommutator,	a /. (h:LeftPartialD|RightPartialD|FCPartialD|LeftRightPartialD|LeftRightPartialD2) -> hold[h]
+					/. AntiCommutator -> acommm /. HoldPattern :> Identity /. RuleDelayed -> List], FreeQ[#, ruleAntiCommutator]&]
 				)/; a=!={};
 
-			comall[ yy__ ] :=
-				yy //. (Flatten[cotorules[DownValues@@{Commutator}]] //. hold[h_]:> h);
-
-			acomall[ yy__ ] :=
-				yy //. (Flatten[actorules[DownValues@@{AntiCommutator}]] //. hold[h_]:> h);
-
-			DOTcomm[] = 1;
-			(* there might be either explicit commutators or anticommutators
-				to be inserted, or use: comall, acomall to make use of DownValues.
-			*)
 			Off[Rule::rhs];
 
-			time=AbsoluteTime[];
-			FCPrint[1, "DotSimplify: Working out commutators and anti-commutators.", FCDoControl->dsVerbose];
-			If[ simrel === {},
-				DOTcomm[xy__] :=
-					FixedPoint[acomall, FixedPoint[comall, DOT[xy], maxIterations], maxIterations],
+			(*	There might be either explicit commutators or anticommutators to be inserted.	*)
+			commutatorEvaluationRules = (Flatten[cotorules[DownValues@@{Commutator}]] //. hold[h_]:> h);
+			antiCommutatorEvaluationRules = (Flatten[actorules[DownValues@@{AntiCommutator}]] //. hold[h_]:> h);
 
-				DOTcomm[xy__] :=
-					FixedPoint[acomall, FixedPoint[comall, DOT[xy]//.simrel, maxIterations] //. simrel, maxIterations] //. simrel
-			];
 
-			(* Expand sums, if needed *)
-			If[ OptionValue[Expanding],
-				dlin0[a___] :=
-					(Distribute[dlin[a]] //. dlin[h___, n_Integer c_, b___] :> (n dlin[h, c, b]));
-			];
-			FCPrint[1, "DotSimplify: Done working out commutators and anti-commutators, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
-			FCPrint[3, "DotSimplify: After working out commutators and anti-commutators: ", x, FCDoControl->dsVerbose];
+			FCPrint[3, "DotSimplify: Commutator rules: ", commutatorEvaluationRules, FCDoControl->dsVerbose];
+			FCPrint[3, "DotSimplify: AntiCommutator rules: ", antiCommutatorEvaluationRules, FCDoControl->dsVerbose];
 
-			If[	OptionValue[FCJoinDOTs] && !OptionValue[Expanding],
+			If[	OptionValue[FCJoinDOTs] && !optExpanding,
 				time=AbsoluteTime[];
 				FCPrint[1, "DotSimplify: Joining DOTs.", FCDoControl->dsVerbose];
 				x = x/.DOT-> holdDOT //. {holdDOT[a___, b1_, c___] + holdDOT[a___, b2_, c___] :> holdDOT[a, b1 + b2, c]};
@@ -301,47 +293,23 @@ DotSimplify[expr_, OptionsPattern[]] :=
 			];
 
 			time=AbsoluteTime[];
-			FCPrint[1, "DotSimplify: Doing non-commutative expansions.", FCDoControl->dsVerbose];
-			dlin[] = 1;
-
-			dlin1[{ok___}, b_/;DataType[b, NonCommutative], c___] :=
-				dlin1[{ok, b}, c];
-
-			dlin1[{ok___},(n_?NumberQ) b_/;DataType[b, NonCommutative], c___] :=
-				n dlin1[{ok, b}, c];
-
-			dlin1[{ok___},b_, c___] :=
-				If[ NonCommFreeQ[b] === True && FreeQ[b, dlin1],
-					b dlin1[{ok}, c],
-
-					If[ Head[b] === Times,
-						If[ Select[b, NonCommFreeQ[#]&] =!= 1,
-							Select[b, NonCommFreeQ[#]&] dlin1[{ok, Select[b, !NonCommFreeQ[#]&]}, c],
-							(*The head is Times, and there are only noncommutative objects inside *)
-							(*dlin1[{ok},b[[1]]] dlin1[{},Rest[b],c]*)
-							(*	If there is a Times between noncommutative objects with the same head, there clearly must be
-								something wrong; TODO: head2 instead of Head to map all relevant Dirac heads to the same name. *)
-							If[ Intersection[(Head/@Cases2[b[[1]],$NonComm]),(Head/@Cases2[Rest[b],$NonComm])]=!={},
-								Message[DotSimplify::failmsg,"Detected commutative multiplication of noncommutative objects."];
-								Abort[]
-							];
-
-							dlin1[{ok},b[[1]],Rest[b],c]
-						],
-						dlin1[{ok,b},c]
-					]
-				];
+			FCPrint[1, "DotSimplify: Doing simple noncommutative expansions.", FCDoControl->dsVerbose];
 
 			(* Evaluate all the commutators and anticommutators*)
-			x = x/. SUNTrace -> sunTrace;
+			x = x /. SUNTrace -> sunTrace;
 
 			(* Sort out some trivial DOTs right away *)
 			x = x /. DOT -> tmpDOT /. tmpDOT[a__]/; FreeQ[{a},tmpDOT] && MatchQ[{a},{__DiracGamma}] :> holdDOT[a] /. tmpDOT->DOT;
 			FCPrint[3, "DotSimplify: After sorting out trivial DOTs: ", x, FCDoControl->dsVerbose];
 
-			simpf[y_] :=
-				(y /. DOT -> dlin0 /. dlin0 -> dlin  //. dlin[a__] :> dlin1[{}, a] //. dlin1[{a___}] :> DOT[a] /. DOT -> DOTcomm) /. dlin -> DOT;
-			x = FixedPoint[simpf, x, maxIterations];
+			FCPrint[1, "DotSimplify: Simple noncommutative expansions done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
+
+
+			time=AbsoluteTime[];
+			FCPrint[1, "DotSimplify: Doing main noncommutative expansions.", FCDoControl->dsVerbose];
+			x = FixedPoint[dotExpand, x, optMaxIterations];
+			FCPrint[1, "DotSimplify: Main noncommutative expansions done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
+
 
 			FCPrint[4, "DotSimplify: After simpf: ", x, FCDoControl->dsVerbose];
 
@@ -353,10 +321,15 @@ DotSimplify[expr_, OptionsPattern[]] :=
 				FCPrint[3, "DotSimplify: After DiracChainFactor: ", x, FCDoControl->dsVerbose]
 			];
 
-			x = x/. sunTrace -> SUNTrace /. holdDOT -> DOT;
+			If[	!FreeQ[x, PauliChain],
+				time=AbsoluteTime[];
+				FCPrint[1, "DotSimplify: Applying PauliChainFactor.", FCDoControl->dsVerbose];
+				x = PauliChainFactor[x, FCI->True];
+				FCPrint[1, "DotSimplify: PauliChainFactor done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
+				FCPrint[3, "DotSimplify: After PauliChainFactor: ", x, FCDoControl->dsVerbose]
+			];
 
-			FCPrint[1, "DotSimplify: Non-commutative expansions done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
-			FCPrint[3, "DotSimplify: After doing non-commutative expansion: ", x, FCDoControl->dsVerbose];
+			x = x /. sunTrace -> SUNTrace /. holdDOT -> DOT;
 
 			x
 		];
@@ -409,7 +382,7 @@ DotSimplify[expr_, OptionsPattern[]] :=
 		If[ !FreeQ[x, QuantumField],
 			time=AbsoluteTime[];
 			FCPrint[1, "DotSimplify: Factoring out QuantumField's", FCDoControl->dsVerbose];
-			x = x /. DOT->dodot //. {dodot[a___,b_/;Head[b] =!= SUNT, c__SUNT,d___] :> dodot[a,c,b,d]} /. dodot->DOT;
+			x = x /. DOT->holdDOT //. {holdDOT[a___,b_/;Head[b] =!= SUNT, c__SUNT,d___] :> holdDOT[a,c,b,d]} /. holdDOT->DOT;
 			x = x /. DOT[a__SUNT, b__QuantumField] :> (DOT[a]*DOT[b]);
 			FCPrint[1, "DotSimplify: Done factoring out QuantumField's, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 			FCPrint[3, "DotSimplify: After factoring out QuantumFields", x, FCDoControl->dsVerbose]
@@ -437,6 +410,97 @@ DotSimplify[expr_, OptionsPattern[]] :=
 
 		x
 	];
+
+holdDOT[] =
+	1;
+
+holdDOT[___,0,___] :=
+	0;
+
+holdDOT[a___,1,b___] :=
+	holdDOT[a,b];
+
+comall[z__] :=
+	z //. commutatorEvaluationRules;
+
+acomall[z__] :=
+	z //. antiCommutatorEvaluationRules;
+
+
+DOTcomm[] =
+	1;
+
+DOTcomm[xy__] :=
+	FixedPoint[acomall, FixedPoint[comall, DOT[xy], optMaxIterations], optMaxIterations]/; optDotSimplifyRelations==={};
+
+
+DOTcomm[xy__] :=
+	(FixedPoint[acomall, FixedPoint[comall, DOT[xy]//.optDotSimplifyRelations, optMaxIterations] //. optDotSimplifyRelations, optMaxIterations] //. optDotSimplifyRelations)/; optDotSimplifyRelations=!={};
+
+
+orderedQ[x_,Automatic]:=
+	orderedQ[x];
+
+pid[u_,_] :=
+	u;
+
+dlin[] =
+	1;
+
+dlin0[a___] :=
+	(Distribute[dlin[a]] //. dlin[h___, n_Integer c_, b___] :> (n dlin[h, c, b]))/; optExpanding;
+
+dlin0[a___] :=
+	dlin[a]/; !optExpanding;
+
+dlin1[{ok___}, b_/;DataType[b, NonCommutative], c___] :=
+	dlin1[{ok, b}, c];
+
+dlin1[{ok___},(n_?NumberQ) b_/;DataType[b, NonCommutative], c___] :=
+	n dlin1[{ok, b}, c];
+
+dlin1[{ok___},b_, c___] :=
+	If[ NonCommFreeQ[b] === True && FreeQ[b, dlin1],
+
+		b dlin1[{ok}, c],
+
+		If[ Head[b] === Times,
+			If[ Select[b, NonCommFreeQ[#]&] =!= 1,
+				Select[b, NonCommFreeQ[#]&] dlin1[{ok, Select[b, !NonCommFreeQ[#]&]}, c],
+				(*The head is Times, and there are only noncommutative objects inside *)
+				(*dlin1[{ok},b[[1]]] dlin1[{},Rest[b],c]*)
+				(*	If there is a Times between noncommutative objects with the same head, there clearly must be
+					something wrong; TODO: head2 instead of Head to map all relevant Dirac heads to the same name. *)
+				If[ Intersection[(Head/@Cases2[b[[1]],$NonComm]),(Head/@Cases2[Rest[b],$NonComm])]=!={},
+					Message[DotSimplify::failmsg,"Detected commutative multiplication of noncommutative objects."];
+					Abort[]
+				];
+				dlin1[{ok},b[[1]],Rest[b],c]
+			],
+			dlin1[{ok,b},c]
+		]
+	];
+
+
+dotExpand[x_]:=
+	Block[{tmp},
+		(*FCPrint[4, "DotSimplify: dotExpand: Entering with: ", x, FCDoControl->dsVerbose];*)
+		tmp = x;
+		tmp = tmp /. DOT -> dlin0;
+		(*FCPrint[4, "DotSimplify: dotExpand: After dlin0: ", tmp, FCDoControl->dsVerbose];*)
+		tmp = tmp /. dlin0 -> dlin  //. dlin[a__] :> dlin1[{}, a];
+		tmp = tmp //. dlin1[{a___}] :> DOT[a];
+		tmp = tmp /. DOT -> DOTcomm;
+		tmp = tmp /. dlin -> DOT;
+		(*FCPrint[4, "DotSimplify: dotExpand: Leaving with: ", tmp, FCDoControl->dsVerbose];*)
+		tmp
+	];
+
+
+
+
+
+
 
 dootpow[a__] :=
 	If[ FreeQ2[{a}, {DiracGamma,SUNT,Spinor}],

@@ -179,7 +179,7 @@ If[ FileExistsQ[FileNameJoin[{FeynCalc`$FeynCalcDirectory,"FCConfig.m"}]],
 	Get[FileNameJoin[{FeynCalc`$FeynCalcDirectory,"FCConfig.m"}]]
 ];
 
-(* need to do this first, otherwise $NonComm and $FCTensorList do not get built correctly *)
+(* need to do this first, otherwise $NonComm and $FCTensorList won't get built correctly *)
 boostrappingList = Join[
 	Map[FileNameJoin[{$FeynCalcDirectory,"Shared",#}]&, {"SharedTools.m", "DataType.m"}],
 	Map[FileNameJoin[{$FeynCalcDirectory,"NonCommAlgebra",#}]&, {"NonCommutative.m"}],
