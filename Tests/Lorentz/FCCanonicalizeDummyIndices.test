@@ -193,7 +193,5 @@ PauliChain[PauliSigma[CartesianIndex[a]] . (m +
 	PauliSigma[CartesianIndex[j]] Pair[CartesianIndex[j],
 	Momentum[p]]) . PauliSigma[CartesianIndex[b]], PauliIndex[i],
 PauliIndex[j]], CartesianIndexNames -> {al}, FCE -> True]",
-"m PCHN[CSI[a] . CSI[b], PauliIndex[i], PauliIndex[j]] +
-CV[p, al] PCHN[CSI[a] . CSI[al] . CSI[b], PauliIndex[i],
-PauliIndex[j]]"}
+"m*PCHN[CSI[a] . CSI[b], i, j] + CV[p, al]*PCHN[CSI[a] . CSI[al] . CSI[b], i, j]"}
 });

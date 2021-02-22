@@ -223,5 +223,5 @@ DiracIndex[QGIDirMinus2], DiracIndex[QGIDirMinus1]],4,FCE->True]", "DCHN[GA[Lor1
 "ChangeDimension[
 PauliChain[PauliSigma[CartesianIndex[Car1, D - 1], D - 1],
 PauliIndex[QGIDirMinus2], PauliIndex[QGIDirMinus1]], 4, FCE -> True]",
-"PCHN[CSI[Car1], PauliIndex[QGIDirMinus2], PauliIndex[QGIDirMinus1]]"}
+"PCHN[CSI[Car1], QGIDirMinus2, QGIDirMinus1]"}
 });

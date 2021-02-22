@@ -100,7 +100,10 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 			Abort[]
 		];
 
-		{extraPref, ex} = FCProductSplit[ex, Join[{lmoms},{FeynAmpDenominator, Pair, CartesianPair}]];
+		If[	TrueQ[Head[ex]=!=List],
+			{extraPref, ex} = FCProductSplit[ex, Join[{lmoms},{FeynAmpDenominator, Pair, CartesianPair}]],
+			extraPref = 1
+		];
 
 		FCPrint[1,"FCFeynmanParametrize: Prefactor in the input: ", extraPref, FCDoControl->fcfpVerbose];
 
