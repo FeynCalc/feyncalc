@@ -134,46 +134,50 @@ epskill[any_ /; FreeQ2[any,{RightPartialD, LeftPartialD}]] :=
 epskill[prod_Times] :=
 	( (prod /. epskillDot -> mydot) //. {
 
-		(Eps[a___, LorentzIndex[mu_,___],b___, LorentzIndex[nu_, ___], c___] *
-		mydot[pa1___, (LeftPartialD | RightPartialD)[LorentzIndex[mu_,___]], pa2___,
-		(LeftPartialD | RightPartialD)[LorentzIndex[nu_,___]], pa3___]) :> 0,
+		(Eps[a___, LorentzIndex[mu_,___], b___, LorentzIndex[nu_, ___], c___] *
+			mydot[	pa1___, (LeftPartialD | RightPartialD)[LorentzIndex[mu_,___]],
+					pa2___, (LeftPartialD | RightPartialD)[LorentzIndex[nu_,___]], pa3___]) :> 0,
 
-		(Eps[a___, LorentzIndex[mu_,___],b___, LorentzIndex[nu_, ___], c___] *
-		mydot[pa1___, (LeftPartialD | RightPartialD)[LorentzIndex[nu_,___]], pa2___,
-		(LeftPartialD | RightPartialD)[LorentzIndex[mu_,___]], pa3___]) :> 0,
+		(Eps[a___, LorentzIndex[mu_,___], b___, LorentzIndex[nu_, ___], c___] *
+			mydot[	pa1___, (LeftPartialD | RightPartialD)[LorentzIndex[nu_,___]],
+					pa2___,	(LeftPartialD | RightPartialD)[LorentzIndex[mu_,___]], pa3___]) :> 0,
+
+
+		(Eps[a___, CartesianIndex[mu_,___], b___, CartesianIndex[nu_, ___], c___] *
+			mydot[	pa1___, (LeftPartialD | RightPartialD)[CartesianIndex[mu_,___]],
+					pa2___, (LeftPartialD | RightPartialD)[CartesianIndex[nu_,___]], pa3___]) :> 0,
+
+		(Eps[a___, CartesianIndex[mu_,___], b___, CartesianIndex[nu_, ___], c___] *
+			mydot[	pa1___, (LeftPartialD | RightPartialD)[CartesianIndex[nu_,___]],
+					pa2___,	(LeftPartialD | RightPartialD)[CartesianIndex[mu_,___]], pa3___]) :> 0,
+
 		(* however, here (03/21/98) one has to be careful ... *)
 		(*BUGFIXED ?*)
 
-		((Eps[a___, LorentzIndex[mu_,___], b___, LorentzIndex[nu_,___], c___ ] |
-		Eps[a___, LorentzIndex[nu_,___], b___, LorentzIndex[mu_,___], c___ ]) *
-		(SUND[de1___SUNIndex, SUNIndex[s1_], de2___SUNIndex, SUNIndex[s2_], de3___SUNIndex ] |
-		SUND[de1___SUNIndex, SUNIndex[s2_], de2___SUNIndex, SUNIndex[s1_], de3___SUNIndex ]) *
-		mydot[pa1___, QuantumField[___FCPartialD, FCPartialD[LorentzIndex[mu_,___]], ___FCPartialD,
-		fieldname_, LorentzIndex[_,___], SUNIndex[s1_]], pa2___, QuantumField[___FCPartialD,
-		FCPartialD[LorentzIndex[nu_,___]], ___FCPartialD, fieldname_, LorentzIndex[_,___], SUNIndex[s2_]], pa3___]
+		(
+		(Eps[a___, LorentzIndex[mu_,___], b___, LorentzIndex[nu_,___], c___ ] | Eps[a___, LorentzIndex[nu_,___], b___, LorentzIndex[mu_,___], c___ ]) *
+			(SUND[de1___SUNIndex, SUNIndex[s1_], de2___SUNIndex, SUNIndex[s2_], de3___SUNIndex ] | SUND[de1___SUNIndex, SUNIndex[s2_], de2___SUNIndex, SUNIndex[s1_], de3___SUNIndex ]) *
+			mydot[	pa1___, QuantumField[___FCPartialD, FCPartialD[LorentzIndex[mu_,___]], ___FCPartialD, fieldname_, LorentzIndex[_,___], SUNIndex[s1_]],
+					pa2___, QuantumField[___FCPartialD, FCPartialD[LorentzIndex[nu_,___]], ___FCPartialD, fieldname_, LorentzIndex[_,___], SUNIndex[s2_]], pa3___]
 		) :> 0 ,
 
-		((Eps[a___, LorentzIndex[nu_,___], b___, LorentzIndex[mu_, ___],c___] |
-		Eps[a___, LorentzIndex[mu_,___], b___, LorentzIndex[nu_, ___],c___]) *  QuantumField[___FCPartialD,
-		FCPartialD[LorentzIndex[mu_,___]], ___FCPartialD, FCPartialD[LorentzIndex[nu_,___]], ___FCPartialD,
-		name_ /; (Head[name]=!=FCPartialD) && (Head[name]=!=LorentzIndex), LorentzIndex[_,___], l___]
+		(
+		(Eps[a___, LorentzIndex[nu_,___], b___, LorentzIndex[mu_, ___],c___] | Eps[a___, LorentzIndex[mu_,___], b___, LorentzIndex[nu_, ___],c___]) *
+			QuantumField[___FCPartialD,	FCPartialD[LorentzIndex[mu_,___]], ___FCPartialD, FCPartialD[LorentzIndex[nu_,___]], ___FCPartialD,
+			name_ /; (Head[name]=!=FCPartialD) && (Head[name]=!=LorentzIndex), LorentzIndex[_,___], l___]
 		) :> 0 /; Length[{l}]<2,
 
-		((e : (Eps[a___, LorentzIndex[n_,___], b___, LorentzIndex[m_, ___],c___] |
-				Eps[a___, LorentzIndex[m_,___], b___, LorentzIndex[n_, ___],c___])
-		) * QuantumField[p___FCPartialD, FCPartialD[LorentzIndex[m_,d___]], q___FCPartialD,
-		t_ /; (Head[t] =!= FCPartialD) && (Head[t] =!= LorentzIndex), LorentzIndex[nu_,s___], r___]
+		((e : (Eps[a___, LorentzIndex[n_,___], b___, LorentzIndex[m_, ___],c___] | Eps[a___, LorentzIndex[m_,___], b___, LorentzIndex[n_, ___],c___])) *
+			QuantumField[p___FCPartialD, FCPartialD[LorentzIndex[m_,d___]], q___FCPartialD,	t_ /;
+				(Head[t] =!= FCPartialD) && (Head[t] =!= LorentzIndex), LorentzIndex[nu_,s___], r___]
 		) :>
-			(EpsEvaluate[e /. {m:>n, n:>m}, FCI->True] QuantumField[p,FCPartialD[LorentzIndex[n,s]], q, t,
-			LorentzIndex[m, d],r]) /; !OrderedQ[{m,n}],
+			(EpsEvaluate[e /. {m:>n, n:>m}, FCI->True] QuantumField[p,FCPartialD[LorentzIndex[n,s]], q, t, LorentzIndex[m, d],r]) /; !OrderedQ[{m,n}],
 
-		((e : (Eps[a___, LorentzIndex[n_,___], b___, LorentzIndex[m_, ___],c___] |
-				Eps[a___, LorentzIndex[m_,___], b___, LorentzIndex[n_, ___],c___])) *
-				mydot[quf1___, QuantumField[p___FCPartialD, FCPartialD[LorentzIndex[m_,s___]], q___FCPartialD,
-				t_ /; (Head[t] =!= FCPartialD) && (Head[t] =!= LorentzIndex), LorentzIndex[nu_,d___], r___], x___]
-		) :> (EpsEvaluate[e/.{m:>n, n:>m}, FCI->True] mydot[x, QuantumField[p,FCPartialD[LorentzIndex[n, d]], q, t,
-		LorentzIndex[m,s], r], x]
-		) /; !OrderedQ[{m, n}]
+		((e : (Eps[a___, LorentzIndex[n_,___], b___, LorentzIndex[m_, ___],c___] | Eps[a___, LorentzIndex[m_,___], b___, LorentzIndex[n_, ___],c___])) *
+				mydot[quf1___, QuantumField[p___FCPartialD, FCPartialD[LorentzIndex[m_,s___]], q___FCPartialD, t_ /;
+				(Head[t] =!= FCPartialD) && (Head[t] =!= LorentzIndex), LorentzIndex[nu_,d___], r___], x___]
+		) :>
+			(EpsEvaluate[e/.{m:>n, n:>m}, FCI->True] mydot[x, QuantumField[p,FCPartialD[LorentzIndex[n, d]], q, t, LorentzIndex[m,s], r], x]) /; !OrderedQ[{m, n}]
 
 		} /. mydot-> epskillDot) /; !FreeQ2[prod, {Eps,LeftPartialD,RightPartialD}];
 
@@ -265,13 +269,13 @@ qf5[a___, QuantumField[f2__], QuantumField[f1__], LeftPartialD[mu_], b___] :=
 	((qf5st[a, quanf[f2],  quanf[FCPartialD[mu], f1], b] +
 		qf5st[a, quanf[f2], LeftPartialD[mu], quanf[f1], b]
 		) /. quanf -> QuantumField /. qf5st -> qf5
-	) /; ((Head[mu] === LorentzIndex) || (Head[mu] === Momentum));
+	) /; MemberQ[{LorentzIndex,Momentum,CartesianIndex,CartesianMomentum},Head[mu]];
 
 qf5[a___, RightPartialD[mu_], QuantumField[f1__], QuantumField[f2__], b___] :=
 	((qf5st[a, quanf[FCPartialD[mu], f1], quanf[f2],  b] +
 		qf5st[a, quanf[f1], RightPartialD[mu], quanf[f2], b]
 	) /. quanf -> QuantumField /. qf5st -> qf5
-	) /; ((Head[mu] === LorentzIndex) || (Head[mu] === Momentum));
+	) /; MemberQ[{LorentzIndex,Momentum,CartesianIndex,CartesianMomentum},Head[mu]];
 
 qf5st[a___, RightPartialD[Momentum[OPEDelta]^m_], RightPartialD[Momentum[OPEDelta]^n_], b___] :=
 	qf5st[a, RightPartialD[Momentum[OPEDelta]^(m+n)], b];

@@ -1598,7 +1598,7 @@ LCD[x___]/; (Length[{x}] > 4) && (FCPatternFreeQ[{x}]) :=
 
 LeftPartialD[x__] :=
 	LeftPartialD @@ (LorentzIndex /@ {x}) /;FreeQ2[{x},
-	{LorentzIndex, Momentum, OPEDelta, RowBox,
+	{LorentzIndex, ExplicitLorentzIndex, CartesianIndex, Momentum, CartesianMomentum, OPEDelta, RowBox,
 	Pattern, Blank}] && (Union[{x}]=!={1});
 
 LeftPartialD[(1)..] =
@@ -1607,10 +1607,7 @@ LeftPartialD[(1)..] =
 LeftPartialD[c:OPEDelta..] :=
 	LeftPartialD @@ (Momentum /@ {c});
 
-LeftPartialD[x_LorentzIndex, y__LorentzIndex] :=
-	DOT @@ Map[LeftPartialD, {x, y}];
-
-LeftPartialD[x_Momentum, y__Momentum] :=
+LeftPartialD[x_, y__]/; MatchQ[{x,y},{(__LorentzIndex | __ExplicitLorentzIndex | __CartesianIndex | __Momentum | __CartesianMomentum)}] :=
 	DOT @@ Map[LeftPartialD, {x, y}];
 
 (* 	Here one must use named blanks, since otherwise DotSimplify
@@ -1620,35 +1617,32 @@ ToExpression["Commutator[RightPartialD[x_], LeftPartialD[y_]] = 0;"]
 
 LeftRightPartialD[xx__] :=
 	LeftRightPartialD@@ (LorentzIndex /@ {xx}) /;
-	FreeQ2[{xx}, {LorentzIndex, Momentum, OPEDelta, RowBox,
-	Pattern, Blank}] && (Union[{xx}]=!={1});
+	FreeQ2[{xx}, {LorentzIndex, ExplicitLorentzIndex, CartesianIndex,
+		Momentum, CartesianMomentum, OPEDelta, RowBox, Pattern, Blank}] && (Union[{xx}]=!={1});
 
 LeftRightPartialD[(1)..] = 1;
 
 LeftRightPartialD[c:OPEDelta..] :=
 	LeftRightPartialD @@ (Momentum /@ {c});
 
-LeftRightPartialD[x_LorentzIndex, y__LorentzIndex] :=
-	DOT @@ Map[LeftRightPartialD, {x, y}];
 
-LeftRightPartialD[x_Momentum, y__Momentum] :=
-	DOT @@ Map[LeftRightPartialD, {x, y}];
+LeftRightPartialD[x_, y__]/; MatchQ[{x,y},{(__LorentzIndex | __ExplicitLorentzIndex | __CartesianIndex | __Momentum | __CartesianMomentum)}] :=
+	DOT @@ Map[LeftRightPartialD, {x, y}]
+
 
 LeftRightPartialD2[xx__] :=
-	LeftRightPartialD2@@ (LorentzIndex /@ {xx}) /; FreeQ2[{xx},
-	{LorentzIndex, Momentum, OPEDelta, RowBox,
-	Pattern, Blank}] && (Union[{xx}]=!={1});
+	LeftRightPartialD2@@ (LorentzIndex /@ {xx}) /;
+	FreeQ2[{xx}, {LorentzIndex, ExplicitLorentzIndex, CartesianIndex,
+		Momentum, CartesianMomentum, OPEDelta, RowBox, Pattern, Blank}] && (Union[{xx}]=!={1});
 
 LeftRightPartialD2[(1)..] = 1;
 
 LeftRightPartialD2[c:OPEDelta..] :=
 	LeftRightPartialD2 @@ (Momentum /@ {c});
 
-LeftRightPartialD2[x_LorentzIndex, y__LorentzIndex] :=
+LeftRightPartialD2[x_, y__]/; MatchQ[{x,y},{(__LorentzIndex | __ExplicitLorentzIndex | __CartesianIndex | __Momentum | __CartesianMomentum)}] :=
 	DOT @@ Map[LeftRightPartialD2, {x, y}];
 
-LeftRightPartialD2[x_Momentum, y__Momentum] :=
-	DOT @@ Map[LeftRightPartialD2, {x, y}];
 
 LeftRightPartialD2[Momentum[OPEDelta]^n_Integer?Positive] :=
 	DOT @@ Map[LeftRightPartialD2, Table[Momentum[OPEDelta],{n}]];
@@ -1822,7 +1816,9 @@ Pair[p_Momentum, q_CartesianMomentum]:=
 
 
 FCPartialD[x__] :=
-	FCPartialD@@(LorentzIndex /@ {x})/; FreeQ2[{x},{LorentzIndex, Momentum, OPEDelta, RowBox, Pattern, Blank}] && (Union[{x}]=!={1});
+	FCPartialD @@ (LorentzIndex /@ {x}) /;FreeQ2[{x},
+	{LorentzIndex, ExplicitLorentzIndex, CartesianIndex, Momentum, CartesianMomentum, OPEDelta, RowBox,
+	Pattern, Blank}] && (Union[{x}]=!={1});
 
 FCPartialD[(1)..] =
 	1;
@@ -1830,10 +1826,7 @@ FCPartialD[(1)..] =
 FCPartialD[c:OPEDelta..] :=
 	FCPartialD @@ (Momentum /@ {c});
 
-FCPartialD[x_LorentzIndex, y__LorentzIndex] :=
-	DOT @@ Map[FCPartialD, {x, y}];
-
-FCPartialD[x_Momentum, y__Momentum] :=
+FCPartialD[x_, y__]/; MatchQ[{x,y},{(__LorentzIndex | __ExplicitLorentzIndex | __CartesianIndex | __Momentum | __CartesianMomentum)}] :=
 	DOT @@ Map[FCPartialD, {x, y}];
 
 PlusDistribution[Log[x_ (1-x_)]/(1-x_)] :=
@@ -1901,8 +1894,10 @@ QuantumField[f___,g_/;Head[g]=!=List,{lilo___},{suli___}] :=
 QuantumField[f1_QuantumField] :=
 	f1;
 
-RightPartialD[xx__] :=
-	RightPartialD @@ (LorentzIndex /@ {xx}) /; FreeQ2[{xx}, {LorentzIndex, Momentum, OPEDelta, RowBox, Pattern, Blank}] && (Union[{xx}]=!={1});
+RightPartialD[x__] :=
+	RightPartialD @@ (LorentzIndex /@ {x}) /;FreeQ2[{x},
+	{LorentzIndex, ExplicitLorentzIndex, CartesianIndex, Momentum, CartesianMomentum, OPEDelta, RowBox,
+	Pattern, Blank}] && (Union[{x}]=!={1});
 
 RightPartialD[(1)..] =
 	1;
@@ -1910,10 +1905,7 @@ RightPartialD[(1)..] =
 RightPartialD[c:OPEDelta..] :=
 	RightPartialD @@ (Momentum /@ {c});
 
-RightPartialD[x_LorentzIndex, y__LorentzIndex] :=
-	DOT @@ Map[RightPartialD, {x, y}];
-
-RightPartialD[x_Momentum, y__Momentum] :=
+RightPartialD[x_, y__]/; MatchQ[{x,y},{(__LorentzIndex | __ExplicitLorentzIndex | __CartesianIndex | __Momentum | __CartesianMomentum)}] :=
 	DOT @@ Map[RightPartialD, {x, y}];
 
 SI[x_, y__] :=

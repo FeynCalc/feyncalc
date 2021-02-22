@@ -30,5 +30,8 @@ RightPartialD[Momentum[OPEDelta]])/2"},
 {"fcstExplicitPartialD-ID4",
 "ExplicitPartialD[16 LeftRightPartialD[OPEDelta]^4]//FCE",
 "(-LeftPartialD[Momentum[OPEDelta]] + \
-RightPartialD[Momentum[OPEDelta]])^4"}
+RightPartialD[Momentum[OPEDelta]])^4"},
+{"fcstExplicitPartialD-ID5",
+"FCE[ExplicitPartialD[LeftRightPartialD[CartesianIndex[i]]]]",
+"(-LeftPartialD[CartesianIndex[i]] + RightPartialD[CartesianIndex[i]])/2"}
 });
