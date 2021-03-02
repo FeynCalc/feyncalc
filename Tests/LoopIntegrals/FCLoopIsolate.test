@@ -155,5 +155,17 @@ Head -> loop, FCE -> True]",
 {"fcstFCLoopIsolate-ID38",
 "FCLoopIsolate[FAD[q1] GFAD[{SPD[q1, p] SPD[q2, p], 2}], {q1, q2},
 Head -> loopInt, FAD -> False, FCE -> True]",
-"FAD[q1] GFAD[{{SPD[p, q1] SPD[p, q2], 1}, 2}]"}
+"FAD[q1] GFAD[{{SPD[p, q1] SPD[p, q2], 1}, 2}]"},
+{"fcstFCLoopIsolate-ID39",
+"FCLoopIsolate[{FAD[{p, m}, p - q], FAD[{p, m}, p]}, {p},
+Head -> loopInt, FCE -> True]",
+"{loopInt[FAD[{p, m}, p - q]], loopInt[FAD[{p, m}, p]]}"},
+{"fcstFCLoopIsolate-ID40",
+"FCLoopIsolate[{FAD[{p, m}, p - q] -> FAD[{p, m}, p]}, {p},
+Head -> loopInt, FCE -> True]",
+"{loopInt[FAD[{p, m}, p - q]] -> loopInt[FAD[{p, m}, p]]}"},
+{"fcstFCLoopIsolate-ID41",
+"FCLoopIsolate[{FAD[{p, m}, p - q] == FAD[{p, m}, p]}, {p},
+Head -> loopInt, FCE -> True]",
+"{loopInt[FAD[{p, m}, p - q]] == loopInt[FAD[{p, m}, p]]}"}
 };

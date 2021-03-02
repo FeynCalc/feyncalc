@@ -71,6 +71,17 @@ Options[FCLoopIsolate] = {
 fullDep[z_,lmoms_]:=
 	(Union[Cases[ExpandScalarProduct[z,FCI->True], (CartesianMomentum|Momentum)[x_, ___]/;!FreeQ2[x, lmoms] :> x, Infinity]] === Sort[lmoms]);
 
+
+FCLoopIsolate[a_ == b_, y__] :=
+	FCLoopIsolate[a,y] == FCLoopIsolate[b,y];
+
+FCLoopIsolate[(h:Rule|RuleDelayed)[a_,b_], y__] :=
+	With[{zz1=FCLoopIsolate[a,y],zz2=FCLoopIsolate[b,y]}, h[zz1,zz2]];
+
+FCLoopIsolate[x_List, y__] :=
+	FCLoopIsolate[#, y]& /@ x;
+
+
 FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 	Block[{	res, null1, null2, ex,lmoms,tmp, loopIntHeads, time, optExceptHeads, optHead,
 			dummy1, dummy2},
