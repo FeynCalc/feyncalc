@@ -107,6 +107,12 @@ FCMatchSolve[expr_, notvars_List/; (!OptionQ[notvars] || notvars==={}), OptionsP
 		FCPrint[3, "FCMatchSolve: Removing trivial equation.", FCDoControl->fcmsVerbose];
 		{eqSys,vars,preSol} = Most[FixedPoint[preSolve@@#&,{eqSys,vars,{},notvars}, OptionValue[MaxIterations]]];
 
+		If[	!FreeQ[eqSys,False],
+			FCPrint[0, Style["FCMatchSolve: One or more terms contain no variables to solve for. No solutions possible.",
+				{Darker[Red,0.55], Bold}], FCDoControl->fcmsVerbose];
+			Return[{}]
+		];
+
 		If[	preSol=!={},
 			FCPrint[0, "FCMatchSolve: Following coefficients trivially vanish: ", preSol, FCDoControl->fcmsVerbose];
 			eqSys = SortBy[eqSys /. equals->Equal,LeafCount];
@@ -165,6 +171,9 @@ FCMatchSolve[expr_, notvars_List/; (!OptionQ[notvars] || notvars==={}), OptionsP
 	];
 
 preSolve[eqSys_List, vars_List, zeroVars_List, notvars_List]:=
+	{eqSys,vars,zeroVars,notvars}/;!FreeQ[eqSys,False];
+
+preSolve[eqSys_List, vars_List, zeroVars_List, notvars_List]:=
 Block[{	trivialEqs,newZeroVars, newVars, newEqSys, res},
 
 	trivialEqs = SelectFree[eqSys,Plus];
@@ -193,7 +202,7 @@ Block[{	trivialEqs,newZeroVars, newVars, newEqSys, res},
 
 	res
 
-];
+]/; FreeQ[eqSys,False];
 
 canRemoveVarsQ[allEqVars_, vars_] :=
 	FreeQ[SelectFree[#, Sequence @@ vars] & /@ allEqVars, {}];

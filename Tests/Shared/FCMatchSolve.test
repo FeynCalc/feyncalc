@@ -71,5 +71,13 @@ OP[E11] + (a4^2*tauPref*xil*y41*OP[E2QS])/(16*nc) - (a4^2*
 	tauPref*(16*aa511*nc - 7*y41 + 2*nc*y41)*OP[E2QS])/(16*nc), {OP,
 a4, Log, xil, nc, tauPref, evFlag, nf},FCVerbose\[Rule]-1]",
 "{aa511 -> 0, y41 -> 0, aa111 -> (180 + 146*nc^2 + 40*nc*nf - 432*nc*evFlag[1, 1] -
-1248*evFlag[2, 1] + 488*nc^2*evFlag[2, 1] - 32*nc*nf*evFlag[2, 1] - 288*evFlag[3, 1] - 12*evFlag[7, 2, 1] + 3*nc^2*evFlag[7, 2, 1])/(48*nc)}"}
+1248*evFlag[2, 1] + 488*nc^2*evFlag[2, 1] - 32*nc*nf*evFlag[2, 1] - 288*evFlag[3, 1] - 12*evFlag[7, 2, 1] + 3*nc^2*evFlag[7, 2, 1])/(48*nc)}"},
+{"fcstFCMatchSolve-ID6",
+"FCMatchSolve[ (a4*(1 + 8*alphaE41a0 + 24*alphaE51a0)*OP[E2QTS])/
+8 - (a4*(1 + 24*alphaE41a0 + 8*alphaE51a0)*OP[E2QTS])/(8*
+	nc)  - (a4*alphaE41a0*OP[E4QS])/
+8 + (a4*(alphaE51a0 + 8*alphaE61a0)*OP[E4QS])/(8*nc) - (a4*
+	alphaE61a0*gxi*OP[E4QS])/nc , {a4, OP, nc, gxi, Epsilon},
+FCVerbose -> -1]","{}"}
+
 })
