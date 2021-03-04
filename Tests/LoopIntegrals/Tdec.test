@@ -54,7 +54,7 @@ FeynCalcExternal -> False]","-((Pair[LorentzIndex[i1], LorentzIndex[i2]] (Pair[M
 {"fcstTdec-ID13","Tdec[{{l1, i1}, {l1, i2}, {l2, i3}}, {}, UseTIDL -> False]","{0,0}"},
 {"fcstTdec-ID14","Tdec[{{l1, i1}, {l1, i2}, {l2, i3}}, {}, UseTIDL -> False, List->False]","0"},
 {"fcstTdec-ID15","Tdec[{{q2, mu1}, {q1, mu2}, {q1, mu3}, {q1, mu4}, {q1, mu5}}, {k1},
-UseParallelization -> False, List -> False]","-(((FVD[k1, mu1]*MTD[mu2, mu5]*MTD[mu3, mu4] + FVD[k1, mu1]*MTD[mu2, mu4]*MTD[mu3, mu5] + FVD[k1, mu1]*MTD[mu2, mu3]*MTD[mu4, mu5])*SPD[k1, q2]*(SPD[k1, q1]^2 - SPD[k1, k1]*SPD[q1, q1])^2)/
+Parallelize -> False, List -> False]","-(((FVD[k1, mu1]*MTD[mu2, mu5]*MTD[mu3, mu4] + FVD[k1, mu1]*MTD[mu2, mu4]*MTD[mu3, mu5] + FVD[k1, mu1]*MTD[mu2, mu3]*MTD[mu4, mu5])*SPD[k1, q2]*(SPD[k1, q1]^2 - SPD[k1, k1]*SPD[q1, q1])^2)/
 ((1 - D^2)*SPD[k1, k1]^3)) + ((FVD[k1, mu3]*FVD[k1, mu4]*FVD[k1, mu5]*MTD[mu1, mu2] + FVD[k1, mu2]*FVD[k1, mu4]*FVD[k1, mu5]*MTD[mu1, mu3] + FVD[k1, mu2]*FVD[k1, mu3]*FVD[k1, mu5]*MTD[mu1, mu4] +
 	FVD[k1, mu2]*FVD[k1, mu3]*FVD[k1, mu4]*MTD[mu1, mu5])*SPD[k1, q1]*(4*SPD[k1, q1]^2 + D*SPD[k1, q1]^2 - 3*SPD[k1, k1]*SPD[q1, q1])*(SPD[k1, q1]*SPD[k1, q2] - SPD[k1, k1]*SPD[q1, q2]))/
 ((1 - D^2)*SPD[k1, k1]^4) - ((FVD[k1, mu5]*MTD[mu1, mu4]*MTD[mu2, mu3] + FVD[k1, mu4]*MTD[mu1, mu5]*MTD[mu2, mu3] + FVD[k1, mu5]*MTD[mu1, mu3]*MTD[mu2, mu4] + FVD[k1, mu3]*MTD[mu1, mu5]*MTD[mu2, mu4] +

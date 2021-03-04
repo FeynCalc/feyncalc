@@ -42,7 +42,7 @@ Options[CTdec] =	{
 	Factoring 			-> {Factor2, Factor},
 	FeynCalcExternal	-> True,
 	List 				-> True,
-	UseParallelization	-> True,
+	Parallelize	-> True,
 	UseTIDL				-> True
 };
 
@@ -101,7 +101,7 @@ CTdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]
 		time = AbsolutTime[];
 		FCPrint[1, "CTdec: Calling Tdec.", FCDoControl->ctdecVerbose];
 		resTdec = Tdec[exp,li,ppli, BasisOnly->optBasisOnly, Dimension->dimD, Factoring->OptionValue[Factoring],
-				List->True, FCE->False, UseParallelization->OptionValue[UseParallelization], UseTIDL-> OptionValue[UseTIDL],
+				List->True, FCE->False, Parallelize->OptionValue[Parallelize], UseTIDL-> OptionValue[UseTIDL],
 				Head -> momHead];
 		FCPrint[1, "CTdec: Done calling Tdec, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->ctdecVerbose];
 

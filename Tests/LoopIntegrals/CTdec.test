@@ -134,7 +134,7 @@ False]", "0"},
 {"fcstCTdec-ID15",
 "CTdec[{{q2, mu1}, {q1, mu2}, {q1, mu3}, {q1, mu4}, {q1, mu5}}, \
 {k1},
-UseParallelization -> False, List -> False]",
+Parallelize -> False, List -> False]",
 "-(((24*CSPD[k1, q1]^4*CSPD[k1, q2] + 10*(-1 + D)*CSPD[k1, \
 q1]^4*CSPD[k1, q2] + (-1 + D)^2*CSPD[k1, q1]^4*CSPD[k1, q2] - \
 24*CSPD[k1, k1]*CSPD[k1, q1]^2*CSPD[k1, q2]*CSPD[q1, q1] - 6*(-1 + \

@@ -38,7 +38,7 @@ $FAVerbose = 0;
 
 
 $FCAdvice=0;
-SetOptions[Tdec,UseParallelization->False];
+SetOptions[Tdec,Parallelize->False];
 
 
 (* ::Text:: *)
