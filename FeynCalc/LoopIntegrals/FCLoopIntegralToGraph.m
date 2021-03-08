@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FCLoopBasis														*)
+(* :Title: FCLoopIntegralToGraph											*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -11,23 +11,22 @@
 	Copyright (C) 2014-2020 Vladyslav Shtabovenko
 *)
 
-(* :Summary:	Information about the propagators of the given multi-loop
-				integral													*)
+(* :Summary:	Graph representation from a propagator representation		*)
 
 (* ------------------------------------------------------------------------ *)
 
-FCLoopBasisIntegralToGraph::usage=
+FCLoopIntegralToGraph::usage=
 "FCLoopBasisIntegralToPropagators[int, {q1,q2,...}] returns a list of edge rules that represent the loop integral \
 int. "
 
-FCLoopBasisIntegralToGraph::failmsg =
-"Error! FCLoopBasisIntegralToGraph encountered a fatal problem and must abort the computation. \
+FCLoopIntegralToGraph::failmsg =
+"Error! FCLoopIntegralToGraph encountered a fatal problem and must abort the computation. \
 The problem reads: `1`";
 
 Begin["`Package`"]
 End[]
 
-Begin["`FCLoopBasisIntegralToGraph`Private`"]
+Begin["`FCLoopIntegralToGraph`Private`"]
 
 factorizingIntegral::usage="";
 optSelect::usage="";
@@ -35,7 +34,9 @@ lbtgVerbose::usage="";
 mark::usage="";
 maxVertexDegree::usage="";
 
-Options[FCLoopBasisIntegralToGraph] = {
+Options[FCLoopIntegralToGraph] = {
+	(*n, v and other auxiliary stuff??? *)
+	Except				-> {}
 	FCE 				-> False,
 	FCI 				-> False,
 	FCVerbose 			-> False,
@@ -44,8 +45,9 @@ Options[FCLoopBasisIntegralToGraph] = {
 	Factoring			-> Auto
 };
 
-
-FCLoopBasisIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
+(*TODO Ignore scalar products*)
+(*Except: List of propagators to ignore, GFAD, EEC*)
+FCLoopIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 	Block[{	ex, props, allmoms, extmoms, lineMomenta, null1, null2,
 			intEdgesList, extEdgesList, numExtMoms,	numEdges, lmoms, optFactoring,
 			auxExtEdgesList, numIntVertices, numExtVertices, auxExternalMoms,
@@ -69,21 +71,21 @@ FCLoopBasisIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 		];
 
 		If [!FreeQ2[$ScalarProducts, {lmomsRaw}],
-			Message[FCLoopBasisIntegralToGraph::failmsg, "Some of the loop momenta have scalar product rules attached to them."];
+			Message[FCLoopIntegralToGraph::failmsg, "Some of the loop momenta have scalar product rules attached to them."];
 			Abort[]
 		];
 
 		If[	!MatchQ[ex,{__}|_. _FeynAmpDenominator],
-			Message[FCLoopBasisIntegralToGraph::failmsg, "The input expression is not a proper integral or list of propagators"];
+			Message[FCLoopIntegralToGraph::failmsg, "The input expression is not a proper integral or list of propagators"];
 			Abort[]
 		];
 
-		FCPrint[1,"FCLoopBasisIntegralToGraph: Entering. ", FCDoControl->lbtgVerbose];
-		FCPrint[3,"FCLoopBasisIntegralToGraph: Entering  with: ", ex, FCDoControl->lbtgVerbose];
+		FCPrint[1,"FCLoopIntegralToGraph: Entering. ", FCDoControl->lbtgVerbose];
+		FCPrint[3,"FCLoopIntegralToGraph: Entering  with: ", ex, FCDoControl->lbtgVerbose];
 
 		(*	List of all momenta that appear inside the integral*)
 		allmoms =
-			Cases[MomentumExpand[ex, FCI->True],	(Momentum | CartesianMomentum | TemporalMomentum)[x_, ___] :> x, Infinity] //
+			Cases[MomentumExpand[ex],	(Momentum | CartesianMomentum | TemporalMomentum)[x_, ___] :> x, Infinity] //
 			Sort // DeleteDuplicates;
 
 		(*
@@ -104,13 +106,13 @@ FCLoopBasisIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 		];
 
 
-		FCPrint[1, "FCLoopBasisIntegralToGraph: Loop momenta: ", lmoms, FCDoControl->lbtgVerbose];
-		FCPrint[1, "FCLoopBasisIntegralToGraph: External momenta: ", extmoms, FCDoControl->lbtgVerbose];
+		FCPrint[1, "FCLoopIntegralToGraph: Loop momenta: ", lmoms, FCDoControl->lbtgVerbose];
+		FCPrint[1, "FCLoopIntegralToGraph: External momenta: ", extmoms, FCDoControl->lbtgVerbose];
 
 
 		props = FCLoopBasisIntegralToPropagators[ex, lmoms, FCI->True, Tally->True];
 
-		FCPrint[3, "FCLoopBasisIntegralToGraph: After FCLoopBasisIntegralToPropagators: ", props, FCDoControl->lbtgVerbose];
+		FCPrint[3, "FCLoopIntegralToGraph: After FCLoopBasisIntegralToPropagators: ", props, FCDoControl->lbtgVerbose];
 
 
 		dots  = Transpose[props][[2]];
@@ -129,7 +131,7 @@ FCLoopBasisIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 		numExtMoms = Length[extmoms];
 		extEdgesList = Transpose[{-Range[numExtMoms], extmoms}];
 
-		FCPrint[1, "FCLoopBasisIntegralToGraph: Number of edges: ", numEdges, FCDoControl->lbtgVerbose];
+		FCPrint[1, "FCLoopIntegralToGraph: Number of edges: ", numEdges, FCDoControl->lbtgVerbose];
 
 
 		(*
@@ -153,7 +155,7 @@ FCLoopBasisIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 					,
 					auxExtEdgesList = {{-2, extmoms[[1]]}, {-3, -extmoms[[1]]}}
 			];
-			FCPrint[2, "FCLoopBasisIntegralToGraph: auxExtEdgesList: ", auxExtEdgesList, FCDoControl->lbtgVerbose],
+			FCPrint[2, "FCLoopIntegralToGraph: auxExtEdgesList: ", auxExtEdgesList, FCDoControl->lbtgVerbose],
 			auxExtEdgesList = {}
 		];
 
@@ -162,8 +164,8 @@ FCLoopBasisIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 
 		(*	We start by reconstructing all internal vertices, i.e. those that are not connected to an external line	*)
 
-		FCPrint[1, "FCLoopBasisIntegralToGraph: Number of internal vertices: ", numIntVertices, FCDoControl->lbtgVerbose];
-		FCPrint[1, "FCLoopBasisIntegralToGraph: Number of external vertices: ", numExtVertices, FCDoControl->lbtgVerbose];
+		FCPrint[1, "FCLoopIntegralToGraph: Number of internal vertices: ", numIntVertices, FCDoControl->lbtgVerbose];
+		FCPrint[1, "FCLoopIntegralToGraph: Number of external vertices: ", numExtVertices, FCDoControl->lbtgVerbose];
 
 		Which[
 			optFactoring === True || optFactoring === False,
@@ -178,13 +180,13 @@ FCLoopBasisIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 					res = reconstructAllVertices[intEdgesList,extEdgesList,auxExtEdgesList,numIntVertices,numExtVertices];
 				],
 			True,
-			Message[FCLoopBasisIntegralToGraph::failmsg, "Unknown value of the option Factoring. Only True, False or Auto are valid values."];
+			Message[FCLoopIntegralToGraph::failmsg, "Unknown value of the option Factoring. Only True, False or Auto are valid values."];
 			Abort[]
 
 		];
 
 		If[	res === False,
-			Message[FCLoopBasisIntegralToGraph::failmsg, "Failed to reconstruct the graph of the given loop integral."];
+			Message[FCLoopIntegralToGraph::failmsg, "Failed to reconstruct the graph of the given loop integral. If the integral factorizes, try increasing VertexDegree"];
 			Abort[]
 		];
 
@@ -228,14 +230,14 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 		numEdges 				= Length[intEdgesList];
 		numExtMoms 				= Length[extEdgesList];
 
-		FCPrint[1, "FCLoopBasisIntegralToGraph: Reconstructing internal vertices.",  FCDoControl->lbtgVerbose];
-		FCPrint[1, "FCLoopBasisIntegralToGraph: Internal edges: ", intEdgesList, FCDoControl->lbtgVerbose];
+		FCPrint[1, "FCLoopIntegralToGraph: Reconstructing internal vertices.",  FCDoControl->lbtgVerbose];
+		FCPrint[1, "FCLoopIntegralToGraph: Internal edges: ", intEdgesList, FCDoControl->lbtgVerbose];
 
 		currentVertexDegree = 3;
 
 		While[(Length[fullyConnectedEdges]<numEdges) && (currentVertexDegree <= maxVertexDegree)  && Length[intVerticesFound] <= numIntVertices,
 
-			FCPrint[3, "FCLoopBasisIntegralToGraph: Searching for internal vertices with the vertex degree ", currentVertexDegree, FCDoControl->lbtgVerbose];
+			FCPrint[3, "FCLoopIntegralToGraph: Searching for internal vertices with the vertex degree ", currentVertexDegree, FCDoControl->lbtgVerbose];
 			relEdgesList = Select[relEdgesList, FreeQ2[#[[1]], fullyConnectedEdges] &];
 
 			signs = generateSigns[currentVertexDegree];
@@ -246,7 +248,7 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 			If[candidates==={}, Break[]];
 			intVerticesFound = Join[intVerticesFound,findInternalVertices[intEdgesList, candidates, signs]];
 			fullyConnectedEdges = Cases[Tally[Flatten[intVerticesFound]], {i_Integer?Positive, 2} :> i]//Union;
-			FCPrint[3, "FCLoopBasisIntegralToGraph: Fully connected edges: ", fullyConnectedEdges, FCDoControl->lbtgVerbose];
+			FCPrint[3, "FCLoopIntegralToGraph: Fully connected edges: ", fullyConnectedEdges, FCDoControl->lbtgVerbose];
 			currentVertexDegree++;
 		];
 
@@ -256,14 +258,14 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 				since there are no external vertices
 			*)
 			If[ !(numExtMoms===0 && (Length[intVerticesFound]===(numIntVertices+1))),
-				(*Message[FCLoopBasisIntegralToGraph::failmsg, "Failed to reconstruct all internal vertices"];*)
+				(*Message[FCLoopIntegralToGraph::failmsg, "Failed to reconstruct all internal vertices"];*)
 				Return[False]
 			]
 		];
 
 		(* It is also possible that we reconstruct some fake vertices *)
 
-		FCPrint[2, "FCLoopBasisIntegralToGraph: Reconstructed internal vertices: ", intVerticesFound, FCDoControl->lbtgVerbose];
+		FCPrint[2, "FCLoopIntegralToGraph: Reconstructed internal vertices: ", intVerticesFound, FCDoControl->lbtgVerbose];
 		If[	Length[intVerticesFound] >= numIntVertices,
 			If[	numExtMoms=!=0,
 				intVertexCandidateSets = Subsets[intVerticesFound, {numIntVertices}];
@@ -275,14 +277,14 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 
 
 
-		FCPrint[2, "FCLoopBasisIntegralToGraph: Fully connected edges: ", fullyConnectedEdges, FCDoControl->lbtgVerbose];
+		FCPrint[2, "FCLoopIntegralToGraph: Fully connected edges: ", fullyConnectedEdges, FCDoControl->lbtgVerbose];
 
 		(*	Now we only need to reconstruct the external vertices. However, there are some special cases to take care of!	*)
 
 		If[	numExtMoms=!=0,
 
 
-			FCPrint[1, "FCLoopBasisIntegralToGraph: Reconstructing external vertices (stage I).", FCDoControl->lbtgVerbose];
+			FCPrint[1, "FCLoopIntegralToGraph: Reconstructing external vertices (stage I).", FCDoControl->lbtgVerbose];
 
 			(* Let us start by picking the vertices that are connected to the momenta that explicitly appear in the propagators *)
 			verticesRaw = Map[
@@ -294,7 +296,7 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 			relEdgesList = intEdgesList;
 			While[(currentVertexDegree <= maxVertexDegree),
 
-			FCPrint[3, "FCLoopBasisIntegralToGraph: Searching for external vertices with the vertex degree ", currentVertexDegree, FCDoControl->lbtgVerbose];
+			FCPrint[3, "FCLoopIntegralToGraph: Searching for external vertices with the vertex degree ", currentVertexDegree, FCDoControl->lbtgVerbose];
 			relEdgesList = Select[relEdgesList, FreeQ2[#[[1]], fullyConnectedEdges] &];
 
 			signs = generateSigns[currentVertexDegree];
@@ -309,7 +311,7 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 			If[candidates==={}, Break[]];
 			extVerticesFound = Join[extVerticesFound,findExternalVertices[extEdgesList, candidates, signs]];
 			fullyConnectedEdges = Cases[Tally[Flatten[{#,extVerticesFound}]], {i_Integer?Positive, 2} :> i]//Union;
-			FCPrint[3, "FCLoopBasisIntegralToGraph: Fully connected edges: ", fullyConnectedEdges, FCDoControl->lbtgVerbose];
+			FCPrint[3, "FCLoopIntegralToGraph: Fully connected edges: ", fullyConnectedEdges, FCDoControl->lbtgVerbose];
 			currentVertexDegree++;
 
 			];
@@ -325,7 +327,7 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 			{#,extVerticesFound} )&, intVertexCandidateSets];
 
 
-			FCPrint[2, "FCLoopBasisIntegralToGraph: Possible vertex candidates: ", verticesRaw, FCDoControl->lbtgVerbose];
+			FCPrint[2, "FCLoopIntegralToGraph: Possible vertex candidates: ", verticesRaw, FCDoControl->lbtgVerbose];
 			(*
 				It may happen that we find multiple candidates for a particular external vertex within one set.
 			*)
@@ -343,13 +345,13 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 
 			], verticesRaw];
 
-			FCPrint[2, "FCLoopBasisIntegralToGraph: Possible vertex candidates after REV I: ", verticesRaw, FCDoControl->lbtgVerbose];
+			FCPrint[2, "FCLoopIntegralToGraph: Possible vertex candidates after REV I: ", verticesRaw, FCDoControl->lbtgVerbose];
 
 			verticesRaw = Select[verticesRaw, ((Length[#[[1]]] === numIntVertices) && (Length[#[[2]]] === numExtVertices - 1))&];
 
 			If[	Length[verticesRaw]===0,
 
-				(*Message[FCLoopBasisIntegralToGraph::failmsg, "Failed to reconstruct all but one external vertices"];*)
+				(*Message[FCLoopIntegralToGraph::failmsg, "Failed to reconstruct all but one external vertices"];*)
 				Return[False]
 			];
 
@@ -364,7 +366,7 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 				the corresponding vertex at the very end when all other vertices are known. This helps to avoid misreconstruction.
 			*)
 
-			FCPrint[1, "FCLoopBasisIntegralToGraph: Reconstructing external vertices (stage II).", FCDoControl->lbtgVerbose];
+			FCPrint[1, "FCLoopIntegralToGraph: Reconstructing external vertices (stage II).", FCDoControl->lbtgVerbose];
 
 
 
@@ -381,7 +383,7 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 			relEdgesList = intEdgesList;
 			While[(Length[fullyConnectedEdges]<numEdges) && (currentVertexDegree <= maxVertexDegree) && Length[extVerticesFound] < (numExtVertices),
 
-			FCPrint[3, "FCLoopBasisIntegralToGraph: Searching for external vertices with the vertex degree ", currentVertexDegree, FCDoControl->lbtgVerbose];
+			FCPrint[3, "FCLoopIntegralToGraph: Searching for external vertices with the vertex degree ", currentVertexDegree, FCDoControl->lbtgVerbose];
 			relEdgesList = Select[relEdgesList, FreeQ2[#[[1]], fullyConnectedEdges] &];
 
 			signs = generateSigns[currentVertexDegree];
@@ -410,7 +412,7 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 			];
 
 			(*extVerticesFound = Join[extVerticesFound,findExternalVertices[auxExtEdgesList, candidates, signs]];*)
-			(*FCPrint[3, "FCLoopBasisIntegralToGraph: Fully connected edges: ", fullyConnectedEdges, FCDoControl->lbtgVerbose];*)
+			(*FCPrint[3, "FCLoopIntegralToGraph: Fully connected edges: ", fullyConnectedEdges, FCDoControl->lbtgVerbose];*)
 			currentVertexDegree++;
 
 			];
@@ -423,16 +425,16 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 			)&, verticesRaw];
 
 
-			FCPrint[2, "FCLoopBasisIntegralToGraph: Possible vertex candidates: REV II", verticesRaw, FCDoControl->lbtgVerbose];
+			FCPrint[2, "FCLoopIntegralToGraph: Possible vertex candidates: REV II", verticesRaw, FCDoControl->lbtgVerbose];
 
 			If[	Length[verticesRaw]===0,
-				(*Message[FCLoopBasisIntegralToGraph::failmsg, "Failed to connect all occurring edges to vertices."];*)
+				(*Message[FCLoopIntegralToGraph::failmsg, "Failed to connect all occurring edges to vertices."];*)
 				Return[False]
 			];
 
 			If[	Length[verticesRaw]>1,
 				Null
-				(*Message[FCLoopBasisIntegralToGraph::failmsg, "Ambiguities in the final vertex reconstruction."];*)
+				(*Message[FCLoopIntegralToGraph::failmsg, "Ambiguities in the final vertex reconstruction."];*)
 				(*Abort[]*)
 
 			];
@@ -450,9 +452,9 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 			fullyConnectedEdges = Cases[Tally[Flatten[{intVerticesFound,extVerticesFound}]], {i_Integer?Positive, 2} :> i]//Union;
 
 
-			FCPrint[2, "FCLoopBasisIntegralToGraph: Reconstructed internal vertices: ", intVerticesFound, FCDoControl->lbtgVerbose];
-			FCPrint[2, "FCLoopBasisIntegralToGraph: Reconstructed external vertices: ", extVerticesFound, FCDoControl->lbtgVerbose];
-			FCPrint[2, "FCLoopBasisIntegralToGraph: Fully connected edges: ", fullyConnectedEdges, FCDoControl->lbtgVerbose];
+			FCPrint[2, "FCLoopIntegralToGraph: Reconstructed internal vertices: ", intVerticesFound, FCDoControl->lbtgVerbose];
+			FCPrint[2, "FCLoopIntegralToGraph: Reconstructed external vertices: ", extVerticesFound, FCDoControl->lbtgVerbose];
+			FCPrint[2, "FCLoopIntegralToGraph: Fully connected edges: ", fullyConnectedEdges, FCDoControl->lbtgVerbose];
 
 
 			(*Print[verticesRaw];
@@ -462,7 +464,7 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 
 			(*	We are dealing with a tadpole!	*)
 
-			FCPrint[2, "FCLoopBasisIntegralToGraph: Tadpole integral!", FCDoControl->lbtgVerbose];
+			FCPrint[2, "FCLoopIntegralToGraph: Tadpole integral!", FCDoControl->lbtgVerbose];
 
 			Which[
 
@@ -481,7 +483,7 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 				verticesRaw = Subsets[intVerticesFound, {numIntVertices+1}];
 				If[	Length[verticesRaw]>1,
 					Null
-					(*Message[FCLoopBasisIntegralToGraph::failmsg, "Ambiguities in the final vertex reconstruction."];*)
+					(*Message[FCLoopIntegralToGraph::failmsg, "Ambiguities in the final vertex reconstruction."];*)
 					(*Abort[]*)
 				];
 				(*TODO Check isomorphy?*)
@@ -492,19 +494,19 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 		];
 
 
-		FCPrint[2, "FCLoopBasisIntegralToGraph: Reconstructed external vertices: ", extVerticesFound, FCDoControl->lbtgVerbose];
-		FCPrint[2, "FCLoopBasisIntegralToGraph: Fully connected edges: ", fullyConnectedEdges, FCDoControl->lbtgVerbose];
+		FCPrint[2, "FCLoopIntegralToGraph: Reconstructed external vertices: ", extVerticesFound, FCDoControl->lbtgVerbose];
+		FCPrint[2, "FCLoopIntegralToGraph: Fully connected edges: ", fullyConnectedEdges, FCDoControl->lbtgVerbose];
 
 
 		If[	fullyConnectedEdges=!=Range[numEdges],
-			(*Message[FCLoopBasisIntegralToGraph::failmsg, "Failed to connect all occurring edges to vertices"];*)
+			(*Message[FCLoopIntegralToGraph::failmsg, "Failed to connect all occurring edges to vertices"];*)
 			Return[False]
 		];
 
 
 		allVertices = Join[extVerticesFound, intVerticesFound];
 
-		FCPrint[2, "FCLoopBasisIntegralToGraph: All reconstructed vertices: ", allVertices, FCDoControl->lbtgVerbose];
+		FCPrint[2, "FCLoopIntegralToGraph: All reconstructed vertices: ", allVertices, FCDoControl->lbtgVerbose];
 
 
 		(*Range introduces labels to the vertices ... *)
@@ -596,10 +598,10 @@ connectEdge[{id_Integer, mom_}, candidates_List, signs_List] :=
 findInternalVertices[intEdges_List, candidates_List, signs_List] :=
 	Block[{intVertices, aux, res},
 
-		FCPrint[3, "FCLoopBasisIntegralToGraph: findInternalVertices: Entering.", FCDoControl->lbtgVerbose];
-		FCPrint[4, "FCLoopBasisIntegralToGraph: findInternalVertices: intEdges: ", intEdges , FCDoControl->lbtgVerbose];
-		FCPrint[4, "FCLoopBasisIntegralToGraph: findInternalVertices: candidates: ", candidates , FCDoControl->lbtgVerbose];
-		FCPrint[4, "FCLoopBasisIntegralToGraph: findInternalVertices: signs: ", signs , FCDoControl->lbtgVerbose];
+		FCPrint[3, "FCLoopIntegralToGraph: findInternalVertices: Entering.", FCDoControl->lbtgVerbose];
+		FCPrint[4, "FCLoopIntegralToGraph: findInternalVertices: intEdges: ", intEdges , FCDoControl->lbtgVerbose];
+		FCPrint[4, "FCLoopIntegralToGraph: findInternalVertices: candidates: ", candidates , FCDoControl->lbtgVerbose];
+		FCPrint[4, "FCLoopIntegralToGraph: findInternalVertices: signs: ", signs , FCDoControl->lbtgVerbose];
 
 		intVertices = {};
 		Scan[
@@ -611,8 +613,8 @@ findInternalVertices[intEdges_List, candidates_List, signs_List] :=
 				(* Notice that this procedure will not find vertices that involve external edges	*)
 				Unevaluated[Sequence[]]
 			];
-			FCPrint[4, "FCLoopBasisIntegralToGraph: findInternalVertices: Current edge: ", #, FCDoControl->lbtgVerbose];
-			FCPrint[4, "FCLoopBasisIntegralToGraph: findInternalVertices: Reconstructed vertices ", aux, FCDoControl->lbtgVerbose];
+			FCPrint[4, "FCLoopIntegralToGraph: findInternalVertices: Current edge: ", #, FCDoControl->lbtgVerbose];
+			FCPrint[4, "FCLoopIntegralToGraph: findInternalVertices: Reconstructed vertices ", aux, FCDoControl->lbtgVerbose];
 			(*TODO: Once we have found all internal vertices, stop the evaluation!!! *)
 
 			(*If[Length[intVertices] >= maxVertices, Throw[intVertices]];*)
@@ -633,7 +635,7 @@ findInternalVertices[intEdges_List, candidates_List, signs_List] :=
 
 			res = First[res]
 		];
-		FCPrint[3, "FCLoopBasisIntegralToGraph: findInternalVertices: Leaving with: ", res, FCDoControl->lbtgVerbose];
+		FCPrint[3, "FCLoopIntegralToGraph: findInternalVertices: Leaving with: ", res, FCDoControl->lbtgVerbose];
 		res
 	];
 
@@ -645,15 +647,15 @@ findExternalVertices[extEdges_List,  candidates_List, signs_List] :=
 	Block[{extVertices},
 
 
-		FCPrint[3, "FCLoopBasisIntegralToGraph: findExternalVertices: Entering.", FCDoControl->lbtgVerbose];
-		FCPrint[4, "FCLoopBasisIntegralToGraph: findExternalVertices: extEdges: ", extEdges , FCDoControl->lbtgVerbose];
-		FCPrint[4, "FCLoopBasisIntegralToGraph: findExternalVertices: candidates: ", candidates , FCDoControl->lbtgVerbose];
-		FCPrint[4, "FCLoopBasisIntegralToGraph: findExternalVertices: signs: ", signs , FCDoControl->lbtgVerbose];
+		FCPrint[3, "FCLoopIntegralToGraph: findExternalVertices: Entering.", FCDoControl->lbtgVerbose];
+		FCPrint[4, "FCLoopIntegralToGraph: findExternalVertices: extEdges: ", extEdges , FCDoControl->lbtgVerbose];
+		FCPrint[4, "FCLoopIntegralToGraph: findExternalVertices: candidates: ", candidates , FCDoControl->lbtgVerbose];
+		FCPrint[4, "FCLoopIntegralToGraph: findExternalVertices: signs: ", signs , FCDoControl->lbtgVerbose];
 
 
 		extVertices = Union[Join @@ (connectEdge[#, candidates, signs] & /@ extEdges)];
 
-		FCPrint[4, "FCLoopBasisIntegralToGraph: findExternalVertices: extVertices: ", extVertices , FCDoControl->lbtgVerbose];
+		FCPrint[4, "FCLoopIntegralToGraph: findExternalVertices: extVertices: ", extVertices , FCDoControl->lbtgVerbose];
 
 		(*TODO More checks*)
 		If[extVertices=!={},
