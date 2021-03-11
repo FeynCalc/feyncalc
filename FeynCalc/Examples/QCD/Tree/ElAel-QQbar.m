@@ -75,8 +75,8 @@ amp[0] = FCFAConvert[CreateFeynAmp[diags], IncomingMomenta->{p1,p2},
 
 
 FCClearScalarProducts[];
-SetMandelstam[s, t, u, p1, p2, -k1, -k2, SMP["m_e"]^2, SMP["m_e"]^2,
-	SMP["m_q"]^2, SMP["m_q"]^2];
+SetMandelstam[s, t, u, p1, p2, -k1, -k2, SMP["m_e"], SMP["m_e"],
+	SMP["m_q"], SMP["m_q"]];
 
 
 (* ::Section:: *)
