@@ -194,8 +194,10 @@ Tdec[exp_:1, li : {{_, _} ..}, extMomsRaw_List/;FreeQ[extMomsRaw,OptionQ], Optio
 				(* in the multi-loop case we employ Pak's algorithm, cf. arXiv:1111.0868 *)
 				FCPrint[1, "Tdec: Symmetrizing the basis using Pak's algorithm.", FCDoControl->tdecVerbose];
 				time1=AbsoluteTime[];
-				tmp = Collect2[Contract[basis tensorEq, FCI->True], Pair, Head -> {dummyHead1, dummyHead2}, Factoring -> ExpandAll];
-				tmp = Cases[tmp, dummyHead2[syms_Plus, _] :> List@@syms, Infinity];
+				tmp = ((List@@basis) tensorEq) /. Pair -> FeynCalc`Package`pairContract3NoExpand;
+				tmp = {SelectFree[#, Pair], SelectNotFree[#, Pair]} & /@ tmp;
+				tmp = GatherBy[tmp, #[[2]] &];
+				tmp = First[Transpose[#]] & /@ tmp;
 				symRules = Map[Thread[Rule[#,#[[1]]]] &, tmp];
 				symRules = Flatten[symRules] // Union // ReplaceAll[#, Rule[a_, a_] :> Unevaluated[Sequence[]]] &;
 				FCPrint[1, "Tdec: Done symmetrizing the basis, timing: ", N[AbsoluteTime[] - time1, 4], FCDoControl->tdecVerbose];
@@ -254,9 +256,13 @@ Tdec[exp_:1, li : {{_, _} ..}, extMomsRaw_List/;FreeQ[extMomsRaw,OptionQ], Optio
 			" projectors to obtain a linear system. ", FCDoControl->tdecVerbose];
 
 		time=AbsoluteTime[];
+
 		linearSystem = 	Table[FCPrint[2, "ii = ", ii, FCDoControl->tdecVerbose];
-				Equal[(tensorEq[[1]] projectors[[ii]])/.Pair->PairContract/.PairContract->Pair,(tensorEq[[2]] projectors[[ii]])]/.Pair->PairContract/.PairContract->Pair,
+				Equal[(tensorEq[[1]] projectors[[ii]])/.Pair->FeynCalc`Package`pairContract3NoExpand,tensorContract[tensorEq[[2]] , projectors[[ii]]] ],
 					{ii, Length[projectors]}];
+		If[	!FreeQ2[linearSystem,{FeynCalc`Package`pairContract3NoExpand}],
+			linearSystem = linearSystem /. FeynCalc`Package`pairContract3NoExpand -> Pair
+		];
 		FCPrint[1, "Tdec: Done building a system of scalar equations, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tdecVerbose];
 
 		FCPrint[1, "Tdec: Need to solve ", Length[linearSystem], " equations for ", Length[tensorCoeffs] , " variables", FCDoControl->tdecVerbose];
@@ -291,8 +297,8 @@ Tdec[exp_:1, li : {{_, _} ..}, extMomsRaw_List/;FreeQ[extMomsRaw,OptionQ], Optio
 			If[ $FCAdvice,
 				Message[Tdec::slow]
 			];
-			FCPrint[2, "Tdec: Solving: ", linearSystemAbbreviated, FCDoControl->tdecVerbose];
-			FCPrint[2, "Tdec: For: ", tensorCoeffs, FCDoControl->tdecVerbose];
+			FCPrint[3, "Tdec: Solving: ", linearSystemAbbreviated, FCDoControl->tdecVerbose];
+			FCPrint[3, "Tdec: For: ", tensorCoeffs, FCDoControl->tdecVerbose];
 
 
 			FCPrint[1, "Tdec: Solving the linear system using ", optSolve, FCDoControl->tdecVerbose];
@@ -338,8 +344,8 @@ Tdec[exp_:1, li : {{_, _} ..}, extMomsRaw_List/;FreeQ[extMomsRaw,OptionQ], Optio
 			Abort[]
 		];
 
-		FCPrint[2, "Tdec: tensorEq: ", tensorEq, FCDoControl->tdecVerbose];
-		FCPrint[2, "Tdec: variableAbbreviations: ", variableAbbreviations, FCDoControl->tdecVerbose];
+		FCPrint[3, "Tdec: tensorEq: ", tensorEq, FCDoControl->tdecVerbose];
+		FCPrint[3, "Tdec: variableAbbreviations: ", variableAbbreviations, FCDoControl->tdecVerbose];
 
 		tensorEq = tensorEq /. extMom -> optHead;
 		variableAbbreviations = variableAbbreviations /. extMom -> optHead;
@@ -358,6 +364,21 @@ Tdec[exp_:1, li : {{_, _} ..}, extMomsRaw_List/;FreeQ[extMomsRaw,OptionQ], Optio
 		]
 	];
 
+(* 	contraction function specifically tailored for tensors occurring in the
+	derivation of the linear system. *)
+tensorContract[eq_, proj_] :=
+	Block[{	aux, auxEval, null1, null2},
+		aux = List @@ (eq + null1 + null2) /. null1 | null2 -> Unevaluated[Sequence[]];
+		aux = {SelectFree[#, Pair], SelectNotFree[#, Pair]} & /@ aux;
+		aux = Transpose[aux];
+		auxEval = fastContract[#, proj] & /@ aux[[2]];
+		Total[Times @@@ Transpose[{aux[[1]], auxEval}]]
+	];
+fastContract[sum_Plus, with_] :=
+	Total[(List @@ sum) with /. Pair -> FeynCalc`Package`pairContract3NoExpand];
+
+fastContract[notsum_/;Head[notsum]=!=Plus, with_] :=
+	notsum with /. Pair -> FeynCalc`Package`pairContract3NoExpand;
 
 
 (* 	gPart generates the "metric" piece of the tensor decomposition, i.e. terms
