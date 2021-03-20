@@ -269,13 +269,13 @@ qf5[a___, QuantumField[f2__], QuantumField[f1__], LeftPartialD[mu_], b___] :=
 	((qf5st[a, quanf[f2],  quanf[FCPartialD[mu], f1], b] +
 		qf5st[a, quanf[f2], LeftPartialD[mu], quanf[f1], b]
 		) /. quanf -> QuantumField /. qf5st -> qf5
-	) /; MemberQ[{LorentzIndex,Momentum,CartesianIndex,CartesianMomentum},Head[mu]];
+	) /; MemberQ[{LorentzIndex,ExplicitLorentzIndex,Momentum,CartesianIndex,CartesianMomentum},Head[mu]];
 
 qf5[a___, RightPartialD[mu_], QuantumField[f1__], QuantumField[f2__], b___] :=
 	((qf5st[a, quanf[FCPartialD[mu], f1], quanf[f2],  b] +
 		qf5st[a, quanf[f1], RightPartialD[mu], quanf[f2], b]
 	) /. quanf -> QuantumField /. qf5st -> qf5
-	) /; MemberQ[{LorentzIndex,Momentum,CartesianIndex,CartesianMomentum},Head[mu]];
+	) /; MemberQ[{LorentzIndex,ExplicitLorentzIndex,Momentum,CartesianIndex,CartesianMomentum},Head[mu]];
 
 qf5st[a___, RightPartialD[Momentum[OPEDelta]^m_], RightPartialD[Momentum[OPEDelta]^n_], b___] :=
 	qf5st[a, RightPartialD[Momentum[OPEDelta]^(m+n)], b];

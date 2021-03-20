@@ -79,5 +79,11 @@ QuantumField[FCPartialD[CartesianIndex[i]], A, CartesianIndex[i]] . \
 QuantumField[A, CartesianIndex[j]]"},
 {"fcstExpandPartialD-ID10",
 "ExpandPartialD[CLC[i,j,l]RightPartialD[CartesianIndex[i],\
-CartesianIndex[j],CartesianIndex[k]]]", "0"}
+CartesianIndex[j],CartesianIndex[k]]]", "0"},
+{"fcstExpandPartialD-ID11",
+"RightPartialD[LorentzIndex[0]] . QuantumField[phi1] .
+QuantumField[phi2] // ExpandPartialD", "QuantumField[phi1] .
+QuantumField[FCPartialD[ExplicitLorentzIndex[0]], phi2] +
+QuantumField[FCPartialD[ExplicitLorentzIndex[0]], phi1] .
+QuantumField[phi2]"}
 });
