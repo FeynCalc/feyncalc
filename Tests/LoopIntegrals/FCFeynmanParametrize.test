@@ -132,7 +132,7 @@ False,FCE\[Rule]True]", "{1, -((m^2)^(-1 + D/2)*Gamma[1 - D/2]), {}}"},
 {"fcstFCFeynmanParametrize-ID19",
 "FCFeynmanParametrize[
 CFAD[{{l, 0}, {m, -1}, 1}, {{l, 0}, {-TC[l]^2, -1},
-1}, {{l - p, 0}, {-TC[l - p]^2, -1}, 1}], {l}, Names -> x]",
+1}, {{l - p, 0}, {-TC[l - p]^2, -1}, 1}], {l}, Names -> x, FCE->True]",
 "{(x[1] + x[2] + x[3])^(3 - D)*(TC[l]^2*x[1]^2 - m*x[1]*x[2] + TC[l]^2*x[1]*x[2] -
 m*x[2]^2 - CSPD[p, p]*x[1]*x[3] + 2*TC[l]^2*x[1]*x[3] - 2*TC[l]*TC[p]*x[1]*x[3] +
 	TC[p]^2*x[1]*x[3] - m*x[2]*x[3] - CSPD[p, p]*x[2]*x[3] + TC[l]^2*x[2]*x[3] -
