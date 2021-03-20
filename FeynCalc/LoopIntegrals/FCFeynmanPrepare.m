@@ -86,7 +86,7 @@ FCFeynmanPrepare[expr_, lmoms_List /; ! OptionQ[lmoms], OptionsPattern[]] :=
 	Block[{	feynX, propProduct, tmp, symF, symU, ex, spd, qkspd, mtmp,
 			matrix, nDenoms, res, constraint, tmp0, powers,
 			optFinalSubstitutions, optNames, aux1, aux2, nProps, fpJ, fpQ,
-			null1, null2, tensorPart, scalarPart, time},
+			null1, null2, tensorPart, scalarPart, time, tcHideRule={}},
 
 		optNames				= OptionValue[Names];
 		optFinalSubstitutions	= OptionValue[FinalSubstitutions];
@@ -141,7 +141,12 @@ FCFeynmanPrepare[expr_, lmoms_List /; ! OptionQ[lmoms], OptionsPattern[]] :=
 			Abort[]
 		];
 
-		dim = FCGetDimensions[ex];
+		If[isCartesian && !FreeQ[ex,ExplicitLorentzIndex],
+			tcHideRule = Map[Rule[TemporalPair[TemporalMomentum[#],ExplicitLorentzIndex[0]], Unique["loop0"]] &, lmoms];
+			ex = ex/. a_TemporalPair :> ExpandScalarProduct[a,FCI->True] /. tcHideRule;
+		];
+
+		dim = FCGetDimensions[ex/. {TemporalPair[_,ExplicitLorentzIndex[0]]:>Unique[]}] ;
 
 		If[	Length[dim]=!=1,
 			Message[FCFeynmanPrepare::failmsg,"The loop integrals contains momenta in different dimensions."];
@@ -287,6 +292,10 @@ FCFeynmanPrepare[expr_, lmoms_List /; ! OptionQ[lmoms], OptionsPattern[]] :=
 				Abort[]
 			];
 			FCPrint[1, "FCFeynmanPrepare: Checks done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose]
+		];
+
+		If[	tcHideRule=!={},
+			res = res /. (Reverse /@ tcHideRule)
 		];
 
 		FCPrint[3,"FCFeynmanPrepare: Preliminary result: ", res, FCDoControl->fcszVerbose];
