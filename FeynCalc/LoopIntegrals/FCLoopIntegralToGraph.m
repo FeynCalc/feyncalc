@@ -239,6 +239,7 @@ FCLoopIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1,"FCLoopIntegralToGraph: Calling makeGraph.", FCDoControl->lbtgVerbose];
 
+		(*	external edges always come first!	*)
 		res = makeGraph[res];
 		FCPrint[1,"FCLoopIntegralToGraph: makeGraph done, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->lbtgVerbose];
 
@@ -249,8 +250,9 @@ FCLoopIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 			labeled[a_,i_Integer?Negative] :> labeled[a, Extract[Join[auxExtEdgesList,extEdgesList],{i}][[2]]]
 		};
 
-		(*Output format: Edge rules, simple labels (line momentum, multiplicity, mass), original propagators, prefactor *)
-		res = Join[Transpose[res/.labeled->List],props[[3]],{pref}];
+		(*Output format: Edge rules, simple labels (line momentum, multiplicity, mass), original propagators (0s for external edges), prefactor *)
+
+		res = {Sequence@@Transpose[res/.labeled->List],PadLeft[props[[3]],Length[res]],pref};
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
@@ -267,8 +269,8 @@ FCLoopIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 makeGraph[res_]:= makeGraph[res] =
 	(
 	If[	res[[1]] =!= {{}},
-		Join[Map[labeled[Rule[#[[1]][[1]], #[[2]][[1]]], #[[3]]] &, res[[2]]], Map[labeled[Rule[#[[2]][[1]], #[[1]]], #[[2]][[1]]] &, First /@ res[[1]]]] // Sort,
-		(Map[labeled[Rule[#[[1]][[1]], #[[2]][[1]]], #[[3]]] &, res[[2]]]) // Sort
+		SortBy[Join[Map[labeled[Rule[#[[1]][[1]], #[[2]][[1]]], #[[3]]] &, res[[2]]], Map[labeled[Rule[#[[2]][[1]], #[[1]]], #[[2]][[1]]] &, First /@ res[[1]]]], (#[[2]] > 0) &],
+		SortBy[(Map[labeled[Rule[#[[1]][[1]], #[[2]][[1]]], #[[3]]] &, res[[2]]]), (#[[2]] > 0) &]
 	]
 	);
 
