@@ -100,33 +100,33 @@ Epsilon], {x[1], x[2], x[3]}}"},
 {"fcstFCFeynmanParametrize-ID12",
 "FCFeynmanParametrize[FAD[{q,m}]FVD[q,mu],{q},Names\[Rule]x,\
 Indexed\[Rule]False,FCE\[Rule]True]", "{1, 0, {}}"},
-{"fcstFCFeynmanParametrize-ID56",
+{"fcstFCFeynmanParametrize-ID13",
 "FCFeynmanParametrize[FAD[{q,m}]FVD[q,mu]FVD[q,nu],{q},Names\[Rule]\
 x,Indexed\[Rule]False,FCE\[Rule]True]",
-"{1, ((m^2)^(D/2)*Gamma[1 - D/2]*Gamma[-D/2]*MTD[mu, nu])/2, \
+"{1, ((m^2)^(D/2)*Gamma[-D/2]*MTD[mu, nu])/2, \
 {}}"},
-{"fcstFCFeynmanParametrize-ID13",
+{"fcstFCFeynmanParametrize-ID14",
 "FCFeynmanParametrize[{FAD[{q,m}],FAD[{q-p,m2}],FVD[q,mu]},{q},\
 Names\[Rule]x,Indexed\[Rule]False,FCE\[Rule]True]",
 "{x2*(x1 + x2)^(1 - D)*(m^2*x1^2 + m^2*x1*x2 + m2^2*x1*x2 + \
-m2^2*x2^2 - x1*x2*SPD[p, p])^(-2 + D/2), FVD[p, mu]*Gamma[2 - D/2]^2, \
+m2^2*x2^2 - x1*x2*SPD[p, p])^(-2 + D/2), FVD[p, mu]*Gamma[2 - D/2], \
 {x1, x2}}"},
-{"fcstFCFeynmanParametrize-ID14",
+{"fcstFCFeynmanParametrize-ID15",
 "FCFeynmanParametrize[FAD[{q,m}]FAD[{q-p,m2}]FVD[q,mu]FVD[q,nu],{q}\
 ,Names\[Rule]x,Indexed\[Rule]False,FCE\[Rule]True]",
 "{((m^2*x1^2 + m^2*x1*x2 + m2^2*x1*x2 + m2^2*x2^2 - x1*x2*SPD[p, \
 p])^(-2 + D/2)*(x2^2*FVD[p, mu]*FVD[p, nu]*Gamma[2 - D/2] - (Gamma[1 \
 - D/2]*MTD[mu, nu]*(m^2*x1^2 + m^2*x1*x2 + m2^2*x1*x2 + m2^2*x2^2 - \
-x1*x2*SPD[p, p]))/2))/(x1 + x2)^D, Gamma[2 - D/2], {x1, x2}}"},
-{"fcstFCFeynmanParametrize-ID15",
+x1*x2*SPD[p, p]))/2))/(x1 + x2)^D, 1, {x1, x2}}"},
+{"fcstFCFeynmanParametrize-ID16",
 "FCFeynmanParametrize[CFAD[{q,m}]CVD[q,mu]CVD[q,nu],{q},Names\
 \[Rule]x,Indexed\[Rule]False,FCE\[Rule]True]",
-"{1, ((-m)^(-1 + D/2)*m*Gamma[(1 - D)/2]*Gamma[1 - D/2]*KDD[mu, \
+"{1, ((-m)^(-1 + D/2)*m*Gamma[(1 - D)/2]*KDD[mu, \
 nu])/2, {}}"},
-{"fcstFCFeynmanParametrize-ID16",
+{"fcstFCFeynmanParametrize-ID17",
 "FCFeynmanParametrize[FAD[{q-p,m}],{q},Names\[Rule]x,Indexed\[Rule]\
 False,FCE\[Rule]True]", "{1, -((m^2)^(-1 + D/2)*Gamma[1 - D/2]), {}}"},
-{"fcstFCFeynmanParametrize-ID17",
+{"fcstFCFeynmanParametrize-ID18",
 "FCFeynmanParametrize[xxx FAD[{p, m}], {p}]",
 "{1, -((m^2)^(-1 + D/2)*xxx*Gamma[1 - D/2]), {}}"}
 });

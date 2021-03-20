@@ -168,26 +168,27 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 		propPowers = Delete[propPowers,zeroPowerProps];
 		vars = Delete[First[powsT],zeroPowerProps];
 
-		pref = extraPref*Gamma[fPow]/(Times @@ (Gamma /@ propPowers));
+		If[	vars=!={},
+			fpPref = (Times @@ Map[Power[#[[1]],(#[[2]]-1)] &, Transpose[{vars,propPowers}]]),
+			fpPref = 1
+		];
+
+		If[	TrueQ[tensorPart=!=1],
+			tensorPart = tensorPart /. FCGV["F"] -> fPoly;
+			pref = extraPref/(Times @@ (Gamma /@ propPowers)),
+
+			pref = extraPref*Gamma[fPow]/(Times @@ (Gamma /@ propPowers))
+		];
 
 		If[!isCartesian,
 			pref = pref*(-1)^nM
 		];
-
 
 		If[	pref===0 || !Internal`ExceptionFreeQ[pref],
 			Message[FCFeynmanParametrize::failmsg,"Incorrect prefactor."];
 			Abort[]
 		];
 
-		If[	vars=!={},
-			fpPref = (Times @@ Map[Power[#[[1]],(#[[2]]-1)] &, Transpose[{vars,propPowers}]]),
-			fpPref = 1
-		];
-
-		If[	tensorPart=!=1,
-			tensorPart = tensorPart /. FCGV["F"] -> fPoly;
-		];
 
 		fpInt =  Power[uPoly,fPow - dim/2 - tensorRank]/Power[fPoly,fPow]*tensorPart;
 
