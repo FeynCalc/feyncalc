@@ -240,9 +240,9 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 		If[ fds,
 			FCPrint[1, "TID: Applying FDS.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
-			t0 = FeynAmpDenominatorSimplify[t0, q, FCI->True, Collecting->False];
+			t0 = FeynAmpDenominatorSimplify[t0, q, FCI->True, Collecting->False, ExpandScalarProduct->optExpandScalarProduct];
 			(* The fact that we need to apply FDS twice here, tells a lot about the quality of FDS. *)
-			t0 = FeynAmpDenominatorSimplify[t0, q, FCI->True, Collecting->False];
+			t0 = FeynAmpDenominatorSimplify[t0, q, FCI->True, Collecting->False, ExpandScalarProduct->optExpandScalarProduct];
 			FCPrint[1, "TID: Done applying FDS, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 			FCPrint[3," TID: After FDS: ", t0 , FCDoControl->tidVerbose]
 		];
@@ -250,7 +250,7 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 		If[	OptionValue[ApartFF],
 			FCPrint[1, "TID: Applying ApartFF.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
-			t0 = ApartFF[t0,{q},FCI->True, Collecting->{q}, SetDimensions->{4,n,3,n-1}];
+			t0 = ApartFF[t0,{q},FCI->True, Collecting->{q}, SetDimensions->{4,n,3,n-1}, ExpandScalarProduct->optExpandScalarProduct];
 			FCPrint[1, "TID: Done applying ApartFF, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 			FCPrint[3, "TID: After ApartFF: ", t0 , FCDoControl->tidVerbose]
 		];

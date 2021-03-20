@@ -30,7 +30,7 @@ Tests`LoopIntegrals`fcstTID =
 	2*MTD[mu, nu]*SPD[p, q] - MTD[mu, nu]*SPD[q, q]))/(4*(1 - D))"},
 {"fcstTID-ID11", "TID[SPD[a + b, c + d] + FVD[l, mu] FVD[l, nu] FAD[{l, m}], l,
 	ExpandScalarProduct -> False] // FCE",
-	"(m^2*FAD[{l, m}]*MTD[mu, nu])/D + SPD[a, c] + SPD[a, d] + SPD[b, c] + SPD[b, d]"},
+	"(m^2*FAD[{l, m}]*MTD[mu, nu])/D + SPD[a + b, c + d]"},
 {"fcstTID-ID12", "MatchQ[TID[SPD[a + b, c + d] FVD[l, mu] FVD[l, nu] FAD[l, {l + p + q}],
 	l, Isolate -> All] //FCE, -(1/4) (FAD[l, l - p - q]*HoldForm[ax_]*HoldForm[bx_]*
 	HoldForm[cx_]^(-1))]","True"},
@@ -1045,5 +1045,15 @@ x Spinor[Momentum[p, D], 0, 1].GAD[nu].Spinor[Momentum[p, D], 0,
 "-(1/2) Eps[LorentzIndex[i1, D], LorentzIndex[i2, D], Momentum[p, D],
 Momentum[p1 + p2 + p3, D]] FeynAmpDenominator[
 PropagatorDenominator[Momentum[q, D], 0],
-PropagatorDenominator[-Momentum[p, D] + Momentum[q, D], 0]]"}
+PropagatorDenominator[-Momentum[p, D] + Momentum[q, D], 0]]"},
+{"fcstTID-ID59","TID[LCD[i1, i2][p1 + p2 + p3, q] SPD[q + p3, p1 + p2] FAD[q,
+q - p], q, EpsExpand -> False, ExpandScalarProduct -> False,
+FCE -> True]",
+"-1/4*(FAD[q, -p + q]*(-(D*SPD[p, p1]*LCD[i1, i2][p, p1 + p2 + p3]) -
+D*SPD[p, p2]*LCD[i1, i2][p, p1 + p2 + p3] + 2*(1 - D)*SPD[p1 +
+p2, p3]*LCD[i1, i2][p, p1 + p2 + p3] + SPD[p, p]*LCD[i1, i2][p1,
+p1 + p2 + p3] + SPD[p, p]*LCD[i1, i2][p2, p1 + p2 + p3]))/(1 - D)"},
+{"fcstTID-ID60","TID[LCD[i1, i2][p1 + p2 + p3, q] SPD[p3, p1 + p2] FAD[q, q - p], q,
+EpsExpand -> False, ExpandScalarProduct -> False, FCE -> True]",
+"-1/2*(FAD[q, -p + q]*SPD[p1 + p2, p3]*LCD[i1, i2][p, p1 + p2 + p3])"}
 };
