@@ -131,6 +131,22 @@ integer, all the debugging information inside the function will be given accordi
 to the value of FCVerbose, while the debugging output of other functions will \
 be still governed by the value of $VeryVerbose";
 
+FeynmanIntegralPrefactor::usage =
+"FeynmanIntegralPrefactor is an option for FCFeynmanParametrize and other functions. \
+It denotes an implicit prefactor that has to be understood in front of a loop integral \
+in the usual FeynAmpDenominator-notation. The prefactor is the quantity that multiplies \
+the loop integral measure d^D q1 ... d^D qn and plays an important role e.g. when \
+deriving the Feynman paramater reprsenetation of the given integral. Apart from specifying \
+an explicit value, the user may also choose from the following predefined conventions: \n
+\"Unity\" - 1 for each loop
+\"Textbook\" - 1/(2*Pi)^D for each loop.
+\"Multiloop1\" - 1/(I*Pi^(D/2)) for each loop if the integral is Minkowskian, \
+1/(Pi)^(D/2) or 1/(Pi)^((D-1)/2)  for each loop if the integral is Euclidean or \
+Cartesian respectively.
+\"Multiloop2\" - like \"Multiloop1\" but with an extra Exp[Epsilon*EulerGamma] for \
+each loop.\n
+The standard value is \"Multiloop1\".";
+
 FinalSubstitutions::usage =
 "FinalSubstitutions is an option for OneLoop, OneLoopSum, \
 Write2, FeynCalcExternal and FeynCalcInternal. All substitutions indicated \

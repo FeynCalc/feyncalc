@@ -40,21 +40,24 @@ null2::usage="";
 isCartesian::usage="";
 
 Options[FCFeynmanParametrize] = {
-	Assumptions				-> {},
-	Dimension				-> D,
-	DiracDelta				-> False,
-	FCE						-> False,
-	FCI						-> False,
-	FCReplaceD				-> {},
-	FCVerbose				-> False,
+	Assumptions					-> {},
+	Dimension					-> D,
+	DiracDelta					-> False,
+	"Euclidean"					-> False,
+	FCE							-> False,
+	FCI							-> False,
+	FCReplaceD					-> {},
+	FCVerbose					-> False,
 	(*Factoring 				-> {Factor2, 5000},*)
-	FinalSubstitutions		-> {},
-	Indexed					-> True,
-	Names					-> FCGV["x"],
-	Method					-> "Feynman",
-	Simplify				-> False,
-	(*TimeConstrained 		-> 3,*)
-	Variables				-> {}
+	FeynmanIntegralPrefactor	-> "Multiloop1",
+	FinalSubstitutions			-> {},
+	Indexed						-> True,
+	Names						-> FCGV["x"],
+	Reduce						-> False,
+	Method						-> "Feynman",
+	Simplify					-> False,
+	(*TimeConstrained 			-> 3,*)
+	Variables					-> {}
 };
 
 
@@ -66,14 +69,17 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 	Block[{	res, optFinalSubstitutions, dim, uPoly, fPoly, pows, mat, powsT, propPowers,
 			propPowersHat, propPowersTilde, ppSymbols, ppSymbolsRule,
 			denPowers, zeroPowerProps, numPowers, numVars, zeroDenVars,
-			nM,nLoops,fPow,pref,fpInt, fpPref, optFCReplaceD, vars, optVariavbles,
-			aux, ex, Q, J, tensorPart, tensorRank, optMethod, extraPref},
+			nM,nLoops,fPow,pref, fpInt, fpPref, optFCReplaceD, vars, optVariavbles,
+			aux, ex, Q, J, tensorPart, tensorRank, optMethod, extraPref, optFeynmanIntegralPrefactor,
+			optEuclidean, inverseMeasure},
 
-		optFinalSubstitutions	= OptionValue[FinalSubstitutions];
-		dim						= OptionValue[Dimension];
-		optFCReplaceD			= OptionValue[FCReplaceD];
-		optVariavbles			= OptionValue[Variables];
-		optMethod				= OptionValue[Method];
+		optFinalSubstitutions		= OptionValue[FinalSubstitutions];
+		dim							= OptionValue[Dimension];
+		optFCReplaceD				= OptionValue[FCReplaceD];
+		optVariavbles				= OptionValue[Variables];
+		optMethod					= OptionValue[Method];
+		optFeynmanIntegralPrefactor = OptionValue[FeynmanIntegralPrefactor];
+		optEuclidean				= OptionValue["Euclidean"];
 
 		If [OptionValue[FCVerbose]===False,
 			fcfpVerbose=$VeryVerbose,
@@ -110,7 +116,8 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 		FCPrint[1,"FCFeynmanParametrize: Calling FCFeynmanPrepare.", FCDoControl->fcfpVerbose];
 
 		{uPoly, fPoly, pows, mat, Q, J, tensorPart, tensorRank} = FCFeynmanPrepare[ex,lmoms, FCI->True,
-			FinalSubstitutions->OptionValue[FinalSubstitutions], Names->OptionValue[Names], Indexed->OptionValue[Indexed]];
+			FinalSubstitutions->OptionValue[FinalSubstitutions], Names->OptionValue[Names], Indexed->OptionValue[Indexed], Reduce->OptionValue[Reduce],
+			"Euclidean" -> optEuclidean];
 
 
 		nLoops	= Length[lmoms];
@@ -180,9 +187,30 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 			pref = extraPref*Gamma[fPow]/(Times @@ (Gamma /@ propPowers))
 		];
 
-		If[!isCartesian,
-			pref = pref*(-1)^nM
+		If[!isCartesian && !optEuclidean,
+			pref = pref*(-1)^nM;
+			inverseMeasure = (I Pi^(dim/2))^nLoops,
+			inverseMeasure = (Pi^(dim/2))^nLoops
 		];
+		If[	StringQ[optFeynmanIntegralPrefactor],
+
+				Switch[optFeynmanIntegralPrefactor,
+					"Unity",
+					pref = inverseMeasure*pref,
+					"Textbook",
+					pref = inverseMeasure/(2*Pi)^(dim*nLoops)*pref,
+					"Multiloop1",
+					Null,
+					"Multiloop2",
+					pref = Exp[nLoops*EulerGamma*(dim-4)] pref,
+					_,
+					Message[FCFeynmanParametrize::failmsg, "Unknown convention for the Feynman integral prefactor."];
+					Abort[]
+				],
+
+				pref = optFeynmanIntegralPrefactor*inverseMeasure
+		];
+
 
 		If[	pref===0 || !Internal`ExceptionFreeQ[pref],
 			Message[FCFeynmanParametrize::failmsg,"Incorrect prefactor."];
@@ -236,12 +264,11 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 		];
 
 
-
 		(*
 			If there is only a single Feynman parameter, the integration over the Dirac delta
 			is trivial and can be done right away!
 		*)
-		If[	Length[vars]===1,
+		If[	Length[vars]===1 && !OptionValue[DiracDelta],
 			fpInt = fpInt /. vars[[1]] -> 1;
 			vars = {}
 		];

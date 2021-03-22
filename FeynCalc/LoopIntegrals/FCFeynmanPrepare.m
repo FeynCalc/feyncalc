@@ -58,6 +58,7 @@ fcszVerbose::usage="";
 null1::usage="";
 null2::usage="";
 isCartesian::usage="";
+optEuclidean::usage="";
 Gt::usage="";
 Pt::usage="";
 li::usage="";
@@ -70,6 +71,7 @@ Options[FCFeynmanPrepare] = {
 	CartesianIndexNames		-> FCGV["i"],
 	Check					-> True,
 	Collecting				-> True,
+	"Euclidean"				-> False,
 	FCE						-> False,
 	FCI						-> False,
 	FCVerbose				-> False,
@@ -93,6 +95,7 @@ FCFeynmanPrepare[expr_, lmoms_List /; ! OptionQ[lmoms], OptionsPattern[]] :=
 		li						= OptionValue[LorentzIndexNames];
 		ci						= OptionValue[CartesianIndexNames];
 		tensorRank 				= 0;
+		optEuclidean			= OptionValue["Euclidean"];
 
 		If[	OptionValue[FCVerbose]===False,
 			fcszVerbose=$VeryVerbose,
@@ -272,18 +275,26 @@ FCFeynmanPrepare[expr_, lmoms_List /; ! OptionQ[lmoms], OptionsPattern[]] :=
 			tensorPart=buildN[tensorPart, symU, matrix, fpQ, powers, lmoms];
 			FCPrint[1, "FCFeynmanPrepare: N ready, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose];
 		];
-
-		res = {symU, -Together[symU symF], powers, matrix, fpQ, fpJ, tensorPart, tensorRank};
-
+		If[	!isCartesian && !optEuclidean,
+			res = {symU, -Together[symU symF], powers, matrix, fpQ, fpJ, tensorPart, tensorRank},
+			(*in the case of a Euclidean integral there is no Wick rotation and we pick up -Q^T.M^(-1).Q+J *)
+			res = {symU, Together[symU symF], powers, matrix, fpQ, fpJ, tensorPart, tensorRank};
+		];
 
 
 		If[ OptionValue[Check],
 			time=AbsoluteTime[];
 			FCPrint[1, "FCFeynmanPrepare: Checking the results.", FCDoControl -> fcszVerbose];
 			(* Check F *)
-			If[Factor[Together[symU*(ExpandScalarProduct[Contract[fpQ.Inverse[matrix].fpQ,FCI->True],FCI->True]-fpJ)-res[[2]]]]=!=0,
-				Message[FCFeynmanPrepare::failmsg,"The obtained Q and J are incorrect."];
-				Abort[]
+			If[	!isCartesian && !optEuclidean,
+				If[Factor[Together[symU*(ExpandScalarProduct[Contract[fpQ.Inverse[matrix].fpQ,FCI->True],FCI->True]-fpJ)-res[[2]]]]=!=0,
+					Message[FCFeynmanPrepare::failmsg,"The obtained Q and J are incorrect."];
+					Abort[]
+				],
+				If[Factor[Together[symU*(-ExpandScalarProduct[Contract[fpQ.Inverse[matrix].fpQ,FCI->True],FCI->True]+fpJ)-res[[2]]]]=!=0,
+					Message[FCFeynmanPrepare::failmsg,"The obtained Q and J are incorrect."];
+					Abort[]
+				]
 			];
 
 			(* Check U *)
@@ -421,7 +432,11 @@ buildN[tensorPart_, U_, M_, fpQ_, powers_, lmoms_List]:=
 		];
 
 		tensorTermPrefacList = Cases2[tensorListEval,tensorTermPrefac];
-		tensorTermPrefacListEval = tensorTermPrefacList /. tensorTermPrefac[m_Integer] :> (-1/2)^m FCGV["F"]^m Gamma[nM - nLoops*dim/2 - m];
+
+		If[	!isCartesian && !optEuclidean,
+			tensorTermPrefacListEval = tensorTermPrefacList /. tensorTermPrefac[m_Integer] :> (-1/2)^m FCGV["F"]^m Gamma[nM - nLoops*dim/2 - m],
+			tensorTermPrefacListEval = tensorTermPrefacList /. tensorTermPrefac[m_Integer] :> (1/2)^m FCGV["F"]^m Gamma[nM - nLoops*dim/2 - m]
+		];
 
 		tensorListEval = tensorListEval /. Dispatch[Thread[Rule[tensorTermPrefacList,tensorTermPrefacListEval]]];
 
@@ -433,6 +448,9 @@ buildN[tensorPart_, U_, M_, fpQ_, powers_, lmoms_List]:=
 		];
 
 		res = Total[tensorListEval];
+		If[isCartesian || optEuclidean,
+			res = (-1)^Length[tensorList] res
+		];
 
 		res
 	];
