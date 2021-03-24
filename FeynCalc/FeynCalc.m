@@ -24,7 +24,7 @@ FeynArts, TARCER, PHI, FeynHelpers or any other add-on, please restart the kerne
 	Abort[]
 ];
 
-If[ ($VersionNumber < 8.0),
+If[ ($VersionNumber < 8.0) && StringFreeQ[$Version, "Mathics"],
 	Print[Style["You need at least Mathematica 8.0 to run FeynCalc. Evaluation aborted.",Red, Bold]];
 	Abort[]
 ];
