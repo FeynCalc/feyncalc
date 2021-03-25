@@ -1043,7 +1043,7 @@ Variables2[expr_List, opts : OptionsPattern[]] :=
 	Union[Flatten[Variables2[#, opts] & /@ expr]];
 
 Variables2[expr_, OptionsPattern[]] :=
-	Variables[expr] /; !MemberQ[{List, Equal, Rule, RuleDelayed}, Head[expr]];
+	Union[Variables[expr]] /; !MemberQ[{List, Equal, Rule, RuleDelayed}, Head[expr]];
 
 Variables2[(Equal | Rule | RuleDelayed)[a_, b_], OptionsPattern[]] :=
 	Union[Variables[a], Variables[b]];
