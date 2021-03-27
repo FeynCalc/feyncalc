@@ -448,9 +448,6 @@ buildN[tensorPart_, U_, M_, fpQ_, powers_, lmoms_List]:=
 		];
 
 		res = Total[tensorListEval];
-		If[isCartesian || optEuclidean,
-			res = (-1)^Length[tensorList] res
-		];
 
 		res
 	];

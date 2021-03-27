@@ -322,7 +322,7 @@ Names\[Rule]x,Indexed\[Rule]False,FCE\[Rule]True]",
 \[Rule]x,Indexed\[Rule]False,FCE\[Rule]True]",
 "{x1 + x2, m*x1^2 + m*x1*x2 + m2*x1*x2 + m2*x2^2 + x1*x2*CSPD[p, p],
 {{x1, CFAD[{{q, 0}, {m, -1}, 1}], 1}, {x2, CFAD[{{-p + q, 0}, {m2, -1}, 1}], 1}},
-{{x1 + x2}}, {x2*CVD[p, FCGV[\"i\"]]}, m*x1 + m2*x2 + x2*CSPD[p, p], -(x2*CVD[p, mu]*Gamma[2 + (1 - D)/2]), 1}"},
+{{x1 + x2}}, {x2*CVD[p, FCGV[\"i\"]]}, m*x1 + m2*x2 + x2*CSPD[p, p], (x2*CVD[p, mu]*Gamma[2 + (1 - D)/2]), 1}"},
 {"fcstFCFeynmanPrepare-ID47",
 "FCFeynmanPrepare[{CFAD[{q, m}], CFAD[{q - p, m2}],
 CVD[q, mu] CVD[q, nu]}, {q}, Names -> x, Indexed -> False,
@@ -337,10 +337,10 @@ CVD[q,rho]},{q},Names\[Rule]x,Indexed\[Rule]False,FCE\[Rule]True]",
 "{x1 + x2, m*x1^2 + m*x1*x2 + m2*x1*x2 + m2*x2^2 + x1*x2*CSPD[p, p], \
 {{x1, CFAD[{{q, 0}, {m, -1}, 1}], 1}, {x2, CFAD[{{-p + q, 0}, {m2, \
 -1}, 1}], 1}}, {{x1 + x2}}, {x2*CVD[p, FCGV[\"i\"]]}, m*x1 + m2*x2 + \
-x2*CSPD[p, p], -(x2^3*CVD[p, mu]*CVD[p, nu]*CVD[p, rho]*Gamma[2 + (1 \
-- D)/2]) - (x2*CVD[p, rho]*FCGV[\"F\"]*Gamma[1 + (1 - D)/2]*KDD[mu, \
-nu])/2 - (x2*CVD[p, nu]*FCGV[\"F\"]*Gamma[1 + (1 - D)/2]*KDD[mu, \
-rho])/2 - (x2*CVD[p, mu]*FCGV[\"F\"]*Gamma[1 + (1 - D)/2]*KDD[nu, \
+x2*CSPD[p, p], x2^3*CVD[p, mu]*CVD[p, nu]*CVD[p, rho]*Gamma[2 + (1 - \
+D)/2] + (x2*CVD[p, rho]*FCGV[\"F\"]*Gamma[1 + (1 - D)/2]*KDD[mu, \
+nu])/2 + (x2*CVD[p, nu]*FCGV[\"F\"]*Gamma[1 + (1 - D)/2]*KDD[mu, \
+rho])/2 + (x2*CVD[p, mu]*FCGV[\"F\"]*Gamma[1 + (1 - D)/2]*KDD[nu, \
 rho])/2, 3}"
 },
 {"fcstFCFeynmanPrepare-ID49",
@@ -432,7 +432,7 @@ D/2))/(2^D*Pi^(D/2)*Gamma[a]), {}}"},
 "FCFeynmanParametrize[FVD[p,mu]SFAD[{{p,2p.q},-m^2,a}],{p},Names\
 \[Rule]x,Simplify\[Rule]True,Reduce\[Rule]True,FCE\[Rule]True,\"\
 Euclidean\"\[Rule]True,FeynmanIntegralPrefactor\[Rule]\"Textbook\"]",
-"{1, (FVD[q, mu]*Gamma[a - D/2]*(m^2 - SPD[q, q])^((-2*a + \
+"{1, -(FVD[q, mu]*Gamma[a - D/2]*(m^2 - SPD[q, q])^((-2*a + \
 D)/2))/(2^D*Pi^(D/2)*Gamma[a]), {}}"},
 {"fcstFCFeynmanParametrize-ID59",
 "FCFeynmanParametrize[SFAD[{p,-m^2}],{p},Names\[Rule]x,Simplify\
@@ -445,6 +445,6 @@ Names\[Rule]x,Simplify\[Rule]True,FCE\[Rule]True,\
 FeynmanIntegralPrefactor\[Rule]\"Textbook\",\"Euclidean\"\[Rule]True]/.{\
 x[1]\[Rule]1-tau,x[2]\[Rule]tau})",
 "{(1 - tau)^(-1 + a)*tau^b*(m^2 + (1 - tau)*tau*SPD[k, k])^((-2*a \
-- 2*b + D)/2), -((FVD[k, mu]*Gamma[a + b - \
+- 2*b + D)/2), ((FVD[k, mu]*Gamma[a + b - \
 D/2])/(2^D*Pi^(D/2)*Gamma[a]*Gamma[b])), {1 - tau, tau}}"}
 });

@@ -142,7 +142,7 @@ m*x[2]*x[3] + CSPD[p, p]*x[2]*x[3] - TC[l]^2*x[2]*x[3] + 2*TC[l]*TC[p]*x[2]*x[3]
 CVD[p, mu] CFAD[{p, m^2, a}, {p - k, m^2, b}], {p}, Names -> x,
 Simplify -> True, Reduce -> True, FCE -> True]",
 "{x[1]^(-1 + a)*x[2]^b*(m^2 - CSPD[k, k]*(-1 + x[2])*x[2])^((-2*a -
-2*b + D)/2), -((CVD[k, mu]*Gamma[1/2 + a + b - D/2])/(Gamma[a]*Gamma[b])), {x[1], x[2]}}"},
+2*b + D)/2), ((CVD[k, mu]*Gamma[1/2 + a + b - D/2])/(Gamma[a]*Gamma[b])), {x[1], x[2]}}"},
 {"fcstFCFeynmanParametrize-ID21",
 "FCFeynmanParametrize[SFAD[{l,-m^2},{l+p}],{l},Names\[Rule]x,\
 FeynmanIntegralPrefactor\[Rule]\"Unity\",FCE->True]",
@@ -164,12 +164,12 @@ x[2]}}"},
 SFAD[{p,-m^2,a},{p-k,-m^2,b}],{p},Names\[Rule]x,Simplify\[Rule]True,\
 FCE\[Rule]True,\"Euclidean\"\[Rule]True,FCE->True]",
 "{x[1]^(-1 + a)*x[2]^b*(x[1] + x[2])^(-1 + a + b - D)*(SPD[k, k]*x[1]*x[2] +
-m^2*(x[1] + x[2])^2)^((-2*a - 2*b + D)/2), -(FVD[k, mu]*Gamma[a + b - D/2])/(Gamma[a]*Gamma[b]), {x[1], x[2]}}"},
+m^2*(x[1] + x[2])^2)^((-2*a - 2*b + D)/2), (FVD[k, mu]*Gamma[a + b - D/2])/(Gamma[a]*Gamma[b]), {x[1], x[2]}}"},
 {"fcstFCFeynmanParametrize-ID25",
 "FCFeynmanParametrize[FVD[p,mu] \
 SFAD[{p,-m^2,a},{p-k,-m^2,b}],{p},Names\[Rule]x,Simplify\[Rule]True,\
 FCE\[Rule]True,\"Euclidean\"\[Rule]True,FeynmanIntegralPrefactor\
 \[Rule]\"Textbook\",FCE->True]",
 "{x[1]^(-1 + a)*x[2]^b*(x[1] + x[2])^(-1 + a + b - D)*(SPD[k, k]*x[1]*x[2] + m^2*(x[1] +
-x[2])^2)^((-2*a - 2*b + D)/2), -((FVD[k, mu]*Gamma[a + b - D/2])/(2^D*Pi^(D/2)*Gamma[a]*Gamma[b])), {x[1], x[2]}}"}
+x[2])^2)^((-2*a - 2*b + D)/2), ((FVD[k, mu]*Gamma[a + b - D/2])/(2^D*Pi^(D/2)*Gamma[a]*Gamma[b])), {x[1], x[2]}}"}
 });
