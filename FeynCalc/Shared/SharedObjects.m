@@ -31,7 +31,7 @@ CF::usage =
 CFAD::usage =
 "CFAD[{{q1+ ..., p1.q2 + ...,} {m^2, s}, n}, ...] denotes a Cartesian propagator \
 given by 1/[(q1+...)^2 + p1.q2 ... + m^2 + sign*I*eta]^n, where  \
-q1^2 and p1.q2 are Cartesian sclar products in D-1 dimensions. \
+q1^2 and p1.q2 are Cartesian scalar products in D-1 dimensions. \
 For brevity one can also use shorter forms \
 such as CFAD[{q1+ ...,  m^2}, ...], CFAD[{q1+ ...,  m^2 , n}, ...], \
 CFAD[{q1+ ...,  {m^2, -1}}, ...], CFAD[q1,...]  etc. If s is not explicitly specified, \

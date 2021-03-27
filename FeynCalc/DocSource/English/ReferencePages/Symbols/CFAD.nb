@@ -134,7 +134,7 @@ Cell[TextData[{
          RowBox[{"m", "^", "2"}], ",", "s"}], "}"}]}], ",", "n"}], "}"}], ",",
      "..."}], "]"}]], "InlineFormula"],
  " \[LineSeparator]denotes a Cartesian propagator given by 1/[(q1+...)^2 + \
-p1.q2 ... + m^2 + sign*I*eta]^n, where q1^2 and p1.q2 are Cartesian sclar \
+p1.q2 ... + m^2 + sign*I*eta]^n, where q1^2 and p1.q2 are Cartesian scalar \
 products in D-1 dimensions. For brevity one can also use shorter forms such \
 as CFAD[{q1+ ...,  m^2}, ...], CFAD[{q1+ ...,  m^2 , n}, ...], CFAD[{q1+ ..., \
  {m^2, -1}}, ...], CFAD[q1,...]  etc. If s is not explicitly specified, then \
@@ -573,12 +573,13 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{1181, Automatic}, {Automatic, 191}},
+WindowMargins->{{Automatic, 669}, {Automatic, 183}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 CreateCellID->False,
 CellContext->"Global`",
 TrackCellChangeTimes->False,
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.4 for Linux x86 (64-bit) (April 11, 2016)",
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+
