@@ -514,5 +514,9 @@ SPD[k, Polarization[pZ, -I]]*SPD[pZ, Polarization[pPh, -I, Transversality -> Tru
 (FAD[{k, mW*Sqrt[GaugeXi[W]]}, {k + pPh, mW*Sqrt[GaugeXi[W]]}, {k - pZ, mW}]*(-mH^2 + mW^2*GaugeXi[W])*SPD[pZ, Polarization[pZ, -I]]*
 SPD[pZ, Polarization[pPh, -I, Transversality -> True]])/(mW^2*(-1 + GaugeXi[W])) -
 (FAD[{k, mW*Sqrt[GaugeXi[W]]}, {k + pPh, mW*Sqrt[GaugeXi[W]]}, {k - pZ, mW*Sqrt[GaugeXi[W]]}]*(-mH^2 + mW^2*GaugeXi[W])*
-SPD[pZ, Polarization[pZ, -I]]*SPD[pZ, Polarization[pPh, -I, Transversality -> True]])/(mW^2*(-1 + GaugeXi[W]))"}
+SPD[pZ, Polarization[pZ, -I]]*SPD[pZ, Polarization[pPh, -I, Transversality -> True]])/(mW^2*(-1 + GaugeXi[W]))"},
+{"fcstFCApart-ID61",
+"FCApart[SFAD[{I p, -m2^2}] SFAD[{I p, -m1^2}], {p}, FCE -> True]",
+"-(SFAD[{{I*p, 0}, {-m1^2, 1}, 1}]/((m1 - m2)*(m1 + m2))) +
+SFAD[{{I*p, 0}, {-m2^2, 1}, 1}]/((m1 - m2)*(m1 + m2))"}
 })

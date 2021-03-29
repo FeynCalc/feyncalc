@@ -339,6 +339,9 @@ procanSFAD[a_, rest__] :=
 	Block[{tt, one, numfac},
 		tt = Factor2[one MomentumExpand[a]];
 		numfac = NumericalFactor[tt];
+		If[	!FreeQ[numfac,Complex],
+			Return[StandardPropagatorDenominator[Expand[tt /. one -> 1], rest]];
+		];
 		If[TrueQ[numfac < 0 && MatchQ[numfac, _Rational | _Integer]],
 			StandardPropagatorDenominator[Expand[-tt /. one -> 1], rest],
 			StandardPropagatorDenominator[Expand[tt /. one -> 1], rest]
@@ -349,6 +352,9 @@ procanCFAD[a_, rest__] :=
 	Block[{tt, one, numfac},
 		tt = Factor2[one MomentumExpand[a]];
 		numfac = NumericalFactor[tt];
+		If[	!FreeQ[numfac,Complex],
+			CartesianPropagatorDenominator[Expand[tt /. one -> 1], rest]
+		];
 		If[TrueQ[numfac < 0 && MatchQ[numfac, _Rational | _Integer]],
 			CartesianPropagatorDenominator[Expand[-tt /. one -> 1], rest],
 			CartesianPropagatorDenominator[Expand[tt /. one -> 1], rest]
