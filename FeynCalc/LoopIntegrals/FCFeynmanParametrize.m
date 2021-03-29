@@ -41,7 +41,6 @@ isCartesian::usage="";
 
 Options[FCFeynmanParametrize] = {
 	Assumptions					-> {},
-	Dimension					-> D,
 	DiracDelta					-> False,
 	"Euclidean"					-> False,
 	FCE							-> False,
@@ -74,7 +73,6 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 			optEuclidean, inverseMeasure},
 
 		optFinalSubstitutions		= OptionValue[FinalSubstitutions];
-		dim							= OptionValue[Dimension];
 		optFCReplaceD				= OptionValue[FCReplaceD];
 		optVariavbles				= OptionValue[Variables];
 		optMethod					= OptionValue[Method];
@@ -112,6 +110,16 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 		];
 
 		FCPrint[1,"FCFeynmanParametrize: Prefactor in the input: ", extraPref, FCDoControl->fcfpVerbose];
+
+		dim = FCGetDimensions[ex/. {TemporalPair[_,ExplicitLorentzIndex[0]]:>Unique[]}] ;
+
+		If[	Length[dim]=!=1,
+			Message[FCFeynmanPrepare::failmsg,"The loop integrals contains momenta in different dimensions."];
+			Abort[]
+		];
+		dim = First[dim];
+
+		FCPrint[1,"FCFeynmanParametrize: Dimension: ", dim, FCDoControl->fcfpVerbose];
 
 		FCPrint[1,"FCFeynmanParametrize: Calling FCFeynmanPrepare.", FCDoControl->fcfpVerbose];
 
@@ -290,12 +298,12 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 
 		FCPrint[1,"FCFeynmanParametrize: fpInt: ", fpInt, FCDoControl->fcfpVerbose];
 
-		If[MatchQ[optFCReplaceD,{_Rule}],
+		If[	MatchQ[optFCReplaceD,{_Rule}],
 			fpInt  = FCReplaceD[fpInt,First[optFCReplaceD]];
 			pref = FCReplaceD[pref,First[optFCReplaceD]]
 		];
 
-		If[OptionValue[Simplify],
+		If[	OptionValue[Simplify],
 			fpInt	= Simplify[fpInt, Assumptions->OptionValue[Assumptions]];
 			pref	= Simplify[pref, Assumptions->OptionValue[Assumptions]]
 		];
