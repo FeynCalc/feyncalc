@@ -34,13 +34,15 @@ fcfprVerbose::usage="";
 Options[FCFeynmanProjectivize] = {
 	Assumptions	-> {},
 	DivideBy	-> Automatic,
+	RandomPrime	-> 10^8,
 	FCVerbose 	-> False
 };
 
 
 
 FCFeynmanProjectivize[ex_, var_, OptionsPattern[]] :=
-	Block[{xvars, ru, la, cru, check, res, fac, optDivideBy, optAssumptions},
+	Block[{	xvars, ru, la, cru, check, res, fac, optDivideBy,
+			optAssumptions, optRandomPrime, xVarsNum},
 
 		If [OptionValue[FCVerbose]===False,
 			fcfprVerbose=$VeryVerbose,
@@ -49,8 +51,9 @@ FCFeynmanProjectivize[ex_, var_, OptionsPattern[]] :=
 			];
 		];
 
-		optDivideBy = OptionValue[DivideBy];
-		optAssumptions = OptionValue[Assumptions];
+		optDivideBy 	= OptionValue[DivideBy];
+		optAssumptions	= OptionValue[Assumptions];
+		optRandomPrime	= OptionValue[RandomPrime];
 
 		Which[
 			Head[var]===Symbol,
@@ -62,6 +65,17 @@ FCFeynmanProjectivize[ex_, var_, OptionsPattern[]] :=
 				Abort[]
 		];
 
+		FCPrint[1,"FCFeynmanProjectivize: Feynman parameter variables: " , xvars, FCDoControl->fcfprVerbose];
+
+		If[	Length[xvars]<2,
+			Message[FCFeynmanProjectivize::failmsg, "Integrals with less than two integration variables are not supported."];
+			Abort[]
+		];
+
+		xVarsNum = Table[RandomPrime[optRandomPrime],{i,1,Length[xvars]}];
+
+
+
 
 		If[optDivideBy === Automatic,
 			fac = 1/(Total[xvars]),
@@ -69,7 +83,10 @@ FCFeynmanProjectivize[ex_, var_, OptionsPattern[]] :=
 		];
 
 		ru = Thread[Rule[xvars, fac xvars]];
-		cru = Thread[Rule[xvars, la xvars]];
+		cru = Thread[Rule[xvars, la xVarsNum]];
+
+		FCPrint[2,"FCFeynmanProjectivize: Replacement rule for the projective transformation: " , ru, FCDoControl->fcfprVerbose];
+		FCPrint[2,"FCFeynmanProjectivize: Replacement rule for numerical checks: " , cru, FCDoControl->fcfprVerbose];
 
 		check = FullSimplify[la^Length[xvars] (ex /. cru),	Assumptions -> Join[optAssumptions, {la > 0}]];
 
@@ -83,7 +100,10 @@ FCFeynmanProjectivize[ex_, var_, OptionsPattern[]] :=
 
 
 		res = (ex /. ru) (Total[xvars])^(-Length[xvars]);
-		check = FullSimplify[la^Length[xvars] (res /. cru), Assumptions -> Join[optAssumptions, {la > 0}]];
+		FCPrint[1,"FCFeynmanProjectivize: Resulting integral: " , res, FCDoControl->fcfprVerbose];
+
+
+		check = FullSimplify[la^Length[xvars] (res /. cru),	Assumptions -> Join[optAssumptions, {la > 0}]];
 		If[	FreeQ[check, la],
 
 			FCPrint[0,"FCFeynmanProjectivize: Projective transformation successful, the integral is now projective.", FCDoControl->fcfprVerbose],
