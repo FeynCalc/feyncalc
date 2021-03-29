@@ -42,7 +42,7 @@ Begin["`PaVeUVPart`Private`"]
 MM::usage="";
 PP::usage="";
 pvuvVerbose::usage="";
-dim::usage="";
+dMinus4::usage="";
 factoring::usage="";
 uvp::usage="";
 prefactor::usage="";
@@ -60,7 +60,8 @@ Options[PaVeUVPart] = {
 };
 
 PaVeUVPart[expr_,  OptionsPattern[]] :=
-	Block[{ex,repList,res, dummy, rest,loopInts,intsUnique, intsUniqueEval, paVeInt, repRule},
+	Block[{	ex,repList,res, dummy, rest,loopInts,intsUnique, intsUniqueEval,
+			paVeInt, repRule, dMinus4, prodsUnique, prodsUniqueEval, dim},
 
 		dim 		= OptionValue[Dimension];
 		factoring	= OptionValue[Factoring];
@@ -98,8 +99,16 @@ PaVeUVPart[expr_,  OptionsPattern[]] :=
 		If[	OptionValue[FCLoopExtract],
 
 			(* Normal mode *)
+			(* Here we need to handle the case (D-4)*PaVe explicitly *)
 			FCPrint[1, "PaVeUVPart: Normal mode.", FCDoControl->pvuvVerbose];
-			{rest,loopInts,intsUnique} = FCLoopExtract[ex,{dummy},paVeInt,PaVe->True, FCI->True];
+
+			ex = ex /. dim -> dMinus4 + 4;
+
+			{rest,loopInts,prodsUnique} = FCLoopExtract[ex,{dummy},paVeInt,PaVe->True, FCI->True, PaVeIntegralHeads -> Join[FeynCalc`Package`PaVeHeadsList,{dMinus4}]];
+			FCPrint[3, "PaVeUVPart: List of the unique integrals multiplied by D: ",  prodsUnique, FCDoControl->pvuvVerbose];
+
+
+			intsUnique = Cases2[prodsUnique,FeynCalc`Package`PaVeHeadsList];
 			FCPrint[3, "PaVeUVPart: List of the unique integrals: ",  intsUnique, FCDoControl->pvuvVerbose];
 
 			If[	OptionValue[ToPaVe2],
@@ -112,12 +121,26 @@ PaVeUVPart[expr_,  OptionsPattern[]] :=
 			intsUniqueEval = intsUniqueEval  /. convRule /. uvp->uvpEval;
 			FCPrint[3, "PaVeUVPart: List of the evaluated PaVe functions ",  intsUniqueEval, FCDoControl->pvuvVerbose];
 
-			repRule = Thread[Rule[intsUnique,intsUniqueEval]];
+			prodsUniqueEval = prodsUnique /. Dispatch[Thread[Rule[intsUnique,intsUniqueEval]]] /. paVeInt->Identity;
+
+			FCPrint[3, "PaVeUVPart: List of the evaluated products: ",  prodsUniqueEval, FCDoControl->pvuvVerbose];
+
+			If[	!FreeQ2[prodsUniqueEval,FeynCalc`Package`PaVeHeadsList],
+				Message[PaVeUVPart::failmsg,"Something went wrong during the evaluation of the PaVe functions."];
+				Abort[]
+			];
+
+			prodsUniqueEval = Map[If[TrueQ[(Factor[Denominator[Together[#]]/.dMinus4->0])=!=0],0,#]&, prodsUniqueEval];
+
+			FCPrint[3, "PaVeUVPart: After sorting out (D-4)*PaVe cases: ",  intsUniqueEval, FCDoControl->pvuvVerbose];
+
+			repRule = Thread[Rule[prodsUnique,prodsUniqueEval]];
 			FCPrint[3, "PaVeUVPart: Replacement rule ",  repRule, FCDoControl->pvuvVerbose];
 
 			res = rest + (loopInts /. repRule),
 
 			(* Fast mode *)
+			(* Here we assume that the input is a single PaVe function, so that the case (D-4)*PaVe cannot occur *)
 			FCPrint[1, "PaVeUVPart: Fast mode.", FCDoControl->pvuvVerbose];
 
 			If[	OptionValue[ToPaVe2],
@@ -126,6 +149,8 @@ PaVeUVPart[expr_,  OptionsPattern[]] :=
 
 			res = ex /. convRule /. uvp->uvpEval
 		];
+
+		res = res /. dMinus4 -> dim - 4;
 
 		If[	OptionValue[Together],
 			res = Together[res]
@@ -150,7 +175,7 @@ convRule = {
 };
 
 uvpEval[exp_, ru1_, ru2_] :=
-	prefactor/(dim - 4) factoring[exp /. ru1 /. ru2]
+	prefactor/dMinus4 factoring[exp /. ru1 /. ru2]
 
 
 SetAttributes[PP, Orderless];
