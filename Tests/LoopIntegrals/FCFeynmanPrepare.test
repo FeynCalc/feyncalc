@@ -412,39 +412,5 @@ q1]*x[4]^2 - 4*SPD[q1, q2]*x[2]*x[5] - 4*SPD[q2, q2]*x[3]*x[5] + \
 {x[3], SFAD[{{p - q2, 0}, {0, 1}, 1}], 1}, {x[4], SPD[p, q1], -2}, \
 {x[5], SPD[p, q2], -1}}, {{x[1] + x[2] + x[3]}}, {(FVD[q1, \
 FCGV[\"mu\"]]*(2*x[2] - x[4]))/2 + (FVD[q2, FCGV[\"mu\"]]*(2*x[3] - \
-x[5]))/2}, -(m*x[1]) + SPD[q1, q1]*x[2] + SPD[q2, q2]*x[3], 1, 0}"},
-{"fcstFCFeynmanParametrize-ID55",
-"FCFeynmanParametrize[SFAD[{{p,2p.q},-m^2}],{p},Names\[Rule]x,\
-Simplify\[Rule]True,Reduce\[Rule]True,FCE\[Rule]True]",
-"{1, (Gamma[1 - D/2]*(-m^2 + SPD[q, q])^(D/2))/(m^2 - SPD[q, q]), \
-{}}"},
-{"fcstFCFeynmanParametrize-ID56",
-"FCFeynmanParametrize[SFAD[{{p,2p.q},-m^2}],{p},Names\[Rule]x,\
-Simplify\[Rule]True,Reduce\[Rule]True,FCE\[Rule]True,\"Euclidean\"\
-\[Rule]True]", "{1, Gamma[1 - D/2]*(m^2 - SPD[q, q])^(-1 + D/2), {}}"},
-{"fcstFCFeynmanParametrize-ID57",
-"FCFeynmanParametrize[SFAD[{{p,2p.q},-m^2,a}],{p},Names\[Rule]x,\
-Simplify\[Rule]True,Reduce\[Rule]True,FCE\[Rule]True,\"Euclidean\"\
-\[Rule]True,FeynmanIntegralPrefactor\[Rule]\"Textbook\"]",
-"{1, (Gamma[a - D/2]*(m^2 - SPD[q, q])^(-a + \
-D/2))/(2^D*Pi^(D/2)*Gamma[a]), {}}"},
-{"fcstFCFeynmanParametrize-ID58",
-"FCFeynmanParametrize[FVD[p,mu]SFAD[{{p,2p.q},-m^2,a}],{p},Names\
-\[Rule]x,Simplify\[Rule]True,Reduce\[Rule]True,FCE\[Rule]True,\"\
-Euclidean\"\[Rule]True,FeynmanIntegralPrefactor\[Rule]\"Textbook\"]",
-"{1, -(FVD[q, mu]*Gamma[a - D/2]*(m^2 - SPD[q, q])^((-2*a + \
-D)/2))/(2^D*Pi^(D/2)*Gamma[a]), {}}"},
-{"fcstFCFeynmanParametrize-ID59",
-"FCFeynmanParametrize[SFAD[{p,-m^2}],{p},Names\[Rule]x,Simplify\
-\[Rule]True,Reduce\[Rule]True,FCE\[Rule]True,\"Euclidean\"\[Rule]True,\
-FeynmanIntegralPrefactor\[Rule]\"Textbook\"]",
-"{1, ((m^2)^(-1 + D/2)*Gamma[1 - D/2])/(2^D*Pi^(D/2)), {}}"},
-{"fcstFCFeynmanParametrize-ID60",
-"(FCFeynmanParametrize[FVD[p,mu]SFAD[{p,-m^2,a},{p-k,-m^2,b}],{p},\
-Names\[Rule]x,Simplify\[Rule]True,FCE\[Rule]True,\
-FeynmanIntegralPrefactor\[Rule]\"Textbook\",\"Euclidean\"\[Rule]True]/.{\
-x[1]\[Rule]1-tau,x[2]\[Rule]tau})",
-"{(1 - tau)^(-1 + a)*tau^b*(m^2 + (1 - tau)*tau*SPD[k, k])^((-2*a \
-- 2*b + D)/2), ((FVD[k, mu]*Gamma[a + b - \
-D/2])/(2^D*Pi^(D/2)*Gamma[a]*Gamma[b])), {1 - tau, tau}}"}
+x[5]))/2}, -(m*x[1]) + SPD[q1, q1]*x[2] + SPD[q2, q2]*x[3], 1, 0}"}
 });

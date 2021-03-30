@@ -43,11 +43,12 @@ Options[FCFeynmanParametrize] = {
 	Assumptions					-> {},
 	DiracDelta					-> False,
 	"Euclidean"					-> False,
+	Expanding					-> True,
 	FCE							-> False,
 	FCI							-> False,
 	FCReplaceD					-> {},
 	FCVerbose					-> False,
-	(*Factoring 				-> {Factor2, 5000},*)
+	(*Factoring 					-> {Factor2, 5000},*)
 	FeynmanIntegralPrefactor	-> "Multiloop1",
 	FinalSubstitutions			-> {},
 	Indexed						-> True,
@@ -313,12 +314,18 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 		];
 
 		aux		= FCProductSplit[fpInt, vars];
-
 		pref	= pref aux[[1]];
 		fpInt	= aux[[2]];
 
-
 		res = {fpInt,pref,vars};
+
+		If[	OptionValue[Expanding],
+			res = res /. {
+				Gamma[x_]:> Gamma[ExpandAll[x]],
+				Power[x_,y_]:> Power[x,ExpandAll[y]]
+			}
+		];
+
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
