@@ -23,11 +23,8 @@ x[1]*x[2] + x[2]^2))^ep,x,Assumptions->{mb2>0},FCVerbose\[Rule]-1]",
 "FCFeynmanProjectivize[(x[2]*x[3])^(3*(-1+ep))*((x[2]+x[3])*(Pair[\
 Momentum[q,D],Momentum[q,D]]*x[1]^2+mg2*x[2]*x[3]))^(1-2*ep),x,\
 Assumptions->{qq>0,mg2>0,x[1]>=0,x[2]>=0},FCVerbose\[Rule]-1]",
-"(((x[2]*x[3])/(x[1] + x[2] + x[3])^2)^(3*(-1 + \
-ep))*(((Pair[Momentum[q, D], Momentum[q, D]]*x[1]^2)/(x[1] + x[2] + \
-x[3])^2 + (mg2*x[2]*x[3])/(x[1] + x[2] + x[3])^2)*(x[2]/(x[1] + x[2] \
-+ x[3]) + x[3]/(x[1] + x[2] + x[3])))^(1 - 2*ep))/(x[1] + x[2] + \
-x[3])^3"},
+"(x[2]*x[3])^(3*(-1 + ep))*((x[2] + x[3])*(Pair[Momentum[q, D],
+Momentum[q, D]]*x[1]^2 + mg2*x[2]*x[3]))^(1 - 2*ep)"},
 {"fcstFCFeynmanProjectivize-ID3",
 "FCFeynmanProjectivize[(x[4]*(x[3] + x[5]) +
 	x[1]*(x[2] + x[3] + x[5]) + x[2]*(x[3] + x[4] + x[5]))^(-1 +
@@ -45,5 +42,14 @@ x[5])) + x[2]*(x[3]*(x[4] - x[5]) + x[4]*(x[4] + 2*x[5])))^(-1 - 2*ep)"},
 {"fcstFCFeynmanProjectivize-ID4",
 "FCFeynmanProjectivize[x[1]^(x - 1) (x[2])^(y - 1), x, {},
 FCVerbose -> -1]",
-"((x[1]/(x[1] + x[2]))^(-1 + x)*(x[2]/(x[1] + x[2]))^(-1 + y))/(x[1] + x[2])^2"}
+"((x[1]/(x[1] + x[2]))^(-1 + x)*(x[2]/(x[1] + x[2]))^(-1 + y))/(x[1] + x[2])^2"},
+{"fcstFCFeynmanProjectivize-ID5",
+"FCFeynmanProjectivize[
+x[1]^(-1 + la1)*(-x[1] - x[2])^(-4 + 2*ep + la1 + la2)*
+x[2]^(-1 + la2)*(m1^2*x[1]^2 + m1^2*x[1]*x[2] + m2^2*x[1]*x[2] -
+	Pair[Momentum[q, D], Momentum[q, D]]*x[1]*x[2] +
+	m2^2*x[2]^2)^(2 - ep - la1 - la2), x, FCVerbose -> -1]",
+"x[1]^(-1 + la1)*(-x[1] - x[2])^(-4 + 2*ep + la1 + la2)*x[2]^(-1 +
+la2)*(m1^2*x[1]^2 + m1^2*x[1]*x[2] + m2^2*x[1]*x[2] -
+Pair[Momentum[q, D], Momentum[q, D]]*x[1]*x[2] + m2^2*x[2]^2)^(2 - ep - la1 - la2)"}
 });
