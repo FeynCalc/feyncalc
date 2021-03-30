@@ -200,5 +200,13 @@ Names\[Rule]x,Simplify\[Rule]True,FCE\[Rule]True,\
 FeynmanIntegralPrefactor\[Rule]\"Textbook\",\"Euclidean\"\[Rule]True]/.{\
 x[1]\[Rule]1-tau,x[2]\[Rule]tau})",
 "{(1 - tau)^(-1 + a)*tau^b*(m^2 + (1 - tau)*tau*SPD[k, k])^(-a - b + D/2),
-(FVD[k, mu]*Gamma[a + b - D/2])/(2^D*Pi^(D/2)*Gamma[a]*Gamma[b]), {1 - tau, tau}}"}
+(FVD[k, mu]*Gamma[a + b - D/2])/(2^D*Pi^(D/2)*Gamma[a]*Gamma[b]), {1 - tau, tau}}"},
+{"fcstFCFeynmanParametrize-ID32",
+"FCFeynmanParametrize[
+SFAD[{I k, -m1^2, la1}, {I (q - k), -m2^2, la2}], {k}, Names -> x,
+FinalSubstitutions -> {SPD[p1] -> 0, SPD[p2] -> 0},
+FCReplaceD -> {D -> 4 - 2 ep}, FCE -> True]",
+"{x[1]^(-1 + la1)*(-x[1] - x[2])^(-4 + 2*ep + la1 + la2)*x[2]^(-1 + la2)*(m1^2*x[1]^2 +
+m1^2*x[1]*x[2] + m2^2*x[1]*x[2] - SPD[q, q]*x[1]*x[2] + m2^2*x[2]^2)^(2 - ep - la1 - la2),
+((-1)^(la1 + la2)*Gamma[-2 + ep + la1 + la2])/(Gamma[la1]*Gamma[la2]), {x[1], x[2]}}"}
 });

@@ -125,7 +125,7 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 		FCPrint[1,"FCFeynmanParametrize: Calling FCFeynmanPrepare.", FCDoControl->fcfpVerbose];
 
 		{uPoly, fPoly, pows, mat, Q, J, tensorPart, tensorRank} = FCFeynmanPrepare[ex,lmoms, FCI->True,
-			FinalSubstitutions->OptionValue[FinalSubstitutions], Names->OptionValue[Names], Indexed->OptionValue[Indexed], Reduce->OptionValue[Reduce],
+			FinalSubstitutions->optFinalSubstitutions, Names->OptionValue[Names], Indexed->OptionValue[Indexed], Reduce->OptionValue[Reduce],
 			"Euclidean" -> optEuclidean];
 
 
