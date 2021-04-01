@@ -145,7 +145,6 @@ FCMatchSolve[expr_, notvars_List/; (!OptionQ[notvars] || notvars==={}), OptionsP
 			FCPrint[0, Style["FCMatchSolve: No solutions found.", {Darker[Red,0.55], Bold}], FCDoControl->fcmsVerbose];
 			Return[{}],
 
-			FCPrint[0, Style["FCMatchSolve: A solution exists.", {Darker[Green,0.55], Bold}] , FCDoControl->fcmsVerbose];
 			If[	Length[eqSol]>1,
 				Message[FCMatchSolve::multsol],
 				eqSol = First[eqSol]
@@ -153,6 +152,11 @@ FCMatchSolve[expr_, notvars_List/; (!OptionQ[notvars] || notvars==={}), OptionsP
 		];
 
 		eqSol = Join[preSol,eqSol];
+
+		If[ !MatchQ[Last/@eqSol,{0..}],
+				FCPrint[0, Style["FCMatchSolve: A solution exists.", {Darker[Green,0.55], Bold}] , FCDoControl->fcmsVerbose],
+				FCPrint[0, Style["FCMatchSolve: Only a trivial solution exists.", {Darker[Yellow,0.55], Bold}] , FCDoControl->fcmsVerbose];
+		];
 
 		If[ optFactoring=!=False,
 			eqSol = optFactoring[eqSol]
