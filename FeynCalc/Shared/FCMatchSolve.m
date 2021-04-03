@@ -51,7 +51,8 @@ Options[FCMatchSolve] = {
 	FCVerbose	-> False,
 	Method		-> Automatic,
 	MaxIterations -> Infinity,
-	Factoring	-> Factor2
+	Factoring	-> Factor2,
+	Reduce		-> True
 };
 
 
@@ -122,7 +123,7 @@ FCMatchSolve[expr_, notvars_List/; (!OptionQ[notvars] || notvars==={}), OptionsP
 		allEqVars = (SelectFree[Variables[#], notvars] & /@ (First /@ eqSys));
 
 		nVarsToRemove = Length[eqSys] - Length[vars];
-		If[	nVarsToRemove > 0,
+		If[	nVarsToRemove > 0 && OptionValue[Reduce],
 
 			FCPrint[1, "FCMatchSolve: Seemingly overdetermined system of equations. Reducing the list of variables.", FCDoControl->fcmsVerbose];
 			varsToRemove = {};
@@ -132,7 +133,7 @@ FCMatchSolve[expr_, notvars_List/; (!OptionQ[notvars] || notvars==={}), OptionsP
 					nVarsAlreadyRemoved++;
 					varsToRemove = Join[varsToRemove, {#}]
 				]&, vars];
-			FCPrint[1, "FCMatchSolve: Following variables will be treated as free parameters: ", varsToRemove, FCDoControl->fcmsVerbose];
+			FCPrint[0, "FCMatchSolve: Following variables will be treated as free parameters: ", varsToRemove, FCDoControl->fcmsVerbose];
 			vars = SelectFree[vars, varsToRemove];
 
 		];

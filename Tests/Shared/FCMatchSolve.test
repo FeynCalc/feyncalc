@@ -78,6 +78,135 @@ a4, Log, xil, nc, tauPref, evFlag, nf},FCVerbose\[Rule]-1]",
 	nc)  - (a4*alphaE41a0*OP[E4QS])/
 8 + (a4*(alphaE51a0 + 8*alphaE61a0)*OP[E4QS])/(8*nc) - (a4*
 	alphaE61a0*gxi*OP[E4QS])/nc , {a4, OP, nc, gxi, Epsilon},
-FCVerbose -> -1]","{}"}
+FCVerbose -> -1]","{}"},
 
+{"fcstFCMatchSolve-ID6",
+"FCMatchSolve[(tauPref*(36*CMMC3^2*fcqLoop + 5*CMMC4^2*fcqLoop +
+	720*CMMC3*CMMC5*fcqLoop + 4896*CMMC5^2*fcqLoop +
+	100*CMMC4*CMMC6*fcqLoop + 680*CMMC6^2*fcqLoop +
+	36*CMMC3^2*flqLoop + 5*CMMC4^2*flqLoop +
+	720*CMMC3*CMMC5*flqLoop + 4896*CMMC5^2*flqLoop +
+	100*CMMC4*CMMC6*flqLoop + 680*CMMC6^2*flqLoop +
+	36*CMMC3^2*fsqLoop + 5*CMMC4^2*fsqLoop +
+	720*CMMC3*CMMC5*fsqLoop + 4896*CMMC5^2*fsqLoop +
+	100*CMMC4*CMMC6*fsqLoop + 680*CMMC6^2*fsqLoop - 12*F$LO -
+	15552*CMMC5^2*fcqLoop*z - 864*CMMC6^2*fcqLoop*z)*OP[Q])/
+12 - (2*a4*gxi*
+	tauPref*(36*CMMC3^2*fcqLoop + 5*CMMC4^2*fcqLoop +
+	720*CMMC3*CMMC5*fcqLoop + 4896*CMMC5^2*fcqLoop +
+	100*CMMC4*CMMC6*fcqLoop + 680*CMMC6^2*fcqLoop +
+	36*CMMC3^2*flqLoop + 5*CMMC4^2*flqLoop +
+	720*CMMC3*CMMC5*flqLoop + 4896*CMMC5^2*flqLoop +
+	100*CMMC4*CMMC6*flqLoop + 680*CMMC6^2*flqLoop +
+	36*CMMC3^2*fsqLoop + 5*CMMC4^2*fsqLoop +
+	720*CMMC3*CMMC5*fsqLoop + 4896*CMMC5^2*fsqLoop +
+	100*CMMC4*CMMC6*fsqLoop + 680*CMMC6^2*fsqLoop - 12*F$LO -
+	15552*CMMC5^2*fcqLoop*z - 864*CMMC6^2*fcqLoop*z)*(1 +
+	2*Log[mg^(-1)])*OP[Q])/
+9 + (a4*tauPref*(-68*CMMC4^2*fbqLoop + 3888*CMMC3*CMMC6*fbqLoop +
+	464*CMMC4*CMMC6*fbqLoop - 6272*CMMC6^2*fbqLoop -
+	465*CMMC4^2*fcqLoop - 15504*CMMC4*CMMC6*fcqLoop -
+	121176*CMMC6^2*fcqLoop - 465*CMMC4^2*flqLoop -
+	15504*CMMC4*CMMC6*flqLoop - 121176*CMMC6^2*flqLoop -
+	465*CMMC4^2*fsqLoop - 648*FS$LO + 3240*F$LO - 648*F$NLO +
+	10368*CMMC6^2*fsqLoop*Log[mb^(-1)] - 3888*FS$LO*Log[mb^(-1)] -
+	93312*CMMC4*CMMC5*fcqLoop*z*Log[mb^(-1)] -
+	93312*CMMC3*CMMC6*fcqLoop*z*Log[mb^(-1)] +
+	31104*CMMC4*CMMC6*fcqLoop*z*Log[mb^(-1)] +
+	311040*CMMC6^2*fcqLoop*z*Log[mb^(-1)] -
+	648*CMMC4^2*fcqLoop*Log[mg^(-1)] -
+	58752*CMMC6^2*flqLoop*Log[mg^(-1)] -
+	432*CMMC4^2*fsqLoop*Log[mg^(-1)] -
+	8640*CMMC4*CMMC6*fsqLoop*Log[mg^(-1)] -
+	58752*CMMC6^2*fsqLoop*Log[mg^(-1)] + 216*FS$LO*Log[mg^(-1)] +
+	432*F$LO*Log[mg^(-1)] -
+	5038848*CMMC5^2*fcqLoop*z*Log[mg^(-1)] -
+	6718464*CMMC5^2*fcqLoop*z*Log[z] -
+	373248*CMMC6^2*fcqLoop*z*Log[z])*OP[Q])/
+648 + ((-36*CMMC3^2*fcqLoop + 4*CMMC4^2*fcqLoop -
+	720*CMMC3*CMMC5*fcqLoop - 4896*CMMC5^2*fcqLoop +
+	80*CMMC4*CMMC6*fcqLoop + 544*CMMC6^2*fcqLoop -
+	36*CMMC3^2*flqLoop + 4*CMMC4^2*flqLoop -
+	720*CMMC3*CMMC5*flqLoop - 4896*CMMC5^2*flqLoop +
+	80*CMMC4*CMMC6*flqLoop + 544*CMMC6^2*flqLoop -
+	36*CMMC3^2*fsqLoop + 4*CMMC4^2*fsqLoop -
+	720*CMMC3*CMMC5*fsqLoop - 4896*CMMC5^2*fsqLoop +
+	80*CMMC4*CMMC6*fsqLoop + 544*CMMC6^2*fsqLoop - 6*FS$LO)*
+	tauPref*OP[QTS])/
+6 + (4*a4*(36*CMMC3^2*fcqLoop - 4*CMMC4^2*fcqLoop +
+	720*CMMC3*CMMC5*fcqLoop + 4896*CMMC5^2*fcqLoop -
+	80*CMMC4*CMMC6*fcqLoop - 544*CMMC6^2*fcqLoop +
+	36*CMMC3^2*flqLoop - 4*CMMC4^2*flqLoop +
+	720*CMMC3*CMMC5*flqLoop + 4896*CMMC5^2*flqLoop -
+	80*CMMC4*CMMC6*flqLoop - 544*CMMC6^2*flqLoop +
+	36*CMMC3^2*fsqLoop - 4*CMMC4^2*fsqLoop +
+	720*CMMC3*CMMC5*fsqLoop + 4896*CMMC5^2*fsqLoop -
+	80*CMMC4*CMMC6*fsqLoop - 544*CMMC6^2*fsqLoop + 6*FS$LO)*gxi*
+	tauPref*(1 + 2*Log[mg^(-1)])*OP[QTS])/
+9 - (a4*tauPref*(-68*CMMC4^2*fbqLoop + 3888*CMMC3*CMMC6*fbqLoop +
+	248*CMMC4*CMMC6*fbqLoop + 62208*CMMC5*CMMC6*fbqLoop -
+	9728*CMMC6^2*fbqLoop - 339*CMMC4^2*fcqLoop -
+	12660*CMMC4*CMMC6*fcqLoop - 105336*CMMC6^2*fcqLoop -
+	339*CMMC4^2*flqLoop - 12660*CMMC4*CMMC6*flqLoop -
+	105336*CMMC6^2*flqLoop - 339*CMMC4^2*fsqLoop -
+	360*CMMC4^2*fsqLoop^2 + 5904*CMMC4*CMMC6*fsqLoop^2 +
+	23040*CMMC6^2*fsqLoop^2 - 648*FS$LO + 324*FS$NLO + 648*F$LO +
+	15480*CMMC4*CMMC6*flqLoop*Log[mg^(-1)] +
+	44064*CMMC6^2*flqLoop*Log[mg^(-1)] -
+	3888*CMMC3^2*fsqLoop*Log[mg^(-1)] +
+	324*CMMC4^2*fsqLoop*Log[mg^(-1)] -
+	77760*CMMC3*CMMC5*fsqLoop*Log[mg^(-1)] -
+	2115072*CMMC5^2*fsqLoop*Log[mg^(-1)] +
+	6480*CMMC4*CMMC6*fsqLoop*Log[mg^(-1)] +
+	44064*CMMC6^2*fsqLoop*Log[mg^(-1)] - 1296*FS$LO*Log[mg^(-1)])*
+	OP[QTS])/324, {OP, Log, CMMC1, CMMC2, CMMC3, CMMC4, CMMC5, CMMC6,
+tauPref, z, a4, fbqLoop, fcqLoop, flqLoop, fsqLoop, gxi, nc},
+FCVerbose -> -1, Reduce -> False]",
+"{FS$LO -> (-2*(9*CMMC3^2 - CMMC4^2 + 180*CMMC3*CMMC5 + 1224*CMMC5^2 - 20*CMMC4*CMMC6 -
+136*CMMC6^2)*(fcqLoop + flqLoop + fsqLoop))/3, FS$NLO -> (68*CMMC4^2*fbqLoop -
+3888*CMMC3*CMMC6*fbqLoop - 248*CMMC4*CMMC6*fbqLoop - 62208*CMMC5*CMMC6*fbqLoop +
+9728*CMMC6^2*fbqLoop - 5832*CMMC3^2*fcqLoop + 501*CMMC4^2*fcqLoop -
+116640*CMMC3*CMMC5*fcqLoop - 793152*CMMC5^2*fcqLoop + 15900*CMMC4*CMMC6*fcqLoop +
+	127368*CMMC6^2*fcqLoop - 5832*CMMC3^2*flqLoop + 501*CMMC4^2*flqLoop -
+	116640*CMMC3*CMMC5*flqLoop - 793152*CMMC5^2*flqLoop + 15900*CMMC4*CMMC6*flqLoop +
+	127368*CMMC6^2*flqLoop - 5832*CMMC3^2*fsqLoop + 501*CMMC4^2*fsqLoop -
+	116640*CMMC3*CMMC5*fsqLoop - 793152*CMMC5^2*fsqLoop + 3240*CMMC4*CMMC6*fsqLoop +
+	22032*CMMC6^2*fsqLoop + 360*CMMC4^2*fsqLoop^2 - 5904*CMMC4*CMMC6*fsqLoop^2 -
+	23040*CMMC6^2*fsqLoop^2 +
+	839808*CMMC5^2*fcqLoop*z + 46656*CMMC6^2*fcqLoop*z - 7776*CMMC3^2*fcqLoop*Log[mg^(-1)] +
+	864*CMMC4^2*fcqLoop*Log[mg^(-1)] - 155520*CMMC3*CMMC5*fcqLoop*Log[mg^(-1)] -
+	1057536*CMMC5^2*fcqLoop*Log[mg^(-1)] + 17280*CMMC4*CMMC6*fcqLoop*Log[mg^(-1)] +
+	117504*CMMC6^2*fcqLoop*Log[mg^(-1)] - 7776*CMMC3^2*flqLoop*Log[mg^(-1)] +
+	864*CMMC4^2*flqLoop*Log[mg^(-1)] - 155520*CMMC3*CMMC5*flqLoop*Log[mg^(-1)] -
+	1057536*CMMC5^2*flqLoop*Log[mg^(-1)] + 1800*CMMC4*CMMC6*flqLoop*Log[mg^(-1)] +
+	73440*CMMC6^2*flqLoop*Log[mg^(-1)] - 3888*CMMC3^2*fsqLoop*Log[mg^(-1)] +
+	540*CMMC4^2*fsqLoop*Log[mg^(-1)] - 77760*CMMC3*CMMC5*fsqLoop*Log[mg^(-1)] +
+	1057536*CMMC5^2*fsqLoop*Log[mg^(-1)] + 10800*CMMC4*CMMC6*fsqLoop*Log[mg^(-1)] + 73440*CMMC6^2*fsqLoop*Log[mg^(-1)])/324,
+F$LO -> (36*CMMC3^2*fcqLoop + 5*CMMC4^2*fcqLoop + 720*CMMC3*CMMC5*fcqLoop +
+4896*CMMC5^2*fcqLoop + 100*CMMC4*CMMC6*fcqLoop + 680*CMMC6^2*fcqLoop + 36*CMMC3^2*flqLoop +
+5*CMMC4^2*flqLoop + 720*CMMC3*CMMC5*flqLoop + 4896*CMMC5^2*flqLoop + 100*CMMC4*CMMC6*flqLoop +
+680*CMMC6^2*flqLoop + 36*CMMC3^2*fsqLoop + 5*CMMC4^2*fsqLoop + 720*CMMC3*CMMC5*fsqLoop +
+4896*CMMC5^2*fsqLoop + 100*CMMC4*CMMC6*fsqLoop +
+	680*CMMC6^2*fsqLoop - 15552*CMMC5^2*fcqLoop*z - 864*CMMC6^2*fcqLoop*z)/12,
+	F$NLO -> (-68*CMMC4^2*fbqLoop + 3888*CMMC3*CMMC6*fbqLoop + 464*CMMC4*CMMC6*fbqLoop -
+	6272*CMMC6^2*fbqLoop + 13608*CMMC3^2*fcqLoop + 453*CMMC4^2*fcqLoop + 272160*CMMC3*CMMC5*fcqLoop +
+	1850688*CMMC5^2*fcqLoop + 2856*CMMC4*CMMC6*fcqLoop + 3672*CMMC6^2*fcqLoop +
+	13608*CMMC3^2*flqLoop + 453*CMMC4^2*flqLoop + 272160*CMMC3*CMMC5*flqLoop +
+	1850688*CMMC5^2*flqLoop + 2856*CMMC4*CMMC6*flqLoop + 3672*CMMC6^2*flqLoop +
+	13608*CMMC3^2*fsqLoop + 453*CMMC4^2*fsqLoop + 272160*CMMC3*CMMC5*fsqLoop + 1850688*CMMC5^2*fsqLoop +
+	18360*CMMC4*CMMC6*fsqLoop + 124848*CMMC6^2*fsqLoop - 4199040*CMMC5^2*fcqLoop*z - 233280*CMMC6^2*fcqLoop*z +
+	23328*CMMC3^2*fcqLoop*Log[mb^(-1)] - 2592*CMMC4^2*fcqLoop*Log[mb^(-1)] + 466560*CMMC3*CMMC5*fcqLoop*Log[mb^(-1)] +
+	3172608*CMMC5^2*fcqLoop*Log[mb^(-1)] - 51840*CMMC4*CMMC6*fcqLoop*Log[mb^(-1)] -
+	352512*CMMC6^2*fcqLoop*Log[mb^(-1)] + 23328*CMMC3^2*flqLoop*Log[mb^(-1)] - 2592*CMMC4^2*flqLoop*Log[mb^(-1)] +
+	466560*CMMC3*CMMC5*flqLoop*Log[mb^(-1)] + 3172608*CMMC5^2*flqLoop*Log[mb^(-1)] -
+	51840*CMMC4*CMMC6*flqLoop*Log[mb^(-1)] - 352512*CMMC6^2*flqLoop*Log[mb^(-1)] + 23328*CMMC3^2*fsqLoop*Log[mb^(-1)] -
+	2592*CMMC4^2*fsqLoop*Log[mb^(-1)] + 466560*CMMC3*CMMC5*fsqLoop*Log[mb^(-1)] +
+	3172608*CMMC5^2*fsqLoop*Log[mb^(-1)] - 51840*CMMC4*CMMC6*fsqLoop*Log[mb^(-1)] - 342144*CMMC6^2*fsqLoop*Log[mb^(-1)] -
+	93312*CMMC4*CMMC5*fcqLoop*z*Log[mb^(-1)] - 93312*CMMC3*CMMC6*fcqLoop*z*Log[mb^(-1)] +
+	31104*CMMC4*CMMC6*fcqLoop*z*Log[mb^(-1)] + 311040*CMMC6^2*fcqLoop*z*Log[mb^(-1)] - 324*CMMC4^2*fcqLoop*Log[mg^(-1)] +
+	6480*CMMC4*CMMC6*fcqLoop*Log[mg^(-1)] + 44064*CMMC6^2*fcqLoop*Log[mg^(-1)] +
+	324*CMMC4^2*flqLoop*Log[mg^(-1)] + 6480*CMMC4*CMMC6*flqLoop*Log[mg^(-1)] - 14688*CMMC6^2*flqLoop*Log[mg^(-1)] -
+	108*CMMC4^2*fsqLoop*Log[mg^(-1)] - 2160*CMMC4*CMMC6*fsqLoop*Log[mg^(-1)] -
+	14688*CMMC6^2*fsqLoop*Log[mg^(-1)] - 5598720*CMMC5^2*fcqLoop*z*Log[mg^(-1)] - 31104*CMMC6^2*fcqLoop*z*Log[mg^(-1)] -
+	6718464*CMMC5^2*fcqLoop*z*Log[z] - 373248*CMMC6^2*fcqLoop*z*Log[z])/648}"}
 })
