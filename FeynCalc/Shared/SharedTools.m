@@ -608,9 +608,23 @@ FCPatternFreeQ[expr_List ,objs_List]:=
 FCProgressBar[text_String, i_Integer, tot_Integer] :=
 	FCPrint[0, text <> ToString[i] <> " / " <> ToString[tot] <> "\n", UseWriteString -> True];
 
+FCReloadFunctionFromFile[fun_] :=
+	FCReloadFunctionFromFile[fun,"AUTOMATIC"];
 
-FCReloadFunctionFromFile[fun_, file_String] :=
-	Block[{names, names1, names2, str1, str2},
+FCReloadFunctionFromFile[fun_, fileRaw_String] :=
+	Block[{names, names1, names2, str1, str2, file},
+
+	If[	fileRaw==="AUTOMATIC",
+		file = FileNames[ToString[fun]<>".m", FileNameJoin[{$FeynCalcDirectory, #}] & /@ {
+			"Dirac", "ExportImport", "Feynman", "LoopIntegrals", "Lorentz",
+			"NonCommAlgebra", "Pauli", "QCD", "Shared", "SUN", "Tables"}, Infinity];
+		If[	Length[file]=!=1,
+			Message[FCReloadFunctionFromFile::failmsg, "Failed to determine the file containing the code of this function."];
+			Abort[],
+			file = file[[1]]
+		],
+		file = fileRaw
+	];
 
 	If[! TrueQ[FileExistsQ[file]],
 			Message[FCReloadFunctionFromFile::failmsg, "The file " <> file <> " does not exist."];
