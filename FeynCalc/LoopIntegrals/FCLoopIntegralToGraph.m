@@ -51,18 +51,18 @@ Options[FCLoopIntegralToGraph] = {
 	FCI 				-> False,
 	FCProductSplit		-> True,
 	FCVerbose 			-> False,
-	Factoring			-> Auto,
+	Factoring			-> Automatic,
+	Momentum			-> Automatic,
 	Select				-> 1,
 	VertexDegree		-> 6
 };
 
-(*TODO Ignore scalar products*)
 (*Except: List of propagators to ignore, GFAD, EEC*)
 FCLoopIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 	Block[{	ex, props, allmoms, extmoms, lmoms, lineMomenta, intEdgesList,
 			extEdgesList, numExtMoms,	numEdges, optFactoring,	auxExtEdgesList,
 			numIntVertices, numExtVertices, auxExternalMoms, numVertices,
-			res, aux, dots, optAuxiliaryMomenta, time, pref=1, massTerms},
+			res, aux, dots, optAuxiliaryMomenta, time, pref=1, massTerms, optMomentum},
 
 		If [OptionValue[FCVerbose]===False,
 			lbtgVerbose=$VeryVerbose,
@@ -75,6 +75,7 @@ FCLoopIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 		optFactoring 		= OptionValue[Factoring];
 		optSelect 			= OptionValue[Select];
 		optAuxiliaryMomenta = OptionValue[AuxiliaryMomenta];
+		optMomentum			= OptionValue[Momentum];
 
 		If[OptionValue[FCI],
 			ex = expr,
@@ -116,11 +117,11 @@ FCLoopIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 		*)
 		lmoms = Intersection[allmoms,lmomsRaw];
 
-		(*	All momenta that are not listed as loop or auxiliary momenta will be treated as external momenta.*)
-		extmoms = SelectFree[Complement[allmoms, lmoms], optAuxiliaryMomenta];
-
-
-
+		If[	optMomentum === Automatic,
+			(*	All momenta that are not listed as loop or auxiliary momenta will be treated as external momenta.*)
+			extmoms = SelectFree[Complement[allmoms, lmoms], optAuxiliaryMomenta],
+			extmoms = optMomentum
+		];
 
 
 
@@ -216,7 +217,7 @@ FCLoopIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 				factorizingIntegral = optFactoring;
 				res = reconstructAllVertices[intEdgesList,extEdgesList,auxExtEdgesList,numIntVertices,numExtVertices],
 
-			optFactoring === Auto,
+			optFactoring === Automatic,
 				factorizingIntegral = False;
 				res = reconstructAllVertices[intEdgesList,extEdgesList,auxExtEdgesList,numIntVertices,numExtVertices];
 				If[	res===False,
