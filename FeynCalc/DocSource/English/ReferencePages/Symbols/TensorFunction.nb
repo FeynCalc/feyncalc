@@ -32,7 +32,7 @@ Cell["FeynCalc`", "Categorization",
  CellLabel->"Context",
  CellID->468444828],
 
-Cell["FeynCalc/ref/Tensorfunction", "Categorization",
+Cell["FeynCalc/ref/TensorFunction", "Categorization",
  CellLabel->"URI"]
 }, Open  ]],
 
@@ -111,20 +111,20 @@ Cell["XXXX", "Details",
 
 Cell[CellGroupData[{
 
-Cell["Tensorfunction", "ObjectName",
+Cell["TensorFunction", "ObjectName",
  CellID->1224892054],
 
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{"Tensorfunction", "[", 
+  RowBox[{"TensorFunction", "[", 
    RowBox[{"t", ",", " ", "mu", ",", " ", "nu", ",", " ", "..."}], "]"}]], 
   "InlineFormula"],
  " \[LineSeparator]",
  "transform into t[LorentzIndex[mu], LorentzIndex[nu], ...], i.e., it can be \
 used as an unspecified tensoriell function t. A symmetric tensor can be \
-obtained by Tensorfunction[{t, \"S\"}, mu, nu, ...], and an antisymmteric one \
-by Tensorfunction[{t, \"A\"}, mu, nu, ...]."
+obtained by TensorFunction[{t, \"S\"}, mu, nu, ...], and an antisymmteric one \
+by TensorFunction[{t, \"A\"}, mu, nu, ...]."
 }], "Usage",
  CellID->982511436],
 

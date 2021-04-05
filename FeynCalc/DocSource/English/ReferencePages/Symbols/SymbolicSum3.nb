@@ -32,7 +32,7 @@ Cell["FeynCalc`", "Categorization",
  CellLabel->"Context",
  CellID->468444828],
 
-Cell["FeynCalc/ref/SymbolicSymbolicSum3", "Categorization",
+Cell["FeynCalc/ref/SymbolicSum3", "Categorization",
  CellLabel->"URI"]
 }, Open  ]],
 
@@ -111,12 +111,12 @@ Cell["XXXX", "Details",
 
 Cell[CellGroupData[{
 
-Cell["SymbolicSymbolicSum3", "ObjectName",
+Cell["SymbolicSum3", "ObjectName",
  CellID->1224892054],
 
 Cell[TextData[{
  Cell["   ", "ModInfo"],
- Cell[BoxData["SymbolicSymbolicSum3"], "InlineFormula"],
+ Cell[BoxData["SymbolicSum3"], "InlineFormula"],
  " \[LineSeparator]",
  "is similar to SymbolicSum (Algegra`SymbolicSum`SymbolicSum was a function \
 to do symbolic summation. It was obsolete from version 3 - all functionality \

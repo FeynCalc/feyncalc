@@ -51,7 +51,7 @@ Cell["FeynCalc`", "Categorization",
  CellLabel->"Context",
  CellID->468444828],
 
-Cell["FeynCalc/ref/UndeclareAllAntiCommutator", "Categorization",
+Cell["FeynCalc/ref/UnDeclareAllAntiCommutators", "Categorization",
  CellLabel->"URI"]
 }, Closed]],
 
@@ -130,13 +130,13 @@ Cell["XXXX", "Details",
 
 Cell[CellGroupData[{
 
-Cell["UndeclareAllAntiCommutator", "ObjectName",
+Cell["UnDeclareAllAntiCommutators", "ObjectName",
  CellID->1224892054],
 
 Cell[TextData[{
  Cell["   ", "ModInfo"],
  Cell[BoxData[
-  RowBox[{"UndeclareAllAntiCommutator", "[", "]"}]], "InlineFormula"],
+  RowBox[{"UnDeclareAllAntiCommutators", "[", "]"}]], "InlineFormula"],
  " \[LineSeparator]",
  "undeclares all user-defined anticommutators."
 }], "Usage",
