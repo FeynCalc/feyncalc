@@ -22,7 +22,13 @@ scalar multi-loop integral int.  The function \
 returns {fpInt,pref,vars}, where fpInt is the integrand without the prefactor, \
 pref is the prefactor free of Feynman parameters and vars is the list of integration \
 variables. The overall Dirac delta in the integrand is omitted unless the option \
-DiracDelta is set to True.";
+DiracDelta is set to True.\n
+By default FCFeynmanParametrize uses normalization that is common in multiloop calculations. \
+If you want to have the standard 1/(2*Pi)^D normalization or yet another value, please set the \
+option FeynmanIntegralPrefactor accordingly.\n
+To calculate D-dimensional Euclidean integrals (as opposed to D-1 dimensional Cartesian \
+ones or D-dimensional Minkowski integrals) written in terms of FVD, SPD, FAD, SFAD etc., \
+you need to set the option \"Euclidean\" to True.";
 
 FCFeynmanParametrize::failmsg =
 "Error! FCFeynmanParametrize has encountered a fatal problem and must abort the computation. \
