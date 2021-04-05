@@ -70,7 +70,7 @@ Options[FCFeynmanParametrize] = {
 FCFeynmanParametrize[expr_, lmoms_List /; ! OptionQ[lmoms], opts:OptionsPattern[]]:=
 	FCFeynmanParametrize[expr, 1, lmoms, opts];
 
-
+(**)
 FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ[lmoms], OptionsPattern[]] :=
 	Block[{	res, optFinalSubstitutions, dim, uPoly, fPoly, pows, mat, powsT, propPowers,
 			propPowersHat, propPowersTilde, ppSymbols, ppSymbolsRule,
@@ -223,7 +223,7 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 					Abort[]
 				],
 
-				pref = optFeynmanIntegralPrefactor*inverseMeasure
+				pref = optFeynmanIntegralPrefactor*inverseMeasure*pref
 		];
 
 

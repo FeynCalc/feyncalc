@@ -208,5 +208,45 @@ FinalSubstitutions -> {SPD[p1] -> 0, SPD[p2] -> 0},
 FCReplaceD -> {D -> 4 - 2 ep}, FCE -> True]",
 "{x[1]^(-1 + la1)*(-x[1] - x[2])^(-4 + 2*ep + la1 + la2)*x[2]^(-1 + la2)*(m1^2*x[1]^2 +
 m1^2*x[1]*x[2] + m2^2*x[1]*x[2] - SPD[q, q]*x[1]*x[2] + m2^2*x[2]^2)^(2 - ep - la1 - la2),
-((-1)^(la1 + la2)*Gamma[-2 + ep + la1 + la2])/(Gamma[la1]*Gamma[la2]), {x[1], x[2]}}"}
+((-1)^(la1 + la2)*Gamma[-2 + ep + la1 + la2])/(Gamma[la1]*Gamma[la2]), {x[1], x[2]}}"},
+{"fcstFCFeynmanParametrize-ID33",
+"FCFeynmanParametrize[GFAD[{SPD[k]+2 SPD[p,k]+M^2,s}],{k},Names\
+\[Rule]x,Simplify\[Rule]True,FCE\[Rule]True,FeynmanIntegralPrefactor\
+\[Rule]I,\"Euclidean\"\[Rule]True,FCReplaceD\[Rule]{D\[Rule]n}]",
+"{1, (I*Pi^(n/2)*Gamma[-1/2*n + s]*(M^2 - SPD[p, p])^(n/2 - \
+s))/Gamma[s], {}}"},
+{"fcstFCFeynmanParametrize-ID34",
+"FCFeynmanParametrize[GFAD[{SPD[k]+2 SPD[p,k]-M^2,s}],{k},Names\
+\[Rule]x,Simplify\[Rule]True,FCE\[Rule]True,FeynmanIntegralPrefactor\
+\[Rule]1,FCReplaceD\[Rule]{D\[Rule]n}]",
+"{1, (I*(-1)^s*Pi^(n/2)*Gamma[-1/2*n + s]*(M^2 + SPD[p, p])^(n/2 - \
+s))/Gamma[s], {}}"},
+{"fcstFCFeynmanParametrize-ID35",
+"FCFeynmanParametrize[FVD[k,i]GFAD[{SPD[k]+2 \
+SPD[p,k]+M^2,s}],{k},Names\[Rule]x,Simplify\[Rule]True,FCE\[Rule]True,\
+FeynmanIntegralPrefactor\[Rule]I,\"Euclidean\"\[Rule]True,FCReplaceD\
+\[Rule]{D\[Rule]n}]",
+"{1, ((-I)*Pi^(n/2)*FVD[p, i]*Gamma[-1/2*n + s]*(M^2 - SPD[p, \
+p])^(n/2 - s))/Gamma[s], {}}"},
+{"fcstFCFeynmanParametrize-ID36",
+"FCFeynmanParametrize[FVD[k,i]FVD[k,j]GFAD[{SPD[k]+2 \
+SPD[p,k]+M^2,s}],{k},Names\[Rule]x,Simplify\[Rule]True,FCE\[Rule]True,\
+FeynmanIntegralPrefactor\[Rule]I,\"Euclidean\"\[Rule]True,FCReplaceD\
+\[Rule]{D\[Rule]n}]",
+"{1, (I*Pi^(n/2)*(FVD[p, i]*FVD[p, j]*Gamma[-1/2*n + s] + \
+(Gamma[-1 - n/2 + s]*MTD[i, j]*(M^2 - SPD[p, p]))/2)*(M^2 - SPD[p, \
+p])^(n/2 - s))/Gamma[s], {}}"},
+{"fcstFCFeynmanParametrize-ID37",
+"FCFeynmanParametrize[FVD[k,i]GFAD[{SPD[k]+2 \
+SPD[p,k]-M^2,s}],{k},Names\[Rule]x,Simplify\[Rule]True,FCE\[Rule]True,\
+FeynmanIntegralPrefactor\[Rule]1,FCReplaceD\[Rule]{D\[Rule]n}]",
+"{1, ((-I)*(-1)^s*Pi^(n/2)*FVD[p, i]*Gamma[-1/2*n + s]*(M^2 + \
+SPD[p, p])^(n/2 - s))/Gamma[s], {}}"},
+{"fcstFCFeynmanParametrize-ID38",
+"FCFeynmanParametrize[FVD[k,i]FVD[k,j]GFAD[{SPD[k]+2 \
+SPD[p,k]-M^2,s}],{k},Names\[Rule]x,Simplify\[Rule]True,FCE\[Rule]True,\
+FeynmanIntegralPrefactor\[Rule]1,FCReplaceD\[Rule]{D\[Rule]n}]",
+"{1, (I*(-1)^s*Pi^(n/2)*(M^2 + SPD[p, p])^(n/2 - s)*(FVD[p, \
+i]*FVD[p, j]*Gamma[-1/2*n + s] - (Gamma[-1 - n/2 + s]*MTD[i, j]*(M^2 \
++ SPD[p, p]))/2))/Gamma[s], {}}"}
 });
