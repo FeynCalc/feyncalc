@@ -430,7 +430,7 @@ $OPEWard			= False;
 
 (*	Mathematica versions 8 and 9 do not have the $SystemMemory variable,
 	so for them we set the available memory for memoization to 4 GiB*)
-If[	!MatchQ[OptionValue[FCMemoryAvailable],_Integer?Positive],
+If[	!MatchQ[$FCMemoryAvailable,_Integer?Positive],
 	$FCMemoryAvailable=4096
 ];
 

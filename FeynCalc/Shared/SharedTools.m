@@ -318,7 +318,7 @@ Options[ILimit] = {
 };
 
 Options[MemSet] = {
-	FCMemoryAvailable -> $FCMemoryAvailable
+	FCMemoryAvailable :> $FCMemoryAvailable
 };
 
 Options[MLimit] = {
