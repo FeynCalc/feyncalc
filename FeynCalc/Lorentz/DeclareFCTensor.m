@@ -27,10 +27,10 @@ tensor heads, i.e., DataType[a,b, ...,  FCTensor] is set to False.";
 
 (* ------------------------------------------------------------------------ *)
 
-Begin["`Package`"]
+Begin["`Package`"];
 End[]
 
-Begin["`DeclareFCTensor`Private`"]
+Begin["`DeclareFCTensor`Private`"];
 
 DeclareFCTensor[] :=
 	(Message[DeclareFCTensor::argrx, DeclareFCTensor, 0, "1 or more"];

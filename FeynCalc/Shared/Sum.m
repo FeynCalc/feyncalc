@@ -27,7 +27,8 @@ For purely integer arguments SumT is evaluated.";
 
 (* ------------------------------------------------------------------------ *)
 
-Begin["`Package`"]
+Begin["`Package`"];
+
 End[]
 
 Begin["`Sum`Private`"];

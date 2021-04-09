@@ -296,7 +296,7 @@ VirtualBoson::usage =
 If set to True, FeynCalc will not complain when you apply the gauge \
 trick (i.e. replace the polarization sum by - MT[mu,nu]) for a particle \
 that is not massless. This is usueful when computing processes \
-that involve a virtual photon as an external state."
+that involve a virtual photon as an external state.";
 
 West::usage =
 "West is an option for DiracTrace and several other functions that deal \
@@ -321,11 +321,11 @@ Twist2QuarkOperator.";
 
 (* ------------------------------------------------------------------------ *)
 
-Begin["`Package`"]
+Begin["`Package`"];
 
 End[]
 
-Begin["`CoreOptions`Private`"]
+Begin["`CoreOptions`Private`"];
 
 FCPrint[1,"SharedOptions.m loaded."];
 End[]

@@ -23,10 +23,10 @@ sometimes better than Solve for systems involving rational polynomials.";
 
 (* ------------------------------------------------------------------------ *)
 
-Begin["`Package`"]
+Begin["`Package`"];
 End[]
 
-Begin["`Solve`Private`"]
+Begin["`Solve`Private`"];
 
 sol3Verbose::usage="";
 

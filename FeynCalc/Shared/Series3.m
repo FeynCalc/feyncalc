@@ -24,10 +24,10 @@ Series3[f, e, n] is equivalent to Series3[f, {e, 0, n}].";
 
 (* ------------------------------------------------------------------------ *)
 
-Begin["`Package`"]
+Begin["`Package`"];
 End[]
 
-Begin["`Private`"]
+Begin["`Private`"];
 
 Options[Series3] = {
 	Factoring 			-> True,

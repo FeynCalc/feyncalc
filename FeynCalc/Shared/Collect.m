@@ -44,14 +44,14 @@ will be left unchanged.";
 
 Collect2::failmsg =
 "Error! Collect2 has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 
-Begin["`Package`"]
+Begin["`Package`"];
 End[]
 
-Begin["`Collect`Private`"]
+Begin["`Collect`Private`"];
 
 cl2Verbose::usage="";
 

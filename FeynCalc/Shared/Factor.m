@@ -31,10 +31,10 @@ If set to False, products like \
 
 (* ------------------------------------------------------------------------ *)
 
-Begin["`Package`"]
+Begin["`Package`"];
 End[]
 
-Begin["`Factor`Private`"]
+Begin["`Factor`Private`"];
 
 Options[Factor2] = {
 	FactorFull	-> False,

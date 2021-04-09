@@ -21,10 +21,10 @@ after applying FeynCalcForm. In order to change to the normal \
 
 (* ------------------------------------------------------------------------ *)
 
-Begin["`Package`"]
+Begin["`Package`"];
 End[]
 
-Begin["`FeynCalcForm`Private`"]
+Begin["`FeynCalcForm`Private`"];
 
 fcdot2::usage="";
 hold::usage="";

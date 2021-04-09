@@ -95,13 +95,11 @@ argument can be 0. Evaluation aborted!";
 
 
 (* ------------------------------------------------------------------------ *)
-Begin["`Package`"]
-
-
+Begin["`Package`"];
 
 End[]
 
-Begin["`LegacyObjects`Private`"]
+Begin["`LegacyObjects`Private`"];
 
 DeclareNonCommutative[ChiralityProjector];
 DeclareNonCommutative[DiracSpinor];

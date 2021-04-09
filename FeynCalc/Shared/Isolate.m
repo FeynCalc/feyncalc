@@ -60,11 +60,11 @@ Isolate[a+b+c+d,a] otherwise remains unabbreviated, with \
 Isolate[a+b+c+d,a,IsolatePlus->True] you will obtain \
 HoldForm[KK[xyz]]+a.";
 
-Begin["`Package`"]
+Begin["`Package`"];
 End[]
 (* ------------------------------------------------------------------------ *)
 
-Begin["`Isolate`Private`"]
+Begin["`Isolate`Private`"];
 
 Options[Isolate] = {
 	IsolateFast		-> False,

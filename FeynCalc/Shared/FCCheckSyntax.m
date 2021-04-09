@@ -31,14 +31,14 @@ which is why this option is set to False by default.";
 
 FCCheckSyntax::failmsg =
 "Error! FCCheckSyntax has found an inconsistency in your input expression \
-and must abort the evaluation. The problem reads: `1` `2`"
+and must abort the evaluation. The problem reads: `1` `2`";
 
 (* ------------------------------------------------------------------------ *)
 
-Begin["`Package`"]
+Begin["`Package`"];
 End[]
 
-Begin["`FCCheckSyntax`Private`"]
+Begin["`FCCheckSyntax`Private`"];
 
 indexHeads = {LorentzIndex, CartesianIndex, SUNIndex, SUNFIndex};
 nonCommHeads = {DiracGamma, PauliSigma, SUNT};

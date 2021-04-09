@@ -26,10 +26,10 @@ by the option FinalSubstitutions.";
 
 (* ------------------------------------------------------------------------ *)
 
-Begin["`Package`"]
+Begin["`Package`"];
 End[]
 
-Begin["`FeynCalcInternal`Private`"]
+Begin["`FeynCalcInternal`Private`"];
 
 sfadim::usage="";
 cfadim::usage="";

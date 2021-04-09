@@ -185,7 +185,7 @@ CartesianPropagatorDenominator etc. ";
 
 FeynAmpList::usage =
 "FeynAmpList[info][FeynAmp[...], FeynAmp[...], ...] is a head of a list of \
-Feynman amplitudes."
+Feynman amplitudes.";
 
 FV::usage =
 "FV[p,mu] is a 4-vector and is transformed into \
@@ -205,7 +205,7 @@ FCGV::usage =
 "FCGV[x] displays typesetting for the string x, provided that \
 the option SilentTypeSetting is set to True. Use the rule \
 {FCGV[s_] :> ToExpression[s]} if you want to convert the string x \
-to a symbol with the name x."
+to a symbol with the name x.";
 
 SilentTypeSetting::usage =
 "";
@@ -336,7 +336,7 @@ MTE::usage =
 "MTE[mu, nu] is the metric tensor in D-4 dimensions.";
 
 Nf::usage =
-"Nf denotes the number of flavors."
+"Nf denotes the number of flavors.";
 
 Pair::usage =
 "Pair[a , b] is a special pairing used in the internal \
@@ -555,7 +555,7 @@ indices a and b in the fundamental representation.";
 
 SUNF::usage =
 "SUNF[a, b, c] are the structure constants of SU(N). \
-SUNF[a, b, c, d] is a shorthand notation for SUNF[a,b,i] SUNF[i,c,d]."
+SUNF[a, b, c, d] is a shorthand notation for SUNF[a,b,i] SUNF[i,c,d].";
 
 SUNIndex::usage =
 "SUNIndex[a] is an SU(N) index in the adjoint representation. \
@@ -570,11 +570,11 @@ SUNN::usage =
 
 SUNT::usage =
 "SUNT[a] is the SU(N) T^a generator in the fundamental representation. \
-The fundamental indices are implicit."
+The fundamental indices are implicit.";
 
 SUNTF::usage =
 "SUNTF[{a},i,j] is the SU(N) T^a_ij generator in the fundamental representation. \
-The fundamental indices i and j are explicit."
+The fundamental indices i and j are explicit.";
 
 Tf::usage =
 "Tf is a group constant (sometimes called TR, as in eq. (2.5.133) in T. Muta, \
@@ -592,23 +592,23 @@ $TypesettingDim4::usage =
 "The string value of $TypesettingDim4 determines which symbols will be displayed \
 above 4-dimensional momenta, Dirac matrices, metric tensors and polarization vectors. \
 This is concerns only typesetting in the TraditionalForm output and doesn't change \
-the physical behavior of those objects."
+the physical behavior of those objects.";
 
 $TypesettingDimE::usage =
 "The string value of $TypesettingDimE determines which symbols will be displayed \
 above D-4-dimensional momenta, Dirac matrices, metric tensors and polarization vectors. \
 This is concerns only typesetting in the TraditionalForm output and doesn't change \
-the physical behavior of those objects."
+the physical behavior of those objects.";
 
 $TypesettingDimD::usage =
 "The string value of $TypesettingDimD determines which symbols will be displayed \
 above D-dimensional momenta, Dirac matrices, metric tensors and polarization vectors. \
 This is concerns only typesetting in the TraditionalForm output and doesn't change \
-the physical behavior of those objects."
+the physical behavior of those objects.";
 
 TypesettingExplicitLorentzIndex::usage =
 "TypesettingExplicitLorentzIndex determines the TraditionalForm typesetting of \
-explicit Lorentz indices."
+explicit Lorentz indices.";
 
 Zeta2::usage =
 "Zeta2 denotes Zeta[2]. For convenience every Pi^2 occuring in \
@@ -679,7 +679,7 @@ TemporalPair::invalid =
 
 SharedObjects::failmsg =
 "Error! FeynCalc has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 (*							New NR objects									*)
@@ -893,7 +893,7 @@ PauliChain[PauliXi[I],PauliIndex[i]] stands for the i-th \
 component of  PauliXi[I]";
 
 (* ------------------------------------------------------------------------ *)
-Begin["`Package`"]
+Begin["`Package`"];
 
 initialPairDownValues;
 initialCartesianPairDownValues;
@@ -922,7 +922,7 @@ TrFeynCalcObjects;
 
 End[]
 
-Begin["`SharedObjects`Private`"]
+Begin["`SharedObjects`Private`"];
 
 DeclareNonCommutative[DiracGamma];
 DeclareNonCommutative[DiracSigma];
@@ -1079,27 +1079,27 @@ NRStuff={
 
 CSP/:
 	Set[CSP[a_, b_] , c_]:=
-		(CartesianScalarProduct[a,b,Dimension->3,SetDimensions->{3}]=c)
+		(CartesianScalarProduct[a,b,Dimension->3,SetDimensions->{3}]=c);
 
 CSP/:
 	Set[CSP[a_] , c_]:=
-		(CartesianScalarProduct[a,a,Dimension->3,SetDimensions->{3}]=c)
+		(CartesianScalarProduct[a,a,Dimension->3,SetDimensions->{3}]=c);
 
 CSPD/:
 	Set[CSPD[a_, b_] , c_]:=
-		(CartesianScalarProduct[a,b,Dimension->D-1,SetDimensions->{D-1}]=c)
+		(CartesianScalarProduct[a,b,Dimension->D-1,SetDimensions->{D-1}]=c);
 
 CSPD/:
 	Set[CSPD[a_] , c_]:=
-		(CartesianScalarProduct[a,a,Dimension->D-1,SetDimensions->{D-1}]=c)
+		(CartesianScalarProduct[a,a,Dimension->D-1,SetDimensions->{D-1}]=c);
 
 CSPE/:
 	Set[CSPE[a_, b_] , c_]:=
-		(CartesianScalarProduct[a,b,Dimension->D-4,SetDimensions->{D-4}]=c)
+		(CartesianScalarProduct[a,b,Dimension->D-4,SetDimensions->{D-4}]=c);
 
 CSPE/:
 	Set[CSPE[a_] , c_]:=
-		(CartesianScalarProduct[a,a,Dimension->D-4,SetDimensions->{D-4}]=c)
+		(CartesianScalarProduct[a,a,Dimension->D-4,SetDimensions->{D-4}]=c);
 
 CSP[0,_]:=
 	0;
@@ -1946,27 +1946,27 @@ SmallVariable[x_^pow_] :=
 
 SP/:
 	Set[SP[a_, b_] , c_]:=
-		(ScalarProduct[a,b,Dimension->4,SetDimensions->{4}]=c)
+		(ScalarProduct[a,b,Dimension->4,SetDimensions->{4}]=c);
 
 SP/:
 	Set[SP[a_] , c_]:=
-		(ScalarProduct[a,a,Dimension->4,SetDimensions->{4}]=c)
+		(ScalarProduct[a,a,Dimension->4,SetDimensions->{4}]=c);
 
 SPD/:
 	Set[SPD[a_, b_] , c_]:=
-		(ScalarProduct[a,b,Dimension->D,SetDimensions->{D}]=c)
+		(ScalarProduct[a,b,Dimension->D,SetDimensions->{D}]=c);
 
 SPD/:
 	Set[SPD[a_] , c_]:=
-		(ScalarProduct[a,a,Dimension->D,SetDimensions->{D}]=c)
+		(ScalarProduct[a,a,Dimension->D,SetDimensions->{D}]=c);
 
 SPE/:
 	Set[SPE[a_, b_] , c_]:=
-		(ScalarProduct[a,b,Dimension->D-4,SetDimensions->{D-4}]=c)
+		(ScalarProduct[a,b,Dimension->D-4,SetDimensions->{D-4}]=c);
 
 SPE/:
 	Set[SPE[a_] , c_]:=
-		(ScalarProduct[a,a,Dimension->D-4,SetDimensions->{D-4}]=c)
+		(ScalarProduct[a,a,Dimension->D-4,SetDimensions->{D-4}]=c);
 
 SP[0,_]:=
 	0;

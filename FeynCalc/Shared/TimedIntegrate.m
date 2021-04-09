@@ -18,10 +18,11 @@ and are passed on.";
 
 (* ------------------------------------------------------------------------ *)
 
-Begin["`Package`"]
+Begin["`Package`"];
+
 End[]
 
-Begin["`TimedIntegrate`Private`"]
+Begin["`TimedIntegrate`Private`"];
 
 TimedIntegrate::"time" =
 		"Time constraint `1` exceeded.";

@@ -68,7 +68,7 @@ version.";
 $FCCloudTraditionalForm::usage=
 "$FCCloudTraditionalForm determines whether the cell output will be done \
 in TraditionalForm when FeynCalc is run in Wolfram Cloud. This is done by setting \
-$Post=TraditionalForm. The default value of $FCCloudTraditionalForm is True."
+$Post=TraditionalForm. The default value of $FCCloudTraditionalForm is True.";
 
 $FCTraditionalFormOutput::usage=
 "The boolean setting of $FCTraditionalFormOutput determines which \
@@ -127,7 +127,7 @@ To enable/disable start-up messages, put the line\n
 $FeynCalcStartupMessages = True;\n
 or\n
 $FeynCalcStartupMessages = False;\n
-into your \"init.m\" file or into your \"FCConfig.m\" file."
+into your \"init.m\" file or into your \"FCConfig.m\" file.";
 
 $FeynCalcVersion::usage =
 "$FeynCalcVersion is a string that represents the version of FeynCalc.";
@@ -240,7 +240,7 @@ are displayed during calculations.";
 
 $FCAdvice::usage =
 "If $FCAdvice is set to True, FeynCalc will display some \
-advices on optimal Mathematica configuration for using FeynCalc."
+advices on optimal Mathematica configuration for using FeynCalc.";
 
 WriteStringOutput::usage =
 "UseWriteStringOutput an option for FCPrint. It specifies, to which \
@@ -335,7 +335,7 @@ applied to D-1 dimensional Pauli matrices.
 \"Naive\" - Naively apply the commutator relation in D-1-dimensions, i.e. \
 CSID[i,j]-CSID[i,j] = 2 i CLCD[i,j,k] SID[k]. The Levi-Civita tensor lives \
 in D-1-dimensions, so that a contraction of two such tensors which have all \
-indices in common yields (D-3) (D-2) (D-1)."
+indices in common yields (D-3) (D-2) (D-1).";
 
 FCGetPauliSigmaScheme::usage =
 "FCGetPauliSigmaScheme[] shows the currently used scheme for handling Pauli
@@ -353,14 +353,14 @@ it does not influence any subequent Mathematica FrontEnd sessions.";
 
 FeynCalc::failmsg =
 "Error! FeynCalc has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
-Begin["`Package`"]
+Begin["`Package`"];
 
 End[]
 
-Begin["`Private`"]
+Begin["`Private`"];
 
 $Abbreviations = {
 	", "->"",
@@ -468,7 +468,7 @@ Options[FCPrint] = {
 		FCDoControl :> $VeryVerbose,
 		UseWriteString -> False,
 		WriteStringOutput ->"stdout"
-}
+};
 
 
 FeynCalc`Package`MetricT = 1;

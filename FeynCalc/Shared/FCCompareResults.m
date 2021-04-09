@@ -28,10 +28,11 @@ The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 
-Begin["`Package`"]
+Begin["`Package`"];
+
 End[]
 
-Begin["`FCCompareResults`Private`"]
+Begin["`FCCompareResults`Private`"];
 
 Options[FCCompareResults] = {
 	Differences 		-> False,

@@ -37,11 +37,12 @@ FCMatchSolve::multsol =
 "The solutions is not unique!";
 
 
-Begin["`Package`"]
+Begin["`Package`"];
+
 End[]
 (* ------------------------------------------------------------------------ *)
 
-Begin["`FCMatchSolve`Private`"]
+Begin["`FCMatchSolve`Private`"];
 
 fcmsVerbose::usage="";
 

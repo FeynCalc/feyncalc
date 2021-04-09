@@ -17,18 +17,18 @@ option Dimension. SUNF's are replaced by SUNTrace objects.";
 (* ------------------------------------------------------------------------ *)
 
 
-Begin["`Package`"]
+Begin["`Package`"];
 
 SymbolsWithExplicitOption;
 
 SymbolsWithExplicitOption = {
 	FeynCalc`FCChargeConjugateTransposed[xx_, op:OptionsPattern[]]  :>
 		FeynCalc`FCChargeConjugateTransposed[xx, Explicit->True,	Sequence@@FilterRules[{op}, Except[Explicit]]]
-}
+};
 
 End[]
 
-Begin["`Explicit`Private`"]
+Begin["`Explicit`Private`"];
 
 Options[Explicit] = {
 	CouplingConstant	-> SMP["g_s"],

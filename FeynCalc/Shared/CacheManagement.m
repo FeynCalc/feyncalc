@@ -38,17 +38,17 @@ FCClearCache::usage =
 were introduced by FCUseCache";
 
 FCUseCache::blacklist=
-"The function `1` is not whitelisted for FCUseCache. Evaluation aborted!"
+"The function `1` is not whitelisted for FCUseCache. Evaluation aborted!";
 
 
-Begin["`Package`"]
+Begin["`Package`"];
 End[]
 (* ------------------------------------------------------------------------ *)
 
-Begin["`CacheManagement`Private`"]
+Begin["`CacheManagement`Private`"];
 
 
-SetAttributes[cachedToString, HoldAll]
+SetAttributes[cachedToString, HoldAll];
 
 
 whiteListNames = {

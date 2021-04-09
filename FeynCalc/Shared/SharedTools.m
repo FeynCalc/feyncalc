@@ -100,12 +100,12 @@ of the string str1 and str2. For example, FCMakeIndex[\"Lor\",\"1\",LorentzIndex
 yields LorentzIndex[Lor1]. The second argument can also be an integer. FCMakeIndex \
 is useful for converting the output of different diagram generators such as \
 FeynArts or QGAF into the FeynCalc notation. It uses memoization to improve the \
-performance."
+performance.";
 
 FCMakeSymbols::usage=
 "FCMakeSymbols[name, range, type] generates a list or a sequence of symbols \
 (depending on the value of type) by attaching elements of the list range to \
-name. For example, FCMakeSymbols[mu, Range[1, 3], List] returns {mu1,mu2,mu3}."
+name. For example, FCMakeSymbols[mu, Range[1, 3], List] returns {mu1,mu2,mu3}.";
 
 FCPatternFreeQ::usage =
 "FCPatternFreeQ[{exp}] yields True if {exp} does not contain any \
@@ -194,7 +194,7 @@ MemSet::usage =
 "MemSet[f[x_], body] is like f[x_] := f[x] = body, \
 but dependend on the value of the setting of FCMemoryAvailable -> \
 memorycut (memorycut - MemoryInUse[]/10.^6) \
-MemSet[f[x_], body] may evaluate as f[x_] := body."
+MemSet[f[x_], body] may evaluate as f[x_] := body.";
 
 FCMemoryAvailable::usage =
 "FCMemoryAvailable is an option of MemSet. It can be set to an integer n, \
@@ -206,7 +206,7 @@ MLimit::usage=
 
 NTerms::usage=
 "NTerms[x] is equivalent to Length if x is a sum; otherwise \
-NTerms[x] returns 1, except NTerms[0] -> 0."
+NTerms[x] returns 1, except NTerms[0] -> 0.";
 
 NumericalFactor::usage =
 "NumericalFactor[expr] gives the overall numerical factor of expr.";
@@ -270,7 +270,7 @@ Variables2::usage=
 as well as lists thereof. Variables2 always applies Union to the output.";
 
 XYT::usage=
-"XYT[exp, x,y] transforms  (x y)^m away ..."
+"XYT[exp, x,y] transforms  (x y)^m away ...";
 
 FCProductSplit::failmsg = "Error! FCProductSplit has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`";
@@ -287,12 +287,12 @@ The problem reads: `1`";
 FCMakeSymbols::failmsg = "Error! FCMakeSymbols has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`";
 
-Begin["`Package`"]
+Begin["`Package`"];
 End[]
 
 (* ------------------------------------------------------------------------ *)
 
-Begin["`SharedTools`Private`"]
+Begin["`SharedTools`Private`"];
 
 SetAttributes[MemSet, HoldFirst];
 

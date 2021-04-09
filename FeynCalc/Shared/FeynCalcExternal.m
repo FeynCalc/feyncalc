@@ -27,14 +27,14 @@ by the option FinalSubstitutions. ";
 
 FCE::feynamp=
 "Warning! FeynAmpDenominator `1` contains momenta with different dimensions and thus cannot be \
-converted to the FCE form."
+converted to the FCE form.";
 
 (* ------------------------------------------------------------------------ *)
 
-Begin["`Package`"]
+Begin["`Package`"];
 End[]
 
-Begin["`FeynCalcExternal`Private`"]
+Begin["`FeynCalcExternal`Private`"];
 
 FCE = FeynCalcExternal;
 dimS::usage="";

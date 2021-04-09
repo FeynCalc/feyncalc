@@ -17,11 +17,11 @@
 
 
 (* ------------------------------------------------------------------------ *)
-Begin["`Package`"]
+Begin["`Package`"];
 
 End[]
 
-Begin["`SharedObjectsTypesetting`Private`"]
+Begin["`SharedObjectsTypesetting`Private`"];
 
 dootpow::usage="";
 csp::usage="";
@@ -1138,7 +1138,7 @@ GaugeXi /:
 
 GaugeXi /:
 	MakeBoxes[GaugeXi, TraditionalForm]:=
-		TagBox["\[Xi]", TraditionalForm]
+		TagBox["\[Xi]", TraditionalForm];
 
 GluonField /:
 	MakeBoxes[GluonField, TraditionalForm]:=
@@ -1268,7 +1268,7 @@ Nf /:
 
 OPE /:
 	MakeBoxes[OPE, TraditionalForm]:=
-		"\[CapitalOmega]"
+		"\[CapitalOmega]";
 
 (*    Typesetting for the metric tensor.    *)
 (* ------------------------------------------------------------------------ *)
@@ -1744,19 +1744,19 @@ StandardMatrixElement /:
 
 SUND /:
 	MakeBoxes[SUND[a_, b_,c:Except[_?OptionQ], OptionsPattern[]], TraditionalForm]:=
-		SuperscriptBox["d", TBox[a,b,c]]
+		SuperscriptBox["d", TBox[a,b,c]];
 
 SUNDelta /:
 	MakeBoxes[SUNDelta[a_, b_], TraditionalForm ]:=
-		SuperscriptBox["\[Delta]", TBox[a,b]]
+		SuperscriptBox["\[Delta]", TBox[a,b]];
 
 SUNFDelta /:
 	MakeBoxes[SUNFDelta[a_, b_], TraditionalForm ]:=
-		SubscriptBox["\[Delta]", TBox[a,b]]
+		SubscriptBox["\[Delta]", TBox[a,b]];
 
 SUNF /:
 	MakeBoxes[SUNF[a_, b_,c:Except[_?OptionQ], OptionsPattern[]], TraditionalForm]:=
-		SuperscriptBox["f", TBox[a,b,c]]
+		SuperscriptBox["f", TBox[a,b,c]];
 
 SUNIndex /:
 	MakeBoxes[SUNIndex[p_], TraditionalForm]:=

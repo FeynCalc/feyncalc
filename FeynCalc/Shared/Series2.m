@@ -23,10 +23,11 @@ Series2[f, {e, 0, n}] is equivalent to Series[f, {e, 0, n}].";
 
 (* ------------------------------------------------------------------------ *)
 
-Begin["`Package`"]
+Begin["`Package`"];
+
 End[]
 
-Begin["`Series2`Private`"]
+Begin["`Series2`Private`"];
 
 Options[Series2] =	{
 	Collecting 			-> False,

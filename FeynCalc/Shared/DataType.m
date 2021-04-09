@@ -38,12 +38,12 @@ have datatype type. The default setting is DataType[__, _]:=False. \
 To assign a certain data type, do e.g.: DataType[x, PositiveInteger] = True. \n
 DataType[] show the list of available datatypes.";
 
-Begin["`Package`"]
+Begin["`Package`"];
 End[]
 
 (* ------------------------------------------------------------------------ *)
 
-Begin["`DataType`Private`"]
+Begin["`DataType`Private`"];
 
 set::usage="";
 
@@ -55,7 +55,7 @@ DataType[] = {
 	PositiveNumber,
 	FCTensor,
 	FCVariable
-}
+};
 
 DataType[_] :=
 	(Message[DataType::argrx, DataType, 1, "2 or more"];

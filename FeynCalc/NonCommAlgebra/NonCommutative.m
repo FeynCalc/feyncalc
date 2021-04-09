@@ -70,10 +70,10 @@ UnDeclareAllAntiCommutators::usage =
 "UnDeclareAllAntiCommutators[] undeclares all user-defined anticommutators.";
 
 (* ------------------------------------------------------------------------ *)
-Begin["`Package`"]
+Begin["`Package`"];
 End[]
 
-Begin["`NonCommutative`Private`"]
+Begin["`NonCommutative`Private`"];
 
 AntiCommutator /:
 	Set[AntiCommutator[a_, b_] , c_] :=
