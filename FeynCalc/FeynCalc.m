@@ -88,6 +88,11 @@ If[ !ValueQ[Global`$FCAdvice],
 ];
 Remove[Global`$FCAdvice]
 
+If[ !ValueQ[Global`$VeryVerbose],
+	FeynCalc`$VeryVerbose = 0,
+	FeynCalc`$VeryVerbose = Global`$VeryVerbose
+];
+Remove[Global`$VeryVerbose]
 
 
 If[ !ValueQ[Global`$RenameFeynCalcObjects],
@@ -189,7 +194,7 @@ boostrappingList = Join[
 mainList = {FileNameJoin[{$FeynCalcDirectory, "FCMain.m"}]};
 
 allList = {
-	Select[FileNames[{"*.m"}, FileNameJoin[{$FeynCalcDirectory, "Shared"}]], StringFreeQ[#, "LegacyObjects"] &],
+	Select[FileNames[{"*.m"}, FileNameJoin[{$FeynCalcDirectory, "Shared"}]], StringFreeQ[#, {"LegacyObjects","SharedTools.m", "DataType.m"}] &],
 	FileNames[{"*.m"},FileNameJoin[{$FeynCalcDirectory,"NonCommAlgebra"}]],
 	FileNames[{"*.m"},FileNameJoin[{$FeynCalcDirectory,"Lorentz"}]],
 	FileNames[{"*.m"},FileNameJoin[{$FeynCalcDirectory,"Dirac"}]],
@@ -218,17 +223,53 @@ fcSelfPatch[file_String]:=
 
 AppendTo[$ContextPath, "FeynCalc`Package`"];
 
+If[	$VeryVerbose>0,
+	Print["FeynCalc.m: This is allList: "];
+	Map[Print[(FileNameTake /@ #)] &, allList]
+];
+
+If[	$VeryVerbose>0,
+	Print["FeynCalc.m: Applying fcSelfPatch to mainList."]
+];
 patchedMain =(fcSelfPatch/@mainList);
+
+If[	$VeryVerbose>0,
+	Print["FeynCalc.m: Applying fcSelfPatch to boostrappingList."]
+];
 patchedBoostrap	=(fcSelfPatch/@boostrappingList)
+
+
 patchedList = Map[Function[argList, fcSelfPatch /@ argList], allList];
 
+If[	$VeryVerbose>0,
+	Print["FeynCalc.m: Applying FCDeclareHeader to patchedMain."]
+];
 FCDeclareHeader[#,"string"]&/@(patchedMain);
+
+If[	$VeryVerbose>0,
+	Print["FeynCalc.m: Loading patchedMain."]
+];
 ToExpression/@patchedMain;
 
+If[	$VeryVerbose>0,
+	Print["FeynCalc.m: Applying FCDeclareHeader to patchedList."]
+];
 Map[Function[argList, FCDeclareHeader[#,"string"]& /@ argList], patchedList];
 
+If[	$VeryVerbose>0,
+	Print["FeynCalc.m: Loading patchedBoostrap."]
+];
 ToExpression/@patchedBoostrap;
+
+If[	$VeryVerbose>0,
+	Print["FeynCalc.m: Loading the rest."]
+];
+
 Map[Function[argList, ToExpression /@ argList], patchedList];
+
+If[	$VeryVerbose>0,
+	Print["FeynCalc.m: Loading stage done."]
+];
 
 EndPackage[];
 
