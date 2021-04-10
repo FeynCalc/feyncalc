@@ -1616,7 +1616,7 @@ LeftPartialD[x_, y__]/; MatchQ[{x,y},{(__LorentzIndex | __ExplicitLorentzIndex |
 (* 	Here one must use named blanks, since otherwise DotSimplify
 	is not able to convert this into rules. But I also don't want
 	WWB to complain about unused variables here. So... *)
-ToExpression["Commutator[RightPartialD[x_], LeftPartialD[y_]] = 0;"]
+ToExpression["Commutator[RightPartialD[x_], LeftPartialD[y_]] = 0;"];
 
 LeftRightPartialD[xx__] :=
 	LeftRightPartialD@@ (LorentzIndex /@ {xx}) /;
