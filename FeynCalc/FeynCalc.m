@@ -29,13 +29,26 @@ If[ ($VersionNumber < 8.0) && StringFreeQ[$Version, "Mathics"],
 	Abort[]
 ];
 
+(*    Set the version number    *)
+FeynCalc`$FeynCalcVersion = "9.3.1";
+
+fcGlobalToFeynCalc[varG_String, defaultVal_]:=
+	fcGlobalToFeynCalc[varG, varG, defaultVal];
+
+fcGlobalToFeynCalc[varG_String, varFC_String, defaultVal_, defaultCheck_String: "!ValueQ"]:=
+	Block[{globalVar,fcVar},
+	globalVar	=  "Global`"<>varG;
+	fcVar 		=  "FeynCalc`"<>varFC;
+
+	If[ ToExpression[defaultCheck<>"[" <> globalVar <> "]"],
+		ToExpression[fcVar <> " = " <> ToString[defaultVal,InputForm]],
+		ToExpression[fcVar <> " = " <> globalVar]
+	];
+	ToExpression["Remove[" <> globalVar <> "]"]
+	];
+
 (*    Find out where FeynCalc is installed    *)
-If[ !ValueQ[Global`$FeynCalcDirectory],
-	(* By default FeynCalc is assumed to be located in the directory that contains FeynCalc.m *)
-	FeynCalc`$FeynCalcDirectory = DirectoryName[$InputFileName],
-	FeynCalc`$FeynCalcDirectory = Global`$FeynCalcDirectory
-];
-Remove[Global`$FeynCalcDirectory];
+fcGlobalToFeynCalc["$FeynCalcDirectory", DirectoryName[$InputFileName]];
 
 If[ FileNames["*",{FeynCalc`$FeynCalcDirectory}] === {},
 	Print[Style["Could not find a FeynCalc installation. Evaluation aborted.",Red,Bold]];
@@ -43,83 +56,38 @@ If[ FileNames["*",{FeynCalc`$FeynCalcDirectory}] === {},
 	Abort[];
 ];
 
-(*    Set the version number    *)
-FeynCalc`$FeynCalcVersion = "9.3.1";
+fcGlobalToFeynCalc["$FeynCalcStartupMessages",	True];
+fcGlobalToFeynCalc["$LoadAddOns",				{}];
+fcGlobalToFeynCalc["$FAPatch",					True];
+fcGlobalToFeynCalc["$FCAdvice",					True];
+fcGlobalToFeynCalc["$VeryVerbose",				0];
+fcGlobalToFeynCalc["$RenameFeynCalcObjects",	{}];
+fcGlobalToFeynCalc["$FCCloudTraditionalForm",	True];
+fcGlobalToFeynCalc["$FCTraditionalFormOutput",	False];
 
-If[ !ValueQ[Global`$FeynCalcStartupMessages],
-	FeynCalc`$FeynCalcStartupMessages = True,
-	FeynCalc`$FeynCalcStartupMessages = Global`$FeynCalcStartupMessages
+fcGlobalToFeynCalc["$LoadFeynArts",				False]
+fcGlobalToFeynCalc["$LoadTARCER",				False]
+fcGlobalToFeynCalc["$LoadPhi",					False]
+
+If[	(FeynCalc`$LoadFeynArts===True) && FreeQ[FeynCalc`$LoadAddOns,"FeynArtsLoader"|"FeynArts"],
+	AppendTo[FeynCalc`$LoadAddOns,"FeynArtsLoader"]
 ];
-Remove[Global`$FeynCalcStartupMessages];
 
-If[ !ValueQ[Global`$LoadAddOns],
-	FeynCalc`$LoadAddOns = {},
-	FeynCalc`$LoadAddOns = Global`$LoadAddOns
+If[	(FeynCalc`$LoadTARCER===True) && FreeQ[FeynCalc`$LoadAddOns,"TARCER"],
+	AppendTo[FeynCalc`$LoadAddOns,"TARCER"]
 ];
-Remove[Global`$LoadAddOns];
 
-If[ ValueQ[Global`$LoadTARCER],
-	(*Print[Style["$LoadTARCER is deprecated since FeynCalc 9.3, please use $LoadAddOns={\"TARCER\"} instead!",Red, Bold]];*)
-	FeynCalc`$LoadAddOns = Join[FeynCalc`$LoadAddOns,{"TARCER"}]
+If[	(FeynCalc`$LoadPhi===True) && FreeQ[FeynCalc`$LoadAddOns,"PHI"],
+	AppendTo[FeynCalc`$LoadAddOns,"PHI"]
 ];
-Remove[Global`$LoadTARCER]
 
-If[ ValueQ[Global`$LoadPhi],
-	(*Print[Style["$LoadPhi is deprecated since FeynCalc 9.3, please use $LoadAddOns={\"FeynArts\"} instead!",Red, Bold]];*)
-	FeynCalc`$LoadAddOns = Join[FeynCalc`$LoadAddOns,{"PHI"}]
-];
-Remove[Global`$LoadPhi];
-
-If[ ValueQ[Global`$LoadFeynArts],
-	(*Print[Style["$LoadFeynArts is deprecated since FeynCalc 9.3, please use $LoadAddOns={\"FeynArts\"} instead!",Red, Bold]];*)
-	FeynCalc`$LoadAddOns = Join[FeynCalc`$LoadAddOns,{"FeynArtsLoader"}]
-];
-Remove[Global`$LoadFeynArts];
-
-If[ !ValueQ[Global`$FAPatch],
-	FeynCalc`$FAPatch = True,
-	FeynCalc`$FAPatch = Global`$FAPatch
-];
-Remove[Global`$FAPatch]
-
-If[ !ValueQ[Global`$FCAdvice],
-	FeynCalc`$FCAdvice = True,
-	FeynCalc`$FCAdvice = Global`$FCAdvice
-];
-Remove[Global`$FCAdvice]
-
-If[ !ValueQ[Global`$VeryVerbose],
-	FeynCalc`$VeryVerbose = 0,
-	FeynCalc`$VeryVerbose = Global`$VeryVerbose
-];
-Remove[Global`$VeryVerbose]
-
-
-If[ !ValueQ[Global`$RenameFeynCalcObjects],
-	FeynCalc`$RenameFeynCalcObjects = {},
-	FeynCalc`$RenameFeynCalcObjects = Global`$RenameFeynCalcObjects
-];
-Remove[Global`$RenameFeynCalcObjects];
-
-If[ !ValueQ[Global`$FCCloudTraditionalForm],
-	FeynCalc`$FCCloudTraditionalForm = True,
-	FeynCalc`$FCCloudTraditionalForm = Global`$FCCloudTraditionalForm
-];
-Remove[Global`$FCCloudTraditionalForm];
-
-If[ !ValueQ[Global`$FCTraditionalFormOutput],
-	FeynCalc`$FCTraditionalFormOutput = False,
-	FeynCalc`$FCTraditionalFormOutput = Global`$FCTraditionalFormOutput
-];
-Remove[Global`$FCTraditionalFormOutput];
 
 If[ !ValueQ[FeynCalc`$FeynArtsDirectory],
 	FeynCalc`$FeynArtsDirectory = FileNameJoin[{FeynCalc`$FeynCalcDirectory, "FeynArts"}]
 ];
 
 If[ FeynCalc`$FeynCalcStartupMessages=!=False,
-	PrintTemporary[Style["Loading FeynCalc from "<>
-	FeynCalc`$FeynCalcDirectory, "Text"]]
+	PrintTemporary[Style["Loading FeynCalc from " <> FeynCalc`$FeynCalcDirectory, "Text"]]
 ];
 
 If[	TrueQ[FileExistsQ[FileNameJoin[{FeynCalc`$FeynCalcDirectory, ".testing"}]]],
@@ -137,7 +105,7 @@ If[ !ValueQ[Global`$FCCheckContext],
 Remove[Global`$FCCheckContext];
 
 
-
+Remove[Global`fcGlobalToFeynCalc];
 Global`globalContextBeforeLoadingFC = Names["Global`*"];
 
 BeginPackage["FeynCalc`"];
