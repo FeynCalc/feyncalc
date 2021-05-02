@@ -83,7 +83,7 @@ Options[DotSimplify] = {
 	FCI								-> False,
 	FCJoinDOTs						-> True,
 	FCVerbose						-> False,
-	optMaxIterations				-> 100,
+	MaxIterations				-> 100,
 	PreservePropagatorStructures	-> False,
 	SortBy 	 						-> {Automatic,Automatic}
 };
@@ -106,7 +106,7 @@ DotSimplify[expr_, OptionsPattern[]] :=
 
 		optExpanding			= OptionValue[Expanding];
 		optDotSimplifyRelations	= OptionValue[DotSimplifyRelations];
-		optMaxIterations		= OptionValue[optMaxIterations];
+		optMaxIterations		= OptionValue[MaxIterations];
 		optSortBy				= OptionValue[SortBy];
 
 		FCPrint[1, "DotSimplify: Entering.", FCDoControl->dsVerbose];
