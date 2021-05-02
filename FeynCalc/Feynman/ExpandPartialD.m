@@ -196,20 +196,57 @@ opesumplus[a_,b__] :=
 	opesumplus2[Expand[a],b];
 
 qfe[dot_, x_] :=
-	DotSimplify[
-	(*The replacement below commented out by F.Orellana, 12/3/2005.
-	It breaks the procedure of applying the expansion to all
-	products in $Multiplications (see above). What is it good for?*)
-	DotSimplify[ExplicitPartialD[fcovcheck[x(*/.Times->dot*)]] /.
-	{ FCPartialD[Momentum[OPEDelta]]^ (mm_ (*/; Head[mm]=!=Integer*)):>
-	FCPartialD[Momentum[OPEDelta]^mm],
-	LeftPartialD[Momentum[OPEDelta]]^ (mm_ (*/; Head[mm]=!=Integer*)):>
-	LeftPartialD[Momentum[OPEDelta]^mm],
-	RightPartialD[Momentum[OPEDelta]]^ (mm_ (*/; Head[mm]=!=Integer*)):>
-	RightPartialD[Momentum[OPEDelta]^mm]
-	}, FCI->True] /. dot -> qf1 /. qf1 -> qf2 /. qf2 -> qf1 /. qf1 -> qf3 /. qf3 -> qf5 /. qf5 -> dot /. QuantumField ->
-		quanf /. quanf -> QuantumField /. OPESum -> opesumplus, FCI->True];
+	Block[{tmp,aux,ru},
 
+		FCPrint[4,"ExpandPartialD: qfe: Entering with: ", {dot,x}, FCDoControl->epdVerbose];
+
+		(*The replacement below commented out by F.Orellana, 12/3/2005.
+		It breaks the procedure of applying the expansion to all
+		products in $Multiplications (see above). What is it good for?*)
+		ru ={ FCPartialD[Momentum[OPEDelta]]^ (mm_ (*/; Head[mm]=!=Integer*)):>
+		FCPartialD[Momentum[OPEDelta]^mm],
+		LeftPartialD[Momentum[OPEDelta]]^ (mm_ (*/; Head[mm]=!=Integer*)):>
+		LeftPartialD[Momentum[OPEDelta]^mm],
+		RightPartialD[Momentum[OPEDelta]]^ (mm_ (*/; Head[mm]=!=Integer*)):>
+		RightPartialD[Momentum[OPEDelta]^mm]
+		};
+
+		aux = fcovcheck[x(*/.Times->dot*)];
+		FCPrint[4,"ExpandPartialD: qfe: After fcovcheck: ", aux, FCDoControl->epdVerbose];
+
+		aux = ExplicitPartialD[aux];
+		FCPrint[4,"ExpandPartialD: qfe: After ExplicitPartialD: ", aux, FCDoControl->epdVerbose];
+
+		aux = aux /. dot -> qf1;
+		FCPrint[4,"ExpandPartialD: qfe: After qf1: ", aux, FCDoControl->epdVerbose];
+
+		aux = aux /. qf1 -> qf2;
+		FCPrint[4,"ExpandPartialD: qfe: After qf2: ", aux, FCDoControl->epdVerbose];
+
+		aux = aux /. qf2 -> qf1;
+		FCPrint[4,"ExpandPartialD: qfe: After qf1: ", aux, FCDoControl->epdVerbose];
+
+		aux = aux /. qf1 -> qf3;
+		FCPrint[4,"ExpandPartialD: qfe: After qf3: ", aux, FCDoControl->epdVerbose];
+
+		aux = aux /. qf3 -> qf5;
+		FCPrint[4,"ExpandPartialD: qfe: After qf5: ", aux, FCDoControl->epdVerbose];
+
+		aux = aux /. qf5 -> dot /. QuantumField -> quanf;
+		FCPrint[4,"ExpandPartialD: qfe: After quanf: ", aux, FCDoControl->epdVerbose];
+
+		aux = aux /. quanf -> QuantumField /. OPESum -> opesumplus;
+		FCPrint[4,"ExpandPartialD: qfe: After quanf: ", aux, FCDoControl->epdVerbose];
+
+		tmp = DotSimplify[aux, FCI->True];
+		FCPrint[4,"ExpandPartialD: qfe: After DotSimplify: ", aux, FCDoControl->epdVerbose];
+
+		(*tmp = DotSimplify[
+		DotSimplify[ExplicitPartialD[fcovcheck[x(*/.Times->dot*)]] /. ru
+		, FCI->True] /. dot -> qf1 /. qf1 -> qf2 /. qf2 -> qf1 /. qf1 -> qf3 /. qf3 -> qf5 /. qf5 -> dot /. QuantumField ->
+		quanf /. quanf -> QuantumField /. OPESum -> opesumplus, FCI->True];*)
+		tmp
+	];
 (* linearity *)
 qf1[1,b___] :=
 	qf1[b];
