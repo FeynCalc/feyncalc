@@ -2053,7 +2053,7 @@ SUNTF[a_,b_,c_] :=
 (* Tr[T^a] = 0 *)
 SUNTF[{_},i_SUNFIndex,i_SUNFIndex]:=
 	0;
-
+(*
 SUNIndex[SUNFIndex[___]]:=
 	(Message[SharedObjects::failmsg,"SUNFIndex is not allowed inside SUNIndex"];
 	Abort[]);
@@ -2061,7 +2061,7 @@ SUNIndex[SUNFIndex[___]]:=
 SUNFIndex[SUNIndex[___]]:=
 	(Message[SharedObjects::failmsg,"SUNIndex is not allowed inside SUNFIndex"];
 	Abort[]);
-
+*)
 
 (* ------------------------------------------------------------------------ *)
 

@@ -197,7 +197,7 @@ allList = {
 	Select[FileNames[{"*.m"}, FileNameJoin[{$FeynCalcDirectory, "Shared"}]], StringFreeQ[#, {"LegacyObjects","SharedTools.m", "DataType.m"}] &],
 	FileNames[{"*.m"},FileNameJoin[{$FeynCalcDirectory,"NonCommAlgebra"}]],
 	FileNames[{"*.m"},FileNameJoin[{$FeynCalcDirectory,"Lorentz"}]],
-	FileNames[{"*.m"},FileNameJoin[{$FeynCalcDirectory,"Dirac"}]],
+	FileNames[{"*.m"},FileNameJoin[{$FeynCalcDirectory,"Dirac"}]](*,
 	FileNames[{"*.m"},FileNameJoin[{$FeynCalcDirectory,"Pauli"}]],
 	FileNames[{"*.m"},FileNameJoin[{$FeynCalcDirectory,"SUN"}]],
 	FileNames[{"*.m"},FileNameJoin[{$FeynCalcDirectory,"LoopIntegrals"}]],
@@ -206,7 +206,7 @@ allList = {
 	FileNames[{"*.m"},FileNameJoin[{$FeynCalcDirectory,"Tables"}]],
 	FileNames[{"*.m"},FileNameJoin[{$FeynCalcDirectory,"ExportImport"}]],
 	FileNames[{"*.m"},FileNameJoin[{$FeynCalcDirectory,"Misc"}]],
-	{FileNameJoin[{$FeynCalcDirectory, "Shared", "LegacyObjects.m"}]}
+	{FileNameJoin[{$FeynCalcDirectory, "Shared", "LegacyObjects.m"}]}*)
 };
 
 fcSelfPatch[file_String]:=
