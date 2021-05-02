@@ -1,3 +1,22 @@
+# WARNING
+
+This is a special branch for running FeynCalc on Mathics. At the moment almost nothing works
+properly so this is nowhere ready for the productive use!
+
+A brief instruction to load the package.
+
+```
+git clone https://github.com/FeynCalc/feyncalc.git
+cd feyncalc/FeynCalc
+git checkout mathics
+mathics
+```
+
+```
+$VeryVerbose=1; Get["FeynCalc.m"]
+FI;
+```
+
 # FeynCalc
 
 [![license: GPLv3](https://img.shields.io/badge/license-GPLv3-brightgreen.svg)](https://github.com/FeynCalc/feyncalc/blob/master/LICENSE)
