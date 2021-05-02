@@ -350,13 +350,14 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 		re = ((new + lin) /. lk[ka_][j_] -> holdForm[ka[j]] /.	frx->Plus);
 		FCPrint[1,"Collect2: Done putting re togehter, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
 
-		(*Just a small consistency check *)
+
+		(*	(*Just a small consistency check *)
 		If[	optIsolateNames =!= False,
 			If[	!FreeQ2[FRH[Cases[re,_HoldForm,Infinity]//Sort//DeleteDuplicates,IsolateNames->{optIsolateNames}], monomList],
 				Message[Collect2::failmsg,"Isolated prefactors contain monomials!"];
 				Abort[]
 			]
-		];
+		];*)
 
 
 		FCPrint[1,"Collect2: Done releasing tempIso, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
