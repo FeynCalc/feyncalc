@@ -248,8 +248,9 @@ DiracTrick[expr_,OptionsPattern[]] :=
 				res = res /. diracTrickEvalFast[zzz_]/;!FreeQ[{zzz}, DiracGamma[5]] :> diracTrickEvalFast[ToDiracGamma67[zzz,FCI->True]]
 			];
 
-			If[ !FreeQ2[res,{DiracHeadsList,diracTrickEvalFast}],
-				res = res /. diracTrickEvalFast -> diracTrickEval
+			If[ !FreeQ[res,diracTrickEvalFast],
+				res = res /. diracTrickEvalFast -> diracTrickEval;
+				FCPrint[3,"DiracTrick: After diracTrickEval: ", res , FCDoControl->diTrVerbose]
 			];
 
 			If[ !FreeQ2[res,{diracTrickEvalFast,diracTrickEval,holdDOT}],
@@ -298,9 +299,11 @@ diracTrickEvalFast[DiracGamma[6|7]]:=
 diracTrickEvalFast[DOT[DiracGamma[ExplicitLorentzIndex[0]],DiracGamma[ExplicitLorentzIndex[0]]]]:=
 	1;
 
+diracTrickEvalFast[DOT[DiracGamma[ExplicitLorentzIndex[(i: 1|2|3)]], DiracGamma[ExplicitLorentzIndex[(i: 1|2|3)]]]] :=
+	-1;
 
 diracTrickEvalFast[DOT[x_DiracGamma,y__DiracGamma]]:=
-	DOT[x,y]/; FreeQ2[{x,y},{DiracGamma[5],DiracGamma[6],DiracGamma[7], ExplicitLorentzIndex[0]}] &&
+	DOT[x,y]/; FreeQ2[{x,y},{DiracGamma[5],DiracGamma[6],DiracGamma[7], ExplicitLorentzIndex[0], ExplicitLorentzIndex[1], ExplicitLorentzIndex[2], ExplicitLorentzIndex[3]}] &&
 	(Sort[Cases[{x,y}, (LorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[a_, ___] :> a, Infinity]] ===
 	Union[Cases[{x,y}, (LorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[a_, ___] :> a, Infinity]])/; !insideDiracTrace && !diracOrder;
 
@@ -524,7 +527,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 	Block[{res=ex, holdDOT, time, dim, gamma5Present,noncommPresent,null1,null2,dsHead},
 
 		FCPrint[2, "DiracTrick: diracTrickEval: Entering.", FCDoControl->diTrVerbose];
-		FCPrint[3, "DiracTrick: diracTrickEval: Entering with", ex , FCDoControl->diTrVerbose];
+		FCPrint[3, "DiracTrick: diracTrickEval: Entering with: ", ex , FCDoControl->diTrVerbose];
 
 		gamma5Present = !FreeQ2[ex,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
 		noncommPresent = !NonCommFreeQ[ex/.DiracGamma->diga];
@@ -625,7 +628,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 			MatchQ[dim,{4}],
 				FCPrint[2, "DiracTrick: diracTrickEval: Purely 4-dim.", FCDoControl->diTrVerbose];
 				FCPrint[2, "DiracTrick: diracTrickEval: Applying diracology4Dim.", FCDoControl->diTrVerbose];
-				res = res /. holdDOT -> diracology4Dim /. diracology4Dim -> holdDOT;
+				res = res /. holdDOT -> diracology4Dim /. diracology4Dim -> diracology4DimFinalOrdering /. diracology4DimFinalOrdering -> holdDOT;
 				FCPrint[3, "DiracTrick: diracTrickEval: After diracology4Dim: ", res, FCDoControl->diTrVerbose],
 			(* Purely D-dimensional *)
 			MatchQ[dim,{_Symbol}],
@@ -649,7 +652,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 			dim==={} && !FreeQ2[res,{DiracGamma[ExplicitLorentzIndex[0]]}] && FreeQ[(res/.DiracGamma[ExplicitLorentzIndex[0]]:>diga),DiracGamma],
 				FCPrint[2, "DiracTrick: diracTrickEval: Only g^0 matrices.", FCDoControl->diTrVerbose];
 				FCPrint[2, "DiracTrick: diracTrickEval: Applying diracology4Dim.", FCDoControl->diTrVerbose];
-				res = res /. holdDOT -> diracology4Dim /. diracology4Dim -> holdDOT;
+				res = res /. holdDOT -> diracology4Dim/. diracology4Dim -> diracology4DimFinalOrdering /. diracology4DimFinalOrdering -> holdDOT;
 				FCPrint[3, "DiracTrick: diracTrickEval: After diracology4Dim: ", res, FCDoControl->diTrVerbose],
 			(* special case that the expression contains only chiral or g^0 matrices*)
 					dim==={} !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7],DiracGamma[ExplicitLorentzIndex[0]]}] && FreeQ[(res/.DiracGamma[5|6|7|ExplicitLorentzIndex[0]]:>diga),DiracGamma],
@@ -705,6 +708,10 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 
 (* ------------------------------------------------------------------------ *)
 
+(*	g^0123 g^0123' : Order matrices with explicit indices as 0123	*)
+diracology4Dim[b___,DiracGamma[ExplicitLorentzIndex[(i: 0|1|2|3)]], DiracGamma[ExplicitLorentzIndex[(j: 0|1|2|3)]], d___] :=
+	- diracology4Dim[b, DiracGamma[ExplicitLorentzIndex[j]], DiracGamma[ExplicitLorentzIndex[i]], d]/; i>j;
+
 diracology4Dim[]:=
 	1;
 
@@ -719,6 +726,10 @@ diracology4Dim[b___,DiracGamma[l_CartesianIndex], DiracGamma[l_CartesianIndex], 
 (*	g^0 g^0	*)
 diracology4Dim[b___,DiracGamma[ExplicitLorentzIndex[0]], DiracGamma[ExplicitLorentzIndex[0]], d___] :=
 	diracology4Dim[ b,d ];
+
+(*	g^123 g^123	*)
+diracology4Dim[b___,DiracGamma[ExplicitLorentzIndex[(i: 1|2|3)]], DiracGamma[ExplicitLorentzIndex[(i: 1|2|3)]], d___] :=
+	- diracology4Dim[ b,d ];
 
 (*	g^0 g^i_1 ... g^i_n  -> (-1)^n g^i_1 ... g^i_n g^0	*)
 diracology4Dim[ b___,  DiracGamma[ExplicitLorentzIndex[0]], Longest[ch : DiracGamma[(_CartesianIndex | _CartesianMomentum)]..], f___ ] :=
@@ -764,15 +775,26 @@ diracology4Dim[ b___,  DiracGamma[c_LorentzIndex],
 		DiracGamma[c_LorentzIndex], f___ ] :=
 	(2 diracology4Dim @@ Join[ {b},Reverse[{ch}],{end}, {f}] + 2 diracology4Dim[ b,end,ch,f ])/; OddQ[Length[{ch}]]  && Length[{ch}]>4;
 
-(*	g^0 g^nu_1 ... g^nu_i g^0  -> ...	*)
-(*	This is rather simplistic and inefficient, but for the time being ... *)
-diracology4Dim[ b___,  DiracGamma[ExplicitLorentzIndex[0]],
-		ch : DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _CartesianMomentum)].., DiracGamma[ExplicitLorentzIndex[0]], f___ ] :=
+(*
+	g^alpha g^nu_1 ... g^nu_i (where alpha is an explicit index)  -> essentially the same formula as for the slashes
+	Important: No matrices with explicit indices among g^nu_1 ... g^nu! Chains where all matrices are explicit are handled by ordering
+	the matrices as 0 1 2 3.
+*)
+diracology4Dim[ b___,  DiracGamma[ExplicitLorentzIndex[(i:0|1|2|3)]],
+		Longest[ch : DiracGamma[(_LorentzIndex | _Momentum | _CartesianIndex | _CartesianMomentum)]..], f___ ] :=
 		Block[{len=Length[{ch}],iVar},
-			(-1)^len diracology4Dim[b,ch,f] + Sum[2 (-1)^(iVar+1) Pair[ExplicitLorentzIndex[0],({ch}[[iVar]])[[1]]] *
-				diracology4Dim@@Join[{b},Drop[{ch}, {iVar, iVar}],{DiracGamma[ExplicitLorentzIndex[0]],f}],{iVar,1,len}]
+			(-1)^len diracology4Dim[b,ch,DiracGamma[ExplicitLorentzIndex[i]],f] +
+			Sum[2 (-1)^(iVar+1) Pair[ExplicitLorentzIndex[i],({ch}[[iVar]])[[1]]] * diracology4Dim@@Join[{b},Drop[{ch}, {iVar, iVar}],{f}],{iVar,1,len}]
 		];
 
+(*
+diracology4Dim[ b___,  DiracGamma[ExplicitLorentzIndex[(i:0|1|2|3)]],
+		ch : DiracGamma[(_LorentzIndex | _Momentum | _CartesianIndex | _CartesianMomentum)].., DiracGamma[ExplicitLorentzIndex[(j:0|1|2|3)]], f___ ] :=
+		Block[{len=Length[{ch}],iVar},
+			(-1)^len diracology4Dim[b,ch,DiracGamma[ExplicitLorentzIndex[i]],DiracGamma[ExplicitLorentzIndex[j]],f] +
+			Sum[2 (-1)^(iVar+1) Pair[ExplicitLorentzIndex[i],({ch}[[iVar]])[[1]]] * diracology4Dim@@Join[{b},Drop[{ch}, {iVar, iVar}],{DiracGamma[ExplicitLorentzIndex[j]],f}],{iVar,1,len}]
+		];
+*)
 (*	g^i g^nu_1 ... g^nu_i g^i  -> s ( g^mu g^nu_1 ... g^nu_i g_mu - t g^0  g^nu_1 ... g^nu_i g^0   )	*)
 diracology4Dim[ b___,  DiracGamma[c_CartesianIndex],
 		ch : DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _CartesianMomentum)].., DiracGamma[c_CartesianIndex], f___ ] :=
@@ -906,6 +928,11 @@ diracTraceSimplify[] :=
 
 diracTraceSimplify[___,0,___] :=
 	0;
+
+gaAlphaSq[0,0] =  1;
+gaAlphaSq[1,1] = -1;
+gaAlphaSq[2,2] = -1;
+gaAlphaSq[3,3] = -1;
 
 (* Trace cyclicity*)
 

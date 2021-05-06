@@ -2167,3 +2167,167 @@ DCHN[2*GS[q]*SP[p, q] - GS[p]*SP[q, q], i, j]"},
 "DCHN[GS[p] . GS[q] . GS[p], i, j] + DCHN[GS[q] . GS[p] . GS[q], \
 i, j]"}
 })
+
+Tests`Dirac`fcstDiracTrickExplicitLorentzIndex =
+({
+{"fcstDiracTrickExplicitLorentzIndex-ID1",
+"DiracTrick[GA[1,1],FCE->True]", "-1"},
+{"fcstDiracTrickExplicitLorentzIndex-ID2",
+"DiracTrick[GA[2,2],FCE->True]", "-1"},
+{"fcstDiracTrickExplicitLorentzIndex-ID3",
+"DiracTrick[GA[3,3],FCE->True]", "-1"},
+{"fcstDiracTrickExplicitLorentzIndex-ID4",
+"DiracTrick[GA[1,2],FCE->True]", "GA[1] . GA[2]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID5",
+"DiracTrick[GA[1,3],FCE->True]", "GA[1] . GA[3]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID6",
+"DiracTrick[GA[2,1],FCE->True]", "-GA[1] . GA[2]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID7",
+"DiracTrick[GA[2,3],FCE->True]", "GA[2] . GA[3]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID8",
+"DiracTrick[GA[3,1],FCE->True]", "-GA[1] . GA[3]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID9",
+"DiracTrick[GA[3,2],FCE->True]", "-GA[2] . GA[3]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID10",
+"DiracTrick[GA[0,1,0,1],FCE->True]", "1"},
+{"fcstDiracTrickExplicitLorentzIndex-ID11",
+"DiracTrick[GA[0,2,0,2],FCE->True]", "1"},
+{"fcstDiracTrickExplicitLorentzIndex-ID12",
+"DiracTrick[GA[0,3,0,3],FCE->True]", "1"},
+{"fcstDiracTrickExplicitLorentzIndex-ID13",
+"DiracTrick[GA[0,1,1,0],FCE->True]", "-1"},
+{"fcstDiracTrickExplicitLorentzIndex-ID14",
+"DiracTrick[GA[0,2,2,0],FCE->True]", "-1"},
+{"fcstDiracTrickExplicitLorentzIndex-ID15",
+"DiracTrick[GA[0,3,3,0],FCE->True]", "-1"},
+{"fcstDiracTrickExplicitLorentzIndex-ID16",
+"DiracTrick[GA[0,1,1,2],FCE->True]", "-TGA[] . GA[2]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID17",
+"DiracTrick[GA[0,2,2,3],FCE->True]", "-TGA[] . GA[3]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID18",
+"DiracTrick[GA[1,3,2,0,1,2],FCE->True]", "-TGA[] . GA[3]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID19",
+"DiracTrick[GA[1,3,2,0,3,1,2,1,2],FCE->True]",
+"TGA[] . GA[1] . GA[2]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID20",
+"DiracTrick[GA[1,mu,1],FCE->True]", "GA[mu] + 2*GA[1]*MT[1, mu]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID21",
+"DiracTrick[GA[1,mu,nu,1],FCE->True]",
+"-GA[mu] . GA[nu] + 2*GA[nu] . GA[1]*MT[1, mu] - 2*GA[mu] . \
+GA[1]*MT[1, nu]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID22",
+"DiracTrick[GA[1,mu,nu,rho,1],FCE->True]",
+"GA[mu] . GA[nu] . GA[rho] + 2*GA[nu] . GA[rho] . GA[1]*MT[1, mu] \
+- 2*GA[mu] . GA[rho] . GA[1]*MT[1, nu] + 2*GA[mu] . GA[nu] . \
+GA[1]*MT[1, rho]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID23",
+"DiracTrick[GA[1,mu,nu,5,rho,1],FCE->True]",
+"GA[mu] . GA[nu] . GA[rho] . GA[5] + 2*GA[nu] . GA[rho] . GA[1] . \
+GA[5]*MT[1, mu] - 2*GA[mu] . GA[rho] . GA[1] . GA[5]*MT[1, nu] + \
+2*GA[mu] . GA[nu] . GA[1] . GA[5]*MT[1, rho]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID24",
+"DiracTrick[GA[1,mu,nu,si,rho,1],FCE->True]",
+"-GA[mu] . GA[nu] . GA[si] . GA[rho] + 2*GA[nu] . GA[si] . GA[rho] \
+. GA[1]*MT[1, mu] - 2*GA[mu] . GA[si] . GA[rho] . GA[1]*MT[1, nu] - \
+2*GA[mu] . GA[nu] . GA[si] . GA[1]*MT[1, rho] + 2*GA[mu] . GA[nu] . \
+GA[rho] . GA[1]*MT[1, si]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID25",
+"DiracTrick[GA[1,mu,nu,si,rho,tau,1],FCE->True]",
+"GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[tau] + 2*GA[nu] . GA[si] \
+. GA[rho] . GA[tau] . GA[1]*MT[1, mu] - 2*GA[mu] . GA[si] . GA[rho] . \
+GA[tau] . GA[1]*MT[1, nu] - 2*GA[mu] . GA[nu] . GA[si] . GA[tau] . \
+GA[1]*MT[1, rho] + 2*GA[mu] . GA[nu] . GA[rho] . GA[tau] . \
+GA[1]*MT[1, si] + 2*GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[1]*MT[1, \
+tau]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID26",
+"DiracTrick[GA[1,mu,nu,si,rho,tau,ka,1],FCE->True]",
+"-GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[tau] . GA[ka] - 2*GA[mu] \
+. GA[nu] . GA[si] . GA[rho] . GA[tau] . GA[1]*MT[1, ka] + 2*GA[nu] . \
+GA[si] . GA[rho] . GA[tau] . GA[ka] . GA[1]*MT[1, mu] - 2*GA[mu] . \
+GA[si] . GA[rho] . GA[tau] . GA[ka] . GA[1]*MT[1, nu] - 2*GA[mu] . \
+GA[nu] . GA[si] . GA[tau] . GA[ka] . GA[1]*MT[1, rho] + 2*GA[mu] . \
+GA[nu] . GA[rho] . GA[tau] . GA[ka] . GA[1]*MT[1, si] + 2*GA[mu] . \
+GA[nu] . GA[si] . GA[rho] . GA[ka] . GA[1]*MT[1, tau]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID27",
+"DiracTrick[GA[3,mu,1],FCE->True]",
+"GA[mu] . GA[1] . GA[3] + 2*GA[1]*MT[3, mu]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID28",
+"DiracTrick[GA[3,mu,nu,1],FCE->True]",
+"-GA[mu] . GA[nu] . GA[1] . GA[3] + 2*GA[nu] . GA[1]*MT[3, mu] - \
+2*GA[mu] . GA[1]*MT[3, nu]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID29",
+"DiracTrick[GA[3,mu,nu,rho,1],FCE->True]",
+"GA[mu] . GA[nu] . GA[rho] . GA[1] . GA[3] + 2*GA[nu] . GA[rho] . \
+GA[1]*MT[3, mu] - 2*GA[mu] . GA[rho] . GA[1]*MT[3, nu] + 2*GA[mu] . \
+GA[nu] . GA[1]*MT[3, rho]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID30",
+"DiracTrick[GA[3,mu,nu,5,rho,1],FCE->True]",
+"GA[mu] . GA[nu] . GA[rho] . GA[1] . GA[3] . GA[5] + 2*GA[nu] . \
+GA[rho] . GA[1] . GA[5]*MT[3, mu] - 2*GA[mu] . GA[rho] . GA[1] . \
+GA[5]*MT[3, nu] + 2*GA[mu] . GA[nu] . GA[1] . GA[5]*MT[3, rho]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID31",
+"DiracTrick[GA[3,mu,nu,si,rho,1],FCE->True]",
+"-GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[1] . GA[3] + 2*GA[nu] . \
+GA[si] . GA[rho] . GA[1]*MT[3, mu] - 2*GA[mu] . GA[si] . GA[rho] . \
+GA[1]*MT[3, nu] - 2*GA[mu] . GA[nu] . GA[si] . GA[1]*MT[3, rho] + \
+2*GA[mu] . GA[nu] . GA[rho] . GA[1]*MT[3, si]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID32",
+"DiracTrick[GA[3,mu,nu,si,rho,tau,1],FCE->True]",
+"GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[tau] . GA[1] . GA[3] + \
+2*GA[nu] . GA[si] . GA[rho] . GA[tau] . GA[1]*MT[3, mu] - 2*GA[mu] . \
+GA[si] . GA[rho] . GA[tau] . GA[1]*MT[3, nu] - 2*GA[mu] . GA[nu] . \
+GA[si] . GA[tau] . GA[1]*MT[3, rho] + 2*GA[mu] . GA[nu] . GA[rho] . \
+GA[tau] . GA[1]*MT[3, si] + 2*GA[mu] . GA[nu] . GA[si] . GA[rho] . \
+GA[1]*MT[3, tau]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID33",
+"DiracTrick[GA[3,mu,nu,si,rho,tau,ka,1],FCE->True]",
+"-GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[tau] . GA[ka] . GA[1] . \
+GA[3] - 2*GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[tau] . GA[1]*MT[3, \
+ka] + 2*GA[nu] . GA[si] . GA[rho] . GA[tau] . GA[ka] . GA[1]*MT[3, \
+mu] - 2*GA[mu] . GA[si] . GA[rho] . GA[tau] . GA[ka] . GA[1]*MT[3, \
+nu] - 2*GA[mu] . GA[nu] . GA[si] . GA[tau] . GA[ka] . GA[1]*MT[3, \
+rho] + 2*GA[mu] . GA[nu] . GA[rho] . GA[tau] . GA[ka] . GA[1]*MT[3, \
+si] + 2*GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[ka] . GA[1]*MT[3, \
+tau]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID34",
+"DiracTrick[GA[2,mu,3],FCE->True]",
+"-GA[mu] . GA[2] . GA[3] + 2*GA[3]*MT[2, mu]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID35",
+"DiracTrick[GA[2,mu,nu,3],FCE->True]",
+"GA[mu] . GA[nu] . GA[2] . GA[3] + 2*GA[nu] . GA[3]*MT[2, mu] - \
+2*GA[mu] . GA[3]*MT[2, nu]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID36",
+"DiracTrick[GA[2,mu,nu,rho,3],FCE->True]",
+"-GA[mu] . GA[nu] . GA[rho] . GA[2] . GA[3] + 2*GA[nu] . GA[rho] . \
+GA[3]*MT[2, mu] - 2*GA[mu] . GA[rho] . GA[3]*MT[2, nu] + 2*GA[mu] . \
+GA[nu] . GA[3]*MT[2, rho]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID37",
+"DiracTrick[GA[2,mu,nu,5,rho,3],FCE->True]",
+"-GA[mu] . GA[nu] . GA[rho] . GA[2] . GA[3] . GA[5] + 2*GA[nu] . \
+GA[rho] . GA[3] . GA[5]*MT[2, mu] - 2*GA[mu] . GA[rho] . GA[3] . \
+GA[5]*MT[2, nu] + 2*GA[mu] . GA[nu] . GA[3] . GA[5]*MT[2, rho]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID38",
+"DiracTrick[GA[2,mu,nu,si,rho,3],FCE->True]",
+"GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[2] . GA[3] + 2*GA[nu] . \
+GA[si] . GA[rho] . GA[3]*MT[2, mu] - 2*GA[mu] . GA[si] . GA[rho] . \
+GA[3]*MT[2, nu] - 2*GA[mu] . GA[nu] . GA[si] . GA[3]*MT[2, rho] + \
+2*GA[mu] . GA[nu] . GA[rho] . GA[3]*MT[2, si]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID39",
+"DiracTrick[GA[2,mu,nu,si,rho,tau,3],FCE->True]",
+"-GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[tau] . GA[2] . GA[3] + \
+2*GA[nu] . GA[si] . GA[rho] . GA[tau] . GA[3]*MT[2, mu] - 2*GA[mu] . \
+GA[si] . GA[rho] . GA[tau] . GA[3]*MT[2, nu] - 2*GA[mu] . GA[nu] . \
+GA[si] . GA[tau] . GA[3]*MT[2, rho] + 2*GA[mu] . GA[nu] . GA[rho] . \
+GA[tau] . GA[3]*MT[2, si] + 2*GA[mu] . GA[nu] . GA[si] . GA[rho] . \
+GA[3]*MT[2, tau]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID40",
+"DiracTrick[GA[2,mu,nu,si,rho,tau,ka,3],FCE->True]",
+"GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[tau] . GA[ka] . GA[2] . \
+GA[3] - 2*GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[tau] . GA[3]*MT[2, \
+ka] + 2*GA[nu] . GA[si] . GA[rho] . GA[tau] . GA[ka] . GA[3]*MT[2, \
+mu] - 2*GA[mu] . GA[si] . GA[rho] . GA[tau] . GA[ka] . GA[3]*MT[2, \
+nu] - 2*GA[mu] . GA[nu] . GA[si] . GA[tau] . GA[ka] . GA[3]*MT[2, \
+rho] + 2*GA[mu] . GA[nu] . GA[rho] . GA[tau] . GA[ka] . GA[3]*MT[2, \
+si] + 2*GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[ka] . GA[3]*MT[2, \
+tau]"}
+});

@@ -1777,10 +1777,19 @@ Pair[Momentum[x_,___], Momentum[Polarization[_?NumberQ x_, y:Except[_?OptionQ]..
 Pair[ExplicitLorentzIndex[0], ExplicitLorentzIndex[0]]:=
 	FeynCalc`Package`MetricT;
 
+Pair[ExplicitLorentzIndex[(i: 1|2|3)], ExplicitLorentzIndex[(i: 1|2|3)]]:=
+	FeynCalc`Package`MetricS;
+
+Pair[ExplicitLorentzIndex[(i: 1|2|3)], ExplicitLorentzIndex[(j: 1|2|3)]]:=
+	0/; i=!=j;
+
 Pair[ExplicitLorentzIndex[0], Momentum[p_]]:=
 	TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p]];
 
 (* g^0i is zero by definition *)
+Pair[ExplicitLorentzIndex[0], ExplicitLorentzIndex[1|2|3]]:=
+	0;
+
 Pair[ExplicitLorentzIndex[0], _CartesianIndex]:=
 	0;
 
@@ -1910,6 +1919,18 @@ RightPartialD[c:OPEDelta..] :=
 
 RightPartialD[x_, y__]/; MatchQ[{x,y},{(__LorentzIndex | __ExplicitLorentzIndex | __CartesianIndex | __Momentum | __CartesianMomentum)}] :=
 	DOT @@ Map[RightPartialD, {x, y}];
+
+MT[0,0] =
+	FeynCalc`Package`MetricT;
+
+MT[(i: 1|2|3),(i: 1|2|3)] =
+	FeynCalc`Package`MetricS;
+
+MT[(i: 1|2|3),(j: 1|2|3)] =
+	0/; i=!=j;
+
+MT[0,1|2|3] =
+	0;
 
 SI[x_, y__] :=
 	DOT @@ Map[SI,{x,y}];
