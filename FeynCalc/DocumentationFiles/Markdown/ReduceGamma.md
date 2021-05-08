@@ -1,0 +1,9 @@
+##  ReduceGamma 
+
+ReduceGamma is an option of OneLoop. If set to True all GA[6] and GA[7] (i.e. all chirality projectors) are reduced to Gamma5..
+
+###  See also 
+
+OneLoop.
+
+###  Examples 

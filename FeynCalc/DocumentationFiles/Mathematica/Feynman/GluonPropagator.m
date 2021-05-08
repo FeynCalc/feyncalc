@@ -1,0 +1,42 @@
+ 
+(* ::Section:: *)
+(* GluonPropagator *)
+(* ::Text:: *)
+(*GluonPropagator[p, {\[Mu], a}, {\[Nu], b}] or GluonPropagator[p, \[Mu], a, \[Nu], b] yields the gluon propagator.   GluonPropagator[p, {\[Mu]}, {\[Nu]}] or GluonPropagator[p, \[Mu], \[Nu]] omits the SUNDelta.$text{GP}$ can be used as an abbreviation of GluonPropagator.The gauge and the dimension are determined by the options Gauge and Dimension. The following settings of Gauge are possible: $1$ for the Feynman gauge;  $alpha$ for the general covariant gauge; ${text{Momentum}[n] ,1}$ for the axial gauge..*)
+
+
+(* ::Subsection:: *)
+(* See also *)
+(* ::Text:: *)
+(*GluonSelfEnergy, GluonVertex, GhostVertex, GhostPropagator, GluonGhostVertex.*)
+
+
+
+(* ::Subsection:: *)
+(* Examples *)
+
+
+
+GluonPropagator[p,\[Mu],a,\[Nu],b]
+
+Explicit[%]
+
+GP[p,\[Mu],a,\[Nu],b,Gauge->\[Alpha]]
+
+Explicit[%]
+
+GluonPropagator[p,\[Mu],a,\[Nu],b,Gauge->{Momentum[n],1},Explicit->True]
+
+GP[p,\[Mu],\[Nu]]
+
+Explicit[%]
+
+GluonPropagator[p,\[Mu],a,\[Nu],b,CounterTerm-> 1]//Explicit
+
+GluonPropagator[p,\[Mu],a,\[Nu],b,CounterTerm-> 2]//Explicit
+
+GluonPropagator[p,\[Mu],a,\[Nu],b,CounterTerm-> 3]//Explicit
+
+GluonPropagator[p,\[Mu],a,\[Nu],b,CounterTerm-> 4]//Explicit
+
+GluonPropagator[p,\[Mu],a,\[Nu],b,CounterTerm-> 5]//Explicit

@@ -1,0 +1,36 @@
+ 
+(* ::Section:: *)
+(* PaVeUVPart *)
+(* ::Text:: *)
+(*PaVeUVPart[expr] replaces all occuring Passarino-Veltman functions by their explicit values, where only the UV divergent part is preserved, while possible IR divergences and the finite part are discarded. The function uses the algorithm from "Sulyok, G., A closed expression for the UV-divergent parts of one-loop tensor integrals in dimensional regularization, Phys. Part. Nuclei Lett. (2017) 14:631,  arXiv:hep-ph/0609282.*)
+
+
+(* ::Subsection:: *)
+(* See also *)
+(* ::Text:: *)
+(*PaVe, PaVeReduce.*)
+
+
+
+(* ::Subsection:: *)
+(* Examples *)
+
+
+
+PaVeUVPart[A0[m^2]]
+
+PaVeUVPart[x+y B0[SPD[p,p],0,M^2]]
+
+PaVe[0,0,{p10,p12,p20},{m1^2,m2^2,m3^2}]
+PaVeUVPart[%]
+
+
+PaVe[0,0,0,0,0,0,{p10,p12,p23,0,p20,p13},{m1^2,m2^2,m3^2,m4^2}]
+PaVeUVPart[%]
+
+
+int=FVD[k+p,rho]FVD[k+p,si]FAD[k,{k+p,0,2}]
+
+TID[int,k,UsePaVeBasis->True]
+%//PaVeUVPart[#,FCE->True]&
+
