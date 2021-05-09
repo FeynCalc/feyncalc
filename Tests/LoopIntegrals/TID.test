@@ -1055,5 +1055,15 @@ p2, p3]*LCD[i1, i2][p, p1 + p2 + p3] + SPD[p, p]*LCD[i1, i2][p1,
 p1 + p2 + p3] + SPD[p, p]*LCD[i1, i2][p2, p1 + p2 + p3]))/(1 - D)"},
 {"fcstTID-ID60","TID[LCD[i1, i2][p1 + p2 + p3, q] SPD[p3, p1 + p2] FAD[q, q - p], q,
 EpsExpand -> False, ExpandScalarProduct -> False, FCE -> True]",
-"-1/2*(FAD[q, -p + q]*SPD[p1 + p2, p3]*LCD[i1, i2][p, p1 + p2 + p3])"}
+"-1/2*(FAD[q, -p + q]*SPD[p1 + p2, p3]*LCD[i1, i2][p, p1 + p2 + p3])"},
+{"fcstTID-ID61","FCClearScalarProducts[]; \n SPD[r1] = ss; \n SPD[r2] = ss; \n
+SPD[r1, r2] = ss; \n SPD[r2, x2] = 0; \n SPD[r2, x1] = 0; \n SPD[x1, x2] = 0; \n
+SPD[x1, r1] = 1; \n SPD[x2, r1] = 1; tmp1 = TID[SPD[k, x1] SPD[k, x2] *
+1/(I Pi^2) FAD[{k, 0}, {k + r1, m2}, {k + r2, m3}], k]; \n
+FCClearScalarProducts[]; \n SPD[r1] = 0; \n SPD[r2] = 0; \n SPD[r1, r2] = 0; \n
+SPD[r2, x2] = 0; \n SPD[r2, x1] = 0; \n SPD[x1, x2] = 0; \n SPD[x1, r1] = 1; \n
+SPD[x2, r1] = 1; tmp2 = TID[SPD[k, x1] SPD[k, x2] 1/(I Pi^2) FAD[{k, 0},
+{k + r1, m2}, {k + r2, m3}], k];  \n FCClearScalarProducts[]; \n {tmp1,tmp2}",
+"{PaVe[1, 1, {ss, 0, ss}, {0, m2^2, m3^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True],
+PaVe[1, 1, {0, 0, 0}, {0, m2^2, m3^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]}"}
 };

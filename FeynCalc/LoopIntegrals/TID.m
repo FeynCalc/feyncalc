@@ -1098,7 +1098,7 @@ pavePrepare[ex_,np_Integer?Positive,{moms___},{ms___}, dim_]:=
 		(
 		FCPrint[3, "TID: pavePrepare: entering with ", {ex, np, {moms},{ms}}, FCDoControl->tidVerbose];
 		ex/. FCGV["PaVe"][{n__}]:>
-			(I Pi^2)PaVe[n,ExpandScalarProduct[FeynCalc`Package`momentumRoutingDenner[{moms},ScalarProduct[#,#,Dimension->dim]&]],
+			(I Pi^2)PaVe[n,ExpandScalarProduct[FCUseCache[FeynCalc`Package`momentumRoutingDenner,{{moms},scalarProduct[#,#,Dimension->dim]&},{}]/.scalarProduct->ScalarProduct],
 			{ms}, PaVeAutoOrder->paveao, PaVeAutoReduce->pavear]
 		)/; (Length[{moms}]+1)===Length[{ms}] && Length[{ms}]===np && !genpave;
 

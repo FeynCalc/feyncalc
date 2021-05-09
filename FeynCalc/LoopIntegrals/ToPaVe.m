@@ -111,8 +111,7 @@ ToPaVe[expr_, q_, OptionsPattern[]] :=
 
 (* Determine kinematic invariants according to the conventions of Denner, c.f. arXiv:1604.06792 *)
 
-momentumRoutingDenner[moms_List, fu_] :=
-	MemSet[momentumRoutingDenner[moms, fu],
+momentumRoutingDenner[moms_List, fu_, OptionsPattern[]] :=
 	Block[{firstLines, lastLine, kmax = (Length[moms] + 1)/2, res, p, repRule},
 			repRule = Thread[Rule[Table[p[i], {i, 1, 2 kmax - 1}], moms]];
 			firstLines = Transpose[Table[(p[k + l] - p[l])//fu, {l, 0, 2 kmax - 1}, {k, 1, kmax - 1}]];
@@ -123,12 +122,10 @@ momentumRoutingDenner[moms_List, fu_] :=
 				Abort[]
 			];
 			(res /. Dispatch[repRule])
-		]
-	]/; OddQ[(Length[moms])]
+		]/; OddQ[(Length[moms])];
 
-momentumRoutingDenner[moms_List, fu_] :=
-	MemSet[momentumRoutingDenner[moms, fu],
-		Block[{firstLines, lastLine, kmax = (Length[moms])/2, res, p, repRule},
+momentumRoutingDenner[moms_List, fu_, OptionsPattern[]] :=
+	Block[{firstLines, lastLine, kmax = (Length[moms])/2, res, p, repRule},
 			repRule = Thread[Rule[Table[p[i], {i, 1, 2 kmax}], moms]];
 			res = Transpose[Table[(p[k + l] - p[l])//fu, {l, 0, 2 kmax}, {k, 1, kmax}]];
 			res = Flatten[res //. {p[2 kmax + 1] -> p[0], p[x_] /; (x > 2 kmax + 1) :> p[x - 2 kmax - 1], p[0] -> 0}];
@@ -137,8 +134,7 @@ momentumRoutingDenner[moms_List, fu_] :=
 				Abort[]
 			];
 			(res /. Dispatch[repRule])
-		]
-	]/; EvenQ[(Length[moms])]
+		]/; EvenQ[(Length[moms])];
 
 toPaVe[x_,_,_,_]:=
 	x/; !FreeQ2[Head[x],PaVeHeadsList];
