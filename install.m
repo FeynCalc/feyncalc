@@ -352,12 +352,13 @@ InstallFeynCalc[OptionsPattern[]]:=
 		];
 
 		WriteString["stdout", "Checking the directory structure..."];
-		zipDir = FileNames["FeynCalc.m", unzipDir, Infinity];
+		zipDir = Select[FileNames["FeynCalc.m", unzipDir, Infinity],StringFreeQ[#,"DocumentationFiles"]&];
 		If[ Length[zipDir]===1,
 			fullPath = DirectoryName[zipDir[[1]]];
 			zipDir = Last[FileNameSplit[DirectoryName[zipDir[[1]]]]];
 			WriteString["stdout", "done! \n"],
 			WriteString["stdout", "\nFailed to recognize the directory structure of the downloaded zip file. \nInstallation aborted!"];
+			WriteString["stdout", "\nzipDir is ", zipDir];
 			Abort[]
 		];
 
