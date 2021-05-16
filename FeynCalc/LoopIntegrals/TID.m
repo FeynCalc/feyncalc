@@ -50,6 +50,7 @@ pavear::usage="";
 ffdp::usage="";
 qQQ::usage="";
 optTimeConstrained::usage="";
+optUsePaVeBasis::usage="";
 
 procanonical[l_][y_,m_] :=
 	PropagatorDenominator[y /.
@@ -116,15 +117,19 @@ TID[am_List, q_/; Head[q]=!=List, opts:OptionsPattern[]]:=
 TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 	Block[ {n, t0, t1, t3, t4, t5, t6, null1, null2, qrule,
 		res,nres,irrelevant = 0, contractlabel, fds, iter,sp,tp,
-		loopIntegral, wrapped,loopList,repIndexList,canIndexList,uniqueCanIndexList,
-		solsList, repSolList, reversedRepIndexList,reducedLoopList,
-		finalRepList,isoContract,tmp,tempIsolate,loopListOrig, tmpli, time, time0, fclcOutput,
-		optExpandScalarProduct, noTID, fadCollect, optEpsExpand
+		loopIntegral, wrapped, loopList, repIndexList, canIndexList,
+		uniqueCanIndexList, solsList, repSolList, reversedRepIndexList,
+		reducedLoopList, finalRepList, isoContract, tmp, tempIsolate,
+		loopListOrig, tmpli, time, time0, fclcOutput,
+		optExpandScalarProduct, noTID, fadCollect, optEpsExpand,
+		optToPaVe
 	},
 
-		optExpandScalarProduct = OptionValue[ExpandScalarProduct];
-		optTimeConstrained = OptionValue[TimeConstrained];
-		optEpsExpand = OptionValue[EpsExpand];
+		optExpandScalarProduct	= OptionValue[ExpandScalarProduct];
+		optTimeConstrained 		= OptionValue[TimeConstrained];
+		optEpsExpand 			= OptionValue[EpsExpand];
+		optUsePaVeBasis			= OptionValue[UsePaVeBasis];
+		optToPaVe				= OptionValue[ToPaVe];
 
 		If [OptionValue[FCVerbose]===False,
 			tidVerbose=$VeryVerbose,
@@ -308,7 +313,7 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 		FCPrint[3,"TID: Tensor parts of the original expression: ", t1, FCDoControl->tidVerbose];
 		FCPrint[3,"TID: Scalar and non-loop parts of the original expression: ", irrelevant, FCDoControl->tidVerbose];
 
-		If[	OptionValue[ToPaVe],
+		If[	optToPaVe===True || (optUsePaVeBasis===True && optToPaVe===Automatic),
 			FCPrint[1, "TID: Applying ToPaVe to the scalar part of the input expression.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
 			irrelevant = ToPaVe[irrelevant,q, FCI->True];
@@ -415,7 +420,7 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 
 				FCPrint[1,"TID: Reducing ", Length[uniqueCanIndexList], " unique 1-loop tensor integrals.", FCDoControl->tidVerbose];
 				time=AbsoluteTime[];
-				solsList= tidSingleIntegral[#, q , n, OptionValue[UsePaVeBasis]]&/@uniqueCanIndexList;
+				solsList= tidSingleIntegral[#, q , n, optUsePaVeBasis]&/@uniqueCanIndexList;
 
 				FCPrint[1, "TID: Done reducing unique 1-loop tensor integrals, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 				FCPrint[3, "TID: After the reduction: ", solsList , FCDoControl->tidVerbose];
@@ -437,7 +442,7 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 				];
 
 
-				If[	OptionValue[ToPaVe],
+				If[	optToPaVe===True || ((optUsePaVeBasis===True || !FreeQ2[solsList,FeynCalc`Package`PaVeHeadsList]) && optToPaVe===Automatic),
 					FCPrint[1, "TID: Applying ToPaVe to the list of the reduced integrals.", FCDoControl->tidVerbose];
 					time=AbsoluteTime[];
 					solsList = ToPaVe[(#/.tidPaVe->Identity),q, FCI->True]&/@solsList;
@@ -475,8 +480,6 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 
 			(* 	We had to uncontract some Lorentz indices at the beginning, so we should better contract them
 				again at the end	*)
-
-
 
 			If[	contractlabel && !FreeQ2[res,{LorentzIndex,CartesianIndex}],
 

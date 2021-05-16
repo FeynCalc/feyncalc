@@ -1065,5 +1065,9 @@ SPD[r2, x2] = 0; \n SPD[r2, x1] = 0; \n SPD[x1, x2] = 0; \n SPD[x1, r1] = 1; \n
 SPD[x2, r1] = 1; tmp2 = TID[SPD[k, x1] SPD[k, x2] 1/(I Pi^2) FAD[{k, 0},
 {k + r1, m2}, {k + r2, m3}], k];  \n FCClearScalarProducts[]; \n {tmp1,tmp2}",
 "{PaVe[1, 1, {ss, 0, ss}, {0, m2^2, m3^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True],
-PaVe[1, 1, {0, 0, 0}, {0, m2^2, m3^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]}"}
+PaVe[1, 1, {0, 0, 0}, {0, m2^2, m3^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]}"},
+{"fcstTID-ID61", "TID[SPD[p, q] FAD[q, {q - p, m}] FVD[q, mu], q, UsePaVeBasis -> True,
+ToPaVe -> Automatic, FCE -> True]","(I/2)*Pi^2*A0[m^2]*FVD[p, mu] +
+(I/2)*Pi^2*FVD[p, mu]*(-1/2*A0[m^2]/SPD[p, p] +
+(B0[SPD[p, p], 0, m^2]*(m^2 - SPD[p, p]))/(2*SPD[p, p]))*(m^2 - SPD[p, p])"}
 };
