@@ -16,5 +16,4 @@
 (* Examples *)
 
 
-
 GP[p, {\[Mu], a}, {\[Nu], b}]

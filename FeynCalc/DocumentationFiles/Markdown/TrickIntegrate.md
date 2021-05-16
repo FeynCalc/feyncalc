@@ -9,11 +9,13 @@ Epsilon.
 ###  Examples 
 
 ```mathematica
-TrickIntegrate[(1 - t)^(a Epsilon - 1) g[t], t] 
- 
-TrickIntegrate[t^(a Epsilon - 1) g[t], t]
+TrickIntegrate[(1 - t)^(a Epsilon - 1) g[t], t]
 ```
 
 $$\text{Hold}[\text{Integrate}]\left[g(t) (1-t)^{a \varepsilon -1},\{t,0,1\}\right]$$
+
+```mathematica
+TrickIntegrate[t^(a Epsilon - 1) g[t], t]
+```
 
 $$\text{Hold}[\text{Integrate}]\left[g(t) t^{a \varepsilon -1},\{t,0,1\}\right]$$

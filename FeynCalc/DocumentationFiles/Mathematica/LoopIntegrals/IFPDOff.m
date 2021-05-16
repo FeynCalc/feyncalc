@@ -16,11 +16,9 @@
 (* Examples *)
 
 
-
 IFPD[Momentum[p],m]
-
 %//StandardForm
 
-IFPDOff[%,p]
 
+IFPDOff[%,p]
 %//StandardForm

@@ -16,9 +16,10 @@
 (* Examples *)
 
 
-
 D0[p10,p12,p23,p30,p20,p13,m1^2,m2^2,m3^2,m4^2]
 
+
 PaVeOrder[D0[p10,p12,p23,p30,p20,p13,m1^2,m2^2,m3^2,m4^2],PaVeOrderList->{p13,p20}]
+
 
 PaVeOrder[%]

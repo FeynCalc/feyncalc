@@ -16,11 +16,13 @@
 (* Examples *)
 
 
-
 ToDistribution[(1-x)^(Epsilon-1),x,PlusDistribution->pd]
+
 
 ToDistribution[(1-x)^(Epsilon-2),x,PlusDistribution->Identity]
 
+
 Series2[Integrate[(1-x)^(Epsilon-2),{x,0,1},GenerateConditions->False],Epsilon,3]
+
 
 Integrate2[ToDistribution[(1-x)^(Epsilon-2),x],{x,0,1}]

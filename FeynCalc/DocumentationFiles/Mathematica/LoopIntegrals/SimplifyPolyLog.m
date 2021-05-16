@@ -16,42 +16,55 @@
 (* Examples *)
 
 
+SimplifyPolyLog[PolyLog[2,1/x]]
 
-sip[y_] := y == SimplifyPolyLog[y]
-sip[PolyLog[2,1/x]]
 
-sip[PolyLog[2,x]]
+SimplifyPolyLog[PolyLog[2,x]]
 
-sip[PolyLog[2,1-x^2]]
 
-sip[PolyLog[2,x^2]]
+SimplifyPolyLog[PolyLog[2,1-x^2]]
 
-sip[PolyLog[2,-x/(1-x)]]
 
-sip[PolyLog[2,x/(x-1)]]
+SimplifyPolyLog[PolyLog[2,x^2]]
 
-sip[Nielsen[1,2,-x/(1-x)]]
 
-sip[PolyLog[3,-1/x]]
+SimplifyPolyLog[PolyLog[2,-x/(1-x)]]
 
-sip[PolyLog[3,1-x]]
 
-sip[PolyLog[3,x^2]]
+SimplifyPolyLog[PolyLog[2,x/(x-1)]]
 
-sip[PolyLog[3,-x/(1-x)]]
 
-sip[PolyLog[3,1-1/x]]
+SimplifyPolyLog[Nielsen[1,2,-x/(1-x)]]
 
-sip[PolyLog[4,-x/(1-x)]]
 
-sip[Log[a+b/c]]
+SimplifyPolyLog[PolyLog[3,-1/x]]
 
-sip[Log[1/x]]
 
-sip[ArcTanh[x]]
+SimplifyPolyLog[PolyLog[3,1-x]]
 
-sip[ArcSinh[x]]
 
-sip[ArcCosh[x]]
+SimplifyPolyLog[PolyLog[3,x^2]]
 
-Clear[sip]
+
+SimplifyPolyLog[PolyLog[3,-x/(1-x)]]
+
+
+SimplifyPolyLog[PolyLog[3,1-1/x]]
+
+
+SimplifyPolyLog[PolyLog[4,-x/(1-x)]]
+
+
+SimplifyPolyLog[Log[a+b/c]]
+
+
+SimplifyPolyLog[Log[1/x]]
+
+
+SimplifyPolyLog[ArcTanh[x]]
+
+
+SimplifyPolyLog[ArcSinh[x]]
+
+
+SimplifyPolyLog[ArcCosh[x]]

@@ -9,8 +9,7 @@ Applying the replacement rule directly to the expression doesn't give the desire
 ###  Examples 
 
 ```mathematica
-FCI[D MTD[\[Mu], \[Nu]]] 
- 
+FCI[D MTD[\[Mu], \[Nu]]]
 % /. D -> 4 - 2 Epsilon
 ```
 
@@ -21,8 +20,7 @@ $$(4-2 \varepsilon ) g_{\{4-2 \varepsilon ,4-2 \varepsilon \}}{}^{\mu \nu }$$
 With FCReplaceD we get what we want
 
 ```mathematica
-FCReplaceD[D MTD[\[Mu], \[Nu]], D -> 4 - 2 Epsilon] 
- 
+FCReplaceD[D MTD[\[Mu], \[Nu]], D -> 4 - 2 Epsilon]
 ChangeDimension[%, 4]
 ```
 

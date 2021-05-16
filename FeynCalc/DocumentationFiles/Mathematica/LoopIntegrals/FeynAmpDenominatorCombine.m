@@ -16,13 +16,10 @@
 (* Examples *)
 
 
-
- FAD[q] FAD[q-p]
-
+FAD[q] FAD[q-p]
 FeynAmpDenominatorCombine[%]
-
 %//FCE//StandardForm
 
-FeynAmpDenominatorSplit[%]
 
+FeynAmpDenominatorSplit[%]
 %//FCE//StandardForm

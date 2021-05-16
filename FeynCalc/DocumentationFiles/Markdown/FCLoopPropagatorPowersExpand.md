@@ -5,16 +5,8 @@ FCLoopPropagatorPowersExpand[exp]  rewrites propagators raised to integer powers
 ###  Examples 
 
 ```mathematica
-SFAD[{q, m, 2}] 
- 
-FCLoopPropagatorPowersExpand[%] 
- 
-% // StandardForm 
- 
-SFAD[{q, m, 2}, q + p] 
- 
-FCLoopPropagatorPowersExpand[%] 
- 
+SFAD[{q, m, 2}]
+FCLoopPropagatorPowersExpand[%]
 % // StandardForm
 ```
 
@@ -24,6 +16,12 @@ $$![1oi0jl02ec9us](img/1oi0jl02ec9us.png)$$
 
 ```
 (*FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], 0, -m, {1, 1}], StandardPropagatorDenominator[Momentum[q, D], 0, -m, {1, 1}]]*)
+```
+
+```mathematica
+SFAD[{q, m, 2}, q + p]
+FCLoopPropagatorPowersExpand[%]
+% // StandardForm
 ```
 
 $$![1kubiodiha3xg](img/1kubiodiha3xg.png)$$

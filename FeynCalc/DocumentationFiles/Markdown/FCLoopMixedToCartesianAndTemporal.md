@@ -5,26 +5,27 @@ FCLoopMixedToCartesianAndTemporal[int, {q1, q2, ...}] attempts to convert loop i
 ###  Examples 
 
 ```mathematica
-FCI@SFAD[q] 
- 
-FCLoopMixedToCartesianAndTemporal[%, {q}, FCE -> True] 
- 
-FCI@SFAD[{q1 + q2 + p, m^2}] 
- 
-FCLoopMixedToCartesianAndTemporal[%, {q1, q2}] 
- 
-FCI[TC[k] FVD[k, mu] FAD[k, k + p]] 
- 
-FCLoopMixedToCartesianAndTemporal[%, {k}]
+FCI@SFAD[q]
+FCLoopMixedToCartesianAndTemporal[%, {q}, FCE -> True]
 ```
 
 $$![0cj9w44r1gyto](img/0cj9w44r1gyto.png)$$
 
 $$![0pdp46k5lt9dp](img/0pdp46k5lt9dp.png)$$
 
+```mathematica
+FCI@SFAD[{q1 + q2 + p, m^2}]
+FCLoopMixedToCartesianAndTemporal[%, {q1, q2}]
+```
+
 $$![1tdm07yihhgyz](img/1tdm07yihhgyz.png)$$
 
 $$![0sp07mox1owio](img/0sp07mox1owio.png)$$
+
+```mathematica
+FCI[TC[k] FVD[k, mu] FAD[k, k + p]]
+FCLoopMixedToCartesianAndTemporal[%, {k}]
+```
 
 $$\frac{k^0 k^{\text{mu}}}{k^2.(k+p)^2}$$
 

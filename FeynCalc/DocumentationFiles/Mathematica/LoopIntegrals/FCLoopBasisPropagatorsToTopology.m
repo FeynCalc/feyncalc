@@ -7,14 +7,15 @@
 
 (* ::Subsection:: *)
 (* Examples *)
-{FAD[q]}
 
+
+{FAD[q]}
 FCLoopBasisPropagatorsToTopology[%]
+
 
 {FAD[{q,m}]}
-
 FCLoopBasisPropagatorsToTopology[%]
 
-{FAD[{q,m}],SPD[q,p]}
 
+{FAD[{q,m}],SPD[q,p]}
 FCLoopBasisPropagatorsToTopology[%]

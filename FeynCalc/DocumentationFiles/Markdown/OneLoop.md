@@ -9,18 +9,18 @@ B0, C0, D0, TID, TID, TIDL, $LimitTo4
 ###  Examples 
 
 ```mathematica
--I/Pi^2 FAD[{q, m}] 
- 
-OneLoop[q, %] 
- 
-I ((el^2)/(16 Pi^4 (1 - D))) FAD[{q, mf}, {q - k, mf}] DiracTrace[(mf + GSD[q - k]) . GAD[\[Mu]] . (mf + GSD[q]) . GAD[\[Mu]]] 
- 
+-I/Pi^2 FAD[{q, m}]
 OneLoop[q, %]
 ```
 
 $$-\frac{i}{\pi ^2 \left(q^2-m^2\right)}$$
 
 $$\text{A}_0\left(m^2\right)$$
+
+```mathematica
+I ((el^2)/(16 Pi^4 (1 - D))) FAD[{q, mf}, {q - k, mf}] DiracTrace[(mf + GSD[q - k]) . GAD[\[Mu]] . (mf + GSD[q]) . GAD[\[Mu]]] 
+OneLoop[q, %]
+```
 
 $$\frac{i \text{el}^2 \text{tr}\left((\gamma \cdot (q-k)+\text{mf}).\gamma ^{\mu }.(\text{mf}+\gamma \cdot q).\gamma ^{\mu }\right)}{16 \pi ^4 (1-D) \left(q^2-\text{mf}^2\right).\left((q-k)^2-\text{mf}^2\right)}$$
 

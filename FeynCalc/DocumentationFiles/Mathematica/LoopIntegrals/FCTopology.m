@@ -16,7 +16,6 @@
 (* Examples *)
 
 
-
 FCTopology[topo1,{SFAD[p1],SFAD[p2],SFAD[Q-p1-p2],SFAD[Q-p2],SFAD[Q-p1]}]
 
 

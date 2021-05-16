@@ -7,14 +7,15 @@
 
 (* ::Subsection:: *)
 (* Examples *)
-FAD[{q,m1}]
 
+
+FAD[{q,m1}]
 ToPaVe[%,q]
+
 
 FAD[{q,m1},{q+p1,m2}]
-
 ToPaVe[%,q]
 
-FAD[{q,m1},{q+p1,m2},{q+p2,m3},{q+p3,m4},{q+p4,m5}]
 
+FAD[{q,m1},{q+p1,m2},{q+p2,m3},{q+p3,m4},{q+p4,m5}]
 ToPaVe[%,q]

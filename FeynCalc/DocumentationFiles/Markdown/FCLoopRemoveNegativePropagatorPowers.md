@@ -5,8 +5,7 @@ FCLoopRemoveNegativePropagatorPowers[exp] rewrites propagators raised to integer
 ###  Examples 
 
 ```mathematica
-SFAD[{q, m, -1}] 
- 
+SFAD[{q, m, -1}]
 FCLoopRemoveNegativePropagatorPowers[%]
 % // StandardForm
 ```
@@ -20,8 +19,7 @@ $$q^2-m$$
 ```
 
 ```mathematica
-SFAD[{q, m}, q + p, {q, m, -2}] 
- 
+SFAD[{q, m}, q + p, {q, m, -2}]
 FCLoopRemoveNegativePropagatorPowers[%]
 % // StandardForm
 

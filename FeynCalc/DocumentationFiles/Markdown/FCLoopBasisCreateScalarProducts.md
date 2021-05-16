@@ -5,15 +5,19 @@ FCLoopBasisCreateScalarProducts {q1, q2, ...}, {p1, p2, ...}, {d1, d2, ...}, hea
 ###  Examples 
 
 ```mathematica
-FCLoopBasisCreateScalarProducts[{l}, {}, {D}, Pair] 
- 
-FCLoopBasisCreateScalarProducts[{l}, {p1, p2}, {4}, Pair] 
- 
+FCLoopBasisCreateScalarProducts[{l}, {}, {D}, Pair]
+```
+
+$$\text{FCLoopBasisCreateScalarProducts}(\{l\},\{\},\{D\},\text{Pair})$$
+
+```mathematica
+FCLoopBasisCreateScalarProducts[{l}, {p1, p2}, {4}, Pair]
+```
+
+$$\text{FCLoopBasisCreateScalarProducts}(\{l\},\{\text{p1},\text{p2}\},\{4\},\text{Pair})$$
+
+```mathematica
 FCLoopBasisCreateScalarProducts[{l}, {}, {D - 1}, CartesianPair]
 ```
 
-$$\left\{l^2\right\}$$
-
-$$\left\{\overline{l}^2,\overline{l}\cdot \overline{\text{p1}},\overline{l}\cdot \overline{\text{p2}}\right\}$$
-
-$$\left\{l^2\right\}$$
+$$\text{FCLoopBasisCreateScalarProducts}(\{l\},\{\},\{D-1\},\text{CartesianPair})$$

@@ -9,12 +9,7 @@ IFPD, IFPDOn.
 ###  Examples 
 
 ```mathematica
-IFPD[Momentum[p], m] 
- 
-% // StandardForm 
- 
-IFPDOff[%, p] 
- 
+IFPD[Momentum[p], m]
 % // StandardForm
 ```
 
@@ -22,6 +17,11 @@ $$(\overline{p}^2\text{ - }m^2)$$
 
 ```
 (*IFPD[Momentum[p], m]*)
+```
+
+```mathematica
+IFPDOff[%, p]
+% // StandardForm
 ```
 
 $$\overline{p}^2-m^2$$

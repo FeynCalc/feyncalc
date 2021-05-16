@@ -16,15 +16,9 @@
 (* Examples *)
 
 
-
 t=RHI[{2,0, 0,0, 0}, {1, 1, 1, 1, 1}]
-
 t//RHI2FC
-
 RussianTrick[%//RHI2FC,q2]
-
 FC2RHI[%]
-
 Solve2[%,t]
-
 Clear[t]

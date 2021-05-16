@@ -16,9 +16,6 @@
 (* Examples *)
 
 
-
 FAD[{q,m},{q-p,0}]
-
 FeynAmpDenominatorExplicit[%]
-
 %//FCE//StandardForm

@@ -7,8 +7,12 @@
 
 (* ::Subsection:: *)
 (* Examples *)
+
+
 FCLoopBasisCreateScalarProducts[{l},{},{D},Pair]
 
+
 FCLoopBasisCreateScalarProducts[{l},{p1,p2},{4},Pair]
+
 
 FCLoopBasisCreateScalarProducts[{l},{},{D-1},CartesianPair]

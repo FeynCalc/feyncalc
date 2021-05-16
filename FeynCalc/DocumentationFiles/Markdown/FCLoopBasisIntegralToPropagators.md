@@ -5,26 +5,27 @@ FCLoopBasisIntegralToPropagators[int, {q1, q2, ...}] is an auxiliary function th
 ###  Examples 
 
 ```mathematica
-SFAD[p1] 
- 
-FCLoopBasisIntegralToPropagators[%, {p1}] 
- 
-SFAD[p1, p2] 
- 
-FCLoopBasisIntegralToPropagators[%, {p1, p2}] 
- 
-SPD[q, p] SFAD[q, q - p, q - p] 
- 
-FCLoopBasisIntegralToPropagators[%, {q}]
+SFAD[p1]
+FCLoopBasisIntegralToPropagators[%, {p1}]
 ```
 
 $$![05h81y196ibaj](img/05h81y196ibaj.png)$$
 
 $$![14puvat5dwhz3](img/14puvat5dwhz3.png)$$
 
+```mathematica
+SFAD[p1, p2]
+FCLoopBasisIntegralToPropagators[%, {p1, p2}]
+```
+
 $$![1htwv9io5o929](img/1htwv9io5o929.png)$$
 
 $$![059iex2rxo0vc](img/059iex2rxo0vc.png)$$
+
+```mathematica
+SPD[q, p] SFAD[q, q - p, q - p]
+FCLoopBasisIntegralToPropagators[%, {q}]
+```
 
 $$![1fgq8iiziefty](img/1fgq8iiziefty.png)$$
 

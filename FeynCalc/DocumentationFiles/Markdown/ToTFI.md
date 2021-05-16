@@ -9,13 +9,10 @@ FromTFI.
 ###  Examples 
 
 ```mathematica
-FAD[q1, q1 - p, {q2, M}, {q2 - p, m}, q1 - q2] 
- 
-ToTFI[%, q1, q2, p] 
- 
-% // StandardForm 
- 
-SOD[q1] SOD[q2] FAD[q1, q1 - p, {q2, M}, {q2 - p, m}, q1 - q2] // FCI
+FAD[q1, q1 - p, {q2, M}, {q2 - p, m}, q1 - q2]
+ToTFI[%, q1, q2, p]
+% // StandardForm
+
 ```
 
 $$\frac{1}{\text{q1}^2.(\text{q1}-p)^2.\left(\text{q2}^2-M^2\right).\left((\text{q2}-p)^2-m^2\right).(\text{q1}-\text{q2})^2}$$
@@ -32,6 +29,10 @@ $$\text{TFI}\left(D,p^2,\left(
 
 ```
 (*TFI[D, SPD[p, p], {{1, 0}, {1, M}, {1, 0}, {1, m}, {1, 0}}]*)
+```
+
+```mathematica
+SOD[q1] SOD[q2] FAD[q1, q1 - p, {q2, M}, {q2 - p, m}, q1 - q2] // FCI
 ```
 
 $$\frac{(\Delta \cdot \text{q1}) (\Delta \cdot \text{q2})}{\text{q1}^2.(\text{q1}-p)^2.\left(\text{q2}^2-M^2\right).\left((\text{q2}-p)^2-m^2\right).(\text{q1}-\text{q2})^2}$$

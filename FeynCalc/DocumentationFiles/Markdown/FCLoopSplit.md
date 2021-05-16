@@ -5,18 +5,18 @@ FCLoopSplit[exp, {q1, q2, ...}]  separates exp into following four pieces: 1) 	t
 ###  Examples 
 
 ```mathematica
-FVD[q, \[Mu]] FAD[{q, m}] 
- 
-FCLoopSplit[%, {q}] 
- 
-x + GSD[p + q] FAD[{q, m}] 
- 
+FVD[q, \[Mu]] FAD[{q, m}]
 FCLoopSplit[%, {q}]
 ```
 
 $$\frac{q^{\mu }}{q^2-m^2}$$
 
 $$\left\{0,0,0,\frac{q^{\mu }}{q^2-m^2}\right\}$$
+
+```mathematica
+x + GSD[p + q] FAD[{q, m}]
+FCLoopSplit[%, {q}]
+```
 
 $$\frac{\gamma \cdot (p+q)}{q^2-m^2}+x$$
 

@@ -7,14 +7,15 @@
 
 (* ::Subsection:: *)
 (* Examples *)
-SFAD[{q+p,m^2,2}]
 
+
+SFAD[{q+p,m^2,2}]
 FCLoopNonIntegerPropagatorPowersFreeQ[FCI[%]]
+
 
 SFAD[{q+p,m^2,n}]
-
 FCLoopNonIntegerPropagatorPowersFreeQ[FCI[%]]
 
-CFAD[{l,m^2,1/2}]
 
+CFAD[{l,m^2,1/2}]
 FCLoopNonIntegerPropagatorPowersFreeQ[FCI[%]]

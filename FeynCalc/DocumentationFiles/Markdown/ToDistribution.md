@@ -9,19 +9,25 @@ PlusDistribution.
 ###  Examples 
 
 ```mathematica
-ToDistribution[(1 - x)^(Epsilon - 1), x, PlusDistribution -> pd] 
- 
-ToDistribution[(1 - x)^(Epsilon - 2), x, PlusDistribution -> Identity] 
- 
-Series2[Integrate[(1 - x)^(Epsilon - 2), {x, 0, 1}, GenerateConditions -> False], Epsilon, 3] 
- 
-Integrate2[ToDistribution[(1 - x)^(Epsilon - 2), x], {x, 0, 1}]
+ToDistribution[(1 - x)^(Epsilon - 1), x, PlusDistribution -> pd]
 ```
 
 $$\frac{1}{6} \varepsilon ^3 \text{pd}\left(\frac{\log ^3(1-x)}{1-x}\right)+\frac{1}{2} \varepsilon ^2 \text{pd}\left(\frac{\log ^2(1-x)}{1-x}\right)+\varepsilon  \text{pd}\left(\frac{\log (1-x)}{1-x}\right)+\text{pd}\left(\frac{1}{1-x}\right)+\frac{\delta (1-x)}{\varepsilon }$$
 
+```mathematica
+ToDistribution[(1 - x)^(Epsilon - 2), x, PlusDistribution -> Identity]
+```
+
 $$-\frac{\delta '(1-x)}{\varepsilon }+\frac{\varepsilon ^3 \log ^3(1-x)}{6 (1-x)^2}+\frac{\varepsilon ^2 \log ^2(1-x)}{2 (1-x)^2}+\frac{\varepsilon  \log (1-x)}{(1-x)^2}+\frac{1}{(1-x)^2}$$
 
+```mathematica
+Series2[Integrate[(1 - x)^(Epsilon - 2), {x, 0, 1}, GenerateConditions -> False], Epsilon, 3]
+```
+
 $$-\varepsilon ^3-\varepsilon ^2-\varepsilon -1$$
+
+```mathematica
+Integrate2[ToDistribution[(1 - x)^(Epsilon - 2), x], {x, 0, 1}]
+```
 
 $$-\varepsilon ^3-\varepsilon ^2-\varepsilon -1$$

@@ -16,10 +16,13 @@
 (* Examples *)
 
 
-
 ClearAll[t,s]
-PaVeOrder[D0[me2,me2,mw2,mw2,t,s,me2,0,me2,0],PaVeOrderList->{me2,me2,0,0}]
+
 
 PaVeOrder[D0[me2,me2,mw2,mw2,t,s,me2,0,me2,0],PaVeOrderList->{me2,me2,0,0}]
+
+
+PaVeOrder[D0[me2,me2,mw2,mw2,t,s,me2,0,me2,0],PaVeOrderList->{me2,me2,0,0}]
+
 
 PaVeOrder[D0[a,b,c,d,e,f,m12,m22,m32,m42]+D0[me2,me2,mw2,mw2,t,s,me2,0,me2,0],PaVeOrderList->{{me2,me2,0,0},{f,e}}]

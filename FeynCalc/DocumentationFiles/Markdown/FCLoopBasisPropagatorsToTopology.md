@@ -5,16 +5,7 @@ FCLoopBasisPropagatorsToTopology[{pr1, pr2, ...}] takes the list of Pairs and Fe
 ###  Examples 
 
 ```mathematica
-{FAD[q]} 
- 
-FCLoopBasisPropagatorsToTopology[%] 
- 
-{FAD[{q, m}]} 
- 
-FCLoopBasisPropagatorsToTopology[%] 
- 
-{FAD[{q, m}], SPD[q, p]} 
- 
+{FAD[q]}
 FCLoopBasisPropagatorsToTopology[%]
 ```
 
@@ -22,9 +13,19 @@ $$\left\{\frac{1}{q^2}\right\}$$
 
 $$\left\{q^2\right\}$$
 
+```mathematica
+{FAD[{q, m}]}
+FCLoopBasisPropagatorsToTopology[%]
+```
+
 $$\left\{\frac{1}{q^2-m^2}\right\}$$
 
 $$\left\{q^2-m^2\right\}$$
+
+```mathematica
+{FAD[{q, m}], SPD[q, p]}
+FCLoopBasisPropagatorsToTopology[%]
+```
 
 $$\left\{\frac{1}{q^2-m^2},p\cdot q\right\}$$
 

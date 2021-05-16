@@ -16,11 +16,10 @@
 (* Examples *)
 
 
-
 FAD[q1,q1-p,{q2,M},{q2-p,m},q1-q2]
-
 ToTFI[%,q1,q2,p]
-
 %//StandardForm
+
+
 
 SOD[q1] SOD[q2]FAD[q1,q1-p,{q2,M},{q2-p,m},q1-q2]//FCI

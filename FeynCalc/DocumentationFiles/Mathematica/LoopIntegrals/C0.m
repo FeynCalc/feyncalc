@@ -16,9 +16,10 @@
 (* Examples *)
 
 
-
 C0[a,b,c, m12,m22,m32]
 
+
 C0[b,a,c,m32,m22,m12]//PaVeOrder
+
 
 PaVeOrder[C0[b,a,c,m32,m22,m12],PaVeOrderList->{c,a}]

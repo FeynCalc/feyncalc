@@ -1,6 +1,6 @@
 ##  PaVeReduce 
 
-PaVeReduce[expr] reduces all Passarino-Veltman integrals (i.e. all PaVe's) in expr down to scalar A0, B0, C0 and D0..
+`PaVeReduce[expr]` reduces all Passarino-Veltman integrals (i.e. all PaVe's) in expr down to scalar `A0`, `B0`, `C0` and `D0`.
 
 ###  See also 
 
@@ -9,27 +9,24 @@ FRH, PaVeOrder.
 ###  Examples 
 
 ```mathematica
-PaVeReduce[PaVe[1, 2, {s, m^2, m^2}, {m^2, m^2, M^2}], IsolateNames -> FF] 
- 
-FRH[%] 
- 
-PaVeReduce[PaVe[2, {SmallVariable[me2], mw2, t}, {SmallVariable[me2], 0, mw2}],WriteOutPaVe -> "p"] 
- 
-TableForm[ReadList[If[$OperatingSystem === "MacOS", ":", ""] <> "pPaVe2Csmame2mw2tCsmame20mw2.s", String]] 
- 
-DeleteFile /@ FileNames["pPaVe2Csmame2mw2tCsmame20mw2.s"];
-se = SmallVariable[ME2];
-d122 = PaVeReduce[PaVe[1, 2, 2, {se, MW2, MW2, se, S, T}, {0, se, 0, se}], Mandelstam -> {S, T, U, 2 MW2}, IsolateNames -> F] // FRH 
- 
-Write2["fctd122.for", d122res == d122, FormatType -> FortranForm];
-TableForm[ReadList[If[$OperatingSystem === "MacOS", ":", ""] <> "fctd122.for",String]] 
- 
-DeleteFile /@ FileNames["fctd122.for"]; Clear[d122, se]; 
+PaVeReduce[PaVe[1, 2, {s, m^2, m^2}, {m^2, m^2, M^2}], IsolateNames -> FF]
+FRH[%]
 ```
 
 $$\text{FF}(36)$$
 
 $$\left(\frac{2 (2 D-3) M^2}{(D-2) \left(4 m^2-s\right)^2}-\frac{M^2 s}{2 m^2 \left(4 m^2-s\right)^2}-\frac{4 m^2}{\left(4 m^2-s\right)^2}+\frac{s}{\left(4 m^2-s\right)^2}\right) \text{B}_0\left(m^2,m^2,M^2\right)+\left(-\frac{2 (D-1) M^2}{(D-2) \left(4 m^2-s\right)^2}+\frac{4 m^2}{(D-2) \left(4 m^2-s\right)^2}-\frac{s}{(D-2) \left(4 m^2-s\right)^2}\right) \text{B}_0\left(s,m^2,m^2\right)+\left(-\frac{2 (D-1) M^4}{(D-2) \left(4 m^2-s\right)^2}-\frac{D M^2 s}{(D-2) \left(4 m^2-s\right)^2}+\frac{4 D m^2 M^2}{(D-2) \left(4 m^2-s\right)^2}\right) \text{C}_0\left(m^2,m^2,s,m^2,M^2,m^2\right)-\frac{\text{A}_0\left(M^2\right)}{2 m^2 \left(4 m^2-s\right)}+\frac{\text{A}_0\left(m^2\right)}{2 m^2 \left(4 m^2-s\right)}$$
+
+```mathematica
+PaVeReduce[PaVe[2, {SmallVariable[me2], mw2, t}, {SmallVariable[me2], 0, mw2}], WriteOutPaVe -> "p"]
+TableForm[ReadList[If[$OperatingSystem === "MacOS", ":", ""] <> "pPaVe2Csmame2mw2tCsmame20mw2.s", String]]
+DeleteFile /@ FileNames["pPaVe2Csmame2mw2tCsmame20mw2.s"];
+se = SmallVariable[ME2];
+d122 = PaVeReduce[PaVe[1, 2, 2, {se, MW2, MW2, se, S, T}, {0, se, 0, se}], Mandelstam -> {S, T, U, 2 MW2}, IsolateNames -> F] // FRH
+Write2["fctd122.for", d122res == d122, FormatType -> FortranForm];
+TableForm[ReadList[If[$OperatingSystem === "MacOS", ":", ""] <> "fctd122.for", String]]
+DeleteFile /@ FileNames["fctd122.for"]; Clear[d122, se]; 
+```
 
 $$\frac{\text{B}_0(\text{mw2},0,\text{mw2})}{\text{mw2}-t}-\frac{\text{B}_0(t,\text{mw2},\text{me2})}{\text{mw2}-t}$$
 

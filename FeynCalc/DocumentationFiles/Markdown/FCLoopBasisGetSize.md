@@ -5,20 +5,26 @@ FCLoopBasisGetSize[n1, n2] returns the number of linearly independent propagator
 ###  Examples 
 
 ```mathematica
-FCLoopBasisGetSize[1, 0] 
- 
-FCLoopBasisGetSize[2, 1] 
- 
-FCLoopBasisGetSize[3, 2] 
- 
-FCLoopBasisGetSize[4, 1]
+FCLoopBasisGetSize[1, 0]
 ```
 
 $$1$$
 
+```mathematica
+FCLoopBasisGetSize[2, 1]
+```
+
 $$5$$
 
+```mathematica
+FCLoopBasisGetSize[3, 2]
+```
+
 $$12$$
+
+```mathematica
+FCLoopBasisGetSize[4, 1]
+```
 
 $$14$$
 

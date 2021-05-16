@@ -1,6 +1,6 @@
 ##  FeynAmpDenominator 
 
-FeynAmpDenominator[...] represents the inverse denominators of the propagators, i.e. FeynAmpDenominator[x] is 1/x. Different propagator denominators are represented using special heads such as PropagatorDenominator, StandardPropagatorDenominator, CartesianPropagatorDenominator etc..
+`FeynAmpDenominator[...]` represents the inverse denominators of the propagators, i.e. `FeynAmpDenominator[x]` is $1/x$. Different propagator denominators are represented using special heads such as `PropagatorDenominator`, `StandardPropagatorDenominator`, `CartesianPropagatorDenominator` etc.
 
 ###  See also 
 
@@ -8,19 +8,50 @@ FAD, SFAD, CFAD, GFAD, FeynAmpDenominatorSimplify.
 
 ###  Examples 
 
-The old way to represent standard Lorentzian propagators is to use PropagatorDenominator. Here the sign of the mass term is fixed to be $-1$ and no information on the $I eta$- prescription is available. Furterhmore, this way it is not possible to enter eikonal propagators
+The legacy way to represent standard Lorentzian propagators is to use `PropagatorDenominator`. Here the sign of the mass term is fixed to be $-1$ and no information on the $i \eta$- prescription is available. Furthermore, this way it is not possible to enter eikonal propagators
 
 ```mathematica
-FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], m]] 
- 
-FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], m], PropagatorDenominator[Momentum[p - q, D], m]]
+FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], m]]
 ```
 
 $$\frac{1}{p^2-m^2}$$
 
+```mathematica
+FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], m], PropagatorDenominator[Momentum[p - q, D], m]]
+```
+
 $$\frac{1}{\left(p^2-m^2\right).\left((p-q)^2-m^2\right)}$$
 
-The shortcut to enter FeynAmpDenominators with PropagatorDenominators is FAD
+It is worth noting that the Euclidean mass dependence still can be introduced via a trick where the mass symbol is multiplied by the imaginary unit $i$
+
+```mathematica
+FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], I m]]
+% // FeynAmpDenominatorExplicit
+```
+
+$$\frac{1}{p^2--m^2}$$
+
+$$\frac{1}{m^2+p^2}$$
+
+The shortcut to enter `FeynAmpDenominator`s with `PropagatorDenominator`s is `FAD`
+
+```mathematica
+FAD[p]
+```
+
+$$\frac{1}{p^2}$$
+
+```mathematica
+FAD[{p, m}]
+```
+
+$$\frac{1}{p^2-m^2}$$
+
+```mathematica
+FAD[{p, m, 3}]
+```
+
+$$\frac{1}{\left(p^2-m^2\right)^3}$$
 
 ```mathematica
 FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], m]] // FCE // StandardForm
@@ -28,79 +59,91 @@ FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], m]] // FCE // StandardF
 (*FAD[{p, m}]*)
 ```
 
-Since version 9.3, a more flexible input is possible using StandardPropagatorDenominator
+Since version 9.3, a more flexible input is possible using `StandardPropagatorDenominator`
 
 ```mathematica
 FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, -m^2, {1, 1}]]
 ```
 
-$$![19evm32dto2eg](img/19evm32dto2eg.png)$$
+$$![0qbiy7v4zeoom](img/0qbiy7v4zeoom.png)$$
 
 The mass term can be anything, as long as it does not depend on the loop momenta
 
 ```mathematica
-FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, m^2, {1, 1}]] 
- 
-FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, MM, {1, 1}]] 
- 
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, m^2, {1, 1}]]
+```
+
+$$![0i0pl6dp5juar](img/0i0pl6dp5juar.png)$$
+
+```mathematica
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, -m^2, {1, 1}]]
+```
+
+$$![0k3eq5pflips6](img/0k3eq5pflips6.png)$$
+
+```mathematica
 FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, SPD[q, q], {1, 1}]]
 ```
 
-$$![1a3d1ltzejrqh](img/1a3d1ltzejrqh.png)$$
+$$![0n54hvs4nttmd](img/0n54hvs4nttmd.png)$$
 
-$$![0fr4uh4jilvcu](img/0fr4uh4jilvcu.png)$$
-
-$$![1jz4gmudbp5u9](img/1jz4gmudbp5u9.png)$$
-
-One can also change the sign of the  $I eta$- prescription, although currently no internal functions make use of it
+One can also change the sign of $i \eta$, although currently no internal functions make use of it
 
 ```mathematica
 FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, -m^2, {1, -1}]]
 ```
 
-$$![0dnpb8w5ni3v7](img/0dnpb8w5ni3v7.png)$$
+$$![17h5rp2m74q0a](img/17h5rp2m74q0a.png)$$
 
-The propagator may be raised to integer or symbolic powers
+The propagator may also be raised to integer or symbolic powers
 
 ```mathematica
-FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, m^2, {3, 1}]] 
- 
-FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, m^2, {-2, 1}]] 
- 
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, m^2, {3, 1}]]
+```
+
+$$![07ytcgwiuldz5](img/07ytcgwiuldz5.png)$$
+
+```mathematica
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, m^2, {-2, 1}]]
+```
+
+$$![1dwphv0x9fzxh](img/1dwphv0x9fzxh.png)$$
+
+```mathematica
 FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, m^2, {n, 1}]]
 ```
 
-$$![0g68ehpo1q7hj](img/0g68ehpo1q7hj.png)$$
+$$![0lr8c5ljdog2s](img/0lr8c5ljdog2s.png)$$
 
-$$![128mq39irpwm5](img/128mq39irpwm5.png)$$
-
-$$![1ka7ty0h2syps](img/1ka7ty0h2syps.png)$$
-
-Eikonal propagators are also supported
+Eikonal propagators are fully supported
 
 ```mathematica
-FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, D], Momentum[q, D]], -m^2, {1, 1}]] 
- 
-FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, D], Momentum[q, D]], 0, {1, 1}]]
+FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, D], Momentum[q, D]], -m^2, {1, 1}]]
 ```
 
 $$\frac{1}{(p\cdot q-m^2+i \eta )}$$
 
+```mathematica
+FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, D], Momentum[q, D]], 0, {1, 1}]]
+```
+
 $$\frac{1}{(p\cdot q+i \eta )}$$
 
-FeynCalc keeps trace of the signs of the scalar products in the eikonal propagators. This is where the  $I eta$- prescription may come handy
+FeynCalc keeps trace of the signs of the scalar products in the eikonal propagators. This is where the  $i \eta$- prescription may come handy
 
 ```mathematica
-FeynAmpDenominator[StandardPropagatorDenominator[0, -Pair[Momentum[p, D], Momentum[q, D]], 0, {1, 1}]] 
- 
-FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, D], Momentum[q, D]], 0, {1, -1}]]
+FeynAmpDenominator[StandardPropagatorDenominator[0, -Pair[Momentum[p, D], Momentum[q, D]], 0, {1, 1}]]
 ```
 
 $$\frac{1}{(-p\cdot q+i \eta )}$$
 
+```mathematica
+FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, D], Momentum[q, D]], 0, {1, -1}]]
+```
+
 $$\frac{1}{(p\cdot q-i \eta )}$$
 
-The shortcut to enter FeynAmpDenominators with StandardPropagatorDenominators is SFAD
+The shortcut to enter `FeynAmpDenominators` with `StandardPropagatorDenominators` is `SFAD`
 
 ```mathematica
 FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, -m^2, {1, 1}]] // FCE // StandardForm
@@ -108,7 +151,7 @@ FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, -m^2, {1, 1}
 (*SFAD[{{p, 0}, {m^2, 1}, 1}]*)
 ```
 
-Eikonal propagators are entered using the dot (".") as in noncommutative products
+Eikonal propagators are entered using the `Dot` (`.`) as in noncommutative products
 
 ```mathematica
 FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, D], Momentum[q, D]], -m^2, {1, 1}]] // FCE // StandardForm
@@ -116,19 +159,21 @@ FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, D], Momentu
 (*SFAD[{{0, p . q}, {m^2, 1}, 1}]*)
 ```
 
-The Cartesian version of StandardPropagatorDenominator is called CartesianPropagatorDenominator. The syntax is almost the same as in StandardPropagatorDenominator, except that the momenta and scalar products must be Cartesian.
+The Cartesian version of `StandardPropagatorDenominator` is called `CartesianPropagatorDenominator`. The syntax is almost the same as for `StandardPropagatorDenominator`, except that the momenta and scalar products must be Cartesian.
 
 ```mathematica
-FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[p, D - 1], 0, m^2, {1, -1}]] 
- 
+FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[p, D - 1], 0, m^2, {1, -1}]]
+```
+
+$$![0hjc2p1lh48d0](img/0hjc2p1lh48d0.png)$$
+
+```mathematica
 FeynAmpDenominator[CartesianPropagatorDenominator[0, CartesianPair[CartesianMomentum[p, D - 1], CartesianMomentum[q, D - 1]], m^2, {1, -1}]]
 ```
 
-$$![0yq7m3bgdph6j](img/0yq7m3bgdph6j.png)$$
-
 $$\frac{1}{(p\cdot q+m^2-i \eta )}$$
 
-The shortcut to enter FeynAmpDenominators with CartesianPropagatorDenominators is CFAD
+The shortcut to enter `FeynAmpDenominators` with `CartesianPropagatorDenominators` is `CFAD`
 
 ```mathematica
 FCE[FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[p, D - 1], 0, m^2, {1, -1}]]] // StandardForm
@@ -136,7 +181,7 @@ FCE[FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[p, D - 1
 (*CFAD[{{p, 0}, {m^2, -1}, 1}]*)
 ```
 
-To represent completely arbitrary propagators one can use GenericPropagatorDenominator. However, one should keep in mind that the number of operations using such propagators is very limited.
+To represent completely arbitrary propagators one can use `GenericPropagatorDenominator`. However, one should keep in mind that the number of useful manipulations and automatic simplifications available for such propagators is very limited.
 
 ```mathematica
 FeynAmpDenominator[GenericPropagatorDenominator[x, {1, 1}]]
@@ -152,7 +197,7 @@ FeynAmpDenominator[GenericPropagatorDenominator[2 z Pair[Momentum[p1, D], Moment
 
 $$\frac{1}{(2 z (\text{p1}\cdot Q) (\text{p2}\cdot Q)-\text{p1}\cdot \text{p2}+i \eta )}$$
 
-The shortcut to enter FeynAmpDenominators with GenericPropagatorDenominators is GFAD
+The shortcut to enter `FeynAmpDenominator`s with `GenericPropagatorDenominator`s is `GFAD`
 
 ```mathematica
 FeynAmpDenominator[GenericPropagatorDenominator[2 z Pair[Momentum[p1, D], Momentum[Q, D]] Pair[Momentum[p2, D], Momentum[Q, D]] - Pair[Momentum[p1, D], Momentum[p2, D]], {1, 1}]] // FCE // StandardForm

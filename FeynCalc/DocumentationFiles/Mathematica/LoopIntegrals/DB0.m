@@ -16,5 +16,4 @@
 (* Examples *)
 
 
-
 D[B0[Subscript[p, 2],Subscript[m, 1]^2,Subscript[m, 2]^2],Subscript[p, 2]]

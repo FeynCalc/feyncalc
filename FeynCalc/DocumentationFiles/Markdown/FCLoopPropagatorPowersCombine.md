@@ -1,12 +1,11 @@
 ##  FCLoopPropagatorPowersCombine 
 
-FCLoopPropagatorPowersCombine[exp] combines the same propagators in a FeynAmpDenominator to one propagator raised to an integer power..
+`FCLoopPropagatorPowersCombine[exp]` combines the same propagators in a `FeynAmpDenominator` to one propagator raised to an integer power.
 
 ###  Examples 
 
 ```mathematica
-SFAD[{{q, 0}, {m, 1}, 1}, {{q, 0}, {m, 1}, 1}] 
- 
+SFAD[{{q, 0}, {m, 1}, 1}, {{q, 0}, {m, 1}, 1}]
 FCLoopPropagatorPowersCombine[%]
 % // StandardForm
 ```
@@ -20,8 +19,7 @@ $$![1oi0jl02ec9us](img/1oi0jl02ec9us.png)$$
 ```
 
 ```mathematica
-SFAD[{{q, 0}, {m, 1}, -1}, {{q, 0}, {m, 1}, 1}] 
- 
+SFAD[{{q, 0}, {m, 1}, -1}, {{q, 0}, {m, 1}, 1}]
 FCLoopPropagatorPowersCombine[%]
 ```
 

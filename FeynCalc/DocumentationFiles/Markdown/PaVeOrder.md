@@ -10,15 +10,22 @@ PaVeReduce.
 
 ```mathematica
 ClearAll[t, s]
-PaVeOrder[D0[me2, me2, mw2, mw2, t, s, me2, 0, me2, 0], PaVeOrderList -> {me2, me2, 0, 0}] 
- 
-PaVeOrder[D0[me2, me2, mw2, mw2, t, s, me2, 0, me2, 0], PaVeOrderList -> {me2, me2, 0, 0}] 
- 
-PaVeOrder[D0[a, b, c, d, e, f, m12, m22, m32, m42] + D0[me2, me2, mw2, mw2, t, s, me2, 0, me2, 0], PaVeOrderList -> {{me2, me2, 0, 0}, {f, e}}]
+```
+
+```mathematica
+PaVeOrder[D0[me2, me2, mw2, mw2, t, s, me2, 0, me2, 0], PaVeOrderList -> {me2, me2, 0, 0}]
 ```
 
 $$\text{D}_0(\text{me2},s,\text{mw2},t,\text{mw2},\text{me2},\text{me2},0,0,\text{me2})$$
 
+```mathematica
+PaVeOrder[D0[me2, me2, mw2, mw2, t, s, me2, 0, me2, 0], PaVeOrderList -> {me2, me2, 0, 0}]
+```
+
 $$\text{D}_0(\text{me2},s,\text{mw2},t,\text{mw2},\text{me2},\text{me2},0,0,\text{me2})$$
+
+```mathematica
+PaVeOrder[D0[a, b, c, d, e, f, m12, m22, m32, m42] + D0[me2, me2, mw2, mw2, t, s, me2, 0, me2, 0], PaVeOrderList -> {{me2, me2, 0, 0}, {f, e}}]
+```
 
 $$\text{D}_0(a,d,c,b,f,e,\text{m22},\text{m12},\text{m42},\text{m32})+\text{D}_0(\text{me2},s,\text{mw2},t,\text{mw2},\text{me2},\text{me2},0,0,\text{me2})$$

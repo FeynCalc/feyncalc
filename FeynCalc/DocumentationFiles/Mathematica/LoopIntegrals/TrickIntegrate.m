@@ -16,7 +16,7 @@
 (* Examples *)
 
 
-
 TrickIntegrate[(1-t)^(a Epsilon-1) g[t],t]
+
 
 TrickIntegrate[t^(a Epsilon-1) g[t],t]

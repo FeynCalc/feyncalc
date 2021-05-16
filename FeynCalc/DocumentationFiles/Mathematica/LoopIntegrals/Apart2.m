@@ -16,11 +16,8 @@
 (* Examples *)
 
 
-
 FAD[{q,m},{q,M},q-p]
-
 Apart2[%]
-
 StandardForm[FCE[%]]
 
 
@@ -29,7 +26,4 @@ StandardForm[FCE[%]]
 
 
 int=CFAD[{{k,0},{+m^2,-1},1},{{k-p,0},{0,-1},1}]GFAD[{{DE-Sqrt[CSPD[k,k]],1},1}]
-
 int//FeynAmpDenominatorCombine//Apart2
-
-ClearAll[int]

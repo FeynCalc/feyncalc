@@ -16,13 +16,16 @@
 (* Examples *)
 
 
-
 B00[SPD[p],m^2,M^2]
+
 
 B00[SPD[p],m^2,m^2]
 
+
 B00[SPD[p],m^2,M^2,BReduce->False]
 
+
 B00[0,m^2,m^2]
+
 
 B00[SmallVariable[M^2],m^2,m^2]

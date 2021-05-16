@@ -1,6 +1,6 @@
 ##  GammaExpand 
 
-GammaExpand[exp] rewrites Gamma[n + m] in exp (where n has Head Integer)..
+`GammaExpand[exp]` rewrites `Gamma[n + m]` in `exp` (where `n` has `Head` `Integer`).
 
 ###  See also 
 
@@ -9,15 +9,19 @@ GammaEpsilon.
 ###  Examples 
 
 ```mathematica
-GammaExpand[Gamma[2 + Epsilon]] 
- 
-GammaExpand[Gamma[-3 + Epsilon]] 
- 
-GammaExpand[Gamma[1 + Epsilon]]
+GammaExpand[Gamma[2 + Epsilon]]
 ```
 
 $$(\varepsilon +1) \Gamma (\varepsilon +1)$$
 
+```mathematica
+GammaExpand[Gamma[-3 + Epsilon]]
+```
+
 $$\frac{\Gamma (\varepsilon +1)}{(\varepsilon -3) (\varepsilon -2) (\varepsilon -1) \varepsilon }$$
+
+```mathematica
+GammaExpand[Gamma[1 + Epsilon]]
+```
 
 $$\Gamma (\varepsilon +1)$$

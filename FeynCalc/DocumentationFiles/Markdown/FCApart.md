@@ -1,16 +1,19 @@
 ##  FCApart 
 
-FCApart[expr, {q1, q2, ...}] is an internal function that partial fractions a loop integral (that depends on q1,q2,...) into integrals that contain only linearly independent propagators. The algorithm is largely based on the work and code of F. Feng (arXiv:1204.2314). FCApart is meant to be applied to single loop integrals only. If you need to perform partial fractioning on an expression that contains multiple loop integrals, use ApartFFThere is actually no reason, why one would want to apply FCApart instead of ApartFF, except for cases, where FCApart is called from a different package that interacts with FeynCalc..
+`FCApart[expr, {q1, q2, ...}]` is an internal function that partial fractions a loop integral (that depends on `q1`,`q2`, ...) into integrals that contain only linearly independent propagators. The algorithm is largely based on [arXiv:1204.2314](https://arxiv.org/abs/1204.2314) by F.Feng. `FCApart` is meant to be applied to single loop integrals only. If you need to perform partial fractioning on an expression that contains multiple loop integrals, use `ApartFF`.
+
+There is actually no reason, why one would want to apply `FCApart` instead of `ApartFF`, except for cases, where `FCApart` is called from a different package that interacts with FeynCalc.
+
+###  See also 
+
+ApartFF, FeynAmpDenominatorSimplify.
 
 ###  Examples 
 
 ```mathematica
-ApartFF
 SPD[q, q] FAD[{q, m}]
 FCApart[%, {q}]
 ```
-
-$$\text{ApartFF}$$
 
 $$\frac{q^2}{q^2-m^2}$$
 
@@ -28,7 +31,6 @@ $$\frac{p^2 r^2}{4 q^2.(q-p)^2.(q-r)^2}+\frac{p^2+2 r^2}{4 q^2.(-p+q+r)^2}+\frac
 ```mathematica
 SPD[p, q1] SPD[p, q2]^2 FAD[{q1, m}, {q2, m}, q1 - p, q2 - p, q1 - q2]
 FCApart[%, {q1, q2}]
-
 ```
 
 $$\frac{(p\cdot \text{q1}) (p\cdot \text{q2})^2}{\left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right).(\text{q1}-p)^2.(\text{q2}-p)^2.(\text{q1}-\text{q2})^2}$$

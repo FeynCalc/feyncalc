@@ -18,9 +18,8 @@
 
 
 -I/Pi^2 FAD[{q,m}]
-
 OneLoop[q,%]
 
-I ((el^2)/(16 Pi^4 (1-D))) FAD[{q,mf},{q-k,mf}]DiracTrace[(mf+GSD[q-k]).GAD[\[Mu]].(mf+GSD[q]).GAD[\[Mu]]] 
 
+I ((el^2)/(16 Pi^4 (1-D))) FAD[{q,mf},{q-k,mf}]DiracTrace[(mf+GSD[q-k]).GAD[\[Mu]].(mf+GSD[q]).GAD[\[Mu]]] 
 OneLoop[q,%]

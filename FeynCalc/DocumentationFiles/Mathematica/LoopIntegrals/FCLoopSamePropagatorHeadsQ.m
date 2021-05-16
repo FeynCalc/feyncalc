@@ -7,10 +7,11 @@
 
 (* ::Subsection:: *)
 (* Examples *)
-FCI@SFAD[q,q-p]
 
+
+FCI@SFAD[q,q-p]
 FCLoopSamePropagatorHeadsQ[%]
 
-FeynAmpDenominatorCombine[CFAD[q,q-p]SFAD[l,l+k]]
 
+FeynAmpDenominatorCombine[CFAD[q,q-p]SFAD[l,l+k]]
 FCLoopSamePropagatorHeadsQ[%]

@@ -7,11 +7,16 @@
 
 (* ::Subsection:: *)
 (* Examples *)
+
+
 FCLoopBasisGetSize[1,0]
+
 
 FCLoopBasisGetSize[2,1]
 
+
 FCLoopBasisGetSize[3,2]
+
 
 FCLoopBasisGetSize[4,1]
 

@@ -7,10 +7,11 @@
 
 (* ::Subsection:: *)
 (* Examples *)
-FVD[q,\[Mu]] FAD[{q,m}]
 
+
+FVD[q,\[Mu]] FAD[{q,m}]
 FCLoopSplit[%,{q}]
 
-x+GSD[p+q] FAD[{q,m}]
 
+x+GSD[p+q] FAD[{q,m}]
 FCLoopSplit[%,{q}]

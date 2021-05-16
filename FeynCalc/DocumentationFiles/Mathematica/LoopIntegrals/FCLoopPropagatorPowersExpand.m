@@ -7,14 +7,13 @@
 
 (* ::Subsection:: *)
 (* Examples *)
+
+
 SFAD[{q,m,2}]
-
 FCLoopPropagatorPowersExpand[%]
-
 %//StandardForm
 
+
 SFAD[{q,m,2},q+p]
-
 FCLoopPropagatorPowersExpand[%]
-
 %//StandardForm

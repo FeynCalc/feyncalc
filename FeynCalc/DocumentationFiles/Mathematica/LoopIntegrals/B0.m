@@ -16,11 +16,13 @@
 (* Examples *)
 
 
-
 B0[SP[p,p],m^2,m^2]
+
 
 B0[0,0,m^2,B0Unique->True,B0Real->True]
 
+
 B0[m^2,0,m^2,B0Unique->True,B0Real->True]
+
 
 B0[0,m^2,m^2]

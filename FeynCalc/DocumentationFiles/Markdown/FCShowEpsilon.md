@@ -5,16 +5,7 @@ FCShowEpsilon[expr] substitutes $\text{SMP}[\text{Delta}]$ with $1/\text{Epsilon
 ###  Examples 
 
 ```mathematica
-SMP["Delta"] 
- 
-FCShowEpsilon[%] 
- 
-SMP["Delta_UV"] 
- 
-FCShowEpsilon[%] 
- 
-SMP["Delta_IR"] 
- 
+SMP["Delta"]
 FCShowEpsilon[%]
 ```
 
@@ -22,9 +13,19 @@ $$\Delta$$
 
 $$\frac{1}{\varepsilon }-\gamma +\log (4 \pi )$$
 
+```mathematica
+SMP["Delta_UV"]
+FCShowEpsilon[%]
+```
+
 $$\Delta _{\text{UV}}$$
 
 $$\frac{1}{\varepsilon _{\text{UV}}}-\gamma +\log (4 \pi )$$
+
+```mathematica
+SMP["Delta_IR"]
+FCShowEpsilon[%]
+```
 
 $$\Delta _{\text{IR}}$$
 

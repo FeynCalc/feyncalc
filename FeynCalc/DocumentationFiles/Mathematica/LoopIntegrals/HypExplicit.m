@@ -16,11 +16,9 @@
 (* Examples *)
 
 
-
 Hypergeometric2F1[a,b,c,z]
-
 HypExplicit[%,\[Nu]]
 
-HypergeometricPFQ[{a,b,c},{d,e},z]
 
+HypergeometricPFQ[{a,b,c},{d,e},z]
 HypExplicit[%,\[Nu]]

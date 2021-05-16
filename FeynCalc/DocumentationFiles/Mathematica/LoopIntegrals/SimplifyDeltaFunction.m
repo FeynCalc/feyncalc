@@ -16,27 +16,24 @@
 (* Examples *)
 
 
-
 g[x] DeltaFunction[1-x]
-
 SimplifyDeltaFunction[ %,x]
 
-g[x]DeltaFunctionPrime[1-x]
 
+g[x]DeltaFunctionPrime[1-x]
 SimplifyDeltaFunction[ %,x]
 
 x Log[x] DeltaFunctionPrime[1-x]
-
 SimplifyDeltaFunction[ %,x]
+
 
 PolyLog[2,1-x] DeltaFunctionPrime[1-x]
-
 SimplifyDeltaFunction[ %,x]
+
 
 Log[x]PolyLog[2,1-x] DeltaFunctionPrime[1-x]
-
 SimplifyDeltaFunction[ %,x]
 
-PolyLog[3,1-x] DeltaFunctionPrime[1-x]
 
+PolyLog[3,1-x] DeltaFunctionPrime[1-x]
 SimplifyDeltaFunction[ %,x]

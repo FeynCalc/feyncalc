@@ -7,6 +7,9 @@
 
 (* ::Subsection:: *)
 (* Examples *)
+
+
 li=FCLoopCanonicalize[myHead[FVD[q,\[Mu]] FVD[q,\[Nu]] FAD[q,{q+p,m}]]+myHead[FVD[q,\[Rho]] FVD[q,\[Sigma]] FAD[q,{q+p,m}]],q,myHead] 
 
- FCLoopSolutionList[li,prefactor (li[[4]]/.myHead->Identity/.q->p),Dispatch->False]
+
+FCLoopSolutionList[li,prefactor (li[[4]]/.myHead->Identity/.q->p),Dispatch->False]

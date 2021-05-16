@@ -5,16 +5,7 @@ FCLoopNonIntegerPropagatorPowersFreeQ[int] checks if the integral contains propa
 ###  Examples 
 
 ```mathematica
-SFAD[{q + p, m^2, 2}] 
- 
-FCLoopNonIntegerPropagatorPowersFreeQ[FCI[%]] 
- 
-SFAD[{q + p, m^2, n}] 
- 
-FCLoopNonIntegerPropagatorPowersFreeQ[FCI[%]] 
- 
-CFAD[{l, m^2, 1/2}] 
- 
+SFAD[{q + p, m^2, 2}]
 FCLoopNonIntegerPropagatorPowersFreeQ[FCI[%]]
 ```
 
@@ -22,9 +13,19 @@ $$![02ybfw73gwd1e](img/02ybfw73gwd1e.png)$$
 
 $$\text{True}$$
 
+```mathematica
+SFAD[{q + p, m^2, n}]
+FCLoopNonIntegerPropagatorPowersFreeQ[FCI[%]]
+```
+
 $$![1lz13quj275py](img/1lz13quj275py.png)$$
 
 $$\text{False}$$
+
+```mathematica
+CFAD[{l, m^2, 1/2}]
+FCLoopNonIntegerPropagatorPowersFreeQ[FCI[%]]
+```
 
 $$![161b2xp1cgvxf](img/161b2xp1cgvxf.png)$$
 

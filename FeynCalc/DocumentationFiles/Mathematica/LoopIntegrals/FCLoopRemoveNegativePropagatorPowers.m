@@ -7,14 +7,14 @@
 
 (* ::Subsection:: *)
 (* Examples *)
-SFAD[{q,m,-1}]
 
+
+SFAD[{q,m,-1}]
 FCLoopRemoveNegativePropagatorPowers[%]
 %//StandardForm
 
 
 SFAD[{q,m},q+p,{q,m,-2}]
-
 FCLoopRemoveNegativePropagatorPowers[%]
 %//StandardForm
 
