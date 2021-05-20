@@ -14,7 +14,7 @@ FCI[FVD[p, mu] FAD[q, q - p]]
 FCLoopMixedIntegralQ[%]
 ```
 
-$$![0unw0siz20iq0](img/0unw0siz20iq0.png)$$
+$$\frac{p^{\text{mu}}}{(q^2-i \eta ).((q-p)^2-i \eta )}$$
 
 $$\text{True}$$
 

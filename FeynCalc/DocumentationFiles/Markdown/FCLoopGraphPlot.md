@@ -19,7 +19,11 @@ FCLoopIntegralToGraph[FAD[{p, m}], {p}]
 FCLoopGraphPlot[%]
 ```
 
-$$![1nmuaecf8ka43](img/1nmuaecf8ka43.png)$$
+$$\left\{\{1\to 1\},\left(
+\begin{array}{ccc}
+ p & 1 & -m^2 \\
+\end{array}
+\right),\left\{\frac{1}{(p^2-m^2+i \eta )}\right\},1\right\}$$
 
 $$![0yvbg69o85nqi](img/0yvbg69o85nqi.png)$$
 
@@ -28,7 +32,7 @@ FCLoopIntegralToGraph[FAD[p, p - q], {p}]
 FCLoopGraphPlot[%]
 ```
 
-$$![17yksqmdcvcn9](img/17yksqmdcvcn9.png)$$
+$$\left\{\{-3\to 2,-1\to 1,1\to 2,1\to 2\},\{q,q,\{p,1,0\},\{p-q,1,0\}\},\left\{0,0,\frac{1}{(p^2+i \eta )},\frac{1}{((p-q)^2+i \eta )}\right\},1\right\}$$
 
 $$![18zlvfvc5dy6q](img/18zlvfvc5dy6q.png)$$
 
@@ -37,7 +41,7 @@ FCLoopIntegralToGraph[FAD[p, p + q1, p + q1 + q2], {p}]
 FCLoopGraphPlot[%]
 ```
 
-$$![1o27ksr1p9zix](img/1o27ksr1p9zix.png)$$
+$$\left\{\{-3\to 3,-2\to 1,-1\to 2,1\to 2,1\to 3,2\to 3\},\{\text{q1}-\text{q2},\text{q1},\text{q2},\{p+\text{q1},1,0\},\{p+\text{q1}+\text{q2},1,0\},\{p,1,0\}\},\left\{0,0,0,\frac{1}{(p^2+i \eta )},\frac{1}{((p+\text{q1})^2+i \eta )},\frac{1}{((p+\text{q1}+\text{q2})^2+i \eta )}\right\},1\right\}$$
 
 $$![0xqt316prjrj7](img/0xqt316prjrj7.png)$$
 
@@ -46,7 +50,7 @@ FCLoopIntegralToGraph[FAD[p, p + q1, p + q1 + q2, p + q1 + q2 + q3], {p}]
 FCLoopGraphPlot[%]
 ```
 
-$$![17ykny92f8khj](img/17ykny92f8khj.png)$$
+$$\left\{\{-4\to 4,-3\to 1,-2\to 2,-1\to 3,1\to 2,1\to 4,2\to 3,3\to 4\},\{\text{q1}-\text{q2}-\text{q3},\text{q1},\text{q2},\text{q3},\{p+\text{q1}+\text{q2},1,0\},\{p+\text{q1}+\text{q2}+\text{q3},1,0\},\{p+\text{q1},1,0\},\{p,1,0\}\},\left\{0,0,0,0,\frac{1}{(p^2+i \eta )},\frac{1}{((p+\text{q1})^2+i \eta )},\frac{1}{((p+\text{q1}+\text{q2})^2+i \eta )},\frac{1}{((p+\text{q1}+\text{q2}+\text{q3})^2+i \eta )}\right\},1\right\}$$
 
 $$![1axgj5w0sqb3e](img/1axgj5w0sqb3e.png)$$
 
@@ -55,7 +59,7 @@ FCLoopIntegralToGraph[FAD[p, p + q1, p + q1 + q2, p + q1 + q2 + q3, p + q1 + q2 
 FCLoopGraphPlot[%]
 ```
 
-$$![031apomd6y9vc](img/031apomd6y9vc.png)$$
+$$\left\{\{-5\to 5,-4\to 1,-3\to 2,-2\to 3,-1\to 4,1\to 2,1\to 5,2\to 3,3\to 4,4\to 5\},\{\text{q1}-\text{q2}-\text{q3}-\text{q4},\text{q1},\text{q2},\text{q3},\text{q4},\{p+\text{q1}+\text{q2}+\text{q3},1,0\},\{p+\text{q1}+\text{q2}+\text{q3}+\text{q4},1,0\},\{p+\text{q1}+\text{q2},1,0\},\{p+\text{q1},1,0\},\{p,1,0\}\},\left\{0,0,0,0,0,\frac{1}{(p^2+i \eta )},\frac{1}{((p+\text{q1})^2+i \eta )},\frac{1}{((p+\text{q1}+\text{q2})^2+i \eta )},\frac{1}{((p+\text{q1}+\text{q2}+\text{q3})^2+i \eta )},\frac{1}{((p+\text{q1}+\text{q2}+\text{q3}+\text{q4})^2+i \eta )}\right\},1\right\}$$
 
 $$![13qfg0xs8hcvk](img/13qfg0xs8hcvk.png)$$
 
@@ -67,7 +71,7 @@ Magnify[FCLoopGraphPlot[%, GraphPlot -> {MultiedgeStyle -> 0.35, Frame -> True},
      {"InternalLine", _, _, mm_ /; ! FreeQ[mm, mc]} -> {Blue, Thick, Dashed}}], 1.5]
 ```
 
-$$![0ab7oh9lmal93](img/0ab7oh9lmal93.png)$$
+$$\left\{\{-3\to 2,-1\to 1,1\to 2,1\to 2,1\to 3,2\to 3,2\to 3\},\left\{q,q,\left\{\text{k1}-q,1,-\text{mc}^2\right\},\left\{\text{k1}-\text{k2},1,-\text{mc}^2\right\},\left\{\text{k2},1,-\text{mb}^2\right\},\{\text{k3},1,0\},\{\text{k2}-\text{k3},1,0\}\right\},\left\{0,0,\frac{1}{(\text{k3}^2+i \eta )},\frac{1}{(\text{k2}^2-\text{mb}^2+i \eta )},\frac{1}{((\text{k2}-\text{k3})^2+i \eta )},\frac{1}{((\text{k1}-q)^2-\text{mc}^2+i \eta )},\frac{1}{((\text{k1}-\text{k2})^2-\text{mc}^2+i \eta )}\right\},1\right\}$$
 
 $$![1bdc5wrmf2c2m](img/1bdc5wrmf2c2m.png)$$
 
@@ -77,7 +81,15 @@ Magnify[FCLoopGraphPlot[%, GraphPlot -> {MultiedgeStyle -> 0.35, Frame -> True},
      {"InternalLine", _, _, mm_ /; ! FreeQ[mm, mc]} -> {Blue, Thick, Dashed}}], 1.5]
 ```
 
-$$![1f9cd0p3myxl8](img/1f9cd0p3myxl8.png)$$
+$$\left\{\{1\to 2,1\to 3,1\to 3,2\to 3,2\to 3\},\left(
+\begin{array}{ccc}
+ \text{k2} & 1 & -\text{mg}^2 \\
+ \text{k3} & 1 & -\text{mc}^2 \\
+ \text{k2}-\text{k3} & 1 & -\text{mc}^2 \\
+ \text{k1} & 1 & -q^2 \\
+ \text{k1}-\text{k2} & 1 & 0 \\
+\end{array}
+\right),\left\{\frac{1}{(\text{k3}^2-\text{mc}^2+i \eta )},\frac{1}{(\text{k2}^2-\text{mg}^2+i \eta )},\frac{1}{(\text{k1}^2-q^2+i \eta )},\frac{1}{((\text{k1}-\text{k2})^2+i \eta )},\frac{1}{((\text{k2}-\text{k3})^2-\text{mc}^2+i \eta )}\right\},1\right\}$$
 
 $$![16a8u25suc5io](img/16a8u25suc5io.png)$$
 
@@ -87,7 +99,7 @@ Magnify[FCLoopGraphPlot[%, GraphPlot -> {MultiedgeStyle -> 0.35, Frame -> True},
      {"InternalLine", _, _, mm_ /; ! FreeQ[mm, mc]} -> {Blue, Thick, Dashed}}], 1.5]
 ```
 
-$$![1lfuwn26n6i5w](img/1lfuwn26n6i5w.png)$$
+$$\left\{\{-3\to 2,-1\to 1,1\to 3,1\to 4,2\to 3,2\to 3,2\to 4,2\to 4\},\left\{q,q,\left\{\text{k2},1,-\text{mg}^2\right\},\left\{\text{k2}-q,1,-\text{mb}^2\right\},\left\{\text{k3},1,-\text{mc}^2\right\},\left\{\text{k2}-\text{k3},1,-\text{mc}^2\right\},\{\text{k1}-q,1,0\},\{\text{k1}-\text{k2},1,0\}\right\},\left\{0,0,\frac{1}{(\text{k3}^2-\text{mc}^2+i \eta )},\frac{1}{(\text{k2}^2-\text{mg}^2+i \eta )},\frac{1}{((\text{k1}-q)^2+i \eta )},\frac{1}{((\text{k1}-\text{k2})^2+i \eta )},\frac{1}{((\text{k2}-q)^2-\text{mb}^2+i \eta )},\frac{1}{((\text{k2}-\text{k3})^2-\text{mc}^2+i \eta )}\right\},1\right\}$$
 
 $$![03v1tt0je935f](img/03v1tt0je935f.png)$$
 
@@ -100,6 +112,6 @@ Magnify[FCLoopGraphPlot[%, GraphPlot -> {MultiedgeStyle -> 0.35, Frame -> True},
 
 ```
 
-$$![1qd4viqke77ck](img/1qd4viqke77ck.png)$$
+$$\left\{\{-3\to 2,-1\to 1,1\to 2,1\to 2,1\to 2,1\to 2\},\left\{q,q,\{\text{k2},2,0\},\{\text{k1}-q,1,0\},\left\{\text{k2}-\text{k3},1,-\text{mc}^2\right\},\left\{\text{k1}-\text{k3},1,-\text{mc}^2\right\}\right\},\left\{0,0,\frac{1}{(\text{k2}^2+i \eta )},\frac{1}{((\text{k1}-q)^2+i \eta )},\frac{1}{((\text{k2}-\text{k3})^2-\text{mc}^2+i \eta )},\frac{1}{((\text{k1}-\text{k3})^2-\text{mc}^2+i \eta )}\right\},1\right\}$$
 
 $$![0w35ux0lji5k0](img/0w35ux0lji5k0.png)$$

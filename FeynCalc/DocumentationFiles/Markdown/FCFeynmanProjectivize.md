@@ -14,7 +14,7 @@ FCFeynmanParametrize, FCFeynmanPrepare.
 int = SFAD[{p3, mg^2}] SFAD[{p3 - p1, mg^2}] SFAD[{{0, -2 p1 . q}}]
 ```
 
-$$![17is9wujj05la](img/17is9wujj05la.png)$$
+$$\frac{1}{(\text{p3}^2-\text{mg}^2+i \eta ) ((\text{p3}-\text{p1})^2-\text{mg}^2+i \eta ) (-2 (\text{p1}\cdot q)+i \eta )}$$
 
 ```mathematica
 fp = FCFeynmanParametrize[int, {p1, p3}, Names -> x, Indexed -> True, FCReplaceD -> {D -> 4 - 2 ep}, Simplify -> True, 

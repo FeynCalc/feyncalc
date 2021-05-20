@@ -9,24 +9,24 @@ SFAD[p1]
 FCLoopBasisIntegralToPropagators[%, {p1}]
 ```
 
-$$![05h81y196ibaj](img/05h81y196ibaj.png)$$
+$$\frac{1}{(\text{p1}^2+i \eta )}$$
 
-$$![14puvat5dwhz3](img/14puvat5dwhz3.png)$$
+$$\left\{\frac{1}{(\text{p1}^2+i \eta )}\right\}$$
 
 ```mathematica
 SFAD[p1, p2]
 FCLoopBasisIntegralToPropagators[%, {p1, p2}]
 ```
 
-$$![1htwv9io5o929](img/1htwv9io5o929.png)$$
+$$\frac{1}{(\text{p1}^2+i \eta ).(\text{p2}^2+i \eta )}$$
 
-$$![059iex2rxo0vc](img/059iex2rxo0vc.png)$$
+$$\left\{\frac{1}{(\text{p1}^2+i \eta )},\frac{1}{(\text{p2}^2+i \eta )}\right\}$$
 
 ```mathematica
 SPD[q, p] SFAD[q, q - p, q - p]
 FCLoopBasisIntegralToPropagators[%, {q}]
 ```
 
-$$![1fgq8iiziefty](img/1fgq8iiziefty.png)$$
+$$\frac{p\cdot q}{(q^2+i \eta ).((q-p)^2+i \eta )^2}$$
 
-$$![10459cnec7htj](img/10459cnec7htj.png)$$
+$$\left\{(p\cdot q+i \eta ),\frac{1}{(q^2+i \eta )},\frac{1}{((q-p)^2+i \eta )}\right\}$$

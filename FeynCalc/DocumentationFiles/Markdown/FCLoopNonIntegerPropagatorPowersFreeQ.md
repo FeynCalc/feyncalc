@@ -9,7 +9,7 @@ SFAD[{q + p, m^2, 2}]
 FCLoopNonIntegerPropagatorPowersFreeQ[FCI[%]]
 ```
 
-$$![02ybfw73gwd1e](img/02ybfw73gwd1e.png)$$
+$$\frac{1}{((p+q)^2-m^2+i \eta )^2}$$
 
 $$\text{True}$$
 
@@ -18,7 +18,7 @@ SFAD[{q + p, m^2, n}]
 FCLoopNonIntegerPropagatorPowersFreeQ[FCI[%]]
 ```
 
-$$![1lz13quj275py](img/1lz13quj275py.png)$$
+$$((p+q)^2-m^2+i \eta )^{-n}$$
 
 $$\text{False}$$
 
@@ -27,6 +27,6 @@ CFAD[{l, m^2, 1/2}]
 FCLoopNonIntegerPropagatorPowersFreeQ[FCI[%]]
 ```
 
-$$![161b2xp1cgvxf](img/161b2xp1cgvxf.png)$$
+$$\frac{1}{\sqrt{(l^2+m^2-i \eta )}}$$
 
 $$\text{False}$$

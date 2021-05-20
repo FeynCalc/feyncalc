@@ -9,7 +9,7 @@ FCI@SFAD[q, q - p]
 FCLoopSamePropagatorHeadsQ[%]
 ```
 
-$$![0zyp0v49di649](img/0zyp0v49di649.png)$$
+$$\frac{1}{(q^2+i \eta ).((q-p)^2+i \eta )}$$
 
 $$\text{True}$$
 
@@ -18,6 +18,6 @@ FeynAmpDenominatorCombine[CFAD[q, q - p] SFAD[l, l + k]]
 FCLoopSamePropagatorHeadsQ[%]
 ```
 
-$$![14nkssg7t2s2c](img/14nkssg7t2s2c.png)$$
+$$\frac{1}{(q^2-i \eta ).((q-p)^2-i \eta ).(l^2+i \eta ).((k+l)^2+i \eta )}$$
 
 $$\text{False}$$

@@ -45,7 +45,7 @@ CSPD[q1, l] CFAD[{q1, m1}, {q1 - l + p, m}]
 FCLoopBasisIncompleteQ[%, {q1}]
 ```
 
-$$![08eg9kfwf0l1l](img/08eg9kfwf0l1l.png)$$
+$$\frac{l\cdot \text{q1}}{(\text{q1}^2+\text{m1}-i \eta ).((-l+p+\text{q1})^2+m-i \eta )}$$
 
 $$\text{False}$$
 
@@ -54,6 +54,6 @@ SFAD[{q1, m1}, {q2, m2}]
 FCLoopBasisIncompleteQ[%, {q1, q2}]
 ```
 
-$$![1kuc5kg3uhrho](img/1kuc5kg3uhrho.png)$$
+$$\frac{1}{(\text{q1}^2-\text{m1}+i \eta ).(\text{q2}^2-\text{m2}+i \eta )}$$
 
 $$\text{True}$$

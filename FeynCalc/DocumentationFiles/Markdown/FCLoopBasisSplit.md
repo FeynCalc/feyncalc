@@ -18,6 +18,6 @@ FCI[SFAD[q1, q1 - q2, q2, {q3, m^2}]]
 FCLoopBasisSplit[%, {q1, q2, q3}, Head -> loop, FCE -> True]
 ```
 
-$$![16fq42gmhec4h](img/16fq42gmhec4h.png)$$
+$$\frac{1}{(\text{q1}^2+i \eta ).((\text{q1}-\text{q2})^2+i \eta ).(\text{q2}^2+i \eta ).(\text{q3}^2-m^2+i \eta )}$$
 
-$$![1ee83mnj4l5v0](img/1ee83mnj4l5v0.png)$$
+$$\left\{\text{loop}\left(\frac{1}{(\text{q3}^2-m^2+i \eta )},\{\text{q3}\}\right),\text{loop}\left(\frac{1}{(\text{q1}^2+i \eta ).(\text{q2}^2+i \eta ).((\text{q1}-\text{q2})^2+i \eta )},\{\text{q1},\text{q2}\}\right)\right\}$$

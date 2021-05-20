@@ -9,7 +9,7 @@ ToSFAD[FAD[p]]
 % // StandardForm
 ```
 
-$$![111aiby8f65o5](img/111aiby8f65o5.png)$$
+$$\frac{1}{(p^2+i \eta )}$$
 
 ```
 (*SFAD[{{p, 0}, {0, 1}, 1}]*)
@@ -20,7 +20,7 @@ ToSFAD[FAD[{p, m}]]
 % // StandardForm
 ```
 
-$$![09t78s3xudh8h](img/09t78s3xudh8h.png)$$
+$$\frac{1}{(p^2-m^2+i \eta )}$$
 
 ```
 (*SFAD[{{p, 0}, {m^2, 1}, 1}]*)
@@ -32,7 +32,7 @@ ToSFAD[FAD[{p + q, m, 2}]]
 
 ```
 
-$$![0p1osslrtwsqv](img/0p1osslrtwsqv.png)$$
+$$\frac{1}{((p+q)^2-m^2+i \eta )^2}$$
 
 ```
 (*SFAD[{{p + q, 0}, {m^2, 1}, 1}, {{p + q, 0}, {m^2, 1}, 1}]*)

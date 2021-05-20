@@ -18,10 +18,10 @@ $FCShowIEta = True
 
 $$\text{True}$$
 
-$$![095wdz3qw514w](img/095wdz3qw514w.png)$$
+$$\frac{1}{(p^2-m^2+i \eta )}$$
 
 $$\text{False}$$
 
-$$![0j8n4z4yqde42](img/0j8n4z4yqde42.png)$$
+$$\frac{1}{(p^2-m^2)}$$
 
 $$\text{True}$$

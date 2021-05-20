@@ -8,7 +8,13 @@ FCLoopPropagatorsToLineMomenta[{prop1, prop2, ...}]  is an auxiliary function th
 FCLoopPropagatorsToLineMomenta[{SFAD[{q + l, m^2}], SFAD[{p, -m^2}]}, FCE -> True]
 ```
 
-$$![0wa129q7e4mqp](img/0wa129q7e4mqp.png)$$
+$$\left(
+\begin{array}{cc}
+ l+q & p \\
+ -m^2 & m^2 \\
+ \frac{1}{((l+q)^2-m^2+i \eta )} & \frac{1}{(p^2+m^2+i \eta )} \\
+\end{array}
+\right)$$
 
 ```mathematica
 FCLoopPropagatorsToLineMomenta[{CFAD[{{0, 2 v . (q + r)}, m^2}]}, FCE -> True, AuxiliaryMomenta -> {v}]

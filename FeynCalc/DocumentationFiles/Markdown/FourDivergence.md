@@ -30,6 +30,6 @@ $$(\overline{p}-\overline{k})\cdot \overline{q}$$
 
 $$-\overline{q}^{\mu }$$
 
-$$![1h0u8wjprk3to](img/1h0u8wjprk3to.png)$$
+$$\frac{1}{(p^2-m^2+i \eta )}$$
 
-$$![0qmg0qberoqzp](img/0qmg0qberoqzp.png)$$
+$$-\frac{2 p^{\nu }}{(p^2-m^2+i \eta )^2}$$

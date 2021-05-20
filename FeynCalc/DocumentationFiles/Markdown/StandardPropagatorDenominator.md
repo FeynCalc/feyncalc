@@ -10,6 +10,6 @@ FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, -m^2, {1, 1}
 FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, D], Momentum[q, D]], -m^2, {1, 1}]]
 ```
 
-$$![1pqbcmp073sbx](img/1pqbcmp073sbx.png)$$
+$$\frac{1}{(p^2-m^2+i \eta )}$$
 
 $$\frac{1}{(p\cdot q-m^2+i \eta )}$$

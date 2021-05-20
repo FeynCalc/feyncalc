@@ -40,6 +40,6 @@ CFAD[q1, q2, {q1 - l1, m1}, {q2 - l2, m2}]
 FCLoopBasisFindCompletion[%, {q1, q2}]
 ```
 
-$$![1nwozcffm3nv1](img/1nwozcffm3nv1.png)$$
+$$\frac{1}{(\text{q1}^2-i \eta ).(\text{q2}^2-i \eta ).((\text{q1}-\text{l1})^2+\text{m1}-i \eta ).((\text{q2}-\text{l2})^2+\text{m2}-i \eta )}$$
 
-$$![0rmqmmm2lo6f6](img/0rmqmmm2lo6f6.png)$$
+$$\left\{\frac{1}{(\text{q1}^2-i \eta ).(\text{q2}^2-i \eta ).((\text{q1}-\text{l1})^2+\text{m1}-i \eta ).((\text{q2}-\text{l2})^2+\text{m2}-i \eta )},\{\text{l1}\cdot \text{q2},\text{l2}\cdot \text{q1},\text{q1}\cdot \text{q2}\}\right\}$$

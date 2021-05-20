@@ -26,6 +26,6 @@ $$(\overline{p}-\overline{k})\cdot \overline{q}$$
 
 $$-\overline{q}^i$$
 
-$$![0iknn8s8n51dh](img/0iknn8s8n51dh.png)$$
+$$\frac{1}{(p^2+m^2-i \eta )}$$
 
-$$![1trnnounno7g1](img/1trnnounno7g1.png)$$
+$$-\frac{2 p^i}{(p^2+m^2-i \eta )^2}$$

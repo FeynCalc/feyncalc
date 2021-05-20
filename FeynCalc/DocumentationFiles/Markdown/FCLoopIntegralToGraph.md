@@ -16,13 +16,13 @@ FCLoopGraphPlot.
 out = FCLoopIntegralToGraph[ FAD[{q - k1}, k1, q - k2, k2, {k2 - k3, mb}, {k1 - k3, mb}], {k1, k2, k3}]
 ```
 
-$$![07wzdouq1l71c](img/07wzdouq1l71c.png)$$
+$$\left\{\{-3\to 2,-1\to 1,1\to 3,1\to 4,2\to 3,2\to 4,3\to 4,3\to 4\},\left\{q,q,\{\text{k2},1,0\},\{q-\text{k2},1,0\},\{\text{k1},1,0\},\{q-\text{k1},1,0\},\left\{\text{k2}-\text{k3},1,-\text{mb}^2\right\},\left\{\text{k1}-\text{k3},1,-\text{mb}^2\right\}\right\},\left\{0,0,\frac{1}{(\text{k2}^2+i \eta )},\frac{1}{(\text{k1}^2+i \eta )},\frac{1}{((q-\text{k2})^2+i \eta )},\frac{1}{((q-\text{k1})^2+i \eta )},\frac{1}{((\text{k2}-\text{k3})^2-\text{mb}^2+i \eta )},\frac{1}{((\text{k1}-\text{k3})^2-\text{mb}^2+i \eta )}\right\},1\right\}$$
 
 ```mathematica
 FCLoopGraphPlot[out]
 ```
 
-$$![1l90setro1gdh](img/1l90setro1gdh.png)$$
+![1l90setro1gdh](img/1l90setro1gdh.png)
 
 ```mathematica
 Labeled @@@ Transpose[out[[1 ;; 2]]]

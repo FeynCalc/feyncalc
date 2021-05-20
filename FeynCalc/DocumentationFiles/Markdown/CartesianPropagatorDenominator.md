@@ -14,6 +14,6 @@ FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[p, D - 1], 0
 FeynAmpDenominator[CartesianPropagatorDenominator[0, CartesianPair[CartesianMomentum[p, D - 1], CartesianMomentum[q, D - 1]], m^2, {1, -1}]]
 ```
 
-$$![0q8mzf7tksbzy](img/0q8mzf7tksbzy.png)$$
+$$\frac{1}{(p^2+m^2-i \eta )}$$
 
 $$\frac{1}{(p\cdot q+m^2-i \eta )}$$

@@ -16,4 +16,4 @@ $$\frac{1}{(x (\text{p1}\cdot \text{p2})+2 z (\text{p1}\cdot q) (\text{p2}\cdot 
 
 $$\frac{1}{2 z (\text{p1}\cdot q) (\text{p2}\cdot q)+x (\text{p1}\cdot \text{p2})}$$
 
-![0hwcvr3hvek8h](img/0hwcvr3hvek8h.png)
+$$\frac{1}{x \text{SPD}[\text{p1},\text{p2}]+2 z \text{SPD}[\text{p1},q] \text{SPD}[\text{p2},q]}$$

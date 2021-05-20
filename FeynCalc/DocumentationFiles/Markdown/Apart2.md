@@ -18,7 +18,7 @@ $$\frac{1}{\left(q^2-m^2\right).\left(q^2-M^2\right).(q-p)^2}$$
 
 $$\frac{\frac{1}{\left(q^2-m^2\right).(q-p)^2}-\frac{1}{\left(q^2-M^2\right).(q-p)^2}}{m^2-M^2}$$
 
-![0cpu6xovrqp67](img/0cpu6xovrqp67.png)
+$$\frac{\text{FAD}[\{q,m\},-p+q]-\text{FAD}[\{q,M\},-p+q]}{m^2-M^2}$$
 
 Apart2 can also handle Cartesian propagators with square roots. To disable this mode use $text{Sqrt}to text{False}$ 
 
@@ -27,6 +27,6 @@ int = CFAD[{{k, 0}, {+m^2, -1}, 1}, {{k - p, 0}, {0, -1}, 1}] GFAD[{{DE - Sqrt[C
 int // FeynAmpDenominatorCombine // Apart2
 ```
 
-$$![0m340rqp61zfn](img/0m340rqp61zfn.png)$$
+$$\frac{1}{(\text{DE}-\sqrt{k^2}+i \eta ) (k^2+m^2-i \eta ).((k-p)^2-i \eta )}$$
 
-$$![0qtefgm8wl572](img/0qtefgm8wl572.png)$$
+$$\frac{\frac{\text{DE}}{(k^2+m^2-i \eta ).((k-p)^2-i \eta )}+\frac{1}{(\text{DE}-\sqrt{k^2}+i \eta ).((k-p)^2-i \eta )}+\frac{\sqrt{k^2}}{(k^2+m^2-i \eta ).((k-p)^2-i \eta )}}{\text{DE}^2+m^2}$$

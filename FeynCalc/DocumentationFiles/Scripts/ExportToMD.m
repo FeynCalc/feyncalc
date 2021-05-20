@@ -119,6 +119,31 @@ by Kuba Podkalicki <https://github.com/kubaPod/M2MD>
 Get["M2MD`"];
 
 
+(*
+Need to replace 
+M2MD[style_, cell:_[BoxData @ FormBox[_, TraditionalForm], ___], OptionsPattern[]
+] := MDElement["LaTeXBlock", BoxesToTeXString @ cell ]
+
+with
+
+M2MD[style_, cell:_[BoxData @ FormBox[_, TraditionalForm], ___], OptionsPattern[]
+] := MDElement["LaTeXBlock", BoxesToTeXString @ cell ]/; FreeQ[cell,DynamicModuleBox|"\[SpanFromLeft]"]
+*)
+
+
+M2MD[style_, cell : _[BoxData @ FractionBox[__], ___], 
+   OptionsPattern[]
+   ] := M2MD`Private`MDElement["LaTeXBlock", M2MD`BoxesToTeXString @ cell ];
+
+
+M2MD[style_, cell : _[BoxData @ RowBox[__], ___], 
+   OptionsPattern[]
+   ] := M2MD`Private`MDElement["LaTeXBlock", M2MD`BoxesToTeXString @ cell ];
+
+
+System`Convert`TeXFormDump`maketex[i_Integer] := ToString[i];
+
+
 fixTitle[cell_, ___]:= "---\ntitle: "<>
 	M2MD`Private`BoxesToString[cell, "PlainText"]<>"\n---\n";
 Print["Exporting the notebook to", outputMD];

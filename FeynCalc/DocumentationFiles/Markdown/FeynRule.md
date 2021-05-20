@@ -1,21 +1,25 @@
 ##  FeynRule 
 
-FeynRule[lag, {fields}] derives the Feynman rule corresponding to the field configuration $\text{fields}$ of the lagrangian $\text{lag}$.FeynRule does not calculate propagator Feynman rules.The option ZeroMomentumInsertion can be used for twist-2 and higher twist operators.FeynRule is not very versatile and was primarily developed for QCD calculations. It is often more useful when dealing with bosonic fields than with fermions. If you need a more powerful and universal solution for deriving Feynman rules, have a look at the standalone Mathematica Package FeynRules (not related to FeynCalc)..
+`FeynRule[lag, {fields}]` derives the Feynman rule corresponding to the field configuration `fields` of the Lagrangian `lag`. 
+
+`FeynRule` does not calculate propagator Feynman rules.
+
+The option `ZeroMomentumInsertion` can be used for twist-2 and higher twist operators.
+
+`FeynRule` is not very versatile and was primarily developed for QCD calculations. It is often more useful when dealing with bosonic fields than with fermions. If you need a more powerful and universal solution for deriving Feynman rules, have a look at the standalone Mathematica Package FeynRules (not related to FeynCalc).
 
 ###  Examples 
 
 ```mathematica
-Lagrangian
-
+?Lagrangian
 ```
 
-$$\text{Lagrangian}$$
+![1uti3nxh89rp3](img/1uti3nxh89rp3.png)
 
-Derive the Feyman rule for the $phi ^4$ theory.
+$\phi ^4$ Feynman rule
 
 ```mathematica
-- \[Lambda]/4! QuantumField[\[Phi]]^4 
- 
+- \[Lambda]/4! QuantumField[\[Phi]]^4
 FeynRule[%, {QuantumField[\[Phi]][p1], QuantumField[\[Phi]][p2], QuantumField[\[Phi]][p3], QuantumField[\[Phi]][p4]}]
 ```
 
@@ -23,11 +27,10 @@ $$-\frac{\lambda  \phi ^4}{24}$$
 
 $$-i \lambda$$
 
-Derive the Feyman rule for the quark-gluon vertex
+Quark-gluon vertex Feynman rule
 
 ```mathematica
-I QuantumField[AntiQuarkField] . GA[\[Mu]] . CovariantD[\[Mu]] . QuantumField[QuarkField] 
- 
+I QuantumField[AntiQuarkField] . GA[\[Mu]] . CovariantD[\[Mu]] . QuantumField[QuarkField]
 FeynRule[%, {QuantumField[GaugeField, {\[Mu]}, {a}][p1], QuantumField[QuarkField][p2], QuantumField[AntiQuarkField][p3]}]
 ```
 
@@ -35,15 +38,12 @@ $$i \bar{\psi }.\bar{\gamma }^{\mu }.D_{\mu }.\psi$$
 
 $$i T^a g_s \bar{\gamma }^{\mu }$$
 
-Derive the Feyman rule for the 4-gluon vertex.
+4-gluon vertex Feynman rule
 
 ```mathematica
--(1/4) FieldStrength[\[Alpha], \[Beta], i] . FieldStrength[\[Alpha], \[Beta], i] 
- 
-FeynRule[%, {QuantumField[GaugeField, {\[Mu]}, {a}][p1], QuantumField[GaugeField, {\[Nu]}, {b}][p2], QuantumField[GaugeField, {\[Rho]}, {c}][p3], QuantumField[GaugeField, {\[Sigma]}, {d}][p4]}] 
- 
-GluonVertex[{p, \[Mu], a}, {q, \[Nu], b}, {r, \[Rho], c}, {s, \[Sigma], d}, Dimension -> 4, Explicit -> True] 
- 
+-(1/4) FieldStrength[\[Alpha], \[Beta], i] . FieldStrength[\[Alpha], \[Beta], i]
+FeynRule[%, {QuantumField[GaugeField, {\[Mu]}, {a}][p1], QuantumField[GaugeField, {\[Nu]}, {b}][p2], QuantumField[GaugeField, {\[Rho]}, {c}][p3], QuantumField[GaugeField, {\[Sigma]}, {d}][p4]}]
+GluonVertex[{p, \[Mu], a}, {q, \[Nu], b}, {r, \[Rho], c}, {s, \[Sigma], d}, Dimension -> 4, Explicit -> True]
 FCCanonicalizeDummyIndices[% - %%] // Factor
 ```
 
@@ -55,15 +55,12 @@ $$-i g_s^2 \left(f^{ad\text{FCGV}(\text{u58})} f^{bc\text{FCGV}(\text{u58})} \le
 
 $$0$$
 
-Derive the Feyman rule for the 3-gluon vertex.
+3-gluon vertex Feynman rule
 
 ```mathematica
--(1/4) FieldStrength[\[Alpha], \[Beta], i] . FieldStrength[\[Alpha], \[Beta], i] 
- 
-FeynRule[%, {QuantumField[GaugeField, {\[Mu]}, {a}][p], QuantumField[GaugeField, {\[Nu]}, {b}][q], QuantumField[GaugeField, {\[Rho]}, {c}][r]}] 
- 
-GluonVertex[{p, \[Mu], a}, {q, \[Nu], b}, {r, \[Rho], c}, Dimension -> 4, Explicit -> True] 
- 
+-(1/4) FieldStrength[\[Alpha], \[Beta], i] . FieldStrength[\[Alpha], \[Beta], i]
+FeynRule[%, {QuantumField[GaugeField, {\[Mu]}, {a}][p], QuantumField[GaugeField, {\[Nu]}, {b}][q], QuantumField[GaugeField, {\[Rho]}, {c}][r]}]
+GluonVertex[{p, \[Mu], a}, {q, \[Nu], b}, {r, \[Rho], c}, Dimension -> 4, Explicit -> True]
 ExpandScalarProduct[% - %%] // Factor
 ```
 
@@ -75,35 +72,34 @@ $$g_s f^{abc} \left(\bar{g}^{\mu \nu } \left(\overline{p}-\overline{q}\right)^{\
 
 $$0$$
 
-Derive the Feynman rules for the Higgs EFT.
+Higgs EFT interaction vertex
 
 ```mathematica
--(1/4) CH FieldStrength[mu, nu, a] . FieldStrength[mu, nu, a] . QuantumField[H]
+heftInt = -(1/4) CH FieldStrength[mu, nu, a] . FieldStrength[mu, nu, a] . QuantumField[H]
 ```
 
 $$-\frac{1}{4} \text{CH} F_{\text{mu}\text{nu}}^a.F_{\text{mu}\text{nu}}^a.H$$
 
-Higgs-gg vertex.
+$Hgg$ vertex Feynman rules 
 
 ```mathematica
-FeynRule[%, {QuantumField[GaugeField, {i}, {a}][p1], QuantumField[GaugeField, {j}, {b}][p2], QuantumField[H][p3]}]
+FeynRule[heftInt, {QuantumField[GaugeField, {i}, {a}][p1], QuantumField[GaugeField, {j}, {b}][p2], QuantumField[H][p3]}]
 ```
 
 $$-i \text{CH} \delta ^{ab} \left(\overline{\text{p2}}^i \overline{\text{p1}}^j-\bar{g}^{ij} \left(\overline{\text{p1}}\cdot \overline{\text{p2}}\right)\right)$$
 
-Higgs-ggg vertex.
+$Hggg$ vertex Feynman rules 
 
 ```mathematica
-FeynRule[%%, {QuantumField[GaugeField, {i}, {a}][p1], 
-   	QuantumField[GaugeField, {j}, {b}][p2], QuantumField[GaugeField, {k}, {c}][p3], QuantumField[H][p4]}] // Simplify
+FeynRule[heftInt, {QuantumField[GaugeField, {i}, {a}][p1], QuantumField[GaugeField, {j}, {b}][p2], QuantumField[GaugeField, {k}, {c}][p3], QuantumField[H][p4]}] // Simplify
 ```
 
 $$\text{CH} g_s f^{abc} \left(\bar{g}^{ij} \left(\overline{\text{p1}}^k-\overline{\text{p2}}^k\right)-\bar{g}^{ik} \left(\overline{\text{p1}}^j-\overline{\text{p3}}^j\right)+\bar{g}^{jk} \left(\overline{\text{p2}}^i-\overline{\text{p3}}^i\right)\right)$$
 
-Higgs-gggg vertex.
+$Hgggg$ vertex Feynman rules 
 
 ```mathematica
-FeynRule[%%%, {QuantumField[GaugeField, {i}, {a}][p1], QuantumField[GaugeField, {j}, {b}][p2], QuantumField[GaugeField, {k}, {c}][p3], 
+FeynRule[heftInt, {QuantumField[GaugeField, {i}, {a}][p1], QuantumField[GaugeField, {j}, {b}][p2], QuantumField[GaugeField, {k}, {c}][p3], 
      QuantumField[GaugeField, {l}, {d}][p4], QuantumField[H][p5]}] // 
    FCCanonicalizeDummyIndices[#, SUNIndexNames -> {e}] & // Collect2[#, SUNF, 
     FCFactorOut -> I CH SMP["g_s"]^2] &
@@ -116,8 +112,7 @@ Some OPE-related examples:
 2-gluon Feynman rules (unpolarized).
 
 ```mathematica
-Lagrangian["ogu"] 
- 
+Lagrangian["ogu"]
 FeynRule[%, {QuantumField[GaugeField, {\[Mu]}, {a}][p], QuantumField[GaugeField, {\[Nu]}, {b}][q]}, ZeroMomentumInsertion -> False] // Factor
 ```
 
@@ -128,10 +123,8 @@ $$-i^m \delta ^{ab} \left(\vec{\partial }_{\Delta }\right){}^{m-2} \left(-\bar{g
 2-gluon Feynman rules (polarized).
 
 ```mathematica
-Lagrangian["ogp"] 
- 
-FeynRule[%, {QuantumField[GaugeField, {\[Mu]}, {a}][p], QuantumField[GaugeField, {\[Nu]}, {b}][q]}, ZeroMomentumInsertion -> False] // Factor 
- 
+Lagrangian["ogp"]
+FeynRule[%, {QuantumField[GaugeField, {\[Mu]}, {a}][p], QuantumField[GaugeField, {\[Nu]}, {b}][q]}, ZeroMomentumInsertion -> False] // Factor
 Factor2[Calc[% /. p -> -q, Assumptions -> Automatic]]
 ```
 
@@ -152,19 +145,25 @@ $$i \left(1-(-1)^m\right) \delta ^{ab} (\Delta \cdot q)^{m-1} \overset{\text{}}{
 quark-quark -gluon-gluon Feynman rule (unpolarized).
 
 ```mathematica
-Lagrangian["oqu"] 
- 
-FeynRule[%, {QuantumField[QuarkField][p], QuantumField[AntiQuarkField][q], QuantumField[GaugeField, {\[Mu]}, {a}][r], QuantumField[GaugeField, {\[Nu]}, {b}][s]}, ZeroMomentumInsertion -> True, InitialFunction -> Identity] 
- 
-Twist2QuarkOperator[{p}, {q}, {r, \[Mu], a}, {s, \[Nu], b}, Polarization -> 0] 
- 
-Calc[% - %% /. OPEm -> 5 /. s -> -p - q - r /. D -> 4]
+Lagrangian["oqu"]
+frule = FeynRule[%, {QuantumField[QuarkField][p], QuantumField[AntiQuarkField][q], QuantumField[GaugeField, {\[Mu]}, {a}][r], QuantumField[GaugeField, {\[Nu]}, {b}][s]}, ZeroMomentumInsertion -> True, InitialFunction -> Identity];
 ```
 
 $$i^m \bar{\psi }.\left(\bar{\gamma }\cdot \Delta \right).D_{\Delta }{}^{m-1}.\psi$$
 
-$$![1fgk4ynyvu7oh](img/1fgk4ynyvu7oh.png)$$
+```mathematica
+LeafCount[frule]
+```
+
+$$39364$$
+
+```mathematica
+Twist2QuarkOperator[{p}, {q}, {r, \[Mu], a}, {s, \[Nu], b}, Polarization -> 0]
+```
 
 $$(-1)^{m+1} \Delta ^{\mu } \Delta ^{\nu } g_s^2 \left(\bar{\gamma }\cdot \Delta \right).\left(T^a.T^b \left(\sum _{i=0}^{-3+m} \text{}\text{} (i+1)(\Delta \cdot q)^j (-(\Delta \cdot p))^{-i+m-3} (\Delta \cdot q+\Delta \cdot r)^{i-j}\right)+T^b.T^a \left(\sum _{i=0}^{-3+m} \text{}\text{} (i+1)(\Delta \cdot q)^j (-(\Delta \cdot p))^{-i+m-3} (\Delta \cdot q+\Delta \cdot s)^{i-j}\right)\right)$$
 
-$$![157gey6mpmweh](img/157gey6mpmweh.png)$$
+```mathematica
+(*Twist2QuarkOperator[{p},{q},{r,\[Mu],a},{s,\[Nu],b},Polarization->0]
+Calc[frule-%%/.OPEm->5/.s->-p-q-r/.D->4]*)
+```

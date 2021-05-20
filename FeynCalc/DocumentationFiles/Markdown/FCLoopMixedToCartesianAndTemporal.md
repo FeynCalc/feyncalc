@@ -9,18 +9,18 @@ FCI@SFAD[q]
 FCLoopMixedToCartesianAndTemporal[%, {q}, FCE -> True]
 ```
 
-$$![0cj9w44r1gyto](img/0cj9w44r1gyto.png)$$
+$$\frac{1}{(q^2+i \eta )}$$
 
-$$![0pdp46k5lt9dp](img/0pdp46k5lt9dp.png)$$
+$$-\frac{1}{(q^2-\left(q^0\right)^2-i \eta )}$$
 
 ```mathematica
 FCI@SFAD[{q1 + q2 + p, m^2}]
 FCLoopMixedToCartesianAndTemporal[%, {q1, q2}]
 ```
 
-$$![1tdm07yihhgyz](img/1tdm07yihhgyz.png)$$
+$$\frac{1}{((p+\text{q1}+\text{q2})^2-m^2+i \eta )}$$
 
-$$![0sp07mox1owio](img/0sp07mox1owio.png)$$
+$$-\frac{1}{((p+\text{q1}+\text{q2})^2+m^2-\left((p+\text{q1}+\text{q2})^0\right)^2-i \eta )}$$
 
 ```mathematica
 FCI[TC[k] FVD[k, mu] FAD[k, k + p]]
@@ -29,4 +29,4 @@ FCLoopMixedToCartesianAndTemporal[%, {k}]
 
 $$\frac{k^0 k^{\text{mu}}}{k^2.(k+p)^2}$$
 
-$$![1e18tqnq89w0x](img/1e18tqnq89w0x.png)$$
+$$\frac{k^0 \left(k^0 \bar{g}^{0\text{mu}}-k^{\$} g^{\$\text{mu}}\right)}{(k^2-\left(k^0\right)^2-i \eta ).((k+p)^2-\left((k+p)^0\right)^2-i \eta )}$$

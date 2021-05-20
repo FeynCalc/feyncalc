@@ -87,4 +87,14 @@ Cartesian propagators are equally supported
 FCFeynmanPrepare[CSPD[q, p] CFAD[{q, m}, {q - p, m2}], {q}, Names -> x]
 ```
 
-$$![0iusjljkhlloj](img/0iusjljkhlloj.png)$$
+$$\left\{x(1)+x(2),\frac{1}{4} \left(4 m x(1)^2+4 m x(2) x(1)+4 \text{m2} x(2) x(1)+4 \text{m2} x(2)^2+4 p^2 x(2) x(1)-p^2 x(3)^2+4 p^2 x(2) x(3)\right),\left(
+\begin{array}{ccc}
+ x(1) & \frac{1}{(q^2+m-i \eta )} & 1 \\
+ x(2) & \frac{1}{((q-p)^2+\text{m2}-i \eta )} & 1 \\
+ x(3) & p\cdot q & -1 \\
+\end{array}
+\right),\left(
+\begin{array}{c}
+ x(1)+x(2) \\
+\end{array}
+\right),\left\{\frac{1}{2} (2 x(2)-x(3)) p^{\text{FCGV}(\text{i})}\right\},m x(1)+\text{m2} x(2)+p^2 x(2),1,0\right\}$$

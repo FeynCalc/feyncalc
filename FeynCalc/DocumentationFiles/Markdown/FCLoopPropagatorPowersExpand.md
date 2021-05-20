@@ -10,9 +10,9 @@ FCLoopPropagatorPowersExpand[%]
 % // StandardForm
 ```
 
-$$![08yyoufa8m3u3](img/08yyoufa8m3u3.png)$$
+$$\frac{1}{(q^2-m+i \eta )^2}$$
 
-$$![1oi0jl02ec9us](img/1oi0jl02ec9us.png)$$
+$$\frac{1}{(q^2-m+i \eta )^2}$$
 
 ```
 (*FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], 0, -m, {1, 1}], StandardPropagatorDenominator[Momentum[q, D], 0, -m, {1, 1}]]*)
@@ -24,9 +24,9 @@ FCLoopPropagatorPowersExpand[%]
 % // StandardForm
 ```
 
-$$![1kubiodiha3xg](img/1kubiodiha3xg.png)$$
+$$\frac{1}{(q^2-m+i \eta )^2.((p+q)^2+i \eta )}$$
 
-$$![04i38t6s6jmls](img/04i38t6s6jmls.png)$$
+$$\frac{1}{(q^2-m+i \eta )^2.((p+q)^2+i \eta )}$$
 
 ```
 (*FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], 0, -m, {1, 1}], StandardPropagatorDenominator[Momentum[q, D], 0, -m, {1, 1}], StandardPropagatorDenominator[Momentum[p, D] + Momentum[q, D], 0, 0, {1, 1}]]*)

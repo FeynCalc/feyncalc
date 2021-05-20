@@ -22,7 +22,7 @@ FCI@SFAD[{{q, q . p}}]
 FCLoopEikonalPropagatorFreeQ[%, First -> False]
 ```
 
-$$![0y4ynpss9eht6](img/0y4ynpss9eht6.png)$$
+$$\frac{1}{(p^2+i \eta ).((p-q)^2+i \eta )}$$
 
 $$\text{True}$$
 
@@ -34,6 +34,6 @@ $$\frac{1}{(p\cdot q-i \eta )}$$
 
 $$\text{False}$$
 
-$$![0x7749zsv1176](img/0x7749zsv1176.png)$$
+$$\frac{1}{(q^2+p\cdot q+i \eta )}$$
 
 $$\text{False}$$

@@ -30,15 +30,15 @@ CFAD[{{0, p . q}}]
 FeynAmpDenominatorExplicit[%]
 ```
 
-$$![0q8mzf7tksbzy](img/0q8mzf7tksbzy.png)$$
+$$\frac{1}{(p^2+m^2-i \eta )}$$
 
 $$\frac{1}{m^2+p^2}$$
 
-$$![14y7gjpybrjer](img/14y7gjpybrjer.png)$$
+$$\frac{1}{(p^2+m^2+i \eta )}$$
 
 $$\frac{1}{m^2+p^2}$$
 
-$$![1edqpkh85llb3](img/1edqpkh85llb3.png)$$
+$$\frac{1}{(p^2-m^2-i \eta )}$$
 
 $$\frac{1}{p^2-m^2}$$
 

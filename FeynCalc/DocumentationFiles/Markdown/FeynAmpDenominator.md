@@ -65,7 +65,7 @@ Since version 9.3, a more flexible input is possible using `StandardPropagatorDe
 FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, -m^2, {1, 1}]]
 ```
 
-$$![0qbiy7v4zeoom](img/0qbiy7v4zeoom.png)$$
+$$\frac{1}{(p^2-m^2+i \eta )}$$
 
 The mass term can be anything, as long as it does not depend on the loop momenta
 
@@ -73,19 +73,19 @@ The mass term can be anything, as long as it does not depend on the loop momenta
 FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, m^2, {1, 1}]]
 ```
 
-$$![0i0pl6dp5juar](img/0i0pl6dp5juar.png)$$
+$$\frac{1}{(p^2+m^2+i \eta )}$$
 
 ```mathematica
 FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, -m^2, {1, 1}]]
 ```
 
-$$![0k3eq5pflips6](img/0k3eq5pflips6.png)$$
+$$\frac{1}{(p^2-m^2+i \eta )}$$
 
 ```mathematica
 FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, SPD[q, q], {1, 1}]]
 ```
 
-$$![0n54hvs4nttmd](img/0n54hvs4nttmd.png)$$
+$$\frac{1}{(p^2+q^2+i \eta )}$$
 
 One can also change the sign of $i \eta$, although currently no internal functions make use of it
 
@@ -93,7 +93,7 @@ One can also change the sign of $i \eta$, although currently no internal functio
 FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, -m^2, {1, -1}]]
 ```
 
-$$![17h5rp2m74q0a](img/17h5rp2m74q0a.png)$$
+$$\frac{1}{(p^2-m^2-i \eta )}$$
 
 The propagator may also be raised to integer or symbolic powers
 
@@ -101,19 +101,19 @@ The propagator may also be raised to integer or symbolic powers
 FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, m^2, {3, 1}]]
 ```
 
-$$![07ytcgwiuldz5](img/07ytcgwiuldz5.png)$$
+$$\frac{1}{(p^2+m^2+i \eta )^3}$$
 
 ```mathematica
 FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, m^2, {-2, 1}]]
 ```
 
-$$![1dwphv0x9fzxh](img/1dwphv0x9fzxh.png)$$
+$$(p^2+m^2+i \eta )^2$$
 
 ```mathematica
 FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, m^2, {n, 1}]]
 ```
 
-$$![0lr8c5ljdog2s](img/0lr8c5ljdog2s.png)$$
+$$(p^2+m^2+i \eta )^{-n}$$
 
 Eikonal propagators are fully supported
 
@@ -165,7 +165,7 @@ The Cartesian version of `StandardPropagatorDenominator` is called `CartesianPro
 FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[p, D - 1], 0, m^2, {1, -1}]]
 ```
 
-$$![0hjc2p1lh48d0](img/0hjc2p1lh48d0.png)$$
+$$\frac{1}{(p^2+m^2-i \eta )}$$
 
 ```mathematica
 FeynAmpDenominator[CartesianPropagatorDenominator[0, CartesianPair[CartesianMomentum[p, D - 1], CartesianMomentum[q, D - 1]], m^2, {1, -1}]]

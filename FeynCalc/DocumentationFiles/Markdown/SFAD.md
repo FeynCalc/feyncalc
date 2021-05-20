@@ -14,10 +14,10 @@ SFAD[{{p, 0}, {-m^2, -1}}]
 SFAD[{{0, p . q}, m^2}]
 ```
 
-$$![1pqbcmp073sbx](img/1pqbcmp073sbx.png)$$
+$$\frac{1}{(p^2-m^2+i \eta )}$$
 
-$$![1dwh3g9tt78ij](img/1dwh3g9tt78ij.png)$$
+$$\frac{1}{(p^2-m^2-i \eta )}$$
 
-$$![1u58w6ia1brjd](img/1u58w6ia1brjd.png)$$
+$$\frac{1}{(p^2+m^2-i \eta )}$$
 
 $$\frac{1}{(p\cdot q-m^2+i \eta )}$$

@@ -1,3 +1,7 @@
+```mathematica
+ 
+```
+
 ##  ApartFF 
 
 `ApartFF[amp, {q1, q2, ...}]` partial fractions loop integrals by decomposing them into simpler integrals that contain only linearly independent propagators. It uses `FCApart` as a backend and is equally suitable for 1-loop and  multi-loop integrals.
@@ -127,7 +131,7 @@ The `extraPiece`-trick is useful for cases where a direct partial fractioning is
 int = (SFAD[{{0, k . l}}, p - k] SPD[k, p])
 ```
 
-$$![16y929mxs16uv](img/16y929mxs16uv.png)$$
+$$\frac{k\cdot p}{(k\cdot l+i \eta ).((p-k)^2+i \eta )}$$
 
 Here `ApartFF` cannot do anything 
 
@@ -135,7 +139,7 @@ Here `ApartFF` cannot do anything
 ApartFF[int, {k}]
 ```
 
-$$![0x5e3mi7yzivv](img/0x5e3mi7yzivv.png)$$
+$$\frac{k\cdot p}{(k\cdot l+i \eta ).((p-k)^2+i \eta )}$$
 
 Multiplying the integral with unity `FAD[k]*SPD[k]` we can cast into a more desirable form
 
@@ -143,6 +147,6 @@ Multiplying the integral with unity `FAD[k]*SPD[k]` we can cast into a more desi
 ApartFF[int FAD[k], SPD[k], {k}] // ApartFF[#, {k}] &
 ```
 
-$$![1ep2cbt9iwuw1](img/1ep2cbt9iwuw1.png)$$
+$$\frac{k^2}{2 (k\cdot l+i \eta ).((p-k)^2+i \eta )}+\frac{p^2}{2 (k\cdot l+i \eta ).((k-p)^2+i \eta )}$$
 
 Here we need a second call to `ApartFF` since the first execution doesn't drop scaleless integrals or perform any shifts in the denominators.

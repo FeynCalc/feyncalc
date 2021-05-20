@@ -31,7 +31,7 @@ FCI[SFAD[{q + c1 p1, m}]]
 % // StandardForm
 ```
 
-$$![0xpuc63zyjj2i](img/0xpuc63zyjj2i.png)$$
+$$\frac{1}{((\text{c1} \text{p1}+q)^2-m+i \eta )}$$
 
 ```
 (*FeynAmpDenominator[StandardPropagatorDenominator[c1 Momentum[p1, D] + Momentum[q, D], 0, -m, {1, 1}]]*)

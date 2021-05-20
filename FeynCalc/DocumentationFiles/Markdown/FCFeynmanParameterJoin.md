@@ -8,7 +8,7 @@ FCFeynmanParameterJoin[int] joins all propagators in int using Feynman parameter
 intT = FCFeynmanParameterJoin[{{SFAD[{p1, mg^2}] SFAD[{p3 - p1, mg^2}], 1, x}, SFAD[{{0, -2 p1 . q}}] SFAD[{{0, -2 p3 . q}}], y}, {p1, p3}]
 ```
 
-$$![0kffsfcnf92j0](img/0kffsfcnf92j0.png)$$
+$$\left\{\frac{1}{(\left(-x(1) \text{mg}^2-x(2) \text{mg}^2+\text{p1}^2 x(1)+\text{p1}^2 x(2)-2 (\text{p1}\cdot \text{p3}) x(2)+\text{p3}^2 x(2)\right) y(1)-2 (\text{p1}\cdot q) y(2)-2 (\text{p3}\cdot q) y(3)+i \eta )^4},6 y(1),\{x(1),x(2),y(1),y(2),y(3)\}\right\}$$
 
 ```mathematica
 FCFeynmanParametrize[intT[[1]], intT[[2]], {p1, p3}, Names -> z, Indexed -> True, FCReplaceD -> {D -> 4 - 2 ep}, Simplify -> True, 

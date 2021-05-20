@@ -65,7 +65,7 @@ SFAD[{{k, 2 p . k}, M^2, s}]
 FCFeynmanParametrize[%, {k}, Names -> x, FCE -> True, FeynmanIntegralPrefactor -> 1, FCReplaceD -> {D -> n}]
 ```
 
-$$![1lve3zag73s5l](img/1lve3zag73s5l.png)$$
+$$(k^2+2 (k\cdot p)-M^2+i \eta )^{-s}$$
 
 $$\left\{1,\frac{i \pi ^{n/2} (-1)^s \Gamma \left(s-\frac{n}{2}\right) \left(M^2+p^2\right)^{\frac{n}{2}-s}}{\Gamma (s)},\{\}\right\}$$
 
@@ -74,7 +74,7 @@ FVD[k, \[Mu]] SFAD[{{k, 2 p . k}, M^2, s}]
 FCFeynmanParametrize[%, {k}, Names -> x, FCE -> True, FeynmanIntegralPrefactor -> 1, FCReplaceD -> {D -> n}]
 ```
 
-$$![0ztsg9ptrxo4q](img/0ztsg9ptrxo4q.png)$$
+$$k^{\mu } (k^2+2 (k\cdot p)-M^2+i \eta )^{-s}$$
 
 $$\left\{1,-\frac{i \pi ^{n/2} (-1)^s p^{\mu } \Gamma \left(s-\frac{n}{2}\right) \left(M^2+p^2\right)^{\frac{n}{2}-s}}{\Gamma (s)},\{\}\right\}$$
 
@@ -83,7 +83,7 @@ FVD[k, \[Mu]] FVD[k, \[Nu]] SFAD[{{k, 2 p . k}, M^2, s}]
 FCFeynmanParametrize[%, {k}, Names -> x, FCE -> True, FeynmanIntegralPrefactor -> 1, FCReplaceD -> {D -> n}]
 ```
 
-$$![0mjgtuwsi0jvt](img/0mjgtuwsi0jvt.png)$$
+$$k^{\mu } k^{\nu } (k^2+2 (k\cdot p)-M^2+i \eta )^{-s}$$
 
 $$\left\{1,\frac{i \pi ^{n/2} (-1)^s \left(M^2+p^2\right)^{\frac{n}{2}-s} \left(p^{\mu } p^{\nu } \Gamma \left(s-\frac{n}{2}\right)-\frac{1}{2} \left(M^2+p^2\right) g^{\mu \nu } \Gamma \left(-\frac{n}{2}+s-1\right)\right)}{\Gamma (s)},\{\}\right\}$$
 
@@ -94,7 +94,7 @@ SFAD[{{k, 2 p . k}, -M^2, s}]
 FCFeynmanParametrize[%, {k}, Names -> x, FCE -> True, "Euclidean" -> True, FeynmanIntegralPrefactor -> I]
 ```
 
-$$![1g0iaxh5ba65d](img/1g0iaxh5ba65d.png)$$
+$$(k^2+2 (k\cdot p)+M^2+i \eta )^{-s}$$
 
 $$\left\{1,\frac{i \pi ^{D/2} \Gamma \left(s-\frac{D}{2}\right) \left(M^2-p^2\right)^{\frac{D}{2}-s}}{\Gamma (s)},\{\}\right\}$$
 
@@ -103,7 +103,7 @@ FVD[k, \[Mu]] SFAD[{{k, 2 p . k}, -M^2, s}]
 FCFeynmanParametrize[%, {k}, Names -> x, FCE -> True, FeynmanIntegralPrefactor -> I, FCReplaceD -> {D -> n}, "Euclidean" -> True]
 ```
 
-$$![1jpjsui4owe15](img/1jpjsui4owe15.png)$$
+$$k^{\mu } (k^2+2 (k\cdot p)+M^2+i \eta )^{-s}$$
 
 $$\left\{1,-\frac{i \pi ^{n/2} p^{\mu } \Gamma \left(s-\frac{n}{2}\right) \left(M^2-p^2\right)^{\frac{n}{2}-s}}{\Gamma (s)},\{\}\right\}$$
 
@@ -115,6 +115,6 @@ FCFeynmanParametrize[%, {k}, Names -> x, FCE -> True, FeynmanIntegralPrefactor -
 
 ```
 
-$$![08zs1bbybuy3a](img/08zs1bbybuy3a.png)$$
+$$k^{\mu } k^{\nu } (k^2+2 (k\cdot p)+M^2+i \eta )^{-s}$$
 
 $$\left\{1,\frac{i \pi ^{n/2} \left(M^2-p^2\right)^{\frac{n}{2}-s} \left(\frac{1}{2} \left(M^2-p^2\right) g^{\mu \nu } \Gamma \left(-\frac{n}{2}+s-1\right)+p^{\mu } p^{\nu } \Gamma \left(s-\frac{n}{2}\right)\right)}{\Gamma (s)},\{\}\right\}$$
