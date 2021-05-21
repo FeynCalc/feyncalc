@@ -1,6 +1,6 @@
 ##  FeynAmp 
 
-FeynAmp[q, amp] is the head of a Feynman amplitude, where amp denotes the analytical expression for the amplitude and q is the integration variable. FeynAmp[q1, q2, amp] denotes a two-loop amplitude.FeynAmp has no functional properties and serves just as a head. There are however special typesetting rules attached..
+`FeynAmp[q, amp]` is the head of a Feynman amplitude, where amp denotes the analytical expression for the amplitude and q is the integration variable. `FeynAmp[q1, q2, amp]` denotes a two-loop amplitude. `FeynAmp` has no functional properties and serves just as a head. There are however special typesetting rules attached.
 
 ###  See also 
 

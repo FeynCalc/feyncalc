@@ -1,6 +1,6 @@
 ##  GV 
 
-GV is equivalent to GluonVertex..
+`GV` is equivalent to `GluonVertex`.
 
 ###  See also 
 

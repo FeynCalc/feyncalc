@@ -2,14 +2,13 @@
 (* ::Section:: *)
 (* B0 *)
 (* ::Text:: *)
-(*B0[pp, ma^2, mb^2] is the Passarino-Veltman two-point integral $B_0$. All arguments are scalars and have dimension mass^2. If the option BReduce is set to True, certain B0's are reduced to A0's. Setting the option B0Unique to True simplifies B0[a,0,a] and B0[0,0,a]..*)
+(*`B0[pp, ma^2, mb^2]` is the Passarino-Veltman two-point integral $B_0$. All arguments are scalars and have dimension mass squared. If the option `BReduce` is set to `True`, certain `B0`'s are reduced to `A0`'s. Setting the option `B0Unique` to `True` simplifies `B0[a,0,a]` and `B0[0,0,a]`.*)
 
 
 (* ::Subsection:: *)
 (* See also *)
 (* ::Text:: *)
 (*B1, B00, B11, PaVe.*)
-
 
 
 (* ::Subsection:: *)

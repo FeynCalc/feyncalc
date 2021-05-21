@@ -2,7 +2,7 @@
 (* ::Section:: *)
 (* FCGramMatrix *)
 (* ::Text:: *)
-(*`FCGramMatrix[{p1, p2, ...}]` creates a Gram matrix from the given list of momenta..*)
+(*`FCGramMatrix[{p1, p2, ...}]` creates a Gram matrix from the given list of momenta.*)
 
 
 (* ::Subsection:: *)

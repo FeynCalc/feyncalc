@@ -1,6 +1,6 @@
 ##  SimplifyPolyLog 
 
-SimplifyPolyLog[y] performs several simplifications assuming that the variables occuring in the Log and PolyLog functions are between 0 and 1..
+`SimplifyPolyLog[y]` performs several simplifications assuming that the variables occuring in the `Log` and `PolyLog` functions are between `0` and `1`.
 
 ###  See also 
 

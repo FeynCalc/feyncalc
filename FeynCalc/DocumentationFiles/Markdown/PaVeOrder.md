@@ -1,6 +1,6 @@
 ##  PaVeOrder 
 
-PaVeOrder[expr] orders the arguments of all D0 in expr in a standard way. PaVeOrder[expr, PaVeOrderList -> { {..., s, u, ...}, {... $m_1{}^2$, $m_2{}^2$ ...}, ...}] orders the arguments of all D0 in expr according to the specified ordering lists. The lists may contain only a subsequence of the D0-variables..
+`PaVeOrder[expr]` orders the arguments of all `D0` in expr in a standard way. `PaVeOrder[expr, PaVeOrderList -> { {..., s, u, ...}, {... $m_1{}^2$, $m_2{}^2$ ...}, ...}]` orders the arguments of all `D0` in expr according to the specified ordering lists. The lists may contain only a subsequence of the D0-variables.
 
 ###  See also 
 

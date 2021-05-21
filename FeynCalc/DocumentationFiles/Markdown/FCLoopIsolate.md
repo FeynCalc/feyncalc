@@ -1,6 +1,6 @@
 ##  FCLoopIsolate 
 
-FCLoopIsolate[expr, {q1, q2, ...}] wraps loop integrals into heads specified by the user. This is useful when you want to know which loop integrals appear in the given expression..
+`FCLoopIsolate[expr, {q1, q2, ...}]` wraps loop integrals into heads specified by the user. This is useful when you want to know which loop integrals appear in the given expression.
 
 ###  Examples 
 

@@ -2,7 +2,7 @@
 (* ::Section:: *)
 (* Apart2 *)
 (* ::Text:: *)
-(*Apart2[expr] partial fractions propagators of the form 1/[(q^2-m1^2)(q^2-m2^2)]..*)
+(*`Apart2[expr]` partial fractions propagators of the form $1/[(q^2-m1^2)(q^2-m2^2)]$.*)
 
 
 (* ::Subsection:: *)

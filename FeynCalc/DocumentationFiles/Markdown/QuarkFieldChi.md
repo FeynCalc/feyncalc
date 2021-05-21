@@ -1,18 +1,21 @@
 ##  QuarkFieldChi 
 
-QuarkFieldChi is the name of a fermionic field.This is just a name with no functional properties. Only typesetting rules are attached..
+`QuarkFieldChi` is the name of a fermionic field. This is just a name with no functional properties. Only typesetting rules are attached.
+
+###  See also 
 
 ###  Examples 
 
 ```mathematica
-QuarkFieldChi 
- 
-QuantumField[QuarkFieldChiDagger] . GA[\[Mu]] . CovariantD[\[Mu]] . QuantumField[QuarkFieldChi] 
- 
-ExpandPartialD[%]
+QuarkFieldChi
 ```
 
 $$\chi$$
+
+```mathematica
+QuantumField[QuarkFieldChiDagger] . GA[\[Mu]] . CovariantD[\[Mu]] . QuantumField[QuarkFieldChi]
+ExpandPartialD[%]
+```
 
 $$\chi ^{\dagger }.\bar{\gamma }^{\mu }.D_{\mu }.\chi$$
 

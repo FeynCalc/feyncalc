@@ -1,6 +1,8 @@
 ##  FCPauliIsolate 
 
-FCPauliIsolate[exp] wraps chains of Pauli matrices into heads specified by the user.
+`FCPauliIsolate[exp]` wraps chains of Pauli matrices into heads specified by the user.
+
+###  See also 
 
 ###  Examples 
 

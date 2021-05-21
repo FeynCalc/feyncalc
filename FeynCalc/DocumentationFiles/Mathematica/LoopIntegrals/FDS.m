@@ -2,7 +2,7 @@
 (* ::Section:: *)
 (* FDS *)
 (* ::Text:: *)
-(*FDS is shorthand for FeynAmpDenominatorSimplify..*)
+(*`FDS` is shorthand for `FeynAmpDenominatorSimplify`.*)
 
 
 (* ::Subsection:: *)

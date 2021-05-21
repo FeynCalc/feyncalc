@@ -2,7 +2,7 @@
 (* ::Section:: *)
 (* CombineGraphs *)
 (* ::Text:: *)
-(*CombineGraphs is an option for OneLoopSum..*)
+(*`CombineGraphs` is an option for `OneLoopSum`.*)
 
 
 (* ::Subsection:: *)

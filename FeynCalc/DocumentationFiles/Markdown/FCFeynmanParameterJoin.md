@@ -1,6 +1,6 @@
 ##  FCFeynmanParameterJoin 
 
-FCFeynmanParameterJoin[int] joins all propagators in int using Feynman parameters but does not integrate over the loop momenta. The function returns {fpInt,pref,vars}, where fpInt is the piece of the integral that contains a single GFAD-type propagator and pref is the part containing the res. The introduced Feynman parameters are listed in vars. The overall Dirac delta is omitted..
+`FCFeynmanParameterJoin[int]` joins all propagators in `int` using Feynman parameters but does not integrate over the loop momenta. The function returns `{fpInt,pref,vars}`, where `fpInt` is the piece of the integral that contains a single `GFAD`-type propagator and `pref` is the part containing the `res`. The introduced Feynman parameters are listed in vars. The overall Dirac delta is omitted.
 
 ###  Examples 
 

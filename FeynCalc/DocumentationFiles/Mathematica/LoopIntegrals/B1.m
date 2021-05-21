@@ -2,7 +2,7 @@
 (* ::Section:: *)
 (* B1 *)
 (* ::Text:: *)
-(*B1[pp, ma^2, mb^2] the Passarino-Veltman $B_1$-function. All arguments are scalars and have dimension mass^2..*)
+(*`B1[pp, ma^2, mb^2]` the Passarino-Veltman $B_1$-function. All arguments are scalars and have dimension mass squared.*)
 
 
 (* ::Subsection:: *)

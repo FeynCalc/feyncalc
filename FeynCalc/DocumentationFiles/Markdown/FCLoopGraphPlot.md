@@ -25,7 +25,7 @@ $$\left\{\{1\to 1\},\left(
 \end{array}
 \right),\left\{\frac{1}{(p^2-m^2+i \eta )}\right\},1\right\}$$
 
-$$![0yvbg69o85nqi](img/0yvbg69o85nqi.png)$$
+![0yvbg69o85nqi](img/0yvbg69o85nqi.png)
 
 ```mathematica
 FCLoopIntegralToGraph[FAD[p, p - q], {p}]
@@ -34,7 +34,7 @@ FCLoopGraphPlot[%]
 
 $$\left\{\{-3\to 2,-1\to 1,1\to 2,1\to 2\},\{q,q,\{p,1,0\},\{p-q,1,0\}\},\left\{0,0,\frac{1}{(p^2+i \eta )},\frac{1}{((p-q)^2+i \eta )}\right\},1\right\}$$
 
-$$![18zlvfvc5dy6q](img/18zlvfvc5dy6q.png)$$
+![18zlvfvc5dy6q](img/18zlvfvc5dy6q.png)
 
 ```mathematica
 FCLoopIntegralToGraph[FAD[p, p + q1, p + q1 + q2], {p}]
@@ -43,7 +43,7 @@ FCLoopGraphPlot[%]
 
 $$\left\{\{-3\to 3,-2\to 1,-1\to 2,1\to 2,1\to 3,2\to 3\},\{\text{q1}-\text{q2},\text{q1},\text{q2},\{p+\text{q1},1,0\},\{p+\text{q1}+\text{q2},1,0\},\{p,1,0\}\},\left\{0,0,0,\frac{1}{(p^2+i \eta )},\frac{1}{((p+\text{q1})^2+i \eta )},\frac{1}{((p+\text{q1}+\text{q2})^2+i \eta )}\right\},1\right\}$$
 
-$$![0xqt316prjrj7](img/0xqt316prjrj7.png)$$
+![0xqt316prjrj7](img/0xqt316prjrj7.png)
 
 ```mathematica
 FCLoopIntegralToGraph[FAD[p, p + q1, p + q1 + q2, p + q1 + q2 + q3], {p}]
@@ -52,7 +52,7 @@ FCLoopGraphPlot[%]
 
 $$\left\{\{-4\to 4,-3\to 1,-2\to 2,-1\to 3,1\to 2,1\to 4,2\to 3,3\to 4\},\{\text{q1}-\text{q2}-\text{q3},\text{q1},\text{q2},\text{q3},\{p+\text{q1}+\text{q2},1,0\},\{p+\text{q1}+\text{q2}+\text{q3},1,0\},\{p+\text{q1},1,0\},\{p,1,0\}\},\left\{0,0,0,0,\frac{1}{(p^2+i \eta )},\frac{1}{((p+\text{q1})^2+i \eta )},\frac{1}{((p+\text{q1}+\text{q2})^2+i \eta )},\frac{1}{((p+\text{q1}+\text{q2}+\text{q3})^2+i \eta )}\right\},1\right\}$$
 
-$$![1axgj5w0sqb3e](img/1axgj5w0sqb3e.png)$$
+![1axgj5w0sqb3e](img/1axgj5w0sqb3e.png)
 
 ```mathematica
 FCLoopIntegralToGraph[FAD[p, p + q1, p + q1 + q2, p + q1 + q2 + q3, p + q1 + q2 + q3 + q4], {p}]
@@ -61,7 +61,7 @@ FCLoopGraphPlot[%]
 
 $$\left\{\{-5\to 5,-4\to 1,-3\to 2,-2\to 3,-1\to 4,1\to 2,1\to 5,2\to 3,3\to 4,4\to 5\},\{\text{q1}-\text{q2}-\text{q3}-\text{q4},\text{q1},\text{q2},\text{q3},\text{q4},\{p+\text{q1}+\text{q2}+\text{q3},1,0\},\{p+\text{q1}+\text{q2}+\text{q3}+\text{q4},1,0\},\{p+\text{q1}+\text{q2},1,0\},\{p+\text{q1},1,0\},\{p,1,0\}\},\left\{0,0,0,0,0,\frac{1}{(p^2+i \eta )},\frac{1}{((p+\text{q1})^2+i \eta )},\frac{1}{((p+\text{q1}+\text{q2})^2+i \eta )},\frac{1}{((p+\text{q1}+\text{q2}+\text{q3})^2+i \eta )},\frac{1}{((p+\text{q1}+\text{q2}+\text{q3}+\text{q4})^2+i \eta )}\right\},1\right\}$$
 
-$$![13qfg0xs8hcvk](img/13qfg0xs8hcvk.png)$$
+![13qfg0xs8hcvk](img/13qfg0xs8hcvk.png)
 
 The `Style` option can be used to label lines carrying different masses in a particular way
 

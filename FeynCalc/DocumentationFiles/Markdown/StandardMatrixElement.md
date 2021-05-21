@@ -1,6 +1,6 @@
 ##  StandardMatrixElement 
 
-StandardMatrixElement[...] is the head for matrix element abbreviations..
+`StandardMatrixElement[...]` is the head for matrix element abbreviations.
 
 ###  See also 
 

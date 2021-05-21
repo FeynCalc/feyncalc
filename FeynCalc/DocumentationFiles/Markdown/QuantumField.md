@@ -1,6 +1,8 @@
 ##  QuantumField 
 
-QuantumField is the head of quantized fields and their derivatives. QuantumField[par, ftype, {lorind}, {sunind}] denotes a quantum field of type ftype with (possible) Lorentz-indices lorind and SU(N) indices sunind. The optional first argument par denotes a partial derivative acting on the field..
+`QuantumField` is the head of quantized fields and their derivatives.
+
+`QuantumField[par, ftype, {lorind}, {sunind}]` denotes a quantum field of type `ftype` with (possible) Lorentz-indices `lorind` and $SU(N)$ indices `sunind`. The optional first argument `par` denotes a partial derivative acting on the field.
 
 ###  See also 
 
@@ -11,16 +13,22 @@ FeynRule, FCPartialD, ExpandPartialD.
 This denotes a scalar field.
 
 ```mathematica
-QuantumField[S] 
- 
-QuantumField[AntiQuarkField] 
- 
-QuantumField[QuarkField]
+QuantumField[S]
 ```
 
 $$S$$
 
+Quark fields
+
+```mathematica
+QuantumField[AntiQuarkField]
+```
+
 $$\bar{\psi }$$
+
+```mathematica
+QuantumField[QuarkField]
+```
 
 $$\psi$$
 
@@ -35,8 +43,7 @@ $$B_{\mu }$$
 Color indices should be put after the Lorentz ones.
 
 ```mathematica
-QuantumField[GaugeField, {\[Mu]}, {a}] 
- 
+QuantumField[GaugeField, {\[Mu]}, {a}]
 % // StandardForm
 ```
 
@@ -46,7 +53,7 @@ $$A_{\mu }^a$$
 (*QuantumField[GaugeField, LorentzIndex[\[Mu]], SUNIndex[a]]*)
 ```
 
-$A_{Delta }^a$ is a short form for $Delta ^{mu } A_{mu }^a.$ 
+$A_{\Delta}^a$ is a short form for $\Delta ^{mu } A_{mu }^a$ 
 
 ```mathematica
 QuantumField[A, {OPEDelta}, {a}]
@@ -54,7 +61,7 @@ QuantumField[A, {OPEDelta}, {a}]
 
 $$A_{\Delta }^a$$
 
-The first list of indices is usually interpreted as type LorentzIndex, except for OPEDelta, which gets converted to type Momentum. 
+The first list of indices is usually interpreted as type `LorentzIndex`, except for `OPEDelta`, which gets converted to type `Momentum`. 
 
 ```mathematica
 QuantumField[A, {OPEDelta}, {a}] // StandardForm
@@ -65,23 +72,31 @@ QuantumField[A, {OPEDelta}, {a}] // StandardForm
 Derivatives of fields are denoted as follows.
 
 ```mathematica
-QuantumField[FCPartialD[\[Mu]], A, {\[Mu]}] 
- 
-QuantumField[FCPartialD[OPEDelta], S] 
- 
-QuantumField[FCPartialD[OPEDelta], A, {OPEDelta}, {a}] 
- 
-QuantumField[FCPartialD[OPEDelta]^OPEm, A, {OPEDelta}, {a}] 
- 
-QuantumField[QuantumField[A]] === QuantumField[A]
+QuantumField[FCPartialD[\[Mu]], A, {\[Mu]}]
 ```
 
 $$\left.(\partial _{\mu }A_{\mu }\right)$$
 
+```mathematica
+QuantumField[FCPartialD[OPEDelta], S]
+```
+
 $$\left.(\partial _{\Delta }S\right)$$
+
+```mathematica
+QuantumField[FCPartialD[OPEDelta], A, {OPEDelta}, {a}]
+```
 
 $$\left.(\partial _{\Delta }A_{\Delta }^a\right)$$
 
+```mathematica
+QuantumField[FCPartialD[OPEDelta]^OPEm, A, {OPEDelta}, {a}]
+```
+
 $$\partial _{\Delta }^m{}^{A\Delta a}$$
+
+```mathematica
+QuantumField[QuantumField[A]] === QuantumField[A]
+```
 
 $$\text{True}$$

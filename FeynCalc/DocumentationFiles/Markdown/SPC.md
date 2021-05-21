@@ -1,6 +1,6 @@
 ##  SPC 
 
-SPC is an abbreviation for ScalarProductCancel..
+`SPC` is an abbreviation for `ScalarProductCancel`.
 
 ###  See also 
 

@@ -1,6 +1,6 @@
 ##  IndexPosition 
 
-IndexPosition is an option for FieldStrength..
+`IndexPosition` is an option for `FieldStrength`.
 
 ###  See also 
 

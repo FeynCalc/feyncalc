@@ -1,24 +1,27 @@
 ##  PauliSigmaExpand 
 
-PauliSigmaExpand[exp] expands all PauliSigma[Momentum[a+b+..]] in exp into (PauliSigma[Momentum[a]] + PauliSigma[Momentum[b]] + ...)..
+`PauliSigmaExpand[exp]` expands all `PauliSigma[Momentum[a+b+..]]` in `exp` into `(PauliSigma[Momentum[a]] + PauliSigma[Momentum[b]] + ...)`.
+
+###  See also 
+
+PauliSigmaCombine.
 
 ###  Examples 
 
 ```mathematica
-SIS[q] . SIS[p - q] 
- 
-PauliSigmaExpand[%] 
- 
-SIS[a + b] . SIS[c + d] 
- 
-PauliSigmaExpand[%, Momentum -> {a}] 
- 
-PauliSigmaExpand[%%, Momentum -> All]
+SIS[q] . SIS[p - q]
+PauliSigmaExpand[%]
 ```
 
 $$\left(\bar{\sigma }\cdot \overline{q}\right).\left(\bar{\sigma }\cdot \left(\overline{p}-\overline{q}\right)\right)$$
 
 $$\left(\bar{\sigma }\cdot \overline{q}\right).\left(\bar{\sigma }\cdot \overline{p}-\bar{\sigma }\cdot \overline{q}\right)$$
+
+```mathematica
+SIS[a + b] . SIS[c + d]
+PauliSigmaExpand[%, Momentum -> {a}]
+PauliSigmaExpand[%%, Momentum -> All]
+```
 
 $$\left(\bar{\sigma }\cdot \left(\overline{a}+\overline{b}\right)\right).\left(\bar{\sigma }\cdot \left(\overline{c}+\overline{d}\right)\right)$$
 

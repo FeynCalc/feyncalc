@@ -1,6 +1,6 @@
 ##  FCLoopSolutionList 
 
-FCLoopSolutionList[loopList, reversedRepIndexList, canIndexList, uniqueCanIndexList}, solsList] is an auxiliary internal function that uses the output of FCLoopCanonicalize and the list of simplified integrals solsList to create the substitution list of type "Integral" -> "simplified Integral".
+`FCLoopSolutionList[loopList, reversedRepIndexList, canIndexList, uniqueCanIndexList}, solsList]` is an auxiliary internal function that uses the output of FCLoopCanonicalize and the list of simplified integrals solsList to create the substitution list of type `"Integral" -> "simplified Integral"`.
 
 ###  Examples 
 

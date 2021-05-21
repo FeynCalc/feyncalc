@@ -1,6 +1,6 @@
 ##  IFPDOff 
 
-IFPDOff[exp_, q1_, q2_, ...] changes from IFPD representation to FeynAmpDenominator[ ...]. The q1, q2, ... are the integration momenta..
+`IFPDOff[exp_, q1, q2, ...]` changes from `IFPD` representation to `FeynAmpDenominator[...]`. The `q1, q2, ...` are the integration momenta.
 
 ###  See also 
 

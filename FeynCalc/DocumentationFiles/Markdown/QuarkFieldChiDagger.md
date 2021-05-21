@@ -1,18 +1,21 @@
 ##  QuarkFieldChiDagger 
 
-QuarkFieldChiDagger is the name of a fermionic field.This is just a name with no functional properties. Only typesetting rules are attached..
+`QuarkFieldChiDagger` is the name of a fermionic field. This is just a name with no functional properties. Only typesetting rules are attached.
+
+###  See also 
 
 ###  Examples 
 
 ```mathematica
-QuarkFieldChiDagger 
- 
-QuantumField[QuarkFieldChiDagger] . GA[\[Mu]] . CovariantD[\[Mu]] . QuantumField[QuarkFieldChi] 
- 
-ExpandPartialD[%]
+QuarkFieldChiDagger
 ```
 
 $$\chi ^{\dagger }$$
+
+```mathematica
+QuantumField[QuarkFieldChiDagger] . GA[\[Mu]] . CovariantD[\[Mu]] . QuantumField[QuarkFieldChi]
+ExpandPartialD[%]
+```
 
 $$\chi ^{\dagger }.\bar{\gamma }^{\mu }.D_{\mu }.\chi$$
 

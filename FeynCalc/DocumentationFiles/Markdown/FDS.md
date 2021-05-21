@@ -1,6 +1,6 @@
 ##  FDS 
 
-FDS is shorthand for FeynAmpDenominatorSimplify..
+`FDS` is shorthand for `FeynAmpDenominatorSimplify`.
 
 ###  See also 
 

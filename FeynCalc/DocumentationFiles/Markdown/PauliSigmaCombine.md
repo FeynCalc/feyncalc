@@ -1,18 +1,15 @@
 ##  PauliSigmaCombine 
 
-PauliSigmaCombine[exp]  is (nearly) the inverse operation to PauliSigmaExpand..
+`PauliSigmaCombine[exp]`  is (nearly) the inverse operation to PauliSigmaExpand.
+
+###  See also 
+
+PauliSigmaExpand.
 
 ###  Examples 
 
 ```mathematica
-SIS[p] + SIS[q] 
- 
-PauliSigmaCombine[%] 
- 
-PauliXi[I] 
- 
-PauliXi[-I] . (SIS[p1 + p2] + SIS[q]) . PauliEta[I] 
- 
+SIS[p] + SIS[q]
 PauliSigmaCombine[%]
 ```
 
@@ -20,7 +17,10 @@ $$\bar{\sigma }\cdot \overline{p}+\bar{\sigma }\cdot \overline{q}$$
 
 $$\bar{\sigma }\cdot \left(\overline{p}+\overline{q}\right)$$
 
-$$\xi$$
+```mathematica
+PauliXi[-I] . (SIS[p1 + p2] + SIS[q]) . PauliEta[I]
+PauliSigmaCombine[%]
+```
 
 $$\xi ^{\dagger }.\left(\bar{\sigma }\cdot \left(\overline{\text{p1}}+\overline{\text{p2}}\right)+\bar{\sigma }\cdot \overline{q}\right).\eta$$
 

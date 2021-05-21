@@ -1,6 +1,6 @@
 ##  LeftPartialD 
 
-LeftPartialD[μ] denotes $\overleftarrow{\partial }_{\mu }$acting to the left..
+`LeftPartialD[μ]` denotes $\overleftarrow{\partial }_{\mu }$ acting to the left.
 
 ###  See also 
 
@@ -9,18 +9,8 @@ ExpandPartialD, FCPartialD, LeftRightPartialD, RightPartialD.
 ###  Examples 
 
 ```mathematica
-QuantumField[A, LorentzIndex[\[Mu]]] . LeftPartialD[\[Nu]] 
- 
-ExpandPartialD[%] 
- 
-StandardForm[%] 
- 
-StandardForm[LeftPartialD[\[Mu]]] 
- 
-QuantumField[A, LorentzIndex[\[Mu]]] . QuantumField[A, LorentzIndex[\[Nu]]] . LeftPartialD[\[Rho]] 
- 
-ExpandPartialD[%] 
- 
+QuantumField[A, LorentzIndex[\[Mu]]] . LeftPartialD[\[Nu]]
+ExpandPartialD[%]
 StandardForm[%]
 ```
 
@@ -30,8 +20,18 @@ $$\left.(\partial _{\nu }A_{\mu }\right)$$
 
 ```
 (*QuantumField[FCPartialD[LorentzIndex[\[Nu]]], A, LorentzIndex[\[Mu]]]*)
+```
+
+```mathematica
+StandardForm[LeftPartialD[\[Mu]]]
 
 (*LeftPartialD[LorentzIndex[\[Mu]]]*)
+```
+
+```mathematica
+QuantumField[A, LorentzIndex[\[Mu]]] . QuantumField[A, LorentzIndex[\[Nu]]] . LeftPartialD[\[Rho]]
+ExpandPartialD[%]
+StandardForm[%]
 ```
 
 $$A_{\mu }.A_{\nu }.\overleftarrow{\partial }_{\rho }$$

@@ -1,10 +1,22 @@
+(* ::Package:: *)
+
  
+
+
 (* ::Section:: *)
 (* FCPauliIsolate *)
+
+
 (* ::Text:: *)
-(*FCPauliIsolate[exp] wraps chains of Pauli matrices into heads specified by the user.*)
+(*`FCPauliIsolate[exp]` wraps chains of Pauli matrices into heads specified by the user.*)
+
+
+(* ::Subsection:: *)
+(* See also *)
 
 
 (* ::Subsection:: *)
 (* Examples *)
-FCPauliIsolate[y SI[i]+x PauliXi[-I].SIS[p1].PauliEta[I].PauliEta[-I].SIS[p2].PauliXi[I],Head->pChain]
+
+
+FCPauliIsolate[y SI[i]+x PauliXi[-I] . SIS[p1] . PauliEta[I] . PauliEta[-I] . SIS[p2] . PauliXi[I],Head->pChain]

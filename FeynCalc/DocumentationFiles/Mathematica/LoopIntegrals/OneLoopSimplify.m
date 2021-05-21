@@ -2,7 +2,7 @@
 (* ::Section:: *)
 (* OneLoopSimplify *)
 (* ::Text:: *)
-(*OneLoopSimplify[amp, q] simplifies the one-loop amplitude amp. The second argument denotes the integration momentum..*)
+(*`OneLoopSimplify[amp, q]` simplifies the one-loop amplitude amp. The second argument denotes the integration momentum.*)
 
 
 (* ::Subsection:: *)

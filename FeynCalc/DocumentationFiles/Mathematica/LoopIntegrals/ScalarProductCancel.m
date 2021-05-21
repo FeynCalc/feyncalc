@@ -1,15 +1,30 @@
+(* ::Package:: *)
+
  
+
+
 (* ::Section:: *)
 (* ScalarProductCancel *)
+
+
 (* ::Text:: *)
-(*ScalarProductCancel[exp, q1, q2, ...] cancels scalar products with propagators. ScalarProductCancel[exp] cancels simple cases. ScalarProductCancel is deprecated, please use the more powerful ApartFF instead!.*)
+(*`ScalarProductCancel[exp, q1, q2, ...]` cancels scalar products with propagators.*)
+
+
+(* ::Text:: *)
+(*`ScalarProductCancel[exp]`cancels simple cases.*)
+
+
+(* ::Text:: *)
+(*`ScalarProductCancel` is deprecated, please use the more powerful `ApartFF` instead.*)
 
 
 (* ::Subsection:: *)
 (* See also *)
+
+
 (* ::Text:: *)
 (*ApartFF, FCClearScalarProducts, ExpandScalarProduct, Pair, SP, SPC, SPD.*)
-
 
 
 (* ::Subsection:: *)

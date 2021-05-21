@@ -1,12 +1,11 @@
 ##  StringChomp 
 
-StringChomp[str]  chops initial and final white space of the string $\text{str}$..
+`StringChomp[str]` chops initial and final white space of the string `str`.
 
 ###  Examples 
 
 ```mathematica
-StringChomp[" abc "] 
- 
+StringChomp[" abc "]
 % // InputForm
 ```
 

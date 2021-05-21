@@ -2,7 +2,7 @@
 (* ::Section:: *)
 (* A0 *)
 (* ::Text:: *)
-(*A0[m^2] is the Passarino-Veltman one-point integral $A_0.$.*)
+(*`A0[m^2]` is the Passarino-Veltman one-point integral $A_0.$.*)
 
 
 (* ::Subsection:: *)
@@ -14,10 +14,6 @@
 
 (* ::Subsection:: *)
 (* Examples *)
-
-
-
-Options[ A0]
 
 
 (* ::Text:: *)

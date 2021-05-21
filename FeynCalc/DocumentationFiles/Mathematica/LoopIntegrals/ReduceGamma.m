@@ -1,7 +1,3 @@
-(* ::Package:: *)
-
- 
-
 
 (* ::Section:: *)
 (* ReduceGamma *)

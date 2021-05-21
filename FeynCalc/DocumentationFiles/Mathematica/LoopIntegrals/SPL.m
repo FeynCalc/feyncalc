@@ -2,7 +2,7 @@
 (* ::Section:: *)
 (* SPL *)
 (* ::Text:: *)
-(*SPL is an abbreviation for SimplifyPolyLog..*)
+(*`SPL` is an abbreviation for `SimplifyPolyLog`.*)
 
 
 (* ::Subsection:: *)

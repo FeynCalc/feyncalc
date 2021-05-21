@@ -1,6 +1,6 @@
 ##  FCLoopRemoveNegativePropagatorPowers 
 
-FCLoopRemoveNegativePropagatorPowers[exp] rewrites propagators raised to integer powers as products..
+`FCLoopRemoveNegativePropagatorPowers[exp]` rewrites propagators raised to integer powers as products.
 
 ###  Examples 
 

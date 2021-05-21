@@ -1,6 +1,6 @@
 ##  FCShowEpsilon 
 
-FCShowEpsilon[expr] substitutes $\text{SMP}[\text{Delta}]$ with $1/\text{Epsilon} - \text{EulerGamma} + \text{Log}[4\text{Pi}]$.
+`FCShowEpsilon[expr]` substitutes `SMP["Delta"]` with `1/Epsilon - EulerGamma + Log[4 Pi]`.
 
 ###  Examples 
 

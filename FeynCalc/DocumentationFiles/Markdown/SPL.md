@@ -1,6 +1,6 @@
 ##  SPL 
 
-SPL is an abbreviation for SimplifyPolyLog..
+`SPL` is an abbreviation for `SimplifyPolyLog`.
 
 ###  See also 
 

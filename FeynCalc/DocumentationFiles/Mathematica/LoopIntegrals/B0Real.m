@@ -2,7 +2,7 @@
 (* ::Section:: *)
 (* B0Real *)
 (* ::Text:: *)
-(*B0Real is an option of B0 (default False). If set to True, B0 is assumed to be real and the relation B0[a,0,a] = 2 + B0[0,a,a]  is applied..*)
+(*`B0Real` is an option of `B0` (default `False`). If set to `True`, `B0` is assumed to be real and the relation `B0[a,0,a] = 2 + B0[0,a,a]` is applied.*)
 
 
 (* ::Subsection:: *)

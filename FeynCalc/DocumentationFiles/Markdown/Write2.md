@@ -1,6 +1,6 @@
 ##  Write2 
 
-Write2[file, val1 = expr1, val2 = expr2, ...] writes the settings val1 = expr1, val2 = expr2 in sequence followed by a newline, to the specified output file.Setting the option $text{FormatType}$ of Write2 to $text{FortranForm}$ results in Fortran syntax output..
+`Write2[file, val1 = expr1, val2 = expr2, ...]` writes the settings `val1 = expr1, val2 = expr2` in sequence followed by a newline, to the specified output file. Setting the option `FormatType` of `Write2` to `FortranForm` results in Fortran syntax output.
 
 ###  See also 
 
@@ -9,36 +9,28 @@ Isolate, PaVeReduce.
 ###  Examples 
 
 ```mathematica
-FullForm[$FortranContinuationCharacter] 
- 
-t = Collect[((a - c)^2 + (a - b)^2)^2, a, Factor]
+FullForm[$FortranContinuationCharacter]
 ```
 
 $$\&$$
 
-$$4 a^4-8 a^3 (b+c)+8 a^2 \left(b^2+b c+c^2\right)-4 a (b+c) \left(b^2+c^2\right)+\left(b^2+c^2\right)^2$$
+```mathematica
+t = Collect[((a - c)^2 + (a - b)^2)^2, a, Factor]
+```
+
+$$8 a^2 \left(b^2+b c+c^2\right)-8 a^3 (b+c)+4 a^4-4 a (b+c) \left(b^2+c^2\right)+\left(b^2+c^2\right)^2$$
 
 This writes the assignment r=t to a file.
 
 ```mathematica
 tempfilename = ToString[$SessionID] <> ".s";
 Write2[tempfilename, r = t];
-
 ```
 
 This shows the contents of the file.
 
 ```mathematica
-TableForm[ReadList[If[$OperatingSystem === "MacOS", ":", ""] <> tempfilename, String]] 
- 
-DeleteFile[If[$OperatingSystem === "MacOS", ":", ""] <> tempfilename]
-t2 = x + Isolate[t, a, IsolateNames -> w] 
- 
-Write2[tempfilename, r = t2];
-TableForm[ReadList[If[$OperatingSystem === "MacOS", ":", ""] <> tempfilename, String]] 
- 
-DeleteFile[If[$OperatingSystem === "MacOS", ":", ""] <> tempfilename]
-
+TableForm[ReadList[If[$OperatingSystem === "MacOS", ":", ""] <> tempfilename, String]]
 ```
 
 $$\begin{array}{l}
@@ -47,7 +39,23 @@ $$\begin{array}{l}
  \text{       );} \\
 \end{array}$$
 
-$$4 a^4-8 a^3 w(24)+8 a^2 w(26)-4 a w(24) w(25)+w(25)^2+x$$
+```mathematica
+DeleteFile[If[$OperatingSystem === "MacOS", ":", ""] <> tempfilename]
+```
+
+```mathematica
+t2 = x + Isolate[t, a, IsolateNames -> w]
+```
+
+$$-8 a^3 w(24)+8 a^2 w(26)+4 a^4-4 a w(24) w(25)+w(25)^2+x$$
+
+```mathematica
+Write2[tempfilename, r = t2];
+```
+
+```mathematica
+TableForm[ReadList[If[$OperatingSystem === "MacOS", ":", ""] <> tempfilename, String]]
+```
 
 $$\begin{array}{l}
  \text{w[24] = (b + c} \\
@@ -61,13 +69,18 @@ $$\begin{array}{l}
  \text{       );} \\
 \end{array}$$
 
-This is how to write out the expression $text{t2}$ in Fortran format.
+```mathematica
+DeleteFile[If[$OperatingSystem === "MacOS", ":", ""] <> tempfilename]
+```
+
+This is how to write out the expression `t2` in Fortran format.
 
 ```mathematica
 Write2[tempfilename, r = t2, FormatType -> FortranForm];
-TableForm[ReadList[If[$OperatingSystem === "MacOS", ":", ""] <> tempfilename, String]] 
- 
-DeleteFile[If[$OperatingSystem === "MacOS", ":", ""] <> tempfilename]; Clear[w, t, t2, r, tempfilename];
+```
+
+```mathematica
+TableForm[ReadList[If[$OperatingSystem === "MacOS", ":", ""] <> tempfilename, String]]
 ```
 
 $$\begin{array}{l}
@@ -78,3 +91,8 @@ $$\begin{array}{l}
  \text{     $\&$  w(25)**2 + a**2*8D0*w(26)} \\
  \text{                  } \\
 \end{array}$$
+
+```mathematica
+DeleteFile[If[$OperatingSystem === "MacOS", ":", ""] <> tempfilename];
+Clear[w, t, t2, r, tempfilename];
+```

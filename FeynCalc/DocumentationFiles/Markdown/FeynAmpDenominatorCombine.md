@@ -1,6 +1,6 @@
 ##  FeynAmpDenominatorCombine 
 
-FeynAmpDenominatorCombine[expr] expands expr with respect to FeynAmpDenominator and combines products of FeynAmpDenominator in expr into one FeynAmpDenominator..
+`FeynAmpDenominatorCombine[expr]` expands expr with respect to `FeynAmpDenominator` and combines products of `FeynAmpDenominator` in expr into one `FeynAmpDenominator`.
 
 ###  See also 
 

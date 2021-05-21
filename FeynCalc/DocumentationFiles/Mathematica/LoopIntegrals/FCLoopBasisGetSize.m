@@ -2,7 +2,7 @@
 (* ::Section:: *)
 (* FCLoopBasisGetSize *)
 (* ::Text:: *)
-(*FCLoopBasisGetSize[n1, n2] returns the number of linearly independent propagators for a topology that contains n1 loop momenta and n2 external momenta..*)
+(*`FCLoopBasisGetSize[n1, n2]` returns the number of linearly independent propagators for a topology that contains `n1` loop momenta and `n2` external momenta.*)
 
 
 (* ::Subsection:: *)

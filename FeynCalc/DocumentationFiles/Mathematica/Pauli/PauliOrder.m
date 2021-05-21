@@ -1,18 +1,34 @@
+(* ::Package:: *)
+
  
+
+
 (* ::Section:: *)
 (* PauliOrder *)
+
+
 (* ::Text:: *)
-(*PauliOrder[exp] orders the Pauli matrices in expr alphabetically. PauliOrder[exp, orderlist] orders the Pauli matrices in expr according to orderlist..*)
+(*`PauliOrder[exp]` orders the Pauli matrices in `expr` alphabetically.*)
+
+
+(* ::Text:: *)
+(*`PauliOrder[exp, orderlist]` orders the Pauli matrices in expr according to `orderlist`.*)
+
+
+(* ::Subsection:: *)
+(* See also *)
 
 
 (* ::Subsection:: *)
 (* Examples *)
-CSI[k,j,i]
 
+
+CSI[k,j,i]
 PauliOrder[%]
+
 
 CSID[i,j,k]
-
 PauliOrder[%]
+
 
 PauliOrder[%%,{j,i,k}]

@@ -1,6 +1,6 @@
 ##  QuarkMass 
 
-QuarkMass is an option of Amplitude, CounterTerm and RTL..
+`QuarkMass` is an option of `Amplitude`, `CounterTerm` and `RTL`.
 
 ###  See also 
 

@@ -1,6 +1,6 @@
 ##  GGV 
 
-GGV is equivalent to GluonGhostVertex..
+`GGV` is equivalent to `GluonGhostVertex`.
 
 ###  See also 
 

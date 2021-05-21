@@ -1,6 +1,8 @@
 ##  LeftRightPartialD2 
 
-LeftRightPartialD2[mu] denotes $\overleftrightarrow{\partial }_{\mu }$, acting to the left and right. ExplicitPartialD[LeftRightPartialD2[$\mu$]] gives (RightPartialD[$\mu$] + LeftPartialD[$\mu$])..
+`LeftRightPartialD2[μ]` denotes $\overleftrightarrow{\partial }_{\mu }$, acting to the left and right.
+
+`ExplicitPartialD[LeftRightPartialD2[μ]] gives `(RightPartialD[μ] + LeftPartialD[μ])`.
 
 ###  See also 
 
@@ -9,26 +11,27 @@ ExplicitPartialD, ExpandPartialD, FCPartialD, LeftPartialD, RightPartialD.
 ###  Examples 
 
 ```mathematica
-LeftRightPartialD2[\[Mu]] 
- 
-ExplicitPartialD[%] 
- 
-LeftRightPartialD2[\[Mu]] . QuantumField[A, LorentzIndex[\[Nu]]] 
- 
-ExpandPartialD[%] 
- 
-QuantumField[A, LorentzIndex[\[Mu]]] . LeftRightPartialD2[\[Nu]] . QuantumField[A, LorentzIndex[\[Rho]]] 
- 
-ExpandPartialD[%]
+LeftRightPartialD2[\[Mu]]
+ExplicitPartialD[%]
 ```
 
 $$\overleftrightarrow{\partial }_{\mu }$$
 
 $$\overleftarrow{\partial }_{\mu }+\vec{\partial }_{\mu }$$
 
+```mathematica
+LeftRightPartialD2[\[Mu]] . QuantumField[A, LorentzIndex[\[Nu]]]
+ExpandPartialD[%]
+```
+
 $$\overleftrightarrow{\partial }_{\mu }.A_{\nu }$$
 
 $$\left.(\partial _{\mu }A_{\nu }\right)+\overleftarrow{\partial }_{\mu }.A_{\nu }$$
+
+```mathematica
+QuantumField[A, LorentzIndex[\[Mu]]] . LeftRightPartialD2[\[Nu]] . QuantumField[A, LorentzIndex[\[Rho]]]
+ExpandPartialD[%]
+```
 
 $$A_{\mu }.\overleftrightarrow{\partial }_{\nu }.A_{\rho }$$
 

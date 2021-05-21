@@ -1,13 +1,35 @@
+(* ::Package:: *)
+
  
+
+
 (* ::Section:: *)
 (* SMP *)
+
+
 (* ::Text:: *)
-(*SMP[par] displays a symbol for the model parameter $\text{{``}par{''}}$.Typical parameters are masses, coupling constants, mixing angles etc. Parameters that are complex, like CKM matrix element, have an $text{I}$ as an additional argument, i.e. SMP[V_ud, I] and SMP[V_ud, -I].  SMP[] shows the list of all available parameters..*)
+(*`SMP[par]` displays a symbol for the model parameter `par`. Typical parameters are masses, coupling constants, mixing angles etc. *)
+
+
+(* ::Text:: *)
+(*Parameters that are complex, like a CKM matrix element, have an `I` as an additional argument, e.g. `SMP["V_ud", I]` and  `SMP["V_ud", -I]`.*)
+
+
+(* ::Text:: *)
+(*`SMP[]` shows the list of all available parameters.*)
+
+
+(* ::Subsection:: *)
+(* See also *)
+
+
+(* ::Text:: *)
+(*SMVertex.*)
 
 
 (* ::Subsection:: *)
 (* Examples *)
-SMVertex
+
 
 (* ::Text:: *)
 (*Electron mass $m_e$*)
@@ -29,5 +51,6 @@ SMP["g_W"]
 
 
 SMP[]
+
 
 SMP/@Last/@SMP[]

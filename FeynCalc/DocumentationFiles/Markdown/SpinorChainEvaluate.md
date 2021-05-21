@@ -2,6 +2,8 @@
 
 `SpinorChainEvaluate[exp]` explicitly evaluates suitable spinor chains, i.e. it replaces a `DOT[Spinor[...],...,Spinor[...]]` with a scalar quantity without a DOT.
 
+###  See also 
+
 ###  Examples 
 
 ```mathematica

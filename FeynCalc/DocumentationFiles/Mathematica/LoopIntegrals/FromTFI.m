@@ -2,7 +2,7 @@
 (* ::Section:: *)
 (* FromTFI *)
 (* ::Text:: *)
-(*FromTFI[expr, q1, q2, p] translates the TFI notation from the TARCER package to the usual FeynCalc notation. See the TARCER documentation on TFI for details on the conventions..*)
+(*`FromTFI[expr, q1, q2, p]` translates the `TFI` notation from the TARCER package to the usual FeynCalc notation. See the TARCER documentation on `TFI` for details on the conventions.*)
 
 
 (* ::Subsection:: *)

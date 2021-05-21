@@ -1,6 +1,6 @@
 ##  PauliChainJoin 
 
-PauliChainJoin[exp] joins chains of Pauli matrices with explicit Pauli indices wrapped with a head PauliChain..
+`PauliChainJoin[exp]` joins chains of Pauli matrices with explicit Pauli indices wrapped with a head `PauliChain`.
 
 ###  See also 
 
@@ -9,8 +9,7 @@ PauliChain, PCHN, PauliIndex, PauliIndexDelta, DIDelta, PauliChainCombine, Pauli
 ###  Examples 
 
 ```mathematica
-PCHN[PauliXi[-I], i] PCHN[CSID[a] . CSID[b], i, j] PCHN[j, PauliEta[I]] 
- 
+PCHN[PauliXi[-I], i] PCHN[CSID[a] . CSID[b], i, j] PCHN[j, PauliEta[I]]
 PauliChainJoin[%]
 ```
 

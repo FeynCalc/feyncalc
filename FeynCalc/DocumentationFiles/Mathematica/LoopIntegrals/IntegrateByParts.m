@@ -2,7 +2,7 @@
 (* ::Section:: *)
 (* IntegrateByParts *)
 (* ::Text:: *)
-(*IntegrateByParts[(1 - t)^(a Epsilon -1)g[t], deriv, t] does an integration by parts of the definite integral over t from 0 to 1..*)
+(*`IntegrateByParts[(1 - t)^(a Epsilon -1)g[t], deriv, t]` does an integration by parts of the definite integral over `t` from `0` to `1`.*)
 
 
 (* ::Subsection:: *)

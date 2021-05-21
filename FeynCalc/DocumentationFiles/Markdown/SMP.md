@@ -1,15 +1,16 @@
 ##  SMP 
 
-SMP[par] displays a symbol for the model parameter $\text{{``}par{''}}$.Typical parameters are masses, coupling constants, mixing angles etc. Parameters that are complex, like CKM matrix element, have an $text{I}$ as an additional argument, i.e. SMP[V_ud, I] and SMP[V_ud, -I].  SMP[] shows the list of all available parameters..
+`SMP[par]` displays a symbol for the model parameter `par`. Typical parameters are masses, coupling constants, mixing angles etc. 
+
+Parameters that are complex, like a CKM matrix element, have an `I` as an additional argument, e.g. `SMP["V_ud", I]` and  `SMP["V_ud", -I]`.
+
+`SMP[]` shows the list of all available parameters.
+
+###  See also 
+
+SMVertex.
 
 ###  Examples 
-
-```mathematica
-SMVertex
-
-```
-
-$$\text{SMVertex}$$
 
 Electron mass $m_e$
 
@@ -31,9 +32,7 @@ $$g_W$$
 List all available SMP's
 
 ```mathematica
-SMP[] 
- 
-SMP /@ Last /@ SMP[]
+SMP[]
 ```
 
 $$\left(
@@ -196,5 +195,9 @@ $$\left(
  c_{23} & \text{c$\_$23} \\
 \end{array}
 \right)$$
+
+```mathematica
+SMP /@ Last /@ SMP[]
+```
 
 $$\left\{N_F,m_e,m_{\mu },m_{\tau },m_u,m_d,m_c,m_s,m_t,m_b,m_H,m_W,m_Z,m_q,m_Q,m_{q_u},m_{q_d},m_l,m_{\pi },\text{g},g_s,\text{e},e_Q,Q_u,Q_d,G_F,g_W,g'_W,\left.\cos (\theta _W\right),\left.\sin (\theta _W\right),\theta _W,\left.\cos (\theta _C\right),\left.\sin (\theta _C\right),\theta _C,\alpha ,\alpha _s,\delta _{\psi },\delta _{\phi },\delta _A,\delta _m,\delta _u,\delta _{\xi },\delta _e,\delta _g,Z_{\psi },Z_{\phi },Z_A,Z_m,Z_u,Z_{\xi },Z_e,Z_g,\text{$\delta $Z}_{\psi },\text{$\delta $Z}_{\phi },\text{$\delta $Z}_A,\text{$\delta $Z}_m,\text{$\delta $Z}_u,\text{$\delta $Z}_{\xi },\text{$\delta $Z}_e,\text{$\delta $Z}_g,\delta _{\psi }^{\text{MS}},\delta _{\phi }^{\text{MS}},\delta _A^{\text{MS}},\delta _m^{\text{MS}},\delta _u^{\text{MS}},\delta _{\xi }^{\text{MS}},\delta _e^{\text{MS}},\delta _g^{\text{MS}},Z_{\psi }^{\text{MS}},Z_{\phi }^{\text{MS}},Z_A^{\text{MS}},Z_m^{\text{MS}},Z_u^{\text{MS}},Z_{\xi }^{\text{MS}},Z_e^{\text{MS}},Z_g^{\text{MS}},\text{$\delta $Z}_{\psi }^{\text{MS}},\text{$\delta $Z}_{\phi }^{\text{MS}},\text{$\delta $Z}_A^{\text{MS}},\text{$\delta $Z}_m^{\text{MS}},\text{$\delta $Z}_u^{\text{MS}},\text{$\delta $Z}_{\xi }^{\text{MS}},\text{$\delta $Z}_e^{\text{MS}},\text{$\delta $Z}_g^{\text{MS}},\delta _{\psi }^{\overset{---}{\text{MS}}},\delta _{\phi }^{\overset{---}{\text{MS}}},\delta _A^{\overset{---}{\text{MS}}},\delta _m^{\overset{---}{\text{MS}}},\delta _u^{\overset{---}{\text{MS}}},\delta _{\xi }^{\overset{---}{\text{MS}}},\delta _e^{\overset{---}{\text{MS}}},\delta _g^{\overset{---}{\text{MS}}},\text{$\delta $Z}_{\psi }^{\overset{---}{\text{MS}}},Z_{\phi }^{\overset{---}{\text{MS}}},Z_A^{\overset{---}{\text{MS}}},Z_m^{\overset{---}{\text{MS}}},Z_u^{\overset{---}{\text{MS}}},Z_{\xi }^{\overset{---}{\text{MS}}},Z_e^{\overset{---}{\text{MS}}},Z_g^{\overset{---}{\text{MS}}},Z_{\psi }^{\overset{---}{\text{MS}}},\text{$\delta $Z}_{\phi }^{\overset{---}{\text{MS}}},\text{$\delta $Z}_A^{\overset{---}{\text{MS}}},\text{$\delta $Z}_m^{\overset{---}{\text{MS}}},\text{$\delta $Z}_u^{\overset{---}{\text{MS}}},\text{$\delta $Z}_{\xi }^{\overset{---}{\text{MS}}},\text{$\delta $Z}_e^{\overset{---}{\text{MS}}},\text{$\delta $Z}_g^{\overset{---}{\text{MS}}},\delta _{\psi }^{\text{OS}},\delta _{\phi }^{\text{OS}},\delta _A^{\text{OS}},\delta _m^{\text{OS}},\delta _u^{\text{OS}},\delta _{\xi }^{\text{OS}},\delta _e^{\text{OS}},\delta _g^{\text{OS}},Z_{\psi }^{\text{OS}},Z_{\phi }^{\text{OS}},Z_A^{\text{OS}},Z_m^{\text{OS}},Z_u^{\text{OS}},Z_{\xi }^{\text{OS}},Z_e^{\text{OS}},Z_g^{\text{OS}},\text{$\delta $Z}_{\psi }^{\text{OS}},\text{$\delta $Z}_{\phi }^{\text{OS}},\text{$\delta $Z}_A^{\text{OS}},\text{$\delta $Z}_m^{\text{OS}},\text{$\delta $Z}_u^{\text{OS}},\text{$\delta $Z}_{\xi }^{\text{OS}},\text{$\delta $Z}_e^{\text{OS}},\text{$\delta $Z}_g^{\text{OS}},V_{\text{ud}},V_{\text{ud}}^*,V_{\text{us}},V_{\text{us}}^*,V_{\text{ub}},V_{\text{ub}}^*,V_{\text{cd}},V_{\text{cd}}^*,V_{\text{cs}},V_{\text{cs}}^*,V_{\text{cb}},V_{\text{cb}}^*,V_{\text{td}},V_{\text{td}}^*,V_{\text{ts}},V_{\text{ts}}^*,V_{\text{tb}},V_{\text{tb}}^*,s_{12},s_{13},s_{23},c_{12},c_{13},c_{23}\right\}$$

@@ -1,6 +1,6 @@
 ##  QGV 
 
-QGV is equivalent to QuarkGluonVertex..
+`QGV` is equivalent to `QuarkGluonVertex`.
 
 ###  See also 
 

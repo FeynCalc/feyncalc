@@ -2,7 +2,7 @@
 (* ::Section:: *)
 (* FCLoopNonIntegerPropagatorPowersFreeQ *)
 (* ::Text:: *)
-(*FCLoopNonIntegerPropagatorPowersFreeQ[int] checks if the integral contains propagators raised to noninteger (i.e. fractional or symbolic) powers..*)
+(*`FCLoopNonIntegerPropagatorPowersFreeQ[int]` checks if the integral contains propagators raised to noninteger (i.e. fractional or symbolic) powers.*)
 
 
 (* ::Subsection:: *)

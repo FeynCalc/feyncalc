@@ -1,30 +1,39 @@
+(* ::Package:: *)
+
  
+
+
 (* ::Section:: *)
 (* LeftRightPartialD *)
+
+
 (* ::Text:: *)
-(*LeftRightPartialD[mu] denotes $\overleftrightarrow{\partial }_{\mu }$, acting to the left and right. ExplicitPartialD[LeftRightPartialD[$\mu$]] gives 1/2 (RightPartialD[$\mu$] - LeftPartialD[$\mu$])..*)
+(*`LeftRightPartialD[mu]` denotes $\overleftrightarrow {\partial }_{\mu }$, acting to the left and right.*)
+
+
+(* ::Text:: *)
+(*`ExplicitPartialD[LeftRightPartialD[\[Mu]]]` gives `1/2 (RightPartialD[\[Mu]] - LeftPartialD[\[Mu]])`.*)
 
 
 (* ::Subsection:: *)
 (* See also *)
+
+
 (* ::Text:: *)
 (*ExplicitPartialD, ExpandPartialD, FCPartialD, LeftPartialD, LeftRightPartialD2, RightPartialD.*)
-
 
 
 (* ::Subsection:: *)
 (* Examples *)
 
 
-
 LeftRightPartialD[\[Mu]]
-
 ExplicitPartialD[%]
 
-LeftRightPartialD[\[Mu]].QuantumField[A,LorentzIndex[\[Nu]]]
 
+LeftRightPartialD[\[Mu]] . QuantumField[A,LorentzIndex[\[Nu]]]
 ExpandPartialD[%]
 
-QuantumField[A,LorentzIndex[\[Mu]]].LeftRightPartialD[\[Nu]].QuantumField[A,LorentzIndex[\[Rho]]]
 
+QuantumField[A,LorentzIndex[\[Mu]]] . LeftRightPartialD[\[Nu]] . QuantumField[A,LorentzIndex[\[Rho]]]
 ExpandPartialD[%]

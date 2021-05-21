@@ -1,18 +1,21 @@
 ##  QuarkFieldPsiDagger 
 
-QuarkFieldPsiDagger is the name of a fermionic field.This is just a name with no functional properties. Only typesetting rules are attached..
+`QuarkFieldPsiDagger` is the name of a fermionic field.This is just a name with no functional properties. Only typesetting rules are attached.
+
+###  See also 
 
 ###  Examples 
 
 ```mathematica
-QuarkFieldPsiDagger 
- 
-QuantumField[QuarkFieldPsiDagger] . GA[\[Mu]] . CovariantD[\[Mu]] . QuantumField[QuarkFieldPsi] 
- 
-ExpandPartialD[%]
+QuarkFieldPsiDagger
 ```
 
 $$\psi ^{\dagger }$$
+
+```mathematica
+QuantumField[QuarkFieldPsiDagger] . GA[\[Mu]] . CovariantD[\[Mu]] . QuantumField[QuarkFieldPsi]
+ExpandPartialD[%]
+```
 
 $$\psi ^{\dagger }.\bar{\gamma }^{\mu }.D_{\mu }.\psi$$
 

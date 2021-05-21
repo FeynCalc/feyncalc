@@ -2,7 +2,7 @@
 (* ::Section:: *)
 (* ToPaVe *)
 (* ::Text:: *)
-(*ToPaVe[exp, q]  converts all scalar 1-loop integrals in exp that depend on the momentum q to scalar Passarino Veltman functions A0, B0, C0, D0 etc..*)
+(*`ToPaVe[exp, q]`  converts all scalar 1-loop integrals in `exp` that depend on the momentum `q` to scalar Passarino Veltman functions `A0`, `B0`, `C0`, `D0` etc.*)
 
 
 (* ::Subsection:: *)

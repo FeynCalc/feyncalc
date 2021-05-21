@@ -1,6 +1,6 @@
 ##  GluonField 
 
-GluonField is a name of a gauge field..
+`GluonField` is a name of a gauge field.
 
 ###  See also 
 
@@ -9,11 +9,13 @@ GaugeField.
 ###  Examples 
 
 ```mathematica
-GluonField 
- 
-QuantumField[GluonField, LorentzIndex[\[Mu]], SUNIndex[a]]
+GluonField
 ```
 
 $$A$$
+
+```mathematica
+QuantumField[GluonField, LorentzIndex[\[Mu]], SUNIndex[a]]
+```
 
 $$A_{\mu }^a$$

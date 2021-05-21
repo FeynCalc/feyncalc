@@ -2,7 +2,7 @@
 (* ::Section:: *)
 (* B00 *)
 (* ::Text:: *)
-(*B00[pp, ma^2, mb^2] is the Passarino-Veltman $B_{00}$-function, i.e., the coefficient function of the metric tensor. All arguments are scalars and have dimension mass^2..*)
+(*`B00[pp, ma^2, mb^2]` is the Passarino-Veltman $B_{00}$-function, i.e., the coefficient function of the metric tensor. All arguments are scalars and have dimension mass squared.*)
 
 
 (* ::Subsection:: *)

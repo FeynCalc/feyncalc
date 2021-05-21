@@ -1,6 +1,6 @@
 ##  FCLoopPropagatorPowersExpand 
 
-FCLoopPropagatorPowersExpand[exp]  rewrites propagators raised to integer powers as products.
+`FCLoopPropagatorPowersExpand[exp]` rewrites propagators raised to integer powers as products.
 
 ###  Examples 
 

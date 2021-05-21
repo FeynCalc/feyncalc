@@ -2,7 +2,7 @@
 (* ::Section:: *)
 (* PartialIntegrate *)
 (* ::Text:: *)
-(*PartialIntegrate[exp, ap, t] does a partial integration of the definite integral Integrate[exp,{t,0,1}], with ap the factor that is to be integrated and exp/ap the factor that is to be differentiated..*)
+(*`PartialIntegrate[exp, ap, t]` does a partial integration of the definite integral `Integrate[exp,{t,0,1}]`, with `ap` the factor that is to be integrated and `exp/ap` the factor that is to be differentiated.*)
 
 
 (* ::Subsection:: *)
@@ -10,6 +10,7 @@
 
 
 PartialIntegrate[f[x]g[x],g[x],{x,0,1}]
+
 
 f[x_]=Integrate[Log[3x+2],x]
 g[x_]=D[1/Log[3x+2],x]

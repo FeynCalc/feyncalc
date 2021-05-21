@@ -1,16 +1,31 @@
+(* ::Package:: *)
+
  
+
+
 (* ::Section:: *)
 (* QP *)
+
+
 (* ::Text:: *)
-(*QP is an alias for QuarkPropagator. QP[p] is the massless quark propagator. QP[{p,m}] gives the  quark propagator with mass m..*)
+(*`QP` is an alias for `QuarkPropagator`.*)
+
+
+(* ::Text:: *)
+(*`QP[p]` is the massless quark propagator.*)
+
+
+(* ::Text:: *)
+(*`QP[{p,m}]` gives the  quark propagator with mass `m`.*)
+
+
+(* ::Subsection:: *)
+(* See also *)
+
+
+(* ::Text:: *)
+(*QuarkPropagator.*)
 
 
 (* ::Subsection:: *)
 (* Examples *)
-Cell[TextData[{
- ButtonBox["QuarkPropagator",
-  BaseStyle->"Link",
-  ButtonData:>"paclet:FeynCalc/ref/QuarkPropagator",
-  ButtonNote->"QuarkPropagator"],
- "."
-}], "SeeAlso"]

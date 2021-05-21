@@ -2,7 +2,7 @@
 (* ::Section:: *)
 (* SPC *)
 (* ::Text:: *)
-(*SPC is an abbreviation for ScalarProductCancel..*)
+(*`SPC` is an abbreviation for `ScalarProductCancel`.*)
 
 
 (* ::Subsection:: *)

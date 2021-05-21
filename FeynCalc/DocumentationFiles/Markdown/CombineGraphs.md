@@ -1,6 +1,6 @@
 ##  CombineGraphs 
 
-CombineGraphs is an option for OneLoopSum..
+`CombineGraphs` is an option for `OneLoopSum`.
 
 ###  See also 
 

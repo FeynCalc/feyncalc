@@ -1,6 +1,6 @@
 ##  FCHideEpsilon 
 
-FCHideEpsilon[expr] substitutes $1/\text{Epsilon} - \text{EulerGamma} + \text{Log}[4\text{Pi}]$ with $\text{SMP}[\text{Delta}]$.
+`FCHideEpsilon[expr]` substitutes `1/Epsilon - EulerGamma + Log[4 Pi]` with `SMP["Delta"]`.
 
 ###  Examples 
 

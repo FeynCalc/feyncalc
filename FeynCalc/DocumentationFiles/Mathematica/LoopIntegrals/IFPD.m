@@ -2,7 +2,7 @@
 (* ::Section:: *)
 (* IFPD *)
 (* ::Text:: *)
-(*IFPD[p, m] denotes (p^2 - m^2)..*)
+(*`IFPD[p, m]` denotes `(p^2 - m^2)`.*)
 
 
 (* ::Subsection:: *)

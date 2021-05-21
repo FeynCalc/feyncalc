@@ -2,15 +2,16 @@
 (* ::Section:: *)
 (* FCLoopMixedIntegralQ *)
 (* ::Text:: *)
-(*FCLoopMixedIntegralQ[exp]  returns True if the integral contains both Lorentz and Cartesian indices and momenta..*)
+(*`FCLoopMixedIntegralQ[exp]` returns True if the integral contains both Lorentz and Cartesian indices and momenta.*)
 
 
 (* ::Subsection:: *)
 (* Examples *)
-FCI[FVD[p,mu] CFAD[q,q-p]]
 
+
+FCI[FVD[p,mu] CFAD[q,q-p]]
 FCLoopMixedIntegralQ[%]
 
-FCI[FVD[p,mu] FAD[q,q-p]]
 
+FCI[FVD[p,mu] FAD[q,q-p]]
 FCLoopMixedIntegralQ[%]

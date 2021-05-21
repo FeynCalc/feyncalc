@@ -2,7 +2,7 @@
 (* ::Section:: *)
 (* SmallVariables *)
 (* ::Text:: *)
-(*SmallVariables is an option for OneLoop. "SmallVariables->{Melectron}" i.e. will substitute "SmallVariable[Melectron]"  for all Melectron's in the calculation..*)
+(*`SmallVariables` is an option for OneLoop. `SmallVariables->{Melectron}` i.e. will substitute `SmallVariable[Melectron]` for all `Melectron`'s in the calculation.*)
 
 
 (* ::Subsection:: *)

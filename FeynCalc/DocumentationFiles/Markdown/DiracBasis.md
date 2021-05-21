@@ -2,6 +2,8 @@
 
 `DiracBasis[any]` is a head which is wrapped around Dirac structures (and the `1`) as a result of the function `DiracReduce`. For more details, see the documentation for `DiracReduce`.
 
+###  See also 
+
 ###  Examples 
 
 ```mathematica

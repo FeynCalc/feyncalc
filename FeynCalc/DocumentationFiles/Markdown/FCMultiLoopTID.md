@@ -1,6 +1,6 @@
 ##  FCMultiLoopTID 
 
-FCMultiLoopTID[amp, {q1, q2, ...}] does a multi-loop tensor integral decomposition, transforming the Lorentz indices away from the loop momenta q1,q2,... The decomposition is applied only to the loop integrals where loop momenta are contracted with Dirac matrices or epsilon tensors..
+`FCMultiLoopTID[amp, {q1, q2, ...}]` does a multi-loop tensor integral decomposition, transforming the Lorentz indices away from the loop momenta `q1, q2, ...` The decomposition is applied only to the loop integrals where loop momenta are contracted with Dirac matrices or epsilon tensors.
 
 ###  Examples 
 

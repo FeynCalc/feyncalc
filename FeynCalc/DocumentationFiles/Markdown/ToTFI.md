@@ -1,6 +1,6 @@
 ##  ToTFI 
 
-ToTFI[expr, q1, q2, p] translates FeynCalc 2-loop self energy type integrals into the TFI notation, which can be used as input for the function TarcerRecurse from the TARCER package. See the TARCER documenatation on TFI for details on the conventions..
+`ToTFI[expr, q1, q2, p]` translates FeynCalc 2-loop self energy type integrals into the `TFI` notation, which can be used as input for the function `TarcerRecurse` from the `TARCER` package. See the `TARCER` documenatation on `TFI` for details on the conventions.
 
 ###  See also 
 
@@ -12,7 +12,6 @@ FromTFI.
 FAD[q1, q1 - p, {q2, M}, {q2 - p, m}, q1 - q2]
 ToTFI[%, q1, q2, p]
 % // StandardForm
-
 ```
 
 $$\frac{1}{\text{q1}^2.(\text{q1}-p)^2.\left(\text{q2}^2-M^2\right).\left((\text{q2}-p)^2-m^2\right).(\text{q1}-\text{q2})^2}$$

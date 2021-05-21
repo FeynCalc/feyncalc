@@ -2,7 +2,7 @@
 (* ::Section:: *)
 (* FCLoopSamePropagatorHeadsQ *)
 (* ::Text:: *)
-(*FCLoopSamePropagatorHeadsQ[exp]  returns True if the FeynAmpDenominator of exp contains only propagator denominators of the same type (e.g. only StandardPropagatorDenominator or only CartesianPropagatorDenominator)..*)
+(*`FCLoopSamePropagatorHeadsQ[exp]` returns `True` if the `FeynAmpDenominator` of `exp` contains only propagator denominators of the same type (e.g. only `StandardPropagatorDenominator` or only `CartesianPropagatorDenominator`).*)
 
 
 (* ::Subsection:: *)
