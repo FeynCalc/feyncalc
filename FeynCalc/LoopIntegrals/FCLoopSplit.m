@@ -48,16 +48,20 @@ Options[FCLoopSplit] = {
 	TimeConstrained		-> 3
 };
 
-FCLoopSplit[expr_, lmoms_List /; FreeQ[lmoms, OptionQ], OptionsPattern[]] :=
+FCLoopSplit[expr_, lmomsRaw_List /; FreeQ[lmomsRaw, OptionQ], OptionsPattern[]] :=
 	Block[{	null1, null2, ex, loopFree, loopScalar,
 			loopTensorQP, loopTensorFreeInd,oldLoopFree,oldLoopScalar,
-			addToLoopScalar,tmp,loopIntHeads, res},
+			addToLoopScalar,tmp,loopIntHeads, res, dummyMom, lmoms},
 
 		loopIntHeads = OptionValue[PaVeIntegralHeads];
 
-		If[	MatchQ[lmoms,{{___}}],
+		If[	MatchQ[lmomsRaw,{{___}}],
 			Message[FCLoopSplit::failmsg, ex];
 			Abort[]
+		];
+		If[	TrueQ[lmomsRaw==={}],
+			lmoms = {dummyMom},
+			lmoms = lmomsRaw
 		];
 
 		If[OptionValue[FCI],

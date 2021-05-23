@@ -84,6 +84,7 @@ q]*CVD[q, mu]}"},
 FVD[q,mu] SPD[q,l]SFAD[{q,m}],{q},FCE\[Rule]True]",
 "{c, b*SFAD[{{q, 0}, {mu, 1}, 1}], SFAD[{{q, 0}, {m, 1}, \
 1}]*SPD[k, q]*SPD[l, q], b*FVD[q, mu]*SFAD[{{q, 0}, {m, 1}, \
-1}]*SPD[l, q]}"}
-
+1}]*SPD[l, q]}"},
+{"fcstFCLoopSplit-ID22","FCLoopSplit[PaVe[0, {}, {m1^2}], {}]",
+"{0, PaVe[0, {}, {m1^2}], 0, 0}"}
 };
