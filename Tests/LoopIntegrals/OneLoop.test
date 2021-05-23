@@ -58,9 +58,9 @@ FAD[{q1, 0}, {q1, 0}, {-p + q1, 0}]] // FCE",
 0, {0, 0, SP[p1, p1], SP[p1, p1] - 2 SP[p1, p2] + SP[p2, p2],
 SP[p2, p2], 0, SP[p1, p1], SP[p2, p2], SP[p1, p1], SP[p2, p2]}, {0,
 	0, 0, 0, m^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]"},
-{"fcstOneLoop-ID8","OneLoop[q,FCI@FAD[{q, m0}, {q + p1, m1}, {q + p2, m2}, {q + p3, m3},
-{q + p4, m4}]] // PaVeOrder // FCE",
-"(I \[Pi]^2 (8 D0[SP[p1, p1], SP[p2, p2],
+{"fcstOneLoop-ID8","tmp1 = OneLoop[q,FCI@FAD[{q, m0}, {q + p1, m1}, {q + p2, m2}, {q + p3, m3},
+{q + p4, m4}]] // PaVeOrder[#,PaVeToABCD->True,FCE->True]&; \n
+tmp2 = (I \[Pi]^2 (8 D0[SP[p1, p1], SP[p2, p2],
 	SP[p2, p2] - 2 SP[p2, p3] + SP[p3, p3],
 	SP[p1, p1] - 2 SP[p1, p3] + SP[p3, p3],
 	SP[p1, p1] - 2 SP[p1, p2] + SP[p2, p2], SP[p3, p3], m1^2, m0^2,
@@ -840,7 +840,8 @@ SP[p2, p2], 0, SP[p1, p1], SP[p2, p2], SP[p1, p1], SP[p2, p2]}, {0,
 			SP[p2, p2] + 2 SP[p2, p3] - SP[p3, p3]) (-m0^4 +
 			m0^2 m1^2 + m0^2 m4^2 - m1^2 m4^2 - m0^2 SP[p1, p1] +
 			m4^2 SP[p1, p1] + 4 m0^2 SP[p1, p4] - m0^2 SP[p4, p4] +
-			m1^2 SP[p4, p4] - SP[p1, p1] SP[p4, p4]))))"},
+			m1^2 SP[p4, p4] - SP[p1, p1] SP[p4, p4])))); \n
+Collect2[tmp1-tmp2,D0]","0"},
 {"fcstOneLoop-ID9","OneLoop[k, 1/(I Pi^2) FAD[{k}, {k, mW}] GSD[k]]","0"},
 {"fcstOneLoop-ID10","PaVeReduce[(OneLoop[q, Contract[MTD[mu, nu] FVD[q, mu] FVD[q,nu] FAD[{q, Subscript[m, 0]}, {q + p1, m1}]],
 OneLoopSimplify -> False] //ChangeDimension[#, D] &) - (Contract[MTD[mu, nu] ChangeDimension[

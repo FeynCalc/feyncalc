@@ -41,12 +41,11 @@ Tests`LoopIntegrals`ToPaVe = {
 {"fcstToPaVe-ID15","ToPaVe[FAD[{q, m}, {q, m}], q] // FCE","I*Pi^2*B0[0, m^2, m^2]"},
 {"fcstToPaVe-ID16","ToPaVe[FAD[{q, m}, {q}], q] // FCE","I*Pi^2*B0[0, 0, m^2]"},
 {"fcstToPaVe-ID17","ToPaVe[FAD[{q, m1}, {q + p1, m2}, {q + p2, m3}, {q + p3, m4}, {q + p4,
-	m5}], q] // FCE","I*Pi^2*PaVe[0, {SPD[p1, p1], SPD[p1, p1] - 2*SPD[p1, p2] + SPD[p2, p2],
-SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3], SPD[p3, p3] - 2*SPD[p3, p4] +
-	SPD[p4, p4], SPD[p4, p4], SPD[p2, p2], SPD[p1, p1] - 2*SPD[p1, p3] +
-	SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] + SPD[p4, p4], SPD[p3, p3],
-SPD[p1, p1] - 2*SPD[p1, p4] + SPD[p4, p4]}, {m1^2, m2^2, m3^2, m4^2, m5^2},
-PaVeAutoOrder -> True, PaVeAutoReduce -> True]"},
+	m5}], q] // FCE","I*Pi^2*PaVe[0, {SPD[p1, p1], SPD[p2, p2], SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3],
+	SPD[p3, p3] - 2*SPD[p3, p4] + SPD[p4, p4], SPD[p1, p1] - 2*SPD[p1, p4] + SPD[p4, p4],
+	SPD[p1, p1] - 2*SPD[p1, p2] + SPD[p2, p2], SPD[p3, p3], SPD[p2, p2] - 2*SPD[p2, p4] +
+	SPD[p4, p4], SPD[p1, p1] - 2*SPD[p1, p3] + SPD[p3, p3], SPD[p4, p4]},
+	{m2^2, m1^2, m3^2, m4^2, m5^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]"},
 {"fcstToPaVe-ID18","ToPaVe[FAD[{q, m1}, {q + p1, m2}, {q + p2, m3}, {q + p3, m4}, {q + p4,
 	m5}, {q + p5, m6}], q] // FCE","I*Pi^2*PaVe[0, {SPD[p1, p1], SPD[p1, p1] - 2*SPD[p1, p2] + SPD[p2, p2],
 SPD[p2, p2] - 2*SPD[p2, p3] + SPD[p3, p3], SPD[p3, p3] - 2*SPD[p3, p4] +
@@ -112,17 +111,11 @@ SPD[p3, p3], SPD[p1, p1] - 2*SPD[p1, p3] + SPD[p3, p3], SPD[p1, p1] - \
 m2^2, m1^2]"},
 {"fcstToPaVe-ID36", "ToPaVe[FAD[{q, m0}, {q - p1, m1}, {q - p2, m2}], q,
 PaVeAutoOrder -> False, PaVeOrder -> False, FCE -> True]",
-"I \[Pi]^2 PaVe[
-0, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
-SPD[p2, p2]}, {m0^2, m1^2, m2^2}, PaVeAutoOrder -> False,
-PaVeAutoReduce -> True]"},
+"I*Pi^2*C0[SPD[p1, p1], SPD[p1, p1] - 2*SPD[p1, p2] + SPD[p2, p2], SPD[p2, p2], m0^2, m1^2, m2^2]"},
 {"fcstToPaVe-ID37", "ToPaVe[FAD[{q, m0}, {q - p1, m1}, {q - p2, m2}, {q - p2, m3}], q,
 PaVeAutoOrder -> False, PaVeOrder -> False, FCE -> True]",
-"I \[Pi]^2 PaVe[
-0, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2], 0,
-SPD[p2, p2], SPD[p2, p2],
-SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2]}, {m0^2, m1^2, m2^2,
-m3^2}, PaVeAutoOrder -> False, PaVeAutoReduce -> True]"},
+"I*Pi^2*D0[SPD[p1, p1], SPD[p1, p1] - 2*SPD[p1, p2] + SPD[p2, p2],
+0, SPD[p2, p2], SPD[p2, p2], SPD[p1, p1] - 2*SPD[p1, p2] + SPD[p2, p2], m0^2, m1^2, m2^2, m3^2]"},
 {"fcstToPaVe-ID33", "ToPaVe[FAD[{q1, m1}] A0[m2^2], q1]",
 "I \[Pi]^2 A0[m1^2] A0[m2^2]"}
 };

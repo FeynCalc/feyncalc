@@ -1,195 +1,2021 @@
-(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+(* ::Package:: *)
 
-(* :Title: PaVeOrder *)
 
-(* :Author: Rolf Mertig *)
 
-(* ------------------------------------------------------------------------ *)
-(* :History: File created on 22 June '97 at 23:00 *)
-(* ------------------------------------------------------------------------ *)
+(* :Title: PaVeOrder                                                       	*)
 
-(* ------------------------------------------------------------------------ *)
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2021 Rolf Mertig
+	Copyright (C) 1997-2021 Frederik Orellana
+	Copyright (C) 2014-2021 Vladyslav Shtabovenko
+*)
+
+(* :Summary:	Argument symmetries of PaVe functions						*)
 
 PaVeOrder::usage =
-"PaVeOrder[expr] orders the arguments of all D0 in expr in a standard way. \
+"PaVeOrder[expr] orders the arguments of PaVe functions with up to 6 legs\
+in expr in a standard way. \
 PaVeOrder[expr, PaVeOrderList -> { {..., s, u, ...}, \
-{... m1^2, m2^2, ...}, ...}] orders the arguments of all D0 in expr \
-according to the specified ordering lists. \
-The lists may contain only a subsequence of the D0-variables.";
+{... m1^2, m2^2, ...}, ...}] orders the arguments of PaVe functions \
+with up to 6 legs in expr according to the specified ordering lists. \
+The lists may contain only a subsequence of the kinematic variables.";
 
+PaVeOrder::failmsg =
+"Error! PaVeOrder encountered a fatal problem and must abort the computation. \
+The problem reads: `1`"
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
+
+argPermC;
+argPermD;
+argPermE;
+argPermF;
+
 End[]
 
 Begin["`PaVeOrder`Private`"]
 
+pvoVerbose::usage="";
+smallvarHold::usage="";
+paveReordered::usage="";
+paveHold::usage="";
+
 Options[PaVeOrder] = {
-	PaVeOrderList -> {}
+	FCE				-> False,
+	FCI				-> False,
+	FCVerbose		-> False,
+	PaVeOrderList	-> {},
+	PaVeToABCD		-> False
 };
 
-(* smallLL is intermediately introduced for SmallVariable *)
-(* PaVeOrderdef *)
-PaVeOrder[expr_,opt___Rule] :=
-	Block[ {new, dordering, opli, cordering,
-	be0, be1, aa0, be11, be00, dordering0,j,nulL },
+PaVeOrder[expr_, OptionsPattern[]] :=
+	Block[{	ex, paveHead, new, dordering, optPaVeOrderList,
+			rest, loops, paveInts, paveIntsEval, repRule, res,
+			time},
 
-		opli = PaVeOrderList/.{opt}/. Options[PaVeOrder];
-		If[ opli === False,
-			new = expr,
-			new = expr/.B0->be0/.B1->be1/.A0->aa0/.B00->be00/.B11->be11/.
-				SmallVariable->smallLL/. 0->nulL;
-			opli = opli /. 0 -> nulL /. SmallVariable->smallLL;
-			dordering0[ten__] :=
-				(D0@@(oldper[ten][[1]]));
-			If[ Length[opli]>0,
-				If[ Head[opli[[1]]]=!=List,
-					opli = {opli}
-				];
-				If[ expr=!=(D0@@opli[[1]]),
-					new = new /. D0 -> dordering0;
-					For[j = 1, j<=Length[opli], j++,
-						dordering[j][ten10__] :=
-							D0 @@ dord[ D0[ten10], opli[[j]]];
-						cordering[j][six06__] :=
-							C0 @@ cord[ C0[six06], opli[[j]]];
-						new = new/.D0->dordering[j]/.C0 -> cordering[j]
-					]
-				],
-				new = new /. D0 -> dordering0 /. C0 -> cord;
+		optPaVeOrderList = OptionValue[PaVeOrderList];
+
+		If [OptionValue[FCVerbose]===False,
+			pvoVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				pvoVerbose=OptionValue[FCVerbose]
 			];
-			new = new(*/.C0->cord*) /. nulL -> 0 /. smallLL -> SmallVariable;
-			new = new/.be0->B0/.be1->B1/.aa0->A0/.be00->B00/.be11->B11;
 		];
-		new
+
+		FCPrint[1, "PaVeOrder: Entering.", FCDoControl->pvoVerbose];
+		FCPrint[3, "PaVeOrder: Entering with: ", expr, FCDoControl->pvoVerbose];
+
+
+		FCPrint[1, "PaVeOrder: Applying FCLoopExtract.", FCDoControl->pvoVerbose];
+		time=AbsoluteTime[];
+		{rest,loops,paveInts} = FCLoopExtract[expr, {}, paveHead, FCI-> OptionValue[FCI], FeynAmpDenominatorCombine->False,
+			FAD->False, GFAD->False, CFAD->False, SFAD->True, PaVe->True];
+		FCPrint[1, "PaVeOrder: Done applying FCLoopExtract, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->pvoVerbose];
+		FCPrint[3, "PaVeOrder: List of uniques PaVe functions: ", paveInts, FCDoControl->pvoVerbose];
+
+		FCPrint[1, "PaVeOrder: Applying ToPaVe2.", FCDoControl->pvoVerbose];
+		time=AbsoluteTime[];
+		paveIntsEval = ToPaVe2[paveInts]/. PaVe->paveHold /. SmallVariable->smallvarHold /. paveHead->Identity;
+		FCPrint[1, "PaVeOrder: Done applying ToPaVe2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->pvoVerbose];
+
+		FCPrint[3, "PaVeOrder: After ToPaVe2: ", paveIntsEval, FCDoControl->pvoVerbose];
+
+		If[	!MatchQ[Head/@paveIntsEval,{paveHold...}],
+			Message[PaVeOrder::failmsg,"Failed to convert the occurring functions to PaVe"];
+			Abort[]
+		];
+
+		FCPrint[1, "PaVeOrder: Applying paveAutoOrder.", FCDoControl->pvoVerbose];
+		time=AbsoluteTime[];
+		paveIntsEval = paveAutoOrder/@paveIntsEval;
+		FCPrint[1, "PaVeOrder: Done applying paveAutoOrder, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->pvoVerbose];
+		FCPrint[3, "PaVeOrder: After paveAutoOrder: ", paveIntsEval, FCDoControl->pvoVerbose];
+
+		If[	optPaVeOrderList=!={},
+			(*must be a list of lists*)
+			If[ Head[optPaVeOrderList[[1]]]=!=List,
+					optPaVeOrderList = {optPaVeOrderList}
+			];
+			FCPrint[1, "PaVeOrder: Applying paveOrder.", FCDoControl->pvoVerbose];
+			time=AbsoluteTime[];
+			optPaVeOrderList = optPaVeOrderList /. SmallVariable->smallvarHold;
+
+			paveIntsEval = paveIntsEval/. PaVe[ids__,invs__]/;MatchQ[{ids},{0..}] :> paveReordered[ids,invs];
+			paveIntsEval = Map[Fold[paveOrder,#,optPaVeOrderList]&,paveIntsEval];
+			FCPrint[1, "PaVeOrder: Done applying paveOrder, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->pvoVerbose];
+			FCPrint[3, "PaVeOrder: After paveOrder: ", paveIntsEval, FCDoControl->pvoVerbose];
+		];
+
+		paveIntsEval = paveIntsEval /. smallvarHold->SmallVariable /. paveReordered|paveHold->PaVe;
+
+		If[ OptionValue[PaVeToABCD],
+			paveIntsEval = PaVeToABCD[paveIntsEval];
+			FCPrint[3, "PaVeOrder: After PaVeToABCD: ", paveIntsEval, FCDoControl->pvoVerbose];
+		];
+
+		repRule = Thread[Rule[paveInts,paveIntsEval ]];
+		FCPrint[3,"PaVeOrder: Final replacement rule: ", repRule, FCDoControl->pvoVerbose];
+
+
+		res = rest + loops/. Dispatch[repRule];
+
+		FCPrint[1, "PaVeOrder: Leaving.", FCDoControl->pvoVerbose];
+		FCPrint[3, "PaVeOrder: Leaving with: ", res, FCDoControl->pvoVerbose];
+
+		If[	OptionValue[FCE],
+			res = FCE[res]
+		];
+
+		res
+
 	];
 
-cord[a_,b_,c_, m1_,m2_,m3_] :=
-	C0@@( Sort[{ {a,b,c, m1,m2,m3}, {c,b,a, m1,m3,m2},
-					{a,c,b, m2,m1,m3}, {b,c,a, m2,m3,m1},
-					{c,a,b, m3,m1,m2}, {b,a,c, m3,m2,m1} } ][[1]] );
+paveOrder[x_paveReordered, _]:=
+	x;
 
-	cord[C0[six__],{}] :=
-		cord[six];
-	cord[C0[te__], argu_List ] :=
-		Block[ {int, puref, arg, smalist, six,
-			varg, sma, pw},
-			six =  {te}/. smallLL->sma;
-			If[ FreeQ[six, sma],
-				arg = argu,
-				smalist = Select[Variables[six/.Power->pw],
-								(!FreeQ[#, sma])&]/.pw->Power;
-				If[ !FreeQ[smalist, Power],
-					arg = (argu/.smallLL->Identity) /.
-							Map[(#[[1,1]] -> (#[[1]]) )&, smalist ],
-					arg = argu/.smallLL->sma
-				];
-			];
-			varg = Variables[arg];
-			For[r = 1,r<=Length[varg],r++,
-				If[ (!FreeQ[six, varg[[r]]^2]) && FreeQ[arg,varg[[r]]^2],
-					arg = arg/.varg[[r]]->(varg[[r]]^2)
-				];
-			];
-			puref = func[Apply[or,(stringmatchq[slot[1], #]& /@ tomatch[arg])
-							]]/.slot->Slot/.func->Function/.or->Or/.
-								stringmatchq->StringMatchQ;
-			int = Select[ tostring /@ (oldper@@six),
-						func[ stringmatchq[slot[1],tomatch[arg]]
-							]/.slot->Slot/.func->Function/.
-								stringmatchq->StringMatchQ
-								];
-			If[ Length[int] === 0,
-				int = six,
-				int = ToExpression[int[[1]]]
-			];
-			int/.sma->smallLL
-		] /; Length[{te}]===6 && Length[argu]>0;
+paveAutoOrder[paveHold[ids__,invs1_List,invs2_List, opts:OptionsPattern[]]]:=
+	Block[{	aux},
+		aux = First[argPerm@@Join[invs1,invs2]];
+		FCPrint[4,"PaVeOrder: paveAutoOrder: aux: ", aux, FCDoControl->pvoVerbose];
+		paveHold[ids, aux[[1;;Length[invs1]]], aux[[Length[invs1]+1;;]], opts]
+	]/; Length[invs2]>=2 && Length[invs2]<=5;
+
+paveAutoOrder[paveHold[ids__,invs1_List,invs2_List, opts:OptionsPattern[]]]:=
+	paveHold[ids,invs1,invs2, opts]/; Length[invs2]===1 || Length[invs2]>=6;
+
+paveOrder[paveHold[ids__,invs1_List,invs2_List, opts:OptionsPattern[]],{}]:=
+	paveHold[ids,invs1,invs2,opts];
+
+paveOrder[paveHold[ids__,invs1_List,invs2_List, opts:OptionsPattern[]], _]:=
+	paveHold[ids,invs1,invs2,opts]/; Length[invs2]===1 || Length[invs2]>=6;
+
+paveOrder[paveHold[ids__,invs1_List,invs2_List, opts:OptionsPattern[]], orderingRaw_List]:=
+	Block[{	pow, aux, ordering, selection, res, invs, optsNew},
+
+		invs = Join[invs1,invs2];
+		aux = invs /. Power->pow;
 
 
-(* Make use of the nice new StringReplace *)
+		FCPrint[4,"PaVeOrder: paveOrder: ids: ", {ids}, FCDoControl->pvoVerbose];
+		FCPrint[4,"PaVeOrder: paveOrder: invs1: ", invs1,  FCDoControl->pvoVerbose];
+		FCPrint[4,"PaVeOrder: paveOrder: invs2: ", invs2,  FCDoControl->pvoVerbose];
+		FCPrint[4,"PaVeOrder: paveOrder: orderingRaw: ", orderingRaw,  FCDoControl->pvoVerbose];
 
-	tostring = ToString[InputForm[#], PageWidth -> 4711]&;
-	tomatch[{li:{__}..}] :=
-		tomatch /@ {li};
-	tomatch[{li__}] :=
-		StringReplace[tostring[{li}],{"{"->"*","}"->"*"}]/;
-					Head[{li}[[1]]]=!=List;
-	dord[D0[ten__],{}] :=
-		dord[D0[ten]];
-	dord[D0[te__], argu_List ] :=
-		Block[ {int, puref, arg, smalist, ten,
-			varg, sma, pw},
-			ten =  {te}/. smallLL->sma;
-			If[ FreeQ[ten, sma],
-				arg = argu,
-				smalist = Select[Variables[ten/.Power->pw],
-								(!FreeQ[#, sma])&]/.pw->Power;
-				If[ !FreeQ[smalist, Power],
-					arg = (argu/.smallLL->Identity) /.
-							Map[(#[[1,1]] -> (#[[1]]) )&, smalist ],
-					arg = argu/.smallLL->sma
-				];
-			];
-			varg = Variables[arg];
-			For[r = 1,r<=Length[varg],r++,
-				If[ (!FreeQ[ten, varg[[r]]^2]) && FreeQ[arg,varg[[r]]^2],
-					arg = arg/.varg[[r]]->(varg[[r]]^2)
-				];
-			];
-			puref = func[Apply[or,(stringmatchq[slot[1], #]& /@ tomatch[arg])
-							]]/.slot->Slot/.func->Function/.or->Or/.
-								stringmatchq->StringMatchQ;
-			int = Select[ tostring /@ (oldper@@ten),
-						func[ stringmatchq[slot[1],tomatch[arg]]
-							]/.slot->Slot/.func->Function/.
-								stringmatchq->StringMatchQ
-								];
-			If[ Length[int] === 0,
-				int = ten,
-				int = ToExpression[int[[1]]]
-			];
-			int/.sma->smallLL
-		] /; Length[{te}]===10 && Length[argu]>0;
+		(*
+			We want to allow for sloppy argument lists, where the user specifies
+			just variables instead of variables raised to some powers, e.g.
+			PaVeOrder[C0[qq0, qq2, qq1, SmallVariable[mm1^2], mm2^2, mm3],
+				PaVeOrderList -> {mm3, mm2, SmallVariable[mm1]}]
+		*)
+		ordering = Map[Last[Join[{#}, Cases[aux, pow[#, _]]]] &, orderingRaw] /. pow -> Power;
 
-(* If no ordering list is given, a standard representative is returned *)
-dord[D0[ten__]] :=
-	(oldper[ten][[1]])/;Length[{ten}]===10;
+		(*
+			Generate all possible reorderings and select those that contain
+			a sublist specified by ordering.
+		*)
+		selection = Select[argPerm@@invs,MatchQ[#,{___,Sequence@@ordering,___}]&];
 
-oldper[a_,b_,c_, m1_,m2_,m3_] :=
-	Sort[{ {a,b,c, m1,m2,m3}, {c,b,a, m1,m3,m2},
-						{a,c,b, m2,m1,m3}, {b,c,a, m2,m3,m1},
-						{c,a,b, m3,m1,m2}, {b,a,c, m3,m2,m1} }
+		FCPrint[4,"PaVeOrder: paveOrder: ordering: ", ordering,  FCDoControl->pvoVerbose];
+		FCPrint[4,"PaVeOrder: paveOrder: selection: ", selection,  FCDoControl->pvoVerbose];
+
+		(*
+			Sort the reordering such, that the one with the smallest distance
+			of the sequence from the beginning of the list comes first
+		*)
+		selection = SortBy[selection, Position[#, ordering[[1]]] &];
+
+		If[	TrueQ[Length[selection]>0],
+			selection = selection[[1]],
+			selection = invs
 		];
+		optsNew = Join[{PaVeAutoOrder->False},FilterRules[{opts}, Except[PaVeAutoOrder]]];
+		res = paveReordered[ids, selection[[1;;Length[invs1]]], selection[[Length[invs1]+1;;]], Sequence@@optsNew];
 
-(* This list has been calculated with FeynCalc! *)
-oldper[p10_,p12_,p23_,p30_,p20_,p13_,m0_,m1_,m2_,m3_] :=
-	Sort[{
-	{p10, p12, p23, p30, p20, p13, m0, m1, m2, m3},
-	{p10, p13, p23, p20, p30, p12, m0, m1, m3, m2},
-	{p20, p12, p13, p30, p10, p23, m0, m2, m1, m3},
-	{p20, p23, p13, p10, p30, p12, m0, m2, m3, m1},
-	{p30, p13, p12, p20, p10, p23, m0, m3, m1, m2},
-	{p30, p23, p12, p10, p20, p13, m0, m3, m2, m1},
-	{p10, p20, p23, p13, p12, p30, m1, m0, m2, m3},
-	{p10, p30, p23, p12, p13, p20, m1, m0, m3, m2},
-	{p12, p20, p30, p13, p10, p23, m1, m2, m0, m3},
-	{p12, p23, p30, p10, p13, p20, m1, m2, m3, m0},
-	{p13, p30, p20, p12, p10, p23, m1, m3, m0, m2},
-	{p13, p23, p20, p10, p12, p30, m1, m3, m2, m0},
-	{p20, p10, p13, p23, p12, p30, m2, m0, m1, m3},
-	{p20, p30, p13, p12, p23, p10, m2, m0, m3, m1},
-	{p12, p10, p30, p23, p20, p13, m2, m1, m0, m3},
-	{p12, p13, p30, p20, p23, p10, m2, m1, m3, m0},
-	{p23, p30, p10, p12, p20, p13, m2, m3, m0, m1},
-	{p23, p13, p10, p20, p12, p30, m2, m3, m1, m0},
-	{p30, p10, p12, p23, p13, p20, m3, m0, m1, m2},
-	{p30, p20, p12, p13, p23, p10, m3, m0, m2, m1},
-	{p13, p10, p20, p23, p30, p12, m3, m1, m0, m2},
-	{p13, p12, p20, p30, p23, p10, m3, m1, m2, m0},
-	{p23, p20, p10, p13, p30, p12, m3, m2, m0, m1},
-	{p23, p12, p10, p30, p13, p20, m3, m2, m1, m0}       }];
+		res
+
+	]/; orderingRaw=!={} && Length[invs2]>=2 && Length[invs2]<=5;
+
+argPermC[p10_,p12_,p20_, m1_,m2_,m3_] :=
+	MemSet[argPermC[p10,p12,p20, m1,m2,m3],
+		Block[{aux},
+			aux = First[argPerm[p10,p12,p20, m1,m2,m3]];
+			{aux[[1;;3]], aux[[4;;]]}
+		]
+	];
+
+argPermD[p10_,p12_,p23_,p30_,p20_,p13_,m0_,m1_,m2_,m3_] :=
+	MemSet[argPermD[p10,p12,p23,p30,p20,p13,m0,m1,m2,m3],
+		Block[{aux},
+			aux = First[argPerm[p10,p12,p23,p30,p20,p13,m0,m1,m2,m3]];
+			{aux[[1;;6]], aux[[7;;]]}
+		]
+	];
+
+argPermE[p10_, p12_, p23_, p34_, p40_, p20_, p13_, p24_, p30_, p14_, m0_, m1_, m2_, m3_, m4_] :=
+	MemSet[argPermE[p10, p12, p23, p34, p40, p20, p13, p24, p30, p14, m0, m1, m2, m3, m4],
+		Block[{aux},
+			aux = First[argPerm[p10, p12, p23, p34, p40, p20, p13, p24, p30, p14, m0, m1, m2, m3, m4]];
+			{aux[[1;;10]], aux[[11;;]]}
+		]
+	];
+
+argPermF[p10_, p12_, p23_, p34_, p45_, p50_, p20_, p13_, p24_, p35_, p40_, p15_, p30_, p14_, p25_, m0_, m1_, m2_, m3_, m4_, m5_] :=
+	MemSet[argPermF[p10, p12, p23, p34, p45, p50, p20, p13, p24, p35, p40, p15, p30, p14, p25, m0, m1, m2, m3, m4, m5],
+		Block[{aux},
+			aux = First[argPerm[p10, p12, p23, p34, p45, p50, p20, p13, p24, p35, p40, p15, p30, p14, p25, m0, m1, m2, m3, m4, m5]];
+			{aux[[1;;15]], aux[[11;;]]}
+		]
+	];
+
+argPerm[p10_, m1_,m2_] :=
+	MemSet[argPerm[p10, m1, m2],
+		Block[{tmp},
+			tmp =	Sort[{
+			{p10, m1, m2},
+			{p10, m2, m1} }];
+			tmp
+		]
+	]/; FCPatternFreeQ[{p10, m1, m2}];
+
+(*
+Argument symmetries of scalar 3-point 1-loop functions
+
+FCClearScalarProducts[];
+SPD[p1] = p10;
+SPD[p2] = p20;
+SPD[p1, p2] = -1/2 p12 + 1/2 p10 + 1/2 p20;
+
+props = {{q, Sqrt[m1]}, {q + p1, Sqrt[m2]}, {q + p2, Sqrt[m3]}};
+aux1 = Map[FAD @@ Extract[props, List /@ (#)] &,
+Permutations[{1, 2, 3}]];
+aux2 = aux1 /. FAD[x_, rest__] /; MatchQ[x, {q + mom_, _}] :> (FAD[x, rest] /. q -> q - (x[[1]] - q));
+aux3 = ToPaVe[1/(I Pi^2) #, q, PaVeAutoOrder -> False] & /@ aux2
+aux3 /. PaVe[__, li1_List, li2_List, OptionsPattern[]] :> Join[li1, li2]
+*)
+
+
+
+argPerm[p10_,p12_,p20_, m1_,m2_,m3_] :=
+	MemSet[argPerm[p10, p12, p20, m1, m2, m3],
+		Block[{tmp},
+			tmp =	Sort[{
+			{p10, p12, p20, m1, m2, m3},
+			{p20, p12, p10, m1, m3, m2},
+			{p10, p20, p12, m2, m1, m3},
+			{p12, p20, p10, m2, m3, m1},
+			{p20, p10, p12, m3, m1, m2},
+			{p12, p10, p20, m3, m2, m1} }];
+			tmp
+		]
+	]/; FCPatternFreeQ[{a, b, c, m1, m2, m3}];
+
+(*TODO Add also linear relations *)
+
+(*
+
+Rank X 3-point functions
+
+FCClearScalarProducts[];
+SPD[p1] = p10;
+SPD[p2] = p20;
+SPD[p1, p2] = -1/2 p12 + 1/2 p10 + 1/2 p20;
+
+props = {{q, Sqrt[m1]}, {q + p1, Sqrt[m2]}, {q + p2, Sqrt[m3]}};
+aux1 = Map[FAD @@ Extract[props, List /@ (#)] &,
+Permutations[{1, 2, 3}]];
+aux2 = aux1 /.
+FAD[x_, rest__] /;
+	MatchQ[x, {q + mom_, _}] :> (FAD[x, rest] /.
+	q -> q - (x[[1]] - q));
+SetOptions[ToPaVe, PaVeOrder -> False];
+aux3 = TID[1/(I Pi^2) FVD[q, i1](*FVD[q,i2]FVD[q,i3]FVD[q,i4]*) #, q,
+	UsePaVeBasis -> True, ToPaVe -> True, PaVeAutoOrder -> False,
+	ApartFF -> False, FDS -> False] & /@ aux2;
+Select[(Coefficient[#, FCI[FVD[p1, i1]]] & /@ aux3) //
+Sort, (Head[#] =!= Plus) &]
+% /. PaVe[ids__, li1_List, li2_List, res___] :> {{ids}, li1,
+	li2} // InputForm
+*)
+
+(*e.g. 1, 11, 111, etc. *)
+argPermTensor[{ids: {1..}, {p10_, p12_, p20_}, {m1_, m2_, m3_}}] :=
+	MemSet[argPerm[p10, p12, p20, m1, m2, m3],
+		Block[{tmp},
+			tmp =	Sort[{
+				{ids, {p10, p12, p20}, {m1, m2, m3}},
+				{ids, {p12, p10, p20}, {m3, m2, m1}},
+				{ConstantArray[2, Length[ids]], {p20, p10, p12}, {m3, m1, m2}},
+				{ConstantArray[2, Length[ids]], {p20, p12, p10}, {m1, m3, m2}}
+			}];
+			tmp
+		]
+	]/; FCPatternFreeQ[{p10, p12, p20, m1, m2, m3}];
+
+
+(*
+
+Argument symmetries of 4-point 1-loop functions
+
+FCClearScalarProducts[];
+SPD[p1] = p10;
+SPD[p2] = p20;
+SPD[p3] = p30;
+SPD[p1, p2] = -1/2 p12 + 1/2 p10 + 1/2 p20;
+SPD[p2, p3] = -1/2 p23 + 1/2 p20 + 1/2 p30;
+SPD[p1, p3] = -1/2 p13 + 1/2 p10 + 1/2 p30;
+
+props = {{q, Sqrt[m0]}, {q + p1, Sqrt[m1]}, {q + p2,
+	Sqrt[m2]}, {q + p3, Sqrt[m3]}};
+aux1 = Map[FAD @@ Extract[props, List /@ (#)] &,
+Permutations[{1, 2, 3, 4}]];
+aux2 = aux1 /.
+FAD[x_, rest__] /;
+	MatchQ[x, {q + mom_, _}] :> (FAD[x, rest] /.
+	q -> q - (x[[1]] - q));
+aux3 = ToPaVe[1/(I Pi^2) #, q, PaVeAutoOrder -> False] & /@ aux2
+aux3 /. PaVe[__, li1_List, li2_List, OptionsPattern[]] :> Join[li1, li2]
+
+*)
+
+argPerm[p10_,p12_,p23_,p30_,p20_,p13_,m0_,m1_,m2_,m3_] :=
+	MemSet[argPerm[p10, p12, p23, p30, p20, p13, m0, m1, m2, m3],
+		Block[{tmp},
+			tmp =	Sort[{
+			{p10, p12, p23, p30, p20, p13, m0, m1, m2, m3},
+			{p10, p13, p23, p20, p30, p12, m0, m1, m3, m2},
+			{p20, p12, p13, p30, p10, p23, m0, m2, m1, m3},
+			{p20, p23, p13, p10, p30, p12, m0, m2, m3, m1},
+			{p30, p13, p12, p20, p10, p23, m0, m3, m1, m2},
+			{p30, p23, p12, p10, p20, p13, m0, m3, m2, m1},
+			{p10, p20, p23, p13, p12, p30, m1, m0, m2, m3},
+			{p10, p30, p23, p12, p13, p20, m1, m0, m3, m2},
+			{p12, p20, p30, p13, p10, p23, m1, m2, m0, m3},
+			{p12, p23, p30, p10, p13, p20, m1, m2, m3, m0},
+			{p13, p30, p20, p12, p10, p23, m1, m3, m0, m2},
+			{p13, p23, p20, p10, p12, p30, m1, m3, m2, m0},
+			{p20, p10, p13, p23, p12, p30, m2, m0, m1, m3},
+			{p20, p30, p13, p12, p23, p10, m2, m0, m3, m1},
+			{p12, p10, p30, p23, p20, p13, m2, m1, m0, m3},
+			{p12, p13, p30, p20, p23, p10, m2, m1, m3, m0},
+			{p23, p30, p10, p12, p20, p13, m2, m3, m0, m1},
+			{p23, p13, p10, p20, p12, p30, m2, m3, m1, m0},
+			{p30, p10, p12, p23, p13, p20, m3, m0, m1, m2},
+			{p30, p20, p12, p13, p23, p10, m3, m0, m2, m1},
+			{p13, p10, p20, p23, p30, p12, m3, m1, m0, m2},
+			{p13, p12, p20, p30, p23, p10, m3, m1, m2, m0},
+			{p23, p20, p10, p13, p30, p12, m3, m2, m0, m1},
+			{p23, p12, p10, p30, p13, p20, m3, m2, m1, m0}
+			}];
+			tmp
+		]
+	]/; FCPatternFreeQ[{p10, p12, p23, p30, p20, p13, m0, m1, m2, m3}];
+(*
+
+Argument symmetries of 5-point 1-loop functions
+
+FCClearScalarProducts[];
+SPD[p1] = p10;
+SPD[p2] = p20;
+SPD[p3] = p30;
+SPD[p4] = p40;
+SPD[p1, p2] = -1/2 p12 + 1/2 p10 + 1/2 p20;
+SPD[p2, p3] = -1/2 p23 + 1/2 p20 + 1/2 p30;
+SPD[p1, p3] = -1/2 p13 + 1/2 p10 + 1/2 p30;
+SPD[p3, p4] = -1/2 p34 + 1/2 p30 + 1/2 p40;
+SPD[p2, p4] = -1/2 p24 + 1/2 p20 + 1/2 p40;
+SPD[p1, p4] = -1/2 p14 + 1/2 p10 + 1/2 p40;
+
+props = {{q, Sqrt[m0]}, {q + p1, Sqrt[m1]}, {q + p2,
+	Sqrt[m2]}, {q + p3, Sqrt[m3]}, {q + p4, Sqrt[m4]}};
+aux1 = Map[FAD @@ Extract[props, List /@ (#)] &,
+Permutations[{1, 2, 3, 4, 5}]];
+aux2 = aux1 /.
+FAD[x_, rest__] /;
+	MatchQ[x, {q + mom_, _}] :> (FAD[x, rest] /.
+	q -> q - (x[[1]] - q));
+aux3 = ToPaVe[1/(I Pi^2) #, q, PaVeAutoOrder -> False] & /@ aux2
+aux3 /. PaVe[__, li1_List, li2_List, OptionsPattern[]] :>
+Join[li1, li2]
+
+*)
+argPerm[p10_, p12_, p23_, p34_, p40_, p20_, p13_, p24_, p30_, p14_, m0_, m1_, m2_, m3_, m4_] :=
+	MemSet[argPerm[p10, p12, p23, p34, p40, p20, p13, p24, p30, p14, m0, m1, m2, m3, m4],
+		Block[{tmp},
+			tmp =	Sort[{
+			{p10, p12, p23, p34, p40, p20, p13, p24, p30, p14, m0, m1, m2, m3, m4},
+			{p10, p12, p24, p34, p30, p20, p14, p23, p40, p13, m0, m1, m2, m4, m3},
+			{p10, p13, p23, p24, p40, p30, p12, p34, p20, p14, m0, m1, m3, m2, m4},
+			{p10, p13, p34, p24, p20, p30, p14, p23, p40, p12, m0, m1, m3, m4, m2},
+			{p10, p14, p24, p23, p30, p40, p12, p34, p20, p13, m0, m1, m4, m2, m3},
+			{p10, p14, p34, p23, p20, p40, p13, p24, p30, p12, m0, m1, m4, m3, m2},
+			{p20, p12, p13, p34, p40, p10, p23, p14, p30, p24, m0, m2, m1, m3, m4},
+			{p20, p12, p14, p34, p30, p10, p24, p13, p40, p23, m0, m2, m1, m4, m3},
+			{p20, p23, p13, p14, p40, p30, p12, p34, p10, p24, m0, m2, m3, m1, m4},
+			{p20, p23, p34, p14, p10, p30, p24, p13, p40, p12, m0, m2, m3, m4, m1},
+			{p20, p24, p14, p13, p30, p40, p12, p34, p10, p23, m0, m2, m4, m1, m3},
+			{p20, p24, p34, p13, p10, p40, p23, p14, p30, p12, m0, m2, m4, m3, m1},
+			{p30, p13, p12, p24, p40, p10, p23, p14, p20, p34, m0, m3, m1, m2, m4},
+			{p30, p13, p14, p24, p20, p10, p34, p12, p40, p23, m0, m3, m1, m4, m2},
+			{p30, p23, p12, p14, p40, p20, p13, p24, p10, p34, m0, m3, m2, m1, m4},
+			{p30, p23, p24, p14, p10, p20, p34, p12, p40, p13, m0, m3, m2, m4, m1},
+			{p30, p34, p14, p12, p20, p40, p13, p24, p10, p23, m0, m3, m4, m1, m2},
+			{p30, p34, p24, p12, p10, p40, p23, p14, p20, p13, m0, m3, m4, m2, m1},
+			{p40, p14, p12, p23, p30, p10, p24, p13, p20, p34, m0, m4, m1, m2, m3},
+			{p40, p14, p13, p23, p20, p10, p34, p12, p30, p24, m0, m4, m1, m3, m2},
+			{p40, p24, p12, p13, p30, p20, p14, p23, p10, p34, m0, m4, m2, m1, m3},
+			{p40, p24, p23, p13, p10, p20, p34, p12, p30, p14, m0, m4, m2, m3, m1},
+			{p40, p34, p13, p12, p20, p30, p14, p23, p10, p24, m0, m4, m3, m1, m2},
+			{p40, p34, p23, p12, p10, p30, p24, p13, p20, p14, m0, m4, m3, m2, m1},
+			{p10, p20, p23, p34, p14, p12, p30, p24, p13, p40, m1, m0, m2, m3, m4},
+			{p10, p20, p24, p34, p13, p12, p40, p23, p14, p30, m1, m0, m2, m4, m3},
+			{p10, p30, p23, p24, p14, p13, p20, p34, p12, p40, m1, m0, m3, m2, m4},
+			{p10, p30, p34, p24, p12, p13, p40, p23, p14, p20, m1, m0, m3, m4, m2},
+			{p10, p40, p24, p23, p13, p14, p20, p34, p12, p30, m1, m0, m4, m2, m3},
+			{p10, p40, p34, p23, p12, p14, p30, p24, p13, p20, m1, m0, m4, m3, m2},
+			{p12, p20, p30, p34, p14, p10, p23, p40, p13, p24, m1, m2, m0, m3, m4},
+			{p12, p20, p40, p34, p13, p10, p24, p30, p14, p23, m1, m2, m0, m4, m3},
+			{p12, p23, p30, p40, p14, p13, p20, p34, p10, p24, m1, m2, m3, m0, m4},
+			{p12, p23, p34, p40, p10, p13, p24, p30, p14, p20, m1, m2, m3, m4, m0},
+			{p12, p24, p40, p30, p13, p14, p20, p34, p10, p23, m1, m2, m4, m0, m3},
+			{p12, p24, p34, p30, p10, p14, p23, p40, p13, p20, m1, m2, m4, m3, m0},
+			{p13, p30, p20, p24, p14, p10, p23, p40, p12, p34, m1, m3, m0, m2, m4},
+			{p13, p30, p40, p24, p12, p10, p34, p20, p14, p23, m1, m3, m0, m4, m2},
+			{p13, p23, p20, p40, p14, p12, p30, p24, p10, p34, m1, m3, m2, m0, m4},
+			{p13, p23, p24, p40, p10, p12, p34, p20, p14, p30, m1, m3, m2, m4, m0},
+			{p13, p34, p40, p20, p12, p14, p30, p24, p10, p23, m1, m3, m4, m0, m2},
+			{p13, p34, p24, p20, p10, p14, p23, p40, p12, p30, m1, m3, m4, m2, m0},
+			{p14, p40, p20, p23, p13, p10, p24, p30, p12, p34, m1, m4, m0, m2, m3},
+			{p14, p40, p30, p23, p12, p10, p34, p20, p13, p24, m1, m4, m0, m3, m2},
+			{p14, p24, p20, p30, p13, p12, p40, p23, p10, p34, m1, m4, m2, m0, m3},
+			{p14, p24, p23, p30, p10, p12, p34, p20, p13, p40, m1, m4, m2, m3, m0},
+			{p14, p34, p30, p20, p12, p13, p40, p23, p10, p24, m1, m4, m3, m0, m2},
+			{p14, p34, p23, p20, p10, p13, p24, p30, p12, p40, m1, m4, m3, m2, m0},
+			{p20, p10, p13, p34, p24, p12, p30, p14, p23, p40, m2, m0, m1, m3, m4},
+			{p20, p10, p14, p34, p23, p12, p40, p13, p24, p30, m2, m0, m1, m4, m3},
+			{p20, p30, p13, p14, p24, p23, p10, p34, p12, p40, m2, m0, m3, m1, m4},
+			{p20, p30, p34, p14, p12, p23, p40, p13, p24, p10, m2, m0, m3, m4, m1},
+			{p20, p40, p14, p13, p23, p24, p10, p34, p12, p30, m2, m0, m4, m1, m3},
+			{p20, p40, p34, p13, p12, p24, p30, p14, p23, p10, m2, m0, m4, m3, m1},
+			{p12, p10, p30, p34, p24, p20, p13, p40, p23, p14, m2, m1, m0, m3, m4},
+			{p12, p10, p40, p34, p23, p20, p14, p30, p24, p13, m2, m1, m0, m4, m3},
+			{p12, p13, p30, p40, p24, p23, p10, p34, p20, p14, m2, m1, m3, m0, m4},
+			{p12, p13, p34, p40, p20, p23, p14, p30, p24, p10, m2, m1, m3, m4, m0},
+			{p12, p14, p40, p30, p23, p24, p10, p34, p20, p13, m2, m1, m4, m0, m3},
+			{p12, p14, p34, p30, p20, p24, p13, p40, p23, p10, m2, m1, m4, m3, m0},
+			{p23, p30, p10, p14, p24, p20, p13, p40, p12, p34, m2, m3, m0, m1, m4},
+			{p23, p30, p40, p14, p12, p20, p34, p10, p24, p13, m2, m3, m0, m4, m1},
+			{p23, p13, p10, p40, p24, p12, p30, p14, p20, p34, m2, m3, m1, m0, m4},
+			{p23, p13, p14, p40, p20, p12, p34, p10, p24, p30, m2, m3, m1, m4, m0},
+			{p23, p34, p40, p10, p12, p24, p30, p14, p20, p13, m2, m3, m4, m0, m1},
+			{p23, p34, p14, p10, p20, p24, p13, p40, p12, p30, m2, m3, m4, m1, m0},
+			{p24, p40, p10, p13, p23, p20, p14, p30, p12, p34, m2, m4, m0, m1, m3},
+			{p24, p40, p30, p13, p12, p20, p34, p10, p23, p14, m2, m4, m0, m3, m1},
+			{p24, p14, p10, p30, p23, p12, p40, p13, p20, p34, m2, m4, m1, m0, m3},
+			{p24, p14, p13, p30, p20, p12, p34, p10, p23, p40, m2, m4, m1, m3, m0},
+			{p24, p34, p30, p10, p12, p23, p40, p13, p20, p14, m2, m4, m3, m0, m1},
+			{p24, p34, p13, p10, p20, p23, p14, p30, p12, p40, m2, m4, m3, m1, m0},
+			{p30, p10, p12, p24, p34, p13, p20, p14, p23, p40, m3, m0, m1, m2, m4},
+			{p30, p10, p14, p24, p23, p13, p40, p12, p34, p20, m3, m0, m1, m4, m2},
+			{p30, p20, p12, p14, p34, p23, p10, p24, p13, p40, m3, m0, m2, m1, m4},
+			{p30, p20, p24, p14, p13, p23, p40, p12, p34, p10, m3, m0, m2, m4, m1},
+			{p30, p40, p14, p12, p23, p34, p10, p24, p13, p20, m3, m0, m4, m1, m2},
+			{p30, p40, p24, p12, p13, p34, p20, p14, p23, p10, m3, m0, m4, m2, m1},
+			{p13, p10, p20, p24, p34, p30, p12, p40, p23, p14, m3, m1, m0, m2, m4},
+			{p13, p10, p40, p24, p23, p30, p14, p20, p34, p12, m3, m1, m0, m4, m2},
+			{p13, p12, p20, p40, p34, p23, p10, p24, p30, p14, m3, m1, m2, m0, m4},
+			{p13, p12, p24, p40, p30, p23, p14, p20, p34, p10, m3, m1, m2, m4, m0},
+			{p13, p14, p40, p20, p23, p34, p10, p24, p30, p12, m3, m1, m4, m0, m2},
+			{p13, p14, p24, p20, p30, p34, p12, p40, p23, p10, m3, m1, m4, m2, m0},
+			{p23, p20, p10, p14, p34, p30, p12, p40, p13, p24, m3, m2, m0, m1, m4},
+			{p23, p20, p40, p14, p13, p30, p24, p10, p34, p12, m3, m2, m0, m4, m1},
+			{p23, p12, p10, p40, p34, p13, p20, p14, p30, p24, m3, m2, m1, m0, m4},
+			{p23, p12, p14, p40, p30, p13, p24, p10, p34, p20, m3, m2, m1, m4, m0},
+			{p23, p24, p40, p10, p13, p34, p20, p14, p30, p12, m3, m2, m4, m0, m1},
+			{p23, p24, p14, p10, p30, p34, p12, p40, p13, p20, m3, m2, m4, m1, m0},
+			{p34, p40, p10, p12, p23, p30, p14, p20, p13, p24, m3, m4, m0, m1, m2},
+			{p34, p40, p20, p12, p13, p30, p24, p10, p23, p14, m3, m4, m0, m2, m1},
+			{p34, p14, p10, p20, p23, p13, p40, p12, p30, p24, m3, m4, m1, m0, m2},
+			{p34, p14, p12, p20, p30, p13, p24, p10, p23, p40, m3, m4, m1, m2, m0},
+			{p34, p24, p20, p10, p13, p23, p40, p12, p30, p14, m3, m4, m2, m0, m1},
+			{p34, p24, p12, p10, p30, p23, p14, p20, p13, p40, m3, m4, m2, m1, m0},
+			{p40, p10, p12, p23, p34, p14, p20, p13, p24, p30, m4, m0, m1, m2, m3},
+			{p40, p10, p13, p23, p24, p14, p30, p12, p34, p20, m4, m0, m1, m3, m2},
+			{p40, p20, p12, p13, p34, p24, p10, p23, p14, p30, m4, m0, m2, m1, m3},
+			{p40, p20, p23, p13, p14, p24, p30, p12, p34, p10, m4, m0, m2, m3, m1},
+			{p40, p30, p13, p12, p24, p34, p10, p23, p14, p20, m4, m0, m3, m1, m2},
+			{p40, p30, p23, p12, p14, p34, p20, p13, p24, p10, m4, m0, m3, m2, m1},
+			{p14, p10, p20, p23, p34, p40, p12, p30, p24, p13, m4, m1, m0, m2, m3},
+			{p14, p10, p30, p23, p24, p40, p13, p20, p34, p12, m4, m1, m0, m3, m2},
+			{p14, p12, p20, p30, p34, p24, p10, p23, p40, p13, m4, m1, m2, m0, m3},
+			{p14, p12, p23, p30, p40, p24, p13, p20, p34, p10, m4, m1, m2, m3, m0},
+			{p14, p13, p30, p20, p24, p34, p10, p23, p40, p12, m4, m1, m3, m0, m2},
+			{p14, p13, p23, p20, p40, p34, p12, p30, p24, p10, m4, m1, m3, m2, m0},
+			{p24, p20, p10, p13, p34, p40, p12, p30, p14, p23, m4, m2, m0, m1, m3},
+			{p24, p20, p30, p13, p14, p40, p23, p10, p34, p12, m4, m2, m0, m3, m1},
+			{p24, p12, p10, p30, p34, p14, p20, p13, p40, p23, m4, m2, m1, m0, m3},
+			{p24, p12, p13, p30, p40, p14, p23, p10, p34, p20, m4, m2, m1, m3, m0},
+			{p24, p23, p30, p10, p14, p34, p20, p13, p40, p12, m4, m2, m3, m0, m1},
+			{p24, p23, p13, p10, p40, p34, p12, p30, p14, p20, m4, m2, m3, m1, m0},
+			{p34, p30, p10, p12, p24, p40, p13, p20, p14, p23, m4, m3, m0, m1, m2},
+			{p34, p30, p20, p12, p14, p40, p23, p10, p24, p13, m4, m3, m0, m2, m1},
+			{p34, p13, p10, p20, p24, p14, p30, p12, p40, p23, m4, m3, m1, m0, m2},
+			{p34, p13, p12, p20, p40, p14, p23, p10, p24, p30, m4, m3, m1, m2, m0},
+			{p34, p23, p20, p10, p14, p24, p30, p12, p40, p13, m4, m3, m2, m0, m1},
+			{p34, p23, p12, p10, p40, p24, p13, p20, p14, p30, m4, m3, m2, m1, m0}
+			}];
+			tmp
+		]
+	]/; FCPatternFreeQ[{p10, p12, p23, p34, p40, p20, p13, p24, p30, p14, m0, m1, m2, m3, m4}];
+
+(*
+
+Argument symmetries of 6-point 1-loop functions
+
+FCClearScalarProducts[];
+SPD[p1] = p10;
+SPD[p2] = p20;
+SPD[p3] = p30;
+SPD[p4] = p40;
+SPD[p5] = p50;
+SPD[p1, p2] = -1/2 p12 + 1/2 p10 + 1/2 p20;
+SPD[p2, p3] = -1/2 p23 + 1/2 p20 + 1/2 p30;
+SPD[p1, p3] = -1/2 p13 + 1/2 p10 + 1/2 p30;
+SPD[p3, p4] = -1/2 p34 + 1/2 p30 + 1/2 p40;
+SPD[p2, p4] = -1/2 p24 + 1/2 p20 + 1/2 p40;
+SPD[p1, p4] = -1/2 p14 + 1/2 p10 + 1/2 p40;
+SPD[p4, p5] = -1/2 p45 + 1/2 p40 + 1/2 p50;
+SPD[p1, p5] = -1/2 p15 + 1/2 p10 + 1/2 p50;
+SPD[p2, p5] = -1/2 p25 + 1/2 p20 + 1/2 p50;
+SPD[p3, p5] = -1/2 p35 + 1/2 p30 + 1/2 p50;
+props = {{q, Sqrt[m0]}, {q + p1, Sqrt[m1]}, {q + p2,
+	Sqrt[m2]}, {q + p3, Sqrt[m3]}, {q + p4, Sqrt[m4]}, {q + p5,
+	Sqrt[m5]}};
+aux1 = Map[FAD @@ Extract[props, List /@ (#)] &,
+Permutations[{1, 2, 3, 4, 5, 6}]];
+aux2 = aux1 /.
+
+FAD[x_, rest__] /;
+	MatchQ[x, {q + mom_, _}] :> (FAD[x, rest] /.
+
+	q -> q - (x[[1]] - q));
+aux3 = ToPaVe[1/(I Pi^2) #, q, PaVeAutoOrder -> False] & /@ aux2
+aux4 = aux3 /.
+PaVe[__, li1_List, li2_List, OptionsPattern[]] :> Join[li1, li2];
+
+*)
+
+argPerm[p10_, p12_, p23_, p34_, p45_, p50_, p20_, p13_, p24_, p35_, p40_, p15_, p30_, p14_, p25_, m0_, m1_, m2_, m3_, m4_, m5_] :=
+	MemSet[argPerm[p10, p12, p23, p34, p45, p50, p20, p13, p24, p35, p40, p15, p30, p14, p25, m0, m1, m2, m3, m4, m5],
+		Block[{tmp},
+			tmp =	Sort[{
+			{p10, p12, p23, p34, p45, p50, p20, p13, p24, p35, p40, p15, p30,
+			p14, p25, m0, m1, m2, m3, m4, m5},
+			{p10, p12, p23, p35, p45, p40, p20, p13, p25, p34, p50, p14, p30,
+			p15, p24, m0, m1, m2, m3, m5, m4},
+			{p10, p12, p24, p34, p35, p50, p20, p14, p23, p45, p30, p15, p40,
+			p13, p25, m0, m1, m2, m4, m3, m5},
+			{p10, p12, p24, p45, p35, p30, p20, p14, p25, p34, p50, p13, p40,
+			p15, p23, m0, m1, m2, m4, m5, m3},
+			{p10, p12, p25, p35, p34, p40, p20, p15, p23, p45, p30, p14, p50,
+			p13, p24, m0, m1, m2, m5, m3, m4},
+			{p10, p12, p25, p45, p34, p30, p20, p15, p24, p35, p40, p13, p50,
+			p14, p23, m0, m1, m2, m5, m4, m3},
+			{p10, p13, p23, p24, p45, p50, p30, p12, p34, p25, p40, p15, p20,
+			p14, p35, m0, m1, m3, m2, m4, m5},
+			{p10, p13, p23, p25, p45, p40, p30, p12, p35, p24, p50, p14, p20,
+			p15, p34, m0, m1, m3, m2, m5, m4},
+			{p10, p13, p34, p24, p25, p50, p30, p14, p23, p45, p20, p15, p40,
+			p12, p35, m0, m1, m3, m4, m2, m5},
+			{p10, p13, p34, p45, p25, p20, p30, p14, p35, p24, p50, p12, p40,
+			p15, p23, m0, m1, m3, m4, m5, m2},
+			{p10, p13, p35, p25, p24, p40, p30, p15, p23, p45, p20, p14, p50,
+			p12, p34, m0, m1, m3, m5, m2, m4},
+			{p10, p13, p35, p45, p24, p20, p30, p15, p34, p25, p40, p12, p50,
+			p14, p23, m0, m1, m3, m5, m4, m2},
+			{p10, p14, p24, p23, p35, p50, p40, p12, p34, p25, p30, p15, p20,
+			p13, p45, m0, m1, m4, m2, m3, m5},
+			{p10, p14, p24, p25, p35, p30, p40, p12, p45, p23, p50, p13, p20,
+			p15, p34, m0, m1, m4, m2, m5, m3},
+			{p10, p14, p34, p23, p25, p50, p40, p13, p24, p35, p20, p15, p30,
+			p12, p45, m0, m1, m4, m3, m2, m5},
+			{p10, p14, p34, p35, p25, p20, p40, p13, p45, p23, p50, p12, p30,
+			p15, p24, m0, m1, m4, m3, m5, m2},
+			{p10, p14, p45, p25, p23, p30, p40, p15, p24, p35, p20, p13, p50,
+			p12, p34, m0, m1, m4, m5, m2, m3},
+			{p10, p14, p45, p35, p23, p20, p40, p15, p34, p25, p30, p12, p50,
+			p13, p24, m0, m1, m4, m5, m3, m2},
+			{p10, p15, p25, p23, p34, p40, p50, p12, p35, p24, p30, p14, p20,
+			p13, p45, m0, m1, m5, m2, m3, m4},
+			{p10, p15, p25, p24, p34, p30, p50, p12, p45, p23, p40, p13, p20,
+			p14, p35, m0, m1, m5, m2, m4, m3},
+			{p10, p15, p35, p23, p24, p40, p50, p13, p25, p34, p20, p14, p30,
+			p12, p45, m0, m1, m5, m3, m2, m4},
+			{p10, p15, p35, p34, p24, p20, p50, p13, p45, p23, p40, p12, p30,
+			p14, p25, m0, m1, m5, m3, m4, m2},
+			{p10, p15, p45, p24, p23, p30, p50, p14, p25, p34, p20, p13, p40,
+			p12, p35, m0, m1, m5, m4, m2, m3},
+			{p10, p15, p45, p34, p23, p20, p50, p14, p35, p24, p30, p12, p40,
+			p13, p25, m0, m1, m5, m4, m3, m2},
+			{p20, p12, p13, p34, p45, p50, p10, p23, p14, p35, p40, p25, p30,
+			p24, p15, m0, m2, m1, m3, m4, m5},
+			{p20, p12, p13, p35, p45, p40, p10, p23, p15, p34, p50, p24, p30,
+			p25, p14, m0, m2, m1, m3, m5, m4},
+			{p20, p12, p14, p34, p35, p50, p10, p24, p13, p45, p30, p25, p40,
+			p23, p15, m0, m2, m1, m4, m3, m5},
+			{p20, p12, p14, p45, p35, p30, p10, p24, p15, p34, p50, p23, p40,
+			p25, p13, m0, m2, m1, m4, m5, m3},
+			{p20, p12, p15, p35, p34, p40, p10, p25, p13, p45, p30, p24, p50,
+			p23, p14, m0, m2, m1, m5, m3, m4},
+			{p20, p12, p15, p45, p34, p30, p10, p25, p14, p35, p40, p23, p50,
+			p24, p13, m0, m2, m1, m5, m4, m3},
+			{p20, p23, p13, p14, p45, p50, p30, p12, p34, p15, p40, p25, p10,
+			p24, p35, m0, m2, m3, m1, m4, m5},
+			{p20, p23, p13, p15, p45, p40, p30, p12, p35, p14, p50, p24, p10,
+			p25, p34, m0, m2, m3, m1, m5, m4},
+			{p20, p23, p34, p14, p15, p50, p30, p24, p13, p45, p10, p25, p40,
+			p12, p35, m0, m2, m3, m4, m1, m5},
+			{p20, p23, p34, p45, p15, p10, p30, p24, p35, p14, p50, p12, p40,
+			p25, p13, m0, m2, m3, m4, m5, m1},
+			{p20, p23, p35, p15, p14, p40, p30, p25, p13, p45, p10, p24, p50,
+			p12, p34, m0, m2, m3, m5, m1, m4},
+			{p20, p23, p35, p45, p14, p10, p30, p25, p34, p15, p40, p12, p50,
+			p24, p13, m0, m2, m3, m5, m4, m1},
+			{p20, p24, p14, p13, p35, p50, p40, p12, p34, p15, p30, p25, p10,
+			p23, p45, m0, m2, m4, m1, m3, m5},
+			{p20, p24, p14, p15, p35, p30, p40, p12, p45, p13, p50, p23, p10,
+			p25, p34, m0, m2, m4, m1, m5, m3},
+			{p20, p24, p34, p13, p15, p50, p40, p23, p14, p35, p10, p25, p30,
+			p12, p45, m0, m2, m4, m3, m1, m5},
+			{p20, p24, p34, p35, p15, p10, p40, p23, p45, p13, p50, p12, p30,
+			p25, p14, m0, m2, m4, m3, m5, m1},
+			{p20, p24, p45, p15, p13, p30, p40, p25, p14, p35, p10, p23, p50,
+			p12, p34, m0, m2, m4, m5, m1, m3},
+			{p20, p24, p45, p35, p13, p10, p40, p25, p34, p15, p30, p12, p50,
+			p23, p14, m0, m2, m4, m5, m3, m1},
+			{p20, p25, p15, p13, p34, p40, p50, p12, p35, p14, p30, p24, p10,
+			p23, p45, m0, m2, m5, m1, m3, m4},
+			{p20, p25, p15, p14, p34, p30, p50, p12, p45, p13, p40, p23, p10,
+			p24, p35, m0, m2, m5, m1, m4, m3},
+			{p20, p25, p35, p13, p14, p40, p50, p23, p15, p34, p10, p24, p30,
+			p12, p45, m0, m2, m5, m3, m1, m4},
+			{p20, p25, p35, p34, p14, p10, p50, p23, p45, p13, p40, p12, p30,
+			p24, p15, m0, m2, m5, m3, m4, m1},
+			{p20, p25, p45, p14, p13, p30, p50, p24, p15, p34, p10, p23, p40,
+			p12, p35, m0, m2, m5, m4, m1, m3},
+			{p20, p25, p45, p34, p13, p10, p50, p24, p35, p14, p30, p12, p40,
+			p23, p15, m0, m2, m5, m4, m3, m1},
+			{p30, p13, p12, p24, p45, p50, p10, p23, p14, p25, p40, p35, p20,
+			p34, p15, m0, m3, m1, m2, m4, m5},
+			{p30, p13, p12, p25, p45, p40, p10, p23, p15, p24, p50, p34, p20,
+			p35, p14, m0, m3, m1, m2, m5, m4},
+			{p30, p13, p14, p24, p25, p50, p10, p34, p12, p45, p20, p35, p40,
+			p23, p15, m0, m3, m1, m4, m2, m5},
+			{p30, p13, p14, p45, p25, p20, p10, p34, p15, p24, p50, p23, p40,
+			p35, p12, m0, m3, m1, m4, m5, m2},
+			{p30, p13, p15, p25, p24, p40, p10, p35, p12, p45, p20, p34, p50,
+			p23, p14, m0, m3, m1, m5, m2, m4},
+			{p30, p13, p15, p45, p24, p20, p10, p35, p14, p25, p40, p23, p50,
+			p34, p12, m0, m3, m1, m5, m4, m2},
+			{p30, p23, p12, p14, p45, p50, p20, p13, p24, p15, p40, p35, p10,
+			p34, p25, m0, m3, m2, m1, m4, m5},
+			{p30, p23, p12, p15, p45, p40, p20, p13, p25, p14, p50, p34, p10,
+			p35, p24, m0, m3, m2, m1, m5, m4},
+			{p30, p23, p24, p14, p15, p50, p20, p34, p12, p45, p10, p35, p40,
+			p13, p25, m0, m3, m2, m4, m1, m5},
+			{p30, p23, p24, p45, p15, p10, p20, p34, p25, p14, p50, p13, p40,
+			p35, p12, m0, m3, m2, m4, m5, m1},
+			{p30, p23, p25, p15, p14, p40, p20, p35, p12, p45, p10, p34, p50,
+			p13, p24, m0, m3, m2, m5, m1, m4},
+			{p30, p23, p25, p45, p14, p10, p20, p35, p24, p15, p40, p13, p50,
+			p34, p12, m0, m3, m2, m5, m4, m1},
+			{p30, p34, p14, p12, p25, p50, p40, p13, p24, p15, p20, p35, p10,
+			p23, p45, m0, m3, m4, m1, m2, m5},
+			{p30, p34, p14, p15, p25, p20, p40, p13, p45, p12, p50, p23, p10,
+			p35, p24, m0, m3, m4, m1, m5, m2},
+			{p30, p34, p24, p12, p15, p50, p40, p23, p14, p25, p10, p35, p20,
+			p13, p45, m0, m3, m4, m2, m1, m5},
+			{p30, p34, p24, p25, p15, p10, p40, p23, p45, p12, p50, p13, p20,
+			p35, p14, m0, m3, m4, m2, m5, m1},
+			{p30, p34, p45, p15, p12, p20, p40, p35, p14, p25, p10, p23, p50,
+			p13, p24, m0, m3, m4, m5, m1, m2},
+			{p30, p34, p45, p25, p12, p10, p40, p35, p24, p15, p20, p13, p50,
+			p23, p14, m0, m3, m4, m5, m2, m1},
+			{p30, p35, p15, p12, p24, p40, p50, p13, p25, p14, p20, p34, p10,
+			p23, p45, m0, m3, m5, m1, m2, m4},
+			{p30, p35, p15, p14, p24, p20, p50, p13, p45, p12, p40, p23, p10,
+			p34, p25, m0, m3, m5, m1, m4, m2},
+			{p30, p35, p25, p12, p14, p40, p50, p23, p15, p24, p10, p34, p20,
+			p13, p45, m0, m3, m5, m2, m1, m4},
+			{p30, p35, p25, p24, p14, p10, p50, p23, p45, p12, p40, p13, p20,
+			p34, p15, m0, m3, m5, m2, m4, m1},
+			{p30, p35, p45, p14, p12, p20, p50, p34, p15, p24, p10, p23, p40,
+			p13, p25, m0, m3, m5, m4, m1, m2},
+			{p30, p35, p45, p24, p12, p10, p50, p34, p25, p14, p20, p13, p40,
+			p23, p15, m0, m3, m5, m4, m2, m1},
+			{p40, p14, p12, p23, p35, p50, p10, p24, p13, p25, p30, p45, p20,
+			p34, p15, m0, m4, m1, m2, m3, m5},
+			{p40, p14, p12, p25, p35, p30, p10, p24, p15, p23, p50, p34, p20,
+			p45, p13, m0, m4, m1, m2, m5, m3},
+			{p40, p14, p13, p23, p25, p50, p10, p34, p12, p35, p20, p45, p30,
+			p24, p15, m0, m4, m1, m3, m2, m5},
+			{p40, p14, p13, p35, p25, p20, p10, p34, p15, p23, p50, p24, p30,
+			p45, p12, m0, m4, m1, m3, m5, m2},
+			{p40, p14, p15, p25, p23, p30, p10, p45, p12, p35, p20, p34, p50,
+			p24, p13, m0, m4, m1, m5, m2, m3},
+			{p40, p14, p15, p35, p23, p20, p10, p45, p13, p25, p30, p24, p50,
+			p34, p12, m0, m4, m1, m5, m3, m2},
+			{p40, p24, p12, p13, p35, p50, p20, p14, p23, p15, p30, p45, p10,
+			p34, p25, m0, m4, m2, m1, m3, m5},
+			{p40, p24, p12, p15, p35, p30, p20, p14, p25, p13, p50, p34, p10,
+			p45, p23, m0, m4, m2, m1, m5, m3},
+			{p40, p24, p23, p13, p15, p50, p20, p34, p12, p35, p10, p45, p30,
+			p14, p25, m0, m4, m2, m3, m1, m5},
+			{p40, p24, p23, p35, p15, p10, p20, p34, p25, p13, p50, p14, p30,
+			p45, p12, m0, m4, m2, m3, m5, m1},
+			{p40, p24, p25, p15, p13, p30, p20, p45, p12, p35, p10, p34, p50,
+			p14, p23, m0, m4, m2, m5, m1, m3},
+			{p40, p24, p25, p35, p13, p10, p20, p45, p23, p15, p30, p14, p50,
+			p34, p12, m0, m4, m2, m5, m3, m1},
+			{p40, p34, p13, p12, p25, p50, p30, p14, p23, p15, p20, p45, p10,
+			p24, p35, m0, m4, m3, m1, m2, m5},
+			{p40, p34, p13, p15, p25, p20, p30, p14, p35, p12, p50, p24, p10,
+			p45, p23, m0, m4, m3, m1, m5, m2},
+			{p40, p34, p23, p12, p15, p50, p30, p24, p13, p25, p10, p45, p20,
+			p14, p35, m0, m4, m3, m2, m1, m5},
+			{p40, p34, p23, p25, p15, p10, p30, p24, p35, p12, p50, p14, p20,
+			p45, p13, m0, m4, m3, m2, m5, m1},
+			{p40, p34, p35, p15, p12, p20, p30, p45, p13, p25, p10, p24, p50,
+			p14, p23, m0, m4, m3, m5, m1, m2},
+			{p40, p34, p35, p25, p12, p10, p30, p45, p23, p15, p20, p14, p50,
+			p24, p13, m0, m4, m3, m5, m2, m1},
+			{p40, p45, p15, p12, p23, p30, p50, p14, p25, p13, p20, p34, p10,
+			p24, p35, m0, m4, m5, m1, m2, m3},
+			{p40, p45, p15, p13, p23, p20, p50, p14, p35, p12, p30, p24, p10,
+			p34, p25, m0, m4, m5, m1, m3, m2},
+			{p40, p45, p25, p12, p13, p30, p50, p24, p15, p23, p10, p34, p20,
+			p14, p35, m0, m4, m5, m2, m1, m3},
+			{p40, p45, p25, p23, p13, p10, p50, p24, p35, p12, p30, p14, p20,
+			p34, p15, m0, m4, m5, m2, m3, m1},
+			{p40, p45, p35, p13, p12, p20, p50, p34, p15, p23, p10, p24, p30,
+			p14, p25, m0, m4, m5, m3, m1, m2},
+			{p40, p45, p35, p23, p12, p10, p50, p34, p25, p13, p20, p14, p30,
+			p24, p15, m0, m4, m5, m3, m2, m1},
+			{p50, p15, p12, p23, p34, p40, p10, p25, p13, p24, p30, p45, p20,
+			p35, p14, m0, m5, m1, m2, m3, m4},
+			{p50, p15, p12, p24, p34, p30, p10, p25, p14, p23, p40, p35, p20,
+			p45, p13, m0, m5, m1, m2, m4, m3},
+			{p50, p15, p13, p23, p24, p40, p10, p35, p12, p34, p20, p45, p30,
+			p25, p14, m0, m5, m1, m3, m2, m4},
+			{p50, p15, p13, p34, p24, p20, p10, p35, p14, p23, p40, p25, p30,
+			p45, p12, m0, m5, m1, m3, m4, m2},
+			{p50, p15, p14, p24, p23, p30, p10, p45, p12, p34, p20, p35, p40,
+			p25, p13, m0, m5, m1, m4, m2, m3},
+			{p50, p15, p14, p34, p23, p20, p10, p45, p13, p24, p30, p25, p40,
+			p35, p12, m0, m5, m1, m4, m3, m2},
+			{p50, p25, p12, p13, p34, p40, p20, p15, p23, p14, p30, p45, p10,
+			p35, p24, m0, m5, m2, m1, m3, m4},
+			{p50, p25, p12, p14, p34, p30, p20, p15, p24, p13, p40, p35, p10,
+			p45, p23, m0, m5, m2, m1, m4, m3},
+			{p50, p25, p23, p13, p14, p40, p20, p35, p12, p34, p10, p45, p30,
+			p15, p24, m0, m5, m2, m3, m1, m4},
+			{p50, p25, p23, p34, p14, p10, p20, p35, p24, p13, p40, p15, p30,
+			p45, p12, m0, m5, m2, m3, m4, m1},
+			{p50, p25, p24, p14, p13, p30, p20, p45, p12, p34, p10, p35, p40,
+			p15, p23, m0, m5, m2, m4, m1, m3},
+			{p50, p25, p24, p34, p13, p10, p20, p45, p23, p14, p30, p15, p40,
+			p35, p12, m0, m5, m2, m4, m3, m1},
+			{p50, p35, p13, p12, p24, p40, p30, p15, p23, p14, p20, p45, p10,
+			p25, p34, m0, m5, m3, m1, m2, m4},
+			{p50, p35, p13, p14, p24, p20, p30, p15, p34, p12, p40, p25, p10,
+			p45, p23, m0, m5, m3, m1, m4, m2},
+			{p50, p35, p23, p12, p14, p40, p30, p25, p13, p24, p10, p45, p20,
+			p15, p34, m0, m5, m3, m2, m1, m4},
+			{p50, p35, p23, p24, p14, p10, p30, p25, p34, p12, p40, p15, p20,
+			p45, p13, m0, m5, m3, m2, m4, m1},
+			{p50, p35, p34, p14, p12, p20, p30, p45, p13, p24, p10, p25, p40,
+			p15, p23, m0, m5, m3, m4, m1, m2},
+			{p50, p35, p34, p24, p12, p10, p30, p45, p23, p14, p20, p15, p40,
+			p25, p13, m0, m5, m3, m4, m2, m1},
+			{p50, p45, p14, p12, p23, p30, p40, p15, p24, p13, p20, p35, p10,
+			p25, p34, m0, m5, m4, m1, m2, m3},
+			{p50, p45, p14, p13, p23, p20, p40, p15, p34, p12, p30, p25, p10,
+			p35, p24, m0, m5, m4, m1, m3, m2},
+			{p50, p45, p24, p12, p13, p30, p40, p25, p14, p23, p10, p35, p20,
+			p15, p34, m0, m5, m4, m2, m1, m3},
+			{p50, p45, p24, p23, p13, p10, p40, p25, p34, p12, p30, p15, p20,
+			p35, p14, m0, m5, m4, m2, m3, m1},
+			{p50, p45, p34, p13, p12, p20, p40, p35, p14, p23, p10, p25, p30,
+			p15, p24, m0, m5, m4, m3, m1, m2},
+			{p50, p45, p34, p23, p12, p10, p40, p35, p24, p13, p20, p15, p30,
+			p25, p14, m0, m5, m4, m3, m2, m1},
+			{p10, p20, p23, p34, p45, p15, p12, p30, p24, p35, p14, p50, p13,
+			p40, p25, m1, m0, m2, m3, m4, m5},
+			{p10, p20, p23, p35, p45, p14, p12, p30, p25, p34, p15, p40, p13,
+			p50, p24, m1, m0, m2, m3, m5, m4},
+			{p10, p20, p24, p34, p35, p15, p12, p40, p23, p45, p13, p50, p14,
+			p30, p25, m1, m0, m2, m4, m3, m5},
+			{p10, p20, p24, p45, p35, p13, p12, p40, p25, p34, p15, p30, p14,
+			p50, p23, m1, m0, m2, m4, m5, m3},
+			{p10, p20, p25, p35, p34, p14, p12, p50, p23, p45, p13, p40, p15,
+			p30, p24, m1, m0, m2, m5, m3, m4},
+			{p10, p20, p25, p45, p34, p13, p12, p50, p24, p35, p14, p30, p15,
+			p40, p23, m1, m0, m2, m5, m4, m3},
+			{p10, p30, p23, p24, p45, p15, p13, p20, p34, p25, p14, p50, p12,
+			p40, p35, m1, m0, m3, m2, m4, m5},
+			{p10, p30, p23, p25, p45, p14, p13, p20, p35, p24, p15, p40, p12,
+			p50, p34, m1, m0, m3, m2, m5, m4},
+			{p10, p30, p34, p24, p25, p15, p13, p40, p23, p45, p12, p50, p14,
+			p20, p35, m1, m0, m3, m4, m2, m5},
+			{p10, p30, p34, p45, p25, p12, p13, p40, p35, p24, p15, p20, p14,
+			p50, p23, m1, m0, m3, m4, m5, m2},
+			{p10, p30, p35, p25, p24, p14, p13, p50, p23, p45, p12, p40, p15,
+			p20, p34, m1, m0, m3, m5, m2, m4},
+			{p10, p30, p35, p45, p24, p12, p13, p50, p34, p25, p14, p20, p15,
+			p40, p23, m1, m0, m3, m5, m4, m2},
+			{p10, p40, p24, p23, p35, p15, p14, p20, p34, p25, p13, p50, p12,
+			p30, p45, m1, m0, m4, m2, m3, m5},
+			{p10, p40, p24, p25, p35, p13, p14, p20, p45, p23, p15, p30, p12,
+			p50, p34, m1, m0, m4, m2, m5, m3},
+			{p10, p40, p34, p23, p25, p15, p14, p30, p24, p35, p12, p50, p13,
+			p20, p45, m1, m0, m4, m3, m2, m5},
+			{p10, p40, p34, p35, p25, p12, p14, p30, p45, p23, p15, p20, p13,
+			p50, p24, m1, m0, m4, m3, m5, m2},
+			{p10, p40, p45, p25, p23, p13, p14, p50, p24, p35, p12, p30, p15,
+			p20, p34, m1, m0, m4, m5, m2, m3},
+			{p10, p40, p45, p35, p23, p12, p14, p50, p34, p25, p13, p20, p15,
+			p30, p24, m1, m0, m4, m5, m3, m2},
+			{p10, p50, p25, p23, p34, p14, p15, p20, p35, p24, p13, p40, p12,
+			p30, p45, m1, m0, m5, m2, m3, m4},
+			{p10, p50, p25, p24, p34, p13, p15, p20, p45, p23, p14, p30, p12,
+			p40, p35, m1, m0, m5, m2, m4, m3},
+			{p10, p50, p35, p23, p24, p14, p15, p30, p25, p34, p12, p40, p13,
+			p20, p45, m1, m0, m5, m3, m2, m4},
+			{p10, p50, p35, p34, p24, p12, p15, p30, p45, p23, p14, p20, p13,
+			p40, p25, m1, m0, m5, m3, m4, m2},
+			{p10, p50, p45, p24, p23, p13, p15, p40, p25, p34, p12, p30, p14,
+			p20, p35, m1, m0, m5, m4, m2, m3},
+			{p10, p50, p45, p34, p23, p12, p15, p40, p35, p24, p13, p20, p14,
+			p30, p25, m1, m0, m5, m4, m3, m2},
+			{p12, p20, p30, p34, p45, p15, p10, p23, p40, p35, p14, p25, p13,
+			p24, p50, m1, m2, m0, m3, m4, m5},
+			{p12, p20, p30, p35, p45, p14, p10, p23, p50, p34, p15, p24, p13,
+			p25, p40, m1, m2, m0, m3, m5, m4},
+			{p12, p20, p40, p34, p35, p15, p10, p24, p30, p45, p13, p25, p14,
+			p23, p50, m1, m2, m0, m4, m3, m5},
+			{p12, p20, p40, p45, p35, p13, p10, p24, p50, p34, p15, p23, p14,
+			p25, p30, m1, m2, m0, m4, m5, m3},
+			{p12, p20, p50, p35, p34, p14, p10, p25, p30, p45, p13, p24, p15,
+			p23, p40, m1, m2, m0, m5, m3, m4},
+			{p12, p20, p50, p45, p34, p13, p10, p25, p40, p35, p14, p23, p15,
+			p24, p30, m1, m2, m0, m5, m4, m3},
+			{p12, p23, p30, p40, p45, p15, p13, p20, p34, p50, p14, p25, p10,
+			p24, p35, m1, m2, m3, m0, m4, m5},
+			{p12, p23, p30, p50, p45, p14, p13, p20, p35, p40, p15, p24, p10,
+			p25, p34, m1, m2, m3, m0, m5, m4},
+			{p12, p23, p34, p40, p50, p15, p13, p24, p30, p45, p10, p25, p14,
+			p20, p35, m1, m2, m3, m4, m0, m5},
+			{p12, p23, p34, p45, p50, p10, p13, p24, p35, p40, p15, p20, p14,
+			p25, p30, m1, m2, m3, m4, m5, m0},
+			{p12, p23, p35, p50, p40, p14, p13, p25, p30, p45, p10, p24, p15,
+			p20, p34, m1, m2, m3, m5, m0, m4},
+			{p12, p23, p35, p45, p40, p10, p13, p25, p34, p50, p14, p20, p15,
+			p24, p30, m1, m2, m3, m5, m4, m0},
+			{p12, p24, p40, p30, p35, p15, p14, p20, p34, p50, p13, p25, p10,
+			p23, p45, m1, m2, m4, m0, m3, m5},
+			{p12, p24, p40, p50, p35, p13, p14, p20, p45, p30, p15, p23, p10,
+			p25, p34, m1, m2, m4, m0, m5, m3},
+			{p12, p24, p34, p30, p50, p15, p14, p23, p40, p35, p10, p25, p13,
+			p20, p45, m1, m2, m4, m3, m0, m5},
+			{p12, p24, p34, p35, p50, p10, p14, p23, p45, p30, p15, p20, p13,
+			p25, p40, m1, m2, m4, m3, m5, m0},
+			{p12, p24, p45, p50, p30, p13, p14, p25, p40, p35, p10, p23, p15,
+			p20, p34, m1, m2, m4, m5, m0, m3},
+			{p12, p24, p45, p35, p30, p10, p14, p25, p34, p50, p13, p20, p15,
+			p23, p40, m1, m2, m4, m5, m3, m0},
+			{p12, p25, p50, p30, p34, p14, p15, p20, p35, p40, p13, p24, p10,
+			p23, p45, m1, m2, m5, m0, m3, m4},
+			{p12, p25, p50, p40, p34, p13, p15, p20, p45, p30, p14, p23, p10,
+			p24, p35, m1, m2, m5, m0, m4, m3},
+			{p12, p25, p35, p30, p40, p14, p15, p23, p50, p34, p10, p24, p13,
+			p20, p45, m1, m2, m5, m3, m0, m4},
+			{p12, p25, p35, p34, p40, p10, p15, p23, p45, p30, p14, p20, p13,
+			p24, p50, m1, m2, m5, m3, m4, m0},
+			{p12, p25, p45, p40, p30, p13, p15, p24, p50, p34, p10, p23, p14,
+			p20, p35, m1, m2, m5, m4, m0, m3},
+			{p12, p25, p45, p34, p30, p10, p15, p24, p35, p40, p13, p20, p14,
+			p23, p50, m1, m2, m5, m4, m3, m0},
+			{p13, p30, p20, p24, p45, p15, p10, p23, p40, p25, p14, p35, p12,
+			p34, p50, m1, m3, m0, m2, m4, m5},
+			{p13, p30, p20, p25, p45, p14, p10, p23, p50, p24, p15, p34, p12,
+			p35, p40, m1, m3, m0, m2, m5, m4},
+			{p13, p30, p40, p24, p25, p15, p10, p34, p20, p45, p12, p35, p14,
+			p23, p50, m1, m3, m0, m4, m2, m5},
+			{p13, p30, p40, p45, p25, p12, p10, p34, p50, p24, p15, p23, p14,
+			p35, p20, m1, m3, m0, m4, m5, m2},
+			{p13, p30, p50, p25, p24, p14, p10, p35, p20, p45, p12, p34, p15,
+			p23, p40, m1, m3, m0, m5, m2, m4},
+			{p13, p30, p50, p45, p24, p12, p10, p35, p40, p25, p14, p23, p15,
+			p34, p20, m1, m3, m0, m5, m4, m2},
+			{p13, p23, p20, p40, p45, p15, p12, p30, p24, p50, p14, p35, p10,
+			p34, p25, m1, m3, m2, m0, m4, m5},
+			{p13, p23, p20, p50, p45, p14, p12, p30, p25, p40, p15, p34, p10,
+			p35, p24, m1, m3, m2, m0, m5, m4},
+			{p13, p23, p24, p40, p50, p15, p12, p34, p20, p45, p10, p35, p14,
+			p30, p25, m1, m3, m2, m4, m0, m5},
+			{p13, p23, p24, p45, p50, p10, p12, p34, p25, p40, p15, p30, p14,
+			p35, p20, m1, m3, m2, m4, m5, m0},
+			{p13, p23, p25, p50, p40, p14, p12, p35, p20, p45, p10, p34, p15,
+			p30, p24, m1, m3, m2, m5, m0, m4},
+			{p13, p23, p25, p45, p40, p10, p12, p35, p24, p50, p14, p30, p15,
+			p34, p20, m1, m3, m2, m5, m4, m0},
+			{p13, p34, p40, p20, p25, p15, p14, p30, p24, p50, p12, p35, p10,
+			p23, p45, m1, m3, m4, m0, m2, m5},
+			{p13, p34, p40, p50, p25, p12, p14, p30, p45, p20, p15, p23, p10,
+			p35, p24, m1, m3, m4, m0, m5, m2},
+			{p13, p34, p24, p20, p50, p15, p14, p23, p40, p25, p10, p35, p12,
+			p30, p45, m1, m3, m4, m2, m0, m5},
+			{p13, p34, p24, p25, p50, p10, p14, p23, p45, p20, p15, p30, p12,
+			p35, p40, m1, m3, m4, m2, m5, m0},
+			{p13, p34, p45, p50, p20, p12, p14, p35, p40, p25, p10, p23, p15,
+			p30, p24, m1, m3, m4, m5, m0, m2},
+			{p13, p34, p45, p25, p20, p10, p14, p35, p24, p50, p12, p30, p15,
+			p23, p40, m1, m3, m4, m5, m2, m0},
+			{p13, p35, p50, p20, p24, p14, p15, p30, p25, p40, p12, p34, p10,
+			p23, p45, m1, m3, m5, m0, m2, m4},
+			{p13, p35, p50, p40, p24, p12, p15, p30, p45, p20, p14, p23, p10,
+			p34, p25, m1, m3, m5, m0, m4, m2},
+			{p13, p35, p25, p20, p40, p14, p15, p23, p50, p24, p10, p34, p12,
+			p30, p45, m1, m3, m5, m2, m0, m4},
+			{p13, p35, p25, p24, p40, p10, p15, p23, p45, p20, p14, p30, p12,
+			p34, p50, m1, m3, m5, m2, m4, m0},
+			{p13, p35, p45, p40, p20, p12, p15, p34, p50, p24, p10, p23, p14,
+			p30, p25, m1, m3, m5, m4, m0, m2},
+			{p13, p35, p45, p24, p20, p10, p15, p34, p25, p40, p12, p30, p14,
+			p23, p50, m1, m3, m5, m4, m2, m0},
+			{p14, p40, p20, p23, p35, p15, p10, p24, p30, p25, p13, p45, p12,
+			p34, p50, m1, m4, m0, m2, m3, m5},
+			{p14, p40, p20, p25, p35, p13, p10, p24, p50, p23, p15, p34, p12,
+			p45, p30, m1, m4, m0, m2, m5, m3},
+			{p14, p40, p30, p23, p25, p15, p10, p34, p20, p35, p12, p45, p13,
+			p24, p50, m1, m4, m0, m3, m2, m5},
+			{p14, p40, p30, p35, p25, p12, p10, p34, p50, p23, p15, p24, p13,
+			p45, p20, m1, m4, m0, m3, m5, m2},
+			{p14, p40, p50, p25, p23, p13, p10, p45, p20, p35, p12, p34, p15,
+			p24, p30, m1, m4, m0, m5, m2, m3},
+			{p14, p40, p50, p35, p23, p12, p10, p45, p30, p25, p13, p24, p15,
+			p34, p20, m1, m4, m0, m5, m3, m2},
+			{p14, p24, p20, p30, p35, p15, p12, p40, p23, p50, p13, p45, p10,
+			p34, p25, m1, m4, m2, m0, m3, m5},
+			{p14, p24, p20, p50, p35, p13, p12, p40, p25, p30, p15, p34, p10,
+			p45, p23, m1, m4, m2, m0, m5, m3},
+			{p14, p24, p23, p30, p50, p15, p12, p34, p20, p35, p10, p45, p13,
+			p40, p25, m1, m4, m2, m3, m0, m5},
+			{p14, p24, p23, p35, p50, p10, p12, p34, p25, p30, p15, p40, p13,
+			p45, p20, m1, m4, m2, m3, m5, m0},
+			{p14, p24, p25, p50, p30, p13, p12, p45, p20, p35, p10, p34, p15,
+			p40, p23, m1, m4, m2, m5, m0, m3},
+			{p14, p24, p25, p35, p30, p10, p12, p45, p23, p50, p13, p40, p15,
+			p34, p20, m1, m4, m2, m5, m3, m0},
+			{p14, p34, p30, p20, p25, p15, p13, p40, p23, p50, p12, p45, p10,
+			p24, p35, m1, m4, m3, m0, m2, m5},
+			{p14, p34, p30, p50, p25, p12, p13, p40, p35, p20, p15, p24, p10,
+			p45, p23, m1, m4, m3, m0, m5, m2},
+			{p14, p34, p23, p20, p50, p15, p13, p24, p30, p25, p10, p45, p12,
+			p40, p35, m1, m4, m3, m2, m0, m5},
+			{p14, p34, p23, p25, p50, p10, p13, p24, p35, p20, p15, p40, p12,
+			p45, p30, m1, m4, m3, m2, m5, m0},
+			{p14, p34, p35, p50, p20, p12, p13, p45, p30, p25, p10, p24, p15,
+			p40, p23, m1, m4, m3, m5, m0, m2},
+			{p14, p34, p35, p25, p20, p10, p13, p45, p23, p50, p12, p40, p15,
+			p24, p30, m1, m4, m3, m5, m2, m0},
+			{p14, p45, p50, p20, p23, p13, p15, p40, p25, p30, p12, p34, p10,
+			p24, p35, m1, m4, m5, m0, m2, m3},
+			{p14, p45, p50, p30, p23, p12, p15, p40, p35, p20, p13, p24, p10,
+			p34, p25, m1, m4, m5, m0, m3, m2},
+			{p14, p45, p25, p20, p30, p13, p15, p24, p50, p23, p10, p34, p12,
+			p40, p35, m1, m4, m5, m2, m0, m3},
+			{p14, p45, p25, p23, p30, p10, p15, p24, p35, p20, p13, p40, p12,
+			p34, p50, m1, m4, m5, m2, m3, m0},
+			{p14, p45, p35, p30, p20, p12, p15, p34, p50, p23, p10, p24, p13,
+			p40, p25, m1, m4, m5, m3, m0, m2},
+			{p14, p45, p35, p23, p20, p10, p15, p34, p25, p30, p12, p40, p13,
+			p24, p50, m1, m4, m5, m3, m2, m0},
+			{p15, p50, p20, p23, p34, p14, p10, p25, p30, p24, p13, p45, p12,
+			p35, p40, m1, m5, m0, m2, m3, m4},
+			{p15, p50, p20, p24, p34, p13, p10, p25, p40, p23, p14, p35, p12,
+			p45, p30, m1, m5, m0, m2, m4, m3},
+			{p15, p50, p30, p23, p24, p14, p10, p35, p20, p34, p12, p45, p13,
+			p25, p40, m1, m5, m0, m3, m2, m4},
+			{p15, p50, p30, p34, p24, p12, p10, p35, p40, p23, p14, p25, p13,
+			p45, p20, m1, m5, m0, m3, m4, m2},
+			{p15, p50, p40, p24, p23, p13, p10, p45, p20, p34, p12, p35, p14,
+			p25, p30, m1, m5, m0, m4, m2, m3},
+			{p15, p50, p40, p34, p23, p12, p10, p45, p30, p24, p13, p25, p14,
+			p35, p20, m1, m5, m0, m4, m3, m2},
+			{p15, p25, p20, p30, p34, p14, p12, p50, p23, p40, p13, p45, p10,
+			p35, p24, m1, m5, m2, m0, m3, m4},
+			{p15, p25, p20, p40, p34, p13, p12, p50, p24, p30, p14, p35, p10,
+			p45, p23, m1, m5, m2, m0, m4, m3},
+			{p15, p25, p23, p30, p40, p14, p12, p35, p20, p34, p10, p45, p13,
+			p50, p24, m1, m5, m2, m3, m0, m4},
+			{p15, p25, p23, p34, p40, p10, p12, p35, p24, p30, p14, p50, p13,
+			p45, p20, m1, m5, m2, m3, m4, m0},
+			{p15, p25, p24, p40, p30, p13, p12, p45, p20, p34, p10, p35, p14,
+			p50, p23, m1, m5, m2, m4, m0, m3},
+			{p15, p25, p24, p34, p30, p10, p12, p45, p23, p40, p13, p50, p14,
+			p35, p20, m1, m5, m2, m4, m3, m0},
+			{p15, p35, p30, p20, p24, p14, p13, p50, p23, p40, p12, p45, p10,
+			p25, p34, m1, m5, m3, m0, m2, m4},
+			{p15, p35, p30, p40, p24, p12, p13, p50, p34, p20, p14, p25, p10,
+			p45, p23, m1, m5, m3, m0, m4, m2},
+			{p15, p35, p23, p20, p40, p14, p13, p25, p30, p24, p10, p45, p12,
+			p50, p34, m1, m5, m3, m2, m0, m4},
+			{p15, p35, p23, p24, p40, p10, p13, p25, p34, p20, p14, p50, p12,
+			p45, p30, m1, m5, m3, m2, m4, m0},
+			{p15, p35, p34, p40, p20, p12, p13, p45, p30, p24, p10, p25, p14,
+			p50, p23, m1, m5, m3, m4, m0, m2},
+			{p15, p35, p34, p24, p20, p10, p13, p45, p23, p40, p12, p50, p14,
+			p25, p30, m1, m5, m3, m4, m2, m0},
+			{p15, p45, p40, p20, p23, p13, p14, p50, p24, p30, p12, p35, p10,
+			p25, p34, m1, m5, m4, m0, m2, m3},
+			{p15, p45, p40, p30, p23, p12, p14, p50, p34, p20, p13, p25, p10,
+			p35, p24, m1, m5, m4, m0, m3, m2},
+			{p15, p45, p24, p20, p30, p13, p14, p25, p40, p23, p10, p35, p12,
+			p50, p34, m1, m5, m4, m2, m0, m3},
+			{p15, p45, p24, p23, p30, p10, p14, p25, p34, p20, p13, p50, p12,
+			p35, p40, m1, m5, m4, m2, m3, m0},
+			{p15, p45, p34, p30, p20, p12, p14, p35, p40, p23, p10, p25, p13,
+			p50, p24, m1, m5, m4, m3, m0, m2},
+			{p15, p45, p34, p23, p20, p10, p14, p35, p24, p30, p12, p50, p13,
+			p25, p40, m1, m5, m4, m3, m2, m0},
+			{p20, p10, p13, p34, p45, p25, p12, p30, p14, p35, p24, p50, p23,
+			p40, p15, m2, m0, m1, m3, m4, m5},
+			{p20, p10, p13, p35, p45, p24, p12, p30, p15, p34, p25, p40, p23,
+			p50, p14, m2, m0, m1, m3, m5, m4},
+			{p20, p10, p14, p34, p35, p25, p12, p40, p13, p45, p23, p50, p24,
+			p30, p15, m2, m0, m1, m4, m3, m5},
+			{p20, p10, p14, p45, p35, p23, p12, p40, p15, p34, p25, p30, p24,
+			p50, p13, m2, m0, m1, m4, m5, m3},
+			{p20, p10, p15, p35, p34, p24, p12, p50, p13, p45, p23, p40, p25,
+			p30, p14, m2, m0, m1, m5, m3, m4},
+			{p20, p10, p15, p45, p34, p23, p12, p50, p14, p35, p24, p30, p25,
+			p40, p13, m2, m0, m1, m5, m4, m3},
+			{p20, p30, p13, p14, p45, p25, p23, p10, p34, p15, p24, p50, p12,
+			p40, p35, m2, m0, m3, m1, m4, m5},
+			{p20, p30, p13, p15, p45, p24, p23, p10, p35, p14, p25, p40, p12,
+			p50, p34, m2, m0, m3, m1, m5, m4},
+			{p20, p30, p34, p14, p15, p25, p23, p40, p13, p45, p12, p50, p24,
+			p10, p35, m2, m0, m3, m4, m1, m5},
+			{p20, p30, p34, p45, p15, p12, p23, p40, p35, p14, p25, p10, p24,
+			p50, p13, m2, m0, m3, m4, m5, m1},
+			{p20, p30, p35, p15, p14, p24, p23, p50, p13, p45, p12, p40, p25,
+			p10, p34, m2, m0, m3, m5, m1, m4},
+			{p20, p30, p35, p45, p14, p12, p23, p50, p34, p15, p24, p10, p25,
+			p40, p13, m2, m0, m3, m5, m4, m1},
+			{p20, p40, p14, p13, p35, p25, p24, p10, p34, p15, p23, p50, p12,
+			p30, p45, m2, m0, m4, m1, m3, m5},
+			{p20, p40, p14, p15, p35, p23, p24, p10, p45, p13, p25, p30, p12,
+			p50, p34, m2, m0, m4, m1, m5, m3},
+			{p20, p40, p34, p13, p15, p25, p24, p30, p14, p35, p12, p50, p23,
+			p10, p45, m2, m0, m4, m3, m1, m5},
+			{p20, p40, p34, p35, p15, p12, p24, p30, p45, p13, p25, p10, p23,
+			p50, p14, m2, m0, m4, m3, m5, m1},
+			{p20, p40, p45, p15, p13, p23, p24, p50, p14, p35, p12, p30, p25,
+			p10, p34, m2, m0, m4, m5, m1, m3},
+			{p20, p40, p45, p35, p13, p12, p24, p50, p34, p15, p23, p10, p25,
+			p30, p14, m2, m0, m4, m5, m3, m1},
+			{p20, p50, p15, p13, p34, p24, p25, p10, p35, p14, p23, p40, p12,
+			p30, p45, m2, m0, m5, m1, m3, m4},
+			{p20, p50, p15, p14, p34, p23, p25, p10, p45, p13, p24, p30, p12,
+			p40, p35, m2, m0, m5, m1, m4, m3},
+			{p20, p50, p35, p13, p14, p24, p25, p30, p15, p34, p12, p40, p23,
+			p10, p45, m2, m0, m5, m3, m1, m4},
+			{p20, p50, p35, p34, p14, p12, p25, p30, p45, p13, p24, p10, p23,
+			p40, p15, m2, m0, m5, m3, m4, m1},
+			{p20, p50, p45, p14, p13, p23, p25, p40, p15, p34, p12, p30, p24,
+			p10, p35, m2, m0, m5, m4, m1, m3},
+			{p20, p50, p45, p34, p13, p12, p25, p40, p35, p14, p23, p10, p24,
+			p30, p15, m2, m0, m5, m4, m3, m1},
+			{p12, p10, p30, p34, p45, p25, p20, p13, p40, p35, p24, p15, p23,
+			p14, p50, m2, m1, m0, m3, m4, m5},
+			{p12, p10, p30, p35, p45, p24, p20, p13, p50, p34, p25, p14, p23,
+			p15, p40, m2, m1, m0, m3, m5, m4},
+			{p12, p10, p40, p34, p35, p25, p20, p14, p30, p45, p23, p15, p24,
+			p13, p50, m2, m1, m0, m4, m3, m5},
+			{p12, p10, p40, p45, p35, p23, p20, p14, p50, p34, p25, p13, p24,
+			p15, p30, m2, m1, m0, m4, m5, m3},
+			{p12, p10, p50, p35, p34, p24, p20, p15, p30, p45, p23, p14, p25,
+			p13, p40, m2, m1, m0, m5, m3, m4},
+			{p12, p10, p50, p45, p34, p23, p20, p15, p40, p35, p24, p13, p25,
+			p14, p30, m2, m1, m0, m5, m4, m3},
+			{p12, p13, p30, p40, p45, p25, p23, p10, p34, p50, p24, p15, p20,
+			p14, p35, m2, m1, m3, m0, m4, m5},
+			{p12, p13, p30, p50, p45, p24, p23, p10, p35, p40, p25, p14, p20,
+			p15, p34, m2, m1, m3, m0, m5, m4},
+			{p12, p13, p34, p40, p50, p25, p23, p14, p30, p45, p20, p15, p24,
+			p10, p35, m2, m1, m3, m4, m0, m5},
+			{p12, p13, p34, p45, p50, p20, p23, p14, p35, p40, p25, p10, p24,
+			p15, p30, m2, m1, m3, m4, m5, m0},
+			{p12, p13, p35, p50, p40, p24, p23, p15, p30, p45, p20, p14, p25,
+			p10, p34, m2, m1, m3, m5, m0, m4},
+			{p12, p13, p35, p45, p40, p20, p23, p15, p34, p50, p24, p10, p25,
+			p14, p30, m2, m1, m3, m5, m4, m0},
+			{p12, p14, p40, p30, p35, p25, p24, p10, p34, p50, p23, p15, p20,
+			p13, p45, m2, m1, m4, m0, m3, m5},
+			{p12, p14, p40, p50, p35, p23, p24, p10, p45, p30, p25, p13, p20,
+			p15, p34, m2, m1, m4, m0, m5, m3},
+			{p12, p14, p34, p30, p50, p25, p24, p13, p40, p35, p20, p15, p23,
+			p10, p45, m2, m1, m4, m3, m0, m5},
+			{p12, p14, p34, p35, p50, p20, p24, p13, p45, p30, p25, p10, p23,
+			p15, p40, m2, m1, m4, m3, m5, m0},
+			{p12, p14, p45, p50, p30, p23, p24, p15, p40, p35, p20, p13, p25,
+			p10, p34, m2, m1, m4, m5, m0, m3},
+			{p12, p14, p45, p35, p30, p20, p24, p15, p34, p50, p23, p10, p25,
+			p13, p40, m2, m1, m4, m5, m3, m0},
+			{p12, p15, p50, p30, p34, p24, p25, p10, p35, p40, p23, p14, p20,
+			p13, p45, m2, m1, m5, m0, m3, m4},
+			{p12, p15, p50, p40, p34, p23, p25, p10, p45, p30, p24, p13, p20,
+			p14, p35, m2, m1, m5, m0, m4, m3},
+			{p12, p15, p35, p30, p40, p24, p25, p13, p50, p34, p20, p14, p23,
+			p10, p45, m2, m1, m5, m3, m0, m4},
+			{p12, p15, p35, p34, p40, p20, p25, p13, p45, p30, p24, p10, p23,
+			p14, p50, m2, m1, m5, m3, m4, m0},
+			{p12, p15, p45, p40, p30, p23, p25, p14, p50, p34, p20, p13, p24,
+			p10, p35, m2, m1, m5, m4, m0, m3},
+			{p12, p15, p45, p34, p30, p20, p25, p14, p35, p40, p23, p10, p24,
+			p13, p50, m2, m1, m5, m4, m3, m0},
+			{p23, p30, p10, p14, p45, p25, p20, p13, p40, p15, p24, p35, p12,
+			p34, p50, m2, m3, m0, m1, m4, m5},
+			{p23, p30, p10, p15, p45, p24, p20, p13, p50, p14, p25, p34, p12,
+			p35, p40, m2, m3, m0, m1, m5, m4},
+			{p23, p30, p40, p14, p15, p25, p20, p34, p10, p45, p12, p35, p24,
+			p13, p50, m2, m3, m0, m4, m1, m5},
+			{p23, p30, p40, p45, p15, p12, p20, p34, p50, p14, p25, p13, p24,
+			p35, p10, m2, m3, m0, m4, m5, m1},
+			{p23, p30, p50, p15, p14, p24, p20, p35, p10, p45, p12, p34, p25,
+			p13, p40, m2, m3, m0, m5, m1, m4},
+			{p23, p30, p50, p45, p14, p12, p20, p35, p40, p15, p24, p13, p25,
+			p34, p10, m2, m3, m0, m5, m4, m1},
+			{p23, p13, p10, p40, p45, p25, p12, p30, p14, p50, p24, p35, p20,
+			p34, p15, m2, m3, m1, m0, m4, m5},
+			{p23, p13, p10, p50, p45, p24, p12, p30, p15, p40, p25, p34, p20,
+			p35, p14, m2, m3, m1, m0, m5, m4},
+			{p23, p13, p14, p40, p50, p25, p12, p34, p10, p45, p20, p35, p24,
+			p30, p15, m2, m3, m1, m4, m0, m5},
+			{p23, p13, p14, p45, p50, p20, p12, p34, p15, p40, p25, p30, p24,
+			p35, p10, m2, m3, m1, m4, m5, m0},
+			{p23, p13, p15, p50, p40, p24, p12, p35, p10, p45, p20, p34, p25,
+			p30, p14, m2, m3, m1, m5, m0, m4},
+			{p23, p13, p15, p45, p40, p20, p12, p35, p14, p50, p24, p30, p25,
+			p34, p10, m2, m3, m1, m5, m4, m0},
+			{p23, p34, p40, p10, p15, p25, p24, p30, p14, p50, p12, p35, p20,
+			p13, p45, m2, m3, m4, m0, m1, m5},
+			{p23, p34, p40, p50, p15, p12, p24, p30, p45, p10, p25, p13, p20,
+			p35, p14, m2, m3, m4, m0, m5, m1},
+			{p23, p34, p14, p10, p50, p25, p24, p13, p40, p15, p20, p35, p12,
+			p30, p45, m2, m3, m4, m1, m0, m5},
+			{p23, p34, p14, p15, p50, p20, p24, p13, p45, p10, p25, p30, p12,
+			p35, p40, m2, m3, m4, m1, m5, m0},
+			{p23, p34, p45, p50, p10, p12, p24, p35, p40, p15, p20, p13, p25,
+			p30, p14, m2, m3, m4, m5, m0, m1},
+			{p23, p34, p45, p15, p10, p20, p24, p35, p14, p50, p12, p30, p25,
+			p13, p40, m2, m3, m4, m5, m1, m0},
+			{p23, p35, p50, p10, p14, p24, p25, p30, p15, p40, p12, p34, p20,
+			p13, p45, m2, m3, m5, m0, m1, m4},
+			{p23, p35, p50, p40, p14, p12, p25, p30, p45, p10, p24, p13, p20,
+			p34, p15, m2, m3, m5, m0, m4, m1},
+			{p23, p35, p15, p10, p40, p24, p25, p13, p50, p14, p20, p34, p12,
+			p30, p45, m2, m3, m5, m1, m0, m4},
+			{p23, p35, p15, p14, p40, p20, p25, p13, p45, p10, p24, p30, p12,
+			p34, p50, m2, m3, m5, m1, m4, m0},
+			{p23, p35, p45, p40, p10, p12, p25, p34, p50, p14, p20, p13, p24,
+			p30, p15, m2, m3, m5, m4, m0, m1},
+			{p23, p35, p45, p14, p10, p20, p25, p34, p15, p40, p12, p30, p24,
+			p13, p50, m2, m3, m5, m4, m1, m0},
+			{p24, p40, p10, p13, p35, p25, p20, p14, p30, p15, p23, p45, p12,
+			p34, p50, m2, m4, m0, m1, m3, m5},
+			{p24, p40, p10, p15, p35, p23, p20, p14, p50, p13, p25, p34, p12,
+			p45, p30, m2, m4, m0, m1, m5, m3},
+			{p24, p40, p30, p13, p15, p25, p20, p34, p10, p35, p12, p45, p23,
+			p14, p50, m2, m4, m0, m3, m1, m5},
+			{p24, p40, p30, p35, p15, p12, p20, p34, p50, p13, p25, p14, p23,
+			p45, p10, m2, m4, m0, m3, m5, m1},
+			{p24, p40, p50, p15, p13, p23, p20, p45, p10, p35, p12, p34, p25,
+			p14, p30, m2, m4, m0, m5, m1, m3},
+			{p24, p40, p50, p35, p13, p12, p20, p45, p30, p15, p23, p14, p25,
+			p34, p10, m2, m4, m0, m5, m3, m1},
+			{p24, p14, p10, p30, p35, p25, p12, p40, p13, p50, p23, p45, p20,
+			p34, p15, m2, m4, m1, m0, m3, m5},
+			{p24, p14, p10, p50, p35, p23, p12, p40, p15, p30, p25, p34, p20,
+			p45, p13, m2, m4, m1, m0, m5, m3},
+			{p24, p14, p13, p30, p50, p25, p12, p34, p10, p35, p20, p45, p23,
+			p40, p15, m2, m4, m1, m3, m0, m5},
+			{p24, p14, p13, p35, p50, p20, p12, p34, p15, p30, p25, p40, p23,
+			p45, p10, m2, m4, m1, m3, m5, m0},
+			{p24, p14, p15, p50, p30, p23, p12, p45, p10, p35, p20, p34, p25,
+			p40, p13, m2, m4, m1, m5, m0, m3},
+			{p24, p14, p15, p35, p30, p20, p12, p45, p13, p50, p23, p40, p25,
+			p34, p10, m2, m4, m1, m5, m3, m0},
+			{p24, p34, p30, p10, p15, p25, p23, p40, p13, p50, p12, p45, p20,
+			p14, p35, m2, m4, m3, m0, m1, m5},
+			{p24, p34, p30, p50, p15, p12, p23, p40, p35, p10, p25, p14, p20,
+			p45, p13, m2, m4, m3, m0, m5, m1},
+			{p24, p34, p13, p10, p50, p25, p23, p14, p30, p15, p20, p45, p12,
+			p40, p35, m2, m4, m3, m1, m0, m5},
+			{p24, p34, p13, p15, p50, p20, p23, p14, p35, p10, p25, p40, p12,
+			p45, p30, m2, m4, m3, m1, m5, m0},
+			{p24, p34, p35, p50, p10, p12, p23, p45, p30, p15, p20, p14, p25,
+			p40, p13, m2, m4, m3, m5, m0, m1},
+			{p24, p34, p35, p15, p10, p20, p23, p45, p13, p50, p12, p40, p25,
+			p14, p30, m2, m4, m3, m5, m1, m0},
+			{p24, p45, p50, p10, p13, p23, p25, p40, p15, p30, p12, p34, p20,
+			p14, p35, m2, m4, m5, m0, m1, m3},
+			{p24, p45, p50, p30, p13, p12, p25, p40, p35, p10, p23, p14, p20,
+			p34, p15, m2, m4, m5, m0, m3, m1},
+			{p24, p45, p15, p10, p30, p23, p25, p14, p50, p13, p20, p34, p12,
+			p40, p35, m2, m4, m5, m1, m0, m3},
+			{p24, p45, p15, p13, p30, p20, p25, p14, p35, p10, p23, p40, p12,
+			p34, p50, m2, m4, m5, m1, m3, m0},
+			{p24, p45, p35, p30, p10, p12, p25, p34, p50, p13, p20, p14, p23,
+			p40, p15, m2, m4, m5, m3, m0, m1},
+			{p24, p45, p35, p13, p10, p20, p25, p34, p15, p30, p12, p40, p23,
+			p14, p50, m2, m4, m5, m3, m1, m0},
+			{p25, p50, p10, p13, p34, p24, p20, p15, p30, p14, p23, p45, p12,
+			p35, p40, m2, m5, m0, m1, m3, m4},
+			{p25, p50, p10, p14, p34, p23, p20, p15, p40, p13, p24, p35, p12,
+			p45, p30, m2, m5, m0, m1, m4, m3},
+			{p25, p50, p30, p13, p14, p24, p20, p35, p10, p34, p12, p45, p23,
+			p15, p40, m2, m5, m0, m3, m1, m4},
+			{p25, p50, p30, p34, p14, p12, p20, p35, p40, p13, p24, p15, p23,
+			p45, p10, m2, m5, m0, m3, m4, m1},
+			{p25, p50, p40, p14, p13, p23, p20, p45, p10, p34, p12, p35, p24,
+			p15, p30, m2, m5, m0, m4, m1, m3},
+			{p25, p50, p40, p34, p13, p12, p20, p45, p30, p14, p23, p15, p24,
+			p35, p10, m2, m5, m0, m4, m3, m1},
+			{p25, p15, p10, p30, p34, p24, p12, p50, p13, p40, p23, p45, p20,
+			p35, p14, m2, m5, m1, m0, m3, m4},
+			{p25, p15, p10, p40, p34, p23, p12, p50, p14, p30, p24, p35, p20,
+			p45, p13, m2, m5, m1, m0, m4, m3},
+			{p25, p15, p13, p30, p40, p24, p12, p35, p10, p34, p20, p45, p23,
+			p50, p14, m2, m5, m1, m3, m0, m4},
+			{p25, p15, p13, p34, p40, p20, p12, p35, p14, p30, p24, p50, p23,
+			p45, p10, m2, m5, m1, m3, m4, m0},
+			{p25, p15, p14, p40, p30, p23, p12, p45, p10, p34, p20, p35, p24,
+			p50, p13, m2, m5, m1, m4, m0, m3},
+			{p25, p15, p14, p34, p30, p20, p12, p45, p13, p40, p23, p50, p24,
+			p35, p10, m2, m5, m1, m4, m3, m0},
+			{p25, p35, p30, p10, p14, p24, p23, p50, p13, p40, p12, p45, p20,
+			p15, p34, m2, m5, m3, m0, m1, m4},
+			{p25, p35, p30, p40, p14, p12, p23, p50, p34, p10, p24, p15, p20,
+			p45, p13, m2, m5, m3, m0, m4, m1},
+			{p25, p35, p13, p10, p40, p24, p23, p15, p30, p14, p20, p45, p12,
+			p50, p34, m2, m5, m3, m1, m0, m4},
+			{p25, p35, p13, p14, p40, p20, p23, p15, p34, p10, p24, p50, p12,
+			p45, p30, m2, m5, m3, m1, m4, m0},
+			{p25, p35, p34, p40, p10, p12, p23, p45, p30, p14, p20, p15, p24,
+			p50, p13, m2, m5, m3, m4, m0, m1},
+			{p25, p35, p34, p14, p10, p20, p23, p45, p13, p40, p12, p50, p24,
+			p15, p30, m2, m5, m3, m4, m1, m0},
+			{p25, p45, p40, p10, p13, p23, p24, p50, p14, p30, p12, p35, p20,
+			p15, p34, m2, m5, m4, m0, m1, m3},
+			{p25, p45, p40, p30, p13, p12, p24, p50, p34, p10, p23, p15, p20,
+			p35, p14, m2, m5, m4, m0, m3, m1},
+			{p25, p45, p14, p10, p30, p23, p24, p15, p40, p13, p20, p35, p12,
+			p50, p34, m2, m5, m4, m1, m0, m3},
+			{p25, p45, p14, p13, p30, p20, p24, p15, p34, p10, p23, p50, p12,
+			p35, p40, m2, m5, m4, m1, m3, m0},
+			{p25, p45, p34, p30, p10, p12, p24, p35, p40, p13, p20, p15, p23,
+			p50, p14, m2, m5, m4, m3, m0, m1},
+			{p25, p45, p34, p13, p10, p20, p24, p35, p14, p30, p12, p50, p23,
+			p15, p40, m2, m5, m4, m3, m1, m0},
+			{p30, p10, p12, p24, p45, p35, p13, p20, p14, p25, p34, p50, p23,
+			p40, p15, m3, m0, m1, m2, m4, m5},
+			{p30, p10, p12, p25, p45, p34, p13, p20, p15, p24, p35, p40, p23,
+			p50, p14, m3, m0, m1, m2, m5, m4},
+			{p30, p10, p14, p24, p25, p35, p13, p40, p12, p45, p23, p50, p34,
+			p20, p15, m3, m0, m1, m4, m2, m5},
+			{p30, p10, p14, p45, p25, p23, p13, p40, p15, p24, p35, p20, p34,
+			p50, p12, m3, m0, m1, m4, m5, m2},
+			{p30, p10, p15, p25, p24, p34, p13, p50, p12, p45, p23, p40, p35,
+			p20, p14, m3, m0, m1, m5, m2, m4},
+			{p30, p10, p15, p45, p24, p23, p13, p50, p14, p25, p34, p20, p35,
+			p40, p12, m3, m0, m1, m5, m4, m2},
+			{p30, p20, p12, p14, p45, p35, p23, p10, p24, p15, p34, p50, p13,
+			p40, p25, m3, m0, m2, m1, m4, m5},
+			{p30, p20, p12, p15, p45, p34, p23, p10, p25, p14, p35, p40, p13,
+			p50, p24, m3, m0, m2, m1, m5, m4},
+			{p30, p20, p24, p14, p15, p35, p23, p40, p12, p45, p13, p50, p34,
+			p10, p25, m3, m0, m2, m4, m1, m5},
+			{p30, p20, p24, p45, p15, p13, p23, p40, p25, p14, p35, p10, p34,
+			p50, p12, m3, m0, m2, m4, m5, m1},
+			{p30, p20, p25, p15, p14, p34, p23, p50, p12, p45, p13, p40, p35,
+			p10, p24, m3, m0, m2, m5, m1, m4},
+			{p30, p20, p25, p45, p14, p13, p23, p50, p24, p15, p34, p10, p35,
+			p40, p12, m3, m0, m2, m5, m4, m1},
+			{p30, p40, p14, p12, p25, p35, p34, p10, p24, p15, p23, p50, p13,
+			p20, p45, m3, m0, m4, m1, m2, m5},
+			{p30, p40, p14, p15, p25, p23, p34, p10, p45, p12, p35, p20, p13,
+			p50, p24, m3, m0, m4, m1, m5, m2},
+			{p30, p40, p24, p12, p15, p35, p34, p20, p14, p25, p13, p50, p23,
+			p10, p45, m3, m0, m4, m2, m1, m5},
+			{p30, p40, p24, p25, p15, p13, p34, p20, p45, p12, p35, p10, p23,
+			p50, p14, m3, m0, m4, m2, m5, m1},
+			{p30, p40, p45, p15, p12, p23, p34, p50, p14, p25, p13, p20, p35,
+			p10, p24, m3, m0, m4, m5, m1, m2},
+			{p30, p40, p45, p25, p12, p13, p34, p50, p24, p15, p23, p10, p35,
+			p20, p14, m3, m0, m4, m5, m2, m1},
+			{p30, p50, p15, p12, p24, p34, p35, p10, p25, p14, p23, p40, p13,
+			p20, p45, m3, m0, m5, m1, m2, m4},
+			{p30, p50, p15, p14, p24, p23, p35, p10, p45, p12, p34, p20, p13,
+			p40, p25, m3, m0, m5, m1, m4, m2},
+			{p30, p50, p25, p12, p14, p34, p35, p20, p15, p24, p13, p40, p23,
+			p10, p45, m3, m0, m5, m2, m1, m4},
+			{p30, p50, p25, p24, p14, p13, p35, p20, p45, p12, p34, p10, p23,
+			p40, p15, m3, m0, m5, m2, m4, m1},
+			{p30, p50, p45, p14, p12, p23, p35, p40, p15, p24, p13, p20, p34,
+			p10, p25, m3, m0, m5, m4, m1, m2},
+			{p30, p50, p45, p24, p12, p13, p35, p40, p25, p14, p23, p10, p34,
+			p20, p15, m3, m0, m5, m4, m2, m1},
+			{p13, p10, p20, p24, p45, p35, p30, p12, p40, p25, p34, p15, p23,
+			p14, p50, m3, m1, m0, m2, m4, m5},
+			{p13, p10, p20, p25, p45, p34, p30, p12, p50, p24, p35, p14, p23,
+			p15, p40, m3, m1, m0, m2, m5, m4},
+			{p13, p10, p40, p24, p25, p35, p30, p14, p20, p45, p23, p15, p34,
+			p12, p50, m3, m1, m0, m4, m2, m5},
+			{p13, p10, p40, p45, p25, p23, p30, p14, p50, p24, p35, p12, p34,
+			p15, p20, m3, m1, m0, m4, m5, m2},
+			{p13, p10, p50, p25, p24, p34, p30, p15, p20, p45, p23, p14, p35,
+			p12, p40, m3, m1, m0, m5, m2, m4},
+			{p13, p10, p50, p45, p24, p23, p30, p15, p40, p25, p34, p12, p35,
+			p14, p20, m3, m1, m0, m5, m4, m2},
+			{p13, p12, p20, p40, p45, p35, p23, p10, p24, p50, p34, p15, p30,
+			p14, p25, m3, m1, m2, m0, m4, m5},
+			{p13, p12, p20, p50, p45, p34, p23, p10, p25, p40, p35, p14, p30,
+			p15, p24, m3, m1, m2, m0, m5, m4},
+			{p13, p12, p24, p40, p50, p35, p23, p14, p20, p45, p30, p15, p34,
+			p10, p25, m3, m1, m2, m4, m0, m5},
+			{p13, p12, p24, p45, p50, p30, p23, p14, p25, p40, p35, p10, p34,
+			p15, p20, m3, m1, m2, m4, m5, m0},
+			{p13, p12, p25, p50, p40, p34, p23, p15, p20, p45, p30, p14, p35,
+			p10, p24, m3, m1, m2, m5, m0, m4},
+			{p13, p12, p25, p45, p40, p30, p23, p15, p24, p50, p34, p10, p35,
+			p14, p20, m3, m1, m2, m5, m4, m0},
+			{p13, p14, p40, p20, p25, p35, p34, p10, p24, p50, p23, p15, p30,
+			p12, p45, m3, m1, m4, m0, m2, m5},
+			{p13, p14, p40, p50, p25, p23, p34, p10, p45, p20, p35, p12, p30,
+			p15, p24, m3, m1, m4, m0, m5, m2},
+			{p13, p14, p24, p20, p50, p35, p34, p12, p40, p25, p30, p15, p23,
+			p10, p45, m3, m1, m4, m2, m0, m5},
+			{p13, p14, p24, p25, p50, p30, p34, p12, p45, p20, p35, p10, p23,
+			p15, p40, m3, m1, m4, m2, m5, m0},
+			{p13, p14, p45, p50, p20, p23, p34, p15, p40, p25, p30, p12, p35,
+			p10, p24, m3, m1, m4, m5, m0, m2},
+			{p13, p14, p45, p25, p20, p30, p34, p15, p24, p50, p23, p10, p35,
+			p12, p40, m3, m1, m4, m5, m2, m0},
+			{p13, p15, p50, p20, p24, p34, p35, p10, p25, p40, p23, p14, p30,
+			p12, p45, m3, m1, m5, m0, m2, m4},
+			{p13, p15, p50, p40, p24, p23, p35, p10, p45, p20, p34, p12, p30,
+			p14, p25, m3, m1, m5, m0, m4, m2},
+			{p13, p15, p25, p20, p40, p34, p35, p12, p50, p24, p30, p14, p23,
+			p10, p45, m3, m1, m5, m2, m0, m4},
+			{p13, p15, p25, p24, p40, p30, p35, p12, p45, p20, p34, p10, p23,
+			p14, p50, m3, m1, m5, m2, m4, m0},
+			{p13, p15, p45, p40, p20, p23, p35, p14, p50, p24, p30, p12, p34,
+			p10, p25, m3, m1, m5, m4, m0, m2},
+			{p13, p15, p45, p24, p20, p30, p35, p14, p25, p40, p23, p10, p34,
+			p12, p50, m3, m1, m5, m4, m2, m0},
+			{p23, p20, p10, p14, p45, p35, p30, p12, p40, p15, p34, p25, p13,
+			p24, p50, m3, m2, m0, m1, m4, m5},
+			{p23, p20, p10, p15, p45, p34, p30, p12, p50, p14, p35, p24, p13,
+			p25, p40, m3, m2, m0, m1, m5, m4},
+			{p23, p20, p40, p14, p15, p35, p30, p24, p10, p45, p13, p25, p34,
+			p12, p50, m3, m2, m0, m4, m1, m5},
+			{p23, p20, p40, p45, p15, p13, p30, p24, p50, p14, p35, p12, p34,
+			p25, p10, m3, m2, m0, m4, m5, m1},
+			{p23, p20, p50, p15, p14, p34, p30, p25, p10, p45, p13, p24, p35,
+			p12, p40, m3, m2, m0, m5, m1, m4},
+			{p23, p20, p50, p45, p14, p13, p30, p25, p40, p15, p34, p12, p35,
+			p24, p10, m3, m2, m0, m5, m4, m1},
+			{p23, p12, p10, p40, p45, p35, p13, p20, p14, p50, p34, p25, p30,
+			p24, p15, m3, m2, m1, m0, m4, m5},
+			{p23, p12, p10, p50, p45, p34, p13, p20, p15, p40, p35, p24, p30,
+			p25, p14, m3, m2, m1, m0, m5, m4},
+			{p23, p12, p14, p40, p50, p35, p13, p24, p10, p45, p30, p25, p34,
+			p20, p15, m3, m2, m1, m4, m0, m5},
+			{p23, p12, p14, p45, p50, p30, p13, p24, p15, p40, p35, p20, p34,
+			p25, p10, m3, m2, m1, m4, m5, m0},
+			{p23, p12, p15, p50, p40, p34, p13, p25, p10, p45, p30, p24, p35,
+			p20, p14, m3, m2, m1, m5, m0, m4},
+			{p23, p12, p15, p45, p40, p30, p13, p25, p14, p50, p34, p20, p35,
+			p24, p10, m3, m2, m1, m5, m4, m0},
+			{p23, p24, p40, p10, p15, p35, p34, p20, p14, p50, p13, p25, p30,
+			p12, p45, m3, m2, m4, m0, m1, m5},
+			{p23, p24, p40, p50, p15, p13, p34, p20, p45, p10, p35, p12, p30,
+			p25, p14, m3, m2, m4, m0, m5, m1},
+			{p23, p24, p14, p10, p50, p35, p34, p12, p40, p15, p30, p25, p13,
+			p20, p45, m3, m2, m4, m1, m0, m5},
+			{p23, p24, p14, p15, p50, p30, p34, p12, p45, p10, p35, p20, p13,
+			p25, p40, m3, m2, m4, m1, m5, m0},
+			{p23, p24, p45, p50, p10, p13, p34, p25, p40, p15, p30, p12, p35,
+			p20, p14, m3, m2, m4, m5, m0, m1},
+			{p23, p24, p45, p15, p10, p30, p34, p25, p14, p50, p13, p20, p35,
+			p12, p40, m3, m2, m4, m5, m1, m0},
+			{p23, p25, p50, p10, p14, p34, p35, p20, p15, p40, p13, p24, p30,
+			p12, p45, m3, m2, m5, m0, m1, m4},
+			{p23, p25, p50, p40, p14, p13, p35, p20, p45, p10, p34, p12, p30,
+			p24, p15, m3, m2, m5, m0, m4, m1},
+			{p23, p25, p15, p10, p40, p34, p35, p12, p50, p14, p30, p24, p13,
+			p20, p45, m3, m2, m5, m1, m0, m4},
+			{p23, p25, p15, p14, p40, p30, p35, p12, p45, p10, p34, p20, p13,
+			p24, p50, m3, m2, m5, m1, m4, m0},
+			{p23, p25, p45, p40, p10, p13, p35, p24, p50, p14, p30, p12, p34,
+			p20, p15, m3, m2, m5, m4, m0, m1},
+			{p23, p25, p45, p14, p10, p30, p35, p24, p15, p40, p13, p20, p34,
+			p12, p50, m3, m2, m5, m4, m1, m0},
+			{p34, p40, p10, p12, p25, p35, p30, p14, p20, p15, p23, p45, p13,
+			p24, p50, m3, m4, m0, m1, m2, m5},
+			{p34, p40, p10, p15, p25, p23, p30, p14, p50, p12, p35, p24, p13,
+			p45, p20, m3, m4, m0, m1, m5, m2},
+			{p34, p40, p20, p12, p15, p35, p30, p24, p10, p25, p13, p45, p23,
+			p14, p50, m3, m4, m0, m2, m1, m5},
+			{p34, p40, p20, p25, p15, p13, p30, p24, p50, p12, p35, p14, p23,
+			p45, p10, m3, m4, m0, m2, m5, m1},
+			{p34, p40, p50, p15, p12, p23, p30, p45, p10, p25, p13, p24, p35,
+			p14, p20, m3, m4, m0, m5, m1, m2},
+			{p34, p40, p50, p25, p12, p13, p30, p45, p20, p15, p23, p14, p35,
+			p24, p10, m3, m4, m0, m5, m2, m1},
+			{p34, p14, p10, p20, p25, p35, p13, p40, p12, p50, p23, p45, p30,
+			p24, p15, m3, m4, m1, m0, m2, m5},
+			{p34, p14, p10, p50, p25, p23, p13, p40, p15, p20, p35, p24, p30,
+			p45, p12, m3, m4, m1, m0, m5, m2},
+			{p34, p14, p12, p20, p50, p35, p13, p24, p10, p25, p30, p45, p23,
+			p40, p15, m3, m4, m1, m2, m0, m5},
+			{p34, p14, p12, p25, p50, p30, p13, p24, p15, p20, p35, p40, p23,
+			p45, p10, m3, m4, m1, m2, m5, m0},
+			{p34, p14, p15, p50, p20, p23, p13, p45, p10, p25, p30, p24, p35,
+			p40, p12, m3, m4, m1, m5, m0, m2},
+			{p34, p14, p15, p25, p20, p30, p13, p45, p12, p50, p23, p40, p35,
+			p24, p10, m3, m4, m1, m5, m2, m0},
+			{p34, p24, p20, p10, p15, p35, p23, p40, p12, p50, p13, p45, p30,
+			p14, p25, m3, m4, m2, m0, m1, m5},
+			{p34, p24, p20, p50, p15, p13, p23, p40, p25, p10, p35, p14, p30,
+			p45, p12, m3, m4, m2, m0, m5, m1},
+			{p34, p24, p12, p10, p50, p35, p23, p14, p20, p15, p30, p45, p13,
+			p40, p25, m3, m4, m2, m1, m0, m5},
+			{p34, p24, p12, p15, p50, p30, p23, p14, p25, p10, p35, p40, p13,
+			p45, p20, m3, m4, m2, m1, m5, m0},
+			{p34, p24, p25, p50, p10, p13, p23, p45, p20, p15, p30, p14, p35,
+			p40, p12, m3, m4, m2, m5, m0, m1},
+			{p34, p24, p25, p15, p10, p30, p23, p45, p12, p50, p13, p40, p35,
+			p14, p20, m3, m4, m2, m5, m1, m0},
+			{p34, p45, p50, p10, p12, p23, p35, p40, p15, p20, p13, p24, p30,
+			p14, p25, m3, m4, m5, m0, m1, m2},
+			{p34, p45, p50, p20, p12, p13, p35, p40, p25, p10, p23, p14, p30,
+			p24, p15, m3, m4, m5, m0, m2, m1},
+			{p34, p45, p15, p10, p20, p23, p35, p14, p50, p12, p30, p24, p13,
+			p40, p25, m3, m4, m5, m1, m0, m2},
+			{p34, p45, p15, p12, p20, p30, p35, p14, p25, p10, p23, p40, p13,
+			p24, p50, m3, m4, m5, m1, m2, m0},
+			{p34, p45, p25, p20, p10, p13, p35, p24, p50, p12, p30, p14, p23,
+			p40, p15, m3, m4, m5, m2, m0, m1},
+			{p34, p45, p25, p12, p10, p30, p35, p24, p15, p20, p13, p40, p23,
+			p14, p50, m3, m4, m5, m2, m1, m0},
+			{p35, p50, p10, p12, p24, p34, p30, p15, p20, p14, p23, p45, p13,
+			p25, p40, m3, m5, m0, m1, m2, m4},
+			{p35, p50, p10, p14, p24, p23, p30, p15, p40, p12, p34, p25, p13,
+			p45, p20, m3, m5, m0, m1, m4, m2},
+			{p35, p50, p20, p12, p14, p34, p30, p25, p10, p24, p13, p45, p23,
+			p15, p40, m3, m5, m0, m2, m1, m4},
+			{p35, p50, p20, p24, p14, p13, p30, p25, p40, p12, p34, p15, p23,
+			p45, p10, m3, m5, m0, m2, m4, m1},
+			{p35, p50, p40, p14, p12, p23, p30, p45, p10, p24, p13, p25, p34,
+			p15, p20, m3, m5, m0, m4, m1, m2},
+			{p35, p50, p40, p24, p12, p13, p30, p45, p20, p14, p23, p15, p34,
+			p25, p10, m3, m5, m0, m4, m2, m1},
+			{p35, p15, p10, p20, p24, p34, p13, p50, p12, p40, p23, p45, p30,
+			p25, p14, m3, m5, m1, m0, m2, m4},
+			{p35, p15, p10, p40, p24, p23, p13, p50, p14, p20, p34, p25, p30,
+			p45, p12, m3, m5, m1, m0, m4, m2},
+			{p35, p15, p12, p20, p40, p34, p13, p25, p10, p24, p30, p45, p23,
+			p50, p14, m3, m5, m1, m2, m0, m4},
+			{p35, p15, p12, p24, p40, p30, p13, p25, p14, p20, p34, p50, p23,
+			p45, p10, m3, m5, m1, m2, m4, m0},
+			{p35, p15, p14, p40, p20, p23, p13, p45, p10, p24, p30, p25, p34,
+			p50, p12, m3, m5, m1, m4, m0, m2},
+			{p35, p15, p14, p24, p20, p30, p13, p45, p12, p40, p23, p50, p34,
+			p25, p10, m3, m5, m1, m4, m2, m0},
+			{p35, p25, p20, p10, p14, p34, p23, p50, p12, p40, p13, p45, p30,
+			p15, p24, m3, m5, m2, m0, m1, m4},
+			{p35, p25, p20, p40, p14, p13, p23, p50, p24, p10, p34, p15, p30,
+			p45, p12, m3, m5, m2, m0, m4, m1},
+			{p35, p25, p12, p10, p40, p34, p23, p15, p20, p14, p30, p45, p13,
+			p50, p24, m3, m5, m2, m1, m0, m4},
+			{p35, p25, p12, p14, p40, p30, p23, p15, p24, p10, p34, p50, p13,
+			p45, p20, m3, m5, m2, m1, m4, m0},
+			{p35, p25, p24, p40, p10, p13, p23, p45, p20, p14, p30, p15, p34,
+			p50, p12, m3, m5, m2, m4, m0, m1},
+			{p35, p25, p24, p14, p10, p30, p23, p45, p12, p40, p13, p50, p34,
+			p15, p20, m3, m5, m2, m4, m1, m0},
+			{p35, p45, p40, p10, p12, p23, p34, p50, p14, p20, p13, p25, p30,
+			p15, p24, m3, m5, m4, m0, m1, m2},
+			{p35, p45, p40, p20, p12, p13, p34, p50, p24, p10, p23, p15, p30,
+			p25, p14, m3, m5, m4, m0, m2, m1},
+			{p35, p45, p14, p10, p20, p23, p34, p15, p40, p12, p30, p25, p13,
+			p50, p24, m3, m5, m4, m1, m0, m2},
+			{p35, p45, p14, p12, p20, p30, p34, p15, p24, p10, p23, p50, p13,
+			p25, p40, m3, m5, m4, m1, m2, m0},
+			{p35, p45, p24, p20, p10, p13, p34, p25, p40, p12, p30, p15, p23,
+			p50, p14, m3, m5, m4, m2, m0, m1},
+			{p35, p45, p24, p12, p10, p30, p34, p25, p14, p20, p13, p50, p23,
+			p15, p40, m3, m5, m4, m2, m1, m0},
+			{p40, p10, p12, p23, p35, p45, p14, p20, p13, p25, p34, p50, p24,
+			p30, p15, m4, m0, m1, m2, m3, m5},
+			{p40, p10, p12, p25, p35, p34, p14, p20, p15, p23, p45, p30, p24,
+			p50, p13, m4, m0, m1, m2, m5, m3},
+			{p40, p10, p13, p23, p25, p45, p14, p30, p12, p35, p24, p50, p34,
+			p20, p15, m4, m0, m1, m3, m2, m5},
+			{p40, p10, p13, p35, p25, p24, p14, p30, p15, p23, p45, p20, p34,
+			p50, p12, m4, m0, m1, m3, m5, m2},
+			{p40, p10, p15, p25, p23, p34, p14, p50, p12, p35, p24, p30, p45,
+			p20, p13, m4, m0, m1, m5, m2, m3},
+			{p40, p10, p15, p35, p23, p24, p14, p50, p13, p25, p34, p20, p45,
+			p30, p12, m4, m0, m1, m5, m3, m2},
+			{p40, p20, p12, p13, p35, p45, p24, p10, p23, p15, p34, p50, p14,
+			p30, p25, m4, m0, m2, m1, m3, m5},
+			{p40, p20, p12, p15, p35, p34, p24, p10, p25, p13, p45, p30, p14,
+			p50, p23, m4, m0, m2, m1, m5, m3},
+			{p40, p20, p23, p13, p15, p45, p24, p30, p12, p35, p14, p50, p34,
+			p10, p25, m4, m0, m2, m3, m1, m5},
+			{p40, p20, p23, p35, p15, p14, p24, p30, p25, p13, p45, p10, p34,
+			p50, p12, m4, m0, m2, m3, m5, m1},
+			{p40, p20, p25, p15, p13, p34, p24, p50, p12, p35, p14, p30, p45,
+			p10, p23, m4, m0, m2, m5, m1, m3},
+			{p40, p20, p25, p35, p13, p14, p24, p50, p23, p15, p34, p10, p45,
+			p30, p12, m4, m0, m2, m5, m3, m1},
+			{p40, p30, p13, p12, p25, p45, p34, p10, p23, p15, p24, p50, p14,
+			p20, p35, m4, m0, m3, m1, m2, m5},
+			{p40, p30, p13, p15, p25, p24, p34, p10, p35, p12, p45, p20, p14,
+			p50, p23, m4, m0, m3, m1, m5, m2},
+			{p40, p30, p23, p12, p15, p45, p34, p20, p13, p25, p14, p50, p24,
+			p10, p35, m4, m0, m3, m2, m1, m5},
+			{p40, p30, p23, p25, p15, p14, p34, p20, p35, p12, p45, p10, p24,
+			p50, p13, m4, m0, m3, m2, m5, m1},
+			{p40, p30, p35, p15, p12, p24, p34, p50, p13, p25, p14, p20, p45,
+			p10, p23, m4, m0, m3, m5, m1, m2},
+			{p40, p30, p35, p25, p12, p14, p34, p50, p23, p15, p24, p10, p45,
+			p20, p13, m4, m0, m3, m5, m2, m1},
+			{p40, p50, p15, p12, p23, p34, p45, p10, p25, p13, p24, p30, p14,
+			p20, p35, m4, m0, m5, m1, m2, m3},
+			{p40, p50, p15, p13, p23, p24, p45, p10, p35, p12, p34, p20, p14,
+			p30, p25, m4, m0, m5, m1, m3, m2},
+			{p40, p50, p25, p12, p13, p34, p45, p20, p15, p23, p14, p30, p24,
+			p10, p35, m4, m0, m5, m2, m1, m3},
+			{p40, p50, p25, p23, p13, p14, p45, p20, p35, p12, p34, p10, p24,
+			p30, p15, m4, m0, m5, m2, m3, m1},
+			{p40, p50, p35, p13, p12, p24, p45, p30, p15, p23, p14, p20, p34,
+			p10, p25, m4, m0, m5, m3, m1, m2},
+			{p40, p50, p35, p23, p12, p14, p45, p30, p25, p13, p24, p10, p34,
+			p20, p15, m4, m0, m5, m3, m2, m1},
+			{p14, p10, p20, p23, p35, p45, p40, p12, p30, p25, p34, p15, p24,
+			p13, p50, m4, m1, m0, m2, m3, m5},
+			{p14, p10, p20, p25, p35, p34, p40, p12, p50, p23, p45, p13, p24,
+			p15, p30, m4, m1, m0, m2, m5, m3},
+			{p14, p10, p30, p23, p25, p45, p40, p13, p20, p35, p24, p15, p34,
+			p12, p50, m4, m1, m0, m3, m2, m5},
+			{p14, p10, p30, p35, p25, p24, p40, p13, p50, p23, p45, p12, p34,
+			p15, p20, m4, m1, m0, m3, m5, m2},
+			{p14, p10, p50, p25, p23, p34, p40, p15, p20, p35, p24, p13, p45,
+			p12, p30, m4, m1, m0, m5, m2, m3},
+			{p14, p10, p50, p35, p23, p24, p40, p15, p30, p25, p34, p12, p45,
+			p13, p20, m4, m1, m0, m5, m3, m2},
+			{p14, p12, p20, p30, p35, p45, p24, p10, p23, p50, p34, p15, p40,
+			p13, p25, m4, m1, m2, m0, m3, m5},
+			{p14, p12, p20, p50, p35, p34, p24, p10, p25, p30, p45, p13, p40,
+			p15, p23, m4, m1, m2, m0, m5, m3},
+			{p14, p12, p23, p30, p50, p45, p24, p13, p20, p35, p40, p15, p34,
+			p10, p25, m4, m1, m2, m3, m0, m5},
+			{p14, p12, p23, p35, p50, p40, p24, p13, p25, p30, p45, p10, p34,
+			p15, p20, m4, m1, m2, m3, m5, m0},
+			{p14, p12, p25, p50, p30, p34, p24, p15, p20, p35, p40, p13, p45,
+			p10, p23, m4, m1, m2, m5, m0, m3},
+			{p14, p12, p25, p35, p30, p40, p24, p15, p23, p50, p34, p10, p45,
+			p13, p20, m4, m1, m2, m5, m3, m0},
+			{p14, p13, p30, p20, p25, p45, p34, p10, p23, p50, p24, p15, p40,
+			p12, p35, m4, m1, m3, m0, m2, m5},
+			{p14, p13, p30, p50, p25, p24, p34, p10, p35, p20, p45, p12, p40,
+			p15, p23, m4, m1, m3, m0, m5, m2},
+			{p14, p13, p23, p20, p50, p45, p34, p12, p30, p25, p40, p15, p24,
+			p10, p35, m4, m1, m3, m2, m0, m5},
+			{p14, p13, p23, p25, p50, p40, p34, p12, p35, p20, p45, p10, p24,
+			p15, p30, m4, m1, m3, m2, m5, m0},
+			{p14, p13, p35, p50, p20, p24, p34, p15, p30, p25, p40, p12, p45,
+			p10, p23, m4, m1, m3, m5, m0, m2},
+			{p14, p13, p35, p25, p20, p40, p34, p15, p23, p50, p24, p10, p45,
+			p12, p30, m4, m1, m3, m5, m2, m0},
+			{p14, p15, p50, p20, p23, p34, p45, p10, p25, p30, p24, p13, p40,
+			p12, p35, m4, m1, m5, m0, m2, m3},
+			{p14, p15, p50, p30, p23, p24, p45, p10, p35, p20, p34, p12, p40,
+			p13, p25, m4, m1, m5, m0, m3, m2},
+			{p14, p15, p25, p20, p30, p34, p45, p12, p50, p23, p40, p13, p24,
+			p10, p35, m4, m1, m5, m2, m0, m3},
+			{p14, p15, p25, p23, p30, p40, p45, p12, p35, p20, p34, p10, p24,
+			p13, p50, m4, m1, m5, m2, m3, m0},
+			{p14, p15, p35, p30, p20, p24, p45, p13, p50, p23, p40, p12, p34,
+			p10, p25, m4, m1, m5, m3, m0, m2},
+			{p14, p15, p35, p23, p20, p40, p45, p13, p25, p30, p24, p10, p34,
+			p12, p50, m4, m1, m5, m3, m2, m0},
+			{p24, p20, p10, p13, p35, p45, p40, p12, p30, p15, p34, p25, p14,
+			p23, p50, m4, m2, m0, m1, m3, m5},
+			{p24, p20, p10, p15, p35, p34, p40, p12, p50, p13, p45, p23, p14,
+			p25, p30, m4, m2, m0, m1, m5, m3},
+			{p24, p20, p30, p13, p15, p45, p40, p23, p10, p35, p14, p25, p34,
+			p12, p50, m4, m2, m0, m3, m1, m5},
+			{p24, p20, p30, p35, p15, p14, p40, p23, p50, p13, p45, p12, p34,
+			p25, p10, m4, m2, m0, m3, m5, m1},
+			{p24, p20, p50, p15, p13, p34, p40, p25, p10, p35, p14, p23, p45,
+			p12, p30, m4, m2, m0, m5, m1, m3},
+			{p24, p20, p50, p35, p13, p14, p40, p25, p30, p15, p34, p12, p45,
+			p23, p10, m4, m2, m0, m5, m3, m1},
+			{p24, p12, p10, p30, p35, p45, p14, p20, p13, p50, p34, p25, p40,
+			p23, p15, m4, m2, m1, m0, m3, m5},
+			{p24, p12, p10, p50, p35, p34, p14, p20, p15, p30, p45, p23, p40,
+			p25, p13, m4, m2, m1, m0, m5, m3},
+			{p24, p12, p13, p30, p50, p45, p14, p23, p10, p35, p40, p25, p34,
+			p20, p15, m4, m2, m1, m3, m0, m5},
+			{p24, p12, p13, p35, p50, p40, p14, p23, p15, p30, p45, p20, p34,
+			p25, p10, m4, m2, m1, m3, m5, m0},
+			{p24, p12, p15, p50, p30, p34, p14, p25, p10, p35, p40, p23, p45,
+			p20, p13, m4, m2, m1, m5, m0, m3},
+			{p24, p12, p15, p35, p30, p40, p14, p25, p13, p50, p34, p20, p45,
+			p23, p10, m4, m2, m1, m5, m3, m0},
+			{p24, p23, p30, p10, p15, p45, p34, p20, p13, p50, p14, p25, p40,
+			p12, p35, m4, m2, m3, m0, m1, m5},
+			{p24, p23, p30, p50, p15, p14, p34, p20, p35, p10, p45, p12, p40,
+			p25, p13, m4, m2, m3, m0, m5, m1},
+			{p24, p23, p13, p10, p50, p45, p34, p12, p30, p15, p40, p25, p14,
+			p20, p35, m4, m2, m3, m1, m0, m5},
+			{p24, p23, p13, p15, p50, p40, p34, p12, p35, p10, p45, p20, p14,
+			p25, p30, m4, m2, m3, m1, m5, m0},
+			{p24, p23, p35, p50, p10, p14, p34, p25, p30, p15, p40, p12, p45,
+			p20, p13, m4, m2, m3, m5, m0, m1},
+			{p24, p23, p35, p15, p10, p40, p34, p25, p13, p50, p14, p20, p45,
+			p12, p30, m4, m2, m3, m5, m1, m0},
+			{p24, p25, p50, p10, p13, p34, p45, p20, p15, p30, p14, p23, p40,
+			p12, p35, m4, m2, m5, m0, m1, m3},
+			{p24, p25, p50, p30, p13, p14, p45, p20, p35, p10, p34, p12, p40,
+			p23, p15, m4, m2, m5, m0, m3, m1},
+			{p24, p25, p15, p10, p30, p34, p45, p12, p50, p13, p40, p23, p14,
+			p20, p35, m4, m2, m5, m1, m0, m3},
+			{p24, p25, p15, p13, p30, p40, p45, p12, p35, p10, p34, p20, p14,
+			p23, p50, m4, m2, m5, m1, m3, m0},
+			{p24, p25, p35, p30, p10, p14, p45, p23, p50, p13, p40, p12, p34,
+			p20, p15, m4, m2, m5, m3, m0, m1},
+			{p24, p25, p35, p13, p10, p40, p45, p23, p15, p30, p14, p20, p34,
+			p12, p50, m4, m2, m5, m3, m1, m0},
+			{p34, p30, p10, p12, p25, p45, p40, p13, p20, p15, p24, p35, p14,
+			p23, p50, m4, m3, m0, m1, m2, m5},
+			{p34, p30, p10, p15, p25, p24, p40, p13, p50, p12, p45, p23, p14,
+			p35, p20, m4, m3, m0, m1, m5, m2},
+			{p34, p30, p20, p12, p15, p45, p40, p23, p10, p25, p14, p35, p24,
+			p13, p50, m4, m3, m0, m2, m1, m5},
+			{p34, p30, p20, p25, p15, p14, p40, p23, p50, p12, p45, p13, p24,
+			p35, p10, m4, m3, m0, m2, m5, m1},
+			{p34, p30, p50, p15, p12, p24, p40, p35, p10, p25, p14, p23, p45,
+			p13, p20, m4, m3, m0, m5, m1, m2},
+			{p34, p30, p50, p25, p12, p14, p40, p35, p20, p15, p24, p13, p45,
+			p23, p10, m4, m3, m0, m5, m2, m1},
+			{p34, p13, p10, p20, p25, p45, p14, p30, p12, p50, p24, p35, p40,
+			p23, p15, m4, m3, m1, m0, m2, m5},
+			{p34, p13, p10, p50, p25, p24, p14, p30, p15, p20, p45, p23, p40,
+			p35, p12, m4, m3, m1, m0, m5, m2},
+			{p34, p13, p12, p20, p50, p45, p14, p23, p10, p25, p40, p35, p24,
+			p30, p15, m4, m3, m1, m2, m0, m5},
+			{p34, p13, p12, p25, p50, p40, p14, p23, p15, p20, p45, p30, p24,
+			p35, p10, m4, m3, m1, m2, m5, m0},
+			{p34, p13, p15, p50, p20, p24, p14, p35, p10, p25, p40, p23, p45,
+			p30, p12, m4, m3, m1, m5, m0, m2},
+			{p34, p13, p15, p25, p20, p40, p14, p35, p12, p50, p24, p30, p45,
+			p23, p10, m4, m3, m1, m5, m2, m0},
+			{p34, p23, p20, p10, p15, p45, p24, p30, p12, p50, p14, p35, p40,
+			p13, p25, m4, m3, m2, m0, m1, m5},
+			{p34, p23, p20, p50, p15, p14, p24, p30, p25, p10, p45, p13, p40,
+			p35, p12, m4, m3, m2, m0, m5, m1},
+			{p34, p23, p12, p10, p50, p45, p24, p13, p20, p15, p40, p35, p14,
+			p30, p25, m4, m3, m2, m1, m0, m5},
+			{p34, p23, p12, p15, p50, p40, p24, p13, p25, p10, p45, p30, p14,
+			p35, p20, m4, m3, m2, m1, m5, m0},
+			{p34, p23, p25, p50, p10, p14, p24, p35, p20, p15, p40, p13, p45,
+			p30, p12, m4, m3, m2, m5, m0, m1},
+			{p34, p23, p25, p15, p10, p40, p24, p35, p12, p50, p14, p30, p45,
+			p13, p20, m4, m3, m2, m5, m1, m0},
+			{p34, p35, p50, p10, p12, p24, p45, p30, p15, p20, p14, p23, p40,
+			p13, p25, m4, m3, m5, m0, m1, m2},
+			{p34, p35, p50, p20, p12, p14, p45, p30, p25, p10, p24, p13, p40,
+			p23, p15, m4, m3, m5, m0, m2, m1},
+			{p34, p35, p15, p10, p20, p24, p45, p13, p50, p12, p40, p23, p14,
+			p30, p25, m4, m3, m5, m1, m0, m2},
+			{p34, p35, p15, p12, p20, p40, p45, p13, p25, p10, p24, p30, p14,
+			p23, p50, m4, m3, m5, m1, m2, m0},
+			{p34, p35, p25, p20, p10, p14, p45, p23, p50, p12, p40, p13, p24,
+			p30, p15, m4, m3, m5, m2, m0, m1},
+			{p34, p35, p25, p12, p10, p40, p45, p23, p15, p20, p14, p30, p24,
+			p13, p50, m4, m3, m5, m2, m1, m0},
+			{p45, p50, p10, p12, p23, p34, p40, p15, p20, p13, p24, p35, p14,
+			p25, p30, m4, m5, m0, m1, m2, m3},
+			{p45, p50, p10, p13, p23, p24, p40, p15, p30, p12, p34, p25, p14,
+			p35, p20, m4, m5, m0, m1, m3, m2},
+			{p45, p50, p20, p12, p13, p34, p40, p25, p10, p23, p14, p35, p24,
+			p15, p30, m4, m5, m0, m2, m1, m3},
+			{p45, p50, p20, p23, p13, p14, p40, p25, p30, p12, p34, p15, p24,
+			p35, p10, m4, m5, m0, m2, m3, m1},
+			{p45, p50, p30, p13, p12, p24, p40, p35, p10, p23, p14, p25, p34,
+			p15, p20, m4, m5, m0, m3, m1, m2},
+			{p45, p50, p30, p23, p12, p14, p40, p35, p20, p13, p24, p15, p34,
+			p25, p10, m4, m5, m0, m3, m2, m1},
+			{p45, p15, p10, p20, p23, p34, p14, p50, p12, p30, p24, p35, p40,
+			p25, p13, m4, m5, m1, m0, m2, m3},
+			{p45, p15, p10, p30, p23, p24, p14, p50, p13, p20, p34, p25, p40,
+			p35, p12, m4, m5, m1, m0, m3, m2},
+			{p45, p15, p12, p20, p30, p34, p14, p25, p10, p23, p40, p35, p24,
+			p50, p13, m4, m5, m1, m2, m0, m3},
+			{p45, p15, p12, p23, p30, p40, p14, p25, p13, p20, p34, p50, p24,
+			p35, p10, m4, m5, m1, m2, m3, m0},
+			{p45, p15, p13, p30, p20, p24, p14, p35, p10, p23, p40, p25, p34,
+			p50, p12, m4, m5, m1, m3, m0, m2},
+			{p45, p15, p13, p23, p20, p40, p14, p35, p12, p30, p24, p50, p34,
+			p25, p10, m4, m5, m1, m3, m2, m0},
+			{p45, p25, p20, p10, p13, p34, p24, p50, p12, p30, p14, p35, p40,
+			p15, p23, m4, m5, m2, m0, m1, m3},
+			{p45, p25, p20, p30, p13, p14, p24, p50, p23, p10, p34, p15, p40,
+			p35, p12, m4, m5, m2, m0, m3, m1},
+			{p45, p25, p12, p10, p30, p34, p24, p15, p20, p13, p40, p35, p14,
+			p50, p23, m4, m5, m2, m1, m0, m3},
+			{p45, p25, p12, p13, p30, p40, p24, p15, p23, p10, p34, p50, p14,
+			p35, p20, m4, m5, m2, m1, m3, m0},
+			{p45, p25, p23, p30, p10, p14, p24, p35, p20, p13, p40, p15, p34,
+			p50, p12, m4, m5, m2, m3, m0, m1},
+			{p45, p25, p23, p13, p10, p40, p24, p35, p12, p30, p14, p50, p34,
+			p15, p20, m4, m5, m2, m3, m1, m0},
+			{p45, p35, p30, p10, p12, p24, p34, p50, p13, p20, p14, p25, p40,
+			p15, p23, m4, m5, m3, m0, m1, m2},
+			{p45, p35, p30, p20, p12, p14, p34, p50, p23, p10, p24, p15, p40,
+			p25, p13, m4, m5, m3, m0, m2, m1},
+			{p45, p35, p13, p10, p20, p24, p34, p15, p30, p12, p40, p25, p14,
+			p50, p23, m4, m5, m3, m1, m0, m2},
+			{p45, p35, p13, p12, p20, p40, p34, p15, p23, p10, p24, p50, p14,
+			p25, p30, m4, m5, m3, m1, m2, m0},
+			{p45, p35, p23, p20, p10, p14, p34, p25, p30, p12, p40, p15, p24,
+			p50, p13, m4, m5, m3, m2, m0, m1},
+			{p45, p35, p23, p12, p10, p40, p34, p25, p13, p20, p14, p50, p24,
+			p15, p30, m4, m5, m3, m2, m1, m0},
+			{p50, p10, p12, p23, p34, p45, p15, p20, p13, p24, p35, p40, p25,
+			p30, p14, m5, m0, m1, m2, m3, m4},
+			{p50, p10, p12, p24, p34, p35, p15, p20, p14, p23, p45, p30, p25,
+			p40, p13, m5, m0, m1, m2, m4, m3},
+			{p50, p10, p13, p23, p24, p45, p15, p30, p12, p34, p25, p40, p35,
+			p20, p14, m5, m0, m1, m3, m2, m4},
+			{p50, p10, p13, p34, p24, p25, p15, p30, p14, p23, p45, p20, p35,
+			p40, p12, m5, m0, m1, m3, m4, m2},
+			{p50, p10, p14, p24, p23, p35, p15, p40, p12, p34, p25, p30, p45,
+			p20, p13, m5, m0, m1, m4, m2, m3},
+			{p50, p10, p14, p34, p23, p25, p15, p40, p13, p24, p35, p20, p45,
+			p30, p12, m5, m0, m1, m4, m3, m2},
+			{p50, p20, p12, p13, p34, p45, p25, p10, p23, p14, p35, p40, p15,
+			p30, p24, m5, m0, m2, m1, m3, m4},
+			{p50, p20, p12, p14, p34, p35, p25, p10, p24, p13, p45, p30, p15,
+			p40, p23, m5, m0, m2, m1, m4, m3},
+			{p50, p20, p23, p13, p14, p45, p25, p30, p12, p34, p15, p40, p35,
+			p10, p24, m5, m0, m2, m3, m1, m4},
+			{p50, p20, p23, p34, p14, p15, p25, p30, p24, p13, p45, p10, p35,
+			p40, p12, m5, m0, m2, m3, m4, m1},
+			{p50, p20, p24, p14, p13, p35, p25, p40, p12, p34, p15, p30, p45,
+			p10, p23, m5, m0, m2, m4, m1, m3},
+			{p50, p20, p24, p34, p13, p15, p25, p40, p23, p14, p35, p10, p45,
+			p30, p12, m5, m0, m2, m4, m3, m1},
+			{p50, p30, p13, p12, p24, p45, p35, p10, p23, p14, p25, p40, p15,
+			p20, p34, m5, m0, m3, m1, m2, m4},
+			{p50, p30, p13, p14, p24, p25, p35, p10, p34, p12, p45, p20, p15,
+			p40, p23, m5, m0, m3, m1, m4, m2},
+			{p50, p30, p23, p12, p14, p45, p35, p20, p13, p24, p15, p40, p25,
+			p10, p34, m5, m0, m3, m2, m1, m4},
+			{p50, p30, p23, p24, p14, p15, p35, p20, p34, p12, p45, p10, p25,
+			p40, p13, m5, m0, m3, m2, m4, m1},
+			{p50, p30, p34, p14, p12, p25, p35, p40, p13, p24, p15, p20, p45,
+			p10, p23, m5, m0, m3, m4, m1, m2},
+			{p50, p30, p34, p24, p12, p15, p35, p40, p23, p14, p25, p10, p45,
+			p20, p13, m5, m0, m3, m4, m2, m1},
+			{p50, p40, p14, p12, p23, p35, p45, p10, p24, p13, p25, p30, p15,
+			p20, p34, m5, m0, m4, m1, m2, m3},
+			{p50, p40, p14, p13, p23, p25, p45, p10, p34, p12, p35, p20, p15,
+			p30, p24, m5, m0, m4, m1, m3, m2},
+			{p50, p40, p24, p12, p13, p35, p45, p20, p14, p23, p15, p30, p25,
+			p10, p34, m5, m0, m4, m2, m1, m3},
+			{p50, p40, p24, p23, p13, p15, p45, p20, p34, p12, p35, p10, p25,
+			p30, p14, m5, m0, m4, m2, m3, m1},
+			{p50, p40, p34, p13, p12, p25, p45, p30, p14, p23, p15, p20, p35,
+			p10, p24, m5, m0, m4, m3, m1, m2},
+			{p50, p40, p34, p23, p12, p15, p45, p30, p24, p13, p25, p10, p35,
+			p20, p14, m5, m0, m4, m3, m2, m1},
+			{p15, p10, p20, p23, p34, p45, p50, p12, p30, p24, p35, p14, p25,
+			p13, p40, m5, m1, m0, m2, m3, m4},
+			{p15, p10, p20, p24, p34, p35, p50, p12, p40, p23, p45, p13, p25,
+			p14, p30, m5, m1, m0, m2, m4, m3},
+			{p15, p10, p30, p23, p24, p45, p50, p13, p20, p34, p25, p14, p35,
+			p12, p40, m5, m1, m0, m3, m2, m4},
+			{p15, p10, p30, p34, p24, p25, p50, p13, p40, p23, p45, p12, p35,
+			p14, p20, m5, m1, m0, m3, m4, m2},
+			{p15, p10, p40, p24, p23, p35, p50, p14, p20, p34, p25, p13, p45,
+			p12, p30, m5, m1, m0, m4, m2, m3},
+			{p15, p10, p40, p34, p23, p25, p50, p14, p30, p24, p35, p12, p45,
+			p13, p20, m5, m1, m0, m4, m3, m2},
+			{p15, p12, p20, p30, p34, p45, p25, p10, p23, p40, p35, p14, p50,
+			p13, p24, m5, m1, m2, m0, m3, m4},
+			{p15, p12, p20, p40, p34, p35, p25, p10, p24, p30, p45, p13, p50,
+			p14, p23, m5, m1, m2, m0, m4, m3},
+			{p15, p12, p23, p30, p40, p45, p25, p13, p20, p34, p50, p14, p35,
+			p10, p24, m5, m1, m2, m3, m0, m4},
+			{p15, p12, p23, p34, p40, p50, p25, p13, p24, p30, p45, p10, p35,
+			p14, p20, m5, m1, m2, m3, m4, m0},
+			{p15, p12, p24, p40, p30, p35, p25, p14, p20, p34, p50, p13, p45,
+			p10, p23, m5, m1, m2, m4, m0, m3},
+			{p15, p12, p24, p34, p30, p50, p25, p14, p23, p40, p35, p10, p45,
+			p13, p20, m5, m1, m2, m4, m3, m0},
+			{p15, p13, p30, p20, p24, p45, p35, p10, p23, p40, p25, p14, p50,
+			p12, p34, m5, m1, m3, m0, m2, m4},
+			{p15, p13, p30, p40, p24, p25, p35, p10, p34, p20, p45, p12, p50,
+			p14, p23, m5, m1, m3, m0, m4, m2},
+			{p15, p13, p23, p20, p40, p45, p35, p12, p30, p24, p50, p14, p25,
+			p10, p34, m5, m1, m3, m2, m0, m4},
+			{p15, p13, p23, p24, p40, p50, p35, p12, p34, p20, p45, p10, p25,
+			p14, p30, m5, m1, m3, m2, m4, m0},
+			{p15, p13, p34, p40, p20, p25, p35, p14, p30, p24, p50, p12, p45,
+			p10, p23, m5, m1, m3, m4, m0, m2},
+			{p15, p13, p34, p24, p20, p50, p35, p14, p23, p40, p25, p10, p45,
+			p12, p30, m5, m1, m3, m4, m2, m0},
+			{p15, p14, p40, p20, p23, p35, p45, p10, p24, p30, p25, p13, p50,
+			p12, p34, m5, m1, m4, m0, m2, m3},
+			{p15, p14, p40, p30, p23, p25, p45, p10, p34, p20, p35, p12, p50,
+			p13, p24, m5, m1, m4, m0, m3, m2},
+			{p15, p14, p24, p20, p30, p35, p45, p12, p40, p23, p50, p13, p25,
+			p10, p34, m5, m1, m4, m2, m0, m3},
+			{p15, p14, p24, p23, p30, p50, p45, p12, p34, p20, p35, p10, p25,
+			p13, p40, m5, m1, m4, m2, m3, m0},
+			{p15, p14, p34, p30, p20, p25, p45, p13, p40, p23, p50, p12, p35,
+			p10, p24, m5, m1, m4, m3, m0, m2},
+			{p15, p14, p34, p23, p20, p50, p45, p13, p24, p30, p25, p10, p35,
+			p12, p40, m5, m1, m4, m3, m2, m0},
+			{p25, p20, p10, p13, p34, p45, p50, p12, p30, p14, p35, p24, p15,
+			p23, p40, m5, m2, m0, m1, m3, m4},
+			{p25, p20, p10, p14, p34, p35, p50, p12, p40, p13, p45, p23, p15,
+			p24, p30, m5, m2, m0, m1, m4, m3},
+			{p25, p20, p30, p13, p14, p45, p50, p23, p10, p34, p15, p24, p35,
+			p12, p40, m5, m2, m0, m3, m1, m4},
+			{p25, p20, p30, p34, p14, p15, p50, p23, p40, p13, p45, p12, p35,
+			p24, p10, m5, m2, m0, m3, m4, m1},
+			{p25, p20, p40, p14, p13, p35, p50, p24, p10, p34, p15, p23, p45,
+			p12, p30, m5, m2, m0, m4, m1, m3},
+			{p25, p20, p40, p34, p13, p15, p50, p24, p30, p14, p35, p12, p45,
+			p23, p10, m5, m2, m0, m4, m3, m1},
+			{p25, p12, p10, p30, p34, p45, p15, p20, p13, p40, p35, p24, p50,
+			p23, p14, m5, m2, m1, m0, m3, m4},
+			{p25, p12, p10, p40, p34, p35, p15, p20, p14, p30, p45, p23, p50,
+			p24, p13, m5, m2, m1, m0, m4, m3},
+			{p25, p12, p13, p30, p40, p45, p15, p23, p10, p34, p50, p24, p35,
+			p20, p14, m5, m2, m1, m3, m0, m4},
+			{p25, p12, p13, p34, p40, p50, p15, p23, p14, p30, p45, p20, p35,
+			p24, p10, m5, m2, m1, m3, m4, m0},
+			{p25, p12, p14, p40, p30, p35, p15, p24, p10, p34, p50, p23, p45,
+			p20, p13, m5, m2, m1, m4, m0, m3},
+			{p25, p12, p14, p34, p30, p50, p15, p24, p13, p40, p35, p20, p45,
+			p23, p10, m5, m2, m1, m4, m3, m0},
+			{p25, p23, p30, p10, p14, p45, p35, p20, p13, p40, p15, p24, p50,
+			p12, p34, m5, m2, m3, m0, m1, m4},
+			{p25, p23, p30, p40, p14, p15, p35, p20, p34, p10, p45, p12, p50,
+			p24, p13, m5, m2, m3, m0, m4, m1},
+			{p25, p23, p13, p10, p40, p45, p35, p12, p30, p14, p50, p24, p15,
+			p20, p34, m5, m2, m3, m1, m0, m4},
+			{p25, p23, p13, p14, p40, p50, p35, p12, p34, p10, p45, p20, p15,
+			p24, p30, m5, m2, m3, m1, m4, m0},
+			{p25, p23, p34, p40, p10, p15, p35, p24, p30, p14, p50, p12, p45,
+			p20, p13, m5, m2, m3, m4, m0, m1},
+			{p25, p23, p34, p14, p10, p50, p35, p24, p13, p40, p15, p20, p45,
+			p12, p30, m5, m2, m3, m4, m1, m0},
+			{p25, p24, p40, p10, p13, p35, p45, p20, p14, p30, p15, p23, p50,
+			p12, p34, m5, m2, m4, m0, m1, m3},
+			{p25, p24, p40, p30, p13, p15, p45, p20, p34, p10, p35, p12, p50,
+			p23, p14, m5, m2, m4, m0, m3, m1},
+			{p25, p24, p14, p10, p30, p35, p45, p12, p40, p13, p50, p23, p15,
+			p20, p34, m5, m2, m4, m1, m0, m3},
+			{p25, p24, p14, p13, p30, p50, p45, p12, p34, p10, p35, p20, p15,
+			p23, p40, m5, m2, m4, m1, m3, m0},
+			{p25, p24, p34, p30, p10, p15, p45, p23, p40, p13, p50, p12, p35,
+			p20, p14, m5, m2, m4, m3, m0, m1},
+			{p25, p24, p34, p13, p10, p50, p45, p23, p14, p30, p15, p20, p35,
+			p12, p40, m5, m2, m4, m3, m1, m0},
+			{p35, p30, p10, p12, p24, p45, p50, p13, p20, p14, p25, p34, p15,
+			p23, p40, m5, m3, m0, m1, m2, m4},
+			{p35, p30, p10, p14, p24, p25, p50, p13, p40, p12, p45, p23, p15,
+			p34, p20, m5, m3, m0, m1, m4, m2},
+			{p35, p30, p20, p12, p14, p45, p50, p23, p10, p24, p15, p34, p25,
+			p13, p40, m5, m3, m0, m2, m1, m4},
+			{p35, p30, p20, p24, p14, p15, p50, p23, p40, p12, p45, p13, p25,
+			p34, p10, m5, m3, m0, m2, m4, m1},
+			{p35, p30, p40, p14, p12, p25, p50, p34, p10, p24, p15, p23, p45,
+			p13, p20, m5, m3, m0, m4, m1, m2},
+			{p35, p30, p40, p24, p12, p15, p50, p34, p20, p14, p25, p13, p45,
+			p23, p10, m5, m3, m0, m4, m2, m1},
+			{p35, p13, p10, p20, p24, p45, p15, p30, p12, p40, p25, p34, p50,
+			p23, p14, m5, m3, m1, m0, m2, m4},
+			{p35, p13, p10, p40, p24, p25, p15, p30, p14, p20, p45, p23, p50,
+			p34, p12, m5, m3, m1, m0, m4, m2},
+			{p35, p13, p12, p20, p40, p45, p15, p23, p10, p24, p50, p34, p25,
+			p30, p14, m5, m3, m1, m2, m0, m4},
+			{p35, p13, p12, p24, p40, p50, p15, p23, p14, p20, p45, p30, p25,
+			p34, p10, m5, m3, m1, m2, m4, m0},
+			{p35, p13, p14, p40, p20, p25, p15, p34, p10, p24, p50, p23, p45,
+			p30, p12, m5, m3, m1, m4, m0, m2},
+			{p35, p13, p14, p24, p20, p50, p15, p34, p12, p40, p25, p30, p45,
+			p23, p10, m5, m3, m1, m4, m2, m0},
+			{p35, p23, p20, p10, p14, p45, p25, p30, p12, p40, p15, p34, p50,
+			p13, p24, m5, m3, m2, m0, m1, m4},
+			{p35, p23, p20, p40, p14, p15, p25, p30, p24, p10, p45, p13, p50,
+			p34, p12, m5, m3, m2, m0, m4, m1},
+			{p35, p23, p12, p10, p40, p45, p25, p13, p20, p14, p50, p34, p15,
+			p30, p24, m5, m3, m2, m1, m0, m4},
+			{p35, p23, p12, p14, p40, p50, p25, p13, p24, p10, p45, p30, p15,
+			p34, p20, m5, m3, m2, m1, m4, m0},
+			{p35, p23, p24, p40, p10, p15, p25, p34, p20, p14, p50, p13, p45,
+			p30, p12, m5, m3, m2, m4, m0, m1},
+			{p35, p23, p24, p14, p10, p50, p25, p34, p12, p40, p15, p30, p45,
+			p13, p20, m5, m3, m2, m4, m1, m0},
+			{p35, p34, p40, p10, p12, p25, p45, p30, p14, p20, p15, p23, p50,
+			p13, p24, m5, m3, m4, m0, m1, m2},
+			{p35, p34, p40, p20, p12, p15, p45, p30, p24, p10, p25, p13, p50,
+			p23, p14, m5, m3, m4, m0, m2, m1},
+			{p35, p34, p14, p10, p20, p25, p45, p13, p40, p12, p50, p23, p15,
+			p30, p24, m5, m3, m4, m1, m0, m2},
+			{p35, p34, p14, p12, p20, p50, p45, p13, p24, p10, p25, p30, p15,
+			p23, p40, m5, m3, m4, m1, m2, m0},
+			{p35, p34, p24, p20, p10, p15, p45, p23, p40, p12, p50, p13, p25,
+			p30, p14, m5, m3, m4, m2, m0, m1},
+			{p35, p34, p24, p12, p10, p50, p45, p23, p14, p20, p15, p30, p25,
+			p13, p40, m5, m3, m4, m2, m1, m0},
+			{p45, p40, p10, p12, p23, p35, p50, p14, p20, p13, p25, p34, p15,
+			p24, p30, m5, m4, m0, m1, m2, m3},
+			{p45, p40, p10, p13, p23, p25, p50, p14, p30, p12, p35, p24, p15,
+			p34, p20, m5, m4, m0, m1, m3, m2},
+			{p45, p40, p20, p12, p13, p35, p50, p24, p10, p23, p15, p34, p25,
+			p14, p30, m5, m4, m0, m2, m1, m3},
+			{p45, p40, p20, p23, p13, p15, p50, p24, p30, p12, p35, p14, p25,
+			p34, p10, m5, m4, m0, m2, m3, m1},
+			{p45, p40, p30, p13, p12, p25, p50, p34, p10, p23, p15, p24, p35,
+			p14, p20, m5, m4, m0, m3, m1, m2},
+			{p45, p40, p30, p23, p12, p15, p50, p34, p20, p13, p25, p14, p35,
+			p24, p10, m5, m4, m0, m3, m2, m1},
+			{p45, p14, p10, p20, p23, p35, p15, p40, p12, p30, p25, p34, p50,
+			p24, p13, m5, m4, m1, m0, m2, m3},
+			{p45, p14, p10, p30, p23, p25, p15, p40, p13, p20, p35, p24, p50,
+			p34, p12, m5, m4, m1, m0, m3, m2},
+			{p45, p14, p12, p20, p30, p35, p15, p24, p10, p23, p50, p34, p25,
+			p40, p13, m5, m4, m1, m2, m0, m3},
+			{p45, p14, p12, p23, p30, p50, p15, p24, p13, p20, p35, p40, p25,
+			p34, p10, m5, m4, m1, m2, m3, m0},
+			{p45, p14, p13, p30, p20, p25, p15, p34, p10, p23, p50, p24, p35,
+			p40, p12, m5, m4, m1, m3, m0, m2},
+			{p45, p14, p13, p23, p20, p50, p15, p34, p12, p30, p25, p40, p35,
+			p24, p10, m5, m4, m1, m3, m2, m0},
+			{p45, p24, p20, p10, p13, p35, p25, p40, p12, p30, p15, p34, p50,
+			p14, p23, m5, m4, m2, m0, m1, m3},
+			{p45, p24, p20, p30, p13, p15, p25, p40, p23, p10, p35, p14, p50,
+			p34, p12, m5, m4, m2, m0, m3, m1},
+			{p45, p24, p12, p10, p30, p35, p25, p14, p20, p13, p50, p34, p15,
+			p40, p23, m5, m4, m2, m1, m0, m3},
+			{p45, p24, p12, p13, p30, p50, p25, p14, p23, p10, p35, p40, p15,
+			p34, p20, m5, m4, m2, m1, m3, m0},
+			{p45, p24, p23, p30, p10, p15, p25, p34, p20, p13, p50, p14, p35,
+			p40, p12, m5, m4, m2, m3, m0, m1},
+			{p45, p24, p23, p13, p10, p50, p25, p34, p12, p30, p15, p40, p35,
+			p14, p20, m5, m4, m2, m3, m1, m0},
+			{p45, p34, p30, p10, p12, p25, p35, p40, p13, p20, p15, p24, p50,
+			p14, p23, m5, m4, m3, m0, m1, m2},
+			{p45, p34, p30, p20, p12, p15, p35, p40, p23, p10, p25, p14, p50,
+			p24, p13, m5, m4, m3, m0, m2, m1},
+			{p45, p34, p13, p10, p20, p25, p35, p14, p30, p12, p50, p24, p15,
+			p40, p23, m5, m4, m3, m1, m0, m2},
+			{p45, p34, p13, p12, p20, p50, p35, p14, p23, p10, p25, p40, p15,
+			p24, p30, m5, m4, m3, m1, m2, m0},
+			{p45, p34, p23, p20, p10, p15, p35, p24, p30, p12, p50, p14, p25,
+			p40, p13, m5, m4, m3, m2, m0, m1},
+			{p45, p34, p23, p12, p10, p50, p35, p24, p13, p20, p15, p40, p25,
+			p14, p30, m5, m4, m3, m2, m1, m0}
+			}];
+			tmp
+		]
+	]/; FCPatternFreeQ[{p10, p12, p23, p34, p45, p50, p20, p13, p24, p35, p40, p15, p30, p14, p25, m0, m1, m2, m3, m4, m5}];
+
 
 FCPrint[1,"PaVeOrder.m loaded."];
 End[]

@@ -52,7 +52,8 @@ Options[ToPaVe] = {
 	OtherLoopMomenta	-> {},
 	PaVeAutoOrder		-> True,
 	PaVeAutoReduce		-> True,
-	PaVeOrder			-> True
+	PaVeOrder			-> True,
+	PaVeToABCD			-> True
 };
 
 ToPaVe[expr_, q_, OptionsPattern[]] :=
@@ -90,6 +91,10 @@ ToPaVe[expr_, q_, OptionsPattern[]] :=
 
 		(* Not all SFADs can be converted to PaVe functions! *)
 		loopListEval = loopListEval /. toPaVe[z_,_,_,_]/;!FreeQ[z,StandardPropagatorDenominator] :> z;
+
+		If[ OptionValue[PaVeToABCD],
+			loopListEval = PaVeToABCD[loopListEval]
+		];
 
 		repList = Thread[Rule[loopList,loopListEval]];
 

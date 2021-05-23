@@ -1137,7 +1137,7 @@ OneLoopSum[ex_, ops___] :=
 			];
 			npavopt = PaVeOrderList/.Options[PaVeOrder];
 			paveorder[xxx_] :=
-				PaVeOrder[xxx, PaVeOrderList -> npavopt];
+				PaVeOrder[xxx, PaVeOrderList -> npavopt, PaVeToABCD->True];
 			(* insert here eventually previously calculated PaVe's *)
 			sres = sres /. PaVe->pavesave /. pavesave -> PaVe;
 
@@ -1962,7 +1962,7 @@ tdec[ expr_,props_,Q_,qn_ ,di_,mudu_,mand_] :=          (*tdecdef*)
 
 					FCPrint[3, "OneLoop: tdec: tdecenew ", tdecnew, FCDoControl->oneloopVerbose];
 
-					pav0 = PaVeOrder[PaVe[0,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce]];
+					pav0 = PaVeOrder[PaVe[0,tensps,tdecml,PaVeAutoOrder->paveautoorder,PaVeAutoReduce->paveautoreduce],PaVeToABCD->True];
 
 					FCPrint[3, "OneLoop: tdec: pav0: ", pav0, FCDoControl->oneloopVerbose];
 					(* Reduction of PaVe functions into simpler ones... *)

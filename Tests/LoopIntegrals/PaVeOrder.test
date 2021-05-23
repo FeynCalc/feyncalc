@@ -17,9 +17,39 @@ Tests`LoopIntegrals`fcstPaVeOrder = {
 
 {"fcstPaveOrder-ID1",
 	"PaVeOrder[D0[me2,me2,mw2,mw2,t,s,me2,0,me2,0],PaVeOrderList->{me2,me2,0,0}]",
-	"D0[me2,s,mw2,t,mw2,me2,me2,0,0,me2]"},
+	"PaVe[0, {me2, s, mw2, t, mw2, me2}, {me2, 0, 0, me2}, PaVeAutoOrder -> False]"},
 {"fcstPaveOrder-ID2",
 	"PaVeOrder[D0[a,b,c,d,e,f,m12,m22,m32,m42]+D0[me2,me2,mw2,mw2,t,s,me2,0,me2,0],
 	PaVeOrderList->{{me2,me2,0,0},{f,e}}]",
-	"D0[a,d,c,b,f,e,m22,m12,m42,m32]+D0[me2,s,mw2,t,mw2,me2,me2,0,0,me2]"}
+	"PaVe[0, {a, b, c, d, e, f}, {m12, m22, m32, m42}, PaVeAutoOrder -> False] +
+PaVe[0, {me2, s, mw2, t, mw2, me2}, {me2, 0, 0, me2}, PaVeAutoOrder -> False]"},
+{"fcstPaVeOrder-ID3", "PaVeOrder[x]",
+"x"},
+{"fcstPaVeOrder-ID4", "ToPaVe2[C0[qq0, qq2, qq1, SmallVariable[mm1^2], mm2^2, mm3]]",
+"PaVe[0, {qq0, qq1, qq2}, {mm2^2, SmallVariable[mm1]^2, mm3}]"},
+{"fcstPaVeOrder-ID5", "PaVeOrder[
+PaVe[1, 2, 2, {qq0, qq2, qq1}, {SmallVariable[mm1^2], mm2^2, mm3}],
+PaVeOrderList -> {mm3, mm2, SmallVariable[mm1]}]",
+"PaVe[1, 2, 2, {qq2, qq0, qq1}, {mm3, mm2^2, SmallVariable[mm1]^2}, PaVeAutoOrder -> False]"},
+{"fcstPaVeOrder-ID6", "PaVeOrder[
+PaVe[1, 2, {SPD[p1] + SPD[p2] - 2 SPD[p1, p2], SPD[p1],
+SPD[p2]}, {m2^2, m1^2, m0^2}], FCE -> True]",
+"PaVe[1, 2, {SPD[p1, p1], SPD[p2, p2],
+SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2]}, {m1^2, m0^2, m2^2}]"},
+{"fcstPaVeOrder-ID7", "PaVeOrder[
+PaVe[1, 2, {SPD[p1] + SPD[p2] - 2 SPD[p1, p2], SPD[p1],
+SPD[p2]}, {m2^2, m1^2, m0^2}], PaVeOrderList -> {m0, m1, m2},
+FCE -> True]",
+"PaVe[1, 2, {SPD[p1, p1], SPD[p1, p1] - 2 SPD[p1, p2] + SPD[p2, p2],
+SPD[p2, p2]}, {m0^2, m1^2, m2^2}, PaVeAutoOrder -> False]"},
+{"fcstPaVeOrder-ID8", "PaVeOrder[PaVe[1, 1, {SPD[p1]}, {m1^2, m2^2}],
+PaVeOrderList -> {m2, m1}, FCE -> True]",
+"PaVe[1, 1, {SPD[p1, p1]}, {m2^2, m1^2}, PaVeAutoOrder -> False]"},
+{"fcstPaVeOrder-ID9", "PaVeOrder[PaVe[0, {}, {m1^2}], PaVeOrderList -> {m2, m1}, FCE -> True]",
+"PaVe[0, {}, {m1^2}]"},
+{"fcstPaVeOrder-ID10", "PaVeOrder[PaVe[3, 3, 4,
+4, {p10, p12, p23, p34, p40, p20, p13, p24, p30, p14}, {mm0, mm1,
+mm2, mm3, mm4}], PaVeOrderList -> {mm4, mm3, mm2}]",
+"PaVe[3, 3, 4, 4, {p34, p23, p12, p10, p40, p24, p13, p20, p14,
+p30}, {mm4, mm3, mm2, mm1, mm0}, PaVeAutoOrder -> False]"}
 }
