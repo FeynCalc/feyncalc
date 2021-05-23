@@ -107,6 +107,8 @@ PaVe[inds__, {0, 0, 0, 0, 0, 0}, {0, 0, 0,0}, OptionsPattern[]]:=
 PaVe[0,{pp_},{mm1_,mm2_}, opts:OptionsPattern[]] :=
 	PaVe[0,{pp},{mm2,mm1},opts]/; !OrderedQ[{mm1,mm2}] && OptionValue[PaVeAutoOrder] && FCPatternFreeQ[{pp,mm1,mm2}];
 
+
+
 (* ****************************************************************** *)
 (* Notation :   p10 = p1^2;  p12 = (p1-p2)^2;  etc.                   *)
 (* ****************************************************************** *)
@@ -151,34 +153,46 @@ PaVe[x__,{p10_,p12_,p23_,p20_,p20_,p12_},{m1_,m2_,m3_,m3_}, opts:OptionsPattern[
 	PaVe[Sequence@@({x} /. {2:>3, 3:>2}), {p10,p12,p23,p20,p20,p12},{m1,m2,m3,m3},opts]/;
 		(Count[{x}, 3] > Count[{x}, 2]) && OptionValue[PaVeAutoOrder] && FCPatternFreeQ[{p10, p12, p23, p20, m1, m2, m3}];
 
-(* in order to canonize the C0's  (args:   p1^2, (p2-p1)^2, p2^2)  *)
+(* Argument ordering for 3-point functions *)
+
+(*Scalar and 00.. coefficient functions*)
+PaVe[id: 0.., {p10_, p12_, p20_}, {m1_, m2_, m3_}, opts:OptionsPattern[]] :=
+	PaVe[id, Sequence@@FeynCalc`Package`argPermC[p10,p12,p20,m1,m2,m3],opts]/; OptionValue[PaVeAutoOrder] &&
+		!OptionValue[PaVeAutoReduce] && FCPatternFreeQ[{p10, p12, p20, m1, m2, m3}] && {{p10,p12,p20},{m1,m2,m3}}=!=FeynCalc`Package`argPermC[p10,p12,p20,m1,m2,m3];
+
 PaVe[0, {p10_, p12_, p20_}, {m1_, m2_, m3_}, OptionsPattern[]] :=
-	C0@@Flatten[cord[p10, p12, p20,m1,m2,m3]]/;OptionValue[PaVeAutoOrder] && OptionValue[PaVeAutoReduce] && FCPatternFreeQ[{p10, p12, p20, m1, m2, m3}];
+	C0@@Flatten[FeynCalc`Package`argPermC[p10,p12,p20,m1,m2,m3]]/; OptionValue[PaVeAutoOrder] && OptionValue[PaVeAutoReduce] && FCPatternFreeQ[{p10, p12, p20, m1, m2, m3}];
 
-PaVe[0, {p10_, p12_, p20_}, {m1_, m2_, m3_}, opts:OptionsPattern[]] :=
-	PaVe[0,Sequence@@cord[p10,p12,p20,m1,m2,m3],opts]/;	OptionValue[PaVeAutoOrder] &&
-		!OptionValue[PaVeAutoReduce] && {p10,p12,p20,m1,m2,m3}=!=Flatten[cord[p10,p12,p20,m1,m2,m3]] && FCPatternFreeQ[{p10, p12, p20, m1, m2, m3}];
+(* Argument ordering for 4-point functions *)
 
+(*Scalar and 00.. coefficient functions*)
+PaVe[id: 0.., {p10_, p12_, p23_, p30_, p13_, p20_}, {m1_, m2_, m3_, m4_}, opts:OptionsPattern[]] :=
+	PaVe[id, Sequence@@FeynCalc`Package`argPermD[p10, p12, p23, p30, p13, p20, m1, m2, m3, m4],opts]/; OptionValue[PaVeAutoOrder] &&
+		!OptionValue[PaVeAutoReduce] && FCPatternFreeQ[{p10, p12, p23, p30, p13, p20, m1, m2, m3, m4}] &&
+			{{p10, p12, p23, p30, p13, p20},{m1,m2,m3,m4}}=!=FeynCalc`Package`argPermD[p10, p12, p23, p30, p13, p20, m1, m2, m3, m4];
 
 PaVe[0, {p10_, p12_, p23_, p30_, p13_, p20_}, {m1_, m2_, m3_, m4_}, OptionsPattern[]] :=
-	D0[p10, p12, p23, p30, p13, p20, m1, m2, m3, m4]/;OptionValue[PaVeAutoOrder] && OptionValue[PaVeAutoReduce] &&
+	D0@@Flatten[FeynCalc`Package`argPermD[p10, p12, p23, p30, p13, p20, m1, m2, m3, m4]]/; OptionValue[PaVeAutoOrder] && OptionValue[PaVeAutoReduce] &&
 	FCPatternFreeQ[{p10, p12, p23, p30, p13, p20, m1, m2, m3, m4}];
 
-(* C0 is symmetric under pairwise exchanges of two momentum arguments and two mass arguments *)
-cord[a_,b_,c_, m1_,m2_,m3_] :=
-	MemSet[cord[a,b,c, m1,m2,m3],
-		Block[{tmp},
-			tmp =	First[Sort[{
-			{a,b,c, m1,m2,m3},
-			{c,b,a, m1,m3,m2},
-			{a,c,b, m2,m1,m3},
-			{b,c,a, m2,m3,m1},
-			{c,a,b, m3,m1,m2},
-			{b,a,c, m3,m2,m1} }]];
-			{tmp[[1;;3]],tmp[[4;;6]]}
-		]
-	]/; FCPatternFreeQ[{a, b, c, m1, m2, m3}];
+(* Argument ordering for 5-point functions *)
 
+(*Scalar and 00.. coefficient functions*)
+PaVe[id: 0.., {p10_, p12_, p23_, p34_, p40_, p20_, p13_, p24_, p30_, p14_}, {m0_, m1_, m2_, m3_, m4_}, opts:OptionsPattern[]] :=
+	PaVe[id, Sequence@@FeynCalc`Package`argPermE[p10, p12, p23, p34, p40, p20, p13, p24, p30, p14, m0, m1, m2, m3, m4],opts]/; OptionValue[PaVeAutoOrder] &&
+		!OptionValue[PaVeAutoReduce] && FCPatternFreeQ[{p10, p12, p23, p34, p40, p20, p13, p24, p30, p14, m0, m1, m2, m3, m4}] &&
+			{{p10, p12, p23, p34, p40, p20, p13, p24, p30, p14},{m0,m1,m2,m3,m4}}=!=FeynCalc`Package`argPermE[p10, p12, p23, p34, p40, p20, p13, p24, p30, p14, m0, m1, m2, m3, m4];
+
+
+(* Argument ordering for 6-point functions *)
+
+(*Scalar and 00.. coefficient functions*)
+PaVe[id: 0.., {p10_, p12_, p23_, p34_, p45_, p50_, p20_, p13_, p24_, p35_, p40_, p15_, p30_, p14_, p25_}, {m0_, m1_, m2_, m3_, m4_ ,m5_}, opts:OptionsPattern[]] :=
+	PaVe[id, Sequence@@FeynCalc`Package`argPermF[p10, p12, p23, p34, p45, p50, p20, p13, p24, p35, p40, p15, p30, p14, p25, m0, m1, m2, m3, m4, m5],opts]/; OptionValue[PaVeAutoOrder] &&
+		!OptionValue[PaVeAutoReduce] && FCPatternFreeQ[{p10, p12, p23, p34, p45, p50, p20, p13, p24, p35, p40, p15, p30, p14, p25, m0, m1, m2, m3, m4, m5}] &&
+			{{p10, p12, p23, p34, p45, p50, p20, p13, p24, p35, p40, p15, p30, p14, p25},{m0, m1, m2, m3, m4, m5}}=!=FeynCalc`Package`argPermF[p10, p12, p23, p34, p45, p50, p20, p13, p24, p35, p40, p15, p30, p14, p25, m0, m1, m2, m3, m4, m5];
+
+(* Universal typesetting for PaVe functions *)
 PaVe /:
 	MakeBoxes[PaVe[ij__,{moms___},{masses__}, OptionsPattern[]], TraditionalForm]:=
 	ToBoxes[Subscript[FromCharacterCode[64+Length[{masses}]], StringJoin[ToString /@ {ij}]
@@ -186,8 +200,10 @@ PaVe /:
 	]/; Length[{masses}]>=1;
 
 
-(*	if different reguators are used, then not every scaleless function vanishes.
-	Only those vanish, whose UV-part is not dimensionless *)
+(*
+	If different UV and IR reguators are used, not every scaleless function vanishes.
+	Only those vanish, whose UV-part is not dimensionless
+*)
 
 (* B functions that always vanish when scaleless; C.f. appendix of arXiv:hep-ph/0609282
 
