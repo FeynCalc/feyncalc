@@ -1,15 +1,30 @@
+(* ::Package:: *)
+
  
+
+
 (* ::Section:: *)
 (* PaVeOrder *)
+
+
 (* ::Text:: *)
-(*`PaVeOrder[expr]` orders the arguments of all `D0` in expr in a standard way. `PaVeOrder[expr, PaVeOrderList -> { {..., s, u, ...}, {... $m_1{}^2$, $m_2{}^2$ ...}, ...}]` orders the arguments of all `D0` in expr according to the specified ordering lists. The lists may contain only a subsequence of the D0-variables.*)
+(*`PaVeOrder[expr]` orders the arguments of all PaVe functions in expr in a standard way.*)
+
+
+(* ::Text:: *)
+(*`PaVeOrder[expr, PaVeOrderList -> { {..., s, u, ...}, {... m1^2, m2^2, ...}, ...}]` orders the arguments of all `PaVe` functions in `expr` according to the specified ordering lists. The lists may contain only a subsequence of the kinematic variables.*)
+
+
+(* ::Text:: *)
+(*`PaVeOrder` has knows about symmetries in the arguments of PaVe functions with up to 6 legs.*)
 
 
 (* ::Subsection:: *)
 (* See also *)
+
+
 (* ::Text:: *)
 (*PaVeReduce.*)
-
 
 
 (* ::Subsection:: *)
