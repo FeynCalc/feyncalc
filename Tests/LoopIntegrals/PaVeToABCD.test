@@ -1,0 +1,46 @@
+
+
+(* :Title: PaVeToABCD.test                                          	    	*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2021 Rolf Mertig
+	Copyright (C) 1997-2021 Frederik Orellana
+	Copyright (C) 2014-2021 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for PaVeToABCD			  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`PaVeToABCD =
+({
+{"fcstPaVeToABCD-ID1", "PaVeToABCD[PaVe[0,0,{},{m}]]",
+"(m*A0[m])/D"},
+{"fcstPaVeToABCD-ID2", "PaVeToABCD[PaVe[0,{pp},{m1,m2}]]",
+"B0[pp, m1, m2]"},
+{"fcstPaVeToABCD-ID3", "PaVeToABCD[PaVe[1,{pp},{m1,m2}]]",
+"A0[m1]/(2*pp) - A0[m2]/(2*pp) - ((m1 - m2 + pp)*B0[pp, m1, \
+m2])/(2*pp)"},
+{"fcstPaVeToABCD-ID4", "PaVeToABCD[PaVe[0,0,{pp},{m1,m2}]]",
+"-1/4*((m1 - m2 + pp)*A0[m1])/((1 - D)*pp) + ((m1 - m2 - \
+pp)*A0[m2])/(4*(1 - D)*pp) + ((m1^2 - 2*m1*m2 + m2^2 - 2*m1*pp - \
+2*m2*pp + pp^2)*B0[pp, m1, m2])/(4*(1 - D)*pp)"},
+{"fcstPaVeToABCD-ID5", "PaVeToABCD[PaVe[1,1,{pp},{m1,m2}]]",
+"(D*(m1 - m2 + pp)*A0[m1])/(4*(1 - D)*pp^2) - ((D*m1 - D*m2 - 4*pp \
++ 3*D*pp)*A0[m2])/(4*(1 - D)*pp^2) - ((D*m1^2 - 2*D*m1*m2 + D*m2^2 - \
+4*m1*pp + 2*D*m1*pp - 2*D*m2*pp + D*pp^2)*B0[pp, m1, m2])/(4*(1 - \
+D)*pp^2)"},
+{"fcstPaVeToABCD-ID6",
+"PaVeToABCD[PaVe[0,{p10,p12,p20},{m1,m2,m3}]]",
+"C0[p10, p12, p20, m1, m2, m3]"},
+{"fcstPaVeToABCD-ID7",
+"PaVeToABCD[PaVe[0,0,{p10,p12,p20},{m1,m2,m3}]]",
+"PaVe[0, 0, {p10, p12, p20}, {m1, m2, m3}]"},
+{"fcstPaVeToABCD-ID8",
+"PaVeToABCD[PaVe[0,{p10,p12,p23,p30,p20,p13},{m1,m2,m3,m4}]]",
+"D0[p10, p12, p23, p30, p20, p13, m1, m2, m3, m4]"},
+{"fcstPaVeToABCD-ID9",
+"PaVeToABCD[PaVe[1,1,{p10,p12,p23,p30,p20,p13},{m1,m2,m3,m4}]]",
+"PaVe[1, 1, {p10, p12, p23, p30, p20, p13}, {m1, m2, m3, m4}]"}
+});
