@@ -2041,6 +2041,7 @@ SUND[a_SUNIndex,a_SUNIndex, b:Except[_?OptionQ], OptionsPattern[]] :=
 SUND[a_,b_,c:Except[_?OptionQ], OptionsPattern[]] :=
 	2 SUNTrace[SUNT[a,b,c]] + 2 SUNTrace[SUNT[b,a,c]] /; OptionValue[Explicit];
 
+(*
 HoldPattern[SUNF[a___, x_, b___, x_, c___, ___Rule]] :=
 	0 /;
 	(Head[x] === SUNIndex) && FreeQ[x, Pattern] &&
@@ -2049,7 +2050,7 @@ HoldPattern[SUNF[a___, x_, b___, x_, c___, ___Rule]] :=
 HoldPattern[SUNF[a___, x_, y_, b___, ___Rule]] :=
 	-SUNF[a, y, x, b] /; FreeQ[{a,x,y,b}, Pattern] && Length[{a,x,y,b}] === 3 && (!OrderedQ[{x, y}]) &&
 	Head[x] === SUNIndex && Head[y] === SUNIndex;
-
+*)
 
 SUNF[i_,j_,k_,Explicit -> False] :=
 	SUNF[i,j,k];
