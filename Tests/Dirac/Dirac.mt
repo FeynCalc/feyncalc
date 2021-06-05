@@ -25,7 +25,11 @@ If[	$OnlySubTest=!="",
 	Remove[testNames]
 ];
 
+fcCompare[a_/;Head[a]=!=List,b_/;Head[b]=!=List]:=
+	Together[a-b]===0;
 
+fcCompare[a_List,b_List]:=
+	a===b;
 
 stringCompare[a_,b_]:=If[ToString[a]===ToString[b],True,False];
 
@@ -256,10 +260,11 @@ If[ Names["Tests`Dirac`fcstAbortDiracSimplify"]=!={},
 
 If[ Names["Tests`Dirac`fcstDiracTrick*"]=!={},
 	FCSetDiracGammaScheme["NDR"];
-	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]],
+		EquivalenceFunction -> fcCompare]&,
 		Join@@(ToExpression/@Names["Tests`Dirac`fcstDiracTrick*"])];
 	FCSetDiracGammaScheme["NDR"];
-	tmpTest = tmpTest /. testID->TestID /. test -> Test
+	tmpTest = tmpTest /. testID->TestID /. test->Test
 ];
 
 If[ Names["Tests`Dirac`fcstTr"]=!={},

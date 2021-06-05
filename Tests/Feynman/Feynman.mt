@@ -30,15 +30,23 @@ stringCompare[a_,b_]:=If[ToString[a]===ToString[b],True,False];
 stringCompareIgnore[_,_]:=
 	True;
 
+fcCompare[a_/;Head[a]=!=List,b_/;Head[b]=!=List]:=
+	Together[FCTraceExpand[a-b]]===0;
+
+fcCompare[a_List,b_List]:=
+	a===b;
+
 FCClearScalarProducts[];
 ClearAll[M];
 
-Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
+tmpTest = Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]],
+	EquivalenceFunction -> fcCompare]&,
 	Join@@(ToExpression/@Select[Names["Tests`Feynman`*"], !StringMatchQ[#, "*fcstAbort*"] &])];
+
 
 If[ Names["Tests`Feynman`fcstAbort*"]=!={},
 	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],(#[[4]]),testID->#[[1]],
 		MessagesEquivalenceFunction->stringCompareIgnore]&,
 		Join@@(ToExpression/@Names["Tests`Feynman`fcstAbort*"])];
-	tmpTest = tmpTest /. testID->TestID /. test -> Test
+	tmpTest = tmpTest /. testID->TestID /. test->Test
 ];

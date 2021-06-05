@@ -60,14 +60,12 @@ VAR^2 (Sum[xy[i], {i, 1, 10}] + Sum[xz[i], {i, 1, 10}])]",
 	"4 (1/4 a (x+1)+b (y+1))"},
 {"fcstCollect2-ID14","Collect2[a PolyLog[2, z] +
 s^2 PolyLog[2, z] + (1 - z) Log[2] + (2 + Pi^2) Log[1/(1 - z)] +
-f Log[1/(1 - z)], Log[1/(1 - z)], PolyLog[2, z]]",
-	"-(-1 + z) Log[2] + (2 + f + \[Pi]^2) Log[1/(
-1 - z)] + (a + s^2) PolyLog[2, z]"},
+f Log[1/(1 - z)], Log[1/(1 - z)], PolyLog[2, z],Factoring->hold]",
+	"hold[(1 - z)*Log[2]] + hold[2 + f + Pi^2]*Log[(1 - z)^(-1)] + hold[a + s^2]*PolyLog[2, z]"},
 {"fcstCollect2-ID15","Collect2[a PolyLog[2, z] +
 s^2 PolyLog[2, z] + (1 - z) Log[2] + (2 + Pi^2) Log[1/(1 - z)] +
-f Log[1/(1 - z)], Log[1/(1 - z)], PolyLog[2, z], Head -> {h1, h2}]",
-	"h2[2 + f + \[Pi]^2, h1[Log[1/(1 - z)]]] +
-h2[a + s^2, h1[PolyLog[2, z]]] + h2[-(-1 + z) Log[2], 1]"},
+f Log[1/(1 - z)], Log[1/(1 - z)], PolyLog[2, z], Head -> {h1, h2},Factoring->hold]",
+	"h2[hold[2 + f + Pi^2], h1[Log[(1 - z)^(-1)]]] + h2[hold[a + s^2], h1[PolyLog[2, z]]] + h2[hold[(1 - z)*Log[2]], 1]"},
 {"fcstCollect2-ID16","Collect2[(a - b)^2 - a^2 - b^2, a, b, InitialFunction -> fu]",
 	"fu[-a^2 + (a - b)^2 - b^2]"},
 {"fcstCollect2-ID17","Collect2[(a - b)^2 - a^2 - b^2, a, b,

@@ -96,7 +96,7 @@ DiracTrace[expr_, op:OptionsPattern[]] :=
 		unitMatrixTrace = OptionValue[TraceOfOne];
 		optSort  = OptionValue[Sort];
 
-		FCPrint[1, "DiracTrace. Entering.", FCDoControl->diTrVerbose];
+		FCPrint[1, "DiracTrace: Entering.", FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrace: Entering with ", expr, FCDoControl->diTrVerbose];
 
 

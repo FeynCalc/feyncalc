@@ -19,6 +19,12 @@ ClearAll[tests];
 tests = FileNames["*.test",FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", "LoopIntegrals"}]];
 Get/@tests;
 
+fcCompare[a_/;Head[a]=!=List,b_/;Head[b]=!=List]:=
+	Together[a-b]===0;
+
+fcCompare[a_List,b_List]:=
+	a===b;
+
 If[	$OnlySubTest=!="",
 	testNames = "Tests`LoopIntegrals`*";
 	removeTests=Complement[Names[testNames],Flatten[StringCases[Names[testNames],Alternatives@@$OnlySubTest]]];
@@ -31,10 +37,9 @@ FCClearScalarProducts[];
 
 SetOptions[Tdec,Parallelize->False];
 SetOptions[CTdec,Parallelize->False];
-Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
+Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]], EquivalenceFunction -> fcCompare]&,
 	Join@@(ToExpression/@Select[Names["Tests`LoopIntegrals`*"],
 	!StringMatchQ[#, "*fcstLogDivergentScaleless"] &])];
-
 
 
 $FCAdvice = True;
