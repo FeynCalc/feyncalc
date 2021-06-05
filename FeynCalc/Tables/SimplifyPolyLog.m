@@ -43,20 +43,29 @@ optLog::usage="";
 optPolyLog::usage="";
 optSqrt::usage="";
 optTrig::usage="";
+splVerbose::usage="";
 
 Options[SimplifyPolyLog] = {
-	EulerGamma -> True,
-	Log -> True,
-	Nielsen -> True,
-	PolyLog -> True,
-	Sqrt -> True,
-	Trig -> True
+	EulerGamma 		-> True,
+	FCVerbose		-> False,
+	Log 			-> True,
+	MaxIterations	-> 6,
+	Nielsen			-> True,
+	PolyLog			-> True,
+	Sqrt			-> True,
+	Trig			-> True
 };
 
 SimplifyPolyLog[expr_, OptionsPattern[]]/; FCPatternFreeQ[{expr}] :=
 	Block[{logSimp, tmp, repRule={}, var},
 
-		logSimp = {Log :> simplifyArgumentLog, PolyLog :> simplifyArgumentPolyLog};
+
+		If [OptionValue[FCVerbose]===False,
+			splVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				splVerbose=OptionValue[FCVerbose]
+			];
+		];
 
 		optEulerGamma 	= OptionValue[EulerGamma];
 		optLog 			= OptionValue[Log];
@@ -64,10 +73,23 @@ SimplifyPolyLog[expr_, OptionsPattern[]]/; FCPatternFreeQ[{expr}] :=
 		optSqrt 		= OptionValue[Sqrt];
 		optTrig 		= OptionValue[Trig];
 
+		logSimp = {Log :> simplifyArgumentLog, PolyLog :> simplifyArgumentPolyLog};
+
+		FCPrint[1, "SimplifyPolyLog: Entering.", FCDoControl->splVerbose];
+		FCPrint[3, "SimplifyPolyLog: Entering with ", expr, FCDoControl->splVerbose];
+
 
 		tmp = expr;
 
-		tmp = tmp/.Zeta2->(Pi^2/6)/.logSimp/.simptab/.simptab/.simptab/.simptab/.simptab/.simptab/.logSimp/.Pi^2->6 Zeta2;
+		tmp = tmp /. Zeta2->(Pi^2/6)/. logSimp;
+
+		FCPrint[3, "SimplifyPolyLog: After logSimp: ", tmp, FCDoControl->splVerbose];
+
+		tmp = FixedPoint[(# /. logSimp /. simptab)&, tmp, OptionValue[MaxIterations]];
+
+		tmp = tmp /. logSimp /. Pi^2->6 Zeta2;
+
+		FCPrint[3, "SimplifyPolyLog: Intermediate result: ", tmp, FCDoControl->splVerbose];
 
 		If[	!FreeQ2[tmp,{simplifyArgument,simplifyArgumentPolyLog}],
 			Message[SimplifyPolyLog::failmsg, "Simplification of the arguments of Polylogs failed."];
@@ -115,6 +137,9 @@ SimplifyPolyLog[expr_, OptionsPattern[]]/; FCPatternFreeQ[{expr}] :=
 			Zeta8^n_/; n>1 -> Zeta[8]^n,
 			Zeta10^n_/; n>1 -> Zeta[10]^n
 		};
+
+		FCPrint[1, "SimplifyPolyLog: Leaving.", FCDoControl->splVerbose];
+		FCPrint[3, "SimplifyPolyLog: Leaving with ", tmp, FCDoControl->splVerbose];
 
 		tmp
 
@@ -297,7 +322,7 @@ simptab =
 		2*PolyLog[2, (1 - x)/(1 + x)]
 		)/2,
 
-		PolyLog[2, (1 - Sqrt[x_Symbol])/2]/; optSqrt && optPolyLog :>
+	PolyLog[2, (1 - Sqrt[x_Symbol])/2]/; optSqrt && optPolyLog :>
 		(
 		-Log[2]^2/2 + Log[2]*Log[1 + Sqrt[x]] - Log[1 + Sqrt[x]]^2/2 +
 		2*PolyLog[2, 1 - Sqrt[x]] - PolyLog[2, (1 - Sqrt[x])/(1 + Sqrt[x])] -
@@ -312,7 +337,7 @@ simptab =
 		Log[1 + Sqrt[x]] Log[1 - x]
 		),
 
-	PolyLog[2, -(1 - x_Symbol)/(2*x_Symbol)]/; optPolyLog :>
+	PolyLog[2, -((1 - x_Symbol)/(2*x_Symbol))]/; optPolyLog :>
 		(
 		4*Zeta2 +
 		4*I*Pi*Log[2] -
@@ -729,7 +754,7 @@ simptab =
 		1/2Log[x] Log[1-x] (Log[1-x] - Log[x])
 		),
 
-	PolyLog[3,-(1 - x_Symbol)/x_Symbol]/; optPolyLog :>
+	PolyLog[3,-((1 - x_Symbol)/x_Symbol)]/; optPolyLog :>
 		(
 		Nielsen[1,2,x] -
 		PolyLog[3,x] +
@@ -805,11 +830,11 @@ simptab =
 		(
 		-(Zeta2*Log[2]) - Log[2]^3/6 + Zeta2*Log[1 - Sqrt[x]] + (Log[2]^2*Log[1 - Sqrt[x]])/2 - (Log[2]*Log[1 - Sqrt[x]]^2)/2 + Log[1 - Sqrt[x]]^3/6 -
 		Zeta2*Log[Sqrt[x]] - (Log[2]^2*Log[Sqrt[x]])/2 + Log[2]*Log[1 - Sqrt[x]]*Log[Sqrt[x]] - (Log[1 - Sqrt[x]]^2*Log[Sqrt[x]])/2 - (Log[2]*Log[Sqrt[x]]^2)/2 +
-		(Log[1 - Sqrt[x]]*Log[Sqrt[x]]^2)/2 - Log[Sqrt[x]]^3/6 + PolyLog[3, -(1 - Sqrt[x])/(2*Sqrt[x])]
+		(Log[1 - Sqrt[x]]*Log[Sqrt[x]]^2)/2 - Log[Sqrt[x]]^3/6 + PolyLog[3, -((1 - Sqrt[x])/(2*Sqrt[x]))]
 		),
 
 
-	PolyLog[3, -((1 + x_Symbol)/ (1 - x_Symbol))]/; optPolyLog :>
+	PolyLog[3, -(((1 + x_Symbol)/ (1 - x_Symbol)))]/; optPolyLog :>
 		(
 		Zeta2*Log[1 - x] +
 		Log[1 - x]^3/6 -
@@ -834,13 +859,13 @@ simptab =
 		),
 
 
-	PolyLog[3, -(1 - x_Symbol)/(1 + x_Symbol)]/; optPolyLog :>
+	PolyLog[3, -((1 - x_Symbol)/(1 + x_Symbol))]/; optPolyLog :>
 		(
 		-(Zeta2*Log[2]) + Log[2]^3/3 - (Log[2]^2*Log[1 - x])/2 + Zeta2*Log[1 + x] - (Log[2]^2*Log[1 + x])/2 + Log[2]*Log[1 - x]*Log[1 + x] -
 		(Log[1 - x]*Log[1 + x]^2)/2 + Log[1 + x]^3/6 - PolyLog[3, (1 - x)/2] - PolyLog[3, (1 + x)/2] + Zeta[3]
 		),
 
-	PolyLog[3, -(1 - Sqrt[x_Symbol])/(1 + Sqrt[x_Symbol])]/; optSqrt && optPolyLog :>
+	PolyLog[3, -((1 - Sqrt[x_Symbol])/(1 + Sqrt[x_Symbol]))]/; optSqrt && optPolyLog :>
 		(
 		-(Zeta2*Log[2]) + Log[2]^3/3 - (Log[2]^2*Log[1 - Sqrt[x]])/2 + Zeta2*Log[1 + Sqrt[x]] - (Log[2]^2*Log[1 + Sqrt[x]])/2 +
 		Log[2]*Log[1 - Sqrt[x]]*Log[1 + Sqrt[x]] - (Log[1 - Sqrt[x]]*Log[1 + Sqrt[x]]^2)/2 + Log[1 + Sqrt[x]]^3/6 - PolyLog[3, (1 - Sqrt[x])/2] -
@@ -1021,7 +1046,7 @@ simptab =
 	Log[(x_Symbol-1)/x_Symbol]/; optLog :>
 		Log[1-x]-Log[x]+I Pi,
 
-	Log[-(1-x_Symbol)/x_Symbol]/; optLog :>
+	Log[-((1-x_Symbol)/x_Symbol)]/; optLog :>
 		Log[1-x]-Log[x]+I Pi,
 
 	Log[-1-x_Symbol]/; optLog :>
