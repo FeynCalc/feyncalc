@@ -35,5 +35,8 @@ Tests`LoopIntegrals`fcstPaVe = {
 PaVe[0, {a_, b_, c_}, {d_, e_, f_}]","PaVe[0, {a_, b_, c_}, {d_, e_, f_}]"},
 {"fcstPave-ID16","PaVe[0, 0, {p14, p30, p24, p13, p20, p40, p34, p23, p12, p10}, {m4,
 m3, m2, m1, m0}]","PaVe[0, 0, {p10, p13, p12, p40, p30, p34, p20, p24, p14, p23}, {m3,
-m0, m1, m4, m2}]"}
+m0, m1, m4, m2}]"},
+{"fcstPave-ID17","PaVe[2, {0, SP[p, p], SP[p, p]}, {0, 0, 0}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True]","PaVe[1, {SP[p, p], SP[p, p], 0}, {0, 0, 0}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True]"}
 }

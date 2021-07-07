@@ -119,11 +119,11 @@ amp[3] = amp[2]//ReplaceAll[#,FCI[GAD[mu]]:>0]&//DotSimplify
 
 
 amp[4] = amp[3]/.{
-	PaVe[1,{ME^2,0,ME^2},{0,ME^2,ME^2},OptionsPattern[]]->
+	PaVe[1, {0, SMP["m_e"]^2, SMP["m_e"]^2}, {SMP["m_e"]^2, SMP["m_e"]^2, 0},OptionsPattern[]]->
 		1/(32Pi^4 ME^2),
-	PaVe[1,1,{ME^2,0,ME^2},{0,ME^2,ME^2},OptionsPattern[]]->
+	PaVe[1, 1, {0, SMP["m_e"]^2, SMP["m_e"]^2}, {SMP["m_e"]^2, SMP["m_e"]^2, 0},OptionsPattern[]]->
 		-(1/(96Pi^4 ME^2)),
-	PaVe[1,2,{ME^2,0,ME^2},{0,ME^2,ME^2},OptionsPattern[]]->
+	PaVe[1, 2, {SMP["m_e"]^2, 0, SMP["m_e"]^2}, {0, SMP["m_e"]^2, SMP["m_e"]^2},OptionsPattern[]]->
 		-(1/(192Pi^4 ME^2))
 }
 
@@ -141,7 +141,7 @@ amp[5] = amp[4]//ChangeDimension[#,4]&//ReplaceAll[#,D->4]&
 
 
 f2[0]=(amp[5]/((I SMP["e"])/(2 ME)))//
-	ReplaceAll [#,{Spinor[__].Spinor[__]:>1,
+	ReplaceAll [#,{Spinor[__] . Spinor[__]:>1,
 	FCI[FV[p1,_]+FV[p2,_]]:>1}]&
 
 
@@ -155,3 +155,6 @@ Text->{"\tCompare to J. Schwinger, Phys. Rev. 73, \
 416-417, 1948:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
+
+
+

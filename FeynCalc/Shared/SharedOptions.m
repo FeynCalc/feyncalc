@@ -244,7 +244,7 @@ the known symmetries between those arguments.";
 
 PaVeOrderList::usage=
 "PaVeOrderList is an option for PaVeOrder and PaVeReduce, \
-specifying in which order the arguments of D0 are to be permuted.";
+specifying in which order the arguments of PaVe functions are to be permuted.";
 
 QuarkMass::usage= "QuarkMass is an option of Amplitude.";
 
@@ -269,7 +269,7 @@ various FCLoopBasis* functions. For scalar products it specifies the dimensions 
 for which the scalar products will be set when ScalarProduct or CartesianScalarProduct  \
 are used with the equality sign, e.g. in ScalarProduct[a, b] = m^2. By default, the \
 scalar products are set for 4 and D dimensions. By changing this option \
-the user can add other dimensions or delete the exising ones. In case of the FCLoopBasis*
+the user can add other dimensions or delete the exising ones. In case of the FCLoopBasis* \
 functions this option specifies the dimensions of the loop and external momenta to be taken \
 into account when extracting the propagator basis.";
 

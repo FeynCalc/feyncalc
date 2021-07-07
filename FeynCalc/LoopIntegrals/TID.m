@@ -316,7 +316,7 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 		If[	optToPaVe===True || (optUsePaVeBasis===True && optToPaVe===Automatic),
 			FCPrint[1, "TID: Applying ToPaVe to the scalar part of the input expression.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
-			irrelevant = ToPaVe[irrelevant,q, FCI->True];
+			irrelevant = ToPaVe[irrelevant,q, FCI->True, PaVeAutoOrder-> paveao, PaVeAutoReduce-> pavear];
 			FCPrint[1, "TID: Done applying ToPaVe, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 			FCPrint[3, "TID: After ToPaVe: ", res , FCDoControl->tidVerbose]
 		];
@@ -445,7 +445,7 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 				If[	optToPaVe===True || ((optUsePaVeBasis===True || !FreeQ2[solsList,FeynCalc`Package`PaVeHeadsList]) && optToPaVe===Automatic),
 					FCPrint[1, "TID: Applying ToPaVe to the list of the reduced integrals.", FCDoControl->tidVerbose];
 					time=AbsoluteTime[];
-					solsList = ToPaVe[(#/.tidPaVe->Identity),q, FCI->True]&/@solsList;
+					solsList = ToPaVe[(#/.tidPaVe->Identity),q, FCI->True, PaVeAutoOrder-> paveao, PaVeAutoReduce-> pavear]&/@solsList;
 					FCPrint[1, "TID: Done applying ToPaVe, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 					FCPrint[3, "TID: After ToPaVe: ", res , FCDoControl->tidVerbose]
 				];

@@ -11,8 +11,7 @@
 	Copyright (C) 2014-2021 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Definitions of Passarino Veltman integrals and their
-	derivatives															    *)
+(* :Summary:  Direct Passarino-Veltman integrals and their derivatives		*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -94,10 +93,10 @@ End[]
 Begin["`PaVeIntegrals`Private`"]
 
 PaVeHeadsList  = {PaVe,GenPaVe,A0,A00,B0,B00,B1,B11,DB1,C0,D0};
-ClearAttributes[B0, ReadProtectecd];
-ClearAttributes[B00, ReadProtectecd];
-ClearAttributes[B1, ReadProtectecd];
-ClearAttributes[B11, ReadProtectecd];
+ClearAttributes[B0, ReadProtected];
+ClearAttributes[B00, ReadProtected];
+ClearAttributes[B1, ReadProtected];
+ClearAttributes[B11, ReadProtected];
 
 Options[A0] = {
 	A0ToB0 -> False
