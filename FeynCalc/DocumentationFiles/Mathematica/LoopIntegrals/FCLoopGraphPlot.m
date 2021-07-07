@@ -55,6 +55,14 @@ FCLoopIntegralToGraph[FAD[p,p+q1,p+q1+q2,p+q1+q2+q3,p+q1+q2+q3+q4],{p}]
 FCLoopGraphPlot[%]
 
 
+FCLoopIntegralToGraph[FAD[p1,p2,Q-p1-p2,Q-p1,Q-p2],{p1,p2}]
+FCLoopGraphPlot[%]
+
+
+FCLoopIntegralToGraph[FAD[p1,p2,p3,Q-p1-p2-p3,Q-p1-p2,Q-p1,Q-p2,p1+p3],{p1,p2,p3}]
+FCLoopGraphPlot[%]
+
+
 (* ::Text:: *)
 (*The `Style` option can be used to label lines carrying different masses in a particular way*)
 
@@ -77,6 +85,9 @@ Magnify[FCLoopGraphPlot[%, GraphPlot-> {MultiedgeStyle->0.35,Frame->True},Style-
 FCLoopIntegralToGraph[ FAD[{k2,0,2},{k1-q},{k1-k3,mc},{k2-k3,mc}],{k1,k2,k3}]
 Magnify[FCLoopGraphPlot[%, GraphPlot-> {MultiedgeStyle->0.35,Frame->True},Style->{{"InternalLine",_,_,mm_/;!FreeQ[mm,mg]}->{Red,Thick,Dashed},
 {"InternalLine",_,_,mm_/;!FreeQ[mm,mc]}->{Blue,Thick,Dashed}}],1.5]
+
+
+
 
 
 
