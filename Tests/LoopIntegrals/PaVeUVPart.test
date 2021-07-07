@@ -1696,5 +1696,15 @@ m2^4) SPD[p1, p1]^4)/(64 (-4 + D)))"},
 {"fcstPaVeUVPart-ID432",
 "TID[FVD[k + p, rho] FVD[k + p, si] FAD[k, {k + p, 0, 2}], k,
 UsePaVeBasis -> True] // PaVeUVPart[#, FCE -> True] &",
-"-((I \[Pi]^2 MTD[rho, si])/(2 (-4 + D)))"}
+"-((I \[Pi]^2 MTD[rho, si])/(2 (-4 + D)))"},
+{"fcstPaVeUVPart-ID433",
+"PaVeUVPart[(CA - 2*CF)*(-2*CA*mq + 2*CA*mq*Zm*Zpsi + 2*CA*GSD[p] -
+	2*CA*Zpsi*GSD[p] + (CA^2*D*gs^2*Pi^2*A0[mq^2]*GSD[p])/(2*SPD[p, p])),
+FCE -> True]",
+"(-2*(2*CA^3*gs^2*mq^2*Pi^2*GSD[p] - 4*CA^2*CF*gs^2*mq^2*Pi^2*GSD[p] - 4*CA^2*mq*SPD[p, p] +
+8*CA*CF*mq*SPD[p, p] + CA^2*D*mq*SPD[p, p] - 2*CA*CF*D*mq*SPD[p, p] + 4*CA^2*mq*Zm*Zpsi*SPD[p, p] -
+8*CA*CF*mq*Zm*Zpsi*SPD[p, p] - CA^2*D*mq*Zm*Zpsi*SPD[p, p] + 2*CA*CF*D*mq*Zm*Zpsi*SPD[p, p] +
+4*CA^2*GSD[p]*SPD[p, p] - 8*CA*CF*GSD[p]*SPD[p, p] - CA^2*D*GSD[p]*SPD[p, p] +
+2*CA*CF*D*GSD[p]*SPD[p, p] -4*CA^2*Zpsi*GSD[p]*SPD[p, p] + 8*CA*CF*Zpsi*GSD[p]*SPD[p, p] +
+CA^2*D*Zpsi*GSD[p]*SPD[p, p] - 2*CA*CF*D*Zpsi*GSD[p]*SPD[p, p]))/((-4 + D)*SPD[p, p])"}
 });

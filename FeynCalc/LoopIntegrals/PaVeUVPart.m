@@ -105,8 +105,13 @@ PaVeUVPart[expr_,  OptionsPattern[]] :=
 			ex = ex /. dim -> dMinus4 + 4;
 
 			{rest,loopInts,prodsUnique} = FCLoopExtract[ex,{dummy},paVeInt,PaVe->True, FCI->True, PaVeIntegralHeads -> Join[FeynCalc`Package`PaVeHeadsList,{dMinus4}]];
-			FCPrint[3, "PaVeUVPart: List of the unique integrals multiplied by D: ",  prodsUnique, FCDoControl->pvuvVerbose];
 
+
+			(*Do not touch terms that are not multiplied by PaVe functions (e.g. counter-term contributions) *)
+			loopInts = loopInts /. paVeInt[x_]/; FreeQ2[x,FeynCalc`Package`PaVeHeadsList] :> x;
+			prodsUnique = SelectNotFree[prodsUnique,FeynCalc`Package`PaVeHeadsList];
+
+			FCPrint[3, "PaVeUVPart: List of the unique integrals multiplied by D: ",  prodsUnique, FCDoControl->pvuvVerbose];
 
 			intsUnique = Cases2[prodsUnique,FeynCalc`Package`PaVeHeadsList];
 			FCPrint[3, "PaVeUVPart: List of the unique integrals: ",  intsUnique, FCDoControl->pvuvVerbose];
