@@ -159,8 +159,8 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 
 		nx = expr;
 
-		If[	!FreeQ[nx,SeriesData],
-			Message[Collect2::failmsg,"Collect2 cannot work on expressions that contain SeriesData!"];
+		If[	!FreeQ2[nx,{SeriesData,ConditionalExpression}],
+			Message[Collect2::failmsg,"Collect2 cannot work on expressions that contain SeriesData or ConditionalExpression!"];
 			Abort[]
 		];
 
