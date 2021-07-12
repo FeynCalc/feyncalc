@@ -1,0 +1,45 @@
+
+
+(* :Title: FCLoopCreateRuleGLIToGLI.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2021 Rolf Mertig
+	Copyright (C) 1997-2021 Frederik Orellana
+	Copyright (C) 2014-2021 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopCreateRuleGLIToGLI		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopCreateRuleGLIToGLI =
+({
+{"FCLoopCreateRuleGLIToGLI-ID1",
+"FCLoopCreateRuleGLIToGLI[FCTopology[1,{SFAD[p]}],FCTopology[2,{SFAD[p]\
+}]]", "GLI[2, {n1_}] :> GLI[1, {n1}]"},
+{"FCLoopCreateRuleGLIToGLI-ID2",
+"FCLoopCreateRuleGLIToGLI[FCTopology[1,{SFAD[p],SFAD[q]}],FCTopology[2,\
+{SFAD[p]}]]", "GLI[2, {n1_}] :> GLI[1, {n1, 0}]"},
+{"FCLoopCreateRuleGLIToGLI-ID3",
+"FCLoopCreateRuleGLIToGLI[FCTopology[1,{SFAD[p],SFAD[q]}],FCTopology[2,\
+{SFAD[q],SFAD[p]}]]", "GLI[2, {n2_, n1_}] :> GLI[1, {n1, n2}]"},
+{"FCLoopCreateRuleGLIToGLI-ID4",
+"FCLoopCreateRuleGLIToGLI[FCTopology[1,{SFAD[r],SFAD[p],SFAD[q]}],\
+FCTopology[2,{SFAD[p]}]]", "GLI[2, {n2_}] :> GLI[1, {0, n2, 0}]"},
+{"FCLoopCreateRuleGLIToGLI-ID5",
+"FCLoopCreateRuleGLIToGLI[FCTopology[\"tmpTopo4\",{SFAD[{{0,(k1+k2).nb}\
+,{0,1},1}],SFAD[{{0,(k1-k3).n},{0,1},1}],SFAD[{{0,n.(-k1-k2+q)},{0,1},\
+1}],SFAD[{{0,nb.(-k1+k3+q)},{0,1},1}],SFAD[{{-k1,0},{0,1},1}],SFAD[{{\
+k2,0},{0,1},1}],SFAD[{{k1+k2,0},{0,1},1}],SFAD[{{-k3,0},{0,1},1}],\
+SFAD[{{-k1+k3,0},{0,1},1}],SFAD[{{k1-k3-q,0},{0,1},1}],SFAD[{{k1+k2-\
+k3-q,0},{0,1},1}],SFAD[{{-k1-k2+q,0},{0,1},1}]}],\[IndentingNewLine]\
+FCTopology[\"tmpTopo18\",{SFAD[{{0,(k1+k2).nb},{0,1},1}],SFAD[{{0,n.(-\
+k1-k2+q)},{0,1},1}],SFAD[{{0,nb.(-k1+k3+q)},{0,1},1}],SFAD[{{-k1,0},{\
+0,1},1}],SFAD[{{k2,0},{0,1},1}],SFAD[{{k1+k2,0},{0,1},1}],SFAD[{{-k3,\
+0},{0,1},1}],SFAD[{{-k1+k3,0},{0,1},1}],SFAD[{{k1-k3-q,0},{0,1},1}],\
+SFAD[{{k1+k2-k3-q,0},{0,1},1}],SFAD[{{-k1-k2+q,0},{0,1},1}]}]]",
+"GLI[\"tmpTopo18\", {n1_, n3_, n4_, n5_, n6_, n7_, n8_, n9_, n10_, \
+n11_, n12_}] :> GLI[\"tmpTopo4\", {n1, 0, n3, n4, n5, n6, n7, n8, n9, \
+n10, n11, n12}]"}
+})
