@@ -103,9 +103,12 @@ FCToPakForm[expr_, lmoms_List, OptionsPattern[]] :=
 			Message[FCToPakForm::failmsg,"Failed to determine a unique ordering for this polynomial"];
 			Abort[]
 		];
-		FCPrint[1, "FCToPakForm: FCPakOrder done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctpfVerbose];
+		FCPrint[1, "FCToPakForm: sigma: ", sigma, FCDoControl->fctpfVerbose];
 
-		pVarsRepRule = Thread[Rule[pVars, Permute[pVars, Cycles[{sigma}]]]];
+		FCPrint[1, "FCToPakForm: Calling FCPakOrder.", FCDoControl -> fctpfVerbose];
+
+		pVarsRepRule =  Thread[Rule[Extract[pVars, List /@ sigma], pVars]];
+
 		FCPrint[2, "FCToPakForm: Reordering rule: ", pVarsRepRule, FCDoControl -> fctpfVerbose];
 		powsReordered = Extract[pows, List /@ sigma];
 		uPoly = uPoly /. pVarsRepRule;
@@ -116,6 +119,7 @@ FCToPakForm[expr_, lmoms_List, OptionsPattern[]] :=
 		FCPrint[3, "FCToPakForm: Reordered U polynomial: ", uPoly, FCDoControl -> fctpfVerbose];
 		FCPrint[3, "FCToPakForm: Reordered F polynomial: ", fPoly, FCDoControl -> fctpfVerbose];
 
+		(* Function[{U, F, charPoly, pows, head, int, sigma}, {int, head[ExpandAll[charPoly], Transpose[pows]]}]*)
 		res = OptionValue[Function][uPoly, fPoly, pPoly, powsReordered, OptionValue[Head], expr, sigma];
 
 		If[	OptionValue[FCE],

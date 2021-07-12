@@ -19,7 +19,7 @@
 FCFindPakMappings::usage =
 "FCFindPakMappings[{int1, int2, ...}, {p1, p2, ...}] finds mappings between scalar
 multiloop-integrals int1, int2, ... that depend on the loop momenta p1, p2, ...
-using using the algorithm of Alexey Pak (arXiv:1111.0868).
+using the algorithm of Alexey Pak (arXiv:1111.0868).
 
 The current implementation is based on the FindEquivalents function from \
 FIRE 6 (arXiv:1901.07808)";
@@ -41,7 +41,7 @@ Options[FCFindPakMappings] = {
 	FCI 						-> False,
 	FCVerbose 					-> False,
 	FinalSubstitutions			-> {},
-	Function					-> Function[{U, F, pows, head, int}, {int, head[ExpandAll[U], ExpandAll[F], Transpose[pows]]}]
+	Function					-> Function[{U, F, charPoly, pows, head, int, sigma}, {int, head[ExpandAll[U], ExpandAll[F]]}]
 };
 
 FCFindPakMappings[expr_, lmoms_List, OptionsPattern[]] :=
@@ -62,6 +62,8 @@ FCFindPakMappings[expr_, lmoms_List, OptionsPattern[]] :=
 			Check->False, Collecting->False, Names->x, CharacteristicPolynomial->OptionValue[CharacteristicPolynomial],
 			Function->OptionValue[Function]] & /@ expr;
 		FCPrint[1, "FCFindPakMappings: FCToPakForm done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfpmVerbose];
+
+		FCPrint[3, "FCFindPakMappings: Output of FCToPakForm: ", pakFormInts, FCDoControl->fcfpmVerbose];
 
 		res = Reap[Sow [Sequence @@ #] & /@ pakFormInts, _, ##2 &][[2]];
 
