@@ -1,0 +1,56 @@
+
+
+(* :Title: FCLoopScalelessQ.test                                              	    *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2021 Rolf Mertig
+	Copyright (C) 1997-2021 Frederik Orellana
+	Copyright (C) 2014-2021 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopScalelessQ	  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopScalelessQ =
+({
+{"fcstFCLoopPakScalelessQ-ID1",
+"FCLoopPakScalelessQ[-(SPD[p,p]*x[1]*x[2]*(x[1]+x[2])),x]",
+"False"},
+{"fcstFCLoopPakScalelessQ-ID2", "FCLoopPakScalelessQ[0,x]",
+"True"},
+{"fcstFCLoopPakScalelessQ-ID3",
+"FCLoopPakScalelessQ[-(SPD[Q, Q]*(x[1]*x[2] + x[2]*x[3] + \
+x[1]*x[4] + x[3]*x[4] + x[1]*x[5] + x[2]*x[5] + x[3]*x[5] + x[4]*x[5])*
+(x[1]*x[2]*x[3] + x[1]*x[2]*x[4] + x[1]*x[3]*x[4] + x[2]*x[3]*x[4] \
++ x[1]*x[2]*x[5] + x[1]*x[3]*x[5] + x[2]*x[4]*x[5] + \
+x[3]*x[4]*x[5])),x]", "False"},
+{"fcstFCLoopPakScalelessQ-ID4",
+"FCLoopPakScalelessQ[(q^2*x[1]+mg^2*x[3]+mc^2*x[4]+mc^2*x[5])*(x[1]\
+*x[2]*x[4]+x[1]*x[3]*x[4]+x[2]*x[3]*x[4]+x[1]*x[2]*x[5]+x[1]*x[3]*x[5]\
++x[2]*x[3]*x[5]+x[1]*x[4]*x[5]+x[2]*x[4]*x[5])^2,x]", "False"},
+{"fcstFCLoopPakScalelessQ-ID5",
+"FCLoopPakScalelessQ[x[3]^2*(x[1]*x[2]*x[4]+x[1]*x[2]*x[5]+x[1]*x[\
+4]*x[5]+x[1]*x[2]*x[6]+x[2]*x[4]*x[6]+x[1]*x[5]*x[6]+x[2]*x[5]*x[6]+x[\
+4]*x[5]*x[6]+x[1]*x[2]*x[7]+x[1]*x[5]*x[7]+x[2]*x[6]*x[7]+x[5]*x[6]*x[\
+7])*(mc^2*x[1]*x[2]^2*x[4]+mg^2*x[1]*x[2]*x[4]^2+mc^2*x[1]*x[2]^2*x[5]\
++2*mc^2*x[1]*x[2]*x[4]*x[5]+mg^2*x[1]*x[2]*x[4]*x[5]+mg^2*x[1]*x[4]^2*\
+x[5]+mc^2*x[1]*x[2]*x[5]^2+mc^2*x[1]*x[4]*x[5]^2+mc^2*x[1]*x[2]^2*x[6]\
++mg^2*x[1]*x[2]*x[4]*x[6]-SPD[q,q]*x[1]*x[2]*x[4]*x[6]+mc^2*x[2]^2*x[\
+4]*x[6]+mg^2*x[2]*x[4]^2*x[6]+2*mc^2*x[1]*x[2]*x[5]*x[6]-SPD[q,q]*x[1]\
+*x[2]*x[5]*x[6]+mc^2*x[2]^2*x[5]*x[6]+mg^2*x[1]*x[4]*x[5]*x[6]-SPD[q,\
+q]*x[1]*x[4]*x[5]*x[6]+2*mc^2*x[2]*x[4]*x[5]*x[6]+mg^2*x[2]*x[4]*x[5]*\
+x[6]+mg^2*x[4]^2*x[5]*x[6]+mc^2*x[1]*x[5]^2*x[6]+mc^2*x[2]*x[5]^2*x[6]\
++mc^2*x[4]*x[5]^2*x[6]+mc^2*x[1]*x[2]^2*x[7]+mb^2*x[1]*x[2]*x[4]*x[7]+\
+mg^2*x[1]*x[2]*x[4]*x[7]-SPD[q,q]*x[1]*x[2]*x[4]*x[7]+mb^2*x[1]*x[2]*\
+x[5]*x[7]+2*mc^2*x[1]*x[2]*x[5]*x[7]-SPD[q,q]*x[1]*x[2]*x[5]*x[7]+mb^\
+2*x[1]*x[4]*x[5]*x[7]+mg^2*x[1]*x[4]*x[5]*x[7]-SPD[q,q]*x[1]*x[4]*x[5]\
+*x[7]+mc^2*x[1]*x[5]^2*x[7]+mb^2*x[1]*x[2]*x[6]*x[7]+mc^2*x[2]^2*x[6]*\
+x[7]+mb^2*x[2]*x[4]*x[6]*x[7]+mg^2*x[2]*x[4]*x[6]*x[7]-SPD[q,q]*x[2]*\
+x[4]*x[6]*x[7]+mb^2*x[1]*x[5]*x[6]*x[7]+mb^2*x[2]*x[5]*x[6]*x[7]+2*mc^\
+2*x[2]*x[5]*x[6]*x[7]-SPD[q,q]*x[2]*x[5]*x[6]*x[7]+mb^2*x[4]*x[5]*x[6]\
+*x[7]+mg^2*x[4]*x[5]*x[6]*x[7]-SPD[q,q]*x[4]*x[5]*x[6]*x[7]+mc^2*x[5]^\
+2*x[6]*x[7]+mb^2*x[1]*x[2]*x[7]^2+mb^2*x[1]*x[5]*x[7]^2+mb^2*x[2]*x[6]\
+*x[7]^2+mb^2*x[5]*x[6]*x[7]^2),x]", "True"}
+})
