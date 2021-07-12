@@ -73,7 +73,7 @@ FCFeynmanProjectivize[ex_, var_, OptionsPattern[]] :=
 
 		FCPrint[1, "FCFeynmanProjectivize: Feynman parameter variables: ", xVars, FCDoControl->fcfprVerbose];
 		FCPrint[1, "FCFeynmanProjectivize: Variables appearing in the exponents: ", expVars, FCDoControl->fcfprVerbose];
-		FCPrint[1, "FCFeynmanProjectivize: Kinematic variables: ", expVars, FCDoControl->fcfprVerbose];
+		FCPrint[1, "FCFeynmanProjectivize: Kinematic variables: ", kinVars, FCDoControl->fcfprVerbose];
 
 		If[	Length[xVars]<2,
 			Message[FCFeynmanProjectivize::failmsg, "Integrals with less than two integration variables are not supported."];
