@@ -155,6 +155,13 @@ that is characterized by the propagators {prop1, prop2, ...}. The propagators \
 in the list do not necessarily have to form a valid basis, i.e. the basis may also \
 be incomplete or overdetermined.";
 
+GLI::usage =
+"GLI[id,{indices}] is a generic loop integral, where the indices denote \
+powers of propagators in the propagator basis (FCTopology) named id.";
+
+GLIMultiply::usage =
+"GLIMultiply is like GLI but with local multiplication properties.";
+
 DCHN::usage =
 "DCHN[x,i,j] is a chain of Dirac matrices x and is transformed \
 into DiracChain[FCI[x],DiracIndex[i],DiracIndex[j]] by \
@@ -1488,6 +1495,15 @@ FAD[a___,{_,_,0},b:Except[_?OptionQ]..., opts:OptionsPattern[]]:=
 (* A propagator to the power 0 is unity *)
 FAD[{_,_,0}, OptionsPattern[]]:=
 	1;
+
+GLIMultiply /:
+	Power[GLIMultiply[id_, indices_List], n_] :=
+		GLIMultiply[id, n * indices];
+
+
+GLIMultiply /:
+	GLIMultiply[id_, indices1_List] GLIMultiply[id_, indices2_List] :=
+		GLIMultiply[id, indices1 + indices2]
 
 FCGV[a_String, OptionsPattern[]] :=
 	ToExpression[a]/; OptionValue[EvaluateFCGV];

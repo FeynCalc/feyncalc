@@ -946,6 +946,10 @@ MakeBoxes[pref_. SFAD[a__, opts:OptionsPattern[]], TraditionalForm] :=
 	ToBoxes[pref/(Apply[DOT, Map[sfadTypeset[# /. DOT[x_,y_]:> sp[x,y], OptionValue[SFAD,{opts},Dimension], OptionValue[SFAD,{opts},EtaSign]]&, {a}]] /. DOT -> dootpow), TraditionalForm]/; FCPatternFreeQ[{a,opts}];
 
 
+GLI /: MakeBoxes[GLI[id_, indices_List], TraditionalForm] :=
+	RowBox[{SuperscriptBox["G", ToBoxes[id]], "(", TBox[Sequence @@ Riffle[indices, ","]], ")"}];
+
+
 FCGV /: MakeBoxes[FCGV[a_String, opts:OptionsPattern[]], TraditionalForm]/; OptionValue[FCGV,{opts},SilentTypeSetting] :=
 	ToBoxes[a, TraditionalForm];
 
