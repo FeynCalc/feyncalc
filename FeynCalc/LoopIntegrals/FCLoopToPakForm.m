@@ -52,11 +52,11 @@ Options[FCLoopToPakForm] = {
 	Names						-> FCGV["x"]
 };
 
-FCLoopToPakForm[expr_, lmoms_List, OptionsPattern[]] :=
+FCLoopToPakForm[expr_/;Head[expr]=!=List, lmoms_List, OptionsPattern[]] :=
 	Block[{	uPoly, fPoly, pows, mat, Q, J, tensorPart,
 			tensorRank, rulePowers, pPoly, pVars, sigma,
 			pVarsRepRule, powsReordered, optPowerMark, res, time,
-			optFactoring},
+			optFactoring, optFinalSubstitutions, ex},
 
 		If[	OptionValue[FCVerbose] === False,
 			fctpfVerbose = $VeryVerbose,
@@ -66,15 +66,23 @@ FCLoopToPakForm[expr_, lmoms_List, OptionsPattern[]] :=
 
 		optFactoring = OptionValue[Factoring];
 		optPowerMark = OptionValue[Power];
+		optFinalSubstitutions = OptionValue[FinalSubstitutions];
 
 		FCPrint[1, "FCLoopToPakForm: Entering.", FCDoControl -> fctpfVerbose];
 		FCPrint[3, "FCLoopToPakForm: Entering with: ", expr, FCDoControl -> fctpfVerbose];
+
+
+		If[	OptionValue[FCI],
+			ex = expr,
+			{ex,optFinalSubstitutions} = FCI[{expr,optFinalSubstitutions}]
+		];
+
 
 		time=AbsoluteTime[];
 		FCPrint[1, "FCLoopToPakForm: Calling FCFeynmanPrepare.", FCDoControl -> fctpfVerbose];
 
 		{uPoly, fPoly, pows, mat, Q, J, tensorPart, tensorRank} =
-			FCFeynmanPrepare[expr, lmoms, FCI -> OptionValue[FCI], FinalSubstitutions -> OptionValue[FinalSubstitutions],
+			FCFeynmanPrepare[ex, lmoms, FCI -> True, FinalSubstitutions -> optFinalSubstitutions,
 				Names -> OptionValue[Names], Indexed -> OptionValue[Indexed], Check->OptionValue[Check],
 				Collecting -> OptionValue[Collecting]];
 		FCPrint[1, "FCLoopToPakForm: FCFeynmanPrepare done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctpfVerbose];
@@ -123,7 +131,7 @@ FCLoopToPakForm[expr_, lmoms_List, OptionsPattern[]] :=
 		FCPrint[3, "FCLoopToPakForm: Reordered F polynomial: ", fPoly, FCDoControl -> fctpfVerbose];
 
 		(* Function[{U, F, charPoly, pows, head, int, sigma}, {int, head[ExpandAll[charPoly], Transpose[pows]]}]*)
-		res = OptionValue[Function][uPoly, fPoly, pPoly, powsReordered, OptionValue[Head], expr, sigma];
+		res = OptionValue[Function][uPoly, fPoly, pPoly, powsReordered, OptionValue[Head], ex, sigma];
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
