@@ -109,13 +109,17 @@ FCFeynmanPrepare[expr_, lmoms_List /; ! OptionQ[lmoms], OptionsPattern[]] :=
 			{ex,optFinalSubstitutions} = FCI[{expr,optFinalSubstitutions}]
 		];
 
+		If[	Head[ex]===FCTopology,
+			ex = ex[[2]]
+		];
+
 		If [!FreeQ2[$ScalarProducts, lmoms],
 			Message[FCFeynmanPrepare::failmsg, "Some of the loop momenta have scalar product rules attached to them."];
 			Abort[]
 		];
 
 		If[	!FCDuplicateFreeQ[lmoms],
-			Message[FCFeynmanPrepare::failmsg, "The list of loop momenta may not contain duplicate entries."];
+			Message[FCFeynmanPrepare::failmsg, "The list of the loop momenta may not contain duplicate entries."];
 			Abort[]
 		];
 

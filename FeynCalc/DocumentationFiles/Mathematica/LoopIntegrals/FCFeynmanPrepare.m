@@ -68,7 +68,31 @@ FCFeynmanPrepare[{FAD[{q,m}],FAD[{q-p,m2}],FVD[q,\[Mu]]FVD[q,\[Nu]]FVD[q,\[Rho]]
 
 
 (* ::Text:: *)
+(*Massless 2-loop self-energy*)
+
+
+FCFeynmanPrepare[FAD[p1,p2,Q-p1-p2,Q-p1,Q-p2],{p1,p2},Names->x]
+
+
+(* ::Text:: *)
+(*Factorizing integrals  also work*)
+
+
+FCFeynmanPrepare[FAD[{p1,m1},{p2,m2},Q-p1,Q-p2],{p1,p2},Names->x]
+
+
+(* ::Text:: *)
 (*Cartesian propagators are equally supported*)
 
 
 FCFeynmanPrepare[CSPD[q,p]CFAD[{q,m},{q-p,m2}],{q},Names->x]
+
+
+(* ::Text:: *)
+(*`FCFeynmanPrepare` also works with `FCTopology` objects*)
+
+
+FCFeynmanPrepare[FCTopology[fctopology1,{SFAD[{{p1,0},{0,1},1}],SFAD[{{p2,0},{0,1},1}],
+SFAD[{{p3,0},{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,1},1}],SFAD[{{p2+p3,0},{0,1},1}],
+SFAD[{{p2-Q,0},{0,1},1}],SFAD[{{p1-Q,0},{0,1},1}],SFAD[{{p2+p3-Q,0},{0,1},1}],
+SFAD[{{p1+p3-Q,0},{0,1},1}]}],{p1,p2,p3},Names->x,FCE->True]
