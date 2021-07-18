@@ -155,5 +155,8 @@ b[41, c1 + c2, c3 + c4] + b[42, c1 + c2, c3 + c4] +
 b[43, c1 + c2, c3 + c4] + b[44, c1 + c2, c3 + c4] +
 b[45, c1 + c2, c3 + c4] + b[46, c1 + c2, c3 + c4] +
 b[47, c1 + c2, c3 + c4] + b[48, c1 + c2, c3 + c4] +
-b[49, c1 + c2, c3 + c4] + b[50, c1 + c2, c3 + c4])"}
+b[49, c1 + c2, c3 + c4] + b[50, c1 + c2, c3 + c4])"},
+{"fcstCollect2-ID27","Collect2[Expand[(a - b - c - d)^5], a, Head -> {Identity, h2}]",
+"h2[1, a^5] + h2[-5*(b + c + d), a^4] + h2[10*(b + c + d)^2, a^3] +
+h2[-10*(b + c + d)^3, a^2] + h2[5*(b + c + d)^4, a] + h2[-(b + c + d)^5, 1]"}
 };

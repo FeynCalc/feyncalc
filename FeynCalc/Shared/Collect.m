@@ -100,7 +100,7 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 		new = 0, unity,re,compCON,ccflag = False, factor,expanding, times,time,
 		null1,null2,coeffArray,tvm,coeffHead,optIsolateFast,tempIso,factorOut, monomRepRule={},
 		nonAtomicMonomials,optHead,firstHead,secondHead=Null,optInitialFunction,numerator,denominator,
-		optNumerator, optFactoringDenominator, optTimeConstrained},
+		optNumerator, optFactoringDenominator, optTimeConstrained, ident},
 
 		If [OptionValue[FCVerbose]===False,
 			cl2Verbose=$VeryVerbose,
@@ -123,9 +123,14 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 
 		If[	Head[optHead]===List,
 			firstHead 	= optHead[[1]];
-			secondHead	= optHead[[2]],
+			secondHead	= optHead[[2]];
+			If[	firstHead===Identity,
+				firstHead=ident
+			],
 			firstHead 	= optHead
 		];
+
+
 
 		factorOut = OptionValue[FCFactorOut];
 
@@ -341,7 +346,7 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1,"Collect2: Applying secondHead.", FCDoControl->cl2Verbose];
 			lin = secondHead[lin,1] /. secondHead[0,_] -> 0;
-			new = secondHead/@(new + null1 + null2) /. secondHead[null1|null2]->0 /. secondHead[a_firstHead b_]:> secondHead[b,a];
+			new = secondHead/@(new + null1 + null2) /. secondHead[null1|null2]->0 /. secondHead[a_firstHead b_]:> secondHead[b,a] /. ident->Identity;
 			FCPrint[1,"Collect2: Done applying secondHead, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
 		];
 
