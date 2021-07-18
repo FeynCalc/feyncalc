@@ -35,28 +35,64 @@
 (* Examples *)
 
 
+(* ::Text:: *)
+(*1-loop tadpole*)
+
+
 FCLoopIntegralToGraph[FAD[{p,m}],{p}]
 FCLoopGraphPlot[%]
+
+
+(* ::Text:: *)
+(*1-loop massless bubble*)
 
 
 FCLoopIntegralToGraph[FAD[p,p-q],{p}]
 FCLoopGraphPlot[%]
 
 
+(* ::Text:: *)
+(*1-loop massless triangle*)
+
+
 FCLoopIntegralToGraph[FAD[p,p+q1,p+q1+q2],{p}]
 FCLoopGraphPlot[%]
+
+
+(* ::Text:: *)
+(*1-loop massless box*)
 
 
 FCLoopIntegralToGraph[FAD[p,p+q1,p+q1+q2,p+q1+q2+q3],{p}]
 FCLoopGraphPlot[%]
 
 
+(* ::Text:: *)
+(*1-loop massless pentagon*)
+
+
 FCLoopIntegralToGraph[FAD[p,p+q1,p+q1+q2,p+q1+q2+q3,p+q1+q2+q3+q4],{p}]
 FCLoopGraphPlot[%]
 
 
+(* ::Text:: *)
+(*2-loop massless self-energy*)
+
+
 FCLoopIntegralToGraph[FAD[p1,p2,Q-p1-p2,Q-p1,Q-p2],{p1,p2}]
 FCLoopGraphPlot[%]
+
+
+(* ::Text:: *)
+(*Same topology as before but now fully massive and with some dots*)
+
+
+FCLoopIntegralToGraph[FAD[{p1,m},{p2,m2},{Q-p1-p2,m},{Q-p1,m,2},{Q-p2,m,2}],{p1,p2}]
+FCLoopGraphPlot[%]
+
+
+(* ::Text:: *)
+(*3-loop massless self-energy*)
 
 
 FCLoopIntegralToGraph[FAD[p1,p2,p3,Q-p1-p2-p3,Q-p1-p2,Q-p1,Q-p2,p1+p3],{p1,p2,p3}]
@@ -64,7 +100,20 @@ FCLoopGraphPlot[%]
 
 
 (* ::Text:: *)
+(*3-loop self-energy with two massive lines*)
+
+
+FCLoopIntegralToGraph[Times@@{SFAD[{{p1,0},{m^2,1},1}],SFAD[{{p2,0},{0,1},1}],
+SFAD[{{p3,0},{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,1},1}],SFAD[{{p2+p3,0},{0,1},1}],
+SFAD[{{p2-Q,0},{0,1},1}],SFAD[{{p1-Q,0},{m^2,1},1}],SFAD[{{p2+p3-Q,0},{0,1},1}]},{p1,p2,p3}]
+FCLoopGraphPlot[%]
+
+
+(* ::Text:: *)
 (*The `Style` option can be used to label lines carrying different masses in a particular way*)
+
+
+OptionValue[FCLoopGraphPlot,Style]
 
 
 FCLoopIntegralToGraph[ FAD[{k2,mb},{k3},{k1-q,mc},{k1-k2,mc},{k2-k3}],{k1,k2,k3}]
@@ -87,7 +136,18 @@ Magnify[FCLoopGraphPlot[%, GraphPlot-> {MultiedgeStyle->0.35,Frame->True},Style-
 {"InternalLine",_,_,mm_/;!FreeQ[mm,mc]}->{Blue,Thick,Dashed}}],1.5]
 
 
+(* ::Text:: *)
+(*We can style a fully massive 1-loop box in a very creative way*)
 
+
+FCLoopIntegralToGraph[FAD[{p,m1},{p+q1,m2},{p+q1+q2,m3},{p+q1+q2+q3,m4}],{p}]
+FCLoopGraphPlot[%, GraphPlot-> {MultiedgeStyle->0.35,Frame->True},Style->{
+{"InternalLine",_,_,mm_/;!FreeQ[mm,m1]}->{Red,Thick},
+{"InternalLine",_,_,mm_/;!FreeQ[mm,m2]}->{Blue,Thick},
+{"InternalLine",_,_,mm_/;!FreeQ[mm,m3]}->{Green,Thick},
+{"InternalLine",_,_,mm_/;!FreeQ[mm,m4]}->{Purple,Thick},
+{"ExternalLine",q1}->{Brown,Thick,Dashed}
+}]
 
 
 
