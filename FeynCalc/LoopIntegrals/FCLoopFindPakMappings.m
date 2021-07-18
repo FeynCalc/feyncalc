@@ -41,11 +41,11 @@ Options[FCLoopFindPakMappings] = {
 	FCI 						-> False,
 	FCVerbose 					-> False,
 	FinalSubstitutions			-> {},
-	Function					-> Function[{U, F, charPoly, pows, head, int, sigma}, {int, head[ExpandAll[U], ExpandAll[F]]}]
+	Function					-> Function[{U, F, charPoly, pows, head, int, sigma}, {head[int, Transpose[pows]], head[ExpandAll[U], ExpandAll[F]]}]
 };
 
-FCLoopFindPakMappings[expr_, lmoms_List, OptionsPattern[]] :=
-	Block[{	pakFormInts, res, time, x, pakHead, powerMark},
+FCLoopFindPakMappings[expr_List, lmoms_List, OptionsPattern[]] :=
+	Block[{	pakFormInts, res, time, x, pakHead, powerMark, topoidMode},
 
 		If[	OptionValue[FCVerbose] === False,
 			fcfpmVerbose = $VeryVerbose,
@@ -56,6 +56,12 @@ FCLoopFindPakMappings[expr_, lmoms_List, OptionsPattern[]] :=
 		FCPrint[1, "FCLoopFindPakMappings: Entering.", FCDoControl -> fcfpmVerbose];
 		FCPrint[3, "FCLoopFindPakMappings: Entering with: ", expr, FCDoControl -> fcfpmVerbose];
 
+		If[	TrueQ[MatchQ[expr,{_FCTopology..}]],
+			FCPrint[1, "FCLoopFindPakMappings: Topology identification mode.", FCDoControl -> fcfpmVerbose];
+			topoidMode=True,
+			topoidMode=False
+		];
+
 		time=AbsoluteTime[];
 		FCPrint[1, "FCLoopFindPakMappings: Calling FCToPakForm.", FCDoControl -> fcfpmVerbose];
 		pakFormInts = FCLoopToPakForm[#, lmoms, FCI->OptionValue[FCI], FinalSubstitutions->OptionValue[FinalSubstitutions],
@@ -65,7 +71,20 @@ FCLoopFindPakMappings[expr_, lmoms_List, OptionsPattern[]] :=
 
 		FCPrint[3, "FCLoopFindPakMappings: Output of FCToPakForm: ", pakFormInts, FCDoControl->fcfpmVerbose];
 
-		res = Reap[Sow [Sequence @@ #] & /@ pakFormInts, _, ##2 &][[2]];
+		(* 2nd element are the grouped mappings *)
+		res = Reap[(Sow[Sequence @@ #] & /@ pakFormInts), _][[2]];
+
+		If[	topoidMode,
+			res = res /. pakHead[FCTopology[id_, props_List], {_List, propsReordered_List, _List}] :>
+				List[FCTopology[id, props], FCTopology[id, propsReordered]],
+
+			res = res /. FeynCalc`FCLoopFindPakMappings`Private`pakHead[zz_, __] :> zz
+		];
+
+		If[	!FreeQ[res,pakHead],
+			Message[FCLoopFindPakMappings::failmsg,"Something went wrong while trying to process the output of FCLoopToPakForm"];
+			Abort[]
+		];
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
