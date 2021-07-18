@@ -60,7 +60,7 @@ Options[FCLoopFindTopologies] = {
 	FCVerbose					-> False,
 	FDS							-> True,
 	Factoring					-> False,
-	Head						-> Identity,
+	Head						-> {Identity, FCGV["GLIProduct"]},
 	IsolateFast					-> False,
 	IsolateNames				-> False,
 	MomentumCombine				-> True,
