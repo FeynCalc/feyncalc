@@ -27,7 +27,12 @@ vectors in the numerator) A quick and simple way to plot the graph is to evaluat
 GraphPlot[Labeled @@@ Transpose[output[[1 ;; 2]]]] or GraphPlot[List @@@ Transpose[output[[1 ;; 2]]]]. \
 The visual quality will not be that great, though. To obtain a nicer plot one might use GraphPlot \
 with a custom EdgeTaggedGraph or export the output to a file and visualize it with an external \
-tool such as dot/neato from graphviz."
+tool such as dot/neato from graphviz.
+
+Notice that by default the attempted graph reconstruction is constrained to the maximum duration of
+3 seconds, while the maximum vertex degree is set to 6. This is done to avoid infinite loops on \
+integrals that do not admit a graph representation. For complicated integrals that can be \
+nevertheless represented as graphs one might need to relax these restrictions.";
 
 FCLoopIntegralToGraph::failmsg =
 "Error! FCLoopIntegralToGraph encountered a fatal problem and must abort the computation. \
@@ -54,7 +59,8 @@ Options[FCLoopIntegralToGraph] = {
 	Factoring			-> Automatic,
 	Momentum			-> Automatic,
 	Select				-> 1,
-	VertexDegree		-> 6
+	VertexDegree		-> 6,
+	TimeConstrained		-> 3
 };
 
 (*Except: List of propagators to ignore, GFAD, EEC*)
@@ -62,7 +68,7 @@ FCLoopIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 	Block[{	ex, props, allmoms, extmoms, lmoms, lineMomenta, intEdgesList,
 			extEdgesList, numExtMoms,	numEdges, optFactoring,	auxExtEdgesList,
 			numIntVertices, numExtVertices, auxExternalMoms, numVertices,
-			res, aux, dots, optAuxiliaryMomenta, time, pref=1, massTerms, optMomentum},
+			res, aux, dots, optAuxiliaryMomenta, time, pref=1, massTerms, optMomentum, timeLimit},
 
 		If [OptionValue[FCVerbose]===False,
 			lbtgVerbose=$VeryVerbose,
@@ -87,10 +93,16 @@ FCLoopIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 			Abort[]
 		];
 
+		If[	Head[ex]===FCTopology,
+			ex = ex[[2]]
+		];
+
 		If[	!MatchQ[ex,{__}|_. _FeynAmpDenominator],
 			Message[FCLoopIntegralToGraph::failmsg, "The input expression is not a proper integral or list of propagators"];
 			Abort[]
 		];
+
+
 
 		FCPrint[1,"FCLoopIntegralToGraph: Entering. ", FCDoControl->lbtgVerbose];
 		FCPrint[3,"FCLoopIntegralToGraph: Entering  with: ", ex, FCDoControl->lbtgVerbose];
@@ -99,7 +111,7 @@ FCLoopIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 			Normally, when graphing an integral we care only about the denominators. Hence, the numerator should
 			be splitted from the rest. If for some reason, this should not be so, just use the option FCProductSplit->False
 		*)
-		If[	OptionValue[FCProductSplit],
+		If[	OptionValue[FCProductSplit] && Head[ex]=!=List,
 			{pref,ex} = FCProductSplit[ex, {FeynAmpDenominator}]
 		];
 		FCPrint[1,"FCLoopIntegralToGraph: Prefactor that will be ignored: " ,pref , FCDoControl->lbtgVerbose];
@@ -212,6 +224,7 @@ FCLoopIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1,"FCLoopIntegralToGraph: Calling reconstructAllVertices.", FCDoControl->lbtgVerbose];
 
+		timeLimit = TimeConstrained[
 		Which[
 			optFactoring === True || optFactoring === False,
 				factorizingIntegral = optFactoring;
@@ -228,13 +241,19 @@ FCLoopIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 			Message[FCLoopIntegralToGraph::failmsg, "Unknown value of the option Factoring. Only True, False or Auto are valid values."];
 			Abort[]
 
+		], OptionValue[TimeConstrained]];
+
+		If[	timeLimit=!=Null,
+			Message[FCLoopIntegralToGraph::failmsg, "The time needed to reconstruct the graph of the given loop integral exceeded the value of the TimeConstrained options. \
+Notice that not all loop integrals admit a graph representation."];
+			res=False
 		];
 
 		FCPrint[1,"FCLoopIntegralToGraph: reconstructAllVertices done, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->lbtgVerbose];
 
 		If[	res === False,
 			Message[FCLoopIntegralToGraph::failmsg, "Failed to reconstruct the graph of the given loop integral. If the integral factorizes, try increasing VertexDegree"];
-			Abort[]
+			Return[False]
 		];
 
 		time=AbsoluteTime[];
@@ -415,7 +434,7 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 
 		(* It is also possible that we reconstruct some fake vertices *)
 		FCPrint[3, "FCLoopIntegralToGraph: reconstructAllVertices: Reconstructed internal vertices: ", intVerticesFound, FCDoControl->lbtgVerbose];
-		If[	Length[intVerticesFound] >= numIntVertices,
+		If[	(Length[intVerticesFound] >= numIntVertices) && intVerticesFound=!={},
 			If[	numExtMoms=!=0,
 				intVertexCandidateSets = Subsets[intVerticesFound, {numIntVertices}]
 			];
