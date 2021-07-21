@@ -53,5 +53,9 @@ k3,mc}],{k1,k2,k3}]", "False"},
 k1-k2-k4},{k2-k3+2 k4,mc},-k1+k4],{k1,k2,k3,k4}]", "True"},
 {"fcstFCLoopScalelessQ-ID14",
 "FCLoopScalelessQ[FAD[{k2,0,2},{k1-q},{k1-k3,mc},{k2-k3,mc}],{k1,\
-k2,k3}]", "False"}
+k2,k3}]", "False"},
+{"fcstFCLoopScalelessQ-ID15","FCLoopScalelessQ[FCTopology[T1,
+FAD[p1, p2, p1 - Q, p1 + p2 + Q, p1 + p2]], {p1, p2}]","False"},
+{"fcstFCLoopScalelessQ-ID16","FCLoopScalelessQ[FCTopology[T1, FAD[p1,
+p1 - Q, p1 + p2]], {p1, p2}]","True"}
 });
