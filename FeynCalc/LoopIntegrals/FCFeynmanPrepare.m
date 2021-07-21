@@ -81,6 +81,7 @@ Options[FCFeynmanPrepare] = {
 	LorentzIndexNames		-> FCGV["mu"],
 	Names					-> FCGV["x"],
 	Reduce					-> False,
+	SortBy 					-> Function[x, x[[2]] < 0],
 	TimeConstrained 		-> 3
 };
 
@@ -88,7 +89,7 @@ FCFeynmanPrepare[expr_, lmoms_List /; ! OptionQ[lmoms], OptionsPattern[]] :=
 	Block[{	feynX, propProduct, tmp, symF, symU, ex, spd, qkspd, mtmp,
 			matrix, nDenoms, res, constraint, tmp0, powers,
 			optFinalSubstitutions, optNames, aux1, aux2, nProps, fpJ, fpQ,
-			null1, null2, tensorPart, scalarPart, time, tcHideRule={}},
+			null1, null2, tensorPart, scalarPart, time, tcHideRule={}, sortBy},
 
 		optNames				= OptionValue[Names];
 		optFinalSubstitutions	= OptionValue[FinalSubstitutions];
@@ -182,8 +183,14 @@ FCFeynmanPrepare[expr_, lmoms_List /; ! OptionQ[lmoms], OptionsPattern[]] :=
 		];
 
 		time=AbsoluteTime[];
+
+		If[	TrueQ[Head[ex]===List],
+			sortBy = Identity,
+			sortBy = OptionValue[SortBy]
+		];
+
 		FCPrint[1, "FCFeynmanPrepare: Calling FCLoopBasisExtract.", FCDoControl -> fcszVerbose];
-		tmp = FCLoopBasisExtract[scalarPart, lmoms, SetDimensions->{dim}, SortBy -> Function[x, x[[2]] < 0]];
+		tmp = FCLoopBasisExtract[scalarPart, lmoms, SetDimensions->{dim}, SortBy -> sortBy];
 		FCPrint[1, "FCFeynmanPrepare: FCLoopBasisExtract done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose];
 
 		FCPrint[3,"FCFeynmanPrepare: List of denominators: ", tmp, FCDoControl->fcszVerbose];
