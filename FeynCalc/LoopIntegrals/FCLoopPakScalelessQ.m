@@ -37,7 +37,6 @@ fcpsVerbose::usage = "";
 
 Options[FCLoopPakScalelessQ] = {
 	FCVerbose 					-> False,
-	FinalSubstitutions			-> {},
 	RandomPrime					-> 10^8
 };
 
@@ -120,7 +119,6 @@ FCLoopPakScalelessQ[poly_, var_, OptionsPattern[]] :=
 		];
 
 		FCPrint[3, "FCLoopPakScalelessQ: Matrix: ", mat, FCDoControl -> fcpsVerbose];
-
 		rank = MatrixRank[mat];
 
 		FCPrint[2, "FCLoopPakScalelessQ: Matrix rank: ", rank, FCDoControl -> fcpsVerbose];
