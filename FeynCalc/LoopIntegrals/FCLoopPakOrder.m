@@ -44,8 +44,8 @@ Options[FCLoopPakOrder] = {
 };
 
 
-FCLoopPakOrder[poly_, fpars_List, OptionsPattern[]] :=
-	Block[{	coeffsList, polyGCD, res, matM, mPrefs, time, time0},
+FCLoopPakOrder[poly_, fparsRaw_, OptionsPattern[]] :=
+	Block[{	coeffsList, polyGCD, res, matM, mPrefs, time, time0, fpars},
 
 		If[	OptionValue[FCVerbose] === False,
 			fcpoVerbose = $VeryVerbose,
@@ -57,6 +57,11 @@ FCLoopPakOrder[poly_, fpars_List, OptionsPattern[]] :=
 		time0=AbsoluteTime[];
 		FCPrint[1, "FCLoopPakOrder: Entering.", FCDoControl -> fcpoVerbose];
 		FCPrint[3, "FCLoopPakOrder: Entering with: ", poly, FCDoControl -> fcpoVerbose];
+
+		If[	Head[fparsRaw]===List,
+			fpars = fparsRaw,
+			fpars = Cases2[poly,fparsRaw]
+		];
 
 		time=AbsoluteTime[];
 		FCPrint[1, "FCLoopPakOrder: Calculating coefficient lists.", FCDoControl -> fcpoVerbose];
