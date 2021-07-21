@@ -96,5 +96,25 @@ pow[2]*SPD[q1, q1]*x[2]*x[4]*x[6]*x[7] + m1^2*pow[2]*x[3]*x[4]*x[6]*x[7] - pow[2
 m1^2*pow[2]*x[4]^2*x[6]*x[7] + m1^2*pow[2]*x[1]*x[5]*x[6]*x[7] - pow[2]*SPD[q1, q1]*x[1]*x[5]*x[6]*x[7] +
 m1^2*pow[2]*x[3]*x[5]*x[6]*x[7] - pow[2]*SPD[q1, q1]*x[3]*x[5]*x[6]*x[7] + m1^2*pow[2]*x[4]*x[5]*x[6]*x[7] -
 pow[2]*SPD[q1, q1]*x[4]*x[5]*x[6]*x[7], {{x[5], x[1], x[4], x[3], x[2], x[7], x[6]}, {FAD[p4], FAD[p1],
-FAD[p1 - p3 - p4], FAD[{p1 - p4, m1}], FAD[{p3, m1}], FAD[p3 + q1], FAD[p1 + q1]}, {1, 1, 1, 1, 1, 1, 2}}]}"}
+FAD[p1 - p3 - p4], FAD[{p1 - p4, m1}], FAD[{p3, m1}], FAD[p3 + q1], FAD[p1 + q1]}, {1, 1, 1, 1, 1, 1, 2}}]}"},
+{"fcstFCLoopToPakForm-ID5","FCLoopToPakForm[
+FCTopology[T1, FAD[p1, p2, p1 - Q, p1 + p2 + Q, p1 + p2]], {p1, p2},
+Names -> x, FCE -> True, Head -> ph]",
+"{FCTopology[T1, FAD[p1, p2, p1 - Q, p1 + p2 + Q, p1 + p2]], ph[x[1]*x[2] + x[1]*x[3] -
+SPD[Q, Q]*x[1]*x[2]*x[3] + x[1]*x[4] + x[2]*x[4] - 4*SPD[Q, Q]*x[1]*x[2]*x[4] + x[3]*x[4] -
+SPD[Q, Q]*x[1]*x[3]*x[4] - SPD[Q, Q]*x[2]*x[3]*x[4] +
+x[1]*x[5] + x[2]*x[5] - SPD[Q, Q]*x[1]*x[2]*x[5] + x[3]*x[5] - SPD[Q, Q]*x[2]*x[3]*x[5] -
+SPD[Q, Q]*x[1]*x[4]*x[5] - SPD[Q, Q]*x[2]*x[4]*x[5] - SPD[Q, Q]*x[3]*x[4]*x[5],
+{{x[2], x[4], x[1], x[5], x[3]}, {FAD[p2], FAD[p1 - Q], FAD[p1], FAD[p1 + p2 + Q],
+FAD[p1 + p2]}, {1, 1, 1, 1, 1}}]}"},
+{"fcstFCLoopToPakForm-ID6","FCLoopToPakForm[
+FCTopology[T1, FAD[p1, p2, p1 - Q, p1 + p2 + Q, p1 + p2]], {p1, p2},
+Names -> x, FCE -> True, FCLoopPakOrder -> False, Head -> ph]",
+"{FCTopology[T1, FAD[p1, p2, p1 - Q, p1 + p2 + Q, p1 + p2]], ph[x[1]*x[2] + x[1]*x[3] +
+x[2]*x[3] + x[2]*x[4] - SPD[Q, Q]*x[1]*x[2]*x[4] + x[3]*x[4] - SPD[Q, Q]*x[1]*x[3]*x[4] -
+SPD[Q, Q]*x[2]*x[3]*x[4] + x[1]*x[5] + x[2]*x[5] -
+SPD[Q, Q]*x[1]*x[2]*x[5] - SPD[Q, Q]*x[1]*x[3]*x[5] - SPD[Q, Q]*x[2]*x[3]*x[5] + x[4]*x[5] -
+SPD[Q, Q]*x[1]*x[4]*x[5] - 4*SPD[Q, Q]*x[2]*x[4]*x[5] - SPD[Q, Q]*x[3]*x[4]*x[5],
+{{x[1], x[2], x[3], x[4], x[5]}, {FAD[p1], FAD[p2], FAD[p1 + p2], FAD[p1 - Q], FAD[p1 +
+p2 + Q]}, {1, 1, 1, 1, 1}}]}"}
 })
