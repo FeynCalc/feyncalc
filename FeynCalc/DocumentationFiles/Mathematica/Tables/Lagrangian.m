@@ -1,20 +1,43 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* Lagrangian *)
+(*Lagrangian*)
+
+
 (* ::Text:: *)
-(*Lagrangian[oqu] gives the unpolarized OPE quark operator. Lagrangian["oqp"] gives the polarized quark OPE operator. Lagrangian["ogu"] gives the unpolarized gluon OPE operator. Lagrangian["ogp"] gives the polarized gluon OPE operator. Lagrangian["ogd"] gives the sigma-term part of the QCD lagrangian. Lagrangian["QCD"] gives the gluon self interaction part of the QCD lagrangian..*)
+(*`Lagrangian["oqu"]` gives the unpolarized OPE quark operator.*)
+
+
+(* ::Text:: *)
+(*`Lagrangian["oqp"]` gives the polarized quark OPE operator.*)
+
+
+(* ::Text:: *)
+(*`Lagrangian["ogu"]` gives the unpolarized gluon OPE operator.*)
+
+
+(* ::Text:: *)
+(*`Lagrangian["ogp"]` gives the polarized gluon OPE operator.*)
+
+
+(* ::Text:: *)
+(*` Lagrangian["ogd"]` gives the sigma-term part of the QCD Lagrangian.*)
+
+
+(* ::Text:: *)
+(*` Lagrangian["QCD"]` gives the gluon self interaction part of the QCD Lagrangian.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*FeynRule.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[FeynRule](FeynRule).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
+(*Examples*)
 
 
 Lagrangian["QCD"]
@@ -26,8 +49,11 @@ Lagrangian["QCD"]
 
 Lagrangian["ogu"]
 
+
 Lagrangian["ogp"]
 
+
 Lagrangian["oqu"]
+
 
 Lagrangian["oqp"]

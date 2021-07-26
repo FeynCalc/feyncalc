@@ -1,9 +1,17 @@
  
 (* ::Section:: *)
-(* FCF *)
+(*FCF*)
 (* ::Text:: *)
-(*FCF[exp] is a short form for FeynCalcForm[exp]..*)
+(*FCF[exp] is a short form for FeynCalcForm[exp].*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[FeynCalcForm](FeynCalcForm).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)

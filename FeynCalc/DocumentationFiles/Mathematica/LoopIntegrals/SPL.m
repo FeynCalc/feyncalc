@@ -1,18 +1,18 @@
  
 (* ::Section:: *)
-(* SPL *)
+(*SPL*)
 (* ::Text:: *)
 (*`SPL` is an abbreviation for `SimplifyPolyLog`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*SimplifyPolyLog.*)
+(*[SimplifyPolyLog](SimplifyPolyLog).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 

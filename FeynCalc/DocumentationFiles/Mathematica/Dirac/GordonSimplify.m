@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* GordonSimplify *)
+(*GordonSimplify*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*DiracGamma, Spinor, SpinorChainTrick.*)
+(*[DiracGamma](DiracGamma), [Spinor](Spinor), [SpinorChainTrick](SpinorChainTrick).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 SpinorUBar[p1,m1] . GA[\[Mu]] . SpinorU[p2,m2]

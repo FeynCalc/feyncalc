@@ -1,19 +1,19 @@
  
 (* ::Section:: *)
-(* FCGramDeterminant *)
+(*FCGramDeterminant*)
 (* ::Text:: *)
 (*`FCGramDeterminant[{p1, p2, ...}]` computes the determinant of the Gram matrix created from the given list of momenta.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*FCGramMatrix.*)
+(*[FCGramMatrix](FCGramMatrix).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 FCGramDeterminant[{p1,p2,p3}]

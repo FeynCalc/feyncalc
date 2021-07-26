@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* SUNDeltaContract *)
+(*SUNDeltaContract*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*SUNDelta, SUNIndex.*)
+(*[SUNDelta](SUNDelta), [SUNIndex](SUNIndex).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 SUNDelta[SUNIndex[a],SUNIndex[b]]^2

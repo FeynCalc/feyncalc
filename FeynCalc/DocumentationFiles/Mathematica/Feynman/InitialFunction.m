@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* InitialFunction *)
+(*InitialFunction*)
 
 
 (* ::Text:: *)
@@ -12,12 +12,12 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*FeynRule.*)
+(*[FeynRule](FeynRule).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)

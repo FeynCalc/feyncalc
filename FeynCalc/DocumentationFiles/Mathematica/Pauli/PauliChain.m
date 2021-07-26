@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* PauliChain *)
+(*PauliChain*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*PCHN, PauliIndex, PauliIndexDelta, PauliChainJoin, PauliChainExpand, PauliChainFactor.*)
+(*[PCHN](PCHN), [PauliIndex](PauliIndex), [PauliIndexDelta](PauliIndexDelta), [PauliChainJoin](PauliChainJoin), [PauliChainExpand](PauliChainExpand), [PauliChainFactor](PauliChainFactor).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 (* ::Text:: *)

@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* ToStandardMatrixElement *)
+(*ToStandardMatrixElement*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*DiracSubstitute5, DiracGamma, ToDiracGamma67, Spinor.*)
+(*[DiracSubstitute5](DiracSubstitute5), [DiracGamma](DiracGamma), [ToDiracGamma67](ToDiracGamma67), [Spinor](Spinor).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 Spinor[Momentum[k2,D],0,1] . GAD[\[Mu]] . Spinor[-Momentum[k1,D],0,1]*Spinor[-Momentum[ps,D],SMP["m_s"],1] . GAD[\[Mu]] . Spinor[Momentum[pd,D],SMP["m_d"],1]

@@ -1,24 +1,28 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* EpsEvaluate *)
+(*EpsEvaluate*)
+
+
 (* ::Text:: *)
-(*EpsEvaluate[expr] applies total antisymmetry and linearity (w.r.t. momenta) to all Levi-Civita tensors (Eps') in expr..*)
+(*`EpsEvaluate[expr]` applies total antisymmetry and linearity (w.r.t. momenta) to all Levi-Civita tensors (`Eps`) in expr.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*Contract, Eps, LC, Trick.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[Contract](Contract), [Eps](Eps), [LC](LC), [Trick](Trick).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
+(*Examples*)
 
 
 Contract[LC[\[Mu],\[Nu],\[Rho],\[Sigma]] FV[p+q,\[Sigma]]]//MomentumCombine
-
 EpsEvaluate[%]
-
 StandardForm[%]
+
+
+

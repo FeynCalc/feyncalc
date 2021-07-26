@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* DiracBasis *)
+(*DiracBasis*)
 
 
 (* ::Text:: *)
@@ -12,11 +12,11 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 Options[DiracReduce]

@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* FCFeynmanProjectivize *)
+(*FCFeynmanProjectivize*)
 
 
 (* ::Text:: *)
@@ -16,15 +16,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*FCFeynmanParametrize, FCFeynmanPrepare.*)
+(*[FCFeynmanParametrize](FCFeynmanParametrize), [FCFeynmanPrepare](FCFeynmanPrepare).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 int=SFAD[{p3,mg^2}]SFAD[{p3-p1,mg^2}]SFAD[{{0,-2p1 . q}}]

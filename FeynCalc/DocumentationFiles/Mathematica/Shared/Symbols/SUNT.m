@@ -1,10 +1,7 @@
 (* ::Package:: *)
 
- 
-
-
 (* ::Section:: *)
-(* SUNT *)
+(*SUNT*)
 
 
 (* ::Text:: *)
@@ -12,15 +9,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*CA, CF, SUND, SUNDelta, SUNF, SUNSimplify.*)
+(*[CA](CA), [CF](CF), [SUND](SUND), [SUNDelta](SUNDelta), [SUNF](SUNF), [SUNSimplify](SUNSimplify).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 SUNT[a]

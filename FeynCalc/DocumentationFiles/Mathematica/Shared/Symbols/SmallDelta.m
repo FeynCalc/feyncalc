@@ -1,9 +1,20 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* SmallDelta *)
+(*SmallDelta*)
+
+
 (* ::Text:: *)
-(*SmallDelta denotes some small positive number..*)
+(*`SmallDelta` denotes some small positive number.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[SmallEpsilon](SmallEpsilon).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)

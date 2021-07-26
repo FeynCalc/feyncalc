@@ -1,18 +1,20 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* GTI *)
+(*GTI*)
+
+
 (* ::Text:: *)
-(*GTI is like RHI, but with no functional properties..*)
+(*`GTI` is like `RHI`, but with no functional properties.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*RHI.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[RHI](RHI).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
-
+(*Examples*)

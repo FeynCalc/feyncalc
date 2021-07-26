@@ -4,23 +4,23 @@
 
 
 (* ::Section:: *)
-(* FunctionalD *)
+(*FunctionalD*)
 
 
 (* ::Text:: *)
-(*FunctionalD[exp, {QuantumField[name, LorentzIndex[mu], ..., SUNIndex[a]][p], ...}] calculates the functional derivative of exp with respect to the QuantumField list (with incoming momenta $\text{p}$, etc.) and does the Fourier transform.   FunctionalD[expr, {QuantumField[name, LorentzIndex[mu], ... SUNIndex[a]], ...}] calculates the functional derivative and does partial integration but omits the $\text{x}$-space delta functions.FunctionalD is a low level function used in FeynRule..*)
+(*FunctionalD[exp, {QuantumField[name, LorentzIndex[mu], ..., SUNIndex[a]][p], ...}] calculates the functional derivative of exp with respect to the QuantumField list (with incoming momenta $\text{p}$, etc.) and does the Fourier transform.   FunctionalD[expr, {QuantumField[name, LorentzIndex[mu], ... SUNIndex[a]], ...}] calculates the functional derivative and does partial integration but omits the $\text{x}$-space delta functions.FunctionalD is a low level function used in FeynRule.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*FeynRule, QuantumField.*)
+(*[FeynRule](FeynRule), [QuantumField](QuantumField).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 (* ::Text:: *)
@@ -70,7 +70,7 @@ S[A]=-1/4F1 . F2
 
 
 (* ::Text:: *)
-(* See what happens with just $(\delta S[A]) / (\delta A_{\sigma }^g)$*)
+(*See what happens with just $(\delta S[A]) / (\delta A_{\sigma }^g)$*)
 
 
 Ag=QuantumField[A,{\[Sigma]},{g}]

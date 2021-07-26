@@ -1,12 +1,31 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* AlphaFS *)
+(*AlphaFS*)
+
+
 (* ::Text:: *)
-(*AlphaFS  is a shortcut for SMP["alpha_fs"] which represents the fine-structure constant.The shortcut AlphaFS is deprecated, please use $text{SMP}[text{alpha$_$fs}]$ instead!.*)
+(*AlphaFS  is a shortcut for `SMP["alpha_fs"]` which represents the fine-structure constant.*)
+
+
+(* ::Text:: *)
+(*The shortcut `AlphaFS` is deprecated, please use `SMP["alpha_fs"]` instead!*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-AlphaFS
+(*See also*)
 
+
+(* ::Text:: *)
+(*[SMP](SMP).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
+
+
+AlphaFS
 %//InputForm
+
+
+SMP["alpha_fs"]

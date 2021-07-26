@@ -1,18 +1,20 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* PD *)
+(*PD*)
+
+
 (* ::Text:: *)
-(*PD is an abbreviation for PropagatorDenominator..*)
+(*`PD` is an abbreviation for `PropagatorDenominator`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*PropagatorDenominator, IFPD.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[PropagatorDenominator](PropagatorDenominator), [IFPD](IFPD).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
-
+(*Examples*)

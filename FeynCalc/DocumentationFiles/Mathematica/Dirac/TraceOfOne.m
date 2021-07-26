@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* TraceOfOne *)
+(*TraceOfOne*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*DiracSimplify, DiracTrace.*)
+(*[DiracSimplify](DiracSimplify), [DiracTrace](DiracTrace).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 DiracTrace[1]

@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* PartialDRelations *)
+(*PartialDRelations*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*FCPartialD, ExpandPartialD, LeftPartialD, LeftRightPartialD, RightPartialD.*)
+(*[FCPartialD](FCPartialD), [ExpandPartialD](ExpandPartialD), [LeftPartialD](LeftPartialD), [LeftRightPartialD](LeftRightPartialD), [RightPartialD](RightPartialD).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 QuantumField[A,{\[Mu]}] . QuantumField[B,{\[Mu]}] . LeftPartialD[\[Nu]]

@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* SUNNToCACF *)
+(*SUNNToCACF*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*CalcColorFactor, SUNSimplify, Trick, SUNN, CA, CF.*)
+(*[CalcColorFactor](CalcColorFactor), [SUNSimplify](SUNSimplify), [Trick](Trick), [SUNN](SUNN), [CA](CA), [CF](CF).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 SUNSimplify[SUNDelta[SUNIndex[a], SUNIndex[a]],SUNNToCACF->True]

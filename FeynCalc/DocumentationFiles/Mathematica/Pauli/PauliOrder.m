@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* PauliOrder *)
+(*PauliOrder*)
 
 
 (* ::Text:: *)
@@ -16,11 +16,11 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 CSI[k,j,i]

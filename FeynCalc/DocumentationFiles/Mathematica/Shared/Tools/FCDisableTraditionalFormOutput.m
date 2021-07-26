@@ -1,24 +1,28 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* FCDisableTraditionalFormOutput *)
+(*FCDisableTraditionalFormOutput*)
+
+
 (* ::Text:: *)
-(*FCDisableTraditionalFormOutput[] sets the output format of the current FrontEnd to StandardForm. The setting is not persistent, such that it does not influence any subequent Mathematica FrontEnd sessions..*)
+(*`FCDisableTraditionalFormOutput[]` sets the output format of the current FrontEnd to `StandardForm`. The setting is not persistent, such that it does not influence any subsequent Mathematica FrontEnd sessions.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*$FCTraditionalFormOutput, FCDisableTraditionalFormOutput.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[$FCTraditionalFormOutput]($FCTraditionalFormOutput), [FCDisableTraditionalFormOutput](FCDisableTraditionalFormOutput).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
+(*Examples*)
 
 
 FCDisableTraditionalFormOutput[]
 FV[p,\[Mu]]
+
 
 FCEnableTraditionalFormOutput[]
 FV[p,\[Mu]]

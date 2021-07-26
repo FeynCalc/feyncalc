@@ -1,19 +1,19 @@
  
 (* ::Section:: *)
-(* FCGetDiracGammaScheme *)
+(*FCGetDiracGammaScheme*)
 (* ::Text:: *)
 (*`FCGetDiracGammaScheme[]` shows the currently used scheme for handling Dirac matrices in $D$ dimensions.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*FCSetDiracGammaScheme, DiracTrace.*)
+(*[FCSetDiracGammaScheme](FCSetDiracGammaScheme), [DiracTrace](DiracTrace).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 FCSetDiracGammaScheme["BMHV"]

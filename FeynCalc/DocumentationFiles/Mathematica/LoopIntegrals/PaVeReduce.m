@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* PaVeReduce *)
+(*PaVeReduce*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*FRH, PaVeOrder.*)
+(*[FRH](FRH), [PaVeOrder](PaVeOrder).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 PaVeReduce[PaVe[1,2,{s,m^2,m^2},{m^2,m^2,M^2}],IsolateNames->FF]

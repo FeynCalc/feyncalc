@@ -1,19 +1,19 @@
  
 (* ::Section:: *)
-(* OneLoopSimplify *)
+(*OneLoopSimplify*)
 (* ::Text:: *)
 (*`OneLoopSimplify[amp, q]` simplifies the one-loop amplitude amp. The second argument denotes the integration momentum.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*TID, TIDL.*)
+(*[TID](TID), [TIDL](TIDL).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 SPD[k,r] FAD[{k,m} , k - p]//FCI

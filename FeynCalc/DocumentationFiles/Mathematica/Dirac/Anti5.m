@@ -1,19 +1,19 @@
  
 (* ::Section:: *)
-(* Anti5 *)
+(*Anti5 *)
 (* ::Text:: *)
 (*`Anti5[exp]` anticommutes all $\gamma^5$ in exp to the right. `Anti5[exp, n]` anticommutes all $\gamma^5$ $n$-times to the right. `Anti5[exp, -n]` anticommutes all $\gamma^5$ $n$-times to the left.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*DiracOrder, DiracSimplify, DiracTrick.*)
+(*[DiracOrder](DiracOrder), [DiracSimplify](DiracSimplify), [DiracTrick](DiracTrick).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 GA[5,\[Mu]] 

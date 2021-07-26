@@ -4,23 +4,23 @@
 
 
 (* ::Section:: *)
-(* PaVeUVPart *)
+(*PaVeUVPart*)
 
 
 (* ::Text:: *)
-(*`PaVeUVPart[expr]` replaces all occurring Passarino-Veltman functions by their explicit values, where only the UV divergent part is preserved, while possible IR divergences and the finite part are discarded. The function uses the algorithm from [arXiv:hep-ph/0609282](https://arxiv.org/abs/hep-ph/0609282) by G. Sulyok. This allows to treat Passarino-Veltman of arbitrary rank and multiplicity *)
+(*`PaVeUVPart[expr]` replaces all occurring Passarino-Veltman functions by their explicit values, where only the UV divergent part is preserved, while possible IR divergences and the finite part are discarded. The function uses the algorithm from [arXiv:hep-ph/0609282](https://arxiv.org/abs/hep-ph/0609282) by G. Sulyok. This allows to treat Passarino-Veltman of arbitrary rank and multiplicity*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*PaVe, PaVeReduce.*)
+(*[PaVe](PaVe), [PaVeReduce](PaVeReduce).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 PaVeUVPart[A0[m^2]]

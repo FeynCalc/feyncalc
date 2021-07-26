@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* FieldStrength *)
+(*FieldStrength*)
 
 
 (* ::Text:: *)
@@ -20,11 +20,11 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 FieldStrength[\[Mu],\[Nu]]

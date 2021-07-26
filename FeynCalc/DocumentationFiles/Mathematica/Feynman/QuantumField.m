@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* QuantumField *)
+(*QuantumField*)
 
 
 (* ::Text:: *)
@@ -16,15 +16,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*FeynRule, FCPartialD, ExpandPartialD.*)
+(*[FeynRule](FeynRule), [FCPartialD](FCPartialD), [ExpandPartialD](ExpandPartialD).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 (* ::Text:: *)
@@ -67,7 +67,7 @@ QuantumField[A,{OPEDelta},{a}]
 
 
 (* ::Text:: *)
-(*The first list of indices is usually interpreted as type `LorentzIndex`, except for `OPEDelta`, which gets converted to type `Momentum`. *)
+(*The first list of indices is usually interpreted as type `LorentzIndex`, except for `OPEDelta`, which gets converted to type `Momentum`.*)
 
 
 QuantumField[A,{OPEDelta},{a}]//StandardForm

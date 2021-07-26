@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* GluonPropagator *)
+(*GluonPropagator*)
 
 
 (* ::Text:: *)
@@ -30,15 +30,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*GluonSelfEnergy, GluonVertex, GhostVertex, GhostPropagator, GluonGhostVertex.*)
+(*[GluonSelfEnergy](GluonSelfEnergy), [GluonVertex](GluonVertex), [GhostVertex](GhostVertex), [GhostPropagator](GhostPropagator), [GluonGhostVertex](GluonGhostVertex).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 GluonPropagator[p,\[Mu],a,\[Nu],b]

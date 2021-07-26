@@ -1,18 +1,20 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* OPE1Loop *)
+(*OPE1Loop*)
+
+
 (* ::Text:: *)
-(*OPE1Loop[q1, amp] and OPE1Loop[{q1,q2}, amp] do sub-loop  decomposition..*)
+(*`OPE1Loop[q1, amp]` and `OPE1Loop[{q1,q2}, amp]` do sub-loop  decomposition.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*OPESum.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[OPESum](OPESum).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
-
+(*Examples*)

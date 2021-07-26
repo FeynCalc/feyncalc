@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* CovariantD *)
+(*CovariantD*)
 
 
 (* ::Text:: *)
@@ -36,11 +36,11 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 CovariantD[\[Mu]]

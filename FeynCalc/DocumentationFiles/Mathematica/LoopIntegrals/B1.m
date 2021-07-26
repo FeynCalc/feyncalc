@@ -1,19 +1,19 @@
  
 (* ::Section:: *)
-(* B1 *)
+(*B1 *)
 (* ::Text:: *)
 (*`B1[pp, ma^2, mb^2]` the Passarino-Veltman $B_1$-function. All arguments are scalars and have dimension mass squared.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*B0, B00, B11, PaVe, PaVeReduce.*)
+(*[B0](B0), [B00](B00), [B11](B11), [PaVe](PaVe), [PaVeReduce](PaVeReduce).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 B1[SPD[p],m^2,M^2]

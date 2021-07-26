@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* CovariantFieldDerivative *)
+(*CovariantFieldDerivative*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*CovariantD, ExpandPartialD, FieldDerivative.*)
+(*[CovariantD](CovariantD), [ExpandPartialD](ExpandPartialD), [FieldDerivative](FieldDerivative).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 CovariantFieldDerivative[QuantumField[A,{\[Mu]}][x],x,{\[Mu]}]

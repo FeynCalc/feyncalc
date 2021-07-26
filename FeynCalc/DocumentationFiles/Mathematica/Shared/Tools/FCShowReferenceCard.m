@@ -1,10 +1,7 @@
 (* ::Package:: *)
 
- 
-
-
 (* ::Section:: *)
-(* FCShowReferenceCard *)
+(*FCShowReferenceCard*)
 
 
 (* ::Text:: *)
@@ -12,7 +9,11 @@
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
 
 
 FCShowReferenceCard[]

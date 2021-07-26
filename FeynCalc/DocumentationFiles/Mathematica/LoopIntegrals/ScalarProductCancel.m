@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* ScalarProductCancel *)
+(*ScalarProductCancel*)
 
 
 (* ::Text:: *)
@@ -20,15 +20,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*ApartFF, FCClearScalarProducts, ExpandScalarProduct, Pair, SP, SPC, SPD.*)
+(*[ApartFF](ApartFF), [FCClearScalarProducts](FCClearScalarProducts), [ExpandScalarProduct](ExpandScalarProduct), [Pair](Pair), [SP](SP), [SPC](SPC), [SPD](SPD).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 SPD[q,p] FAD[{q,m},{q-p,0}]

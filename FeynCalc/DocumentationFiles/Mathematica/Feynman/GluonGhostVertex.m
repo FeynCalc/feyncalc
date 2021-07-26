@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* GluonGhostVertex *)
+(*GluonGhostVertex*)
 
 
 (* ::Text:: *)
@@ -16,15 +16,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*GluonPropagator, GluonSelfEnergy, GluonVertex, QCDFeynmanRuleConvention, GhostPropagator.*)
+(*[GluonPropagator](GluonPropagator), [GluonSelfEnergy](GluonSelfEnergy), [GluonVertex](GluonVertex), [QCDFeynmanRuleConvention](QCDFeynmanRuleConvention), [GhostPropagator](GhostPropagator).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 GluonGhostVertex[{p,\[Mu],a},{q,\[Nu],b},{k,\[Rho],c}] 

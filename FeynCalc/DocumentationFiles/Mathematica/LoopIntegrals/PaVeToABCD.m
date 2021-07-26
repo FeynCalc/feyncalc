@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* PaVeToABCD *)
+(*PaVeToABCD*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*ToPaVe, ToPaVe2, A0, A00, B0, B1, B00, B11, C0, D0.*)
+(*[ToPaVe](ToPaVe), [ToPaVe2](ToPaVe2), [A0](A0), [A00](A00), [B0](B0), [B1](B1), [B00](B00), [B11](B11), [C0](C0), [D0](D0).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 PaVe[0,{pp},{m1^2,m2^2}]

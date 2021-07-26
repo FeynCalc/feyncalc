@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* FCDiracIsolate *)
+(*FCDiracIsolate*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*DiracGamma, Spinor.*)
+(*[DiracGamma](DiracGamma), [Spinor](Spinor).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 (* ::Text:: *)
@@ -39,7 +39,7 @@ Cases2[ampIso,diracS]
 
 
 (* ::Text:: *)
-(*This way we obtain a sorted list of all unique Dirac structures in `amp`. *)
+(*This way we obtain a sorted list of all unique Dirac structures in `amp`.*)
 
 
 ClearAll[amp,ampIso,diracS]

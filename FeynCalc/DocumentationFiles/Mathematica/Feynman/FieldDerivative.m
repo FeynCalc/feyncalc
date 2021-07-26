@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* FieldDerivative *)
+(*FieldDerivative*)
 
 
 (* ::Text:: *)
@@ -20,15 +20,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*FCPartialD, ExpandParitalD.*)
+(*[FCPartialD](FCPartialD), [ExpandParitalD](ExpandParitalD).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 QuantumField[A,{\[Mu]}][x] . QuantumField[B,{\[Nu]}][y] . QuantumField[C,{\[Rho]}][x] . QuantumField[D,{\[Sigma]}][y]

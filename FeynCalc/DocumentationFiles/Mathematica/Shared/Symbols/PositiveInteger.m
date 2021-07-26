@@ -1,18 +1,20 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* PositiveInteger *)
+(*PositiveInteger*)
+
+
 (* ::Text:: *)
-(*PositiveInteger is a data type. E.g. DataType[OPEm, PositiveInteger] gives True..*)
+(*`PositiveInteger` is a data type. E.g. `DataType[OPEm, PositiveInteger]` gives `True`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*DataType.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[DataType](DataType).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
-
+(*Examples*)

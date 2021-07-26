@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* DiracEquation *)
+(*DiracEquation*)
 
 
 (* ::Text:: *)
@@ -12,11 +12,11 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 GS[p] . SpinorU[p,m]

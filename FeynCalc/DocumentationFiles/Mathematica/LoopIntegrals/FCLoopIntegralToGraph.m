@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* FCLoopIntegralToGraph *)
+(*FCLoopIntegralToGraph*)
 
 
 (* ::Text:: *)
@@ -20,15 +20,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*FCLoopGraphPlot.*)
+(*[FCLoopGraphPlot](FCLoopGraphPlot).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 out=FCLoopIntegralToGraph[ FAD[{q-k1},k1,q-k2,k2,{k2-k3,mb},{k1-k3,mb}],{k1,k2,k3}]

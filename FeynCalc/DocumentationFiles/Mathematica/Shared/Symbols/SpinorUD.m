@@ -1,30 +1,32 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* SpinorUD *)
+(*SpinorUD*)
+
+
 (* ::Text:: *)
-(*SpinorUD[p, m] denotes a $u(p,m)$-spinor that depends on the $\text{D}$-dimensional momentum $\text{p}$..*)
+(*`SpinorUD[p, m]` denotes a $u(p,m)$-spinor that depends on the $D$-dimensional momentum $p$.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*Spinor, SpinorUBar, SpinorU, SpinorV, SpinorVBar, SpinorUBarD, SpinorVD, SpinorVBarD.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[Spinor](Spinor), [SpinorUBar](SpinorUBar), [SpinorU](SpinorU), [SpinorV](SpinorV), [SpinorVBar](SpinorVBar), [SpinorUBarD](SpinorUBarD), [SpinorVD](SpinorVD), [SpinorVBarD](SpinorVBarD).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
+(*Examples*)
 
 
 SpinorUD[p,m]
-
 FCI[%]//StandardForm
+
 
 SpinorUD[p]
-
 FCI[%]//StandardForm
 
-GSD[p].SpinorUD[p]
 
+GSD[p] . SpinorUD[p]
 DiracEquation[%]

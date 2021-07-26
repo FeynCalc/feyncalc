@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* FeynAmpDenominator *)
+(*FeynAmpDenominator*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*FAD, SFAD, CFAD, GFAD, FeynAmpDenominatorSimplify.*)
+(*[FAD](FAD), [SFAD](SFAD), [CFAD](CFAD), [GFAD](GFAD), [FeynAmpDenominatorSimplify](FeynAmpDenominatorSimplify).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 (* ::Text:: *)

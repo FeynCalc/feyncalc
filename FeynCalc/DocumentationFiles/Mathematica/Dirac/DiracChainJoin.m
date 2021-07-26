@@ -1,19 +1,19 @@
  
 (* ::Section:: *)
-(* DiracChainJoin *)
+(*DiracChainJoin*)
 (* ::Text:: *)
 (*`DiracChainJoin[exp]` joins chains of Dirac matrices with explicit Dirac indices wrapped with a head `DiracChain`. Notice that `DiracChainJoin` is not suitable for creating closed Dirac chains out of the FeynArts output with explicit Dirac indices, e.g. when the model contains 4-fermion operators. Use `FCFADiracChainJoin` for that.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*DiracChain, DCHN, DiracIndex, DiracIndexDelta, DIDelta, DiracChainCombine, DiracChainExpand, DiracChainFactor, FCFADiracChainJoin.*)
+(*[DiracChain](DiracChain), [DCHN](DCHN), [DiracIndex](DiracIndex), [DiracIndexDelta](DiracIndexDelta), [DIDelta](DIDelta), [DiracChainCombine](DiracChainCombine), [DiracChainExpand](DiracChainExpand), [DiracChainFactor](DiracChainFactor), [FCFADiracChainJoin](FCFADiracChainJoin).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 

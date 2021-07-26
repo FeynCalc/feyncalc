@@ -1,19 +1,19 @@
  
 (* ::Section:: *)
-(* SpinorChainChiralSplit *)
+(*SpinorChainChiralSplit*)
 (* ::Text:: *)
 (*`SpinorChainChiralSplit[exp]` introduces chiral projectors in spinor chains that contain no $\gamma^5$.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*DiracSubstitute67, DiracGamma, ToDiracGamma67.*)
+(*[DiracSubstitute67](DiracSubstitute67), [DiracGamma](DiracGamma), [ToDiracGamma67](ToDiracGamma67).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 SpinorUBar[p1,m1].GSD[p].SpinorV[p2,m2]

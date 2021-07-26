@@ -1,24 +1,27 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* ExplicitSUNFIndex *)
+(*ExplicitSUNFIndex*)
+
+
 (* ::Text:: *)
-(*ExplicitSUNFIndex[ind] is a specific SU(N) index in the fundamental representation, i.e. ind is an integer..*)
+(*`ExplicitSUNFIndex[ind]` is a specific $SU(N)$ index in the fundamental representation, i.e. `ind` is an integer.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*SUNIndex, SUNFIndex.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[SUNIndex](SUNIndex), [SUNFIndex](SUNFIndex).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
+(*Examples*)
 
 
 ExplicitSUNFIndex[1]
 
-SUNTF[a,1,2]
 
+SUNTF[a,1,2]
 %//FCI//StandardForm

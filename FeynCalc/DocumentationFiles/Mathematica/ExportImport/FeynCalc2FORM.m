@@ -4,15 +4,15 @@
 
 
 (* ::Section:: *)
-(* FeynCalc2FORM *)
+(*FeynCalc2FORM*)
 
 
 (* ::Text:: *)
-(*`FeynCalc2FORM[exp]` displays `exp` in `FORM` syntax. *)
+(*`FeynCalc2FORM[exp]` displays `exp` in `FORM` syntax.*)
 
 
 (* ::Text:: *)
-(*`FeynCalc2FORM[file, x]` writes `x` in FORM syntax to a file. *)
+(*`FeynCalc2FORM[file, x]` writes `x` in FORM syntax to a file.*)
 
 
 (* ::Text:: *)
@@ -24,7 +24,15 @@
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[FeynCalc2FORM](FeynCalc2FORM).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
 
 
 FORM2FeynCalc

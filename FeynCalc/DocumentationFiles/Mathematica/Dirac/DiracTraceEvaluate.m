@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* DiracTraceEvaluate *)
+(*DiracTraceEvaluate*)
 
 
 (* ::Text:: *)
@@ -12,7 +12,7 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
@@ -20,4 +20,4 @@
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)

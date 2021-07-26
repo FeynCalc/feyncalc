@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* IndexPosition *)
+(*IndexPosition*)
 
 
 (* ::Text:: *)
@@ -12,12 +12,12 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*FieldStrength.*)
+(*[FieldStrength](FieldStrength).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)

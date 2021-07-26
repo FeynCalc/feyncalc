@@ -1,19 +1,19 @@
  
 (* ::Section:: *)
-(* SpinorChainTrick *)
+(*SpinorChainTrick*)
 (* ::Text:: *)
 (*`SpinorChainTrick[exp]` applies several simplifications to products of spinor chains.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*FCCanonicalizeDummyIndices, DiracGamma, Spinor.*)
+(*[FCCanonicalizeDummyIndices](FCCanonicalizeDummyIndices), [DiracGamma](DiracGamma), [Spinor](Spinor).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 

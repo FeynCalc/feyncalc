@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* DiracGammaExpand *)
+(*DiracGammaExpand*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*DiracGamma, DiracGammaCombine, DiracSimplify, DiracTrick.*)
+(*[DiracGamma](DiracGamma), [DiracGammaCombine](DiracGammaCombine), [DiracSimplify](DiracSimplify), [DiracTrick](DiracTrick).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 GS[q] . GS[p-q]

@@ -1,26 +1,23 @@
 (* ::Package:: *)
 
- 
-
-
 (* ::Section:: *)
-(* CartesianMomentum *)
+(*CartesianMomentum*)
 
 
 (* ::Text:: *)
-(*`CartesianMomentum[p]` is the head of a 3-momentum $p$. The internal representation of a 3-dimensional $p$ is `CartesianMomentum[p]`. For other than three dimensions: `CartesianMomentum[p, Dimension]`. `CartesianMomentum[p, 3]` simplifies to `CartesianMomentum[p]`.*)
+(*`CartesianMomentum[p]` is the head of a 3-momentum `p`. The internal representation of a $3$-dimensional `p` is `CartesianMomentum[p]`. For other than three dimensions: `CartesianMomentum[p, Dimension]`. `CartesianMomentum[p, 3]` simplifies to `CartesianMomentum[p]`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*Momentum, TemporalMomentum.*)
+(*[Momentum](Momentum), [TemporalMomentum](TemporalMomentum).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 (* ::Text:: *)

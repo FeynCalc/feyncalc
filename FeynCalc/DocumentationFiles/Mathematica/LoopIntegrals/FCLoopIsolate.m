@@ -1,12 +1,20 @@
  
 (* ::Section:: *)
-(* FCLoopIsolate *)
+(*FCLoopIsolate*)
 (* ::Text:: *)
 (*`FCLoopIsolate[expr, {q1, q2, ...}]` wraps loop integrals into heads specified by the user. This is useful when you want to know which loop integrals appear in the given expression.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[FCLoopExtract](FCLoopExtract).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
 
 
 FCI[GSD[q-p1].(GSD[q-p2]+M).GSD[p3]SPD[q,p2]FAD[q,q-p1,{q-p2,m}]]

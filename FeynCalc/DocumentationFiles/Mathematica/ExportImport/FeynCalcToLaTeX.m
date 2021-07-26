@@ -4,11 +4,11 @@
 
 
 (* ::Section:: *)
-(* FeynCalcToLaTeX *)
+(*FeynCalcToLaTeX*)
 
 
 (* ::Text:: *)
-(*`FeynCalcToLaTeX[exp]` generates LaTeX with line-breaking  for `exp`. *)
+(*`FeynCalcToLaTeX[exp]` generates LaTeX with line-breaking  for `exp`.*)
 
 
 (* ::Text:: *)
@@ -20,4 +20,12 @@
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[Write2](Write2).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)

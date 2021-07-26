@@ -1,9 +1,20 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* SymbolicSum3 *)
-(* ::Text:: *)
-(*SymbolicSum3 is similar to SymbolicSum (Algegra`SymbolicSum`SymbolicSum was a function to do symbolic summation. It was obsolete from version 3 - all functionality is now autoloaded by Sum), but extended to several double sums..*)
+(*SymbolicSum3 *)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[SymbolicSum2](SymbolicSum2).*)
+
+
+(* ::Text:: *)
+(*`SymbolicSum3` is similar to `SymbolicSum` (`SymbolicSum` was a Mathematica function to do symbolic summation. It was obsolete from version 3 - all functionality is now autoloaded by `Sum`), but extended to several double sums.*)
+
+
+(* ::Subsection:: *)
+(*Examples*)

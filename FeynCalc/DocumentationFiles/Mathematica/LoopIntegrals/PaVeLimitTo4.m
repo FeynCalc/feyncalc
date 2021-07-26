@@ -4,11 +4,11 @@
 
 
 (* ::Section:: *)
-(* PaVeLimitTo4 *)
+(*PaVeLimitTo4 *)
 
 
 (* ::Text:: *)
-(*`PaVeLimitTo4[expr]`  simplifies products of Passarino-Veltman functions and $D$-dependent prefactors by evaluating the prefactors at $D=4$ and adding an extra term from the product of $(D-4)$ and the UV pole of the Passarino-Veltman function. *)
+(*`PaVeLimitTo4[expr]`  simplifies products of Passarino-Veltman functions and $D$-dependent prefactors by evaluating the prefactors at $D=4$ and adding an extra term from the product of $(D-4)$ and the UV pole of the Passarino-Veltman function.*)
 
 
 (* ::Text:: *)
@@ -24,7 +24,15 @@
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[$LimitTo4]($LimitTo4).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
 
 
 ex=(D-2)/(D-3)A0[m^2]

@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* QuarkFieldChi *)
+(*QuarkFieldChi*)
 
 
 (* ::Text:: *)
@@ -12,11 +12,11 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 QuarkFieldChi

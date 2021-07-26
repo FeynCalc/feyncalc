@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* QCDFeynmanRuleConvention *)
+(*QCDFeynmanRuleConvention*)
 
 
 (* ::Text:: *)
@@ -16,15 +16,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*GluonGhostVertex, GhostPropagator.*)
+(*[GluonGhostVertex](GluonGhostVertex), [GhostPropagator](GhostPropagator).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 (* ::Text:: *)

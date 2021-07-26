@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* FCFeynmanPrepare *)
+(*FCFeynmanPrepare*)
 
 
 (* ::Text:: *)
@@ -28,15 +28,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*FCFeynmanParametrize, FCFeynmanProjectivize.*)
+(*[FCFeynmanParametrize](FCFeynmanParametrize), [FCFeynmanProjectivize](FCFeynmanProjectivize).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 (* ::Text:: *)

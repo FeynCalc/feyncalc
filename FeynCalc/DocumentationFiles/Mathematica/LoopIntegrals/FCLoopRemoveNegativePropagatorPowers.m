@@ -1,12 +1,19 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* FCLoopRemoveNegativePropagatorPowers *)
+(*FCLoopRemoveNegativePropagatorPowers*)
+
+
 (* ::Text:: *)
 (*`FCLoopRemoveNegativePropagatorPowers[exp]` rewrites propagators raised to integer powers as products.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
 
 
 SFAD[{q,m,-1}]

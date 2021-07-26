@@ -1,10 +1,7 @@
 (* ::Package:: *)
 
- 
-
-
 (* ::Section:: *)
-(* FRH *)
+(*FRH*)
 
 
 (* ::Text:: *)
@@ -12,15 +9,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*Isolate.*)
+(*[Isolate](Isolate).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 Hold[1-1 - Hold[2-2]]

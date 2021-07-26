@@ -1,12 +1,20 @@
  
 (* ::Section:: *)
-(* FCLoopNonIntegerPropagatorPowersFreeQ *)
+(*FCLoopNonIntegerPropagatorPowersFreeQ*)
 (* ::Text:: *)
 (*`FCLoopNonIntegerPropagatorPowersFreeQ[int]` checks if the integral contains propagators raised to noninteger (i.e. fractional or symbolic) powers.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[FCLoopRemoveNegativePropagatorPowers](FCLoopRemoveNegativePropagatorPowers).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
 
 
 SFAD[{q+p,m^2,2}]

@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* TID *)
+(*TID*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*OneLoopSimplify, TIDL, PaVeLimitTo4.*)
+(*[OneLoopSimplify](OneLoopSimplify), [TIDL](TIDL), [PaVeLimitTo4](PaVeLimitTo4).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 FCClearScalarProducts[];
@@ -30,7 +30,7 @@ int=FAD[{k,m}, k - Subscript[p, 1], k - Subscript[p, 2]]FVD[k,\[Mu]]//FCI
 
 
 (* ::Text:: *)
-(*By default, all tensor integrals are reduced to the Passarino-Veltman scalar integrals $A_0$, $B_0$, $C_0$, $D_0$ etc. *)
+(*By default, all tensor integrals are reduced to the Passarino-Veltman scalar integrals $A_0$, $B_0$, $C_0$, $D_0$ etc.*)
 
 
 TID[int,k]

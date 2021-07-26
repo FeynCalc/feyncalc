@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* BackgroundGluonVertex *)
+(*BackgroundGluonVertex*)
 
 
 (* ::Text:: *)
@@ -20,11 +20,11 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 BackgroundGluonVertex[{p,\[Mu],a},{q,\[Nu],b},{k,\[Lambda],c}]

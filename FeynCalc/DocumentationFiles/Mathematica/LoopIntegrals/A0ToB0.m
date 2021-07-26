@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* A0ToB0 *)
+(*A0ToB0 *)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*A0, B0, C0, D0, PaVe.*)
+(*[A0](A0), [B0](B0), [C0](C0), [D0](D0), [PaVe](PaVe).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 A0[m^2]

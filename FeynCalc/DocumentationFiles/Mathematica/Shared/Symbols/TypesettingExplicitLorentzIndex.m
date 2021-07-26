@@ -1,25 +1,27 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* TypesettingExplicitLorentzIndex *)
+(*TypesettingExplicitLorentzIndex*)
+
+
 (* ::Text:: *)
-(*TypesettingExplicitLorentzIndex  determines the TraditionalForm typesetting of explicit Lorentz indices..*)
+(*`TypesettingExplicitLorentzIndex` determines the `TraditionalForm` typesetting of explicit Lorentz indices.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
+
+
 (* ::Text:: *)
 (*Current setting*)
 
 
-
 (* ::Subsection:: *)
-(* Examples *)
-
+(*Examples*)
 
 
 TypesettingExplicitLorentzIndex
 %//InputForm
-
 
 
 (* ::Text:: *)

@@ -1,18 +1,20 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* RHM *)
+(*RHM*)
+
+
 (* ::Text:: *)
-(*RHM[] is like RHI[], gives Gamma functions..*)
+(*`RHM[]` is like `RHI[]`, gives `Gamma` functions.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*RHI.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[RHI](RHI).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
-
+(*Examples*)

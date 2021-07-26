@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* SquareAmplitude *)
+(*SquareAmplitude*)
 
 
 (* ::Text:: *)
@@ -12,11 +12,11 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 Clear[a1,a2,a3,b1,b2,b3]

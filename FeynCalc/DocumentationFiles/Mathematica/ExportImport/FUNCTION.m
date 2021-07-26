@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* FUNCTION *)
+(*FUNCTION*)
 
 
 (* ::Text:: *)
@@ -12,12 +12,12 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*Write2.*)
+(*[Write2](Write2).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)

@@ -1,20 +1,38 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* TemporalMomentum *)
+(*TemporalMomentum*)
+
+
 (* ::Text:: *)
-(*TemporalMomentum[p]  is the head of the temporal component of a four momentum $p^0$. The internal representation of the temporal component $p^0$ is TemporalMomentum[p]. TemporalMomentum may appear only inside TemporalPair.*)
+(*`TemporalMomentum[p]`  is the head of the temporal component of a $4$-momentum $p^0$. The internal representation of the temporal component $p^0$ is `TemporalMomentum[p]`.*)
+
+
+(* ::Text:: *)
+(*`TemporalMomentum` may appear only inside `TemporalPair`s.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[TemporalPair](TemporalPair), [ExplicitLorentzIndex](ExplicitLorentzIndex).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
+
+
 TemporalMomentum[p]
+
 
 TemporalMomentum[-q]
 %//StandardForm
 
 
 TemporalMomentum[p+q]
-
 %//MomentumExpand//StandardForm
+
 
 %//MomentumCombine//StandardForm

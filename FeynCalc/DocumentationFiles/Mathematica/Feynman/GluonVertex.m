@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* GluonVertex *)
+(*GluonVertex*)
 
 
 (* ::Text:: *)
@@ -24,19 +24,19 @@
 
 
 (* ::Text:: *)
-(*The dimension and the name of the coupling constant are determined by the options `Dimension` and `CouplingConstant`. All momenta are flowing into the vertex..*)
+(*The dimension and the name of the coupling constant are determined by the options `Dimension` and `CouplingConstant`. All momenta are flowing into the vertex.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*GluonPropagator, GluonGhostVertex.*)
+(*[GluonPropagator](GluonPropagator), [GluonGhostVertex](GluonGhostVertex).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 GluonVertex[{p,\[Mu],a},{q,\[Nu],b},{r,\[Rho],c}]

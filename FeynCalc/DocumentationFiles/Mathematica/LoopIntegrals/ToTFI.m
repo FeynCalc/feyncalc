@@ -1,19 +1,19 @@
  
 (* ::Section:: *)
-(* ToTFI *)
+(*ToTFI*)
 (* ::Text:: *)
 (*`ToTFI[expr, q1, q2, p]` translates FeynCalc 2-loop self energy type integrals into the `TFI` notation, which can be used as input for the function `TarcerRecurse` from the `TARCER` package. See the `TARCER` documenatation on `TFI` for details on the conventions.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*FromTFI.*)
+(*[FromTFI](FromTFI).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 FAD[q1,q1-p,{q2,M},{q2-p,m},q1-q2]

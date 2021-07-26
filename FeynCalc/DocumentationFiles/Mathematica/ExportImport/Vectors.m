@@ -1,10 +1,7 @@
 (* ::Package:: *)
 
- 
-
-
 (* ::Section:: *)
-(* Vectors *)
+(*Vectors*)
 
 
 (* ::Text:: *)
@@ -12,12 +9,12 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*FORM2FeynCalc.*)
+(*[FORM2FeynCalc](FORM2FeynCalc).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)

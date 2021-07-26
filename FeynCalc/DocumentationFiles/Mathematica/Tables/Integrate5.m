@@ -1,18 +1,20 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* Integrate5 *)
+(*Integrate5 *)
+
+
 (* ::Text:: *)
-(*Integrate5 is an alternative implementation along the lines of Integrate2..*)
+(*`Integrate5` is an alternative implementation along the lines of `Integrate2`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*Integrate2, Integrate4.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[Integrate2](Integrate2), [Integrate4](Integrate4).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
-
+(*Examples*)

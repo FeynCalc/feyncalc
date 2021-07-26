@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* ExtraFactor *)
+(*ExtraFactor*)
 
 
 (* ::Text:: *)
@@ -12,12 +12,12 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*FermionSpinSum.*)
+(*[FermionSpinSum](FermionSpinSum).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)

@@ -1,24 +1,32 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* FCSetMetricSignature *)
+(*FCSetMetricSignature*)
+
+
 (* ::Text:: *)
-(*FCSetMetricSignature sets the signature of the Minkowski metric used when working with Cartesian objects, like CartesianPair, CartesianIndex, CartesianMomentum etc. The default choice is (1,-1,-1,-1) which corresponds to FCSetMetricSignature[{1,-1}].*)
+(*`FCSetMetricSignature` sets the signature of the Minkowski metric used when working with Cartesian objects, like `CartesianPair`, `CartesianIndex`, `CartesianMomentum` etc.*)
+
+
+(* ::Text:: *)
+(*The default choice is $(1,-1,-1,-1)$ which corresponds to `FCSetMetricSignature[{1,-1}]`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*FCGetMetricSignature.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[FCGetMetricSignature](FCGetMetricSignature).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
+(*Examples*)
 
 
 FCSetMetricSignature[{-1,1}]
 SPD[p,q]//LorentzToCartesian
+
 
 FCSetMetricSignature[{1,-1}]
 SPD[p,q]//LorentzToCartesian

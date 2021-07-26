@@ -1,18 +1,20 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* SimplifyGTI *)
+(*SimplifyGTI*)
+
+
 (* ::Text:: *)
-(*SimplifyGTI simplifies GTI's..*)
+(*`SimplifyGTI` simplifies `GTI`s.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*GTI.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[GTI](GTI).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
-
+(*Examples*)

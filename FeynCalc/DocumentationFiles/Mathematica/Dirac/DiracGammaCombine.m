@@ -1,19 +1,19 @@
  
 (* ::Section:: *)
-(* DiracGammaCombine *)
+(*DiracGammaCombine*)
 (* ::Text:: *)
 (*`DiracGammaCombine[exp]` is (nearly) the inverse operation to `DiracGammaExpand`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*DiracGamma, DiracGammaExpand, DiracSimplify, DiracTrick.*)
+(*[DiracGamma](DiracGamma), [DiracGammaExpand](DiracGammaExpand), [DiracSimplify](DiracSimplify), [DiracTrick](DiracTrick).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 

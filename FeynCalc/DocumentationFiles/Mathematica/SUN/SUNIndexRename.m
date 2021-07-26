@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* SUNIndexRename *)
+(*SUNIndexRename*)
 
 
 (* ::Text:: *)
@@ -12,12 +12,12 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*SUNSimplify, SUNIndex.*)
+(*[SUNSimplify](SUNSimplify), [SUNIndex](SUNIndex).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)

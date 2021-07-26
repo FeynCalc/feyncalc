@@ -1,18 +1,20 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* FinalFunction *)
+(*FinalFunction*)
+
+
 (* ::Text:: *)
-(*FinalFunction is an option for OneLoopSum..*)
+(*`FinalFunction` is an option for `OneLoopSum`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*OneLoopSum.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[OneLoopSum](OneLoopSum).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
-
+(*Examples*)

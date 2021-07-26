@@ -1,18 +1,18 @@
  
 (* ::Section:: *)
-(* FDS *)
+(*FDS*)
 (* ::Text:: *)
 (*`FDS` is shorthand for `FeynAmpDenominatorSimplify`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*FeynAmpDenominatorSimplify.*)
+(*[FeynAmpDenominatorSimplify](FeynAmpDenominatorSimplify).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 

@@ -1,20 +1,23 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* CounterT *)
+(*CounterT*)
+
+
 (* ::Text:: *)
-(*CounterT is a factor used by GluonPropagator and QuarkPropagator when CounterTerms is set to All..*)
+(*`CounterT` is a factor used by `GluonPropagator` and `QuarkPropagator` when `CounterTerms` is set to `All`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*CounterTerm, GluonPropagator, QuarkPropagator.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[CounterTerm](CounterTerm), [GluonPropagator](GluonPropagator), [QuarkPropagator](QuarkPropagator).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
+(*Examples*)
 
 
 GluonPropagator[p,\[Mu],a,\[Nu],b,Explicit->True,CounterTerm-> All]

@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* PaVeOrder *)
+(*PaVeOrder*)
 
 
 (* ::Text:: *)
@@ -33,15 +33,15 @@ FileBaseName/@FileNames["*.sym",FileNameJoin[{$FeynCalcDirectory, "Tables", "PaV
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*PaVeReduce.*)
+(*[PaVeReduce](PaVeReduce).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 ClearAll[t,s]

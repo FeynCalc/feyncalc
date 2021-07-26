@@ -1,22 +1,27 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* PowerFactor *)
+(*PowerFactor*)
+
+
 (* ::Text:: *)
-(*PowerFactor[exp] replaces $x^a$$y^a$with $(x y)^a$..*)
+(*`PowerFactor[exp]` replaces `x^a y^a` with `(x y)^a`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*PowerSimplify.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[PowerSimplify](PowerSimplify).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
+(*Examples*)
 
 
 x^a y^a
-
 PowerFactor[%]
+
+
+

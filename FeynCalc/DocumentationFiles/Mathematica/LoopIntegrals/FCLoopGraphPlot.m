@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* FCLoopGraphPlot *)
+(*FCLoopGraphPlot*)
 
 
 (* ::Text:: *)
@@ -24,7 +24,7 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
@@ -32,7 +32,7 @@
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 (* ::Text:: *)
@@ -227,6 +227,21 @@ FCLoopGraphPlot[%, GraphPlot-> {MultiedgeStyle->0.35,Frame->True},Style->{
 {"InternalLine",_,_,mm_/;!FreeQ[mm,m4]}->{Purple,Thick},
 {"ExternalLine",q1}->{Brown,Thick,Dashed}
 }]
+
+
+
+
+
+(* ::Text:: *)
+(*One can also visualize the momentum flow, where we use powers to denote the dots*)
+
+
+FCLoopIntegralToGraph[FCTopology[topo1X1,{SFAD[{{p2,0},{m1^2,1},2}],SFAD[{{p1,0},{m1^2,1},2}],
+SFAD[{{p2+p3,0},{0,1},1}],SFAD[{{p2+p3,0},{0,1},1}],
+SFAD[{{p1+p3,0},{0,1},1}],SFAD[{{p1+p2+p3,0},{0,1},1}]}],{p1,p2,p3}]
+FCLoopGraphPlot[%,GraphPlot-> {MultiedgeStyle->0.35,Frame->True},Labeled->{
+{"InternalLine",x_,pow_,_}:>x^pow,
+{"ExternalLine",_}:>{}}]
 
 
 

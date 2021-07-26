@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* DiracOrder *)
+(*DiracOrder*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*DiracSimplify, DiracTrick.*)
+(*[DiracSimplify](DiracSimplify), [DiracTrick](DiracTrick).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 GA[\[Beta],\[Alpha]]

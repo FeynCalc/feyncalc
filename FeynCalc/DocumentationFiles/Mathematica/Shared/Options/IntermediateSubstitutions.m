@@ -1,18 +1,20 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* IntermediateSubstitutions *)
+(*IntermediateSubstitutions*)
+
+
 (* ::Text:: *)
-(*IntermediateSubstitutions is an option of various FeynCalc functions. All substitutions indicated hereby are done at an intermediate stage of the calculation..*)
+(*`IntermediateSubstitutions` is an option of various FeynCalc functions. All substitutions indicated hereby are done at an intermediate stage of the calculation.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*OneLoop.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[OneLoop](OneLoop).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
-
+(*Examples*)

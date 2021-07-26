@@ -1,19 +1,19 @@
  
 (* ::Section:: *)
-(* FCEnableTraditionalFormOutput *)
+(*FCEnableTraditionalFormOutput*)
 (* ::Text:: *)
 (*FCEnableTraditionalFormOutput[] sets the output format of the current FrontEnd to TraditionalForm. The setting is not persistent, such that it does not influence any subequent Mathematica FrontEnd sessions.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*$FCTraditionalFormOutput, FCDisableTraditionalFormOutput.*)
+(*[$FCTraditionalFormOutput]($FCTraditionalFormOutput), [FCDisableTraditionalFormOutput](FCDisableTraditionalFormOutput).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 

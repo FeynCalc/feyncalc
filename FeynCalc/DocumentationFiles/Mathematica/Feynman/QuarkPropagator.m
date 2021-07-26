@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* QuarkPropagator *)
+(*QuarkPropagator*)
 
 
 (* ::Text:: *)
@@ -20,15 +20,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*GluonPropagator, QuarkGluonVertex.*)
+(*[GluonPropagator](GluonPropagator), [QuarkGluonVertex](QuarkGluonVertex).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 QuarkPropagator[p,Explicit->True]

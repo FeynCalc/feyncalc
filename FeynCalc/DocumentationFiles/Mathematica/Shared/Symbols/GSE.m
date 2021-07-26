@@ -1,10 +1,7 @@
 (* ::Package:: *)
 
- 
-
-
 (* ::Section:: *)
-(* GSE *)
+(*GSE*)
 
 
 (* ::Text:: *)
@@ -12,15 +9,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*DiracGamma, GA, GAD, GSD.*)
+(*[DiracGamma](DiracGamma), [GA](GA), [GAD](GAD), [GSD](GSD).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 GSE[p]
@@ -36,7 +33,7 @@ GSE[q] . (GSE[p]+m) . GSE[q]
 
 
 (* ::Text:: *)
-(*In order to use Dirac algebra with D-4 dimensional objects you need to activate the t'Hooft-Veltman-Breitenlohner-Maison scheme first*)
+(*In order to use Dirac algebra with $D-4$ dimensional objects you need to activate the t'Hooft-Veltman-Breitenlohner-Maison scheme first*)
 
 
 FCSetDiracGammaScheme["NDR"];

@@ -1,32 +1,39 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* FCE *)
+(*FCE*)
+
+
 (* ::Text:: *)
-(*FCE[exp] translates exp from the internal FeynCalc representation to a short form.FCE is equivalent to FeynCalcExternal..*)
+(*`FCE[exp]` translates `exp` from the internal FeynCalc representation to a short form.*)
+
+
+(* ::Text:: *)
+(*`FCE` is equivalent to `FeynCalcExternal`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*FeynCalcExternal, FCI, FeynCalcInternal.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[FeynCalcExternal](FeynCalcExternal), [FCI](FCI), [FeynCalcInternal](FeynCalcInternal).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
+(*Examples*)
 
 
 FCE[{DiracGamma[5],DiracGamma[Momentum[p]]}]
-
 %//StandardForm
 
-{GA[\[Mu]],GAD[\[Rho]],GS[p],SP[p,q],MT[\[Alpha],\[Beta]],FV[p,\[Mu]]}
 
+ex={GA[\[Mu]],GAD[\[Rho]],GS[p],SP[p,q],MT[\[Alpha],\[Beta]],FV[p,\[Mu]]}
 %//StandardForm
 
-%//FCI
 
+ex//FCI
 %//StandardForm
 
-FCE[%]//StandardForm
+
+FCE[ex]//StandardForm

@@ -1,18 +1,27 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* Rename *)
+(*Rename*)
+
+
 (* ::Text:: *)
-(*Rename is an option for Contract. If set to True, dummy indices in Eps are renamed, using $MU[i]..*)
+(*`Rename` is an option for `Contract`. If set to `True`, dummy indices in `Eps` are renamed, using `$MU[i]`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*Contract.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[Contract](Contract).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
+
+
+LC[\[Mu],\[Nu],\[Rho],\[Sigma]]LC[\[Alpha],\[Nu],\[Rho],\[Sigma]]
+Contract[%,EpsContract->False,Rename->True]
+
 
 

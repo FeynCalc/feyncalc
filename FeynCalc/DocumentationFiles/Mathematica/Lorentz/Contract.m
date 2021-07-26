@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* Contract *)
+(*Contract*)
 
 
 (* ::Text:: *)
@@ -12,7 +12,7 @@
 
 
 (* ::Text:: *)
-(*For the contraction of Dirac matrices with each other use `DiracSimplify`. *)
+(*For the contraction of Dirac matrices with each other use `DiracSimplify`.*)
 
 
 (* ::Text:: *)
@@ -20,15 +20,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*Pair, CartesianPair, DiracSimplify, MomentumCombine.*)
+(*[Pair](Pair), [CartesianPair](CartesianPair), [DiracSimplify](DiracSimplify), [MomentumCombine](MomentumCombine).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 MT[\[Mu],\[Nu]] FV[p,\[Mu]]

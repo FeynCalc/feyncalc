@@ -1,20 +1,23 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* TimedIntegrate *)
+(*TimedIntegrate*)
+
+
 (* ::Text:: *)
-(*TimedIntegrate[exp, vars] is like Integrate, but stops after the number of seconds specified by the option Timing. Options of Integrate can be given and are passed on..*)
+(*`TimedIntegrate[exp, vars]` is like `Integrate`, but stops after the number of seconds specified by the option `Timing`. Options of `Integrate` can be given and are passed on.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
+
+
 (* ::Text:: *)
 (*This should reach to be done*)
-
-
-
-(* ::Subsection:: *)
-(* Examples *)
-
 
 
 TimedIntegrate[Log[x^5],{x,0,1},Timing->1]

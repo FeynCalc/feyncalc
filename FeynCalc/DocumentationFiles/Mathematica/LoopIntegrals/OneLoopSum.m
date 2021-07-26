@@ -1,18 +1,18 @@
  
 (* ::Section:: *)
-(* OneLoopSum *)
+(*OneLoopSum*)
 (* ::Text:: *)
 (*`OneLoopSum[FeynAmp[ ... ], FeynAmp[ ... ] , ...]` will calculate a list of Feynman amplitudes by replacing FeynAmp step by step by `OneLoop`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*OneLoop.*)
+(*[OneLoop](OneLoop).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 

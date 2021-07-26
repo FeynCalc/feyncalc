@@ -1,16 +1,42 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* CompleteSquare *)
+(*CompleteSquare*)
+
+
 (* ::Text:: *)
-(*CompleteSquare completes the square of a second order polynomial in the momentum x. CompleteSquare[a $p^2$+b p+c, p] -> -$b^2$/(4 a)+c+a (b/(2 a)+x)^2. CompleteSquare[a $p^2$+b p+c, p, q] -> {-$b^2$/(4 a)+c+a $q^2$, q->b/(2 a)+p}..*)
+(*`CompleteSquarep[exp, x]` completes the square of a second order polynomial in the momentum x.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[ExpandScalarProduct](ExpandScalarProduct).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
+
+
+CompleteSquare[4 SP[p]+ SP[b,p] +c,p]
+
+
+CompleteSquare[4 SP[p]+ SP[b,p] +c,p,q]
+
+
 5SP[2p+3r,p+r]
-
 CompleteSquare[%,p]
-
 %-%%//ScalarProductExpand//Expand
 
+
 CompleteSquare[5SP[2p+3r,p+r],p,q]
+
+
+SPD[a]+2SPD[a,b]
+CompleteSquare[%,a]
+%//StandardForm
+
+
+

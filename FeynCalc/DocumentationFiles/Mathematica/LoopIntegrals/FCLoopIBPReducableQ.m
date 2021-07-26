@@ -1,12 +1,19 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* FCLoopIBPReducableQ *)
+(*FCLoopIBPReducableQ*)
+
+
 (* ::Text:: *)
 (*`FCLoopIBPReducableQ[int]` checks if the integral contains propagators raised to integer powers.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
 
 
 FAD[q,q-p]

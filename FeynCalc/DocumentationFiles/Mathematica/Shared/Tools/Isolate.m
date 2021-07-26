@@ -4,7 +4,15 @@
 
 
 (* ::Section:: *)
-(* Isolate *)
+(*Isolate*)
+
+
+(* ::Subsection:: *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[IsolateNames](IsolateNames), [Collect2](Collect2).*)
 
 
 (* ::Text:: *)
@@ -12,7 +20,7 @@
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 t0=Isolate[a+b]

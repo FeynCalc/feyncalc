@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* ExpandPartialD *)
+(*ExpandPartialD*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*ExplicitPartialD, LeftPartialD, LeftRightPartialD, PartialDRelations, RightPartialD.*)
+(*[ExplicitPartialD](ExplicitPartialD), [LeftPartialD](LeftPartialD), [LeftRightPartialD](LeftRightPartialD), [PartialDRelations](PartialDRelations), [RightPartialD](RightPartialD).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 RightPartialD[\[Mu]] . QuantumField[A,LorentzIndex[\[Mu]]] . QuantumField[A,LorentzIndex[\[Nu]]]

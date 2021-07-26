@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* DiracReduce *)
+(*DiracReduce*)
 
 
 (* ::Text:: *)
@@ -12,7 +12,7 @@
 
 
 (* ::Text:: *)
-(* In the result the basic Dirac structures can be wrapped with a head `DiracBasis`, that is*)
+(*In the result the basic Dirac structures can be wrapped with a head `DiracBasis`, that is*)
 
 
 (* ::Text:: *)
@@ -28,15 +28,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*Chisholm, DiracSimplify, EpsChisholm.*)
+(*[Chisholm](Chisholm), [DiracSimplify](DiracSimplify), [EpsChisholm](EpsChisholm).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 GA[\[Mu],\[Nu]]

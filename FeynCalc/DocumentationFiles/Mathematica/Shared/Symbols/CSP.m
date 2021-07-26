@@ -1,32 +1,45 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* CSP *)
+(*CSP*)
+
+
 (* ::Text:: *)
-(*CSP[p, q] is the 3-dimensional scalar product of p with q and is transformed into CartesianPair[CartesianMomentum[p],CartesianMomentum[q]] by FeynCalcInternal. CSP[p] is the same as CSP[p,p] ($=p^2$)..*)
+(*`CSP[p, q]` is the 3-dimensional scalar product of `p` with `q` and is transformed into `CartesianPair[CartesianMomentum[p],CartesianMomentum[q]]` by `FeynCalcInternal`.*)
+
+
+(* ::Text:: *)
+(*` CSP[p]` is the same as `CSP[p,p]` ($=p^2$).*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*SP, ScalarProduct, CartesianScalarProduct.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[SP](SP), [ScalarProduct](ScalarProduct), [CartesianScalarProduct](CartesianScalarProduct).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
+(*Examples*)
 
 
 CSP[p,q] + CSP[q]
 
+
 CSP[p-q,q+2p]
+
 
 Calc[ CSP[p-q,q+2p] ]
 
+
 ExpandScalarProduct[CSP[p-q]]
+
 
 CSP[a,b]//StandardForm
 
+
 CSP[a,b]//FCI//StandardForm
+
 
 CSP[a,b]//FCI//FCE//StandardForm

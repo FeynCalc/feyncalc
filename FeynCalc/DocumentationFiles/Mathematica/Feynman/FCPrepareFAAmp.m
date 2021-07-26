@@ -4,19 +4,19 @@
 
 
 (* ::Section:: *)
-(* FCPrepareFAAmp *)
+(*FCPrepareFAAmp*)
 
 
 (* ::Text:: *)
-(*`FCPrepareFAAmp[exp]`  is an auxiliary function for a partial conversion of a FeynArts amplitude to FeynCalc..*)
+(*`FCPrepareFAAmp[exp]`  is an auxiliary function for a partial conversion of a FeynArts amplitude to FeynCalc.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 FCClearScalarProducts[]

@@ -1,18 +1,18 @@
  
 (* ::Section:: *)
-(* TLI2 *)
+(*TLI2 *)
 (* ::Text:: *)
-(*TLI2 is like TLI, but without any functional properties..*)
+(*TLI2 is like TLI, but without any functional properties.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*TLI.*)
+(*[TLI](TLI).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 

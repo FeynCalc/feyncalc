@@ -1,18 +1,20 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* Gamma1 *)
+(*Gamma1 *)
+
+
 (* ::Text:: *)
-(*Gamma1[al, ga, be, de] is a special product of Gamma functions expanded up to order Epsilon^2..*)
+(*`Gamma1[al, ga, be, de]` is a special product of `Gamma` functions expanded up to order `Epsilon^2`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*Gamma2, Gamma3.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[Gamma2](Gamma2), [Gamma3](Gamma3).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
-
+(*Examples*)

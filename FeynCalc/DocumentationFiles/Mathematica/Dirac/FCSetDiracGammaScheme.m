@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* FCSetDiracGammaScheme *)
+(*FCSetDiracGammaScheme*)
 
 
 (* ::Text:: *)
@@ -32,15 +32,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*FCGetDiracGammaScheme, DiracTrace.*)
+(*[FCGetDiracGammaScheme](FCGetDiracGammaScheme), [DiracTrace](DiracTrace).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 (* ::Text:: *)

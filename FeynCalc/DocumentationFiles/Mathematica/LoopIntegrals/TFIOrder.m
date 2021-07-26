@@ -1,12 +1,20 @@
  
 (* ::Section:: *)
-(* TFIOrder *)
+(*TFIOrder*)
 (* ::Text:: *)
 (*`TFIOrder[exp]` orders the arguments of some `TFI` functions in exp in a standard way.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[TarcerToFC](TarcerToFC).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
 
 Tarcer`TFI[D,p^2,{{1,M2},{1,M1},{1,M3},{1,M4},{1,M5}}]
 TFIOrder[%]

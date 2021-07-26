@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* FCColorIsolate *)
+(*FCColorIsolate*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*SUNT, SUNF.*)
+(*[SUNT](SUNT), [SUNF](SUNF).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 (* ::Text:: *)
@@ -39,7 +39,7 @@ Cases2[ampIso,colorS]
 
 
 (* ::Text:: *)
-(*This way we obtain a sorted list of all unique color structures in `amp`. *)
+(*This way we obtain a sorted list of all unique color structures in `amp`.*)
 
 
 ClearAll[amp,ampIso,colorS]

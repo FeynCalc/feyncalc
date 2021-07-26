@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* PostFortranFile *)
+(*PostFortranFile*)
 
 
 (* ::Text:: *)
@@ -12,12 +12,12 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*Write2, PreFortranFile.*)
+(*[Write2](Write2), [PreFortranFile](PreFortranFile).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)

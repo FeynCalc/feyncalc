@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* PolarizationSum *)
+(*PolarizationSum*)
 
 
 (* ::Text:: *)
@@ -24,15 +24,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*Polarization, DoPolariazationSums, Uncontract.*)
+(*[Polarization](Polarization), [DoPolariazationSums](DoPolariazationSums), [Uncontract](Uncontract).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 PolarizationSum[\[Mu],\[Nu]]

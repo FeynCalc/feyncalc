@@ -1,14 +1,29 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* TGA *)
+(*TGA*)
+
+
 (* ::Text:: *)
-(*TGA[]  can be used as input for $\gamma ^0$ in 4 dimensions and is transformed into DiracGamma[ExplicitLorentzIndex[0]] by FeynCalcInternal.*)
+(*`TGA[]`  can be used as input for $\gamma^0$ in $4$ dimensions and is transformed into `DiracGamma[ExplicitLorentzIndex[0]]` by `FeynCalcInternal`.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[GA](GA), [DiracGamma](DiracGamma).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
+
+
 TGA[]
+
 
 TGA[]//FCI//StandardForm
 
-TGA[].TGA[]//DiracSimplify
+
+TGA[] . TGA[]//DiracSimplify

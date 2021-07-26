@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* QGV *)
+(*QGV*)
 
 
 (* ::Text:: *)
@@ -12,12 +12,12 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*QuarkGluonVertex.*)
+(*[QuarkGluonVertex](QuarkGluonVertex).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)

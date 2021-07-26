@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* GluonField *)
+(*GluonField*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*GaugeField.*)
+(*[GaugeField](GaugeField).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 GluonField

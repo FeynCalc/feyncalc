@@ -1,12 +1,20 @@
  
 (* ::Section:: *)
-(* NPointTo4Point *)
+(*NPointTo4Point*)
 (* ::Text:: *)
 (*`NPointTo4Point[expr, q]` reduces scalar IR finite 5-point functions to scalar 4-point functions according to Eq. 4.52 in [arXiv:0709.1075](https://arxiv.org/abs/0709.1075).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[PaVeReduce](PaVeReduce).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
 
 
 FCClearScalarProducts[]

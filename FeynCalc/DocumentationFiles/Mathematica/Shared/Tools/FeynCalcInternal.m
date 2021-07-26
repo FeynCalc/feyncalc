@@ -1,32 +1,38 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* FeynCalcInternal *)
+(*FeynCalcInternal*)
+
+
 (* ::Text:: *)
-(*FeynCalcInternal[exp] translates exp into the internal FeynCalc (abstract data-type) representation..*)
+(*`FeynCalcInternal[exp]` translates `exp` into the internal FeynCalc (abstract data-type) representation.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*FeynCalcExternal, FCI, FCE.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[FeynCalcExternal](FeynCalcExternal), [FCI](FCI), [FCE](FCE).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
-
-{GA[\[Mu]],GAD[\[Rho]],GS[p],SP[p,q],MT[\[Alpha],\[Beta]],FV[p,\[Mu]]}
-
+ex={GA[\[Mu]],GAD[\[Rho]],GS[p],SP[p,q],MT[\[Alpha],\[Beta]],FV[p,\[Mu]]}
 %//StandardForm
 
-%//FeynCalcInternal
 
+ex//FeynCalcInternal
 %//StandardForm
 
-FeynCalcExternal[%]//StandardForm
+
+FeynCalcExternal[ex]//StandardForm
+
 
 FCI[{SD[a,b],SUND[a,b,c],SUNF[a,b,c],FAD[q],LC[\[Mu],\[Nu],\[Rho],\[Sigma]]}]
-
 %//StandardForm
+
+
+

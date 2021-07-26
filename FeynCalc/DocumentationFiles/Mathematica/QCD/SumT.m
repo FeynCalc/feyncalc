@@ -1,10 +1,7 @@
 (* ::Package:: *)
 
- 
-
-
 (* ::Section:: *)
-(* SumT *)
+(*SumT*)
 
 
 (* ::Text:: *)
@@ -20,15 +17,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*SumP, SumS.*)
+(*[SumP](SumP), [SumS](SumS).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 SumT[1,m-1]

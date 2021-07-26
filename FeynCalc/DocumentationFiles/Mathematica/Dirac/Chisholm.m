@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* Chisholm *)
+(*Chisholm*)
 
 
 (* ::Text:: *)
@@ -12,11 +12,11 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 GA[\[Mu],\[Nu],\[Rho]]

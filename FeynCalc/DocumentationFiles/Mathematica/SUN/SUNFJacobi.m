@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* SUNFJacobi *)
+(*SUNFJacobi*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*SUNF, SUNSimplify.*)
+(*[SUNF](SUNF), [SUNSimplify](SUNSimplify).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 SUNF[a,b,c]SUNF[e,f,c]//SUNSimplify[#,SUNFJacobi->False]&

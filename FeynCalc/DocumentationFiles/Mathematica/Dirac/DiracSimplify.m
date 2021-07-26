@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* DiracSimplify *)
+(*DiracSimplify*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*Contract, DiracEquation, DiracSigmaExplicit, DiracSubstitute5, DiracSubstitute67, DiracGamma, DiracGammaExpand, DiracOrder, DiracTrace, DiracTraceEvaluate, DiracTrick, FCDiracIsolate, SirlinSimplify, SpinorChainTrick, SpinorChainEvaluate, ToDiracGamma67.*)
+(*[Contract](Contract), [DiracEquation](DiracEquation), [DiracSigmaExplicit](DiracSigmaExplicit), [DiracSubstitute5](DiracSubstitute5), [DiracSubstitute67](DiracSubstitute67), [DiracGamma](DiracGamma), [DiracGammaExpand](DiracGammaExpand), [DiracOrder](DiracOrder), [DiracTrace](DiracTrace), [DiracTraceEvaluate](DiracTraceEvaluate), [DiracTrick](DiracTrick), [FCDiracIsolate](FCDiracIsolate), [SirlinSimplify](SirlinSimplify), [SpinorChainTrick](SpinorChainTrick), [SpinorChainEvaluate](SpinorChainEvaluate), [ToDiracGamma67](ToDiracGamma67).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 (* ::Text:: *)
@@ -200,7 +200,7 @@ DiracSimplify[%,InsideDiracTrace->True]
 
 
 (* ::Text:: *)
-(*Since FeynCalc 9.3, `DiracSimplify` will automatically evaluate Dirac traces in the input expression *)
+(*Since FeynCalc 9.3, `DiracSimplify` will automatically evaluate Dirac traces in the input expression*)
 
 
 DiracTrace[GA[\[Mu],\[Nu],\[Rho],\[Sigma]]]

@@ -1,46 +1,56 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* AntiCommutator *)
+(*AntiCommutator*)
+
+
 (* ::Text:: *)
-(*AntiCommutator[x, y] = c defines the anti-commutator of the non commuting objects $\text{x}$ and $\text{y}$..*)
+(*`AntiCommutator[x, y] = c` defines the anti-commutator of the non commuting objects `x` and `y`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*Commutator, CommutatorExplicit, DeclareNonCommutative, DotSimplify.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[Commutator](Commutator), [CommutatorExplicit](CommutatorExplicit), [DeclareNonCommutative](DeclareNonCommutative), [DotSimplify](DotSimplify).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
+
+
 (* ::Text:: *)
-(*This declares a and b as noncommutative variables.*)
+(*This declares `a` and `b` as noncommutative variables.*)
 
 
 DeclareNonCommutative[a,b]
 AntiCommutator[a,b]
-
 CommutatorExplicit[%]
+
 
 CommutatorExplicit[AntiCommutator[a+b,a-2b ]]
 
+
 DotSimplify[AntiCommutator[a+b,a-2b ]]
 
-DeclareNonCommutative[c,d,Overscript[c, ~],Overscript[d, ~]]
+
+DeclareNonCommutative[c,d,ct,dt]
+
 
 (* ::Text:: *)
-(*Defining {c,d} = z results in replacements of c.d by z-d.c.*)
+(*Defining `{c,d} = z` results in replacements of `c.d` by `z-d.c.`*)
 
 
 AntiCommutator[c,d] = z
-
 DotSimplify[ d . c . d ]
 
-AntiCommutator[Overscript[d, ~],Overscript[c, ~]] = Overscript[z, ~]
 
-DotSimplify[ Overscript[d, ~] . Overscript[c, ~] . Overscript[d, ~] ]
+AntiCommutator[dt,ct] = zt
 
-UnDeclareNonCommutative[a,b,c,d,Overscript[c, ~],Overscript[d, ~]]
-Unset[AntiCommutator[c,d]]
-Unset[AntiCommutator[Overscript[d, ~],Overscript[c, ~]]]
+
+DotSimplify[dt . ct . dt]
+
+
+UnDeclareNonCommutative[a,b,c,d,ct,dt]
+UnDeclareAllAntiCommutators[]

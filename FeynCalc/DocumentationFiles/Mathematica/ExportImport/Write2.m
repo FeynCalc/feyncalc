@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* Write2 *)
+(*Write2 *)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*Isolate, PaVeReduce.*)
+(*[Isolate](Isolate), [PaVeReduce](PaVeReduce).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 FullForm[$FortranContinuationCharacter]

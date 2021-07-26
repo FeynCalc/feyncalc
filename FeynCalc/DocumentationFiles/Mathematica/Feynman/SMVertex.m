@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* SMVertex *)
+(*SMVertex*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*SMP.*)
+(*[SMP](SMP).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 (* ::Text:: *)

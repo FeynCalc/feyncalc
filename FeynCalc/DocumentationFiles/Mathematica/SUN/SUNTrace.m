@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* SUNTrace *)
+(*SUNTrace*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*SUNTrace, SUNT, SUNTF, SUNF, SUND.*)
+(*[SUNTrace](SUNTrace), [SUNT](SUNT), [SUNTF](SUNTF), [SUNF](SUNF), [SUND](SUND).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 SUNT[a,b]

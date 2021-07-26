@@ -1,35 +1,42 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* DiracSigma *)
+(*DiracSigma*)
+
+
 (* ::Text:: *)
-(*DiracSigma[a, b] stands for i/2*(a . b - b . a) in 4 dimensions. a and b must have Head DiracGamma, GA or GS. Only antisymmetry is implemented..*)
+(*`DiracSigma[a, b]` stands for $I/2(a.b-b.a)$ in 4 dimensions.*)
+
+
+(* ::Text:: *)
+(*`a` and `b` must have head `DiracGamma`, `GA` or `GS`. Only antisymmetry is implemented.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*DiracSigmaExplicit.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[DiracSigmaExplicit](DiracSigmaExplicit).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
+(*Examples*)
 
 
 DiracSigma[GA[\[Alpha]],GA[\[Beta]]]
-
 DiracSigmaExplicit[%]
+
 
 DiracSigma[GA[\[Beta]],GA[\[Alpha]]]
 
-DiracSigma[GS[p],GS[q]]
 
+DiracSigma[GS[p],GS[q]]
 DiracSigmaExplicit[%]
 
 
 (* ::Text:: *)
-(*The antisymmetry propery is built-in*)
+(*The antisymmetry property is built-in*)
 
 
 DiracSigma[GA[\[Alpha]],GA[\[Alpha]]]

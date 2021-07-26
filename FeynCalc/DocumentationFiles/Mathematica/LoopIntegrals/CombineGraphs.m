@@ -1,18 +1,18 @@
  
 (* ::Section:: *)
-(* CombineGraphs *)
+(*CombineGraphs*)
 (* ::Text:: *)
 (*`CombineGraphs` is an option for `OneLoopSum`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*OneLoopSum.*)
+(*[OneLoopSum](OneLoopSum).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 

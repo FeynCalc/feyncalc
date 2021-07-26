@@ -1,10 +1,19 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* MLimit *)
+(*MLimit*)
+
+
 (* ::Text:: *)
-(*MLimit[expr, lims] takes multiple limits of expr using the limits lims..*)
+(*`MLimit[expr, lims]` takes multiple limits of `expr` using the limits `lims`.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
+
+
 MLimit[y Log[y]+Sin[x-1]/(x-1),{x->1,y->0}]

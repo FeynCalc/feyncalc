@@ -1,18 +1,20 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* Factorout *)
+(*Factorout*)
+
+
 (* ::Text:: *)
-(*Factorout is an option for OPEInt and OPEIntegrate..*)
+(*`Factorout` is an option for OPEInt and OPEIntegrate.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*OPEInt, OPEIntegrate.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[OPEInt](OPEInt), [OPEIntegrate](OPEIntegrate).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
-
+(*Examples*)

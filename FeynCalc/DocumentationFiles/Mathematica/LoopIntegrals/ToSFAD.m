@@ -1,12 +1,20 @@
  
 (* ::Section:: *)
-(* ToSFAD *)
+(*ToSFAD*)
 (* ::Text:: *)
 (*`ToSFAD[exp]` converts all propagator denominators written as `FAD` or `FeynAmpDenmoninator[...,PropagatorDenominator[...],...]` to `SFAD` or `FeynAmpDenmoninator[...,StandardPropagatorDenominator[...],...]` respectively.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[FAD](FAD), [SFAD](SFAD).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
 
 
 ToSFAD[FAD[p]]

@@ -1,18 +1,20 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* OPEIntegrate *)
+(*OPEIntegrate*)
+
+
 (* ::Text:: *)
-(*OPEIntegrate[expr, q, x] calculates a one-loop OPE-type integral..*)
+(*`OPEIntegrate[expr, q, x]` calculates a one-loop OPE-type integral.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*RHI.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[RHI](RHI).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
-
+(*Examples*)

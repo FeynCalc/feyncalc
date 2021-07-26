@@ -1,19 +1,19 @@
  
 (* ::Section:: *)
-(* B11 *)
+(*B11 *)
 (* ::Text:: *)
 (*`B11[pp, ma^2, mb^2]` is the Passarino-Veltman $B_{11}$-function, i.e. the coefficient function of $p^{\mu } p^{\nu }$. All arguments are scalars and have dimension mass squared.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*B0, B00, B1, PaVe.*)
+(*[B0](B0), [B00](B00), [B1](B1), [PaVe](PaVe).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 B11[SPD[p],m^2,M^2]

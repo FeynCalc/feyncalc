@@ -1,6 +1,6 @@
 
 (* ::Section:: *)
-(* ReduceGamma *)
+(*ReduceGamma*)
 
 
 (* ::Text:: *)
@@ -8,12 +8,12 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*OneLoop.*)
+(*[OneLoop](OneLoop).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)

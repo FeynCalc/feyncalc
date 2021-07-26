@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* ScalarGluonVertex *)
+(*ScalarGluonVertex*)
 
 
 (* ::Text:: *)
@@ -20,11 +20,11 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 ScalarGluonVertex[{p}, {q}, {\[Mu], a}]

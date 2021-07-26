@@ -4,11 +4,11 @@
 
 
 (* ::Section:: *)
-(* SMPToSymbol *)
+(*SMPToSymbol*)
 
 
 (* ::Text:: *)
-(*`SMPToSymbol[exp]` converts objects of type `SMP["sth"]` in `exp` to symbols using `ToExpression["sth"]`. *)
+(*`SMPToSymbol[exp]` converts objects of type `SMP["sth"]` in `exp` to symbols using `ToExpression["sth"]`.*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,15 @@
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[SMP](SMP).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
 
 
 SP[p]-SMP["m_e"]^2

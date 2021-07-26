@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* FeynAmpDenominatorSplit *)
+(*FeynAmpDenominatorSplit*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*FeynAmpDenominatorCombine.*)
+(*[FeynAmpDenominatorCombine](FeynAmpDenominatorCombine).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 FAD[q1,q1-p,q1-q2,q2,q2-p]

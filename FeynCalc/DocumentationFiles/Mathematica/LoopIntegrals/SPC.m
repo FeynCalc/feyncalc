@@ -1,18 +1,18 @@
  
 (* ::Section:: *)
-(* SPC *)
+(*SPC*)
 (* ::Text:: *)
 (*`SPC` is an abbreviation for `ScalarProductCancel`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*ScalarProductCancel.*)
+(*[ScalarProductCancel](ScalarProductCancel).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 

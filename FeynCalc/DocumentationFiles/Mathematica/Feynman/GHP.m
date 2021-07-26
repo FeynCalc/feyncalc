@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* GHP *)
+(*GHP*)
 
 
 (* ::Text:: *)
@@ -16,15 +16,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*GhostPropagator, GluonPropagator, GluonGhostVertex.*)
+(*[GhostPropagator](GhostPropagator), [GluonPropagator](GluonPropagator), [GluonGhostVertex](GluonGhostVertex).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 GHP[p,a,b]

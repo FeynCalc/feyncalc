@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* ExplicitPartialD *)
+(*ExplicitPartialD*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*ExpandPartialD, LeftRightPartialD, LeftRightPartialD2.*)
+(*[ExpandPartialD](ExpandPartialD), [LeftRightPartialD](LeftRightPartialD), [LeftRightPartialD2](LeftRightPartialD2).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 LeftRightPartialD[\[Mu]]

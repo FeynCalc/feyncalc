@@ -1,41 +1,49 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* FCTraceExpand *)
+(*FCTraceExpand*)
+
+
 (* ::Text:: *)
-(*FCTraceExpand[exp] expands traces of Dirac and $\text{SU}(N)$ matrices using linearity of the trace. The traces themselves are not evaluated..*)
+(*`FCTraceExpand[exp]` expands traces of Dirac and $SU(N)$ matrices using linearity of the trace. The traces themselves are not evaluated.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*DiracTrace, SUNTrace.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[DiracTrace](DiracTrace), [SUNTrace](SUNTrace).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
+ex=DiracTrace[GA[\[Mu]] . (GS[p1]+m1) . GA[\[Nu]] . (GS[p2]+m2) . GA[\[Rho]]+x]
 
-DiracTrace[GA[\[Mu]].(GS[p1]+m1).GA[\[Nu]].(GS[p2]+m2).GA[\[Rho]]+x]
 
-FCTraceExpand[%]
+FCTraceExpand[ex]
 
-FCTraceExpand[%%,DotSimplify->False]
 
-FCTraceExpand[%%%,DiracTrace->False]
+FCTraceExpand[ex,DotSimplify->False]
 
-a*DiracTrace[GA[\[Mu]].(GS[p1]+m1).GA[\[Nu]]]+b*DiracTrace[GA[\[Mu]].(GS[p2]+m2).GA[\[Nu]]]
 
+FCTraceExpand[ex,DiracTrace->False]
+
+
+a*DiracTrace[GA[\[Mu]] . (GS[p1]+m1) . GA[\[Nu]]]+b*DiracTrace[GA[\[Mu]] . (GS[p2]+m2) . GA[\[Nu]]]
 FCTraceExpand[%,Momentum->{p1}]
 
 
 (* ::Text:: *)
-(*At the moment SUNTrace automatically expands its content, so here FCTraceExpand is not needed. However, this may change in the future.*)
+(*At the moment `SUNTrace` automatically expands its content, so here `FCTraceExpand` is not needed. However, this may change in future.*)
 
 
-SUNTrace[SUNT[i,j,k]+SUNT[l,m,n]]
+ex=SUNTrace[SUNT[i,j,k]+SUNT[l,m,n]]
 
-FCTraceExpand[%]
 
-FCTraceExpand[%%,SUNTrace->False]
+FCTraceExpand[ex]
+
+
+FCTraceExpand[ex,SUNTrace->False]

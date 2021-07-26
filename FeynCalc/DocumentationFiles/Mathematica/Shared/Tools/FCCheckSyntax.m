@@ -1,10 +1,7 @@
 (* ::Package:: *)
 
- 
-
-
 (* ::Section:: *)
-(* FCCheckSyntax *)
+(*FCCheckSyntax*)
 
 
 (* ::Text:: *)
@@ -12,15 +9,15 @@
 
 
 (* ::Text:: *)
-(*`FCCheckSyntax` is also an option for several FeynCalc routines. If set to `True`, those functions will try to check the syntax of the input expressions to detect possible inconsistencies. However, on large expressions such checks may cost a lot of performance, which is why this option is set to `False` by default..*)
+(*`FCCheckSyntax` is also an option for several FeynCalc routines. If set to `True`, those functions will try to check the syntax of the input expressions to detect possible inconsistencies. However, on large expressions such checks may cost a lot of performance, which is why this option is set to `False` by default.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 (* ::Text:: *)
@@ -35,3 +32,6 @@ FCCheckSyntax[GA[mu]*GA[nu]]
 
 
 FCCheckSyntax[FV[p,\[Mu]]FV[q,\[Mu]] FV[r,\[Mu]]]
+
+
+

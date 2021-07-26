@@ -1,12 +1,19 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* FCLoopPropagatorPowersExpand *)
+(*FCLoopPropagatorPowersExpand*)
+
+
 (* ::Text:: *)
 (*`FCLoopPropagatorPowersExpand[exp]` rewrites propagators raised to integer powers as products.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
 
 
 SFAD[{q,m,2}]

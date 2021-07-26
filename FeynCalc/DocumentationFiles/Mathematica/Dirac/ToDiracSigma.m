@@ -1,19 +1,19 @@
  
 (* ::Section:: *)
-(* ToDiracSigma *)
+(*ToDiracSigma*)
 (* ::Text:: *)
 (*`ToDiracSigma[exp, x, y]` substitutes the neighboring Dirac matrices $x$ and $y$ by `DiracSigma` and the metric tensor.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*DiracGamma, DiracSigma, DiracSigmaExplicit.*)
+(*[DiracGamma](DiracGamma), [DiracSigma](DiracSigma), [DiracSigmaExplicit](DiracSigmaExplicit).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 

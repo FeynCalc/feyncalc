@@ -1,10 +1,23 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* $FeynCalcVersion *)
+(* $FeynCalcVersion*)
+
+
 (* ::Text:: *)
-(*$FeynCalcVersion is a string that represents the version of FeynCalc..*)
+(*`$FeynCalcVersion` is a string that represents the version of FeynCalc.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[FCCheckVersion](FCCheckVersion).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
+
+
 $FeynCalcVersion

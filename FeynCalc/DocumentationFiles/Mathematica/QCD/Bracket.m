@@ -1,18 +1,20 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* Bracket *)
+(*Bracket*)
+
+
 (* ::Text:: *)
-(*Bracket is an option of Convolute, specifying the variable with respect to which the result is collected..*)
+(*`Bracket` is an option of `Convolute`, specifying the variable with respect to which the result is collected.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*Convolute.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[Convolute](Convolute).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
-
+(*Examples*)

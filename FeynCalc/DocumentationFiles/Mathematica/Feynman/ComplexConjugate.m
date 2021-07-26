@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* ComplexConjugate *)
+(*ComplexConjugate*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*FCRenameDummyIndices, FermionSpinSum, DiracGamma.*)
+(*[FCRenameDummyIndices](FCRenameDummyIndices), [FermionSpinSum](FermionSpinSum), [DiracGamma](DiracGamma).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 (* ::Text:: *)

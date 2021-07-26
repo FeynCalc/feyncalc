@@ -1,12 +1,20 @@
  
 (* ::Section:: *)
-(* FCHideEpsilon *)
+(*FCHideEpsilon*)
 (* ::Text:: *)
 (*`FCHideEpsilon[expr]` substitutes `1/Epsilon - EulerGamma + Log[4 Pi]` with `SMP["Delta"]`.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[FCShowEpsilon](FCShowEpsilon).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
 
 
 1/Epsilon+Log[4Pi]-EulerGamma

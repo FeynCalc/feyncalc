@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* FORMProlog *)
+(*FORMProlog*)
 
 
 (* ::Text:: *)
@@ -12,12 +12,12 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*FeynCalc2FORM, FORMEpilog.*)
+(*[FeynCalc2FORM](FeynCalc2FORM), [FORMEpilog](FORMEpilog).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)

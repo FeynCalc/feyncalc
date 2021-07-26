@@ -1,28 +1,35 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* CSI *)
+(*CSI*)
+
+
 (* ::Text:: *)
-(*CSI[i] can be used as input for 3-dimensional $\sigma ^i$ with 3-dimensional Cartesian index i and is transformed into PauliSigma[CartesianIndex[i]] by FeynCalcInternal..*)
+(*`CSI[i]` can be used as input for 3-dimensional $\sigma ^i$ with 3-dimensional Cartesian index `i` and is transformed into `PauliSigma[CartesianIndex[i]]` by `FeynCalcInternal`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*PauliSigma.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[PauliSigma](PauliSigma).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
+(*Examples*)
 
 
 CSI[i]
 
+
 CSI[i,j]-CSI[j,i]
+
 
 StandardForm[FCI[CSI[i]]]
 
+
 CSI[i,j,k,l]
+
 
 StandardForm[CSI[i,j,k,l]]

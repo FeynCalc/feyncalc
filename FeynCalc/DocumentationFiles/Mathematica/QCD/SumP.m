@@ -1,26 +1,23 @@
 (* ::Package:: *)
 
- 
-
-
 (* ::Section:: *)
-(* SumP *)
+(*SumP*)
 
 
 (* ::Text:: *)
-(*SumP[k, m] is $2^{k-1}\sum _{i=1}^{2m}\left(1+(-1)^i\right)/i^k$.*)
+(*`SumP[k, m]` is $2^{k-1}\sum _{i=1}^{2m}\left(1+(-1)^i\right)/i^k$.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*SumS, SumT.*)
+(*[SumS](SumS), [SumT](SumT).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 SumP[1,m-1]

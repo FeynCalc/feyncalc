@@ -1,9 +1,20 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* NumericalFactor *)
+(*NumericalFactor*)
+
+
 (* ::Text:: *)
-(*NumericalFactor[expr] gives the overall numerical factor of expr..*)
+(*`NumericalFactor[expr]` gives the overall numerical factor of `expr`.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[FCFactorOut](FCFactorOut).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)

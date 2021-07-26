@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* GammaExpand *)
+(*GammaExpand*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*GammaEpsilon.*)
+(*[GammaEpsilon](GammaEpsilon).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 GammaExpand[Gamma[2 + Epsilon]]

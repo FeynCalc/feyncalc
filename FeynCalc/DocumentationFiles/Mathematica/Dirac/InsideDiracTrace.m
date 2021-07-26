@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* InsideDiracTrace *)
+(*InsideDiracTrace*)
 
 
 (* ::Text:: *)
@@ -12,11 +12,11 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 DiracSimplify[GA[\[Mu],\[Nu],\[Rho]]]

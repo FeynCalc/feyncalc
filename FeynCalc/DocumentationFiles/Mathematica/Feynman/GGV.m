@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* GGV *)
+(*GGV*)
 
 
 (* ::Text:: *)
@@ -12,12 +12,12 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*GluonGhostVertex.*)
+(*[GluonGhostVertex](GluonGhostVertex).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)

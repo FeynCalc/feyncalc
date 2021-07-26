@@ -1,24 +1,29 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* ConvoluteTable *)
+(*ConvoluteTable*)
+
+
 (* ::Text:: *)
-(*ConvoluteTable[f, g, x] yields the convolution of f and g. ConvoluteTable is called by Convolute.Options[Convolute].*)
+(*`ConvoluteTable[f, g, x]` yields the convolution of `f` and `g`. `ConvoluteTable` is called by `Convolute`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*PlusDistribution, Convolute.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[PlusDistribution](PlusDistribution), [Convolute](Convolute).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
+(*Examples*)
 
 
 ConvoluteTable[1,1,x]
 
+
 ConvoluteTable[x,x]
+
 
 ConvoluteTable[1,x,x]

@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* FCApart *)
+(*FCApart*)
 
 
 (* ::Text:: *)
@@ -16,15 +16,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*ApartFF, FeynAmpDenominatorSimplify.*)
+(*[ApartFF](ApartFF), [FeynAmpDenominatorSimplify](FeynAmpDenominatorSimplify).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 SPD[q,q]FAD[{q,m}]

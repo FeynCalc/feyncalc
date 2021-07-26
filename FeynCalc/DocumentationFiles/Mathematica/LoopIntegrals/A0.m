@@ -1,19 +1,19 @@
  
 (* ::Section:: *)
-(* A0 *)
+(*A0 *)
 (* ::Text:: *)
 (*`A0[m^2]` is the Passarino-Veltman one-point integral $A_0.$.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*B0, C0, D0, PaVe.*)
+(*[B0](B0), [C0](C0), [D0](D0), [PaVe](PaVe).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 (* ::Text:: *)

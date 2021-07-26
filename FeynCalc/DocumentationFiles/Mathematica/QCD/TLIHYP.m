@@ -1,18 +1,18 @@
  
 (* ::Section:: *)
-(* TLIHYP *)
+(*TLIHYP*)
 (* ::Text:: *)
-(*TLIHYP[exp] expresses TLI's in exp. in terms of hypergeometric functions, where possible..*)
+(*`TLIHYP[exp]` expresses `TLI`s in `exp` in terms of hypergeometric functions, where possible.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*TLI.*)
+(*[TLI](TLI).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 

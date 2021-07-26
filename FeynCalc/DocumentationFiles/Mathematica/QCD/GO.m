@@ -1,18 +1,20 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* GO *)
+(*GO*)
+
+
 (* ::Text:: *)
-(*GO is equivalent to Twist2GluonOperator..*)
+(*`GO` is equivalent to `Twist2GluonOperator`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*Twist2GluonOperator.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[Twist2GluonOperator](Twist2GluonOperator).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
-
+(*Examples*)

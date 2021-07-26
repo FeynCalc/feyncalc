@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* DiracTrace *)
+(*DiracTrace*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*Contract, DiracEquation, DiracGamma, DiracGammaExpand, DiracTrick, FCGetDiracGammaScheme, FCSetDiracGammaScheme.*)
+(*[Contract](Contract), [DiracEquation](DiracEquation), [DiracGamma](DiracGamma), [DiracGammaExpand](DiracGammaExpand), [DiracTrick](DiracTrick), [FCGetDiracGammaScheme](FCGetDiracGammaScheme), [FCSetDiracGammaScheme](FCSetDiracGammaScheme).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 (* ::Text:: *)
@@ -48,7 +48,7 @@ DiracSimplify[%]
 
 
 (* ::Text:: *)
-(*The old methods of evaluating traces by replacing `DiracTrace` with `Tr` or `TR` are deprecated and should not be used anymore. In particular, they are slower are less efficient than using `DiracSimplify`. *)
+(*The old methods of evaluating traces by replacing `DiracTrace` with `Tr` or `TR` are deprecated and should not be used anymore. In particular, they are slower are less efficient than using `DiracSimplify`.*)
 
 
 (* ::Text:: *)

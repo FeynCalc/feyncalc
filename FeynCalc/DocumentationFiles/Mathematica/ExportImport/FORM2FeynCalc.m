@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* FORM2FeynCalc *)
+(*FORM2FeynCalc*)
 
 
 (* ::Text:: *)
@@ -24,7 +24,15 @@
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[FeynCalc2FORM](FeynCalc2FORM).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
 
 
 FORM2FeynCalc["p.q + 2*x m^2"]

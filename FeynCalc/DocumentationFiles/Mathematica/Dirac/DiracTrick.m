@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* DiracTrick *)
+(*DiracTrick*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*Contract, DiracEquation, DiracGamma, DiracGammaExpand, DiracTrick, SirlinSimplify, SpinorChainTrick.*)
+(*[Contract](Contract), [DiracEquation](DiracEquation), [DiracGamma](DiracGamma), [DiracGammaExpand](DiracGammaExpand), [DiracTrick](DiracTrick), [SirlinSimplify](SirlinSimplify), [SpinorChainTrick](SpinorChainTrick).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 (* ::Text:: *)

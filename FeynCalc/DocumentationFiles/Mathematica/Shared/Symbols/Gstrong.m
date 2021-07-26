@@ -1,22 +1,28 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* Gstrong *)
+(*Gstrong*)
+
+
 (* ::Text:: *)
-(*Gstrong  is a shortcut for $\text{SMP}[\text{g$\_$s}]$ which represents the strong coupling constant.The shortcut Gstrong is deprecated, please use $text{SMP}[text{g$_$s}]$ instead!.*)
+(*`Gstrong`  is a shortcut for `SMP["g_s"]` which represents the strong coupling constant.*)
+
+
+(* ::Text:: *)
+(*The shortcut `Gstrong` is deprecated, please use `SMP["g_s"]` instead!*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*CovariantD, FieldStrength, GluonVertex.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[CovariantD](CovariantD), [FieldStrength](FieldStrength), [GluonVertex](GluonVertex).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
+(*Examples*)
 
 
 Gstrong
-
 %//StandardForm

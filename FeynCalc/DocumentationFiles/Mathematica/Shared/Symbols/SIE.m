@@ -1,20 +1,36 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* SIE *)
+(*SIE*)
+
+
 (* ::Text:: *)
-(*SIE[mu] can be used as input for D-1-dimensional $\sigma ^{\mu }$ with D-4-dimensional Lorentz index \[Mu] and is transformed into PauliSigma[LorentzIndex[mu,D-4],D-4] by FeynCalcInternal..*)
+(*`SIE[mu]` can be used as input for $D-1$-dimensional $\sigma^{\mu }$ with $D-4$-dimensional Lorentz index $\mu$ and is transformed into `PauliSigma[LorentzIndex[mu,D-4],D-4]` by FeynCalcInternal.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[PauliSigma](PauliSigma), [SI](SI).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
+
+
 SIE[\[Mu]]
+
 
 SIE[\[Mu],\[Nu]]-SIE[\[Nu],\[Mu]]
 
+
 StandardForm[FCI[SIE[\[Mu]]]]
 
+
 SIE[\[Mu],\[Nu],\[Rho],\[Sigma]]
+%//StandardForm
 
-StandardForm[SIE[\[Mu],\[Nu],\[Rho],\[Sigma]]]
 
-SIE[\[Alpha]].(SISE[p]+m).SIE[\[Beta]]
+SIE[\[Alpha]] . (SISE[p]+m) . SIE[\[Beta]]

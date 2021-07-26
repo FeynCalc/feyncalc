@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* FCLoopCanonicalize *)
+(*FCLoopCanonicalize*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*`FCLoopSolutionList`.*)
+(*[`FCLoopSolutionList`](`FCLoopSolutionList`).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 FCLoopCanonicalize[myHead[FVD[q,\[Mu]]],q,myHead]

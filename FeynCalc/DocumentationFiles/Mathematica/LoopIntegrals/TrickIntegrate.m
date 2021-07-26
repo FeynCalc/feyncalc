@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* TrickIntegrate *)
+(*TrickIntegrate*)
 
 
 (* ::Text:: *)
@@ -16,15 +16,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*Epsilon.*)
+(*[Epsilon](Epsilon).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 TrickIntegrate[(1-t)^(a Epsilon-1) g[t],t]

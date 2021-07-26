@@ -1,19 +1,19 @@
  
 (* ::Section:: *)
-(* ToDiracGamma67 *)
+(*ToDiracGamma67 *)
 (* ::Text:: *)
 (*`ToDiracGamma67[exp]` substitutes $\frac{1}{2} \left(1 + \gamma^5\right)$ and $\frac{1}{2}\left(1-\gamma^5\right)$ by the chirality projectors $\gamma^6$ and $\gamma^7$.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*DiracSubstitute5, DiracGamma, ToDiracGamma67.*)
+(*[DiracSubstitute5](DiracSubstitute5), [DiracGamma](DiracGamma), [ToDiracGamma67](ToDiracGamma67).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 

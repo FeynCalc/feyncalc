@@ -1,22 +1,24 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* GA5 *)
+(*GA5 *)
+
+
 (* ::Text:: *)
-(*GA5 is equivalent to DiracGamma[5] and denotes gamma5..*)
+(*`GA5` is equivalent to `DiracGamma[5]` and denotes $\gamma^5$.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*DiracGamma, GA, GS.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[DiracGamma](DiracGamma), [GA](GA), [GS](GS).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
+(*Examples*)
 
 
 GA5
-
 %//StandardForm

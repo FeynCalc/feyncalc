@@ -1,26 +1,31 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* CartesianToLorentz *)
+(*CartesianToLorentz*)
+
+
 (* ::Text:: *)
-(*CartesianToLorentz[exp]  rewrites Cartesian tensors in form of Lorentz tensors (when possible). Using options one can specify which types of tensors should be converted..*)
+(*`CartesianToLorentz[exp]` rewrites Cartesian tensors in form of Lorentz tensors (when possible). Using options one can specify which types of tensors should be converted.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*LorentzToCartesian.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[LorentzToCartesian](LorentzToCartesian).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
+(*Examples*)
 
 
 CGS[p]
-
 %//CartesianToLorentz
+
 
 CSP[p,q]
-
 %//CartesianToLorentz
+
+
+

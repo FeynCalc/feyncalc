@@ -1,19 +1,19 @@
  
 (* ::Section:: *)
-(* CSISE *)
+(*CSISE*)
 (* ::Text:: *)
-(*CSISE[p] can be used as input for D-4-dimensional $\sigma ^ip^i$ with D-4-dimensional Cartesian vector p and is transformed into PauliSigma[CartesianMomentum[p,D-4],D-4] by FeynCalcInternal..*)
+(*CSISE[p] can be used as input for D-4-dimensional $\sigma^i p^i$ with $D-4$-dimensional Cartesian vector p and is transformed into `PauliSigma[CartesianMomentum[p,D-4],D-4]` by FeynCalcInternal.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*PauliSigma.*)
+(*[PauliSigma](PauliSigma).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 

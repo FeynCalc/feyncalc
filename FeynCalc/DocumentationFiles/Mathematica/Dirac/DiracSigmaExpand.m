@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* DiracSigmaExpand *)
+(*DiracSigmaExpand*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*DiracGamma, DiracSigma.*)
+(*[DiracGamma](DiracGamma), [DiracSigma](DiracSigma).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 DiracSigma[GSD[p]+GSD[q],GSD[r]]

@@ -1,13 +1,13 @@
  
 (* ::Section:: *)
-(* Sn *)
+(*Sn*)
 (* ::Text:: *)
 (*Sn is $\pi ^{n/2}$/$(2\pi )^n$.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)

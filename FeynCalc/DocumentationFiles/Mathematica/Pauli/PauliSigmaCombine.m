@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* PauliSigmaCombine *)
+(*PauliSigmaCombine*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*PauliSigmaExpand.*)
+(*[PauliSigmaExpand](PauliSigmaExpand).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 SIS[p]+SIS[q]

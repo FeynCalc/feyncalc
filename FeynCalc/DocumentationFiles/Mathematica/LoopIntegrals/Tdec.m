@@ -1,6 +1,6 @@
 
 (* ::Section:: *)
-(* Tdec *)
+(*Tdec*)
 
 
 (* ::Text:: *)
@@ -8,15 +8,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*TID, TIDL, OneLoopSimplify.*)
+(*[TID](TID), [TIDL](TIDL), [OneLoopSimplify](OneLoopSimplify).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 (* ::Text:: *)

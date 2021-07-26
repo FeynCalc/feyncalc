@@ -1,10 +1,7 @@
 (* ::Package:: *)
 
- 
-
-
 (* ::Section:: *)
-(* FCLoopSplit *)
+(*FCLoopSplit*)
 
 
 (* ::Text:: *)
@@ -20,7 +17,7 @@
 
 
 (* ::Text:: *)
-(*3) terms with tensor loop integrals, where all loop momenta are contracted *)
+(*3) terms with tensor loop integrals, where all loop momenta are contracted*)
 
 
 (* ::Text:: *)
@@ -32,7 +29,11 @@
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
 
 
 FVD[q,\[Mu]] FAD[{q,m}]

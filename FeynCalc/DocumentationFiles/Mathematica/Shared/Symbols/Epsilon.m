@@ -1,20 +1,27 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* Epsilon *)
+(*Epsilon*)
+
+
 (* ::Text:: *)
-(*Epsilon is (n-4), where n is the space-time dimension. Epsilon stands for a small positive number..*)
+(*Epsilon is $(n-4)$, where $n$ is the space-time dimension.*)
+
+
+(* ::Text:: *)
+(*`Epsilon` stands for a small positive number.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*Series2.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[Series2](Series2).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
+(*Examples*)
 
 
 Epsilon

@@ -1,20 +1,23 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* $MIntegrate *)
+(* $MIntegrate*)
+
+
 (* ::Text:: *)
-(*$MIntegrate is a list of integrations done by Mathematica inside OPEIntegrateDelta..*)
+(*`$MIntegrate` is a list of integrations done by Mathematica inside `OPEIntegrateDelta`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*OPEIntegrateDelta.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[OPEIntegrateDelta](OPEIntegrateDelta).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
+(*Examples*)
 
 
 $MIntegrate

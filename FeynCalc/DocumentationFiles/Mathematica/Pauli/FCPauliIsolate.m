@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* FCPauliIsolate *)
+(*FCPauliIsolate*)
 
 
 (* ::Text:: *)
@@ -12,11 +12,11 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 FCPauliIsolate[y SI[i]+x PauliXi[-I] . SIS[p1] . PauliEta[I] . PauliEta[-I] . SIS[p2] . PauliXi[I],Head->pChain]

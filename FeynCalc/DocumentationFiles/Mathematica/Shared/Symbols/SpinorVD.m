@@ -1,30 +1,32 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* SpinorVD *)
+(*SpinorVD*)
+
+
 (* ::Text:: *)
-(*SpinorVD[p, m] denotes a $v(p,m)$-spinor that depends on the $\text{D}$-dimensional momentum $\text{p}$..*)
+(*`SpinorVD[p, m]` denotes a $v(p,m)$-spinor that depends on the $D$-dimensional momentum $p$.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*Spinor, SpinorUBar, SpinorU, SpinorV, SpinorVBar, SpinorUBarD, SpinorUD, SpinorVBarD.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[Spinor](Spinor), [SpinorUBar](SpinorUBar), [SpinorU](SpinorU), [SpinorV](SpinorV), [SpinorVBar](SpinorVBar), [SpinorUBarD](SpinorUBarD), [SpinorUD](SpinorUD), [SpinorVBarD](SpinorVBarD).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
+(*Examples*)
 
 
 SpinorVD[p,m]
-
 FCI[%]//StandardForm
+
 
 SpinorVD[p]
-
 FCI[%]//StandardForm
 
-GSD[p].SpinorVD[p]
 
+GSD[p] . SpinorVD[p]
 DiracEquation[%]

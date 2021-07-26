@@ -1,10 +1,7 @@
 (* ::Package:: *)
 
- 
-
-
 (* ::Section:: *)
-(* Gauge *)
+(*Gauge*)
 
 
 (* ::Text:: *)
@@ -12,12 +9,12 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*$Gauge, GluonProgagator.*)
+(*[GluonProgagator](GluonProgagator).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)

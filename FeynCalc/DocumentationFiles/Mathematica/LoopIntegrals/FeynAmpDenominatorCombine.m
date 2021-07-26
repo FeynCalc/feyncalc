@@ -1,19 +1,19 @@
  
 (* ::Section:: *)
-(* FeynAmpDenominatorCombine *)
+(*FeynAmpDenominatorCombine*)
 (* ::Text:: *)
 (*`FeynAmpDenominatorCombine[expr]` expands expr with respect to `FeynAmpDenominator` and combines products of `FeynAmpDenominator` in expr into one `FeynAmpDenominator`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*FeynAmpDenominatorSplit.*)
+(*[FeynAmpDenominatorSplit](FeynAmpDenominatorSplit).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 FAD[q] FAD[q-p]

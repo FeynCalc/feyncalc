@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* FCFADiracChainJoin *)
+(*FCFADiracChainJoin*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*DiracChain, DCHN, DiracIndex, DiracIndexDelta, DIDelta, DiracChainCombine, DiracChainExpand, DiracChainFactor, DiracChainJoin, FCCCT.*)
+(*[DiracChain](DiracChain), [DCHN](DCHN), [DiracIndex](DiracIndex), [DiracIndexDelta](DiracIndexDelta), [DIDelta](DIDelta), [DiracChainCombine](DiracChainCombine), [DiracChainExpand](DiracChainExpand), [DiracChainFactor](DiracChainFactor), [DiracChainJoin](DiracChainJoin), [FCCCT](FCCCT).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 (* ::Text:: *)

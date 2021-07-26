@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* SpinorChainEvaluate *)
+(*SpinorChainEvaluate*)
 
 
 (* ::Text:: *)
@@ -12,11 +12,11 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 ex=SpinorUBar[p,m] . SpinorU[p,m]

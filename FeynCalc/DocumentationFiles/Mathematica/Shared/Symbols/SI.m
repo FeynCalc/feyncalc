@@ -1,20 +1,34 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* SI *)
+(*SI*)
+
+
 (* ::Text:: *)
-(*SI[mu] can be used as input for 3-dimensional $\sigma ^{\mu }$ with 4-dimensional Lorentz index \[Mu] and is transformed into PauliSigma[LorentzIndex[mu]] by FeynCalcInternal..*)
+(*`SI[mu]` can be used as input for $3$-dimensional $\sigma^{\mu }$ with 4-dimensional Lorentz index $\mu$ and is transformed into `PauliSigma[LorentzIndex[mu]]` by FeynCalcInternal.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[PauliSigma](PauliSigma), [SID](SID), [SIE](SIE).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
+
+
 SI[\[Mu]]
 
-SI[\[Mu],\[Nu]]-SI[\[Nu],\[Mu]]
 
+SI[\[Mu],\[Nu]]-SI[\[Nu],\[Mu]]
 StandardForm[FCI[SI[\[Mu]]]]
 
+
 SI[\[Mu],\[Nu],\[Rho],\[Sigma]]
+%//StandardForm
 
-StandardForm[SI[\[Mu],\[Nu],\[Rho],\[Sigma]]]
 
-SI[\[Alpha]].(SIS[p]+m).SI[\[Beta]]
+SI[\[Alpha]] . (SIS[p]+m) . SI[\[Beta]]

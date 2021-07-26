@@ -1,12 +1,20 @@
  
 (* ::Section:: *)
-(* PartialIntegrate *)
+(*PartialIntegrate*)
 (* ::Text:: *)
 (*`PartialIntegrate[exp, ap, t]` does a partial integration of the definite integral `Integrate[exp,{t,0,1}]`, with `ap` the factor that is to be integrated and `exp/ap` the factor that is to be differentiated.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[IntegrateByParts](IntegrateByParts), [Integrate2](Integrate2).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
 
 
 PartialIntegrate[f[x]g[x],g[x],{x,0,1}]

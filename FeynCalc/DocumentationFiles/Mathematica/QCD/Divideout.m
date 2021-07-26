@@ -1,18 +1,20 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* Divideout *)
+(*Divideout*)
+
+
 (* ::Text:: *)
-(*Divideout is an option for OPEInt and OPEIntegrate. The setting is divided out at the end..*)
+(*`Divideout` is an option for `OPEInt` and `OPEIntegrate`. The setting is divided out at the end.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*OPEInt, OPEIntegrate.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[OPEInt](OPEInt), [OPEIntegrate](OPEIntegrate).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
-
+(*Examples*)

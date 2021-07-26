@@ -1,14 +1,11 @@
 (* ::Package:: *)
 
- 
-
-
 (* ::Section:: *)
-(* GAE *)
+(*GAE*)
 
 
 (* ::Text:: *)
-(*`GAE[\[Mu]]` can be used as input for a `D-4`-dimensional $\gamma^{\mu }$and is transformed into `DiracGamma[LorentzIndex[$\mu$,D-4],D-4]` by `FeynCalcInternal` (`FCI`). *)
+(*`GAE[\[Mu]]` can be used as input for a `D-4`-dimensional $\gamma^{\mu }$and is transformed into `DiracGamma[LorentzIndex[$\mu$,D-4],D-4]` by `FeynCalcInternal` (`FCI`).*)
 
 
 (* ::Text:: *)
@@ -16,15 +13,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*DiracGamma, GA, GS, GAD.*)
+(*[DiracGamma](DiracGamma), [GA](GA), [GS](GS), [GAD](GAD).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 GAE[\[Mu]]

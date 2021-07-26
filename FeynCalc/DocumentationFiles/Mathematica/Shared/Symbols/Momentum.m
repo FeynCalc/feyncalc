@@ -1,49 +1,70 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* Momentum *)
+(*Momentum*)
+
+
 (* ::Text:: *)
-(*Momentum[p] is the head of a four momentum (p). The internal representation of a four-dimensional p is Momentum[p]. For other than four dimensions: Momentum[p, dim]. Momentum[p, 4] simplifies to Momentum[p]..*)
+(*`Momentum[p]` is the head of a four momentum `p`.*)
+
+
+(* ::Text:: *)
+(*The internal representation of a $4$-dimensional $p$ is `Momentum[p]`.*)
+
+
+(* ::Text:: *)
+(*For other than $4$ dimensions: `Momentum[p, dim]`.*)
+
+
+(* ::Text:: *)
+(*`Momentum[p, 4]` simplifies to `Momentum[p]`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*DiracGamma, Eps, LorentzIndex, MomentumExpand.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[DiracGamma](DiracGamma), [Eps](Eps), [LorentzIndex](LorentzIndex), [MomentumExpand](MomentumExpand).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
+
+
 (* ::Text:: *)
-(*This is a 4-dimensional momentum.*)
+(*This is a $4$-dimensional momentum.*)
 
 
 Momentum[p]
 
 
 (* ::Text:: *)
-(*As an optional second argument the dimension must be specified if it is different from 4.*)
+(*As an optional second argument the dimension must be specified if it is different from $4$.*)
 
 
 Momentum[p,D]
 
 
 (* ::Text:: *)
-(*The dimension index is supressed in the output.*)
+(*The dimension index is suppressed in the output.*)
 
 
 Momentum[p,d]
 
+
 Momentum[-q]
-
 %//StandardForm
 
- Momentum[p-q] + Momentum[2q]
 
+ex=Momentum[p-q] + Momentum[2q]
 %//StandardForm
 
-%%//MomentumExpand//StandardForm
 
-%%%//MomentumCombine//StandardForm
+ex//MomentumExpand//StandardForm
+
+
+ex//MomentumCombine//StandardForm
+
 
 ChangeDimension[Momentum[p],d]//StandardForm

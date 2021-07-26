@@ -1,19 +1,19 @@
  
 (* ::Section:: *)
-(* FeynAmpDenominatorExplicit *)
+(*FeynAmpDenominatorExplicit*)
 (* ::Text:: *)
 (*`FeynAmpDenominatorExplicit[exp]` changes each occurence of `PropagatorDenominator[a,b]` in exp into `1/(SPD[a,a]-b^2)` and replaces `FeynAmpDenominator` by `Identity`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*FeynAmpDenominator, PropagatorDenominator.*)
+(*[FeynAmpDenominator](FeynAmpDenominator), [PropagatorDenominator](PropagatorDenominator).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 FAD[{q,m},{q-p,0}]

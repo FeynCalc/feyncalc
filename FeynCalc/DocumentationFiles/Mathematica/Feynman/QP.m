@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* QP *)
+(*QP*)
 
 
 (* ::Text:: *)
@@ -20,12 +20,12 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*QuarkPropagator.*)
+(*[QuarkPropagator](QuarkPropagator).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)

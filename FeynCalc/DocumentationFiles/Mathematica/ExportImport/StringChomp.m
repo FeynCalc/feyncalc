@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* StringChomp *)
+(*StringChomp*)
 
 
 (* ::Text:: *)
@@ -12,7 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[Write2](Write2).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
 
 
 StringChomp[" abc "]

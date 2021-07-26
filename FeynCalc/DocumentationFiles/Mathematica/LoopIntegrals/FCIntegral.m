@@ -1,18 +1,18 @@
  
 (* ::Section:: *)
-(* FCIntegral *)
+(*FCIntegral*)
 (* ::Text:: *)
 (*`FCIntegral` is the head of integrals in a setting of the option `IntegralTable` of `FeynAmpDenominatorSimplify`. Currently implemented only for 2-loop integrals.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*IntegralTable, FeynAmpDenominatorSimplify.*)
+(*[IntegralTable](IntegralTable), [FeynAmpDenominatorSimplify](FeynAmpDenominatorSimplify).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 

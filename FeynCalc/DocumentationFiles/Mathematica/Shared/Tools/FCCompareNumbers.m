@@ -1,10 +1,7 @@
 (* ::Package:: *)
 
- 
-
-
 (* ::Section:: *)
-(* FCCompareNumbers *)
+(*FCCompareNumbers*)
 
 
 (* ::Text:: *)
@@ -12,7 +9,11 @@
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
 
 
 (* ::Text:: *)
@@ -43,15 +44,14 @@ rhs=(-0.20132103165327922+0.0004343444331339952*I)*coeffO^2*parX^2+(0.0472270672
 
 
 (* ::Text:: *)
-(*Here the two above expressions agree in their first 6 significant digits. Notice that the number of the size $10^{-13}$ is treated as a numerical fluctuation*)
-(*and consequently removed by Chop*)
+(*Here the two above expressions agree in their first 6 significant digits. Notice that the number of the size $10^{-13}$ is treated as a numerical fluctuation and consequently removed by `Chop`*)
 
 
 FCCompareNumbers[lhs,rhs]
 
 
 (* ::Text:: *)
-(*This behavior can be of course disabled*)
+(*The application of `Chop` can be of course disabled*)
 
 
 FCCompareNumbers[lhs,rhs,Chop->False]

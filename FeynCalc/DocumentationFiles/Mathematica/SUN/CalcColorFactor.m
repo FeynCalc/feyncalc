@@ -1,14 +1,14 @@
  
 (* ::Section:: *)
-(* CalcColorFactor *)
+(*CalcColorFactor*)
 (* ::Text:: *)
-(*`CalcColorFactor[exp]` calculates the color factor of exp. `CalcColorFactor` is useful for application on FeynArts produced amplitudes. *)
+(*`CalcColorFactor[exp]` calculates the color factor of exp. `CalcColorFactor` is useful for application on FeynArts produced amplitudes.*)
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*SUNSimplify.*)
+(*[SUNSimplify](SUNSimplify).*)
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 CalcColorFactor[SUNF[a,b,c] SUNF[a,b,d]]

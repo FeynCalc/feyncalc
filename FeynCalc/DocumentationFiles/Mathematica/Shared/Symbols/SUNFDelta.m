@@ -1,16 +1,23 @@
- 
 (* ::Package:: *)
 
 (* ::Section:: *)
-(* SUNFDelta *)
+(*SUNFDelta*)
 
 
 (* ::Text:: *)
-(*SUNFDelta[a, b] is the Kronecker-delta for SU(N) with color indices a and b in the fundamental representation..*)
+(*`SUNFDelta[a, b]` is the Kronecker-delta for $SU(N)$ with color indices `a` and `b` in the fundamental representation.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[SUNDelta](SUNDelta).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
 
 
 SUNFDelta[SUNFIndex[a],SUNFIndex[b]]
@@ -34,7 +41,7 @@ SDF[a,b]//FCI//StandardForm
 
 
 (* ::Text:: *)
-(*The arguments of SUNFDelta may also represent explicit integer indices via the head ExplictiSUNFIndex. The difference is that SUNSimplify and SUNFSimplify will only sum over symbolic indices.*)
+(*The arguments of `SUNFDelta` may also represent explicit integer indices via the head `ExplictiSUNFIndex`. The difference is that `SUNSimplify` and `SUNFSimplify` will only sum over symbolic indices.*)
 
 
 SUNFDelta[SUNFIndex[a],ExplicitSUNFIndex[2]]SUNFDelta[SUNFIndex[a],SUNFIndex[b]]SUNFDelta[SUNFIndex[c],ExplicitSUNFIndex[2]]//SUNFSimplify

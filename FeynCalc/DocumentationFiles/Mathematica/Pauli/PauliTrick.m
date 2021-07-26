@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* PauliTrick *)
+(*PauliTrick*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*PauliSigma, PauliSimplify.*)
+(*[PauliSigma](PauliSigma), [PauliSimplify](PauliSimplify).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 CSIS[p1] . CSI[i] . CSIS[p2]

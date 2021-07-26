@@ -1,12 +1,20 @@
  
 (* ::Section:: *)
-(* FCLoopBasisOverdeterminedQ *)
+(*FCLoopBasisOverdeterminedQ*)
 (* ::Text:: *)
 (*`FCLoopBasisOverdeterminedQ[int, {q1, q2, ...}]` checks if the propagators of the loop integral `int` (that depends on the loop momenta `q1, q2, ...`) are linearly dependent.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[FCLoopBasisIncompleteQ](FCLoopBasisIncompleteQ).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
 
 
 FAD[{q1,m1},{q1-l+p,m}]

@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* GaugeField *)
+(*GaugeField*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*FieldStrength, QuantumField.*)
+(*[FieldStrength](FieldStrength), [QuantumField](QuantumField).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 GaugeField

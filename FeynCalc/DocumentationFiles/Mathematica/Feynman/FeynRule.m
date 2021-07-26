@@ -4,11 +4,11 @@
 
 
 (* ::Section:: *)
-(* FeynRule *)
+(*FeynRule*)
 
 
 (* ::Text:: *)
-(*`FeynRule[lag, {fields}]` derives the Feynman rule corresponding to the field configuration `fields` of the Lagrangian `lag`. *)
+(*`FeynRule[lag, {fields}]` derives the Feynman rule corresponding to the field configuration `fields` of the Lagrangian `lag`.*)
 
 
 (* ::Text:: *)
@@ -24,11 +24,11 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 ?Lagrangian
@@ -78,21 +78,21 @@ heftInt=-(1/4) CH FieldStrength[mu,nu,a] . FieldStrength[mu,nu,a] . QuantumField
 
 
 (* ::Text:: *)
-(*$Hgg$ vertex Feynman rules *)
+(*$Hgg$ vertex Feynman rules*)
 
 
 FeynRule[heftInt,{QuantumField[GaugeField,{i},{a}][p1],QuantumField[GaugeField,{j},{b}][p2],QuantumField[H][p3]}]
 
 
 (* ::Text:: *)
-(*$Hggg$ vertex Feynman rules *)
+(*$Hggg$ vertex Feynman rules*)
 
 
 FeynRule[heftInt,{QuantumField[GaugeField,{i},{a}][p1],QuantumField[GaugeField,{j},{b}][p2],QuantumField[GaugeField,{k},{c}][p3],QuantumField[H][p4]}]//Simplify
 
 
 (* ::Text:: *)
-(*$Hgggg$ vertex Feynman rules *)
+(*$Hgggg$ vertex Feynman rules*)
 
 
 FeynRule[heftInt,{QuantumField[GaugeField,{i},{a}][p1],QuantumField[GaugeField,{j},{b}][p2],QuantumField[GaugeField,{k},{c}][p3],

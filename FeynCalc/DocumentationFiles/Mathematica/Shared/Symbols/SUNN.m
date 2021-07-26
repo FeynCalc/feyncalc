@@ -1,10 +1,7 @@
 (* ::Package:: *)
 
- 
-
-
 (* ::Section:: *)
-(* SUNN *)
+(*SUNN*)
 
 
 (* ::Text:: *)
@@ -12,15 +9,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*SUNSimplify, Trick, SUNIndex, CA, CF.*)
+(*[SUNSimplify](SUNSimplify), [Trick](Trick), [SUNIndex](SUNIndex), [CA](CA), [CF](CF).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 SUNSimplify[SUNDelta[SUNIndex[a], SUNIndex[a]],SUNNToCACF->False]

@@ -1,20 +1,31 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* Amplitude *)
+(*Amplitude*)
+
+
 (* ::Text:: *)
-(*Amplitude is a database of Feynman amplitudes. Amplitude["name"] returns the amplitude corresponding to the string "name". A list of all defined names is obtained with Amplitude[]. New amplitudes can be added to the file "Amplitude.m". It is strongly recommended to use names that reflect the process. The option Gauge -> 1 means `t Hooft Feynman gauge; Polarization -> 0 gives unpolarized OPE-type amplitudes, Polarization -> 1 the polarized ones..*)
+(*`Amplitude` is a database of Feynman amplitudes. `Amplitude["name"]` returns the amplitude corresponding to the string `"name"`. A list of all defined names is obtained with `Amplitude[]`. New amplitudes can be added to the file `"Amplitude.m"`. It is strongly recommended to use names that reflect the process.*)
+
+
+(* ::Text:: *)
+(*The option `Gauge -> 1` means `t Hooft Feynman gauge;*)
+
+
+(* ::Text:: *)
+(*`Polarization -> 0` gives unpolarized OPE-type amplitudes, `Polarization -> 1` the polarized ones.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*FeynAmp.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[FeynAmp](FeynAmp).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
+(*Examples*)
 
 
 Amplitude[]//Length
@@ -25,5 +36,7 @@ Amplitude[]//Length
 
 
 Amplitude["se1g1"]
-
 Explicit[%]
+
+
+

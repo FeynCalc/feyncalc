@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* QuarkMass *)
+(*QuarkMass*)
 
 
 (* ::Text:: *)
@@ -12,12 +12,12 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*Amplitude, CounterTerm, RTL.*)
+(*[Amplitude](Amplitude), [CounterTerm](CounterTerm), [RTL](RTL).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)

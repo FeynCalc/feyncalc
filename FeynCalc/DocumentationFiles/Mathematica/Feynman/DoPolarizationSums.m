@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* DoPolarizationSums *)
+(*DoPolarizationSums*)
 
 
 (* ::Text:: *)
@@ -12,7 +12,7 @@
 
 
 (* ::Text:: *)
-(*`DoPolarizationSums[exp, k, 0]` replaces the polarization sum of an external massless vector boson with the momentum `k` by $-g^{\mu \nu }$. This corresponds to the summation over all 4 polarizations, including the unphysical ones. *)
+(*`DoPolarizationSums[exp, k, 0]` replaces the polarization sum of an external massless vector boson with the momentum `k` by $-g^{\mu \nu }$. This corresponds to the summation over all 4 polarizations, including the unphysical ones.*)
 
 
 (* ::Text:: *)
@@ -20,15 +20,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*Polariazation, Uncontract.*)
+(*[Polariazation](Polariazation), [Uncontract](Uncontract).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 (* ::Text:: *)

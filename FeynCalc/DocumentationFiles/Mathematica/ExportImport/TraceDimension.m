@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* TraceDimension *)
+(*TraceDimension*)
 
 
 (* ::Text:: *)
@@ -12,12 +12,12 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*FeynCalc2FORM.*)
+(*[FeynCalc2FORM](FeynCalc2FORM).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)

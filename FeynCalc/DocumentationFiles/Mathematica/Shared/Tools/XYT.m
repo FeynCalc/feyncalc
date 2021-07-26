@@ -1,9 +1,16 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* XYT *)
+(*XYT*)
+
+
 (* ::Text:: *)
-(*XYT[exp, x, y] transforms  $(x y)^m$ away ....*)
+(*`XYT[exp, x, y]` transforms  `(x y)^m` away.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Subsection:: *)
+(*Examples*)

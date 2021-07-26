@@ -1,18 +1,18 @@
  
 (* ::Section:: *)
-(* FCCCT *)
+(*FCCCT*)
 (* ::Text:: *)
 (*`FCCCT` is an alias for `FCChargeConjugateTransposed`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*FCChargeConjugateTransposed.*)
+(*[FCChargeConjugateTransposed](FCChargeConjugateTransposed).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 

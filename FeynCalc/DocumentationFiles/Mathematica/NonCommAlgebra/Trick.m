@@ -1,19 +1,19 @@
  
 (* ::Section:: *)
-(* Trick *)
+(*Trick*)
 (* ::Text:: *)
-(*Trick[exp] performs several basic simplifications without expansion. Trick[exp] uses Contract, DotSimplify and SUNDeltaContract..*)
+(*`Trick[exp]` performs several basic simplifications without expansion. `Trick[exp]` uses `Contract`, `DotSimplify` and `SUNDeltaContract`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*Calc, Contract, DiracTrick, DotSimplify, DiracTrick.*)
+(*[Calc](Calc), [Contract](Contract), [DiracTrick](DiracTrick), [DotSimplify](DotSimplify), [DiracTrick](DiracTrick).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 (* ::Text:: *)
 (*This calculates $g^{mu  nu }gamma _{mu }$and $g_{nu }^{nu }$ in D dimensions.*)
 

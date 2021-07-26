@@ -1,18 +1,20 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* NegativeInteger *)
+(*NegativeInteger*)
+
+
 (* ::Text:: *)
-(*NegativeInteger is a data type. E.g. DataType[n, NegativeInteger] can be set to True..*)
+(*`NegativeInteger` is a data type. E.g. `DataType[n, NegativeInteger]` can be set to `True`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*DataType.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[DataType](DataType).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
-
+(*Examples*)

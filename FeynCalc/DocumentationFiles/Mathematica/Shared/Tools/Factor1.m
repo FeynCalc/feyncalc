@@ -1,28 +1,33 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* Factor1 *)
+(*Factor1 *)
+
+
 (* ::Text:: *)
-(*Factor1[poly] factorizes common terms  in the summands of poly. It uses basically PolynomialGCD..*)
+(*`Factor1[poly]` factorizes common terms  in the summands of poly. It uses basically `PolynomialGCD`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*Factor2.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[Factor2](Factor2).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
+(*Examples*)
 
 
 (a-x)(b-x)
-
 {Factor1[%], Factor[%]}
 
-Expand[(a-b)(a+b)]
 
-Factor[%]
+ex=Expand[(a-b)(a+b)]
 
-Factor1[%%]
+
+Factor[ex]
+
+
+Factor1[ex]

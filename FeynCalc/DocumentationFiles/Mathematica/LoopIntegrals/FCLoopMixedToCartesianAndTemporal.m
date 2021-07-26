@@ -1,12 +1,19 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* FCLoopMixedToCartesianAndTemporal *)
+(*FCLoopMixedToCartesianAndTemporal*)
+
+
 (* ::Text:: *)
 (*`FCLoopMixedToCartesianAndTemporal[int, {q1, q2, ...}]` attempts to convert loop integrals that contain both Lorentz and Cartesian or temporal indices/momenta to pure temporal and Cartesian indices.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
 
 
 FCI@SFAD[q]

@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* DummyIndex *)
+(*DummyIndex*)
 
 
 (* ::Text:: *)
@@ -12,12 +12,12 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*CovariantD.*)
+(*[CovariantD](CovariantD).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)

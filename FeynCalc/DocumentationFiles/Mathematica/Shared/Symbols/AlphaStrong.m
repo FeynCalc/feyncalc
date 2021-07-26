@@ -1,12 +1,31 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* AlphaStrong *)
+(*AlphaStrong*)
+
+
 (* ::Text:: *)
-(*AlphaStrong  is a shortcut for $\text{SMP}[\text{alpha$\_$s}]$ which represents the strong coupling constant.The shortcut AlphaStrong is deprecated, please use $text{SMP}[text{alpha$_$s}]$ instead!.*)
+(*AlphaStrong  is a shortcut for `SMP["alpha_s"]` which represents the strong coupling constant.*)
+
+
+(* ::Text:: *)
+(*The shortcut `AlphaStrong` is deprecated, please use `SMP["alpha_s"]` instead!*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-AlphaStrong
+(*See also*)
 
+
+(* ::Text:: *)
+(*[SMP](SMP).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
+
+
+AlphaStrong
 %//InputForm
+
+
+SMP["alpha_s"]

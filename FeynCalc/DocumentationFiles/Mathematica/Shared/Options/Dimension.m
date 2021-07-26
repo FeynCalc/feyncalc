@@ -1,14 +1,25 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* Dimension *)
+(*Dimension*)
+
+
 (* ::Text:: *)
-(*Dimension is an option of several functions and denotes the number of space-time dimensions. Possible settings are: 4, n, d, D, ... ,the variable does not matter, but it should have Head Symbol..*)
+(*`Dimension` is an option of several functions and denotes the number of space-time dimensions. Possible settings are: `4`, `n`, `d`, `D`, ... , the variable does not matter, but it should have head Symbol.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[ScalarProduct](ScalarProduct).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
+
+
 Options[ScalarProduct]
-
 ScalarProduct[m,n,Dimension->d]
-
 %//StandardForm

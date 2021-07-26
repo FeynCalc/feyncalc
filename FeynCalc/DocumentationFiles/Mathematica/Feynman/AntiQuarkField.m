@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* AntiQuarkField *)
+(*AntiQuarkField*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*QuantumField, QuarkField.*)
+(*[QuantumField](QuantumField), [QuarkField](QuarkField).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 AntiQuarkField

@@ -1,35 +1,40 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* FVD *)
+(*FVD*)
+
+
 (* ::Text:: *)
-(*FVD[p, mu] is the D-dimensional vector p with Lorentz index $\mu$..*)
+(*`FVD[p, mu]` is the $D$-dimensional vector $p$ with Lorentz index `mu`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*FCE, FCI, FV, Pair.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[FCE](FCE), [FCI](FCI), [FV](FV), [Pair](Pair).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
+(*Examples*)
 
 
 FVD[p,\[Mu]]
 
+
 FVD[p-q,\[Mu]]
 
+
 FVD[p,\[Mu]]//StandardForm
+
 
 FCI[FVD[p,\[Mu]]]//StandardForm
 
 
 (* ::Text:: *)
-(*There is no special function to expand momenta in FVD.*)
+(*There is no special function to expand momenta in `FVD`.*)
 
 
 ExpandScalarProduct[FVD[p-q,\[Mu]]]
-
 StandardForm[%]

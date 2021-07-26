@@ -1,18 +1,20 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* GaugeXi *)
+(*GaugeXi*)
+
+
 (* ::Text:: *)
-(*GaugeXi is a head for gauge parameters..*)
+(*`GaugeXi` is a head for gauge parameters.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*Gauge, GaugeField.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[Gauge](Gauge), [GaugeField](GaugeField).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
-
+(*Examples*)

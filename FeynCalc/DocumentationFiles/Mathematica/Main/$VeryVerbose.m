@@ -1,18 +1,23 @@
 (* ::Package:: *)
 
- 
-
-
 (* ::Section:: *)
-(* $VeryVerbose *)
+(* $VeryVerbose*)
 
 
 (* ::Text:: *)
-(*`$VeryVerbose` is a global variable with default setting `0`. If set to `1`, `2`, ..., less and more intermediate comments and informations are displayed during calculations..*)
+(*`$VeryVerbose` is a global variable with default setting `0`. If set to `1`, `2`, ..., less and more intermediate comments and informations are displayed during calculations.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[FCVerbose](FCVerbose), [FCPrint](FCPrint).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
 
 
 $VeryVerbose

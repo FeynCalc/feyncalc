@@ -1,19 +1,19 @@
  
 (* ::Section:: *)
-(* HypExplicit *)
+(*HypExplicit*)
 (* ::Text:: *)
 (*`HypExplicit[exp, nu]` expresses Hypergeometric functions in exp by their definition in terms of a sum (the `Sum` is omitted and `nu` is the summation index).*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*HypergeometricIR.*)
+(*[HypergeometricIR](HypergeometricIR).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 Hypergeometric2F1[a,b,c,z]

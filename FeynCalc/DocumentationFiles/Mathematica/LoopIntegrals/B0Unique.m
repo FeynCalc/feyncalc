@@ -1,19 +1,19 @@
  
 (* ::Section:: *)
-(* B0Unique *)
+(*B0Unique*)
 (* ::Text:: *)
 (*`B0Unique` is an option of `B0`. If set to `True`, `B0[0,0,m2]` is replaced with `(B0[0,m2,m2]+1)` and `B0[m2,0,m2]` simplifies to `(B0[0,m2,m2]+2)`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*B0.*)
+(*[B0](B0).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 (* ::Text:: *)
 (*By default no transformation is done.*)
 

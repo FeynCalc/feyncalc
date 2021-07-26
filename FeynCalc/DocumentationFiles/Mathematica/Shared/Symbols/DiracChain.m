@@ -1,19 +1,25 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* DiracChain *)
+(*DiracChain*)
+
+
 (* ::Text:: *)
-(*DiracChain[x, i, j] denotes a chain of Dirac matrices x, where the Dirac indices i and j are explicit..*)
+(*`DiracChain[x, i, j]` denotes a chain of Dirac matrices `x`, where the Dirac indices `i` and `j` are explicit.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*DiracChain, DCHN, DiracIndex, DiracIndexDelta, DiracChainJoin, DiracChainExpand, DiracChainFactor.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[DiracChain](DiracChain), [DCHN](DCHN), [DiracIndex](DiracIndex), [DiracIndexDelta](DiracIndexDelta), [DiracChainJoin](DiracChainJoin), [DiracChainExpand](DiracChainExpand), [DiracChainFactor](DiracChainFactor).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
+
+
 (* ::Text:: *)
 (*A standalone Dirac matrix*)
 
@@ -25,7 +31,7 @@ DiracChain[DiracGamma[LorentzIndex[\[Mu]]],DiracIndex[i],DiracIndex[j]]
 (*A chain of Dirac matrices with open indices*)
 
 
-DiracChain[DiracGamma[LorentzIndex[\[Mu],D],D].DiracGamma[LorentzIndex[\[Nu],D],D],DiracIndex[i],DiracIndex[j]]
+DiracChain[DiracGamma[LorentzIndex[\[Mu],D],D] . DiracGamma[LorentzIndex[\[Nu],D],D],DiracIndex[i],DiracIndex[j]]
 
 
 (* ::Text:: *)
@@ -34,9 +40,12 @@ DiracChain[DiracGamma[LorentzIndex[\[Mu],D],D].DiracGamma[LorentzIndex[\[Nu],D],
 
 DiracChain[Spinor[Momentum[p],m],DiracIndex[i]]
 
+
 DiracChain[Spinor[Momentum[-p],m],DiracIndex[i]]
 
+
 DiracChain[DiracIndex[i],Spinor[Momentum[p],m]]
+
 
 DiracChain[DiracIndex[i],Spinor[Momentum[-p],m]]
 
@@ -45,10 +54,13 @@ DiracChain[DiracIndex[i],Spinor[Momentum[-p],m]]
 (*The chain may also be partially open or closed*)
 
 
-DiracChain[DiracGamma[LorentzIndex[\[Mu]]].(m+DiracGamma[Momentum[p]]).DiracGamma[LorentzIndex[\[Nu]]],Spinor[Momentum[p],m,1],DiracIndex[j]]
+DiracChain[DiracGamma[LorentzIndex[\[Mu]]] . (m+DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[\[Nu]]],Spinor[Momentum[p],m,1],DiracIndex[j]]
 
-DiracChain[DiracGamma[LorentzIndex[\[Mu]]].(m+DiracGamma[Momentum[p]]).DiracGamma[LorentzIndex[\[Nu]]],DiracIndex[i],Spinor[Momentum[p],m,1]]
 
-DiracChain[DiracGamma[LorentzIndex[\[Mu]]].(m+DiracGamma[Momentum[p]]).DiracGamma[LorentzIndex[\[Nu]]],Spinor[Momentum[p1],m1,1],Spinor[Momentum[p2],m2,1]]
+DiracChain[DiracGamma[LorentzIndex[\[Mu]]] . (m+DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[\[Nu]]],DiracIndex[i],Spinor[Momentum[p],m,1]]
+
+
+DiracChain[DiracGamma[LorentzIndex[\[Mu]]] . (m+DiracGamma[Momentum[p]]) . DiracGamma[LorentzIndex[\[Nu]]],Spinor[Momentum[p1],m1,1],Spinor[Momentum[p2],m2,1]]
+
 
 DiracChain[1,Spinor[Momentum[p1],m1,1],Spinor[Momentum[p2],m2,1]]

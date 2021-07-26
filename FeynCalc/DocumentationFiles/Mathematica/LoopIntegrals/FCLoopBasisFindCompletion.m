@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* FCLoopBasisFindCompletion *)
+(*FCLoopBasisFindCompletion*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,15 @@
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[FCLoopBasisIncompleteQ](FCLoopBasisIncompleteQ).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
 
 
 FAD[q,{q-p+l,m}]

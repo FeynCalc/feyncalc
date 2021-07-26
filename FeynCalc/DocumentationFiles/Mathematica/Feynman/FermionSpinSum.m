@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* FermionSpinSum *)
+(*FermionSpinSum*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*Spinor, ComplexConjugate, DiracTrace.*)
+(*[Spinor](Spinor), [ComplexConjugate](ComplexConjugate), [DiracTrace](DiracTrace).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 (* ::Text:: *)

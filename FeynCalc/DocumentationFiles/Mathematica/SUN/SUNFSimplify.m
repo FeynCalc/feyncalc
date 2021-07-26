@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* SUNFSimplify *)
+(*SUNFSimplify*)
 
 
 (* ::Text:: *)
@@ -12,15 +12,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*SUNTF, SUNFDelta.*)
+(*[SUNTF](SUNTF), [SUNFDelta](SUNFDelta).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 SDF[a,a]

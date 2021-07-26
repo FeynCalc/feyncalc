@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* QuarkGluonVertex *)
+(*QuarkGluonVertex*)
 
 
 (* ::Text:: *)
@@ -20,15 +20,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*GluonVertex.*)
+(*[GluonVertex](GluonVertex).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 QuarkGluonVertex[\[Mu],a,Explicit->True]

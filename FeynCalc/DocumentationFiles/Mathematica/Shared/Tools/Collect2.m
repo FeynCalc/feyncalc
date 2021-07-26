@@ -1,18 +1,15 @@
 (* ::Package:: *)
 
- 
-
-
 (* ::Section:: *)
-(* Collect2 *)
+(*Collect2 *)
 
 
 (* ::Text:: *)
-(*`Collect2[expr, x]` collects together terms which are not free of any occurrence of `x`. *)
+(*`Collect2[expr, x]` collects together terms which are not free of any occurrence of `x`.*)
 
 
 (* ::Text:: *)
-(*`Collect2[expr, {x1, x2, ...}]` (or also `Collect2[expr, x1, x2, ...]`) collects together terms which are not free of any occurrence of `x1`, `x2`, .... *)
+(*`Collect2[expr, {x1, x2, ...}]` (or also `Collect2[expr, x1, x2, ...]`) collects together terms which are not free of any occurrence of `x1, x2, ...`.*)
 
 
 (* ::Text:: *)
@@ -20,15 +17,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*Isolate.*)
+(*[Isolate](Isolate).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 Collect2[t1=a+r a+k^2 f[a]-k f[a]+x/2-y/w,a]

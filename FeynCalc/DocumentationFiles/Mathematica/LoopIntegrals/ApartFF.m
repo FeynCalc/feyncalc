@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* ApartFF *)
+(*ApartFF*)
 
 
 (* ::Text:: *)
@@ -20,15 +20,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*FCApart, FeynAmpDenominatorSimplify.*)
+(*[FCApart](FCApart), [FeynAmpDenominatorSimplify](FeynAmpDenominatorSimplify).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 FCClearScalarProducts[]
@@ -101,7 +101,7 @@ int=(SFAD[{{0,k . l}},p-k]SPD[k,p])
 
 
 (* ::Text:: *)
-(*Here `ApartFF` cannot do anything *)
+(*Here `ApartFF` cannot do anything*)
 
 
 ApartFF[int,{k}]

@@ -1,12 +1,20 @@
  
 (* ::Section:: *)
-(* FCLoopBasisIncompleteQ *)
+(*FCLoopBasisIncompleteQ*)
 (* ::Text:: *)
 (*`FCLoopBasisIncompleteQ[int, {q1, q2, ...}]` checks if the propagators of the loop integral `int` (that depends on the loop momenta `q1, q2, ...`) do not form a basis.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[FCLoopBasisOverdeterminedQ](FCLoopBasisOverdeterminedQ).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
 
 
 FAD[{q1,m1}]

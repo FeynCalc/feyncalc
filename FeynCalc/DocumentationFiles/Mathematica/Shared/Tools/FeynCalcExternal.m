@@ -1,32 +1,36 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* FeynCalcExternal *)
+(*FeynCalcExternal*)
+
+
 (* ::Text:: *)
-(*FeynCalcExternal[exp] translates exp from the internal FeynCalc representation to a shorthand form..*)
+(*`FeynCalcExternal[exp]` translates exp from the internal FeynCalc representation to a shorthand form.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*FeynCalcInternal.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[FeynCalcInternal](FeynCalcInternal).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
+(*Examples*)
 
 
 FeynCalcExternal[DiracGamma[5]]
-
 %//StandardForm
 
-{GA[\[Mu]],GAD[\[Rho]],GS[p],SP[p,q],MT[\[Alpha],\[Beta]],FV[p,\[Mu]]}
 
+ex={GA[\[Mu]],GAD[\[Rho]],GS[p],SP[p,q],MT[\[Alpha],\[Beta]],FV[p,\[Mu]]}
 %//StandardForm
 
-%//FeynCalcInternal
 
+ex//FeynCalcInternal
 %//StandardForm
-
 FeynCalcExternal[%]//StandardForm
+
+
+

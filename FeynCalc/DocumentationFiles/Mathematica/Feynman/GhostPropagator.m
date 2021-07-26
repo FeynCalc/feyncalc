@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* GhostPropagator *)
+(*GhostPropagator*)
 
 
 (* ::Text:: *)
@@ -20,15 +20,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*GluonPropagator, QCDFeynmanRuleConvention, GluonGhostVertex.*)
+(*[GluonPropagator](GluonPropagator), [QCDFeynmanRuleConvention](QCDFeynmanRuleConvention), [GluonGhostVertex](GluonGhostVertex).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 GhostPropagator[p,a,b]

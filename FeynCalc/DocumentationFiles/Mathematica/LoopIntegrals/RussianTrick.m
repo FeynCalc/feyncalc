@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* RussianTrick *)
+(*RussianTrick*)
 
 
 (* ::Text:: *)
@@ -16,15 +16,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*FourDivergence, FourLaplacian.*)
+(*[FourDivergence](FourDivergence), [FourLaplacian](FourLaplacian).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 t=RHI[{2,0, 0,0, 0}, {1, 1, 1, 1, 1}]

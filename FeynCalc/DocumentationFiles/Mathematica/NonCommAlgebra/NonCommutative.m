@@ -1,18 +1,20 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* NonCommutative *)
+(*NonCommutative*)
+
+
 (* ::Text:: *)
-(*NonCommutative is a data type which may be used, e.g.,  as: DataType[x, NonCommutative] = True..*)
+(*`NonCommutative` is a data type which may be used, e.g.,  as `DataType[x, NonCommutative] = True`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
-(* ::Text:: *)
-(*DataType, DeclareNonCommutative.*)
+(*See also*)
 
+
+(* ::Text:: *)
+(*[DataType](DataType), [DeclareNonCommutative](DeclareNonCommutative).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
-
-
+(*Examples*)

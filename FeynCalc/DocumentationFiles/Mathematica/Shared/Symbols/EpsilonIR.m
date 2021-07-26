@@ -1,10 +1,27 @@
- 
+(* ::Package:: *)
+
 (* ::Section:: *)
-(* EpsilonIR *)
+(*EpsilonIR*)
+
+
 (* ::Text:: *)
-(*EpsilonIR  denotes $(D-4)$, where $\text{D}$ is the number of space-time dimensions.EpsilonIR stands for a small negative number that explicitly regulates only IR divergences..*)
+(*`EpsilonIR`  denotes $(D-4)$, where $D$ is the number of space-time dimensions.*)
+
+
+(* ::Text:: *)
+(*`EpsilonIR` stands for a small negative number that explicitly regulates only IR divergences.*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*See also*)
+
+
+(* ::Text:: *)
+(*[Epsilon](Epsilon), [EpsilonUV](EpsilonUV).*)
+
+
+(* ::Subsection:: *)
+(*Examples*)
+
+
 EpsilonIR

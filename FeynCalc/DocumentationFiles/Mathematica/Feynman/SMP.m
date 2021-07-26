@@ -4,11 +4,11 @@
 
 
 (* ::Section:: *)
-(* SMP *)
+(*SMP*)
 
 
 (* ::Text:: *)
-(*`SMP[par]` displays a symbol for the model parameter `par`. Typical parameters are masses, coupling constants, mixing angles etc. *)
+(*`SMP[par]` displays a symbol for the model parameter `par`. Typical parameters are masses, coupling constants, mixing angles etc.*)
 
 
 (* ::Text:: *)
@@ -20,15 +20,15 @@
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 
 
 (* ::Text:: *)
-(*SMVertex.*)
+(*[SMVertex](SMVertex), [SMPToSymbol](SMPToSymbol).*)
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
 (* ::Text:: *)
@@ -43,7 +43,6 @@ SMP["m_e"]
 
 
 SMP["g_W"]
-
 
 
 (* ::Text:: *)

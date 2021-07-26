@@ -1,18 +1,18 @@
  
 (* ::Section:: *)
-(* TLIFP *)
+(*TLIFP*)
 (* ::Text:: *)
-(*TLIFP[exp] does Feynman-Parametrizations of TLI's in exp..*)
+(*`TLIFP[exp]` does Feynman-Parametrizations of `TLI`s in `exp`.*)
 
 
 (* ::Subsection:: *)
-(* See also *)
+(*See also*)
 (* ::Text:: *)
-(*TLI.*)
+(*[TLI](TLI).*)
 
 
 
 (* ::Subsection:: *)
-(* Examples *)
+(*Examples*)
 
 
