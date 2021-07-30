@@ -178,7 +178,7 @@ OPE1Loop[(*grname*)_,k_ /; Head[k] =!= List, integ_ /; Head[integ] =!= Plus,opts
 													SUNNToCACF -> sunntocacf];
 				FCPrint[1,"contracting"];
 				If[ FreeQ[amp, Eps] && !FreeQ[amp, LorentzIndex],
-					amp = Contract3[amp] /. Contract3 -> contrac;
+					amp = Contract[amp] /. Contract -> contrac;
 				];
 				FCPrint[1,"contracting 2"];
 				amp = Contract[amp/.GluonVertex[aa__] :>

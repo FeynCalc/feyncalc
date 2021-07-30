@@ -30,9 +30,6 @@ Contract is applied to the amplitude immediately after replacing \
 polarization vectors by the corresponding sum. This usually improves \
 performance.";
 
-Contract3::usage =
-"Contract3[expr] (still experimental).";
-
 Contract::fail =
 "Error! Contract has encountered a fatal problem and must abort the computation. \
 The problem reads: `1`"
@@ -47,6 +44,7 @@ are renamed, using $MU[i].";
 Begin["`Package`"]
 FCFastContract;
 contract2;
+contract3;
 End[]
 
 
@@ -59,13 +57,13 @@ FCFastContract[x_,OptionsPattern[]]:=
 	x /. Pair -> PairContract /. PairContract -> Pair  /. CartesianPair -> CartesianPairContract /. CartesianPairContract -> CartesianPair;
 
 
-Contract3[x_Plus, opts:OptionsPattern[]] :=
-	Map[Contract3[#,opts]&, x];
+contract3[x_Plus, opts:OptionsPattern[]] :=
+	Map[contract3[#,opts]&, x];
 
-Contract3[x_ /; (Head[x] =!= Times) && Head[x] =!= Plus,opts:OptionsPattern[]] :=
-	Contract[x, Contract3->False,opts];
+contract3[x_ /; (Head[x] =!= Times) && Head[x] =!= Plus,opts:OptionsPattern[]] :=
+	Contract[x, contract3->False,opts];
 
-Contract3[expr_Times, opts:OptionsPattern[]] :=
+contract3[expr_Times, opts:OptionsPattern[]] :=
 	Block[{ex, nonli, lipa, nec = 0, ic,epli, time, res, time2},
 
 
@@ -75,74 +73,74 @@ Contract3[expr_Times, opts:OptionsPattern[]] :=
 		];
 
 
-		FCPrint[1,"Contract: Contract3: Entering.", FCDoControl->cnVerbose];
-		FCPrint[3,"Contract: Contract3: Entering with: ", expr, FCDoControl->cnVerbose];
+		FCPrint[1,"Contract: contract3: Entering.", FCDoControl->cnVerbose];
+		FCPrint[3,"Contract: contract3: Entering with: ", expr, FCDoControl->cnVerbose];
 
 		If[ !FreeQ2[ex, {DiracGamma,DiracChain,PauliSigma,PauliChain,Eps}],
-			FCPrint[1,"Contract: Contract3: Expression contains DiracGamma, PauliSigma or Eps. Passing to Contract.", FCDoControl->cnVerbose];
-			Return[Contract[ex, FCI->True, Contract3 -> False,opts]]
+			FCPrint[1,"Contract: contract3: Expression contains DiracGamma, PauliSigma or Eps. Passing to Contract.", FCDoControl->cnVerbose];
+			Return[Contract[ex, FCI->True, contract3 -> False,opts]]
 		];
 
 		If[ FreeQ[ex, LorentzIndex],
-			FCPrint[1,"Contract: Contract3: Expression is free of Lorentz indices. Leaving.", FCDoControl->cnVerbose];
+			FCPrint[1,"Contract: contract3: Expression is free of Lorentz indices. Leaving.", FCDoControl->cnVerbose];
 			Return[ex]
 		];
 
 		time=AbsoluteTime[];
-		FCPrint[1,"Contract: Contract3: Applying Contract without expansions.", FCDoControl->cnVerbose];
-		ex = Contract[ex, FCI->True, Expanding -> False, Contract3->False, opts];
-		FCPrint[1,"Contract: Contract3: Contract done. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
+		FCPrint[1,"Contract: contract3: Applying Contract without expansions.", FCDoControl->cnVerbose];
+		ex = Contract[ex, FCI->True, Expanding -> False, contract3->False, opts];
+		FCPrint[1,"Contract: contract3: Contract done. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
 
 		If[ Head[ex] =!= Times,
-			FCPrint[1,"Contract: Contract3: Expression is not in the factorized form. Passing to Contract.", FCDoControl->cnVerbose];
-			Return[Contract[ex, FCI->True, Contract3->False]]
+			FCPrint[1,"Contract: contract3: Expression is not in the factorized form. Passing to Contract.", FCDoControl->cnVerbose];
+			Return[Contract[ex, FCI->True, contract3->False]]
 		];
 
 
 		time=AbsoluteTime[];
-		FCPrint[1,"Contract: Contract3: Splitting into parts free and not free of Lorentz indices.", FCDoControl->cnVerbose];
+		FCPrint[1,"Contract: contract3: Splitting into parts free and not free of Lorentz indices.", FCDoControl->cnVerbose];
 		nonli = Select[ex, FreeQ[#, LorentzIndex]&];
 		lipa  = Select[ex,!FreeQ[#, LorentzIndex]&];
 
 		If[	Factor[nonli lipa - ex]=!=0,
-			Message[Contract::fail, "Splitting of the factorized expression in Contract3 failed."];
+			Message[Contract::fail, "Splitting of the factorized expression in contract3 failed."];
 			FCPrint[0,{nonli,lipa,ex}];
 			Abort[]
 		];
-		FCPrint[1,"Contract: Contract3: Splitting done. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
+		FCPrint[1,"Contract: contract3: Splitting done. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
 
-		FCPrint[3,"Contract: Contract3: Part free of Lorentz indices: ", nonli, FCDoControl->cnVerbose];
-		FCPrint[3,"Contract: Contract3: Part with Lorentz indices: ", lipa, FCDoControl->cnVerbose];
+		FCPrint[3,"Contract: contract3: Part free of Lorentz indices: ", nonli, FCDoControl->cnVerbose];
+		FCPrint[3,"Contract: contract3: Part with Lorentz indices: ", lipa, FCDoControl->cnVerbose];
 
 
 
 		If[ Head[lipa] =!= Times,
-			FCPrint[1,"Contract: Contract3: Part with Lorentz indices is not factorized!", FCDoControl->cnVerbose];
+			FCPrint[1,"Contract: contract3: Part with Lorentz indices is not factorized!", FCDoControl->cnVerbose];
 			If[ Head[lipa] === Plus,
-				FCPrint[1,"Contract: Contract3: Part with Lorentz indices is a sum. Applying Contract3 again.", FCDoControl->cnVerbose];
-				nec = Contract3[lipa, opts],
-				FCPrint[1,"Contract: Contract3: Part with Lorentz indices is not a sum. Passing to Contract.", FCDoControl->cnVerbose];
-				nec = Contract[lipa, FCI->True, Contract3->False,opts]
+				FCPrint[1,"Contract: contract3: Part with Lorentz indices is a sum. Applying contract3 again.", FCDoControl->cnVerbose];
+				nec = contract3[lipa, opts],
+				FCPrint[1,"Contract: contract3: Part with Lorentz indices is not a sum. Passing to Contract.", FCDoControl->cnVerbose];
+				nec = Contract[lipa, FCI->True, contract3->False,opts]
 			];
 
 			res = nec nonli;
-			FCPrint[1,"Contract: Contract3: Leaving.", FCDoControl->cnVerbose];
-			FCPrint[3,"Contract: Contract3: Leaving with: ",res, FCDoControl->cnVerbose];
+			FCPrint[1,"Contract: contract3: Leaving.", FCDoControl->cnVerbose];
+			FCPrint[3,"Contract: contract3: Leaving with: ",res, FCDoControl->cnVerbose];
 			Return[res]
 		];
 
 
 		If[ Length[lipa] < 2,
 			time2=AbsoluteTime[];
-			FCPrint[1,"Contract: Contract3: Applying Contract.", FCDoControl->cnVerbose];
-			nec = Contract[lipa, FCI->True, Contract3->False, opts];
-			FCPrint[1,"Contract: Contract3: Contract done. Timing: ", N[AbsoluteTime[] - time2, 4] , FCDoControl->cnVerbose],
+			FCPrint[1,"Contract: contract3: Applying Contract.", FCDoControl->cnVerbose];
+			nec = Contract[lipa, FCI->True, contract3->False, opts];
+			FCPrint[1,"Contract: contract3: Contract done. Timing: ", N[AbsoluteTime[] - time2, 4] , FCDoControl->cnVerbose],
 
 
 
 			(* The expression is of the form A1*A2*A3*...*An, where each factor contains Lorentz indices.*)
 			time2=AbsoluteTime[];
-			FCPrint[1,"Contract: Contract3: Applying contractProduct.", FCDoControl->cnVerbose];
+			FCPrint[1,"Contract: contract3: Applying contractProduct.", FCDoControl->cnVerbose];
 
 			nec = lipa[[1]];
 			(* nec = A1 *)
@@ -151,8 +149,8 @@ Contract3[expr_Times, opts:OptionsPattern[]] :=
 				(*Print[{lipa[[ic]],nec}];*)
 				(* if A1 is simpler than Ai, *)
 				If[ LeafCount[nec] < LeafCount[lipa[[ic]]] || !FreeQ[lipa[[ic]], Twist2GluonOperator],
-					nec = contractProduct[lipa[[ic]], nec, Contract3->False,opts],
-					nec = contractProduct[nec, lipa[[ic]], Contract3->False,opts]
+					nec = contractProduct[lipa[[ic]], nec, contract3->False,opts],
+					nec = contractProduct[nec, lipa[[ic]], contract3->False,opts]
 				];
 
 
@@ -170,7 +168,7 @@ Contract3[expr_Times, opts:OptionsPattern[]] :=
 							TimeUsed[] - time];
 				];
 			];
-			FCPrint[1,"Contract: Contract3: contractProduct done. Timing: ", N[AbsoluteTime[] - time2, 4] , FCDoControl->cnVerbose]
+			FCPrint[1,"Contract: contract3: contractProduct done. Timing: ", N[AbsoluteTime[] - time2, 4] , FCDoControl->cnVerbose]
 		];
 
 		nec = nec nonli;
@@ -285,7 +283,7 @@ Contract[x__, opts___Rule] := (Contract[x /. Times[a___, b : Pair[_, __]^-1, c__
 
 Options[Contract] = {
 	Collecting      	-> True,
-	Contract3       	-> True,
+	contract3       	-> True,
 	EpsContract     	-> True,
 	EpsExpand    		-> True,
 	Expanding       	-> True,
@@ -696,24 +694,24 @@ hasDummyIndices[expr_] := False/;
 mainContract[x : Except[_Plus], opts:OptionsPattern[]] :=
 		Block[ { contractres = x,
 				contractexpandopt, es, time,
-				contract3, schout, contractfactoring },
+				optContract3, schout, contractfactoring },
 
 			contractexpandopt = OptionValue[Contract,{opts},Expanding];
 			contractfactoring = OptionValue[Contract,{opts},Factoring];
-			contract3 = OptionValue[Contract,{opts},Contract3];
+			optContract3 = OptionValue[Contract,{opts},contract3];
 
 			FCPrint[1, "Contract: mainContract: Entering", FCDoControl->cnVerbose];
 			FCPrint[3, "Contract: mainContract: Entering with ",x, FCDoControl->cnVerbose];
 
 
-			(* NEW: September 16th 2003: adding Contract3 directly here ... *)
-			If[ contract3,
+			(* NEW: September 16th 2003: adding contract3 directly here ... *)
+			If[ optContract3,
 				If[ MemberQ[{Plus, Times}, Head[contractres]],
 					time=AbsoluteTime[];
-					FCPrint[1, "Contract: mainContract: Applying Contract3.", FCDoControl->cnVerbose];
-					contractres = Contract3[contractres,FCI->True,opts];
-					FCPrint[1,"Contract: mainContract: Contract3 done. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
-					FCPrint[3,"Contract: mainContract: After Contract3: ", contractres , FCDoControl->cnVerbose]
+					FCPrint[1, "Contract: mainContract: Applying contract3.", FCDoControl->cnVerbose];
+					contractres = contract3[contractres,FCI->True,opts];
+					FCPrint[1,"Contract: mainContract: contract3 done. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
+					FCPrint[3,"Contract: mainContract: After contract3: ", contractres , FCDoControl->cnVerbose]
 				]
 			];
 
@@ -752,7 +750,7 @@ mainContract[x : Except[_Plus], opts:OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1, "Contract: mainContract: Applying another optimization.", FCDoControl->cnVerbose];
 
-			If[ contractexpandopt && !contract3 && !FreeQ[contractres, LorentzIndex],
+			If[ contractexpandopt && !optContract3 && !FreeQ[contractres, LorentzIndex],
 				(* NEW October 2003, this speeds things up in general*)
 				contractres = Expand[Expand[contractres, LorentzIndex] //. simplerules];
 				contractres = contractres /.
