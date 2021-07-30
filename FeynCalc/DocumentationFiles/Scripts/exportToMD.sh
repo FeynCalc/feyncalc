@@ -11,8 +11,8 @@
 
 # Usage examples
 
-# ./exportToMD.sh math12.2 /media/Data/Projects/VS/FeynCalc/FeynCalc/DocumentationFiles/Markdown
-# ./exportToMD.sh math12.2 "/media/Data/Projects/VS/FeynCalc/FeynCalc/DocumentationFiles/Mathematica/LC.m" "/media/Data/Projects/VS/FeynCalc/FeynCalc/DocumentationFiles/Markdown"
+# ./exportToMD.sh math /media/Data/Projects/VS/FeynCalc/FeynCalc/DocumentationFiles/Markdown
+# ./exportToMD.sh math "/media/Data/Projects/VS/FeynCalc/FeynCalc/DocumentationFiles/Mathematica/LC.m" "/media/Data/Projects/VS/FeynCalc/FeynCalc/DocumentationFiles/Markdown"
 
 scriptDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 mainDir="$(dirname $scriptDIR)"
