@@ -14,9 +14,6 @@ FeynCalcToLaTeX[expr, 500] generates LaTeX for expr with 500 being the Window wi
 setting for the Mathematica frontend. Increasing its value will generate less \
 line breaks.";
 
-F2L::usage =
-"F2L is the same as FeynCalcToLaTeX.";
-
 Begin["`Package`"]
 End[]
 
