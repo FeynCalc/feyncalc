@@ -949,10 +949,6 @@ MakeBoxes[pref_. SFAD[a__, opts:OptionsPattern[]], TraditionalForm] :=
 GLI /: MakeBoxes[GLI[id_, indices_List], TraditionalForm] :=
 	RowBox[{SuperscriptBox["G", ToBoxes[id]], "(", TBox[Sequence @@ Riffle[indices, ","]], ")"}];
 
-
-FCGV /: MakeBoxes[FCGV[a_String, opts:OptionsPattern[]], TraditionalForm]/; OptionValue[FCGV,{opts},SilentTypeSetting] :=
-	ToBoxes[a, TraditionalForm];
-
 FeynAmp /:
 	MakeBoxes[FeynAmp[q__Symbol, amp_], TraditionalForm ]:=
 		RowBox[Join[Map[RowBox[{"\[Integral]",

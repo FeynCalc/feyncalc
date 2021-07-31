@@ -209,16 +209,9 @@ transformed into Pair[Momentum[p,D-4], LorentzIndex[mu,D-4]] \
 by FeynCalcInternal.";
 
 FCGV::usage =
-"FCGV[x] displays typesetting for the string x, provided that \
-the option SilentTypeSetting is set to True. Use the rule \
-{FCGV[s_] :> ToExpression[s]} if you want to convert the string x \
-to a symbol with the name x.";
-
-SilentTypeSetting::usage =
-"";
-
-EvaluateFCGV::usage =
-"";
+"FCGV[x] is a FeynCalc global variable, i.e. a container \
+for string variables that allows to introduce new variables \
+without polluting the Global context of Mathematica.";
 
 GA::usage =
 "GA[mu] can be used as input for gamma^mu and is \
@@ -1038,7 +1031,7 @@ SetAttributes[TemporalPair, Orderless];
 Options[CFAD] = {Dimension -> D-1, EtaSign -> -1};
 Options[GFAD] = {EtaSign -> 1};
 Options[FAD] = {Dimension -> D};
-Options[FCGV] = {SilentTypeSetting -> False, EvaluateFCGV -> False};
+Options[FCGV] = {};
 Options[SFAD] = {Dimension -> D, EtaSign -> 1};
 Options[SUND] = {Explicit -> False};
 Options[SUNF] = {Explicit -> False};
@@ -1504,9 +1497,6 @@ GLIMultiply /:
 GLIMultiply /:
 	GLIMultiply[id_, indices1_List] GLIMultiply[id_, indices2_List] :=
 		GLIMultiply[id, indices1 + indices2]
-
-FCGV[a_String, OptionsPattern[]] :=
-	ToExpression[a]/; OptionValue[EvaluateFCGV];
 
 FV[0,_] :=
 	0;
