@@ -81,7 +81,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RFP1"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a2 - a4 - a5)*so[r]^(g2 + g3 + g4 + g5 + m)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a2 - a4 - a5)*so[r]^(g2 + g3 + g4 + g5 + m)) .
 			(x^(-1 + m)) . ((-1)^(1 + a1 + a2 + a4 + a5 + g5)) .
 			(
 				Gamma[-4 + a1 + a2 + a4 + a5 - Epsilon]/
@@ -113,7 +113,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RFP2"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a2 - a4 - a5)*so[r]^(g2 + g3 + g4 + g5 + m)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a2 - a4 - a5)*so[r]^(g2 + g3 + g4 + g5 + m)) .
 			(x^(-1 + m)) . ((-1)^(1 + a1 + a2 + a4 + a5 + g5)) .
 			(
 				Gamma[-4 + a1 + a2 + a4 + a5 - Epsilon]/
@@ -146,7 +146,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RFP3"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a2 - a4 - a5)*so[r]^(g1 + g3 + g4 + g5 + m)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a2 - a4 - a5)*so[r]^(g1 + g3 + g4 + g5 + m)) .
 			(x^(-1 + m)) . ((-1)^(1 + a1 + a2 + a4 + a5 + g5)) .
 			(Gamma[-4 + a1 + a2 + a4 + a5 - Epsilon]/
 				(E^(Epsilon*EulerGamma)*Gamma[a1]*Gamma[a2]*Gamma[a4]*Gamma[a5])) .
@@ -171,7 +171,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RFP4"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a2 - a4 - a5)*so[r]^(g1 + g3 + g4 + g5 + m)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a2 - a4 - a5)*so[r]^(g1 + g3 + g4 + g5 + m)) .
 			(x^(-1 + m)) . ((-1)^(1 + a1 + a2 + a4 + a5 + g5)) .
 			(Gamma[-4 + a1 + a2 + a4 + a5 - Epsilon]/
 				(E^(Epsilon*EulerGamma)*Gamma[a1]*Gamma[a2]*Gamma[a4]*Gamma[a5])) .
@@ -194,7 +194,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RFP5"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a2 - a3 - a4) so[r]^(m + g2 + g3 + g4)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a2 - a3 - a4) so[r]^(m + g2 + g3 + g4)) .
 			(x^(-1 + m)) . ((-1)^(1 + a1 + a2 + a3 + a4)) .
 			((Gamma[-2 + a1 + a3 - Epsilon/2] Gamma[-2 + a2 + a4 - Epsilon/2]*
 				Gamma[4 - a2 - 2 a4 + Epsilon + g4] Pochhammer[a4, g2])/
@@ -215,7 +215,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RFP5b"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a2 - a3 - a4) so[r]^(g1 + g2 + g3 + g4)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a2 - a3 - a4) so[r]^(g1 + g2 + g3 + g4)) .
 			(x^(-1 + OPEm) * DeltaFunction[1 - x]) . ((-1)^(1 + a1 + a2 + a3 + a4)) .
 			(
 			(Gamma[-2 + a1 + a3 - Epsilon/2]*Gamma[4 - a1 - 2 a3 + Epsilon + g3]*
@@ -239,7 +239,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RFP6"];
 			(
-				(Smu^2) . ((M^2)^(4 - a1 - a2 - a3 - a4) so[r]^(m + g2 + g3 + g4 - 1)) .
+				(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a2 - a3 - a4) so[r]^(m + g2 + g3 + g4 - 1)) .
 				(x^(-1 + m)) . ((-1)^(1 + a1 + a2 + a3 + a4)) .
 				((Gamma[-2 + a1 + a3 - Epsilon/2] Gamma[-2 + a2 + a4 - Epsilon/2])/
 					(E^(Epsilon EulerGamma) Gamma[a1] Gamma[a2] Gamma[a3] Gamma[a4])) .
@@ -269,7 +269,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RFP7"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a3 - a4 - a5)*so[r]^(g2 + g3 + g4 + g5 + m)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a3 - a4 - a5)*so[r]^(g2 + g3 + g4 + g5 + m)) .
 			(x^(-1 + m)) . ((-1)^(1 + a1 + a3 + a4 + a5 + g5)) .
 			(
 				Gamma[-4 + a1 + a3 + a4 + a5 - Epsilon]/
@@ -302,7 +302,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RFP8"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a2 - a4 - a5)*so[r]^(g2 + g3 + g4 + g5 + m)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a2 - a4 - a5)*so[r]^(g2 + g3 + g4 + g5 + m)) .
 			(x^(-1 + m)) . ((-1)^(1 + a1 + a2 + a4 + a5 + g5)) .
 			(
 				Gamma[-4 + a1 + a2 + a4 + a5 - Epsilon]/
@@ -333,7 +333,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RFP8b"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a4 - a5)*so[r]^(g2 + g3 + g4 + g5 + m)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a4 - a5)*so[r]^(g2 + g3 + g4 + g5 + m)) .
 			(x^(-1 + m)) . ((-1)^(1 + a1 + a4 + a5 + g5)) .
 			(
 				Gamma[-4 + a1 + a4 + a5 - Epsilon]/
@@ -361,7 +361,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RFP8c"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a3 - a4 - a5)*so[r]^(g1 + g2 + g3 + g4 + m)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a3 - a4 - a5)*so[r]^(g1 + g2 + g3 + g4 + m)) .
 			(x^(-1 + m)) . ((-1)^(1 + a1 + a3 + a4 + a5) * (-1)^m) .
 			(
 				Gamma[-4 + a1 + a3 + a4 + a5 - Epsilon]/
@@ -396,7 +396,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RFP9"];
 			(
-			(Smu^2) . ((M^2)^(4 - a2 - a3 - a4 - a5)*so[r]^(g2 + g3 + g4 + g5 + m)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a2 - a3 - a4 - a5)*so[r]^(g2 + g3 + g4 + g5 + m)) .
 			(x^(-1 + m)) . ((-1)^(1 + a2 + a3 + a4 + a5)) .
 			(
 				Gamma[-4 + a2 + a3 + a4 + a5 - Epsilon]/
@@ -427,7 +427,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RFP12"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a2 - a3 - a4 - a5)*
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a2 - a3 - a4 - a5)*
 				so[r]^(m + g2 + g3 + g4 + g5)) .
 			(x^(-1 + m)) . ((-1)^(1 + a1 + a2 + a3 + a4 + a5)) .
 			(
@@ -481,7 +481,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RFP13"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a2 - a3 - a4 - a5)*so[r]^(m + g1 + g2 + g3 + g4)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a2 - a3 - a4 - a5)*so[r]^(m + g1 + g2 + g3 + g4)) .
 			(x^(-1 + m)) . ((-1)^(1 + a1 + a2 + a3 + a4 + a5)) .
 			(
 				Gamma[-4 + a1 + a2 + a3 + a4 + a5 - Epsilon]/
@@ -538,7 +538,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RFP14"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a2 - a3 - a4)*so[r]^(m + g1 + g2 + g3 + g4)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a2 - a3 - a4)*so[r]^(m + g1 + g2 + g3 + g4)) .
 			(x^(-1 + m)) . ((-1)^(1 + a1 + a2 + a3 + a4)) .
 			(
 				Gamma[-2 + a1 + a3 - Epsilon/2]*Gamma[-2 + a2 + a4 - Epsilon/2]/
@@ -574,7 +574,7 @@ TLIFP[exp_, opt___Rule] :=
 				] :=
 			(
 			comment["Using RFP15"];
-			(Smu^2) . ((M^2)^(4 - a2 - a3 - a5)*so[r]^(m + g1 + g2 + g3 + g4)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a2 - a3 - a5)*so[r]^(m + g1 + g2 + g3 + g4)) .
 			(x^(-1 + m)) . ((-1)^(1 + a2 + a3 + a5) .
 			(
 				Gamma[-4 + a2 + a3 + a5 - Epsilon]/
@@ -605,7 +605,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RFP17"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a2 - a3 - a4 - a5)*
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a2 - a3 - a4 - a5)*
 								so[r]^(OPEm + g1 + g3 + g4 + g5)) .
 			((-1)^(1 + a1 + a2 + a3 + a4 + a5)) .
 			(
@@ -700,7 +700,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RFP18"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a2 - a3 - a5)*so[r]^(g1 + g2 + g3 + g4 + g5)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a2 - a3 - a5)*so[r]^(g1 + g2 + g3 + g4 + g5)) .
 			((-1)^(1 + a1 + a2 + a3 + a5)) .
 			(
 				(Gamma[-4 + a1 + a2 + a3 + a5 - Epsilon]*
@@ -734,7 +734,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RFP19"];
 			(
-			(Smu^2) ((M^2)^(4 - a3 - a2 - a4 - a5)*
+			(FCGV["S_mu"]^2) ((M^2)^(4 - a3 - a2 - a4 - a5)*
 							so[r]^(g1 + g2 + + g3 + g4 + g5))*
 					((-1)^(1 + a3 + a2 + a4 + a5))*
 						Gamma[-4 + a3 + a2 + a4 + a5 - Epsilon]/
@@ -761,7 +761,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RFP21"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a2 - a3 - a4 - a5)*so[r]^(m + g2 + g3 + g4 + g5)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a2 - a3 - a4 - a5)*so[r]^(m + g2 + g3 + g4 + g5)) .
 			(x^(-1 + m)) . ((-1)^(1 + a1 + a2 + a3 + a4 + a5)) .
 			(
 				Gamma[-4 + a1 + a2 + a3 + a4 + a5 - Epsilon]/
@@ -796,7 +796,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RFP22"];
 			(
-			(Smu^2) . ((M^2)^(4 - a2 - a3 - a4 - a5)*so[r]^(m + g2 + g3 + g4 + g5)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a2 - a3 - a4 - a5)*so[r]^(m + g2 + g3 + g4 + g5)) .
 			(x^(-1 + m)) . ((-1)^(1 + a2 + a3 + a4 + a5)) .
 			(
 				Gamma[-4 + a2 + a3 + a4 + a5 - Epsilon]/
@@ -824,7 +824,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RFP23"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a2 - a3 - a4)*so[r]^(m + g2 + g3 + g4 + g5)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a2 - a3 - a4)*so[r]^(m + g2 + g3 + g4 + g5)) .
 			(x^(-1 + m)) . ((-1)^(1 + a1 + a2 + a3 + a4)) .
 			(
 				Gamma[-4 + a1 + a2 + a3 + a4 - Epsilon]/
@@ -850,7 +850,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RFP24"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a3 - a4 - a5)*so[r]^(m + g2 + g3 + g4 + g5)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a3 - a4 - a5)*so[r]^(m + g2 + g3 + g4 + g5)) .
 			(x^(-1 + m)) . ((-1)^(1 + a1 + a3 + a4 + a5)) .
 			(
 				Gamma[-4 + a1 + a3 + a4 + a5 - Epsilon]/
@@ -1127,7 +1127,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RHYP5"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a3 - a4 - a5)*so[r]^(g3 + g4 + g5 + m)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a3 - a4 - a5)*so[r]^(g3 + g4 + g5 + m)) .
 			(x^(-1 + m)) . ((-1)^(1 + a1 + a3 + a4 + a5 + g5)) .
 			(
 				Gamma[-4 + a1 + a3 + a4 + a5 - Epsilon]/
@@ -1171,7 +1171,7 @@ TLIFP[exp_, opt___Rule] :=
 				] := (
 		comment["Using RHYP1"];
 		(
-		(Smu^2) . ((M^2)^(4 - a1 - a2 - a4 - a5)*so[r]^(g3 + g4 + g5 + m)) .
+		(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a2 - a4 - a5)*so[r]^(g3 + g4 + g5 + m)) .
 		(x^(-1 + m)) . ((-1)^(1 + a1 + a2 + a4 + a5 + g5)) .
 		(
 			Gamma[-4 + a1 + a2 + a4 + a5 - Epsilon]/
@@ -1227,7 +1227,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RHYP3"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a2 - a4 - a5)*so[r]^(g1 + g4 + g5 + m)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a2 - a4 - a5)*so[r]^(g1 + g4 + g5 + m)) .
 			(x^(-1 + m)) . ((-1)^(1 + a1 + a2 + a4 + a5 + g5)) .
 			(
 				Gamma[-4 + a1 + a2 + a4 + a5 - Epsilon]/
@@ -1276,7 +1276,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RHYP6"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a2 - a4 - a5)*so[r]^(g1 + g4 + g5 + m)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a2 - a4 - a5)*so[r]^(g1 + g4 + g5 + m)) .
 			(x^(-1 + m)) . (-1)^(1+g5) .
 			(
 				Gamma[2+Epsilon/2-a5+g5]/
@@ -1315,7 +1315,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RHYP7"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a2 - a4)*so[r]^(g4 + m)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a2 - a4)*so[r]^(g4 + m)) .
 			(x^(-1 + m)) . (-1)^(1+a1) .
 			(
 				(Gamma[a1-2-Epsilon/2]*Gamma[a2+a4-2-Epsilon/2])/
@@ -1341,7 +1341,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RHYP8"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a2 - a4)*so[r]^(g4 + m)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a2 - a4)*so[r]^(g4 + m)) .
 			(x^(-1 + m)) . (-1)^(1+a1+a2+a4) .
 			(
 				(Gamma[a1-2-Epsilon/2]*Gamma[a2+a4-2-Epsilon/2])/
@@ -1382,7 +1382,7 @@ TLIFP[exp_, opt___Rule] :=
 			(
 			comment["Using RHYP9"];
 			(
-			(Smu^2) . ((M^2)^(4-a1-a3-a4-a5)*so[r]^(g3+g4+g5+m)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4-a1-a3-a4-a5)*so[r]^(g3+g4+g5+m)) .
 			(x^(-1 + m)) . (-1)^(1+a1+a3+a4+a5) .
 			(
 				(Gamma[a4+a5-2-Epsilon/2]*Gamma[a1+a3+a4+a5-4-Epsilon]*

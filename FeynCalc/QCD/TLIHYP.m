@@ -74,7 +74,7 @@ TLIHYP[exp_, opt___Rule] :=
 			(
 			comment["Using RHYP5"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a3 - a4 - a5)*so[r]^(g3 + g4 + g5 + m)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a3 - a4 - a5)*so[r]^(g3 + g4 + g5 + m)) .
 			(x^(-1 + m)) . ((-1)^(1 + a1 + a3 + a4 + a5 + g5)) .
 			(
 				Gamma[-4 + a1 + a3 + a4 + a5 - Epsilon]/
@@ -118,7 +118,7 @@ TLIHYP[exp_, opt___Rule] :=
 			(
 			comment["Using RHYP1"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a2 - a4 - a5)*so[r]^(g3 + g4 + g5 + m)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a2 - a4 - a5)*so[r]^(g3 + g4 + g5 + m)) .
 			(x^(-1 + m)) . ((-1)^(1 + a1 + a2 + a4 + a5 + g5)) .
 			(
 				Gamma[-4 + a1 + a2 + a4 + a5 - Epsilon]/
@@ -173,7 +173,7 @@ TLIHYP[exp_, opt___Rule] :=
 			(
 			comment["Using RHYP3"];
 			(
-			(Smu^2) . ((M^2)^(4 - a1 - a2 - a4 - a5)*so[r]^(g1 + g4 + g5 + m)) .
+			(FCGV["S_mu"]^2) . ((M^2)^(4 - a1 - a2 - a4 - a5)*so[r]^(g1 + g4 + g5 + m)) .
 			(x^(-1 + m)) . ((-1)^(1 + a1 + a2 + a4 + a5 + g5)) .
 			(
 				Gamma[-4 + a1 + a2 + a4 + a5 - Epsilon]/

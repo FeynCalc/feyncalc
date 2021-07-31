@@ -59,7 +59,7 @@ RTL[exp_, opt___Rule] :=
 		(*
 		If[Head[res] =!= Plus, pref = 1,
 			pref = SelectNotFree[dummy First[res]/. (-1)^OPEm:>bla ,
-											{M,p,Smu,CA,CF,Tf,SMP["g_s"], OPEm}];
+											{M,p,FCGV["S_mu"],CA,CF,Tf,SMP["g_s"], OPEm}];
 			res = pref . Map[(#/pref)&, res]
 			];
 		*)
@@ -90,9 +90,9 @@ lsimp[t_Times] :=
 			mm = OPEm
 		];
 
-		((SelectNotFree[t, {Epsilon,p,Smu,CA,CF,Tf,SMP["g_s"]}] x^(mm-1))/.dum[Epsilon]->1)  *
+		((SelectNotFree[t, {Epsilon,p,FCGV["S_mu"],CA,CF,Tf,SMP["g_s"]}] x^(mm-1))/.dum[Epsilon]->1)  *
 		Collect2[SimplifyDeltaFunction[Expand[Apart3[
-			SelectFree[t, {Epsilon,p,Smu,CA,CF,Tf,SMP["g_s"]}]/x^(mm-1),x]
+			SelectFree[t, {Epsilon,p,FCGV["S_mu"],CA,CF,Tf,SMP["g_s"]}]/x^(mm-1),x]
 			]](* /. {DeltaFunction[1-x] f_ :>
 							(f/.x->1) DeltaFunction[1-x]
 					} *) ,
@@ -103,16 +103,16 @@ lsimp[t_Times] :=
 tlilist = {
 (* r1i1.r *)
 RTLI[{m_ /; MCH[m], -2, 0, 0, 0}, {{2, _}, 0, 0, 1, 1}, r___] :>
-	Smu^2*x^(-1 + m)*((-1 + x^(-1))/Epsilon - 2*Log[1 - x] +
+	FCGV["S_mu"]^2*x^(-1 + m)*((-1 + x^(-1))/Epsilon - 2*Log[1 - x] +
 		(2*Log[1 - x])/x + Log[x])*so[r]^(-2 + m)
 ,
 (* r1i2.r *)
 RTLI[{m_ /; MCH[m], -2, 0, 0, 0}, {{2, M_}, {1, M_}, 0, 1, 1}, r___] :>
-	(Smu^2*x^(-1 + m)*(1 - x^(-1) + Zeta2/x)*so[r]^(-2 + m))/M^2
+	(FCGV["S_mu"]^2*x^(-1 + m)*(1 - x^(-1) + Zeta2/x)*so[r]^(-2 + m))/M^2
 ,
 (* r1i3.r *)
 RTLI[{m_ /; MCH[m], -1, 0, 0, 0}, {{1, M_}, {1, M_}, 0, 1, 1}, r___] :>
-	Smu^2*x^(-1 + m)*(-2 + 2*x + (-2 + 2*x)/Epsilon^2 + (3*Zeta2)/2 -
+	FCGV["S_mu"]^2*x^(-1 + m)*(-2 + 2*x + (-2 + 2*x)/Epsilon^2 + (3*Zeta2)/2 -
 		(3*x*Zeta2)/2 + 4*Log[1 - x] - 4*x*Log[1 - x] - 4*Log[1 - x]^2 +
 		4*x*Log[1 - x]^2 + 2*x*Log[x] - 4*x*Log[1 - x]*Log[x] -
 		(x*Log[x]^2)/2 + (2 - 2*x - 4*Log[1 - x] + 4*x*Log[1 - x] -
@@ -121,7 +121,7 @@ RTLI[{m_ /; MCH[m], -1, 0, 0, 0}, {{1, M_}, {1, M_}, 0, 1, 1}, r___] :>
 ,
 (* r1i4.r *)
 RTLI[{m_ /; MCH[m], -1, 0, 0, 0}, {{2, _}, 0, 0, 1, 1}, r___] :>
-	Smu^2*x^(-1 + m)*(-(Log[x]/Epsilon) - 2*Log[1 - x]*Log[x] + Log[x]^2/4 -
+	FCGV["S_mu"]^2*x^(-1 + m)*(-(Log[x]/Epsilon) - 2*Log[1 - x]*Log[x] + Log[x]^2/4 -
 		PolyLog[2, 1 - x])*so[r]^(-1 + m)
 ,
 (* r1i5.r *)
@@ -129,11 +129,11 @@ RTLI[{m_ /; MCH[m], -1, 0, 0, 0}, {{2, M_}, {1, M_}, 0, 1, 0},___] :> 0
 ,
 (* r1i6.r *)
 RTLI[{m_ /; MCH[m], -1, 0, 0, 0}, {{2, M_}, {1, M_}, 0, 1, 1}, r___] :>
-	(Smu^2*x^(-1 + m)*Zeta2*so[r]^(-1 + m))/M^2
+	(FCGV["S_mu"]^2*x^(-1 + m)*Zeta2*so[r]^(-1 + m))/M^2
 ,
 (* r1i7.r *)
 RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{1, M_}, {1, M_}, 0, 1, 1}, r___] :>
-	Smu^2*x^(-1 + m)*so[r]^m*((2*x*Log[x])/Epsilon^2 + (x*Zeta2*Log[x])/2 +
+	FCGV["S_mu"]^2*x^(-1 + m)*so[r]^m*((2*x*Log[x])/Epsilon^2 + (x*Zeta2*Log[x])/2 +
 		4*x*Log[1 - x]^2*Log[x] - (x*Log[x]^3)/12 +
 		8*x*Log[1 - x]*PolyLog[2, 1 - x] +
 		(4*x*Log[1 - x]*Log[x] + (x*Log[x]^2)/2 + 4*x*PolyLog[2, 1 - x])/
@@ -141,13 +141,13 @@ RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{1, M_}, {1, M_}, 0, 1, 1}, r___] :>
 ,
 (* r1i8.r *)
 RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{1, M_}, {2, M_}, 0, 1, 1}, r___] ->
-	(Smu^2*x^(-1 + m)*((-2*x)/Epsilon^2 - (x*Zeta2)/2 - 4*x*Log[1 - x]^2 +
+	(FCGV["S_mu"]^2*x^(-1 + m)*((-2*x)/Epsilon^2 - (x*Zeta2)/2 - 4*x*Log[1 - x]^2 +
 			4*x*Log[1 - x]*Log[x] + (-4*x*Log[1 - x] + 2*x*Log[x])/Epsilon +
 			2*x*PolyLog[2, 1 - x])*so[r]^m)/M^2
 ,
 (* r1i9.r *)
 RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{2, _}, 0, 0, 1, 1}, r___] :>
-	Smu^2*x^(-1 + m)*(-1 + (1 - x)/Epsilon + x + 2*Log[1 - x] -
+	FCGV["S_mu"]^2*x^(-1 + m)*(-1 + (1 - x)/Epsilon + x + 2*Log[1 - x] -
 		2*x*Log[1 - x] - Log[x]/2 + (x*Log[x])/2)*so[r]^m
 ,
 (* r1i10.r *)
@@ -155,7 +155,7 @@ RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{2, M_}, {1, M_}, 0, 1, 0},___] :> 0
 ,
 (* r1i11.r *)
 RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{2, M_}, {1, M_}, 0, 1, 1}, r___] :>
-	(Smu^2*x^(-1 + m)*(x*Zeta2 + (x*Log[x]^2)/2 + x*PolyLog[2, 1 - x])*so[r]^m)/
+	(FCGV["S_mu"]^2*x^(-1 + m)*(x*Zeta2 + (x*Log[x]^2)/2 + x*PolyLog[2, 1 - x])*so[r]^m)/
 	M^2
 ,
 (* r1i12.r *)
@@ -163,7 +163,7 @@ RTLI[{m_ /; MCH[m],  0, 0, 0, 0}, {{2, M_}, {2, M_}, 0, 1, 0},___] :> 0
 ,
 (* r1i13.r *)
 RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{2, M_}, {2, M_}, 0, 1, 1}, r___] :>
-	(Smu^2*x^(-1 + m)*(-1 + (1 - x)^(-1) +
+	(FCGV["S_mu"]^2*x^(-1 + m)*(-1 + (1 - x)^(-1) +
 			(1 - (1 - x)^(-1) + DeltaFunction[1 - x]/2)/Epsilon +
 			DeltaFunction[1 - x]/2 - DeltaFunction[1 - x]/(2*Epsilon^2) -
 			(5*Zeta2*DeltaFunction[1 - x])/8 + 2*Log[1 - x] -
@@ -171,7 +171,7 @@ RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{2, M_}, {2, M_}, 0, 1, 1}, r___] :>
 ,
 (* r1i14.r *)
 RTLI[{m_ /; MCH[m], 1, 0, 0, 0}, {{1, M_}, {1, M_}, 0, 1, 1}, r___] :>
-	Smu^2*x^(-1 + m)*(-2*x + 2*x^2 + (-2*x + 2*x^2)/Epsilon^2 +
+	FCGV["S_mu"]^2*x^(-1 + m)*(-2*x + 2*x^2 + (-2*x + 2*x^2)/Epsilon^2 +
 		(3*x*Zeta2)/2 - (3*x^2*Zeta2)/2 + 4*x*Log[1 - x] - 4*x^2*Log[1 - x] -
 		4*x*Log[1 - x]^2 + 4*x^2*Log[1 - x]^2 + x*Log[x] + x^2*Log[x] -
 		2*x*Log[1 - x]*Log[x] - 2*x^2*Log[1 - x]*Log[x] + (x*Log[x]^2)/4 -
@@ -181,13 +181,13 @@ RTLI[{m_ /; MCH[m], 1, 0, 0, 0}, {{1, M_}, {1, M_}, 0, 1, 1}, r___] :>
 ,
 (* r1i15.r *)
 RTLI[{m_ /; MCH[m], 1, 0, 0, 0}, {{1, M_}, {2, M_}, 0, 1, 1}, r___] :>
-	(Smu^2*x^(-1 + m)*((-2*x)/Epsilon^2 + (x*Zeta2)/2 - x^2*Zeta2 -
+	(FCGV["S_mu"]^2*x^(-1 + m)*((-2*x)/Epsilon^2 + (x*Zeta2)/2 - x^2*Zeta2 -
 			(4*x*Log[1 - x])/Epsilon - 4*x*Log[1 - x]^2 - (x^2*Log[x]^2)/2 -
 			x*PolyLog[2, 1 - x] - x^2*PolyLog[2, 1 - x])*so[r]^(1 + m))/M^2
 ,
 (* n1i1.r *)
 RTLI[{m_, 1, 0, 0, 0}, {{2, M}, {2, M}, 0, 1, 1}, r___] :>
-	(Smu^2*x^(-1 + m)*(-1 + (1 - x)^(-1) - x + x^2*Zeta2 +
+	(FCGV["S_mu"]^2*x^(-1 + m)*(-1 + (1 - x)^(-1) - x + x^2*Zeta2 +
 			(1 - (1 - x)^(-1) + DeltaFunction[1 - x]/2)/Epsilon +
 			DeltaFunction[1 - x]/2 - DeltaFunction[1 - x]/(2*Epsilon^2) -
 			(5*Zeta2*DeltaFunction[1 - x])/8 + 2*Log[1 - x] -
@@ -196,7 +196,7 @@ RTLI[{m_, 1, 0, 0, 0}, {{2, M}, {2, M}, 0, 1, 1}, r___] :>
 ,
 (* n1i2.r *)
 RTLI[{m_, 2, 0, 0, 0}, {{1, M}, {2, M}, 0, 1, 1}, r___] :>
-	(Smu^2*x^(-1 + m)*(-2*x - (2*x)/Epsilon^2 + 2*x^2 + (x*Zeta2)/2 -
+	(FCGV["S_mu"]^2*x^(-1 + m)*(-2*x - (2*x)/Epsilon^2 + 2*x^2 + (x*Zeta2)/2 -
 			x^3*Zeta2 + 4*x*Log[1 - x] - 4*x^2*Log[1 - x] - 4*x*Log[1 - x]^2 +
 			(2*x - 2*x^2 - 4*x*Log[1 - x])/Epsilon + 2*x^2*Log[x] -
 			(x^3*Log[x]^2)/2 - x*PolyLog[2, 1 - x] - x^3*PolyLog[2, 1 - x])*
@@ -204,14 +204,14 @@ RTLI[{m_, 2, 0, 0, 0}, {{1, M}, {2, M}, 0, 1, 1}, r___] :>
 ,
 (* r2i1.r *)
 RTLI[{0, m_ /; MCH[m], 0, 0, -1}, {{1, M_}, {1, M_}, 0, 1, 1}, r___] :>
-	Smu^2*x^(-1 + m)*so[r]^(-1 + m)*
+	FCGV["S_mu"]^2*x^(-1 + m)*so[r]^(-1 + m)*
 	(4/Epsilon^3 + (6*Log[1 - x])/Epsilon^2 + (7*Zeta2*Log[1 - x])/2 +
 		(29*Log[1 - x]^3)/12 + (Zeta2 + (9*Log[1 - x]^2)/2)/Epsilon +
 		Log[1 - x]*PolyLog[2, 1 - x] - 2*PolyLog[3, 1 - x] + (7*Zeta[3])/3)
 ,
 (* r2i2.r *)
 RTLI[{m_ /; MCH[m], 0, 0, 0, -1}, {{1, M_}, {1, M_}, 0, 1, 1}, r___] :>
-	Smu^2*x^(-1 + m)*so[r]^(-1 + m)*
+	FCGV["S_mu"]^2*x^(-1 + m)*so[r]^(-1 + m)*
 	(4/Epsilon^3 + (8*Log[1 - x])/Epsilon^2 - 2*Zeta2*Log[1 - x] +
 		(16*Log[1 - x]^3)/3 - Zeta2*Log[x] + (Log[1 - x]*Log[x]^2)/2 +
 		4*Log[1 - x]*PolyLog[2, 1 - x] + Log[x]*PolyLog[2, 1 - x] +
@@ -220,7 +220,7 @@ RTLI[{m_ /; MCH[m], 0, 0, 0, -1}, {{1, M_}, {1, M_}, 0, 1, 1}, r___] :>
 ,
 (* r2i3.r *)
 RTLI[{-1 - OPEi + OPEm, 1 + OPEi, 0, 0, 0}, {{2, M_}, {1, M_}, 1, 0, 1},
-	r___] :> (Smu^2*x^(-1 + OPEm)*so[r]^OPEm*
+	r___] :> (FCGV["S_mu"]^2*x^(-1 + OPEm)*so[r]^OPEm*
 		(2 - 2/(1 - x) + (7*Zeta2)/2 - (7*Zeta2)/(2*(1 - x)) + 4*x*Zeta2 +
 			2*DeltaFunction[1 - x] - (3*Zeta2*DeltaFunction[1 - x])/2 +
 			(-2 + 2/(1 - x) + 2*DeltaFunction[1 - x])/Epsilon^2 - 2*Log[1 - x] +
@@ -235,7 +235,7 @@ RTLI[{-1 - OPEi + OPEm, 1 + OPEi, 0, 0, 0}, {{2, M_}, {1, M_}, 1, 0, 1},
 ,
 (* n2i1.r *)
 RTLI[{0, m_ /; MCH[m], 0, 0, -1}, {{1, M_}, {2, M_}, 0, 1, 1}, r___] :>
-	(Smu^2*x^(-1 + m)*so[r]^(-1 + m)*
+	(FCGV["S_mu"]^2*x^(-1 + m)*so[r]^(-1 + m)*
 		(2 + (2*x)/(1 - x) + Zeta2 + (3*x*Zeta2)/(1 - x) +
 			DeltaFunction[1 - x] + (3*DeltaFunction[1 - x])/Epsilon^3 +
 			(5*Zeta2*DeltaFunction[1 - x])/4 +
@@ -250,7 +250,7 @@ RTLI[{0, m_ /; MCH[m], 0, 0, -1}, {{1, M_}, {2, M_}, 0, 1, 1}, r___] :>
 ,
 (* n2i2.r *)
 RTLI[{m_ /; MCH[m], 0, 0, 0, -1}, {{1, M_}, {2, M_}, 0, 1, 1}, r___] :>
-	(Smu^2*x^(-1 + m)*so[r]^(-1 + m)*
+	(FCGV["S_mu"]^2*x^(-1 + m)*so[r]^(-1 + m)*
 		(2/(1 - x) - Zeta2/2 - Zeta2/(2*(1 - x)) + DeltaFunction[1 - x] +
 			(3*DeltaFunction[1 - x])/Epsilon^3 -
 			(3*Zeta2*DeltaFunction[1 - x])/4 +
@@ -264,7 +264,7 @@ RTLI[{m_ /; MCH[m], 0, 0, 0, -1}, {{1, M_}, {2, M_}, 0, 1, 1}, r___] :>
 ,
 (* n2i3.r *)
 RTLI[{m_ /; MCH[m], 2, 0, 0, -1}, {{1, M_}, {2, M_}, 0, 1, 1}, r___] :>
-	(Smu^2*x^(-1 + m)*so[r]^(1 + m)*
+	(FCGV["S_mu"]^2*x^(-1 + m)*so[r]^(1 + m)*
 		(-5/2 + 5/(2*(1 - x)) - (5*x)/2 + Zeta2/2 - Zeta2/(2*(1 - x)) +
 			x^2*Zeta2 + (11*DeltaFunction[1 - x])/8 +
 			(3*DeltaFunction[1 - x])/Epsilon^3 -
@@ -282,7 +282,7 @@ RTLI[{m_ /; MCH[m], 2, 0, 0, -1}, {{1, M_}, {2, M_}, 0, 1, 1}, r___] :>
 ,
 (*r3i1.r*)
 RTLI[{0, m_ /; MCH[m], 0, 0, 0}, {{1, M_}, {3, M_}, 0, 1, 1}, r___] :>
-	(Smu^2*x^(-1 + m)*(1 - 3/(2*(1 - x)^2) + 1/(2*(1 - x)) + 2*x*Zeta2 -
+	(FCGV["S_mu"]^2*x^(-1 + m)*(1 - 3/(2*(1 - x)^2) + 1/(2*(1 - x)) + 2*x*Zeta2 -
 			DeltaFunction[1 - x] - (5*Zeta2*DeltaFunction[1 - x])/8 +
 			(-DeltaFunction[1 - x]/2 - DeltaFunctionPrime[1 - x])/Epsilon^2 -
 			(3*DeltaFunctionPrime[1 - x])/2 -
@@ -294,7 +294,7 @@ RTLI[{0, m_ /; MCH[m], 0, 0, 0}, {{1, M_}, {3, M_}, 0, 1, 1}, r___] :>
 ,
 (*r3i2.r*)
 RTLI[{0, m_ /; MCH[m], 0, 0, 0}, {{1, M_}, {2, M_}, 0, 1, 1}, r___] :>
-	(Smu^2*x^(-1 + m)*(-2 + 2/(1 - x) - 2*x*Zeta2 - 2*DeltaFunction[1 - x] -
+	(FCGV["S_mu"]^2*x^(-1 + m)*(-2 + 2/(1 - x) - 2*x*Zeta2 - 2*DeltaFunction[1 - x] -
 			(2*DeltaFunction[1 - x])/Epsilon^2 -
 			(Zeta2*DeltaFunction[1 - x])/2 +
 			(2 - 2/(1 - x) + 2*DeltaFunction[1 - x])/Epsilon + 2*Log[1 - x] -
@@ -303,14 +303,14 @@ RTLI[{0, m_ /; MCH[m], 0, 0, 0}, {{1, M_}, {2, M_}, 0, 1, 1}, r___] :>
 ,
 (*r3i3.r*)
 RTLI[{0, m_ /; MCH[m], 0, 0, 0}, {{1, M_}, {1, M_}, 0, 1, 1}, r___] :>
-	Smu^2*x^(-1 + m)*(-2*x - (2*x)/Epsilon^2 + (3*x*Zeta2)/2 +
+	FCGV["S_mu"]^2*x^(-1 + m)*(-2*x - (2*x)/Epsilon^2 + (3*x*Zeta2)/2 +
 		3*x*Log[1 - x] - (7*x*Log[1 - x]^2)/4 +
 		(2*x - 3*x*Log[1 - x])/Epsilon - x*Log[1 - x]*Log[x] -
 		x*PolyLog[2, 1 - x])*so[r]^m
 ,
 (*r3i4.r*)
 RTLI[{0, m_ /; MCH[m], 0, 0, 0}, {{1, _}, 1, 0, 1, 1}, r___] :>
-	Smu^2*x^(-1 + m)*(-2*x - (2*x)/Epsilon^2 - I*Pi*x + (9*x*Zeta2)/2 -
+	FCGV["S_mu"]^2*x^(-1 + m)*(-2*x - (2*x)/Epsilon^2 - I*Pi*x + (9*x*Zeta2)/2 -
 		Log[1 - x] + 2*x*Log[1 - x] + I*Pi*x*Log[1 - x] - (x*Log[1 - x]^2)/4 +
 		x*Log[x] + I*Pi*x*Log[x] - 2*x*Log[1 - x]*Log[x] - (x*Log[x]^2)/2 +
 		(2*x + 2*I*Pi*x - x*Log[1 - x] - 2*x*Log[x])/Epsilon -
@@ -318,7 +318,7 @@ RTLI[{0, m_ /; MCH[m], 0, 0, 0}, {{1, _}, 1, 0, 1, 1}, r___] :>
 ,
 (*r3i5.r*)
 RTLI[{0, m_ /; MCH[m], 0, 0, 0}, {{1, M_}, {3, M_}, 0, 1, 0}, r___] :>
-	(Smu^2*x^(-1 + m)*(-(1 - x)^(-2) + (1 - x)^(-1) -
+	(FCGV["S_mu"]^2*x^(-1 + m)*(-(1 - x)^(-2) + (1 - x)^(-1) -
 			DeltaFunction[1 - x]/2 - (Zeta2*DeltaFunction[1 - x])/4 +
 			(-DeltaFunction[1 - x] - DeltaFunctionPrime[1 - x])/Epsilon^2 -
 			DeltaFunctionPrime[1 - x]/2 - (Zeta2*DeltaFunctionPrime[1 - x])/4 +
@@ -328,19 +328,19 @@ RTLI[{0, m_ /; MCH[m], 0, 0, 0}, {{1, M_}, {3, M_}, 0, 1, 0}, r___] :>
 ,
 (*r3i6.r*)
 RTLI[{0, m_ /; MCH[m], 0, 0, 0}, {{1, M_}, {2, M_}, 0, 1, 0}, r___] :>
-	Smu^2*x^(-1 + m)*(-1 + (1 - x)^(-1) - DeltaFunction[1 - x]/2 -
+	FCGV["S_mu"]^2*x^(-1 + m)*(-1 + (1 - x)^(-1) - DeltaFunction[1 - x]/2 -
 		(2*DeltaFunction[1 - x])/Epsilon^2 - (Zeta2*DeltaFunction[1 - x])/2 +
 		(2 - 2/(1 - x) + DeltaFunction[1 - x])/Epsilon + 2*Log[1 - x] -
 		(2*Log[1 - x])/(1 - x))*so[r]^m
 ,
 (*r3i7.r*)
 RTLI[{0, m_ /; MCH[m], 0, 0, 0}, {{1, M_}, {1, M_}, 0, 1, 0}, r___] :>
-	M^2*Smu^2*x^(-1 + m)*(-x - (4*x)/Epsilon^2 - x*Zeta2 + 2*x*Log[1 - x] -
+	M^2*FCGV["S_mu"]^2*x^(-1 + m)*(-x - (4*x)/Epsilon^2 - x*Zeta2 + 2*x*Log[1 - x] -
 		2*x*Log[1 - x]^2 + (2*x - 4*x*Log[1 - x])/Epsilon)*so[r]^m
 ,
 (*r3i8.r*)
 RTLI[{0, m_ /; MCH[m], 0, 0, 0}, {{1, M_}, 1, 0, 1, 0}, r___] :>
-	M^2*Smu^2*x^(-1 + m)*(-x - (4*x)/Epsilon^2 - I*Pi*x + 2*x*Zeta2 +
+	M^2*FCGV["S_mu"]^2*x^(-1 + m)*(-x - (4*x)/Epsilon^2 - I*Pi*x + 2*x*Zeta2 +
 		x*Log[1 - x] + I*Pi*x*Log[1 - x] - (x*Log[1 - x]^2)/2 + x*Log[x] +
 		I*Pi*x*Log[x] - x*Log[1 - x]*Log[x] - (x*Log[x]^2)/2 +
 		(2*x + 2*I*Pi*x - 2*x*Log[1 - x] - 2*x*Log[x])/Epsilon)*so[r]^m
@@ -348,7 +348,7 @@ RTLI[{0, m_ /; MCH[m], 0, 0, 0}, {{1, M_}, 1, 0, 1, 0}, r___] :>
 ,
 (* r4i1.r *)
 RTLI[{0, OPEi, 0, 0, 1}, {{1, M_}, {1, M_}, 0, 1, 1}, r___] :>
-	Smu^2*x^(-1 + OPEm)*so[r]^(-1 + OPEm)*
+	FCGV["S_mu"]^2*x^(-1 + OPEm)*so[r]^(-1 + OPEm)*
 	(1 - (1 - x)^(-1) - (3*Zeta2)/4 + (3*Zeta2)/(4*(1 - x)) +
 		(1 - (1 - x)^(-1) - DeltaFunction[1 - x])/Epsilon^2 -
 		(19*DeltaFunction[1 - x])/4 + (3*Zeta2*DeltaFunction[1 - x])/4 -
@@ -363,7 +363,7 @@ RTLI[{0, OPEi, 0, 0, 1}, {{1, M_}, {1, M_}, 0, 1, 1}, r___] :>
 ,
 (* r7i1.r *)
 RTLI[{m_ /; MCH[m], 2, -1, 0, 0}, {{1, _}, 0, 1, 1, 1}, r___] :>
-	Smu^2*x^(-1 + m)*so[r]^(1 + m)*
+	FCGV["S_mu"]^2*x^(-1 + m)*so[r]^(1 + m)*
 	(2 - 2/(1 - x) + (34*x)/27 + (20*x^2)/27 + Zeta2/2 - Zeta2/(2*(1 - x)) +
 		(x*Zeta2)/3 + (x^2*Zeta2)/6 + DeltaFunction[1 - x] -
 		DeltaFunction[1 - x]/Epsilon^3 + (Zeta2*DeltaFunction[1 - x])/4 +
@@ -383,7 +383,7 @@ RTLI[{m_ /; MCH[m], 2, -1, 0, 0}, {{1, _}, 0, 1, 1, 1}, r___] :>
 ,
 (* r7i2.r *)
 RTLI[{m_ /; MCH[m], 2, -2, 0, 0}, {{1, _}, 0, 1, 1, 1}, r___] :>
-	Smu^2*x^(-1 + m)*so[r]^m*(-2 - 2/(1 - x)^2 + 4/(1 - x) - (20*x)/27 -
+	FCGV["S_mu"]^2*x^(-1 + m)*so[r]^m*(-2 - 2/(1 - x)^2 + 4/(1 - x) - (20*x)/27 -
 		Zeta2/2 - Zeta2/(2*(1 - x)^2) + Zeta2/(1 - x) - (x*Zeta2)/6 -
 		3*DeltaFunction[1 - x] - (3*Zeta2*DeltaFunction[1 - x])/4 +
 		(-2 - 2/(1 - x)^2 + 4/(1 - x) - (2*x)/3 - 3*DeltaFunction[1 - x] -
@@ -408,7 +408,7 @@ RTLI[{m_ /; MCH[m], 2, -2, 0, 0}, {{1, _}, 0, 1, 1, 1}, r___] :>
 ,
 (* r7i3.r *)
 RTLI[{m_ /; MCH[m], 1, 0, 0, 0}, {{1, _}, 0, 1, 1, 1}, r___] :>
-	Smu^2*x^(-1 + m)*(-x - x^2 + (-x - x^2)/Epsilon^2 - (x*Zeta2)/4 -
+	FCGV["S_mu"]^2*x^(-1 + m)*(-x - x^2 + (-x - x^2)/Epsilon^2 - (x*Zeta2)/4 -
 		(x^2*Zeta2)/4 + 2*x*Log[1 - x] + 2*x^2*Log[1 - x] - 2*x*Log[1 - x]^2 -
 		2*x^2*Log[1 - x]^2 - (x*Log[x])/2 - (x^2*Log[x])/2 +
 		x*Log[1 - x]*Log[x] + x^2*Log[1 - x]*Log[x] - (x*Log[x]^2)/8 -
@@ -417,7 +417,7 @@ RTLI[{m_ /; MCH[m], 1, 0, 0, 0}, {{1, _}, 0, 1, 1, 1}, r___] :>
 ,
 (* r7i4.r *)
 RTLI[{m_ /; MCH[m], 1, -1, 0, 0}, {{1, _}, 0, 1, 1, 1}, r___] :>
-	Smu^2*x^(-1 + m)*so[r]^m*(2 - 2/(1 - x) + x + Zeta2/2 - Zeta2/(2*(1 - x)) +
+	FCGV["S_mu"]^2*x^(-1 + m)*so[r]^m*(2 - 2/(1 - x) + x + Zeta2/2 - Zeta2/(2*(1 - x)) +
 		(x*Zeta2)/4 + DeltaFunction[1 - x] - DeltaFunction[1 - x]/Epsilon^3 +
 		(Zeta2*DeltaFunction[1 - x])/4 +
 		(2 - 2/(1 - x) + x + DeltaFunction[1 - x])/Epsilon^2 - 4*Log[1 - x] +
@@ -432,7 +432,7 @@ RTLI[{m_ /; MCH[m], 1, -1, 0, 0}, {{1, _}, 0, 1, 1, 1}, r___] :>
 ,
 (* r7i5.r *)
 RTLI[{m_ /; MCH[m], 1, -2, 0, 0}, {{1, _}, 0, 1, 1, 1}, r___] :>
-	Smu^2*x^(-1 + m)*so[r]^(-1 + m)*
+	FCGV["S_mu"]^2*x^(-1 + m)*so[r]^(-1 + m)*
 	(-1 - 2/(1 - x)^2 + 3/(1 - x) - Zeta2/4 - Zeta2/(2*(1 - x)^2) +
 		(3*Zeta2)/(4*(1 - x)) - (5*DeltaFunction[1 - x])/2 -
 		(5*Zeta2*DeltaFunction[1 - x])/8 +
@@ -456,20 +456,20 @@ RTLI[{m_ /; MCH[m], 1, -2, 0, 0}, {{1, _}, 0, 1, 1, 1}, r___] :>
 ,
 (* r7i6.r *)
 RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{2, M_}, 0, 1, 1, 1}, r___] :>
-	(Smu^2*x^(-1 + m)*(-2 + 2/(1 - x) - DeltaFunction[1 - x] -
+	(FCGV["S_mu"]^2*x^(-1 + m)*(-2 + 2/(1 - x) - DeltaFunction[1 - x] -
 			DeltaFunction[1 - x]/Epsilon^2 - (Zeta2*DeltaFunction[1 - x])/4 +
 			(2 - 2/(1 - x) + DeltaFunction[1 - x])/Epsilon + 4*Log[1 - x] -
 			(4*Log[1 - x])/(1 - x) - Log[x] + Log[x]/(1 - x))*so[r]^m)/M^2
 ,
 (* r7i7.r *)
 RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{1, _}, 0, 1, 1, 1}, r___] :>
-	Smu^2*x^(-1 + m)*(-2*x - (2*x)/Epsilon^2 - (x*Zeta2)/2 + 4*x*Log[1 - x] -
+	FCGV["S_mu"]^2*x^(-1 + m)*(-2*x - (2*x)/Epsilon^2 - (x*Zeta2)/2 + 4*x*Log[1 - x] -
 		4*x*Log[1 - x]^2 - x*Log[x] + 2*x*Log[1 - x]*Log[x] - (x*Log[x]^2)/4 +
 		(2*x - 4*x*Log[1 - x] + x*Log[x])/Epsilon)*so[r]^m
 ,
 (* r7i8.r *)
 RTLI[{m_ /; MCH[m], 0, -1, 0, 0}, {{1, _}, 0, 1, 1, 1}, r___] :>
-	Smu^2*x^(-1 + m)*so[r]^(-1 + m)*
+	FCGV["S_mu"]^2*x^(-1 + m)*so[r]^(-1 + m)*
 	(2 - 2/(1 - x) + Zeta2/2 - Zeta2/(2*(1 - x)) + DeltaFunction[1 - x] -
 		DeltaFunction[1 - x]/Epsilon^3 + (Zeta2*DeltaFunction[1 - x])/4 +
 		(2 - 2/(1 - x) + DeltaFunction[1 - x])/Epsilon^2 - 4*Log[1 - x] +
@@ -483,7 +483,7 @@ RTLI[{m_ /; MCH[m], 0, -1, 0, 0}, {{1, _}, 0, 1, 1, 1}, r___] :>
 ,
 (* r7i9.r *)
 RTLI[{m_ /; MCH[m], 0, -2, 0, 0}, {{1, _}, 0, 1, 1, 1}, r___] :>
-	Smu^2*x^(-1 + m)*so[r]^(-2 + m)*
+	FCGV["S_mu"]^2*x^(-1 + m)*so[r]^(-2 + m)*
 	(-2/(1 - x)^2 + 2/(1 - x) - Zeta2/(2*(1 - x)^2) + Zeta2/(2*(1 - x)) -
 		2*DeltaFunction[1 - x] - (Zeta2*DeltaFunction[1 - x])/2 +
 		(-2/(1 - x)^2 + 2/(1 - x) - 2*DeltaFunction[1 - x] -
@@ -507,17 +507,17 @@ RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{1, _}, 0, 2, 1, 0}, ___] :> 0
 ,
 (* r11i1.r *)
 RTLI[{m_ /; MCH[m], 1, 0, 0, 0}, {{1, M_}, 1, 1, {1, M_}, {1, M_}}, r___] :>
-	(Smu^2*x^(-1 + m)*(-(x*Log[1 - x]) + (1 - (1 - x)^(-1) + x)*Log[x])*
+	(FCGV["S_mu"]^2*x^(-1 + m)*(-(x*Log[1 - x]) + (1 - (1 - x)^(-1) + x)*Log[x])*
 		so[r]^(1 + m))/M^2
 ,
 (* r11i10.r *)
 RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{1, M_}, 1, 1, {1, M_}, 0}, r___] :>
-	Smu^2*x^(-1 + m)*(-4*x - (4*x)/Epsilon^2 - x*Zeta2 + 4*x*Log[1 - x] -
+	FCGV["S_mu"]^2*x^(-1 + m)*(-4*x - (4*x)/Epsilon^2 - x*Zeta2 + 4*x*Log[1 - x] -
 		2*x*Log[1 - x]^2 + (4*x - 4*x*Log[1 - x])/Epsilon)*so[r]^m
 ,
 (* r11i11.r *)
 RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{1, M_}, 1, 0, {1, M_}, {1, M_}}, r___] :>
-	Smu^2*x^(-1 + m)*so[r]^m*((2*x*Log[x])/Epsilon^2 - (3*x*Zeta2*Log[x])/2 +
+	FCGV["S_mu"]^2*x^(-1 + m)*so[r]^m*((2*x*Log[x])/Epsilon^2 - (3*x*Zeta2*Log[x])/2 +
 		(5*x*Log[x]^2)/(2*Epsilon) + 2*x*Log[1 - x]*Log[x]^2 +
 		(7*x*Log[x]^3)/12 + 2*x*Log[x]*PolyLog[2, 1 - x] -
 		4*x*Log[x]*PolyLog[2, -x] + 8*x*PolyLog[3, -x] + 4*x*PolyLog[3, x] +
@@ -525,13 +525,13 @@ RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{1, M_}, 1, 0, {1, M_}, {1, M_}}, r___] :>
 ,
 (* r11i12.r *)
 RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{1, M_}, 0, 1, {1, M_}, {1, M_}}, r___] :>
-	Smu^2*x^(-1 + m)*(-2*x - (2*x)/Epsilon^2 - (x*Zeta2)/2 -
+	FCGV["S_mu"]^2*x^(-1 + m)*(-2*x - (2*x)/Epsilon^2 - (x*Zeta2)/2 -
 		2*x*Log[1 - x]^2 + 4*Log[x] - (4*Log[x])/(1 - x) + 3*x*Log[x] -
 		(x*Log[x]^2)/4 + (2*x - 4*x*Log[1 - x] + x*Log[x])/Epsilon)*so[r]^m
 ,
 (* r11i13.r *)
 RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {0, 1, 1, {1, M_}, {1, M_}}, r___] :>
-	Smu^2*x^(-1 + m)*so[r]^m*((2*x*Log[1 - x])/Epsilon^2 +
+	FCGV["S_mu"]^2*x^(-1 + m)*so[r]^m*((2*x*Log[1 - x])/Epsilon^2 +
 		(5*x*Zeta2*Log[1 - x])/2 + (x*Log[1 - x]^3)/12 + 4*x*Zeta2*Log[x] -
 		2*x*Log[1 - x]*Log[x]^2 - x*Log[1 - x]*PolyLog[2, 1 - x] -
 		4*x*Log[x]*PolyLog[2, 1 - x] +
@@ -540,7 +540,7 @@ RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {0, 1, 1, {1, M_}, {1, M_}}, r___] :>
 ,
 (* r11i14.r *)
 RTLI[{m_ /; MCH[m], -1, 0, 0, 0}, {{1, M_}, 1, 0, {1, M_}, {1, M_}}, r___] :>
-	Smu^2*x^(-1 + m)*(-2 + 2*x + (-2 + 2*x)/Epsilon^2 - (3*Zeta2)/2 +
+	FCGV["S_mu"]^2*x^(-1 + m)*(-2 + 2*x + (-2 + 2*x)/Epsilon^2 - (3*Zeta2)/2 +
 		(3*x*Zeta2)/2 - 4*Log[x] + 2*x*Log[x] - 2*Log[x]^2 - (x*Log[x]^2)/2 +
 		(-2 + 2*x - 4*Log[x] + 2*x*Log[x])/Epsilon - 2*Log[x]*Log[1 + x] +
 		2*x*Log[x]*Log[1 + x] + PolyLog[2, 1 - x] - x*PolyLog[2, 1 - x] -
@@ -551,19 +551,19 @@ RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{2, M_}, 1, 0, {1, M_}, 0}, ___] :> 0
 ,
 (* r11i16.r *)
 RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{2, M_}, 0, 1, {1, M_}, 0}, r___] :>
-	Smu^2*x^(-1 + m)*(-1 + (1 - x)^(-1) - DeltaFunction[1 - x]/2 -
+	FCGV["S_mu"]^2*x^(-1 + m)*(-1 + (1 - x)^(-1) - DeltaFunction[1 - x]/2 -
 		(2*DeltaFunction[1 - x])/Epsilon^2 - (Zeta2*DeltaFunction[1 - x])/2 +
 		(2 - 2/(1 - x) + DeltaFunction[1 - x])/Epsilon + 2*Log[1 - x] -
 		(2*Log[1 - x])/(1 - x))*so[r]^m
 ,
 (* r11i17.r *)
 RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{2, M_}, 0, 0, {1, M_}, {1, M_}}, r___] :>
-	Smu^2*x^(-1 + m)*(-1 + (1 - x)/Epsilon + x - Log[x]/2 - (3*x*Log[x])/2)*
+	FCGV["S_mu"]^2*x^(-1 + m)*(-1 + (1 - x)/Epsilon + x - Log[x]/2 - (3*x*Log[x])/2)*
 	so[r]^m
 ,
 (* r11i18.r *)
 RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{1, M_}, 0, 2, {1, M_}, 0}, r___] :>
-	Smu^2*x^(-1 + m)*(1 + (1 - x)^(-2) - 2/(1 - x) + DeltaFunction[1 - x] +
+	FCGV["S_mu"]^2*x^(-1 + m)*(1 + (1 - x)^(-2) - 2/(1 - x) + DeltaFunction[1 - x] +
 		Zeta2*DeltaFunction[1 - x] +
 		(-2 - 2/(1 - x)^2 + 4/(1 - x) - 2*DeltaFunction[1 - x] -
 				DeltaFunctionPrime[1 - x])/Epsilon + DeltaFunctionPrime[1 - x]/2 +
@@ -576,7 +576,7 @@ RTLI[{m_ /; MCH[m], -1, 0, 0, 0}, {{2, M_}, 1, 0, {1, M_}, 0}, ___] :> 0
 ,
 (* r11i2.r *)
 RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{2, M_}, 1, 1, {1, M_}, {1, M_}}, r___] :>
-	(Smu^2*x^(-1 + m)*(Zeta2/(1 - x)^2 - Zeta2/(1 - x) - (3*x*Zeta2)/2 +
+	(FCGV["S_mu"]^2*x^(-1 + m)*(Zeta2/(1 - x)^2 - Zeta2/(1 - x) - (3*x*Zeta2)/2 +
 			DeltaFunction[1 - x]/2 - DeltaFunction[1 - x]/(2*Epsilon^2) +
 			(3*Zeta2*DeltaFunction[1 - x])/8 - Log[1 - x]/2 +
 			Log[1 - x]/(2*(1 - x)) - (x*Log[1 - x]^2)/4 + Log[x]/2 -
@@ -592,18 +592,18 @@ RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{2, M_}, 1, 1, {1, M_}, {1, M_}}, r___] :>
 ,
 (* r11i20.r *)
 RTLI[{m_ /; MCH[m], -1, 0, 0, 0}, {{2, M_}, 0, 0, {1, M_}, {1, M_}}, r___] :>
-	Smu^2*x^(-1 + m)*(-Zeta2 - Log[x]/Epsilon + Log[x]^2/4 -
+	FCGV["S_mu"]^2*x^(-1 + m)*(-Zeta2 - Log[x]/Epsilon + Log[x]^2/4 -
 		2*Log[x]*Log[1 + x] + PolyLog[2, 1 - x] - 2*PolyLog[2, -x])*
 	so[r]^(-1 + m)
 ,
 (* r11i21.r *)
 RTLI[{m_ /; MCH[m], -2, 0, 0, 0}, {{2, M_}, 0, 0, {1, M_}, {1, M_}}, r___] :>
-	Smu^2*x^(-1 + m)*(-1 + (-1 + x^(-1))/Epsilon + x^(-1) - Log[x] +
+	FCGV["S_mu"]^2*x^(-1 + m)*(-1 + (-1 + x^(-1))/Epsilon + x^(-1) - Log[x] +
 		(2*Log[x])/(1 + x))*so[r]^(-2 + m)
 ,
 (* r11i22.r *)
 RTLI[{0, m_ /; MCH[m], 0, 0, 0}, {{1, M_}, {1, M_}, 0, 2, 0}, r___] :>
-	Smu^2*x^(-1 + m)*(1 + (1 - x)^(-2) - 2/(1 - x) + DeltaFunction[1 - x] +
+	FCGV["S_mu"]^2*x^(-1 + m)*(1 + (1 - x)^(-2) - 2/(1 - x) + DeltaFunction[1 - x] +
 		Zeta2*DeltaFunction[1 - x] +
 		(-2 - 2/(1 - x)^2 + 4/(1 - x) - 2*DeltaFunction[1 - x] -
 				DeltaFunctionPrime[1 - x])/Epsilon + DeltaFunctionPrime[1 - x]/2 +
@@ -613,7 +613,7 @@ RTLI[{0, m_ /; MCH[m], 0, 0, 0}, {{1, M_}, {1, M_}, 0, 2, 0}, r___] :>
 ,
 (* r11i3.r *)
 RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{1, M_}, 1, 1, {1, M_}, {1, M_}}, r___] :>
-	(Smu^2*x^(-1 + m)*((2 - 2/(1 - x) + 3*x)*Zeta2 + (x*Log[1 - x]^2)/2 +
+	(FCGV["S_mu"]^2*x^(-1 + m)*((2 - 2/(1 - x) + 3*x)*Zeta2 + (x*Log[1 - x]^2)/2 +
 			(-1 + (1 - x)^(-1) - x)*Log[1 - x]*Log[x] +
 			(-3/2 + 3/(2*(1 - x)) - (3*x)/2)*Log[x]^2 +
 			(4 - 4/(1 - x) + 2*x)*Log[x]*Log[1 + x] +
@@ -622,14 +622,14 @@ RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{1, M_}, 1, 1, {1, M_}, {1, M_}}, r___] :>
 ,
 (* r11i4.r *)
 RTLI[{m_ /; MCH[m], 1, 0, 0, 0}, {{1, M_}, 1, 0, {1, M_}, {1, M_}}, r___] :>
-	Smu^2*x^(-1 + m)*(-2*x + 2*x^2 + (-2*x + 2*x^2)/Epsilon^2 - (x*Zeta2)/2 +
+	FCGV["S_mu"]^2*x^(-1 + m)*(-2*x + 2*x^2 + (-2*x + 2*x^2)/Epsilon^2 - (x*Zeta2)/2 +
 		(x^2*Zeta2)/2 + x*Log[x] - 3*x^2*Log[x] + (x*Log[x]^2)/4 +
 		(9*x^2*Log[x]^2)/4 + (2*x - 2*x^2 - x*Log[x] + 3*x^2*Log[x])/Epsilon)*
 	so[r]^(1 + m)
 ,
 (* r11i5.r *)
 RTLI[{m_ /; MCH[m], 1, 0, 0, 0}, {{1, M_}, 0, 1, {1, M_}, {1, M_}}, r___] :>
-	Smu^2*x^(-1 + m)*(-x - x^2 + (-x - x^2)/Epsilon^2 - (x*Zeta2)/4 -
+	FCGV["S_mu"]^2*x^(-1 + m)*(-x - x^2 + (-x - x^2)/Epsilon^2 - (x*Zeta2)/4 -
 		(x^2*Zeta2)/4 - x*Log[1 - x]^2 - x^2*Log[1 - x]^2 + 4*Log[x] -
 		(4*Log[x])/(1 - x) + (7*x*Log[x])/2 + (3*x^2*Log[x])/2 -
 		(x*Log[x]^2)/8 - (x^2*Log[x]^2)/8 +
@@ -638,7 +638,7 @@ RTLI[{m_ /; MCH[m], 1, 0, 0, 0}, {{1, M_}, 0, 1, {1, M_}, {1, M_}}, r___] :>
 ,
 (* r11i6.r *)
 RTLI[{m_ /; MCH[m], 1, 0, 0, 0}, {0, 1, 1, {1, M_}, {1, M_}}, r___] :>
-	Smu^2*x^(-1 + m)*so[r]^(1 + m)*
+	FCGV["S_mu"]^2*x^(-1 + m)*so[r]^(1 + m)*
 	(2*x^2 + 4*x*Zeta2 - (3*x^2*Zeta2)/2 + 2*x*Log[1 - x] - 3*x^2*Log[1 - x] +
 		(5*x*Zeta2*Log[1 - x])/2 + (x*Log[1 - x]^2)/2 - (x^2*Log[1 - x]^2)/4 +
 		(x*Log[1 - x]^3)/12 + (2*x^2 + 2*x*Log[1 - x])/Epsilon^2 +
@@ -652,7 +652,7 @@ RTLI[{m_ /; MCH[m], 1, 0, 0, 0}, {0, 1, 1, {1, M_}, {1, M_}}, r___] :>
 ,
 (* r11i7.r *)
 RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{2, M_}, 1, 1, {1, M_}, 0}, r___] :>
-	(Smu^2*x^(-1 + m)*(-2 + 2/(1 - x) - 2*DeltaFunction[1 - x] -
+	(FCGV["S_mu"]^2*x^(-1 + m)*(-2 + 2/(1 - x) - 2*DeltaFunction[1 - x] -
 			(2*DeltaFunction[1 - x])/Epsilon^2 -
 			(Zeta2*DeltaFunction[1 - x])/2 +
 			(2 - 2/(1 - x) + 2*DeltaFunction[1 - x])/Epsilon + 2*Log[1 - x] -
@@ -660,13 +660,13 @@ RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{2, M_}, 1, 1, {1, M_}, 0}, r___] :>
 ,
 (* r11i8.r *)
 RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{2, M_}, 1, 0, {1, M_}, {1, M_}}, r___] :>
-	(Smu^2*x^(-1 + m)*(-(x*Zeta2) + (2 - 2/(1 + x))*Log[x] +
+	(FCGV["S_mu"]^2*x^(-1 + m)*(-(x*Zeta2) + (2 - 2/(1 + x))*Log[x] +
 			(3*x*Log[x]^2)/2 - 2*x*Log[x]*Log[1 + x] + x*PolyLog[2, 1 - x] -
 			2*x*PolyLog[2, -x])*so[r]^m)/M^2
 ,
 (* r11i9.r *)
 RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{2, M_}, 0, 1, {1, M_}, {1, M_}}, r___] :>
-	(Smu^2*x^(-1 + m)*(-2 + (2 - 2/(1 - x))/Epsilon + 2/(1 - x) -
+	(FCGV["S_mu"]^2*x^(-1 + m)*(-2 + (2 - 2/(1 - x))/Epsilon + 2/(1 - x) -
 			(2*DeltaFunction[1 - x])/Epsilon^2 -
 			(Zeta2*DeltaFunction[1 - x])/2 + 2*Log[1 - x] -
 			(2*Log[1 - x])/(1 - x) + Log[x] + (2*Log[x])/(1 - x)^2 -
@@ -674,7 +674,7 @@ RTLI[{m_ /; MCH[m], 0, 0, 0, 0}, {{2, M_}, 0, 1, {1, M_}, {1, M_}}, r___] :>
 ,
 (* n11i1.r *)
 RTLI[{m_ /; MCH[m], 1, 0, 0, 0}, {{2, M_}, 1, 1, {1, M_}, {1, M_}}, r___] :>
-	(Smu^2*x^(-1 + m)*(-Zeta2/(3*(1 - x)^2) + Zeta2/(3*(1 - x)) +
+	(FCGV["S_mu"]^2*x^(-1 + m)*(-Zeta2/(3*(1 - x)^2) + Zeta2/(3*(1 - x)) +
 			(x*Zeta2)/2 + x^2*Zeta2 + DeltaFunction[1 - x] -
 			DeltaFunction[1 - x]/Epsilon - Log[1 - x]/6 +
 			Log[1 - x]/(6*(1 - x)) + (x*Log[1 - x])/3 + (x*Log[1 - x]^2)/12 +
@@ -694,7 +694,7 @@ RTLI[{m_ /; MCH[m], 1, 0, 0, 0}, {{2, M_}, 1, 1, {1, M_}, {1, M_}}, r___] :>
 ,
 (* n11i2.r *)
 RTLI[{m_ /; MCH[m], 1, 0, 0, 0}, {{2, M_}, 1, 1, {1, M_}, 0}, r___] :>
-	(Smu^2*x^(-1 + m)*(-1/2 + 1/(2*(1 - x)) +
+	(FCGV["S_mu"]^2*x^(-1 + m)*(-1/2 + 1/(2*(1 - x)) +
 			(1 - (1 - x)^(-1) + DeltaFunction[1 - x]/2)/Epsilon -
 			DeltaFunction[1 - x]/4 - DeltaFunction[1 - x]/Epsilon^2 -
 			(Zeta2*DeltaFunction[1 - x])/4 + Log[1 - x] - Log[1 - x]/(1 - x))*
@@ -702,7 +702,7 @@ RTLI[{m_ /; MCH[m], 1, 0, 0, 0}, {{2, M_}, 1, 1, {1, M_}, 0}, r___] :>
 ,
 (* n11i3.r *)
 RTLI[{m_ /; MCH[m], 1, 0, 0, 0}, {{2, M_}, 0, 1, {1, M_}, {1, M_}}, r___] :>
-	(Smu^2*x^(-1 + m)*(-2 + 2/(1 - x) - x + (2 - 2/(1 - x) + x)/Epsilon -
+	(FCGV["S_mu"]^2*x^(-1 + m)*(-2 + 2/(1 - x) - x + (2 - 2/(1 - x) + x)/Epsilon -
 			(2*DeltaFunction[1 - x])/Epsilon^2 -
 			(Zeta2*DeltaFunction[1 - x])/2 + 2*Log[1 - x] -
 			(2*Log[1 - x])/(1 - x) + x*Log[1 - x] + 2*Log[x] +
@@ -711,7 +711,7 @@ RTLI[{m_ /; MCH[m], 1, 0, 0, 0}, {{2, M_}, 0, 1, {1, M_}, {1, M_}}, r___] :>
 ,
 (* r13i1.r *)
 RTLI[{0, 0, 0, 0, m_ /; MCH[m]}, {{1, M_}, 1, 1, {1, M_}, 0}, r___] :>
-	Smu^2*x^(-1 + m)*(-16*x - 16*(-1)^m*x + 16*x^2 + 16*(-1)^m*x^2 +
+	FCGV["S_mu"]^2*x^(-1 + m)*(-16*x - 16*(-1)^m*x + 16*x^2 + 16*(-1)^m*x^2 +
 		(-4*x - 4*(-1)^m*x + 4*x^2 + 4*(-1)^m*x^2)/Epsilon^2 + 3*x*Zeta2 +
 		3*(-1)^m*x*Zeta2 - 3*x^2*Zeta2 + 5*(-1)^m*x^2*Zeta2 + 16*x*Log[1 - x] -
 		16*x^2*Log[1 - x] - 8*x*Log[1 - x]^2 + 8*x^2*Log[1 - x]^2 -
@@ -723,7 +723,7 @@ RTLI[{0, 0, 0, 0, m_ /; MCH[m]}, {{1, M_}, 1, 1, {1, M_}, 0}, r___] :>
 ,
 (* r13i2.r *)
 RTLI[{0, 0, 0, 0, m_ /; MCH[m]}, {{1, M_}, 1, 1, {1, M_}, {1, M_}}, r___] :>
-	(Smu^2*x^(-1 + m)*((2*x + 2*(-1)^m*x)*Zeta2 +
+	(FCGV["S_mu"]^2*x^(-1 + m)*((2*x + 2*(-1)^m*x)*Zeta2 +
 			(1 + 3*(-1)^m + (-1 + x)^(-1) + x - 3*(-1)^m*x -
 					(3*(-1)^m)/(1 + x))*Log[x]^2 + 4*(-1)^m*x*Log[x]*Log[1 + x] +
 			(4*(-1)^m + 2*x - 2*(-1)^m*x - (4*(-1)^m)/(1 + x))*
@@ -731,7 +731,7 @@ RTLI[{0, 0, 0, 0, m_ /; MCH[m]}, {{1, M_}, 1, 1, {1, M_}, {1, M_}}, r___] :>
 ,
 (* r13i3.r *)
 RTLI[{0, 0, 0, 0, m_ /; MCH[m]}, {{1, M_}, 1, 1, {1, M_}, {2, M_}}, r___] :>
-	(Smu^2*x^(-1 + m)*(2/3 + (2*(-1)^m)/3 - 2/(3*(1 - x)) +
+	(FCGV["S_mu"]^2*x^(-1 + m)*(2/3 + (2*(-1)^m)/3 - 2/(3*(1 - x)) +
 			(4*(-1)^m)/(3*(1 + x)^2) - (2*(-1)^m)/(1 + x) - (2*x*Zeta2)/3 -
 			(2*(-1)^m*x*Zeta2)/3 - DeltaFunction[1 - x]/2 -
 			DeltaFunction[1 - x]/(2*Epsilon) + Zeta2*DeltaFunction[1 - x] +
@@ -748,18 +748,18 @@ RTLI[{0, 0, 0, 0, m_ /; MCH[m]}, {{1, M_}, 1, 1, {1, M_}, {2, M_}}, r___] :>
 ,
 (* n13i2.r*)
 RTLI[{m_ /; MCH[m], 1, 0, 0, 0}, {{2, M_}, 1, 0, {1, M_}, {1, M_}}, r___] :>
-	(Smu^2*x^(-1 + m)*(x^2*Zeta2 - x*Log[x] - (3*x^2*Log[x]^2)/2 +
+	(FCGV["S_mu"]^2*x^(-1 + m)*(x^2*Zeta2 - x*Log[x] - (3*x^2*Log[x]^2)/2 +
 			2*x^2*Log[x]*Log[1 + x] - x^2*PolyLog[2, 1 - x] +
 			2*x^2*PolyLog[2, -x])*so[r]^(1 + m))/M^2
 ,
 (* n13i3.r*)
 RTLI[{m_ /; MCH[m], 1, 0, 0, 0}, {{2, M_}, {1, M_}, 0, 1, 1}, r___] :>
-	(Smu^2*x^(-1 + m)*(x^2*Zeta2 - x*Log[x] + (x^2*Log[x]^2)/2 +
+	(FCGV["S_mu"]^2*x^(-1 + m)*(x^2*Zeta2 - x*Log[x] + (x^2*Log[x]^2)/2 +
 			x^2*PolyLog[2, 1 - x])*so[r]^(1 + m))/M^2
 ,
 (* n13i4.r*)
 RTLI[{2, 0, 0, 0, m_ /; MCH[m]}, {{1, M_}, 1, 1, {1, M_}, {1, M_}}, r___] :>
-	(Smu^2*x^(-1 + m)*(-x - (-1)^m*x + x^2 + (-1)^m*x^2 +
+	(FCGV["S_mu"]^2*x^(-1 + m)*(-x - (-1)^m*x + x^2 + (-1)^m*x^2 +
 			(x + (-1)^m*x + x^3 + (-1)^m*x^3)*Zeta2 +
 			(-x^2 - (-1)^m*x^2)*Log[x] +
 			(1 + 3*(-1)^m - (1 - x)^(-1) + x - 3*(-1)^m*x + x^2/2 +
@@ -771,12 +771,12 @@ RTLI[{2, 0, 0, 0, m_ /; MCH[m]}, {{1, M_}, 1, 1, {1, M_}, {1, M_}}, r___] :>
 ,
 (* r14i1.r*)
 RTLI[{m_ /; MCH[m], 1, 0, 0, 0}, {{1, M_}, 1, 1, {1, M_}, 0}, r___] :>
-	Smu^2*x^(-1 + m)*(-x/2 - (2*x)/Epsilon^2 - (x*Zeta2)/2 + x*Log[1 - x] -
+	FCGV["S_mu"]^2*x^(-1 + m)*(-x/2 - (2*x)/Epsilon^2 - (x*Zeta2)/2 + x*Log[1 - x] -
 		x*Log[1 - x]^2 + (x - 2*x*Log[1 - x])/Epsilon)*so[r]^(1 + m)
 ,
 (*r14i2.r*)
 RTLI[{m_/;MCH[m], 2, 0, 0, 0}, {0, 1, 1, {1, M_}, {1, M_}}, r___] :>
-	Smu^2*x^(-1 + m)*so[r]^(2 + m)*
+	FCGV["S_mu"]^2*x^(-1 + m)*so[r]^(2 + m)*
 	(x^2/2 + x^3 + 6*x*Zeta2 - (3*x^2*Zeta2)/2 - (3*x^3*Zeta2)/4 +
 		(5*x*Log[1 - x])/2 - 2*x^2*Log[1 - x] - (3*x^3*Log[1 - x])/2 +
 		(5*x*Zeta2*Log[1 - x])/2 + (3*x*Log[1 - x]^2)/4 - (x^2*Log[1 - x]^2)/4 -
@@ -794,19 +794,19 @@ RTLI[{m_/;MCH[m], 2, 0, 0, 0}, {0, 1, 1, {1, M_}, {1, M_}}, r___] :>
 ,
 (* r14i3.r *)
 RTLI[{m_ /; MCH[m], 2, 0, 0, 0}, {{1, M_}, 1, 0, {1, M_}, {1, M_}}, r___] :>
-	Smu^2*x^(-1 + m)*(x/2 - (3*x^2)/2 + x^3 + (-x + x^3)/Epsilon^2 -
+	FCGV["S_mu"]^2*x^(-1 + m)*(x/2 - (3*x^2)/2 + x^3 + (-x + x^3)/Epsilon^2 -
 		(x*Zeta2)/4 + (x^3*Zeta2)/4 + (x*Log[x])/2 + (x^2*Log[x])/2 -
 		(3*x^3*Log[x])/2 + (x*Log[x]^2)/8 + (9*x^3*Log[x]^2)/8 +
 		(x^2 - x^3 - (x*Log[x])/2 + (3*x^3*Log[x])/2)/Epsilon)*so[r]^(2 + m)
 ,
 (* n14i1.r *)
 RTLI[{m_ /; MCH[m], 2, 0, 0, 0}, {{1, M_}, 1, 1, {1, M_}, {1, M_}}, r___] :>
-	(Smu^2*x^(-1 + m)*(-(x^2*Log[1 - x])/2 +
+	(FCGV["S_mu"]^2*x^(-1 + m)*(-(x^2*Log[1 - x])/2 +
 			(1 - (1 - x)^(-1) + x + x^2/2)*Log[x])*so[r]^(2 + m))/M^2
 ,
 (* r17i01.r *)
 RTLI[{0, -2 - OPEi + OPEm, 0, 0, OPEi}, {0, {1, M_}, {1, M_}, 1, {1, M_}},
-	r___] :> (Smu^2*x^(-1 + OPEm)*so[r]^(-2 + OPEm)*
+	r___] :> (FCGV["S_mu"]^2*x^(-1 + OPEm)*so[r]^(-2 + OPEm)*
 		(-(Zeta2*Log[x])/(2*(1 - x)) - ((-1)^OPEm*Zeta2*Log[x])/(1 + x) +
 			(2*Log[1 - x]^2*Log[x])/(1 - x) + (Log[1 - x]*Log[x]^2)/(2*(1 - x)) +
 			(2*(-1)^OPEm*Log[1 - x]*Log[x]^2)/(1 + x) + Log[x]^3/(12*(1 - x)) +
@@ -831,7 +831,7 @@ RTLI[{0, -2 - OPEi + OPEm, 0, 0, OPEi}, {0, {1, M_}, {1, M_}, 1, {1, M_}},
 ,
 (* r17i02.r *)
 RTLI[{0, -2 - OPEi + OPEm, 0, 0, OPEi}, {1, 0, {1, M_}, 1, {1, M_}}, r___] :>
-	(Smu^2*x^(-1 + OPEm)*(Zeta2*Log[1 - x] + (11*Log[1 - x]^3)/6 +
+	(FCGV["S_mu"]^2*x^(-1 + OPEm)*(Zeta2*Log[1 - x] + (11*Log[1 - x]^3)/6 +
 			(4*Log[1 - x] - 4*Log[x])/Epsilon^2 - 2*Zeta2*Log[x] -
 			(5*Log[1 - x]^2*Log[x])/2 - (Log[1 - x]*Log[x]^2)/2 - Log[x]^3/2 +
 			(2*Zeta2 + 3*Log[1 - x]^2 - 2*Log[1 - x]*Log[x] - 3*Log[x]^2 -
@@ -841,7 +841,7 @@ RTLI[{0, -2 - OPEi + OPEm, 0, 0, OPEi}, {1, 0, {1, M_}, 1, {1, M_}}, r___] :>
 ,
 (* r17i03.r *)
 RTLI[{0, -2 - OPEi + OPEm, 0, 0, OPEi}, {1, {1, M_}, {1, M_}, 1, 0}, r___] :>
-	(Smu^2*x^(-1 + OPEm)*so[r]^(-2 + OPEm)*
+	(FCGV["S_mu"]^2*x^(-1 + OPEm)*so[r]^(-2 + OPEm)*
 		(-7*Zeta2*Log[1 - x] + (14*Log[1 - x]^3)/3 + (-1)^OPEm*Zeta2*Log[x] +
 			(2*(-1)^OPEm*Log[x]^3)/3 +
 			(4*Log[1 - x] + 4*(-1)^OPEm*Log[x])/Epsilon^2 -
@@ -855,7 +855,7 @@ RTLI[{0, -2 - OPEi + OPEm, 0, 0, OPEi}, {1, {1, M_}, {1, M_}, 1, 0}, r___] :>
 ,
 (* r17i04.r *)
 RTLI[{0, -1 - OPEi + OPEm, 0, 0, OPEi}, {0, {1, M_}, {1, M_}, 1, {1, M_}},
-	r___] :> (Smu^2*x^(-1 + OPEm)*so[r]^(-1 + OPEm)*
+	r___] :> (FCGV["S_mu"]^2*x^(-1 + OPEm)*so[r]^(-1 + OPEm)*
 		((Zeta2*Log[x])/2 - ((-1)^OPEm*Zeta2*Log[x])/2 -
 			(Zeta2*Log[x])/(2*(1 - x)) - ((-1)^OPEm*Zeta2*Log[x])/(1 + x) -
 			2*Log[1 - x]^2*Log[x] + (2*Log[1 - x]^2*Log[x])/(1 - x) -
@@ -893,7 +893,7 @@ RTLI[{0, -1 - OPEi + OPEm, 0, 0, OPEi}, {0, {1, M_}, {1, M_}, 1, {1, M_}},
 ,
 (* r17i05.r *)
 RTLI[{0, -1 - OPEi + OPEm, 0, 0, OPEi}, {1, 0, {1, M_}, 1, {1, M_}}, r___] :>
-	(Smu^2*x^(-1 + OPEm)*so[r]^(-1 + OPEm)*
+	(FCGV["S_mu"]^2*x^(-1 + OPEm)*so[r]^(-1 + OPEm)*
 		(x*Zeta2*Log[1 - x] + (11*x*Log[1 - x]^3)/6 - (Zeta2*Log[x])/2 -
 			2*x*Zeta2*Log[x] - 4*Log[1 - x]^2*Log[x] -
 			(5*x*Log[1 - x]^2*Log[x])/2 - (x*Log[1 - x]*Log[x]^2)/2 +
@@ -909,7 +909,7 @@ RTLI[{0, -1 - OPEi + OPEm, 0, 0, OPEi}, {1, 0, {1, M_}, 1, {1, M_}}, r___] :>
 ,
 (* r17i06.r *)
 RTLI[{0, -1 - OPEi + OPEm, 0, 0, OPEi}, {1, {1, M_}, 0, 1, {1, M_}}, r___] :>
-	(Smu^2*x^(-1 + OPEm)*((-11*Zeta2*Log[1 - x])/2 + (35*Log[1 - x]^3)/12 +
+	(FCGV["S_mu"]^2*x^(-1 + OPEm)*((-11*Zeta2*Log[1 - x])/2 + (35*Log[1 - x]^3)/12 +
 			(2*Log[1 - x] - 2*Log[x])/Epsilon^2 - (3*Zeta2*Log[x])/2 -
 			4*Log[1 - x]^2*Log[x] + (Log[1 - x]*Log[x]^2)/2 + Log[x]^3/12 +
 			(-2*Zeta2 + (7*Log[1 - x]^2)/2 - 4*Log[1 - x]*Log[x] -
@@ -919,7 +919,7 @@ RTLI[{0, -1 - OPEi + OPEm, 0, 0, OPEi}, {1, {1, M_}, 0, 1, {1, M_}}, r___] :>
 ,
 (* r17i07.r *)
 RTLI[{0, -1 - OPEi + OPEm, 0, 0, OPEi}, {1, {1, M_}, {1, M_}, 1, 0}, r___] :>
-	(Smu^2*x^(-1 + OPEm)*so[r]^(-1 + OPEm)*
+	(FCGV["S_mu"]^2*x^(-1 + OPEm)*so[r]^(-1 + OPEm)*
 		(16 - 16*(-1)^OPEm - 16*x + 16*(-1)^OPEm*x - 3*Zeta2 +
 			3*(-1)^OPEm*Zeta2 + 3*x*Zeta2 + 5*(-1)^OPEm*x*Zeta2 - 16*Log[1 - x] +
 			16*x*Log[1 - x] - 7*x*Zeta2*Log[1 - x] + 8*Log[1 - x]^2 -
@@ -943,7 +943,7 @@ RTLI[{0, -1 - OPEi + OPEm, 0, 0, OPEi}, {1, {1, M_}, {1, M_}, 1, 0}, r___] :>
 ,
 (* r17i08.r *)
 RTLI[{0, -1 - OPEi + OPEm, 0, 0, OPEi}, {1, {1, M_}, {1, M_}, 1, {1, M_}},
-	r___] :> ((-1)^OPEi*Smu^2*x^(-1 + OPEm)*so[r]^(-1 + OPEm)*
+	r___] :> ((-1)^OPEi*FCGV["S_mu"]^2*x^(-1 + OPEm)*so[r]^(-1 + OPEm)*
 		((-3 + (-1)^OPEm + (1 - x)^(-1) + (-1)^OPEm/(1 + x))*Zeta2 +
 			(1 - (-1)^OPEm + (1 - x)^(-2) - 2/(1 - x) +
 					(3*(-1)^OPEm)/(1 + x)^2 - (2*(-1)^OPEm)/(1 + x))*Log[x]^2 +
@@ -955,7 +955,7 @@ RTLI[{0, -1 - OPEi + OPEm, 0, 0, OPEi}, {1, {1, M_}, {1, M_}, 1, {1, M_}},
 ,
 (* r17i09.r *)
 RTLI[{0, -OPEi + OPEm, 0, 0, OPEi}, {0, {1, M_}, {1, M_}, 1, {1, M_}},
-	r___] :> (Smu^2*x^(-1 + OPEm)*so[r]^OPEm*
+	r___] :> (FCGV["S_mu"]^2*x^(-1 + OPEm)*so[r]^OPEm*
 		(2*(-1)^OPEm - 2*(-1)^OPEm*x + ((-1)^OPEm*Zeta2)/2 -
 			((-1)^OPEm*x*Zeta2)/2 - (-1)^OPEm*Log[x] + 3*(-1)^OPEm*x*Log[x] +
 			(Zeta2*Log[x])/2 - ((-1)^OPEm*Zeta2*Log[x])/2 -
@@ -1007,7 +1007,7 @@ RTLI[{0, -OPEi + OPEm, 0, 0, OPEi}, {0, {1, M_}, {1, M_}, 1, {1, M_}},
 ,
 (* r17i10.r *)
 RTLI[{0, -OPEi + OPEm, 0, 0, OPEi}, {1, {1, M_}, 0, 1, {1, M_}}, r___] :>
-	(Smu^2*x^(-1 + OPEm)*(2 - 2*x - (3*Zeta2)/2 + (3*x*Zeta2)/2 -
+	(FCGV["S_mu"]^2*x^(-1 + OPEm)*(2 - 2*x - (3*Zeta2)/2 + (3*x*Zeta2)/2 -
 			4*Log[1 - x] + 4*x*Log[1 - x] - (11*x*Zeta2*Log[1 - x])/2 +
 			4*Log[1 - x]^2 - 4*x*Log[1 - x]^2 + (35*x*Log[1 - x]^3)/12 -
 			Log[x] - x*Log[x] - (3*x*Zeta2*Log[x])/2 + 2*Log[1 - x]*Log[x] +
@@ -1024,7 +1024,7 @@ RTLI[{0, -OPEi + OPEm, 0, 0, OPEi}, {1, {1, M_}, 0, 1, {1, M_}}, r___] :>
 ,
 (* r17i11.r *)
 RTLI[{1, -2 - OPEi + OPEm, 0, 0, OPEi}, {0, {1, M_}, {1, M_}, 1, {1, M_}},
-	r___] :> (Smu^2*x^(-1 + OPEm)*so[r]^(-1 + OPEm)*
+	r___] :> (FCGV["S_mu"]^2*x^(-1 + OPEm)*so[r]^(-1 + OPEm)*
 		(-2 - Zeta2/2 - 2*Log[1 - x]^2 + 3*Log[x] - (4*Log[x])/(1 - x) -
 			(3*(-1)^OPEm*Zeta2*Log[x])/2 - Log[x]^2/4 +
 			2*(-1)^OPEm*Log[1 - x]*Log[x]^2 + (7*(-1)^OPEm*Log[x]^3)/12 +
@@ -1036,7 +1036,7 @@ RTLI[{1, -2 - OPEi + OPEm, 0, 0, OPEi}, {0, {1, M_}, {1, M_}, 1, {1, M_}},
 ,
 (* r17i12.r *)
 RTLI[{1, -2 - OPEi + OPEm, 0, 0, OPEi}, {1, 0, {1, M_}, 1, {1, M_}}, r___] :>
-	(Smu^2*x^(-1 + OPEm)*((5*Zeta2*Log[1 - x])/2 + Log[1 - x]^3/12 +
+	(FCGV["S_mu"]^2*x^(-1 + OPEm)*((5*Zeta2*Log[1 - x])/2 + Log[1 - x]^3/12 +
 			(2*Log[1 - x] - 2*Log[x])/Epsilon^2 + (7*Zeta2*Log[x])/2 -
 			4*Log[1 - x]^2*Log[x] - 2*Log[1 - x]*Log[x]^2 + Log[x]^3/12 +
 			(4*Zeta2 + Log[1 - x]^2/2 - 4*Log[1 - x]*Log[x] - Log[x]^2/2 -
@@ -1046,7 +1046,7 @@ RTLI[{1, -2 - OPEi + OPEm, 0, 0, OPEi}, {1, 0, {1, M_}, 1, {1, M_}}, r___] :>
 ,
 (* r17i13.r *)
 RTLI[{1, -2 - OPEi + OPEm, 0, 0, OPEi}, {1, {1, M_}, {1, M_}, 1, 0}, r___] :>
-	(Smu^2*x^(-1 + m)*(12*x^(-m + OPEm) - 16*(-1)^OPEm*x^(-m + OPEm) -
+	(FCGV["S_mu"]^2*x^(-1 + m)*(12*x^(-m + OPEm) - 16*(-1)^OPEm*x^(-m + OPEm) -
 			16*x^(1 - m + OPEm) + 16*(-1)^OPEm*x^(1 - m + OPEm) +
 			(-4*(-1)^OPEm*x^(-m + OPEm) - 4*x^(1 - m + OPEm) +
 					4*(-1)^OPEm*x^(1 - m + OPEm))/Epsilon^2 - 4*x^(-m + OPEm)*Zeta2 +
@@ -1068,7 +1068,7 @@ RTLI[{1, -2 - OPEi + OPEm, 0, 0, OPEi}, {1, {1, M_}, {1, M_}, 1, 0}, r___] :>
 ,
 (* r17i14.r *)
 RTLI[{1, -2 - OPEi + OPEm, 0, 0, OPEi}, {1, {1, M_}, {1, M_}, 1, {1, M_}},
-	r___] :> (Smu^2*x^(-1 + OPEm)*
+	r___] :> (FCGV["S_mu"]^2*x^(-1 + OPEm)*
 		((1 + 2*(-1)^OPEm - 2/(1 - x))*Zeta2 + Log[1 - x]^2/2 +
 			(-1 + (1 - x)^(-1))*Log[1 - x]*Log[x] +
 			(-5/2 - 3*(-1)^OPEm + 5/(2*(1 - x)) + (3*(-1)^OPEm)/(1 + x))*
@@ -1079,7 +1079,7 @@ RTLI[{1, -2 - OPEi + OPEm, 0, 0, OPEi}, {1, {1, M_}, {1, M_}, 1, {1, M_}},
 ,
 (* r17i15.r *)
 RTLI[{1, -1 - OPEi + OPEm, 0, 0, OPEi}, {0, {1, M_}, {1, M_}, 1, {1, M_}},
-	r___] :> (Smu^2*x^(-1 + OPEm)*so[r]^OPEm*
+	r___] :> (FCGV["S_mu"]^2*x^(-1 + OPEm)*so[r]^OPEm*
 		(2*(-1)^OPEm - 2*x - 2*(-1)^OPEm*x + ((-1)^OPEm*Zeta2)/2 -
 			(x*Zeta2)/2 - ((-1)^OPEm*x*Zeta2)/2 - 2*x*Log[1 - x]^2 + 4*Log[x] -
 			(-1)^OPEm*Log[x] - (4*Log[x])/(1 - x) + 3*x*Log[x] +
@@ -1097,7 +1097,7 @@ RTLI[{1, -1 - OPEi + OPEm, 0, 0, OPEi}, {0, {1, M_}, {1, M_}, 1, {1, M_}},
 ,
 (* r17i16.r *)
 RTLI[{1, -1 - OPEi + OPEm, 0, 0, OPEi}, {1, 0, {1, M_}, 1, {1, M_}}, r___] :>
-	(Smu^2*x^(-1 + OPEm)*so[r]^OPEm*
+	(FCGV["S_mu"]^2*x^(-1 + OPEm)*so[r]^OPEm*
 		(-2 + 2*x + (3*Zeta2)/2 - (3*x*Zeta2)/2 + 4*Log[1 - x] -
 			4*x*Log[1 - x] + (5*x*Zeta2*Log[1 - x])/2 - 4*Log[1 - x]^2 +
 			4*x*Log[1 - x]^2 + (x*Log[1 - x]^3)/12 + Log[x] + x*Log[x] -
@@ -1118,7 +1118,7 @@ RTLI[{1, -1 - OPEi + OPEm, 0, 0, OPEi}, {1, 0, {1, M_}, 1, {1, M_}}, r___] :>
 ,
 (* r17i17.r *)
 RTLI[{1, -1 - OPEi + OPEm, 0, 0, OPEi}, {1, {1, M_}, 0, 1, {1, M_}}, r___] :>
-	(Smu^2*x^(-1 + OPEm)*(2 + (2 - 4*x)/Epsilon^2 - 4*x - (3*Zeta2)/2 +
+	(FCGV["S_mu"]^2*x^(-1 + OPEm)*(2 + (2 - 4*x)/Epsilon^2 - 4*x - (3*Zeta2)/2 +
 			3*x*Zeta2 - 4*Log[1 - x] + 7*x*Log[1 - x] + 4*Log[1 - x]^2 -
 			(23*x*Log[1 - x]^2)/4 - Log[x] - x*Log[x] + 2*Log[1 - x]*Log[x] +
 			x*Log[1 - x]*Log[x] - Log[x]^2/4 + (3*x*Log[x]^2)/4 +
@@ -1128,7 +1128,7 @@ RTLI[{1, -1 - OPEi + OPEm, 0, 0, OPEi}, {1, {1, M_}, 0, 1, {1, M_}}, r___] :>
 ,
 (* r17i18.r *)
 RTLI[{1, -1 - OPEi + OPEm, 0, 0, OPEi}, {1, {1, M_}, {1, M_}, 1, {1, M_}},
-	r___] :> (Smu^2*x^(-1 + OPEm)*
+	r___] :> (FCGV["S_mu"]^2*x^(-1 + OPEm)*
 		((1 + (-1)^OPEm - 2/(1 - x) + 2*x - (-1)^OPEm*x)*Zeta2 +
 			(x*Log[1 - x]^2)/2 + (-1 + (1 - x)^(-1) - x)*Log[1 - x]*Log[x] +
 			(-5/2 - 3*(-1)^OPEm + 5/(2*(1 - x)) - 2*x + (3*(-1)^OPEm*x)/2 +
@@ -1141,7 +1141,7 @@ RTLI[{1, -1 - OPEi + OPEm, 0, 0, OPEi}, {1, {1, M_}, {1, M_}, 1, {1, M_}},
 ,
 (* r17i19.r *)
 RTLI[{2, -2 - OPEi + OPEm, 0, 0, OPEi}, {1, 0, {1, M_}, 1, {1, M_}}, r___] :>
-	(Smu^2*x^(-1 + OPEm)*(-2 + 4*x + (11*Zeta2)/2 - 3*x*Zeta2 +
+	(FCGV["S_mu"]^2*x^(-1 + OPEm)*(-2 + 4*x + (11*Zeta2)/2 - 3*x*Zeta2 +
 			6*Log[1 - x] - 7*x*Log[1 - x] + (5*Zeta2*Log[1 - x])/2 -
 			(7*Log[1 - x]^2)/2 + (15*x*Log[1 - x]^2)/4 + Log[1 - x]^3/12 +
 			(-2 + 4*x + 2*Log[1 - x] - 2*Log[x])/Epsilon^2 + Log[x] + x*Log[x] +
@@ -1157,7 +1157,7 @@ RTLI[{2, -2 - OPEi + OPEm, 0, 0, OPEi}, {1, 0, {1, M_}, 1, {1, M_}}, r___] :>
 ,
 (* r17i20.r *)
 RTLI[{-2 - OPEi + OPEm, 1, 0, 0, OPEi}, {{1, M_}, 1, 0, {1, M_}, {1, M_}},
-	r___] :> Smu^2*x^(-1 + OPEm)*so[r]^(-1 + OPEm)*
+	r___] :> FCGV["S_mu"]^2*x^(-1 + OPEm)*so[r]^(-1 + OPEm)*
 	((-3*Zeta2*Log[x])/2 - (3*(-1)^OPEm*Zeta2*Log[x])/2 +
 		2*Log[1 - x]*Log[x]^2 + 2*(-1)^OPEm*Log[1 - x]*Log[x]^2 +
 		(7*Log[x]^3)/12 + (7*(-1)^OPEm*Log[x]^3)/12 +
@@ -1170,7 +1170,7 @@ RTLI[{-2 - OPEi + OPEm, 1, 0, 0, OPEi}, {{1, M_}, 1, 0, {1, M_}, {1, M_}},
 ,
 (* r17i21.r *)
 RTLI[{-2 - OPEi + OPEm, 2, 0, 0, OPEi}, {{1, M_}, 1, 0, {1, M_}, {1, M_}},
-	r___] :> Smu^2*x^(-1 + OPEm)*
+	r___] :> FCGV["S_mu"]^2*x^(-1 + OPEm)*
 	(-2 - 2*(-1)^OPEm + 2*x + 2*(-1)^OPEm*x +
 		(-2 - 2*(-1)^OPEm + 2*x + 2*(-1)^OPEm*x)/Epsilon^2 - Zeta2/2 -
 		((-1)^OPEm*Zeta2)/2 + (x*Zeta2)/2 + ((-1)^OPEm*x*Zeta2)/2 + Log[x] +
@@ -1182,7 +1182,7 @@ RTLI[{-2 - OPEi + OPEm, 2, 0, 0, OPEi}, {{1, M_}, 1, 0, {1, M_}, {1, M_}},
 ,
 (* r17i22.r *)
 RTLI[{-1 - OPEi + OPEm, 0, 0, 0, OPEi}, {{1, M_}, 1, 0, {1, M_}, {1, M_}},
-	r___] :> Smu^2*x^(-1 + OPEm)*so[r]^(-1 + OPEm)*
+	r___] :> FCGV["S_mu"]^2*x^(-1 + OPEm)*so[r]^(-1 + OPEm)*
 	(-2 + 2*(-1)^OPEm + 2*x - 2*(-1)^OPEm*x - (3*Zeta2)/2 +
 		(3*(-1)^OPEm*Zeta2)/2 + (3*x*Zeta2)/2 - (3*(-1)^OPEm*x*Zeta2)/2 -
 		4*Log[x] + 4*(-1)^OPEm*Log[x] + 2*x*Log[x] - 2*(-1)^OPEm*x*Log[x] -
@@ -1204,7 +1204,7 @@ RTLI[{-1 - OPEi + OPEm, 0, 0, 0, OPEi}, {{1, M_}, 1, 0, {1, M_}, {1, M_}},
 ,
 (* r17i23.r *)
 RTLI[{-1 - OPEi + OPEm, 1, 0, 0, OPEi}, {{1, M_}, 1, 0, {1, M_}, {1, M_}},
-	r___] :> Smu^2*x^(-1 + OPEm)*so[r]^OPEm*
+	r___] :> FCGV["S_mu"]^2*x^(-1 + OPEm)*so[r]^OPEm*
 	(-2*(-1)^OPEm + 2*(-1)^OPEm*x - ((-1)^OPEm*Zeta2)/2 +
 		((-1)^OPEm*x*Zeta2)/2 + (-1)^OPEm*Log[x] - 3*(-1)^OPEm*x*Log[x] -
 		(3*x*Zeta2*Log[x])/2 + (3*(-1)^OPEm*x*Zeta2*Log[x])/2 +
@@ -1223,7 +1223,7 @@ RTLI[{-1 - OPEi + OPEm, 1, 0, 0, OPEi}, {{1, M_}, 1, 0, {1, M_}, {1, M_}},
 (* n17i1.r *)
 RTLI[{0, -OPEi + OPEm, 0, 0, OPEi},
 		{1, {1, M_}, {1, M_}, 1, {1, M_}}, r___] :>
-((-1)^OPEi*Smu^2*x^(-1 + OPEm)*so[r]^OPEm*
+((-1)^OPEi*FCGV["S_mu"]^2*x^(-1 + OPEm)*so[r]^OPEm*
 		((-2 + (1 - x)^(-1) - 4*x - 2*(-1)^OPEm*x + (-1)^OPEm/(1 + x))*Zeta2 +
 			(1 - (-1)^OPEm + (1 - x)^(-2) - 2/(1 - x) + x/2 +
 					(5*(-1)^OPEm*x)/2 + (3*(-1)^OPEm)/(1 + x)^2 -
@@ -1237,7 +1237,7 @@ RTLI[{0, -OPEi + OPEm, 0, 0, OPEi},
 (* n17i2.r *)
 RTLI[{2, -2 - OPEi + OPEm, 0, 0, OPEi},
 		{1, {1, M_}, {1, M_}, 1, {1, M_}},
-	r___] :> (Smu^2*x^(-1 + OPEm)*
+	r___] :> (FCGV["S_mu"]^2*x^(-1 + OPEm)*
 		((-1 + (-1)^OPEm + x + (-1)^OPEm*x)*Zeta2 - Log[1 - x] +
 			(1 - (1 - x)^(-1))*Log[x] + (x/2 - (3*(-1)^OPEm*x)/2)*Log[x]^2 +
 			(2*(-1)^OPEm + 2*(-1)^OPEm*x)*Log[x]*Log[1 + x] +
@@ -1247,7 +1247,7 @@ RTLI[{2, -2 - OPEi + OPEm, 0, 0, OPEi},
 ,
 (* r18i01.r *)
 RTLI[{0, -1, -1, 0, m_ /; MCH[m]}, {{1, M_}, 1, 1, {1, M_}, 0}, r___] :>
-	Smu^2*x^(-1 + m)*so[r]^(-2 + m)*
+	FCGV["S_mu"]^2*x^(-1 + m)*so[r]^(-2 + m)*
 	((8 - 8/(1 - x))/Epsilon^3 - (4*DeltaFunction[1 - x])/Epsilon^4 +
 		(59*Pi^4*DeltaFunction[1 - x])/480 - 12*Zeta2*Log[1 - x] +
 		(12*Zeta2*Log[1 - x])/(1 - x) + (32*Log[1 - x]^3)/3 -
@@ -1276,7 +1276,7 @@ RTLI[{0, -1, -1, 0, m_ /; MCH[m]}, {{1, M_}, 1, 1, {1, M_}, 0}, r___] :>
 ,
 (* r18i02.r *)
 RTLI[{1, -1, -1, 0, m_ /; MCH[m]}, {{1, M_}, 1, 1, {1, M_}, 0}, r___] :>
-	Smu^2*x^(-1 + m)*so[r]^(-1 + m)*
+	FCGV["S_mu"]^2*x^(-1 + m)*so[r]^(-1 + m)*
 	((8 - 8/(1 - x) + 4*x)/Epsilon^3 - (4*DeltaFunction[1 - x])/Epsilon^4 +
 		(59*Pi^4*DeltaFunction[1 - x])/480 - 12*Zeta2*Log[1 - x] +
 		(12*Zeta2*Log[1 - x])/(1 - x) - 6*x*Zeta2*Log[1 - x] +
@@ -1311,7 +1311,7 @@ RTLI[{1, -1, -1, 0, m_ /; MCH[m]}, {{1, M_}, 1, 1, {1, M_}, 0}, r___] :>
 ,
 (* r18i03.r *)
 RTLI[{m_ /; MCH[m], 0, -1, -1, 0}, {{1, M_}, {1, M_}, 1, 1, 0}, r___] :>
-	Smu^2*x^(-1 + m)*so[r]^(-2 + m)*
+	FCGV["S_mu"]^2*x^(-1 + m)*so[r]^(-2 + m)*
 	((4 - 4/(1 - x))/Epsilon^3 - (4*DeltaFunction[1 - x])/Epsilon^4 -
 		(7*Pi^4*DeltaFunction[1 - x])/1440 + Zeta2*Log[1 - x] -
 		(Zeta2*Log[1 - x])/(1 - x) + (2*Log[1 - x]^3)/3 -
@@ -1323,7 +1323,7 @@ RTLI[{m_ /; MCH[m], 0, -1, -1, 0}, {{1, M_}, {1, M_}, 1, 1, 0}, r___] :>
 ,
 (* r18i04.r *)
 RTLI[{m_ /; MCH[m], 0, -1, 0, 0}, {{1, M_}, {1, M_}, 1, 1, 0}, r___] :>
-	Smu^2*x^(-1 + m)*so[r]^(-1 + m)*
+	FCGV["S_mu"]^2*x^(-1 + m)*so[r]^(-1 + m)*
 	(4 - 4/(1 - x) + Zeta2 - Zeta2/(1 - x) + 4*DeltaFunction[1 - x] -
 		(4*DeltaFunction[1 - x])/Epsilon^3 + Zeta2*DeltaFunction[1 - x] +
 		(4 - 4/(1 - x) + 4*DeltaFunction[1 - x])/Epsilon^2 - 4*Log[1 - x] +
@@ -1334,7 +1334,7 @@ RTLI[{m_ /; MCH[m], 0, -1, 0, 0}, {{1, M_}, {1, M_}, 1, 1, 0}, r___] :>
 ,
 (* r18i05.r *)
 RTLI[{m_ /; MCH[m], 0, 0, -1, -1}, {{1, M_}, {1, M_}, 1, 1, 0}, r___] :>
-	Smu^2*x^(-1 + m)*so[r]^(-2 + m)*
+	FCGV["S_mu"]^2*x^(-1 + m)*so[r]^(-2 + m)*
 	((-4 + 4/(1 - x))/Epsilon^3 + (2*DeltaFunction[1 - x])/Epsilon^4 -
 		(67*Pi^4*DeltaFunction[1 - x])/960 + 14*Zeta2*Log[1 - x] -
 		(14*Zeta2*Log[1 - x])/(1 - x) - (16*Log[1 - x]^3)/3 +
@@ -1353,7 +1353,7 @@ RTLI[{m_ /; MCH[m], 0, 0, -1, -1}, {{1, M_}, {1, M_}, 1, 1, 0}, r___] :>
 ,
 (* r18i06.r *)
 RTLI[{m_ /; MCH[m], 0, 0, 0, -1}, {{1, M_}, {1, M_}, 1, 1, 0}, r___] :>
-	Smu^2*x^(-1 + m)*(-15*x*Zeta2*Log[1 - x] + (14*x*Log[1 - x]^3)/3 -
+	FCGV["S_mu"]^2*x^(-1 + m)*(-15*x*Zeta2*Log[1 - x] + (14*x*Log[1 - x]^3)/3 -
 		x*Zeta2*Log[x] - 2*x*Log[1 - x]^2*Log[x] +
 		(4*x*Log[1 - x] - 4*x*Log[x])/Epsilon^2 +
 		4*x*Log[1 - x]*PolyLog[2, 1 - x] +
@@ -1362,7 +1362,7 @@ RTLI[{m_ /; MCH[m], 0, 0, 0, -1}, {{1, M_}, {1, M_}, 1, 1, 0}, r___] :>
 ,
 (* r18i07.r *)
 RTLI[{m_ /; MCH[m], 0, -1, 0, -1}, {{1, M_}, {1, M_}, 1, 1, 0}, r___] :>
-	Smu^2*x^(-1 + m)*so[r]^(-2 + m)*
+	FCGV["S_mu"]^2*x^(-1 + m)*so[r]^(-2 + m)*
 	((-2*DeltaFunction[1 - x])/Epsilon^4 -
 		(43*Pi^4*DeltaFunction[1 - x])/576 + 15*Zeta2*Log[1 - x] -
 		(15*Zeta2*Log[1 - x])/(1 - x) - (14*Log[1 - x]^3)/3 +
@@ -1381,14 +1381,14 @@ RTLI[{m_ /; MCH[m], 0, -1, 0, -1}, {{1, M_}, {1, M_}, 1, 1, 0}, r___] :>
 ,
 (* r18i08.r *)
 RTLI[{0, 0, -1, -1, 0}, {{1, M_}, {1, M_}, 1, 1, 0}, r___] :>
-	(Smu^2*x^(-1 + OPEm)*((-4*DeltaFunction[1 - x])/Epsilon^4 -
+	(FCGV["S_mu"]^2*x^(-1 + OPEm)*((-4*DeltaFunction[1 - x])/Epsilon^4 -
 			(7*Pi^4*DeltaFunction[1 - x])/1440 -
 			(Zeta2*DeltaFunction[1 - x])/Epsilon^2 -
 			(DeltaFunction[1 - x]*Zeta[3])/(3*Epsilon)))/so[r]^2
 ,
 (* r18i09.r *)
 RTLI[{0, 0, 0, -1, 0}, {{1, M_}, {1, M_}, 1, 1, 0}, r___] :>
-	(Smu^2*x^(-1 + OPEm)*(4*DeltaFunction[1 - x] -
+	(FCGV["S_mu"]^2*x^(-1 + OPEm)*(4*DeltaFunction[1 - x] -
 			(4*DeltaFunction[1 - x])/Epsilon^3 +
 			(4*DeltaFunction[1 - x])/Epsilon^2 + Zeta2*DeltaFunction[1 - x] +
 			(-4*DeltaFunction[1 - x] - Zeta2*DeltaFunction[1 - x])/Epsilon -
@@ -1396,13 +1396,13 @@ RTLI[{0, 0, 0, -1, 0}, {{1, M_}, {1, M_}, 1, 1, 0}, r___] :>
 ,
 (* r18i10.r *)
 RTLI[{0, 0, 0, 0, 0}, {{1, M_}, {1, M_}, 1, 1, 0}, ___] :>
-	Smu^2*x^(-1 + OPEm)*(-12*DeltaFunction[1 - x] -
+	FCGV["S_mu"]^2*x^(-1 + OPEm)*(-12*DeltaFunction[1 - x] -
 		(4*DeltaFunction[1 - x])/Epsilon^2 + (8*DeltaFunction[1 - x])/Epsilon -
 		Zeta2*DeltaFunction[1 - x])
 ,
 (* r18i11.r *)
 RTLI[{0, -1, 0, 0, m_}, {{1, M_}, 1, 1, {1, M_}, 0}, r___] :>
-	Smu^2*x^(-1 + m)*so[r]^(-1 + m)*
+	FCGV["S_mu"]^2*x^(-1 + m)*so[r]^(-1 + m)*
 	((-4*x)/Epsilon^3 + 6*x*Zeta2*Log[1 - x] - (16*x*Log[1 - x]^3)/3 +
 		(-1)^m*x*Zeta2*Log[x] + (2*(-1)^m*x*Log[x]^3)/3 +
 		(-8*x*Log[1 - x] + 4*(-1)^m*x*Log[x])/Epsilon^2 -
@@ -1416,7 +1416,7 @@ RTLI[{0, -1, 0, 0, m_}, {{1, M_}, 1, 1, {1, M_}, 0}, r___] :>
 ,
 (* r20i1.r *)
 RTLI[{OPEi - OPEj, 0, 0, 0, -2 - OPEi + OPEm}, {0, 1, 1, {1, M_}, {1, M_}},
-	r___] :> Smu^2*x^(-1 + OPEm)*so[r]^(-2 - OPEj + OPEm)*
+	r___] :> FCGV["S_mu"]^2*x^(-1 + OPEm)*so[r]^(-2 - OPEj + OPEm)*
 	((9*Pi^4*DeltaFunction[1 - x])/40 + Zeta2*Log[1 - x] +
 		(3*Zeta2*Log[1 - x])/(2*(1 - x)) + (11*Log[1 - x]^3)/6 -
 		(7*Log[1 - x]^3)/(4*(1 - x)) - 2*Zeta2*Log[x] +
@@ -1439,7 +1439,7 @@ RTLI[{OPEi - OPEj, 0, 0, 0, -2 - OPEi + OPEm}, {0, 1, 1, {1, M_}, {1, M_}},
 (* r20i2.r *)
 RTLI[{0, 0, 0, 1 + OPEi - OPEj, -2 - OPEi + OPEm},
 	{0, 1, 1, {1, M_}, {1, M_}}, r___] :>
-	Smu^2*x^(-1 + OPEm)*so[r]^(-1-OPEj+OPEm)*(2 - 2/(1 - x) - (3*Zeta2)/2 +
+	FCGV["S_mu"]^2*x^(-1 + OPEm)*so[r]^(-1-OPEj+OPEm)*(2 - 2/(1 - x) - (3*Zeta2)/2 +
 		(3*Zeta2)/(2*(1 - x)) - (19*DeltaFunction[1 - x])/2 +
 		(17*Pi^4*DeltaFunction[1 - x])/90 + (3*Zeta2*DeltaFunction[1 - x])/2 -
 		3*Log[1 - x] + (3*Log[1 - x])/(1 - x) - (11*Zeta2*Log[1 - x])/2 +
@@ -1469,7 +1469,7 @@ RTLI[{0, 0, 0, 1 + OPEi - OPEj, -2 - OPEi + OPEm},
 ,
 (* r20i3.r *)
 RTLI[{OPEi - OPEj, 1, 0, 0, -2 - OPEi + OPEm}, {0, 1, 1, {1, M_}, {1, M_}},
-	r___] :> Smu^2*x^(-1 + OPEm)*so[r]^(-OPEj+OPEm-1)*
+	r___] :> FCGV["S_mu"]^2*x^(-1 + OPEm)*so[r]^(-OPEj+OPEm-1)*
 	(-2 + 2/(1 - x) + (3*Zeta2)/2 + (5*Zeta2)/(2*(1 - x)) +
 		(19*DeltaFunction[1 - x])/2 + (89*Pi^4*DeltaFunction[1 - x])/360 -
 		(3*Zeta2*DeltaFunction[1 - x])/2 + 3*Log[1 - x] - Log[1 - x]/(1 - x) +
