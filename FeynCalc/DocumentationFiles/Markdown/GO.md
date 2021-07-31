@@ -1,9 +1,7 @@
-##  GO 
+`GO` is equivalent to `Twist2GluonOperator`.
 
-GO is equivalent to Twist2GluonOperator..
+### See also
 
-###  See also 
+[Twist2GluonOperator](Twist2GluonOperator).
 
-Twist2GluonOperator.
-
-###  Examples 
+### Examples

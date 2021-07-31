@@ -1,30 +1,27 @@
-##  SUNF 
+`SUNF[a, b, c]` are the structure constants of $SU(N)$. The arguments `a, b, c` should be of symbolic type.
 
-SUNF[a, b, c] are the structure constants of SU(N). The arguments a,b,c should be of symbolic type..
+### See also
 
-###  See also 
+[SUND](SUND), [SUNDelta](SUNDelta), [SUNIndex](SUNIndex), [SUNSimplify](SUNSimplify), [SUNT](SUNT), [Trick](Trick).
 
-SUND, SUNDelta, SUNIndex, SUNSimplify, SUNT, Trick.
-
-###  Examples 
+### Examples
 
 ```mathematica
-SUNF[a, b, c] x + SUNF[b, a, c] y 
- 
-Calc[%] 
- 
-SUNSimplify[%%] 
- 
-SUNF[a, a, b] 
- 
-SUNF[a, a, b] // Calc
+SUNF[a, b, c] x + SUNF[b, a, c]
+Calc[%]
+SUNSimplify[%%]
 ```
 
-$$x f^{abc}+y f^{bac}$$
+$$x f^{abc}+f^{bac}$$
 
-$$x f^{abc}-y f^{abc}$$
+$$x f^{abc}-f^{abc}$$
 
-$$(x-y) f^{abc}$$
+$$(x-1) f^{abc}$$
+
+```mathematica
+SUNF[a, a, b]
+% // Calc
+```
 
 $$f^{aab}$$
 
@@ -33,35 +30,44 @@ $$0$$
 This is a consequence of the usual choice for the normalization of the $T_a$ generators.
 
 ```mathematica
-SUNF[a, b, c, Explicit -> True] 
- 
-SUNSimplify[SUNF[a, b, c] SUNF[a, b, d]] 
- 
-SUNSimplify[SUNF[a, b, c], Explicit -> True] 
- 
-SUNF[a, b, c] // StandardForm 
- 
-SUNF[a, b, c] // FCI // StandardForm 
- 
-SUNF[a, b, c] // FCI // FCE // StandardForm 
- 
-SUNF[b, a, c] 
- 
-SUNF[b, a, c] // FCI
+SUNF[a, b, c, Explicit -> True]
 ```
 
 $$2 i \left(\text{tr}(T^a.T^c.T^b)-\text{tr}(T^a.T^b.T^c)\right)$$
 
+```mathematica
+SUNSimplify[SUNF[a, b, c] SUNF[a, b, d]]
+```
+
 $$C_A \delta ^{cd}$$
+
+```mathematica
+SUNSimplify[SUNF[a, b, c], Explicit -> True]
+```
 
 $$-2 i \left(\text{tr}(T^a.T^b.T^c)-\text{tr}(T^b.T^a.T^c)\right)$$
 
-```
+```mathematica
+SUNF[a, b, c] // StandardForm
+
 (*SUNF[a, b, c]*)
+```
+
+```mathematica
+SUNF[a, b, c] // FCI // StandardForm
 
 (*SUNF[SUNIndex[a], SUNIndex[b], SUNIndex[c]]*)
+```
+
+```mathematica
+SUNF[a, b, c] // FCI // FCE // StandardForm
 
 (*SUNF[a, b, c]*)
+```
+
+```mathematica
+SUNF[b, a, c]
+% // FCI
 ```
 
 $$f^{bac}$$

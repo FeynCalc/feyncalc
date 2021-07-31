@@ -1,12 +1,12 @@
-##  SpinorChainTrick 
+## SpinorChainTrick
 
 `SpinorChainTrick[exp]` applies several simplifications to products of spinor chains.
 
-###  See also 
+### See also
 
-FCCanonicalizeDummyIndices, DiracGamma, Spinor.
+[FCCanonicalizeDummyIndices](FCCanonicalizeDummyIndices), [DiracGamma](DiracGamma), [Spinor](Spinor).
 
-###  Examples 
+### Examples
 
 ```mathematica
 a SpinorUBar[p1, m1] . GA[\[Mu]] . SpinorU[p2, m2] SpinorVBar[p1, m1] . GA[\[Mu]] . SpinorV[p4, m4] + b SpinorUBar[p1, m1] . GA[\[Nu]] . SpinorU[p2, m2] SpinorVBar[p1, m1] . GA[\[Nu]] . SpinorV[p4, m4]

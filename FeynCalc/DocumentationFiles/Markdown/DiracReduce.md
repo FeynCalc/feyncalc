@@ -1,8 +1,8 @@
-##  DiracReduce 
+## DiracReduce
 
 `DiracReduce[exp]` reduces all $4$-dimensional Dirac matrices in exp to the standard basis $(S,P,V,A,T)$ using the Chisholm identity.
 
- In the result the basic Dirac structures can be wrapped with a head `DiracBasis`, that is
+In the result the basic Dirac structures can be wrapped with a head `DiracBasis`, that is
 
 $S$: `DiracBasis[1]`
 $P$: `DiracBasis[GA[5]]`
@@ -12,11 +12,11 @@ $T$: `DiracBasis[DiracSigma[GA[$\mu$,$\nu$]]]`
 
 By default `DiracBasis` is substituted to `Identity`.
 
-###  See also 
+### See also
 
-Chisholm, DiracSimplify, EpsChisholm.
+[Chisholm](Chisholm), [DiracSimplify](DiracSimplify), [EpsChisholm](EpsChisholm).
 
-###  Examples 
+### Examples
 
 ```mathematica
 GA[\[Mu], \[Nu]]

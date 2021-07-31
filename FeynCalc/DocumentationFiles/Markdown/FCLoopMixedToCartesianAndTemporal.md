@@ -1,8 +1,8 @@
-##  FCLoopMixedToCartesianAndTemporal 
-
 `FCLoopMixedToCartesianAndTemporal[int, {q1, q2, ...}]` attempts to convert loop integrals that contain both Lorentz and Cartesian or temporal indices/momenta to pure temporal and Cartesian indices.
 
-###  Examples 
+### See also
+
+### Examples
 
 ```mathematica
 FCI@SFAD[q]

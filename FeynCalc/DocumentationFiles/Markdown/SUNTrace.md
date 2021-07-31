@@ -1,12 +1,12 @@
-##  SUNTrace 
+## SUNTrace
 
 `SUNTrace[exp]` calculates the color-trace.
 
-###  See also 
+### See also
 
-SUNTrace, SUNT, SUNTF, SUNF, SUND.
+[SUNTrace](SUNTrace), [SUNT](SUNT), [SUNTF](SUNTF), [SUNF](SUNF), [SUND](SUND).
 
-###  Examples 
+### Examples
 
 ```mathematica
 SUNT[a, b]

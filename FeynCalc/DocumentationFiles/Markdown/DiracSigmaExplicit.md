@@ -1,12 +1,12 @@
-##  DiracSigmaExplicit 
+## DiracSigmaExplicit
 
 `DiracSigmaExplicit[exp]` inserts in exp for all `DiracSigma` its definition. `DiracSigmaExplict` is also an option of `DiracSimplify`. `DiracSigmaExplict` is also an option of various FeynCalc functions that handle the Dirac algebra.
 
-###  See also 
+### See also
 
-DiracGamma, DiracSigma.
+[DiracGamma](DiracGamma), [DiracSigma](DiracSigma).
 
-###  Examples 
+### Examples
 
 ```mathematica
 DiracSigma[GA[\[Alpha]], GA[\[Beta]]]

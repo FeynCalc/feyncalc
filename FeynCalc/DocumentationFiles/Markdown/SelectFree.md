@@ -1,39 +1,49 @@
-##  SelectFree 
+`SelectFree[expr, a, b, ...]` is equivalent to `Select[expr, FreeQ2[#, {a,b, ...}]&]`, except the special cases: `SelectFree[a, b]` returns `a` and `SelectFree[a,a]` returns 1 (where `a` is not a product or a sum).
 
-SelectFree[expr, a, b, ...] is equivalent to Select[expr, FreeQ2[#, {a,b, ...}]&], except the special cases: SelectFree[a, b] returns a and SelectFree[a,a] returns 1 (where a is not a product or a sum)..
+### See also
 
-###  See also 
+[FreeQ2](FreeQ2), [SelectNotFree](SelectNotFree).
 
-FreeQ2, SelectNotFree.
-
-###  Examples 
+### Examples
 
 ```mathematica
-SelectFree[a + b + f[a] + d, a] 
- 
-SelectFree[x y, x] 
- 
-SelectFree[2 x y z f[x], {x, y}] 
- 
-SelectFree[a, b] 
- 
-SelectFree[a, a] 
- 
-SelectFree[1, c] 
- 
+SelectFree[a + b + f[a] + d, a]
+```
+
+$$b+d$$
+
+```mathematica
+SelectFree[x y, x]
+```
+
+$$y$$
+
+```mathematica
+SelectFree[2 x y z f[x], {x, y}]
+```
+
+$$2 z$$
+
+```mathematica
+SelectFree[a, b]
+```
+
+$$a$$
+
+```mathematica
+SelectFree[a, a]
+```
+
+$$1$$
+
+```mathematica
+SelectFree[1, c]
+```
+
+$$1$$
+
+```mathematica
 SelectFree[f[x], x]
 ```
 
-$$\text{SelectFree}(f(a)+a+b+d,a)$$
-
-$$\text{SelectFree}(x y,x)$$
-
-$$\text{SelectFree}(2 x y z f(x),\{x,y\})$$
-
-$$\text{SelectFree}(a,b)$$
-
-$$\text{SelectFree}(a,a)$$
-
-$$\text{SelectFree}(1,c)$$
-
-$$\text{SelectFree}(f(x),x)$$
+$$1$$

@@ -1,5 +1,0 @@
-##  SinorUBarD 
-
-SinorUBarD[] SinorUBarD.
-
-###  Examples 

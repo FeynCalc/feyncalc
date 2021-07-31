@@ -1,26 +1,14 @@
-##  MomentumExpand 
+`MomentumExpand[expr]` expands `Momentum[a+b+ ...]` in `expr` into `Momentum[a] + Momentum[b] + ...`.
 
-MomentumExpand[expr] expands Momentum[a+b+ ...] in expr into Momentum[a] + Momentum[b] + ... ..
+### See also
 
-###  See also 
+[ExpandScalarProduct](ExpandScalarProduct), [MomentumCombine](MomentumCombine).
 
-ExpandScalarProduct, MomentumCombine.
-
-###  Examples 
+### Examples
 
 ```mathematica
-MomentumExpand[Momentum[p + q]] // StandardForm 
- 
-ScalarProduct[p + q, r] 
- 
-% // StandardForm 
- 
-MomentumExpand[ScalarProduct[p + q, r]] 
- 
-% // StandardForm 
- 
-MomentumExpand[ScalarProduct[p + q, r - p]] 
- 
+MomentumExpand[Momentum[p + q]] // StandardForm
+ScalarProduct[p + q, r]
 % // StandardForm
 
 (*Momentum[p] + Momentum[q]*)
@@ -32,10 +20,23 @@ $$(\overline{p}+\overline{q})\cdot \overline{r}$$
 (*Pair[Momentum[p + q], Momentum[r]]*)
 ```
 
+```mathematica
+MomentumExpand[ScalarProduct[p + q, r]]
+% // StandardForm
+```
+
 $$(\overline{p}+\overline{q})\cdot \overline{r}$$
 
 ```
 (*Pair[Momentum[p] + Momentum[q], Momentum[r]]*)
+```
+
+```mathematica
+MomentumExpand[ScalarProduct[p + q, r - p]]
+% // StandardForm 
+  
+ 
+
 ```
 
 $$(\overline{p}+\overline{q})\cdot (\overline{r}-\overline{p})$$

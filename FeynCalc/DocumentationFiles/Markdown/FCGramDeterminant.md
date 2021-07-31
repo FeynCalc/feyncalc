@@ -1,12 +1,12 @@
-##  FCGramDeterminant 
+## FCGramDeterminant
 
 `FCGramDeterminant[{p1, p2, ...}]` computes the determinant of the Gram matrix created from the given list of momenta.
 
-###  See also 
+### See also
 
-FCGramMatrix.
+[FCGramMatrix](FCGramMatrix).
 
-###  Examples 
+### Examples
 
 ```mathematica
 FCGramDeterminant[{p1, p2, p3}]

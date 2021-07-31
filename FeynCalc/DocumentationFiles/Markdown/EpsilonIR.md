@@ -1,8 +1,12 @@
-##  EpsilonIR 
+`EpsilonIR`  denotes $(D-4)$, where $D$ is the number of space-time dimensions.
 
-EpsilonIR  denotes $(D-4)$, where $\text{D}$ is the number of space-time dimensions.EpsilonIR stands for a small negative number that explicitly regulates only IR divergences..
+`EpsilonIR` stands for a small negative number that explicitly regulates only IR divergences.
 
-###  Examples 
+### See also
+
+[Epsilon](Epsilon), [EpsilonUV](EpsilonUV).
+
+### Examples
 
 ```mathematica
 EpsilonIR

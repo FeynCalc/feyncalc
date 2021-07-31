@@ -1,22 +1,21 @@
-##  ExplicitSUNFIndex 
+`ExplicitSUNFIndex[ind]` is a specific $SU(N)$ index in the fundamental representation, i.e. `ind` is an integer.
 
-ExplicitSUNFIndex[ind] is a specific SU(N) index in the fundamental representation, i.e. ind is an integer..
+### See also
 
-###  See also 
+[SUNIndex](SUNIndex), [SUNFIndex](SUNFIndex).
 
-SUNIndex, SUNFIndex.
-
-###  Examples 
+### Examples
 
 ```mathematica
-ExplicitSUNFIndex[1] 
- 
-SUNTF[a, 1, 2] 
- 
-% // FCI // StandardForm
+ExplicitSUNFIndex[1]
 ```
 
 $$1$$
+
+```mathematica
+SUNTF[a, 1, 2]
+% // FCI // StandardForm
+```
 
 $$T_{12}^a$$
 

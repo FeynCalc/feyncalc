@@ -1,12 +1,12 @@
-##  FCFADiracChainJoin 
+## FCFADiracChainJoin
 
 `FCFADiracChainJoin[exp]` processes the output of FeynArts (after `FCFAConvert`) with explicit Dirac indices and joins matrices and spinors into closed chains. This is necessary e. g. for models with 4-fermion operators, where FeynArts cannot determine the correct relative signs. When two matrices have a common index but the positions do not match, as in $A_{ij} B_{ik}$, it is assumed that we can take the charge conjugate transposed of either matrix to obtain, e.g. $\left(C A^T C^{-1}\right)_{ji} B_{ik}$ or $\left(C B^TC^{-1}\right)_{ki} A_{ij}$.
 
-###  See also 
+### See also
 
-DiracChain, DCHN, DiracIndex, DiracIndexDelta, DIDelta, DiracChainCombine, DiracChainExpand, DiracChainFactor, DiracChainJoin, FCCCT.
+[DiracChain](DiracChain), [DCHN](DCHN), [DiracIndex](DiracIndex), [DiracIndexDelta](DiracIndexDelta), [DIDelta](DIDelta), [DiracChainCombine](DiracChainCombine), [DiracChainExpand](DiracChainExpand), [DiracChainFactor](DiracChainFactor), [DiracChainJoin](DiracChainJoin), [FCCCT](FCCCT).
 
-###  Examples 
+### Examples
 
 Create a closed chain for the 1-loop electron self-energy
 

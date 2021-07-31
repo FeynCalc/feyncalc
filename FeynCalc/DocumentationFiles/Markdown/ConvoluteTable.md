@@ -1,23 +1,25 @@
-##  ConvoluteTable 
+`ConvoluteTable[f, g, x]` yields the convolution of `f` and `g`. `ConvoluteTable` is called by `Convolute`.
 
-ConvoluteTable[f, g, x] yields the convolution of f and g. ConvoluteTable is called by Convolute.Options[Convolute].
+### See also
 
-###  See also 
+[PlusDistribution](PlusDistribution), [Convolute](Convolute).
 
-PlusDistribution, Convolute.
-
-###  Examples 
+### Examples
 
 ```mathematica
-ConvoluteTable[1, 1, x] 
- 
-ConvoluteTable[x, x] 
- 
-ConvoluteTable[1, x, x]
+ConvoluteTable[1, 1, x]
 ```
 
 $$-\log (x)$$
 
+```mathematica
+ConvoluteTable[x, x]
+```
+
 $$\text{False}[x,x]$$
+
+```mathematica
+ConvoluteTable[1, x, x]
+```
 
 $$1-x$$

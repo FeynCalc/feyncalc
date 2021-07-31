@@ -1,8 +1,12 @@
-##  Twist2AlienOperator 
+## Twist2AlienOperator
 
-Twist2AlienOperator[p, 0] : (7);   Twist2AlienOperator[p1,p2,{p3,mu,a}, 0] (p1: incoming quark momentum, p3: incoming gluon (count1))..
+Twist2AlienOperator[p, 0] : (7);   Twist2AlienOperator[p1,p2,{p3,mu,a}, 0] (p1: incoming quark momentum, p3: incoming gluon (count1)).
 
-###  Examples 
+### See also
+
+[Twist2GluonOperator](Twist2GluonOperator).
+
+### Examples
 
 ```mathematica
 Twist2AlienOperator[p, 0] 

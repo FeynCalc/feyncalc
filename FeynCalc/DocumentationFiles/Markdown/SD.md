@@ -1,19 +1,20 @@
-##  SD 
+`SD[i, j]` denotes the $SU(N)$ Kronecker delta with color indices `i` and `j` in the adjoint representation.
 
-SD[i, j] denotes the SU(N) Kronecker delta with color indices i and j in the adjoint represnetation. SD[i,j] is transformed into SUNDelta[SUNIndex[i],SUNIndex[j]] by FeynCalcInternal..
+`SD[i,j]` is transformed into `SUNDelta[SUNIndex[i],SUNIndex[j]]` by `FeynCalcInternal`.
 
-###  See also 
+### See also
 
-SUNDelta.
+[SUNDelta](SUNDelta).
 
-###  Examples 
+### Examples
 
 ```mathematica
-SD[a, b] 
+SD[a, b]
+% // FCI // StandardForm
+% // FCE // StandardForm 
+  
  
-% // FCI // StandardForm 
- 
-% // FCE // StandardForm
+
 ```
 
 $$\delta ^{ab}$$

@@ -1,12 +1,12 @@
-##  B0Unique 
+## B0Unique
 
 `B0Unique` is an option of `B0`. If set to `True`, `B0[0,0,m2]` is replaced with `(B0[0,m2,m2]+1)` and `B0[m2,0,m2]` simplifies to `(B0[0,m2,m2]+2)`.
 
-###  See also 
+### See also
 
-B0.
+[B0](B0).
 
-###  Examples 
+### Examples
 
 By default no transformation is done.
 

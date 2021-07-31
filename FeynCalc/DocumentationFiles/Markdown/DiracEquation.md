@@ -1,10 +1,10 @@
-##  DiracEquation 
+## DiracEquation
 
 `DiracEquation[exp]` applies the Dirac equation without expanding exp. If expansions are necessary, use `DiracSimplify`.
 
-###  See also 
+### See also
 
-###  Examples 
+### Examples
 
 ```mathematica
 GS[p] . SpinorU[p, m]

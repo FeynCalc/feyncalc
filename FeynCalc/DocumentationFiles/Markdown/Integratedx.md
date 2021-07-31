@@ -1,9 +1,7 @@
-##  Integratedx 
+`Integratedx[x, low, up]` is a variable representing the integration operator `Integrate[#, {x,low,up}]&`.
 
-Integratedx[x, low, up] is a variable representing the integration operator Integrate[#, {x,low,up}]&..
+### See also
 
-###  See also 
+[CalculateCounterTerm](CalculateCounterTerm), [TimedIntegrate](TimedIntegrate), [HypergeometricIR](HypergeometricIR), [HypInt](HypInt), [TimedIntegrate](TimedIntegrate).
 
-CalculateCounterTerm, TimedIntegrate, HypergeometricIR, HypInt, TimedIntegrate.
-
-###  Examples 
+### Examples

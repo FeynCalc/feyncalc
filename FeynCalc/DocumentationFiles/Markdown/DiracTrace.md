@@ -1,12 +1,12 @@
-##  DiracTrace 
+## DiracTrace
 
 `DiracTrace[exp]` is the head of Dirac traces. By default the trace is not evaluated. The evaluation occurs only when the option `DiracTraceEvaluate` is set to `True`. It is recommended to use `DiracSimplify`, which will automatically evaluate all Dirac traces in the input expression.
 
-###  See also 
+### See also
 
-Contract, DiracEquation, DiracGamma, DiracGammaExpand, DiracTrick, FCGetDiracGammaScheme, FCSetDiracGammaScheme.
+[Contract](Contract), [DiracEquation](DiracEquation), [DiracGamma](DiracGamma), [DiracGammaExpand](DiracGammaExpand), [DiracTrick](DiracTrick), [FCGetDiracGammaScheme](FCGetDiracGammaScheme), [FCSetDiracGammaScheme](FCSetDiracGammaScheme).
 
-###  Examples 
+### Examples
 
 There is no automatic evaluation of Dirac traces
 
@@ -45,7 +45,7 @@ $$\text{tr}\left(\left(\bar{\gamma }\cdot \overline{p}\right).\left(\bar{\gamma 
 
 $$4 \left(\overline{p}\cdot \overline{s}\right) \left(\overline{q}\cdot \overline{r}\right)-4 \left(\overline{p}\cdot \overline{r}\right) \left(\overline{q}\cdot \overline{s}\right)+4 \left(\overline{p}\cdot \overline{q}\right) \left(\overline{r}\cdot \overline{s}\right)$$
 
-The old methods of evaluating traces by replacing `DiracTrace` with `Tr` or `TR` are deprecated and should not be used anymore. In particular, they are slower are less efficient than using `DiracSimplify`. 
+The old methods of evaluating traces by replacing `DiracTrace` with `Tr` or `TR` are deprecated and should not be used anymore. In particular, they are slower are less efficient than using `DiracSimplify`.
 
 Traces involving $\gamma^5$ or chirality projectors in $4$ dimensions are also possible
 
@@ -157,13 +157,13 @@ FCSetDiracGammaScheme["BMHV"];
 AbsoluteTiming[r1 = DiracSimplify[DiracTrace[GAD[\[Mu], \[Nu], \[Rho]] . GA[5] . GAD[\[Sigma], \[Delta], \[Tau]] . GA[7]]];]
 ```
 
-$$\{0.484904,\text{Null}\}$$
+$$\{0.308381,\text{Null}\}$$
 
 ```mathematica
 AbsoluteTiming[r2 = DiracSimplify[DiracTrace[GAD[\[Mu], \[Nu], \[Rho]] . GA[5] . GAD[\[Sigma], \[Delta], \[Tau]] . GA[7], West -> False]];]
 ```
 
-$$\{5.89195,\text{Null}\}$$
+$$\{3.62827,\text{Null}\}$$
 
 ```mathematica
 r1 === r2

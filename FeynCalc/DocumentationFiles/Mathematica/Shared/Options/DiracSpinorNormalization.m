@@ -9,15 +9,15 @@
 
 
 (* ::Text:: *)
-(*- `"Relativistic"` - this is the standard value corresponding to $\bar{u}(p) u(p) = 2 m$, $\bar{u}(p) u(p) = - 2 m$.*)
+(*- `"Relativistic"` - this is the standard value corresponding to $\bar{u}(p) u(p) = 2 m$, $\bar{v}(p) v(p) = - 2 m$.*)
 
 
 (* ::Text:: *)
-(*- `"Rest"` - this sets $\bar{u}(p) u(p) = 1$, $\bar{u}(p) u(p) = - 1$.*)
+(*- `"Rest"` - this sets $\bar{u}(p) u(p) = 1$, $\bar{v}(p) v(p) = - 1$.*)
 
 
 (* ::Text:: *)
-(*- `"Nonrelativistic"` - this sets $\bar{u}(p) u(p) = \frac{m}{p^0}$, $\bar{u}(p) u(p) = - \frac{m}{p^0}$.*)
+(*- `"Nonrelativistic"` - this sets $\bar{u}(p) u(p) = \frac{m}{p^0}$, $\bar{v}(p) v(p) = - \frac{m}{p^0}$.*)
 
 
 (* ::Subsection:: *)

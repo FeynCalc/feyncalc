@@ -1,9 +1,7 @@
-##  RHM 
+`RHM[]` is like `RHI[]`, gives `Gamma` functions.
 
-RHM[] is like RHI[], gives Gamma functions..
+### See also
 
-###  See also 
+[RHI](RHI).
 
-RHI.
-
-###  Examples 
+### Examples

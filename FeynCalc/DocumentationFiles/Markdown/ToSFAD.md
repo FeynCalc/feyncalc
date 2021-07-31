@@ -1,8 +1,12 @@
-##  ToSFAD 
+## ToSFAD
 
 `ToSFAD[exp]` converts all propagator denominators written as `FAD` or `FeynAmpDenmoninator[...,PropagatorDenominator[...],...]` to `SFAD` or `FeynAmpDenmoninator[...,StandardPropagatorDenominator[...],...]` respectively.
 
-###  Examples 
+### See also
+
+[FAD](FAD), [SFAD](SFAD).
+
+### Examples
 
 ```mathematica
 ToSFAD[FAD[p]]

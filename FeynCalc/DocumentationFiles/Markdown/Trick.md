@@ -1,12 +1,12 @@
-##  Trick 
+## Trick
 
-Trick[exp] performs several basic simplifications without expansion. Trick[exp] uses Contract, DotSimplify and SUNDeltaContract..
+`Trick[exp]` performs several basic simplifications without expansion. `Trick[exp]` uses `Contract`, `DotSimplify` and `SUNDeltaContract`.
 
-###  See also 
+### See also
 
-Calc, Contract, DiracTrick, DotSimplify, DiracTrick.
+[Calc](Calc), [Contract](Contract), [DiracTrick](DiracTrick), [DotSimplify](DotSimplify), [DiracTrick](DiracTrick).
 
-###  Examples 
+### Examples
 
 This calculates $g^{mu  nu }gamma _{mu }$and $g_{nu }^{nu }$ in D dimensions.
 

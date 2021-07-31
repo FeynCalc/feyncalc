@@ -1,25 +1,14 @@
-##  SpinorVBar 
+`SpinorVBar[p, m]` denotes a $\bar{v}(p,m)$-spinor that depends on the $4$-dimensional momentum $p$.
 
-SpinorVBar[p, m] denotes a $\bar{v}(p,m)$-spinor that depends on the $4$-dimensional momentum $\text{p}$..
+### See also
 
-###  See also 
+[Spinor](Spinor), [SpinorUBar](SpinorUBar), [SpinorU](SpinorU), [SpinorV](SpinorV), [SpinorUBarD](SpinorUBarD), [SpinorUD](SpinorUD), [SpinorVD](SpinorVD), [SpinorVBarD](SpinorVBarD).
 
-Spinor, SpinorUBar, SpinorU, SpinorV, SpinorUBarD, SpinorUD, SpinorVD, SpinorVBarD.
-
-###  Examples 
+### Examples
 
 ```mathematica
-SpinorVBar[p, m] 
- 
-FCI[%] // StandardForm 
- 
-SpinorVBar[p] 
- 
-FCI[%] // StandardForm 
- 
-SpinorVBar[p] . GS[p] 
- 
-DiracEquation[%]
+SpinorVBar[p, m]
+FCI[%] // StandardForm
 ```
 
 $$\bar{v}(p,m)$$
@@ -28,10 +17,20 @@ $$\bar{v}(p,m)$$
 (*Spinor[-Momentum[p], m, 1]*)
 ```
 
+```mathematica
+SpinorVBar[p]
+FCI[%] // StandardForm
+```
+
 $$\bar{v}(p)$$
 
 ```
 (*Spinor[-Momentum[p], 0, 1]*)
+```
+
+```mathematica
+SpinorVBar[p] . GS[p]
+DiracEquation[%]
 ```
 
 $$\bar{v}(p).\left(\bar{\gamma }\cdot \overline{p}\right)$$

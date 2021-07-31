@@ -1,8 +1,12 @@
-##  FCLoopNonIntegerPropagatorPowersFreeQ 
+## FCLoopNonIntegerPropagatorPowersFreeQ
 
 `FCLoopNonIntegerPropagatorPowersFreeQ[int]` checks if the integral contains propagators raised to noninteger (i.e. fractional or symbolic) powers.
 
-###  Examples 
+### See also
+
+[FCLoopRemoveNegativePropagatorPowers](FCLoopRemoveNegativePropagatorPowers).
+
+### Examples
 
 ```mathematica
 SFAD[{q + p, m^2, 2}]

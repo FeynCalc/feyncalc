@@ -1,23 +1,25 @@
-##  CA 
+`CA` is one of the Casimir operator eigenvalues of $SU(N)$ (`CA` $= N$).
 
-CA is one of the Casimir operator eigenvalues of SU(N) (CA = N)..
+### See also
 
-###  See also 
+[CF](CF), [SUNSimplify](SUNSimplify).
 
-CF, SUNSimplify.
-
-###  Examples 
+### Examples
 
 ```mathematica
-CA 
- 
-SUNSimplify[CA, SUNNToCACF -> False] 
- 
-SUNN
+CA
 ```
 
 $$C_A$$
 
+```mathematica
+SUNSimplify[CA, SUNNToCACF -> False]
+```
+
 $$N$$
+
+```mathematica
+SUNN
+```
 
 $$N$$

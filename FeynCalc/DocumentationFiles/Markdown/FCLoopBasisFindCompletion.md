@@ -1,10 +1,14 @@
-##  FCLoopBasisFindCompletion 
+## FCLoopBasisFindCompletion
 
 `FCLoopBasisFindCompletion[int, {q1, q2, ...}]` determines propagators that need to be included in the loop integral `int` (that depends on the loop momenta `q1`, `q2`, ...), to ensure that the propagators of `int` form a basis.
 
 For integrals with propagators that do not form a basis, such a completion must be found prior to processing those integrals with tools that do Integration-By-Parts (IBP) reduction (e.g. FIRE). Furthermore, `int` may not linearly dependent propagators.
 
-###  Examples 
+### See also
+
+[FCLoopBasisIncompleteQ](FCLoopBasisIncompleteQ).
+
+### Examples
 
 ```mathematica
 FAD[q, {q - p + l, m}]

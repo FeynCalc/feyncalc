@@ -1,12 +1,10 @@
-##  PCHN 
+`PCHN[x, i, j]` is a chain of Pauli matrices `x` and is transformed into `PauliChain[FCI[x],PauliIndex[i],PauliIndex[j]]` by `FeynCalcInternal`.
 
-PCHN[x, i, j] is a chain of Pauli matrices x and is transformed into PauliChain[FCI[x],PauliIndex[i],PauliIndex[j]] by FeynCalcInternal.
+### See also
 
-###  See also 
+[PauliChain](PauliChain), [PauliIndex](PauliIndex), [PauliIndexDelta](PauliIndexDelta), [PauliChainJoin](PauliChainJoin), [PauliChainExpand](PauliChainExpand), [PauliChainFactor](PauliChainFactor).
 
-PauliChain, PauliIndex, PauliIndexDelta, PauliChainJoin, PauliChainExpand, PauliChainFactor.
-
-###  Examples 
+### Examples
 
 A standalone Pauli matrix with open Pauli indices
 
@@ -24,7 +22,7 @@ PCHN[CSID[a] . CSID[b], i, j]
 
 $$\left(\sigma ^a.\sigma ^b\right){}_{ij}$$
 
-A single $xi ^{unicode{f39e}+}$ spinor with an open Pauli index
+A single $\xi ^{\dagger}$ spinor with an open Pauli index
 
 ```mathematica
 PCHN[PauliXi[-I], i]
@@ -32,7 +30,7 @@ PCHN[PauliXi[-I], i]
 
 $$\left(\xi ^{\dagger }\right){}_i$$
 
-A single $eta ^{unicode{f39e}+}$ spinor with an open Pauli index
+A single $\eta ^{\dagger}$ spinor with an open Pauli index
 
 ```mathematica
 PCHN[PauliEta[-I], i]
@@ -40,7 +38,7 @@ PCHN[PauliEta[-I], i]
 
 $$\left(\eta ^{\dagger }\right){}_i$$
 
-A single $xi$ spinor with an open Pauli index
+A single $\xi$ spinor with an open Pauli index
 
 ```mathematica
 PCHN[i, PauliXi[I]]
@@ -48,7 +46,7 @@ PCHN[i, PauliXi[I]]
 
 $$(\xi )_i$$
 
-A single $eta$ spinor with an open Pauli index
+A single $\eta$ spinor with an open Pauli index
 
 ```mathematica
 PCHN[i, PauliEta[I]]
@@ -56,7 +54,7 @@ PCHN[i, PauliEta[I]]
 
 $$(\eta )_i$$
 
- $xi ^{unicode{f39e}+}$ spinor contracted with a chain of Pauli matrices
+ $\xi ^{\dagger}$ spinor contracted with a chain of Pauli matrices
 
 ```mathematica
 PCHN[CSID[a] . CSID[b], PauliXi[-I], j]
@@ -64,7 +62,7 @@ PCHN[CSID[a] . CSID[b], PauliXi[-I], j]
 
 $$\left(\xi ^{\dagger }.\sigma ^a.\sigma ^b\right){}_j$$
 
- $eta ^{unicode{f39e}+}$ spinor contracted with a chain of Pauli matrices
+ $\eta ^{\dagger}$ spinor contracted with a chain of Pauli matrices
 
 ```mathematica
 PCHN[CSID[a] . CSID[b], PauliEta[-I], j]
@@ -72,7 +70,7 @@ PCHN[CSID[a] . CSID[b], PauliEta[-I], j]
 
 $$\left(\eta ^{\dagger }.\sigma ^a.\sigma ^b\right){}_j$$
 
- $xi$ spinor contracted with a chain of Pauli matrices
+ $\xi$ spinor contracted with a chain of Pauli matrices
 
 ```mathematica
 PCHN[CSID[a] . CSID[b], i, PauliXi[I]]
@@ -80,7 +78,7 @@ PCHN[CSID[a] . CSID[b], i, PauliXi[I]]
 
 $$\left(\sigma ^a.\sigma ^b.\xi \right){}_i$$
 
- $eta$ spinor contracted with a chain of Pauli matrices
+ $\eta$ spinor contracted with a chain of Pauli matrices
 
 ```mathematica
 PCHN[CSID[a] . CSID[b], i, PauliEta[I]]

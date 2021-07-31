@@ -1,9 +1,9 @@
-##  EpsDiscard 
+## EpsDiscard
 
 `EpsDiscard` is an option for `FeynCalc2FORM`. If set to `True` all Levi-Civita tensors are replaced by `0` after contraction.
 
-###  See also 
+### See also
 
-FeynCalc2FORM.
+[FeynCalc2FORM](FeynCalc2FORM).
 
-###  Examples 
+### Examples

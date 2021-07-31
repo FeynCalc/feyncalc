@@ -1,5 +1,7 @@
-##  SmallDelta 
+`SmallDelta` denotes some small positive number.
 
-SmallDelta denotes some small positive number..
+### See also
 
-###  Examples 
+[SmallEpsilon](SmallEpsilon).
+
+### Examples

@@ -1,17 +1,14 @@
-##  TypesettingExplicitLorentzIndex 
+`TypesettingExplicitLorentzIndex` determines the `TraditionalForm` typesetting of explicit Lorentz indices.
 
-TypesettingExplicitLorentzIndex  determines the TraditionalForm typesetting of explicit Lorentz indices..
-
-###  See also 
+### See also
 
 Current setting
 
-###  Examples 
+### Examples
 
 ```mathematica
 TypesettingExplicitLorentzIndex
 % // InputForm
-
 ```
 
 $$\text{FeynCalc$\grave{ }$SharedObjects$\grave{ }$Private$\grave{ }$x}\unicode{f4a1}\text{FeynCalc$\grave{ }$SharedObjects$\grave{ }$Private$\grave{ }$x}$$

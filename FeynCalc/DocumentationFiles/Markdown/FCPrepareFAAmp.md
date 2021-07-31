@@ -1,10 +1,10 @@
-##  FCPrepareFAAmp 
+## FCPrepareFAAmp
 
-`FCPrepareFAAmp[exp]`  is an auxiliary function for a partial conversion of a FeynArts amplitude to FeynCalc..
+`FCPrepareFAAmp[exp]`  is an auxiliary function for a partial conversion of a FeynArts amplitude to FeynCalc.
 
-###  See also 
+### See also
 
-###  Examples 
+### Examples
 
 ```mathematica
 FCClearScalarProducts[]

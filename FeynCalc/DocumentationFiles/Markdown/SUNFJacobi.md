@@ -1,12 +1,12 @@
-##  SUNFJacobi 
+## SUNFJacobi
 
 `SUNFJacobi` is an option for `SUNSimplify`, indicating whether the Jacobi identity should be used.
 
-###  See also 
+### See also
 
-SUNF, SUNSimplify.
+[SUNF](SUNF), [SUNSimplify](SUNSimplify).
 
-###  Examples 
+### Examples
 
 ```mathematica
 SUNF[a, b, c] SUNF[e, f, c] // SUNSimplify[#, SUNFJacobi -> False] &

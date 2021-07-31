@@ -1,12 +1,12 @@
-##  GordonSimplify 
+## GordonSimplify
 
 `GordonSimplify[exp]` rewrites spinor chains describing a vector or an axial-vector current using Gordon identities.
 
-###  See also 
+### See also
 
-DiracGamma, Spinor, SpinorChainTrick.
+[DiracGamma](DiracGamma), [Spinor](Spinor), [SpinorChainTrick](SpinorChainTrick).
 
-###  Examples 
+### Examples
 
 ```mathematica
 SpinorUBar[p1, m1] . GA[\[Mu]] . SpinorU[p2, m2]

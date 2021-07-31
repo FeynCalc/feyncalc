@@ -1,12 +1,12 @@
-##  DiracGammaExpand 
+## DiracGammaExpand
 
 `DiracGammaExpand[exp]` expands Dirac matrices contracted to linear combinations of $4$-vectors. All `DiracGamma[Momentum[a+b+ ...]]` will be expanded to `DiracGamma[Momentum[a]] + DiracGamma[Momentum[b]] + DiracGamma[Momentum[...]]` .
 
-###  See also 
+### See also
 
-DiracGamma, DiracGammaCombine, DiracSimplify, DiracTrick.
+[DiracGamma](DiracGamma), [DiracGammaCombine](DiracGammaCombine), [DiracSimplify](DiracSimplify), [DiracTrick](DiracTrick).
 
-###  Examples 
+### Examples
 
 ```mathematica
 GS[q] . GS[p - q]

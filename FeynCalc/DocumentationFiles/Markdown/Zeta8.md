@@ -1,23 +1,31 @@
-##  Zeta8 
+`Zeta8` denotes `Zeta[8]`.
 
-Zeta8[] denotes Zeta[8]..
+### See also
 
-###  Examples 
+[Zeta2](Zeta2), [Zeta4](Zeta4), [Zeta6](Zeta6), [Zeta10](Zeta10).
+
+### Examples
 
 ```mathematica
-Zeta8 
- 
-N[Zeta8] 
- 
-SimplifyPolyLog[Pi^8] 
- 
-Conjugate[Zeta8]
+Zeta8
 ```
 
 $$\zeta (8)$$
 
+```mathematica
+N[Zeta8]
+```
+
 $$1.00408$$
 
+```mathematica
+SimplifyPolyLog[Pi^8]
+```
+
 $$9450 \zeta (8)$$
+
+```mathematica
+Conjugate[Zeta8]
+```
 
 $$\zeta (8)$$

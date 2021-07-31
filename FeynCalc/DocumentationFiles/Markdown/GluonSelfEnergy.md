@@ -1,12 +1,12 @@
-##  GluonSelfEnergy 
+## GluonSelfEnergy
 
 `GluonSelfEnergy[{μ, a}, {ν, b}]` yields the 1-loop gluon self-energy.
 
-###  See also 
+### See also
 
-GluonPropagator, GluonGhostVertex, GluonVertex, GhostPropagator.
+[GluonPropagator](GluonPropagator), [GluonGhostVertex](GluonGhostVertex), [GluonVertex](GluonVertex), [GhostPropagator](GhostPropagator).
 
-###  Examples 
+### Examples
 
 ```mathematica
 GluonSelfEnergy[{\[Mu], a}, {\[Nu], b}, Momentum -> p]

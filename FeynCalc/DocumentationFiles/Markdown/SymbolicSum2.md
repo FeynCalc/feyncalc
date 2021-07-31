@@ -1,5 +1,7 @@
-##  SymbolicSum2 
+### See also
 
-SymbolicSum2 is similar to SymbolicSum (Algegra`SymbolicSum`SymbolicSum was a function to do symbolic summation. It was obsolete from version 3 - all functionality is now autoloaded by Sum), but extended to several double sums..
+[SymbolicSum3](SymbolicSum3).
 
-###  Examples 
+`SymbolicSum2` is similar to `SymbolicSum` (`SymbolicSum` was a Mathematica function to do symbolic summation. It was obsolete from version 3 - all functionality is now autoloaded by Sum), but extended to several double sums.
+
+### Examples

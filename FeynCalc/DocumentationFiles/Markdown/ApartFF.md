@@ -1,4 +1,4 @@
-##  ApartFF 
+## ApartFF
 
 `ApartFF[amp, {q1, q2, ...}]` partial fractions loop integrals by decomposing them into simpler integrals that contain only linearly independent propagators. It uses `FCApart` as a backend and is equally suitable for 1-loop and  multi-loop integrals.
 
@@ -6,11 +6,11 @@
 
 `ApartFF[amp * extraPiece1, extraPiece2, {q1, q2, ...}]` is a special working mode of `ApartFF`, where the final result of partial fractioning `amp*extraPiece1` is multiplied by `extraPiece2`. It is understood, that `extraPiece1*extraPiece2` should be unity, e. g. when `extraPiece1` is an `FAD`, while extraPiece is an `SPD` inverse to it. This mode should be useful for nonstandard integrals where the desired partial fraction decomposition can be performed only after multiplying `amp` with `extraPiece1`.
 
-###  See also 
+### See also
 
-FCApart, FeynAmpDenominatorSimplify.
+[FCApart](FCApart), [FeynAmpDenominatorSimplify](FeynAmpDenominatorSimplify).
 
-###  Examples 
+### Examples
 
 ```mathematica
 FCClearScalarProducts[]
@@ -129,7 +129,7 @@ int = (SFAD[{{0, k . l}}, p - k] SPD[k, p])
 
 $$\frac{k\cdot p}{(k\cdot l+i \eta ).((p-k)^2+i \eta )}$$
 
-Here `ApartFF` cannot do anything 
+Here `ApartFF` cannot do anything
 
 ```mathematica
 ApartFF[int, {k}]

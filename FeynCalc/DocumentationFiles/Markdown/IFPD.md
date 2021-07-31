@@ -1,9 +1,9 @@
-##  IFPD 
+## IFPD
 
 `IFPD[p, m]` denotes `(p^2 - m^2)`.
 
-###  See also 
+### See also
 
-PropagatorDenominator.
+[PropagatorDenominator](PropagatorDenominator).
 
-###  Examples 
+### Examples

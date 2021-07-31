@@ -1,9 +1,9 @@
-##  GrassmannParity 
+`GrassmannParity` is a data type.
 
-GrassmannParity is a data type. E.g. DataType[F, GrassmannParity] = 1 declares F to be of bosonic type and DataType[F, GrassmannParity] = -1 of fermionic one..
+E.g. `DataType[F, GrassmannParity] = 1` declares `F` to be of bosonic type and `DataType[F, GrassmannParity] = -1` of fermionic one.
 
-###  See also 
+### See also
 
-DataType.
+[DataType](DataType).
 
-###  Examples 
+### Examples

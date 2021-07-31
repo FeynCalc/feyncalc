@@ -1,12 +1,12 @@
-##  DiracOrder 
+## DiracOrder
 
 `DiracOrder[exp]` orders the Dirac matrices in `exp` lexicographically. `DiracOrder[exp, orderlist]` orders the Dirac matrices in `exp` according to `orderlist`. `DiracOrder` is also an option of `DiracSimplify` and some other functions dealing with Dirac algebra. If set to `True`, the function `DiracOrder` will be applied to the intermediate result to reorder the Dirac matrices lexicographically.
 
-###  See also 
+### See also
 
-DiracSimplify, DiracTrick.
+[DiracSimplify](DiracSimplify), [DiracTrick](DiracTrick).
 
-###  Examples 
+### Examples
 
 ```mathematica
 GA[\[Beta], \[Alpha]]

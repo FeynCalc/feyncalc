@@ -1,20 +1,18 @@
-##  SumS 
+`SumS[1, m]` is the harmonic number $S_ 1(m) = \sum _ {i=1}^m i^{-1}$.
 
-`SumS[1, m]` is the harmonic number $S_ 1(m) = \sum _ {i=1}^m i^{-1}$. 
+`SumS[1,1,m]` is $\sum_{i=1}^m S_ 1 (i)/i$.
 
-`SumS[1,1,m]` is $\sum_{i=1}^m S_ 1 (i)/i$. 
+`SumS[k,l,m]` is $\sum _ {i=1}^m S_l (i)/i^k$.
 
-`SumS[k,l,m]` is $\sum _ {i=1}^m S_l (i)/i^k$. 
-
-`SumS[r, n]` represents `Sum[Sign[r]^i/i^Abs[r], {i, 1, n}]`. 
+`SumS[r, n]` represents `Sum[Sign[r]^i/i^Abs[r], {i, 1, n}]`.
 
 `SumS[r,s, n]` is `Sum[Sign[r]^k/k^Abs[r] Sign[s]^j/j^Abs[s], {k, 1, n}, {j, 1, k}]` etc.
 
-###  See also 
+### See also
 
-SumP, SumT.
+[SumP](SumP), [SumT](SumT).
 
-###  Examples 
+### Examples
 
 ```mathematica
 SumS[1, m - 1]

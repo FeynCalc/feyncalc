@@ -1,5 +1,7 @@
-##  Simplify2 
+### See also
 
-Simplify2[exp] does some ordering on the expression exp with respect to Log, PlusDistribution, PolyLog, Zeta2, Epsilon and Deltafunction..
+[PlusDistribution](PlusDistribution).
 
-###  Examples 
+`Simplify2[exp]` does some ordering on the expression `exp` with respect to `Log`, `PlusDistribution`, `PolyLog`, `Zeta2`, `Epsilon` and `DeltaFunction`.
+
+### Examples

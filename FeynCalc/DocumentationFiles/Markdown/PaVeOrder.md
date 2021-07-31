@@ -1,4 +1,4 @@
-##  PaVeOrder 
+## PaVeOrder
 
 `PaVeOrder[expr]` orders the arguments of PaVe functions in expr in a standard way.
 
@@ -18,11 +18,11 @@ For the time being, these tables contain relations for B-functions up to rank 10
 E-functions (5-point functions) up to rank 7 and F-functions (6-point functions) up to rank 4. If needed, relations for more legs
 and higher tensor ranks can be calculated using FeynCalc and saved to PaVeSymmetries using template codes provided inside `*.sym` files.
 
-###  See also 
+### See also
 
-PaVeReduce.
+[PaVeReduce](PaVeReduce).
 
-###  Examples 
+### Examples
 
 ```mathematica
 ClearAll[t, s]

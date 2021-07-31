@@ -1,14 +1,14 @@
-##  SDF 
+`SDF[i, j]` denotes the $SU(N)$ Kronecker delta with color indices `i` and `j` in the fundamental representation. `SDF[i,j]` is transformed into `SUNFDelta[SUNFIndex[i],SUNFIndex[j]]` by `FeynCalcInternal`.
 
-SDF[i, j] denotes the SU(N) Kronecker delta with color indices i and j in the fundamental represnetation. SDF[i,j] is transformed into SUNFDelta[SUNFIndex[i],SUNFIndex[j]] by FeynCalcInternal..
+### See also
 
-###  Examples 
+[SUNFDelta](SUNFDelta).
+
+### Examples
 
 ```mathematica
-SDF[a, b] 
- 
-% // FCI // StandardForm 
- 
+SDF[a, b]
+% // FCI // StandardForm
 % // FCE // StandardForm
 ```
 

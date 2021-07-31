@@ -1,33 +1,37 @@
-##  MT 
+`MT[mu, nu]` is the metric tensor in $4$ dimensions.
 
-MT[mu, nu] is the metric tensor in 4 dimensions..
+### See also
 
-###  See also 
+[FeynCalcExternal](FeynCalcExternal), [FCE](FCE), [FCI](FCI), [MTD](MTD), [MTE](MTE).
 
-FeynCalcExternal, FCE, FCI, MTD, MTE.
-
-###  Examples 
+### Examples
 
 ```mathematica
-MT[\[Alpha], \[Beta]] 
- 
-Contract[MT[\[Alpha], \[Beta]] MT[\[Alpha], \[Beta]]] 
- 
-MT[a, b] // StandardForm 
- 
-FCI[MT[a, b]] // StandardForm 
- 
-FCE[FCI[MT[a, b]]] // StandardForm
+MT[\[Alpha], \[Beta]]
 ```
 
 $$\bar{g}^{\alpha \beta }$$
 
+```mathematica
+Contract[MT[\[Alpha], \[Beta]] MT[\[Alpha], \[Beta]]]
+```
+
 $$4$$
 
-```
+```mathematica
+MT[a, b] // StandardForm
+
 (*MT[a, b]*)
+```
+
+```mathematica
+FCI[MT[a, b]] // StandardForm
 
 (*Pair[LorentzIndex[a], LorentzIndex[b]]*)
+```
+
+```mathematica
+FCE[FCI[MT[a, b]]] // StandardForm
 
 (*MT[a, b]*)
 ```

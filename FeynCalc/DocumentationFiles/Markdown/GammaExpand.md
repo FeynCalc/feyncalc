@@ -1,12 +1,12 @@
-##  GammaExpand 
+## GammaExpand
 
 `GammaExpand[exp]` rewrites `Gamma[n + m]` in `exp` (where `n` has `Head` `Integer`).
 
-###  See also 
+### See also
 
-GammaEpsilon.
+[GammaEpsilon](GammaEpsilon).
 
-###  Examples 
+### Examples
 
 ```mathematica
 GammaExpand[Gamma[2 + Epsilon]]

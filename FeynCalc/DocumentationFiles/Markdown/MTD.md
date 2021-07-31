@@ -1,33 +1,37 @@
-##  MTD 
+`MTD[mu, nu]` is the metric tensor in $D$ dimensions.
 
-MTD[mu, nu] is the metric tensor in D dimensions..
+### See also
 
-###  See also 
+[FeynCalcExternal](FeynCalcExternal), [FCE](FCE), [FCI](FCI), [MT](MT), [MTE](MTE).
 
-FeynCalcExternal, FCE, FCI, MT, MTE.
-
-###  Examples 
+### Examples
 
 ```mathematica
-MTD[\[Alpha], \[Beta]] 
- 
-Contract[MTD[\[Alpha], \[Beta]] MTD[\[Alpha], \[Beta]]] 
- 
-MTD[\[Alpha], \[Beta]] // StandardForm 
- 
-FCI[MTD[\[Alpha], \[Beta]]] // StandardForm 
- 
-FCE[FCI[MTD[\[Mu], \[Nu]]]] // StandardForm
+MTD[\[Alpha], \[Beta]]
 ```
 
 $$g^{\alpha \beta }$$
 
+```mathematica
+Contract[MTD[\[Alpha], \[Beta]] MTD[\[Alpha], \[Beta]]]
+```
+
 $$D$$
 
-```
+```mathematica
+MTD[\[Alpha], \[Beta]] // StandardForm
+
 (*MTD[\[Alpha], \[Beta]]*)
+```
+
+```mathematica
+FCI[MTD[\[Alpha], \[Beta]]] // StandardForm
 
 (*Pair[LorentzIndex[\[Alpha], D], LorentzIndex[\[Beta], D]]*)
+```
+
+```mathematica
+FCE[FCI[MTD[\[Mu], \[Nu]]]] // StandardForm
 
 (*MTD[\[Mu], \[Nu]]*)
 ```

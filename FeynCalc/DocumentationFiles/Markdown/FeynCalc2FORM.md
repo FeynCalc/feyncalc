@@ -1,14 +1,18 @@
-##  FeynCalc2FORM 
+## FeynCalc2FORM
 
-`FeynCalc2FORM[exp]` displays `exp` in `FORM` syntax. 
+`FeynCalc2FORM[exp]` displays `exp` in `FORM` syntax.
 
-`FeynCalc2FORM[file, x]` writes `x` in FORM syntax to a file. 
+`FeynCalc2FORM[file, x]` writes `x` in FORM syntax to a file.
 
 `FeynCalc2FORM[file, x == y]` writes $x=y$ to a file in FORM syntax.
 
 The capabilities of this function are very limited, so you should not expect it to easily handle large and complicated expressions.
 
-###  Examples 
+### See also
+
+[FeynCalc2FORM](FeynCalc2FORM).
+
+### Examples
 
 ```mathematica
 FORM2FeynCalc

@@ -1,45 +1,57 @@
-##  SPE 
+`SPE[a, b]` denotes a $D-4$-dimensional scalar product. `SPE[a, b]` is transformed into `Pair[Momentum[a, -4 + D], Momentum[b, -4 + D]]` by `FeynCalcInternal`.
 
-SPE[a, b] denotes a D-4-dimensional scalar product. SPE[a, b] is transformed into Pair[Momentum[a, -4 + D], Momentum[b, -4 + D]] by FeynCalcInternal. SPE[p] is the same as SPE[p,p]  $\left(=p^2\right)$.
+`SPE[p]` is the same as `SPE[p,p]`  $(=p^2)$.
 
-###  See also 
+### See also
 
-PD, Calc, ExpandScalarProduct, ScalarProduct, SPD.
+[PD](PD), [Calc](Calc), [ExpandScalarProduct](ExpandScalarProduct), [ScalarProduct](ScalarProduct), [SPD](SPD).
 
-###  Examples 
+### Examples
 
 ```mathematica
-SPE[p, q] + SPE[q] 
- 
-SPE[p - q, q + 2 p] 
- 
-Calc[ SPE[p - q, q + 2 p] ] 
- 
-ExpandScalarProduct[SPE[p - q]] 
- 
-SPE[a, b] // StandardForm 
- 
-SPE[a, b] // FCI // StandardForm 
- 
-SPE[a, b] // FCI // FCE // StandardForm 
- 
-FCE[ChangeDimension[SP[p, q], D - 4]] // StandardForm
+SPE[p, q] + SPE[q]
 ```
 
 $$\hat{p}\cdot \hat{q}+\hat{q}^2$$
 
+```mathematica
+SPE[p - q, q + 2 p]
+```
+
 $$(\hat{p}-\hat{q})\cdot (2 \hat{p}+\hat{q})$$
+
+```mathematica
+Calc[ SPE[p - q, q + 2 p] ]
+```
 
 $$-\hat{p}\cdot \hat{q}+2 \hat{p}^2-\hat{q}^2$$
 
+```mathematica
+ExpandScalarProduct[SPE[p - q]]
+```
+
 $$-2 \left(\hat{p}\cdot \hat{q}\right)+\hat{p}^2+\hat{q}^2$$
 
-```
+```mathematica
+SPE[a, b] // StandardForm
+
 (*SPE[a, b]*)
+```
+
+```mathematica
+SPE[a, b] // FCI // StandardForm
 
 (*Pair[Momentum[a, -4 + D], Momentum[b, -4 + D]]*)
+```
+
+```mathematica
+SPE[a, b] // FCI // FCE // StandardForm
 
 (*SPE[a, b]*)
+```
+
+```mathematica
+FCE[ChangeDimension[SP[p, q], D - 4]] // StandardForm
 
 (*SPE[p, q]*)
 ```

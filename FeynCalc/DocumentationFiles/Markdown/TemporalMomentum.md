@@ -1,17 +1,23 @@
-##  TemporalMomentum 
+`TemporalMomentum[p]`  is the head of the temporal component of a $4$-momentum $p^0$. The internal representation of the temporal component $p^0$ is `TemporalMomentum[p]`.
 
-TemporalMomentum[p]  is the head of the temporal component of a four momentum $p^0$. The internal representation of the temporal component $p^0$ is TemporalMomentum[p]. TemporalMomentum may appear only inside TemporalPair.
+`TemporalMomentum` may appear only inside `TemporalPair`s.
 
-###  Examples 
+### See also
+
+[TemporalPair](TemporalPair), [ExplicitLorentzIndex](ExplicitLorentzIndex).
+
+### Examples
 
 ```mathematica
-TemporalMomentum[p] 
- 
-TemporalMomentum[-q]
-% // StandardForm
+TemporalMomentum[p]
 ```
 
 $$p$$
+
+```mathematica
+TemporalMomentum[-q]
+% // StandardForm
+```
 
 $$-q$$
 
@@ -20,17 +26,18 @@ $$-q$$
 ```
 
 ```mathematica
-TemporalMomentum[p + q] 
- 
-% // MomentumExpand // StandardForm 
- 
-% // MomentumCombine // StandardForm
+TemporalMomentum[p + q]
+% // MomentumExpand // StandardForm
 ```
 
 $$p+q$$
 
 ```
 (*TemporalMomentum[p] + TemporalMomentum[q]*)
+```
+
+```mathematica
+% // MomentumCombine // StandardForm
 
 (*TemporalMomentum[p + q]*)
 ```

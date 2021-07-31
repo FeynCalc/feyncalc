@@ -1,4 +1,4 @@
-##  GluonVertex 
+## GluonVertex
 
 `GluonVertex[{p, mu, a}, {q, nu, b}, {k, la, c}]` or `GluonVertex[p, mu, a, q, nu, b, k, la, c]` yields the 3-gluon vertex.    
 
@@ -8,13 +8,13 @@
 
 `GV` can be used as an abbreviation of `GluonVertex`.
 
-The dimension and the name of the coupling constant are determined by the options `Dimension` and `CouplingConstant`. All momenta are flowing into the vertex..
+The dimension and the name of the coupling constant are determined by the options `Dimension` and `CouplingConstant`. All momenta are flowing into the vertex.
 
-###  See also 
+### See also
 
-GluonPropagator, GluonGhostVertex.
+[GluonPropagator](GluonPropagator), [GluonGhostVertex](GluonGhostVertex).
 
-###  Examples 
+### Examples
 
 ```mathematica
 GluonVertex[{p, \[Mu], a}, {q, \[Nu], b}, {r, \[Rho], c}]

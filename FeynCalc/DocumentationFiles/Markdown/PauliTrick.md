@@ -1,12 +1,12 @@
-##  PauliTrick 
+## PauliTrick
 
 `PauliTrick[exp]` contracts $\sigma$ matrices with each other and performs several simplifications (no expansion, use `PauliSimplify` for this).
 
-###  See also 
+### See also
 
-PauliSigma, PauliSimplify.
+[PauliSigma](PauliSigma), [PauliSimplify](PauliSimplify).
 
-###  Examples 
+### Examples
 
 ```mathematica
 CSIS[p1] . CSI[i] . CSIS[p2]

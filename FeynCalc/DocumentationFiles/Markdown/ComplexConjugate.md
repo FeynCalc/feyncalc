@@ -1,12 +1,12 @@
-##  ComplexConjugate 
+## ComplexConjugate
 
 `ComplexConjugate[exp]` returns the complex conjugate of `exp`, where the input expression must be a proper matrix element. All Dirac matrices are assumed to be inside closed Dirac spinor chains. If this is not the case, the result will be inconsistent. Denominators may not contain explicit $i$'s.
 
-###  See also 
+### See also
 
-FCRenameDummyIndices, FermionSpinSum, DiracGamma.
+[FCRenameDummyIndices](FCRenameDummyIndices), [FermionSpinSum](FermionSpinSum), [DiracGamma](DiracGamma).
 
-###  Examples 
+### Examples
 
 ComplexConjugate is meant to be applied to amplitudes, i.e. given a matrix element $\mathcal{M}$, it will return $\mathcal{M}^\ast$.
 

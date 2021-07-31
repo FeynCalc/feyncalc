@@ -1,12 +1,12 @@
-##  PauliSigmaExpand 
+## PauliSigmaExpand
 
 `PauliSigmaExpand[exp]` expands all `PauliSigma[Momentum[a+b+..]]` in `exp` into `(PauliSigma[Momentum[a]] + PauliSigma[Momentum[b]] + ...)`.
 
-###  See also 
+### See also
 
-PauliSigmaCombine.
+[PauliSigmaCombine](PauliSigmaCombine).
 
-###  Examples 
+### Examples
 
 ```mathematica
 SIS[q] . SIS[p - q]

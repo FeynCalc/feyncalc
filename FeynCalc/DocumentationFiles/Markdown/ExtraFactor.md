@@ -1,9 +1,9 @@
-##  ExtraFactor 
+## ExtraFactor
 
 `ExtraFactor` is an option for `FermionSpinSum`. The setting `ExtraFactor -> fa`  multiplies the whole amplitude with the factor `fa` before squaring.
 
-###  See also 
+### See also
 
-FermionSpinSum.
+[FermionSpinSum](FermionSpinSum).
 
-###  Examples 
+### Examples

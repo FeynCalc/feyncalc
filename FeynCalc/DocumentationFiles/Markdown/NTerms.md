@@ -1,23 +1,29 @@
-##  NTerms 
+`NTerms[x]` is equivalent to `Length` if `x` is a sum; otherwise `NTerms[x]` returns `1`, except `NTerms[0] -> 0`.
 
-NTerms[x] is equivalent to Length if x is a sum; otherwise NTerms[x] returns 1, except NTerms[0] -> 0..
+### See also
 
-###  Examples 
+### Examples
 
 ```mathematica
-NTerms[a - b] 
- 
-NTerms[a b c] 
- 
-NTerms[9] 
- 
-NTerms[0]
+NTerms[a - b]
 ```
 
 $$2$$
 
-$$1$$
+```mathematica
+NTerms[a b c]
+```
 
 $$1$$
+
+```mathematica
+NTerms[9]
+```
+
+$$1$$
+
+```mathematica
+NTerms[0]
+```
 
 $$0$$

@@ -1,9 +1,9 @@
-##  FDS 
+## FDS
 
 `FDS` is shorthand for `FeynAmpDenominatorSimplify`.
 
-###  See also 
+### See also
 
-FeynAmpDenominatorSimplify.
+[FeynAmpDenominatorSimplify](FeynAmpDenominatorSimplify).
 
-###  Examples 
+### Examples

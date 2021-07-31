@@ -1,6 +1,6 @@
-##  PaVeLimitTo4 
+## PaVeLimitTo4 
 
-`PaVeLimitTo4[expr]`  simplifies products of Passarino-Veltman functions and $D$-dependent prefactors by evaluating the prefactors at $D=4$ and adding an extra term from the product of $(D-4)$ and the UV pole of the Passarino-Veltman function. 
+`PaVeLimitTo4[expr]`  simplifies products of Passarino-Veltman functions and $D$-dependent prefactors by evaluating the prefactors at $D=4$ and adding an extra term from the product of $(D-4)$ and the UV pole of the Passarino-Veltman function.
 
 This is possible because the UV poles of arbitrary Passarino-Veltman functions can be determined via `PaVeUVPart`. The result is valid up to 0th order in Epsilon, i.e. it is sufficient for 1-loop calculations.
 
@@ -8,7 +8,11 @@ Warning! This simplification always ignores possible IR poles of Passarino-Veltm
 
 The application of `PaVeLimitTo4` is equivalent to using the old `OneLoop` routine with the flags `$LimitTo4` and `$LimitTo4IRUnsafe` set to `True`.
 
-###  Examples 
+### See also
+
+[$LimitTo4]($LimitTo4).
+
+### Examples
 
 ```mathematica
 ex = (D - 2)/(D - 3) A0[m^2]

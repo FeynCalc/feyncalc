@@ -1,4 +1,4 @@
-##  QP 
+## QP
 
 `QP` is an alias for `QuarkPropagator`.
 
@@ -6,8 +6,8 @@
 
 `QP[{p,m}]` gives the  quark propagator with mass `m`.
 
-###  See also 
+### See also
 
-QuarkPropagator.
+[QuarkPropagator](QuarkPropagator).
 
-###  Examples 
+### Examples

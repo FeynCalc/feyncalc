@@ -1,12 +1,12 @@
-##  SUNFSimplify 
+## SUNFSimplify
 
 `SUNFSimplify[exp]` is an auxiliary function that simplifies expressions containing $\text{SU}(N)$ indices in the fundamental representation. The simplifications performed by `SUNFSimplify` are mostly limited to the contractions of the fundamental indices. The function is by far not as powerful as `SUNSimplify`.
 
-###  See also 
+### See also
 
-SUNTF, SUNFDelta.
+[SUNTF](SUNTF), [SUNFDelta](SUNFDelta).
 
-###  Examples 
+### Examples
 
 ```mathematica
 SDF[a, a]

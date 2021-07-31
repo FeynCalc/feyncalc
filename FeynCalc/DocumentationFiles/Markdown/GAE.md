@@ -1,12 +1,12 @@
-##  GAE 
+`GAE[μ]` can be used as input for a `D-4`-dimensional $\gamma^{\mu }$and is transformed into `DiracGamma[LorentzIndex[$\mu$,D-4],D-4]` by `FeynCalcInternal` (`FCI`).
 
-`GAE[μ]` can be used as input for a `D-4`-dimensional $\gamma^\mu$and is transformed into `DiracGamma[LorentzIndex[$\mu$,D-4],D-4]` by FeynCalcInternal (=FCI). `GAE[$\mu$, $\nu$ , ...]` is a short form for `GAE[$\mu$].GAE[$\nu$]. ...`.
+`GAE[$\mu ,\nu , \text{...}$]` is a short form for `GAE[$\mu$].GAE[$\nu$]. ...`.
 
-###  See also 
+### See also
 
-DiracGamma, GA, GS, GAD.
+[DiracGamma](DiracGamma), [GA](GA), [GS](GS), [GAD](GAD).
 
-###  Examples 
+### Examples
 
 ```mathematica
 GAE[\[Mu]]
@@ -50,7 +50,7 @@ GAE[\[Alpha]] FV[p, \[Alpha]] // Contract
 
 $$0$$
 
-In order to use Dirac algebra with `D-4` dimensional objects you need to activate the t'Hooft-Veltman-Breitenlohner-Maison scheme first
+In order to use Dirac algebra with $D-4$-dimensional objects you need to activate the t'Hooft-Veltman-Breitenlohner-Maison scheme first
 
 ```mathematica
 FCSetDiracGammaScheme["NDR"]

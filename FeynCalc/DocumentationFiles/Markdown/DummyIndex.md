@@ -1,9 +1,9 @@
-##  DummyIndex 
+## DummyIndex
 
 `DummyIndex` is an option of `CovariantD` specifying an index to use as dummy summation index. If set to `Automatic`, unique indices are generated.
 
-###  See also 
+### See also
 
-CovariantD.
+[CovariantD](CovariantD).
 
-###  Examples 
+### Examples

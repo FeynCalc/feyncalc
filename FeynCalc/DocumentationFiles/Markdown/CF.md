@@ -1,27 +1,31 @@
-##  CF 
+`CF` is one of the Casimir operator eigenvalues of $SU(N)$ (CF = $\frac{N^2-1}{2N}$).
 
-CF is one of the Casimir operator eigenvalues of SU(N) (CF = ($N^2$-1)/(2 N))..
+### See also
 
-###  See also 
+[CA](CA), [SUNSimplify](SUNSimplify).
 
-CA, SUNSimplify.
-
-###  Examples 
+### Examples
 
 ```mathematica
-CF 
- 
-SUNSimplify[CF, SUNNToCACF -> False] 
- 
-SUNN 
- 
-SUNSimplify[SUNN^2 - 1, SUNNToCACF -> True]
+CF
 ```
 
 $$C_F$$
 
+```mathematica
+SUNSimplify[CF, SUNNToCACF -> False]
+```
+
 $$\frac{N^2-1}{2 N}$$
 
+```mathematica
+SUNN
+```
+
 $$N$$
+
+```mathematica
+SUNSimplify[SUNN^2 - 1, SUNNToCACF -> True]
+```
 
 $$2 C_A C_F$$

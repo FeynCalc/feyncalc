@@ -1,12 +1,12 @@
-##  SimplifyPolyLog 
+## SimplifyPolyLog
 
 `SimplifyPolyLog[y]` performs several simplifications assuming that the variables occuring in the `Log` and `PolyLog` functions are between `0` and `1`.
 
-###  See also 
+### See also
 
-Nielsen.
+[Nielsen](Nielsen).
 
-###  Examples 
+### Examples
 
 ```mathematica
 SimplifyPolyLog[PolyLog[2, 1/x]]
@@ -78,7 +78,7 @@ $$-\text{Li}_3(1-x)+\text{Li}_2(1-x) \log (x)+S_{12}(1-x)+\zeta (2) \log (1-x)-\
 SimplifyPolyLog[PolyLog[3, 1 - 1/x]]
 ```
 
-$$\text{Li}_3\left(-\frac{1-x}{x}\right)$$
+$$\text{Li}_2(1-x) \log (x)-\text{Li}_2(1-x) \log (1-x)+S_{12}(1-x)+S_{12}(x)+\frac{\log ^3(x)}{6}-\frac{1}{2} \log ^2(1-x) \log (x)-\zeta (3)$$
 
 ```mathematica
 SimplifyPolyLog[PolyLog[4, -x/(1 - x)]]

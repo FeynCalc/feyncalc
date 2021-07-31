@@ -1,12 +1,12 @@
-##  PauliOrder 
+## PauliOrder
 
 `PauliOrder[exp]` orders the Pauli matrices in `expr` alphabetically.
 
 `PauliOrder[exp, orderlist]` orders the Pauli matrices in expr according to `orderlist`.
 
-###  See also 
+### See also
 
-###  Examples 
+### Examples
 
 ```mathematica
 CSI[k, j, i]

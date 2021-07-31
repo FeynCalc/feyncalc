@@ -1,14 +1,14 @@
-##  LeftRightPartialD2 
+## LeftRightPartialD2 
 
 `LeftRightPartialD2[μ]` denotes $\overleftrightarrow{\partial }_{\mu }$, acting to the left and right.
 
 `ExplicitPartialD[LeftRightPartialD2[μ]] gives `(RightPartialD[μ] + LeftPartialD[μ])`.
 
-###  See also 
+### See also
 
-ExplicitPartialD, ExpandPartialD, FCPartialD, LeftPartialD, RightPartialD.
+[ExplicitPartialD](ExplicitPartialD), [ExpandPartialD](ExpandPartialD), [FCPartialD](FCPartialD), [LeftPartialD](LeftPartialD), [RightPartialD](RightPartialD).
 
-###  Examples 
+### Examples
 
 ```mathematica
 LeftRightPartialD2[\[Mu]]

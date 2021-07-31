@@ -1,9 +1,7 @@
-##  Gauge 
-
 `Gauge` is an option for `GluonProgagator`. If set to `1` the 't Hooft Feynman gauge is used.
 
-###  See also 
+### See also
 
-$Gauge, GluonProgagator.
+[GluonProgagator](GluonProgagator).
 
-###  Examples 
+### Examples

@@ -1,10 +1,10 @@
-##  Chisholm 
+## Chisholm
 
 `Chisholm[exp]` substitutes products of three Dirac matrices or slashes by the Chisholm identity.
 
-###  See also 
+### See also
 
-###  Examples 
+### Examples
 
 ```mathematica
 GA[\[Mu], \[Nu], \[Rho]]

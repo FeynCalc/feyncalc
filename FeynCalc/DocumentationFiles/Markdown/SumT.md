@@ -1,16 +1,14 @@
-##  SumT 
-
 `SumT[1, m]` is the alternative harmonic number $\sum _{i=1}^m (-1){}^{\wedge}i/i$ 
 
 `SumT[r, n]` represents `Sum[(-1)^i/i^r, {i,1,n}]`
 
 `SumT[r,s, n]` is `Sum[1/k^r (-1)^j/j^s, {k, 1, n}, {j, 1, k}]`.
 
-###  See also 
+### See also
 
-SumP, SumS.
+[SumP](SumP), [SumS](SumS).
 
-###  Examples 
+### Examples
 
 ```mathematica
 SumT[1, m - 1]

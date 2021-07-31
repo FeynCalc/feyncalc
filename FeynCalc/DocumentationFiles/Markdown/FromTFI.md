@@ -1,12 +1,12 @@
-##  FromTFI 
+## FromTFI
 
 `FromTFI[expr, q1, q2, p]` translates the `TFI` notation from the TARCER package to the usual FeynCalc notation. See the TARCER documentation on `TFI` for details on the conventions.
 
-###  See also 
+### See also
 
-ToTFI.
+[ToTFI](ToTFI).
 
-###  Examples 
+### Examples
 
 ```mathematica
 ToTFI[FAD[q1, q1 - p, {q2, M}, {q2 - p, m}, q1 - q2], q1, q2, p]

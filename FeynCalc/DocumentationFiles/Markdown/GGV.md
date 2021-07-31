@@ -1,9 +1,9 @@
-##  GGV 
+## GGV
 
 `GGV` is equivalent to `GluonGhostVertex`.
 
-###  See also 
+### See also
 
-GluonGhostVertex.
+[GluonGhostVertex](GluonGhostVertex).
 
-###  Examples 
+### Examples

@@ -1,14 +1,14 @@
-##  GHP 
+## GHP
 
 `GHP[p, a, b]` gives the ghost propagator where `a` and `b` are the color indices.
 
 `GHP[p]` omits the $\delta _{ab}$.
 
-###  See also 
+### See also
 
-GhostPropagator, GluonPropagator, GluonGhostVertex.
+[GhostPropagator](GhostPropagator), [GluonPropagator](GluonPropagator), [GluonGhostVertex](GluonGhostVertex).
 
-###  Examples 
+### Examples
 
 ```mathematica
 GHP[p, a, b]

@@ -1,14 +1,14 @@
-##  Dimension 
+`Dimension` is an option of several functions and denotes the number of space-time dimensions. Possible settings are: `4`, `n`, `d`, `D`, ... , the variable does not matter, but it should have head Symbol.
 
-Dimension is an option of several functions and denotes the number of space-time dimensions. Possible settings are: 4, n, d, D, ... ,the variable does not matter, but it should have Head Symbol..
+### See also
 
-###  Examples 
+[ScalarProduct](ScalarProduct).
+
+### Examples
 
 ```mathematica
-Options[ScalarProduct] 
- 
-ScalarProduct[m, n, Dimension -> d] 
- 
+Options[ScalarProduct]
+ScalarProduct[m, n, Dimension -> d]
 % // StandardForm
 ```
 

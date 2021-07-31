@@ -1,8 +1,8 @@
-##  FCLoopIBPReducableQ 
-
 `FCLoopIBPReducableQ[int]` checks if the integral contains propagators raised to integer powers.
 
-###  Examples 
+### See also
+
+### Examples
 
 ```mathematica
 FAD[q, q - p]

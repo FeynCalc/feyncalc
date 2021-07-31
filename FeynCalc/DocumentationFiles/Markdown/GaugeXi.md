@@ -1,9 +1,7 @@
-##  GaugeXi 
+`GaugeXi` is a head for gauge parameters.
 
-GaugeXi is a head for gauge parameters..
+### See also
 
-###  See also 
+[Gauge](Gauge), [GaugeField](GaugeField).
 
-Gauge, GaugeField.
-
-###  Examples 
+### Examples

@@ -1,12 +1,15 @@
-##  AlphaFS 
+AlphaFS  is a shortcut for `SMP["alpha_fs"]` which represents the fine-structure constant.
 
-AlphaFS  is a shortcut for SMP["alpha_fs"] which represents the fine-structure constant.The shortcut AlphaFS is deprecated, please use $text{SMP}[text{alpha$_$fs}]$ instead!.
+The shortcut `AlphaFS` is deprecated, please use `SMP["alpha_fs"]` instead!
 
-###  Examples 
+### See also
+
+[SMP](SMP).
+
+### Examples
 
 ```mathematica
-AlphaFS 
- 
+AlphaFS
 % // InputForm
 ```
 
@@ -15,3 +18,9 @@ $$\alpha$$
 ```mathematica
 SMP["alpha_fs"]
 ```
+
+```mathematica
+SMP["alpha_fs"]
+```
+
+$$\alpha$$

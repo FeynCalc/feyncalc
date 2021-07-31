@@ -1,9 +1,7 @@
-##  Tf 
+`Tf` is the color factor $T_f$. It is $1/2$ for $SU(N)$.
 
-Tf is the color factor $T_f$. It is 1/2 for SU(N)..
+### See also
 
-###  See also 
+[Tr2](Tr2), [GluonPropagator](GluonPropagator), [GluonSelfEnergy](GluonSelfEnergy).
 
-Tr2, GluonPropagator, GluonSelfEnergy.
-
-###  Examples 
+### Examples

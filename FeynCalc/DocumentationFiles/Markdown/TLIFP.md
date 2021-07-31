@@ -1,9 +1,9 @@
-##  TLIFP 
+## TLIFP
 
-TLIFP[exp] does Feynman-Parametrizations of TLI's in exp..
+`TLIFP[exp]` does Feynman-Parametrizations of `TLI`s in `exp`.
 
-###  See also 
+### See also
 
-TLI.
+[TLI](TLI).
 
-###  Examples 
+### Examples

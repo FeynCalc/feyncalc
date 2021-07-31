@@ -1,12 +1,12 @@
-##  DiracTrick 
+## DiracTrick
 
 `DiracTrick[exp]` contracts Dirac matrices with each other and performs several simplifications but no expansions.There are not many cases when a user will need to call this function directly. Use `DiracSimplify` to achieve maximal simplification of Dirac matrix chains. Regarding the treatment of $\gamma^5$ in $D$-dimensional expressions or the evaluation of expressions with tensors living in different dimensions, see the explanations on the help pages for `DiracSimplify` and `DiracTrace`.
 
-###  See also 
+### See also
 
-Contract, DiracEquation, DiracGamma, DiracGammaExpand, DiracTrick, SirlinSimplify, SpinorChainTrick.
+[Contract](Contract), [DiracEquation](DiracEquation), [DiracGamma](DiracGamma), [DiracGammaExpand](DiracGammaExpand), [DiracTrick](DiracTrick), [SirlinSimplify](SirlinSimplify), [SpinorChainTrick](SpinorChainTrick).
 
-###  Examples 
+### Examples
 
 When applied to chains of Dirac matrices that do not require noncommutative expansions, contractions with other tensors, simplifications of spinor chains or evaluations of Dirac traces,  `DiracTrick` will produce results similar to those of `DiracSimplify`.
 

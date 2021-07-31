@@ -1,12 +1,12 @@
-##  AntiQuarkField 
+## AntiQuarkField
 
 `AntiQuarkField` is the name of a fermionic field. `AntiQuarkField` is just a name with no functional properties. Only typesetting rules are attached.
 
-###  See also 
+### See also
 
-QuantumField, QuarkField.
+[QuantumField](QuantumField), [QuarkField](QuarkField).
 
-###  Examples 
+### Examples
 
 ```mathematica
 AntiQuarkField

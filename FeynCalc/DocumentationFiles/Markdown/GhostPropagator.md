@@ -1,4 +1,4 @@
-##  GhostPropagator 
+## GhostPropagator
 
 `GhostPropagator[p, a, b]` gives the ghost propagator where `a` and `b` are the color indices.
 
@@ -6,11 +6,11 @@
 
 `GHP` can be used as an abbreviation of `GhostPropagator`.
 
-###  See also 
+### See also
 
-GluonPropagator, QCDFeynmanRuleConvention, GluonGhostVertex.
+[GluonPropagator](GluonPropagator), [QCDFeynmanRuleConvention](QCDFeynmanRuleConvention), [GluonGhostVertex](GluonGhostVertex).
 
-###  Examples 
+### Examples
 
 ```mathematica
 GhostPropagator[p, a, b]

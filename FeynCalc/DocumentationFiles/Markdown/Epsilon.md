@@ -1,12 +1,12 @@
-##  Epsilon 
+Epsilon is $(n-4)$, where $n$ is the space-time dimension.
 
-Epsilon is (n-4), where n is the space-time dimension. Epsilon stands for a small positive number..
+`Epsilon` stands for a small positive number.
 
-###  See also 
+### See also
 
-Series2.
+[Series2](Series2).
 
-###  Examples 
+### Examples
 
 ```mathematica
 Epsilon

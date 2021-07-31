@@ -1,8 +1,12 @@
-##  FCLoopBasisIncompleteQ 
+## FCLoopBasisIncompleteQ
 
 `FCLoopBasisIncompleteQ[int, {q1, q2, ...}]` checks if the propagators of the loop integral `int` (that depends on the loop momenta `q1, q2, ...`) do not form a basis.
 
-###  Examples 
+### See also
+
+[FCLoopBasisOverdeterminedQ](FCLoopBasisOverdeterminedQ).
+
+### Examples
 
 ```mathematica
 FAD[{q1, m1}]

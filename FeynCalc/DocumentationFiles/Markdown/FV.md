@@ -1,34 +1,36 @@
-##  FV 
+`FV[p, mu]` is the $4$-dimensional vector $p^{\mu }$.
 
-FV[p, mu] is the four-dimensional vector $p^{\mu }$..
+### See also
 
-###  See also 
+[FCE](FCE), [FCI](FCI), [FVD](FVD), [Pair](Pair).
 
-FCE, FCI, FVD, Pair.
-
-###  Examples 
+### Examples
 
 ```mathematica
-FV[p, \[Mu]] 
- 
-FV[p - q, \[Mu]] 
- 
-FV[p, \[Mu]] // StandardForm 
- 
-FCI[FV[p, \[Mu]]] // StandardForm
+FV[p, \[Mu]]
 ```
 
 $$\overline{p}^{\mu }$$
 
+```mathematica
+FV[p - q, \[Mu]]
+```
+
 $$\left(\overline{p}-\overline{q}\right)^{\mu }$$
 
-```
+```mathematica
+FV[p, \[Mu]] // StandardForm
+
 (*FV[p, \[Mu]]*)
+```
+
+```mathematica
+FCI[FV[p, \[Mu]]] // StandardForm
 
 (*Pair[LorentzIndex[\[Mu]], Momentum[p]]*)
 ```
 
-ExpandScalarProduct is used to expand momenta in FV
+`ExpandScalarProduct` is used to expand momenta in `FV`
 
 ```mathematica
 ExpandScalarProduct[FV[p - q, \[Mu]]]

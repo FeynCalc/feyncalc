@@ -1,9 +1,7 @@
-##  OPEIntegrate 
+`OPEIntegrate[expr, q, x]` calculates a one-loop OPE-type integral.
 
-OPEIntegrate[expr, q, x] calculates a one-loop OPE-type integral..
+### See also
 
-###  See also 
+[RHI](RHI).
 
-RHI.
-
-###  Examples 
+### Examples

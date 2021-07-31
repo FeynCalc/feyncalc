@@ -1,12 +1,14 @@
-##  Amplitude 
+`Amplitude` is a database of Feynman amplitudes. `Amplitude["name"]` returns the amplitude corresponding to the string `"name"`. A list of all defined names is obtained with `Amplitude[]`. New amplitudes can be added to the file `"Amplitude.m"`. It is strongly recommended to use names that reflect the process.
 
-Amplitude is a database of Feynman amplitudes. Amplitude["name"] returns the amplitude corresponding to the string "name". A list of all defined names is obtained with Amplitude[]. New amplitudes can be added to the file "Amplitude.m". It is strongly recommended to use names that reflect the process. The option Gauge -> 1 means `t Hooft Feynman gauge; Polarization -> 0 gives unpolarized OPE-type amplitudes, Polarization -> 1 the polarized ones..
+The option `Gauge -> 1` means `t Hooft Feynman gauge;
 
-###  See also 
+`Polarization -> 0` gives unpolarized OPE-type amplitudes, `Polarization -> 1` the polarized ones.
 
-FeynAmp.
+### See also
 
-###  Examples 
+[FeynAmp](FeynAmp).
+
+### Examples
 
 ```mathematica
 Amplitude[] // Length
@@ -17,9 +19,11 @@ $$98$$
 This is the amplitude of a gluon self-energy diagram:
 
 ```mathematica
-Amplitude["se1g1"] 
+Amplitude["se1g1"]
+Explicit[%] 
+  
  
-Explicit[%]
+
 ```
 
 $$\text{SUNDeltaContract}\left(f^{\text{FCGV}(\text{a})\text{FCGV}(\text{c})\text{FCGV}(\text{e})} f^{\text{FCGV}(\text{b})\text{FCGV}(\text{d})\text{FCGV}(\text{f})} \Pi _{\text{FCGV}(\text{e})\text{FCGV}(\text{f})}^{\text{FCGV}(\beta )\text{FCGV}(\sigma )}(\text{FCGV}(\text{q})) V^{\text{FCGV}(\mu )\text{FCGV}(\alpha )\text{FCGV}(\beta )}(\text{FCGV}(\text{p})\text{, }\text{FCGV}(\text{q})-\text{FCGV}(\text{p})\text{, }-\text{FCGV}(\text{q})) V^{\text{FCGV}(\nu )\text{FCGV}(\rho )\text{FCGV}(\sigma )}(-\text{FCGV}(\text{p})\text{, }\text{FCGV}(\text{p})-\text{FCGV}(\text{q})\text{, }\text{FCGV}(\text{q})) \Pi _{\text{FCGV}(\text{c})\text{FCGV}(\text{d})}^{\text{FCGV}(\alpha )\text{FCGV}(\rho )}(\text{FCGV}(\text{p})-\text{FCGV}(\text{q}))\right)$$

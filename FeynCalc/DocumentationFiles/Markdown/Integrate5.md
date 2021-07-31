@@ -1,9 +1,7 @@
-##  Integrate5 
+`Integrate5` is an alternative implementation along the lines of `Integrate2`.
 
-Integrate5 is an alternative implementation along the lines of Integrate2..
+### See also
 
-###  See also 
+[Integrate2](Integrate2), [Integrate4](Integrate4).
 
-Integrate2, Integrate4.
-
-###  Examples 
+### Examples

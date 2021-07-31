@@ -1,12 +1,12 @@
-##  CalcColorFactor 
+## CalcColorFactor
 
-`CalcColorFactor[exp]` calculates the color factor of exp. `CalcColorFactor` is useful for application on FeynArts produced amplitudes. 
+`CalcColorFactor[exp]` calculates the color factor of exp. `CalcColorFactor` is useful for application on FeynArts produced amplitudes.
 
-###  See also 
+### See also
 
-SUNSimplify.
+[SUNSimplify](SUNSimplify).
 
-###  Examples 
+### Examples
 
 ```mathematica
 CalcColorFactor[SUNF[a, b, c] SUNF[a, b, d]]

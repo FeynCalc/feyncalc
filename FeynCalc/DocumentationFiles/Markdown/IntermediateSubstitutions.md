@@ -1,9 +1,7 @@
-##  IntermediateSubstitutions 
+`IntermediateSubstitutions` is an option of various FeynCalc functions. All substitutions indicated hereby are done at an intermediate stage of the calculation.
 
-IntermediateSubstitutions is an option of various FeynCalc functions. All substitutions indicated hereby are done at an intermediate stage of the calculation..
+### See also
 
-###  See also 
+[OneLoop](OneLoop).
 
-OneLoop.
-
-###  Examples 
+### Examples

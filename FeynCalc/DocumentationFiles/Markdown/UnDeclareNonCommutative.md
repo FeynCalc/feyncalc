@@ -1,16 +1,13 @@
-##  UnDeclareNonCommutative 
+`UnDeclareNonCommutative[a, b, ...]` undeclares `a,b, ...` to be noncommutative, i.e., `DataType[a,b, ..., NonCommutative]` is set to `False`.
 
-UnDeclareNonCommutative[a, b, ...] undeclares a,b, ... to be noncommutative, i.e., DataType[a,b, ..., NonCommutative] is set to False..
+### See also
 
-###  See also 
+[DataType](DataType), [DeclareNonCommutative](DeclareNonCommutative).
 
-DataType, DeclareNonCommutative.
-
-###  Examples 
+### Examples
 
 ```mathematica
 DeclareNonCommutative[x]
-
 ```
 
 As a side-effect of DeclareNonCommutative x is declared to be of DataType NonCommutative.
@@ -25,17 +22,22 @@ The inverse operation is UnDeclareNonCommutative.
 
 ```mathematica
 UnDeclareNonCommutative[x]
-DataType[x, NonCommutative] 
- 
-DeclareNonCommutative[y, z]
-DataType[y, z, NonCommutative] 
- 
-UnDeclareNonCommutative[y, z]
-DataType[y, z, NonCommutative]
+DataType[x, NonCommutative]
 ```
 
 $$\text{False}$$
 
+```mathematica
+DeclareNonCommutative[y, z]
+DataType[y, z, NonCommutative]
+
+```
+
 $$\{\text{True},\text{True}\}$$
+
+```mathematica
+UnDeclareNonCommutative[y, z]
+DataType[y, z, NonCommutative]
+```
 
 $$\{\text{False},\text{False}\}$$

@@ -1,12 +1,12 @@
-##  SpinorChainTranspose 
+## SpinorChainTranspose
 
 `SpinorChainTranspose[exp]` transposes particular spinor chains in exp, which effectively switches the $u$ and $v$ spinors and reverses the order of the Dirac matrices using charge conjugation operator. This operation is often required in calculations that involve Majorana particles. By default, the function will tranpose all chains of the form $\bar{v}.x.u$ and $\bar{v}.x.v$. A different or more fine grained choice can be obtained via the option `Select`.
 
-###  See also 
+### See also
 
-FCChargeConjugateTransposed, DiracGamma, Spinor.
+[FCChargeConjugateTransposed](FCChargeConjugateTransposed), [DiracGamma](DiracGamma), [Spinor](Spinor).
 
-###  Examples 
+### Examples
 
 ```mathematica
 SpinorVBarD[p1, m1] . GAD[\[Mu]] . (GSD[p] + m) . GAD[\[Mu]] . SpinorUD[p2, m2]

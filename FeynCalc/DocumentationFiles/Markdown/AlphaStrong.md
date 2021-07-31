@@ -1,12 +1,15 @@
-##  AlphaStrong 
+AlphaStrong  is a shortcut for `SMP["alpha_s"]` which represents the strong coupling constant.
 
-AlphaStrong  is a shortcut for $\text{SMP}[\text{alpha$\_$s}]$ which represents the strong coupling constant.The shortcut AlphaStrong is deprecated, please use $text{SMP}[text{alpha$_$s}]$ instead!.
+The shortcut `AlphaStrong` is deprecated, please use `SMP["alpha_s"]` instead!
 
-###  Examples 
+### See also
+
+[SMP](SMP).
+
+### Examples
 
 ```mathematica
-AlphaStrong 
- 
+AlphaStrong
 % // InputForm
 ```
 
@@ -15,3 +18,9 @@ $$\alpha _s$$
 ```mathematica
 SMP["alpha_s"]
 ```
+
+```mathematica
+SMP["alpha_s"]
+```
+
+$$\alpha _s$$

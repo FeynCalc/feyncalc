@@ -1,8 +1,12 @@
-##  FCLoopBasisOverdeterminedQ 
+## FCLoopBasisOverdeterminedQ
 
 `FCLoopBasisOverdeterminedQ[int, {q1, q2, ...}]` checks if the propagators of the loop integral `int` (that depends on the loop momenta `q1, q2, ...`) are linearly dependent.
 
-###  Examples 
+### See also
+
+[FCLoopBasisIncompleteQ](FCLoopBasisIncompleteQ).
+
+### Examples
 
 ```mathematica
 FAD[{q1, m1}, {q1 - l + p, m}]

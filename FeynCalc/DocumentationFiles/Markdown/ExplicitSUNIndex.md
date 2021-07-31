@@ -1,12 +1,10 @@
-##  ExplicitSUNIndex 
+`ExplicitSUNIndex[ind]`  is a specific $SU(N)$ index in the adjoint representation, i.e. `ind` is an integer.
 
-ExplicitSUNIndex[ind]  is a specific SU(N) index in the adjoint representation, i.e. ind is an integer..
+### See also
 
-###  See also 
+[FCI](FCI), [SUNDelta](SUNDelta), [SUNF](SUNF), [SUNIndex](SUNIndex).
 
-FCI, SUNDelta, SUNF, SUNIndex.
-
-###  Examples 
+### Examples
 
 ```mathematica
 ExplicitSUNIndex[1]

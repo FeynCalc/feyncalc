@@ -1,15 +1,11 @@
-##  PartialFourVector 
+`PartialFourVector` is equivalent to `FourDivergence`.
 
-PartialFourVector[exp, FourVector[p, mu]]  calculates the partial derivative of exp w.r.t. p(mu). PartialFourVector[exp, FV[p, mu], FV[p,nu], ...]  gives the multiple derivative..
+The shortcut `PartialFourVector` is deprecated, please use `FourDivergence` instead!
 
-###  See also 
+### See also
 
-Pair, Contract.
+[FourDivergence](FourDivergence).
 
-###  Examples 
+### Examples
 
-```mathematica
-PartialFourVector[a E^FV[p, \[Nu]]^2, FV[p, \[Mu]]]
-```
-
-$$2 a e^{\overline{p}^2} \overline{p}^{\mu }$$
+`PartialFourVector` is scheduled for removal in the future versions of FeynCalc. The safe alternative is to use `FourDivergence`.

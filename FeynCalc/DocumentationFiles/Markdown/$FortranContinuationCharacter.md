@@ -1,12 +1,10 @@
-##  $FortranContinuationCharacter 
+`$FortranContinuationCharacter` is the continuation character used in Write2.
 
-$FortranContinuationCharacter is the continuation character used in Write2..
+### See also
 
-###  See also 
+[Write2](Write2).
 
-Write2.
-
-###  Examples 
+### Examples
 
 ```mathematica
 $FortranContinuationCharacter

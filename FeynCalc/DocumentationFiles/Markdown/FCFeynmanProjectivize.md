@@ -1,14 +1,14 @@
-##  FCFeynmanProjectivize 
+## FCFeynmanProjectivize
 
 `FCFeynmanProjectivize[int]` checks if the given Feynman integral is a projective form. If this is not the case, the integral will be projectivized.
 
 Projectivity is a necessary condition for computing the integral with the aid of the Cheng-Wu theorem
 
-###  See also 
+### See also
 
-FCFeynmanParametrize, FCFeynmanPrepare.
+[FCFeynmanParametrize](FCFeynmanParametrize), [FCFeynmanPrepare](FCFeynmanPrepare).
 
-###  Examples 
+### Examples
 
 ```mathematica
 int = SFAD[{p3, mg^2}] SFAD[{p3 - p1, mg^2}] SFAD[{{0, -2 p1 . q}}]

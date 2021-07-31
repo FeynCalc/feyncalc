@@ -1,9 +1,9 @@
-##  OneLoopSum 
+## OneLoopSum
 
 `OneLoopSum[FeynAmp[ ... ], FeynAmp[ ... ] , ...]` will calculate a list of Feynman amplitudes by replacing FeynAmp step by step by `OneLoop`.
 
-###  See also 
+### See also
 
-OneLoop.
+[OneLoop](OneLoop).
 
-###  Examples 
+### Examples

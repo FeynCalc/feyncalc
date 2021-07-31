@@ -1,9 +1,9 @@
-##  IndexPosition 
+## IndexPosition
 
 `IndexPosition` is an option for `FieldStrength`.
 
-###  See also 
+### See also
 
-FieldStrength.
+[FieldStrength](FieldStrength).
 
-###  Examples 
+### Examples

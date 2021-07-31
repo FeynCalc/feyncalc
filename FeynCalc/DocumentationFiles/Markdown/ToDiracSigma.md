@@ -1,12 +1,12 @@
-##  ToDiracSigma 
+## ToDiracSigma
 
 `ToDiracSigma[exp, x, y]` substitutes the neighboring Dirac matrices $x$ and $y$ by `DiracSigma` and the metric tensor.
 
-###  See also 
+### See also
 
-DiracGamma, DiracSigma, DiracSigmaExplicit.
+[DiracGamma](DiracGamma), [DiracSigma](DiracSigma), [DiracSigmaExplicit](DiracSigmaExplicit).
 
-###  Examples 
+### Examples
 
 ```mathematica
 GA[\[Mu], \[Nu]]

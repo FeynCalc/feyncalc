@@ -1,53 +1,63 @@
-##  AntiCommutator 
+`AntiCommutator[x, y] = c` defines the anti-commutator of the non commuting objects `x` and `y`.
 
-AntiCommutator[x, y] = c defines the anti-commutator of the non commuting objects $\text{x}$ and $\text{y}$..
+### See also
 
-###  See also 
+[Commutator](Commutator), [CommutatorExplicit](CommutatorExplicit), [DeclareNonCommutative](DeclareNonCommutative), [DotSimplify](DotSimplify).
 
-Commutator, CommutatorExplicit, DeclareNonCommutative, DotSimplify.
+### Examples
 
-###  Examples 
-
-This declares a and b as noncommutative variables.
+This declares `a` and `b` as noncommutative variables.
 
 ```mathematica
 DeclareNonCommutative[a, b]
-AntiCommutator[a, b] 
- 
-CommutatorExplicit[%] 
- 
-CommutatorExplicit[AntiCommutator[a + b, a - 2 b ]] 
- 
-DotSimplify[AntiCommutator[a + b, a - 2 b ]] 
- 
-DeclareNonCommutative[c, d, Overscript[c, ~], Overscript[d, ~]]
-
+AntiCommutator[a, b]
+CommutatorExplicit[%]
 ```
 
 $$\{a,\medspace b\}$$
 
 $$a.b+b.a$$
 
+```mathematica
+CommutatorExplicit[AntiCommutator[a + b, a - 2 b ]]
+```
+
 $$(a-2 b).(a+b)+(a+b).(a-2 b)$$
+
+```mathematica
+DotSimplify[AntiCommutator[a + b, a - 2 b ]]
+```
 
 $$-a.b-b.a+2 a.a-4 b.b$$
 
-Defining {c,d} = z results in replacements of c.d by z-d.c.
+```mathematica
+DeclareNonCommutative[c, d, ct, dt]
+```
+
+Defining `{c,d} = z` results in replacements of `c.d` by `z-d.c.`
 
 ```mathematica
-AntiCommutator[c, d] = z 
- 
-DotSimplify[ d . c . d ] 
- 
-AntiCommutator[Overscript[d, ~], Overscript[c, ~]] = Overscript[z, ~] 
- 
-DotSimplify[ Overscript[d, ~] . Overscript[c, ~] . Overscript[d, ~] ] 
- 
-UnDeclareNonCommutative[a, b, c, d, Overscript[c, ~], Overscript[d, ~]]
-Unset[AntiCommutator[c, d]]
-Unset[AntiCommutator[Overscript[d, ~], Overscript[c, ~]]]
+AntiCommutator[c, d] = z
+DotSimplify[ d . c . d ]
 ```
 
 $$z$$
 
-$$c d^2$$
+$$d z-d.d.c$$
+
+```mathematica
+AntiCommutator[dt, ct] = zt
+```
+
+$$\text{zt}$$
+
+```mathematica
+DotSimplify[dt . ct . dt]
+```
+
+$$\text{dt} \text{zt}-\text{ct}.\text{dt}.\text{dt}$$
+
+```mathematica
+UnDeclareNonCommutative[a, b, c, d, ct, dt]
+UnDeclareAllAntiCommutators[]
+```

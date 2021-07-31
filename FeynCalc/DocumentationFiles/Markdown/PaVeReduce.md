@@ -1,12 +1,12 @@
-##  PaVeReduce 
+## PaVeReduce
 
 `PaVeReduce[expr]` reduces all Passarino-Veltman integrals (i.e. all PaVe's) in expr down to scalar `A0`, `B0`, `C0` and `D0`.
 
-###  See also 
+### See also
 
-FRH, PaVeOrder.
+[FRH](FRH), [PaVeOrder](PaVeOrder).
 
-###  Examples 
+### Examples
 
 ```mathematica
 PaVeReduce[PaVe[1, 2, {s, m^2, m^2}, {m^2, m^2, M^2}], IsolateNames -> FF]
@@ -30,19 +30,15 @@ DeleteFile /@ FileNames["fctd122.for"]; Clear[d122, se];
 
 $$\frac{\text{B}_0(\text{mw2},0,\text{mw2})}{\text{mw2}-t}-\frac{\text{B}_0(t,\text{mw2},\text{me2})}{\text{mw2}-t}$$
 
-$$\begin{array}{l}
- \text{( PaVe[0, $\{$mw2$\}$, $\{$0, mw2$\}$]/(mw2 - t) - PaVe[0, $\{$t$\}$, $\{$mw2, SmallVariable[me2]$\}$]/} \\
- \text{  (mw2 - t)} \\
- \text{  ) } \\
-\end{array}$$
+$$![1exw3jt5sr9c6](img/1exw3jt5sr9c6.png)$$
 
-$$-\frac{D (\text{MW2}-S) T^2 \text{D}_0(\text{ME2},\text{MW2},\text{MW2},\text{ME2},S,T,0,\text{ME2},0,\text{ME2}) S^3}{8 (3-D) \left(\text{MW2}^2-S U\right)^3}-\frac{D (\text{MW2}-S)^2 T \text{C}_0(\text{MW2},S,\text{ME2},\text{ME2},0,0) S^2}{4 (3-D) \left(\text{MW2}^2-S U\right)^3}+\frac{D (\text{MW2}-S) T^2 \text{C}_0(T,\text{ME2},\text{ME2},\text{ME2},\text{ME2},0) S^2}{8 (3-D) \left(\text{MW2}^2-S U\right)^3}-\frac{\left(2 \text{MW2}^2-D S T-2 S U\right) \text{B}_0(S,0,0) S}{2 (2-D) (\text{MW2}-S) \left(\text{MW2}^2-S U\right)^2}-\frac{\left(\text{MW2}^2+2 S \text{MW2}+S U\right) \text{A}_0(\text{ME2})}{2 \text{MW2} (\text{MW2}-S) (4 \text{MW2}-T) \left(\text{MW2}^2-S U\right)}+\left(\left(-2 D \text{MW2}^5+16 \text{MW2}^5-3 D S \text{MW2}^4+2 S \text{MW2}^4-3 D U \text{MW2}^4+10 U \text{MW2}^4-8 D S^2 \text{MW2}^3+4 D S U \text{MW2}^3-16 S U \text{MW2}^3+2 D S^3 \text{MW2}^2+4 D S U^2 \text{MW2}^2-8 S U^2 \text{MW2}^2-2 D S^2 U \text{MW2}^2+2 D S^4 \text{MW2}+4 D S^3 U \text{MW2}+D S^2 U^3-2 S^2 U^3+D S^3 U^2-2 S^3 U^2\right) \text{B}_0(\text{MW2},0,\text{ME2})\right)/\left(2 (2-D) (\text{MW2}-S) (4 \text{MW2}-T)^2 \left(\text{MW2}^2-S U\right)^2\right)-\left(\left(20 \text{MW2}^4-2 D S \text{MW2}^3-12 S \text{MW2}^3-6 T \text{MW2}^3-2 D U \text{MW2}^3-4 D S^2 \text{MW2}^2+2 S T \text{MW2}^2-20 S U \text{MW2}^2+D S^3 \text{MW2}+3 D S U^2 \text{MW2}+12 S^2 U \text{MW2}+6 S T U \text{MW2}+D S^4+D S^2 U^2+2 D S^3 U-2 S^2 T U\right) \text{B}_0(T,\text{ME2},\text{ME2})\right)/\left(2 (2-D) (4 \text{MW2}-T)^2 \left(\text{MW2}^2-S U\right)^2\right)-\left(\left(128 D \text{MW2}^7+48 \text{MW2}^7-608 D S \text{MW2}^6-128 D T \text{MW2}^6-144 U \text{MW2}^6-4 D^2 S^2 \text{MW2}^5+1152 D S^2 \text{MW2}^5+28 D T^2 \text{MW2}^5-4 D^2 U^2 \text{MW2}^5+888 D S T \text{MW2}^5-8 D^2 S U \text{MW2}^5-96 S U \text{MW2}^5+48 T U \text{MW2}^5-16 D^2 S^3 \text{MW2}^4-1088 D S^3 \text{MW2}^4-420 D S T^2 \text{MW2}^4+288 S U^2 \text{MW2}^4-1840 D S^2 T \text{MW2}^4+6 D^2 S^4 \text{MW2}^3+512 D S^4 \text{MW2}^3+64 D S T^3 \text{MW2}^3+10 D^2 S U^3 \text{MW2}^3+1116 D S^2 T^2 \text{MW2}^3+18 D^2 S^2 U^2 \text{MW2}^3+48 S^2 U^2 \text{MW2}^3-96 S T U^2 \text{MW2}^3+1568 D S^3 T \text{MW2}^3-2 D^2 S^3 U \text{MW2}^3+8 D^2 S^5 \text{MW2}^2-96 D S^5 \text{MW2}^2-324 D S^2 T^3 \text{MW2}^2-144 S^2 U^3 \text{MW2}^2-716 D S^3 T^2 \text{MW2}^2+8 D^2 S^3 U^2 \text{MW2}^2-528 D S^4 T \text{MW2}^2+16 D^2 S^4 U \text{MW2}^2-D^2 S^6 \text{MW2}+38 D S^2 T^4 \text{MW2}-7 D^2 S^2 U^4 \text{MW2}+100 D S^3 T^3 \text{MW2}-6 D^2 S^3 U^3 \text{MW2}+48 S^2 T U^3 \text{MW2}+120 D S^4 T^2 \text{MW2}+40 D S^5 T \text{MW2}-2 D^2 S^5 U \text{MW2}-D^2 S^7+2 D S^3 T^4-D^2 S^3 U^4-4 D^2 S^4 U^3-6 D^2 S^5 U^2-4 D^2 S^6 U\right) \text{C}_0(\text{MW2},\text{MW2},T,\text{ME2},0,\text{ME2})\right)/\left(8 (2-D) (3-D) (4 \text{MW2}-T)^2 \left(\text{MW2}^2-S U\right)^3\right)$$
+$$\text{$\$$Failed}$$
+
+$$-\frac{D (\text{MW2}-S) T^2 \text{D}_0(\text{MW2},\text{MW2},\text{ME2},\text{ME2},T,S,\text{ME2},0,\text{ME2},0) S^3}{8 (3-D) \left(\text{MW2}^2-S U\right)^3}-\frac{D (\text{MW2}-S)^2 T \text{C}_0(\text{MW2},S,\text{ME2},\text{ME2},0,0) S^2}{4 (3-D) \left(\text{MW2}^2-S U\right)^3}+\frac{D (\text{MW2}-S) T^2 \text{C}_0(T,\text{ME2},\text{ME2},\text{ME2},\text{ME2},0) S^2}{8 (3-D) \left(\text{MW2}^2-S U\right)^3}-\frac{\left(2 \text{MW2}^2-D S T-2 S U\right) \text{B}_0(S,0,0) S}{2 (2-D) (\text{MW2}-S) \left(\text{MW2}^2-S U\right)^2}+\frac{(\text{MW2}+U) \text{A}_0(\text{ME2})}{2 \text{MW2} (4 \text{MW2}-T) \left(\text{MW2}^2-S U\right)}+\left(\left(-2 D \text{MW2}^5+16 \text{MW2}^5-3 D S \text{MW2}^4+2 S \text{MW2}^4-3 D U \text{MW2}^4+10 U \text{MW2}^4-8 D S^2 \text{MW2}^3+4 D S U \text{MW2}^3-16 S U \text{MW2}^3+2 D S^3 \text{MW2}^2+4 D S U^2 \text{MW2}^2-8 S U^2 \text{MW2}^2-2 D S^2 U \text{MW2}^2+2 D S^4 \text{MW2}+4 D S^3 U \text{MW2}+D S^2 U^3-2 S^2 U^3+D S^3 U^2-2 S^3 U^2\right) \text{B}_0(\text{MW2},0,\text{ME2})\right)/\left(2 (2-D) (\text{MW2}-S) (4 \text{MW2}-T)^2 \left(\text{MW2}^2-S U\right)^2\right)-\left(\left(20 \text{MW2}^4-2 D S \text{MW2}^3-12 S \text{MW2}^3-6 T \text{MW2}^3-2 D U \text{MW2}^3-4 D S^2 \text{MW2}^2+2 S T \text{MW2}^2-20 S U \text{MW2}^2+D S^3 \text{MW2}+3 D S U^2 \text{MW2}+12 S^2 U \text{MW2}+6 S T U \text{MW2}+D S^4+D S^2 U^2+2 D S^3 U-2 S^2 T U\right) \text{B}_0(T,\text{ME2},\text{ME2})\right)/\left(2 (2-D) (4 \text{MW2}-T)^2 \left(\text{MW2}^2-S U\right)^2\right)-\left(\left(128 D \text{MW2}^7+48 \text{MW2}^7-608 D S \text{MW2}^6-128 D T \text{MW2}^6-144 U \text{MW2}^6-4 D^2 S^2 \text{MW2}^5+1152 D S^2 \text{MW2}^5+28 D T^2 \text{MW2}^5-4 D^2 U^2 \text{MW2}^5+888 D S T \text{MW2}^5-8 D^2 S U \text{MW2}^5-96 S U \text{MW2}^5+48 T U \text{MW2}^5-16 D^2 S^3 \text{MW2}^4-1088 D S^3 \text{MW2}^4-420 D S T^2 \text{MW2}^4+288 S U^2 \text{MW2}^4-1840 D S^2 T \text{MW2}^4+6 D^2 S^4 \text{MW2}^3+512 D S^4 \text{MW2}^3+64 D S T^3 \text{MW2}^3+10 D^2 S U^3 \text{MW2}^3+1116 D S^2 T^2 \text{MW2}^3+18 D^2 S^2 U^2 \text{MW2}^3+48 S^2 U^2 \text{MW2}^3-96 S T U^2 \text{MW2}^3+1568 D S^3 T \text{MW2}^3-2 D^2 S^3 U \text{MW2}^3+8 D^2 S^5 \text{MW2}^2-96 D S^5 \text{MW2}^2-324 D S^2 T^3 \text{MW2}^2-144 S^2 U^3 \text{MW2}^2-716 D S^3 T^2 \text{MW2}^2+8 D^2 S^3 U^2 \text{MW2}^2-528 D S^4 T \text{MW2}^2+16 D^2 S^4 U \text{MW2}^2-D^2 S^6 \text{MW2}+38 D S^2 T^4 \text{MW2}-7 D^2 S^2 U^4 \text{MW2}+100 D S^3 T^3 \text{MW2}-6 D^2 S^3 U^3 \text{MW2}+48 S^2 T U^3 \text{MW2}+120 D S^4 T^2 \text{MW2}+40 D S^5 T \text{MW2}-2 D^2 S^5 U \text{MW2}-D^2 S^7+2 D S^3 T^4-D^2 S^3 U^4-4 D^2 S^4 U^3-6 D^2 S^5 U^2-4 D^2 S^6 U\right) \text{C}_0(\text{MW2},\text{MW2},T,\text{ME2},0,\text{ME2})\right)/\left(8 (2-D) (3-D) (4 \text{MW2}-T)^2 \left(\text{MW2}^2-S U\right)^3\right)$$
 
 $$\begin{array}{l}
- \text{        d122res = -((5.D-1*(MW2**2 + S*U + MW2*S*2D0)*} \\
- \text{     $\&$       PaVe(0D0,List(),List(ME2)))/} \\
- \text{     $\&$     (MW2*(MW2 - S*1D0)*(MW2**2 - S*U*1D0)*} \\
- \text{     $\&$       (-(T*1D0) + MW2*4D0))) + } \\
+ \text{        d122res = ((MW2 + U)*5.D-1*PaVe(0D0,List(),List(ME2)))/} \\
+ \text{     $\&$   (MW2*(MW2**2 - S*U*1D0)*(-(T*1D0) + MW2*4D0)) + } \\
  \text{     $\&$  (5.D-1*(D*S**3*U**2 + D*S**2*U**3 - D*MW2**5*2D0 + } \\
  \text{     $\&$       MW2**4*S*2D0 + D*MW2**2*S**3*2D0 + } \\
  \text{     $\&$       D*MW2*S**4*2D0 - D*MW2**2*S**2*U*2D0 - } \\
@@ -108,7 +104,7 @@ $$\begin{array}{l}
  \text{     $\&$     PaVe(0D0,List(T,ME2,ME2),List(ME2,ME2,0D0)))/} \\
  \text{     $\&$   ((MW2**2 - S*U*1D0)**3*(-(D*1D0) + 3D0)) - } \\
  \text{     $\&$  (D*S**3*T**2*1.25D-1*(MW2 - S*1D0)*} \\
- \text{     $\&$     PaVe(0D0,List(ME2,MW2,MW2,ME2,S,T),} \\
- \text{     $\&$      List(0D0,ME2,0D0,ME2)))/} \\
+ \text{     $\&$     PaVe(0D0,List(MW2,MW2,ME2,ME2,T,S),} \\
+ \text{     $\&$      List(ME2,0D0,ME2,0D0)))/} \\
  \text{     $\&$   ((MW2**2 - S*U*1D0)**3*(-(D*1D0) + 3D0))} \\
 \end{array}$$

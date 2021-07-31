@@ -1,10 +1,10 @@
-##  SpinorChainEvaluate 
+## SpinorChainEvaluate
 
 `SpinorChainEvaluate[exp]` explicitly evaluates suitable spinor chains, i.e. it replaces a `DOT[Spinor[...],...,Spinor[...]]` with a scalar quantity without a DOT.
 
-###  See also 
+### See also
 
-###  Examples 
+### Examples
 
 ```mathematica
 ex = SpinorUBar[p, m] . SpinorU[p, m]

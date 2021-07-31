@@ -1,12 +1,12 @@
-##  FCGetDiracGammaScheme 
+## FCGetDiracGammaScheme
 
 `FCGetDiracGammaScheme[]` shows the currently used scheme for handling Dirac matrices in $D$ dimensions.
 
-###  See also 
+### See also
 
-FCSetDiracGammaScheme, DiracTrace.
+[FCSetDiracGammaScheme](FCSetDiracGammaScheme), [DiracTrace](DiracTrace).
 
-###  Examples 
+### Examples
 
 ```mathematica
 FCSetDiracGammaScheme["BMHV"]

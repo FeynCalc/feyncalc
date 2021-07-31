@@ -1,29 +1,37 @@
-##  KDD 
+`KDD[i, j]` is the Kronecker delta in $D-1$ dimensions.
 
-KDD[i, j] is the Kronecker delta in D-1 dimensions.
+### See also
 
-###  Examples 
+[CartesianPair](CartesianPair), [KD](KD).
+
+### Examples
 
 ```mathematica
-KDD[i, j] 
- 
-Contract[KDD[i, j] KDD[i, j]] 
- 
-KDD[a, b] // StandardForm 
- 
-FCI[KDD[a, b]] // StandardForm 
- 
-FCE[FCI[KDD[a, b]]] // StandardForm
+KDD[i, j]
 ```
 
 $$\delta ^{ij}$$
 
+```mathematica
+Contract[KDD[i, j] KDD[i, j]]
+```
+
 $$D-1$$
 
-```
+```mathematica
+KDD[a, b] // StandardForm
+
 (*KDD[a, b]*)
+```
+
+```mathematica
+FCI[KDD[a, b]] // StandardForm
 
 (*CartesianPair[CartesianIndex[a, -1 + D], CartesianIndex[b, -1 + D]]*)
+```
+
+```mathematica
+FCE[FCI[KDD[a, b]]] // StandardForm
 
 (*KDD[a, b]*)
 ```

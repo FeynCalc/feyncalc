@@ -1,12 +1,10 @@
-##  $NonComm 
+`$NonComm` contains a list of all noncommutative heads present.
 
-$NonComm contains a list of all noncommutative heads present..
+### See also
 
-###  See also 
+[NonCommQ](NonCommQ), [NonCommutative](NonCommutative).
 
-NonCommQ, NonCommutative.
-
-###  Examples 
+### Examples
 
 ```mathematica
 $NonComm

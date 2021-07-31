@@ -1,12 +1,12 @@
-##  RightPartialD 
+## RightPartialD
 
 `RightPartialD[mu]` denotes $\partial _{\mu }$, acting to the right.
 
-###  See also 
+### See also
 
-ExpandPartialD, FCPartialD, LeftPartialD.
+[ExpandPartialD](ExpandPartialD), [FCPartialD](FCPartialD), [LeftPartialD](LeftPartialD).
 
-###  Examples 
+### Examples
 
 ```mathematica
 RightPartialD[\[Mu]]

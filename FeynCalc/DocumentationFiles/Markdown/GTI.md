@@ -1,9 +1,7 @@
-##  GTI 
+`GTI` is like `RHI`, but with no functional properties.
 
-GTI is like RHI, but with no functional properties..
+### See also
 
-###  See also 
+[RHI](RHI).
 
-RHI.
-
-###  Examples 
+### Examples

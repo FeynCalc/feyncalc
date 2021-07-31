@@ -1,5 +1,7 @@
-##  NumericalFactor 
+`NumericalFactor[expr]` gives the overall numerical factor of `expr`.
 
-NumericalFactor[expr] gives the overall numerical factor of expr..
+### See also
 
-###  Examples 
+[FCFactorOut](FCFactorOut).
+
+### Examples

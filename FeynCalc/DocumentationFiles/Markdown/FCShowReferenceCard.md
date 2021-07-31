@@ -1,8 +1,8 @@
-##  FCShowReferenceCard 
-
 `FCShowReferenceCard[{name}]`  shows the reference card that corresponds to `"name"`. Reference cards are stored in Tables/ReferenceCards inside the FeynCalc main directory. `FCShowReferenceCard[]` lists available reference cards.
 
-###  Examples 
+### See also
+
+### Examples
 
 ```mathematica
 FCShowReferenceCard[]

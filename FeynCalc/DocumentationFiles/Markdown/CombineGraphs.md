@@ -1,9 +1,9 @@
-##  CombineGraphs 
+## CombineGraphs
 
 `CombineGraphs` is an option for `OneLoopSum`.
 
-###  See also 
+### See also
 
-OneLoopSum.
+[OneLoopSum](OneLoopSum).
 
-###  Examples 
+### Examples

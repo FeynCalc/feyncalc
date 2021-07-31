@@ -1,12 +1,12 @@
-##  SpinorChainChiralSplit 
+## SpinorChainChiralSplit
 
 `SpinorChainChiralSplit[exp]` introduces chiral projectors in spinor chains that contain no $\gamma^5$.
 
-###  See also 
+### See also
 
-DiracSubstitute67, DiracGamma, ToDiracGamma67.
+[DiracSubstitute67](DiracSubstitute67), [DiracGamma](DiracGamma), [ToDiracGamma67](ToDiracGamma67).
 
-###  Examples 
+### Examples
 
 ```mathematica
 SpinorUBar[p1, m1] . GSD[p] . SpinorV[p2, m2]

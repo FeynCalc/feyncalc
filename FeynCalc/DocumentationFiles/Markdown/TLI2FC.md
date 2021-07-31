@@ -1,9 +1,7 @@
-##  TLI2FC 
+`TLI2FC[exp]` transforms all `TLI`-integrals in exp to the `FAD` form.
 
-TLI2FC[exp] transforms all TLI-integrals in exp to the FAD form..
+### See also
 
-###  See also 
+[TLI](TLI), [ FC2TLI]( FC2TLI).
 
-TLI,  FC2TLI.
-
-###  Examples 
+### Examples

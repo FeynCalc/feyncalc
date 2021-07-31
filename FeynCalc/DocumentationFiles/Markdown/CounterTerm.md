@@ -1,12 +1,10 @@
-##  CounterTerm 
+`CounterTerm[name]` is a database of counter terms. `CounterTerm` is also an option for the Feynman rule functions `QuarkGluonVertex`, `GluonPropagator`, `QuarkPropagator`.
 
-CounterTerm[name] is a database of counter terms. CounterTerm is also an option for the Feynman rule functions QuarkGluonVertex, GluonPropagator, QuarkPropagator..
+### See also
 
-###  See also 
+[CounterT](CounterT), [QuarkGluonVertex](QuarkGluonVertex), [GluonPropagator](GluonPropagator), [QuarkPropagator](QuarkPropagator).
 
-CounterT, QuarkGluonVertex, GluonPropagator, QuarkPropagator.
-
-###  Examples 
+### Examples
 
 ```mathematica
 CounterTerm[Zm]

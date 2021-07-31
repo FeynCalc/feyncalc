@@ -1,52 +1,58 @@
-##  MetricTensor 
+`MetricTensor[mu, nu]` is the metric tensor. The default dimension is $4$.
 
-MetricTensor[mu, nu] is the metric tensor. The default dimension is 4.The shortcut MetricTensor is deprecated, please use MT instead!.
+The shortcut `MetricTensor` is deprecated, please use `MT` instead!
 
-###  See also 
+### See also
 
-FCI, MT, MTD.
+[FCI](FCI), [MT](MT), [MTD](MTD).
 
-###  Examples 
+### Examples
 
 ```mathematica
-MetricTensor[\[Alpha], \[Beta]] 
- 
-Contract[% %] 
- 
-MetricTensor[\[Alpha], \[Beta], Dimension -> D] 
- 
-Contract[% %] 
- 
-StandardForm[MetricTensor[a, b]]
+MetricTensor[\[Alpha], \[Beta]]
+Contract[% %]
 ```
 
 $$\bar{g}^{\alpha \beta }$$
 
 $$4$$
 
+```mathematica
+MetricTensor[\[Alpha], \[Beta], Dimension -> D]
+Contract[% %]
+```
+
 $$g^{\alpha \beta }$$
 
 $$D$$
 
-```
+```mathematica
+StandardForm[MetricTensor[a, b]]
+
 (*Pair[LorentzIndex[a], LorentzIndex[b]]*)
 ```
 
-MetricTensor is scheduled for removal in the future versions of FeynCalc. The safe alternative is to use MT.
+`MetricTensor` is scheduled for removal in the future versions of FeynCalc. The safe alternative is to use `MT`.
 
 ```mathematica
-MT[\[Mu], \[Nu]] 
- 
-MTD[\[Mu], \[Nu]] 
- 
-FCI[MT[\[Mu], \[Nu]]] === MetricTensor[\[Mu], \[Nu]] 
- 
-FCI[MTD[\[Mu], \[Nu]]] === MetricTensor[\[Mu], \[Nu], Dimension -> D]
+MT[\[Mu], \[Nu]]
 ```
 
 $$\bar{g}^{\mu \nu }$$
 
+```mathematica
+MTD[\[Mu], \[Nu]]
+```
+
 $$g^{\mu \nu }$$
+
+```mathematica
+FCI[MT[\[Mu], \[Nu]]] === MetricTensor[\[Mu], \[Nu]]
+FCI[MTD[\[Mu], \[Nu]]] === MetricTensor[\[Mu], \[Nu], Dimension -> D] 
+  
+ 
+
+```
 
 $$\text{True}$$
 

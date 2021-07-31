@@ -1,9 +1,7 @@
-##  SimplifyGTI 
+`SimplifyGTI` simplifies `GTI`s.
 
-SimplifyGTI simplifies GTI's..
+### See also
 
-###  See also 
+[GTI](GTI).
 
-GTI.
-
-###  Examples 
+### Examples

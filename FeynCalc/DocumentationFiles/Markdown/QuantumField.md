@@ -1,14 +1,14 @@
-##  QuantumField 
+## QuantumField
 
 `QuantumField` is the head of quantized fields and their derivatives.
 
 `QuantumField[par, ftype, {lorind}, {sunind}]` denotes a quantum field of type `ftype` with (possible) Lorentz-indices `lorind` and $SU(N)$ indices `sunind`. The optional first argument `par` denotes a partial derivative acting on the field.
 
-###  See also 
+### See also
 
-FeynRule, FCPartialD, ExpandPartialD.
+[FeynRule](FeynRule), [FCPartialD](FCPartialD), [ExpandPartialD](ExpandPartialD).
 
-###  Examples 
+### Examples
 
 This denotes a scalar field.
 
@@ -61,7 +61,7 @@ QuantumField[A, {OPEDelta}, {a}]
 
 $$A_{\Delta }^a$$
 
-The first list of indices is usually interpreted as type `LorentzIndex`, except for `OPEDelta`, which gets converted to type `Momentum`. 
+The first list of indices is usually interpreted as type `LorentzIndex`, except for `OPEDelta`, which gets converted to type `Momentum`.
 
 ```mathematica
 QuantumField[A, {OPEDelta}, {a}] // StandardForm

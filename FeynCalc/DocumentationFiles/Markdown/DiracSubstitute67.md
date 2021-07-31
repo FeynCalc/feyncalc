@@ -1,12 +1,12 @@
-##  DiracSubstitute67 
+## DiracSubstitute67 
 
 `DiracSubstitute67[exp]` inserts the explicit definitions of the chirality projectors $\gamma^6$ and $\gamma^7$. `DiracSubstitute67` is also an option of various FeynCalc functions that handle Dirac algebra.
 
-###  See also 
+### See also
 
-DiracSubstitute5, DiracGamma, ToDiracGamma67.
+[DiracSubstitute5](DiracSubstitute5), [DiracGamma](DiracGamma), [ToDiracGamma67](ToDiracGamma67).
 
-###  Examples 
+### Examples
 
 ```mathematica
 DiracGamma[6]

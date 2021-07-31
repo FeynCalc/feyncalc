@@ -1,9 +1,9 @@
-##  QGV 
+## QGV
 
 `QGV` is equivalent to `QuarkGluonVertex`.
 
-###  See also 
+### See also
 
-QuarkGluonVertex.
+[QuarkGluonVertex](QuarkGluonVertex).
 
-###  Examples 
+### Examples

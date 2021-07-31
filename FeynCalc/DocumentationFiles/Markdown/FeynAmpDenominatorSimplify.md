@@ -1,12 +1,12 @@
-##  FeynAmpDenominatorSimplify 
+## FeynAmpDenominatorSimplify
 
 `FeynAmpDenominatorSimplify[exp]` tries to simplify each `PropagatorDenominator` in a canonical way. `FeynAmpDenominatorSimplify[exp, q1]` simplifies all `FeynAmpDenominator`s in `exp` in a canonical way, including momentum shifts. Scaleless integrals are discarded.
 
-###  See also 
+### See also
 
-TID.
+[TID](TID).
 
-###  Examples 
+### Examples
 
 ```mathematica
 FDS

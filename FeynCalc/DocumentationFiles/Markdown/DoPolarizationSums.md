@@ -1,16 +1,16 @@
-##  DoPolarizationSums 
+## DoPolarizationSums
 
 `DoPolarizationSums[exp, k, n]` sums over physical (transverse) polarizations of an external massless vector boson with the momentum `k`, where `n` is an auxiliary 4-vector from the gauge-dependent polarization sum formula.
 
-`DoPolarizationSums[exp, k, 0]` replaces the polarization sum of an external massless vector boson with the momentum `k` by $-g^{\mu \nu }$. This corresponds to the summation over all 4 polarizations, including the unphysical ones. 
+`DoPolarizationSums[exp, k, 0]` replaces the polarization sum of an external massless vector boson with the momentum `k` by $-g^{\mu \nu }$. This corresponds to the summation over all 4 polarizations, including the unphysical ones.
 
 `DoPolarizationSums[exp, k]` sums over the three polarizations of an external massive vector boson with rhe momentum `k` and mass $k^2$.
 
-###  See also 
+### See also
 
-Polariazation, Uncontract.
+[Polariazation](Polariazation), [Uncontract](Uncontract).
 
-###  Examples 
+### Examples
 
 The standard formula for massless vector bosons is valid for all types of the corresponding particles, including gluons.
 

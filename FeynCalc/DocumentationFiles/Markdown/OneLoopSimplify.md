@@ -1,12 +1,12 @@
-##  OneLoopSimplify 
+## OneLoopSimplify
 
 `OneLoopSimplify[amp, q]` simplifies the one-loop amplitude amp. The second argument denotes the integration momentum.
 
-###  See also 
+### See also
 
-TID, TIDL.
+[TID](TID), [TIDL](TIDL).
 
-###  Examples 
+### Examples
 
 ```mathematica
 SPD[k, r] FAD[{k, m} , k - p] // FCI

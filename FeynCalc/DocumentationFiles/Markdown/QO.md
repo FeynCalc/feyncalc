@@ -1,9 +1,7 @@
-##  QO 
+`QO` is equivalent to `Twist2QuarkOperator`.
 
-QO is equivalent to Twist2QuarkOperator..
+### See also
 
-###  See also 
+[Twist2QuarkOperator](Twist2QuarkOperator).
 
-Twist2QuarkOperator.
-
-###  Examples 
+### Examples

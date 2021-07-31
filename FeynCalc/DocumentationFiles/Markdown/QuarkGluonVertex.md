@@ -1,4 +1,4 @@
-##  QuarkGluonVertex 
+## QuarkGluonVertex
 
 `QuarkGluonVertex[μ, a]` gives the Feynman rule for the quark-gluon vertex.
 
@@ -6,11 +6,11 @@
 
 The dimension and the name of the coupling constant are determined by the options `Dimension` and `CouplingConstant`.
 
-###  See also 
+### See also
 
-GluonVertex.
+[GluonVertex](GluonVertex).
 
-###  Examples 
+### Examples
 
 ```mathematica
 QuarkGluonVertex[\[Mu], a, Explicit -> True]

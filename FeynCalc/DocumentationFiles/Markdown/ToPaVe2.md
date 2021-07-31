@@ -1,8 +1,12 @@
-##  ToPaVe2 
+## ToPaVe2 
 
 `ToPaVe2[expr]` converts all the direct Passarino-Veltman functions (`A0`, `A00`, `B0`, `B1`, `B00`, `B11`, `C0`, `D0`) to `PaVe`-functions.
 
-###  Examples 
+### See also
+
+[ToPaVe](ToPaVe).
+
+### Examples
 
 ```mathematica
 A0[m^2]

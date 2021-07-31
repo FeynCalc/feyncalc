@@ -1,6 +1,6 @@
-##  FeynRule 
+## FeynRule
 
-`FeynRule[lag, {fields}]` derives the Feynman rule corresponding to the field configuration `fields` of the Lagrangian `lag`. 
+`FeynRule[lag, {fields}]` derives the Feynman rule corresponding to the field configuration `fields` of the Lagrangian `lag`.
 
 `FeynRule` does not calculate propagator Feynman rules.
 
@@ -8,9 +8,9 @@ The option `ZeroMomentumInsertion` can be used for twist-2 and higher twist oper
 
 `FeynRule` is not very versatile and was primarily developed for QCD calculations. It is often more useful when dealing with bosonic fields than with fermions. If you need a more powerful and universal solution for deriving Feynman rules, have a look at the standalone Mathematica Package FeynRules (not related to FeynCalc).
 
-###  See also 
+### See also
 
-###  Examples 
+### Examples
 
 ```mathematica
 ?Lagrangian
@@ -82,7 +82,7 @@ heftInt = -(1/4) CH FieldStrength[mu, nu, a] . FieldStrength[mu, nu, a] . Quantu
 
 $$-\frac{1}{4} \text{CH} F_{\text{mu}\text{nu}}^a.F_{\text{mu}\text{nu}}^a.H$$
 
-$Hgg$ vertex Feynman rules 
+$Hgg$ vertex Feynman rules
 
 ```mathematica
 FeynRule[heftInt, {QuantumField[GaugeField, {i}, {a}][p1], QuantumField[GaugeField, {j}, {b}][p2], QuantumField[H][p3]}]
@@ -90,7 +90,7 @@ FeynRule[heftInt, {QuantumField[GaugeField, {i}, {a}][p1], QuantumField[GaugeFie
 
 $$-i \text{CH} \delta ^{ab} \left(\overline{\text{p2}}^i \overline{\text{p1}}^j-\bar{g}^{ij} \left(\overline{\text{p1}}\cdot \overline{\text{p2}}\right)\right)$$
 
-$Hggg$ vertex Feynman rules 
+$Hggg$ vertex Feynman rules
 
 ```mathematica
 FeynRule[heftInt, {QuantumField[GaugeField, {i}, {a}][p1], QuantumField[GaugeField, {j}, {b}][p2], QuantumField[GaugeField, {k}, {c}][p3], QuantumField[H][p4]}] // Simplify
@@ -98,7 +98,7 @@ FeynRule[heftInt, {QuantumField[GaugeField, {i}, {a}][p1], QuantumField[GaugeFie
 
 $$\text{CH} g_s f^{abc} \left(\bar{g}^{ij} \left(\overline{\text{p1}}^k-\overline{\text{p2}}^k\right)-\bar{g}^{ik} \left(\overline{\text{p1}}^j-\overline{\text{p3}}^j\right)+\bar{g}^{jk} \left(\overline{\text{p2}}^i-\overline{\text{p3}}^i\right)\right)$$
 
-$Hgggg$ vertex Feynman rules 
+$Hgggg$ vertex Feynman rules
 
 ```mathematica
 FeynRule[heftInt, {QuantumField[GaugeField, {i}, {a}][p1], QuantumField[GaugeField, {j}, {b}][p2], QuantumField[GaugeField, {k}, {c}][p3], 

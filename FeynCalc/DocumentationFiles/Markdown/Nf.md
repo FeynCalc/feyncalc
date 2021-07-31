@@ -1,9 +1,7 @@
-##  Nf 
+`Nf` denotes the number of flavors.
 
-Nf denotes the number of flavors..
+### See also
 
-###  See also 
+[Amplitude](Amplitude), [CounterTerm](CounterTerm), [Convolute](Convolute), [AnomalousDimension](AnomalousDimension), [SplittingFunction](SplittingFunction).
 
-Amplitude, CounterTerm, Convolute, AnomalousDimension, SplittingFunction.
-
-###  Examples 
+### Examples

@@ -1,9 +1,9 @@
-##  FeynAmpList 
+## FeynAmpList
 
 `FeynAmpList[info][FeynAmp[...], FeynAmp[...], ...]` is a head of a list of Feynman amplitudes. `FeynAmpList` has no functional properties and serves just as a head.
 
-###  See also 
+### See also
 
-FeynAmp.
+[FeynAmp](FeynAmp).
 
-###  Examples 
+### Examples

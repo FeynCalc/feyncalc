@@ -1,12 +1,16 @@
-##  GaugeField 
+```mathematica
+ 
+```
+
+## GaugeField
 
 `GaugeField` is just a name. No functional properties are associated with it. `GaugeField` is used as default setting for the option `QuantumField` of `FieldStrength`.
 
-###  See also 
+### See also
 
-FieldStrength, QuantumField.
+[FieldStrength](FieldStrength), [QuantumField](QuantumField).
 
-###  Examples 
+### Examples
 
 ```mathematica
 GaugeField

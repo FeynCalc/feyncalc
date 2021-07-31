@@ -1,12 +1,12 @@
-##  OneLoop 
+## OneLoop
 
 `OneLoop[q, amplitude]` calculates the 1-loop Feynman diagram amplitude. The argument `q` denotes the integration variable, i.e., the loop momentum. `OneLoop[name, q, amplitude]` has as first argument a name of the amplitude. If the second argument has head `FeynAmp` then `OneLoop[q, FeynAmp[name, k, expr]]` and `OneLoop[FeynAmp[name, k, expr]]` tranform to `OneLoop[name, k, expr]`. `OneLoop` is deprecated, please use `TID` instead!
 
-###  See also 
+### See also
 
 B0, C0, D0, TID, TID, TIDL, $LimitTo4
 
-###  Examples 
+### Examples
 
 ```mathematica
 -I/Pi^2 FAD[{q, m}]

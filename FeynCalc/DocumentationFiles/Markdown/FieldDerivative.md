@@ -1,4 +1,4 @@
-##  FieldDerivative 
+## FieldDerivative
 
 `FieldDerivative[f[x], x, li1, li2, ...]` is the derivative of `f[x]` with respect to space-time variables `x` and with Lorentz indices `li1, li2,  ...`,  where `li1, li2, ...` have head `LorentzIndex`.
 
@@ -6,11 +6,11 @@
 
 `FieldDerivative`  is defined only for objects with head `QuantumField`. If the space-time derivative of other objects is wanted, the corresponding rule must be specified.
 
-###  See also 
+### See also
 
-FCPartialD, ExpandParitalD.
+[FCPartialD](FCPartialD), [ExpandParitalD](ExpandParitalD).
 
-###  Examples 
+### Examples
 
 ```mathematica
 QuantumField[A, {\[Mu]}][x] . QuantumField[B, {\[Nu]}][y] . QuantumField[C, {\[Rho]}][x] . QuantumField[D, {\[Sigma]}][y]

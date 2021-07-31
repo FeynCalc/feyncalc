@@ -1,4 +1,4 @@
-##  FieldStrength 
+## FieldStrength
 
 `FieldStrength[μ, ν, a]` is the field strength tensor $\partial _{\mu } A_{\nu }^a - \partial _{\nu } A_{\mu }^a + g_s A_{\mu }^b A_{\nu }^c f^{abc}$.
 
@@ -6,9 +6,9 @@
 
 The name of the field ($A$) and the coupling constant ($g$) can be set through the options or by additional arguments. The first two indices are interpreted as type `LorentzIndex`, except `OPEDelta`, which is converted to `Momentum[OPEDelta]`.
 
-###  See also 
+### See also
 
-###  Examples 
+### Examples
 
 ```mathematica
 FieldStrength[\[Mu], \[Nu]]

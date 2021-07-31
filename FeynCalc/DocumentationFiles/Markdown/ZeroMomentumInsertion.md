@@ -1,9 +1,9 @@
-##  ZeroMomentumInsertion 
+## ZeroMomentumInsertion
 
-ZeroMomentumInsertion is an option of FeynRule, Twist2GluonOperator and Twist2QuarkOperator..
+ZeroMomentumInsertion is an option of FeynRule, Twist2GluonOperator and Twist2QuarkOperator.
 
-###  See also 
+### See also
 
-FeynRule, Twist2GluonOperator, Twist2QuarkOperator.
+[FeynRule](FeynRule), [Twist2GluonOperator](Twist2GluonOperator), [Twist2QuarkOperator](Twist2QuarkOperator).
 
-###  Examples 
+### Examples

@@ -1,30 +1,30 @@
-##  CVE 
+`CVE[p, i]` is a $D-4$-dimensional Cartesian vector and is transformed into `CartesianPair[CartesianMomentum[p,D-4], CartesianIndex[i,D-4]]` by `FeynCalcInternal`.
 
-CVE[p, i] is a D-4-dimensional Cartesian vector and is transformed into CartesianPair[CartesianMomentum[p,D-4], CartesianIndex[i,D-4]] by FeynCalcInternal..
+### See also
 
-###  See also 
+[FVE](FVE), [Pair](Pair), [CartesianPair](CartesianPair).
 
-FVE, Pair, CartesianPair.
-
-###  Examples 
+### Examples
 
 ```mathematica
-CVE[p, i] 
- 
-CVE[p - q, i] 
- 
-FCI[CVE[p, i]] // StandardForm
+CVE[p, i]
 ```
 
 $$\hat{p}^i$$
 
+```mathematica
+CVE[p - q, i]
+```
+
 $$\left(\hat{p}-\hat{q}\right)^i$$
 
-```
+```mathematica
+FCI[CVE[p, i]] // StandardForm
+
 (*CartesianPair[CartesianIndex[i, -4 + D], CartesianMomentum[p, -4 + D]]*)
 ```
 
-ExpandScalarProduct is used to expand momenta in CVE
+`ExpandScalarProduct` is used to expand momenta in `CVE`
 
 ```mathematica
 ExpandScalarProduct[CVE[p - q, i]]

@@ -1,8 +1,12 @@
-##  FCHideEpsilon 
+## FCHideEpsilon
 
 `FCHideEpsilon[expr]` substitutes `1/Epsilon - EulerGamma + Log[4 Pi]` with `SMP["Delta"]`.
 
-###  Examples 
+### See also
+
+[FCShowEpsilon](FCShowEpsilon).
+
+### Examples
 
 ```mathematica
 1/Epsilon + Log[4 Pi] - EulerGamma

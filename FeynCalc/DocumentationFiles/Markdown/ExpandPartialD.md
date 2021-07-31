@@ -1,12 +1,12 @@
-##  ExpandPartialD 
+## ExpandPartialD
 
 `ExpandPartialD[exp]` expands noncommutative products of `QuantumField}`'s and partial differentiation operators in `exp` and applies the Leibniz rule.
 
-###  See also 
+### See also
 
-ExplicitPartialD, LeftPartialD, LeftRightPartialD, PartialDRelations, RightPartialD.
+[ExplicitPartialD](ExplicitPartialD), [LeftPartialD](LeftPartialD), [LeftRightPartialD](LeftRightPartialD), [PartialDRelations](PartialDRelations), [RightPartialD](RightPartialD).
 
-###  Examples 
+### Examples
 
 ```mathematica
 RightPartialD[\[Mu]] . QuantumField[A, LorentzIndex[\[Mu]]] . QuantumField[A, LorentzIndex[\[Nu]]]

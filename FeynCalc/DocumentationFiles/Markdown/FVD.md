@@ -1,38 +1,39 @@
-##  FVD 
+`FVD[p, mu]` is the $D$-dimensional vector $p$ with Lorentz index `mu`.
 
-FVD[p, mu] is the D-dimensional vector p with Lorentz index $\mu$..
+### See also
 
-###  See also 
+[FCE](FCE), [FCI](FCI), [FV](FV), [Pair](Pair).
 
-FCE, FCI, FV, Pair.
-
-###  Examples 
+### Examples
 
 ```mathematica
-FVD[p, \[Mu]] 
- 
-FVD[p - q, \[Mu]] 
- 
-FVD[p, \[Mu]] // StandardForm 
- 
-FCI[FVD[p, \[Mu]]] // StandardForm
+FVD[p, \[Mu]]
 ```
 
 $$p^{\mu }$$
 
+```mathematica
+FVD[p - q, \[Mu]]
+```
+
 $$(p-q)^{\mu }$$
 
-```
+```mathematica
+FVD[p, \[Mu]] // StandardForm
+
 (*FVD[p, \[Mu]]*)
+```
+
+```mathematica
+FCI[FVD[p, \[Mu]]] // StandardForm
 
 (*Pair[LorentzIndex[\[Mu], D], Momentum[p, D]]*)
 ```
 
-There is no special function to expand momenta in FVD.
+There is no special function to expand momenta in `FVD`.
 
 ```mathematica
-ExpandScalarProduct[FVD[p - q, \[Mu]]] 
- 
+ExpandScalarProduct[FVD[p - q, \[Mu]]]
 StandardForm[%]
 ```
 

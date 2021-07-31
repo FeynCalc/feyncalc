@@ -1,9 +1,7 @@
-##  Factorout 
+`Factorout` is an option for OPEInt and OPEIntegrate.
 
-Factorout is an option for OPEInt and OPEIntegrate..
+### See also
 
-###  See also 
+[OPEInt](OPEInt), [OPEIntegrate](OPEIntegrate).
 
-OPEInt, OPEIntegrate.
-
-###  Examples 
+### Examples

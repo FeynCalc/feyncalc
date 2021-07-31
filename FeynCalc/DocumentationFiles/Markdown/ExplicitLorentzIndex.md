@@ -1,16 +1,13 @@
-##  ExplicitLorentzIndex 
+`ExplicitLorentzIndex[ind]` is an explicit Lorentz index, i.e., `ind` is an integer.
 
-ExplicitLorentzIndex[ind] is an explicit Lorentz index, i.e., ind is an integer..
+### See also
 
-###  See also 
+[LorentzIndex](LorentzIndex), [Pair](Pair).
 
-LorentzIndex, Pair.
-
-###  Examples 
+### Examples
 
 ```mathematica
-Pair[LorentzIndex[1], LorentzIndex[\[Mu]]] 
- 
+Pair[LorentzIndex[1], LorentzIndex[\[Mu]]]
 % // StandardForm
 ```
 

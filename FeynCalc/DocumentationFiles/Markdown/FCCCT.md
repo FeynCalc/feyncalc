@@ -1,9 +1,9 @@
-##  FCCCT 
+## FCCCT
 
 `FCCCT` is an alias for `FCChargeConjugateTransposed`.
 
-###  See also 
+### See also
 
-FCChargeConjugateTransposed.
+[FCChargeConjugateTransposed](FCChargeConjugateTransposed).
 
-###  Examples 
+### Examples

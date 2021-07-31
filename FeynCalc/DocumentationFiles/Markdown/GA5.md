@@ -1,16 +1,13 @@
-##  GA5 
+`GA5` is equivalent to `DiracGamma[5]` and denotes $\gamma^5$.
 
-GA5 is equivalent to DiracGamma[5] and denotes gamma5..
+### See also
 
-###  See also 
+[DiracGamma](DiracGamma), [GA](GA), [GS](GS).
 
-DiracGamma, GA, GS.
-
-###  Examples 
+### Examples
 
 ```mathematica
-GA5 
- 
+GA5
 % // StandardForm
 ```
 

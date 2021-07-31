@@ -1,12 +1,10 @@
-##  SUNT 
-
 `SUNT[a]` is the $SU(N)$ $T^a$ generator in the fundamental representation. The fundamental indices are implicit.
 
-###  See also 
+### See also
 
-CA, CF, SUND, SUNDelta, SUNF, SUNSimplify.
+[CA](CA), [CF](CF), [SUND](SUND), [SUNDelta](SUNDelta), [SUNF](SUNF), [SUNSimplify](SUNSimplify).
 
-###  Examples 
+### Examples
 
 ```mathematica
 SUNT[a]

@@ -1,12 +1,12 @@
-##  PauliSimplify 
+## PauliSimplify
 
 `PauliSimplify[exp]` simplifies products of Pauli matrices and expands non-commutative products. Double indices and vectors are contracted. The order of the Pauli matrices is not changed.
 
-###  See also 
+### See also
 
-PauliSigma, PauliTrick.
+[PauliSigma](PauliSigma), [PauliTrick](PauliTrick).
 
-###  Examples 
+### Examples
 
 ```mathematica
 CSIS[p1] . CSI[i] . CSIS[p2]

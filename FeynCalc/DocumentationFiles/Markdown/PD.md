@@ -1,9 +1,7 @@
-##  PD 
+`PD` is an abbreviation for `PropagatorDenominator`.
 
-PD is an abbreviation for PropagatorDenominator..
+### See also
 
-###  See also 
+[PropagatorDenominator](PropagatorDenominator), [IFPD](IFPD).
 
-PropagatorDenominator, IFPD.
-
-###  Examples 
+### Examples

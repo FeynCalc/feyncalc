@@ -1,12 +1,12 @@
-##  CSISD 
+## CSISD
 
-CSISD[p] can be used as input for D-1-dimensional $\sigma ^ip^i$ with D-1-dimensional Cartesian vector p and is transformed into PauliSigma[CartesianMomentum[p,D-1],D-1] by FeynCalcInternal..
+CSISD[p] can be used as input for D-1-dimensional $\sigma ^ip^i$ with D-1-dimensional Cartesian vector p and is transformed into PauliSigma[CartesianMomentum[p,D-1],D-1] by FeynCalcInternal.
 
-###  See also 
+### See also
 
-PauliSigma.
+[PauliSigma](PauliSigma).
 
-###  Examples 
+### Examples
 
 ```mathematica
 CSISD[p] 

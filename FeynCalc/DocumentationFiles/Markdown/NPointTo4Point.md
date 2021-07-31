@@ -1,8 +1,12 @@
-##  NPointTo4Point 
+## NPointTo4Point
 
 `NPointTo4Point[expr, q]` reduces scalar IR finite 5-point functions to scalar 4-point functions according to Eq. 4.52 in [arXiv:0709.1075](https://arxiv.org/abs/0709.1075).
 
-###  Examples 
+### See also
+
+[PaVeReduce](PaVeReduce).
+
+### Examples
 
 ```mathematica
 FCClearScalarProducts[]

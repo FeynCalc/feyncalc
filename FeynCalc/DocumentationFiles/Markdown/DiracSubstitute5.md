@@ -1,12 +1,12 @@
-##  DiracSubstitute5 
+## DiracSubstitute5 
 
 DiracSubstitute5[exp] rewrites $\gamma^5$ in terms of the chirality projectors $\gamma^6$ and $\gamma^7$. `DiracSubstitute5` is also an option of various FeynCalc functions that handle Dirac algebra.
 
-###  See also 
+### See also
 
-DiracSubstitute67, DiracGamma, ToDiracGamma67.
+[DiracSubstitute67](DiracSubstitute67), [DiracGamma](DiracGamma), [ToDiracGamma67](ToDiracGamma67).
 
-###  Examples 
+### Examples
 
 ```mathematica
 GA[5]

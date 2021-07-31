@@ -1,12 +1,10 @@
-##  Twist4GluonOperator 
+`Twist4GluonOperator[{oa, ob, oc, od}, {p1, la1, a1}, {p2, la2, a2}, {p3, la3, a3}, {p4, la4, a4}]` is a special routine for particular QCD calculations.
 
-Twist4GluonOperator[{oa, ob, oc, od}, {p1, la1, a1}, {p2, la2, a2}, {p3, la3, a3}, {p4, la4, a4}] ....
+### See also
 
-###  See also 
+[Twist2QuarkOperator](Twist2QuarkOperator), [Twist3QuarkOperator](Twist3QuarkOperator), [Twist2GluonOperator](Twist2GluonOperator).
 
-Twist2QuarkOperator, Twist3QuarkOperator, Twist2GluonOperator.
-
-###  Examples 
+### Examples
 
 ```mathematica
 Twist4GluonOperator[{oa, ob, oc, od}, {p1, la1, a1}, {p2, la2, a2}, {p3, la3, a3}, {p4, la4, a4}]

@@ -1,12 +1,12 @@
-##  ToLarin 
+## ToLarin
 
 ToLarin[exp]  substitutes $\gamma^{\mu} \gamma^5$ with $-\frac{I}{6}\varepsilon^{\mu \nu \lambda \sigma } \gamma^{\nu } \gamma^{\lambda} \gamma^{\sigma }$.
 
-###  See also 
+### See also
 
 Eps, DiracGamma
 
-###  Examples 
+### Examples
 
 ```mathematica
 GAD[\[Mu], \[Nu]] . GA[5]

@@ -1,12 +1,12 @@
-##  TraceOfOne 
+## TraceOfOne
 
 `TraceOfOne` is an option for `Tr` and `DiracTrace`. Its setting determines the value of the unit trace.
 
-###  See also 
+### See also
 
-DiracSimplify, DiracTrace.
+[DiracSimplify](DiracSimplify), [DiracTrace](DiracTrace).
 
-###  Examples 
+### Examples
 
 ```mathematica
 DiracTrace[1]

@@ -1,8 +1,12 @@
-##  PartialIntegrate 
+## PartialIntegrate
 
 `PartialIntegrate[exp, ap, t]` does a partial integration of the definite integral `Integrate[exp,{t,0,1}]`, with `ap` the factor that is to be integrated and `exp/ap` the factor that is to be differentiated.
 
-###  Examples 
+### See also
+
+[IntegrateByParts](IntegrateByParts), [Integrate2](Integrate2).
+
+### Examples
 
 ```mathematica
 PartialIntegrate[f[x] g[x], g[x], {x, 0, 1}]

@@ -1,9 +1,7 @@
-##  NonCommutative 
+`NonCommutative` is a data type which may be used, e.g.,  as `DataType[x, NonCommutative] = True`.
 
-NonCommutative is a data type which may be used, e.g.,  as: DataType[x, NonCommutative] = True..
+### See also
 
-###  See also 
+[DataType](DataType), [DeclareNonCommutative](DeclareNonCommutative).
 
-DataType, DeclareNonCommutative.
-
-###  Examples 
+### Examples

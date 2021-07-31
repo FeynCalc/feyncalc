@@ -1,12 +1,10 @@
-##  FRH 
-
 `FRH[exp_]` corresponds to `FixedPoint[ReleaseHold, exp]`,  i.e. `FRH` removes all `HoldForm` and `Hold` in `exp`.
 
-###  See also 
+### See also
 
-Isolate.
+[Isolate](Isolate).
 
-###  Examples 
+### Examples
 
 ```mathematica
 Hold[1 - 1 - Hold[2 - 2]]

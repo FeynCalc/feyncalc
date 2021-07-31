@@ -1,23 +1,14 @@
-##  SUNIndex 
+`SUNIndex[a]` is an $SU(N)$ index in the adjoint representation. If the argument is an integer, `SUNIndex[a]` turns into `ExplicitSUNIndex[a]`.
 
-SUNIndex[a] is an SU(N) index in the adjoint representation. If the argument is an integer, SUNIndex[a] turns into ExplicitSUNIndex[a]..
+### See also
 
-###  See also 
+[ExplicitSUNIndex](ExplicitSUNIndex), [SUNDelta](SUNDelta), [SUNF](SUNF).
 
-ExplicitSUNIndex, SUNDelta, SUNF.
-
-###  Examples 
+### Examples
 
 ```mathematica
-SUNIndex[i] 
- 
-% // StandardForm 
- 
-SUNIndex[2] 
- 
-% // StandardForm 
- 
-SUNDelta[i, j] // FCI // StandardForm
+SUNIndex[i]
+% // StandardForm
 ```
 
 $$i$$
@@ -26,10 +17,19 @@ $$i$$
 (*SUNIndex[i]*)
 ```
 
+```mathematica
+SUNIndex[2]
+% // StandardForm
+```
+
 $$2$$
 
 ```
 (*ExplicitSUNIndex[2]*)
+```
+
+```mathematica
+SUNDelta[i, j] // FCI // StandardForm
 
 (*SUNDelta[SUNIndex[i], SUNIndex[j]]*)
 ```

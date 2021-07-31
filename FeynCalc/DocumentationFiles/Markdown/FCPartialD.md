@@ -1,4 +1,4 @@
-##  FCPartialD 
+## FCPartialD
 
 `FCPartialD[μ]` denotes the four-dimensional $\partial _{\mu }$.
 
@@ -6,11 +6,11 @@
 
 `FCPartialD[LorentzIndex[μ ,D]]` denotes the $D$-dimensional $\partial _{\mu }$.
 
-###  See also 
+### See also
 
-ExpandPartialD, LeftPartialD, LeftRightPartialD, RightPartialD.
+[ExpandPartialD](ExpandPartialD), [LeftPartialD](LeftPartialD), [LeftRightPartialD](LeftRightPartialD), [RightPartialD](RightPartialD).
 
-###  Examples 
+### Examples
 
 ```mathematica
 QuantumField[A, {\[Mu]}] . LeftPartialD[\[Nu]]

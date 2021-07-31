@@ -1,12 +1,12 @@
-##  ToDiracGamma67 
+## ToDiracGamma67 
 
 `ToDiracGamma67[exp]` substitutes $\frac{1}{2} \left(1 + \gamma^5\right)$ and $\frac{1}{2}\left(1-\gamma^5\right)$ by the chirality projectors $\gamma^6$ and $\gamma^7$.
 
-###  See also 
+### See also
 
-DiracSubstitute5, DiracGamma, ToDiracGamma67.
+[DiracSubstitute5](DiracSubstitute5), [DiracGamma](DiracGamma), [ToDiracGamma67](ToDiracGamma67).
 
-###  Examples 
+### Examples
 
 ```mathematica
 GA[\[Mu]] . (1/2 + GA[5]/2) . GA[\[Nu]]

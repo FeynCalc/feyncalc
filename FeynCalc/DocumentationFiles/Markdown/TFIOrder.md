@@ -1,8 +1,12 @@
-##  TFIOrder 
+## TFIOrder
 
 `TFIOrder[exp]` orders the arguments of some `TFI` functions in exp in a standard way.
 
-###  Examples 
+### See also
+
+[TarcerToFC](TarcerToFC).
+
+### Examples
 
 ```mathematica
 Tarcer`TFI[D, p^2, {{1, M2}, {1, M1}, {1, M3}, {1, M4}, {1, M5}}]
@@ -34,7 +38,7 @@ $$\text{Tarcer$\grave{ }$TFI}\left(D,p^2,\left(
 TFIOrder[%]
 ```
 
-$$\left(\left(p^2 \left(\text{m4}^2 \left((D-6) \text{m1}^2-(D-2) \text{m3}^2+(D-4) \text{m4}^2\right)-\text{m2}^2 \left((D-6) \text{m4}^2+4 \text{m3}^2\right)\right)+\text{m2}^2 \text{m4}^2 \left((D-6) \text{m3}^2-(D-2) \text{m1}^2\right)+\text{m4}^2 \left(\text{m1}^2 \left((D-2) \text{m4}^2-4 (D-3) \text{m3}^2\right)+2 (D-3) \text{m1}^4+\text{m3}^2 \left(2 (D-3) \text{m3}^2-(D-4) \text{m4}^2\right)\right)+p^2^2 \left(2 \text{m3}^2-(D-4) \text{m4}^2\right)+2 \text{m2}^4 \text{m3}^2\right) \left(\text{Tarcer$\grave{ }$TFI}\left(D,p^2,\left(
+$$\left(\left(p^2 \left(\text{m4}^2 \left((D-6) \text{m1}^2-(D-2) \text{m3}^2+(D-4) \text{m4}^2\right)-\text{m2}^2 \left((D-6) \text{m4}^2+4 \text{m3}^2\right)\right)+\text{m2}^2 \text{m4}^2 \left((D-6) \text{m3}^2-(D-2) \text{m1}^2\right)+\text{m4}^2 \left(2 (D-3) \text{m1}^4+\text{m1}^2 \left((D-2) \text{m4}^2-4 (D-3) \text{m3}^2\right)+\text{m3}^2 \left(2 (D-3) \text{m3}^2-(D-4) \text{m4}^2\right)\right)+p^2^2 \left(2 \text{m3}^2-(D-4) \text{m4}^2\right)+2 \text{m2}^4 \text{m3}^2\right) \left(\text{Tarcer$\grave{ }$TFI}\left(D,p^2,\left(
 \begin{array}{cc}
  1 & \text{m1} \\
  1 & \text{m2} \\
@@ -50,6 +54,6 @@ $$\left(\left(p^2 \left(\text{m4}^2 \left((D-6) \text{m1}^2-(D-2) \text{m3}^2+(D
  1 & \text{m2} \\
  1 & \text{m3} \\
 \end{array}
-\right)\right)\right)\right)/\left(4 \left(-p^2 \left(\text{m4}^2 \left(\text{m1}^2+\text{m3}^2\right)+\text{m2}^2 \left(2 \text{m3}^2-\text{m4}^2\right)\right)-\text{m2}^2 \text{m4}^2 \left(\text{m1}^2+\text{m3}^2\right)+\text{m4}^2 \left(\text{m1}^2 \left(\text{m4}^2-2 \text{m3}^2\right)+\text{m1}^4+\text{m3}^4\right)+\text{m2}^4 \text{m3}^2+\text{m3}^2 p^2^2\right)\right)$$
+\right)\right)\right)\right)/\left(4 \left(-p^2 \left(\text{m4}^2 \left(\text{m1}^2+\text{m3}^2\right)+\text{m2}^2 \left(2 \text{m3}^2-\text{m4}^2\right)\right)-\text{m2}^2 \text{m4}^2 \left(\text{m1}^2+\text{m3}^2\right)+\text{m4}^2 \left(\text{m1}^4+\text{m1}^2 \left(\text{m4}^2-2 \text{m3}^2\right)+\text{m3}^4\right)+\text{m2}^4 \text{m3}^2+\text{m3}^2 p^2^2\right)\right)$$
 
 $$0$$

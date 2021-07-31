@@ -1,12 +1,12 @@
-##  DiracGammaCombine 
+## DiracGammaCombine
 
 `DiracGammaCombine[exp]` is (nearly) the inverse operation to `DiracGammaExpand`.
 
-###  See also 
+### See also
 
-DiracGamma, DiracGammaExpand, DiracSimplify, DiracTrick.
+[DiracGamma](DiracGamma), [DiracGammaExpand](DiracGammaExpand), [DiracSimplify](DiracSimplify), [DiracTrick](DiracTrick).
 
-###  Examples 
+### Examples
 
 ```mathematica
 GS[p] + GS[q]

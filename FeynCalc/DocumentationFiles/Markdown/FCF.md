@@ -1,5 +1,9 @@
-##  FCF 
+## FCF
 
-FCF[exp] is a short form for FeynCalcForm[exp]..
+FCF[exp] is a short form for FeynCalcForm[exp].
 
-###  Examples 
+### See also
+
+[FeynCalcForm](FeynCalcForm).
+
+### Examples

@@ -1,12 +1,12 @@
-##  DiracSimplify 
+## DiracSimplify
 
 `DiracSimplify[exp]` simplifies products of Dirac matrices in `exp` and expands noncommutative products. The simplifications are done by applying `Contract`, `DiracEquation`, `DiracTrick`, `SpinorChainTrick` and `SirlinSimplify`. All $\gamma^5$, $\gamma^6$ and $\gamma^7$ are moved to the right. The order of the other Dirac matrices is not changed, unless the option DiracOrder is set to `True`.
 
-###  See also 
+### See also
 
-Contract, DiracEquation, DiracSigmaExplicit, DiracSubstitute5, DiracSubstitute67, DiracGamma, DiracGammaExpand, DiracOrder, DiracTrace, DiracTraceEvaluate, DiracTrick, FCDiracIsolate, SirlinSimplify, SpinorChainTrick, SpinorChainEvaluate, ToDiracGamma67.
+[Contract](Contract), [DiracEquation](DiracEquation), [DiracSigmaExplicit](DiracSigmaExplicit), [DiracSubstitute5](DiracSubstitute5), [DiracSubstitute67](DiracSubstitute67), [DiracGamma](DiracGamma), [DiracGammaExpand](DiracGammaExpand), [DiracOrder](DiracOrder), [DiracTrace](DiracTrace), [DiracTraceEvaluate](DiracTraceEvaluate), [DiracTrick](DiracTrick), [FCDiracIsolate](FCDiracIsolate), [SirlinSimplify](SirlinSimplify), [SpinorChainTrick](SpinorChainTrick), [SpinorChainEvaluate](SpinorChainEvaluate), [ToDiracGamma67](ToDiracGamma67).
 
-###  Examples 
+### Examples
 
 Simplify a 4-dimensional Dirac matrix chain with a dummy Lorentz index
 
@@ -258,7 +258,7 @@ $$\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\rho }.\bar{\gamma }^
 
 $$\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\rho }.\bar{\gamma }^{\sigma }$$
 
-Since FeynCalc 9.3, `DiracSimplify` will automatically evaluate Dirac traces in the input expression 
+Since FeynCalc 9.3, `DiracSimplify` will automatically evaluate Dirac traces in the input expression
 
 ```mathematica
 DiracTrace[GA[\[Mu], \[Nu], \[Rho], \[Sigma]]]

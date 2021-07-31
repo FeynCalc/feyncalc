@@ -1,8 +1,8 @@
-##  FCLoopRemoveNegativePropagatorPowers 
-
 `FCLoopRemoveNegativePropagatorPowers[exp]` rewrites propagators raised to integer powers as products.
 
-###  Examples 
+### See also
+
+### Examples
 
 ```mathematica
 SFAD[{q, m, -1}]

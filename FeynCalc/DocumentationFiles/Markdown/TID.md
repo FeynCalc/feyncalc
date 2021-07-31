@@ -1,12 +1,12 @@
-##  TID 
+## TID
 
 `TID[amp, q]` performs  tensor decomposition of 1-loop integrals with loop momentum `q`.
 
-###  See also 
+### See also
 
-OneLoopSimplify, TIDL, PaVeLimitTo4.
+[OneLoopSimplify](OneLoopSimplify), [TIDL](TIDL), [PaVeLimitTo4](PaVeLimitTo4).
 
-###  Examples 
+### Examples
 
 ```mathematica
 FCClearScalarProducts[];
@@ -18,7 +18,7 @@ int = FAD[{k, m}, k - Subscript[p, 1], k - Subscript[p, 2]] FVD[k, \[Mu]] // FCI
 
 $$\frac{k^{\mu }}{\left(k^2-m^2\right).(k-p_1){}^2.(k-p_2){}^2}$$
 
-By default, all tensor integrals are reduced to the Passarino-Veltman scalar integrals $A_0$, $B_0$, $C_0$, $D_0$ etc. 
+By default, all tensor integrals are reduced to the Passarino-Veltman scalar integrals $A_0$, $B_0$, $C_0$, $D_0$ etc.
 
 ```mathematica
 TID[int, k]
@@ -40,7 +40,7 @@ We can force the reduction algorithm to use Passarino-Veltman coefficient functi
 TID[int, k, UsePaVeBasis -> True]
 ```
 
-$$-i \pi ^2 p_1{}^{\mu } \text{C}_1\left(p_1{}^2,p_1{}^2+p_2{}^2-2 \left(p_1\cdot p_2\right),p_2{}^2,m^2,0,0\right)-i \pi ^2 p_2{}^{\mu } \text{C}_2\left(p_1{}^2,p_1{}^2+p_2{}^2-2 \left(p_1\cdot p_2\right),p_2{}^2,m^2,0,0\right)$$
+$$-i \pi ^2 p_1{}^{\mu } \text{C}_1\left(p_1{}^2,p_1{}^2+p_2{}^2-2 \left(p_1\cdot p_2\right),p_2{}^2,m^2,0,0\right)-i \pi ^2 p_2{}^{\mu } \text{C}_1\left(p_2{}^2,p_1{}^2+p_2{}^2-2 \left(p_1\cdot p_2\right),p_1{}^2,m^2,0,0\right)$$
 
 Very often the integral can be simplified via partial fractioning even before performing the loop reduction. In this case the output will contain a mixture of `FAD` symbols and Passarino-Veltman functions
 
@@ -84,7 +84,7 @@ TID[FAD[{k, m}, k - Subscript[p, 1], k - Subscript[p, 2]] FVD[k, \[Mu]] // FCI, 
 FCClearScalarProducts[];
 ```
 
-$$-i \pi ^2 \left(p_1{}^{\mu }+p_2{}^{\mu }\right) \text{C}_1\left(0,0,0,m^2,0,0\right)$$
+$$-i \pi ^2 \left(p_1{}^{\mu }+p_2{}^{\mu }\right) \text{C}_1\left(0,0,0,0,0,m^2\right)$$
 
 In FeynCalc, Passarino-Veltman coefficient functions are defined in the same way as in LoopTools. If one wants to use a different definition, it is useful to activate the option GenPaVe
 

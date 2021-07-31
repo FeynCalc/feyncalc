@@ -1,12 +1,12 @@
-##  FeynCalcForm 
+`FeynCalcForm[expr]` changes the printed output to a an easy-to-read form. It allows a readable output also when running a terminal based Mathematica session. Whether the result of `FeynCalcForm[expr]` is displayed or not, depends on the setting of `$PrePrint`.
 
-FeynCalcForm[expr] changes the printed output to a an easy-to-read form. It allows a readable output also when running a terminal based Mathematica session. Whether the result of FeynCalcForm[expr] is displayed or not, depends on the setting of $PrePrint. $PrePrint = FeynCalcForm forces displaying everything after applying FeynCalcForm. In order to change to the normal (internal) Mathematica OutputForm, do: ($PrePrint=.)..
+`$PrePrint = FeynCalcForm` forces displaying everything after applying `FeynCalcForm`. In order to change to the normal (internal) Mathematica OutputForm, do: `$PrePrint=.`.
 
-###  See also 
+### See also
 
-FC, FeynCalcExternal, FeynCalcInternal.
+[FC](FC), [FeynCalcExternal](FeynCalcExternal), [FeynCalcInternal](FeynCalcInternal).
 
-###  Examples 
+### Examples
 
 This is the normal notebook display:
 

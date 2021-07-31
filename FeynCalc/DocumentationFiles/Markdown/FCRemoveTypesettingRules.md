@@ -1,20 +1,30 @@
-##  FCRemoveTypesettingRules 
+`FCRemoveTypesettingRules[expr]` removes all typesetting rules attached to `expr`. Effectively it sets the `FormatValues` of `expr` to an empty list.
 
-FCRemoveTypesettingRules[expr] removes all typesetting rules attached to expr. Effectively it sets the FormatValues of expr to an empty list..
+### See also
 
-###  Examples 
+[FCAttachTypesettingRule](FCAttachTypesettingRule).
+
+### Examples
 
 ```mathematica
-FCAttachTypesettingRules
-FCAttachTypesettingRule[ST1, {SubscriptBox, "S", "T,1"}]
-ST1 
- 
-FCRemoveTypesettingRules[ST1]
 ST1
 ```
 
-$$\text{FCAttachTypesettingRules}$$
+$$\text{ST1}$$
+
+```mathematica
+FCAttachTypesettingRule[ST1, {SubscriptBox, "S", "T,1"}]
+```
+
+```mathematica
+ST1
+```
 
 $$S_{T,1}$$
+
+```mathematica
+FCRemoveTypesettingRules[ST1]
+ST1
+```
 
 $$\text{ST1}$$

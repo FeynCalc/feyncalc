@@ -1,9 +1,9 @@
-##  FORMEpilog 
+## FORMEpilog
 
 `FORMEpilog` is an option for `FeynCalc2FORM`. It may be set to a string which is put at the end of the FORM-file.
 
-###  See also 
+### See also
 
-FeynCalc2FORM, FORMProlog.
+[FeynCalc2FORM](FeynCalc2FORM), [FORMProlog](FORMProlog).
 
-###  Examples 
+### Examples

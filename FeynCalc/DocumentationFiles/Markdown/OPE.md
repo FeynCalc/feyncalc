@@ -1,9 +1,9 @@
-##  OPE 
+`OPE` is a convenience variable to separate `OPE` insertions.
 
-OPE is a convenience variable to separate OPE insertions.OPE is also an option of several input functions like GluonPropagator..
+`OPE` is also an option of several input functions like `GluonPropagator`.
 
-###  See also 
+### See also
 
-OPE1Loop.
+[OPE1Loop](OPE1Loop).
 
-###  Examples 
+### Examples

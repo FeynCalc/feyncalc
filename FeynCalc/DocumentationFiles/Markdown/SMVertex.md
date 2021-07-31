@@ -1,12 +1,12 @@
-##  SMVertex 
+## SMVertex
 
 `SMVertex` is a library of SM vertices. Currently it implements only few vertices and is not really useful.
 
-###  See also 
+### See also
 
-SMP.
+[SMP](SMP).
 
-###  Examples 
+### Examples
 
 This is the $\gamma W W$ vertex (all momenta ingoing)
 

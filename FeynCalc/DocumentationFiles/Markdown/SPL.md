@@ -1,9 +1,9 @@
-##  SPL 
+## SPL
 
 `SPL` is an abbreviation for `SimplifyPolyLog`.
 
-###  See also 
+### See also
 
-SimplifyPolyLog.
+[SimplifyPolyLog](SimplifyPolyLog).
 
-###  Examples 
+### Examples

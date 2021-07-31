@@ -1,9 +1,7 @@
-##  IntegralTable 
+`IntegralTable` is an option of `OneLoopSimplify`, `TwoLoopSimplify` and `FeynAmpDenominatorSimplify`. It may be set to a list of the form `{FCIntegral[ ... ] :> bla, ...}`.
 
-IntegralTable is an option of OneLoopSimplify, TwoLoopSimplify and FeynAmpDenominatorSimplify. It may be set to a list of the form : {FCIntegral[ ... ] :> bla, ...}..
+### See also
 
-###  See also 
+[OneLoopSimplify](OneLoopSimplify), [TwoLoopSimplify](TwoLoopSimplify), [FeynAmpDenominatorSimplify](FeynAmpDenominatorSimplify).
 
-OneLoopSimplify, TwoLoopSimplify, FeynAmpDenominatorSimplify.
-
-###  Examples 
+### Examples

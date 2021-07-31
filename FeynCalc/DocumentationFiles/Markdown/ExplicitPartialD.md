@@ -1,12 +1,12 @@
-##  ExplicitPartialD 
+## ExplicitPartialD
 
 `ExplicitPartialD[exp]` inserts the definitions for `LeftRightPartialD` and `LeftRightPartialD2`.
 
-###  See also 
+### See also
 
-ExpandPartialD, LeftRightPartialD, LeftRightPartialD2.
+[ExpandPartialD](ExpandPartialD), [LeftRightPartialD](LeftRightPartialD), [LeftRightPartialD2](LeftRightPartialD2).
 
-###  Examples 
+### Examples
 
 ```mathematica
 LeftRightPartialD[\[Mu]]

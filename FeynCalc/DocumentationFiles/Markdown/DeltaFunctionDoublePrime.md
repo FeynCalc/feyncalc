@@ -1,9 +1,7 @@
-##  DeltaFunctionDoublePrime 
+`DeltaFunctionDoublePrime[1 - x]` is the second derivative of the Dirac delta-function $\delta (x)$.
 
-DeltaFunctionDoublePrime[1 - x] is the second derivative of the Dirac delta-function $\delta (x)$..
+### See also
 
-###  See also 
+[DeltaFunctionPrime](DeltaFunctionPrime).
 
-DeltaFunctionPrime.
-
-###  Examples 
+### Examples

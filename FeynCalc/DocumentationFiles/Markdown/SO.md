@@ -1,25 +1,25 @@
-##  SO 
+`SO[q]` is a four-dimensional scalar product of `OPEDelta` with `q`. It is transformed into `Pair[Momentum[q], Momentum[OPEDelta]` by `FCI`.
 
-SO[q] is a four-dimensional scalar product of OPEDelta with q. It is transformed into Pair[Momentum[q], Momentum[OPEDelta] by FCI..
+### See also
 
-###  See also 
+[FCI](FCI), [OPEDelta](OPEDelta), [Pair](Pair), [ScalarProduct](ScalarProduct), [SOD](SOD).
 
-FCI, OPEDelta, Pair, ScalarProduct, SOD.
-
-###  Examples 
+### Examples
 
 ```mathematica
-SO[p] 
- 
-SO[p - q] 
- 
-SO[p] // FCI // StandardForm
+SO[p]
 ```
 
 $$\Delta \cdot p$$
 
+```mathematica
+SO[p - q]
+```
+
 $$\Delta \cdot (p-q)$$
 
-```
+```mathematica
+SO[p] // FCI // StandardForm
+
 (*Pair[Momentum[OPEDelta], Momentum[p]]*)
 ```

@@ -1,12 +1,10 @@
-##  GSE 
-
 `GSE[p]` can be used as input for a $D-4$-dimensional $\gamma \cdot p = \gamma^\mu p_\mu$ and is transformed into `DiracGamma[Momentum[p,D-4],D-4]` by `FeynCalcInternal` (`FCI`). `GSE[p,q, ...]` is a short form for `GSE[p].GSE[q]. ...` .
 
-###  See also 
+### See also
 
-DiracGamma, GA, GAD, GSD.
+[DiracGamma](DiracGamma), [GA](GA), [GAD](GAD), [GSD](GSD).
 
-###  Examples 
+### Examples
 
 ```mathematica
 GSE[p]
@@ -37,7 +35,7 @@ GSE[q] . (GSE[p] + m) . GSE[q]
 
 $$\left(\hat{\gamma }\cdot \hat{q}\right).\left(m+\hat{\gamma }\cdot \hat{p}\right).\left(\hat{\gamma }\cdot \hat{q}\right)$$
 
-In order to use Dirac algebra with D-4 dimensional objects you need to activate the t'Hooft-Veltman-Breitenlohner-Maison scheme first
+In order to use Dirac algebra with $D-4$ dimensional objects you need to activate the t'Hooft-Veltman-Breitenlohner-Maison scheme first
 
 ```mathematica
 FCSetDiracGammaScheme["NDR"];

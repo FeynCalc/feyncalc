@@ -1,9 +1,13 @@
-##  FCFAConvert 
+```mathematica
+ 
+```
 
-`FCFAConvert[exp]` converts a FeynArts amplitude to FeynCalc..
+## FCFAConvert
 
-###  See also 
+`FCFAConvert[exp]` converts a FeynArts amplitude to FeynCalc.
 
-For examples on using `FCFAConvert` please examine the example calculations shipped with FeynCalc.
+### See also
 
-###  Examples 
+[For examples on using `FCFAConvert` please examine the example calculations shipped with FeynCalc](For examples on using `FCFAConvert` please examine the example calculations shipped with FeynCalc).
+
+### Examples

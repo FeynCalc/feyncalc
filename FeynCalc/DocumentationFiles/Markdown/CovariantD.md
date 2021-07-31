@@ -1,4 +1,4 @@
-##  CovariantD 
+## CovariantD
 
 `CovariantD[μ]` is a generic covariant derivative with Lorentz index $\mu$.
 
@@ -14,9 +14,9 @@
 
 `CovariantD[OPEDelta, {m, n}]` gives the expanded form of `CovariantD[OPEDelta]^m` up to order $g^n$ of the fermionic field. To obtain the explicit expression for a particular covariant derivative, the option `Explicit` must be set to `True`.
 
-###  See also 
+### See also
 
-###  Examples 
+### Examples
 
 ```mathematica
 CovariantD[\[Mu]]

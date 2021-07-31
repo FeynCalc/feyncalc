@@ -1,12 +1,12 @@
-##  FeynAmpDenominatorExplicit 
+## FeynAmpDenominatorExplicit
 
 `FeynAmpDenominatorExplicit[exp]` changes each occurence of `PropagatorDenominator[a,b]` in exp into `1/(SPD[a,a]-b^2)` and replaces `FeynAmpDenominator` by `Identity`.
 
-###  See also 
+### See also
 
-FeynAmpDenominator, PropagatorDenominator.
+[FeynAmpDenominator](FeynAmpDenominator), [PropagatorDenominator](PropagatorDenominator).
 
-###  Examples 
+### Examples
 
 ```mathematica
 FAD[{q, m}, {q - p, 0}]

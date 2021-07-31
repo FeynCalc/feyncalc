@@ -1,21 +1,20 @@
-##  Gstrong 
+`Gstrong`  is a shortcut for `SMP["g_s"]` which represents the strong coupling constant.
 
-Gstrong  is a shortcut for $\text{SMP}[\text{g$\_$s}]$ which represents the strong coupling constant.The shortcut Gstrong is deprecated, please use $text{SMP}[text{g$_$s}]$ instead!.
+The shortcut `Gstrong` is deprecated, please use `SMP["g_s"]` instead!
 
-###  See also 
+### See also
 
-CovariantD, FieldStrength, GluonVertex.
+[CovariantD](CovariantD), [FieldStrength](FieldStrength), [GluonVertex](GluonVertex).
 
-###  Examples 
+### Examples
 
 ```mathematica
-Gstrong 
- 
+Gstrong
 % // StandardForm
 ```
 
-$$\text{Gstrong}$$
+$$g_s$$
 
 ```
-(*Gstrong*)
+(*SMP["g_s"]*)
 ```

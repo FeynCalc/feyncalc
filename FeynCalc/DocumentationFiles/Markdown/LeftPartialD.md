@@ -1,12 +1,12 @@
-##  LeftPartialD 
+## LeftPartialD
 
 `LeftPartialD[μ]` denotes $\overleftarrow{\partial }_{\mu }$ acting to the left.
 
-###  See also 
+### See also
 
-ExpandPartialD, FCPartialD, LeftRightPartialD, RightPartialD.
+[ExpandPartialD](ExpandPartialD), [FCPartialD](FCPartialD), [LeftRightPartialD](LeftRightPartialD), [RightPartialD](RightPartialD).
 
-###  Examples 
+### Examples
 
 ```mathematica
 QuantumField[A, LorentzIndex[\[Mu]]] . LeftPartialD[\[Nu]]

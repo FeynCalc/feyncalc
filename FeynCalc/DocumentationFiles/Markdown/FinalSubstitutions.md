@@ -1,9 +1,7 @@
-##  FinalSubstitutions 
+`FinalSubstitutions` is an option for `OneLoop` and `OneLoopSum` and `Write2`. All substitutions indicated hereby are done at the end of the calculation.
 
-FinalSubstitutions is an option for OneLoop and OneLoopSum and Write2. All substitutions indicated hereby are done at the end of the calculation..
+### See also
 
-###  See also 
+[OneLoop](OneLoop), [OneLoopSum](OneLoopSum), [Write2](Write2).
 
-OneLoop, OneLoopSum, Write2.
-
-###  Examples 
+### Examples

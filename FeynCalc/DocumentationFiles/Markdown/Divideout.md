@@ -1,9 +1,7 @@
-##  Divideout 
+`Divideout` is an option for `OPEInt` and `OPEIntegrate`. The setting is divided out at the end.
 
-Divideout is an option for OPEInt and OPEIntegrate. The setting is divided out at the end..
+### See also
 
-###  See also 
+[OPEInt](OPEInt), [OPEIntegrate](OPEIntegrate).
 
-OPEInt, OPEIntegrate.
-
-###  Examples 
+### Examples

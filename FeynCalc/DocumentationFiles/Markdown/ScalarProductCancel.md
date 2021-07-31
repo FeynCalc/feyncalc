@@ -1,4 +1,4 @@
-##  ScalarProductCancel 
+## ScalarProductCancel
 
 `ScalarProductCancel[exp, q1, q2, ...]` cancels scalar products with propagators.
 
@@ -6,11 +6,11 @@
 
 `ScalarProductCancel` is deprecated, please use the more powerful `ApartFF` instead.
 
-###  See also 
+### See also
 
-ApartFF, FCClearScalarProducts, ExpandScalarProduct, Pair, SP, SPC, SPD.
+[ApartFF](ApartFF), [FCClearScalarProducts](FCClearScalarProducts), [ExpandScalarProduct](ExpandScalarProduct), [Pair](Pair), [SP](SP), [SPC](SPC), [SPD](SPD).
 
-###  Examples 
+### Examples
 
 ```mathematica
 SPD[q, p] FAD[{q, m}, {q - p, 0}]

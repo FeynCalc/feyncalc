@@ -1,4 +1,4 @@
-##  FORM2FeynCalc 
+## FORM2FeynCalc
 
 `FORM2FeynCalc[exp]` translates the FORM expression `exp` into FeynCalc notation.
 
@@ -8,7 +8,11 @@
 
 If the option `Set` is `True`, the variables `x1`, `x2` are assigned to the right hand sides defined in the FORM-file.The capabilities of this function are very limited, so that you should not expect it to easily handle large and complicated expressions.
 
-###  Examples 
+### See also
+
+[FeynCalc2FORM](FeynCalc2FORM).
+
+### Examples
 
 ```mathematica
 FORM2FeynCalc["p.q + 2*x m^2"]

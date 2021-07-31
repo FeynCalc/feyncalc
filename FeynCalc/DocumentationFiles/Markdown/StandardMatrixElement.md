@@ -1,9 +1,9 @@
-##  StandardMatrixElement 
+## StandardMatrixElement
 
 `StandardMatrixElement[...]` is the head for matrix element abbreviations.
 
-###  See also 
+### See also
 
-OneLoop.
+[OneLoop](OneLoop).
 
-###  Examples 
+### Examples

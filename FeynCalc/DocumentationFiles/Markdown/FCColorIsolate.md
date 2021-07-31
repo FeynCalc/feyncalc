@@ -1,12 +1,12 @@
-##  FCColorIsolate 
+## FCColorIsolate
 
 `FCColorIsolate[exp]` wraps colored objects (`SUNT`, `SUNF` etc.) into heads specified by the user.
 
-###  See also 
+### See also
 
-SUNT, SUNF.
+[SUNT](SUNT), [SUNF](SUNF).
 
-###  Examples 
+### Examples
 
 `FCColorIsolate` provides an easy way to extract the color structures present in the expression (e.g. an amplitude)
 
@@ -27,7 +27,7 @@ Cases2[ampIso, colorS]
 
 $$\left\{\text{colorS}\left(T_{\text{Col5}\text{Col1}}^{\text{Glu2}} T_{\text{Col3}\text{Col5}}^{\text{Glu4}}\right),\text{colorS}\left(T_{\text{Col5}\text{Col1}}^{\text{Glu4}} T_{\text{Col3}\text{Col5}}^{\text{Glu2}}\right),\text{colorS}\left(T_{\text{Col3}\text{Col1}}^{\text{Glu5}} f^{\text{Glu2}\text{Glu4}\text{Glu5}}\right)\right\}$$
 
-This way we obtain a sorted list of all unique color structures in `amp`. 
+This way we obtain a sorted list of all unique color structures in `amp`.
 
 ```mathematica
 ClearAll[amp, ampIso, colorS]

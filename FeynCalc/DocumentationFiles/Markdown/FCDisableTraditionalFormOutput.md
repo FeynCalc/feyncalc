@@ -1,21 +1,21 @@
-##  FCDisableTraditionalFormOutput 
+`FCDisableTraditionalFormOutput[]` sets the output format of the current FrontEnd to `StandardForm`. The setting is not persistent, such that it does not influence any subsequent Mathematica FrontEnd sessions.
 
-FCDisableTraditionalFormOutput[] sets the output format of the current FrontEnd to StandardForm. The setting is not persistent, such that it does not influence any subequent Mathematica FrontEnd sessions..
+### See also
 
-###  See also 
+[$FCTraditionalFormOutput]($FCTraditionalFormOutput), [FCDisableTraditionalFormOutput](FCDisableTraditionalFormOutput).
 
-$FCTraditionalFormOutput, FCDisableTraditionalFormOutput.
-
-###  Examples 
+### Examples
 
 ```mathematica
 FCDisableTraditionalFormOutput[]
-FV[p, \[Mu]] 
- 
-FCEnableTraditionalFormOutput[]
 FV[p, \[Mu]]
 ```
 
 $$\overline{p}^{\mu }$$
+
+```mathematica
+FCEnableTraditionalFormOutput[]
+FV[p, \[Mu]]
+```
 
 $$\overline{p}^{\mu }$$

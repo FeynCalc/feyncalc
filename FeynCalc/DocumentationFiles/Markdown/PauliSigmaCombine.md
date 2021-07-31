@@ -1,12 +1,12 @@
-##  PauliSigmaCombine 
+## PauliSigmaCombine
 
 `PauliSigmaCombine[exp]`  is (nearly) the inverse operation to PauliSigmaExpand.
 
-###  See also 
+### See also
 
-PauliSigmaExpand.
+[PauliSigmaExpand](PauliSigmaExpand).
 
-###  Examples 
+### Examples
 
 ```mathematica
 SIS[p] + SIS[q]

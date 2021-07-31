@@ -1,12 +1,12 @@
-##  GluonField 
+## GluonField
 
 `GluonField` is a name of a gauge field.
 
-###  See also 
+### See also
 
-GaugeField.
+[GaugeField](GaugeField).
 
-###  Examples 
+### Examples
 
 ```mathematica
 GluonField

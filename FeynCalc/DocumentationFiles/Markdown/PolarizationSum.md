@@ -1,4 +1,4 @@
-##  PolarizationSum 
+## PolarizationSum
 
 `PolarizationSum[μ, ν, ... ]` returns different polarization sums depending on its arguments.
 
@@ -8,11 +8,11 @@
 
 `PolarizationSum[μ, ν, k, n]` yields $-g^{\mu \nu }+frac{k^{\mu }n^{\nu}+k^{\nu }n^{\mu }}{k \cdot n} - \frac{n^2 k^{\mu}k^{\nu}}{(k \cdot n)^2}$.
 
-###  See also 
+### See also
 
-Polarization, DoPolariazationSums, Uncontract.
+[Polarization](Polarization), [DoPolariazationSums](DoPolariazationSums), [Uncontract](Uncontract).
 
-###  Examples 
+### Examples
 
 ```mathematica
 PolarizationSum[\[Mu], \[Nu]]

@@ -1,8 +1,12 @@
-##  FCLoopIsolate 
+## FCLoopIsolate
 
 `FCLoopIsolate[expr, {q1, q2, ...}]` wraps loop integrals into heads specified by the user. This is useful when you want to know which loop integrals appear in the given expression.
 
-###  Examples 
+### See also
+
+[FCLoopExtract](FCLoopExtract).
+
+### Examples
 
 ```mathematica
 FCI[GSD[q - p1] . (GSD[q - p2] + M) . GSD[p3] SPD[q, p2] FAD[q, q - p1, {q - p2, m}]]
@@ -22,11 +26,11 @@ FCLoopIsolate[%, {q}, Head -> l]
 Cases2[%, l]
 ```
 
-$$i \pi ^2 g^{\mu \nu } \text{C}_{00}\left(p^2,-2 (p\cdot r)+p^2+r^2,r^2,m^2,m^2,m^2\right)+i \pi ^2 p^{\mu } p^{\nu } \text{C}_{11}\left(p^2,-2 (p\cdot r)+p^2+r^2,r^2,m^2,m^2,m^2\right)+i \pi ^2 \left(p^{\nu } r^{\mu }+p^{\mu } r^{\nu }\right) \text{C}_{12}\left(p^2,-2 (p\cdot r)+p^2+r^2,r^2,m^2,m^2,m^2\right)+i \pi ^2 r^{\mu } r^{\nu } \text{C}_{22}\left(p^2,-2 (p\cdot r)+p^2+r^2,r^2,m^2,m^2,m^2\right)$$
+$$i \pi ^2 g^{\mu \nu } \text{C}_{00}\left(p^2,r^2,-2 (p\cdot r)+p^2+r^2,m^2,m^2,m^2\right)+i \pi ^2 p^{\mu } p^{\nu } \text{C}_{11}\left(p^2,-2 (p\cdot r)+p^2+r^2,r^2,m^2,m^2,m^2\right)+i \pi ^2 r^{\mu } r^{\nu } \text{C}_{11}\left(r^2,-2 (p\cdot r)+p^2+r^2,p^2,m^2,m^2,m^2\right)+i \pi ^2 \left(p^{\nu } r^{\mu }+p^{\mu } r^{\nu }\right) \text{C}_{12}\left(p^2,-2 (p\cdot r)+p^2+r^2,r^2,m^2,m^2,m^2\right)$$
 
-$$i \pi ^2 g^{\mu \nu } l\left(\text{C}_{00}\left(p^2,-2 (p\cdot r)+p^2+r^2,r^2,m^2,m^2,m^2\right)\right)+i \pi ^2 p^{\mu } p^{\nu } l\left(\text{C}_{11}\left(p^2,-2 (p\cdot r)+p^2+r^2,r^2,m^2,m^2,m^2\right)\right)+i \pi ^2 \left(p^{\nu } r^{\mu }+p^{\mu } r^{\nu }\right) l\left(\text{C}_{12}\left(p^2,-2 (p\cdot r)+p^2+r^2,r^2,m^2,m^2,m^2\right)\right)+i \pi ^2 r^{\mu } r^{\nu } l\left(\text{C}_{22}\left(p^2,-2 (p\cdot r)+p^2+r^2,r^2,m^2,m^2,m^2\right)\right)$$
+$$i \pi ^2 g^{\mu \nu } l\left(\text{C}_{00}\left(p^2,r^2,-2 (p\cdot r)+p^2+r^2,m^2,m^2,m^2\right)\right)+i \pi ^2 p^{\mu } p^{\nu } l\left(\text{C}_{11}\left(p^2,-2 (p\cdot r)+p^2+r^2,r^2,m^2,m^2,m^2\right)\right)+i \pi ^2 r^{\mu } r^{\nu } l\left(\text{C}_{11}\left(r^2,-2 (p\cdot r)+p^2+r^2,p^2,m^2,m^2,m^2\right)\right)+i \pi ^2 \left(p^{\nu } r^{\mu }+p^{\mu } r^{\nu }\right) l\left(\text{C}_{12}\left(p^2,-2 (p\cdot r)+p^2+r^2,r^2,m^2,m^2,m^2\right)\right)$$
 
-$$\left\{l\left(\text{C}_{00}\left(p^2,-2 (p\cdot r)+p^2+r^2,r^2,m^2,m^2,m^2\right)\right),l\left(\text{C}_{11}\left(p^2,-2 (p\cdot r)+p^2+r^2,r^2,m^2,m^2,m^2\right)\right),l\left(\text{C}_{12}\left(p^2,-2 (p\cdot r)+p^2+r^2,r^2,m^2,m^2,m^2\right)\right),l\left(\text{C}_{22}\left(p^2,-2 (p\cdot r)+p^2+r^2,r^2,m^2,m^2,m^2\right)\right)\right\}$$
+$$\left\{l\left(\text{C}_{00}\left(p^2,r^2,-2 (p\cdot r)+p^2+r^2,m^2,m^2,m^2\right)\right),l\left(\text{C}_{11}\left(p^2,-2 (p\cdot r)+p^2+r^2,r^2,m^2,m^2,m^2\right)\right),l\left(\text{C}_{11}\left(r^2,-2 (p\cdot r)+p^2+r^2,p^2,m^2,m^2,m^2\right)\right),l\left(\text{C}_{12}\left(p^2,-2 (p\cdot r)+p^2+r^2,r^2,m^2,m^2,m^2\right)\right)\right\}$$
 
 ```mathematica
 SPD[q, q]^2 FAD[{q, m}] + SPD[q, q]

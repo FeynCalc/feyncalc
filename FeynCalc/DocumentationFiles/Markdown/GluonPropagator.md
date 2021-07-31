@@ -1,4 +1,4 @@
-##  GluonPropagator 
+## GluonPropagator
 
 `GluonPropagator[p, {μ, a}, {ν, b}]` or `GluonPropagator[p, μ, a, ν, b]` yields the gluon propagator.
 
@@ -12,11 +12,11 @@ The gauge and the dimension are determined by the options `Gauge` and `Dimension
 `alpha` for the general covariant gauge;
  `Momentum[n] ,1}` for the axial gauge.
 
-###  See also 
+### See also
 
-GluonSelfEnergy, GluonVertex, GhostVertex, GhostPropagator, GluonGhostVertex.
+[GluonSelfEnergy](GluonSelfEnergy), [GluonVertex](GluonVertex), [GhostVertex](GhostVertex), [GhostPropagator](GhostPropagator), [GluonGhostVertex](GluonGhostVertex).
 
-###  Examples 
+### Examples
 
 ```mathematica
 GluonPropagator[p, \[Mu], a, \[Nu], b]

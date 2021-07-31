@@ -1,9 +1,9 @@
-##  GV 
+## GV
 
 `GV` is equivalent to `GluonVertex`.
 
-###  See also 
+### See also
 
-GluonVertex.
+[GluonVertex](GluonVertex).
 
-###  Examples 
+### Examples

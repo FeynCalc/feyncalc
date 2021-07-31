@@ -1,12 +1,12 @@
-##  DB1 
+## DB1 
 
 `DB1[p2, m1^2, m2^2]` is the derivative of `B1[p2,m1^2,m2^2]` with respect to `p2`.
 
-###  See also 
+### See also
 
-B1.
+[B1](B1).
 
-###  Examples 
+### Examples
 
 ```mathematica
 D[B1[Subscript[p, 2], Subscript[m, 1]^2, Subscript[m, 2]^2], Subscript[p, 2]]

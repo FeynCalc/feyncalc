@@ -1,12 +1,12 @@
-##  PartialDRelations 
+## PartialDRelations
 
 `PartialDRelations` is an option for `ExpandPartialD`. It is a list of rules applied by `ExpandPartialD` at the end.
 
-###  See also 
+### See also
 
-FCPartialD, ExpandPartialD, LeftPartialD, LeftRightPartialD, RightPartialD.
+[FCPartialD](FCPartialD), [ExpandPartialD](ExpandPartialD), [LeftPartialD](LeftPartialD), [LeftRightPartialD](LeftRightPartialD), [RightPartialD](RightPartialD).
 
-###  Examples 
+### Examples
 
 ```mathematica
 QuantumField[A, {\[Mu]}] . QuantumField[B, {\[Mu]}] . LeftPartialD[\[Nu]]

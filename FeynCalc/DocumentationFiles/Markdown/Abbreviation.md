@@ -1,12 +1,12 @@
-##  Abbreviation 
+## Abbreviation
 
 `Abbreviation` is a function used by `OneLoop` and `PaVeReduce` for generating smaller files when saving results to the hard disk. The convention is that a definition like `GP = GluonPropagator` should be accompanied by the definition `Abbreviation[GluonPropagator] = HoldForm[GP]`.
 
-###  See also 
+### See also
 
-$Abbreviations, OneLoop, PaVeReduce, WriteOut, WriteOutPaVe, GluonPropagator, GluonVertex, QuarkPropagator.
+[$Abbreviations]($Abbreviations), [OneLoop](OneLoop), [PaVeReduce](PaVeReduce), [WriteOut](WriteOut), [WriteOutPaVe](WriteOutPaVe), [GluonPropagator](GluonPropagator), [GluonVertex](GluonVertex), [QuarkPropagator](QuarkPropagator).
 
-###  Examples 
+### Examples
 
 ```mathematica
 GP[p, {\[Mu], a}, {\[Nu], b}]

@@ -1,10 +1,10 @@
-##  QuarkFieldPsiDagger 
+## QuarkFieldPsiDagger
 
 `QuarkFieldPsiDagger` is the name of a fermionic field.This is just a name with no functional properties. Only typesetting rules are attached.
 
-###  See also 
+### See also
 
-###  Examples 
+### Examples
 
 ```mathematica
 QuarkFieldPsiDagger

@@ -1,45 +1,59 @@
-##  SPD 
+`SPD[a, b]` denotes a $D$-dimensional scalar product.
 
-SPD[a, b] denotes a D-dimensional scalar product. SPD[a, b] is transformed into ScalarProduct[a, b,Dimension->D] by FeynCalcInternal. SPD[p] is the same as SPD[p,p] $\left(=p^2\right.$)..
+ `SPD[a, b]` is transformed into `ScalarProduct[a, b,Dimension->D]` by `FeynCalcInternal`.
 
-###  See also 
+`SPD[p]` is the same as `SPD[p,p]` $(=p^2)$.
 
-PD, Calc, ExpandScalarProduct, ScalarProduct.
+### See also
 
-###  Examples 
+[PD](PD), [Calc](Calc), [ExpandScalarProduct](ExpandScalarProduct), [ScalarProduct](ScalarProduct).
+
+### Examples
 
 ```mathematica
-SPD[p, q] + SPD[q] 
- 
-SPD[p - q, q + 2 p] 
- 
-Calc[ SPD[p - q, q + 2 p] ] 
- 
-ExpandScalarProduct[SPD[p - q]] 
- 
-SPD[a, b] // StandardForm 
- 
-SPD[a, b] // FCI // StandardForm 
- 
-SPD[a, b] // FCI // FCE // StandardForm 
- 
-FCE[ChangeDimension[SP[p, q], D]] // StandardForm
+SPD[p, q] + SPD[q]
 ```
 
 $$p\cdot q+q^2$$
 
+```mathematica
+SPD[p - q, q + 2 p]
+```
+
 $$(p-q)\cdot (2 p+q)$$
+
+```mathematica
+Calc[ SPD[p - q, q + 2 p] ]
+```
 
 $$-p\cdot q+2 p^2-q^2$$
 
+```mathematica
+ExpandScalarProduct[SPD[p - q]]
+```
+
 $$-2 (p\cdot q)+p^2+q^2$$
 
-```
+```mathematica
+SPD[a, b] // StandardForm
+
 (*SPD[a, b]*)
+```
+
+```mathematica
+SPD[a, b] // FCI // StandardForm
 
 (*Pair[Momentum[a, D], Momentum[b, D]]*)
+```
+
+```mathematica
+SPD[a, b] // FCI // FCE // StandardForm
 
 (*SPD[a, b]*)
+```
+
+```mathematica
+FCE[ChangeDimension[SP[p, q], D]] // StandardForm
 
 (*SPD[p, q]*)
 ```

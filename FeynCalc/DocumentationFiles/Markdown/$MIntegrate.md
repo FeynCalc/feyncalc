@@ -1,12 +1,10 @@
-##  $MIntegrate 
+`$MIntegrate` is a list of integrations done by Mathematica inside `OPEIntegrateDelta`.
 
-$MIntegrate is a list of integrations done by Mathematica inside OPEIntegrateDelta..
+### See also
 
-###  See also 
+[OPEIntegrateDelta](OPEIntegrateDelta).
 
-OPEIntegrateDelta.
-
-###  Examples 
+### Examples
 
 ```mathematica
 $MIntegrate

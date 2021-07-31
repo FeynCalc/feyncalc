@@ -1,26 +1,27 @@
-##  CartesianToLorentz 
+`CartesianToLorentz[exp]` rewrites Cartesian tensors in form of Lorentz tensors (when possible). Using options one can specify which types of tensors should be converted.
 
-CartesianToLorentz[exp]  rewrites Cartesian tensors in form of Lorentz tensors (when possible). Using options one can specify which types of tensors should be converted..
+### See also
 
-###  See also 
+[LorentzToCartesian](LorentzToCartesian).
 
-LorentzToCartesian.
-
-###  Examples 
+### Examples
 
 ```mathematica
-CGS[p] 
- 
-% // CartesianToLorentz 
- 
-CSP[p, q] 
- 
+CGS[p]
 % // CartesianToLorentz
 ```
 
 $$\overline{\gamma }\cdot \overline{p}$$
 
 $$p^0 \bar{\gamma }^0-\bar{\gamma }\cdot \overline{p}$$
+
+```mathematica
+CSP[p, q]
+% // CartesianToLorentz 
+  
+ 
+
+```
 
 $$\overline{p}\cdot \overline{q}$$
 

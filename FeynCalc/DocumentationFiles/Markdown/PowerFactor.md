@@ -1,17 +1,17 @@
-##  PowerFactor 
+`PowerFactor[exp]` replaces `x^a y^a` with `(x y)^a`.
 
-PowerFactor[exp] replaces $x^a$$y^a$with $(x y)^a$..
+### See also
 
-###  See also 
+[PowerSimplify](PowerSimplify).
 
-PowerSimplify.
-
-###  Examples 
+### Examples
 
 ```mathematica
-x^a y^a 
+x^a y^a
+PowerFactor[%] 
+  
  
-PowerFactor[%]
+
 ```
 
 $$x^a y^a$$

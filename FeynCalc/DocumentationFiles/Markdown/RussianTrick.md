@@ -1,14 +1,14 @@
-##  RussianTrick 
+## RussianTrick
 
 `RussianTrick[exp, k, {q1, q2, p}]` (=RussianTrick[exp,p,p,{q1,q2,p}])` does the integration by parts where `p` is the external momentum.
 
 `RussianTrick[exp, k,l, {q1,q2,p}] (=RussianTrick[exp,k,l])` does integration by parts where `l` is the momentum to be differentiated.The result is an expression which is vanishing.
 
-###  See also 
+### See also
 
-FourDivergence, FourLaplacian.
+[FourDivergence](FourDivergence), [FourLaplacian](FourLaplacian).
 
-###  Examples 
+### Examples
 
 ```mathematica
 t = RHI[{2, 0, 0, 0, 0}, {1, 1, 1, 1, 1}]

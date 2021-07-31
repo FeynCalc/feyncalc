@@ -1,12 +1,12 @@
-##  DiracSigmaExpand 
+## DiracSigmaExpand
 
 `DiracSigmaExpand[exp]` applies linearity to the arguments of `DiracSigma`.
 
-###  See also 
+### See also
 
-DiracGamma, DiracSigma.
+[DiracGamma](DiracGamma), [DiracSigma](DiracSigma).
 
-###  Examples 
+### Examples
 
 ```mathematica
 DiracSigma[GSD[p] + GSD[q], GSD[r]]

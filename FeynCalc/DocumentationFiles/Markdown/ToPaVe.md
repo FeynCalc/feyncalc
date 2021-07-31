@@ -1,12 +1,12 @@
-##  ToPaVe 
+## ToPaVe
 
 `ToPaVe[exp, q]`  converts all scalar 1-loop integrals in `exp` that depend on the momentum `q` to scalar Passarino Veltman functions `A0`, `B0`, `C0`, `D0` etc.
 
-###  See also 
+### See also
 
-PaVeToABCD, ToPaVe2, A0, A00, B0, B1, B00, B11, C0, D0.
+[PaVeToABCD](PaVeToABCD), [ToPaVe2](ToPaVe2), [A0](A0), [A00](A00), [B0](B0), [B1](B1), [B00](B00), [B11](B11), [C0](C0), [D0](D0).
 
-###  Examples 
+### Examples
 
 ```mathematica
 FAD[{q, m1}]

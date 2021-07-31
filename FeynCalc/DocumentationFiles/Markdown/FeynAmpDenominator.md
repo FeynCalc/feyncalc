@@ -1,12 +1,12 @@
-##  FeynAmpDenominator 
+## FeynAmpDenominator
 
 `FeynAmpDenominator[...]` represents the inverse denominators of the propagators, i.e. `FeynAmpDenominator[x]` is $1/x$. Different propagator denominators are represented using special heads such as `PropagatorDenominator`, `StandardPropagatorDenominator`, `CartesianPropagatorDenominator` etc.
 
-###  See also 
+### See also
 
-FAD, SFAD, CFAD, GFAD, FeynAmpDenominatorSimplify.
+[FAD](FAD), [SFAD](SFAD), [CFAD](CFAD), [GFAD](GFAD), [FeynAmpDenominatorSimplify](FeynAmpDenominatorSimplify).
 
-###  Examples 
+### Examples
 
 The legacy way to represent standard Lorentzian propagators is to use `PropagatorDenominator`. Here the sign of the mass term is fixed to be $-1$ and no information on the $i \eta$- prescription is available. Furthermore, this way it is not possible to enter eikonal propagators
 

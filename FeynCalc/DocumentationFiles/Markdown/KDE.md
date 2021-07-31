@@ -1,37 +1,49 @@
-##  KDE 
+`KDE[i, j]`  is the Kronecker delta in $D-4$ dimensions.
 
-KDE[i, j]  is the Kronecker delta in D-4 dimensions..
+### See also
 
-###  Examples 
+[CartesianPair](CartesianPair), [KD](KD), [KDD](KDD).
+
+### Examples
 
 ```mathematica
-KDE[i, j] 
- 
-Contract[KDE[i, j] KDE[i, j]] 
- 
-Contract[KDE[i, j] KD[i, j]] 
- 
-Contract[KDE[i, j] KDD[i, j]] 
- 
-KDE[i, j] // StandardForm 
- 
-FCI[KDE[i, j]] // StandardForm 
- 
-FCE[FCI[KDE[i, j]]] // StandardForm
+KDE[i, j]
 ```
 
 $$\hat{\delta }^{ij}$$
 
+```mathematica
+Contract[KDE[i, j] KDE[i, j]]
+```
+
 $$D-4$$
+
+```mathematica
+Contract[KDE[i, j] KD[i, j]]
+```
 
 $$0$$
 
+```mathematica
+Contract[KDE[i, j] KDD[i, j]]
+```
+
 $$D-4$$
 
-```
+```mathematica
+KDE[i, j] // StandardForm
+
 (*KDE[i, j]*)
+```
+
+```mathematica
+FCI[KDE[i, j]] // StandardForm
 
 (*CartesianPair[CartesianIndex[i, -4 + D], CartesianIndex[j, -4 + D]]*)
+```
+
+```mathematica
+FCE[FCI[KDE[i, j]]] // StandardForm
 
 (*KDE[i, j]*)
 ```

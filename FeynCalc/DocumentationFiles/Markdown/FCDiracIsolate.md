@@ -1,12 +1,12 @@
-##  FCDiracIsolate 
+## FCDiracIsolate
 
 `FCDiracIsolate[exp]` wraps chains of Dirac matrices into heads specified by the user.
 
-###  See also 
+### See also
 
-DiracGamma, Spinor.
+[DiracGamma](DiracGamma), [Spinor](Spinor).
 
-###  Examples 
+### Examples
 
 `FCDiracIsolate` provides an easy way to extract the Dirac structures present in the expression (e.g. an amplitude)
 
@@ -27,7 +27,7 @@ Cases2[ampIso, diracS]
 
 $$\left\{\text{diracS}\left(\left(\varphi (\overline{\text{p2}},m_u)\right).\bar{\gamma }^{\text{Lor3}}.\left(\varphi (\overline{\text{p1}},m_u)\right)\right),\text{diracS}\left(\left(\varphi (\overline{\text{p2}},m_u)\right).\bar{\gamma }^{\mu }.\left(\bar{\gamma }\cdot \left(\overline{\text{p2}}-\overline{\text{k1}}\right)+m_u\right).\bar{\gamma }^{\nu }.\left(\varphi (\overline{\text{p1}},m_u)\right)\right),\text{diracS}\left(\left(\varphi (\overline{\text{p2}},m_u)\right).\bar{\gamma }^{\nu }.\left(\bar{\gamma }\cdot \left(\overline{\text{k2}}+\overline{\text{p2}}\right)+m_u\right).\bar{\gamma }^{\mu }.\left(\varphi (\overline{\text{p1}},m_u)\right)\right)\right\}$$
 
-This way we obtain a sorted list of all unique Dirac structures in `amp`. 
+This way we obtain a sorted list of all unique Dirac structures in `amp`.
 
 ```mathematica
 ClearAll[amp, ampIso, diracS]

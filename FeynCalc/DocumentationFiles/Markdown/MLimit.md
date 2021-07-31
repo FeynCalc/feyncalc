@@ -1,8 +1,8 @@
-##  MLimit 
+`MLimit[expr, lims]` takes multiple limits of `expr` using the limits `lims`.
 
-MLimit[expr, lims] takes multiple limits of expr using the limits lims..
+### See also
 
-###  Examples 
+### Examples
 
 ```mathematica
 MLimit[y Log[y] + Sin[x - 1]/(x - 1), {x -> 1, y -> 0}]

@@ -1,19 +1,18 @@
-##  EpsEvaluate 
+`EpsEvaluate[expr]` applies total antisymmetry and linearity (w.r.t. momenta) to all Levi-Civita tensors (`Eps`) in expr.
 
-EpsEvaluate[expr] applies total antisymmetry and linearity (w.r.t. momenta) to all Levi-Civita tensors (Eps') in expr..
+### See also
 
-###  See also 
+[Contract](Contract), [Eps](Eps), [LC](LC), [Trick](Trick).
 
-Contract, Eps, LC, Trick.
-
-###  Examples 
+### Examples
 
 ```mathematica
-Contract[LC[\[Mu], \[Nu], \[Rho], \[Sigma]] FV[p + q, \[Sigma]]] // MomentumCombine 
+Contract[LC[\[Mu], \[Nu], \[Rho], \[Sigma]] FV[p + q, \[Sigma]]] // MomentumCombine
+EpsEvaluate[%]
+StandardForm[%] 
+  
  
-EpsEvaluate[%] 
- 
-StandardForm[%]
+
 ```
 
 $$\bar{\epsilon }^{\mu \nu \rho \overline{p}+\overline{q}}$$

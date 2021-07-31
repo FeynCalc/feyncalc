@@ -1,10 +1,10 @@
-##  SquareAmplitude 
+## SquareAmplitude
 
 `SquareAmplitude[m1, m2]` multiplies the amplitudes from the list `m1` with their complex conjugate from the list `m2` to obtain the list of products $m1_i m2_j$. This function can be useful when exporting amplitudes obtained with FeynCalc to FORM.
 
-###  See also 
+### See also
 
-###  Examples 
+### Examples
 
 ```mathematica
 Clear[a1, a2, a3, b1, b2, b3]

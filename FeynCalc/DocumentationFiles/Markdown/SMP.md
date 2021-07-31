@@ -1,16 +1,16 @@
-##  SMP 
+## SMP
 
-`SMP[par]` displays a symbol for the model parameter `par`. Typical parameters are masses, coupling constants, mixing angles etc. 
+`SMP[par]` displays a symbol for the model parameter `par`. Typical parameters are masses, coupling constants, mixing angles etc.
 
 Parameters that are complex, like a CKM matrix element, have an `I` as an additional argument, e.g. `SMP["V_ud", I]` and  `SMP["V_ud", -I]`.
 
 `SMP[]` shows the list of all available parameters.
 
-###  See also 
+### See also
 
-SMVertex.
+[SMVertex](SMVertex), [SMPToSymbol](SMPToSymbol).
 
-###  Examples 
+### Examples
 
 Electron mass $m_e$
 
@@ -24,7 +24,6 @@ Weak coupling constant $g_W$
 
 ```mathematica
 SMP["g_W"]
-
 ```
 
 $$g_W$$

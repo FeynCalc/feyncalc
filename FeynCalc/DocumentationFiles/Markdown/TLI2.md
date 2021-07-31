@@ -1,9 +1,9 @@
-##  TLI2 
+## TLI2 
 
-TLI2 is like TLI, but without any functional properties..
+TLI2 is like TLI, but without any functional properties.
 
-###  See also 
+### See also
 
-TLI.
+[TLI](TLI).
 
-###  Examples 
+### Examples

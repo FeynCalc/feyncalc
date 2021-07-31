@@ -1,31 +1,37 @@
-##  SIS 
+`SIS[p]` can be used as input for $3$-dimensional $\sigma^{\mu } p_{\mu }$ with 4-dimensional Lorentz vector $p$ and is transformed into `PauliSigma[Momentum[p]]` by FeynCalcInternal.
 
-SIS[p] can be used as input for 3-dimensional $\sigma ^{\mu }p_{\mu }$ with 4-dimensional Lorentz vector p and is transformed into PauliSigma[Momentum[p]] by FeynCalcInternal..
+### See also
 
-###  Examples 
+[PauliSigma](PauliSigma), [SISD](SISD).
+
+### Examples
 
 ```mathematica
-SIS[p] 
- 
-SIS[p] // FCI // StandardForm 
- 
-SIS[p, q, r, s] 
- 
-SIS[p, q, r, s] // StandardForm 
- 
-SIS[q] . (SIS[p] + m) . SIS[q]
+SIS[p]
 ```
 
 $$\bar{\sigma }\cdot \overline{p}$$
 
-```
+```mathematica
+SIS[p] // FCI // StandardForm
+
 (*PauliSigma[Momentum[p]]*)
+```
+
+```mathematica
+SIS[p, q, r, s]
 ```
 
 $$\left(\bar{\sigma }\cdot \overline{p}\right).\left(\bar{\sigma }\cdot \overline{q}\right).\left(\bar{\sigma }\cdot \overline{r}\right).\left(\bar{\sigma }\cdot \overline{s}\right)$$
 
-```
+```mathematica
+SIS[p, q, r, s] // StandardForm
+
 (*SIS[p] . SIS[q] . SIS[r] . SIS[s]*)
+```
+
+```mathematica
+SIS[q] . (SIS[p] + m) . SIS[q]
 ```
 
 $$\left(\bar{\sigma }\cdot \overline{q}\right).\left(\bar{\sigma }\cdot \overline{p}+m\right).\left(\bar{\sigma }\cdot \overline{q}\right)$$

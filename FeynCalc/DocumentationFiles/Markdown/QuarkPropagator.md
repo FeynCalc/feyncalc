@@ -1,4 +1,4 @@
-##  QuarkPropagator 
+## QuarkPropagator
 
 `QuarkPropagator[p]` is the massless quark propagator.
 
@@ -6,11 +6,11 @@
 
 `QP` can be used as an abbreviation of `QuarkPropagator`.
 
-###  See also 
+### See also
 
-GluonPropagator, QuarkGluonVertex.
+[GluonPropagator](GluonPropagator), [QuarkGluonVertex](QuarkGluonVertex).
 
-###  Examples 
+### Examples
 
 ```mathematica
 QuarkPropagator[p, Explicit -> True]

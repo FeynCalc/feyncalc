@@ -1,4 +1,4 @@
-##  FCSetDiracGammaScheme 
+## FCSetDiracGammaScheme
 
 `FCSetDiracGammaScheme[scheme]` allows you to specify how Dirac matrices will be handled in `D` dimensions. This is mainly relevant to the treatment of the 5th Dirac matrix $\gamma^5$, which is not well-defined in dimensional regularization.
 
@@ -12,11 +12,11 @@ Following schemes are supported:
 
 "Larin" - Special prescription developed by S. Larin, also known as the Larin-Gorishny-Atkyampo-DelBurgo scheme. Essentially, it is a shortcut (mostly used in QCD) for obtaining the same results as in BMHV but without the necessity to deal with tensors from different dimensions. That is, before evaluating traces (but after moving $\gamma^5$ anticommuting in $D$-dimensions to the right of the Dirac string inside a trace) a product  $\gamma^\mu \gamma^5$ is substituted to $-I/6 \varepsilon^{\mu \alpha \beta \sigma} \gamma^\alpha \gamma^\beta \gamma^\sigma$, where all indices live in $D$-dimensions now. The Levi-Civita tensor is taken to be $D$-dimensional, i.e., contraction of two Eps's results in $D$'s. This scheme is often used for performance reasons and is assumed to give the same results as the BMHV scheme. However, $\gamma^5$ is not anticommuting inside closed fermion loops and it is not so clear if this scheme works for more than one fermion line involving $\gamma^5$. When in doubt, it might be better to use BMHV instead.
 
-###  See also 
+### See also
 
-FCGetDiracGammaScheme, DiracTrace.
+[FCGetDiracGammaScheme](FCGetDiracGammaScheme), [DiracTrace](DiracTrace).
 
-###  Examples 
+### Examples
 
 In NDR chiral traces remain unevaluated. You decide how to treat them.
 

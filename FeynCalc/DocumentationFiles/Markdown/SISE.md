@@ -1,27 +1,31 @@
-##  SISE 
+`SISE[p]` can be used as input for $D-4$-dimensional $\sigma ^{\mu } p_{\mu }$ with $D-4$-dimensional Lorentz vector $p$ and is transformed into `PauliSigma[Momentum[p,D-4], D-4]` by `FeynCalcInternal`.
 
-SISE[p] can be used as input for D-4-dimensional $\sigma ^{\mu }p_{\mu }$ with D-4-dimensional Lorentz vector p and is transformed into PauliSigma[Momentum[p,D-4],D-4] by FeynCalcInternal..
+### See also
 
-###  Examples 
+[SIS](SIS), [PauliSigma](PauliSigma).
+
+### Examples
 
 ```mathematica
-SISE[p] 
- 
-SISE[p] // FCI // StandardForm 
- 
-SISE[p, q, r, s] 
- 
-SISE[p, q, r, s] // StandardForm
+SISE[p]
 ```
 
 $$\hat{\sigma }\cdot \hat{p}$$
 
-```
+```mathematica
+SISE[p] // FCI // StandardForm
+
 (*PauliSigma[Momentum[p, -4 + D], -4 + D]*)
+```
+
+```mathematica
+SISE[p, q, r, s]
 ```
 
 $$\left(\hat{\sigma }\cdot \hat{p}\right).\left(\hat{\sigma }\cdot \hat{q}\right).\left(\hat{\sigma }\cdot \hat{r}\right).\left(\hat{\sigma }\cdot \hat{s}\right)$$
 
-```
+```mathematica
+SISE[p, q, r, s] // StandardForm
+
 (*SISE[p] . SISE[q] . SISE[r] . SISE[s]*)
 ```

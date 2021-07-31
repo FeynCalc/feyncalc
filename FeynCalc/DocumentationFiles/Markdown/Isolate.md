@@ -1,8 +1,12 @@
-##  Isolate 
+## Isolate
+
+### See also
+
+[IsolateNames](IsolateNames), [Collect2](Collect2).
 
 `Isolate[expr]` substitutes abbreviations `KK[i]` for all `Plus[...]` (sub-sums) in `expr`. The inserted `KK[i]` have head `HoldForm`. `Isolate[expr, varlist]` substitutes `KK[i]` for all subsums in `expr` which are free of any occurrence of a member of the list `varlist`. Instead of `KK` any other head or a list of names of the abbreviations may be specified with the option `IsolateNames`.
 
-###  Examples 
+### Examples
 
 ```mathematica
 t0 = Isolate[a + b]

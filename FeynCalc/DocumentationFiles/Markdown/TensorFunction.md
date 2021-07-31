@@ -1,31 +1,16 @@
-##  TensorFunction 
+`TensorFunction[t, mu, nu, ...]` transform into `t[LorentzIndex[mu], LorentzIndex[nu], ...]`, i.e., it can be used as an unspecified tensorial function `t`.
 
-TensorFunction[t, mu, nu, ...] transform into t[LorentzIndex[mu], LorentzIndex[nu], ...], i.e., it can be used as an unspecified tensoriell function t. A symmetric tensor can be obtained by TensorFunction[{t, "S"}, mu, nu, ...], and an antisymmteric one by TensorFunction[{t, "A"}, mu, nu, ...]..
+A symmetric tensor can be obtained by `TensorFunction[{t, "S"}, mu, nu, ...]`, and an antisymmetric one by `TensorFunction[{t, "A"}, mu, nu, ...]`.
 
-###  See also 
+### See also
 
-FCSymmetrize.
+[FCSymmetrize](FCSymmetrize), [FCAntiSymmetrize](FCAntiSymmetrize).
 
-###  Examples 
+### Examples
 
 ```mathematica
-TensorFunction[t, \[Mu], \[Nu], \[Tau]] 
- 
-% // StandardForm 
- 
-Contract[FV[p, \[Mu]] %] 
- 
-% // StandardForm 
- 
-TensorFunction[{f, "S"}, \[Alpha], \[Beta]] 
- 
-TensorFunction[{f, "S"}, \[Beta], \[Alpha]] 
- 
-% // StandardForm 
- 
-Attributes[f] 
- 
-ClearAttributes[f, Orderless]
+TensorFunction[t, \[Mu], \[Nu], \[Tau]]
+% // StandardForm
 ```
 
 $$t(\mu ,\nu ,\tau )$$
@@ -34,18 +19,37 @@ $$t(\mu ,\nu ,\tau )$$
 (*t[LorentzIndex[\[Mu]], LorentzIndex[\[Nu]], LorentzIndex[\[Tau]]]*)
 ```
 
+```mathematica
+Contract[FV[p, \[Mu]] %]
+% // StandardForm
+```
+
 $$t\left(\overline{p},\nu ,\tau \right)$$
 
 ```
 (*t[Momentum[p], LorentzIndex[\[Nu]], LorentzIndex[\[Tau]]]*)
 ```
 
+```mathematica
+TensorFunction[{f, "S"}, \[Alpha], \[Beta]]
+```
+
 $$f(\alpha ,\beta )$$
+
+```mathematica
+TensorFunction[{f, "S"}, \[Beta], \[Alpha]]
+% // StandardForm
+```
 
 $$f(\alpha ,\beta )$$
 
 ```
 (*f[LorentzIndex[\[Alpha]], LorentzIndex[\[Beta]]]*)
+```
+
+```mathematica
+Attributes[f]
+ClearAttributes[f, Orderless]
 ```
 
 $$\{\text{Orderless}\}$$

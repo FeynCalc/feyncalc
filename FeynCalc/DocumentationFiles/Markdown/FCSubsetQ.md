@@ -1,15 +1,19 @@
-##  FCSubsetQ 
+`FCSubsetQ[list1, list2]`  yields `True` if `list2` is a subset of `list1` and `False` otherwise. It returns the same results as the standard `SubsetQ`. The only reason for introducing `FCSubsetQ` is that `SubsetQ` is not available in Mathematica 8 and 9, which are still supported by FeynCalc.
 
-FCSubsetQ[list1, list2]  yields True if list2 is a subset of list1 and False otherwise. It returns the same results as the standard SubsetQ. The only reason for introducing FCSubsetQ is that SubsetQ is not available in Mathematica 8 and 9, which are still supported by FeynCalc..
+### See also
 
-###  Examples 
+[FCDuplicateFreeQ](FCDuplicateFreeQ).
+
+### Examples
 
 ```mathematica
-FCSubsetQ[{a, b, c, d}, {a, d, e}] 
- 
-FCSubsetQ[{a, b, c, d}, {a, d}]
+FCSubsetQ[{a, b, c, d}, {a, d, e}]
 ```
 
 $$\text{False}$$
+
+```mathematica
+FCSubsetQ[{a, b, c, d}, {a, d}]
+```
 
 $$\text{True}$$

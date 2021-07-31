@@ -1,10 +1,10 @@
 `Tdec[{{qi, mu}, {qj, nu}, ...}, {p1, p2, ...}]` calculates the tensorial decomposition formulas for Lorentzian integrals. The more common ones are saved in `TIDL`.
 
-###  See also 
+### See also
 
-TID, TIDL, OneLoopSimplify.
+[TID](TID), [TIDL](TIDL), [OneLoopSimplify](OneLoopSimplify).
 
-###  Examples 
+### Examples
 
 Check that $\int d^D f(p,q) q^{\mu}= \frac{p^{\mu}}{p^2} \int d^D f(p,q) p \cdot q$
 

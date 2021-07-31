@@ -1,12 +1,12 @@
-##  PauliChain 
+## PauliChain
 
 `PauliChain[x, i, j]` denotes a chain of Pauli matrices `x`, where the Pauli indices `i` and `j` are explicit.
 
-###  See also 
+### See also
 
-PCHN, PauliIndex, PauliIndexDelta, PauliChainJoin, PauliChainExpand, PauliChainFactor.
+[PCHN](PCHN), [PauliIndex](PauliIndex), [PauliIndexDelta](PauliIndexDelta), [PauliChainJoin](PauliChainJoin), [PauliChainExpand](PauliChainExpand), [PauliChainFactor](PauliChainFactor).
 
-###  Examples 
+### Examples
 
 A standalone Pauli matrix
 
