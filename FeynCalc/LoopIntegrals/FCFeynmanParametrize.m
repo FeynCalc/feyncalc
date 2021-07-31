@@ -217,7 +217,7 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 					"Multiloop1",
 					Null,
 					"Multiloop2",
-					pref = Exp[nLoops*EulerGamma*(dim-4)] pref,
+					pref = Exp[nLoops*EulerGamma*(4-dim)/2] pref,
 					_,
 					Message[FCFeynmanParametrize::failmsg, "Unknown convention for the Feynman integral prefactor."];
 					Abort[]

@@ -154,8 +154,8 @@ SPD[p, p]*x[2])))^(-2 + D/2), (I*Gamma[2 - D/2])/(2^D*Pi^(D/2)), {x[1], x[2]}}"}
 {"fcstFCFeynmanParametrize-ID23",
 "FCFeynmanParametrize[SFAD[{l,-m^2},{l+p}],{l},Names\[Rule]x,\
 FeynmanIntegralPrefactor\[Rule]\"Multiloop2\",FCE->True]",
-"{(x[1] + x[2])^(2 - D)*(-(x[1]*(m^2*x[1] + m^2*x[2] + SPD[p, p]*x[2])))^(-2 + D/2),
-E^(-4*EulerGamma + D*EulerGamma)*Gamma[2 - D/2], {x[1], x[2]}}"},
+"{(x[1] + x[2])^(2 - D)*(-(x[1]*(m^2*x[1] + m^2*x[2] + SPD[p,
+p]*x[2])))^(-2 + D/2), E^(2*EulerGamma - (D*EulerGamma)/2)*Gamma[2 - D/2], {x[1], x[2]}}"},
 {"fcstFCFeynmanParametrize-ID24",
 "FCFeynmanParametrize[FVD[p,mu] \
 SFAD[{p,-m^2,a},{p-k,-m^2,b}],{p},Names\[Rule]x,Simplify\[Rule]True,\
@@ -172,8 +172,7 @@ m^2*(x[1] + x[2])^2)^(-a - b + D/2), (FVD[k, mu]*Gamma[a + b - D/2])/(2^D*Pi^(D/
 {"fcstFCFeynmanParametrize-ID26",
 "FCFeynmanParametrize[SFAD[{{p,2p.q},-m^2}],{p},Names\[Rule]x,\
 Simplify\[Rule]True,Reduce\[Rule]True,FCE\[Rule]True]",
-"{1, (Gamma[1 - D/2]*(-m^2 + SPD[q, q])^(D/2))/(m^2 - SPD[q, q]), \
-{}}"},
+"{1, (Gamma[1 - D/2]*(-m^2 + SPD[q, q])^(D/2))/(m^2 - SPD[q, q]), {}}"},
 {"fcstFCFeynmanParametrize-ID27",
 "FCFeynmanParametrize[SFAD[{{p,2p.q},-m^2}],{p},Names\[Rule]x,\
 Simplify\[Rule]True,Reduce\[Rule]True,FCE\[Rule]True,\"Euclidean\"\
