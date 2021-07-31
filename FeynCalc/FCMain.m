@@ -115,9 +115,6 @@ FCPrint::usage =
 "FCPrint[level, x] outputs Print[x] if the value of $VeryVerbose \
 is larger than level.";
 
-$FCS::usage = "$FCS is a list of functions with a short name. \
-E.g. GA[nu] can be used instead of DiracGamma[nu].";
-
 FeynCalc::usage =
 "For installation notes visit www.feyncalc.github.io. You can get \
 on-line information by ?function, e.g. ?Contract.\n
@@ -378,55 +375,17 @@ $Abbreviations = {
 	"\r" -> ""
 };
 
-
-$Containers				= {};
-$DisableMemSet 			= False;
-$DistributiveFunctions	= {Conjugate, Transpose};
-$FCShowIEta				= True;
-$FCS = {
-	"CDr",
-	"FAD",
-	"FC",
-	"FCE",
-	"FCI",
-	"FDr",
-	"FI",
-	"FV",
-	"FVD",
-	"FVE",
-	"GA",
-	"GA5",
-	"GAD",
-	"GAE",
-	"GGV",
-	"GP",
-	"GS",
-	"GSD",
-	"GSE",
-	"LC",
-	"LCD",
-	"MT",
-	"MTD",
-	"MTE",
-	"QGV",
-	"QO",
-	"SD",
-	"SDF",
-	"SOD",
-	"SP",
-	"SPC",
-	"SPD",
-	"SPE",
-	"SPL"
-};
-
+$Containers							= {};
+$DisableMemSet 						= False;
+$DistributiveFunctions				= {Conjugate, Transpose};
+$FCShowIEta							= True;
 $KeepLogDivergentScalelessIntegrals = False;
-$LeviCivitaSign		= -1;
-$LimitTo4			= False;
-$LimitTo4IRUnsafe	= False;
-$FCMemoryAvailable	= Floor[$SystemMemory/10^6/4];
-$Multiplications	= {Times, DOT};
-$OPEWard			= False;
+$LeviCivitaSign						= -1;
+$LimitTo4							= False;
+$LimitTo4IRUnsafe					= False;
+$FCMemoryAvailable					= Floor[$SystemMemory/10^6/4];
+$Multiplications					= {Times, DOT};
+$OPEWard							= False;
 
 (*	Mathematica versions 8 and 9 do not have the $SystemMemory variable,
 	so for them we set the available memory for memoization to 4 GiB*)
