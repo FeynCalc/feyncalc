@@ -22,7 +22,7 @@ FCGramDeterminant::usage =
 "FCGramDeterminant[{p1,p2,...}] computes the determinant of the Gram matrix created \
 from the given list of momenta.";
 
-FCGram::failmsg = "Error! FCGram has encountered a fatal problem and \
+FCGramMatrix::failmsg = "Error! FCGramMatrix has encountered a fatal problem and \
 must abort the computation. The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
@@ -59,7 +59,7 @@ FCGramMatrix[moms_List,OptionsPattern[]]:=
 		mat = Table[pairHead[momHead[moms[[i]],dim], momHead[moms[[j]],dim]], {i, 1, len}, {j, 1, len}];
 
 		If[	!MatrixQ[mat],
-			Message[FCGram::failmsg, "The created Gram matrix is incorrect."];
+			Message[FCGramMatrix::failmsg, "The created Gram matrix is incorrect."];
 			Abort[]
 		];
 

@@ -18,8 +18,8 @@
 
 FCSchoutenBruteForce::usage =
 "FCSchoutenBruteForce[exp,{},{}] can be used to show that certain terms are zero \
-by repeatedly Schouten identity in a brute force way. The algorithm tries to \
-find replacements which follow from the Schouten identity and make the length \
+by repeatedly applying Schouten's identity in a brute force way. The algorithm tries to \
+find replacements which follow from the Schouten's identity and make the length \
 of the given expression shorter. It is not guaranteed to terminate and in \
 general can often get stucked. Still, with some luck it is often possible \
 to show that certain terms vanish by a sequence of transformations that would \
