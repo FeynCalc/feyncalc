@@ -23,7 +23,10 @@ SymbolsWithExplicitOption;
 
 SymbolsWithExplicitOption = {
 	FeynCalc`FCChargeConjugateTransposed[xx_, op:OptionsPattern[]]  :>
-		FeynCalc`FCChargeConjugateTransposed[xx, Explicit->True,	Sequence@@FilterRules[{op}, Except[Explicit]]]
+		FeynCalc`FCChargeConjugateTransposed[xx, Explicit->True,	Sequence@@FilterRules[{op}, Except[Explicit]]],
+
+	FeynCalc`FCClausen[xx_, yy_, op:OptionsPattern[]]  :>
+		FeynCalc`FCClausen[xx, yy, Explicit->True,	Sequence@@FilterRules[{op}, Except[Explicit]]]
 };
 
 End[]

@@ -1,0 +1,24 @@
+
+
+(* :Title: FCClausen.test													*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2021 Rolf Mertig
+	Copyright (C) 1997-2021 Frederik Orellana
+	Copyright (C) 2014-2021 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCClausen	  			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Tables`fcstFCClausen =
+({
+{"fcstFCClausen-ID1", "FCClausen[2,x,Explicit->True]",
+"(I/2)*(PolyLog[2, E^((-I)*x)] - PolyLog[2, E^(I*x)])"},
+{"fcstFCClausen-ID2", "Explicit[FCClausen[x,y]//Explicit]",
+"(I/2)*(PolyLog[x, E^((-I)*y)] - PolyLog[x, E^(I*y)])"},
+{"fcstFCClausen-ID3", "FCClausen[2,Pi]//N", "0."},
+{"fcstFCClausen-ID4", "FCClausen[2,Pi/2]//N", "0.915965594177219"}
+});
