@@ -1,8 +1,5 @@
 (* ::Package:: *)
 
- 
-
-
 (* ::Section:: *)
 (*CovariantFieldDerivative*)
 

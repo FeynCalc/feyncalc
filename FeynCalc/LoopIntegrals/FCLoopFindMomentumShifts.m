@@ -19,7 +19,7 @@ FCLoopFindMomentumShifts::usage =
 "FCLoopFindMomentumShifts[source, target, {p1, p2, ...}] finds loop momentum shifts \
 that bring loop integrals or topologies in the list source to the form specified \
 in target. The integrals/topologies in intFrom and intTo are assumed to be equivalent \
-and their denominators must be properly ordered via FCToPakForm. Furthermore, target \
+and their denominators must be properly ordered via FCLoopToPakForm. Furthermore, target \
 must be provided as a list of FeynAmpDenominator objects, while intFrom is a list of \
 such lists.";
 
