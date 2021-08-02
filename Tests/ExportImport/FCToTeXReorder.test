@@ -1,0 +1,53 @@
+
+
+(* :Title: FCToTeXReorder.test                                                 *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2021 Rolf Mertig
+	Copyright (C) 1997-2021 Frederik Orellana
+	Copyright (C) 2014-2021 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCToTeXReorder	  			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`ExportImport`fcstFCToTeXReorder =
+({
+{"fcstFCToTeXReorder-ID1", "FCToTeXReorder[a+b,{{},{},{}}]",
+"{a, b, Plus}"},
+{"fcstFCToTeXReorder-ID2",
+"FCToTeXReorder[-1/324*(L1*(17808 - 300*NH - 600*NL - 600*NV - \
+82512*z)) + (L2*(32 + 864*z))/108 + (-327096 + 9120*NH + 3120*NL + \
+3120*NV + 480*Sqrt[3]*Pi - 1800*Sqrt[3]*NH*Pi + 8640*Pi^2 + 1591200*z \
++ 10800*NL*z + 21600*NV*z + 1728*Pi^2*z)/1944 + \
+32*z*Log[z],{{L1,L2},{L1,L2},{z}},Split->True,Factoring->{Function[x,\
+ExpandAll[x]],Function[x,ExpandAll[x]]},\[IndentingNewLine]SortBy->{\
+Function[x,Which[!FreeQ2[x,{L1}],1,!FreeQ2[x,{L2}],2,True,30]],\
+Function[x,Which[!FreeQ2[x,{z}],1,True,3]]}]",
+"{{{-1484/27 + (25*NH)/27 + (50*NL)/27 + (50*NV)/27 + (764*z)/3, \
+L1, Times}, {8/27 + 8*z, L2, Times}, Plus}, {{32, z*Log[z], Times}, \
+{22100/27 + (50*NL)/9 + (100*NV)/9 + (8*Pi^2)/9, z, Times}, -4543/27 \
++ (380*NH)/81 + (130*NL)/81 + (130*NV)/81 + (20*Pi)/(27*Sqrt[3]) - \
+(25*NH*Pi)/(9*Sqrt[3]) + (40*Pi^2)/9, Plus}, Plus}"},
+{"fcstFCToTeXReorder-ID3",
+"FCToTeXReorder[{{{-1484/27 + (25*NH)/27 + (50*NL)/27 + \
+(50*NV)/27 + (764*z)/3, L1, Times}, {8/27 + 8*z, L2, Times}, Plus}, \
+{{32, z*Log[z], Times}, {22100/27 + (50*NL)/9 + (100*NV)/9 + \
+(8*Pi^2)/9, z, Times},
+-4543/27 + (380*NH)/81 + (130*NL)/81 + (130*NV)/81 + \
+(20*Pi)/(27*Sqrt[3]) - (25*NH*Pi)/(9*Sqrt[3]) + (40*Pi^2)/9, Plus}, \
+Plus},{{},{},{}},Split->False,Factoring->{Function[x,ExpandAll[x]],\
+Function[x,ExpandAll[x]]},\[IndentingNewLine]SortBy->{\
+\[IndentingNewLine]Function[x,Which[!FreeQ2[x,{z}],1,!FreeQ2[x,{NH}],\
+2,!FreeQ2[x,{NV}],3,!FreeQ2[x,{NL}],4,True,5]],\[IndentingNewLine]\
+Function[x,Which[!FreeQ2[x,{z}],1,!FreeQ2[x,{NH}],2,!FreeQ2[x,{NV}],3,\
+!FreeQ2[x,{NL}],4,True,5]]\[IndentingNewLine]}]",
+"{{{{(764*z)/3, (25*NH)/27, (50*NV)/27, (50*NL)/27, -1484/27, \
+Plus}, L1, Times}, {{8*z, 8/27, Plus}, L2, Times}, Plus}, {{32, \
+z*Log[z], Times}, {{(100*NV)/9, (50*NL)/9, 22100/27, (8*Pi^2)/9, \
+Plus}, z, Times}, {(380*NH)/81, (-25*NH*Pi)/(9*Sqrt[3]), (130*NV)/81, \
+(130*NL)/81, -4543/27, (20*Pi)/(27*Sqrt[3]), (40*Pi^2)/9, Plus}, \
+Plus}, Plus}"}
+})

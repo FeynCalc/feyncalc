@@ -1,0 +1,23 @@
+(* :Title: FCReorderList.test										*)
+
+(*
+This software is covered by the GNU General Public License 3.
+Copyright (C) 1990-2021 Rolf Mertig
+Copyright (C) 1997-2021 Frederik Orellana
+Copyright (C) 2014-2021 Vladyslav Shtabovenko
+*)
+
+
+(* :Summary:  Framework independent unit tests for FCReorderList	*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Shared`fcstFCReorderList =
+({
+{"fcstFCReorderList-ID1",
+"FCReorderList[ Table[mat[i], {i, 1, 23}], {{1, 10}, 23, {11, 20}, 22, 21}]",
+"{mat[1], mat[2], mat[3], mat[4], mat[5], mat[6], mat[7], mat[8],
+mat[9], mat[10], mat[23], mat[11], mat[12], mat[13], mat[14],
+mat[15], mat[16], mat[17], mat[18], mat[19], mat[20], mat[22],
+mat[21]}"}
+});
