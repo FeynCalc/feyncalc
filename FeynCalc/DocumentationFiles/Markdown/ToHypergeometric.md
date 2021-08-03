@@ -1,3 +1,5 @@
+## ToHypergeometric
+
 `ToHypergeometric[t^b (1 - t)^c (1+tz)^a,t]` returns `u^a Gamma[b+1] Gamma[c+1]/Gamma[b+c+2] Hypergeometric2F1[-a,b+1,b+c+2,-z/u]`. Remember that $\textrm{Re}(b) >0$ and $\textrm{Re} (c-b) > 0$ should hold (need not be set in Mathematica).
 
 ### See also

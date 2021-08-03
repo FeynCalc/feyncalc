@@ -1,3 +1,5 @@
+## SID
+
 `SID[mu]`  can be used as input for $D-1$-dimensional $\sigma^{\mu }$ with $D$-dimensional Lorentz index $\mu$ and is transformed into `PauliSigma[LorentzIndex[mu,D],D-1]` by `FeynCalcInternal`.
 
 ### See also

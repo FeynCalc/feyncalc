@@ -1,3 +1,5 @@
+## CGSD
+
 `CGSD[p]` is transformed into `DiracGamma[CartesianMomentum[p, D-1], D]` by `FeynCalcInternal`.
 
 `CGSD[p,q, ...]` is equivalent to `CGSD[p].CGSD[q]`.

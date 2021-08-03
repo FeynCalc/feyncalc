@@ -1,3 +1,5 @@
+## FRH
+
 `FRH[exp_]` corresponds to `FixedPoint[ReleaseHold, exp]`,  i.e. `FRH` removes all `HoldForm` and `Hold` in `exp`.
 
 ### See also

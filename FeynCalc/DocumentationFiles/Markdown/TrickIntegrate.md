@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## TrickIntegrate
 
 `TrickIntegrate[(1 - t)^(a * Epsilon - 1) g[t], t]` does an integration trick for the definite integral of ($(1-t)^{a \text{Epsilon}-1}$ g[t])  from `0` to `1`, yielding  `g[1]/a/Epsilon + Hold[Integrate][(1-t)^{a Epsilon-1} (g[t]-g[1]),{t,0,1}]`

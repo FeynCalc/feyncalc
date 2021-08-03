@@ -1,3 +1,5 @@
+## PlusDistribution
+
 `PlusDistribution[1/(1 - x)]` denotes a distribution (in the sense of the "+" prescription).
 
 ### See also

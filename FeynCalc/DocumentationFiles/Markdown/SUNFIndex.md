@@ -1,3 +1,5 @@
+## SUNFIndex
+
 `SUNFIndex[a]`  is an $SU(N)$ index in the fundamental representation. If the argument is an integer, `SUNFIndex[a]` turns into `ExplicitSUNFIndex[a]`.
 
 ### See also

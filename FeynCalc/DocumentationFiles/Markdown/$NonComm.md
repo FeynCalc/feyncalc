@@ -1,3 +1,5 @@
+##  $NonComm
+
 `$NonComm` contains a list of all noncommutative heads present.
 
 ### See also

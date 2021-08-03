@@ -1,3 +1,5 @@
+## DotSimplify
+
 `DotSimplify[exp]` expands and reorders noncommutative terms in exp. Simplifying relations may be specified by the option `DotSimplifyRelations` or by `Commutator` and `AntiCommutator` definitions. Whether exp is expanded noncommutatively depends on the option `Expanding`.
 
 ### See also

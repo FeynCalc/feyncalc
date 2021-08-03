@@ -1,3 +1,5 @@
+## PauliXi
+
 `PauliXi[I]` represents a two-component Pauli spinor $\xi$, while `PauliXi[-I]` stands for $\xi^{\dagger }$.
 
 ### See also

@@ -128,6 +128,8 @@ with
 
 M2MD[style_, cell:_[BoxData @ FormBox[_, TraditionalForm], ___], OptionsPattern[]
 ] := MDElement["LaTeXBlock", BoxesToTeXString @ cell ]/; FreeQ[cell,DynamicModuleBox|"\[SpanFromLeft]"]
+
+also rename *.png to *.svg everywhere in the source
 *)
 
 

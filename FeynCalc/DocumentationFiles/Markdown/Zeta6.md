@@ -1,3 +1,5 @@
+## Zeta6 
+
 `Zeta6` denotes `Zeta[6]`.
 
 ### See also

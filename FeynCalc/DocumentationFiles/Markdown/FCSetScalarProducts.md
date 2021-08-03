@@ -1,3 +1,5 @@
+## FCSetScalarProducts
+
 `FCSetScalarProducts[]` assigns values in the second list to scalar products (or other kinematic-related symbols such as `Momentum`, `CartesianMomentum`, `TC` etc.) in the first list.
 
 ### See also

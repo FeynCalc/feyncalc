@@ -1,3 +1,5 @@
+## TypesettingExplicitLorentzIndex
+
 `TypesettingExplicitLorentzIndex` determines the `TraditionalForm` typesetting of explicit Lorentz indices.
 
 ### See also

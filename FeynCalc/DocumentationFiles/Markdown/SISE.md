@@ -1,3 +1,5 @@
+## SISE
+
 `SISE[p]` can be used as input for $D-4$-dimensional $\sigma ^{\mu } p_{\mu }$ with $D-4$-dimensional Lorentz vector $p$ and is transformed into `PauliSigma[Momentum[p,D-4], D-4]` by `FeynCalcInternal`.
 
 ### See also

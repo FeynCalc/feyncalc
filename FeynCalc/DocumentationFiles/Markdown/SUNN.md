@@ -1,3 +1,5 @@
+## SUNN
+
 `SUNN` denotes the number of colors. `Trick[SUNDelta[a, a]]` yields $n_c^2 -1$.
 
 ### See also

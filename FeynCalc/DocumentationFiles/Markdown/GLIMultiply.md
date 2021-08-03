@@ -1,3 +1,5 @@
+## GLIMultiply
+
 `GLIMultiply` is like `GLI` but with local multiplication properties.
 
 ### See also

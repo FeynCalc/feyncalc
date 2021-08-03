@@ -1,3 +1,5 @@
+## FeynCalcExternal
+
 `FeynCalcExternal[exp]` translates exp from the internal FeynCalc representation to a shorthand form.
 
 ### See also

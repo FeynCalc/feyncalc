@@ -1,3 +1,5 @@
+## AntiCommutator
+
 `AntiCommutator[x, y] = c` defines the anti-commutator of the non commuting objects `x` and `y`.
 
 ### See also

@@ -1,3 +1,5 @@
+## OPESumSimplify
+
 `OPESumSimplify[exp]` simplifies `OPESum`s in `exp`.
 
 ### See also

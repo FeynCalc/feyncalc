@@ -1,3 +1,5 @@
+## GenericPropagatorDenominator
+
 `GenericPropagatorDenominator[expr, {n, s}]`  is a generic factor of the denominator of a propagator. Unlike `PropagatorDenominator` that is supposed to mean $1/(q^2-m^2)$, `expr` in `GenericPropagatorDenominator` can be an arbitrary combination of `Pair`, `CartesianPair` and `TemporalPair` objects.
 
 ### See also

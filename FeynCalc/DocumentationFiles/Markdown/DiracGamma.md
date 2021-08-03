@@ -1,3 +1,5 @@
+## DiracGamma
+
 `DiracGamma[x, dim]` is the head of all Dirac matrices and slashes (in the internal representation). Use `GA`, `GAD`, `GS` or `GSD` for manual (short) input.
 
 `DiracGamma[x, 4]` simplifies to `DiracGamma[x]`.

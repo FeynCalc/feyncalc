@@ -1,3 +1,5 @@
+##  $ScalarProducts
+
 `$ScalarProducts` contains a list of all vector pairs for which a scalar product value has been defined.
 
 ### See also

@@ -1,3 +1,5 @@
+## CartesianScalarProduct
+
 `CartesianScalarProduct[p, q]`  is the input for the scalar product of two Cartesian vectors `p` and `q`.
 
 `CartesianScalarProduct[p]` is equivalent to `CartesianScalarProduct[p, p]`.

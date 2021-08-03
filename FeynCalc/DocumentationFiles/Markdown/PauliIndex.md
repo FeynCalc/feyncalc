@@ -1,3 +1,5 @@
+## PauliIndex
+
 `PauliIndex` is the head of Pauli indices. The internal representation of a two-dimensional spinorial index `i` is `PauliIndex[i]`.
 
 If the first argument is an integer, `PauliIndex[i]` turns into `ExplicitPauliIndex[i]`.

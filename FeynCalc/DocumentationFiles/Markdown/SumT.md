@@ -1,3 +1,5 @@
+## SumT
+
 `SumT[1, m]` is the alternative harmonic number $\sum _{i=1}^m (-1){}^{\wedge}i/i$ 
 
 `SumT[r, n]` represents `Sum[(-1)^i/i^r, {i,1,n}]`

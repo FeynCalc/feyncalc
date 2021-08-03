@@ -1,3 +1,5 @@
+## Integrate3 
+
 `Integrate3` contains the integral table used by `Integrate2`. Integration is performed in a distributional sense. `Integrate3` works more effectively on a sum of expressions if they are expanded or collected with respect to the integration variable. See the examples in `Integrate2`.
 
 ### See also

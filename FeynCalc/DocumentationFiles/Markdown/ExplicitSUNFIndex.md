@@ -1,3 +1,5 @@
+## ExplicitSUNFIndex
+
 `ExplicitSUNFIndex[ind]` is a specific $SU(N)$ index in the fundamental representation, i.e. `ind` is an integer.
 
 ### See also

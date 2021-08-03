@@ -1,3 +1,5 @@
+## FCClearScalarProducts
+
 `FCClearScalarProducts[]` removes all user-performed specific settings for ScalarProduct's.
 
 ### See also

@@ -1,3 +1,5 @@
+## Amputate
+
 `Amputate[exp, q1, q2, ...]` amputates `Eps` and `DiracGamma`. `Amputate[exp,q1,q2,Pair->{p}]` amputates also `p.q1` and `p.q2`; `Pair->All` amputates all except `OPEDelta`.
 
 ### See also
@@ -16,4 +18,4 @@ $$\left(\bar{\gamma }\cdot \overline{p}\right).\left(\bar{\gamma }\cdot \overlin
 Amputate[%, q]
 ```
 
-$$q^{\text{$\$$AL$\$$15684}(1)} \left(\bar{\gamma }\cdot \overline{p}\right).\gamma ^{\text{$\$$AL$\$$15684}(1)}$$
+$$q^{\text{$\$$AL$\$$15664}(1)} \left(\bar{\gamma }\cdot \overline{p}\right).\gamma ^{\text{$\$$AL$\$$15664}(1)}$$

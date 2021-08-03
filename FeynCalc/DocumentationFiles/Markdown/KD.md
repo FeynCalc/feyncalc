@@ -1,3 +1,5 @@
+## KD
+
 `KD[i, j]`  is the Kronecker delta in $3$ dimensions.
 
 ### See also

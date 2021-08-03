@@ -1,3 +1,5 @@
+##  $AL
+
 `$AL` is the head for dummy indices which may be introduced by `Amputate` and `Uncontract`. By default it is unset, but may be set to anything.
 
 ### See also

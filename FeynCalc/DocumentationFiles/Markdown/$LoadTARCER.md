@@ -1,3 +1,5 @@
+## $LoadTARCER
+
 `$LoadTARCER` is equivalent to `$LoadAddOns={"TARCER"}`.
 
 ### See also

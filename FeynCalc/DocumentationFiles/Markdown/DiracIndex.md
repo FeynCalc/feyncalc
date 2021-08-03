@@ -1,3 +1,5 @@
+## DiracIndex
+
 `DiracIndex` is the head of Dirac indices. The internal representation of a four-dimensional spinorial index `i` is `DiracIndex[i]`.
 
 If the first argument is an integer, `DiracIndex[i]` turns into `ExplicitDiracIndex[i]`.

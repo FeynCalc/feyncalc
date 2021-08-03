@@ -1,3 +1,5 @@
+## Lagrangian
+
 `Lagrangian["oqu"]` gives the unpolarized OPE quark operator.
 
 `Lagrangian["oqp"]` gives the polarized quark OPE operator.

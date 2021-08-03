@@ -1,3 +1,5 @@
+## PauliSigma
+
 `PauliSigma[x, dim]` is the internal representation of a Pauli matrix with a Lorentz or Cartesian index or a contraction of a Pauli matrix and a Lorentz or Cartesian vector.
 
 `PauliSigma[x,3]` simplifies to `PauliSigma[x]`.

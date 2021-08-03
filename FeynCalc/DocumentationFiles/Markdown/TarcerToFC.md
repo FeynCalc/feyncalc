@@ -1,3 +1,5 @@
+## TarcerToFC
+
 `TarcerToFC[expr, {q1, q2}]` translates loop integrals in Tarcer-notation to the FeynCalc notation.
 
 See `TFI` for details on the convention.

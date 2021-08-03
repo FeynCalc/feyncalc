@@ -1,3 +1,5 @@
+## SISD
+
 `SISD[p]` can be used as input for $D-1$-dimensional $\sigma^{\mu } p_{\mu }$ with $D$-dimensional Lorentz vector $p$ and is transformed into `PauliSigma[Momentum[p,D],D-1]` by `FeynCalcInternal`.
 
 ### See also

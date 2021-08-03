@@ -1,3 +1,5 @@
+## PauliEta
+
 `PauliEta[I]` represents a two-component Pauli spinor `\eta`, while `PauliEta[-I]` stands for $\eta^{\dagger }$.
 
 ### See also

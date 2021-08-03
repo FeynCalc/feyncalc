@@ -1,3 +1,5 @@
+## FeynmanIntegralPrefactor
+
 `FeynmanIntegralPrefactor` is an option for `FCFeynmanParametrize` and other functions. It denotes an implicit prefactor that has to be understood in front of a loop integral in the usual `FeynAmpDenominator`-notation. The prefactor is the quantity that multiplies the loop integral measure $d^D q_1 \ldots d^D q_n$ and plays an important role e.g. when deriving the Feynman parameter representation of the given integral. Apart from specifying an explicit value, the user may also choose from the following predefined conventions: 
 
 - "Unity" - 1 for each loop

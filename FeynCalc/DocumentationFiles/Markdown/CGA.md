@@ -1,3 +1,5 @@
+## CGA
+
 `CGA[i]` can be used as input for $\gamma^i$ in 4 dimensions, where `i` is a Cartesian index, and is transformed into `DiracGamma[CartesianIndex[i]]` by `FeynCalcInternal`.
 
 ### See also

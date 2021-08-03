@@ -1,3 +1,5 @@
+## FCLoopRemoveNegativePropagatorPowers
+
 `FCLoopRemoveNegativePropagatorPowers[exp]` rewrites propagators raised to integer powers as products.
 
 ### See also

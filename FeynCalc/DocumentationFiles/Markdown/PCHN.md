@@ -1,3 +1,5 @@
+## PCHN
+
 `PCHN[x, i, j]` is a chain of Pauli matrices `x` and is transformed into `PauliChain[FCI[x],PauliIndex[i],PauliIndex[j]]` by `FeynCalcInternal`.
 
 ### See also

@@ -1,3 +1,5 @@
+## Cases2 
+
 `Cases2[expr, f]` returns a list of all objects in `expr` with head `f`.
 
 `Cases2[expr,f]` is equivalent to `Cases2[{expr},f[___],Infinity]//Union`.

@@ -1,3 +1,5 @@
+## FCLoopIBPReducableQ
+
 `FCLoopIBPReducableQ[int]` checks if the integral contains propagators raised to integer powers.
 
 ### See also

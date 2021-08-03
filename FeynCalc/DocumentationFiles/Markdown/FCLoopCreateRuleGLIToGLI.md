@@ -1,3 +1,5 @@
+## FCLoopCreateRuleGLIToGLI
+
 `FCLoopCreateRuleGLIToGLI[topology1, topology2]` creates a GLI replacement rule assuming that the `topology2` is a subtopology of `topology1`. Both topologies must be given as `FCTopology` objects.
 
 It is also possible to use `FCLoopCreateRuleGLIToGLI[topo1, {subtopo1, subtopo2, ...}]` provided that `{subtopo1, subtopo2, ...}` are subtopologies of `topo1` that were obtained by removing some propagators from `topo1` and not performing any loop momentum shifts afterwards.

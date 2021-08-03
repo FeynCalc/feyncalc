@@ -1,3 +1,5 @@
+## CartesianIndexNames
+
 `CartesianIndexNames` is an option for `FCFAConvert`, `FCCanonicalizeDummyIndices` and other functions. It renames the generic dummy Cartesian indices to the indices in the supplied list.
 
 ### See also

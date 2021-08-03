@@ -1,3 +1,5 @@
+## FCLoopPropagatorPowersCombine
+
 `FCLoopPropagatorPowersCombine[exp]` combines the same propagators in a `FeynAmpDenominator` to one propagator raised to an integer power.
 
 ### See also

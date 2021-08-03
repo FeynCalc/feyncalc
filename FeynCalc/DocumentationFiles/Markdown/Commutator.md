@@ -1,3 +1,5 @@
+## Commutator
+
 `Commutator[x, y] = c` defines the commutator between the (non-commuting) objects `x` and `y`.
 
 ### See also

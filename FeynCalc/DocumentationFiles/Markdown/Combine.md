@@ -1,3 +1,5 @@
+## Combine
+
 `Combine[expr]` puts terms in a sum over a common denominator and cancels factors in the result. `Combine` is similar to `Together`, but accepts the option `Expanding` and works usually better than `Together` for polynomials involving rationals with sums in the denominator.
 
 ### See also

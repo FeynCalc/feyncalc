@@ -1,3 +1,5 @@
+## FC
+
 `FC` changes the output format to `FeynCalcForm`. To change to `InputForm` use `FI`.
 
 ### See also

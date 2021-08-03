@@ -1,3 +1,5 @@
+## FCJoinDOTs
+
 `FCJoinDOTs` is an option for `DotSimplify` and other functions that use `DotSimplify` internally. When set to `True`, `DotSimplify` will try to rewrite expressions like `A.X.B + A.Y.B` as `A.(X+Y).B`.
 
 Notice that although the default value of `FCJoinDOTs` is `True`, the corresponding transformations will occur only if the option `Expanding` is set to `False` (default: `True`)

@@ -22,16 +22,16 @@ $$\left\{\{-3\to 2,-1\to 1,1\to 3,1\to 4,2\to 3,2\to 4,3\to 4,3\to 4\},\left\{q,
 FCLoopGraphPlot[out]
 ```
 
-![1l90setro1gdh](img/1l90setro1gdh.png)
+![1l90setro1gdh](img/1l90setro1gdh.svg)
 
 ```mathematica
 Labeled @@@ Transpose[out[[1 ;; 2]]]
 ```
 
-$$![1a0vk661taubx](img/1a0vk661taubx.png)$$
+$$![1a0vk661taubx](img/1a0vk661taubx.svg)$$
 
 ```mathematica
 GraphPlot[List @@@ Transpose[out[[1 ;; 2]]]]
 ```
 
-$$![1el4pblxtrgxd](img/1el4pblxtrgxd.png)$$
+$$![1el4pblxtrgxd](img/1el4pblxtrgxd.svg)$$

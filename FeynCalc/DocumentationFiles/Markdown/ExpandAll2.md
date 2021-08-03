@@ -1,3 +1,5 @@
+## ExpandAll2 
+
 `ExpandAll2[exp]` is similar to `ExpandAll`, but much faster on simple structures.
 
 ### See also
@@ -14,13 +16,13 @@ exp = Sum[p[i], {i, 1, 100}] Sum[q[i], {i, 1, 1000}];
 AbsoluteTiming[res1 = ExpandAll[exp];]
 ```
 
-$$\{0.437121,\text{Null}\}$$
+$$\{0.726266,\text{Null}\}$$
 
 ```mathematica
 AbsoluteTiming[res2 = ExpandAll2[exp];]
 ```
 
-$$\{0.183987,\text{Null}\}$$
+$$\{0.162043,\text{Null}\}$$
 
 ```mathematica
 res1 === res2

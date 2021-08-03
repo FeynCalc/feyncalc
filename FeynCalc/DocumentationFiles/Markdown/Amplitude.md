@@ -1,3 +1,5 @@
+## Amplitude
+
 `Amplitude` is a database of Feynman amplitudes. `Amplitude["name"]` returns the amplitude corresponding to the string `"name"`. A list of all defined names is obtained with `Amplitude[]`. New amplitudes can be added to the file `"Amplitude.m"`. It is strongly recommended to use names that reflect the process.
 
 The option `Gauge -> 1` means `t Hooft Feynman gauge;

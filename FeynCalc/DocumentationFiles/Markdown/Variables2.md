@@ -1,3 +1,5 @@
+## Variables2 
+
 `Variables2[expr]` is like `Variables`, but it also works on rules and equalities as well as lists thereof.
 
 `Variables2` always applies `Union` to the output.

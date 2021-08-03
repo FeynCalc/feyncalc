@@ -1,3 +1,5 @@
+## FourVector
+
 `FourVector[p, mu]` is the $4$-dimensional vector `p` with Lorentz index `mu`.
 
 A vector with space-time Dimension $D$ is obtained by supplying the option `Dimension -> D`.

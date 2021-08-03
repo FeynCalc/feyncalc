@@ -1,3 +1,5 @@
+## CommutatorExplicit
+
 `CommutatorExplicit[exp]` substitutes any `Commutator` and `AntiCommutator` in `exp` by their definitions.
 
 ### See also

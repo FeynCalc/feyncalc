@@ -1,3 +1,5 @@
+## ClearScalarProducts
+
 `ClearScalarProducts` is equivalent to `FCClearScalarProducts[]`.
 
 The shortcut `ClearScalarProducts` is deprecated, please use `FCClearScalarProducts` instead!

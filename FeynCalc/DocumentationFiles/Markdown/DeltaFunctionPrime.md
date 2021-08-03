@@ -1,3 +1,5 @@
+## DeltaFunctionPrime
+
 `DeltaFunctionPrime[1 - x]` is the derivative of the Dirac delta-function $\delta (x)$.
 
 ### See also

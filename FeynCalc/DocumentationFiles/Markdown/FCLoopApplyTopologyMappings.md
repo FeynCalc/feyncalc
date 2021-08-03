@@ -1,3 +1,5 @@
+## FCLoopApplyTopologyMappings
+
 `FCLoopApplyTopologyMappings[expr, mappings]` applies mappings between topologies obtained using `FCFindTopologyMappings` to the output of `FCFindTopologies` denoted as `expr`.
 
 ### See also

@@ -1,3 +1,5 @@
+## Coefficient2 
+
 `Coefficient2[exp, form1, form2, ...]` is like Coefficient, but it also allows to extracts coefficients  of `form1, form2, ...` sequentially. To specify the power in `formi`, write it as `{var,pow}`.
 
 ### See also

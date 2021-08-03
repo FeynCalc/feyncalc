@@ -1,3 +1,5 @@
+## Tdec
+
 `Tdec[{{qi, mu}, {qj, nu}, ...}, {p1, p2, ...}]` calculates the tensorial decomposition formulas for Lorentzian integrals. The more common ones are saved in `TIDL`.
 
 ### See also

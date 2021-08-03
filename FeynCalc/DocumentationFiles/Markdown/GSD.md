@@ -1,3 +1,5 @@
+## GSD
+
 GSD[p] can be used as input for a $D$-dimensional $p^\mu \gamma_\mu$ and is transformed into `DiracGamma[Momentum[p,D],D]` by `FeynCalcInternal` (=`FCI`).
 
 `GSD[p,q, ...]` is a short form for `GSD[p].GSD[q]`.

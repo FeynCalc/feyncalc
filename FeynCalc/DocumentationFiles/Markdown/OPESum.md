@@ -1,3 +1,5 @@
+## OPESum
+
 `OPESum[exp, {i, 0, m}]` denotes a symbolic sum. The syntax is the same as for `Sum`.
 
 ### See also

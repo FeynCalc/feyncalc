@@ -1,3 +1,5 @@
+## TimedIntegrate
+
 `TimedIntegrate[exp, vars]` is like `Integrate`, but stops after the number of seconds specified by the option `Timing`. Options of `Integrate` can be given and are passed on.
 
 ### See also

@@ -1,3 +1,5 @@
+## PauliReduce
+
 `PauliReduce` is an option for `PauliTrick` and other functions. It specifies whether a chain of Pauli matrices should be reduced to at most one matrix by rewriting every pair of matrices in terms of commutator and anticommutator.
 
 ### See also

@@ -1,3 +1,5 @@
+## DCHN
+
 `DCHN[x, i, j]` is a chain of Dirac matrices x and is transformed into `DiracChain[FCI[x],DiracIndex[i],DiracIndex[j]]` by `FeynCalcInternal`.
 
 ### See also

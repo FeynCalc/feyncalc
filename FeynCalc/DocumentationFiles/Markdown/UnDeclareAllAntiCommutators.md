@@ -1,3 +1,5 @@
+## UnDeclareAllAntiCommutators
+
 `UnDeclareAllAntiCommutators[]` undeclares all user-defined anticommutators.
 
 ### See also

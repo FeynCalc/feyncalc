@@ -1,3 +1,5 @@
+## InverseMellin
+
 `InverseMellin[exp, y]` performs the inverse Mellin transform of polynomials in OPE. The inverse transforms are not calculated but a table-lookup is done.
 
 WARNING: do not "trust" the results for the inverse Mellin transform involving SumT's; there is an unresolved inconsistency here (related to $(-1)^{m}$).

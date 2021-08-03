@@ -1,3 +1,5 @@
+## NTerms
+
 `NTerms[x]` is equivalent to `Length` if `x` is a sum; otherwise `NTerms[x]` returns `1`, except `NTerms[0] -> 0`.
 
 ### See also

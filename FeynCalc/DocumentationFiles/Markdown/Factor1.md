@@ -1,3 +1,5 @@
+## Factor1 
+
 `Factor1[poly]` factorizes common terms  in the summands of poly. It uses basically `PolynomialGCD`.
 
 ### See also

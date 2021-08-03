@@ -1,3 +1,5 @@
+## HypergeometricIR
+
 `HypergeometricIR[exp, t]` substitutes for all `Hypergeometric2F1[a,b,c,z]` in `exp` by its Euler integral representation. The factor `Integratedx[t, 0, 1]` can be omitted by setting the option `Integratedx -> False`.
 
 ### See also

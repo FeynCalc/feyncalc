@@ -1,3 +1,5 @@
+## CartesianIndex
+
 `CartesianIndex` is the head of Cartesian indices. The internal representation of a $3$-dimensional `i` is `CartesianIndex[i]`.
 
 For other than three dimensions: `CartesianIndex[i, Dimension]`.

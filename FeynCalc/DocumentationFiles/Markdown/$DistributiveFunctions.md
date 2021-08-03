@@ -1,3 +1,5 @@
+##  $DistributiveFunctions
+
 `$DistributiveFunctions` is a set of functions over which `FieldDerivative` should be distributed.
 
 ### See also

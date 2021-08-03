@@ -1,3 +1,5 @@
+## CounterTerm
+
 `CounterTerm[name]` is a database of counter terms. `CounterTerm` is also an option for the Feynman rule functions `QuarkGluonVertex`, `GluonPropagator`, `QuarkPropagator`.
 
 ### See also

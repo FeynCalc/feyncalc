@@ -1,3 +1,5 @@
+## CartesianToLorentz
+
 `CartesianToLorentz[exp]` rewrites Cartesian tensors in form of Lorentz tensors (when possible). Using options one can specify which types of tensors should be converted.
 
 ### See also

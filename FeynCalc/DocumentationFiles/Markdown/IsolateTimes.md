@@ -1,3 +1,5 @@
+## IsolateTimes
+
 `IsolateTimes` is an option for `Isolate` and other functions using `Isolate`. If it is set to `True`, Isolate will be applied also to pure products.
 
 ### See also

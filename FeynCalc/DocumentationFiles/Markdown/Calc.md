@@ -1,3 +1,5 @@
+## Calc
+
 `Calc[exp]`  performs several simplifications that involve `Contract`, `DiracSimplify`, `SUNSimplify`, `DotSimplify`, `EpsEvaluate`, `ExpandScalarProduct`, `PowerSimplify`, `Expand2` and `Trick`.
 
 ### See also

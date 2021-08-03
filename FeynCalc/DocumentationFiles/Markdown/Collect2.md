@@ -1,3 +1,5 @@
+## Collect2 
+
 `Collect2[expr, x]` collects together terms which are not free of any occurrence of `x`.
 
 `Collect2[expr, {x1, x2, ...}]` (or also `Collect2[expr, x1, x2, ...]`) collects together terms which are not free of any occurrence of `x1, x2, ...`.
@@ -104,13 +106,13 @@ exp = Sum[h[i], {i, 1, 200000}]*a + Sum[g[i], {i, 1, 200000}]*b + Sum[j[i], {i, 
 AbsoluteTiming[Collect2[exp, {a, b, c}, Factoring -> False, IsolateNames -> KK, Expanding -> False]]
 ```
 
-$$\{3.99851,a \text{KK}(33)+b \text{KK}(34)+c \text{KK}(32)\}$$
+$$\{3.35805,a \text{KK}(33)+b \text{KK}(34)+c \text{KK}(32)\}$$
 
 ```mathematica
 AbsoluteTiming[Collect2[exp, {a, b, c}, Factoring -> False, IsolateNames -> KK, IsolateFast -> True, Expanding -> False]]
 ```
 
-$$\{1.8613,a \text{KK}(33)+b \text{KK}(34)+c \text{KK}(32)\}$$
+$$\{1.35343,a \text{KK}(33)+b \text{KK}(34)+c \text{KK}(32)\}$$
 
 ```mathematica
 ClearAll[exp]

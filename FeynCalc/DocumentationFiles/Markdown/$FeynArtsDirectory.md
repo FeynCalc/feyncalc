@@ -1,3 +1,5 @@
+##  $FeynCalcVersion
+
 `$FeynArtsDirectory` specifies  the location of FeynArts.
 
 ### See also

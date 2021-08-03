@@ -1,3 +1,5 @@
+## FCLoopScalelessQ
+
 `FCLoopScalelessQ[int, {p1, p2, ...}]` checks whether the loop integral `int` depending on the loop momenta `p1, p2, ...` is scaleless. Only integrals that admit a Feynman parametrization with proper $U$ and $F$ polynomials are supported.
 
 Cf. arXiv:1011.4863 and the PhD thesis of Jens Hoff (10.5445/IR/1000047447) for the description of the underlying algorithm.

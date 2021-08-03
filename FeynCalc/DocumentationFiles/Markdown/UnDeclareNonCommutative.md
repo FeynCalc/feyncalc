@@ -1,3 +1,5 @@
+## UnDeclareNonCommutative
+
 `UnDeclareNonCommutative[a, b, ...]` undeclares `a,b, ...` to be noncommutative, i.e., `DataType[a,b, ..., NonCommutative]` is set to `False`.
 
 ### See also

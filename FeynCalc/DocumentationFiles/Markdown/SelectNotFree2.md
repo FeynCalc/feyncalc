@@ -1,3 +1,5 @@
+## SelectNotFree2
+
 `SelectNotFree2[expr, a, b, ...]` is like `SelectNotFree` but it first expands the expression w.r.t. the arguments via `Expand2`.
 
 ### See also

@@ -1,3 +1,5 @@
+## EpsContractFreeQ
+
 `EpsContractFreeQ[exp]` returns `True` if the expression contains epsilon tensors that can be contracted with each other. The function is optimized for large expressions, i.e. it is not so good as a criterion in e.g. `Select`.
 
 ### See also

@@ -1,3 +1,5 @@
+## UnDeclareAllCommutators
+
 `UnDeclareAllCommutators[]` undeclares all user-defined commutators.
 
 ### See also

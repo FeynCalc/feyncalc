@@ -1,3 +1,5 @@
+## EtaSign
+
 `EtaSign` is an option for `SFAD`, `GFAD`, `CFAD` and other objects representing propagators. It specifies the default sign of the $i \eta$ prescription  in the propagators, e.g. for standard Feynman propagators the value `1` corresponds to $\frac{1}{p^2-m^2 + i \eta}$, while the value `-1` sets $\frac{1}{p^2-m^2 - i \eta}$. 
 
 ### See also

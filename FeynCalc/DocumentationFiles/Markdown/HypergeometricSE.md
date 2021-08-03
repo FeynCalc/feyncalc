@@ -1,3 +1,5 @@
+## HypergeometricSE
+
 `HypergeometricSE[exp, nu]` expresses Hypergeometric functions by their series expansion in terms of a sum (the `Sum` is omitted and `nu`, running from $0$ to $\infty$, is the summation index).
 
 ### See also

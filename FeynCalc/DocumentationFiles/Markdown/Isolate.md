@@ -42,7 +42,7 @@ $$\text{fF}(27) a(z)+\text{fF}(26) d(z)$$
 Information[fF]
 ```
 
-![1h43hlg7mmzzn](img/1h43hlg7mmzzn.png)
+![1h43hlg7mmzzn](img/1h43hlg7mmzzn.svg)
 
 ```mathematica
 Global`fF

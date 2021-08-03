@@ -1,3 +1,5 @@
+## CompleteSquare
+
 `CompleteSquarep[exp, x]` completes the square of a second order polynomial in the momentum x.
 
 ### See also

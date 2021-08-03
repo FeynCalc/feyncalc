@@ -1,3 +1,5 @@
+## SI
+
 `SI[mu]` can be used as input for $3$-dimensional $\sigma^{\mu }$ with 4-dimensional Lorentz index $\mu$ and is transformed into `PauliSigma[LorentzIndex[mu]]` by FeynCalcInternal.
 
 ### See also

@@ -1,3 +1,5 @@
+## FCReorderList
+
 `FCReorderList[li, ord]` reorders the list `li` according to the given ordering `ord`.
 
 ### See also

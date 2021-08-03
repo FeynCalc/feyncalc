@@ -1,3 +1,5 @@
+## SUNIndex
+
 `SUNIndex[a]` is an $SU(N)$ index in the adjoint representation. If the argument is an integer, `SUNIndex[a]` turns into `ExplicitSUNIndex[a]`.
 
 ### See also

@@ -1,3 +1,5 @@
+## Zeta2 
+
 `Zeta2` denotes `Zeta[2]`.
 
 ### See also

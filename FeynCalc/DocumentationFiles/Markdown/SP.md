@@ -1,3 +1,5 @@
+## SP
+
 `SP[a, b]` denotes a $4$-dimensional scalar product. `SP[a, b]` is transformed into `ScalarProduct[a, b]` by `FeynCalcInternal`.
 
 `SP[p]` is the same as `SP[p, p]` $(=p^2)$.

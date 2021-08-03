@@ -1,3 +1,5 @@
+## SplittingFunction
+
 `SplittingFunction[pxy]` is a database of splitting functions in the $\overline{\textrm{MS}}$ scheme.
 
 ### See also

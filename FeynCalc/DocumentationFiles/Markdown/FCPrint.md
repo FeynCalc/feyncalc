@@ -1,3 +1,5 @@
+## FCPrint
+
 `FCPrint[level, x]` outputs `Print[x]` if the value of `$VeryVerbose` is larger than level.
 
 ### See also

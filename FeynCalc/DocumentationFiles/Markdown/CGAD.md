@@ -1,3 +1,5 @@
+## CGAD
+
 `CGAD[i]` can be used as input for $\gamma ^i$ in $D$ dimensions, where `i` is a Cartesian index, and is transformed into `DiracGamma[CartesianIndex[i,D-1],D]` by `FeynCalcInternal`.
 
 ### See also

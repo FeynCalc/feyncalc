@@ -1,3 +1,5 @@
+## FCLoopFindSubtopologies
+
 `FCLoopFindSubtopologies[topo, {p1, p2, ...}]` finds all nonvanishing subtopologies of the topology `topo` that depends on the loop momenta `p1, p2, ...`.
 
 ### See also

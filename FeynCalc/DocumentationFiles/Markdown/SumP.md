@@ -1,3 +1,5 @@
+## SumP
+
 `SumP[k, m]` is $2^{k-1}\sum _{i=1}^{2m}\left(1+(-1)^i\right)/i^k$.
 
 ### See also

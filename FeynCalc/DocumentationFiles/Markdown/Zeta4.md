@@ -1,3 +1,5 @@
+## Zeta4 
+
 `Zeta4` denotes `Zeta[4]`.
 
 ### See also

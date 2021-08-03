@@ -1,3 +1,5 @@
+## FCLoopPakOrder
+
 `FCLoopPakOrder[poly, {x1, x2, ...}]` determines a canonical ordering of the Feynman parameters `x1, x2, ...` in the polynomial poly using the algorithm of Alexey Pak (arXiv:1111.0868). 
 
 Cf. also the PhD thesis of Jens Hoff (Hoff:2015kub, 10.5445/IR/1000047447) for a more detailed description of the algorithm.

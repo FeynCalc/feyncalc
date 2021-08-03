@@ -1,3 +1,5 @@
+## ScalarProduct
+
 `ScalarProduct[p, q]`  is the input for the scalar product of two Lorentz vectors p and q.
 
 ScalarProduct[p] is equivalent to ScalarProduct[p, p].

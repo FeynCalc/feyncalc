@@ -1,3 +1,5 @@
+## PolarizationVector
+
 `PolarizationVector[p, mu]` gives a polarization vector.
 
 ### See also

@@ -1,3 +1,5 @@
+## GAE
+
 `GAE[μ]` can be used as input for a `D-4`-dimensional $\gamma^{\mu }$and is transformed into `DiracGamma[LorentzIndex[$\mu$,D-4],D-4]` by `FeynCalcInternal` (`FCI`).
 
 `GAE[$\mu ,\nu , \text{...}$]` is a short form for `GAE[$\mu$].GAE[$\nu$]. ...`.

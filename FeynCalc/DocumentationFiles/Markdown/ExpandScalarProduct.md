@@ -1,3 +1,5 @@
+## ExpandScalarProduct
+
 `ExpandScalarProduct[expr]` expands scalar products of sums of momenta in `expr`.
 
 `ExpandScalarProduct` does not use `Expand` on `expr`.

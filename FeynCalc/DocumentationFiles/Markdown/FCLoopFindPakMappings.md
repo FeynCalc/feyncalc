@@ -1,3 +1,5 @@
+## FCLoopFindPakMappings
+
 `FCLoopFindPakMappings[{int1, int2, ...}, {p1, p2, ...}]` finds mappings between scalar multiloop-integrals `int1, int2, ...` that depend on the loop momenta `p1, p2, ...` using the algorithm of Alexey Pak (arXiv:1111.0868).
 
 The current implementation is based on the `FindEquivalents` function from FIRE 6 (arXiv:1901.07808)

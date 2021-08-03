@@ -1,3 +1,5 @@
+## UnDeclareFCTensor
+
 `UnDeclareFCTensor[a, b, ...]` undeclares `a,b, ...` to be tensor heads, i.e., `DataType[a,b, ...,  FCTensor]` is set to `False`.
 
 ### See also

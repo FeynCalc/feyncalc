@@ -1,3 +1,5 @@
+## Nielsen
+
 `Nielsen[i, j, x]` denotes Nielsen's polylogarithm.
 
 ### See also

@@ -1,3 +1,5 @@
+## SelectSplit
+
 `SelectSplit[l, p]` constructs list of mutually exclusive subsets from `l` in which every element `li` satisfies a criterion `pj[li]` with `pj` from `p` and appends the subset of remaining unmatched elements.
 
 ### See also

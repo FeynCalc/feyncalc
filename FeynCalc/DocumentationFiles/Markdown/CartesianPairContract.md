@@ -1,3 +1,5 @@
+## CartesianPairContract
+
 `CartesianPairContract` is like `CartesianPair`, but with (local) contraction properties.
 
 ### See also

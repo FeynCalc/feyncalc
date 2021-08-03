@@ -1,3 +1,5 @@
+## FCSymmetrize
+
 `FCSymmetrize[expr, {a1, a2, ...}]` symmetrizes expr with respect to the variables `a1,a2, ...`.
 
 ### See also

@@ -1,3 +1,5 @@
+## DeltaFunction
+
 `DeltaFunction[x]` is the Dirac delta-function $\delta (x)$.
 
 Mathematica also provides a built-in function `DiracDelta` with comparable properties.

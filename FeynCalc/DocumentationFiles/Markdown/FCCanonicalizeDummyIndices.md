@@ -1,3 +1,5 @@
+## FCCanonicalizeDummyIndices
+
 `FCCanonicalizeDummyIndices[expr]`  canonicalizes all dummy Lorentz indices in the expression. The option `Momentum` provides a possibility to limit the canonicalization only to particular `Momenta`.
 
 With the option `LorentzIndexNames` one can provide a list of names to be used for the canonicalized indices, to have say $\mu$, $\nu$, $\rho$ etc. instead of some random names.

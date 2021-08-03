@@ -1,3 +1,5 @@
+## FCDuplicateFreeQ
+
 `FCDuplicateFreeQ[list]` yields `True` if list contains no duplicates and `False` otherwise.
 
 `FCDuplicateFreeQ[list,test]` uses test to determine whether two objects should be considered duplicates.

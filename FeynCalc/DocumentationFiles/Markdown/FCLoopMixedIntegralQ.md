@@ -1,3 +1,5 @@
+## FCLoopMixedIntegralQ
+
 `FCLoopMixedIntegralQ[exp]` returns `True` if the integral contains both Lorentz and Cartesian indices and momenta.
 
 ### See also

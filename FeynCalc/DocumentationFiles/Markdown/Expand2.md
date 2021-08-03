@@ -1,3 +1,5 @@
+## Expand2 
+
 `Expand2[exp, x]` expands all sums containing `x`.
 
 `Expand2[exp, {x1, x2, ...}]`  expands all sums containing `x1, x2, ...`.

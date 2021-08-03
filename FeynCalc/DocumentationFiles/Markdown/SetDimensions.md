@@ -1,3 +1,5 @@
+## SetDimensions
+
 `SetDimensions` is an option for `ScalarProduct`, `CartesianScalarProduct` and various `FCLoopBasis*` functions.
 
 For scalar products it specifies the dimensions for which the scalar products will be set when `ScalarProduct` or `CartesianScalarProduct`  are used with the equality sign, e.g. in `ScalarProduct[a, b] = m^2`. By default, the scalar products are set for 4 and D dimensions. By changing this option the user can add other dimensions or remove the existing ones.

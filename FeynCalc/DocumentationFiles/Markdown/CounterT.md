@@ -1,3 +1,5 @@
+## CounterT
+
 `CounterT` is a factor used by `GluonPropagator` and `QuarkPropagator` when `CounterTerms` is set to `All`.
 
 ### See also

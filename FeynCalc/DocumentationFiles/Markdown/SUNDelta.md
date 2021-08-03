@@ -1,3 +1,5 @@
+## SUNDelta
+
 `SUNDelta[a, b]`  is the Kronecker-delta for $SU(N)$ with color indices `a` and `b` in the adjoint representation.
 
 ### See also

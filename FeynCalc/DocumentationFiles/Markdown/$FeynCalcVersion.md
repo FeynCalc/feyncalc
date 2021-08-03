@@ -1,3 +1,5 @@
+##  $FeynCalcVersion
+
 `$FeynCalcVersion` is a string that represents the version of FeynCalc.
 
 ### See also

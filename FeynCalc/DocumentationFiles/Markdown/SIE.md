@@ -1,3 +1,5 @@
+## SIE
+
 `SIE[mu]` can be used as input for $D-1$-dimensional $\sigma^{\mu }$ with $D-4$-dimensional Lorentz index $\mu$ and is transformed into `PauliSigma[LorentzIndex[mu,D-4],D-4]` by FeynCalcInternal.
 
 ### See also

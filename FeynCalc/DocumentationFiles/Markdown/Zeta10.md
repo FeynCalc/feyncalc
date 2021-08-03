@@ -1,3 +1,5 @@
+## Zeta10 
+
 `Zeta10` denotes `Zeta[10]`.
 
 ### See also

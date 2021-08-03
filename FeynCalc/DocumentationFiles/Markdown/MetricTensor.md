@@ -1,3 +1,5 @@
+## MetricTensor
+
 `MetricTensor[mu, nu]` is the metric tensor. The default dimension is $4$.
 
 The shortcut `MetricTensor` is deprecated, please use `MT` instead!

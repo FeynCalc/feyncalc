@@ -1,3 +1,5 @@
+## LorentzIndex
+
 `LorentzIndex[mu]` denotes a $4$-dimensional Lorentz index.
 
 For other than $4$ dimensions: `LorentzIndex[mu, D]` or `LorentzIndex[mu]` etc.

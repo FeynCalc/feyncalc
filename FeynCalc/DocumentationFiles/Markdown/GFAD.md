@@ -1,3 +1,5 @@
+## GFAD
+
 `GFAD[{{{x, s}, n}, ...]` denotes a generic propagator given by $\frac{1}{[x + s i \eta]^n$, where `x` can be an arbitrary expression. For brevity one can also use shorter forms such as `GFAD[{x, n}, ...]`, `GFAD[{x}, ...]` or `GFAD[x, ...]`.
 
 If s is not explicitly specified, then its value is determined by the option `EtaSign`, which has the default value `+1`.

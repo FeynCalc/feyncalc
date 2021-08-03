@@ -1,3 +1,5 @@
+## Twist3QuarkOperator
+
 `Twist3QuarkOperator[p]` or `Twist3QuarkOperator[p,_,_]`  yields the  2-quark operator (`p` is momentum in the direction of the fermion number flow).
 
 `Twist3QuarkOperator[{p1,___}, {p2,___}, {p3, mu, a}]` or `Twist3QuarkOperator[p1,_,_,  p2,_,_,  p3,mu,a]` yields the Quark-Quark-Gluon-operator, where `p1` is the incoming quark, `p2` the incoming antiquark and `p3` denotes the (incoming) gluon momentum.

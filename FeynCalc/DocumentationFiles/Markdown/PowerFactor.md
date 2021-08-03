@@ -1,3 +1,5 @@
+## PowerFactor
+
 `PowerFactor[exp]` replaces `x^a y^a` with `(x y)^a`.
 
 ### See also

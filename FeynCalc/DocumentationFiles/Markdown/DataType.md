@@ -1,3 +1,5 @@
+## DataType
+
 `DataType[exp, type] = True` defines the object `exp` to have data-type `type`.
 
 `DataType[exp1, exp2, ..., type]` defines the objects `exp1, exp2, ...` to have data-type `type`.

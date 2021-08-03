@@ -1,3 +1,5 @@
+## KDE
+
 `KDE[i, j]`  is the Kronecker delta in $D-4$ dimensions.
 
 ### See also

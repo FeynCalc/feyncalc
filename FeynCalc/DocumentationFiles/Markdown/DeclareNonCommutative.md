@@ -1,3 +1,5 @@
+## DeclareNonCommutative
+
 `DeclareNonCommutative[a, b, ...]` declares `a,b, ...` to be non-commutative, i.e., `DataType[a,b, ..., NonCommutative]` is set to `True`.
 
 ### See also

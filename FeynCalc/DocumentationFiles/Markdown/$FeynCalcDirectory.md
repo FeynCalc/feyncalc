@@ -1,3 +1,5 @@
+##  $FeynCalcDirectory
+
 `$FeynCalcDirectory` specifies the location of FeynCalc.
 
 ### See also

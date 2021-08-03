@@ -1,3 +1,5 @@
+## Collect3 
+
 `Collect3[expr, {x, y, ...}]` collects terms involving the same powers of monomials $x^{n_1}$, $y^{n_2}$, ...
 
 The option `Factor` can bet set to `True` or `False`, which factors the coefficients.

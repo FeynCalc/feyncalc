@@ -1,3 +1,5 @@
+## Pair
+
 `Pair[x, y]` is the head of a special pairing used in the internal representation: `x` and `y` may have heads `LorentzIndex` or `Momentum`.
 
 If both `x` and `y` have head `LorentzIndex`, the metric tensor (e.g. $g^{\mu \nu}$) is understood.

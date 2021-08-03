@@ -1,3 +1,5 @@
+## FCSetPauliSigmaScheme
+
 `FCSetPauliSigmaScheme[scheme]` allows you to specify how Pauli matrices will be handled in $D-1$ dimensions.
 
 This is mainly related to the commutator of two Pauli matrices, which involves a Levi-Civita tensor. The latter is not a well-defined quantity in $D-1$ dimensions. Following schemes are supported:

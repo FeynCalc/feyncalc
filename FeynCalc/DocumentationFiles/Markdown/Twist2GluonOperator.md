@@ -1,3 +1,5 @@
+## Twist2GluonOperator
+
 `Twist2GluonOperator[{p, mu, a}, {nu, b}]` or `Twist2GluonOperator[p, {mu, a}, {nu, b}]` or `Twist2GluonOperator[p, mu,a, nu,b]` yields the 2-gluon operator (`p` is ingoing momentum corresponding to Lorentz index `mu`).
 
 `Twist2GluonOperator[{p,mu,a}, {q,nu,b}, {k,la,c}]` or `Twist2GluonOperator[ p,mu,a , q,nu,b , k,la,c]` gives the 3-gluon operator.

@@ -1,3 +1,5 @@
+## CommutatorOrder
+
 `CommutatorOrder[exp]` orders any `Commutator` and `AntiCommutator` lexicographically.
 
 ### See also

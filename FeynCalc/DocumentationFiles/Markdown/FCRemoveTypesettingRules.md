@@ -1,3 +1,5 @@
+## FCRemoveTypesettingRules
+
 `FCRemoveTypesettingRules[expr]` removes all typesetting rules attached to `expr`. Effectively it sets the `FormatValues` of `expr` to an empty list.
 
 ### See also

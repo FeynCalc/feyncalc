@@ -1,3 +1,5 @@
+## GS
+
 `GS[p]` can be used as input for a 4-dimensional $p^\mu \gamma_\mu$ and is transformed into `DiracGamma[Momentum[p]]` by `FeynCalcInternal` (=`FCI`).
 
 `GS[p,q, ...]` is a short form for `GS[p].GS[q]`.

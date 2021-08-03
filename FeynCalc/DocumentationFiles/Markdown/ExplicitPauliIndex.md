@@ -1,3 +1,5 @@
+## ExplicitPauliIndex
+
 `ExplicitPauliIndex[ind]` is an explicit Pauli index, i.e., `ind` is an integer.
 
 ### See also

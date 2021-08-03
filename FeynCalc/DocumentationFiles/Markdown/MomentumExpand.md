@@ -1,3 +1,5 @@
+## MomentumExpand
+
 `MomentumExpand[expr]` expands `Momentum[a+b+ ...]` in `expr` into `Momentum[a] + Momentum[b] + ...`.
 
 ### See also

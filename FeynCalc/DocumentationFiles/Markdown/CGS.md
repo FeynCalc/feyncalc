@@ -1,3 +1,5 @@
+## CGS
+
 `CGS[p]` is transformed into `DiracGamma[CartesianMomentum[p]]` by `FeynCalcInternal`.
 
 `CGS[p,q, ...]` is equivalent to `CGS[p].CGS[q]`.

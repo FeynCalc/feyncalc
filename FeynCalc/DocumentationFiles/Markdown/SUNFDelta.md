@@ -1,3 +1,5 @@
+## SUNFDelta
+
 `SUNFDelta[a, b]` is the Kronecker-delta for $SU(N)$ with color indices `a` and `b` in the fundamental representation.
 
 ### See also

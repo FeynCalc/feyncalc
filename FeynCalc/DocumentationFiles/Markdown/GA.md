@@ -1,3 +1,5 @@
+## GA
+
 `GA[mu]` can be used as input for a 4-dimensional $\gamma^{\mu }$ and is transformed into `DiracGamma[LorentzIndex[mu]]` by FeynCalcInternal (=FCI).
 
 `GA[mu , nu , ...]` is a short form for `GA[mu].GA[nu]`.

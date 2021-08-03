@@ -1,3 +1,5 @@
+## FCLoopSplit
+
 `FCLoopSplit[exp, {q1, q2, ...}]` separates `exp` into the following four pieces: 
 
 1) terms that are free of loop integrals

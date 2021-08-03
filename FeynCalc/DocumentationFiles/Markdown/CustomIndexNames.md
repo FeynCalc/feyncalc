@@ -1,3 +1,5 @@
+## CustomIndexNames
+
 `CustomIndexNames` is an option of `FCCanonicalizeDummyIndices`. It allows to specify custom names for canonicalized dummy indices of custom index heads.
 
 ### See also

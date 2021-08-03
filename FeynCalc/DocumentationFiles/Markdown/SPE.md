@@ -1,3 +1,5 @@
+## SPE
+
 `SPE[a, b]` denotes a $D-4$-dimensional scalar product. `SPE[a, b]` is transformed into `Pair[Momentum[a, -4 + D], Momentum[b, -4 + D]]` by `FeynCalcInternal`.
 
 `SPE[p]` is the same as `SPE[p,p]`  $(=p^2)$.

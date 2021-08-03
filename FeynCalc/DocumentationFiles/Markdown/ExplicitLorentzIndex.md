@@ -1,3 +1,5 @@
+## ExplicitLorentzIndex
+
 `ExplicitLorentzIndex[ind]` is an explicit Lorentz index, i.e., `ind` is an integer.
 
 ### See also

@@ -1,3 +1,5 @@
+## TemporalMomentum
+
 `TemporalMomentum[p]`  is the head of the temporal component of a $4$-momentum $p^0$. The internal representation of the temporal component $p^0$ is `TemporalMomentum[p]`.
 
 `TemporalMomentum` may appear only inside `TemporalPair`s.

@@ -16,7 +16,7 @@ The option `ZeroMomentumInsertion` can be used for twist-2 and higher twist oper
 ?Lagrangian
 ```
 
-![1uti3nxh89rp3](img/1uti3nxh89rp3.png)
+![1uti3nxh89rp3](img/1uti3nxh89rp3.svg)
 
 $\phi ^4$ Feynman rule
 

@@ -1,3 +1,5 @@
+## ChangeDimension
+
 `ChangeDimension[exp, dim]` changes all `LorentzIndex` and `Momentum` symbols in `exp` to dimension `dim` (and also Levi-Civita-tensors, Dirac slashes and Dirac matrices).
 
 ### See also

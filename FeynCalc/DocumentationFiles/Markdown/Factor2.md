@@ -1,3 +1,5 @@
+## Factor2 
+
 `Factor2[poly]` factors a polynomial in a standard way.
 
 `Factor2` works sometimes better than Factor on polynomials involving rationals with sums in the denominator.

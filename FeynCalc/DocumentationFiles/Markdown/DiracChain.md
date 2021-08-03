@@ -1,3 +1,5 @@
+## DiracChain
+
 `DiracChain[x, i, j]` denotes a chain of Dirac matrices `x`, where the Dirac indices `i` and `j` are explicit.
 
 ### See also

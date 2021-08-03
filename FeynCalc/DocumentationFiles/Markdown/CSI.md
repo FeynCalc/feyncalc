@@ -1,3 +1,5 @@
+## CSI
+
 `CSI[i]` can be used as input for 3-dimensional $\sigma ^i$ with 3-dimensional Cartesian index `i` and is transformed into `PauliSigma[CartesianIndex[i]]` by `FeynCalcInternal`.
 
 ### See also

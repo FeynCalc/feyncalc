@@ -1,3 +1,5 @@
+## CSPE
+
 `CSPE[p, q]` is the $D-4$-dimensional scalar product of `p` with `q` and is transformed into `CartesianPair[CartesianMomentum[p, D-4],CartesianMomentum[q, D-4]]` by `FeynCalcInternal`.
 
 ` CSPE[p]` is the same as `CSPE[p,p]` ( $=p^2$).

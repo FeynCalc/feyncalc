@@ -1,3 +1,5 @@
+## FCMatrixIsolate
+
 `FCMatrixIsolate[exp]` wraps the occurring Dirac, Pauli and color objects into heads specified by the user.
 
 ### See also

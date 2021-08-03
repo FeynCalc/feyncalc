@@ -1,3 +1,5 @@
+## ExplicitSUNIndex
+
 `ExplicitSUNIndex[ind]`  is a specific $SU(N)$ index in the adjoint representation, i.e. `ind` is an integer.
 
 ### See also

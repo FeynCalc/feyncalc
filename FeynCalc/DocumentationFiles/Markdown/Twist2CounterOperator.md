@@ -1,3 +1,5 @@
+## Twist2CounterOperator
+
 `Twist2CounterOperator[p, mu, nu, a, b, 5]` is a special routine for particular QCD calculations.
 
 Also available: `Twist2CounterOperator[p, 7]`, `Twist2CounterOperator[p1,p2,{p3,mu,a}, 1]` (`p1`: incoming quark momentum, `p3`: incoming gluon (count1)).

@@ -1,3 +1,5 @@
+## FCAttachTypesettingRule
+
 `FCAttachTypesettingRule[expr, ...]` attaches a specific `TraditionalForm` typesetting rule to `expr`. It doesn't change any properties of expr apart from adding a `FormatValue` with a `MakeBoxes` rule.
 
 Following choices are possible:

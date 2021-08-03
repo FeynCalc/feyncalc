@@ -1,3 +1,5 @@
+## FCTraceExpand
+
 `FCTraceExpand[exp]` expands traces of Dirac and $SU(N)$ matrices using linearity of the trace. The traces themselves are not evaluated.
 
 ### See also

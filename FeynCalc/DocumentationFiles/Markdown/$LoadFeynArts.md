@@ -1,3 +1,5 @@
+##  $LoadFeynArts
+
 `$LoadFeynArts` is equivalent to `$LoadAddOns={"FeynArts"}`.
 
 ### See also

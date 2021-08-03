@@ -1,3 +1,5 @@
+## ConvoluteTable
+
 `ConvoluteTable[f, g, x]` yields the convolution of `f` and `g`. `ConvoluteTable` is called by `Convolute`.
 
 ### See also

@@ -1,3 +1,5 @@
+## UnDeclareAntiCommutator
+
 `UnDeclareAntiCommutator[a, b]` undeclares the value assigned to the anticommutator of `a` and `b`.
 
 ### See also

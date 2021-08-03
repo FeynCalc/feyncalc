@@ -1,3 +1,5 @@
+## DotExpand
+
 `DotExpand[exp]` expands dot products in `exp`.
 
 ### See also

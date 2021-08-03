@@ -1,3 +1,5 @@
+## Convolute
+
 `Convolute[f, g, x]` convolutes $f(x)$ and $g(x)$, i.e., $\int _0^1 dx_1 \int _0^1 dx_2  \delta \left(x - x_1 x_2\right) f (x_1)  g(x_2)$.
 
 `Convolute[f, g]` is equivalent to `Convolute[f, g, x]`.

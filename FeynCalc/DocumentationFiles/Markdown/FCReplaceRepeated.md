@@ -1,3 +1,5 @@
+## FCReplaceRepeated
+
 `FCReplaceRepeated[exp, ru1, ...]`  is like `ReplaceRepeated`, but it also allows to apply multiple replacement rules sequentially.
 
 Instead of doing `exp //. ru1 //. ru2 //. ru3` one can just write `FCReplaceRepeated[exp, ru1, ru2, ru3]`.

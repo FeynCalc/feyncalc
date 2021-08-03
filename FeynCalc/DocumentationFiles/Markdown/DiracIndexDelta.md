@@ -1,3 +1,5 @@
+## DiracIndexDelta
+
 `DiracIndexDelta[DiracIndex[i], DiracIndex[j]]` is the Kronecker-delta in the Dirac space with two explicit Dirac indices `i` and `j`.
 
 ### See also

@@ -1,3 +1,5 @@
+## FCLoopFindTopologyMappings
+
 `FCLoopFindTopologyMappings[{topo1, topo2, ...}, {p1, p2, ...}]` finds mappings between topologies (written as `FCTopology` objects) `topo1, topo2, ...` that depend on the loop momenta `p1, p2, ...`. For each source topology the function returns a list of loop momentum shits and a `GLI` replacement rule needed to map it to the given target topology. If you need to map everything to a particular set of target topologies, you can specify them via the `PreferredTopologies` option.
 
 ### See also

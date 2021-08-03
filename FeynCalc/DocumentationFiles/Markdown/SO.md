@@ -1,3 +1,5 @@
+## SO
+
 `SO[q]` is a four-dimensional scalar product of `OPEDelta` with `q`. It is transformed into `Pair[Momentum[q], Momentum[OPEDelta]` by `FCI`.
 
 ### See also

@@ -1,3 +1,5 @@
+## TIDL
+
 TIDL is a database of tensorial reduction formulas.
 
 ### See also

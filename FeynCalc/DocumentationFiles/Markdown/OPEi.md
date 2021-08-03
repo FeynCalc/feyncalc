@@ -1,3 +1,5 @@
+## OPEi
+
 `OPEi` etc. are variables with `DataType` `PositiveInteger` which are used in functions relating to the operator product expansion.
 
 ### See also

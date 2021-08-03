@@ -1,3 +1,5 @@
+## FCLoopToPakForm
+
 `FCLoopToPakForm[int, {p1, p2, ...}]` determines a canonical $UF$-based representation for the scalar multi-loop integral int using the algorithm of Alexey Pak (arXiv:1111.0868).
 
 The current implementation is based on the FindEquivalents function from FIRE 6 (arXiv:1901.07808)

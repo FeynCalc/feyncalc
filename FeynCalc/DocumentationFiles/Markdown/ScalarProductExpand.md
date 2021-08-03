@@ -1,3 +1,5 @@
+## ScalarProductExpand
+
 `ScalarProductExpand` is equivalent to `ExpandScalarProduct`.
 
 The shortcut `ScalarProductExpand` is deprecated, please use `ExpandScalarProduct` instead!

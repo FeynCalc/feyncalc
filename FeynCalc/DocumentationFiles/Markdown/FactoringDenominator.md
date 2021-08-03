@@ -1,3 +1,5 @@
+## FactoringDenominator
+
 `FactoringDenominator` is an option for `Collect2`. It is taken into account only when the option `Numerator` is set to `True`. If `FactoringDenominator` is set to any function `f`, this function will be applied to the denominator of the fraction. The default value is `False`, i.e. the denominator will be left unchanged.
 
 ### See also

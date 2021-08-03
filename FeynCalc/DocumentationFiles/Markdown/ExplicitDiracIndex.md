@@ -1,3 +1,5 @@
+## ExplicitDiracIndex
+
 `ExplicitDiracIndex[ind]` is an explicit Dirac index, i.e., `ind` is an integer.
 
 ### See also

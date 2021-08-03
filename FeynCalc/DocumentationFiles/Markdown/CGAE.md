@@ -1,3 +1,5 @@
+## CGAE
+
 `CGAE[i]` can be used as input for $\gamma ^i$ in $D-4$ dimensions, where `i` is a Cartesian index, and is transformed into `DiracGamma[CartesianIndex[i,D-4],D-4]` by `FeynCalcInternal`.
 
 ### See also

@@ -1,3 +1,5 @@
+## FCLoopBasisSplit
+
 `FCLoopBasisSplit[int, {q1, q2, ...}]` checks if the given loop integral factorizes and if so splits it into independent integrals.
 
 ### See also

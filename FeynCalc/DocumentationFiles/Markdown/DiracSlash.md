@@ -1,3 +1,5 @@
+## DiracSlash
+
 `DiracSlash[p]` is the contraction $p^{\mu } \gamma _{\mu }$ (`FV[p, mu] GA[mu]`).
 
 Products of those can be entered in the form GS[p1, p2, ...].

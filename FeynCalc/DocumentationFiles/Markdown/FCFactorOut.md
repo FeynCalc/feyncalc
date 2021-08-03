@@ -1,3 +1,5 @@
+## FCFactorOut
+
 `FCFactorOut[exp, pref]` factors out `pref` out of `exp`. This is often needed to bring `exp` into a particular form that Mathematica refuses to give.
 
 ### See also

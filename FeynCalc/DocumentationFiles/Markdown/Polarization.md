@@ -1,3 +1,5 @@
+## Polarization
+
 `Polarization[k]` is the head of a polarization momentum with (incoming) momentum `k`.
 
 A slashed polarization vector ($\varepsilon_{\mu}(k) \gamma^\mu$ has to be entered as `GS[Polarization[k]]`.

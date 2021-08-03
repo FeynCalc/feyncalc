@@ -1,7 +1,10 @@
 (* ::Package:: *)
 
+ 
+
+
 (* ::Section:: *)
-(*ILimit[exp, a -> b]*)
+(*ILimit*)
 
 
 (* ::Text:: *)

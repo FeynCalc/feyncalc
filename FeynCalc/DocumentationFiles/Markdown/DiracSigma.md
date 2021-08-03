@@ -1,3 +1,5 @@
+## DiracSigma
+
 `DiracSigma[a, b]` stands for $I/2(a.b-b.a)$ in 4 dimensions.
 
 `a` and `b` must have head `DiracGamma`, `GA` or `GS`. Only antisymmetry is implemented.

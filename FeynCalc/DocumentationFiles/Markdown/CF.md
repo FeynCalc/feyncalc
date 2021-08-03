@@ -1,3 +1,5 @@
+## CF
+
 `CF` is one of the Casimir operator eigenvalues of $SU(N)$ (CF = $\frac{N^2-1}{2N}$).
 
 ### See also

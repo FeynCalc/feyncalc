@@ -1,3 +1,5 @@
+## SetTemporalComponent
+
 `SetTemporalComponent[p, val]` sets the value of the temporal component of a $4$-vector $p$, `TemporalPair[ExplicitLorentzIndex[0],TemporalMomentum[p]]` to `val`.
 
 ### See also

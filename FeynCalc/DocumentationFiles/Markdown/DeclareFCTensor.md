@@ -1,3 +1,5 @@
+## DeclareFCTensor
+
 `DeclareFCTensor[a, b, ...]` declares `a`,`b`, ... to be tensor heads, i.e., `DataType[a,b, ...,  FCTensor]` is set to `True`.
 
 ### See also

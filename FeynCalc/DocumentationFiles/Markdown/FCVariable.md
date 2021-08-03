@@ -1,3 +1,5 @@
+## FCVariable
+
 `FCVariable`  is a data type. E.g. `DataType[z, FCVariable] = True`.
 
 ### See also

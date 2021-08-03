@@ -1,3 +1,5 @@
+##  $RenameFeynCalcObjects
+
 `$RenameFeynCalcObjects` specifies a list of replacement rules that allow to rename FeynCalc objects on the fly to avoid conflicts with other package before FeynCalc is loaded (monkey patching). The value of `$RenameFeynCalcObjects` must be specified before loading FeynCalc.
 
 ### See also

@@ -1,3 +1,5 @@
+## SelectNotFree
+
 `SelectNotFree[expr, x]` returns that part of `expr` which is not free of any occurrence of `x`.
 
 `SelectNotFree[expr, a, b, ...]` is equivalent to `Select[expr, !FreeQ2[#, {a, b, ...}]&]`, except the special cases: 

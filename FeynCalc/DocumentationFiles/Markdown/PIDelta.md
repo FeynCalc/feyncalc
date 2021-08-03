@@ -1,3 +1,5 @@
+## PIDelta
+
 `PIDelta[i,j]` is the Kronecker-delta in the Pauli space. `PIDelta[i,j]` is transformed into `PauliIndexDelta[PauliIndex[i],PauliIndex[j]]` by FeynCalcInternal.
 
 ### See also

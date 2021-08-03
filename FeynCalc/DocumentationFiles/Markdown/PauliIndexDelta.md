@@ -1,3 +1,5 @@
+## PauliIndexDelta
+
 `PauliIndexDelta[PauliIndex[i], PauliIndex[j]]` is the Kronecker-delta in the Pauli space with two explicit Pauli indices `i` and `j`.
 
 ### See also

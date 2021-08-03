@@ -1,3 +1,5 @@
+## CA
+
 `CA` is one of the Casimir operator eigenvalues of $SU(N)$ (`CA` $= N$).
 
 ### See also

@@ -1,3 +1,5 @@
+## Gstrong
+
 `Gstrong`  is a shortcut for `SMP["g_s"]` which represents the strong coupling constant.
 
 The shortcut `Gstrong` is deprecated, please use `SMP["g_s"]` instead!

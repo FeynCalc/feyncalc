@@ -1,3 +1,5 @@
+## MT
+
 `MT[mu, nu]` is the metric tensor in $4$ dimensions.
 
 ### See also

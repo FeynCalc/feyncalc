@@ -1,3 +1,5 @@
+## EpsExpand
+
 `EpsExpand` is an option for `EpsEvaluate` and other functions that use `EpsEvaluate` internally. When set to `False`, sums of momenta in the `Eps` tensor will not be rewritten as a sum of `Eps` tensors.
 
 ### See also

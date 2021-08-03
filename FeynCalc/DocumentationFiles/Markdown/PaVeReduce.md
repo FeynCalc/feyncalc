@@ -30,7 +30,7 @@ DeleteFile /@ FileNames["fctd122.for"]; Clear[d122, se];
 
 $$\frac{\text{B}_0(\text{mw2},0,\text{mw2})}{\text{mw2}-t}-\frac{\text{B}_0(t,\text{mw2},\text{me2})}{\text{mw2}-t}$$
 
-$$![1exw3jt5sr9c6](img/1exw3jt5sr9c6.png)$$
+$$![15nymkjmijxz7](img/15nymkjmijxz7.svg)$$
 
 $$\text{$\$$Failed}$$
 

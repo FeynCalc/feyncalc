@@ -1,3 +1,5 @@
+## FAD
+
 `FAD` is the FeynCalc external form of `FeynAmpDenominator` and denotes an inverse propagator.
 
 `FAD[q, q-p, ...]` is $\frac{1}{q^2 (q-p)^2 \ldots}$.

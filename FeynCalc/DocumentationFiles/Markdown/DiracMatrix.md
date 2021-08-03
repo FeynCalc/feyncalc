@@ -1,3 +1,5 @@
+## DiracMatrix
+
 `DiracMatrix[mu]` denotes a Dirac gamma matrix with Lorentz index $\mu$.
 
 `DiracMatrix[mu , nu , ...]` is a product of $\gamma$ matrices with Lorentz indices `mu , nu , ...` 

@@ -1,3 +1,5 @@
+## CSID
+
 `CSID[i]` can be used as input for $D-1$-dimensional $\sigma^i$ with $D-1$-dimensional Cartesian index `i` and is transformed into `PauliSigma[CartesianIndex[i,D-1],D-1]` by `FeynCalcInternal`.
 
 ### See also

@@ -1,3 +1,5 @@
+##  $FortranContinuationCharacter
+
 `$FortranContinuationCharacter` is the continuation character used in Write2.
 
 ### See also

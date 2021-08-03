@@ -1,3 +1,5 @@
+## GLI
+
 `GLI[id,{indices}]` is a generic loop integral, where the indices denote powers of propagators in the propagator basis (`FCTopology`) named `id`.
 
 ### See also

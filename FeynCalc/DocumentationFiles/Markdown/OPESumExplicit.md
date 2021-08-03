@@ -1,3 +1,5 @@
+## OPESumExplicit
+
 `OPESumExplicit[exp]` calculates `OPESum`s.
 
 ### See also

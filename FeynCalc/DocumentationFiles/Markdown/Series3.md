@@ -1,3 +1,5 @@
+## Series3 
+
 `Series3` performs a series expansion around `0`. `Series3` is equivalent to `Series`, except that it applies `Normal` on the result and that some `Series` bugs are fixed.
 
 `Series3[f, e, n]` is equivalent to  `Series3[f, {e, 0, n}]`.

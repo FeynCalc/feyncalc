@@ -1,3 +1,5 @@
+## ExcludeMasses
+
 `ExcludeMasses` is an option of `Apart2`. It allows to specify masses w.r.t which partial fraction decomposition should not be performed, e.g. `ExcludeMasses->{m1,m2,3}`.
 
 ### See also
