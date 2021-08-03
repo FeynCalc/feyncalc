@@ -253,12 +253,6 @@ Tests`Shared`fcstSharedToolsFRH = {
 	IsolateNames -> KK2], (c + d) F[q1] + HoldForm [KK1[_]] F[q]]","True"}
 };
 
-Tests`Shared`fcstSharedToolsIntersection1 = {
-{"fcstSharedToolsIntersection1-ID1","Intersection1[{a, b, c}, {a, b, c}]","{a,b,c}"},
-{"fcstSharedToolsIntersection1-ID2","Intersection1[{a, b, c}, {d, e, f}]","{}"},
-{"fcstSharedToolsIntersection1-ID3","Intersection1[{a, b, c, e, e}, {d, e, f, a, b, a}]","{a,b,e}"}
-};
-
 Tests`Shared`fcstSharedToolsMap2 = {
 {"fcstSharedToolsMap2-ID1","Map2[f, a + b + c]","f[a] + f[b] + f[c]"},
 {"fcstSharedToolsMap2-ID2","Map2[f, a*b]","f[a b]"},
