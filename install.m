@@ -231,7 +231,7 @@ InstallFeynCalc[OptionsPattern[]]:=
 	Module[	{unzipDir, tmpzip, gitzip, packageName, packageDir, fullPath,
 			strFeynArts, configFileProlog, strOverwriteFC,
 			strDisableWarning, strEnableTraditionalForm, faInstalled, zipDir,
-			useTraditionalForm, configFile},
+			useTraditionalForm, configFile, deleteStatus},
 
 		If[	OptionValue[InstallFeynCalcDevelopmentVersion],
 			gitzip = OptionValue[FeynCalcDevelopmentVersionLink],
@@ -310,15 +310,24 @@ InstallFeynCalc[OptionsPattern[]]:=
 
 			If[ OptionValue[AutoOverwriteFeynCalcDirectory],
 
-				Quiet@DeleteDirectory[packageDir, DeleteContents -> True],
+				Quiet[deleteStatus=DeleteDirectory[packageDir, DeleteContents -> True];],
 
 				Null,
 				If[ choiceDialog2[fancyText[strOverwriteFC],{"Yes, overwrite the " <> packageName <>" directory"->True,
 					"No, I need to do a backup first. Abort installation."->False}, WindowFloating->True, WindowTitle->"Existing FeynCalc installation detected"],
-					Quiet@DeleteDirectory[packageDir, DeleteContents -> True],
+					Quiet[deleteStatus=DeleteDirectory[packageDir, DeleteContents -> True];],
 					Abort[]
 				]
 			]
+		];
+
+		If[	deleteStatus===$Failed,
+			WriteString["stdout", "=========================================================================\n"];
+			WriteString["stdout", "For some reason the automatic installer failed to delete the directory\n"];
+			WriteString["stdout", packageDir<>"\n"];
+			WriteString["stdout", "Please delete this directory by hand and restart the installer.\n"];
+			WriteString["stdout", "=========================================================================\n"];
+			Abort[]
 		];
 
 		(* Download FeynCalc zip file	*)
