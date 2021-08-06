@@ -69,6 +69,16 @@ SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}],
 SFAD[{{p1 + p3, 0}, {0, 1}, 1}],
 SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}],
 SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}]}], {p1,
-p2, p3}]","{{p1 -> p2, p2 -> p1, p3 -> p3}}"}
+p2, p3}]","{{p1 -> p2, p2 -> p1, p3 -> p3}}"},
+{"fcstFCLoopFindMomentumShifts-ID4",
+"FCLoopFindMomentumShifts[{FCTopology[
+fctopology1, {SFAD[{{q1 + q2, 0}, {0, 1}, 1}],
+	SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{p - q2, 0}, {0, 1}, 1}],
+	SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{p + q1, 0}, {0, 1}, 1}]}]},
+FCTopology[
+prop2L, {SFAD[{{q1 - q2, 0}, {0, 1}, 1}],
+SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{-p + q1, 0}, {0, 1}, 1}],
+SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{-p + q2, 0}, {0, 1}, 1}]}], {q1,
+q2}]","{{q1->-q2,q2->q1}}"}
 }
 );

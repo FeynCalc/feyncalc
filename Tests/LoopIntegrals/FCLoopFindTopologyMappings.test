@@ -160,5 +160,45 @@ GLI[fctopology1, {n1, n2, n3, n4, n5, n6, n7, n8, n9}]}, \
 SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 - Q, 0}, {0, 1}, \
 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}], {p1 -> p2, p2 -> p1, \
 p3 -> p3}, GLI[fctopology5, {n1_, n3_, n2_, n4_, n6_, n5_, n7_, n8_, \
-n9_}] :> GLI[fctopology2, {n1, n2, n3, n4, n5, n6, n7, n8, n9}]}}"}
+n9_}] :> GLI[fctopology2, {n1, n2, n3, n4, n5, n6, n7, n8, n9}]}}"},
+
+{"fcstFCLoopFindTopologyMappings-ID4",
+"FCLoopFindTopologyMappings[{FCTopology[
+fctopology1, {SFAD[{{q2, 0}, {0, 1}, 1}],
+	SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{q1 + q2, 0}, {0, 1}, 1}],
+	SFAD[{{p + q1, 0}, {0, 1}, 1}], SFAD[{{p - q2, 0}, {0, 1}, 1}]}],
+FCTopology[
+fctopology2, {SFAD[{{q2, 0}, {0, 1}, 1}],
+	SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{p + q2, 0}, {0, 1}, 1}],
+	SFAD[{{p - q1, 0}, {0, 1}, 1}]}],
+FCTopology[
+fctopology3, {SFAD[{{q2, 0}, {0, 1}, 1}],
+	SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{p - q1, 0}, {0, 1}, 1}],
+	SFAD[{{p - q1 + q2, 0}, {0, 1}, 1}]}]}, {q1, q2},
+PreferredTopologies -> {FCTopology[
+	prop2L, {SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{q2, 0}, {0, 1}, 1}],
+	SFAD[{{q1 - q2, 0}, {0, 1}, 1}], SFAD[{{-p + q1, 0}, {0, 1}, 1}],
+	SFAD[{{-p + q2, 0}, {0, 1}, 1}]}],
+FCTopology[
+	prop2LX1, {SFAD[{{q2, 0}, {0, 1}, 1}],
+	SFAD[{{q1 - q2, 0}, {0, 1}, 1}], SFAD[{{-p + q1, 0}, {0, 1}, 1}],
+	SFAD[{{-p + q2, 0}, {0, 1}, 1}]}],
+FCTopology[
+	prop2LX3, {SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{q2, 0}, {0, 1}, 1}],
+	SFAD[{{-p + q1, 0}, {0, 1}, 1}],
+	SFAD[{{-p + q2, 0}, {0, 1}, 1}]}],
+FCTopology[
+	prop2LX15, {SFAD[{{q2, 0}, {0, 1}, 1}],
+	SFAD[{{q1 - q2, 0}, {0, 1}, 1}],
+	SFAD[{{-p + q1, 0}, {0, 1}, 1}]}]}, FCE -> True]",
+	"{{FCTopology[fctopology1, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}],
+	SFAD[{{q1 + q2, 0}, {0, 1}, 1}], SFAD[{{p + q1, 0}, {0, 1}, 1}],
+	SFAD[{{p - q2, 0}, {0, 1}, 1}]}], {q1 -> -q2, q2 -> q1},
+GLI[fctopology1, {n1_, n2_, n3_, n5_, n4_}] :> GLI[prop2L, {n1, n2, n3, n4, n5}]},
+{FCTopology[fctopology2, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}],
+SFAD[{{p + q2, 0}, {0, 1}, 1}], SFAD[{{p - q1, 0}, {0, 1}, 1}]}], {q1 -> q2, q2 -> -q1},
+GLI[fctopology2, {n1_, n2_, n3_, n4_}] :> GLI[prop2LX3, {n1, n2, n3, n4}]},
+{FCTopology[fctopology3, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}],
+SFAD[{{p - q1, 0}, {0, 1}, 1}], SFAD[{{p - q1 + q2, 0}, {0, 1}, 1}]}],
+{q1 -> q2, q2 -> -q1 + q2}, GLI[fctopology3, {n2_, n1_, n4_, n3_}] :> GLI[prop2LX1, {n1, n2, n3, n4}]}}"}
 });

@@ -117,14 +117,17 @@ findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmoms_List]:=
 
 		sol = Solve[eq,vars];
 
+		FCPrint[3, "FCLoopFindMomentumShifts: Possible shifts: ", sol, FCDoControl -> fcflsVerbose];
+
 		If[	sol==={},
 			Message[FCLoopFindMomentumShifts::failmsg,"Failed to find momentum shifts for one of the topologies."];
 			Abort[]
 		];
 
 		res = (First[sol] /. mark -> Identity);
-
-		If[	MomentumCombine[FDS[from/.res]]=!=MomentumCombine[to],
+		If[	MomentumCombine[FDS[from/.res]]=!=MomentumCombine[FDS[to]],
+			FCPrint[3, "FCLoopFindMomentumShifts: LHS (from):  ", MomentumCombine[FDS[from/.res]], FCDoControl -> fcflsVerbose];
+			FCPrint[3, "FCLoopFindMomentumShifts: RHS (to):  ", MomentumCombine[FDS[to]], FCDoControl -> fcflsVerbose];
 			Message[FCLoopFindMomentumShifts::failmsg,"The obtained set of shifts is incorrect."];
 			Abort[]
 		];
