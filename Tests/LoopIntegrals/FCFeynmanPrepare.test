@@ -424,7 +424,7 @@ SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}],
 SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}],
 SFAD[{{p1 - Q, 0}, {0, 1}, 1}],
 SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}],
-SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}]}], {p1, p2, p3}, Names -> x, FCE->True]",
+SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}]},{p1,p2,p3},{Q},{},{}], Names -> x, FCE->True]",
 "{x[1]*x[2]*x[3] + x[1]*x[2]*x[4] + x[1]*x[3]*x[4] + x[2]*x[3]*x[4] +
 x[1]*x[2]*x[5] + x[1]*x[3]*x[5] + x[2]*x[4]*x[5] + x[3]*x[4]*x[5] +
 x[1]*x[3]*x[6] + x[1]*x[4]*x[6] + x[3]*x[4]*x[6] + x[1]*x[5]*x[6] +
@@ -496,5 +496,34 @@ x[3] + x[4] + x[5] + x[8] + x[9]}}, {FVD[Q,
 	FCGV[\"mu\"]]*(x[4] + x[7] + x[9]),
 FVD[Q, FCGV[\"mu\"]]*(x[4] + x[6] + x[8]),
 FVD[Q, FCGV[\"mu\"]]*(x[4] + x[8] + x[9])},
-SPD[Q, Q]*(x[4] + x[6] + x[7] + x[8] + x[9]), 1, 0}"}
+SPD[Q, Q]*(x[4] + x[6] + x[7] + x[8] + x[9]), 1, 0}"},
+{"fcstFCFeynmanPrepare-ID56",
+"FCFeynmanPrepare[GLI[topo1,{1,1}],FCTopology[topo1,{SFAD[p1],SFAD[\
+p2]},{p1,p2},{},{},{}],Names->x,FCE->True]",
+"{x[1]*x[2], 0, {{x[1], SFAD[{{p1, 0}, {0, 1}, 1}], 1}, {x[2], \
+SFAD[{{p2, 0}, {0, 1}, 1}], 1}}, {{x[1], 0}, {0, x[2]}}, {0, 0}, 0, \
+1, 0}"},
+{"fcstFCFeynmanPrepare-ID57",
+"FCFeynmanPrepare[FCTopology[topo1,{SFAD[p1],SFAD[p2]},{p1,p2},{},{\
+},{}],Names->x,FCE->True]",
+"{x[1]*x[2], 0, {{x[1], SFAD[{{p1, 0}, {0, 1}, 1}], 1}, {x[2], \
+SFAD[{{p2, 0}, {0, 1}, 1}], 1}}, {{x[1], 0}, {0, x[2]}}, {0, 0}, 0, \
+1, 0}"},
+{"fcstFCFeynmanPrepare-ID58",
+"FCFeynmanPrepare[{GLI[topo1,{1,1}],GLI[topo1,{1,2}]},{FCTopology[\
+topo1,{SFAD[p1],SFAD[p2]},{p1,p2},{},{},{}]},Names->x,FCE->True]",
+"{{x[1]*x[2], 0, {{x[1], SFAD[{{p1, 0}, {0, 1}, 1}], 1}, {x[2], \
+SFAD[{{p2, 0}, {0, 1}, 1}], 1}}, {{x[1], 0}, {0, x[2]}}, {0, 0}, 0, \
+1, 0}, {x[1]*x[2], 0, {{x[1], SFAD[{{p1, 0}, {0, 1}, 1}], 1}, {x[2], \
+SFAD[{{p2, 0}, {0, 1}, 1}], 2}}, {{x[1], 0}, {0, x[2]}}, {0, 0}, 0, \
+1, 0}}"},
+{"fcstFCFeynmanPrepare-ID59",
+"FCFeynmanPrepare[{FCTopology[topo1,{SFAD[p1],SFAD[p2]},{p1,p2},{},\
+{},{}],FCTopology[topo2,{SFAD[p3],SFAD[p4]},{p3,p4},{},{},{}]},Names->x,\
+FCE->True]",
+"{{x[1]*x[2], 0, {{x[1], SFAD[{{p1, 0}, {0, 1}, 1}], 1}, {x[2], \
+SFAD[{{p2, 0}, {0, 1}, 1}], 1}}, {{x[1], 0}, {0, x[2]}}, {0, 0}, 0, \
+1, 0}, {x[1]*x[2], 0, {{x[1], SFAD[{{p3, 0}, {0, 1}, 1}], 1}, {x[2], \
+SFAD[{{p4, 0}, {0, 1}, 1}], 1}}, {{x[1], 0}, {0, x[2]}}, {0, 0}, 0, \
+1, 0}}"}
 });

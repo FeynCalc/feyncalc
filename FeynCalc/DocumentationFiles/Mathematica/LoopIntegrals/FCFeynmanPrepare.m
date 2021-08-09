@@ -1,14 +1,11 @@
 (* ::Package:: *)
 
- 
-
-
 (* ::Section:: *)
 (*FCFeynmanPrepare*)
 
 
 (* ::Text:: *)
-(*`FCFeynmanPrepare[int, {q1, q2, ...}]` is an auxiliary function that returns all necessary building for writing down a Feynman parametrization of the given tensor or scalar multi-loop integral.The integral int can be Lorentzian or Cartesian.*)
+(*`FCFeynmanPrepare[int, {q1, q2, ...}]` is an auxiliary function that returns all necessary building for writing down a Feynman parametrization of the given tensor or scalar multi-loop integral. The integral int can be Lorentzian or Cartesian.*)
 
 
 (* ::Text:: *)
@@ -24,6 +21,10 @@
 
 
 (* ::Text:: *)
+(*It is also possible to invoke the function as `FCFeynmanPrepare[GLI[...], FCTopology[...]]` or `FCFeynmanPrepare[FCTopology[...]]`. Notice that in this case the value of the option `FinalSubstitutions` is ignored, as replacement rules will be extracted directly from the definition of the topology.*)
+
+
+(* ::Text:: *)
 (*The definitions of `M`, `Q`, `J` and `N` follow from Eq. 4.17 in the [PhD Thesis of Stefan Jahn](http://mediatum.ub.tum.de/?id=1524691) and [arXiv:1010.1667](https://arxiv.org/abs/1010.1667).The algorithm for deriving the UF-parametrization of a loop integral was adopted from the UF generator available in multiple codes of Alexander Smirnov, such as FIESTA ([arXiv:1511.03614](https://arxiv.org/abs/1511.03614)) and FIRE ([arXiv:1901.07808](https://arxiv.org/abs/1901.07808)). The code UF.m is also mentioned in the book "Analytic Tools for Feynman Integrals" by Vladimir Smirnov, Chapter 2.3.*)
 
 
@@ -32,7 +33,7 @@
 
 
 (* ::Text:: *)
-(*[FCFeynmanParametrize](FCFeynmanParametrize), [FCFeynmanProjectivize](FCFeynmanProjectivize).*)
+(*[FCFeynmanParametrize](FCFeynmanParametrize), [FCFeynmanProjectivize](FCFeynmanProjectivize), [FCLoopValidTopologyQ](FCLoopValidTopologyQ).*)
 
 
 (* ::Subsection:: *)
@@ -89,10 +90,17 @@ FCFeynmanPrepare[CSPD[q,p]CFAD[{q,m},{q-p,m2}],{q},Names->x]
 
 
 (* ::Text:: *)
-(*`FCFeynmanPrepare` also works with `FCTopology` objects*)
+(*`FCFeynmanPrepare` also works with `FCTopology` and `GLI` objects*)
 
 
-FCFeynmanPrepare[FCTopology[fctopology1,{SFAD[{{p1,0},{0,1},1}],SFAD[{{p2,0},{0,1},1}],
-SFAD[{{p3,0},{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,1},1}],SFAD[{{p2+p3,0},{0,1},1}],
-SFAD[{{p2-Q,0},{0,1},1}],SFAD[{{p1-Q,0},{0,1},1}],SFAD[{{p2+p3-Q,0},{0,1},1}],
-SFAD[{{p1+p3-Q,0},{0,1},1}]}],{p1,p2,p3},Names->x,FCE->True]
+topo1=FCTopology["prop2Lv1",{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],SFAD[p1-q],SFAD[p2-q],SFAD[{p1-p2,m3^2}]},{p1,p2},{Q},{},{}]
+topo2=FCTopology["prop2Lv2",{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],SFAD[{p1-q,M^2}],SFAD[{p2-q,M^2}],SFAD[p1-p2]},{p1,p2},{Q},{},{}]
+
+
+FCFeynmanPrepare[topo1,Names->x]
+
+
+FCFeynmanPrepare[{topo1,topo2},Names->x]
+
+
+FCFeynmanPrepare[{GLI["prop2Lv1",{1,1,1,1,0}],GLI["prop2Lv2",{1,1,0,0,1}]},{topo1,topo2},Names->x]
