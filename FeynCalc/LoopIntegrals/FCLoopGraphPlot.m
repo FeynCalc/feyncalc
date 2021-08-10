@@ -16,24 +16,26 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopGraphPlot::usage =
-"FCLoopGraphPlot[{edges, labels}] visualizes the graph of the given loop integral using the \
-provided list of edges, styles and labels using the built-in function Graph. \
-The Option Graph can be used to pass options to the Graph objects.
+"FCLoopGraphPlot[{edges, labels}] visualizes the graph of the given loop
+integral using the provided list of edges, styles and labels using the
+built-in function Graph. The Option Graph can be used to pass options to the
+Graph objects.
 
-By default, FCLoopGraphPlot returns a Graph. When using Mathematica 12.2 \
-or newer, it is also possible to return a Graphics object created by GraphPlot. \
+By default, FCLoopGraphPlot returns a Graph. When using Mathematica 12.2 or
+newer, it is also possible to return a Graphics object created by GraphPlot.
 For this the option GraphPlot must be set to a list of options that will be
-passed to GraphPlot. An empty list is also admissible. For example, \
+passed to GraphPlot. An empty list is also admissible. For example,
 FCLoopGraphPlot[int, GraphPlot -> {MultiedgeStyle -> 0.35, Frame -> True}].
 
 Given a list of Graph or Graphics objects created by FCLoopGraphPlot, a nice
-way to get a better overview is to employ \
-Magnify[Grid[(Partition[out, UpTo[4]])], 0.9].
+way to get a better overview is to employ Magnify[Grid[(Partition[out,
+UpTo[4]])], 0.9].
 
-Notice that older Mathematica versions have numerous shortcomings in the \
-graph drawing capabilities that cannot be reliably worked around. This why \
-to use FCLoopGraphPlot you need to have at least Mathematica 11.0 or newer. \
-For best results we recommend using Mathematica 12.2 or newer.";
+Notice that older Mathematica versions have numerous shortcomings in the graph
+drawing capabilities that cannot be reliably worked around. This why to use
+FCLoopGraphPlot you need to have at least Mathematica 11.0 or newer. For best
+results we recommend using Mathematica 12.2 or newer.
+";
 
 FCLoopGraphPlot::failmsg =
 "Error! FCLoopGraphPlot has encountered a fatal problem and must abort the computation. \

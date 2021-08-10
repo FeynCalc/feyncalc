@@ -1,8 +1,5 @@
 (* ::Package:: *)
 
- 
-
-
 (* ::Section:: *)
 (*FCLoopGraphPlot*)
 
@@ -28,7 +25,7 @@
 
 
 (* ::Text:: *)
-(*FCLoopIntegralToGraph*)
+(*[FCLoopIntegralToGraph](FCLoopIntegralToGraph).*)
 
 
 (* ::Subsection:: *)
@@ -48,6 +45,14 @@ FCLoopGraphPlot[%]
 
 
 FCLoopIntegralToGraph[FAD[p,p-q],{p}]
+FCLoopGraphPlot[%]
+
+
+(* ::Text:: *)
+(*1-loop massive bubble*)
+
+
+FCLoopIntegralToGraph[FAD[{p,m1},{p-q,m2}],{p}]
 FCLoopGraphPlot[%]
 
 
@@ -119,24 +124,30 @@ FCLoopGraphPlot[%]
 
 (* ::Text:: *)
 (*Not all loop integrals admit a graph representation. Furthermore, an integral may have a weird momentum routing that cannot be automatically recognized by*)
-(*the employed algorithm*)
+(*the employed algorithm. Consider e.g.*)
 
 
-FCLoopIntegralToGraph[FCTopology[TRIX1, {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1 + Q1, 0}, {0, 1}, 1}], 
-SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}]}],{p1,p2}]
+topo=FCTopology[TRIX1, {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1 + Q1, 0}, {0, 1}, 1}], 
+SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}]},{p1,p2},{Q1,Q2},{},{}]
 
 
 (* ::Text:: *)
 (*Here `FCLoopIntegralToGraph` has no way to know that the actual momentum is Q1+Q2, i.e. it is a 2- and not 3-point function*)
 
 
-FCLoopIntegralToGraph[FCTopology[TRIX1, {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1 + Q1, 0}, {0, 1}, 1}], 
-SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}]}],{p1,p2},Momentum->{Q1+Q2}]
+FCLoopIntegralToGraph[topo]
+
+
+(* ::Text:: *)
+(*However, if we explicitly provide this information, in many cases the function can still perform the proper reconstruction*)
+
+
+FCLoopIntegralToGraph[topo,Momentum->{Q1+Q2}]
 FCLoopGraphPlot[%]
 
 
 (* ::Text:: *)
-(*And here is another example. This NRQCD integral from arXiv:1907.08227 looks like as if it has only one external momentum flowing in*)
+(*And here is another example. This NRQCD integral from [arXiv:1907.08227](https://arxiv.org/abs/1907.08227) looks like as if it has only one external momentum flowing in*)
 
 
 FCLoopIntegralToGraph[FAD[{k, m}, l + p, l - p, k + l], {k, l}]
@@ -151,23 +162,27 @@ FCLoopGraphPlot[%]
 
 
 (* ::Text:: *)
-(*In this case we the correct form of the external momentum can be deduced upon performing some elementary shifts*)
+(*In this case the correct form of the external momentum can be deduced upon performing some elementary shifts. The direct application of the function fails*)
 
 
-ex=FCTopology[topo1X12679,{SFAD[{{p1,0},{0,1},1}],SFAD[{{p2+p3,0},{0,1},1}],SFAD[{{p2-Q,0},{0,1},1}],SFAD[{{p1+p3-Q,0},{0,1},1}]}]
+ex=FCTopology[topo1X12679,{SFAD[{{p1,0},{0,1},1}],SFAD[{{p2+p3,0},{0,1},1}],SFAD[{{p2-Q,0},{0,1},1}],SFAD[{{p1+p3-Q,0},{0,1},1}]},{p1,p2,p3},{Q},{},{}]
 
 
-FCLoopIntegralToGraph[ex,{p1,p2,p3}]
+FCLoopIntegralToGraph[ex]
 
 
-ex/.p2->p2-p3/.p3->p3-p1+Q
+(* ::Text:: *)
+(*Yet let us consider*)
+
+
+exShifted=ex/.FCTopology[id_,props_List,rest__]:>FCTopology[id,props/.p2->p2-p3/.p3->p3-p1+Q,rest]
 
 
 (* ::Text:: *)
 (*Now we immediately see that the proper external momentum to consider is `2Q` instead of just `Q`*)
 
 
-FCLoopIntegralToGraph[ex/.p2->p2-p3/.p3->p3-p1+Q,{p1,p2,p3},Momentum->{2Q}]
+FCLoopIntegralToGraph[exShifted,Momentum->{2Q}]
 FCLoopGraphPlot[%]
 
 
@@ -176,6 +191,26 @@ FCLoopGraphPlot[%]
 
 
 OptionValue[FCLoopGraphPlot,Style]
+
+
+(* ::Text:: *)
+(*When dealing with factorizing integral it might be necessary to increase `VertexDegree` to `7` or `8` (or even a higher value, depending on the integrals)*)
+
+
+FCLoopIntegralToGraph[FAD[{p1,m1}]FAD[{p2,m2}],{p1,p2}]
+FCLoopGraphPlot[%]
+
+
+FCLoopIntegralToGraph[FAD[{p1,m1}]FAD[{p2,m2}]FAD[p3,p3+q],{p1,p2,p3},VertexDegree->7]
+FCLoopGraphPlot[%]
+
+
+FCLoopIntegralToGraph[FAD[{p1,m1}]FAD[{p2,m2}]FAD[p3,p3+q]FAD[{p4,m4}],{p1,p2,p3,p4},VertexDegree->9]
+FCLoopGraphPlot[%]
+
+
+(* ::Text:: *)
+(*Here we choose to use thick dashed blue and red lines for massive lines containing `mc` and `mg` respectively. The massless lines are black an dashed.*)
 
 
 FCLoopIntegralToGraph[ FAD[{k2,mb},{k3},{k1-q,mc},{k1-k2,mc},{k2-k3}],{k1,k2,k3}]
@@ -212,9 +247,6 @@ FCLoopGraphPlot[%, GraphPlot-> {MultiedgeStyle->0.35,Frame->True},Style->{
 }]
 
 
-
-
-
 (* ::Text:: *)
 (*The same goes for a 2-loop box with 3 massive lines*)
 
@@ -229,16 +261,13 @@ FCLoopGraphPlot[%, GraphPlot-> {MultiedgeStyle->0.35,Frame->True},Style->{
 }]
 
 
-
-
-
 (* ::Text:: *)
-(*One can also visualize the momentum flow, where we use powers to denote the dots*)
+(*One can also (sort of) visualize the momentum flow, where we use powers to denote the dots*)
 
 
 FCLoopIntegralToGraph[FCTopology[topo1X1,{SFAD[{{p2,0},{m1^2,1},2}],SFAD[{{p1,0},{m1^2,1},2}],
 SFAD[{{p2+p3,0},{0,1},1}],SFAD[{{p2+p3,0},{0,1},1}],
-SFAD[{{p1+p3,0},{0,1},1}],SFAD[{{p1+p2+p3,0},{0,1},1}]}],{p1,p2,p3}]
+SFAD[{{p1+p3,0},{0,1},1}],SFAD[{{p1+p2+p3,0},{0,1},1}]},{p1,p2,p3},{},{},{}]]
 FCLoopGraphPlot[%,GraphPlot-> {MultiedgeStyle->0.35,Frame->True},Labeled->{
 {"InternalLine",x_,pow_,_}:>x^pow,
 {"ExternalLine",_}:>{}}]

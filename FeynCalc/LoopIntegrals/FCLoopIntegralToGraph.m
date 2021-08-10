@@ -15,24 +15,28 @@
 
 (* ------------------------------------------------------------------------ *)
 
-FCLoopIntegralToGraph::usage=
-"FCLoopBasisIntegralToPropagators[int, {q1,q2,...}] constructs a graph \
-representation of the loop integral int that depends on the loop momenta q1, q2, ....\
-The function returns a list of the form {edges,labels,props,pref}, where edges \
-is a list of edge rules representing the loop integral int, labels is a list of
-lists containing the line momentum, multiplicity and the mass term of each propagator, \
-props is a list with the original propagators and pref is the piece of the integral \
-that was ignored when constructing the graph representation (e.g. scalar products or \
-vectors in the numerator) A quick and simple way to plot the graph is to evaluate \
-GraphPlot[Labeled @@@ Transpose[output[[1 ;; 2]]]] or GraphPlot[List @@@ Transpose[output[[1 ;; 2]]]]. \
-The visual quality will not be that great, though. To obtain a nicer plot one might use GraphPlot \
-with a custom EdgeTaggedGraph or export the output to a file and visualize it with an external \
-tool such as dot/neato from graphviz.
+FCLoopIntegralToGraph::usage =
+"FCLoopIntegralToGraph[int, {q1, q2, ...}] constructs a graph representation of
+the loop integral int that depends on the loop momenta q1, q2, .... The
+function returns a list of the form {edges,labels,props,pref}, where edges is
+a list of edge rules representing the loop integral int, labels is a list of
+lists containing the line momentum, multiplicity and the mass term of each
+propagator, props is a list with the original propagators and pref is the
+piece of the integral that was ignored when constructing the graph
+representation (e.g. scalar products or vectors in the numerator) .
 
-Notice that by default the attempted graph reconstruction is constrained to the maximum duration of
-3 seconds, while the maximum vertex degree is set to 6. This is done to avoid infinite loops on \
-integrals that do not admit a graph representation. For complicated integrals that can be \
-nevertheless represented as graphs one might need to relax these restrictions.";
+Use FCLoopGraphPlot to visualize the output of FCLoopIntegralToGraph.
+
+A quick and simple way to plot the graph is to evaluate GraphPlot[List @@@
+Transpose[output[[1 ;; 2]]]] or GraphPlot[Labeled @@@ Transpose[output[[1 ;;
+2]]]]. The visual quality will not be that great, though. To obtain a nicer
+plot one might use GraphPlot with a custom EdgeTaggedGraph or export the
+output to a file and visualize it with an external tool such as dot/neato from
+graphviz.
+
+It is also possible to invoke the function as FCLoopIntegralToGraph[GLI[...],
+FCTopology[...]] or FCLoopIntegralToGraph[FCTopology[...]].
+";
 
 FCLoopIntegralToGraph::failmsg =
 "Error! FCLoopIntegralToGraph encountered a fatal problem and must abort the computation. \
@@ -63,8 +67,60 @@ Options[FCLoopIntegralToGraph] = {
 	TimeConstrained		-> 3
 };
 
+FCLoopIntegralToGraph[gli_GLI, topo_FCTopology, opts:OptionsPattern[]] :=
+	Block[{int,optFinalSubstitutions},
+
+		int = FCLoopFromGLI[gli, topo, FCI->OptionValue[FCI]];
+
+		FCLoopIntegralToGraph[int, topo[[3]], Join[{FCI->True},
+			FilterRules[{opts}, Except[FCI]]]]
+	];
+
+FCLoopIntegralToGraph[glis:{__GLI}, topos:{__FCTopology}, opts:OptionsPattern[]] :=
+	Block[{ints,relTopos, lmomsList},
+
+		ints = FCLoopFromGLI[glis, topos, FCI->OptionValue[FCI]];
+
+		relTopos=Map[First[Select[topos, Function[x, x[[1]] === #[[1]]]]] &, glis];
+
+		If[	!MatchQ[relTopos,{__FCTopology}],
+			Message[FCFeynmanPrepare::failmsg, "Something went wrong when extracting topologies relevant for the given GLIs."];
+			Abort[]
+		];
+
+		lmomsList = #[[3]]&/@relTopos;
+
+		MapThread[FCLoopIntegralToGraph[#1, #2, Join[{FCI->True}, FilterRules[{opts}, Except[FCI | FinalSubstitutions]]]]&,{ints,lmomsList}]
+	];
+
+
+FCLoopIntegralToGraph[toposRaw: {__FCTopology}, opts:OptionsPattern[]]:=
+	FCLoopIntegralToGraph[#, opts]&/@toposRaw;
+
+
+FCLoopIntegralToGraph[topo_FCTopology, opts:OptionsPattern[]] :=
+	FCLoopIntegralToGraph[topo, {FCGV["dummy"]}, opts];
+
+FCLoopIntegralToGraph[topoRaw_FCTopology, opts:OptionsPattern[]] :=
+	Block[{topo},
+
+		If[	OptionValue[FCI],
+			topo = topoRaw,
+			topo = FCI[topoRaw]
+		];
+
+		If[	!FCLoopValidTopologyQ[topo],
+			Message[FCFeynmanPrepare::failmsg, "The supplied topology is incorrect."];
+			Abort[]
+		];
+
+		FCLoopIntegralToGraph[topo[[2]], topo[[3]], Join[{FCI->True},
+			FilterRules[{opts}, Except[FCI]]]]
+	];
+
+
 (*Except: List of propagators to ignore, GFAD, EEC*)
-FCLoopIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
+FCLoopIntegralToGraph[expr_/; FreeQ[{GLI,FCTopology},expr], lmomsRaw_List, OptionsPattern[]] :=
 	Block[{	ex, props, allmoms, extmoms, lmoms, lineMomenta, intEdgesList,
 			extEdgesList, numExtMoms,	numEdges, optFactoring,	auxExtEdgesList,
 			numIntVertices, numExtVertices, auxExternalMoms, numVertices,
@@ -93,15 +149,10 @@ FCLoopIntegralToGraph[expr_, lmomsRaw_List, OptionsPattern[]] :=
 			Abort[]
 		];
 
-		If[	Head[ex]===FCTopology,
-			ex = ex[[2]]
-		];
-
 		If[	!MatchQ[ex,{__}|_. _FeynAmpDenominator],
 			Message[FCLoopIntegralToGraph::failmsg, "The input expression is not a proper integral or list of propagators"];
 			Abort[]
 		];
-
 
 
 		FCPrint[1,"FCLoopIntegralToGraph: Entering. ", FCDoControl->lbtgVerbose];
@@ -258,6 +309,7 @@ Notice that not all loop integrals admit a graph representation."];
 
 		time=AbsoluteTime[];
 		FCPrint[1,"FCLoopIntegralToGraph: Calling makeGraph.", FCDoControl->lbtgVerbose];
+		FCPrint[3,"FCLoopIntegralToGraph: Calling makeGraph with ", res, FCDoControl->lbtgVerbose];
 
 		(*	external edges always come first!	*)
 		res = makeGraph[res];
@@ -421,6 +473,11 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 			currentVertexDegree++;
 		];
 
+		FCPrint[3, "FCLoopIntegralToGraph: reconstructAllVertices: Final iteration of findInternalVertices had currentVertexDegree = ", currentVertexDegree, FCDoControl->lbtgVerbose];
+		FCPrint[3, "FCLoopIntegralToGraph: reconstructAllVertices: Reconstructed internal vertices: ", intVerticesFound, FCDoControl->lbtgVerbose];
+		FCPrint[3, "FCLoopIntegralToGraph: reconstructAllVertices: Vertex candidate sets: ", intVertexCandidateSets, FCDoControl->lbtgVerbose];
+		FCPrint[3, "FCLoopIntegralToGraph: reconstructAllVertices: Fully connected edges: ", fullyConnectedEdges, FCDoControl->lbtgVerbose];
+
 		If[	Length[intVerticesFound]<numIntVertices,
 			(*
 				In the case of a tadpole it may happen that we can reconstruct all vertices already at this stage,
@@ -433,46 +490,44 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 		];
 
 		(* It is also possible that we reconstruct some fake vertices *)
-		FCPrint[3, "FCLoopIntegralToGraph: reconstructAllVertices: Reconstructed internal vertices: ", intVerticesFound, FCDoControl->lbtgVerbose];
+
 		If[	(Length[intVerticesFound] >= numIntVertices) && intVerticesFound=!={},
 			If[	numExtMoms=!=0,
 				intVertexCandidateSets = Subsets[intVerticesFound, {numIntVertices}]
 			];
-			FCPrint[3, "FCLoopIntegralToGraph: reconstructAllVertices: Vertex candidate sets: ", intVertexCandidateSets, FCDoControl->lbtgVerbose]
 		];
 
-		FCPrint[3, "FCLoopIntegralToGraph: reconstructAllVertices: Fully connected edges: ", fullyConnectedEdges, FCDoControl->lbtgVerbose];
+
 
 		(*	Now we only need to reconstruct the external vertices. However, there are some special cases to take care of!	*)
 		If[	numExtMoms===0,
-
 			(*	We are dealing with a tadpole!	*)
 
 			FCPrint[3, "FCLoopIntegralToGraph: Tadpole integral!", FCDoControl->lbtgVerbose];
 
 			Which[
 
-				(*	Special case: a 2-vertex tadpole *)
-				(fullyConnectedEdges === {}) && (Length[intVerticesFound] === 1) && (numExtVertices === 1),
+				(fullyConnectedEdges === {}) && (Length[intVerticesFound] === 1),
 					intVerticesFound = Join[intVerticesFound,intVerticesFound];
+				FCPrint[3, "FCLoopIntegralToGraph: Special case: a 2-vertex tadpole.", FCDoControl->lbtgVerbose];
 					fullyConnectedEdges = Cases[Tally[Flatten[{intVerticesFound,extVerticesFound}]], {i_Integer?Positive, 2} :> i]//Union,
 
-				(*	Special case: a 1-vertex tadpole *)
-				(fullyConnectedEdges === {}) && (intVerticesFound === {}) && (numExtVertices === 1),
+				(fullyConnectedEdges === {}) && (intVerticesFound === {}),
+				FCPrint[3, "FCLoopIntegralToGraph: Special case: a 1-vertex tadpole.", FCDoControl->lbtgVerbose];
 					intVerticesFound = { {1,1}};
 					fullyConnectedEdges = {1},
 
-				(*	Generic tadpole *)
 				True,
+				FCPrint[3, "FCLoopIntegralToGraph: A generic tadpole.", FCDoControl->lbtgVerbose];
 				verticesRaw = Subsets[intVerticesFound, {numIntVertices+1}];
-				If[	Length[verticesRaw]>1,
-					Null
-				];
+				FCPrint[3, "FCLoopIntegralToGraph: verticesRaw: ", verticesRaw, FCDoControl->lbtgVerbose];
+				If[	verticesRaw=!={},
 
-				(* Possible ambiguities in the final vertex reconstruction: simply take the first candidate *)
-				(*	TODO Check isomorphy betwen different candidates ?*)
-				intVerticesFound = verticesRaw[[optSelect]];
-				fullyConnectedEdges = Cases[Tally[Flatten[{intVerticesFound,extVerticesFound}]], {i_Integer?Positive, 2} :> i]//Union
+					(* Possible ambiguities in the final vertex reconstruction: simply take the first candidate *)
+					(*	TODO Check isomorphy betwen different candidates ?*)
+					intVerticesFound = verticesRaw[[optSelect]];
+					fullyConnectedEdges = Cases[Tally[Flatten[{intVerticesFound,extVerticesFound}]], {i_Integer?Positive, 2} :> i]//Union
+				]
 			],
 
 
