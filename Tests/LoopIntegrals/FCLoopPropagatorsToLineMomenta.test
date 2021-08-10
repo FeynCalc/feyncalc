@@ -246,5 +246,10 @@ AuxiliaryMomenta\[Rule]{v}]",
 {"fcstFCLoopPropagatorsToLineMomenta-ID65",
 "FCLoopPropagatorsToLineMomenta[{CFAD[{{0,2v.(q+r)},m^2}]},\
 FCE->True,AuxiliaryMomenta\[Rule]{v}]",
-"{{q + r}, {m^2}, {CFAD[{{0, 2*(q + r) . v}, {m^2, -1}, 1}]}}"}
+"{{q + r}, {m^2}, {CFAD[{{0, 2*(q + r) . v}, {m^2, -1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID66",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{I(q+l),-m^2}],
+SFAD[{I p,-m^2}]},FCE->True]",
+"{{l + q, p}, {m^2, m^2}, {SFAD[{{I*(l + q), 0}, {-m^2, 1}, 1}],
+SFAD[{{I*p, 0}, {-m^2, 1}, 1}]}}"}
 });

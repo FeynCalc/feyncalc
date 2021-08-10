@@ -1,8 +1,5 @@
 (* ::Package:: *)
 
- 
-
-
 (* ::Section:: *)
 (*FCLoopPropagatorsToLineMomenta*)
 
@@ -15,6 +12,10 @@
 (*See also*)
 
 
+(* ::Text:: *)
+(*[FCLoopIntegralToGraph](FCLoopIntegralToGraph), [AuxiliaryMomenta](AuxiliaryMomenta).*)
+
+
 (* ::Subsection:: *)
 (*Examples*)
 
@@ -23,3 +24,14 @@ FCLoopPropagatorsToLineMomenta[{SFAD[{q+l,m^2}],SFAD[{p,-m^2}]},FCE->True]
 
 
 FCLoopPropagatorsToLineMomenta[{CFAD[{{0,2v . (q+r)},m^2}]},FCE->True,AuxiliaryMomenta->{v}]
+
+
+(* ::Text:: *)
+(*Reversed signs are also supported*)
+
+
+{SFAD[{I(q+l),-m^2}],SFAD[{I p,-m^2}]}
+FCLoopPropagatorsToLineMomenta[%,FCE->True]
+
+
+FCLoopPropagatorsToLineMomenta[{SFAD[{I(q+l),-m^2}],SFAD[{I p,-m^2}]},FCE->True]//InputForm

@@ -16,8 +16,9 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopPropagatorsToLineMomenta::usage =
-"FCLoopPropagatorsToLineMomenta[{prop1, prop2,...}] is an auxiliary function that extracts
-line momenta flowing through the given list of propagators.";
+"FCLoopPropagatorsToLineMomenta[{prop1, prop2, ...}] is an auxiliary function
+that extracts line momenta flowing through the given list of propagators.
+";
 
 AuxiliaryMomenta::usage =
 "AuxiliaryMomenta is an option of FCLoopPropagatorsToLineMomenta it specifices auxiliary \
@@ -109,15 +110,15 @@ FCLoopPropagatorsToLineMomenta[expr_, OptionsPattern[]] :=
 	];
 
 (*FAD quadratic, 1/[p^2-m^2]*)
-lineMomentumFromPropagator[PropagatorDenominator[Momentum[mom_, ___], mass_]]:=
+lineMomentumFromPropagator[PropagatorDenominator[_. Momentum[mom_, ___], mass_]]:=
 	{mom, -mass^2}/; FreeQ2[mom,auxMoms];
 
 (*SFAD squared, 1/[p^2-m^2] or 1/[p^2+m^2] *)
-lineMomentumFromPropagator[StandardPropagatorDenominator[Momentum[mom_, ___], 0, massSq_, {_, _}]]:=
+lineMomentumFromPropagator[StandardPropagatorDenominator[_. Momentum[mom_, ___], 0, massSq_, {_, _}]]:=
 	{mom, massSq}/; FreeQ2[mom,auxMoms];
 
 (*CFAD squared, 1/[p^2-m^2] or 1/[p^2+m^2] *)
-lineMomentumFromPropagator[CartesianPropagatorDenominator[CartesianMomentum[mom_, ___], 0, massSq_, {_, _}]]:=
+lineMomentumFromPropagator[CartesianPropagatorDenominator[_. CartesianMomentum[mom_, ___], 0, massSq_, {_, _}]]:=
 	{mom, massSq}/; FreeQ2[mom,auxMoms];
 
 
