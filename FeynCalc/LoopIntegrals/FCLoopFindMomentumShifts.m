@@ -16,12 +16,19 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopFindMomentumShifts::usage =
-"FCLoopFindMomentumShifts[source, target, {p1, p2, ...}] finds loop momentum shifts \
-that bring loop integrals or topologies in the list source to the form specified \
-in target. The integrals/topologies in intFrom and intTo are assumed to be equivalent \
-and their denominators must be properly ordered via FCLoopToPakForm. Furthermore, target \
-must be provided as a list of FeynAmpDenominator objects, while intFrom is a list of \
-such lists.";
+"FCLoopFindMomentumShifts[source, target, {p1, p2, ...}] finds loop momentum
+shifts that bring loop integrals or topologies in the list source to the form
+specified in target. The integrals/topologies in intFrom and intTo are assumed
+to be equivalent and their denominators must be properly ordered via
+FCLoopToPakForm. Here the loop momenta p1, p2, ... belong to the source
+topologies.
+
+target must be provided as a list of FeynAmpDenominator objects, while intFrom
+is a list of such lists.
+
+It is also possible to invoke the function as
+FCLoopFindMomentumShifts[{FCTopology[...], FCTopology[...]}, FCTopology[...]].
+";
 
 FCLoopFindMomentumShifts::failmsg =
 "Error! FCLoopFindMomentumShifts has encountered a fatal problem and must abort the computation. \
@@ -39,7 +46,29 @@ Options[FCLoopFindMomentumShifts] = {
 	FCVerbose 					-> False
 };
 
-FCLoopFindMomentumShifts[fromRaw_List, toRaw_, lmoms_List, OptionsPattern[]] :=
+FCLoopFindMomentumShifts[fromRaw:{__FCTopology}, toRaw_FCTopology, opts:OptionsPattern[]] :=
+	Block[{from,to},
+
+		If[OptionValue[FCI],
+			{from, to} = {fromRaw, toRaw},
+			{from, to} = FCI[{fromRaw, toRaw}]
+		];
+
+		If[	!FCLoopValidTopologyQ[from],
+			Message[FCFeynmanPrepare::failmsg, "The list of source topologie is incorrect."];
+			Abort[]
+		];
+
+		If[	!FCLoopValidTopologyQ[to],
+			Message[FCFeynmanPrepare::failmsg, "The target topology is incorrect."];
+			Abort[]
+		];
+
+		FCLoopFindMomentumShifts[#[[2]]&/@from, to[[2]], to[[3]], Join[{FCI->True}, FilterRules[{opts}, Except[FCI]]]]
+	];
+
+
+FCLoopFindMomentumShifts[fromRaw_List/;FreeQ[fromRaw,FCTopology], toRaw_/;FreeQ[toRaw,FCTopology], lmoms_List, OptionsPattern[]] :=
 	Block[{from, to, res, time, shifts},
 
 		If[	OptionValue[FCVerbose] === False,
@@ -51,10 +80,6 @@ FCLoopFindMomentumShifts[fromRaw_List, toRaw_, lmoms_List, OptionsPattern[]] :=
 		If[OptionValue[FCI],
 			{from, to} = {fromRaw, toRaw},
 			{from, to} = FCI[{fromRaw, toRaw}]
-		];
-
-		If[	!FreeQ[{from, to},FCTopology],
-			{from, to} = {from, to} /. FCTopology[_,zz_List,___] :> zz
 		];
 
 		FCPrint[1, "FCLoopFindMomentumShifts: Entering.", FCDoControl -> fcflsVerbose];
@@ -84,8 +109,8 @@ FCLoopFindMomentumShifts[fromRaw_List, toRaw_, lmoms_List, OptionsPattern[]] :=
 	];
 
 
-findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmoms_List]:=
-	Block[{lhs, rhs, eq,mark, vars, sol, res},
+findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmomsRaw_List]:=
+	Block[{lhs, rhs, eq, mark, vars, sol, res, lmoms},
 		lhs = MomentumCombine[from,FCI->True];
 		rhs = MomentumCombine[to,FCI->True];
 		{lhs, rhs} = {lhs, rhs} /. {
@@ -105,11 +130,14 @@ findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmoms_List]:=
 			Abort[]
 		];
 
+		lmoms = Select[lmomsRaw,!FreeQ[lhs,#]&];
+
 		vars = mark/@(lmoms);
 		lhs = lhs /. Thread[Rule[lmoms,vars]];
 
 		FCPrint[3, "FCLoopFindMomentumShifts: Final lhs: ", lhs, FCDoControl -> fcflsVerbose];
 		FCPrint[3, "FCLoopFindMomentumShifts: Final rhs: ", rhs, FCDoControl -> fcflsVerbose];
+		FCPrint[3, "FCLoopFindMomentumShifts: Variables to solve for: ", vars, FCDoControl -> fcflsVerbose];
 
 
 
