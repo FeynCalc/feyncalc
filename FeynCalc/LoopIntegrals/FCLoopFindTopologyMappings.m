@@ -16,12 +16,13 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopFindTopologyMappings::usage =
-"FCLoopFindTopologyMappings[{topo1, topo2, ...}, {p1, p2, ...}] finds mappings between \
-topologies (written as FCTopology objects) topo1, topo2, ... that depend on the \
-loop momenta p1, p2, .... For each source topology the function returns a list of \
-loop momentum shits and a GLI replacement rule needed to map it to the given \
-target topology. If you need to map everything to a particular set of target topologies, \
-you can specify them via the PreferredTopologies option.";
+"FCLoopFindTopologyMappings[{topo1, topo2, ...}] finds mappings between
+topologies (written as FCTopology objects) topo1, topo2, .... For each source
+topology the function returns a list of loop momentum shifts and a GLI
+replacement rule needed to map it to the given target topology. If you need to
+map everything to a particular set of target topologies, you can specify them
+via the PreferredTopologies option.
+";
 
 FCLoopFindTopologyMappings::failmsg =
 "Error! FCLoopFindTopologyMappings has encountered a fatal problem and must abort the computation. \
@@ -42,7 +43,7 @@ Options[FCLoopFindTopologyMappings] = {
 	PreferredTopologies			-> {}
 };
 
-FCLoopFindTopologyMappings[topos_List, lmoms_List, OptionsPattern[]] :=
+FCLoopFindTopologyMappings[topos:{__FCTopology}, OptionsPattern[]] :=
 	Block[{	pakFormInts, res, time, x, pakMappings, optPreferredTopologies,
 		preferredIDs, finalMappings, list},
 
@@ -56,12 +57,6 @@ FCLoopFindTopologyMappings[topos_List, lmoms_List, OptionsPattern[]] :=
 
 		FCPrint[1, "FCLoopFindTopologyMappings: Entering.", FCDoControl -> fclftpVerbose];
 		FCPrint[3, "FCLoopFindTopologyMappings: Entering with: ", topos, FCDoControl -> fclftpVerbose];
-
-
-		If[	!MatchQ[topos,{_FCTopology..}],
-			Message[FCLoopFindTopologyMappings::failmsg, "The input is not a valid list of topologies."]
-		];
-
 
 		optPreferredTopologies =
 			If[	TrueQ[Head[#]=!=FCTopology],
@@ -79,16 +74,17 @@ FCLoopFindTopologyMappings[topos_List, lmoms_List, OptionsPattern[]] :=
 		preferredIDs = First/@optPreferredTopologies;
 
 		time=AbsoluteTime[];
-		FCPrint[1, "FCLoopFindTopologyMappings: Calling FCLoopFindPakMappings.", FCDoControl -> fclftpVerbose];
-		pakMappings = FCLoopFindPakMappings[Union[Join[topos,optPreferredTopologies]],lmoms, FCI->OptionValue[FCI], FinalSubstitutions->OptionValue[FinalSubstitutions]];
-		FCPrint[1, "FCLoopFindTopologyMappings: FCLoopFindPakMappings done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclftpVerbose];
-		FCPrint[3, "FCLoopFindTopologyMappings: After FCLoopFindPakMappings: ", pakMappings, FCDoControl->fclftpVerbose];
+		FCPrint[1, "FCLoopFindTopologyMappings: Calling FCLoopFindIntegralMappings.", FCDoControl -> fclftpVerbose];
+		pakMappings = FCLoopFindIntegralMappings[Union[Join[topos,optPreferredTopologies]], FCI->OptionValue[FCI],
+			FinalSubstitutions->OptionValue[FinalSubstitutions], List->True];
+		FCPrint[1, "FCLoopFindTopologyMappings: FCLoopFindIntegralMappings done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclftpVerbose];
+		FCPrint[3, "FCLoopFindTopologyMappings: After FCLoopFindIntegralMappings: ", pakMappings, FCDoControl->fclftpVerbose];
 
 
 		time=AbsoluteTime[];
 		FCPrint[1, "FCLoopFindTopologyMappings: Calling findMappings.", FCDoControl -> fclftpVerbose];
 
-		res = findMappings[#,lmoms,preferredIDs]&/@ pakMappings;
+		res = findMappings[#,preferredIDs]&/@ pakMappings;
 		FCPrint[1, "FCLoopFindTopologyMappings: findMappings done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclftpVerbose];
 
 		res = Flatten[res /. {a_FCTopology, rest___} :> list[a, rest]] /. list -> List;
@@ -104,7 +100,7 @@ FCLoopFindTopologyMappings[topos_List, lmoms_List, OptionsPattern[]] :=
 	];
 
 
-findMappings[input_List, lmoms_List, preferred_List] :=
+findMappings[input_List, preferred_List] :=
 	Block[{target, source, shifts, gliRules, sourceShifted},
 
 	If[	preferred === {},
@@ -125,11 +121,13 @@ findMappings[input_List, lmoms_List, preferred_List] :=
 	];
 
 	(*TODO More checks and debugging output *)
-	shifts = FCLoopFindMomentumShifts[Last/@source, Last[target], lmoms];
+
+	shifts = FCLoopFindMomentumShifts[Last/@source, Last[target]];
 
 	sourceShifted = MapThread[ReplaceAll[First[#1], #2]&, {source, shifts}];
 
 	sourceShifted = FDS[#,FCI->True]&/@sourceShifted;
+	target = FDS[target,FCI->True];
 
 	gliRules = FCLoopCreateRuleGLIToGLI[First[target], #]&/@sourceShifted;
 
