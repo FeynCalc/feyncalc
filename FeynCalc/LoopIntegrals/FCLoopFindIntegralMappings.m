@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FCLoopFindPakMappings											*)
+(* :Title: FCLoopFindIntegralMappings										*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -11,41 +11,54 @@
 	Copyright (C) 2014-2021 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  	Obtains a canonical (Pak) representation of the given
-				FeynCalc integral 											*)
+(* :Summary:  	Finds equivalent loop integrals								*)
 
 (* ------------------------------------------------------------------------ *)
 
-FCLoopFindPakMappings::usage =
-"FCLoopFindPakMappings[{int1, int2, ...}, {p1, p2, ...}] finds mappings between scalar
-multiloop-integrals int1, int2, ... that depend on the loop momenta p1, p2, ...
-using the algorithm of Alexey Pak (arXiv:1111.0868).
+FCLoopFindIntegralMappings::usage =
+"FCLoopFindIntegralMappings[{int1, int2, ...}, {p1, p2, ...}] finds mappings
+between scalar multiloop integrals int1, int2, ... that depend on the loop
+momenta p1, p2, ... using the algorithm of Alexey Pak
+[arXiv:1111.0868](https://arxiv.org/abs/1111.0868).
 
-The current implementation is based on the FindEquivalents function from \
-FIRE 6 (arXiv:1901.07808)";
+The current implementation is based on the FindEquivalents function from FIRE
+6 [arXiv:1901.07808](https://arxiv.org/abs/1901.07808)
 
-FCLoopFindPakMappings::failmsg =
-"Error! FCLoopFindPakMappings has encountered a fatal problem and must abort the computation. \
+It is also possible to invoke the function as
+FCLoopFindIntegralMappings[{GLI[...], ...}, {FCTopology[...], ...}] or
+FCLoopFindIntegralMappings[{FCTopology[...], ...}]. Notice that in this case
+the value of the option FinalSubstitutions is ignored, as replacement rules
+will be extracted directly from the definition of the topology.
+";
+
+FCLoopFindIntegralMappings::failmsg =
+"Error! FCLoopFindIntegralMappings has encountered a fatal problem and must abort the computation. \
 The problem reads: `1`"
 
 Begin["`Package`"]
 End[]
 
-Begin["`FCLoopFindPakMappings`Private`"]
+Begin["`FCLoopFindIntegralMappings`Private`"]
 
 fcfpmVerbose::usage = "";
 
-Options[FCLoopFindPakMappings] = {
+Options[FCLoopFindIntegralMappings] = {
 	CharacteristicPolynomial	-> Function[{U,F}, U+F],
 	FCE 						-> False,
 	FCI 						-> False,
 	FCVerbose 					-> False,
 	FinalSubstitutions			-> {},
-	Function					-> Function[{U, F, charPoly, pows, head, int, sigma}, {head[int, Transpose[pows]], head[ExpandAll[U], ExpandAll[F]]}]
+	Function					-> Function[{U, F, charPoly, pows, head, int, sigma}, {head[int, Transpose[pows]], head[ExpandAll[U], ExpandAll[F]]}],
+	List						-> False,
+	PreferredIntegrals			-> {}
 };
 
-FCLoopFindPakMappings[expr_List, lmoms_List, OptionsPattern[]] :=
-	Block[{	pakFormInts, res, time, x, pakHead, powerMark, topoidMode},
+FCLoopFindIntegralMappings[expr: {__FCTopology}, opts:OptionsPattern[]] :=
+	FCLoopFindIntegralMappings[expr, {FCGV["dummy"]}, opts];
+
+FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
+	Block[{	expr, pakFormInts, lmoms, res, time, x, pakHead, powerMark,
+			topoidMode, optPreferredIntegrals, finalMasters},
 
 		If[	OptionValue[FCVerbose] === False,
 			fcfpmVerbose = $VeryVerbose,
@@ -53,48 +66,100 @@ FCLoopFindPakMappings[expr_List, lmoms_List, OptionsPattern[]] :=
 			fcfpmVerbose = OptionValue[FCVerbose]];
 		];
 
-		FCPrint[1, "FCLoopFindPakMappings: Entering.", FCDoControl -> fcfpmVerbose];
-		FCPrint[3, "FCLoopFindPakMappings: Entering with: ", expr, FCDoControl -> fcfpmVerbose];
+		optPreferredIntegrals = OptionValue[PreferredIntegrals];
 
-		If[	TrueQ[MatchQ[expr,{_FCTopology..}]],
-			FCPrint[1, "FCLoopFindPakMappings: Topology identification mode.", FCDoControl -> fcfpmVerbose];
-			topoidMode=True,
-			topoidMode=False
+		FCPrint[1, "FCLoopFindIntegralMappings: Entering.", FCDoControl -> fcfpmVerbose];
+		FCPrint[3, "FCLoopFindIntegralMappings: Entering with: ", exprRaw, FCDoControl -> fcfpmVerbose];
+		FCPrint[3, "FCLoopFindIntegralMappings: and: ", lmomsRaw, FCDoControl -> fcfpmVerbose];
+
+		If[	(optPreferredIntegrals=!={}) && !MatchQ[optPreferredIntegrals,{__GLI}],
+			Message[FCLoopFindIntegralMappings::failmsg,"Incorrect value of the PreferredIntegrals option."];
+			Abort[]
+		];
+
+		If[	lmomsRaw==={FCGV["dummy"]},
+			lmoms=Sequence[],
+			lmoms=lmomsRaw
+		];
+
+		If[	MatchQ[exprRaw,{__GLI}],
+			expr = Union[Join[exprRaw,optPreferredIntegrals]],
+			expr = exprRaw
 		];
 
 		time=AbsoluteTime[];
-		FCPrint[1, "FCLoopFindPakMappings: Calling FCToPakForm.", FCDoControl -> fcfpmVerbose];
-		pakFormInts = FCLoopToPakForm[#, lmoms, FCI->OptionValue[FCI], FinalSubstitutions->OptionValue[FinalSubstitutions],
-			Check->False, Collecting->False, Names->x, CharacteristicPolynomial->OptionValue[CharacteristicPolynomial],
-			Function->OptionValue[Function], Head->pakHead, Power->powerMark] & /@ expr;
-		FCPrint[1, "FCLoopFindPakMappings: FCToPakForm done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfpmVerbose];
+		FCPrint[1, "FCLoopFindIntegralMappings: Calling FCToPakForm.", FCDoControl -> fcfpmVerbose];
 
-		FCPrint[3, "FCLoopFindPakMappings: Output of FCToPakForm: ", pakFormInts, FCDoControl->fcfpmVerbose];
+		pakFormInts = FCLoopToPakForm[expr, lmoms, FCI->OptionValue[FCI], FinalSubstitutions->OptionValue[FinalSubstitutions],
+			Check->False, Collecting->False, Names->x, CharacteristicPolynomial->OptionValue[CharacteristicPolynomial],
+			Function->OptionValue[Function], Head->pakHead, Power->powerMark];
+		FCPrint[1, "FCLoopFindIntegralMappings: FCToPakForm done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfpmVerbose];
+
+		FCPrint[3, "FCLoopFindIntegralMappings: Output of FCToPakForm: ", pakFormInts, FCDoControl->fcfpmVerbose];
 
 		(* 2nd element are the grouped mappings *)
 		res = Reap[(Sow[Sequence @@ #] & /@ pakFormInts), _][[2]];
 
-		If[	topoidMode,
-			res = res /. pakHead[FCTopology[id_, props_List], {_List, propsReordered_List, _List}] :>
-				List[FCTopology[id, props], FCTopology[id, propsReordered]],
+		If[	!FreeQ[expr,FCTopology],
+			res = res /. pakHead[FCTopology[id_, props_List, rest__], {_List, propsReordered_List, _List}] :>
+				List[FCTopology[id, props, rest], FCTopology[id, propsReordered, rest]],
 
-			res = res /. FeynCalc`FCLoopFindPakMappings`Private`pakHead[zz_, __] :> zz
+			res = res /. FeynCalc`FCLoopFindIntegralMappings`Private`pakHead[zz_, __] :> zz
 		];
 
 		If[	!FreeQ[res,pakHead],
-			Message[FCLoopFindPakMappings::failmsg,"Something went wrong while trying to process the output of FCLoopToPakForm"];
+			Message[FCLoopFindIntegralMappings::failmsg,"Something went wrong while trying to process the output of FCLoopToPakForm."];
 			Abort[]
+		];
+
+		FCPrint[3, "FCLoopFindIntegralMappings: Preliminary result: ", res, FCDoControl->fcfpmVerbose];
+
+		(*TODO Filter out preferred masters that do not occur here*)
+
+		(*Only return replacement rules if the input is a list of GLIs and the List option is set to False*)
+		If[	!OptionValue[List] && MatchQ[expr,{__GLI}],
+
+				res = makeMappingRules[#,optPreferredIntegrals]&/@res;
+
+				FCPrint[3, "FCLoopFindIntegralMappings: After makeMappingRules: ", res, FCDoControl->fcfpmVerbose];
+
+				If[	!FreeQ[res,makeMappingRules],
+					Message[FCLoopFindIntegralMappings::failmsg,"Failed to create GLI mapping rules"];
+					Abort[]
+				];
+				res= Flatten[res];
+				finalMasters = Union[Last/@ res];
+				res = res/. Rule[a_,a_] :> Unevaluated[Sequence[]];
+				res = {res,finalMasters}
+
 		];
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
 		];
 
-		FCPrint[3, "FCLoopFindPakMappings: Leaving.", FCDoControl -> fcfpmVerbose];
-		FCPrint[3, "FCLoopFindPakMappings: Leaving with: ", res, FCDoControl -> fcfpmVerbose];
+		FCPrint[3, "FCLoopFindIntegralMappings: Leaving.", FCDoControl -> fcfpmVerbose];
+		FCPrint[3, "FCLoopFindIntegralMappings: Leaving with: ", res, FCDoControl -> fcfpmVerbose];
 
 		res
 	];
 
-FCPrint[1,"FCLoopFindPakMappings.m loaded."];
+(*TODO Memoization*)
+makeMappingRules[ints_List, (*preferredIntegrals*)_List]:=
+	{ints[[1]] -> ints[[1]]}/; Length[ints]===1;
+
+makeMappingRules[ints_List, preferredIntegrals_List/; preferredIntegrals=!={}]:=
+	Rule[#, First[ints]]&/@Rest[ints]/; Length[ints]>1 && FreeQ2[ints,preferredIntegrals];
+
+makeMappingRules[ints_List, {}]:=
+	Rule[#, First[ints]]&/@Rest[ints]/; Length[ints]>1;
+
+makeMappingRules[ints_List, preferredIntegrals_List/; preferredIntegrals=!={}]:=
+	(
+	lhs = First[SelectNotFree[ints,preferredIntegrals]];
+	Rule[#,lhs]&/@ (SelectFree[ints,lhs])
+	)/; Length[ints]>1 && !FreeQ2[ints,preferredIntegrals];
+
+
+FCPrint[1,"FCLoopFindIntegralMappings.m loaded."];
 End[]

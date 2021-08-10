@@ -246,6 +246,16 @@ PaVeOrderList::usage=
 "PaVeOrderList is an option for PaVeOrder and PaVeReduce, \
 specifying in which order the arguments of PaVe functions are to be permuted.";
 
+PreferredTopologies::usage =
+"PreferredTopologies is an option for FCLoopFindTopologies, FCLoopFindTopologyMappings and \
+other related functions. It allows to specify a list of topologies onto which the occurring \
+topologies should be preferably mapped.";
+
+PreferredIntegrals::usage =
+"PreferredIntegrals is an option for FCLoopFindIntegralMappings and \
+other related functions. It allows to specify a list of GLIs onto which the \
+occurring loop integrals should be preferably mapped.";
+
 QuarkMass::usage= "QuarkMass is an option of Amplitude.";
 
 SchoutenAllowZeroGain::usage=

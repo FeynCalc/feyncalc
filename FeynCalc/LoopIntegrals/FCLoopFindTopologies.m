@@ -31,11 +31,6 @@ ExtraPropagators::usage =
 specify extra propagators that do not explicitly appear in the input expression \
 but must be taken into account when constructing the sets of propagators.";
 
-PreferredTopologies::usage =
-"PreferredTopologies is an option for FCLoopFindTopologies. It allows to specify a \
-list of topologies that should be used first when performing the topology identification. \
-If those topologies are not sufficient to cover all sets of denominators present in the \
-input expression, additional topologies will be identified automatically.";
 
 FCLoopFindTopologies::failmsg = "Error! FCLoopFindTopologies has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`";

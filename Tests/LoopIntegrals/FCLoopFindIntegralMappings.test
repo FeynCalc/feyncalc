@@ -1,0 +1,190 @@
+
+
+(* :Title: FCLoopFindIntegralMappings.test									*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2021 Rolf Mertig
+	Copyright (C) 1997-2021 Frederik Orellana
+	Copyright (C) 2014-2021 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for
+					FCLoopFindIntegralMappings								*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopFindIntegralMappings =
+({
+{"fcstFCLoopFindIntegralMappings-ID1",
+"FCLoopFindIntegralMappings[{FAD[{p1,m1}],FAD[{p1+q,m1}],FAD[{p1,m2}]},{p1},FCE->True]\
+", "{{FAD[{p1, m1}], FAD[{p1 + q, m1}]}, {FAD[{p1, m2}]}}"},
+{"fcstFCLoopFindIntegralMappings-ID2",
+"FCLoopFindIntegralMappings[{FAD[p1] FAD[p1-p3-p4] FAD[p4] FAD[p3+q1] \
+FAD[{p3,m1}] FAD[{p1-p4,m1}] FAD[{p1+q1,0},{p1+q1,0}],FAD[p4] \
+FAD[p1-p3+q1] FAD[p3+q1] FAD[p1+p4+q1] FAD[{p3,m1}] FAD[{p1+q1,m1}] \
+FAD[{p1+p4+2 q1,0},{p1+p4+2 q1,0}],FAD[p1] FAD[p4-2 q1] FAD[p3+q1] \
+FAD[p1-p3-p4+2 q1] FAD[{p3,m1}] FAD[{p1-p4+2 q1,m1}] \
+FAD[{p1+q1,0},{p1+q1,0}]},{p1,p3,p4},FCE->True]",
+"{{FAD[p1]*FAD[p1 - p3 - p4]*FAD[p4]*FAD[p3 + q1]*FAD[{p3, m1}]*FAD[{p1 - p4, m1}]*FAD[p1 + q1, p1 + q1],
+FAD[p4]*FAD[p1 - p3 + q1]*FAD[p3 + q1]*FAD[p1 + p4 + q1]*FAD[{p3,
+m1}]*FAD[{p1 + q1, m1}]*FAD[p1 + p4 + 2*q1, p1 + p4 + 2*q1],
+FAD[p1]*FAD[p4 - 2*q1]*FAD[p3 + q1]*FAD[p1 - p3 - p4 + 2*q1]*FAD[{p3,
+m1}]*FAD[{p1 - p4 + 2*q1, m1}]*FAD[p1 + q1, p1 + q1]}}"},
+
+{"ID-3","FCLoopFindIntegralMappings[{FCTopology[
+fctopology1, {SFAD[{{p1, 0}, {0, 1}, 1}],
+	SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p3, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}]},{p1,p2,p3},{Q},{},{}],
+FCTopology[
+fctopology2, {SFAD[{{p1, 0}, {0, 1}, 1}],
+	SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p3, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 - Q, 0}, {0, 1}, 1}]},{p1,p2,p3},{Q},{},{}],
+FCTopology[
+fctopology3, {SFAD[{{p1, 0}, {0, 1}, 1}],
+	SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p3, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p1 + p3, 0}, {0, 1}, 1}],
+	SFAD[{{p2 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}]},{p1,p2,p3},{Q},{},{}],
+FCTopology[
+fctopology4, {SFAD[{{p1, 0}, {0, 1}, 1}],
+	SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p3, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p1 + p3, 0}, {0, 1}, 1}],
+	SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}]},{p1,p2,p3},{Q},{},{}],
+FCTopology[
+fctopology5, {SFAD[{{p1, 0}, {0, 1}, 1}],
+	SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p3, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 - Q, 0}, {0, 1}, 1}]},{p1,p2,p3},{Q},{},{}]}, FCE -> True]",
+	"{{{FCTopology[
+	fctopology1, {SFAD[{{p1, 0}, {0, 1}, 1}],
+	SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p3, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, {}],
+	FCTopology[
+	fctopology1, {SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p3, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}],
+	SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2,
+	p3}, {Q}, {}, {}]}, {FCTopology[
+	fctopology3, {SFAD[{{p1, 0}, {0, 1}, 1}],
+	SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p3, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p1 + p3, 0}, {0, 1}, 1}],
+	SFAD[{{p2 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, {}],
+	FCTopology[
+	fctopology3, {SFAD[{{p1, 0}, {0, 1}, 1}],
+	SFAD[{{p3, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p2, 0}, {0, 1}, 1}]}, {p1, p2,
+	p3}, {Q}, {}, {}]}, {FCTopology[
+	fctopology4, {SFAD[{{p1, 0}, {0, 1}, 1}],
+	SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p3, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p1 + p3, 0}, {0, 1}, 1}],
+	SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, {}],
+	FCTopology[
+	fctopology4, {SFAD[{{p2 + p3, 0}, {0, 1}, 1}],
+	SFAD[{{p3, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p3, 0}, {0, 1}, 1}]}, {p1, p2,
+	p3}, {Q}, {}, {}]}}, {{FCTopology[
+	fctopology2, {SFAD[{{p1, 0}, {0, 1}, 1}],
+	SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p3, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, {}],
+	FCTopology[
+	fctopology2, {SFAD[{{p3, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}],
+	SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1, 0}, {0, 1}, 1}]}, {p1, p2,
+	p3}, {Q}, {}, {}]}, {FCTopology[
+	fctopology5, {SFAD[{{p1, 0}, {0, 1}, 1}],
+	SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p3, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, {}],
+	FCTopology[
+	fctopology5, {SFAD[{{p3, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p3, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}],
+	SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p2, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, {}]}}}"},
+{"fcstFCLoopFindIntegralMappings-ID4",
+"FCLoopFindIntegralMappings[{GLI[prop1LtopoB11,{0,1}],GLI[\
+prop1LtopoB11,{1,1}],GLI[prop1LtopoC11,{0,1}],GLI[prop1LtopoC11,{1,1}]\
+},{FCTopology[prop1LtopoB11, \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - q1, \
+D], 0, m1^2, {1, 1}]]}, {p1}, {q1}, {}],
+FCTopology[prop1LtopoC11, \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, m2^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - q1, \
+D], 0, m2^2, {1, 1}]]}, {p1}, {q1}, {}]}]",
+"{{}, {GLI[prop1LtopoB11, {0, 1}], GLI[prop1LtopoB11, {1, 1}], \
+GLI[prop1LtopoC11, {0, 1}], GLI[prop1LtopoC11, {1, 1}]}}"},
+{"fcstFCLoopFindIntegralMappings-ID5",
+"FCLoopFindIntegralMappings[{GLI[topo1,{1,1}],GLI[topo1,{1,2}],GLI[\
+topo2,{1,1}]},{FCTopology[topo1,{SFAD[{p1,m^2}],SFAD[{p2,m^2}]},{p1,\
+p2},{},{}],\[IndentingNewLine]FCTopology[topo2,{SFAD[{p3,m^2}],SFAD[{\
+p4,m^2}]},{p3,p4},{},{}]}]",
+"{{GLI[topo2, {1, 1}] -> GLI[topo1, {1, 1}]}, {GLI[topo1, {1, 1}], \
+GLI[topo1, {1, 2}]}}"},
+{"fcstFCLoopFindIntegralMappings-ID6",
+"FCLoopFindIntegralMappings[{GLI[topo1,{1,1}],GLI[topo1,{1,2}],GLI[\
+topo2,{1,1}]},{FCTopology[topo1,{SFAD[{p1,m^2}],SFAD[{p2,m^2}]},{p1,\
+p2},{},{}],\[IndentingNewLine]FCTopology[topo2,{SFAD[{p1,m^2}],SFAD[{\
+p2,m^2}]},{p1,p2},{},{}]}]",
+"{{GLI[topo2, {1, 1}] -> GLI[topo1, {1, 1}]}, {GLI[topo1, {1, 1}], \
+GLI[topo1, {1, 2}]}}"},
+{"fcstFCLoopFindIntegralMappings-ID7",
+"FCLoopFindIntegralMappings[{GLI[topo1,{1,2}],GLI[topo1,{1,1}]},{\
+FCTopology[topo1,{SFAD[{p1,m^2}],SFAD[{p2,m^2}]},{p1,p2},{},{}],\
+\[IndentingNewLine]FCTopology[topo2,{SFAD[{p1,m^2}],SFAD[{p2,m^2}]},{\
+p1,p2},{},{}]},PreferredIntegrals->{GLI[topo2,{1,1}]}]",
+"{{GLI[topo1, {1, 1}] -> GLI[topo2, {1, 1}]}, {GLI[topo1, {1, 2}], \
+GLI[topo2, {1, 1}]}}"}
+});
