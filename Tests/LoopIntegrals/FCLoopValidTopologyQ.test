@@ -1,0 +1,41 @@
+
+
+(* :Title: FCLoopValidTopologyQ.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2021 Rolf Mertig
+	Copyright (C) 1997-2021 Frederik Orellana
+	Copyright (C) 2014-2021 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopValidTopologyQ	  	*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopValidTopologyQ =
+({
+{"fcstFCLoopValidTopologyQ-ID1",
+"Quiet[FCLoopValidTopologyQ[FCTopology[{FAD[p1],FAD[p2],FAD[p1-p2]}\
+,{p1,p2}]]]", "False"},
+{"fcstFCLoopValidTopologyQ-ID2",
+"Quiet[FCLoopValidTopologyQ[FCTopology[topo1,{FAD[p1],FAD[p2],FAD[\
+p1-p2]},{p1,p2}]]]", "False"},
+{"fcstFCLoopValidTopologyQ-ID3",
+"Quiet[FCLoopValidTopologyQ[FCTopology[topo1,{FAD[p1],FAD[p2],FAD[\
+p1-p2]},{p1,p2},{}]]]", "False"},
+{"fcstFCLoopValidTopologyQ-ID4",
+"Quiet[FCLoopValidTopologyQ[FCTopology[topo1,{FAD[p1],FAD[p2],FAD[\
+p1-p2]},{p1,p2},{},{}]]]", "False"},
+{"fcstFCLoopValidTopologyQ-ID5",
+"Quiet[FCLoopValidTopologyQ[FCTopology[topo1,{FAD[p1],FAD[p2],FAD[\
+p1-p2]},{p1,p2},{},{},{}]]]", "True"},
+{"fcstFCLoopValidTopologyQ-ID6",
+"Quiet[FCLoopValidTopologyQ[{FCTopology[topo1,{FAD[p1],FAD[p2],FAD[\
+p1-p2]},{p1,p2},{},{},{}],\[IndentingNewLine]FCTopology[topo2,{FAD[p3]\
+,FAD[p4],FAD[p3-p4]},{p3,p4},{},{},{}]}]]", "True"},
+{"fcstFCLoopValidTopologyQ-ID7",
+"Quiet[FCLoopValidTopologyQ[{FCTopology[topo1,{FAD[p1],FAD[p2],FAD[\
+p1-p2]},{p1,p2},{},{},{}],\[IndentingNewLine]FCTopology[topo2,{FAD[p3]\
+,FAD[p4],FAD[p3-p4]},{p3,p4},{},{}]}]]", "False"}
+});
