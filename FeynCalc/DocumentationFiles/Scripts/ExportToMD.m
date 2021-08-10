@@ -78,6 +78,8 @@ NotebookEvaluatingQ[nb_]:=
 nb = NotebookOpen[inputNB, WindowSize -> {1366, 800},
      Visible -> False, Magnification->1.5];
 Print["Evaluating the notebook ", inputNB];
+SetOptions[nb,CreateCellID->False];
+SetOptions[nb,PrivateNotebookOptions->{"FileOutlineCache"->False},"TrackCellChangeTimes"->False];
 time=AbsoluteTime[];
 SetSelectedNotebook[nb];
 
@@ -127,7 +129,36 @@ M2MD[style_, cell:_[BoxData @ FormBox[_, TraditionalForm], ___], OptionsPattern[
 with
 
 M2MD[style_, cell:_[BoxData @ FormBox[_, TraditionalForm], ___], OptionsPattern[]
-] := MDElement["LaTeXBlock", BoxesToTeXString @ cell ]/; FreeQ[cell,DynamicModuleBox|"\[SpanFromLeft]"]
+] := MDElement["LaTeXBlock", BoxesToTeXString @ cell ]/; FreeQ[cell,DynamicModuleBox|"\[SpanFromLeft]"|"MessageTemplate2"]
+
+and
+
+
+M2MD[style_, cell:_[_BoxData, ___], opt : OptionsPattern[]] :=
+  ToImageElement[res, opt]
+
+with 
+
+cellFixRule={
+TemplateBox[{s1__String, i1_Integer, i2_Integer, i3_Integer, 
+    i4_Integer, s2__String}, "MessageTemplate2"] /; ! 
+   MemberQ[{i1, i2, i3, i4}, 0] :> TemplateBox[{s1, 0, 0, 0, 0, s2}, "MessageTemplate2"]
+};
+
+M2MD[style_, cell:_[_BoxData, ___], opt : OptionsPattern[]] :=
+Block[{res},
+  res = cell/.cellFixRule;
+  Print["Sending this to ToImageElement"];
+  Print[""];
+  Print[res];
+  ToImageElement[res, opt]
+]
+
+
+
+
+
+
 
 also rename *.png to *.svg everywhere in the source
 *)
@@ -152,3 +183,6 @@ Print["Exporting the notebook to", outputMD];
 MDExport[outputMD, nb,"CellStyleRules"-> <|
   "Title"->{"Text",fixTitle}|>];
 Print["Export done."];
+
+
+
