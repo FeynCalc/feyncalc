@@ -16,8 +16,9 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopFindSubtopologies::usage =
-"FCLoopFindSubtopologies[topo, {p1, p2, ...}] finds all nonvanishing subtopologies \
-of the topology topo that depends on the loop momenta p1, p2, ....";
+"FCLoopFindSubtopologies[topo] finds all nonvanishing subtopologies of the
+FCTopology topo.
+";
 
 FCLoopFindSubtopologies::failmsg =
 "Error! FCLoopFindSubtopologies has encountered a fatal problem and must abort the computation. \
@@ -36,11 +37,13 @@ Options[FCLoopFindSubtopologies] = {
 	FCVerbose 					-> False,
 	FinalSubstitutions			-> {},
 	MaxIterations				-> Infinity,
-	Names						-> "X"
+	Names						-> "X",
+	ToSFAD						-> True
 };
 
-FCLoopFindSubtopologies[topo_FCTopology, lmoms_List, OptionsPattern[]] :=
-	Block[{	pakPoly, pakForm, res, time, x, tmp, counter=0, optNames},
+FCLoopFindSubtopologies[topoRaw_FCTopology, OptionsPattern[]] :=
+	Block[{	topo, pakPoly, pakForm, res, time, x, tmp, counter=0, optNames,
+			optFinalSubstitutions},
 
 		If[	OptionValue[FCVerbose] === False,
 			fclfsVerbose = $VeryVerbose,
@@ -48,15 +51,25 @@ FCLoopFindSubtopologies[topo_FCTopology, lmoms_List, OptionsPattern[]] :=
 			fclfsVerbose = OptionValue[FCVerbose]];
 		];
 
-		optNames = OptionValue[Names];
+		optNames 				= OptionValue[Names];
+		optFinalSubstitutions	= OptionValue[FinalSubstitutions];
 
 		FCPrint[1, "FCLoopFindSubtopologies: Entering.", FCDoControl -> fclfsVerbose];
 		FCPrint[3, "FCLoopFindSubtopologies: Entering with: ", topo, FCDoControl -> fclfsVerbose];
 
+		If[ !OptionValue[FCI],
+			{topo, optFinalSubstitutions} = {FCI[topoRaw], optFinalSubstitutions}
+		];
+
+		If[ OptionValue[ToSFAD] && !FreeQ[topo,PropagatorDenominator],
+			topo = ToSFAD[topo];
+		];
 
 		time=AbsoluteTime[];
 		FCPrint[1, "FCLoopFindSubtopologies: Calling FCLoopToPakForm.", FCDoControl -> fclfsVerbose];
-		pakForm = FCLoopToPakForm[topo, lmoms, Names -> x, CharacteristicPolynomial -> Function[{U, F}, U*F], FCLoopPakOrder -> False];
+		pakForm = FCLoopToPakForm[topo, Names -> x, CharacteristicPolynomial -> Function[{U, F}, U*F],
+			FCLoopPakOrder -> False, FinalSubstitutions -> optFinalSubstitutions, FCI-> OptionValue[FCI]];
+
 		FCPrint[1, "FCLoopFindSubtopologies: FCLoopToPakForm done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclfsVerbose];
 		FCPrint[3, "FCLoopFindSubtopologies: After FCLoopToPakForm: ", pakForm[[1]], FCDoControl->fclfsVerbose];
 
@@ -90,6 +103,10 @@ FCLoopFindSubtopologies[topo_FCTopology, lmoms_List, OptionsPattern[]] :=
 			Message[FCLoopFindTopologies::failmsg,"Unknown value of the Names option."];
 			Abort[]
 		];
+
+		res = Map[FCTopology[#[[1]],#[[2]],topo[[3]],Select[topo[[4]],Function[xx,!FreeQ[#[[2]],xx]]],Sequence@@topo[[5;;]]]&,res];
+
+		res = Join[{topo},res];
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
