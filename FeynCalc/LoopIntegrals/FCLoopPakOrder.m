@@ -68,6 +68,11 @@ FCLoopPakOrder[poly_, fparsRaw_, OptionsPattern[]] :=
 		coeffsList = GroebnerBasis`DistributedTermsList[poly, fpars, MonomialOrder -> OptionValue[MonomialOrder]];
 		FCPrint[1, "FCLoopPakOrder: Done calculating coefficient lists, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcpoVerbose];
 
+		If[	coeffsList === {{},{}},
+			Message[FCLoopPakOrder::failmsg, "The characteristic polynomial is zero."];
+			Abort[]
+		];
+
 		If[	coeffsList[[2]] =!= fpars,
 			Print[coeffsList[[2]]];
 			Print[fpars];
