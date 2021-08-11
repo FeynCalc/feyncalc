@@ -54,8 +54,15 @@ k1-k2-k4},{k2-k3+2 k4,mc},-k1+k4],{k1,k2,k3,k4}]", "True"},
 {"fcstFCLoopScalelessQ-ID14",
 "FCLoopScalelessQ[FAD[{k2,0,2},{k1-q},{k1-k3,mc},{k2-k3,mc}],{k1,\
 k2,k3}]", "False"},
-{"fcstFCLoopScalelessQ-ID15","FCLoopScalelessQ[FCTopology[T1,
-FAD[p1, p2, p1 - Q, p1 + p2 + Q, p1 + p2]], {p1, p2}]","False"},
-{"fcstFCLoopScalelessQ-ID16","FCLoopScalelessQ[FCTopology[T1, FAD[p1,
-p1 - Q, p1 + p2]], {p1, p2}]","True"}
+{"fcstFCLoopScalelessQ-ID15","FCLoopScalelessQ[
+FCTopology[
+T1, {FAD[p1], FAD[p1 - Q], FAD[p1 + p2]}, {p1, p2}, {Q}, {}, {}]]","True"},
+{"fcstFCLoopScalelessQ-ID16",
+"FCLoopScalelessQ[SFAD[{{0,2 p . q},0},p],{p}]", "True"},
+{"fcstFCLoopScalelessQ-ID17","FCLoopScalelessQ[FCTopology[prop2Lv1,{SFAD[{p1,m1^2}],
+SFAD[{p2,m2^2}],SFAD[p1-q],SFAD[p2-q],SFAD[{p1-p2,m3^2}]},{p1,p2},{Q},{},{}]]","False"},
+{"fcstFCLoopScalelessQ-ID18","FCLoopScalelessQ[{FCTopology[prop2Lv1,{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],SFAD[p1-q],SFAD[p2-q],SFAD[{p1-p2,m3^2}]},{p1,p2},{Q},{},{}],
+FCTopology[prop2Lv2,{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],SFAD[{p1-q,M^2}],SFAD[{p2-q,M^2}],SFAD[p1-p2]},{p1,p2},{Q},{},{}]}]","{False,False}"},
+{"fcstFCLoopScalelessQ-ID19","FCLoopScalelessQ[{GLI[prop2Lv1,{0,0,1,1,0}]},{FCTopology[prop2Lv1,
+{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],SFAD[p1-q],SFAD[p2-q],SFAD[{p1-p2,m3^2}]},{p1,p2},{Q},{},{}]}]","{True}"}
 });

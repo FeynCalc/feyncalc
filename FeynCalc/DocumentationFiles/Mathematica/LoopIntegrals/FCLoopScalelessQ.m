@@ -1,8 +1,5 @@
 (* ::Package:: *)
 
- 
-
-
 (* ::Section:: *)
 (*FCLoopScalelessQ*)
 
@@ -12,7 +9,7 @@
 
 
 (* ::Text:: *)
-(*Cf. arXiv:1011.4863 and the PhD thesis of Jens Hoff (10.5445/IR/1000047447) for the description of the underlying algorithm.*)
+(*The function uses the of Alexey Pak [arXiv:1111.0868](https://arxiv.org/abs/1111.0868). Cf. also the PhD thesis of Jens Hoff [10.5445/IR/1000047447](https://doi.org/10.5445/IR/1000047447) for the detailed description of a possible implementation.*)
 
 
 (* ::Subsection:: *)
@@ -20,17 +17,29 @@
 
 
 (* ::Text:: *)
-(*[FCTopology](FCTopology), [GLI](GLI), [FCLoopToPakForm](FCLoopToPakForm), [FCLoopPakOrder](FCLoopPakOrder).*)
+(*[FCTopology](FCTopology), [GLI](GLI), [FCLoopToPakForm](FCLoopToPakForm), [FCLoopPakOrder](FCLoopPakOrder), [FCLoopScalelessQ](FCLoopScalelessQ).*)
 
 
 (* ::Subsection:: *)
 (*Examples*)
 
 
-FCClearScalarProducts[];
-SPD[Q]=0;
-FCLoopScalelessQ[FAD[p1,p2,Q-p1-p2,Q-p1,Q-p2],{p1,p2}]
+(* ::Text:: *)
+(*A scaleless 2-loop tadpole*)
 
 
-FCClearScalarProducts[];
-FCLoopScalelessQ[FAD[{k2,mg},{k3,mc},{k1-q},{k2-q,mb},{k1-k2},{k2-k3,mc}],{k1,k2,k3}]
+FCLoopScalelessQ[FAD[p1,p2,p1-p2],{p1,p2}]
+
+
+(* ::Text:: *)
+(*A 1-loop massless eikonal integral.*)
+
+
+FCLoopScalelessQ[SFAD[{{0,2 p . q},0},p],{p}]
+
+
+(* ::Text:: *)
+(*A 1-loop massive eikonal integral.*)
+
+
+FCLoopScalelessQ[SFAD[{{0,2 p . q},0},p],{p}]

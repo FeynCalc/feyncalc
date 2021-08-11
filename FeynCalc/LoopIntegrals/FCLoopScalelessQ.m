@@ -16,13 +16,16 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopScalelessQ::usage =
-"FCLoopScalelessQ[int, {p1, p2, ...}] checks whether the loop integral int \
-depending on the loop momenta p1, p2, ... is scaleless. Only integrals that \
-admit a Feynman parametrization with proper U and F polynomials are supported. \
+"FCLoopScalelessQ[int, {p1, p2, ...}] checks whether the loop integral int
+depending on the loop momenta p1, p2, ... is scaleless. Only integrals that
+admit a Feynman parametrization with proper $U$ and $F$ polynomials are
+supported.
 
-Cf. arXiv:1011.4863 and the PhD thesis of Jens Hoff \
-(Hoff:2015kub, 10.5445/IR/1000047447) for the description of the underlying \
-algorithm.";
+The function uses the of Alexey Pak
+[arXiv:1111.0868](https://arxiv.org/abs/1111.0868). Cf. also the PhD thesis of
+Jens Hoff [10.5445/IR/1000047447](https://doi.org/10.5445/IR/1000047447) for
+the detailed description of a possible implementation.
+";
 
 FCLoopScalelessQ::failmsg =
 "Error! FCLoopScalelessQ has encountered a fatal problem and must abort the computation. \
@@ -44,9 +47,17 @@ Options[FCLoopScalelessQ] = {
 	TimeConstrained 	-> 3
 };
 
-FCLoopScalelessQ[expr_, lmoms_List, OptionsPattern[]] :=
+
+FCLoopScalelessQ[expr: {__FCTopology}, opts:OptionsPattern[]] :=
+	FCLoopScalelessQ[expr, {FCGV["dummy"]}, opts];
+
+FCLoopScalelessQ[expr_FCTopology, opts:OptionsPattern[]] :=
+	FCLoopScalelessQ[expr, {FCGV["dummy"]}, opts];
+
+FCLoopScalelessQ[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 	Block[{	uPoly, fPoly, pows, mat, Q, J, tensorPart,
-			tensorRank, res, time, x},
+			tensorRank, res, time, x, lmoms, optFinalSubstitutions,
+			ex, notList = False, tmp},
 
 		If[	OptionValue[FCVerbose] === False,
 			fclsVerbose = $VeryVerbose,
@@ -54,17 +65,51 @@ FCLoopScalelessQ[expr_, lmoms_List, OptionsPattern[]] :=
 			fclsVerbose = OptionValue[FCVerbose]];
 		];
 
+		optFinalSubstitutions = OptionValue[FinalSubstitutions];
+
 		FCPrint[1, "FCLoopScalelessQ: Entering.", FCDoControl -> fclsVerbose];
 		FCPrint[3, "FCLoopScalelessQ: Entering with: ", expr, FCDoControl -> fclsVerbose];
+
+		If[	OptionValue[FCI],
+			{ex, lmoms} = {expr,lmomsRaw},
+			{ex, lmoms, optFinalSubstitutions} = FCI[{expr, lmomsRaw, optFinalSubstitutions}]
+		];
 
 		time=AbsoluteTime[];
 		FCPrint[1, "FCLoopScalelessQ: Calling FCFeynmanPrepare.", FCDoControl -> fclsVerbose];
 
-		{uPoly, fPoly, pows, mat, Q, J, tensorPart, tensorRank} =
-			FCFeynmanPrepare[expr, lmoms, FCI -> OptionValue[FCI], Names -> x, Check->False,
+		If[	lmomsRaw==={FCGV["dummy"]},
+			lmoms=Sequence[]
+		];
+
+		Which[
+			(*Single integral *)
+			MatchQ[ex,_. _FeynAmpDenominator] || MatchQ[ex, _GLI | _FCTopology],
+				notList = True;
+				tmp =	FCFeynmanPrepare[ex, lmoms, FCI -> True, Names -> x, Check->False,
 				Collecting -> OptionValue[Collecting], TimeConstrained -> OptionValue[TimeConstrained],
-				Factoring -> OptionValue[Factoring], FinalSubstitutions-> OptionValue[FinalSubstitutions]];
+				Factoring -> OptionValue[Factoring], FinalSubstitutions-> optFinalSubstitutions];
+				tmp = {tmp};
+				ex = {ex},
+			(*List of integrals *)
+			MatchQ[ex, {__GLI} | {__FCTopology}],
+				tmp = FCFeynmanPrepare[ex, lmoms, FCI -> True, Names -> x, Check->False,
+				Collecting -> OptionValue[Collecting], TimeConstrained -> OptionValue[TimeConstrained],
+				Factoring -> OptionValue[Factoring], FinalSubstitutions-> optFinalSubstitutions],
+			(*List of integrals *)
+			MatchQ[ex, {_. _FeynAmpDenominator ..}],
+				tmp =	FCFeynmanPrepare[#, lmoms, FCI -> True, Names -> x, Check->False,
+				Collecting -> OptionValue[Collecting], TimeConstrained -> OptionValue[TimeConstrained],
+				Factoring -> OptionValue[Factoring], FinalSubstitutions-> optFinalSubstitutions]&/@ex,
+			True,
+				Message[FCLoopToPakForm::failmsg,"Failed to recognize the form of the input expression."];
+				Abort[]
+		];
+
 		FCPrint[1, "FCLoopScalelessQ: FCFeynmanPrepare done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclsVerbose];
+
+		{uPoly, fPoly} = Transpose[tmp][[1;;2]];
+
 
 		FCPrint[3, "FCLoopScalelessQ: U: ", uPoly, FCDoControl -> fclsVerbose];
 		FCPrint[3, "FCLoopScalelessQ: F: ", fPoly, FCDoControl -> fclsVerbose];
@@ -72,8 +117,12 @@ FCLoopScalelessQ[expr_, lmoms_List, OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1, "FCLoopScalelessQ: Calling FCPakScalelessQ.", FCDoControl -> fclsVerbose];
 		(*TODO Caching*)
-		res = FCLoopPakScalelessQ[uPoly*fPoly,x];
+		res = MapThread[FCLoopPakScalelessQ[#1*#2,x]&,{uPoly, fPoly}];
 		FCPrint[1, "FCLoopScalelessQ: FCPakScalelessQ done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclsVerbose];
+
+		If[	notList,
+			res = First[res]
+		];
 
 		FCPrint[3, "FCLoopScalelessQ: Leaving.", FCDoControl -> fclsVerbose];
 		FCPrint[3, "FCLoopScalelessQ: Leaving with: ", res, FCDoControl -> fclsVerbose];
