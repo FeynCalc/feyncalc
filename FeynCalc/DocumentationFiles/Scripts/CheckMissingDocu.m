@@ -25,9 +25,9 @@ Print["Documentation pages for nonexisting FeynCalc symbols:"];
 Print[StringRiffle[Complement[docFiles,fcSymbols],"\n"]];
 
 
-in=Import[FileNameJoin[{$FeynCalcDirectory,"DocumentationFiles","Markdown","FeynCalc.md"}],"Text"];
+in=Import[FileNameJoin[{$FeynCalcDirectory,"DocumentationFiles","Markdown","Extra","FeynCalc.md"}],"Text"];
 str=StringCases[in,"- "~~Shortest[x__]~~" - "/;!StringFreeQ[x,"["]:>x];
-overviewSymbols=Union[Flatten[StringCases[#,"["~~Shortest[x__]~~"]":>x]&/@StringSplit[str,","]]];
+overviewSymbols=StringReplace[Union[Flatten[StringCases[#,"["~~Shortest[x__]~~"]":>x]&/@StringSplit[str,","]]],"\\"->""];
 
 
 Print[""]; Print[""];
