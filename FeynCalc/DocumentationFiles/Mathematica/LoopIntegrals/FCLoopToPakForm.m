@@ -9,7 +9,7 @@
 
 
 (* ::Text:: *)
-(*The current implementation is based on the `FindEquivalents` function from FIRE 6 [arXiv:1901.07808](https://arxiv.org/abs/1901.07808). `FCLoopToPakForm` is a backend functions used in `FCLoopPakScalelessQ`, `FCLoopFindIntegralMappings`, `FCLoopFindTopologyMappings` etc.*)
+(*The current implementation is based on the `FindEquivalents` function from FIRE 6 [arXiv:1901.07808](https://arxiv.org/abs/1901.07808). `FCLoopToPakForm` is a backend function used in `FCLoopPakScalelessQ`, `FCLoopFindIntegralMappings`, `FCLoopFindTopologyMappings` etc.*)
 
 
 (* ::Text:: *)

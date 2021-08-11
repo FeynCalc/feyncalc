@@ -1,6 +1,6 @@
 `FCLoopToPakForm[int, {p1, p2, ...}]` determines a canonical $UF$-based representation for the scalar multi-loop integral `int` that depend on the loop momenta `p1, p2, ...` using the algorithm of Alexey Pak [arXiv:1111.0868](https://arxiv.org/abs/1111.0868).
 
-The current implementation is based on the `FindEquivalents` function from FIRE 6 [arXiv:1901.07808](https://arxiv.org/abs/1901.07808). `FCLoopToPakForm` is a backend functions used in `FCLoopPakScalelessQ`, `FCLoopFindIntegralMappings`, `FCLoopFindTopologyMappings` etc.
+The current implementation is based on the `FindEquivalents` function from FIRE 6 [arXiv:1901.07808](https://arxiv.org/abs/1901.07808). `FCLoopToPakForm` is a backend function used in `FCLoopPakScalelessQ`, `FCLoopFindIntegralMappings`, `FCLoopFindTopologyMappings` etc.
 
 It is also possible to invoke the function as `FCLoopToPakForm[GLI[...], FCTopology[...]]` or FCLoopToPakForm[FCTopology[...]]. Notice that in this case the value of the option `FinalSubstitutions` is ignored, as replacement rules will be extracted directly from the definition of the topology.
 

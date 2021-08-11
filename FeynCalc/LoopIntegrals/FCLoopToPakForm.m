@@ -24,7 +24,7 @@ momenta p1, p2, ... using the algorithm of Alexey Pak
 
 The current implementation is based on the FindEquivalents function from FIRE
 6 [arXiv:1901.07808](https://arxiv.org/abs/1901.07808). FCLoopToPakForm is a
-backend functions used in FCLoopPakScalelessQ, FCLoopFindIntegralMappings,
+backend function used in FCLoopPakScalelessQ, FCLoopFindIntegralMappings,
 FCLoopFindTopologyMappings etc.
 
 It is also possible to invoke the function as FCLoopToPakForm[GLI[...],
@@ -186,7 +186,9 @@ pakProcess[{uPolyRaw_, fPolyRaw_, powsRaw_List, matRaw_List, QRaw_List, JRaw_, t
 
 			pPoly = optCharacteristicPolynomial[uPoly,fPoly];
 
-			If[	optFCLoopPakOrder,
+			FCPrint[2, "FCLoopToPakForm: pakProcess: pPoly: ", pPoly, FCDoControl -> fctpfVerbose];
+
+			If[	optFCLoopPakOrder && (pPoly=!=0),
 				pVars = First[Transpose[pows]];
 
 				time=AbsoluteTime[];
