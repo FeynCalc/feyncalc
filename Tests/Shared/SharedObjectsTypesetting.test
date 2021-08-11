@@ -1775,6 +1775,110 @@ TraditionalForm], \"^\"], TraditionalForm], \
 FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
 FormBox[OverscriptBox[FormBox[\"b\", TraditionalForm], \"^\"], \
 TraditionalForm]}], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID291.1",
+"MakeBoxes[SP[a, a], TraditionalForm]",
+"FormBox[SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", \
+TraditionalForm], \"_\"], TraditionalForm], 2], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID292.1",
+"MakeBoxes[SP[a, a]^2, TraditionalForm]",
+"SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", \
+TraditionalForm], \"_\"], TraditionalForm], 4]"},
+{"fcstSharedObjectsTypesetting-ID293.1",
+"MakeBoxes[SP[a, a]^3, TraditionalForm]",
+"SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", \
+TraditionalForm], \"_\"], TraditionalForm], 6]"},
+{"fcstSharedObjectsTypesetting-ID294.1",
+"MakeBoxes[SP[a, a]^4, TraditionalForm]",
+"SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", \
+TraditionalForm], \"_\"], TraditionalForm], 8]"},
+{"fcstSharedObjectsTypesetting-ID295.1",
+"MakeBoxes[SP[a, a]^(-1), TraditionalForm]",
+"FractionBox[\"1\", \
+FormBox[SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", \
+TraditionalForm], \"_\"], TraditionalForm], 2], TraditionalForm]]"},
+{"fcstSharedObjectsTypesetting-ID296.1",
+"MakeBoxes[SP[a, a]^(-2), TraditionalForm]",
+"FractionBox[\"1\", \
+SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", TraditionalForm], \
+\"_\"], TraditionalForm], 4]]"},
+{"fcstSharedObjectsTypesetting-ID297.1",
+"MakeBoxes[SP[a, a]^(-3), TraditionalForm]",
+"FractionBox[\"1\", \
+SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", TraditionalForm], \
+\"_\"], TraditionalForm], 6]]"},
+{"fcstSharedObjectsTypesetting-ID298.1",
+"MakeBoxes[SP[a, a]^(-4), TraditionalForm]",
+"FractionBox[\"1\", \
+SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", TraditionalForm], \
+\"_\"], TraditionalForm], 8]]"},
+{"fcstSharedObjectsTypesetting-ID299.1",
+"MakeBoxes[SPD[a, a], TraditionalForm]",
+"FormBox[SuperscriptBox[FormBox[FormBox[\"a\", TraditionalForm], \
+TraditionalForm], 2], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID300.1",
+"MakeBoxes[SPD[a, a]^2, TraditionalForm]",
+"SuperscriptBox[FormBox[FormBox[\"a\", TraditionalForm], \
+TraditionalForm], 4]"},
+{"fcstSharedObjectsTypesetting-ID301.1",
+"MakeBoxes[SPD[a, a]^3, TraditionalForm]",
+"SuperscriptBox[FormBox[FormBox[\"a\", TraditionalForm], \
+TraditionalForm], 6]"},
+{"fcstSharedObjectsTypesetting-ID302.1",
+"MakeBoxes[SPD[a, a]^4, TraditionalForm]",
+"SuperscriptBox[FormBox[FormBox[\"a\", TraditionalForm], \
+TraditionalForm], 8]"},
+{"fcstSharedObjectsTypesetting-ID303.1",
+"MakeBoxes[SPD[a, a]^(-1), TraditionalForm]",
+"FractionBox[\"1\", FormBox[SuperscriptBox[FormBox[FormBox[\"a\", \
+TraditionalForm], TraditionalForm], 2], TraditionalForm]]"},
+{"fcstSharedObjectsTypesetting-ID304.1",
+"MakeBoxes[SPD[a, a]^(-2), TraditionalForm]",
+"FractionBox[\"1\", SuperscriptBox[FormBox[FormBox[\"a\", \
+TraditionalForm], TraditionalForm], 4]]"},
+{"fcstSharedObjectsTypesetting-ID305.1",
+"MakeBoxes[SPD[a, a]^(-3), TraditionalForm]",
+"FractionBox[\"1\", SuperscriptBox[FormBox[FormBox[\"a\", \
+TraditionalForm], TraditionalForm], 6]]"},
+{"fcstSharedObjectsTypesetting-ID306.1",
+"MakeBoxes[SPD[a, a]^(-4), TraditionalForm]",
+"FractionBox[\"1\", SuperscriptBox[FormBox[FormBox[\"a\", \
+TraditionalForm], TraditionalForm], 8]]"},
+{"fcstSharedObjectsTypesetting-ID307.1",
+"MakeBoxes[SPE[a, a], TraditionalForm]",
+"FormBox[SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", \
+TraditionalForm], \"^\"], TraditionalForm], 2], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID308.1",
+"MakeBoxes[SPE[a, a]^2, TraditionalForm]",
+"SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", \
+TraditionalForm], \"^\"], TraditionalForm], 4]"},
+{"fcstSharedObjectsTypesetting-ID309.1",
+"MakeBoxes[SPE[a, a]^3, TraditionalForm]",
+"SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", \
+TraditionalForm], \"^\"], TraditionalForm], 6]"},
+{"fcstSharedObjectsTypesetting-ID310.1",
+"MakeBoxes[SPE[a, a]^4, TraditionalForm]",
+"SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", \
+TraditionalForm], \"^\"], TraditionalForm], 8]"},
+{"fcstSharedObjectsTypesetting-ID311.1",
+"MakeBoxes[SPE[a, a]^(-1), TraditionalForm]",
+"FractionBox[\"1\", \
+FormBox[SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", \
+TraditionalForm], \"^\"], TraditionalForm], 2], TraditionalForm]]"},
+{"fcstSharedObjectsTypesetting-ID312.1",
+"MakeBoxes[SPE[a, a]^(-2), TraditionalForm]",
+"FractionBox[\"1\", \
+SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", TraditionalForm], \
+\"^\"], TraditionalForm], 4]]"},
+{"fcstSharedObjectsTypesetting-ID313.1",
+"MakeBoxes[SPE[a, a]^(-3), TraditionalForm]",
+"FractionBox[\"1\", \
+SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", TraditionalForm], \
+\"^\"], TraditionalForm], 6]]"},
+{"fcstSharedObjectsTypesetting-ID314.1",
+"MakeBoxes[SPE[a, a]^(-4), TraditionalForm]",
+"FractionBox[\"1\", \
+SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", TraditionalForm], \
+\"^\"], TraditionalForm], 8]]"},
 {"fcstSharedObjectsTypesetting-ID291",
 "MakeBoxes[Spinor[Momentum[p], 0, 1], TraditionalForm]",
 "RowBox[{FormBox[\"\\\"\[CurlyPhi]\\\"\", TraditionalForm], \

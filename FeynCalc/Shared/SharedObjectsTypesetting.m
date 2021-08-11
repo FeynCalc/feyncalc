@@ -1662,6 +1662,25 @@ SPE /:
 	MakeBoxes[SPE[a_, b_], TraditionalForm]:=
 		ToBoxes[Pair[Momentum[a,D-4],Momentum[b,D-4]], TraditionalForm];
 
+
+MakeBoxes[Power[SPD[a_, a_],n_Integer?Positive], TraditionalForm] :=
+	If[ Head[a]===Plus,
+		RowBox[{SuperscriptBox[TBox["(",Momentum[a, D],")"],2 n]}],
+		SuperscriptBox[TBox[Momentum[a,D]],2 n]
+	];
+
+MakeBoxes[Power[SP[a_, a_],n_Integer?Positive], TraditionalForm] :=
+	If[ Head[a]===Plus,
+		RowBox[{SuperscriptBox[TBox["(",Momentum[a],")"],2 n]}],
+		SuperscriptBox[TBox[Momentum[a]],2 n]
+	];
+
+MakeBoxes[Power[SPE[a_, a_],n_Integer?Positive], TraditionalForm] :=
+	If[ Head[a]===Plus,
+		RowBox[{SuperscriptBox[TBox["(",Momentum[a,D-4],")"],2 n]}],
+		SuperscriptBox[TBox[Momentum[a,D-4]],2 n]
+	];
+
 (* ------------------------------------------------------------------------ *)
 
 Spinor /:
