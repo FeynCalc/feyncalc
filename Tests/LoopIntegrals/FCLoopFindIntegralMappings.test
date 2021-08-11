@@ -158,33 +158,33 @@ prop1LtopoB11,{1,1}],GLI[prop1LtopoC11,{0,1}],GLI[prop1LtopoC11,{1,1}]\
 {FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
 0, m1^2, {1, 1}]], \
 FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - q1, \
-D], 0, m1^2, {1, 1}]]}, {p1}, {q1}, {}],
+D], 0, m1^2, {1, 1}]]}, {p1}, {q1}, {}, {}],
 FCTopology[prop1LtopoC11, \
 {FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
 0, m2^2, {1, 1}]], \
 FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - q1, \
-D], 0, m2^2, {1, 1}]]}, {p1}, {q1}, {}]}]",
+D], 0, m2^2, {1, 1}]]}, {p1}, {q1}, {}, {}]}]",
 "{{}, {GLI[prop1LtopoB11, {0, 1}], GLI[prop1LtopoB11, {1, 1}], \
 GLI[prop1LtopoC11, {0, 1}], GLI[prop1LtopoC11, {1, 1}]}}"},
 {"fcstFCLoopFindIntegralMappings-ID5",
 "FCLoopFindIntegralMappings[{GLI[topo1,{1,1}],GLI[topo1,{1,2}],GLI[\
 topo2,{1,1}]},{FCTopology[topo1,{SFAD[{p1,m^2}],SFAD[{p2,m^2}]},{p1,\
-p2},{},{}],\[IndentingNewLine]FCTopology[topo2,{SFAD[{p3,m^2}],SFAD[{\
-p4,m^2}]},{p3,p4},{},{}]}]",
+p2},{},{}, {}],FCTopology[topo2,{SFAD[{p3,m^2}],SFAD[{\
+p4,m^2}]},{p3,p4},{},{}, {}]}]",
 "{{GLI[topo2, {1, 1}] -> GLI[topo1, {1, 1}]}, {GLI[topo1, {1, 1}], \
 GLI[topo1, {1, 2}]}}"},
 {"fcstFCLoopFindIntegralMappings-ID6",
 "FCLoopFindIntegralMappings[{GLI[topo1,{1,1}],GLI[topo1,{1,2}],GLI[\
 topo2,{1,1}]},{FCTopology[topo1,{SFAD[{p1,m^2}],SFAD[{p2,m^2}]},{p1,\
-p2},{},{}],\[IndentingNewLine]FCTopology[topo2,{SFAD[{p1,m^2}],SFAD[{\
-p2,m^2}]},{p1,p2},{},{}]}]",
+p2},{},{}, {}],FCTopology[topo2,{SFAD[{p1,m^2}],SFAD[{\
+p2,m^2}]},{p1,p2},{},{}, {}]}]",
 "{{GLI[topo2, {1, 1}] -> GLI[topo1, {1, 1}]}, {GLI[topo1, {1, 1}], \
 GLI[topo1, {1, 2}]}}"},
 {"fcstFCLoopFindIntegralMappings-ID7",
 "FCLoopFindIntegralMappings[{GLI[topo1,{1,2}],GLI[topo1,{1,1}]},{\
-FCTopology[topo1,{SFAD[{p1,m^2}],SFAD[{p2,m^2}]},{p1,p2},{},{}],\
-\[IndentingNewLine]FCTopology[topo2,{SFAD[{p1,m^2}],SFAD[{p2,m^2}]},{\
-p1,p2},{},{}]},PreferredIntegrals->{GLI[topo2,{1,1}]}]",
+FCTopology[topo1,{SFAD[{p1,m^2}],SFAD[{p2,m^2}]},{p1,p2},{},{}, {}],\
+FCTopology[topo2,{SFAD[{p1,m^2}],SFAD[{p2,m^2}]},{\
+p1,p2},{},{}, {}]},PreferredIntegrals->{GLI[topo2,{1,1}]}]",
 "{{GLI[topo1, {1, 1}] -> GLI[topo2, {1, 1}]}, {GLI[topo1, {1, 2}], \
 GLI[topo2, {1, 1}]}}"}
 });
