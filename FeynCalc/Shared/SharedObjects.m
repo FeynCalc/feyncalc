@@ -1728,14 +1728,19 @@ Pair[0,_] :=
 	0;
 
 Pair[n_Integer x_,y_] :=
-	n Pair[x, y];
+	n Pair[x, y]/; !MemberQ[{LorentzIndex,ExplicitLorentzIndex},x]
+
+Pair[n_Complex x_,y_] :=
+	n Pair[x, y]/; !MemberQ[{LorentzIndex,ExplicitLorentzIndex},x]
 
 Pair[n_ x_Momentum, y_] :=
 	n Pair[x, y];
 
-(*    Treatment of four vectors, scalar products and metric tensors,
+(*
+	Treatment of four vectors, scalar products and metric tensors,
 	where the different parts are in different dimensions is performed
-	according to the algebra of the BMHV scheme.    *)
+	according to the algebra of the BMHV scheme.
+*)
 (* ------------------------------------------------------------------------ *)
 
 (*    A momentum vector with 4 components and the Lorentz index in
@@ -2198,6 +2203,12 @@ CartesianPair[(h:LorentzIndex|ExplicitLorentzIndex|Momentum|TemporalMomentum)[__
 
 CartesianPair[n_ x_CartesianMomentum, y_] :=
 	n CartesianPair[x, y];
+
+CartesianPair[n_Integer x_,y_] :=
+	n CartesianPair[x, y]/; !MemberQ[{CartesianIndex,ExplicitLorentzIndex},x]
+
+CartesianPair[n_Complex x_,y_] :=
+	n CartesianPair[x, y]/; !MemberQ[{CartesianIndex,ExplicitLorentzIndex},x]
 
 CartesianPair[(a : CartesianIndex | CartesianMomentum)[x_, _Symbol-1], (b : CartesianIndex | CartesianMomentum)[y_]] :=
 	CartesianPair[a[x], b[y]];
