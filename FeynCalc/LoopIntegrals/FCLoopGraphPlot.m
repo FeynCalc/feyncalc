@@ -39,7 +39,14 @@ results we recommend using Mathematica 12.2 or newer.
 
 FCLoopGraphPlot::failmsg =
 "Error! FCLoopGraphPlot has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
+
+FCLoopGraphPlot::oldver =
+"Warning! FCLoopGraphPlot may create incorrect graphs (especially concerning styling \
+and labeling of edges) when used with Mathematica versions older than 12.2. This is not \
+a bug of FeynCalc but an issue of Mathematica. Please use Mathematica 12.2 or newer to \
+avoid such problems.";
+
 
 Begin["`Package`"]
 End[]
@@ -103,6 +110,7 @@ FCLoopGraphPlot[{edges_List, labels_List, pref_/;Head[pref]=!=List}, OptionsPatt
 				res = EdgeTaggedGraph[styledEdges, Sequence@@optGraph],
 				res = GraphPlot[styledEdges, Sequence@@optGraphPlot]
 			],
+			Message[FCLoopGraphPlot::oldver];
 			If[ $VersionNumber>=11.,
 				res = makeGraphMma11[styledEdges],
 				Message[FCLoopGraphPlot::failmsg, "This function requires  Mathematica 11.0 or newer."];
