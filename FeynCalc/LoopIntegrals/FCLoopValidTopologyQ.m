@@ -57,6 +57,13 @@ FCLoopValidTopologyQ[topoRaw_FCTopology]:=
 
 			topo = FCI[topoRaw];
 
+			(*
+			If [!FreeQ2[$ScalarProducts, lmoms],
+			Message[FCLoopCreateRulesToGLI::failmsg, "The loop momenta may not have scalar product rules attached to them."];
+			Abort[]
+			];
+			*)
+
 			If[	!MatchQ[topo,FCTopology[_,{__FeynAmpDenominator}, {__Symbol}, _List, _List, _List, ___]],
 				Message[FCLoopValidTopologyQ::inv, ToString[topo,InputForm] <> " is not a proper topology."];
 				Return[False]
