@@ -108,6 +108,10 @@ FCClearCache[fcFunc_] :=
 	With[{i = ToExpression["cacheFunc" <> ToString[fcFunc]]},DownValues[i] = {};];
 
 
+FCClearCache[All]:=
+	FCClearCache /@ whiteListNames;
+
+
 cachedToString[x_] :=
 	cachedToString[x] = ToString[x];
 
