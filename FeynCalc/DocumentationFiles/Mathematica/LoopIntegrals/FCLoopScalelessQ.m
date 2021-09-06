@@ -9,7 +9,7 @@
 
 
 (* ::Text:: *)
-(*The function uses the of Alexey Pak [arXiv:1111.0868](https://arxiv.org/abs/1111.0868). Cf. also the PhD thesis of Jens Hoff [10.5445/IR/1000047447](https://doi.org/10.5445/IR/1000047447) for the detailed description of a possible implementation.*)
+(*The function uses the algorithm of Alexey Pak [arXiv:1111.0868](https://arxiv.org/abs/1111.0868). Cf. also the PhD thesis of Jens Hoff [10.5445/IR/1000047447](https://doi.org/10.5445/IR/1000047447) for the detailed description of a possible implementation.*)
 
 
 (* ::Subsection:: *)
@@ -43,3 +43,14 @@ FCLoopScalelessQ[SFAD[{{0,2 p . q},0},p],{p}]
 
 
 FCLoopScalelessQ[SFAD[{{0,2 p . q},0},p],{p}]
+
+
+(* ::Text:: *)
+(*A scaleless topology*)
+
+
+FCTopology[topo,{SFAD[{{I p3,0},{0,1},1}],SFAD[{{I p1,0},{0,1},1}],SFAD[{{0,-2 p1 . q},{0,1},1}],SFAD[{{I p3+I q,0},{-mb^2,1},1}],SFAD[{{0,p1 . p3},{0,1},1}]},{p1,p3},{q},{},{}]
+FCLoopScalelessQ[%]
+
+
+
