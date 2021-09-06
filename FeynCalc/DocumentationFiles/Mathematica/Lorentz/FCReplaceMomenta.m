@@ -1,8 +1,5 @@
 (* ::Package:: *)
 
- 
-
-
 (* ::Section:: *)
 (*FCReplaceMomenta*)
 
@@ -38,3 +35,25 @@ FCClearScalarProducts[];
 SPD[q]=0;
 FCReplaceMomenta[FAD[q+p],{p->0}]
 FCClearScalarProducts[];
+
+
+(* ::Text:: *)
+(*`FCReplaceMomenta` equally works with `FCTopology` objects. There it is actually the preferred way to perform momentum shifts. Consider e.g.*)
+
+
+ex=FCTopology[topo,{SFAD[{{p1,0},{0,1},1}],SFAD[{{p2+p3,0},{0,1},1}],SFAD[{{p2-Q,0},{0,1},1}],SFAD[{{p1+p3-Q,0},{0,1},1}]},{p1,p2,p3},{Q},{},{}]
+
+
+(* ::Text:: *)
+(*where we want to shift `p_2` to `p_2 + Q`. Doing so naively messes us the topology by invalidating the list of loop momenta*)
+
+
+ex/.p2->p2+Q
+FCLoopValidTopologyQ[%]
+
+
+(* ::Text:: *)
+(*Using `FCReplaceMomenta` we immediately get we want*)
+
+
+FCReplaceMomenta[ex,{p2->p2+Q}]

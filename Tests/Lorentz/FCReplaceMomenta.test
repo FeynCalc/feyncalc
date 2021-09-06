@@ -78,15 +78,25 @@ FCE -> True]",
 1}] SFAD[{{p1, 0}, {0, 1}, 1}] SFAD[{{p2, 0}, {0, 1},
 1}] SFAD[{{p1 + p2, 0}, {0, 1}, 1}] SFAD[{{p3, 0}, {0, 1},
 1}] SFAD[{{p4, 0}, {0, 1}, 1}] SFAD[{{p1 + p4, 0}, {0, 1}, 1}]"},
-{"fcstFCReplaceMomenta-ID9",
+{"fcstFCReplaceMomenta-ID14",
 "FCReplaceMomenta[
 CartesianPair[CartesianMomentum[kphat],
 CartesianMomentum[p2]], {p2 -> 1/2 P - Q},
 ExpandScalarProduct -> True,FCE->True]",
 "1/2 CSP[kphat, P] - CSP[kphat, Q]"},
-{"fcstFCReplaceMomenta-ID10",
+{"fcstFCReplaceMomenta-ID15",
 "FCReplaceMomenta[LC[i1, i2][q1 + q2,
 p1 + p2 + p3], {q1 -> l1},EpsExpand -> False]",
 "Eps[LorentzIndex[i1], LorentzIndex[i2],
-Momentum[l1] + Momentum[q2],Momentum[p1 + p2 + p3]]"}
+Momentum[l1] + Momentum[q2],Momentum[p1 + p2 + p3]]"},
+{"fcstFCReplaceMomenta-ID16",
+"FCReplaceMomenta[
+FCTopology[
+topo, {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}],
+SFAD[{{p2 - Q, 0}, {0, 1}, 1}],
+SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2,
+p3}, {Q}, {}, {}], {p1 -> p1 + Q}, FCE -> True]",
+"FCTopology[topo, {SFAD[{{p1 + Q, 0}, {0, 1}, 1}],
+SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}],
+SFAD[{{p1 + p3, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, {}]"}
 });

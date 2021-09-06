@@ -1,5 +1,3 @@
-## FCReplaceMomenta
-
 `FCReplaceMomenta[exp, rule]`  replaces the given momentum according to the specified replacement rules. Various options can be used to customize the replacement procedure.
 
 ### See also
@@ -31,3 +29,32 @@ FCClearScalarProducts[];
 ```
 
 $$\frac{1}{0}$$
+
+`FCReplaceMomenta` equally works with `FCTopology` objects. There it is actually the preferred way to perform momentum shifts. Consider e.g.
+
+```mathematica
+ex = FCTopology[topo, {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, {}]
+```
+
+$$\text{FCTopology}\left(\text{topo},\left\{\frac{1}{(\text{p1}^2+i \eta )},\frac{1}{((\text{p2}+\text{p3})^2+i \eta )},\frac{1}{((\text{p2}-Q)^2+i \eta )},\frac{1}{((\text{p1}+\text{p3}-Q)^2+i \eta )}\right\},\{\text{p1},\text{p2},\text{p3}\},\{Q\},\{\},\{\}\right)$$
+
+where we want to shift `p_2` to `p_2 + Q`. Doing so naively messes us the topology by invalidating the list of loop momenta
+
+```mathematica
+ex /. p2 -> p2 + Q
+FCLoopValidTopologyQ[%]
+```
+
+$$\text{FCTopology}\left(\text{topo},\left\{\frac{1}{(\text{p1}^2+i \eta )},\frac{1}{((\text{p2}+\text{p3}+Q)^2+i \eta )},\frac{1}{(\text{p2}^2+i \eta )},\frac{1}{((\text{p1}+\text{p3}-Q)^2+i \eta )}\right\},\{\text{p1},\text{p2}+Q,\text{p3}\},\{Q\},\{\},\{\}\right)$$
+
+![0u1i6qpgdpbjs](img/0u1i6qpgdpbjs.svg)
+
+$$\text{False}$$
+
+Using `FCReplaceMomenta` we immediately get we want
+
+```mathematica
+FCReplaceMomenta[ex, {p2 -> p2 + Q}]
+```
+
+$$\text{FCTopology}\left(\text{topo},\left\{\frac{1}{(\text{p1}^2+i \eta )},\frac{1}{((\text{p2}+\text{p3}+Q)^2+i \eta )},\frac{1}{(\text{p2}^2+i \eta )},\frac{1}{((\text{p1}+\text{p3}-Q)^2+i \eta )}\right\},\{\text{p1},\text{p2},\text{p3}\},\{Q\},\{\},\{\}\right)$$
