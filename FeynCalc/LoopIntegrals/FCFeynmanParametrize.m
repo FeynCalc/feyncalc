@@ -17,18 +17,49 @@
 (* ------------------------------------------------------------------------ *)
 
 FCFeynmanParametrize::usage =
-"FCFeynmanParametrize[int,{q1,q2,...}] introduces Feynman parameters for the \
-scalar multi-loop integral int.  The function \
-returns {fpInt,pref,vars}, where fpInt is the integrand without the prefactor, \
-pref is the prefactor free of Feynman parameters and vars is the list of integration \
-variables. The overall Dirac delta in the integrand is omitted unless the option \
-DiracDelta is set to True.\n
-By default FCFeynmanParametrize uses normalization that is common in multiloop calculations. \
-If you want to have the standard 1/(2*Pi)^D normalization or yet another value, please set the \
-option FeynmanIntegralPrefactor accordingly.\n
-To calculate D-dimensional Euclidean integrals (as opposed to D-1 dimensional Cartesian \
-ones or D-dimensional Minkowski integrals) written in terms of FVD, SPD, FAD, SFAD etc., \
-you need to set the option \"Euclidean\" to True.";
+"FCFeynmanParametrize[int, {q1, q2, ...}] introduces Feynman parameters for the
+multi-loop integral int. The function returns {fpInt,pref,vars},
+where fpInt is the integrand in Feynman parameters, pref is the prefactor free
+of Feynman parameters and vars is the list of integration variables.
+
+If the chosen parametrization contains a Dirac delta multiplying the
+integrand, it will be omitted unless the option DiracDelta is set to True.
+
+By default FCFeynmanParametrize uses normalization that is common in
+multi-loop calculations, i.e. $\\frac{1}}{i \\pi^{D/2}}$ or
+$\\frac{1}}{\\pi^{D/2}}$ per loop for Minkowski or Euclidean/Cartesian integrals
+respectively. If you want to have the standard
+$\\frac{1}{(2 \\pi)^D}$ normalization or yet another value, please set the
+option FeynmanIntegralPrefactor accordingly. Following values are available
+
+- \"MultiLoop1\" - default value explained above
+- \"MultiLoop2\" - like the default value but with an extra $e^{\\gamma_E
+\\frac{4-D}{2}}$ per loop
+- \"Textbook\" - $\\frac{1}{(2 \\pi)^D}$ per loop
+- \"Unity\" - no extra prefactor multiplying the integral measure
+
+The calculation of $D$-dimensional Minkowski integrals and $D-1$-dimensional
+Cartesian integrals is straightforward. To calculate a $D$-dimensional
+Euclidean integral (i.e. an integral defined with the Euclidean
+metric signature $(1,1,1,1)$ you need to write it in terms of FVD, SPD, FAD,
+SFAD etc. and set the option \"Euclidean\" to True.
+
+The function can derive different representations of a loop integral. The
+choice of the representation is controlled by the option Method. Following
+representations are available
+
+- \"Feynman\" - the standard Feynman representation (default value). Both
+tensor integrals and integrals with scalar products in the numerator are
+supported.
+- \"Lee-Pomeransky\" - this representation was first introduced in
+[1308.6676](https://arxiv.org/abs/1308.6676) by Roman Lee and Andrei
+Pomeransky. Currently, only scalar integrals without numerators are supported.
+
+FCFeynmanParametrize can also be employed in conjunction with
+FCFeynmanParameterJoin, where one first joins suitable propagators using
+auxiliary Feynman
+parameters and then finally integrates out loop momenta.
+";
 
 FCFeynmanParametrize::failmsg =
 "Error! FCFeynmanParametrize has encountered a fatal problem and must abort the computation. \
@@ -77,7 +108,7 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 			denPowers, zeroPowerProps, numPowers, numVars, zeroDenVars,
 			nM,nLoops,fPow,pref, fpInt, fpPref, optFCReplaceD, vars, optVariavbles,
 			aux, ex, Q, J, tensorPart, tensorRank, optMethod, extraPref, optFeynmanIntegralPrefactor,
-			optEuclidean, inverseMeasure},
+			optEuclidean, inverseMeasure, optNames},
 
 		optFinalSubstitutions		= OptionValue[FinalSubstitutions];
 		optFCReplaceD				= OptionValue[FCReplaceD];
@@ -85,6 +116,7 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 		optMethod					= OptionValue[Method];
 		optFeynmanIntegralPrefactor = OptionValue[FeynmanIntegralPrefactor];
 		optEuclidean				= OptionValue["Euclidean"];
+		optNames					= OptionValue[Names];
 
 		If [OptionValue[FCVerbose]===False,
 			fcfpVerbose=$VeryVerbose,
@@ -111,6 +143,7 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 			Abort[]
 		];
 
+		(*extraPref is just a loop-unrelated prefactor multiplying the integral *)
 		If[	TrueQ[Head[ex]=!=List],
 			{extraPref, ex} = FCProductSplit[ex, Join[{lmoms},{FeynAmpDenominator, Pair, CartesianPair}]],
 			extraPref = 1
@@ -131,14 +164,14 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 		FCPrint[1,"FCFeynmanParametrize: Calling FCFeynmanPrepare.", FCDoControl->fcfpVerbose];
 
 		{uPoly, fPoly, pows, mat, Q, J, tensorPart, tensorRank} = FCFeynmanPrepare[ex,lmoms, FCI->True,
-			FinalSubstitutions->optFinalSubstitutions, Names->OptionValue[Names], Indexed->OptionValue[Indexed], Reduce->OptionValue[Reduce],
+			FinalSubstitutions->optFinalSubstitutions, Names->optNames, Indexed->OptionValue[Indexed], Reduce->OptionValue[Reduce],
 			"Euclidean" -> optEuclidean];
 
 
 		nLoops	= Length[lmoms];
 		powsT 	= Transpose[pows];
 		nM 		= Total[Last[powsT]];
-		fPow 	= nM - nLoops dim/2;
+
 
 		FCPrint[1,"FCFeynmanParametrize: U: ", uPoly, FCDoControl->fcfpVerbose];
 		FCPrint[1,"FCFeynmanParametrize: F: ", fPoly, FCDoControl->fcfpVerbose];
@@ -195,18 +228,117 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 			fpPref = 1
 		];
 
-		If[	TrueQ[tensorPart=!=1],
-			tensorPart = tensorPart /. FCGV["F"] -> fPoly;
-			pref = extraPref/(Times @@ (Gamma /@ propPowers)),
+		Switch[
+			optMethod,
+				"Feynman",
+					FCPrint[1,"FCFeynmanParametrize: Deriving Feynman parametrization.", FCDoControl->fcfpVerbose];
+					(* N_\nu - L D/2 *)
+					fPow = nM - nLoops dim/2;
+					If[	TrueQ[tensorPart=!=1],
+						(* Tensor integral *)
+						tensorPart = tensorPart /. FCGV["F"] -> fPoly;
+						(* [\prod_{j-1}^N \Gamma(\nu_j)]^{-1} *)
+						pref = extraPref/(Times @@ (Gamma /@ propPowers)),
 
-			pref = extraPref*Gamma[fPow]/(Times @@ (Gamma /@ propPowers))
+						(* Scalar integral *)
+						(* \Gamma(N_\nu - L D/2) [\prod_{j-1}^N \Gamma(\nu_j)]^{-1} *)
+						pref = extraPref*Gamma[fPow]/(Times @@ (Gamma /@ propPowers))
+					];
+					fpInt =  Power[uPoly,fPow - dim/2 - tensorRank]/Power[fPoly,fPow]*tensorPart;
+					If[	!isCartesian && !optEuclidean,
+						pref = pref*(-1)^nM;
+						inverseMeasure = (I Pi^(dim/2))^nLoops,
+						inverseMeasure = (Pi^(dim/2))^nLoops
+					];
+
+					FCPrint[1,"FCFeynmanParametrize: fpPref: ", fpPref, FCDoControl->fcfpVerbose];
+					FCPrint[1,"FCFeynmanParametrize: raw pref: ", pref, FCDoControl->fcfpVerbose];
+					FCPrint[1,"FCFeynmanParametrize: raw fpInt: ", fpInt, FCDoControl->fcfpVerbose];
+
+					If[	!MatchQ[propPowersHat,  {0..}],
+						FCPrint[1,"FCFeynmanParametrize: Handling scalar products in the numerator.", FCDoControl->fcfpVerbose];
+						numPowers = Position[propPowersHat, x_ /; x =!= 0, {1}, Heads -> False];
+
+						If[	!MatchQ[numPowers, {{_Integer} ...}],
+							Message[FCFeynmanParametrize::failmsg, "Identification of numerator powers failed."];
+							Abort[]
+						];
+
+						numVars 		= Extract[First[powsT], numPowers];
+						zeroDenVars 	= Extract[First[powsT], zeroPowerProps];
+						propPowersHat	= Extract[propPowersHat, numPowers];
+
+						FCPrint[1,"FCFeynmanParametrize: numVars: ", numVars, FCDoControl->fcfpVerbose];
+						FCPrint[1,"FCFeynmanParametrize: zeroDenVars: ", zeroDenVars, FCDoControl->fcfpVerbose];
+						FCPrint[1,"FCFeynmanParametrize: propPowersHat: ", propPowersHat, FCDoControl->fcfpVerbose];
+
+						If[	Length[numVars]=!=Length[propPowersHat],
+							Message[FCFeynmanParametrize::failmsg, "The number of x-variables doesn't match the number of propagators with negative powers."];
+							Abort[]
+						];
+
+
+						fpInt = Fold[( (-1)^#2[[2]] * D[#1, #2]) &, fpInt, Transpose[{numVars,propPowersHat}]];
+
+						FCPrint[3,"FCFeynmanParametrize: raw fpInt after the differentiation: ", fpInt, FCDoControl->fcfpVerbose];
+						{fpInt, uPoly,fPoly} =  {fpInt, uPoly,fPoly} /. Map[Rule[#,0]&,zeroDenVars];
+						FCPrint[3,"FCFeynmanParametrize: raw fpInt after setting x[i] to zero: ", fpInt, FCDoControl->fcfpVerbose]
+					];
+
+					fpInt = fpInt fpPref;
+					(* Check the scalefullness *)
+					If[	FCLoopPakScalelessQ[uPoly*fPoly,vars],
+						FCPrint[1,"FCFeynmanParametrize: According to FCLoopPakScalelessQ this integral is scaleless.", FCDoControl->fcfpVerbose];
+						fpInt = 0
+					];
+
+					(*
+						If there is only a single Feynman parameter, the integration over the Dirac delta
+						is trivial and can be done right away!
+					*)
+					If[	Length[vars]===1 && !OptionValue[DiracDelta],
+						fpInt = fpInt /. vars[[1]] -> 1;
+						vars = {}
+					];
+
+					If[	OptionValue[DiracDelta],
+						fpInt = fpInt*DiracDelta[1-Total[vars]]
+					];
+
+					,
+				"Lee-Pomeransky",
+					FCPrint[1,"FCFeynmanParametrize: Deriving Lee-Pomeransky parametrization.", FCDoControl->fcfpVerbose];
+					If[	TrueQ[tensorPart=!=1],
+						Message[FCFeynmanParametrize::failmsg, "Tensor integrals in the Lee-Pomeransky representation are currently not implemented."];
+						Abort[]
+					];
+					If[	!MatchQ[propPowersHat,  {0..}],
+						Message[FCFeynmanParametrize::failmsg, "Integrals with propagators raised to negative powers in the Lee-Pomeransky representation are currently not implemented."];
+						Abort[]
+					];
+
+					(* Scalar integral *)
+					(* \Gamma(D/2) [\Gamma((L+1) D/2 - N_\nu)\prod_{j-1}^N \Gamma(\nu_j)]^{-1} *)
+					pref = extraPref*Gamma[dim/2]/Gamma[(nLoops+1)*dim/2-nM]/(Times @@ (Gamma /@ propPowers));
+					fpInt =  Power[uPoly+fPoly,- dim/2];
+					If[	!isCartesian && !optEuclidean,
+							pref = pref*(-1)^nM;
+							inverseMeasure = (I Pi^(dim/2))^nLoops,
+							inverseMeasure = (Pi^(dim/2))^nLoops
+						];
+					FCPrint[1,"FCFeynmanParametrize: fpPref: ", fpPref, FCDoControl->fcfpVerbose];
+					FCPrint[1,"FCFeynmanParametrize: raw pref: ", pref, FCDoControl->fcfpVerbose];
+					FCPrint[1,"FCFeynmanParametrize: raw fpInt: ", fpInt, FCDoControl->fcfpVerbose];
+
+					fpInt = fpInt fpPref;
+					,
+				_,
+					Message[FCFeynmanParametrize::failmsg,"Unknown Feynman integral representation."];
+					Abort[]
 		];
 
-		If[!isCartesian && !optEuclidean,
-			pref = pref*(-1)^nM;
-			inverseMeasure = (I Pi^(dim/2))^nLoops,
-			inverseMeasure = (Pi^(dim/2))^nLoops
-		];
+
+		(*	Work out the overall prefactor (representation independent!)	*)
 		If[	StringQ[optFeynmanIntegralPrefactor],
 
 				Switch[optFeynmanIntegralPrefactor,
@@ -232,65 +364,8 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 			Abort[]
 		];
 
+		FCPrint[1,"FCFeynmanParametrize: final pref: ", pref, FCDoControl->fcfpVerbose];
 
-		fpInt =  Power[uPoly,fPow - dim/2 - tensorRank]/Power[fPoly,fPow]*tensorPart;
-
-		FCPrint[1,"FCFeynmanParametrize: fpPref: ", fpPref, FCDoControl->fcfpVerbose];
-		FCPrint[1,"FCFeynmanParametrize: pref: ", pref, FCDoControl->fcfpVerbose];
-		FCPrint[1,"FCFeynmanParametrize: raw fpInt: ", fpInt, FCDoControl->fcfpVerbose];
-
-
-
-		If[	!MatchQ[propPowersHat,  {0..}],
-			FCPrint[1,"FCFeynmanParametrize: Handling scalar products in the numerator.", FCDoControl->fcfpVerbose];
-			numPowers = Position[propPowersHat, x_ /; x =!= 0, {1}, Heads -> False];
-
-			If[	!MatchQ[numPowers, {{_Integer} ...}],
-				Message[FCFeynmanParametrize::failmsg, "Identification of numerator powers failed."];
-				Abort[]
-			];
-
-			numVars 		= Extract[First[powsT], numPowers];
-			zeroDenVars 	= Extract[First[powsT], zeroPowerProps];
-			propPowersHat	= Extract[propPowersHat, numPowers];
-
-			FCPrint[1,"FCFeynmanParametrize: numVars: ", numVars, FCDoControl->fcfpVerbose];
-			FCPrint[1,"FCFeynmanParametrize: zeroDenVars: ", zeroDenVars, FCDoControl->fcfpVerbose];
-			FCPrint[1,"FCFeynmanParametrize: propPowersHat: ", propPowersHat, FCDoControl->fcfpVerbose];
-
-			If[	Length[numVars]=!=Length[propPowersHat],
-				Message[FCFeynmanParametrize::failmsg, "The number of x-variables doesn't match the number of propagators with negative powers."];
-				Abort[]
-			];
-
-
-			fpInt = Fold[( (-1)^#2[[2]] * D[#1, #2]) &, fpInt, Transpose[{numVars,propPowersHat}]];
-
-			FCPrint[3,"FCFeynmanParametrize: raw fpInt after the differentiation: ", fpInt, FCDoControl->fcfpVerbose];
-			fpInt =  fpInt /. Map[Rule[#,0]&,zeroDenVars];
-			FCPrint[3,"FCFeynmanParametrize: raw fpInt after setting x[i] to zero: ", fpInt, FCDoControl->fcfpVerbose]
-
-		];
-
-		fpInt = fpInt fpPref;
-
-		If[	uPoly===0 || fPoly===0,
-			fpInt = 0
-		];
-
-
-		(*
-			If there is only a single Feynman parameter, the integration over the Dirac delta
-			is trivial and can be done right away!
-		*)
-		If[	Length[vars]===1 && !OptionValue[DiracDelta],
-			fpInt = fpInt /. vars[[1]] -> 1;
-			vars = {}
-		];
-
-		If[	OptionValue[DiracDelta],
-			fpInt = fpInt*DiracDelta[1-Total[vars]]
-		];
 
 		If[ Length[optVariavbles]=!=0,
 			vars = Join[vars, optVariavbles]
@@ -307,16 +382,21 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 
 		If[	MatchQ[optFCReplaceD,{_Rule}],
 			fpInt  = FCReplaceD[fpInt,First[optFCReplaceD]];
-			pref = FCReplaceD[pref,First[optFCReplaceD]]
+			pref = FCReplaceD[pref,First[optFCReplaceD]];
+			FCPrint[3,"FCFeynmanParametrize: fpInt after FCReplaceD: ", fpInt, FCDoControl->fcfpVerbose];
+			FCPrint[3,"FCFeynmanParametrize: pref after FCReplaceD: ", pref, FCDoControl->fcfpVerbose]
 		];
 
 		If[	OptionValue[Simplify],
 			fpInt	= Simplify[fpInt, Assumptions->OptionValue[Assumptions]];
-			pref	= Simplify[pref, Assumptions->OptionValue[Assumptions]]
+			pref	= Simplify[pref, Assumptions->OptionValue[Assumptions]];
+			FCPrint[3,"FCFeynmanParametrize: fpInt after Simplify: ", fpInt, FCDoControl->fcfpVerbose];
+			FCPrint[3,"FCFeynmanParametrize: pref after Simplify: ", pref, FCDoControl->fcfpVerbose]
 		];
 
-		If[	Head[fpInt]=!=Times,
-			fpInt = Together[fpInt]
+		If[	Head[fpInt]=!=Times && !MemberQ[{"Lee-Pomeransky"},optMethod],
+			fpInt = Together[fpInt];
+			FCPrint[3,"FCFeynmanParametrize: fpInt after Together: ", fpInt, FCDoControl->fcfpVerbose]
 		];
 
 		aux		= FCProductSplit[fpInt, vars];
@@ -326,10 +406,9 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 		res = {fpInt,pref,vars};
 
 		If[	OptionValue[Expanding],
-			res = res /. {
-				Gamma[x_]:> Gamma[ExpandAll[x]],
-				Power[x_,y_]:> Power[x,ExpandAll[y]]
-			}
+			res = res /. Gamma[x_]:> Gamma[ExpandAll[x]] /.
+				Power[x_,y_]:> Power[x,ExpandAll[y]];
+			FCPrint[3,"FCFeynmanParametrize: res after ExpandAll: ", res, FCDoControl->fcfpVerbose]
 		];
 
 

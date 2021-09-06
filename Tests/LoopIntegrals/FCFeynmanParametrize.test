@@ -247,5 +247,26 @@ SPD[p,k]-M^2,s}],{k},Names\[Rule]x,Simplify\[Rule]True,FCE\[Rule]True,\
 FeynmanIntegralPrefactor\[Rule]1,FCReplaceD\[Rule]{D\[Rule]n}]",
 "{1, (I*(-1)^s*Pi^(n/2)*(M^2 + SPD[p, p])^(n/2 - s)*(FVD[p, \
 i]*FVD[p, j]*Gamma[-1/2*n + s] - (Gamma[-1 - n/2 + s]*MTD[i, j]*(M^2 \
-+ SPD[p, p]))/2))/Gamma[s], {}}"}
++ SPD[p, p]))/2))/Gamma[s], {}}"},
+{"fcstFCFeynmanParametrize-ID39",
+"FCFeynmanParametrize[FAD[{q,m}],{q},Names->x,Method->\"Lee-\
+Pomeransky\",FCReplaceD->{D->4-2ep},FCE->True]",
+"{(x[1] + m^2*x[1]^2)^(-2 + ep), -(Gamma[2 - ep]/Gamma[3 - 2*ep]), \
+{x[1]}}"},
+{"fcstFCFeynmanParametrize-ID40",
+"FCFeynmanParametrize[FAD[q,q-p],{q},Names->x,Method->\"Lee-\
+Pomeransky\",FCReplaceD->{D->4-2ep},FCE->True]",
+"{(x[1] + x[2] - SPD[p, p]*x[1]*x[2])^(-2 + ep), Gamma[2 - \
+ep]/Gamma[2 - 2*ep], {x[1], x[2]}}"},
+{"fcstFCFeynmanParametrize-ID41",
+"FCFeynmanParametrize[{SFAD[{ p1,m^2}],SFAD[{ \
+p3,m^2}],SFAD[{(p3-p1),m^2}],SFAD[{{0,2p1.n}}],SFAD[{{0,2p3.n}}]},{p1,\
+p3},Names->x,Method->\"Lee-Pomeransky\",FCReplaceD->{D->4-2ep},\
+FCE->True]",
+"{(SPD[n, n]*x[2]^2*x[3] + SPD[n, n]*x[1]^2*x[4] + x[3]*x[4] + \
+m^2*x[3]^2*x[4] + m^2*x[3]*x[4]^2 + SPD[n, n]*x[1]^2*x[5] + 2*SPD[n, \
+n]*x[1]*x[2]*x[5] + SPD[n, n]*x[2]^2*x[5] + x[3]*x[5] + \
+m^2*x[3]^2*x[5] + x[4]*x[5] + 3*m^2*x[3]*x[4]*x[5] + m^2*x[4]^2*x[5] \
++ m^2*x[3]*x[5]^2 + m^2*x[4]*x[5]^2)^(-2 + ep), -(Gamma[2 - \
+ep]/Gamma[1 - 3*ep]), {x[1], x[2], x[3], x[4], x[5]}}"}
 });
