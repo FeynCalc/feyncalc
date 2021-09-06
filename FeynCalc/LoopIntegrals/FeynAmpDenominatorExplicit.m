@@ -53,6 +53,7 @@ Options[FeynAmpDenominatorExplicit] = {
 id[x_, ___]:=
 	x;
 
+(*TODO: Memoization*)
 FeynAmpDenominatorExplicit[expr_, OptionsPattern[]] :=
 	Block[{ex, dim, res, head1, head2, mandel, ruleNormal, ruleMandelstam, fad, esp, mc},
 
