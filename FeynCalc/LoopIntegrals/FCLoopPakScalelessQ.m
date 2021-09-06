@@ -40,7 +40,10 @@ Options[FCLoopPakScalelessQ] = {
 	RandomPrime					-> 10^8
 };
 
-FCLoopPakScalelessQ[poly_, var_, OptionsPattern[]] :=
+FCLoopPakScalelessQ[0, _, OptionsPattern[]] :=
+	True;
+
+FCLoopPakScalelessQ[poly_/;poly=!=0, var_, OptionsPattern[]] :=
 	Block[{	xVars, res, time, coeffsList, rank, vecs, mat, polyMasked,
 			allVars, expVars, kinVars, pow, optRandomPrime, kinVarsNum, cru},
 
