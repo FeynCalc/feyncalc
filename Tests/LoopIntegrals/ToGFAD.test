@@ -1,0 +1,89 @@
+
+
+(* :Title: ToGFAD.test                                          	    	*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2021 Rolf Mertig
+	Copyright (C) 1997-2021 Frederik Orellana
+	Copyright (C) 2014-2021 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for ToGFAD			  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`ToGFAD =
+({
+{"fcstToGFAD-ID1", "ToGFAD[FAD[p]]",
+"FeynAmpDenominator[GenericPropagatorDenominator[Pair[Momentum[p, \
+D], Momentum[p, D]], {1, 1}]]"},
+{"fcstToGFAD-ID2", "ToGFAD[FAD[{p,m}]]",
+"FeynAmpDenominator[GenericPropagatorDenominator[-m^2 + \
+Pair[Momentum[p, D], Momentum[p, D]], {1, 1}]]"},
+{"fcstToGFAD-ID3", "ToGFAD[FAD[{p,m,3}]]",
+"FeynAmpDenominator[GenericPropagatorDenominator[-m^2 + \
+Pair[Momentum[p, D], Momentum[p, D]], {1, 1}], \
+GenericPropagatorDenominator[-m^2 + Pair[Momentum[p, D], Momentum[p, \
+D]], {1, 1}], GenericPropagatorDenominator[-m^2 + Pair[Momentum[p, \
+D], Momentum[p, D]], {1, 1}]]"},
+{"fcstToGFAD-ID4", "ToGFAD[SFAD[p]]",
+"FeynAmpDenominator[GenericPropagatorDenominator[Pair[Momentum[p, \
+D], Momentum[p, D]], {1, 1}]]"},
+{"fcstToGFAD-ID5", "ToGFAD[SFAD[{p,m^2}]]",
+"FeynAmpDenominator[GenericPropagatorDenominator[-m^2 + \
+Pair[Momentum[p, D], Momentum[p, D]], {1, 1}]]"},
+{"fcstToGFAD-ID6", "ToGFAD[SFAD[{p+q,m^2}]]",
+"FeynAmpDenominator[GenericPropagatorDenominator[-m^2 + \
+Pair[Momentum[p, D], Momentum[p, D]] + 2*Pair[Momentum[p, D], \
+Momentum[q, D]] + Pair[Momentum[q, D], Momentum[q, D]], {1, 1}]]"},
+{"fcstToGFAD-ID7",
+"ToGFAD[SFAD[{p+q,m^2}],FinalSubstitutions->{SPD[q]->M^2}]",
+"FeynAmpDenominator[GenericPropagatorDenominator[-m^2 + M^2 + \
+Pair[Momentum[p, D], Momentum[p, D]] + 2*Pair[Momentum[p, D], \
+Momentum[q, D]], {1, 1}]]"},
+{"fcstToGFAD-ID8", "ToGFAD[SFAD[{{0,p.q}}]]",
+"FeynAmpDenominator[GenericPropagatorDenominator[Pair[Momentum[p, \
+D], Momentum[q, D]], {1, 1}]]"},
+{"fcstToGFAD-ID9", "ToGFAD[SFAD[{{p,p.q}}]]",
+"FeynAmpDenominator[GenericPropagatorDenominator[Pair[Momentum[p, \
+D], Momentum[p, D]] + Pair[Momentum[p, D], Momentum[q, D]], {1, 1}]]"},
+{"fcstToGFAD-ID10", "ToGFAD[SFAD[{{p,p.q},m^2}]]",
+"FeynAmpDenominator[GenericPropagatorDenominator[-m^2 + \
+Pair[Momentum[p, D], Momentum[p, D]] + Pair[Momentum[p, D], \
+Momentum[q, D]], {1, 1}]]"},
+{"fcstToGFAD-ID11", "ToGFAD[CFAD[p]]",
+"FeynAmpDenominator[GenericPropagatorDenominator[CartesianPair[\
+CartesianMomentum[p, -1 + D], CartesianMomentum[p, -1 + D]], {1, \
+-1}]]"},
+{"fcstToGFAD-ID12", "ToGFAD[CFAD[{p,m^2}]]",
+"FeynAmpDenominator[GenericPropagatorDenominator[m^2 + \
+CartesianPair[CartesianMomentum[p, -1 + D], CartesianMomentum[p, -1 + \
+D]], {1, -1}]]"},
+{"fcstToGFAD-ID13", "ToGFAD[CFAD[{p+q,m^2}]]",
+"FeynAmpDenominator[GenericPropagatorDenominator[m^2 + \
+CartesianPair[CartesianMomentum[p, -1 + D], CartesianMomentum[p, -1 + \
+D]] + 2*CartesianPair[CartesianMomentum[p, -1 + D], \
+CartesianMomentum[q, -1 + D]] + CartesianPair[CartesianMomentum[q, -1 \
++ D], CartesianMomentum[q, -1 + D]], {1, -1}]]"},
+{"fcstToGFAD-ID14",
+"ToGFAD[CFAD[{p+q,m^2}],FinalSubstitutions->{CSPD[q]->M^2}]",
+"FeynAmpDenominator[GenericPropagatorDenominator[m^2 + M^2 + \
+CartesianPair[CartesianMomentum[p, -1 + D], CartesianMomentum[p, -1 + \
+D]] + 2*CartesianPair[CartesianMomentum[p, -1 + D], \
+CartesianMomentum[q, -1 + D]], {1, -1}]]"},
+{"fcstToGFAD-ID15", "ToGFAD[CFAD[{{0,p.q}}]]",
+"FeynAmpDenominator[GenericPropagatorDenominator[CartesianPair[\
+CartesianMomentum[p, -1 + D], CartesianMomentum[q, -1 + D]], {1, \
+-1}]]"},
+{"fcstToGFAD-ID16", "ToGFAD[CFAD[{{p,p.q}}]]",
+"FeynAmpDenominator[GenericPropagatorDenominator[CartesianPair[\
+CartesianMomentum[p, -1 + D], CartesianMomentum[p, -1 + D]] + \
+CartesianPair[CartesianMomentum[p, -1 + D], CartesianMomentum[q, -1 + \
+D]], {1, -1}]]"},
+{"fcstToGFAD-ID17", "ToGFAD[CFAD[{{p,p.q},m^2}]]",
+"FeynAmpDenominator[GenericPropagatorDenominator[m^2 + \
+CartesianPair[CartesianMomentum[p, -1 + D], CartesianMomentum[p, -1 + \
+D]] + CartesianPair[CartesianMomentum[p, -1 + D], \
+CartesianMomentum[q, -1 + D]], {1, -1}]]"}
+});
