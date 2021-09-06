@@ -16,11 +16,11 @@
 (* ------------------------------------------------------------------------ *)
 
 DotSimplify::usage =
-"DotSimplify[expr] expands and reorders noncommutative terms in expr. \n
-Simplifying relations may be specified by the option \
-DotSimplifyRelations or by Commutator and AntiCommutator definitions. \
-Whether expr is expanded noncommutatively depends
-on the option Expanding.";
+"DotSimplify[exp] expands and reorders noncommutative terms in exp. Simplifying
+relations may be specified by the option DotSimplifyRelations or by Commutator
+and AntiCommutator definitions. Whether exp is expanded noncommutatively
+depends on the option Expanding.
+";
 
 DotSimplifyRelations::usage =
 "DotSimplifyRelations is an option for DotSimplify. \

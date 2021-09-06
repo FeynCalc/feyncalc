@@ -61,5 +61,32 @@ DotSimplify[x . x . x,DotPower->True]
 UnDeclareNonCommutative[x]
 
 
+(* ::Text:: *)
+(*Check some relations between noncommutative expressions involving two operators $Q$ and $P$*)
+
+
+DeclareNonCommutative[Q,P]
+
+
+lhs=(Q . Commutator[Q,P]+Commutator[Q,P] . Q)/2
+rhs=Commutator[Q,Q . P+P . Q]/2
+DotSimplify[lhs-rhs]
+%//ExpandAll
+
+
+Commutator[Q,P]=I;
+
+
+(* ::Text:: *)
+(*Introduce the dilation operator $D$ from the affine quantization and verify that $[Q,D]=i \hbar$ (cf. arXiv:2108.10713)*)
+
+
+DOp=(Q . P+P . Q)/2;
+
+
+Commutator[Q,DOp]
+%//DotSimplify//ExpandAll
+
+
 UnDeclareAllCommutators[]
 UnDeclareAllAntiCommutators[]

@@ -79,6 +79,46 @@ UnDeclareNonCommutative[x]
 
 $$x^3$$
 
+Check some relations between noncommutative expressions involving two operators $Q$ and $P$
+
+```mathematica
+DeclareNonCommutative[Q, P]
+```
+
+```mathematica
+lhs = (Q . Commutator[Q, P] + Commutator[Q, P] . Q)/2
+rhs = Commutator[Q, Q . P + P . Q]/2
+DotSimplify[lhs - rhs]
+% // ExpandAll
+```
+
+$$\frac{1}{2} (Q.[Q,P]+[Q,P].Q)$$
+
+$$\frac{1}{2} [Q,P.Q+Q.P]$$
+
+$$\frac{1}{2} (P.Q.Q-Q.Q.P)+\frac{1}{2} (Q.Q.P-P.Q.Q)$$
+
+$$0$$
+
+```mathematica
+Commutator[Q, P] = I;
+```
+
+Introduce the dilation operator $D$ from the affine quantization and verify that $[Q,D]=i \hbar$ (cf. arXiv:2108.10713)
+
+```mathematica
+DOp = (Q . P + P . Q)/2;
+```
+
+```mathematica
+Commutator[Q, DOp]
+% // DotSimplify // ExpandAll
+```
+
+$$\left[Q,\frac{1}{2} (P.Q+Q.P)\right]$$
+
+$$i Q$$
+
 ```mathematica
 UnDeclareAllCommutators[]
 UnDeclareAllAntiCommutators[]
