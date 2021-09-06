@@ -2,7 +2,9 @@
 
 `FCLoopBasisFindCompletion[int, {q1, q2, ...}]` determines propagators that need to be included in the loop integral `int` (that depends on the loop momenta `q1`, `q2`, ...), to ensure that the propagators of `int` form a basis.
 
-For integrals with propagators that do not form a basis, such a completion must be found prior to processing those integrals with tools that do Integration-By-Parts (IBP) reduction (e.g. FIRE). Furthermore, `int` may not linearly dependent propagators.
+For integrals with propagators that do not form a basis, such a completion must be found prior to processing those integrals with tools that do Integration-By-Parts (IBP) reduction (e.g. FIRE, KIRA or LiteRed). Furthermore, `int` may not contain linearly dependent propagators.
+
+The input can also consist of an `FCTopology` object or a list thereof.
 
 ### See also
 
@@ -47,3 +49,20 @@ FCLoopBasisFindCompletion[%, {q1, q2}]
 $$\frac{1}{(\text{q1}^2-i \eta ).(\text{q2}^2-i \eta ).((\text{q1}-\text{l1})^2+\text{m1}-i \eta ).((\text{q2}-\text{l2})^2+\text{m2}-i \eta )}$$
 
 $$\left\{\frac{1}{(\text{q1}^2-i \eta ).(\text{q2}^2-i \eta ).((\text{q1}-\text{l1})^2+\text{m1}-i \eta ).((\text{q2}-\text{l2})^2+\text{m2}-i \eta )},\{\text{l1}\cdot \text{q2},\text{l2}\cdot \text{q1},\text{q1}\cdot \text{q2}\}\right\}$$
+
+Extending FCTopology objects
+
+```mathematica
+FCLoopBasisFindCompletion[FCTopology[topo, {FAD[p1], FAD[p2], FAD[p1 - q], FAD[p2 - q]}, {p1, p2}, {q}, {}, {}]]
+```
+
+$$\text{FCTopology}\left(\text{topo},\left\{\frac{1}{\text{p1}^2},\frac{1}{\text{p2}^2},\frac{1}{(\text{p1}-q)^2},\frac{1}{(\text{p2}-q)^2},\frac{1}{(\text{p1}\cdot \text{p2}+i \eta )}\right\},\{\text{p1},\text{p2}\},\{q\},\{\},\{\}\right)$$
+
+```mathematica
+FCLoopBasisFindCompletion[{
+   FCTopology[topo1, {FAD[p1], FAD[p2], FAD[p1 - q], FAD[p2 - q]}, {p1, p2}, {q}, {}, {}], 
+   FCTopology[topo2, {FAD[p1], FAD[p2], FAD[p1 - q], FAD[p2 - p1]}, {p1, p2}, {q}, {}, {}] 
+  }]
+```
+
+$$\left\{\text{FCTopology}\left(\text{topo1},\left\{\frac{1}{\text{p1}^2},\frac{1}{\text{p2}^2},\frac{1}{(\text{p1}-q)^2},\frac{1}{(\text{p2}-q)^2},\frac{1}{(\text{p1}\cdot \text{p2}+i \eta )}\right\},\{\text{p1},\text{p2}\},\{q\},\{\},\{\}\right),\text{FCTopology}\left(\text{topo2},\left\{\frac{1}{\text{p1}^2},\frac{1}{\text{p2}^2},\frac{1}{(\text{p1}-q)^2},\frac{1}{(\text{p2}-\text{p1})^2},\frac{1}{(\text{p2}\cdot q+i \eta )}\right\},\{\text{p1},\text{p2}\},\{q\},\{\},\{\}\right)\right\}$$

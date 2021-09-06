@@ -1,6 +1,8 @@
 ## FCLoopBasisIncompleteQ
 
-`FCLoopBasisIncompleteQ[int, {q1, q2, ...}]` checks if the propagators of the loop integral `int` (that depends on the loop momenta `q1, q2, ...`) do not form a basis.
+`FCLoopBasisIncompleteQ[int, {q1, q2, ...}]` checks whether the loop integral or topology `int` lacks propagators need to have a linearly independent basis .
+
+The input can also consist of an `FCTopology` object or a list thereof.
 
 ### See also
 
@@ -61,3 +63,20 @@ FCLoopBasisIncompleteQ[%, {q1, q2}]
 $$\frac{1}{(\text{q1}^2-\text{m1}+i \eta ).(\text{q2}^2-\text{m2}+i \eta )}$$
 
 $$\text{True}$$
+
+```mathematica
+FCLoopBasisIncompleteQ[FCTopology[topo, {FAD[p1], 
+    FAD[p2], FAD[p1 - q], FAD[p2 - q]}, {p1, p2}, {q}, {}, {}]]
+```
+
+$$\text{True}$$
+
+```mathematica
+FCLoopBasisIncompleteQ[{
+   FCTopology[topo1, {FAD[p1], FAD[p2], FAD[p1 - q], FAD[p2 - q]}, {p1, p2}, {q}, {}, {}], 
+   FCTopology[topo2, {FAD[p1], FAD[p2], FAD[p1 - q], FAD[p2 - p1]}, {p1, p2}, {q}, {}, {}], 
+   FCTopology[topo3, {FAD[p1], FAD[p1 - q]}, {p1}, {q}, {}, {}] 
+  }]
+```
+
+$$\{\text{True},\text{True},\text{False}\}$$

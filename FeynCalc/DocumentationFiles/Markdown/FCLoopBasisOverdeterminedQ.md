@@ -1,6 +1,8 @@
 ## FCLoopBasisOverdeterminedQ
 
-`FCLoopBasisOverdeterminedQ[int, {q1, q2, ...}]` checks if the propagators of the loop integral `int` (that depends on the loop momenta `q1, q2, ...`) are linearly dependent.
+`FCLoopBasisOverdeterminedQ[int, {q1, q2, ...}]` checks whether the loop integral or topology `int` contains linearly dependent propagators.
+
+The input can also consist of an `FCTopology` object or a list thereof.
 
 ### See also
 
@@ -34,3 +36,20 @@ FCLoopBasisOverdeterminedQ[%, {q1, q2}]
 $$\frac{1}{\text{q1}^2.\text{q2}^2.\left((l+\text{q1})^2-\text{m1}^2\right).\left((\text{q1}-l)^2-\text{m1}^2\right).\left((l+\text{q2})^2-\text{m1}^2\right).\left((\text{q2}-l)^2-\text{m1}^2\right)}$$
 
 $$\text{True}$$
+
+```mathematica
+FCLoopBasisOverdeterminedQ[FCTopology[topo1, {FAD[p1], FAD[p2], 
+    FAD[p1 - q], FAD[p2 - q], FAD[p1 - p2], FAD[p1 + p2 + q]}, {p1, p2}, {q}, {}, {}]]
+```
+
+$$\text{True}$$
+
+```mathematica
+FCLoopBasisOverdeterminedQ[{FCTopology[topo1, {FAD[p1], FAD[p2], 
+     FAD[p1 - q], FAD[p2 - q], FAD[p1 - p2], FAD[p1 + p2 + q]}, {p1, p2}, {q}, {}, {}], 
+   FCTopology[topo2, {FAD[p1], FAD[p2], 
+     FAD[p1 - q], FAD[p2 - q], FAD[p1 - p2]}, {p1, p2}, {q}, {}, {}] 
+  }]
+```
+
+$$\{\text{True},\text{False}\}$$

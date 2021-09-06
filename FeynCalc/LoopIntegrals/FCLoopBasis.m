@@ -17,20 +17,31 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopBasisIncompleteQ::usage =
-"FCLoopBasisIncompleteQ[int, {q1,q2,...}] checks if the propagators of the loop \
-integral int( that depends on the loop momenta q1,q2,...) do not form a basis.";
+"FCLoopBasisIncompleteQ[int, {q1, q2, ...}] checks whether the loop integral or
+topology int lacks propagators need to have a linearly independent basis .
+
+The input can also consist of an FCTopology object or a list thereof.
+";
 
 FCLoopBasisOverdeterminedQ::usage =
-"FCLoopBasisOverdeterminedQ[int, {q1,q2,...}] checks if the propagators of the \
-loop integral int (that depends on the loop momenta q1,q2,... ) are linearly dependent.";
+"FCLoopBasisOverdeterminedQ[int, {q1, q2, ...}] checks whether the loop
+integral or topology int contains linearly dependent propagators.
+
+The input can also consist of an FCTopology object or a list thereof.
+";
 
 FCLoopBasisFindCompletion::usage =
-"FCLoopBasisFindCompletion[int, {q1,q2,...}] determines propagators that need to be \
-included in the loop integral int (that depends on the loop momenta q1,q2,...), \
-to ensure that the propagators of int form a basis. For integrals with propagators \
-that do not form a basis, such a completion must be found prior to processing those \
-integrals with tools that do Integration-By-Parts (IBP) reduction (e.g. FIRE). \
-Furthermore, int must not contain propagators that are linearly dependent.";
+"FCLoopBasisFindCompletion[int, {q1, q2, ...}] determines propagators that need
+to be included in the loop integral int (that depends on the loop momenta q1,
+q2, ...), to ensure that the propagators of int form a basis.
+
+For integrals with propagators that do not form a basis, such a completion
+must be found prior to processing those integrals with tools that do
+Integration-By-Parts (IBP) reduction (e.g. FIRE, KIRA or LiteRed).
+Furthermore, int may not contain linearly dependent propagators.
+
+The input can also consist of an FCTopology object or a list thereof.
+";
 
 FCLoopBasisSplit::usage =
 "FCLoopBasisSplit[int, {q1,q2,...}] checks if the given loop integral factorizes \
@@ -41,9 +52,12 @@ FCLoopBasisGetSize::usage =
 for a topology that contains n1 loop momenta and n2 external momenta.";
 
 FCLoopBasisPropagatorsToTopology::usage =
-"FCLoopBasisPropagatorsToTopology[{pr1, pr2, ...}] takes the list \
-of Pairs and FeynAmpDenominators pr1, p2, ... and converts it into a \
-list of propagators that can be used to describe a topology.";
+"FCLoopBasisPropagatorsToTopology[{prop1, prop2, ...}] takes the list of Pairs
+and FeynAmpDenominators and converts it into a list of propagators that can be
+used to describe a topology.
+
+The input can also consist of an FCTopology object or a list thereof.
+";
 
 FCLoopBasisCreateScalarProducts::usage=
 "FCLoopBasisCreateScalarProducts[{q1, q2, ...},{p1, p2,...},{d1, d2, ...}, head] generates \
@@ -143,9 +157,10 @@ Options[FCLoopBasisIncompleteQ] = {
 };
 
 Options[FCLoopBasisOverdeterminedQ] = {
-	FCI 			-> False,
-	FCVerbose 		-> False,
-	SetDimensions	-> {3, 4, D, D-1}
+	FCI						-> False,
+	FCVerbose 				-> False,
+	InitialSubstitutions	-> {},
+	SetDimensions			-> {3, 4, D, D-1}
 };
 
 Options[FCLoopBasisFindCompletion] = {
@@ -546,9 +561,27 @@ FCLoopBasisCreateScalarProducts[lmoms_List, extmoms_List, dims_List, head_Symbol
 	];
 
 
+FCLoopBasisPropagatorsToTopology[topos : {__FCTopology}, opts:OptionsPattern[]] :=
+	FCLoopBasisPropagatorsToTopology[#, opts]&/@topos;
 
-FCLoopBasisPropagatorsToTopology[props_List /; props =!= {},
-OptionsPattern[]] :=
+FCLoopBasisPropagatorsToTopology[topoRaw_FCTopology, opts:OptionsPattern[]] :=
+	Block[{topo,optFinalSubstitutions},
+
+
+		If[	OptionValue[FCI],
+			topo = topoRaw,
+			topo = FCI[topoRaw]
+		];
+
+		If[	!FCLoopValidTopologyQ[topo],
+			Message[FCFeynmanPrepare::failmsg, "The supplied topology is incorrect."];
+			Abort[]
+		];
+
+		FCLoopBasisPropagatorsToTopology[topo[[2]], Join[{FCI->True},FilterRules[{opts}, Except[FCI]]]]
+	];
+
+FCLoopBasisPropagatorsToTopology[props_List /; props =!= {} && FreeQ[props,FCTopology], OptionsPattern[]] :=
 	Block[{expr, tmp, res},
 
 		If[! OptionValue[FCI],
@@ -789,7 +822,28 @@ FCLoopBasisSplit[sps_. fad_FeynAmpDenominator, lmoms_List, OptionsPattern[]] :=
 		res
 	];
 
-FCLoopBasisIncompleteQ[expr_, lmoms_List, OptionsPattern[]] :=
+FCLoopBasisIncompleteQ[topos:{__FCTopology}, opts:OptionsPattern[]] :=
+	FCLoopBasisIncompleteQ[#, opts]&/@topos;
+
+FCLoopBasisIncompleteQ[topoRaw_FCTopology, opts:OptionsPattern[]] :=
+	Block[{topo,optFinalSubstitutions},
+
+
+		If[	OptionValue[FCI],
+			topo = topoRaw,
+			topo = FCI[topoRaw]
+		];
+
+		If[	!FCLoopValidTopologyQ[topo],
+			Message[FCFeynmanPrepare::failmsg, "The supplied topology is incorrect."];
+			Abort[]
+		];
+
+		FCLoopBasisIncompleteQ[Times@@topo[[2]], topo[[3]], Join[{FCI->True},FilterRules[{opts}, Except[FCI]]]]
+
+	];
+
+FCLoopBasisIncompleteQ[expr_/;FreeQ[expr,FCTopology], lmoms_List, OptionsPattern[]] :=
 	Block[ {ex, vecs, ca, res, fclbVerbose, rank, len, dims},
 
 		If [OptionValue[FCVerbose]===False,
@@ -807,10 +861,6 @@ FCLoopBasisIncompleteQ[expr_, lmoms_List, OptionsPattern[]] :=
 		If[	!OptionValue[FCI],
 			ex = FCI[expr],
 			ex = expr
-		];
-
-		If[ Head[ex]===FCTopology,
-			ex = Times@@(ex[[2]])
 		];
 
 		If[	!MatchQ[ex, _. _FeynAmpDenominator],
@@ -851,9 +901,34 @@ FCLoopBasisIncompleteQ[expr_, lmoms_List, OptionsPattern[]] :=
 		res
 	];
 
+FCLoopBasisOverdeterminedQ[topos:{__FCTopology}, opts:OptionsPattern[]] :=
+	FCLoopBasisOverdeterminedQ[#, opts]&/@topos;
+
+FCLoopBasisOverdeterminedQ[topoRaw_FCTopology, opts:OptionsPattern[]] :=
+	Block[{topo,optInitialSubstitutions},
+
+
+		If[	OptionValue[FCI],
+			topo = topoRaw,
+			topo = FCI[topoRaw]
+		];
+
+		If[	!FCLoopValidTopologyQ[topo],
+			Message[FCFeynmanPrepare::failmsg, "The supplied topology is incorrect."];
+			Abort[]
+		];
+
+		optInitialSubstitutions = topo[[5]];
+
+		FCLoopBasisOverdeterminedQ[Times@@topo[[2]], topo[[3]], Join[{FCI->True,
+			InitialSubstitutions->optInitialSubstitutions},FilterRules[{opts}, Except[FCI|InitialSubstitutions]]]]
+
+	];
+
+
 FCLoopBasisOverdeterminedQ[expr_, lmoms_List, OptionsPattern[]] :=
 	Block[{	ex, vecs, ca, res, fclbVerbose, dims, lmomSP,
-			check, hRule, vecs12New, nlCoeffs},
+			check, hRule, vecs12New, nlCoeffs, optInitialSubstitutions},
 
 		If [OptionValue[FCVerbose]===False,
 			fclbVerbose=$VeryVerbose,
@@ -862,18 +937,16 @@ FCLoopBasisOverdeterminedQ[expr_, lmoms_List, OptionsPattern[]] :=
 			];
 		];
 
+		optInitialSubstitutions = OptionValue[InitialSubstitutions];
+
 		If[	FreeQ2[expr,lmoms],
 			Message[FCLoopBasisOverdeterminedQ::failmsg, "The input expression does not depend on the given loop momenta."];
 			Abort[]
 		];
 
 		If[	!OptionValue[FCI],
-			ex = FCI[expr],
+			{ex,optInitialSubstitutions} = FCI[{expr,optInitialSubstitutions}],
 			ex = expr
-		];
-
-		If[ Head[ex]===FCTopology,
-			ex = Times@@(ex[[2]])
 		];
 
 		If[	!MatchQ[ex, _. _FeynAmpDenominator],
@@ -887,6 +960,10 @@ FCLoopBasisOverdeterminedQ[expr_, lmoms_List, OptionsPattern[]] :=
 		vecs= FCLoopBasisExtract[ex, lmoms, SetDimensions->OptionValue[SetDimensions], Rest->False];
 
 		FCPrint[3,"FCLoopBasisOverdeterminedQ: Output of extractBasisVectors: ", vecs, FCDoControl->fclbVerbose];
+
+		vecs = vecs/.optInitialSubstitutions;
+
+		FCPrint[3,"FCLoopBasisOverdeterminedQ: Vectors after applying substitutions: ", vecs, FCDoControl->fclbVerbose];
 
 		(* Finally, convert all these polynomials into vectors ... *)
 
@@ -905,17 +982,78 @@ FCLoopBasisOverdeterminedQ[expr_, lmoms_List, OptionsPattern[]] :=
 		res
 	];
 
-FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
-	Block[ {ex, vecs, ca, res, fclbVerbose,extraVectors, extraProps={}, method,
+
+FCLoopBasisFindCompletion[topos:{__FCTopology}, opts:OptionsPattern[]] :=
+	FCLoopBasisFindCompletion[#, opts]&/@topos;
+
+FCLoopBasisFindCompletion[topoRaw_FCTopology, opts:OptionsPattern[]] :=
+	Block[{	topo, fclbfcVerbose, optFinalSubstitutions, tmp, tmp2,
+			aux, auxEval, head, res},
+
+
+		If [OptionValue[FCVerbose]===False,
+			fclbfcVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				fclbfcVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		FCPrint[1,"FCLoopBasisFindCompletion: FCTopology mode.", FCDoControl->fclbfcVerbose];
+
+
+		If[	OptionValue[FCI],
+			topo = topoRaw,
+			topo = FCI[topoRaw]
+		];
+
+		If[	!FCLoopValidTopologyQ[topo],
+			Message[FCLoopBasisFindCompletion::failmsg, "The supplied topology is incorrect."];
+			Abort[]
+		];
+
+		tmp = FCLoopBasisFindCompletion[FeynAmpDenominatorCombine[Times@@topo[[2]],FCI->True], topo[[3]], Join[{FCI->True,FCE->False},FilterRules[{opts}, Except[FCI|FCE]]]];
+
+		FCPrint[3,"FCLoopBasisFindCompletion: Output of the nested FCLoopBasisFindCompletion: ", tmp, FCDoControl->fclbfcVerbose];
+
+		If[	tmp[[2]]=!={} && tmp[[2]]=!={1},
+
+			aux = head/@tmp[[2]];
+			auxEval = aux/.{
+				head[pref_. Pair[Momentum[a_,dim___],Momentum[b_,dim___]]] :> FeynAmpDenominator[StandardPropagatorDenominator[0,pref Pair[Momentum[a,dim],Momentum[b,dim]],0,{1,1}]]
+			};
+
+			FCPrint[3,"FCLoopBasisFindCompletion: Intermediate result: ", auxEval, FCDoControl->fclbfcVerbose];
+
+
+			If[	!FreeQ[auxEval,head],
+				Message[FCLoopBasisFindCompletion::failmsg, "Failed to convert all extra propagators to FeynAmpDenominators."];
+				Abort[]
+			],
+
+			auxEval={}
+		];
+
+		res = FCTopology[topo[[1]],Join[topo[[2]],auxEval], Sequence@@topo[[3;;]]];
+
+		If[	OptionValue[FCE],
+			res = FCE[res]
+		];
+
+		res
+
+	];
+
+FCLoopBasisFindCompletion[expr_/;FreeQ[expr,FCTopology], lmoms_List, OptionsPattern[]] :=
+	Block[ {ex, vecs, ca, res, fclbfcVerbose,extraVectors, extraProps={}, method,
 			missingSPs, oldRank, newRank, len,prs={},null, isCartesian, dims, originalPrs={},
 			posList, extraProps2,time, matrix, time0, optAbort, throwRes},
 
 		time0 = AbsoluteTime[];
 
 		If [OptionValue[FCVerbose]===False,
-			fclbVerbose=$VeryVerbose,
+			fclbfcVerbose=$VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer],
-				fclbVerbose=OptionValue[FCVerbose]
+				fclbfcVerbose=OptionValue[FCVerbose]
 			];
 		];
 
@@ -933,17 +1071,17 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 		optAbort = OptionValue[Abort];
 
 		If[	Head[method]===List && method=!={},
-			FCPrint[1,"FCLoopBasisFindCompletion: Using user-supplied propagators to complete the basis.", FCDoControl->fclbVerbose];
+			FCPrint[1,"FCLoopBasisFindCompletion: Using user-supplied propagators to complete the basis.", FCDoControl->fclbfcVerbose];
 
 
-			FCPrint[1,"FCLoopBasisFindCompletion: Verifying and rewriting the user-supplied propagators.", FCDoControl->fclbVerbose];
+			FCPrint[1,"FCLoopBasisFindCompletion: Verifying and rewriting the user-supplied propagators.", FCDoControl->fclbfcVerbose];
 			time=AbsoluteTime[];
 
 			prs = ExpandScalarProduct[FCI[method],Momentum->lmoms];
 
 			originalPrs = {method,prs};
 
-			FCPrint[3,"FCLoopBasisFindCompletion: prs: ", prs, FCDoControl->fclbVerbose];
+			FCPrint[3,"FCLoopBasisFindCompletion: prs: ", prs, FCDoControl->fclbfcVerbose];
 
 
 			(* If the heads of the user-supplied scalar products are all known, we can bypass the more complicated check *)
@@ -963,7 +1101,7 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 
 
 			method=ScalarProduct;
-			FCPrint[1,"FCLoopBasisFindCompletion: Done verifying and rewriting the user-supplied propagators, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclbVerbose];
+			FCPrint[1,"FCLoopBasisFindCompletion: Done verifying and rewriting the user-supplied propagators, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclbfcVerbose];
 
 		];
 
@@ -972,7 +1110,7 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 			ex = expr
 		];
 
-		FCPrint[1,"FCLoopBasisFindCompletion: Doing some additional checks.", FCDoControl->fclbVerbose];
+		FCPrint[1,"FCLoopBasisFindCompletion: Doing some additional checks.", FCDoControl->fclbfcVerbose];
 		time=AbsoluteTime[];
 
 		If[	!MatchQ[ex, n_. _FeynAmpDenominator/;FreeQ[n, FeynAmpDenominator]],
@@ -987,26 +1125,24 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 			dims = Cases[OptionValue[SetDimensions], 4 | _Symbol ]
 		];
 
-		FCPrint[1,"FCLoopBasisFindCompletion: Additional checks done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclbVerbose];
+		FCPrint[1,"FCLoopBasisFindCompletion: Additional checks done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclbfcVerbose];
 
-		FCPrint[1,"FCLoopBasisFindCompletion: Applying FCLoopBasisExtract and converting to vectors.", FCDoControl->fclbVerbose];
+		FCPrint[1,"FCLoopBasisFindCompletion: Applying FCLoopBasisExtract and converting to vectors.", FCDoControl->fclbfcVerbose];
 		time=AbsoluteTime[];
 
 		vecs= FCLoopBasisExtract[ex, lmoms, SetDimensions->dims];
 
-
-
-		FCPrint[3,"FCLoopBasisFindCompletion: Output of extractBasisVectors: ", vecs, FCDoControl->fclbVerbose];
+		FCPrint[3,"FCLoopBasisFindCompletion: Output of extractBasisVectors: ", vecs, FCDoControl->fclbfcVerbose];
 
 		(* Finally, convert all these polynomials into vectors ... *)
 		ca = Normal[CoefficientArrays@@(vecs[[1;;2]])];
 		matrix = Transpose[Last[ca]];
-		FCPrint[3,"FCLoopBasisFindCompletion: Output of CoefficientArrays: ", ca, FCDoControl->fclbVerbose];
+		FCPrint[3,"FCLoopBasisFindCompletion: Output of CoefficientArrays: ", ca, FCDoControl->fclbfcVerbose];
 
 		len = Length[vecs[[2]]];
 		oldRank = MatrixRank[matrix];
 
-		FCPrint[1,"FCLoopBasisFindCompletion: Done applying FCLoopBasisExtract and converting to vectors, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclbVerbose];
+		FCPrint[1,"FCLoopBasisFindCompletion: Done applying FCLoopBasisExtract and converting to vectors, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclbfcVerbose];
 
 		(* If the basis is overcomplete, stop here *)
 		If[	NullSpace[matrix] =!= {},
@@ -1020,7 +1156,7 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 		];
 
 
-		FCPrint[1,"FCLoopBasisFindCompletion: Finding a completion of the basis.", FCDoControl->fclbVerbose];
+		FCPrint[1,"FCLoopBasisFindCompletion: Finding a completion of the basis.", FCDoControl->fclbfcVerbose];
 		time=AbsoluteTime[];
 
 		(* There are different possibilities to complete the basis *)
@@ -1038,27 +1174,27 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 					Abort[]
 				];
 
-				FCPrint[3,"FCLoopBasisFindCompletion: extraVectors: ", extraVectors, FCDoControl->fclbVerbose];
+				FCPrint[3,"FCLoopBasisFindCompletion: extraVectors: ", extraVectors, FCDoControl->fclbfcVerbose];
 
 				(* Determine what propagators must be added to complete the basis*)
 				extraProps = Map[Dot[vecs[[2]],#]&,extraVectors];
 
-				FCPrint[3,"FCLoopBasisFindCompletion: extraProps: ", extraProps, FCDoControl->fclbVerbose],
+				FCPrint[3,"FCLoopBasisFindCompletion: extraProps: ", extraProps, FCDoControl->fclbfcVerbose],
 
 				(* 	Another possibility is to introduce loop-momentum dependent scalar products only. This is nicer
 					for IBP, but is also slower, because we need to check for every scalar product, if it increases
 					the rank of the matrix. *)
 				method===ScalarProduct,
 
-				FCPrint[3,"FCLoopBasisFindCompletion: oldRank: ", oldRank, FCDoControl->fclbVerbose];
+				FCPrint[3,"FCLoopBasisFindCompletion: oldRank: ", oldRank, FCDoControl->fclbfcVerbose];
 				Scan[
 					(
 					newRank = getRank[{Join[vecs[[1]], fdsInvert[extraProps], {fdsInvert[#]}],vecs[[2]]}];
-					FCPrint[3,"FCLoopBasisFindCompletion: newRank: ", newRank, FCDoControl->fclbVerbose];
+					FCPrint[3,"FCLoopBasisFindCompletion: newRank: ", newRank, FCDoControl->fclbfcVerbose];
 					If[	newRank === len,
 						(* Completion found, now leave *)
 						extraProps = Append[extraProps, #];
-						FCPrint[3,"FCLoopBasisFindCompletion: Completion found, leaving.", FCDoControl->fclbVerbose];
+						FCPrint[3,"FCLoopBasisFindCompletion: Completion found, leaving.", FCDoControl->fclbfcVerbose];
 						Throw[1],
 						(* Otherwise, decide if this scalar products increases the matrix rank*)
 						If[ newRank>oldRank,
@@ -1079,7 +1215,7 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 			];
 		];
 
-		FCPrint[1,"FCLoopBasisFindCompletion: Done finding a completion of the basis, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclbVerbose];
+		FCPrint[1,"FCLoopBasisFindCompletion: Done finding a completion of the basis, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclbfcVerbose];
 
 		If[	TrueQ[throwRes===0],
 
@@ -1118,7 +1254,7 @@ FCLoopBasisFindCompletion[expr_, lmoms_List, OptionsPattern[]] :=
 			res = FCE[res]
 		];
 
-		FCPrint[1,"FCLoopBasisFindCompletion: Leaving, toal timing: ", N[AbsoluteTime[] - time0, 4], FCDoControl->fclbVerbose];
+		FCPrint[1,"FCLoopBasisFindCompletion: Leaving, toal timing: ", N[AbsoluteTime[] - time0, 4], FCDoControl->fclbfcVerbose];
 
 		res
 	];

@@ -12,7 +12,11 @@
 
 
 (* ::Text:: *)
-(*For integrals with propagators that do not form a basis, such a completion must be found prior to processing those integrals with tools that do Integration-By-Parts (IBP) reduction (e.g. FIRE). Furthermore, `int` may not linearly dependent propagators.*)
+(*For integrals with propagators that do not form a basis, such a completion must be found prior to processing those integrals with tools that do Integration-By-Parts (IBP) reduction (e.g. FIRE, KIRA or LiteRed). Furthermore, `int` may not contain linearly dependent propagators.*)
+
+
+(* ::Text:: *)
+(*The input can also consist of an `FCTopology` object or a list thereof.*)
 
 
 (* ::Subsection:: *)
@@ -45,3 +49,16 @@ FCLoopBasisFindCompletion[%,{q1,q2},Method->{FAD[{q2+k,m}],FAD[{q1-p,m}],SPD[p,q
 
 CFAD[q1,q2,{q1-l1,m1},{q2-l2,m2}]
 FCLoopBasisFindCompletion[%,{q1,q2}]
+
+
+(* ::Text:: *)
+(*Extending FCTopology objects*)
+
+
+FCLoopBasisFindCompletion[FCTopology[topo,{FAD[p1],FAD[p2],FAD[p1-q],FAD[p2-q]},{p1,p2},{q},{},{}]]
+
+
+FCLoopBasisFindCompletion[{
+FCTopology[topo1,{FAD[p1],FAD[p2],FAD[p1-q],FAD[p2-q]},{p1,p2},{q},{},{}],
+FCTopology[topo2,{FAD[p1],FAD[p2],FAD[p1-q],FAD[p2-p1]},{p1,p2},{q},{},{}]
+}]
