@@ -927,7 +927,6 @@ Begin["`SharedObjects`Private`"];
 DeclareNonCommutative[DiracGamma];
 DeclareNonCommutative[DiracSigma];
 DeclareNonCommutative[GA];
-DeclareNonCommutative[GA5];
 DeclareNonCommutative[GAD];
 DeclareNonCommutative[GAE];
 DeclareNonCommutative[GS];
