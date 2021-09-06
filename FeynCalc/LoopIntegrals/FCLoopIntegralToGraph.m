@@ -55,31 +55,42 @@ maxVertexDegree::usage="";
 labeled::usage="";
 
 Options[FCLoopIntegralToGraph] = {
-	AuxiliaryMomenta	-> {},
-	FCE 				-> False,
-	FCI 				-> False,
-	FCProductSplit		-> True,
-	FCVerbose 			-> False,
-	Factoring			-> Automatic,
-	Momentum			-> Automatic,
-	Select				-> 1,
-	VertexDegree		-> 6,
-	TimeConstrained		-> 3
+	AuxiliaryMomenta		-> {},
+	FCE 					-> False,
+	FCI 					-> False,
+	FCProductSplit			-> True,
+	FCVerbose 				-> False,
+	Factoring				-> Automatic,
+	InitialSubstitutions	-> {},
+	Momentum				-> Automatic,
+	Select					-> 1,
+	VertexDegree			-> 6,
+	TimeConstrained			-> 3
 };
 
-FCLoopIntegralToGraph[gli_GLI, topo_FCTopology, opts:OptionsPattern[]] :=
-	Block[{int,optFinalSubstitutions},
+FCLoopIntegralToGraph[gli_GLI, topoRaw_FCTopology, opts:OptionsPattern[]] :=
+	Block[{int,optFinalSubstitutions,topo},
 
-		int = FCLoopFromGLI[gli, topo, FCI->OptionValue[FCI]];
+		If[	OptionValue[FCI],
+			topo = topoRaw,
+			topo = FCI[topoRaw]
+		];
 
-		FCLoopIntegralToGraph[int, topo[[3]], Join[{FCI->True},
-			FilterRules[{opts}, Except[FCI]]]]
+		int = FCLoopFromGLI[gli, topo, FCI->True];
+
+		FCLoopIntegralToGraph[int, topo[[3]], Join[{FCI->True, InitialSubstitutions->topo[[5]]},
+			FilterRules[{opts}, Except[FCI | InitialSubstitutions]]]]
 	];
 
-FCLoopIntegralToGraph[glis:{__GLI}, topos:{__FCTopology}, opts:OptionsPattern[]] :=
-	Block[{ints,relTopos, lmomsList},
+FCLoopIntegralToGraph[glis:{__GLI}, toposRaw:{__FCTopology}, opts:OptionsPattern[]] :=
+	Block[{ints, relTopos, lmomsList, replacements, topos},
 
-		ints = FCLoopFromGLI[glis, topos, FCI->OptionValue[FCI]];
+		If[	OptionValue[FCI],
+			topos = toposRaw,
+			topos = FCI[toposRaw]
+		];
+
+		ints = FCLoopFromGLI[glis, topos, FCI->True];
 
 		relTopos=Map[First[Select[topos, Function[x, x[[1]] === #[[1]]]]] &, glis];
 
@@ -89,8 +100,10 @@ FCLoopIntegralToGraph[glis:{__GLI}, topos:{__FCTopology}, opts:OptionsPattern[]]
 		];
 
 		lmomsList = #[[3]]&/@relTopos;
+		replacements = #[[5]]&/@relTopos;
 
-		MapThread[FCLoopIntegralToGraph[#1, #2, Join[{FCI->True}, FilterRules[{opts}, Except[FCI | FinalSubstitutions]]]]&,{ints,lmomsList}]
+		MapThread[FCLoopIntegralToGraph[#1, #2, Join[{FCI->True, InitialSubstitutions->#3},
+			FilterRules[{opts}, Except[FCI | InitialSubstitutions]]]]&,{ints,lmomsList,replacements}]
 	];
 
 
@@ -114,8 +127,8 @@ FCLoopIntegralToGraph[topoRaw_FCTopology, opts:OptionsPattern[]] :=
 			Abort[]
 		];
 
-		FCLoopIntegralToGraph[topo[[2]], topo[[3]], Join[{FCI->True},
-			FilterRules[{opts}, Except[FCI]]]]
+		FCLoopIntegralToGraph[topo[[2]], topo[[3]], Join[{FCI->True, InitialSubstitutions->topo[[5]]},
+			FilterRules[{opts}, Except[FCI|InitialSubstitutions]]]]
 	];
 
 
@@ -124,7 +137,8 @@ FCLoopIntegralToGraph[expr_/; FreeQ[{GLI,FCTopology},expr], lmomsRaw_List, Optio
 	Block[{	ex, props, allmoms, extmoms, lmoms, lineMomenta, intEdgesList,
 			extEdgesList, numExtMoms,	numEdges, optFactoring,	auxExtEdgesList,
 			numIntVertices, numExtVertices, auxExternalMoms, numVertices,
-			res, aux, dots, optAuxiliaryMomenta, time, pref=1, massTerms, optMomentum, timeLimit},
+			res, aux, dots, optAuxiliaryMomenta, time, pref=1, massTerms, optMomentum,
+			timeLimit, optInitialSubstitutions},
 
 		If [OptionValue[FCVerbose]===False,
 			lbtgVerbose=$VeryVerbose,
@@ -138,10 +152,11 @@ FCLoopIntegralToGraph[expr_/; FreeQ[{GLI,FCTopology},expr], lmomsRaw_List, Optio
 		optSelect 			= OptionValue[Select];
 		optAuxiliaryMomenta = OptionValue[AuxiliaryMomenta];
 		optMomentum			= OptionValue[Momentum];
+		optInitialSubstitutions = OptionValue[InitialSubstitutions];
 
 		If[OptionValue[FCI],
 			ex = expr,
-			ex = FCI[expr]
+			{ex,optInitialSubstitutions} = FCI[{expr,optInitialSubstitutions}]
 		];
 
 		If [!FreeQ2[$ScalarProducts, {lmomsRaw}],
@@ -156,7 +171,8 @@ FCLoopIntegralToGraph[expr_/; FreeQ[{GLI,FCTopology},expr], lmomsRaw_List, Optio
 
 
 		FCPrint[1,"FCLoopIntegralToGraph: Entering. ", FCDoControl->lbtgVerbose];
-		FCPrint[3,"FCLoopIntegralToGraph: Entering  with: ", ex, FCDoControl->lbtgVerbose];
+		FCPrint[2,"FCLoopIntegralToGraph: Entering  with: ", ex, FCDoControl->lbtgVerbose];
+		FCPrint[2,"FCLoopIntegralToGraph: Kinematics: ", optInitialSubstitutions, FCDoControl->lbtgVerbose];
 
 		(*
 			Normally, when graphing an integral we care only about the denominators. Hence, the numerator should
@@ -193,6 +209,8 @@ FCLoopIntegralToGraph[expr_/; FreeQ[{GLI,FCTopology},expr], lmomsRaw_List, Optio
 		aux = FCFeynmanPrepare[ex, lmoms, FCI -> True, Check->False, Collecting -> False];
 		FCPrint[1,"FCLoopIntegralToGraph: FCFeynmanPrepare done, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->lbtgVerbose];
 
+		FCPrint[3, "FCLoopIntegralToGraph: After FCFeynmanPrepare: ", aux, FCDoControl->lbtgVerbose];
+
 		(*Check if the F-polynomial corresponds to a tadpole *)
 		If[	FreeQ2[ExpandScalarProduct[aux[[2]],FCI->True],{Momentum,CartesianMomentum,TemporalMomentum}],
 			(*tadpole!*)
@@ -214,6 +232,14 @@ FCLoopIntegralToGraph[expr_/; FreeQ[{GLI,FCTopology},expr], lmomsRaw_List, Optio
 
 		dots  = Transpose[props][[2]];
 		props = Transpose[props][[1]];
+
+		(*integral that consists of a single propagator is always a 1-loop tadpole*)
+		If[Length[props]===1,
+			FCPrint[2, "FCLoopIntegralToGraph: Tadpole detected. ", FCDoControl->lbtgVerbose];
+			extmoms={}
+		];
+
+
 
 
 		time=AbsoluteTime[];
