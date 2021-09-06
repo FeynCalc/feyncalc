@@ -179,7 +179,7 @@ System`Convert`TeXFormDump`maketex[i_Integer] := ToString[i];
 
 fixTitle[cell_, ___]:= "---\ntitle: "<>
 	M2MD`Private`BoxesToString[cell, "PlainText"]<>"\n---\n";
-Print["Exporting the notebook to", outputMD];
+Print["Exporting the notebook to ", outputMD];
 MDExport[outputMD, nb,"CellStyleRules"-> <|
   "Title"->{"Text",fixTitle}|>];
 Print["Export done."];
