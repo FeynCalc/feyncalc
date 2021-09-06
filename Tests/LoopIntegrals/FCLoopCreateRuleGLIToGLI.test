@@ -41,5 +41,26 @@ k1-k2+q)},{0,1},1}],SFAD[{{0,nb.(-k1+k3+q)},{0,1},1}],SFAD[{{-k1,0},{\
 SFAD[{{k1+k2-k3-q,0},{0,1},1}],SFAD[{{-k1-k2+q,0},{0,1},1}]}]]",
 "GLI[\"tmpTopo18\", {n1_, n3_, n4_, n5_, n6_, n7_, n8_, n9_, n10_, \
 n11_, n12_}] :> GLI[\"tmpTopo4\", {n1, 0, n3, n4, n5, n6, n7, n8, n9, \
-n10, n11, n12}]"}
-})
+n10, n11, n12}]"},
+{"FCLoopCreateRuleGLIToGLI-ID6",
+"FCLoopCreateRuleGLIToGLI[
+{FCTopology[
+prop2l, {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - q, m3}],
+FAD[{p1 - q, m4}], FAD[{p1 - p2, m5}]}, {p1, p2}, {q}, {}, {}],
+FCTopology[
+tad2l, {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - p2, m3}]}, {p1,
+p2}, {}, {}, {}]}, {{FCTopology[
+prop2lX1, {FAD[{p2, m2}], FAD[{p1 - q, m3}], FAD[{p1 - q, m4}],
+FAD[{p1 - p2, m5}]}, {p1, p2}, {q}, {}, {}],
+FCTopology[
+prop2lX5, {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - q, m3}],
+FAD[{p1 - q, m4}]}, {p1, p2}, {q}, {}, {}]
+}, {FCTopology[
+tad2lX2, {FAD[{p1, m1}], FAD[{p1 - p2, m3}]}, {p1,
+p2}, {}, {}, {}],
+FCTopology[
+tad2lX3, {FAD[{p1, m1}], FAD[{p2, m2}]}, {p1, p2}, {}, {}, {}]}}]",
+"{{GLI[prop2lX1, {n2_, n3_, n4_, n5_}] :> GLI[prop2l, {0, n2, n3, n4, n5}],
+GLI[prop2lX5, {n1_, n2_, n3_, n4_}] :> GLI[prop2l, {n1, n2, n3, n4, 0}]},
+{GLI[tad2lX2, {n1_, n3_}] :> GLI[tad2l, {n1, 0, n3}], GLI[tad2lX3, {n1_, n2_}] :> GLI[tad2l, {n1, n2, 0}]}}"}
+});

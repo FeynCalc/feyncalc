@@ -17,13 +17,19 @@
 
 
 FCLoopCreateRuleGLIToGLI::usage =
-"FCLoopCreateRuleGLIToGLI[topology1, topology2] creates a GLI replacement rule \
-assuming that the topology2 is a subtopology of topology1. Both topologies must \
-be given as FCTopology objects.
+"FCLoopCreateRuleGLIToGLI[topology1, topology2] creates a GLI replacement rule
+assuming that the topology2 is a subtopology of topology1. Both topologies
+must be given as FCTopology objects.
 
-It is also possible to FCLoopCreateRuleGLIToGLI[topo1, {subtopo1, subtopo2, ...}] \
-provided that {subtopo1, subtopo2, ...} are subtopologies of topo1 that were obtained \
-by removing some propagators from topo1 and not performing any loop momentum shifts afterwards.";
+It is also possible to use FCLoopCreateRuleGLIToGLI[topo1, {subtopo1,
+subtopo2, ...}] provided that {subtopo1, subtopo2, ...} are subtopologies of
+topo1 that were obtained by removing some propagators from topo1 and not
+performing any loop momentum shifts afterwards.
+
+Furthermore, when working with lists of topologies one can write
+FCLoopCreateRuleGLIToGLI[{topo1, topo2, ...}, {{subtopo11, subtopo12, ...},
+{subtopo21, subtopo22, ...}, ..}].
+";
 
 FCLoopCreateRuleGLIToGLI::failmsg = "Error! FCLoopCreateRuleGLIToGLI has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`";
@@ -43,6 +49,9 @@ Options[FCLoopCreateRuleGLIToGLI] = {
 	MomentumExpand	-> True
 };
 
+
+FCLoopCreateRuleGLIToGLI[mainTopos:{__FCTopology}, subTopos: {{__FCTopology}..}, opts:OptionsPattern[]] :=
+	MapThread[FCLoopCreateRuleGLIToGLI[#1,#2,opts]&,{mainTopos,subTopos},opts];
 
 FCLoopCreateRuleGLIToGLI[mainTopo_FCTopology, subTopos: {__FCTopology}, opts:OptionsPattern[]] :=
 	FCLoopCreateRuleGLIToGLI[mainTopo, #, opts]&/@subTopos;
