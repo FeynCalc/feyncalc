@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FCLoopFromGLI															*)
+(* :Title: FCLoopFromGLI													*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -108,6 +108,8 @@ FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
 		fromGliRule = Map[rule[GLI[#[[1]],
 			Table[pattern[ToExpression["n"<>ToString[i]],_],{i,1,Length[#[[2]]]}]], powFu[#[[2]],Length[#[[2]]]]]&,relevantTopos]/.pattern->Pattern/.rule->RuleDelayed;
 
+
+
 		FCPrint[3,"FCLoopFromGLI: Conversion rules: ", fromGliRule, FCDoControl->fgliVerbose];
 
 		listGLIEval = listGLI /. Dispatch[fromGliRule];
@@ -118,6 +120,7 @@ FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
 			Message[FCLoopFromGLI::failmsg, "Failed to eliminate some of the GLIs."];
 			Abort[]
 		];
+
 
 		If[	OptionValue[FeynAmpDenominatorCombine],
 			listGLIEval = FeynAmpDenominatorCombine[#,FCI->True]&/@listGLIEval
@@ -158,7 +161,7 @@ power[c_. FeynAmpDenominator[(h:StandardPropagatorDenominator|CartesianPropagato
 	c^i FeynAmpDenominator[h[a,{i, s}]]/; !optFeynAmpDenominatorExplicit;
 
 power[c_. FeynAmpDenominator[(h:StandardPropagatorDenominator|CartesianPropagatorDenominator|GenericPropagatorDenominator)[a__,{1,s_}]], i_Integer?Negative]:=
-	c^i FeynAmpDenominatorExplicit[FeynAmpDenominator[h[a,{i, s}]], FCE->True, ExpandScalarProduct->optExpandScalarProduct]/; optFeynAmpDenominatorExplicit;
+	c^i FeynAmpDenominatorExplicit[FeynAmpDenominator[h[a,{i, s}]], ExpandScalarProduct->optExpandScalarProduct]/; optFeynAmpDenominatorExplicit;
 
 powFu[x_,len_]:=
 	Times@@MapIndexed[power[#1,ToExpression["n"<>ToString[First[#2]]]]&,x]

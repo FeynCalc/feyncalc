@@ -102,6 +102,19 @@ GFAD[SPD[p3,p4]+y]},{p1,p2,p3,p4},{},{},{}]},FeynAmpDenominatorExplicit\[Rule]Tr
 {"fcstFCLoopFromGLI-ID22",
 "FCLoopFromGLI[GLI[topo1,{0,-1}],{FCTopology[topo1,{GFAD[SPD[p1,p2]+x],\
 GFAD[SPD[p3,p4]+y]},{p1,p2,p3,p4},{},{},{}]},FeynAmpDenominatorExplicit\[Rule]True,FCE\
-\[Rule]True]", "y + SPD[p3, p4]"}
+\[Rule]True]", "y + SPD[p3, p4]"},
+{"fcstFCLoopFromGLI-ID23",
+"FCLoopFromGLI[{GLI[topo1, {1, 1, -1}]}, {FCTopology[
+topo1, {FeynAmpDenominator[
+StandardPropagatorDenominator[Momentum[q, D], 0, 0, {1, 1}]],
+FeynAmpDenominator[
+StandardPropagatorDenominator[-Momentum[p, D] + Momentum[q, D],
+0, 0, {1, 1}]],
+FeynAmpDenominator[
+GenericPropagatorDenominator[-x +
+Pair[Momentum[p, D], Momentum[p, D]] Pair[Momentum[p, D],
+Momentum[q, D]], {1, 1}]]}, {q, p}, {}, {}, {}]}]", "{FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D],
+0, 0, {1, 1}]]*FeynAmpDenominator[StandardPropagatorDenominator[-Momentum[p, D] + Momentum[q, D], 0, 0, {1, 1}]]*
+(-x + Pair[Momentum[p, D], Momentum[p, D]]*Pair[Momentum[p, D], Momentum[q, D]])}"}
 });
 
