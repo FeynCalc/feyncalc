@@ -1,8 +1,5 @@
 (* ::Package:: *)
 
- 
-
-
 (* ::Section:: *)
 (*FCLoopFindTopologies*)
 
@@ -23,22 +20,15 @@
 (*Examples*)
 
 
-FCLoopFindTopologies[GFAD[{{-SPD[p1,p2]+SPD[p1,Q]*SPD[p2,Q],1},1}]
-*HoldForm[cc1]*SFAD[{{p1,0},{0,1},1}]*SFAD[{{p2,0},{0,1},1}]*SFAD[{{
-p3,0},{0,1},1}]*SFAD[{{p1-Q,0},{0,1},2}]*SFAD[{{p1+p2-Q,0},{0,1},1}]*
-SFAD[{{p1+p2+p3-Q,0},{0,1},1}]+GFAD[{{-SPD[p1,p2]+SPD[p1,Q]*SPD[p2,Q],
-1},1}]*HoldForm[cc2]*SFAD[{{p1,0},{0,1},1}]*SFAD[{{p2,0},{0,1},1}]*
-SFAD[{{p3,0},{0,1},1}]*SFAD[{{p1-Q,0},{0,1},1}]*SFAD[{{p1+p2-Q,0},{0,
-1},1}]*SFAD[{{p1+p3-Q,0},{0,1},1}]*SFAD[{{p1+p2+p3-Q,0},{0,1},1}]+
-GFAD[{{-SPD[p1,p2]+SPD[p1,Q]*SPD[p2,Q],1},1}]*HoldForm[cc3]*SFAD[{{p1,
-0},{0,1},1}]*SFAD[{{p2,0},{0,1},1}]*SFAD[{{p3,0},{0,1},1}]*SFAD[{{p1-
-Q,0},{0,1},1}]*SFAD[{{p2-Q,0},{0,1},1}]*SFAD[{{p2+p3-Q,0},{0,1},1}]*
-SFAD[{{p1+p2+p3-Q,0},{0,1},1}]+GFAD[{{-SPD[p1,p2]+SPD[p1,Q]*SPD[p2,Q],
-1},1}]*HoldForm[cc4]*SFAD[{{p1,0},{0,1},1}]*SFAD[{{p2,0},{0,1},1}]*
-SFAD[{{p3,0},{0,1},1}]*SFAD[{{p2+p3,0},{0,1},1}]*SFAD[{{p1-Q,0},{0,1},
-1}]*SFAD[{{p1+p2-Q,0},{0,1},1}]*SFAD[{{p2+p3-Q,0},{0,1},1}]*SFAD[{{p1+
-p2+p3-Q,0},{0,1},1}]+cc5*GFAD[{{-SPD[p1,p2]+SPD[p1,Q]*SPD[p2,Q],1},1}]
-*SFAD[{{p1,0},{0,1},1}]*SFAD[{{p2,0},{0,1},1}]*SFAD[{{p3,0},{0,1},1}]*
-SFAD[{{p2-Q,0},{0,1},1}]*SFAD[{{p1+p3-Q,0},{0,1},1}]*SFAD[{{p2+p3-Q,0}
-,{0,1},1}]*SFAD[{{p1+p2+p3-Q,0},{0,1},1}],{p1,p2,p3},FCPrint->
-False,FCE->True]
+(* ::Text:: *)
+(*Find topologies occurring in the 2-loop ghost self-energy amplitude*)
+
+
+amp=Get[FileNameJoin[{$FeynCalcDirectory,"DocumentationFiles","Examples",
+"Amplitudes","Gh-Gh-2L.m"}]];
+
+
+res=FCLoopFindTopologies[amp,{q1,q2}];
+
+
+res//Last

@@ -17,14 +17,15 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopFindTopologies::usage =
-"FCLoopFindTopologies[exp, {q1, q2, ...}] attempts to identify the loop integral \
-topologies present in exp by looking at the propagator denominators that \
-depend on the loop momenta q1, q2, ... . It returns a list of two entries, \
-where the first one is the original expression with the denominators \
-rewritten as GLIs, and the second one is the set of the identified \
-topologies. Each of the identified topologies must contain linearly independent \
-propagators (unless the option FCLoopBasisOverdeterminedQ is set to True), but \
-may lack propagtors needed to form a complete basis.";
+"FCLoopFindTopologies[exp, {q1, q2, ...}] attempts to identify the loop
+integral topologies present in exp by looking at the propagator denominators
+that depend on the loop momenta q1, q2, ... . It returns a list of two
+entries, where the first one is the original expression with the denominators
+rewritten as GLIs, and the second one is the set of the identified topologies.
+Each of the identified topologies must contain linearly independent
+propagators (unless the option FCLoopBasisOverdeterminedQ is set to True), but
+may lack propagators needed to form a complete basis.
+";
 
 ExtraPropagators::usage =
 "ExtraPropagators is an option for FCLoopFindTopologies. It can be used to \
@@ -76,8 +77,9 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 			topoHead, topoList, topoList2, ruleGLI, matchedSubtopologies, rulesMatchedSubtopologies,
 			check, finalRule, optNames, overDetermined, newNames, oldNames, ruleNames, finalTopologies,
 			extraPropagatorsFirst,extraPropagatorsLast, addF, addL, arrayF, arrayL, denFreePart, denPart,
-			denFreeTopoName, topoTempName, optFactoring, optFCPrint, namesPreferredTopologies, preferredTopologiesAbsent, optFDS, allFADs,
-			allFADsSimp, ruleFADsSimp, exFinal, optOrdering, orderingFirst, orderingLast, topoName, optHead},
+			denFreeTopoName, topoTempName, optFactoring, namesPreferredTopologies, preferredTopologiesAbsent, optFDS, allFADs,
+			allFADsSimp, ruleFADsSimp, exFinal, optOrdering, orderingFirst, orderingLast, topoName, optHead,
+			momenta},
 
 		optExtraPropagators 	= OptionValue[ExtraPropagators];
 		optOrdering 			= OptionValue[Ordering];
@@ -86,7 +88,6 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 		optHead					= OptionValue[Head];
 		optFactoring 			= OptionValue[Factoring];
 		optNames 				= OptionValue[Names];
-		optFCPrint				= OptionValue[FCPrint];
 		optFDS					= OptionValue[FDS];
 
 		optPreferredTopologies = optPreferredTopologies /. FCTopology[id_,re_]:> FCTopology[topoName[id],re];
@@ -229,7 +230,9 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 
 			(*	There are predefined topologies to be used.	*)
 			optPreferredTopologies = FCI[optPreferredTopologies];
-			If[	!MatchQ[optPreferredTopologies,{FCTopology[_,{_FeynAmpDenominator ..}]..}],
+
+
+			If[	!FCLoopValidTopologyQ[optPreferredTopologies],
 				Message[FCLoopFindTopologies::failmsg,"The list of the preferred topologies is incorrect."];
 				Abort[]
 			];
@@ -363,9 +366,8 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 
 				If[	!FreeQ[topoList,GenericPropagatorDenominator],
 
-					If[	optFCPrint,
-						FCPrint[0, "Some topology candidates contain GFADs. To avoid false positives, those will not be checked with  FCLoopBasisOverdeterminedQ.", FCDoControl->fcfsopVerbose];
-					];
+					FCPrint[0, "Some topology candidates contain GFADs. To avoid false positives, those will not be checked with  FCLoopBasisOverdeterminedQ.", FCDoControl->fcfsopVerbose];
+
 					overDetermined = Map[FCLoopBasisOverdeterminedQ[Times@@#,lmoms,FCI->True]&, SelectFree[(topoList/.topoHead->Identity),GenericPropagatorDenominator]],
 
 					overDetermined = Map[FCLoopBasisOverdeterminedQ[Times@@#,lmoms,FCI->True]&, (topoList/.topoHead->Identity)]
@@ -382,8 +384,16 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 
 			time=AbsoluteTime[];
 			FCPrint[1,"FCLoopFindTopologies: Processing the topologies.", FCDoControl->fcfsopVerbose];
-			topoList2 = MapIndexed[FCTopology[topoTempName <> ToString[First[#2]], #1[[1]]] &,topoList];
-			ruleGLI = topoList2 /. FCTopology[x_, y_] :> Rule[topoHead[y], x];
+
+
+			topoList2 = MapIndexed[(
+
+				momenta = Union[Cases[MomentumExpand[#1[[1]]],Momentum[m_,___]:>m,Infinity]];
+				FCTopology[topoTempName <> ToString[First[#2]], #1[[1]], Intersection[momenta,lmoms], SelectFree[momenta,lmoms], {}, {}]
+
+				)&,
+				topoList];
+			ruleGLI = topoList2 /. FCTopology[x_, y_, ___] :> Rule[topoHead[y], x];
 			denListEval = denListEval /. Dispatch[ruleGLI];
 
 			FCPrint[3, "FCLoopFindTopologies: Topology candidates: ", topoList2, FCDoControl->fcfsopVerbose];
@@ -401,10 +411,15 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 			FCPrint[1,"FCLoopFindTopologies: Identifying the subtopologies.", FCDoControl->fcfsopVerbose];
 			matchedSubtopologies = (checkSubtopology /@ topoList2) /.  Null -> Unevaluated[Sequence[]];
 
-			If[	!MatchQ[matchedSubtopologies, {{FCTopology[_, _List], FCTopology[_, _List]} ..} | {}],
+			FCPrint[3,"FCLoopFindTopologies: Identified subtopologies: ", matchedSubtopologies, FCDoControl->fcfsopVerbose];
+
+			If[	matchedSubtopologies=!={},
+				If[	!FCLoopValidTopologyQ/@matchedSubtopologies,
 				Message[FCLoopFindTopologies::failmsg,"The list of the identified subtopologies is incorrect."];
 				Abort[]
+			]
 			];
+
 			FCPrint[1, "FCLoopFindTopologies: Done identifying the subtopologies, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfsopVerbose];
 
 			FCPrint[3, "FCLoopFindTopologies: matchedSubtopologies: ", matchedSubtopologies, FCDoControl->fcfsopVerbose];
@@ -428,7 +443,7 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 
 				FCPrint[3, "FCLoopFindTopologies: tmp2: ", tmp2, FCDoControl->fcfsopVerbose];
 
-				If[	Length[tmp2[[1]]]=!=Length[realTopologies] && optFCPrint,
+				If[	Length[tmp2[[1]]]=!=Length[realTopologies],
 					FCPrint[0, "The following preferred topologies are not present in the input expression: ", preferredTopologiesAbsent/. topoName->Identity, FCDoControl->fcfsopVerbose];
 				];
 
@@ -438,18 +453,19 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 
 			FCPrint[3, "FCLoopFindTopologies: Identified subtopologies: ", matchedSubtopologies, FCDoControl->fcfsopVerbose];
 			FCPrint[3, "FCLoopFindTopologies: Final topologies: ", realTopologies, FCDoControl->fcfsopVerbose];
-			If[	Length[matchedSubtopologies]+Length[realTopologies]=!=Length[topoList2]+Length[namesPreferredTopologies],
+
+			(*If[	Length[matchedSubtopologies]+Length[realTopologies]=!=Length[topoList2]+Length[namesPreferredTopologies],
 				Message[FCLoopFindTopologies::failmsg,"The numbers of the total, final and matched topologies do not agree."];
 				Abort[]
-			];
+			];*)
 
 
-			If[	optFCPrint,
-				FCPrint[0, "Number of the initial candidate topologies: ", Length[topoList2], FCDoControl->fcfsopVerbose];
-				FCPrint[0, "Number of the identified unique topologies: ", Length[realTopologies], FCDoControl->fcfsopVerbose];
-				FCPrint[0, "Number of the preferred topologies among the unique topologies: ", Length[namesPreferredTopologies], FCDoControl->fcfsopVerbose];
-				FCPrint[0, "Number of the identified subtopologies: ", Length[matchedSubtopologies]-Length[namesPreferredTopologies], FCDoControl->fcfsopVerbose];
-			];
+
+			FCPrint[0, "Number of the initial candidate topologies: ", Length[topoList2], FCDoControl->fcfsopVerbose];
+			FCPrint[0, "Number of the identified unique topologies: ", Length[realTopologies], FCDoControl->fcfsopVerbose];
+			FCPrint[0, "Number of the preferred topologies among the unique topologies: ", Length[namesPreferredTopologies], FCDoControl->fcfsopVerbose];
+			FCPrint[0, "Number of the identified subtopologies: ", Length[matchedSubtopologies]-Length[namesPreferredTopologies], FCDoControl->fcfsopVerbose];
+
 
 			rulesMatchedSubtopologies = FCLoopCreateRuleGLIToGLI[Sequence @@ #, FCI -> True] & /@ matchedSubtopologies;
 
@@ -499,10 +515,11 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1,"FCLoopFindTopologies: Intorducing the final names for the identified topologies.", FCDoControl->fcfsopVerbose];
 		(*	This is the final renaming of the topologies according to the prescription given in the option Names.	*)
+
 		Switch[
-			Head[optNames],
+			optNames,
 			_String,
-				newNames=Table[ToExpression[optNames<>ToString[i]],{i,1,Length[realTopologies]-Length[namesPreferredTopologies]}],
+				newNames=Table[optNames<>ToString[i],{i,1,Length[realTopologies]-Length[namesPreferredTopologies]}],
 			_Symbol,
 				newNames=Table[ToExpression[ToString[optNames]<>ToString[i]],{i,1,Length[realTopologies]-Length[namesPreferredTopologies]}],
 			_Function,
