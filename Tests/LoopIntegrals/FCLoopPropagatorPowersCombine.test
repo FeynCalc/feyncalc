@@ -43,5 +43,17 @@ Tests`LoopIntegrals`fcstFCLoopPropagatorPowersCombine =
 "CFAD[{{p + q, 0}, {mm, 1}, 1}]"},
 {"fcstFCLoopPropagatorPowersCombine-ID8",
 "FCLoopPropagatorPowersCombine[CFAD[{{q,0},{m,1},-1},{{q,0},{m,1},\
-1}],FCE->True]", "1"}
+1}],FCE->True]", "1"},
+{"fcstFCLoopPropagatorPowersCombine-ID9",
+"FCLoopPropagatorPowersCombine[
+FeynAmpDenominator[
+GenericPropagatorDenominator[-m^2 +
+	Pair[Momentum[p, D], Momentum[p, D]], {1, 1}],
+GenericPropagatorDenominator[-m^2 +
+	Pair[Momentum[p, D], Momentum[p, D]], {1, 1}],
+GenericPropagatorDenominator[-m^2 +
+	Pair[Momentum[p, D], Momentum[p, D]], {1, 1}]]]",
+"FeynAmpDenominator[
+GenericPropagatorDenominator[-m^2 +
+Pair[Momentum[p, D], Momentum[p, D]], {3, 1}]]"}
 });
