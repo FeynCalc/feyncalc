@@ -1,0 +1,157 @@
+
+
+(* :Title: FromGFAD.test                                          	    	*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2021 Rolf Mertig
+	Copyright (C) 1997-2021 Frederik Orellana
+	Copyright (C) 2014-2021 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FromGFAD			  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`FromGFAD =
+({
+{"fcstFromGFAD-ID1",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[-la \
+Pair[Momentum[p1,D],Momentum[p1,D]]+2 \
+Pair[Momentum[p1,D],Momentum[q,D]],{1,1}]]]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Sqrt[-la]*\
+Momentum[p1, D], 2*Pair[Momentum[p1, D], Momentum[q, D]], 0, {1, \
+1}]]"},
+{"fcstFromGFAD-ID2",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[-\!\(\*\
+SuperscriptBox[\(mb\), \(2\)]\)-\!\(\*SuperscriptBox[\(la\), \(2\)]\) \
+Pair[Momentum[p1,D],Momentum[p1,D]]-2 la \
+Pair[Momentum[p1,D],Momentum[p3,D]]+2 la \
+Pair[Momentum[p1,D],Momentum[q,D]]-Pair[Momentum[p3,D],Momentum[p3,D]]\
++2 Pair[Momentum[p3,D],Momentum[q,D]],{1,1}]],FCVerbose->-1]",
+"FeynAmpDenominator[GenericPropagatorDenominator[-mb^2 - \
+la^2*Pair[Momentum[p1, D], Momentum[p1, D]] - 2*la*Pair[Momentum[p1, \
+D], Momentum[p3, D]] + 2*la*Pair[Momentum[p1, D], Momentum[q, D]] - \
+Pair[Momentum[p3, D], Momentum[p3, D]] + 2*Pair[Momentum[p3, D], \
+Momentum[q, D]], {1, 1}]]"},
+{"fcstFromGFAD-ID3",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[\!\(\*\
+SuperscriptBox[\(mb\), \(2\)]\)-\!\(\*SuperscriptBox[\(la\), \(2\)]\) \
+Pair[Momentum[p1,D],Momentum[p1,D]]-2 la \
+Pair[Momentum[p1,D],Momentum[p3,D]]-Pair[Momentum[p3,D],Momentum[p3,D]\
+],{1,1}]],PowerExpand->{la}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[I*la*Momentum[p1,\
+D] + I*Momentum[p3, D], 0, mb^2, {1, 1}]]"},
+{"fcstFromGFAD-ID4", "FromGFAD[GFAD[SPD[p1]]]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p1, D], \
+0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID5", "FromGFAD[GFAD[-SPD[p1]]]",
+"FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, \
+D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID6", "FromGFAD[GFAD[la^2 SPD[p1]]]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Sqrt[la^2]*\
+Momentum[p1, D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID7",
+"FromGFAD[GFAD[la^2 SPD[p1]],PowerExpand->{la}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[la*Momentum[p1, \
+D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID8", "FromGFAD[GFAD[SPD[p1]-m^2]]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p1, D], \
+0, -m^2, {1, 1}]]"},
+{"fcstFromGFAD-ID9", "FromGFAD[GFAD[-SPD[p1]+m^2]]",
+"FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, \
+D], 0, m^2, {1, 1}]]"},
+{"fcstFromGFAD-ID10", "FromGFAD[GFAD[la^2 SPD[p1]+m^2]]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Sqrt[la^2]*\
+Momentum[p1, D], 0, m^2, {1, 1}]]"},
+{"fcstFromGFAD-ID11",
+"FromGFAD[GFAD[la^2 SPD[p1]-m^2],PowerExpand->{la}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[la*Momentum[p1, \
+D], 0, -m^2, {1, 1}]]"},
+{"fcstFromGFAD-ID12", "FromGFAD[GFAD[la SPD[p1,p2]]]",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+la*Pair[Momentum[p1, D], Momentum[p2, D]], 0, {1, 1}]]"},
+{"fcstFromGFAD-ID13", "FromGFAD[GFAD[-la SPD[p1,p2]]]",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-(la*Pair[Momentum[p1, D], Momentum[p2, D]]), 0, {1, 1}]]"},
+{"fcstFromGFAD-ID14", "FromGFAD[GFAD[la^2 SPD[p1,p2]]]",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+la^2*Pair[Momentum[p1, D], Momentum[p2, D]], 0, {1, 1}]]"},
+{"fcstFromGFAD-ID15",
+"FromGFAD[GFAD[la^2 SPD[p1,p2]],PowerExpand->{la}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+la^2*Pair[Momentum[p1, D], Momentum[p2, D]], 0, {1, 1}]]"},
+{"fcstFromGFAD-ID16", "FromGFAD[GFAD[la SPD[p1,p2]-m^2]]",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+la*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFromGFAD-ID17", "FromGFAD[GFAD[-la SPD[p1,p2]+m^2]]",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-(la*Pair[Momentum[p1, D], Momentum[p2, D]]), m^2, {1, 1}]]"},
+{"fcstFromGFAD-ID18", "FromGFAD[GFAD[la^2 SPD[p1,p2]+m^2]]",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+la^2*Pair[Momentum[p1, D], Momentum[p2, D]], m^2, {1, 1}]]"},
+{"fcstFromGFAD-ID19",
+"FromGFAD[GFAD[la^2 SPD[p1,p2]-m^2],PowerExpand->{la}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[0, \
+la^2*Pair[Momentum[p1, D], Momentum[p2, D]], -m^2, {1, 1}]]"},
+{"fcstFromGFAD-ID20", "FromGFAD[GFAD[CSPD[p1]]]",
+"FeynAmpDenominator[CartesianPropagatorDenominator[\
+CartesianMomentum[p1, -1 + D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID21", "FromGFAD[GFAD[-CSPD[p1]]]",
+"FeynAmpDenominator[CartesianPropagatorDenominator[I*\
+CartesianMomentum[p1, -1 + D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID22", "FromGFAD[GFAD[la^2 CSPD[p1]]]",
+"FeynAmpDenominator[CartesianPropagatorDenominator[Sqrt[la^2]*\
+CartesianMomentum[p1, -1 + D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID23",
+"FromGFAD[GFAD[la^2 CSPD[p1]],PowerExpand->{la}]",
+"FeynAmpDenominator[CartesianPropagatorDenominator[la*\
+CartesianMomentum[p1, -1 + D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID24", "FromGFAD[GFAD[CSPD[p1]-m^2]]",
+"FeynAmpDenominator[CartesianPropagatorDenominator[\
+CartesianMomentum[p1, -1 + D], 0, -m^2, {1, 1}]]"},
+{"fcstFromGFAD-ID25", "FromGFAD[GFAD[-CSPD[p1]+m^2]]",
+"FeynAmpDenominator[CartesianPropagatorDenominator[I*\
+CartesianMomentum[p1, -1 + D], 0, m^2, {1, 1}]]"},
+{"fcstFromGFAD-ID26", "FromGFAD[GFAD[la^2 CSPD[p1]+m^2]]",
+"FeynAmpDenominator[CartesianPropagatorDenominator[Sqrt[la^2]*\
+CartesianMomentum[p1, -1 + D], 0, m^2, {1, 1}]]"},
+{"fcstFromGFAD-ID27",
+"FromGFAD[GFAD[la^2 CSPD[p1]-m^2],PowerExpand->{la}]",
+"FeynAmpDenominator[CartesianPropagatorDenominator[la*\
+CartesianMomentum[p1, -1 + D], 0, -m^2, {1, 1}]]"},
+{"fcstFromGFAD-ID28", "FromGFAD[GFAD[la CSPD[p1,p2]]]",
+"FeynAmpDenominator[CartesianPropagatorDenominator[0, \
+la*CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p2, \
+-1 + D]], 0, {1, 1}]]"},
+{"fcstFromGFAD-ID29", "FromGFAD[GFAD[-la CSPD[p1,p2]]]",
+"FeynAmpDenominator[CartesianPropagatorDenominator[0, \
+-(la*CartesianPair[CartesianMomentum[p1, -1 + D], \
+CartesianMomentum[p2, -1 + D]]), 0, {1, 1}]]"},
+{"fcstFromGFAD-ID30", "FromGFAD[GFAD[la^2 CSPD[p1,p2]]]",
+"FeynAmpDenominator[CartesianPropagatorDenominator[0, \
+la^2*CartesianPair[CartesianMomentum[p1, -1 + D], \
+CartesianMomentum[p2, -1 + D]], 0, {1, 1}]]"},
+{"fcstFromGFAD-ID31",
+"FromGFAD[GFAD[la^2 CSPD[p1,p2]],PowerExpand->{la}]",
+"FeynAmpDenominator[CartesianPropagatorDenominator[0, \
+la^2*CartesianPair[CartesianMomentum[p1, -1 + D], \
+CartesianMomentum[p2, -1 + D]], 0, {1, 1}]]"},
+{"fcstFromGFAD-ID32", "FromGFAD[GFAD[la CSPD[p1,p2]-m^2]]",
+"FeynAmpDenominator[CartesianPropagatorDenominator[0, \
+la*CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p2, \
+-1 + D]], -m^2, {1, 1}]]"},
+{"fcstFromGFAD-ID33", "FromGFAD[GFAD[-la CSPD[p1,p2]+m^2]]",
+"FeynAmpDenominator[CartesianPropagatorDenominator[0, \
+-(la*CartesianPair[CartesianMomentum[p1, -1 + D], \
+CartesianMomentum[p2, -1 + D]]), m^2, {1, 1}]]"},
+{"fcstFromGFAD-ID34", "FromGFAD[GFAD[la^2 CSPD[p1,p2]+m^2]]",
+"FeynAmpDenominator[CartesianPropagatorDenominator[0, \
+la^2*CartesianPair[CartesianMomentum[p1, -1 + D], \
+CartesianMomentum[p2, -1 + D]], m^2, {1, 1}]]"},
+{"fcstFromGFAD-ID35",
+"FromGFAD[GFAD[la^2 CSPD[p1,p2]-m^2],PowerExpand->{la}]",
+"FeynAmpDenominator[CartesianPropagatorDenominator[0, \
+la^2*CartesianPair[CartesianMomentum[p1, -1 + D], \
+CartesianMomentum[p2, -1 + D]], -m^2, {1, 1}]]"}
+});
