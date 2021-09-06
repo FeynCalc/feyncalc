@@ -32,6 +32,10 @@
 (*Examples*)
 
 
+(* ::Subsubsection:: *)
+(*Showcases*)
+
+
 (* ::Text:: *)
 (*1-loop tadpole*)
 
@@ -122,6 +126,10 @@ FCLoopIntegralToGraph[FAD[p1,p2,Q1+p1,Q2-p1,Q1+p1+p2,Q2-p1-p2],{p1,p2}]
 FCLoopGraphPlot[%]
 
 
+(* ::Subsubsection:: *)
+(*Special cases*)
+
+
 (* ::Text:: *)
 (*Not all loop integrals admit a graph representation. Furthermore, an integral may have a weird momentum routing that cannot be automatically recognized by*)
 (*the employed algorithm. Consider e.g.*)
@@ -175,7 +183,7 @@ FCLoopIntegralToGraph[ex]
 (*Yet let us consider*)
 
 
-exShifted=ex/.FCTopology[id_,props_List,rest__]:>FCTopology[id,props/.p2->p2-p3/.p3->p3-p1+Q,rest]
+exShifted=FCReplaceMomenta[ex,{p2->p2-p3+p1-Q,p3->p3-p1+Q}]
 
 
 (* ::Text:: *)
@@ -184,6 +192,27 @@ exShifted=ex/.FCTopology[id_,props_List,rest__]:>FCTopology[id,props/.p2->p2-p3/
 
 FCLoopIntegralToGraph[exShifted,Momentum->{2Q}]
 FCLoopGraphPlot[%]
+
+
+(* ::Text:: *)
+(*When dealing with products of tadpole integrals, the function may not always recognize that the appearing external momenta are spurious. For example, here there is no `q` momentum flowing*)
+(*through any of the lines*)
+
+
+int=SFAD[{{ p1,0},{mg^2,1},1}] SFAD[{{ p3,-2 p3 . q},{0,1},1}]
+FCLoopIntegralToGraph[int,{p1,p3}]
+
+
+(* ::Text:: *)
+(*In this case we may explicitly tell the function that this integral doesn't depend on any external momenta*)
+
+
+FCLoopIntegralToGraph[int,{p1,p3},Momentum->{}]
+FCLoopGraphPlot[%]
+
+
+(* ::Subsubsection:: *)
+(*Eyecandy*)
 
 
 (* ::Text:: *)
@@ -271,6 +300,3 @@ SFAD[{{p1+p3,0},{0,1},1}],SFAD[{{p1+p2+p3,0},{0,1},1}]},{p1,p2,p3},{},{},{}]]
 FCLoopGraphPlot[%,GraphPlot-> {MultiedgeStyle->0.35,Frame->True},Labeled->{
 {"InternalLine",x_,pow_,_}:>x^pow,
 {"ExternalLine",_}:>{}}]
-
-
-
