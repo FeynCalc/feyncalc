@@ -86,6 +86,11 @@ FCLoopPropagatorsToLineMomenta[expr_, OptionsPattern[]] :=
 
 		res = ex /. FeynAmpDenominator-> lineMomentumFromPropagator;
 
+		(* Handle stuff like SFAD[{{I p1 + I p3, 0}, {-mb^2, 1}, 1}] *)
+		If[!FreeQ[res,Complex],
+			res = Replace[Factor[res], {Complex[0, 1] a_, b_} :> {a, b}, 1]
+		];
+
 		FCPrint[3, "FCLoopPropagatorsToLineMomenta: After lineMomentumFromPropagator", res,  FCDoControl->ptlmVerbose];
 
 		If[	!FreeQ2[res,{FeynAmpDenominator,lineMomentumFromPropagator}],
@@ -146,6 +151,12 @@ lineMomentumFromPropagator[StandardPropagatorDenominator[Momentum[mom_, ___],	pr
 	Momentum[b_, ___]], massSq_, {_, _}]]:=
 	{mom + pref/2 b, massSq}/; FreeQ2[mom,auxMoms];
 
+
+(*SFAD eikonal 1/[-p^2 +/- x p.q +/- m^2]  *)
+lineMomentumFromPropagator[StandardPropagatorDenominator[Complex[0,1] Momentum[mom_, ___],	pref_. Pair[Momentum[mom_, ___],
+	Momentum[b_, ___]], massSq_, {_, _}]]:=
+	{mom - pref/2 b, massSq}/; FreeQ2[mom,auxMoms];
+
 (*SFAD eikonal 1/[+/- v.q]  *)
 lineMomentumFromPropagator[StandardPropagatorDenominator[0,	pref_. Pair[Momentum[a_, ___],
 	Momentum[b_, ___]], massSq_, {_, _}]]:=
@@ -177,6 +188,11 @@ lineMomentumFromPropagator[CartesianPropagatorDenominator[0, pref_. CartesianPai
 lineMomentumFromPropagator[CartesianPropagatorDenominator[CartesianMomentum[mom_, ___],	pref_. CartesianPair[CartesianMomentum[mom_, ___],
 	CartesianMomentum[b_, ___]], massSq_, {_, _}]]:=
 	{mom + pref/2 b, massSq}/; FreeQ2[mom,auxMoms];
+
+(*CFAD eikonal 1/[p^2 +/- x p.q +/- m^2]  *)
+lineMomentumFromPropagator[CartesianPropagatorDenominator[Complex[0,1] CartesianMomentum[mom_, ___],	pref_. CartesianPair[CartesianMomentum[mom_, ___],
+	CartesianMomentum[b_, ___]], massSq_, {_, _}]]:=
+	{I mom + pref/2 b, massSq}/; FreeQ2[mom,auxMoms];
 
 (*CFAD eikonal 1/[+/- v.q]  *)
 lineMomentumFromPropagator[CartesianPropagatorDenominator[0,	pref_. CartesianPair[CartesianMomentum[a_, ___],

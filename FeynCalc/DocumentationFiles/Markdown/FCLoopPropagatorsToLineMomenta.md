@@ -1,3 +1,5 @@
+## FCLoopPropagatorsToLineMomenta
+
 `FCLoopPropagatorsToLineMomenta[{prop1, prop2, ...}]` is an auxiliary function that extracts line momenta flowing through the given list of propagators.
 
 ### See also
@@ -55,3 +57,15 @@ FCLoopPropagatorsToLineMomenta[{SFAD[{I (q + l), -m^2}], SFAD[{I p, -m^2}]}, FCE
 {{l + q, p}, {m^2, m^2}, {SFAD[{{I*(l + q), 0}, {-m^2, 1}, 1}], 
   SFAD[{{I*p, 0}, {-m^2, 1}, 1}]}}
 ```
+
+```mathematica
+FCLoopPropagatorsToLineMomenta[{SFAD[{{I p1, -2 p1 . q}, {0, 1}, 1}]},FCE -> True]
+```
+
+$$\left(
+\begin{array}{c}
+ \text{p1}+q \\
+ 0 \\
+ \frac{1}{(-\text{p1}^2-2 (\text{p1}\cdot q)+i \eta )} \\
+\end{array}
+\right)$$

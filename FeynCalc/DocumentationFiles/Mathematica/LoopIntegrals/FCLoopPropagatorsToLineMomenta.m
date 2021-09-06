@@ -1,5 +1,8 @@
 (* ::Package:: *)
 
+ 
+
+
 (* ::Section:: *)
 (*FCLoopPropagatorsToLineMomenta*)
 
@@ -35,3 +38,6 @@ FCLoopPropagatorsToLineMomenta[%,FCE->True]
 
 
 FCLoopPropagatorsToLineMomenta[{SFAD[{I(q+l),-m^2}],SFAD[{I p,-m^2}]},FCE->True]//InputForm
+
+
+FCLoopPropagatorsToLineMomenta[{SFAD[{{I p1,-2 p1 . q},{0,1},1}]},FCE->True]
