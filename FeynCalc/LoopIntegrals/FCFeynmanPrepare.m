@@ -307,16 +307,16 @@ FCFeynmanPrepare[expr_/;FreeQ[{GLI,FCTopology},expr], lmoms_List /; !OptionQ[lmo
 			}
 		];
 
-		fpJ = SelectFree2[tmp0 + null1 + null2,{spd,qkspd}] /. null1|null2 -> 0;
+		fpJ = SelectFree2[tmp0,{spd,qkspd}];
 		FCPrint[3,"FCFeynmanPrepare: fpJ: ", fpJ, FCDoControl->fcszVerbose];
 
-		fpQ = SelectNotFree2[tmp0 + null1 + null2,qkspd] /. null1|null2 -> 0;
+		fpQ = SelectNotFree2[tmp0,qkspd];
 
 		FCPrint[3,"FCFeynmanPrepare: raw fpQ: ", fpQ, FCDoControl->fcszVerbose];
 
 		If[ !isCartesian,
-			fpQ = Map[ReplaceAll[SelectNotFree2[(-1/2) fpQ + null1 + null2, #], qkspd[a_, #] :> Pair[Momentum[a,dim], LorentzIndex[li,dim]]] &, lmoms],
-			fpQ = Map[ReplaceAll[SelectNotFree2[(-1/2) fpQ + null1 + null2, #], qkspd[a_, #] :> CartesianPair[CartesianMomentum[a,dim], CartesianIndex[ci,dim]]] &, lmoms];
+			fpQ = Map[ReplaceAll[SelectNotFree2[(-1/2) fpQ, #], qkspd[a_, #] :> Pair[Momentum[a,dim], LorentzIndex[li,dim]]] &, lmoms],
+			fpQ = Map[ReplaceAll[SelectNotFree2[(-1/2) fpQ, #], qkspd[a_, #] :> CartesianPair[CartesianMomentum[a,dim], CartesianIndex[ci,dim]]] &, lmoms];
 		];
 		FCPrint[3,"FCFeynmanPrepare: final fpQ: ", fpQ, FCDoControl->fcszVerbose];
 
@@ -330,7 +330,7 @@ FCFeynmanPrepare[expr_/;FreeQ[{GLI,FCTopology},expr], lmoms_List /; !OptionQ[lmo
 
 		FCPrint[3,"FCFeynmanPrepare: tmp0: ", tmp0, FCDoControl->fcszVerbose];
 
-		mtmp = SelectNotFree2[tmp0 + null1 + null2, spd];
+		mtmp = SelectNotFree2[tmp0, spd];
 
 		FCPrint[3,"FCFeynmanPrepare: mtmp: ", mtmp, FCDoControl->fcszVerbose];
 

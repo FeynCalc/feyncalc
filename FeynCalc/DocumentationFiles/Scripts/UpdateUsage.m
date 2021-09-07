@@ -28,7 +28,7 @@ Block[{name,text,tmp,res,outFile},
 	name=ToString[nameRaw];
 	text=Import[path,"Text"];
 	tmp=StringCases[text,
-	(name<>"::usage =\n"~~Shortest[x__]~~"\";"):>x];
+	{(name<>"::usage =\n"~~Shortest[x__]~~"\";"):>x,(name<>"::usage=\n"~~Shortest[x__]~~"\";"):>x}];
 	(*Print[Length[tmp]];*)
 	If[Length[tmp]=!=1,
 		Print["Error, the file does not contain the symbol ", name];
@@ -56,10 +56,10 @@ Block[{name,text,tmp,res,outFile},
 FileNames["*.m",FileNameJoin[{$FeynCalcDirectory,"DocumentationFiles","Mathematica","LoopIntegrals"}],Infinity];
 
 
-aux=docuToUsage["/media/Data/Projects/VS/FeynCalc/FeynCalc/DocumentationFiles/Mathematica/LoopIntegrals/ToGFAD.m"];
+aux=docuToUsage["/media/Data/Projects/VS/FeynCalc/FeynCalc/DocumentationFiles/Mathematica/Shared/Tools/SelectFree2.m"];
 
 
-updateUsage["/media/Data/Projects/VS/FeynCalc/FeynCalc/LoopIntegrals/ToGFAD.m",ToGFAD,aux,True]
+updateUsage["/media/Data/Projects/VS/FeynCalc/FeynCalc/Shared/SharedTools.m",SelectFree2,aux,True]
 
 
 

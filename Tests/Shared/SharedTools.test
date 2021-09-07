@@ -374,7 +374,11 @@ Tests`Shared`fcstSharedToolsSelectFree = {
 {"fcstSharedToolsSelectFree-ID8","SelectFree[a (b + f[a] + d), d]",
 	"a"},
 {"fcstSharedToolsSelectFree-ID9","SelectFree2[a (b + c) + d, b]",
-	"a c + d"}
+	"a c + d"},
+{"fcstSharedToolsSelectFree-ID10","SelectFree[(a-b+c)^2-(a^2-2 a b+2 a c+b^2-2 b c+c^2),a]",
+	"-b^2+2 b c-c^2"},
+{"fcstSharedToolsSelectFree-ID11","SelectFree2[(a-b+c)^2-(a^2-2 a b+2 a c+b^2-2 b c+c^2),a]",
+	"0"}
 };
 
 Tests`Shared`fcstSharedToolsSelectNotFree = {
@@ -395,7 +399,14 @@ Tests`Shared`fcstSharedToolsSelectNotFree = {
 {"fcstSharedToolsSelectNotFree-ID8","SelectNotFree[a (b + f[a] + d), d]",
 	"(b + f[a] + d)"},
 {"fcstSharedToolsSelectNotFree-ID9","SelectNotFree2[a (b + c) + d, b]",
-	"a b"}
+	"a b"},
+{"fcstSharedToolsSelectNotFree-ID10","SelectNotFree2[a,b]",
+	"0"},
+{"fcstSharedToolsSelectNotFree-ID11","SelectNotFree2[a,a]",
+	"a"},
+{"fcstSharedToolsSelectNotFree-ID12","SelectNotFree2[(a-b+c)^2-
+(a^2-2 a b+2 a c+b^2-2 b c+c^2),a]",
+	"0"}
 };
 
 Tests`Shared`fcstSharedToolsFCFactorOut = {

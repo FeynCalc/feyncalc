@@ -232,9 +232,18 @@ an integer (even if it is symbolic). Furthermore \
 (-1)^(-n) -> (-1)^n and Exp[I m Pi] -> (-1)^m.";
 
 SelectFree2::usage=
-"SelectFree2[expr, a, b, ...] is like SelectFree but \
-it first expands the expression w.r.t to the arguments via \
-Expand2";
+"SelectFree2[expr, a, b, ...] is similar to SelectFree but it also differs from
+the latter in several respects.
+
+If expr is  a list, SelectFree2 behaves exactly the same way as SelectFree.
+
+If expr is not a list, SelectFree2 first expands the expression w.r.t. the
+arguments via Expand2.
+
+Furthermore, SelectFree2[a,b] returns a and SelectFree2[a,a] returns 0. This
+differs from the behavior of SelectFree but is consistent with the naive
+expectations when applying the function to a sum of terms.
+";
 
 SelectFree::usage=
 "SelectFree[expr, a, b, ...] is equivalent to \
@@ -251,9 +260,19 @@ SelectNotFree[a,a] returns a (where a is not a product or \
 a sum).";
 
 SelectNotFree2::usage=
-"SelectNotFree2[expr, a, b, ...] is like SelectNotFree but \
-it first expands the expression w.r.t to the arguments via \
-Expand2";
+"SelectNotFree2[expr, a, b, ...] is similar to SelectNotFree but it also
+differs from the latter in several respects.
+
+If expr is  a list, SelectNotFree2 behaves exactly the same way as
+SelectNotFree.
+
+If expr is not a list, SelectNotFree2 first expands the expression w.r.t. the
+arguments via Expand2.
+
+Furthermore, SelectNotFree2[a,b] returns 0. This differs from the behavior of
+SelectFree but is consistent with the naive expectations when applying the
+function to a sum of terms.
+";
 
 SelectSplit::usage=
 "SelectSplit[l, p] Construct list of mutually exclusive subsets from l in \
@@ -950,7 +969,7 @@ PowerSimplify[x_, OptionsPattern[]] :=
 		nx
 	];
 
-SelectFree[0,_] :=
+SelectFree[0,__] :=
 	0;
 
 SelectFree[a_, b__] :=
@@ -968,11 +987,24 @@ SelectFree[a_, b__] :=
 		]
 	];
 
+SelectFree2[0,__]:=
+	0;
+
+SelectFree2[x_List,args__] :=
+	SelectFree[x,args];
 
 SelectFree2[x_,args__] :=
-	SelectFree[Expand2[x,Flatten[{args}]],args];
+	Block[{tmp, res, null1, null2},
+		tmp = Expand2[x,Flatten[{args}]];
 
-SelectNotFree[0,_] :=
+		If[	Head[tmp]===Plus,
+			res = SelectFree[tmp,args],
+			res = SelectFree[tmp+null1+null2,args] /. null1|null2->0
+		];
+		res
+	]/; Head[x]=!=List && x=!=0;
+
+SelectNotFree[0,__] :=
 	0;
 
 SelectNotFree[a_, b__] :=
@@ -989,8 +1021,22 @@ SelectNotFree[a_, b__] :=
 		]
 	];
 
+SelectNotFree2[0,__]:=
+	0;
+
+SelectNotFree2[x_List,args__] :=
+	SelectNotFree[x,args];
+
 SelectNotFree2[x_,args__] :=
-	SelectNotFree[Expand2[x,Flatten[{args}]],args];
+	Block[{tmp, res, null1, null2},
+		tmp = Expand2[x,Flatten[{args}]];
+
+		If[	Head[tmp]===Plus,
+			res = SelectNotFree[tmp,args],
+			res = SelectNotFree[tmp+null1+null2,args] /. null1|null2->0
+		];
+		res
+	]/; Head[x]=!=List && x=!=0;
 
 SelectSplit[ex_, p_List, opts___Rule] :=
 	Block[{ii, jj, aa, res, exp = List @@ ex, h = Head[ex],
