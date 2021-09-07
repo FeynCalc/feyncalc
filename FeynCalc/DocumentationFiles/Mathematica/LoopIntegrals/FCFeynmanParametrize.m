@@ -48,6 +48,10 @@
 (*parameters and then finally integrates out loop momenta.*)
 
 
+(* ::Text:: *)
+(*For a proper analysis of a loop integral one usually needs the `U` and `F` polynomials separately. Since internally `FCFeynmanParametrize` uses `FCFeynmanPrepare`, the information available from the latter is also accessible to `FCFeynmanParametrize`. By setting the option `FCFeynmanPrepare` to `True`, the output of `FCFeynmanPrepare` will be added the the output of `FCFeynmanParametrize` as the 4th list element.*)
+
+
 (* ::Subsection:: *)
 (*See also*)
 
@@ -173,6 +177,22 @@ intT=FCFeynmanParameterJoin[{{props[[1]]props[[2]],1,x},props[[3]]props[[4]],y},
 
 FCFeynmanParametrize[intT[[1]],intT[[2]],{p1,p3},Indexed->True,FCReplaceD->{D->4-2ep},
 FinalSubstitutions->{SPD[n]->1,m->1},Variables->intT[[3]]]
+
+
+(* ::Text:: *)
+(*In the case that we need `U` and `F` polynomials in addition to the normal output (e.g. for HyperInt)*)
+
+
+SFAD[{{0, 2*k1 . n}}]*SFAD[{{0, 2*k2 . n}}]*SFAD[{k1, m^2}]*SFAD[{k2, m^2}]*SFAD[{k1 - k2, m^2}]
+out=FCFeynmanParametrize[%,{k1,k2},Names->x,FCReplaceD->{D->4-2Epsilon}, FCFeynmanPrepare->True]
+
+
+(* ::Text:: *)
+(*From this output we can easily extract the integrand, its $x_i$-independent prefactor and the two Symanzik polynomials*)
+
+
+{integrand,pref} = out[[1;;2]]
+{uPoly,fPoly}=out[[4]][[1;;2]]
 
 
 (* ::Subsubsection:: *)

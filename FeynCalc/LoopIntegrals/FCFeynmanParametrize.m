@@ -18,7 +18,7 @@
 
 FCFeynmanParametrize::usage =
 "FCFeynmanParametrize[int, {q1, q2, ...}] introduces Feynman parameters for the
-multi-loop integral int. The function returns {fpInt,pref,vars},
+multi-loop integral int. The function returns {fpInt,pref,vars}, 
 where fpInt is the integrand in Feynman parameters, pref is the prefactor free
 of Feynman parameters and vars is the list of integration variables.
 
@@ -26,7 +26,7 @@ If the chosen parametrization contains a Dirac delta multiplying the
 integrand, it will be omitted unless the option DiracDelta is set to True.
 
 By default FCFeynmanParametrize uses normalization that is common in
-multi-loop calculations, i.e. $\\frac{1}}{i \\pi^{D/2}}$ or
+multi-loop calculations, i.e. $\\frac{1}}{i \\pi^{D/2}}$ or 
 $\\frac{1}}{\\pi^{D/2}}$ per loop for Minkowski or Euclidean/Cartesian integrals
 respectively. If you want to have the standard
 $\\frac{1}{(2 \\pi)^D}$ normalization or yet another value, please set the
@@ -59,6 +59,13 @@ FCFeynmanParametrize can also be employed in conjunction with
 FCFeynmanParameterJoin, where one first joins suitable propagators using
 auxiliary Feynman
 parameters and then finally integrates out loop momenta.
+
+For a proper analysis of a loop integral one usually needs the U and F
+polynomials separately. Since internally FCFeynmanParametrize uses
+FCFeynmanPrepare, the information available from the latter is also accessible
+to FCFeynmanParametrize. By setting the option FCFeynmanPrepare to True, the
+output of FCFeynmanPrepare will be added the the output of
+FCFeynmanParametrize as the 4th list element.
 ";
 
 FCFeynmanParametrize::failmsg =
@@ -79,21 +86,20 @@ isCartesian::usage="";
 Options[FCFeynmanParametrize] = {
 	Assumptions					-> {},
 	DiracDelta					-> False,
-	"Euclidean"					-> False,
 	Expanding					-> True,
+	"Euclidean"					-> False,
 	FCE							-> False,
 	FCI							-> False,
 	FCReplaceD					-> {},
 	FCVerbose					-> False,
-	(*Factoring 					-> {Factor2, 5000},*)
 	FeynmanIntegralPrefactor	-> "Multiloop1",
 	FinalSubstitutions			-> {},
 	Indexed						-> True,
+	FCFeynmanPrepare			-> False,
+	Method						-> "Feynman",
 	Names						-> FCGV["x"],
 	Reduce						-> False,
-	Method						-> "Feynman",
 	Simplify					-> False,
-	(*TimeConstrained 			-> 3,*)
 	Variables					-> {}
 };
 
@@ -101,14 +107,13 @@ Options[FCFeynmanParametrize] = {
 FCFeynmanParametrize[expr_, lmoms_List /; ! OptionQ[lmoms], opts:OptionsPattern[]]:=
 	FCFeynmanParametrize[expr, 1, lmoms, opts];
 
-(**)
 FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ[lmoms], OptionsPattern[]] :=
 	Block[{	res, optFinalSubstitutions, dim, uPoly, fPoly, pows, mat, powsT, propPowers,
 			propPowersHat, propPowersTilde, ppSymbols, ppSymbolsRule,
 			denPowers, zeroPowerProps, numPowers, numVars, zeroDenVars,
 			nM,nLoops,fPow,pref, fpInt, fpPref, optFCReplaceD, vars, optVariavbles,
 			aux, ex, Q, J, tensorPart, tensorRank, optMethod, extraPref, optFeynmanIntegralPrefactor,
-			optEuclidean, inverseMeasure, optNames},
+			optEuclidean, inverseMeasure, optNames, outputFCFeynmanPrepare},
 
 		optFinalSubstitutions		= OptionValue[FinalSubstitutions];
 		optFCReplaceD				= OptionValue[FCReplaceD];
@@ -166,6 +171,8 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 		{uPoly, fPoly, pows, mat, Q, J, tensorPart, tensorRank} = FCFeynmanPrepare[ex,lmoms, FCI->True,
 			FinalSubstitutions->optFinalSubstitutions, Names->optNames, Indexed->OptionValue[Indexed], Reduce->OptionValue[Reduce],
 			"Euclidean" -> optEuclidean];
+
+		outputFCFeynmanPrepare = {uPoly, fPoly, pows, mat, Q, J, tensorPart, tensorRank};
 
 
 		nLoops	= Length[lmoms];
@@ -409,6 +416,10 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 			res = res /. Gamma[x_]:> Gamma[ExpandAll[x]] /.
 				Power[x_,y_]:> Power[x,ExpandAll[y]];
 			FCPrint[3,"FCFeynmanParametrize: res after ExpandAll: ", res, FCDoControl->fcfpVerbose]
+		];
+
+		If[ OptionValue[FCFeynmanPrepare],
+			res = Join[res, {outputFCFeynmanPrepare}]
 		];
 
 

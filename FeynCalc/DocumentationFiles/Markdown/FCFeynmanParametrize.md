@@ -25,6 +25,8 @@ The function can derive different representations of a loop integral. The choice
 `FCFeynmanParametrize` can also be employed in conjunction with `FCFeynmanParameterJoin`, where one first joins suitable propagators using auxiliary Feynman
 parameters and then finally integrates out loop momenta.
 
+For a proper analysis of a loop integral one usually needs the `U` and `F` polynomials separately. Since internally `FCFeynmanParametrize` uses `FCFeynmanPrepare`, the information available from the latter is also accessible to `FCFeynmanParametrize`. By setting the option `FCFeynmanPrepare` to `True`, the output of `FCFeynmanPrepare` will be added the the output of `FCFeynmanParametrize` as the 4th list element.
+
 ### See also
 
 [FCFeynmanPrepare](FCFeynmanPrepare), [FCFeynmanProjectivize](FCFeynmanProjectivize), [FCFeynmanParameterJoin](FCFeynmanParameterJoin)
@@ -186,6 +188,41 @@ FCFeynmanParametrize[intT[[1]], intT[[2]], {p1, p3}, Indexed -> True, FCReplaceD
 ```
 
 $$\left\{y(1) \left(x(1) x(2) y(1)^2\right)^{3 \text{ep}-2} \left(y(1) \left(x(1) x(2)^2 y(1)^2+x(1)^2 x(2) y(1)^2+x(2) y(2)^2+x(1) y(3)^2+x(2) y(3)^2+2 x(2) y(2) y(3)\right)\right)^{-2 \text{ep}},\Gamma (2 \text{ep}),\{x(1),x(2),y(1),y(2),y(3)\}\right\}$$
+
+In the case that we need `U` and `F` polynomials in addition to the normal output (e.g. for HyperInt)
+
+```mathematica
+SFAD[{{0, 2*k1 . n}}]*SFAD[{{0, 2*k2 . n}}]*SFAD[{k1, m^2}]*SFAD[{k2, m^2}]*SFAD[{k1 - k2, m^2}]
+out = FCFeynmanParametrize[%, {k1, k2}, Names -> x, FCReplaceD -> {D -> 4 - 2 Epsilon}, FCFeynmanPrepare -> True]
+```
+
+$$\frac{1}{(\text{k1}^2-m^2+i \eta ) (\text{k2}^2-m^2+i \eta ) ((\text{k1}-\text{k2})^2-m^2+i \eta ) (2 (\text{k1}\cdot n)+i \eta ) (2 (\text{k2}\cdot n)+i \eta )}$$
+
+$$\left\{(x(3) x(4)+x(5) x(4)+x(3) x(5))^{3 \varepsilon -1} \left(m^2 x(3) x(4)^2+m^2 x(3) x(5)^2+m^2 x(4) x(5)^2+m^2 x(3)^2 x(4)+m^2 x(3)^2 x(5)+m^2 x(4)^2 x(5)+3 m^2 x(3) x(4) x(5)+n^2 x(2)^2 x(3)+n^2 x(1)^2 x(4)+n^2 x(2)^2 x(4)+2 n^2 x(1) x(2) x(4)+n^2 x(1)^2 x(5)\right)^{-2 \varepsilon -1},-\Gamma (2 \varepsilon +1),\{x(1),x(2),x(3),x(4),x(5)\},\left\{x(3) x(4)+x(5) x(4)+x(3) x(5),m^2 x(3) x(4)^2+m^2 x(3) x(5)^2+m^2 x(4) x(5)^2+m^2 x(3)^2 x(4)+m^2 x(3)^2 x(5)+m^2 x(4)^2 x(5)+3 m^2 x(3) x(4) x(5)+n^2 x(2)^2 x(3)+n^2 x(1)^2 x(4)+n^2 x(2)^2 x(4)+2 n^2 x(1) x(2) x(4)+n^2 x(1)^2 x(5),\left(
+\begin{array}{ccc}
+ x(1) & \frac{1}{(2 (\text{k1}\cdot n)+i \eta )} & 1 \\
+ x(2) & \frac{1}{(2 (\text{k2}\cdot n)+i \eta )} & 1 \\
+ x(3) & \frac{1}{(\text{k1}^2-m^2+i \eta )} & 1 \\
+ x(4) & \frac{1}{((\text{k1}-\text{k2})^2-m^2+i \eta )} & 1 \\
+ x(5) & \frac{1}{(\text{k2}^2-m^2+i \eta )} & 1 \\
+\end{array}
+\right),\left(
+\begin{array}{cc}
+ x(3)+x(4) & -x(4) \\
+ -x(4) & x(4)+x(5) \\
+\end{array}
+\right),\left\{x(1) \left(-n^{\text{FCGV}(\text{mu})}\right),x(2) \left(-n^{\text{FCGV}(\text{mu})}\right)\right\},-m^2 (x(3)+x(4)+x(5)),1,0\right\}\right\}$$
+
+From this output we can easily extract the integrand, its $x_i$-independent prefactor and the two Symanzik polynomials
+
+```mathematica
+{integrand, pref} = out[[1 ;; 2]]
+{uPoly, fPoly} = out[[4]][[1 ;; 2]]
+```
+
+$$\left\{(x(3) x(4)+x(5) x(4)+x(3) x(5))^{3 \varepsilon -1} \left(m^2 x(3) x(4)^2+m^2 x(3) x(5)^2+m^2 x(4) x(5)^2+m^2 x(3)^2 x(4)+m^2 x(3)^2 x(5)+m^2 x(4)^2 x(5)+3 m^2 x(3) x(4) x(5)+n^2 x(2)^2 x(3)+n^2 x(1)^2 x(4)+n^2 x(2)^2 x(4)+2 n^2 x(1) x(2) x(4)+n^2 x(1)^2 x(5)\right)^{-2 \varepsilon -1},-\Gamma (2 \varepsilon +1)\right\}$$
+
+$$\left\{x(3) x(4)+x(5) x(4)+x(3) x(5),m^2 x(3) x(4)^2+m^2 x(3) x(5)^2+m^2 x(4) x(5)^2+m^2 x(3)^2 x(4)+m^2 x(3)^2 x(5)+m^2 x(4)^2 x(5)+3 m^2 x(3) x(4) x(5)+n^2 x(2)^2 x(3)+n^2 x(1)^2 x(4)+n^2 x(2)^2 x(4)+2 n^2 x(1) x(2) x(4)+n^2 x(1)^2 x(5)\right\}$$
 
 #### Lee-Pomeransky representation
 
