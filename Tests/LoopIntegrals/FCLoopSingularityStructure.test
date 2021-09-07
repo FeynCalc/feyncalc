@@ -1,0 +1,41 @@
+
+
+(* :Title: FCLoopSingularityStructure.test													*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopSingularityStructure				*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopSingularityStructure =
+({
+{"fcstFCLoopSingularityStructure-ID1",
+"FCLoopSingularityStructure[FAD[{q,m}],{q},Names->x]",
+"{-((m^2)^(1 - Epsilon)*Gamma[-1 + Epsilon]), x[1], m^2*x[1]^2, \
+{m^2*x[1]}}"},
+{"fcstFCLoopSingularityStructure-ID2",
+"FCLoopSingularityStructure[FAD[q,q-p],{q},Names->x,FCE->True]",
+"{Gamma[Epsilon], x[1] + x[2], -(SPD[p, p]*x[1]*x[2]), {SPD[p, \
+p]*x[2], SPD[p, p]*x[1]}}"},
+{"fcstFCLoopSingularityStructure-ID3",
+"FCLoopSingularityStructure[SFAD[{ p1,m^2}]SFAD[{ \
+p3,m^2}]SFAD[{{0,2p1.n}}]SFAD[{{0,2(p1+p3).n}}],{p1,p3},Names->x,\
+FinalSubstitutions->{SPD[n]->1,m->1}]",
+"{Gamma[2*Epsilon], x[3]*x[4], x[2]^2*x[3] + x[1]^2*x[4] + \
+2*x[1]*x[2]*x[4] + x[2]^2*x[4] + x[3]^2*x[4] + x[3]*x[4]^2, \
+{x[3]*x[4]^2, x[3]^2*x[4], x[2]*x[3], x[2]^2 + 2*x[3]*x[4] + x[4]^2, \
+x[1]*x[4] + x[2]*x[4], x[1]^2 + 2*x[1]*x[2] + x[3]^2 - x[4]^2}}"},
+{"fcstFCLoopSingularityStructure-ID4",
+"FCLoopSingularityStructure[SFAD[{ p1,m^2}]SFAD[{ \
+p3,m^2}]SFAD[{{0,2p1.n}}]SFAD[{{0,2(p1+p3).n}}],{p1,p3},Names->x,\
+FinalSubstitutions->{SPD[n]->1,m->0}]",
+"{0, x[3]*x[4], x[2]^2*x[3] + x[1]^2*x[4] + 2*x[1]*x[2]*x[4] + \
+x[2]^2*x[4], {x[2]*x[3], x[2]^2, x[1]*x[4] + x[2]*x[4], x[1]^2 + \
+2*x[1]*x[2]}}"}
+})
