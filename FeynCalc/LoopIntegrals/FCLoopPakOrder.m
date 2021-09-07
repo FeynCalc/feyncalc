@@ -17,13 +17,21 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopPakOrder::usage =
-"FCLoopPakOrder[poly, {x1, x2, ...}] determines a canonical ordering of the Feynman \
-parameters x1, x2, ... in the polynomial poly using the algorithm of Alexey Pak \
-(arXiv:1111.0868). Cf. also the PhD thesis of Jens Hoff (Hoff:2015kub, \
-10.5445/IR/1000047447) for a more detailed description of the algorithm.
+"FCLoopPakOrder[poly, {x1, x2, ...}] determines a canonical ordering of the
+Feynman parameters x1, x2, ... in the polynomial poly. 
 
-The current implementation is based on the PolyOrdering function from \
-FIRE 6 (arXiv:1901.07808)";
+The function uses the algorithm of Alexey Pak
+[arXiv:1111.0868](https://arxiv.org/abs/1111.0868). Cf. also the PhD thesis of
+Jens Hoff [10.5445/IR/1000047447](https://doi.org/10.5445/IR/1000047447) for
+the detailed description of a possible implementation.
+
+The current implementation is based on the PolyOrdering function from FIRE 6
+[arXiv:1901.07808](https://arxiv.org/abs/1901.07808)
+
+The function can also directly perform the renaming of the Feynman parameter
+variables returning the original polynomial in the canonical form. This is
+done by setting the option Rename to True.
+";
 
 FCLoopPakOrder::failmsg =
 "Error! FCLoopPakOrder has encountered a fatal problem and must abort the computation. \
@@ -38,14 +46,17 @@ fcpoVerbose::usage = "";
 fpIds::usage = "";
 
 Options[FCLoopPakOrder] = {
+	Expanding		-> True,
 	FCVerbose		-> False,
 	MaxIterations	-> Infinity,
-	MonomialOrder	-> Lexicographic
+	MonomialOrder	-> Lexicographic,
+	Rename 			-> False
 };
 
 
 FCLoopPakOrder[poly_, fparsRaw_, OptionsPattern[]] :=
-	Block[{	coeffsList, polyGCD, res, matM, mPrefs, time, time0, fpars},
+	Block[{	coeffsList, polyGCD, res, matM, mPrefs, time, time0,
+			fpars, renamingRule},
 
 		If[	OptionValue[FCVerbose] === False,
 			fcpoVerbose = $VeryVerbose,
@@ -118,8 +129,17 @@ FCLoopPakOrder[poly_, fparsRaw_, OptionsPattern[]] :=
 			Abort[]
 		];
 
+		If[	OptionValue[Rename],
+			FCPrint[1, "FCLoopPakOrder: The user requested a renaming of the polynomial", FCDoControl->fcpoVerbose];
+			renamingRule = Thread[Rule[Extract[fpars, List /@ First[res]], fpars]];
+			FCPrint[1, "FCLoopPakOrder: Rule for renaming the polynomal variables", FCDoControl -> fcpoVerbose];
+			res = poly /. renamingRule;
+			If[	OptionValue[Expanding],
+				res = ExpandAll[res]
+			]
+		];
 
-		FCPrint[1, "FCLoopPakOrder: Toal timing: ", N[AbsoluteTime[] - time0, 4], FCDoControl->fcpoVerbose];
+		FCPrint[1, "FCLoopPakOrder: Total timing: ", N[AbsoluteTime[] - time0, 4], FCDoControl->fcpoVerbose];
 		FCPrint[1, "FCLoopPakOrder: Leaving.", FCDoControl -> fcpoVerbose];
 		FCPrint[3, "FCLoopPakOrder: Leaving with: ", res, FCDoControl -> fcpoVerbose];
 

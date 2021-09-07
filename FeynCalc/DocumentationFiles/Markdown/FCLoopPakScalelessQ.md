@@ -1,6 +1,6 @@
 `FCLoopPakScalelessQ[poly, x]` checks whether the characteristic polynomial poly (in the $U \times xF$ form) with the Feynman parameters `x[1], x[2], ...` corresponds to a scaleless loop integral or loop integral topology. The polynomial does not need to be canonically ordered.
 
-The function uses the of Alexey Pak [arXiv:1111.0868](https://arxiv.org/abs/1111.0868). Cf. also the PhD thesis of Jens Hoff [10.5445/IR/1000047447](https://doi.org/10.5445/IR/1000047447) for the detailed description of a possible implementation. `FCLoopPakScalelessQ`  is a backend function used in `FCLoopScalelessQ`, `FCLoopFindSubtopologies` etc.
+The function uses the algorithm of Alexey Pak [arXiv:1111.0868](https://arxiv.org/abs/1111.0868). Cf. also the PhD thesis of Jens Hoff [10.5445/IR/1000047447](https://doi.org/10.5445/IR/1000047447) for the detailed description of a possible implementation. `FCLoopPakScalelessQ`  is a backend function used in `FCLoopScalelessQ`, `FCLoopFindSubtopologies` etc.
 
 ### See also
 
