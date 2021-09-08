@@ -1,0 +1,21 @@
+
+
+(* :Title: NonCommHeadQ.test                    	                                *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2021 Rolf Mertig
+	Copyright (C) 1997-2021 Frederik Orellana
+	Copyright (C) 2014-2021 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for NonCommHeadQ	                *)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`NonCommAlgebra`fcstNonCommHeadQ = ({
+{"fcstNonCommHeadQ-ID1", "NonCommHeadQ[GA[mu]]", "True"},
+{"fcstNonCommHeadQ-ID2", "NonCommHeadQ[GA[mu,nu,mu]]", "True"},
+{"fcstNonCommHeadQ-ID3", "NonCommHeadQ[FV[p,mu]]", "False"},
+{"fcstNonCommHeadQ-ID4", "NonCommHeadQ[FCI[SUNT[a]]]", "True"}
+})

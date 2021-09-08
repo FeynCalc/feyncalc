@@ -46,6 +46,10 @@ NonCommFreeQ::usage =
 (i.e. those objects which are listed in $NonComm) or only non-commutative \
 objects inside DiracTrace's or SUNTrace's.";
 
+NonCommHeadQ::usage =
+"NonCommHeadQ[exp] yields True if the head of exp is a non-commutative
+object or Dot.";
+
 NonCommQ::usage =
 "NonCommQ[exp] yields True if exp contains non-commutative objects \
 (i.e. those objects which are listed in $NonComm) not inside \
@@ -172,6 +176,9 @@ NonCommQ[x_] :=
 				!FreeQ2[x, $NonComm]
 		]
 	];
+
+NonCommHeadQ[x_] :=
+	MemberQ[Join[$NonComm,{DOT,Dot}],Head[x]];
 
 UnDeclareAllAntiCommutators[OptionsPattern[]] :=
 	(
