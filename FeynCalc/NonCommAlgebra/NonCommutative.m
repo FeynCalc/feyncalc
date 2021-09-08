@@ -36,6 +36,11 @@ DeclareNonCommutative::usage =
 noncommutative, i.e., DataType[a,b, ...,  NonCommutative] is set to \
 True.";
 
+FCMatrixProduct::usage=
+"FCMatrixProduct[mat1, mat2, ...] can be used to obtain products of matrices
+whose entries are noncommutative symbols. The resulting expression can be
+then further simplified using DotSimplify.";
+
 NonCommFreeQ::usage =
 "NonCommFreeQ[exp] yields True if exp contains no non-commutative objects \
 (i.e. those objects which are listed in $NonComm) or only non-commutative \
@@ -177,6 +182,13 @@ UnDeclareAllCommutators[OptionsPattern[]] :=
 	(
 		DownValues[Commutator] = FeynCalc`Package`initialCommutatorDownValues;
 	);
+
+FCMatrixProduct[x_] :=
+	x;
+FCMatrixProduct[x_, y_] :=
+	Inner[Dot, x, y];
+FCMatrixProduct[x_, y_, z__] :=
+	FCMatrixProduct[x, FCMatrixProduct[y, z]];
 
 FCPrint[1,"NonCommutative loaded"];
 End[]

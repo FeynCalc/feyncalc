@@ -1,0 +1,40 @@
+(* :Title: FCMatrixProduct.test													*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2021 Rolf Mertig
+	Copyright (C) 1997-2021 Frederik Orellana
+	Copyright (C) 2014-2021 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCMatrixProduct					*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`NonCommAlgebra`fcstFCMatrixProduct =
+({
+{"fcstFCMatrixProduct-ID1",
+"DeclareNonCommutative[opA,opB,opC,opD];\[IndentingNewLine]\
+FCMatrixProduct[{{opA[1],opB[1]},{opC[1],opD[1]}},{{opA[2],opB[2]},{\
+opC[2],opD[2]}}]",
+"{{opA[1] . opA[2] + opB[1] . opC[2], opA[1] . opB[2] + opB[1] . \
+opD[2]}, {opC[1] . opA[2] + opD[1] . opC[2], opC[1] . opB[2] + opD[1] \
+. opD[2]}}"},
+{"fcstFCMatrixProduct-ID2",
+"FCMatrixProduct[{{opA[1],opB[1]},{opC[1],opD[1]}},{{opA[2],opB[2]}\
+,{opC[2],opD[2]}},{{opA[3],opB[3]},{opC[3],opD[3]}}]",
+"{{opA[1] . (opA[2] . opA[3] + opB[2] . opC[3]) + opB[1] . (opC[2] \
+. opA[3] + opD[2] . opC[3]), opA[1] . (opA[2] . opB[3] + opB[2] . \
+opD[3]) + opB[1] . (opC[2] . opB[3] + opD[2] . opD[3])}, {opC[1] . \
+(opA[2] . opA[3] + opB[2] . opC[3]) + opD[1] . (opC[2] . opA[3] + \
+opD[2] . opC[3]), opC[1] . (opA[2] . opB[3] + opB[2] . opD[3]) + \
+opD[1] . (opC[2] . opB[3] + opD[2] . opD[3])}}"},
+{"fcstFCMatrixProduct-ID3",
+"UnDeclareNonCommutative[opA,opB,opC,opD];DotSimplify[\
+FCMatrixProduct[{{0, CSI[i]}, {-CSI[i], 0}},{{0, CSI[j]}, {-CSI[j], \
+0}}, {{0, CSI[i]}, {-CSI[i], 0}}]]",
+"{{0, -PauliSigma[CartesianIndex[i]] . \
+PauliSigma[CartesianIndex[j]] . PauliSigma[CartesianIndex[i]]}, \
+{PauliSigma[CartesianIndex[i]] . PauliSigma[CartesianIndex[j]] . \
+PauliSigma[CartesianIndex[i]], 0}}"}
+});

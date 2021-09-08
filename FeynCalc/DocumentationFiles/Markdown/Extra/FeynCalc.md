@@ -239,6 +239,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
  - [DotExpand](../DotExpand.md) - expands dot products
  - [DotSimplify](../DotSimplify.md) - expands and reorders noncommutative terms
  - [FCMatrixIsolate](../FCMatrixIsolate.md) - wraps Dirac, Pauli and $SU(N)$ objects into specified heads
+ - [FCMatrixProduct](../FCMatrixProduct.md) - multiplies matrices with noncommutative entries
  - [FCTraceExpand](../FCTraceExpand.md) - expands traces using linearity wihtout calculating them
  - [FCTraceFactor](../FCTraceFactor.md) - pulls $c$-numbers out of traces
  - [NonCommFreeQ](../NonCommFreeQ.md), [NonCommQ](../NonCommQ.md) - checks if the expression contains noncommutative quantities
