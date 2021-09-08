@@ -14,15 +14,25 @@
 (* ------------------------------------------------------------------------ *)
 
 DoPolarizationSums::usage =
-"DoPolarizationSums[exp,k,n] sums over physical (transverse) \
-polarizations of an external massless vector boson with momentum k, \
-where n is an auxiliary 4-vector from the gauge-dependent \
-polarization sum formula.\n
-DoPolarizationSums[exp,k,0] replaces the polarization sum of an external massless vector \
-boson with momentum k by - MT[mu,nu]. This corresponds to the summation over all four \
-polarizations, including the unphysical ones. \n
-DoPolarizationSums[exp,k] sums over the three polarizations \
-of an external massive vector boson with momentum k and mass SP[k,k].";
+"DoPolarizationSums[exp, k, ...] acts on an expression exp that must contain a
+polarization vector $\\varepsilon(k)$  and its complex conjugate (e.g. exp can
+be a matrix element squared). Depending on the arguments of the function, it
+will perform a sum over the polarization of $\\varepsilon(k)$ and its c.c.
+
+- DoPolarizationSums[exp, k] sums over the three physical polarizations of an
+external massive vector boson with the $4$-momentum k and the mass $k^2$.
+DoPolarizationSums[exp, k, 0] replaces the polarization sum of an external
+massless vector boson with the momentum k by $-g^{\\mu \\nu}$. This corresponds
+to the summation over all 4 polarizations, including the unphysical ones.
+-DoPolarizationSums[exp, k, n] sums over physical (transverse) polarizations
+of an external massless vector boson with the momentum k, where n is an
+auxiliary 4-vector from the gauge-dependent polarization sum formula.
+
+Cf. PolarizationSum for more examples and explanations on different
+polarizations.
+
+DoPolarizationSums also work with $D$-dimensional amplitudes.
+";
 
 GaugeTrickN::usage =
 "GaugeTrickN is an option for DoPolarizationSums. It specifies the number \

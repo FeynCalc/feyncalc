@@ -375,7 +375,12 @@ Polarization is also an option. \
 The setting 0 denotes the unpolarized and 1 the polarized case.";
 
 PolarizationVector::usage =
-"PolarizationVector[p, mu] gives a polarization vector.";
+"PolarizationVector[p, mu] denotes a 4-dimensional polarization vector
+$\\varepsilon(p)^\\mu$.
+
+To obtain a $D$-dimensional polarization vector, just use ChangeDimension[vec,
+D]
+";
 
 PropagatorDenominator::usage =
 "PropagatorDenominator[Momentum[q], m] is a factor of the denominator of a \

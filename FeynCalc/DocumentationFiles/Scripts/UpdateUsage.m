@@ -4,9 +4,16 @@
 
 
 ClearAll[docuToUsage];
-docuToUsage[path_]:=
-Block[{name,text,tmp,res},
-	name=FileBaseName[path];
+docuToUsage[name_String]:=
+Block[{path,text,tmp,res},
+
+	path=FileNames[name<>".m",FileNameJoin[{$FeynCalcDirectory,"DocumentationFiles","Mathematica"}],Infinity];
+	If[Length[path]=!=1,
+		Print["Error, failed to find the documentation file for ", name];
+		Abort[],
+		path=First[path]
+	];
+	
 	text=Import[path,"Text"];
 	tmp=StringCases[text,
 	"(* ::Section:: *)\n(*"<>name<>"*)"~~Shortest[x__]~~"(* ::Subsection:: *)":>x]//First;
@@ -22,29 +29,35 @@ Block[{name,text,tmp,res},
 ];
 
 
-ClearAll[updateUsage];
-updateUsage[path_,nameRaw_,newText_String,save_:False]:=
-Block[{name,text,tmp,res,outFile},	
-	name=ToString[nameRaw];
-	text=Import[path,"Text"];
-	tmp=StringCases[text,
+ClearAll[updateUsage,importAllSymbols, allFiles];
+allFiles[]:=allFiles[]=(FileNames["*.m",FileNameJoin[{$FeynCalcDirectory,#}]&/@{"Dirac","ExportImport","Feynman",
+"LoopIntegrals","Lorentz","NonCommAlgebra","Pauli","QCD","Shared","SUN","Tables"},Infinity]);
+importAllSymbols[]:=importAllSymbols[]=Import[#,"Text"]&/@allFiles[];
+updateUsage[name_String,newText_String,save_:False]:=
+Block[{path,pos,text,tmp,res,outFile,allTexts},
+	
+	allTexts=importAllSymbols[];
+	tmp=StringCases[allTexts,
 	{(name<>"::usage =\n"~~Shortest[x__]~~"\";"):>x,(name<>"::usage=\n"~~Shortest[x__]~~"\";"):>x}];
-	(*Print[Length[tmp]];*)
-	If[Length[tmp]=!=1,
-		Print["Error, the file does not contain the symbol ", name];
-		Abort[];
+	pos=SequencePosition[tmp,{{_String}}];
+	If[!MatchQ[pos,{{_Integer,_Integer}}],
+		Print["Error, failed to locate the file containing the symbol ", name];
+		Abort[],
+		pos=pos[[1]][[1]];
+		path=allFiles[][[pos]];
+		text=allTexts[[pos]]
 	];
 	
-	tmp=tmp//First;
+	tmp=tmp[[pos]]//First;
 	(*Print[newText];*)
 	(*Print[tmp];*)
 	If[tmp==="\""<>newText<>"\n",
 	Print["The usage information for ", name, " doesn't need to be updated"];
 	Return[]
 	];
-		
+	
 	res=StringReplace[text,tmp->"\""<>newText<>"\n"];
-	Print[tmp];	
+	
 	If[save,
 		outFile=OpenWrite[path];
 		WriteString[outFile,res<>"\n"];
@@ -53,13 +66,7 @@ Block[{name,text,tmp,res,outFile},
 ];
 
 
-FileNames["*.m",FileNameJoin[{$FeynCalcDirectory,"DocumentationFiles","Mathematica","LoopIntegrals"}],Infinity];
+aux=docuToUsage["PolarizationSum"];
 
 
-aux=docuToUsage["/media/Data/Projects/VS/FeynCalc/FeynCalc/DocumentationFiles/Mathematica/Shared/Tools/SelectFree2.m"];
-
-
-updateUsage["/media/Data/Projects/VS/FeynCalc/FeynCalc/Shared/SharedTools.m",SelectFree2,aux,True]
-
-
-
+updateUsage["PolarizationSum",aux,True]

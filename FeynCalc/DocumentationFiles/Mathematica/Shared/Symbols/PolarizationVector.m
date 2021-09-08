@@ -8,7 +8,11 @@
 
 
 (* ::Text:: *)
-(*`PolarizationVector[p, mu]` gives a polarization vector.*)
+(*`PolarizationVector[p, mu]` denotes a 4-dimensional polarization vector $\varepsilon(p)^\mu$.*)
+
+
+(* ::Text:: *)
+(*To obtain a $D$-dimensional polarization vector, just use `ChangeDimension[vec, D]`*)
 
 
 (* ::Subsection:: *)
@@ -16,7 +20,7 @@
 
 
 (* ::Text:: *)
-(*[FV](FV), [Pair](Pair), [Polarization](Polarization).*)
+(*[FV](FV), [Pair](Pair), [Polarization](Polarization), [PolariazationSum](PolariazationSum), [DoPolariazationSums](DoPolariazationSums).*)
 
 
 (* ::Subsection:: *)
@@ -24,7 +28,7 @@
 
 
 (* ::Text:: *)
-(*A polarization vector $\varepsilon_{\mu }(k)$is a special $4$-vector.*)
+(*A polarization vector $\varepsilon_{\mu }(k)$ is a special $4$-vector.*)
 
 
 PolarizationVector[k, \[Mu]]
@@ -74,3 +78,20 @@ SP[k2]=0;
 
 
 \:0435\:04452//DoPolarizationSums[#,k1,0]&//DoPolarizationSums[#,k2,0]&
+
+
+FCClearScalarProducts[];
+
+
+(* ::Text:: *)
+(*`PolarizationVector` is a shortcut for $4$-dimensional polarization vectors. Although $D$-dimensional polarization vectors are fully supported by FeynCalc, as of now there is no shortcut for entering such quantities. You can either use `ChangeDimension`*)
+
+
+ChangeDimension[PolarizationVector[q,\[Mu]],D]
+
+
+(* ::Text:: *)
+(*or enter such quantities directly using the `FeynCalcInternal`-notation*)
+
+
+Pair[Momentum[Polarization[q,I],D],LorentzIndex[\[Mu],D]]
