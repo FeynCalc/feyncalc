@@ -11,12 +11,28 @@
 (*`SplittingFunction[pxy]` is a database of splitting functions in the $\overline{\textrm{MS}}$ scheme.*)
 
 
+(* ::Text:: *)
+(*`SplittingFunction["Pqq", x]`, `SplittingFunction["Pqg", x]`, `SplittingFunction["Pgq", x]`  and `SplittingFunction["Pgg", x]` yield the lowest order splitting functions.*)
+
+
+(* ::Text:: *)
+(*`SplittingFunction["PQQS",x]`, `SplittingFunction["PQQNS",x]` and `SplittingFunction["PQG",x]` are the next to leading order splitting functions.*)
+
+
+(* ::Text:: *)
+(*SplittingFunction has an option Polarization.*)
+
+
+(* ::Text:: *)
+(*`SplittingFunction["Pqq", x, Polarization -> 0]` returns the unpolarized and `SplittingFunction["Pqq", x, Polarization -> 1]` the polarized splitting functions.*)
+
+
 (* ::Subsection:: *)
 (*See also*)
 
 
 (* ::Text:: *)
-(*[AnomalousDimension](AnomalousDimension).*)
+(*[Overview](Extra/FeynCalc.md), [AnomalousDimension](AnomalousDimension.md).*)
 
 
 (* ::Subsection:: *)

@@ -7,16 +7,16 @@
 (*Isolate*)
 
 
+(* ::Text:: *)
+(*`Isolate[expr]` substitutes abbreviations `KK[i]` for all `Plus[...]` (sub-sums) in `expr`. The inserted `KK[i]` have head `HoldForm`. `Isolate[expr, varlist]` substitutes `KK[i]` for all subsums in `expr` which are free of any occurrence of a member of the list `varlist`. Instead of `KK` any other head or a list of names of the abbreviations may be specified with the option `IsolateNames`.*)
+
+
 (* ::Subsection:: *)
 (*See also*)
 
 
 (* ::Text:: *)
-(*[IsolateNames](IsolateNames), [Collect2](Collect2).*)
-
-
-(* ::Text:: *)
-(*`Isolate[expr]` substitutes abbreviations `KK[i]` for all `Plus[...]` (sub-sums) in `expr`. The inserted `KK[i]` have head `HoldForm`. `Isolate[expr, varlist]` substitutes `KK[i]` for all subsums in `expr` which are free of any occurrence of a member of the list `varlist`. Instead of `KK` any other head or a list of names of the abbreviations may be specified with the option `IsolateNames`.*)
+(*[Overview](Extra/FeynCalc.md), [IsolateNames](IsolateNames.md), [Collect2](Collect2.md).*)
 
 
 (* ::Subsection:: *)

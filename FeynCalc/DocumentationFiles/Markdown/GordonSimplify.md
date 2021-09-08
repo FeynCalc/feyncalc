@@ -4,7 +4,7 @@
 
 ### See also
 
-[DiracGamma](DiracGamma), [Spinor](Spinor), [SpinorChainTrick](SpinorChainTrick).
+[Overview](Extra/FeynCalc.md), [DiracGamma](DiracGamma.md), [Spinor](Spinor.md), [SpinorChainTrick](SpinorChainTrick.md).
 
 ### Examples
 
@@ -83,7 +83,7 @@ GordonSimplify[ex]
 
 $$\text{NDR}$$
 
-$$-\frac{(\text{p1}+\text{p2})^{\mu } (\varphi (-\text{p1},\text{m1})).\bar{\gamma }^5.(\varphi (-\text{p2},\text{m2}))}{\text{m1}-\text{m2}}-\frac{i (\varphi (-\text{p1},\text{m1})).\sigma ^{\mu \text{p1}-\text{p2}}.\bar{\gamma }^5.(\varphi (-\text{p2},\text{m2}))}{\text{m1}-\text{m2}}$$
+$$-\frac{(\text{p1}+\text{p2})^{\mu } (\varphi (-\text{p1},\text{m1})).\bar{\gamma }^5.(\varphi (-\text{p2},\text{m2}))}{\text{m1}-\text{m2}}-\frac{i (\varphi (-\text{p1},\text{m1})).\sigma ^{\mu \;\text{p1}-\text{p2}}.\bar{\gamma }^5.(\varphi (-\text{p2},\text{m2}))}{\text{m1}-\text{m2}}$$
 
 ```mathematica
 FCSetDiracGammaScheme["BMHV"]
@@ -92,7 +92,7 @@ GordonSimplify[ex]
 
 $$\text{BMHV}$$
 
-$$-\frac{i (\varphi (-\text{p1},\text{m1})).\sigma ^{\mu \text{p1}-\text{p2}}.\bar{\gamma }^5.(\varphi (-\text{p2},\text{m2}))}{\text{m1}-\text{m2}}-\frac{(\text{p1}+\text{p2})^{\mu } (\varphi (-\text{p1},\text{m1})).\bar{\gamma }^5.(\varphi (-\text{p2},\text{m2}))}{\text{m1}-\text{m2}}+\frac{2 (\varphi (-\text{p1},\text{m1})).\gamma ^{\mu }.\left(\hat{\gamma }\cdot \hat{\text{p2}}\right).\bar{\gamma }^5.(\varphi (-\text{p2},\text{m2}))}{\text{m1}-\text{m2}}$$
+$$-\frac{i (\varphi (-\text{p1},\text{m1})).\sigma ^{\mu \;\text{p1}-\text{p2}}.\bar{\gamma }^5.(\varphi (-\text{p2},\text{m2}))}{\text{m1}-\text{m2}}-\frac{(\text{p1}+\text{p2})^{\mu } (\varphi (-\text{p1},\text{m1})).\bar{\gamma }^5.(\varphi (-\text{p2},\text{m2}))}{\text{m1}-\text{m2}}+\frac{2 (\varphi (-\text{p1},\text{m1})).\gamma ^{\mu }.\left(\hat{\gamma }\cdot \hat{\text{p2}}\right).\bar{\gamma }^5.(\varphi (-\text{p2},\text{m2}))}{\text{m1}-\text{m2}}$$
 
 ```mathematica
 FCSetDiracGammaScheme["NDR"]

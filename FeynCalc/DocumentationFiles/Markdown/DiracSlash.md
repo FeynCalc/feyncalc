@@ -8,11 +8,11 @@ The shortcut DiracSlash is deprecated, please use GS instead!
 
 ### See also
 
-[GS](GS), [FCI](FCI).
+[Overview](Extra/FeynCalc.md), [GS](GS.md), [FCI](FCI.md).
 
 ### Examples
 
-This is $q$-slash, i.e., $gamma^{\mu} q_{\mu }$
+This is $q$-slash, i.e., $\gamma^{\mu} q_{\mu }$
 
 ```mathematica
 DiracSlash[q]

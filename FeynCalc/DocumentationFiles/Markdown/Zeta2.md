@@ -1,10 +1,10 @@
-## Zeta2 
+## Zeta2
 
 `Zeta2` denotes `Zeta[2]`.
 
 ### See also
 
-[SimplifyPolyLog](SimplifyPolyLog).
+[Overview](Extra/FeynCalc.md), [SimplifyPolyLog](SimplifyPolyLog.md).
 
 ### Examples
 

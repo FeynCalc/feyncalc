@@ -4,7 +4,7 @@
 
 ### See also
 
-[Collect2](Collect2).
+[Overview](Extra/FeynCalc.md), [Collect2](Collect2.md).
 
 ### Examples
 
@@ -18,7 +18,7 @@ $$3 b \left(\frac{a}{3 b}+1\right)$$
 FCFactorOut[(a + 3 b), 3 b, Head -> hold]
 ```
 
-$$3 b \text{hold}\left(\frac{a}{3 b}+1\right)$$
+$$3 b \;\text{hold}\left(\frac{a}{3 b}+1\right)$$
 
 `FCFactorOut` is also an option of `Collect2`
 

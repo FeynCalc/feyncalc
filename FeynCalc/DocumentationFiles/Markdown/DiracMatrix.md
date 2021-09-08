@@ -2,7 +2,7 @@
 
 `DiracMatrix[mu]` denotes a Dirac gamma matrix with Lorentz index $\mu$.
 
-`DiracMatrix[mu , nu , ...]` is a product of $\gamma$ matrices with Lorentz indices `mu , nu , ...` 
+`DiracMatrix[mu , nu , ...]` is a product of $\gamma$ matrices with Lorentz indices `mu , nu , ...`
 
 `DiracMatrix[5]` is $\gamma ^5$.
 
@@ -14,7 +14,7 @@ The shortcut `DiracMatrix` is deprecated, please use `GA` instead!
 
 ### See also
 
-[GA](GA), [FCI](FCI).
+[Overview](Extra/FeynCalc.md), [GA](GA.md), [FCI](FCI.md).
 
 ### Examples
 

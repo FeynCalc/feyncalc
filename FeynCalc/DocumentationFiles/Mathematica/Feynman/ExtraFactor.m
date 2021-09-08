@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[FermionSpinSum](FermionSpinSum).*)
+(*[Overview](Extra/FeynCalc.md), [FermionSpinSum](FermionSpinSum.md).*)
 
 
 (* ::Subsection:: *)

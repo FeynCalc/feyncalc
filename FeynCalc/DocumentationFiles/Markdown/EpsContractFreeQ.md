@@ -4,7 +4,7 @@
 
 ### See also
 
-[Contract](Contract), [EpsContract](EpsContract).
+[Overview](Extra/FeynCalc.md), [Contract](Contract.md), [EpsContract](EpsContract.md).
 
 ### Examples
 
@@ -13,7 +13,7 @@ FCI[LC[p1, p2, p3, p4]]
 EpsContractFreeQ[%]
 ```
 
-$$\bar{\epsilon }^{\text{p1}\text{p2}\text{p3}\text{p4}}$$
+$$\bar{\epsilon }^{\text{p1}\;\text{p2}\;\text{p3}\;\text{p4}}$$
 
 $$\text{True}$$
 
@@ -25,6 +25,6 @@ EpsContractFreeQ[%]
 
 ```
 
-$$\bar{\epsilon }^{\text{p1}\text{p2}\text{p3}\text{mu}} \bar{\epsilon }^{\text{q1}\text{q2}\text{q3}\text{q4}}$$
+$$\bar{\epsilon }^{\text{p1}\;\text{p2}\;\text{p3}\;\text{mu}} \bar{\epsilon }^{\text{q1}\;\text{q2}\;\text{q3}\;\text{q4}}$$
 
 $$\text{False}$$

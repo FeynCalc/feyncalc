@@ -6,7 +6,7 @@
 
 ### See also
 
-[FreeQ2](FreeQ2).
+[Overview](Extra/FeynCalc.md), [FreeQ2](FreeQ2.md).
 
 ### Examples
 

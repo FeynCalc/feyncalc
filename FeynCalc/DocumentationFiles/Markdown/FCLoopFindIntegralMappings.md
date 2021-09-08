@@ -2,11 +2,13 @@
 
 The current implementation is based on the `FindEquivalents` function from FIRE 6 [arXiv:1901.07808](https://arxiv.org/abs/1901.07808)
 
-It is also possible to invoke the function as `FCLoopFindIntegralMappings[{GLI[...], ...}, {FCTopology[...], ...}] or FCLoopFindIntegralMappings[{FCTopology[...], ...}]`. Notice that in this case the value of the option `FinalSubstitutions` is ignored, as replacement rules will be extracted directly from the definition of the topology.
+It is also possible to invoke the function as `FCLoopFindIntegralMappings[{GLI[...], ...}, {FCTopology[...], ...}] or FCLoopFindIntegralMappings[{FCTopology[...], ...}]`.
+
+Notice that in this case the value of the option `FinalSubstitutions` is ignored, as replacement rules will be extracted directly from the definition of the topology.
 
 ### See also
 
-[FCTopology](FCTopology), [GLI](GLI), [FCLoopToPakForm](FCLoopToPakForm), [FCLoopPakOrder](FCLoopPakOrder), [FCLoopFindTopologyMappings](FCLoopFindTopologyMappings)
+[Overview](Extra/FeynCalc.md), [FCTopology](FCTopology.md), [GLI](GLI.md), [FCLoopToPakForm](FCLoopToPakForm.md), [FCLoopPakOrder](FCLoopPakOrder.md), [FCLoopFindTopologyMappings](FCLoopFindTopologyMappings.md)
 
 ### Examples
 
@@ -32,7 +34,7 @@ ints = {FAD[p1] FAD[p1 - p3 - p4] FAD[p4] FAD[p3 + q1] FAD[{p3, m1}] FAD[{p1 - p
    FAD[p1] FAD[p4 - 2 q1] FAD[p3 + q1] FAD[p1 - p3 - p4 + 2 q1] FAD[{p3, m1}] FAD[{p1 - p4 + 2 q1, m1}] FAD[{p1 + q1, 0}, {p1 + q1, 0}]}
 ```
 
-$$\left\{\frac{1}{\text{p1}^2 \text{p4}^2 \left(\text{p3}^2-\text{m1}^2\right) (\text{p1}+\text{q1})^2^2 (\text{p3}+\text{q1})^2 (\text{p1}-\text{p3}-\text{p4})^2 \left((\text{p1}-\text{p4})^2-\text{m1}^2\right)},\frac{1}{\text{p4}^2 \left(\text{p3}^2-\text{m1}^2\right) (\text{p3}+\text{q1})^2 (\text{p1}-\text{p3}+\text{q1})^2 (\text{p1}+\text{p4}+\text{q1})^2 (\text{p1}+\text{p4}+2 \text{q1})^2^2 \left((\text{p1}+\text{q1})^2-\text{m1}^2\right)},\frac{1}{\text{p1}^2 \left(\text{p3}^2-\text{m1}^2\right) (\text{p1}+\text{q1})^2^2 (\text{p3}+\text{q1})^2 (\text{p4}-2 \text{q1})^2 (\text{p1}-\text{p3}-\text{p4}+2 \text{q1})^2 \left((\text{p1}-\text{p4}+2 \text{q1})^2-\text{m1}^2\right)}\right\}$$
+$$\left\{\frac{1}{\text{p1}^2 \;\text{p4}^2 \left(\text{p3}^2-\text{m1}^2\right) (\text{p1}+\text{q1})^4 (\text{p3}+\text{q1})^2 (\text{p1}-\text{p3}-\text{p4})^2 \left((\text{p1}-\text{p4})^2-\text{m1}^2\right)},\frac{1}{\text{p4}^2 \left(\text{p3}^2-\text{m1}^2\right) (\text{p3}+\text{q1})^2 (\text{p1}-\text{p3}+\text{q1})^2 (\text{p1}+\text{p4}+\text{q1})^2 (\text{p1}+\text{p4}+2 \;\text{q1})^4 \left((\text{p1}+\text{q1})^2-\text{m1}^2\right)},\frac{1}{\text{p1}^2 \left(\text{p3}^2-\text{m1}^2\right) (\text{p1}+\text{q1})^4 (\text{p3}+\text{q1})^2 (\text{p4}-2 \;\text{q1})^2 (\text{p1}-\text{p3}-\text{p4}+2 \;\text{q1})^2 \left((\text{p1}-\text{p4}+2 \;\text{q1})^2-\text{m1}^2\right)}\right\}$$
 
 ```mathematica
 FCLoopFindIntegralMappings[ints, {p1, p3, p4}]
@@ -40,7 +42,7 @@ FCLoopFindIntegralMappings[ints, {p1, p3, p4}]
 
 $$\left(
 \begin{array}{ccc}
- \frac{1}{\text{p1}^2 \text{p4}^2 \left(\text{p3}^2-\text{m1}^2\right) (\text{p1}+\text{q1})^2^2 (\text{p3}+\text{q1})^2 (\text{p1}-\text{p3}-\text{p4})^2 \left((\text{p1}-\text{p4})^2-\text{m1}^2\right)} & \frac{1}{\text{p4}^2 \left(\text{p3}^2-\text{m1}^2\right) (\text{p3}+\text{q1})^2 (\text{p1}-\text{p3}+\text{q1})^2 (\text{p1}+\text{p4}+\text{q1})^2 (\text{p1}+\text{p4}+2 \text{q1})^2^2 \left((\text{p1}+\text{q1})^2-\text{m1}^2\right)} & \frac{1}{\text{p1}^2 \left(\text{p3}^2-\text{m1}^2\right) (\text{p1}+\text{q1})^2^2 (\text{p3}+\text{q1})^2 (\text{p4}-2 \text{q1})^2 (\text{p1}-\text{p3}-\text{p4}+2 \text{q1})^2 \left((\text{p1}-\text{p4}+2 \text{q1})^2-\text{m1}^2\right)} \\
+ \frac{1}{\text{p1}^2 \;\text{p4}^2 \left(\text{p3}^2-\text{m1}^2\right) (\text{p1}+\text{q1})^4 (\text{p3}+\text{q1})^2 (\text{p1}-\text{p3}-\text{p4})^2 \left((\text{p1}-\text{p4})^2-\text{m1}^2\right)} & \frac{1}{\text{p4}^2 \left(\text{p3}^2-\text{m1}^2\right) (\text{p3}+\text{q1})^2 (\text{p1}-\text{p3}+\text{q1})^2 (\text{p1}+\text{p4}+\text{q1})^2 (\text{p1}+\text{p4}+2 \;\text{q1})^4 \left((\text{p1}+\text{q1})^2-\text{m1}^2\right)} & \frac{1}{\text{p1}^2 \left(\text{p3}^2-\text{m1}^2\right) (\text{p1}+\text{q1})^4 (\text{p3}+\text{q1})^2 (\text{p4}-2 \;\text{q1})^2 (\text{p1}-\text{p3}-\text{p4}+2 \;\text{q1})^2 \left((\text{p1}-\text{p4}+2 \;\text{q1})^2-\text{m1}^2\right)} \\
 \end{array}
 \right)$$
 
@@ -48,12 +50,12 @@ If the input is a list of `GLI`-integrals, `FCLoopFindIntegralMappings` will ret
 
 ```mathematica
 topos = {
-   FCTopology[topo1, {SFAD[{p1, m^2}], SFAD[{p2, m^2}]}, {p1, p2}, {}, {}], 
-   FCTopology[topo2, {SFAD[{p3, m^2}], SFAD[{p4, m^2}]}, {p3, p4}, {}, {}] 
+   FCTopology[topo1, {SFAD[{p1, m^2}], SFAD[{p2, m^2}]}, {p1, p2}, {}, {}, {}], 
+   FCTopology[topo2, {SFAD[{p3, m^2}], SFAD[{p4, m^2}]}, {p3, p4}, {}, {}, {}] 
   }
 ```
 
-$$\left\{\text{FCTopology}\left(\text{topo1},\left\{\frac{1}{(\text{p1}^2-m^2+i \eta )},\frac{1}{(\text{p2}^2-m^2+i \eta )}\right\},\{\text{p1},\text{p2}\},\{\},\{\}\right),\text{FCTopology}\left(\text{topo2},\left\{\frac{1}{(\text{p3}^2-m^2+i \eta )},\frac{1}{(\text{p4}^2-m^2+i \eta )}\right\},\{\text{p3},\text{p4}\},\{\},\{\}\right)\right\}$$
+$$\left\{\text{FCTopology}\left(\text{topo1},\left\{\frac{1}{(\text{p1}^2-m^2+i \eta )},\frac{1}{(\text{p2}^2-m^2+i \eta )}\right\},\{\text{p1},\text{p2}\},\{\},\{\},\{\}\right),\text{FCTopology}\left(\text{topo2},\left\{\frac{1}{(\text{p3}^2-m^2+i \eta )},\frac{1}{(\text{p4}^2-m^2+i \eta )}\right\},\{\text{p3},\text{p4}\},\{\},\{\},\{\}\right)\right\}$$
 
 ```mathematica
 glis = {GLI[topo1, {1, 1}], GLI[topo1, {1, 2}], GLI[topo1, {2, 1}], GLI[topo2, {1, 1}], GLI[topo2, {2, 2}]}

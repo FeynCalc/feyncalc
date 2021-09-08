@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* $RenameFeynCalcObjects*)
+(*$RenameFeynCalcObjects*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[$LoadAddOns]($LoadAddOns).*)
+(*[Overview](Extra/FeynCalc.md), [$LoadAddOns]($LoadAddOns.md).*)
 
 
 (* ::Subsection:: *)

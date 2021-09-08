@@ -16,11 +16,11 @@
 
 
 (* ::Text:: *)
-(*$S$: `DiracBasis[1]`*)
-(*$P$: `DiracBasis[GA[5]]`*)
-(*$V$: `DiracBasis[GA[$\mu$]]`*)
-(*$A$: `DiracBasis[GA[$\mu$,5]]`*)
-(*$T$: `DiracBasis[DiracSigma[GA[$\mu$,$\nu$]]]`*)
+(*- $S$: `DiracBasis[1]`*)
+(*- $P$: `DiracBasis[GA[5]]`*)
+(*- $V$: `DiracBasis[GA[$\mu$]]`*)
+(*- $A$: `DiracBasis[GA[$\mu$,5]]`*)
+(*- $T$: `DiracBasis[DiracSigma[GA[$\mu$,$\nu$]]]`*)
 
 
 (* ::Text:: *)
@@ -32,7 +32,7 @@
 
 
 (* ::Text:: *)
-(*[Chisholm](Chisholm), [DiracSimplify](DiracSimplify), [EpsChisholm](EpsChisholm).*)
+(*[Overview](Extra/FeynCalc.md), [Chisholm](Chisholm.md), [DiracSimplify](DiracSimplify.md), [EpsChisholm](EpsChisholm.md).*)
 
 
 (* ::Subsection:: *)

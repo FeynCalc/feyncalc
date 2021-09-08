@@ -4,7 +4,7 @@
 
 ### See also
 
-B0, C0, D0, TID, TID, TIDL, $LimitTo4
+[Overview](Extra/FeynCalc.md), [ToPaVe](ToPaVe.md), [ToPaVe2](ToPaVe2.md), [A0](A0.md), [A00](A00.md), [B0](B0.md), [B1](B1.md), [B00](B00.md), [B11](B11.md), [C0](C0.md), [D0](D0.md).
 
 ### Examples
 
@@ -22,6 +22,6 @@ I ((el^2)/(16 Pi^4 (1 - D))) FAD[{q, mf}, {q - k, mf}] DiracTrace[(mf + GSD[q - 
 OneLoop[q, %]
 ```
 
-$$\frac{i \text{el}^2 \text{tr}\left((\gamma \cdot (q-k)+\text{mf}).\gamma ^{\mu }.(\text{mf}+\gamma \cdot q).\gamma ^{\mu }\right)}{16 \pi ^4 (1-D) \left(q^2-\text{mf}^2\right).\left((q-k)^2-\text{mf}^2\right)}$$
+$$\frac{i \;\text{el}^2 \;\text{tr}\left((\gamma \cdot (q-k)+\text{mf}).\gamma ^{\mu }.(\text{mf}+\gamma \cdot q).\gamma ^{\mu }\right)}{16 \pi ^4 (1-D) \left(q^2-\text{mf}^2\right).\left((q-k)^2-\text{mf}^2\right)}$$
 
-$$\frac{\text{el}^2 \left(-\frac{8 \text{mf}^2 \text{B}_0\left(\overline{k}^2,\text{mf}^2,\text{mf}^2\right)}{1-D}+\frac{2 (2-D) \overline{k}^2 \text{B}_0\left(\overline{k}^2,\text{mf}^2,\text{mf}^2\right)}{1-D}+\frac{4 D \text{A}_0\left(\text{mf}^2\right)}{1-D}-\frac{8 \text{A}_0\left(\text{mf}^2\right)}{1-D}\right)}{16 \pi ^2}$$
+$$\frac{\text{el}^2 \left(-\frac{8 \;\text{mf}^2 \;\text{B}_0\left(\overline{k}^2,\text{mf}^2,\text{mf}^2\right)}{1-D}+\frac{2 (2-D) \overline{k}^2 \;\text{B}_0\left(\overline{k}^2,\text{mf}^2,\text{mf}^2\right)}{1-D}+\frac{4 D \;\text{A}_0\left(\text{mf}^2\right)}{1-D}-\frac{8 \;\text{A}_0\left(\text{mf}^2\right)}{1-D}\right)}{16 \pi ^2}$$

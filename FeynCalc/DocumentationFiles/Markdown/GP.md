@@ -4,6 +4,6 @@
 
 ### See also
 
-[GluonPropagator](GluonPropagator).
+[Overview](Extra/FeynCalc.md), [GluonPropagator](GluonPropagator.md).
 
 ### Examples

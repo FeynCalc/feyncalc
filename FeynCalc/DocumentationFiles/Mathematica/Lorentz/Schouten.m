@@ -24,15 +24,13 @@
 
 
 (* ::Text:: *)
-(*[Contract](Contract), [DiracTrace](DiracTrace), [FCSchoutenBruteForce](FCSchoutenBruteForce).*)
+(*[Overview](Extra/FeynCalc.md), [Contract](Contract.md), [DiracTrace](DiracTrace.md), [FCSchoutenBruteForce](FCSchoutenBruteForce.md).*)
 
 
 (* ::Subsection:: *)
 (*Examples*)
 
 
-((LC[\[Mu],\[Nu],\[Rho],\[Sigma]] FV[p,\[Tau]]+LC[\[Nu],\[Rho],\[Sigma],\[Tau]] FV[p,\[Mu]]+LC[\[Rho],\[Sigma],\[Tau],\[Mu]] FV[p,\[Nu]]+LC[\[Sigma],\[Tau],\[Mu],\[Nu]] FV[p,\[Rho]]+LC[\[Tau],\[Mu],\[Nu],\[Rho]] FV[p,\[Sigma]]))
+((LC[\[Mu],\[Nu],\[Rho],\[Sigma]] FV[p,\[Tau]]+LC[\[Nu],\[Rho],\[Sigma],\[Tau]] FV[p,\[Mu]]+LC[\[Rho],\[Sigma],\[Tau],\[Mu]] FV[p,\[Nu]]+
+LC[\[Sigma],\[Tau],\[Mu],\[Nu]] FV[p,\[Rho]]+LC[\[Tau],\[Mu],\[Nu],\[Rho]] FV[p,\[Sigma]]))
 Schouten[%]
-
-
-

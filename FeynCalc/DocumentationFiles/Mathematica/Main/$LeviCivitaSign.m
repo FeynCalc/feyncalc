@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* $LeviCivitaSign*)
+(*$LeviCivitaSign*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[LC](LC), [Eps](Eps), [DiracTrace](DiracTrace).*)
+(*[Overview](Extra/FeynCalc.md), [LC](LC.md), [Eps](Eps.md), [DiracTrace](DiracTrace.md).*)
 
 
 (* ::Subsection:: *)

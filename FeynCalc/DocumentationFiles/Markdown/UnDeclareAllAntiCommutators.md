@@ -4,7 +4,7 @@
 
 ### See also
 
-[AntiCommutator](AntiCommutator), [CommutatorExplicit](CommutatorExplicit), [DeclareNonCommutative](DeclareNonCommutative), [DotSimplify](DotSimplify).
+[Overview](Extra/FeynCalc.md), [AntiCommutator](AntiCommutator.md), [CommutatorExplicit](CommutatorExplicit.md), [DeclareNonCommutative](DeclareNonCommutative.md), [DotSimplify](DotSimplify.md).
 
 ### Examples
 
@@ -15,7 +15,7 @@ AntiCommutator[c, d] = x2;
 DotSimplify[a . b . c . d]
 ```
 
-$$b.a.d.c-\text{x2} b.a-\text{x1} d.c+\text{x1} \text{x2}$$
+$$b.a.d.c-\text{x2} b.a-\text{x1} d.c+\text{x1} \;\text{x2}$$
 
 ```mathematica
 UnDeclareAllAntiCommutators[]

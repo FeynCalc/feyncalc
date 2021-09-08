@@ -1,10 +1,10 @@
-## Zeta4 
+## Zeta4
 
 `Zeta4` denotes `Zeta[4]`.
 
 ### See also
 
-[Zeta2](Zeta2), [Zeta6](Zeta6), [Zeta8](Zeta8), [Zeta10](Zeta10).
+[Overview](Extra/FeynCalc.md), [Zeta2](Zeta2.md), [Zeta6](Zeta6.md), [Zeta8](Zeta8.md), [Zeta10](Zeta10.md).
 
 ### Examples
 

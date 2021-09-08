@@ -2,7 +2,7 @@
 
 ### See also
 
-[FCTopology](FCTopology).
+[Overview](Extra/FeynCalc.md), [FCTopology](FCTopology.md).
 
 ### Examples
 
@@ -43,6 +43,6 @@ FCLoopValidTopologyQ[topoWrong]
 
 ```
 
-![0yr0z23f6hsmy](img/0yr0z23f6hsmy.svg)
+![074ejzubvewb2](img/074ejzubvewb2.svg)
 
 $$\text{False}$$

@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(*Collect2 *)
+(*Collect2*)
 
 
 (* ::Text:: *)
@@ -24,7 +24,7 @@
 
 
 (* ::Text:: *)
-(*[Isolate](Isolate).*)
+(*[Overview](Extra/FeynCalc.md), [Isolate](Isolate.md).*)
 
 
 (* ::Subsection:: *)

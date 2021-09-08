@@ -4,6 +4,6 @@
 
 ### See also
 
-[RHI](RHI), [FeynCalc2FORM](FeynCalc2FORM).
+[Overview](Extra/FeynCalc.md), [RHI](RHI.md), [FeynCalc2FORM](FeynCalc2FORM.md).
 
 ### Examples

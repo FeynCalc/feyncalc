@@ -4,7 +4,7 @@
 
 ### See also
 
-[Trick](Trick), [DiracSimplify](DiracSimplify), [DiracTrick](DiracTrick).
+[Overview](Extra/FeynCalc.md), [Trick](Trick.md), [DiracSimplify](DiracSimplify.md), [DiracTrick](DiracTrick.md).
 
 ### Examples
 
@@ -47,6 +47,6 @@ Calc[% FVD[p, li1] FVD[q, li2] FVD[-p - q, li3]]
 
 ```
 
-$$V^{\text{li1}\text{li2}\text{li3}}(p\text{, }q\text{, }-p-q)$$
+$$V^{\text{li1}\;\text{li2}\;\text{li3}}(p\text{, }q\text{, }-p-q)$$
 
 $$0$$

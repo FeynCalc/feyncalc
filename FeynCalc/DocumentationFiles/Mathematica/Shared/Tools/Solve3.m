@@ -4,11 +4,15 @@
 
 
 (* ::Section:: *)
-(*Solve3 *)
+(*Solve3*)
 
 
 (* ::Text:: *)
-(*`Solve3` is equivalent to `Solve`, except that it works only for linear equations (and returns just a list) and uses the "high school algorithm" and is sometimes better than Solve for systems involving rational polynomials.*)
+(*`Solve3` is equivalent to `Solve`, except that it works only for linear equations (and returns just a list) and uses the "high school algorithm.*)
+
+
+(* ::Text:: *)
+(*Sometimes it is better than `Solve` for systems involving rational polynomials.*)
 
 
 (* ::Subsection:: *)
@@ -16,7 +20,7 @@
 
 
 (* ::Text:: *)
-(*[Solve2](Solve2).*)
+(*[Overview](Extra/FeynCalc.md), [Solve2](Solve2.md).*)
 
 
 (* ::Subsection:: *)

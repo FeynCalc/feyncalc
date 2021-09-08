@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Contract](Contract), [DiracEquation](DiracEquation), [DiracSigmaExplicit](DiracSigmaExplicit), [DiracSubstitute5](DiracSubstitute5), [DiracSubstitute67](DiracSubstitute67), [DiracGamma](DiracGamma), [DiracGammaExpand](DiracGammaExpand), [DiracOrder](DiracOrder), [DiracTrace](DiracTrace), [DiracTraceEvaluate](DiracTraceEvaluate), [DiracTrick](DiracTrick), [FCDiracIsolate](FCDiracIsolate), [SirlinSimplify](SirlinSimplify), [SpinorChainTrick](SpinorChainTrick), [SpinorChainEvaluate](SpinorChainEvaluate), [ToDiracGamma67](ToDiracGamma67).*)
+(*[Overview](Extra/FeynCalc.md), [Contract](Contract.md), [DiracEquation](DiracEquation.md), [DiracSigmaExplicit](DiracSigmaExplicit.md), [DiracSubstitute5](DiracSubstitute5.md), [DiracSubstitute67](DiracSubstitute67.md), [DiracGamma](DiracGamma.md), [DiracGammaExpand](DiracGammaExpand.md), [DiracOrder](DiracOrder.md), [DiracTrace](DiracTrace.md), [DiracTraceEvaluate](DiracTraceEvaluate.md), [DiracTrick](DiracTrick.md), [FCDiracIsolate](FCDiracIsolate.md), [SirlinSimplify](SirlinSimplify.md), [SpinorChainTrick](SpinorChainTrick.md), [SpinorChainEvaluate](SpinorChainEvaluate.md), [ToDiracGamma67](ToDiracGamma67.md).*)
 
 
 (* ::Subsection:: *)
@@ -109,14 +109,16 @@ DiracSimplify[%]
 (*Suitable combinations of $\gamma^5$ will not be rewritten in terms of chirality projectors, if the option `ToDiracGamma67` is set to `False`.*)
 
 
-DiracSimplify[(1/2-GA[5]/2) . (-((a+GS[p+q])/b)) . (1/2+GA[5]/2),ToDiracGamma67->False]
+DiracSimplify[(1/2-GA[5]/2) . (-((a+GS[p+q])/b)) . (1/2+GA[5]/2),
+ToDiracGamma67->False]
 
 
 (* ::Text:: *)
 (*However, it the final result must contain only $\gamma^5$ but not $\gamma^6$ or $\gamma^7$, it is better to invoke the option `DiracSubstitute67`. This way DiracSimplify can perform more intermediate simplifications before presenting the final result.*)
 
 
-DiracSimplify[(1/2-GA[5]/2) . (-((a+GS[p+q])/b)) . (1/2+GA[5]/2),DiracSubstitute67->True]
+DiracSimplify[(1/2-GA[5]/2) . (-((a+GS[p+q])/b)) . (1/2+GA[5]/2),
+DiracSubstitute67->True]
 
 
 (* ::Text:: *)
@@ -130,7 +132,8 @@ DiracSimplify[GA[5,\[Mu],\[Nu]],DiracSubstitute5->True]
 (*The Dirac equation is routinely used to simplify closed spinor chains.*)
 
 
-SpinorVBar[Subscript[p, 2],Subscript[m, 2]] . (GS[Subscript[p, 1]]+Subscript[m, 1]) . SpinorU[Subscript[p, 1],Subscript[m, 1]]
+(SpinorVBar[Subscript[p, 2],Subscript[m, 2]] . (GS[Subscript[p, 1]]+
+Subscript[m, 1]) . SpinorU[Subscript[p, 1],Subscript[m, 1]])
 DiracSimplify[%]
 
 
@@ -149,7 +152,9 @@ DiracSimplify[SpinorVBar[p] . GS[p] . SpinorU[q],DiracEquation->False]
 (*Suitable products of $4$-dimensional spinor chains are simplified using Sirlin's identities*)
 
 
-SpinorUBar[Subscript[p, 3],Subscript[m, 3]] . GA[\[Mu],\[Rho],\[Nu],6] . SpinorU[Subscript[p, 1],Subscript[m, 1]]SpinorUBar[Subscript[p, 4],Subscript[m, 4]] . GA[\[Mu],\[Tau],\[Nu],6] . SpinorU[Subscript[p, 2],Subscript[m, 2]]
+(SpinorUBar[Subscript[p, 3],Subscript[m, 3]] . GA[\[Mu],\[Rho],\[Nu],6] . SpinorU[Subscript[p, 1],
+Subscript[m, 1]]SpinorUBar[Subscript[p, 4],
+Subscript[m, 4]] . GA[\[Mu],\[Tau],\[Nu],6] . SpinorU[Subscript[p, 2],Subscript[m, 2]])
 DiracSimplify[%]
 
 
@@ -164,7 +169,12 @@ DiracSimplify[SpinorUBar[Subscript[p, 3],Subscript[m, 3]] . GA[\[Mu],\[Rho],\[Nu
 (*Even when the usage of Sirlin's identities is disabled, DiracSimplify will still try to perform some simplifications on the spinor chains, e.g. by canonicalizing the dummy indices.*)
 
 
-c1 SpinorUBar[Subscript[p, 3],Subscript[m, 3]] . GA[\[Mu],\[Rho],\[Nu],6] . SpinorU[Subscript[p, 1],Subscript[m, 1]]SpinorUBar[Subscript[p, 4],Subscript[m, 4]] . GA[\[Mu],\[Tau],\[Nu],6] . SpinorU[Subscript[p, 2],Subscript[m, 2]]+c2 SpinorUBar[Subscript[p, 3],Subscript[m, 3]] . GA[\[Alpha],\[Rho],\[Nu],6] . SpinorU[Subscript[p, 1],Subscript[m, 1]]SpinorUBar[Subscript[p, 4],Subscript[m, 4]] . GA[\[Alpha],\[Tau],\[Nu],6] . SpinorU[Subscript[p, 2],Subscript[m, 2]]
+(c1 SpinorUBar[Subscript[p, 3],Subscript[m, 3]] . GA[\[Mu],\[Rho],\[Nu],6] . SpinorU[Subscript[p, 
+1],Subscript[m, 1]]SpinorUBar[Subscript[p, 4],Subscript[m, 
+4]] . GA[\[Mu],\[Tau],\[Nu],6] . SpinorU[Subscript[p, 2],Subscript[m, 2]]+
+c2 SpinorUBar[Subscript[p, 3],Subscript[m, 3]] . GA[\[Alpha],\[Rho],
+\[Nu],6] . SpinorU[Subscript[p, 1],Subscript[m, 1]]SpinorUBar[Subscript[p, 
+4],Subscript[m, 4]] . GA[\[Alpha],\[Tau],\[Nu],6] . SpinorU[Subscript[p, 2],Subscript[m, 2]])
 DiracSimplify[%,SirlinSimplify->False]//Factor
 
 
@@ -172,7 +182,14 @@ DiracSimplify[%,SirlinSimplify->False]//Factor
 (*Setting `SpinorChainTrick` to `False disables this behavior.*)
 
 
-DiracSimplify[c1 SpinorUBar[Subscript[p, 3],Subscript[m, 3]] . GA[\[Mu],\[Rho],\[Nu],6] . SpinorU[Subscript[p, 1],Subscript[m, 1]]SpinorUBar[Subscript[p, 4],Subscript[m, 4]] . GA[\[Mu],\[Tau],\[Nu],6] . SpinorU[Subscript[p, 2],Subscript[m, 2]]+c2 SpinorUBar[Subscript[p, 3],Subscript[m, 3]] . GA[\[Alpha],\[Rho],\[Nu],6] . SpinorU[Subscript[p, 1],Subscript[m, 1]]SpinorUBar[Subscript[p, 4],Subscript[m, 4]] . GA[\[Alpha],\[Tau],\[Nu],6] . SpinorU[Subscript[p, 2],Subscript[m, 2]],SirlinSimplify->False,SpinorChainTrick->False]
+DiracSimplify[c1 SpinorUBar[Subscript[p, 3],Subscript[m, 3]] . GA[\[Mu],\[Rho],
+\[Nu],6] . SpinorU[Subscript[p, 1],Subscript[m, 1]]SpinorUBar[Subscript[p, 
+4],Subscript[m, 4]] . GA[\[Mu],\[Tau],\[Nu],6] . SpinorU[Subscript[p, 2],
+Subscript[m, 2]]+c2 SpinorUBar[Subscript[p, 3],Subscript[m, 
+3]] . GA[\[Alpha],\[Rho],\[Nu],6] . SpinorU[Subscript[p, 1],Subscript[m, 
+1]]SpinorUBar[Subscript[p, 4],Subscript[m, 4]] . GA[\[Alpha],\[Tau],
+\[Nu],6] . SpinorU[Subscript[p, 2],Subscript[m, 2]],
+SirlinSimplify->False,SpinorChainTrick->False]
 
 
 (* ::Text:: *)
@@ -215,14 +232,16 @@ DiracSimplify[%]
 (*This will not happen if the option `DiracTraceEvaluate` is set to `False`. However, `DiracSimplify` will still perform some simplifications inside the trace, without evaluating it explicitly.*)
 
 
-DiracSimplify[DiracTrace[(-GSD[q]+SMP["m_e"]) . GAD[\[Nu]] . (GSD[p-q]+SMP["m_e"]) . GAD[\[Mu]]] ,DiracTraceEvaluate->False]
+DiracSimplify[DiracTrace[(-GSD[q]+SMP["m_e"]) . GAD[\[Nu]] . (GSD[p-q]+
+SMP["m_e"]) . GAD[\[Mu]]] ,DiracTraceEvaluate->False]
 
 
 (* ::Text:: *)
 (*Set `DiracTrace` to `False` if you want `DiracSimplify` not to touch the Dirac traces.*)
 
 
-DiracSimplify[DiracTrace[(-GSD[q]+SMP["m_e"]) . GAD[\[Nu]] . (GSD[p-q]+SMP["m_e"]) . GAD[\[Mu]]] ,DiracTraceEvaluate->False,DiracTrace->False]
+DiracSimplify[DiracTrace[(-GSD[q]+SMP["m_e"]) . GAD[\[Nu]] . (GSD[p-q]+
+SMP["m_e"]) . GAD[\[Mu]]] ,DiracTraceEvaluate->False,DiracTrace->False]
 
 
 (* ::Text:: *)
@@ -303,7 +322,10 @@ DiracSimplify[%]
 (*For performance reasons `DiracSimplify` will not canonically order Dirac matrices and canonicalize Lorentz/Cartesian indices by default. However, amplitudes involving 4-fermion operators may require such additional simplifications. In this case they should explicitly activated by the user. Of course, this will somewhat slow down the evaluation.*)
 
 
-ex=Spinor[-Momentum[p1,D],mb,1] . GAD[\[Mu]] . GA[7] . GAD[\[Nu]] . GAD[\[Alpha]] . GAD[\[Beta]] . GAD[\[Delta]] . GA[7] . Spinor[-Momentum[p4,D],0,1] Spinor[Momentum[p3,D],0,1] . GAD[\[Alpha]] . GAD[\[Beta]] . GAD[\[Delta]] . GA[7] . GAD[\[Nu]] . GAD[\[Mu]] . GA[7] . Spinor[Momentum[p2,D],0,1]
+ex=(Spinor[-Momentum[p1,D],mb,1] . GAD[\[Mu]] . GA[7] . GAD[\[Nu]] . GAD[\[Alpha]] . 
+GAD[\[Beta]] . GAD[\[Delta]] . GA[7] . Spinor[-Momentum[p4,D],0,1] Spinor[Momentum[p3,D],0,
+1] . GAD[\[Alpha]] . GAD[\[Beta]] . GAD[\[Delta]] . GA[7] . GAD[\[Nu]] . GAD[\[Mu]] . 
+GA[7] . Spinor[Momentum[p2,D],0,1])
 DiracSimplify[ex]
 
 

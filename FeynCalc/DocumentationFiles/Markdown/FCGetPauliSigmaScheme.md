@@ -4,7 +4,7 @@
 
 ### See also
 
-[PauliSigma](PauliSigma), [FCSetPauliSigmaScheme](FCSetPauliSigmaScheme).
+[Overview](Extra/FeynCalc.md), [PauliSigma](PauliSigma.md), [FCSetPauliSigmaScheme](FCSetPauliSigmaScheme.md).
 
 ### Examples
 

@@ -6,7 +6,7 @@ The shortcut `Gstrong` is deprecated, please use `SMP["g_s"]` instead!
 
 ### See also
 
-[CovariantD](CovariantD), [FieldStrength](FieldStrength), [GluonVertex](GluonVertex).
+[Overview](Extra/FeynCalc.md), [CovariantD](CovariantD.md), [FieldStrength](FieldStrength.md), [GluonVertex](GluonVertex.md).
 
 ### Examples
 

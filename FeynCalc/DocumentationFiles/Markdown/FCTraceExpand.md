@@ -4,7 +4,7 @@
 
 ### See also
 
-[DiracTrace](DiracTrace), [SUNTrace](SUNTrace).
+[Overview](Extra/FeynCalc.md), [DiracTrace](DiracTrace.md), [SUNTrace](SUNTrace.md).
 
 ### Examples
 
@@ -18,7 +18,7 @@ $$\text{tr}\left(\bar{\gamma }^{\mu }.\left(\bar{\gamma }\cdot \overline{\text{p
 FCTraceExpand[ex]
 ```
 
-$$\text{m1} \text{m2} \text{tr}\left(\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\rho }\right)+\text{m1} \text{tr}\left(\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\left(\bar{\gamma }\cdot \overline{\text{p2}}\right).\bar{\gamma }^{\rho }\right)+\text{m2} \text{tr}\left(\bar{\gamma }^{\mu }.\left(\bar{\gamma }\cdot \overline{\text{p1}}\right).\bar{\gamma }^{\nu }.\bar{\gamma }^{\rho }\right)+\text{tr}\left(\bar{\gamma }^{\mu }.\left(\bar{\gamma }\cdot \overline{\text{p1}}\right).\bar{\gamma }^{\nu }.\left(\bar{\gamma }\cdot \overline{\text{p2}}\right).\bar{\gamma }^{\rho }\right)+\text{tr}(1) x$$
+$$\text{m1} \;\text{m2} \;\text{tr}\left(\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\rho }\right)+\text{m1} \;\text{tr}\left(\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\left(\bar{\gamma }\cdot \overline{\text{p2}}\right).\bar{\gamma }^{\rho }\right)+\text{m2} \;\text{tr}\left(\bar{\gamma }^{\mu }.\left(\bar{\gamma }\cdot \overline{\text{p1}}\right).\bar{\gamma }^{\nu }.\bar{\gamma }^{\rho }\right)+\text{tr}\left(\bar{\gamma }^{\mu }.\left(\bar{\gamma }\cdot \overline{\text{p1}}\right).\bar{\gamma }^{\nu }.\left(\bar{\gamma }\cdot \overline{\text{p2}}\right).\bar{\gamma }^{\rho }\right)+\text{tr}(1) x$$
 
 ```mathematica
 FCTraceExpand[ex, DotSimplify -> False]
@@ -37,9 +37,9 @@ a*DiracTrace[GA[\[Mu]] . (GS[p1] + m1) . GA[\[Nu]]] + b*DiracTrace[GA[\[Mu]] . (
 FCTraceExpand[%, Momentum -> {p1}]
 ```
 
-$$a \text{tr}\left(\bar{\gamma }^{\mu }.\left(\bar{\gamma }\cdot \overline{\text{p1}}+\text{m1}\right).\bar{\gamma }^{\nu }\right)+b \text{tr}\left(\bar{\gamma }^{\mu }.\left(\bar{\gamma }\cdot \overline{\text{p2}}+\text{m2}\right).\bar{\gamma }^{\nu }\right)$$
+$$a \;\text{tr}\left(\bar{\gamma }^{\mu }.\left(\bar{\gamma }\cdot \overline{\text{p1}}+\text{m1}\right).\bar{\gamma }^{\nu }\right)+b \;\text{tr}\left(\bar{\gamma }^{\mu }.\left(\bar{\gamma }\cdot \overline{\text{p2}}+\text{m2}\right).\bar{\gamma }^{\nu }\right)$$
 
-$$a \left(\text{m1} \text{tr}\left(\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }\right)+\text{tr}\left(\bar{\gamma }^{\mu }.\left(\bar{\gamma }\cdot \overline{\text{p1}}\right).\bar{\gamma }^{\nu }\right)\right)+b \text{tr}\left(\bar{\gamma }^{\mu }.\left(\bar{\gamma }\cdot \overline{\text{p2}}+\text{m2}\right).\bar{\gamma }^{\nu }\right)$$
+$$a \left(\text{m1} \;\text{tr}\left(\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }\right)+\text{tr}\left(\bar{\gamma }^{\mu }.\left(\bar{\gamma }\cdot \overline{\text{p1}}\right).\bar{\gamma }^{\nu }\right)\right)+b \;\text{tr}\left(\bar{\gamma }^{\mu }.\left(\bar{\gamma }\cdot \overline{\text{p2}}+\text{m2}\right).\bar{\gamma }^{\nu }\right)$$
 
 At the moment `SUNTrace` automatically expands its content, so here `FCTraceExpand` is not needed. However, this may change in future.
 

@@ -8,7 +8,7 @@ Furthermore, when working with lists of topologies one can write `FCLoopCreateRu
 
 ### See also
 
-[FCTopology](FCTopology), [GLI](GLI), [FCFindTopologies](FCFindTopologies), [FCFindTopologyMappings](FCFindTopologyMappings).
+[Overview](Extra/FeynCalc.md), [FCTopology](FCTopology.md), [GLI](GLI.md), [FCFindTopologies](FCFindTopologies.md), [FCFindTopologyMappings](FCFindTopologyMappings.md).
 
 ### Examples
 
@@ -64,9 +64,9 @@ FCLoopIntegralToGraph[FCTopology["tad2l", {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1
 
 $$\left\{\{1\to 2,1\to 2,1\to 2\},\left(
 \begin{array}{ccc}
- \text{p2} & 1 & -\text{m2}^2 \\
- \text{p1} & 1 & -\text{m1}^2 \\
- \text{p1}-\text{p2} & 1 & -\text{m3}^2 \\
+ \;\text{p2} & 1 & -\text{m2}^2 \\
+ \;\text{p1} & 1 & -\text{m1}^2 \\
+ \;\text{p1}-\text{p2} & 1 & -\text{m3}^2 \\
 \end{array}
 \right),\left\{\frac{1}{(\text{p2}^2-\text{m2}^2+i \eta )},\frac{1}{(\text{p1}^2-\text{m1}^2+i \eta )},\frac{1}{((\text{p1}-\text{p2})^2-\text{m3}^2+i \eta )}\right\},1\right\}$$
 

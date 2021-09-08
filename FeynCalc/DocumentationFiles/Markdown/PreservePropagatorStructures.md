@@ -4,6 +4,6 @@
 
 ### See also
 
-[DotSimplify](DotSimplify).
+[Overview](Extra/FeynCalc.md), [DotSimplify](DotSimplify.md).
 
 ### Examples

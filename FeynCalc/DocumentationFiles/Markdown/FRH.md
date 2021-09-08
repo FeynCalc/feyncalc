@@ -4,7 +4,7 @@
 
 ### See also
 
-[Isolate](Isolate).
+[Overview](Extra/FeynCalc.md), [Isolate](Isolate.md).
 
 ### Examples
 
@@ -24,7 +24,7 @@ $$0$$
 Isolate[ToRadicals[Solve[x^3 - x - 1 == 0]], x, IsolateNames -> KK]
 ```
 
-$$\{\{x\to \text{KK}(26)\},\{x\to \text{KK}(29)\},\{x\to \text{KK}(30)\}\}$$
+$$\{\{x\to \;\text{KK}(26)\},\{x\to \;\text{KK}(29)\},\{x\to \;\text{KK}(30)\}\}$$
 
 ```mathematica
 FRH[%]

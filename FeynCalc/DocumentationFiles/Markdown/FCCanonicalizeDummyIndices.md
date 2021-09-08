@@ -6,7 +6,7 @@ With the option `LorentzIndexNames` one can provide a list of names to be used f
 
 ### See also
 
-[FCRenameDummyIndices](FCRenameDummyIndices).
+[Overview](Extra/FeynCalc.md), [FCRenameDummyIndices](FCRenameDummyIndices.md).
 
 ### Examples
 
@@ -27,6 +27,6 @@ FCCanonicalizeDummyIndices[%, LorentzIndexNames -> {\[Mu], \[Nu]}]
 
 ```
 
-$$p^{\text{$\$$AL}(\text{$\$$32})} p^{\text{$\$$AL}(\text{$\$$33})} q^{\text{$\$$AL}(\text{$\$$32})} q^{\text{$\$$AL}(\text{$\$$33})}$$
+$$p^{\text{\$AL}(\text{\$32})} p^{\text{\$AL}(\text{\$33})} q^{\text{\$AL}(\text{\$32})} q^{\text{\$AL}(\text{\$33})}$$
 
 $$p^{\mu } p^{\nu } q^{\mu } q^{\nu }$$

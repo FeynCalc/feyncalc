@@ -4,7 +4,7 @@ CSISE[p] can be used as input for D-4-dimensional $\sigma^i p^i$ with $D-4$-dime
 
 ### See also
 
-[PauliSigma](PauliSigma).
+[Overview](Extra/FeynCalc.md), [PauliSigma](PauliSigma.md).
 
 ### Examples
 

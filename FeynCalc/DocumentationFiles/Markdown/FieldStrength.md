@@ -8,6 +8,8 @@ The name of the field ($A$) and the coupling constant ($g$) can be set through t
 
 ### See also
 
+[Overview](Extra/FeynCalc.md)
+
 ### Examples
 
 ```mathematica
@@ -32,10 +34,10 @@ $$\left.(\partial _{\mu }A_{\nu }\right)-\left.(\partial _{\nu }A_{\mu }\right)$
 FieldStrength[\[Mu], \[Nu], a, Explicit -> True]
 ```
 
-$$g_s f^{a\text{b24}\text{c25}} A_{\mu }^{\text{b24}}.A_{\nu }^{\text{c25}}+\left.(\partial _{\mu }A_{\nu }^a\right)-\left.(\partial _{\nu }A_{\mu }^a\right)$$
+$$g_s f^{a\text{b24}\;\text{c25}} A_{\mu }^{\text{b24}}.A_{\nu }^{\text{c25}}+\left.(\partial _{\mu }A_{\nu }^a\right)-\left.(\partial _{\nu }A_{\mu }^a\right)$$
 
 ```mathematica
 FieldStrength[\[Mu], \[Nu], a, CouplingConstant -> -SMP["g_s"], Explicit -> True]
 ```
 
-$$-g_s f^{a\text{b26}\text{c27}} A_{\mu }^{\text{b26}}.A_{\nu }^{\text{c27}}+\left.(\partial _{\mu }A_{\nu }^a\right)-\left.(\partial _{\nu }A_{\mu }^a\right)$$
+$$-g_s f^{a\text{b26}\;\text{c27}} A_{\mu }^{\text{b26}}.A_{\nu }^{\text{c27}}+\left.(\partial _{\mu }A_{\nu }^a\right)-\left.(\partial _{\nu }A_{\mu }^a\right)$$

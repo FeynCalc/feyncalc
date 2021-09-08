@@ -4,7 +4,7 @@
 
 ### See also
 
-[TID](TID).
+[Overview](Extra/FeynCalc.md), [TID](TID.md).
 
 ### Examples
 
@@ -58,4 +58,4 @@ $$\frac{p_1\cdot p_2}{k^2.(k-p_1+p_2){}^2}$$
 FDS[FAD[k - p1, k - p2] SPD[k, OPEDelta]^2, k]
 ```
 
-$$\frac{(k\cdot \Delta +\Delta \cdot \text{p2})^2}{k^2.(k-\text{p1}+\text{p2})^2}$$
+$$\frac{(k\cdot \Delta +\Delta \cdot \;\text{p2})^2}{k^2.(k-\text{p1}+\text{p2})^2}$$

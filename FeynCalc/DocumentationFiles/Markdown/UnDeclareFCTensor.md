@@ -4,7 +4,7 @@
 
 ### See also
 
-[DeclareFCTensor](DeclareFCTensor), [FCTensor](FCTensor).
+[Overview](Extra/FeynCalc.md), [DeclareFCTensor](DeclareFCTensor.md), [FCTensor](FCTensor.md).
 
 ### Examples
 

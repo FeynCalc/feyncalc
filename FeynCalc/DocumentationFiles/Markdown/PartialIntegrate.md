@@ -4,7 +4,7 @@
 
 ### See also
 
-[IntegrateByParts](IntegrateByParts), [Integrate2](Integrate2).
+[Overview](Extra/FeynCalc.md), [IntegrateByParts](IntegrateByParts.md), [Integrate2](Integrate2.md).
 
 ### Examples
 

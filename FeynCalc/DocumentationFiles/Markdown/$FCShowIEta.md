@@ -1,10 +1,10 @@
-##  $FCShowIEta
+## $FCShowIEta
 
 The Boolean setting of `$FCShowIEta` determines whether $i \eta$ should be displayed in the typesetting of propagator objects (except for `FAD`s) or not. This setting affects only the TraditionalForm typesetting and has absolutely no influence on the internal handling of propagator denominators in FeynCalc.
 
 ### See also
 
-[SFAD](SFAD), [CFAD](CFAD), [GFAD](GFAD).
+[Overview](Extra/FeynCalc.md), [SFAD](SFAD.md), [CFAD](CFAD.md), [GFAD](GFAD.md).
 
 ### Examples
 
@@ -13,9 +13,9 @@ $FCShowIEta
 SFAD[{p, m^2}]
 ```
 
-$$\text{True}$$
+$$\text{\$FCShowIEta}$$
 
-$$\frac{1}{(p^2-m^2+i \eta )}$$
+$$\text{SFAD}\left(\left\{p,m^2\right\}\right)$$
 
 ```mathematica
 $FCShowIEta = False
@@ -24,7 +24,7 @@ SFAD[{p, m^2}]
 
 $$\text{False}$$
 
-$$\frac{1}{(p^2-m^2)}$$
+$$\text{SFAD}\left(\left\{p,m^2\right\}\right)$$
 
 ```mathematica
 $FCShowIEta = True

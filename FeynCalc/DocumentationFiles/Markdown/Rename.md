@@ -4,7 +4,7 @@
 
 ### See also
 
-[Contract](Contract).
+[Overview](Extra/FeynCalc.md), [Contract](Contract.md).
 
 ### Examples
 
@@ -18,4 +18,4 @@ Contract[%, EpsContract -> False, Rename -> True]
 
 $$\bar{\epsilon }^{\alpha \nu \rho \sigma } \bar{\epsilon }^{\mu \nu \rho \sigma }$$
 
-$$\bar{\epsilon }^{\alpha \text{$\$$MU}(4)\text{$\$$MU}(5)\text{$\$$MU}(6)} \bar{\epsilon }^{\mu \text{$\$$MU}(4)\text{$\$$MU}(5)\text{$\$$MU}(6)}$$
+$$\bar{\epsilon }^{\alpha \;\text{\$MU}(4)\text{\$MU}(5)\text{\$MU}(6)} \bar{\epsilon }^{\mu \;\text{\$MU}(4)\text{\$MU}(5)\text{\$MU}(6)}$$

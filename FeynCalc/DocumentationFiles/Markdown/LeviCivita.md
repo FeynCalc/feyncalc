@@ -8,7 +8,7 @@ The shortcut `LeviCivita` is deprecated, please use `LC` instead!
 
 ### See also
 
-[LC](LC), [FCI](FCI).
+[Overview](Extra/FeynCalc.md), [LC](LC.md), [FCI](FCI.md).
 
 ### Examples
 

@@ -1,20 +1,30 @@
+(* ::Package:: *)
+
  
+
+
 (* ::Section:: *)
 (*FCReplaceD*)
+
+
 (* ::Text:: *)
-(*`FCReplaceD[expr, rule]` replaces `D` in expr accoding to the supplied replacement rule (e.g. `D -> 4 - 2*Epsilon`) but doesn't touch `D` inside `Pair`s and `DiracGamma`s, i.e the dimension of scalar products, metric tensors and Dirac matrices is unchanged. The latter can and should be done via `ChangeDimension`.*)
+(*`FCReplaceD[expr, rule]` replaces `D` in expr according to the supplied replacement rule (e.g. `D -> 4 - 2*Epsilon`) but doesn't touch `D` inside `Pair`s and `DiracGamma`s, i.e the dimension of scalar products, metric tensors and Dirac matrices is unchanged. The latter can and should be done via `ChangeDimension`.*)
 
 
 (* ::Subsection:: *)
 (*See also*)
-(* ::Text:: *)
-(*Applying the replacement rule directly to the expression doesn't give the desired result*)
 
+
+(* ::Text:: *)
+(*[Overview](Extra/FeynCalc.md).*)
 
 
 (* ::Subsection:: *)
 (*Examples*)
 
+
+(* ::Text:: *)
+(*Applying the replacement rule directly to the expression doesn't give the desired result*)
 
 
 FCI[D MTD[\[Mu],\[Nu]]]

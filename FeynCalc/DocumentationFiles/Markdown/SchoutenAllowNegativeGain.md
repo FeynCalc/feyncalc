@@ -4,6 +4,6 @@
 
 ### See also
 
-[FCSchoutenBruteForce](FCSchoutenBruteForce).
+[Overview](Extra/FeynCalc.md), [FCSchoutenBruteForce](FCSchoutenBruteForce.md).
 
 ### Examples

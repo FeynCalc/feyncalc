@@ -1,12 +1,12 @@
 ## CartesianPropagatorDenominator
 
-`CartesianPropagatorDenominator[CartesianMomentum[q1, D - 1] +..., CartesianPair[CartesianMomentum[q1, D - 1], CartesianMomentum[p1, D - 1] +..., m^2, {n, s}]` encodes a generic Cartesian propagator denominator $\frac{1}{[(q1+...)^2 + q1.p1 + ... + m^2 + s*I eta]^n}$.
+`CartesianPropagatorDenominator[CartesianMomentum[q1, D - 1] +..., CartesianPair[CartesianMomentum[q1, D - 1], CartesianMomentum[p1, D - 1] +..., m^2, {n, s}]` encodes a generic Cartesian propagator denominator $\frac{1}{[(q1+...)^2 + q1.p1 + ... + m^2 + s*I \eta]^n}$.
 
 `CartesianPropagatorDenominator` is an internal object. To enter such propagators in FeynCalc you should use `CFAD`.
 
 ### See also
 
-[CFAD](CFAD), [FeynAmpDenominator](FeynAmpDenominator).
+[Overview](Extra/FeynCalc.md), [CFAD](CFAD.md), [FeynAmpDenominator](FeynAmpDenominator.md).
 
 ### Examples
 

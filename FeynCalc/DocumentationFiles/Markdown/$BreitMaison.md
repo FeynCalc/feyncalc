@@ -1,4 +1,4 @@
-##  $BreitMaison
+## $BreitMaison
 
 `$BreitMaison` is a legacy switch for the Breitenlohner-Maison-t'Hooft-Veltman scheme.
 
@@ -6,6 +6,6 @@ Use `FCSetDiracGammaScheme` to specify a scheme for handling Dirac matrices in d
 
 ### See also
 
-[FCSetDiracGammaScheme](FCSetDiracGammaScheme), [FCGetDiracGammaScheme](FCGetDiracGammaScheme).
+[Overview](Extra/FeynCalc.md), [FCSetDiracGammaScheme](FCSetDiracGammaScheme.md), [FCGetDiracGammaScheme](FCGetDiracGammaScheme.md).
 
 ### Examples

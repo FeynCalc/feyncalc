@@ -8,7 +8,7 @@ The input can also consist of an `FCTopology` object or a list thereof.
 
 ### See also
 
-[FCLoopBasisIncompleteQ](FCLoopBasisIncompleteQ).
+[Overview](Extra/FeynCalc.md), [FCLoopBasisIncompleteQ](FCLoopBasisIncompleteQ.md).
 
 ### Examples
 
@@ -28,16 +28,16 @@ FCLoopBasisFindCompletion[%, {q1, q2}]
 
 $$\frac{1}{\left(\text{q1}^2-\text{m1}^2\right).\left(\text{q2}^2-\text{m2}^2\right)}$$
 
-$$\left\{\frac{1}{\left(\text{q1}^2-\text{m1}^2\right).\left(\text{q2}^2-\text{m2}^2\right)},\{\text{q1}\cdot \text{q2}\}\right\}$$
+$$\left\{\frac{1}{\left(\text{q1}^2-\text{m1}^2\right).\left(\text{q2}^2-\text{m2}^2\right)},\{\text{q1}\cdot \;\text{q2}\}\right\}$$
 
 ```mathematica
 FAD[q1 + p, q2 - k] SPD[q1, q2]
 FCLoopBasisFindCompletion[%, {q1, q2}, Method -> {FAD[{q2 + k, m}], FAD[{q1 - p, m}], SPD[p, q2], SPD[k, q1]}]
 ```
 
-$$\frac{\text{q1}\cdot \text{q2}}{(p+\text{q1})^2.(\text{q2}-k)^2}$$
+$$\frac{\text{q1}\cdot \;\text{q2}}{(p+\text{q1})^2.(\text{q2}-k)^2}$$
 
-$$\left\{\frac{\text{q1}\cdot \text{q2}}{(p+\text{q1})^2.(\text{q2}-k)^2},\left\{\frac{1}{(k+\text{q2})^2-m^2},\frac{1}{(\text{q1}-p)^2-m^2},p\cdot \text{q2},k\cdot \text{q1}\right\}\right\}$$
+$$\left\{\frac{\text{q1}\cdot \;\text{q2}}{(p+\text{q1})^2.(\text{q2}-k)^2},\left\{\frac{1}{(k+\text{q2})^2-m^2},\frac{1}{(\text{q1}-p)^2-m^2},p\cdot \;\text{q2},k\cdot \;\text{q1}\right\}\right\}$$
 
 Cartesian integrals are also supported.
 
@@ -48,7 +48,7 @@ FCLoopBasisFindCompletion[%, {q1, q2}]
 
 $$\frac{1}{(\text{q1}^2-i \eta ).(\text{q2}^2-i \eta ).((\text{q1}-\text{l1})^2+\text{m1}-i \eta ).((\text{q2}-\text{l2})^2+\text{m2}-i \eta )}$$
 
-$$\left\{\frac{1}{(\text{q1}^2-i \eta ).(\text{q2}^2-i \eta ).((\text{q1}-\text{l1})^2+\text{m1}-i \eta ).((\text{q2}-\text{l2})^2+\text{m2}-i \eta )},\{\text{l1}\cdot \text{q2},\text{l2}\cdot \text{q1},\text{q1}\cdot \text{q2}\}\right\}$$
+$$\left\{\frac{1}{(\text{q1}^2-i \eta ).(\text{q2}^2-i \eta ).((\text{q1}-\text{l1})^2+\text{m1}-i \eta ).((\text{q2}-\text{l2})^2+\text{m2}-i \eta )},\{\text{l1}\cdot \;\text{q2},\text{l2}\cdot \;\text{q1},\text{q1}\cdot \;\text{q2}\}\right\}$$
 
 Extending FCTopology objects
 
@@ -56,7 +56,7 @@ Extending FCTopology objects
 FCLoopBasisFindCompletion[FCTopology[topo, {FAD[p1], FAD[p2], FAD[p1 - q], FAD[p2 - q]}, {p1, p2}, {q}, {}, {}]]
 ```
 
-$$\text{FCTopology}\left(\text{topo},\left\{\frac{1}{\text{p1}^2},\frac{1}{\text{p2}^2},\frac{1}{(\text{p1}-q)^2},\frac{1}{(\text{p2}-q)^2},\frac{1}{(\text{p1}\cdot \text{p2}+i \eta )}\right\},\{\text{p1},\text{p2}\},\{q\},\{\},\{\}\right)$$
+$$\text{FCTopology}\left(\text{topo},\left\{\frac{1}{\text{p1}^2},\frac{1}{\text{p2}^2},\frac{1}{(\text{p1}-q)^2},\frac{1}{(\text{p2}-q)^2},\frac{1}{(\text{p1}\cdot \;\text{p2}+i \eta )}\right\},\{\text{p1},\text{p2}\},\{q\},\{\},\{\}\right)$$
 
 ```mathematica
 FCLoopBasisFindCompletion[{
@@ -65,4 +65,4 @@ FCLoopBasisFindCompletion[{
   }]
 ```
 
-$$\left\{\text{FCTopology}\left(\text{topo1},\left\{\frac{1}{\text{p1}^2},\frac{1}{\text{p2}^2},\frac{1}{(\text{p1}-q)^2},\frac{1}{(\text{p2}-q)^2},\frac{1}{(\text{p1}\cdot \text{p2}+i \eta )}\right\},\{\text{p1},\text{p2}\},\{q\},\{\},\{\}\right),\text{FCTopology}\left(\text{topo2},\left\{\frac{1}{\text{p1}^2},\frac{1}{\text{p2}^2},\frac{1}{(\text{p1}-q)^2},\frac{1}{(\text{p2}-\text{p1})^2},\frac{1}{(\text{p2}\cdot q+i \eta )}\right\},\{\text{p1},\text{p2}\},\{q\},\{\},\{\}\right)\right\}$$
+$$\left\{\text{FCTopology}\left(\text{topo1},\left\{\frac{1}{\text{p1}^2},\frac{1}{\text{p2}^2},\frac{1}{(\text{p1}-q)^2},\frac{1}{(\text{p2}-q)^2},\frac{1}{(\text{p1}\cdot \;\text{p2}+i \eta )}\right\},\{\text{p1},\text{p2}\},\{q\},\{\},\{\}\right),\text{FCTopology}\left(\text{topo2},\left\{\frac{1}{\text{p1}^2},\frac{1}{\text{p2}^2},\frac{1}{(\text{p1}-q)^2},\frac{1}{(\text{p2}-\text{p1})^2},\frac{1}{(\text{p2}\cdot q+i \eta )}\right\},\{\text{p1},\text{p2}\},\{q\},\{\},\{\}\right)\right\}$$

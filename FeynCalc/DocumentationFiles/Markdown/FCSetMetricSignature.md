@@ -6,7 +6,7 @@ The default choice is $(1,-1,-1,-1)$ which corresponds to `FCSetMetricSignature[
 
 ### See also
 
-[FCGetMetricSignature](FCGetMetricSignature).
+[Overview](Extra/FeynCalc.md), [FCGetMetricSignature](FCGetMetricSignature.md).
 
 ### Examples
 

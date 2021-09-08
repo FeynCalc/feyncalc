@@ -1,16 +1,16 @@
 ## PolarizationVector
 
-`PolarizationVector[p, mu]` denotes a 4-dimensional polarization vector $\varepsilon(p)^\mu$.
+`PolarizationVector[p, mu]` denotes a 4-dimensional polarization vector $\varepsilon^\mu(p)$.
 
 To obtain a $D$-dimensional polarization vector, just use `ChangeDimension[vec, D]`
 
 ### See also
 
-[FV](FV), [Pair](Pair), [Polarization](Polarization), [PolariazationSum](PolariazationSum), [DoPolariazationSums](DoPolariazationSums).
+[Overview](Extra/FeynCalc.md), [FV](FV.md), [Pair](Pair.md), [Polarization](Polarization.md), [PolariazationSum](PolariazationSum.md), [DoPolariazationSums](DoPolariazationSums.md).
 
 ### Examples
 
-A polarization vector $\varepsilon_{\mu }(k)$ is a special $4$-vector.
+A polarization vector $\varepsilon^{\mu }(k)$ is a special $4$-vector.
 
 ```mathematica
 PolarizationVector[k, \[Mu]]
@@ -28,7 +28,7 @@ Conjugate[PolarizationVector[k, \[Mu]]]
 % // StandardForm
 ```
 
-$$\bar{\varepsilon }^*^{\mu }(k)$$
+$$\bar{\varepsilon }^{*\mu }(k)$$
 
 ```
 (*Pair[LorentzIndex[\[Mu]], Momentum[Polarization[k, -I]]]*)

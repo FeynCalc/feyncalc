@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* $FortranContinuationCharacter*)
+(*$FortranContinuationCharacter*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Write2](Write2).*)
+(*[Overview](Extra/FeynCalc.md), [Write2](Write2.md).*)
 
 
 (* ::Subsection:: *)

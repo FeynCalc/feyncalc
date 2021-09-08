@@ -4,7 +4,7 @@
 
 ### See also
 
-[ExpandScalarProduct](ExpandScalarProduct), [MomentumCombine](MomentumCombine).
+[Overview](Extra/FeynCalc.md), [ExpandScalarProduct](ExpandScalarProduct.md), [MomentumCombine](MomentumCombine.md).
 
 ### Examples
 

@@ -6,7 +6,7 @@ The shortcut `PartialFourVector` is deprecated, please use `FourDivergence` inst
 
 ### See also
 
-[FourDivergence](FourDivergence).
+[Overview](Extra/FeynCalc.md), [FourDivergence](FourDivergence.md).
 
 ### Examples
 

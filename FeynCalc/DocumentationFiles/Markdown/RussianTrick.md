@@ -6,7 +6,7 @@
 
 ### See also
 
-[FourDivergence](FourDivergence), [FourLaplacian](FourLaplacian).
+[Overview](Extra/FeynCalc.md), [FourDivergence](FourDivergence.md), [FourLaplacian](FourLaplacian.md).
 
 ### Examples
 
@@ -24,9 +24,9 @@ Solve2[%, t]
 Clear[t]
 ```
 
-$$\frac{(\Delta \cdot \text{FCGV}(\text{q1}))^2}{\text{FCGV}(\text{q1})^2.\text{FCGV}(\text{q2})^2.(\text{FCGV}(\text{q1})-\text{FCGV}(\text{p}))^2.(\text{FCGV}(\text{q2})-\text{FCGV}(\text{p}))^2.(\text{FCGV}(\text{q1})-\text{FCGV}(\text{q2}))^2}$$
+$$\frac{(\Delta \cdot \;\text{FCGV}(\text{q1}))^2}{\text{FCGV}(\text{q1})^2.\text{FCGV}(\text{q2})^2.(\text{FCGV}(\text{q1})-\text{FCGV}(\text{p}))^2.(\text{FCGV}(\text{q2})-\text{FCGV}(\text{p}))^2.(\text{FCGV}(\text{q1})-\text{FCGV}(\text{q2}))^2}$$
 
-$$\frac{D (\Delta \cdot \text{FCGV}(\text{q1}))^2}{\text{FCGV}(\text{q1})^2.\text{FCGV}(\text{q2})^2.(\text{FCGV}(\text{q1})-\text{FCGV}(\text{p}))^2.(\text{FCGV}(\text{q1})-\text{FCGV}(\text{q2}))^2.(\text{FCGV}(\text{q2})-\text{FCGV}(\text{p}))^2}$$
+$$\frac{D (\Delta \cdot \;\text{FCGV}(\text{q1}))^2}{\text{FCGV}(\text{q1})^2.\text{FCGV}(\text{q2})^2.(\text{FCGV}(\text{q1})-\text{FCGV}(\text{p}))^2.(\text{FCGV}(\text{q1})-\text{FCGV}(\text{q2}))^2.(\text{FCGV}(\text{q2})-\text{FCGV}(\text{p}))^2}$$
 
 $$D \pmb{T}_{11111}^{20000}$$
 

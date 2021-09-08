@@ -4,6 +4,6 @@
 
 ### See also
 
-[Tdec](Tdec).
+[Overview](Extra/FeynCalc.md), [Tdec](Tdec.md).
 
 ### Examples

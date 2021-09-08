@@ -17,7 +17,7 @@
 
 
 (* ::Text:: *)
-(*[FCCanonicalizeDummyIndices](FCCanonicalizeDummyIndices).*)
+(*[Overview](Extra/FeynCalc.md), [FCCanonicalizeDummyIndices](FCCanonicalizeDummyIndices.md).*)
 
 
 (* ::Subsection:: *)

@@ -4,7 +4,7 @@
 
 `DiracGamma[x, 4]` simplifies to `DiracGamma[x]`.
 
-`DiracGamma[5]`  is $gamma ^5$.
+`DiracGamma[5]`  is $\gamma ^5$.
 
 `DiracGamma[6]` is $(1+\gamma ^5)/2$.
 
@@ -12,7 +12,7 @@
 
 ### See also
 
-[DiracGammaExpand](DiracGammaExpand), [GA](GA), [DiracSimplify](DiracSimplify), [GS](GS), [DiracTrick](DiracTrick).
+[Overview](Extra/FeynCalc.md), [DiracGammaExpand](DiracGammaExpand.md), [GA](GA.md), [DiracSimplify](DiracSimplify.md), [GS](GS.md), [DiracTrick](DiracTrick.md).
 
 ### Examples
 

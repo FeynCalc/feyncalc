@@ -6,7 +6,7 @@ WARNING: do not "trust" the results for the inverse Mellin transform involving S
 
 ### See also
 
-[DeltaFunction](DeltaFunction), [Integrate2](Integrate2), [OPEm](OPEm), [SumS](SumS), [SumT](SumT).
+[Overview](Extra/FeynCalc.md), [DeltaFunction](DeltaFunction.md), [Integrate2](Integrate2.md), [OPEm](OPEm.md), [SumS](SumS.md), [SumT](SumT.md).
 
 ### Examples
 
@@ -57,7 +57,12 @@ $$\frac{1}{m}$$
 Below is a list of all built-in basic inverse Mellin transforms .
 
 ```mathematica
-list = {1, 1/(OPEm + n), 1/(-OPEm + n), PolyGamma[0, OPEm], SumS[1, -1 + OPEm], SumS[1, -1 + OPEm]/(OPEm - 1), SumS[1, -1 + OPEm]/(1 - OPEm), SumS[1, -1 + OPEm]/(OPEm + 1), SumS[1, -1 + OPEm]/OPEm^2, SumS[1, -1 + OPEm]/OPEm, SumS[1, -1 + OPEm]^2/OPEm, SumS[2, -1 + OPEm], SumS[2, -1 + OPEm]/OPEm, SumS[3, -1 + OPEm], SumS[1, 1, -1 + OPEm],SumS[1, OPEm - 1]^2, SumS[1, 2, -1 + OPEm], SumS[2, 1, -1 + OPEm],SumS[1, -1 + OPEm]^3, SumS[1, -1 + OPEm] SumS[2, -1 + OPEm], SumS[1, 1, 1, -1 + OPEm]};
+list = {1, 1/(OPEm + n), 1/(-OPEm + n), PolyGamma[0, OPEm], SumS[1, -1 + OPEm], 
+    SumS[1, -1 + OPEm]/(OPEm - 1), SumS[1, -1 + OPEm]/(1 - OPEm), SumS[1, -1 + OPEm]/(OPEm + 1), 
+    SumS[1, -1 + OPEm]/OPEm^2, SumS[1, -1 + OPEm]/OPEm, SumS[1, -1 + OPEm]^2/OPEm, 
+    SumS[2, -1 + OPEm], SumS[2, -1 + OPEm]/OPEm, SumS[3, -1 + OPEm], SumS[1, 1, -1 + OPEm], 
+    SumS[1, OPEm - 1]^2, SumS[1, 2, -1 + OPEm], SumS[2, 1, -1 + OPEm],SumS[1, -1 + OPEm]^3, 
+    SumS[1, -1 + OPEm] SumS[2, -1 + OPEm], SumS[1, 1, 1, -1 + OPEm]};
 ```
 
 ```mathematica
@@ -116,7 +121,7 @@ $$\frac{S_1(m-1)}{m}\to y^{m-1} (\log (y)-\log (1-y))$$
 im[SumS[1, -1 + OPEm]^2/OPEm]
 ```
 
-$$\frac{S_1^2(m-1)}{m}\to y^{m-1} \left(-3 \zeta (2)+\text{Li}_2(1-y)+2 \text{Li}_2(y)+\log ^2(1-y)+\frac{\log ^2(y)}{2}\right)$$
+$$\frac{S_1^2(m-1)}{m}\to y^{m-1} \left(-3 \zeta (2)+\text{Li}_2(1-y)+2 \;\text{Li}_2(y)+\log ^2(1-y)+\frac{\log ^2(y)}{2}\right)$$
 
 ```mathematica
 im[SumS[2, OPEm - 1]]

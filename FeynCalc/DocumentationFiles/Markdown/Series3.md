@@ -1,4 +1,4 @@
-## Series3 
+## Series3
 
 `Series3` performs a series expansion around `0`. `Series3` is equivalent to `Series`, except that it applies `Normal` on the result and that some `Series` bugs are fixed.
 
@@ -6,7 +6,7 @@
 
 ### See also
 
-[Series2](Series2).
+[Overview](Extra/FeynCalc.md), [Series2](Series2.md).
 
 ### Examples
 

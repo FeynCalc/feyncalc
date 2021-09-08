@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* $ScalarProducts*)
+(*$ScalarProducts*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[ScalarProduct](ScalarProduct).*)
+(*[Overview](Extra/FeynCalc.md), [ScalarProduct](ScalarProduct.md).*)
 
 
 (* ::Subsection:: *)

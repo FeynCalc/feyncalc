@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[PowerSimplify](PowerSimplify).*)
+(*[Overview](Extra/FeynCalc.md), [PowerSimplify](PowerSimplify.md).*)
 
 
 (* ::Subsection:: *)

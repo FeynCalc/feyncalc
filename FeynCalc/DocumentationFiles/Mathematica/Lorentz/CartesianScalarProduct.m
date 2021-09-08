@@ -24,7 +24,11 @@
 
 
 (* ::Text:: *)
-(*Note that `ScalarProduct[a, b] = m^2` actually sets Cartesian scalar products in different dimensions specified by the value of the `SetDimensions` option. It is highly recommended to set `ScalarProduct`s before any calculation. This improves the performance of FeynCalc.*)
+(*Note that `ScalarProduct[a, b] = m^2` actually sets Cartesian scalar products in different dimensions specified by the value of the `SetDimensions` option.*)
+
+
+(* ::Text:: *)
+(*It is highly recommended to set `ScalarProduct`s before any calculation. This improves the performance of FeynCalc.*)
 
 
 (* ::Subsection:: *)
@@ -32,7 +36,7 @@
 
 
 (* ::Text:: *)
-(*[CSP](CSP), [CSPD](CSPD), [CSPE](CSPE).*)
+(*[Overview](Extra/FeynCalc.md), [CSP](CSP.md), [CSPD](CSPD.md), [CSPE](CSPE.md).*)
 
 
 (* ::Subsection:: *)

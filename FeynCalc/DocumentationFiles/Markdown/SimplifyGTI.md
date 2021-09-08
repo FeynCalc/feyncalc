@@ -4,6 +4,6 @@
 
 ### See also
 
-[GTI](GTI).
+[Overview](Extra/FeynCalc.md), [GTI](GTI.md).
 
 ### Examples

@@ -4,6 +4,6 @@
 
 ### See also
 
-[PolarizationSum](PolarizationSum), [DoPolarizationSums](DoPolarizationSums).
+[Overview](Extra/FeynCalc.md), [PolarizationSum](PolarizationSum.md), [DoPolarizationSums](DoPolarizationSums.md).
 
 ### Examples

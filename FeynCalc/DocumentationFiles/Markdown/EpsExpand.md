@@ -4,7 +4,7 @@
 
 ### See also
 
-[EpsEvaluate](EpsEvaluate).
+[Overview](Extra/FeynCalc.md), [EpsEvaluate](EpsEvaluate.md).
 
 ### Examples
 
@@ -13,9 +13,9 @@ LC[mu, nu][q1 + q2, p1 + p2]
 EpsEvaluate[%]
 ```
 
-$$\bar{\epsilon }^{\text{mu}\text{nu}\overline{\text{q1}}+\overline{\text{q2}}\overline{\text{p1}}+\overline{\text{p2}}}$$
+$$\bar{\epsilon }^{\text{mu}\;\text{nu}\;\overline{\text{q1}}+\overline{\text{q2}}\;\overline{\text{p1}}+\overline{\text{p2}}}$$
 
-$$-\bar{\epsilon }^{\text{mu}\text{nu}\overline{\text{p1}}\overline{\text{q1}}}-\bar{\epsilon }^{\text{mu}\text{nu}\overline{\text{p1}}\overline{\text{q2}}}-\bar{\epsilon }^{\text{mu}\text{nu}\overline{\text{p2}}\overline{\text{q1}}}-\bar{\epsilon }^{\text{mu}\text{nu}\overline{\text{p2}}\overline{\text{q2}}}$$
+$$-\bar{\epsilon }^{\text{mu}\;\text{nu}\;\overline{\text{p1}}\;\overline{\text{q1}}}-\bar{\epsilon }^{\text{mu}\;\text{nu}\;\overline{\text{p1}}\;\overline{\text{q2}}}-\bar{\epsilon }^{\text{mu}\;\text{nu}\;\overline{\text{p2}}\;\overline{\text{q1}}}-\bar{\epsilon }^{\text{mu}\;\text{nu}\;\overline{\text{p2}}\;\overline{\text{q2}}}$$
 
 ```mathematica
 LC[mu, nu][q1 + q2, p1 + p2]
@@ -25,6 +25,6 @@ EpsEvaluate[%, EpsExpand -> False]
 
 ```
 
-$$\bar{\epsilon }^{\text{mu}\text{nu}\overline{\text{q1}}+\overline{\text{q2}}\overline{\text{p1}}+\overline{\text{p2}}}$$
+$$\bar{\epsilon }^{\text{mu}\;\text{nu}\;\overline{\text{q1}}+\overline{\text{q2}}\;\overline{\text{p1}}+\overline{\text{p2}}}$$
 
-$$-\bar{\epsilon }^{\text{mu}\text{nu}\overline{\text{p1}}+\overline{\text{p2}}\overline{\text{q1}}+\overline{\text{q2}}}$$
+$$-\bar{\epsilon }^{\text{mu}\;\text{nu}\;\overline{\text{p1}}+\overline{\text{p2}}\;\overline{\text{q1}}+\overline{\text{q2}}}$$

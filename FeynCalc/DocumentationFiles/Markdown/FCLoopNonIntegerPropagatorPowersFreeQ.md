@@ -4,7 +4,7 @@
 
 ### See also
 
-[FCLoopRemoveNegativePropagatorPowers](FCLoopRemoveNegativePropagatorPowers).
+[Overview](Extra/FeynCalc.md), [FCLoopRemoveNegativePropagatorPowers](FCLoopRemoveNegativePropagatorPowers.md).
 
 ### Examples
 

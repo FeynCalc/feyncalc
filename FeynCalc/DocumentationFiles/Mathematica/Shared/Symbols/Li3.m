@@ -1,7 +1,7 @@
 (* ::Package:: *)
 
 (* ::Section:: *)
-(*Li3 *)
+(*Li3*)
 
 
 (* ::Text:: *)
@@ -13,7 +13,7 @@
 
 
 (* ::Text:: *)
-(*[Li2](Li2).*)
+(*[Overview](Extra/FeynCalc.md), [Li2](Li2.md).*)
 
 
 (* ::Subsection:: *)

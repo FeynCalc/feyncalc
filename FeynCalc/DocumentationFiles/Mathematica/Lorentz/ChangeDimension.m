@@ -11,12 +11,16 @@
 (*`ChangeDimension[exp, dim]` changes all `LorentzIndex` and `Momentum` symbols in `exp` to dimension `dim` (and also Levi-Civita-tensors, Dirac slashes and Dirac matrices).*)
 
 
+(* ::Text:: *)
+(*Notice that the dimension of `CartesianIndex` and `CartesianMomentum` objects will be changed to `dim-1`, not `dim`.*)
+
+
 (* ::Subsection:: *)
 (*See also*)
 
 
 (* ::Text:: *)
-(*[LorentzIndex](LorentzIndex), [Momentum](Momentum), [DiracGamma](DiracGamma), [Eps](Eps).*)
+(*[Overview](Extra/FeynCalc.md), [LorentzIndex](LorentzIndex.md), [Momentum](Momentum.md), [DiracGamma](DiracGamma.md), [Eps](Eps.md).*)
 
 
 (* ::Subsection:: *)

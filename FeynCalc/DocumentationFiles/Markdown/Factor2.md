@@ -1,4 +1,4 @@
-## Factor2 
+## Factor2
 
 `Factor2[poly]` factors a polynomial in a standard way.
 
@@ -8,7 +8,7 @@
 
 ### See also
 
-[Collect2](Collect2).
+[Overview](Extra/FeynCalc.md), [Collect2](Collect2.md).
 
 ### Examples
 

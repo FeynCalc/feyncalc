@@ -1,10 +1,10 @@
-##  $DistributiveFunctions
+## $DistributiveFunctions
 
 `$DistributiveFunctions` is a set of functions over which `FieldDerivative` should be distributed.
 
 ### See also
 
-[FCCheckVersion](FCCheckVersion).
+[Overview](Extra/FeynCalc.md), [FCCheckVersion](FCCheckVersion.md).
 
 ### Examples
 

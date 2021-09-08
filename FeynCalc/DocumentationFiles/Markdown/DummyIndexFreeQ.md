@@ -8,7 +8,7 @@ The function is optimized for large expressions, i.e. it is not so good as a cri
 
 ### See also
 
-[FCRenameDummyIndices](FCRenameDummyIndices), [Contract](Contract), [FreeIndexFreeQ](FreeIndexFreeQ).
+[Overview](Extra/FeynCalc.md), [FCRenameDummyIndices](FCRenameDummyIndices.md), [Contract](Contract.md), [FreeIndexFreeQ](FreeIndexFreeQ.md).
 
 ### Examples
 

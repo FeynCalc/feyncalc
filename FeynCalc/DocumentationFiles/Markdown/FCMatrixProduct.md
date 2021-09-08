@@ -7,7 +7,7 @@ The resulting expression can be then further simplified using `DotSimplify`.
 
 ### See also
 
-[DataType](DataType), [DeclareNonCommutative](DeclareNonCommutative), [UnDeclareNonCommutative](UnDeclareNonCommutative).
+[Overview](Extra/FeynCalc.md), [DataType](DataType.md), [DeclareNonCommutative](DeclareNonCommutative.md), [UnDeclareNonCommutative](UnDeclareNonCommutative.md).
 
 ### Examples
 
@@ -26,15 +26,15 @@ mat[2] = {{opA[2], opB[2]}, {opC[2], opD[2]}}
 
 $$\left(
 \begin{array}{cc}
- \text{opA}(1) & \text{opB}(1) \\
- \text{opC}(1) & \text{opD}(1) \\
+ \;\text{opA}(1) & \;\text{opB}(1) \\
+ \;\text{opC}(1) & \;\text{opD}(1) \\
 \end{array}
 \right)$$
 
 $$\left(
 \begin{array}{cc}
- \text{opA}(2) & \text{opB}(2) \\
- \text{opC}(2) & \text{opD}(2) \\
+ \;\text{opA}(2) & \;\text{opB}(2) \\
+ \;\text{opC}(2) & \;\text{opD}(2) \\
 \end{array}
 \right)$$
 
@@ -46,8 +46,8 @@ mat[1] . mat[2]
 
 $$\left(
 \begin{array}{cc}
- \text{opA}(1) \text{opA}(2)+\text{opB}(1) \text{opC}(2) & \text{opA}(1) \text{opB}(2)+\text{opB}(1) \text{opD}(2) \\
- \text{opA}(2) \text{opC}(1)+\text{opC}(2) \text{opD}(1) & \text{opB}(2) \text{opC}(1)+\text{opD}(1) \text{opD}(2) \\
+ \;\text{opA}(1) \;\text{opA}(2)+\text{opB}(1) \;\text{opC}(2) & \;\text{opA}(1) \;\text{opB}(2)+\text{opB}(1) \;\text{opD}(2) \\
+ \;\text{opA}(2) \;\text{opC}(1)+\text{opC}(2) \;\text{opD}(1) & \;\text{opB}(2) \;\text{opC}(1)+\text{opD}(1) \;\text{opD}(2) \\
 \end{array}
 \right)$$
 
@@ -59,8 +59,8 @@ FCMatrixProduct[mat[1], mat[2]]
 
 $$\left(
 \begin{array}{cc}
- \text{opA}(1).\text{opA}(2)+\text{opB}(1).\text{opC}(2) & \text{opA}(1).\text{opB}(2)+\text{opB}(1).\text{opD}(2) \\
- \text{opC}(1).\text{opA}(2)+\text{opD}(1).\text{opC}(2) & \text{opC}(1).\text{opB}(2)+\text{opD}(1).\text{opD}(2) \\
+ \;\text{opA}(1).\text{opA}(2)+\text{opB}(1).\text{opC}(2) & \;\text{opA}(1).\text{opB}(2)+\text{opB}(1).\text{opD}(2) \\
+ \;\text{opC}(1).\text{opA}(2)+\text{opD}(1).\text{opC}(2) & \;\text{opC}(1).\text{opB}(2)+\text{opD}(1).\text{opD}(2) \\
 \end{array}
 \right)$$
 
@@ -72,8 +72,8 @@ mat[3] = {{opA[3], opB[3]}, {opC[3], opD[3]}}
 
 $$\left(
 \begin{array}{cc}
- \text{opA}(3) & \text{opB}(3) \\
- \text{opC}(3) & \text{opD}(3) \\
+ \;\text{opA}(3) & \;\text{opB}(3) \\
+ \;\text{opC}(3) & \;\text{opD}(3) \\
 \end{array}
 \right)$$
 
@@ -83,8 +83,8 @@ out = FCMatrixProduct[mat[1], mat[2], mat[3]]
 
 $$\left(
 \begin{array}{cc}
- \text{opB}(1).(\text{opC}(2).\text{opA}(3)+\text{opD}(2).\text{opC}(3))+\text{opA}(1).(\text{opA}(2).\text{opA}(3)+\text{opB}(2).\text{opC}(3)) & \text{opA}(1).(\text{opA}(2).\text{opB}(3)+\text{opB}(2).\text{opD}(3))+\text{opB}(1).(\text{opC}(2).\text{opB}(3)+\text{opD}(2).\text{opD}(3)) \\
- \text{opC}(1).(\text{opA}(2).\text{opA}(3)+\text{opB}(2).\text{opC}(3))+\text{opD}(1).(\text{opC}(2).\text{opA}(3)+\text{opD}(2).\text{opC}(3)) & \text{opC}(1).(\text{opA}(2).\text{opB}(3)+\text{opB}(2).\text{opD}(3))+\text{opD}(1).(\text{opC}(2).\text{opB}(3)+\text{opD}(2).\text{opD}(3)) \\
+ \;\text{opB}(1).(\text{opC}(2).\text{opA}(3)+\text{opD}(2).\text{opC}(3))+\text{opA}(1).(\text{opA}(2).\text{opA}(3)+\text{opB}(2).\text{opC}(3)) & \;\text{opA}(1).(\text{opA}(2).\text{opB}(3)+\text{opB}(2).\text{opD}(3))+\text{opB}(1).(\text{opC}(2).\text{opB}(3)+\text{opD}(2).\text{opD}(3)) \\
+ \;\text{opC}(1).(\text{opA}(2).\text{opA}(3)+\text{opB}(2).\text{opC}(3))+\text{opD}(1).(\text{opC}(2).\text{opA}(3)+\text{opD}(2).\text{opC}(3)) & \;\text{opC}(1).(\text{opA}(2).\text{opB}(3)+\text{opB}(2).\text{opD}(3))+\text{opD}(1).(\text{opC}(2).\text{opB}(3)+\text{opD}(2).\text{opD}(3)) \\
 \end{array}
 \right)$$
 
@@ -96,8 +96,8 @@ DotSimplify[out]
 
 $$\left(
 \begin{array}{cc}
- \text{opA}(1).\text{opB}(2).\text{opC}(3)+\text{opB}(1).\text{opC}(2).\text{opA}(3)+\text{opA}(1).\text{opA}(2).\text{opA}(3)+\text{opB}(1).\text{opD}(2).\text{opC}(3) & \text{opA}(1).\text{opB}(2).\text{opD}(3)+\text{opA}(1).\text{opA}(2).\text{opB}(3)+\text{opB}(1).\text{opC}(2).\text{opB}(3)+\text{opB}(1).\text{opD}(2).\text{opD}(3) \\
- \text{opD}(1).\text{opC}(2).\text{opA}(3)+\text{opC}(1).\text{opA}(2).\text{opA}(3)+\text{opC}(1).\text{opB}(2).\text{opC}(3)+\text{opD}(1).\text{opD}(2).\text{opC}(3) & \text{opC}(1).\text{opA}(2).\text{opB}(3)+\text{opC}(1).\text{opB}(2).\text{opD}(3)+\text{opD}(1).\text{opC}(2).\text{opB}(3)+\text{opD}(1).\text{opD}(2).\text{opD}(3) \\
+ \;\text{opA}(1).\text{opB}(2).\text{opC}(3)+\text{opB}(1).\text{opC}(2).\text{opA}(3)+\text{opA}(1).\text{opA}(2).\text{opA}(3)+\text{opB}(1).\text{opD}(2).\text{opC}(3) & \;\text{opA}(1).\text{opB}(2).\text{opD}(3)+\text{opA}(1).\text{opA}(2).\text{opB}(3)+\text{opB}(1).\text{opC}(2).\text{opB}(3)+\text{opB}(1).\text{opD}(2).\text{opD}(3) \\
+ \;\text{opD}(1).\text{opC}(2).\text{opA}(3)+\text{opC}(1).\text{opA}(2).\text{opA}(3)+\text{opC}(1).\text{opB}(2).\text{opC}(3)+\text{opD}(1).\text{opD}(2).\text{opC}(3) & \;\text{opC}(1).\text{opA}(2).\text{opB}(3)+\text{opC}(1).\text{opB}(2).\text{opD}(3)+\text{opD}(1).\text{opC}(2).\text{opB}(3)+\text{opD}(1).\text{opD}(2).\text{opD}(3) \\
 \end{array}
 \right)$$
 

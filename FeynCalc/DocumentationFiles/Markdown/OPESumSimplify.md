@@ -4,7 +4,7 @@
 
 ### See also
 
-[OPESum](OPESum), [OPESumExplicit](OPESumExplicit).
+[Overview](Extra/FeynCalc.md), [OPESum](OPESum.md), [OPESumExplicit](OPESumExplicit.md).
 
 ### Examples
 
@@ -30,7 +30,7 @@ $$\sum _{i=0}^m a^i$$
 OPESumSimplify[OPESum[{j, 0, i}, {i, 0, m}] a^(j - i) b^i]
 ```
 
-$$\sum _{i=0}^m \text{}\text{} (i+1)b^i a^{j-i}$$
+$$\sum _{i=0}^m \;\text{}\;\text{} (i+1)b^i a^{j-i}$$
 
 ```mathematica
 % // StandardForm

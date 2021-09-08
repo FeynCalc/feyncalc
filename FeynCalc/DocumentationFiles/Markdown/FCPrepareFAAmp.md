@@ -4,6 +4,8 @@
 
 ### See also
 
+[Overview](Extra/FeynCalc.md)
+
 ### Examples
 
 ```mathematica
@@ -23,4 +25,4 @@ FCPrepareFAAmp[%]
 
 $$\text{FeynArts$\grave{ }$IndexDelta}(\text{FeynArts$\grave{ }$Index}(\text{Gluon},1),\text{FeynArts$\grave{ }$Index}(\text{Gluon},2))$$
 
-$$\delta ^{\text{Glu1}\text{Glu2}}$$
+$$\delta ^{\text{Glu1}\;\text{Glu2}}$$

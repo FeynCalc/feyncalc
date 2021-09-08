@@ -6,7 +6,7 @@ As always in FeynCalc, Einstein summation convention is implicitly assumed. The 
 
 ### See also
 
-[FCRenameDummyIndices](FCRenameDummyIndices), [Contract](Contract), [DummyIndexFreeQ](DummyIndexFreeQ).
+[Overview](Extra/FeynCalc.md), [FCRenameDummyIndices](FCRenameDummyIndices.md), [Contract](Contract.md), [DummyIndexFreeQ](DummyIndexFreeQ.md).
 
 ### Examples
 

@@ -4,7 +4,7 @@
 
 ### See also
 
-[FCLoopExtract](FCLoopExtract).
+[Overview](Extra/FeynCalc.md), [FCLoopExtract](FCLoopExtract.md).
 
 ### Examples
 
@@ -14,11 +14,11 @@ FCLoopIsolate[%, {q}, Head -> loopInt]
 Cases2[%, loopInt]
 ```
 
-$$\frac{(\text{p2}\cdot q) (\gamma \cdot (q-\text{p1})).(M+\gamma \cdot (q-\text{p2})).(\gamma \cdot \text{p3})}{q^2.(q-\text{p1})^2.\left((q-\text{p2})^2-m^2\right)}$$
+$$\frac{(\text{p2}\cdot q) (\gamma \cdot (q-\text{p1})).(M+\gamma \cdot (q-\text{p2})).(\gamma \cdot \;\text{p3})}{q^2.(q-\text{p1})^2.\left((q-\text{p2})^2-m^2\right)}$$
 
-$$((\gamma \cdot \text{p1}).(\gamma \cdot \text{p2}).(\gamma \cdot \text{p3})-M (\gamma \cdot \text{p1}).(\gamma \cdot \text{p3})) \text{loopInt}\left(\frac{\text{p2}\cdot q}{q^2.(q-\text{p1})^2.\left((q-\text{p2})^2-m^2\right)}\right)+M \text{loopInt}\left(\frac{(\text{p2}\cdot q) (\gamma \cdot q).(\gamma \cdot \text{p3})}{q^2.(q-\text{p1})^2.\left((q-\text{p2})^2-m^2\right)}\right)-\text{loopInt}\left(\frac{(\text{p2}\cdot q) (\gamma \cdot \text{p1}).(\gamma \cdot q).(\gamma \cdot \text{p3})}{q^2.(q-\text{p1})^2.\left((q-\text{p2})^2-m^2\right)}\right)-\text{loopInt}\left(\frac{(\text{p2}\cdot q) (\gamma \cdot q).(\gamma \cdot \text{p2}).(\gamma \cdot \text{p3})}{q^2.(q-\text{p1})^2.\left((q-\text{p2})^2-m^2\right)}\right)+\text{loopInt}\left(\frac{(\text{p2}\cdot q) (\gamma \cdot q).(\gamma \cdot q).(\gamma \cdot \text{p3})}{q^2.(q-\text{p1})^2.\left((q-\text{p2})^2-m^2\right)}\right)$$
+$$((\gamma \cdot \;\text{p1}).(\gamma \cdot \;\text{p2}).(\gamma \cdot \;\text{p3})-M (\gamma \cdot \;\text{p1}).(\gamma \cdot \;\text{p3})) \;\text{loopInt}\left(\frac{\text{p2}\cdot q}{q^2.(q-\text{p1})^2.\left((q-\text{p2})^2-m^2\right)}\right)+M \;\text{loopInt}\left(\frac{(\text{p2}\cdot q) (\gamma \cdot q).(\gamma \cdot \;\text{p3})}{q^2.(q-\text{p1})^2.\left((q-\text{p2})^2-m^2\right)}\right)-\text{loopInt}\left(\frac{(\text{p2}\cdot q) (\gamma \cdot \;\text{p1}).(\gamma \cdot q).(\gamma \cdot \;\text{p3})}{q^2.(q-\text{p1})^2.\left((q-\text{p2})^2-m^2\right)}\right)-\text{loopInt}\left(\frac{(\text{p2}\cdot q) (\gamma \cdot q).(\gamma \cdot \;\text{p2}).(\gamma \cdot \;\text{p3})}{q^2.(q-\text{p1})^2.\left((q-\text{p2})^2-m^2\right)}\right)+\text{loopInt}\left(\frac{(\text{p2}\cdot q) (\gamma \cdot q).(\gamma \cdot q).(\gamma \cdot \;\text{p3})}{q^2.(q-\text{p1})^2.\left((q-\text{p2})^2-m^2\right)}\right)$$
 
-$$\left\{\text{loopInt}\left(\frac{\text{p2}\cdot q}{q^2.(q-\text{p1})^2.\left((q-\text{p2})^2-m^2\right)}\right),\text{loopInt}\left(\frac{(\text{p2}\cdot q) (\gamma \cdot q).(\gamma \cdot \text{p3})}{q^2.(q-\text{p1})^2.\left((q-\text{p2})^2-m^2\right)}\right),\text{loopInt}\left(\frac{(\text{p2}\cdot q) (\gamma \cdot \text{p1}).(\gamma \cdot q).(\gamma \cdot \text{p3})}{q^2.(q-\text{p1})^2.\left((q-\text{p2})^2-m^2\right)}\right),\text{loopInt}\left(\frac{(\text{p2}\cdot q) (\gamma \cdot q).(\gamma \cdot \text{p2}).(\gamma \cdot \text{p3})}{q^2.(q-\text{p1})^2.\left((q-\text{p2})^2-m^2\right)}\right),\text{loopInt}\left(\frac{(\text{p2}\cdot q) (\gamma \cdot q).(\gamma \cdot q).(\gamma \cdot \text{p3})}{q^2.(q-\text{p1})^2.\left((q-\text{p2})^2-m^2\right)}\right)\right\}$$
+$$\left\{\text{loopInt}\left(\frac{\text{p2}\cdot q}{q^2.(q-\text{p1})^2.\left((q-\text{p2})^2-m^2\right)}\right),\text{loopInt}\left(\frac{(\text{p2}\cdot q) (\gamma \cdot q).(\gamma \cdot \;\text{p3})}{q^2.(q-\text{p1})^2.\left((q-\text{p2})^2-m^2\right)}\right),\text{loopInt}\left(\frac{(\text{p2}\cdot q) (\gamma \cdot \;\text{p1}).(\gamma \cdot q).(\gamma \cdot \;\text{p3})}{q^2.(q-\text{p1})^2.\left((q-\text{p2})^2-m^2\right)}\right),\text{loopInt}\left(\frac{(\text{p2}\cdot q) (\gamma \cdot q).(\gamma \cdot \;\text{p2}).(\gamma \cdot \;\text{p3})}{q^2.(q-\text{p1})^2.\left((q-\text{p2})^2-m^2\right)}\right),\text{loopInt}\left(\frac{(\text{p2}\cdot q) (\gamma \cdot q).(\gamma \cdot q).(\gamma \cdot \;\text{p3})}{q^2.(q-\text{p1})^2.\left((q-\text{p2})^2-m^2\right)}\right)\right\}$$
 
 ```mathematica
 TID[FVD[q, \[Mu]] FVD[q, \[Nu]] FAD[{q, m}, {q + p, m}, {q + r, m}], q, UsePaVeBasis -> True]
@@ -26,7 +26,7 @@ FCLoopIsolate[%, {q}, Head -> l]
 Cases2[%, l]
 ```
 
-$$i \pi ^2 g^{\mu \nu } \text{C}_{00}\left(p^2,r^2,-2 (p\cdot r)+p^2+r^2,m^2,m^2,m^2\right)+i \pi ^2 p^{\mu } p^{\nu } \text{C}_{11}\left(p^2,-2 (p\cdot r)+p^2+r^2,r^2,m^2,m^2,m^2\right)+i \pi ^2 r^{\mu } r^{\nu } \text{C}_{11}\left(r^2,-2 (p\cdot r)+p^2+r^2,p^2,m^2,m^2,m^2\right)+i \pi ^2 \left(p^{\nu } r^{\mu }+p^{\mu } r^{\nu }\right) \text{C}_{12}\left(p^2,-2 (p\cdot r)+p^2+r^2,r^2,m^2,m^2,m^2\right)$$
+$$i \pi ^2 g^{\mu \nu } \;\text{C}_{00}\left(p^2,r^2,-2 (p\cdot r)+p^2+r^2,m^2,m^2,m^2\right)+i \pi ^2 p^{\mu } p^{\nu } \;\text{C}_{11}\left(p^2,-2 (p\cdot r)+p^2+r^2,r^2,m^2,m^2,m^2\right)+i \pi ^2 r^{\mu } r^{\nu } \;\text{C}_{11}\left(r^2,-2 (p\cdot r)+p^2+r^2,p^2,m^2,m^2,m^2\right)+i \pi ^2 \left(p^{\nu } r^{\mu }+p^{\mu } r^{\nu }\right) \;\text{C}_{12}\left(p^2,-2 (p\cdot r)+p^2+r^2,r^2,m^2,m^2,m^2\right)$$
 
 $$i \pi ^2 g^{\mu \nu } l\left(\text{C}_{00}\left(p^2,r^2,-2 (p\cdot r)+p^2+r^2,m^2,m^2,m^2\right)\right)+i \pi ^2 p^{\mu } p^{\nu } l\left(\text{C}_{11}\left(p^2,-2 (p\cdot r)+p^2+r^2,r^2,m^2,m^2,m^2\right)\right)+i \pi ^2 r^{\mu } r^{\nu } l\left(\text{C}_{11}\left(r^2,-2 (p\cdot r)+p^2+r^2,p^2,m^2,m^2,m^2\right)\right)+i \pi ^2 \left(p^{\nu } r^{\mu }+p^{\mu } r^{\nu }\right) l\left(\text{C}_{12}\left(p^2,-2 (p\cdot r)+p^2+r^2,r^2,m^2,m^2,m^2\right)\right)$$
 
@@ -37,7 +37,7 @@ SPD[q, q]^2 FAD[{q, m}] + SPD[q, q]
 FCLoopIsolate[%, {q}, DropScaleless -> True]
 ```
 
-$$\frac{q^2^2}{q^2-m^2}+q^2$$
+$$\frac{q^4}{q^2-m^2}+q^2$$
 
 $$\text{FCGV}(\text{LoopInt})\left(\frac{q^4}{q^2-m^2}\right)$$
 
@@ -49,6 +49,6 @@ FCLoopIsolate[%%, {q1, q2}, MultiLoop -> True]
 
 $$\frac{a}{\left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right)}+\frac{b}{\left(\text{q1}^2-m^2\right)^2}$$
 
-$$a \text{FCGV}(\text{LoopInt})\left(\frac{1}{\left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right)}\right)+b \text{FCGV}(\text{LoopInt})\left(\frac{1}{\left(\text{q1}^2-m^2\right)^2}\right)$$
+$$a \;\text{FCGV}(\text{LoopInt})\left(\frac{1}{\left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right)}\right)+b \;\text{FCGV}(\text{LoopInt})\left(\frac{1}{\left(\text{q1}^2-m^2\right)^2}\right)$$
 
-$$a \text{FCGV}(\text{LoopInt})\left(\frac{1}{\left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right)}\right)+\frac{b}{\left(\text{q1}^2-m^2\right)^2}$$
+$$a \;\text{FCGV}(\text{LoopInt})\left(\frac{1}{\left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right)}\right)+\frac{b}{\left(\text{q1}^2-m^2\right)^2}$$

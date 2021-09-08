@@ -12,7 +12,7 @@
 
 
 (* ::Text:: *)
-(*`FCApart`  implements an algorithm based on [arXiv:1204.2314](https://arxiv.org/abs/1204.2314) by F.Feng that seems to employ a variety Leinartas's algorithm (cf. [arXiv:1206.4740](https://arxiv.org/abs/1206.4740)). Unlike Feng's [$Apart](https://github.com/F-Feng/APart) that is applicable to general multivariate polynomials, `FCApart` is tailored to work only with FeynCalc's `FeynAmpDenominator`, `Pair` and `CartesianPair` symbols, i.e. it is less general in this respect.*)
+(*`FCApart`  implements an algorithm based on [arXiv:1204.2314](https://arxiv.org/abs/1204.2314) by F. Feng that seems to employ a variety Leinartas's algorithm (cf. [arXiv:1206.4740](https://arxiv.org/abs/1206.4740)). Unlike Feng's [$Apart](https://github.com/F-Feng/APart) that is applicable to general multivariate polynomials, `FCApart` is tailored to work only with FeynCalc's `FeynAmpDenominator`, `Pair` and `CartesianPair` symbols, i.e. it is less general in this respect.*)
 
 
 (* ::Text:: *)
@@ -24,7 +24,7 @@
 
 
 (* ::Text:: *)
-(*[FCApart](FCApart), [FeynAmpDenominatorSimplify](FeynAmpDenominatorSimplify).*)
+(*[Overview](Extra/FeynCalc.md), [FCApart](FCApart.md), [FeynAmpDenominatorSimplify](FeynAmpDenominatorSimplify.md).*)
 
 
 (* ::Subsection:: *)

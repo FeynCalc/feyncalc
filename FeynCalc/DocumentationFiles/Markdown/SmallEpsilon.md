@@ -4,6 +4,6 @@
 
 ### See also
 
-[SmallDelta](SmallDelta).
+[Overview](Extra/FeynCalc.md), [SmallDelta](SmallDelta.md).
 
 ### Examples

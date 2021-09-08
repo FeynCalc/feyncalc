@@ -4,7 +4,7 @@
 
 ### See also
 
-[FAD](FAD), [SFAD](SFAD), [CFAD](CFAD), [GFAD](GFAD), [FeynAmpDenominatorSimplify](FeynAmpDenominatorSimplify).
+[Overview](Extra/FeynCalc.md), [FAD](FAD.md), [SFAD](SFAD.md), [CFAD](CFAD.md), [GFAD](GFAD.md), [FeynAmpDenominatorSimplify](FeynAmpDenominatorSimplify.md).
 
 ### Examples
 
@@ -195,7 +195,7 @@ This is a nonlinear propagator that appears in the calculation of the QCD Energy
 FeynAmpDenominator[GenericPropagatorDenominator[2 z Pair[Momentum[p1, D], Momentum[Q, D]] Pair[Momentum[p2, D], Momentum[Q, D]] - Pair[Momentum[p1, D], Momentum[p2, D]], {1, 1}]]
 ```
 
-$$\frac{1}{(2 z (\text{p1}\cdot Q) (\text{p2}\cdot Q)-\text{p1}\cdot \text{p2}+i \eta )}$$
+$$\frac{1}{(2 z (\text{p1}\cdot Q) (\text{p2}\cdot Q)-\text{p1}\cdot \;\text{p2}+i \eta )}$$
 
 The shortcut to enter `FeynAmpDenominator`s with `GenericPropagatorDenominator`s is `GFAD`
 

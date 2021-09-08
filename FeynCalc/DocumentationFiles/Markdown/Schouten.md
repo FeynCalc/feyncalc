@@ -8,16 +8,14 @@
 
 ### See also
 
-[Contract](Contract), [DiracTrace](DiracTrace), [FCSchoutenBruteForce](FCSchoutenBruteForce).
+[Overview](Extra/FeynCalc.md), [Contract](Contract.md), [DiracTrace](DiracTrace.md), [FCSchoutenBruteForce](FCSchoutenBruteForce.md).
 
 ### Examples
 
 ```mathematica
-((LC[\[Mu], \[Nu], \[Rho], \[Sigma]] FV[p, \[Tau]] + LC[\[Nu], \[Rho], \[Sigma], \[Tau]] FV[p, \[Mu]] + LC[\[Rho], \[Sigma], \[Tau], \[Mu]] FV[p, \[Nu]] + LC[\[Sigma], \[Tau], \[Mu], \[Nu]] FV[p, \[Rho]] + LC[\[Tau], \[Mu], \[Nu], \[Rho]] FV[p, \[Sigma]]))
-Schouten[%] 
-  
- 
-
+((LC[\[Mu], \[Nu], \[Rho], \[Sigma]] FV[p, \[Tau]] + LC[\[Nu], \[Rho], \[Sigma], \[Tau]] FV[p, \[Mu]] + LC[\[Rho], \[Sigma], \[Tau], \[Mu]] FV[p, \[Nu]] + 
+    LC[\[Sigma], \[Tau], \[Mu], \[Nu]] FV[p, \[Rho]] + LC[\[Tau], \[Mu], \[Nu], \[Rho]] FV[p, \[Sigma]]))
+Schouten[%]
 ```
 
 $$\overline{p}^{\tau } \bar{\epsilon }^{\mu \nu \rho \sigma }+\overline{p}^{\mu } \bar{\epsilon }^{\nu \rho \sigma \tau }+\overline{p}^{\nu } \bar{\epsilon }^{\rho \sigma \tau \mu }+\overline{p}^{\rho } \bar{\epsilon }^{\sigma \tau \mu \nu }+\overline{p}^{\sigma } \bar{\epsilon }^{\tau \mu \nu \rho }$$

@@ -2,7 +2,7 @@
 
 ### See also
 
-[FCTopology](FCTopology), [GLI](GLI), [FCLoopValidTopologyQ](FCLoopValidTopologyQ).
+[Overview](Extra/FeynCalc.md), [FCTopology](FCTopology.md), [GLI](GLI.md), [FCLoopValidTopologyQ](FCLoopValidTopologyQ.md).
 
 ### Examples
 
@@ -24,7 +24,7 @@ $$\text{a1} G^{\text{topoBox1L}}(1,1,1,1)+\text{a2} G^{\text{topoTad2L}}(1,2,2)$
 FCLoopFromGLI[exp, topos]
 ```
 
-$$\frac{\text{a1}}{\left(q^2-\text{m0}^2\right) \left((\text{p1}+q)^2-\text{m1}^2\right) \left((\text{p2}+q)^2-\text{m2}^2\right) \left((\text{p2}+q)^2-\text{m3}^2\right)}+\frac{\text{a2}}{\left(\text{q1}^2-\text{m1}^2\right) \left(\text{q2}^2-\text{m2}^2\right)^2 (\text{q1}-\text{q2})^2^2}$$
+$$\frac{\text{a1}}{\left(q^2-\text{m0}^2\right) \left((\text{p1}+q)^2-\text{m1}^2\right) \left((\text{p2}+q)^2-\text{m2}^2\right) \left((\text{p2}+q)^2-\text{m3}^2\right)}+\frac{\text{a2}}{\left(\text{q1}^2-\text{m1}^2\right) \left(\text{q2}^2-\text{m2}^2\right)^2 (\text{q1}-\text{q2})^4}$$
 
 Notice that it is necessary to specify all topologies present in `exp`. The function will not accept `GLI`s
 defined for unknown topologies
@@ -38,4 +38,4 @@ FCLoopFromGLI[GLI["topoXYZ", {1, 1, 1, 1, 1}], topos]
 
 ![0kvjd5dgpo2l4](img/0kvjd5dgpo2l4.svg)
 
-$$\text{$\$$Aborted}$$
+$$\text{\$Aborted}$$

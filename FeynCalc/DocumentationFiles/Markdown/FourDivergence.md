@@ -4,7 +4,7 @@
 
 ### See also
 
-[RussianTrick](RussianTrick).
+[Overview](Extra/FeynCalc.md), [RussianTrick](RussianTrick.md).
 
 ### Examples
 
@@ -42,7 +42,7 @@ FourDivergence[%, FVD[l, \[Mu]]]
 
 $$\frac{l^{\mu }}{l^2.(l-p)^2}$$
 
-$$\frac{D}{l^2.(l-p)^2}-\frac{2 l^2}{\left(l^2\right)^2.(l-p)^2}+\frac{2 (l\cdot p)-2 l^2}{l^2.(l-p)^2^2}$$
+$$\frac{D}{l^2.(l-p)^2}-\frac{2 l^2}{\left(l^2\right)^2.(l-p)^2}+\frac{2 (l\cdot p)-2 l^2}{l^2.(l-p)^4}$$
 
 ```mathematica
 SP[p, w]*SpinorUBar[p2, m] . GS[w] . SpinorU[p1, m]

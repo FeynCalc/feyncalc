@@ -4,7 +4,7 @@
 
 ### See also
 
-[PaVe](PaVe), [PaVeReduce](PaVeReduce).
+[Overview](Extra/FeynCalc.md), [PaVe](PaVe.md), [PaVeReduce](PaVeReduce.md).
 
 ### Examples
 
@@ -36,7 +36,7 @@ PaVeUVPart[%]
 
 $$\text{D}_{000000}\left(0,\text{p10},\text{p12},\text{p23},\text{p13},\text{p20},\text{m4}^2,\text{m1}^2,\text{m2}^2,\text{m3}^2\right)$$
 
-$$\frac{-5 \text{m1}^2-5 \text{m2}^2-5 \text{m3}^2-5 \text{m4}^2+\text{p10}+\text{p12}+\text{p13}+\text{p20}+\text{p23}}{480 (D-4)}$$
+$$\frac{-5 \;\text{m1}^2-5 \;\text{m2}^2-5 \;\text{m3}^2-5 \;\text{m4}^2+\text{p10}+\text{p12}+\text{p13}+\text{p20}+\text{p23}}{480 (D-4)}$$
 
 ```mathematica
 int = FVD[k + p, rho] FVD[k + p, si] FAD[k, {k + p, 0, 2}]
@@ -44,8 +44,8 @@ TID[int, k, UsePaVeBasis -> True]
 % // PaVeUVPart[#, FCE -> True] &
 ```
 
-$$\frac{(k+p)^{\text{rho}} (k+p)^{\text{si}}}{k^2.(k+p)^2^2}$$
+$$\frac{(k+p)^{\text{rho}} (k+p)^{\text{si}}}{k^2.(k+p)^4}$$
 
-$$i \pi ^2 g^{\text{rho}\text{si}} \text{C}_{00}\left(0,p^2,p^2,0,0,0\right)+i \pi ^2 p^{\text{rho}} p^{\text{si}} \text{C}_{11}\left(p^2,p^2,0,0,0,0\right)$$
+$$i \pi ^2 g^{\text{rho}\;\text{si}} \;\text{C}_{00}\left(0,p^2,p^2,0,0,0\right)+i \pi ^2 p^{\text{rho}} p^{\text{si}} \;\text{C}_{11}\left(p^2,p^2,0,0,0,0\right)$$
 
-$$-\frac{i \pi ^2 g^{\text{rho}\text{si}}}{2 (D-4)}$$
+$$-\frac{i \pi ^2 g^{\text{rho}\;\text{si}}}{2 (D-4)}$$

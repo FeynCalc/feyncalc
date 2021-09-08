@@ -8,7 +8,7 @@ The shortcut `ChiralityProjector` is deprecated, please use `GA[6]` and `GA[7]` 
 
 ### See also
 
-[GA](GA), [FCI](FCI).
+[Overview](Extra/FeynCalc.md), [GA](GA.md), [FCI](FCI.md).
 
 ### Examples
 

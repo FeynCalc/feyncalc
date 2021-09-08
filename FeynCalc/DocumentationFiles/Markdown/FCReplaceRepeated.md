@@ -6,7 +6,7 @@ Instead of doing `exp //. ru1 //. ru2 //. ru3` one can just write `FCReplaceRepe
 
 ### See also
 
-[FCReplaceAll](FCReplaceAll).
+[Overview](Extra/FeynCalc.md), [FCReplaceAll](FCReplaceAll.md).
 
 ### Examples
 

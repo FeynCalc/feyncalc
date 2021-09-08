@@ -6,7 +6,7 @@ The default values are `1` for both, which corresponds to the convention used in
 
 ### See also
 
-[GluonGhostVertex](GluonGhostVertex), [GhostPropagator](GhostPropagator).
+[Overview](Extra/FeynCalc.md), [GluonGhostVertex](GluonGhostVertex.md), [GhostPropagator](GhostPropagator.md).
 
 ### Examples
 

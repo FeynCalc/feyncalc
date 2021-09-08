@@ -4,7 +4,7 @@
 
 ### See also
 
-[FCLoopIntegralToGraph](FCLoopIntegralToGraph), [AuxiliaryMomenta](AuxiliaryMomenta).
+[Overview](Extra/FeynCalc.md), [FCLoopIntegralToGraph](FCLoopIntegralToGraph.md), [AuxiliaryMomenta](AuxiliaryMomenta.md).
 
 ### Examples
 
@@ -64,7 +64,7 @@ FCLoopPropagatorsToLineMomenta[{SFAD[{{I p1, -2 p1 . q}, {0, 1}, 1}]},FCE -> Tru
 
 $$\left(
 \begin{array}{c}
- \text{p1}+q \\
+ \;\text{p1}+q \\
  0 \\
  \frac{1}{(-\text{p1}^2-2 (\text{p1}\cdot q)+i \eta )} \\
 \end{array}

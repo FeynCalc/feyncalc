@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* $AL*)
+(*$AL*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Amputate](Amputate), [Uncontract](Uncontract).*)
+(*[Overview](Extra/FeynCalc.md), [Amputate](Amputate.md), [Uncontract](Uncontract.md).*)
 
 
 (* ::Subsection:: *)

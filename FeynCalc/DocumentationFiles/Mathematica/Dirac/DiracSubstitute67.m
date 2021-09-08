@@ -1,14 +1,16 @@
  
 (* ::Section:: *)
-(*DiracSubstitute67 *)
+(*DiracSubstitute67*)
 (* ::Text:: *)
 (*`DiracSubstitute67[exp]` inserts the explicit definitions of the chirality projectors $\gamma^6$ and $\gamma^7$. `DiracSubstitute67` is also an option of various FeynCalc functions that handle Dirac algebra.*)
 
 
 (* ::Subsection:: *)
 (*See also*)
+
+
 (* ::Text:: *)
-(*[DiracSubstitute5](DiracSubstitute5), [DiracGamma](DiracGamma), [ToDiracGamma67](ToDiracGamma67).*)
+(*[Overview](Extra/FeynCalc.md), [DiracSubstitute5](DiracSubstitute5.md), [DiracGamma](DiracGamma.md), [ToDiracGamma67](ToDiracGamma67.md).*)
 
 
 

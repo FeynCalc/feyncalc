@@ -4,17 +4,17 @@
 
 In the result the basic Dirac structures can be wrapped with a head `DiracBasis`, that is
 
-$S$: `DiracBasis[1]`
-$P$: `DiracBasis[GA[5]]`
-$V$: `DiracBasis[GA[$\mu$]]`
-$A$: `DiracBasis[GA[$\mu$,5]]`
-$T$: `DiracBasis[DiracSigma[GA[$\mu$,$\nu$]]]`
+- $S$: `DiracBasis[1]`
+- $P$: `DiracBasis[GA[5]]`
+- $V$: `DiracBasis[GA[$\mu$]]`
+- $A$: `DiracBasis[GA[$\mu$,5]]`
+- $T$: `DiracBasis[DiracSigma[GA[$\mu$,$\nu$]]]`
 
 By default `DiracBasis` is substituted to `Identity`.
 
 ### See also
 
-[Chisholm](Chisholm), [DiracSimplify](DiracSimplify), [EpsChisholm](EpsChisholm).
+[Overview](Extra/FeynCalc.md), [Chisholm](Chisholm.md), [DiracSimplify](DiracSimplify.md), [EpsChisholm](EpsChisholm.md).
 
 ### Examples
 
@@ -45,7 +45,7 @@ DiracReduce[%]
 
 $$\bar{u}\left(p_1,m_1\right).\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\rho }.v\left(p_2,m_2\right)$$
 
-$$i \bar{\epsilon }^{\mu \nu \rho \text{$\$$MU}(\text{$\$$36})} \left(\varphi (\overline{p}_1,m_1)\right).\bar{\gamma }^{\text{$\$$MU}(\text{$\$$36})}.\bar{\gamma }^5.\left(\varphi (-\overline{p}_2,m_2)\right)+\bar{g}^{\mu \nu } \left(\varphi (\overline{p}_1,m_1)\right).\bar{\gamma }^{\rho }.\left(\varphi (-\overline{p}_2,m_2)\right)-\bar{g}^{\mu \rho } \left(\varphi (\overline{p}_1,m_1)\right).\bar{\gamma }^{\nu }.\left(\varphi (-\overline{p}_2,m_2)\right)+\bar{g}^{\nu \rho } \left(\varphi (\overline{p}_1,m_1)\right).\bar{\gamma }^{\mu }.\left(\varphi (-\overline{p}_2,m_2)\right)$$
+$$i \bar{\epsilon }^{\mu \nu \rho \;\text{\$MU}(\text{\$36})} \left(\varphi (\overline{p}_1,m_1)\right).\bar{\gamma }^{\text{\$MU}(\text{\$36})}.\bar{\gamma }^5.\left(\varphi (-\overline{p}_2,m_2)\right)+\bar{g}^{\mu \nu } \left(\varphi (\overline{p}_1,m_1)\right).\bar{\gamma }^{\rho }.\left(\varphi (-\overline{p}_2,m_2)\right)-\bar{g}^{\mu \rho } \left(\varphi (\overline{p}_1,m_1)\right).\bar{\gamma }^{\nu }.\left(\varphi (-\overline{p}_2,m_2)\right)+\bar{g}^{\nu \rho } \left(\varphi (\overline{p}_1,m_1)\right).\bar{\gamma }^{\mu }.\left(\varphi (-\overline{p}_2,m_2)\right)$$
 
 ```mathematica
 GA[\[Mu], \[Nu], \[Rho], \[Sigma]]
@@ -76,4 +76,4 @@ We may also keep the head `DiracBasis` in the final result
 DiracReduce[GA[\[Mu], \[Nu], \[Rho], \[Sigma]], FinalSubstitutions -> {}]
 ```
 
-$$-i \bar{g}^{\mu \nu } \text{DiracBasis}\left(\text{DiracSigma}\left(\text{DiracBasis}\left(\bar{\gamma }^{\rho }\right),\text{DiracBasis}\left(\bar{\gamma }^{\sigma }\right)\right)\right)+i \bar{g}^{\mu \rho } \text{DiracBasis}\left(\text{DiracSigma}\left(\text{DiracBasis}\left(\bar{\gamma }^{\nu }\right),\text{DiracBasis}\left(\bar{\gamma }^{\sigma }\right)\right)\right)-i \bar{g}^{\mu \sigma } \text{DiracBasis}\left(\text{DiracSigma}\left(\text{DiracBasis}\left(\bar{\gamma }^{\nu }\right),\text{DiracBasis}\left(\bar{\gamma }^{\rho }\right)\right)\right)-i \bar{g}^{\nu \rho } \text{DiracBasis}\left(\text{DiracSigma}\left(\text{DiracBasis}\left(\bar{\gamma }^{\mu }\right),\text{DiracBasis}\left(\bar{\gamma }^{\sigma }\right)\right)\right)+i \bar{g}^{\nu \sigma } \text{DiracBasis}\left(\text{DiracSigma}\left(\text{DiracBasis}\left(\bar{\gamma }^{\mu }\right),\text{DiracBasis}\left(\bar{\gamma }^{\rho }\right)\right)\right)-i \bar{g}^{\rho \sigma } \text{DiracBasis}\left(\text{DiracSigma}\left(\text{DiracBasis}\left(\bar{\gamma }^{\mu }\right),\text{DiracBasis}\left(\bar{\gamma }^{\nu }\right)\right)\right)-i \text{DiracBasis}\left(\bar{\gamma }^5\right) \bar{\epsilon }^{\mu \nu \rho \sigma }+\text{DiracBasis}(1) \bar{g}^{\mu \sigma } \bar{g}^{\nu \rho }-\text{DiracBasis}(1) \bar{g}^{\mu \rho } \bar{g}^{\nu \sigma }+\text{DiracBasis}(1) \bar{g}^{\mu \nu } \bar{g}^{\rho \sigma }$$
+$$-i \bar{g}^{\mu \nu } \;\text{DiracBasis}\left(\text{DiracSigma}\left(\text{DiracBasis}\left(\bar{\gamma }^{\rho }\right),\text{DiracBasis}\left(\bar{\gamma }^{\sigma }\right)\right)\right)+i \bar{g}^{\mu \rho } \;\text{DiracBasis}\left(\text{DiracSigma}\left(\text{DiracBasis}\left(\bar{\gamma }^{\nu }\right),\text{DiracBasis}\left(\bar{\gamma }^{\sigma }\right)\right)\right)-i \bar{g}^{\mu \sigma } \;\text{DiracBasis}\left(\text{DiracSigma}\left(\text{DiracBasis}\left(\bar{\gamma }^{\nu }\right),\text{DiracBasis}\left(\bar{\gamma }^{\rho }\right)\right)\right)-i \bar{g}^{\nu \rho } \;\text{DiracBasis}\left(\text{DiracSigma}\left(\text{DiracBasis}\left(\bar{\gamma }^{\mu }\right),\text{DiracBasis}\left(\bar{\gamma }^{\sigma }\right)\right)\right)+i \bar{g}^{\nu \sigma } \;\text{DiracBasis}\left(\text{DiracSigma}\left(\text{DiracBasis}\left(\bar{\gamma }^{\mu }\right),\text{DiracBasis}\left(\bar{\gamma }^{\rho }\right)\right)\right)-i \bar{g}^{\rho \sigma } \;\text{DiracBasis}\left(\text{DiracSigma}\left(\text{DiracBasis}\left(\bar{\gamma }^{\mu }\right),\text{DiracBasis}\left(\bar{\gamma }^{\nu }\right)\right)\right)-i \;\text{DiracBasis}\left(\bar{\gamma }^5\right) \bar{\epsilon }^{\mu \nu \rho \sigma }+\text{DiracBasis}(1) \bar{g}^{\mu \sigma } \bar{g}^{\nu \rho }-\text{DiracBasis}(1) \bar{g}^{\mu \rho } \bar{g}^{\nu \sigma }+\text{DiracBasis}(1) \bar{g}^{\mu \nu } \bar{g}^{\rho \sigma }$$

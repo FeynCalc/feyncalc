@@ -4,7 +4,7 @@
 
 ### See also
 
-[PauliSimplify](PauliSimplify).
+[Overview](Extra/FeynCalc.md), [PauliSimplify](PauliSimplify.md).
 
 ### Examples
 

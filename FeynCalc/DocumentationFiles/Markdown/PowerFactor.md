@@ -4,7 +4,7 @@
 
 ### See also
 
-[PowerSimplify](PowerSimplify).
+[Overview](Extra/FeynCalc.md), [PowerSimplify](PowerSimplify.md).
 
 ### Examples
 

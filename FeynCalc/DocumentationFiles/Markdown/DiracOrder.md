@@ -4,7 +4,7 @@
 
 ### See also
 
-[DiracSimplify](DiracSimplify), [DiracTrick](DiracTrick).
+[Overview](Extra/FeynCalc.md), [DiracSimplify](DiracSimplify.md), [DiracTrick](DiracTrick.md).
 
 ### Examples
 

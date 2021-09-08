@@ -6,7 +6,7 @@ A symmetric tensor can be obtained by `TensorFunction[{t, "S"}, mu, nu, ...]`, a
 
 ### See also
 
-[FCSymmetrize](FCSymmetrize), [FCAntiSymmetrize](FCAntiSymmetrize).
+[Overview](Extra/FeynCalc.md), [FCSymmetrize](FCSymmetrize.md), [FCAntiSymmetrize](FCAntiSymmetrize.md).
 
 ### Examples
 

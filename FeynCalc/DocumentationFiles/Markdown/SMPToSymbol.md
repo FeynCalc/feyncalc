@@ -6,7 +6,7 @@ The option `StringReplace` can be used to specify string replacement rules that 
 
 ### See also
 
-[SMP](SMP).
+[Overview](Extra/FeynCalc.md), [SMP](SMP.md).
 
 ### Examples
 

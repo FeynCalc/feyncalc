@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(*Factor1 *)
+(*Factor1*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Factor2](Factor2).*)
+(*[Overview](Extra/FeynCalc.md), [Factor2](Factor2.md).*)
 
 
 (* ::Subsection:: *)

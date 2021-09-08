@@ -5,6 +5,6 @@ no canonicalization should be done.
 
 ### See also
 
-[FCCanonicalizeDummyIndices](FCCanonicalizeDummyIndices).
+[Overview](Extra/FeynCalc.md), [FCCanonicalizeDummyIndices](FCCanonicalizeDummyIndices.md).
 
 ### Examples

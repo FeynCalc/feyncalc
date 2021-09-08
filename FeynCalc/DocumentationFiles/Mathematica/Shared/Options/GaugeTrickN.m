@@ -20,7 +20,7 @@
 
 
 (* ::Text:: *)
-(*[DoPolarizationSums](DoPolarizationSums).*)
+(*[Overview](Extra/FeynCalc.md), [DoPolarizationSums](DoPolarizationSums.md).*)
 
 
 (* ::Subsection:: *)

@@ -20,7 +20,7 @@
 
 
 (* ::Text:: *)
-(*[FCRenameDummyIndices](FCRenameDummyIndices), [Contract](Contract), [DummyIndexFreeQ](DummyIndexFreeQ).*)
+(*[Overview](Extra/FeynCalc.md), [FCRenameDummyIndices](FCRenameDummyIndices.md), [Contract](Contract.md), [DummyIndexFreeQ](DummyIndexFreeQ.md).*)
 
 
 (* ::Subsection:: *)

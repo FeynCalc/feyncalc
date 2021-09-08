@@ -2,9 +2,11 @@
 
 `AnomalousDimension[name]` is a database of anomalous dimensions of twist 2 operators.
 
+` AnomalousDimension["gnsqg0"]` yields the non-singlet one-loop contribution to the anomalous dimension $\gamma_{S,qg}^{(0),m}$ in the MS-bar scheme etc.
+
 ### See also
 
-[See also: SplittingFunction](See also: SplittingFunction), [SumS](SumS), [SumT](SumT).
+[Overview](Extra/FeynCalc.md), [SplittingFunction](SplittingFunction.md), [SumS](SumS.md), [SumT](SumT.md).
 
 ### Examples
 
@@ -14,7 +16,7 @@ Polarized case:
 SetOptions[AnomalousDimension, Polarization -> 1]
 ```
 
-$$\{\text{Polarization}\to 1,\text{Simplify}\to \text{FullSimplify}\}$$
+$$\{\text{Polarization}\to 1,\text{Simplify}\to \;\text{FullSimplify}\}$$
 
 $\gamma _{NS,qq }^{(0) }$ polarized:
 
@@ -83,7 +85,7 @@ $$8 C_A C_F \left(\frac{4 \tilde{S}_2(m-1)}{m}-\frac{2 \tilde{S}_2(m-1)}{m+1}-\f
 $\gamma _{S,gg }^{(1)}$ polarized:
 
 ```mathematica
-AnomalousDimension[gsgg1]
+v1 = AnomalousDimension[gsgg1]
 ```
 
 $$4 C_A^2 \left(\frac{8 \tilde{S}_2(m-1)}{m}-\frac{16 \tilde{S}_2(m-1)}{m+1}+4 \tilde{S}_3(m-1)-8 \tilde{S}_{12}(m-1)-\frac{8}{m^3}+\frac{8 S_1(m-1)}{m^2}+\frac{58}{3 m^2}-\frac{16 S_1(m-1)}{(m+1)^2}+\frac{134}{9} S_1(m-1)+\frac{8 S_2(m-1)}{m}-\frac{16 S_2(m-1)}{m+1}+4 S_3(m-1)-8 S_{12}(m-1)-8 S_{21}(m-1)-\frac{107}{9 m}+\frac{241}{9 (m+1)}-\frac{86}{3 (m+1)^2}-\frac{48}{(m+1)^3}-\frac{16}{3}\right)+32 C_A T_f \left(-\frac{1}{3 m^2}-\frac{5}{9} S_1(m-1)+\frac{14}{9 m}-\frac{19}{9 (m+1)}-\frac{1}{3 (m+1)^2}+\frac{1}{3}\right)+8 \left(\frac{4}{m^3}-\frac{10}{m^2}-\frac{10}{m+1}+\frac{2}{(m+1)^2}+\frac{4}{(m+1)^3}+\frac{10}{m}+1\right) C_F T_f$$
@@ -91,15 +93,13 @@ $$4 C_A^2 \left(\frac{8 \tilde{S}_2(m-1)}{m}-\frac{16 \tilde{S}_2(m-1)}{m+1}+4 \
 $\gamma _{S,gg }^{(1)}$ polarized (different representation):
 
 ```mathematica
-AnomalousDimension[GSGG1]
+v2 = AnomalousDimension[GSGG1];
 ```
-
-$$4 C_A^2 \left(8 \tilde{S}(m)+\frac{8 S_2^'\left(\frac{m}{2}\right)}{m (m+1)}-S_3^'\left(\frac{m}{2}\right)-4 S_1(m) S_2^'\left(\frac{m}{2}\right)-\frac{m (m (m (m (48 m (m+3)+469)+698)+7)+258)+144}{9 m^3 (m+1)^3}+\frac{2 \left(m \left(67 m (m+1)^2+144\right)+72\right) S_1(m)}{9 m^2 (m+1)^2}\right)+32 C_A T_f \left(\frac{m (m+1) (3 m (m+1)+13)-3}{9 m^2 (m+1)^2}-\frac{5 S_1(m)}{9}\right)+\frac{8 (m (m (m (m (m (m+3)+5)+1)-8)+2)+4) C_F T_f}{m^3 (m+1)^3}$$
 
 Check that all odd moments give the same for the two representations of $\gamma _{S,gg }^{(1)}$:
 
 ```mathematica
-Table[% - %% /. OPEm -> ij, {ij, 1, 17, 2}]
+Table[v1 - v2 /. OPEm -> ij, {ij, 1, 17, 2}] // Simplify
 ```
 
 $$\{0,0,0,0,0,0,0,0,0\}$$

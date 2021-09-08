@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(*PairContract3 *)
+(*PairContract3*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Pair](Pair), [Contract](Contract), [PairContract](PairContract).*)
+(*[Overview](Extra/FeynCalc.md), [Pair](Pair.md), [Contract](Contract.md), [PairContract](PairContract.md).*)
 
 
 (* ::Subsection:: *)

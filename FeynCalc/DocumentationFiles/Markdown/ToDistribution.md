@@ -4,7 +4,7 @@
 
 ### See also
 
-[PlusDistribution](PlusDistribution).
+[Overview](Extra/FeynCalc.md), [PlusDistribution](PlusDistribution.md).
 
 ### Examples
 
@@ -12,7 +12,7 @@
 ToDistribution[(1 - x)^(Epsilon - 1), x, PlusDistribution -> pd]
 ```
 
-$$\frac{1}{6} \varepsilon ^3 \text{pd}\left(\frac{\log ^3(1-x)}{1-x}\right)+\frac{1}{2} \varepsilon ^2 \text{pd}\left(\frac{\log ^2(1-x)}{1-x}\right)+\varepsilon  \text{pd}\left(\frac{\log (1-x)}{1-x}\right)+\text{pd}\left(\frac{1}{1-x}\right)+\frac{\delta (1-x)}{\varepsilon }$$
+$$\frac{1}{6} \varepsilon ^3 \;\text{pd}\left(\frac{\log ^3(1-x)}{1-x}\right)+\frac{1}{2} \varepsilon ^2 \;\text{pd}\left(\frac{\log ^2(1-x)}{1-x}\right)+\varepsilon  \;\text{pd}\left(\frac{\log (1-x)}{1-x}\right)+\text{pd}\left(\frac{1}{1-x}\right)+\frac{\delta (1-x)}{\varepsilon }$$
 
 ```mathematica
 ToDistribution[(1 - x)^(Epsilon - 2), x, PlusDistribution -> Identity]

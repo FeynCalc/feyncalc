@@ -1,7 +1,7 @@
 (* ::Package:: *)
 
 (* ::Section:: *)
-(*Integrate2 *)
+(*Integrate2*)
 
 
 (* ::Text:: *)
@@ -41,7 +41,7 @@
 
 
 (* ::Text:: *)
-(*[DeltaFunction](DeltaFunction), [Integrate3](Integrate3), [Integrate4](Integrate4), [Integrate5](Integrate5), [SumS](SumS), [SumT](SumT).*)
+(*[Overview](Extra/FeynCalc.md), [DeltaFunction](DeltaFunction.md), [Integrate3](Integrate3.md), [Integrate4](Integrate4.md), [Integrate5](Integrate5.md), [SumS](SumS.md), [SumT](SumT.md).*)
 
 
 (* ::Subsection:: *)

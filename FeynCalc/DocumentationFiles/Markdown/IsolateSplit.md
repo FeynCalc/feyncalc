@@ -6,6 +6,6 @@ With the default setting `IsolateSplit -> Infinity` no splitting is done.
 
 ### See also
 
-[Isolate](Isolate).
+[Overview](Extra/FeynCalc.md), [Isolate](Isolate.md).
 
 ### Examples

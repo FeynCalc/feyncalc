@@ -1,10 +1,10 @@
-## Map2 
+## Map2
 
 `Map2[f, exp]` is equivalent to `Map` if `Nterms[exp] > 0`, otherwise `Map2[f, exp]` gives `f[exp]`.
 
 ### See also
 
-[NTerms](NTerms).
+[Overview](Extra/FeynCalc.md), [NTerms](NTerms.md).
 
 ### Examples
 

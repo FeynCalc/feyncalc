@@ -37,7 +37,7 @@ FileBaseName/@FileNames["*.sym",FileNameJoin[{$FeynCalcDirectory, "Tables", "PaV
 
 
 (* ::Text:: *)
-(*[PaVeReduce](PaVeReduce).*)
+(*[Overview](Extra/FeynCalc.md), [PaVeReduce](PaVeReduce.md).*)
 
 
 (* ::Subsection:: *)

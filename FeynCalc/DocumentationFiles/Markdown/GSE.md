@@ -1,10 +1,10 @@
 ## GSE
 
-`GSE[p]` can be used as input for a $D-4$-dimensional $\gamma \cdot p = \gamma^\mu p_\mu$ and is transformed into `DiracGamma[Momentum[p,D-4],D-4]` by `FeynCalcInternal` (`FCI`). `GSE[p,q, ...]` is a short form for `GSE[p].GSE[q]. ...` .
+`GSE[p]` can be used as input for a $D-4$-dimensional $\gamma \cdot p = \gamma^\mu p_\mu$ and is transformed into `DiracGamma[Momentum[p,D-4],D-4]` by `FeynCalcInternal` (`FCI`). `GSE[p,q, ...]` is a short form for `GSE[p].GSE[q]. ...`.
 
 ### See also
 
-[DiracGamma](DiracGamma), [GA](GA), [GAD](GAD), [GSD](GSD).
+[Overview](Extra/FeynCalc.md), [DiracGamma](DiracGamma.md), [GA](GA.md), [GAD](GAD.md), [GSD](GSD.md).
 
 ### Examples
 
@@ -44,9 +44,9 @@ FCSetDiracGammaScheme["NDR"];
 DiracSimplify[GSE[q] . GS[q] . GSE[q]]
 ```
 
-$$\text{}\text{DiracTrace}\text{::}\text{mixmsg}: \text{Expressions that mix D-, 4- and D-4-dimensional quantities are forbidden in Dirac matrix chains unless you are using the t'Hooft-Veltman scheme. For every other scheme, please recheck your input expressions and ensure that all matrices, spinors and tensors are purely D-dimensional. You might want to use FCGetDimensions[exp] to find the offending terms and fix them by hand or ChangeDimension[exp,D] to convert the whole expression to D-dimensions. If you explicitly intend to use the t'Hooft-Veltman scheme, please activate it via FCSetDiracGammaScheme[{``}BMHV{''}].}$$
+![0ek7n8h3ou34v](img/0ek7n8h3ou34v.svg)
 
-$$\text{$\$$Aborted}$$
+$$\text{\$Aborted}$$
 
 ```mathematica
 FCSetDiracGammaScheme["BMHV"];

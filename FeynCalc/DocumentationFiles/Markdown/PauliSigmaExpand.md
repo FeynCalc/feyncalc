@@ -4,7 +4,7 @@
 
 ### See also
 
-[PauliSigmaCombine](PauliSigmaCombine).
+[Overview](Extra/FeynCalc.md), [PauliSigmaCombine](PauliSigmaCombine.md).
 
 ### Examples
 

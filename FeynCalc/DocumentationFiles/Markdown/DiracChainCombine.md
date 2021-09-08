@@ -4,7 +4,7 @@
 
 ### See also
 
-[DiracChain](DiracChain), [DCHN](DCHN), [DiracIndex](DiracIndex), [DiracIndexDelta](DiracIndexDelta), [DIDelta](DIDelta), [DiracChainJoin](DiracChainJoin), [DiracChainExpand](DiracChainExpand), [DiracChainFactor](DiracChainFactor).
+[Overview](Extra/FeynCalc.md), [DiracChain](DiracChain.md), [DCHN](DCHN.md), [DiracIndex](DiracIndex.md), [DiracIndexDelta](DiracIndexDelta.md), [DIDelta](DIDelta.md), [DiracChainJoin](DiracChainJoin.md), [DiracChainExpand](DiracChainExpand.md), [DiracChainFactor](DiracChainFactor.md).
 
 ### Examples
 
@@ -13,6 +13,6 @@
 DiracChainCombine[%]
 ```
 
-$$\frac{\left(q^2-\text{me}^2\right) (\gamma \cdot q)_{\text{Dir3}\text{Dir4}}+2 \text{me} q^2 (1)_{\text{Dir3}\text{Dir4}}-2 q^2 (\gamma \cdot q)_{\text{Dir3}\text{Dir4}}}{2 q^2 k^2.\left((k-q)^2-\text{me}^2\right)}+\frac{(\gamma \cdot q)_{\text{Dir3}\text{Dir4}}}{2 q^2 \left(k^2-\text{me}^2\right)}$$
+$$\frac{\left(q^2-\text{me}^2\right) (\gamma \cdot q)_{\text{Dir3}\;\text{Dir4}}+2 \;\text{me} q^2 (1)_{\text{Dir3}\;\text{Dir4}}-2 q^2 (\gamma \cdot q)_{\text{Dir3}\;\text{Dir4}}}{2 q^2 k^2.\left((k-q)^2-\text{me}^2\right)}+\frac{(\gamma \cdot q)_{\text{Dir3}\;\text{Dir4}}}{2 q^2 \left(k^2-\text{me}^2\right)}$$
 
-$$\frac{\left(\left(q^2-\text{me}^2\right) \gamma \cdot q+2 \text{me} q^2-2 q^2 \gamma \cdot q\right){}_{\text{Dir3}\text{Dir4}}}{2 q^2 k^2.\left((k-q)^2-\text{me}^2\right)}+\frac{(\gamma \cdot q)_{\text{Dir3}\text{Dir4}}}{2 q^2 \left(k^2-\text{me}^2\right)}$$
+$$\frac{\left(\left(q^2-\text{me}^2\right) \gamma \cdot q+2 \;\text{me} q^2-2 q^2 \gamma \cdot q\right){}_{\text{Dir3}\;\text{Dir4}}}{2 q^2 k^2.\left((k-q)^2-\text{me}^2\right)}+\frac{(\gamma \cdot q)_{\text{Dir3}\;\text{Dir4}}}{2 q^2 \left(k^2-\text{me}^2\right)}$$

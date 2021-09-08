@@ -4,6 +4,6 @@
 
 ### See also
 
-[FeynAmpDenominatorSimplify](FeynAmpDenominatorSimplify).
+[Overview](Extra/FeynCalc.md), [FeynAmpDenominatorSimplify](FeynAmpDenominatorSimplify.md).
 
 ### Examples

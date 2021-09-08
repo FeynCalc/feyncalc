@@ -4,16 +4,18 @@
 
 ### See also
 
-Current setting
+[Overview](Extra/FeynCalc.md).
 
 ### Examples
+
+Current setting
 
 ```mathematica
 TypesettingExplicitLorentzIndex
 % // InputForm
 ```
 
-$$\text{FeynCalc$\grave{ }$SharedObjects$\grave{ }$Private$\grave{ }$x}\unicode{f4a1}\text{FeynCalc$\grave{ }$SharedObjects$\grave{ }$Private$\grave{ }$x}$$
+$$\text{FeynCalc$\grave{ }$SharedObjects$\grave{ }$Private$\grave{ }$x}\to \;\text{FeynCalc$\grave{ }$SharedObjects$\grave{ }$Private$\grave{ }$x}$$
 
 ```mathematica
 Function[FeynCalc`SharedObjects`Private`x, 
@@ -35,4 +37,4 @@ Back to the standard settings
 TypesettingExplicitLorentzIndex = Function[x, x]
 ```
 
-$$x\unicode{f4a1}x$$
+$$x\to x$$

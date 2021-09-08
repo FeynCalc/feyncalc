@@ -4,6 +4,6 @@
 
 ### See also
 
-[FAPatch](FAPatch).
+[Overview](Extra/FeynCalc.md), [FAPatch](FAPatch.md).
 
 ### Examples

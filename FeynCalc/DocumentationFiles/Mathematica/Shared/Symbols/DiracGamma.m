@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*`DiracGamma[5]`  is $gamma ^5$.*)
+(*`DiracGamma[5]`  is $\gamma ^5$.*)
 
 
 (* ::Text:: *)
@@ -32,7 +32,7 @@
 
 
 (* ::Text:: *)
-(*[DiracGammaExpand](DiracGammaExpand), [GA](GA), [DiracSimplify](DiracSimplify), [GS](GS), [DiracTrick](DiracTrick).*)
+(*[Overview](Extra/FeynCalc.md), [DiracGammaExpand](DiracGammaExpand.md), [GA](GA.md), [DiracSimplify](DiracSimplify.md), [GS](GS.md), [DiracTrick](DiracTrick.md).*)
 
 
 (* ::Subsection:: *)

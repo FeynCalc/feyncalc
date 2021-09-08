@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[FCRenameDummyIndices](FCRenameDummyIndices), [FermionSpinSum](FermionSpinSum), [DiracGamma](DiracGamma).*)
+(*[Overview](Extra/FeynCalc.md), [FCRenameDummyIndices](FCRenameDummyIndices.md), [FermionSpinSum](FermionSpinSum.md), [DiracGamma](DiracGamma.md).*)
 
 
 (* ::Subsection:: *)
@@ -27,7 +27,15 @@
 (*ComplexConjugate is meant to be applied to amplitudes, i.e. given a matrix element $\mathcal{M}$, it will return $\mathcal{M}^\ast$.*)
 
 
-Spinor[Momentum[k1],SMP["m_e"],1] . GA[\[Mu]] . Spinor[Momentum[p2],SMP["m_e"],1]*Spinor[Momentum[k2],SMP["m_e"],1] . GA[\[Nu]] . Spinor[Momentum[p1],SMP["m_e"],1]*FAD[k1-p2,Dimension->4]*SMP["e"]^2-Spinor[Momentum[k1],SMP["m_e"],1] . GA[\[Mu]] . Spinor[Momentum[p1],SMP["m_e"],1]*Spinor[Momentum[k2],SMP["m_e"],1] . GA[\[Nu]] . Spinor[Momentum[p2],SMP["m_e"],1]*FAD[k2-p2,Dimension->4]*SMP["e"]^2
+amp=(Spinor[Momentum[k1],SMP["m_e"],1] . GA[\[Mu]] . Spinor[Momentum[p2],SMP["m_e"],1]*
+Spinor[Momentum[k2],SMP["m_e"],1] . GA[\[Nu]] . Spinor[Momentum[p1],SMP["m_e"],1]*
+FAD[k1-p2,Dimension->4]*SMP["e"]^2-Spinor[Momentum[k1],SMP["m_e"],
+1] . GA[\[Mu]] . Spinor[Momentum[p1],SMP["m_e"],1]*Spinor[Momentum[k2],
+SMP["m_e"],1] . GA[\[Nu]] . Spinor[Momentum[p2],SMP["m_e"],1]*FAD[k2-p2,
+Dimension->4]*SMP["e"]^2)
+
+
+ComplexConjugate[amp]
 
 
 (* ::Text:: *)
@@ -42,7 +50,8 @@ GA[5]
 ComplexConjugate[%]
 
 
-GS[Polarization[k1,-I,Transversality->True]] . (GS[k1-p2]+SMP["m_e"]) . GS[Polarization[k2,-I,Transversality->True]]
+(GS[Polarization[k1,-I,Transversality->True]] . (GS[k1-p2]+SMP["m_e"]) . 
+GS[Polarization[k2,-I,Transversality->True]])
 ComplexConjugate[%]
 
 

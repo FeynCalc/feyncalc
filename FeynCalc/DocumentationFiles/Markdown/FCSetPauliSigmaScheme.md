@@ -10,7 +10,7 @@ This is mainly related to the commutator of two Pauli matrices, which involves a
 
 ### See also
 
-[PauliSigma](PauliSigma), [FCGetPauliSigmaScheme](FCGetPauliSigmaScheme).
+[Overview](Extra/FeynCalc.md), [PauliSigma](PauliSigma.md), [FCGetPauliSigmaScheme](FCGetPauliSigmaScheme.md).
 
 ### Examples
 

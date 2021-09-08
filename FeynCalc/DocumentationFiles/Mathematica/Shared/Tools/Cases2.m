@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(*Cases2 *)
+(*Cases2*)
 
 
 (* ::Text:: *)
@@ -24,7 +24,7 @@
 
 
 (* ::Text:: *)
-(*[Variables2](Variables2).*)
+(*[Overview](Extra/FeynCalc.md), [Variables2](Variables2.md).*)
 
 
 (* ::Subsection:: *)

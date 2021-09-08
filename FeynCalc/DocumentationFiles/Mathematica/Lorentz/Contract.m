@@ -12,11 +12,11 @@
 
 
 (* ::Text:: *)
-(*For the contraction of Dirac matrices with each other use `DiracSimplify`.*)
+(*For contractions of Dirac matrices with each other use `DiracSimplify`.*)
 
 
 (* ::Text:: *)
-(*`Contract[exp1, exp2]` contracts `(exp1*exp2)`, where `exp1` and `exp2` may be larger products of sums of metric tensors and 4-vectors.*)
+(*`Contract[exp1, exp2]` contracts `(exp1*exp2)`, where `exp1` and `exp2` may be larger products of sums of metric tensors and 4-vectors. This can be also useful when evaluating polarization sums, where `exp2` should be the product (or expanded sum) of the polarization sums for the vector bosons.*)
 
 
 (* ::Subsection:: *)
@@ -24,7 +24,7 @@
 
 
 (* ::Text:: *)
-(*[Pair](Pair), [CartesianPair](CartesianPair), [DiracSimplify](DiracSimplify), [MomentumCombine](MomentumCombine).*)
+(*[Overview](Extra/FeynCalc.md), [Pair](Pair.md), [CartesianPair](CartesianPair.md), [DiracSimplify](DiracSimplify.md), [MomentumCombine](MomentumCombine.md).*)
 
 
 (* ::Subsection:: *)

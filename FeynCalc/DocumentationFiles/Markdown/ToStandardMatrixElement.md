@@ -1,10 +1,12 @@
 ## ToStandardMatrixElement
 
-`ToStandardMatrixElement[exp]` wraps Dirac structures, color structures and polarization vectors with the head `StandardMatrixElement`.The idea of having standard matrix elements stems from A. Denner's "Techniques for the calculation of electroweak radiative corrections at the one-loop level and results for W-physics at LEP200", cf. arXiv:0709.1075.
+`ToStandardMatrixElement[exp]` wraps Dirac structures, color structures and polarization vectors with the head `StandardMatrixElement`.
+
+The idea of having standard matrix elements stems from A. Denner's "Techniques for the calculation of electroweak radiative corrections at the one-loop level and results for W-physics at LEP200", cf. [arXiv:0709.1075](https://arxiv.org/abs/0709.1075).
 
 ### See also
 
-[DiracSubstitute5](DiracSubstitute5), [DiracGamma](DiracGamma), [ToDiracGamma67](ToDiracGamma67), [Spinor](Spinor).
+[Overview](Extra/FeynCalc.md), [DiracSubstitute5](DiracSubstitute5.md), [DiracGamma](DiracGamma.md), [ToDiracGamma67](ToDiracGamma67.md), [Spinor](Spinor.md).
 
 ### Examples
 

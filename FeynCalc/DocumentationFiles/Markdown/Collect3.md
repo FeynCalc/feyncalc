@@ -1,4 +1,4 @@
-## Collect3 
+## Collect3
 
 `Collect3[expr, {x, y, ...}]` collects terms involving the same powers of monomials $x^{n_1}$, $y^{n_2}$, ...
 
@@ -8,7 +8,7 @@ The option `Head` (default `Plus`) determines the applied function to the list o
 
 ### See also
 
-[Collect2](Collect2), [Isolate](Isolate).
+[Overview](Extra/FeynCalc.md), [Collect2](Collect2.md), [Isolate](Isolate.md).
 
 ### Examples
 

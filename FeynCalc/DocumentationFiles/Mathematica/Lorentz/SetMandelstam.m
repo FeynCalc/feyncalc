@@ -8,7 +8,11 @@
 
 
 (* ::Text:: *)
-(*`SetMandelstam[s, t, u, p , p , p , p , m , m , m , m ]` defines the Mandelstam variables  $s=\left(p_1+p_2\right){}^2$, $t=\left(p_1+p_3\right){}^2$, $u=\left(p_1+p_4\right){}^2$ and sets the momenta on-shell: $p_1{}^2=m_1{}^2$, $p_2{}^2=m_2{}^2$, $p_3{}^2=m_3{}^2$, $p_4{}^2=m_4{}^2$. Notice that $p_1+p_2+p_3+p_4=0$ is assumed.*)
+(*`SetMandelstam[s, t, u, p1 , p2 , p3 , p4 , m1 , m2 , m3 , m4 ]` defines the Mandelstam variables  $s=(p_1+p_2)^2$, $t=(p_1+p_3)^2$, $u=(p_1+p_4)^2$ and sets the momenta on-shell: $p_1^2=m_1^2$, $p_2^2=m_2^2$, $p_3^2=m_3^2$, $p_4^2=m_4^2$. Notice that $p_1+p_2+p_3+p_4=0$ is assumed.*)
+
+
+(* ::Text:: *)
+(*`SetMandelstam[x, {p1, p2, p3, p4, p5}, {m1, m2, m3, m4, m5}]` defines $x[i, j] = (p_i+p_j)^2$ and sets the $p_i$ on-shell. The $p_i$ satisfy: $p_1 + p_2 + p_3 + p_4 + p_5 = 0$."*)
 
 
 (* ::Subsection:: *)
@@ -16,7 +20,7 @@
 
 
 (* ::Text:: *)
-(*[Mandelstam](Mandelstam).*)
+(*[Overview](Extra/FeynCalc.md), [Mandelstam](Mandelstam.md).*)
 
 
 (* ::Subsection:: *)

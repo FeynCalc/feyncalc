@@ -1,4 +1,4 @@
-## Cases2 
+## Cases2
 
 `Cases2[expr, f]` returns a list of all objects in `expr` with head `f`.
 
@@ -8,7 +8,7 @@
 
 ### See also
 
-[Variables2](Variables2).
+[Overview](Extra/FeynCalc.md), [Variables2](Variables2.md).
 
 ### Examples
 

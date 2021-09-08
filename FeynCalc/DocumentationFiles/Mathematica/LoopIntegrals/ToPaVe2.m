@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(*ToPaVe2 *)
+(*ToPaVe2*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[ToPaVe](ToPaVe).*)
+(*[Overview](Extra/FeynCalc.md), [ToPaVe](ToPaVe.md).*)
 
 
 (* ::Subsection:: *)

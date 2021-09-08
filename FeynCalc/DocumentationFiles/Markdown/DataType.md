@@ -24,7 +24,7 @@ If loaded, PHI adds the `DataTypes`: `UMatrix`, `UScalar`.
 
 ### See also
 
-[DeclareNonCommutative](DeclareNonCommutative).
+[Overview](Extra/FeynCalc.md), [DeclareNonCommutative](DeclareNonCommutative.md).
 
 ### Examples
 

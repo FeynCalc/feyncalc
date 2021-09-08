@@ -6,7 +6,7 @@ It is also possible to invoke the function as `FCLoopFindMomentumShifts[{FCTopol
 
 ### See also
 
-[FCLoopToPakForm](FCLoopToPakForm), [FCLoopPakOrder](FCLoopPakOrder).
+[Overview](Extra/FeynCalc.md), [FCLoopToPakForm](FCLoopToPakForm.md), [FCLoopPakOrder](FCLoopPakOrder.md).
 
 ### Examples
 
@@ -28,13 +28,13 @@ target = {FAD[p4], FAD[p1 + p4 + q1], FAD[p1 - p3 + q1],
    FAD[p1 + p4 + 2 q1]}
 ```
 
-$$\left\{\frac{1}{\text{p4}^2},\frac{1}{(\text{p1}+\text{p4}+\text{q1})^2},\frac{1}{(\text{p1}-\text{p3}+\text{q1})^2},\frac{1}{(\text{p1}+\text{q1})^2-\text{m1}^2},\frac{1}{\text{p3}^2-\text{m1}^2},\frac{1}{(\text{p3}+\text{q1})^2},\frac{1}{(\text{p1}+\text{p4}+2 \text{q1})^2}\right\}$$
+$$\left\{\frac{1}{\text{p4}^2},\frac{1}{(\text{p1}+\text{p4}+\text{q1})^2},\frac{1}{(\text{p1}-\text{p3}+\text{q1})^2},\frac{1}{(\text{p1}+\text{q1})^2-\text{m1}^2},\frac{1}{\text{p3}^2-\text{m1}^2},\frac{1}{(\text{p3}+\text{q1})^2},\frac{1}{(\text{p1}+\text{p4}+2 \;\text{q1})^2}\right\}$$
 
 ```mathematica
 FCLoopFindMomentumShifts[source, target, {p1, p3, p4}]
 ```
 
-$$\{\{\text{p1}\to \text{p1}+\text{p4}+\text{q1},\text{p3}\to \text{p3},\text{p4}\to \text{p4}\}\}$$
+$$\{\{\text{p1}\to \;\text{p1}+\text{p4}+\text{q1},\text{p3}\to \;\text{p3},\text{p4}\to \;\text{p4}\}\}$$
 
 ```mathematica
 FCLoopFindMomentumShifts[{{FAD[r4], FAD[r1], FAD[r1 - p3 - r4], 
@@ -43,7 +43,7 @@ FCLoopFindMomentumShifts[{{FAD[r4], FAD[r1], FAD[r1 - p3 - r4],
    FAD[{p3, m1}], FAD[p3 + q1], FAD[p1 + p4 + 2 q1]}, {p1, p3, p4, r4,r1}]
 ```
 
-$$\{\{\text{p3}\to \text{p3},\text{r4}\to \text{p4},\text{r1}\to \text{p1}+\text{p4}+\text{q1}\}\}$$
+$$\{\{\text{p3}\to \;\text{p3},\text{r4}\to \;\text{p4},\text{r1}\to \;\text{p1}+\text{p4}+\text{q1}\}\}$$
 
 ```mathematica
 source = {FCTopology[
@@ -84,4 +84,4 @@ $$\text{FCTopology}\left(\text{fctopology1},\left\{\frac{1}{((\text{p1}+\text{p3
 FCLoopFindMomentumShifts[source, target]
 ```
 
-$$\{\{\text{p1}\to -\text{p1}-\text{p3}+Q,\text{p2}\to -\text{p2}-\text{p3}+Q,\text{p3}\to \text{p3}\},\{\text{p1}\to Q-\text{p2},\text{p2}\to Q-\text{p1},\text{p3}\to -\text{p3}\}\}$$
+$$\{\{\text{p1}\to -\text{p1}-\text{p3}+Q,\text{p2}\to -\text{p2}-\text{p3}+Q,\text{p3}\to \;\text{p3}\},\{\text{p1}\to Q-\text{p2},\text{p2}\to Q-\text{p1},\text{p3}\to -\text{p3}\}\}$$

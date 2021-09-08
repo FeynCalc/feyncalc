@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* $FCShowIEta*)
+(*$FCShowIEta*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[SFAD](SFAD), [CFAD](CFAD), [GFAD](GFAD).*)
+(*[Overview](Extra/FeynCalc.md), [SFAD](SFAD.md), [CFAD](CFAD.md), [GFAD](GFAD.md).*)
 
 
 (* ::Subsection:: *)

@@ -6,6 +6,6 @@ To remove all existing cache values use `FCClearCache[All]`.
 
 ### See also
 
-[FCUseCache](FCUseCache), [FCShowCache](FCShowCache).
+[Overview](Extra/FeynCalc.md), [FCUseCache](FCUseCache.md), [FCShowCache](FCShowCache.md).
 
 ### Examples

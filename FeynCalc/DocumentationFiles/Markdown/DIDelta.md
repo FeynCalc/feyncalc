@@ -6,7 +6,7 @@
 
 ### See also
 
-[DiracChain](DiracChain), [DCHN](DCHN), [DiracIndex](DiracIndex), [DiracIndexDelta](DiracIndexDelta), [DiracChainJoin](DiracChainJoin), [DiracChainExpand](DiracChainExpand), [DiracChainFactor](DiracChainFactor).
+[Overview](Extra/FeynCalc.md), [DiracChain](DiracChain.md), [DCHN](DCHN.md), [DiracIndex](DiracIndex.md), [DiracIndexDelta](DiracIndexDelta.md), [DiracChainJoin](DiracChainJoin.md), [DiracChainExpand](DiracChainExpand.md), [DiracChainFactor](DiracChainFactor.md).
 
 ### Examples
 
@@ -47,7 +47,7 @@ $$\delta _{ik}$$
 ex = DCHN[SpinorUBar[p, m], i0] DCHN[GA[\[Mu]], i1, i2] DCHN[GS[p] + m, i3, i4] DCHN[GA[\[Nu]], i5, i6] DIDelta[i2, i3] DIDelta[i4, i5] DCHN[i7, SpinorV[q]]
 ```
 
-$$\delta _{\text{i2}\text{i3}} \delta _{\text{i4}\text{i5}} (v(q))_{\text{i7}} \left(\bar{\gamma }^{\mu }\right){}_{\text{i1}\text{i2}} \left(\bar{\gamma }^{\nu }\right){}_{\text{i5}\text{i6}} \left(\bar{u}(p,m)\right)_{\text{i0}} \left(\bar{\gamma }\cdot \overline{p}+m\right)_{\text{i3}\text{i4}}$$
+$$\delta _{\text{i2}\;\text{i3}} \delta _{\text{i4}\;\text{i5}} (v(q))_{\text{i7}} \left(\bar{\gamma }^{\mu }\right){}_{\text{i1}\;\text{i2}} \left(\bar{\gamma }^{\nu }\right){}_{\text{i5}\;\text{i6}} \left(\bar{u}(p,m)\right)_{\text{i0}} \left(\bar{\gamma }\cdot \overline{p}+m\right)_{\text{i3}\;\text{i4}}$$
 
 ```mathematica
 ex // FCI // StandardForm
@@ -59,7 +59,7 @@ ex // FCI // StandardForm
 DiracChainJoin[ex]
 ```
 
-$$\left(\varphi (-\overline{q})\right)_{\text{i7}} \left(\varphi (\overline{p},m)\right)_{\text{i0}} \left(\bar{\gamma }^{\mu }.\left(\bar{\gamma }\cdot \overline{p}+m\right).\bar{\gamma }^{\nu }\right){}_{\text{i1}\text{i6}}$$
+$$\left(\varphi (-\overline{q})\right)_{\text{i7}} \left(\varphi (\overline{p},m)\right)_{\text{i0}} \left(\bar{\gamma }^{\mu }.\left(\bar{\gamma }\cdot \overline{p}+m\right).\bar{\gamma }^{\nu }\right){}_{\text{i1}\;\text{i6}}$$
 
 ```mathematica
 DiracChainJoin[ex DIDelta[i0, i1]]

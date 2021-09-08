@@ -6,6 +6,6 @@ The default value is `2`, which is correct e.g. for real photons as external sta
 
 ### See also
 
-[DoPolarizationSums](DoPolarizationSums).
+[Overview](Extra/FeynCalc.md), [DoPolarizationSums](DoPolarizationSums.md).
 
 ### Examples

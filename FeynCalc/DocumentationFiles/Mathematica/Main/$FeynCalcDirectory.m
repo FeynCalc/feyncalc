@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* $FeynCalcDirectory*)
+(*$FeynCalcDirectory*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[$FeynArtsDirectory]($FeynArtsDirectory).*)
+(*[Overview](Extra/FeynCalc.md), [$FeynArtsDirectory]($FeynArtsDirectory.md).*)
 
 
 (* ::Subsection:: *)

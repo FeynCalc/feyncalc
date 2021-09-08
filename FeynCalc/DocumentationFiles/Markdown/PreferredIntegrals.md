@@ -2,6 +2,6 @@
 
 ### See also
 
-[FCLoopFindIntegralMappings](FCLoopFindIntegralMappings).
+[Overview](Extra/FeynCalc.md), [FCLoopFindIntegralMappings](FCLoopFindIntegralMappings.md).
 
 ### Examples

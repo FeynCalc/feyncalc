@@ -10,7 +10,7 @@ The capabilities of this function are very limited, so you should not expect it 
 
 ### See also
 
-[FeynCalc2FORM](FeynCalc2FORM).
+[Overview](Extra/FeynCalc.md), [FeynCalc2FORM](FeynCalc2FORM.md).
 
 ### Examples
 
@@ -52,7 +52,7 @@ DiracTrace[GA[\[Mu], \[Nu]]] DiracTrace[GA[\[Mu], \[Rho]]]
 FeynCalc2FORM[%];
 ```
 
-$$\text{tr}\left(\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }\right) \text{tr}\left(\bar{\gamma }^{\mu }.\bar{\gamma }^{\rho }\right)$$
+$$\text{tr}\left(\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }\right) \;\text{tr}\left(\bar{\gamma }^{\mu }.\bar{\gamma }^{\rho }\right)$$
 
 g_(0,mu)*g_(0,nu)*g_(1,mu)*g_(1,ro)
 
@@ -71,18 +71,18 @@ TableForm[ReadList[If[$OperatingSystem === "MacOS", ":", ""] <> "fc2ftest.f", St
 ```
 
 $$\begin{array}{l}
- \text{Indices $\backslash \backslash $[Mu],$\backslash \backslash $[Nu],$\backslash \backslash $[Rho],$\backslash \backslash $[Sigma];} \\
- \text{Vectors OPEDelta,p,q;} \\
- \text{write statistics;} \\
- \text{Local L = ( } \\
- \text{4*d$\_$(mu,si)*d$\_$(nu,ro)*q.p-4*d$\_$(mu,ro)*d$\_$(nu,si)*q.p+4*d$\_$(mu,nu)*d$\_$(ro,si)*q.p+} \\
- \text{4*d$\_$(ro,si)*p(nu)*q(mu)-4*d$\_$(nu,si)*p(ro)*q(mu)+4*d$\_$(nu,ro)*p(si)*q(mu)-} \\
- \text{4*d$\_$(ro,si)*p(mu)*q(nu)+4*d$\_$(mu,si)*p(ro)*q(nu)-4*d$\_$(mu,ro)*p(si)*q(nu)+} \\
- \text{4*d$\_$(nu,si)*p(mu)*q(ro)-4*d$\_$(mu,si)*p(nu)*q(ro)+4*d$\_$(mu,nu)*p(si)*q(ro)-} \\
- \text{4*d$\_$(nu,ro)*p(mu)*q(si)+4*d$\_$(mu,ro)*p(nu)*q(si)-4*d$\_$(mu,nu)*p(ro)*q(si) ); } \\
- \text{   } \\
- \text{print;} \\
- \text{.end} \\
+ \;\text{Indices $\backslash \backslash $[Mu],$\backslash \backslash $[Nu],$\backslash \backslash $[Rho],$\backslash \backslash $[Sigma];} \\
+ \;\text{Vectors OPEDelta,p,q;} \\
+ \;\text{write statistics;} \\
+ \;\text{Local L = ( } \\
+ \;\text{4*d$\_$(mu,si)*d$\_$(nu,ro)*q.p-4*d$\_$(mu,ro)*d$\_$(nu,si)*q.p+4*d$\_$(mu,nu)*d$\_$(ro,si)*q.p+} \\
+ \;\text{4*d$\_$(ro,si)*p(nu)*q(mu)-4*d$\_$(nu,si)*p(ro)*q(mu)+4*d$\_$(nu,ro)*p(si)*q(mu)-} \\
+ \;\text{4*d$\_$(ro,si)*p(mu)*q(nu)+4*d$\_$(mu,si)*p(ro)*q(nu)-4*d$\_$(mu,ro)*p(si)*q(nu)+} \\
+ \;\text{4*d$\_$(nu,si)*p(mu)*q(ro)-4*d$\_$(mu,si)*p(nu)*q(ro)+4*d$\_$(mu,nu)*p(si)*q(ro)-} \\
+ \;\text{4*d$\_$(nu,ro)*p(mu)*q(si)+4*d$\_$(mu,ro)*p(nu)*q(si)-4*d$\_$(mu,nu)*p(ro)*q(si) ); } \\
+ \;\text{   } \\
+ \;\text{print;} \\
+ \;\text{.end} \\
 \end{array}$$
 
 ```mathematica

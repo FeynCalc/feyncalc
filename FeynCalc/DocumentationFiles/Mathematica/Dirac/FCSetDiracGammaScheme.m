@@ -12,11 +12,11 @@
 
 
 (* ::Text:: *)
-(*Following schemes are supported: *)
+(*Following schemes are supported:*)
 
 
 (* ::Text:: *)
-(*"NDR" - This is the default value. In the naive dimensional regularization (also known as conventional dimensional regularization or CDR) $\gamma^5$ is assumed to anticommute with all Dirac matrices in $D$ dimensions. Hence, every Dirac trace can be rewritten in such a way, that it contains either just one or not a single $\gamma^5$ matrix. The latter traces are obviously unambiguous. The traces with one $\gamma^5$ are not well-defined in this scheme. It usually depends on the physics of the process, whether and how they can contribute to the final result. Therefore, FeynCalc will keep such traces unevaluated, leaving it to the user to decide how to treat them. Notice that traces with an odd number of the usual Dirac matrices and one $\gamma^5$, that vanish in 4 dimensions, will be also put to zero in this scheme.*)
+(*"NDR" - This is the default value. In the naive dimensional regularization (also known as conventional dimensional regularization or CDR) $\gamma^5$ is assumed to anticommute with all Dirac matrices in $D$ dimensions. Hence, every Dirac trace can be rewritten in such a way, that it contains either just one or not a single $\gamma^5$ matrix. The latter traces are obviously unambiguous. The traces with one $\gamma^5$ are not well-defined in this scheme. It usually depends on the physics of the process, whether and how they can contribute to the final result. Therefore, FeynCalc will keep such traces unevaluated, leaving it to the user to decide how to treat them. Notice that traces with an odd number of the usual Dirac matrices and one $\gamma^5$, that vanish in $4$ dimensions, will be also put to zero in this scheme.*)
 
 
 (* ::Text:: *)
@@ -36,7 +36,7 @@
 
 
 (* ::Text:: *)
-(*[FCGetDiracGammaScheme](FCGetDiracGammaScheme), [DiracTrace](DiracTrace).*)
+(*[Overview](Extra/FeynCalc.md), [FCGetDiracGammaScheme](FCGetDiracGammaScheme.md), [DiracTrace](DiracTrace.md).*)
 
 
 (* ::Subsection:: *)

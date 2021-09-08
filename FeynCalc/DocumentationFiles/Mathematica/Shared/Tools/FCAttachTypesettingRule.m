@@ -40,7 +40,7 @@
 
 
 (* ::Text:: *)
-(*[FCRemoveTypesettingRules](FCRemoveTypesettingRules).*)
+(*[Overview](Extra/FeynCalc.md), [FCRemoveTypesettingRules](FCRemoveTypesettingRules.md).*)
 
 
 (* ::Subsection:: *)

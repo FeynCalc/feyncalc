@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* $FCTraditionalFormOutput*)
+(*$FCTraditionalFormOutput*)
 
 
 (* ::Text:: *)
@@ -25,7 +25,7 @@
 
 
 (* ::Text:: *)
-(*[FCEnableTraditionalFormOutput](FCEnableTraditionalFormOutput), [FCDisableTraditionalFormOutput](FCDisableTraditionalFormOutput).*)
+(*[Overview](Extra/FeynCalc.md), [FCEnableTraditionalFormOutput](FCEnableTraditionalFormOutput.md), [FCDisableTraditionalFormOutput](FCDisableTraditionalFormOutput.md).*)
 
 
 (* ::Subsection:: *)

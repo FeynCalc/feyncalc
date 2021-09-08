@@ -4,6 +4,6 @@
 
 ### See also
 
-[FeynRule](FeynRule).
+[Overview](Extra/FeynCalc.md), [FeynRule](FeynRule.md).
 
 ### Examples

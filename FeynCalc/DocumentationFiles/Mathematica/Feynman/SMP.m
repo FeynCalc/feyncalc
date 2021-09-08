@@ -24,7 +24,7 @@
 
 
 (* ::Text:: *)
-(*[SMVertex](SMVertex), [SMPToSymbol](SMPToSymbol).*)
+(*[Overview](Extra/FeynCalc.md), [SMVertex](SMVertex.md), [SMPToSymbol](SMPToSymbol.md).*)
 
 
 (* ::Subsection:: *)

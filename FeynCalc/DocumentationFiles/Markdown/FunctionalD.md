@@ -4,7 +4,7 @@ FunctionalD[exp, {QuantumField[name, LorentzIndex[mu], ..., SUNIndex[a]][p], ...
 
 ### See also
 
-[FeynRule](FeynRule), [QuantumField](QuantumField).
+[Overview](Extra/FeynCalc.md), [FeynRule](FeynRule.md), [QuantumField](QuantumField.md).
 
 ### Examples
 

@@ -8,7 +8,7 @@ For other than three dimensions: `CartesianIndex[i, Dimension]`.
 
 ### See also
 
-[LorentzIndex](LorentzIndex), [ExplicitLorentzIndex](ExplicitLorentzIndex).
+[Overview](Extra/FeynCalc.md), [LorentzIndex](LorentzIndex.md), [ExplicitLorentzIndex](ExplicitLorentzIndex.md).
 
 ### Examples
 

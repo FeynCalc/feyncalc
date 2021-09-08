@@ -4,7 +4,7 @@
 
 ### See also
 
-[ComplexConjugate](ComplexConjugate).
+[Overview](Extra/FeynCalc.md), [ComplexConjugate](ComplexConjugate.md).
 
 ### Examples
 
@@ -15,20 +15,20 @@ FCRenameDummyIndices[%] // Factor2
 
 $$p^{\text{mu}} q^{\text{mu}}+p^{\text{nu}} q^{\text{nu}}+q^{\text{si}} r^{\text{si}}$$
 
-$$p^{\text{$\$$AL}(\text{$\$$24})} q^{\text{$\$$AL}(\text{$\$$24})}+p^{\text{$\$$AL}(\text{$\$$25})} q^{\text{$\$$AL}(\text{$\$$25})}+q^{\text{$\$$AL}(\text{$\$$26})} r^{\text{$\$$AL}(\text{$\$$26})}$$
+$$p^{\text{\$AL}(\text{\$24})} q^{\text{\$AL}(\text{\$24})}+p^{\text{\$AL}(\text{\$25})} q^{\text{\$AL}(\text{\$25})}+q^{\text{\$AL}(\text{\$26})} r^{\text{\$AL}(\text{\$26})}$$
 
 ```mathematica
 Uncontract[SPD[q, p]^2, q, p, Pair -> All]
 FCRenameDummyIndices[%]
 ```
 
-$$p^{\text{$\$$AL}(\text{$\$$27})} p^{\text{$\$$AL}(\text{$\$$28})} q^{\text{$\$$AL}(\text{$\$$27})} q^{\text{$\$$AL}(\text{$\$$28})}$$
+$$p^{\text{\$AL}(\text{\$27})} p^{\text{\$AL}(\text{\$28})} q^{\text{\$AL}(\text{\$27})} q^{\text{\$AL}(\text{\$28})}$$
 
-$$p^{\text{$\$$AL}(\text{$\$$29})} p^{\text{$\$$AL}(\text{$\$$30})} q^{\text{$\$$AL}(\text{$\$$29})} q^{\text{$\$$AL}(\text{$\$$30})}$$
+$$p^{\text{\$AL}(\text{\$29})} p^{\text{\$AL}(\text{\$30})} q^{\text{\$AL}(\text{\$29})} q^{\text{\$AL}(\text{\$30})}$$
 
 ```mathematica
 amp = -(Spinor[Momentum[k1], SMP["m_mu"], 1] . GA[Lor1] . Spinor[-Momentum[k2], SMP["m_mu"], 1]*Spinor[-Momentum[p2], SMP["m_e"], 1] . GA[Lor1] . Spinor[Momentum[p1], SMP["m_e"], 1]*FAD[k1 + k2, Dimension -> 4]*SMP["e"]^2);
 amp // FCRenameDummyIndices
 ```
 
-$$-\frac{\text{e}^2 \left(\varphi (-\overline{\text{p2}},m_e)\right).\bar{\gamma }^{\text{$\$$AL}(\text{$\$$31})}.\left(\varphi (\overline{\text{p1}},m_e)\right) \left(\varphi (\overline{\text{k1}},m_{\mu })\right).\bar{\gamma }^{\text{$\$$AL}(\text{$\$$31})}.\left(\varphi (-\overline{\text{k2}},m_{\mu })\right)}{(\overline{\text{k1}}+\overline{\text{k2}})^2}$$
+$$-\frac{\text{e}^2 \left(\varphi (-\overline{\text{p2}},m_e)\right).\bar{\gamma }^{\text{\$AL}(\text{\$31})}.\left(\varphi (\overline{\text{p1}},m_e)\right) \left(\varphi (\overline{\text{k1}},m_{\mu })\right).\bar{\gamma }^{\text{\$AL}(\text{\$31})}.\left(\varphi (-\overline{\text{k2}},m_{\mu })\right)}{(\overline{\text{k1}}+\overline{\text{k2}})^2}$$

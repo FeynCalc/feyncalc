@@ -4,6 +4,6 @@
 
 ### See also
 
-[IntegralTable](IntegralTable), [FeynAmpDenominatorSimplify](FeynAmpDenominatorSimplify).
+[Overview](Extra/FeynCalc.md), [IntegralTable](IntegralTable.md), [FeynAmpDenominatorSimplify](FeynAmpDenominatorSimplify.md).
 
 ### Examples

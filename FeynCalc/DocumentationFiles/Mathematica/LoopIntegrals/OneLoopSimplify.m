@@ -1,15 +1,26 @@
+(* ::Package:: *)
+
  
+
+
 (* ::Section:: *)
 (*OneLoopSimplify*)
+
+
 (* ::Text:: *)
 (*`OneLoopSimplify[amp, q]` simplifies the one-loop amplitude amp. The second argument denotes the integration momentum.*)
 
 
+(* ::Text:: *)
+(*If the first argument has head `FeynAmp` then `OneLoopSimplify[FeynAmp[name, k, expr], k]` transforms to `OneLoopSimplify[expr, k]`*)
+
+
 (* ::Subsection:: *)
 (*See also*)
-(* ::Text:: *)
-(*[TID](TID), [TIDL](TIDL).*)
 
+
+(* ::Text:: *)
+(*[Overview](Extra/FeynCalc.md), [TID](TID.md), [TIDL](TIDL.md).*)
 
 
 (* ::Subsection:: *)

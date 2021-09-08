@@ -4,6 +4,6 @@
 
 ### See also
 
-[FCPrepareFAAmp](FCPrepareFAAmp).
+[Overview](Extra/FeynCalc.md), [FCPrepareFAAmp](FCPrepareFAAmp.md).
 
 ### Examples

@@ -6,7 +6,7 @@ The input can also consist of an `FCTopology` object or a list thereof.
 
 ### See also
 
-[FCLoopBasisIntegralToPropagators](FCLoopBasisIntegralToPropagators).
+[Overview](Extra/FeynCalc.md), [FCLoopBasisIntegralToPropagators](FCLoopBasisIntegralToPropagators.md).
 
 ### Examples
 
@@ -46,7 +46,7 @@ FCLoopBasisPropagatorsToTopology[{FCTopology[topo1, {SFAD[{{p1, 0}, {0, 1}, 1}],
 
 $$\left(
 \begin{array}{ccccc}
- \text{p1}^2 & \text{p3}^2-\text{mb}^2 & (\text{p1}+\text{p3})^2-\text{mb}^2 & (\text{p1}-q)^2-\text{mb}^2 & \text{p3}\cdot q \\
- \text{p1}^2-\text{mb}^2 & \text{p3}^2-\text{mb}^2 & (\text{p1}+\text{p3})^2-\text{mb}^2 & (\text{p1}-q)^2-\text{mb}^2 & (\text{p1}+\text{p3})\cdot q \\
+ \;\text{p1}^2 & \;\text{p3}^2-\text{mb}^2 & (\text{p1}+\text{p3})^2-\text{mb}^2 & (\text{p1}-q)^2-\text{mb}^2 & \;\text{p3}\cdot q \\
+ \;\text{p1}^2-\text{mb}^2 & \;\text{p3}^2-\text{mb}^2 & (\text{p1}+\text{p3})^2-\text{mb}^2 & (\text{p1}-q)^2-\text{mb}^2 & (\text{p1}+\text{p3})\cdot q \\
 \end{array}
 \right)$$

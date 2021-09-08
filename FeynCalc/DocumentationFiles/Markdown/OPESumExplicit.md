@@ -4,7 +4,7 @@
 
 ### See also
 
-[OPESum](OPESum), [OPESumSimplify](OPESumSimplify).
+[Overview](Extra/FeynCalc.md), [OPESum](OPESum.md), [OPESumSimplify](OPESumSimplify.md).
 
 ### Examples
 
@@ -25,6 +25,6 @@ OPESumExplicit[%]
 
 ```
 
-$$\sum _{j=0}^{-4+m} \text{}\text{} (j+1)c^{-j+m-4} a^{\text{ib}^{j-i}}$$
+$$\sum _{j=0}^{-4+m} \;\text{}\;\text{} (j+1)c^{-j+m-4} a^{\text{ib}^{j-i}}$$
 
-$$\sum _{j=0}^{-4+m} \text{}\text{} (j+1)c^{-j+m-4} a^{\text{ib}^{j-i}}$$
+$$\sum _{j=0}^{-4+m} \;\text{}\;\text{} (j+1)c^{-j+m-4} a^{\text{ib}^{j-i}}$$

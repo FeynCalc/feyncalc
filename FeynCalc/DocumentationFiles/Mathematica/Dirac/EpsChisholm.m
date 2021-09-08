@@ -1,15 +1,22 @@
+(* ::Package:: *)
+
  
+
+
 (* ::Section:: *)
 (*EpsChisholm*)
+
+
 (* ::Text:: *)
-(*`EpsChisholm[exp]` applies the Chisholm identiy to a Dirac matrix contracted with a Levi-Civita tensor.*)
+(*`EpsChisholm[exp]` applies the Chisholm identity to a Dirac matrix contracted with a Levi-Civita tensor.*)
 
 
 (* ::Subsection:: *)
 (*See also*)
-(* ::Text:: *)
-(*Chisholm, Eps, DiracGamma*)
 
+
+(* ::Text:: *)
+(*[Overview](Extra/FeynCalc.md), [Chisholm](Chisholm.md), [Eps](Eps.md), [DiracGamma](DiracGamma.md).*)
 
 
 (* ::Subsection:: *)

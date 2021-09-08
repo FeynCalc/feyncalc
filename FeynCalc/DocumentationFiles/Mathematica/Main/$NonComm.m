@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* $NonComm*)
+(*$NonComm*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[NonCommQ](NonCommQ), [NonCommutative](NonCommutative).*)
+(*[Overview](Extra/FeynCalc.md), [NonCommQ](NonCommQ.md), [NonCommutative](NonCommutative.md).*)
 
 
 (* ::Subsection:: *)

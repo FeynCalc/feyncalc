@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* $TypesettingDimE*)
+(*$TypesettingDimE*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[$TypesettingDim4]($TypesettingDim4), [$TypesettingDimD]($TypesettingDimD).*)
+(*[Overview](Extra/FeynCalc.md), [$TypesettingDim4]($TypesettingDim4.md), [$TypesettingDimD]($TypesettingDimD.md).*)
 
 
 (* ::Subsection:: *)

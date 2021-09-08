@@ -4,7 +4,7 @@
 
 ### See also
 
-[DiracChain](DiracChain), [DCHN](DCHN), [DiracIndex](DiracIndex), [DIDelta](DIDelta), [DiracChainJoin](DiracChainJoin), [DiracChainCombine](DiracChainCombine), [DiracChainExpand](DiracChainExpand), [DiracChainFactor](DiracChainFactor).
+[Overview](Extra/FeynCalc.md), [DiracChain](DiracChain.md), [DCHN](DCHN.md), [DiracIndex](DiracIndex.md), [DIDelta](DIDelta.md), [DiracChainJoin](DiracChainJoin.md), [DiracChainCombine](DiracChainCombine.md), [DiracChainExpand](DiracChainExpand.md), [DiracChainFactor](DiracChainFactor.md).
 
 ### Examples
 
@@ -48,13 +48,13 @@ $$\delta _{ik}$$
 ex = DiracIndexDelta[DiracIndex[i2], DiracIndex[i3]] DiracIndexDelta[DiracIndex[i4], DiracIndex[i5]] DiracChain[DiracIndex[i7], Spinor[-Momentum[q], 0, 1]] DiracChain[Spinor[Momentum[p], m, 1], DiracIndex[i0]] DiracChain[DiracGamma[LorentzIndex[\[Mu]]], DiracIndex[i1], DiracIndex[i2]] DiracChain[DiracGamma[LorentzIndex[\[Nu]]], DiracIndex[i5], DiracIndex[i6]] DiracChain[m + DiracGamma[Momentum[p]], DiracIndex[i3], DiracIndex[i4]]
 ```
 
-$$\delta _{\text{i2}\text{i3}} \delta _{\text{i4}\text{i5}} \left(\bar{\gamma }^{\mu }\right){}_{\text{i1}\text{i2}} \left(\bar{\gamma }^{\nu }\right){}_{\text{i5}\text{i6}} \left(\varphi (-\overline{q})\right)_{\text{i7}} \left(\bar{\gamma }\cdot \overline{p}+m\right)_{\text{i3}\text{i4}} \left(\varphi (\overline{p},m)\right)_{\text{i0}}$$
+$$\delta _{\text{i2}\;\text{i3}} \delta _{\text{i4}\;\text{i5}} \left(\bar{\gamma }^{\mu }\right){}_{\text{i1}\;\text{i2}} \left(\bar{\gamma }^{\nu }\right){}_{\text{i5}\;\text{i6}} \left(\varphi (-\overline{q})\right)_{\text{i7}} \left(\bar{\gamma }\cdot \overline{p}+m\right)_{\text{i3}\;\text{i4}} \left(\varphi (\overline{p},m)\right)_{\text{i0}}$$
 
 ```mathematica
 DiracChainJoin[ex]
 ```
 
-$$\left(\varphi (-\overline{q})\right)_{\text{i7}} \left(\varphi (\overline{p},m)\right)_{\text{i0}} \left(\bar{\gamma }^{\mu }.\left(\bar{\gamma }\cdot \overline{p}+m\right).\bar{\gamma }^{\nu }\right){}_{\text{i1}\text{i6}}$$
+$$\left(\varphi (-\overline{q})\right)_{\text{i7}} \left(\varphi (\overline{p},m)\right)_{\text{i0}} \left(\bar{\gamma }^{\mu }.\left(\bar{\gamma }\cdot \overline{p}+m\right).\bar{\gamma }^{\nu }\right){}_{\text{i1}\;\text{i6}}$$
 
 ```mathematica
 DiracChainJoin[ex DIDelta[i0, i1]]

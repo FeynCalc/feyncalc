@@ -6,7 +6,7 @@ Notice that although the default value of `FCJoinDOTs` is `True`, the correspond
 
 ### See also
 
-[DotSimplify](DotSimplify).
+[Overview](Extra/FeynCalc.md), [DotSimplify](DotSimplify.md).
 
 ### Examples
 

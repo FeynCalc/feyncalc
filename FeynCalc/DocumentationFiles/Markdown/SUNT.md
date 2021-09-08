@@ -4,7 +4,7 @@
 
 ### See also
 
-[CA](CA), [CF](CF), [SUND](SUND), [SUNDelta](SUNDelta), [SUNF](SUNF), [SUNSimplify](SUNSimplify).
+[Overview](Extra/FeynCalc.md), [CA](CA.md), [CF](CF.md), [SUND](SUND.md), [SUNDelta](SUNDelta.md), [SUNF](SUNF.md), [SUNSimplify](SUNSimplify.md).
 
 ### Examples
 
@@ -72,7 +72,7 @@ $$T_f \delta ^{ab}$$
 SUNTrace[SUNT[a, b]] // StandardForm
 ```
 
-$$\frac{1}{2} \text{SUNDelta}[\text{SUNIndex}[a],\text{SUNIndex}[b]]$$
+$$\frac{1}{2} \;\text{SUNDelta}[\text{SUNIndex}[a],\text{SUNIndex}[b]]$$
 
 ```mathematica
 SUNT[a] // FCI // StandardForm

@@ -6,7 +6,7 @@ For example, `FCMakeSymbols[mu, Range[1, 3], List]` returns `{mu1,mu2,mu3}`.
 
 ### See also
 
-[FCMakeIndex](FCMakeIndex).
+[Overview](Extra/FeynCalc.md), [FCMakeIndex](FCMakeIndex.md).
 
 ### Examples
 

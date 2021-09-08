@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* $DisableMemSet*)
+(*$DisableMemSet*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[MemSet](MemSet).*)
+(*[Overview](Extra/FeynCalc.md), [MemSet](MemSet.md).*)
 
 
 (* ::Subsection:: *)

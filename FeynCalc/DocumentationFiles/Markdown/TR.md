@@ -14,7 +14,7 @@ The Mathematica build-in function `Tr` is overloaded to call `TR` if any of `Dir
 
 ### See also
 
-[DiracSimplify](DiracSimplify), [DiracTrace](DiracTrace), [FermionSpinSum](FermionSpinSum), [SUNTrace](SUNTrace).
+[Overview](Extra/FeynCalc.md), [DiracSimplify](DiracSimplify.md), [DiracTrace](DiracTrace.md), [FermionSpinSum](FermionSpinSum.md), [SUNTrace](SUNTrace.md).
 
 ### Examples
 

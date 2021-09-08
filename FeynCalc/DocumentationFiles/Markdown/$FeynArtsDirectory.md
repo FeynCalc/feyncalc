@@ -1,10 +1,10 @@
-##  $FeynCalcVersion
+## $FeynArtsDirectory
 
 `$FeynArtsDirectory` specifies  the location of FeynArts.
 
 ### See also
 
-[$FeynCalcDirectory]($FeynCalcDirectory).
+[Overview](Extra/FeynCalc.md), [$FeynCalcDirectory]($FeynCalcDirectory.md).
 
 ### Examples
 

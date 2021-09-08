@@ -4,7 +4,7 @@
 
 ### See also
 
-[Isolate](Isolate), [Collect2](Collect2).
+[Overview](Extra/FeynCalc.md), [Isolate](Isolate.md), [Collect2](Collect2.md).
 
 ### Examples
 
@@ -22,4 +22,4 @@ Now an abbreviation is introduced
  Isolate[a*b*c*d, a, IsolateTimes -> True]
 ```
 
-$$a \text{KK}(24)$$
+$$a \;\text{KK}(24)$$

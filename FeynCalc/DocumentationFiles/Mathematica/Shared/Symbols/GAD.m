@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`GAD[\[Mu]]` can be used as input for a $D$-dimensional $\gamma ^{\mu }$and is transformed into `DiracGamma[LorentzIndex[$\mu$,D],D]` by `FeynCalcInternal` (=`FCI`).*)
+(*`GAD[mu]` can be used as input for a $D$-dimensional $\gamma ^{\mu }$ and is transformed into `DiracGamma[LorentzIndex[mu,D],D]` by `FeynCalcInternal` (=`FCI`).*)
 
 
 (* ::Text:: *)
@@ -20,7 +20,7 @@
 
 
 (* ::Text:: *)
-(*[DiracGamma](DiracGamma), [GA](GA), [GS](GS).*)
+(*[Overview](Extra/FeynCalc.md), [DiracGamma](DiracGamma.md), [GA](GA.md), [GS](GS.md).*)
 
 
 (* ::Subsection:: *)

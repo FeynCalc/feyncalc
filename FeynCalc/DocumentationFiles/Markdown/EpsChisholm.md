@@ -1,10 +1,10 @@
 ## EpsChisholm
 
-`EpsChisholm[exp]` applies the Chisholm identiy to a Dirac matrix contracted with a Levi-Civita tensor.
+`EpsChisholm[exp]` applies the Chisholm identity to a Dirac matrix contracted with a Levi-Civita tensor.
 
 ### See also
 
-Chisholm, Eps, DiracGamma
+[Overview](Extra/FeynCalc.md), [Chisholm](Chisholm.md), [Eps](Eps.md), [DiracGamma](DiracGamma.md).
 
 ### Examples
 

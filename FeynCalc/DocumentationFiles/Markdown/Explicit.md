@@ -6,7 +6,7 @@
 
 ### See also
 
-[GluonVertex](GluonVertex), [Twist2GluonOperator](Twist2GluonOperator).
+[Overview](Extra/FeynCalc.md), [GluonVertex](GluonVertex.md), [Twist2GluonOperator](Twist2GluonOperator.md).
 
 ### Examples
 
@@ -38,4 +38,4 @@ Explicit[%]
 
 $$F_{\mu \nu }^a$$
 
-$$g_s f^{a\text{b24}\text{c25}} A_{\mu }^{\text{b24}}.A_{\nu }^{\text{c25}}+\left.(\partial _{\mu }A_{\nu }^a\right)-\left.(\partial _{\nu }A_{\mu }^a\right)$$
+$$g_s f^{a\text{b24}\;\text{c25}} A_{\mu }^{\text{b24}}.A_{\nu }^{\text{c25}}+\left.(\partial _{\mu }A_{\nu }^a\right)-\left.(\partial _{\nu }A_{\mu }^a\right)$$

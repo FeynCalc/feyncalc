@@ -4,14 +4,14 @@
 
 ### See also
 
-[PaVeReduce](PaVeReduce).
+[Overview](Extra/FeynCalc.md), [PaVeReduce](PaVeReduce.md).
 
 ### Examples
 
-Some of the PaVe's reduce to special cases with $text{PaVeAutoReduce}to text{True}$
+Some of the PaVe's reduce to special cases with `PaVeAutoReduce`to `True`
 
 ```mathematica
 PaVe[0, 0, {pp}, {m^2, M^2}, PaVeAutoReduce -> True]
 ```
 
-$$\frac{\left(m^2-2 m M+M^2-\text{pp}\right) \left(m^2+2 m M+M^2-\text{pp}\right) \text{B}_0\left(\text{pp},m^2,M^2\right)}{4 (1-D) \text{pp}}-\frac{\text{A}_0\left(m^2\right) \left(m^2-M^2+\text{pp}\right)}{4 (1-D) \text{pp}}+\frac{\text{A}_0\left(M^2\right) \left(m^2-M^2-\text{pp}\right)}{4 (1-D) \text{pp}}$$
+$$\frac{\left(m^2-2 m M+M^2-\text{pp}\right) \left(m^2+2 m M+M^2-\text{pp}\right) \;\text{B}_0\left(\text{pp},m^2,M^2\right)}{4 (1-D) \;\text{pp}}-\frac{\text{A}_0\left(m^2\right) \left(m^2-M^2+\text{pp}\right)}{4 (1-D) \;\text{pp}}+\frac{\text{A}_0\left(M^2\right) \left(m^2-M^2-\text{pp}\right)}{4 (1-D) \;\text{pp}}$$

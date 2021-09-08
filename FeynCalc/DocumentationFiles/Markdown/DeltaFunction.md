@@ -6,7 +6,7 @@ Mathematica also provides a built-in function `DiracDelta` with comparable prope
 
 ### See also
 
-[Convolute](Convolute), [DeltaFunctionPrime](DeltaFunctionPrime), [Integrate2](Integrate2), [SimplifyDeltaFunction](SimplifyDeltaFunction).
+[Overview](Extra/FeynCalc.md), [Convolute](Convolute.md), [DeltaFunctionPrime](DeltaFunctionPrime.md), [Integrate2](Integrate2.md), [SimplifyDeltaFunction](SimplifyDeltaFunction.md).
 
 ### Examples
 

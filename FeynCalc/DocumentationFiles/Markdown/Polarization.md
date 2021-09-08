@@ -2,9 +2,11 @@
 
 `Polarization[k]` is the head of a polarization momentum with (incoming) momentum `k`.
 
-A slashed polarization vector ($\varepsilon_{\mu}(k) \gamma^\mu$ has to be entered as `GS[Polarization[k]]`.
+A slashed polarization vector ($\varepsilon_{\mu}(k) \gamma^\mu)$ has to be entered as `GS[Polarization[k]]`.
 
-The internal representation for a polarization vector corresponding to a boson with four momentum k is: `Momentum[Polarization[k, I ]]`. Unless the option `Transversality` is set to `True`, all polarization vectors are not transverse by default.
+The internal representation for a polarization vector corresponding to a boson with four momentum k is: `Momentum[Polarization[k, I ]]`.
+
+Unless the option `Transversality` is set to `True`, all polarization vectors are not transverse by default.
 
 `Polarization[k,-I]` denotes the complex conjugate polarization.
 
@@ -12,7 +14,7 @@ Polarization is also an option of various functions related to the operator prod
 
 ### See also
 
-[PolarizationVector](PolarizationVector), [PolarizationSum](PolarizationSum), [DoPolarizationSums](DoPolarizationSums).
+[Overview](Extra/FeynCalc.md), [PolarizationVector](PolarizationVector.md), [PolarizationSum](PolarizationSum.md), [DoPolarizationSums](DoPolarizationSums.md).
 
 ### Examples
 

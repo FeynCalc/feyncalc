@@ -24,7 +24,7 @@
 
 
 (* ::Text:: *)
-(*[GS](GS), [FCI](FCI).*)
+(*[Overview](Extra/FeynCalc.md), [GS](GS.md), [FCI](FCI.md).*)
 
 
 (* ::Subsection:: *)
@@ -32,7 +32,7 @@
 
 
 (* ::Text:: *)
-(*This is $q$-slash, i.e., $gamma^{\mu} q_{\mu }$*)
+(*This is $q$-slash, i.e., $\gamma^{\mu} q_{\mu }$*)
 
 
 DiracSlash[q]

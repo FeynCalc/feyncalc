@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* $MIntegrate*)
+(*$MIntegrate*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[OPEIntegrateDelta](OPEIntegrateDelta).*)
+(*[Overview](Extra/FeynCalc.md), [OPEIntegrateDelta](OPEIntegrateDelta.md).*)
 
 
 (* ::Subsection:: *)

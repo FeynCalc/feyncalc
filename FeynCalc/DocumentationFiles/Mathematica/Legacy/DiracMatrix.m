@@ -12,7 +12,7 @@
 
 
 (* ::Text:: *)
-(*`DiracMatrix[mu , nu , ...]` is a product of $\gamma$ matrices with Lorentz indices `mu , nu , ...` *)
+(*`DiracMatrix[mu , nu , ...]` is a product of $\gamma$ matrices with Lorentz indices `mu , nu , ...`*)
 
 
 (* ::Text:: *)
@@ -36,7 +36,7 @@
 
 
 (* ::Text:: *)
-(*[GA](GA), [FCI](FCI).*)
+(*[Overview](Extra/FeynCalc.md), [GA](GA.md), [FCI](FCI.md).*)
 
 
 (* ::Subsection:: *)

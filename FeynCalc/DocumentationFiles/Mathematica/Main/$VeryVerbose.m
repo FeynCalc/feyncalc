@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* $VeryVerbose*)
+(*$VeryVerbose*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[FCVerbose](FCVerbose), [FCPrint](FCPrint).*)
+(*[Overview](Extra/FeynCalc.md), [FCVerbose](FCVerbose.md), [FCPrint](FCPrint.md).*)
 
 
 (* ::Subsection:: *)

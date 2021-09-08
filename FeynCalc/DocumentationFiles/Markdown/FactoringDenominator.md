@@ -4,7 +4,7 @@
 
 ### See also
 
-[Collect2](Collect2).
+[Overview](Extra/FeynCalc.md), [Collect2](Collect2.md).
 
 ### Examples
 
@@ -13,7 +13,7 @@ ex = (x1 a^2 + y 1 a^2 + 2 a b + x2 b^2 + y2 b^2)/(a + b + c^2 +
     	2 c d + d^2)
 ```
 
-$$\frac{a^2 \text{x1}+a^2 y+2 a b+b^2 \text{x2}+b^2 \text{y2}}{a+b+c^2+2 c d+d^2}$$
+$$\frac{a^2 \;\text{x1}+a^2 y+2 a b+b^2 \;\text{x2}+b^2 \;\text{y2}}{a+b+c^2+2 c d+d^2}$$
 
 ```mathematica
 Collect2[ex, a, b]

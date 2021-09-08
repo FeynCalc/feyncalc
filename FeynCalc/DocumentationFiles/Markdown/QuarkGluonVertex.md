@@ -8,7 +8,7 @@ The dimension and the name of the coupling constant are determined by the option
 
 ### See also
 
-[GluonVertex](GluonVertex).
+[Overview](Extra/FeynCalc.md), [GluonVertex](GluonVertex.md).
 
 ### Examples
 

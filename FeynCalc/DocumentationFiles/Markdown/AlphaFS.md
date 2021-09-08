@@ -6,7 +6,7 @@ The shortcut `AlphaFS` is deprecated, please use `SMP["alpha_fs"]` instead!
 
 ### See also
 
-[SMP](SMP).
+[Overview](Extra/FeynCalc.md), [SMP](SMP.md).
 
 ### Examples
 

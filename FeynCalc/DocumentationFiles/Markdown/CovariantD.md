@@ -16,6 +16,8 @@
 
 ### See also
 
+[Overview](Extra/FeynCalc.md)
+
 ### Examples
 
 ```mathematica
@@ -66,7 +68,7 @@ $$\vec{\partial }_{\Delta }-i g_s T^{\text{c26}}.A_{\Delta }^{\text{c26}}$$
 CovariantD[OPEDelta, a, b, {2}]
 ```
 
-$$\left(\delta ^{a\text{c27}} \vec{\partial }_{\Delta }-g_s A_{\Delta }^{\text{e28}} f^{a\text{c27}\text{e28}}\right).\left(\delta ^{b\text{c27}} \vec{\partial }_{\Delta }-g_s A_{\Delta }^{\text{e29}} f^{\text{c27}b\text{e29}}\right)$$
+$$\left(\delta ^{a\text{c27}} \vec{\partial }_{\Delta }-g_s A_{\Delta }^{\text{e28}} f^{a\text{c27}\;\text{e28}}\right).\left(\delta ^{b\text{c27}} \vec{\partial }_{\Delta }-g_s A_{\Delta }^{\text{e29}} f^{\text{c27}b\text{e29}}\right)$$
 
 This gives$m * \vec{\partial}_{\Delta}$, the partial derivative $\vec{\partial}_{\mu }$ contracted with $\Delta ^{\mu }$
 

@@ -8,19 +8,23 @@ The input (say a sum or a difference of amplitudes) should be prepared using `Co
 
 ### See also
 
-[Collect2](Collect2), [Solve2](Solve2), [Solve3](Solve3).
+[Overview](Extra/FeynCalc.md), [Collect2](Collect2.md), [Solve2](Solve2.md), [Solve3](Solve3.md).
 
 ### Examples
 
 ```mathematica
-FCMatchSolve[-1/8*(tauPref*(-128 + 64*nc + 160*nc^2 - 8*nc*zz14 + 4*nc*zz44 - 16*evFlag[4, 3, 1] + 8*nc*evFlag[4, 3, 1] - 16*evFlag[5, 3, 1] + 8*nc*evFlag[5, 3, 1] + nc*evFlag[9, 3, 1] - 2*evFlag[10, 3, 1] + nc^2*evFlag[10, 3, 1])*OP[Q])/nc + (tauPref*(-96*nc - 96*nc^2 + 4*nc*zz24 - 4*nc*zz44 - 16*evFlag[4, 3, 1] + 24*nc*evFlag[4, 3, 1] + 16*nc^2*evFlag[4, 3, 1] + 16*evFlag[5, 3, 1] - 8*nc*evFlag[5, 3, 1] - nc*evFlag[9, 3, 1] + nc*evFlag[9, 4, 1] + 2*evFlag[10, 3, 1] - nc^2*evFlag[10, 3, 1] - 2*evFlag[10, 4, 1] + nc^2*evFlag[10, 4, 1])*OP[QS])/(4*nc), {OP[_], nc, evFlag[__],tauPref}] 
-  
- 
-
+FCMatchSolve[-1/8*(tauPref*(-128 + 64*nc + 160*nc^2 - 8*nc*zz14 + 4*nc*zz44 - 
+         16*evFlag[4, 3, 1] + 8*nc*evFlag[4, 3, 1] - 16*evFlag[5, 3, 1] + 8*nc*evFlag[5, 3, 1] + 
+         nc*evFlag[9, 3, 1] - 2*evFlag[10, 3, 1] + nc^2*evFlag[10, 3, 1])*OP[Q])/nc + 
+   (tauPref*(-96*nc - 96*nc^2 + 4*nc*zz24 - 4*nc*zz44 - 16*evFlag[4, 3, 1] + 
+        24*nc*evFlag[4, 3, 1] + 16*nc^2*evFlag[4, 3, 1] + 16*evFlag[5, 3, 1] - 
+        8*nc*evFlag[5, 3, 1] - nc*evFlag[9, 3, 1] + nc*evFlag[9, 4, 1] + 2*evFlag[10, 3, 1] - 
+        nc^2*evFlag[10, 3, 1] - 2*evFlag[10, 4, 1] + nc^2*evFlag[10, 4, 1])*OP[QS])/(4*nc), 
+  {OP[_], nc, evFlag[__], tauPref}]
 ```
 
 $$\text{FCMatchSolve: Solving for: }\{\text{zz14},\text{zz24},\text{zz44}\}$$
 
 $$\text{FCMatchSolve: A solution exists.}$$
 
-$$\left\{\text{zz24}\to \frac{1}{4 \text{nc}}\left(-16 \text{nc}^2 \text{evFlag}(4,3,1)-\text{nc}^2 \text{evFlag}(10,4,1)-32 \text{nc} \text{evFlag}(4,3,1)-\text{nc} \text{evFlag}(9,4,1)+32 \text{evFlag}(4,3,1)+2 \text{evFlag}(10,4,1)-64 \text{nc}^2+8 \text{nc} \text{zz14}+32 \text{nc}+128\right),\text{zz44}\to \frac{1}{4 \text{nc}}\left(\text{nc}^2 (-\text{evFlag}(10,3,1))-8 \text{nc} \text{evFlag}(4,3,1)-8 \text{nc} \text{evFlag}(5,3,1)-\text{nc} \text{evFlag}(9,3,1)+16 \text{evFlag}(4,3,1)+16 \text{evFlag}(5,3,1)+2 \text{evFlag}(10,3,1)-160 \text{nc}^2+8 \text{nc} \text{zz14}-64 \text{nc}+128\right)\right\}$$
+$$\left\{\text{zz24}\to \frac{1}{4 \;\text{nc}}\left(-16 \;\text{nc}^2 \;\text{evFlag}(4,3,1)-\text{nc}^2 \;\text{evFlag}(10,4,1)-32 \;\text{nc} \;\text{evFlag}(4,3,1)-\text{nc} \;\text{evFlag}(9,4,1)+32 \;\text{evFlag}(4,3,1)+2 \;\text{evFlag}(10,4,1)-64 \;\text{nc}^2+8 \;\text{nc} \;\text{zz14}+32 \;\text{nc}+128\right),\text{zz44}\to \frac{1}{4 \;\text{nc}}\left(\text{nc}^2 (-\text{evFlag}(10,3,1))-8 \;\text{nc} \;\text{evFlag}(4,3,1)-8 \;\text{nc} \;\text{evFlag}(5,3,1)-\text{nc} \;\text{evFlag}(9,3,1)+16 \;\text{evFlag}(4,3,1)+16 \;\text{evFlag}(5,3,1)+2 \;\text{evFlag}(10,3,1)-160 \;\text{nc}^2+8 \;\text{nc} \;\text{zz14}-64 \;\text{nc}+128\right)\right\}$$

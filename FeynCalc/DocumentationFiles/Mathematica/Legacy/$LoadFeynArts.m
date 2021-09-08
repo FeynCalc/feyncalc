@@ -4,11 +4,11 @@
 
 
 (* ::Section:: *)
-(* $LoadFeynArts*)
+(*$LoadFeynArts*)
 
 
 (* ::Text:: *)
-(*`$LoadFeynArts` is equivalent to `$LoadAddOns={"FeynArts"}`.*)
+(*`$LoadFeynArts` is a legacy switch for loading FeynArts. The modern way to achieve the same effect is to evaluate `$LoadAddOns={"FeynArts"}` before loading FeynCalc.*)
 
 
 (* ::Subsection:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[$LoadAddOns]($LoadAddOns).*)
+(*[Overview](Extra/FeynCalc.md), [$LoadAddOns]($LoadAddOns.md).*)
 
 
 (* ::Subsection:: *)

@@ -4,7 +4,7 @@ CSIS[p]can be used as input for 3-dimensional $\sigma ^ip^i$ with 3-dimensional 
 
 ### See also
 
-[PauliSigma](PauliSigma).
+[Overview](Extra/FeynCalc.md), [PauliSigma](PauliSigma.md).
 
 ### Examples
 

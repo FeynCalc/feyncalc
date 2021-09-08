@@ -4,7 +4,7 @@
 
 ### See also
 
-[SumS](SumS), [SumT](SumT).
+[Overview](Extra/FeynCalc.md), [SumS](SumS.md), [SumT](SumT.md).
 
 ### Examples
 
@@ -12,19 +12,19 @@
 SumP[1, m - 1]
 ```
 
-$$S_1^'(m-1)$$
+$$S_1^{'(m-1)}$$
 
 ```mathematica
 SumP[2, m - 1]
 ```
 
-$$S_2^'(m-1)$$
+$$S_2^{'(m-1)}$$
 
 ```mathematica
 SumP[1, m]
 ```
 
-$$S_1^'(m)$$
+$$S_1^{'(m)}$$
 
 ```mathematica
 SumP[1, 4]

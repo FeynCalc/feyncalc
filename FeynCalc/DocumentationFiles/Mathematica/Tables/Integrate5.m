@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(*Integrate5 *)
+(*Integrate5*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Integrate2](Integrate2), [Integrate4](Integrate4).*)
+(*[Overview](Extra/FeynCalc.md), [Integrate2](Integrate2.md), [Integrate4](Integrate4.md).*)
 
 
 (* ::Subsection:: *)

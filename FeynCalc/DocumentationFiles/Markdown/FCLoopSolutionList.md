@@ -4,7 +4,7 @@
 
 ### See also
 
-[FCLoopCanonicalize](FCLoopCanonicalize).
+[Overview](Extra/FeynCalc.md), [FCLoopCanonicalize](FCLoopCanonicalize.md).
 
 ### Examples
 

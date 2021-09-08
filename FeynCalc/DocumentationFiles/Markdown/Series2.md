@@ -1,4 +1,4 @@
-## Series2 
+## Series2
 
 `Series2` performs a series expansion around `0`. `Series2` is (up to the `Gamma`-bug in Mathematica versions smaller than 5.0) equivalent to `Series`, except that it applies `Normal` on the result and has an option `FinalSubstitutions`.
 
@@ -6,7 +6,7 @@
 
 ### See also
 
-[Series3](Series3).
+[Overview](Extra/FeynCalc.md), [Series3](Series3.md).
 
 ### Examples
 
@@ -67,6 +67,6 @@ Series2[%, Epsilon, 3]
 
 $$\, _2F_1(1,\varepsilon ;2 \varepsilon +1;x)$$
 
-$$-2 \varepsilon ^2 \zeta (2)+2 \varepsilon ^3 \text{Li}_3(1-x)+2 \varepsilon ^2 \text{Li}_2(1-x)-4 \varepsilon ^3 \text{Li}_2(1-x) \log (x)-4 \varepsilon ^3 S_{12}(1-x)-2 \varepsilon ^3 \zeta (2) \log (1-x)+4 \varepsilon ^3 \zeta (2) \log (x)-\frac{1}{6} \varepsilon ^3 \log ^3(1-x)-2 \varepsilon ^3 \log (1-x) \log ^2(x)+\varepsilon ^3 \log ^2(1-x) \log (x)-\frac{1}{2} \varepsilon ^2 \log ^2(1-x)+2 \varepsilon ^2 \log (1-x) \log (x)-\varepsilon  \log (1-x)+2 \varepsilon ^3 \zeta (3)+1$$
+$$-2 \varepsilon ^2 \zeta (2)+2 \varepsilon ^3 \;\text{Li}_3(1-x)+2 \varepsilon ^2 \;\text{Li}_2(1-x)-4 \varepsilon ^3 \;\text{Li}_2(1-x) \log (x)-4 \varepsilon ^3 S_{12}(1-x)-2 \varepsilon ^3 \zeta (2) \log (1-x)+4 \varepsilon ^3 \zeta (2) \log (x)-\frac{1}{6} \varepsilon ^3 \log ^3(1-x)-2 \varepsilon ^3 \log (1-x) \log ^2(x)+\varepsilon ^3 \log ^2(1-x) \log (x)-\frac{1}{2} \varepsilon ^2 \log ^2(1-x)+2 \varepsilon ^2 \log (1-x) \log (x)-\varepsilon  \log (1-x)+2 \varepsilon ^3 \zeta (3)+1$$
 
 There are over 100 more special expansions of ${}_2 F_1$ tabulated in `Series2.m`. The interested user can consult the source code (search for HYPERLIST).

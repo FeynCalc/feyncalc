@@ -2,13 +2,13 @@
 
 `Contract[expr]` contracts pairs of Lorentz or Cartesian indices of metric tensors, vectors and (depending on the value of the option `EpsContract`) of Levi-Civita tensors in `expr`.
 
-For the contraction of Dirac matrices with each other use `DiracSimplify`.
+For contractions of Dirac matrices with each other use `DiracSimplify`.
 
-`Contract[exp1, exp2]` contracts `(exp1*exp2)`, where `exp1` and `exp2` may be larger products of sums of metric tensors and 4-vectors.
+`Contract[exp1, exp2]` contracts `(exp1*exp2)`, where `exp1` and `exp2` may be larger products of sums of metric tensors and 4-vectors. This can be also useful when evaluating polarization sums, where `exp2` should be the product (or expanded sum) of the polarization sums for the vector bosons.
 
 ### See also
 
-[Pair](Pair), [CartesianPair](CartesianPair), [DiracSimplify](DiracSimplify), [MomentumCombine](MomentumCombine).
+[Overview](Extra/FeynCalc.md), [Pair](Pair.md), [CartesianPair](CartesianPair.md), [DiracSimplify](DiracSimplify.md), [MomentumCombine](MomentumCombine.md).
 
 ### Examples
 
@@ -48,7 +48,7 @@ MTD[\[Mu], \[Nu]]  MTD[\[Mu], \[Nu]]
 Contract[%]
 ```
 
-$$g^{\mu \nu }^2$$
+$$(g^{\mu \nu})^2$$
 
 $$D$$
 
@@ -140,7 +140,7 @@ KD[i, j]^2
 Contract[%]
 ```
 
-$$\bar{\delta }^{ij}^2$$
+$$(\bar{\delta}^{ij})^2$$
 
 $$3$$
 

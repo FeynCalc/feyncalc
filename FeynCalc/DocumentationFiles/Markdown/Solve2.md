@@ -1,10 +1,12 @@
-## Solve2 
+## Solve2
 
-`Solve2` is equivalent to `Solve`, except that it works only for linear equations (and returns just a list) and accepts the options `Factoring` and `FinalSubstitutions`. `Solve2` uses the "high school algorithm" and factors intermediate results. Therefore it can be drastically more useful than `Solve`.
+`Solve2` is equivalent to `Solve`, except that it works only for linear equations (and returns just a list) and accepts the options `Factoring` and `FinalSubstitutions`.
+
+`Solve2` uses the "high school algorithm" and factors intermediate results. Therefore it can be drastically more useful than `Solve`.
 
 ### See also
 
-[Solve3](Solve3).
+[Overview](Extra/FeynCalc.md), [Solve3](Solve3.md).
 
 ### Examples
 

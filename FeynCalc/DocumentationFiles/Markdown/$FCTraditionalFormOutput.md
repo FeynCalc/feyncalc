@@ -1,4 +1,4 @@
-##  $FCTraditionalFormOutput
+## $FCTraditionalFormOutput
 
 The Boolean setting of `$FCTraditionalFormOutput` determines which output format type should be used in the notebook front end when FeynCalc is loaded. If set to `True`, FeynCalc will activate the `TraditionalForm` output. Otherwise, the `StandardForm` output (Mathematica's default) will be used.
 
@@ -8,6 +8,6 @@ If unsure, it is recommended to set `$FCTraditionalFormOutput` to `True`, so tha
 
 ### See also
 
-[FCEnableTraditionalFormOutput](FCEnableTraditionalFormOutput), [FCDisableTraditionalFormOutput](FCDisableTraditionalFormOutput).
+[Overview](Extra/FeynCalc.md), [FCEnableTraditionalFormOutput](FCEnableTraditionalFormOutput.md), [FCDisableTraditionalFormOutput](FCDisableTraditionalFormOutput.md).
 
 ### Examples

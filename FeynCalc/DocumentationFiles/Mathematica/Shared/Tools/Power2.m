@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(*Power2 *)
+(*Power2*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[PowerFactor](PowerFactor).*)
+(*[Overview](Extra/FeynCalc.md), [PowerFactor](PowerFactor.md).*)
 
 
 (* ::Subsection:: *)

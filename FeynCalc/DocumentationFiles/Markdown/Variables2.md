@@ -1,4 +1,4 @@
-## Variables2 
+## Variables2
 
 `Variables2[expr]` is like `Variables`, but it also works on rules and equalities as well as lists thereof.
 
@@ -6,7 +6,7 @@
 
 ### See also
 
-[Cases2](Cases2).
+[Overview](Extra/FeynCalc.md), [Cases2](Cases2.md).
 
 ### Examples
 

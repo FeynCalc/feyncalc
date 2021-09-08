@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(*Tr2 *)
+(*Tr2*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Tr](Tr), [Tf](Tf), [DiracTrace](DiracTrace), [DiracSimplify](DiracSimplify), [SUNTrace](SUNTrace).*)
+(*[Overview](Extra/FeynCalc.md), [Tr](Tr.md), [Tf](Tf.md), [DiracTrace](DiracTrace.md), [DiracSimplify](DiracSimplify.md), [SUNTrace](SUNTrace.md).*)
 
 
 (* ::Subsection:: *)

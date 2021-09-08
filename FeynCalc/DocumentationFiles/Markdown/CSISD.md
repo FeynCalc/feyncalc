@@ -4,7 +4,7 @@ CSISD[p] can be used as input for D-1-dimensional $\sigma ^ip^i$ with D-1-dimens
 
 ### See also
 
-[PauliSigma](PauliSigma).
+[Overview](Extra/FeynCalc.md), [PauliSigma](PauliSigma.md).
 
 ### Examples
 

@@ -6,7 +6,7 @@
 
 ### See also
 
-[GhostPropagator](GhostPropagator), [GluonPropagator](GluonPropagator), [GluonGhostVertex](GluonGhostVertex).
+[Overview](Extra/FeynCalc.md), [GhostPropagator](GhostPropagator.md), [GluonPropagator](GluonPropagator.md), [GluonGhostVertex](GluonGhostVertex.md).
 
 ### Examples
 
@@ -26,7 +26,7 @@ $$\frac{i}{p^2}$$
 GHP[p, c1, c2]
 ```
 
-$$\Pi _{\text{c1}\text{c2}}(p)$$
+$$\Pi _{\text{c1}\;\text{c2}}(p)$$
 
 ```mathematica
 StandardForm[FCE[GHP[-k, c3, c4] // Explicit]]

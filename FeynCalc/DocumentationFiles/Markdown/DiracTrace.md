@@ -4,7 +4,7 @@
 
 ### See also
 
-[Contract](Contract), [DiracEquation](DiracEquation), [DiracGamma](DiracGamma), [DiracGammaExpand](DiracGammaExpand), [DiracTrick](DiracTrick), [FCGetDiracGammaScheme](FCGetDiracGammaScheme), [FCSetDiracGammaScheme](FCSetDiracGammaScheme).
+[Overview](Extra/FeynCalc.md), [Contract](Contract.md), [DiracEquation](DiracEquation.md), [DiracGamma](DiracGamma.md), [DiracGammaExpand](DiracGammaExpand.md), [DiracTrick](DiracTrick.md), [FCGetDiracGammaScheme](FCGetDiracGammaScheme.md), [FCSetDiracGammaScheme](FCSetDiracGammaScheme.md).
 
 ### Examples
 
@@ -105,7 +105,7 @@ DiracSimplify[%]
 
 $$\text{tr}\left(\gamma ^{\mu }.\gamma ^{\nu }.\gamma ^{\rho }.\bar{\gamma }^5.\gamma ^{\sigma }.\gamma ^{\delta }.\gamma ^{\tau }.\bar{\gamma }^7\right)$$
 
-$$-\frac{1}{2} \text{tr}\left(\gamma ^{\mu }.\gamma ^{\nu }.\gamma ^{\rho }.\gamma ^{\sigma }.\gamma ^{\delta }.\gamma ^{\tau }.\bar{\gamma }^5\right)+2 g^{\delta \tau } g^{\mu \sigma } g^{\nu \rho }+2 g^{\delta \sigma } g^{\mu \tau } g^{\nu \rho }-2 g^{\delta \tau } g^{\mu \rho } g^{\nu \sigma }-2 g^{\delta \rho } g^{\mu \tau } g^{\nu \sigma }-2 g^{\delta \sigma } g^{\mu \rho } g^{\nu \tau }+2 g^{\delta \rho } g^{\mu \sigma } g^{\nu \tau }+2 g^{\delta \tau } g^{\mu \nu } g^{\rho \sigma }+2 g^{\delta \nu } g^{\mu \tau } g^{\rho \sigma }-2 g^{\delta \mu } g^{\nu \tau } g^{\rho \sigma }+2 g^{\delta \sigma } g^{\mu \nu } g^{\rho \tau }-2 g^{\delta \nu } g^{\mu \sigma } g^{\rho \tau }+2 g^{\delta \mu } g^{\nu \sigma } g^{\rho \tau }-2 g^{\delta \rho } g^{\mu \nu } g^{\sigma \tau }+2 g^{\delta \nu } g^{\mu \rho } g^{\sigma \tau }-2 g^{\delta \mu } g^{\nu \rho } g^{\sigma \tau }$$
+$$-\frac{1}{2} \;\text{tr}\left(\gamma ^{\mu }.\gamma ^{\nu }.\gamma ^{\rho }.\gamma ^{\sigma }.\gamma ^{\delta }.\gamma ^{\tau }.\bar{\gamma }^5\right)+2 g^{\delta \tau } g^{\mu \sigma } g^{\nu \rho }+2 g^{\delta \sigma } g^{\mu \tau } g^{\nu \rho }-2 g^{\delta \tau } g^{\mu \rho } g^{\nu \sigma }-2 g^{\delta \rho } g^{\mu \tau } g^{\nu \sigma }-2 g^{\delta \sigma } g^{\mu \rho } g^{\nu \tau }+2 g^{\delta \rho } g^{\mu \sigma } g^{\nu \tau }+2 g^{\delta \tau } g^{\mu \nu } g^{\rho \sigma }+2 g^{\delta \nu } g^{\mu \tau } g^{\rho \sigma }-2 g^{\delta \mu } g^{\nu \tau } g^{\rho \sigma }+2 g^{\delta \sigma } g^{\mu \nu } g^{\rho \tau }-2 g^{\delta \nu } g^{\mu \sigma } g^{\rho \tau }+2 g^{\delta \mu } g^{\nu \sigma } g^{\rho \tau }-2 g^{\delta \rho } g^{\mu \nu } g^{\sigma \tau }+2 g^{\delta \nu } g^{\mu \rho } g^{\sigma \tau }-2 g^{\delta \mu } g^{\nu \rho } g^{\sigma \tau }$$
 
 Over the years people invented many different schemes to deal with $\gamma^5$ in dimensional regularization. Currently, only the t'Hooft-Veltman-Breitenlohner-Maison  (BMHV) prescription is fully supported in FeynCalc.
 
@@ -128,9 +128,9 @@ DiracSimplify[%]
 
 $$\text{tr}\left(\left(m_e-\gamma \cdot q\right).\bar{\gamma }^{\nu }.\left(\bar{\gamma }\cdot \overline{p}+m_e-\gamma \cdot q\right).\bar{\gamma }^{\mu }\right)$$
 
-$$\text{}\text{DiracTrace}\text{::}\text{mixmsg}: \text{Expressions that mix D-, 4- and D-4-dimensional quantities are forbidden in Dirac matrix chains unless you are using the t'Hooft-Veltman scheme. For every other scheme, please recheck your input expressions and ensure that all matrices, spinors and tensors are purely D-dimensional. You might want to use FCGetDimensions[exp] to find the offending terms and fix them by hand or ChangeDimension[exp,D] to convert the whole expression to D-dimensions. If you explicitly intend to use the t'Hooft-Veltman scheme, please activate it via FCSetDiracGammaScheme[{``}BMHV{''}].}$$
+![1qthu1dh30y15](img/1qthu1dh30y15.svg)
 
-$$\text{$\$$Aborted}$$
+$$\text{\$Aborted}$$
 
 ```mathematica
 FCSetDiracGammaScheme["BMHV"];
@@ -157,13 +157,13 @@ FCSetDiracGammaScheme["BMHV"];
 AbsoluteTiming[r1 = DiracSimplify[DiracTrace[GAD[\[Mu], \[Nu], \[Rho]] . GA[5] . GAD[\[Sigma], \[Delta], \[Tau]] . GA[7]]];]
 ```
 
-$$\{0.308381,\text{Null}\}$$
+$$\{0.29598,\text{Null}\}$$
 
 ```mathematica
 AbsoluteTiming[r2 = DiracSimplify[DiracTrace[GAD[\[Mu], \[Nu], \[Rho]] . GA[5] . GAD[\[Sigma], \[Delta], \[Tau]] . GA[7], West -> False]];]
 ```
 
-$$\{3.62827,\text{Null}\}$$
+$$\{3.65841,\text{Null}\}$$
 
 ```mathematica
 r1 === r2

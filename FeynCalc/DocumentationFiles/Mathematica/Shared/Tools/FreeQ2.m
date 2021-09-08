@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(*FreeQ2 *)
+(*FreeQ2*)
 
 
 (* ::Text:: *)
@@ -20,7 +20,7 @@
 
 
 (* ::Text:: *)
-(*[SelectFree](SelectFree), [SelectNotFree](SelectNotFree).*)
+(*[Overview](Extra/FeynCalc.md), [SelectFree](SelectFree.md), [SelectNotFree](SelectNotFree.md).*)
 
 
 (* ::Subsection:: *)

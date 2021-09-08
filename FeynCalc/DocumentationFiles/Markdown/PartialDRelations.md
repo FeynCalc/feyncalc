@@ -4,7 +4,7 @@
 
 ### See also
 
-[FCPartialD](FCPartialD), [ExpandPartialD](ExpandPartialD), [LeftPartialD](LeftPartialD), [LeftRightPartialD](LeftRightPartialD), [RightPartialD](RightPartialD).
+[Overview](Extra/FeynCalc.md), [FCPartialD](FCPartialD.md), [ExpandPartialD](ExpandPartialD.md), [LeftPartialD](LeftPartialD.md), [LeftRightPartialD](LeftRightPartialD.md), [RightPartialD](RightPartialD.md).
 
 ### Examples
 

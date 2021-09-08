@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[FCSymmetrize](FCSymmetrize).*)
+(*[Overview](Extra/FeynCalc.md), [FCSymmetrize](FCSymmetrize.md).*)
 
 
 (* ::Subsection:: *)

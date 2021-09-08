@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* $MU*)
+(*$MU*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Chisholm](Chisholm), [Contract](Contract), [DiracSimplify](DiracSimplify).*)
+(*[Overview](Extra/FeynCalc.md), [Chisholm](Chisholm.md), [Contract](Contract.md), [DiracSimplify](DiracSimplify.md).*)
 
 
 (* ::Subsection:: *)

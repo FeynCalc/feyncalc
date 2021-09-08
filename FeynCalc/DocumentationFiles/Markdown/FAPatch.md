@@ -4,4 +4,6 @@ FAPatch[] is an auxiliary function that patches FeynArts to be compatible with F
 
 ### See also
 
+[Overview](Extra/FeynCalc.md)
+
 ### Examples

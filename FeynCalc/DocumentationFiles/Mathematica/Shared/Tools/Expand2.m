@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(*Expand2 *)
+(*Expand2*)
 
 
 (* ::Text:: *)
@@ -20,7 +20,7 @@
 
 
 (* ::Text:: *)
-(*[ExpandAll2](ExpandAll2).*)
+(*[Overview](Extra/FeynCalc.md), [ExpandAll2](ExpandAll2.md).*)
 
 
 (* ::Subsection:: *)

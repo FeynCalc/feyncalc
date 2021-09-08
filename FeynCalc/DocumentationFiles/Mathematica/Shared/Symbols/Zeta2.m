@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(*Zeta2 *)
+(*Zeta2*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[SimplifyPolyLog](SimplifyPolyLog).*)
+(*[Overview](Extra/FeynCalc.md), [SimplifyPolyLog](SimplifyPolyLog.md).*)
 
 
 (* ::Subsection:: *)

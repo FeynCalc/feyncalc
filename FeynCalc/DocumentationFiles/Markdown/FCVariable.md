@@ -4,7 +4,7 @@
 
 ### See also
 
-[ExpandScalarProduct](ExpandScalarProduct), [DataType](DataType).
+[Overview](Extra/FeynCalc.md), [ExpandScalarProduct](ExpandScalarProduct.md), [DataType](DataType.md).
 
 ### Examples
 
@@ -14,7 +14,7 @@ If we want to introduce constants `c1` and `c2`, the naive way doesn't lead to t
 SPD[c1 p1 + c2 p2, q] // ExpandScalarProduct
 ```
 
-$$\text{c1} \text{p1}\cdot q+\text{c2} \text{p2}\cdot q$$
+$$\text{c1} \;\text{p1}\cdot q+\text{c2} \;\text{p2}\cdot q$$
 
 The solution is to declare `c1` and `c2` as `FCVariable` so that FeynCalc can distinguish them from the 4-momenta
 
@@ -33,7 +33,7 @@ FCI[SFAD[{q + c1 p1, m}]]
 % // StandardForm
 ```
 
-$$\frac{1}{((\text{c1} \text{p1}+q)^2-m+i \eta )}$$
+$$\frac{1}{((\text{c1} \;\text{p1}+q)^2-m+i \eta )}$$
 
 ```
 (*FeynAmpDenominator[StandardPropagatorDenominator[c1 Momentum[p1, D] + Momentum[q, D], 0, -m, {1, 1}]]*)

@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[PCHN](PCHN), [PauliIndex](PauliIndex), [PauliIndexDelta](PauliIndexDelta), [PauliChainJoin](PauliChainJoin), [PauliChainExpand](PauliChainExpand), [PauliChainFactor](PauliChainFactor).*)
+(*[Overview](Extra/FeynCalc.md), [PCHN](PCHN.md), [PauliIndex](PauliIndex.md), [PauliIndexDelta](PauliIndexDelta.md), [PauliChainJoin](PauliChainJoin.md), [PauliChainExpand](PauliChainExpand.md), [PauliChainFactor](PauliChainFactor.md).*)
 
 
 (* ::Subsection:: *)
@@ -24,7 +24,7 @@
 
 
 (* ::Text:: *)
-(*A standalone Pauli matrix*)
+(*A standalone Pauli matrix $\sigma^i_{jk}$*)
 
 
 PauliChain[PauliSigma[CartesianIndex[a]],PauliIndex[i],PauliIndex[j]]

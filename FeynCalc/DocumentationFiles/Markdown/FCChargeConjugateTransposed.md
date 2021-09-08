@@ -1,12 +1,12 @@
 ## FCChargeConjugateTransposed
 
-`FCChargeConjugateTransposed[exp]` represents the application of the charge conjugation operator to the transposed of `exp`, i.e. $C^{-1} \text{exp}^T C$. Here `exp` is understood to be a single Dirac matrix or a chain thereof. The option setting `Explicit` determines whether the explicit result is returned or whether it is left in the unevaluated form.The unevaluated form will be also maintained if the function does not know how to obtain $C^{-1} \text{exp}^T C$ from the given exp.
+`FCChargeConjugateTransposed[exp]` represents the application of the charge conjugation operator to the transposed of `exp`, i.e. $C^{-1} \;\text{exp}^T C$. Here `exp` is understood to be a single Dirac matrix or a chain thereof. The option setting `Explicit` determines whether the explicit result is returned or whether it is left in the unevaluated form.The unevaluated form will be also maintained if the function does not know how to obtain $C^{-1} \;\text{exp}^T C$ from the given exp.
 
 The shortcut for `FCChargeConjugateTransposed` is `FCCCT`.
 
 ### See also
 
-[SpinorChainTranspose](SpinorChainTranspose), [DiracGamma](DiracGamma), [Spinor](Spinor).
+[Overview](Extra/FeynCalc.md), [SpinorChainTranspose](SpinorChainTranspose.md), [DiracGamma](DiracGamma.md), [Spinor](Spinor.md).
 
 ### Examples
 

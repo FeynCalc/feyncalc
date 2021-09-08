@@ -4,7 +4,7 @@
 
 ### See also
 
-[ScalarProduct](ScalarProduct).
+[Overview](Extra/FeynCalc.md), [ScalarProduct](ScalarProduct.md).
 
 ### Examples
 
@@ -14,7 +14,7 @@ ScalarProduct[m, n, Dimension -> d]
 % // StandardForm
 ```
 
-$$\{\text{Dimension}\to 4,\text{FeynCalcInternal}\to \text{True},\text{SetDimensions}\to \{4,D\}\}$$
+$$\{\text{Dimension}\to 4,\text{FeynCalcInternal}\to \;\text{True},\text{SetDimensions}\to \{4,D\}\}$$
 
 $$m\cdot n$$
 

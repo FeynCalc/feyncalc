@@ -1,14 +1,16 @@
  
 (* ::Section:: *)
-(*DB1 *)
+(*DB1*)
 (* ::Text:: *)
 (*`DB1[p2, m1^2, m2^2]` is the derivative of `B1[p2,m1^2,m2^2]` with respect to `p2`.*)
 
 
 (* ::Subsection:: *)
 (*See also*)
+
+
 (* ::Text:: *)
-(*[B1](B1).*)
+(*[Overview](Extra/FeynCalc.md), [B1](B1.md).*)
 
 
 

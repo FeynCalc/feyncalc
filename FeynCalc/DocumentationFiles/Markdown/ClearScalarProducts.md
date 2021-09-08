@@ -6,7 +6,7 @@ The shortcut `ClearScalarProducts` is deprecated, please use `FCClearScalarProdu
 
 ### See also
 
-[FCClearScalarProducts](FCClearScalarProducts).
+[Overview](Extra/FeynCalc.md), [FCClearScalarProducts](FCClearScalarProducts.md).
 
 ### Examples
 

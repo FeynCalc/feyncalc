@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* $Abbreviations*)
+(*$Abbreviations*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Abbreviation](Abbreviation), [OneLoop](OneLoop), [PaVeReduce](PaVeReduce), [WriteOut](WriteOut), [WriteOutPaVe](WriteOutPaVe).*)
+(*[Overview](Extra/FeynCalc.md), [Abbreviation](Abbreviation.md), [OneLoop](OneLoop.md), [PaVeReduce](PaVeReduce.md), [WriteOut](WriteOut.md), [WriteOutPaVe](WriteOutPaVe.md).*)
 
 
 (* ::Subsection:: *)

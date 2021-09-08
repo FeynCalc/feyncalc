@@ -10,7 +10,7 @@
 
 
 (* ::Text:: *)
-(*[FCLoopRemoveNegativePropagatorPowers](FCLoopRemoveNegativePropagatorPowers).*)
+(*[Overview](Extra/FeynCalc.md), [FCLoopRemoveNegativePropagatorPowers](FCLoopRemoveNegativePropagatorPowers.md).*)
 
 
 (* ::Subsection:: *)

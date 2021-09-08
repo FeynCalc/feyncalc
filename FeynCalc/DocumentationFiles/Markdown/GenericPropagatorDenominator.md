@@ -4,7 +4,7 @@
 
 ### See also
 
-[PropagatorDenominator](PropagatorDenominator), [StandardPropagatorDenominator](StandardPropagatorDenominator), [CartesianPropagatorDenominator](CartesianPropagatorDenominator).
+[Overview](Extra/FeynCalc.md), [PropagatorDenominator](PropagatorDenominator.md), [StandardPropagatorDenominator](StandardPropagatorDenominator.md), [CartesianPropagatorDenominator](CartesianPropagatorDenominator.md).
 
 Using `n` one can specify the power of the propagator, while `s` (`+1` or `-1`) fixes the sign of `I*eta`. `GenericPropagatorDenominator` is an internal object. To enter such propagators in FeynCalc you should use `GFAD`.
 
@@ -22,4 +22,4 @@ FeynAmpDenominator[GenericPropagatorDenominator[2 z Pair[Momentum[p1, D],
      Momentum[p2, D]], {1, 1}]]
 ```
 
-$$\frac{1}{(2 z (\text{p1}\cdot Q) (\text{p2}\cdot Q)-\text{p1}\cdot \text{p2}+i \eta )}$$
+$$\frac{1}{(2 z (\text{p1}\cdot Q) (\text{p2}\cdot Q)-\text{p1}\cdot \;\text{p2}+i \eta )}$$

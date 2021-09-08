@@ -4,7 +4,7 @@
 
 ### See also
 
-[FCLoopGraphPlot](FCLoopGraphPlot).
+[Overview](Extra/FeynCalc.md), [FCLoopGraphPlot](FCLoopGraphPlot.md).
 
 ### Examples
 
@@ -15,9 +15,9 @@ FCLoopAddEdgeTags[FCLoopIntegralToGraph[FAD[p, p - k], {p}][[1 ;; 2]]]
 GraphPlot[%]
 ```
 
-$$\{-3\unicode{f3d4}2,-1\unicode{f3d4}1,1\unicode{f3d4}2,1\unicode{f3d4}2\}$$
+$$\{-3\leftrightarrow 2,-1\leftrightarrow 1,1\leftrightarrow 2,1\leftrightarrow 2\}$$
 
-$$![0z92umyme84rx](img/0z92umyme84rx.svg)$$
+![0z92umyme84rx](img/0z92umyme84rx.svg)
 
 If you just want to plot the obtained graph, it is easier to process the output of `FCLoopIntegralToGraph` directly with `FCLoopGraphPlot`, which internally uses `FCLoopAddEdgeTags`.
 

@@ -4,6 +4,6 @@ Transversality is an option for `Polarization` and `PolarizationVector`. Setting
 
 ### See also
 
-[Polarization](Polarization), [PolarizationVector](PolarizationVector).
+[Overview](Extra/FeynCalc.md), [Polarization](Polarization.md), [PolarizationVector](PolarizationVector.md).
 
 ### Examples

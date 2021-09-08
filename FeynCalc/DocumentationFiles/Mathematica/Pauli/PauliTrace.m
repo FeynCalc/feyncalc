@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[PauliSimplify](PauliSimplify).*)
+(*[Overview](Extra/FeynCalc.md), [PauliSimplify](PauliSimplify.md).*)
 
 
 (* ::Subsection:: *)

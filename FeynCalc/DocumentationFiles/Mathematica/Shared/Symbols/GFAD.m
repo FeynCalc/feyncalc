@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`GFAD[{{{x, s}, n}, ...]` denotes a generic propagator given by $\frac{1}{[x + s i \eta]^n$, where `x` can be an arbitrary expression. For brevity one can also use shorter forms such as `GFAD[{x, n}, ...]`, `GFAD[{x}, ...]` or `GFAD[x, ...]`.*)
+(*`GFAD[{{{x, s}, n}, ...]` denotes a generic propagator given by $\frac{1}{[x + s i \eta]^n}$, where `x` can be an arbitrary expression. For brevity one can also use shorter forms such as `GFAD[{x, n}, ...]`, `GFAD[{x}, ...]` or `GFAD[x, ...]`.*)
 
 
 (* ::Text:: *)
@@ -24,7 +24,7 @@
 
 
 (* ::Text:: *)
-(*[FAD](FAD), [SFAD](SFAD), [CFAD](CFAD).*)
+(*[Overview](Extra/FeynCalc.md), [FAD](FAD.md), [SFAD](SFAD.md), [CFAD](CFAD.md).*)
 
 
 (* ::Subsection:: *)

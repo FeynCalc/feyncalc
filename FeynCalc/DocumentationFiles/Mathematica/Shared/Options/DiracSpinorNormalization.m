@@ -28,7 +28,7 @@
 
 
 (* ::Text:: *)
-(*[DiracSimplify](DiracSimplify), [SpinorChainEvaluate](SpinorChainEvaluate).*)
+(*[Overview](Extra/FeynCalc.md), [DiracSimplify](DiracSimplify.md), [SpinorChainEvaluate](SpinorChainEvaluate.md).*)
 
 
 (* ::Subsection:: *)

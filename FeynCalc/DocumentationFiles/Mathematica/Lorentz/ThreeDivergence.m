@@ -8,11 +8,15 @@
 
 
 (* ::Text:: *)
-(*`ThreeDivergence[exp, CV[p, i]]`  calculates the partial derivative of exp w.r.t. $p^i$.*)
+(*`ThreeDivergence[exp, CV[p, i]]`  calculates the partial derivative of `exp` w.r.t. $p^i$.*)
 
 
 (* ::Text:: *)
 (*` ThreeDivergence[exp, CV[p, i], CV[p,i], ...]` gives the multiple derivative.*)
+
+
+(* ::Text:: *)
+(*Owing to the fact that in FeynCalc dummy Cartesian index are always understood to be upper indices, applying `ThreeDivergence` to an expression is equivalent to the action of $\nabla^i = \frac{\partial}{\partial p^i}$.*)
 
 
 (* ::Subsection:: *)
@@ -20,7 +24,7 @@
 
 
 (* ::Text:: *)
-(*[FourDivergence](FourDivergence).*)
+(*[Overview](Extra/FeynCalc.md), [FourDivergence](FourDivergence.md).*)
 
 
 (* ::Subsection:: *)
@@ -35,7 +39,7 @@ CSP[p-k,q]
 ThreeDivergence[%,CV[k,i]]
 
 
-CFAD[{p,m^2}]
+CFAD[{p,m^2},p-q]
 ThreeDivergence[%,CVD[p,i]]
 
 

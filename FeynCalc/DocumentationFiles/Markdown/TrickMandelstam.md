@@ -4,7 +4,7 @@
 
 ### See also
 
-[SetMandelstam](SetMandelstam).
+[Overview](Extra/FeynCalc.md), [SetMandelstam](SetMandelstam.md).
 
 ### Examples
 

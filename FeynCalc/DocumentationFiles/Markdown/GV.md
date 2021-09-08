@@ -4,6 +4,6 @@
 
 ### See also
 
-[GluonVertex](GluonVertex).
+[Overview](Extra/FeynCalc.md), [GluonVertex](GluonVertex.md).
 
 ### Examples

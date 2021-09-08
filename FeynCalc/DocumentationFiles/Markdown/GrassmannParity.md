@@ -6,6 +6,6 @@ E.g. `DataType[F, GrassmannParity] = 1` declares `F` to be of bosonic type and `
 
 ### See also
 
-[DataType](DataType).
+[Overview](Extra/FeynCalc.md), [DataType](DataType.md).
 
 ### Examples

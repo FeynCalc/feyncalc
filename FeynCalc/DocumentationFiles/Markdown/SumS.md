@@ -12,7 +12,7 @@
 
 ### See also
 
-[SumP](SumP), [SumT](SumT).
+[Overview](Extra/FeynCalc.md), [SumP](SumP.md), [SumT](SumT.md).
 
 ### Examples
 

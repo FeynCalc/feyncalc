@@ -1,10 +1,10 @@
-## Anti5 
+## Anti5
 
 `Anti5[exp]` anticommutes all $\gamma^5$ in exp to the right. `Anti5[exp, n]` anticommutes all $\gamma^5$ $n$-times to the right. `Anti5[exp, -n]` anticommutes all $\gamma^5$ $n$-times to the left.
 
 ### See also
 
-[DiracOrder](DiracOrder), [DiracSimplify](DiracSimplify), [DiracTrick](DiracTrick).
+[Overview](Extra/FeynCalc.md), [DiracOrder](DiracOrder.md), [DiracSimplify](DiracSimplify.md), [DiracTrick](DiracTrick.md).
 
 ### Examples
 

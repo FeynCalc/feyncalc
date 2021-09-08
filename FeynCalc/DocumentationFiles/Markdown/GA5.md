@@ -1,10 +1,10 @@
-## GA5 
+## GA5
 
 `GA5` is equivalent to `DiracGamma[5]` and denotes $\gamma^5$.
 
 ### See also
 
-[DiracGamma](DiracGamma), [GA](GA), [GS](GS).
+[Overview](Extra/FeynCalc.md), [DiracGamma](DiracGamma.md), [GA](GA.md), [GS](GS.md).
 
 ### Examples
 

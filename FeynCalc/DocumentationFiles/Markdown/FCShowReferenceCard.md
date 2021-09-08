@@ -4,6 +4,8 @@
 
 ### See also
 
+[Overview](Extra/FeynCalc.md)
+
 ### Examples
 
 ```mathematica
@@ -12,7 +14,7 @@ FCShowReferenceCard[]
 
 $$\left(
 \begin{array}{c}
- \text{FeynArts} \\
+ \;\text{FeynArts} \\
 \end{array}
 \right)$$
 

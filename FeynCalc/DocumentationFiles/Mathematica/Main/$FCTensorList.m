@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* $FCTensorList*)
+(*$FCTensorList*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[FCTensor](FCTensor).*)
+(*[Overview](Extra/FeynCalc.md), [FCTensor](FCTensor.md).*)
 
 
 (* ::Subsection:: *)

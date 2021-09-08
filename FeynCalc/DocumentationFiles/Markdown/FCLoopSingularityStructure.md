@@ -10,7 +10,7 @@ The idea to search for solutions of Landau equations for the $F$-polynomial usin
 
 ### See also
 
-[FCFeynmanPrepare](FCFeynmanPrepare), [FCFeynmanParametrize](FCFeynmanParametrize)
+[Overview](Extra/FeynCalc.md), [FCFeynmanPrepare](FCFeynmanPrepare.md), [FCFeynmanParametrize](FCFeynmanParametrize.md)
 
 ### Examples
 
@@ -60,7 +60,7 @@ $$(x(2)=0\land x(1)=0)\lor p^2=0$$
 out = FCLoopSingularityStructure[FAD[p, p + q1, p + q1 + q2, p + q1 + q2 + q3], {p}, Names -> x, FinalSubstitutions -> {SPD[q1] -> 0, SPD[q2] -> 0, SPD[q3] -> 0}]
 ```
 
-$$\left\{2^{-\varepsilon -2} \Gamma (\varepsilon +2),x(1)+x(2)+x(3)+x(4),-2 (x(1) x(3) (\text{q1}\cdot \text{q2})+x(1) x(4) (\text{q1}\cdot \text{q2})+x(1) x(4) (\text{q1}\cdot \text{q3})+x(1) x(4) (\text{q2}\cdot \text{q3})+x(2) x(4) (\text{q2}\cdot \text{q3})),\{x(4) (\text{q2}\cdot \text{q3}),x(3) (\text{q1}\cdot \text{q2})+x(4) (\text{q1}\cdot \text{q2})+x(4) (\text{q1}\cdot \text{q3}),x(2) (\text{q1}\cdot \text{q2}) (\text{q2}\cdot \text{q3}),x(1) (\text{q1}\cdot \text{q3})+x(1) (\text{q2}\cdot \text{q3})+x(2) (\text{q2}\cdot \text{q3}),x(1) (\text{q1}\cdot \text{q2})\}\right\}$$
+$$\left\{2^{-\varepsilon -2} \Gamma (\varepsilon +2),x(1)+x(2)+x(3)+x(4),-2 (x(1) x(3) (\text{q1}\cdot \;\text{q2})+x(1) x(4) (\text{q1}\cdot \;\text{q2})+x(1) x(4) (\text{q1}\cdot \;\text{q3})+x(1) x(4) (\text{q2}\cdot \;\text{q3})+x(2) x(4) (\text{q2}\cdot \;\text{q3})),\{x(4) (\text{q2}\cdot \;\text{q3}),x(3) (\text{q1}\cdot \;\text{q2})+x(4) (\text{q1}\cdot \;\text{q2})+x(4) (\text{q1}\cdot \;\text{q3}),x(2) (\text{q1}\cdot \;\text{q2}) (\text{q2}\cdot \;\text{q3}),x(1) (\text{q1}\cdot \;\text{q3})+x(1) (\text{q2}\cdot \;\text{q3})+x(2) (\text{q2}\cdot \;\text{q3}),x(1) (\text{q1}\cdot \;\text{q2})\}\right\}$$
 
 As expected a 1-loop box has no overall UV-divergence
 
@@ -84,7 +84,7 @@ As far as the IR-divergences are concerned, we find a rather nontrivial set of s
 Reduce[Equal[#, 0] & /@ out[[4]]]
 ```
 
-$$(\text{q2}\cdot \text{q3}=0\land x(1)\neq 0\land \text{q1}\cdot \text{q3}=0\land \text{q1}\cdot \text{q2}=0)\lor \left(x(1)=0\land \text{q2}\cdot \text{q3}=0\land x(3)+x(4)\neq 0\land \text{q1}\cdot \text{q2}=-\frac{x(4) (\text{q1}\cdot \text{q3})}{x(3)+x(4)}\right)\lor (x(4)=0\land x(1)=0\land \text{q2}\cdot \text{q3}=0\land \text{q1}\cdot \text{q2}=0)\lor (x(4)=0\land x(2)=0\land x(1)=0\land \text{q1}\cdot \text{q2}=0)\lor (x(4)=0\land x(3)=0\land x(1)=0\land \text{q2}\cdot \text{q3}=0)\lor (x(4)=0\land x(3)=0\land x(2)=0\land x(1)=0)\lor \left(x(4)=0\land x(1)\neq 0\land \text{q1}\cdot \text{q3}=\frac{x(1) (-(\text{q2}\cdot \text{q3}))-x(2) (\text{q2}\cdot \text{q3})}{x(1)}\land \text{q1}\cdot \text{q2}=0\right)\lor (x(1)=0\land \text{q2}\cdot \text{q3}=0\land x(4)\neq 0\land \text{q1}\cdot \text{q3}=0\land \text{q1}\cdot \text{q2}=0)\lor (x(3)=-x(4)\land x(1)=0\land \text{q2}\cdot \text{q3}=0\land x(4)\neq 0\land \text{q1}\cdot \text{q3}=0)\lor (x(4)=0\land x(1)=0\land x(2)\neq 0\land \text{q2}\cdot \text{q3}=0\land \text{q1}\cdot \text{q2}=0)\lor (x(4)=0\land x(2)=0\land x(1)=0\land x(3)\neq 0\land \text{q1}\cdot \text{q2}=0)$$
+$$(\text{q2}\cdot \;\text{q3}=0\land x(1)\neq 0\land \;\text{q1}\cdot \;\text{q3}=0\land \;\text{q1}\cdot \;\text{q2}=0)\lor \left(x(1)=0\land \;\text{q2}\cdot \;\text{q3}=0\land x(3)+x(4)\neq 0\land \;\text{q1}\cdot \;\text{q2}=-\frac{x(4) (\text{q1}\cdot \;\text{q3})}{x(3)+x(4)}\right)\lor (x(4)=0\land x(1)=0\land \;\text{q2}\cdot \;\text{q3}=0\land \;\text{q1}\cdot \;\text{q2}=0)\lor (x(4)=0\land x(2)=0\land x(1)=0\land \;\text{q1}\cdot \;\text{q2}=0)\lor (x(4)=0\land x(3)=0\land x(1)=0\land \;\text{q2}\cdot \;\text{q3}=0)\lor (x(4)=0\land x(3)=0\land x(2)=0\land x(1)=0)\lor \left(x(4)=0\land x(1)\neq 0\land \;\text{q1}\cdot \;\text{q3}=\frac{x(1) (-(\text{q2}\cdot \;\text{q3}))-x(2) (\text{q2}\cdot \;\text{q3})}{x(1)}\land \;\text{q1}\cdot \;\text{q2}=0\right)\lor (x(1)=0\land \;\text{q2}\cdot \;\text{q3}=0\land x(4)\neq 0\land \;\text{q1}\cdot \;\text{q3}=0\land \;\text{q1}\cdot \;\text{q2}=0)\lor (x(3)=-x(4)\land x(1)=0\land \;\text{q2}\cdot \;\text{q3}=0\land x(4)\neq 0\land \;\text{q1}\cdot \;\text{q3}=0)\lor (x(4)=0\land x(1)=0\land x(2)\neq 0\land \;\text{q2}\cdot \;\text{q3}=0\land \;\text{q1}\cdot \;\text{q2}=0)\lor (x(4)=0\land x(2)=0\land x(1)=0\land x(3)\neq 0\land \;\text{q1}\cdot \;\text{q2}=0)$$
 
 #### A 2-loop eikonal integral with massive and massless lines
 

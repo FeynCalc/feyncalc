@@ -4,6 +4,6 @@
 
 ### See also
 
-[FeynAmp](FeynAmp).
+[Overview](Extra/FeynCalc.md), [FeynAmp](FeynAmp.md).
 
 ### Examples

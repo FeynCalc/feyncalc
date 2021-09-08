@@ -4,6 +4,6 @@ OPEIntegrate2[exp, k] does special loop (tensorial) integrations. Only the resid
 
 ### See also
 
-[OPEIntegrate](OPEIntegrate).
+[Overview](Extra/FeynCalc.md), [OPEIntegrate](OPEIntegrate.md).
 
 ### Examples

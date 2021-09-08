@@ -4,6 +4,6 @@
 
 ### See also
 
-[FermionSpinSum](FermionSpinSum).
+[Overview](Extra/FeynCalc.md), [FermionSpinSum](FermionSpinSum.md).
 
 ### Examples

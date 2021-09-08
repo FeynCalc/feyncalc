@@ -20,7 +20,7 @@
 
 
 (* ::Text:: *)
-(*[DeltaFunction](DeltaFunction), [Integrate2](Integrate2), [OPEm](OPEm), [SumS](SumS), [SumT](SumT).*)
+(*[Overview](Extra/FeynCalc.md), [DeltaFunction](DeltaFunction.md), [Integrate2](Integrate2.md), [OPEm](OPEm.md), [SumS](SumS.md), [SumT](SumT.md).*)
 
 
 (* ::Subsection:: *)
@@ -56,7 +56,12 @@ Integrate2[InverseMellin[1/OPEm,y],{y,0,1}]
 (*Below is a list of all built-in basic inverse Mellin transforms .*)
 
 
-list={1,1/(OPEm+n),1/(-OPEm+n),PolyGamma[0,OPEm],SumS[1,-1+OPEm],SumS[1,-1+OPEm]/(OPEm-1),SumS[1,-1+OPEm]/(1-OPEm),SumS[1,-1+OPEm]/(OPEm+1),SumS[1,-1+OPEm]/OPEm^2,SumS[1,-1+OPEm]/OPEm,SumS[1,-1+OPEm]^2/OPEm,SumS[2,-1+OPEm],SumS[2,-1+OPEm]/OPEm,SumS[3,-1+OPEm],SumS[1,1,-1+OPEm],SumS[1,OPEm-1]^2,SumS[1,2,-1+OPEm],SumS[2,1,-1+OPEm],SumS[1,-1+OPEm]^3,SumS[1,-1+OPEm] SumS[2,-1+OPEm],SumS[1,1,1,-1+OPEm]};
+list={1,1/(OPEm+n),1/(-OPEm+n),PolyGamma[0,OPEm],SumS[1,-1+OPEm],
+SumS[1,-1+OPEm]/(OPEm-1),SumS[1,-1+OPEm]/(1-OPEm),SumS[1,-1+OPEm]/(OPEm+1),
+SumS[1,-1+OPEm]/OPEm^2,SumS[1,-1+OPEm]/OPEm,SumS[1,-1+OPEm]^2/OPEm,
+SumS[2,-1+OPEm],SumS[2,-1+OPEm]/OPEm,SumS[3,-1+OPEm],SumS[1,1,-1+OPEm],
+SumS[1,OPEm-1]^2,SumS[1,2,-1+OPEm],SumS[2,1,-1+OPEm],SumS[1,-1+OPEm]^3,
+SumS[1,-1+OPEm] SumS[2,-1+OPEm],SumS[1,1,1,-1+OPEm]};
 
 
 im[z_]:=z->InverseMellin[z,y]

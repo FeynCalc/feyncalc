@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* $Containers*)
+(*$Containers*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[FCCheckVersion](FCCheckVersion).*)
+(*[Overview](Extra/FeynCalc.md), [FCCheckVersion](FCCheckVersion.md).*)
 
 
 (* ::Subsection:: *)

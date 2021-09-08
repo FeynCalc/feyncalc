@@ -4,6 +4,6 @@
 
 ### See also
 
-[FCFAConvert](FCFAConvert), [FCCanonicalizeDummyIndices](FCCanonicalizeDummyIndices).
+[Overview](Extra/FeynCalc.md), [FCFAConvert](FCFAConvert.md), [FCCanonicalizeDummyIndices](FCCanonicalizeDummyIndices.md).
 
 ### Examples

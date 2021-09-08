@@ -6,6 +6,8 @@
 
 ### See also
 
+[Overview](Extra/FeynCalc.md)
+
 ### Examples
 
 Typical mistake, using `Times` instead of `Dot` in noncommutative products
@@ -14,9 +16,9 @@ Typical mistake, using `Times` instead of `Dot` in noncommutative products
 FCCheckSyntax[GA[mu]*GA[nu]]
 ```
 
-$$![0ccww5ayf2juh](img/0ccww5ayf2juh.svg)$$
+![10x7yb8v4z8tt](img/10x7yb8v4z8tt.svg)
 
-$$\text{$\$$Aborted}$$
+$$\text{\$Aborted}$$
 
 Another common mistake, Einstein summation convention is violated
 
@@ -27,6 +29,6 @@ FCCheckSyntax[FV[p, \[Mu]] FV[q, \[Mu]] FV[r, \[Mu]]]
 
 ```
 
-$$![034khk6t0c7m4](img/034khk6t0c7m4.svg)$$
+![1pck0pnu8c08i](img/1pck0pnu8c08i.svg)
 
-$$\text{$\$$Aborted}$$
+$$\text{\$Aborted}$$

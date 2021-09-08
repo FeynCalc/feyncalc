@@ -1,10 +1,10 @@
-## ToDiracGamma67 
+## ToDiracGamma67
 
 `ToDiracGamma67[exp]` substitutes $\frac{1}{2} \left(1 + \gamma^5\right)$ and $\frac{1}{2}\left(1-\gamma^5\right)$ by the chirality projectors $\gamma^6$ and $\gamma^7$.
 
 ### See also
 
-[DiracSubstitute5](DiracSubstitute5), [DiracGamma](DiracGamma), [ToDiracGamma67](ToDiracGamma67).
+[Overview](Extra/FeynCalc.md), [DiracSubstitute5](DiracSubstitute5.md), [DiracGamma](DiracGamma.md), [ToDiracGamma67](ToDiracGamma67.md).
 
 ### Examples
 

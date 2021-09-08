@@ -4,7 +4,7 @@
 
 ### See also
 
-[DiracGamma](DiracGamma), [GA](GA), [DiracSimplify](DiracSimplify), [GS](GS), [DiracTrick](DiracTrick).
+[Overview](Extra/FeynCalc.md), [DiracGamma](DiracGamma.md), [GA](GA.md), [DiracSimplify](DiracSimplify.md), [GS](GS.md), [DiracTrick](DiracTrick.md).
 
 ### Examples
 
@@ -18,4 +18,4 @@ $$\left(\bar{\gamma }\cdot \overline{p}\right).\left(\bar{\gamma }\cdot \overlin
 Amputate[%, q]
 ```
 
-$$q^{\text{$\$$AL$\$$15664}(1)} \left(\bar{\gamma }\cdot \overline{p}\right).\gamma ^{\text{$\$$AL$\$$15664}(1)}$$
+$$q^{\text{\$AL\$15883}(1)} \left(\bar{\gamma }\cdot \overline{p}\right).\gamma ^{\text{\$AL\$15883}(1)}$$

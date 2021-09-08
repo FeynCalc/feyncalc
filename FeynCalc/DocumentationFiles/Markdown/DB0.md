@@ -1,10 +1,10 @@
-## DB0 
+## DB0
 
 `DB0[p2, m1^2, m2^2]` is the derivative of the two-point function `B0[p2, m1^2, m2^2]` with respect to `p2`.
 
 ### See also
 
-[B0](B0).
+[Overview](Extra/FeynCalc.md), [B0](B0.md).
 
 ### Examples
 

@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* $BreitMaison*)
+(*$BreitMaison*)
 
 
 (* ::Text:: *)
@@ -20,7 +20,7 @@
 
 
 (* ::Text:: *)
-(*[FCSetDiracGammaScheme](FCSetDiracGammaScheme), [FCGetDiracGammaScheme](FCGetDiracGammaScheme).*)
+(*[Overview](Extra/FeynCalc.md), [FCSetDiracGammaScheme](FCSetDiracGammaScheme.md), [FCGetDiracGammaScheme](FCGetDiracGammaScheme.md).*)
 
 
 (* ::Subsection:: *)

@@ -6,7 +6,7 @@ The shortcut `AlphaStrong` is deprecated, please use `SMP["alpha_s"]` instead!
 
 ### See also
 
-[SMP](SMP).
+[Overview](Extra/FeynCalc.md), [SMP](SMP.md).
 
 ### Examples
 

@@ -4,7 +4,7 @@
 
 ### See also
 
-[DiracChain](DiracChain), [DCHN](DCHN), [DiracIndex](DiracIndex), [DiracIndexDelta](DiracIndexDelta), [DIDelta](DIDelta), [DiracChainCombine](DiracChainCombine), [DiracChainExpand](DiracChainExpand), [DiracChainFactor](DiracChainFactor), [DiracChainJoin](DiracChainJoin), [FCCCT](FCCCT).
+[Overview](Extra/FeynCalc.md), [DiracChain](DiracChain.md), [DCHN](DCHN.md), [DiracIndex](DiracIndex.md), [DiracIndexDelta](DiracIndexDelta.md), [DIDelta](DIDelta.md), [DiracChainCombine](DiracChainCombine.md), [DiracChainExpand](DiracChainExpand.md), [DiracChainFactor](DiracChainFactor.md), [DiracChainJoin](DiracChainJoin.md), [FCCCT](FCCCT.md).
 
 ### Examples
 
@@ -15,9 +15,9 @@ Create a closed chain for the 1-loop electron self-energy
 res = FCFADiracChainJoin[%]
 ```
 
-$$-\frac{i \text{el}^2 g^{\text{Lor1}\text{Lor2}} \left(\gamma ^{\text{Lor1}}\right){}_{\text{Dir1}\text{Dir3}} \left(\gamma ^{\text{Lor2}}\right){}_{\text{Dir2}\text{Dir4}} (\text{me}-\gamma \cdot k)_{\text{Dir3}\text{Dir4}} (\varphi (-p,\text{me}))_{\text{Dir1}} (\varphi (q,\text{me}))_{\text{Dir2}}}{16 \pi ^4 \left(k^2-\text{me}^2\right).(k-q)^2}$$
+$$-\frac{i \;\text{el}^2 g^{\text{Lor1}\;\text{Lor2}} \left(\gamma ^{\text{Lor1}}\right){}_{\text{Dir1}\;\text{Dir3}} \left(\gamma ^{\text{Lor2}}\right){}_{\text{Dir2}\;\text{Dir4}} (\text{me}-\gamma \cdot k)_{\text{Dir3}\;\text{Dir4}} (\varphi (-p,\text{me}))_{\text{Dir1}} (\varphi (q,\text{me}))_{\text{Dir2}}}{16 \pi ^4 \left(k^2-\text{me}^2\right).(k-q)^2}$$
 
-$$-\frac{i \text{el}^2 g^{\text{Lor1}\text{Lor2}} (\varphi (q,\text{me})).\gamma ^{\text{Lor2}}.\left(-(\gamma \cdot k+\text{me}).\gamma ^{\text{Lor1}}\right).(\varphi (p,\text{me}))}{16 \pi ^4 \left(k^2-\text{me}^2\right).(k-q)^2}$$
+$$-\frac{i \;\text{el}^2 g^{\text{Lor1}\;\text{Lor2}} (\varphi (q,\text{me})).\gamma ^{\text{Lor2}}.\left(-(\gamma \cdot k+\text{me}).\gamma ^{\text{Lor1}}\right).(\varphi (p,\text{me}))}{16 \pi ^4 \left(k^2-\text{me}^2\right).(k-q)^2}$$
 
 Sometimes the ordering of the spinors is not the one wants to have. However, we can always transpose the chains to reorder the spinors as we like, which doesn't change the final result
 
@@ -25,6 +25,6 @@ Sometimes the ordering of the spinors is not the one wants to have. However, we 
 SpinorChainTranspose[res, Select -> {{Spinor[__], Spinor[__]}}]
 ```
 
-$$-\frac{i \text{el}^2 g^{\text{Lor1}\text{Lor2}} (\varphi (-p,\text{me})).\gamma ^{\text{Lor1}}.(\text{me}-\gamma \cdot k).\gamma ^{\text{Lor2}}.(\varphi (-q,\text{me}))}{16 \pi ^4 \left(k^2-\text{me}^2\right).(k-q)^2}$$
+$$-\frac{i \;\text{el}^2 g^{\text{Lor1}\;\text{Lor2}} (\varphi (-p,\text{me})).\gamma ^{\text{Lor1}}.(\text{me}-\gamma \cdot k).\gamma ^{\text{Lor2}}.(\varphi (-q,\text{me}))}{16 \pi ^4 \left(k^2-\text{me}^2\right).(k-q)^2}$$
 
 Using patterns in the `Select` option one can create very fine-grained criteria for transposing the chains.

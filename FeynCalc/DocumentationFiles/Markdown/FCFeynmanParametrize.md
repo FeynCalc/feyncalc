@@ -1,20 +1,23 @@
 ## FCFeynmanParametrize
 
-`FCFeynmanParametrize[int, {q1, q2, ...}]` introduces Feynman parameters for the multi-loop integral int. The function returns `{fpInt,pref,vars}`, 
-where `fpInt` is the integrand in Feynman parameters, `pref` is the prefactor free of Feynman parameters and `vars` is the list of integration variables.
+`FCFeynmanParametrize[int, {q1, q2, ...}]` introduces Feynman parameters for the multi-loop integral int.
+
+The function returns `{fpInt,pref,vars}`,  where `fpInt` is the integrand in Feynman parameters, `pref` is the prefactor free of Feynman parameters and `vars` is the list of integration variables.
 
 If the chosen parametrization contains a Dirac delta multiplying the integrand, it will be omitted unless the option `DiracDelta` is set to True.
 
-By default `FCFeynmanParametrize` uses normalization that is common in multi-loop calculations, i.e. $\frac{1}}{i \pi^{D/2}}$ or
-$\frac{1}}{\pi^{D/2}}$ per loop for Minkowski or Euclidean/Cartesian integrals respectively. If you want to have the standard
-$\frac{1}{(2 \pi)^D}$ normalization or yet another value, please set the option `FeynmanIntegralPrefactor` accordingly. Following values are available
+By default `FCFeynmanParametrize` uses normalization that is common in multi-loop calculations, i.e. $\frac{1}{i \pi^{D/2}}$ or $\frac{1}{\pi^{D/2}}$ per loop for Minkowski or Euclidean/Cartesian integrals respectively.
+
+If you want to have the standard $\frac{1}{(2 \pi)^D}$ normalization or yet another value, please set the option `FeynmanIntegralPrefactor` accordingly. Following values are available
 
 - "MultiLoop1" - default value explained above
 - "MultiLoop2" - like the default value but with an extra $e^{\gamma_E \frac{4-D}{2}}$ per loop
 - "Textbook" - $\frac{1}{(2 \pi)^D}$ per loop
 - "Unity" - no extra prefactor multiplying the integral measure
 
-The calculation of $D$-dimensional Minkowski integrals and $D-1$-dimensional Cartesian integrals is straightforward. To calculate a $D$-dimensional Euclidean integral (i.e. an integral defined with the Euclidean
+The calculation of $D$-dimensional Minkowski integrals and $D-1$-dimensional Cartesian integrals is straightforward.
+
+To calculate a $D$-dimensional Euclidean integral (i.e. an integral defined with the Euclidean
 metric signature $(1,1,1,1)$ you need to write it in terms of `FVD`, `SPD`, `FAD`, `SFAD` etc. and set the option `"Euclidean"` to `True`.
 
 The function can derive different representations of a loop integral. The choice of the representation is controlled by the option `Method`. Following representations are available
@@ -25,11 +28,13 @@ The function can derive different representations of a loop integral. The choice
 `FCFeynmanParametrize` can also be employed in conjunction with `FCFeynmanParameterJoin`, where one first joins suitable propagators using auxiliary Feynman
 parameters and then finally integrates out loop momenta.
 
-For a proper analysis of a loop integral one usually needs the `U` and `F` polynomials separately. Since internally `FCFeynmanParametrize` uses `FCFeynmanPrepare`, the information available from the latter is also accessible to `FCFeynmanParametrize`. By setting the option `FCFeynmanPrepare` to `True`, the output of `FCFeynmanPrepare` will be added the the output of `FCFeynmanParametrize` as the 4th list element.
+For a proper analysis of a loop integral one usually needs the `U` and `F` polynomials separately. Since internally `FCFeynmanParametrize` uses `FCFeynmanPrepare`, the information available from the latter is also accessible to `FCFeynmanParametrize`.
+
+By setting the option `FCFeynmanPrepare` to `True`, the output of `FCFeynmanPrepare` will be added the the output of `FCFeynmanParametrize` as the 4th list element.
 
 ### See also
 
-[FCFeynmanPrepare](FCFeynmanPrepare), [FCFeynmanProjectivize](FCFeynmanProjectivize), [FCFeynmanParameterJoin](FCFeynmanParameterJoin)
+[Overview](Extra/FeynCalc.md), [FCFeynmanPrepare](FCFeynmanPrepare.md), [FCFeynmanProjectivize](FCFeynmanProjectivize.md), [FCFeynmanParameterJoin](FCFeynmanParameterJoin.md)
 
 ### Examples
 
@@ -83,7 +88,7 @@ A tensor integral
 FCFeynmanParametrize[FAD[{q, m}] FAD[{q - p, m2}] FVD[q, mu] FVD[q, nu], {q}, Names -> x, FCE -> True]
 ```
 
-$$\left\{(x(1)+x(2))^{-D} \left(m^2 x(1)^2+m^2 x(1) x(2)+\text{m2}^2 x(2)^2+\text{m2}^2 x(1) x(2)-p^2 x(1) x(2)\right)^{\frac{D}{2}-2} \left(x(2)^2 \Gamma \left(2-\frac{D}{2}\right) p^{\text{mu}} p^{\text{nu}}-\frac{1}{2} \Gamma \left(1-\frac{D}{2}\right) g^{\text{mu}\text{nu}} \left(m^2 x(1)^2+m^2 x(1) x(2)+\text{m2}^2 x(2)^2+\text{m2}^2 x(1) x(2)-p^2 x(1) x(2)\right)\right),1,\{x(1),x(2)\}\right\}$$
+$$\left\{(x(1)+x(2))^{-D} \left(m^2 x(1)^2+m^2 x(1) x(2)+\text{m2}^2 x(2)^2+\text{m2}^2 x(1) x(2)-p^2 x(1) x(2)\right)^{\frac{D}{2}-2} \left(x(2)^2 \Gamma \left(2-\frac{D}{2}\right) p^{\text{mu}} p^{\text{nu}}-\frac{1}{2} \Gamma \left(1-\frac{D}{2}\right) g^{\text{mu}\;\text{nu}} \left(m^2 x(1)^2+m^2 x(1) x(2)+\text{m2}^2 x(2)^2+\text{m2}^2 x(1) x(2)-p^2 x(1) x(2)\right)\right),1,\{x(1),x(2)\}\right\}$$
 
 1-loop master formulas for Minkowski integrals (cf. Eq. 9.49b in Sterman's An introduction to QFT)
 
@@ -152,12 +157,14 @@ FCFeynmanParametrize[%, {p}, Names -> x, FCReplaceD -> {D -> 4 - 2 Epsilon}]
 
 $$\frac{1}{p^2.(p+\text{q1})^2.(p+\text{q1}+\text{q2})^2.(p+\text{q1}+\text{q2}+\text{q3})^2}$$
 
-$$\left\{(x(1)+x(2)+x(3)+x(4))^{2 \varepsilon } \left(-2 x(1) x(3) (\text{q1}\cdot \text{q2})-2 x(1) x(4) (\text{q1}\cdot \text{q2})-2 x(1) x(4) (\text{q1}\cdot \text{q3})-\text{q1}^2 x(1) x(2)-\text{q1}^2 x(1) x(3)-\text{q1}^2 x(1) x(4)-2 x(4) x(2) (\text{q2}\cdot \text{q3})-2 x(1) x(4) (\text{q2}\cdot \text{q3})-\text{q2}^2 x(3) x(2)-\text{q2}^2 x(4) x(2)-\text{q2}^2 x(1) x(3)-\text{q2}^2 x(1) x(4)-\text{q3}^2 x(4) x(2)-\text{q3}^2 x(1) x(4)-\text{q3}^2 x(3) x(4)\right)^{-\varepsilon -2},\Gamma (\varepsilon +2),\{x(1),x(2),x(3),x(4)\}\right\}$$
+$$\left\{(x(1)+x(2)+x(3)+x(4))^{2 \varepsilon } \left(-2 x(1) x(3) (\text{q1}\cdot \;\text{q2})-2 x(1) x(4) (\text{q1}\cdot \;\text{q2})-2 x(1) x(4) (\text{q1}\cdot \;\text{q3})-\text{q1}^2 x(1) x(2)-\text{q1}^2 x(1) x(3)-\text{q1}^2 x(1) x(4)-2 x(4) x(2) (\text{q2}\cdot \;\text{q3})-2 x(1) x(4) (\text{q2}\cdot \;\text{q3})-\text{q2}^2 x(3) x(2)-\text{q2}^2 x(4) x(2)-\text{q2}^2 x(1) x(3)-\text{q2}^2 x(1) x(4)-\text{q3}^2 x(4) x(2)-\text{q3}^2 x(1) x(4)-\text{q3}^2 x(3) x(4)\right)^{-\varepsilon -2},\Gamma (\varepsilon +2),\{x(1),x(2),x(3),x(4)\}\right\}$$
 
 3-loop self-energy with two massive lines
 
 ```mathematica
-SFAD[{{p1, 0}, {m^2, 1}, 1}, {{p2, 0}, {0, 1}, 1}, {{p3, 0}, {0, 1}, 1}, {{p2 + p3, 0}, {0, 1}, 1}, {{p1 - Q, 0}, {m^2, 1}, 1}, {{p2 - Q, 0}, {0, 1}, 1}, {{p2 + p3 - Q, 0}, {0, 1}, 1}, {{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]
+SFAD[{{p1, 0}, {m^2, 1}, 1}, {{p2, 0}, {0, 1}, 1}, {{p3, 0}, {0, 1}, 1}, 
+  {{p2 + p3, 0}, {0, 1}, 1}, {{p1 - Q, 0}, {m^2, 1}, 1}, {{p2 - Q, 0}, {0, 1}, 1}, 
+  {{p2 + p3 - Q, 0}, {0, 1}, 1}, {{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]
 FCFeynmanParametrize[%, {p1, p2, p3}, Names -> x, FCReplaceD -> {D -> 4 - 2 Epsilon}]
 ```
 
@@ -171,13 +178,14 @@ An example of using `FCFeynmanParametrize` together with `FCFeynmanParameterJoin
 props = {SFAD[{p1, m^2}], SFAD[{p3, m^2}], SFAD[{{0, 2 p1 . n}}], SFAD[{{0, 2 (p1 + p3) . n}}]}
 ```
 
-$$\left\{\frac{1}{(\text{p1}^2-m^2+i \eta )},\frac{1}{(\text{p3}^2-m^2+i \eta )},\frac{1}{(2 (n\cdot \text{p1})+i \eta )},\frac{1}{(2 (n\cdot (\text{p1}+\text{p3}))+i \eta )}\right\}$$
+$$\left\{\frac{1}{(\text{p1}^2-m^2+i \eta )},\frac{1}{(\text{p3}^2-m^2+i \eta )},\frac{1}{(2 (n\cdot \;\text{p1})+i \eta )},\frac{1}{(2 (n\cdot (\text{p1}+\text{p3}))+i \eta )}\right\}$$
 
 ```mathematica
-intT = FCFeynmanParameterJoin[{{props[[1]] props[[2]], 1, x}, props[[3]] props[[4]], y}, {p1, p3}]
+intT = FCFeynmanParameterJoin[{{props[[1]] props[[2]], 1, x}, 
+    props[[3]] props[[4]], y}, {p1, p3}]
 ```
 
-$$\left\{\frac{1}{(\left(-x(1) m^2-x(2) m^2+\text{p1}^2 x(1)+\text{p3}^2 x(2)\right) y(1)+2 (n\cdot \text{p1}) y(2)+(2 (n\cdot \text{p1})+2 (n\cdot \text{p3})) y(3)+i \eta )^4},6 y(1),\{x(1),x(2),y(1),y(2),y(3)\}\right\}$$
+$$\left\{\frac{1}{(\left(-x(1) m^2-x(2) m^2+\text{p1}^2 x(1)+\text{p3}^2 x(2)\right) y(1)+2 (n\cdot \;\text{p1}) y(2)+(2 (n\cdot \;\text{p1})+2 (n\cdot \;\text{p3})) y(3)+i \eta )^4},6 y(1),\{x(1),x(2),y(1),y(2),y(3)\}\right\}$$
 
 Here the Feynman parameter variables $x_i$ and $y_i$ are independent from each other, i.e. we have $\delta(1-x_1-x_2-x_3) \times \delta(1-y_1-y_2-y_3)$.
 This gives us much more freedom when exploiting the Cheng-Wu theorem.
@@ -187,13 +195,15 @@ FCFeynmanParametrize[intT[[1]], intT[[2]], {p1, p3}, Indexed -> True, FCReplaceD
   FinalSubstitutions -> {SPD[n] -> 1, m -> 1}, Variables -> intT[[3]]]
 ```
 
-$$\left\{y(1) \left(x(1) x(2) y(1)^2\right)^{3 \text{ep}-2} \left(y(1) \left(x(1) x(2)^2 y(1)^2+x(1)^2 x(2) y(1)^2+x(2) y(2)^2+x(1) y(3)^2+x(2) y(3)^2+2 x(2) y(2) y(3)\right)\right)^{-2 \text{ep}},\Gamma (2 \text{ep}),\{x(1),x(2),y(1),y(2),y(3)\}\right\}$$
+$$\left\{y(1) \left(x(1) x(2) y(1)^2\right)^{3 \;\text{ep}-2} \left(y(1) \left(x(1) x(2)^2 y(1)^2+x(1)^2 x(2) y(1)^2+x(2) y(2)^2+x(1) y(3)^2+x(2) y(3)^2+2 x(2) y(2) y(3)\right)\right)^{-2 \;\text{ep}},\Gamma (2 \;\text{ep}),\{x(1),x(2),y(1),y(2),y(3)\}\right\}$$
 
 In the case that we need `U` and `F` polynomials in addition to the normal output (e.g. for HyperInt)
 
 ```mathematica
-SFAD[{{0, 2*k1 . n}}]*SFAD[{{0, 2*k2 . n}}]*SFAD[{k1, m^2}]*SFAD[{k2, m^2}]*SFAD[{k1 - k2, m^2}]
-out = FCFeynmanParametrize[%, {k1, k2}, Names -> x, FCReplaceD -> {D -> 4 - 2 Epsilon}, FCFeynmanPrepare -> True]
+(SFAD[{{0, 2*k1 . n}}]*SFAD[{{0, 2*k2 . n}}]*SFAD[{k1, m^2}]*
+   SFAD[{k2, m^2}]*SFAD[{k1 - k2, m^2}])
+out = FCFeynmanParametrize[%, {k1, k2}, Names -> x, FCReplaceD -> {D -> 4 - 2 Epsilon}, 
+   FCFeynmanPrepare -> True]
 ```
 
 $$\frac{1}{(\text{k1}^2-m^2+i \eta ) (\text{k2}^2-m^2+i \eta ) ((\text{k1}-\text{k2})^2-m^2+i \eta ) (2 (\text{k1}\cdot n)+i \eta ) (2 (\text{k2}\cdot n)+i \eta )}$$
@@ -245,8 +255,10 @@ $$\left\{\left(-p^2 x(2) x(1)+x(1)+x(2)\right)^{-D/2},\frac{\Gamma \left(\frac{D
 2-loop self-energy with 3 massive lines and two eikonal propagators
 
 ```mathematica
-FCFeynmanParametrize[{SFAD[{ p1, m^2}], SFAD[{ p3, m^2}], SFAD[{(p3 - p1), m^2}], SFAD[{{0, 2 p1 . n}}], SFAD[{{0, 2 p3 . n}}]}, {p1, p3}, 
-  Names -> x, Method -> "Lee-Pomeransky", FCReplaceD -> {D -> 4 - 2 ep}, FinalSubstitutions -> {SPD[n] -> 1, m -> 1}]
+FCFeynmanParametrize[{SFAD[{ p1, m^2}], SFAD[{ p3, m^2}], 
+   SFAD[{(p3 - p1), m^2}], SFAD[{{0, 2 p1 . n}}], SFAD[{{0, 2 p3 . n}}]}, {p1, p3}, 
+  Names -> x, Method -> "Lee-Pomeransky", FCReplaceD -> {D -> 4 - 2 ep}, 
+  FinalSubstitutions -> {SPD[n] -> 1, m -> 1}]
 ```
 
-$$\left\{\left(x(4) x(1)^2+x(5) x(1)^2+2 x(2) x(5) x(1)+x(3) x(4)^2+x(3) x(5)^2+x(4) x(5)^2+x(2)^2 x(3)+x(3)^2 x(4)+x(3) x(4)+x(2)^2 x(5)+x(3)^2 x(5)+x(4)^2 x(5)+x(3) x(5)+3 x(3) x(4) x(5)+x(4) x(5)\right)^{\text{ep}-2},-\frac{\Gamma (2-\text{ep})}{\Gamma (1-3 \text{ep})},\{x(1),x(2),x(3),x(4),x(5)\}\right\}$$
+$$\left\{\left(x(4) x(1)^2+x(5) x(1)^2+2 x(2) x(5) x(1)+x(3) x(4)^2+x(3) x(5)^2+x(4) x(5)^2+x(2)^2 x(3)+x(3)^2 x(4)+x(3) x(4)+x(2)^2 x(5)+x(3)^2 x(5)+x(4)^2 x(5)+x(3) x(5)+3 x(3) x(4) x(5)+x(4) x(5)\right)^{\text{ep}-2},-\frac{\Gamma (2-\text{ep})}{\Gamma (1-3 \;\text{ep})},\{x(1),x(2),x(3),x(4),x(5)\}\right\}$$

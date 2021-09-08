@@ -6,7 +6,7 @@ The input can also consist of an `FCTopology` object or a list thereof.
 
 ### See also
 
-[FCLoopBasisOverdeterminedQ](FCLoopBasisOverdeterminedQ).
+[Overview](Extra/FeynCalc.md), [FCLoopBasisOverdeterminedQ](FCLoopBasisOverdeterminedQ.md).
 
 ### Examples
 
@@ -24,7 +24,7 @@ SPD[q1, l] FAD[{q1, m1}, {q1 - l + p, m}]
 FCLoopBasisIncompleteQ[%, {q1}]
 ```
 
-$$\frac{l\cdot \text{q1}}{\left(\text{q1}^2-\text{m1}^2\right).\left((-l+p+\text{q1})^2-m^2\right)}$$
+$$\frac{l\cdot \;\text{q1}}{\left(\text{q1}^2-\text{m1}^2\right).\left((-l+p+\text{q1})^2-m^2\right)}$$
 
 $$\text{False}$$
 
@@ -51,7 +51,7 @@ CSPD[q1, l] CFAD[{q1, m1}, {q1 - l + p, m}]
 FCLoopBasisIncompleteQ[%, {q1}]
 ```
 
-$$\frac{l\cdot \text{q1}}{(\text{q1}^2+\text{m1}-i \eta ).((-l+p+\text{q1})^2+m-i \eta )}$$
+$$\frac{l\cdot \;\text{q1}}{(\text{q1}^2+\text{m1}-i \eta ).((-l+p+\text{q1})^2+m-i \eta )}$$
 
 $$\text{False}$$
 

@@ -12,7 +12,7 @@ With the setting `Explicit` set to `False` the color-structure and the (`1+(-1)^
 
 ### See also
 
-[Twist2QuarkOperator](Twist2QuarkOperator).
+[Overview](Extra/FeynCalc.md), [Twist2QuarkOperator](Twist2QuarkOperator.md).
 
 ### Examples
 

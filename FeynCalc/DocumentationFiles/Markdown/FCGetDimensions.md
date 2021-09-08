@@ -6,7 +6,7 @@ This is useful if one wants to be sure that all quantities inside a particular e
 
 ### See also
 
-[ChangeDimension](ChangeDimension).
+[Overview](Extra/FeynCalc.md), [ChangeDimension](ChangeDimension.md).
 
 ### Examples
 

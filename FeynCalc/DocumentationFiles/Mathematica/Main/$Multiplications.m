@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* $Multiplications*)
+(*$Multiplications*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[FieldDerivative](FieldDerivative).*)
+(*[Overview](Extra/FeynCalc.md), [FieldDerivative](FieldDerivative.md).*)
 
 
 (* ::Subsection:: *)

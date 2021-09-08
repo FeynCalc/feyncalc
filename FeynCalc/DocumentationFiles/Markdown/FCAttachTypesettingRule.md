@@ -16,7 +16,7 @@ Use `FCRemoveTypesettingRules` to remove all typesetting rules attached to expr.
 
 ### See also
 
-[FCRemoveTypesettingRules](FCRemoveTypesettingRules).
+[Overview](Extra/FeynCalc.md), [FCRemoveTypesettingRules](FCRemoveTypesettingRules.md).
 
 ### Examples
 

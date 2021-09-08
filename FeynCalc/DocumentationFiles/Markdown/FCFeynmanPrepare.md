@@ -12,7 +12,7 @@ The definitions of `M`, `Q`, `J` and `N` follow from Eq. 4.17 in the [PhD Thesis
 
 ### See also
 
-[FCFeynmanParametrize](FCFeynmanParametrize), [FCFeynmanProjectivize](FCFeynmanProjectivize), [FCLoopValidTopologyQ](FCLoopValidTopologyQ).
+[Overview](Extra/FeynCalc.md), [FCFeynmanParametrize](FCFeynmanParametrize.md), [FCFeynmanProjectivize](FCFeynmanProjectivize.md), [FCLoopValidTopologyQ](FCLoopValidTopologyQ.md).
 
 ### Examples
 
@@ -24,13 +24,13 @@ FCFeynmanPrepare[FAD[{q, m1}], {q}]
 
 $$\left\{\text{FCGV}(\text{x})(1),\text{m1}^2 (\text{FCGV}(\text{x})(1))^2,\left(
 \begin{array}{ccc}
- \text{FCGV}(\text{x})(1) & \frac{1}{q^2-\text{m1}^2} & 1 \\
+ \;\text{FCGV}(\text{x})(1) & \frac{1}{q^2-\text{m1}^2} & 1 \\
 \end{array}
 \right),\left(
 \begin{array}{c}
- \text{FCGV}(\text{x})(1) \\
+ \;\text{FCGV}(\text{x})(1) \\
 \end{array}
-\right),\{0\},-\text{m1}^2 \text{FCGV}(\text{x})(1),1,0\right\}$$
+\right),\{0\},-\text{m1}^2 \;\text{FCGV}(\text{x})(1),1,0\right\}$$
 
 Use the option `Names` to have specific symbols denoting Feynman parameters
 
@@ -54,15 +54,15 @@ It is also possible to obtain e.g. `x1, x2, x3, ...` instead of `x[1], x[2], x[3
 FCFeynmanPrepare[FAD[{q, m1}], {q}, Names -> x, Indexed -> False]
 ```
 
-$$\left\{\text{x1},\text{m1}^2 \text{x1}^2,\left(
+$$\left\{\text{x1},\text{m1}^2 \;\text{x1}^2,\left(
 \begin{array}{ccc}
- \text{x1} & \frac{1}{q^2-\text{m1}^2} & 1 \\
+ \;\text{x1} & \frac{1}{q^2-\text{m1}^2} & 1 \\
 \end{array}
 \right),\left(
 \begin{array}{c}
- \text{x1} \\
+ \;\text{x1} \\
 \end{array}
-\right),\{0\},-\text{m1}^2 \text{x1},1,0\right\}$$
+\right),\{0\},-\text{m1}^2 \;\text{x1},1,0\right\}$$
 
 To fix the correspondence between Feynman parameters and propagators, the latter should be entered as a list
 
@@ -79,7 +79,7 @@ $$\left\{x(1)+x(2),m^2 x(1)^2+m^2 x(1) x(2)+\text{m2}^2 x(2)^2+\text{m2}^2 x(1) 
 \begin{array}{c}
  x(1)+x(2) \\
 \end{array}
-\right),\left\{x(2) p^{\text{FCGV}(\text{mu})}\right\},m^2 (-x(1))-\text{m2}^2 x(2)+p^2 x(2),-\frac{1}{2} x(2) \Gamma \left(1-\frac{D}{2}\right) \text{FCGV}(\text{F}) p^{\mu } g^{\nu \rho }-\frac{1}{2} x(2) \Gamma \left(1-\frac{D}{2}\right) \text{FCGV}(\text{F}) p^{\nu } g^{\mu \rho }-\frac{1}{2} x(2) \Gamma \left(1-\frac{D}{2}\right) \text{FCGV}(\text{F}) p^{\rho } g^{\mu \nu }+x(2)^3 \Gamma \left(2-\frac{D}{2}\right) p^{\mu } p^{\nu } p^{\rho },3\right\}$$
+\right),\left\{x(2) p^{\text{FCGV}(\text{mu})}\right\},m^2 (-x(1))-\text{m2}^2 x(2)+p^2 x(2),-\frac{1}{2} x(2) \Gamma \left(1-\frac{D}{2}\right) \;\text{FCGV}(\text{F}) p^{\mu } g^{\nu \rho }-\frac{1}{2} x(2) \Gamma \left(1-\frac{D}{2}\right) \;\text{FCGV}(\text{F}) p^{\nu } g^{\mu \rho }-\frac{1}{2} x(2) \Gamma \left(1-\frac{D}{2}\right) \;\text{FCGV}(\text{F}) p^{\rho } g^{\mu \nu }+x(2)^3 \Gamma \left(2-\frac{D}{2}\right) p^{\mu } p^{\nu } p^{\rho },3\right\}$$
 
 Massless 2-loop self-energy
 
@@ -128,7 +128,7 @@ Cartesian propagators are equally supported
 FCFeynmanPrepare[CSPD[q, p] CFAD[{q, m}, {q - p, m2}], {q}, Names -> x]
 ```
 
-$$\left\{x(1)+x(2),\frac{1}{4} \left(4 m x(1)^2+4 m x(2) x(1)+4 \text{m2} x(2) x(1)+4 \text{m2} x(2)^2+4 p^2 x(2) x(1)-p^2 x(3)^2+4 p^2 x(2) x(3)\right),\left(
+$$\left\{x(1)+x(2),\frac{1}{4} \left(4 m x(1)^2+4 m x(2) x(1)+4 \;\text{m2} x(2) x(1)+4 \;\text{m2} x(2)^2+4 p^2 x(2) x(1)-p^2 x(3)^2+4 p^2 x(2) x(3)\right),\left(
 \begin{array}{ccc}
  x(1) & \frac{1}{(q^2+m-i \eta )} & 1 \\
  x(2) & \frac{1}{((q-p)^2+\text{m2}-i \eta )} & 1 \\
@@ -176,7 +176,7 @@ FCFeynmanPrepare[{topo1, topo2}, Names -> x]
 
 $$\left(
 \begin{array}{cccccccc}
- x(1) x(2)+x(3) x(2)+x(5) x(2)+x(1) x(4)+x(3) x(4)+x(1) x(5)+x(3) x(5)+x(4) x(5) & \text{m1}^2 x(1)^2 x(2)+\text{m1}^2 x(1) x(2) x(3)+\text{m1}^2 x(1)^2 x(4)+\text{m1}^2 x(1) x(3) x(4)+\text{m1}^2 x(1)^2 x(5)+\text{m1}^2 x(1) x(2) x(5)+\text{m1}^2 x(1) x(3) x(5)+\text{m1}^2 x(1) x(4) x(5)+\text{m2}^2 x(1) x(2)^2+\text{m2}^2 x(2)^2 x(3)+\text{m2}^2 x(1) x(2) x(4)+\text{m2}^2 x(2) x(3) x(4)+\text{m2}^2 x(2)^2 x(5)+\text{m2}^2 x(1) x(2) x(5)+\text{m2}^2 x(2) x(3) x(5)+\text{m2}^2 x(2) x(4) x(5)+\text{m3}^2 x(1) x(5)^2+\text{m3}^2 x(2) x(5)^2+\text{m3}^2 x(3) x(5)^2+\text{m3}^2 x(4) x(5)^2+\text{m3}^2 x(1) x(2) x(5)+\text{m3}^2 x(2) x(3) x(5)+\text{m3}^2 x(1) x(4) x(5)+\text{m3}^2 x(3) x(4) x(5)-q^2 x(1) x(2) x(3)-q^2 x(1) x(2) x(4)-q^2 x(1) x(3) x(4)-q^2 x(2) x(3) x(4)-q^2 x(1) x(3) x(5)-q^2 x(2) x(3) x(5)-q^2 x(1) x(4) x(5)-q^2 x(2) x(4) x(5) & \left(
+ x(1) x(2)+x(3) x(2)+x(5) x(2)+x(1) x(4)+x(3) x(4)+x(1) x(5)+x(3) x(5)+x(4) x(5) & \;\text{m1}^2 x(1)^2 x(2)+\text{m1}^2 x(1) x(2) x(3)+\text{m1}^2 x(1)^2 x(4)+\text{m1}^2 x(1) x(3) x(4)+\text{m1}^2 x(1)^2 x(5)+\text{m1}^2 x(1) x(2) x(5)+\text{m1}^2 x(1) x(3) x(5)+\text{m1}^2 x(1) x(4) x(5)+\text{m2}^2 x(1) x(2)^2+\text{m2}^2 x(2)^2 x(3)+\text{m2}^2 x(1) x(2) x(4)+\text{m2}^2 x(2) x(3) x(4)+\text{m2}^2 x(2)^2 x(5)+\text{m2}^2 x(1) x(2) x(5)+\text{m2}^2 x(2) x(3) x(5)+\text{m2}^2 x(2) x(4) x(5)+\text{m3}^2 x(1) x(5)^2+\text{m3}^2 x(2) x(5)^2+\text{m3}^2 x(3) x(5)^2+\text{m3}^2 x(4) x(5)^2+\text{m3}^2 x(1) x(2) x(5)+\text{m3}^2 x(2) x(3) x(5)+\text{m3}^2 x(1) x(4) x(5)+\text{m3}^2 x(3) x(4) x(5)-q^2 x(1) x(2) x(3)-q^2 x(1) x(2) x(4)-q^2 x(1) x(3) x(4)-q^2 x(2) x(3) x(4)-q^2 x(1) x(3) x(5)-q^2 x(2) x(3) x(5)-q^2 x(1) x(4) x(5)-q^2 x(2) x(4) x(5) & \left(
 \begin{array}{ccc}
  x(1) & \frac{1}{(\text{p1}^2-\text{m1}^2+i \eta )} & 1 \\
  x(2) & \frac{1}{(\text{p2}^2-\text{m2}^2+i \eta )} & 1 \\
@@ -189,7 +189,7 @@ $$\left(
  x(1)+x(3)+x(5) & -x(5) \\
  -x(5) & x(2)+x(4)+x(5) \\
 \end{array}
-\right) & \left\{x(3) q^{\text{FCGV}(\text{mu})},x(4) q^{\text{FCGV}(\text{mu})}\right\} & \text{m1}^2 (-x(1))-\text{m2}^2 x(2)-\text{m3}^2 x(5)+q^2 x(3)+q^2 x(4) & 1 & 0 \\
+\right) & \left\{x(3) q^{\text{FCGV}(\text{mu})},x(4) q^{\text{FCGV}(\text{mu})}\right\} & \;\text{m1}^2 (-x(1))-\text{m2}^2 x(2)-\text{m3}^2 x(5)+q^2 x(3)+q^2 x(4) & 1 & 0 \\
  x(1) x(2)+x(3) x(2)+x(5) x(2)+x(1) x(4)+x(3) x(4)+x(1) x(5)+x(3) x(5)+x(4) x(5) & M^2 x(2) x(3)^2+M^2 x(1) x(4)^2+M^2 x(3) x(4)^2+M^2 x(1) x(2) x(3)+M^2 x(3)^2 x(4)+M^2 x(1) x(2) x(4)+M^2 x(1) x(3) x(4)+M^2 x(2) x(3) x(4)+M^2 x(3)^2 x(5)+M^2 x(4)^2 x(5)+M^2 x(1) x(3) x(5)+M^2 x(2) x(3) x(5)+M^2 x(1) x(4) x(5)+M^2 x(2) x(4) x(5)+2 M^2 x(3) x(4) x(5)+\text{m1}^2 x(1)^2 x(2)+\text{m1}^2 x(1) x(2) x(3)+\text{m1}^2 x(1)^2 x(4)+\text{m1}^2 x(1) x(3) x(4)+\text{m1}^2 x(1)^2 x(5)+\text{m1}^2 x(1) x(2) x(5)+\text{m1}^2 x(1) x(3) x(5)+\text{m1}^2 x(1) x(4) x(5)+\text{m2}^2 x(1) x(2)^2+\text{m2}^2 x(2)^2 x(3)+\text{m2}^2 x(1) x(2) x(4)+\text{m2}^2 x(2) x(3) x(4)+\text{m2}^2 x(2)^2 x(5)+\text{m2}^2 x(1) x(2) x(5)+\text{m2}^2 x(2) x(3) x(5)+\text{m2}^2 x(2) x(4) x(5)-q^2 x(1) x(2) x(3)-q^2 x(1) x(2) x(4)-q^2 x(1) x(3) x(4)-q^2 x(2) x(3) x(4)-q^2 x(1) x(3) x(5)-q^2 x(2) x(3) x(5)-q^2 x(1) x(4) x(5)-q^2 x(2) x(4) x(5) & \left(
 \begin{array}{ccc}
  x(1) & \frac{1}{(\text{p1}^2-\text{m1}^2+i \eta )} & 1 \\
@@ -213,7 +213,7 @@ FCFeynmanPrepare[{GLI["prop2Lv1", {1, 1, 1, 1, 0}], GLI["prop2Lv2", {1, 1, 0, 0,
 
 $$\left(
 \begin{array}{cccccccc}
- (x(1)+x(3)) (x(2)+x(4)) & \text{m1}^2 x(1)^2 x(2)+\text{m1}^2 x(1) x(2) x(3)+\text{m1}^2 x(1)^2 x(4)+\text{m1}^2 x(1) x(3) x(4)+\text{m2}^2 x(1) x(2)^2+\text{m2}^2 x(2)^2 x(3)+\text{m2}^2 x(1) x(2) x(4)+\text{m2}^2 x(2) x(3) x(4)-q^2 x(1) x(2) x(3)-q^2 x(1) x(2) x(4)-q^2 x(1) x(3) x(4)-q^2 x(2) x(3) x(4) & \left(
+ (x(1)+x(3)) (x(2)+x(4)) & \;\text{m1}^2 x(1)^2 x(2)+\text{m1}^2 x(1) x(2) x(3)+\text{m1}^2 x(1)^2 x(4)+\text{m1}^2 x(1) x(3) x(4)+\text{m2}^2 x(1) x(2)^2+\text{m2}^2 x(2)^2 x(3)+\text{m2}^2 x(1) x(2) x(4)+\text{m2}^2 x(2) x(3) x(4)-q^2 x(1) x(2) x(3)-q^2 x(1) x(2) x(4)-q^2 x(1) x(3) x(4)-q^2 x(2) x(3) x(4) & \left(
 \begin{array}{ccc}
  x(1) & \frac{1}{(\text{p1}^2-\text{m1}^2+i \eta )} & 1 \\
  x(2) & \frac{1}{(\text{p2}^2-\text{m2}^2+i \eta )} & 1 \\
@@ -225,7 +225,7 @@ $$\left(
  x(1)+x(3) & 0 \\
  0 & x(2)+x(4) \\
 \end{array}
-\right) & \left\{x(3) q^{\text{FCGV}(\text{mu})},x(4) q^{\text{FCGV}(\text{mu})}\right\} & \text{m1}^2 (-x(1))-\text{m2}^2 x(2)+q^2 x(3)+q^2 x(4) & 1 & 0 \\
+\right) & \left\{x(3) q^{\text{FCGV}(\text{mu})},x(4) q^{\text{FCGV}(\text{mu})}\right\} & \;\text{m1}^2 (-x(1))-\text{m2}^2 x(2)+q^2 x(3)+q^2 x(4) & 1 & 0 \\
  x(1) x(2)+x(3) x(2)+x(1) x(3) & (x(1) x(2)+x(3) x(2)+x(1) x(3)) \left(\text{m1}^2 x(1)+\text{m2}^2 x(3)\right) & \left(
 \begin{array}{ccc}
  x(1) & \frac{1}{(\text{p1}^2-\text{m1}^2+i \eta )} & 1 \\
@@ -237,6 +237,6 @@ $$\left(
  x(1)+x(2) & -x(2) \\
  -x(2) & x(2)+x(3) \\
 \end{array}
-\right) & \{0,0\} & \text{m1}^2 (-x(1))-\text{m2}^2 x(3) & 1 & 0 \\
+\right) & \{0,0\} & \;\text{m1}^2 (-x(1))-\text{m2}^2 x(3) & 1 & 0 \\
 \end{array}
 \right)$$

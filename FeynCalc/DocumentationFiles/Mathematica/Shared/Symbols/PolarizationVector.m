@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`PolarizationVector[p, mu]` denotes a 4-dimensional polarization vector $\varepsilon(p)^\mu$.*)
+(*`PolarizationVector[p, mu]` denotes a 4-dimensional polarization vector $\varepsilon^\mu(p)$.*)
 
 
 (* ::Text:: *)
@@ -20,7 +20,7 @@
 
 
 (* ::Text:: *)
-(*[FV](FV), [Pair](Pair), [Polarization](Polarization), [PolariazationSum](PolariazationSum), [DoPolariazationSums](DoPolariazationSums).*)
+(*[Overview](Extra/FeynCalc.md), [FV](FV.md), [Pair](Pair.md), [Polarization](Polarization.md), [PolariazationSum](PolariazationSum.md), [DoPolariazationSums](DoPolariazationSums.md).*)
 
 
 (* ::Subsection:: *)
@@ -28,7 +28,7 @@
 
 
 (* ::Text:: *)
-(*A polarization vector $\varepsilon_{\mu }(k)$ is a special $4$-vector.*)
+(*A polarization vector $\varepsilon^{\mu }(k)$ is a special $4$-vector.*)
 
 
 PolarizationVector[k, \[Mu]]

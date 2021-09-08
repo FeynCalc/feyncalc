@@ -8,11 +8,13 @@ Expansion of sums of momenta in `CartesianScalarProduct` is done with `ExpandSca
 
 Scalar products may be set, e.g. via `ScalarProduct[a, b] = m^2;` but `a` and `b` may not contain sums.
 
-Note that `ScalarProduct[a, b] = m^2` actually sets Cartesian scalar products in different dimensions specified by the value of the `SetDimensions` option. It is highly recommended to set `ScalarProduct`s before any calculation. This improves the performance of FeynCalc.
+Note that `ScalarProduct[a, b] = m^2` actually sets Cartesian scalar products in different dimensions specified by the value of the `SetDimensions` option.
+
+It is highly recommended to set `ScalarProduct`s before any calculation. This improves the performance of FeynCalc.
 
 ### See also
 
-[CSP](CSP), [CSPD](CSPD), [CSPE](CSPE).
+[Overview](Extra/FeynCalc.md), [CSP](CSP.md), [CSPD](CSPD.md), [CSPE](CSPE.md).
 
 ### Examples
 

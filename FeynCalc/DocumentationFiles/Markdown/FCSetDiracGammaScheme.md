@@ -2,9 +2,9 @@
 
 `FCSetDiracGammaScheme[scheme]` allows you to specify how Dirac matrices will be handled in `D` dimensions. This is mainly relevant to the treatment of the 5th Dirac matrix $\gamma^5$, which is not well-defined in dimensional regularization.
 
-Following schemes are supported: 
+Following schemes are supported:
 
-"NDR" - This is the default value. In the naive dimensional regularization (also known as conventional dimensional regularization or CDR) $\gamma^5$ is assumed to anticommute with all Dirac matrices in $D$ dimensions. Hence, every Dirac trace can be rewritten in such a way, that it contains either just one or not a single $\gamma^5$ matrix. The latter traces are obviously unambiguous. The traces with one $\gamma^5$ are not well-defined in this scheme. It usually depends on the physics of the process, whether and how they can contribute to the final result. Therefore, FeynCalc will keep such traces unevaluated, leaving it to the user to decide how to treat them. Notice that traces with an odd number of the usual Dirac matrices and one $\gamma^5$, that vanish in 4 dimensions, will be also put to zero in this scheme.
+"NDR" - This is the default value. In the naive dimensional regularization (also known as conventional dimensional regularization or CDR) $\gamma^5$ is assumed to anticommute with all Dirac matrices in $D$ dimensions. Hence, every Dirac trace can be rewritten in such a way, that it contains either just one or not a single $\gamma^5$ matrix. The latter traces are obviously unambiguous. The traces with one $\gamma^5$ are not well-defined in this scheme. It usually depends on the physics of the process, whether and how they can contribute to the final result. Therefore, FeynCalc will keep such traces unevaluated, leaving it to the user to decide how to treat them. Notice that traces with an odd number of the usual Dirac matrices and one $\gamma^5$, that vanish in $4$ dimensions, will be also put to zero in this scheme.
 
 "NDR-Discard" - This is a special version of the NDR scheme. The Dirac algebra is evaluated in the same way as with "NDR", but the remaining traces with one $\gamma^5$ are put to zero. This assumes that such traces do not contribute to the final result, which is obviously true only for specific calculations.
 
@@ -14,7 +14,7 @@ Following schemes are supported:
 
 ### See also
 
-[FCGetDiracGammaScheme](FCGetDiracGammaScheme), [DiracTrace](DiracTrace).
+[Overview](Extra/FeynCalc.md), [FCGetDiracGammaScheme](FCGetDiracGammaScheme.md), [DiracTrace](DiracTrace.md).
 
 ### Examples
 
@@ -75,9 +75,9 @@ FCSchoutenBruteForce[%, {}, {}]
 
 $$-4 i g^{\kappa \mu } \overset{\text{}}{\epsilon }^{\nu \rho \sigma \tau }+4 i g^{\kappa \nu } \overset{\text{}}{\epsilon }^{\mu \rho \sigma \tau }-4 i g^{\kappa \rho } \overset{\text{}}{\epsilon }^{\mu \nu \sigma \tau }+4 i g^{\kappa \sigma } \overset{\text{}}{\epsilon }^{\mu \nu \rho \tau }-4 i g^{\kappa \tau } \overset{\text{}}{\epsilon }^{\mu \nu \rho \sigma }$$
 
-$$-4 i \left(\overline{\text{p1}}\cdot \overline{\text{p6}}\right) \bar{\epsilon }^{\overline{\text{p2}}\overline{\text{p3}}\overline{\text{p4}}\overline{\text{p5}}}+4 i \left(\overline{\text{p2}}\cdot \overline{\text{p6}}\right) \bar{\epsilon }^{\overline{\text{p1}}\overline{\text{p3}}\overline{\text{p4}}\overline{\text{p5}}}-4 i \left(\overline{\text{p3}}\cdot \overline{\text{p6}}\right) \bar{\epsilon }^{\overline{\text{p1}}\overline{\text{p2}}\overline{\text{p4}}\overline{\text{p5}}}+4 i \left(\overline{\text{p4}}\cdot \overline{\text{p6}}\right) \bar{\epsilon }^{\overline{\text{p1}}\overline{\text{p2}}\overline{\text{p3}}\overline{\text{p5}}}-4 i \left(\overline{\text{p5}}\cdot \overline{\text{p6}}\right) \bar{\epsilon }^{\overline{\text{p1}}\overline{\text{p2}}\overline{\text{p3}}\overline{\text{p4}}}$$
+$$-4 i \left(\overline{\text{p1}}\cdot \overline{\text{p6}}\right) \bar{\epsilon }^{\overline{\text{p2}}\;\overline{\text{p3}}\;\overline{\text{p4}}\;\overline{\text{p5}}}+4 i \left(\overline{\text{p2}}\cdot \overline{\text{p6}}\right) \bar{\epsilon }^{\overline{\text{p1}}\;\overline{\text{p3}}\;\overline{\text{p4}}\;\overline{\text{p5}}}-4 i \left(\overline{\text{p3}}\cdot \overline{\text{p6}}\right) \bar{\epsilon }^{\overline{\text{p1}}\;\overline{\text{p2}}\;\overline{\text{p4}}\;\overline{\text{p5}}}+4 i \left(\overline{\text{p4}}\cdot \overline{\text{p6}}\right) \bar{\epsilon }^{\overline{\text{p1}}\;\overline{\text{p2}}\;\overline{\text{p3}}\;\overline{\text{p5}}}-4 i \left(\overline{\text{p5}}\cdot \overline{\text{p6}}\right) \bar{\epsilon }^{\overline{\text{p1}}\;\overline{\text{p2}}\;\overline{\text{p3}}\;\overline{\text{p4}}}$$
 
-$$\text{FCSchoutenBruteForce: The following rule was applied: }\bar{\epsilon }^{\overline{\text{p2}}\overline{\text{p3}}\overline{\text{p4}}\overline{\text{p5}}} \left(\overline{\text{p1}}\cdot \overline{\text{p6}}\right):\to \bar{\epsilon }^{\overline{\text{p1}}\overline{\text{p3}}\overline{\text{p4}}\overline{\text{p5}}} \left(\overline{\text{p2}}\cdot \overline{\text{p6}}\right)-\bar{\epsilon }^{\overline{\text{p1}}\overline{\text{p2}}\overline{\text{p4}}\overline{\text{p5}}} \left(\overline{\text{p3}}\cdot \overline{\text{p6}}\right)+\bar{\epsilon }^{\overline{\text{p1}}\overline{\text{p2}}\overline{\text{p3}}\overline{\text{p5}}} \left(\overline{\text{p4}}\cdot \overline{\text{p6}}\right)-\bar{\epsilon }^{\overline{\text{p1}}\overline{\text{p2}}\overline{\text{p3}}\overline{\text{p4}}} \left(\overline{\text{p5}}\cdot \overline{\text{p6}}\right)$$
+$$\text{FCSchoutenBruteForce: The following rule was applied: }\bar{\epsilon }^{\overline{\text{p2}}\;\overline{\text{p3}}\;\overline{\text{p4}}\;\overline{\text{p5}}} \left(\overline{\text{p1}}\cdot \overline{\text{p6}}\right):\to \bar{\epsilon }^{\overline{\text{p1}}\;\overline{\text{p3}}\;\overline{\text{p4}}\;\overline{\text{p5}}} \left(\overline{\text{p2}}\cdot \overline{\text{p6}}\right)-\bar{\epsilon }^{\overline{\text{p1}}\;\overline{\text{p2}}\;\overline{\text{p4}}\;\overline{\text{p5}}} \left(\overline{\text{p3}}\cdot \overline{\text{p6}}\right)+\bar{\epsilon }^{\overline{\text{p1}}\;\overline{\text{p2}}\;\overline{\text{p3}}\;\overline{\text{p5}}} \left(\overline{\text{p4}}\cdot \overline{\text{p6}}\right)-\bar{\epsilon }^{\overline{\text{p1}}\;\overline{\text{p2}}\;\overline{\text{p3}}\;\overline{\text{p4}}} \left(\overline{\text{p5}}\cdot \overline{\text{p6}}\right)$$
 
 $$\text{FCSchoutenBruteForce: The numbers of terms in the expression decreased by: }5$$
 

@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(* $FCMemoryAvailable*)
+(*$FCMemoryAvailable*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[MemSet](MemSet), [FCMemoryAvailable](FCMemoryAvailable).*)
+(*[Overview](Extra/FeynCalc.md), [MemSet](MemSet.md), [FCMemoryAvailable](FCMemoryAvailable.md).*)
 
 
 (* ::Subsection:: *)

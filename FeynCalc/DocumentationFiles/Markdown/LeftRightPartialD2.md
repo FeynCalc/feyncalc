@@ -1,4 +1,4 @@
-## LeftRightPartialD2 
+## LeftRightPartialD2
 
 `LeftRightPartialD2[μ]` denotes $\overleftrightarrow{\partial }_{\mu }$, acting to the left and right.
 
@@ -6,7 +6,7 @@
 
 ### See also
 
-[ExplicitPartialD](ExplicitPartialD), [ExpandPartialD](ExpandPartialD), [FCPartialD](FCPartialD), [LeftPartialD](LeftPartialD), [RightPartialD](RightPartialD).
+[Overview](Extra/FeynCalc.md), [ExplicitPartialD](ExplicitPartialD.md), [ExpandPartialD](ExpandPartialD.md), [FCPartialD](FCPartialD.md), [LeftPartialD](LeftPartialD.md), [RightPartialD](RightPartialD.md).
 
 ### Examples
 

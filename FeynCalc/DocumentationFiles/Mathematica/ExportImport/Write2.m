@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(*Write2 *)
+(*Write2*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Isolate](Isolate), [PaVeReduce](PaVeReduce).*)
+(*[Overview](Extra/FeynCalc.md), [Isolate](Isolate.md), [PaVeReduce](PaVeReduce.md).*)
 
 
 (* ::Subsection:: *)

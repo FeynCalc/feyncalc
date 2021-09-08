@@ -6,6 +6,6 @@ The shortcut `PropagatorDenominatorExplicit` is deprecated, please use `FeynAmpD
 
 ### See also
 
-[FeynAmpDenominatorExplicit](FeynAmpDenominatorExplicit).
+[Overview](Extra/FeynCalc.md), [FeynAmpDenominatorExplicit](FeynAmpDenominatorExplicit.md).
 
 ### Examples

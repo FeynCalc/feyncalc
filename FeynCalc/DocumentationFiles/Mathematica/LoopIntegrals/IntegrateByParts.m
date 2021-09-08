@@ -10,7 +10,7 @@
 
 
 (* ::Text:: *)
-(*[PartialIntegrate](PartialIntegrate), [Integrate2](Integrate2).*)
+(*[Overview](Extra/FeynCalc.md), [PartialIntegrate](PartialIntegrate.md), [Integrate2](Integrate2.md).*)
 
 
 (* ::Subsection:: *)

@@ -4,7 +4,7 @@
 
 ### See also
 
-[FCMathcSolve](FCMathcSolve).
+[Overview](Extra/FeynCalc.md), [FCMathcSolve](FCMathcSolve.md).
 
 ### Examples
 
@@ -12,7 +12,7 @@
 FCCompareResults[{4, 4}, {2^2, 8/2}]
 ```
 
-$$\text{Check of the results:} \text{The results agree.}$$
+$$\text{Check of the results:} \;\text{The results agree.}$$
 
 $$\text{True}$$
 
@@ -23,6 +23,6 @@ FCCompareResults[{3, 5}, {2^2, 8/2}]
 
 ```
 
-$$\text{Check of the results:} \text{The results disagree.}$$
+$$\text{Check of the results:} \;\text{The results disagree.}$$
 
 $$\text{False}$$

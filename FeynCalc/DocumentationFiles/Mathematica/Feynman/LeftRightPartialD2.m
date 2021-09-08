@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(*LeftRightPartialD2 *)
+(*LeftRightPartialD2*)
 
 
 (* ::Text:: *)
@@ -20,7 +20,7 @@
 
 
 (* ::Text:: *)
-(*[ExplicitPartialD](ExplicitPartialD), [ExpandPartialD](ExpandPartialD), [FCPartialD](FCPartialD), [LeftPartialD](LeftPartialD), [RightPartialD](RightPartialD).*)
+(*[Overview](Extra/FeynCalc.md), [ExplicitPartialD](ExplicitPartialD.md), [ExpandPartialD](ExpandPartialD.md), [FCPartialD](FCPartialD.md), [LeftPartialD](LeftPartialD.md), [RightPartialD](RightPartialD.md).*)
 
 
 (* ::Subsection:: *)

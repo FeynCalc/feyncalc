@@ -10,7 +10,7 @@ If the option `Set` is `True`, the variables `x1`, `x2` are assigned to the righ
 
 ### See also
 
-[FeynCalc2FORM](FeynCalc2FORM).
+[Overview](Extra/FeynCalc.md), [FeynCalc2FORM](FeynCalc2FORM.md).
 
 ### Examples
 
@@ -52,7 +52,7 @@ FORM2FeynCalc["p(mu)*q(nu)+d_(mu,nu)"]
 % // StandardForm
 ```
 
-$$\bar{g}^{\text{mu}\text{nu}}+p(\text{mu}).q(\text{nu})$$
+$$\bar{g}^{\text{mu}\;\text{nu}}+p(\text{mu}).q(\text{nu})$$
 
 ```
 (*p[mu] . q[nu] + MT[mu, nu]*)
@@ -68,4 +68,4 @@ $$\bar{g}^{\mu \nu }+p(\mu ).q(\nu )$$
 FORM2FeynCalc["i_*az*bz*aM^2*D1*[(1)]*b_G1 * ( 4*eperp(mu,nu)*avec.bvec*blam )"]
 ```
 
-$$(4 i).\text{az}.\text{bz}.\text{aM}^2.\text{D1}.\text{Hold}[1].\text{b$\$$G1}.\text{eperp}(\text{mu},\text{nu}).\left(\overline{\text{avec}}\cdot \overline{\text{bvec}}\right).\text{blam}$$
+$$(4 i).\text{az}.\text{bz}.\text{aM}^2.\text{D1}.\text{Hold}[1].\text{b\$G1}.\text{eperp}(\text{mu},\text{nu}).\left(\overline{\text{avec}}\cdot \overline{\text{bvec}}\right).\text{blam}$$

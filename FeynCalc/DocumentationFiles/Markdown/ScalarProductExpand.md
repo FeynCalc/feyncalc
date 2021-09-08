@@ -6,7 +6,7 @@ The shortcut `ScalarProductExpand` is deprecated, please use `ExpandScalarProduc
 
 ### See also
 
-[ExpandScalarProduct](ExpandScalarProduct).
+[Overview](Extra/FeynCalc.md), [ExpandScalarProduct](ExpandScalarProduct.md).
 
 ### Examples
 

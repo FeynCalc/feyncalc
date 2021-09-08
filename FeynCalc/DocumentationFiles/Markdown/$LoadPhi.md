@@ -1,10 +1,10 @@
-##  $LoadPhi
+## $LoadPhi
 
-`$LoadPhi` is equivalent to `$LoadAddOns={"Phi"}`.
+`$LoadPhi` is a legacy switch for loading Phi. The modern way to achieve the same effect is to evaluate `$LoadAddOns={"Phi"}` before loading FeynCalc.
 
 ### See also
 
-[$LoadAddOns]($LoadAddOns).
+[Overview](Extra/FeynCalc.md), [$LoadAddOns]($LoadAddOns.md).
 
 ### Examples
 

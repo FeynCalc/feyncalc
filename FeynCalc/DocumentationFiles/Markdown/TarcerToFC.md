@@ -10,7 +10,7 @@ To recover momenta from scalar products use the option `ScalarProduct` e.g. as i
 
 ### See also
 
-[ToFI](ToFI).
+[Overview](Extra/FeynCalc.md), [ToFI](ToFI.md).
 
 ### Examples
 
@@ -33,18 +33,18 @@ $$\text{Tarcer$\grave{ }$TFI}\left(D,p^2,\{0,0,3,2,0\},\left(
 TarcerToFC[%, {q1, q2}]
 ```
 
-$$\frac{(p\cdot \text{q1})^3 (p\cdot \text{q2})^2}{\left(\text{q1}^2\right)^4.\left(\text{q2}^2\right)^2.(\text{q1}-p)^2.(\text{q1}-\text{q2})^2}$$
+$$\frac{(p\cdot \;\text{q1})^3 (p\cdot \;\text{q2})^2}{\left(\text{q1}^2\right)^4.\left(\text{q2}^2\right)^2.(\text{q1}-p)^2.(\text{q1}-\text{q2})^2}$$
 
 ```mathematica
 a1 Tarcer`TBI[D, pp^2, {{1, 0}, {1, 0}}] + b1 Tarcer`TBI[D, mm1, {{1, 0}, {1, 0}}]
 ```
 
-$$\text{a1} \text{Tarcer$\grave{ }$TBI}\left(D,\text{pp}^2,\left(
+$$\text{a1} \;\text{Tarcer$\grave{ }$TBI}\left(D,\text{pp}^2,\left(
 \begin{array}{cc}
  1 & 0 \\
  1 & 0 \\
 \end{array}
-\right)\right)+\text{b1} \text{Tarcer$\grave{ }$TBI}\left(D,\text{mm1},\left(
+\right)\right)+\text{b1} \;\text{Tarcer$\grave{ }$TBI}\left(D,\text{mm1},\left(
 \begin{array}{cc}
  1 & 0 \\
  1 & 0 \\

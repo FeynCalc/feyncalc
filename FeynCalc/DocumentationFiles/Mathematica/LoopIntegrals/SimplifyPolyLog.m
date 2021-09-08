@@ -1,15 +1,26 @@
+(* ::Package:: *)
+
  
+
+
 (* ::Section:: *)
 (*SimplifyPolyLog*)
+
+
 (* ::Text:: *)
 (*`SimplifyPolyLog[y]` performs several simplifications assuming that the variables occuring in the `Log` and `PolyLog` functions are between `0` and `1`.*)
 
 
+(* ::Text:: *)
+(*The simplifications will in general not be valid if the arguments are complex or outside the range between 0 and 1.*)
+
+
 (* ::Subsection:: *)
 (*See also*)
-(* ::Text:: *)
-(*[Nielsen](Nielsen).*)
 
+
+(* ::Text:: *)
+(*[Overview](Extra/FeynCalc.md), [Nielsen](Nielsen.md).*)
 
 
 (* ::Subsection:: *)

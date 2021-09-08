@@ -20,7 +20,7 @@ and higher tensor ranks can be calculated using FeynCalc and saved to PaVeSymmet
 
 ### See also
 
-[PaVeReduce](PaVeReduce).
+[Overview](Extra/FeynCalc.md), [PaVeReduce](PaVeReduce.md).
 
 ### Examples
 
@@ -119,7 +119,7 @@ When trying to minimize the number of `PaVe` functions in the expression, one of
 diff = (C0[0, SP[p, p], SP[p, p], 0, 0, 0] + 2 PaVe[1, {0, SP[p, p], SP[p, p]}, {0, 0, 0}] + PaVe[1, {SP[p, p], SP[p, p], 0}, {0, 0, 0}])
 ```
 
-$$\text{C}_0\left(0,\overline{p}^2,\overline{p}^2,0,0,0\right)+2 \text{C}_1\left(0,\overline{p}^2,\overline{p}^2,0,0,0\right)+\text{C}_1\left(\overline{p}^2,\overline{p}^2,0,0,0,0\right)$$
+$$\text{C}_0\left(0,\overline{p}^2,\overline{p}^2,0,0,0\right)+2 \;\text{C}_1\left(0,\overline{p}^2,\overline{p}^2,0,0,0\right)+\text{C}_1\left(\overline{p}^2,\overline{p}^2,0,0,0,0\right)$$
 
 This ordering doesn't look very helpful
 
@@ -128,9 +128,9 @@ PaVeOrder[diff, PaVeOrderList -> {0, SP[p, p], SP[p, p]}, Sum -> True]
 % // PaVeOrder
 ```
 
-$$\text{C}_0\left(0,\overline{p}^2,\overline{p}^2,0,0,0\right)+2 \text{C}_1\left(0,\overline{p}^2,\overline{p}^2,0,0,0\right)+\text{C}_2\left(0,\overline{p}^2,\overline{p}^2,0,0,0\right)$$
+$$\text{C}_0\left(0,\overline{p}^2,\overline{p}^2,0,0,0\right)+2 \;\text{C}_1\left(0,\overline{p}^2,\overline{p}^2,0,0,0\right)+\text{C}_2\left(0,\overline{p}^2,\overline{p}^2,0,0,0\right)$$
 
-$$\text{C}_0\left(0,\overline{p}^2,\overline{p}^2,0,0,0\right)+2 \text{C}_1\left(0,\overline{p}^2,\overline{p}^2,0,0,0\right)+\text{C}_1\left(\overline{p}^2,\overline{p}^2,0,0,0,0\right)$$
+$$\text{C}_0\left(0,\overline{p}^2,\overline{p}^2,0,0,0\right)+2 \;\text{C}_1\left(0,\overline{p}^2,\overline{p}^2,0,0,0\right)+\text{C}_1\left(\overline{p}^2,\overline{p}^2,0,0,0,0\right)$$
 
 But this one does the job
 
@@ -161,7 +161,7 @@ $$0$$
 diff = PaVe[0, {0}, {m2^2, m3^2}] + 2 PaVe[1, {0}, {m3^2, m2^2}] - PaVe[1, 1, {0}, {m2^2, m3^2}] + PaVe[1, 1, {0}, {m3^2, m2^2}]
 ```
 
-$$\text{B}_0\left(0,\text{m2}^2,\text{m3}^2\right)+2 \text{B}_1\left(0,\text{m3}^2,\text{m2}^2\right)-\text{B}_{11}\left(0,\text{m2}^2,\text{m3}^2\right)+\text{B}_{11}\left(0,\text{m3}^2,\text{m2}^2\right)$$
+$$\text{B}_0\left(0,\text{m2}^2,\text{m3}^2\right)+2 \;\text{B}_1\left(0,\text{m3}^2,\text{m2}^2\right)-\text{B}_{11}\left(0,\text{m2}^2,\text{m3}^2\right)+\text{B}_{11}\left(0,\text{m3}^2,\text{m2}^2\right)$$
 
 ```mathematica
 PaVeOrder[diff, Sum -> True, PaVeOrderList -> {m3, m2}]
@@ -174,7 +174,7 @@ diff = PaVe[0, {0, 0, 0}, {m2^2, m3^2, m4^2}] + 2 PaVe[1, {0, 0, 0}, {m2^2, m3^2
    PaVe[1, 1, {0, 0, 0}, {m2^2, m3^2, m4^2}] - PaVe[1, 1, {0, 0, 0}, {m2^2, m4^2, m3^2}] + PaVe[1, 1, {0, 0, 0}, {m3^2, m2^2, m4^2}] + 2 PaVe[1, 2, {0, 0, 0}, {m4^2, m2^2, m3^2}]
 ```
 
-$$\text{C}_0\left(0,0,0,\text{m2}^2,\text{m3}^2,\text{m4}^2\right)+2 \text{C}_1\left(0,0,0,\text{m2}^2,\text{m3}^2,\text{m4}^2\right)+2 \text{C}_1\left(0,0,0,\text{m3}^2,\text{m2}^2,\text{m4}^2\right)+\text{C}_{11}\left(0,0,0,\text{m2}^2,\text{m3}^2,\text{m4}^2\right)-\text{C}_{11}\left(0,0,0,\text{m2}^2,\text{m4}^2,\text{m3}^2\right)+\text{C}_{11}\left(0,0,0,\text{m3}^2,\text{m2}^2,\text{m4}^2\right)+2 \text{C}_{12}\left(0,0,0,\text{m4}^2,\text{m2}^2,\text{m3}^2\right)$$
+$$\text{C}_0\left(0,0,0,\text{m2}^2,\text{m3}^2,\text{m4}^2\right)+2 \;\text{C}_1\left(0,0,0,\text{m2}^2,\text{m3}^2,\text{m4}^2\right)+2 \;\text{C}_1\left(0,0,0,\text{m3}^2,\text{m2}^2,\text{m4}^2\right)+\text{C}_{11}\left(0,0,0,\text{m2}^2,\text{m3}^2,\text{m4}^2\right)-\text{C}_{11}\left(0,0,0,\text{m2}^2,\text{m4}^2,\text{m3}^2\right)+\text{C}_{11}\left(0,0,0,\text{m3}^2,\text{m2}^2,\text{m4}^2\right)+2 \;\text{C}_{12}\left(0,0,0,\text{m4}^2,\text{m2}^2,\text{m3}^2\right)$$
 
 ```mathematica
 PaVeOrder[diff, Sum -> True, PaVeOrderList -> {m3, m2}]

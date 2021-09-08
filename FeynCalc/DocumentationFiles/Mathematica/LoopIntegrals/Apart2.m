@@ -1,14 +1,16 @@
  
 (* ::Section:: *)
-(*Apart2 *)
+(*Apart2*)
 (* ::Text:: *)
 (*`Apart2[expr]` partial fractions propagators of the form $1/[(q^2-m1^2)(q^2-m2^2)]$.*)
 
 
 (* ::Subsection:: *)
 (*See also*)
+
+
 (* ::Text:: *)
-(*[FAD](FAD), [FeynAmpDenominator](FeynAmpDenominator), [ApartFF](ApartFF).*)
+(*[Overview](Extra/FeynCalc.md), [FAD](FAD.md), [FeynAmpDenominator](FeynAmpDenominator.md), [ApartFF](ApartFF.md).*)
 
 
 

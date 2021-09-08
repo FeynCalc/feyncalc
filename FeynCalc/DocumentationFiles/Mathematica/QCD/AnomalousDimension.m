@@ -11,12 +11,16 @@
 (*`AnomalousDimension[name]` is a database of anomalous dimensions of twist 2 operators.*)
 
 
+(* ::Text:: *)
+(*` AnomalousDimension["gnsqg0"]` yields the non-singlet one-loop contribution to the anomalous dimension $\gamma_{S,qg}^{(0),m}$ in the MS-bar scheme etc.*)
+
+
 (* ::Subsection:: *)
 (*See also*)
 
 
 (* ::Text:: *)
-(*[See also: SplittingFunction](See also: SplittingFunction), [SumS](SumS), [SumT](SumT).*)
+(*[Overview](Extra/FeynCalc.md), [SplittingFunction](SplittingFunction.md), [SumS](SumS.md), [SumT](SumT.md).*)
 
 
 (* ::Subsection:: *)
@@ -90,18 +94,18 @@ AnomalousDimension[gsgq1]
 (*$\gamma _{S,gg }^{(1)}$ polarized:*)
 
 
-AnomalousDimension[gsgg1]
+v1=AnomalousDimension[gsgg1]
 
 
 (* ::Text:: *)
 (*$\gamma _{S,gg }^{(1)}$ polarized (different representation):*)
 
 
-AnomalousDimension[GSGG1]
+v2=AnomalousDimension[GSGG1];
 
 
 (* ::Text:: *)
 (*Check that all odd moments give the same for the two representations of $\gamma _{S,gg }^{(1)}$:*)
 
 
-Table[%-%%/.OPEm->ij,{ij,1,17,2}]
+Table[v1-v2/.OPEm->ij,{ij,1,17,2}]//Simplify

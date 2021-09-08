@@ -8,7 +8,7 @@ It is also possible to invoke the function as `FCLoopIntegralToGraph[GLI[...], F
 
 ### See also
 
-[FCLoopGraphPlot](FCLoopGraphPlot).
+[Overview](Extra/FeynCalc.md), [FCLoopGraphPlot](FCLoopGraphPlot.md).
 
 ### Examples
 
@@ -28,13 +28,13 @@ FCLoopGraphPlot[out]
 Labeled @@@ Transpose[out[[1 ;; 2]]]
 ```
 
-$$![1a0vk661taubx](img/1a0vk661taubx.svg)$$
+![1a0vk661taubx](img/1a0vk661taubx.svg)
 
 ```mathematica
 GraphPlot[List @@@ Transpose[out[[1 ;; 2]]]]
 ```
 
-$$![1el4pblxtrgxd](img/1el4pblxtrgxd.svg)$$
+![1el4pblxtrgxd](img/1el4pblxtrgxd.svg)
 
 ```mathematica
 FCLoopIntegralToGraph[FAD[{q - k1}, k1, q - k2, k2, {k2 - k3, mb}, {k1 - k3, mb}], {k1, k2,k3}]

@@ -1,5 +1,3 @@
-# FeynCalc
-
 FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Theory and semi-automatic evaluation of Feynman Diagrams.
 
 ## Basic objects
@@ -88,7 +86,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
  - [ExpandAll2](../ExpandAll2.md) - alternative to Mathematica's `ExpandAll`
  - [Explicit](../Explicit.md) - inserts explicit expressions for certain objects
  - [Factor1](../Factor1.md), [Factor2](../Factor2.md) - alternatives to Mathematica's `Factor`
- - [FC](../FC.md) - changes the output format to [FeyncalcForm](../FeyncalcForm.md)
+ - [FC](../FC.md) - changes the output format to [FeynCalcForm](../FeynCalcForm.md)
  - [FCAbbreviate](../FCAbbreviate.md) - introduces abbreviations
  - [FCAntiSymmetrize](../FCAntiSymmetrize.md) - antisymmetrizes with respect to the given variables
  - [FCDeclareHeader](../FCDeclareHeader.md), [FCPrint](../FCPrint.md), [FCReloadFunctionFromFile](../FCReloadFunctionFromFile.md) - for writing or debugging new FeynCalc functions or add-ons
@@ -279,7 +277,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
  - [FCLoopAddEdgeTags](../FCLoopAddEdgeTags.md), [FCLoopGraphPlot](../FCLoopGraphPlot.md), [FCLoopIntegralToGraph](../FCLoopIntegralToGraph.md), [FCLoopPropagatorsToLineMomenta](../FCLoopPropagatorsToLineMomenta.md) - create and plot graphs representing loop integrals
  - [FCLoopApplyTopologyMappings](../FCLoopApplyTopologyMappings.md), [FCLoopCreateRuleGLIToGLI](../FCLoopCreateRuleGLIToGLI.md), [FCLoopFindMomentumShifts](../FCLoopFindMomentumShifts.md), [FCLoopFindIntegralMappings](../FCLoopFindIntegralMappings.md), [FCLoopFindSubtopologies](../FCLoopFindSubtopologies.md), [FCLoopFindTopologies](../FCLoopFindTopologies.md), [FCLoopFindTopologyMappings](../FCLoopFindTopologyMappings.md), [FCLoopPakOrder](../FCLoopPakOrder.md), [FCLoopToPakForm](../FCLoopToPakForm.md) - loop integral topology identification and minimization
  - [FCLoopBasisCreateScalarProducts](../FCLoopBasisCreateScalarProducts.md) - auxiliary function that generates all possible loop momenta dependent scalar products
- - [FCLoopBasisFindCompletion](../FCLoopBasisFindCompletion.md) - suggest propagators need to have a complete loop integral basis
+ - [FCLoopBasisFindCompletion](../FCLoopBasisFindCompletion.md) - suggests propagators needed to have a complete loop integral basis
  - [FCLoopBasisGetSize](../FCLoopBasisGetSize.md) - returns the number of propagators in a topology
  - [FCLoopBasisIncompleteQ](../FCLoopBasisIncompleteQ.md) - checks if the propagators of a loop integral do not form a basis
  - [FCLoopBasisOverdeterminedQ](../FCLoopBasisOverdeterminedQ.md) - checks if the propagators of a loop integral are linearly dependent
@@ -420,15 +418,15 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 
 ## Deprecated or legacy functions
 
- - [AlphaStrong](../AlphaStrong.md) - use `[SMP](../SMP.md)["alpha_s"]` instead
- - [AlphaFS](../AlphaFS.md) - use `[SMP](../SMP.md)["alpha_fs"]` instead
- - [\$BreitMaison](../\$BreitMaison.md), [\$Larin](../\$Larin.md) - use `[FCSetDiracGammaScheme](../FCSetDiracGammaScheme.md)` instead
+ - [AlphaStrong](../AlphaStrong.md) - use [SMP](../SMP.md)["alpha_s"] instead
+ - [AlphaFS](../AlphaFS.md) - use [SMP](../SMP.md)["alpha_fs"] instead
+ - [\$BreitMaison](../\$BreitMaison.md), [\$Larin](../\$Larin.md) - use [FCSetDiracGammaScheme](../FCSetDiracGammaScheme.md) instead
  - [ChiralityProjector](../ChiralityProjector.md) - use `GA[6]` and `GA[7]` instead
  - [ClearScalarProducts](../ClearScalarProducts.md) - use [FCClearScalarProducts](../FCClearScalarProducts.md) instead
  - [DiracMatrix](../DiracMatrix.md), [DiracSlash](../DiracSlash.md) - use [GA](../GA.md) and [GS](../GS.md) instead
  - [DiracSpinor](../DiracSpinor.md) - use [Spinor](../Spinor.md) instead
  - [FourVector](../FourVector.md) - use [FV](../FV.md) instead
- - [Gstrong](../Gstrong.md) - use `[SMP](../SMP.md)["g_s"]` instead
+ - [Gstrong](../Gstrong.md) - use [SMP](../SMP.md)["g_s"] instead
  - [IFPDOn](../IFPDOn.md), [IFPDOff](../IFPDOff.md) - use [GLIMultiply](../GLIMultiply.md) instead
  - [LeviCivita](../LeviCivita.md) - use [LC](../LC.md) instead
  - [\$LoadFeynArts](../\$LoadFeynArts.md), [\$LoadPhi](../\$LoadPhi.md), [\$LoadTARCER](../\$LoadTARCER.md) - use [\$LoadAddOns](../\$LoadAddOns.md)

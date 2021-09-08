@@ -4,7 +4,7 @@
 
 ### See also
 
-[PauliChain](PauliChain), [PCHN](PCHN), [PauliIndex](PauliIndex), [DIDelta](DIDelta), [PauliChainJoin](PauliChainJoin), [PauliChainCombine](PauliChainCombine), [PauliChainExpand](PauliChainExpand), [PauliChainFactor](PauliChainFactor).
+[Overview](Extra/FeynCalc.md), [PauliChain](PauliChain.md), [PCHN](PCHN.md), [PauliIndex](PauliIndex.md), [DIDelta](DIDelta.md), [PauliChainJoin](PauliChainJoin.md), [PauliChainCombine](PauliChainCombine.md), [PauliChainExpand](PauliChainExpand.md), [PauliChainFactor](PauliChainFactor.md).
 
 ### Examples
 
@@ -46,9 +46,9 @@ PauliIndexDelta[PauliIndex[i2], PauliIndex[i3]] PauliIndexDelta[PauliIndex[i4], 
 PauliChainJoin[%]
 ```
 
-$$(\xi )_{\text{i7}} \left(\eta ^{\dagger }\right){}_{\text{i0}} \delta _{\text{i2}\text{i3}} \delta _{\text{i4}\text{i5}} \left(\overline{\sigma }^a\right){}_{\text{i1}\text{i2}} \left(\overline{\sigma }^b\right){}_{\text{i5}\text{i6}} \left(\overline{\sigma }\cdot \overline{p}+m\right)_{\text{i3}\text{i4}}$$
+$$(\xi )_{\text{i7}} \left(\eta ^{\dagger }\right){}_{\text{i0}} \delta _{\text{i2}\;\text{i3}} \delta _{\text{i4}\;\text{i5}} \left(\overline{\sigma }^a\right){}_{\text{i1}\;\text{i2}} \left(\overline{\sigma }^b\right){}_{\text{i5}\;\text{i6}} \left(\overline{\sigma }\cdot \overline{p}+m\right)_{\text{i3}\;\text{i4}}$$
 
-$$(\xi )_{\text{i7}} \left(\eta ^{\dagger }\right){}_{\text{i0}} \left(\overline{\sigma }^a.\left(\overline{\sigma }\cdot \overline{p}+m\right).\overline{\sigma }^b\right){}_{\text{i1}\text{i6}}$$
+$$(\xi )_{\text{i7}} \left(\eta ^{\dagger }\right){}_{\text{i0}} \left(\overline{\sigma }^a.\left(\overline{\sigma }\cdot \overline{p}+m\right).\overline{\sigma }^b\right){}_{\text{i1}\;\text{i6}}$$
 
 ```mathematica
 PauliChainJoin[% PIDelta[i0, i1]]

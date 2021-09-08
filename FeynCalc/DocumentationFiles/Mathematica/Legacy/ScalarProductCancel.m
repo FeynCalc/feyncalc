@@ -12,7 +12,7 @@
 
 
 (* ::Text:: *)
-(*`ScalarProductCancel[exp]`cancels simple cases.*)
+(*`ScalarProductCancel[exp]` cancels simple cases.*)
 
 
 (* ::Text:: *)
@@ -24,7 +24,7 @@
 
 
 (* ::Text:: *)
-(*[ApartFF](ApartFF), [FCClearScalarProducts](FCClearScalarProducts), [ExpandScalarProduct](ExpandScalarProduct), [Pair](Pair), [SP](SP), [SPC](SPC), [SPD](SPD).*)
+(*[Overview](Extra/FeynCalc.md), [ApartFF](ApartFF.md), [FCClearScalarProducts](FCClearScalarProducts.md), [ExpandScalarProduct](ExpandScalarProduct.md), [Pair](Pair.md), [SP](SP.md), [SPC](SPC.md), [SPD](SPD.md).*)
 
 
 (* ::Subsection:: *)

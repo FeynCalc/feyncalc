@@ -4,17 +4,28 @@
 
 ### See also
 
-[FCRenameDummyIndices](FCRenameDummyIndices), [FermionSpinSum](FermionSpinSum), [DiracGamma](DiracGamma).
+[Overview](Extra/FeynCalc.md), [FCRenameDummyIndices](FCRenameDummyIndices.md), [FermionSpinSum](FermionSpinSum.md), [DiracGamma](DiracGamma.md).
 
 ### Examples
 
 ComplexConjugate is meant to be applied to amplitudes, i.e. given a matrix element $\mathcal{M}$, it will return $\mathcal{M}^\ast$.
 
 ```mathematica
-Spinor[Momentum[k1], SMP["m_e"], 1] . GA[\[Mu]] . Spinor[Momentum[p2], SMP["m_e"], 1]*Spinor[Momentum[k2], SMP["m_e"], 1] . GA[\[Nu]] . Spinor[Momentum[p1], SMP["m_e"], 1]*FAD[k1 - p2, Dimension -> 4]*SMP["e"]^2 - Spinor[Momentum[k1], SMP["m_e"], 1] . GA[\[Mu]] . Spinor[Momentum[p1], SMP["m_e"], 1]*Spinor[Momentum[k2], SMP["m_e"], 1] . GA[\[Nu]] . Spinor[Momentum[p2], SMP["m_e"], 1]*FAD[k2 - p2, Dimension -> 4]*SMP["e"]^2
+amp = (Spinor[Momentum[k1], SMP["m_e"], 1] . GA[\[Mu]] . Spinor[Momentum[p2], SMP["m_e"], 1]*
+     Spinor[Momentum[k2], SMP["m_e"], 1] . GA[\[Nu]] . Spinor[Momentum[p1], SMP["m_e"], 1]*
+     FAD[k1 - p2, Dimension -> 4]*SMP["e"]^2 - Spinor[Momentum[k1], SMP["m_e"], 
+       1] . GA[\[Mu]] . Spinor[Momentum[p1], SMP["m_e"], 1]*Spinor[Momentum[k2], 
+       SMP["m_e"], 1] . GA[\[Nu]] . Spinor[Momentum[p2], SMP["m_e"], 1]*FAD[k2 - p2, 
+      Dimension -> 4]*SMP["e"]^2)
 ```
 
 $$\frac{\text{e}^2 \left(\varphi (\overline{\text{k1}},m_e)\right).\bar{\gamma }^{\mu }.\left(\varphi (\overline{\text{p2}},m_e)\right) \left(\varphi (\overline{\text{k2}},m_e)\right).\bar{\gamma }^{\nu }.\left(\varphi (\overline{\text{p1}},m_e)\right)}{(\overline{\text{k1}}-\overline{\text{p2}})^2}-\frac{\text{e}^2 \left(\varphi (\overline{\text{k1}},m_e)\right).\bar{\gamma }^{\mu }.\left(\varphi (\overline{\text{p1}},m_e)\right) \left(\varphi (\overline{\text{k2}},m_e)\right).\bar{\gamma }^{\nu }.\left(\varphi (\overline{\text{p2}},m_e)\right)}{(\overline{\text{k2}}-\overline{\text{p2}})^2}$$
+
+```mathematica
+ComplexConjugate[amp]
+```
+
+$$\frac{\text{e}^2 \left(\varphi (\overline{\text{p2}},m_e)\right).\bar{\gamma }^{\mu }.\left(\varphi (\overline{\text{k1}},m_e)\right) \left(\varphi (\overline{\text{p1}},m_e)\right).\bar{\gamma }^{\nu }.\left(\varphi (\overline{\text{k2}},m_e)\right)}{(\overline{\text{k1}}-\overline{\text{p2}})^2}-\frac{\text{e}^2 \left(\varphi (\overline{\text{p1}},m_e)\right).\bar{\gamma }^{\mu }.\left(\varphi (\overline{\text{k1}},m_e)\right) \left(\varphi (\overline{\text{p2}},m_e)\right).\bar{\gamma }^{\nu }.\left(\varphi (\overline{\text{k2}},m_e)\right)}{(\overline{\text{k2}}-\overline{\text{p2}})^2}$$
 
 Although one can also apply the function to standalone Dirac matrices, it should be understood that the result is not equivalent to the complex conjugation of such matrices.
 
@@ -37,7 +48,8 @@ $$\bar{\gamma }^5$$
 $$-\bar{\gamma }^5$$
 
 ```mathematica
-GS[Polarization[k1, -I, Transversality -> True]] . (GS[k1 - p2] + SMP["m_e"]) . GS[Polarization[k2, -I, Transversality -> True]]
+(GS[Polarization[k1, -I, Transversality -> True]] . (GS[k1 - p2] + SMP["m_e"]) . 
+   GS[Polarization[k2, -I, Transversality -> True]])
 ComplexConjugate[%]
 ```
 
@@ -63,16 +75,16 @@ ComplexConjugate[%]
 
 $$\bar{g}^{\mu \nu } \bar{\varepsilon }^{\mu }(\text{p1}) \bar{\varepsilon }^{\nu }(\text{p2})$$
 
-$$\bar{g}^{\text{$\$$AL}(\text{$\$$24})\text{$\$$AL}(\text{$\$$25})} \bar{\varepsilon }^*^{\text{$\$$AL}(\text{$\$$24})}(\text{p1}) \bar{\varepsilon }^*^{\text{$\$$AL}(\text{$\$$25})}(\text{p2})$$
+$$\bar{g}^{\text{\$AL}(\text{\$24})\text{\$AL}(\text{\$25})} \bar{\varepsilon }^{*\text{\$AL}(\text{\$24})}(\text{p1}) \bar{\varepsilon }^{*\text{\$AL}(\text{\$25})}(\text{p2})$$
 
 ```mathematica
 GA[\[Mu], \[Nu]] LC[\[Mu], \[Nu]][p1, p2]
 ComplexConjugate[%]
 ```
 
-$$\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu } \bar{\epsilon }^{\mu \nu \overline{\text{p1}}\overline{\text{p2}}}$$
+$$\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu } \bar{\epsilon }^{\mu \nu \overline{\text{p1}}\;\overline{\text{p2}}}$$
 
-$$\bar{\gamma }^{\text{$\$$AL}(\text{$\$$26})}.\bar{\gamma }^{\text{$\$$AL}(\text{$\$$27})} \bar{\epsilon }^{\text{$\$$AL}(\text{$\$$27})\text{$\$$AL}(\text{$\$$26})\overline{\text{p1}}\overline{\text{p2}}}$$
+$$\bar{\gamma }^{\text{\$AL}(\text{\$26})}.\bar{\gamma }^{\text{\$AL}(\text{\$27})} \bar{\epsilon }^{\text{\$AL}(\text{\$27})\text{\$AL}(\text{\$26})\overline{\text{p1}}\;\overline{\text{p2}}}$$
 
 This behavior can be disabled by setting the option `FCRenameDummyIndices` to `False`.
 
@@ -80,7 +92,7 @@ This behavior can be disabled by setting the option `FCRenameDummyIndices` to `F
 ComplexConjugate[GA[\[Mu], \[Nu]] LC[\[Mu], \[Nu]][p1, p2], FCRenameDummyIndices -> False]
 ```
 
-$$\bar{\gamma }^{\nu }.\bar{\gamma }^{\mu } \bar{\epsilon }^{\mu \nu \overline{\text{p1}}\overline{\text{p2}}}$$
+$$\bar{\gamma }^{\nu }.\bar{\gamma }^{\mu } \bar{\epsilon }^{\mu \nu \overline{\text{p1}}\;\overline{\text{p2}}}$$
 
 If particular variables must be replaced with their conjugate values, use the option `Conjugate`.
 
@@ -98,7 +110,7 @@ ComplexConjugate[GA[\[Mu]] . (c1 GA[6] + c2 GA[7]) . GA[\[Nu]], Conjugate -> {c1
 % // StandardForm
 ```
 
-$$\bar{\gamma }^{\nu }.\left(\bar{\gamma }^7 \text{c1}^*+\bar{\gamma }^6 \text{c2}^*\right).\bar{\gamma }^{\mu }$$
+$$\bar{\gamma }^{\nu }.\left(\bar{\gamma }^7 \;\text{c1}^*+\bar{\gamma }^6 \;\text{c2}^*\right).\bar{\gamma }^{\mu }$$
 
 ```
 (*DiracGamma[LorentzIndex[\[Nu]]] . (Conjugate[c2] DiracGamma[6] + Conjugate[c1] DiracGamma[7]) . DiracGamma[LorentzIndex[\[Mu]]]*)

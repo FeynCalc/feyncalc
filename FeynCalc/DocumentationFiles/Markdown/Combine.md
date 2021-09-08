@@ -4,7 +4,7 @@
 
 ### See also
 
-[Factor2](Factor2).
+[Overview](Extra/FeynCalc.md), [Factor2](Factor2.md).
 
 ### Examples
 

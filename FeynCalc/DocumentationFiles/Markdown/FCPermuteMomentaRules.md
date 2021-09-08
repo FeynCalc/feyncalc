@@ -4,7 +4,7 @@
 
 ### See also
 
-[FCReplaceMomenta](FCReplaceMomenta).
+[Overview](Extra/FeynCalc.md), [FCReplaceMomenta](FCReplaceMomenta.md).
 
 ### Examples
 
@@ -13,7 +13,7 @@ FCPermuteMomentaRules[{p1, p2}]
 f[p1, p2] /. %
 ```
 
-$$\{\{\},\{\text{p1}\to \text{p2},\text{p2}\to \text{p1}\}\}$$
+$$\{\{\},\{\text{p1}\to \;\text{p2},\text{p2}\to \;\text{p1}\}\}$$
 
 $$\{f(\text{p1},\text{p2}),f(\text{p2},\text{p1})\}$$
 
@@ -25,6 +25,6 @@ f[p1, p2, p3] /. %
 
 ```
 
-$$\{\{\},\{\text{p1}\to \text{p2},\text{p2}\to \text{p1}\},\{\text{p1}\to \text{p3},\text{p3}\to \text{p1}\},\{\text{p2}\to \text{p3},\text{p3}\to \text{p2}\},\{\text{p1}\to \text{p2},\text{p2}\to \text{p3},\text{p3}\to \text{p1}\},\{\text{p1}\to \text{p3},\text{p2}\to \text{p1},\text{p3}\to \text{p2}\}\}$$
+$$\{\{\},\{\text{p1}\to \;\text{p2},\text{p2}\to \;\text{p1}\},\{\text{p1}\to \;\text{p3},\text{p3}\to \;\text{p1}\},\{\text{p2}\to \;\text{p3},\text{p3}\to \;\text{p2}\},\{\text{p1}\to \;\text{p2},\text{p2}\to \;\text{p3},\text{p3}\to \;\text{p1}\},\{\text{p1}\to \;\text{p3},\text{p2}\to \;\text{p1},\text{p3}\to \;\text{p2}\}\}$$
 
 $$\{f(\text{p1},\text{p2},\text{p3}),f(\text{p2},\text{p1},\text{p3}),f(\text{p3},\text{p2},\text{p1}),f(\text{p1},\text{p3},\text{p2}),f(\text{p2},\text{p3},\text{p1}),f(\text{p3},\text{p1},\text{p2})\}$$

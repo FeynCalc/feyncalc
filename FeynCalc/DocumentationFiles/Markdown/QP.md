@@ -8,6 +8,6 @@
 
 ### See also
 
-[QuarkPropagator](QuarkPropagator).
+[Overview](Extra/FeynCalc.md), [QuarkPropagator](QuarkPropagator.md).
 
 ### Examples

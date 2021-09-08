@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(*Series2 *)
+(*Series2*)
 
 
 (* ::Text:: *)
@@ -20,7 +20,7 @@
 
 
 (* ::Text:: *)
-(*[Series3](Series3).*)
+(*[Overview](Extra/FeynCalc.md), [Series3](Series3.md).*)
 
 
 (* ::Subsection:: *)

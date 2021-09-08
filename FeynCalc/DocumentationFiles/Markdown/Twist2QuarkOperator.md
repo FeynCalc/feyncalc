@@ -4,6 +4,6 @@ Twist2QuarkOperator[p] or Twist2QuarkOperator[p,_,_] yields the quark-antiquark 
 
 ### See also
 
-[Twist2GluonOperator](Twist2GluonOperator).
+[Overview](Extra/FeynCalc.md), [Twist2GluonOperator](Twist2GluonOperator.md).
 
 ### Examples

@@ -6,6 +6,6 @@ For example, `ExpandScalarProduct` can't be naively cached, because its result d
 
 ### See also
 
-[FCShowCache](FCShowCache).
+[Overview](Extra/FeynCalc.md), [FCShowCache](FCShowCache.md).
 
 ### Examples

@@ -12,7 +12,7 @@ The dimension and the name of the coupling constant are determined by the option
 
 ### See also
 
-[GluonPropagator](GluonPropagator), [GluonGhostVertex](GluonGhostVertex).
+[Overview](Extra/FeynCalc.md), [GluonPropagator](GluonPropagator.md), [GluonGhostVertex](GluonGhostVertex.md).
 
 ### Examples
 

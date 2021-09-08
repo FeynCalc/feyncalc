@@ -4,7 +4,7 @@ FCEnableTraditionalFormOutput[] sets the output format of the current FrontEnd t
 
 ### See also
 
-[$FCTraditionalFormOutput]($FCTraditionalFormOutput), [FCDisableTraditionalFormOutput](FCDisableTraditionalFormOutput).
+[Overview](Extra/FeynCalc.md), [$FCTraditionalFormOutput]($FCTraditionalFormOutput.md), [FCDisableTraditionalFormOutput](FCDisableTraditionalFormOutput.md).
 
 ### Examples
 

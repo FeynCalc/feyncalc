@@ -4,7 +4,7 @@
 
 ### See also
 
-[SimplifyPolyLog](SimplifyPolyLog).
+[Overview](Extra/FeynCalc.md), [SimplifyPolyLog](SimplifyPolyLog.md).
 
 ### Examples
 
@@ -41,7 +41,7 @@ $$-\text{Li}_3(1-x)+\text{Li}_2(1-x) \log (1-x)+\frac{1}{2} \log (x) \log ^2(1-x
 Nielsen[1, 3, x, PolyLog -> True]
 ```
 
-$$-\text{Li}_4(1-x)-\frac{1}{2} \text{Li}_2(1-x) \log ^2(1-x)+\text{Li}_3(1-x) \log (1-x)-\frac{1}{6} \log (x) \log ^3(1-x)+\frac{\pi ^4}{90}$$
+$$-\text{Li}_4(1-x)-\frac{1}{2} \;\text{Li}_2(1-x) \log ^2(1-x)+\text{Li}_3(1-x) \log (1-x)-\frac{1}{6} \log (x) \log ^3(1-x)+\frac{\pi ^4}{90}$$
 
 ```mathematica
 Nielsen[3, 1, x, PolyLog -> True]

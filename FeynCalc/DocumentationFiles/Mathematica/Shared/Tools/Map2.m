@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(*Map2 *)
+(*Map2*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[NTerms](NTerms).*)
+(*[Overview](Extra/FeynCalc.md), [NTerms](NTerms.md).*)
 
 
 (* ::Subsection:: *)

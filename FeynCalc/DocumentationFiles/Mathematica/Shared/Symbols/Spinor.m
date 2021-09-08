@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`Spinor[p, m, o]` is the head of Dirac spinors. Which of the spinors $u, $v$, $\bar{u}$ or $\bar{v}$ is understood, depends on the sign of the momentum argument `p` and the relative position of `Spinor` in the chain.*)
+(*`Spinor[p, m, o]` is the head of Dirac spinors. Which of the spinors $u$, $v$, $\bar{u}$ or $\bar{v}$ is understood, depends on the sign of the momentum argument `p` and the relative position of `Spinor` in the chain.*)
 
 
 (* ::Text:: *)
@@ -40,7 +40,7 @@
 
 
 (* ::Text:: *)
-(*[FermionSpinSum](FermionSpinSum), [DiracSimplify](DiracSimplify), [SpinorU](SpinorU), [SpinorV](SpinorV), [SpinorUBar](SpinorUBar), [SpinorVBar](SpinorVBar), [SpinorUBarD](SpinorUBarD), [SpinorUD](SpinorUD), [SpinorVD](SpinorVD), [SpinorVBarD](SpinorVBarD).*)
+(*[Overview](Extra/FeynCalc.md), [FermionSpinSum](FermionSpinSum.md), [DiracSimplify](DiracSimplify.md), [SpinorU](SpinorU.md), [SpinorV](SpinorV.md), [SpinorUBar](SpinorUBar.md), [SpinorVBar](SpinorVBar.md), [SpinorUBarD](SpinorUBarD.md), [SpinorUD](SpinorUD.md), [SpinorVD](SpinorVD.md), [SpinorVBarD](SpinorVBarD.md).*)
 
 
 (* ::Subsection:: *)

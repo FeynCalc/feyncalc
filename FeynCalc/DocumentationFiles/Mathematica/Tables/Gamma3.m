@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(*Gamma3 *)
+(*Gamma3*)
 
 
 (* ::Text:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Gamma1](Gamma1), [Gamma2](Gamma2).*)
+(*[Overview](Extra/FeynCalc.md), [Gamma1](Gamma1.md), [Gamma2](Gamma2.md).*)
 
 
 (* ::Subsection:: *)

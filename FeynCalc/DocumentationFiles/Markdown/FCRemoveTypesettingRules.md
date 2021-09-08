@@ -4,7 +4,7 @@
 
 ### See also
 
-[FCAttachTypesettingRule](FCAttachTypesettingRule).
+[Overview](Extra/FeynCalc.md), [FCAttachTypesettingRule](FCAttachTypesettingRule.md).
 
 ### Examples
 

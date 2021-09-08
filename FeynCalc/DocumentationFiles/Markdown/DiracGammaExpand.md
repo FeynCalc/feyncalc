@@ -4,7 +4,7 @@
 
 ### See also
 
-[DiracGamma](DiracGamma), [DiracGammaCombine](DiracGammaCombine), [DiracSimplify](DiracSimplify), [DiracTrick](DiracTrick).
+[Overview](Extra/FeynCalc.md), [DiracGamma](DiracGamma.md), [DiracGammaCombine](DiracGammaCombine.md), [DiracSimplify](DiracSimplify.md), [DiracTrick](DiracTrick.md).
 
 ### Examples
 
@@ -49,7 +49,7 @@ DiracGammaExpand[%, Momentum -> {q1}]
 
 $$\text{c1} \gamma ^{\mu }.(m+\gamma \cdot (\text{p1}+\text{p2})).\gamma ^{\nu }+\text{c2} \gamma ^{\mu }.(m+\gamma \cdot (\text{q1}+\text{q2})).\gamma ^{\nu }$$
 
-$$\text{c1} \gamma ^{\mu }.(m+\gamma \cdot (\text{p1}+\text{p2})).\gamma ^{\nu }+\text{c2} \gamma ^{\mu }.(m+\gamma \cdot \text{q1}+\gamma \cdot \text{q2}).\gamma ^{\nu }$$
+$$\text{c1} \gamma ^{\mu }.(m+\gamma \cdot (\text{p1}+\text{p2})).\gamma ^{\nu }+\text{c2} \gamma ^{\mu }.(m+\gamma \cdot \;\text{q1}+\gamma \cdot \;\text{q2}).\gamma ^{\nu }$$
 
 If the input expression contains `DiracSigma`,  `DiracGammaExpand` will expand Feynman slashes inside `DiracSigma` and call `DiracSigmaExpand`.
 

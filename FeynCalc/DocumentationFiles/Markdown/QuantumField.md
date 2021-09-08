@@ -6,7 +6,7 @@
 
 ### See also
 
-[FeynRule](FeynRule), [FCPartialD](FCPartialD), [ExpandPartialD](ExpandPartialD).
+[Overview](Extra/FeynCalc.md), [FeynRule](FeynRule.md), [FCPartialD](FCPartialD.md), [ExpandPartialD](ExpandPartialD.md).
 
 ### Examples
 
