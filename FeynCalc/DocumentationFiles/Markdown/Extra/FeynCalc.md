@@ -275,18 +275,22 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
  - [FCFeynmanParameterJoin](../FCFeynmanParameterJoin.md), [FCFeynmanParametrize](../FCFeynmanParametrize.md), [FCFeynmanPrepare](../FCFeynmanPrepare.md), [FCFeynmanProjectivize](../FCFeynmanProjectivize.md) - derivation and manipulation of Feynman parameter integrals
  - [FCLoopAddEdgeTags](../FCLoopAddEdgeTags.md), [FCLoopGraphPlot](../FCLoopGraphPlot.md), [FCLoopIntegralToGraph](../FCLoopIntegralToGraph.md), [FCLoopPropagatorsToLineMomenta](../FCLoopPropagatorsToLineMomenta.md) - create and plot graphs representing loop integrals
  - [FCLoopApplyTopologyMappings](../FCLoopApplyTopologyMappings.md), [FCLoopCreateRuleGLIToGLI](../FCLoopCreateRuleGLIToGLI.md), [FCLoopFindMomentumShifts](../FCLoopFindMomentumShifts.md), [FCLoopFindIntegralMappings](../FCLoopFindIntegralMappings.md), [FCLoopFindSubtopologies](../FCLoopFindSubtopologies.md), [FCLoopFindTopologies](../FCLoopFindTopologies.md), [FCLoopFindTopologyMappings](../FCLoopFindTopologyMappings.md), [FCLoopPakOrder](../FCLoopPakOrder.md), [FCLoopToPakForm](../FCLoopToPakForm.md) - loop integral topology identification and minimization
+ - [FCLoopBasisCreateScalarProducts](../FCLoopBasisCreateScalarProducts.md) - auxiliary function that generates all possible loop momenta dependent scalar products
  - [FCLoopBasisFindCompletion](../FCLoopBasisFindCompletion.md) - suggest propagators need to have a complete loop integral basis
+ - [FCLoopBasisGetSize](../FCLoopBasisGetSize.md) - returns the number of propagators in a topology
  - [FCLoopBasisIncompleteQ](../FCLoopBasisIncompleteQ.md) - checks if the propagators of a loop integral do not form a basis
  - [FCLoopBasisOverdeterminedQ](../FCLoopBasisOverdeterminedQ.md) - checks if the propagators of a loop integral are linearly dependent
- - [FCLoopBasisSplit](../FCLoopBasisSplit.md) - checks if the loop integral factorizes into a product of separate integrals
- - [FCLoopBasisGetSize](../FCLoopBasisGetSize.md) - returns the number of propagators in a topology
  - [FCLoopBasisPropagatorsToTopology](../FCLoopBasisPropagatorsToTopology.md) - auxiliary function that generates a list of propagators to describe a topology
- - [FCLoopBasisCreateScalarProducts](../FCLoopBasisCreateScalarProducts.md) - auxiliary function that generates all possible loop momenta dependent scalar products
+ - [FCLoopBasisSplit](../FCLoopBasisSplit.md) - checks if the loop integral factorizes into a product of separate integrals
  - [FCLoopBasisExtract](../FCLoopBasisExtract.md) - auxiliary function that extracts the scalar products from a loop integral
  - [FCLoopBasisIntegralToPropagators](../FCLoopBasisIntegralToPropagators.md) - auxiliary function that converts a loop integral into a list of propagators
  - [FCLoopCanonicalize](../FCLoopCanonicalize.md) - auxiliary function that canonicalizes free Lorentz indices of 1-loop integrals
+ - [FCLoopCreateRulesToGLI](../FCLoopCreateRulesToGLI.md) - rewrites scalar products as linear combinations of [GLI](../GLI.md)s with negative indices
  - [FCLoopEikonalPropagatorFreeQ](../FCLoopEikonalPropagatorFreeQ.md) - checks if the integral contains eikonal propagators
  - [FCLoopExtract](../FCLoopExtract.md) - extracts loop integrals
+ - [FCLoopFromGLI](../FCLoopFromGLI.md) - converts [GLI](../GLI.md)s into explicit integrals with [FeynAmpDenominator](../FeynAmpDenominator.md)s
+ - [FCLoopGLIDifferentiate](../FCLoopGLIDifferentiate.md) - differentiates [GLI](../GLI.md)s with respect to a scalar variable.
+ - [FCLoopGLIExpand](../FCLoopGLIExpand.md) - series expansion of expressions with [GLI](../GLI.md)s with respect to a scalar variable
  - [FCLoopIBPReducableQ](../FCLoopIBPReducableQ.md) - checks if the integral contains propagators raised to integer powers
  - [FCLoopIsolate](../FCLoopIsolate.md) - wraps loop integrals into specified heads
  - [FCLoopMixedIntegralQ](../FCLoopMixedIntegralQ.md) - checks if the integral depends on both $4$-vectors and $3$-vectors
@@ -297,13 +301,16 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
  - [FCLoopPropagatorPowersExpand](../FCLoopPropagatorPowersExpand.md) - rewrites propagators raised to integer powers as products of propagators
  - [FCLoopSamePropagatorHeadsQ](../FCLoopSamePropagatorHeadsQ.md) - checks if the integral contains different types of propagators
  - [FCLoopRemoveNegativePropagatorPowers](../FCLoopRemoveNegativePropagatorPowers.md) - rewrites propagators rasied to negative integer powers as numerators
+ - [FCLoopSingularityStructure](../FCLoopSingularityStructure.md) - useful information on possible UV and IR singularities of the integral
  - [FCLoopSolutionList](../FCLoopSolutionList.md) - auxiliary function that processes the output of [FCLoopCanonicalize](../FCLoopCanonicalize.md)
  - [FCLoopSplit](../FCLoopSplit.md) - splits the expressions into pieces that contain different types of loop integrals
+ - [FCLoopValidTopologyQ](../FCLoopValidTopologyQ.md) - validates an [FCTopology](../FCTopology.md) object
  - [FCMultiLoopTID](../FCMultiLoopTID.md) - tensor reduction of multi-loop integrals (only for non-zero Gram determinants)
  - [FeynAmpDenominatorCombine](../FeynAmpDenominatorCombine.md) - combines products of propagators
  - [FeynAmpDenominatorExplicit](../FeynAmpDenominatorExplicit.md) - rewrites [FeynAmpDenominator](../FeynAmpDenominator.md) in terms of scalar products and masses
  - [FeynAmpDenominatorSimplify](../FeynAmpDenominatorSimplify.md), [FDS](../FDS.md) - simplifies loop integrals by doing shifts and detects integrals that vanish by symmetry
  - [FeynAmpDenominatorSplit](../FeynAmpDenominatorSplit.md) - splits all [FeynAmpDenominator](../FeynAmpDenominator.md)s into products of single propagators
+ - [FromGFAD](../FromGFAD.md) - tries to convert generic propagators ([GenericPropagatorDenominator](../GenericPropagatorDenominator.md)) into the standard ones ([StandardPropagatorDenominator](../StandardPropagatorDenominator.md), [CartesianPropagatorDenominator](../CartesianPropagatorDenominator.md))
  - [FromTFI](../FromTFI.md) - translates `TFI`, `TVI` and `TJI` in the Tarcer-notation to the FeynCalc notation
  - [GammaExpand](../GammaExpand.md) - rewrites $\Gamma(n+m)$ where $n$ is an integer
  - [GenPaVe](../GenPaVe.md), [PaVe](../PaVe.md) - denotes invariant Passarino-Veltman integrals
@@ -333,6 +340,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
  - [TIDL](../TIDL.md) - library of tensor integral decomposition formulas
  - [ToDistribution](../ToDistribution.md) - introduces [DeltaFunction](../DeltaFunction.md), [DeltaFunctionPrime](../DeltaFunctionPrime.md) and [PlusDistribution](../PlusDistribution.md)
  - [ToFI](../ToFI.md), [ToTFI](../ToTFI.md) - converts 1- and 2-loop scalar self-energy integrals to the Tarcer notation
+ - [ToGFAD](../ToSFAD.md) - converts [FAD](../FAD.md)s, [SFAD](../SFAD.md)s and [CFAD](../CFAD.md)s to [GFAD](../GFAD.md)s
  - [ToPaVe](../ToPaVe.md) - converts scalar 1-loop integrals to Passarino-Veltman scalar functions
  - [ToPaVe2](../ToPaVe2.md) - rewrites Passarino-Veltman functions [A0](../A0.md), [A00](../A00.md), [B0](../B0.md), [B1](../B1.md), [B00](../B00.md), [B11](../B11.md), [C0](../C0.md) and [D0](../D0.md) as [PaVe](../PaVe.md) objects
  - [ToSFAD](../ToSFAD.md) - converts [FAD](../FAD.md)s to [SFAD](../SFAD.md)s
