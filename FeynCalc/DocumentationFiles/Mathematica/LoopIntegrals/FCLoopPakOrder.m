@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`FCLoopPakOrder[poly, {x1, x2, ...}]` determines a canonical ordering of the Feynman parameters `x1, x2, ...` in the polynomial `poly`. *)
+(*`FCLoopPakOrder[poly, {x1, x2, ...}]` determines a canonical ordering of the Feynman parameters `x1, x2, ...` in the polynomial `poly`.*)
 
 
 (* ::Text:: *)

@@ -4,7 +4,7 @@
 
 
 (* ::Section:: *)
-(*FCClausen *)
+(*FCClausen*)
 
 
 (* ::Text:: *)

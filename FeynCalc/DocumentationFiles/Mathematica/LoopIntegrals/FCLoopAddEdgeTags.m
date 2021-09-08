@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`FCLoopAddEdgeTags[edges_List, labels_List]` adds user-defined styles and labels to the given edges using the provided list of labels. Styles and labels are attached using the replacement rules provided via the `Style` and `Labeled` options. *)
+(*`FCLoopAddEdgeTags[edges_List, labels_List]` adds user-defined styles and labels to the given edges using the provided list of labels. Styles and labels are attached using the replacement rules provided via the `Style` and `Labeled` options.*)
 
 
 (* ::Subsection:: *)

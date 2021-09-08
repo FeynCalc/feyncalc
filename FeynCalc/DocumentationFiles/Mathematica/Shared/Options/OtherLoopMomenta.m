@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`OtherLoopMomenta` is an option of `ToPaVe`. It takes a list of loop momenta other than `q` that appear in the expression. Knowing about these momenta prevents `ToPaVe` from erroneously converting multi-loop integrals into `PaVe` scalar functions. *)
+(*`OtherLoopMomenta` is an option of `ToPaVe`. It takes a list of loop momenta other than `q` that appear in the expression. Knowing about these momenta prevents `ToPaVe` from erroneously converting multi-loop integrals into `PaVe` scalar functions.*)
 
 
 (* ::Text:: *)

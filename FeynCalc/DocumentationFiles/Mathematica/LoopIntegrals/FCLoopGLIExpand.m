@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`FCLoopGLIExpand[exp, topos, {x, x0, n}]` expands `GLI`s defined via the list of *)
+(*`FCLoopGLIExpand[exp, topos, {x, x0, n}]` expands `GLI`s defined via the list of*)
 (*topologies `topos` in `exp` around `x=x0` to order `n`. Here `x` must be a scalar quantity, e.g.*)
 (*a mass or a scalar product.*)
 

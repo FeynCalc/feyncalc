@@ -17,7 +17,7 @@
 
 
 (* ::Text:: *)
-(*By default `FCFeynmanParametrize` uses normalization that is common in multi-loop calculations, i.e. $\frac{1}}{i \pi^{D/2}}$ or *)
+(*By default `FCFeynmanParametrize` uses normalization that is common in multi-loop calculations, i.e. $\frac{1}}{i \pi^{D/2}}$ or*)
 (*$\frac{1}}{\pi^{D/2}}$ per loop for Minkowski or Euclidean/Cartesian integrals respectively. If you want to have the standard*)
 (*$\frac{1}{(2 \pi)^D}$ normalization or yet another value, please set the option `FeynmanIntegralPrefactor` accordingly. Following values are available*)
 

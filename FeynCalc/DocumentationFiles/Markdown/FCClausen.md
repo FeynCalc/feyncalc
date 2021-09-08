@@ -1,4 +1,4 @@
-## FCClausen 
+## FCClausen
 
 `FCClausen[x,y]` gives the Clausen function with arguments `x` and `y`.
 
