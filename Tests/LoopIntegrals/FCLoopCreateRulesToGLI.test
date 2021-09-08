@@ -1,0 +1,92 @@
+
+
+(* :Title: FCLoopCreateRulesToGLI.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2021 Rolf Mertig
+	Copyright (C) 1997-2021 Frederik Orellana
+	Copyright (C) 2014-2021 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopCreateRulesToGLI		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopCreateRulesToGLI =
+({
+{"fcstFCLoopCreateRulesToGLI-ID1",
+"FCLoopCreateRulesToGLI[FCTopology[topo1,{SFAD[p1]},{p1},{},{},{}],\
+FCE\[Rule]True]", "{SPD[p1, p1] -> GLI[topo1, {-1}]}"},
+{"fcstFCLoopCreateRulesToGLI-ID2",
+"FCLoopCreateRulesToGLI[FCTopology[topo1,{SFAD[p1],SFAD[p2],SFAD[\
+p1-p2]},{p1,p2},{},{},{}],FCE\[Rule]True]",
+"{SPD[p1, p1] -> GLI[topo1, {-1, 0, 0}], SPD[p2, p2] -> GLI[topo1, \
+{0, -1, 0}], SPD[p1, p2] -> (GLI[topo1, {-1, 0, 0}] + GLI[topo1, {0, \
+-1, 0}] - GLI[topo1, {0, 0, -1}])/2}"},
+{"fcstFCLoopCreateRulesToGLI-ID3",
+"FCLoopCreateRulesToGLI[FCTopology[test1,{SFAD[{{p1,0},{0,1},1}],\
+SFAD[{{p2,0},{0,1},1}],SFAD[{{p3,0},{0,1},1}],SFAD[{{Q-p1-p2-p3,0},{0,\
+1},1}],SFAD[{{p2+p3,0},{0,1},1}],SFAD[{{p1+p2+p3,0},{0,1},1}],SFAD[{{\
+Q-p2-p3,0},{0,1},1}],SFAD[{{Q-p3,0},{0,1},1}],SFAD[{{p1+p2,0},{0,1},1}\
+]},{p1,p2,p3},{Q},{},{}],FCE->True]",
+"{SPD[p1, p1] -> GLI[test1, {-1, 0, 0, 0, 0, 0, 0, 0, 0}], SPD[p2, \
+p2] -> GLI[test1, {0, -1, 0, 0, 0, 0, 0, 0, 0}], SPD[p3, p3] -> \
+GLI[test1, {0, 0, -1, 0, 0, 0, 0, 0, 0}], SPD[p1, p2] -> (-GLI[test1, \
+{-1, 0, 0, 0, 0, 0, 0, 0, 0}] - GLI[test1, {0, -1, 0, 0, 0, 0, 0, 0, \
+0}] + GLI[test1, {0, 0, 0, 0, 0, 0, 0, 0, -1}])/2, SPD[p1, p3] -> \
+(GLI[test1, {0, -1, 0, 0, 0, 0, 0, 0, 0}] - GLI[test1, {0, 0, 0, 0, \
+-1, 0, 0, 0, 0}] + GLI[test1, {0, 0, 0, 0, 0, -1, 0, 0, 0}] - \
+GLI[test1, {0, 0, 0, 0, 0, 0, 0, 0, -1}])/2, SPD[p2, p3] -> \
+(-GLI[test1, {0, -1, 0, 0, 0, 0, 0, 0, 0}] - GLI[test1, {0, 0, -1, 0, \
+0, 0, 0, 0, 0}] + GLI[test1, {0, 0, 0, 0, -1, 0, 0, 0, 0}])/2, \
+SPD[p1, Q] -> (-GLI[test1, {0, 0, 0, -1, 0, 0, 0, 0, 0}] - GLI[test1, \
+{0, 0, 0, 0, -1, 0, 0, 0, 0}] + GLI[test1, {0, 0, 0, 0, 0, -1, 0, 0, \
+0}] + GLI[test1, {0, 0, 0, 0, 0, 0, -1, 0, 0}])/2, SPD[p2, Q] -> \
+(-GLI[test1, {0, 0, -1, 0, 0, 0, 0, 0, 0}] + GLI[test1, {0, 0, 0, 0, \
+-1, 0, 0, 0, 0}] - GLI[test1, {0, 0, 0, 0, 0, 0, -1, 0, 0}] + \
+GLI[test1, {0, 0, 0, 0, 0, 0, 0, -1, 0}])/2, SPD[p3, Q] -> \
+(GLI[test1, {0, 0, -1, 0, 0, 0, 0, 0, 0}] - GLI[test1, {0, 0, 0, 0, \
+0, 0, 0, -1, 0}] + SPD[Q, Q])/2}"},
+{"fcstFCLoopCreateRulesToGLI-ID4",
+"FCLoopCreateRulesToGLI[FCTopology[topo1,{SFAD[{p1,m^2}]},{p1},{},{\
+},{}],FCE\[Rule]True]", "{SPD[p1, p1] -> m^2 + GLI[topo1, {-1}]}"},
+{"fcstFCLoopCreateRulesToGLI-ID5",
+"FCLoopCreateRulesToGLI[FCTopology[topo1,{SFAD[{p1,m1^2}],SFAD[{p2,\
+m2^2}],SFAD[{p1-p2,m3^2}]},{p1,p2},{},{},{}],FCE\[Rule]True]",
+"{SPD[p1, p1] -> m1^2 + GLI[topo1, {-1, 0, 0}], SPD[p2, p2] -> \
+m2^2 + GLI[topo1, {0, -1, 0}], SPD[p1, p2] -> (m1^2 + m2^2 - m3^2 + \
+GLI[topo1, {-1, 0, 0}] + GLI[topo1, {0, -1, 0}] - GLI[topo1, {0, 0, \
+-1}])/2}"},
+{"fcstFCLoopCreateRulesToGLI-ID6",
+"FCLoopCreateRulesToGLI[FCTopology[prop2Lv1,
+{SFAD[{p1, m1^2}], SFAD[{p2, m2^2}], SFAD[p1 - q], SFAD[p2 - q], \
+SFAD[{p1 - p2, m3^2}]}, {p1, p2}, {Q}, {}, {}],FCE->True]",
+"{SPD[p1, p1] -> m1^2 + GLI[prop2Lv1, {-1, 0, 0, 0, 0}], SPD[p2, \
+p2] -> m2^2 + GLI[prop2Lv1, {0, -1, 0, 0, 0}], SPD[p1, p2] -> (m1^2 + \
+m2^2 - m3^2 + GLI[prop2Lv1, {-1, 0, 0, 0, 0}] + GLI[prop2Lv1, {0, -1, \
+0, 0, 0}] - GLI[prop2Lv1, {0, 0, 0, 0, -1}])/2, SPD[p1, q] -> (m1^2 + \
+GLI[prop2Lv1, {-1, 0, 0, 0, 0}] - GLI[prop2Lv1, {0, 0, -1, 0, 0}] + \
+SPD[q, q])/2, SPD[p2, q] -> (m2^2 + GLI[prop2Lv1, {0, -1, 0, 0, 0}] - \
+GLI[prop2Lv1, {0, 0, 0, -1, 0}] + SPD[q, q])/2}"},
+{"fcstFCLoopCreateRulesToGLI-ID7", "FCLoopCreateRulesToGLI[
+FCTopology[prop3Lv1,{SFAD[p1],SFAD[p2],SFAD[p3],SFAD[p1-p2],SFAD[p2-\
+p3],SFAD[p1+q1],
+	SFAD[p2+q1],SFAD[p3+q1],SFAD[{{0,p1.p3}}]},{p1,p2,p3},{q1},{},{}],
+FCTopology[prop3L2,{SFAD[p1],SFAD[p2],SFAD[p3],SFAD[p1-p2],SFAD[p2-p3]\
+,SFAD[p1-p3],
+	SFAD[p1+q1],SFAD[p3+q1],SFAD[{{0,(p1-p2).q1}}]},{p1,p2,p3},{q1},{},{}\
+],
+FCTopology[prop3L3,{SFAD[p1],SFAD[p1-p4],SFAD[p3],SFAD[p4],SFAD[p1-p3-\
+p4],SFAD[p1+q1],
+	SFAD[p3+p4+q1],SFAD[p3+q1],SFAD[{{0,(p4).q1}}]},{p1,p3,p4},{q1},{},{}\
+]]", "FCLoopCreateRulesToGLI[FCTopology[prop3Lv1, {SFAD[p1], \
+SFAD[p2], SFAD[p3], SFAD[p1 - p2], SFAD[p2 - p3], SFAD[p1 + q1], \
+SFAD[p2 + q1], SFAD[p3 + q1], SFAD[{{0, p1 . p3}}]}, {p1, p2, p3}, \
+{q1}, {}, {}], FCTopology[prop3L2, {SFAD[p1], SFAD[p2], SFAD[p3], \
+SFAD[p1 - p2], SFAD[p2 - p3], SFAD[p1 - p3], SFAD[p1 + q1], SFAD[p3 + \
+q1], SFAD[{{0, (p1 - p2) . q1}}]}, {p1, p2, p3}, {q1}, {}, {}], \
+FCTopology[prop3L3, {SFAD[p1], SFAD[p1 - p4], SFAD[p3], SFAD[p4], \
+SFAD[p1 - p3 - p4], SFAD[p1 + q1], SFAD[p3 + p4 + q1], SFAD[p3 + q1], \
+SFAD[{{0, p4 . q1}}]}, {p1, p3, p4}, {q1}, {}, {}]]"}
+});
