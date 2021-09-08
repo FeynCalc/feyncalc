@@ -118,6 +118,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
  - [FCSplit](../FCSplit.md), [FCProductSplit](../FCProductSplit.md), [PartitHead](../PartitHead.md), [SelectFree](../SelectFree.md), [SelectNotFree](../SelectNotFree.md), [SelectFree2](../SelectFree2.md), [SelectNotFree2](../SelectNotFree2.md), [SelectSplit](../SelectSplit.md) - alternatives to Mathematica's `Select`
  - [FCSubsetQ](../FCSubsetQ.md) - alternative to Mathematica's `SubsetQ`
  - [FCSymmetrize](../FCSymmetrize.md) - symmetrizes with respect to the given variables
+ - [FeynCalcHowToCite](../FeynCalcHowToCite.md) - lists relevant FeynCalc publications
  - [FI](../FI.md) - changes the output format to `InputForm`
  - [FreeQ2](../FreeQ2.md) - alternative to Mathematica's `FreeQ`
  - [FRH](../FRH.md) - alternative to Mathematica's `ReleaseHold`

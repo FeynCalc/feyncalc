@@ -296,19 +296,14 @@ If[ $FeynCalcStartupMessages =!= False,
 			Style[" or visit the ", "Text"],
 			Style[DisplayForm@ButtonBox["forum.",ButtonData :> {URL["https://github.com/FeynCalc/feyncalc/discussions"], None},BaseStyle -> "Hyperlink",
 				ButtonNote -> "http://www.feyncalc.org/forum/"],"Text"]];
-	Print[ Style["To save your and our time, please check our ","Text"], Style[DisplayForm@ButtonBox["FAQ",ButtonData :> {URL["https://github.com/FeynCalc/feyncalc/wiki/FAQ"], None},BaseStyle -> "Hyperlink",
-				ButtonNote -> "https://github.com/FeynCalc/feyncalc/wiki"],"Text"] , Style[" for answers to some common FeynCalc questions.","Text"] ];
-	Print[ Style["See also the supplied ","Text"],
-
-	Style[DisplayForm@ButtonBox["examples.", BaseStyle -> "Hyperlink",	ButtonFunction :>
+	Print[Style["Please check our ","Text"], Style[DisplayForm@ButtonBox["FAQ",ButtonData :> {URL["https://github.com/FeynCalc/feyncalc/wiki/FAQ"], None},BaseStyle -> "Hyperlink",
+				ButtonNote -> "https://github.com/FeynCalc/feyncalc/wiki"],"Text"] , Style[" for answers to some common FeynCalc questions and have a look at the supplied ","Text"],
+				Style[DisplayForm@ButtonBox["examples.", BaseStyle -> "Hyperlink",	ButtonFunction :>
 							SystemOpen[FileNameJoin[{$FeynCalcDirectory, "Examples"}]],
-							Evaluator -> Automatic, Method -> "Preemptive"], "Text"],
-	Style[" If you use FeynCalc in your research, please cite","Text"]];
+							Evaluator -> Automatic, Method -> "Preemptive"], "Text"]];
+	Print[Style["If you use FeynCalc in your research, please evaluate FeynCalcHowToCite[] to learn how to cite this software.","Text"]];
+	Print[Style["Please keep in mind that the proper academic attribution of our work is crucial to ensure the future development of this package!", {"Text", Italic}]];
 
-
-	Print [Style[" \[Bullet] V. Shtabovenko, R. Mertig and F. Orellana, Comput.Phys.Commun. 256 (2020) 107478, arXiv:2001.04407.","Text"]];
-	Print [Style[" \[Bullet] V. Shtabovenko, R. Mertig and F. Orellana, Comput.Phys.Commun. 207 (2016) 432-444, arXiv:1601.01167.","Text"]];
-	Print [Style[" \[Bullet] R. Mertig, M. B\[ODoubleDot]hm, and A. Denner, Comput. Phys. Commun. 64 (1991) 345-359.","Text"]]
 	];
 
 

@@ -243,6 +243,10 @@ WriteStringOutput::usage =
 "UseWriteStringOutput an option for FCPrint. It specifies, to which \
 stream WriteString should output the expression";
 
+FeynCalcHowToCite::usage =
+"FeynCalcHowToCite[] lists publications that should be cited when \
+mentioning FeynCalc in scientific works.";
+
 FeynCalc::faerror =
 "FeynArts not found or damaged. Please download the FeynArts \
 tarball from www.feynarts.de, unpack it to `1` and restart FeynCalc.";
@@ -420,6 +424,13 @@ DOT = Dot;
 	In the context of the packages, $ContextPath is typically
 	{"System`", "FeynCalc`"}.
 	*)
+
+FeynCalcHowToCite[]:=
+	(
+	Print [Style[" \[Bullet] V. Shtabovenko, R. Mertig and F. Orellana, Comput.Phys.Commun. 256 (2020) 107478, arXiv:2001.04407.","Text"]];
+	Print [Style[" \[Bullet] V. Shtabovenko, R. Mertig and F. Orellana, Comput.Phys.Commun. 207 (2016) 432-444, arXiv:1601.01167.","Text"]];
+	Print [Style[" \[Bullet] R. Mertig, M. B\[ODoubleDot]hm, and A. Denner, Comput. Phys. Commun. 64 (1991) 345-359.","Text"]];
+	);
 
 SetAttributes[FCPrint, HoldRest];
 
