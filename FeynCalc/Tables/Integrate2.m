@@ -13,14 +13,30 @@
 (* ------------------------------------------------------------------------ *)
 
 Integrate2::usage=
-"Integrate2 is like Integrate, but, schematically, \
-Integrate2[a_Plus, b__] := Map[Integrate2[#, b]&, a]  and \
-Integrate[f[x] DeltaFunction[1-x], {x,0,1}] --> f[1]. \
-Integrate2[1/(1-y),{y,x,1}] is intepreted as distribution, i.e. as \
-Integrate2[1/(1-y),{y,x,1}] --> Log[1-x]. \
-Integrate2 accepts an option Table which can be \
-set to a list of integrals. The format should be \
-{ Hold[Integrate3][ f[a_, x_], {x_,0,1}] :> result /; FreeQ[a,x]}";
+"Integrate2 is like Integrate, but Integrate2[a_Plus, b__] := Map[Integrate2[#,
+b]&, a] ( more linear algebra and partial fraction decomposition is done)
+
+Integrate2[f[x] DeltaFunction[x], x] -> f[0]
+
+Integrate2[f[x] DeltaFunction[x0-x], x] -> f[x0]
+
+Integrate2[f[x] DeltaFunction[a + b x], x] -> Integrate[f[x] (1/Abs[b])
+DeltaFunction[a/b + x], x], where Abs[b] -> b, if b is a symbol, and if b =
+-c, then Abs[-c] -> c, i.e., the variable contained in b is supposed to be
+positive.
+
+ $\\pi ^2$ is replaced by 6 Zeta2.
+
+Integrate2[1/(1-y),{y,x,1}] is interpreted as distribution, i.e. as
+Integrate2[-1/(1-y)],{y, 0, x}] -> Log[1-y].
+
+Integrate2[1/(1-x),{x,0,1}] -> 0
+
+Since Integrate2 does do a reordering and partial fraction decomposition
+before calling the integral table of Integrate3, it will in general be slower
+compared to Integrate3 for sums of integrals. I.e., if the integrand has
+already an expanded form and if partial fraction decomposition is not
+necessary it is more effective to use Integrate3.";
 
 (* ------------------------------------------------------------------------ *)
 

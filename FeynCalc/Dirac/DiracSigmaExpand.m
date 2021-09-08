@@ -16,9 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 DiracSigmaExpand::usage =
-"DiracSigmaExpand[exp] expands all DiracSigma[DiracGamma[Momentum[a]]+ \
-DiracGamma[Momentum[b]] + ..., ...] into (DiracSigma[DiracGamma[Momentum[a]],\
-...] + DiracSigma[DiracGamma[Momentum[b]], ...] + ...).";
+"DiracSigmaExpand[exp] applies linearity to the arguments of DiracSigma.";
 
 DiracSigmaExpand::fail =
 "Something went wrong while expanding DiracSigma's. Evaluation aborted! "

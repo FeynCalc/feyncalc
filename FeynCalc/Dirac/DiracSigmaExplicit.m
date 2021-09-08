@@ -15,10 +15,9 @@
 (* ------------------------------------------------------------------------ *)
 
 DiracSigmaExplicit::usage =
-"DiracSigmaExplicit[exp] inserts in exp the definition of \
-DiracSigma. \n
-DiracSigmaExplict is also an option of various FeynCalc functions \
-that handle the Dirac algebra.";
+"DiracSigmaExplicit[exp] inserts in exp for all DiracSigma its definition.
+DiracSigmaExplict is also an option of DiracSimplify. DiracSigmaExplict is
+also an option of various FeynCalc functions that handle the Dirac algebra.";
 
 DiracSigmaExplicit::failmsg =
 "Error! DiracSigmaExplicit has encountered a fatal problem and must abort the computation. \

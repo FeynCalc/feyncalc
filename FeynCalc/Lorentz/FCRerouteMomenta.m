@@ -17,18 +17,24 @@
 (* ------------------------------------------------------------------------ *)
 
 FCRerouteMomenta::usage =
-"FCRerouteMomenta[exp,{p1,p2,...},{k1,k2,...}] changes the routing of the \
-momenta by exploiting the 4-momentum conservation law p1+p2+... = k1+k2+... \
-The main aim of this function is to simplify the input expression by replacing \
-simple linear combinations of the external momenta with shorter expressions. \
-For example, in a process p1+p2 -> k1+k2+k3, the combination k1+k2-p2 can be \
-replaced with the shorter expression p1-k3. The replacements are applied using \
-the FeynCalcExternal form of the expression. Ideally, this function should be \
-used directly on the output of a diagram generator such as FeynArts or QGRAF.";
+"FCRerouteMomenta[exp, {p1, p2, ...}, {k1, k2, ...}]  changes the routing of
+the momenta by exploiting the 4-momentum conservation law $p_1+p_2+ \\ldots =
+k_1+k_2+ \\ldots$.
+
+The main aim of this function is to simplify the input expression by replacing
+simple linear combinations of the external momenta with shorter expressions.
+
+For example, in a process $a(p_1) + b(p_2) -> c(k_1)+ d(k_2)+ e(k_3)$, the
+combination $k_1+k_2-p_2$ can be replaced with the shorter expression
+$p_1-k_3$.
+
+The replacements are applied using the FeynCalcExternal form of the
+expression. Ideally, this function should be used directly on the output of a
+diagram generator such as FeynArts or QGRAF.";
 
 FCRerouteMomenta::failmsg =
 "Error! FCRerouteMomenta has encountered a fatal problem and must abort the computation. \n
-The problem reads: `1`"
+The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 

@@ -17,8 +17,8 @@
 (* ------------------------------------------------------------------------ *)
 
 PaVeReduce::usage =
-"PaVeReduce[expr] reduces all Passarino-Veltman integrals \
-(i.e. all PaVe's) in expr down to scalar A0, B0, C0 and D0.";
+"PaVeReduce[expr] reduces all Passarino-Veltman integrals (i.e. all PaVe's) in
+expr down to scalar A0, B0, C0 and D0.";
 
 Begin["`Package`"]
 End[]

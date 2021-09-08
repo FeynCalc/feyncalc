@@ -17,9 +17,9 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopMixedToCartesianAndTemporal::usage =
-"FCLoopMixedToCartesianAndTemporal[int, {q1, q2, ...}] attempts to convert loop \
-integrals that contain both Lorentz and Cartesian or temporal indices/momenta to pure \
-temporal and Cartesian indices.";
+"FCLoopMixedToCartesianAndTemporal[int, {q1, q2, ...}] attempts to convert loop
+integrals that contain both Lorentz and Cartesian or temporal indices/momenta
+to pure temporal and Cartesian indices.";
 
 FCLoopMixedToCartesianAndTemporal::failmsg =
 "FCLoopMixedToCartesianAndTemporal has encountered a fatal problem and must abort the computation. \

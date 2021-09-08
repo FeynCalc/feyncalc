@@ -16,11 +16,11 @@
 (* ------------------------------------------------------------------------ *)
 
 FeynAmpDenominatorSplit::usage =
-"FeynAmpDenominatorSplit[expr] splits all FeynAmpDenominator[a,b, ...] \
-into FeynAmpDenominator[a]*FeynAmpDenominator[b] ... . \n
-FeynAmpDenominatorSplit[expr, Momentum->{q1,q2,q3,...}] splits every FeynAmpDenominator \
-in expr into a product of two, one containing q1,q2,q3,... and other momenta, \
-the second without those momenta.";
+"FeynAmpDenominatorSplit[expr] splits all FeynAmpDenominator[a,b, ...] in expr
+into FeynAmpDenominator[a]*FeynAmpDenominator[b]*... .
+FeynAmpDenominatorSplit[expr,  Momentum ->q1] splits all FeynAmpDenominator in
+expr into two products, one containing q1 and other momenta, the second being
+free of q1.";
 
 (* ------------------------------------------------------------------------ *)
 

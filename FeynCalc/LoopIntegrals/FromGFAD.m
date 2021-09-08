@@ -25,8 +25,7 @@ help the function handle nontrivial propagators.
 
 For propagators containing symbolic variables it might be necessary to tell
 the function that those are larger than zero (if applicable), so that
-expressions such as $\\sqrt{\\lambda^2}$ can be simplified accordingly.
-";
+expressions such as $\\sqrt{\\lambda^2}$ can be simplified accordingly.";
 
 FromGFAD::failmsg =
 "Error! FromGFAD has encountered a fatal problem and must abort the computation. \

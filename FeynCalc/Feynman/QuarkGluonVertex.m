@@ -19,13 +19,12 @@ QGV::usage =
 "QGV is equivalent to QuarkGluonVertex.";
 
 QuarkGluonVertex::usage =
-"QuarkGluonVertex[mu, a] or QuarkGluonVertex[{_,mu,a},  {_,_,_} ,  {_,_,_}]  or \
-QuarkGluonVertex[{p,mu,a},  {k,___} ,  {q,___}]  or \
-QuarkGluonVertex[ p,mu,a ,   _,_,_,     _,_,_] gives the  quark-gluon vertex.
+"QuarkGluonVertex[\[Mu], a] gives the Feynman rule for the quark-gluon vertex.
 
-The dimension  and the name of the coupling constant are determined by the \
-options Dimension and CouplingConstant. For explicit expressions use the \
-function Explicit or modify the option Explicit.";
+QGV can be used as an abbreviation of QuarkGluonVertex.
+
+The dimension and the name of the coupling constant are determined by the
+options Dimension and CouplingConstant.";
 
 Begin["`Package`"]
 End[]

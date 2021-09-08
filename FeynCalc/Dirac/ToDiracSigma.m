@@ -15,8 +15,8 @@
 (* ------------------------------------------------------------------------ *)
 
 ToDiracSigma::usage =
-"ToDiracSigma[exp,x,y] substitutes the neighboring Dirac matrices x and y by \
-DiracSigma and the metric tensor.";
+"ToDiracSigma[exp, x, y] substitutes the neighboring Dirac matrices $x$ and $y$
+by DiracSigma and the metric tensor.";
 
 ToDiracSigma::failmsg =
 "Error! ToDiracSigma has encountered a fatal problem and must abort the computation. \

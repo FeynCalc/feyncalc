@@ -6,37 +6,57 @@
 (* ------------------------------------------------------------------------ *)
 
 FreeIndex::usage =
-"FreeIndex is a datatype which is recognized by Contract. \
-Possible use: DataType[mu, FreeIndex] = True.";
+"FreeIndex is a datatype which is recognized by Contract. Possible use:
+DataType[mu, FreeIndex] = True.";
 
 GrassmannParity::usage =
-"GrassmannParity is a datatype. E.g. DataType[F, GrassmannParity] = 1 \
-declares F to be of bosonic type and DataType[F, GrassmannParity] = -1
-of fermionic one.";
+"GrassmannParity is a data type.
+
+E.g. DataType[F, GrassmannParity] = 1 declares F to be of bosonic type and
+DataType[F, GrassmannParity] = -1 of fermionic one.";
 
 NegativeInteger::usage =
-"NegativeInteger is a data type. E.g. DataType[n, NegativeInteger] can \
-be set to True.";
+"NegativeInteger is a data type. E.g. DataType[n, NegativeInteger] can be set
+to True.";
 
 PositiveInteger::usage =
-"PositiveInteger is a data type. E.g. DataType[OPEm, PositiveInteger] \
-gives True.";
+"PositiveInteger is a data type. E.g. DataType[OPEm, PositiveInteger] gives
+True.";
 
 PositiveNumber::usage =
-"PositiveNumber is a data type. E.g. DataType[Epsilon, PositiveNumber] = True (by default). ";
+"PositiveNumber is a data type. E.g. DataType[Epsilon, PositiveNumber] = True
+(by default).";
 
 FCTensor::usage =
 "FCTensor is a data type. E.g. DataType[R, FCTensor] = True.";
 
 FCVariable::usage =
-"FCVariable is a data type. E.g. DataType[z, FCVariable] = True.";
+"FCVariable  is a data type. E.g. DataType[z, FCVariable] = True.";
 
 DataType::usage =
-"DataType[exp, type] = True   defines the object exp to have datatype type. \
-DataType[exp1, exp2, ..., type] defines the objects exp1, exp2, ... to \
-have datatype type. The default setting is DataType[__, _]:=False. \
-To assign a certain data type, do e.g.: DataType[x, PositiveInteger] = True. \n
-DataType[] show the list of available datatypes.";
+"DataType[exp, type] = True defines the object exp to have data-type type.
+
+DataType[exp1, exp2, ..., type] defines the objects exp1, exp2, ... to have
+data-type type.
+
+The default setting is DataType[__, _] := False.
+
+To assign a certain data-type, do, e.g., DataType[x, PositiveInteger] = True.
+Currently used DataTypes: 
+
+- NonCommutative
+
+- PositiveInteger
+
+- NegativeInteger
+
+- PositiveNumber
+
+- FreeIndex
+
+- GrassmannParity
+
+If loaded, PHI adds the DataTypes: UMatrix, UScalar.";
 
 Begin["`Package`"];
 End[]

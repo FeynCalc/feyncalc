@@ -16,16 +16,13 @@
 (* ------------------------------------------------------------------------ *)
 
 FeynAmpDenominatorExplicit::usage =
-"FeynAmpDenominatorExplicit[exp] changes each occurence of \
-PropagatorDenominator[a,b] in exp into 1/(ScalarProduct[a,a]-b^2) and \
-replaces FeynAmpDenominator by Times.";
+"FeynAmpDenominatorExplicit[exp] changes each occurence of
+PropagatorDenominator[a,b] in exp into 1/(SPD[a,a]-b^2) and replaces
+FeynAmpDenominator by Identity.";
 
 FeynAmpDenominatorExplicit::failmsg =
 "Error! FeynAmpDenominatorExplicit encountered a fatal problem and must abort the computation. \
 The problem reads: `1`"
-
-PropagatorDenominatorExplicit::usage=
-"PropagatorDenominatorExplicit is equivalent to FeynAmpDenominatorExplicit";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -35,8 +32,6 @@ Begin["`Package`"]
 End[]
 
 Begin["`FeynAmpDenominatorExplicit`Private`"]
-
-PropagatorDenominatorExplicit = FeynAmpDenominatorExplicit;
 
 Options[FeynAmpDenominatorExplicit] = {
 	Denominator			-> False,

@@ -18,15 +18,12 @@
 
 
 PaVeUVPart::usage =
-"PaVeUVPart[expr] replaces all occuring Passarino-Veltman functions by \
-their explicit values, where only the UV divergent part is \
-preserved, while possible IR divergences and the finite part are \
-discarded. \n
-
-The function uses the algorithm from \"Sulyok, G., A closed \
-expression for the UV-divergent parts
-of one-loop tensor integrals in dimensional regularization, Phys. \
-Part. Nuclei Lett. (2017) 14:631,  arXiv:hep-ph/0609282\" ";
+"PaVeUVPart[expr] replaces all occurring Passarino-Veltman functions by their
+explicit values, where only the UV divergent part is preserved, while possible
+IR divergences and the finite part are discarded. The function uses the
+algorithm from [arXiv:hep-ph/0609282](https://arxiv.org/abs/hep-ph/0609282) by
+G. Sulyok. This allows to treat Passarino-Veltman of arbitrary rank and
+multiplicity";
 
 PaVeUVPart::failmsg =
 "Error! PaVeUVPart has encountered a fatal problem and must abort the computation. \

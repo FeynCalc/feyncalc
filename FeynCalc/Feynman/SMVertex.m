@@ -16,8 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 SMVertex::usage =
-"is a library of SM vertices. Currently it implements only few vertices and \
-is not really useful.";
+"SMVertex is a library of SM vertices. Currently it implements only few
+vertices and is not really useful.";
 
 (* ------------------------------------------------------------------------ *)
 

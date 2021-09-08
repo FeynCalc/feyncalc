@@ -16,23 +16,21 @@
 (* ------------------------------------------------------------------------ *)
 
 FCSetScalarProducts::usage =
-"FCSetScalarProducts[{SP[..],SPD[..], ...}, {val1,val2, ...}] assigns values \
-in the second list to scalar products (or other kinematic-related symbols \
-such as Momentum, CartesianMomentum, TC etc.) in the first list.
+"FCSetScalarProducts[] assigns values in the second list to scalar products (or
+other kinematic-related symbols such as Momentum, CartesianMomentum, TC etc.)
+in the first list.
 
-The values can be also modified if the quantities in the first list are \
-entered by hand. To modify the definitions  programmatically without resorting \
-to With and similar delayed evaluation tricks, one can use placeholders in \
-conjunction with the InitialSubstitutions option, e.g.
-
-FCSetScalarProducts[{spd[p1]}, {val}, InitialSubstitutions -> {spd -> SPD}]";
+The values can be also modified if the quantities in the first list are
+entered by hand. To modify the definitions  programmatically without resorting
+to With and similar delayed evaluation tricks one can use placeholders in
+conjunction with the InitialSubstitutions option.";
 
 FCSetScalarProducts::failmsg =
 "Error! FCSetScalarProducts has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 FCSetScalarProducts::failkin =
-"Warning! Failed to set some of the kinematic variables: `1`"
+"Warning! Failed to set some of the kinematic variables: `1`";
 
 (* ------------------------------------------------------------------------ *)
 

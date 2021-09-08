@@ -17,16 +17,19 @@
 
 
 DiracReduce::usage =
-"DiracReduce[exp] reduces all four-dimensional Dirac matrices in exp \
-to the standard basis (S,P,V,A,T) using the Chisholm identity (see Chisholm). \
-In the result the basic Dirac structures are wrapped with a head \
-DiracBasis. I.e.: S corresponds to DiracBasis[1], \
-P : DiracBasis[GA[5]], \
-V : DiracBasis[GA[mu]], A: DiracBasis[GA[mu, 5]], \
-T: DiracBasis[DiracSigma[GA[mu, nu]]]. \
-By default DiracBasis is substituted to Identity. \n
-Notice that the result of DiracReduce is given in the FeynCalcExternal-way, \
-i.e., evtl. you may have to use FeynCalcInternal on result.";
+"DiracReduce[exp] reduces all $4$-dimensional Dirac matrices in exp to the
+standard basis $(S,P,V,A,T)$ using the Chisholm identity.
+
+In the result the basic Dirac structures can be wrapped with a head
+DiracBasis, that is
+
+- $S$: DiracBasis[1]
+- $P$: DiracBasis[GA[5]]
+- $V$: DiracBasis[GA[$\\mu$]]
+- $A$: DiracBasis[GA[$\\mu$,5]]
+- $T$: DiracBasis[DiracSigma[GA[$\\mu$,$\\nu$]]]
+
+By default DiracBasis is substituted to Identity.";
 
 (* ------------------------------------------------------------------------ *)
 

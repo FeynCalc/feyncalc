@@ -16,8 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 SpinorChainChiralSplit::usage =
-"SpinorChainChiralSplit[exp] introduces chirality projectors in spinor chains \
-that contain no GA[5].";
+"SpinorChainChiralSplit[exp] introduces chiral projectors in spinor chains that
+contain no $\\gamma^5$.";
 
 SpinorChainChiralSplit::failmsg =
 "Error! SpinorChainChiralSplit has encountered a fatal problem and must abort the computation. \

@@ -17,8 +17,7 @@
 
 FCLoopFindSubtopologies::usage =
 "FCLoopFindSubtopologies[topo] finds all nonvanishing subtopologies of the
-FCTopology topo.
-";
+FCTopology topo.";
 
 FCLoopFindSubtopologies::failmsg =
 "Error! FCLoopFindSubtopologies has encountered a fatal problem and must abort the computation. \

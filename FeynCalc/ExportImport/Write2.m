@@ -17,38 +17,37 @@ FortranFormatDoublePrecision::usage =
 "FortranFormatDoublePrecision is an option for Write2.";
 
 FUNCTION::usage =
-"FUNCTION[exp, string] is a head of an expression to be declared a \
-function (of type string), if used in Write2.";
+"FUNCTION[exp, string] is a head of an expression to be declared a function (of
+type String), if used in Write2.";
 
 PostFortranFile::usage =
-"PostFortranFile is an option for Write2 which may be set to a file \
-name (or a list of file names) or a string, \
-which will be put at the end of the generated Fortran file.";
+"PostFortranFile is an option for Write2 which may be set to a file name (or a
+list of file names) or a string,  which will be put at the end of the
+generated Fortran file.";
 
 PreFortranFile::usage =
-"PreFortranFile is an option for Write2 which may be set to a file \
-name (or a list of file names) or a string, \
-which will be put at the beginning of the generated \
-Fortran file.";
+"PreFortranFile is an option for Write2 which may be set to a file name (or a
+list of file names) or a string, which will be put at the beginning of the
+generated Fortran file.";
 
 Write2::usage =
-"Write2[file, val1 = expr1, val2 = expr2, ...] writes the settings \
-val1 = expr1, val2 = expr2 in sequence followed by a newline, to the \
-specified output file. Setting the option FormatType of Write2 to \
-FortranForm results in FORTRAN syntax output.";
+"Write2[file, val1 = expr1, val2 = expr2, ...] writes the settings val1 =
+expr1, val2 = expr2 in sequence followed by a newline, to the specified output
+file. Setting the option FormatType of Write2 to FortranForm results in
+Fortran syntax output.";
 
-$FortranContinuationCharacter::usage = "$FortranContinuationCharacter \
-is the continuation character used in Write2.";
+$FortranContinuationCharacter::usage =
+"$FortranContinuationCharacter is the continuation character used in Write2.";
 
 D0Convention::usage =
-"D0Convention is an option for Write2. If set to 1, the convention for \
-the arguments of D0 is changed when writing a Fortran file with Write2: \
-The fifth and sixth argument of D0 are interchanged and the square root is \
-taken of the last four arguments.";
+"D0Convention is an option for Write2. If set to 1, the convention for the
+arguments of D0 is changed when writing a Fortran file with Write2: The fifth
+and sixth argument of D0 are interchanged and the square root is taken of the
+last four arguments.";
 
 Write2::failmsg =
 "Error! Write2 has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -64,16 +63,16 @@ pagewidth::usage="";
 optFormatType::usage="";
 
 Options[Write2] = {
-	D0Convention -> 0,
-	FCVerbose -> False,
-	FinalSubstitutions -> {},
-	FormatType -> InputForm,
-	FortranFormatDoublePrecision -> True,
-	PageWidth    -> 62,
-	PostFortranFile -> {""},
-	PreFortranFile -> {""},
-	Precision -> Floor[$MachinePrecision],
-	StringReplace->{}
+	D0Convention					-> 0,
+	FCVerbose						-> False,
+	FinalSubstitutions				-> {},
+	FormatType						-> InputForm,
+	FortranFormatDoublePrecision	-> True,
+	PageWidth						-> 62,
+	PostFortranFile					-> {""},
+	PreFortranFile					-> {""},
+	Precision						-> Floor[$MachinePrecision],
+	StringReplace					-> {}
 };
 
 SetAttributes[Write2, HoldRest];

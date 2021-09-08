@@ -16,38 +16,36 @@
 (* ------------------------------------------------------------------------ *)
 
 FCFAConvert::usage =
-"FCFAConvert[exp] converts a FeynArts amplitude to FeynCalc.";
+"FCFAConvert[exp] converts a FeynArts amplitude to FeynCalc.
 
-UndoChiralSplittings::usage =
-"UndoChiralSplittings is an option of FCFAConvert. When set to True, it attempts
-to undo splittings of couplings into left and right handed pieces, e.g
-(a*GA[6].GA[mu] + a*GA[7].GA[mu]) will be converted back to a*GA[mu]";
+For examples on using FCFAConvert please examine the example calculations
+shipped with FeynCalc.";
 
 IncomingMomenta::usage =
-"IncomingMomenta is an option of FCFAConvert. It specifies how the incoming \
-momenta in the diagram should be named. The number and order of momenta in the \
+"IncomingMomenta is an option of FCFAConvert. It specifies how the incoming
+momenta in the diagram should be named. The number and order of momenta in the
 list of momenta should exactly match those in InsertFields of FeynArts.";
 
 OutgoingMomenta::usage =
-"OutgoingMomenta is an option of FCFAConvert. It specifies how the outgoing \
-momenta in the diagram should be named. The number and order of momenta in the \
+"OutgoingMomenta is an option of FCFAConvert. It specifies how the outgoing
+momenta in the diagram should be named. The number and order of momenta in the
 list of momenta should exactly match those in InsertFields of FeynArts.";
 
 LoopMomenta::usage =
-"LoopMomenta is an option of FCFAConvert. It specifies how the loop \
-momenta in the diagram should be named. The number and order of momenta in the \
-list of momenta should exactly match those in InsertFields of FeynArts.";
+"LoopMomenta is an option of FCFAConvert. It specifies how the loop momenta in
+the diagram should be named. The number and order of momenta in the list of
+momenta should exactly match those in InsertFields of FeynArts.";
 
 TransversePolarizationVectors::usage =
-"TransversePolarizationVectors is an option of FCFAConvert. It specifies which \
-polarization vectors should be defined as transverse. A particle is specified by
-its 4-momentum.";
+"TransversePolarizationVectors is an option of FCFAConvert. It specifies which
+polarization vectors should be defined as transverse. A particle is specified
+by its 4-momentum.";
 
 DropSumOver::usage =
-"DropSumOver is an option of FCFAConvert. When set to True, SumOver symbols \
-in the FeynArts diagrams will be dropped. Those symbols are usually not needed \
-in FeynCalc where Einstein summation always applies, but they might be kept \
-for other purposes.";
+"DropSumOver is an option of FCFAConvert. When set to True, SumOver symbols in
+the FeynArts diagrams will be dropped. Those symbols are usually not needed in
+FeynCalc where Einstein summation always applies, but they might be kept for
+other purposes.";
 
 FCFAConvert::sumOverWarn =
 "You are omitting SumOver objects that may represent a nontrivial summation. \

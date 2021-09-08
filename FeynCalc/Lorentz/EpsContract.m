@@ -17,9 +17,9 @@
 
 
 EpsContract::usage=
-"EpsContract[exp] handles contractions of two Levi-Civita \
-tensors. It is also an option of Contract and other functions that specifies \
-whether such contractions should be done or not.";
+"EpsContract[exp] handles contractions of two Levi-Civita tensors. It is also
+an option of Contract and other functions that specifies whether such
+contractions should be done or not.";
 
 EpsContract::failmsg=
 "Error! EpsContract has encountered a fatal problem and must abort the computation. \

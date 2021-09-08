@@ -11,9 +11,20 @@
 (* ------------------------------------------------------------------------ *)
 
 TR::usage=
-"TR[exp] calculates the Dirac trace of exp. Depending on the setting of \
-the option SUNTrace also a trace over SU(N) objects is performed. \
-TR is identical to DiracTrace, up to the default setting of DiracTraceEvaluate.";
+"TR[exp] calculates the Dirac trace of exp. Depending on the setting of the
+option SUNTrace also a trace over $SU(N)$ objects is performed.
+
+The Mathematica build-in function Tr is overloaded to call TR if any of
+DiracGamma, GA, GAD, GS or GSD are in the expression.
+
+Tr[list] finds the trace of the matrix or tensor list.
+
+Tr[list, f] finds a generalized trace, combining terms with f instead of Plus.
+
+Tr[list, f, n] goes down to level n in list.
+
+Tr[expression] calculates the DiracTrace, i.e., TR[expression] if any of
+DiracGamma, GA, GAD, GS or GSD is present in expression.";
 
 (* ------------------------------------------------------------------------ *)
 

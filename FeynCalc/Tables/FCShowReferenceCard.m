@@ -18,12 +18,14 @@ Copyright (C) 2014-2018 Vladyslav Shtabovenko
 
 
 
-FCShowReferenceCard::usage = "FCShowReferenceCard[{\"name\"}] shows the \
-reference card that corresponds to \"name\". Reference cards are stored \
-in Tables/ReferenceCards inside the FeynCalc main directory. \n
-FCShowReferenceCard[] lists available reference cards.";
+FCShowReferenceCard::usage =
+"FCShowReferenceCard[{name}]  shows the reference card that corresponds to
+\"name\". Reference cards are stored in Tables/ReferenceCards inside the
+FeynCalc main directory. FCShowReferenceCard[] lists available reference
+cards.";
 
-FCShowReferenceCard::nav = "The reference card you requested is not available.";
+FCShowReferenceCard::nav =
+"The reference card you requested is not available.";
 
 (* ------------------------------------------------------------------------ *)
 

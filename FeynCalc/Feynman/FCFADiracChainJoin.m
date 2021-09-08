@@ -16,22 +16,23 @@
 (* ------------------------------------------------------------------------ *)
 
 FCFADiracChainJoin::usage =
-"FCFADiracChainJoin[exp] processes the output of FeynArts (after FCFAConvert) \
-with explicit Dirac indices and joins matrices and spinors into closed chains. \
-This is necessary e.g. for models with 4-fermion operators, where FeynArts \
-cannot determine the correct relative signs. When two matrices have a common \
-index but the positions do not match, as in A_ij B_ik, it is assumed that \
-we can take the charge conjugate transposed of either matrix to obtain, e.g. \
-(C A^T C^-1)_ji B_ik or (C B^T C^-1)_ki A_ij.";
+"FCFADiracChainJoin[exp] processes the output of FeynArts (after FCFAConvert)
+with explicit Dirac indices and joins matrices and spinors into closed chains.
+This is necessary e. g. for models with 4-fermion operators, where FeynArts
+cannot determine the correct relative signs. When two matrices have a common
+index but the positions do not match, as in $A_{ij} B_{ik}$, it is assumed
+that we can take the charge conjugate transposed of either matrix to obtain,
+e.g. $\\left(C A^T C^{-1}\\right)_{ji} B_{ik}$ or $\\left(C B^TC^{-1}\\right)_{ki}
+A_{ij}$.";
 
 FCFADiracChainJoin::failmsg =
 "Error! FCFADiracChainJoin has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 FCFADiracChainJoin::indexsum =
 "Cannot process input expressions with unresolved FeynArts index sums. If this error appears when running FCFAConvert, \
 please set the option FCFADiracChainJoin to False and check the output with uncontracted Dirac indices to identify the \
-unresolved IndexSum objects."
+unresolved IndexSum objects.";
 
 (* ------------------------------------------------------------------------ *)
 

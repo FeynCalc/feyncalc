@@ -16,31 +16,34 @@
 (* ------------------------------------------------------------------------ *)
 
 Collect2::usage=
-"Collect2[expr, x] collects together terms which are not free of any  \
-occurrence of x. \
-Collect2[expr, {x1, x2, ...}]  (or also Collect2[expr, x1, x2,  ...]) \
-collects together terms which are not free of any occurrence of \
-x1, x2, ... . \
-The coefficients are put over a common denominator. \
-If expr is expanded before collecting depends on the option  Factoring, \
-which may be set to Factor, Factor2, or any other function, \
-which is applied to the coefficients. \
-If expr is already expanded with respect to x, the \
-option Expanding can be set to False.";
+"Collect2[expr, x] collects together terms which are not free of any occurrence
+of x.
+
+Collect2[expr, {x1, x2, ...}] (or also Collect2[expr, x1, x2, ...]) collects
+together terms which are not free of any occurrence of x1, x2, ....
+
+The coefficients are put over a common denominator. If expr is expanded before
+collecting depends on the option Factoring, which may be set to Factor,
+Factor2, or any other function, which is applied to the coefficients. If expr
+is already expanded with respect to x (x1, x2, ...), the option Expanding can
+be set to False.";
 
 Collect3::usage=
-"Collect3[expr, head] collects all monomials of the form head[..]*head[..]*.. \
-in expr. \n
-Collect3[expr, {x, y, ...}] collects terms involving the same powers \
-of monomials x[...]^n1*y[...]^n2 ... The option Factoring can be set to False, True or Factor2; \
-the latter two of these cause the coefficients to be factored. The option Head (default Plus) \
-specified the function applied to the list of monomials multiplied by their coefficients.";
+"Collect3[expr, {x, y, ...}] collects terms involving the same powers of
+monomials $x^{n_1}$, $y^{n_2}$, ...
 
-FactoringDenominator::usage = "FactoringDenominator is an option for Collect2. \
-It is taken into account only when the option numerator is set to True. \
-If FactoringDenominator is set to any function f, this function will be applied to \
-the denominator of the fraction. The default value is False, i.e. the denominator \
-will be left unchanged.";
+The option Factor can bet set to True or False, which factors the
+coefficients.
+
+The option Head (default Plus) determines the applied function to the list of
+monomials  multiplied by their coefficients.";
+
+FactoringDenominator::usage =
+"FactoringDenominator is an option for Collect2. It is taken into account only
+when the option Numerator is set to True. If FactoringDenominator is set to
+any function f, this function will be applied to the denominator of the
+fraction. The default value is False, i.e. the denominator will be left
+unchanged.";
 
 Collect2::failmsg =
 "Error! Collect2 has encountered a fatal problem and must abort the computation. \

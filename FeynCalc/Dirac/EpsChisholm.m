@@ -16,8 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 EpsChisholm::usage =
-"EpsChisholm[exp] applies the Chisholm identiy to a Dirac matrix \
-contracted with a Levi-Civita tensor.";
+"EpsChisholm[exp] applies the Chisholm identity to a Dirac matrix contracted
+with a Levi-Civita tensor.";
 
 (* ------------------------------------------------------------------------ *)
 

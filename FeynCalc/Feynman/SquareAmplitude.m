@@ -17,12 +17,14 @@
 
 
 SquareAmplitude::usage =
-"SquareAmplitude[m1,m2] multiplies the amplitudes from the list m1 with their
-complex conjugate from the list m2 to obtain the list of products m1_i*m2_j.";
+"SquareAmplitude[m1, m2] multiplies the amplitudes from the list m1 with their
+complex conjugate from the list m2 to obtain the list of products $m1_i m2_j$.
+This function can be useful when exporting amplitudes obtained with FeynCalc
+to FORM.";
 
 SquareAmplitude::failmsg =
 "Error! SquareAmplitude has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 

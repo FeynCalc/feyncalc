@@ -16,8 +16,7 @@ Roelofs notation  (eq. (3C.19)) into
 (* ------------------------------------------------------------------------ *)
 
 TLI2FC::usage =
-"TLI2FC[exp] transforms all
-TLI-integrals in exp to the FAD form.";
+"TLI2FC[exp] transforms all TLI-integrals in exp to the FAD form.";
 
 (* ------------------------------------------------------------------------ *)
 

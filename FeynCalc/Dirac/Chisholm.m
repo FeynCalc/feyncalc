@@ -17,8 +17,8 @@
 (* ------------------------------------------------------------------------ *)
 
 Chisholm::usage =
-"Chisholm[exp] substitutes products of three Dirac matrices or \
-slashes by the Chisholm identity.";
+"Chisholm[exp] substitutes products of three Dirac matrices or slashes by the
+Chisholm identity.";
 
 Chisholm::failmsg =
 "Error! Chisholm has encountered a fatal problem and must abort the computation. \

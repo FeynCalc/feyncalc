@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`A00[m^2]` is the Passarino-Veltman coefficient function $A_{00}.$.*)
+(*`A00[m^2]` is the Passarino-Veltman coefficient function $A_{00}$, i.e. the coefficient function multiplying $g^{\mu \nu}$. The argument  is a scalar and has mass dimension 2.*)
 
 
 (* ::Subsection:: *)

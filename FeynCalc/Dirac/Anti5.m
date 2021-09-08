@@ -16,9 +16,9 @@
 (* ------------------------------------------------------------------------ *)
 
 Anti5::usage =
-"Anti5[exp] anticommutes all g^5 one time to the right. \
-Anti5[exp, n] anticommutes all g^5 n times to the right. \
-Anti5[exp, -n] anticommutes all g^5 n times to the left.";
+"Anti5[exp] anticommutes all $\\gamma^5$ in exp to the right. Anti5[exp, n]
+anticommutes all $\\gamma^5$ $n$-times to the right. Anti5[exp, -n]
+anticommutes all $\\gamma^5$ $n$-times to the left.";
 
 Anti5::failmsg =
 "Error! Anti5 has encountered a fatal problem and must abort the computation. \

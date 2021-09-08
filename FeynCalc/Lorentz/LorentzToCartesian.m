@@ -17,9 +17,9 @@
 
 
 LorentzToCartesian::usage=
-"LorentzToCartesian[exp] rewrites Lorentz tensors in form of Cartesian tensors \
-(when possible). Using options one can specify which types of tensors \
-should be converted.";
+"LorentzToCartesian[exp]  rewrites Lorentz tensors in form of Cartesian tensors
+(when possible). Using options one can specify which types of tensors should
+be converted.";
 
 LorentzToCartesian::fail=
 "Error! LorentzToCartesian has encountered a fatal problem and must abort the computation. \

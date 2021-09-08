@@ -17,17 +17,17 @@
 
 FCLoopPropagatorsToLineMomenta::usage =
 "FCLoopPropagatorsToLineMomenta[{prop1, prop2, ...}] is an auxiliary function
-that extracts line momenta flowing through the given list of propagators.
-";
+that extracts line momenta flowing through the given list of propagators.";
 
 AuxiliaryMomenta::usage =
-"AuxiliaryMomenta is an option of FCLoopPropagatorsToLineMomenta it specifices auxiliary \
-momenta that do not correspond to external legs, i.e. don't really flow through the lines,
-e.g. n and nbar in SCET or v in HQET."
+"AuxiliaryMomenta is an option of FCLoopPropagatorsToLineMomenta,
+FCLoopIntegralToGraph and other functions. It specifies auxiliary momenta that
+do not correspond to external legs, i.e. don't really flow through the lines,
+e.g. $n$ and $\\bar{n}$ in SCET or $v$ in HQET.";
 
 FCLoopPropagatorsToLineMomenta::failmsg =
 "FCLoopPropagatorsToLineMomenta has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 

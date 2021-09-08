@@ -16,10 +16,13 @@
 (* ------------------------------------------------------------------------ *)
 
 DiracTrick::usage =
-"DiracTrick[exp] contracts Dirac matrices with each other and \
-performs several simplifications but no expansions. There are not many \
-cases when a user will need to call this function directly. Use DiracSimplify \
-to achieve maximal simplification of Dirac matrix chains.";
+"DiracTrick[exp] contracts Dirac matrices with each other and performs several
+simplifications but no expansions.There are not many cases when a user will
+need to call this function directly. Use DiracSimplify to achieve maximal
+simplification of Dirac matrix chains. Regarding the treatment of $\\gamma^5$
+in $D$-dimensional expressions or the evaluation of expressions with tensors
+living in different dimensions, see the explanations on the help pages for
+DiracSimplify and DiracTrace.";
 
 DiracTrick::failmsg =
 "Error! DiracTrick has encountered a fatal problem and must abort the computation. \

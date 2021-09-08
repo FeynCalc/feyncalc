@@ -11,15 +11,14 @@
 (* ------------------------------------------------------------------------ *)
 
 SymbolicSum2::usage =
-"SymbolicSum2 is similar to SymbolicSum
-(Algebra`SymbolicSum`SymbolicSum was a function to do symbolic summation.
-It was obsolete from version 3 - all functionality is now autoloaded by Sum),
-but extended to several double sums.";
+"SymbolicSum2 is similar to SymbolicSum (SymbolicSum was a Mathematica function
+to do symbolic summation. It was obsolete from version 3 - all functionality
+is now autoloaded by Sum), but extended to several double sums.";
 
-SymbolicSum3::usage = "SymbolicSymbolicSum3 is similar to SymbolicSum
-(Algebra`SymbolicSum`SymbolicSum was a function to do symbolic summation.
-It was obsolete from version 3 - all functionality is now autoloaded by Sum),
-but extended to several double sums.";
+SymbolicSum3::usage =
+"SymbolicSum3 is similar to SymbolicSum (SymbolicSum was a Mathematica function
+to do symbolic summation. It was obsolete from version 3 - all functionality
+is now autoloaded by Sum), but extended to several double sums.";
 
 (* ------------------------------------------------------------------------ *)
 

@@ -12,10 +12,7 @@
 (* ------------------------------------------------------------------------ *)
 
 OPEIntegrate::usage =
-"OPEIntegrate[expr, q, x] calculates a one-loop OPE-type integral.
-The dimension is changed to the one indicated by the option
-Dimension. The setting of the option EpsContract determines
-the dimension in which the Levi-Civita tensors are contracted.";
+"OPEIntegrate[expr, q, x] calculates a one-loop OPE-type integral.";
 
 (* ------------------------------------------------------------------------ *)
 

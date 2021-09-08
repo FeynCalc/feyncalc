@@ -11,19 +11,27 @@
 (* ------------------------------------------------------------------------ *)
 
 SumP::usage=
-"SumP[k, n/2] is 2^(k-1) Sum[(1+(-1)^j)/j^k, {j,1,n}]. \
-(or SumP[k,m] = 2^(k-1) Sum[(1+(-1)^j)/j^k, {j,1,2 m}].";
+"SumP[k, m] is $2^{k-1}\\sum _{i=1}^{2m}\\left(1+(-1)^i\\right)/i^k$.";
 
 SumS::usage=
-"SumS[r, n] denotes Sum[Sign[r]^i/i^Abs[r], {i, 1, n}], \
-SumS[r,s, n] is Sum[Sign[r]^k/k^Abs[r] Sign[s]^j/j^Abs[s],
-{k, 1, n}, {j, 1, k}], etc.";
+"SumS[1, m] is the harmonic number $S_ 1(m) = \\sum _ {i=1}^m i^{-1}$.
+
+SumS[1,1,m] is $\\sum_{i=1}^m S_ 1 (i)/i$.
+
+SumS[k,l,m] is $\\sum _ {i=1}^m S_l (i)/i^k$.
+
+SumS[r, n] represents Sum[Sign[r]^i/i^Abs[r], {i, 1, n}].
+
+SumS[r,s, n] is Sum[Sign[r]^k/k^Abs[r] Sign[s]^j/j^Abs[s], {k, 1, n}, {j, 1,
+k}] etc.";
 
 SumT::usage=
-"SumT[r, n] represents Sum[(-1)^i/i^r, {i,1,n}], \
-SumT[r,s, n] is Sum[1/k^r (-1)^j/j^s, {k, 1, n}, {j, 1, k}], \
-SumT[n] is Sum[(-1)^j/j^2 SumS[1,j],{j,1,n}]. \
-For purely integer arguments SumT is evaluated.";
+"SumT[1, m] is the alternative harmonic number $\\sum _{i=1}^m
+(-1){}^{\\wedge}i/i$ 
+
+SumT[r, n] represents Sum[(-1)^i/i^r, {i,1,n}]
+
+SumT[r,s, n] is Sum[1/k^r (-1)^j/j^s, {k, 1, n}, {j, 1, k}].";
 
 (* ------------------------------------------------------------------------ *)
 

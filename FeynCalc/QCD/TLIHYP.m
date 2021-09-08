@@ -9,8 +9,9 @@
 
 (* ------------------------------------------------------------------------ *)
 
-TLIHYP::usage = "TLIHYP[exp] expresses TLI's in exp. in terms
-of hypergeometric functions, where possible.";
+TLIHYP::usage =
+"TLIHYP[exp] expresses TLIs in exp in terms of hypergeometric functions, where
+possible.";
 
 (* ------------------------------------------------------------------------ *)
 

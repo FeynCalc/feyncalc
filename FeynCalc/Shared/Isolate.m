@@ -17,48 +17,42 @@
 (* ------------------------------------------------------------------------ *)
 
 Isolate::usage=
-"Isolate[expr] substitutes abbreviations KK[i] for all Plus[...] \
-(sub-sums) in expr. The inserted KK[i] have head HoldForm. \
-Isolate[expr, varlist] substitutes KK[i] for all subsums \
-in expr which are free of any occurence of a member of the \
-list varlist. Instead of KK any other head or a list of names \
+"Isolate[expr] substitutes abbreviations KK[i] for all Plus[...] (sub-sums) in
+expr. The inserted KK[i] have head HoldForm. Isolate[expr, varlist]
+substitutes KK[i] for all subsums in expr which are free of any occurrence of
+a member of the list varlist. Instead of KK any other head or a list of names
 of the abbreviations may be specified with the option IsolateNames.";
 
 IsolateFast::usage =
-"IsolateFast is an option of Isolate. When set to True, }
-and when varlist is empty, Isolate will not attempt to recognize \
-existing abbreviations, but will immediately abbreviate the whole expression \
+"IsolateFast is an option of Isolate and other functions using Isolate. When
+set to True and when varlist is empty, Isolate will not attempt to recognize
+existing abbreviations, but will immediately abbreviate the whole expression
 instead. This is useful for very large expressions or prefactors, where
 Isolate would otherwise require a lot of time to finish.";
 
 IsolatePrint::usage =
-"IsolatePrint is an option of Isolate. If it is set to OutputForm \
-(or any other *Form) the definitions of the abbreviations are \
-printed during the operation of Isolate. The setting \
-IsolatePrint -> False suppresses printing.";
+"IsolatePrint is an option of Isolate. If it is set to OutputForm (or any other
+*Form) the definitions of the abbreviations are printed during the operation
+of Isolate.
+
+The setting IsolatePrint -> False suppresses printing.";
 
 IsolateSplit::usage =
-"IsolateSplit is an option for Isolate. Its setting determines the \
-maximum number of characters of FortranForm[expr] which are \
-abbreviated by Isolate. If the expression is larger than the \
-indicated number, it is split into smaller pieces and onto \
-each subsum Isolate is applied. With the default setting
-IsolateSplit -> Infinity no splitting is done.";
+"IsolateSplit is an option for Isolate. Its setting determines the maximum
+number of characters of FortranForm[expr] which are abbreviated by Isolate. If
+the expression is larger than the indicated number, it is split into smaller
+pieces and onto each subsum Isolate is applied.
+
+With the default setting IsolateSplit -> Infinity no splitting is done.";
 
 IsolateTimes::usage =
-"IsolateTimes is an option for Isolate. If it is set to True, \
-Isolate will be applied  also on pure products, e.g. while \
-Isolate[a*b*c*d,a] otherwise remains unabbreviated, with \
-Isolate[a*b*c*d,a,IsolateTimes->True] you will obtain \
-HoldForm[KK[xyz]]*a.";
+"IsolateTimes is an option for Isolate and other functions using Isolate. If it
+is set to True, Isolate will be applied also to pure products.";
 
 IsolatePlus::usage =
-"IsolatePlus is an option for Isolate. If it is set to True, \
-Isolate will split sums that contain elements from vlist, to \
-be able to abbreviate the vlist-free part. E.g.  while \
-Isolate[a+b+c+d,a] otherwise remains unabbreviated, with \
-Isolate[a+b+c+d,a,IsolatePlus->True] you will obtain \
-HoldForm[KK[xyz]]+a.";
+"IsolatePlus is an option for Isolate and other functions using Isolate. If it
+is set to True, Isolate will split sums that contain elements from vlist, to
+be able to abbreviate the vlist-free part.";
 
 Begin["`Package`"];
 End[]

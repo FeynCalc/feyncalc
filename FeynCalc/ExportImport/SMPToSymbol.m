@@ -21,9 +21,11 @@
 
 SMPToSymbol::usage =
 "SMPToSymbol[exp] converts objects of type SMP[\"sth\"] in exp to symbols using
-ToExpression[\"sth\"]. The option StringReplace can be used to specify string
-replacement rules that will take care of characters (e.g. ^ or _) that
-cannot appear in valid expressions. SMPToSymbol is useful when exporting FeynCalc
+ToExpression[\"sth\"].
+
+The option StringReplace can be used to specify string replacement rules that
+will take care of special characters (e.g. ^ or _) that cannot appear in valid
+Mathematica expressions. SMPToSymbol is useful when exporting FeynCalc
 expressions to other tools, e.g. FORM.";
 
 SMPToSymbol::failmsg = "Error! SMPToSymbol has encountered a fatal problem and must \

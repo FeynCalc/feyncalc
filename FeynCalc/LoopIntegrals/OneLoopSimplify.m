@@ -16,11 +16,11 @@
 (* ------------------------------------------------------------------------ *)
 
 OneLoopSimplify::usage =
-"OneLoopSimplify[amp, q] simplifies the one-loop amplitude amp. \
-The second argument denotes the integration momentum. \
-If the first argument has head FeynAmp then \
-OneLoopSimplify[FeynAmp[name, k, expr], k] tranforms to \
-OneLoopSimplify[expr, k].";
+"OneLoopSimplify[amp, q] simplifies the one-loop amplitude amp. The second
+argument denotes the integration momentum.
+
+If the first argument has head FeynAmp then OneLoopSimplify[FeynAmp[name, k,
+expr], k] transforms to OneLoopSimplify[expr, k]";
 
 OneLoopSimplify::nivar =
 "The integration variable is not found in the integrand. \

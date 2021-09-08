@@ -16,10 +16,9 @@
 (* ------------------------------------------------------------------------ *)
 
 DiracSubstitute67::usage =
-"DiracSubstitute67[exp] inserts the explicit definitions of \
-the chirality projectors DiracGamma[6] and DiracGamma[7]. \
-DiracSubstitute67 is also an option of various FeynCalc functions \
-that handle Dirac algebra.";
+"DiracSubstitute67[exp] inserts the explicit definitions of the chirality
+projectors $\\gamma^6$ and $\\gamma^7$. DiracSubstitute67 is also an option of
+various FeynCalc functions that handle Dirac algebra.";
 
 DiracSubstitute67::failmsg =
 "Error! DiracSubstitute67 has encountered a fatal problem and must abort the computation. \

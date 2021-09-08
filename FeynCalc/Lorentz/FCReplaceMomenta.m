@@ -18,15 +18,14 @@
 FCReplaceMomenta::usage =
 "FCReplaceMomenta[exp, rule]  replaces the given momentum according to the
 specified replacement rules. Various options can be used to customize the
-replacement procedure.
-";
+replacement procedure.";
 
 FCReplaceMomenta::repfail=
 "Error! Failed to replace all occurences of `1` with `2`. Evaluation aborted.";
 
 FCReplaceMomenta::failmsg =
 "Error! FCReplaceMomenta has encountered a fatal problem and must abort \
-the computation. The problem reads: `1`"
+the computation. The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 

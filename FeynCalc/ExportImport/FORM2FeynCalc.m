@@ -13,18 +13,22 @@
 (* ------------------------------------------------------------------------ *)
 
 FORM2FeynCalc::usage =
-"FORM2FeynCalc[file] translates the FORM expression in file \
-into FeynCalc notation. \n
-FORM2FeynCalc[file, x1, x2, ...] reads in a file in \
-FORM-format and translates the assignments for the variables \
-x1, x2, ... into FeynCalc syntax. If the option Set is True, \
-the variables x1, x2 are assigned to the right hand sides \
-defined in the FORM file.";
+"FORM2FeynCalc[exp] translates the FORM expression exp into FeynCalc notation.
+
+FORM2FeynCalc[file]  translates the FORM expressions in file into FeynCalc
+notation.   
+
+FORM2FeynCalc[file, x1, x2, ...] reads in a file in FORM-format and translates
+the assignments for the variables $a, b, \\ldots$ into FeynCalc syntax.
+
+If the option Set is True, the variables x1, x2 are assigned to the right hand
+sides defined in the FORM-file.The capabilities of this function are very
+limited, so that you should not expect it to easily handle large and
+complicated expressions.";
 
 Vectors::usage =
-"Vectors is an option for FORM2FeynCalc. Its default \
-setting is Automatic. It may be set to a list, if the FORM-file does \
-not contain a V(ectors) statement.";
+"Vectors is an option for FORM2FeynCalc. Its default setting is Automatic. It
+may be set to a list, if the FORM-file does not contain a V(ectors) statement.";
 
 (* ------------------------------------------------------------------------ *)
 

@@ -10,7 +10,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-SimplifyGTI::usage = "SimplifyGTI simplifies GTI's.";
+SimplifyGTI::usage =
+"SimplifyGTI simplifies GTIs.";
 
 (* ------------------------------------------------------------------------ *)
 

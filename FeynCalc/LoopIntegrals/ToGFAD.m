@@ -22,8 +22,7 @@ GFADs. This is mainly useful when doing expansions in kinematic invariants,
 where e.g. scalar products may not be appear explicitly when using FAD- or
 SFAD-notation.
 
-ToGFAD is the inverse operation to FromGFAD.
-";
+ToGFAD is the inverse operation to FromGFAD.";
 
 ToGFAD::failmsg =
 "Error! ToGFAD has encountered a fatal problem and must abort the computation. \

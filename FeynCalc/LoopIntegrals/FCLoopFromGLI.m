@@ -18,8 +18,7 @@
 FCLoopFromGLI::usage =
 "FCLoopFromGLI[exp, topologies] replaces GLIs in exp with the corresponding
 loop integrals in the FeynAmpDenominator notation according to the information
-provided in topologies.
-";
+provided in topologies.";
 
 FCLoopFromGLI::failmsg = "Error! FCLoopFromGLI has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`";

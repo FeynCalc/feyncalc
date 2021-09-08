@@ -16,25 +16,18 @@
 (* ------------------------------------------------------------------------ *)
 
 BackgroundGluonVertex::usage =
-"BackgroundGluonVertex[{p,mu,a}, {q,nu,b}, {k,la,c}] or \
-BackgroundGluonVertex[ p,mu,a ,  q,nu,b ,  k,la,c ] yields the \
-3-gluon vertex in the background field gauge, where the first \
-set of arguments corresponds to the external background field.
+"BackgroundGluonVertex[{p, mu, a}, {q, nu, b}, {k, la, c}] yields the 3-gluon
+vertex in the background field gauge, where the first set of arguments
+corresponds to the external background field.   BackgroundGluonVertex[{p, mu,
+a}, {q, nu, b}, {k, la, c}, {s, si, d}] yields the 4-gluon vertex, with {p, mu
+,a} and {k, la, c} denoting the external background fields.
 
-BackgroundGluonVertex[{p,mu,a}, {q,nu,b}, {k,la,c}, {s,si,d}] \
-or BackgroundGluonVertex[{mu,a}, {nu,b}, {la,c}, {si,d}] or \
-BackgroundGluonVertex[p,mu,a ,  q,nu,b ,  k,la,c ,  s,si,d] \
-or BackgroundGluonVertex[ mu,a ,  nu,b ,  la,c ,  si,d ] \
-yields the  4-gluon vertex, with {p,mu,a} and {k,la,c} denoting \
-the external background fields.
+The gauge, dimension and the name of the coupling constant are determined by
+the options Gauge, Dimension and CouplingConstant.
 
-The gauge, dimension  and the name of the coupling constant \
-are determined by the options Gauge, Dimension and CouplingConstant. \
-
-The Feynman rules are taken from L.Abbot NB185 (1981), 189-203; \
-except that all momenta are incoming. \
-Note that Abbots coupling constant convention is consistent \
-with the default setting of GluonVertex.";
+The Feynman rules are taken from L. Abbot NPB 185 (1981), 189-203; except that
+all momenta are incoming. Note that Abbot's coupling constant convention is
+consistent with the default setting of GluonVertex.";
 
 Begin["`Package`"]
 End[]

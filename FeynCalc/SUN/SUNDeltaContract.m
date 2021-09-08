@@ -6,11 +6,10 @@
 (* ------------------------------------------------------------------------ *)
 
 SUNDeltaContract::usage=
-"SUNDeltaContract[exp] substitues for all SUNDelta in exp \
-SUNDeltaContract, contracts the adjoint SU(N) indices and resubstitutes \
-SUNDelta. \n
-SUNDeltaContract[i, j] is the Kronecker-delta for SU(N) in the adjoint \
-representation  with contraction properties. It wraps the head SUNIndex \
+"SUNDeltaContract[exp] substitutes for all SUNDelta in exp SUNDeltaContract,
+contracts the adjoint $\\text{SU}(N)$ indices and resubstitutes SUNDelta.  
+SUNDeltaContract[i, j] is the Kronecker-delta for $\\text{SU}(N)$ in the
+adjoint representation with contraction properties. It wraps the head SUNIndex
 around its arguments.";
 
 (* ------------------------------------------------------------------------ *)

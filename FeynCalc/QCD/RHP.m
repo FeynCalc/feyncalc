@@ -12,9 +12,10 @@
 
 (* ------------------------------------------------------------------------ *)
 
-RHP::usage = "RHP[i, mu, nu, p] with i from 1 to 4 gives the projectors for
-RHO[i]. RHP[mu, nu, p] gives Sum[RHP[i,mu, nu, p] RHO[i], {i, 4}] collected
-with respect to mu and nu.";
+RHP::usage =
+"RHP[i, mu, nu, p] with i from 1 to 4 gives the projectors for RHO[i]. RHP[mu,
+nu, p] gives Sum[RHP[i,mu, nu, p] RHO[i], {i, 4}] collected with respect to mu
+and nu. See the thesis of Roelof Hamberg (but correcting a misprint).";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -28,7 +29,7 @@ Options[RHP] = {Dimension -> D};
 RHP[mu_, nu_, p_, opt___Rule] :=
 	Collect2[
 	Sum[RHP[j, mu, nu, p, opt] RHO[j], {j, 4}], {mu, nu}
-										   ];
+										];
 
 RHP[i_Integer, mu_, nu_, p_, opt___Rule] :=
 	Block[ {n, rhp},

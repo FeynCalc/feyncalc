@@ -50,8 +50,7 @@ available in multiple codes of Alexander Smirnov, such as FIESTA
 ([arXiv:1511.03614](https://arxiv.org/abs/1511.03614)) and FIRE
 ([arXiv:1901.07808](https://arxiv.org/abs/1901.07808)). The code UF.m is also
 mentioned in the book \"Analytic Tools for Feynman Integrals\" by Vladimir
-Smirnov, Chapter 2.3.
-";
+Smirnov, Chapter 2.3.";
 
 FCFeynmanPrepare::failmsg =
 "Error! FCFeynmanPrepare has encountered a fatal problem and must abort the computation. \

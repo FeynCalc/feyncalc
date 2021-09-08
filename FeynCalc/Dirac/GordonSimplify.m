@@ -16,8 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 GordonSimplify::usage =
-"GordonSimplify[exp] rewrites spinor chains describing a vector or an axial-vector
-current using Gordon identities.";
+"GordonSimplify[exp] rewrites spinor chains describing a vector or an
+axial-vector current using Gordon identities.";
 
 GordonSimplify::failmsg =
 "Error! GordonSimplify has encountered a fatal problem and must abort the computation. \

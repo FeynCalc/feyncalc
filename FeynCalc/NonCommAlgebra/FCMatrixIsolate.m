@@ -16,8 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 FCMatrixIsolate::usage =
-"FCMatrixIsolate[exp] wraps the occurring Dirac, Pauli and color objects into heads \
-specified by the user.";
+"FCMatrixIsolate[exp] wraps the occurring Dirac, Pauli and color objects into
+heads specified by the user.";
 
 FCMatrixIsolate::failmsg =
 "Error! FCMatrixIsolate has encountered a fatal problem and must abort the computation. \

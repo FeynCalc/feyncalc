@@ -16,22 +16,24 @@
 (* ------------------------------------------------------------------------ *)
 
 TID::usage =
-"TID[amp, q] does a 1-loop tensor integral decomposition, transforming the \
-Lorentz indices away from the integration momentum q.";
+"TID[amp, q] performs  tensor decomposition of 1-loop integrals with loop
+momentum q.";
 
 TID::failmsg =
 "Error! TID has encountered a fatal problem and must abort the computation. \
 The problem reads: `1`"
 
 UsePaVeBasis::usage =
-"PaVeBasis is an option of TID. When set to True, tensor reduction will be \
-always performed in terms of the PaVe coefficient functions \
-(e.g. B1, B11, C001 etc.) even if those could be reduced to the basis integrals \
-A0, B0, C0, D0. By default this is done automatically only for tensor integrals \
-with vanishing Gram determinants. This option may be useful, if you are doing \
-computations where the general kinematics may later lead to vanishing Gram \
-determinants or if you plan to evaluate all the PaVe coefficient functions \
-numerically";
+"UsePaVeBasis is an option of TID. When set to True, tensor reduction is always
+performed in terms of the Passarino-Veltman coefficient functions (e.g. $B_1$,
+$B_{11}$, $C_{001}$ etc.) even if those can be reduced to the scalar functions
+$A_0$, $B_0$, $C_0$, $D_0$. By default this is done automatically only for
+tensor integrals with vanishing Gram determinants.
+
+This option may be useful, if you are doing computations where the kinematics
+may later lead to vanishing Gram determinants or if you plan to evaluate all
+the Passarino-Veltman coefficient functions numerically (e.g. with LoopTools
+or Collier)";
 
 (* ------------------------------------------------------------------------ *)
 

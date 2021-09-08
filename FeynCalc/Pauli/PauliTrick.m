@@ -16,12 +16,12 @@
 (* ------------------------------------------------------------------------ *)
 
 PauliTrick::usage =
-"PauliTrick[exp] contracts sigma matrices with each other and \
-performs several simplifications (no expansion, use PauliSimplify for this).";
+"PauliTrick[exp] contracts $\\sigma$ matrices with each other and performs
+several simplifications (no expansion, use PauliSimplify for this).";
 
 PauliTrick::failmsg =
 "Error! PauliTrick has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 
 

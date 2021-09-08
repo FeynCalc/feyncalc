@@ -9,15 +9,16 @@ PairContract::usage =
 "PairContract is like Pair, but with (local) contraction properties.";
 
 CartesianPairContract::usage =
-"CartesianPairContract is like CartesianPair, but with (local) contraction properties.";
+"CartesianPairContract is like CartesianPair, but with (local) contraction
+properties.";
 
 PairContract3::usage =
-"PairContract3 is like Pair, but with local contraction properties \
-among PairContract3's.";
+"PairContract3 is like Pair, but with local contraction properties among
+PairContract3s.";
 
 PairContract::failmsg =
 "Error! PairContract has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 

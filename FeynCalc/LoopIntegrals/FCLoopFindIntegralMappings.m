@@ -26,10 +26,11 @@ The current implementation is based on the FindEquivalents function from FIRE
 
 It is also possible to invoke the function as
 FCLoopFindIntegralMappings[{GLI[...], ...}, {FCTopology[...], ...}] or
-FCLoopFindIntegralMappings[{FCTopology[...], ...}]. Notice that in this case
-the value of the option FinalSubstitutions is ignored, as replacement rules
-will be extracted directly from the definition of the topology.
-";
+FCLoopFindIntegralMappings[{FCTopology[...], ...}].
+
+Notice that in this case the value of the option FinalSubstitutions is
+ignored, as replacement rules will be extracted directly from the definition
+of the topology.";
 
 FCLoopFindIntegralMappings::failmsg =
 "Error! FCLoopFindIntegralMappings has encountered a fatal problem and must abort the computation. \

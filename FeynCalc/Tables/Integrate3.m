@@ -13,12 +13,10 @@
 (* ------------------------------------------------------------------------ *)
 
 Integrate3::usage=
-"Integrate3 is like Integrate, but for some integrals \
-which cannot be done directly by Integrate. \
-All variables occuring in Integrate3 are supposed to be \
-between 0 and 1. Integrate3 accepts an option Table which can be \
-set to a list of integrals. The format should be \
-{ Hold[Integrate3][ f[a_, x_], {x_,0,1}] :> result /; FreeQ[a,x]}";
+"Integrate3 contains the integral table used by Integrate2. Integration is
+performed in a distributional sense. Integrate3 works more effectively on a
+sum of expressions if they are expanded or collected with respect to the
+integration variable. See the examples in Integrate2.";
 
 (* ------------------------------------------------------------------------ *)
 

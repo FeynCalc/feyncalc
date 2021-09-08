@@ -16,9 +16,9 @@
 (* ------------------------------------------------------------------------ *)
 
 PauliChainFactor::usage =
-"PauliChainFactor[expr] factors out all expressions inside a PauliChain to which the \
-chain doesn't apply. For example, all objects that are not Pauli matrices can be \
-safely factrored out from every Pauli chain.";
+"PauliChainFactor[exp] factors out all expressions inside a PauliChain to which
+the chain doesn't apply. For example, all objects that are not Pauli matrices
+can be safely factored out from every Pauli chain.";
 
 (* ------------------------------------------------------------------------ *)
 

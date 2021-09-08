@@ -16,11 +16,10 @@
 (* ------------------------------------------------------------------------ *)
 
 ComplexConjugate::usage =
-"ComplexConjugate[exp] returns the complex conjugate of exp, where the input \
-expression must be a proper matrix element. In particular, all Dirac \
-matrices are assumed to be inside closed Dirac spinor chains. If this is not \
-the case, the result will be inconsistent. Futhermore, denominators may not contain \
-explicit I's!";
+"ComplexConjugate[exp] returns the complex conjugate of exp, where the input
+expression must be a proper matrix element. All Dirac matrices are assumed to
+be inside closed Dirac spinor chains. If this is not the case, the result will
+be inconsistent. Denominators may not contain explicit $i$'s.";
 
 ComplexConjugate::failmsg =
 "Error! ComplexConjugate has encountered a fatal problem and must abort the computation. \

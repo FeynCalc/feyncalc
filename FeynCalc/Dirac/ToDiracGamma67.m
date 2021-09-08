@@ -15,8 +15,9 @@
 (* ------------------------------------------------------------------------ *)
 
 ToDiracGamma67::usage =
-"ToDiracGamma67[exp] substitutes 1/2(1 + GA[5]) and 1/2(1 - GA[5]) by \
-the chirality projectors DiracGamma[6] and DiracGamma[7].";
+"ToDiracGamma67[exp] substitutes $\\frac{1}{2} \\left(1 + \\gamma^5\\right)$ and
+$\\frac{1}{2}\\left(1-\\gamma^5\\right)$ by the chirality projectors $\\gamma^6$
+and $\\gamma^7$.";
 
 (* ------------------------------------------------------------------------ *)
 

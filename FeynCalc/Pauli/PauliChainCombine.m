@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 PauliChainCombine::usage =
-"PauliChainCombine[expr] is (nearly) the inverse operation to PauliChainExpand.";
+"PauliChainCombine[exp]  is (nearly) the inverse operation to PauliChainExpand.";
 
 (* ------------------------------------------------------------------------ *)
 

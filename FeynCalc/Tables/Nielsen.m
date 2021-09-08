@@ -10,7 +10,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-Nielsen::usage= "Nielsen[i,j, x] denotes Nielsen's polylogarithm.";
+Nielsen::usage=
+"Nielsen[i, j, x] denotes Nielsen's polylogarithm.";
 
 (* ------------------------------------------------------------------------ *)
 

@@ -18,8 +18,8 @@
 
 FermionSpinSum::usage =
 "FermionSpinSum[exp] converts products of closed spinor chains in exp into
-Dirac traces. Both Dirac and Majorana particles are supported. It is understood,
-that exp represents a squared amplitude.";
+Dirac traces. Both Dirac and Majorana particles are supported. It is
+understood, that exp represents a squared amplitude.";
 
 FermionSpinSum::spinorsleft =
 "Error! After applying FermionSpinSum to all spinor chains the output \
@@ -31,7 +31,7 @@ Those must necessarily be simplified before the computation of Dirac traces.";
 
 FermionSpinSum::failmsg =
 "Error! FermionSpinSum encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 

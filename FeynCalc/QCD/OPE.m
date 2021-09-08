@@ -12,14 +12,31 @@
 
 (* ------------------------------------------------------------------------ *)
 
-OPEi::usage= "OPEi is a dummy index in OPESum.";
-OPEj::usage= "OPEj is a dummy index in OPESum.";
-OPEk::usage= "OPEk is a dummy index in OPESum.";
-OPEl::usage= "OPEl is a dummy index in OPESum.";
-OPEm::usage= "OPEm is a dummy index in OPESum.";
-OPEn::usage= "OPEn is a dummy index in OPESum.";
-OPEo::usage= "OPEo is a dummy index in OPESum.";
-OPEDelta::usage= "OPEDelta is the Delta.";
+OPEi::usage=
+"OPEi etc. are variables with DataType PositiveInteger which are used in
+functions relating to the operator product expansion.";
+
+OPEj::usage=
+"OPEj is a dummy index in OPESum.";
+
+OPEk::usage=
+"OPEk is a dummy index in OPESum.";
+
+OPEl::usage=
+"OPEl is a dummy index in OPESum.";
+
+OPEm::usage=
+"OPEm is a dummy index in OPESum.";
+
+OPEn::usage=
+"OPEn is a dummy index in OPESum.";
+
+OPEo::usage=
+"OPEo is a dummy index in OPESum.";
+
+OPEDelta::usage=
+"OPEDelta is a lightlike axial vector as used e.g. in the operator product
+expansion in QCD.";
 
 (* ------------------------------------------------------------------------ *)
 

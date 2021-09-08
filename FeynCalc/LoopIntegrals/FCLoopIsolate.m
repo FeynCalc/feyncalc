@@ -16,17 +16,15 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopIsolate::usage =
-"FCLoopIsolate[expr,{q1,q2,...}] wraps loop integrals into heads specified \
-by the user " <> ToString[
-Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/FCLoopIsolate"],
-StandardForm];
+"FCLoopIsolate[expr, {q1, q2, ...}] wraps loop integrals into heads specified
+by the user. This is useful when you want to know which loop integrals appear
+in the given expression.";
 
 MultiLoop::usage =
-"MultiLoop is an option for FCLoopIsolate. When set to True, \
-FCLoopIsolate will isolate only such loop integrals, that \
-depend on all of the given loop momenta. Integrals \
-that depend only on some of the loop momenta will be treated \
-as non-loop terms and remain non-isolated."
+"MultiLoop is an option for FCLoopIsolate. When set to True, FCLoopIsolate will
+isolate only such loop integrals, that depend on all of the given loop
+momenta. Integrals that depend only on some of the loop momenta will be
+treated as non-loop terms and remain non-isolated.";
 
 FCLoopIsolate::fail =
 "FCLoopIsolate failed to isolate loop integrals in `1`!";

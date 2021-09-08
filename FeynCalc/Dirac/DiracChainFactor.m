@@ -16,9 +16,9 @@
 (* ------------------------------------------------------------------------ *)
 
 DiracChainFactor::usage =
-"DiracChainFactor[expr] factors out all expressions inside a DiracChain to which the \
-chain doesn't apply. For example, all objects that are not Dirac matrices can be \
-safely factrored out from every Dirac chain.";
+"DiracChainFactor[exp] factors out all expressions inside a DiracChain to which
+the chain doesn't apply. For example, all objects that are not Dirac matrices
+can be safely factrored out from every Dirac chain.";
 
 (* ------------------------------------------------------------------------ *)
 

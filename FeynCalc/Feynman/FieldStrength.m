@@ -16,15 +16,16 @@
 (* ------------------------------------------------------------------------ *)
 
 FieldStrength::usage =
-"FieldStrength[mu,nu,a] is the field strength tensor \
-F_{mu nu}^a = partial_mu A_nu^a - partial_nu A_mu^a + \
-g f^{abc} A_mu^b A_nu^c. \n
-FieldStrength[mu,nu] is the field strength tensor \
-F_{mu nu}^a = partial_mu A_nu^a - partial_nu A_mu. \n
-The name of the field (A) and the coupling constant (g) \
-can be set through the options or by additional arguments: \
-FieldStrength[mu,nu,a, A, g] or, specifying the dummy \
-color indices: FieldStrength[mu,nu,a, {A,b,c}, g].";
+"FieldStrength[\[Mu], \[Nu], a] is the field strength tensor $\\partial _{\\mu }
+A_{\\nu }^a - \\partial _{\\nu } A_{\\mu }^a + g_s A_{\\mu }^b A_{\\nu }^c f^{abc}$.
+
+FieldStrength[\[Mu], \[Nu]] is the field strength tensor $(\\partial _{\\mu }
+A_{\\nu}- \\partial_{\\nu } A_{\\mu})$.
+
+The name of the field ($A$) and the coupling constant ($g$) can be set through
+the options or by additional arguments. The first two indices are interpreted
+as type LorentzIndex, except OPEDelta, which is converted to
+Momentum[OPEDelta].";
 
 IndexPosition::usage =
 "IndexPosition is an option for FieldStrength.";

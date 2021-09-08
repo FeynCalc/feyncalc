@@ -14,8 +14,8 @@ Roelof Hambergs notation  (eq. (3C.19) in his thesis) into
 (* ------------------------------------------------------------------------ *)
 
 RHI2FC::usage =
-"RHI2FC[exp] transforms all
-RHI-integrals in FeynAmpDenominator form to the 2-loop OPE-integrals.";
+"RHI2FC[exp] transforms all RHI-integrals in FeynAmpDenominator form to the
+2-loop OPE-integrals.";
 
 (* ------------------------------------------------------------------------ *)
 

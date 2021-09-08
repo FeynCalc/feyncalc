@@ -18,9 +18,11 @@
 (* ------------------------------------------------------------------------ *)
 
 FCReplaceD::usage =
-"FCReplaceD[expr,rule] replaces D in expr accoding to the supplied replacement \
-rule." <> ToString[
-Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/FCReplaceD"], StandardForm];
+"FCReplaceD[expr, rule] replaces D in expr according to the supplied
+replacement rule (e.g. D -> 4 - 2*Epsilon) but doesn't touch D inside Pairs
+and DiracGammas, i.e the dimension of scalar products, metric tensors and
+Dirac matrices is unchanged. The latter can and should be done via
+ChangeDimension.";
 
 FCReplaceD::checkfail=
 "Error! Failed to save the dimensionality of Pair and DiracGamma objects. Evaluation aborted.";

@@ -16,13 +16,9 @@
 (* ------------------------------------------------------------------------ *)
 
 ExpandScalarProduct::usage =
-"ExpandScalarProduct[expr]  expands scalar products of sums of \
-momenta in expr. ExpandScalarProduct[x, y] expands ScalarProduct[x, y], \
-where x and y may contain sums. ExpandScalarProduct does not use Expand on \
-expr.";
+"ExpandScalarProduct[expr] expands scalar products of sums of momenta in expr.
 
-ScalarProductExpand::usage =
-"ScalarProductExpand is equivalent to ExpandScalarProduct.";
+ExpandScalarProduct does not use Expand on expr.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -31,7 +27,6 @@ End[]
 
 Begin["`ExpandScalarProduct`Private`"]
 
-ScalarProductExpand = ExpandScalarProduct;
 tmpHead::usage="";
 objects::usage="";
 optMomentum::usage="";

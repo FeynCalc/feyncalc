@@ -17,13 +17,10 @@
 (* ------------------------------------------------------------------------ *)
 
 FeynAmpDenominatorSimplify::usage =
-"FeynAmpDenominatorSimplify[exp] simplifies each \
-PropagatorDenominator in a canonical way. \n
-FeynAmpDenominatorSimplify[exp, q1] simplifies \
-all FeynAmpDenominator's in exp in a canonical way, \
-including some translation of momenta. \n
-FeynAmpDenominatorSimplify[exp, q1, q2] additionally \
-removes 2-loop integrals with no mass scale.";
+"FeynAmpDenominatorSimplify[exp] tries to simplify each PropagatorDenominator
+in a canonical way. FeynAmpDenominatorSimplify[exp, q1] simplifies all
+FeynAmpDenominators in exp in a canonical way, including momentum shifts.
+Scaleless integrals are discarded.";
 
 FDS::usage =
 "FDS is shorthand for FeynAmpDenominatorSimplify.";
@@ -36,8 +33,9 @@ FDS::failmsg = "Error! FDS has encountered a fatal problem and must abort the co
 The problem reads: `1`";
 
 DetectLoopTopologies::usage=
-"DetectLoopTopologies is an option for FDS. If set to True, FDS will try to recognize some \n
-special multiloop topologies and apply appropriate simplifications";
+"DetectLoopTopologies is an option for FDS. If set to True, FDS will try to
+recognize some special multiloop topologies and apply appropriate
+simplifications";
 
 (* ------------------------------------------------------------------------ *)
 

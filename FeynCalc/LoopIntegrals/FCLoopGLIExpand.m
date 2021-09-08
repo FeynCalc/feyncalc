@@ -14,7 +14,7 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopGLIExpand::usage =
-"FCLoopGLIExpand[exp, topos, {x, x0, n}] expands GLIs defined via the list of 
+"FCLoopGLIExpand[exp, topos, {x, x0, n}] expands GLIs defined via the list of
 topologies topos in exp around x=x0 to order n. Here x must be a scalar
 quantity, e.g.
 a mass or a scalar product.
@@ -23,8 +23,7 @@ This routine is particularly useful for doing asymptotic expansions of
 integrals or amplitudes.
 
 Notice that the series is assumed to be well-defined. The function has no
-built-in checks against singular behavior.
-";
+built-in checks against singular behavior.";
 
 FCLoopGLIExpand::failmsg = "Error! FCLoopGLIExpand has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`";

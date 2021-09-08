@@ -16,13 +16,14 @@
 (* ------------------------------------------------------------------------ *)
 
 PauliOrder::usage =
-"PauliOrder[exp] orders the Pauli matrices in expr alphabetically. \
-PauliOrder[exp, orderlist] orders the Pauli matrices in expr according \
-to orderlist.";
+"PauliOrder[exp] orders the Pauli matrices in expr alphabetically.
+
+PauliOrder[exp, orderlist] orders the Pauli matrices in expr according to
+orderlist.";
 
 PauliOrder::failmsg =
 "Error! PauliOrder has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 

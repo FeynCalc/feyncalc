@@ -14,15 +14,14 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopGLIDifferentiate::usage =
-"FCLoopFindTopologies[exp, {q1, q2, ...}] attempts to identify the loop
-integral topologies present in exp by looking at the propagator denominators
-that depend on the loop momenta q1, q2, ... . It returns a list of two
-entries, where the first one is the original expression with the denominators
-rewritten as GLIs, and the second one is the set of the identified topologies.
-Each of the identified topologies must contain linearly independent
-propagators (unless the option FCLoopBasisOverdeterminedQ is set to True), but
-may lack propagators needed to form a complete basis.
-";
+"FCLoopGLIDifferentiate[exp , topos, inv] calculates the partial derivative of
+GLIs present in exp with respect to the scalar quantity inv.
+Here inv can be a constant (e.g. mass) or a scalar product of some momenta. 
+The list topos must contain the topologies describing all of the occurring
+GLIs.
+
+To calculate multiple derivatives, use the notation FCLoopGLIDifferentiate[exp
+, topos, {inv,n}]";
 
 FCLoopGLIDifferentiate::failmsg = "Error! FCLoopGLIDifferentiate has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`";

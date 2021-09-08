@@ -17,12 +17,12 @@
 (* ------------------------------------------------------------------------ *)
 
 DiracSimplify::usage =
-"DiracSimplify[exp] simplifies products of Dirac matrices \
-and expands non-commutative products. \
-Double Lorentz indices and four vectors are contracted. \
-The Dirac equation is applied. \
-All DiracGamma[5], DiracGamma[6] and DiracGamma[7] are moved to \
-the right. The order of the Dirac matrices is not changed.";
+"DiracSimplify[exp] simplifies products of Dirac matrices in exp and expands
+noncommutative products. The simplifications are done by applying Contract,
+DiracEquation, DiracTrick, SpinorChainTrick and SirlinSimplify. All
+$\\gamma^5$, $\\gamma^6$ and $\\gamma^7$ are moved to the right. The order of the
+other Dirac matrices is not changed, unless the option DiracOrder is set to
+True.";
 
 DiracSimplify::failmsg =
 "Error! DiracSimplify encountered a fatal problem and must abort the computation. \

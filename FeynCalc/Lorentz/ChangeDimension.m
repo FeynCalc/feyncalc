@@ -16,14 +16,16 @@
 (* ------------------------------------------------------------------------ *)
 
 ChangeDimension::usage=
-"ChangeDimension[exp, dim] changes all LorentzIndex and Momentum objects in \
-exp to dimension dim (and thus also Dirac slashes and Dirac matrices \
-in FeynCalcInternal-representation). CartesianIndex and CartesianMomentum objects become \
-changed to dimension dim-1.";
+"ChangeDimension[exp, dim] changes all LorentzIndex and Momentum symbols in exp
+to dimension dim (and also Levi-Civita-tensors, Dirac slashes and Dirac
+matrices).
+
+Notice that the dimension of CartesianIndex and CartesianMomentum objects will
+be changed to dim-1, not dim.";
 
 ChangeDimension::failmsg =
 "Error! ChangeDimension has encountered a fatal problem and must abort \
-the computation. The problem reads: `1`"
+the computation. The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 

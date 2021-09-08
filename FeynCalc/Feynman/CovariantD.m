@@ -13,24 +13,34 @@
 (* ------------------------------------------------------------------------ *)
 
 CovariantD::usage =
-"CovariantD[mu] is a generic covariant derivative with \
-Lorentz index mu. \n
-CovariantD[x, mu] is a generic covariant derivative with respect to x^mu. \n
-CovariantD[mu, a, b] is a covariant derivative for a bosonic field that \
-acts on QuantumField[f,{},{a,b}], where f is some field name and \
-a and b are two SU(N) indices in the adjoint representation. \n
-To obtain the explicit expression for a particular covariant derivatine, the \
-option Explicit must be set to True. \n
-CovariantD[OPEDelta, a, b] is a short form for CovariantD[mu,a,b]*FV[OPEDelta, mu]. \n
-CovariantD[{OPEDelta, a, b}, {n}] yields the product of n operators, where n is an integer. \n
-CovariantD[OPEDelta, a, b, {m, n}] gives the expanded form of CovariantD[OPEDelta, a, b]^m \
-up to order g^n for the gluon, where n is an integer and g the coupling constant indicated \
-by the setting of the option CouplingConstant. CovariantD[OPEDelta, {m, n}] gives the expanded \
-form of CovariantD[OPEDelta]^m up to order g^n of the fermionic field.";
+"CovariantD[\[Mu]] is a generic covariant derivative with Lorentz index $\\mu$.
+
+CovariantD[x, \[Mu]] is a generic covariant derivative with respect to $x^{\\mu
+}$.
+
+CovariantD[\[Mu], a, b] is a covariant derivative for a bosonic field that
+acts on QuantumField[f, {}, {a, b}], where f is some field name and a and b
+are two $SU(N)$ indices in the adjoint representation.
+
+CovariantD[OPEDelta, a, b] is a short form for CovariantD[\[Mu], a, b]
+FV[OPEDelta, \[Mu]].
+
+CovariantD[{OPEDelta, a, b}, {n}] yields the product of n operators, where n
+is an integer.   
+
+CovariantD[OPEDelta, a, b, {m, n}] gives the expanded form of
+CovariantD[OPEDelta, a, b]^m up to order $g^n$ for the gluon, where $n$ is an
+integer and $g$ the coupling constant indicated by the setting of the option
+CouplingConstant.
+
+CovariantD[OPEDelta, {m, n}] gives the expanded form of CovariantD[OPEDelta]^m
+up to order $g^n$ of the fermionic field. To obtain the explicit expression
+for a particular covariant derivative, the option Explicit must be set to
+True.";
 
 DummyIndex::usage =
-"DummyIndex is an option of CovariantD specifying an index to use as \
-dummy summation index. If set to Automatic, unique indices are generated."
+"DummyIndex is an option of CovariantD specifying an index to use as dummy
+summation index. If set to Automatic, unique indices are generated.";
 
 (* ------------------------------------------------------------------------ *)
 

@@ -17,8 +17,9 @@
 (* ------------------------------------------------------------------------ *)
 
 NPointTo4Point::usage =
-"NPointTo4Point[expr, q] reduces scalar IR finite 5-point functions to scalar 4-point \
-functions according to Eq. 4.52 in arXiv:0709.1075.";
+"NPointTo4Point[expr, q] reduces scalar IR finite 5-point functions to scalar
+4-point functions according to Eq. 4.52 in
+[arXiv:0709.1075](https://arxiv.org/abs/0709.1075).";
 
 NPointTo4Point::failmsg = "Error! NPointTo4Point has encountered a fatal problem and \
 must abort the computation. The problem reads: `1`";

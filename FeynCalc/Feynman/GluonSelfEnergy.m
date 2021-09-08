@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 GluonSelfEnergy::usage =
-"GluonSelfEnergy[{mu, a}, {nu,b}] yields the 1-loop gluon self-energy."
+"GluonSelfEnergy[{\[Mu], a}, {\[Nu], b}] yields the 1-loop gluon self-energy.";
 
 (* ------------------------------------------------------------------------ *)
 

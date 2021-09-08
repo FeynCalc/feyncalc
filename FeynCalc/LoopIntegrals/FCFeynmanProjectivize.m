@@ -16,8 +16,11 @@
 (* ------------------------------------------------------------------------ *)
 
 FCFeynmanProjectivize::usage =
-"FCFeynmanProjectivize[int] checks if the given Feynman integral is \
-projective. If this is not the case, the integral will be projectivized.";
+"FCFeynmanProjectivize[int] checks if the given Feynman integral is a
+projective form. If this is not the case, the integral will be projectivized.
+
+Projectivity is a necessary condition for computing the integral with the aid
+of the Cheng-Wu theorem";
 
 FCFeynmanProjectivize::failmsg =
 "Error! FCFeynmanProjectivize has encountered a fatal problem and must abort the computation. \

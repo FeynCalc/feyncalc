@@ -28,8 +28,7 @@ performing any loop momentum shifts afterwards.
 
 Furthermore, when working with lists of topologies one can write
 FCLoopCreateRuleGLIToGLI[{topo1, topo2, ...}, {{subtopo11, subtopo12, ...},
-{subtopo21, subtopo22, ...}, ..}].
-";
+{subtopo21, subtopo22, ...}, ..}].";
 
 FCLoopCreateRuleGLIToGLI::failmsg = "Error! FCLoopCreateRuleGLIToGLI has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`";

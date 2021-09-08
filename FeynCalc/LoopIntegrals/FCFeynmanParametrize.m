@@ -18,19 +18,22 @@
 
 FCFeynmanParametrize::usage =
 "FCFeynmanParametrize[int, {q1, q2, ...}] introduces Feynman parameters for the
-multi-loop integral int. The function returns {fpInt,pref,vars}, 
-where fpInt is the integrand in Feynman parameters, pref is the prefactor free
-of Feynman parameters and vars is the list of integration variables.
+multi-loop integral int.
+
+The function returns {fpInt,pref,vars},  where fpInt is the integrand in
+Feynman parameters, pref is the prefactor free of Feynman parameters and vars
+is the list of integration variables.
 
 If the chosen parametrization contains a Dirac delta multiplying the
 integrand, it will be omitted unless the option DiracDelta is set to True.
 
 By default FCFeynmanParametrize uses normalization that is common in
-multi-loop calculations, i.e. $\\frac{1}}{i \\pi^{D/2}}$ or 
-$\\frac{1}}{\\pi^{D/2}}$ per loop for Minkowski or Euclidean/Cartesian integrals
-respectively. If you want to have the standard
-$\\frac{1}{(2 \\pi)^D}$ normalization or yet another value, please set the
-option FeynmanIntegralPrefactor accordingly. Following values are available
+multi-loop calculations, i.e. $\\frac{1}{i \\pi^{D/2}}$ or $\\frac{1}{\\pi^{D/2}}$
+per loop for Minkowski or Euclidean/Cartesian integrals respectively.
+
+If you want to have the standard $\\frac{1}{(2 \\pi)^D}$ normalization or yet
+another value, please set the option FeynmanIntegralPrefactor accordingly.
+Following values are available
 
 - \"MultiLoop1\" - default value explained above
 - \"MultiLoop2\" - like the default value but with an extra $e^{\\gamma_E
@@ -39,8 +42,10 @@ option FeynmanIntegralPrefactor accordingly. Following values are available
 - \"Unity\" - no extra prefactor multiplying the integral measure
 
 The calculation of $D$-dimensional Minkowski integrals and $D-1$-dimensional
-Cartesian integrals is straightforward. To calculate a $D$-dimensional
-Euclidean integral (i.e. an integral defined with the Euclidean
+Cartesian integrals is straightforward.
+
+To calculate a $D$-dimensional Euclidean integral (i.e. an integral defined
+with the Euclidean
 metric signature $(1,1,1,1)$ you need to write it in terms of FVD, SPD, FAD,
 SFAD etc. and set the option \"Euclidean\" to True.
 
@@ -63,10 +68,10 @@ parameters and then finally integrates out loop momenta.
 For a proper analysis of a loop integral one usually needs the U and F
 polynomials separately. Since internally FCFeynmanParametrize uses
 FCFeynmanPrepare, the information available from the latter is also accessible
-to FCFeynmanParametrize. By setting the option FCFeynmanPrepare to True, the
-output of FCFeynmanPrepare will be added the the output of
-FCFeynmanParametrize as the 4th list element.
-";
+to FCFeynmanParametrize.
+
+By setting the option FCFeynmanPrepare to True, the output of FCFeynmanPrepare
+will be added the the output of FCFeynmanParametrize as the 4th list element.";
 
 FCFeynmanParametrize::failmsg =
 "Error! FCFeynmanParametrize has encountered a fatal problem and must abort the computation. \

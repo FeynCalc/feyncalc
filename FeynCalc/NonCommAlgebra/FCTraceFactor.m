@@ -16,9 +16,9 @@
 (* ------------------------------------------------------------------------ *)
 
 FCTraceFactor::usage =
-"FCTraceFactor[expr] factors out all expressions inside a trace to which the \
-trace doesn't apply. For example, all objects that are not Dirac matrices can be \
-safely factrored out from every Dirac trace.";
+"FCTraceFactor[expr] factors out all expressions inside a trace to which the
+trace doesn't apply. For example, all objects that are not Dirac matrices can
+be safely factored out from every Dirac trace.";
 
 (* ------------------------------------------------------------------------ *)
 

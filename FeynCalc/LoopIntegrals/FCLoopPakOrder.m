@@ -18,7 +18,7 @@
 
 FCLoopPakOrder::usage =
 "FCLoopPakOrder[poly, {x1, x2, ...}] determines a canonical ordering of the
-Feynman parameters x1, x2, ... in the polynomial poly. 
+Feynman parameters x1, x2, ... in the polynomial poly.
 
 The function uses the algorithm of Alexey Pak
 [arXiv:1111.0868](https://arxiv.org/abs/1111.0868). Cf. also the PhD thesis of
@@ -30,8 +30,7 @@ The current implementation is based on the PolyOrdering function from FIRE 6
 
 The function can also directly perform the renaming of the Feynman parameter
 variables returning the original polynomial in the canonical form. This is
-done by setting the option Rename to True.
-";
+done by setting the option Rename to True.";
 
 FCLoopPakOrder::failmsg =
 "Error! FCLoopPakOrder has encountered a fatal problem and must abort the computation. \

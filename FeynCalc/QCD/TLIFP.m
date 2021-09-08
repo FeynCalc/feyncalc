@@ -10,7 +10,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-TLIFP::usage = "TLIFP[exp] does Feynman-Parametrizations of TLI's in exp.";
+TLIFP::usage =
+"TLIFP[exp] does Feynman-Parametrizations of TLIs in exp.";
 
 (* ------------------------------------------------------------------------ *)
 

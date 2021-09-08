@@ -16,12 +16,23 @@
 
 
 FeynRule::usage =
-"FeynRule[lag, {fields}] gives the Feynman rule corresponding \
-to the field configuration fields of the lagrangian lag.";
+"FeynRule[lag, {fields}] derives the Feynman rule corresponding to the field
+configuration fields of the Lagrangian lag.
+
+FeynRule does not calculate propagator Feynman rules.
+
+The option ZeroMomentumInsertion can be used for twist-2 and higher twist
+operators.
+
+FeynRule is not very versatile and was primarily developed for QCD
+calculations. It is often more useful when dealing with bosonic fields than
+with fermions. If you need a more powerful and universal solution for deriving
+Feynman rules, have a look at the standalone Mathematica Package FeynRules
+(not related to FeynCalc).";
 
 InitialFunction::usage =
-"InitialFunction is an option of FeynRule the setting of which is applied to \
-the first argument of FeynRule before anything else";
+"InitialFunction is an option of FeynRule the setting of which is applied to
+the first argument of FeynRule before anything else.";
 
 (* ------------------------------------------------------------------------ *)
 

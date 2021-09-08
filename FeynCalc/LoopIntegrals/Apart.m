@@ -16,31 +16,43 @@
 (* ------------------------------------------------------------------------ *)
 
 Apart1::usage =
-"Apart1[expr, x] is equivalent to Apart[expr, x], \
-but it fixes a Mathematica bug.";
+"Apart1[expr, x] is equivalent to Apart[expr, x], but it fixes a Mathematica
+bug relevant when expr contains complex numbers.";
 
 Apart2::usage =
-"Apart2[expr] partial fractions simple propagators of the form \
-1/[(q^2-m1^2)(q^2-m2^2)].";
-
-ApartFF::usage =
-"ApartFF[amp,{q1,q2,...}] partial fractions loop integrals by decomposing \
-them into simpler integrals that contain only linearly independent propagators. \
-It uses FCApart as a backend and works and is suitable also for multiloop integrals.
-
-ApartFF[amp*extraPiece1,extraPiece2,{q1,q2,...}] is a special working mode of \
-ApartFF, where the final result of partial fractioning amp*extraPiece1 \
-is multiplied by extraPiece2. It is understood, that extraPiece1*extraPiece2 should \
-be unity, e.g. when extraPiece1 is an FAD, while extraPiece is an SPD inverse to it. \
-This mode should be useful for nonstandard integrals where the desired partial fraction
-decomposition can be performed only after multiplying amp with extraPiece1."
+"Apart2[expr] partial fractions propagators of the form
+$1/[(q^2-m1^2)(q^2-m2^2)]$.";
 
 Apart3::usage =
 "Apart3[expr, x] is equivalent to Map2[Factor2, Collect2[Apart1[expr,x],x]].";
 
+ApartFF::usage =
+"ApartFF[amp, {q1, q2, ...}] partial fractions loop integrals by decomposing
+them into simpler integrals that contain only linearly independent
+propagators. It uses FCApart as a backend and is equally suitable for 1-loop
+and  multi-loop integrals.
+
+FCApart  implements an algorithm based on
+[arXiv:1204.2314](https://arxiv.org/abs/1204.2314) by F. Feng that seems to
+employ a variety Leinartas's algorithm (cf.
+[arXiv:1206.4740](https://arxiv.org/abs/1206.4740)). Unlike Feng's
+[$Apart](https://github.com/F-Feng/APart) that is applicable to general
+multivariate polynomials, FCApart is tailored to work only with FeynCalc's
+FeynAmpDenominator, Pair and CartesianPair symbols, i.e. it is less general in
+this respect.
+
+ApartFF[amp * extraPiece1, extraPiece2, {q1, q2, ...}] is a special working
+mode of ApartFF, where the final result of partial fractioning amp*extraPiece1
+is multiplied by extraPiece2. It is understood, that extraPiece1*extraPiece2
+should be unity, e. g. when extraPiece1 is an FAD, while extraPiece is an SPD
+inverse to it. This mode should be useful for nonstandard integrals where the
+desired partial fraction decomposition can be performed only after multiplying
+amp with extraPiece1.";
+
 ExcludeMasses::usage =
-"ExcludeMasses is an option of Apart2. It allows to specify masses for \
-which partional fractioning should not be performed,e.g. ExcludeMasses->{m1,m2,3}"
+"ExcludeMasses is an option of Apart2. It allows to specify masses w.r.t which
+partial fraction decomposition should not be performed, e.g.
+ExcludeMasses->{m1,m2,3}.";
 
 ApartFF::failmsg = "Error! ScalApartFF has encountered a fatal problem and must \
 abort the computation. The problem reads: `1`";

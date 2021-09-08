@@ -16,12 +16,14 @@
 (* ------------------------------------------------------------------------ *)
 
 QCDFeynmanRuleConvention::usage =
-"fixes the sign convention in the QCD Feynman rules for the ghost propagator and the \
-ghost-gluon vertex. This is done by setting the value of QCDFeynmanRuleConvention[GhostPropagator] \
-and QCDFeynmanRuleConvention[GluonGhostVertex]. The default values are 1 for \
-both, which corresponds to the convention used in most books. Setting them to -1 \
-enforces the convention that can be found e.g. in the book \"Applications of Perturbative \
-QCD\" by R. Field.";
+"QCDFeynmanRuleConvention fixes the sign convention in the QCD Feynman rules
+for the ghost propagator and the ghost-gluon vertex.This is done by setting
+the value of QCDFeynmanRuleConvention[GhostPropagator] and
+QCDFeynmanRuleConvention[GluonGhostVertex].
+
+The default values are 1 for both, which corresponds to the convention used in
+most books. Setting them to -1 enforces the convention that can be found e.g.
+in the book \"Applications of Perturbative QCD\" by R. Field.";
 
 (* ------------------------------------------------------------------------ *)
 

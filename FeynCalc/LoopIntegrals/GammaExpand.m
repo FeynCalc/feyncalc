@@ -4,7 +4,7 @@
 (* ------------------------------------------------------------------------ *)
 
 GammaExpand::usage =
-"GammaExpand[exp] rewrites Gamma[n + m] (where n has Head Integer).";
+"GammaExpand[exp] rewrites Gamma[n + m] in exp (where n has Head Integer).";
 
 
 (* ------------------------------------------------------------------------ *)

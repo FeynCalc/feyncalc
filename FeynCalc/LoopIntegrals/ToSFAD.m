@@ -17,9 +17,10 @@
 (* ------------------------------------------------------------------------ *)
 
 
-ToSFAD::usage = "ToSFAD[exp] converts all propagator denominators written \
-as FAD or FeynAmpDenmoninator[...,PropagatorDenominator[...],...] to SFAD \
-or FeynAmpDenmoninator[...,StandardPropagatorDenominator[...],...] respectively.";
+ToSFAD::usage =
+"ToSFAD[exp] converts all propagator denominators written as FAD or
+FeynAmpDenmoninator[...,PropagatorDenominator[...],...] to SFAD or
+FeynAmpDenmoninator[...,StandardPropagatorDenominator[...],...] respectively.";
 
 ToSFAD::failmsg =
 "Error! ToSFAD has encountered a fatal problem and must abort the computation. \

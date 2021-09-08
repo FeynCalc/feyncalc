@@ -16,447 +16,496 @@
 (* ------------------------------------------------------------------------ *)
 
 Abbreviation::usage =
-"Abbreviation[name] gives a shortname for name (in HoldForm). \
-E.g.: Abbreviation[QuarkPropagator] --> HoldForm[QP].";
+"Abbreviation is a function used by OneLoop and PaVeReduce for generating
+smaller files when saving results to the hard disk. The convention is that a
+definition like GP = GluonPropagator should be accompanied by the definition
+Abbreviation[GluonPropagator] = HoldForm[GP].";
 
 AntiQuarkField::usage =
-"AntiQuarkField is the name of a fermionic field.";
+"AntiQuarkField is the name of a fermionic field. AntiQuarkField is just a name
+with no functional properties. Only typesetting rules are attached.";
 
 CA::usage =
-"CA is one of the Casimir operator eigenvalues of SU(N); CA = N";
+"CA is one of the Casimir operator eigenvalues of $SU(N)$ (CA $= N$).";
 
 CF::usage =
-"CF is one of the Casimir operator eigenvalues of SU(N); CF = (N^2-1)/(2 N)";
+"CF is one of the Casimir operator eigenvalues of $SU(N)$ (CF =
+$\\frac{N^2-1}{2N}$).";
 
 CFAD::usage =
-"CFAD[{{q1+ ..., p1.q2 + ...,} {m^2, s}, n}, ...] denotes a Cartesian propagator \
-given by 1/[(q1+...)^2 + p1.q2 ... + m^2 + sign*I*eta]^n, where  \
-q1^2 and p1.q2 are Cartesian scalar products in D-1 dimensions. \
-For brevity one can also use shorter forms \
-such as CFAD[{q1+ ...,  m^2}, ...], CFAD[{q1+ ...,  m^2 , n}, ...], \
-CFAD[{q1+ ...,  {m^2, -1}}, ...], CFAD[q1,...]  etc. If s is not explicitly specified, \
-then its value is determined by the \
-option EtaSign, which has the default value +1. If n is not explicitly \
-specified, then the default value 1 is assumed. Translation into FeynCalc \
-internal form is performed by FeynCalcInternal, where a CFAD is encoded \
-using the special head CartesianPropagatorDenominator.";
+"CFAD[{{q1 +..., p1 . q2 +...,} {m^2, s}, n}, ...] denotes a Cartesian
+propagator given by \\frac{1}{[(q_1+\\ldots)^2 + p_1 \\cdot q_2 ... + m^2 + s i
+\\eta]^n}, where $q_1^2$ and $p_1 \\cdot q_2$ are Cartesian scalar products in
+$D-1$ dimensions.
+
+For brevity one can also use shorter forms such as CFAD[{q1+ ...,  m^2}, ...],
+CFAD[{q1+ ...,  m^2 , n}, ...], CFAD[{q1+ ...,  {m^2, -1}}, ...], CFAD[q1,...]
+ etc.
+
+If s is not explicitly specified, its value is determined by the option
+EtaSign, which has the default value -1.
+
+If n is not explicitly specified, then the default value 1 is assumed.
+Translation into FeynCalcI internal form is performed by FeynCalcInternal,
+where a CFAD is encoded using the special head CartesianPropagatorDenominator.";
 
 CartesianPropagatorDenominator::usage =
-"CartesianPropagatorDenominator[CartesianMomentum[q1,D-1]+..., \
-CartesianPair[CartesianMomentum[q1,D-1],CartesianMomentum[p1,D-1] + ...,m^2, \
-{n,s}] encodes a generic Cartesian propagator denominator \
-1/[(q1+...)^2 + q1.p1 + ... + m^2 + s*I eta]^n. \
-CartesianPropagatorDenominator is an internal object. To enter such propagators \
-in FeynCalc you should use CFAD.";
+"CartesianPropagatorDenominator[CartesianMomentum[q1, D - 1] +...,
+CartesianPair[CartesianMomentum[q1, D - 1], CartesianMomentum[p1, D - 1] +...,
+m^2, {n, s}] encodes a generic Cartesian propagator denominator
+$\\frac{1}{[(q1+...)^2 + q1.p1 + ... + m^2 + s*I \\eta]^n}$.
+
+CartesianPropagatorDenominator is an internal object. To enter such
+propagators in FeynCalc you should use CFAD.";
 
 PropagatorDenominator::usage =
-"PropagatorDenominator[Momentum[q], m] is a factor of the denominator of a \
-propagator.  If q is supposed to be D-dimensional enter: \
-PropagatorDenominator[Momentum[q, D], m].  What is meant is \
-1/(q^2-m^2). PropagatorDenominator[p] evaluates to PropagatorDenominator[p,0].
-PropagatorDenominator is an internal object. To enter such propagators \
-in FeynCalc you should use FAD.";
+"PropagatorDenominator[Momentum[q], m]  is a factor of the denominator of a
+propagator. If q is supposed to be $D$-dimensional, use
+PropagatorDenominator[Momentum[q, D], m]. What is meant is $1/(q^2-m^2)$.
 
-CounterT::usage = "CounterT is a factor used by GluonPropagator and \
-QuarkPropagator when CounterTerm is set to All.";
+ PropagatorDenominator must appear inside FeynAmpDenominator, it is not a
+standalone object.";
 
-DeltaFunction::usage = "DeltaFunction is the Dirac delta-function.";
+DeltaFunction::usage =
+"DeltaFunction[x] is the Dirac delta-function $\\delta (x)$.
+
+Mathematica also provides a built-in function DiracDelta with comparable
+properties.";
 
 DeltaFunctionDoublePrime::usage =
-"DeltaFunctionDoublePrime denotes the second derivative of the \
-Dirac delta-function.";
+"DeltaFunctionDoublePrime[1 - x] is the second derivative of the Dirac
+delta-function $\\delta (x)$.";
 
 DeltaFunctionPrime::usage =
-"DeltaFunctionPrime denotes the derivative of the Dirac delta-function.";
+"DeltaFunctionPrime[1 - x] is the derivative of the Dirac delta-function
+$\\delta (x)$.";
 
 DiracBasis::usage =
-"DiracBasis[exp] is a head which is wrapped around Dirac structures \
-(and the 1) as a result of the function DiracReduce.";
+"DiracBasis[any] is a head which is wrapped around Dirac structures (and the 1)
+as a result of the function DiracReduce. For more details, see the
+documentation for DiracReduce.";
 
 DiracGamma::usage =
-"DiracGamma[x, dim] is the way all Dirac \
-matrices and slashes are represented (in the internal representation). \
-Use GA or GAD and GS or GSD for manual (short) input. \
-DiraGamma[x, 4] simplifies to DiracGamma[x].";
+"DiracGamma[x, dim] is the head of all Dirac matrices and slashes (in the
+internal representation). Use GA, GAD, GS or GSD for manual (short) input.
+
+DiracGamma[x, 4] simplifies to DiracGamma[x].
+
+DiracGamma[5]  is $\\gamma ^5$.
+
+DiracGamma[6] is $(1+\\gamma ^5)/2$.
+
+DiracGamma[7] is $(1-\\gamma ^5)/2$.";
 
 DiracIndex::usage =
-"DiracIndex is the head of Dirac indices. \
-The internal representation of a four-dimensional \
-spinorial index i is DiracIndex[i]. If the first \
-argument is an integer, DiracIndex[i] turns into \
-ExplicitDiracIndex[i]. \n
-Dirac indices are the indices that denote the components \
-of Dirac matrices or spinors. They should not be confused with \
-the Lorentz indices attached to the Dirac matrices. For example \
-in case of g^mu_ij, mu is a Lorentz index, while i and j are \
-spinorial indices.";
+"DiracIndex is the head of Dirac indices. The internal representation of a
+four-dimensional spinorial index i is DiracIndex[i].
+
+If the first argument is an integer, DiracIndex[i] turns into
+ExplicitDiracIndex[i].
+
+Dirac indices are the indices that denote the components of Dirac matrices or
+spinors. They should not be confused with the Lorentz indices attached to the
+Dirac matrices. For example in the case of $\\gamma_{ij}^{\\mu}$,  $\\mu$ is a
+Lorentz index, while $i$ and $j$ are Dirac (spinorial) indices.";
 
 DiracIndexDelta::usage =
-"DiracIndexDelta[DiracIndex[i],DiracIndex[j]] is the Kronecker-delta \
-in the Dirac space with two explicit Dirac indices i and j.";
+"DiracIndexDelta[DiracIndex[i], DiracIndex[j]] is the Kronecker-delta in the
+Dirac space with two explicit Dirac indices i and j.";
 
 DIDelta::usage =
-"DIDelta[i,j] is the Kronecker-delta in the Dirac space. DIDelta[i,j] is \
-transformed into DiracDelta[DiracIndex[i],DiracIndex[j]] by FeynCalcInternal.";
+"DIDelta[i, j] is the Kronecker-delta in the Dirac space.
+
+DIDelta[i,j] is transformed into DiracDelta[DiracIndex[i],DiracIndex[j]] by
+FeynCalcInternal.";
 
 DiracSigma::usage =
-"DiracSigma[a, b] stands for I/2*(a . b - b . a) in 4 dimensions. \
-a and b must have Head DiracGamma. Only antisymmetry is implemented.";
+"DiracSigma[a, b] stands for $I/2(a.b-b.a)$ in 4 dimensions.
+
+a and b must have head DiracGamma, GA or GS. Only antisymmetry is implemented.";
 
 Eps::usage =
-"Eps[a, b, c, d] represents the totally antisymmetric epsilon \
-(Levi-Civita) tensor. The \"a,b, ...\" should have head \
-LorentzIndex or Momentum or Integer. \
-As alternative input LC[mu,nu, ...][p,q,...] can be used.";
+"Eps[a, b, c, d] is the head of the totally antisymmetric $\\epsilon$
+(Levi-Civita) tensor. The a,b, ... may have head LorentzIndex or Momentum.";
 
 Epsilon::usage =
-"Epsilon is (D-4), where D is the number of space-time dimensions. Epsilon \
-stands for a small positive number.";
+"Epsilon is $(n-4)$, where $n$ is the space-time dimension.
+
+Epsilon stands for a small positive number.";
 
 EpsilonUV::usage =
-"EpsilonUV denotes (D-4), where D is the number of space-time dimensions. EpsilonUV \
-stands for a small positive number that explicitly regulates only UV divergences.";
+"EpsilonUV denotes $(D-4)$, where $D$ is the number of space-time dimensions.
+
+EpsilonUV stands for a small positive number that explicitly regulates only UV
+divergences.";
 
 EpsilonIR::usage =
-"EpsilonIR denotes (D-4), where D is the number of space-time dimensions. EpsilonIR \
-stands for a small negative number that explicitly regulates only IR divergences.";
+"EpsilonIR  denotes $(D-4)$, where $D$ is the number of space-time dimensions.
+
+EpsilonIR stands for a small negative number that explicitly regulates only IR
+divergences.";
 
 ExplicitDiracIndex::usage =
-"ExplicitDiracIndex[ind] is an explicit Dirac index, i.e., ind is \
-an integer.";
+"ExplicitDiracIndex[ind] is an explicit Dirac index, i.e., ind is an integer.";
 
 ExplicitPauliIndex::usage =
-"ExplicitPauliIndex[ind] is an explicit Pauli index, i.e., ind is \
-an integer.";
+"ExplicitPauliIndex[ind] is an explicit Pauli index, i.e., ind is an integer.";
 
 
 ExplicitLorentzIndex::usage =
-"ExplicitLorentzIndex[ind] is an explicit Lorentz index, i.e., ind is \
-an integer.";
+"ExplicitLorentzIndex[ind] is an explicit Lorentz index, i.e., ind is an
+integer.";
 
 ExplicitSUNIndex::usage =
-"ExplicitSUNIndex[ind] is a specific SU(N) index in the adjoint \
+"ExplicitSUNIndex[ind]  is a specific $SU(N)$ index in the adjoint
 representation, i.e. ind is an integer.";
 
 ExplicitSUNFIndex::usage =
-"ExplicitSUNIndex[ind] is a specific SU(N) index in the fundamental \
+"ExplicitSUNFIndex[ind] is a specific $SU(N)$ index in the fundamental
 representation, i.e. ind is an integer.";
 
 FAD::usage =
-"FAD[q, q-p, ...] denotes 1/(q^2 (q-p)^2 ...). \
-FAD[{q1,m}, {q1-p,m}, q2, ...] is \
-1/( (q1^2 - m^2) ( (q1-p)^2 - m^2 ) q2^2 ... ).
-(Translation into FeynCalc internal form is performed by \
-FeynCalcInternal.)";
+"FAD is the FeynCalc external form of FeynAmpDenominator and denotes an inverse
+propagator.
+
+FAD[q, q-p, ...] is $\\frac{1}{q^2 (q-p)^2 \\ldots}$.
+
+FAD[{q1,m}, {q1-p,m}, q2, ...] is \\frac{1}{[q1^2 - m^2][(q1-p)^2 - m^2] q2^2
+}. Translation into FeynCalc internal form is performed by FeynCalcInternal.";
 
 FCTopology::usage=
-"FCTopology[id, {prop1, prop2, ...}] denotes a topology with the identifier id \
-that is characterized by the propagators {prop1, prop2, ...}. The propagators \
-in the list do not necessarily have to form a valid basis, i.e. the basis may also \
-be incomplete or overdetermined.";
+"FCTopology[id, {prop1, prop2, ...}] denotes a topology with the identifier id
+that is characterized by the propagators {prop1, prop2, ...}. The propagators
+in the list do not necessarily have to form a valid basis, i.e. the basis may
+also be incomplete or overdetermined.";
 
 GLI::usage =
-"GLI[id,{indices}] is a generic loop integral, where the indices denote \
-powers of propagators in the propagator basis (FCTopology) named id.";
+"GLI[id,{indices}] is a generic loop integral, where the indices denote powers
+of propagators in the propagator basis (FCTopology) named id.";
 
 GLIMultiply::usage =
 "GLIMultiply is like GLI but with local multiplication properties.";
 
 DCHN::usage =
-"DCHN[x,i,j] is a chain of Dirac matrices x and is transformed \
-into DiracChain[FCI[x],DiracIndex[i],DiracIndex[j]] by \
-FeynCalcInternal.";
+"DCHN[x, i, j] is a chain of Dirac matrices x and is transformed into
+DiracChain[FCI[x],DiracIndex[i],DiracIndex[j]] by FeynCalcInternal.";
 
 DiracChain::usage =
-"DiracChain[x,i,j] denotes a chain of Dirac \
-matrices x, where the Dirac indices i and j \
-are explicit. For example, \
-DiracChain[DiracGamma[LorentzIndex[mu]],DiracIndex[i],DiracIndex[j]] \
-denotes a standalone Dirac matrix g^mu_ij. A DiracChain with only two \
-arguments denotes a spinor component, e.g. \
-DiracChain[Spinor[Momentum[p],m],DiracIndex[i]] stands for the i-th \
-component of  Spinor[Momentum[p],m]";
+"DiracChain[x, i, j] denotes a chain of Dirac matrices x, where the Dirac
+indices i and j are explicit.";
 
 FeynAmp::usage =
-"FeynAmp[q, amp] denotes a Feynman amplitude. \
-amp denotes the analytical expression for the amplitude, \
-where q is the integration variable. \
-FeynAmp[q1, q2, amp] denotes a two-loop amplitude.";
+"FeynAmp[q, amp] is the head of a Feynman amplitude, where amp denotes the
+analytical expression for the amplitude and q is the integration variable.
+FeynAmp[q1, q2, amp] denotes a two-loop amplitude. FeynAmp has no functional
+properties and serves just as a head. There are however special typesetting
+rules attached.";
 
 FeynAmpDenominator::usage =
-"FeynAmpDenominator[...] represents \
-the inverse denominators of the propagators, i.e. FeynAmpDenominator[x] \
-is 1/x. Different propagator denominators are represented using special \
-heads such as PropagatorDenominator, StandardPropagatorDenominator, \
-CartesianPropagatorDenominator etc. ";
+"FeynAmpDenominator[...] represents the inverse denominators of the
+propagators, i.e. FeynAmpDenominator[x] is $1/x$. Different propagator
+denominators are represented using special heads such as
+PropagatorDenominator, StandardPropagatorDenominator,
+CartesianPropagatorDenominator etc.";
 
 FeynAmpList::usage =
-"FeynAmpList[info][FeynAmp[...], FeynAmp[...], ...] is a head of a list of \
-Feynman amplitudes.";
+"FeynAmpList[info][FeynAmp[...], FeynAmp[...], ...] is a head of a list of
+Feynman amplitudes. FeynAmpList has no functional properties and serves just
+as a head.";
 
 FV::usage =
-"FV[p,mu] is a 4-vector and is transformed into \
-Pair[Momentum[p], LorentzIndex[mu]] by FeynCalcInternal.";
+"FV[p, mu] is the $4$-dimensional vector $p^{\\mu }$.";
 
 FVD::usage =
-"FVD[p,mu] is a D-dimensional vector and is \
-transformed into Pair[Momentum[p,D], LorentzIndex[mu,D]] \
-by FeynCalcInternal.";
+"FVD[p, mu] is the $D$-dimensional vector $p$ with Lorentz index mu.";
 
 FVE::usage =
-"FVE[p,mu] is a D-4-dimensional vector and is \
-transformed into Pair[Momentum[p,D-4], LorentzIndex[mu,D-4]] \
-by FeynCalcInternal.";
+"FVE[p, mu] is the $D-4$-dimensional vector $p$ with Lorentz index $\\mu$.";
 
 FCGV::usage =
-"FCGV[x] is a FeynCalc global variable, i.e. a container \
-for string variables that allows to introduce new variables \
-without polluting the Global context of Mathematica.";
+"FCGV[x] is a FeynCalc global variable, i.e. a container for string variables
+that allows to introduce new variables without polluting the Global context of
+Mathematica.
+
+Use the rule FCGV[s_] :> ToExpression[s] if you want to convert the string x
+to a symbol with the name x.";
 
 GA::usage =
-"GA[mu] can be used as input for gamma^mu and is \
-transformed into DiracGamma[LorentzIndex[mu]] by FeynCalcInternal.";
+"GA[mu] can be used as input for a 4-dimensional $\\gamma^{\\mu }$ and is
+transformed into DiracGamma[LorentzIndex[mu]] by FeynCalcInternal (=FCI).
+
+GA[mu , nu , ...] is a short form for GA[mu].GA[nu].";
 
 GA5::usage =
-"GA5 is equivalent to DiracGamma[5] and denotes gamma5.";
+"GA5 is equivalent to DiracGamma[5] and denotes $\\gamma^5$.";
 
 GAD::usage =
-"GAD[mu] can be used as input for a D-dimensional gamma^mu and is \
-transformed into DiracGamma[LorentzIndex[mu, D], D] by FeynCalcInternal.";
+"GAD[mu] can be used as input for a $D$-dimensional $\\gamma ^{\\mu }$ and is
+transformed into DiracGamma[LorentzIndex[mu,D],D] by FeynCalcInternal (=FCI).
+
+GAD[mu , nu , ...] is a short form for GAD[mu].GAD[nu].";
 
 GAE::usage =
-"GAE[mu] can be used as input for a D-4-dimensional gamma^mu and is \
-transformed into DiracGamma[LorentzIndex[mu, D-4], D-4] by FeynCalcInternal.";
+"GAE[mu] can be used as input for a D-4-dimensional $\\gamma^{\\mu }$and is
+transformed into DiracGamma[LorentzIndex[mu, D-4], D-4] by FeynCalcInternal
+(FCI).
+
+GAE[mu, nu , ...] is a short form for GAE[mu].GAE[nu] ....";
 
 GFAD::usage =
-"GFAD[{expr,n,sign},...] denotes 1/(expr + sign I eta)^n. \
-(Translation into FeynCalc internal form is performed by \
-FeynCalcInternal.)";
+"GFAD[{{{x, s}, n}, ...] denotes a generic propagator given by $\\frac{1}{[x + s
+i \\eta]^n}$, where x can be an arbitrary expression. For brevity one can also
+use shorter forms such as GFAD[{x, n}, ...], GFAD[{x}, ...] or GFAD[x, ...].
 
-GFAD::usage =
-"GFAD[{{{x, s}, n}, ...] denotes a generic propagator \
-given by 1/[x + s*I*eta]^n, where x can be an arbitray expression. \
-For brevity one can also use shorter forms \
-such as GFAD[{x, n}, ...], GFAD[{x}, ...] or GFAD[x, ...]. \
-If s is not explicitly specified, then its value is determined by the \
-option EtaSign, which has the default value +1. If n is not explicitly \
-specified, then the default value 1 is assumed. Translation into FeynCalc \
-internal form is performed by FeynCalcInternal, where a GFAD is encoded \
-using the special head GenericPropagatorDenominator.";
+If s is not explicitly specified, then its value is determined by the option
+EtaSign, which has the default value +1.
+
+If n is not explicitly specified, then the default value 1 is assumed.
+Translation into FeynCalc internal form is performed by FeynCalcInternal,
+where a GFAD is encoded using the special head GenericPropagatorDenominator.";
 
 GaugeField::usage =
-"GaugeField is a name of a gauge field.";
+"GaugeField is just a name. No functional properties are associated with it.
+GaugeField is used as default setting for the option QuantumField of
+FieldStrength.";
 
 GaugeXi::usage =
 "GaugeXi is a head for gauge parameters.";
 
 GenericPropagatorDenominator::usage =
-"GenericPropagatorDenominator[expr, {n,s}] is a generic factor of the denominator of a \
-propagator. Unlike PropagatorDenominator that is supposed to mean 1/(q^2-m^2), \
-expr in GenericPropagatorDenominator can be an arbitrary combination of Pair, \
-CartesianPair and TemporalPair objects. Using n one can specify the power of the \
-propagator, while s (+1 or -1) fixes the sign of  I*eta. GenericPropagatorDenominator \
-is an internal object. To enter such propagators in FeynCalc you should use GFAD.";
+"GenericPropagatorDenominator[expr, {n, s}]  is a generic factor of the
+denominator of a propagator. Unlike PropagatorDenominator that is supposed to
+mean $1/(q^2-m^2)$, expr in GenericPropagatorDenominator can be an arbitrary
+combination of Pair, CartesianPair and TemporalPair objects.";
 
 GluonField::usage =
 "GluonField is a name of a gauge field.";
 
 GS::usage =
-"GS[p] is transformed into DiracGamma[Momentum[p]] by FeynCalcInternal. \
-GS[p,q, ...] is equivalent to GS[p].GS[q]. ...";
+"GS[p] can be used as input for a 4-dimensional $p^\\mu \\gamma_\\mu$ and is
+transformed into DiracGamma[Momentum[p]] by FeynCalcInternal (=FCI).
+
+GS[p,q, ...] is a short form for GS[p].GS[q].";
 
 GSD::usage =
-"GSD[p] is transformed into DiracGamma[Momentum[p, D], D] by FeynCalcInternal. \
-GSD[p,q, ...] is equivalent to GSD[p].GSD[q]. ...";
+"GSD[p] can be used as input for a $D$-dimensional $p^\\mu \\gamma_\\mu$ and is
+transformed into DiracGamma[Momentum[p,D],D] by FeynCalcInternal (=FCI).
+
+GSD[p,q, ...] is a short form for GSD[p].GSD[q].";
 
 GSE::usage =
-"GSE[p] is transformed into DiracGamma[Momentum[p, D-4], D-4] by FeynCalcInternal. \
-GSE[p,q, ...] is equivalent to GSE[p].GSE[q]. ...";
+"GSE[p] can be used as input for a $D-4$-dimensional $\\gamma \\cdot p =
+\\gamma^\\mu p_\\mu$ and is transformed into DiracGamma[Momentum[p,D-4],D-4] by
+FeynCalcInternal (FCI). GSE[p,q, ...] is a short form for GSE[p].GSE[q]. ....";
 
 Integratedx::usage =
-"Integratedx[x, low, up] is a variable representing the integration \
-operator Integrate[#, {x,low,up}]&.";
+"Integratedx[x, low, up] is a variable representing the integration operator
+Integrate[#, {x,low,up}]&.";
 
 LC::usage =
-"LC[m,n,r,s] evaluates to Eps[LorentzIndex[m], LorentzIndex[n], \
-LorentzIndex[r], LorentzIndex[s]] applying FeynCalcInternal. \
-LC[m,...][p, ...] evaluates to Eps[LorentzIndex[m], ..., Momentum[p], ...] \
-applying FeynCalcInternal.";
+"LC[m, n, r, s] evaluates to 4-dimensional $\\varepsilon^{m n r s}$ by virtue of
+applying FeynCalcInternal.
+
+LC[m,...][p, ...] evaluates to 4-dimensional $\\epsilon ^{m \\ldots  \\mu 
+\\ldots}p_{\\mu  \\ldots}$ applying FeynCalcInternal.";
 
 LCD::usage =
-"LCD[m,n,r,s] evaluates to Eps[LorentzIndex[m,D], LorentzIndex[n,D], \
-LorentzIndex[r,D], LorentzIndex[s,D]] applying FeynCalcInternal. \
-LCD[m,...][p, ...] evaluates to Eps[LorentzIndex[m, D], ..., Momentum[p, D], ...] \
-applying FeynCalcInternal.";
+"LCD[m, n, r, s] evaluates to $D$-dimensional $\\varepsilon^{m n r s}$ by virtue
+of applying FeynCalcInternal.
+
+LCD[m,...][p, ...] evaluates to $D$-dimensional $\\epsilon ^{m \\ldots  \\mu 
+\\ldots}p_{\\mu  \\ldots}$ applying FeynCalcInternal.";
 
 LeftPartialD::usage =
-"LeftPartialD[mu] denotes partial_mu, acting to the left.";
+"LeftPartialD[\[Mu]] denotes $\\overleftarrow{\\partial }_{\\mu }$ acting to the
+left.";
 
 LeftRightPartialD::usage =
-"LeftRightPartialD[mu] denotes partial_mu, acting to the left and \
-right. ExplicitPartialD[LeftRightPartialD[mu]] gives \
-1/2 (RightPartialD[mu] - LeftPartialD[mu]).";
+"LeftRightPartialD[mu] denotes $\\overleftrightarrow {\\partial }_{\\mu }$, acting
+to the left and right.
+
+ExplicitPartialD[LeftRightPartialD[\[Mu]]] gives 1/2 (RightPartialD[\[Mu]] -
+LeftPartialD[\[Mu]]).";
 
 LeftRightPartialD2::usage =
-"LeftRightPartialD2[mu] denotes partial_mu, acting to the left and \
-right. ExplicitPartialD[LeftRightPartialD2[mu]] gives \
-(RightPartialD[mu] + LeftPartialD[mu]).";
+"LeftRightPartialD2[\[Mu]] denotes $\\overleftrightarrow{\\partial }_{\\mu }$,
+acting to the left and right.
+
+ExplicitPartialD[LeftRightPartialD2[\[Mu]]] gives (RightPartialD[\[Mu]] +
+LeftPartialD[\[Mu]]).";
 
 Li2::usage =
-"Li2 is an abbreviation for the dilog function, i.e., Li2 = PolyLog[2,#]&.";
+"Li2 is an abbreviation for the dilogarithm function, i.e. Li2 = PolyLog[2,
+#]&.";
 
 Li3::usage =
-"Li3 is an abbreviation for the trilog function, i.e., Li3 = PolyLog[3,#]&.";
+"Li3 is an abbreviation for the trilogarithm function, i.e. Li3 = PolyLog[3,
+#]&.";
 
 Li4::usage =
-"Li4 is an abbreviation for the PolyLog[4,x] function, i.e., Li4 = PolyLog[4,#]&.";
+"Li4 is an abbreviation for the weight 4 polylogarithm function, i.e. Li4 =
+PolyLog[4, #]&.";
 
 LorentzIndex::usage =
-"LorentzIndex is the head of Lorentz indices. \
-The internal representation of a four-dimensional mu is \
-LorentzIndex[mu]. For other than four dimensions: \
-LorentzIndex[mu, Dimension]. \
-LorentzIndex[mu, 4] simplifies to LorentzIndex[mu]. \
-If the first argument is an integer, LorentzIndex[i] turns into \
-ExplicitLorentzIndex[i].";
+"LorentzIndex[mu] denotes a $4$-dimensional Lorentz index.
+
+For other than $4$ dimensions: LorentzIndex[mu, D] or LorentzIndex[mu] etc.
+
+ LorentzIndex[mu, 4] simplifies to LorentzIndex[mu].";
 
 Momentum::usage =
-"Momentum is the head of a four momentum (p). \
-The internal representation of a four-dimensional p is \
-Momentum[p]. For other than four dimensions: Momentum[p, Dimension]. \n
+"Momentum[p] is the head of a four momentum p.
+
+The internal representation of a $4$-dimensional $p$ is Momentum[p].
+
+For other than $4$ dimensions: Momentum[p, dim].
+
 Momentum[p, 4] simplifies to Momentum[p].";
 
 MT::usage =
-"MT[mu, nu] is the metric tensor in 4 dimensions.";
+"MT[mu, nu] is the metric tensor in $4$ dimensions.";
 
 MTD::usage =
-"MTD[mu, nu] is the metric tensor in D dimensions.";
+"MTD[mu, nu] is the metric tensor in $D$ dimensions.";
 
 MTE::usage =
-"MTE[mu, nu] is the metric tensor in D-4 dimensions.";
+"MTE[mu, nu] is the metric tensor in $D-4$ dimensions.";
 
 Nf::usage =
 "Nf denotes the number of flavors.";
 
 Pair::usage =
-"Pair[a , b] is a special pairing used in the internal \
-representation: a and b may have heads LorentzIndex or Momentum. \
-If both a and b have head LorentzIndex, the metric tensor is \
-understood. If a and b have head Momentum, a scalar product is \
-meant. If one of a and b has head LorentzIndex and the other \
-Momentum, a Lorentz vector (p_mu) is understood.";
+"Pair[x, y] is the head of a special pairing used in the internal
+representation: x and y may have heads LorentzIndex or Momentum.
+
+If both x and y have head LorentzIndex, the metric tensor (e.g. $g^{\\mu \\nu}$)
+is understood.
+
+If x and y have head Momentum, a scalar product (e.g. $p \\cdot q$) is meant.
+
+If one of x and y has head LorentzIndex and the other Momentum, a Lorentz
+vector (e.g. $p^{\\mu }$) is implied.";
 
 FCPartialD::usage =
-"PartialD[mu] denotes partial_mu. PartialD[x, mu] denotes d/d x^mu. \
-The first one acts on QuantumField[f], the second on QuantumField[f][x], \
-where f is some field name and x is a space-time variable.";
+"FCPartialD[\[Mu]] denotes the four-dimensional $\\partial _{\\mu }$.
+
+FCPartialD is used to denote derivative fields.
+
+FCPartialD[LorentzIndex[\[Mu] ,D]] denotes the $D$-dimensional $\\partial _{\\mu
+}$.";
 
 PlusDistribution::usage =
-"PlusDistribution[1/(1-x)] denotes the distribution (1/(1-x))_+. \n
-PlusDistribution[Log[1-x]/(1-x)] denotes the distribution \
-(Log[1-x]/(1-x))_+. \n
-PlusDistribution[Log[x (1-x)]/(1-x)] simplifies to \
-Log[x] /(1-x) + PlusDistribution[Log[1-x]/(1-x)].";
+"PlusDistribution[1/(1 - x)] denotes a distribution (in the sense of the \"+\"
+prescription).";
 
 Polarization::usage =
-"Polarization[k] = Polarization[k, I] represents a \
-polarization momentum with (incoming) momentum k. \
-A slashed polarization vector (e1(k) slash) has to be entered
-as GS[Polarization[k]]. \
-The internal representation for a polarization vector e1 \
-corresponding to a boson with four momentum k is: \
-Momentum[ Polarization[ k, I ] ]. \
-Transversality of polarization vectors is \
-can be controlled via the option 'Transversality', i.e.  Pair[ Momentum[k], \
-Momentum[ Polarization[k, I,Transversality->True] ] ] yields 0. \
-Polarization[k,-I] denotes the complex conjugate polarization \
-originating from application of the ComplexConjugate function.\n
-Polarization is also an option. \
-The setting 0 denotes the unpolarized and 1 the polarized case.";
+"Polarization[k] is the head of a polarization momentum with (incoming)
+momentum k.
+
+A slashed polarization vector ($\\varepsilon_{\\mu}(k) \\gamma^\\mu)$ has to be
+entered as GS[Polarization[k]].
+
+The internal representation for a polarization vector corresponding to a boson
+with four momentum k is: Momentum[Polarization[k, I ]].
+
+Unless the option Transversality is set to True, all polarization vectors are
+not transverse by default.
+
+Polarization[k,-I] denotes the complex conjugate polarization.
+
+Polarization is also an option of various functions related to the operator
+product expansion. The setting 0 denotes the unpolarized and 1 the polarized
+case.";
 
 PolarizationVector::usage =
 "PolarizationVector[p, mu] denotes a 4-dimensional polarization vector
-$\\varepsilon(p)^\\mu$.
+$\\varepsilon^\\mu(p)$.
 
 To obtain a $D$-dimensional polarization vector, just use ChangeDimension[vec,
-D]
-";
-
-PropagatorDenominator::usage =
-"PropagatorDenominator[Momentum[q], m] is a factor of the denominator of a \
-propagator. If q is supposed to be D-dimensional, use \
-PropagatorDenominator[Momentum[q, D], m]. What is meant is \
-1/(q^2-m^2). PropagatorDenominator must appear inside FeynAmpDenominator, it \
-is not a standalone object.";
+D]";
 
 PD::usage =
 "PD is an abbreviation for PropagatorDenominator.";
 
 QuantumField::usage =
-"QuantumField[par1, par2, ..., ftype, {lorind}, {sunind}] \
-denotes a quantum field of type ftype with (possible) \
-Lorentz-indices lorind and SU(N)-indices sunind. \
-the optional first argument par1, par2, ...,  are partial \
-derivatives (PartialD) acting on the field.";
+"QuantumField is the head of quantized fields and their derivatives.
+
+QuantumField[par, ftype, {lorind}, {sunind}] denotes a quantum field of type
+ftype with (possible) Lorentz-indices lorind and $SU(N)$ indices sunind. The
+optional first argument par denotes a partial derivative acting on the field.";
 
 QuarkField::usage =
-"QuarkField is the name of a fermionic field.";
+"QuarkField is the name of a fermionic field. This is just a name with no
+functional properties. Only typesetting rules are attached.";
 
 QuarkFieldPsi::usage =
-"QuarkFieldPsi is the name of a fermionic field.";
+"QuarkFieldPsi is the name of a fermionic field.This is just a name with no
+functional properties. Only typesetting rules are attached.";
 
 QuarkFieldChi::usage =
-"QuarkFieldChi is the name of a fermionic field.";
+"QuarkFieldChi is the name of a fermionic field. This is just a name with no
+functional properties. Only typesetting rules are attached.";
 
 QuarkFieldPsiDagger::usage =
-"QuarkFieldPsiDagger is the name of a fermionic field.";
+"QuarkFieldPsiDagger is the name of a fermionic field.This is just a name with
+no functional properties. Only typesetting rules are attached.";
 
 QuarkFieldChiDagger::usage =
-"QuarkFieldChiDagger is the name of a fermionic field.";
+"QuarkFieldChiDagger is the name of a fermionic field. This is just a name with
+no functional properties. Only typesetting rules are attached.";
 
 RightPartialD::usage =
-"RightPartialD[mu] denotes partial_mu, acting to the right.";
+"RightPartialD[mu] denotes $\\partial _{\\mu }$, acting to the right.";
 
 ScaleMu::usage =
-"ScaleMu is the mass scale used for dimensional regularization \
-of loop integrals";
+"ScaleMu is the mass scale used for dimensional regularization of loop
+integrals.";
 
 SFAD::usage =
-"SFAD[{{q1+ ..., p1.q2 + ...,} {m^2, s}, n}, ...] denotes a Lorentzian propagator \
-given by 1/[(q1+...)^2 + p1.q2 ... + m^2 + sign*I*eta]^n, where  \
-q1^2 and p1.q2 are scalar products of Lorentz vectors in D dimensions. \
-For brevity one can also use shorter forms \
-such as SFAD[{q1+ ...,  m^2}, ...], SFAD[{q1+ ...,  m^2 , n}, ...], \
-SFAD[{q1+ ...,  {m^2, -1}}, ...], SFAD[q1,...]  etc. If s is not explicitly specified, \
-then its value is determined by the \
-option EtaSign, which has the default value +1. If n is not explicitly \
-specified, then the default value 1 is assumed. Translation into FeynCalc \
-internal form is performed by FeynCalcInternal, where a SFAD is encoded \
-using the special head StandardPropagatorDenominator.";
+"SFAD[{{q1 +..., p1 . q2 +...,} {m^2, s}, n}, ...] denotes a Cartesian
+propagator given by \\frac{1}{[(q_1+\\ldots)^2 + p_1 \\cdot q_2 ... + m^2 + s i
+\\eta]^n}, where $q_1^2$ and $p_1 \\cdot q_2$ are Cartesian scalar products in
+$D-1$ dimensions.
+
+For brevity one can also use shorter forms such as SFAD[{q1+ ...,  m^2}, ...],
+SFAD[{q1+ ...,  m^2 , n}, ...], SFAD[{q1+ ...,  {m^2, -1}}, ...], SFAD[q1,...]
+ etc.
+
+If s is not explicitly specified, its value is determined by the option
+EtaSign, which has the default value +1.
+
+If n is not explicitly specified, then the default value 1 is assumed.
+Translation into FeynCalcI internal form is performed by FeynCalcInternal,
+where a SFAD is encoded using the special head CartesianPropagatorDenominator.";
 
 StandardPropagatorDenominator::usage =
-"StandardPropagatorDenominator[Momentum[q1,D]+..., \
-Pair[Momentum[q1,D],Momentum[p1,D] + ...,m^2, \
-{n,s}] encodes a generic Lorentzian propagator denominator \
-1/[(q1+...)^2 + q1.p1 + ... + m^2 + s*I eta]^n. \
-This allows to accomodate for standard propagators of the type \
-1/(p^2-m^2) but also for propagators encountered in manifestly \
-Lorentz covariant effective field theories such as HQET or SCET. \
-StandardPropagatorDenominator is an internal object. To enter such propagators \
+"StandardPropagatorDenominator[Momentum[q1, D] +..., Pair[Momentum[q1, D],
+Momentum[p1, D] +..., m^2, {n, s}] encodes a generic Lorentzian propagator
+denominator $\\frac{1}{[(q_1+ \\ldots)^2 + q_1 \\cdot p_1 + \\ldots + m^2 + s i
+\\eta]^n}$.
+
+This allows to accommodate for standard propagators of the type $1/(p^2-m^2)$
+but also for propagators encountered in manifestly Lorentz covariant effective
+field theories such as HQET or SCET.
+
+StandardPropagatorDenominator is an internal object. To enter such propagators
 in FeynCalc you should use SFAD.";
 
 OPE::usage =
-"OPE is a convenience variable to separate OPE insertions. OPE is also \
-an option of several input functions like GluonPropagator.";
+"OPE is a convenience variable to separate OPE insertions.
+
+OPE is also an option of several input functions like GluonPropagator.";
 
 SD::usage =
-"SD[i, j] denotes the SU(N) Kronecker delta with color \
-indices i and j in the adjoint represnetation. SD[i,j] is transformed into \
-SUNDelta[SUNIndex[i],SUNIndex[j]] by FeynCalcInternal.";
+"SD[i, j] denotes the $SU(N)$ Kronecker delta with color indices i and j in the
+adjoint representation.
+
+SD[i,j] is transformed into SUNDelta[SUNIndex[i],SUNIndex[j]] by
+FeynCalcInternal.";
 
 SDF::usage =
-"SDF[i, j] denotes the SU(N) Kronecker delta with color \
-indices i and j in the fundamental represnetation. SDF[i,j] is transformed into \
+"SDF[i, j] denotes the $SU(N)$ Kronecker delta with color indices i and j in
+the fundamental representation. SDF[i,j] is transformed into
 SUNFDelta[SUNFIndex[i],SUNFIndex[j]] by FeynCalcInternal.";
 
 SmallDelta::usage =
@@ -466,170 +515,173 @@ SmallEpsilon::usage =
 "SmallEpsilon denotes some small positive number.";
 
 SmallVariable::usage =
-"SmallVariable[me] is a small (negligible) variable. \
-This means any mass with head SmallVariable be neglected if it \
-appears in a sum, but not as an argument of Passarino-Veltman \
-(PaVe) functions or PropagatorDenominator.";
+"SmallVariable[me] is the head of small (negligible) variables. This means any
+mass with this head can be neglected if it appears in a sum, but not as an
+argument of Passarino-Veltman (PaVe) functions or PropagatorDenominator.";
 
 SO::usage =
-"SO[q] is the four-dimensional scalar product of OPEDelta with q. \
-It is transformed into Pair[Momentum[q], Momentum[OPEDelta] by \
-FeynCalcInternal.";
+"SO[q] is a four-dimensional scalar product of OPEDelta with q. It is
+transformed into Pair[Momentum[q], Momentum[OPEDelta] by FCI.";
 
 SOD::usage =
-"SOD[q] stands for the D-dimensional scalar product of \
-OPEDelta with q. SOD[q] is transformed into Pair[Momentum[OPEDelta,D], \
-Momentum[q,D]] by FeynCalcInternal.";
+"SOD[q] is a $D$-dimensional scalar product of OPEDelta with q. It is
+transformed into Pair[Momentum[q,D], Momentum[OPEDelta,D] by FeynCalcInternal.";
 
 SP::usage =
-"SP[p,q] is the four-dimensional scalar product of p with q. \
-SP[p, q] is transformed into ScalarProduct[p,q] by FeynCalcInternal. \
-SP[p] is the same as SP[p,p] (=p^2).";
+"SP[a, b] denotes a $4$-dimensional scalar product. SP[a, b] is transformed
+into ScalarProduct[a, b] by FeynCalcInternal.
+
+SP[p] is the same as SP[p, p] $(=p^2)$.";
 
 SPD::usage =
-"SPD[p, q] is the D-dimensional scalar product of p with q. \
-SPD[p, q] is transformed into Pair[Momentum[p, D],Momentum[q, D]] \
-by FeynCalcInternal.";
+"SPD[a, b] denotes a $D$-dimensional scalar product.
+
+ SPD[a, b] is transformed into ScalarProduct[a, b,Dimension->D] by
+FeynCalcInternal.
+
+SPD[p] is the same as SPD[p,p] $(=p^2)$.";
 
 SPE::usage =
-"SPE[p, q] is the D-4-dimensional scalar product of p with q. \
-SPE[p, q] is transformed into Pair[Momentum[p, D-4],Momentum[q, D-4]] \
-by FeynCalcInternal.";
+"SPE[a, b] denotes a $D-4$-dimensional scalar product. SPE[a, b] is transformed
+into Pair[Momentum[a, -4 + D], Momentum[b, -4 + D]] by FeynCalcInternal.
+
+SPE[p] is the same as SPE[p,p]  $(=p^2)$.";
 
 Spinor::usage =
-"Spinor[Momentum[p], m] represents a Dirac spinor. \
-Which of the spinors u, v, ubar or vbar \
-is understood, depends on the sign of the Momentum[p] \
-argument and the relative position inside a chain of \
-Dirac matries. \n \n
-Spinor[Momentum[p],m] means ubar(p,m) if it stands at the beginning of the chain.\n
-Spinor[Momentum[p],m] means u(p,m) if it stands at the end of the chain.\n
-Spinor[-Momentum[p],m] means vbar(p,m) if it stands at the beginning of the chain.\n
-Spinor[-Momentum[p],m] means v(p,m) if it stands at the end of the chain.\n
-Spinors of fermions of mass m are normalized to have \
-ubar(p,m) u(p,m) = 2m and vbar(p,m) v(p,m) = -2m. \n
-Notice that Spinor is an FCI-symbol. For user input please use \
-FCE-symbols SpinorU, SpinorUBar, SpinorV, SpinorVBar as well as \
-SpinorUD, SpinorUBarD, SpinorVD, SpinorVBarD.";
+"Spinor[p, m, o] is the head of Dirac spinors. Which of the spinors $u$, $v$,
+$\\bar{u}$ or $\\bar{v}$ is understood, depends on the sign of the momentum
+argument p and the relative position of Spinor in the chain.
+
+- Spinor[Momentum[p], m] means $\\bar{u}$ if it stands at the beginning of the
+chain.
+
+- Spinor[Momentum[p], m] means $u$ if it stands at the end of the chain.
+
+- Spinor[-Momentum[p], m] means $\\bar{v}$ if it stands at the beginning of the
+chain.
+
+- Spinor[-Momentum[p], m] means $v$ if it stands at the end of the chain.
+
+Spinors of fermions of mass $m$ are normalized to have $\\bar{u} u=2 m$ and 
+$\\bar{v} v=-2 m$.
+
+The optional argument o can be used for additional degrees of freedom. If no
+optional argument o is supplied, a 1 is substituted in.";
 
 SpinorU::usage =
-"SpinorU[p, m] denotes a u-spinor that depends on the \
-4-dimensional momentum p";
+"SpinorU[p, m] denotes a $u(p,m)$-spinor that depends on the $4$-dimensional
+momentum $p$.";
 
 SpinorUBar::usage =
-"SpinorUBar[p, m] denotes a ubar-spinor that depends on the \
-4-dimensional momentum p";
+"SpinorUBar[p, m] denotes a $\\bar{u}(p,m)$-spinor that depends on the
+$4$-dimensional momentum $p$.";
 
 SpinorV::usage =
-"SpinorV[p, m] denotes a v-spinor that depends on the \
-4-dimensional momentum p";
+"SpinorV[p, m] denotes a $v(p,m)$-spinor that depends on the $4$-dimensional
+momentum $p$.";
 
 SpinorVBar::usage =
-"SpinorVBar[p, m] denotes a vbar-spinor that depends on the \
-4-dimensional momentum p";
+"SpinorVBar[p, m] denotes a $\\bar{v}(p,m)$-spinor that depends on the
+$4$-dimensional momentum $p$.";
 
 SpinorUD::usage =
-"SpinorUD[p, m] denotes a u-spinor that depends on the \
-D-dimensional momentum p";
+"SpinorUD[p, m] denotes a $u(p,m)$-spinor that depends on the $D$-dimensional
+momentum $p$.";
 
 SpinorUBarD::usage =
-"SpinorUBarD[p, m] denotes a ubar-spinor that depends on the \
-D-dimensional momentum p";
+"SpinorUBarD[p, m] denotes a $\\bar{u}(p,m)$-spinor that depends on the
+$D$-dimensional momentum $p$.";
 
 SpinorVD::usage =
-"SpinorVD[p, m] denotes a v-spinor that depends on the \
-D-dimensional momentum p";
+"SpinorVD[p, m] denotes a $v(p,m)$-spinor that depends on the $D$-dimensional
+momentum $p$.";
 
 SpinorVBarD::usage =
-"SpinorVBarD[p, m] denotes a vbar-spinor that depends on the \
-D-dimensional momentum p";
+"SpinorVBarD[p, m] denotes a $\\bar{v}(p,m)$-spinor that depends on the
+$D$-dimensional momentum $p$.";
 
 StandardMatrixElement::usage =
-"StandardMatrixElement[ ... ] is the head for matrix element abbreviations.";
+"StandardMatrixElement[...] is the head for matrix element abbreviations.";
 
 SUND::usage =
-"SUND[a, b, c] is the symmetric SU(N) d_{a,b,c}.";
+"SUND[a, b, c] are the symmetric $SU(N)$ $d_{abc}$.";
 
 SUNDelta::usage =
-"SUNDelta[a, b] is the Kronecker-delta for SU(N) with color \
-indices a and b in the adjoint representation.";
+"SUNDelta[a, b]  is the Kronecker-delta for $SU(N)$ with color indices a and b
+in the adjoint representation.";
 
 SUNFDelta::usage =
-"SUNFDelta[a, b] is the Kronecker-delta for SU(N) with color \
-indices a and b in the fundamental representation.";
+"SUNFDelta[a, b] is the Kronecker-delta for $SU(N)$ with color indices a and b
+in the fundamental representation.";
 
 SUNF::usage =
-"SUNF[a, b, c] are the structure constants of SU(N). \
-SUNF[a, b, c, d] is a shorthand notation for SUNF[a,b,i] SUNF[i,c,d].";
+"SUNF[a, b, c] are the structure constants of $SU(N)$. The arguments a, b, c
+should be of symbolic type.";
 
 SUNIndex::usage =
-"SUNIndex[a] is an SU(N) index in the adjoint representation. \
-If the argument is an integer, SUNIndex[a] turns into ExplicitSUNIndex[a].";
+"SUNIndex[a] is an $SU(N)$ index in the adjoint representation. If the argument
+is an integer, SUNIndex[a] turns into ExplicitSUNIndex[a].";
 
 SUNFIndex::usage =
-"SUNFIndex[a] is an SU(N) index in the fundamental representation. \
-If the argument is an integer, SUNFIndex[a] turns into ExplicitSUNFIndex[a].";
+"SUNFIndex[a]  is an $SU(N)$ index in the fundamental representation. If the
+argument is an integer, SUNFIndex[a] turns into ExplicitSUNFIndex[a].";
 
 SUNN::usage =
-"SUNN denotes the number of colors. Trick[SUNDelta[a, a]] yields (SUNN^2 -1).";
+"SUNN denotes the number of colors. Trick[SUNDelta[a, a]] yields $n_c^2 -1$.";
 
 SUNT::usage =
-"SUNT[a] is the SU(N) T^a generator in the fundamental representation. \
-The fundamental indices are implicit.";
+"SUNT[a] is the $SU(N)$ $T^a$ generator in the fundamental representation. The
+fundamental indices are implicit.";
 
 SUNTF::usage =
-"SUNTF[{a},i,j] is the SU(N) T^a_ij generator in the fundamental representation. \
-The fundamental indices i and j are explicit.";
+"SUNTF[{a}, i, j] is the $SU(N)$ $T^a$ generator in the fundamental
+representation. The fundamental indices are explicit.";
 
 Tf::usage =
-"Tf is a group constant (sometimes called TR, as in eq. (2.5.133) in T. Muta, \
-Foundation of Quantum Chromodynamics). Tf is 1/2 for SU(N). \
-Tf is defined by SUNTrace[SUNT[a].SUNT[b]] = Tf*SUNDelta[a, b]. \
-Tf is useful to keep around in order to identify contributions from internal \
-quark loops.";
+"Tf is the color factor $T_f$. It is $1/2$ for $SU(N)$.";
 
 Transversality::usage =
-"Transversality is an option for Polarization and PolarizationVector. \
-Setting it to True will make all scalar products of a \
-polarization vector with its momentum to be zero.";
+"Transversality is an option for Polarization and PolarizationVector. Setting
+it to True will make all scalar products of a polarization vector with its
+momentum vanish.";
 
 $TypesettingDim4::usage =
-"The string value of $TypesettingDim4 determines which symbols will be displayed \
-above 4-dimensional momenta, Dirac matrices, metric tensors and polarization vectors. \
-This is concerns only typesetting in the TraditionalForm output and doesn't change \
-the physical behavior of those objects.";
+"The string value of $TypesettingDim4 determines which symbols will be
+displayed above $4$-dimensional momenta, Dirac matrices, metric tensors and
+polarization vectors. This concerns only typesetting in the TraditionalForm
+output and doesn't change the physical behavior of those objects.";
 
 $TypesettingDimE::usage =
-"The string value of $TypesettingDimE determines which symbols will be displayed \
-above D-4-dimensional momenta, Dirac matrices, metric tensors and polarization vectors. \
-This is concerns only typesetting in the TraditionalForm output and doesn't change \
-the physical behavior of those objects.";
+"The string value of $TypesettingDimE determines which symbols will be
+displayed above $(D-4)$-dimensional momenta, Dirac matrices, metric tensors
+and polarization vectors. This concerns only typesetting in the
+TraditionalForm output and doesn't change the physical behavior of those
+objects.";
 
 $TypesettingDimD::usage =
-"The string value of $TypesettingDimD determines which symbols will be displayed \
-above D-dimensional momenta, Dirac matrices, metric tensors and polarization vectors. \
-This is concerns only typesetting in the TraditionalForm output and doesn't change \
-the physical behavior of those objects.";
+"The string value of $TypesettingDimD determines which symbols will be
+displayed above $D$-dimensional momenta, Dirac matrices, metric tensors and
+polarization vectors. This concerns only typesetting in the TraditionalForm
+output and doesn't change the physical behavior of those objects.";
 
 TypesettingExplicitLorentzIndex::usage =
-"TypesettingExplicitLorentzIndex determines the TraditionalForm typesetting of \
+"TypesettingExplicitLorentzIndex determines the TraditionalForm typesetting of
 explicit Lorentz indices.";
 
 Zeta2::usage =
-"Zeta2 denotes Zeta[2]. For convenience every Pi^2 occuring in \
-OPEIntegrateDelta is replaced by (6 Zeta2).";
+"Zeta2 denotes Zeta[2].";
 
 Zeta4::usage =
-"Zeta4 denotes Zeta[4]";
+"Zeta4 denotes Zeta[4].";
 
 Zeta6::usage =
-"Zeta6 denotes Zeta[6]";
+"Zeta6 denotes Zeta[6].";
 
 Zeta8::usage =
-"Zeta8 denotes Zeta[8]";
+"Zeta8 denotes Zeta[8].";
 
 Zeta10::usage =
-"Zeta10 denotes Zeta[10]";
+"Zeta10 denotes Zeta[10].";
 
 DiracGamma::gamma5fail =
 "`1` is forbidden in FeynCalc. You should always use 4-dimensional Gamma^5 or chiral projectors. \
@@ -691,211 +743,243 @@ The problem reads: `1`";
 (* ------------------------------------------------------------------------ *)
 
 CartesianIndex::usage =
-"CartesianIndex is the head of Cartesian indices. \
-The internal representation of a three-dimensional i is \
-CartesianIndex[i]. For other than three dimensions: \
-CartesianIndex[i, Dimension]. \
-CartesianIndex[i, 3] simplifies to CartesianIndex[i]. \
-The first argument cannot be an integer.";
+"CartesianIndex is the head of Cartesian indices. The internal representation
+of a $3$-dimensional i is CartesianIndex[i].
+
+For other than three dimensions: CartesianIndex[i, Dimension].
+
+CartesianIndex[i, 3] simplifies to CartesianIndex[i]. The first argument
+cannot be an integer.";
 
 CartesianMomentum::usage =
-"CartesianMomentum is the head of a three momentum (p). \
-The internal representation of a three-dimensional p is \
-CartesianMomentum[p]. For other than three dimensions: CartesianMomentum[p, Dimension]. \n
-CartesianMomentum[p, 3] simplifies to CartesianMomentum[p].";
+"CartesianMomentum[p] is the head of a 3-momentum p. The internal
+representation of a $3$-dimensional p is CartesianMomentum[p]. For other than
+three dimensions: CartesianMomentum[p, Dimension]. CartesianMomentum[p, 3]
+simplifies to CartesianMomentum[p].";
 
 CartesianPair::usage =
-"CartesianPair[a , b] is a special pairing used in the internal \
-representation: a and b may have heads CartesianIndex or CartesianMomentum. \
-If both a and b have head CartesianIndex, the Kronecker delta is \
-understood. If a and b have head CartesianMomentum, a scalar product is \
-meant. If one of a and b has head CartesianIndex and the other \
-CartesianMomentum, a Cartesian vector (p^i) is understood.";
+"CartesianPair[a, b] is a special pairing used in the internal representation.
+a and b may have heads CartesianIndex or CartesianMomentum. If both a and b
+have head CartesianIndex, the Kronecker delta is understood. If a and b have
+head CartesianMomentum, a Cartesian scalar product is meant. If one of a and b
+has head CartesianIndex and the other CartesianMomentum, a Cartesian vector
+$p^i$ is understood.";
 
 TC::usage =
-"TC[p] is the temporal component of a 4-vector and is transformed into \
-TemporalPair[TemporalMomentum[p], ExplicitLorentzIndex[0]] by FeynCalcInternal.";
+"TC[p] is the temporal component of a $4$-vector and is transformed into
+TemporalPair[TemporalMomentum[p], ExplicitLorentzIndex[0]] by
+FeynCalcInternal.";
 
 CV::usage =
-"CV[p,i] is a 3-dimensional Cartesian vector and is transformed into \
+"CV[p, i] is a 3-dimensional Cartesian vector and is transformed into
 CartesianPair[CartesianMomentum[p], CartesianIndex[i]] by FeynCalcInternal.";
 
 CVD::usage =
-"CVD[p,i] is a D-1-dimensional Cartesian vector and is transformed into \
-CartesianPair[CartesianMomentum[p,D], CartesianIndex[i,D]] by FeynCalcInternal.";
+"CVD[p, i] is a $D-1$-dimensional Cartesian vector and is transformed into
+CartesianPair[CartesianMomentum[p,D], CartesianIndex[i,D]] by
+FeynCalcInternal.";
 
 CVE::usage =
-"CVE[p,i] is a D-4-dimensional Cartesian vector and is transformed into \
-CartesianPair[CartesianMomentum[p,D-4], CartesianIndex[i,D-4]] by FeynCalcInternal.";
+"CVE[p, i] is a $D-4$-dimensional Cartesian vector and is transformed into
+CartesianPair[CartesianMomentum[p,D-4], CartesianIndex[i,D-4]] by
+FeynCalcInternal.";
 
 KD::usage =
-"KD[i,j] is the Kronecker delta in 3 dimensions.";
+"KD[i, j]  is the Kronecker delta in $3$ dimensions.";
 
 KDD::usage =
-"KDD[i,j] is the Kronecker delta in D-1 dimensions.";
+"KDD[i, j] is the Kronecker delta in $D-1$ dimensions.";
 
 KDE::usage =
-"KDE[i,j] is the Kronecker delta in D-4 dimensions.";
+"KDE[i, j]  is the Kronecker delta in $D-4$ dimensions.";
 
 CSP::usage =
-"CSP[p,q] is the 3-dimensional scalar product of p with q and is \
-transformed into CartesianPair[CartesianMomentum[p],CartesianMomentum[q]] by FeynCalcInternal. \
-CSP[p] is the same as CSP[p,p] (=p^2).";
+"CSP[p, q] is the 3-dimensional scalar product of p with q and is transformed
+into CartesianPair[CartesianMomentum[p],CartesianMomentum[q]] by
+FeynCalcInternal.
+
+ CSP[p] is the same as CSP[p,p] ($=p^2$).";
 
 CSPD::usage =
-"CSPD[p,q] is the D-1-dimensional scalar product of p with q and is \
-transformed into CartesianPair[CartesianMomentum[p, D-1],CartesianMomentum[q, D-1]] by FeynCalcInternal. \
-CSPD[p] is the same as CSPD[p,p] (=p^2).";
+"CSPD[p, q] is the $D-1$-dimensional scalar product of p with q and is
+transformed into CartesianPair[CartesianMomentum[p, D-1],CartesianMomentum[q,
+D-1]] by FeynCalcInternal.
+
+CSPD[p] is the same as CSPD[p,p] ($=p^2$).";
 
 CSPE::usage =
-"CSPE[p,q] is the D-4-dimensional scalar product of p with q and is \
-transformed into CartesianPair[CartesianMomentum[p, D-4],CartesianMomentum[q, D-4]] by FeynCalcInternal. \
-CSPE[p] is the same as CSPE[p,p] (=p^2).";
+"CSPE[p, q] is the $D-4$-dimensional scalar product of p with q and is
+transformed into CartesianPair[CartesianMomentum[p, D-4],CartesianMomentum[q,
+D-4]] by FeynCalcInternal.
+
+ CSPE[p] is the same as CSPE[p,p] ( $=p^2$).";
 
 CLC::usage =
-"CLC[m,n,r] evaluates to Eps[CartesianIndex[m], CartesianIndex[n], \
-CartesianIndex[r]] applying FeynCalcInternal. \
-CLC[m,...][p, ...] evaluates to Eps[CartesianIndex[m], ..., CartesianMomentum[p], ...] \
-applying FeynCalcInternal.";
+"CLC[m, n, r] evaluates to Eps[CartesianIndex[m], CartesianIndex[n],
+CartesianIndex[r]] applying FeynCalcInternal.
+
+CLC[m,...][p, ...] evaluates to Eps[CartesianIndex[m], ...,
+CartesianMomentum[p], ...] applying FeynCalcInternal.";
 
 CLCD::usage =
-"CLCD[m,n,r] evaluates to Eps[CartesianIndex[m, D-1], CartesianIndex[n, D-1], \
-CartesianIndex[r,D-1]] applying FeynCalcInternal. \
-CLC[m,...][p, ...] evaluates to Eps[CartesianIndex[m, D-1], ..., CartesianMomentum[p, D-1], ...] \
-applying FeynCalcInternal.";
+"CLCD[m, n, r]  evaluates to Eps[CartesianIndex[m, D-1], CartesianIndex[n,
+D-1], CartesianIndex[r,D-1]] applying FeynCalcInternal.
+
+CLC[m,...][p, ...] evaluates to Eps[CartesianIndex[m, D-1], ...,
+CartesianMomentum[p, D-1], ...] applying FeynCalcInternal.";
 
 TGA::usage =
-"TGA[] can be used as input for gamma^0 in 4 dimensions and is \
+"TGA[]  can be used as input for $\\gamma^0$ in $4$ dimensions and is
 transformed into DiracGamma[ExplicitLorentzIndex[0]] by FeynCalcInternal.";
 
 CGA::usage =
-"CGA[i] can be used as input for gamma^i in 4 dimensions, where i is a Cartesian index, and is \
-transformed into DiracGamma[CartesianIndex[i]] by FeynCalcInternal.";
-
-CGAD::usage =
-"CGAD[i] can be used as input for gamma^i in D dimensions, where i is a Cartesian index, and is \
-transformed into DiracGamma[CartesianIndex[i,D-1],D] by FeynCalcInternal.";
-
-CGAE::usage =
-"CGAE[i] can be used as input for gamma^i in D-4 dimensions, where i is a Cartesian index, and is \
-transformed into DiracGamma[CartesianIndex[i,D-4],D-4] by FeynCalcInternal.";
-
-CGS::usage =
-"CGS[p] is transformed into DiracGamma[CartesianMomentum[p]] by FeynCalcInternal. \
-CGS[p,q, ...] is equivalent to CGS[p].CGS[q]. ...";
-
-CGSD::usage =
-"CGSD[p] is transformed into DiracGamma[CartesianMomentum[p, D-1], D] by FeynCalcInternal. \
-CGSD[p,q, ...] is equivalent to CGSD[p].CGSD[q]. ...";
-
-CGSE::usage =
-"CGSE[p] is transformed into DiracGamma[CartesianMomentum[p, D-4], D-4] by FeynCalcInternal. \
-CGSE[p,q, ...] is equivalent to CGSE[p].CGSE[q]. ...";
-
-SI::usage =
-"SI[mu] can be used as input for 3-dimensional sigma^mu with 4-dimensional Lorentz
-index mu and is transformed into PauliSigma[LorentzIndex[mu]] by FeynCalcInternal.";
-
-SID::usage =
-"SID[mu] can be used as input for D-1-dimensional sigma^mu with D-dimensional Lorentz
-index mu and is transformed into PauliSigma[LorentzIndex[mu,D],D-1] by FeynCalcInternal.";
-
-SIE::usage =
-"SIE[mu] can be used as input for D-4-dimensional sigma^mu with D-4-dimensional Lorentz
-index mu and is transformed into PauliSigma[LorentzIndex[mu,D-4],D-4] by FeynCalcInternal.";
-
-SIS::usage =
-"SIS[p] can be used as input for 3-dimensional sigma^mu p_mu with 4-dimensional Lorentz
-vector p and is transformed into PauliSigma[Momentum[p]] by FeynCalcInternal.";
-
-SISD::usage =
-"SISD[p] can be used as input for D-1-dimensional sigma^mu p_mu with D-dimensional Lorentz
-vector p and is transformed into PauliSigma[Momentum[p, D], D-1] by FeynCalcInternal.";
-
-SISE::usage =
-"SISE[p] can be used as input for D-4-dimensional sigma^mu p_mu with D-4-dimensional Lorentz
-vector p and is transformed into PauliSigma[Momentum[p, D-4], D-4] by FeynCalcInternal.";
-
-CSI::usage =
-"CSI[i] can be used as input for 3-dimensional sigma^i with 3-dimensional Cartesian
-index i and is transformed into PauliSigma[CartesianIndex[i]] by FeynCalcInternal.";
-
-CSID::usage =
-"CSID[i] can be used as input for D-1-dimensional sigma^i with D-1-dimensional Cartesian
-index i and is transformed into PauliSigma[CartesianIndex[i, D-1], D-1] by FeynCalcInternal.";
-
-CSIE::usage =
-"CSIE[i] can be used as input for D-4-dimensional sigma^i with D-4-dimensional Cartesian
-index i and is transformed into PauliSigma[CartesianIndex[i, D-4], D-4] by FeynCalcInternal.";
-
-CSIS::usage =
-"CSIS[p] can be used as input for 3-dimensional sigma^i p_i with 3-dimensional Cartesian
-vector p and is transformed into PauliSigma[CartesianMomentum[p]] by FeynCalcInternal.";
-
-CSISD::usage =
-"CSISD[p] can be used as input for D-1-dimensional sigma^i p_i with D-1-dimensional Cartesian
-vector p and is transformed into PauliSigma[CartesianMomentum[p, D-1], D-1] by FeynCalcInternal.";
-
-CSISE::usage =
-"CSISE[p] can be used as input for D-4-dimensional sigma^i p_i with D-4-dimensional Cartesian
-vector p and is transformed into PauliSigma[CartesianMomentum[p, D-4], D-4] by FeynCalcInternal.";
-
-PauliSigma::usage =
-"PauliSigma[x,dim] is the internal representation of a Pauli matrix \
-with a Lorentz or Cartesian index or a contraction of a Pauli matrix and a Lorentz \
-or Cartesian vector. PauliSigma[x,3] simplifies to PauliSigma[x].";
-
-PauliXi::usage =
-"PauliXi[I] represents a two-component Pauli spinor \[Xi], while PauliXi[-I] stands for \
-\[Xi]^\[Dagger].";
-
-PauliEta::usage =
-"PauliEta[I] represents a two-component Pauli spinor \[Eta], while PauliEta[-I] stands for \
-\[Eta]^\[Dagger].";
-
-TemporalMomentum::usage =
-"TemporalMomentum[p] is the head of the temporal component of a four momentum p^0. \
-The internal representation of the temporal component p^0 is \
-TemporalMomentum[p]. TemporalMomentum may appear only inside TemporalPair.";
-
-TemporalPair::usage =
-"TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p]] is a special pairing used in the internal \
-representation to denote p^0, the temporal components of a four momentum p.";
-
-PauliIndex::usage =
-"PauliIndex is the head of Pauli indices. \
-The internal representation of a two-dimensional \
-spinorial index i is PauliIndex[i]. If the first \
-argument is an integer, PauliIndex[i] turns into \
-ExplicitPauliIndex[i]. \n
-Pauli indices are the indices that denote the components \
-of Pauli matrices or spinors. They should not be confused with \
-the Cartesian indices attached to the Pauli matrices. For example \
-in case of si^i_jk, i is a Cartesian index, while j and k are \
-spinorial indices.";
-
-PauliIndexDelta::usage =
-"PauliIndexDelta[PauliIndex[i],PauliIndex[j]] is the Kronecker-delta \
-in the Pauli space with two explicit Pauli indices i and j.";
-
-PIDelta::usage =
-"PIDelta[i,j] is the Kronecker-delta in the Pauli space. PIDelta[i,j] is \
-transformed into PauliDelta[PauliIndex[i],PauliIndex[j]] by FeynCalcInternal.";
-
-PCHN::usage =
-"PCHN[x,i,j] is a chain of Pauli matrices x and is transformed \
-into PauliChain[FCI[x],PauliIndex[i],PauliIndex[j]] by \
+"CGA[i] can be used as input for $\\gamma^i$ in 4 dimensions, where i is a
+Cartesian index, and is transformed into DiracGamma[CartesianIndex[i]] by
 FeynCalcInternal.";
 
+CGAD::usage =
+"CGAD[i] can be used as input for $\\gamma ^i$ in $D$ dimensions, where i is a
+Cartesian index, and is transformed into DiracGamma[CartesianIndex[i,D-1],D]
+by FeynCalcInternal.";
+
+CGAE::usage =
+"CGAE[i] can be used as input for $\\gamma ^i$ in $D-4$ dimensions, where i is a
+Cartesian index, and is transformed into DiracGamma[CartesianIndex[i,D-4],D-4]
+by FeynCalcInternal.";
+
+CGS::usage =
+"CGS[p] is transformed into DiracGamma[CartesianMomentum[p]] by
+FeynCalcInternal.
+
+CGS[p,q, ...] is equivalent to CGS[p].CGS[q].";
+
+CGSD::usage =
+"CGSD[p] is transformed into DiracGamma[CartesianMomentum[p, D-1], D] by
+FeynCalcInternal.
+
+CGSD[p,q, ...] is equivalent to CGSD[p].CGSD[q].";
+
+CGSE::usage =
+"CGSE[p] is transformed into DiracGamma[CartesianMomentum[p, D-4], D-4] by
+FeynCalcInternal.
+
+CGSE[p,q, ...] is equivalent to CGSE[p].CGSE[q].";
+
+SI::usage =
+"SI[mu] can be used as input for $3$-dimensional $\\sigma^{\\mu }$ with
+4-dimensional Lorentz index $\\mu$ and is transformed into
+PauliSigma[LorentzIndex[mu]] by FeynCalcInternal.";
+
+SID::usage =
+"SID[mu]  can be used as input for $D-1$-dimensional $\\sigma^{\\mu }$ with
+$D$-dimensional Lorentz index $\\mu$ and is transformed into
+PauliSigma[LorentzIndex[mu,D],D-1] by FeynCalcInternal.";
+
+SIE::usage =
+"SIE[mu] can be used as input for $D-1$-dimensional $\\sigma^{\\mu }$ with
+$D-4$-dimensional Lorentz index $\\mu$ and is transformed into
+PauliSigma[LorentzIndex[mu,D-4],D-4] by FeynCalcInternal.";
+
+SIS::usage =
+"SIS[p] can be used as input for $3$-dimensional $\\sigma^{\\mu } p_{\\mu }$ with
+4-dimensional Lorentz vector $p$ and is transformed into
+PauliSigma[Momentum[p]] by FeynCalcInternal.";
+
+SISD::usage =
+"SISD[p] can be used as input for $D-1$-dimensional $\\sigma^{\\mu } p_{\\mu }$
+with $D$-dimensional Lorentz vector $p$ and is transformed into
+PauliSigma[Momentum[p,D],D-1] by FeynCalcInternal.";
+
+SISE::usage =
+"SISE[p] can be used as input for $D-4$-dimensional $\\sigma ^{\\mu } p_{\\mu }$
+with $D-4$-dimensional Lorentz vector $p$ and is transformed into
+PauliSigma[Momentum[p,D-4], D-4] by FeynCalcInternal.";
+
+CSI::usage =
+"CSI[i] can be used as input for 3-dimensional $\\sigma ^i$ with 3-dimensional
+Cartesian index i and is transformed into PauliSigma[CartesianIndex[i]] by
+FeynCalcInternal.";
+
+CSID::usage =
+"CSID[i] can be used as input for $D-1$-dimensional $\\sigma^i$ with
+$D-1$-dimensional Cartesian index i and is transformed into
+PauliSigma[CartesianIndex[i,D-1],D-1] by FeynCalcInternal.";
+
+CSIE::usage =
+"CSIE[i] can be used as input for $D-4$-dimensional $\\sigma ^i$ with
+$D-4$-dimensional Cartesian index i and is transformed into
+PauliSigma[CartesianIndex[i,D-4],D-4] by FeynCalcInternal.";
+
+CSIS::usage =
+"CSIS[p]can be used as input for 3-dimensional $\\sigma ^ip^i$ with
+3-dimensional Cartesian vector p and is transformed into
+PauliSigma[CartesianMomentum[p]] by FeynCalcInternal.";
+
+CSISD::usage =
+"CSISD[p] can be used as input for D-1-dimensional $\\sigma ^ip^i$ with
+D-1-dimensional Cartesian vector p and is transformed into
+PauliSigma[CartesianMomentum[p,D-1],D-1] by FeynCalcInternal.";
+
+CSISE::usage =
+"CSISE[p] can be used as input for D-4-dimensional $\\sigma^i p^i$ with
+$D-4$-dimensional Cartesian vector p and is transformed into
+PauliSigma[CartesianMomentum[p,D-4],D-4] by FeynCalcInternal.";
+
+PauliSigma::usage =
+"PauliSigma[x, dim] is the internal representation of a Pauli matrix with a
+Lorentz or Cartesian index or a contraction of a Pauli matrix and a Lorentz or
+Cartesian vector.
+
+PauliSigma[x,3] simplifies to PauliSigma[x].";
+
+PauliXi::usage =
+"PauliXi[I] represents a two-component Pauli spinor $\\xi$, while PauliXi[-I]
+stands for $\\xi^{\\dagger }$.";
+
+PauliEta::usage =
+"PauliEta[I] represents a two-component Pauli spinor \\eta, while PauliEta[-I]
+stands for $\\eta^{\\dagger }$.";
+
+TemporalMomentum::usage =
+"TemporalMomentum[p]  is the head of the temporal component of a $4$-momentum
+$p^0$. The internal representation of the temporal component $p^0$ is
+TemporalMomentum[p].
+
+TemporalMomentum may appear only inside TemporalPairs.";
+
+TemporalPair::usage =
+"TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p]] is a special
+pairing used in the internal representation to denote $p^0$, the temporal
+component of a 4-momentum $p$.";
+
+PauliIndex::usage =
+"PauliIndex is the head of Pauli indices. The internal representation of a
+two-dimensional spinorial index i is PauliIndex[i].
+
+If the first argument is an integer, PauliIndex[i] turns into
+ExplicitPauliIndex[i].
+
+Pauli indices are the indices that denote the components of Pauli matrices or
+spinors. They should not be confused with the Cartesian indices attached to
+the Pauli matrices. For example in the case of $\\sigma_{ij}^{k}$,  $k$ is a
+Lorentz index, while $i$ and $j$ are Pauli (spinorial) indices.";
+
+PauliIndexDelta::usage =
+"PauliIndexDelta[PauliIndex[i], PauliIndex[j]] is the Kronecker-delta in the
+Pauli space with two explicit Pauli indices i and j.";
+
+PIDelta::usage =
+"PIDelta[i,j] is the Kronecker-delta in the Pauli space. PIDelta[i,j] is
+transformed into PauliIndexDelta[PauliIndex[i],PauliIndex[j]] by
+FeynCalcInternal.";
+
+PCHN::usage =
+"PCHN[x, i, j] is a chain of Pauli matrices x and is transformed into
+PauliChain[FCI[x],PauliIndex[i],PauliIndex[j]] by FeynCalcInternal.";
+
 PauliChain::usage =
-"PauliChain[x,i,j] denotes a chain of Pauli \
-matrices x, where the Pauli indices i and j \
-are explicit. For example, \
-PauliChain[PauliSigma[CartesianIndex[i]],PauliIndex[j],PauliIndex[k]] \
-denotes a standalone Pauli matrix s^i_jk. A PauliChain with only two \
-arguments denotes a spinor component, e.g. \
-PauliChain[PauliXi[I],PauliIndex[i]] stands for the i-th \
-component of  PauliXi[I]";
+"PauliChain[x, i, j] denotes a chain of Pauli matrices x, where the Pauli
+indices i and j are explicit.";
 
 (* ------------------------------------------------------------------------ *)
 Begin["`Package`"];

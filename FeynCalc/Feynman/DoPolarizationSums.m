@@ -16,31 +16,34 @@
 DoPolarizationSums::usage =
 "DoPolarizationSums[exp, k, ...] acts on an expression exp that must contain a
 polarization vector $\\varepsilon(k)$  and its complex conjugate (e.g. exp can
-be a matrix element squared). Depending on the arguments of the function, it
-will perform a sum over the polarization of $\\varepsilon(k)$ and its c.c.
+be a matrix element squared).
+
+Depending on the arguments of the function, it will perform a sum over the
+polarization of $\\varepsilon(k)$ and its c.c.
 
 - DoPolarizationSums[exp, k] sums over the three physical polarizations of an
 external massive vector boson with the $4$-momentum k and the mass $k^2$.
-DoPolarizationSums[exp, k, 0] replaces the polarization sum of an external
-massless vector boson with the momentum k by $-g^{\\mu \\nu}$. This corresponds
-to the summation over all 4 polarizations, including the unphysical ones.
--DoPolarizationSums[exp, k, n] sums over physical (transverse) polarizations
+- DoPolarizationSums[exp, k, 0] replaces the polarization sum of an external
+massless vector boson with the momentum k by $-g^{\\mu \\nu}$.
+This corresponds to the summation over all 4 polarizations, including the
+unphysical ones.
+- DoPolarizationSums[exp, k, n] sums over physical (transverse) polarizations
 of an external massless vector boson with the momentum k, where n is an
 auxiliary 4-vector from the gauge-dependent polarization sum formula.
 
 Cf. PolarizationSum for more examples and explanations on different
 polarizations.
 
-DoPolarizationSums also work with $D$-dimensional amplitudes.
-";
+DoPolarizationSums also work with $D$-dimensional amplitudes.";
 
 GaugeTrickN::usage =
-"GaugeTrickN is an option for DoPolarizationSums. It specifies the number \
-of polarizations over which you are summing when you do the gauge trick, \
-(i.e. replace the polarization sum by - MT[mu,nu]). The default value is 2, \
-which is correct e.g. for real photons as external states. However, if the \
-external states are virtual photons, then GaugeTrickN should be set to 4.
-"
+"GaugeTrickN is an option for DoPolarizationSums. It specifies the number of
+polarizations over which you are summing when you do the gauge trick, (i.e.
+replace the polarization sum by $- g^{\\mu \\nu}$).
+
+The default value is 2, which is correct e.g. for real photons as external
+states. However, if the external states are virtual photons, then GaugeTrickN
+should be set to 4.";
 
 DoPolarizationSums::failmsg =
 "Error! DoPolarizationSums has encountered a fatal problem and must abort the computation. \

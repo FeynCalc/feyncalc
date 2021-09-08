@@ -10,8 +10,10 @@
 
 (* ------------------------------------------------------------------------ *)
 
-CounterTerm::usage= "CounterTerm[name] is a database of counter terms. \
-CounterTerm is also an option for several Feynman rule functions.";
+CounterTerm::usage=
+"CounterTerm[name] is a database of counter terms. CounterTerm is also an
+option for the Feynman rule functions QuarkGluonVertex, GluonPropagator,
+QuarkPropagator.";
 
 (* ------------------------------------------------------------------------ *)
 

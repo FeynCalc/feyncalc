@@ -17,14 +17,13 @@
 (* ------------------------------------------------------------------------ *)
 
 PauliSimplify::usage =
-"PauliSimplify[exp] simplifies products of Pauli matrices \
-and expands non-commutative products. \
-Double indices and vectors are contracted. \
-The order of the Pauli matrices is not changed.";
+"PauliSimplify[exp] simplifies products of Pauli matrices and expands
+non-commutative products. Double indices and vectors are contracted. The order
+of the Pauli matrices is not changed.";
 
 PauliSimplify::failmsg =
 "Error! PauliSimplify encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 

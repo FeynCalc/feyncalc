@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 PauliSigmaCombine::usage =
-"PauliSigmaCombine[exp] is (nearly) the inverse operation to PauliSigmaExpand.";
+"PauliSigmaCombine[exp]  is (nearly) the inverse operation to PauliSigmaExpand.";
 
 (* ------------------------------------------------------------------------ *)
 

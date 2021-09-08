@@ -16,14 +16,14 @@
 (* ------------------------------------------------------------------------ *)
 
 SetMandelstam::usage =
-"SetMandelstam[s, t, u, p1, p2, p3, p4, m1, m2, m3, m4] defines the \
-Mandelstam variables  s=(p1+p2)^2, t=(p1+p3)^2, u=(p1+p4)^2 and sets \
-the pi on-shell: p1^2=m1^2, p2^2=m2^2, p3^2=m3^2, p4^2=m4^2. \
-Note that p1 +  p2 + p3 + p4 = 0 is assumed.\n\n
+"SetMandelstam[s, t, u, p1 , p2 , p3 , p4 , m1 , m2 , m3 , m4 ] defines the
+Mandelstam variables  $s=(p_1+p_2)^2$, $t=(p_1+p_3)^2$, $u=(p_1+p_4)^2$ and
+sets the momenta on-shell: $p_1^2=m_1^2$, $p_2^2=m_2^2$, $p_3^2=m_3^2$,
+$p_4^2=m_4^2$. Notice that $p_1+p_2+p_3+p_4=0$ is assumed.
 
-SetMandelstam[x, {p1, p2, p3, p4, p5}, {m1, m2, m3, m4, m5}] \
-defines x[i, j] = (pi+pj)^2 and sets the pi on-shell. \
-The pi satisfy: p1 + p2 + p3 + p4 + p5 = 0.";
+SetMandelstam[x, {p1, p2, p3, p4, p5}, {m1, m2, m3, m4, m5}] defines $x[i, j]
+= (p_i+p_j)^2$ and sets the $p_i$ on-shell. The $p_i$ satisfy: $p_1 + p_2 +
+p_3 + p_4 + p_5 = 0$.\"";
 
 
 (* ------------------------------------------------------------------------ *)

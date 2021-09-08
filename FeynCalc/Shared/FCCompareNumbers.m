@@ -16,8 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 FCCompareNumbers::usage=
-"FCCompareNumbers[x, y] compares two purely numerical or semi-numerical \
-expressions x and y and returns the number of agreeing significant digits \
+"FCCompareNumbers[x, y] compares two purely numerical or semi-numerical
+expressions x and y and returns the number of agreeing significant digits
 calculated from the relative differences.";
 
 FCCompareNumbers::failmsg =

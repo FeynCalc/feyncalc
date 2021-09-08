@@ -35,8 +35,7 @@ output to a file and visualize it with an external tool such as dot/neato from
 graphviz.
 
 It is also possible to invoke the function as FCLoopIntegralToGraph[GLI[...],
-FCTopology[...]] or FCLoopIntegralToGraph[FCTopology[...]].
-";
+FCTopology[...]] or FCLoopIntegralToGraph[FCTopology[...]].";
 
 FCLoopIntegralToGraph::failmsg =
 "Error! FCLoopIntegralToGraph encountered a fatal problem and must abort the computation. \

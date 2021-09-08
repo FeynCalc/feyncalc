@@ -24,13 +24,13 @@ entries, where the first one is the original expression with the denominators
 rewritten as GLIs, and the second one is the set of the identified topologies.
 Each of the identified topologies must contain linearly independent
 propagators (unless the option FCLoopBasisOverdeterminedQ is set to True), but
-may lack propagators needed to form a complete basis.
-";
+may lack propagators needed to form a complete basis.";
 
 ExtraPropagators::usage =
-"ExtraPropagators is an option for FCLoopFindTopologies. It can be used to \
-specify extra propagators that do not explicitly appear in the input expression \
-but must be taken into account when constructing the sets of propagators.";
+"ExtraPropagators is an option for FCLoopFindTopologies. It can be used to
+specify extra propagators that do not explicitly appear in the input
+expression but must be taken into account when constructing the sets of
+propagators.";
 
 
 FCLoopFindTopologies::failmsg = "Error! FCLoopFindTopologies has encountered a fatal problem and must abort the computation. \n

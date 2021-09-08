@@ -16,22 +16,28 @@
 (* ------------------------------------------------------------------------ *)
 
 ThreeDivergence::usage =
-"ThreeDivergence[exp, CV[p, i]] calculates the partial derivative of exp w.r.t. p^i. \
-ThreeDivergence[exp, CV[p, i], CV[p,i], ...] gives the multiple derivative.";
+"ThreeDivergence[exp, CV[p, i]]  calculates the partial derivative of exp
+w.r.t. $p^i$.
+
+ ThreeDivergence[exp, CV[p, i], CV[p,i], ...] gives the multiple derivative.
+
+Owing to the fact that in FeynCalc dummy Cartesian index are always understood
+to be upper indices, applying ThreeDivergence to an expression is equivalent
+to the action of $\\nabla^i = \\frac{\\partial}{\\partial p^i}$.";
 
 ThreeDivergence::notvec=
-"`1` is not a Lorentz vector. Evaluation aborted!"
+"`1` is not a Lorentz vector. Evaluation aborted!";
 
 ThreeDivergence::extfail=
-"Failed to extract the name of the Lorentz vector from `1`. Evaluation aborted!"
+"Failed to extract the name of the Lorentz vector from `1`. Evaluation aborted!";
 
 ThreeDivergence::toocompl=
 "The structure `1` w.r.t which you are trying to differentiate is too complicated \
-to ensure the correct result. Evaluation aborted!"
+to ensure the correct result. Evaluation aborted!";
 
 ThreeDivergence::failmsg =
 "Error! ThreeDivergence has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 ThreeDivergence::warn =
 "Warning! The input expression also depends on `1` in dimensions other than `2`. \

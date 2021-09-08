@@ -16,8 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 MomentumCombine::usage =
-"MomentumCombine[expr] combines momenta and Pair and Eps tensors with the same \
-LorentzIndexentz indices and momenta.";
+"MomentumCombine[expr] is the inverse operation to MomentumExpand and
+ExpandScalarProduct. MomentumCombine combines also Pairs.";
 
 (* ------------------------------------------------------------------------ *)
 

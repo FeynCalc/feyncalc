@@ -13,26 +13,27 @@
 
 (* ------------------------------------------------------------------------ *)
 
-FCCanonicalizeDummyIndices::usage = "
-FCCanonicalizeDummyIndices[expr] canonicalizes all dummy Lorentz indices \
-in the expression " <> ToString[
-Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/FCCanonicalizeDummyIndices"],
-StandardForm];
+FCCanonicalizeDummyIndices::usage =
+"FCCanonicalizeDummyIndices[expr]  canonicalizes all dummy Lorentz indices in
+the expression. The option Momentum provides a possibility to limit the
+canonicalization only to particular Momenta.
+
+With the option LorentzIndexNames one can provide a list of names to be used
+for the canonicalized indices, to have say $\\mu$, $\\nu$, $\\rho$ etc. instead
+of some random names.";
 
 FCCanonicalizeDummyIndices::failmsg =
 "Error! FCCanonicalizeDummyIndices has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
-NotMomentum::usage = "
-NotMomentum is an option of FCCanonicalizeDummyIndices. It specifies a list of momenta for which
-no canonicalization should be done."
+NotMomentum::usage =
+"NotMomentum is an option of FCCanonicalizeDummyIndices. It specifies a list of
+momenta for which
+no canonicalization should be done.";
 
-CustomIndexNames::usage = "
-CustomIndexNames is an option of FCCanonicalizeDummyIndices. It allow to specify custom names \
-for canonicalized dummy indices of custom index heads, e.g.
-FCCanonicalizeDummyIndices[ T1[MyIndex2[a], MyIndex1[b]] v1[MyIndex1[b]] v2[MyIndex2[a]] + \
-T1[MyIndex2[c], MyIndex1[f]] v1[MyIndex1[f]] v2[MyIndex2[c]], Head -> {MyIndex1, MyIndex2}, \
-CustomIndexNames -> {{MyIndex1, {i1}}, {MyIndex2, {i2}}}]";
+CustomIndexNames::usage =
+"CustomIndexNames is an option of FCCanonicalizeDummyIndices. It allows to
+specify custom names for canonicalized dummy indices of custom index heads.";
 
 
 

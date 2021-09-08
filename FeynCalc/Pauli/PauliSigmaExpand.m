@@ -16,12 +16,12 @@
 (* ------------------------------------------------------------------------ *)
 
 PauliSigmaExpand::usage =
-"PauliSigmaExpand[exp] expands all PauliSigma[Momentum[a+b+..]] in \
-exp into (PauliSigma[Momentum[a]] + PauliSigma[Momentum[b]] + ...).";
+"PauliSigmaExpand[exp] expands all PauliSigma[Momentum[a+b+..]] in exp into
+(PauliSigma[Momentum[a]] + PauliSigma[Momentum[b]] + ...).";
 
 PauliSigmaExpand::fail =
 "Something went while expanding momenta contracted with Pauli matrices.
-Evaluation aborted! "
+Evaluation aborted!";
 
 (* ------------------------------------------------------------------------ *)
 

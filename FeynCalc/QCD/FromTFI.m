@@ -10,9 +10,9 @@
 (* ------------------------------------------------------------------------ *)
 
 FromTFI::usage =
-"FromTFI[expr, q1, q2, p] translates TFI (and TVI and TJI) \
-Tarcer-notation to FeynCalc notation (D dimensions only). \
-See TFI for details on the convention.";
+"FromTFI[expr, q1, q2, p] translates the TFI notation from the TARCER package
+to the usual FeynCalc notation. See the TARCER documentation on TFI for
+details on the conventions.";
 
 (* ------------------------------------------------------------------------ *)
 

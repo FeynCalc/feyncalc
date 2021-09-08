@@ -11,8 +11,8 @@
 (* ------------------------------------------------------------------------ *)
 
 OPEIntegrate2::usage =
-"OPEIntegrate2[exp, k] does special loop (tensorial) integrations.
-Only the residue is calculated.";
+"OPEIntegrate2[exp, k] does special loop (tensorial) integrations. Only the
+residue is calculated.";
 
 (* ------------------------------------------------------------------------ *)
 

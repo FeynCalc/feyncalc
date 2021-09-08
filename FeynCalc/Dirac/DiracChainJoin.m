@@ -17,11 +17,11 @@
 (* ------------------------------------------------------------------------ *)
 
 DiracChainJoin::usage =
-"DiracChainJoin[exp] joins chains of Dirac matrices with explicit \
-Dirac indices wrapped with a head DiracChain. \n
-Notice that DiracChainJoin is not suitable for creating closed Dirac \
-chains out of the FeynArts output with explicit Dirac indices, e.g. when \
-the model contains 4-fermion operators. Use FCFADiracChainJoin for that.";
+"DiracChainJoin[exp] joins chains of Dirac matrices with explicit Dirac indices
+wrapped with a head DiracChain. Notice that DiracChainJoin is not suitable for
+creating closed Dirac chains out of the FeynArts output with explicit Dirac
+indices, e.g. when the model contains 4-fermion operators. Use
+FCFADiracChainJoin for that.";
 
 DiracChainJoin::failmsg =
 "Error! DiracChainJoin has encountered a fatal problem and must abort the computation. \

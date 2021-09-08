@@ -16,8 +16,10 @@
 (* ------------------------------------------------------------------------ *)
 
 DiracGammaExpand::usage =
-"DiracGammaExpand[exp] expands all DiracGamma[Momentum[a+b+..]] in \
-exp into (DiracGamma[Momentum[a]] + DiracGamma[Momentum[b]] + ...).";
+"DiracGammaExpand[exp] expands Dirac matrices contracted to linear combinations
+of $4$-vectors. All DiracGamma[Momentum[a+b+ ...]] will be expanded to
+DiracGamma[Momentum[a]] + DiracGamma[Momentum[b]] + DiracGamma[Momentum[...]]
+.";
 
 DiracGammaExpand::fail =
 "Something went wrong while expanding momenta contracted with Dirac matrices.

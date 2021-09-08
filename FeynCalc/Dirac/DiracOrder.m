@@ -16,13 +16,12 @@
 (* ------------------------------------------------------------------------ *)
 
 DiracOrder::usage =
-"DiracOrder[exp] orders the Dirac matrices in exp canonically. \
-DiracOrder[exp, orderlist] orders the Dirac matrices in exp according \
-to orderlist.\n
-DiracOrder is also an option of DiracSimplify and some other functions dealing \
-with Dirac algebra. If set to True, the function DiracOrder will be applied to \
-the intermediate result to reorder the Dirac matrices canonically.
-";
+"DiracOrder[exp] orders the Dirac matrices in exp lexicographically.
+DiracOrder[exp, orderlist] orders the Dirac matrices in exp according to
+orderlist. DiracOrder is also an option of DiracSimplify and some other
+functions dealing with Dirac algebra. If set to True, the function DiracOrder
+will be applied to the intermediate result to reorder the Dirac matrices
+lexicographically.";
 
 DiracOrder::failmsg =
 "Error! DiracOrder has encountered a fatal problem and must abort the computation. \

@@ -16,10 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 FCPauliIsolate::usage =
-"FCPauliIsolate[exp] wraps chains of Pauli matrices into heads specified \
-by the user " <> ToString[
-Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/FCPauliIsolate"],
-StandardForm];
+"FCPauliIsolate[exp] wraps chains of Pauli matrices into heads specified by the
+user.";
 
 FCPauliIsolate::fail =
 "FCPauliIsolate failed to isolate Pauli structures in `1`!";

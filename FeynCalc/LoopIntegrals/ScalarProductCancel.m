@@ -18,8 +18,13 @@
 
 
 ScalarProductCancel::usage =
-"ScalarProductCancel[exp, q1, q2, ...] cancels scalar products \
-with propagators. ScalarProductCancel[exp] cancels simple cases.";
+"ScalarProductCancel[exp, q1, q2, ...] cancels scalar products with
+propagators.
+
+ScalarProductCancel[exp] cancels simple cases.
+
+ScalarProductCancel is deprecated, please use the more powerful ApartFF
+instead.";
 
 SPC::usage =
 "SPC is an abbreviation for ScalarProductCancel.";

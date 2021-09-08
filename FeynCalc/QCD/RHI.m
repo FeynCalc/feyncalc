@@ -12,27 +12,22 @@
 
 (* ------------------------------------------------------------------------ *)
 
-RHI::usage = "RHI[{v,w,x,y,z},{a,b,c,d,e,f,g}, {al,be,ga,de,ep}]. (sn -> 1,
-mark1 -> 1, mark2 -> 1, mark3 -> 1, eph -> Epsilon/2 ).
-The exponents of the numerator scalar product are (dl = OPEDelta): \n\n
+RHI::usage =
+"RHI[{v, w, x, y, z}, {a, b, c, d, e, f, g}, {al, be, ga, de, ep]  (sn -> 1,
+mark1 -> 1, mark2 -> 1, mark3 -> 1, eph -> Epsilon/2). The exponents of the
+numerator scalar product are (dl = OPEDelta): v: k1.k1, w: k2.k2,  x: p.k1, y:
+p.k2, z: k1.k2. a: dl.k1, b: dl.k2, c: dl.(p-k1), d: dl.(p-k2), e: dl.(k1-k2),
+f: dl.(p+k1-k2), g: dl.(p-k1-k2)
 
-v: k1.k1, w: k2.k2,  x: p.k1, y: p.k2, z: k1.k2. \n\n
+RHI[any___,{a,b,c,d,e,0,0}, {al,be,ga,de,ep}] simplifies to RHI[any,
+{a,b,c,d,e}, {al,be,ga,de,ep}]
 
-a: dl.k1, b: dl.k2,  c: dl.(p-k1), d: dl.(p-k2), e: dl.(k1-k2),
-f: dl.(p+k1-k2), g: dl.(p-k1-k2) \n\n
-
-RHI[any___,{a,b,c,d,e,0,0}, {al,be,ga,de,ep}] simplifies to
-RHI[any, {a,b,c,d,e}, {al,be,ga,de,ep}]; \n\n
-
-RHI[{0,0,0,0,0},{a,b,c,d,e}, {al,be,ga,de,ep}] simplifies to
-RHI[{a,b,c,d,e}, {al,be,ga,de,ep}].";
+RHI[{0,0,0,0,0},{a,b,c,d,e}, {al,be,ga,de,ep}] simplifies to RHI[{a,b,c,d,e},
+{al,be,ga,de,ep}].";
 
 FORM::usage =
-"FORM is a bolean option telling FeynCalc whether or not to use FORM for
-evaluation. If set to True a FORM file is generated and run from Mathematica
-and the result read back in. Currently, only RHI has this option and it is
-required to be on a UNIX system and have R. Hamberg's FORM-program installed
-correctly.";
+"FORM is an option for RHI. If set to True a FORM file is generated and run
+from Mathematica (provided R. Hamberg's FORM-program is installed correctly).";
 
 (* ------------------------------------------------------------------------ *)
 

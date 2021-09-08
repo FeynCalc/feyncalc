@@ -14,7 +14,8 @@
 (* ------------------------------------------------------------------------ *)
 
 FCReorderList::usage =
-"FCReorderList[li, ord] reorders the list li according to the given ordering ord.";
+"FCReorderList[li, ord] reorders the list li according to the given ordering
+ord.";
 
 FCReorderList::failmsg =
 "Error! FCReorderList has encountered a fatal problem and must abort the computation. The problem reads: `1`";

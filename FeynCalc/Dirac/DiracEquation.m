@@ -17,8 +17,8 @@
 
 
 DiracEquation::usage =
-"DiracEquation[exp] applies the Dirac equation without \
-expanding exp. If expansions are necessary, use DiracSimplify.";
+"DiracEquation[exp] applies the Dirac equation without expanding exp. If
+expansions are necessary, use DiracSimplify.";
 
 DiracEquation::failmsg =
 "Error! DiracEquation has encountered a fatal problem and must abort the computation. \

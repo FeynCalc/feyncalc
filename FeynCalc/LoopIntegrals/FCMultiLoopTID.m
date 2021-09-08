@@ -16,14 +16,14 @@
 (* ------------------------------------------------------------------------ *)
 
 FCMultiLoopTID::usage =
-"FCMultiLoopTID[amp, {q1,q2,...}] does a multi-loop tensor integral \
-decomposition "  <> ToString[
-Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/FCMultiLoopTID"],
-StandardForm];
+"FCMultiLoopTID[amp, {q1, q2, ...}] does a multi-loop tensor integral
+decomposition, transforming the Lorentz indices away from the loop momenta q1,
+q2, ... The decomposition is applied only to the loop integrals where loop
+momenta are contracted with Dirac matrices or epsilon tensors.";
 
 FCMultiLoopTID::failmsg =
 "Error! FCMultiLoopTID has encountered a fatal problem and must abort the \
-computation. The problem reads: `1`"
+computation. The problem reads: `1`";
 
 FCMultiLoopTID::gramzero =
 "Warning! One of the multi-loop tensor integrals contains vanishing Gram determinants. \

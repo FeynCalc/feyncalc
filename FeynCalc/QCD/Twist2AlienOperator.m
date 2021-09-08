@@ -13,9 +13,8 @@
 (* ------------------------------------------------------------------------ *)
 
 Twist2AlienOperator::usage =
-"Twist2AlienOperator[p, 0] : (7);
-Twist2AlienOperator[p1,p2,{p3,mu,a}, 0] (p1: incoming quark momentum,
-p3: incoming gluon (count1)).";
+"Twist2AlienOperator[p, 0] : (7);   Twist2AlienOperator[p1,p2,{p3,mu,a}, 0]
+(p1: incoming quark momentum, p3: incoming gluon (count1)).";
 
 (* ------------------------------------------------------------------------ *)
 

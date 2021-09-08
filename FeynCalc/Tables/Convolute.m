@@ -13,12 +13,18 @@
 (* ------------------------------------------------------------------------ *)
 
 Convolute::usage=
-"Convolute[f[x], g[x], x] convolutes f[x] and g[x], i.e., \
-Integrate2[ DeltaFunction[x - x1 x2] f[x1] g[x2], \
-{x1, 0, 1}, {x2, 0, 1}]. \
-Convolute[exp, {x1, x2}] assumes that exp is polynomial in x1 and x2.";
+"Convolute[f, g, x] convolutes $f(x)$ and $g(x)$, i.e., $\\int _0^1 dx_1 \\int
+_0^1 dx_2  \\delta \\left(x - x_1 x_2\\right) f (x_1)  g(x_2)$.
 
-Bracket::usage= "Bracket is an option for Convolute.";
+Convolute[f, g] is equivalent to Convolute[f, g, x].
+
+Convolute[exp, {x1, x2}] assumes that exp is polynomial in x1 and x2.
+Convolute uses table-look-up and does not do any integral calculations, only
+linear algebra.";
+
+Bracket::usage=
+"Bracket is an option of Convolute, specifying the variable with respect to
+which the result is collected.";
 
 (* ------------------------------------------------------------------------ *)
 

@@ -16,40 +16,43 @@
 (* ------------------------------------------------------------------------ *)
 
 EpsDiscard::usage=
-"EpsDiscard is an option for FeynCalc2FORM. \
-If set to True all Levi-Civita tensors are replaced by 0 after contraction.";
+"EpsDiscard is an option for FeynCalc2FORM. If set to True all Levi-Civita
+tensors are replaced by 0 after contraction.";
 
 FeynCalc2FORM::usage =
-"FeynCalc2FORM[expr] displays expr in FORM syntax. \n
-FeynCalc2FORM[file, x] writes x in FORM syntax to a file. \n
-FeynCalc2FORM[file, x==y] writes x=y to a file in FORM syntax.";
+"FeynCalc2FORM[exp] displays exp in FORM syntax.
+
+FeynCalc2FORM[file, x] writes x in FORM syntax to a file.
+
+FeynCalc2FORM[file, x == y] writes $x=y$ to a file in FORM syntax.
+
+The capabilities of this function are very limited, so you should not expect
+it to easily handle large and complicated expressions.";
 
 FORMEpilog::usage =
-"FORMEpilog is an option for FeynCalc2FORM. It may be set \
-to a string which is put at the end of the FORM-file.";
+"FORMEpilog is an option for FeynCalc2FORM. It may be set to a string which is
+put at the end of the FORM-file.";
 
 FORMProlog::usage =
-"FORMProlog is an option for FeynCalc2FORM. It may be set \
-to a string which is put after the type declarations of the FORM-file.";
+"FORMProlog is an option for FeynCalc2FORM. It may be set to a string which is
+put after the type declarations of the FORM-file.";
 
 FORMIdStatements::usage =
-"FORMIdStatements is an option for FeynCalc2FORM. It may be set \
-to a string which is put after the local expression of the FORM-file. \
-When set to True, FeynCalc will try to generate the statements \
-automatically from the known values of scalar products.";
+"FORMIdStatements is an option for FeynCalc2FORM. It may be set to a string
+which is put after the local expression of the FORM-file. When set to True,
+FeynCalc will try to generate the statements automatically from the known
+values of scalar products.";
 
 TraceDimension::usage =
-"TraceDimension is an option for FeynCalc2FORM. \
-If set to 4: trace, if set to n: tracen.";
+"TraceDimension is an option for FeynCalc2FORM. If set to 4 then trace is used,
+if set to n then tracen is employed.";
 
 FeynCalc2FORM::failmsg = "Error! FeynCalc2FORM has encountered a fatal problem and must \
 abort the evaluation. The problem reads: `1`";
 
 FORMAbbreviations::usage =
-"FORMAbbreviations is an option for FeynCalc2FORM. It specifies how special symbols \
-will be abbreviated in the resulting FORM file.
-
-";
+"FORMAbbreviations is an option for FeynCalc2FORM. It specifies how special
+symbols will be abbreviated in the resulting FORM file.";
 
 (* ------------------------------------------------------------------------ *)
 

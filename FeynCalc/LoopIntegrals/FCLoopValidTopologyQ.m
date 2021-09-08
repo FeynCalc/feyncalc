@@ -17,8 +17,7 @@
 
 FCLoopValidTopologyQ::usage =
 "FCLoopValidTopologyQ[topo] returns True if topo is a valid FCTopology object
-or a list thereof.
-";
+or a list thereof.";
 
 FCLoopValidTopologyQ::inv =
 "Topology validation failed: `1`"

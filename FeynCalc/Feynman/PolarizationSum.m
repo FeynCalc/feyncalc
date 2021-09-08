@@ -33,12 +33,12 @@ on-shell vector boson with $m = k^2$.
 $-g^{mu nu }$. This corresponds to the summation over all $4$ polarizations of
 a massless vector boson, $2$ of which are unphysical if the particle is
 on-shell.
-PolarizationSum[\[Mu], \[Nu], k, n] yields $-g^{\\mu \\nu}+\\frac{k^{\\mu
+ - PolarizationSum[\[Mu], \[Nu], k, n] yields $-g^{\\mu \\nu}+\\frac{k^{\\mu
 }n^{\\nu}+k^{\\nu }n^{\\mu }}{k \\cdot n} - \\frac{n^2 k^{\\mu}k^{\\nu}}{(k \\cdot
 n)^2}$ which is the so-called axial-gauge polarization sum that picks up only
 the two physical polarizations of a massless vector boson. Here $n$ is an
-auxiliary vector that must satisfy $n \\eta k \\neq 0$. The physical results
-will not depend on $n$, yet in practice it is often convenient to 
+auxiliary vector that must satisfy $n \\cdot k \\neq 0$. The physical results
+will not depend on $n$, yet in practice it is often convenient to
 identify $n$ with one of the 4-vectors already present in the calculation. For
 example, in a final state with multiple gluons denoted by their momenta $k_i$,
 the vector $n$ for the $i$-th gluon could be a $k_j$ with $j \\neq i$. Notice
@@ -48,28 +48,27 @@ to consider diagrams with ghosts in the final states.
 To obtain a $D$-dimensional polarization sum use the option Dimension.
 
 If you need to calculate a polarization sum depending on a 4-momentum that is
-not on-shell, use the option VirtualBoson.
-";
+not on-shell, use the option VirtualBoson.";
 
 PolarizationSum::notmassless=
 "Warning! You are inserting a polarization sum for massless vector bosons, \
 but the momentum of the external boson `1` is not on-shell. Please put it on-shell \
-via ScalarProduct[`1`,`1`]=0"
+via ScalarProduct[`1`,`1`]=0";
 
 PolarizationSum::notmassive=
 "Warning! You are inserting a polarization sum for massive vector bosons, \
 but the momentum of the external boson `1` corresponds to a massless particle. \
 Please define the proper mass via ScalarProduct[`1`,`1`]=mass^2. Otherwise, the result \
-is not well defined."
+is not well defined.";
 
 PolarizationSum::auxerror=
 "Warning! You are inserting a polarization sum for massive vector bosons, using \
 the auxiliary vector `1`. However, the scalar product between the momentum of the \
-external boson `2` and `1` is zero, which shouldn't be the case."
+external boson `2` and `1` is zero, which shouldn't be the case.";
 
 PolarizationSum::failmsg =
 "Error! PolarizationSum has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 

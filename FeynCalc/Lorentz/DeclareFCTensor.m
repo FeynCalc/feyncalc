@@ -18,12 +18,12 @@
 
 
 DeclareFCTensor::usage =
-"DeclareFCTensor[a, b, ...] declares a,b, ... to be \
-tensor heads, i.e., DataType[a,b, ...,  FCTensor] is set to True.";
+"DeclareFCTensor[a, b, ...] declares a,b, ... to be tensor heads, i.e.,
+DataType[a,b, ...,  FCTensor] is set to True.";
 
 UnDeclareFCTensor::usage =
-"UnDeclareFCTensor[a, b, ...] undeclares a,b, ... to be \
-tensor heads, i.e., DataType[a,b, ...,  FCTensor] is set to False.";
+"UnDeclareFCTensor[a, b, ...] undeclares a,b, ... to be tensor heads, i.e.,
+DataType[a,b, ...,  FCTensor] is set to False.";
 
 (* ------------------------------------------------------------------------ *)
 

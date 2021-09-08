@@ -27,8 +27,7 @@ target must be provided as a list of FeynAmpDenominator objects, while intFrom
 is a list of such lists.
 
 It is also possible to invoke the function as
-FCLoopFindMomentumShifts[{FCTopology[...], FCTopology[...]}, FCTopology[...]].
-";
+FCLoopFindMomentumShifts[{FCTopology[...], FCTopology[...]}, FCTopology[...]].";
 
 FCLoopFindMomentumShifts::failmsg =
 "Error! FCLoopFindMomentumShifts has encountered a fatal problem and must abort the computation. \

@@ -30,8 +30,7 @@ The idea to search for solutions of Landau equations for the $F$-polynomial
 using Groebner bases was adopted from
 [1810.06270](https://arxiv.org/abs/1810.06270) and
 [2003.02451](https://arxiv.org/abs/2003.02451) by B. Ananthanarayan, Abhishek
-Pal, S. Ramanan Ratan Sarkar and Abhijit B. Das.
-";
+Pal, S. Ramanan Ratan Sarkar and Abhijit B. Das.";
 
 FCLoopSingularityStructure::failmsg =
 "Error! FCLoopSingularityStructure has encountered a fatal problem and must abort the computation. \

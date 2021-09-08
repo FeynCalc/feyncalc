@@ -17,12 +17,12 @@
 (* ------------------------------------------------------------------------ *)
 
 PauliChainJoin::usage =
-"PauliChainJoin[exp] joins chains of Pauli matrices with explicit \
-Pauli indices wrapped with a head PauliChain..";
+"PauliChainJoin[exp] joins chains of Pauli matrices with explicit Pauli indices
+wrapped with a head PauliChain.";
 
 PauliChainJoin::failmsg =
 "Error! PauliChainJoin has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 

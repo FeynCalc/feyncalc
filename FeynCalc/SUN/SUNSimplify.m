@@ -15,14 +15,16 @@
 (* ------------------------------------------------------------------------ *)
 
 SUNSimplify::usage =
-"SUNSimplify[exp] simplifies products of SUNT and SUNTF \
-matrices in the expression.";
+"SUNSimplify[exp] simplifies products of SUNT and SUNTF matrices in the
+expression.";
 
-SUNFJacobi::usage="SUNFJacobi is an option for SUNSimplify, indicating
-whether the Jacobi identity should be used.";
+SUNFJacobi::usage=
+"SUNFJacobi is an option for SUNSimplify, indicating whether the Jacobi
+identity should be used.";
 
-SUNIndexRename::usage= "SUNIndexRename is an option of SUNSimplify. If set to
-False, no automatic renaming of dummy indices is done.";
+SUNIndexRename::usage=
+"SUNIndexRename is an option of SUNSimplify. If set to False, no automatic
+renaming of dummy indices is done.";
 
 (* ------------------------------------------------------------------------ *)
 

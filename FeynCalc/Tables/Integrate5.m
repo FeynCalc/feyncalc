@@ -13,7 +13,7 @@
 (* ------------------------------------------------------------------------ *)
 
 Integrate5::usage=
-"Integrate5 is like Integrate2.";
+"Integrate5 is an alternative implementation along the lines of Integrate2.";
 
 (* ------------------------------------------------------------------------ *)
 

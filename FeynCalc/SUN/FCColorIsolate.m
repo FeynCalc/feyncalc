@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 FCColorIsolate::usage =
-"FCColorIsolate[exp] wraps colored objects (SUNT,SUNF etc.) into heads \
+"FCColorIsolate[exp] wraps colored objects (SUNT, SUNF etc.) into heads
 specified by the user.";
 
 FCColorIsolate::fail =

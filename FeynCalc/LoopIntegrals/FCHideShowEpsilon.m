@@ -17,12 +17,12 @@
 (* ------------------------------------------------------------------------ *)
 
 FCHideEpsilon::usage =
-"FCHideEpsilon[expr] substitutes 1/Epsilon - EulerGamma + Log[4Pi] with \
-SMP[\"Delta\"]";
+"FCHideEpsilon[expr] substitutes 1/Epsilon - EulerGamma + Log[4 Pi] with
+SMP[\"Delta\"].";
 
 FCShowEpsilon::usage =
-"FCShowEpsilon[expr] substitutes SMP[\"Delta\"] with 1/Epsilon - \
-EulerGamma + Log[4Pi]";
+"FCShowEpsilon[expr] substitutes SMP[\"Delta\"] with 1/Epsilon - EulerGamma +
+Log[4 Pi].";
 
 FCHideEpsilon::failmsg =
 "Error! FCHideEpsilon has encountered a fatal problem and must abort the computation. \

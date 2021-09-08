@@ -16,11 +16,12 @@
 (* ------------------------------------------------------------------------ *)
 
 FCGramMatrix::usage =
-"FCGramMatrix[{p1,p2,...}] creates Gram matrix from the given list of momenta.";
+"FCGramMatrix[{p1, p2, ...}] creates a Gram matrix from the given list of
+momenta.";
 
 FCGramDeterminant::usage =
-"FCGramDeterminant[{p1,p2,...}] computes the determinant of the Gram matrix created \
-from the given list of momenta.";
+"FCGramDeterminant[{p1, p2, ...}] computes the determinant of the Gram matrix
+created from the given list of momenta.";
 
 FCGramMatrix::failmsg = "Error! FCGramMatrix has encountered a fatal problem and \
 must abort the computation. The problem reads: `1`";

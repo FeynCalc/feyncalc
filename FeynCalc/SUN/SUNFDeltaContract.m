@@ -16,12 +16,11 @@
 (* ------------------------------------------------------------------------ *)
 
 SUNFDeltaContract::usage=
-"SUNFDeltaContract[exp] substitues for all SUNFDelta in exp with \
-SUNFDeltaContract, contracts the fundamental SU(N) indices and resubstitutes \
-SUNFDelta. \n
-SUNFDeltaContract[i, j] is the Kronecker-delta for SU(N) in the fundamental \
-representation  with contraction properties. It wraps the head SUNFIndex \
-around its arguments.";
+"SUNFDeltaContract[exp] substitutes for all SUNFDelta in exp SUNFDeltaContract,
+contracts the fundamental $\\text{SU}(N)$ indices and resubstitutes
+SUNFDelta.SUNFDeltaContract[i, j] is the Kronecker-delta for $\\text{SU}(N)$ in
+the fundamental representation with contraction properties. It wraps the head
+SUNFIndex around its arguments.";
 
 (* ------------------------------------------------------------------------ *)
 

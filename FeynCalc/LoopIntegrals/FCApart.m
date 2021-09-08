@@ -24,8 +24,17 @@
 (* ------------------------------------------------------------------------ *)
 
 FCApart::usage =
-"FCApart[expr,{q1,q2,...}] is an internal function that partial fractions loop integrals "  <> ToString[
-Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/FCApart"], StandardForm];
+"FCApart[expr, {q1, q2, ...}] is an internal function that partial fractions a
+loop integral (that depends on q1,q2, ...) into integrals that contain only
+linearly independent propagators. The algorithm is largely based on
+[arXiv:1204.2314](https://arxiv.org/abs/1204.2314) by F.Feng. FCApart is meant
+to be applied to single loop integrals only. If you need to perform partial
+fractioning on an expression that contains multiple loop integrals, use
+ApartFF.
+
+There is actually no reason, why one would want to apply FCApart instead of
+ApartFF, except for cases, where FCApart is called from a different package
+that interacts with FeynCalc.";
 
 FCApart::checkfail="
 Error! Partial fractioning of the loop integral `1` by FCApart has produced an inconsistent result. \

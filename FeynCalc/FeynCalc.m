@@ -111,9 +111,9 @@ Global`globalContextBeforeLoadingFC = Names["Global`*"];
 BeginPackage["FeynCalc`"];
 
 FCDeclareHeader::usage =
-"FCDeclareHeader is an internal FeynCalc function to declare
-objects inside an .m file in the same manner as it is done in
-the JLink package. It may be used by FeynCalc addons."
+"FCDeclareHeader is an internal FeynCalc function to declare objects inside an
+.m file in the same manner as it is done in the JLink package. It may be used
+by FeynCalc addons.";
 
 Begin["`Private`"]
 

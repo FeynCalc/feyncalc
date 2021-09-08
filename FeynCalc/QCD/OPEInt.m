@@ -13,10 +13,7 @@
 (* ------------------------------------------------------------------------ *)
 
 OPEInt::usage =
-"OPEInt[expr, q, p, x] calculates 1-loop OPE-type self energies.
-The dimension is changed to the one indicated by the option
-Dimension. The setting of the option EpsContract determines
-the dimension in which the Levi-Civita tensors are contracted.";
+"OPEInt[expr, q, p, x] calculates 1-loop OPE-type self energies.";
 
 (* ------------------------------------------------------------------------ *)
 

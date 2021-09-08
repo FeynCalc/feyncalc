@@ -16,13 +16,13 @@
 (* ------------------------------------------------------------------------ *)
 
 ExpandPartialD::usage =
-"ExpandPartialD[exp] expands noncommutative products of QuantumField's and partial \
-differentiation operators in exp and applies the Leibniz rule."
+"ExpandPartialD[exp] expands noncommutative products of QuantumField}'s and
+partial differentiation operators in exp and applies the Leibniz rule.";
 
 (* Added 22/2-2003 in order to use FieldDerivative in a flexible way. F.Orellana *)
 PartialDRelations::usage =
-"PartialDRelations is an option for ExpandPartialD. It is a list of rules \
-applied by ExpandPartialD at the end."
+"PartialDRelations is an option for ExpandPartialD. It is a list of rules
+applied by ExpandPartialD at the end.";
 
 (* ------------------------------------------------------------------------ *)
 

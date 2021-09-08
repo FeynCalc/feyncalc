@@ -11,11 +11,11 @@
 (* ------------------------------------------------------------------------ *)
 
 TwoLoopSimplify::usage =
-"TwoLoopSimplify[amplitude,{qu1,qu2}] simplifies the 2-loop amplitude \
-(qu1 and qu2 denote the integration momenta). \
-TwoLoopSimplify[amplitude] transforms to \
-TwoLoopSimplify[amplitude, {FCGV[\"q1\"], FCGV[\"q2\"]}], i.e., \
-the integration momenta in amplitude must be named q1 and q2.";
+"TwoLoopSimplify[amplitude, {qu1, qu2}] simplifies the 2-loop amplitude (qu1
+and qu2 denote the integration momenta).
+
+TwoLoopSimplify[amplitude] transforms to TwoLoopSimplify[amplitude, {q1, q2}],
+i.e., the integration momenta in amplitude must be named q1 and q2.";
 
 (* ------------------------------------------------------------------------ *)
 

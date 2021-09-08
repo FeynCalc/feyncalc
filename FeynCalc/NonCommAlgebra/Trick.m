@@ -6,7 +6,8 @@
 (* ------------------------------------------------------------------------ *)
 
 Trick::usage =
-"Trick[exp] uses Contract, DotSimplify and SUNDeltaContract.";
+"Trick[exp] performs several basic simplifications without expansion.
+Trick[exp] uses Contract, DotSimplify and SUNDeltaContract.";
 
 (* ------------------------------------------------------------------------ *)
 

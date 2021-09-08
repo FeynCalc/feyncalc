@@ -16,12 +16,28 @@
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
 PaVeOrder::usage =
-"PaVeOrder[expr] orders the arguments of PaVe functions with up to 6 legs\
-in expr in a standard way. \
-PaVeOrder[expr, PaVeOrderList -> { {..., s, u, ...}, \
-{... m1^2, m2^2, ...}, ...}] orders the arguments of PaVe functions \
-with up to 6 legs in expr according to the specified ordering lists. \
-The lists may contain only a subsequence of the kinematic variables.";
+"PaVeOrder[expr] orders the arguments of PaVe functions in expr in a standard
+way.
+
+PaVeOrder[expr, PaVeOrderList -> { {..., s, u, ...}, {... m1^2, m2^2, ...},
+...}] orders the arguments of PaVe functions in expr according to the
+specified ordering lists. The lists may contain only a subsequence of the
+kinematic variables.
+
+PaVeOrder has knows about symmetries in the arguments of PaVe functions with
+up to 6 legs.
+
+Available symmetry relations are saved here
+
+FileBaseName/@FileNames[\"*.sym\",FileNameJoin[{$FeynCalcDirectory,
+\"Tables\", \"PaVeSymmetries\"}]]
+
+For the time being, these tables contain relations for B-functions up to rank
+10, C-functions up to rank 9, D-functions up to rank 8,
+E-functions (5-point functions) up to rank 7 and F-functions (6-point
+functions) up to rank 4. If needed, relations for more legs
+and higher tensor ranks can be calculated using FeynCalc and saved to
+PaVeSymmetries using template codes provided inside *.sym files.";
 
 PaVeOrder::failmsg =
 "Error! PaVeOrder encountered a fatal problem and must abort the computation. \

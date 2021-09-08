@@ -34,8 +34,7 @@ UpTo[4]])], 0.9].
 Notice that older Mathematica versions have numerous shortcomings in the graph
 drawing capabilities that cannot be reliably worked around. This why to use
 FCLoopGraphPlot you need to have at least Mathematica 11.0 or newer. For best
-results we recommend using Mathematica 12.2 or newer.
-";
+results we recommend using Mathematica 12.2 or newer.";
 
 FCLoopGraphPlot::failmsg =
 "Error! FCLoopGraphPlot has encountered a fatal problem and must abort the computation. \

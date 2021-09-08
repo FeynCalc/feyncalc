@@ -16,13 +16,18 @@
 (* ------------------------------------------------------------------------ *)
 
 QP::usage =
-"QP is an alias for QuarkPropagator. \n
-QP[p] is the massless quark propagator. \n
+"QP is an alias for QuarkPropagator.
+
+QP[p] is the massless quark propagator.
+
 QP[{p,m}] gives the  quark propagator with mass m.";
 
 QuarkPropagator::usage =
-"QuarkPropagator[p] is the massless quark propagator. \n
-QuarkPropagator[{p,m}] gives the  quark propagator with mass m.";
+"QuarkPropagator[p] is the massless quark propagator.
+
+QuarkPropagator[{p, m}] gives the quark propagator with mass $m$.
+
+QP can be used as an abbreviation of QuarkPropagator.";
 
 (* ------------------------------------------------------------------------ *)
 

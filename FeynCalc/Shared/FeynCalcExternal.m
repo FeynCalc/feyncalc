@@ -17,13 +17,14 @@
 (* ------------------------------------------------------------------------ *)
 
 FCE::usage=
-"FCE is just an abbreviation of FeynCalcExternal.";
+"FCE[exp] translates exp from the internal FeynCalc representation to a short
+form.
+
+FCE is equivalent to FeynCalcExternal.";
 
 FeynCalcExternal::usage=
-"FeynCalcExternal[exp] translates exp from the internal FeynCalc \
-representation to the simpler external one \
-(i.e., FV, GA, GS, etc.). User defined rules can be given \
-by the option FinalSubstitutions. ";
+"FeynCalcExternal[exp] translates exp from the internal FeynCalc representation
+to a shorthand form.";
 
 FCE::feynamp=
 "Warning! FeynAmpDenominator `1` contains momenta with different dimensions and thus cannot be \

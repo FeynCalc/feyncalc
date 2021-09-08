@@ -17,70 +17,70 @@
 
 
 A0::usage =
-"A0[m^2] is the Passarino-Veltman one point integral.";
+"A0[m^2] is the Passarino-Veltman one-point integral $A_0.$.";
 
 A00::usage =
-"A00[m^2] is the Passarino-Veltman A00-function, i.e. the \
-coefficient function of g(mu nu). The argument is a scalars and has \
-dimension mass^2.";
+"A00[m^2] is the Passarino-Veltman coefficient function $A_{00}$, i.e. the
+coefficient function multiplying $g^{\\mu \\nu}$. The argument  is a scalar and
+has mass dimension 2.";
 
 A0ToB0::usage =
-"A0ToB0 is an option for A0. If set to True, A0[m^2] is expressed \
-by (1+ B0[0,m^2,m^2])*m^2.";
+"A0ToB0 is an option for A0. If set to True, A0[m^2] is expressed by (1 + B0[0,
+m^2, m^2]) m^2.";
 
 B0::usage =
-"B0[pp,m1^2,m2^2] is the Passarino-Veltman two point integral. \
-All arguments are scalars and have dimension mass^2.";
+"B0[pp, ma^2, mb^2] is the Passarino-Veltman two-point integral $B_0$. All
+arguments are scalars and have dimension mass squared. If the option BReduce
+is set to True, certain B0's are reduced to A0's. Setting the option B0Unique
+to True simplifies B0[a,0,a] and B0[0,0,a].";
 
 B0Real::usage =
-"B0Real is an option of B0 (default False). If set to True, \
-B0 is assumed to be real and the relation \
-B0[a,0,a] = 2 + B0[0,a,a]  is applied.";
+"B0Real is an option of B0 (default False). If set to True, B0 is assumed to be
+real and the relation B0[a,0,a] = 2 + B0[0,a,a] is applied.";
 
 B0Unique::usage =
-"B0Unique is an option of B0. If set to True, B0[0,0,m2] is replaced \
-with (B0[0,m2,m2]+1) and B0[m2,0,m2] simplifies to (B0[0,m2,m2]+2).";
+"B0Unique is an option of B0. If set to True, B0[0,0,m2] is replaced with
+(B0[0,m2,m2]+1) and B0[m2,0,m2] simplifies to (B0[0,m2,m2]+2).";
 
 B00::usage =
-"B00[pp,m1^2,m2^2] is the Passarino-Veltman B00-function, i.e. the \
-coefficient function of g(mu nu). All arguments are scalars and have \
-dimension mass^2.";
+"B00[pp, ma^2, mb^2] is the Passarino-Veltman $B_{00}$-function, i.e., the
+coefficient function of the metric tensor. All arguments are scalars and have
+dimension mass squared.";
 
 B1::usage =
-"B1[pp,m1^2,m2^2] is the Passarino-Veltman B1-function. \
-All arguments are scalars and have dimension mass^2.";
+"B1[pp, ma^2, mb^2] the Passarino-Veltman $B_1$-function. All arguments are
+scalars and have dimension mass squared.";
 
 B11::usage =
-"B11[pp,m1^2,m2^2] is the Passarino-Veltman B11-function, i.e. \
-the coefficient function of p(mu) p(nu).";
+"B11[pp, ma^2, mb^2] is the Passarino-Veltman $B_{11}$-function, i.e. the
+coefficient function of $p^{\\mu } p^{\\nu }$. All arguments are scalars and
+have dimension mass squared.";
 
 BReduce::usage =
-"BReduce is an option for B0, B00, B1, B11 determining whether \
-reductions to A0 and B0 will be done. ";
+"BReduce is an option for B0, B00, B1, B11 determining whether reductions to A0
+and B0 will be done.";
 
 C0::usage =
-"C0[p10, p12, p20, m1^2, m2^2, m3^2] is the scalar \
-Passarino-Veltman C0-function.  The convention for the arguments \
-is that if the denominator of the integrand has the form \
-([q^2-m1^2] [(q+p1)^2-m2^2] [(q+p2)^2-m3^2]), \
-the first three arguments of C0 are the scalar products \
-p10 = p1^2, p12 = (p1-p2).(p1-p2), p20 = p2^2.";
+"C0[p10, p12, p20, m1^2, m2^2, m3^2] is the scalar Passarino-Veltman $C_0$
+function. The convention for the arguments is that if the denominator of the
+integrand has the form $([q^2-m1^2] [(q+p1)^2-m2^2] [(q+p2)^2-m3^2])$, the
+first three arguments of C0 are the scalar products $p10 = p1^2$, $p12 =
+(p1-p2).(p1-p2)$, $p20 = p2^2$.";
 
 D0::usage =
-"D0[ p10, p12, p23, p30, p20, p13,  m1^2, m2^2, m3^2, m4^2 ] is the \
-Passarino-Veltman D0-function. The convention for the arguments is \
-that if the denominator of the integrand has the form \
-( [q^2-m1^2] [(q+p1)^2-m2^2] [(q+p2)^2-m3^2] [(q+p3)^2-m4^2] ), \
-the first six arguments of D0 are the scalar products \
-p10 = p1^2, p12 = (p1-p2)^2, p23 = (p2-p3)^2, p30 = p3^2, \
-p20 = p2^2, p13 = (p1-p3)^2.";
+"D0[p10, p12, p23, p30, p20, p13, m1^2, m2^2, m3^2, m4^2 ] is the
+Passarino-Veltman $D_0$ function. The convention for the arguments is that if
+the denominator of the integrand has the form $([q^2-m1^2] [(q+p1)^2-m2^2]
+[(q+p2)^2-m3^2] [(q+p3)^2-m4^2])$, the first six arguments of D0 are the
+scalar products $p10 = p1^2$, $p12 = (p1-p2)^2$, $p23 = (p2-p3)^2$, $p30 =
+p3^2$, $p20 = p2^2$, $p13 = (p1-p3)^2$.";
 
 DB0::usage =
-"DB0[p2,m1^2,m2^2] is the derivative of the two-point function \
-B0[p2,m1^2,m2^2] with respect to p2.";
+"DB0[p2, m1^2, m2^2] is the derivative of the two-point function B0[p2, m1^2,
+m2^2] with respect to p2.";
 
 DB1::usage =
-"DB1[p2,m1^2,m2^2] is the derivative of B1[p2,m1^2,m2^2] with respect to p2.";
+"DB1[p2, m1^2, m2^2] is the derivative of B1[p2,m1^2,m2^2] with respect to p2.";
 
 (* ------------------------------------------------------------------------ *)
 

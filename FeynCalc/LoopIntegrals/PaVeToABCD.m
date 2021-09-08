@@ -17,9 +17,10 @@
 (* ------------------------------------------------------------------------ *)
 
 
-PaVeToABCD::usage = "PaVeToABCD[expr] converts suitable PaVe functions to \
-direct Passarino-Veltman functions (A0, A00, B0, B1, B00, B11, C0, D0). \
-PaVeToABCD is nearly the inverse of ToPaVe2.";
+PaVeToABCD::usage =
+"PaVeToABCD[expr] converts suitable PaVe functions to direct Passarino-Veltman
+functions (A0,  A00, B0, B1, B00, B11, C0, D0). PaVeToABCD is nearly the
+inverse of ToPaVe2.";
 
 (* ------------------------------------------------------------------------ *)
 

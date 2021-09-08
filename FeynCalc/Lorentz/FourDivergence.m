@@ -16,25 +16,23 @@
 (* ------------------------------------------------------------------------ *)
 
 FourDivergence::usage =
-"FourDivergence[exp, FV[p, mu]] calculates the partial derivative of exp w.r.t. p^mu. \
-FourDivergence[exp, FV[p, mu], FV[p,nu], ...] gives the multiple derivative.";
-
-PartialFourVector::usage=
-"PartialFourVector is equivalent to FourDivergence";
+"FourDivergence[exp, FV[p, mu]] calculates the partial derivative of exp w.r.t
+$p^{\\mu }$. FourDivergence[exp, FV[p, mu], FV[p,nu], ...] gives the multiple
+derivative.";
 
 FourDivergence::notvec=
-"`1` is not a Lorentz vector. Evaluation aborted!"
+"`1` is not a Lorentz vector. Evaluation aborted!";
 
 FourDivergence::extfail=
 "Failed to extract the name of the Lorentz vector from `1`. Evaluation aborted!"
 
 FourDivergence::toocompl=
 "The structure `1` w.r.t which you are trying to differentiate is too complicated \
-to ensure the correct result. Evaluation aborted!"
+to ensure the correct result. Evaluation aborted!";
 
 FourDivergence::failmsg =
 "Error! FourDivergence has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 FourDivergence::warn =
 "Warning! The input expression also depends on `1` in dimensions other than `2`. \
@@ -58,8 +56,6 @@ Begin["`FourDivergence`Private`"]
 
 fdVerbose::usage="";
 optEpsExpand::usage="";
-
-PartialFourVector = FourDivergence;
 
 Options[FourDivergence] = {
 	Abort 				-> True,

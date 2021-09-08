@@ -10,7 +10,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-GTI::usage= "GTI is like RHI, but with no functional properties.";
+GTI::usage=
+"GTI is like RHI, but with no functional properties.";
 
 (* ------------------------------------------------------------------------ *)
 

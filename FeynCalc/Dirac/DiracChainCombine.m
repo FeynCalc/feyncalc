@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 DiracChainCombine::usage =
-"DiracChainCombine[expr] is (nearly) the inverse operation to DiracChainExpand.";
+"DiracChainCombine[exp] is (nearly) the inverse operation to DiracChainExpand.";
 
 (* ------------------------------------------------------------------------ *)
 

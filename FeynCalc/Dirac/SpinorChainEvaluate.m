@@ -16,8 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 SpinorChainEvaluate::usage =
-"SpinorChainEvaluate[exp] explicitly evaluates suitable spinor chains, i.e. \
-replaces a DOT[Spinor[...],...,Spinor[...]] with a scalar quantity without a \
+"SpinorChainEvaluate[exp] explicitly evaluates suitable spinor chains, i.e. it
+replaces a DOT[Spinor[...],...,Spinor[...]] with a scalar quantity without a
 DOT.";
 
 SpinorChainEvaluate::failmsg =

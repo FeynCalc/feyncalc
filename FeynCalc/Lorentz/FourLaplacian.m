@@ -16,7 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 FourLaplacian::usage =
-"FourLaplacian[exp, p, q] is d/dp_mu d/dq_mu exp.";
+"FourLaplacian[exp, p, q] is $\\frac{\\partial}{\\partial p_{\\mu }}
+\\frac{\\partial}{\\partial q_{\\mu }}$ applied to exp.";
 
 Begin["`Package`"]
 End[]

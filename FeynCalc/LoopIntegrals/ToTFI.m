@@ -11,10 +11,11 @@
 
 (* ------------------------------------------------------------------------ *)
 
-ToTFI::usage = "ToTFI[expr, q1, q2, p] translates  FeynCalc 2-loop \
-self energy type integrals into the TFI notatation, which can be used as \
-input for the function TarcerRecurse from the TARCER package. \
-See TFI for details on the conventions.";
+ToTFI::usage =
+"ToTFI[expr, q1, q2, p] translates FeynCalc 2-loop self energy type integrals
+into the TFI notation, which can be used as input for the function
+TarcerRecurse from the TARCER package. See the TARCER documenatation on TFI
+for details on the conventions.";
 
 ToTFI::failmsg = "Error! ToTFI has encountered a fatal problem and \
 must abort the computation. The problem reads: `1`";

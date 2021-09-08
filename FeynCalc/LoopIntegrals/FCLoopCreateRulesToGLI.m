@@ -18,8 +18,7 @@ FCLoopCreateRulesToGLI::usage =
 "FCLoopCreateRulesToGLI[topo] creates replacement rules for converting
 numerators from the given topology to GLI objects with inverse propagators.
 
-It is also possible to use FCLoopCreateRulesToGLI[{topo1, topo2, ...}].
-";
+It is also possible to use FCLoopCreateRulesToGLI[{topo1, topo2, ...}].";
 
 FCLoopCreateRulesToGLI::failmsg = "Error! FCLoopCreateRulesToGLI has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`";

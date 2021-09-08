@@ -16,14 +16,14 @@
 
 (* ------------------------------------------------------------------------ *)
 
-CTdec::usage = "CTdec[{{qi, a}, {qj, b}, ...}, {p1, p2, ...}] or \
-CTdec[exp, {{qi, a}, {qj, b}, ...}, {p1, p2, ...}] \
-calculates the tensorial decomposition formulas for Cartesian integrals. \
-The more common ones are saved in TIDL.";
+CTdec::usage =
+"CTdec[{{qi, a}, {qj, b}, ...}, {p1, p2, ...}] or CTdec[exp, {{qi, a}, {qj, b},
+...}, {p1, p2, ...}] calculates the tensorial decomposition formulas for
+Cartesian integrals. The more common ones are saved in TIDL.";
 
 CTdec::failmsg =
 "Error! TID has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 

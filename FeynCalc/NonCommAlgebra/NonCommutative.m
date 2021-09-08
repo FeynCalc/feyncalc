@@ -14,63 +14,60 @@
 (* ------------------------------------------------------------------------ *)
 
 AntiCommutator::usage =
-"AntiCommutator[x, y] = c  defines the anti-commutator of the \
-non-commuting objects x and y. \
-Settings of AntiCommutator (e.g.AntiCommutator[a,b]=c) \
-are recognized by DotSimplify.";
+"AntiCommutator[x, y] = c defines the anti-commutator of the non commuting
+objects x and y.";
 
 Commutator::usage =
-"Commutator[x, y] = c  defines the commutator between the non-commuting \
+"Commutator[x, y] = c defines the commutator between the (non-commuting)
 objects x and y.";
 
 CommutatorExplicit::usage=
-"CommutatorExplicit[exp] substitutes any Commutator and AntiCommutator \
-in exp by their definitions.";
+"CommutatorExplicit[exp] substitutes any Commutator and AntiCommutator in exp
+by their definitions.";
 
 CommutatorOrder::usage=
-"CommutatorOrder[exp] orders any Commutator and AntiCommutator \
+"CommutatorOrder[exp] orders any Commutator and AntiCommutator
 lexicographically.";
 
 DeclareNonCommutative::usage =
-"DeclareNonCommutative[a, b, ...] declares a,b, ... to be \
-noncommutative, i.e., DataType[a,b, ...,  NonCommutative] is set to \
-True.";
+"DeclareNonCommutative[a, b, ...] declares a,b, ... to be non-commutative,
+i.e., DataType[a,b, ..., NonCommutative] is set to True.";
 
 FCMatrixProduct::usage=
 "FCMatrixProduct[mat1, mat2, ...] can be used to obtain products of matrices
-whose entries are noncommutative symbols. The resulting expression can be
-then further simplified using DotSimplify.";
+with entries containing noncommutative symbols. Using the usual Dot on such
+matrices would otherwise destroy the original ordering.
+
+The resulting expression can be then further simplified using DotSimplify.";
 
 NonCommFreeQ::usage =
-"NonCommFreeQ[exp] yields True if exp contains no non-commutative objects \
-(i.e. those objects which are listed in $NonComm) or only non-commutative \
-objects inside DiracTrace's or SUNTrace's.";
+"NonCommFreeQ[exp] yields True if exp contains no non-commutative objects (i.e.
+those objects which are listed in $NonComm) or only non-commutative objects
+inside DiracTraces or SUNTraces.";
 
 NonCommHeadQ::usage =
-"NonCommHeadQ[exp] yields True if the head of exp is a non-commutative
-object or Dot.";
+"NonCommHeadQ[exp] yields True if the head of exp is a non-commutative object
+or Dot.";
 
 NonCommQ::usage =
-"NonCommQ[exp] yields True if exp contains non-commutative objects \
-(i.e. those objects which are listed in $NonComm) not inside \
-DiracTrace's or SUNTrace's.";
+"NonCommQ[exp] yields True if exp contains non-commutative objects (i.e. those
+objects which are listed in $NonComm) not inside DiracTraces or SUNTraces.";
 
 NonCommutative::usage=
-"NonCommutative is a data type which may be used, e.g.,  as: \
-DataType[x, NonCommutative] = True.";
+"NonCommutative is a data type which may be used, e.g.,  as DataType[x,
+NonCommutative] = True.";
 
 UnDeclareNonCommutative::usage =
-"UnDeclareNonCommutative[a, b, ...] undeclares a,b, ... to be \
-noncommutative, i.e., DataType[a,b, ..., NonCommutative] = False \
-is performed.";
+"UnDeclareNonCommutative[a, b, ...] undeclares a,b, ... to be noncommutative,
+i.e., DataType[a,b, ..., NonCommutative] is set to False.";
 
 UnDeclareAntiCommutator::usage =
 "UnDeclareAntiCommutator[a, b] undeclares the value assigned to the
 anticommutator of a and b.";
 
 UnDeclareCommutator::usage =
-"UnDeclareCommutator[a, b] undeclares the value assigned to the
-commutator of a and b.";
+"UnDeclareCommutator[a, b] undeclares the value assigned to the commutator of a
+and b.";
 
 UnDeclareAllCommutators::usage =
 "UnDeclareAllCommutators[] undeclares all user-defined commutators.";

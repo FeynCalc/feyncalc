@@ -30,8 +30,7 @@ FCLoopFindTopologyMappings etc.
 It is also possible to invoke the function as FCLoopToPakForm[GLI[...],
 FCTopology[...]] or FCLoopToPakForm[FCTopology[...]]. Notice that in this case
 the value of the option FinalSubstitutions is ignored, as replacement rules
-will be extracted directly from the definition of the topology.
-";
+will be extracted directly from the definition of the topology.";
 
 FCLoopToPakForm::failmsg =
 "Error! FCLoopToPakForm has encountered a fatal problem and must abort the computation. \

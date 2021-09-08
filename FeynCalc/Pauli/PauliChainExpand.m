@@ -16,13 +16,13 @@
 (* ------------------------------------------------------------------------ *)
 
 PauliChainExpand::usage =
-"PauliChainExpand[exp] expands all Pauli chains with explicit indices \
-using linearity, e.g. PCHN[CSIS[p1]+CSIS[p2]+m,i,j] becomes \
+"PauliChainExpand[exp] expands all Pauli chains with explicit indices using
+linearity, e.g. PCHN[CSIS[p1]+CSIS[p2]+m,i,j] becomes
 PCHN[CSIS[p1],i,j]+PCHN[CSIS[p2],i,j]+m*PCHN[1,i,j].";
 
 PauliChainExpand::fail =
 "Something went wrong while expanding Paulih chains with explicit indices.
-Evaluation aborted! "
+Evaluation aborted! ";
 
 (* ------------------------------------------------------------------------ *)
 

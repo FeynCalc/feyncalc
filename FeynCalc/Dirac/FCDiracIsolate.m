@@ -16,10 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 FCDiracIsolate::usage =
-"FCDiracIsolate[exp] wraps chains of Dirac matrices into heads specified \
-by the user " <> ToString[
-Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/FCDiracIsolate"],
-StandardForm];
+"FCDiracIsolate[exp] wraps chains of Dirac matrices into heads specified by the
+user.";
 
 FCDiracIsolate::fail =
 "FCDiracIsolate failed to isolate Dirac structures in `1`!";

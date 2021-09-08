@@ -20,15 +20,13 @@ FCLoopBasisIncompleteQ::usage =
 "FCLoopBasisIncompleteQ[int, {q1, q2, ...}] checks whether the loop integral or
 topology int lacks propagators need to have a linearly independent basis .
 
-The input can also consist of an FCTopology object or a list thereof.
-";
+The input can also consist of an FCTopology object or a list thereof.";
 
 FCLoopBasisOverdeterminedQ::usage =
 "FCLoopBasisOverdeterminedQ[int, {q1, q2, ...}] checks whether the loop
 integral or topology int contains linearly dependent propagators.
 
-The input can also consist of an FCTopology object or a list thereof.
-";
+The input can also consist of an FCTopology object or a list thereof.";
 
 FCLoopBasisFindCompletion::usage =
 "FCLoopBasisFindCompletion[int, {q1, q2, ...}] determines propagators that need
@@ -40,41 +38,44 @@ must be found prior to processing those integrals with tools that do
 Integration-By-Parts (IBP) reduction (e.g. FIRE, KIRA or LiteRed).
 Furthermore, int may not contain linearly dependent propagators.
 
-The input can also consist of an FCTopology object or a list thereof.
-";
+The input can also consist of an FCTopology object or a list thereof.";
 
 FCLoopBasisSplit::usage =
-"FCLoopBasisSplit[int, {q1,q2,...}] checks if the given loop integral factorizes \
-and if so splits it into independent integrals.";
+"FCLoopBasisSplit[int, {q1, q2, ...}] checks if the given loop integral
+factorizes and if so splits it into independent integrals.";
 
 FCLoopBasisGetSize::usage =
-"FCLoopBasisGetSize[n1,n2] returns the number of linearly independent propagators \
-for a topology that contains n1 loop momenta and n2 external momenta.";
+"FCLoopBasisGetSize[n1, n2] returns the number of linearly independent
+propagators for a topology that contains n1 loop momenta and n2 external
+momenta.";
 
 FCLoopBasisPropagatorsToTopology::usage =
 "FCLoopBasisPropagatorsToTopology[{prop1, prop2, ...}] takes the list of Pairs
 and FeynAmpDenominators and converts it into a list of propagators that can be
 used to describe a topology.
 
-The input can also consist of an FCTopology object or a list thereof.
-";
+The input can also consist of an FCTopology object or a list thereof.";
 
 FCLoopBasisCreateScalarProducts::usage=
-"FCLoopBasisCreateScalarProducts[{q1, q2, ...},{p1, p2,...},{d1, d2, ...}, head] generates \
-a list of all loop-momentum dependent scalar products made out of the loop momenta q1, q2, ... and \
-external momenta p1, p2, ... in the space-time dimensions d1, d2, .... The argument head can \
-be Pair to generate Lorentzian scalar products or CartesianPair to generate Cartesian scalar \
+"FCLoopBasisCreateScalarProducts {q1, q2, ...}, {p1, p2, ...}, {d1, d2, ...},
+head] generates a list of all loop-momentum dependent scalar products made out
+of the loop momenta q1, q2, ... and external momenta p1, p2, ... in the
+space-time dimensions d1, d2, .... The argument head can be Pair to generate
+Lorentzian scalar products or CartesianPair to generate Cartesian scalar
 products.";
 
 FCLoopBasisExtract::usage=
-"FCLoopBasisExtract[int, {q1,q2,...}] is an auxiliary function that extract the scalar products \
-that form the basis of the loop integral in int. It needs to know the loop momenta on which the integral \
-depends and the dimensions of the momenta that may occur in the integral.";
+"FCLoopBasisExtract[int, {q1, q2, ...}] is an auxiliary function that extracts
+the scalar products that form the basis of the loop integral in int. It needs
+to know the loop momenta on which the integral depends and the dimensions of
+the momenta that may occur in the integral.";
 
 FCLoopBasisIntegralToPropagators::usage=
-"FCLoopBasisIntegralToPropagators[int, {q1,q2,...}] is an auxiliary function that converts the loop integral int that \
-depends on the loop momenta q1, q2, ... to a list of propagators and scalar products. All propagators and \
-scalar products that do not depend on the loop momenta are discarded, unless the Rest option is set to True.";
+"FCLoopBasisIntegralToPropagators[int, {q1, q2, ...}] is an auxiliary function
+that converts the loop integral int that depends on the loop momenta q1, q2,
+... to a list of propagators and scalar products. All propagators and scalar
+products that do not depend on the loop momenta are discarded, unless the Rest
+option is set to True.";
 
 FCLoopBasis::unknownmoms =
 "Error! Loop integral `1` depends on momenta that were not specified or it doesn't depend on \

@@ -16,7 +16,9 @@
 (* ------------------------------------------------------------------------ *)
 
 ToLarin::usage =
-"ToLarin[exp] substitutes GAD[mu].GA[5] with -I/6 LC[mu,nu,la,si] GAD[nu,la,si].";
+"ToLarin[exp]  substitutes $\\gamma^{\\mu} \\gamma^5$ with
+$-\\frac{I}{6}\\varepsilon^{\\mu \\nu \\lambda \\sigma } \\gamma^{\\nu }
+\\gamma^{\\lambda} \\gamma^{\\sigma }$.";
 
 (* ------------------------------------------------------------------------ *)
 

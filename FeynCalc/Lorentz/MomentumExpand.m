@@ -16,12 +16,12 @@
 (* ------------------------------------------------------------------------ *)
 
 MomentumExpand::usage =
-"MomentumExpand[expr] expands Momentum[a+b+ ...] in expr into \
-Momentum[a] + Momentum[b] + ... .";
+"MomentumExpand[expr] expands Momentum[a+b+ ...] in expr into Momentum[a] +
+Momentum[b] + ....";
 
 MomentumExpand::failmsg =
 "Error! MomentumExpand has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 

@@ -15,14 +15,17 @@
 
 (* ------------------------------------------------------------------------ *)
 
-Uncontract::usage = "Uncontract[exp,q1,q2, ...] uncontracts Eps \
-and DiracGamma. Uncontract[exp,q1,q2, Pair->{p}] uncontracts \
-also p.q1 and p.q2; Pair -> All uncontracts all except \
-OPEDelta. Dimension -> Automatic leaves dimensions unchanged.";
+Uncontract::usage =
+"Uncontract[exp, q1, q2, ...] uncontracts Eps and DiracGamma.
+
+Uncontract[exp, q1, q2, Pair -> {p}] uncontracts also $p \\cdot q_1$ and $p
+\\cdot q_2$; 
+
+The option Pair -> All uncontracts all momenta except OPEDelta.";
 
 Uncontract::failmsg =
 "Error! Uncontract has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 

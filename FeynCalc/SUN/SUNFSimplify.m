@@ -14,9 +14,12 @@
 
 (* ------------------------------------------------------------------------ *)
 
-SUNFSimplify::usage = "
-SUNFSimplify[exp] is an auxiliary function that simplifies expressions \
-containing SU(N) indices in the fundamental representation.";
+SUNFSimplify::usage =
+"SUNFSimplify[exp] is an auxiliary function that simplifies expressions
+containing $\\text{SU}(N)$ indices in the fundamental representation. The
+simplifications performed by SUNFSimplify are mostly limited to the
+contractions of the fundamental indices. The function is by far not as
+powerful as SUNSimplify.";
 
 (* ------------------------------------------------------------------------ *)
 

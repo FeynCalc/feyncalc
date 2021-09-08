@@ -17,18 +17,17 @@
 
 
 PauliTrace::usage =
-"PauliTrace[exp] is the head of Pauli traces. \
-By default the trace is not evaluated. The evaluation occurs only when \
-the option PauliTraceEvaluate is set to True. It is recommended to use \
-PauliSimplify, which will automatically evaluate all Pauli traces in the \
-input expression.";
+"PauliTrace[exp] is the head of Pauli traces. By default the trace is not
+evaluated. The evaluation occurs only when the option PauliTraceEvaluate is
+set to True. It is recommended to use PauliSimplify, which will automatically
+evaluate all Pauli traces in the input expression.";
 
 PauliTrace::failmsg =
 "Error! PauliTrace has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 PauliTrace::mixmsg = "Expressions that mix D-, 4- and D-4-dimensional quantities are currently
-unsupported."
+unsupported.";
 
 (* ------------------------------------------------------------------------ *)
 

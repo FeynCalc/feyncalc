@@ -16,10 +16,9 @@
 (* ------------------------------------------------------------------------ *)
 
 DiracSubstitute5::usage =
-"DiracSubstitute5[exp] rewrites DiracGamma[5] in exp in terms of \
-the chirality projectors DiracGamma[6] and DiracGamma[7]. \
-DiracSubstitute5 is also an option of various FeynCalc functions \
-that handle Dirac algebra.";
+"DiracSubstitute5[exp] rewrites $\\gamma^5$ in terms of the chirality projectors
+$\\gamma^6$ and $\\gamma^7$. DiracSubstitute5 is also an option of various
+FeynCalc functions that handle Dirac algebra.";
 
 DiracSubstitute5::failmsg =
 "Error! DiracSubstitute5 has encountered a fatal problem and must abort the computation. \

@@ -15,22 +15,14 @@
 
 (* ------------------------------------------------------------------------ *)
 
-SMP::usage= "SMP[\"par\"] displays a symbol for the model parameter par. \
-Typical parameters are masses, coupling constants, mixing angles etc. \
-Parameters that are complex, like CKM matrix element, have an I as an additional argument,
-i.e. SMP[\"V_ud\",I] and SMP[\"V_ud\",-I]. \n
+SMP::usage=
+"SMP[par] displays a symbol for the model parameter par. Typical parameters are
+masses, coupling constants, mixing angles etc.
+
+Parameters that are complex, like a CKM matrix element, have an I as an
+additional argument, e.g. SMP[\"V_ud\", I] and  SMP[\"V_ud\", -I].
+
 SMP[] shows the list of all available parameters.";
-
-Gstrong::usage =
-"Gstrong is a shortcut for SMP[\"g_s\"].";
-
-AlphaStrong::usage =
-"AlphaStrong is a shortcut for SMP[\"alpha_s\"] which represents the strong coupling \
-constant.";
-
-AlphaFS::usage =
-"AlphaFS is a shortcut for SMP[\"alpha_fs\"] which represents the fine-structure \
-constant.";
 
 Begin["`Package`"]
 End[]
@@ -652,15 +644,6 @@ SMP /:
 
 SMP[{x__}]:=
 	SMP[x];
-
-Gstrong:=
-	SMP["g_s"];
-
-AlphaStrong:=
-	SMP["alpha_s"];
-
-AlphaFS:=
-	SMP["alpha_fs"];
 
 SetAttributes[SMP, Protected];
 

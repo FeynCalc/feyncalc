@@ -16,19 +16,19 @@
 
 (* ------------------------------------------------------------------------ *)
 
-Tdec::usage = "Tdec[{q,mu}, {p}]; \
-Tdec[{{qi, mu}, {qj, nu}, ...}, {p1, p2, ...}] or \
-Tdec[exp, {{qi, mu}, {qj, nu}, ...}, {p1, p2, ...}] \
-calculates the tensorial decomposition formulas for Lorentzian integrals. \
-The more common ones are saved in TIDL. \n
-Symmetrization of the tensor basis is done using Pak's algorithm described in \
-arXiv:1111.0868";
+Tdec::usage =
+"Tdec[{{qi, mu}, {qj, nu}, ...}, {p1, p2, ...}] calculates the tensorial
+decomposition formulas for Lorentzian integrals. The more common ones are
+saved in TIDL.
+
+The automatic symmetrization of the tensor basis is done using Alexey Pak's
+algorithm described in [arXiv:1111.0868](https://arxiv.org/abs/1111.0868).";
 
 UseTIDL::usage =
-"UseTIDL is an option of Tdec. When set to True, Tdec will check \
-if the integral you want to decompose is already stored in TIDL, the \
-built-in Tensor Integral Decomposition Library. If yes, then the result \
-will be fetched immediately.";
+"UseTIDL is an option of Tdec. When set to True, Tdec will check if the
+integral you want to decompose is already stored in TIDL, the built-in Tensor
+Integral Decomposition Library. If yes, then the result will be fetched
+immediately.";
 
 Tdec::basis =
 "Tdec failed to generate the tensor basis. Evaluation aborted!";

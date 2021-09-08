@@ -16,13 +16,17 @@
 (* ------------------------------------------------------------------------ *)
 
 TarcerToFC::usage =
-"TarcerToFC[expr, {q1, q2}] translates loop integrals \
-in Tarcer-notation to the FeynCalc notation. \
-See TFI for details on the convention. \
-As in case of ToTFI, the 1/Pi^D and 1/Pi^D/2 prefactors are implicit, i.e. \
-TarcerToFC doesn't add them. \n
-To recover momenta from scalar products use the option ScalarProduct e.g. as \
-in TarcerToFC[TBI[D, pp^2, {{1, 0}, {1, 0}}], {q1, q2}, ScalarProduct -> {{pp^2, p1}}]";
+"TarcerToFC[expr, {q1, q2}] translates loop integrals in Tarcer-notation to the
+FeynCalc notation.
+
+See TFI for details on the convention.
+
+As in the case of ToTFI, the \\frac{1}{\\pi^D} and \\frac{1}{\\pi^{D/2}}
+prefactors are implicit, i.e. TarcerToFC doesn't add them.
+
+To recover momenta from scalar products use the option ScalarProduct e.g. as
+in TarcerToFC[TBI[D, pp^2, {{1, 0}, {1, 0}}], {q1, q2}, ScalarProduct ->
+{{pp^2, p1}}]";
 
 TarcerToFC::failmsg = "Error! TarcerToFC has encountered a fatal problem and \
 must abort the computation. The problem reads: `1`";
