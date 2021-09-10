@@ -59,7 +59,7 @@ fi
 
 
 
-parallel -j 6 -u --eta --bar "$MATH -nopromt -script $scriptDIR/ExportToMD.m  -run outputDir='\"$2\"'" -run inputNB='\"{}\"'  ::: ${allFiles[@]}
+parallel -j 4 -u --eta --bar "$MATH -nopromt -script $scriptDIR/ExportToMD.m  -run outputDir='\"$2\"'" -run inputNB='\"{}\"'  ::: ${allFiles[@]}
 
 
 #-------------------------------------------------------------------------------

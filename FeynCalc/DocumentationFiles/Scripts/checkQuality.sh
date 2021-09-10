@@ -7,7 +7,7 @@
 
 # Description:
 
-# Converts FeynCalc documentation to Markdown
+# Checks for superfluous spaces etc.
 
 # Usage examples
 
@@ -25,7 +25,7 @@ grep -RL "Examples" $mainDir"/Mathematica"
 echo "Check documentation files for superfluous spaces etc."
 ag '\. \*\)' $mainDir"/Mathematica"
 echo ""
-ag '[a-z] \*\)' $mainDir"/Mathematica"
+ag '[a-zA-Z0-9] \*\)' $mainDir"/Mathematica"
 echo ""
-ag '\(\* [a-z]' $mainDir"/Mathematica"
+ag '\(\* [a-zA-Z0-9]' $mainDir"/Mathematica"
 
