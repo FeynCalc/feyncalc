@@ -392,8 +392,9 @@ FCFeynmanPrepare[expr_/;FreeQ[{GLI,FCTopology},expr], lmoms_List /; !OptionQ[lmo
 
 		FCPrint[3,"FCFeynmanPrepare: Preliminary result: ", res, FCDoControl->fcszVerbose];
 
+		(*q2 example!*)
 		If[	optFinalSubstitutions=!={},
-			res = res /. optFinalSubstitutions
+			res = res //. optFinalSubstitutions
 		];
 
 
