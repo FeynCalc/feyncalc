@@ -4,11 +4,11 @@
 
 
 (* ::Section:: *)
-(*SMPToSymbol*)
+(*FCGVToSymbol*)
 
 
 (* ::Text:: *)
-(*`SMPToSymbol[exp]` converts objects of type `SMP["sth"]` in `exp` to symbols using `ToExpression["sth"]`.*)
+(*`FCGVToSymbol[exp]` converts objects of type `FCGV["sth"]` in `exp` to symbols using `ToExpression["sth"]`.*)
 
 
 (* ::Text:: *)
@@ -20,12 +20,16 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [SMP](SMP.md), [FCGVToSymbol](FCGVToSymbol.md).*)
+(*[Overview](Extra/FeynCalc.md), [FCGV](FCGV.md), [SMPToSymbol](SMPToSymbol.md).*)
 
 
 (* ::Subsection:: *)
 (*Examples*)
 
 
-SP[p]-SMP["m_e"]^2
-SMPToSymbol[%]
+FCGV["a"]//FCGVToSymbol
+%//InputForm
+
+
+FCGV["$MU"]//FCGVToSymbol
+%//InputForm

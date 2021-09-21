@@ -1,0 +1,30 @@
+(* :Title: FCLoopGLIToSymbol.test											*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2021 Rolf Mertig
+	Copyright (C) 1997-2021 Frederik Orellana
+	Copyright (C) 2014-2021 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopGLIToSymbol		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopGLIToSymbol =
+({
+{"fcstFCLoopGLIToSymbol-ID1",
+"FCLoopGLIToSymbol[GLI[topo,{1,2,1}]]", "topoX121"},
+{"fcstFCLoopGLIToSymbol-ID2",
+"FCLoopGLIToSymbol[GLI[\"topo\",{1,2,1}]]", "topoX121"},
+{"fcstFCLoopGLIToSymbol-ID3",
+"FCLoopGLIToSymbol[GLI[\"topo_1\",{1,2,1}],StringReplace->{\"_\"\
+->\"\"}]", "topo1X121"},
+{"fcstFCLoopGLIToSymbol-ID4",
+"FCLoopGLIToSymbol[GLI[\"topo\",{1,2,1}],Character->\"Z\"]",
+"topoZ121"},
+{"fcstFCLoopGLIToSymbol-ID5",
+"FCLoopGLIToSymbol[GLI[\"topo\",{1,2,1}],Character->\"Z\",\
+Head->GLI]", "GLIZtopoZ121"}
+});
+

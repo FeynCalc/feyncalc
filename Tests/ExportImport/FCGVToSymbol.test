@@ -1,0 +1,20 @@
+
+
+(* :Title: FCGVToSymbol.test                                                 *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2021 Rolf Mertig
+	Copyright (C) 1997-2021 Frederik Orellana
+	Copyright (C) 2014-2021 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCGVToSymbol	  			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`ExportImport`fcstFCGVToSymbol = ({
+{"fcstFCGVToSymbol-ID1", "FCGVToSymbol[a + b]", "a+b"},
+{"fcstFCGVToSymbol-ID2", "FCGVToSymbol[FCGV[\"m_e\"]^2 + FCGV[\"m_mu\"]^2 + c FCGV[\"s_w\"]]",
+"me^2 + mmu^2 + c sw"}
+})
