@@ -63,7 +63,7 @@ FCLoopValidTopologyQ[topoRaw_FCTopology]:=
 			];
 			*)
 
-			If[	!MatchQ[topo,FCTopology[_,{__FeynAmpDenominator}, {__Symbol}, _List, _List, _List, ___]],
+			If[	!MatchQ[topo/.{- x_FeynAmpDenominator -> x},FCTopology[_,{__FeynAmpDenominator}, {__Symbol}, _List, _List, _List, ___]],
 				Message[FCLoopValidTopologyQ::inv, ToString[topo,InputForm] <> " is not a proper topology."];
 				Return[False]
 			];

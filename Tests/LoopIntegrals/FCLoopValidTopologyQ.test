@@ -37,5 +37,22 @@ p1-p2]},{p1,p2},{},{},{}],\[IndentingNewLine]FCTopology[topo2,{FAD[p3]\
 {"fcstFCLoopValidTopologyQ-ID7",
 "Quiet[FCLoopValidTopologyQ[{FCTopology[topo1,{FAD[p1],FAD[p2],FAD[\
 p1-p2]},{p1,p2},{},{},{}],\[IndentingNewLine]FCTopology[topo2,{FAD[p3]\
-,FAD[p4],FAD[p3-p4]},{p3,p4},{},{}]}]]", "False"}
+,FAD[p4],FAD[p3-p4]},{p3,p4},{},{}]}]]", "False"},
+{"fcstFCLoopValidTopologyQ-ID8",
+"FCLoopValidTopologyQ[
+FCTopology[
+asyR1prop2Ltopo01013X11111N1, {-FeynAmpDenominator[
+	StandardPropagatorDenominator[-Momentum[p3, D], 0,
+	0, {1, 1}]], -FeynAmpDenominator[
+	StandardPropagatorDenominator[-Momentum[p1, D],
+	0, -mg^2, {1, 1}]], -FeynAmpDenominator[
+	StandardPropagatorDenominator[-Momentum[p3, D],
+	2*Pair[Momentum[p3, D], Momentum[q, D]],
+	0, {1, 1}]], -FeynAmpDenominator[
+	StandardPropagatorDenominator[
+	0, -Pair[Momentum[p1, D], Momentum[p3, D]],
+	0, {1, 1}]], -FeynAmpDenominator[
+	StandardPropagatorDenominator[
+	0, -Pair[Momentum[p1, D], Momentum[q, D]], 0, {1, 1}]]}, {p1,
+p3}, {q}, {Pair[Momentum[q, D], Momentum[q, D]] -> mb^2}, {}]]", "True"}
 });
