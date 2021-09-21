@@ -180,5 +180,88 @@ p3]]"},
 {"fcstMomentumCombine-ID56",
 "MomentumCombine[-c1 CSP[p1,p2]-c1 CSP[p1,p3]]",
 "-(c1*CartesianPair[CartesianMomentum[p1], CartesianMomentum[p2 + \
-p3]])"}
+p3]])"},
+{"fcstMomentumCombine-ID57",
+"MomentumCombine[I CartesianMomentum[p]-I CartesianMomentum[q]]",
+"I*CartesianMomentum[p - q]"},
+{"fcstMomentumCombine-ID58",
+"MomentumCombine[I CartesianMomentum[p]-2I CartesianMomentum[q]]",
+"I*CartesianMomentum[p - 2*q]"},
+{"fcstMomentumCombine-ID59",
+"MomentumCombine[I CartesianMomentum[p]]",
+"I*CartesianMomentum[p]"},
+{"fcstMomentumCombine-ID60",
+"MomentumCombine[I CartesianMomentum[p,D-1]-I \
+CartesianMomentum[q,D-1]]", "I*CartesianMomentum[p - q, -1 + D]"},
+{"fcstMomentumCombine-ID61",
+"MomentumCombine[I CartesianMomentum[p,D-1]-2I \
+CartesianMomentum[q,D-1]]", "I*CartesianMomentum[p - 2*q, -1 + D]"},
+{"fcstMomentumCombine-ID62",
+"MomentumCombine[I CartesianMomentum[p,D-1]]",
+"I*CartesianMomentum[p, -1 + D]"},
+{"fcstMomentumCombine-ID63",
+"MomentumCombine[I Momentum[p]-I Momentum[q]]",
+"I*Momentum[p - q]"},
+{"fcstMomentumCombine-ID64",
+"MomentumCombine[I Momentum[p]-2I Momentum[q]]",
+"I*Momentum[p - 2*q]"},
+{"fcstMomentumCombine-ID65", "MomentumCombine[I Momentum[p]]",
+"I*Momentum[p]"},
+{"fcstMomentumCombine-ID66",
+"MomentumCombine[I Momentum[p,D]-I Momentum[q,D]]",
+"I*Momentum[p - q, D]"},
+{"fcstMomentumCombine-ID67",
+"MomentumCombine[I Momentum[p,D]-2I Momentum[q,D]]",
+"I*Momentum[p - 2*q, D]"},
+{"fcstMomentumCombine-ID68", "MomentumCombine[I Momentum[p,D]]",
+"I*Momentum[p, D]"},
+{"fcstMomentumCombine-ID69",
+"MomentumCombine[FCTopology[asyR2prop2Ltopo01013X11111N1,{\
+FeynAmpDenominator[StandardPropagatorDenominator[\[ImaginaryI] \
+Momentum[p3,D],0,0,{1,1}]],FeynAmpDenominator[\
+StandardPropagatorDenominator[\[ImaginaryI] \
+Momentum[p1,D],0,0,{1,1}]],FeynAmpDenominator[\
+StandardPropagatorDenominator[Momentum[\[ImaginaryI] p3+\[ImaginaryI] \
+q,D],0,\!\(\*SuperscriptBox[\(mb\), \
+\(2\)]\),{1,1}]],FeynAmpDenominator[StandardPropagatorDenominator[\
+Momentum[\[ImaginaryI] p1+\[ImaginaryI] \
+q,D],0,\!\(\*SuperscriptBox[\(mb\), \
+\(2\)]\),{1,1}]],FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[p1,D],Momentum[-p1+2 \
+p3,D]]-Pair[Momentum[p3,D],Momentum[p3,D]],{1,1}]]},{p1,p3},{q},{},{}]\
+]", "FCTopology[asyR2prop2Ltopo01013X11111N1, \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q, \
+D], 0, mb^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q, \
+D], 0, mb^2, {1, 1}]], \
+FeynAmpDenominator[GenericPropagatorDenominator[Pair[Momentum[p1, D], \
+Momentum[-p1 + 2*p3, D]] - Pair[Momentum[p3, D], Momentum[p3, D]], \
+{1, 1}]]}, {p1, p3}, {q}, {}, {}]"},
+{"fcstMomentumCombine-ID70",
+"MomentumCombine[FCTopology[asyR3prop2Ltopo01013X11111N1,{\
+FeynAmpDenominator[StandardPropagatorDenominator[\[ImaginaryI] \
+Momentum[p3,D],0,0,{1,1}]],FeynAmpDenominator[\
+StandardPropagatorDenominator[\[ImaginaryI] \
+Momentum[p1,D],0,0,{1,1}]],FeynAmpDenominator[\
+StandardPropagatorDenominator[0,-2 \
+Pair[Momentum[p3,D],Momentum[q,D]],0,{1,1}]],FeynAmpDenominator[\
+StandardPropagatorDenominator[0,-2 \
+Pair[Momentum[p1,D],Momentum[q,D]],0,{1,1}]],FeynAmpDenominator[\
+StandardPropagatorDenominator[Momentum[\[ImaginaryI] p1-\[ImaginaryI] \
+p3,D],0,\!\(\*SuperscriptBox[\(mg\), \
+\(2\)]\),{1,1}]]},{p1,p3},{q},{},{}]]",
+"FCTopology[asyR3prop2Ltopo01013X11111N1, \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-2*Pair[Momentum[p3, D], Momentum[q, D]], 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-2*Pair[Momentum[p1, D], Momentum[q, D]], 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, mg^2, {1, 1}]]}, {p1, p3}, {q}, {}, {}]"}
 };

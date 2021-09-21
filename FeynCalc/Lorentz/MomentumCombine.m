@@ -25,6 +25,7 @@ Begin["`Package`"]
 End[]
 
 Begin["`MomentumCombine`Private`"];
+im::usage="";
 
 rulesMain = {
 	(n3_. Momentum[x_, dim_:4] + n4_. Momentum[y_, dim_:4]):>
@@ -104,6 +105,7 @@ rulesLC = {
 };
 
 Options[MomentumCombine] = {
+	Complex		-> True,
 	FCE 		-> False,
 	FCI 		-> False,
 	FV 			-> True,
@@ -138,12 +140,24 @@ MomentumCombine[expr_, OptionsPattern[]] :=
 
 		res = ex //. Dispatch[rules];
 
+		If[	OptionValue[Complex] && !FreeQ[res,Complex],
+			res = res /. {
+				(h: Momentum|CartesianMomentum|TemporalMomentum)[a_, dim___]/; !FreeQ[a, Complex] :>
+					factorIm[h[a, dim]]
+			}
+		];
+
 		If[	OptionValue[FCE],
 			res = FCE[res]
 		];
 
 		res
 	];
+
+factorIm[(h: Momentum|CartesianMomentum|TemporalMomentum)[a_, dim___]] :=
+	h[Factor2[a /. HoldPattern[Complex[b__]] -> complex[b]] /. im -> I, dim];
+
+complex[a_, b_] := a + im b;
 
 FCPrint["MomentumCombine.m loaded"];
 End[]
