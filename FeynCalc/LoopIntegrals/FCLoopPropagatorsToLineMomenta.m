@@ -43,6 +43,7 @@ Options[FCLoopPropagatorsToLineMomenta] = {
 	AuxiliaryMomenta	-> {},
 	FCE					-> True,
 	FCI					-> False,
+	FromGFAD			-> True,
 	FCVerbose			-> False,
 	Expanding			-> True,
 	MomentumCombine		-> True
@@ -70,12 +71,20 @@ FCLoopPropagatorsToLineMomenta[expr_, OptionsPattern[]] :=
 			ex = FCI[expr]
 		];
 
+		FCPrint[1, "FCLoopPropagatorsToLineMomenta: Entering.", FCDoControl->ptlmVerbose];
+		FCPrint[3, "FCLoopPropagatorsToLineMomenta: Entering with: ", ex,  FCDoControl->ptlmVerbose];
+
 		If[	OptionValue[MomentumCombine],
 			ex = MomentumCombine[ex,FCI->True]
 		];
 
-		FCPrint[1, "FCLoopPropagatorsToLineMomenta: Entering.", FCDoControl->ptlmVerbose];
-		FCPrint[3, "FCLoopPropagatorsToLineMomenta: Entering with", ex,  FCDoControl->ptlmVerbose];
+		FCPrint[3, "FCLoopPropagatorsToLineMomenta: After MomentumCombine: ", ex,  FCDoControl->ptlmVerbose];
+
+		If[	OptionValue[FromGFAD],
+			ex = FromGFAD[ex,FCI->True]
+		];
+
+		FCPrint[3, "FCLoopPropagatorsToLineMomenta: After FromGFAD: ", ex,  FCDoControl->ptlmVerbose];
 
 		If[	!MatchQ[ex, {FeynAmpDenominator__}],
 			Message[FCLoopPropagatorsToLineMomenta::failmsg, "The input expression is not a valid list of propagators"];
@@ -201,6 +210,7 @@ lineMomentumFromPropagator[CartesianPropagatorDenominator[0,	pref_. CartesianPai
 		{-a, massSq},
 		{a, massSq}
 	]/; MemberQ[auxMoms,b];
+
 
 FCPrint[1,"FCLoopPropagatorsToLineMomenta.m loaded."];
 End[]

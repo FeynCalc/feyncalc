@@ -257,5 +257,13 @@ SFAD[{{I*p, 0}, {-m^2, 1}, 1}]}}"},
 StandardPropagatorDenominator[
 	I*Momentum[p1, D], -2*Pair[Momentum[p1, D], Momentum[q, D]],
 	0, {1, 1}]]},FCE->True]",
-"{{p1 + q}, {0}, {SFAD[{{I*p1, -2*p1 . q}, {0, 1}, 1}]}}"}
+"{{p1 + q}, {0}, {SFAD[{{I*p1, -2*p1 . q}, {0, 1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID68",
+"FCLoopPropagatorsToLineMomenta[{GFAD[{{SPD[2 p1 - 2 p3, q], -1}, 1}]},
+FCE -> True]",
+"{{2*p1 - 2*p3 + q}, {0}, {SFAD[{{0, (2*p1 - 2*p3) . q}, {0, -1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID69",
+"FCLoopPropagatorsToLineMomenta[{GFAD[{{SPD[2 p1 - 2 p3, q] - m^2, -1},
+1}]}, FCE -> True]",
+"{{2*p1 - 2*p3 + q/2}, {-m^2}, {SFAD[{{0, (2*p1 - 2*p3) . q}, {m^2, -1}, 1}]}}"}
 });
