@@ -1,5 +1,10 @@
 FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Theory and semi-automatic evaluation of Feynman Diagrams.
 
+## Useful information
+
+ - [Upper and lower indices](Indices.md)
+ - [Master integrals](MasterIntegrals.md)
+
 ## Basic objects
 
  - [Abbreviation](../Abbreviation.md) - gives a shortname for name (in `HoldForm`)
