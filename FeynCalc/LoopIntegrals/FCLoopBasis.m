@@ -335,7 +335,7 @@ FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 		];
 
 		If[	OptionValue[ToSFAD] && !FreeQ[expAsList,PropagatorDenominator],
-			expAsList = ToSFAD[expAsList];
+			expAsList = ToSFAD[expAsList,FCI->True];
 			FCPrint[3,"FCLoopBasisIntegralToPropagators: After ToSFAD: ", expAsList, FCDoControl->itpVerbose];
 		];
 
@@ -624,7 +624,8 @@ FCLoopBasisPropagatorsToTopology[props_List /; props =!= {} && FreeQ[props,FCTop
 		If[	OptionValue[FCE],
 			res = FCE[res]
 		];
-res
+
+		res
 ];
 
 

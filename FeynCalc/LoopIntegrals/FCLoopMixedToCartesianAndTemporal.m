@@ -51,7 +51,7 @@ FCLoopMixedToCartesianAndTemporal[sps_. fad_FeynAmpDenominator, lmoms_List/;lmom
 			prefactor=1;
 
 			If[!FreeQ[fad,PropagatorDenominator],
-				fadConverted = ToSFAD[fad],
+				fadConverted = ToSFAD[fad,FCI->True],
 				fadConverted = fad
 			];
 

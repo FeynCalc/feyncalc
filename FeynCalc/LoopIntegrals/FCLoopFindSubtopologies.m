@@ -61,7 +61,7 @@ FCLoopFindSubtopologies[topoRaw_FCTopology, OptionsPattern[]] :=
 		];
 
 		If[ OptionValue[ToSFAD] && !FreeQ[topo,PropagatorDenominator],
-			topo = ToSFAD[topo];
+			topo = ToSFAD[topo,FCI->True];
 		];
 
 		time=AbsoluteTime[];

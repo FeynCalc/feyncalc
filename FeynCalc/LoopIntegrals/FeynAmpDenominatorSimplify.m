@@ -171,7 +171,7 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 		time=AbsoluteTime[];
 		solsList = intsUnique /. {
 			(loopHead|sLoopHead|cLoopHead)[z_,{l_}] :> fdsOneLoop[z,l],
-			mLoopHead[z_,{l_}] :> (ToSFAD[z] /. FeynAmpDenominator :> feynord[{l}]),
+			mLoopHead[z_,{l_}] :> (ToSFAD[z,FCI->True] /. FeynAmpDenominator :> feynord[{l}]),
 			loopHead[z_,{l1_,l2_}] :> multiLoopHead[oldFeynAmpDenominatorSimplify[z,l1,l2,opt]],
 			loopHead[z_,{l1_,l2_, l3__}] :> multiLoopHead[fdsMultiLoop[z,l1,l2,l3]],
 			sLoopHead[z_,{_,__}] :> z,
