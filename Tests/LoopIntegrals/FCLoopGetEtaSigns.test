@@ -1,0 +1,41 @@
+(* :Title: FCLoopGetEtaSigns.test												*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2021 Rolf Mertig
+	Copyright (C) 1997-2021 Frederik Orellana
+	Copyright (C) 2014-2021 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopGetEtaSigns			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopGetEtaSigns =
+({
+{"fcstFCLoopGetEtaSigns-ID1",
+"FCLoopGetEtaSigns[FeynAmpDenominator[\
+StandardPropagatorDenominator[\[ImaginaryI] \
+Momentum[p1,D],0,0,{1,-1}]]]", "{-1}"},
+{"fcstFCLoopGetEtaSigns-ID2",
+"FCLoopGetEtaSigns[FeynAmpDenominator[\
+StandardPropagatorDenominator[ Momentum[p1,D],0,0,{1,1}]]]", "{1}"},
+{"fcstFCLoopGetEtaSigns-ID3", "FCLoopGetEtaSigns[CFAD[p,m^2]]",
+"{-1}"},
+{"fcstFCLoopGetEtaSigns-ID4", "FCLoopGetEtaSigns[SFAD[p,m^2]]",
+"{1}"},
+{"fcstFCLoopGetEtaSigns-ID5",
+"FCLoopGetEtaSigns[FeynAmpDenominator[GenericPropagatorDenominator[\
+SPD[p1]+SPD[p1,p2],{1,1}]]]", "{1}"},
+{"fcstFCLoopGetEtaSigns-ID6",
+"FCLoopGetEtaSigns[FeynAmpDenominator[\
+StandardPropagatorDenominator[\[ImaginaryI] \
+Momentum[p1,D],0,0,{1,-1}],StandardPropagatorDenominator[ \
+Momentum[p1,D],0,0,{1,1}]]]", "{-1, 1}"},
+{"fcstFCLoopGetEtaSigns-ID7","FCLoopGetEtaSigns[{FCTopology[
+asyR1prop2Ltopo13011X11011NAux1, {SFAD[{{I*p1, 0}, {0, {-1}}, 1}],
+	SFAD[{{(-I)*p3, 0}, {-mb^2, -1}, 1}],
+	SFAD[{{I*(p1 + p3), 0}, {-mb^2, -1}, 1}],
+	SFAD[{{I*(p1 - q), 0}, {-mb^2, -1}, 1}]}, {p1,
+	p3}, {q}, {SPD[q, q] -> mb^2}, {}]}]","{-1}"}
+});

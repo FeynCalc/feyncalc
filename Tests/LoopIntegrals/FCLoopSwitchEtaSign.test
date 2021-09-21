@@ -1,0 +1,196 @@
+(* :Title: FCLoopSwitchEtaSign.test												*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2021 Rolf Mertig
+	Copyright (C) 1997-2021 Frederik Orellana
+	Copyright (C) 2014-2021 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopSwitchEtaSign			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopSwitchEtaSign =
+({
+{"fcstFCLoopSwitchEtaSign-ID1",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+StandardPropagatorDenominator[\[ImaginaryI] \
+Momentum[p1,D],0,0,{1,-1}]],1]",
+"-FeynAmpDenominator[StandardPropagatorDenominator[-Momentum[p1, \
+D], 0, 0, {1, 1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID2",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+StandardPropagatorDenominator[\[ImaginaryI] \
+Momentum[p1,D],0,0,{1,-1}]],-1]",
+"FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, \
+D], 0, 0, {1, -1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID3",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+StandardPropagatorDenominator[Momentum[\[ImaginaryI] p3+\[ImaginaryI] \
+q,D],0,mb^2,{1,-1}]],1]",
+"-FeynAmpDenominator[StandardPropagatorDenominator[-Momentum[p3 + \
+q, D], 0, -mb^2, {1, 1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID4",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+StandardPropagatorDenominator[Momentum[\[ImaginaryI] p3+\[ImaginaryI] \
+q,D],0,mb^2,{1,-1}]],-1]",
+"FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + \
+q, D], 0, mb^2, {1, -1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID5",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+StandardPropagatorDenominator[Momentum[\[ImaginaryI] p3+\[ImaginaryI] \
+q,D],-Pair[Momentum[p1,D],Momentum[p3,D]],mb^2,{1,-1}]],1]",
+"-FeynAmpDenominator[StandardPropagatorDenominator[-Momentum[p3 + \
+q, D], Pair[Momentum[p1, D], Momentum[p3, D]], -mb^2, {1, 1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID6",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+StandardPropagatorDenominator[Momentum[\[ImaginaryI] p3+\[ImaginaryI] \
+q,D],-Pair[Momentum[p1,D],Momentum[p3,D]],mb^2,{1,-1}]],-1]",
+"FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + \
+q, D], -Pair[Momentum[p1, D], Momentum[p3, D]], mb^2, {1, -1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID7",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+StandardPropagatorDenominator[\[ImaginaryI] \
+Momentum[p1,D],0,0,{2,-1}]],1]",
+"FeynAmpDenominator[StandardPropagatorDenominator[-Momentum[p1, \
+D], 0, 0, {2, 1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID8",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+StandardPropagatorDenominator[\[ImaginaryI] \
+Momentum[p1,D],0,0,{2,-1}]],-1]",
+"FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, \
+D], 0, 0, {2, -1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID9",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+StandardPropagatorDenominator[Momentum[\[ImaginaryI] p3+\[ImaginaryI] \
+q,D],0,mb^2,{2,-1}]],1]",
+"FeynAmpDenominator[StandardPropagatorDenominator[-Momentum[p3 + \
+q, D], 0, -mb^2, {2, 1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID10",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+StandardPropagatorDenominator[Momentum[\[ImaginaryI] p3+\[ImaginaryI] \
+q,D],0,mb^2,{2,-1}]],-1]",
+"FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + \
+q, D], 0, mb^2, {2, -1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID11",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+StandardPropagatorDenominator[Momentum[\[ImaginaryI] p3+\[ImaginaryI] \
+q,D],-Pair[Momentum[p1,D],Momentum[p3,D]],mb^2,{2,-1}]],1]",
+"FeynAmpDenominator[StandardPropagatorDenominator[-Momentum[p3 + \
+q, D], Pair[Momentum[p1, D], Momentum[p3, D]], -mb^2, {2, 1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID12",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+StandardPropagatorDenominator[Momentum[\[ImaginaryI] p3+\[ImaginaryI] \
+q,D],-Pair[Momentum[p1,D],Momentum[p3,D]],mb^2,{2,-1}]],-1]",
+"FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + \
+q, D], -Pair[Momentum[p1, D], Momentum[p3, D]], mb^2, {2, -1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID13",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+CartesianPropagatorDenominator[\[ImaginaryI] \
+CartesianMomentum[p1,D-1],0,0,{1,-1}]],1]",
+"-FeynAmpDenominator[CartesianPropagatorDenominator[-\
+CartesianMomentum[p1, -1 + D], 0, 0, {1, 1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID14",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+CartesianPropagatorDenominator[\[ImaginaryI] \
+CartesianMomentum[p1,D-1],0,0,{1,-1}]],-1]",
+"FeynAmpDenominator[CartesianPropagatorDenominator[I*\
+CartesianMomentum[p1, -1 + D], 0, 0, {1, -1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID15",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+CartesianPropagatorDenominator[CartesianMomentum[\[ImaginaryI] p3+\
+\[ImaginaryI] q,D-1],0,mb^2,{1,-1}]],1]",
+"-FeynAmpDenominator[CartesianPropagatorDenominator[-\
+CartesianMomentum[p3 + q, -1 + D], 0, -mb^2, {1, 1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID16",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+CartesianPropagatorDenominator[CartesianMomentum[\[ImaginaryI] p3+\
+\[ImaginaryI] q,D-1],0,mb^2,{1,-1}]],-1]",
+"FeynAmpDenominator[CartesianPropagatorDenominator[I*\
+CartesianMomentum[p3 + q, -1 + D], 0, mb^2, {1, -1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID17",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+CartesianPropagatorDenominator[CartesianMomentum[\[ImaginaryI] p3+\
+\[ImaginaryI] \
+q,D-1],-Pair[CartesianMomentum[p1,D-1],CartesianMomentum[p3,D-1]],mb^\
+2,{1,-1}]],1]",
+"-FeynAmpDenominator[CartesianPropagatorDenominator[-\
+CartesianMomentum[p3 + q, -1 + D], \
+-CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p3, \
+-1 + D]], -mb^2, {1, 1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID18",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+CartesianPropagatorDenominator[CartesianMomentum[\[ImaginaryI] p3+\
+\[ImaginaryI] \
+q,D-1],-Pair[CartesianMomentum[p1,D-1],CartesianMomentum[p3,D-1]],mb^\
+2,{1,-1}]],-1]",
+"FeynAmpDenominator[CartesianPropagatorDenominator[I*\
+CartesianMomentum[p3 + q, -1 + D], \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p3, -1 \
++ D]], mb^2, {1, -1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID19",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+CartesianPropagatorDenominator[\[ImaginaryI] \
+CartesianMomentum[p1,D-1],0,0,{2,-1}]],1]",
+"FeynAmpDenominator[CartesianPropagatorDenominator[-\
+CartesianMomentum[p1, -1 + D], 0, 0, {2, 1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID20",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+CartesianPropagatorDenominator[\[ImaginaryI] \
+CartesianMomentum[p1,D-1],0,0,{2,-1}]],-1]",
+"FeynAmpDenominator[CartesianPropagatorDenominator[I*\
+CartesianMomentum[p1, -1 + D], 0, 0, {2, -1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID21",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+CartesianPropagatorDenominator[CartesianMomentum[\[ImaginaryI] p3+\
+\[ImaginaryI] q,D-1],0,mb^2,{2,-1}]],1]",
+"FeynAmpDenominator[CartesianPropagatorDenominator[-\
+CartesianMomentum[p3 + q, -1 + D], 0, -mb^2, {2, 1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID22",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+CartesianPropagatorDenominator[CartesianMomentum[\[ImaginaryI] p3+\
+\[ImaginaryI] q,D-1],0,mb^2,{2,-1}]],-1]",
+"FeynAmpDenominator[CartesianPropagatorDenominator[I*\
+CartesianMomentum[p3 + q, -1 + D], 0, mb^2, {2, -1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID23",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+CartesianPropagatorDenominator[CartesianMomentum[\[ImaginaryI] p3+\
+\[ImaginaryI] \
+q,D-1],-Pair[CartesianMomentum[p1,D-1],CartesianMomentum[p3,D-1]],mb^\
+2,{2,-1}]],1]",
+"FeynAmpDenominator[CartesianPropagatorDenominator[-\
+CartesianMomentum[p3 + q, -1 + D], \
+-CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p3, \
+-1 + D]], -mb^2, {2, 1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID24",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+CartesianPropagatorDenominator[CartesianMomentum[\[ImaginaryI] p3+\
+\[ImaginaryI] \
+q,D-1],-Pair[CartesianMomentum[p1,D-1],CartesianMomentum[p3,D-1]],mb^\
+2,{2,-1}]],-1]",
+"FeynAmpDenominator[CartesianPropagatorDenominator[I*\
+CartesianMomentum[p3 + q, -1 + D], \
+CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p3, -1 \
++ D]], mb^2, {2, -1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID25",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+GenericPropagatorDenominator[SPD[p1]+SPD[p1,p2],{1,1}]],1]",
+"FeynAmpDenominator[GenericPropagatorDenominator[Pair[Momentum[p1, \
+D], Momentum[p1 + p2, D]], {1, 1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID26",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+GenericPropagatorDenominator[SPD[p1]+SPD[p1,p2],{1,1}]],-1]",
+"-FeynAmpDenominator[GenericPropagatorDenominator[-Pair[Momentum[\
+p1, D], Momentum[p1 + p2, D]], {1, -1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID27",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+GenericPropagatorDenominator[SPD[p1]+SPD[p1,p2],{1,-1}]],1]",
+"-FeynAmpDenominator[GenericPropagatorDenominator[-Pair[Momentum[\
+p1, D], Momentum[p1 + p2, D]], {1, 1}]]"},
+{"fcstFCLoopSwitchEtaSign-ID28",
+"FCLoopSwitchEtaSign[FeynAmpDenominator[\
+GenericPropagatorDenominator[SPD[p1]+SPD[p1,p2],{1,-1}]],-1]",
+"FeynAmpDenominator[GenericPropagatorDenominator[Pair[Momentum[p1, \
+D], Momentum[p1 + p2, D]], {1, -1}]]"}
+});

@@ -290,6 +290,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
  - [FCLoopEikonalPropagatorFreeQ](../FCLoopEikonalPropagatorFreeQ.md) - checks if the integral contains eikonal propagators
  - [FCLoopExtract](../FCLoopExtract.md) - extracts loop integrals
  - [FCLoopFromGLI](../FCLoopFromGLI.md) - converts [GLI](../GLI.md)s into explicit integrals with [FeynAmpDenominator](../FeynAmpDenominator.md)s
+ - [FCLoopGetEtaSigns](../FCLoopGetEtaSigns.md) - extracts the signs of $i \eta$ from all propagators
  - [FCLoopGLIDifferentiate](../FCLoopGLIDifferentiate.md) - differentiates [GLI](../GLI.md)s with respect to a scalar variable.
  - [FCLoopGLIExpand](../FCLoopGLIExpand.md) - series expansion of expressions with [GLI](../GLI.md)s with respect to a scalar variable
  - [FCLoopIBPReducableQ](../FCLoopIBPReducableQ.md) - checks if the integral contains propagators raised to integer powers
@@ -302,6 +303,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
  - [FCLoopPropagatorPowersExpand](../FCLoopPropagatorPowersExpand.md) - rewrites propagators raised to integer powers as products of propagators
  - [FCLoopSamePropagatorHeadsQ](../FCLoopSamePropagatorHeadsQ.md) - checks if the integral contains different types of propagators
  - [FCLoopRemoveNegativePropagatorPowers](../FCLoopRemoveNegativePropagatorPowers.md) - rewrites propagators rasied to negative integer powers as numerators
+ - [FCLoopSwitchEtaSign](../FCLoopSwitchEtaSign.md) - changes the sign of $i \eta$ in all propagators to $1$ or $-1$
  - [FCLoopSingularityStructure](../FCLoopSingularityStructure.md) - useful information on possible UV and IR singularities of the integral
  - [FCLoopSolutionList](../FCLoopSolutionList.md) - auxiliary function that processes the output of [FCLoopCanonicalize](../FCLoopCanonicalize.md)
  - [FCLoopSplit](../FCLoopSplit.md) - splits the expressions into pieces that contain different types of loop integrals
