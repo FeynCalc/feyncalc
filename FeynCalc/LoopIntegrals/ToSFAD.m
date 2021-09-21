@@ -36,53 +36,61 @@ Begin["`ToSFAD`Private`"]
 optEtaSign::usage="";
 
 Options[ToSFAD] = {
-	EtaSign -> 1
+	EtaSign -> Automatic,
+	FCI		-> False,
+	FCE		-> False
 };
 
-fadArgToSfadArg[x_/;Head[x]=!=List]:=
-	{{x, 0}, {0, optEtaSign}, 1}
-
-fadArgToSfadArg[{x_, y_}]:=
-	{{x, 0}, {y^2, optEtaSign}, 1}
-
-fadArgToSfadArg[{x_, y_, n_}]:=
-	{{x, 0}, {y^2, optEtaSign}, n}
-
 ToSFAD[expr_, OptionsPattern[]] :=
-	Block[{res,fads,pds,fadsConverted,pdsConverted,rulePds,ruleFads,ruleFinal},
+	Block[{ex,res,fads,pds,pdsEval,fadsConverted,pdsConverted,rulePds,ruleFads,ruleFinal},
 
-		If[	FreeQ2[{expr}, {FAD, PropagatorDenominator}],
+
+		If[ OptionValue[FCI],
+			ex = expr,
+			ex = FCI[expr]
+		];
+
+		If[	FreeQ2[{ex}, {PropagatorDenominator}],
 			(*	Nothing to do.	*)
-			Return[expr]
+			Return[ex]
 		];
 
 		optEtaSign = OptionValue[EtaSign];
 
-		fads = Cases2[expr, FAD];
-		pds = Cases2[expr, PropagatorDenominator];
+		pds = Cases2[ex, PropagatorDenominator];
 
-		fadsConverted = fads /. {
-			FAD[a__, opt:OptionsPattern[]] :> SFAD@@(Join[fadArgToSfadArg/@{a},{opt}])
-		};
+		pdsEval = toSFAD[MomentumCombine[#,FCI->True]]&/@pds;
 
-		pdsConverted = pds /. {
-			PropagatorDenominator[a_,b_] :> StandardPropagatorDenominator[a,0,-b^2,{1, optEtaSign}]
-		};
+		If[ !FreeQ[pdsEval,toSFAD],
+			Message[ToSFAD::failmsg,"Failed to convert all PropagatorDenominators to StandardPropagatorDenominators."];
+			Abort[]
+		];
 
-		ruleFads = Thread[Rule[fads,fadsConverted]];
-		rulePds = Thread[Rule[pds,pdsConverted]];
+		ruleFinal = Thread[Rule[pds,pdsEval]];
 
-		ruleFinal = Dispatch[Join[ruleFads,rulePds]];
-
-		res = expr /.ruleFinal;
+		res = ex /. ruleFinal;
 
 		If[	!FreeQ2[{res}, {FAD, PropagatorDenominator}],
 			Message[ToSFAD::failmsg,"Failed to eliminate all the occurences of FADs or PDs."]
 		];
 
+		If[	OptionValue[FCE],
+			res = FCE[res]
+		];
+
 		res
 
 	];
+
+toSFAD[PropagatorDenominator[c_. Momentum[q_,dim___],b_]]:=
+	StandardPropagatorDenominator[c Momentum[q,dim],0,-b^2,{1, 1}]/; FreeQ[{c,q},Complex] && optEtaSign===Automatic;
+
+toSFAD[PropagatorDenominator[Complex[0,1] c_. Momentum[q_,dim___],b_]]:=
+	StandardPropagatorDenominator[Complex[0,1] c Momentum[q,dim],0,-b^2,{1, -1}]/; FreeQ[{c,q},Complex] && optEtaSign===Automatic;
+
+toSFAD[PropagatorDenominator[a_,b_]]:=
+	StandardPropagatorDenominator[a, 0, -b^2,{1, optEtaSign}]/; optEtaSign=!=Automatic;
+
 
 
 FCPrint[1,"ToSFAD.m loaded."];

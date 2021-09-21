@@ -17,65 +17,38 @@ Tests`LoopIntegrals`ToSFAD =
 ({
 {"fcstToSFAD-ID1", "ToSFAD[0]", "0"},
 {"fcstToSFAD-ID2", "ToSFAD[a]", "a"},
-{"fcstToSFAD-ID3", "ToSFAD[FAD[p]]", "SFAD[{{p, 0}, {0, 1}, 1}]"},
-{"fcstToSFAD-ID4", "ToSFAD[FAD[{p,m}]]",
+{"fcstToSFAD-ID3", "ToSFAD[FAD[p],FCE->True]",
+"SFAD[{{p, 0}, {0, 1}, 1}]"},
+{"fcstToSFAD-ID4", "ToSFAD[FAD[{p,m}],FCE->True]",
 "SFAD[{{p, 0}, {m^2, 1}, 1}]"},
-{"fcstToSFAD-ID5", "ToSFAD[FAD[{p,m,2}]]",
+{"fcstToSFAD-ID5", "ToSFAD[FAD[{p,m,2}],FCE->True]",
 "SFAD[{{p, 0}, {m^2, 1}, 1}, {{p, 0}, {m^2, 1}, 1}]"},
-{"fcstToSFAD-ID6", "ToSFAD[FAD[{p,m},q]]",
+{"fcstToSFAD-ID6", "ToSFAD[FAD[{p,m},q],FCE->True]",
 "SFAD[{{p, 0}, {m^2, 1}, 1}, {{q, 0}, {0, 1}, 1}]"},
-{"fcstToSFAD-ID7", "ToSFAD[FAD[{p,m1},q,{r-q,m2,2}]]",
+{"fcstToSFAD-ID7", "ToSFAD[FAD[{p,m1},q,{r-q,m2,2}],FCE->True]",
 "SFAD[{{p, 0}, {m1^2, 1}, 1}, {{q, 0}, {0, 1}, 1}, {{-q + r, 0}, \
 {m2^2, 1}, 1}, {{-q + r, 0}, {m2^2, 1}, 1}]"},
-{"fcstToSFAD-ID8", "ToSFAD[FAD[{p,m},q]FAD[{p,m1},q,{r-q,m2,2}]]",
+{"fcstToSFAD-ID8",
+"ToSFAD[FAD[{p,m},q]FAD[{p,m1},q,{r-q,m2,2}],FCE->True]",
 "SFAD[{{p, 0}, {m^2, 1}, 1}, {{q, 0}, {0, 1}, 1}]*SFAD[{{p, 0}, \
 {m1^2, 1}, 1}, {{q, 0}, {0, 1}, 1}, {{-q + r, 0}, {m2^2, 1}, 1}, {{-q \
 + r, 0}, {m2^2, 1}, 1}]"},
-{"fcstToSFAD-ID9", "ToSFAD[x+FAD[{p,m},q]FAD[{p,m1},q,{r-q,m2,2}]]",
-	"x + SFAD[{{p, 0}, {m^2, 1}, 1}, {{q, 0}, {0, 1}, 1}]*SFAD[{{p, \
+{"fcstToSFAD-ID9",
+"ToSFAD[x+FAD[{p,m},q]FAD[{p,m1},q,{r-q,m2,2}],FCE->True]",
+"x + SFAD[{{p, 0}, {m^2, 1}, 1}, {{q, 0}, {0, 1}, 1}]*SFAD[{{p, \
 0}, {m1^2, 1}, 1}, {{q, 0}, {0, 1}, 1}, {{-q + r, 0}, {m2^2, 1}, 1}, \
 {{-q + r, 0}, {m2^2, 1}, 1}]"},
-{"fcstToSFAD-ID10", "ToSFAD[FCI[FAD[p]]]",
-"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], \
-0, 0, {1, 1}]]"},
-{"fcstToSFAD-ID11", "ToSFAD[FCI[FAD[{p,m}]]]",
-"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], \
-0, -m^2, {1, 1}]]"},
-{"fcstToSFAD-ID12", "ToSFAD[FCI[FAD[{p,m,2}]]]",
-"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], \
-0, -m^2, {1, 1}], StandardPropagatorDenominator[Momentum[p, D], 0, \
--m^2, {1, 1}]]"},
-{"fcstToSFAD-ID13", "ToSFAD[FCI[FAD[{p,m},q]]]",
-"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], \
-0, -m^2, {1, 1}], StandardPropagatorDenominator[Momentum[q, D], 0, 0, \
-{1, 1}]]"},
-{"fcstToSFAD-ID14", "ToSFAD[FCI[FAD[{p,m1},q,{r-q,m2,2}]]]",
-"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], \
-0, -m1^2, {1, 1}], StandardPropagatorDenominator[Momentum[q, D], 0, 0, \
-{1, 1}], StandardPropagatorDenominator[-Momentum[q, D] + Momentum[r, \
-D], 0, -m2^2, {1, 1}], StandardPropagatorDenominator[-Momentum[q, D] + \
-Momentum[r, D], 0, -m2^2, {1, 1}]]"},
-{"fcstToSFAD-ID15",
-"ToSFAD[FCI[FAD[{p,m},q]FAD[{p,m1},q,{r-q,m2,2}]]]",
-"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], \
-0, -m^2, {1, 1}], StandardPropagatorDenominator[Momentum[q, D], 0, 0, \
-{1, 1}]]*FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, \
-D], 0, -m1^2, {1, 1}], StandardPropagatorDenominator[Momentum[q, D], \
-0, 0, {1, 1}], StandardPropagatorDenominator[-Momentum[q, D] + \
-Momentum[r, D], 0, -m2^2, {1, 1}], \
-StandardPropagatorDenominator[-Momentum[q, D] + Momentum[r, D], 0, \
--m2^2, {1, 1}]]"},
-{"fcstToSFAD-ID16",
-"ToSFAD[FCI[x+FAD[{p,m},q]FAD[{p,m1},q,{r-q,m2,2}]]]",
-"x + FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, \
-D], 0, -m^2, {1, 1}], StandardPropagatorDenominator[Momentum[q, D], 0, \
-0, {1, 1}]]*FeynAmpDenominator[StandardPropagatorDenominator[Momentum[\
-p, D], 0, -m1^2, {1, 1}], StandardPropagatorDenominator[Momentum[q, \
-D], 0, 0, {1, 1}], StandardPropagatorDenominator[-Momentum[q, D] + \
-Momentum[r, D], 0, -m2^2, {1, 1}], \
-StandardPropagatorDenominator[-Momentum[q, D] + Momentum[r, D], 0, \
--m2^2, {1, 1}]]"},
-{"fcstToSFAD-ID17",
-"ToSFAD[FAD[p, Dimension -> X]]",
-"SFAD[{{p, 0}, {0, 1}, 1}, Dimension -> X]"}
+{"fcstToSFAD-ID10", "ToSFAD[FAD[p,Dimension->X],FCE->True]",
+"SFAD[{{p, 0}, {0, 1}, 1}, Dimension -> X]"},
+{"fcstToSFAD-ID11", "ToSFAD[FAD[{I p,m}],FCE->True]",
+"SFAD[{{I*p, 0}, {m^2, -1}, 1}]"},
+{"fcstToSFAD-ID12", "ToSFAD[FAD[{I p1+ I p2,m}],FCE->True]",
+"SFAD[{{I*(p1 + p2), 0}, {m^2, -1}, 1}]"},
+{"fcstToSFAD-ID13", "ToSFAD[FAD[{I p1+ I p2,I m}],FCE->True]",
+"SFAD[{{I*(p1 + p2), 0}, {-m^2, -1}, 1}]"},
+{"fcstToSFAD-ID14",
+"ToSFAD[FAD[{I p1+ I p2,I m}],FCE->True,EtaSign->1]",
+"SFAD[{{I*(p1 + p2), 0}, {-m^2, 1}, 1}]"},
+{"fcstToSFAD-ID15", "ToSFAD[FAD[p],FCE->True,EtaSign->-1]",
+"SFAD[{{p, 0}, {0, -1}, 1}]"}
 });
