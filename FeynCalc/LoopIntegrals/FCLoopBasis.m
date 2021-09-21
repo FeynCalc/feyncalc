@@ -990,7 +990,7 @@ FCLoopBasisFindCompletion[topos:{__FCTopology}, opts:OptionsPattern[]] :=
 
 FCLoopBasisFindCompletion[topoRaw_FCTopology, opts:OptionsPattern[]] :=
 	Block[{	topo, fclbfcVerbose, optFinalSubstitutions, tmp, tmp2,
-			aux, auxEval, head, res},
+			aux, auxEval, head, res, etaSign},
 
 
 		If [OptionValue[FCVerbose]===False,
@@ -1019,9 +1019,17 @@ FCLoopBasisFindCompletion[topoRaw_FCTopology, opts:OptionsPattern[]] :=
 
 		If[	tmp[[2]]=!={} && tmp[[2]]=!={1},
 
+			etaSign=FCLoopGetEtaSigns[topo,FCI->True];
+			If[	Length[etaSign]=!=1,
+				Message[FCLoopBasisFindCompletion::failmsg, "The topology contains propagators with differents I*eta signs."];
+				Abort[]
+			];
+			etaSign=First[etaSign];
+			FCPrint[3,"FCLoopBasisFindCompletion: etaSign: ", etaSign, FCDoControl->fclbfcVerbose];
+
 			aux = head/@tmp[[2]];
 			auxEval = aux/.{
-				head[pref_. Pair[Momentum[a_,dim___],Momentum[b_,dim___]]] :> FeynAmpDenominator[StandardPropagatorDenominator[0,pref Pair[Momentum[a,dim],Momentum[b,dim]],0,{1,1}]]
+				head[pref_. Pair[Momentum[a_,dim___],Momentum[b_,dim___]]] :> FeynAmpDenominator[StandardPropagatorDenominator[0,pref Pair[Momentum[a,dim],Momentum[b,dim]],0,{1,etaSign}]]
 			};
 
 			FCPrint[3,"FCLoopBasisFindCompletion: Intermediate result: ", auxEval, FCDoControl->fclbfcVerbose];
