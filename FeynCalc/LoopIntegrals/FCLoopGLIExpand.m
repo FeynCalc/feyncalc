@@ -38,6 +38,7 @@ lgeVerbose::usage="";
 holdDerivative::usage="";
 
 Options[FCLoopGLIExpand] = {
+	Collecting		-> 	True,
 	FCE				-> 	False,
 	FCI				-> 	False,
 	FCVerbose		->	False,
@@ -53,7 +54,7 @@ FCLoopGLIExpand[expr_/;Head[expr]=!=List, toposRaw_List, {invRaw_, val_, order_I
 	Block[{	res, ex, topos,  listGLI, inv, topoNamesSupplied, topoNamesGLI, rule,
 			pattern, GLIFourDivergenceRule, listGLIEval, ruleFinal, null1, null2, listFADs,
 			listSelect, diff, tmp, relevantGLIs, listDiff, listDiffEval, listTopos,
-			check1, check2},
+			check1, check2, optCollecting, optFactoring, optTimeConstrained},
 
 		If [OptionValue[FCVerbose]===False,
 				lgeVerbose=$VeryVerbose,
@@ -61,6 +62,10 @@ FCLoopGLIExpand[expr_/;Head[expr]=!=List, toposRaw_List, {invRaw_, val_, order_I
 					lgeVerbose=OptionValue[FCVerbose]
 				];
 		];
+
+		optCollecting		= OptionValue[Collecting];
+		optFactoring		= OptionValue[Factoring];
+		optTimeConstrained	= OptionValue[TimeConstrained];
 
 		If[ !OptionValue[FCI],
 			{topos, inv, ex} = FCI[{toposRaw,invRaw, expr}],
@@ -98,7 +103,7 @@ FCLoopGLIExpand[expr_/;Head[expr]=!=List, toposRaw_List, {invRaw_, val_, order_I
 		];
 		FCPrint[3,"FCLoopGLIExpand: relevantGLIs: ", relevantGLIs, FCDoControl->lgeVerbose];
 
-		tmp = Collect2[ex,Join[relevantGLIs,{inv}],Factoring->OptionValue[Factoring], Head->diff];
+		tmp = Collect2[ex,Join[relevantGLIs,{inv}], Factoring->optFactoring, TimeConstrained-> optTimeConstrained, Head->diff];
 
 		(*Every term that does not depend on inv is zero!*)
 		tmp = FCSplit[tmp, {diff}][[2]];
@@ -163,8 +168,11 @@ FCLoopGLIExpand[expr_/;Head[expr]=!=List, toposRaw_List, {invRaw_, val_, order_I
 			Abort[]
 		];
 
-		check1 = ToGFAD[topos,FCI->True,FinalSubstitutions->{inv-> val}];
+		check1 = ToGFAD[topos,FCI->True] /. inv-> val;
 		check2 = ToGFAD[topos/. inv-> val,FCI->True];
+
+		FCPrint[4,"FCLoopGLIExpand: check1: ", check1, FCDoControl->lgeVerbose];
+		FCPrint[4,"FCLoopGLIExpand: check2: ", check2, FCDoControl->lgeVerbose];
 
 		topos = MapThread[If[TrueQ[#1===#2],
 				#3,
@@ -172,6 +180,19 @@ FCLoopGLIExpand[expr_/;Head[expr]=!=List, toposRaw_List, {invRaw_, val_, order_I
 			]&, {check1, check2, topos /. inv-> val}];
 
 		FCPrint[3,"FCLoopGLIExpand: Final set of the expanded topologies: ", topos, FCDoControl->lgeVerbose];
+
+
+		If[	optCollecting=!=False,
+			Which[
+				optCollecting===True,
+					res = Collect2[res,{GLI,inv},Factoring->optFactoring, TimeConstrained->optTimeConstrained],
+				Head[optCollecting]===List,
+					res = Collect2[res,optCollecting,Factoring->optFactoring, TimeConstrained->optTimeConstrained],
+				True,
+					Message[FCLoopGLIDifferentiate::failmsg, "Unsupported value of the Collecting option."];
+					Abort[]
+			]
+		];
 
 		If[	OptionValue[FCE],
 			{res,topos} = FCE[{res,topos}]
@@ -189,7 +210,7 @@ gliExpand[holdDerivative[n_][ex_GLI][val_], topo_FCTopology, inv_] :=
 
 		FCPrint[4,"FCLoopGLIExpand: gliExpand: Entering with: ", holdDerivative[n][ex][val], FCDoControl->lgeVerbose];
 
-		tmp = FCLoopGLIDifferentiate[ex,{topo},{inv,n},FCI->True];
+		tmp = FCLoopGLIDifferentiate[ex,{topo},{inv,n},FCI->True, Collecting->False];
 
 		FCPrint[4,"FCLoopGLIExpand: gliExpand: After FCLoopGLIDifferentiate: ", tmp, FCDoControl->lgeVerbose];
 

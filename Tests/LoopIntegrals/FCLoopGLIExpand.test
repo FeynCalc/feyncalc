@@ -15,13 +15,13 @@ Tests`LoopIntegrals`fcstFCLoopGLIExpand =
 ({
 {"fcstFCLoopGLIExpand-ID1", "FCLoopGLIExpand[x GLI[tad2l,{1,1,1}],
 {FCTopology[tad2l, {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - p2, \
-m3}]}, {p1, p2}, {}, {}, {}]},{m1,0,2},FCE->True]",
+m3}]}, {p1, p2}, {}, {}, {}]},{m1,0,2},FCE->True,Collecting->False]",
 "{x*(GLI[tad2l, {1, 1, 1}] + m1^2*GLI[tad2l, {2, 1, 1}]), \
 {FCTopology[tad2l, {FAD[p1], FAD[{p2, m2}], FAD[{p1 - p2, m3}]}, {p1, \
 p2}, {}, {}, {}]}}"},
 {"fcstFCLoopGLIExpand-ID2", "FCLoopGLIExpand[x GLI[tad2l,{1,1,1}],
 {FCTopology[tad2l, {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - p2, \
-m3}]}, {p1, p2}, {}, {}, {}]},{m1,M,4},FCE->True]",
+m3}]}, {p1, p2}, {}, {}, {}]},{m1,M,4},FCE->True,Collecting->False]",
 "{x*(GLI[tad2l, {1, 1, 1}] + 2*M*(-M + m1)*GLI[tad2l, {2, 1, 1}] + \
 (-M + m1)^2*(GLI[tad2l, {2, 1, 1}] + 4*M^2*GLI[tad2l, {3, 1, 1}]) + \
 ((-M + m1)^3*(8*M*GLI[tad2l, {3, 1, 1}] + 8*(2*M*GLI[tad2l, {3, 1, \
@@ -32,7 +32,7 @@ m3}]}, {p1, p2}, {}, {}, {}]},{m1,M,4},FCE->True]",
 {}]}}"},
 {"fcstFCLoopGLIExpand-ID3", "FCLoopGLIExpand[m2^2 GLI[tad2l,{1,1,1}],
 {FCTopology[tad2l, {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - p2, \
-m3}]}, {p1, p2}, {}, {}, {}]},{m2,0,6},FCE->True]",
+m3}]}, {p1, p2}, {}, {}, {}]},{m2,0,6},FCE->True,Collecting->False]",
 "{m2^2*GLI[tad2l, {1, 1, 1}] + m2^4*GLI[tad2l, {1, 2, 1}] + \
 m2^6*GLI[tad2l, {1, 3, 1}], {FCTopology[tad2l, {FAD[{p1, m1}], \
 FAD[p2], FAD[{p1 - p2, m3}]}, {p1, p2}, {}, {}, {}]}}"},
@@ -45,9 +45,27 @@ GFAD[{{-m2^2 + SPD[p1, p1 + 2*q], 1}, 1}]}, {p1}, {q}, {}, {}]}}"},
 {"fcstFCLoopGLIExpand-ID5",
 "FCLoopGLIExpand[ GLI[prop1l,{1,1}]+SPD[q] GLI[prop1l,{1,0}],
 {FCTopology[prop1l, {FAD[{p1, m1}], FAD[{p1+q, m2}]}, {p1}, {q}, {}, \
-{}]},{SPD[q],0,2},FCE->True]",
+{}]},{SPD[q],0,2},FCE->True,Collecting->False]",
 "{GLI[prop1l, {1, 1}] + GLI[prop1l, {1, 0}]*SPD[q, q] - \
 GLI[prop1l, {1, 2}]*SPD[q, q] + GLI[prop1l, {1, 3}]*SPD[q, q]^2, \
 {FCTopology[prop1l, {GFAD[{{-m1^2 + SPD[p1, p1], 1}, 1}], \
-GFAD[{{-m2^2 + SPD[p1, p1 + 2*q], 1}, 1}]}, {p1}, {q}, {}, {}]}}"}
+GFAD[{{-m2^2 + SPD[p1, p1 + 2*q], 1}, 1}]}, {p1}, {q}, {}, {}]}}"},
+{"fcstFCLoopGLIExpand-ID6","FCLoopGLIExpand[
+GLI[prop2Ltopo13011, {1, 1, 0, 1, 1}], {FCTopology[
+prop2Ltopo13011, {SFAD[{{I*(p1 - q), 0}, {-mb^2, -1}, 1}],
+	GFAD[{{la^2*mg^2 - SPD[p1, p1], {-1}}, 1}],
+	SFAD[{{I*(p1 + p3 - q), 0}, {0, -1}, 1}],
+	SFAD[{{I*(p1 + p3), 0}, {-mb^2, -1}, 1}],
+	SFAD[{{(-I)*p3, 0}, {-mb^2, -1}, 1}]}, {p1,
+	p3}, {q}, {SPD[q, q] -> mb^2}, {}]}, {la, 0, 0}]",
+"{GLI[prop2Ltopo13011, {1, 1, 0, 1, 1}], {FCTopology[prop2Ltopo13011,
+{FeynAmpDenominator[StandardPropagatorDenominator[I*(Momentum[p1, D] -
+Momentum[q, D]), 0, mb^2, {1, -1}]],
+FeynAmpDenominator[GenericPropagatorDenominator[-Pair[Momentum[p1, D],
+Momentum[p1, D]], {1, {-1}}]], FeynAmpDenominator[StandardPropagatorDenominator[I*(Momentum[p1, D] +
+Momentum[p3, D] - Momentum[q, D]), 0, 0, {1, -1}]],
+FeynAmpDenominator[StandardPropagatorDenominator[I*(Momentum[p1, D] +
+Momentum[p3, D]), 0, mb^2, {1, -1}]], FeynAmpDenominator[StandardPropagatorDenominator[(-I)*Momentum[p3, D],
+0, mb^2, {1, -1}]]}, {p1, p3}, {q},
+{Pair[Momentum[q, D], Momentum[q, D]] -> mb^2}, {}]}}"}
 });
