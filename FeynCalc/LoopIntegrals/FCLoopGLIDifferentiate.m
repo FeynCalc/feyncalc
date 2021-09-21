@@ -16,7 +16,7 @@
 FCLoopGLIDifferentiate::usage =
 "FCLoopGLIDifferentiate[exp , topos, inv] calculates the partial derivative of
 GLIs present in exp with respect to the scalar quantity inv.
-Here inv can be a constant (e.g. mass) or a scalar product of some momenta. 
+Here inv can be a constant (e.g. mass) or a scalar product of some momenta.
 The list topos must contain the topologies describing all of the occurring
 GLIs.
 
@@ -36,6 +36,7 @@ crtgVerbose::usage="";
 holdDerivative::usage="";
 
 Options[FCLoopGLIDifferentiate] = {
+	Collecting		-> 	True,
 	FCE				-> 	False,
 	FCI				-> 	False,
 	FCVerbose		->	False,
@@ -43,17 +44,32 @@ Options[FCLoopGLIDifferentiate] = {
 	TimeConstrained	->	3
 };
 
+(*TODO Cartesian integrals*)
 
 FCLoopGLIDifferentiate[expr_List, toposRaw_List, rest___]:=
 	FCLoopGLIDifferentiate[#, toposRaw, rest]&/@expr;
 
 FCLoopGLIDifferentiate[expr_/;Head[expr]=!=List, toposRaw_List, {invRaw_,i_Integer?Positive}, opts:OptionsPattern[]] :=
-	FixedPoint[FCLoopGLIDifferentiate[#,toposRaw, invRaw, opts]&, expr, i];
+	FixedPoint[FCLoopGLIDifferentiate[#,toposRaw, invRaw, opts]&, expr, i]
+
+FCLoopGLIDifferentiate[expr_/;Head[expr]=!=List, toposRaw_List, {invRaw1_,invRaw2___}, opts:OptionsPattern[]] :=
+	Fold[FCLoopGLIDifferentiate[#1,toposRaw, #2, opts]&, expr, {invRaw1, invRaw2}]/; FreeQ[Head/@{invRaw1,invRaw2},Integer];
 
 FCLoopGLIDifferentiate[expr_/;Head[expr]=!=List, toposRaw_List, invRaw_/;Head[invRaw]=!=List, OptionsPattern[]] :=
 	Block[{	res, ex, topos,  listGLI, inv, topoNamesSupplied, topoNamesGLI, rule,
-			pattern, GLIFourDivergenceRule, listGLIEval, ruleFinal, null1, null2, listFADs,
-			listSelect, diff, tmp, relevantGLIs, listDiff, listDiffEval, listTopos},
+			pattern, GLIFourDivergenceRule, listGLIEval, ruleFinal, null1, null2,
+			listFADs, listSelect, diff, tmp, relevantGLIs, listDiff, listDiffEval,
+			listTopos, vectorDiff, mu, vecHead,	optCollecting, optFactoring,
+			optTimeConstrained},
+
+
+		vectorDiff	= False;
+		vecHead	= False;
+		mu	= False;
+
+		optCollecting		= OptionValue[Collecting];
+		optFactoring		= OptionValue[Factoring];
+		optTimeConstrained	= OptionValue[TimeConstrained];
 
 		If [OptionValue[FCVerbose]===False,
 				crtgVerbose=$VeryVerbose,
@@ -81,6 +97,22 @@ FCLoopGLIDifferentiate[expr_/;Head[expr]=!=List, toposRaw_List, invRaw_/;Head[in
 			Return[0]
 		];
 
+		If[	TrueQ[!FreeQ2[inv,{LorentzIndex,CartesianIndex,ExplicitLorentzIndex}]],
+			vectorDiff = True;
+			FCPrint[1,"FCLoopGLIDifferentiate: Differentiating w.r.t a 4-vector.", FCDoControl->crtgVerbose];
+			If[	!MatchQ[inv,Pair[Momentum[__],LorentzIndex[__]]],
+				Message[FCLoopGLIFourDivergence::failmsg, "Currently only differentiation w.r.t to four vectors is supported."];
+				Abort[]
+			];
+			vecHead = Pair;
+			mu 	= inv /. Pair[_Momentum, z_LorentzIndex] -> z;
+			inv = inv /. Pair[z_Momentum, _LorentzIndex] -> z;
+			FCPrint[1,"FCLoopGLIDifferentiate: {p,mu}: ", {inv,mu} , FCDoControl->crtgVerbose]
+		];
+
+
+
+
 		listGLI = Cases2[ex+null1+null2, GLI];
 		listFADs = FCLoopFromGLI[listGLI,topos,FCI->True];
 
@@ -95,57 +127,85 @@ FCLoopGLIDifferentiate[expr_/;Head[expr]=!=List, toposRaw_List, invRaw_/;Head[in
 		];
 		FCPrint[3,"FCLoopGLIDifferentiate: relevantGLIs: ", relevantGLIs, FCDoControl->crtgVerbose];
 
-		tmp = Collect2[ex,Join[relevantGLIs,{inv}],Factoring->OptionValue[Factoring], Head->diff];
+		tmp = Collect2[ex,Join[relevantGLIs,{inv}],Factoring->optFactoring, TimeConstrained->optTimeConstrained, Head->diff];
 
 		(*Every term that does not depend on inv is zero!*)
 		tmp = FCSplit[tmp, {diff}][[2]];
 
 		listDiff = Cases2[tmp+null1+null2,diff];
 
-		listDiffEval = listDiff /. diff->Identity /. GLI[x__] :> GLI[x][inv];
+		FCPrint[4,"FCLoopGLIDifferentiate: listDiff: ", listDiff, FCDoControl->crtgVerbose];
 
-		listDiffEval = (D[#,inv]&/@ listDiffEval) /. Derivative->holdDerivative;
+		If[	listDiff=!={},
 
-		FCPrint[3,"FCLoopGLIDifferentiate: Intermediate listDiffEval: ", listDiffEval, FCDoControl->crtgVerbose];
+			(*There is something to differentiate*)
+			listDiffEval = listDiff /. diff->Identity /. GLI[x__] :> GLI[x][inv];
+
+			listDiffEval = (D[#,inv]&/@ listDiffEval) /. Derivative->holdDerivative;
+
+			FCPrint[3,"FCLoopGLIDifferentiate: Intermediate listDiffEval: ", listDiffEval, FCDoControl->crtgVerbose];
+
+			If[	vectorDiff,
+				listDiffEval = FeynCalc`Package`fourVectorDiffEval[listDiffEval,holdDerivative,inv,mu];
+				FCPrint[3,"FCLoopGLIDifferentiate: listDiffEval after fourVectorDiffEval", listDiffEval, FCDoControl->crtgVerbose];
+			];
 
 
-		FCPrint[3,"FCLoopGLIDifferentiate: List of initial differentiated GLIs: ", listGLI, FCDoControl->crtgVerbose];
+			FCPrint[3,"FCLoopGLIDifferentiate: List of initial differentiated GLIs: ", listDiffEval, FCDoControl->crtgVerbose];
 
-		listGLI = Cases[listDiffEval+null1+null2, z : holdDerivative[1][GLI[__]][inv] :> z, Infinity]//Union;
 
-		If[	!MatchQ[listGLI,{holdDerivative[1][GLI[__]][inv]..}],
-			Message[FCLoopGLIDifferentiate::failmsg, "The final list of GLIs that must be differentiated is incorrect."];
-			Abort[]
+
+			listGLI = Cases[listDiffEval+null1+null2, z : holdDerivative[1][GLI[__]][inv] :> z, Infinity]//Union;
+
+			If[	!MatchQ[listGLI,{holdDerivative[1][GLI[__]][inv]..}],
+				Message[FCLoopGLIDifferentiate::failmsg, "The final list of GLIs that must be differentiated is incorrect."];
+				Abort[]
+			];
+
+			listTopos = Map[SelectNotFree[topos,#]&, listGLI /. (holdDerivative[1][GLI[id_,_List]][inv] -> id)];
+
+			If[	!MatchQ[listTopos,{{_FCTopology}..}],
+				Message[FCLoopGLIDifferentiate::failmsg, "Failed to create a list of relevant topologies."];
+				Abort[]
+			];
+
+			listTopos = First/@listTopos;
+
+			listGLIEval = MapThread[diffSingleGLI[#1,#2, vectorDiff, mu, vecHead]&, {listGLI,listTopos}];
+
+			FCPrint[3,"FCLoopGLIDifferentiate: List of final differentiated GLIs: ", listGLIEval, FCDoControl->crtgVerbose];
+
+			ruleFinal = Thread[Rule[listGLI,listGLIEval]];
+
+			listDiffEval = listDiffEval /. Dispatch[ruleFinal];
+
+			FCPrint[3,"FCLoopGLIDifferentiate: Final listDiffEval: ", listDiffEval, FCDoControl->crtgVerbose];
+
+			ruleFinal = Thread[Rule[listDiff,listDiffEval]];
+
+			FCPrint[3,"FCLoopGLIDifferentiate: Final set of the replacement rules: ", ruleFinal, FCDoControl->crtgVerbose],
+
+			(*There is nothing to differentiate*)
+			ruleFinal = {}
 		];
-
-		listTopos = Map[SelectNotFree[topos,#]&, listGLI /. (holdDerivative[1][GLI[id_,_List]][inv] -> id)];
-
-		If[	!MatchQ[listTopos,{{_FCTopology}..}],
-			Message[FCLoopGLIDifferentiate::failmsg, "Failed to create a list of relevant topologies."];
-			Abort[]
-		];
-
-		listTopos = First/@listTopos;
-
-		listGLIEval = MapThread[diffSingleGLI[#1,#2]&, {listGLI,listTopos}];
-
-		FCPrint[3,"FCLoopGLIDifferentiate: List of final differentiated GLIs: ", listGLIEval, FCDoControl->crtgVerbose];
-
-		ruleFinal = Thread[Rule[listGLI,listGLIEval]];
-
-		listDiffEval = listDiffEval /. Dispatch[ruleFinal];
-
-		FCPrint[3,"FCLoopGLIDifferentiate: Final listDiffEval: ", listDiffEval, FCDoControl->crtgVerbose];
-
-		ruleFinal = Thread[Rule[listDiff,listDiffEval]];
-
-		FCPrint[3,"FCLoopGLIDifferentiate: Final set of the replacement rules: ", ruleFinal, FCDoControl->crtgVerbose];
 
 		res = tmp /. Dispatch[ruleFinal] /. GLI[x__][inv] :> GLI[x];
 
 		If[	!FreeQ[res,holdDerivative],
 			Message[FCLoopGLIDifferentiate::failmsg, "Failed to evaluate all derivatives."];
 			Abort[]
+		];
+
+		If[	optCollecting=!=False,
+			Which[
+				optCollecting===True,
+					res = Collect2[res,GLI,Factoring->optFactoring, TimeConstrained->optTimeConstrained],
+				Head[optCollecting]===List,
+					res = Collect2[res,optCollecting,Factoring->optFactoring, TimeConstrained->optTimeConstrained],
+				True,
+					Message[FCLoopGLIDifferentiate::failmsg, "Unsupported value of the Collecting option."];
+					Abort[]
+			]
 		];
 
 		If[	OptionValue[FCE],
@@ -158,7 +218,7 @@ FCLoopGLIDifferentiate[expr_/;Head[expr]=!=List, toposRaw_List, invRaw_/;Head[in
 	];
 
 (*TODO Memoization*)
-diffSingleGLI[holdDerivative[1][ex_GLI][var_], topo_FCTopology] :=
+diffSingleGLI[holdDerivative[1][ex_GLI][var_], topo_FCTopology, vectorDiff_, mu_, vecHead_] :=
 	Block[{	id, inds, props, pos, tmp, pow, deriv, res},
 
 		{id, inds} = {ex[[1]], ex[[2]]};
@@ -176,15 +236,29 @@ diffSingleGLI[holdDerivative[1][ex_GLI][var_], topo_FCTopology] :=
 
 		pos = Flatten[pos];
 
-		(*Product rule: d/dx 1/(D0*D1*...) = D0'/(D0^2*D1*...) + D1'/(D0*D1^2*...) + ... *)
-		tmp = Map[
-				(
-				pow = inds[[#]];
-				If[	TrueQ[pow===0],
-					0,
-					-pow*deriv[D[(1/Extract[props, {#}]), var]]*GLI[id, Join[inds[[1 ;; # - 1]] , {inds[[#]] + 1}, inds[[# + 1 ;;]] ]]
-				]) &, pos
-			];
+
+		If[	!vectorDiff,
+			(*Product rule: d/dx 1/(D0*D1*...) = D0'/(D0^2*D1*...) + D1'/(D0*D1^2*...) + ... *)
+			tmp = Map[
+					(
+					pow = inds[[#]];
+					If[	TrueQ[pow===0],
+						0,
+						-pow*deriv[D[(1/Extract[props, {#}]), var]]*GLI[id, Join[inds[[1 ;; # - 1]] , {inds[[#]] + 1}, inds[[# + 1 ;;]] ]]
+					]) &, pos
+				],
+
+			tmp = Map[
+					(
+					pow = inds[[#]];
+					If[	TrueQ[pow===0],
+						0,
+						-pow*deriv[FourDivergence[(1/Extract[props, {#}]), vecHead[var,mu],FCI->True,
+							Contract -> False, Collecting -> False, ExpandScalarProduct -> False, ApartFF -> False]]*
+							GLI[id, Join[inds[[1 ;; # - 1]] , {inds[[#]] + 1}, inds[[# + 1 ;;]] ]]
+					]) &, pos
+				]
+		];
 
 		FCPrint[4,"FCLoopGLIDifferentiate: diffSingleGLI: Intermediate result: ", tmp, FCDoControl->crtgVerbose];
 

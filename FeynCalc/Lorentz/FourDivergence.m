@@ -50,6 +50,7 @@ evaluating  Off[ThreeDivergence::warnCartesian].";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
+fourVectorDiffEval;
 End[]
 
 Begin["`FourDivergence`Private`"]
@@ -246,16 +247,8 @@ fourDerivative[x_, ve_]:=
 
 		dList = Cases[nx+null1+null2,deriv[___][___][___],Infinity]//Sort//DeleteDuplicates;
 
-		dListEval = dList /. (deriv[__][fadHead][__]) :> 1 /. {
-			deriv[1, 0][Pair][p,  a_] :> Pair[a, mu] ,
-			deriv[0, 1][Pair][a_, p] :> Pair[a, mu] ,
-			deriv[1,0][DiracGamma][p,dim_] :> DiracGamma[mu,dim] ,
-			deriv[1][DiracGamma][p] :> DiracGamma[mu] ,
-			deriv[1,0,0,0][Eps][p,c__] :> Eps[mu,c] ,
-			deriv[0,1,0,0][Eps][a_,p,c__] :> Eps[a,mu,c] ,
-			deriv[0,0,1,0][Eps][a__,p,c_] :> Eps[a,mu,c] ,
-			deriv[0,0,0,1][Eps][c__,p] :> Eps[c,mu]
-		} /. deriv -> Derivative;
+
+		dListEval = fourVectorDiffEval[dList /. (deriv[__][fadHead][__]) -> 1,deriv,p,mu] /. deriv -> Derivative;
 
 		repRuleFinal = Thread[Rule[dList,dListEval]];
 		FCPrint[3, "FourDivergence: fourDerivative: Final replacement list: ", repRuleFinal, FCDoControl->fdVerbose];
@@ -271,6 +264,19 @@ fourDerivative[x_, ve_]:=
 
 		res
 	];
+
+fourVectorDiffEval[ex_,head_,p_,mu_]:=
+	ex /. {
+		head[1, 0][Pair][p,  a_] 		:> Pair[a, mu] ,
+		head[0, 1][Pair][a_, p] 		:> Pair[a, mu] ,
+		head[1,0][DiracGamma][p,dim_]	:> DiracGamma[mu,dim] ,
+		head[1][DiracGamma][p]			:> DiracGamma[mu] ,
+		head[1,0,0,0][Eps][p,c__]		:> Eps[mu,c] ,
+		head[0,1,0,0][Eps][a_,p,c__]	:> Eps[a,mu,c] ,
+		head[0,0,1,0][Eps][a__,p,c_]	:> Eps[a,mu,c] ,
+		head[0,0,0,1][Eps][c__,p]		:> Eps[c,mu]
+	};
+
 
 FCPrint[1,"FourDivergence.m loaded."];
 End[]
