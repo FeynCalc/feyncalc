@@ -24,8 +24,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md)*)
-
+(*[Overview](Extra/FeynCalc.md), [FCReloadAddOns](FCReloadAddOns.md).*)
 
 
 (* ::Subsection:: *)

@@ -20,7 +20,7 @@ Cases2::usage=
 
 Cases2[expr,f] is equivalent to Cases2[{expr},f[___],Infinity]//Union.
 
- Cases2[expr, f, g, ...] or Cases2[expr, {f,g, ...}] is equivalent to
+Cases2[expr, f, g, ...] or Cases2[expr, {f,g, ...}] is equivalent to
 Cases[{expr},f[___] | g[___] ...].";
 
 
@@ -123,7 +123,7 @@ FCPatternFreeQ::usage =
 "FCPatternFreeQ[{exp}] yields True if {exp} does not contain any pattern
 objects, e.g. Pattern, Blank, BlankSequence and BlankNullSequence.
 
- FCPatternFreeQ[{exp},{h1,h2,...}] checks that in addition to the pattern
+FCPatternFreeQ[{exp},{h1,h2,...}] checks that in addition to the pattern
 objects, no heads h1, h2, ... are present.";
 
 FCProgressBar::usage =
@@ -141,6 +141,17 @@ It is intended to be a helper tool for FeynCalc developers, which allows one
 to debug/improve internal functions and test the results without restarting
 the kernel. Depending on the complexity of the given function, there might
 also be unknown side effects.
+
+The function is not meant to be invoked by the normal users.";
+
+FCReloadAddOns::usage =
+"FCReloadAddOns[{addons}] is an auxiliary function that
+attempts to reload  FeynCalc addons without restarting the kernel.
+
+It is intended to be a helper tool for FeynCalc developers, which allows one
+to debug/improve add-ons and test the results on the fly.
+Depending on the complexity of the given add-on, there might
+also be severe side effects.
 
 The function is not meant to be invoked by the normal users.";
 
@@ -276,7 +287,7 @@ SelectNotFree::usage=
 occurrence of x.
 
 SelectNotFree[expr, a, b, ...] is equivalent to Select[expr, !FreeQ2[#, {a, b,
-...}]&], except the special cases: 
+...}]&], except the special cases:
 SelectNotFree[a, b] returns 1 and SelectNotFree[a, a] returns a (where a is
 not a product or a sum).";
 
@@ -651,6 +662,15 @@ FCProgressBar[text_String, i_Integer, tot_Integer] :=
 
 FCReloadFunctionFromFile[fun_] :=
 	FCReloadFunctionFromFile[fun,"AUTOMATIC"];
+
+
+FCReloadAddOns[addons: {__String}]:=
+(
+BeginPackage["FeynCalc`"];
+FCDeclareHeader /@ Map[ToFileName[{$FeynCalcDirectory, "AddOns", #}, # <> ".m"] &, addons];
+Get /@ Map[ToFileName[{$FeynCalcDirectory, "AddOns", #}, # <> ".m"] &, addons];
+EndPackage[];
+);
 
 FCReloadFunctionFromFile[fun_, fileRaw_String] :=
 	Block[{names, names1, names2, str1, str2, file},
