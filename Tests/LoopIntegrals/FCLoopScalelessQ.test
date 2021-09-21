@@ -64,5 +64,12 @@ SFAD[{p2,m2^2}],SFAD[p1-q],SFAD[p2-q],SFAD[{p1-p2,m3^2}]},{p1,p2},{Q},{},{}]]","
 {"fcstFCLoopScalelessQ-ID18","FCLoopScalelessQ[{FCTopology[prop2Lv1,{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],SFAD[p1-q],SFAD[p2-q],SFAD[{p1-p2,m3^2}]},{p1,p2},{Q},{},{}],
 FCTopology[prop2Lv2,{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],SFAD[{p1-q,M^2}],SFAD[{p2-q,M^2}],SFAD[p1-p2]},{p1,p2},{Q},{},{}]}]","{False,False}"},
 {"fcstFCLoopScalelessQ-ID19","FCLoopScalelessQ[{GLI[prop2Lv1,{0,0,1,1,0}]},{FCTopology[prop2Lv1,
-{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],SFAD[p1-q],SFAD[p2-q],SFAD[{p1-p2,m3^2}]},{p1,p2},{Q},{},{}]}]","{True}"}
+{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],SFAD[p1-q],SFAD[p2-q],SFAD[{p1-p2,m3^2}]},{p1,p2},{Q},{},{}]}]","{True}"},
+{"fcstFCLoopScalelessQ-ID20","FCLoopScalelessQ[{FCTopology[
+asyR3prop2Ltopo01300X01102N1, {SFAD[{{I*p3, 0}, {0, -1}, 1}],
+	SFAD[{{0, -2*p1 . q}, {0, -1}, 1}],
+	SFAD[{{0, p1 . p1}, {0, -1}, 1}],
+	SFAD[{{0, p1 . p3}, {0, -1}, 1}],
+	SFAD[{{0, p3 . q}, {0, -1}, 1}]}, {p1, p3},
+	{q}, {SPD[q, q] -> mb^2}, {}]}]","{True}"}
 });
