@@ -30,7 +30,7 @@ If[ ($VersionNumber < 8.0) && StringFreeQ[$Version, "Mathics"],
 ];
 
 (*    Set the version number    *)
-FeynCalc`$FeynCalcVersion = "9.3.1";
+FeynCalc`$FeynCalcVersion = "10.0.0";
 
 fcGlobalToFeynCalc[varG_String, defaultVal_]:=
 	fcGlobalToFeynCalc[varG, varG, defaultVal];
