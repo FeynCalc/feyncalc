@@ -75,16 +75,16 @@ ComplexConjugate[%]
 
 $$\bar{g}^{\mu \nu } \bar{\varepsilon }^{\mu }(\text{p1}) \bar{\varepsilon }^{\nu }(\text{p2})$$
 
-$$\bar{g}^{\text{\$AL}(\text{\$24})\text{\$AL}(\text{\$25})} \bar{\varepsilon }^{*\text{\$AL}(\text{\$24})}(\text{p1}) \bar{\varepsilon }^{*\text{\$AL}(\text{\$25})}(\text{p2})$$
+$$\bar{g}^{\text{$\$$AL}(\text{$\$$24})\text{$\$$AL}(\text{$\$$25})} \bar{\varepsilon }^*^{\text{$\$$AL}(\text{$\$$24})}(\text{p1}) \bar{\varepsilon }^*^{\text{$\$$AL}(\text{$\$$25})}(\text{p2})$$
 
 ```mathematica
 GA[\[Mu], \[Nu]] LC[\[Mu], \[Nu]][p1, p2]
 ComplexConjugate[%]
 ```
 
-$$\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu } \bar{\epsilon }^{\mu \nu \overline{\text{p1}}\;\overline{\text{p2}}}$$
+$$\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu } \bar{\epsilon }^{\mu \nu \overline{\text{p1}}\overline{\text{p2}}}$$
 
-$$\bar{\gamma }^{\text{\$AL}(\text{\$26})}.\bar{\gamma }^{\text{\$AL}(\text{\$27})} \bar{\epsilon }^{\text{\$AL}(\text{\$27})\text{\$AL}(\text{\$26})\overline{\text{p1}}\;\overline{\text{p2}}}$$
+$$\bar{\gamma }^{\text{$\$$AL}(\text{$\$$26})}.\bar{\gamma }^{\text{$\$$AL}(\text{$\$$27})} \bar{\epsilon }^{\text{$\$$AL}(\text{$\$$27})\text{$\$$AL}(\text{$\$$26})\overline{\text{p1}}\overline{\text{p2}}}$$
 
 This behavior can be disabled by setting the option `FCRenameDummyIndices` to `False`.
 
@@ -92,7 +92,7 @@ This behavior can be disabled by setting the option `FCRenameDummyIndices` to `F
 ComplexConjugate[GA[\[Mu], \[Nu]] LC[\[Mu], \[Nu]][p1, p2], FCRenameDummyIndices -> False]
 ```
 
-$$\bar{\gamma }^{\nu }.\bar{\gamma }^{\mu } \bar{\epsilon }^{\mu \nu \overline{\text{p1}}\;\overline{\text{p2}}}$$
+$$\bar{\gamma }^{\nu }.\bar{\gamma }^{\mu } \bar{\epsilon }^{\mu \nu \overline{\text{p1}}\overline{\text{p2}}}$$
 
 If particular variables must be replaced with their conjugate values, use the option `Conjugate`.
 
@@ -110,8 +110,42 @@ ComplexConjugate[GA[\[Mu]] . (c1 GA[6] + c2 GA[7]) . GA[\[Nu]], Conjugate -> {c1
 % // StandardForm
 ```
 
-$$\bar{\gamma }^{\nu }.\left(\bar{\gamma }^7 \;\text{c1}^*+\bar{\gamma }^6 \;\text{c2}^*\right).\bar{\gamma }^{\mu }$$
+$$\bar{\gamma }^{\nu }.\left(\bar{\gamma }^7 \text{c1}^*+\bar{\gamma }^6 \text{c2}^*\right).\bar{\gamma }^{\mu }$$
 
 ```
 (*DiracGamma[LorentzIndex[\[Nu]]] . (Conjugate[c2] DiracGamma[6] + Conjugate[c1] DiracGamma[7]) . DiracGamma[LorentzIndex[\[Mu]]]*)
 ```
+
+It may happen that one needs to deal with amplitudes with amputated spinors, i.e. with open Dirac or Pauli indices. If the amplitude contains only a single chain of Dirac/Pauli matrices, everything remains unambiguous and the missing spinors are understood
+
+```mathematica
+GA[\[Mu], \[Nu], \[Rho], 5] CSI[i, j]
+ComplexConjugate[%]
+```
+
+$$\overline{\sigma }^i.\overline{\sigma }^j \bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\rho }.\bar{\gamma }^5$$
+
+$$-\overline{\sigma }^j.\overline{\sigma }^i \bar{\gamma }^5.\bar{\gamma }^{\rho }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\mu }$$
+
+However, when there are at least two spinor chains of the same type involved, such expressions do not make sense anymore. In these cases one should introduce explicit spinor indices to avoid ambiguities
+
+```mathematica
+DCHN[GA[\[Mu], \[Nu], \[Rho], 5], i, j] DCHN[GA[\[Mu], \[Nu], \[Rho], 5], k, l]
+ComplexConjugate[%]
+```
+
+$$\left(\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\rho }.\bar{\gamma }^5\right){}_{ij} \left(\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\rho }.\bar{\gamma }^5\right){}_{kl}$$
+
+$$\left(\bar{\gamma }^5.\bar{\gamma }^{\text{$\$$AL}(\text{$\$$28})}.\bar{\gamma }^{\text{$\$$AL}(\text{$\$$29})}.\bar{\gamma }^{\text{$\$$AL}(\text{$\$$30})}\right){}_{ji} \left(\bar{\gamma }^5.\bar{\gamma }^{\text{$\$$AL}(\text{$\$$28})}.\bar{\gamma }^{\text{$\$$AL}(\text{$\$$29})}.\bar{\gamma }^{\text{$\$$AL}(\text{$\$$30})}\right){}_{lk}$$
+
+```mathematica
+PCHN[CSI[i, j, k], a, b] PCHN[CSI[i, j, k], c, d]
+ComplexConjugate[%] 
+  
+ 
+
+```
+
+$$\left(\overline{\sigma }^i.\overline{\sigma }^j.\overline{\sigma }^k\right){}_{ab} \left(\overline{\sigma }^i.\overline{\sigma }^j.\overline{\sigma }^k\right){}_{cd}$$
+
+$$\left(\overline{\sigma }^{\text{$\$$AL}(\text{$\$$31})}.\overline{\sigma }^{\text{$\$$AL}(\text{$\$$32})}.\overline{\sigma }^{\text{$\$$AL}(\text{$\$$33})}\right){}_{ba} \left(\overline{\sigma }^{\text{$\$$AL}(\text{$\$$31})}.\overline{\sigma }^{\text{$\$$AL}(\text{$\$$32})}.\overline{\sigma }^{\text{$\$$AL}(\text{$\$$33})}\right){}_{dc}$$

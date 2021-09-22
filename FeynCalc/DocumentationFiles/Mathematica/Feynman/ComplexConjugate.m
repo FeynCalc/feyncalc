@@ -88,3 +88,26 @@ ComplexConjugate[%]
 
 ComplexConjugate[GA[\[Mu]] . (c1 GA[6]+c2 GA[7]) . GA[\[Nu]],Conjugate->{c1,c2}]
 %//StandardForm
+
+
+(* ::Text:: *)
+(*It may happen that one needs to deal with amplitudes with amputated spinors, i.e. with open Dirac or Pauli indices. If the amplitude contains only a single chain of Dirac/Pauli matrices, everything remains unambiguous and the missing spinors are understood*)
+
+
+GA[\[Mu],\[Nu],\[Rho],5]CSI[i,j]
+ComplexConjugate[%]
+
+
+(* ::Text:: *)
+(*However, when there are at least two spinor chains of the same type involved, such expressions do not make sense anymore. In these cases one should introduce explicit spinor indices to avoid ambiguities*)
+
+
+DCHN[GA[\[Mu],\[Nu],\[Rho],5],i,j]DCHN[GA[\[Mu],\[Nu],\[Rho],5],k,l]
+ComplexConjugate[%]
+
+
+PCHN[CSI[i,j,k],a,b]PCHN[CSI[i,j,k],c,d]
+ComplexConjugate[%]
+
+
+
