@@ -71,6 +71,8 @@ fi
 parallel -j 6 -u --eta --bar "$scriptDIR/generateHTML.sh {} $OUTDIR" ::: ${allFiles[@]};
 mkdir $OUTDIR/Extra &> /dev/null;
 mv $OUTDIR/FeynCalc.html $OUTDIR/Extra/FeynCalc.html;
+mv $OUTDIR/MasterIntegrals.html $OUTDIR/Extra/MasterIntegrals.html;
+mv $OUTDIR/Indices.html $OUTDIR/Extra/Indices.html;
 rm -rf $OUTDIR/img;
 cp -a $mainDir/Markdown/img $OUTDIR/img;
 
