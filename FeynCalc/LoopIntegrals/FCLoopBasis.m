@@ -193,7 +193,7 @@ Options[FCLoopBasisIntegralToPropagators] = {
 	FCE 				-> False,
 	FCI 				-> False,
 	FCVerbose 			-> False,
-	MomentumCombine 	-> False,
+	MomentumCombine 	-> True,
 	Negative 			-> False,
 	Pair				-> False,
 	Rest 				-> False,
@@ -341,9 +341,7 @@ FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 
 
 		If[	OptionValue[MomentumCombine],
-			expAsList = If[	FreeQ[#,FeynAmpDenominator],
-							MomentumCombine[#,FCI->True],
-							#]&/@expAsList
+			expAsList = MomentumCombine[expAsList,FCI->True]
 		];
 
 		FCPrint[3,"FCLoopBasisIntegralToPropagators: Expression as list: ", expAsList, FCDoControl->itpVerbose];
