@@ -8,6 +8,6 @@ The function is not meant to be invoked by the normal users.
 
 ### See also
 
-[Overview](Extra/FeynCalc.md)
+[Overview](Extra/FeynCalc.md), [FCReloadAddOns](FCReloadAddOns.md).
 
 ### Examples

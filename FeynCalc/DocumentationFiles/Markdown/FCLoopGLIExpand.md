@@ -19,14 +19,14 @@ FCLoopGLIExpand[x GLI[tad2l, {1, 1, 1}],
   {FCTopology[tad2l, {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - p2, m3}]}, {p1, p2}, {}, {}, {}]}, {m1, 0, 2}]
 ```
 
-$$\left\{x \left(\text{m1}^2 G^{\text{tad2l}}(2,1,1)+G^{\text{tad2l}}(1,1,1)\right),\left\{\text{FCTopology}\left(\text{tad2l},\left\{\frac{1}{\text{p1}^2},\frac{1}{\text{p2}^2-\text{m2}^2},\frac{1}{(\text{p1}-\text{p2})^2-\text{m3}^2}\right\},\{\text{p1},\text{p2}\},\{\},\{\},\{\}\right)\right\}\right\}$$
+$$\left\{\text{m1}^2 x G^{\text{tad2l}}(2,1,1)+x G^{\text{tad2l}}(1,1,1),\left\{\text{FCTopology}\left(\text{tad2l},\left\{\frac{1}{\text{p1}^2},\frac{1}{\text{p2}^2-\text{m2}^2},\frac{1}{(\text{p1}-\text{p2})^2-\text{m3}^2}\right\},\{\text{p1},\text{p2}\},\{\},\{\},\{\}\right)\right\}\right\}$$
 
 ```mathematica
 FCLoopGLIExpand[x GLI[tad2l, {1, 1, 1}], 
   {FCTopology[tad2l, {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - p2, m3}]}, {p1, p2}, {}, {}, {}]}, {m1, M, 4}]
 ```
 
-$$\left\{x \left(\frac{1}{6} (\text{m1}-M)^3 \left(8 \left(6 M^3 G^{\text{tad2l}}(4,1,1)+2 M G^{\text{tad2l}}(3,1,1)\right)+8 M G^{\text{tad2l}}(3,1,1)\right)+(\text{m1}-M)^2 \left(4 M^2 G^{\text{tad2l}}(3,1,1)+G^{\text{tad2l}}(2,1,1)\right)+\frac{1}{24} (\text{m1}-M)^4 \left(24 \left(6 M^2 G^{\text{tad2l}}(4,1,1)+G^{\text{tad2l}}(3,1,1)\right)+48 \left(8 M^4 G^{\text{tad2l}}(5,1,1)+3 M^2 G^{\text{tad2l}}(4,1,1)\right)\right)+2 M (\text{m1}-M) G^{\text{tad2l}}(2,1,1)+G^{\text{tad2l}}(1,1,1)\right),\left\{\text{FCTopology}\left(\text{tad2l},\left\{\frac{1}{\text{p1}^2-M^2},\frac{1}{\text{p2}^2-\text{m2}^2},\frac{1}{(\text{p1}-\text{p2})^2-\text{m3}^2}\right\},\{\text{p1},\text{p2}\},\{\},\{\},\{\}\right)\right\}\right\}$$
+$$\left\{16 M^8 x G^{\text{tad2l}}(5,1,1)-64 M^7 \text{m1} x G^{\text{tad2l}}(5,1,1)+96 M^6 \text{m1}^2 x G^{\text{tad2l}}(5,1,1)+4 M^6 x G^{\text{tad2l}}(4,1,1)-64 M^5 \text{m1}^3 x G^{\text{tad2l}}(5,1,1)-24 M^5 \text{m1} x G^{\text{tad2l}}(4,1,1)+16 M^4 \text{m1}^4 x G^{\text{tad2l}}(5,1,1)+48 M^4 \text{m1}^2 x G^{\text{tad2l}}(4,1,1)+M^4 x G^{\text{tad2l}}(3,1,1)-40 M^3 \text{m1}^3 x G^{\text{tad2l}}(4,1,1)+12 M^2 \text{m1}^4 x G^{\text{tad2l}}(4,1,1)-2 M^2 \text{m1}^2 x G^{\text{tad2l}}(3,1,1)-M^2 x G^{\text{tad2l}}(2,1,1)+\text{m1}^4 x G^{\text{tad2l}}(3,1,1)+\text{m1}^2 x G^{\text{tad2l}}(2,1,1)+x G^{\text{tad2l}}(1,1,1),\left\{\text{FCTopology}\left(\text{tad2l},\left\{\frac{1}{\text{p1}^2-M^2},\frac{1}{\text{p2}^2-\text{m2}^2},\frac{1}{(\text{p1}-\text{p2})^2-\text{m3}^2}\right\},\{\text{p1},\text{p2}\},\{\},\{\},\{\}\right)\right\}\right\}$$
 
 ```mathematica
 FCLoopGLIExpand[m2^2 GLI[tad2l, {1, 1, 1}], 

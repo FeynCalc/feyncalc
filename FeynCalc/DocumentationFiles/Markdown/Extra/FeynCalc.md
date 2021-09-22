@@ -94,7 +94,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
  - [FC](../FC.md) - changes the output format to [FeynCalcForm](../FeynCalcForm.md)
  - [FCAbbreviate](../FCAbbreviate.md) - introduces abbreviations
  - [FCAntiSymmetrize](../FCAntiSymmetrize.md) - antisymmetrizes with respect to the given variables
- - [FCDeclareHeader](../FCDeclareHeader.md), [FCPrint](../FCPrint.md), [FCReloadFunctionFromFile](../FCReloadFunctionFromFile.md) - for writing or debugging new FeynCalc functions or add-ons
+ - [FCDeclareHeader](../FCDeclareHeader.md), [FCPrint](../FCPrint.md), [FCReloadAddOns](../FCReloadAddOns.md), [FCReloadFunctionFromFile](../FCReloadFunctionFromFile.md) - for writing or debugging new FeynCalc functions or add-ons
  - [FCDuplicateFreeQ](../FCDuplicateFreeQ.md) - alternative to Mathematica's `DuplicateFreeQ`
  - [FCClearCache](../FCClearCache.md), [FCMemoryAvailable](../FCMemoryAvailable.md), [FCShowCache](../FCShowCache.md), [FCUseCache](../FCUseCache.md) - cache management
  - [FCCheckSyntax](../FCCheckSyntax.md) - checks for syntax errors in the input expressions
