@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*` Cases2[expr, f, g, ...]` or `Cases2[expr, {f,g, ...}]` is equivalent to `Cases[{expr},f[___] | g[___] ...]`.*)
+(*`Cases2[expr, f, g, ...]` or `Cases2[expr, {f,g, ...}]` is equivalent to `Cases[{expr},f[___] | g[___] ...]`.*)
 
 
 (* ::Subsection:: *)

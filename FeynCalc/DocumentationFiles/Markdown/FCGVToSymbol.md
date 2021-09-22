@@ -26,7 +26,7 @@ FCGV["$MU"] // FCGVToSymbol
 % // InputForm
 ```
 
-$$\text{$\$$MU}$$
+$$\text{\$MU}$$
 
 ```mathematica
 $MU

@@ -12,7 +12,7 @@
 
 
 (* ::Text:: *)
-(*` FCPatternFreeQ[{exp},{h1,h2,...}]` checks that in addition to the pattern objects, no heads `h1, h2, ...` are present.*)
+(*`FCPatternFreeQ[{exp},{h1,h2,...}]` checks that in addition to the pattern objects, no heads `h1, h2, ...` are present.*)
 
 
 (* ::Subsection:: *)

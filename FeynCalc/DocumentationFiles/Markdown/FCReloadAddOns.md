@@ -1,6 +1,6 @@
 ## FCReloadAddOns
 
-`FCReloadAddOns[{addons}]` is an auxiliary function that attempts to reload  FeynCalc addons without restarting the kernel.
+`FCReloadAddOns[{addons}]` is an auxiliary function that attempts to reload FeynCalc addons without restarting the kernel.
 
 It is intended to be a helper tool for FeynCalc developers, which allows one to debug/improve add-ons and test the results on the fly. Depending on the complexity of the given add-on, there might also be severe side effects.
 

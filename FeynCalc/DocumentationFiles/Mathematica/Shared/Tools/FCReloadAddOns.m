@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`FCReloadAddOns[{addons}]` is an auxiliary function that attempts to reload  FeynCalc addons without restarting the kernel.*)
+(*`FCReloadAddOns[{addons}]` is an auxiliary function that attempts to reload FeynCalc addons without restarting the kernel.*)
 
 
 (* ::Text:: *)

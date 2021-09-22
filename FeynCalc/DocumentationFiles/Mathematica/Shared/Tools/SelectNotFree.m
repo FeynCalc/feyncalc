@@ -12,7 +12,7 @@
 
 
 (* ::Text:: *)
-(*`SelectNotFree[expr, a, b, ...]` is equivalent to `Select[expr, !FreeQ2[#, {a, b, ...}]&]`, except the special cases: *)
+(*`SelectNotFree[expr, a, b, ...]` is equivalent to `Select[expr, !FreeQ2[#, {a, b, ...}]&]`, except the special cases:*)
 (*`SelectNotFree[a, b]` returns `1` and `SelectNotFree[a, a]` returns `a` (where `a` is not a product or a sum).*)
 
 

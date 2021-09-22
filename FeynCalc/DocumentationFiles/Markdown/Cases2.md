@@ -4,7 +4,7 @@
 
 `Cases2[expr,f]` is equivalent to `Cases2[{expr},f[___],Infinity]//Union`.
 
-` Cases2[expr, f, g, ...]` or `Cases2[expr, {f,g, ...}]` is equivalent to `Cases[{expr},f[___] | g[___] ...]`.
+`Cases2[expr, f, g, ...]` or `Cases2[expr, {f,g, ...}]` is equivalent to `Cases[{expr},f[___] | g[___] ...]`.
 
 ### See also
 

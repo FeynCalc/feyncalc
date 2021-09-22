@@ -28,4 +28,4 @@ $$\text{GLIXtopo1X11111}$$
 FCLoopGLIToSymbol[GLI[topo1, {1, 1, 1, 1, 1}], Character -> "$"]
 ```
 
-$$\text{topo1$\$$11111}$$
+$$\text{topo1\$11111}$$

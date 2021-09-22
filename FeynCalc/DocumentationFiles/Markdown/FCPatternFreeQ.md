@@ -2,7 +2,7 @@
 
 `FCPatternFreeQ[{exp}]` yields `True` if `{exp}` does not contain any pattern objects, e.g. `Pattern`, `Blank`, `BlankSequence` and `BlankNullSequence`.
 
-` FCPatternFreeQ[{exp},{h1,h2,...}]` checks that in addition to the pattern objects, no heads `h1, h2, ...` are present.
+`FCPatternFreeQ[{exp},{h1,h2,...}]` checks that in addition to the pattern objects, no heads `h1, h2, ...` are present.
 
 ### See also
 
