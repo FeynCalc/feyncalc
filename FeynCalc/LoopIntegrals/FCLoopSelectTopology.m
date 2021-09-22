@@ -16,8 +16,11 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopSelectTopology::usage =
-"FCLoopSelectTopology[int, topos] selects the topology that matches the GLI
-int from a list of topologies topos.";
+"FCLoopSelectTopology[int, topos] selects the topology that matches the GLI int
+from a list of topologies topos.
+
+The first argument can be also a list, in which case the function will return
+a list of matching topologies.";
 
 FCLoopSelectTopology::failmsg =
 "Error! FCLoopSelectTopology has encountered a fatal problem and must abort the computation. \

@@ -29,21 +29,22 @@ Mathematica expressions. SMPToSymbol is useful when exporting FeynCalc
 expressions to other tools, e.g. FORM.";
 
 FCGVToSymbol::usage =
-"FCGVToSymbol[exp] converts objects of type FCGV[\"sth\"] in exp to symbols using
-ToExpression[\"sth\"].
+"FCGVToSymbol[exp] converts objects of type FCGV[\"sth\"] in exp to symbols
+using ToExpression[\"sth\"].
 
 The option StringReplace can be used to specify string replacement rules that
 will take care of special characters (e.g. ^ or _) that cannot appear in valid
-Mathematica expressions. FCGVToSymbol is useful when exporting FeynCalc
+Mathematica expressions. SMPToSymbol is useful when exporting FeynCalc
 expressions to other tools, e.g. FORM.";
 
 FCLoopGLIToSymbol::usage =
 "FCLoopGLIToSymbol[exp] converts GLIs to symbols.
 
-The option StringReplace can be used to specify string replacement rules that
-will take care of special characters that cannot appear in valid
-Mathematica expressions. FCLoopGLIToSymbol is useful when exporting FeynCalc
-expressions to other tools, e.g. FORM.";
+The option Head determines the prefix of the symbol and can be set to
+FCTopology (default) or GLI
+
+The option Character specifies the separator between to prefix and the
+indices.";
 
 ToSymbol::failmsg = "Error! ToSymbol has encountered a fatal problem and must \
 abort the computation. The problem reads: `1`";

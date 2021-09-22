@@ -16,12 +16,12 @@
 (* ------------------------------------------------------------------------ *)
 
 FCFeynmanParameterJoin::usage =
-"FCFeynmanParameterJoin[int] joins all propagators in int using Feynman
-parameters but does not integrate over the loop momenta. The function returns
-{fpInt,pref,vars}, where fpInt is the piece of the integral that contains a
-single GFAD-type propagator and pref is the part containing the res. The
-introduced Feynman parameters are listed in vars. The overall Dirac delta is
-omitted.";
+"FCFeynmanParameterJoin[{{{prop1,prop2,x},prop3,y},...}, {p1,p2,...}] joins all
+propagators in int using Feynman parameters but does not integrate over the
+loop momenta $p_i$. The function returns {fpInt,pref,vars}, where fpInt is the
+piece of the integral that contains a single GFAD-type propagator and pref is
+the part containing the res. The introduced Feynman parameters are listed in
+vars. The overall Dirac delta is omitted.";
 
 FCFeynmanParameterJoin::failmsg =
 "Error! FCFeynmanParameterJoin has encountered a fatal problem and must abort the computation. \

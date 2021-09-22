@@ -16,12 +16,12 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopGetEtaSigns::usage =
-"FCLoopGetEtaSigns[exp]  is an auxiliary function that extracts the signs
-of I*eta from propagators present in the input expression.  The
-result is returned as a list, i.e. {}, {1}, {-1} or {-1,1}.
+"FCLoopGetEtaSigns[exp]  is an auxiliary function that extracts the signs of $i
+\\eta$ from propagators present in the input expression.  The result is
+returned as a list, e.g. {}, {1}, {-1} or {-1,1}.
 
-This is useful if one wants ensure that all propagators of the given
-integral or tpopology follow a particular I*eta sign convention.";
+This is useful if one wants ensure that all propagators of the given integral
+or topology follow a particular $i \\eta$ sign convention.";
 
 FCLoopGetEtaSigns::failmsg =
 "FCLoopGetEtaSigns has encountered a fatal problem and must abort the computation. \

@@ -16,8 +16,11 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopSwitchEtaSign::usage =
-"FCLoopSwitchEtaSign[exp,s] switches the sign of I*eta in all integrals to
-s, where s can be +1 or -1.";
+"FCLoopSwitchEtaSign[exp, s] switches the sign of $i \\eta$ in all integrals to
+s, where s can be +1 or -1.
+
+Notice to change the sign of $i \\eta$ the function pulls out a factor $-1$
+from the propagator.";
 
 FCLoopSwitchEtaSign::failmsg =
 "FCLoopSwitchEtaSign has encountered a fatal problem and must abort the computation. \
