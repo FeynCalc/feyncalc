@@ -549,10 +549,12 @@ FCAntiSymmetrize[x_,v_List] :=
 	];
 
 FCCheckVersion[major_Integer?NonNegative, minor_Integer?NonNegative, build_Integer?NonNegative, OptionsPattern[]]:=
-	Block[{str},
+	Block[{str, a, b, c},
 		str = "Your FeynCalc version is too old. The following code requires at least FeynCalc "<>
 		ToString[major]<>"."<> ToString[minor]<>"."<> ToString[build]<>".";
-		If[	!MatchQ[ToExpression[StringSplit[$FeynCalcVersion, "."]],{a_/;a>=major,b_/;b>=minor,c_/; c>=build}],
+		{a, b, c} = ToExpression[StringSplit[$FeynCalcVersion, "."]];
+
+		If[	FromDigits[{a,b,c}] < FromDigits[{major,minor,build}],
 			If[	($FrontEnd === Null || $Notebooks===False),
 				Print[str];
 				Quit[],
