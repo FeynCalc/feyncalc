@@ -31,7 +31,7 @@ $FrontEndSession=FS;
 (*
 force=True;
 $fcDEBUG=True;
-inputNB="/media/Data/Projects/VS/FeynCalc/FeynCalc/DocumentationFiles/Scripts";
+inputNB="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation/Scripts";
 outputDir=FileNameJoin[{$HomeDirectory,"Downloads","outputMD"}];
 *)
 

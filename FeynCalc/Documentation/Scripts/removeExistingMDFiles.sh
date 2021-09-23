@@ -11,7 +11,7 @@
 
 # Usage examples
 
-# ./removeExistingMDFiles.sh math SUN /media/Data/Projects/VS/FeynCalc/FeynCalc/DocumentationFiles/Markdown
+# ./removeExistingMDFiles.sh math SUN /media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation/Markdown
 
 scriptDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 mainDir="$(dirname $scriptDIR)"

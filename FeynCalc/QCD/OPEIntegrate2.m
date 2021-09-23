@@ -27,7 +27,7 @@ sumgeom::usage="";
 
 Options[OPEIntegrate2] = {
 	Collecting  -> False,
-	FeynmanParameterNames -> {FCGV["x"], FCGV["y"], FCGV["z"]},
+	Names -> {FCGV["x"], FCGV["y"], FCGV["z"]},
 	FinalSubstitutions -> {},
 	Integratedx -> True,
 	OPEDelta    -> False
@@ -102,8 +102,8 @@ idx[y_, opt___] :=
 eventualfp[y_,k_,opt___Rule] :=
 	If[ FreeQ[y,Integratedx],
 		FeynmanParametrize[Uncontract[y,k,Pair-> All],k,
-											FeynmanParameterNames->(
-											FeynmanParameterNames/.{opt} /.
+											Names->(
+											Names/.{opt} /.
 											Options[OPEIntegrate2]  )
 											],
 		y

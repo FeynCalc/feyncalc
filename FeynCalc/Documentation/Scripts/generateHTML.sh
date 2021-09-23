@@ -12,7 +12,7 @@
 # Usage examples
 
 # ./generateHTML.sh /media/Data/Projects/VS/feyncalc.github.io/FeynCalcBookDev
-# ./generateHTML.sh "/media/Data/Projects/VS/FeynCalc/FeynCalc/DocumentationFiles/Markdown/ApartFF.md" "/media/Data/Projects/VS/feyncalc.github.io/FeynCalcBookDev"
+# ./generateHTML.sh "/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation/Markdown/ApartFF.md" "/media/Data/Projects/VS/feyncalc.github.io/FeynCalcBookDev"
 
 scriptDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 mainDir="$(dirname $scriptDIR)"

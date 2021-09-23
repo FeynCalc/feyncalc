@@ -24,7 +24,7 @@
 (*Find topologies occurring in the 2-loop ghost self-energy amplitude*)
 
 
-amp=Get[FileNameJoin[{$FeynCalcDirectory,"DocumentationFiles","Examples",
+amp=Get[FileNameJoin[{$FeynCalcDirectory,"Documentation","Examples",
 "Amplitudes","Gh-Gh-2L.m"}]];
 
 

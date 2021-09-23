@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [RHI](RHI.md).*)
+(*[Overview](Extra/FeynCalc.md).*)
 
 
 (* ::Subsection:: *)

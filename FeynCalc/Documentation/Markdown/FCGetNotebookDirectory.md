@@ -12,4 +12,4 @@
 FCGetNotebookDirectory[]
 ```
 
-$$\text{/media/Data/Projects/VS/FeynCalc/FeynCalc/DocumentationFiles/Mathematica/Shared/Tools/}$$
+$$\text{/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation/Mathematica/Shared/Tools/}$$

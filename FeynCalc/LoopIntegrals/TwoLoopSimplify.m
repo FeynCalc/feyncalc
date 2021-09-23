@@ -111,7 +111,7 @@ TwoLoopSimplify[exp_, {q1_, q2_}, opt___Rule] :=
 
 		t5 = ApartFF[t3, {q1, q2}];
 		FCPrint[1,"collecting "];
-		t6 = Collect2[t5, {q1, q2, FCIntegral, RHI}];
+		t6 = Collect2[t5, {q1, q2, FCIntegral}];
 
 		(*S TWIST2GLUONOPERATOR *)
 		If[ True,
@@ -127,7 +127,7 @@ TwoLoopSimplify[exp_, {q1_, q2_}, opt___Rule] :=
 					Collect2[Twist2GluonOperator[y,Explicit->All
 								] /. Power2 -> Power /.
 								{Power[a_,h_/;Head[h]=!=FCInteger] :> Power2[a,h]
-								}, {q1, q2, FCIntegral, RHI}
+								}, {q1, q2, FCIntegral}
 							];
 				twlist = Cases2[t6, Twist2GluonOperator];
 				twsublist = {};
@@ -187,7 +187,7 @@ TwoLoopSimplify[exp_, {q1_, q2_}, opt___Rule] :=
 			SelectFree[y,{q1,q2}] fdsav[SelectNotFree[y,{q1,q2}]];
 		fdsav[yy_] :=
 			fdsav[yy] = FeynAmpDenominatorSimplify[yy,q1,q2,
-			IntegralTable -> table, FC2RHI->False];
+			IntegralTable -> table];
 		If[ Head[t10] =!= Plus,
 			t11 = PowerSimplify[fdsimp[t10]//DiracSimplify],
 			t11 = 0;
@@ -198,10 +198,7 @@ TwoLoopSimplify[exp_, {q1_, q2_}, opt___Rule] :=
 									t11 = t11 + PowerSimplify[fdsimp[ht10[[1,i]]]//DiracSimplify]
 				];
 		];
-		If[ Head[t11]===Plus,
-			t11 = SelectFree[t11,RHI] +
-			Collect2[SelectNotFree[t11,RHI],RHI]
-		];
+
 		If[ Head[t11] =!= Plus,
 			t12 = t11,
 			tem = 0;
@@ -230,8 +227,8 @@ TwoLoopSimplify[exp_, {q1_, q2_}, opt___Rule] :=
 		t14 = Expand2[t13] /. Pair -> PairContract /. PairContract -> Pair /.
 				Power2[a_,b_] :> Power[a,b//ReleaseHold];
 		t15 = ApartFF[t14, {q1, q2}, Collecting -> False,FeynAmpDenominatorSimplify -> False];
-		t15 = Collect2[t15,{q1,q2, FCIntegral,RHI}, Factoring -> False]//fdsimp;
-		t15 = Collect2[t15,{q1,q2,FCIntegral,RHI},Factoring ->True];
+		t15 = Collect2[t15,{q1,q2, FCIntegral}, Factoring -> False]//fdsimp;
+		t15 = Collect2[t15,{q1,q2,FCIntegral},Factoring ->True];
 		(* if IntegralTable -> SpecialTableBla *)
 		If[ Head[table] === Symbol,
 		(*

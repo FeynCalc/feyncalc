@@ -94,8 +94,8 @@ EpsEvaluate internally. When set to False, sums of momenta in the Eps tensor
 will not be rewritten as a sum of Eps tensors.";
 
 EpsilonOrder::usage =
-"EpsilonOrder is an option of OPEIntegrateDelta and RHI. The setting determines
-the order n (Epsilon^n) which should be kept.";
+"EpsilonOrder is an option of OPEIntegrateDelta and other functions. The
+setting determines the order n (Epsilon^n) which should be kept.";
 
 EtaSign::usage =
 "EtaSign is an option for SFAD, GFAD, CFAD and other objects representing
@@ -179,10 +179,6 @@ substitutions indicated hereby are done at the end of the calculation.";
 Gauge::usage =
 "Gauge is an option for GluonProgagator. If set to 1 the 't Hooft Feynman gauge
 is used.";
-
-IncludePair::usage =
-"IncludePair is an option for FC2RHI, FC2TLI and FeynAmpDenominatorSimplify.
-Possible settings are True and False.";
 
 InitialSubstitutions::usage =
 "InitialSubstitutions is an option for OneLoop and OneLoopSum and Write2. All
@@ -279,7 +275,7 @@ related functions. It allows to specify a list of GLIs onto which the
 occurring loop integrals should be preferably mapped.";
 
 QuarkMass::usage=
-"QuarkMass is an option of Amplitude, CounterTerm and RTL.";
+"QuarkMass is an option of Amplitude and CounterTerm.";
 
 SchoutenAllowZeroGain::usage=
 "SchoutenAllowZeroGain is an option for FCSchoutenBruteForce and other

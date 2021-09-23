@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`QuarkMass` is an option of `Amplitude`, `CounterTerm` and `RTL`.*)
+(*`QuarkMass` is an option of `Amplitude` and `CounterTerm`.*)
 
 
 (* ::Subsection:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [Amplitude](Amplitude.md), [CounterTerm](CounterTerm.md), [RTL](RTL.md).*)
+(*[Overview](Extra/FeynCalc.md), [Amplitude](Amplitude.md), [CounterTerm](CounterTerm.md).*)
 
 
 (* ::Subsection:: *)

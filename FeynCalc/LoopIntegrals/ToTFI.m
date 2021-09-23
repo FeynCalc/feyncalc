@@ -256,7 +256,7 @@ saveToTFI[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts:OptionsPattern[]] :=
 		met = Method /. {opts} /. Options[ToTFI];
 		pp  = FeynCalcExternal[Pair[Momentum[p,dim],Momentum[p,dim]]];
 		deltap = FeynCalcExternal[Pair[Momentum[p,dim],Momentum[OPEDelta,dim]]];
-		t0 = If[ FreeQ2[z, {TLI,FeynAmpDenominator,FAD}],
+		t0 = If[ FreeQ2[z, {FeynAmpDenominator,FAD}],
 				result = z,
 				If[ met =!= Automatic,
 					t0 = FeynCalcInternal[z],
@@ -270,9 +270,6 @@ saveToTFI[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts:OptionsPattern[]] :=
 							t0 = FeynAmpDenominatorCombine[t0],
 							t0
 						]
-					];
-					If[ !FreeQ[t0, TLI],
-						t0 = FeynAmpDenominatorSimplify[TLI2FC[t0],FC2RHI->False]
 					];
 
 					pairs = Cases2[t0, Pair];

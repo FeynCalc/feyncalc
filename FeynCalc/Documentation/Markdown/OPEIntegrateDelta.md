@@ -8,6 +8,6 @@ Notice that the dimension specified by the option should also be the dimension u
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [RHI](RHI.md).
+[Overview](Extra/FeynCalc.md).
 
 ### Examples

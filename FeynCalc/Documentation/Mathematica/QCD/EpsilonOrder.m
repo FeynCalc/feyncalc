@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`EpsilonOrder` is an option of `OPEIntegrateDelta` and `RHI`. The setting determines the order `n` (`Epsilon^n`) which should be kept.*)
+(*`EpsilonOrder` is an option of `OPEIntegrateDelta` and other functions. The setting determines the order `n` (`Epsilon^n`) which should be kept.*)
 
 
 (* ::Subsection:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [OPEIntegrateDelta](OPEIntegrateDelta.md), [RHI](RHI.md).*)
+(*[Overview](Extra/FeynCalc.md), [OPEIntegrateDelta](OPEIntegrateDelta.md).*)
 
 
 (* ::Subsection:: *)

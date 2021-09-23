@@ -12,7 +12,7 @@
 # Usage examples
 
 # ./generateTeX.sh "~/Downloads/TeX"
-# ./generateTeX.sh "/media/Data/Projects/VS/FeynCalc/FeynCalc/DocumentationFiles/Markdown/ApartFF.md" "~/Downloads/TeX"
+# ./generateTeX.sh "/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation/Markdown/ApartFF.md" "~/Downloads/TeX"
 
 scriptDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 mainDir="$(dirname $scriptDIR)"

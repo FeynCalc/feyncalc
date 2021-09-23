@@ -474,7 +474,7 @@ OPEIntegrate[exp_, kk_, x_, opt___Rule] :=
 			Options[OPEIntegrate]) === True,
 			nex = OPEIntegrateDelta[nex, x, OPEm]
 		];
-		nex = Collect2[nex,{RHO,DeltaFunction}];
+		nex = Collect2[nex,{DeltaFunction}];
 		nex = Expand2[nex, x] /. (1-x)^e1_ x^e2_ :> ( (x(1-x))^e1 x^(e2-e1) );
 		noflow = SelectNotFree[nex + null[1] + null[2], DeltaFunction];
 		nex = ( Factor2[(nex-noflow) /( (x (1-x))^(Epsilon/2) )] *
@@ -526,12 +526,11 @@ OPEIntegrate[exp_, kk_, x_, opt___Rule] :=
 	(*
 	Dialog[nex];
 	*)
-		If[ !FreeQ[nex, RHO],
-			nex = Collect2[nex, RHO, Factoring -> True],
-			If[ !FreeQ[nex, LorentzIndex],
+		If[ !FreeQ[nex, LorentzIndex],
 				nex = Collect2[nex, LorentzIndex, Factoring -> True]
-			]
 		];
+
+
 		ccol[w_] :=
 			If[ Head[w] =!= Times,
 				apa[Collect2[w,
@@ -567,13 +566,7 @@ OPEIntegrate[exp_, kk_, x_, opt___Rule] :=
 			delcol[
 			Collect2[y , Epsilon, Factoring -> True]
 									];
-		If[ !FreeQ[nex, RHO],
-			If[ Head[nex] === Plus,
-				nex = Map[(SelectNotFree[#, RHO] rcol[SelectFree[#, RHO]])&, nex],
-				nex = SelectNotFree[nex, RHO] rcol[SelectFree[nex, RHO]]
-			],
-			nex = rcol[nex]
-		];
+		nex = rcol[nex];
 		nex = nex/.flowerpower->Power;
 		nex = nex //. finsu;
 		(*

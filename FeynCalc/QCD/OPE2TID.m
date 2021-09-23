@@ -52,12 +52,6 @@ OPE2TID[exp_, k1_, k2_, p_, opt___Rule] :=
 			];
 			temp = ApartFF[OPE1Loop[{k1,k2}, temp], {k1,k2}];
 
-			If[ FreeQ2[temp,{k1,k2}] && !FreeQ[temp,LorentzIndex] && !FreeQ[temp, RHI],
-				temp = Collect2[temp, LorentzIndex];
-				If[ Head[temp] === Plus,
-					temp = Map[(SelectFree[#, RHI] Collect2[SelectNotFree[#, RHI], RHI])&, temp]
-				]
-			];
 			temp
 		]
 	];
@@ -2584,9 +2578,7 @@ ope2TID[exp_, k1_, k2_, p_, opt___Rule] :=
 								If[ !FreeQ2[Cases2[temp,Pair], {k1,k2}],
 									temp = ApartFF[OPE1Loop[{k1,k2},temp],{k1,k2}];
 								];
-								temp = Collect2[FeynAmpDenominatorSimplify[temp,k1,k2,FC2RHI->True,
-																IncludePair -> True
-											],{k1,k2}]
+								temp = Collect2[FeynAmpDenominatorSimplify[temp,k1,k2],{k1,k2}]
 							];
 						(* freeq delfactor k1 k2*)
 ];

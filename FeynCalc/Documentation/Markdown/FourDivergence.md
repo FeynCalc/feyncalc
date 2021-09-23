@@ -4,7 +4,7 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [RussianTrick](RussianTrick.md).
+[Overview](Extra/FeynCalc.md), [ThreeDivergence](ThreeDivergence.md).
 
 ### Examples
 

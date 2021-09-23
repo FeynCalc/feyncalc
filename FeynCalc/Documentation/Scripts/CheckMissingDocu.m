@@ -5,10 +5,10 @@ $FeynCalcStartupMessages=False;
 
 
 fcSymbols=Names["FeynCalc`*"];
-docFiles=FileBaseName/@FileNames["*.m",FileNameJoin[{$FeynCalcDirectory,"DocumentationFiles","Mathematica"}],Infinity];
+docFiles=FileBaseName/@FileNames["*.m",FileNameJoin[{$FeynCalcDirectory,"Documentation","Mathematica"}],Infinity];
 
 
-mdFiles=FileNames["*.md",FileNameJoin[{$FeynCalcDirectory,"DocumentationFiles","Markdown"}],Infinity];
+mdFiles=FileNames["*.md",FileNameJoin[{$FeynCalcDirectory,"Documentation","Markdown"}],Infinity];
 mdFilesImported=Import[#,"Text"]&/@mdFiles;
 aux2=First[StringSplit[#,"\n"]]&/@mdFilesImported;
 aux2=FileBaseName/@Extract[mdFiles,MapIndexed[If[StringFreeQ[#1,"#"],#2,Unevaluated[Sequence[]]]&,aux2]];
@@ -25,7 +25,7 @@ Print["Documentation pages for nonexisting FeynCalc symbols:"];
 Print[StringRiffle[Complement[docFiles,fcSymbols],"\n"]];
 
 
-in=Import[FileNameJoin[{$FeynCalcDirectory,"DocumentationFiles","Markdown","Extra","FeynCalc.md"}],"Text"];
+in=Import[FileNameJoin[{$FeynCalcDirectory,"Documentation","Markdown","Extra","FeynCalc.md"}],"Text"];
 str=StringCases[in,"- "~~Shortest[x__]~~" - "/;!StringFreeQ[x,"["]:>x];
 overviewSymbols=StringReplace[Union[Flatten[StringCases[#,"["~~Shortest[x__]~~"]":>x]&/@StringSplit[str,","]]],"\\"->""];
 

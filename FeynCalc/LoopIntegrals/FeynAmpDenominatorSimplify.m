@@ -64,13 +64,11 @@ Options[FeynAmpDenominatorSimplify] = {
 	Collecting 					-> True,
 	DetectLoopTopologies		-> True,
 	ExpandScalarProduct			-> True,
-	FC2RHI						-> False,
 	FCE							-> False,
 	FCI							-> False,
 	FCVerbose					-> False,
 	Factoring					-> Factor,
 	FeynAmpDenominatorCombine	-> True,
-	IncludePair 				-> False,
 	IntegralTable 				-> {},
 	Rename 						-> True
 };
@@ -1171,20 +1169,8 @@ oldFeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern
 		FCPrint[3,"FDS: oldFeynAmpDenominatorSimplify: Before fadall", exp, "", FCDoControl->fdsVerbose];
 
 		If[ Head[exp] =!= Plus,
-			If[	OptionValue[Options[FDS],{opt},FC2RHI],
-				(* This is OPE related stuff with FC2RHI *)
-				res = FC2RHI[FixedPoint[fadalll[#, q1, q2]&, Expand2[exp, q1], 7] /. pru, q1, q2, IncludePair -> (IncludePair /. {opt} /.	Options[FDS])],
-				(* This is the usual routine *)
-				res = FixedPoint[fadalll[#, q1, q2]&, Expand2[exp, q1], 7] /. pru
-			],
-			res = SelectFree[exp, {q1,q2}] +
-			If[ (FC2RHI /. {opt} /. Options[FDS]),
-				(* This is OPE related stuff with FC2RHI *)
-				FC2RHI[FixedPoint[fadalll[#, q1, q2]&, exp-SelectFree[exp,{q1,q2}], 7] /. pru, q1, q2,
-				IncludePair -> (IncludePair /. {opt} /.	Options[FDS])],
-				(* This is the usual routine *)
-				FixedPoint[fadalll[#, q1, q2]&,	exp-SelectFree[exp,{q1,q2}], 7] /. pru
-			]
+			res = FixedPoint[fadalll[#, q1, q2]&, Expand2[exp, q1], 7] /. pru,
+			res = SelectFree[exp, {q1,q2}] + (FixedPoint[fadalll[#, q1, q2]&,	exp-SelectFree[exp,{q1,q2}], 7] /. pru)
 		];
 
 		FCPrint[3,"FDS: oldFeynAmpDenominatorSimplify: Before ApartFF", res, "", FCDoControl->fdsVerbose];

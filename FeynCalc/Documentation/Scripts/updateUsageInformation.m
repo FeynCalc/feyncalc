@@ -8,7 +8,7 @@ ClearAll[docuToUsage];
 docuToUsage[name_String]:=
 Block[{path,text,tmp,res},
 
-	path=FileNames[name<>".m",FileNameJoin[{$FeynCalcDirectory,"DocumentationFiles","Mathematica"}],Infinity];
+	path=FileNames[name<>".m",FileNameJoin[{$FeynCalcDirectory,"Documentation","Mathematica"}],Infinity];
 	If[Length[path]=!=1,
 		Print["Error, failed to find the documentation file for ", name];
 		Abort[],
@@ -77,7 +77,7 @@ Block[{path,pos,text,tmp,res,outFile},
 ];
 
 
-baseNames=FileBaseName/@FileNames["*.m",FileNameJoin[{$FeynCalcDirectory,"DocumentationFiles","Mathematica"}],Infinity];
+baseNames=FileBaseName/@FileNames["*.m",FileNameJoin[{$FeynCalcDirectory,"Documentation","Mathematica"}],Infinity];
 Print["In total there are ", Length[baseNames], " FeynCalc symbols having usage information."]
 
 

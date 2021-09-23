@@ -73,8 +73,7 @@ Options[FourDivergence] = {
 };
 
 FourDivergence[expr_, fv:Except[_?OptionQ].., OptionsPattern[]] :=
-	Block[{	ex, ve, tliflag = False, time, args, hold, optEpsEvaluate,
-			optEpsExpand},
+	Block[{	ex, ve, time, args, hold, optEpsEvaluate, optEpsExpand},
 
 		optEpsEvaluate	= OptionValue[EpsEvaluate];
 		optEpsExpand	= OptionValue[EpsExpand];
@@ -98,12 +97,6 @@ FourDivergence[expr_, fv:Except[_?OptionQ].., OptionsPattern[]] :=
 
 		args = Cases[{ve}, z_Momentum :> First[z], Infinity] // Sort // DeleteDuplicates;
 
-		(* QCD-related stuff *)
-		If[ !FreeQ[ex, TLI],
-			ex = TLI2FC[ex];
-			tliflag = True
-		];
-
 		FCPrint[1, "FourDivergence: Applying fourDerivative ", FCDoControl->fdVerbose];
 		time=AbsoluteTime[];
 		ex = fourDerivative[ex,Sequence@@ve];
@@ -117,11 +110,6 @@ FourDivergence[expr_, fv:Except[_?OptionQ].., OptionsPattern[]] :=
 			ex = FeynAmpDenominatorCombine[ex, FCI->True];
 			FCPrint[1, "FourDivergence: FeynAmpDenominatorCombine done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fdVerbose];
 			FCPrint[3, "FourDivergence: After FeynAmpDenominatorCombine: ", ex, FCDoControl->fdVerbose]
-		];
-
-		(* QCD-related stuff *)
-		If[ tliflag && FreeQ[ex, LorentzIndex],
-			ex = FC2TLI[ex, (Momentum/.Options[TLI2FC])[[1]], (Momentum/.Options[TLI2FC])[[2]]]
 		];
 
 		If[	OptionValue[Contract],
