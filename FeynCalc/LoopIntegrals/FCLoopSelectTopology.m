@@ -49,7 +49,7 @@ FCLoopSelectTopology[GLI[id_,_List], topos:{__FCTopology}, OptionsPattern[]] :=
 
 		res = Select[topos,(#[[1]]===id)&];
 		If[	res==={},
-			Message[FCLoopSelectTopology::failmsg,"There are no topologies with the id ",id];
+			Message[FCLoopSelectTopology::failmsg,"There are no topologies with the id " <> ToString[id]];
 			Abort[]
 		];
 		First[res]
