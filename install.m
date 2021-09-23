@@ -382,19 +382,22 @@ InstallFeynCalc[OptionsPattern[]]:=
 			Quiet@DeleteDirectory[unzipDir, DeleteContents -> True];
 		];
 
-		(* Activate the documentation	*)
-		WriteString["stdout", "Setting up the help system ... "];
-		RenameDirectory[FileNameJoin[{packageDir,"DocOutput"}],FileNameJoin[{packageDir,"Documentation"}]];
-		Quiet@DeleteDirectory[FileNameJoin[{packageDir,"DocSource"}], DeleteContents -> True];
 
-		(* Disable InsufficientVersionWarning?*)
-		If[ OptionValue[AutoDisableInsufficientVersionWarning] && $Notebooks,
+		If[	!OptionValue[InstallFeynCalcDevelopmentVersion],
+			(* Activate the documentation	*)
+			WriteString["stdout", "Setting up the help system ... "];
+			RenameDirectory[FileNameJoin[{packageDir,"DocOutput"}],FileNameJoin[{packageDir,"Documentation"}]];
+			Quiet@DeleteDirectory[FileNameJoin[{packageDir,"DocSource"}], DeleteContents -> True];
 
-			SetOptions[$FrontEnd, MessageOptions -> {"InsufficientVersionWarning" -> False}],
+			(* Disable InsufficientVersionWarning?*)
+			If[ OptionValue[AutoDisableInsufficientVersionWarning] && $Notebooks,
 
-			Null,
-			If[ choiceDialog2[fancyText[strDisableWarning], WindowFloating->True, WindowTitle->"Documentation system"] && $Notebooks,
-				SetOptions[$FrontEnd, MessageOptions -> {"InsufficientVersionWarning" -> False}]
+				SetOptions[$FrontEnd, MessageOptions -> {"InsufficientVersionWarning" -> False}],
+
+				Null,
+				If[ choiceDialog2[fancyText[strDisableWarning], WindowFloating->True, WindowTitle->"Documentation system"] && $Notebooks,
+					SetOptions[$FrontEnd, MessageOptions -> {"InsufficientVersionWarning" -> False}]
+				]
 			]
 		];
 
@@ -411,10 +414,12 @@ InstallFeynCalc[OptionsPattern[]]:=
 
 		WriteString["stdout", "done! \n"];
 
-		(* To have the documentation available immediately after installing FeynCalc (following the advice of Szabolcs Horv'at) *)
-		If[	$VersionNumber >= 12.1,
-			PacletDataRebuild[],
-			RebuildPacletData[]
+		If[	!OptionValue[InstallFeynCalcDevelopmentVersion],
+			(* To have the documentation available immediately after installing FeynCalc (following the advice of Szabolcs Horv'at) *)
+			If[	$VersionNumber >= 12.1,
+				PacletDataRebuild[],
+				RebuildPacletData[]
+			];
 		];
 
 		(* Generate FCConfig.m	*)
