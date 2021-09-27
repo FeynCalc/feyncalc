@@ -82,3 +82,23 @@ FCLoopFindIntegralMappings[glis,topos,List->True]
 
 
 FCLoopFindIntegralMappings[glis,topos,PreferredIntegrals->{GLI[topo2,{1,1}],GLI[topo2,{2,1}]}]
+
+
+(* ::Text:: *)
+(*The indices of `GLI`s do not have to be integers*)
+
+
+topos={
+FCTopology[prop2LtopoG20, {SFAD[{{p1, 0}, {0, 1}, 1}], 
+SFAD[{{p1 + q1, 0}, {m3^2, 1}, 1}], SFAD[{{p3, 0}, {0, 1}, 1}], 
+SFAD[{{p3 + q1, 0}, {0, 1}, 1}], SFAD[{{p1 - p3, 0}, {0, 1}, 1}]}, 
+{p1, p3}, {q1}, {}, {}], 
+FCTopology[prop2LtopoG21, {SFAD[{{p1, 0}, {m1^2, 1}, 1}], 
+SFAD[{{p1 + q1, 0}, {m3^2, 1}, 1}], 
+SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p3 + q1, 0}, {0, 1}, 1}], 
+SFAD[{{p1 - p3, 0}, {0, 1}, 1}]}, {p1, p3}, {q1}, {}, {}]
+}
+
+
+FCLoopFindIntegralMappings[{GLI[prop2LtopoG21,{0,n1,n2,n3,n4}],
+GLI[prop2LtopoG20,{0,n1,n2,n3,n4}]},topos]

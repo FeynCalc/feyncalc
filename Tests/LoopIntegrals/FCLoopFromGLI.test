@@ -115,6 +115,13 @@ GenericPropagatorDenominator[-x +
 Pair[Momentum[p, D], Momentum[p, D]] Pair[Momentum[p, D],
 Momentum[q, D]], {1, 1}]]}, {q, p}, {}, {}, {}]}]", "{FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D],
 0, 0, {1, 1}]]*FeynAmpDenominator[StandardPropagatorDenominator[-Momentum[p, D] + Momentum[q, D], 0, 0, {1, 1}]]*
-(-x + Pair[Momentum[p, D], Momentum[p, D]]*Pair[Momentum[p, D], Momentum[q, D]])}"}
+(-x + Pair[Momentum[p, D], Momentum[p, D]]*Pair[Momentum[p, D], Momentum[q, D]])}"},
+{"fcstFCLoopFromGLI-ID24",
+"FCLoopFromGLI[GLI[topoBox1L, {n1, n2, n3, n4}],
+FCTopology[
+topoBox1L, {SFAD[{q, m0^2}], SFAD[{q + p1, m1^2}],
+SFAD[{q + p2, m2^2}], SFAD[{q + p2, m3^2}]}, {q}, {p1, p2,
+p3}, {}, {}], FCE -> True]", "SFAD[{{q, 0}, {m0^2, 1}, n1}]*SFAD[{{p1 + q, 0},
+{m1^2, 1}, n2}]*SFAD[{{p2 + q, 0}, {m2^2, 1}, n3}]*SFAD[{{p2 + q, 0}, {m3^2, 1}, n4}]"}
 });
 

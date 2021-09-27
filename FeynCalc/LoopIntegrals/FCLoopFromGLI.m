@@ -32,6 +32,7 @@ Begin["`FCLoopFromGLI`Private`"];
 fgliVerbose::usage="";
 optFeynAmpDenominatorExplicit::usage="";
 optExpandScalarProduct::usage="";
+powerHold::usage="";
 
 Options[FCLoopFromGLI] = {
 	ExpandScalarProduct 		->	True,
@@ -105,13 +106,13 @@ FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
 		];
 
 		fromGliRule = Map[rule[GLI[#[[1]],
-			Table[pattern[ToExpression["n"<>ToString[i]],_],{i,1,Length[#[[2]]]}]], powFu[#[[2]],Length[#[[2]]]]]&,relevantTopos]/.pattern->Pattern/.rule->RuleDelayed;
+			Table[pattern[ToExpression["n"<>ToString[i]],_],{i,1,Length[#[[2]]]}]], powFu[#[[2]]]]&,relevantTopos]/.pattern->Pattern/.rule->RuleDelayed;
 
 
 
 		FCPrint[3,"FCLoopFromGLI: Conversion rules: ", fromGliRule, FCDoControl->fgliVerbose];
 
-		listGLIEval = listGLI /. Dispatch[fromGliRule];
+		listGLIEval = listGLI /. Dispatch[fromGliRule] /. powerHold->power;
 
 		FCPrint[3,"FCLoopFromGLI: Converted GLIs: ", listGLIEval, FCDoControl->fgliVerbose];
 
@@ -153,8 +154,8 @@ power[_. _FeynAmpDenominator, 0]:=
 power[c_. FeynAmpDenominator[PropagatorDenominator[a_, m_]], i_Integer?Positive]:=
 	c^i FeynAmpDenominator@@(ConstantArray[PropagatorDenominator[a, m],i]);
 
-power[c_. FeynAmpDenominator[(h:StandardPropagatorDenominator|CartesianPropagatorDenominator|GenericPropagatorDenominator)[a__,{1,s_}]], i_Integer?Positive]:=
-	c^i FeynAmpDenominator[h[a,{i, s}]];
+power[c_. FeynAmpDenominator[(h:StandardPropagatorDenominator|CartesianPropagatorDenominator|GenericPropagatorDenominator)[a__,{1,s_}]], i_]:=
+	c^i FeynAmpDenominator[h[a,{i, s}]]/; (MatchQ[i,_Integer?Positive] || Head[i]=!=Integer);
 
 power[c_. FeynAmpDenominator[(h:StandardPropagatorDenominator|CartesianPropagatorDenominator|GenericPropagatorDenominator)[a__,{1,s_}]], i_Integer?Negative]:=
 	c^i FeynAmpDenominator[h[a,{i, s}]]/; !optFeynAmpDenominatorExplicit;
@@ -162,8 +163,11 @@ power[c_. FeynAmpDenominator[(h:StandardPropagatorDenominator|CartesianPropagato
 power[c_. FeynAmpDenominator[(h:StandardPropagatorDenominator|CartesianPropagatorDenominator|GenericPropagatorDenominator)[a__,{1,s_}]], i_Integer?Negative]:=
 	c^i FeynAmpDenominatorExplicit[FeynAmpDenominator[h[a,{i, s}]], ExpandScalarProduct->optExpandScalarProduct]/; optFeynAmpDenominatorExplicit;
 
-powFu[x_,len_]:=
-	Times@@MapIndexed[power[#1,ToExpression["n"<>ToString[First[#2]]]]&,x]
+power[c_. FeynAmpDenominator[(h:StandardPropagatorDenominator|CartesianPropagatorDenominator|GenericPropagatorDenominator)[a__,{1,s_}]], i_Integer?Positive]:=
+	c^i FeynAmpDenominator[h[a,{i, s}]];
 
+
+powFu[x_]:=
+	Times@@MapIndexed[powerHold[#1,ToExpression["n"<>ToString[First[#2]]]]&,x];
 
 End[]
