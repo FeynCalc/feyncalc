@@ -26,6 +26,8 @@ End[]
 
 Begin["`FCClausen`Private`"]
 
+SetAttributes[FCClausen, NumericFunction];
+
 Options[FCClausen] = {
 	Explicit ->	False
 };
