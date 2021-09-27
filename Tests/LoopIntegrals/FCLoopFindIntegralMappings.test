@@ -186,5 +186,13 @@ FCTopology[topo1,{SFAD[{p1,m^2}],SFAD[{p2,m^2}]},{p1,p2},{},{}, {}],\
 FCTopology[topo2,{SFAD[{p1,m^2}],SFAD[{p2,m^2}]},{\
 p1,p2},{},{}, {}]},PreferredIntegrals->{GLI[topo2,{1,1}]}]",
 "{{GLI[topo1, {1, 1}] -> GLI[topo2, {1, 1}]}, {GLI[topo1, {1, 2}], \
-GLI[topo2, {1, 1}]}}"}
+GLI[topo2, {1, 1}]}}"},
+{"fcstFCLoopFindIntegralMappings-ID8",
+"FCLoopFindIntegralMappings[{SFAD[{{I p1, 0}, {-m2^2, -1},
+	1}] SFAD[{{I p3, 0}, {-m2^2, -1}, 1}],
+SFAD[{{I tmom1, 0}, {-m2^2, -1},
+	1}] SFAD[{{I tmom2, 0}, {-m2^2, -1}, 1}]}, {p1, p3, tmom1,
+tmom2}, FCE -> True]",
+"{{SFAD[{{I*p1, 0}, {-m2^2, -1}, 1}]*SFAD[{{I*p3, 0}, {-m2^2, -1}, 1}],
+SFAD[{{I*tmom1, 0}, {-m2^2, -1}, 1}]*SFAD[{{I*tmom2, 0}, {-m2^2, -1}, 1}]}}"}
 });

@@ -157,9 +157,9 @@ FCFeynmanPrepare[topoRaw_FCTopology, opts:OptionsPattern[]] :=
 
 
 
-FCFeynmanPrepare[expr_/;FreeQ[{GLI,FCTopology},expr], lmoms_List /; !OptionQ[lmoms], OptionsPattern[]] :=
+FCFeynmanPrepare[expr_/;FreeQ[{GLI,FCTopology},expr], lmomsRaw_List /; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 	Block[{	feynX, propProduct, tmp, symF, symU, ex, spd, qkspd, mtmp,
-			matrix, nDenoms, res, constraint, tmp0, powers,
+			matrix, nDenoms, res, constraint, tmp0, powers, lmoms,
 			optFinalSubstitutions, optNames, aux1, aux2, nProps, fpJ, fpQ,
 			null1, null2, tensorPart, scalarPart, time, tcHideRule={}, sortBy, pref},
 
@@ -182,6 +182,13 @@ FCFeynmanPrepare[expr_/;FreeQ[{GLI,FCTopology},expr], lmoms_List /; !OptionQ[lmo
 			{ex,optFinalSubstitutions} = FCI[{expr,optFinalSubstitutions}]
 		];
 
+		FCPrint[1,"FCFeynmanPrepare: Entering. ", FCDoControl->fcszVerbose];
+		FCPrint[3,"FCFeynmanPrepare: Entering  with: ", ex, FCDoControl->fcszVerbose];
+
+		lmoms = Select[lmomsRaw,!FreeQ[ex,#]&];
+
+		FCPrint[3,"FCFeynmanPrepare: Relevant loop momenta: ", lmoms, FCDoControl->fcszVerbose];
+
 		If [!FreeQ2[$ScalarProducts, lmoms],
 			Message[FCFeynmanPrepare::failmsg, "Some of the loop momenta have scalar product rules attached to them."];
 			Abort[]
@@ -198,8 +205,6 @@ FCFeynmanPrepare[expr_/;FreeQ[{GLI,FCTopology},expr], lmoms_List /; !OptionQ[lmo
 
 		];
 
-		FCPrint[1,"FCFeynmanPrepare: Entering. ", FCDoControl->fcszVerbose];
-		FCPrint[3,"FCFeynmanPrepare: Entering  with: ", ex, FCDoControl->fcszVerbose];
 
 		Which[
 			!FreeQ2[ex, {Momentum, LorentzIndex}] && FreeQ2[ex, {CartesianMomentum,CartesianIndex}],

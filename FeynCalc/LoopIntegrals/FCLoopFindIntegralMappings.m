@@ -89,14 +89,14 @@ FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 		];
 
 		time=AbsoluteTime[];
-		FCPrint[1, "FCLoopFindIntegralMappings: Calling FCToPakForm.", FCDoControl -> fcfpmVerbose];
+		FCPrint[1, "FCLoopFindIntegralMappings: Calling FCLoopToPakForm.", FCDoControl -> fcfpmVerbose];
 
 		pakFormInts = FCLoopToPakForm[expr, lmoms, FCI->OptionValue[FCI], FinalSubstitutions->OptionValue[FinalSubstitutions],
 			Check->False, Collecting->False, Names->x, CharacteristicPolynomial->OptionValue[CharacteristicPolynomial],
 			Function->OptionValue[Function], Head->pakHead, Power->powerMark];
-		FCPrint[1, "FCLoopFindIntegralMappings: FCToPakForm done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfpmVerbose];
+		FCPrint[1, "FCLoopFindIntegralMappings: FCLoopToPakForm done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfpmVerbose];
 
-		FCPrint[3, "FCLoopFindIntegralMappings: Output of FCToPakForm: ", pakFormInts, FCDoControl->fcfpmVerbose];
+		FCPrint[3, "FCLoopFindIntegralMappings: Output of FCLoopToPakForm: ", pakFormInts, FCDoControl->fcfpmVerbose];
 
 		(* 2nd element are the grouped mappings *)
 		res = Reap[(Sow[Sequence @@ #] & /@ pakFormInts), _][[2]];
