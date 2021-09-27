@@ -56,5 +56,15 @@ coeffO^2*parX^2+(0.0472270672349811)*coeffO^2*parX^2*parY-(0.\
 coeffO^2*parX^2*parY^3+(0.038417976095702376+0.000028403733516153537*\
 I)*coeffO^2*parX^2*parZ,FCVerbose->-1]", "0"},
 {"fcstFCCompareNumbers-ID7","FCCompareNumbers[5.,5.,FCVerbose->-1]","0"},
-{"fcstFCCompareNumbers-ID8","FCCompareNumbers[5,5,FCVerbose->-1]","0"}
+{"fcstFCCompareNumbers-ID8","FCCompareNumbers[5,5,FCVerbose->-1]","0"},
+{"fcstFCCompareNumbers-ID9","FCCompareNumbers[
+1.031337 - 0.707368*mg - 0.240819*mg^2 - 0.339402*mg^3 +
+2.309994*mg*Log[mg] + 0.2705*mg^2*Log[mg] + 0.117082*mg^3*Log[mg] +
+0.135164*mg^2*Log[mg]^2,
+1.0313367362027421 - 0.7073687152595041*mg -
+0.24081553669118966*mg^2 - 0.3394048245090585*mg^3 +
+2.3099945982277887*mg*Log[mg] + 0.27049953511783786*mg^2*Log[mg] +
+0.11708585293244765*mg^3*Log[mg] +
+0.13516435986159167*mg^2*Log[mg]^2, DigitCount -> 4,
+FCVerbose -> -1]","0"}
 });

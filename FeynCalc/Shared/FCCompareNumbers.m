@@ -70,7 +70,10 @@ FCCompareNumbers[xRaw_/;Head[xRaw]=!=List,yRaw_/;Head[yRaw]=!=List,OptionsPatter
 		FCPrint[3, "FCCompareNumbers: Entering with, lhs: ", xRaw, FCDoControl->fccnVerbose];
 		FCPrint[3, "FCCompareNumbers: Entering with, rhs: ", yRaw, FCDoControl->fccnVerbose];
 
-		{x,y} = {ComplexExpand[ExpandAll[dummy xRaw]],ComplexExpand[ExpandAll[dummy yRaw]]};
+		If[	!FreeQ2[{xRaw,yRaw},{I,Complex}],
+			{x,y} = {ComplexExpand[ExpandAll[dummy xRaw]],ComplexExpand[ExpandAll[dummy yRaw]]},
+			{x,y} = {ExpandAll[dummy xRaw],ExpandAll[dummy yRaw]}
+		];
 
 		FCPrint[3, "FCCompareNumbers: After ComplexExpand and ExpandAll, lhs: ", x, FCDoControl->fccnVerbose];
 		FCPrint[3, "FCCompareNumbers: After ComplexExpand and ExpandAll, rhs: ", y, FCDoControl->fccnVerbose];
