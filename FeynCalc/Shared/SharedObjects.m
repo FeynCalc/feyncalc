@@ -399,30 +399,57 @@ PlusDistribution::usage =
 prescription).";
 
 Polarization::usage =
-"Polarization[k] is the head of a polarization momentum with (incoming)
-momentum k.
+"Polarization[k] is the head of a polarization momentum with momentum k.
 
 A slashed polarization vector ($\\varepsilon_{\\mu}(k) \\gamma^\\mu)$ has to be
 entered as GS[Polarization[k]].
 
-The internal representation for a polarization vector corresponding to a boson
-with four momentum k is: Momentum[Polarization[k, I ]].
-
 Unless the option Transversality is set to True, all polarization vectors are
 not transverse by default.
+
+The internal representation for a polarization vector corresponding to a boson
+with four momentum $k$ is: Momentum[Polarization[k, I ]].
 
 Polarization[k,-I] denotes the complex conjugate polarization.
 
 Polarization is also an option of various functions related to the operator
 product expansion. The setting 0 denotes the unpolarized and 1 the polarized
-case.";
+case.
+
+Polarization may appear only inside Momentum. Outside of Momentum it is
+meaningless in FeynCalc.
+
+The imaginary unit in the second argument of Polarization is used to
+distinguish between incoming and outgoing polarization vectors.
+
+- Pair[Momentum[k], Momentum[Polarization[k, I]]] corresponds to
+$\\varepsilon^{\\mu}(k)$, i.e. an ingoing polarization vector
+
+- Pair[Momentum[k], Momentum[Polarization[k, -I]]] corresponds to
+$\\varepsilon^{\\ast \\mu}(k)$, i.e. an outgoing polarization vector";
 
 PolarizationVector::usage =
-"PolarizationVector[p, mu] denotes a 4-dimensional polarization vector
+"PolarizationVector[p, mu] denotes a 4-dimensional ingoing polarization vector
 $\\varepsilon^\\mu(p)$.
 
+For the outgoing polarization vector $\\varepsilon^{\\ast \\mu}(p)$ use
+ComplexConjugate[PolarizationVector[p, mu]]
+
 To obtain a $D$-dimensional polarization vector, just use ChangeDimension[vec,
-D]";
+D]
+
+In the internal representation following conventions are used
+
+- Pair[Momentum[k], Momentum[Polarization[k, I]]] corresponds to
+$\\varepsilon^{\\mu}(k)$, i.e. an ingoing polarization vector
+
+- Pair[Momentum[k], Momentum[Polarization[k, -I]]] corresponds to
+$\\varepsilon^{\\ast \\mu}(k)$, i.e. an outgoing polarization vector
+
+Warning: The first argument of PolarizationVector should always be a
+standalone symbol denoting a momentum (e.g. p, k1, q2 etc.). Never use symbols
+multiplied by $-1$ or other numbers as well as products of symbols (e.g. -p,
+2*k, x*p etc.). Doing so will inevitably lead to wrong results.";
 
 PD::usage =
 "PD is an abbreviation for PropagatorDenominator.";
