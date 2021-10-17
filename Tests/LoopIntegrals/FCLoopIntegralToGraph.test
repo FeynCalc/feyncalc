@@ -287,5 +287,15 @@ k1,k2,k3},{q},{},{}],FCE->True]",
 {k2 - k3, 1, -mb^2}, {k1 - k3, 1, -mb^2}}, {0, 0, SFAD[{{k2, 0}, {0, \
 1}, 1}], SFAD[{{k1, 0}, {0, 1}, 1}], SFAD[{{-k2 + q, 0}, {0, 1}, 1}], \
 SFAD[{{-k1 + q, 0}, {0, 1}, 1}], SFAD[{{k2 - k3, 0}, {mb^2, 1}, 1}], \
-SFAD[{{k1 - k3, 0}, {mb^2, 1}, 1}]}, 1}"}
+SFAD[{{k1 - k3, 0}, {mb^2, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID33",
+"FCLoopIntegralToGraph[GLI[topo1,{1,1,1,0,0,0}],
+{FCTopology[topo1,{FAD[q-k1],FAD[k1],FAD[q-k2],FAD[k2],
+FAD[{k2-k3,mb}],FAD[{k1-k3,mb}]},{k1,k2,k3},{q},{},{}],
+FCTopology[topo2,{FAD[q-k1],FAD[k1],FAD[q-k2],FAD[k2],
+FAD[{k2-k3,mg}],FAD[{k1-k3,mg}]},{k1,k2,k3},{q},{},{}]}]",
+"{{-3 -> 2, -1 -> 1, 1 -> 2, 1 -> 2, 2 -> 2}, {q, q, {k1, 1, 0},
+{-k1 + q, 1, 0}, {-k2 + q, 1, 0}},
+{0, 0, SFAD[{{k1, 0}, {0, 1}, 1}], SFAD[{{-k2 + q, 0},
+{0, 1}, 1}], SFAD[{{-k1 + q, 0}, {0, 1}, 1}]}, 1}"}
 });

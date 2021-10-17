@@ -67,7 +67,7 @@ Options[FCLoopIntegralToGraph] = {
 	TimeConstrained			-> 3
 };
 
-FCLoopIntegralToGraph[gli_GLI, topoRaw_FCTopology, opts:OptionsPattern[]] :=
+FCLoopIntegralToGraph[gli_GLI, topoRaw_, opts:OptionsPattern[]] :=
 	Block[{int,optFinalSubstitutions,topo},
 
 		If[	OptionValue[FCI],
@@ -75,11 +75,15 @@ FCLoopIntegralToGraph[gli_GLI, topoRaw_FCTopology, opts:OptionsPattern[]] :=
 			topo = FCI[topoRaw]
 		];
 
+		If[	Head[topo]===List,
+			topo = FCLoopSelectTopology[gli,topo]
+		];
+
 		int = FCLoopFromGLI[gli, topo, FCI->True];
 
 		FCLoopIntegralToGraph[int, topo[[3]], Join[{FCI->True, InitialSubstitutions->topo[[5]]},
 			FilterRules[{opts}, Except[FCI | InitialSubstitutions]]]]
-	];
+	]/; MatchQ[topoRaw, _FCTopology | {__FCTopology}];
 
 FCLoopIntegralToGraph[glis:{__GLI}, toposRaw:{__FCTopology}, opts:OptionsPattern[]] :=
 	Block[{ints, relTopos, lmomsList, replacements, topos},

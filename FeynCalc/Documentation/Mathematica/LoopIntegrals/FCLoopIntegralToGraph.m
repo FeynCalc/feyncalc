@@ -57,3 +57,14 @@ FAD[{k2-k3,mb}],FAD[{k1-k3,mb}]},{k1,k2,k3},{q},{},{}]]
 FCLoopIntegralToGraph[GLI[topo1,{1,1,1,1,1,1}],
 FCTopology[topo1,{FAD[q-k1],FAD[k1],FAD[q-k2],FAD[k2],
 FAD[{k2-k3,mb}],FAD[{k1-k3,mb}]},{k1,k2,k3},{q},{},{}]]
+
+
+(* ::Text:: *)
+(*If the second argument contains multiple topologies, the function will automatically select the relevant ones.*)
+
+
+FCLoopIntegralToGraph[GLI[topo1,{1,1,1,0,0,0}],{FCTopology[topo1,{FAD[q-k1],FAD[k1],FAD[q-k2],FAD[k2],
+FAD[{k2-k3,mb}],FAD[{k1-k3,mb}]},{k1,k2,k3},{q},{},{}],
+FCTopology[topo2,{FAD[q-k1],FAD[k1],FAD[q-k2],FAD[k2],
+FAD[{k2-k3,mg}],FAD[{k1-k3,mg}]},{k1,k2,k3},{q},{},{}]
+}]
