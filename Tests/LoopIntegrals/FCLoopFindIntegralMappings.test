@@ -207,5 +207,47 @@ FCTopology[prop2LtopoG21, {SFAD[{{p1, 0}, {m1^2, 1}, 1}],
 	SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p3 + q1, 0}, {0, 1}, 1}],
 	SFAD[{{p1 - p3, 0}, {0, 1}, 1}]}, {p1, p3}, {q1}, {}, {}]
 }]","{{GLI[prop2LtopoG21, {0, n1, n2, n3, n4}] -> GLI[prop2LtopoG20, {0, n1, n2, n3, n4}]},
-{GLI[prop2LtopoG20, {0, n1, n2, n3, n4}]}}"}
+{GLI[prop2LtopoG20, {0, n1, n2, n3, n4}]}}"},
+{"fcstFCLoopFindIntegralMappings-ID10",
+"FCLoopFindIntegralMappings[{GLI[tad1Ltopo2,{1}]^2,GLI[\
+prop2Ltopo31313,{0,0,1,0,1}]},{FCTopology[prop2Ltopo31313,{SFAD[{{\
+\[ImaginaryI] p1,0},{-\!\(\*SuperscriptBox[\(m3\), \
+\(2\)]\),-1},1}],SFAD[{{\[ImaginaryI] \
+(p1+q1),0},{-\!\(\*SuperscriptBox[\(m1\), \(2\)]\),-1},1}],SFAD[{{\
+\[ImaginaryI] p3,0},{-\!\(\*SuperscriptBox[\(m3\), \
+\(2\)]\),-1},1}],SFAD[{{\[ImaginaryI] \
+(p3+q1),0},{-\!\(\*SuperscriptBox[\(m1\), \(2\)]\),-1},1}],SFAD[{{\
+\[ImaginaryI] (p1-p3),0},{-\!\(\*SuperscriptBox[\(m3\), \
+\(2\)]\),-1},1}]},{p1,p3},{q1},{SPD[q1,q1]\[Rule]\!\(\*SuperscriptBox[\
+\(m1\), \(2\)]\)},{}],FCTopology[tad1Ltopo2,{SFAD[{{\[ImaginaryI] \
+p1,0},{-\!\(\*SuperscriptBox[\(m3\), \
+\(2\)]\),-1},1}]},{p1},{},{SPD[q1,q1]\[Rule]\!\(\*SuperscriptBox[\(m1\
+\), \(2\)]\)},{}]},PreferredIntegrals->{GLI[tad1Ltopo2,{1}]^2}]",
+"{{GLI[prop2Ltopo31313, {0, 0, 1, 0, 1}] -> GLI[tad1Ltopo2, \
+{1}]^2}, {GLI[tad1Ltopo2, {1}]^2}}"},
+{"fcstFCLoopFindIntegralMappings-ID11",
+"FCLoopFindIntegralMappings[{GLI[prop2Ltopo31313,{0,0,1,0,1}],GLI[\
+asyR4prop2Ltopo31313X11111N1,{1,0,1,0,0}]^2,GLI[\
+asyR4prop2Ltopo31313X11111N1,{1,1,1,1,0}]},{FCTopology[\
+asyR4prop2Ltopo31313X11111N1,{SFAD[{{\[ImaginaryI] \
+p3,0},{-\!\(\*SuperscriptBox[\(mg\), \(2\)]\),-1},1}],SFAD[{{\
+\[ImaginaryI] p1,0},{-\!\(\*SuperscriptBox[\(mg\), \
+\(2\)]\),-1},1}],SFAD[{{0,-2 p3.q},{0,-1},1}],SFAD[{{0,-2 \
+p1.q},{0,-1},1}],SFAD[{{\[ImaginaryI] \
+(p1-p3),0},{-\!\(\*SuperscriptBox[\(mg\), \
+\(2\)]\),-1},1}]},{p1,p3},{q},{SPD[q,q]\[Rule]\!\(\*SuperscriptBox[\(\
+mb\), \(2\)]\)},{}],FCTopology[prop2Ltopo31313,{SFAD[{{\[ImaginaryI] \
+p1,0},{-\!\(\*SuperscriptBox[\(m3\), \(2\)]\),-1},1}],SFAD[{{\
+\[ImaginaryI] (p1+q1),0},{-\!\(\*SuperscriptBox[\(m1\), \
+\(2\)]\),-1},1}],SFAD[{{\[ImaginaryI] \
+p3,0},{-\!\(\*SuperscriptBox[\(m3\), \(2\)]\),-1},1}],SFAD[{{\
+\[ImaginaryI] (p3+q1),0},{-\!\(\*SuperscriptBox[\(m1\), \
+\(2\)]\),-1},1}],SFAD[{{\[ImaginaryI] \
+(p1-p3),0},{-\!\(\*SuperscriptBox[\(m3\), \
+\(2\)]\),-1},1}]},{p1,p3},{q1},{SPD[q1,q1]\[Rule]\!\(\*SuperscriptBox[\
+\(m1\), \(2\)]\)},{}]},List->False]",
+"{{GLI[asyR4prop2Ltopo31313X11111N1, {1, 1, 1, 1, 0}] -> \
+GLI[asyR4prop2Ltopo31313X11111N1, {1, 0, 1, 0, 0}]^2}, \
+{GLI[asyR4prop2Ltopo31313X11111N1, {1, 0, 1, 0, 0}]^2, \
+GLI[prop2Ltopo31313, {0, 0, 1, 0, 1}]}}"}
 });

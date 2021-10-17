@@ -58,6 +58,7 @@ FCLoopFindIntegralMappings[ints,{p1,p3,p4}]
 (*If the input is a list of `GLI`-integrals, `FCLoopFindIntegralMappings` will return a list containing two sublists. The former will be a list of replacement rules while the latter will contain all unique master integrals*)
 
 
+ClearAll[topo1,topo2];
 topos={
 FCTopology[topo1,{SFAD[{p1,m^2}],SFAD[{p2,m^2}]},{p1,p2},{},{},{}],
 FCTopology[topo2,{SFAD[{p3,m^2}],SFAD[{p4,m^2}]},{p3,p4},{},{},{}]
@@ -102,3 +103,23 @@ SFAD[{{p1 - p3, 0}, {0, 1}, 1}]}, {p1, p3}, {q1}, {}, {}]
 
 FCLoopFindIntegralMappings[{GLI[prop2LtopoG21,{0,n1,n2,n3,n4}],
 GLI[prop2LtopoG20,{0,n1,n2,n3,n4}]},topos]
+
+
+(* ::Text:: *)
+(*It is also possible to find mappings for factorizing integrals, provided that suitable products of integrals are given as preferred integrals*)
+
+
+topos={FCTopology[prop2Ltopo31313,{SFAD[{{
+I p1,0},{-m3^2,-1},1}],SFAD[{{I (p1+q1),0},{-m1^2,-1},1}],SFAD[{{
+I p3,0},{-m3^2,-1},1}],SFAD[{{I 
+(p3+q1),0},{-m1^2,-1},1}],SFAD[{{
+I (p1-p3),0},{-m3^2,-1},1}]},{p1,p3},{q1},{SPD[q1,q1]->m1^2},{}],
+FCTopology[tad1Ltopo2,{SFAD[{{I p1,0},{-m3^2,-1},1}]},{p1},{},{SPD[q1,q1]->m1^2},{}]}
+
+
+(* ::Text:: *)
+(*Here we ask the function to map all products of two 1-loop tadpoles to `GLI[tad1Ltopo2,{1}]^2`*)
+
+
+FCLoopFindIntegralMappings[{GLI[tad1Ltopo2,{1}]^2,
+GLI[prop2Ltopo31313,{0,0,1,0,1}]},topos,PreferredIntegrals->{GLI[tad1Ltopo2,{1}]^2}]

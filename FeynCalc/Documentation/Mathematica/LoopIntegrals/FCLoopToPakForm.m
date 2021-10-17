@@ -40,3 +40,10 @@ FCLoopToPakForm[topo1,Names->x,Head->ph,Power->pow]
 
 
 FCLoopToPakForm[{GLI["prop2Lv1",{1,1,1,1,0}],GLI["prop2Lv2",{1,1,0,0,1}]},{topo1,topo2},Names->x,Head->ph,Power->pow]
+
+
+(* ::Text:: *)
+(*Products of `GLI`s are also supported.*)
+
+
+FCLoopToPakForm[{GLI["prop2Lv1",{1,1,0,0,0}]^2},{topo1,topo2},Names->x,Head->ph,Power->pow]

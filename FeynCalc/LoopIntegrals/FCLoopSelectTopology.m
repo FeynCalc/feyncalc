@@ -34,16 +34,24 @@ Begin["`FCLoopSelectTopology`Private`"]
 fclsVerbose::usage = "";
 
 Options[FCLoopSelectTopology] = {
+	FCE->False
 };
 
-FCLoopSelectTopology[glis:{__GLI},topos:{__FCTopology},opts:OptionsPattern[]]:=
-	FCLoopSelectTopology[#,topos,opts]&/@glis;
+FCLoopSelectTopology[glis_List,topos:{__FCTopology},opts:OptionsPattern[]]:=
+	Union[Flatten[FCLoopSelectTopology[#,topos,opts]&/@glis]]/;
+	MatchQ[glis,{(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..}];
+
+
+FCLoopSelectTopology[glis_, topos:{__FCTopology},opts:OptionsPattern[]]:=
+	Union[Flatten[FCLoopSelectTopology[#,topos,opts]&/@Cases2[glis,GLI]]]/;
+	!MatchQ[glis, _List | _GLI] &&
+	MatchQ[glis,(Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..])];
 
 FCLoopSelectTopology[GLI[id_,_List], topos:{__FCTopology}, OptionsPattern[]] :=
 	Block[{res},
 
 		If[	!FCLoopValidTopologyQ[topos],
-			Message[FCFeynmanPrepare::failmsg, "The supplied list of topologie is incorrect."];
+			Message[FCLoopSelectTopology::failmsg, "The supplied list of topologie is incorrect."];
 			Abort[]
 		];
 
@@ -52,7 +60,14 @@ FCLoopSelectTopology[GLI[id_,_List], topos:{__FCTopology}, OptionsPattern[]] :=
 			Message[FCLoopSelectTopology::failmsg,"There are no topologies with the id " <> ToString[id]];
 			Abort[]
 		];
-		First[res]
+
+		res = First[res];
+
+		If[	OptionValue[FCE],
+			res =FCE[res]
+		];
+
+		res
 	]
 
 FCPrint[1,"FCLoopSelectTopology.m loaded."];

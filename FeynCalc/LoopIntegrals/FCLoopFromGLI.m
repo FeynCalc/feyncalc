@@ -40,7 +40,8 @@ Options[FCLoopFromGLI] = {
 	FCI							->	False,
 	FCVerbose					->	False,
 	FeynAmpDenominatorCombine	->	False,
-	FeynAmpDenominatorExplicit	->	True
+	FeynAmpDenominatorExplicit	->	True,
+	LoopMomenta					-> 	Function[{x,y},FCGV["lmom"<>ToString[x]<>ToString[y]]]
 };
 
 
@@ -48,11 +49,12 @@ FCLoopFromGLI[expr_, topo_FCTopology, opts:OptionsPattern[]] :=
 	FCLoopFromGLI[expr,{topo}, opts];
 
 FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
-	Block[{	res, topos, listGLI, topoNamesGLI, rule,
+	Block[{	res, topos, listGLI, rule, optLoopMomenta,
 			pattern, fromGliRule, listGLIEval, ruleFinal, relevantTopos},
 
-		optFeynAmpDenominatorExplicit = OptionValue[FeynAmpDenominatorExplicit];
-		optExpandScalarProduct = OptionValue[ExpandScalarProduct];
+		optFeynAmpDenominatorExplicit	= OptionValue[FeynAmpDenominatorExplicit];
+		optExpandScalarProduct 			= OptionValue[ExpandScalarProduct];
+		optLoopMomenta					= OptionValue[LoopMomenta];
 
 		If [OptionValue[FCVerbose]===False,
 				fgliVerbose=$VeryVerbose,
@@ -65,6 +67,11 @@ FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
 		FCPrint[1,"FCLoopFromGLI: Entering.", FCDoControl->fgliVerbose];
 		FCPrint[3,"FCLoopFromGLI: Entering with: ", expr, FCDoControl->fgliVerbose];
 		FCPrint[3,"FCLoopFromGLI: Topologies: ", toposRaw, FCDoControl->fgliVerbose];
+
+		If[	Head[optLoopMomenta]=!=Function,
+			Message[FCLoopFromGLI::failmsg, "Incorrect value of the LoopMomenta option."];
+			Abort[]
+		];
 
 		(*
 			FCI is applied only to the propagators in the topologies, not to the full expression.
@@ -85,25 +92,30 @@ FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
 			Return[expr]
 		];
 
-		If[	Head[expr]=!=GLI,
+		(*	TODO
 
-			listGLI = Cases2[expr, GLI];
-			topoNamesGLI = Union[First/@listGLI],
+			This is tricky. If we are given a single product of GLIs or a list thereof, then everything is
+			simple (up to the introduction of auxiliary loop momenta. However, if we have an amplitude that
+			contains GLIs, using Cases2 can mess things up, since we would miss products of GLIs. So one should
+			perhaps use this function for well defined input types only, while another version thereof
+			(say FCLoopFromGLI2) will take care of amplitudes in case that someone wants to convert an amplitude
+			into explicit FADs.
 
-			listGLI = {expr};
-			topoNamesGLI = {First[expr]}
+			For the time being we simply assume that an amplitude contains no products of GLIs.
+		*)
+		Which[
+			MatchQ[expr, (_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..])],
+				listGLI = {expr},
+			MatchQ[expr, {(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..])..}],
+				listGLI = expr,
+			(*amplitude*)
+			True,
+				listGLI = Cases2[expr, GLI]
 		];
 
-		relevantTopos = Select[topos, MemberQ[topoNamesGLI,#[[1]]]&];
-
-		FCPrint[3,"FCLoopFromGLI: GLI topologies: ", topoNamesGLI, FCDoControl->fgliVerbose];
+		relevantTopos = Union[FCLoopSelectTopology[listGLI,topos]];
 
 		FCPrint[3,"FCLoopFromGLI: Relevant topologies: ", relevantTopos, FCDoControl->fgliVerbose];
-
-		If[	!FCSubsetQ[First/@relevantTopos,topoNamesGLI],
-			Message[FCLoopFromGLI::failmsg, "The input contains GLIs with unknown topologies. Please check your FCTopology list."];
-			Abort[]
-		];
 
 		fromGliRule = Map[rule[GLI[#[[1]],
 			Table[pattern[ToExpression["n"<>ToString[i]],_],{i,1,Length[#[[2]]]}]], powFu[#[[2]]]]&,relevantTopos]/.pattern->Pattern/.rule->RuleDelayed;
@@ -112,11 +124,18 @@ FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
 
 		FCPrint[3,"FCLoopFromGLI: Conversion rules: ", fromGliRule, FCDoControl->fgliVerbose];
 
-		listGLIEval = listGLI /. Dispatch[fromGliRule] /. powerHold->power;
+		If[	!MatchQ[listGLI,{__GLI}],
+			listGLIEval = (gliToFAD[#,fromGliRule, relevantTopos, optLoopMomenta]&/@listGLI) /. powerHold->power,
+			listGLIEval = listGLI /. Dispatch[fromGliRule] /. powerHold->power
+		];
+
+
+
+
 
 		FCPrint[3,"FCLoopFromGLI: Converted GLIs: ", listGLIEval, FCDoControl->fgliVerbose];
 
-		If[	!FreeQ2[listGLIEval,{GLI,power,powFu}],
+		If[	!FreeQ2[listGLIEval,{GLI,power,powFu,gliToFAD}],
 			Message[FCLoopFromGLI::failmsg, "Failed to eliminate some of the GLIs."];
 			Abort[]
 		];
@@ -147,6 +166,36 @@ FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
 
 		res
 	];
+
+gliToFAD[z_GLI, rule_List, _, _]:=
+	z /. rule;
+
+gliToFAD[Power[z_GLI, n_Integer?Positive], rule_List, topos_List, lmomFun_] :=
+	Times@@gliListEval[ConstantArray[z, n],rule,topos,lmomFun];
+
+
+gliToFAD[rest_, rule_List, topos_List,  lmomFun_] :=
+	Times@@gliListEval[Flatten[(List @@ rest) //. Power[z_GLI, n_Integer?Positive] :> List[ConstantArray[z, n]]], rule, topos, lmomFun]/;
+		MatchQ[rest, HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]];
+
+
+gliListEval[glis:{__GLI}, rule_List, topos_, lmomFun_]:=
+	MapIndexed[gliToFadRenameMomenta[#1, rule, FCLoopSelectTopology[#1,topos], lmomFun, First[#2]]&, glis];
+
+gliToFadRenameMomenta[z_GLI, rule_List, topo_FCTopology, lmomFun_, i_Integer?Positive]:=
+	Block[{lmoms, lmomsRule, res},
+		lmoms=topo[[3]];
+		lmomsRule = Thread[Rule[lmoms,Table[lmomFun[i,j],{j,1,Length[lmoms]}]]];
+		res = z /. Dispatch[rule] /. lmomsRule;
+		If[	!FreeQ2[res,lmoms],
+			Message[FCLoopFromGLI::failmsg, "Failed to rename loop momenta when converting a factorizing integral."];
+			Abort[]
+		];
+		res
+	];
+
+
+
 
 power[_. _FeynAmpDenominator, 0]:=
 	1;

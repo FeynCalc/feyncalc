@@ -86,6 +86,7 @@ Options[FCFeynmanPrepare] = {
 	Factoring 				-> {Factor2, 5000},
 	FinalSubstitutions		-> {},
 	Indexed					-> True,
+	LoopMomenta				-> Function[{x,y},FCGV["lmom"][x,y]],
 	LorentzIndexNames		-> FCGV["mu"],
 	Names					-> FCGV["x"],
 	Reduce					-> False,
@@ -93,44 +94,75 @@ Options[FCFeynmanPrepare] = {
 	TimeConstrained 		-> 3
 };
 
-FCFeynmanPrepare[gli_GLI, topo_FCTopology, opts:OptionsPattern[]] :=
-	Block[{int,optFinalSubstitutions},
+FCFeynmanPrepare[gli_, topo_FCTopology, opts:OptionsPattern[]] :=
+	Block[{int,optFinalSubstitutions, lmomsHead, lmoms, optLoopMomenta},
 
-		int = FCLoopFromGLI[gli, topo, FCI->OptionValue[FCI]];
+		optLoopMomenta = OptionValue[LoopMomenta];
+		lmomsHead = Head[optLoopMomenta[1,1]];
+
+		int = FCLoopFromGLI[gli, topo, FCI->OptionValue[FCI], LoopMomenta->optLoopMomenta];
 
 		If[	OptionValue[FCI],
 			optFinalSubstitutions = topo[[5]],
 			optFinalSubstitutions = FCI[topo[[5]]]
 		];
 
-		FCFeynmanPrepare[int, topo[[3]], Join[{FCI->True,FinalSubstitutions->optFinalSubstitutions},
+		If[	!FreeQ[int,lmomsHead],
+			lmoms = Join[Cases2[int,lmomsHead],topo[[3]]],
+			lmoms = topo[[3]]
+		];
+
+		FCFeynmanPrepare[int, lmoms, Join[{FCI->True,FinalSubstitutions->optFinalSubstitutions},
 			FilterRules[{opts}, Except[FCI | FinalSubstitutions]]]]
-	];
+	]/; MatchQ[gli, (_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..])];
 
 
-FCFeynmanPrepare[glis:{__GLI}, topos:{__FCTopology}, opts:OptionsPattern[]] :=
-	Block[{ints,finalSubstitutions,relTopos, lmomsList},
+FCFeynmanPrepare[glis_, topos:{__FCTopology}, opts:OptionsPattern[]] :=
+	Block[{	ints, finalSubstitutions, relTopos, lmomsList, optLoopMomenta,
+			lmomsHead},
 
-		ints = FCLoopFromGLI[glis, topos, FCI->OptionValue[FCI]];
+		If[	OptionValue[FCVerbose]===False,
+			fcszVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				fcszVerbose=OptionValue[FCVerbose]
+			];
+		];
 
-		relTopos=Map[First[Select[topos, Function[x, x[[1]] === #[[1]]]]] &, glis];
 
-		If[	!MatchQ[relTopos,{__FCTopology}],
+		optLoopMomenta = OptionValue[LoopMomenta];
+		lmomsHead = Head[optLoopMomenta[1,1]];
+
+		ints = FCLoopFromGLI[glis, topos, FCI->OptionValue[FCI], LoopMomenta->optLoopMomenta];
+
+		(*relTopos is a list of lists*)
+		relTopos= FCLoopSelectTopology[{#},topos]&/@glis;
+
+		If[	!MatchQ[relTopos,{{__FCTopology}..}],
 			Message[FCFeynmanPrepare::failmsg, "Something went wrong when extracting topologies relevant for the given GLIs."];
 			Abort[]
 		];
 
-		finalSubstitutions = #[[5]]&/@relTopos;
+		finalSubstitutions = Flatten /@ Map[Function[x, Map[#[[5]] &, x]], relTopos];
 
-		lmomsList = #[[3]]&/@relTopos;
+		(*TODO: Tricky, if different topologies define different substitutions w.r.t. to
+		the same scalar products ...*)
+
+		lmomsList = Union[Flatten[#[[3]]&/@Flatten[relTopos]]];
+
+		If[	!FreeQ[ints,lmomsHead],
+			lmomsList = Join[lmomsList,Cases2[ints,lmomsHead]];
+		];
+
+		FCPrint[1,"FCFeynmanPrepare: All loop momenta: ", lmomsList, FCDoControl->fcszVerbose];
+
 
 		If[	!OptionValue[FCI],
 			finalSubstitutions = FCI[finalSubstitutions]
 		];
 
-		MapThread[FCFeynmanPrepare[#1, #2, Join[{FCI->True,FinalSubstitutions->#3},
-			FilterRules[{opts}, Except[FCI | FinalSubstitutions]]]]&,{ints,lmomsList,finalSubstitutions}]
-	];
+		MapThread[FCFeynmanPrepare[#1, lmomsList, Join[{FCI->True,FinalSubstitutions->#2},
+			FilterRules[{opts}, Except[FCI | FinalSubstitutions]]]]&,{ints,finalSubstitutions}]
+	]/; MatchQ[glis,{(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..}];
 
 FCFeynmanPrepare[toposRaw: {__FCTopology}, opts:OptionsPattern[]]:=
 	FCFeynmanPrepare[#, opts]&/@toposRaw;
@@ -157,7 +189,7 @@ FCFeynmanPrepare[topoRaw_FCTopology, opts:OptionsPattern[]] :=
 
 
 
-FCFeynmanPrepare[expr_/;FreeQ[{GLI,FCTopology},expr], lmomsRaw_List /; !OptionQ[lmomsRaw], OptionsPattern[]] :=
+FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 	Block[{	feynX, propProduct, tmp, symF, symU, ex, spd, qkspd, mtmp,
 			matrix, nDenoms, res, constraint, tmp0, powers, lmoms,
 			optFinalSubstitutions, optNames, aux1, aux2, nProps, fpJ, fpQ,

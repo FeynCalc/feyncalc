@@ -122,6 +122,64 @@ FCTopology[
 topoBox1L, {SFAD[{q, m0^2}], SFAD[{q + p1, m1^2}],
 SFAD[{q + p2, m2^2}], SFAD[{q + p2, m3^2}]}, {q}, {p1, p2,
 p3}, {}, {}], FCE -> True]", "SFAD[{{q, 0}, {m0^2, 1}, n1}]*SFAD[{{p1 + q, 0},
-{m1^2, 1}, n2}]*SFAD[{{p2 + q, 0}, {m2^2, 1}, n3}]*SFAD[{{p2 + q, 0}, {m3^2, 1}, n4}]"}
+{m1^2, 1}, n2}]*SFAD[{{p2 + q, 0}, {m2^2, 1}, n3}]*SFAD[{{p2 + q, 0}, {m3^2, 1}, n4}]"},
+{"fcstFCLoopFromGLI-ID24",
+"FCLoopFromGLI[GLI[prop2Ltopo13311,{1,0,0,0,0}]^2,FCTopology[\
+prop2Ltopo13311,{SFAD[{{I*p1,0},{-m1^2,-1},1}],SFAD[{{I*(p1+q1),0},{-\
+m3^2,-1},1}],SFAD[{{I*p3,0},{-m3^2,-1},1}],SFAD[{{I*(p3+q1),0},{-m1^2,\
+-1},1}],SFAD[{{I*(p1-p3),0},{-m1^2,-1},1}]},{p1,p3},{q1},{SPD[q1,q1]\
+->m1^2},{}],LoopMomenta->Function[{x,y},lm[x,y]],\[IndentingNewLine]\
+FCE->True]",
+"SFAD[{{I*lm[1, 1], 0}, {-m1^2, -1}, 1}]*SFAD[{{I*lm[2, 1], 0}, \
+{-m1^2, -1}, 1}]"},
+{"fcstFCLoopFromGLI-ID25",
+"FCLoopFromGLI[GLI[prop2Ltopo13311,{1,0,0,0,0}]^2GLI[\
+prop2Ltopo13311,{1,0,0,0,1}],FCTopology[prop2Ltopo13311,{SFAD[{{I*p1,\
+0},{-m1^2,-1},1}],SFAD[{{I*(p1+q1),0},{-m3^2,-1},1}],SFAD[{{I*p3,0},{-\
+m3^2,-1},1}],SFAD[{{I*(p3+q1),0},{-m1^2,-1},1}],SFAD[{{I*(p1-p3),0},{-\
+m1^2,-1},1}]},{p1,p3},{q1},{SPD[q1,q1]->m1^2},{}],\
+LoopMomenta->Function[{x,y},lm[x,y]],\[IndentingNewLine]FCE->True]",
+"SFAD[{{I*lm[1, 1], 0}, {-m1^2, -1}, 1}]*SFAD[{{I*lm[2, 1], 0}, \
+{-m1^2, -1}, 1}]*SFAD[{{I*lm[3, 1], 0}, {-m1^2, -1}, \
+1}]*SFAD[{{I*(lm[3, 1] - lm[3, 2]), 0}, {-m1^2, -1}, 1}]"},
+{"fcstFCLoopFromGLI-ID26",
+"FCLoopFromGLI[GLI[prop2Ltopo13311,{1,0,0,0,0}]^2GLI[\
+prop2Ltopo13311,{1,0,0,0,1}]^4,FCTopology[prop2Ltopo13311,{SFAD[{{I*\
+p1,0},{-m1^2,-1},1}],SFAD[{{I*(p1+q1),0},{-m3^2,-1},1}],SFAD[{{I*p3,0}\
+,{-m3^2,-1},1}],SFAD[{{I*(p3+q1),0},{-m1^2,-1},1}],SFAD[{{I*(p1-p3),0}\
+,{-m1^2,-1},1}]},{p1,p3},{q1},{SPD[q1,q1]->m1^2},{}],\
+LoopMomenta->Function[{x,y},lm[x,y]],\[IndentingNewLine]FCE->True]",
+"SFAD[{{I*lm[1, 1], 0}, {-m1^2, -1}, 1}]*SFAD[{{I*lm[2, 1], 0}, \
+{-m1^2, -1}, 1}]*SFAD[{{I*lm[3, 1], 0}, {-m1^2, -1}, \
+1}]*SFAD[{{I*(lm[3, 1] - lm[3, 2]), 0}, {-m1^2, -1}, \
+1}]*SFAD[{{I*lm[4, 1], 0}, {-m1^2, -1}, 1}]*SFAD[{{I*(lm[4, 1] - \
+lm[4, 2]), 0}, {-m1^2, -1}, 1}]*SFAD[{{I*lm[5, 1], 0}, {-m1^2, -1}, \
+1}]*SFAD[{{I*(lm[5, 1] - lm[5, 2]), 0}, {-m1^2, -1}, \
+1}]*SFAD[{{I*lm[6, 1], 0}, {-m1^2, -1}, 1}]*SFAD[{{I*(lm[6, 1] - \
+lm[6, 2]), 0}, {-m1^2, -1}, 1}]"},
+{"fcstFCLoopFromGLI-ID27",
+"FCLoopFromGLI[{GLI[prop2Ltopo13311,{1,0,0,0,0}]^2,GLI[\
+prop2Ltopo13311,{1,0,0,0,0}]^2GLI[prop2Ltopo13311,{1,0,0,0,1}],\
+\[IndentingNewLine]GLI[prop2Ltopo13311,{1,0,0,0,0}]^2GLI[\
+prop2Ltopo13311,{1,0,0,0,1}]GLI[prop2Ltopo13311,{1,0,1,0,1}]\
+\[IndentingNewLine]GLI[prop2Ltopo13311,{1,0,0,0,0}]^2GLI[\
+prop2Ltopo13311,{1,0,0,0,1}]\[IndentingNewLine]},FCTopology[\
+prop2Ltopo13311,{SFAD[{{I*p1,0},{-m1^2,-1},1}],SFAD[{{I*(p1+q1),0},{-\
+m3^2,-1},1}],SFAD[{{I*p3,0},{-m3^2,-1},1}],SFAD[{{I*(p3+q1),0},{-m1^2,\
+-1},1}],SFAD[{{I*(p1-p3),0},{-m1^2,-1},1}]},{p1,p3},{q1},{SPD[q1,q1]\
+->m1^2},{}],LoopMomenta->Function[{x,y},lm[x,y]],\[IndentingNewLine]\
+FCE->True]",
+"{SFAD[{{I*lm[1, 1], 0}, {-m1^2, -1}, 1}]*SFAD[{{I*lm[2, 1], 0}, \
+{-m1^2, -1}, 1}], SFAD[{{I*lm[1, 1], 0}, {-m1^2, -1}, \
+1}]*SFAD[{{I*lm[2, 1], 0}, {-m1^2, -1}, 1}]*SFAD[{{I*lm[3, 1], 0}, \
+{-m1^2, -1}, 1}]*SFAD[{{I*(lm[3, 1] - lm[3, 2]), 0}, {-m1^2, -1}, \
+1}], SFAD[{{I*lm[1, 1], 0}, {-m1^2, -1}, 1}]*SFAD[{{I*lm[2, 1], 0}, \
+{-m1^2, -1}, 1}]*SFAD[{{I*lm[3, 1], 0}, {-m1^2, -1}, \
+1}]*SFAD[{{I*lm[4, 1], 0}, {-m1^2, -1}, 1}]*SFAD[{{I*lm[5, 1], 0}, \
+{-m1^2, -1}, 1}]*SFAD[{{I*(lm[5, 1] - lm[5, 2]), 0}, {-m1^2, -1}, \
+1}]*SFAD[{{I*lm[6, 1], 0}, {-m1^2, -1}, 1}]*SFAD[{{I*(lm[6, 1] - \
+lm[6, 2]), 0}, {-m1^2, -1}, 1}]*SFAD[{{I*lm[7, 1], 0}, {-m1^2, -1}, \
+1}]*SFAD[{{I*(lm[7, 1] - lm[7, 2]), 0}, {-m1^2, -1}, \
+1}]*SFAD[{{I*lm[7, 2], 0}, {-m3^2, -1}, 1}]}"}
 });
 

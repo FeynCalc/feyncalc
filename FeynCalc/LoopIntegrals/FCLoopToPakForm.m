@@ -104,7 +104,7 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 
 		Which[
 			(*Single integral *)
-			MatchQ[ex,_. _FeynAmpDenominator] || MatchQ[ex, _GLI | _FCTopology],
+			MatchQ[ex,_. _FeynAmpDenominator] || MatchQ[ex, (_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) | _FCTopology],
 				notList = True;
 				tmp =	FCFeynmanPrepare[ex, lmoms, FCI -> True, FinalSubstitutions -> optFinalSubstitutions,
 				Names -> OptionValue[Names], Indexed -> OptionValue[Indexed], Check->OptionValue[Check],
@@ -112,7 +112,7 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 				tmp = {tmp};
 				ex = {ex},
 			(*List of integrals *)
-			MatchQ[ex, {__GLI} | {__FCTopology}],
+			MatchQ[ex, {(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..} | {__FCTopology}],
 				tmp =	FCFeynmanPrepare[ex, lmoms, FCI -> True, FinalSubstitutions -> optFinalSubstitutions,
 				Names -> OptionValue[Names], Indexed -> OptionValue[Indexed], Check->OptionValue[Check],
 				Collecting -> OptionValue[Collecting]],
@@ -127,6 +127,8 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 		];
 
 		FCPrint[1, "FCLoopToPakForm: FCFeynmanPrepare done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctpfVerbose];
+
+		FCPrint[3, "FCLoopToPakForm: Output of FCFeynmanPrepare: ", tmp, FCDoControl->fctpfVerbose];
 
 		time=AbsoluteTime[];
 		FCPrint[1, "FCLoopToPakForm: Calling pakProcess.", FCDoControl -> fctpfVerbose];
@@ -192,6 +194,7 @@ pakProcess[{uPolyRaw_, fPolyRaw_, powsRaw_List, matRaw_List, QRaw_List, JRaw_, t
 
 				time=AbsoluteTime[];
 				FCPrint[2, "FCLoopToPakForm: pakProcess: Calling FCPakOrder.", FCDoControl -> fctpfVerbose];
+
 				sigma = FCLoopPakOrder[pPoly, pVars] // First;
 				FCPrint[2, "FCLoopToPakForm: pakProcess: FCPakOrder done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctpfVerbose];
 

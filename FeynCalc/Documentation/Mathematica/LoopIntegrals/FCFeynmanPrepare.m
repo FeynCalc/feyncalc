@@ -104,3 +104,17 @@ FCFeynmanPrepare[{topo1,topo2},Names->x]
 
 
 FCFeynmanPrepare[{GLI["prop2Lv1",{1,1,1,1,0}],GLI["prop2Lv2",{1,1,0,0,1}]},{topo1,topo2},Names->x]
+
+
+(* ::Text:: *)
+(*`FCFeynmanPrepare` can also handle products of `GLI`s.  In this case it will automatically introduce dummy names for the loop momenta (the name generation is controlled by the `LoopMomentum` option).*)
+
+
+topo=FCTopology[
+prop2Ltopo13311,{SFAD[{{I*p1,0},{-m1^2,-1},1}],SFAD[{{I*(p1+q1),0},{-
+m3^2,-1},1}],SFAD[{{I*p3,0},{-m3^2,-1},1}],SFAD[{{I*(p3+q1),0},{-m1^2,
+-1},1}],SFAD[{{I*(p1-p3),0},{-m1^2,-1},1}]},{p1,p3},{q1},{SPD[q1,q1]->m1^2},{}]
+
+
+FCFeynmanPrepare[GLI[prop2Ltopo13311,{1,0,0,0,0}]^2,topo,Names->x,FCE->True,
+LoopMomenta->Function[{x,y},lmom[x,y]]]

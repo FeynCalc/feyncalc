@@ -73,7 +73,7 @@ FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 		FCPrint[3, "FCLoopFindIntegralMappings: Entering with: ", exprRaw, FCDoControl -> fcfpmVerbose];
 		FCPrint[3, "FCLoopFindIntegralMappings: and: ", lmomsRaw, FCDoControl -> fcfpmVerbose];
 
-		If[	(optPreferredIntegrals=!={}) && !MatchQ[optPreferredIntegrals,{__GLI}],
+		If[	(optPreferredIntegrals=!={}) && !MatchQ[optPreferredIntegrals,{(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..}],
 			Message[FCLoopFindIntegralMappings::failmsg,"Incorrect value of the PreferredIntegrals option."];
 			Abort[]
 		];
@@ -83,7 +83,7 @@ FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 			lmoms=lmomsRaw
 		];
 
-		If[	MatchQ[exprRaw,{__GLI}],
+		If[	MatchQ[exprRaw,{(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..}],
 			expr = Union[Join[exprRaw,optPreferredIntegrals]],
 			expr = exprRaw
 		];
@@ -118,7 +118,7 @@ FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 		(*TODO Filter out preferred masters that do not occur here*)
 
 		(*Only return replacement rules if the input is a list of GLIs and the List option is set to False*)
-		If[	!OptionValue[List] && MatchQ[expr,{__GLI}],
+		If[	!OptionValue[List] && MatchQ[expr,{(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..}],
 
 				res = makeMappingRules[#,optPreferredIntegrals]&/@res;
 
