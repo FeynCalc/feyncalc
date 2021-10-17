@@ -62,3 +62,15 @@ FCLoopIntegralToGraph[GLI[topo1, {1, 1, 1, 1, 1, 1}],
 ```
 
 $$\left\{\{-3\to 2,-1\to 1,1\to 3,1\to 4,2\to 3,2\to 4,3\to 4,3\to 4\},\left\{q,q,\{\text{k2},1,0\},\{q-\text{k2},1,0\},\{\text{k1},1,0\},\{q-\text{k1},1,0\},\left\{\text{k2}-\text{k3},1,-\text{mb}^2\right\},\left\{\text{k1}-\text{k3},1,-\text{mb}^2\right\}\right\},\left\{0,0,\frac{1}{(\text{k2}^2+i \eta )},\frac{1}{(\text{k1}^2+i \eta )},\frac{1}{((q-\text{k2})^2+i \eta )},\frac{1}{((q-\text{k1})^2+i \eta )},\frac{1}{((\text{k2}-\text{k3})^2-\text{mb}^2+i \eta )},\frac{1}{((\text{k1}-\text{k3})^2-\text{mb}^2+i \eta )}\right\},1\right\}$$
+
+If the second argument contains multiple topologies, the function will automatically select the relevant ones.
+
+```mathematica
+FCLoopIntegralToGraph[GLI[topo1, {1, 1, 1, 0, 0, 0}], {FCTopology[topo1, {FAD[q - k1], FAD[k1], FAD[q - k2], FAD[k2], 
+     FAD[{k2 - k3, mb}], FAD[{k1 - k3, mb}]}, {k1, k2, k3}, {q}, {}, {}], 
+   FCTopology[topo2, {FAD[q - k1], FAD[k1], FAD[q - k2], FAD[k2], 
+     FAD[{k2 - k3, mg}], FAD[{k1 - k3, mg}]}, {k1, k2, k3}, {q}, {}, {}] 
+  }]
+```
+
+$$\left\{\{-3\to 2,-1\to 1,1\to 2,1\to 2,2\to 2\},\{q,q,\{\text{k1},1,0\},\{q-\text{k1},1,0\},\{q-\text{k2},1,0\}\},\left\{0,0,\frac{1}{(\text{k1}^2+i \eta )},\frac{1}{((q-\text{k2})^2+i \eta )},\frac{1}{((q-\text{k1})^2+i \eta )}\right\},1\right\}$$

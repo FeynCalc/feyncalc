@@ -73,7 +73,7 @@ FCFeynmanPrepare[{FAD[{q, m}], FAD[{q - p, m2}], FVD[q, \[Mu]] FVD[q, \[Nu]] FVD
 $$\left\{x(1)+x(2),m^2 x(1)^2+m^2 x(1) x(2)+\text{m2}^2 x(2)^2+\text{m2}^2 x(1) x(2)-p^2 x(1) x(2),\left(
 \begin{array}{ccc}
  x(1) & \frac{1}{q^2-m^2} & 1 \\
- x(2) & \frac{1}{(q-p)^2-\text{m2}^2} & 1 \\
+ x(2) & \frac{1}{(p-q)^2-\text{m2}^2} & 1 \\
 \end{array}
 \right),\left(
 \begin{array}{c}
@@ -91,9 +91,9 @@ $$\left\{x(1) x(2)+x(3) x(2)+x(5) x(2)+x(1) x(4)+x(3) x(4)+x(1) x(5)+x(3) x(5)+x
 \begin{array}{ccc}
  x(1) & \frac{1}{\text{p1}^2} & 1 \\
  x(2) & \frac{1}{\text{p2}^2} & 1 \\
- x(3) & \frac{1}{(Q-\text{p1})^2} & 1 \\
- x(4) & \frac{1}{(Q-\text{p2})^2} & 1 \\
- x(5) & \frac{1}{(-\text{p1}-\text{p2}+Q)^2} & 1 \\
+ x(3) & \frac{1}{(\text{p1}-Q)^2} & 1 \\
+ x(4) & \frac{1}{(\text{p2}-Q)^2} & 1 \\
+ x(5) & \frac{1}{(\text{p1}+\text{p2}-Q)^2} & 1 \\
 \end{array}
 \right),\left(
 \begin{array}{cc}
@@ -112,8 +112,8 @@ $$\left\{(x(1)+x(3)) (x(2)+x(4)),\text{m1}^2 x(1)^2 x(2)+\text{m1}^2 x(1) x(2) x
 \begin{array}{ccc}
  x(1) & \frac{1}{\text{p1}^2-\text{m1}^2} & 1 \\
  x(2) & \frac{1}{\text{p2}^2-\text{m2}^2} & 1 \\
- x(3) & \frac{1}{(Q-\text{p1})^2} & 1 \\
- x(4) & \frac{1}{(Q-\text{p2})^2} & 1 \\
+ x(3) & \frac{1}{(\text{p1}-Q)^2} & 1 \\
+ x(4) & \frac{1}{(\text{p2}-Q)^2} & 1 \\
 \end{array}
 \right),\left(
 \begin{array}{cc}
@@ -131,7 +131,7 @@ FCFeynmanPrepare[CSPD[q, p] CFAD[{q, m}, {q - p, m2}], {q}, Names -> x]
 $$\left\{x(1)+x(2),\frac{1}{4} \left(4 m x(1)^2+4 m x(2) x(1)+4 \;\text{m2} x(2) x(1)+4 \;\text{m2} x(2)^2+4 p^2 x(2) x(1)-p^2 x(3)^2+4 p^2 x(2) x(3)\right),\left(
 \begin{array}{ccc}
  x(1) & \frac{1}{(q^2+m-i \eta )} & 1 \\
- x(2) & \frac{1}{((q-p)^2+\text{m2}-i \eta )} & 1 \\
+ x(2) & \frac{1}{((p-q)^2+\text{m2}-i \eta )} & 1 \\
  x(3) & p\cdot q & -1 \\
 \end{array}
 \right),\left(
@@ -240,3 +240,31 @@ $$\left(
 \right) & \{0,0\} & \;\text{m1}^2 (-x(1))-\text{m2}^2 x(3) & 1 & 0 \\
 \end{array}
 \right)$$
+
+`FCFeynmanPrepare` can also handle products of `GLI`s.  In this case it will automatically introduce dummy names for the loop momenta (the name generation is controlled by the `LoopMomentum` option).
+
+```mathematica
+topo = FCTopology[
+   prop2Ltopo13311, {SFAD[{{I*p1, 0}, {-m1^2, -1}, 1}], SFAD[{{I*(p1 + q1), 0}, {-
+        m3^2, -1}, 1}], SFAD[{{I*p3, 0}, {-m3^2, -1}, 1}], SFAD[{{I*(p3 + q1), 0}, {-m1^2, 
+       -1}, 1}], SFAD[{{I*(p1 - p3), 0}, {-m1^2, -1}, 1}]}, {p1, p3}, {q1}, {SPD[q1, q1] -> m1^2}, {}]
+```
+
+$$\text{FCTopology}\left(\text{prop2Ltopo13311},\left\{\frac{1}{(-\text{p1}^2+\text{m1}^2-i \eta )},\frac{1}{(-(\text{p1}+\text{q1})^2+\text{m3}^2-i \eta )},\frac{1}{(-\text{p3}^2+\text{m3}^2-i \eta )},\frac{1}{(-(\text{p3}+\text{q1})^2+\text{m1}^2-i \eta )},\frac{1}{(-(\text{p1}-\text{p3})^2+\text{m1}^2-i \eta )}\right\},\{\text{p1},\text{p3}\},\{\text{q1}\},\left\{\text{q1}^2\to \;\text{m1}^2\right\},\{\}\right)$$
+
+```mathematica
+FCFeynmanPrepare[GLI[prop2Ltopo13311, {1, 0, 0, 0, 0}]^2, topo, Names -> x, FCE -> True, 
+  LoopMomenta -> Function[{x, y}, lmom[x, y]]]
+```
+
+$$\left\{x(1) x(2),-\text{m1}^2 x(1) x(2) (x(1)+x(2)),\left(
+\begin{array}{ccc}
+ x(1) & \frac{1}{(-\text{lmom}(1,1)^2+\text{m1}^2-i \eta )} & 1 \\
+ x(2) & \frac{1}{(-\text{lmom}(2,1)^2+\text{m1}^2-i \eta )} & 1 \\
+\end{array}
+\right),\left(
+\begin{array}{cc}
+ -x(1) & 0 \\
+ 0 & -x(2) \\
+\end{array}
+\right),\{0,0\},\text{m1}^2 (x(1)+x(2)),1,0\right\}$$

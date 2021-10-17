@@ -40,7 +40,7 @@ FCLoopFromGLI[GLI["topoXYZ",{1,1,1,1,1}],topos]
 
 
 (* ::Text:: *)
-(*`FCLoopFromGLI` can also handle products of `GLI`s (currently only for standalone integrals or lists of integrals but not for amplitudes). *)
+(*`FCLoopFromGLI` can also handle products of `GLI`s (currently only for standalone integrals or lists of integrals but not for amplitudes).*)
 (*In this case it will automatically introduce dummy names for the loop momenta.*)
 
 

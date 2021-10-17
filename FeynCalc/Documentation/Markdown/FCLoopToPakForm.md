@@ -66,3 +66,21 @@ $$\left(
 \right)\right) \\
 \end{array}
 \right)$$
+
+Products of `GLI`s are also supported.
+
+```mathematica
+FCLoopToPakForm[{GLI["prop2Lv1", {1, 1, 0, 0, 0}]^2}, {topo1, topo2}, Names -> x, Head -> ph, Power -> pow]
+```
+
+$$\left(
+\begin{array}{cc}
+ G^{\text{prop2Lv1}}(1,1,0,0,0)^2 & \;\text{ph}\left(\text{m1}^2 x(2) x(3) x(4) x(1)^2+\text{m1}^2 x(2)^2 x(3) x(4) x(1)+\text{m2}^2 x(2) x(3) x(4)^2 x(1)+\text{m2}^2 x(2) x(3)^2 x(4) x(1)+x(2) x(3) x(4) x(1),\left(
+\begin{array}{cccc}
+ x(1) & x(3) & x(2) & x(4) \\
+ \frac{1}{(\text{FCGV}(\text{lmom})(1,1)^2-\text{m1}^2+i \eta )} & \frac{1}{(\text{FCGV}(\text{lmom})(2,1)^2-\text{m1}^2+i \eta )} & \frac{1}{(\text{FCGV}(\text{lmom})(1,2)^2-\text{m2}^2+i \eta )} & \frac{1}{(\text{FCGV}(\text{lmom})(2,2)^2-\text{m2}^2+i \eta )} \\
+ 1 & 1 & 1 & 1 \\
+\end{array}
+\right)\right) \\
+\end{array}
+\right)$$

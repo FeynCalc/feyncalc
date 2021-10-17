@@ -49,6 +49,7 @@ $$\left(
 If the input is a list of `GLI`-integrals, `FCLoopFindIntegralMappings` will return a list containing two sublists. The former will be a list of replacement rules while the latter will contain all unique master integrals
 
 ```mathematica
+ClearAll[topo1, topo2];
 topos = {
    FCTopology[topo1, {SFAD[{p1, m^2}], SFAD[{p2, m^2}]}, {p1, p2}, {}, {}, {}], 
    FCTopology[topo2, {SFAD[{p3, m^2}], SFAD[{p4, m^2}]}, {p3, p4}, {}, {}, {}] 
@@ -87,5 +88,61 @@ $$\left(
 \begin{array}{ccc}
  G^{\text{topo1}}(1,1)\to G^{\text{topo2}}(1,1) & G^{\text{topo1}}(1,2)\to G^{\text{topo2}}(2,1) & G^{\text{topo1}}(2,1)\to G^{\text{topo2}}(2,1) \\
  G^{\text{topo2}}(1,1) & G^{\text{topo2}}(2,1) & G^{\text{topo2}}(2,2) \\
+\end{array}
+\right)$$
+
+The indices of `GLI`s do not have to be integers
+
+```mathematica
+topos = {
+   FCTopology[prop2LtopoG20, {SFAD[{{p1, 0}, {0, 1}, 1}], 
+     SFAD[{{p1 + q1, 0}, {m3^2, 1}, 1}], SFAD[{{p3, 0}, {0, 1}, 1}], 
+     SFAD[{{p3 + q1, 0}, {0, 1}, 1}], SFAD[{{p1 - p3, 0}, {0, 1}, 1}]}, 
+    {p1, p3}, {q1}, {}, {}], 
+   FCTopology[prop2LtopoG21, {SFAD[{{p1, 0}, {m1^2, 1}, 1}], 
+     SFAD[{{p1 + q1, 0}, {m3^2, 1}, 1}], 
+     SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p3 + q1, 0}, {0, 1}, 1}], 
+     SFAD[{{p1 - p3, 0}, {0, 1}, 1}]}, {p1, p3}, {q1}, {}, {}] 
+  }
+```
+
+$$\left\{\text{FCTopology}\left(\text{prop2LtopoG20},\left\{\frac{1}{(\text{p1}^2+i \eta )},\frac{1}{((\text{p1}+\text{q1})^2-\text{m3}^2+i \eta )},\frac{1}{(\text{p3}^2+i \eta )},\frac{1}{((\text{p3}+\text{q1})^2+i \eta )},\frac{1}{((\text{p1}-\text{p3})^2+i \eta )}\right\},\{\text{p1},\text{p3}\},\{\text{q1}\},\{\},\{\}\right),\text{FCTopology}\left(\text{prop2LtopoG21},\left\{\frac{1}{(\text{p1}^2-\text{m1}^2+i \eta )},\frac{1}{((\text{p1}+\text{q1})^2-\text{m3}^2+i \eta )},\frac{1}{(\text{p3}^2+i \eta )},\frac{1}{((\text{p3}+\text{q1})^2+i \eta )},\frac{1}{((\text{p1}-\text{p3})^2+i \eta )}\right\},\{\text{p1},\text{p3}\},\{\text{q1}\},\{\},\{\}\right)\right\}$$
+
+```mathematica
+FCLoopFindIntegralMappings[{GLI[prop2LtopoG21, {0, n1, n2, n3, n4}], 
+   GLI[prop2LtopoG20, {0, n1, n2, n3, n4}]}, topos]
+```
+
+$$\left(
+\begin{array}{c}
+ G^{\text{prop2LtopoG21}}(0,\text{n1},\text{n2},\text{n3},\text{n4})\to G^{\text{prop2LtopoG20}}(0,\text{n1},\text{n2},\text{n3},\text{n4}) \\
+ G^{\text{prop2LtopoG20}}(0,\text{n1},\text{n2},\text{n3},\text{n4}) \\
+\end{array}
+\right)$$
+
+It is also possible to find mappings for factorizing integrals, provided that suitable products of integrals are given as preferred integrals
+
+```mathematica
+topos = {FCTopology[prop2Ltopo31313, {SFAD[{{
+        I p1, 0}, {-m3^2, -1}, 1}], SFAD[{{I (p1 + q1), 0}, {-m1^2, -1}, 1}], SFAD[{{
+        I p3, 0}, {-m3^2, -1}, 1}], SFAD[{{I 
+         (p3 + q1), 0}, {-m1^2, -1}, 1}], SFAD[{{
+        I (p1 - p3), 0}, {-m3^2, -1}, 1}]}, {p1, p3}, {q1}, {SPD[q1, q1] -> m1^2}, {}], 
+   FCTopology[tad1Ltopo2, {SFAD[{{I p1, 0}, {-m3^2, -1}, 1}]}, {p1}, {}, {SPD[q1,q1] -> m1^2}, {}]}
+```
+
+$$\left\{\text{FCTopology}\left(\text{prop2Ltopo31313},\left\{\frac{1}{(-\text{p1}^2+\text{m3}^2-i \eta )},\frac{1}{(-(\text{p1}+\text{q1})^2+\text{m1}^2-i \eta )},\frac{1}{(-\text{p3}^2+\text{m3}^2-i \eta )},\frac{1}{(-(\text{p3}+\text{q1})^2+\text{m1}^2-i \eta )},\frac{1}{(-(\text{p1}-\text{p3})^2+\text{m3}^2-i \eta )}\right\},\{\text{p1},\text{p3}\},\{\text{q1}\},\left\{\text{q1}^2\to \;\text{m1}^2\right\},\{\}\right),\text{FCTopology}\left(\text{tad1Ltopo2},\left\{\frac{1}{(-\text{p1}^2+\text{m3}^2-i \eta )}\right\},\{\text{p1}\},\{\},\left\{\text{q1}^2\to \;\text{m1}^2\right\},\{\}\right)\right\}$$
+
+Here we ask the function to map all products of two 1-loop tadpoles to `GLI[tad1Ltopo2,{1}]^2`
+
+```mathematica
+FCLoopFindIntegralMappings[{GLI[tad1Ltopo2, {1}]^2, 
+   GLI[prop2Ltopo31313, {0, 0, 1, 0, 1}]}, topos, PreferredIntegrals -> {GLI[tad1Ltopo2, {1}]^2}]
+```
+
+$$\left(
+\begin{array}{c}
+ G^{\text{prop2Ltopo31313}}(0,0,1,0,1)\to G^{\text{tad1Ltopo2}}(1)^2 \\
+ G^{\text{tad1Ltopo2}}(1)^2 \\
 \end{array}
 \right)$$
