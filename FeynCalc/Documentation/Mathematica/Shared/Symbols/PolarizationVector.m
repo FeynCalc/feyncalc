@@ -8,11 +8,31 @@
 
 
 (* ::Text:: *)
-(*`PolarizationVector[p, mu]` denotes a 4-dimensional polarization vector $\varepsilon^\mu(p)$.*)
+(*`PolarizationVector[p, mu]` denotes a 4-dimensional ingoing polarization vector $\varepsilon^\mu(p)$.*)
+
+
+(* ::Text:: *)
+(*For the outgoing polarization vector $\varepsilon^{\ast \mu}(p)$ use `ComplexConjugate[PolarizationVector[p, mu]]`*)
 
 
 (* ::Text:: *)
 (*To obtain a $D$-dimensional polarization vector, just use `ChangeDimension[vec, D]`*)
+
+
+(* ::Text:: *)
+(*In the internal representation following conventions are used*)
+
+
+(* ::Text:: *)
+(*- `Pair[Momentum[k], Momentum[Polarization[k, I]]]` corresponds to $\varepsilon^{\mu}(k)$, i.e. an ingoing polarization vector*)
+
+
+(* ::Text:: *)
+(*- `Pair[Momentum[k], Momentum[Polarization[k, -I]]]` corresponds to $\varepsilon^{\ast \mu}(k)$, i.e. an outgoing polarization vector*)
+
+
+(* ::Text:: *)
+(*Warning: The first argument of `PolarizationVector` should always be a standalone symbol denoting a momentum (e.g. `p`, `k1`, `q2` etc.). Never use symbols multiplied by $-1$ or other numbers as well as products of symbols (e.g. `-p`, `2*k`, `x*p` etc.). Doing so will inevitably lead to wrong results.*)
 
 
 (* ::Subsection:: *)
