@@ -56,20 +56,35 @@ End[]
 
 Begin["`DoPolarizationSums`Private`"]
 
+dpsVerbose::usage="";
+
 Options[DoPolarizationSums] = {
-	Contract -> True,
-	ExtraFactor -> 1,
-	FCE -> False,
-	FCI -> False,
-	GaugeTrickN -> 2,
-	Head -> Identity,
-	VirtualBoson -> False
+	Contract		-> True,
+	ExtraFactor 	-> 1,
+	FCE				-> False,
+	FCI				-> False,
+	FCVerbose		-> False,
+	GaugeTrickN 	-> 2,
+	Head			-> Identity,
+	VirtualBoson	-> False
 };
 
 DoPolarizationSums[expr_, vectors:Except[_?OptionQ].., OptionsPattern[]] :=
-	Block[ {polInd1,polInd2,res,ex ,tmp,dim,kk,polList,freePart,polPart,head1=Null,head2=Null},
+	Block[ {polInd1,polInd2,res,ex ,tmp,dim,bosonMomentum,polVectorsList,freePart,polPart,head1=Null,head2=Null},
 
-		kk = {vectors}[[1]];
+		If [OptionValue[FCVerbose]===False,
+			dpsVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				dpsVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		FCPrint[1,"ComplexConjugate: Entering.", FCDoControl->dpsVerbose];
+		FCPrint[3,"ComplexConjugate: Entering with: ", expr, FCDoControl->dpsVerbose];
+
+		bosonMomentum = {vectors}[[1]];
+
+		FCPrint[1,"ComplexConjugate: Vector boson momentum: ", bosonMomentum, FCDoControl->dpsVerbose];
 
 		If[ OptionValue[FCI],
 			ex = expr,
@@ -79,28 +94,36 @@ DoPolarizationSums[expr_, vectors:Except[_?OptionQ].., OptionsPattern[]] :=
 		polInd1 = $MU[Unique[]];
 		polInd2 = $MU[Unique[]];
 
-		polList = SelectNotFree[SelectNotFree[Sort[DeleteDuplicates[Cases[ex,_Momentum | _CartesianMomentum,Infinity]]],Polarization],kk];
+		polVectorsList = SelectNotFree[SelectNotFree[Sort[DeleteDuplicates[Cases[ex,_Momentum | _CartesianMomentum,Infinity]]],Polarization],bosonMomentum];
 
-		If[	polList=!={},
+		FCPrint[1,"ComplexConjugate: Polarization vectors present in the expression: ", polVectorsList, FCDoControl->dpsVerbose];
 
-			If[	!MatchQ[polList, {
-					(CartesianMomentum|Momentum)[Polarization[kk,Complex[0,1], ___Rule],di___],
-					(CartesianMomentum|Momentum)[Polarization[kk,Complex[0,-1], ___Rule],di___]} | {
-					(CartesianMomentum|Momentum)[Polarization[kk,Complex[0,-1], ___Rule],di___],
-					(CartesianMomentum|Momentum)[Polarization[kk,Complex[0,1], ___Rule],di___]}],
-				Print[StandardForm[polList]];
-				Message[DoPolarizationSums::failmsg,"Polarization vector do not seem to appear in a proper way in the expression."];
+		If[	polVectorsList=!={},
+
+			If[	!MatchQ[polVectorsList, {
+					(CartesianMomentum|Momentum)[Polarization[bosonMomentum,Complex[0,1], ___Rule],di___],
+					(CartesianMomentum|Momentum)[Polarization[bosonMomentum,Complex[0,-1], ___Rule],di___]} | {
+					(CartesianMomentum|Momentum)[Polarization[bosonMomentum,Complex[0,-1], ___Rule],di___],
+					(CartesianMomentum|Momentum)[Polarization[bosonMomentum,Complex[0,1], ___Rule],di___]}],
+				Print[StandardForm[polVectorsList]];
+				Message[DoPolarizationSums::failmsg,"Polarization vectors do not seem to appear in a proper way in the expression."];
 				Abort[]
 			];
 
-			dim = FCGetDimensions[polList,ChangeDimension->True]//First;
+			dim = FCGetDimensions[polVectorsList,ChangeDimension->True]//First;
+
+			FCPrint[1,"ComplexConjugate: Spacetime dimension: ", dim, FCDoControl->dpsVerbose];
 
 			tmp = ex/.{
-				Momentum[Polarization[kk,Complex[0,1], ___Rule],dim] :> (head1=LorentzIndex; LorentzIndex[polInd1,dim]),
-				CartesianMomentum[Polarization[kk,Complex[0,1], ___Rule],dim-1] :> (head1=CartesianIndex; CartesianIndex[polInd1,dim-1]),
+				Momentum[Polarization[bosonMomentum,Complex[0,1], ___Rule],dim] :>
+					(head1=LorentzIndex; LorentzIndex[polInd1,dim]),
+				CartesianMomentum[Polarization[bosonMomentum,Complex[0,1], ___Rule],dim-1] :>
+					(head1=CartesianIndex; CartesianIndex[polInd1,dim-1]),
 
-				Momentum[Polarization[kk,Complex[0,-1], ___Rule],dim] :> (head2=LorentzIndex; LorentzIndex[polInd2,dim]),
-				CartesianMomentum[Polarization[kk,Complex[0,-1], ___Rule],dim-1] :> (head2=CartesianIndex; CartesianIndex[polInd2,dim-1])
+				Momentum[Polarization[bosonMomentum,Complex[0,-1], ___Rule],dim] :>
+					(head2=LorentzIndex; LorentzIndex[polInd2,dim]),
+				CartesianMomentum[Polarization[bosonMomentum,Complex[0,-1], ___Rule],dim-1] :>
+					(head2=CartesianIndex; CartesianIndex[polInd2,dim-1])
 			};
 
 			{freePart, polPart} = FCSplit[tmp,{polInd1,polInd2}],
@@ -110,19 +133,27 @@ DoPolarizationSums[expr_, vectors:Except[_?OptionQ].., OptionsPattern[]] :=
 			polPart = 0;
 		];
 
-		Which[
-			Length[{vectors}] === 1 && kk=!=0,
-				If[ polPart=!=0,
-					polPart = OptionValue[Head][PolarizationSum[polInd1,polInd2,kk, Dimension->dim, Heads->{head1,head2}]] polPart
-				];
-				freePart = 3 freePart,
+		If[	freePart=!=0,
+			FCPrint[0,"ComplexConjugate: The input expression contains terms free of polarization vectors. Those will be multiplied with the number of polarizations.", FCDoControl->dpsVerbose]
+		];
 
-			Length[{vectors}] === 2 && kk=!=0,
+		Which[
+			(*massive vector boson*)
+			Length[{vectors}] === 1 && bosonMomentum=!=0,
+				If[ polPart=!=0,
+					polPart = OptionValue[Head][PolarizationSum[polInd1,polInd2,bosonMomentum, Dimension->dim, Heads->{head1,head2}]] polPart
+				];
+				freePart = (dim - 1) freePart,
+
+			(*massless vector boson*)
+			Length[{vectors}] === 2 && bosonMomentum=!=0,
 				If[	polPart=!=0,
-					polPart = OptionValue[Head][PolarizationSum[polInd1,polInd2,kk, {vectors}[[2]], Dimension->dim, VirtualBoson-> OptionValue[VirtualBoson], Heads->{head1,head2}]] polPart;
+					polPart = OptionValue[Head][PolarizationSum[polInd1,polInd2,bosonMomentum, {vectors}[[2]], Dimension->dim, VirtualBoson-> OptionValue[VirtualBoson], Heads->{head1,head2}]] polPart;
 				];
 				If[{vectors}[[2]]=!=0,
-					freePart = 2 freePart,
+					(* propex axiliary vector*)
+					freePart = (dim - 2) freePart,
+					(* g^{mu nu} trick*)
 					freePart = OptionValue[GaugeTrickN] freePart
 				],
 			True,
