@@ -44,6 +44,9 @@ Tests`Lorentz`fcstScalarProduct = {
 
 
 Tests`Lorentz`fcstScalarProductSet = ({
+{"fcstScalarProductSet-ID1.1", "FCClearScalarProducts[]; \n
+	ScalarProduct[aaa]=aaaval; \n
+	ScalarProduct[aaa]", "aaaval"},
 {"fcstScalarProductSet-ID1", "FCClearScalarProducts[]; \n
 	ScalarProduct[a,b]=abval; \n
 	ScalarProduct[a,b]", "abval"},
@@ -1004,6 +1007,9 @@ Tests`Lorentz`fsctCSPSet = ({
 
 
 Tests`Lorentz`fcstCartesianScalarProductSet = ({
+{"fcstCartesianScalarProductSet-ID1.1", "FCClearScalarProducts[]; \n
+	CartesianScalarProduct[aaa]=aaaval; \n
+	CartesianScalarProduct[aaa]", "aaaval"},
 {"fcstCartesianScalarProductSet-ID1", "FCClearScalarProducts[]; \n
 	CartesianScalarProduct[a,b]=abval; \n
 	CartesianScalarProduct[a,b]", "abval"},

@@ -27,6 +27,8 @@ ExpandScalarProduct.
 Scalar products may be set, e.g. via ScalarProduct[a, b] = m^2; but a and b
 may not contain sums.
 
+ScalarProduct[a]  corresponds to ScalarProduct[a,a] 
+
 Note that ScalarProduct[a, b] = m^2 actually sets Lorentzian scalar products
 in different dimensions specified by the value of the SetDimensions option.
 
@@ -44,6 +46,8 @@ ExpandScalarProduct.
 
 Scalar products may be set, e.g. via ScalarProduct[a, b] = m^2; but a and b
 may not contain sums.
+
+CartesianScalarProduct[a]  corresponds to CartesianScalarProduct[a,a] 
 
 Note that ScalarProduct[a, b] = m^2 actually sets Cartesian scalar products in
 different dimensions specified by the value of the SetDimensions option.
@@ -126,6 +130,9 @@ CartesianScalarProduct[a_,b_, OptionsPattern[]] :=
 	CartesianPair[CartesianMomentum[a, OptionValue[Dimension]], CartesianMomentum[b, OptionValue[Dimension]]]/;
 	FreeQ[{a,b}, CartesianMomentum] && OptionValue[FCI];
 
+ScalarProduct/:
+	Set[ScalarProduct[araw_, c:OptionsPattern[]] , z_]:=
+		Set[ScalarProduct[araw, araw, c] , z];
 
 ScalarProduct/:
 	Set[ScalarProduct[araw_,braw_,c:OptionsPattern[]] , z_]:=
@@ -261,6 +268,10 @@ ScalarProduct/:
 		setval
 	]/; araw=!=0 && braw=!=0 && FCPatternFreeQ[{araw,braw}];
 
+
+CartesianScalarProduct/:
+	Set[CartesianScalarProduct[araw_, c:OptionsPattern[]] , z_]:=
+		Set[CartesianScalarProduct[araw, araw, c] , z];
 
 CartesianScalarProduct/:
 	Set[CartesianScalarProduct[araw_,braw_,c:OptionsPattern[]] , z_]:=
