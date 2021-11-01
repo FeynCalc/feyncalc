@@ -103,6 +103,10 @@ Explicit -> False, FeynCalcExternal -> True]"},
 {"fcstFCChargeConjugateTransposed-ID26","FCCCT[GA[i] == x, Explicit -> True, FCE -> True]",
 "-GA[i] == x"},
 {"fcstFCChargeConjugateTransposed-ID27","FCCCT[{GA[i], GS[p]}, Explicit -> True, FCE -> True]",
-"{-GA[i], -GS[p]}"}
+"{-GA[i], -GS[p]}"},
+{"fcstFCChargeConjugateTransposed-ID28","FCChargeConjugateTransposed[-DiracGamma[7] .
+DiracGamma[LorentzIndex[Lor1]], Explicit -> True,
+FCDiracIsolate -> False, FCI -> True, FCE -> True]",
+"GA[Lor1] . GA[7]"}
 });
 
