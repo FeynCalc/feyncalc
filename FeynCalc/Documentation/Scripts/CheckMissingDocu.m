@@ -18,7 +18,7 @@ Print["Documentation pages missing titles:"];
 Print[""]; Print[""];
 Print["FeynCalc symbols missing documentation pages:"];
 Print[StringRiffle[Complement[SelectFree[fcSymbols,{"FerSolve",
-"FeynCalc","SharedObjects","FCLoopBasis"}],docFiles],"\n"]];
+"FeynCalc","SharedObjects","FCLoopBasis","ToSymbol"}],docFiles],"\n"]];
 
 Print[""]; Print[""];
 Print["Documentation pages for nonexisting FeynCalc symbols:"];
@@ -33,7 +33,7 @@ overviewSymbols=StringReplace[Union[Flatten[StringCases[#,"["~~Shortest[x__]~~"]
 Print[""]; Print[""];
 Print["FeynCalc symbols missing in the overview:"];
 Print[StringRiffle[Complement[SelectFree[fcSymbols,{"FerSolve",
-"FeynCalc","SharedObjects","FCLoopBasis"}],overviewSymbols],"\n"]];
+"FeynCalc","SharedObjects","FCLoopBasis","ToSymbol"}],overviewSymbols],"\n"]];
 
 
 Print[""]; Print[""];

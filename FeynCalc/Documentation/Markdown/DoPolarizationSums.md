@@ -15,7 +15,7 @@ Cf. `PolarizationSum` for more examples and explanations on different polarizati
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [Polarization](Polarization.md), [PolarizationSum](PolarizationSum.md), [Uncontract](Uncontract.md).
+[Overview](Extra/FeynCalc.md), [Polarization](Polarization.md), [PolarizationSum](PolarizationSum.md), [NumberOfPolarizations](NumberOfPolarizations.md), [VirtualBoson](VirtualBoson.md), [Uncontract](Uncontract.md).
 
 ### Examples
 
@@ -103,7 +103,7 @@ $$\left(-\frac{\text{e}^2 \left(\varphi (\overline{\text{p1}})\right).\left(\bar
 amp // DoPolarizationSums[#, k1, 0] & // DoPolarizationSums[#, k2, 0] &
 ```
 
-$$\frac{\text{e}^4 \left(\varphi (-\overline{\text{p2}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$31})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k1}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$33})}.\left(\varphi (\overline{\text{p1}})\right) \left(\varphi (\overline{\text{p1}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$31})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k2}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$33})}.\left(\varphi (-\overline{\text{p2}})\right)}{t u}+\frac{\text{e}^4 \left(\varphi (\overline{\text{p1}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$33})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k1}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$31})}.\left(\varphi (-\overline{\text{p2}})\right) \left(\varphi (-\overline{\text{p2}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$33})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k2}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$31})}.\left(\varphi (\overline{\text{p1}})\right)}{t u}+\frac{\text{e}^4 \left(\varphi (\overline{\text{p1}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$33})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k1}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$31})}.\left(\varphi (-\overline{\text{p2}})\right) \left(\varphi (-\overline{\text{p2}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$31})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k1}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$33})}.\left(\varphi (\overline{\text{p1}})\right)}{u^2}+\frac{\text{e}^4 \left(\varphi (\overline{\text{p1}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$31})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k2}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$33})}.\left(\varphi (-\overline{\text{p2}})\right) \left(\varphi (-\overline{\text{p2}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$33})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k2}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$31})}.\left(\varphi (\overline{\text{p1}})\right)}{t^2}$$
+$$\frac{\text{e}^4 \left(\varphi (-\overline{\text{p2}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$26})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k1}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$28})}.\left(\varphi (\overline{\text{p1}})\right) \left(\varphi (\overline{\text{p1}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$26})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k2}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$28})}.\left(\varphi (-\overline{\text{p2}})\right)}{t u}+\frac{\text{e}^4 \left(\varphi (\overline{\text{p1}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$28})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k1}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$26})}.\left(\varphi (-\overline{\text{p2}})\right) \left(\varphi (-\overline{\text{p2}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$28})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k2}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$26})}.\left(\varphi (\overline{\text{p1}})\right)}{t u}+\frac{\text{e}^4 \left(\varphi (\overline{\text{p1}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$28})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k1}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$26})}.\left(\varphi (-\overline{\text{p2}})\right) \left(\varphi (-\overline{\text{p2}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$26})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k1}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$28})}.\left(\varphi (\overline{\text{p1}})\right)}{u^2}+\frac{\text{e}^4 \left(\varphi (\overline{\text{p1}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$26})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k2}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$28})}.\left(\varphi (-\overline{\text{p2}})\right) \left(\varphi (-\overline{\text{p2}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$28})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k2}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$26})}.\left(\varphi (\overline{\text{p1}})\right)}{t^2}$$
 
 This is a small piece of the matrix element squared for $g g to  Q \bar{Q}$.
 
@@ -161,3 +161,131 @@ ChangeDimension[amp, D] // DoPolarizationSums[#, p1, p2, ExtraFactor -> 1/2] & /
 ```
 
 $$-\frac{1}{N \left(N^2-1\right) s^2 u^2 (\text{p1}\cdot \;\text{p2})^2}g_s^4 \left(2 (\text{k1}\cdot \;\text{p1}) (\text{k1}\cdot \;\text{p2})-\text{k1}^2 (\text{p1}\cdot \;\text{p2})\right) \left(s (\text{k1}\cdot \;\text{p2}) (\text{k2}\cdot \;\text{p1}) \left(N^2 (2 t+u)+2 s\right)+s (\text{k1}\cdot \;\text{p1}) (\text{k2}\cdot \;\text{p2}) \left(N^2 (2 t+u)+2 s\right)-2 N^2 s t (\text{k1}\cdot \;\text{k2}) (\text{p1}\cdot \;\text{p2})-N^2 s u (\text{k1}\cdot \;\text{k2}) (\text{p1}\cdot \;\text{p2})-2 s^2 (\text{k1}\cdot \;\text{k2}) (\text{p1}\cdot \;\text{p2})+2 N^2 u^2 (\text{k2}\cdot \;\text{p1}) (\text{k2}\cdot \;\text{p2})-\text{k2}^2 N^2 u^2 (\text{p1}\cdot \;\text{p2})\right)$$
+
+`DoPolarizationSums` will complain if you try to sum over the polarizations of a massless vector boson that is not on-shell
+
+```mathematica
+PolarizationVector[p, mu] ComplexConjugate[PolarizationVector[p, mu]]
+DoPolarizationSums[%, p, 0]
+```
+
+$$\bar{\varepsilon }^{*\text{mu}}(p) \bar{\varepsilon }^{\text{mu}}(p)$$
+
+![1l0desl1odmbt](img/1l0desl1odmbt.svg)
+
+$$-4$$
+
+The obvious solution to remove this warning is to put the boson on-shell
+
+```mathematica
+FCClearScalarProducts[]
+ScalarProduct[p, p] = 0
+PolarizationVector[p, mu] ComplexConjugate[PolarizationVector[p, mu]]
+DoPolarizationSums[%, p, 0]
+```
+
+$$0$$
+
+$$\bar{\varepsilon }^{*\text{mu}}(p) \bar{\varepsilon }^{\text{mu}}(p)$$
+
+$$-4$$
+
+However, if you have a massless virtual boson in the final state that by definition cannot be on-shell, (e.g. in the process $q \bar{q} \to g \gamma^\ast$), you can tell this to the function by setting the option `VirtualBoson` to `True`.
+
+```mathematica
+FCClearScalarProducts[]
+PolarizationVector[p, mu] ComplexConjugate[PolarizationVector[p, mu]]
+DoPolarizationSums[%, p, 0, VirtualBoson -> True]
+```
+
+$$\bar{\varepsilon }^{*\text{mu}}(p) \bar{\varepsilon }^{\text{mu}}(p)$$
+
+$$-4$$
+
+It may happen that your expression is not directly proportional to a pair of polarization vectors. In this case terms that are free of polarization vectors will be multiplied by the suitable number of polarizations. This behavior is controlled by the option `NumberOfPolarizations`. The default value `Automatic` means that the function will automatically figure out the correct number of polarizations.
+
+Here we have 2 physical polarizations (massless vector boson)
+
+```mathematica
+FCClearScalarProducts[];
+ScalarProduct[p, p] = 0;
+PolarizationVector[p, mu] ComplexConjugate[PolarizationVector[p, mu]] + xyz
+DoPolarizationSums[%, p, n]
+```
+
+$$\bar{\varepsilon }^{*\text{mu}}(p) \bar{\varepsilon }^{\text{mu}}(p)+\text{xyz}$$
+
+$$\text{DoPolarizationSums: The input expression contains terms free of polarization vectors. Those will be multiplied with the number of polarizations given by }2.$$
+
+$$2 \;\text{xyz}-2$$
+
+In $D$ dimensions the number of polarizations becomes $D-2$
+
+```mathematica
+FCClearScalarProducts[];
+ScalarProduct[p, p] = 0;
+ChangeDimension[PolarizationVector[p, mu]*
+    ComplexConjugate[PolarizationVector[p, mu]] + xyz, D]
+DoPolarizationSums[%, p, n]
+```
+
+$$\varepsilon ^{*\text{mu}}(p) \varepsilon ^{\text{mu}}(p)+\text{xyz}$$
+
+$$\text{DoPolarizationSums: The input expression contains terms free of polarization vectors. Those will be multiplied with the number of polarizations given by }D-2.$$
+
+$$(D-2) \;\text{xyz}-D+2$$
+
+A massive vector boson has 3 physical polarizations in 4 dimensions
+
+```mathematica
+FCClearScalarProducts[];
+ScalarProduct[p, p] = M^2;
+PolarizationVector[p, mu] ComplexConjugate[PolarizationVector[p, mu]] + xyz
+DoPolarizationSums[%, p]
+```
+
+$$\bar{\varepsilon }^{*\text{mu}}(p) \bar{\varepsilon }^{\text{mu}}(p)+\text{xyz}$$
+
+$$\text{DoPolarizationSums: The input expression contains terms free of polarization vectors. Those will be multiplied with the number of polarizations given by }3.$$
+
+$$3 \;\text{xyz}-3$$
+
+or $D-1$ physical polarizations in $D$ dimensions
+
+```mathematica
+FCClearScalarProducts[];
+ScalarProduct[p, p] = M^2;
+ChangeDimension[PolarizationVector[p, mu]*
+    ComplexConjugate[PolarizationVector[p, mu]] + xyz, D]
+DoPolarizationSums[%, p]
+```
+
+$$\varepsilon ^{*\text{mu}}(p) \varepsilon ^{\text{mu}}(p)+\text{xyz}$$
+
+$$\text{DoPolarizationSums: The input expression contains terms free of polarization vectors. Those will be multiplied with the number of polarizations given by }D-1.$$
+
+$$(D-1) \;\text{xyz}-D+1$$
+
+In the case of a standalone expression that contains no polarization vectors whatsoever, the function
+has no way to determine the correct number of polarizations.
+
+```mathematica
+DoPolarizationSums[xyz, p, n]
+```
+
+![18de6vblvu214](img/18de6vblvu214.svg)
+
+$$\text{\$Aborted}$$
+
+Here additional user input is needed
+
+```mathematica
+DoPolarizationSums[xyz, p, NumberOfPolarizations -> 2] 
+  
+ 
+
+```
+
+$$\text{DoPolarizationSums: The input expression contains terms free of polarization vectors. Those will be multiplied with the number of polarizations given by }2.$$
+
+$$2 \;\text{xyz}$$

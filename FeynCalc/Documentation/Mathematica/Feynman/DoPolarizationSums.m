@@ -35,7 +35,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [Polarization](Polarization.md), [PolarizationSum](PolarizationSum.md), [Uncontract](Uncontract.md).*)
+(*[Overview](Extra/FeynCalc.md), [Polarization](Polarization.md), [PolarizationSum](PolarizationSum.md), [NumberOfPolarizations](NumberOfPolarizations.md), [VirtualBoson](VirtualBoson.md), [Uncontract](Uncontract.md).*)
 
 
 (* ::Subsection:: *)
@@ -173,3 +173,94 @@ SPD[p1]=0;
 SPD[p2]=0;
 ChangeDimension[amp,D]//DoPolarizationSums[#,p1,p2,ExtraFactor -> 1/2]&//
 DoPolarizationSums[#,p2,p1,ExtraFactor -> 1/2]&//Simplify
+
+
+(* ::Text:: *)
+(*`DoPolarizationSums` will complain if you try to sum over the polarizations of a massless vector boson that is not on-shell*)
+
+
+PolarizationVector[p,mu]ComplexConjugate[PolarizationVector[p,mu]]
+DoPolarizationSums[%,p,0]
+
+
+(* ::Text:: *)
+(*The obvious solution to remove this warning is to put the boson on-shell*)
+
+
+FCClearScalarProducts[]
+ScalarProduct[p,p]=0
+PolarizationVector[p,mu]ComplexConjugate[PolarizationVector[p,mu]]
+DoPolarizationSums[%,p,0]
+
+
+(* ::Text:: *)
+(*However, if you have a massless virtual boson in the final state that by definition cannot be on-shell, (e.g. in the process $q \bar{q} \to g \gamma^\ast$), you can tell this to the function by setting the option `VirtualBoson` to `True`.*)
+
+
+FCClearScalarProducts[]
+PolarizationVector[p,mu]ComplexConjugate[PolarizationVector[p,mu]]
+DoPolarizationSums[%,p,0,VirtualBoson->True]
+
+
+(* ::Text:: *)
+(*It may happen that your expression is not directly proportional to a pair of polarization vectors. In this case terms that are free of polarization vectors will be multiplied by the suitable number of polarizations. This behavior is controlled by the option `NumberOfPolarizations`. The default value `Automatic` means that the function will automatically figure out the correct number of polarizations.*)
+
+
+(* ::Text:: *)
+(*Here we have 2 physical polarizations (massless vector boson)*)
+
+
+FCClearScalarProducts[];
+ScalarProduct[p,p]=0;
+PolarizationVector[p,mu]ComplexConjugate[PolarizationVector[p,mu]]+xyz
+DoPolarizationSums[%,p,n]
+
+
+(* ::Text:: *)
+(*In $D$ dimensions the number of polarizations becomes $D-2$*)
+
+
+FCClearScalarProducts[];
+ScalarProduct[p,p]=0;
+ChangeDimension[PolarizationVector[p,mu]*
+ComplexConjugate[PolarizationVector[p,mu]]+xyz,D]
+DoPolarizationSums[%,p,n]
+
+
+(* ::Text:: *)
+(*A massive vector boson has 3 physical polarizations in 4 dimensions*)
+
+
+FCClearScalarProducts[];
+ScalarProduct[p,p]=M^2;
+PolarizationVector[p,mu]ComplexConjugate[PolarizationVector[p,mu]]+xyz
+DoPolarizationSums[%,p]
+
+
+(* ::Text:: *)
+(*or $D-1$ physical polarizations in $D$ dimensions*)
+
+
+FCClearScalarProducts[];
+ScalarProduct[p,p]=M^2;
+ChangeDimension[PolarizationVector[p,mu]*
+ComplexConjugate[PolarizationVector[p,mu]]+xyz,D]
+DoPolarizationSums[%,p]
+
+
+(* ::Text:: *)
+(*In the case of a standalone expression that contains no polarization vectors whatsoever, the function*)
+(*has no way to determine the correct number of polarizations.*)
+
+
+DoPolarizationSums[xyz,p,n]
+
+
+(* ::Text:: *)
+(*Here additional user input is needed*)
+
+
+DoPolarizationSums[xyz,p,NumberOfPolarizations->2]
+
+
+
