@@ -8,6 +8,8 @@ Expansion of sums of momenta in `ScalarProduct` is done with `ExpandScalarProduc
 
 Scalar products may be set, e.g. via `ScalarProduct[a, b] = m^2`; but `a` and `b` may not contain sums.
 
+`ScalarProduct[a] ` corresponds to `ScalarProduct[a,a] `
+
 Note that `ScalarProduct[a, b] = m^2` actually sets Lorentzian scalar products in different dimensions specified by the value of the `SetDimensions` option.
 
 It is highly recommended to set `ScalarProduct`s before any calculation. This improves the performance of FeynCalc.
@@ -71,6 +73,16 @@ Calc[ ScalarProduct[Subscript[p, 1] - q, Subscript[p, 2] - k]]
 ```
 
 $$-\overline{k}\cdot \overline{p}_1+\overline{k}\cdot \overline{q}-\overline{q}\cdot \overline{p}_2+\frac{s}{2}$$
+
+```mathematica
+ScalarProduct[q1] = qq;
+```
+
+```mathematica
+SP[q1]
+```
+
+$$\text{qq}$$
 
 ```mathematica
 FCClearScalarProducts[]

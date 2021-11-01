@@ -24,6 +24,10 @@
 
 
 (* ::Text:: *)
+(*`ScalarProduct[a] ` corresponds to `ScalarProduct[a,a] `*)
+
+
+(* ::Text:: *)
 (*Note that `ScalarProduct[a, b] = m^2` actually sets Lorentzian scalar products in different dimensions specified by the value of the `SetDimensions` option.*)
 
 
@@ -68,6 +72,12 @@ ExpandScalarProduct[ ScalarProduct[Subscript[p, 1]-q,Subscript[p, 2]-k]]
 
 
 Calc[ ScalarProduct[Subscript[p, 1]-q,Subscript[p, 2]-k]]
+
+
+ScalarProduct[q1]=qq;
+
+
+SP[q1]
 
 
 FCClearScalarProducts[]

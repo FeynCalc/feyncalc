@@ -24,6 +24,10 @@
 
 
 (* ::Text:: *)
+(*`CartesianScalarProduct[a] ` corresponds to `CartesianScalarProduct[a,a] `*)
+
+
+(* ::Text:: *)
 (*Note that `ScalarProduct[a, b] = m^2` actually sets Cartesian scalar products in different dimensions specified by the value of the `SetDimensions` option.*)
 
 
@@ -68,6 +72,12 @@ ExpandScalarProduct[ CartesianScalarProduct[Subscript[p, 1]-q,Subscript[p, 2]-k]
 
 
 Calc[ CartesianScalarProduct[Subscript[p, 1]-q,Subscript[p, 2]-k]]
+
+
+CartesianScalarProduct[q1]=qq;
+
+
+CSP[q1]
 
 
 FCClearScalarProducts[]
