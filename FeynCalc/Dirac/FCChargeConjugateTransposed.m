@@ -178,7 +178,7 @@ FCChargeConjugateTransposed[expr_/; !MemberQ[{List,Equal},expr], opts:OptionsPat
 		];
 
 		FCPrint[1, "FCChargeConjugateTransposed: Leaving.", FCDoControl->fcctVerbose];
-		FCPrint[3, "FCChargeConjugateTransposed: Leaving with", res, FCDoControl->fcctVerbose];
+		FCPrint[3, "FCChargeConjugateTransposed: Leaving with ", res, FCDoControl->fcctVerbose];
 
 		res
 
@@ -205,6 +205,10 @@ cctEvaluateSingle[(d:DiracGamma[5|6|7])]:=
 (* C (g^mu p_mu +/- m)^T C^(-1) = (-g^mu p_mu +/- m) *)
 cctEvaluateSingle[c1_. d_DiracGamma + c2_:0]:=
 		(- c1 d + c2)/; NonCommFreeQ[{c1,c2}] && FreeQ[{c1,c2}, dotHold] && !MatchQ[d,DiracGamma[5|6|7]];
+
+(*at this point we may fish out commutative prefactors*)
+cctEvaluateSingle[c_ d_dotHold]:=
+	c cctEvaluateSingle[d]/; NonCommFreeQ[c];
 
 cctEvaluateMultiple[dotHold[a_]]:=
 	cctEvaluateSingle[a];

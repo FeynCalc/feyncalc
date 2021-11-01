@@ -166,11 +166,11 @@ diracChainEvalM[rest_. DiracChain[chain1_,a_DiracIndex,i_DiracIndex] DiracChain[
 
 (* A_ai B_bi -> (A. C B^T C^-1)_ab *)
 diracChainEvalM[rest_. DiracChain[chain1_,a_DiracIndex,i_DiracIndex] DiracChain[chain2_,b_DiracIndex,i_DiracIndex]]:=
-	diracChainEvalM[rest DiracChain[DOT[chain1,FCCCT[chain2, Explicit->True, FCDiracIsolate->False, FCI->True]],a,b]]/; a=!=i && b=!=i;
+	diracChainEvalM[rest DiracChain[DOT[chain1,FCCCT[chain2, Explicit->True, FCDiracIsolate->True, FCI->True]],a,b]]/; a=!=i && b=!=i;
 
 (* A_ia B_ib -> (C A^T C^-1)_ab *)
 diracChainEvalM[rest_. DiracChain[chain1_,i_DiracIndex,a_DiracIndex] DiracChain[chain2_,i_DiracIndex,b_DiracIndex]]:=
-	diracChainEvalM[rest DiracChain[DOT[FCCCT[chain1, Explicit->True, FCDiracIsolate->False, FCI->True],chain2],a,b]]/; a=!=i && b=!=i;
+	diracChainEvalM[rest DiracChain[DOT[FCCCT[chain1, Explicit->True, FCDiracIsolate->True, FCI->True],chain2],a,b]]/; a=!=i && b=!=i;
 
 (* A_ii -> Tr(A) *)
 diracChainEvalM[rest_. DiracChain[chain_/;chain=!=1,i_DiracIndex,i_DiracIndex]]:=
@@ -197,7 +197,7 @@ diracChainEvalS[rest_. DiracChain[S: Spinor[_. m1_Momentum, ___], a_DiracIndex] 
 
 (* u_i v_j A_ij -> ubar.A.v or vbar.A.u *)
 diracChainEvalS[rest_. DiracChain[S: Spinor[_. m1_Momentum, ___], a_DiracIndex] DiracChain[z_, a_DiracIndex, b_DiracIndex] DiracChain[Spinor[s_. m2_Momentum, r___], b_DiracIndex]]:=
-	diracChainEvalS[rest ordering[First[m2],First[m1]]] FCCCT[DOT[S, z, Spinor[-s m2, r]], Explicit->True, FCDiracIsolate->False, FCI->True]/; MemberQ[optFirst, Spinor[s m2, r]];
+	diracChainEvalS[rest ordering[First[m2],First[m1]]] FCCCT[DOT[S, z, Spinor[-s m2, r]], Explicit->True, FCDiracIsolate->True, FCI->True]/; MemberQ[optFirst, Spinor[s m2, r]];
 
 diracChainEvalS[rest_. ordering[a__] ordering[b__]]:=
 	diracChainEvalS[rest ordering[a,b]];
