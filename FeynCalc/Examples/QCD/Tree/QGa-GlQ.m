@@ -89,7 +89,7 @@ ampSquared[0] = 1/(SUNN)(amp[0] (ComplexConjugate[amp[0]]))//
 	FeynAmpDenominatorExplicit//SUNSimplify[#,Explicit->True,
 	SUNNToCACF->False]&//FermionSpinSum[#, ExtraFactor -> 1/2]&//
 	DiracSimplify//DoPolarizationSums[#,p2,0,
-	VirtualBoson->True,GaugeTrickN->4]&//DoPolarizationSums[#,k1,p2]&//
+	VirtualBoson->True]&//DoPolarizationSums[#,k1,p2]&//
 	TrickMandelstam[#,{s,t,u, 2SMP["m_u"]^2+qQ^2}]&//Simplify
 
 
@@ -112,3 +112,6 @@ FCCompareResults[{ampSquaredMasslessSUNN3[0]},{knownResults},
 Text->{"\tCheck with R. Field, Applications of Perturbative QCD, Eq 4.3.10:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];
+
+
+

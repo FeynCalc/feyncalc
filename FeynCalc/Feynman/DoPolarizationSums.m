@@ -36,18 +36,44 @@ polarizations.
 
 DoPolarizationSums also work with $D$-dimensional amplitudes.";
 
-GaugeTrickN::usage =
-"GaugeTrickN is an option for DoPolarizationSums. It specifies the number of
-polarizations over which you are summing when you do the gauge trick, (i.e.
-replace the polarization sum by $- g^{\\mu \\nu}$).
+NumberOfPolarizations::usage =
+"NumberOfPolarizations is an option for DoPolarizationSums. It specifies the
+number of polarizations to sum over in the expression.
+This is relevant only for expressions that contain terms free of polarization
+vectors. This may occur e.g. if the scalar products involving
+polarization vectors have already been assigned some particular values. In
+this case the corresponding terms will be multiplied by the
+corresponding number of polarizations.
 
-The default value is 2, which is correct e.g. for real photons as external
-states. However, if the external states are virtual photons, then GaugeTrickN
-should be set to 4.";
+The default value is Automatic which means that the function will attempt to
+recognize the correct value automatically by
+extracting the dimension dim of the polarization vectors and putting (dim-2)
+for massless and (dim-1) for massive vector bosons.
+Notice that if the input expression is free of polarization vectors, the
+setting Automatic will fail, and the user must specify the correct
+dimension by hand.";
 
 DoPolarizationSums::failmsg =
 "Error! DoPolarizationSums has encountered a fatal problem and must abort the computation. \
 The problem reads: `1`"
+
+DoPolarizationSums::noauto =
+"The option NumberOfPolarizations is set to Automatic but since the input expression \
+contains no polarization vectors, the function cannot determine the number of polarizations \
+to sum over in the expression automatically. Please set NumberOfPolarizations to the \
+appropriate value e.g. 2 or D-2 etc. by hand."
+
+DoPolarizationSums::noauto =
+"The option NumberOfPolarizations is set to Automatic but since the input expression \
+contains no polarization vectors, the function cannot determine the number of polarizations \
+to sum over in the expression automatically. Please set NumberOfPolarizations to the \
+appropriate value e.g. 2 or D-2 etc. by hand."
+
+DoPolarizationSums::mutidim =
+"The input expression contains pairs of polarization vectors in different \
+dimensions. This introduces an ambiguity regarding the correct dimension of \
+the polarization sum to be employed for the summation. Please make sure that the \
+input expression is unambiguous in this respect."
 
 (* ------------------------------------------------------------------------ *)
 
@@ -59,18 +85,23 @@ Begin["`DoPolarizationSums`Private`"]
 dpsVerbose::usage="";
 
 Options[DoPolarizationSums] = {
-	Contract		-> True,
-	ExtraFactor 	-> 1,
-	FCE				-> False,
-	FCI				-> False,
-	FCVerbose		-> False,
-	GaugeTrickN 	-> 2,
-	Head			-> Identity,
-	VirtualBoson	-> False
+	Contract				-> True,
+	ExtraFactor 			-> 1,
+	FCE						-> False,
+	FCI						-> False,
+	FCVerbose				-> False,
+	Head					-> Identity,
+	NumberOfPolarizations 	-> Automatic,
+	VirtualBoson			-> False
 };
 
-DoPolarizationSums[expr_, vectors:Except[_?OptionQ].., OptionsPattern[]] :=
-	Block[ {polInd1,polInd2,res,ex ,tmp,dim,bosonMomentum,polVectorsList,freePart,polPart,head1=Null,head2=Null},
+DoPolarizationSums[expr_, bosonMomentum_, opts:OptionsPattern[]]:=
+	DoPolarizationSums[expr, bosonMomentum, -1, opts];
+
+DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
+	Block[ {polInd1, polInd2, res, ex, tmp, dim, polVectorsList, freePart,
+			polPart, head1=Null, head2=Null, optNumberOfPolarizations,
+			nPolarizations, optVirtualBoson},
 
 		If [OptionValue[FCVerbose]===False,
 			dpsVerbose=$VeryVerbose,
@@ -79,42 +110,79 @@ DoPolarizationSums[expr_, vectors:Except[_?OptionQ].., OptionsPattern[]] :=
 			];
 		];
 
-		FCPrint[1,"ComplexConjugate: Entering.", FCDoControl->dpsVerbose];
-		FCPrint[3,"ComplexConjugate: Entering with: ", expr, FCDoControl->dpsVerbose];
+		optNumberOfPolarizations	= OptionValue[NumberOfPolarizations];
+		optVirtualBoson 			= OptionValue[VirtualBoson];
 
-		bosonMomentum = {vectors}[[1]];
+		FCPrint[1,"DoPolarizationSums: Entering.", FCDoControl->dpsVerbose];
+		FCPrint[3,"DoPolarizationSums: Entering with: ", expr, FCDoControl->dpsVerbose];
 
-		FCPrint[1,"ComplexConjugate: Vector boson momentum: ", bosonMomentum, FCDoControl->dpsVerbose];
+		FCPrint[1,"DoPolarizationSums: Vector boson momentum: ", bosonMomentum, FCDoControl->dpsVerbose];
+		FCPrint[1,"DoPolarizationSums: Auxiliary momentum: ", auxMomentum, FCDoControl->dpsVerbose];
+
+		If[	Internal`SyntacticNegativeQ[bosonMomentum] || !MatchQ[Head[bosonMomentum],_Symbol]
+			|| MemberQ[{Times,Plus}, Head[bosonMomentum]],
+			Message[DoPolarizationSums::failmsg, "Illegal variable denoting the vector boson momentum."];
+			Abort[]
+		];
+
+		If[	!MemberQ[{0,-1},auxMomentum],
+			If[	Internal`SyntacticNegativeQ[auxMomentum] || !MatchQ[Head[auxMomentum],_Symbol]
+				|| MemberQ[{Times,Plus}, Head[auxMomentum]],
+				Message[DoPolarizationSums::failmsg, "Illegal variable denoting the auxiliary momentum."];
+				Abort[]
+			];
+		];
 
 		If[ OptionValue[FCI],
 			ex = expr,
 			ex = FCI[expr]
 		];
 
+		If[	ex===0,
+			Return[0]
+		];
+
 		polInd1 = $MU[Unique[]];
 		polInd2 = $MU[Unique[]];
 
-		polVectorsList = SelectNotFree[SelectNotFree[Sort[DeleteDuplicates[Cases[ex,_Momentum | _CartesianMomentum,Infinity]]],Polarization],bosonMomentum];
+		polVectorsList = SelectNotFree[SelectNotFree[Sort[DeleteDuplicates[Cases[ex ,_Momentum | _CartesianMomentum,
+			Infinity]]],Polarization],bosonMomentum];
 
-		FCPrint[1,"ComplexConjugate: Polarization vectors present in the expression: ", polVectorsList, FCDoControl->dpsVerbose];
+		FCPrint[1,"DoPolarizationSums: Polarization vectors present in the expression: ", polVectorsList, FCDoControl->dpsVerbose];
 
-		If[	polVectorsList=!={},
+		If[	polVectorsList==={},
+
+			(* No polarization vectors in the expression *)
+			freePart = ex;
+			polPart = 0;
+			If[	optNumberOfPolarizations===Automatic,
+				Message[DoPolarizationSums::noauto];
+				Abort[]
+			],
+
+			(* Polarization vectors present *)
 
 			If[	!MatchQ[polVectorsList, {
 					(CartesianMomentum|Momentum)[Polarization[bosonMomentum,Complex[0,1], ___Rule],di___],
 					(CartesianMomentum|Momentum)[Polarization[bosonMomentum,Complex[0,-1], ___Rule],di___]} | {
 					(CartesianMomentum|Momentum)[Polarization[bosonMomentum,Complex[0,-1], ___Rule],di___],
 					(CartesianMomentum|Momentum)[Polarization[bosonMomentum,Complex[0,1], ___Rule],di___]}],
-				Print[StandardForm[polVectorsList]];
 				Message[DoPolarizationSums::failmsg,"Polarization vectors do not seem to appear in a proper way in the expression."];
 				Abort[]
 			];
 
-			dim = FCGetDimensions[polVectorsList,ChangeDimension->True]//First;
+			dim = FCGetDimensions[polVectorsList,ChangeDimension->True];
 
-			FCPrint[1,"ComplexConjugate: Spacetime dimension: ", dim, FCDoControl->dpsVerbose];
+			FCPrint[1,"DoPolarizationSums: Spacetime dimension of polarization vectors: ", dim, FCDoControl->dpsVerbose];
 
-			tmp = ex/.{
+			If[	Length[dim]=!=1,
+				Message[DoPolarizationSums::mutidim];
+				Abort[],
+				dim = First[dim]
+			];
+
+			tmp = ex /. {
+
 				Momentum[Polarization[bosonMomentum,Complex[0,1], ___Rule],dim] :>
 					(head1=LorentzIndex; LorentzIndex[polInd1,dim]),
 				CartesianMomentum[Polarization[bosonMomentum,Complex[0,1], ___Rule],dim-1] :>
@@ -126,40 +194,60 @@ DoPolarizationSums[expr_, vectors:Except[_?OptionQ].., OptionsPattern[]] :=
 					(head2=CartesianIndex; CartesianIndex[polInd2,dim-1])
 			};
 
-			{freePart, polPart} = FCSplit[tmp,{polInd1,polInd2}],
+			FCPrint[2,"DoPolarizationSums: {head1, head2}: ", {head1, head2}, FCDoControl->dpsVerbose];
 
-			(* No polarization vectors in the expression *)
-			freePart = ex;
-			polPart = 0;
+			{freePart, polPart} = FCSplit[tmp,{polInd1,polInd2}]
 		];
 
-		If[	freePart=!=0,
-			FCPrint[0,"ComplexConjugate: The input expression contains terms free of polarization vectors. Those will be multiplied with the number of polarizations.", FCDoControl->dpsVerbose]
-		];
 
 		Which[
 			(*massive vector boson*)
-			Length[{vectors}] === 1 && bosonMomentum=!=0,
+			bosonMomentum=!=0 && auxMomentum===-1,
+				FCPrint[1,"DoPolarizationSums: Inserting polarization sum for a massive vector boson.", FCDoControl->dpsVerbose];
 				If[ polPart=!=0,
 					polPart = OptionValue[Head][PolarizationSum[polInd1,polInd2,bosonMomentum, Dimension->dim, Heads->{head1,head2}]] polPart
 				];
-				freePart = (dim - 1) freePart,
+				If[	optNumberOfPolarizations=!=Automatic,
+					nPolarizations = optNumberOfPolarizations,
+					nPolarizations = dim-1
+				],
 
-			(*massless vector boson*)
-			Length[{vectors}] === 2 && bosonMomentum=!=0,
+			(*massless vector boson with the gauge trick*)
+			bosonMomentum=!=0 && auxMomentum===0,
+				FCPrint[1,"DoPolarizationSums: Inserting polarization sum for a massless vector boson with 4 polarizations (2 of which are unphysical).", FCDoControl->dpsVerbose];
 				If[	polPart=!=0,
-					polPart = OptionValue[Head][PolarizationSum[polInd1,polInd2,bosonMomentum, {vectors}[[2]], Dimension->dim, VirtualBoson-> OptionValue[VirtualBoson], Heads->{head1,head2}]] polPart;
+					polPart = OptionValue[Head][PolarizationSum[polInd1,polInd2,bosonMomentum, auxMomentum, Dimension->dim, VirtualBoson-> optVirtualBoson, Heads->{head1,head2}]] polPart;
 				];
-				If[{vectors}[[2]]=!=0,
-					(* propex axiliary vector*)
-					freePart = (dim - 2) freePart,
-					(* g^{mu nu} trick*)
-					freePart = OptionValue[GaugeTrickN] freePart
+				If[	optNumberOfPolarizations=!=Automatic,
+					nPolarizations = optNumberOfPolarizations,
+					(*A virtual vector boson has all 4 polarization. A real on-shell boson may have only 2.*)
+					If[	TrueQ[optVirtualBoson],
+						nPolarizations = dim,
+						nPolarizations = dim-2
+					]
+				],
+
+			(*true massless vector boson*)
+			bosonMomentum=!=0 && !MemberQ[{0,-1}, auxMomentum],
+				FCPrint[1,"DoPolarizationSums: Inserting polarization sum for a massless vector boson with 2 physical polarizations (axial gauge).", FCDoControl->dpsVerbose];
+				If[	polPart=!=0,
+					polPart = OptionValue[Head][PolarizationSum[polInd1,polInd2,bosonMomentum, auxMomentum, Dimension->dim, VirtualBoson-> optVirtualBoson, Heads->{head1,head2}]] polPart;
+				];
+				If[	optNumberOfPolarizations=!=Automatic,
+					nPolarizations = optNumberOfPolarizations,
+					nPolarizations = dim-2
 				],
 			True,
 				Message[DoPolarizationSums::failmsg,"Unknown polarization sum"];
 				Abort[]
 		];
+
+		If[	freePart=!=0,
+			FCPrint[0,"DoPolarizationSums: The input expression contains terms free of polarization vectors. " <>
+				"Those will be multiplied with the number of polarizations given by ", nPolarizations, ".", FCDoControl->dpsVerbose];
+			freePart = nPolarizations freePart
+		];
+
 
 		If[ OptionValue[Contract],
 			polPart = Contract[polPart,FCI->True]
@@ -173,7 +261,7 @@ DoPolarizationSums[expr_, vectors:Except[_?OptionQ].., OptionsPattern[]] :=
 
 		res
 
-	]/; Length[{vectors}] === 1 || Length[{vectors}] === 2;
+	];
 
 FCPrint[1,"DoPolarizationSums.m loaded."];
 End[]
