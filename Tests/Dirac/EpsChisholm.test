@@ -158,5 +158,29 @@ GA[mu, nu] LC[mu, nu][a, b]}, FCE -> True]",
 I GS[b].GS[a].GA[5]}"},
 {"fcstEpsChisholm-ID13",
 "EpsChisholm[-LC[mu, rho, nu, si] GA[rho, si, 5], FCE -> True]",
-"-3 I GA[mu].GA[nu] - I GA[nu].GA[mu] + 4 I MT[mu, nu]"}
+"-3 I GA[mu].GA[nu] - I GA[nu].GA[mu] + 4 I MT[mu, nu]"},
+{"fcstEpsChisholm-ID14",
+"EpsChisholm[
+LC[al, nu, be, rho] FV[p1, be] SpinorUBar[p2, ms] . GA[al, 7] .
+SpinorV[p1, md], FCE -> True]",
+"-I Spinor[Momentum[p2], ms, 1] . GA[nu] . GS[p1] . GA[rho] . GA[7] .
+Spinor[-Momentum[p1], md, 1] +
+I Spinor[Momentum[p2], ms, 1] . GA[rho] . GA[7] .
+Spinor[-Momentum[p1], md, 1] FV[p1, be] MT[be, nu] +
+I Spinor[Momentum[p2], ms, 1] . GA[nu] . GA[7] .
+Spinor[-Momentum[p1], md, 1] FV[p1, be] MT[be, rho] -
+I Spinor[Momentum[p2], ms, 1] . GS[p1] . GA[7] .
+Spinor[-Momentum[p1], md, 1] MT[nu, rho]"},
+{"fcstEpsChisholm-ID15",
+"EpsChisholm[
+LC[al, nu, be, rho] FV[p2, be] SpinorUBar[p2, ms] . GA[al, 7] .
+SpinorV[p1, md], FCE -> True]",
+"-I Spinor[Momentum[p2], ms, 1] . GA[nu] . GS[p2] . GA[rho] . GA[7] .
+Spinor[-Momentum[p1], md, 1] +
+I Spinor[Momentum[p2], ms, 1] . GA[rho] . GA[7] .
+Spinor[-Momentum[p1], md, 1] FV[p2, be] MT[be, nu] +
+I Spinor[Momentum[p2], ms, 1] . GA[nu] . GA[7] .
+Spinor[-Momentum[p1], md, 1] FV[p2, be] MT[be, rho] -
+I Spinor[Momentum[p2], ms, 1] . GS[p2] . GA[7] .
+Spinor[-Momentum[p1], md, 1] MT[nu, rho]"}
 });
