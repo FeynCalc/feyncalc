@@ -75,7 +75,7 @@ ComplexConjugate[%]
 
 $$\bar{g}^{\mu \nu } \bar{\varepsilon }^{\mu }(\text{p1}) \bar{\varepsilon }^{\nu }(\text{p2})$$
 
-$$\bar{g}^{\text{\$AL}(\text{\$24})\text{\$AL}(\text{\$25})} \bar{\varepsilon }^{*\text{\$AL}(\text{\$24})}(\text{p1}) \bar{\varepsilon }^{*\text{\$AL}(\text{\$25})}(\text{p2})$$
+$$\bar{g}^{\text{\$AL}(\text{\$19})\text{\$AL}(\text{\$20})} \bar{\varepsilon }^{*\text{\$AL}(\text{\$19})}(\text{p1}) \bar{\varepsilon }^{*\text{\$AL}(\text{\$20})}(\text{p2})$$
 
 ```mathematica
 GA[\[Mu], \[Nu]] LC[\[Mu], \[Nu]][p1, p2]
@@ -84,7 +84,7 @@ ComplexConjugate[%]
 
 $$\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu } \bar{\epsilon }^{\mu \nu \overline{\text{p1}}\;\overline{\text{p2}}}$$
 
-$$\bar{\gamma }^{\text{\$AL}(\text{\$26})}.\bar{\gamma }^{\text{\$AL}(\text{\$27})} \bar{\epsilon }^{\text{\$AL}(\text{\$27})\text{\$AL}(\text{\$26})\overline{\text{p1}}\;\overline{\text{p2}}}$$
+$$\bar{\gamma }^{\text{\$AL}(\text{\$21})}.\bar{\gamma }^{\text{\$AL}(\text{\$22})} \bar{\epsilon }^{\text{\$AL}(\text{\$22})\text{\$AL}(\text{\$21})\overline{\text{p1}}\;\overline{\text{p2}}}$$
 
 This behavior can be disabled by setting the option `FCRenameDummyIndices` to `False`.
 
@@ -136,16 +136,36 @@ ComplexConjugate[%]
 
 $$\left(\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\rho }.\bar{\gamma }^5\right){}_{ij} \left(\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\rho }.\bar{\gamma }^5\right){}_{kl}$$
 
-$$\left(\bar{\gamma }^5.\bar{\gamma }^{\text{\$AL}(\text{\$28})}.\bar{\gamma }^{\text{\$AL}(\text{\$29})}.\bar{\gamma }^{\text{\$AL}(\text{\$30})}\right){}_{ji} \left(\bar{\gamma }^5.\bar{\gamma }^{\text{\$AL}(\text{\$28})}.\bar{\gamma }^{\text{\$AL}(\text{\$29})}.\bar{\gamma }^{\text{\$AL}(\text{\$30})}\right){}_{lk}$$
+$$\left(\bar{\gamma }^5.\bar{\gamma }^{\text{\$AL}(\text{\$23})}.\bar{\gamma }^{\text{\$AL}(\text{\$24})}.\bar{\gamma }^{\text{\$AL}(\text{\$25})}\right){}_{ji} \left(\bar{\gamma }^5.\bar{\gamma }^{\text{\$AL}(\text{\$23})}.\bar{\gamma }^{\text{\$AL}(\text{\$24})}.\bar{\gamma }^{\text{\$AL}(\text{\$25})}\right){}_{lk}$$
 
 ```mathematica
 PCHN[CSI[i, j, k], a, b] PCHN[CSI[i, j, k], c, d]
-ComplexConjugate[%] 
+ComplexConjugate[%]
+```
+
+$$\left(\overline{\sigma }^i.\overline{\sigma }^j.\overline{\sigma }^k\right){}_{ab} \left(\overline{\sigma }^i.\overline{\sigma }^j.\overline{\sigma }^k\right){}_{cd}$$
+
+$$\left(\overline{\sigma }^{\text{\$AL}(\text{\$26})}.\overline{\sigma }^{\text{\$AL}(\text{\$27})}.\overline{\sigma }^{\text{\$AL}(\text{\$28})}\right){}_{ba} \left(\overline{\sigma }^{\text{\$AL}(\text{\$26})}.\overline{\sigma }^{\text{\$AL}(\text{\$27})}.\overline{\sigma }^{\text{\$AL}(\text{\$28})}\right){}_{dc}$$
+
+The function does not apply `Conjugate` to symbols that do not depend on `I` and are unrelated to Dirac/Pauli/Color matrices. One can specify symbols that need to be explicitly conjugated using the `Conjugate` option
+
+```mathematica
+cc SpinorU[p1] . GA[mu] . SpinorV[p2]
+ComplexConjugate[%]
+```
+
+$$\text{cc} u(\text{p1}).\bar{\gamma }^{\text{mu}}.v(\text{p2})$$
+
+$$\text{cc} \left(\varphi (-\overline{\text{p2}})\right).\bar{\gamma }^{\text{mu}}.\left(\varphi (\overline{\text{p1}})\right)$$
+
+```mathematica
+cc SpinorU[p1] . GA[mu] . SpinorV[p2]
+ComplexConjugate[%, Conjugate -> {cc}] 
   
  
 
 ```
 
-$$\left(\overline{\sigma }^i.\overline{\sigma }^j.\overline{\sigma }^k\right){}_{ab} \left(\overline{\sigma }^i.\overline{\sigma }^j.\overline{\sigma }^k\right){}_{cd}$$
+$$\text{cc} u(\text{p1}).\bar{\gamma }^{\text{mu}}.v(\text{p2})$$
 
-$$\left(\overline{\sigma }^{\text{\$AL}(\text{\$31})}.\overline{\sigma }^{\text{\$AL}(\text{\$32})}.\overline{\sigma }^{\text{\$AL}(\text{\$33})}\right){}_{ba} \left(\overline{\sigma }^{\text{\$AL}(\text{\$31})}.\overline{\sigma }^{\text{\$AL}(\text{\$32})}.\overline{\sigma }^{\text{\$AL}(\text{\$33})}\right){}_{dc}$$
+$$\text{cc}^* \left(\varphi (-\overline{\text{p2}})\right).\bar{\gamma }^{\text{mu}}.\left(\varphi (\overline{\text{p1}})\right)$$

@@ -110,4 +110,16 @@ PCHN[CSI[i,j,k],a,b]PCHN[CSI[i,j,k],c,d]
 ComplexConjugate[%]
 
 
+(* ::Text:: *)
+(*The function does not apply `Conjugate` to symbols that do not depend on `I` and are unrelated to Dirac/Pauli/Color matrices. One can specify symbols that need to be explicitly conjugated using the `Conjugate` option*)
+
+
+cc SpinorU[p1] . GA[mu] . SpinorV[p2]
+ComplexConjugate[%]
+
+
+cc SpinorU[p1] . GA[mu] . SpinorV[p2]
+ComplexConjugate[%,Conjugate->{cc}]
+
+
 
