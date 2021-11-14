@@ -34,7 +34,7 @@ By setting the option `FCFeynmanPrepare` to `True`, the output of `FCFeynmanPrep
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [FCFeynmanPrepare](FCFeynmanPrepare.md), [FCFeynmanProjectivize](FCFeynmanProjectivize.md), [FCFeynmanParameterJoin](FCFeynmanParameterJoin.md)
+[Overview](Extra/FeynCalc.md), [FCFeynmanPrepare](FCFeynmanPrepare.md), [FCFeynmanProjectivize](FCFeynmanProjectivize.md), [FCFeynmanParameterJoin](FCFeynmanParameterJoin.md), [SplitSymbolicPowers](SplitSymbolicPowers.md).
 
 ### Examples
 
@@ -233,6 +233,48 @@ From this output we can easily extract the integrand, its $x_i$-independent pref
 $$\left\{(x(3) x(4)+x(5) x(4)+x(3) x(5))^{3 \varepsilon -1} \left(m^2 x(3) x(4)^2+m^2 x(3) x(5)^2+m^2 x(4) x(5)^2+m^2 x(3)^2 x(4)+m^2 x(3)^2 x(5)+m^2 x(4)^2 x(5)+3 m^2 x(3) x(4) x(5)+n^2 x(2)^2 x(3)+n^2 x(1)^2 x(4)+n^2 x(2)^2 x(4)+2 n^2 x(1) x(2) x(4)+n^2 x(1)^2 x(5)\right)^{-2 \varepsilon -1},-\Gamma (2 \varepsilon +1)\right\}$$
 
 $$\left\{x(3) x(4)+x(5) x(4)+x(3) x(5),m^2 x(3) x(4)^2+m^2 x(3) x(5)^2+m^2 x(4) x(5)^2+m^2 x(3)^2 x(4)+m^2 x(3)^2 x(5)+m^2 x(4)^2 x(5)+3 m^2 x(3) x(4) x(5)+n^2 x(2)^2 x(3)+n^2 x(1)^2 x(4)+n^2 x(2)^2 x(4)+2 n^2 x(1) x(2) x(4)+n^2 x(1)^2 x(5)\right\}$$
+
+Symbolic propagator powers are fully supported
+
+```mathematica
+SFAD[{I k, 0, -1/2 + ep}, {I (k + p), 0, 1}, EtaSign -> -1]
+v1 = FCFeynmanParametrize[%, {k}, Names -> x, FCReplaceD -> {D -> 4 - 2 ep}, FinalSubstitutions -> {SPD[p] -> 1}]
+```
+
+$$\frac{1}{(-k^2-i \eta )^{\text{ep}-\frac{1}{2}}.(-(k+p)^2-i \eta )}$$
+
+$$\left\{(-x(1)-x(2))^{3 \;\text{ep}-\frac{7}{2}} x(2)^{\text{ep}-\frac{3}{2}} (-x(1) x(2))^{\frac{3}{2}-2 \;\text{ep}},\frac{(-1)^{\text{ep}+\frac{1}{2}} \Gamma \left(2 \;\text{ep}-\frac{3}{2}\right)}{\Gamma \left(\text{ep}-\frac{1}{2}\right)},\{x(1),x(2)\}\right\}$$
+
+An alternative representation for symbolic powers can be obtained using the option `SplitSymbolicPowers`
+
+```mathematica
+SFAD[{I k, 0, -1/2 + ep}, {I (k + p), 0, 1}, EtaSign -> -1]
+v2 = FCFeynmanParametrize[%, {k}, Names -> x, FCReplaceD -> {D -> 4 - 2 ep}, FinalSubstitutions -> {SPD[p] -> 1}, SplitSymbolicPowers -> True]
+```
+
+$$\frac{1}{(-k^2-i \eta )^{\text{ep}-\frac{1}{2}}.(-(k+p)^2-i \eta )}$$
+
+$$\left\{x(2)^{\text{ep}-\frac{1}{2}} \left(\left(\frac{1}{2} (1-2 \;\text{ep})+\frac{1}{2} (4-2 \;\text{ep})-1\right) x(1) (-x(1)-x(2))^{3 \;\text{ep}-\frac{7}{2}} (-x(1) x(2))^{\frac{1}{2}-2 \;\text{ep}}+\left(2 \;\text{ep}+\frac{1}{2} (2 \;\text{ep}-1)-3\right) (-x(1)-x(2))^{3 \;\text{ep}-\frac{9}{2}} (-x(1) x(2))^{\frac{3}{2}-2 \;\text{ep}}\right),\frac{(-1)^{\text{ep}+\frac{1}{2}} \Gamma \left(2 \;\text{ep}-\frac{3}{2}\right)}{\Gamma \left(\text{ep}+\frac{1}{2}\right)},\{x(1),x(2)\}\right\}$$
+
+Even though the parametric integrals evaluate to different values, the product of the integral and its prefactor remains the same
+
+```mathematica
+Integrate[Normal[Series[v1[[1]] /. x[1] -> 1, {ep, 0, 0}]] /. x[1] -> 1, {x[2],0, Infinity}]
+Normal@Series[v1[[2]] %, {ep, 0, 0}]
+```
+
+$$\frac{2}{5}$$
+
+$$-\frac{4 i}{15}$$
+
+```mathematica
+Integrate[Normal[Series[v2[[1]] /. x[1] -> 1, {ep, 0, 0}]] /. x[1] -> 1, {x[2],0, Infinity}]
+Normal@Series[v2[[2]] %, {ep, 0, 0}]
+```
+
+$$-\frac{1}{5}$$
+
+$$-\frac{4 i}{15}$$
 
 #### Lee-Pomeransky representation
 

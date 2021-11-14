@@ -73,6 +73,13 @@ to FCFeynmanParametrize.
 By setting the option FCFeynmanPrepare to True, the output of FCFeynmanPrepare
 will be added the the output of FCFeynmanParametrize as the 4th list element.";
 
+SplitSymbolicPowers::usage=
+"SplitSymbolicPowers is an option for FCFeynmanParametrize and other functions.
+When set to True, propagator powers containing symbols will be split into a
+nonnegative integer piece and the remaining piece.
+This leads to a somewhat different form of the resulting parametric integral,
+although the final result remains the same. The default value is False.";
+
 FCFeynmanParametrize::failmsg =
 "Error! FCFeynmanParametrize has encountered a fatal problem and must abort the computation. \
 The problem reads: `1`"
@@ -105,6 +112,7 @@ Options[FCFeynmanParametrize] = {
 	Names						-> FCGV["x"],
 	Reduce						-> False,
 	Simplify					-> False,
+	SplitSymbolicPowers			-> False,
 	Variables					-> {}
 };
 
@@ -210,16 +218,29 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 			ppSymbolsRule = {}
 		];
 
-		propPowersHat = Max[0, -Floor[# /. ppSymbolsRule ]]&/@propPowers;
+		(*The hat powers are either 0 or manifestly positive *)
+		If[	TrueQ[OptionValue[SplitSymbolicPowers]],
+			(*split symbolic powers into two pieces*)
+			propPowersHat = Max[0, -Floor[# /. ppSymbolsRule ]]&/@propPowers,
+			(*do not split symbolic powers into two pieces*)
+			propPowersHat = Map[
+				If[	Together[(#/. ppSymbolsRule)-#]===0,
+					Max[0, -Floor[# /. ppSymbolsRule ]],
+					0
+				]&,propPowers]
+		];
 
-		(*The tilde propagators are either symbolic or manifestly positive *)
-		propPowersTilde = propPowers + propPowersHat;
+		(*The tilde powers are either symbolic or manifestly positive *)
+		propPowersTilde = ExpandAll[propPowers + propPowersHat];
 
 		FCPrint[1,"FCFeynmanParametrize: propPowersHat: ", propPowersHat, FCDoControl->fcfpVerbose];
 		FCPrint[1,"FCFeynmanParametrize: propPowersTilde: ", propPowersTilde, FCDoControl->fcfpVerbose];
 
-		If[	!MatchQ[propPowersTilde /. ppSymbolsRule,  {_Integer?NonNegative ..}] ||
-			!MatchQ[propPowersHat,  {_Integer?NonNegative ..}],
+		FCPrint[1,"FCFeynmanParametrize: propPowersTilde-propPowersHat === propPowers: ",
+			propPowersTilde-propPowersHat, FCDoControl->fcfpVerbose];
+
+		If[	(*!MatchQ[NonNegative[propPowersTilde /. ppSymbolsRule],  {True ..}] ||*)
+			!MatchQ[NonNegative[propPowersHat],  {True ..}],
 			Message[FCFeynmanParametrize::failmsg,"Splitting of propagator powers failed."];
 			Abort[]
 		];
@@ -232,11 +253,11 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 		];
 
 		(*remove contributions from tilded m_i that are zero *)
-		propPowers = Delete[propPowers,zeroPowerProps];
+		propPowersTilde = Delete[propPowersTilde,zeroPowerProps];
 		vars = Delete[First[powsT],zeroPowerProps];
 
 		If[	vars=!={},
-			fpPref = (Times @@ Map[Power[#[[1]],(#[[2]]-1)] &, Transpose[{vars,propPowers}]]),
+			fpPref = (Times @@ Map[Power[#[[1]],(#[[2]]-1)] &, Transpose[{vars,propPowersTilde}]]),
 			fpPref = 1
 		];
 
@@ -250,11 +271,11 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 						(* Tensor integral *)
 						tensorPart = tensorPart /. FCGV["F"] -> fPoly;
 						(* [\prod_{j-1}^N \Gamma(\nu_j)]^{-1} *)
-						pref = extraPref/(Times @@ (Gamma /@ propPowers)),
+						pref = extraPref/(Times @@ (Gamma /@ propPowersTilde)),
 
 						(* Scalar integral *)
 						(* \Gamma(N_\nu - L D/2) [\prod_{j-1}^N \Gamma(\nu_j)]^{-1} *)
-						pref = extraPref*Gamma[fPow]/(Times @@ (Gamma /@ propPowers))
+						pref = extraPref*Gamma[fPow]/(Times @@ (Gamma /@ propPowersTilde))
 					];
 					fpInt =  Power[uPoly,fPow - dim/2 - tensorRank]/Power[fPoly,fPow]*tensorPart;
 					If[	!isCartesian && !optEuclidean,
@@ -288,7 +309,6 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 							Message[FCFeynmanParametrize::failmsg, "The number of x-variables doesn't match the number of propagators with negative powers."];
 							Abort[]
 						];
-
 
 						fpInt = Fold[( (-1)^#2[[2]] * D[#1, #2]) &, fpInt, Transpose[{numVars,propPowersHat}]];
 

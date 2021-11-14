@@ -70,7 +70,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [FCFeynmanPrepare](FCFeynmanPrepare.md), [FCFeynmanProjectivize](FCFeynmanProjectivize.md), [FCFeynmanParameterJoin](FCFeynmanParameterJoin.md)*)
+(*[Overview](Extra/FeynCalc.md), [FCFeynmanPrepare](FCFeynmanPrepare.md), [FCFeynmanProjectivize](FCFeynmanProjectivize.md), [FCFeynmanParameterJoin](FCFeynmanParameterJoin.md), [SplitSymbolicPowers](SplitSymbolicPowers.md).*)
 
 
 (* ::Subsection:: *)
@@ -211,6 +211,34 @@ FCFeynmanPrepare->True]
 
 {integrand,pref} = out[[1;;2]]
 {uPoly,fPoly}=out[[4]][[1;;2]]
+
+
+(* ::Text:: *)
+(*Symbolic propagator powers are fully supported*)
+
+
+SFAD[{I k,0,-1/2+ep},{I(k+p),0,1},EtaSign->-1]
+v1=FCFeynmanParametrize[%,{k},Names->x,FCReplaceD->{D->4-2ep},FinalSubstitutions->{SPD[p]->1}]
+
+
+(* ::Text:: *)
+(*An alternative representation for symbolic powers can be obtained using the option `SplitSymbolicPowers`*)
+
+
+SFAD[{I k,0,-1/2+ep},{I(k+p),0,1},EtaSign->-1]
+v2=FCFeynmanParametrize[%,{k},Names->x,FCReplaceD->{D->4-2ep},FinalSubstitutions->{SPD[p]->1},SplitSymbolicPowers->True]
+
+
+(* ::Text:: *)
+(*Even though the parametric integrals evaluate to different values, the product of the integral and its prefactor remains the same*)
+
+
+Integrate[Normal[Series[v1[[1]]/.x[1]->1,{ep,0,0}]]/.x[1]->1,{x[2],0,Infinity}]
+Normal@Series[v1[[2]] %,{ep,0,0}]
+
+
+Integrate[Normal[Series[v2[[1]]/.x[1]->1,{ep,0,0}]]/.x[1]->1,{x[2],0,Infinity}]
+Normal@Series[v2[[2]] %,{ep,0,0}]
 
 
 (* ::Subsubsection:: *)

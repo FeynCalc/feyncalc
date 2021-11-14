@@ -88,13 +88,9 @@ x[3]}}"},
 {"fcstFCFeynmanParametrize-ID11",
 "FCFeynmanParametrize[SFAD[p,p-q,{{0,p.q},0,Epsilon-2}],{p},Names\
 \[Rule]x,FCReplaceD\[Rule]{D->4-2Epsilon},Simplify\[Rule]True]",
-"{((x[1] + x[2])^(-4 + 3*Epsilon)*x[3]^(-3 + Epsilon)*(4*x[1]*x[2] \
-+ 8*(-1 + 2*Epsilon)*x[2]^2 - 4*(-3 + 4*Epsilon)*x[2]*x[3] + (-3 + \
-4*Epsilon)*x[3]^2))/(-(Pair[Momentum[q, D], Momentum[q, \
-D]]*(4*x[1]*x[2] + (4*x[2] - x[3])*x[3])))^(2*Epsilon), \
-((-1)^Epsilon*4^(-1 + 2*Epsilon)*(-1 + Epsilon)*Gamma[-2 + \
-2*Epsilon]*Pair[Momentum[q, D], Momentum[q, D]]^2)/Gamma[-2 + \
-Epsilon], {x[1], x[2], x[3]}}"},
+"{(x[1] + x[2])^(-4 + 3*Epsilon)*x[3]^(-3 + Epsilon)*(-(Pair[Momentum[q, D], Momentum[q, D]]*(4*x[1]*x[2] +
+(4*x[2] - x[3])*x[3])))^(2 - 2*Epsilon), ((-1)^Epsilon*16^(-1 +
+Epsilon)*Gamma[-2 + 2*Epsilon])/Gamma[-2 + Epsilon], {x[1], x[2], x[3]}}"},
 {"fcstFCFeynmanParametrize-ID12",
 "FCFeynmanParametrize[FAD[{q,m}]FVD[q,mu],{q},Names\[Rule]x,\
 Indexed\[Rule]False,FCE\[Rule]True]", "{1, 0, {}}"},
@@ -284,5 +280,18 @@ SPD[n, n]*x[1]^2*x[5] + m^2*x[3]^2*x[5] + 3*m^2*x[3]*x[4]*x[5] + m^2*x[4]^2*x[5]
 "FCFeynmanParametrize[FAD[p, {p - q, m}], {p}, Names -> x,
 FinalSubstitutions -> {SPD[q] -> m^2, m -> 1},
 FCReplaceD -> {D -> 4 - 2 ep}]",
-"{(x[1] + x[2])^(-2 + 2*ep)/(x[2]^2)^ep, Gamma[ep], {x[1], x[2]}}"}
+"{(x[1] + x[2])^(-2 + 2*ep)/(x[2]^2)^ep, Gamma[ep], {x[1], x[2]}}"},
+{"fcstFCFeynmanParametrize-ID42","FCFeynmanParametrize[
+SFAD[{ I k, 0, -1/2 + ep}, {I (k + p), 0, 1}], {k}, Names -> x,
+FCReplaceD -> {D -> 4 - 2 ep}, FinalSubstitutions -> {SPD[p] -> 1}]",
+"{(-x[1] - x[2])^(-7/2 + 3*ep)*x[2]^(-3/2 + ep)*(-(x[1]*x[2]))^(3/2 - 2*ep),
+((-1)^(1/2 + ep)*Gamma[-3/2 + 2*ep])/Gamma[-1/2 + ep], {x[1], x[2]}}"},
+{"fcstFCFeynmanParametrize-ID43","FCFeynmanParametrize[
+SFAD[{ I k, 0, -1/2 + ep}, {I (k + p), 0, 1}], {k}, Names -> x,
+FCReplaceD -> {D -> 4 - 2 ep}, FinalSubstitutions -> {SPD[p] -> 1},
+SplitSymbolicPowers -> True]","{x[2]^(-1/2 + ep)*((-1 + (1 - 2*ep)/2 +
+(4 - 2*ep)/2)*x[1]*(-x[1] - x[2])^(-7/2 + 3*ep)*(-(x[1]*x[2]))^(1/2 - 2*ep) +
+(-3 + 2*ep + (-1 + 2*ep)/2)*(-x[1] - x[2])^(-9/2 + 3*ep)*(-(x[1]*x[2]))^(3/2 - 2*ep)),
+((-1)^(1/2 + ep)*Gamma[-3/2 + 2*ep])/Gamma[1/2 + ep],
+{x[1], x[2]}}"}
 });
