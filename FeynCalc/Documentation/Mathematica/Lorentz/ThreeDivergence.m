@@ -43,4 +43,14 @@ CFAD[{p,m^2},p-q]
 ThreeDivergence[%,CVD[p,i]]
 
 
+(* ::Text:: *)
+(*Differentiation of $3$-vectors living  in different dimensions ($3$, $D-1$, $D-4$) works only in the t'Hooft-Veltman scheme*)
 
+
+ThreeDivergence[CVD[p,i],CV[p,j]]
+
+
+FCSetDiracGammaScheme["BMHV"];
+
+
+ThreeDivergence[CVD[p,i],CV[p,j]]

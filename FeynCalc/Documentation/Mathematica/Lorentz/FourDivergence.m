@@ -43,4 +43,14 @@ SP[p, w]*SpinorUBar[p2, m] . GS[w] . SpinorU[p1, m]
 FourDivergence[%, FV[w, a]]
 
 
+(* ::Text:: *)
+(*Differentiation of $4$-vectors living  in different dimensions ($4$, $D$, $D-4$) works only in the t'Hooft-Veltman scheme*)
 
+
+FourDivergence[FVD[p,mu],FV[p,nu]]
+
+
+FCSetDiracGammaScheme["BMHV"];
+
+
+FourDivergence[FVD[p,mu],FV[p,nu]]

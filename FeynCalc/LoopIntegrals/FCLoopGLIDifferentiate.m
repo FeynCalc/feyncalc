@@ -63,7 +63,7 @@ FCLoopGLIDifferentiate[expr_/;Head[expr]=!=List, toposRaw_List, invRaw_/;Head[in
 			pattern, GLIFourDivergenceRule, listGLIEval, ruleFinal, null1, null2,
 			listFADs, listSelect, diff, tmp, relevantGLIs, listDiff, listDiffEval,
 			listTopos, vectorDiff, mu, vecHead,	optCollecting, optFactoring,
-			optTimeConstrained},
+			optTimeConstrained, mu0, inv0, invDim},
 
 
 		vectorDiff	= False;
@@ -108,8 +108,9 @@ FCLoopGLIDifferentiate[expr_/;Head[expr]=!=List, toposRaw_List, invRaw_/;Head[in
 				Abort[]
 			];
 			vecHead = Pair;
-			mu 	= inv /. Pair[_Momentum, z_LorentzIndex] -> z;
-			inv = inv /. Pair[z_Momentum, _LorentzIndex] -> z;
+			{inv, invDim, mu} = inv /.Pair[z:Momentum[_,dim_:4], l_LorentzIndex] :> {z, dim, l};
+			{mu0, inv0} = {First[mu],First[inv]};
+
 			FCPrint[1,"FCLoopGLIDifferentiate: {p,mu}: ", {inv,mu} , FCDoControl->crtgVerbose]
 		];
 
@@ -149,7 +150,7 @@ FCLoopGLIDifferentiate[expr_/;Head[expr]=!=List, toposRaw_List, invRaw_/;Head[in
 			FCPrint[3,"FCLoopGLIDifferentiate: Intermediate listDiffEval: ", listDiffEval, FCDoControl->crtgVerbose];
 
 			If[	vectorDiff,
-				listDiffEval = FeynCalc`Package`fourVectorDiffEval[listDiffEval,holdDerivative,inv,mu];
+				listDiffEval = FeynCalc`Package`fourVectorDiffEval[listDiffEval,holdDerivative,inv0,mu0,invDim];
 				FCPrint[3,"FCLoopGLIDifferentiate: listDiffEval after fourVectorDiffEval", listDiffEval, FCDoControl->crtgVerbose];
 			];
 

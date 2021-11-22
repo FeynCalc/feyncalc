@@ -36,10 +36,12 @@ The problem reads: `1`";
 
 FourDivergence::warn =
 "Warning! The input expression also depends on `1` in dimensions other than `2`. \
-The derivative of a vector in one dimension w.r.t the same vector in a different \
-dimension is zero by convention. Please check that this is indeed intended. You \
-can deactivate this message for the current session by evaluating \
-Off[FourDivergence::warn].";
+The derivative of a vector in one dimension (D, 4 or D-4) w.r.t. the same vector in a \
+different dimension (D, 4 or D-4) is meaningnful only when using the t'Hooft-Veltman \
+scheme. For every other scheme please recheck your input expressions and ensure that \
+all matrices, spinors and tensors are purely D-dimensional or 4-dimensional. You might \
+want to use FCGetDimensions[exp] to find the offending terms. If you explicitly \
+intend to use the t'Hooft-Veltman scheme, please activate it via FCSetDiracGammaScheme[\"BMHV\"].";
 
 FourDivergence::warnCartesian =
 "Warning! The input expression also depends on the 3-momentum `1`. The derivatives of \
@@ -169,7 +171,7 @@ fourDerivative[x_, a_, b__] :=
 fourDerivative[x_, ve_]:=
 	Block[{	nx = x,p, p0, mu, dList, dListEval, repRuleFinal, deriv,
 			null1,null2,un, fadHead, fadList, fadListEval,
-			repRule1, repRule2={}, res},
+			repRule1, repRule2={}, res, mu0, momHead, pDim},
 
 		FCPrint[3, "FourDivergence: fourDerivative: Entering with: ", x, FCDoControl->fdVerbose];
 
@@ -179,9 +181,10 @@ fourDerivative[x_, ve_]:=
 			Abort[]
 		];
 
-		p 	= ve/.Pair[z_Momentum,_] :> z;
-		mu	= ve/.Pair[z_LorentzIndex,_] :> z;
+		{p, pDim, mu} = ve/.Pair[z:Momentum[_,dim_:4], l_LorentzIndex] :> {z, dim, l};
+
 		p0	= First[p];
+		mu0 = First[mu];
 
 		FCPrint[3, "FourDivergence: fourDerivative: p and mu: ", {p,mu}, FCDoControl->fdVerbose];
 
@@ -211,7 +214,7 @@ fourDerivative[x_, ve_]:=
 			(*	FeynAmpDenominatorSplit is necessary here. Without it, the results are still correct,
 				but they become too complicated.	*)
 			nx = FeynAmpDenominatorSplit[nx,FCI->True];
-			fadList = Cases[nx + null1 + null2, zzz_FeynAmpDenominator /; ! FreeQ[zzz, p], Infinity];
+			fadList = Cases[nx + null1 + null2, zzz_FeynAmpDenominator /; ! FreeQ[zzz, p0], Infinity];
 			fadListEval = FeynAmpDenominatorExplicit[#,FCI->True,Head->fadHead,Denominator->True]&/@fadList;
 			repRule1 = Thread[Rule[fadList,fadListEval]];
 			repRule2 = (Reverse /@ repRule1) /. Rule[a_, b_] :> Rule[1/a, 1/b];
@@ -225,18 +228,23 @@ fourDerivative[x_, ve_]:=
 
 		];
 
-		If[ Cases[(nx/. p-> Unique[]) + null1 + null2, Momentum[p0,___], Infinity]=!={},
-			Message[FourDivergence::warn,ToString[p0], ToString[p/.Momentum[_,dim_:4]:>dim]]
+		If[ Cases[(nx/. p-> Unique[]) + null1 + null2, Momentum[p0,___], Infinity]=!={} && (FeynCalc`Package`DiracGammaScheme =!= "BMHV"),
+			Message[FourDivergence::warn,ToString[p0], ToString[p/.Momentum[_,dim_:4]:>dim]];
+			Abort[]
 		];
 
 		(* This is the main part	*)
-		nx = D[nx, p] /. Derivative -> deriv;
+		nx = D[nx /. Momentum[p0,dim___] -> Momentum[momHead[p0],dim], momHead[p0]] /. Derivative -> deriv;
+		nx = nx /. {deriv[1][Momentum][momHead[p0]] -> 1, deriv[1,0][Momentum][momHead[p0],_] -> 1} /. momHead->Identity;
+
 		FCPrint[3, "FourDivergence: fourDerivative: After D: ", nx, FCDoControl->fdVerbose];
 
 		dList = Cases[nx+null1+null2,deriv[___][___][___],Infinity]//Sort//DeleteDuplicates;
 
+		FCPrint[3, "FourDivergence: fourDerivative: dList: ", dList, FCDoControl->fdVerbose];
 
-		dListEval = fourVectorDiffEval[dList /. (deriv[__][fadHead][__]) -> 1,deriv,p,mu] /. deriv -> Derivative;
+
+		dListEval = fourVectorDiffEval[dList /. (deriv[__][fadHead][__]) -> 1,deriv,p0,mu0,pDim] /. deriv -> Derivative;
 
 		repRuleFinal = Thread[Rule[dList,dListEval]];
 		FCPrint[3, "FourDivergence: fourDerivative: Final replacement list: ", repRuleFinal, FCDoControl->fdVerbose];
@@ -253,16 +261,16 @@ fourDerivative[x_, ve_]:=
 		res
 	];
 
-fourVectorDiffEval[ex_,head_,p_,mu_]:=
+fourVectorDiffEval[ex_,head_,pVar_,muVar_, pDim_]:=
 	ex /. {
-		head[1, 0][Pair][p,  a_] 		:> Pair[a, mu] ,
-		head[0, 1][Pair][a_, p] 		:> Pair[a, mu] ,
-		head[1,0][DiracGamma][p,dim_]	:> DiracGamma[mu,dim] ,
-		head[1][DiracGamma][p]			:> DiracGamma[mu] ,
-		head[1,0,0,0][Eps][p,c__]		:> Eps[mu,c] ,
-		head[0,1,0,0][Eps][a_,p,c__]	:> Eps[a,mu,c] ,
-		head[0,0,1,0][Eps][a__,p,c_]	:> Eps[a,mu,c] ,
-		head[0,0,0,1][Eps][c__,p]		:> Eps[c,mu]
+		head[1, 0][Pair][Momentum[pVar,___],  a_] 			:> Pair[a, LorentzIndex[muVar,pDim]],
+		head[0, 1][Pair][a_, Momentum[pVar,___]] 			:> Pair[a, LorentzIndex[muVar,pDim]],
+		head[1,0][DiracGamma][Momentum[pVar,___],dim2__]	:> DiracGamma[LorentzIndex[muVar,pDim],dim2],
+		head[1][DiracGamma][Momentum[pVar,___]]				:> DiracGamma[LorentzIndex[muVar,pDim]],
+		head[1,0,0,0][Eps][Momentum[pVar,___],c__]			:> Eps[LorentzIndex[muVar,pDim],c],
+		head[0,1,0,0][Eps][a_,Momentum[pVar,___],c__]		:> Eps[a,LorentzIndex[muVar,pDim],c],
+		head[0,0,1,0][Eps][a__,Momentum[pVar,___],c_]		:> Eps[a,LorentzIndex[muVar,pDim],c],
+		head[0,0,0,1][Eps][c__,Momentum[pVar,___]]			:> Eps[c,LorentzIndex[muVar,pDim]]
 	};
 
 
