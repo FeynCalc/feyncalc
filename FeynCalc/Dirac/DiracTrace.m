@@ -30,7 +30,7 @@ DiracTrace::mixmsg = "Expressions that mix D-, 4- and D-4-dimensional quantities
 in Dirac matrix chains unless you are using the t'Hooft-Veltman scheme. For every other scheme, please \
 recheck your input expressions and ensure that all matrices, spinors and tensors are purely \
 D-dimensional. You might want to use FCGetDimensions[exp] to find the offending terms and fix them \
-by hand or ChangeDimension[exp,D] to convert the whole expression to D-dimensions. If you explicitly \
+by hand or employ ChangeDimension[exp,D] to convert the whole expression to D-dimensions. If you explicitly \
 intend to use the t'Hooft-Veltman scheme, please activate it via FCSetDiracGammaScheme[\"BMHV\"]."
 
 (* ------------------------------------------------------------------------ *)
