@@ -134,6 +134,7 @@ pow::usage="";
 null::usage="";
 lintegral::usage="";
 fclbeVerbose::usage="";
+fclpttVerbose::usage="";
 optEtaSign::usage="";
 itpVerbose::usage="";
 spd::usage="";
@@ -206,6 +207,7 @@ Options[FCLoopBasisIntegralToPropagators] = {
 Options[FCLoopBasisPropagatorsToTopology] = {
 	DeleteDuplicates	-> True,
 	ExpandScalarProduct -> False,
+	FCVerbose 			-> False,
 	FCE 				-> False,
 	FCI 				-> False,
 	MomentumCombine 	-> False
@@ -398,12 +400,14 @@ FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 
 
 		If[	OptionValue[Tally],
+			(*Print[Flatten[tmp]];*)
 			res = Tally[Flatten[tmp]];
 
 
 			FCPrint[3,"FCLoopBasisIntegralToPropagators: After Tally: ", res, FCDoControl->itpVerbose];
+
 			res = res /. {
-				{FeynAmpDenominator[h_[a__, {n_, s_}]], k_}/; MatchQ[n,_Integer?Positive|_Symbol] || Variables[n]=!={} :>
+				{FeynAmpDenominator[h_[a__, {n_, s_}]], k_}/; Head[n]===Symbol || (NumericQ[n] && n=!=-1) || Variables[n]=!={} :>
 					{FeynAmpDenominator[h[a,{1,s}]], n k}
 			};
 
@@ -583,10 +587,22 @@ FCLoopBasisPropagatorsToTopology[topoRaw_FCTopology, opts:OptionsPattern[]] :=
 FCLoopBasisPropagatorsToTopology[props_List /; props =!= {} && FreeQ[props,FCTopology], OptionsPattern[]] :=
 	Block[{expr, tmp, res},
 
+		If [ OptionValue[FCVerbose]===False,
+			fclpttVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				fclpttVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		FCPrint[1,"FCLoopBasisPropagatorsToTopology: Entering.", FCDoControl->fclpttVerbose];
+		FCPrint[3,"FCLoopBasisPropagatorsToTopology: Entering with: ", props, FCDoControl->fclpttVerbose];
+
 		If[! OptionValue[FCI],
 			expr = FCI[props],
 			expr = props
 		];
+
+
 
 		If[	OptionValue[MomentumCombine],
 			expr = MomentumCombine[expr, FCI -> True]
@@ -595,11 +611,15 @@ FCLoopBasisPropagatorsToTopology[props_List /; props =!= {} && FreeQ[props,FCTop
 		tmp = expr /. {
 			FeynAmpDenominator[a_PropagatorDenominator] :>
 				1/FeynAmpDenominator[a],
-			FeynAmpDenominator[(h : StandardPropagatorDenominator | CartesianPropagatorDenominator | GenericPropagatorDenominator)[a__, {n_Integer, s_}]] /;
-				n > 0 :> FeynAmpDenominator[h[a, {-n, s}]]
+			FeynAmpDenominator[(h : StandardPropagatorDenominator | CartesianPropagatorDenominator | GenericPropagatorDenominator)[a__, {n_, s_}]] /;
+				n=!=0 :> FeynAmpDenominator[h[a, {-1, s}]]
 		};
 
+		FCPrint[3,"FCLoopBasisPropagatorsToTopology: tmp: ", tmp, FCDoControl->fclpttVerbose];
+
 		res = FeynAmpDenominatorExplicit[#, FCI -> True, ExpandScalarProduct -> False] & /@ tmp;
+
+		FCPrint[3,"FCLoopBasisPropagatorsToTopology: Raw result: ", res, FCDoControl->fclpttVerbose];
 
 		If[	OptionValue[ExpandScalarProduct],
 			res = ExpandScalarProduct[res, FCI -> True]
@@ -622,6 +642,10 @@ FCLoopBasisPropagatorsToTopology[props_List /; props =!= {} && FreeQ[props,FCTop
 		If[	OptionValue[FCE],
 			res = FCE[res]
 		];
+
+		FCPrint[1,"FCLoopBasisPropagatorsToTopology: Leaving.", FCDoControl->fclpttVerbose];
+		FCPrint[3,"FCLoopBasisPropagatorsToTopology: Leaving with: ", res, FCDoControl->fclpttVerbose];
+
 
 		res
 ];

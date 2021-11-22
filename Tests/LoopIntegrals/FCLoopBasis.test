@@ -1078,7 +1078,21 @@ CSPD[p, p]*x[2], -c^2 + CSPD[k, k]}, {CSPD[k, k], CSPD[k, p]}, {1 + s, 1},
 FCI[CFAD[{{k, 0}, {0, -1}, 1}, {{k, 0}, {0, -1},
 	1}, {{k - p, 0}, {0, -1}, 1}] Sqrt[CSPD[k, k]] CSPD[k,
 	k]], {k}] // FCE","{CFAD[{{0, Sqrt[k.k]}, {0, -1}, -1}], CFAD[{{0, k.k}, {0, -1}, -1}],
-CFAD[{{k, 0}, {0, -1}, 1}], CFAD[{{k - p, 0}, {0, -1}, 1}]}"}
+CFAD[{{k, 0}, {0, -1}, 1}], CFAD[{{k - p, 0}, {0, -1}, 1}]}"},
+{"fcstFCLoopBasisExtract-ID63",
+"FCLoopBasisIntegralToPropagators[
+SFAD[{ k, 0, -3/2}, { (k + p), 0, 1}], {k}, Tally -> True, FCE->True]",
+"{{SFAD[{{k, 0}, {0, 1}, 1}], -(3/2)}, {SFAD[{{k + p, 0}, {0, 1}, 1}],
+1}}"},
+{"fcstFCLoopBasisExtract-ID64",
+"FCLoopBasisIntegralToPropagators[
+SFAD[{ k, 0, -3/2}, { (k + p), 0, 1}, { k, 0, 2}], {k},
+Tally -> True, FCE -> True]",
+"{{SFAD[{{k, 0}, {0, 1}, 1}], 1/2}, {SFAD[{{k + p, 0}, {0, 1}, 1}], 1}}"},
+{"fcstFCLoopBasisExtract-ID65",
+"FCLoopBasisIntegralToPropagators[
+SFAD[{ k, 0, -3/2}, { (k + p), 0, 1}], {k}, FCE -> True]",
+"{SFAD[{{k, 0}, {0, 1}, -1}], SFAD[{{k + p, 0}, {0, 1}, 1}]}"}
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisCreateScalarProducts =
@@ -1209,5 +1223,11 @@ SFAD[{{p1 + p3, 0}, {mb^2, 1}, 1}], SFAD[{{p1 - q, 0}, {mb^2, 1}, 1}], SFAD[{{0,
 {p1, p3}, {q}, {}, {}]},FCE->True]",
 "{{SPD[p1, p1], -mb^2 + SPD[p3, p3], -mb^2 + SPD[p1 + p3, p1 + p3], -mb^2 + SPD[p1 - q, p1 - q],
 SPD[p3, q]}, {-mb^2 + SPD[p1, p1], -mb^2 + SPD[p3, p3], -mb^2 + SPD[p1 + p3, p1 + p3],
--mb^2 + SPD[p1 - q, p1 - q], SPD[p1 + p3, q]}}"}
+-mb^2 + SPD[p1 - q, p1 - q], SPD[p1 + p3, q]}}"},
+{"fcstFCLoopBasisPropagatorsToTopology-ID10",
+"FCLoopBasisPropagatorsToTopology[{SFAD[{ k, 0, -3/2}]}, FCE -> True]",
+"{SPD[k, k]}"},
+{"fcstFCLoopBasisPropagatorsToTopology-ID11",
+"FCLoopBasisPropagatorsToTopology[{SFAD[{ k, 0, -3/2}],
+SFAD[{ (k + p), 0, 1}]}, FCE -> True]","{SPD[k, k], SPD[k + p, k + p]}"}
 });

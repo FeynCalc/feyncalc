@@ -293,5 +293,12 @@ SplitSymbolicPowers -> True]","{x[2]^(-1/2 + ep)*((-1 + (1 - 2*ep)/2 +
 (4 - 2*ep)/2)*x[1]*(-x[1] - x[2])^(-7/2 + 3*ep)*(-(x[1]*x[2]))^(1/2 - 2*ep) +
 (-3 + 2*ep + (-1 + 2*ep)/2)*(-x[1] - x[2])^(-9/2 + 3*ep)*(-(x[1]*x[2]))^(3/2 - 2*ep)),
 ((-1)^(1/2 + ep)*Gamma[-3/2 + 2*ep])/Gamma[1/2 + ep],
-{x[1], x[2]}}"}
+{x[1], x[2]}}"},
+{"fcstFCFeynmanParametrize-ID44",
+"FCFeynmanParametrize[SFAD[{I k, 0, -3/2}, { I (k + p), 0, 1}], {k},
+Names -> x, FCReplaceD -> {D -> 4 - 2 ep},
+FinalSubstitutions -> {SPD[p] -> 1}] // Simplify",
+"{((-x[1] - x[2])^(-13/2 + 2*ep)*(-(x[1]*x[2]))^(5/2 - ep)*((15 -
+16*ep + 4*ep^2)*x[1]^2 - 4*(15 - 11*ep + 2*ep^2)*x[1]*x[2] + 4*(6 - 5*ep +
+ep^2)*x[2]^2))/(4*x[2]^(5/2)), ((-I)*Gamma[-5/2 + ep])/Sqrt[Pi],{x[1], x[2]}}"}
 });
