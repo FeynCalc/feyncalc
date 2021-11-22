@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`ExpandPartialD[exp]` expands noncommutative products of `QuantumField}`'s and partial differentiation operators in `exp` and applies the Leibniz rule.*)
+(*`ExpandPartialD[exp]` expands noncommutative products of `QuantumField}`s and partial differentiation operators in `exp` and applies the Leibniz rule.*)
 
 
 (* ::Subsection:: *)
@@ -48,3 +48,14 @@ LC[\[Mu],\[Nu],\[Rho],\[Tau]] RightPartialD[\[Alpha],\[Mu],\[Beta],\[Nu]]
 
 
 ExpandPartialD[%]
+
+
+RightPartialD[CartesianIndex[i]] . QuantumField[S,x]
+%//ExpandPartialD
+
+
+RightPartialD[{CartesianIndex[i],x}] . QuantumField[S,x]
+%//ExpandPartialD
+
+
+

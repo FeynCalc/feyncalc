@@ -72,8 +72,8 @@ FieldStrength[Momentum[OPEDelta], nu_, a_, {aA_, b_, c_}, g_ /; Head[g] =!= Rule
 
 
 FieldStrength[mu_, nu_, OptionsPattern[]] :=
-	(QuantumField[FCPartialD[mu], OptionValue[QuantumField],
-	LorentzIndex[nu]] -    QuantumField[FCPartialD[nu], OptionValue[QuantumField],
+	(QuantumField[FCPartialD[LorentzIndex[mu]], OptionValue[QuantumField],
+	LorentzIndex[nu]] -    QuantumField[FCPartialD[LorentzIndex[nu]], OptionValue[QuantumField],
 	LorentzIndex[mu]]) /; OptionValue[Explicit];
 
 FieldStrength[mu_, nu_, a_, opts:OptionsPattern[]] :=

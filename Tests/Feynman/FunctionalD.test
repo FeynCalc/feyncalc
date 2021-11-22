@@ -38,8 +38,8 @@ SUNIndex[a]], QuantumField[GaugeField, {mu2}, {i2}],
 QuantumField[GaugeField, {mu1}, {i1}]]","-2 RightPartialD[LorentzIndex[b]].RightPartialD[LorentzIndex[b]] Pair[
 LorentzIndex[mu1], LorentzIndex[mu2]] SUNDelta[SUNIndex[i1],
 SUNIndex[i2]]"},
-{"fcstFunctionalD-ID4","FunctionalD[(QuantumField[FCPartialD[mu], phi].QuantumField[
-	FCPartialD[mu], phi] - m^2 QuantumField[phi].QuantumField[phi])/
+{"fcstFunctionalD-ID4","FunctionalD[(QuantumField[FCPartialD[LorentzIndex[mu]], phi].QuantumField[
+	FCPartialD[LorentzIndex[mu]], phi] - m^2 QuantumField[phi].QuantumField[phi])/
 2, QuantumField[phi]]","-m^2 QuantumField[phi] -
 QuantumField[FCPartialD[LorentzIndex[mu]],
 FCPartialD[LorentzIndex[mu]], phi]"},

@@ -387,12 +387,20 @@ If one of x and y has head LorentzIndex and the other Momentum, a Lorentz
 vector (e.g. $p^{\\mu }$) is implied.";
 
 FCPartialD::usage =
-"FCPartialD[\[Mu]] denotes the four-dimensional $\\partial _{\\mu }$.
+"FCPartialD[ind] denotes a partial derivative of a field. It is an internal
+object that may appear only inside a QuantumField.
 
-FCPartialD is used to denote derivative fields.
+FCPartialD[LorentzIndex[\[Mu]]] denotes  $\\partial _{\\mu }$.
 
 FCPartialD[LorentzIndex[\[Mu] ,D]] denotes the $D$-dimensional $\\partial _{\\mu
-}$.";
+}$.
+
+FCPartialD[CartesianIndex[i]] denotes  $\\partial^{i} = - \\nabla^i$.
+
+If you need to specify a derivative with respect to a particular variable it
+also possible to use FCPartialD[{LorentzIndex[\[Mu]],y}] or
+FCPartialD[{CartesianIndex[i],x}]although this notation is still somewhat
+experimental";
 
 PlusDistribution::usage =
 "PlusDistribution[1/(1 - x)] denotes a distribution (in the sense of the \"+\"
@@ -1734,6 +1742,19 @@ LeftPartialD[c:OPEDelta..] :=
 LeftPartialD[x_, y__]/; MatchQ[{x,y},{(__LorentzIndex | __ExplicitLorentzIndex | __CartesianIndex | __Momentum | __CartesianMomentum)}] :=
 	DOT @@ Map[LeftPartialD, {x, y}];
 
+
+LeftPartialD[r1__, {i_, x_} ,r2__]:=
+	DOT[LeftPartialD[r1], LeftPartialD[{i, x}], LeftPartialD[r2]]/;
+	MemberQ[{LorentzIndex,CartesianIndex},Head[i]];
+
+LeftPartialD[{i_, x_} ,r__]:=
+	DOT[LeftPartialD[{i, x}],LeftPartialD[r]]/;
+	MemberQ[{LorentzIndex,CartesianIndex},Head[i]];
+
+LeftPartialD[r__, {i_, x_}]:=
+	DOT[LeftPartialD[r],LeftPartialD[{i, x}]]/;
+	MemberQ[{LorentzIndex,CartesianIndex},Head[i]];
+
 (* 	Here one must use named blanks, since otherwise DotSimplify
 	is not able to convert this into rules. But I also don't want
 	WWB to complain about unused variables here. So... *)
@@ -1952,12 +1973,12 @@ Pair[Momentum[q_, dim_Symbol], CartesianMomentum[p_, dim_Symbol-1]]:=
 Pair[p_Momentum, q_CartesianMomentum]:=
 	CartesianPair[p, q];
 
-
+(*
 FCPartialD[x__] :=
 	FCPartialD @@ (LorentzIndex /@ {x}) /;FreeQ2[{x},
 	{LorentzIndex, ExplicitLorentzIndex, CartesianIndex, Momentum, CartesianMomentum, OPEDelta, RowBox,
 	Pattern, Blank}] && (Union[{x}]=!={1});
-
+*)
 FCPartialD[(1)..] =
 	1;
 
@@ -2042,6 +2063,18 @@ RightPartialD[(1)..] =
 
 RightPartialD[c:OPEDelta..] :=
 	RightPartialD @@ (Momentum /@ {c});
+
+RightPartialD[r1__, {i_, x_} ,r2__]:=
+	DOT[RightPartialD[r1], RightPartialD[{i, x}], RightPartialD[r2]]/;
+	MemberQ[{LorentzIndex,CartesianIndex},Head[i]];
+
+RightPartialD[{i_, x_} ,r__]:=
+	DOT[RightPartialD[{i, x}],RightPartialD[r]]/;
+	MemberQ[{LorentzIndex,CartesianIndex},Head[i]];
+
+RightPartialD[r__, {i_, x_}]:=
+	DOT[RightPartialD[r],RightPartialD[{i, x}]]/;
+	MemberQ[{LorentzIndex,CartesianIndex},Head[i]];
 
 RightPartialD[x_, y__]/; MatchQ[{x,y},{(__LorentzIndex | __ExplicitLorentzIndex | __CartesianIndex | __Momentum | __CartesianMomentum)}] :=
 	DOT @@ Map[RightPartialD, {x, y}];

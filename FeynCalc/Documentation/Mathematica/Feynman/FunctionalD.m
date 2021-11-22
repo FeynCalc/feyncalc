@@ -37,10 +37,11 @@ FunctionalD[QuantumField[\[Phi]]^2,QuantumField[\[Phi]]]
 (*Instead of the usual  $(\delta  \partial _{\mu} \phi (x) )/ \delta \phi (y)= \partial _{\mu} \delta^{(D)}(x-y)$ the arguments are omitted, and the $\partial_\mu$ operator is specified by default to be an integration by parts operator, i.e. the right hand side will be just `Null` or, more precisely, (by default) $-\partial _{mu }$.*)
 
 
-FunctionalD[QuantumField[FCPartialD[\[Mu]],\[Phi]],QuantumField[\[Phi]]]
+FunctionalD[QuantumField[FCPartialD[LorentzIndex[\[Mu]]],\[Phi]],QuantumField[\[Phi]]]
 
 
-(QuantumField[FCPartialD[\[Mu]],\[Phi]] . QuantumField[FCPartialD[\[Mu]],\[Phi]]-m^2 QuantumField[\[Phi]] . QuantumField[\[Phi]])/2
+(QuantumField[FCPartialD[LorentzIndex[\[Mu]]],\[Phi]] . QuantumField[FCPartialD[LorentzIndex[\[Mu]]]
+,\[Phi]]-m^2 QuantumField[\[Phi]] . QuantumField[\[Phi]])/2
 FunctionalD[%,QuantumField[\[Phi]]]
 
 

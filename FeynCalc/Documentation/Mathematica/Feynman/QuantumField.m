@@ -77,7 +77,7 @@ QuantumField[A,{OPEDelta},{a}]//StandardForm
 (*Derivatives of fields are denoted as follows.*)
 
 
-QuantumField[FCPartialD[\[Mu]],A,{\[Mu]}]
+QuantumField[FCPartialD[LorentzIndex[\[Mu]]],A,{\[Mu]}]
 
 
 QuantumField[FCPartialD[OPEDelta],S]

@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 ExpandPartialD::usage =
-"ExpandPartialD[exp] expands noncommutative products of QuantumField}'s and
+"ExpandPartialD[exp] expands noncommutative products of QuantumField}s and
 partial differentiation operators in exp and applies the Leibniz rule.";
 
 (* Added 22/2-2003 in order to use FieldDerivative in a flexible way. F.Orellana *)
@@ -62,13 +62,6 @@ ExpandPartialD[expr_, OptionsPattern[]] :=
 		If[ OptionValue[FCI],
 			ex = expr,
 			ex = FCI[expr]
-		];
-
-
-
-		If[	!FreeQ2[x, FeynCalc`Package`NRStuff],
-				Message[FeynCalc::nrfail];
-				Abort[]
 		];
 
 		res = Fold[internalExpand[#1, #2]&, ex, Complement[$Multiplications, {Times}]];
@@ -306,13 +299,13 @@ qf5[a___, QuantumField[f2__], QuantumField[f1__], LeftPartialD[mu_], b___] :=
 	((qf5st[a, quanf[f2],  quanf[FCPartialD[mu], f1], b] +
 		qf5st[a, quanf[f2], LeftPartialD[mu], quanf[f1], b]
 		) /. quanf -> QuantumField /. qf5st -> qf5
-	) /; MemberQ[{LorentzIndex,ExplicitLorentzIndex,Momentum,CartesianIndex,CartesianMomentum},Head[mu]];
+	) /; MemberQ[{LorentzIndex,ExplicitLorentzIndex,Momentum,CartesianIndex,CartesianMomentum,List},Head[mu]];
 
 qf5[a___, RightPartialD[mu_], QuantumField[f1__], QuantumField[f2__], b___] :=
 	((qf5st[a, quanf[FCPartialD[mu], f1], quanf[f2],  b] +
 		qf5st[a, quanf[f1], RightPartialD[mu], quanf[f2], b]
 	) /. quanf -> QuantumField /. qf5st -> qf5
-	) /; MemberQ[{LorentzIndex,ExplicitLorentzIndex,Momentum,CartesianIndex,CartesianMomentum},Head[mu]];
+	) /; MemberQ[{LorentzIndex,ExplicitLorentzIndex,Momentum,CartesianIndex,CartesianMomentum,List},Head[mu]];
 
 qf5st[a___, RightPartialD[Momentum[OPEDelta]^m_], RightPartialD[Momentum[OPEDelta]^n_], b___] :=
 	qf5st[a, RightPartialD[Momentum[OPEDelta]^(m+n)], b];

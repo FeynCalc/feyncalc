@@ -85,5 +85,23 @@ CartesianIndex[j],CartesianIndex[k]]]", "0"},
 QuantumField[phi2] // ExpandPartialD", "QuantumField[phi1] .
 QuantumField[FCPartialD[ExplicitLorentzIndex[0]], phi2] +
 QuantumField[FCPartialD[ExplicitLorentzIndex[0]], phi1] .
-QuantumField[phi2]"}
+QuantumField[phi2]"},
+{"fcstExpandPartialD-ID12",
+"ExpandPartialD[
+RightPartialD[{CartesianIndex[i], y2}] .
+RightPartialD[{CartesianIndex[i], y2}] .
+QuantumField[SPhiDagger, PauliIndex[dk1], PauliIndex[dk2], y1,
+y2] . QuantumField[SPhi, PauliIndex[dk2], PauliIndex[dk1], y1, y2]]",
+"QuantumField[SPhiDagger, PauliIndex[dk1], PauliIndex[dk2], y1, y2] .
+QuantumField[FCPartialD[{CartesianIndex[i], y2}],
+FCPartialD[{CartesianIndex[i], y2}], SPhi, PauliIndex[dk2],
+PauliIndex[dk1], y1, y2] +
+2 QuantumField[FCPartialD[{CartesianIndex[i], y2}], SPhiDagger,
+	PauliIndex[dk1], PauliIndex[dk2], y1, y2] .
+QuantumField[FCPartialD[{CartesianIndex[i], y2}], SPhi,
+	PauliIndex[dk2], PauliIndex[dk1], y1, y2] +
+QuantumField[FCPartialD[{CartesianIndex[i], y2}],
+FCPartialD[{CartesianIndex[i], y2}], SPhiDagger, PauliIndex[dk1],
+PauliIndex[dk2], y1, y2] .
+QuantumField[SPhi, PauliIndex[dk2], PauliIndex[dk1], y1, y2]"}
 });
