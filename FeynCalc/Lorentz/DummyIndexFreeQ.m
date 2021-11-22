@@ -33,15 +33,28 @@ End[]
 
 Begin["`DummyIndexFreeQ`Private`"]
 
-DummyIndexFreeQ[expr_, heads_List] :=
+difVerbose::usage="";
+
+Options[DummyIndexFreeQ]={
+	FCVerbose -> False
+}
+
+DummyIndexFreeQ[expr_, heads_List, OptionsPattern[]] :=
 	True/; FreeQ2[expr,heads];
 
-DummyIndexFreeQ[expr_, heads_List] :=
+DummyIndexFreeQ[expr_, heads_List, OptionsPattern[]] :=
 	Block[{fullLiList, freeLiList, ex, times, i, sel, sel2},
 
+		If [OptionValue[FCVerbose]===False,
+			difVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				difVerbose=OptionValue[FCVerbose]
+			];
+		];
 
-		FCPrint[1, "DummyIndexFreeQ: Entering."];
-		FCPrint[3, "DummyIndexFreeQ: Entering with: ", expr];
+
+		FCPrint[1, "DummyIndexFreeQ: Entering.", FCDoControl->difVerbose];
+		FCPrint[3, "DummyIndexFreeQ: Entering with: ", expr, FCDoControl->difVerbose];
 
 		If[ Head[expr]===Times,
 			ex = SelectNotFree[expr, heads],
@@ -59,7 +72,7 @@ DummyIndexFreeQ[expr_, heads_List] :=
 				Apply[times, Table[a, {i, b}]];
 		];
 
-		FCPrint[3, "DummyIndexFreeQ: Final ex: ", ex];
+		FCPrint[3, "DummyIndexFreeQ: Final ex: ", ex, FCDoControl->difVerbose];
 
 		sel = Blank/@heads;
 		If[	Length[heads]===1,
@@ -70,18 +83,19 @@ DummyIndexFreeQ[expr_, heads_List] :=
 			sel2 = Alternatives@@heads
 		];
 
-		FCPrint[1, "DummyIndexFreeQ: sel: ", sel];
+		FCPrint[1, "DummyIndexFreeQ: sel: ", sel, FCDoControl->difVerbose];
+		FCPrint[1, "DummyIndexFreeQ: sel2: ", sel2, FCDoControl->difVerbose];
 
 		freeLiList = Cases[ex, sel, Infinity]//
 			ReplaceAll[#, (sel2)[z_, ___] :> z] & // Tally // Cases[#, {z_, 1} :> z] &;
 
-		FCPrint[3, "DummyIndexFreeQ: freeLiList: ", freeLiList];
+		FCPrint[3, "DummyIndexFreeQ: freeLiList: ", freeLiList, FCDoControl->difVerbose];
 
 		fullLiList = Cases[expr, sel, Infinity] // DeleteDuplicates // Sort;
-		FCPrint[3, "DummyIndexFreeQ: fullLiList: ", fullLiList];
+		FCPrint[3, "DummyIndexFreeQ: fullLiList: ", fullLiList, FCDoControl->difVerbose];
 
 		fullLiList = fullLiList // ReplaceAll[#, (sel2)[z_, ___] :> z] & // DeleteDuplicates // Sort;
-		FCPrint[3, "DummyIndexFreeQ: fullLiList: ", fullLiList];
+		FCPrint[3, "DummyIndexFreeQ: fullLiList: ", fullLiList, FCDoControl->difVerbose];
 
 		(Complement[fullLiList, freeLiList] === {})
 	]/; !FreeQ2[expr,heads];
