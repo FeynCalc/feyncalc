@@ -14,12 +14,15 @@
 (* ------------------------------------------------------------------------ *)
 
 FCRenameDummyIndices::usage =
-"FCRenameDummyIndices[expr] identifies all dummy Lorentz and $SU(N)$ indices
-and changes their names pairwise to random symbols. This can be useful if you
-have an expression that contains dummy indices and want to compute the square
-of it. For example, the square of GA[a, l, a] equals $16$. However, if you
-forget to rename the dummy indices and compute GA[a, l, a, a, l, a] instead of
-GA[a, l, a, b, l, b], you will get $64$.";
+"FCRenameDummyIndices[expr] identifies dummy indices and changes their names
+pairwise to random symbols. This can be useful if you have an expression that
+contains dummy indices and want to compute the square of it. For example, the
+square of GA[a, l, a] equals $16$. However, if you forget to rename the dummy
+indices and compute GA[a, l, a, a, l, a] instead of GA[a, l, a, b, l, b], you
+will get $64$.
+
+Notice that this routine does not perform any canonicalization. Use
+FCCanonicalizeDummyIndices for  that.";
 
 FCRenameDummyIndices::failmsg =
 "Error! FCRenameDummyIndices has encountered a fatal problem and must abort the computation. \
@@ -43,6 +46,7 @@ Options[FCRenameDummyIndices] = {
 		CartesianIndex,
 		SUNIndex,
 		SUNFIndex,
+		PauliIndex,
 		DiracIndex
 	},
 	FCVerbose	-> False

@@ -244,6 +244,11 @@ PairCollect::usage =
 "PairCollect is an option for DiracTrace specifying if the result is collected
 with respect to Pairs.";
 
+PauliIndexNames::usage =
+"PauliIndexNames is an option for FCFAConvert, FCCanonicalizeDummyIndices and
+other functions. It renames the generic dummy Pauli indices to the indices in
+the supplied list.";
+
 PauliTraceEvaluate::usage =
 "PauliTraceEvaluate is an option for PauliTrace, PauliSimplify and some other
 functions. If set to False, Pauli traces remain unevaluated.";

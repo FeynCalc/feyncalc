@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [FCFAConvert](FCFAConvert.md), [FCCanonicalizeDummyIndices](FCCanonicalizeDummyIndices.md), [LorentzIndexNames](LorentzIndexNames.md).*)
+(*[Overview](Extra/FeynCalc.md), [FCFAConvert](FCFAConvert.md), [FCCanonicalizeDummyIndices](FCCanonicalizeDummyIndices.md), [PauliIndexNames](PauliIndexNames.md), [LorentzIndexNames](LorentzIndexNames.md).*)
 
 
 (* ::Subsection:: *)

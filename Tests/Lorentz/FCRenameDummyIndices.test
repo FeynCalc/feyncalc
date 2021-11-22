@@ -58,5 +58,8 @@ Spinor[Momentum[p1], 0, 1], $AL[a_]]]","True"},
 {"FCRenameDummyIndices-ID9",
 	"MatchQ[FCRenameDummyIndices[
 tr[GA[mu].(1 - GA[5]), GA[mu].(1 - GA[5])], DotSimplify -> False, FCE -> True],
-tr[GA[$AL[a_]].(1 - GA[5]), GA[$AL[a_]].(1 - GA[5])]]", "True"}
+tr[GA[$AL[a_]].(1 - GA[5]), GA[$AL[a_]].(1 - GA[5])]]", "True"},
+{"FCRenameDummyIndices-ID10",
+	"MatchQ[FCRenameDummyIndices[PCHN[CSI[a], i, j] PCHN[CSI[b], j, k],
+FCE -> True],PCHN[CSI[a], i, $AL[a_]] PCHN[CSI[b], $AL[a_], k]]", "True"}
 };
