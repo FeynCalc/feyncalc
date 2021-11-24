@@ -1991,16 +1991,6 @@ FCPartialD[x_, y__]/; MatchQ[{x,y},{(__LorentzIndex | __ExplicitLorentzIndex | _
 PlusDistribution[Log[x_ (1-x_)]/(1-x_)] :=
 	Log[x] /(1-x) + PlusDistribution[Log[1-x]/(1-x)];
 
-(* by convention *)
-Polarization[k_, opts:OptionsPattern[]] /; FCPatternFreeQ[{k}] :=
-	Polarization[k,Flatten[Join[FilterRules[Options[Polarization],Except[{opts}]],{opts}]]] = Polarization[k, I, opts];
-
-Polarization[-x_, I, opts:OptionsPattern[]] :=
-	-Polarization[x,I, opts];
-
-Polarization[-x_,-I, opts:OptionsPattern[]] :=
-	-Polarization[x,-I, opts];
-
 PolarizationVector[x_,{y_,z_}] :=
 	PolarizationVector[x, y, z];
 
