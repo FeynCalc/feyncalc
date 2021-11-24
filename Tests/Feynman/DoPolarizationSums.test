@@ -389,3 +389,11 @@ CartesianMomentum[q, D - 1],
 CartesianMomentum[Polarization[k, I], D - 1]] //
 DoPolarizationSums[#, k, FCE -> True] &", "CSPD[p, q] + (CSPD[k, p] CSPD[k, q])/SPD[k, k]"}
 };
+
+
+Tests`Feynman`fcstAbortDoPolarizationSums = {
+{"fcstAbortDoPolarizationSums-ID1","CheckAbort[DoPolarizationSums[
+PolarizationVector[p, mu] ComplexConjugate[
+PolarizationVector[-p, nu]], p, n],True]",
+	"True"}
+};

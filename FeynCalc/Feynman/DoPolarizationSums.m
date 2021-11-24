@@ -78,6 +78,7 @@ input expression is unambiguous in this respect."
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
+polarizationVectorCorrectQ;
 End[]
 
 Begin["`DoPolarizationSums`Private`"]
@@ -119,14 +120,14 @@ DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
 		FCPrint[1,"DoPolarizationSums: Vector boson momentum: ", bosonMomentum, FCDoControl->dpsVerbose];
 		FCPrint[1,"DoPolarizationSums: Auxiliary momentum: ", auxMomentum, FCDoControl->dpsVerbose];
 
-		If[	Internal`SyntacticNegativeQ[bosonMomentum] || !MatchQ[Head[bosonMomentum],_Symbol]
+		If[	Internal`SyntacticNegativeQ[bosonMomentum] || NumericQ[bosonMomentum]
 			|| MemberQ[{Times,Plus}, Head[bosonMomentum]],
 			Message[DoPolarizationSums::failmsg, "Illegal variable denoting the vector boson momentum."];
 			Abort[]
 		];
 
 		If[	!MemberQ[{0,-1},auxMomentum],
-			If[	Internal`SyntacticNegativeQ[auxMomentum] || !MatchQ[Head[auxMomentum],_Symbol]
+			If[	Internal`SyntacticNegativeQ[auxMomentum] || NumericQ[auxMomentum]
 				|| MemberQ[{Times,Plus}, Head[auxMomentum]],
 				Message[DoPolarizationSums::failmsg, "Illegal variable denoting the auxiliary momentum."];
 				Abort[]
@@ -144,6 +145,11 @@ DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
 
 		polInd1 = $MU[Unique[]];
 		polInd2 = $MU[Unique[]];
+
+		If[	FeynCalc`Package`polarizationVectorCorrectQ[ex]=!=True,
+			Message[DoPolarizationSums::failmsg, "Illegal variable denoting the vector boson momentum."];
+			Abort[]
+		];
 
 		polVectorsList = SelectNotFree[SelectNotFree[Sort[DeleteDuplicates[Cases[ex ,_Momentum | _CartesianMomentum,
 			Infinity]]],Polarization],bosonMomentum];
@@ -261,6 +267,21 @@ DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
 
 		res
 
+	];
+
+
+polarizationVectorCorrectQ[ex_]:=
+	Block[{polarizations, correct, complex, momenta, check, null1, null2},
+		correct=True;
+		polarizations = Cases2[ex+null1+null2,Polarization];
+		polarizations = MomentumExpand[polarizations]/.Complex->complex;
+
+		If[	polarizations=!={},
+			momenta = First/@polarizations;
+			correct = FreeQ2[Head /@ momenta, {Times, Plus}] && MatchQ[Internal`SyntacticNegativeQ /@ momenta, {False ..}] &&
+			MatchQ[NumericQ /@ momenta, {False ..}];
+		];
+		correct
 	];
 
 FCPrint[1,"DoPolarizationSums.m loaded."];
