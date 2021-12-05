@@ -42,6 +42,7 @@ End[]
 Begin["`FCLoopToPakForm`Private`"]
 
 fctpfVerbose::usage = "";
+optLightPak::usage = "";
 
 Options[FCLoopToPakForm] = {
 	CharacteristicPolynomial	-> Function[{U,F}, U+F],
@@ -56,6 +57,7 @@ Options[FCLoopToPakForm] = {
 	Function					-> Function[{U, F, charPoly, pows, head, int, sigma}, {int, head[ExpandAll[charPoly], Transpose[pows]]}],
 	Head						-> FCGV["PakFormHead"],
 	Indexed						-> True,
+	LightPak					-> False,
 	Names						-> FCGV["x"],
 	Power						-> FCGV["PowerMark"]
 };
@@ -83,6 +85,7 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 		optCharacteristicPolynomial = OptionValue[CharacteristicPolynomial];
 		optFinalSubstitutions 		= OptionValue[FinalSubstitutions];
 		optFCLoopPakOrder 			= OptionValue[FCLoopPakOrder];
+		optLightPak 				= OptionValue[LightPak];
 
 		FCPrint[1, "FCLoopToPakForm: Entering.", FCDoControl -> fctpfVerbose];
 		FCPrint[3, "FCLoopToPakForm: Entering with: ", expr, FCDoControl -> fctpfVerbose];
@@ -195,7 +198,7 @@ pakProcess[{uPolyRaw_, fPolyRaw_, powsRaw_List, matRaw_List, QRaw_List, JRaw_, t
 				time=AbsoluteTime[];
 				FCPrint[2, "FCLoopToPakForm: pakProcess: Calling FCPakOrder.", FCDoControl -> fctpfVerbose];
 
-				sigma = FCLoopPakOrder[pPoly, pVars] // First;
+				sigma = FCLoopPakOrder[pPoly, pVars, LightPak->optLightPak] // First;
 				FCPrint[2, "FCLoopToPakForm: pakProcess: FCPakOrder done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctpfVerbose];
 
 				If[ !MatchQ[sigma,{__Integer}],

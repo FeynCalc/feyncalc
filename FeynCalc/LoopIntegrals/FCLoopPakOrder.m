@@ -43,12 +43,14 @@ Begin["`FCLoopPakOrder`Private`"]
 
 fcpoVerbose::usage = "";
 fpIds::usage = "";
+optLightPak::usage = "";
 
 Options[FCLoopPakOrder] = {
 	Expanding		-> True,
 	FCVerbose		-> False,
 	MaxIterations	-> Infinity,
 	MonomialOrder	-> Lexicographic,
+	LightPak		-> False,
 	Rename 			-> False
 };
 
@@ -63,6 +65,8 @@ FCLoopPakOrder[poly_, fparsRaw_, OptionsPattern[]] :=
 				fcpoVerbose = OptionValue[FCVerbose]
 			];
 		];
+
+		optLightPak = OptionValue[LightPak];
 
 		time0=AbsoluteTime[];
 		FCPrint[1, "FCLoopPakOrder: Entering.", FCDoControl -> fcpoVerbose];
@@ -160,18 +164,20 @@ Block[{	swappedRowsList, relVectors, maxVector, res},
 	(*	Generate all row swaps allowed in this iteration	*)
 	swappedRowsList = Function[xx, Sequence@@Map[Join[xx, {#}] &, Complement[fpIds, xx]]]/@sigma;
 
-	FCPrint[4, "FCLoopPakOrder: pakSort: ", swappedRowsList, FCDoControl -> fcpoVerbose];
+	FCPrint[4, "FCLoopPakOrder: pakSort: Rows to consider: ", swappedRowsList, FCDoControl -> fcpoVerbose];
 	(*
 		Using row swaps from swappedRowsList we sort the first k rows together with the monomial
 		coefficients(!) canonically (or in any other definite way). Notice that the
 		original algorithm works on what would be M = matM^T, hence we need to transpose twice here:
 		first get to M, then sort and finally return to matM^T.
 	*)
+
 	relVectors = (matM[[Prepend[#, -1]]]//Transpose//Sort//Transpose//Last) & /@ swappedRowsList;
 	FCPrint[4, "FCLoopPakOrder: pakSort: relVectors: ", relVectors, FCDoControl -> fcpoVerbose];
 	(*
 		relVectors is a list of vectors corresponding to the kth row obtained from matrices with
-		different row swaps. We need to select a "maximum" vector (using some canonical ordering)
+		different row swaps. If we do n row swaps, we obtain n relVectors.
+		We need to select a "maximum" vector (using some canonical ordering)
 	*)
 
 	maxVector = relVectors[[Last[Ordering[relVectors]]]];
@@ -183,6 +189,12 @@ Block[{	swappedRowsList, relVectors, maxVector, res},
 	FCPrint[4, "FCLoopPakOrder: pakSort: Leaving with sigma: ", res, FCDoControl -> fcpoVerbose];
 
 	(* Final list of permuations aka sigma *)
+	(* res[[1;;1]] is the lightweight Pak! arXiv:1806.02593 *)
+
+	If[	optLightPak,
+		res = res[[1;;1]]
+	];
+
 	res
 	] /; Length[First[sigma]] < Length[fpIds];
 

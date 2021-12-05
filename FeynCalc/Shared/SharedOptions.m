@@ -224,6 +224,20 @@ LarinMVV -> True (default setting), such traces are computed according to Eq.
 [arXiv:1506.04517](https://arxiv.org/pdf/1506.04517.pdf) by S. Moch, J. A. M.
 Vermaseren and A. Vogt.";
 
+LightPak::usage=
+"LightPak is an option for FCLoopPakOrder and other functions for finding
+equivalent topologies or integrals using Pak algorithm. When set to True,
+instead of using the full Pak algorithm (which can be slow for complicated
+integrals) we use only a lightweight version that is not guaranteed to find
+all mappings but requires significantly less time.
+
+The light Pak algorithm is described in the [pySecDec
+manual](https://secdec.readthedocs.io/en/stable/full_reference.html).
+Essentially, it means that in the step 5 of the full [Pak
+algorithm](https://arxiv.org/pdf/1111.0868.pdf) we keep only the first matrix
+in the vector, so that the next iteration step generates significantly less
+matrices than in the full version.";
+
 Loop::usage=
 "Loop is an option for functions related to FeynArts integration, indicating
 the number of (virtual) loops.";

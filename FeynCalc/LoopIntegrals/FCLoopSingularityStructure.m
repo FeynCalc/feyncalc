@@ -106,7 +106,7 @@ FCLoopSingularityStructure[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern
 				tmp = FCFeynmanParametrize[#, lmoms, FCI -> True, Names -> optNames,
 					FinalSubstitutions-> optFinalSubstitutions, FCFeynmanPrepare->True, FCReplaceD->optFCReplaceD]/@ex,
 			True,
-				Message[FCLoopToPakForm::failmsg,"Failed to recognize the form of the input expression."];
+				Message[FCLoopSingularityStructure::failmsg,"Failed to recognize the form of the input expression."];
 				Abort[]
 		];
 

@@ -101,7 +101,7 @@ FCLoopScalelessQ[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 				Collecting -> OptionValue[Collecting], TimeConstrained -> OptionValue[TimeConstrained],
 				Factoring -> OptionValue[Factoring], FinalSubstitutions-> optFinalSubstitutions]&/@ex,
 			True,
-				Message[FCLoopToPakForm::failmsg,"Failed to recognize the form of the input expression."];
+				Message[FCLoopScalelessQ::failmsg,"Failed to recognize the form of the input expression."];
 				Abort[]
 		];
 

@@ -35,6 +35,7 @@ Options[FCLoopFindSubtopologies] = {
 	FCI 						-> False,
 	FCVerbose 					-> False,
 	FinalSubstitutions			-> {},
+	LightPak					-> False,
 	MaxIterations				-> Infinity,
 	Names						-> "X",
 	ToSFAD						-> True
@@ -67,7 +68,7 @@ FCLoopFindSubtopologies[topoRaw_FCTopology, OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1, "FCLoopFindSubtopologies: Calling FCLoopToPakForm.", FCDoControl -> fclfsVerbose];
 		pakForm = FCLoopToPakForm[topo, Names -> x, CharacteristicPolynomial -> Function[{U, F}, U*F],
-			FCLoopPakOrder -> False, FinalSubstitutions -> optFinalSubstitutions, FCI-> OptionValue[FCI]];
+			FCLoopPakOrder -> False, FinalSubstitutions -> optFinalSubstitutions, FCI-> OptionValue[FCI], LightPak->OptionValue[LightPak]];
 
 		FCPrint[1, "FCLoopFindSubtopologies: FCLoopToPakForm done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclfsVerbose];
 		FCPrint[3, "FCLoopFindSubtopologies: After FCLoopToPakForm: ", pakForm[[1]], FCDoControl->fclfsVerbose];
