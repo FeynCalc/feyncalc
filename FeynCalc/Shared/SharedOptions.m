@@ -215,6 +215,15 @@ KK::usage =
 abbreviations used by Isolate. A KK[i] returned by Isolate is given in
 HoldForm and can be recovered by ReleaseHold[KK[i]].";
 
+LarinMVV::usage=
+"LarinMVV is an option for DiracTrace and several other functions that deal
+with traces of Dirac matrices. The option applies only to the computation of
+$D$-dimensional traces with a single $\\gamma ^5$ in the Larin scheme. With
+LarinMVV -> True (default setting), such traces are computed according to Eq.
+(10) from 
+[arXiv:1506.04517](https://arxiv.org/pdf/1506.04517.pdf) by S. Moch, J. A. M.
+Vermaseren and A. Vogt.";
+
 Loop::usage=
 "Loop is an option for functions related to FeynArts integration, indicating
 the number of (virtual) loops.";
@@ -339,12 +348,12 @@ photon as an external state.";
 
 West::usage =
 "West is an option for DiracTrace and several other functions that deal with
-traces of Dirac matrices.The option applies only to the computation of
+traces of Dirac matrices. The option applies only to the computation of
 $D$-dimensional traces with an odd number of $\\gamma ^5$ in the
 Breitenlohner-Maison-t'Hooft-Veltman (BMHV) scheme. With West -> True (default
 setting), such traces are computed according to formula  (A.5) from Comp.
 Phys. Comm 77 (1993) 286-298, which is also known as West's formula. For more
-details, see the documentation for DiracTrace.";
+details, see the documentation of DiracTrace.";
 
 WriteOut::usage =
 "WriteOut is an option for OneLoop. If set to True, the result of OneLoop will
