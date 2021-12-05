@@ -214,7 +214,11 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 		If[Length[monomList] === 0,
 			FCPrint[1,"Collect2: The input expression contains no relevant monomials, leaving.", FCDoControl->cl2Verbose];
 			unity = 1;
-			Return[factorOut factor[nx]/denominator]
+			re = factorOut factor[nx]/denominator;
+			If[	optIsolateNames=!=False,
+				re  = Isolate[re,IsolateNames -> optIsolateNames, IsolateFast-> optIsolateFast]
+			];
+			Return[re]
 		];
 
 
