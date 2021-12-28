@@ -107,7 +107,10 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[infos__][diags___], OptionsPatt
 		diagsConverted= Map[#[[3]]&,{diags}];
 
 		loopFAMoms = Cases[{diags},System`Integral[lm__] :> {lm}, Infinity]//Flatten//Union;
-		{inFAMoms,outFAMoms} = FeynArts`Process /. {infos} /. Rule[a_List,b_List]:>{Transpose[a][[2]],Transpose[b][[2]]};
+		{inFAMoms,outFAMoms} = FeynArts`Process /. {infos} /. Rule[a_List,b_List]:>
+			{
+			If[a=!={},Transpose[a][[2]],{}],If[b=!={},Transpose[b][[2]],{}]
+			};
 
 		diagsConverted = FCPrepareFAAmp[diagsConverted,UndoChiralSplittings->OptionValue[UndoChiralSplittings],SMP->OptionValue[SMP],
 			FeynAmpDenominatorCombine->OptionValue[FeynAmpDenominatorCombine]];
