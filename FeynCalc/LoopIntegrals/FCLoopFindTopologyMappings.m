@@ -39,6 +39,7 @@ Options[FCLoopFindTopologyMappings] = {
 	FCI 						-> False,
 	FCVerbose 					-> False,
 	FinalSubstitutions			-> {},
+	LightPak					-> False,
 	PreferredTopologies			-> {}
 };
 
@@ -75,7 +76,7 @@ FCLoopFindTopologyMappings[topos:{__FCTopology}, OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1, "FCLoopFindTopologyMappings: Calling FCLoopFindIntegralMappings.", FCDoControl -> fclftpVerbose];
 		pakMappings = FCLoopFindIntegralMappings[Union[Join[topos,optPreferredTopologies]], FCI->OptionValue[FCI],
-			FinalSubstitutions->OptionValue[FinalSubstitutions], List->True];
+			FinalSubstitutions->OptionValue[FinalSubstitutions], List->True, LightPak -> OptionValue[LightPak]];
 		FCPrint[1, "FCLoopFindTopologyMappings: FCLoopFindIntegralMappings done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclftpVerbose];
 		FCPrint[3, "FCLoopFindTopologyMappings: After FCLoopFindIntegralMappings: ", pakMappings, FCDoControl->fclftpVerbose];
 
