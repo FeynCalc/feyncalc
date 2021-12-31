@@ -326,40 +326,40 @@ pluep2[x__] :=
 	Plus[x]/;!FreeQ2[{x}, {tT,B0,B1,B00,B11,C0,D0,T}];
 
 (* 	equation  (4.18) from arXiv:0709.1075, handles T integrals with at least two 0 indices *)
-tT[N_Integer][0,0, i___Integer][a_List] :=
+tT[nN_Integer][0,0, i___Integer][a_List] :=
 	Block[ {P, M, k, epsi,tmp },
-		FCPrint[3,"PaVeReduce: tT: Entering: $LimitTo4=True, N<3",FCDoControl->pvrVerbose];
+		FCPrint[3,"PaVeReduce: tT: Entering: $LimitTo4=True, nN<3",FCDoControl->pvrVerbose];
 		P = 2 + Length[{i}];
 		M = getm[a];
-		tmp = 1/(2 + P - M) (R[N, 0, 0][i][a] - Sum[ R[N, k][k, i][a], {k, M}])+
-		Expand[( 1/(2 + P - M) epsi/(2 + P - M) (R[N, 0, 0][i][a] - Sum[ R[N, k][k, i][a], {k, M}])
+		tmp = 1/(2 + P - M) (R[nN, 0, 0][i][a] - Sum[ R[nN, k][k, i][a], {k, M}])+
+		Expand[( 1/(2 + P - M) epsi/(2 + P - M) (R[nN, 0, 0][i][a] - Sum[ R[nN, k][k, i][a], {k, M}])
 			)/.Plus->pluep2]/.epsi->$epsilon/.pluep2->Plus;
 		FCPrint[3,"PaVeReduce: tT: leaving with ",tmp,FCDoControl->pvrVerbose];
 		tmp
-		] /; $LimitTo4 && N<3;
+		] /; $LimitTo4 && nN<3;
 
-tT[N_Integer][0,0, i___Integer][a_List] :=
+tT[nN_Integer][0,0, i___Integer][a_List] :=
 	Block[ {P, M, k, epsi,tmp},
-		FCPrint[3,"PaVeReduce: tT: Entering: $LimitTo4=True, N>3, $LimitTo4IRUnsafe=True",FCDoControl->pvrVerbose];
+		FCPrint[3,"PaVeReduce: tT: Entering: $LimitTo4=True, nN>3, $LimitTo4IRUnsafe=True",FCDoControl->pvrVerbose];
 		P = 2 + Length[{i}];
 		M = getm[a];
-		tmp = 1/(2 + P - M) (R[N, 0, 0][i][a] - Sum[ R[N, k][k, i][a], {k, M}])+
-		Expand[( 1/(2 + P - M) epsi/(2 + P - M) (R[N, 0, 0][i][a] - Sum[ R[N, k][k, i][a], {k, M}])
+		tmp = 1/(2 + P - M) (R[nN, 0, 0][i][a] - Sum[ R[nN, k][k, i][a], {k, M}])+
+		Expand[( 1/(2 + P - M) epsi/(2 + P - M) (R[nN, 0, 0][i][a] - Sum[ R[nN, k][k, i][a], {k, M}])
 			)/.Plus->pluep2]/.epsi->$epsilon/.pluep2->Plus;
 		FCPrint[3,"PaVeReduce: tT: leaving with ",tmp,FCDoControl->pvrVerbose];
 		tmp
-		] /; $LimitTo4 && N>=3 && $LimitTo4IRUnsafe;
+		] /; $LimitTo4 && nN>=3 && $LimitTo4IRUnsafe;
 
 (* $dIM gets defined from the option of PaVeReduce *)
-tT[N_Integer][0,0, i___Integer][a_List] :=
+tT[nN_Integer][0,0, i___Integer][a_List] :=
 	Block[ {P, M, k, epsi, tmpR, tmp },
 		P = 2 + Length[{i}];
 		M = getm[a];
-		tmp = 1/($dIM + P -2 - M) (tmpR[N, 0, 0][i][a] - Sum[ tmpR[N, k][k, i][a], {k, M}]);
+		tmp = 1/($dIM + P -2 - M) (tmpR[nN, 0, 0][i][a] - Sum[ tmpR[nN, k][k, i][a], {k, M}]);
 		FCPrint[3,"PaVeReduce: tT: leaving with ",tmp,FCDoControl->pvrVerbose];
 		tmp/.tmpR->R
 
-	] /; $LimitTo4 =!= True || ($LimitTo4 && N>=3 && !$LimitTo4IRUnsafe);
+	] /; $LimitTo4 =!= True || ($LimitTo4 && nN>=3 && !$LimitTo4IRUnsafe);
 
 (* two special cases *)
 R[n0__][j__][a_] :=
@@ -372,11 +372,11 @@ T[n0__][j__][a_] :=
 	(T[n0][Sequence @@ Sort[{j}]][a] ) /; !OrderedQ[{j}];
 
 (*
-tT[N][mu_1,mu_2,...,mu_p][{p_1,...,p_(N-1),m_0,...,m_(N-1)}] = c*\int q^mu_1 ... q^mu_p / (D0*D1*...*D(N-1))
-with D0 = q^2-m^2, D1 = (q+p_i)-m_i^2, i=1,...,N-1
+tT[nN][mu_1,mu_2,...,mu_p][{p_1,...,p_(nN-1),m_0,...,m_(nN-1)}] = c*\int q^mu_1 ... q^mu_p / (D0*D1*...*D(nN-1))
+with D0 = q^2-m^2, D1 = (q+p_i)-m_i^2, i=1,...,nN-1
 
-tT[N][mu_1,mu_2,...,mu_p][{p_1,...,p_(N-1),m_0,...,m_(N-1)}] = \Sum_{i_1,...,i_p=0}^{N-1} *
-tT[N][i_1,...,i_p][{p_1,...,p_(N-1),m_0,...,m_(N-1)}]* p_{i_1 mu_1} * ... * p_{i_p mu_p}
+tT[nN][mu_1,mu_2,...,mu_p][{p_1,...,p_(nN-1),m_0,...,m_(nN-1)}] = \Sum_{i_1,...,i_p=0}^{nN-1} *
+tT[nN][i_1,...,i_p][{p_1,...,p_(nN-1),m_0,...,m_(nN-1)}]* p_{i_1 mu_1} * ... * p_{i_p mu_p}
 *)
 
 (* A0 *)
@@ -446,63 +446,63 @@ b00[SmallVariable[em_]^n_., mm:Except[_SmallVariable | 0], mm:Except[_SmallVaria
 
 
 (* General case, T integrals with zero Gram determinant are not evaluated	*)
-tT[N_Integer][k_Integer,i___Integer][a_List] :=
+tT[nN_Integer][k_Integer,i___Integer][a_List] :=
 	Block[ {P, M ,r, kp, tmp,tmpXinv,tmpR,tmpT },
-		FCPrint[3,"PaVeReduce: tT: Entering with N and a: ",N," ",a,FCDoControl->pvrVerbose];
-		FCPrint[3,"PaVeReduce: tT: Gram determinant: ",gramDet[Drop[a,-N]],FCDoControl->pvrVerbose];
+		FCPrint[3,"PaVeReduce: tT: Entering with nN and a: ",nN," ",a,FCDoControl->pvrVerbose];
+		FCPrint[3,"PaVeReduce: tT: Gram determinant: ",gramDet[Drop[a,-nN]],FCDoControl->pvrVerbose];
 		P = 1 + Length[{i}];
 		M = getm[a];
-		tmp = Sum[ Xinv[M][k, kp][a]  ( R[N,kp][i][a] - Sum[ delt[ kp,{i}[[r]] ] (T[N]@@Join[{0,0}, Delete[{i},r]])[a], {r, P-1}]), {kp, M}];
+		tmp = Sum[ Xinv[M][k, kp][a]  ( R[nN,kp][i][a] - Sum[ delt[ kp,{i}[[r]] ] (T[nN]@@Join[{0,0}, Delete[{i},r]])[a], {r, P-1}]), {kp, M}];
 		FCPrint[3,"PaVeReduce: tT: leaving with ",tmp,FCDoControl->pvrVerbose];
 		tmp/.tmpR->R/.tmpT->T/.tmpXinv->Xinv
-	]/; (gramDet[Drop[a,-N]]=!=0 || N===0) && k=!=0;
+	]/; (gramDet[Drop[a,-nN]]=!=0 || nN===0) && k=!=0;
 
 (* no M's in i *)
-R[N_Integer, 0, 0][i___Integer][a_List] :=
+R[nN_Integer, 0, 0][i___Integer][a_List] :=
 	Block[ {q,P,M,tmpT,tmp},
 		q = Length[{i}];
 		P = 2 + q;
 		M = getm[a];
-		tmp = demon[a[[-N]]] tmpT[N][i][a]  + tmpT[N-1][i][ c[0][a] ];
+		tmp = demon[a[[-nN]]] tmpT[nN][i][a]  + tmpT[nN-1][i][ c[0][a] ];
 		FCPrint[3,"PaVeReduce: R: leaving with ",tmp,FCDoControl->pvrVerbose];
 		tmp /. tmpT-> T
 	] /; FreeQ[{i}, getm[a]];
 
-R[N_Integer,0,0][i___Integer, mm:(_Integer)..][a_List] :=
+R[nN_Integer,0,0][i___Integer, mm:(_Integer)..][a_List] :=
 	Block[ {q,M,P,j,k,tmp,tmpT},
 		q = Length[{i}];
 		M = getm[a];
 		P = Length[{mm}] + 2 + q;
-		tmp = demon[ a[[-N]] ] T[N][i, mm][a] +
+		tmp = demon[ a[[-nN]] ] T[nN][i, mm][a] +
 		(* here was the tough bug found by Ralph Schuster ... *)
-		(-1)^(P - q) ( tmpT[N - 1][i][c[0][a]] + Sum[
+		(-1)^(P - q) ( tmpT[nN - 1][i][c[0][a]] + Sum[
 		Binomial[P - 2 - q, j] * Sum @@ Prepend[ Array[List[k[#], M - 1]&, j],
-		(tmpT[N-1]@@Join[{i}, Array[k,j]])[c[0][a]]], {j,P - 2 - q}]);
+		(tmpT[nN-1]@@Join[{i}, Array[k,j]])[c[0][a]]], {j,P - 2 - q}]);
 		FCPrint[3,"PaVeReduce: R: leaving with ",tmp,FCDoControl->pvrVerbose];
 		tmp /. tmpT-> T
 
 	] /; ({mm}[[1]] === getm[a]);
 
 (* 4.19 , no M's*)
-R[N_Integer, k_Integer][i___Integer][a_List] :=
+R[nN_Integer, k_Integer][i___Integer][a_List] :=
 	Block[ {q,P,M,tmp ,tmpT},
 		q = Length[{i}];
 		P = 1 + q;
 		M = getm[a];
-		tmp = 1/2( (tmpT[N - 1] @@ til[i][k])[ c[k][a] ] theta[k, i] - f[k][a] tmpT[N][i][a] - tmpT[N - 1][i][c[0][a]]);
+		tmp = 1/2( (tmpT[nN - 1] @@ til[i][k])[ c[k][a] ] theta[k, i] - f[k][a] tmpT[nN][i][a] - tmpT[nN - 1][i][c[0][a]]);
 		FCPrint[3,"PaVeReduce: R: leaving with ",tmp,FCDoControl->pvrVerbose];
 		tmp /. tmpT-> T
 
 	]/; FreeQ[{i}, getm[a]];
 
-R[N_Integer,k_Integer][i___Integer, mm:(_Integer)..][a_List] :=
+R[nN_Integer,k_Integer][i___Integer, mm:(_Integer)..][a_List] :=
 	Block[ {q, P, M, kk, j, tmp, tmpT},
 		q = Length[{i}];
 		P = Length[{mm}] + 1 + q;
 		M = getm[a];
-		tmp = 1/2( (tmpT[N-1] @@ til[i,mm][k])[c[k][a]] theta[k, i, mm] -
-		f[k][a] tmpT[N][i,mm][a] -(-1)^(P - 1 - q) (tmpT[N - 1][i][c[0][a]] +
-		Sum[Binomial[P - 1 - q, j]  Sum@@Prepend[Array[List[kk[#], M -1 ]&,j], (tmpT[N - 1]@@Join[{i},
+		tmp = 1/2( (tmpT[nN-1] @@ til[i,mm][k])[c[k][a]] theta[k, i, mm] -
+		f[k][a] tmpT[nN][i,mm][a] -(-1)^(P - 1 - q) (tmpT[nN - 1][i][c[0][a]] +
+		Sum[Binomial[P - 1 - q, j]  Sum@@Prepend[Array[List[kk[#], M -1 ]&,j], (tmpT[nN - 1]@@Join[{i},
 		Array[kk, j]])[c[0][a]]], {j, P - 1 - q} ]));
 		FCPrint[3,"PaVeReduce: R: leaving with ",tmp,FCDoControl->pvrVerbose];
 		tmp /. tmpT-> T
@@ -728,7 +728,7 @@ pavereduce[brex_, opts:OptionsPattern[]] :=
 			(*	Currently, the reduction is not implemented for pentagons and other higher point function	*)
 			breakx = breakx /. {
 				PaVe[i_,j___,  m_List, l_List, o:OptionsPattern[]]/;
-					MatchQ[{i,j}, {Integer___}] && Length[m]>6 :>
+					MatchQ[{i,j}, {___Integer}] && Length[m]>6 :>
 						paveProtect[i,j,  m, l, o]
 			};
 

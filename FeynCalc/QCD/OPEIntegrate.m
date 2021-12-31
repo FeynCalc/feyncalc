@@ -516,7 +516,6 @@ OPEIntegrate[exp_, kk_, x_, opt___Rule] :=
 		nfa = SelectNotFree[nex, {flowerpower, SMP["g_s"], CA, CF, OPEm,
 												Pi, Sn, SUNN, SUNIndex}
 									] /. flowerpower -> Power /. locepsilon -> Epsilon;
-		nfa = nfa;
 		nfax = SelectNotFree[SelectFree[nfa,Epsilon], x];
 		nex  = (nfax nex /. dummyfa -> 1) / nfa / x^(OPEm-1);
 		nex  = facout nex /. flowerpower -> Power /. locepsilon -> Epsilon;

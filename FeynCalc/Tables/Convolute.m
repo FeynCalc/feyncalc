@@ -205,19 +205,15 @@ If[br =!={False, False} && tablelabel =!= True,
 	If[(br =!= {}) && (br =!= {False, False}),
 			rr = Collect2[rr, br, Factoring -> False];
 		];
-	If[br === {False,False},
-	If[((Print /. {opt} /. Options[Convolute]) === All
-			) && $Notebooks,
-			Print[TBox[if," * ",ig, "  =  ", rr]]
-		],
-	If[(((Print /. {opt} /. Options[Convolute]) === All
-			) ||
-			((Print /. {opt} /. Options[Convolute]) === All
-			)
-			) && $Notebooks,
-			Print[TBox[if," *  ",ig, "  =  ", rr]]
+	If[	br === {False,False},
+		If[((Print /. {opt} /. Options[Convolute]) === All
+				) && $Notebooks,
+				Print[TBox[if," * ",ig, "  =  ", rr]]
+			],
+		If[((Print /. {opt} /. Options[Convolute]) === All) && $Notebooks,
+				Print[TBox[if," *  ",ig, "  =  ", rr]]
 		];
-		];
+	];
 (*tablelabel*)
 	];
 														rr];

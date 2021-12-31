@@ -652,9 +652,7 @@ contractLongLong is for contacting products of sums!
  *)
 contractProduct[a_, b_Times, opts:OptionsPattern[]] :=
 	Block[ {bb},
-		If[ MatchQ[b, Apply[HoldPattern, {Times__Pair}]],
-			contractLongShort[ a, b ,opts],
-			If[ MatchQ[b, HoldPattern[Times__Pair]],
+			If[ MatchQ[b, HoldPattern[Times][__Pair]],
 				contractLongShort[ a, b ,opts],
 				bb = Collect3[b, Pair, Factoring-> False];
 				If[ Head[bb] === Plus,
@@ -662,7 +660,6 @@ contractProduct[a_, b_Times, opts:OptionsPattern[]] :=
 					contractLongShort[a, bb, opts]
 				]
 			]
-		]
 	];
 
 
@@ -808,7 +805,7 @@ contractLongLong[lon_, shor_Plus] :=
 	Block[ {neew = {}, long = lon, short = shor, tet, ij},
 		FCPrint[1,"Long contraction ", Length[long], " * ", Length[short], " \n ",UseWriteString->True];
 		For[ij = 1, ij <= Length[short], ij++,
-			FCPrint[3,"stdout"," | ", ij, "  XXX | ",UseWriteString->True];      ;
+			FCPrint[3,"stdout"," | ", ij, "  XXX | ",UseWriteString->True];
 			FCPrint[1, "before contractLongShort "];
 			tet = contractLongShort[long, short[[ij]] ];
 			FCPrint[1, "after contractLongShort "];

@@ -127,7 +127,6 @@ NOT (uniquely) POSSIBLE ...
 		fypart = Collect2[(xmpart/x^(m-1) (1-x)^(1-Epsilon/2)
 													) /. ((1-x) x)^aa_ :> ((1-x)^aa x^aa), x
 										];
-		fypart  = fypart;
 		FCPrint[1,"fypart = ",fypart];
 		lpa = Length[fypart];
 		new = 0;

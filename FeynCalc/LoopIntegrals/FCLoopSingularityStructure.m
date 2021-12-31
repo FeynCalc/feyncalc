@@ -104,7 +104,7 @@ FCLoopSingularityStructure[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern
 			(*List of integrals *)
 			MatchQ[ex, {_. _FeynAmpDenominator ..}],
 				tmp = FCFeynmanParametrize[#, lmoms, FCI -> True, Names -> optNames,
-					FinalSubstitutions-> optFinalSubstitutions, FCFeynmanPrepare->True, FCReplaceD->optFCReplaceD]/@ex,
+					FinalSubstitutions-> optFinalSubstitutions, FCFeynmanPrepare->True, FCReplaceD->optFCReplaceD]&/@ex,
 			True,
 				Message[FCLoopSingularityStructure::failmsg,"Failed to recognize the form of the input expression."];
 				Abort[]

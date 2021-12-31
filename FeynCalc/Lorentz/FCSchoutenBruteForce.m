@@ -125,8 +125,8 @@ FCSchoutenBruteForce[expr_, epsvars_List, vars_List/;(!OptionQ[vars] || vars==={
 			moms = vars
 		];
 
-		FCPrint[1, "FCSchoutenBruteForce: There are ", Length[epsInds], " possible Eps arguments." FCDoControl->fcsbVerbose];
-		FCPrint[1, "FCSchoutenBruteForce: There are ", Length[moms], " possible scalar product arguments." FCDoControl->fcsbVerbose];
+		FCPrint[1, "FCSchoutenBruteForce: There are ", Length[epsInds], " possible Eps arguments.", FCDoControl->fcsbVerbose];
+		FCPrint[1, "FCSchoutenBruteForce: There are ", Length[moms], " possible scalar product arguments.", FCDoControl->fcsbVerbose];
 		FCPrint[3, "FCSchoutenBruteForce: moms: ", moms, FCDoControl->fcsbVerbose];
 		FCPrint[3, "FCSchoutenBruteForce: vars: ", vars, FCDoControl->fcsbVerbose];
 
@@ -140,7 +140,7 @@ FCSchoutenBruteForce[expr_, epsvars_List, vars_List/;(!OptionQ[vars] || vars==={
 
 		sublists = Flatten[join /@ sublists, 1];
 
-		FCPrint[1, "FCSchoutenBruteForce: There are ", Length[sublists], " possible replacements to check." FCDoControl->fcsbVerbose];
+		FCPrint[1, "FCSchoutenBruteForce: There are ", Length[sublists], " possible replacements to check.", FCDoControl->fcsbVerbose];
 
 		FCPrint[1, "FCSchoutenBruteForce: Preparing the list of possible  replacements.", FCDoControl->fcsbVerbose];
 		time = AbsoluteTime[];

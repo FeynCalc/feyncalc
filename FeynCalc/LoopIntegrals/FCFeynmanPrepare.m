@@ -280,9 +280,9 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 				FreeQ2[Most[ex],{LorentzIndex,CartesianIndex}] && !FreeQ2[Last[ex],{LorentzIndex,CartesianIndex}],
 					tensorPart = Last[ex];
 					scalarPart = Most[ex],
-				_,
-				Message[FCFeynmanPrepare::failmsg,"Failed to parse the supplied list of propagators."];
-				Abort[]
+				True,
+					Message[FCFeynmanPrepare::failmsg,"Failed to parse the supplied list of propagators."];
+					Abort[]
 			],
 			{scalarPart, tensorPart} =  FCProductSplit[ex, {LorentzIndex, CartesianIndex}]
 		];

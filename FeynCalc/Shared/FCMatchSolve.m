@@ -187,7 +187,7 @@ Block[{	trivialEqs,newZeroVars, newVars, newEqSys, res},
 	FCPrint[3, "FCMatchSolve: preSolve: Trivial equations: ", trivialEqs, FCDoControl->fcmsVerbose];
 
 	If[	TrueQ[trivialEqs=!={}],
-		If[	And@@(MatchQ[#,(c_. x_)/;FreeQ2[c,vars] && MemberQ[vars,x]]/@trivialEqs),
+		If[	And@@(MatchQ[#,(c_. x_)/;FreeQ2[c,vars] && MemberQ[vars,x]]&/@trivialEqs),
 			Message[FCMatchSolve::failmsg,"Failed to extract trivial equatons"];
 			Abort[]
 		];

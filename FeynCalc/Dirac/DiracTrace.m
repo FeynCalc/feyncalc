@@ -198,8 +198,7 @@ DiracTrace[expr_, op:OptionsPattern[]] :=
 		];
 
 		If [OptionValue[FeynCalcExternal],
-			res = FCE[res],
-			res = res
+			res = FCE[res]
 		];
 
 		If[ !FreeQ[res/. diTr[_]:>1 ,DiracGamma],

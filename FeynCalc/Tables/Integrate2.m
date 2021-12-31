@@ -25,7 +25,7 @@ DeltaFunction[a/b + x], x], where Abs[b] -> b, if b is a symbol, and if b =
 -c, then Abs[-c] -> c, i.e., the variable contained in b is supposed to be
 positive.
 
- $\\pi ^2$ is replaced by 6 Zeta2.
+$\\pi ^2$ is replaced by 6 Zeta2.
 
 Integrate2[1/(1-y),{y,x,1}] is interpreted as distribution, i.e. as
 Integrate2[-1/(1-y)],{y, 0, x}] -> Log[1-y].
@@ -145,7 +145,7 @@ Collect2[
 															PolyGamma[2,1] :> (-2 Zeta[3])
 															}/.(*  Integrate -> Integrate3 /.*)
 															(Hold@@{Integrate3}) ->
-															Integrate4]]
+															Integrate5]]
 )/.Hold[Integrate] -> Integrate3]], First[Flatten[{b}]]];
 
 integrateD[a_Plus,b__] := Map[integrateD[#,b]&, a];
@@ -171,10 +171,10 @@ integrate3[a_Plus, b_, c___] :=  Map[Integrate2[#, b, c]&, a];
 integrate3[a_, b_, c___] := (If[Head[b] === List,
 									SelectFree[a, b[[1]]] *
 									Integrate3[SelectNotFree[a, b[[1]]], b, c
-														] /. (Hold@@{Integrate3})-> Integrate4,
+														] /. (Hold@@{Integrate3})-> Integrate5,
 									SelectFree[a, b] *
 									Integrate3[SelectNotFree[a, b], b
-														] /. (Hold@@{Integrate3})-> Integrate4
+														] /. (Hold@@{Integrate3})-> Integrate5
 								] // PowerSimplify
 							) /; ((Head[a] =!= Plus) && FreeQ[a, DeltaFunction]);
 

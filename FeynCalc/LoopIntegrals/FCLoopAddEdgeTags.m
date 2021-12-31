@@ -83,11 +83,11 @@ FCLoopAddEdgeTags[edges_List, labels_List/; ! OptionQ[labels], OptionsPattern[]]
 
 		res = addStyle /@ aux;
 
-		FCPrint[3,"FCLoopAddEdgeTags: Raw styles: " res, FCDoControl->fclaet];
+		FCPrint[3,"FCLoopAddEdgeTags: Raw styles: ", res, FCDoControl->fclaet];
 
 		res = addLabel /@ res;
 
-		FCPrint[3,"FCLoopAddEdgeTags: Raw labels: " res, FCDoControl->fclaet];
+		FCPrint[3,"FCLoopAddEdgeTags: Raw labels: ", res, FCDoControl->fclaet];
 
 		res = res /. labeled[x_, {}] :> x /. labeled -> Labeled /. intStyle | extStyle -> Style;
 

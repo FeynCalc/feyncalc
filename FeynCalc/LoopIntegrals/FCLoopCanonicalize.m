@@ -70,20 +70,17 @@ FCLoopCanonicalize[expr_, q_, head_, OptionsPattern[]] :=
 		repIndexList =
 					Which[
 						!FreeQ[#,LorentzIndex] && FreeQ[#,CartesianIndex],
-
-						((MapIndexed[Rule[#1,LorentzIndex[FCGV[(seed <> ToString[Identity @@ #2])], (#1/.LorentzIndex[_,dim_:4]:>dim)]] &,
-							Cases[#, Pair[x_, LorentzIndex[y__]] /; ! FreeQ[x, q] :> LorentzIndex[y], Infinity] // Union] // Flatten)),
-
+							((MapIndexed[Rule[#1,LorentzIndex[FCGV[(seed <> ToString[Identity @@ #2])], (#1/.LorentzIndex[_,dim_:4]:>dim)]] &,
+								Cases[#, Pair[x_, LorentzIndex[y__]] /; ! FreeQ[x, q] :> LorentzIndex[y], Infinity] // Union] // Flatten)),
 						FreeQ[#,LorentzIndex] && !FreeQ[#,CartesianIndex],
-						(MapIndexed[Rule[#1,CartesianIndex[FCGV[(seed <> ToString[Identity @@ #2])], (#1/.CartesianIndex[_,dim_:3]:>dim)]] &, Cases[#,
-							CartesianPair[x_, CartesianIndex[y__]] /; ! FreeQ[x, q] :>
-								CartesianIndex[y], Infinity] // Union] // Flatten),
-
+							(MapIndexed[Rule[#1,CartesianIndex[FCGV[(seed <> ToString[Identity @@ #2])], (#1/.CartesianIndex[_,dim_:3]:>dim)]] &, Cases[#,
+								CartesianPair[x_, CartesianIndex[y__]] /; ! FreeQ[x, q] :>
+									CartesianIndex[y], Infinity] // Union] // Flatten),
 						FreeQ[#,LorentzIndex] && FreeQ[#,CartesianIndex],
-						{},
-						_,
-						Message[FCLoopCanonicalize::failmsg, "Unknown integral type."];
-						Abort[]
+							{},
+						True,
+							Message[FCLoopCanonicalize::failmsg, "Unknown integral type."];
+							Abort[]
 					] & /@loopList;
 
 		(*	This is the list of all the loop tensor integrals with

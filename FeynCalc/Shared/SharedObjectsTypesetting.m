@@ -685,7 +685,7 @@ gfadTypeset[{{ex_,s_},n_}, _] :=
 				"+",
 				"-"
 			],
-			I "\[Eta]"},
+			I*"\[Eta]"},
 			Unevaluated[Sequence[]]
 		],")"}]^n;
 
@@ -807,7 +807,7 @@ cfadTypeset[{{ex1_, ex2_}, {m2_,etasign_}, n_: (1)}, dim_, _] :=
 					"+",
 					"-"
 				],
-				I "\[Eta]"},
+				I*"\[Eta]"},
 				Unevaluated[Sequence[]]
 			],
 
@@ -926,7 +926,7 @@ sfadTypeset[{{ex1_, ex2_}, {m2_, etasign_}, n_: (1)}, dim_, _] :=
 					"+",
 					"-"
 				],
-				I "\[Eta]"},
+				I*"\[Eta]"},
 				Unevaluated[Sequence[]]
 			],
 
@@ -1008,7 +1008,7 @@ feynAmpDenominatorTypeset[StandardPropagatorDenominator[ex1_,ex2_,m2_,{n_,s_}]]:
 				"+",
 				"-"
 			],
-			I "\[Eta]"},
+			I*"\[Eta]"},
 			Unevaluated[Sequence[]]
 		],
 
@@ -1051,7 +1051,7 @@ feynAmpDenominatorTypeset[CartesianPropagatorDenominator[ex1_,ex2_,m2_,{n_,s_}]]
 				"+",
 				"-"
 			],
-			I "\[Eta]"},
+			I*"\[Eta]"},
 			Unevaluated[Sequence[]]
 		],
 
@@ -1073,7 +1073,7 @@ feynAmpDenominatorTypeset[GenericPropagatorDenominator[ex1_,{n_,s_}]]:=
 				"+",
 				"-"
 			],
-			I "\[Eta]"},
+			I*"\[Eta]"},
 			Unevaluated[Sequence[]]
 		],
 

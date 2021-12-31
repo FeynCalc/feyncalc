@@ -94,8 +94,11 @@ timefix[n_]:=
 
 sunfuser[a_,b_,c_,___]:=
 	fsunU[a, b, c]/.fsunU->"f";
+
 sumst[x_Plus]:=
-	SequenceForm["(",x,")"];  sumst[y_]:=y;
+	SequenceForm["(",x,")"];
+
+sumst[y_]:=y;
 
 diracsldi[di_][x__,Dimension -> di_] :=
 	DiracSlash[x, Dimension -> di];
@@ -164,9 +167,12 @@ ditr[x_,___] :=
 fdprop[a__] :=
 	1 / denfa[hold[a]];
 compind[a_] :=
-	If[Head[a] === Symbol,
-		StringJoin[ToString[a],"*"], a "*"];
-		myscriptsbox[x_] := x;
+	If[	Head[a] === Symbol,
+		StringJoin[ToString[a],"*"],
+		a * "*"
+	];
+
+myscriptsbox[x_] := x;
 
 
 epsd[a___, (b_/;(Head[b] ===LorentzIndex) || (Head[b] === Momentum))[c_,di_], d___] :=

@@ -70,7 +70,7 @@ FCLoopPakScalelessQ[poly_/;poly=!=0, var_, OptionsPattern[]] :=
 				xVars = Cases2[poly, var],
 			Head[var]===List,
 				xVars = var,
-			_,
+			True,
 				Message[FCLoopPakScalelessQ::failmsg, "Unknowns format of the second argument"];
 				Abort[]
 		];

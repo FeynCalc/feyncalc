@@ -225,10 +225,7 @@ Write2[file_String, expr:Except[_?OptionQ].., OptionsPattern[]] :=
 											ToString[vv[[iv]]], " = ("]
 									];
 									Write[file, ReleaseHold[ vv[[iv]] ] ];
-									If[ mal[vv[[iv]]//ReleaseHold]=!=True,
-										WriteString[file, "       );\n"],
-										WriteString[file, "       );\n"]
-									]
+									WriteString[file, "       );\n"]
 								]
 							];(* Write[file];*)
 							If[ mal[eqj2]=!=True,

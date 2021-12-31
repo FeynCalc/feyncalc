@@ -17,7 +17,7 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopSplit::usage =
-"FCLoopSplit[exp, {q1, q2, ...}] separates exp into the following four pieces: 
+"FCLoopSplit[exp, {q1, q2, ...}] separates exp into the following four pieces:
 
 1) terms that are free of loop integrals
 
@@ -46,7 +46,6 @@ Options[FCLoopSplit] = {
 	Factoring 			-> {Factor2, 5000},
 	FCE 				-> False,
 	FCI 				-> False,
-	Factoring 			-> Factor2,
 	PaVeIntegralHeads	-> FeynCalc`Package`PaVeHeadsList,
 	TimeConstrained		-> 3
 };

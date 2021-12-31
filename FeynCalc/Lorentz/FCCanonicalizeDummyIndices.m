@@ -63,7 +63,6 @@ Options[FCCanonicalizeDummyIndices] = {
 	FCI 				-> False,
 	FCTraceExpand 		-> True,
 	FCVerbose 			-> False,
-	FCVerbose			-> False,
 	Function			-> Function[{x, seed}, FCGV[(ToString[seed] <> ToString[Identity @@ x])]],
 	Head				-> {LorentzIndex,CartesianIndex,SUNIndex,SUNFIndex, DiracIndex, PauliIndex},
 	LorentzIndexNames 	-> {},

@@ -226,17 +226,17 @@ UVPartT[1][k___] :=
 		-(MM[0]^(1 + Quotient[Count[{k}, 0],2])/(2^(Quotient[Count[{k}, 0],2] - 1) (Quotient[Count[{k}, 0],2] + 1)!))
 	];
 
-UVPartT[N_Integer?Positive /; N >= 2][k___] :=
-	MemSet[UVPartT[N][k],
+UVPartT[nN_Integer?Positive /; nN >= 2][k___] :=
+	MemSet[UVPartT[nN][k],
 		Block[{indexanzahl, a, indexlist={}, ii, jj, nom, denom, res, range, tensIndCountNoZero, tensIndCountZero,
 			pref, indexNumber, llow, lup, ll, tmp},
 
-			indexNumber = N/2 (N + 1);
+			indexNumber = nN/2 (nN + 1);
 			tensIndCountNoZero = Count[{k}, Except[0]];
 			tensIndCountZero = Count[{k}, 0];
 
 			tmp = Table[ll[ii], {ii, 1, indexNumber - 1}];
-			llow = Join[{(Quotient[tensIndCountZero, 2] - N + 2)}, tmp];
+			llow = Join[{(Quotient[tensIndCountZero, 2] - nN + 2)}, tmp];
 			lup = Join[tmp, {0}];
 
 			With[{zzz = Sequence @@ Delete[{lup[[#]], 0, llow[[#]]} & /@ Range[indexNumber], {-1}]},
@@ -249,19 +249,19 @@ UVPartT[N_Integer?Positive /; N >= 2][k___] :=
 			range = Range[Length[indexlist]];
 
 			nom = (Product[
-				(Sum[indexlist[[#, (i/2) (2 N - 3 - i) + j]], {i, 1, j - 1}] +
-				Sum[indexlist[[#, (j/2) (2 N - 1 - j) + i]], {i, 1, N - 1 - j}] +
-				2 indexlist[[#, j]] + indexlist[[#, (N/2) (N - 1) + j]] + Count[{k}, j])!, {j, 1, N - 1}] &) /@ range;
+				(Sum[indexlist[[#, (i/2) (2 nN - 3 - i) + j]], {i, 1, j - 1}] +
+				Sum[indexlist[[#, (j/2) (2 nN - 1 - j) + i]], {i, 1, nN - 1 - j}] +
+				2 indexlist[[#, j]] + indexlist[[#, (nN/2) (nN - 1) + j]] + Count[{k}, j])!, {j, 1, nN - 1}] &) /@ range;
 
 			denom = (
-				(2 Sum[indexlist[[#, i]], {i, 1, (N/2) (N - 1)}] +
-				Sum[indexlist[[#, i]], {i, (N/2) (N - 1) + 1, (N/2) (N + 1) - 1}] +
-				(N - 1) + tensIndCountNoZero)! &
+				(2 Sum[indexlist[[#, i]], {i, 1, (nN/2) (nN - 1)}] +
+				Sum[indexlist[[#, i]], {i, (nN/2) (nN - 1) + 1, (nN/2) (nN + 1) - 1}] +
+				(nN - 1) + tensIndCountNoZero)! &
 			) /@ range;
 
-			pref = (-1)^(1 + tensIndCountNoZero)/(2^(Quotient[tensIndCountZero, 2] - 1) (Quotient[tensIndCountZero, 2] - N + 2)!);
+			pref = (-1)^(1 + tensIndCountNoZero)/(2^(Quotient[tensIndCountZero, 2] - 1) (Quotient[tensIndCountZero, 2] - nN + 2)!);
 
-			res = pref Plus @@ ((Multinomial[Sequence @@ indexlist[[#]]] & /@ range) ((Times @@ (a[N]^indexlist[[#]])) & /@ range) nom/denom);
+			res = pref Plus @@ ((Multinomial[Sequence @@ indexlist[[#]]] & /@ range) ((Times @@ (a[nN]^indexlist[[#]])) & /@ range) nom/denom);
 
 			res
 		]

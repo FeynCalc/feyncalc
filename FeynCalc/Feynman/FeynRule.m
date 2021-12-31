@@ -653,7 +653,7 @@ FeynRule[lag_, fii_List, ru___Rule] :=
 					result = dirdot[result];
 					If[!FreeQ[result, DiracGamma] ]
 					]
-				*);
+				*)
 				(*
 				If[Length[fili] > 2, result = I result];
 				result = I result;

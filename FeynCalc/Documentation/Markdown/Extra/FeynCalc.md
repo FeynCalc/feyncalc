@@ -404,7 +404,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
  - [Convolute](../Convolute.md), [ConvoluteTable](../ConvoluteTable.md) - convolution of functions
  - [CounterTerm](../CounterTerm.md) - database of counter terms
  - [Gamma1](../Gamma1.md), [Gamma2](../Gamma2.md), [Gamma3](../Gamma3.md), [GammaEpsilon](../GammaEpsilon.md) - special products and expansions of $\Gamma$ functions
- - [Integrate2](../Integrate2.md), [Integrate3](../Integrate3.md), [Integrate4](../Integrate4.md), [Integrate5](../Integrate5.md) - some integrals
+ - [Integrate2](../Integrate2.md), [Integrate3](../Integrate3.md), [Integrate5](../Integrate5.md) - some integrals
  - [InverseMellin](../InverseMellin.md) - inverse Mellin transform for some polynomials
  - [Kummer](../Kummer.md) - applies [Kummer](../Kummer.md) relations
  - [Lagrangian](../Lagrangian.md) - database of [Lagrangian](../Lagrangian.md)s

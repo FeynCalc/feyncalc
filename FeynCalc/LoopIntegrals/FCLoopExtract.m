@@ -47,7 +47,6 @@ Options[FCLoopExtract] = {
 	FCLoopIBPReducableQ 		-> False,
 	FCLoopSplit 				-> {2,3,4},
 	FCLoopBasisSplit 			-> False,
-	Factoring 					-> Factor,
 	FeynAmpDenominatorCombine 	-> True,
 	GFAD 						-> True,
 	MultiLoop 					-> False,

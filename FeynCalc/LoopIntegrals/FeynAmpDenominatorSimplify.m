@@ -1417,12 +1417,12 @@ fds2LoopsSE2[expr : (_. FeynAmpDenominator[props__]), q1_, q2_, p_] :=
 
 			(* Sometimes a simple sign change is more effective then a real shift, check if this is the case *)
 			If[ checkShift[q1 -> -q1] &&
-				(MemberQ[(needShift /. q1 -> -q1), q1 - q2] ||	MemberQ[(needShift /. q1 -> -q1), q1 - q2]),
+				MemberQ[(needShift /. q1 -> -q1), q1 - q2],
 				PrependTo[reps, q1 -> -q1]
 			];
 
 			If[ checkShift[q2 -> -q2] &&
-				(MemberQ[(needShift /. q2 -> -q2), q1 - q2] || MemberQ[(needShift /. q2 -> -q2), q1 - q2]),
+				MemberQ[(needShift /. q2 -> -q2), q1 - q2],
 				PrependTo[reps, q2 -> -q2]
 			];
 			If[ checkShift[{q1 -> -q1, q2 -> -q2}] &&
@@ -1686,17 +1686,6 @@ trachit[x_, q1_, q2_] :=
 								Momentum[pe, dim], m] PD[Momentum[q1, dim] -
 								Momentum[q2, dim], _] PD[Momentum[q1, dim] -
 								Momentum[pe, dim], _]])),
-							(* f43 *)
-							qqq[fa_. FeynAmpDenominator[aa___PD, PD[Momentum[q2, dim___] -
-							Momentum[pe_ /; pe =!= q1, dim___], m_], bb___PD]]:>
-								((tran[fa FeynAmpDenominator[aa, PD[Momentum[q2, dim] -
-								Momentum[pe, dim],m], bb], {q2, q1, q1, q2}])/;(MatchQ[(Times@@Union[{aa,
-								PD[Momentum[q2, dim] - Momentum[pe, dim],m],bb}]),
-								PD[Momentum[q2, dim], _] PD[Momentum[q2, dim] -	Momentum[pe, dim], m] *
-								PD[Momentum[q2, dim] - Momentum[q1, dim], _] PD[Momentum[q1, dim], _]] ||
-								MatchQ[(Times@@Union[{aa, PD[Momentum[q2, dim] - Momentum[pe, dim],m],bb}]),
-								PD[Momentum[q2, dim], _] PD[Momentum[q2, dim] - Momentum[pe, dim], m] *
-								PD[Momentum[q1, dim] - Momentum[q2, dim], 0] PD[Momentum[q1, dim], _]])),
 							(* f4331 *)
 							qqq[fa_. (as_ /; (Length[as] === 3 && Head[as]===Plus))^w_*
 							FeynAmpDenominator[aa___PD,	PD[Momentum[q2, dim___] -
@@ -1727,16 +1716,7 @@ trachit[x_, q1_, q2_] :=
 								PD[Momentum[q2, dim], 0] PD[Momentum[q1, dim], 0]*
 								PD[Momentum[q1, dim] - Momentum[pe, dim], 0] *
 								PD[Momentum[q2, dim] - Momentum[pe, dim], 0]])),
-							(* f30 *)
-							qqq[fa_. (as_ /; (Length[as] === 3 && Head[as]===Plus))^w_*
-							FeynAmpDenominator[aa___PD,	PD[Momentum[q2, dim___] -
-							Momentum[pe_ /; pe =!= q1, dim___], 0], bb___PD]]:>
-								((tran[fa as^w FeynAmpDenominator[aa, PD[Momentum[q2, dim] -
-								Momentum[pe, dim],0], bb], q2, -q2 + q1 + pe])/;
-								(MatchQ[(Times@@Union[{aa, PD[Momentum[q2, dim] -
-								Momentum[pe, dim],0], bb}]), PD[Momentum[q1, dim], 0]*
-								PD[Momentum[q2, dim] - Momentum[pe, dim], 0] *
-								PD[Momentum[q2, dim] - Momentum[q1, dim], 0]])),
+
 							(* f31 *)
 							qqq[fa_. q1pw[as_ /;Length[as] === 3,w_]*
 							FeynAmpDenominator[aa___PD, PD[Momentum[q2, dim___] -
@@ -1778,12 +1758,6 @@ trachit[x_, q1_, q2_] :=
 								(tran[fa FeynAmpDenominator[a, PD[np Momentum[pe, dimp] +
 								nq2 Momentum[q2, dim] + nq1 Momentum[q1, dim], m], b], q1 ,
 								(q1/nq1 -np pe/nq1)]) /;FreeQ[fa, q1pw],
-
-							qqq[(fa_.) FeynAmpDenominator[a___, PD[np_. Momentum[pe_,dimp___] +
-							nq2_. Momentum[q2, dim___] + nq1_. Momentum[q1, dim___], m_], b___]] :>
-								(tran[fa FeynAmpDenominator[a, PD[np Momentum[pe, dimp] + nq2 Momentum[q2, dim] +
-								nq1 Momentum[q1, dim], m], b], q2, (q2/nq2 -np pe/nq2)]) /;
-								FreeQ[fa, q2pw],
 
 							qqq[(fa_.) q1pw[Pair[Momentum[OPEDelta,di___], Momentum[q1, dim___]] -
 							Pair[Momentum[OPEDelta,di___], Momentum[q2, dim___]], pow_] FeynAmpDenominator[a___]] :>

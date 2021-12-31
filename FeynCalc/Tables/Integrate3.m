@@ -301,11 +301,11 @@ iT[PolyLog[2,1-x_] / (1-x_)^2,{x_,0,1}] :>
 	PolyLog[3, z] + Zeta[3]),
 
 (* w36 *)
-(*I40I*)
+(*I40I*)(*
 (*X*)iT[Log[(y_) - (z_)]/(1 - (y_)),
 	{y_, z_/;!NumberQ[z], 1-SmallDelta}] :>
 	-Zeta2 - Log[SmallDelta]*Log[1 - z] + Log[1 - z]^2,
-
+*)
 (* w35 *)
 (*I41I*)
 (*X*)iT[Log[1 - (z_)]/(1 - (y_)),
@@ -625,10 +625,10 @@ Zeta2*Log[1 - u] + Log[1 - u]^3/6 -
 		PolyLog[3, u] + Zeta[3]
 								) /; FreeQ[u, y],
 
-(*I99I*)
+(*I99I*)(*
 (*X*)iT[Log[1 + ((1 - x_)*y_)/x_]/(1 - (1 - x_^(-1))*y_) ,{y_,0,1}] :>
 		(x*Log[x]^2)/(2*(1 - x)) /; FreeQ[x,y],
-
+*)
 (*I100I*)
 (*X*)iT[Log[1+a_ y_]/(1+ a_ y_),{y_,0,1}] :>
 		(1/2/a Log[1+a]^2)/;FreeQ[a,y] && (Simplify[a]=!=-1),
@@ -1158,9 +1158,9 @@ SumS[2,1,n+1]-1)
 (*I193I*)
 (*X*)iT[PolyLog[2, z_], {z_, 0, 1}] :> -1 + Zeta2,
 
-(*I194I*)
+(*I194I*)(*
 (*X*)iT[Log[z_]*PolyLog[2, z_], {z_, 0, 1}] :> 3 - 2 Zeta2,
-
+*)
 (*I195I*)
 (*X*)iT[Log[1 - (z_)]*Log[z_], {z_, 0, 1}] :> 2 - Zeta2,
 
@@ -1692,7 +1692,7 @@ SumS[2,1,n+1]-1)
 			Log[1 - z]/(2*(1 - z)^2) - Log[1 - z]/(2*(1 - z)) + Log[1 - z]^2/6 +
 			((1 + (1 - z)^(-3))*PolyLog[2, z])/3)/z /; FreeQ[z, y],
 
-(*I304I*)
+(*I304I*)(*
 (*X*)iT[Log[1 - (y_)*(1 - (z_))]^2/(1 - (y_)*(1 - (z_)))^2,
 						{y_, 0, 1}] :>
 	2/z + (2*Log[z])/((1 - z)*z) + Log[z]^2/((1 - z)*z) /; FreeQ[z, y],
@@ -1712,8 +1712,8 @@ SumS[2,1,n+1]-1)
 						{y_, 0, 1}] :>
 	(1 + z)/(4*z^2) + Log[z]/(2*(1 - z)*z^2) +
 		Log[z]^2/(2*(1 - z)*z^2) /; FreeQ[z, y],
-
-(*I308I*)
+*)
+(*I308I*)(*
 (*X*)iT[(Log[y_]*Log[1 - (y_)*(1 - (z_))])/(1 - (y_)*(1 - (z_)))^3,
 						{y_, 0, 1}] :>
 	-3/(4*z) + Log[z]/(4*(1 - z)) - Log[z]/(2*(1 - z)*z) +
@@ -1739,7 +1739,7 @@ SumS[2,1,n+1]-1)
 	5/(36*(1 - z)) - 5/(36*(1 - z)*z^2) - 4/(9*z) -
 		Log[z]/(6*(1 - z)*z^2) - Log[z]/(3*(1 - z)*z) +
 		(Log[z]/9 + Log[z]^2/6 + PolyLog[2, 1 - z]/3)/(1 - z) /; FreeQ[z, y],
-
+*)
 (*I313I*)
 (*X*)iT[Log[y_]^2/(1 - (y_)*(1 - (z_)))^3, {y_, 0, 1}] :>
 	-(Log[z]/(1 - z)) + PolyLog[2, 1 - z]/(1 - z) /; FreeQ[z, y],
@@ -1814,11 +1814,11 @@ SumS[2,1,n+1]-1)
 	Zeta2/2 + 2*Log[2] + Log[z] - ((1 + z)*Log[1 + z])/z +
 		PolyLog[2, -z]/z,
 
-(*I325I*)
+(*I325I*)(*
 (*X*)iT[Log[x_]*Log[1 + (x_)], {x_, z_/;!NumberQ[z], 1}] :>
 	2*(1 - z) - Zeta2/2 - 2*Log[2] + z*Log[z] + (1 + z)*Log[1 + z] -
 		(1 + z)*Log[z]*Log[1 + z] - PolyLog[2, -z],
-
+*)
 (*I326I*)
 (*X*)iT[PolyLog[2, -(x_)], {x_, z_, 1}] :>
 -1 + z - Zeta2/2 + 2*Log[2] - Log[1 + z] - z*Log[1 + z] -
@@ -2218,9 +2218,9 @@ PolyLog[3,1-x]
 (*X*)iT[PolyLog[2, 1 - x_]/(1 + x_),{x_,0,1}] :>
 				(3*Zeta2*Log[2])/2 - Zeta[3]
 ,
-(*I393I*)
+(*I393I*)(*
 (*X*)iT[Log[1 - x_]/(1 + x_), {x_, 0, 1}] :>  -Pi^2/12 + Log[2]^2/2
-,
+,*)
 (*I394I*)
 (*X*)iT[Log[1 - x_]^2/(1 + x_), {x_, 0, 1}] :>
 	-(Zeta2*Log[2]) + Log[2]^3/3 + (7*Zeta[3])/4
@@ -2228,9 +2228,9 @@ PolyLog[3,1-x]
 (*I395I*)
 (*X*)iT[Log[x_]/(1 + x_), {x_, 0, 1}] :> -Zeta2/2
 ,
-(*I396I*)
+(*I396I*)(*
 (*X*)iT[Log[1-x_]/(1 + x_), {x_, 0, 1}] :> -Zeta2/2 + Log[2]^2/2
-,
+,*)
 (*I397I*)
 (*X*)iT[Log[1-x_] Log[x_]/(1+x_),  {x_, 0, 1}] :>
 -(Pi^2*Log[2])/12 - Zeta2*Log[2] + (13*Zeta[3])/8
@@ -2365,9 +2365,9 @@ Log[2]^2*Zeta2 + 1/3*Log[2]^4
 (*RX34*)
 (*X*)iT[(Log[1-x_]^2)/x_, {x_,0,1}] :>2*Zeta[3]
 ,
-(*RX34*)
+(*RX34*)(*
 (*X*)iT[Log[1-x_]^2*x_^-1, {x_,0,1}] :> 2*Zeta[3]
-,
+,*)
 (*RX39*)
 (*X*)iT[ Log[1 + (x_)]^2/(x_), {x_,0,1}] :> 1/4*Zeta[3]
 ,
@@ -2383,10 +2383,10 @@ Zeta[3] - 3/2*Log[2]*Zeta2
 (*X*)iT[(Log[1 - (x_)]*Log[1 + (x_)])/(x_), {x_,0,1}] :>
 - 5/8*Zeta[3]
 ,
-(*RX54*)
+(*RX54*)(*
 (*X*)iT[Log[1 - (x_)]/(1 + (x_)), {x_,0,1}] :>
 - 1/2*Zeta2 + 1/2*Log[2]^2
-,
+,*)
 (* TEMPORARILY 11/95 *)
 (*X*)iT[Log[y_]*Log[1 + y_]^2, {y_, 0, 1}] :>
 -6 + Pi^2/6 + 8*Log[2] - 2*Log[2]^2 - Zeta[3]/4
@@ -2517,10 +2517,10 @@ Nielsen[1, 2, 1 - y] + 2*Nielsen[1, 2, y] - Log[1 - y]*PolyLog[2, 1 - y] +
 ,
 (*X*)iT[Log[1-x_] Log[x_]^2/(1-x_)^2 ,{x_,0,1}] :>
 	-4Zeta[3]+2Zeta2
-,
+,(*
 (*X*)iT[Log[1-x_] Log[x_]^2/(1-x_)^2 ,{x_,0,1}] :>
 	-4Zeta[3]+2Zeta2
-,
+,*)
 (*X*)iT[Log[x_]^3/(1-x_)^2 ,{x_,0,1}] :> -6 Zeta[3]
 ,
 (*X*)iT[Log[1-x_]^3/x_^2 ,{x_,0,1}] :> -6 Zeta[3]
@@ -3283,14 +3283,14 @@ Log[x]^2/(4*(1 + x)) +
 (*X*)iT[Log[1 - (u_)*(1 - (x_))]/
 		((u_)*(1 - (x_)) + (x_))^2, {u_, 0, 1}] :> (Log[x]/(1 + x)) /;
 				FreeQ[x,u]
-,
+,(*
 (*X*)iT[Log[u_]/((u_)*(1 - (x_)) + (x_))^2, {u_, 0, 1}] :>
 	(Log[x]/(1 - x) + Log[x]/x) /; FreeQ[x,u]
 ,
 (*X*)iT[Log[1 - (u_)*(1 - (x_))]/
 		((u_)*(1 - (x_)) + (x_))^2, {u_, 0, 1}] :> (Log[x]/(1 + x)) /;
 				FreeQ[x,u]
-,
+,*)
 (*X*)iT[Log[t_]/((t_)*(1 - (u_)) + (s_)*(u_))^2, {t_, 0, 1}] :>
 	Log[-(s*u)]/(s*(1 - u)*u) - Log[-1 + u - s*u]/(s*(1 - u)*u) /;
 		FreeQ[{u,s},t]
@@ -3476,9 +3476,9 @@ Log[x]^2/(4*(1 + x)) +
 	3 - 2 Zeta2
 ,
 (*X*)iT[PolyLog[3, (u_)]/(u_)^2, {u_, 0, 1}] :> 3 - Zeta2 - Zeta[3]
-,
+,(*
 (*X*)iT[PolyLog[3, (1-u_)]/(1-u_)^2, {u_, 0, 1}] :> 3 - Zeta2 - Zeta[3]
-,
+,*)
 (*X*)iT[Log[x_]/(1 + (x_))^3, {x_, 0, 1}] :> -1/4 - Log[2]/2
 ,
 (*X*)iT[Log[x_]^2/(1 + (x_))^3, {x_, 0, 1}] :> Zeta2/2 + Log[2]
@@ -3973,7 +3973,7 @@ Zeta2*Log[y] - 2*Nielsen[1, 2, 1 - y] - Log[y]*PolyLog[2, 1 - y] -
 	((5 - 8*Log[2])*Log[1 + x])/24 - (Log[x]*Log[1 + x])/3 + Log[1 + x]^2/6 -
 	PolyLog[2, -x]/(3*(1 - x)^3) + PolyLog[2, (1 - x)/(1 + x)]/3 /;
 		FreeQ[x,t] && (Factor[x] =!= 1)
-,
+,(*
 (*X*)iT[(Log[t_ + x_]*Log[1 + t_*x_])/(1 + t_)^4, {t_, 0, 1}] :>
 	Zeta2/6 - Zeta2/(2*(1 - x)^3) - (1 - 3*Zeta2 + 3*Log[2])/(6*(1 - x)^2) +
 		(1 - 3*Zeta2 + 3*Log[2])/(6*(1 - x)) - Log[x]/2 + Log[x]/(6*(1 - x)^3) -
@@ -3988,7 +3988,7 @@ Zeta2*Log[y] - 2*Nielsen[1, 2, 1 - y] - Log[y]*PolyLog[2, 1 - y] -
 		PolyLog[2, -x]/(1 - x)^2 - PolyLog[2, -x]/(1 - x) +
 		PolyLog[2, (1 - x)/(1 + x)]/3 + PolyLog[2, (1 - x)/(1 + x)]/(1 - x)^2 -
 		PolyLog[2, (1 - x)/(1 + x)]/(1 - x) /; FreeQ[x,t] && (Factor[x] =!= 1)
-,
+,*)
 (*X*)iT[(Log[t_]*Log[1 + (t_)*(x_)])/(1 + (t_))^4, {t_, 0, 1}] :>
 	-Zeta2/(6*(1 - x)^3) + (Zeta2 + Log[2])/(2*(1 - x)^2) +
 		(1 + Zeta2 + 6*Log[2])/6 - (1 + 3*Zeta2 + 9*Log[2])/(6*(1 - x)) -
@@ -3997,7 +3997,7 @@ Zeta2*Log[y] - 2*Nielsen[1, 2, 1 - y] - Log[y]*PolyLog[2, 1 - y] -
 		PolyLog[2, 1 - x]/3 - PolyLog[2, -x]/(3*(1 - x)^3) +
 		PolyLog[2, -x]/(1 - x)^2 - PolyLog[2, -x]/(1 - x) +
 		PolyLog[2, (1 - x)/(1 + x)]/3  /; FreeQ[x, t]&& (Factor[x] =!= 1)
-,
+,(*
 (*X*)iT[(Log[(t_) + (x_)]*Log[1 + (t_)*(x_)])/(1 + (t_))^4, {t_, 0, 1}] :>
 	-1/(6*(1 - x)^2) + 1/(6*(1 - x)) + Zeta2/6 - Zeta2/(2*(1 - x)^3) +
 		Zeta2/(2*(1 - x)^2) - Zeta2/(2*(1 - x)) - Log[2]/(2*(1 - x)^2) +
@@ -4013,7 +4013,7 @@ Zeta2*Log[y] - 2*Nielsen[1, 2, 1 - y] - Log[y]*PolyLog[2, 1 - y] -
 		PolyLog[2, -x]/(1 - x) + PolyLog[2, (1 - x)/(1 + x)]/3 +
 		PolyLog[2, (1 - x)/(1 + x)]/(1 - x)^2 -
 		PolyLog[2, (1 - x)/(1 + x)]/(1 - x) /; FreeQ[x,t] && (Factor[x] =!= 1)
-,
+,*)
 (*X*)iT[Log[1 - (x_) + (x_)*(y_)]*(y_)^2, {y_, 0, 1}] :>
 	-11/18 - 1/(3*x^2) + 5/(6*x) + Log[1 - x]/3 - Log[1 - x]/(3*x^3) +
 		Log[1 - x]/x^2 - Log[1 - x]/x
@@ -4162,10 +4162,10 @@ Zeta2*Log[y] - 2*Nielsen[1, 2, 1 - y] - Log[y]*PolyLog[2, 1 - y] -
 ,
 (*X*)iT[Log[x_]^2*Log[1 + (x_)]*(x_)^2,
 		{x_, 0, 1}] :> -31/36 + Pi^2/54 + (4*Log[2])/27 + Zeta[3]/2
-,
+,(*
 (*X*)iT[Log[x_]^2*Log[1 + (x_)]*(x_)^2, {x_, 0, 1}] :>
 		-31/36 + Pi^2/54 + (4*Log[2])/27 + Zeta[3]/2
-,
+,*)
 (*X*)iT[Log[x_]*(x_)^2*PolyLog[2, -(x_)], {x_, 0, 1}] :>
 		17/108 - (4*Log[2])/27, iT[(x_)^2*PolyLog[3, -(x_)], {x_, 0, 1}] :>
 		5/162 + Pi^2/108 - (2*Log[2])/27 - Zeta[3]/4
@@ -4409,10 +4409,10 @@ Zeta2/(1 + k) - (I*Pi*x*Integrate[y^k/(x + (1 - x)*y), {y, 0, 1},
 ,
 (*X*)iT[Log[1-s_] PolyLog[3, -1+s_], {s_, 0, 1}] :>
 -4 - Zeta2/2 + 6*Log[2] + (3*Zeta[3])/4
-,
+,(*
 (*X*)iT[Log[s_]*PolyLog[3, s_], {s_, 0, 1}] :>
 -4 + 3*Zeta2 - Zeta[3]
-,
+,*)
 (*X*)iT[Log[1-s_]*PolyLog[3, 1-s_], {s_, 0, 1}] :>
 -4 + 3*Zeta2 - Zeta[3]
 ,
@@ -4683,10 +4683,10 @@ Zeta2/(1 + k) - (I*Pi*x*Integrate[y^k/(x + (1 - x)*y), {y, 0, 1},
 ,
 (*X*)iT[x_^2 Log[1+x_]^3,{x_,0,1}] :>
 		-461/108 + (70*Log[2])/9 - (8*Log[2]^2)/3 + (2*Log[2]^3)/3
-,
+,(*
 (*X*)iT[x_^2 Log[1+x_]^3,{x_,0,1}] :>
 		4411/1152 - (41*Log[2])/6 + 2*Log[2]^2
-,
+,*)
 (*X*) iT[Log[x_]^2* Log[1 + (x_)]*(x_)^3, {x_, 0, 1}] :>
 	1957/3456 - Zeta2/16 - (3*Zeta[3])/8
 ,
@@ -4859,7 +4859,7 @@ Log[2]^4/4 + 2*Log[2]*Zeta[3]
 (*X*)iT[y_^m_?mcheck Log[x_ + (1-x_)y_],{y_,0, 1}]:>
 		Apart[SimplifyPolyLog[((x - 1)*LerchPhi[1 - 1/x, 1, m + 2])/((m + 1)*x)
 							],x] /; FreeQ[x,y]
-,
+,(*
 (*X*)iT[Log[-1 + x_ - x_ *y_]*(y_)^(n_?mcheck), {y_, 0, 1}] :>
 	(Apart[SimplifyPolyLog[(I*Pi)/(1 + n) -
 		(x*LerchPhi[-(x/(1 - x)), 1, 2 + n])/ ((1 + n)*(1 - x))], x]
@@ -4869,7 +4869,7 @@ Log[2]^4/4 + 2*Log[2]*Zeta[3]
 	Expand[Apart[SimplifyPolyLog[(I*Pi)/(1 + n) +
 			(x*LerchPhi[x/(-1 + x), 1, 2 + n])/
 			((1 + n)*(-1 + x))], x]] /; FreeQ[x,y]
-,
+,*)
 (*X*)iT[x_^n_Integer?Negative, {x_,0,1}] :> 1/(1+n) /; n<-1
 ,
 (*X*)iT[Log[-(u_) - (x_) + (u_)*(x_)]* (u_)^2, {u_, 0, 1}] :>

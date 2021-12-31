@@ -371,11 +371,6 @@ hypexpansion={
 	(2*Log[x])/(1 - x) - Log[x]^2/4) +
 	Epsilon^3 F21CHECK
 	,
-	Hypergeometric2F1[-Epsilon, -Epsilon/2, 3/2 - Epsilon/2,
-			-(1 - x_)^2/(4*x_)] ->
-	1 + Epsilon^2*(-2 + Log[x] - (2*Log[x])/(1 - x) - Log[x]^2/4)+
-	Epsilon^3 F21CHECK
-	,
 	Hypergeometric2F1[-1 - Epsilon/2, 1, 1 + Epsilon/2, x_] ->
 		1 - x + Epsilon*(x/2 + Log[1 - x]/2 - (x*Log[1 - x])/2) +
 			Epsilon^2*(-x/2 + Zeta2/4 - (x*Zeta2)/4 - Log[1 - x]/4 +
@@ -745,24 +740,6 @@ hypexpansion={
 	Epsilon^3  F21CHECK
 	,
 
-	Hypergeometric2F1[Epsilon/2, Epsilon, 1 + Epsilon, x_] ->
-		1 + (Epsilon^2*Zeta2)/2 - (Epsilon^2*Log[1 - x]*Log[x])/2 -
-		(Epsilon^2*PolyLog[2, 1 - x])/2 +
-	Epsilon^3 F21CHECK
-	,
-	Hypergeometric2F1[1 + Epsilon/2, Epsilon, 1 + Epsilon, x_] ->
-		1 - Epsilon*Log[1-x] + (Epsilon^2*
-	(2*EulerGamma*Log[1-x] + Log[1-x]^2 - 2*PolyLog[2, x]))/4+
-	Epsilon^3 F21CHECK
-	,
-	Hypergeometric2F1[2, 1 - Epsilon, 2 - Epsilon/2, x_] ->
-		(1 - x)^(-1) + Epsilon*(-EulerGamma/2 - 1/(2*(1 - x)) +
-	EulerGamma/(2*(1 - x)) + Log[1 - x]/(2*(1 - x)) - Log[1 - x]/(2*x))+
-	Epsilon^2(-(6*Zeta2 - 6*Zeta2*Log[1 - x] - 3*Log[1 - x]^2 + Log[1 - x]^3 -
-			6*Log[1 - x]*Log[x] + 3*Log[1 - x]^2*Log[x] - 6*PolyLog[2, 1 - x] +
-			6*PolyLog[3, 1 - x] - 6*PolyLog[3, x] - 6*Zeta[3])/(24*x)) +
-	Epsilon^3 F21CHECK
-	,
 	Hypergeometric2F1[1, 1 - Epsilon, 2 - Epsilon/2, x_] :>
 		-(Log[1 - x]/x) - (Epsilon*(2*EulerGamma*x - 2*Zeta2 - 2*Log[1 - x] +
 					2*EulerGamma*Log[1 - x] + Log[1 - x]^2 + 2*Log[1 - x]*Log[x] +

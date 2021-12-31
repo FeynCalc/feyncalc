@@ -176,13 +176,13 @@ FunctionalD[y_, {QuantumField[nam_, lor___LorentzIndex, sun___SUNIndex|sun___Exp
 	(* operate from the left *)
 		If[ !FreeQ[r, ddelta],
 			If[ Head[r] =!= Plus,
-				r = ExpandPartialD[((SelectNotFree[r, ddelta] /. ddelta -> pard) .
-									SelectFree[r, ddelta])/.Times->DOT
+				r = ExpandPartialD[DOT[(SelectNotFree[r, ddelta] /. ddelta -> pard) ,
+									SelectFree[r, ddelta]]/. Times->DOT
 									],
-				r = Sum[ExpandPartialD[((SelectNotFree[r[[i]], ddelta] /.
-											ddelta -> pard) .
+				r = Sum[ExpandPartialD[DOT[(SelectNotFree[r[[i]], ddelta] /.
+											ddelta -> pard) ,
 										SelectFree[r[[i]], ddelta]
-											) /. Times -> DOT
+										] /. Times -> DOT
 											],
 						{i, Length[r]}]
 			]

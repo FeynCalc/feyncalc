@@ -91,7 +91,7 @@ FCReplaceMomenta[expr_, replacementRules_List,  OptionsPattern[]] :=
 
 		(*we also want something like p1->x*p2 to work!*)
 
-		If[	!MathcQ[replacementRules,{Rule___}],
+		If[	!MathcQ[replacementRules,{___Rule}],
 			Message[FCReplaceMomenta::failmsg, "The momentum replacement rules are incorrect."];
 			Abort[]
 

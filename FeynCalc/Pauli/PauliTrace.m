@@ -47,18 +47,17 @@ optSort::usage="";
 
 Options[PauliTrace] = {
 	Contract 			-> True,
-	PauliTraceEvaluate	-> False,
 	EpsContract			-> False,
 	EpsExpand			-> True,
 	Expand				-> True,
+	FCDiracIsolate		-> True,
 	FCPauliIsolate		-> True,
 	FCVerbose			-> False,
 	Factoring			-> Automatic,
-	FCDiracIsolate		-> True,
 	FeynCalcExternal	-> False,
 	FeynCalcInternal	-> False,
 	PairCollect			-> False,
-	PauliTraceEvaluate 	-> False,
+	PauliTraceEvaluate	-> False,
 	Sort				-> True,
 	TraceOfOne			-> 2
 };
@@ -610,7 +609,6 @@ traceOdd[a_, b_, c_]:=
 traceEpsOdd[mu_, nu_, SI2__] :=
 	Block[{head, s = -1, res},
 		res = Plus @@ MapIndexed[((s = -s) Eps[mu, nu, #1] Drop[head[SI2], #2]) &, {SI2}];
-		res = res (*/. head -> traceEvenWrap*);
 		res
 	];
 

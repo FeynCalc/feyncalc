@@ -480,24 +480,6 @@ kli[k_,FAD[k_,k_,(k_)-(p1_)]*SOD[k_]^(OPEm+en_.)* SPD[k_,p3_]^2]:>
 (en+OPEm)*SO[p3]^2*SP[p1,p1]+2*(en+OPEm)*SO[p1]*SO[p3]*SP[p1,p3]+
 SO[p1]^2*SP[p3,p3]))/(Epsilon*(1+en+OPEm)*(2+en+OPEm))
 ,
-kli[k_,FAD[(k_)-(p3_),(k_)-(p1_)]*SOD[k_]^(OPEm+en_.)* SPD[k_,k_]]:>
-(
-(2*I*Sn*SO[p3]^(1+en+OPEm)*(-(SO[p1]*SO[p3]*SP[p1,p1])-
-(1+en+OPEm)*SO[p1]*SO[p3]*SP[p1,p1]-SO[p3]^2*SP[p1,p1]+
-(1+en+OPEm)*SO[p3]^2*SP[p1,p1]+4*SO[p1]*SO[p3]*SP[p1,p3]+
-2*(1+en+OPEm)*SO[p1]*SO[p3]*SP[p1,p3]-2*(1+en+OPEm)*SO[p3]^2*SP[p1,p3]-
-SO[p1]^2*SP[p3,p3]-(1+en+OPEm)*SO[p1]^2*SP[p3,p3]-
-SO[p1]*SO[p3]*SP[p3,p3]+(1+en+OPEm)*SO[p1]*SO[p3]*SP[p3,p3]))/
-(Epsilon*(1+en+OPEm)*(1+(1+en+OPEm))*(-SO[p1]+SO[p3])^3)+
-(2*I*Sn*SO[p1]^(1+en+OPEm)*(SO[p1]*SO[p3]*SP[p1,p1]-
-(1+en+OPEm)*SO[p1]*SO[p3]*SP[p1,p1]+SO[p3]^2*SP[p1,p1]+
-(1+en+OPEm)*SO[p3]^2*SP[p1,p1]+2*(1+en+OPEm)*SO[p1]^2*SP[p1,p3]-
-4*SO[p1]*SO[p3]*SP[p1,p3]-2*(1+en+OPEm)*SO[p1]*SO[p3]*SP[p1,p3]+
-SO[p1]^2*SP[p3,p3]-(1+en+OPEm)*SO[p1]^2*SP[p3,p3]+
-SO[p1]*SO[p3]*SP[p3,p3]+(1+en+OPEm)*SO[p1]*SO[p3]*SP[p3,p3]))/
-(Epsilon*(1+en+OPEm)*(1+(1+en+OPEm))*(-SO[p1]+SO[p3])^3)
-)
-,
 (*STILLTODO*)
 kli[k_,FAD[k_,(k_)-(p3_)]*SOD[k_]^(-1+OPEm)* SPD[k_,p1_]]:>
 (I*Sn*SO[p3]^(-2+OPEm)*(-2*OPEm*SO[p3]*SP[p1,p3]-
@@ -562,8 +544,6 @@ kli[k_,FAD[k_,k_,(k_)-((*p1*)_)]*SOD[k_]^(-1+OPEm)]:>0
 kli[k_,FAD[k_,(k_)-(p3_)]*SOD[k_]^(-1+OPEm)]:>
 (-2*I*Sn*SO[p3]^(-1+OPEm))/(Epsilon*OPEm)
 ,
-kli[k_,FAD[k_,k_,(k_)-((*p3*)_)]*SOD[k_]^(-1+OPEm)]:>0
-,
 kli[k_,FAD[(k_)-(p3_),(k_)-(p1_)]*SOD[k_]^(-1+OPEm)]:>
 (2*I*Sn*SO[p1]^OPEm)/(Epsilon*OPEm*(-SO[p1]+SO[p3]))-
 (2*I*Sn*SO[p3]^OPEm)/(Epsilon*OPEm*(-SO[p1]+SO[p3]))
@@ -586,13 +566,11 @@ kli[k_,FAD[(k_)-(p3_),(k_)-(p1_)]*SOD[k_]^(en_. +OPEm)]:>
 ,
 
 kli[k_,FAD[k_,k_,(k_)-((*p1*)_)]*SOD[k_]^(1+OPEm)]:>0,
-kli[k_,FAD[k_,k_,(k_)-((*p3*)_)]*SOD[k_]^(1+OPEm)]:>0,
 kli[k_,FAD[k_,(k_)-((*p3*)_),(k_)-((*p1*)_)]* SOD[k_]^(1+OPEm)]:>0,
 kli[k_,FAD[k_,k_,(k_)-((*p3*)_),(k_)-((*p1*)_)]* SOD[k_]^(2+OPEm)]:>0,
 kli[k_,FAD[k_,(k_)-((*p3*)_),(k_)-((*p1*)_)]* SOD[k_]^(-1+OPEm)]:>0,
 kli[k_,FAD[k_,k_,(k_)-((*p3*)_),(k_)-((*p1*)_)]* SOD[k_]^(-1+OPEm)]:>0,
 kli[k_,FAD[k_,k_,(k_)-((*p1*)_)]*SOD[k_]^OPEm]:>0,
-kli[k_,FAD[k_,k_,(k_)-((*p3*)_)]*SOD[k_]^OPEm]:>0,
 kli[k_,FAD[k_,(k_)-((*p3*)_),(k_)-((*p1*)_)]*SOD[k_]^OPEm]:>0,
 kli[k_,FAD[k_,k_,(k_)-((*p3*)_),(k_)-((*p1*)_)]* SOD[k_]^(1+OPEm)]:>0,
 kli[k_,FAD[k_,k_,(k_)-((*p3*)_),(k_)-((*p1*)_)]*SOD[k_]^OPEm]:> 0,
@@ -624,12 +602,6 @@ kli[k_,FAD[k_, p2_ + k_] (SOD[p1_]-SOD[k_])^(OPEm+en_.)]:>
 (SO[p1] + SO[p2])^(1 + en + OPEm)/((1 + en + OPEm)*(-SO[p2]))))/Epsilon
 ,
 
-
-kli[k_, FAD[k_, -p2_ + (k_)]* (SOD[p1_] - SOD[k_])^(OPEm + (en_.))] :>
-		(-2*I*Sn*(SO[p1]^(1 + en + OPEm)/((1 + en + OPEm)*SO[p2]) -
-					(SO[p1] - SO[p2])^(1 + en + OPEm)/((1 + en + OPEm)*SO[p2])))/
-			Epsilon
-,
 kli[k_, FAD[k_, -p1_ + (k_), -(*p2*)_ + (k_)]*
 			(SOD[p1_] - SOD[k_])^(OPEm + ((*en*)_.))] :> 0
 ,
@@ -674,6 +646,7 @@ kli[k_, FAD[(k_) - (p2_), (k_) - (p1_)]*SOD[k_]*(-SOD[k_] + SOD[p2_])^(e + OPEm)
 
 (*TODO This is simply not right! One should never mess up with such
 	low-level functions as If!!!*)
+(*
 Unprotect[If];
 If[ -Re[OPEi - OPEm] > 1,
 	aa_,
@@ -742,6 +715,6 @@ If[ -2 + Re[OPEm] > -1 && -2 + Re[OPEm] > -1,
 	_
 ] :=
 	a;
-
+*)
 FCPrint[1,"OPEIntegrate2.m loaded"];
 End[]

@@ -306,23 +306,23 @@ Tdec[exp_:1, li : {{_, _} ..}, extMomsRaw_List/;FreeQ[extMomsRaw,OptionQ], Optio
 			Which[
 				(*Solve3*)
 				optSolve===Solve3,
-				sol = Solve3[linearSystemAbbreviated, tensorCoeffs, Factoring -> optFactoring, ParallelMap->OptionValue[Parallelize]],
+					sol = Solve3[linearSystemAbbreviated, tensorCoeffs, Factoring -> optFactoring, ParallelMap->OptionValue[Parallelize]],
 
 				(*FerSolve*)
 				optSolve===FeynCalc`FerSolve,
-				sol = FerSolve[linearSystemAbbreviated, tensorCoeffs, Timing->False],
+					sol = FerSolve[linearSystemAbbreviated, tensorCoeffs, Timing->False],
 
 				(*Custom solver, no options*)
 				MatchQ[optSolve,_Symbol],
-				sol = optSolve[linearSystemAbbreviated,tensorCoeffs],
+					sol = optSolve[linearSystemAbbreviated,tensorCoeffs],
 
 				(*Custom solver with options*)
 				MatchQ[optSolve,{_Symbol,_List}],
-				sol = optSolve[[1]][linearSystemAbbreviated,tensorCoeffs, optSolve[[1]]],
+					sol = optSolve[[1]][linearSystemAbbreviated,tensorCoeffs, optSolve[[1]]],
 
-				_,
-				Message[Tdec::failmsg,"Invalid value of the Solve option."];
-				Abort[]
+				True,
+					Message[Tdec::failmsg,"Invalid value of the Solve option."];
+					Abort[]
 			];
 			FCPrint[1, "Tdec: Solver done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tdecVerbose];
 			FCPrint[3, "Tdec: sol: ", Normal[sol], FCDoControl->tdecVerbose];
