@@ -690,7 +690,11 @@ Tests`Lorentz`fcstScalarProductSet = ({
 {"fcstScalarProductSet-ID305", "SPE[-a1-a2,b1+b2]",
 "SPE[-a1 - a2, b1 + b2]"},
 {"fcstScalarProductSet-ID306", "SPE[-a1-a2,-b1-b2]",
-"SPE[-a1 - a2, -b1 - b2]"}
+"SPE[-a1 - a2, -b1 - b2]"},
+{"fcstScalarProductSet-ID307",
+"FCClearScalarProducts[]; \n SP[p] = s; \n SP[P] = SP[p]; \n tmp=(SP[P] - SP[p]); \n
+FCClearScalarProducts[]; tmp",
+"0"}
 });
 
 Tests`Lorentz`fsctSPSet = ({
@@ -1683,7 +1687,11 @@ D]}"},
 {"fcstCartesianScalarProductSet-ID313",
 "FCClearScalarProducts[];CartesianMomentum[p,D-4]=ab;CSPE[p,p]=0; \
 tmp = {CartesianMomentum[p],CartesianMomentum[p,D-1],CartesianMomentum[p,D-\
-4]}; \n FCClearScalarProducts[]; \n tmp", "{CartesianMomentum[p], CartesianMomentum[p, -1 + D], 0}"}
+4]}; \n FCClearScalarProducts[]; \n tmp", "{CartesianMomentum[p], CartesianMomentum[p, -1 + D], 0}"},
+{"fcstScalarProductSet-ID312",
+"FCClearScalarProducts[]; \n CSP[p] = s; \n CSP[P] = CSP[p]; \n tmp=(CSP[P] - CSP[p]); \n
+FCClearScalarProducts[]; tmp",
+"0"}
 });
 
 Tests`Lorentz`fcstSetTemporalComponent = {

@@ -147,7 +147,7 @@ ScalarProduct/:
 					{(b/NumericalFactor[b]), Expand[(b/NumericalFactor[b])], Expand[-(b/NumericalFactor[b])]}};
 		valsListOrig = {setval, setval, -setval, setval,setval,	-setval, -setval, -setval, setval};
 
-		setval = z/(NumericalFactor[a]*NumericalFactor[b]);
+		setval = FCI[z]/(NumericalFactor[a]*NumericalFactor[b]);
 
 		If[dims==={},
 			Message[ScalarProduct::emptydim];
@@ -287,7 +287,7 @@ CartesianScalarProduct/:
 					{(b/NumericalFactor[b]), Expand[(b/NumericalFactor[b])], Expand[-(b/NumericalFactor[b])]}};
 		valsListOrig = {setval, setval, -setval, setval,setval,	-setval, -setval, -setval, setval};
 
-		setval = z/(NumericalFactor[a]*NumericalFactor[b]);
+		setval = FCI[z]/(NumericalFactor[a]*NumericalFactor[b]);
 
 		If[dims==={},
 			Message[CartesianScalarProduct::emptydim];
@@ -443,7 +443,7 @@ SetTemporalComponent[araw_, z_, OptionsPattern[]]:=
 		tuples = {	(a/NumericalFactor[a]), Expand[(a/NumericalFactor[a])], Expand[-(a/NumericalFactor[a])] };
 		valsListOrig = {setval, setval, -setval};
 
-		setval = z/(NumericalFactor[a]);
+		setval = FCI[z]/(NumericalFactor[a]);
 		tPairList = Flatten[Map[HoldPattern[TemporalPair[ExplicitLorentzIndex[0],TemporalMomentum[#]]] &,tuples]];
 		fceList = Flatten[Map[HoldPattern[TC[#]] &,tuples]];
 		valsList = valsListOrig;
