@@ -41,16 +41,16 @@ To remove all existing cache values use FCClearCache[All].";
 FCUseCache::blacklist=
 "The function `1` is not whitelisted for FCUseCache. Evaluation aborted!";
 
+FCUseCache::fail=
+"Error! FCUseCache has encountered a fatal problem and must abort the computation. \
+The problem reads: `1`";
+
 
 Begin["`Package`"];
 End[]
 (* ------------------------------------------------------------------------ *)
 
 Begin["`CacheManagement`Private`"];
-
-
-SetAttributes[cachedToString, HoldAll];
-
 
 whiteListNames = {
 	ExpandScalarProduct,
@@ -62,13 +62,20 @@ whiteListNames = {
 	FeynCalc`Package`momentumRoutingDenner
 };
 
+standardSetAssociation = {};
+
+If[	$VersionNumber >= 10. ,
+	standardSetAssociation = Association[{}];
+];
+
 FCUseCache[fcFunc_, args_List, opts_List: {}] :=
-	Block[{fullOpts, cachedHead,depArgs, standardSet},
+	Block[{fullOpts, cachedHead,depArgs, standardSet, savedStandardSet},
 		fullOpts = Sort[Flatten[Join[opts, FilterRules[Options[fcFunc], Except[opts]]]]];
 		cachedHead=ToExpression["cacheFunc"<>ToString[fcFunc]];
 
 		If[	MemberQ[whiteListNames,fcFunc],
-			cachedHead[arg_, cargs_String, ops_] :=
+
+			cachedHead[arg_, cargs_, ops_] :=
 				MemSet[cachedHead[arg, cargs, ops], fcFunc[Sequence @@ arg, ops]],
 			Message[FCUseCache::blacklist,fcFunc];
 			Abort[]
@@ -82,23 +89,35 @@ FCUseCache[fcFunc_, args_List, opts_List: {}] :=
 
 		Which[
 			fcFunc === ExpandScalarProduct,
-				depArgs = cachedToString[standardSet],
+				depArgs = Hash[standardSet],
 			fcFunc === PairContract,
-				depArgs = cachedToString[standardSet],
+				depArgs = Hash[standardSet],
 			fcFunc === FCFastContract,
-				depArgs = cachedToString[standardSet],
+				depArgs = Hash[standardSet],
 			fcFunc === FeynCalc`NPointTo4Point`Private`getDet,
-				depArgs = cachedToString[standardSet],
+				depArgs = Hash[standardSet],
 			fcFunc === FeynCalc`SimplifyPolyLog`Private`simplifyArgument,
-				depArgs = cachedToString[standardSet],
+				depArgs = Hash[standardSet],
 			fcFunc === FeynCalc`FCApart`Private`pfracRaw,
-				depArgs = cachedToString[standardSet],
+				depArgs = Hash[standardSet],
 			fcFunc === FeynCalc`Package`momentumRoutingDenner,
-				depArgs = cachedToString[standardSet],
+				depArgs = Hash[standardSet],
 			True,
 				Message[FCUseCache::blacklist,fcFunc];
 				Abort[]
 		];
+
+		If[	$VersionNumber >= 10. ,
+			savedStandardSet = Key[depArgs][standardSetAssociation];
+			If[	MissingQ[savedStandardSet],
+				standardSetAssociation = Append[standardSetAssociation,{depArgs -> standardSet}],
+				If[	savedStandardSet=!=standardSet,
+					Message[FCUseCache::fail,"Hash collision detected."];
+					Abort[]
+				];
+			];
+		];
+
 		cachedHead[args,depArgs,fullOpts]
 	];
 
@@ -111,10 +130,6 @@ FCClearCache[fcFunc_] :=
 
 FCClearCache[All]:=
 	FCClearCache /@ whiteListNames;
-
-
-cachedToString[x_] :=
-	cachedToString[x] = ToString[x];
 
 
 FCPrint[1,"CacheManagement.m loaded"];
