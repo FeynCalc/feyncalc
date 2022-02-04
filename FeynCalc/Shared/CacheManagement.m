@@ -49,13 +49,13 @@ End[]
 Begin["`CacheManagement`Private`"];
 
 
-SetAttributes[cachedToString, HoldAll];
+(*SetAttributes[cachedToString, HoldAll];*)
 
 
 whiteListNames = {
 	ExpandScalarProduct,
 	PairContract,
-	FCFastContract,
+	FeynCalc`Package`FCFastContract,
 	FeynCalc`NPointTo4Point`Private`getDet,
 	FeynCalc`SimplifyPolyLog`Private`simplifyArgument,
 	FeynCalc`FCApart`Private`pfracRaw,
@@ -63,12 +63,13 @@ whiteListNames = {
 };
 
 FCUseCache[fcFunc_, args_List, opts_List: {}] :=
-	Block[{fullOpts, cachedHead,depArgs, standardSet},
+	Block[{fullOpts, cachedHead,depArgs, standardSet, fcHoldPattern, time},
 		fullOpts = Sort[Flatten[Join[opts, FilterRules[Options[fcFunc], Except[opts]]]]];
 		cachedHead=ToExpression["cacheFunc"<>ToString[fcFunc]];
 
 		If[	MemberQ[whiteListNames,fcFunc],
-			cachedHead[arg_, cargs_String, ops_] :=
+
+			cachedHead[arg_, cargs_, ops_] :=
 				MemSet[cachedHead[arg, cargs, ops], fcFunc[Sequence @@ arg, ops]],
 			Message[FCUseCache::blacklist,fcFunc];
 			Abort[]
@@ -82,23 +83,24 @@ FCUseCache[fcFunc_, args_List, opts_List: {}] :=
 
 		Which[
 			fcFunc === ExpandScalarProduct,
-				depArgs = cachedToString[standardSet],
+				depArgs = Hash[standardSet],
 			fcFunc === PairContract,
-				depArgs = cachedToString[standardSet],
-			fcFunc === FCFastContract,
-				depArgs = cachedToString[standardSet],
+				depArgs = Hash[standardSet],
+			fcFunc === FeynCalc`Package`FCFastContract,
+				depArgs = Hash[standardSet],
 			fcFunc === FeynCalc`NPointTo4Point`Private`getDet,
-				depArgs = cachedToString[standardSet],
+				depArgs = Hash[standardSet],
 			fcFunc === FeynCalc`SimplifyPolyLog`Private`simplifyArgument,
-				depArgs = cachedToString[standardSet],
+				depArgs = Hash[standardSet],
 			fcFunc === FeynCalc`FCApart`Private`pfracRaw,
-				depArgs = cachedToString[standardSet],
+				depArgs = Hash[standardSet],
 			fcFunc === FeynCalc`Package`momentumRoutingDenner,
-				depArgs = cachedToString[standardSet],
+				depArgs = Hash[standardSet],
 			True,
 				Message[FCUseCache::blacklist,fcFunc];
 				Abort[]
 		];
+
 		cachedHead[args,depArgs,fullOpts]
 	];
 
@@ -111,10 +113,6 @@ FCClearCache[fcFunc_] :=
 
 FCClearCache[All]:=
 	FCClearCache /@ whiteListNames;
-
-
-cachedToString[x_] :=
-	cachedToString[x] = ToString[x];
 
 
 FCPrint[1,"CacheManagement.m loaded"];
