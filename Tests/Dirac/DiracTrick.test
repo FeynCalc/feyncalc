@@ -1129,7 +1129,16 @@ Momentum[p1, D], 0, 1] + Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[p3].GAD[Lor
 {"fcstDiracTrickCoreProperties-ID122",
 "FCSetDiracGammaScheme[\"NDR\"]\n DiracTrick[GAD[mu].(cc1 + cc2 GA[5]).(GSD[p] + m).GAD[rho], FCE -> True]", "cc1 GAD[mu].(m + GSD[p]).GAD[rho] + cc2 GAD[mu].(-m + GSD[p]).GAD[rho].GA[5]"},
 {"fcstDiracTrickCoreProperties-ID123",
-"DiracTrick[GAD[mu].DiracGamma[ExplicitLorentzIndex[i, D], D].GAD[mu]]", "(2 - D) DiracGamma[ExplicitLorentzIndex[i, D], D]"}
+"DiracTrick[GAD[mu].DiracGamma[ExplicitLorentzIndex[i, D], D].GAD[mu]]", "(2 - D) DiracGamma[ExplicitLorentzIndex[i, D], D]"},
+{"fcstDiracTrickCoreProperties-ID124",
+"FCClearScalarProducts[]; SP[p1, p2] = s2;
+SP[p1, p3] = s3; DiracTrick[
+DiracGamma[Momentum[p2 + p3]] . DiracGamma[Momentum[p1]] .
+DiracGamma[Momentum[p2 + p3]], FCE -> True]", "2*(s2 + s3)*GS[p2 + p3] - GS[p1]*(SP[p2, p2] + 2*SP[p2, p3] + SP[p3, p3])"},
+{"fcstDiracTrickCoreProperties-ID125",
+"FCClearScalarProducts[]; DiracTrick[
+DiracGamma[Momentum[p2 + p3]] . DiracGamma[Momentum[p1]] .
+DiracGamma[Momentum[p2 + p3]], FCE -> True]", "2*GS[p2 + p3]*SP[p1, p2 + p3] - GS[p1]*(SP[p2, p2] + 2*SP[p2, p3] + SP[p3, p3])"}
 });
 
 Tests`Dirac`fcstDiracTrick = {
