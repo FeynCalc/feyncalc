@@ -472,7 +472,9 @@ Tests`Shared`fcstVariables2 =
 {"fcstVariables2-ID2", "Variables2[a+b\[Equal]c+d]", "{a, b, c, d}"},
 {"fcstVariables2-ID3", "Variables2[{a+b\[Equal]c+d}]",
 "{a, b, c, d}"},
-{"fcstVariables2-ID4", "Variables2[a\[Rule]b]", "{a, b}"}
+{"fcstVariables2-ID4", "Variables2[a\[Rule]b]", "{a, b}"},
+{"fcstVariables2-ID5", "Variables2[Re[1 + x + y]]", "{x, y}"},
+{"fcstVariables2-ID6", "Variables2[Im[I + x + y]]", "{x, y}"}
 })
 
 Tests`Shared`fcstCoefficient2 =

@@ -1103,15 +1103,20 @@ SelectSplit[ex_, p_List, opts___Rule] :=
 		] &[(h @@ #) & /@ Append[res, Complement[exp, Join @@ res]]]
 	];
 
+Variables2[expr_Plus, opts : OptionsPattern[]] :=
+	Union[Flatten[Variables2[#, opts] & /@ List@@expr]];
 
 Variables2[expr_List, opts : OptionsPattern[]] :=
 	Union[Flatten[Variables2[#, opts] & /@ expr]];
 
 Variables2[expr_, OptionsPattern[]] :=
-	Union[Variables[expr]] /; !MemberQ[{List, Equal, Rule, RuleDelayed}, Head[expr]];
+	Union[Variables[expr]] /; !MemberQ[{List, Equal, Rule, RuleDelayed, Re, Im}, Head[expr]];
 
 Variables2[(Equal | Rule | RuleDelayed)[a_, b_], OptionsPattern[]] :=
 	Union[Variables[a], Variables[b]];
+
+Variables2[(Re | Im)[a_], OptionsPattern[]] :=
+	Variables[a];
 
 (* integral transformation only valid if nonsingular in x, y = 0,1 *)
 XYT[exp_, x_, y_] :=
