@@ -449,6 +449,9 @@ InstallFeynCalc[OptionsPattern[]]:=
 			]
 		];
 		Get["FeynCalc`"];
+		If[	faInstalled,
+			FAPatch[Quiet->True]
+		];
 
 ];
 
