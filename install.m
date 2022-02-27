@@ -441,16 +441,13 @@ InstallFeynCalc[OptionsPattern[]]:=
 
 		WriteString["stdout", "\nInstallation complete! Loading FeynCalc ... \n"];
 
-		If[	faInstalled,
-
-			If[	OptionValue[InstallFeynCalcDevelopmentVersion],
-				Global`$LoadAddOns={"FeynArts"},
-				Global`$LoadFeynArts=True
-			]
-		];
+		Global`$FAPatch=False;
 		Get["FeynCalc`"];
 		If[	faInstalled,
-			FAPatch[Quiet->True]
+			FeynCalc`FAPatch[Quiet->True]
+		];
+		If[	OptionValue[InstallFeynCalcDevelopmentVersion],
+			FeynCalc`FCReloadAddOns[{"FeynArtsLoader"}]
 		];
 
 ];
