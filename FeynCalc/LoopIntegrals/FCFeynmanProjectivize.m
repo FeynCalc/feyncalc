@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 FCFeynmanProjectivize::usage =
-"FCFeynmanProjectivize[int] checks if the given Feynman integral is a
+"FCFeynmanProjectivize[int,x] checks if the given Feynman integral is a
 projective form. If this is not the case, the integral will be projectivized.
 
 Projectivity is a necessary condition for computing the integral with the aid
@@ -36,8 +36,9 @@ fcfprVerbose::usage="";
 
 Options[FCFeynmanProjectivize] = {
 	Assumptions	-> {},
-	RandomPrime	-> 10^8,
-	FCVerbose 	-> False
+	Check		-> True,
+	FCVerbose 	-> False,
+	RandomPrime	-> 10^8
 };
 
 
@@ -111,18 +112,18 @@ FCFeynmanProjectivize[ex_, var_, OptionsPattern[]] :=
 			FCPrint[0,"FCFeynmanProjectivize: The integral is not projective, trying to projectivize.", FCDoControl->fcfprVerbose];
 		];
 
-
 		res = (ex /. ru) (Total[xVars])^(-Length[xVars]);
 		FCPrint[1,"FCFeynmanProjectivize: Resulting integral: " , res, FCDoControl->fcfprVerbose];
 
+		If[	OptionValue[Check],
+			check = Simplify[la^Length[xVars] (res /. cru),	Assumptions -> Join[optAssumptions, {la > 0}]];
+			If[	FreeQ[check, la],
 
-		check = Simplify[la^Length[xVars] (res /. cru),	Assumptions -> Join[optAssumptions, {la > 0}]];
-		If[	FreeQ[check, la],
+				FCPrint[0,"FCFeynmanProjectivize: Projective transformation successful, the integral is now projective.", FCDoControl->fcfprVerbose],
 
-			FCPrint[0,"FCFeynmanProjectivize: Projective transformation successful, the integral is now projective.", FCDoControl->fcfprVerbose],
-
-			Message[FCFeynmanProjectivize::failmsg, "Failed to projectivize the integral."];
-			Abort[]
+				Message[FCFeynmanProjectivize::failmsg, "Failed to projectivize the integral."];
+				Abort[]
+			];
 		];
 
 		res

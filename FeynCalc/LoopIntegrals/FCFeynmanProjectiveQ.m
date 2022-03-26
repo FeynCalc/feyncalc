@@ -1,0 +1,43 @@
+(* ::Package:: *)
+
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+
+(* :Title: FCFeynmanProjectiveQ												*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2022 Rolf Mertig
+	Copyright (C) 1997-2022 Frederik Orellana
+	Copyright (C) 2014-2022 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  	Checks projectivity of a Feynman integral					*)
+
+(* ------------------------------------------------------------------------ *)
+
+FCFeynmanProjectiveQ::usage =
+"FCFeynmanProjectiveQ[int] checks if the given Feynman integral is a
+projective form.
+
+Projectivity is a necessary condition for computing the integral with the aid
+of the Cheng-Wu theorem";
+
+Begin["`Package`"]
+End[]
+
+Begin["`FCFeynmanProjectiveQ`Private`"]
+
+
+Options[FCFeynmanProjectiveQ] =
+	Options[FCFeynmanProjectivize];
+
+
+FCFeynmanProjectiveQ[ex_, var_, opts:OptionsPattern[]]:=
+	Block[{tmp},
+		tmp = FCFeynmanProjectivize[ex,var,{Check->False,FCVerbose->-1,FilterRules[{opts},Except[Check|FCVerbose]]}];
+		tmp===ex
+	];
+
+
+FCPrint[1,"FCFeynmanProjectiveQ.m loaded."];
+End[]

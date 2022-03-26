@@ -8,7 +8,8 @@
 
 
 (* ::Text:: *)
-(*`FCFeynmanProjectivize[int]` checks if the given Feynman integral is a projective form. If this is not the case, the integral will be projectivized.*)
+(*`FCFeynmanProjectivize[int, x]` checks if the given Feynman parameter integral (without prefactors) depending on x[1], x[2], ...*)
+(*is a projective form. If this is not the case, the integral will be projectivized.*)
 
 
 (* ::Text:: *)
@@ -20,7 +21,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [FCFeynmanParametrize](FCFeynmanParametrize.md), [FCFeynmanPrepare](FCFeynmanPrepare.md).*)
+(*[Overview](Extra/FeynCalc.md), [FCFeynmanParametrize](FCFeynmanParametrize.md), [FCFeynmanPrepare](FCFeynmanPrepare.md), [FCFeynmanProjectiveQ](FCFeynmanProjectiveQ.md).*)
 
 
 (* ::Subsection:: *)
@@ -40,7 +41,12 @@ FCFeynmanProjectivize[fp[[1]],x]
 FCFeynmanProjectivize[(x[1] + x[2])^(-2 + 2*ep)/(mb2*(x[1]^2 + x[1]*x[2] + x[2]^2))^ep,x]
 
 
-FCFeynmanProjectivize[x[1]^(x - 1) (x[2])^(y - 1), x, {}]
+(* ::Text:: *)
+(*Feynman parametrization derived from propagator representation should be projective in most cases.*)
+(*However, arbitrary Feynman parameter integral do not necessarily have this property.*)
+
+
+FCFeynmanProjectivize[x[1]^(x - 1) (x[2])^(y - 1), x]
 
 
 
