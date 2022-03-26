@@ -34,7 +34,7 @@ if [[ $# -eq 2 ]] ; then
     sed -i -e 's|g\^{\\mu \\nu }^2|(g\^{\\mu \\nu})^2|' $1;
     sed -i -e 's|\\bar{\\delta }\^{ij}\^2|(\\bar{\\delta}\^{ij})^2|' $1;
     sed -i -e 's|\$\$\(!\[.*\)\$\$|\1|' $1;
-    pandoc "$1" -f markdown -t html5  --katex -fmarkdown-implicit_figures --lua-filter=md-to-html.lua -s --metadata title="FeynCalc manual (development version)" --metadata=classoption:fleqn -o "$2"/$(basename -s .md "$1").html
+    pandoc "$1" -f markdown -t html5  --katex -fmarkdown-implicit_figures --lua-filter=md-to-html.lua -s --metadata title="FeynCalc manual (development version)" -c "css/feyncalc.css" --metadata=classoption:fleqn -o "$2"/$(basename -s .md "$1").html
 else
  
 allFilesRaw=$(find $mainDir/Markdown/ -type f -name '*.md' -print)
@@ -73,7 +73,14 @@ mkdir $OUTDIR/Extra &> /dev/null;
 mv $OUTDIR/FeynCalc.html $OUTDIR/Extra/FeynCalc.html;
 mv $OUTDIR/MasterIntegrals.html $OUTDIR/Extra/MasterIntegrals.html;
 mv $OUTDIR/Indices.html $OUTDIR/Extra/Indices.html;
+mv $OUTDIR/FeynArtsSigns.html $OUTDIR/Extra/FeynArtsSigns.html;
 rm -rf $OUTDIR/img;
 cp -a $mainDir/Markdown/img $OUTDIR/img;
+
+sed -i -e "s|css/feyncalc.css|../css/feyncalc.css|g" $OUTDIR/Extra/FeynCalc.html;
+sed -i -e "s|css/feyncalc.css|../css/feyncalc.css|g" $OUTDIR/Extra/MasterIntegrals.html;
+sed -i -e "s|css/feyncalc.css|../css/feyncalc.css|g" $OUTDIR/Extra/FeynArtsSigns.html;
+sed -i -e "s|css/feyncalc.css|../css/feyncalc.css|g" $OUTDIR/Extra/Indices.html;
+
 
 fi
