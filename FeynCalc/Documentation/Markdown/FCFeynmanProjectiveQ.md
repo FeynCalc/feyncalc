@@ -22,7 +22,7 @@ fp = FCFeynmanParametrize[int, {p1, p3}, Names -> x, Indexed -> True, FCReplaceD
    Assumptions -> {mg > 0, ep > 0}, FinalSubstitutions -> {SPD[q] -> qq, mg^2 -> mg2}]
 ```
 
-$$\left\{(x(2) x(3))^{3 \text{ep}-3} \left((x(2)+x(3)) \left(\text{mg2} x(2) x(3)+\text{qq} x(1)^2\right)\right)^{1-2 \text{ep}},-\Gamma (2 \text{ep}-1),\{x(1),x(2),x(3)\}\right\}$$
+$$\left\{(x(2) x(3))^{3 \;\text{ep}-3} \left((x(2)+x(3)) \left(\text{mg2} x(2) x(3)+\text{qq} x(1)^2\right)\right)^{1-2 \;\text{ep}},-\Gamma (2 \;\text{ep}-1),\{x(1),x(2),x(3)\}\right\}$$
 
 ```mathematica
 FCFeynmanProjectiveQ[fp[[1]], x]

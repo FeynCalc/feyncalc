@@ -27,7 +27,7 @@ ExpandScalarProduct.
 Scalar products may be set, e.g. via ScalarProduct[a, b] = m^2; but a and b
 may not contain sums.
 
-ScalarProduct[a]  corresponds to ScalarProduct[a,a]
+ScalarProduct[a]  corresponds to ScalarProduct[a,a] 
 
 Note that ScalarProduct[a, b] = m^2 actually sets Lorentzian scalar products
 in different dimensions specified by the value of the SetDimensions option.
@@ -47,7 +47,7 @@ ExpandScalarProduct.
 Scalar products may be set, e.g. via ScalarProduct[a, b] = m^2; but a and b
 may not contain sums.
 
-CartesianScalarProduct[a]  corresponds to CartesianScalarProduct[a,a]
+CartesianScalarProduct[a]  corresponds to CartesianScalarProduct[a,a] 
 
 Note that ScalarProduct[a, b] = m^2 actually sets Cartesian scalar products in
 different dimensions specified by the value of the SetDimensions option.

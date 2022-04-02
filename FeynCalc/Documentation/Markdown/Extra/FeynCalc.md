@@ -92,6 +92,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
  - [ExpandAll2](../ExpandAll2.md) - alternative to Mathematica's `ExpandAll`
  - [Explicit](../Explicit.md) - inserts explicit expressions for certain objects
  - [Factor1](../Factor1.md), [Factor2](../Factor2.md) - alternatives to Mathematica's `Factor`
+ - [FactorList2](../FactorList2.md) - alternative to Mathematica's `FactorList2`
  - [FC](../FC.md) - changes the output format to [FeynCalcForm](../FeynCalcForm.md)
  - [FCAbbreviate](../FCAbbreviate.md) - introduces abbreviations
  - [FCAntiSymmetrize](../FCAntiSymmetrize.md) - antisymmetrizes with respect to the given variables
@@ -279,7 +280,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
  - [FCHideEpsilon](../FCHideEpsilon.md) - substitutes $\frac{1}{\varepsilon} - \Gamma_E + \log (4 \pi)$ with $\Delta$
  - [FCShowEpsilon](../FCShowEpsilon.md) - substitutes $\Delta$ with $\frac{1}{\varepsilon} - \Gamma_E + \log (4 \pi)$
  - [FCIntegral](../FCIntegral.md) - head of loop integrals
- - [FCFeynmanParameterJoin](../FCFeynmanParameterJoin.md), [FCFeynmanParametrize](../FCFeynmanParametrize.md), [FCFeynmanPrepare](../FCFeynmanPrepare.md), [FCFeynmanProjectivize](../FCFeynmanProjectivize.md) - derivation and manipulation of Feynman parameter integrals
+ - [FCFeynmanFindDivergences](../FCFeynmanFindDivergences.md), [FCFeynmanRegularizeDivergence](../FCFeynmanRegularizeDivergence.md), [FCFeynmanParameterJoin](../FCFeynmanParameterJoin.md), [FCFeynmanParametrize](../FCFeynmanParametrize.md), [FCFeynmanPrepare](../FCFeynmanPrepare.md), [FCFeynmanProjectiveQ](../FCFeynmanProjectiveQ.md), [FCFeynmanProjectivize](../FCFeynmanProjectivize.md) - derivation and manipulation of Feynman parameter integrals
  - [FCLoopAddEdgeTags](../FCLoopAddEdgeTags.md), [FCLoopGraphPlot](../FCLoopGraphPlot.md), [FCLoopIntegralToGraph](../FCLoopIntegralToGraph.md), [FCLoopPropagatorsToLineMomenta](../FCLoopPropagatorsToLineMomenta.md) - create and plot graphs representing loop integrals
  - [FCLoopApplyTopologyMappings](../FCLoopApplyTopologyMappings.md), [FCLoopCreateRuleGLIToGLI](../FCLoopCreateRuleGLIToGLI.md), [FCLoopFindMomentumShifts](../FCLoopFindMomentumShifts.md), [FCLoopFindIntegralMappings](../FCLoopFindIntegralMappings.md), [FCLoopFindSubtopologies](../FCLoopFindSubtopologies.md), [FCLoopFindTopologies](../FCLoopFindTopologies.md), [FCLoopFindTopologyMappings](../FCLoopFindTopologyMappings.md), [FCLoopPakOrder](../FCLoopPakOrder.md), [FCLoopToPakForm](../FCLoopToPakForm.md) - loop integral topology identification and minimization
  - [FCLoopBasisCreateScalarProducts](../FCLoopBasisCreateScalarProducts.md) - auxiliary function that generates all possible loop momenta dependent scalar products

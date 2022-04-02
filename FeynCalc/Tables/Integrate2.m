@@ -25,7 +25,7 @@ DeltaFunction[a/b + x], x], where Abs[b] -> b, if b is a symbol, and if b =
 -c, then Abs[-c] -> c, i.e., the variable contained in b is supposed to be
 positive.
 
-$\\pi ^2$ is replaced by 6 Zeta2.
+ $\\pi ^2$ is replaced by 6 Zeta2.
 
 Integrate2[1/(1-y),{y,x,1}] is interpreted as distribution, i.e. as
 Integrate2[-1/(1-y)],{y, 0, x}] -> Log[1-y].
