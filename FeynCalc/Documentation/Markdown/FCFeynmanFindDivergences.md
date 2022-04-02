@@ -1,17 +1,3 @@
-$$\text{Please check our }\underline{\text{FAQ}}\text{ for answers to some common FeynCalc questions and have a look at the supplied }\underline{\text{examples}.}$$
-
-$$\text{If you use FeynCalc in your research, please evaluate FeynCalcHowToCite[] to learn how to cite this software.}$$
-
-$$\text{Please keep in mind that the proper academic attribution of our work is crucial to ensure the future development of this package!}$$
-
-![0wf5aawu0tr4z](img/0wf5aawu0tr4z.svg)
-
-$$\text{New lowercase objects in the Global context: }\{\text{Global$\grave{ }$Colour},\text{Global$\grave{ }$dD},\text{Global$\grave{ }$Dirac},\text{Global$\grave{ }$dSUN},\text{Global$\grave{ }$eE},\text{Global$\grave{ }$FAChiralityProjector},\text{Global$\grave{ }$FADiracMatrix},\text{Global$\grave{ }$FADiracSlash},\text{Global$\grave{ }$FADiracSpinor},\text{Global$\grave{ }$FADiracTrace},\text{Global$\grave{ }$FAFourVector},\text{Global$\grave{ }$FAGS},\text{Global$\grave{ }$FAMetricTensor},\text{Global$\grave{ }$FAPolarizationVector},\text{Global$\grave{ }$FAScalarProduct},\text{Global$\grave{ }$FASUNF},\text{Global$\grave{ }$FASUNT},\text{Global$\grave{ }$fcContextLowerCase},\text{Global$\grave{ }$gA},\text{Global$\grave{ }$gA5},\text{Global$\grave{ }$gA6},\text{Global$\grave{ }$gA7},\text{Global$\grave{ }$globalContextAfterLoadingFC},\text{Global$\grave{ }$Gluon},\text{Global$\grave{ }$Lorentz},\text{Global$\grave{ }$MajoranaSpinor},\text{Global$\grave{ }$newObjectsInTheGlobalContext},\text{Global$\grave{ }$whiteListedContextAdditions},\text{Global$\grave{ }\$$INTC},\text{Global$\grave{ }\$$Special}\}$$
-
-```mathematica
- 
-```
-
 ## FCFeynmanFindDivergences
 
 `FCFeynmanFindDivergences[exp, vars]` identifies UV and IR divergences of the given Feynman parametric integral that arise when different parametric variables approach zero or infinity.
