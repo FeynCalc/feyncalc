@@ -48,6 +48,10 @@ Expand2[exp, {x1, x2, ...}]  expands all sums containing x1, x2, ....";
 ExpandAll2::usage=
 "ExpandAll2[exp] is similar to ExpandAll, but much faster on simple structures.";
 
+FactorList2::usage=
+"FactorList2[exp] is similar to FactorList except that it correctly handles
+symbolic exponents.";
+
 FCAntiSymmetrize::usage=
 "FCAntiSymmetrize[expr, {a1, a2, ...}] antisymmetrizes expr with respect to the
 variables a1, a2, ....";
@@ -318,6 +322,10 @@ Variables2 always applies Union to the output.";
 XYT::usage=
 "XYT[exp, x, y] transforms  (x y)^m away.";
 
+FactorList2::failmsg =
+"Error! FactorList2 has encountered a fatal problem and must abort the computation. \n
+The problem reads: `1`";
+
 FCProductSplit::failmsg =
 "Error! FCProductSplit has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`";
@@ -357,6 +365,11 @@ Options[Combine] = {
 
 Options[SelectSplit] = {
 	Heads -> None
+};
+
+Options[FactorList2] = {
+	Check		-> True,
+	RandomPrime	-> 10^8
 };
 
 Options[FCFactorOut] = {
@@ -519,6 +532,44 @@ ExpandAll2[expr_] :=
 				_,
 					#
 		] &, expr];
+
+FactorList2[poly_, OptionsPattern[]]:=
+	Block[{res,allVars,allVarsNum,holdPower,optRandomPrime,nRule,chk},
+
+		optRandomPrime= OptionValue[RandomPrime];
+
+		allVars = Variables2[Cases[poly /. Power -> holdPower, holdPower[x_, _] :> x, Infinity] /. holdPower -> Power];
+		allVars = SelectFree[allVars, Variables2[Cases[poly, Power[_, x_] :> x, Infinity]]];
+		allVarsNum 	= Table[RandomPrime[optRandomPrime],{i,1,Length[allVars]}];
+
+		nRule = Thread[Rule[allVars, allVarsNum]];
+
+		res = ReplaceRepeated[(FactorList[poly]), {
+			List[r1___, {Power[x_, y_], pow_}, r2___] :> List[r1, {x, pow y}, r2],
+			List[r1___, {a_, pow1_}, r2___, {a_, pow2_}, r3___] :> List[r1, {a, pow1 + pow2}, r2, r3],
+			List[r1___, {a_, pow1_}, r2___]/;Denominator[a]=!=1 :> List[r1, {Numerator[a], pow1}, {Denominator[a], -pow1}, r2]
+		}];
+
+		res = ReplaceRepeated[(Factor[res]), {
+			List[r1___, {Power[x_, y_], pow_}, r2___] :> List[r1, {x, pow y}, r2],
+			List[r1___, {a_, pow1_}, r2___, {a_, pow2_}, r3___] :> List[r1, {a, pow1 + pow2}, r2, r3],
+			List[r1___, {a_, pow1_}, r2___]/;Denominator[a]=!=1 :> List[r1, {Numerator[a], pow1}, {Denominator[a], -pow1}, r2]
+		}];
+
+		If[	OptionValue[Check],
+			chk = (poly/.Dispatch[nRule]) - ((Times @@ (Power @@@ res))/.Dispatch[nRule]);
+			If[	Simplify[PowerExpand[chk]]=!=0,
+				Print[Simplify[PowerExpand[chk]]];
+				Message[FactorList2::failmsg, "Something went wrong when factorizing the polynomial."];
+				Abort[]
+			];
+		];
+
+		res
+	];
+
+
+
 
 FCAttachTypesettingRule[expr_, {SubscriptBox, var_, sub_}] :=
 	expr /: MakeBoxes[expr, TraditionalForm] :=
