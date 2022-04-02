@@ -54,6 +54,7 @@ Begin["`CacheManagement`Private`"];
 
 whiteListNames = {
 	ExpandScalarProduct,
+	FactorList2,
 	PairContract,
 	FCFastContract,
 	FeynCalc`NPointTo4Point`Private`getDet,
@@ -88,6 +89,8 @@ FCUseCache[fcFunc_, args_List, opts_List: {}] :=
 		standardSet = Join[standardSet,{FeynCalc`Package`DiracGammaScheme, FeynCalc`Package`PauliSigmaScheme}];
 
 		Which[
+			fcFunc === FactorList2,
+				depArgs = Hash[{}],
 			fcFunc === ExpandScalarProduct,
 				depArgs = Hash[standardSet],
 			fcFunc === PairContract,

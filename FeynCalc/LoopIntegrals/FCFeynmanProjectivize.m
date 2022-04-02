@@ -16,8 +16,10 @@
 (* ------------------------------------------------------------------------ *)
 
 FCFeynmanProjectivize::usage =
-"FCFeynmanProjectivize[int,x] checks if the given Feynman integral is a
-projective form. If this is not the case, the integral will be projectivized.
+"FCFeynmanProjectivize[int, x] checks if the given Feynman parameter integral
+(without prefactors) depending on x[1], x[2], ...
+is a projective form. If this is not the case, the integral will be
+projectivized.
 
 Projectivity is a necessary condition for computing the integral with the aid
 of the Cheng-Wu theorem";
@@ -84,7 +86,7 @@ FCFeynmanProjectivize[ex_, var_, OptionsPattern[]] :=
 			Abort[]
 		];
 
-		If[	Sort[Join[xVars,expVars,kinVars]]=!=Sort[allVars],
+		If[	!FCSubsetQ[Join[xVars,expVars,kinVars],allVars],
 			Message[FCFeynmanProjectivize::failmsg, "Something went wrong identifying different variable types."];
 			Abort[]
 		];

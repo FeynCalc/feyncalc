@@ -16,11 +16,12 @@
 (* ------------------------------------------------------------------------ *)
 
 FCFeynmanProjectiveQ::usage =
-"FCFeynmanProjectiveQ[int] checks if the given Feynman integral is a
-projective form.
+"FCFeynmanProjectiveQ[int, x] checks if the given Feynman parameter integral
+(without prefactors) depending on x[1], x[2], ...  is a projective form.
 
-Projectivity is a necessary condition for computing the integral with the aid
-of the Cheng-Wu theorem";
+It is similar to FCFeynmanProjectivize but unlike the former it simply returns
+True or False depending
+on whether the integral is projective or not.";
 
 Begin["`Package`"]
 End[]
