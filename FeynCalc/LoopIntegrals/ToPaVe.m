@@ -190,7 +190,7 @@ toPaVe[FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q_, dim_], 0, m
 	]/;!genpave;
 
 toPaVe[FeynAmpDenominator[(prs:PD[Momentum[_,_]+_:0,_]..)], q_,_,_]:=
-	I Pi^2 GenPaVe[{0},	((MomentumExpand[prs])/. PD[Momentum[q, _:4] +p_:0, m_:0] :> {p, m})]/;genpave;
+	I Pi^2 GenPaVe[{0},	((MomentumExpand[{prs}])/. PD[Momentum[q, _:4] +p_:0, m_:0] :> {p, m})]/;genpave;
 
 FCPrint[1,"ToPaVe.m loaded."];
 End[]
