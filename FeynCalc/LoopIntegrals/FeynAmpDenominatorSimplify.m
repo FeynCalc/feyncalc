@@ -112,8 +112,11 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 
 		fadList = Cases2[ex+null1+null2,FeynAmpDenominator,power];
 
-		fadListEval = fadList /. {power[fadHold[a__],n_] /; n>1 :> FeynAmpDenominator[Sequence@@(Table[a,{i,1,n}])]} /.
+		fadListEval = fadList /. {power[fadHold[a__],n_] /; MatchQ[n,_Integer?Positive] :>
+			FeynAmpDenominator[Sequence @@ Flatten[ConstantArray[{a}, n]]] } /.
 			power -> Power /. fadHold -> FeynAmpDenominator;
+
+		FCPrint[3,"FDS: Original list of propagators with combined powers: ", fadListEval, FCDoControl->fdsVerbose];
 
 		If[	!FreeQ[fadListEval, PD],
 			fadListEval = fadListEval /. PD -> procan /. procan -> PD
@@ -133,7 +136,11 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 			FCPrint[1,"FDS: No loop momenta were given.", FCDoControl->fdsVerbose];
 			fadListEval = fadListEval /. FeynAmpDenominator -> feyncan;
 			repRule = Thread[Rule[fadList,fadListEval]];
-			Return[ex /.  Dispatch[repRule]]
+			res = ex /.  Dispatch[repRule];
+			If[	OptionValue[FCE],
+				res = FCE[res]
+			];
+			Return[res]
 		];
 
 		repRule = Thread[Rule[fadList,fadListEval]];

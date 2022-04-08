@@ -177,5 +177,14 @@ SPD[p, p] SPD[p2, p2]), l]", "0"},
 "FDS[-(SFAD[{{I*p, 0}, {-m1^2, 1}, 1}]/((m1 - m2)*(m1 + m2))) +
 SFAD[{{I*p, 0}, {-m2^2, 1}, 1}]/((m1 - m2)*(m1 + m2)), p,
 FCE -> True]", "-(SFAD[{{I*p, 0}, {-m1^2, 1}, 1}]/((m1 - m2)*(m1 + m2))) +
-SFAD[{{I*p, 0}, {-m2^2, 1}, 1}]/((m1 - m2)*(m1 + m2))"}
+SFAD[{{I*p, 0}, {-m2^2, 1}, 1}]/((m1 - m2)*(m1 + m2))"},
+{"fcstFeynAmpDenominatorSimplify-ID42",
+"FeynAmpDenominatorCombine[FAD[q, q] FAD[q, q], FCE -> True]",
+"FAD[q, q, q, q]"},
+{"fcstFeynAmpDenominatorSimplify-ID42",
+"FDS[FAD[q, q] FAD[q, q], FCE -> True]",
+"FAD[q, q, q, q]"},
+{"fcstFeynAmpDenominatorSimplify-ID43",
+"FDS[FAD[p3] FAD[p1 + p2] FAD[q + p2] FAD[q, q + p1], q, FCE -> True]",
+"FAD[p3, p1 + p2] FAD[q, -p1 + q, -p2 + q]"}
 }
