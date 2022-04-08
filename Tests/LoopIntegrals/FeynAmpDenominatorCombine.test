@@ -63,5 +63,5 @@ FCE -> True]",
 	"FeynAmpDenominatorCombine[
 FAD[p3] FAD[p1 + p2] FAD[q + p2] FAD[q, q + p1], Momentum -> {q},
 FCE -> True]",
-"FAD[p1 + p2] FAD[p3] FAD[p2 + q] FAD[q, p1 + q]"}
+"FAD[p1 + p2]*FAD[p3]*FAD[q, p1 + q, p2 + q]"}
 }
