@@ -24,10 +24,12 @@
 
 
 PCHN[CSI[a],i,j]PCHN[CSI[b],j,k]
+
 FCCanonicalizeDummyIndices[%]
 
 
 PCHN[CSI[a],i,j]PCHN[CSI[b],j,k]
+
 FCCanonicalizeDummyIndices[%,PauliIndexNames->{l}]
 
 

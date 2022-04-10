@@ -24,10 +24,12 @@
 
 
 SpinorUBar[p1,m1] . GA[\[Mu]] . SpinorU[p2,m2]
+
 GordonSimplify[%]
 
 
 SpinorUBar[p1,m1] . GA[\[Mu],5] . SpinorV[p2,m2]
+
 GordonSimplify[%]
 
 
@@ -36,6 +38,7 @@ GordonSimplify[%]
 
 
 SpinorVBar[p1,m1] . GA[\[Mu],6] . SpinorV[p2,m2]
+
 GordonSimplify[%]
 
 
@@ -44,6 +47,7 @@ GordonSimplify[%]
 
 
 ex=SpinorVBar[p1,m1] . GA[\[Mu],7] . SpinorV[p2,m2]
+
 GordonSimplify[ex]
 
 
@@ -68,10 +72,12 @@ ex=SpinorVBarD[p1,m1] . GAD[\[Mu],5] . SpinorVD[p2,m2]
 
 
 FCGetDiracGammaScheme[]
+
 GordonSimplify[ex]
 
 
 FCSetDiracGammaScheme["BMHV"]
+
 GordonSimplify[ex]
 
 

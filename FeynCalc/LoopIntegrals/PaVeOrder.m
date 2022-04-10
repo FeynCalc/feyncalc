@@ -30,7 +30,8 @@ up to 6 legs.
 Available symmetry relations are saved here
 
 FileBaseName/@FileNames[\"*.sym\",FileNameJoin[{$FeynCalcDirectory,
-\"Tables\", \"PaVeSymmetries\"}]]
+\"Tables\", 
+\"PaVeSymmetries\"}]]
 
 For the time being, these tables contain relations for B-functions up to rank
 10, C-functions up to rank 9, D-functions up to rank 8,

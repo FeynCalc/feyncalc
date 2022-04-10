@@ -27,6 +27,7 @@ HypergeometricIR[Hypergeometric2F1[a,b,c,z],t]
 
 
 ToHypergeometric[t^b (1-t)^c (1+t z)^a,t]
+
 HypergeometricIR[%,t]
 
 

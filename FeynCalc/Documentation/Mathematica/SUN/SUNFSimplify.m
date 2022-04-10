@@ -24,6 +24,7 @@
 
 
 SDF[a,a]
+
 SUNFSimplify[%]
 
 
@@ -31,12 +32,15 @@ SUNFSimplify[SDF[a,a],SUNNToCACF->False]
 
 
 SDF[a,b] SDF[b,d]
+
 SUNFSimplify[%]
 
 
 SDF[a,b] SUNTF[i,a,d] SUNTF[j,d,c]
+
 SUNFSimplify[%]
 
 
 SDF[a,b] (SUNTF[i,a,d] SUNTF[j,d,b]+SD[i,j] SUNTF[i,a,d] SUNTF[i,d,b])
+
 SUNFSimplify[%,SUNNToCACF->False]

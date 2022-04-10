@@ -28,19 +28,20 @@
 
 
 FCI[FV[p,\[Mu]] FV[q,\[Nu]]]
+
 FreeIndexFreeQ[%,{LorentzIndex}]
 
 
 FCI[FV[p,\[Mu]] FV[q,\[Mu]]]
+
 FreeIndexFreeQ[%,{LorentzIndex}]
 
 
 FCI[SUNT[a,b]]
+
 FreeIndexFreeQ[%,{SUNIndex}]
 
 
 FCI[SUNT[a,a]]
+
 FreeIndexFreeQ[%,{SUNIndex}]
-
-
-

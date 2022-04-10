@@ -35,13 +35,10 @@
 (*Examples*)
 
 
-DiracSimplify[GA[mu,nu,rho,mu,nu],FCVerbose->1]
+DiracSimplify[GA[\[Mu],\[Nu],\[Rho],\[Mu],\[Nu]],FCVerbose->1]
 
 
-DiracSimplify[GA[mu,nu,rho,mu,nu],FCVerbose->2]
+DiracSimplify[GA[\[Mu],\[Nu],\[Rho],\[Mu],\[Nu]],FCVerbose->2]
 
 
-DiracSimplify[GA[mu,nu,rho,mu,nu],FCVerbose->3]
-
-
-
+DiracSimplify[GA[\[Mu],\[Nu],\[Rho],\[Mu],\[Nu]],FCVerbose->3]

@@ -25,6 +25,7 @@
 
 
 GA[\[Mu],\[Nu],\[Rho]]
+
 EpsChisholm[%]
 
 
@@ -33,6 +34,7 @@ EpsChisholm[%]
 
 
 GA[\[Alpha],\[Beta],\[Mu],\[Nu]]
+
 Chisholm[%]
 
 
@@ -41,6 +43,7 @@ Chisholm[%]
 
 
 SpinorVBar[p1,m1] . GA[\[Alpha],\[Beta],\[Mu],\[Nu]] . SpinorU[p2,m2]
+
 Chisholm[%]
 
 
@@ -52,18 +55,22 @@ Chisholm[GAD[\[Mu],\[Nu],\[Rho]]]
 
 
 Chisholm[GA[\[Alpha],\[Beta],\[Mu]]] . Chisholm[GA[\[Alpha],\[Beta],\[Mu]]]
+
 DiracSimplify[%]
 
 
 Chisholm[GA[\[Alpha],\[Beta],\[Mu],\[Nu]]] . Chisholm[GA[\[Alpha],\[Beta],\[Mu],\[Nu]]]
+
 DiracSimplify[%]
 
 
 GS[p,q,r]
+
 Chisholm[%]
 
 
 GA[\[Mu],\[Nu],\[Rho],\[Sigma],\[Tau],\[Kappa]]
+
 Chisholm[%]
 
 
@@ -85,7 +92,5 @@ DiracReduce[GA[\[Mu],\[Nu],\[Rho],\[Sigma],\[Tau],\[Kappa]] . Chisholm[GA[\[Mu],
 
 
 GA[\[Mu],\[Nu],5]
+
 Chisholm[%,Mode->2]
-
-
-

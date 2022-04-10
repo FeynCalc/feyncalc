@@ -33,7 +33,9 @@ StandardForm[FCI[SIE[\[Mu]]]]
 
 
 SIE[\[Mu],\[Nu],\[Rho],\[Sigma]]
-%//StandardForm
 
 
-SIE[\[Alpha]] . (SISE[p]+m) . SIE[\[Beta]]
+SIE[\[Mu],\[Nu],\[Rho],\[Sigma]]//StandardForm
+
+
+SIE[\[Alpha]].(SISE[p]+m).SIE[\[Beta]]

@@ -53,10 +53,12 @@ GAE[\[Alpha]] FV[p,\[Alpha]]//Contract
 
 
 FCSetDiracGammaScheme["NDR"]
+
 DiracSimplify[GAE[\[Mu]] . GAD[\[Mu]]]
 
 
 FCSetDiracGammaScheme["BMHV"]
+
 DiracSimplify[GAE[\[Mu]] . GAD[\[Mu]]]
 
 

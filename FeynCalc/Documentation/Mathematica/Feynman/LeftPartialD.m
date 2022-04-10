@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`LeftPartialD[\[Mu]]` denotes $\overleftarrow{\partial }_{\mu }$ acting to the left.*)
+(*`LeftPartialD[mu]` denotes $\overleftarrow{\partial }_{\mu }$ acting to the left.*)
 
 
 (* ::Subsection:: *)
@@ -24,13 +24,19 @@
 
 
 QuantumField[A,LorentzIndex[\[Mu]]] . LeftPartialD[\[Nu]]
-ExpandPartialD[%]
-StandardForm[%]
+
+ex=ExpandPartialD[%]
+
+
+ex//StandardForm
 
 
 StandardForm[LeftPartialD[\[Mu]]]
 
 
 QuantumField[A,LorentzIndex[\[Mu]]] . QuantumField[A,LorentzIndex[\[Nu]]] . LeftPartialD[\[Rho]]
-ExpandPartialD[%]
-StandardForm[%]
+
+ex=ExpandPartialD[%]
+
+
+ex//StandardForm

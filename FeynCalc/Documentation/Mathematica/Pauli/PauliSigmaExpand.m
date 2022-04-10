@@ -24,9 +24,12 @@
 
 
 SIS[q] . SIS[p-q]
+
 PauliSigmaExpand[%]
 
 
 SIS[a+b] . SIS[c+d]
+
 PauliSigmaExpand[%,Momentum->{a}]
+
 PauliSigmaExpand[%%,Momentum->All]

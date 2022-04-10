@@ -24,5 +24,9 @@
 
 
 Options[ScalarProduct]
-ScalarProduct[m,n,Dimension->d]
-%//StandardForm
+
+
+ex=ScalarProduct[m,n,Dimension->d]
+
+
+ex//StandardForm

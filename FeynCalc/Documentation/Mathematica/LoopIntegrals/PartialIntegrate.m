@@ -21,6 +21,7 @@ PartialIntegrate[f[x]g[x],g[x],{x,0,1}]
 
 
 f[x_]=Integrate[Log[3x+2],x]
+
 g[x_]=D[1/Log[3x+2],x]
 
 

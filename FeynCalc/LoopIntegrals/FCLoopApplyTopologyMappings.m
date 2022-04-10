@@ -17,8 +17,8 @@
 
 FCLoopApplyTopologyMappings::usage =
 "FCLoopApplyTopologyMappings[expr, mappings] applies mappings between
-topologies obtained using FCFindTopologyMappings to the output of
-FCFindTopologies denoted as expr.";
+topologies obtained using FCLoopFindTopologyMappings to the output of
+FCLoopFindTopologies denoted as expr.";
 
 FCLoopApplyTopologyMappings::failmsg =
 "Error! FCLoopApplyTopologyMappings has encountered a fatal problem and must abort the computation. \

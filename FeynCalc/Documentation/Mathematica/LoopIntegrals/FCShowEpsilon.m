@@ -18,12 +18,15 @@
 
 
 SMP["Delta"]
+
 FCShowEpsilon[%]
 
 
 SMP["Delta_UV"]
+
 FCShowEpsilon[%]
 
 
 SMP["Delta_IR"]
+
 FCShowEpsilon[%]

@@ -177,7 +177,7 @@ FinalSubstitutions::usage =
 substitutions indicated hereby are done at the end of the calculation.";
 
 Gauge::usage =
-"Gauge is an option for GluonProgagator. If set to 1 the 't Hooft Feynman gauge
+"Gauge is an option for GluonPropagator. If set to 1 the 't Hooft Feynman gauge
 is used.";
 
 InitialSubstitutions::usage =

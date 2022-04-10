@@ -24,11 +24,14 @@
 
 
 SUNF[a,b,c]x+SUNF[b,a,c]
+
 Calc[%]
+
 SUNSimplify[%%]
 
 
 SUNF[a,a,b]
+
 %//Calc
 
 
@@ -55,4 +58,5 @@ SUNF[a,b,c]//FCI//FCE//StandardForm
 
 
 SUNF[b,a,c]
+
 %//FCI

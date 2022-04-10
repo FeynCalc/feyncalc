@@ -1,5 +1,8 @@
 (* ::Package:: *)
 
+ 
+
+
 (* ::Section:: *)
 (*FCLoopPakScalelessQ*)
 
@@ -29,7 +32,9 @@
 
 
 int=FAD[p1,p2,p1-p2]
+
 pf=FCLoopToPakForm[int,{p1,p2},Names->x,
+
 CharacteristicPolynomial->Function[{u,f}, u f]][[2]][[1]]
 
 
@@ -41,7 +46,9 @@ FCLoopPakScalelessQ[pf,x]
 
 
 int=SFAD[{{0,2 p . q},0},p]
+
 pf=FCLoopToPakForm[int,{p},Names->x,
+
 CharacteristicPolynomial->Function[{u,f}, u f]][[2]][[1]]
 
 
@@ -53,7 +60,9 @@ FCLoopPakScalelessQ[pf,x]
 
 
 int=SFAD[{{0,2 p . q},0},{p,m^2}]
+
 pf=FCLoopToPakForm[int,{p},Names->x,
+
 CharacteristicPolynomial->Function[{u,f}, u f]][[2]][[1]]
 
 

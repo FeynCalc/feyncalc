@@ -13,7 +13,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [FCLoopFindTopologies](FCLoopFindTopologies.md), [`FCLoopFindTopologyMappings`](`FCLoopFindTopologyMappings`.md).*)
+(*[Overview](Extra/FeynCalc.md), [FCLoopFindTopologies](FCLoopFindTopologies.md), [FCLoopFindTopologyMappings](FCLoopFindTopologyMappings.md).*)
 
 
 (* ::Subsection:: *)

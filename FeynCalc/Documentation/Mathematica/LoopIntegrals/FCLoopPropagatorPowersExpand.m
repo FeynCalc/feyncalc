@@ -16,8 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md)*)
-
+(*[Overview](Extra/FeynCalc.md), [FCLoopPropagatorPowersCombine](FCLoopPropagatorPowersCombine.md).*)
 
 
 (* ::Subsection:: *)
@@ -25,10 +24,16 @@
 
 
 SFAD[{q,m,2}]
-FCLoopPropagatorPowersExpand[%]
-%//StandardForm
+
+ex=FCLoopPropagatorPowersExpand[%]
+
+
+ex//StandardForm
 
 
 SFAD[{q,m,2},q+p]
-FCLoopPropagatorPowersExpand[%]
-%//StandardForm
+
+ex=FCLoopPropagatorPowersExpand[%]
+
+
+ex//StandardForm

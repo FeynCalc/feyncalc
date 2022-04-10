@@ -28,15 +28,18 @@
 
 
 ToGFAD[FAD[p]]
-%//StandardForm
+
+
+ToGFAD[FAD[p]]//StandardForm
 
 
 ToGFAD[SFAD[{p+q,m^2}]]
-%//StandardForm
+
+
+ToGFAD[SFAD[{p+q,m^2}]]//StandardForm
 
 
 ToGFAD[SFAD[{p+q,m^2}],FinalSubstitutions->{SPD[q]->0}]
-%//StandardForm
 
 
-
+ToGFAD[SFAD[{p+q,m^2}],FinalSubstitutions->{SPD[q]->0}]//StandardForm

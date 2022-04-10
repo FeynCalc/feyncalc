@@ -24,4 +24,5 @@
 
 
 StringChomp[" abc "]
+
 %//InputForm

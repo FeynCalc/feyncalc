@@ -8,7 +8,11 @@
 
 
 (* ::Text:: *)
-(*`FreeIndex` is a datatype which is recognized by `Contract`. Possible use: `DataType[mu, FreeIndex] = True`.*)
+(*`FreeIndex` is a datatype which is recognized by `Contract`.*)
+
+
+(* ::Text:: *)
+(*Possible use: `DataType[mu, FreeIndex] = True`.*)
 
 
 (* ::Subsection:: *)

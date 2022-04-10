@@ -24,15 +24,18 @@
 
 
 FCMakeIndex["Lor","1"]
-%//StandardForm
+
+
+FCMakeIndex["Lor","1"]//StandardForm
 
 
 FCMakeIndex["Lor",{3,1,4},LorentzIndex]
-%//StandardForm
+
+
+FCMakeIndex["Lor",{3,1,4},LorentzIndex]//StandardForm
 
 
 FCMakeIndex["Sun",{"a",1,-4}]
-%//StandardForm
 
 
-
+FCMakeIndex["Sun",{"a",1,-4}]//StandardForm

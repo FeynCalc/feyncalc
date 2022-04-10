@@ -24,10 +24,12 @@
 
 
 CSIS[p1] . CSI[i] . CSIS[p2]
+
 PauliSimplify[%]
 
 
 CSIS[p] . CSI[i,j,k] . CSIS[p]
+
 PauliSimplify[%]
 
 
@@ -35,8 +37,10 @@ PauliSimplify[CSIS[p] . CSI[i,j,k] . CSIS[p],PauliReduce->False]
 
 
 CSID[i,j,i]
+
 PauliSimplify[%]
 
 
 CSID[i,j,k,l,m,i]
+
 PauliSimplify[%]

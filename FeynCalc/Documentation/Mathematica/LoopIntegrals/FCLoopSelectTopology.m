@@ -41,4 +41,5 @@ SFAD[{{I*(p3+q1),0},{-m1^2,-1},1}],SFAD[{{I*(p1-p3),0},
 (*Products of `GLI`s in the first argument are also supported.*)
 
 
-FCLoopSelectTopology[{GLI[prop2Ltopo13311,{1,0,0,0,0}]^2,GLI[prop2Ltopo13311,{1,1,1,1,1}]},topos,FCE->True]
+FCLoopSelectTopology[{GLI[prop2Ltopo13311,{1,0,0,0,0}]^2,
+GLI[prop2Ltopo13311,{1,1,1,1,1}]},topos,FCE->True]

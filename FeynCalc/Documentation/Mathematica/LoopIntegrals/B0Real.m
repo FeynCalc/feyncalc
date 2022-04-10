@@ -24,7 +24,7 @@ B0[s,0,s]
 
 
 (* ::Text:: *)
-(*With B0Real\[Rule]True, transformation is done.*)
+(*With `B0Real->True`, transformation is done.*)
 
 
 B0[s,0,s,B0Real->True,B0Unique->True]

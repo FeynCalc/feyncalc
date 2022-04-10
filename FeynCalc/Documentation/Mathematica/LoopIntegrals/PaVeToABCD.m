@@ -24,19 +24,24 @@
 
 
 PaVe[0,{pp},{m1^2,m2^2}]
-PaVeToABCD[%]
-%//FCI//StandardForm
+
+ex=PaVeToABCD[%]
+
+
+ex//FCI//StandardForm
 
 
 PaVe[0,{SPD[p1],0,SPD[p2]},{m1^2,m2^2,m3^2}]
-PaVeToABCD[%]
-%//FCI//StandardForm
 
+ex=PaVeToABCD[%]
+
+
+ex//FCI//StandardForm
 
 
 PaVe[0,0,{SPD[p1],0,SPD[p2]},{m1^2,m2^2,m3^2}]
-PaVeToABCD[%]
-%//FCI//StandardForm
+
+ex=PaVeToABCD[%]
 
 
-
+ex//FCI//StandardForm

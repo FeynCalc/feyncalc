@@ -28,7 +28,6 @@
 
 
 FCGV["x"]
-%//InputForm
 
 
-
+FCGV["x"]//InputForm

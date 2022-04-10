@@ -47,6 +47,7 @@ Collect2[2 a (b-a) (h-1)-b^2 (e a-c)+b^2,{a,b}]
 
 
 Collect2[Expand[(a-b-c-d)^5],a,IsolateNames->KK]
+
 FRH[%]
 
 
@@ -61,6 +62,7 @@ Collect2[Expand[(a-b-c-d)^5],a,Head->{h1,h2}]
 
 
 Collect2[Expand[(a-b-c-d)^5],a,Head->{Identity,h2}]
+
 Cases2[%,h2]
 
 
@@ -69,7 +71,9 @@ Cases2[%,h2]
 
 
 Clear[fun]
+
 Collect2[Expand[(a-b-c)^3],a,Factoring->fun]
+
 % /. fun->FactorTerms
 
 
@@ -86,6 +90,7 @@ Factoring->Function[x,Collect2[x,{b1,c1}]]]
 
 
 ClearAll[h,g,a,b,c];
+
 exp=Sum[h[i],{i,1,200000}]*a+Sum[g[i],{i,1,200000}]*b+Sum[j[i],{i,1,200000}]*c;
 
 

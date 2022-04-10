@@ -18,16 +18,16 @@
 
 DiracReduce::usage =
 "DiracReduce[exp] reduces all $4$-dimensional Dirac matrices in exp to the
-standard basis $(S,P,V,A,T)$ using the Chisholm identity.
+standard basis $(S, P, V, A, T)$ using the Chisholm identity.
 
 In the result the basic Dirac structures can be wrapped with a head
 DiracBasis, that is
 
 - $S$: DiracBasis[1]
 - $P$: DiracBasis[GA[5]]
-- $V$: DiracBasis[GA[$\\mu$]]
-- $A$: DiracBasis[GA[$\\mu$,5]]
-- $T$: DiracBasis[DiracSigma[GA[$\\mu$,$\\nu$]]]
+- $V$: DiracBasis[GA[mu]]
+- $A$: DiracBasis[GA[mu, 5]]
+- $T$: DiracBasis[DiracSigma[GA[mu, nu]]]
 
 By default DiracBasis is substituted to Identity.";
 

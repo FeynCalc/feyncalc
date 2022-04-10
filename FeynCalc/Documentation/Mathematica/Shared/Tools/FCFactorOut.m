@@ -34,7 +34,5 @@ FCFactorOut[(a+3 b),3 b,Head->hold]
 
 
 x^2+6 y
+
 Collect2[%,{x,y},FCFactorOut->3]
-
-
-

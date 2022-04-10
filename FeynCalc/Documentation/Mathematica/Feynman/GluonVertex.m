@@ -40,16 +40,20 @@
 
 
 GluonVertex[{p,\[Mu],a},{q,\[Nu],b},{r,\[Rho],c}]
+
 Explicit[%]
 
 
 GV[{p,\[Mu]},{q,\[Nu]},{r,\[Rho]}]
+
 Explicit[%]
 
 
 GluonVertex[{p,\[Mu],a},{q,\[Nu],b},{r,\[Rho],c},{s,\[Sigma],d}]
+
 Explicit[%]
 
 
 GV[{\[Mu],a},{\[Nu],b},{\[Rho],c},{\[Sigma],d}]
+
 Explicit[%]

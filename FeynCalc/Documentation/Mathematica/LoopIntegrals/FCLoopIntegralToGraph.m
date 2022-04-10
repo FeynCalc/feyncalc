@@ -1,5 +1,8 @@
 (* ::Package:: *)
 
+ 
+
+
 (* ::Section:: *)
 (*FCLoopIntegralToGraph*)
 
@@ -13,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*A quick and simple way to plot the graph is to evaluate `GraphPlot[List @@@ Transpose[output[[1 ;; 2]]]]` or `GraphPlot[Labeled @@@ Transpose[output[[1 ;; 2]]]]`. The visual quality will not be that great, though. To obtain a nicer plot one might use `GraphPlot` with a custom `EdgeTaggedGraph` or export the output to a file and visualize it with an external tool such as dot/neato from graphviz.*)
+(*A quick and simple way to plot the graph is to evaluate `GraphPlot[List @@@ Transpose[output[[1 ;; 2]]]]` or `GraphPlot[Labeled @@@ Transpose[output[[1 ;; 2]]]]`. The visual quality will not be that great, though. To obtain a nicer plot one might use `GraphPlot` with a custom `EdgeTaggedGraph` or export the output to a file and visualize it with an external tool such as dot/neato from [graphviz](https://graphviz.org/).*)
 
 
 (* ::Text:: *)
@@ -63,7 +66,8 @@ FAD[{k2-k3,mb}],FAD[{k1-k3,mb}]},{k1,k2,k3},{q},{},{}]]
 (*If the second argument contains multiple topologies, the function will automatically select the relevant ones.*)
 
 
-FCLoopIntegralToGraph[GLI[topo1,{1,1,1,0,0,0}],{FCTopology[topo1,{FAD[q-k1],FAD[k1],FAD[q-k2],FAD[k2],
+FCLoopIntegralToGraph[GLI[topo1,{1,1,1,0,0,0}],
+{FCTopology[topo1,{FAD[q-k1],FAD[k1],FAD[q-k2],FAD[k2],
 FAD[{k2-k3,mb}],FAD[{k1-k3,mb}]},{k1,k2,k3},{q},{},{}],
 FCTopology[topo2,{FAD[q-k1],FAD[k1],FAD[q-k2],FAD[k2],
 FAD[{k2-k3,mg}],FAD[{k1-k3,mg}]},{k1,k2,k3},{q},{},{}]

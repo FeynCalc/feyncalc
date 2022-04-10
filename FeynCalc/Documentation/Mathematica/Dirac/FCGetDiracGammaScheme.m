@@ -19,10 +19,14 @@
 
 
 FCSetDiracGammaScheme["BMHV"]
+
 FCGetDiracGammaScheme[]
+
 %//FullForm
 
 
 FCSetDiracGammaScheme["NDR"]
+
 FCGetDiracGammaScheme[]
+
 %//FullForm

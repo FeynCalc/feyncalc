@@ -24,11 +24,10 @@
 
 
 CSI[i,j,k]
+
 PauliSimplify[%]
 
 
 CSI[i,j,k]
+
 PauliSimplify[%,PauliReduce->True]
-
-
-

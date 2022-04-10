@@ -19,4 +19,5 @@
 
 
 DCHN[(GS[p]+m).GA[mu],i,j]
+
 DiracChainExpand[%]

@@ -32,19 +32,20 @@
 
 
 FCI[FV[p,\[Mu]] FV[q,\[Nu]]]
+
 DummyIndexFreeQ[%,{LorentzIndex}]
 
 
 FCI[FV[p,\[Mu]] FV[q,\[Mu]]]
+
 DummyIndexFreeQ[%,{LorentzIndex}]
 
 
 FCI[SUNT[a,b]]
+
 DummyIndexFreeQ[%,{SUNIndex}]
 
 
 FCI[SUNT[a,a]]
+
 DummyIndexFreeQ[%,{SUNIndex}]
-
-
-

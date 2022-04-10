@@ -8,19 +8,19 @@
 
 
 (* ::Text:: *)
-(*`CovariantD[\[Mu]]` is a generic covariant derivative with Lorentz index $\mu$.*)
+(*`CovariantD[mu]` is a generic covariant derivative with Lorentz index $\mu$.*)
 
 
 (* ::Text:: *)
-(*`CovariantD[x, \[Mu]]` is a generic covariant derivative with respect to $x^{\mu }$.*)
+(*`CovariantD[x, mu]` is a generic covariant derivative with respect to $x^{\mu }$.*)
 
 
 (* ::Text:: *)
-(*`CovariantD[\[Mu], a, b]` is a covariant derivative for a bosonic field that acts on `QuantumField[f, {}, {a, b}]`, where `f` is some field name and `a` and `b` are two $SU(N)$ indices in the adjoint representation.*)
+(*`CovariantD[mu, a, b]` is a covariant derivative for a bosonic field that acts on `QuantumField[f, {}, {a, b}]`, where `f` is some field name and `a` and `b` are two $SU(N)$ indices in the adjoint representation.*)
 
 
 (* ::Text:: *)
-(*`CovariantD[OPEDelta, a, b]` is a short form for `CovariantD[\[Mu], a, b] FV[OPEDelta, \[Mu]]`.*)
+(*`CovariantD[OPEDelta, a, b]` is a short form for `CovariantD[mu, a, b] FV[OPEDelta, mu]`.*)
 
 
 (* ::Text:: *)
@@ -41,7 +41,6 @@
 
 (* ::Text:: *)
 (*[Overview](Extra/FeynCalc.md)*)
-
 
 
 (* ::Subsection:: *)
@@ -77,7 +76,7 @@ CovariantD[OPEDelta,a,b,{2}]
 
 
 (* ::Text:: *)
-(*This gives$m * \vec{\partial}_{\Delta}$, the partial derivative $\vec{\partial}_{\mu }$ contracted with $\Delta ^{\mu }$*)
+(*This gives $m * \vec{\partial}_{\Delta}$, the partial derivative $\vec{\partial}_{\mu }$ contracted with $\Delta ^{\mu }$*)
 
 
 CovariantD[OPEDelta,a,b,{OPEm,0}]

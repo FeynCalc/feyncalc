@@ -24,8 +24,11 @@
 
 
 GS[q] . GS[p-q]
-DiracGammaExpand[%]
-StandardForm[%]
+
+ex=DiracGammaExpand[%]
+
+
+ex//StandardForm
 
 
 (* ::Text:: *)
@@ -37,8 +40,11 @@ StandardForm[%]
 
 
 GS[q] . (GS[p]-GS[q])
-DiracGammaCombine[%]
-StandardForm[%]
+
+ex=DiracGammaCombine[%]
+
+
+ex//StandardForm
 
 
 (* ::Text:: *)
@@ -46,6 +52,7 @@ StandardForm[%]
 
 
 c1 GAD[\[Mu]] . (GSD[p1+p2]+m) . GAD[\[Nu]]+ c2 GAD[\[Mu]] . (GSD[q1+q2]+m) . GAD[\[Nu]]
+
 DiracGammaExpand[%,Momentum->{q1}]
 
 
@@ -54,6 +61,7 @@ DiracGammaExpand[%,Momentum->{q1}]
 
 
 DiracSigma[GSD[p+q],GSD[r]]
+
 DiracGammaExpand[%]
 
 

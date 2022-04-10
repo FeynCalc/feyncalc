@@ -24,8 +24,8 @@
 
 
 Contract[LC[\[Mu],\[Nu],\[Rho],\[Sigma]] FV[p+q,\[Sigma]]]//MomentumCombine
-EpsEvaluate[%]
-StandardForm[%]
+
+ex=EpsEvaluate[%]
 
 
-
+ex//StandardForm

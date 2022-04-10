@@ -28,12 +28,15 @@
 
 
 LCD[\[Mu],\[Nu],\[Rho],\[Sigma]]
-%//FCI
-%//StandardForm
+
+
+LCD[\[Mu],\[Nu],\[Rho],\[Sigma]]//FCI//StandardForm
 
 
 LCD[\[Mu],\[Nu]][p,q]
-%//FCI//StandardForm
+
+
+LCD[\[Mu],\[Nu]][p,q]//FCI//StandardForm
 
 
 Factor2[Contract[LCD[\[Mu],\[Nu],\[Rho]][p] LCD[\[Mu],\[Nu],\[Rho]][q]]]

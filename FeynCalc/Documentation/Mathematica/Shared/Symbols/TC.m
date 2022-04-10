@@ -37,4 +37,6 @@ FCI[TC[p]]//StandardForm
 
 
 ExpandScalarProduct[TC[p-q]]
-%//StandardForm
+
+
+ExpandScalarProduct[TC[p-q]]//StandardForm

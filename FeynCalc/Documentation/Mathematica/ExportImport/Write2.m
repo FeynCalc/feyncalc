@@ -34,6 +34,7 @@ t=Collect[((a-c)^2+(a-b)^2)^2,a,Factor]
 
 
 tempfilename=ToString[$SessionID]<>".s";
+
 Write2[tempfilename,r=t];
 
 
@@ -70,4 +71,5 @@ TableForm[ReadList[If[$OperatingSystem==="MacOS",":",""]<>tempfilename,String]]
 
 
 DeleteFile[If[$OperatingSystem==="MacOS",":",""]<>tempfilename];
+
 Clear[w,t,t2,r,tempfilename];

@@ -32,8 +32,10 @@
 
 
 GhostPropagator[p,a,b]
+
 Explicit[%]
 
 
 GHP[p]
+
 Explicit[%]

@@ -24,10 +24,18 @@
 
 
 FAD[q1,q1-p,q1-q2,q2,q2-p]
-FeynAmpDenominatorSplit[%]
-%//FCE//StandardForm
+
+ex=FeynAmpDenominatorSplit[%]
 
 
-FeynAmpDenominatorSplit[FAD[q1,q1-p,q1-q2,q2,q2-p],Momentum->{q1}]
-%//FCE//StandardForm
-FeynAmpDenominatorCombine[%]//FCE//StandardForm
+
+ex//FCE//StandardForm
+
+
+ex=FeynAmpDenominatorSplit[FAD[q1,q1-p,q1-q2,q2,q2-p],Momentum->{q1}]
+
+
+ex//FCE//StandardForm
+
+
+FeynAmpDenominatorCombine[ex]//FCE//StandardForm

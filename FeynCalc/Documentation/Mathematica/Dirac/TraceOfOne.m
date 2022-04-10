@@ -24,8 +24,10 @@
 
 
 DiracTrace[1]
+
 DiracSimplify[%]
 
 
 DiracTrace[1,TraceOfOne->tr1]
+
 DiracSimplify[%]

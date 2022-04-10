@@ -24,11 +24,14 @@
 
 
 ScalarProduct[p,p]=m^2;
+
 Pair[Momentum[p],Momentum[p]]
 
 
 FCClearScalarProducts[]
+
 Pair[Momentum[p],Momentum[p]]
+
 SP[p,p]
 
 

@@ -27,6 +27,7 @@ Uncontract[ScalarProduct[p,q],q,Pair->All]
 
 
 $AL=\[Mu];
+
 Uncontract[ScalarProduct[p,q],q,Pair->All]
 
 

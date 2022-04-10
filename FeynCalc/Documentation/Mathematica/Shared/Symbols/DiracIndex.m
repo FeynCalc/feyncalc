@@ -32,11 +32,15 @@
 
 
 DiracIndex[i]
-%//StandardForm
+
+
+DiracIndex[i]//StandardForm
 
 
 DiracIndex[2]
-%//StandardForm
+
+
+DiracIndex[2]//StandardForm
 
 
 DIDelta[i,j]//FCI//StandardForm

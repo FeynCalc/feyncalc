@@ -23,11 +23,13 @@
 (*Examples*)
 
 
-A0[m^2]
-ToPaVe2[%]
-%//FCI//StandardForm
+ToPaVe2[A0[m^2]]
 
 
-B11[pp,m^2,M^2,BReduce->False]
-ToPaVe2[%]
-%//FCI//StandardForm
+ToPaVe2[A0[m^2]]//FCI//StandardForm
+
+
+ToPaVe2[B11[pp,m^2,M^2,BReduce->False]]
+
+
+ToPaVe2[B11[pp,m^2,M^2,BReduce->False]]//FCI//StandardForm

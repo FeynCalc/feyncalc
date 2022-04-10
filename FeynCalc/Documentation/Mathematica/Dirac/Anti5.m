@@ -18,14 +18,19 @@
 (*Examples*)
 
 
-GA[5,\[Mu]] 
+GA[5,\[Mu]]
+
 Anti5[%]
+
 Anti5[%,-1]
 
 
 GA[5,\[Alpha],\[Beta],\[Gamma],\[Delta]]
+
 Anti5[%,2]
+
 Anti5[%%,Infinity]
+
 Anti5[%,-Infinity]
 
 
@@ -34,6 +39,7 @@ Anti5[%,-Infinity]
 
 
 GA5.GAD[\[Mu]]
+
 Anti5[%]
 
 
@@ -42,6 +48,7 @@ Anti5[%]
 
 
 FCSetDiracGammaScheme["BMHV"];
+
 Anti5[GA5.GAD[\[Mu]]]
 
 

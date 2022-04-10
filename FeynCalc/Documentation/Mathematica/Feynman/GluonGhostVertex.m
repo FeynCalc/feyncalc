@@ -27,5 +27,6 @@
 (*Examples*)
 
 
-GluonGhostVertex[{p,\[Mu],a},{q,\[Nu],b},{k,\[Rho],c}] 
+GluonGhostVertex[{p,\[Mu],a},{q,\[Nu],b},{k,\[Rho],c}]
+
 Explicit[%]

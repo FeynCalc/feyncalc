@@ -68,23 +68,28 @@
 
 
 DataType[f,g, NonCommutative] = True;
+
 t=f . g-g . (2a) . f
 
 
 (* ::Text:: *)
-(*Since `f`"and `g` have `DataType` `NonCommutative`, the function `DotSimplify` extracts only `a` out of the noncommutative product.*)
+(*Since `f` and `g` have `DataType` `NonCommutative`, the function `DotSimplify` extracts only `a` out of the noncommutative product.*)
 
 
 DotSimplify[t]
 
 
 DataType[m,odd]=DataType[a,even]=True;
+
 ptest1[x_]:=x/.(-1)^n_/;DataType[n,odd]:>-1;
+
 ptest2[x_]:=x/.(-1)^n_/;DataType[n,even]:>1;
+
 t=(-1)^m+(-1)^a+(-1)^z
 
 
 ptest1[t]
+
 ptest2[%]
 
 
@@ -92,6 +97,7 @@ Clear[ptest1,ptest2,t,a,m];
 
 
 DataType[m,integer]=True;
+
 f[x_]:=x/.{(-1)^p_/;DataType[p,integer]:>1};
 
 
@@ -102,7 +108,9 @@ f[test]
 
 
 Clear[f,test];
+
 DataType[f,g, NonCommutative] = False;
+
 DataType[m,odd]=DataType[a,even]=False;
 
 

@@ -86,4 +86,5 @@ CartesianPair[CartesianMomentum[p],CartesianMomentum[p]]^3
 ExpandScalarProduct[CartesianPair[CartesianMomentum[p-q],CartesianMomentum[p]]]
 
 
-CartesianPair[CartesianMomentum[-q],CartesianMomentum[p]] + CartesianPair[CartesianMomentum[q],CartesianMomentum[p]]
+CartesianPair[CartesianMomentum[-q],CartesianMomentum[p]] + 
+CartesianPair[CartesianMomentum[q],CartesianMomentum[p]]

@@ -24,8 +24,7 @@
 
 
 CartesianPair[CartesianIndex[i],CartesianMomentum[p]]CartesianPair[CartesianIndex[i],CartesianMomentum[q]]
+
 %/.CartesianPair->CartesianPairContract
+
 %/.CartesianPairContract->CartesianPair
-
-
-

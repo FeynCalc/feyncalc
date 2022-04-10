@@ -24,6 +24,7 @@
 
 
 GA[\[Beta],\[Alpha]]
+
 DiracOrder[%]
 
 
@@ -32,6 +33,7 @@ DiracOrder[%]
 
 
 GAD[\[Rho],\[Nu],\[Mu],\[Nu]]
+
 DiracOrder[%]
 
 
@@ -40,10 +42,12 @@ DiracOrder[%]
 
 
 GA[5,\[Mu],\[Nu]]
+
 DiracOrder[%]
 
 
 GA[6,\[Mu],7]
+
 DiracOrder[%]
 
 
@@ -52,6 +56,7 @@ DiracOrder[%]
 
 
 GA[\[Alpha],\[Beta],\[Delta]]
+
 DiracOrder[%]
 
 

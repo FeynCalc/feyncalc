@@ -364,7 +364,7 @@ FCSetPauliSigmaScheme.";
 FCEnableTraditionalFormOutput::usage =
 "FCEnableTraditionalFormOutput[] sets the output format of the current FrontEnd
 to TraditionalForm. The setting is not persistent, such that it does not
-influence any subequent Mathematica FrontEnd sessions.";
+influence any subsequent Mathematica FrontEnd sessions.";
 
 FCDisableTraditionalFormOutput::usage =
 "FCDisableTraditionalFormOutput[] sets the output format of the current

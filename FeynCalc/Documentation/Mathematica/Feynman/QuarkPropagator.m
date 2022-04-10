@@ -38,4 +38,5 @@ QuarkPropagator[{p,m},Explicit->True]
 
 
 QP[{p,m}]
+
 Explicit[%]

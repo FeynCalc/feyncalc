@@ -32,10 +32,12 @@
 
 
 MT[\[Mu],\[Nu]] FV[p,\[Mu]]
+
 Contract[%]
 
 
 FV[p,\[Mu]]GA[\[Mu]]
+
 Contract[%]
 
 
@@ -44,6 +46,7 @@ Contract[%]
 
 
 MT[\[Mu],\[Mu]]
+
 Contract[%]
 
 
@@ -52,30 +55,37 @@ Contract[%]
 
 
 MTD[\[Mu],\[Nu]]  MTD[\[Mu],\[Nu]]
+
 Contract[%]
 
 
 FV[p,\[Mu]] FV[q,\[Mu]]
+
 Contract[% ]
 
 
 FV[p-q,\[Mu]] FV[a-b,\[Mu]]
+
 Contract[%]
 
 
 FVD[p-q,\[Nu]] FVD[a-b,\[Nu]]
+
 Contract[%]
 
 
 LC[\[Mu],\[Nu],\[Alpha],\[Sigma]] FV[p,\[Sigma]]
+
 Contract[%]
 
 
 LC[\[Mu],\[Nu],\[Alpha],\[Beta]] LC[\[Mu],\[Nu],\[Alpha],\[Sigma]] 
+
 Contract[%]
 
 
 LCD[\[Mu],\[Nu],\[Alpha],\[Beta]] LCD[\[Mu],\[Nu],\[Alpha],\[Sigma]]
+
 Contract[%]//Factor2
 
 
@@ -84,35 +94,40 @@ Contract[%]//Factor2
 
 
 KD[i,j]CV[p,i]
+
 Contract[%]
 
 
 CV[p,i]CGA[i]
+
 Contract[%]
 
 
 KD[i,i]
+
 Contract[%]
 
 
 KD[i,j]^2
+
 Contract[%]
 
 
 CV[p-q,j] CV[a-b,j]
+
 Contract[%]
 
 
 CLC[i,j,k] CV[p,k]
+
 Contract[%]
 
 
 CLC[i,j,k] CLC[i,j,l] 
+
 Contract[%]
 
 
 CLCD[i,j,k] CLCD[i,j,l] 
+
 Contract[%]//Factor2
-
-
-

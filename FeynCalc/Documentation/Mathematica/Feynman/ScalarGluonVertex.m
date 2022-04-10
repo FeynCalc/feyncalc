@@ -8,11 +8,11 @@
 
 
 (* ::Text:: *)
-(*`ScalarGluonVertex[{p}, {q}, {\[Mu], a}]` or `ScalarGluonVertex[p,  q,  \[Mu], a]` yields the scalar-scalar-gluon vertex, where `p` and `q` are incoming momenta.*)
+(*`ScalarGluonVertex[{p}, {q}, {mu, a}]` or `ScalarGluonVertex[p,  q,  mu, a]` yields the scalar-scalar-gluon vertex, where `p` and `q` are incoming momenta.*)
 
 
 (* ::Text:: *)
-(*`ScalarGluonVertex[{\[Mu], a}, {\[Nu], b}]` yields the scalar-scalar-gluon-gluon vertex, where `p` and `q` are incoming momenta.*)
+(*`ScalarGluonVertex[{mu, a}, {nu, b}]` yields the scalar-scalar-gluon-gluon vertex, where `p` and `q` are incoming momenta.*)
 
 
 (* ::Text:: *)
@@ -25,7 +25,6 @@
 
 (* ::Text:: *)
 (*[Overview](Extra/FeynCalc.md)*)
-
 
 
 (* ::Subsection:: *)

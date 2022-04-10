@@ -20,8 +20,10 @@
 
 
 GA[\[Mu],\[Nu]]
+
 ToDiracSigma[%,GA[\[Mu]],GA[\[Nu]]]
 
 
 GA[\[Mu],\[Nu],\[Alpha],\[Beta],\[Rho],\[Sigma]]
+
 ToDiracSigma[%,GA[\[Alpha]],GA[\[Beta]]]

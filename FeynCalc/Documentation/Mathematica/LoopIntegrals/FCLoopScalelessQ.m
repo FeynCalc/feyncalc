@@ -1,5 +1,8 @@
 (* ::Package:: *)
 
+ 
+
+
 (* ::Section:: *)
 (*FCLoopScalelessQ*)
 
@@ -49,8 +52,8 @@ FCLoopScalelessQ[SFAD[{{0,2 p . q},0},p],{p}]
 (*A scaleless topology*)
 
 
-FCTopology[topo,{SFAD[{{I p3,0},{0,1},1}],SFAD[{{I p1,0},{0,1},1}],SFAD[{{0,-2 p1 . q},{0,1},1}],SFAD[{{I p3+I q,0},{-mb^2,1},1}],SFAD[{{0,p1 . p3},{0,1},1}]},{p1,p3},{q},{},{}]
+FCTopology[topo,{SFAD[{{I p3,0},{0,1},1}],SFAD[{{I p1,0},{0,1},1}],
+SFAD[{{0,-2 p1 . q},{0,1},1}],SFAD[{{I p3+I q,0},{-mb^2,1},1}],
+SFAD[{{0,p1 . p3},{0,1},1}]},{p1,p3},{q},{},{}]
+
 FCLoopScalelessQ[%]
-
-
-

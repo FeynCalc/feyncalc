@@ -34,4 +34,5 @@ FCTopology[topo1,{SFAD[p1],SFAD[p2],SFAD[Q-p1-p2],SFAD[Q-p2],SFAD[Q-p1]}]
 (*A 3-loop topology with one external momentum `Q`*)
 
 
-FCTopology[topo2,{SFAD[p1],SFAD[p2],SFAD[p3],SFAD[Q-p1-p2-p3],SFAD[Q-p1-p2],SFAD[Q-p1],SFAD[Q-p2],SFAD[p1+p3],SFAD[p2+p3]}]
+FCTopology[topo2,{SFAD[p1],SFAD[p2],SFAD[p3],SFAD[Q-p1-p2-p3],SFAD[Q-p1-p2],
+SFAD[Q-p1],SFAD[Q-p2],SFAD[p1+p3],SFAD[p2+p3]}]

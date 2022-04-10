@@ -27,14 +27,17 @@ PIDelta[i,j]
 
 
 PIDelta[i,i]
+
 PauliChainJoin[%]
 
 
 PIDelta[i,j]^2
+
 PauliChainJoin[%]
 
 
 PIDelta[i,j]PIDelta[j,k]
+
 PauliChainJoin[%]
 
 

@@ -80,10 +80,15 @@ TID[SPD[p,q]FAD[q,{q-p,m}]FVD[q,mu],q,UsePaVeBasis->True,ToPaVe->Automatic]
 
 
 FCClearScalarProducts[];
+
 SPD[Subscript[p, 1],Subscript[p, 1]]=0;
+
 SPD[Subscript[p, 2],Subscript[p, 2]]=0;
+
 SPD[Subscript[p, 1],Subscript[p, 2]]=0;
+
 TID[FAD[{k,m}, k - Subscript[p, 1], k - Subscript[p, 2]]FVD[k,\[Mu]]//FCI,k]
+
 FCClearScalarProducts[];
 
 
@@ -92,10 +97,15 @@ FCClearScalarProducts[];
 
 
 FCClearScalarProducts[];
+
 SPD[Subscript[p, 1],Subscript[p, 1]]=0;
+
 SPD[Subscript[p, 2],Subscript[p, 2]]=0;
+
 SPD[Subscript[p, 1],Subscript[p, 2]]=0;
+
 TID[FAD[{k,m}, k - Subscript[p, 1], k - Subscript[p, 2]]FVD[k,\[Mu]]//FCI,k,GenPaVe->True]
+
 FCClearScalarProducts[];
 
 
@@ -104,6 +114,7 @@ FCClearScalarProducts[];
 
 
 FCClearScalarProducts[];
+
 int=(D-1)(D-2)/(D-3)FVD[p,mu]FVD[p,nu]FAD[p,p-q]
 
 

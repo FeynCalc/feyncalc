@@ -1,5 +1,8 @@
 (* ::Package:: *)
 
+ 
+
+
 (* ::Section:: *)
 (*FCLoopGetEtaSigns*)
 
@@ -23,19 +26,20 @@
 
 
 FAD[{p,m}]
+
 FCLoopGetEtaSigns[%]
 
 
 SFAD[{p,m^2}]
+
 FCLoopGetEtaSigns[%]
 
 
 SFAD[{I p,-m^2},EtaSign->-1]
+
 FCLoopGetEtaSigns[%]
 
 
 CFAD[{p,m^2}]
+
 FCLoopGetEtaSigns[%]
-
-
-

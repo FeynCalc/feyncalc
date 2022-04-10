@@ -39,6 +39,7 @@ FCGetPauliSigmaScheme[]
 
 
 CSID[i,j,k]
+
 PauliSimplify[%,PauliReduce->True]
 
 
@@ -48,8 +49,10 @@ FCSetPauliSigmaScheme["Naive"];
 FCGetPauliSigmaScheme[]
 
 
-PauliSimplify[CSID[i,j,k],PauliReduce->True]
-%//FCE//StandardForm
+ex=PauliSimplify[CSID[i,j,k],PauliReduce->True]
+
+
+ex//FCE//StandardForm
 
 
 FCSetPauliSigmaScheme["None"];

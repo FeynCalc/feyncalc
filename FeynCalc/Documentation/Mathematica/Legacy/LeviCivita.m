@@ -38,7 +38,9 @@ LeviCivita[][p,q,r,s]
 
 
 LeviCivita[\[Alpha],\[Beta]][p,q]
-StandardForm[%]
+
+
+LeviCivita[\[Alpha],\[Beta]][p,q]//StandardForm
 
 
 (* ::Text:: *)

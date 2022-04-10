@@ -31,8 +31,11 @@ Trick[{GA[\[Mu]] MT[\[Mu],\[Nu]], MTD[\[Nu],\[Nu]]}]
 
 
 FV[p+r,\[Mu]] MT[\[Mu],\[Nu]] FV[q-p,\[Nu]]
+
 Trick[%]
 
 
-Trick[c . b . a . GA[d] . GA[e]]
-%//FCE//StandardForm
+Trick[c.b.a.GA[d].GA[e]]
+
+
+Trick[c.b.a.GA[d].GA[e]]//FCE//StandardForm

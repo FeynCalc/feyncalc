@@ -24,4 +24,5 @@
 
 
 SpinorUBar[p3,m3] . GA[\[Mu],\[Rho],\[Nu],7] . SpinorU[p1,m1] SpinorUBar[p4,m4] . GA[\[Mu],\[Tau],\[Nu],7] . SpinorU[p2,m2]
+
 SirlinSimplify[%]

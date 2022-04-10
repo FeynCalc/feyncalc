@@ -25,8 +25,10 @@
 
 
 FCI[FVD[p,mu] CFAD[q,q-p]]
+
 FCLoopMixedIntegralQ[%]
 
 
 FCI[FVD[p,mu] FAD[q,q-p]]
+
 FCLoopMixedIntegralQ[%]

@@ -33,7 +33,9 @@ StandardForm[FCI[SID[\[Mu]]]]
 
 
 SID[\[Mu],\[Nu],\[Rho],\[Sigma]]
-%//StandardForm
 
 
-SID[\[Alpha]] . (SISD[p]+m) . SID[\[Beta]]
+SID[\[Mu],\[Nu],\[Rho],\[Sigma]]//StandardForm
+
+
+SID[\[Alpha]].(SISD[p]+m).SID[\[Beta]]

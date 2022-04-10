@@ -34,11 +34,12 @@ ex//StandardForm
 
 
 ex//FCI
-%//StandardForm
+
+
+ex//FCI//StandardForm
 
 
 ex//FCE
-%//StandardForm
 
 
-
+ex//FCE//StandardForm

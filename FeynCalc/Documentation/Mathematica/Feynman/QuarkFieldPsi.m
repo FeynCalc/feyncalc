@@ -28,4 +28,5 @@ QuarkFieldPsi
 
 
 QuantumField[QuarkFieldPsiDagger] . GA[\[Mu]] . CovariantD[\[Mu]] . QuantumField[QuarkFieldPsi]
+
 ExpandPartialD[%]

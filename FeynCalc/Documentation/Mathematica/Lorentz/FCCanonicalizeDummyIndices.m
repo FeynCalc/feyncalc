@@ -40,10 +40,12 @@
 
 
 FVD[q,mu]FVD[p,mu]+FVD[q,nu]FVD[p,nu]+FVD[q,si]FVD[r,si]
+
 FCCanonicalizeDummyIndices[%]//Factor2
 
 
 Uncontract[SPD[q,p]^2,q,p,Pair->All]
+
 FCCanonicalizeDummyIndices[%,LorentzIndexNames->{\[Mu],\[Nu]}]
 
 
@@ -52,10 +54,12 @@ FCCanonicalizeDummyIndices[%,LorentzIndexNames->{\[Mu],\[Nu]}]
 
 
 CVD[p,i]CVD[q,i]+CVD[p,j]CVD[r,j]
+
 FCCanonicalizeDummyIndices[%]//Factor2
 
 
 CVD[p,i]CVD[q,i]+CVD[p,j]CVD[r,j]
+
 FCCanonicalizeDummyIndices[%,CartesianIndexNames->{a}]//Factor2
 
 
@@ -64,10 +68,12 @@ FCCanonicalizeDummyIndices[%,CartesianIndexNames->{a}]//Factor2
 
 
 SUNT[a,b,a]+SUNT[c,b,c]
+
 FCCanonicalizeDummyIndices[%]
 
 
 SUNT[a,b,a]+SUNT[c,b,c]
+
 FCCanonicalizeDummyIndices[%,SUNIndexNames->{u}]
 
 
@@ -76,10 +82,12 @@ FCCanonicalizeDummyIndices[%,SUNIndexNames->{u}]
 
 
 DCHN[GA[mu],i,j]DCHN[GA[nu],j,k]
+
 FCCanonicalizeDummyIndices[%]
 
 
 DCHN[GA[mu],i,j]DCHN[GA[nu],j,k]
+
 FCCanonicalizeDummyIndices[%,DiracIndexNames->{a}]
 
 
@@ -88,10 +96,12 @@ FCCanonicalizeDummyIndices[%,DiracIndexNames->{a}]
 
 
 PCHN[CSI[a],i,j]PCHN[CSI[b],j,k]
+
 FCCanonicalizeDummyIndices[%]
 
 
 PCHN[CSI[a],i,j]PCHN[CSI[b],j,k]
+
 FCCanonicalizeDummyIndices[%,PauliIndexNames->{l}]
 
 
@@ -100,8 +110,10 @@ FCCanonicalizeDummyIndices[%,PauliIndexNames->{l}]
 (*while the rest will be ignored.*)
 
 
-(QuantumField[SuperPlus[\[Phi]], PauliIndex[k1], PauliIndex[k2], R,r] . QuantumField[FCPartialD[{CartesianIndex[i], r}],
+(QuantumField[Superscript[\[Phi],"+"], PauliIndex[k1], PauliIndex[k2], 
+R,r] . QuantumField[FCPartialD[{CartesianIndex[i], r}],
 FCPartialD[{CartesianIndex[i], r}], \[Phi], PauliIndex[k2],PauliIndex[k1], R, r])
+
 FCCanonicalizeDummyIndices[%, CartesianIndexNames -> {j},Head->{CartesianIndex}]
 
 

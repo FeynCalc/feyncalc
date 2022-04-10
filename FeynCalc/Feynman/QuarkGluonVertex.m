@@ -19,7 +19,7 @@ QGV::usage =
 "QGV is equivalent to QuarkGluonVertex.";
 
 QuarkGluonVertex::usage =
-"QuarkGluonVertex[\[Mu], a] gives the Feynman rule for the quark-gluon vertex.
+"QuarkGluonVertex[mu, a] gives the Feynman rule for the quark-gluon vertex.
 
 QGV can be used as an abbreviation of QuarkGluonVertex.
 

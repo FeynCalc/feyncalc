@@ -28,6 +28,7 @@
 
 
 FCLoopAddEdgeTags[FCLoopIntegralToGraph[FAD[p, p - k], {p}][[1 ;; 2]]]
+
 GraphPlot[%]
 
 
@@ -36,7 +37,5 @@ GraphPlot[%]
 
 
 FCLoopIntegralToGraph[FAD[p, p - k], {p}]
+
 FCLoopGraphPlot[%]
-
-
-

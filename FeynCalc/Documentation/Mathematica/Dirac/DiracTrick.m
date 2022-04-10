@@ -28,18 +28,22 @@
 
 
 GA[\[Mu],\[Nu],\[Mu]]
+
 DiracTrick[%]
 
 
 GS[p] . GS[p]
+
 DiracTrick[%]
 
 
 GA[5,\[Mu],\[Nu]]
+
 DiracTrick[%]
 
 
 (1/2-GA[5]/2) . (-((a+GS[p+q])/b)) . (1/2+GA[5]/2)
+
 DiracTrick[%]
 
 
@@ -48,4 +52,5 @@ DiracTrick[%]
 
 
 DiracTrace[GAD[\[Mu],\[Nu]]]
+
 DiracTrick[%]

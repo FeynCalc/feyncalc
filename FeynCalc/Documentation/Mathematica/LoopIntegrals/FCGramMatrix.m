@@ -25,6 +25,7 @@ FCGramMatrix[{p1,p2,p3}]
 
 
 FCGramMatrix[{p1,p2,p3},Head->{CartesianPair,CartesianMomentum},Dimension->D-1]
+
 Det[%]
 
 

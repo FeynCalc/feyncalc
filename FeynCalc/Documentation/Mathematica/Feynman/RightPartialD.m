@@ -27,8 +27,11 @@ RightPartialD[\[Mu]]
 
 
 RightPartialD[\[Mu]] . QuantumField[A,LorentzIndex[\[Mu]]]
-ExpandPartialD[%]
-%//StandardForm
+
+ex=ExpandPartialD[%]
+
+
+ex//StandardForm
 
 
 RightPartialD[\[Mu]]//StandardForm

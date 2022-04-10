@@ -24,13 +24,17 @@
 
 
 CSIS[p1] . CSI[i] . CSIS[p2]
+
 PauliTrick[%]//Contract
 
 
 CSID[i,j,i]
+
 PauliTrick[%]//Contract
 
 
 CSIS[p] . CSI[j] . CSIS[p] . CSIS[i]
+
 PauliTrick[%]//Contract//EpsEvaluate//FCCanonicalizeDummyIndices
+
 PauliTrick[%%, PauliReduce->False]

@@ -24,5 +24,9 @@
 
 
 SDF[a,b]
-%//FCI//StandardForm
-%//FCE//StandardForm
+
+
+SDF[a,b]//FCI//StandardForm
+
+
+SDF[a,b]//FCE//StandardForm

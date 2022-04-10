@@ -39,7 +39,9 @@ SUNTrace[SUNT[a] . SUNT[b] . SUNT[c]]
 
 
 $PrePrint = FeynCalcForm;
+
 SetOptions[$FrontEndSession,Evaluate[(Options[$FrontEndSession,"CommonDefaultFormatTypes"]/.("Output"->_)->("Output"->OutputForm))[[1]]]];
+
 SUNTrace[SUNT[a] . SUNT[b] . SUNT[c]]
 
 
@@ -48,5 +50,7 @@ SUNTrace[SUNT[a] . SUNT[b] . SUNT[c]]
 
 
 $PrePrint=.;
+
 SetOptions[$FrontEndSession,Evaluate[(Options[$FrontEndSession,"CommonDefaultFormatTypes"]/.("Output"->_)->("Output"->TraditionalForm))[[1]]]];
+
 SUNTrace[SUNT[a] . SUNT[b] . SUNT[c]]

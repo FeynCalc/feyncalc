@@ -28,7 +28,9 @@
 
 
 DeclareNonCommutative[a,b]
+
 AntiCommutator[a,b]
+
 CommutatorExplicit[%]
 
 
@@ -46,6 +48,7 @@ DeclareNonCommutative[c,d,ct,dt]
 
 
 AntiCommutator[c,d] = z
+
 DotSimplify[ d . c . d ]
 
 
@@ -56,4 +59,5 @@ DotSimplify[dt . ct . dt]
 
 
 UnDeclareNonCommutative[a,b,c,d,ct,dt]
+
 UnDeclareAllAntiCommutators[]

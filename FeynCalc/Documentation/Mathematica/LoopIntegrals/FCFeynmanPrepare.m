@@ -1,5 +1,8 @@
 (* ::Package:: *)
 
+ 
+
+
 (* ::Section:: *)
 (*FCFeynmanPrepare*)
 
@@ -93,8 +96,11 @@ FCFeynmanPrepare[CSPD[q,p]CFAD[{q,m},{q-p,m2}],{q},Names->x]
 (*`FCFeynmanPrepare` also works with `FCTopology` and `GLI` objects*)
 
 
-topo1=FCTopology["prop2Lv1",{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],SFAD[p1-q],SFAD[p2-q],SFAD[{p1-p2,m3^2}]},{p1,p2},{Q},{},{}]
-topo2=FCTopology["prop2Lv2",{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],SFAD[{p1-q,M^2}],SFAD[{p2-q,M^2}],SFAD[p1-p2]},{p1,p2},{Q},{},{}]
+topo1=FCTopology["prop2Lv1",{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],
+SFAD[p1-q],SFAD[p2-q],SFAD[{p1-p2,m3^2}]},{p1,p2},{Q},{},{}]
+
+topo2=FCTopology["prop2Lv2",{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],
+SFAD[{p1-q,M^2}],SFAD[{p2-q,M^2}],SFAD[p1-p2]},{p1,p2},{Q},{},{}]
 
 
 FCFeynmanPrepare[topo1,Names->x]
@@ -103,7 +109,8 @@ FCFeynmanPrepare[topo1,Names->x]
 FCFeynmanPrepare[{topo1,topo2},Names->x]
 
 
-FCFeynmanPrepare[{GLI["prop2Lv1",{1,1,1,1,0}],GLI["prop2Lv2",{1,1,0,0,1}]},{topo1,topo2},Names->x]
+FCFeynmanPrepare[{GLI["prop2Lv1",{1,1,1,1,0}],GLI["prop2Lv2",{1,1,0,0,1}]},
+{topo1,topo2},Names->x]
 
 
 (* ::Text:: *)

@@ -24,10 +24,12 @@
 
 
 Hill[a,b]
+
 % /. a:> .123 /. b:> .656 // Chop
 
 
 Hill[x,x y]//PowerExpand//SimplifyPolyLog//Expand
+
 % /. x:> .34/. y-> .6//N//Chop
 
 

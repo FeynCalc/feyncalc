@@ -32,14 +32,17 @@
 
 
 FAD[q,{q-p+l,m}]
+
 FCLoopBasisFindCompletion[%,{q}]
 
 
 FAD[{q1,m1},{q2,m2}]
+
 FCLoopBasisFindCompletion[%,{q1,q2}]
 
 
 FAD[q1+p,q2-k] SPD[q1,q2]
+
 FCLoopBasisFindCompletion[%,{q1,q2},Method->{FAD[{q2+k,m}],FAD[{q1-p,m}],SPD[p,q2],SPD[k,q1]}]
 
 
@@ -48,6 +51,7 @@ FCLoopBasisFindCompletion[%,{q1,q2},Method->{FAD[{q2+k,m}],FAD[{q1-p,m}],SPD[p,q
 
 
 CFAD[q1,q2,{q1-l1,m1},{q2-l2,m2}]
+
 FCLoopBasisFindCompletion[%,{q1,q2}]
 
 

@@ -25,6 +25,7 @@
 
 
 ex=SpinorUBar[p,m] . SpinorU[p,m]
+
 SpinorChainEvaluate[ex]
 
 
@@ -35,8 +36,10 @@ SpinorChainEvaluate[ex,DiracSpinorNormalization->"Rest"]
 
 
 ex=SpinorUBarD[p,m] . GA[5] . SpinorUD[p,m]
+
 SpinorChainEvaluate[ex]
 
 
 FCSetDiracGammaScheme["BMHV"]
+
 SpinorChainEvaluate[ex]

@@ -24,4 +24,5 @@
 
 
 PCHN[CV[p,\[Nu]]CSI[a] . CSI[b] . CSI[a],i,j] 
+
 PauliChainFactor[%]

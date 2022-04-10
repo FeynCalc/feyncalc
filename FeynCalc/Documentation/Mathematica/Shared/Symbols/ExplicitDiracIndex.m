@@ -24,4 +24,6 @@
 
 
 DCHN[GA[\[Mu]],1,2]
-%//FCI//StandardForm
+
+
+DCHN[GA[\[Mu]],1,2]//FCI//StandardForm

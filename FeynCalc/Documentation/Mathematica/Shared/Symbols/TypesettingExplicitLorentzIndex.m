@@ -36,6 +36,7 @@ TypesettingExplicitLorentzIndex
 
 
 TypesettingExplicitLorentzIndex=Function[x,Style[x,Red]];
+
 4 M^2 u FV[k,0]^2-4 M^2 u FV[k,3]^2-4 M SP[k,k]-2 M u FV[k,0] FV[k,3]^2+4 M u FV[k,0] FV[k,2]-u^2 FV[k,2]^2
 
 

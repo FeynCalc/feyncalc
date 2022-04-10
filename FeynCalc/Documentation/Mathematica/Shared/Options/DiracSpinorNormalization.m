@@ -36,15 +36,15 @@
 
 
 SpinorUBar[p,m] . SpinorU[p,m]
+
 DiracSimplify[%]
 
 
 SpinorUBar[p,m] . SpinorU[p,m]
+
 DiracSimplify[%,DiracSpinorNormalization->"Rest"]
 
 
 SpinorUBar[p,m] . SpinorU[p,m]
+
 DiracSimplify[%,DiracSpinorNormalization->"Nonrelativistic"]
-
-
-

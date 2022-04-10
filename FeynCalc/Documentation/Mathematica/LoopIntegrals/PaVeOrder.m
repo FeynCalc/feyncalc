@@ -23,7 +23,8 @@
 (*Available symmetry relations are saved here*)
 
 
-FileBaseName/@FileNames["*.sym",FileNameJoin[{$FeynCalcDirectory, "Tables", "PaVeSymmetries"}]]
+FileBaseName/@FileNames["*.sym",FileNameJoin[{$FeynCalcDirectory, "Tables", 
+"PaVeSymmetries"}]]
 
 
 (* ::Text:: *)
@@ -78,17 +79,20 @@ PaVeOrder[ex,PaVeOrderList->{{me2,me2,0,0},{f,e}}]
 (*PaVeOrder can be useful to show that a particular linear combination of `PaVe` functions yields zero*)
 
 
-diff=PaVe[0,0,{p14,p30,p24,p13,p20,p40,p34,p23,p12,p10},{m4,m3,m2,m1,m0},PaVeAutoOrder->False]-PaVe[0,0,{p10,p13,p12,p40,p30,p34,p20,p24,p14,p23},{m3,m0,m1,m4,m2},PaVeAutoOrder->False]
+diff=PaVe[0,0,{p14,p30,p24,p13,p20,p40,p34,p23,p12,p10},{m4,m3,m2,m1,m0},
+PaVeAutoOrder->False]-PaVe[0,0,{p10,p13,p12,p40,p30,p34,p20,p24,p14,p23},
+{m3,m0,m1,m4,m2},PaVeAutoOrder->False]
 
 
 diff//PaVeOrder
 
 
 (* ::Text:: *)
-(*In most cases, such simplifications require not only 1-to-1 relations but also linear relations between PaVe functions. For example, here we have a 1-to-1 relation between $C_1$ and $C_2$*)
+(*In most cases, such simplifications require not only 1-to-1 relations but also linear relations between `PaVe` functions. For example, here we have a 1-to-1 relation between $C_1$ and $C_2$*)
 
 
 PaVe[2,{p10,p12,p20},{m1^2,m2^2,m3^2},PaVeAutoOrder->False]
+
 PaVeOrder[%]
 
 
@@ -115,7 +119,8 @@ PaVeOrder[ex,PaVeOrderList->{m2,m1,m3},Sum->True]
 (*When trying to minimize the number of `PaVe` functions in the expression, one often has to try different orderings first*)
 
 
-diff=(C0[0,SP[p,p],SP[p,p],0,0,0]+2 PaVe[1,{0,SP[p,p],SP[p,p]},{0,0,0}]+PaVe[1,{SP[p,p],SP[p,p],0},{0,0,0}])
+diff=(C0[0,SP[p,p],SP[p,p],0,0,0]+2 PaVe[1,{0,SP[p,p],SP[p,p]},{0,0,0}]+
+PaVe[1,{SP[p,p],SP[p,p],0},{0,0,0}])
 
 
 (* ::Text:: *)
@@ -123,6 +128,7 @@ diff=(C0[0,SP[p,p],SP[p,p],0,0,0]+2 PaVe[1,{0,SP[p,p],SP[p,p]},{0,0,0}]+PaVe[1,{
 
 
 PaVeOrder[diff,PaVeOrderList->{0,SP[p,p],SP[p,p]},Sum->True]
+
 %//PaVeOrder
 
 
@@ -131,6 +137,7 @@ PaVeOrder[diff,PaVeOrderList->{0,SP[p,p],SP[p,p]},Sum->True]
 
 
 PaVeOrder[diff,PaVeOrderList->{SP[p,p],0,SP[p,p]},Sum->True]
+
 %//PaVeOrder
 
 
@@ -144,14 +151,17 @@ diff=PaVe[0,{0},{m2^2,m3^2}]+PaVe[1,{0},{m3^2,m2^2}]+PaVe[1,{0},{m2^2,m3^2}]
 PaVeOrder[diff,PaVeOrderList->{m2,m3},Sum->True]
 
 
-diff=PaVe[0,{0},{m2^2,m3^2}]+2 PaVe[1,{0},{m3^2,m2^2}]-PaVe[1,1,{0},{m2^2,m3^2}]+PaVe[1,1,{0},{m3^2,m2^2}]
+diff=PaVe[0,{0},{m2^2,m3^2}]+2 PaVe[1,{0},{m3^2,m2^2}]-PaVe[1,1,{0},{m2^2,m3^2}]+
+PaVe[1,1,{0},{m3^2,m2^2}]
 
 
 PaVeOrder[diff,Sum->True,PaVeOrderList->{m3,m2}]
 
 
-diff=PaVe[0,{0,0,0},{m2^2,m3^2,m4^2}]+2 PaVe[1,{0,0,0},{m2^2,m3^2,m4^2}]+2 PaVe[1,{0,0,0},{m3^2,m2^2,m4^2}]+
-PaVe[1,1,{0,0,0},{m2^2,m3^2,m4^2}]-PaVe[1,1,{0,0,0},{m2^2,m4^2,m3^2}]+PaVe[1,1,{0,0,0},{m3^2,m2^2,m4^2}]+2 PaVe[1,2,{0,0,0},{m4^2,m2^2,m3^2}]
+diff=PaVe[0,{0,0,0},{m2^2,m3^2,m4^2}]+2 PaVe[1,{0,0,0},{m2^2,m3^2,m4^2}]+
+2 PaVe[1,{0,0,0},{m3^2,m2^2,m4^2}]+PaVe[1,1,{0,0,0},{m2^2,m3^2,m4^2}]-
+PaVe[1,1,{0,0,0},{m2^2,m4^2,m3^2}]+PaVe[1,1,{0,0,0},{m3^2,m2^2,m4^2}]+
+2 PaVe[1,2,{0,0,0},{m4^2,m2^2,m3^2}]
 
 
 PaVeOrder[diff,Sum->True,PaVeOrderList->{m3,m2}]

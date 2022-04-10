@@ -12,7 +12,7 @@
 
 
 (* ::Text:: *)
-(*`SetMandelstam[x, {p1, p2, p3, p4, p5}, {m1, m2, m3, m4, m5}]` defines $x[i, j] = (p_i+p_j)^2$ and sets the $p_i$ on-shell. The $p_i$ satisfy: $p_1 + p_2 + p_3 + p_4 + p_5 = 0$."*)
+(*`SetMandelstam[x, {p1, p2, p3, p4, p5}, {m1, m2, m3, m4, m5}]` defines $x[i, j] = (p_i+p_j)^2$ and sets the $p_i$ on-shell. The $p_i$ satisfy: $p_1 + p_2 + p_3 + p_4 + p_5 = 0$.*)
 
 
 (* ::Subsection:: *)
@@ -32,10 +32,13 @@
 
 
 FCClearScalarProducts[]
-SetMandelstam[s,t,u,p1,p2,-p3,-p4,m1,m2,m3,m4]
+
+SetMandelstam[s,t,u,p1,p2,-p3,-p4,m1,m2,m3,m4];
 
 SP[p1,p2]
+
 SP[p1,p3]
+
 SP[p1,p4]
 
 
@@ -44,6 +47,7 @@ SP[p1,p4]
 
 
 SPD[p1,p2]
+
 SPD[p1,p3]
 
 
@@ -52,6 +56,7 @@ SPD[p1,p3]
 
 
 FCClearScalarProducts[];
-SetMandelstam[x, {p1, p2, -p3, -p4, -p5}, {m1, m2, m3, m4, m5}] 
+
+SetMandelstam[x, {p1, p2, -p3, -p4, -p5}, {m1, m2, m3, m4, m5}];
 
 SPD[p4,p5]

@@ -24,12 +24,17 @@
 
 
 SpinorVBarD[p,m]
-FCI[%]//StandardForm
+
+
+SpinorVBarD[p,m]//FCI//StandardForm
 
 
 SpinorVBarD[p]
-FCI[%]//StandardForm
 
 
-SpinorVBarD[p] . GSD[p]
+SpinorVBarD[p]//FCI//StandardForm
+
+
+SpinorVBarD[p].GSD[p]
+
 DiracEquation[%]

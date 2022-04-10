@@ -24,12 +24,17 @@
 
 
 SpinorUD[p,m]
-FCI[%]//StandardForm
+
+
+SpinorUD[p,m]//FCI//StandardForm
 
 
 SpinorUD[p]
-FCI[%]//StandardForm
 
 
-GSD[p] . SpinorUD[p]
+SpinorUD[p]//FCI//StandardForm
+
+
+GSD[p].SpinorUD[p]
+
 DiracEquation[%]

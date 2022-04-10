@@ -44,6 +44,7 @@
 
 
 GA[\[Mu],\[Nu]]
+
 TR[%]
 
 
@@ -63,7 +64,9 @@ TR[GA[\[Alpha],\[Beta]],FCE->True]
 
 
 GA[\[Mu],\[Nu]] SUNT[b] . SUNT[c] SUNDelta[c,b]
+
 TR[%,SUNTrace->False,SUNNToCACF->True]
+
 TR[%%,SUNTrace->True,SUNNToCACF->True]
 
 

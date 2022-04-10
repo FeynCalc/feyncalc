@@ -39,8 +39,7 @@ SplitSymbolicPowers->True]
 
 
 Series[v1[[2]],{Epsilon,0,1}]//Normal
+
 Series[v2[[2]],{Epsilon,0,1}]//Normal
+
 %-%%//Simplify//FunctionExpand
-
-
-

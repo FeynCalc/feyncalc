@@ -12,11 +12,11 @@
 
 
 (* ::Text:: *)
-(*`FCPartialD[LorentzIndex[\[Mu]]]` denotes  $\partial _{\mu }$.*)
+(*`FCPartialD[LorentzIndex[mu]]` denotes  $\partial_{\mu }$.*)
 
 
 (* ::Text:: *)
-(*`FCPartialD[LorentzIndex[\[Mu] ,D]]` denotes the $D$-dimensional $\partial _{\mu }$.*)
+(*`FCPartialD[LorentzIndex[mu ,D]]` denotes the $D$-dimensional $\partial_{\mu }$.*)
 
 
 (* ::Text:: *)
@@ -24,7 +24,7 @@
 
 
 (* ::Text:: *)
-(*If you need to specify a derivative with respect to a particular variable it also possible to use `FCPartialD[{LorentzIndex[\[Mu]],y}]` or `FCPartialD[{CartesianIndex[i],x}]`although this notation is still somewhat experimental*)
+(*If you need to specify a derivative with respect to a particular variable it also possible to use `FCPartialD[{LorentzIndex[mu],y}]` or `FCPartialD[{CartesianIndex[i],x}]`although this notation is still somewhat experimental*)
 
 
 (* ::Subsection:: *)
@@ -39,14 +39,17 @@
 (*Examples*)
 
 
-QuantumField[A,{\[Mu]}] . LeftPartialD[\[Nu]]
-ExpandPartialD[%]
-StandardForm[%]
+QuantumField[A,{\[Mu]}].LeftPartialD[\[Nu]]
+
+ex=ExpandPartialD[%]
 
 
-RightPartialD[{CartesianIndex[i],x}] . QuantumField[S,x]
-ExpandPartialD[%]
-StandardForm[%]
+ex//StandardForm
 
 
+RightPartialD[{CartesianIndex[i],x}].QuantumField[S,x]
 
+ex=ExpandPartialD[%]
+
+
+ex//StandardForm

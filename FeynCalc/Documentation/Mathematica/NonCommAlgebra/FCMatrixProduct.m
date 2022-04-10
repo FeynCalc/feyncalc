@@ -31,13 +31,14 @@
 
 
 (* ::Text:: *)
-(*Consider two generic `2 \times 2`-matrices containing noncommutative heads*)
+(*Consider two generic $2 \times 2$-matrices containing noncommutative heads*)
 
 
 DeclareNonCommutative[opA,opB,opC,opD]
 
 
 mat[1]={{opA[1],opB[1]},{opC[1],opD[1]}}
+
 mat[2]={{opA[2],opB[2]},{opC[2],opD[2]}}
 
 
@@ -81,6 +82,7 @@ DotSimplify[out]
 
 
 gamma[0] = {{1, 0}, {0, -1}};
+
 gamma[i_] := {{0, CSI[i]}, {-CSI[i], 0}};
 
 
@@ -89,7 +91,5 @@ gamma[i_] := {{0, CSI[i]}, {-CSI[i], 0}};
 
 
 FCMatrixProduct[gamma[i], gamma[j], gamma[i]]
+
 DotSimplify[%]
-
-
-

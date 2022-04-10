@@ -24,6 +24,7 @@
 
 
 (a-x)(b-x)
+
 {Factor1[%], Factor[%]}
 
 

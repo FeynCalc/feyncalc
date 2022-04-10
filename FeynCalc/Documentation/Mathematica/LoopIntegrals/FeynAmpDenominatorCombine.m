@@ -1,6 +1,12 @@
+(* ::Package:: *)
+
  
+
+
 (* ::Section:: *)
 (*FeynAmpDenominatorCombine*)
+
+
 (* ::Text:: *)
 (*`FeynAmpDenominatorCombine[expr]` expands expr with respect to `FeynAmpDenominator` and combines products of `FeynAmpDenominator` in expr into one `FeynAmpDenominator`.*)
 
@@ -13,15 +19,19 @@
 (*[Overview](Extra/FeynCalc.md), [FeynAmpDenominatorSplit](FeynAmpDenominatorSplit.md).*)
 
 
-
 (* ::Subsection:: *)
 (*Examples*)
 
 
 FAD[q] FAD[q-p]
-FeynAmpDenominatorCombine[%]
-%//FCE//StandardForm
+
+ex=FeynAmpDenominatorCombine[%]
 
 
-FeynAmpDenominatorSplit[%]
-%//FCE//StandardForm
+ex//FCE//StandardForm
+
+
+ex2=FeynAmpDenominatorSplit[ex]
+
+
+ex2//FCE//StandardForm

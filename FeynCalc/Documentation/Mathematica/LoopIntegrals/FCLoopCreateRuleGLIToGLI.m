@@ -24,7 +24,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [FCTopology](FCTopology.md), [GLI](GLI.md), [FCFindTopologies](FCFindTopologies.md), [FCFindTopologyMappings](FCFindTopologyMappings.md).*)
+(*[Overview](Extra/FeynCalc.md), [FCTopology](FCTopology.md), [GLI](GLI.md), [FCLoopFindTopologies](FCLoopFindTopologies.md), [FCLoopFindTopologyMappings](FCLoopFindTopologyMappings.md).*)
 
 
 (* ::Subsection:: *)
@@ -62,15 +62,19 @@ SFAD[{{-k1+k3,0},{0,1},1}],SFAD[{{k1-k3-q,0},{0,1},1}],
 SFAD[{{k1+k2-k3-q,0},{0,1},1}],SFAD[{{-k1-k2+q,0},{0,1},1}]}]]
 
 
-FCLoopIntegralToGraph[FCTopology["tad2l",{FAD[{p1,m1}],FAD[{p2,m2}],FAD[{p1-p2,m3}]},{p1,p2},{},{},{}]]
+FCLoopIntegralToGraph[FCTopology["tad2l",{FAD[{p1,m1}],FAD[{p2,m2}],FAD[{p1-p2,m3}]},
+{p1,p2},{},{},{}]]
 
 
 FCLoopCreateRuleGLIToGLI[
-{FCTopology["prop2l",{FAD[{p1,m1}],FAD[{p2,m2}],FAD[{p1-q,m3}],FAD[{p1-q,m4}],FAD[{p1-p2,m5}]},{p1,p2},{q},{},{}],
+{FCTopology["prop2l",{FAD[{p1,m1}],FAD[{p2,m2}],FAD[{p1-q,m3}],FAD[{p1-q,m4}],
+FAD[{p1-p2,m5}]},{p1,p2},{q},{},{}],
 FCTopology["tad2l",{FAD[{p1,m1}],FAD[{p2,m2}],FAD[{p1-p2,m3}]},{p1,p2},{},{},{}]},{
 {
-FCTopology["prop2lX1",{FAD[{p2,m2}],FAD[{p1-q,m3}],FAD[{p1-q,m4}],FAD[{p1-p2,m5}]},{p1,p2},{q},{},{}],
-FCTopology["prop2lX5",{FAD[{p1,m1}],FAD[{p2,m2}],FAD[{p1-q,m3}],FAD[{p1-q,m4}]},{p1,p2},{q},{},{}]
+FCTopology["prop2lX1",{FAD[{p2,m2}],FAD[{p1-q,m3}],FAD[{p1-q,m4}],FAD[{p1-p2,m5}]},
+{p1,p2},{q},{},{}],
+FCTopology["prop2lX5",{FAD[{p1,m1}],FAD[{p2,m2}],FAD[{p1-q,m3}],FAD[{p1-q,m4}]},
+{p1,p2},{q},{},{}]
 },
 {
 FCTopology["tad2lX2",{FAD[{p1,m1}],FAD[{p1-p2,m3}]},{p1,p2},{},{},{}],

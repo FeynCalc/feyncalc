@@ -1,5 +1,8 @@
 (* ::Package:: *)
 
+ 
+
+
 (* ::Section:: *)
 (*FCReplaceMomenta*)
 
@@ -20,10 +23,15 @@
 (*Examples*)
 
 
-amp=(-I)*Spinor[-Momentum[l2],ME,1] . GA[\[Mu]] . Spinor[Momentum[l1],ME,1]*Spinor[Momentum[p1],SMP["m_Q"],1] . GS[Polarization[kp,-I,Transversality->True]] . (GS[kp+p1]+SMP["m_Q"]) . GA[\[Mu]] . Spinor[-Momentum[p2],SMP["m_Q"],1]*FAD[kp+p1+p2,Dimension->4]*FAD[{-l1-l2-p2,SMP["m_Q"]},Dimension->4]*SDF[cq,cqbar]*SMP["e"]^3*SMP["Q_u"]^2
+amp=(-I)*Spinor[-Momentum[l2],ME,1] . GA[\[Mu]] . Spinor[Momentum[l1],ME,1]*
+Spinor[Momentum[p1],SMP["m_Q"],1] . GS[Polarization[kp,-I,
+Transversality->True]] . (GS[kp+p1]+SMP["m_Q"]) . GA[\[Mu]] . Spinor[-Momentum[p2],
+SMP["m_Q"],1]*FAD[kp+p1+p2,Dimension->4]*FAD[{-l1-l2-p2,SMP["m_Q"]},
+Dimension->4]*SDF[cq,cqbar]*SMP["e"]^3*SMP["Q_u"]^2
 
 
 FCReplaceMomenta[amp,{p1->P+1/2 q,p2->P-1/2 q}]
+
 ClearAll[amp]
 
 
@@ -32,8 +40,11 @@ ClearAll[amp]
 
 
 FCClearScalarProducts[];
+
 SPD[q]=0;
+
 FCReplaceMomenta[FAD[q+p],{p->0}]
+
 FCClearScalarProducts[];
 
 
@@ -41,7 +52,8 @@ FCClearScalarProducts[];
 (*`FCReplaceMomenta` equally works with `FCTopology` objects. There it is actually the preferred way to perform momentum shifts. Consider e.g.*)
 
 
-ex=FCTopology[topo,{SFAD[{{p1,0},{0,1},1}],SFAD[{{p2+p3,0},{0,1},1}],SFAD[{{p2-Q,0},{0,1},1}],SFAD[{{p1+p3-Q,0},{0,1},1}]},{p1,p2,p3},{Q},{},{}]
+ex=FCTopology[topo,{SFAD[{{p1,0},{0,1},1}],SFAD[{{p2+p3,0},{0,1},1}],
+SFAD[{{p2-Q,0},{0,1},1}],SFAD[{{p1+p3-Q,0},{0,1},1}]},{p1,p2,p3},{Q},{},{}]
 
 
 (* ::Text:: *)
@@ -49,6 +61,7 @@ ex=FCTopology[topo,{SFAD[{{p1,0},{0,1},1}],SFAD[{{p2+p3,0},{0,1},1}],SFAD[{{p2-Q
 
 
 ex/.p2->p2+Q
+
 FCLoopValidTopologyQ[%]
 
 

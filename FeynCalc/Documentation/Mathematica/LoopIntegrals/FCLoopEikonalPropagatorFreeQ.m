@@ -25,16 +25,20 @@
 
 
 FCI@SFAD[p,p-q]
+
 FCLoopEikonalPropagatorFreeQ[%]
 
 
 FCI@SFAD[{{0,p . q}}]
+
 FCLoopEikonalPropagatorFreeQ[%]
 
 
 FCI@CFAD[{{0,p . q}}]
+
 FCLoopEikonalPropagatorFreeQ[%,Momentum->{q}]
 
 
 FCI@SFAD[{{q,q . p}}]
+
 FCLoopEikonalPropagatorFreeQ[%,First->False]

@@ -8,11 +8,11 @@
 
 
 (* ::Text:: *)
-(*`FieldStrength[\[Mu], \[Nu], a]` is the field strength tensor $\partial _{\mu } A_{\nu }^a - \partial _{\nu } A_{\mu }^a + g_s A_{\mu }^b A_{\nu }^c f^{abc}$.*)
+(*`FieldStrength[mu, nu, a]` is the field strength tensor $\partial _{\mu } A_{\nu }^a - \partial _{\nu } A_{\mu }^a + g_s A_{\mu }^b A_{\nu }^c f^{abc}$.*)
 
 
 (* ::Text:: *)
-(*`FieldStrength[\[Mu], \[Nu]]` is the field strength tensor $(\partial _{\mu } A_{\nu}- \partial_{\nu } A_{\mu})$.*)
+(*`FieldStrength[mu, nu]` is the field strength tensor $(\partial _{\mu } A_{\nu}- \partial_{\nu } A_{\mu})$.*)
 
 
 (* ::Text:: *)
@@ -25,7 +25,6 @@
 
 (* ::Text:: *)
 (*[Overview](Extra/FeynCalc.md)*)
-
 
 
 (* ::Subsection:: *)

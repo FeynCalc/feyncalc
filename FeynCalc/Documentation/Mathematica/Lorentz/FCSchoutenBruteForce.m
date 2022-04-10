@@ -36,7 +36,10 @@
 
 
 FCClearScalarProducts[]
-exp=LC[][p1,p2,p3,p4] SP[p5,p6]+LC[][p2,p3,p4,p5] SP[p1,p6]+LC[][p3,p4,p5,p1] SP[p2,p6]+LC[][p4,p5,p1,p2] SP[p3,p6]-LC[][p1,p2,p3,p5] SP[p4,p6]
+
+exp=LC[][p1,p2,p3,p4] SP[p5,p6]+LC[][p2,p3,p4,p5] SP[p1,p6]+
+LC[][p3,p4,p5,p1] SP[p2,p6]+LC[][p4,p5,p1,p2] SP[p3,p6]-
+LC[][p1,p2,p3,p5] SP[p4,p6]
 
 
 FCSchoutenBruteForce[exp,{},{}]

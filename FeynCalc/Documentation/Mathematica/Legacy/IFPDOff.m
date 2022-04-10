@@ -1,6 +1,12 @@
+(* ::Package:: *)
+
  
+
+
 (* ::Section:: *)
 (*IFPDOff*)
+
+
 (* ::Text:: *)
 (*`IFPDOff[exp_, q1, q2, ...]` changes from `IFPD` representation to `FeynAmpDenominator[...]`. The `q1, q2, ...` are the integration momenta.*)
 
@@ -13,14 +19,17 @@
 (*[Overview](Extra/FeynCalc.md), [IFPD](IFPD.md), [IFPDOn](IFPDOn.md).*)
 
 
-
 (* ::Subsection:: *)
 (*Examples*)
 
 
 IFPD[Momentum[p],m]
-%//StandardForm
 
 
-IFPDOff[%,p]
-%//StandardForm
+IFPD[Momentum[p],m]//StandardForm
+
+
+ex=IFPDOff[IFPD[Momentum[p],m],p]
+
+
+ex//StandardForm

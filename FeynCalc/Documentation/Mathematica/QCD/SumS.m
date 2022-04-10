@@ -55,10 +55,12 @@ SumS[3,m+2,Reduce->True]
 
 
 SetOptions[SumS,Reduce->True];
+
 SumS[3,m+2]
 
 
 SetOptions[SumS,Reduce->False];
+
 SumS[1,4]
 
 

@@ -39,8 +39,10 @@ FCI[FVE[p,\[Mu]]]//StandardForm
 (*There is no special function to expand momenta in `FVE`.*)
 
 
-ExpandScalarProduct[FVE[p-q,\[Mu]]]
-StandardForm[%]
+ex=ExpandScalarProduct[FVE[p-q,\[Mu]]]
+
+
+ex//StandardForm
 
 
 Contract[FVE[p,\[Mu]]FV[q,\[Mu]]]

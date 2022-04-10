@@ -24,8 +24,10 @@
 
 
 SIS[p]+SIS[q]
+
 PauliSigmaCombine[%]
 
 
 PauliXi[-I] . (SIS[p1+p2]+SIS[q]) . PauliEta[I]
+
 PauliSigmaCombine[%]

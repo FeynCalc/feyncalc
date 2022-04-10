@@ -19,20 +19,20 @@ GP::usage =
 "GP is equivalent to GluonPropagator.";
 
 GluonPropagator::usage =
-"GluonPropagator[p, {\[Mu], a}, {\[Nu], b}] or GluonPropagator[p, \[Mu], a,
-\[Nu], b] yields the gluon propagator.
+"GluonPropagator[p, {mu, a}, {nu, b}] or GluonPropagator[p, mu, a, nu, b]
+yields the gluon propagator.
 
-GluonPropagator[p, {\[Mu]}, {\[Nu]}] or GluonPropagator[p, \[Mu], \[Nu]] omits
-the SUNDelta.
+GluonPropagator[p, {mu}, {nu}] or GluonPropagator[p, mu, nu] omits the
+SUNDelta.
 
 GP can be used as an abbreviation of GluonPropagator.
 
 The gauge and the dimension are determined by the options Gauge and Dimension.
 The following settings of Gauge are possible:
 
- 1 for the Feynman gauge;  
-alpha for the general covariant gauge;
- Momentum[n] ,1} for the axial gauge.";
+-  1 for the Feynman gauge;  
+- alpha for the general covariant gauge;
+- Momentum[n] ,1} for the axial gauge.";
 
 Begin["`Package`"]
 End[]

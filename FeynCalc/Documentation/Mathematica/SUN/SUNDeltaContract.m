@@ -24,4 +24,5 @@
 
 
 SUNDelta[SUNIndex[a],SUNIndex[b]]^2
+
 SUNDeltaContract[%]

@@ -24,7 +24,6 @@
 
 
 PCHN[SI[i],1,2]
-%//FCI//StandardForm
 
 
-
+PCHN[SI[i],1,2]//FCI//StandardForm

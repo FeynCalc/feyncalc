@@ -56,6 +56,7 @@ Series2[HypergeometricPFQ[{1, OPEm, Epsilon/2 + OPEm}, {1 + OPEm, Epsilon + OPEm
 
 
 Hypergeometric2F1[1, Epsilon, 1 + 2 Epsilon,x]
+
 Series2[%,Epsilon,3]
 
 

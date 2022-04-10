@@ -45,10 +45,14 @@ CartesianMomentum[p,d-1]
 
 
 a1=CartesianMomentum[-q]
+
+
 a1//StandardForm
 
 
 a2 = CartesianMomentum[p-q] + CartesianMomentum[2q]
+
+
 a2//StandardForm
 
 

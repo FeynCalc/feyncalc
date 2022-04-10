@@ -23,7 +23,7 @@ $p_4^2=m_4^2$. Notice that $p_1+p_2+p_3+p_4=0$ is assumed.
 
 SetMandelstam[x, {p1, p2, p3, p4, p5}, {m1, m2, m3, m4, m5}] defines $x[i, j]
 = (p_i+p_j)^2$ and sets the $p_i$ on-shell. The $p_i$ satisfy: $p_1 + p_2 +
-p_3 + p_4 + p_5 = 0$.\"";
+p_3 + p_4 + p_5 = 0$.";
 
 
 (* ------------------------------------------------------------------------ *)

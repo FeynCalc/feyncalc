@@ -24,14 +24,17 @@
 
 
 SPD[p,q]
+
 %//LorentzToCartesian
 
 
 LC[\[Mu],\[Nu]][p,q]
+
 %//LorentzToCartesian
 
 
 GAD[\[Mu]]
+
 %//LorentzToCartesian
 
 

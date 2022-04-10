@@ -1,5 +1,8 @@
 (* ::Package:: *)
 
+ 
+
+
 (* ::Section:: *)
 (*FCLoopToPakForm*)
 
@@ -33,6 +36,7 @@ FCLoopToPakForm[FAD[p1,{p3,m1},{p1-p4,m1},p1+q1,p1+q1,p3+q1,p1-p3-p4],
 
 
 topo1=FCTopology["prop2Lv1",{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],SFAD[p1-q],SFAD[p2-q],SFAD[{p1-p2,m3^2}]},{p1,p2},{Q},{},{}]
+
 topo2=FCTopology["prop2Lv2",{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],SFAD[{p1-q,M^2}],SFAD[{p2-q,M^2}],SFAD[p1-p2]},{p1,p2},{Q},{},{}]
 
 

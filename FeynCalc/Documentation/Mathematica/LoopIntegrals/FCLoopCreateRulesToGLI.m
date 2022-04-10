@@ -20,7 +20,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [FCTopology](FCTopology.md), [GLI](GLI.md), [FCFindTopologies](FCFindTopologies.md), [FCFindTopologyMappings](FCFindTopologyMappings.md).*)
+(*[Overview](Extra/FeynCalc.md), [FCTopology](FCTopology.md), [GLI](GLI.md), [FCLoopFindTopologies](FCLoopFindTopologies.md), [FCLoopFindTopologyMappings](FCLoopFindTopologyMappings.md).*)
 
 
 (* ::Subsection:: *)
@@ -38,7 +38,8 @@ FCLoopCreateRulesToGLI[FCTopology[topo1,{SFAD[{p1,m^2}]},{p1},{},{},{}]]
 (*2-loop tadpole with 3 different masses*)
 
 
-FCLoopCreateRulesToGLI[FCTopology[topo1,{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],SFAD[{p1-p2,m3^2}]},{p1,p2},{},{},{}]]
+FCLoopCreateRulesToGLI[FCTopology[topo1,{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],
+SFAD[{p1-p2,m3^2}]},{p1,p2},{},{},{}]]
 
 
 (* ::Text:: *)
@@ -46,7 +47,8 @@ FCLoopCreateRulesToGLI[FCTopology[topo1,{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],SFAD[{p
 
 
 FCLoopCreateRulesToGLI[FCTopology["prop2Lv1",
- {SFAD[{p1, m1^2}], SFAD[{p2, m2^2}], SFAD[p1 - q], SFAD[p2 - q], SFAD[{p1 - p2, m3^2}]}, {p1, p2}, {Q}, {}, {}]]
+ {SFAD[{p1, m1^2}], SFAD[{p2, m2^2}], SFAD[p1 - q], SFAD[p2 - q], 
+ SFAD[{p1 - p2, m3^2}]}, {p1, p2}, {Q}, {}, {}]]
 
 
 (* ::Text:: *)

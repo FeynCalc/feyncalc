@@ -28,10 +28,12 @@
 
 
 MetricTensor[\[Alpha],\[Beta]]
+
 Contract[% %]
 
 
 MetricTensor[\[Alpha],\[Beta],Dimension->D]
+
 Contract[% %]
 
 
@@ -49,7 +51,5 @@ MTD[\[Mu],\[Nu]]
 
 
 FCI[MT[\[Mu],\[Nu]]]===MetricTensor[\[Mu],\[Nu]]
+
 FCI[MTD[\[Mu],\[Nu]]]===MetricTensor[\[Mu],\[Nu],Dimension->D]
-
-
-

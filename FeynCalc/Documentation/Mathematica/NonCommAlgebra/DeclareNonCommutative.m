@@ -34,8 +34,10 @@ DataType[x,NonCommutative]
 
 
 DeclareNonCommutative[y,z]
+
 DataType[a,x,y,z,NonCommutative]
 
 
 UnDeclareNonCommutative[x,y,z]
+
 DataType[a,x,y,z,NonCommutative]

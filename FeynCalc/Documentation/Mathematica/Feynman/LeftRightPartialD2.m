@@ -8,11 +8,11 @@
 
 
 (* ::Text:: *)
-(*`LeftRightPartialD2[\[Mu]]` denotes $\overleftrightarrow{\partial }_{\mu }$, acting to the left and right.*)
+(*`LeftRightPartialD2[mu]` denotes $\overleftrightarrow{\partial }_{\mu }$, acting to the left and right.*)
 
 
 (* ::Text:: *)
-(*`ExplicitPartialD[LeftRightPartialD2[\[Mu]]] gives `(RightPartialD[\[Mu]] + LeftPartialD[\[Mu]])`.*)
+(*`ExplicitPartialD[LeftRightPartialD2[mu]] gives `(RightPartialD[mu] + LeftPartialD[mu])`.*)
 
 
 (* ::Subsection:: *)
@@ -28,12 +28,15 @@
 
 
 LeftRightPartialD2[\[Mu]]
+
 ExplicitPartialD[%]
 
 
 LeftRightPartialD2[\[Mu]] . QuantumField[A,LorentzIndex[\[Nu]]]
+
 ExpandPartialD[%]
 
 
 QuantumField[A,LorentzIndex[\[Mu]]] . LeftRightPartialD2[\[Nu]] . QuantumField[A,LorentzIndex[\[Rho]]]
+
 ExpandPartialD[%]

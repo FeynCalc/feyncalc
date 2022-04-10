@@ -24,11 +24,10 @@
 
 
 Pair[LorentzIndex[\[Mu]],Momentum[p]]Pair[LorentzIndex[\[Mu]],Momentum[q]]
+
 %/.Pair->PairContract
 
 
 Pair[LorentzIndex[\[Mu]],Momentum[p]]Pair[LorentzIndex[\[Nu]],Momentum[q]]Pair[LorentzIndex[\[Mu]],LorentzIndex[\[Nu]]]
+
 %/.Pair->PairContract
-
-
-

@@ -27,10 +27,12 @@ DeclareNonCommutative[a,b,c,d]
 
 
 Commutator[a,b]
+
 CommutatorExplicit[%]
 
 
 AntiCommutator[a-c,b-d]
+
 CommutatorExplicit[%]
 
 

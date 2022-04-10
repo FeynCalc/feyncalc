@@ -27,4 +27,6 @@ ExplicitSUNFIndex[1]
 
 
 SUNTF[a,1,2]
-%//FCI//StandardForm
+
+
+SUNTF[a,1,2]//FCI//StandardForm

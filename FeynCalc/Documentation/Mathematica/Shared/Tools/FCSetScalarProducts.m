@@ -28,6 +28,7 @@
 
 
 FCClearScalarProducts[];
+
 FCSetScalarProducts[{SPD[p1],SPD[p2],SPD[p3,p4]},{0,xx1,xx2}];
 
 

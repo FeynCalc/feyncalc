@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`DiracReduce[exp]` reduces all $4$-dimensional Dirac matrices in exp to the standard basis $(S,P,V,A,T)$ using the Chisholm identity.*)
+(*`DiracReduce[exp]` reduces all $4$-dimensional Dirac matrices in exp to the standard basis $(S, P, V, A, T)$ using the Chisholm identity.*)
 
 
 (* ::Text:: *)
@@ -18,9 +18,9 @@
 (* ::Text:: *)
 (*- $S$: `DiracBasis[1]`*)
 (*- $P$: `DiracBasis[GA[5]]`*)
-(*- $V$: `DiracBasis[GA[$\mu$]]`*)
-(*- $A$: `DiracBasis[GA[$\mu$,5]]`*)
-(*- $T$: `DiracBasis[DiracSigma[GA[$\mu$,$\nu$]]]`*)
+(*- $V$: `DiracBasis[GA[mu]]`*)
+(*- $A$: `DiracBasis[GA[mu, 5]]`*)
+(*- $T$: `DiracBasis[DiracSigma[GA[mu, nu]]]`*)
 
 
 (* ::Text:: *)
@@ -40,6 +40,7 @@
 
 
 GA[\[Mu],\[Nu]]
+
 DiracReduce[%]
 
 
@@ -48,14 +49,17 @@ DiracReduce[%]
 
 
 GAD[\[Mu],\[Nu]]
+
 DiracReduce[%]
 
 
 SpinorUBar[Subscript[p, 1],Subscript[m, 1]] . GA[\[Mu],\[Nu],\[Rho]] . SpinorV[Subscript[p, 2],Subscript[m, 2]]
+
 DiracReduce[%]
 
 
 GA[\[Mu],\[Nu],\[Rho],\[Sigma]]
+
 DiracReduce[%]
 
 

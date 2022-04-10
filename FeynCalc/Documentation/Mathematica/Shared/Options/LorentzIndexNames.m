@@ -24,11 +24,10 @@
 
 
 LC[i1,i2,i3,i4]GA[i1,i2,i3,i4]
+
 FCCanonicalizeDummyIndices[%]
 
 
 LC[i1,i2,i3,i4]GA[i1,i2,i3,i4]
+
 FCCanonicalizeDummyIndices[%,LorentzIndexNames->{mu,nu,rho,si}]
-
-
-

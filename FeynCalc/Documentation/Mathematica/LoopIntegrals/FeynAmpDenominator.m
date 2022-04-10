@@ -30,7 +30,8 @@
 FeynAmpDenominator[PropagatorDenominator[Momentum[p,D],m]]
 
 
-FeynAmpDenominator[PropagatorDenominator[Momentum[p,D],m],PropagatorDenominator[Momentum[p-q,D],m]]
+FeynAmpDenominator[PropagatorDenominator[Momentum[p,D],m],
+PropagatorDenominator[Momentum[p-q,D],m]]
 
 
 (* ::Text:: *)
@@ -38,6 +39,7 @@ FeynAmpDenominator[PropagatorDenominator[Momentum[p,D],m],PropagatorDenominator[
 
 
 FeynAmpDenominator[PropagatorDenominator[Momentum[p,D],I m]]
+
 %//FeynAmpDenominatorExplicit
 
 

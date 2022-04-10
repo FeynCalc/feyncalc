@@ -24,8 +24,11 @@
 
 
 DiracSigma[GSD[p]+GSD[q],GSD[r]]
-%//DiracSigmaExpand
-%//FCE//StandardForm
+
+ex=%//DiracSigmaExpand
+
+
+ex//FCE//StandardForm
 
 
 (* ::Text:: *)
@@ -33,6 +36,7 @@ DiracSigma[GSD[p]+GSD[q],GSD[r]]
 
 
 DiracSigma[GSD[p+q],GSD[r]]
+
 DiracSigmaExpand[%]
 
 
@@ -48,4 +52,5 @@ DiracSigmaExpand[DiracSigma[GSD[p+q],GSD[r]],DiracGammaExpand->True]
 
 
 DiracSigma[GSD[p],GSD[r]+GSD[t]]+DiracSigma[GSD[l]+GSD[n],GSD[p]]
+
 DiracSigmaExpand[%,Momentum->{r}]

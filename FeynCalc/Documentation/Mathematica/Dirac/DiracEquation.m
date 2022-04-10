@@ -25,18 +25,22 @@
 
 
 GS[p] . SpinorU[p,m]
+
 DiracSimplify[%]
 
 
 GS[p] . SpinorU[p,m]
+
 DiracEquation[%]
 
 
 GS[p] . SpinorV[p,m]
+
 DiracEquation[%]
 
 
 SpinorUBar[p,0] . GS[p]
+
 DiracEquation[%]
 
 
@@ -45,4 +49,5 @@ DiracEquation[%]
 
 
 SpinorVBarD[p,m] . GSD[p]
+
 DiracEquation[%]

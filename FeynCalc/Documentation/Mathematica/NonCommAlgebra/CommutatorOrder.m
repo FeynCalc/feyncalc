@@ -24,7 +24,5 @@
 
 
 Commutator[a, b] + Commutator[b, a]
+
 CommutatorOrder[%]
-
-
-

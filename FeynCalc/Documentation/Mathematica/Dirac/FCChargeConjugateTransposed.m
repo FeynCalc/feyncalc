@@ -28,6 +28,7 @@
 
 
 GA[\[Mu],\[Nu],\[Rho]]
+
 FCChargeConjugateTransposed[%]
 
 
@@ -35,5 +36,7 @@ FCChargeConjugateTransposed[GA[\[Mu],\[Nu],\[Rho]],Explicit->True]
 
 
 GA[5]
+
 FCCCT[%]
+
 %//Explicit

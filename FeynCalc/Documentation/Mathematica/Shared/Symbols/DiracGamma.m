@@ -59,6 +59,7 @@ DiracGamma[Momentum[q,D],D]
 
 
 GS[p-q] . GS[p]
+
 DiracGammaExpand[%]
 
 

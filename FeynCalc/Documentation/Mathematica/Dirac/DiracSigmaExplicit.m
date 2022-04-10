@@ -19,8 +19,10 @@
 
 
 DiracSigma[GA[\[Alpha]],GA[\[Beta]]]
+
 DiracSigmaExplicit[%]
 
 
 GSD[p].DiracSigma[GAD[\[Mu]],GAD[\[Nu]]].GSD[q]
+
 DiracSigmaExplicit[%]

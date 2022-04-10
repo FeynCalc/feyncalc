@@ -8,11 +8,11 @@
 
 
 (* ::Text:: *)
-(*`GluonPropagator[p, {\[Mu], a}, {\[Nu], b}]` or `GluonPropagator[p, \[Mu], a, \[Nu], b]` yields the gluon propagator.*)
+(*`GluonPropagator[p, {mu, a}, {nu, b}]` or `GluonPropagator[p, mu, a, nu, b]` yields the gluon propagator.*)
 
 
 (* ::Text:: *)
-(*`GluonPropagator[p, {\[Mu]}, {\[Nu]}]` or `GluonPropagator[p, \[Mu], \[Nu]]` omits the `SUNDelta`.*)
+(*`GluonPropagator[p, {mu}, {nu}]` or `GluonPropagator[p, mu, nu]` omits the `SUNDelta`.*)
 
 
 (* ::Text:: *)
@@ -24,9 +24,9 @@
 
 
 (* ::Text:: *)
-(* `1` for the Feynman gauge;  *)
-(*`alpha` for the general covariant gauge;*)
-(* `Momentum[n] ,1}` for the axial gauge.*)
+(*-  `1` for the Feynman gauge;  *)
+(*- `alpha` for the general covariant gauge;*)
+(*- `Momentum[n] ,1}` for the axial gauge.*)
 
 
 (* ::Subsection:: *)
@@ -34,7 +34,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [GluonSelfEnergy](GluonSelfEnergy.md), [GluonVertex](GluonVertex.md), [GhostVertex](GhostVertex.md), [GhostPropagator](GhostPropagator.md), [GluonGhostVertex](GluonGhostVertex.md).*)
+(*[Overview](Extra/FeynCalc.md), [GluonSelfEnergy](GluonSelfEnergy.md), [GluonVertex](GluonVertex.md), [GluonGhostVertex](GluonGhostVertex.md), [GhostPropagator](GhostPropagator.md), [GluonGhostVertex](GluonGhostVertex.md).*)
 
 
 (* ::Subsection:: *)
@@ -42,10 +42,12 @@
 
 
 GluonPropagator[p,\[Mu],a,\[Nu],b]
+
 Explicit[%]
 
 
 GP[p,\[Mu],a,\[Nu],b,Gauge->\[Alpha]]
+
 Explicit[%]
 
 

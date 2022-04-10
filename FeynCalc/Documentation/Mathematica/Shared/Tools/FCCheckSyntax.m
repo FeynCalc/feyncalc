@@ -23,7 +23,6 @@
 (*[Overview](Extra/FeynCalc.md)*)
 
 
-
 (* ::Subsection:: *)
 (*Examples*)
 
@@ -40,6 +39,3 @@ FCCheckSyntax[GA[mu]*GA[nu]]
 
 
 FCCheckSyntax[FV[p,\[Mu]]FV[q,\[Mu]] FV[r,\[Mu]]]
-
-
-

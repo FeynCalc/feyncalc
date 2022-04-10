@@ -31,7 +31,6 @@
 (*[Overview](Extra/FeynCalc.md)*)
 
 
-
 (* ::Subsection:: *)
 (*Examples*)
 
@@ -44,7 +43,9 @@
 
 
 - \[Lambda]/4! QuantumField[\[Phi]]^4
-FeynRule[%,{QuantumField[\[Phi]][p1],QuantumField[\[Phi]][p2],QuantumField[\[Phi]][p3],QuantumField[\[Phi]][p4]}]
+
+FeynRule[%,{QuantumField[\[Phi]][p1],QuantumField[\[Phi]][p2],
+QuantumField[\[Phi]][p3],QuantumField[\[Phi]][p4]}]
 
 
 (* ::Text:: *)
@@ -52,7 +53,9 @@ FeynRule[%,{QuantumField[\[Phi]][p1],QuantumField[\[Phi]][p2],QuantumField[\[Phi
 
 
 I QuantumField[AntiQuarkField] . GA[\[Mu]] . CovariantD[\[Mu]] . QuantumField[QuarkField]
-FeynRule[%,{QuantumField[GaugeField,{\[Mu]},{a}][p1],QuantumField[QuarkField][p2],QuantumField[AntiQuarkField][p3]}]
+
+FeynRule[%,{QuantumField[GaugeField,{\[Mu]},{a}][p1],
+QuantumField[QuarkField][p2],QuantumField[AntiQuarkField][p3]}]
 
 
 (* ::Text:: *)
@@ -60,8 +63,12 @@ FeynRule[%,{QuantumField[GaugeField,{\[Mu]},{a}][p1],QuantumField[QuarkField][p2
 
 
 -(1/4) FieldStrength[\[Alpha],\[Beta],i] . FieldStrength[\[Alpha],\[Beta],i]
-FeynRule[%,{QuantumField[GaugeField,{\[Mu]},{a}][p1],QuantumField[GaugeField,{\[Nu]},{b}][p2],QuantumField[GaugeField,{\[Rho]},{c}][p3],QuantumField[GaugeField,{\[Sigma]},{d}][p4]}]
+
+FeynRule[%,{QuantumField[GaugeField,{\[Mu]},{a}][p1],QuantumField[GaugeField,{\[Nu]},{b}][p2],
+QuantumField[GaugeField,{\[Rho]},{c}][p3],QuantumField[GaugeField,{\[Sigma]},{d}][p4]}]
+
 GluonVertex[{p,\[Mu],a},{q,\[Nu],b},{r,\[Rho],c},{s,\[Sigma],d},Dimension->4,Explicit->True]
+
 FCCanonicalizeDummyIndices[%-%%]//Factor
 
 
@@ -70,8 +77,12 @@ FCCanonicalizeDummyIndices[%-%%]//Factor
 
 
 -(1/4) FieldStrength[\[Alpha],\[Beta],i] . FieldStrength[\[Alpha],\[Beta],i]
-FeynRule[%,{QuantumField[GaugeField,{\[Mu]},{a}][p],QuantumField[GaugeField,{\[Nu]},{b}][q],QuantumField[GaugeField,{\[Rho]},{c}][r]}]
+
+FeynRule[%,{QuantumField[GaugeField,{\[Mu]},{a}][p],QuantumField[GaugeField,{\[Nu]},{b}][q],
+QuantumField[GaugeField,{\[Rho]},{c}][r]}]
+
 GluonVertex[{p,\[Mu],a},{q,\[Nu],b},{r,\[Rho],c},Dimension->4,Explicit->True]
+
 ExpandScalarProduct[%-%%]//Factor
 
 
@@ -86,21 +97,24 @@ heftInt=-(1/4) CH FieldStrength[mu,nu,a] . FieldStrength[mu,nu,a] . QuantumField
 (*$Hgg$ vertex Feynman rules*)
 
 
-FeynRule[heftInt,{QuantumField[GaugeField,{i},{a}][p1],QuantumField[GaugeField,{j},{b}][p2],QuantumField[H][p3]}]
+FeynRule[heftInt,{QuantumField[GaugeField,{i},{a}][p1],QuantumField[GaugeField,
+{j},{b}][p2],QuantumField[H][p3]}]
 
 
 (* ::Text:: *)
 (*$Hggg$ vertex Feynman rules*)
 
 
-FeynRule[heftInt,{QuantumField[GaugeField,{i},{a}][p1],QuantumField[GaugeField,{j},{b}][p2],QuantumField[GaugeField,{k},{c}][p3],QuantumField[H][p4]}]//Simplify
+FeynRule[heftInt,{QuantumField[GaugeField,{i},{a}][p1],QuantumField[GaugeField,
+{j},{b}][p2],QuantumField[GaugeField,{k},{c}][p3],QuantumField[H][p4]}]//Simplify
 
 
 (* ::Text:: *)
 (*$Hgggg$ vertex Feynman rules*)
 
 
-FeynRule[heftInt,{QuantumField[GaugeField,{i},{a}][p1],QuantumField[GaugeField,{j},{b}][p2],QuantumField[GaugeField,{k},{c}][p3],
+FeynRule[heftInt,{QuantumField[GaugeField,{i},{a}][p1],QuantumField[GaugeField,{j},
+{b}][p2],QuantumField[GaugeField,{k},{c}][p3],
 QuantumField[GaugeField,{l},{d}][p4],QuantumField[H][p5]}]//
 FCCanonicalizeDummyIndices[#,SUNIndexNames->{e}]&//Collect2[#,SUNF,
 FCFactorOut-> I CH SMP["g_s"]^2]&
@@ -115,7 +129,8 @@ FCFactorOut-> I CH SMP["g_s"]^2]&
 
 
 Lagrangian["ogu"]
-FeynRule[%,{QuantumField[GaugeField,{\[Mu]},{a}][p],QuantumField[GaugeField,{\[Nu]},{b}][q]},ZeroMomentumInsertion->False]//Factor
+FeynRule[%,{QuantumField[GaugeField,{\[Mu]},{a}][p],QuantumField[GaugeField,{\[Nu]},
+{b}][q]},ZeroMomentumInsertion->False]//Factor
 
 
 (* ::Text:: *)
@@ -123,7 +138,9 @@ FeynRule[%,{QuantumField[GaugeField,{\[Mu]},{a}][p],QuantumField[GaugeField,{\[N
 
 
 Lagrangian["ogp"]
-FeynRule[%,{QuantumField[GaugeField,{\[Mu]},{a}][p],QuantumField[GaugeField,{\[Nu]},{b}][q]},ZeroMomentumInsertion->False]//Factor
+FeynRule[%,{QuantumField[GaugeField,{\[Mu]},{a}][p],QuantumField[GaugeField,{\[Nu]},
+{b}][q]},ZeroMomentumInsertion->False]//Factor
+
 Factor2[Calc[%/.p->-q,Assumptions->Automatic]]
 
 
@@ -139,7 +156,10 @@ Twist2GluonOperator[q,{\[Mu],a},{\[Nu],b},Polarization->1,Explicit->True]
 
 
 Lagrangian["oqu"]
-frule=FeynRule[%,{QuantumField[QuarkField][p],QuantumField[AntiQuarkField][q],QuantumField[GaugeField,{\[Mu]},{a}][r],QuantumField[GaugeField,{\[Nu]},{b}][s]},ZeroMomentumInsertion->True,InitialFunction->Identity];
+
+frule=FeynRule[%,{QuantumField[QuarkField][p],QuantumField[AntiQuarkField][q],
+QuantumField[GaugeField,{\[Mu]},{a}][r],QuantumField[GaugeField,{\[Nu]},{b}][s]},
+ZeroMomentumInsertion->True,InitialFunction->Identity];
 
 
 LeafCount[frule]

@@ -34,8 +34,8 @@ $\\frac{N^2-1}{2N}$).";
 
 CFAD::usage =
 "CFAD[{{q1 +..., p1 . q2 +...,} {m^2, s}, n}, ...] denotes a Cartesian
-propagator given by \\frac{1}{[(q_1+\\ldots)^2 + p_1 \\cdot q_2 ... + m^2 + s i
-\\eta]^n}, where $q_1^2$ and $p_1 \\cdot q_2$ are Cartesian scalar products in
+propagator given by $\\frac{1}{[(q_1+\\ldots)^2 + p_1 \\cdot q_2 ... + m^2 + s i
+\\eta]^n}$, where $q_1^2$ and $p_1 \\cdot q_2$ are Cartesian scalar products in
 $D-1$ dimensions.
 
 For brevity one can also use shorter forms such as CFAD[{q1+ ...,  m^2}, ...],
@@ -50,10 +50,13 @@ Translation into FeynCalcI internal form is performed by FeynCalcInternal,
 where a CFAD is encoded using the special head CartesianPropagatorDenominator.";
 
 CartesianPropagatorDenominator::usage =
-"CartesianPropagatorDenominator[CartesianMomentum[q1, D - 1] +...,
-CartesianPair[CartesianMomentum[q1, D - 1], CartesianMomentum[p1, D - 1] +...,
-m^2, {n, s}] encodes a generic Cartesian propagator denominator
-$\\frac{1}{[(q1+...)^2 + q1.p1 + ... + m^2 + s*I \\eta]^n}$.
+"CartesianPropagatorDenominator[propSq  + ..., propEik + ..., m^2, {n, s}]
+encodes a generic Cartesian propagator denominator of the form
+$\\frac{1}{[(q1+...)^2 + q1.p1 + ... + m^2 + s*I \\eta]^n}$
+
+propSq should be of the form CartesianMomentum[q1, D - 1], while propEik
+should look like CartesianPair[CartesianMomentum[q1, D - 1],
+CartesianMomentum[p1, D - 1].
 
 CartesianPropagatorDenominator is an internal object. To enter such
 propagators in FeynCalc you should use CFAD.";
@@ -170,8 +173,9 @@ propagator.
 
 FAD[q, q-p, ...] is $\\frac{1}{q^2 (q-p)^2 \\ldots}$.
 
-FAD[{q1,m}, {q1-p,m}, q2, ...] is \\frac{1}{[q1^2 - m^2][(q1-p)^2 - m^2] q2^2
-}. Translation into FeynCalc internal form is performed by FeynCalcInternal.";
+FAD[{q1,m}, {q1-p,m}, q2, ...] is $\\frac{1}{[q1^2 - m^2][(q1-p)^2 - m^2]
+q2^2}$. Translation into FeynCalc internal form is performed by
+FeynCalcInternal.";
 
 FCTopology::usage=
 "FCTopology[id, {prop1, prop2, ...}] denotes a topology with the identifier id
@@ -317,22 +321,22 @@ LCD[m,...][p, ...] evaluates to $D$-dimensional $\\epsilon ^{m \\ldots  \\mu
 \\ldots}p_{\\mu  \\ldots}$ applying FeynCalcInternal.";
 
 LeftPartialD::usage =
-"LeftPartialD[\[Mu]] denotes $\\overleftarrow{\\partial }_{\\mu }$ acting to the
+"LeftPartialD[mu] denotes $\\overleftarrow{\\partial }_{\\mu }$ acting to the
 left.";
 
 LeftRightPartialD::usage =
 "LeftRightPartialD[mu] denotes $\\overleftrightarrow {\\partial }_{\\mu }$, acting
 to the left and right.
 
-ExplicitPartialD[LeftRightPartialD[\[Mu]]] gives 1/2 (RightPartialD[\[Mu]] -
-LeftPartialD[\[Mu]]).";
+ExplicitPartialD[LeftRightPartialD[mu]] gives 1/2 (RightPartialD[mu] -
+LeftPartialD[mu]).";
 
 LeftRightPartialD2::usage =
-"LeftRightPartialD2[\[Mu]] denotes $\\overleftrightarrow{\\partial }_{\\mu }$,
-acting to the left and right.
+"LeftRightPartialD2[mu] denotes $\\overleftrightarrow{\\partial }_{\\mu }$, acting
+to the left and right.
 
-ExplicitPartialD[LeftRightPartialD2[\[Mu]]] gives (RightPartialD[\[Mu]] +
-LeftPartialD[\[Mu]]).";
+ExplicitPartialD[LeftRightPartialD2[mu]] gives (RightPartialD[mu] +
+LeftPartialD[mu]).";
 
 Li2::usage =
 "Li2 is an abbreviation for the dilogarithm function, i.e. Li2 = PolyLog[2,
@@ -390,15 +394,14 @@ FCPartialD::usage =
 "FCPartialD[ind] denotes a partial derivative of a field. It is an internal
 object that may appear only inside a QuantumField.
 
-FCPartialD[LorentzIndex[\[Mu]]] denotes  $\\partial _{\\mu }$.
+FCPartialD[LorentzIndex[mu]] denotes  $\\partial_{\\mu }$.
 
-FCPartialD[LorentzIndex[\[Mu] ,D]] denotes the $D$-dimensional $\\partial _{\\mu
-}$.
+FCPartialD[LorentzIndex[mu ,D]] denotes the $D$-dimensional $\\partial_{\\mu }$.
 
 FCPartialD[CartesianIndex[i]] denotes  $\\partial^{i} = - \\nabla^i$.
 
 If you need to specify a derivative with respect to a particular variable it
-also possible to use FCPartialD[{LorentzIndex[\[Mu]],y}] or
+also possible to use FCPartialD[{LorentzIndex[mu],y}] or
 FCPartialD[{CartesianIndex[i],x}]although this notation is still somewhat
 experimental";
 
@@ -498,8 +501,8 @@ integrals.";
 
 SFAD::usage =
 "SFAD[{{q1 +..., p1 . q2 +...,} {m^2, s}, n}, ...] denotes a Cartesian
-propagator given by \\frac{1}{[(q_1+\\ldots)^2 + p_1 \\cdot q_2 ... + m^2 + s i
-\\eta]^n}, where $q_1^2$ and $p_1 \\cdot q_2$ are Cartesian scalar products in
+propagator given by $\\frac{1}{[(q_1+\\ldots)^2 + p_1 \\cdot q_2 ... + m^2 + s i
+\\eta]^n}$, where $q_1^2$ and $p_1 \\cdot q_2$ are Cartesian scalar products in
 $D-1$ dimensions.
 
 For brevity one can also use shorter forms such as SFAD[{q1+ ...,  m^2}, ...],
@@ -514,10 +517,12 @@ Translation into FeynCalcI internal form is performed by FeynCalcInternal,
 where a SFAD is encoded using the special head CartesianPropagatorDenominator.";
 
 StandardPropagatorDenominator::usage =
-"StandardPropagatorDenominator[Momentum[q1, D] +..., Pair[Momentum[q1, D],
-Momentum[p1, D] +..., m^2, {n, s}] encodes a generic Lorentzian propagator
-denominator $\\frac{1}{[(q_1+ \\ldots)^2 + q_1 \\cdot p_1 + \\ldots + m^2 + s i
-\\eta]^n}$.
+"StandardPropagatorDenominator[propSq + ..., propEik +..., m^2, {n, s}] encodes
+a generic Lorentzian propagator denominator $\\frac{1}{[(q_1+ \\ldots)^2 + q_1
+\\cdot p_1 + \\ldots + m^2 + s i \\eta]^n}$.
+
+propSq should be of the form Momentum[q1, D], while propEik should look like
+Pair[Momentum[q1, D], Momentum[p1, D].
 
 This allows to accommodate for standard propagators of the type $1/(p^2-m^2)$
 but also for propagators encountered in manifestly Lorentz covariant effective
@@ -946,12 +951,12 @@ $D-4$-dimensional Cartesian index i and is transformed into
 PauliSigma[CartesianIndex[i,D-4],D-4] by FeynCalcInternal.";
 
 CSIS::usage =
-"CSIS[p]can be used as input for 3-dimensional $\\sigma ^ip^i$ with
+"CSIS[p]can be used as input for 3-dimensional $\\sigma ^i p^i$ with
 3-dimensional Cartesian vector p and is transformed into
 PauliSigma[CartesianMomentum[p]] by FeynCalcInternal.";
 
 CSISD::usage =
-"CSISD[p] can be used as input for D-1-dimensional $\\sigma ^ip^i$ with
+"CSISD[p] can be used as input for D-1-dimensional $\\sigma ^i p^i$ with
 D-1-dimensional Cartesian vector p and is transformed into
 PauliSigma[CartesianMomentum[p,D-1],D-1] by FeynCalcInternal.";
 
@@ -972,7 +977,7 @@ PauliXi::usage =
 stands for $\\xi^{\\dagger }$.";
 
 PauliEta::usage =
-"PauliEta[I] represents a two-component Pauli spinor \\eta, while PauliEta[-I]
+"PauliEta[I] represents a two-component Pauli spinor $\\eta$, while PauliEta[-I]
 stands for $\\eta^{\\dagger }$.";
 
 TemporalMomentum::usage =

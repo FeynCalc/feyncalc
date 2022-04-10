@@ -1,5 +1,8 @@
 (* ::Package:: *)
 
+ 
+
+
 (* ::Section:: *)
 (*FCLoopValidTopologyQ*)
 
@@ -28,6 +31,7 @@
 
 
 topo=FCTopology[topo1,{FAD[p1],FAD[p2],FAD[p3],FAD[Q-p1-p2-p3],FAD[Q-p1-p2],
+
 FAD[Q-p1],FAD[Q-p2],FAD[p1+p3]},{p1,p2,p3},{Q},{},{}]
 
 
@@ -39,10 +43,8 @@ FCLoopValidTopologyQ[topo]
 
 
 topoWrong=FCTopology[topo1,{FAD[p1],FAD[p2],FAD[Q-p1-p2-p3],FAD[Q-p1-p2],
+
 FAD[Q-p1],FAD[p1+p3]},{},{}]
 
 
 FCLoopValidTopologyQ[topoWrong]
-
-
-

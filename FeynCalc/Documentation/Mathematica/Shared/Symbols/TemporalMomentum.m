@@ -30,12 +30,13 @@
 TemporalMomentum[p]
 
 
-TemporalMomentum[-q]
-%//StandardForm
+TemporalMomentum[-q]//StandardForm
 
 
 TemporalMomentum[p+q]
-%//MomentumExpand//StandardForm
 
 
-%//MomentumCombine//StandardForm
+TemporalMomentum[p+q]//MomentumExpand//StandardForm
+
+
+TemporalMomentum[p+q]//MomentumExpand//MomentumCombine//StandardForm

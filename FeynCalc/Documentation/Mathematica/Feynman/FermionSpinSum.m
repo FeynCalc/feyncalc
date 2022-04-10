@@ -28,21 +28,24 @@
 
 
 SpinorUBar[Momentum[p],m] . SpinorU[Momentum[p],m]
+
 FermionSpinSum[%]
+
 DiracSimplify[%]
 
 
 SpinorVBar[Momentum[p],m] . SpinorV[Momentum[p],m]
+
 FermionSpinSum[%]
+
 DiracSimplify[%]
 
 
 amp=SpinorUBar[k1,m] . GS[p] . GA[5] . SpinorU[p1,m]
+
 ampSq= amp ComplexConjugate[amp]
 
 
 FermionSpinSum[ampSq]
+
 DiracSimplify[%]
-
-
-

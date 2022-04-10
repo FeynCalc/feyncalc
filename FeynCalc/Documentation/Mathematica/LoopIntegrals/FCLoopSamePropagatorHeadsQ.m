@@ -24,8 +24,10 @@
 
 
 FCI@SFAD[q,q-p]
+
 FCLoopSamePropagatorHeadsQ[%]
 
 
 FeynAmpDenominatorCombine[CFAD[q,q-p]SFAD[l,l+k]]
+
 FCLoopSamePropagatorHeadsQ[%]

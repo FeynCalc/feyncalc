@@ -40,7 +40,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [FV](FV.md), [Pair](Pair.md), [Polarization](Polarization.md), [PolariazationSum](PolariazationSum.md), [DoPolariazationSums](DoPolariazationSums.md).*)
+(*[Overview](Extra/FeynCalc.md), [FV](FV.md), [Pair](Pair.md), [Polarization](Polarization.md), [PolarizationSum](PolarizationSum.md), [DoPolarizationSums](DoPolarizationSums.md).*)
 
 
 (* ::Subsection:: *)
@@ -52,23 +52,29 @@
 
 
 PolarizationVector[k, \[Mu]]
-%//StandardForm
+
+
+PolarizationVector[k, \[Mu]]//StandardForm
 
 
 Conjugate[PolarizationVector[k, \[Mu]]]
-%//StandardForm
+
+
+Conjugate[PolarizationVector[k, \[Mu]]]//StandardForm
 
 
 (* ::Text:: *)
 (*The transversality property is not automatic and must be explicitly activated using the option `Transversality`*)
 
 
- PolarizationVector[k, \[Mu]] FV[k, \[Mu]]
- Contract[%]
+PolarizationVector[k, \[Mu]] FV[k, \[Mu]]
+
+Contract[%]
 
 
- PolarizationVector[k, \[Mu], Transversality -> True] FV[k, \[Mu]]
- Contract[%]
+PolarizationVector[k, \[Mu], Transversality -> True] FV[k, \[Mu]]
+
+Contract[%]
 
 
 (* ::Text:: *)
@@ -80,24 +86,29 @@ Conjugate[PolarizationVector[k, \[Mu]]]
 
 
 FCClearScalarProducts[];
+
 SP[k1]=0;
+
 SP[k2]=0;
 
 
-\:0435\:04451=SP[k1,Polarization[k1,I]] SP[k2,Polarization[k1,-I]] SP[k1,Polarization[k2,I]] SP[k2,Polarization[k2,-I]]
+ex1=SP[k1,Polarization[k1,I]] SP[k2,Polarization[k1,-I]] SP[k1,Polarization[k2,I]]*
+SP[k2,Polarization[k2,-I]]
 
 
-\:0435\:04451//DoPolarizationSums[#,k1,0]&//DoPolarizationSums[#,k2,0]&
+ex1//DoPolarizationSums[#,k1,0]&//DoPolarizationSums[#,k2,0]&
 
 
 (* ::Text:: *)
 (*Here we erroneously set `Transversality->True`  and consequently obtain a wrong result. In pure QED the full result (physical amplitude squared) would still come out right owing to the Ward identities, but e.g. in QCD this would not be the case.*)
 
 
-\:0435\:04452=SP[k1,Polarization[k1,I,Transversality->True]] SP[k2,Polarization[k1,-I,Transversality->True]] SP[k1,Polarization[k2,I,Transversality->True]] SP[k2,Polarization[k2,-I,Transversality->True]]//FCI
+ex2=SP[k1,Polarization[k1,I,Transversality->True]] SP[k2,Polarization[k1,-I,
+Transversality->True]] SP[k1,Polarization[k2,I,Transversality->True]] SP[k2,
+Polarization[k2,-I,Transversality->True]]//FCI
 
 
-\:0435\:04452//DoPolarizationSums[#,k1,0]&//DoPolarizationSums[#,k2,0]&
+ex2//DoPolarizationSums[#,k1,0]&//DoPolarizationSums[#,k2,0]&
 
 
 FCClearScalarProducts[];

@@ -35,22 +35,27 @@ FCClearScalarProducts[]
 
 
 SPD[q,q]FAD[{q,m}]
+
 ApartFF[%,{q}]
 
 
 SPD[q,p]SPD[q,r]FAD[{q},{q-p},{q-r}]
+
 ApartFF[%,{q}]
 
 
 FAD[{q},{q-p},{q+p}]
+
 ApartFF[%,{q}]
 
 
 SPD[p,q1]SPD[p,q2]^2FAD[{q1,m},{q2,m},q1-p,q2-p,q1-q2]
+
 ApartFF[%,{q1,q2}]
 
 
 SPD[q,p] FAD[{q,m},{q-p,0}]
+
 ApartFF[%,{q}]
 
 

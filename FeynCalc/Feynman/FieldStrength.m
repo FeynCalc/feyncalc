@@ -16,11 +16,11 @@
 (* ------------------------------------------------------------------------ *)
 
 FieldStrength::usage =
-"FieldStrength[\[Mu], \[Nu], a] is the field strength tensor $\\partial _{\\mu }
-A_{\\nu }^a - \\partial _{\\nu } A_{\\mu }^a + g_s A_{\\mu }^b A_{\\nu }^c f^{abc}$.
+"FieldStrength[mu, nu, a] is the field strength tensor $\\partial _{\\mu } A_{\\nu
+}^a - \\partial _{\\nu } A_{\\mu }^a + g_s A_{\\mu }^b A_{\\nu }^c f^{abc}$.
 
-FieldStrength[\[Mu], \[Nu]] is the field strength tensor $(\\partial _{\\mu }
-A_{\\nu}- \\partial_{\\nu } A_{\\mu})$.
+FieldStrength[mu, nu] is the field strength tensor $(\\partial _{\\mu } A_{\\nu}-
+\\partial_{\\nu } A_{\\mu})$.
 
 The name of the field ($A$) and the coupling constant ($g$) can be set through
 the options or by additional arguments. The first two indices are interpreted

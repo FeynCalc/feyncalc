@@ -57,11 +57,15 @@ Momentum[p,d]
 
 
 Momentum[-q]
-%//StandardForm
+
+
+Momentum[-q]//StandardForm
 
 
 ex=Momentum[p-q] + Momentum[2q]
-%//StandardForm
+
+
+ex//StandardForm
 
 
 ex//MomentumExpand//StandardForm

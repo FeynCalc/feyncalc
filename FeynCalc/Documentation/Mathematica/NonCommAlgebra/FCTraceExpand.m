@@ -36,6 +36,7 @@ FCTraceExpand[ex,DiracTrace->False]
 
 
 a*DiracTrace[GA[\[Mu]] . (GS[p1]+m1) . GA[\[Nu]]]+b*DiracTrace[GA[\[Mu]] . (GS[p2]+m2) . GA[\[Nu]]]
+
 FCTraceExpand[%,Momentum->{p1}]
 
 

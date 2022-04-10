@@ -25,8 +25,10 @@
 
 
 SPD[q,p] SFAD[q,q-p,q-p]
+
 FCLoopBasisExtract[%,{q},SetDimensions->{4,D}]
 
 
 SFAD[p1]
+
 FCLoopBasisExtract[%,{p1,p2,p3},FCTopology->True,FCE->True]

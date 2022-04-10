@@ -3,6 +3,9 @@
  
 
 
+ 
+
+
 (* ::Section:: *)
 (*DiracTrace*)
 
@@ -44,6 +47,7 @@ DiracSimplify[DiracTrace[GA[\[Mu],\[Nu],\[Rho],\[Sigma]]]]
 
 
 DiracTrace[GS[p,q,r,s]]
+
 DiracSimplify[%]
 
 
@@ -56,14 +60,17 @@ DiracSimplify[%]
 
 
 DiracTrace[GA[\[Mu],\[Nu],\[Rho],\[Sigma],5]]
+
 DiracSimplify[%]
 
 
 DiracTrace[GA[\[Mu],\[Nu],\[Rho],\[Sigma],\[Delta],\[Tau],5]]
+
 DiracSimplify[%]
 
 
 DiracTrace[GA[\[Mu],\[Nu],\[Rho],\[Sigma],\[Delta],\[Tau],6]]
+
 DiracSimplify[%]
 
 
@@ -72,6 +79,7 @@ DiracSimplify[%]
 
 
 DiracTrace[(-GSD[q]+SMP["m_e"]) . GAD[\[Nu]] . (GSD[p-q]+SMP["m_e"]) . GAD[\[Mu]]] 
+
 DiracSimplify[%]
 
 
@@ -80,10 +88,12 @@ DiracSimplify[%]
 
 
 DiracTrace[GAD[\[Mu],\[Nu],\[Rho]] . GA[5] . GAD[\[Sigma],\[Delta],\[Tau]] . GA[5]]
+
 DiracSimplify[%]
 
 
 DiracTrace[GAD[\[Mu],\[Nu],\[Rho]] . GA[5] . GAD[\[Sigma],\[Delta],\[Tau]] . GA[7]]
+
 DiracSimplify[%]
 
 
@@ -92,6 +102,7 @@ DiracSimplify[%]
 
 
 FCSetDiracGammaScheme["BMHV"];
+
 DiracSimplify[DiracTrace[GAD[\[Mu],\[Nu],\[Rho]] . GA[5] . GAD[\[Sigma],\[Delta],\[Tau]] . GA[7]]]
 
 
@@ -104,17 +115,23 @@ DiracSimplify[DiracTrace[GAD[\[Mu],\[Nu],\[Rho]] . GA[5] . GAD[\[Sigma],\[Delta]
 
 
 FCSetDiracGammaScheme["NDR"];
+
+
 DiracTrace[(-GSD[q]+SMP["m_e"]) . GA[\[Nu]] . (GS[p]-GSD[q]+SMP["m_e"]) . GA[\[Mu]]] 
+
 DiracSimplify[%]
 
 
 FCSetDiracGammaScheme["BMHV"];
-DiracSimplify[DiracTrace[(-GSD[q]+SMP["m_e"]) . GA[\[Nu]] . (GS[p]-GSD[q]+SMP["m_e"]) . GA[\[Mu]]] ]
 
-%//FCE//StandardForm
+
+ex=DiracSimplify[DiracTrace[(-GSD[q]+SMP["m_e"]) . GA[\[Nu]] . (GS[p]-GSD[q]+SMP["m_e"]) . GA[\[Mu]]] ]
+
+
+ex//FCE//StandardForm
+
 
 FCSetDiracGammaScheme["NDR"];
-
 
 
 (* ::Text:: *)
@@ -126,16 +143,19 @@ FCSetDiracGammaScheme["NDR"];
 
 
 FCSetDiracGammaScheme["BMHV"];
+
 AbsoluteTiming[r1=DiracSimplify[DiracTrace[GAD[\[Mu],\[Nu],\[Rho]] . GA[5] . GAD[\[Sigma],\[Delta],\[Tau]] . GA[7]]];]
 
 
-AbsoluteTiming[r2=DiracSimplify[DiracTrace[GAD[\[Mu],\[Nu],\[Rho]] . GA[5] . GAD[\[Sigma],\[Delta],\[Tau]] . GA[7],West->False]];]
+AbsoluteTiming[r2=DiracSimplify[DiracTrace[GAD[\[Mu],\[Nu],\[Rho]] . GA[5] . GAD[\[Sigma],\[Delta],\[Tau]] . GA[7],
+West->False]];]
 
 
 r1===r2
 
 
 FCSetDiracGammaScheme["NDR"];
+
 ClearAll[r1,r2]
 
 
@@ -144,6 +164,7 @@ ClearAll[r1,r2]
 
 
 FCSetDiracGammaScheme["NDR-Discard"];
+
 DiracSimplify[DiracTrace[GAD[\[Mu],\[Nu],\[Rho]] . GA[5] . GAD[\[Sigma],\[Delta],\[Tau]] . GA[7]]]
 
 
@@ -154,14 +175,16 @@ FCSetDiracGammaScheme["NDR"];
 (*Sorting of the matrices inside $4$-dimensional traces helps to avoid some spurious terms.*)
 
 
-DiracTrace[GA[\[Mu],\[Nu],5,\[Rho],\[Sigma],\[Tau],\[Kappa]],DiracTraceEvaluate->True]-DiracTrace[GA[\[Mu],\[Nu],\[Rho],\[Sigma],\[Tau],\[Kappa],5],DiracTraceEvaluate->True]//Expand
+DiracTrace[GA[\[Mu],\[Nu],5,\[Rho],\[Sigma],\[Tau],\[Kappa]],DiracTraceEvaluate->True]-
+DiracTrace[GA[\[Mu],\[Nu],\[Rho],\[Sigma],\[Tau],\[Kappa],5],DiracTraceEvaluate->True]//Expand
 
 
 (* ::Text:: *)
 (*When the sorting is turned off via `Sort` to `True`, one may obtain some spurious terms that vanish by Schouten's identity.*)
 
 
-DiracTrace[GA[\[Mu],\[Nu],5,\[Rho],\[Sigma],\[Tau],\[Kappa]],DiracTraceEvaluate->True,Sort->False]-DiracTrace[GA[\[Mu],\[Nu],\[Rho],\[Sigma],\[Tau],\[Kappa],5],DiracTraceEvaluate->True,Sort->False]//Expand
+DiracTrace[GA[\[Mu],\[Nu],5,\[Rho],\[Sigma],\[Tau],\[Kappa]],DiracTraceEvaluate->True,Sort->False]-
+DiracTrace[GA[\[Mu],\[Nu],\[Rho],\[Sigma],\[Tau],\[Kappa],5],DiracTraceEvaluate->True,Sort->False]//Expand
 
 
 (* ::Text:: *)
@@ -169,6 +192,7 @@ DiracTrace[GA[\[Mu],\[Nu],5,\[Rho],\[Sigma],\[Tau],\[Kappa]],DiracTraceEvaluate-
 
 
 DiracTrace[1]
+
 DiracSimplify[%]
 
 
@@ -187,8 +211,10 @@ DiracSimplify[DiracTrace[GAD[\[Mu],\[Nu]],TraceOfOne->D]]
 
 
 DiracTrace[CGAD[i,j,k,l]]
+
 DiracSimplify[%]
 
 
 DiracTrace[CGA[i,j,k,l] . GA[6] . CGA[m,n]]
+
 DiracSimplify[%]

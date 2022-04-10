@@ -28,12 +28,16 @@
 
 
 SPD[k,r] FAD[{k,m} , k - p]//FCI
+
 OneLoopSimplify[%,k]
+
 OneLoopSimplify[%/.m->0,k]
 
 
 FAD[k,k, k - Subscript[p, 1], k - Subscript[p, 2]] FVD[k,\[Mu]]//FCI
+
 OneLoopSimplify[ %,k]
+
 FCE[%]/.SPD[Subscript[p, 1]]->0//FCI
 
 

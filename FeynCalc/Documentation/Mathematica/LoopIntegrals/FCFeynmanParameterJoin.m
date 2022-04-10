@@ -37,22 +37,26 @@ FCFeynmanParameterJoin[{testProps[[1]],testProps[[2]],x},{p1,p2,p3,p4}]
 (*Now we can join the resulting propagator with another propagator by introducing another set of Feynman parameters `y[i]`*)
 
 
-FCFeynmanParameterJoin[{{testProps[[1]],testProps[[2]],x},testProps[[3]],y},{p1,p2,p3,p4}]
+FCFeynmanParameterJoin[{{testProps[[1]],testProps[[2]],x},testProps[[3]],y},
+{p1,p2,p3,p4}]
 
 
 (* ::Text:: *)
 (*If needed, this procedure can be nested even further*)
 
 
-FCFeynmanParameterJoin[{{{testProps[[1]],testProps[[2]],x},testProps[[3]],y},testProps[[4]],z},{p1,p2,p3,p4}]
+FCFeynmanParameterJoin[{{{testProps[[1]],testProps[[2]],x},testProps[[3]],y},
+testProps[[4]],z},{p1,p2,p3,p4}]
 
 
 (* ::Text:: *)
 (*Notice that `FCFeynmanParametrize`knows how to deal with the output produced by `FCFeynmanParameterJoin`*)
 
 
-intT=FCFeynmanParameterJoin[{{SFAD[{p1,mg^2}]SFAD[{p3-p1,mg^2}],1,x},SFAD[{{0,-2p1 . q}}]SFAD[{{0,-2p3 . q}}],y},{p1,p3}]
+intT=FCFeynmanParameterJoin[{{SFAD[{p1,mg^2}]SFAD[{p3-p1,mg^2}],1,x},
+SFAD[{{0,-2p1 . q}}]SFAD[{{0,-2p3 . q}}],y},{p1,p3}]
 
 
-FCFeynmanParametrize[intT[[1]],intT[[2]],{p1,p3},Names->z,Indexed->True,FCReplaceD->{D->4-2ep},Simplify->True,
-Assumptions->{mg>0,ep>0},FinalSubstitutions->{FCI@SPD[q]->qq,mg^2->mg2},Variables->intT[[3]]]
+FCFeynmanParametrize[intT[[1]],intT[[2]],{p1,p3},Names->z,Indexed->True,
+FCReplaceD->{D->4-2ep},Simplify->True,Assumptions->{mg>0,ep>0},
+FinalSubstitutions->{FCI@SPD[q]->qq,mg^2->mg2},Variables->intT[[3]]]

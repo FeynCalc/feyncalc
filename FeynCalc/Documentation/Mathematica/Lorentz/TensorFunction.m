@@ -28,18 +28,21 @@
 
 
 TensorFunction[t,\[Mu],\[Nu],\[Tau]]
-%//StandardForm
 
 
-Contract[FV[p,\[Mu]] %]
-%//StandardForm
+TensorFunction[t,\[Mu],\[Nu],\[Tau]]//StandardForm
+
+
+Contract[FV[p,\[Mu]] TensorFunction[t,\[Mu],\[Nu],\[Tau]]]
+
+
+Contract[FV[p,\[Mu]] TensorFunction[t,\[Mu],\[Nu],\[Tau]]]//StandardForm
 
 
 TensorFunction[{f,"S"},\[Alpha],\[Beta]]
 
 
-TensorFunction[{f,"S"},\[Beta],\[Alpha]]
-%//StandardForm
+TensorFunction[{f,"S"},\[Beta],\[Alpha]]//StandardForm
 
 
 Attributes[f]

@@ -1,5 +1,8 @@
 (* ::Package:: *)
 
+ 
+
+
 (* ::Section:: *)
 (*FCLoopFindIntegralMappings*)
 
@@ -46,9 +49,11 @@ FCLoopFindIntegralMappings[ints,{p1}]
 (*The following 3 integrals look rather different from each other, but are actually identical*)
 
 
-ints={FAD[p1] FAD[p1-p3-p4] FAD[p4] FAD[p3+q1]FAD[{p3,m1}] FAD[{p1-p4,m1}] FAD[{p1+q1,0},{p1+q1,0}],
-FAD[p4]FAD[p1-p3+q1] FAD[p3+q1] FAD[p1+p4+q1] FAD[{p3,m1}] FAD[{p1+q1,m1}] FAD[{p1+p4+2 q1,0},{p1+p4+2 q1,0}],
-FAD[p1] FAD[p4-2 q1] FAD[p3+q1] FAD[p1-p3-p4+2 q1] FAD[{p3,m1}] FAD[{p1-p4+2 q1,m1}] FAD[{p1+q1,0},{p1+q1,0}]}
+ints={FAD[p1] FAD[p1-p3-p4] FAD[p4] FAD[p3+q1]FAD[{p3,m1}] FAD[{p1-p4,m1}]*
+FAD[{p1+q1,0},{p1+q1,0}],FAD[p4]FAD[p1-p3+q1] FAD[p3+q1] FAD[p1+p4+q1]*
+FAD[{p3,m1}] FAD[{p1+q1,m1}] FAD[{p1+p4+2 q1,0},{p1+p4+2 q1,0}],
+FAD[p1] FAD[p4-2 q1] FAD[p3+q1] FAD[p1-p3-p4+2 q1] FAD[{p3,m1}]*
+FAD[{p1-p4+2 q1,m1}] FAD[{p1+q1,0},{p1+q1,0}]}
 
 
 FCLoopFindIntegralMappings[ints,{p1,p3,p4}]
@@ -59,13 +64,15 @@ FCLoopFindIntegralMappings[ints,{p1,p3,p4}]
 
 
 ClearAll[topo1,topo2];
+
 topos={
 FCTopology[topo1,{SFAD[{p1,m^2}],SFAD[{p2,m^2}]},{p1,p2},{},{},{}],
 FCTopology[topo2,{SFAD[{p3,m^2}],SFAD[{p4,m^2}]},{p3,p4},{},{},{}]
 }
 
 
-glis={GLI[topo1,{1,1}],GLI[topo1,{1,2}],GLI[topo1,{2,1}],GLI[topo2,{1,1}],GLI[topo2,{2,2}]}
+glis={GLI[topo1,{1,1}],GLI[topo1,{1,2}],GLI[topo1,{2,1}],GLI[topo2,{1,1}],
+GLI[topo2,{2,2}]}
 
 
 FCLoopFindIntegralMappings[glis,topos]
@@ -82,7 +89,8 @@ FCLoopFindIntegralMappings[glis,topos,List->True]
 (*In practice, one usually has a list of preferred integrals onto which one would like to map the occurring master integrals. Such integrals can be specified via the `PreferredIntegrals` options*)
 
 
-FCLoopFindIntegralMappings[glis,topos,PreferredIntegrals->{GLI[topo2,{1,1}],GLI[topo2,{2,1}]}]
+FCLoopFindIntegralMappings[glis,topos,PreferredIntegrals->{GLI[topo2,{1,1}],
+GLI[topo2,{2,1}]}]
 
 
 (* ::Text:: *)

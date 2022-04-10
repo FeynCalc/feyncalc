@@ -24,16 +24,20 @@
 
 
 LeftRightPartialD[\[Mu]]
+
 ExplicitPartialD[%]
 
 
 LeftRightPartialD2[\[Mu]]
+
 ExplicitPartialD[%]
 
 
 LeftRightPartialD[OPEDelta]
+
 ExplicitPartialD[%]
 
 
 16 LeftRightPartialD[OPEDelta]^4
+
 ExplicitPartialD[%]

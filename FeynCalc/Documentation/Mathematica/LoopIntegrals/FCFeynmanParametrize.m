@@ -99,30 +99,32 @@ FCFeynmanParametrize[FAD[q,q-p],{q},Names->x]
 (*With $p^2$ replaced by `pp` and `D` set to `4 - 2 Epsilon`*)
 
 
-FCFeynmanParametrize[FAD[q,q-p],{q},Names->x,FinalSubstitutions->SPD[p]->pp,FCReplaceD->{D->4-2Epsilon}]
+FCFeynmanParametrize[FAD[q,q-p],{q},Names->x,FinalSubstitutions->SPD[p]->pp,
+FCReplaceD->{D->4-2Epsilon}]
 
 
 (* ::Text:: *)
 (*Standard text-book prefactor of the loop integral measure*)
 
 
-FCFeynmanParametrize[FAD[q,q-p],{q},Names->x,FinalSubstitutions->SPD[p]->pp,FCReplaceD->{D->4-2Epsilon},
-FeynmanIntegralPrefactor->"Textbook"]
+FCFeynmanParametrize[FAD[q,q-p],{q},Names->x,FinalSubstitutions->SPD[p]->pp,
+FCReplaceD->{D->4-2Epsilon},FeynmanIntegralPrefactor->"Textbook"]
 
 
 (* ::Text:: *)
 (*Same integral but with the Euclidean metric signature*)
 
 
-FCFeynmanParametrize[FAD[q,q-p],{q},Names->x,FinalSubstitutions->SPD[p]->pp,FCReplaceD->{D->4-2Epsilon},
-FeynmanIntegralPrefactor->"Textbook","Euclidean"->True]
+FCFeynmanParametrize[FAD[q,q-p],{q},Names->x,FinalSubstitutions->SPD[p]->pp,
+FCReplaceD->{D->4-2Epsilon},FeynmanIntegralPrefactor->"Textbook","Euclidean"->True]
 
 
 (* ::Text:: *)
 (*A tensor integral*)
 
 
-FCFeynmanParametrize[FAD[{q,m}]FAD[{q-p,m2}]FVD[q,mu]FVD[q,nu],{q},Names->x,FCE->True]
+FCFeynmanParametrize[FAD[{q,m}]FAD[{q-p,m2}]FVD[q,mu]FVD[q,nu],{q},
+Names->x,FCE->True]
 
 
 (* ::Text:: *)
@@ -130,15 +132,21 @@ FCFeynmanParametrize[FAD[{q,m}]FAD[{q-p,m2}]FVD[q,mu]FVD[q,nu],{q},Names->x,FCE-
 
 
 SFAD[{{k,2p . k},M^2,s}]
-FCFeynmanParametrize[%,{k},Names->x,FCE->True,FeynmanIntegralPrefactor->1,FCReplaceD->{D->n}]
+
+FCFeynmanParametrize[%,{k},Names->x,FCE->True,FeynmanIntegralPrefactor->1,
+FCReplaceD->{D->n}]
 
 
 FVD[k,\[Mu]]SFAD[{{k,2p . k},M^2,s}]
-FCFeynmanParametrize[%,{k},Names->x,FCE->True,FeynmanIntegralPrefactor->1,FCReplaceD->{D->n}]
+
+FCFeynmanParametrize[%,{k},Names->x,FCE->True,FeynmanIntegralPrefactor->1,
+FCReplaceD->{D->n}]
 
 
 FVD[k,\[Mu]]FVD[k,\[Nu]]SFAD[{{k,2p . k},M^2,s}]
-FCFeynmanParametrize[%,{k},Names->x,FCE->True,FeynmanIntegralPrefactor->1,FCReplaceD->{D->n}]
+
+FCFeynmanParametrize[%,{k},Names->x,FCE->True,FeynmanIntegralPrefactor->1,
+FCReplaceD->{D->n}]
 
 
 (* ::Text:: *)
@@ -146,15 +154,21 @@ FCFeynmanParametrize[%,{k},Names->x,FCE->True,FeynmanIntegralPrefactor->1,FCRepl
 
 
 SFAD[{{k,2p . k},-M^2,s}]
-FCFeynmanParametrize[%,{k},Names->x,FCE->True,"Euclidean"->True,FeynmanIntegralPrefactor->I]
+
+FCFeynmanParametrize[%,{k},Names->x,FCE->True,"Euclidean"->True,
+FeynmanIntegralPrefactor->I]
 
 
 FVD[k,\[Mu]]SFAD[{{k,2p . k},-M^2,s}]
-FCFeynmanParametrize[%,{k},Names->x,FCE->True,FeynmanIntegralPrefactor->I,FCReplaceD->{D->n},"Euclidean"->True]
+
+FCFeynmanParametrize[%,{k},Names->x,FCE->True,FeynmanIntegralPrefactor->I,
+FCReplaceD->{D->n},"Euclidean"->True]
 
 
 FVD[k,\[Mu]]FVD[k,\[Nu]]SFAD[{{k,2p . k},-M^2,s}]
-FCFeynmanParametrize[%,{k},Names->x,FCE->True,FeynmanIntegralPrefactor->I,FCReplaceD->{D->n},"Euclidean"->True]
+
+FCFeynmanParametrize[%,{k},Names->x,FCE->True,FeynmanIntegralPrefactor->I,
+FCReplaceD->{D->n},"Euclidean"->True]
 
 
 (* ::Text:: *)
@@ -162,6 +176,7 @@ FCFeynmanParametrize[%,{k},Names->x,FCE->True,FeynmanIntegralPrefactor->I,FCRepl
 
 
 FAD[p,p+q1,p+q1+q2,p+q1+q2+q3]
+
 FCFeynmanParametrize[%,{p},Names->x,FCReplaceD->{D->4-2Epsilon}]
 
 
@@ -172,6 +187,7 @@ FCFeynmanParametrize[%,{p},Names->x,FCReplaceD->{D->4-2Epsilon}]
 SFAD[{{p1,0},{m^2,1},1},{{p2,0},{0,1},1},{{p3,0},{0,1},1},
 {{p2+p3,0},{0,1},1},{{p1-Q,0},{m^2,1},1},{{p2-Q,0},{0,1},1},
 {{p2+p3-Q,0},{0,1},1},{{p1+p2+p3-Q,0},{0,1},1}]
+
 FCFeynmanParametrize[%,{p1,p2,p3},Names->x,FCReplaceD->{D->4-2Epsilon}]
 
 
@@ -179,7 +195,8 @@ FCFeynmanParametrize[%,{p1,p2,p3},Names->x,FCReplaceD->{D->4-2Epsilon}]
 (*An example of using `FCFeynmanParametrize` together with `FCFeynmanParameterJoin`*)
 
 
-props={SFAD[{p1,m^2}],SFAD[{p3,m^2}],SFAD[{{0,2p1 . n}}],SFAD[{{0,2(p1+p3) . n}}]}
+props={SFAD[{p1,m^2}],SFAD[{p3,m^2}],SFAD[{{0,2p1 . n}}],
+SFAD[{{0,2(p1+p3) . n}}]}
 
 
 intT=FCFeynmanParameterJoin[{{props[[1]]props[[2]],1,x},
@@ -191,8 +208,8 @@ props[[3]]props[[4]],y},{p1,p3}]
 (*This gives us much more freedom when exploiting the Cheng-Wu theorem.*)
 
 
-FCFeynmanParametrize[intT[[1]],intT[[2]],{p1,p3},Indexed->True,FCReplaceD->{D->4-2ep},
-FinalSubstitutions->{SPD[n]->1,m->1},Variables->intT[[3]]]
+FCFeynmanParametrize[intT[[1]],intT[[2]],{p1,p3},Indexed->True,
+FCReplaceD->{D->4-2ep},FinalSubstitutions->{SPD[n]->1,m->1},Variables->intT[[3]]]
 
 
 (* ::Text:: *)
@@ -201,6 +218,7 @@ FinalSubstitutions->{SPD[n]->1,m->1},Variables->intT[[3]]]
 
 (SFAD[{{0, 2*k1 . n}}]*SFAD[{{0, 2*k2 . n}}]*SFAD[{k1, m^2}]*
 SFAD[{k2, m^2}]*SFAD[{k1 - k2, m^2}])
+
 out=FCFeynmanParametrize[%,{k1,k2},Names->x,FCReplaceD->{D->4-2Epsilon}, 
 FCFeynmanPrepare->True]
 
@@ -210,6 +228,7 @@ FCFeynmanPrepare->True]
 
 
 {integrand,pref} = out[[1;;2]]
+
 {uPoly,fPoly}=out[[4]][[1;;2]]
 
 
@@ -218,7 +237,9 @@ FCFeynmanPrepare->True]
 
 
 SFAD[{I k,0,-1/2+ep},{I(k+p),0,1},EtaSign->-1]
-v1=FCFeynmanParametrize[%,{k},Names->x,FCReplaceD->{D->4-2ep},FinalSubstitutions->{SPD[p]->1}]
+
+v1=FCFeynmanParametrize[%,{k},Names->x,FCReplaceD->{D->4-2ep},
+FinalSubstitutions->{SPD[p]->1}]
 
 
 (* ::Text:: *)
@@ -226,7 +247,9 @@ v1=FCFeynmanParametrize[%,{k},Names->x,FCReplaceD->{D->4-2ep},FinalSubstitutions
 
 
 SFAD[{I k,0,-1/2+ep},{I(k+p),0,1},EtaSign->-1]
-v2=FCFeynmanParametrize[%,{k},Names->x,FCReplaceD->{D->4-2ep},FinalSubstitutions->{SPD[p]->1},SplitSymbolicPowers->True]
+
+v2=FCFeynmanParametrize[%,{k},Names->x,FCReplaceD->{D->4-2ep},
+FinalSubstitutions->{SPD[p]->1},SplitSymbolicPowers->True]
 
 
 (* ::Text:: *)
@@ -234,10 +257,12 @@ v2=FCFeynmanParametrize[%,{k},Names->x,FCReplaceD->{D->4-2ep},FinalSubstitutions
 
 
 Integrate[Normal[Series[v1[[1]]/.x[1]->1,{ep,0,0}]]/.x[1]->1,{x[2],0,Infinity}]
+
 Normal@Series[v1[[2]] %,{ep,0,0}]
 
 
 Integrate[Normal[Series[v2[[1]]/.x[1]->1,{ep,0,0}]]/.x[1]->1,{x[2],0,Infinity}]
+
 Normal@Series[v2[[2]] %,{ep,0,0}]
 
 

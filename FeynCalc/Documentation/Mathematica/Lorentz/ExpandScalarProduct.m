@@ -28,18 +28,22 @@
 
 
 SP[p1+p2+p3,p4+p5+p6]
+
 %//ExpandScalarProduct
 
 
 SP[p,p-q]
+
 ExpandScalarProduct[%]
 
 
 FV[p-q,\[Mu]]
+
 ExpandScalarProduct[%]
 
 
 SPD[p-q,q-r]
+
 ExpandScalarProduct[%]
 
 
@@ -48,6 +52,7 @@ ExpandScalarProduct[%]
 
 
 SP[p1+p2+p3,p4+p5+p6]
+
 ExpandScalarProduct[%,Momentum->{p1}]
 
 
@@ -56,6 +61,7 @@ ExpandScalarProduct[%,Momentum->{p1}]
 
 
 LC[\[Mu]][p1+p2,p3+p4,p5+p6]
+
 ExpandScalarProduct[%]
 
 
@@ -64,6 +70,7 @@ ExpandScalarProduct[%]
 
 
 LC[\[Mu]][p1+p2,p3+p4,p5+p6]
+
 ExpandScalarProduct[%,EpsEvaluate->True]
 
 
@@ -72,6 +79,7 @@ ExpandScalarProduct[%,EpsEvaluate->True]
 
 
 LC[\[Mu]][p1+p2,p3+p4,p5+p6]
+
 ExpandScalarProduct[%,EpsEvaluate->True,Momentum->{p1}]
 
 
@@ -80,10 +88,12 @@ ExpandScalarProduct[%,EpsEvaluate->True,Momentum->{p1}]
 
 
 CSP[p1+p2,p3+p4]
+
 ExpandScalarProduct[%]
 
 
 CLC[][p1+p2,p3+p4,p5+p6]
+
 ExpandScalarProduct[%,EpsEvaluate->True]
 
 

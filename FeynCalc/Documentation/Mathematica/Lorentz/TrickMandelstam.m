@@ -24,11 +24,14 @@
 
 
 ClearAll[s,t,u]
+
 (s+t-u) (2 SMP["m_W"]^2-t-u)
+
 TrickMandelstam[%,{s,t,u, 2SMP["m_W"]^2}]//Factor2
 
 
 M^2 s - s^2 + M^2 t - s t + M^2 u - s u
+
 TrickMandelstam[%, {s,t,u,2M^2}]
 
 

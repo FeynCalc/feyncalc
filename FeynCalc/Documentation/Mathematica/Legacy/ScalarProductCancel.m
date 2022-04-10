@@ -32,8 +32,10 @@
 
 
 SPD[q,p] FAD[{q,m},{q-p,0}]
+
 ScalarProductCancel[%,q]
 
 
 SPD[q2,p]SPD[q1,p] FAD[{q1,m},{q2,m},q1-p,q2-p,q2-q1]//FCI
+
 SPC[%,q1,q2,FDS->True]

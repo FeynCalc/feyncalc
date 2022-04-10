@@ -24,12 +24,17 @@
 
 
 SpinorUBar[p,m]
-FCI[%]//StandardForm
+
+
+SpinorUBar[p,m]//FCI//StandardForm
 
 
 SpinorUBar[p]
-FCI[%]//StandardForm
 
 
-SpinorUBar[p] . GS[p]
+SpinorUBar[p]//FCI//StandardForm
+
+
+SpinorUBar[p].GS[p]
+
 DiracEquation[%]

@@ -55,8 +55,7 @@ QuantumField[B,{\[Mu]}]
 (*Color indices should be put after the Lorentz ones.*)
 
 
-QuantumField[GaugeField,{\[Mu]},{a}]
-%//StandardForm
+QuantumField[GaugeField,{\[Mu]},{a}]//StandardForm
 
 
 (* ::Text:: *)

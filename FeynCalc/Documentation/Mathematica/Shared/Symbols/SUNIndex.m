@@ -24,11 +24,15 @@
 
 
 SUNIndex[i]
-%//StandardForm
+
+
+SUNIndex[i]//StandardForm
 
 
 SUNIndex[2]
-%//StandardForm
+
+
+SUNIndex[2]//StandardForm
 
 
 SUNDelta[i,j]//FCI//StandardForm

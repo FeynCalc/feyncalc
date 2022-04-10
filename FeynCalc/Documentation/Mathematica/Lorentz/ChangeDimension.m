@@ -32,8 +32,11 @@
 
 
 {LorentzIndex[\[Mu]], Momentum[p]}
-ChangeDimension[%, D]
-%//StandardForm
+
+ex=ChangeDimension[%, D]
+
+
+ex//StandardForm
 
 
 (* ::Text:: *)
@@ -48,7 +51,9 @@ ChangeDimension[%%, 4] // StandardForm
 
 
 {GA[\[Mu],\[Nu]] MT[\[Mu],\[Nu]], GAD[\[Mu],\[Nu]] MTD[\[Mu],\[Nu]] f[D]}
+
 DiracTrick/@Contract/@%
+
 DiracTrick/@Contract/@ChangeDimension[%%,n]
 
 
@@ -57,7 +62,9 @@ DiracTrick/@Contract/@ChangeDimension[%%,n]
 
 
 LC[\[Mu],\[Nu],\[Rho],\[Sigma]]
+
 ChangeDimension[%,D]
+
 Factor2[Contract[%^2]]
 
 

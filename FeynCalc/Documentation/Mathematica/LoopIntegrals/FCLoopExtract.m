@@ -18,4 +18,5 @@
 
 
 FCI[GSD[q-p1].(GSD[q-p2]+M).GSD[p3]SPD[q,p2]FAD[q,q-p1,{q-p2,m}]]
+
 FCLoopExtract[%,{q},loopInt]

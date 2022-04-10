@@ -25,9 +25,12 @@
 
 
 FCClearScalarProducts[]
+
 FeynArts`FAFeynAmpDenominator[FeynArts`FAPropagatorDenominator[Momentum[P,D],MW Sqrt[FeynArts`FAGaugeXi[W]]],FeynArts`FAPropagatorDenominator[Momentum[k,D],m]]
+
 FCPrepareFAAmp[%]
 
 
 FeynArts`IndexDelta[FeynArts`Index[Global`Gluon,1],FeynArts`Index[Global`Gluon,2]]
+
 FCPrepareFAAmp[%]

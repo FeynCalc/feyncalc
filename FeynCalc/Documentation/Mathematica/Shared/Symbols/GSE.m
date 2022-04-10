@@ -24,11 +24,14 @@
 
 
 GSE[p]
+
+
 GSE[p]//FCI//StandardForm
 
 
-
 GSE[p,q,r,s]
+
+
 GSE[p,q,r,s]//StandardForm
 
 
@@ -40,10 +43,12 @@ GSE[q] . (GSE[p]+m) . GSE[q]
 
 
 FCSetDiracGammaScheme["NDR"];
+
 DiracSimplify[GSE[q] . GS[q] . GSE[q]]
 
 
 FCSetDiracGammaScheme["BMHV"];
+
 DiracSimplify[GSE[q] . GS[q] . GSE[q]]
 
 

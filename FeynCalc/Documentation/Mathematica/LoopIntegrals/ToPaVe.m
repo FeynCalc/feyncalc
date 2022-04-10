@@ -24,15 +24,20 @@
 
 
 FAD[{q,m1}]
+
 ToPaVe[%,q]
 
 
 FAD[{q,m1},{q+p1,m2}]
+
 ToPaVe[%,q]
+
+
 %//StandardForm
 
 
 FAD[{q,m1},{q+p1,m2},{q+p2,m3},{q+p3,m4},{q+p4,m5}]
+
 ToPaVe[%,q]
 
 
@@ -41,6 +46,8 @@ ToPaVe[%,q]
 
 
 TID[FVD[q,mu]FAD[{q,m1},{q+p}],q,ToPaVe->True]
+
+
 %//StandardForm
 
 
@@ -52,7 +59,6 @@ SetOptions[ToPaVe,PaVeToABCD->False];
 
 
 TID[FVD[q,mu]FAD[{q,m1},{q+p}],q,ToPaVe->True]
+
+
 %//StandardForm
-
-
-

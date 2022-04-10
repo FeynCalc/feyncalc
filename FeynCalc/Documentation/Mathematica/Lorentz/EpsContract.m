@@ -24,6 +24,7 @@
 
 
 LCD[\[Mu],\[Nu],\[Rho],\[Sigma]]
+
 EpsContract[% %]//Factor2
 
 

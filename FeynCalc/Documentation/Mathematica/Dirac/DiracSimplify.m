@@ -28,6 +28,7 @@
 
 
 GA[\[Mu],\[Nu],\[Mu]]
+
 DiracSimplify[%]
 
 
@@ -36,6 +37,7 @@ DiracSimplify[%]
 
 
 GS[p] . GS[p]
+
 DiracSimplify[%]
 
 
@@ -44,6 +46,7 @@ DiracSimplify[%]
 
 
 GS[a+b] . GS[p] . GS[c+d] . GS[p]
+
 DiracSimplify[%]
 
 
@@ -62,18 +65,22 @@ DiracSimplify[GS[a+b] . GS[p] . GS[c+d] . GS[p],Expanding->False]
 
 
 GAD[\[Mu],\[Nu],\[Mu]]
+
 DiracSimplify[%]
 
 
 GSD[p] . GAD[\[Alpha],\[Beta]] . GSD[p]
+
 DiracSimplify[%]
 
 
 GAD@@Join[{\[Mu]},Table[Subscript[\[Nu], i],{i,6}],{\[Mu]}]
+
 DiracSimplify[%]
 
 
 -1/2 GA[5] . (GAD[\[Mu]] . GSD[v]-FVD[v,\[Mu]]) FVD[v,\[Mu]]
+
 DiracSimplify[%]
 
 
@@ -82,10 +89,12 @@ DiracSimplify[%]
 
 
 GA[5,\[Mu],\[Nu]]
+
 DiracSimplify[%]
 
 
 GA[6] . GS[p+q]
+
 DiracSimplify[%]
 
 
@@ -94,14 +103,16 @@ DiracSimplify[%]
 
 
 GA[\[Mu]] . (c1 GA[6]+c2 GA[7]) . (GA[p]+m) . (c3 GA[6]+c4 GA[7]) . GA[\[Mu]]
+
 DiracSimplify[%]
 
 
 (* ::Text:: *)
-(*Moreover,  $frac{1}{2} \left( 1 \pm \ gamma^5 \right)$ is automatically replaced by $\gamma^{6/7}$.*)
+(*Moreover,  $\frac{1}{2} \left( 1 \pm \gamma^5 \right)$ is automatically replaced by $\gamma^{6/7}$.*)
 
 
 (1/2-GA[5]/2) . (-((a+GS[p+q])/b)) . (1/2+GA[5]/2)
+
 DiracSimplify[%]
 
 
@@ -134,10 +145,12 @@ DiracSimplify[GA[5,\[Mu],\[Nu]],DiracSubstitute5->True]
 
 (SpinorVBar[Subscript[p, 2],Subscript[m, 2]] . (GS[Subscript[p, 1]]+
 Subscript[m, 1]) . SpinorU[Subscript[p, 1],Subscript[m, 1]])
+
 DiracSimplify[%]
 
 
 SpinorVBar[p] . GS[p] . SpinorU[q]
+
 DiracSimplify[%]
 
 
@@ -155,6 +168,7 @@ DiracSimplify[SpinorVBar[p] . GS[p] . SpinorU[q],DiracEquation->False]
 (SpinorUBar[Subscript[p, 3],Subscript[m, 3]] . GA[\[Mu],\[Rho],\[Nu],6] . SpinorU[Subscript[p, 1],
 Subscript[m, 1]]SpinorUBar[Subscript[p, 4],
 Subscript[m, 4]] . GA[\[Mu],\[Tau],\[Nu],6] . SpinorU[Subscript[p, 2],Subscript[m, 2]])
+
 DiracSimplify[%]
 
 
@@ -162,7 +176,10 @@ DiracSimplify[%]
 (*The applications of Sirlin's identities can be disabled by setting the option `SirlinSimplify` to `False`.*)
 
 
-DiracSimplify[SpinorUBar[Subscript[p, 3],Subscript[m, 3]] . GA[\[Mu],\[Rho],\[Nu],6] . SpinorU[Subscript[p, 1],Subscript[m, 1]]SpinorUBar[Subscript[p, 4],Subscript[m, 4]] . GA[\[Mu],\[Tau],\[Nu],6] . SpinorU[Subscript[p, 2],Subscript[m, 2]],SirlinSimplify->False]
+DiracSimplify[SpinorUBar[Subscript[p, 3],Subscript[m, 3]] . GA[\[Mu],\[Rho],\[Nu],
+6] . SpinorU[Subscript[p, 1],Subscript[m, 1]]*
+SpinorUBar[Subscript[p, 4],Subscript[m, 4]] . GA[\[Mu],\[Tau],\[Nu],
+6] . SpinorU[Subscript[p, 2],Subscript[m, 2]],SirlinSimplify->False]
 
 
 (* ::Text:: *)
@@ -175,6 +192,7 @@ DiracSimplify[SpinorUBar[Subscript[p, 3],Subscript[m, 3]] . GA[\[Mu],\[Rho],\[Nu
 c2 SpinorUBar[Subscript[p, 3],Subscript[m, 3]] . GA[\[Alpha],\[Rho],
 \[Nu],6] . SpinorU[Subscript[p, 1],Subscript[m, 1]]SpinorUBar[Subscript[p, 
 4],Subscript[m, 4]] . GA[\[Alpha],\[Tau],\[Nu],6] . SpinorU[Subscript[p, 2],Subscript[m, 2]])
+
 DiracSimplify[%,SirlinSimplify->False]//Factor
 
 
@@ -197,6 +215,7 @@ SirlinSimplify->False,SpinorChainTrick->False]
 
 
 DiracSimplify[GA[\[Nu],\[Mu]]]
+
 DiracSimplify[GA[\[Nu],\[Mu]],DiracOrder->True]
 
 
@@ -205,6 +224,7 @@ DiracSimplify[GA[\[Nu],\[Mu]],DiracOrder->True]
 
 
 GA[\[Mu],\[Nu],\[Rho]]
+
 DiracSimplify[%,InsideDiracTrace->True]
 
 
@@ -213,6 +233,7 @@ DiracSimplify[%,InsideDiracTrace->True]
 
 
 GA[\[Mu],\[Nu],\[Rho],\[Sigma]]
+
 DiracSimplify[%,InsideDiracTrace->True]
 
 
@@ -221,10 +242,12 @@ DiracSimplify[%,InsideDiracTrace->True]
 
 
 DiracTrace[GA[\[Mu],\[Nu],\[Rho],\[Sigma]]]
+
 DiracSimplify[%]
 
 
 DiracTrace[(-GSD[q]+SMP["m_e"]) . GAD[\[Nu]] . (GSD[p-q]+SMP["m_e"]) . GAD[\[Mu]]] 
+
 DiracSimplify[%]
 
 
@@ -253,6 +276,7 @@ SMP["m_e"]) . GAD[\[Mu]]] ,DiracTraceEvaluate->False,DiracTrace->False]
 
 
 GAD[\[Mu]] . (GA[p]+m) . GAD[\[Mu]]
+
 DiracSimplify[%]
 
 
@@ -261,6 +285,7 @@ DiracSimplify[%]
 
 
 FCSetDiracGammaScheme["BMHV"];
+
 DiracSimplify[GAD[\[Mu]] . (GA[p]+m) . GAD[\[Mu]]]
 
 
@@ -276,6 +301,7 @@ FCSetDiracGammaScheme["NDR"];
 
 
 DiracTrace[GAD[\[Mu],\[Nu],\[Rho],\[Sigma],\[Alpha],\[Beta]] . GA[5]]
+
 DiracSimplify[%]
 
 
@@ -284,6 +310,7 @@ DiracSimplify[%]
 
 
 FCSetDiracGammaScheme["BMHV"];
+
 DiracSimplify[DiracTrace[GAD[\[Mu],\[Nu],\[Rho],\[Sigma],\[Alpha],\[Beta]] . GA[5]]]
 
 
@@ -299,22 +326,27 @@ FCSetDiracGammaScheme["NDR"];
 
 
 CGA[i] . CGA[i]
+
 DiracSimplify[%]
 
 
 CGA[i] . CGS[p] . CGA[j] . CGS[p+q]
+
 DiracSimplify[%]
 
 
 CGA[i] . CGS[p] . CGA[j] . CGS[p+q]KD[i,j]
+
 DiracSimplify[%]
 
 
 TGA[] . CGA[i] . TGA[]
+
 DiracSimplify[%]
 
 
 DiracTrace[CGAD[i,j,k,l]]
+
 DiracSimplify[%]
 
 
@@ -326,6 +358,7 @@ ex=(Spinor[-Momentum[p1,D],mb,1] . GAD[\[Mu]] . GA[7] . GAD[\[Nu]] . GAD[\[Alpha
 GAD[\[Beta]] . GAD[\[Delta]] . GA[7] . Spinor[-Momentum[p4,D],0,1] Spinor[Momentum[p3,D],0,
 1] . GAD[\[Alpha]] . GAD[\[Beta]] . GAD[\[Delta]] . GA[7] . GAD[\[Nu]] . GAD[\[Mu]] . 
 GA[7] . Spinor[Momentum[p2,D],0,1])
+
 DiracSimplify[ex]
 
 
@@ -337,6 +370,7 @@ DiracSimplify[ex,DiracOrder->True,LorentzIndexNames->{i1,i2,i3,i4,i5}]
 
 
 ex=SpinorUBar[p,m] . SpinorU[p,m]
+
 DiracSimplify[ex]
 
 

@@ -6,8 +6,9 @@
 (* ------------------------------------------------------------------------ *)
 
 FreeIndex::usage =
-"FreeIndex is a datatype which is recognized by Contract. Possible use:
-DataType[mu, FreeIndex] = True.";
+"FreeIndex is a datatype which is recognized by Contract.
+
+Possible use: DataType[mu, FreeIndex] = True.";
 
 GrassmannParity::usage =
 "GrassmannParity is a data type.

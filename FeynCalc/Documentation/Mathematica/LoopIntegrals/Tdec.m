@@ -36,6 +36,7 @@
 
 
 Tdec[{q,\[Mu]},{p}]
+
 %[[2]]/.%[[1]]
 
 
@@ -44,7 +45,5 @@ Tdec[{q,\[Mu]},{p}]
 
 
 Tdec[{{Subscript[q, 1],\[Mu]},{Subscript[q, 2],\[Nu]},{Subscript[q, 3],\[Rho]}},{p},List->False]
+
 Contract[% FVD[p,\[Mu]]FVD[p,\[Nu]] FVD[p,\[Rho]]]//Factor
-
-
-

@@ -18,12 +18,15 @@
 
 
 1/Epsilon+Log[4Pi]-EulerGamma
+
 FCHideEpsilon[%]
 
 
 1/EpsilonUV+Log[4Pi]-EulerGamma
+
 FCHideEpsilon[%]
 
 
 1/EpsilonIR+Log[4Pi]-EulerGamma
+
 FCHideEpsilon[%]

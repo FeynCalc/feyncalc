@@ -24,4 +24,5 @@
 
 
 PCHN[(CSIS[p]+m) . CSI[a],i,j]
+
 PauliChainExpand[%]

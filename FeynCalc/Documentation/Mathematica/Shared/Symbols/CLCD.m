@@ -28,11 +28,15 @@
 
 
 CLCD[i,j,k]
-%//FCI//StandardForm
+
+
+CLCD[i,j,k]//FCI//StandardForm
 
 
 CLCD[i,j][p]
-%//FCI//StandardForm
+
+
+CLCD[i,j][p]//FCI//StandardForm
 
 
 CLCD[i,j][p]CLCD[i,j][q]//Contract//Factor2

@@ -34,15 +34,18 @@
 
 
 FCLoopGLIExpand[x GLI[tad2l,{1,1,1}],
-{FCTopology[tad2l, {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - p2, m3}]}, {p1, p2}, {}, {}, {}]},{m1,0,2}]
+{FCTopology[tad2l, {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - p2, m3}]}, 
+{p1, p2}, {}, {}, {}]},{m1,0,2}]
 
 
 FCLoopGLIExpand[x GLI[tad2l,{1,1,1}],
-{FCTopology[tad2l, {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - p2, m3}]}, {p1, p2}, {}, {}, {}]},{m1,M,4}]
+{FCTopology[tad2l, {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - p2, m3}]}, 
+{p1, p2}, {}, {}, {}]},{m1,M,4}]
 
 
 FCLoopGLIExpand[m2^2 GLI[tad2l,{1,1,1}],
-{FCTopology[tad2l, {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - p2, m3}]}, {p1, p2}, {}, {}, {}]},{m2,0,6}]
+{FCTopology[tad2l, {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - p2, m3}]}, 
+{p1, p2}, {}, {}, {}]},{m2,0,6}]
 
 
 FCLoopGLIExpand[ GLI[prop1l,{1,1}]+SPD[q] GLI[prop1l,{1,0}],

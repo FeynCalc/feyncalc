@@ -39,8 +39,11 @@ PolarizationVector[p,mu]ComplexConjugate[PolarizationVector[p,mu]]
 
 
 FCClearScalarProducts[];
+
 ScalarProduct[p,p]=0;
+
 PolarizationVector[p,mu]ComplexConjugate[PolarizationVector[p,mu]]+xyz
+
 DoPolarizationSums[%,p,n]
 
 

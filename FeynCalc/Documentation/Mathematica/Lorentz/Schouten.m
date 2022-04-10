@@ -33,4 +33,5 @@
 
 ((LC[\[Mu],\[Nu],\[Rho],\[Sigma]] FV[p,\[Tau]]+LC[\[Nu],\[Rho],\[Sigma],\[Tau]] FV[p,\[Mu]]+LC[\[Rho],\[Sigma],\[Tau],\[Mu]] FV[p,\[Nu]]+
 LC[\[Sigma],\[Tau],\[Mu],\[Nu]] FV[p,\[Rho]]+LC[\[Tau],\[Mu],\[Nu],\[Rho]] FV[p,\[Sigma]]))
+
 Schouten[%]

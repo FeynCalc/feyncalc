@@ -32,11 +32,15 @@
 
 
 PauliIndex[i]
-%//StandardForm
+
+
+PauliIndex[i]//StandardForm
 
 
 PauliIndex[2]
-%//StandardForm
+
+
+PauliIndex[2]//StandardForm
 
 
 PIDelta[i,j]//FCI//StandardForm

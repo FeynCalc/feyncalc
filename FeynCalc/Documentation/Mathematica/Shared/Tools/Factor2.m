@@ -32,6 +32,7 @@
 
 
 (a-x)(b-x)
+
 {Factor2[%], Factor[%]}
 
 

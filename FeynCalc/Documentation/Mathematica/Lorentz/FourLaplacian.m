@@ -24,11 +24,10 @@
 
 
 SP[q,q]
+
 FourLaplacian[%,q,q]
 
 
 SOD[q]^OPEmFAD[q,q-p]
+
 FourLaplacian[%,q, q]
-
-
-

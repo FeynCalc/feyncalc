@@ -18,5 +18,7 @@
 
 
 FVD[q,\[Mu]] FVD[q,\[Nu]] FAD[{q,m0},{q+p1,m1},{q+p2,m2}]/(I*Pi^2)
+
 TID[%,q,UsePaVeBasis->True]
+
 TID[%%,q,UsePaVeBasis->True,GenPaVe->True]

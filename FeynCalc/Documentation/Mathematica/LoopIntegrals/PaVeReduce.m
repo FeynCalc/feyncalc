@@ -24,6 +24,7 @@
 
 
 PaVeReduce[PaVe[1,2,{s,m^2,m^2},{m^2,m^2,M^2}],IsolateNames->FF]
+
 FRH[%]
 
 
@@ -33,7 +34,9 @@ FRH[%]
 
 PaVeReduce[PaVe[2,{SmallVariable[me2],mw2,t},{SmallVariable[me2],0,mw2}],
 WriteOutPaVe->"p"]
+
 TableForm[ReadList["pPaVe1Cmw2tsmame2C0mw2smame2.s",String]]
+
 DeleteFile/@FileNames["pPaVe1Cmw2tsmame2C0mw2smame2.s"];
 
 
@@ -42,10 +45,11 @@ DeleteFile/@FileNames["pPaVe1Cmw2tsmame2C0mw2smame2.s"];
 
 
 se=SmallVariable[ME2];
+
 d122=PaVeReduce[PaVe[1,2,2,{se,MW2,MW2,se,S,T},{0,se,0,se}],Mandelstam->{S,T,U,2 MW2},IsolateNames->F]//FRH
+
 Write2["fctd122.for",d122res==d122,FormatType->FortranForm];
+
 TableForm[ReadList["fctd122.for",String]]
+
 DeleteFile/@FileNames["fctd122.for"];Clear[d122,se]; 
-
-
-

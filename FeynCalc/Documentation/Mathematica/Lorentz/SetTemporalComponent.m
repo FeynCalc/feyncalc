@@ -24,8 +24,11 @@
 
 
 FCClearScalarProducts[]
+
 ClearAll[t]
+
 SetTemporalComponent[p,t]
+
 TC[p]
 
 

@@ -24,14 +24,18 @@
 
 
 RightPartialD[\[Mu]] . QuantumField[A,LorentzIndex[\[Mu]]] . QuantumField[A,LorentzIndex[\[Nu]]]
+
 ExpandPartialD[%]
 
 
 LeftRightPartialD[\[Mu]] . QuantumField[A,LorentzIndex[\[Nu]]]
+
 ExpandPartialD[%]
 
 
-QuantumField[A,LorentzIndex[\[Mu]]] . (LeftRightPartialD[OPEDelta]^2) . QuantumField[A,LorentzIndex[\[Rho]]]
+QuantumField[A,LorentzIndex[\[Mu]]] . (LeftRightPartialD[OPEDelta]^2) . QuantumField[A,
+LorentzIndex[\[Rho]]]
+
 ExpandPartialD[%]
 
 
@@ -51,11 +55,10 @@ ExpandPartialD[%]
 
 
 RightPartialD[CartesianIndex[i]] . QuantumField[S,x]
+
 %//ExpandPartialD
 
 
 RightPartialD[{CartesianIndex[i],x}] . QuantumField[S,x]
+
 %//ExpandPartialD
-
-
-

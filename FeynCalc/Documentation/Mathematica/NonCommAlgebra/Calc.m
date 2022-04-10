@@ -41,11 +41,10 @@ Calc[SUNF[a,b,c] SUNF[a,b,e]]
 
 
 FV[p+r,\[Mu]] MT[\[Mu],\[Nu]] FV[q-p,\[Nu]]
+
 Calc[%]
 
 
 GluonVertex[{p,li1},{q,li2},{-p-q,li3}]
+
 Calc[% FVD[p,li1] FVD[q,li2] FVD[-p-q,li3]]
-
-
-

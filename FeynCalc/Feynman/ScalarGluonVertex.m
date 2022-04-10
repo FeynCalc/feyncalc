@@ -16,10 +16,10 @@
 (* ------------------------------------------------------------------------ *)
 
 ScalarGluonVertex::usage =
-"ScalarGluonVertex[{p}, {q}, {\[Mu], a}] or ScalarGluonVertex[p,  q,  \[Mu], a]
+"ScalarGluonVertex[{p}, {q}, {mu, a}] or ScalarGluonVertex[p,  q,  mu, a]
 yields the scalar-scalar-gluon vertex, where p and q are incoming momenta.
 
-ScalarGluonVertex[{\[Mu], a}, {\[Nu], b}] yields the scalar-scalar-gluon-gluon
+ScalarGluonVertex[{mu, a}, {nu, b}] yields the scalar-scalar-gluon-gluon
 vertex, where p and q are incoming momenta.
 
 The dimension and the name of the coupling constant are determined by the

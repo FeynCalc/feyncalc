@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`QuarkGluonVertex[\[Mu], a]` gives the Feynman rule for the quark-gluon vertex.*)
+(*`QuarkGluonVertex[mu, a]` gives the Feynman rule for the quark-gluon vertex.*)
 
 
 (* ::Text:: *)

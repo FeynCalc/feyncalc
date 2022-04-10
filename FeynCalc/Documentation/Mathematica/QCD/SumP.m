@@ -36,4 +36,5 @@ SumP[1,4]
 
 
 Explicit[SumP[1,n/2]]
+
 %/.n->8

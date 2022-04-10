@@ -20,6 +20,7 @@
 
 
 GA[\[Mu]].(1/2+GA[5]/2).GA[\[Nu]]
+
 ToDiracGamma67[%]
 
 
@@ -28,4 +29,5 @@ ToDiracGamma67[%]
 
 
 GA[\[Mu],5,\[Nu]]
+
 ToDiracGamma67[%,All->True]

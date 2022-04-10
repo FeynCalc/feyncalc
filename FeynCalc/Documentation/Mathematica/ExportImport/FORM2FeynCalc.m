@@ -36,7 +36,9 @@
 
 
 FORM2FeynCalc["p.q + 2*x m^2"]
-%//StandardForm
+
+
+FORM2FeynCalc["p.q + 2*x m^2"]//StandardForm
 
 
 (* ::Text:: *)
@@ -44,15 +46,21 @@ FORM2FeynCalc["p.q + 2*x m^2"]
 
 
 FORM2FeynCalc["x +f(z)+ log(x)^2+[li2(1-x)]",Replace->{"[li2(1-x)]"->"PolyLog[2,1-x]"}]
-%//StandardForm
+
+
+FORM2FeynCalc["x +f(z)+ log(x)^2+[li2(1-x)]",Replace->{"[li2(1-x)]"->"PolyLog[2,1-x]"}]//StandardForm
 
 
 FORM2FeynCalc["x + [(1)]*y -[(-1)^m]"]
-ReleaseHold[%]
+
+
+ReleaseHold[FORM2FeynCalc["x + [(1)]*y -[(-1)^m]"]]
 
 
 FORM2FeynCalc["p(mu)*q(nu)+d_(mu,nu)"]
-%//StandardForm
+
+
+FORM2FeynCalc["p(mu)*q(nu)+d_(mu,nu)"]//StandardForm
 
 
 FORM2FeynCalc["p(mu)*q(nu)+d_(mu,nu)",Replace->{mu->\[Mu],nu->\[Nu]}]

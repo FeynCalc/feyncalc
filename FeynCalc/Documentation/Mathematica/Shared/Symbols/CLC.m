@@ -28,11 +28,15 @@
 
 
 CLC[i,j,k]
-%//FCI//StandardForm
+
+
+CLC[i,j,k]//FCI//StandardForm
 
 
 CLC[i][p,q]
-%//FCI//StandardForm
+
+
+CLC[i][p,q]//FCI//StandardForm
 
 
 Contract[CLC[i,j,k]CLC[i,l,m]]

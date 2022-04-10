@@ -26,12 +26,16 @@
 SI[\[Mu]]
 
 
+SI[\[Mu]]//FCI//StandardForm
+
+
 SI[\[Mu],\[Nu]]-SI[\[Nu],\[Mu]]
-StandardForm[FCI[SI[\[Mu]]]]
 
 
 SI[\[Mu],\[Nu],\[Rho],\[Sigma]]
-%//StandardForm
 
 
-SI[\[Alpha]] . (SIS[p]+m) . SI[\[Beta]]
+SI[\[Mu],\[Nu],\[Rho],\[Sigma]]//StandardForm
+
+
+SI[\[Alpha]].(SIS[p]+m).SI[\[Beta]]

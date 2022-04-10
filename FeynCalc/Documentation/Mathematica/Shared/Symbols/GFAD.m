@@ -32,5 +32,7 @@
 
 
 GFAD[2z SPD[p1,q] SPD[p2,q]+ x SPD[p1,p2]]
+
 FeynAmpDenominatorExplicit[%]
+
 %//FCE//StandardForm

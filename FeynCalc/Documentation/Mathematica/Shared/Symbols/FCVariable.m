@@ -35,7 +35,10 @@ SPD[c1 p1+c2 p2,q]//ExpandScalarProduct
 
 
 DataType[c1,FCVariable]=True;
+
 DataType[c2,FCVariable]=True;
+
+
 SPD[c1 p1+c2 p2,q]//ExpandScalarProduct
 
 
@@ -44,15 +47,21 @@ SPD[c1 p1+c2 p2,q]//ExpandScalarProduct
 
 
 FCI[SFAD[{q+c1 p1,m}]]
-%//StandardForm
 
 
-GAD[\[Mu]] . (GSD[c1 p]+m) . GAD[\[Nu]]//FCI
-%//StandardForm
+FCI[SFAD[{q+c1 p1,m}]]//StandardForm
+
+
+GAD[\[Mu]].(GSD[c1 p]+m).GAD[\[Nu]]//FCI
+
+
+GAD[\[Mu]].(GSD[c1 p]+m).GAD[\[Nu]]//FCI//StandardForm
 
 
 CSI[i] . CSIS[c1 p] . CSI[j]//FCI
-%//StandardForm
+
+
+CSI[i] . CSIS[c1 p] . CSI[j]//FCI//StandardForm
 
 
 (* ::Text:: *)
@@ -60,4 +69,5 @@ CSI[i] . CSIS[c1 p] . CSI[j]//FCI
 
 
 DataType[c1,FCVariable]=False
+
 DataType[c2,FCVariable]=False

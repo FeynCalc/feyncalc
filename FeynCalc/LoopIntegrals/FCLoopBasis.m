@@ -50,7 +50,7 @@ propagators for a topology that contains n1 loop momenta and n2 external
 momenta.";
 
 FCLoopBasisPropagatorsToTopology::usage =
-"FCLoopBasisPropagatorsToTopology[{prop1, prop2, ...}] takes the list of Pairs
+"FCLoopBasisPropagatorsToTopology[{prop1, prop2, ...}] takes a list of Pairs
 and FeynAmpDenominators and converts it into a list of propagators that can be
 used to describe a topology.
 

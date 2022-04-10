@@ -27,6 +27,7 @@ AntiCommutator[QuantumField[FCPartialD[LorentzIndex[xxx_]],A],QuantumField[A]]=0
 
 
 QuantumField[A] . QuantumField[A] . LeftPartialD[\[Nu]]
+
 ExpandPartialD[%]
 
 

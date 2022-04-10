@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [FCMathcSolve](FCMathcSolve.md).*)
+(*[Overview](Extra/FeynCalc.md), [FCMatchSolve](FCMatchSolve.md).*)
 
 
 (* ::Subsection:: *)
@@ -27,6 +27,3 @@ FCCompareResults[{4,4},{2^2,8/2}]
 
 
 FCCompareResults[{3,5},{2^2,8/2}]
-
-
-

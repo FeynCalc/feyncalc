@@ -19,17 +19,21 @@
 (*[Overview](Extra/FeynCalc.md)*)
 
 
-
 (* ::Subsection:: *)
 (*Examples*)
 
 
 SFAD[{q,m,-1}]
-FCLoopRemoveNegativePropagatorPowers[%]
-%//StandardForm
+
+ex=FCLoopRemoveNegativePropagatorPowers[%]
+
+
+ex//StandardForm
 
 
 SFAD[{q,m},q+p,{q,m,-2}]
-FCLoopRemoveNegativePropagatorPowers[%]
-%//StandardForm
 
+ex=FCLoopRemoveNegativePropagatorPowers[%]
+
+
+ex//StandardForm

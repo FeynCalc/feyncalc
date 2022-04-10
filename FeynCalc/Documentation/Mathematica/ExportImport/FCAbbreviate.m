@@ -19,19 +19,27 @@
 
 
 (a+I b)^2
+
 FCAbbreviate[%,{},{}]
 
 
 SPD[p,k] FAD[{q,SMP["m_e"]},{q+p,m}]
+
 FCAbbreviate[%,{q},{p,k},Head->spd]
 
 
 FCClearScalarProducts[]; 
+
 SPD[p1,p1]=0;
+
 SPD[p2,p2]=0;
+
 SPD[p3,p3]=0;
+
 SPD[p1,p2]=s/2;SPD[p1,p3]=-(s+t)/2;SPD[p2,p3]=t/2;
+
 SPD[p2,p3] FAD[q,q-p1-p2,q-p1-p2-p3]
+
 FCAbbreviate[%,{q},{p1,p2,p3},Head->spd]
 
 

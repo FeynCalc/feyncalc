@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [DOT](DOT.md), [DotSimplify](DotSimplify.md), [DeclareNonCommutativeUnDeclareNonCommutative](DeclareNonCommutativeUnDeclareNonCommutative.md).*)
+(*[Overview](Extra/FeynCalc.md), [DOT](DOT.md), [DotSimplify](DotSimplify.md), [DeclareNonCommutative](DeclareNonCommutative.md), [UnDeclareNonCommutative](UnDeclareNonCommutative.md)*)
 
 
 (* ::Subsection:: *)
@@ -24,12 +24,15 @@
 
 
 DOT[a x+b y+c z,d+e+f]
+
 DotExpand[%]
 
 
 DeclareNonCommutative/@{a,b,c,d,e,f};
+
 DotExpand[DOT[a x+b y+c z,d+e+f]]
 
 
 UnDeclareNonCommutative/@{a,b,c,d,e,f};
+
 DotExpand[DOT[a x+b y+c z,d+e+f]]

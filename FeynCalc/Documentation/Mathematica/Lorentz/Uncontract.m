@@ -32,10 +32,12 @@
 
 
 LC[\[Mu],\[Nu]][p,q]
+
 Uncontract[%, p]
 
 
 GS[p]
+
 Uncontract[%, p]
 
 

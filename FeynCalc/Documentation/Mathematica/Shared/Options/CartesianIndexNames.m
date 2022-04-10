@@ -24,11 +24,10 @@
 
 
 CLC[i1,i2,i3]CGA[i1,i2,i3]
+
 FCCanonicalizeDummyIndices[%]
 
 
 CLC[i1,i2,i3]CGA[i1,i2,i3]
+
 FCCanonicalizeDummyIndices[%,CartesianIndexNames->{i,j,k}]
-
-
-

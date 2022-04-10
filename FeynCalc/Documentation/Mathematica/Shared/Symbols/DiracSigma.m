@@ -28,6 +28,7 @@
 
 
 DiracSigma[GA[\[Alpha]],GA[\[Beta]]]
+
 DiracSigmaExplicit[%]
 
 
@@ -35,6 +36,7 @@ DiracSigma[GA[\[Beta]],GA[\[Alpha]]]
 
 
 DiracSigma[GS[p],GS[q]]
+
 DiracSigmaExplicit[%]
 
 

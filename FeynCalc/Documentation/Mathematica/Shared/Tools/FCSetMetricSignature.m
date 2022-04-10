@@ -28,8 +28,10 @@
 
 
 FCSetMetricSignature[{-1,1}]
+
 SPD[p,q]//LorentzToCartesian
 
 
 FCSetMetricSignature[{1,-1}]
+
 SPD[p,q]//LorentzToCartesian

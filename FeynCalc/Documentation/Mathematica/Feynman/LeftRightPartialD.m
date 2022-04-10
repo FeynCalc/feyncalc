@@ -12,7 +12,7 @@
 
 
 (* ::Text:: *)
-(*`ExplicitPartialD[LeftRightPartialD[\[Mu]]]` gives `1/2 (RightPartialD[\[Mu]] - LeftPartialD[\[Mu]])`.*)
+(*`ExplicitPartialD[LeftRightPartialD[mu]]` gives `1/2 (RightPartialD[mu] - LeftPartialD[mu])`.*)
 
 
 (* ::Subsection:: *)
@@ -28,12 +28,15 @@
 
 
 LeftRightPartialD[\[Mu]]
+
 ExplicitPartialD[%]
 
 
 LeftRightPartialD[\[Mu]] . QuantumField[A,LorentzIndex[\[Nu]]]
+
 ExpandPartialD[%]
 
 
 QuantumField[A,LorentzIndex[\[Mu]]] . LeftRightPartialD[\[Nu]] . QuantumField[A,LorentzIndex[\[Rho]]]
+
 ExpandPartialD[%]

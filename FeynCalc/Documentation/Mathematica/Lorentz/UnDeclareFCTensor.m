@@ -24,7 +24,9 @@
 
 
 ClearAll[myTens]
+
 DeclareFCTensor[myTens]
+
 ExpandScalarProduct[myTens[z,Momentum[a+b],Momentum[c+d]]]
 
 

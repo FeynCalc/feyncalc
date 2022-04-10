@@ -29,17 +29,21 @@ CompleteSquare[4 SP[p]+ SP[b,p] +c,p]
 CompleteSquare[4 SP[p]+ SP[b,p] +c,p,q]
 
 
-5SP[2p+3r,p+r]
-CompleteSquare[%,p]
-%-%%//ScalarProductExpand//Expand
+ex1=5 SP[2p+3r,p+r]
 
 
-CompleteSquare[5SP[2p+3r,p+r],p,q]
+ex2=CompleteSquare[ex1,p]
+
+
+ex1-ex2//ScalarProductExpand//Expand
+
+
+CompleteSquare[5 SP[2p+3r,p+r],p,q]
 
 
 SPD[a]+2SPD[a,b]
-CompleteSquare[%,a]
-%//StandardForm
+
+ex=CompleteSquare[%,a]
 
 
-
+ex//StandardForm

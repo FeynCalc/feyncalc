@@ -28,8 +28,9 @@
 
 
 SD[a,b]
-%//FCI//StandardForm
-%//FCE//StandardForm
 
 
+SD[a,b]//FCI//StandardForm
 
+
+SD[a,b]//FCE//StandardForm

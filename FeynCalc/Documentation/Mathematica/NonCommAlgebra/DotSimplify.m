@@ -24,40 +24,52 @@
 
 
 UnDeclareAllCommutators[]
+
 UnDeclareAllAntiCommutators[]
 
 
 GA[\[Mu]] . (2 GS[p]-GS[q]) . GA[\[Nu]]
+
 DotSimplify[%]
 
 
 DeclareNonCommutative[a,b,c]
+
 a . (b-z c) . a
+
 DotSimplify[%]
 
 
 Commutator[a,c]=1
+
 DotSimplify[a . (b-z c) . a]
 
 
 Commutator[a,c]=.
+
 DotSimplify[a . (b-z c) . a]
 
 
 AntiCommutator[b,a]=c
+
 DotSimplify[a . (b-z c) . a]
 
 
 AntiCommutator[b,a]=.
+
 DotSimplify[a . (b-z c) . a,DotSimplifyRelations->{a . c->1/z}]
 
 
+
 UnDeclareNonCommutative[a,b,c]
+
 DeclareNonCommutative[x]
+
 DotSimplify[x . x . x]
 
 
 DotSimplify[x . x . x,DotPower->True]
+
 UnDeclareNonCommutative[x]
 
 
@@ -69,8 +81,11 @@ DeclareNonCommutative[Q,P]
 
 
 lhs=(Q . Commutator[Q,P]+Commutator[Q,P] . Q)/2
+
 rhs=Commutator[Q,Q . P+P . Q]/2
+
 DotSimplify[lhs-rhs]
+
 %//ExpandAll
 
 
@@ -85,8 +100,10 @@ DOp=(Q . P+P . Q)/2;
 
 
 Commutator[Q,DOp]
+
 %//DotSimplify//ExpandAll
 
 
 UnDeclareAllCommutators[]
+
 UnDeclareAllAntiCommutators[]

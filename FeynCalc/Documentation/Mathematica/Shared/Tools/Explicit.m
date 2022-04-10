@@ -28,14 +28,17 @@
 
 
 GluonVertex[p,\[Mu],a, q,\[Nu],b,r,\[Rho],c]
+
 Explicit[%]
 
 
 Twist2GluonOperator[p,\[Mu],a,\[Nu],b]
+
 Explicit[%]
 
 
 FieldStrength[\[Mu],\[Nu],a]
+
 Explicit[%]
 
 

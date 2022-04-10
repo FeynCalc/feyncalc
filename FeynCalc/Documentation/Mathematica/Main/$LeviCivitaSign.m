@@ -24,6 +24,7 @@
 
 
 $LeviCivitaSign
+
 Tr[GA[\[Mu],\[Nu],\[Rho],\[Sigma],5]]
 
 
@@ -32,6 +33,7 @@ Tr[GA[\[Mu],\[Nu],\[Rho],\[Sigma],5]]
 
 
 $LeviCivitaSign=-I;
+
 Tr[GA[\[Mu],\[Nu],\[Rho],\[Sigma],5]]
 
 

@@ -43,19 +43,23 @@ ComplexConjugate[amp]
 
 
 GA[\[Mu]]
+
 ComplexConjugate[%]
 
 
 GA[5]
+
 ComplexConjugate[%]
 
 
 (GS[Polarization[k1,-I,Transversality->True]] . (GS[k1-p2]+SMP["m_e"]) . 
 GS[Polarization[k2,-I,Transversality->True]])
+
 ComplexConjugate[%]
 
 
 SUNTrace[SUNT[a,b,c]]
+
 ComplexConjugate[%]
 
 
@@ -64,10 +68,12 @@ ComplexConjugate[%]
 
 
 PolarizationVector[p1,\[Mu]]PolarizationVector[p2,\[Nu]]MT[\[Mu],\[Nu]]
+
 ComplexConjugate[%]
 
 
 GA[\[Mu],\[Nu]]LC[\[Mu],\[Nu]][p1,p2]
+
 ComplexConjugate[%]
 
 
@@ -83,11 +89,14 @@ ComplexConjugate[GA[\[Mu],\[Nu]]LC[\[Mu],\[Nu]][p1,p2],FCRenameDummyIndices->Fal
 
 
 GA[\[Mu]] . (c1 GA[6]+c2 GA[7]) . GA[\[Nu]]
+
 ComplexConjugate[%]
 
 
-ComplexConjugate[GA[\[Mu]] . (c1 GA[6]+c2 GA[7]) . GA[\[Nu]],Conjugate->{c1,c2}]
-%//StandardForm
+ex=ComplexConjugate[GA[\[Mu]] . (c1 GA[6]+c2 GA[7]) . GA[\[Nu]],Conjugate->{c1,c2}]
+
+
+ex//StandardForm
 
 
 (* ::Text:: *)
@@ -95,6 +104,7 @@ ComplexConjugate[GA[\[Mu]] . (c1 GA[6]+c2 GA[7]) . GA[\[Nu]],Conjugate->{c1,c2}]
 
 
 GA[\[Mu],\[Nu],\[Rho],5]CSI[i,j]
+
 ComplexConjugate[%]
 
 
@@ -103,10 +113,12 @@ ComplexConjugate[%]
 
 
 DCHN[GA[\[Mu],\[Nu],\[Rho],5],i,j]DCHN[GA[\[Mu],\[Nu],\[Rho],5],k,l]
+
 ComplexConjugate[%]
 
 
 PCHN[CSI[i,j,k],a,b]PCHN[CSI[i,j,k],c,d]
+
 ComplexConjugate[%]
 
 
@@ -115,11 +127,10 @@ ComplexConjugate[%]
 
 
 cc SpinorU[p1] . GA[mu] . SpinorV[p2]
+
 ComplexConjugate[%]
 
 
 cc SpinorU[p1] . GA[mu] . SpinorV[p2]
+
 ComplexConjugate[%,Conjugate->{cc}]
-
-
-

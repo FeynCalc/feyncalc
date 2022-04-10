@@ -19,8 +19,10 @@
 
 
 GA[5]
+
 DiracSubstitute5[%]
 
 
 SpinorUBar[Subscript[p, 1]].GA[\[Mu]].GA[5].GA[\[Nu]].SpinorU[Subscript[p, 2]]
+
 DiracSubstitute5[%]

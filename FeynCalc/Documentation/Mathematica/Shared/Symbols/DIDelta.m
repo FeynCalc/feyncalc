@@ -31,14 +31,17 @@ DIDelta[i,j]
 
 
 DIDelta[i,i]
+
 DiracChainJoin[%]
 
 
 DIDelta[i,j]^2
+
 DiracChainJoin[%]
 
 
 DIDelta[i,j]DIDelta[j,k]
+
 DiracChainJoin[%]
 
 

@@ -47,7 +47,9 @@ FeynAmpDenominatorSimplify[f[k]FAD[k,k-q,k-q],k]
 
 
 FeynAmpDenominatorSimplify[FAD[k-Subscript[p, 1],k-Subscript[p, 2]] SPD[k,k],k]
+
 ApartFF[%,{k}]
+
 TID[%,k]//Factor2
 
 

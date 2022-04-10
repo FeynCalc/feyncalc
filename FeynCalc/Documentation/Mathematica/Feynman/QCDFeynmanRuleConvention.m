@@ -32,6 +32,7 @@
 
 
 QCDFeynmanRuleConvention[GhostPropagator]=-1;
+
 QCDFeynmanRuleConvention[GluonGhostVertex]=-1;
 
 
@@ -46,6 +47,7 @@ GGV[{p,\[Mu],a},{q,\[Nu],b},{k,\[Rho],c}]//Explicit
 
 
 QCDFeynmanRuleConvention[GhostPropagator]=1
+
 QCDFeynmanRuleConvention[GluonGhostVertex]=1
 
 

@@ -72,7 +72,8 @@ Reduce[Equal[#,0]&/@out[[4]]]
 (*1-loop massless box*)
 
 
-out=FCLoopSingularityStructure[FAD[p,p+q1,p+q1+q2,p+q1+q2+q3],{p},Names->x,FinalSubstitutions->{SPD[q1]->0,SPD[q2]->0,SPD[q3]->0}]
+out=FCLoopSingularityStructure[FAD[p,p+q1,p+q1+q2,p+q1+q2+q3],{p},
+Names->x,FinalSubstitutions->{SPD[q1]->0,SPD[q2]->0,SPD[q3]->0}]
 
 
 (* ::Text:: *)
@@ -100,7 +101,9 @@ Reduce[Equal[#,0]&/@out[[4]]]
 (*A 2-loop eikonal integral with massive and massless lines*)
 
 
-out=FCLoopSingularityStructure[SFAD[{ p1,m^2}]SFAD[{ p3,m^2}]SFAD[{{0,2p1 . n}}]SFAD[{{0,2(p1+p3) . n}}],{p1,p3},Names->x,FinalSubstitutions->{SPD[n]->1,m->1}]
+out=FCLoopSingularityStructure[SFAD[{ p1,m^2}]SFAD[{ p3,m^2}]SFAD[{{0,
+2p1 . n}}]SFAD[{{0,2(p1+p3) . n}}],{p1,p3},Names->x,
+FinalSubstitutions->{SPD[n]->1,m->1}]
 
 
 (* ::Text:: *)
@@ -114,7 +117,9 @@ Reduce[Equal[#,0]&/@out[[4]],Reals]
 (*Notice that the mass is acting as an IR regulator here. Setting it to 0 makes the IR pole resurface*)
 
 
-out=FCLoopSingularityStructure[SFAD[{ p1,m^2}]SFAD[{ p3,m^2}]SFAD[{{0,2p1 . n}}]SFAD[{{0,2(p1+p3) . n}}],{p1,p3},Names->x,FinalSubstitutions->{SPD[n]->1,m->0}]
+out=FCLoopSingularityStructure[SFAD[{ p1,m^2}]SFAD[{ p3,m^2}]SFAD[{{0,
+2p1 . n}}]SFAD[{{0,2(p1+p3) . n}}],{p1,p3},Names->x,
+FinalSubstitutions->{SPD[n]->1,m->0}]
 
 
 (* ::Text:: *)

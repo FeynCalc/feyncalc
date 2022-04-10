@@ -32,7 +32,7 @@ Transpose[output[[1 ;; 2]]]] or GraphPlot[Labeled @@@ Transpose[output[[1 ;;
 2]]]]. The visual quality will not be that great, though. To obtain a nicer
 plot one might use GraphPlot with a custom EdgeTaggedGraph or export the
 output to a file and visualize it with an external tool such as dot/neato from
-graphviz.
+[graphviz](https://graphviz.org/).
 
 It is also possible to invoke the function as FCLoopIntegralToGraph[GLI[...],
 FCTopology[...]] or FCLoopIntegralToGraph[FCTopology[...]].";

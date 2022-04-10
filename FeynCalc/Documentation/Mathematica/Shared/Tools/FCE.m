@@ -27,16 +27,19 @@
 (*Examples*)
 
 
-FCE[{DiracGamma[5],DiracGamma[Momentum[p]]}]
-%//StandardForm
+ex=FCE[{DiracGamma[5],DiracGamma[Momentum[p]]}]
+
+
+ex//StandardForm
 
 
 ex={GA[\[Mu]],GAD[\[Rho]],GS[p],SP[p,q],MT[\[Alpha],\[Beta]],FV[p,\[Mu]]}
-%//StandardForm
 
 
-ex//FCI
-%//StandardForm
+ex//StandardForm
+
+
+ex//FCI//StandardForm
 
 
 FCE[ex]//StandardForm

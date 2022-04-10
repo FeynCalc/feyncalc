@@ -32,10 +32,6 @@ x[l], ...}, sdd}, ...}, where
 {x[i],x[j], ...} need to approach zero, while {x[k], x[l], ...} must tend
 towards infinity to generate the superficial degree of divergence sdd.
 
-FCFeynmanParametrize can also be employed in conjunction with
-FCFeynmanParameterJoin, where one first joins suitable propagators using
-auxiliary Feynman parameters and then finally integrates out loop momenta.
-
 It is important to apply the function directly to the Feynman parametric
 integrand obtained e.g. from FCFeynmanParametrize. If the integrand has
 already been modified using variable transformations or the Cheng-Wu theorem,

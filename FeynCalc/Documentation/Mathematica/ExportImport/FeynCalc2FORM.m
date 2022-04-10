@@ -39,18 +39,22 @@ FORM2FeynCalc
 
 
 MT[\[Mu],\[Nu]]FV[p,\[Rho]] y^2/d
+
 FeynCalc2FORM[%];
 
 
 LC[\[Alpha],\[Beta],\[Delta],\[Rho]]
+
 FeynCalc2FORM[%];
 
 
 DiracTrace[GA[\[Mu],\[Nu],\[Rho],\[Sigma]]]
+
 FeynCalc2FORM[%];
 
 
 DiracTrace[GA[\[Mu],\[Nu]]]DiracTrace[GA[\[Mu],\[Rho]]]
+
 FeynCalc2FORM[%];
 
 

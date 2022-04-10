@@ -27,10 +27,12 @@ DeclareNonCommutative[a,b,c,d]
 
 
 Commutator[a,b]
+
 CommutatorExplicit[%]
 
 
 DotSimplify[Commutator[a+b,c+d]] 
+
 UnDeclareNonCommutative[a,b,c,d]
 
 
@@ -42,8 +44,10 @@ UnDeclareNonCommutative[a,b,c,d]
 
 
 \[Chi][x,\[Chi][y,z]]+\[Chi][y,\[Chi][z,x]]+\[Chi][z,\[Chi][x,y]]
+
 DotSimplify[%]
 
 
 Clear[\[Chi]]
+
 UnDeclareNonCommutative[x,y,z]

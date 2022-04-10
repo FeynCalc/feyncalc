@@ -24,11 +24,10 @@
 
 
 DCHN[GA[mu],i,j]DCHN[GA[nu],j,k]
+
 FCCanonicalizeDummyIndices[%]
 
 
 DCHN[GA[mu],i,j]DCHN[GA[nu],j,k]
+
 FCCanonicalizeDummyIndices[%,DiracIndexNames->{a}]
-
-
-

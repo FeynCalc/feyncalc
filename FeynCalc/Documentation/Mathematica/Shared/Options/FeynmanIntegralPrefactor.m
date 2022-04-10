@@ -38,32 +38,39 @@ FCFeynmanParametrize[FAD[p,p-q],{p},Names->x,FCReplaceD->{D->4-2 Epsilon}]
 
 
 FCFeynmanParametrize[FAD[p,p-q],{p},Names->x,FCReplaceD->{D->4-2 Epsilon}]
+
 Times@@Most[%]
 
 
 FCFeynmanParametrize[FAD[p,p-q],{p},Names->x,FCReplaceD->{D->4-2 Epsilon},
-	FeynmanIntegralPrefactor->"Multiloop1"]
+FeynmanIntegralPrefactor->"Multiloop1"]
+
 Times@@Most[%]
 
 
 FCFeynmanParametrize[FAD[p,p-q],{p},Names->x,FCReplaceD->{D->4-2 Epsilon},
-	FeynmanIntegralPrefactor->"Unity"]
-Times@@Most[%]	
+FeynmanIntegralPrefactor->"Unity"]
+
+Times@@Most[%]
 
 
 FCFeynmanParametrize[FAD[p,p-q],{p},Names->x,FCReplaceD->{D->4-2 Epsilon},
-	FeynmanIntegralPrefactor->"Textbook"]
-Times@@Most[%]	
+FeynmanIntegralPrefactor->"Textbook"]
+
+Times@@Most[%]
 
 
 FCFeynmanParametrize[FAD[p,p-q],{p},Names->x,FCReplaceD->{D->4-2 Epsilon},
-	FeynmanIntegralPrefactor->"Multiloop2"]
-Times@@Most[%]	
+FeynmanIntegralPrefactor->"Multiloop2"]
+
+Times@@Most[%]
 
 
 FCFeynmanParametrize[FAD[{p,m}],{p},Names->x,FCReplaceD->{D->4-2 Epsilon},
-	FeynmanIntegralPrefactor->"Multiloop2"]
-Times@@Most[%]	
+FeynmanIntegralPrefactor->"Multiloop2"]
+
+Times@@Most[%]
+
 Series[%,{Epsilon,0,1}]//Normal//FunctionExpand
 
 

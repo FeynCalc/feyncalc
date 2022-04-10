@@ -1,5 +1,8 @@
 (* ::Package:: *)
 
+ 
+
+
 (* ::Section:: *)
 (*FCLoopSwitchEtaSign*)
 
@@ -31,19 +34,20 @@
 
 
 FAD[{p,m}]
+
 FCLoopSwitchEtaSign[%,1]
 
 
 FAD[{p,m}]
+
 FCLoopSwitchEtaSign[%,-1]
 
 
 SFAD[{p,m^2}]
+
 FCLoopSwitchEtaSign[%,-1]
 
 
 CFAD[{p,m^2}]
+
 FCLoopSwitchEtaSign[%,1]
-
-
-

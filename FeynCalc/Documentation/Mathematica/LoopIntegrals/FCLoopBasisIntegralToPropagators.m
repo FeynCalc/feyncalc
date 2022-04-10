@@ -25,12 +25,15 @@
 
 
 SFAD[p1]
+
 FCLoopBasisIntegralToPropagators[%,{p1}]
 
 
 SFAD[p1,p2]
+
 FCLoopBasisIntegralToPropagators[%,{p1,p2}]
 
 
 SPD[q,p] SFAD[q,q-p,q-p]
+
 FCLoopBasisIntegralToPropagators[%,{q}]

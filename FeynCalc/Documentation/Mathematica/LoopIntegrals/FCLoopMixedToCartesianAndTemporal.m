@@ -25,12 +25,15 @@
 
 
 FCI@SFAD[q]
+
 FCLoopMixedToCartesianAndTemporal[%,{q},FCE->True]
 
 
 FCI@SFAD[{q1+q2+p,m^2}]
+
 FCLoopMixedToCartesianAndTemporal[%,{q1,q2}]
 
 
 FCI[TC[k] FVD[k,mu] FAD[k,k+p]]
+
 FCLoopMixedToCartesianAndTemporal[%,{k}]

@@ -16,12 +16,12 @@
 (* ------------------------------------------------------------------------ *)
 
 TarcerToFC::usage =
-"TarcerToFC[expr, {q1, q2}] translates loop integrals in Tarcer-notation to the
-FeynCalc notation.
+"TarcerToFC[expr, {q1, q2}] translates loop integrals in the TARCER-notation to
+the FeynCalc notation.
 
 See TFI for details on the convention.
 
-As in the case of ToTFI, the \\frac{1}{\\pi^D} and \\frac{1}{\\pi^{D/2}}
+As in the case of ToTFI, the $\\frac{1}{\\pi^D}$ and $\\frac{1}{\\pi^{D/2}}$
 prefactors are implicit, i.e. TarcerToFC doesn't add them.
 
 To recover momenta from scalar products use the option ScalarProduct e.g. as

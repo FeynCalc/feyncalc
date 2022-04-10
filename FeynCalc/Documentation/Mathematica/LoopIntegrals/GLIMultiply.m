@@ -24,6 +24,7 @@
 
 
 GLI["topo1",{1,0,0,1,1}]GLI["topo1",{0,-1,-1,0,0}]
+
 %/.GLI->GLIMultiply/.GLIMultiply->GLI
 
 

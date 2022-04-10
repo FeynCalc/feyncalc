@@ -48,7 +48,9 @@
 
 
 FCSetDiracGammaScheme["NDR"]
+
 DiracTrace[GAD[\[Mu],\[Nu],\[Rho],\[Sigma],\[Tau],\[Kappa],5]]
+
 DiracSimplify[%]
 
 
@@ -57,6 +59,7 @@ DiracSimplify[%]
 
 
 FCSetDiracGammaScheme["NDR-Discard"]
+
 DiracSimplify[DiracTrace[GAD[\[Mu],\[Nu],\[Rho],\[Sigma],\[Tau],\[Kappa],5]]]
 
 
@@ -65,6 +68,7 @@ DiracSimplify[DiracTrace[GAD[\[Mu],\[Nu],\[Rho],\[Sigma],\[Tau],\[Kappa],5]]]
 
 
 FCSetDiracGammaScheme["BMHV"]
+
 res1=DiracSimplify[DiracTrace[GAD[\[Mu],\[Nu],\[Rho],\[Sigma],\[Tau],\[Kappa],5]]]
 
 
@@ -73,6 +77,7 @@ res1=DiracSimplify[DiracTrace[GAD[\[Mu],\[Nu],\[Rho],\[Sigma],\[Tau],\[Kappa],5]
 
 
 FCSetDiracGammaScheme["Larin"]
+
 res2=DiracSimplify[DiracTrace[GAD[\[Mu],\[Nu],\[Rho],\[Sigma],\[Tau],\[Kappa],5]]]
 
 
@@ -81,7 +86,9 @@ res2=DiracSimplify[DiracTrace[GAD[\[Mu],\[Nu],\[Rho],\[Sigma],\[Tau],\[Kappa],5]
 
 
 diff=ChangeDimension[res1-res2,D]
+
 Contract[FV[p1,\[Mu]]FV[p2,\[Nu]]FV[p3,\[Rho]]FV[p4,\[Sigma]]FV[p5,\[Tau]]FV[p6,\[Kappa]]diff]
+
 FCSchoutenBruteForce[%,{},{}]
 
 

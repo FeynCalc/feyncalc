@@ -24,11 +24,10 @@
 
 
 LC[mu,nu][q1+q2,p1+p2]
+
 EpsEvaluate[%]
 
 
 LC[mu,nu][q1+q2,p1+p2]
+
 EpsEvaluate[%,EpsExpand->False]
-
-
-

@@ -28,12 +28,15 @@
 
 
 LC[\[Mu],\[Nu],\[Rho],\[Sigma]]
-%//FCI
-%//StandardForm
+
+
+LC[\[Mu],\[Nu],\[Rho],\[Sigma]]//FCI//StandardForm
 
 
 LC[\[Mu],\[Nu]][p,q]
-%//FCI//StandardForm
+
+
+LC[\[Mu],\[Nu]][p,q]//FCI//StandardForm
 
 
 Contract[LC[\[Mu],\[Nu],\[Rho]][p] LC[\[Mu],\[Nu],\[Rho]][q]] 

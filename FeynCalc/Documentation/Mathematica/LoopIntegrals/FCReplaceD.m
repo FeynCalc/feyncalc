@@ -28,6 +28,7 @@
 
 
 FCI[D MTD[\[Mu],\[Nu]]]
+
 %/.D->4-2Epsilon
 
 
@@ -36,4 +37,5 @@ FCI[D MTD[\[Mu],\[Nu]]]
 
 
 FCReplaceD[D MTD[\[Mu],\[Nu]],D->4-2Epsilon]
+
 ChangeDimension[%,4]

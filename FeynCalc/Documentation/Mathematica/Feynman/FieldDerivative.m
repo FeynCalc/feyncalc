@@ -24,7 +24,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [FCPartialD](FCPartialD.md), [ExpandParitalD](ExpandParitalD.md).*)
+(*[Overview](Extra/FeynCalc.md), [FCPartialD](FCPartialD.md), [ExpandPartialD](ExpandPartialD.md).*)
 
 
 (* ::Subsection:: *)

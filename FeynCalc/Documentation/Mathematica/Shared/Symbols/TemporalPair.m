@@ -27,4 +27,5 @@ TemporalPair[ExplicitLorentzIndex[0],TemporalMomentum[p]]
 
 
 TemporalPair[ExplicitLorentzIndex[0],TemporalMomentum[p+q]]
+
 %//ExpandScalarProduct

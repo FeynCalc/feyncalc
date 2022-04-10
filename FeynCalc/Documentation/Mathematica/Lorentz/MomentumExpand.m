@@ -24,16 +24,21 @@
 
 
 MomentumExpand[Momentum[p+q]]//StandardForm
+
+
 ScalarProduct[p+q,r]
-%//StandardForm
 
 
-MomentumExpand[ScalarProduct[p+q,r]]
-%//StandardForm
+ScalarProduct[p+q,r]//StandardForm
 
 
-MomentumExpand[ScalarProduct[p+q,r-p]]
-%//StandardForm
+ex=MomentumExpand[ScalarProduct[p+q,r]]
 
 
+ex//StandardForm
 
+
+ex=MomentumExpand[ScalarProduct[p+q,r-p]]
+
+
+ex//StandardForm

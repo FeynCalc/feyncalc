@@ -19,16 +19,20 @@
 
 
 DiracGamma[6]
+
 DiracSubstitute67[%]
 
 
 DiracGamma[7]
+
 DiracSubstitute67[%]
 
 
 SpinorUBar[Subscript[p, 1]].GA[6].SpinorU[Subscript[p, 2]]
+
 DiracSubstitute67[%]
 
 
 SpinorUBar[Subscript[p, 1]].GA[7].SpinorU[Subscript[p, 2]]
+
 DiracSubstitute67[%]

@@ -21,19 +21,18 @@
 
 
 PolarizationSum::usage =
-"PolarizationSum[\[Mu], \[Nu], ... ] represents the sum over a polarization
-vector and its complex conjugate with two free indices. Depending on its
-arguments the function returns different polarization sums for massive or
-massless vector bosons.
+"PolarizationSum[mu, nu, ... ] represents the sum over a polarization vector
+and its complex conjugate with two free indices. Depending on its arguments
+the function returns different polarization sums for massive or massless
+vector bosons.
 
-- PolarizationSum[\[Mu], \[Nu], k] returns $-g^{\\mu \\nu}+\\frac{k^{\\mu}
+- PolarizationSum[nu, nu, k] returns $-g^{\\mu \\nu}+\\frac{k^{\\mu}
 k^{\\nu}}{k^2}$, i.e. the sum over the 3 physical polarizations of a massive
 on-shell vector boson with $m = k^2$.
-- PolarizationSum[\[Mu], \[Nu]] or PolarizationSum[\[Mu], \[Nu], k, 0] gives
-$-g^{mu nu }$. This corresponds to the summation over all $4$ polarizations of
-a massless vector boson, $2$ of which are unphysical if the particle is
-on-shell.
- - PolarizationSum[\[Mu], \[Nu], k, n] yields $-g^{\\mu \\nu}+\\frac{k^{\\mu
+- PolarizationSum[mu, nu] or PolarizationSum[mu, nu, k, 0] gives $-g^{\\mu \\nu
+}$. This corresponds to the summation over all $4$ polarizations of a massless
+vector boson, $2$ of which are unphysical if the particle is on-shell.
+ - PolarizationSum[mu, nu, k, n] yields $-g^{\\mu \\nu}+\\frac{k^{\\mu
 }n^{\\nu}+k^{\\nu }n^{\\mu }}{k \\cdot n} - \\frac{n^2 k^{\\mu}k^{\\nu}}{(k \\cdot
 n)^2}$ which is the so-called axial-gauge polarization sum that picks up only
 the two physical polarizations of a massless vector boson. Here $n$ is an

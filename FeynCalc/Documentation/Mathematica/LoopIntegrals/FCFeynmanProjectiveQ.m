@@ -31,8 +31,8 @@
 int=SFAD[{p3,mg^2}]SFAD[{p3-p1,mg^2}]SFAD[{{0,-2p1 . q}}]
 
 
-fp=FCFeynmanParametrize[int,{p1,p3},Names->x,Indexed->True,FCReplaceD->{D->4-2ep},Simplify->True,
-Assumptions->{mg>0,ep>0},FinalSubstitutions->{SPD[q]->qq,mg^2->mg2}]
+fp=FCFeynmanParametrize[int,{p1,p3},Names->x,Indexed->True,FCReplaceD->{D->4-2ep},
+Simplify->True,Assumptions->{mg>0,ep>0},FinalSubstitutions->{SPD[q]->qq,mg^2->mg2}]
 
 
 FCFeynmanProjectiveQ[fp[[1]],x]

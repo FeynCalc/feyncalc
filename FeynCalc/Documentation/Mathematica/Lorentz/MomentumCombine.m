@@ -24,15 +24,22 @@
 
 
 Momentum[p]-2 Momentum[q] // MomentumCombine // StandardForm
+
+
 FV[p,\[Mu]] + 2 FV[q,\[Mu]] 
-MomentumCombine[%]
-%//StandardForm
-%%//ExpandScalarProduct
+
+ex=MomentumCombine[%]
+
+
+ex//StandardForm
+
+
+ex//ExpandScalarProduct
 
 
 3 Pair[LorentzIndex[\[Mu]],Momentum[p]]+2 Pair[LorentzIndex[\[Mu]],Momentum[q]]
-MomentumCombine[%]
-StandardForm[%]
+
+ex=MomentumCombine[%]
 
 
-
+ex//StandardForm

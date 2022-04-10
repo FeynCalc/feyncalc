@@ -24,4 +24,6 @@
 
 
 Pair[LorentzIndex[1],LorentzIndex[\[Mu]]]
-%//StandardForm
+
+
+Pair[LorentzIndex[1],LorentzIndex[\[Mu]]]//StandardForm

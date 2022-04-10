@@ -26,7 +26,8 @@
 FCLoopPropagatorsToLineMomenta[{SFAD[{q+l,m^2}],SFAD[{p,-m^2}]},FCE->True]
 
 
-FCLoopPropagatorsToLineMomenta[{CFAD[{{0,2v . (q+r)},m^2}]},FCE->True,AuxiliaryMomenta->{v}]
+FCLoopPropagatorsToLineMomenta[{CFAD[{{0,2v . (q+r)},m^2}]},FCE->True,
+AuxiliaryMomenta->{v}]
 
 
 (* ::Text:: *)
@@ -34,10 +35,12 @@ FCLoopPropagatorsToLineMomenta[{CFAD[{{0,2v . (q+r)},m^2}]},FCE->True,AuxiliaryM
 
 
 {SFAD[{I(q+l),-m^2}],SFAD[{I p,-m^2}]}
+
 FCLoopPropagatorsToLineMomenta[%,FCE->True]
 
 
-FCLoopPropagatorsToLineMomenta[{SFAD[{I(q+l),-m^2}],SFAD[{I p,-m^2}]},FCE->True]//InputForm
+FCLoopPropagatorsToLineMomenta[{SFAD[{I(q+l),-m^2}],SFAD[{I p,-m^2}]},
+FCE->True]//InputForm
 
 
 FCLoopPropagatorsToLineMomenta[{SFAD[{{I p1,-2 p1 . q},{0,1},1}]},FCE->True]

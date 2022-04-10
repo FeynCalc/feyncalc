@@ -8,7 +8,15 @@
 
 
 (* ::Text:: *)
-(*`FCFeynmanRegularizeDivergence[exp, div]` regularizes the divergence `div` in the Feynman parametric integral `exp` using the method of analytic regularization algorithm introduced by Erik Panzer in [1403.3385](https://arxiv.org/abs/1403.3385), [1401.4361](https://arxiv.org/abs/1401.4361) and [1506.07243](https://arxiv.org/abs/1506.07243). Its current implementation is very much based on the code of the `dimregPartial` routine from the Maple package [HyperInt](https://bitbucket.org/PanzerErik/hyperint/) by Erik Panzer.*)
+(*`FCFeynmanRegularizeDivergence[exp, div]` regularizes the divergence `div` in the Feynman parametric integral `exp`. Provided that all divergences have been regularized in this fashion,  upon expanding the integrand around $\varepsilon = 0$ one can safely integrate in the Feynman parameters.*)
+
+
+(* ::Text:: *)
+(*This function uses the method of analytic regularization  introduced by Erik Panzer in [1403.3385](https://arxiv.org/abs/1403.3385), [1401.4361](https://arxiv.org/abs/1401.4361) and [1506.07243](https://arxiv.org/abs/1506.07243).*)
+
+
+(* ::Text:: *)
+(*Its current implementation is very much based on the code of the `dimregPartial` routine from the Maple package [HyperInt](https://bitbucket.org/PanzerErik/hyperint/) by Erik Panzer.*)
 
 
 (* ::Text:: *)

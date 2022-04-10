@@ -47,7 +47,9 @@
 
 
 FCClearScalarProducts[]
+
 SP[p]=0;
+
 Pair[LorentzIndex[\[Mu]],Momentum[Polarization[p,-I]]] Pair[LorentzIndex[\[Nu]],
 Momentum[Polarization[p,I]]]
 
@@ -60,7 +62,9 @@ DoPolarizationSums[%,p,n]
 
 
 FCClearScalarProducts[]
+
 SP[p]=0;
+
 Pair[LorentzIndex[\[Mu]],Momentum[Polarization[p,-I]]] Pair[LorentzIndex[\[Nu]],
 Momentum[Polarization[p,I]]]
 
@@ -81,11 +85,13 @@ DoPolarizationSums[%,p,0]
 
 
 (* ::Text:: *)
-(*Massive vector bosons (e.g. W or Z) have 3 degrees of freedom and require no auxiliary vector.*)
+(*Massive vector bosons (e.g. $W$ or $Z$) have $3$ degrees of freedom and require no auxiliary vector.*)
 
 
 FCClearScalarProducts[]
+
 SP[p]=m^2;
+
 Pair[LorentzIndex[\[Mu]],Momentum[Polarization[p,-I]]] Pair[LorentzIndex[\[Nu]],
 Momentum[Polarization[p,I]]]
 
@@ -98,9 +104,13 @@ DoPolarizationSums[%,p]
 
 
 ClearAll[s,t,u];
+
 FCClearScalarProducts[];
+
 SP[k1]=0;
+
 SP[k2]=0;
+
 amp=(-((Spinor[Momentum[p1],0,1] . GS[Polarization[k1,I,
 Transversality->True]] . GS[k2-p2] . GS[Polarization[k2,I,
 Transversality->True]] . Spinor[-Momentum[p2],0,1]*SMP["e"]^2)/t)-
@@ -135,8 +145,11 @@ amp//DoPolarizationSums[#,k1,0]&//DoPolarizationSums[#,k2,0]&
 
 
 ClearAll[s,t,u];
+
 FCClearScalarProducts[];
+
 SP[p1]=0;
+
 SP[p2]=0;
 
 
@@ -168,9 +181,13 @@ DoPolarizationSums[#,p2,p1,ExtraFactor -> 1/2]&//Simplify
 
 
 ClearAll[s,t,u];
+
 FCClearScalarProducts[];
+
 SPD[p1]=0;
+
 SPD[p2]=0;
+
 ChangeDimension[amp,D]//DoPolarizationSums[#,p1,p2,ExtraFactor -> 1/2]&//
 DoPolarizationSums[#,p2,p1,ExtraFactor -> 1/2]&//Simplify
 
@@ -180,6 +197,7 @@ DoPolarizationSums[#,p2,p1,ExtraFactor -> 1/2]&//Simplify
 
 
 PolarizationVector[p,mu]ComplexConjugate[PolarizationVector[p,mu]]
+
 DoPolarizationSums[%,p,0]
 
 
@@ -188,8 +206,11 @@ DoPolarizationSums[%,p,0]
 
 
 FCClearScalarProducts[]
+
 ScalarProduct[p,p]=0
+
 PolarizationVector[p,mu]ComplexConjugate[PolarizationVector[p,mu]]
+
 DoPolarizationSums[%,p,0]
 
 
@@ -198,7 +219,9 @@ DoPolarizationSums[%,p,0]
 
 
 FCClearScalarProducts[]
+
 PolarizationVector[p,mu]ComplexConjugate[PolarizationVector[p,mu]]
+
 DoPolarizationSums[%,p,0,VirtualBoson->True]
 
 
@@ -211,8 +234,11 @@ DoPolarizationSums[%,p,0,VirtualBoson->True]
 
 
 FCClearScalarProducts[];
+
 ScalarProduct[p,p]=0;
+
 PolarizationVector[p,mu]ComplexConjugate[PolarizationVector[p,mu]]+xyz
+
 DoPolarizationSums[%,p,n]
 
 
@@ -221,9 +247,12 @@ DoPolarizationSums[%,p,n]
 
 
 FCClearScalarProducts[];
+
 ScalarProduct[p,p]=0;
+
 ChangeDimension[PolarizationVector[p,mu]*
 ComplexConjugate[PolarizationVector[p,mu]]+xyz,D]
+
 DoPolarizationSums[%,p,n]
 
 
@@ -232,8 +261,11 @@ DoPolarizationSums[%,p,n]
 
 
 FCClearScalarProducts[];
+
 ScalarProduct[p,p]=M^2;
+
 PolarizationVector[p,mu]ComplexConjugate[PolarizationVector[p,mu]]+xyz
+
 DoPolarizationSums[%,p]
 
 
@@ -242,9 +274,12 @@ DoPolarizationSums[%,p]
 
 
 FCClearScalarProducts[];
+
 ScalarProduct[p,p]=M^2;
+
 ChangeDimension[PolarizationVector[p,mu]*
 ComplexConjugate[PolarizationVector[p,mu]]+xyz,D]
+
 DoPolarizationSums[%,p]
 
 
@@ -261,6 +296,3 @@ DoPolarizationSums[xyz,p,n]
 
 
 DoPolarizationSums[xyz,p,NumberOfPolarizations->2]
-
-
-

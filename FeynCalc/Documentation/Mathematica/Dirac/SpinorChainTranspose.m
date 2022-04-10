@@ -20,12 +20,15 @@
 
 
 SpinorVBarD[p1,m1].GAD[\[Mu]].(GSD[p]+m).GAD[\[Mu]].SpinorUD[p2,m2]
+
 SpinorChainTranspose[%]
 
 
 SpinorUBarD[p1,m1].GAD[\[Mu]].(GSD[p]+m).GAD[\[Mu]].SpinorVD[p2,m2]
+
 SpinorChainTranspose[%]
 
 
 SpinorUBarD[p1,m1].GAD[\[Mu]].(GSD[p]+m).GAD[\[Mu]].SpinorVD[p2,m2]
+
 SpinorChainTranspose[%,Select->{{SpinorUBarD[_,_],SpinorVD[_,_]}}]

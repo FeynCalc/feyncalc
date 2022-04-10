@@ -1,5 +1,8 @@
 (* ::Package:: *)
 
+ 
+
+
 (* ::Section:: *)
 (*Integrate2*)
 
@@ -109,7 +112,9 @@ Apart[Integrate2[x^(OPEm-1) PolyLog[3,1-x],{x,0,1}],OPEm]
 
 
 Integrate2[x^(OPEm-1) Log[1-x] Log[x] Log[1+x]/(1+x),{x,0,1}]//Simplify
+
 % /. OPEm->2
+
 N[%]
 
 
@@ -117,6 +122,7 @@ Integrate2[x^(OPEm-1) (PolyLog[3,(1-x)/(1+x)]-PolyLog[3,-((1-x)/(1+x))]),{x,0,1}
 
 
 DataType[OPEm,PositiveInteger]
+
 Integrate2[x^(OPEm-1) DeltaFunction[1-x],{x,0,1}]
 
 
@@ -141,10 +147,12 @@ Integrate3[Expand[t,x],{x,0,1}]//Expand//Timing
 
 
 Clear[t];
+
 Integrate2[DeltaFunction[1-x] f[x],{x,0,1}]
 
 
 Integrate2[x^5 Log[1+x]^2,{x,0,1}]
+
 N[%]
 
 

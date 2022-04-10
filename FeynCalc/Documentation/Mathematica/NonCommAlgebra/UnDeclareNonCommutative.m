@@ -38,13 +38,16 @@ DataType[x,NonCommutative]
 
 
 UnDeclareNonCommutative[x]
+
 DataType[x,NonCommutative]
 
 
 DeclareNonCommutative[y,z]
+
 DataType[y,z,NonCommutative]
 
 
 
 UnDeclareNonCommutative[y,z]
+
 DataType[y,z,NonCommutative]

@@ -32,14 +32,17 @@
 
 
 CSP[p,q]
+
 ThreeDivergence[%,CV[q,i]]
 
 
 CSP[p-k,q]
+
 ThreeDivergence[%,CV[k,i]]
 
 
 CFAD[{p,m^2},p-q]
+
 ThreeDivergence[%,CVD[p,i]]
 
 

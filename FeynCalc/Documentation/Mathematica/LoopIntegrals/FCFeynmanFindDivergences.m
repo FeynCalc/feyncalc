@@ -7,9 +7,6 @@
 (*FCFeynmanFindDivergences*)
 
 
-
-
-
 (* ::Text:: *)
 (*`FCFeynmanFindDivergences[exp, vars]` identifies UV and IR divergences of the given Feynman parametric integral that arise when different parametric variables approach zero or infinity.*)
 
@@ -21,10 +18,6 @@
 (* ::Text:: *)
 (*The function returns a list of lists of the form `{{{x[i], x[j], ...}, {x[k], x[l], ...}, sdd}, ...}`, where*)
 (*`{x[i],x[j], ...}` need to approach zero, while `{x[k], x[l], ...}` must tend towards infinity to generate the superficial degree of divergence `sdd`.*)
-
-
-(* ::Text:: *)
-(*`FCFeynmanParametrize` can also be employed in conjunction with `FCFeynmanParameterJoin`, where one first joins suitable propagators using auxiliary Feynman parameters and then finally integrates out loop momenta.*)
 
 
 (* ::Text:: *)
@@ -56,6 +49,7 @@
 
 
 int=SFAD[l,k+l,{{k,-2k . q}}]
+
 fpar=FCFeynmanParametrize[int,{k,l},Names->x,FCReplaceD->{D->4-2Epsilon}]
 
 
