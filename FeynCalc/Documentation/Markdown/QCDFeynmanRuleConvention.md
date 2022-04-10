@@ -13,7 +13,8 @@ The default values are `1` for both, which corresponds to the convention used in
 Enforce the convention as in "Applications of Perturbative QCD" by R. Field.
 
 ```mathematica
-QCDFeynmanRuleConvention[GhostPropagator] = -1;
+QCDFeynmanRuleConvention[GhostPropagator] = -1; 
+ 
 QCDFeynmanRuleConvention[GluonGhostVertex] = -1;
 ```
 
@@ -32,7 +33,8 @@ $$g_s k^{\mu } f^{abc}$$
 Back to the standard convention.
 
 ```mathematica
-QCDFeynmanRuleConvention[GhostPropagator] = 1
+QCDFeynmanRuleConvention[GhostPropagator] = 1 
+ 
 QCDFeynmanRuleConvention[GluonGhostVertex] = 1
 ```
 

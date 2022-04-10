@@ -1,3 +1,5 @@
+## Integrate2
+
 `Integrate2` is like `Integrate`, but `Integrate2[a_Plus, b__] := Map[Integrate2[#, b]&, a]` ( more linear algebra and partial fraction decomposition is done)
 
 `Integrate2[f[x] DeltaFunction[x], x] -> f[0]`
@@ -24,7 +26,7 @@ Since `Integrate2` does do a reordering and partial fraction decomposition befor
 Integrate2[Log[1 + x] Log[x]/(1 - x), {x, 0, 1}] // Timing
 ```
 
-$$\left\{0.068947,\zeta (3)-\frac{3}{2} \zeta (2) \log (2)\right\}$$
+$$\left\{0.057955,\zeta (3)-\frac{3}{2} \zeta (2) \log (2)\right\}$$
 
 Since `Integrate2` uses table-look-up methods it is much faster than Mathematica's Integrate.
 
@@ -123,8 +125,10 @@ Apart[Integrate2[x^(OPEm - 1) PolyLog[3, 1 - x], {x, 0, 1}], OPEm]
 $$-\frac{\zeta (2)}{m^2}-\frac{\zeta (2)}{m-1}+\frac{\zeta (2)+\zeta (2) \left(-S_1(m-2)\right)+S_{12}(m)+\zeta (3)}{m}$$
 
 ```mathematica
-Integrate2[x^(OPEm - 1) Log[1 - x] Log[x] Log[1 + x]/(1 + x), {x, 0, 1}] // Simplify
-% /. OPEm -> 2
+Integrate2[x^(OPEm - 1) Log[1 - x] Log[x] Log[1 + x]/(1 + x), {x, 0, 1}] // Simplify 
+ 
+% /. OPEm -> 2 
+ 
 N[%]
 ```
 
@@ -138,10 +142,11 @@ $$0.0505138$$
 Integrate2[x^(OPEm - 1) (PolyLog[3, (1 - x)/(1 + x)] - PolyLog[3, -((1 - x)/(1 + x))]), {x, 0, 1}]
 ```
 
-$$\frac{3 \zeta (2) (-1)^m \log (2)}{2 m}-\frac{3 \zeta (2) \log (2)}{2 m}+\frac{\zeta (2) (-1)^m S_{-1}(m)}{m}-\frac{\zeta (2) S_{-1}(m)}{2 m}+\frac{\zeta (2) (-1)^m S_1(m)}{2 m}-\frac{\zeta (2) S_1(m)}{m}+\frac{(-1)^m S_{-3}(m)}{m}+\frac{(-1)^m S_{-2}(m) S_1(m)}{m}+\frac{S_1(m) S_2(m)}{m}+\frac{S_3(m)}{m}+\frac{(-1)^{m+1} S_{-21}(m)}{m}-\frac{S_{-1-2}(m)}{m}+\frac{(-1)^{m+1} S_{-12}(m)}{m}-\frac{S_{21}(m)}{m}-\frac{7 (-1)^m \zeta (3)}{8 m}+\frac{21 \zeta (3)}{8 m}$$
+$$\frac{3 \zeta (2) (-1)^m \log (2)}{2 m}-\frac{3 \zeta (2) \log (2)}{2 m}+\frac{\zeta (2) (-1)^m S_{-1}(m)}{m}-\frac{\zeta (2) S_{-1}(m)}{2 m}+\frac{\zeta (2) (-1)^m S_1(m)}{2 m}-\frac{\zeta (2) S_1(m)}{m}+\frac{(-1)^m S_{-3}(m)}{m}+\frac{(-1)^m S_{-2}(m) S_1(m)}{m}+\frac{S_1(m) S_2(m)}{m}+\frac{S_3(m)}{m}-\frac{(-1)^m S_{-21}(m)}{m}-\frac{S_{-1-2}(m)}{m}-\frac{(-1)^m S_{-12}(m)}{m}-\frac{S_{21}(m)}{m}-\frac{7 (-1)^m \zeta (3)}{8 m}+\frac{21 \zeta (3)}{8 m}$$
 
 ```mathematica
-DataType[OPEm, PositiveInteger]
+DataType[OPEm, PositiveInteger] 
+ 
 Integrate2[x^(OPEm - 1) DeltaFunction[1 - x], {x, 0, 1}]
 ```
 
@@ -167,7 +172,7 @@ $$8 \zeta (2) C_A C_F-\frac{16 x^2 C_A C_F \;\text{Li}_2(-x)}{x+1}-\frac{16 C_A 
 Integrate2[t, {x, 0, 1}] // Timing
 ```
 
-$$\{0.080437,0\}$$
+$$\{0.040008,0\}$$
 
 Expanding `t` with respect to `x` yields a form already suitable for `Integrate3` and therefore the following is faster:
 
@@ -175,17 +180,19 @@ Expanding `t` with respect to `x` yields a form already suitable for `Integrate3
 Integrate3[Expand[t, x], {x, 0, 1}] // Expand // Timing
 ```
 
-$$\{0.040291,0\}$$
+$$\{0.018181,0\}$$
 
 ```mathematica
-Clear[t];
+Clear[t]; 
+ 
 Integrate2[DeltaFunction[1 - x] f[x], {x, 0, 1}]
 ```
 
 $$f(1)$$
 
 ```mathematica
-Integrate2[x^5 Log[1 + x]^2, {x, 0, 1}]
+Integrate2[x^5 Log[1 + x]^2, {x, 0, 1}] 
+ 
 N[%]
 ```
 
@@ -203,4 +210,4 @@ $$0.0641986$$
 Integrate2[x^(OPEm - 1) Log[1 + x]^2, {x, 0, 1}]
 ```
 
-$$-\frac{2 (-1)^m S_1^2(m)}{m}+\frac{(-1)^m S_1\left(\frac{m-1}{2}\right) S_1(m)}{m}-\frac{S_1\left(\frac{m-1}{2}\right) S_1(m)}{m}+\frac{(-1)^m S_1\left(\frac{m}{2}\right) S_1(m)}{m}+\frac{S_1\left(\frac{m}{2}\right) S_1(m)}{m}+\frac{(-1)^m S_2\left(\frac{m-1}{2}\right)}{2 m}-\frac{S_2\left(\frac{m-1}{2}\right)}{2 m}+\frac{(-1)^m S_2\left(\frac{m}{2}\right)}{2 m}+\frac{S_2\left(\frac{m}{2}\right)}{2 m}-\frac{2 (-1)^m S_2(m)}{m}-\frac{2 (-1)^m S_{-11}(m)}{m}+\frac{4 (-1)^m \log (2) S_1(m)}{m}+\frac{(-1)^{m+1} \log (2) S_1\left(\frac{m-1}{2}\right)}{m}+\frac{\log (2) S_1\left(\frac{m-1}{2}\right)}{m}+\frac{(-1)^{m+1} \log (2) S_1\left(\frac{m}{2}\right)}{m}-\frac{\log (2) S_1\left(\frac{m}{2}\right)}{m}+\frac{(-1)^{m+1} \log ^2(2)}{m}+\frac{\log ^2(2)}{m}$$
+$$-\frac{2 (-1)^m S_1^2(m)}{m}+\frac{(-1)^m S_1\left(\frac{m-1}{2}\right) S_1(m)}{m}-\frac{S_1\left(\frac{m-1}{2}\right) S_1(m)}{m}+\frac{(-1)^m S_1\left(\frac{m}{2}\right) S_1(m)}{m}+\frac{S_1\left(\frac{m}{2}\right) S_1(m)}{m}+\frac{(-1)^m S_2\left(\frac{m-1}{2}\right)}{2 m}-\frac{S_2\left(\frac{m-1}{2}\right)}{2 m}+\frac{(-1)^m S_2\left(\frac{m}{2}\right)}{2 m}+\frac{S_2\left(\frac{m}{2}\right)}{2 m}-\frac{2 (-1)^m S_2(m)}{m}-\frac{2 (-1)^m S_{-11}(m)}{m}+\frac{4 (-1)^m \log (2) S_1(m)}{m}-\frac{(-1)^m \log (2) S_1\left(\frac{m-1}{2}\right)}{m}+\frac{\log (2) S_1\left(\frac{m-1}{2}\right)}{m}-\frac{(-1)^m \log (2) S_1\left(\frac{m}{2}\right)}{m}-\frac{\log (2) S_1\left(\frac{m}{2}\right)}{m}-\frac{(-1)^m \log ^2(2)}{m}+\frac{\log ^2(2)}{m}$$

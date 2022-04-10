@@ -10,6 +10,7 @@
 
 ```mathematica
 DCHN[FV[p, \[Nu]] GA[\[Mu]] . GA[\[Nu]] . GA[\[Mu]], i, j] 
+ 
 DiracChainFactor[%]
 ```
 

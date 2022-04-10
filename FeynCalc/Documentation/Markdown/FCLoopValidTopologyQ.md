@@ -1,3 +1,5 @@
+## FCLoopValidTopologyQ
+
 `FCLoopValidTopologyQ[topo]` returns `True` if `topo` is a valid `FCTopology` object or a list thereof.
 
 ### See also
@@ -16,6 +18,7 @@ $$\left\{\frac{1}{\text{p1}^2},\frac{1}{\text{p2}^2},\frac{1}{\text{p3}^2},\frac
 
 ```mathematica
 topo = FCTopology[topo1, {FAD[p1], FAD[p2], FAD[p3], FAD[Q - p1 - p2 - p3], FAD[Q - p1 - p2], 
+    
     FAD[Q - p1], FAD[Q - p2], FAD[p1 + p3]}, {p1, p2, p3}, {Q}, {}, {}]
 ```
 
@@ -31,18 +34,16 @@ This topology is missing information about loop and external momenta
 
 ```mathematica
 topoWrong = FCTopology[topo1, {FAD[p1], FAD[p2], FAD[Q - p1 - p2 - p3], FAD[Q - p1 - p2], 
+    
     FAD[Q - p1], FAD[p1 + p3]}, {}, {}]
 ```
 
 $$\text{FCTopology}\left(\text{topo1},\left\{\frac{1}{\text{p1}^2},\frac{1}{\text{p2}^2},\frac{1}{(-\text{p1}-\text{p2}-\text{p3}+Q)^2},\frac{1}{(-\text{p1}-\text{p2}+Q)^2},\frac{1}{(Q-\text{p1})^2},\frac{1}{(\text{p1}+\text{p3})^2}\right\},\{\},\{\}\right)$$
 
 ```mathematica
-FCLoopValidTopologyQ[topoWrong] 
-  
- 
-
+FCLoopValidTopologyQ[topoWrong]
 ```
 
-![074ejzubvewb2](img/074ejzubvewb2.svg)
+![074ejzubvewb2](img/074ejzubvewb2.pdf)
 
 $$\text{False}$$

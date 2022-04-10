@@ -11,14 +11,16 @@ The default choice is $(1,-1,-1,-1)$ which corresponds to `FCSetMetricSignature[
 ### Examples
 
 ```mathematica
-FCSetMetricSignature[{-1, 1}]
+FCSetMetricSignature[{-1, 1}] 
+ 
 SPD[p, q] // LorentzToCartesian
 ```
 
 $$p\cdot q-p^0 q^0$$
 
 ```mathematica
-FCSetMetricSignature[{1, -1}]
+FCSetMetricSignature[{1, -1}] 
+ 
 SPD[p, q] // LorentzToCartesian
 ```
 

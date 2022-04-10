@@ -18,4 +18,4 @@ $$\left(\bar{\gamma }\cdot \overline{p}\right).\left(\bar{\gamma }\cdot \overlin
 Amputate[%, q]
 ```
 
-$$q^{\text{\$AL\$15883}(1)} \left(\bar{\gamma }\cdot \overline{p}\right).\gamma ^{\text{\$AL\$15883}(1)}$$
+$$q^{\text{\$AL\$16479}(1)} \left(\bar{\gamma }\cdot \overline{p}\right).\gamma ^{\text{\$AL\$16479}(1)}$$

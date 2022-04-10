@@ -11,7 +11,8 @@
 ### Examples
 
 ```mathematica
-CSI[k, j, i]
+CSI[k, j, i] 
+ 
 PauliOrder[%]
 ```
 
@@ -20,7 +21,8 @@ $$\overline{\sigma }^k.\overline{\sigma }^j.\overline{\sigma }^i$$
 $$2 \overline{\sigma }^i \bar{\delta }^{jk}-2 \overline{\sigma }^j \bar{\delta }^{ik}+2 \overline{\sigma }^k \bar{\delta }^{ij}-\overline{\sigma }^i.\overline{\sigma }^j.\overline{\sigma }^k$$
 
 ```mathematica
-CSID[i, j, k]
+CSID[i, j, k] 
+ 
 PauliOrder[%]
 ```
 

@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-GA[\[Mu], \[Nu]]
+GA[\[Mu], \[Nu]] 
+ 
 ToDiracSigma[%, GA[\[Mu]], GA[\[Nu]]]
 ```
 
@@ -18,7 +19,8 @@ $$\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }$$
 $$\bar{g}^{\mu \nu }-i \sigma ^{\mu \nu }$$
 
 ```mathematica
-GA[\[Mu], \[Nu], \[Alpha], \[Beta], \[Rho], \[Sigma]]
+GA[\[Mu], \[Nu], \[Alpha], \[Beta], \[Rho], \[Sigma]] 
+ 
 ToDiracSigma[%, GA[\[Alpha]], GA[\[Beta]]]
 ```
 

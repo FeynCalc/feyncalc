@@ -11,7 +11,9 @@ The idea of having standard matrix elements stems from A. Denner's "Techniques f
 ### Examples
 
 ```mathematica
-Spinor[Momentum[k2, D], 0, 1] . GAD[\[Mu]] . Spinor[-Momentum[k1, D], 0, 1]*Spinor[-Momentum[ps, D], SMP["m_s"], 1] . GAD[\[Mu]] . Spinor[Momentum[pd, D], SMP["m_d"], 1]
+Spinor[Momentum[k2, D], 0, 1] . GAD[\[Mu]] . Spinor[-Momentum[k1, D], 0, 1]*
+   Spinor[-Momentum[ps, D], SMP["m_s"], 1] . GAD[\[Mu]] . Spinor[Momentum[pd, D], SMP["m_d"], 1] 
+ 
 ToStandardMatrixElement[%]
 ```
 

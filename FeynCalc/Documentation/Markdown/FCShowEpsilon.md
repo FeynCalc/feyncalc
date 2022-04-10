@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-SMP["Delta"]
+SMP["Delta"] 
+ 
 FCShowEpsilon[%]
 ```
 
@@ -18,7 +19,8 @@ $$\Delta$$
 $$\frac{1}{\varepsilon }-\gamma +\log (4 \pi )$$
 
 ```mathematica
-SMP["Delta_UV"]
+SMP["Delta_UV"] 
+ 
 FCShowEpsilon[%]
 ```
 
@@ -27,7 +29,8 @@ $$\Delta _{\text{UV}}$$
 $$\frac{1}{\varepsilon _{\text{UV}}}-\gamma +\log (4 \pi )$$
 
 ```mathematica
-SMP["Delta_IR"]
+SMP["Delta_IR"] 
+ 
 FCShowEpsilon[%]
 ```
 

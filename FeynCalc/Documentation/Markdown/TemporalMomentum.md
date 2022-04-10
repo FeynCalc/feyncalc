@@ -17,29 +17,25 @@ TemporalMomentum[p]
 $$p$$
 
 ```mathematica
-TemporalMomentum[-q]
-% // StandardForm
-```
+TemporalMomentum[-q] // StandardForm
 
-$$-q$$
-
-```
 (*-TemporalMomentum[q]*)
 ```
 
 ```mathematica
 TemporalMomentum[p + q]
-% // MomentumExpand // StandardForm
 ```
 
 $$p+q$$
 
-```
+```mathematica
+TemporalMomentum[p + q] // MomentumExpand // StandardForm
+
 (*TemporalMomentum[p] + TemporalMomentum[q]*)
 ```
 
 ```mathematica
-% // MomentumCombine // StandardForm
+TemporalMomentum[p + q] // MomentumExpand // MomentumCombine // StandardForm
 
 (*TemporalMomentum[p + q]*)
 ```

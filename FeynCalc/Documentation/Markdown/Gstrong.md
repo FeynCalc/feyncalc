@@ -12,11 +12,12 @@ The shortcut `Gstrong` is deprecated, please use `SMP["g_s"]` instead!
 
 ```mathematica
 Gstrong
-% // StandardForm
 ```
 
 $$g_s$$
 
-```
+```mathematica
+Gstrong // StandardForm
+
 (*SMP["g_s"]*)
 ```

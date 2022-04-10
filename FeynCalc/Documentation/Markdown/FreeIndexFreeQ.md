@@ -11,7 +11,8 @@ As always in FeynCalc, Einstein summation convention is implicitly assumed. The 
 ### Examples
 
 ```mathematica
-FCI[FV[p, \[Mu]] FV[q, \[Nu]]]
+FCI[FV[p, \[Mu]] FV[q, \[Nu]]] 
+ 
 FreeIndexFreeQ[%, {LorentzIndex}]
 ```
 
@@ -20,7 +21,8 @@ $$\overline{p}^{\mu } \overline{q}^{\nu }$$
 $$\text{False}$$
 
 ```mathematica
-FCI[FV[p, \[Mu]] FV[q, \[Mu]]]
+FCI[FV[p, \[Mu]] FV[q, \[Mu]]] 
+ 
 FreeIndexFreeQ[%, {LorentzIndex}]
 ```
 
@@ -29,7 +31,8 @@ $$\overline{p}^{\mu } \overline{q}^{\mu }$$
 $$\text{True}$$
 
 ```mathematica
-FCI[SUNT[a, b]]
+FCI[SUNT[a, b]] 
+ 
 FreeIndexFreeQ[%, {SUNIndex}]
 ```
 
@@ -38,11 +41,9 @@ $$T^a.T^b$$
 $$\text{False}$$
 
 ```mathematica
-FCI[SUNT[a, a]]
-FreeIndexFreeQ[%, {SUNIndex}] 
-  
+FCI[SUNT[a, a]] 
  
-
+FreeIndexFreeQ[%, {SUNIndex}]
 ```
 
 $$T^a.T^a$$

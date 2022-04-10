@@ -9,12 +9,11 @@
 ### Examples
 
 ```mathematica
-CartesianPair[CartesianIndex[i], CartesianMomentum[p]] CartesianPair[CartesianIndex[i], CartesianMomentum[q]]
-% /. CartesianPair -> CartesianPairContract
-% /. CartesianPairContract -> CartesianPair 
-  
+CartesianPair[CartesianIndex[i], CartesianMomentum[p]] CartesianPair[CartesianIndex[i], CartesianMomentum[q]] 
  
-
+% /. CartesianPair -> CartesianPairContract 
+ 
+% /. CartesianPairContract -> CartesianPair
 ```
 
 $$\overline{p}^i \overline{q}^i$$

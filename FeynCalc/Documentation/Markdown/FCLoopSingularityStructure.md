@@ -57,7 +57,8 @@ $$(x(2)=0\land x(1)=0)\lor p^2=0$$
 #### 1-loop massless box
 
 ```mathematica
-out = FCLoopSingularityStructure[FAD[p, p + q1, p + q1 + q2, p + q1 + q2 + q3], {p}, Names -> x, FinalSubstitutions -> {SPD[q1] -> 0, SPD[q2] -> 0, SPD[q3] -> 0}]
+out = FCLoopSingularityStructure[FAD[p, p + q1, p + q1 + q2, p + q1 + q2 + q3], {p}, 
+   Names -> x, FinalSubstitutions -> {SPD[q1] -> 0, SPD[q2] -> 0, SPD[q3] -> 0}]
 ```
 
 $$\left\{2^{-\varepsilon -2} \Gamma (\varepsilon +2),x(1)+x(2)+x(3)+x(4),-2 (x(1) x(3) (\text{q1}\cdot \;\text{q2})+x(1) x(4) (\text{q1}\cdot \;\text{q2})+x(1) x(4) (\text{q1}\cdot \;\text{q3})+x(1) x(4) (\text{q2}\cdot \;\text{q3})+x(2) x(4) (\text{q2}\cdot \;\text{q3})),\{x(4) (\text{q2}\cdot \;\text{q3}),x(3) (\text{q1}\cdot \;\text{q2})+x(4) (\text{q1}\cdot \;\text{q2})+x(4) (\text{q1}\cdot \;\text{q3}),x(2) (\text{q1}\cdot \;\text{q2}) (\text{q2}\cdot \;\text{q3}),x(1) (\text{q1}\cdot \;\text{q3})+x(1) (\text{q2}\cdot \;\text{q3})+x(2) (\text{q2}\cdot \;\text{q3}),x(1) (\text{q1}\cdot \;\text{q2})\}\right\}$$
@@ -89,7 +90,9 @@ $$(\text{q2}\cdot \;\text{q3}=0\land x(1)\neq 0\land \;\text{q1}\cdot \;\text{q3
 #### A 2-loop eikonal integral with massive and massless lines
 
 ```mathematica
-out = FCLoopSingularityStructure[SFAD[{ p1, m^2}] SFAD[{ p3, m^2}] SFAD[{{0, 2 p1 . n}}] SFAD[{{0, 2 (p1 + p3) . n}}], {p1, p3}, Names -> x, FinalSubstitutions -> {SPD[n] -> 1, m -> 1}]
+out = FCLoopSingularityStructure[SFAD[{ p1, m^2}] SFAD[{ p3, m^2}] SFAD[{{0, 
+       2 p1 . n}}] SFAD[{{0, 2 (p1 + p3) . n}}], {p1, p3}, Names -> x,
+   FinalSubstitutions -> {SPD[n] -> 1, m -> 1}]
 ```
 
 $$\left\{\Gamma (2 \varepsilon ),x(3) x(4),x(4) x(1)^2+2 x(2) x(4) x(1)+x(3) x(4)^2+x(2)^2 x(3)+x(2)^2 x(4)+x(3)^2 x(4),\left\{x(3) x(4)^2,x(3)^2 x(4),x(2) x(3),x(2)^2+x(4)^2+2 x(3) x(4),x(1) x(4)+x(2) x(4),x(1)^2+2 x(2) x(1)+x(3)^2-x(4)^2\right\}\right\}$$
@@ -105,7 +108,9 @@ $$x(4)=0\land x(3)=0\land x(2)=0\land x(1)=0$$
 Notice that the mass is acting as an IR regulator here. Setting it to 0 makes the IR pole resurface
 
 ```mathematica
-out = FCLoopSingularityStructure[SFAD[{ p1, m^2}] SFAD[{ p3, m^2}] SFAD[{{0, 2 p1 . n}}] SFAD[{{0, 2 (p1 + p3) . n}}], {p1, p3}, Names -> x, FinalSubstitutions -> {SPD[n] -> 1, m -> 0}]
+out = FCLoopSingularityStructure[SFAD[{ p1, m^2}] SFAD[{ p3, m^2}] SFAD[{{0, 
+       2 p1 . n}}] SFAD[{{0, 2 (p1 + p3) . n}}], {p1, p3}, Names -> x,
+   FinalSubstitutions -> {SPD[n] -> 1, m -> 0}]
 ```
 
 $$\left\{0,x(3) x(4),x(4) x(1)^2+2 x(2) x(4) x(1)+x(2)^2 x(3)+x(2)^2 x(4),\left\{x(2) x(3),x(2)^2,x(1) x(4)+x(2) x(4),x(1)^2+2 x(2) x(1)\right\}\right\}$$

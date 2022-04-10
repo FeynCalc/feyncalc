@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-SpinorUBar[p1, m1] . GA[\[Mu]] . SpinorU[p2, m2]
+SpinorUBar[p1, m1] . GA[\[Mu]] . SpinorU[p2, m2] 
+ 
 GordonSimplify[%]
 ```
 
@@ -18,7 +19,8 @@ $$\bar{u}(\text{p1},\text{m1}).\bar{\gamma }^{\mu }.u(\text{p2},\text{m2})$$
 $$\frac{\left(\overline{\text{p1}}+\overline{\text{p2}}\right)^{\mu } \left(\varphi (\overline{\text{p1}},\text{m1})\right).\left(\varphi (\overline{\text{p2}},\text{m2})\right)}{\text{m1}+\text{m2}}+\frac{i \left(\varphi (\overline{\text{p1}},\text{m1})\right).\sigma ^{\mu \overline{\text{p1}}-\overline{\text{p2}}}.\left(\varphi (\overline{\text{p2}},\text{m2})\right)}{\text{m1}+\text{m2}}$$
 
 ```mathematica
-SpinorUBar[p1, m1] . GA[\[Mu], 5] . SpinorV[p2, m2]
+SpinorUBar[p1, m1] . GA[\[Mu], 5] . SpinorV[p2, m2] 
+ 
 GordonSimplify[%]
 ```
 
@@ -29,7 +31,8 @@ $$\frac{\left(\overline{\text{p1}}+\overline{\text{p2}}\right)^{\mu } \left(\var
 Relations involving projectors can be used to trade the right projector for a left one
 
 ```mathematica
-SpinorVBar[p1, m1] . GA[\[Mu], 6] . SpinorV[p2, m2]
+SpinorVBar[p1, m1] . GA[\[Mu], 6] . SpinorV[p2, m2] 
+ 
 GordonSimplify[%]
 ```
 
@@ -40,7 +43,8 @@ $$-\frac{i \left(\varphi (-\overline{\text{p1}},\text{m1})\right).\sigma ^{\mu \
 Use the `Select` option to achieve the opposite
 
 ```mathematica
-ex = SpinorVBar[p1, m1] . GA[\[Mu], 7] . SpinorV[p2, m2]
+ex = SpinorVBar[p1, m1] . GA[\[Mu], 7] . SpinorV[p2, m2] 
+ 
 GordonSimplify[ex]
 ```
 
@@ -77,7 +81,8 @@ ex = SpinorVBarD[p1, m1] . GAD[\[Mu], 5] . SpinorVD[p2, m2]
 $$\bar{v}(\text{p1},\text{m1}).\gamma ^{\mu }.\bar{\gamma }^5.v(\text{p2},\text{m2})$$
 
 ```mathematica
-FCGetDiracGammaScheme[]
+FCGetDiracGammaScheme[] 
+ 
 GordonSimplify[ex]
 ```
 
@@ -86,7 +91,8 @@ $$\text{NDR}$$
 $$-\frac{(\text{p1}+\text{p2})^{\mu } (\varphi (-\text{p1},\text{m1})).\bar{\gamma }^5.(\varphi (-\text{p2},\text{m2}))}{\text{m1}-\text{m2}}-\frac{i (\varphi (-\text{p1},\text{m1})).\sigma ^{\mu \;\text{p1}-\text{p2}}.\bar{\gamma }^5.(\varphi (-\text{p2},\text{m2}))}{\text{m1}-\text{m2}}$$
 
 ```mathematica
-FCSetDiracGammaScheme["BMHV"]
+FCSetDiracGammaScheme["BMHV"] 
+ 
 GordonSimplify[ex]
 ```
 

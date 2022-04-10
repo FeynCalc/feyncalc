@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-$LeviCivitaSign
+$LeviCivitaSign 
+ 
 Tr[GA[\[Mu], \[Nu], \[Rho], \[Sigma], 5]]
 ```
 
@@ -20,7 +21,8 @@ $$-4 i \bar{\epsilon }^{\mu \nu \rho \sigma }$$
 This sets the same convention as in FORM
 
 ```mathematica
-$LeviCivitaSign = -I;
+$LeviCivitaSign = -I; 
+ 
 Tr[GA[\[Mu], \[Nu], \[Rho], \[Sigma], 5]]
 ```
 

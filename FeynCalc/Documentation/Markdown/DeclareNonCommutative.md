@@ -21,14 +21,16 @@ DataType[x, NonCommutative]
 $$\text{True}$$
 
 ```mathematica
-DeclareNonCommutative[y, z]
+DeclareNonCommutative[y, z] 
+ 
 DataType[a, x, y, z, NonCommutative]
 ```
 
 $$\{\text{False},\text{True},\text{True},\text{True}\}$$
 
 ```mathematica
-UnDeclareNonCommutative[x, y, z]
+UnDeclareNonCommutative[x, y, z] 
+ 
 DataType[a, x, y, z, NonCommutative]
 ```
 

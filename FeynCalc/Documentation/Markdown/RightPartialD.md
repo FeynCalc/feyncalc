@@ -15,16 +15,18 @@ RightPartialD[\[Mu]]
 $$\vec{\partial }_{\mu }$$
 
 ```mathematica
-RightPartialD[\[Mu]] . QuantumField[A, LorentzIndex[\[Mu]]]
-ExpandPartialD[%]
-% // StandardForm
+RightPartialD[\[Mu]] . QuantumField[A, LorentzIndex[\[Mu]]] 
+ 
+ex = ExpandPartialD[%]
 ```
 
 $$\vec{\partial }_{\mu }.A_{\mu }$$
 
 $$\left.(\partial _{\mu }A_{\mu }\right)$$
 
-```
+```mathematica
+ex // StandardForm
+
 (*QuantumField[FCPartialD[LorentzIndex[\[Mu]]], A, LorentzIndex[\[Mu]]]*)
 ```
 

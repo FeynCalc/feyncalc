@@ -10,11 +10,12 @@
 
 ```mathematica
 GA5
-% // StandardForm
 ```
 
 $$\bar{\gamma }^5$$
 
-```
+```mathematica
+GA5 // StandardForm
+
 (*DiracGamma[5]*)
 ```

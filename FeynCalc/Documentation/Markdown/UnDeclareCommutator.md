@@ -13,7 +13,8 @@ Commutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A], QuantumField[A]] = 0
 ```
 
 ```mathematica
-QuantumField[A] . QuantumField[A] . LeftPartialD[\[Nu]] . QuantumField[A] . QuantumField[A] . LeftPartialD[\[Nu]]
+QuantumField[A] . QuantumField[A] . LeftPartialD[\[Nu]] . QuantumField[A] . QuantumField[A] . LeftPartialD[\[Nu]] 
+ 
 ExpandPartialD[%]
 ```
 
@@ -26,11 +27,9 @@ UnDeclareCommutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A], QuantumFiel
 ```
 
 ```mathematica
-QuantumField[A] . QuantumField[A] . LeftPartialD[\[Nu]] . QuantumField[A] . QuantumField[A] . LeftPartialD[\[Nu]]
-ExpandPartialD[%] 
-  
+QuantumField[A] . QuantumField[A] . LeftPartialD[\[Nu]] . QuantumField[A] . QuantumField[A] . LeftPartialD[\[Nu]] 
  
-
+ExpandPartialD[%]
 ```
 
 $$A.A.\overleftarrow{\partial }_{\nu }.A.A.\overleftarrow{\partial }_{\nu }$$

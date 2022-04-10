@@ -21,7 +21,8 @@ PaVeUVPart[x + y B0[SPD[p, p], 0, M^2]]
 $$\frac{D x-4 x-2 y}{D-4}$$
 
 ```mathematica
-PaVe[0, 0, {p10, p12, p20}, {m1^2, m2^2, m3^2}]
+PaVe[0, 0, {p10, p12, p20}, {m1^2, m2^2, m3^2}] 
+ 
 PaVeUVPart[%]
 ```
 
@@ -30,7 +31,8 @@ $$\text{C}_{00}\left(\text{p10},\text{p12},\text{p20},\text{m1}^2,\text{m2}^2,\t
 $$-\frac{1}{2 (D-4)}$$
 
 ```mathematica
-PaVe[0, 0, 0, 0, 0, 0, {p10, p12, p23, 0, p20, p13}, {m1^2, m2^2, m3^2, m4^2}]
+PaVe[0, 0, 0, 0, 0, 0, {p10, p12, p23, 0, p20, p13}, {m1^2, m2^2, m3^2, m4^2}] 
+ 
 PaVeUVPart[%]
 ```
 
@@ -39,8 +41,10 @@ $$\text{D}_{000000}\left(0,\text{p10},\text{p12},\text{p23},\text{p13},\text{p20
 $$\frac{-5 \;\text{m1}^2-5 \;\text{m2}^2-5 \;\text{m3}^2-5 \;\text{m4}^2+\text{p10}+\text{p12}+\text{p13}+\text{p20}+\text{p23}}{480 (D-4)}$$
 
 ```mathematica
-int = FVD[k + p, rho] FVD[k + p, si] FAD[k, {k + p, 0, 2}]
-TID[int, k, UsePaVeBasis -> True]
+int = FVD[k + p, rho] FVD[k + p, si] FAD[k, {k + p, 0, 2}] 
+ 
+TID[int, k, UsePaVeBasis -> True] 
+ 
 % // PaVeUVPart[#, FCE -> True] &
 ```
 

@@ -13,7 +13,8 @@
 ### Examples
 
 ```mathematica
-SPD[q, p] FAD[{q, m}, {q - p, 0}]
+SPD[q, p] FAD[{q, m}, {q - p, 0}] 
+ 
 ScalarProductCancel[%, q]
 ```
 
@@ -22,7 +23,8 @@ $$\frac{p\cdot q}{\left(q^2-m^2\right).(q-p)^2}$$
 $$\frac{m^2+p^2}{2 q^2.\left((q-p)^2-m^2\right)}-\frac{1}{2 \left(q^2-m^2\right)}$$
 
 ```mathematica
-SPD[q2, p] SPD[q1, p] FAD[{q1, m}, {q2, m}, q1 - p, q2 - p, q2 - q1] // FCI
+SPD[q2, p] SPD[q1, p] FAD[{q1, m}, {q2, m}, q1 - p, q2 - p, q2 - q1] //FCI 
+ 
 SPC[%, q1, q2, FDS -> True]
 ```
 

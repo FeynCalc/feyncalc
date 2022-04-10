@@ -25,7 +25,8 @@ ST1
 $$S_{T,1}$$
 
 ```mathematica
-FCRemoveTypesettingRules[ST1]
+FCRemoveTypesettingRules[ST1] 
+ 
 ST1
 ```
 

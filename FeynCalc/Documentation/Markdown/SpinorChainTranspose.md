@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-SpinorVBarD[p1, m1] . GAD[\[Mu]] . (GSD[p] + m) . GAD[\[Mu]] . SpinorUD[p2, m2]
+SpinorVBarD[p1, m1] . GAD[\[Mu]] . (GSD[p] + m) . GAD[\[Mu]] . SpinorUD[p2, m2] 
+ 
 SpinorChainTranspose[%]
 ```
 
@@ -18,7 +19,8 @@ $$\bar{v}(\text{p1},\text{m1}).\gamma ^{\mu }.(m+\gamma \cdot p).\gamma ^{\mu }.
 $$-(\varphi (-\text{p2},\text{m2})).\gamma ^{\mu }.(m-\gamma \cdot p).\gamma ^{\mu }.(\varphi (\text{p1},\text{m1}))$$
 
 ```mathematica
-SpinorUBarD[p1, m1] . GAD[\[Mu]] . (GSD[p] + m) . GAD[\[Mu]] . SpinorVD[p2, m2]
+SpinorUBarD[p1, m1] . GAD[\[Mu]] . (GSD[p] + m) . GAD[\[Mu]] . SpinorVD[p2, m2] 
+ 
 SpinorChainTranspose[%]
 ```
 
@@ -27,7 +29,8 @@ $$\bar{u}(\text{p1},\text{m1}).\gamma ^{\mu }.(m+\gamma \cdot p).\gamma ^{\mu }.
 $$(\varphi (\text{p1},\text{m1})).\gamma ^{\mu }.(m+\gamma \cdot p).\gamma ^{\mu }.(\varphi (-\text{p2},\text{m2}))$$
 
 ```mathematica
-SpinorUBarD[p1, m1] . GAD[\[Mu]] . (GSD[p] + m) . GAD[\[Mu]] . SpinorVD[p2, m2]
+SpinorUBarD[p1, m1] . GAD[\[Mu]] . (GSD[p] + m) . GAD[\[Mu]] . SpinorVD[p2, m2] 
+ 
 SpinorChainTranspose[%, Select -> {{SpinorUBarD[_, _], SpinorVD[_, _]}}]
 ```
 

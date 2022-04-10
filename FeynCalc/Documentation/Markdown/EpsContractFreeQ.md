@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-FCI[LC[p1, p2, p3, p4]]
+FCI[LC[p1, p2, p3, p4]] 
+ 
 EpsContractFreeQ[%]
 ```
 
@@ -18,7 +19,8 @@ $$\bar{\epsilon }^{\text{p1}\;\text{p2}\;\text{p3}\;\text{p4}}$$
 $$\text{True}$$
 
 ```mathematica
-FCI[LC[p1, p2, p3, mu] LC[q1, q2, q3, q4]]
+FCI[LC[p1, p2, p3, mu] LC[q1, q2, q3, q4]] 
+ 
 EpsContractFreeQ[%] 
   
  

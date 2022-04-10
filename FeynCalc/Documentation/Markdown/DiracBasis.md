@@ -18,4 +18,4 @@ $$\{\text{Contract}\to \;\text{True},\text{DiracGammaCombine}\to \;\text{True},\
 DiracReduce[GA[\[Mu], \[Nu], \[Rho]], FinalSubstitutions -> {}]
 ```
 
-$$i \;\text{DiracBasis}\left(\text{DiracBasis}\left(\bar{\gamma }^{\text{\$MU}(\text{\$24})}\right).\text{DiracBasis}\left(\bar{\gamma }^5\right)\right) \bar{\epsilon }^{\mu \nu \rho \;\text{\$MU}(\text{\$24})}+\text{DiracBasis}\left(\bar{\gamma }^{\rho }\right) \bar{g}^{\mu \nu }-\text{DiracBasis}\left(\bar{\gamma }^{\nu }\right) \bar{g}^{\mu \rho }+\text{DiracBasis}\left(\bar{\gamma }^{\mu }\right) \bar{g}^{\nu \rho }$$
+$$i \;\text{DiracBasis}\left(\text{DiracBasis}\left(\bar{\gamma }^{\text{\$MU}(\text{\$19})}\right).\text{DiracBasis}\left(\bar{\gamma }^5\right)\right) \bar{\epsilon }^{\mu \nu \rho \;\text{\$MU}(\text{\$19})}+\text{DiracBasis}\left(\bar{\gamma }^{\rho }\right) \bar{g}^{\mu \nu }-\text{DiracBasis}\left(\bar{\gamma }^{\nu }\right) \bar{g}^{\mu \rho }+\text{DiracBasis}\left(\bar{\gamma }^{\mu }\right) \bar{g}^{\nu \rho }$$

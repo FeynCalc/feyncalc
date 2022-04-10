@@ -8,10 +8,11 @@
 
 ### Examples
 
-This is a 1-loop gluon self-energy amplitude (ignoring factors of (2 π)).
+This is a 1-loop gluon self-energy amplitude (ignoring factors of $2 \pi$).
 
 ```mathematica
-FeynAmp[q, GV[p, \[Mu], a, q - p, \[Alpha], c, -q, \[Beta], e] GP[p - q, \[Alpha], c, \[Rho], d] GV[-p, \[Nu], b, p - q, \[Rho], d, q, \[Sigma], f] GP[q, \[Beta], e, \[Sigma], f]]
+FeynAmp[q, GV[p, \[Mu], a, q - p, \[Alpha], c, -q, \[Beta], e] GP[p - q, \[Alpha], c, \[Rho], d] GV[-p, \[Nu], b, p - q, \[Rho], d, q, \[Sigma], f] *
+   GP[q, \[Beta], e, \[Sigma], f]]
 ```
 
 $$\int d^Dq\left(f^{bdf} f^{ace} \Pi _{ef}^{\beta \sigma }(q) V^{\mu \alpha \beta }(p\text{, }q-p\text{, }-q) V^{\nu \rho \sigma }(-p\text{, }p-q\text{, }q) \Pi _{cd}^{\alpha \rho }(p-q)\right)$$

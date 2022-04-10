@@ -10,11 +10,12 @@
 
 ```mathematica
 Pair[LorentzIndex[1], LorentzIndex[\[Mu]]]
-% // StandardForm
 ```
 
 $$\bar{g}^{1\mu }$$
 
-```
+```mathematica
+Pair[LorentzIndex[1], LorentzIndex[\[Mu]]] // StandardForm
+
 (*Pair[ExplicitLorentzIndex[1], LorentzIndex[\[Mu]]]*)
 ```

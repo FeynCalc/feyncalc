@@ -11,7 +11,8 @@ The shortcut `AlphaFS` is deprecated, please use `SMP["alpha_fs"]` instead!
 ### Examples
 
 ```mathematica
-AlphaFS
+AlphaFS 
+ 
 % // InputForm
 ```
 

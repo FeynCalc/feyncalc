@@ -10,11 +10,12 @@
 
 ```mathematica
 DCHN[GA[\[Mu]], 1, 2]
-% // FCI // StandardForm
 ```
 
 $$\left(\bar{\gamma }^{\mu }\right){}_{12}$$
 
-```
+```mathematica
+DCHN[GA[\[Mu]], 1, 2] // FCI // StandardForm
+
 (*DiracChain[DiracGamma[LorentzIndex[\[Mu]]], ExplicitDiracIndex[1], ExplicitDiracIndex[2]]*)
 ```

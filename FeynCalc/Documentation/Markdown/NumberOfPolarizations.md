@@ -25,9 +25,12 @@ $$\bar{\varepsilon }^{*\text{mu}}(p) \bar{\varepsilon }^{\text{mu}}(p)$$
 Here the setting Automatic is sufficient.
 
 ```mathematica
-FCClearScalarProducts[];
-ScalarProduct[p, p] = 0;
-PolarizationVector[p, mu] ComplexConjugate[PolarizationVector[p, mu]] + xyz
+FCClearScalarProducts[]; 
+ 
+ScalarProduct[p, p] = 0; 
+ 
+PolarizationVector[p, mu] ComplexConjugate[PolarizationVector[p, mu]] + xyz 
+ 
 DoPolarizationSums[%, p, n]
 ```
 
@@ -43,7 +46,7 @@ Here it is not
 DoPolarizationSums[xyz, p, n]
 ```
 
-![0emyzef54vvcu](img/0emyzef54vvcu.svg)
+![0emyzef54vvcu](img/0emyzef54vvcu.pdf)
 
 $$\text{\$Aborted}$$
 

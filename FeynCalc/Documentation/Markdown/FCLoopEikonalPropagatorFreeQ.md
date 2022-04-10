@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-FCI@SFAD[p, p - q]
+FCI@SFAD[p, p - q] 
+ 
 FCLoopEikonalPropagatorFreeQ[%]
 ```
 
@@ -18,7 +19,8 @@ $$\frac{1}{(p^2+i \eta ).((p-q)^2+i \eta )}$$
 $$\text{True}$$
 
 ```mathematica
-FCI@SFAD[{{0, p . q}}]
+FCI@SFAD[{{0, p . q}}] 
+ 
 FCLoopEikonalPropagatorFreeQ[%]
 ```
 
@@ -27,7 +29,8 @@ $$\frac{1}{(p\cdot q+i \eta )}$$
 $$\text{False}$$
 
 ```mathematica
-FCI@CFAD[{{0, p . q}}]
+FCI@CFAD[{{0, p . q}}] 
+ 
 FCLoopEikonalPropagatorFreeQ[%, Momentum -> {q}]
 ```
 
@@ -36,7 +39,8 @@ $$\frac{1}{(p\cdot q-i \eta )}$$
 $$\text{False}$$
 
 ```mathematica
-FCI@SFAD[{{q, q . p}}]
+FCI@SFAD[{{q, q . p}}] 
+ 
 FCLoopEikonalPropagatorFreeQ[%, First -> False]
 ```
 

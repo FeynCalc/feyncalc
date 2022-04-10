@@ -11,7 +11,10 @@
 Create a closed chain for the 1-loop electron self-energy
 
 ```mathematica
--(1/(16 \[Pi]^4)) I el^2 DCHN[Spinor[-Momentum[p, D], me, 1], Dir1] DCHN[Spinor[Momentum[q, D], me, 1], Dir2] DCHN[GAD[Lor1], Dir1, Dir3] DCHN[GAD[Lor2], Dir2, Dir4] DCHN[me - GSD[k], Dir3, Dir4] FAD[{k, me}, k - q] MTD[Lor1, Lor2]
+-(1/(16 \[Pi]^4)) I el^2 DCHN[Spinor[-Momentum[p, D], me, 1], Dir1]*
+   DCHN[Spinor[Momentum[q, D], me, 1], Dir2] DCHN[GAD[Lor1], Dir1, Dir3]*
+   DCHN[GAD[Lor2], Dir2, Dir4] DCHN[me - GSD[k], Dir3, Dir4] FAD[{k, me}, k - q] MTD[Lor1, Lor2] 
+ 
 res = FCFADiracChainJoin[%]
 ```
 

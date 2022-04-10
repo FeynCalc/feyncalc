@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-FAD[{q, m1}]
+FAD[{q, m1}] 
+ 
 ToPaVe[%, q]
 ```
 
@@ -18,21 +19,24 @@ $$\frac{1}{q^2-\text{m1}^2}$$
 $$i \pi ^2 \;\text{A}_0\left(\text{m1}^2\right)$$
 
 ```mathematica
-FAD[{q, m1}, {q + p1, m2}]
+FAD[{q, m1}, {q + p1, m2}] 
+ 
 ToPaVe[%, q]
-% // StandardForm
 ```
 
 $$\frac{1}{\left(q^2-\text{m1}^2\right).\left((\text{p1}+q)^2-\text{m2}^2\right)}$$
 
 $$i \pi ^2 \;\text{B}_0\left(\text{p1}^2,\text{m1}^2,\text{m2}^2\right)$$
 
-```
+```mathematica
+% // StandardForm
+
 (*I \[Pi]^2 B0[Pair[Momentum[p1, D], Momentum[p1, D]], m1^2, m2^2]*)
 ```
 
 ```mathematica
-FAD[{q, m1}, {q + p1, m2}, {q + p2, m3}, {q + p3, m4}, {q + p4, m5}]
+FAD[{q, m1}, {q + p1, m2}, {q + p2, m3}, {q + p3, m4}, {q + p4, m5}] 
+ 
 ToPaVe[%, q]
 ```
 
@@ -44,10 +48,13 @@ By default, `ToPaVe` has the option `PaVeToABCD ` set to `True`. This means that
 
 ```mathematica
 TID[FVD[q, mu] FAD[{q, m1}, {q + p}], q, ToPaVe -> True]
-% // StandardForm
 ```
 
 $$\frac{i \pi ^2 p^{\text{mu}} \;\text{A}_0\left(\text{m1}^2\right)}{2 p^2}-\frac{i \pi ^2 \left(\text{m1}^2+p^2\right) p^{\text{mu}} \;\text{B}_0\left(p^2,0,\text{m1}^2\right)}{2 p^2}$$
+
+```mathematica
+% // StandardForm
+```
 
 $$\frac{i \pi ^2 \;\text{A0}\left[\text{m1}^2\right] \;\text{Pair}[\text{LorentzIndex}[\text{mu},D],\text{Momentum}[p,D]]}{2 \;\text{Pair}[\text{Momentum}[p,D],\text{Momentum}[p,D]]}-\left.\left(i \pi ^2 \;\text{B0}\left[\text{Pair}[\text{Momentum}[p,D],\text{Momentum}[p,D]],0,\text{m1}^2\right] \;\text{Pair}[\text{LorentzIndex}[\text{mu},D],\text{Momentum}[p,D]] \left(\text{m1}^2+\text{Pair}[\text{Momentum}[p,D],\text{Momentum}[p,D]]\right)\right)\right/(2 \;\text{Pair}[\text{Momentum}[p,D],\text{Momentum}[p,D]])$$
 
@@ -59,12 +66,12 @@ SetOptions[ToPaVe, PaVeToABCD -> False];
 
 ```mathematica
 TID[FVD[q, mu] FAD[{q, m1}, {q + p}], q, ToPaVe -> True]
-% // StandardForm 
-  
- 
-
 ```
 
 $$\frac{i \pi ^2 p^{\text{mu}} \;\text{A}_0\left(\text{m1}^2\right)}{2 p^2}-\frac{i \pi ^2 \left(\text{m1}^2+p^2\right) p^{\text{mu}} \;\text{B}_0\left(p^2,0,\text{m1}^2\right)}{2 p^2}$$
+
+```mathematica
+% // StandardForm
+```
 
 $$\frac{i \pi ^2 \;\text{Pair}[\text{LorentzIndex}[\text{mu},D],\text{Momentum}[p,D]] \;\text{PaVe}\left[0,\{\},\left\{\text{m1}^2\right\}\right]}{2 \;\text{Pair}[\text{Momentum}[p,D],\text{Momentum}[p,D]]}-\left.\left(i \pi ^2 \;\text{Pair}[\text{LorentzIndex}[\text{mu},D],\text{Momentum}[p,D]] \left(\text{m1}^2+\text{Pair}[\text{Momentum}[p,D],\text{Momentum}[p,D]]\right) \;\text{PaVe}\left[0,\{\text{Pair}[\text{Momentum}[p,D],\text{Momentum}[p,D]]\},\left\{0,\text{m1}^2\right\}\right]\right)\right/(2 \;\text{Pair}[\text{Momentum}[p,D],\text{Momentum}[p,D]])$$

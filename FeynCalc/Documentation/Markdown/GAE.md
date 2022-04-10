@@ -55,18 +55,20 @@ $$0$$
 In order to use Dirac algebra with $D-4$-dimensional objects you need to activate the t'Hooft-Veltman-Breitenlohner-Maison scheme first
 
 ```mathematica
-FCSetDiracGammaScheme["NDR"]
+FCSetDiracGammaScheme["NDR"] 
+ 
 DiracSimplify[GAE[\[Mu]] . GAD[\[Mu]]]
 ```
 
 $$\text{NDR}$$
 
-![01bbyegb2ggmi](img/01bbyegb2ggmi.svg)
+![1mv5oz2r1f8id](img/1mv5oz2r1f8id.pdf)
 
 $$\text{\$Aborted}$$
 
 ```mathematica
-FCSetDiracGammaScheme["BMHV"]
+FCSetDiracGammaScheme["BMHV"] 
+ 
 DiracSimplify[GAE[\[Mu]] . GAD[\[Mu]]]
 ```
 

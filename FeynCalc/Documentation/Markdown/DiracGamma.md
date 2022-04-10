@@ -49,7 +49,8 @@ DiracGamma[Momentum[q, D], D]
 $$\gamma \cdot q$$
 
 ```mathematica
-GS[p - q] . GS[p]
+GS[p - q] . GS[p] 
+ 
 DiracGammaExpand[%]
 ```
 

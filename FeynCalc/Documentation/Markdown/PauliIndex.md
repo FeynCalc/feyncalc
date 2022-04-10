@@ -14,23 +14,25 @@ Pauli indices are the indices that denote the components of Pauli matrices or sp
 
 ```mathematica
 PauliIndex[i]
-% // StandardForm
 ```
 
 $$i$$
 
-```
+```mathematica
+PauliIndex[i] // StandardForm
+
 (*PauliIndex[i]*)
 ```
 
 ```mathematica
 PauliIndex[2]
-% // StandardForm
 ```
 
 $$2$$
 
-```
+```mathematica
+PauliIndex[2] // StandardForm
+
 (*ExplicitPauliIndex[2]*)
 ```
 

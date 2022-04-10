@@ -1,3 +1,5 @@
+## FCFeynmanPrepare
+
 `FCFeynmanPrepare[int, {q1, q2, ...}]` is an auxiliary function that returns all necessary building for writing down a Feynman parametrization of the given tensor or scalar multi-loop integral. The integral int can be Lorentzian or Cartesian.
 
 The output of the function is a list given by `{U,F, pows, M, Q, J, N, r}`, where `U` and `F` are the Symanzik polynomials, with $U = det M$, while `pows` contains the powers of the occurring propagators. The vector `Q` and the function `J` are the usual quantities appearing in the definition of the F`` polynomial.
@@ -143,8 +145,11 @@ $$\left\{x(1)+x(2),\frac{1}{4} \left(4 m x(1)^2+4 m x(2) x(1)+4 \;\text{m2} x(2)
 `FCFeynmanPrepare` also works with `FCTopology` and `GLI` objects
 
 ```mathematica
-topo1 = FCTopology["prop2Lv1", {SFAD[{p1, m1^2}], SFAD[{p2, m2^2}], SFAD[p1 - q], SFAD[p2 - q], SFAD[{p1 - p2, m3^2}]}, {p1, p2}, {Q}, {}, {}]
-topo2 = FCTopology["prop2Lv2", {SFAD[{p1, m1^2}], SFAD[{p2, m2^2}], SFAD[{p1 - q, M^2}], SFAD[{p2 - q, M^2}], SFAD[p1 - p2]}, {p1, p2}, {Q}, {}, {}]
+topo1 = FCTopology["prop2Lv1", {SFAD[{p1, m1^2}], SFAD[{p2, m2^2}], 
+     SFAD[p1 - q], SFAD[p2 - q], SFAD[{p1 - p2, m3^2}]}, {p1, p2}, {Q}, {}, {}] 
+ 
+topo2 = FCTopology["prop2Lv2", {SFAD[{p1, m1^2}], SFAD[{p2, m2^2}], 
+    SFAD[{p1 - q, M^2}], SFAD[{p2 - q, M^2}], SFAD[p1 - p2]}, {p1, p2}, {Q}, {}, {}]
 ```
 
 $$\text{FCTopology}\left(\text{prop2Lv1},\left\{\frac{1}{(\text{p1}^2-\text{m1}^2+i \eta )},\frac{1}{(\text{p2}^2-\text{m2}^2+i \eta )},\frac{1}{((\text{p1}-q)^2+i \eta )},\frac{1}{((\text{p2}-q)^2+i \eta )},\frac{1}{((\text{p1}-\text{p2})^2-\text{m3}^2+i \eta )}\right\},\{\text{p1},\text{p2}\},\{Q\},\{\},\{\}\right)$$
@@ -208,7 +213,8 @@ $$\left(
 \right)$$
 
 ```mathematica
-FCFeynmanPrepare[{GLI["prop2Lv1", {1, 1, 1, 1, 0}], GLI["prop2Lv2", {1, 1, 0, 0, 1}]}, {topo1, topo2}, Names -> x]
+FCFeynmanPrepare[{GLI["prop2Lv1", {1, 1, 1, 1, 0}], GLI["prop2Lv2", {1, 1, 0, 0, 1}]}, 
+  {topo1, topo2}, Names -> x]
 ```
 
 $$\left(

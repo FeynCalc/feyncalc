@@ -17,7 +17,8 @@ FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], m]]
 $$\frac{1}{p^2-m^2}$$
 
 ```mathematica
-FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], m], PropagatorDenominator[Momentum[p - q, D], m]]
+FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], m], 
+  PropagatorDenominator[Momentum[p - q, D], m]]
 ```
 
 $$\frac{1}{\left(p^2-m^2\right).\left((p-q)^2-m^2\right)}$$
@@ -25,7 +26,8 @@ $$\frac{1}{\left(p^2-m^2\right).\left((p-q)^2-m^2\right)}$$
 It is worth noting that the Euclidean mass dependence still can be introduced via a trick where the mass symbol is multiplied by the imaginary unit $i$
 
 ```mathematica
-FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], I m]]
+FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], I m]] 
+ 
 % // FeynAmpDenominatorExplicit
 ```
 
@@ -118,13 +120,15 @@ $$(p^2+m^2+i \eta )^{-n}$$
 Eikonal propagators are fully supported
 
 ```mathematica
-FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, D], Momentum[q, D]], -m^2, {1, 1}]]
+FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, D], Momentum[q, D]], 
+   -m^2, {1, 1}]]
 ```
 
 $$\frac{1}{(p\cdot q-m^2+i \eta )}$$
 
 ```mathematica
-FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, D], Momentum[q, D]], 0, {1, 1}]]
+FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, D], Momentum[q, D]], 
+   0, {1, 1}]]
 ```
 
 $$\frac{1}{(p\cdot q+i \eta )}$$
@@ -132,13 +136,15 @@ $$\frac{1}{(p\cdot q+i \eta )}$$
 FeynCalc keeps trace of the signs of the scalar products in the eikonal propagators. This is where the  $i \eta$- prescription may come handy
 
 ```mathematica
-FeynAmpDenominator[StandardPropagatorDenominator[0, -Pair[Momentum[p, D], Momentum[q, D]], 0, {1, 1}]]
+FeynAmpDenominator[StandardPropagatorDenominator[0, -Pair[Momentum[p, D], Momentum[q, D]], 
+   0, {1, 1}]]
 ```
 
 $$\frac{1}{(-p\cdot q+i \eta )}$$
 
 ```mathematica
-FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, D], Momentum[q, D]], 0, {1, -1}]]
+FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, D], Momentum[q, D]], 
+   0, {1, -1}]]
 ```
 
 $$\frac{1}{(p\cdot q-i \eta )}$$
@@ -146,7 +152,8 @@ $$\frac{1}{(p\cdot q-i \eta )}$$
 The shortcut to enter `FeynAmpDenominators` with `StandardPropagatorDenominators` is `SFAD`
 
 ```mathematica
-FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, -m^2, {1, 1}]] // FCE // StandardForm
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, -m^2, {1, 1}]] // FCE // 
+  StandardForm
 
 (*SFAD[{{p, 0}, {m^2, 1}, 1}]*)
 ```
@@ -154,7 +161,8 @@ FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, -m^2, {1, 1}
 Eikonal propagators are entered using the `Dot` (`.`) as in noncommutative products
 
 ```mathematica
-FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, D], Momentum[q, D]], -m^2, {1, 1}]] // FCE // StandardForm
+FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, D], 
+      Momentum[q, D]], -m^2, {1, 1}]] // FCE // StandardForm
 
 (*SFAD[{{0, p . q}, {m^2, 1}, 1}]*)
 ```
@@ -162,13 +170,15 @@ FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, D], Momentu
 The Cartesian version of `StandardPropagatorDenominator` is called `CartesianPropagatorDenominator`. The syntax is almost the same as for `StandardPropagatorDenominator`, except that the momenta and scalar products must be Cartesian.
 
 ```mathematica
-FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[p, D - 1], 0, m^2, {1, -1}]]
+FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[p, D - 1], 0, m^2, 
+   {1, -1}]]
 ```
 
 $$\frac{1}{(p^2+m^2-i \eta )}$$
 
 ```mathematica
-FeynAmpDenominator[CartesianPropagatorDenominator[0, CartesianPair[CartesianMomentum[p, D - 1], CartesianMomentum[q, D - 1]], m^2, {1, -1}]]
+FeynAmpDenominator[CartesianPropagatorDenominator[0, CartesianPair[CartesianMomentum[p, 
+     D - 1], CartesianMomentum[q, D - 1]], m^2, {1, -1}]]
 ```
 
 $$\frac{1}{(p\cdot q+m^2-i \eta )}$$
@@ -176,7 +186,8 @@ $$\frac{1}{(p\cdot q+m^2-i \eta )}$$
 The shortcut to enter `FeynAmpDenominators` with `CartesianPropagatorDenominators` is `CFAD`
 
 ```mathematica
-FCE[FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[p, D - 1], 0, m^2, {1, -1}]]] // StandardForm
+FCE[FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[p, D - 1], 0, m^2,
+     {1, -1}]]] // StandardForm
 
 (*CFAD[{{p, 0}, {m^2, -1}, 1}]*)
 ```
@@ -192,7 +203,8 @@ $$\frac{1}{(x+i \eta )}$$
 This is a nonlinear propagator that appears in the calculation of the QCD Energy-Energy-Correlation function
 
 ```mathematica
-FeynAmpDenominator[GenericPropagatorDenominator[2 z Pair[Momentum[p1, D], Momentum[Q, D]] Pair[Momentum[p2, D], Momentum[Q, D]] - Pair[Momentum[p1, D], Momentum[p2, D]], {1, 1}]]
+FeynAmpDenominator[GenericPropagatorDenominator[2 z Pair[Momentum[p1, D], Momentum[Q, 
+       D]] Pair[Momentum[p2, D], Momentum[Q, D]] - Pair[Momentum[p1, D], Momentum[p2, D]], {1, 1}]]
 ```
 
 $$\frac{1}{(2 z (\text{p1}\cdot Q) (\text{p2}\cdot Q)-\text{p1}\cdot \;\text{p2}+i \eta )}$$
@@ -200,7 +212,9 @@ $$\frac{1}{(2 z (\text{p1}\cdot Q) (\text{p2}\cdot Q)-\text{p1}\cdot \;\text{p2}
 The shortcut to enter `FeynAmpDenominator`s with `GenericPropagatorDenominator`s is `GFAD`
 
 ```mathematica
-FeynAmpDenominator[GenericPropagatorDenominator[2 z Pair[Momentum[p1, D], Momentum[Q, D]] Pair[Momentum[p2, D], Momentum[Q, D]] - Pair[Momentum[p1, D], Momentum[p2, D]], {1, 1}]] // FCE // StandardForm
+FeynAmpDenominator[GenericPropagatorDenominator[2 z Pair[Momentum[p1, D], Momentum[Q, 
+         D]] Pair[Momentum[p2, D], Momentum[Q, D]] - Pair[Momentum[p1, D], Momentum[p2, D]], {1, 1}]] // 
+   FCE // StandardForm
 
 (*GFAD[{{-SPD[p1, p2] + 2 z SPD[p1, Q] SPD[p2, Q], 1}, 1}]*)
 ```

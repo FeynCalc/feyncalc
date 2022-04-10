@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-Hypergeometric2F1[a, b, c, z]
+Hypergeometric2F1[a, b, c, z] 
+ 
 HypExplicit[%, \[Nu]]
 ```
 
@@ -18,7 +19,8 @@ $$\, _2F_1(a,b;c;z)$$
 $$\frac{\Gamma (c) z^{\nu } \Gamma (a+\nu ) \Gamma (b+\nu )}{\Gamma (a) \Gamma (b) \Gamma (\nu +1) \Gamma (c+\nu )}$$
 
 ```mathematica
-HypergeometricPFQ[{a, b, c}, {d, e}, z]
+HypergeometricPFQ[{a, b, c}, {d, e}, z] 
+ 
 HypExplicit[%, \[Nu]]
 ```
 

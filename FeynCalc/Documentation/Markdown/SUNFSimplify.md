@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-SDF[a, a]
+SDF[a, a] 
+ 
 SUNFSimplify[%]
 ```
 
@@ -24,7 +25,8 @@ SUNFSimplify[SDF[a, a], SUNNToCACF -> False]
 $$N$$
 
 ```mathematica
-SDF[a, b] SDF[b, d]
+SDF[a, b] SDF[b, d] 
+ 
 SUNFSimplify[%]
 ```
 
@@ -33,7 +35,8 @@ $$\delta _{ab} \delta _{bd}$$
 $$\delta _{ad}$$
 
 ```mathematica
-SDF[a, b] SUNTF[i, a, d] SUNTF[j, d, c]
+SDF[a, b] SUNTF[i, a, d] SUNTF[j, d, c] 
+ 
 SUNFSimplify[%]
 ```
 
@@ -42,7 +45,8 @@ $$\delta _{ab} T_{ad}^i T_{dc}^j$$
 $$\left(T^iT^j\right){}_{bc}$$
 
 ```mathematica
-SDF[a, b] (SUNTF[i, a, d] SUNTF[j, d, b] + SD[i, j] SUNTF[i, a, d] SUNTF[i, d, b])
+SDF[a, b] (SUNTF[i, a, d] SUNTF[j, d, b] + SD[i, j] SUNTF[i, a, d] SUNTF[i, d, b]) 
+ 
 SUNFSimplify[%, SUNNToCACF -> False]
 ```
 

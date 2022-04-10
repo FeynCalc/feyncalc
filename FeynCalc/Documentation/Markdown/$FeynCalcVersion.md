@@ -12,4 +12,4 @@
 $FeynCalcVersion
 ```
 
-$$\text{9.3.1}$$
+$$\text{10.0.0}$$

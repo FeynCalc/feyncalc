@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-RightPartialD[\[Mu]] . QuantumField[A, LorentzIndex[\[Mu]]] . QuantumField[A, LorentzIndex[\[Nu]]]
+RightPartialD[\[Mu]] . QuantumField[A, LorentzIndex[\[Mu]]] . QuantumField[A, LorentzIndex[\[Nu]]] 
+ 
 ExpandPartialD[%]
 ```
 
@@ -18,7 +19,8 @@ $$\vec{\partial }_{\mu }.A_{\mu }.A_{\nu }$$
 $$A_{\mu }.\left(\left.(\partial _{\mu }A_{\nu }\right)\right)+\left(\left.(\partial _{\mu }A_{\mu }\right)\right).A_{\nu }$$
 
 ```mathematica
-LeftRightPartialD[\[Mu]] . QuantumField[A, LorentzIndex[\[Nu]]]
+LeftRightPartialD[\[Mu]] . QuantumField[A, LorentzIndex[\[Nu]]] 
+ 
 ExpandPartialD[%]
 ```
 
@@ -27,7 +29,9 @@ $$\overleftrightarrow{\partial }_{\mu }.A_{\nu }$$
 $$\frac{1}{2} \left(\left.(\partial _{\mu }A_{\nu }\right)-\overleftarrow{\partial }_{\mu }.A_{\nu }\right)$$
 
 ```mathematica
-QuantumField[A, LorentzIndex[\[Mu]]] . (LeftRightPartialD[OPEDelta]^2) . QuantumField[A, LorentzIndex[\[Rho]]]
+QuantumField[A, LorentzIndex[\[Mu]]] . (LeftRightPartialD[OPEDelta]^2) . QuantumField[A, 
+    LorentzIndex[\[Rho]]] 
+ 
 ExpandPartialD[%]
 ```
 
@@ -66,7 +70,8 @@ ExpandPartialD[%]
 $$0$$
 
 ```mathematica
-RightPartialD[CartesianIndex[i]] . QuantumField[S, x]
+RightPartialD[CartesianIndex[i]] . QuantumField[S, x] 
+ 
 % // ExpandPartialD
 ```
 
@@ -75,11 +80,9 @@ $$\vec{\partial }_i.S^x$$
 $$\left.(\partial _iS^x\right)$$
 
 ```mathematica
-RightPartialD[{CartesianIndex[i], x}] . QuantumField[S, x]
-% // ExpandPartialD 
-  
+RightPartialD[{CartesianIndex[i], x}] . QuantumField[S, x] 
  
-
+% // ExpandPartialD
 ```
 
 $$\vec{\partial }_{\{i,x\}}.S^x$$

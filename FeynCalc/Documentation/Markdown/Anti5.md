@@ -10,7 +10,9 @@
 
 ```mathematica
 GA[5, \[Mu]] 
-Anti5[%]
+ 
+Anti5[%] 
+ 
 Anti5[%, -1]
 ```
 
@@ -21,9 +23,12 @@ $$-\bar{\gamma }^{\mu }.\bar{\gamma }^5$$
 $$\bar{\gamma }^5.\bar{\gamma }^{\mu }$$
 
 ```mathematica
-GA[5, \[Alpha], \[Beta], \[Gamma], \[Delta]]
-Anti5[%, 2]
-Anti5[%%, Infinity]
+GA[5, \[Alpha], \[Beta], \[Gamma], \[Delta]] 
+ 
+Anti5[%, 2] 
+ 
+Anti5[%%, Infinity] 
+ 
 Anti5[%, -Infinity]
 ```
 
@@ -38,7 +43,8 @@ $$\bar{\gamma }^5.\bar{\gamma }^{\alpha }.\bar{\gamma }^{\beta }.\bar{\gamma }^{
 In the naive $\gamma^5$-scheme $D$-dimensional $\gamma$-matrices anticommute with $\gamma^5$.
 
 ```mathematica
-GA5 . GAD[\[Mu]]
+GA5 . GAD[\[Mu]] 
+ 
 Anti5[%]
 ```
 
@@ -49,7 +55,8 @@ $$-\gamma ^{\mu }.\bar{\gamma }^5$$
 `Anti5` also works in the t'Hooft-Veltman-Breitenlohner-Maison scheme
 
 ```mathematica
-FCSetDiracGammaScheme["BMHV"];
+FCSetDiracGammaScheme["BMHV"]; 
+ 
 Anti5[GA5 . GAD[\[Mu]]]
 ```
 

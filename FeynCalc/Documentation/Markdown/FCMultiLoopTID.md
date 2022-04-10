@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-FCI[FVD[q1, \[Mu]] FVD[q2, \[Nu]] FAD[q1, q2, {q1 - p1}, {q2 - p1}, {q1 - q2}]]
+FCI[FVD[q1, \[Mu]] FVD[q2, \[Nu]] FAD[q1, q2, {q1 - p1}, {q2 - p1}, {q1 - q2}]] 
+ 
 FCMultiLoopTID[%, {q1, q2}]
 ```
 

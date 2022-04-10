@@ -12,26 +12,25 @@
 
 ```mathematica
 LCD[\[Mu], \[Nu], \[Rho], \[Sigma]]
-% // FCI
-% // StandardForm
 ```
 
 $$\overset{\text{}}{\epsilon }^{\mu \nu \rho \sigma }$$
 
-$$\overset{\text{}}{\epsilon }^{\mu \nu \rho \sigma }$$
+```mathematica
+LCD[\[Mu], \[Nu], \[Rho], \[Sigma]] // FCI // StandardForm
 
-```
 (*Eps[LorentzIndex[\[Mu], D], LorentzIndex[\[Nu], D], LorentzIndex[\[Rho], D], LorentzIndex[\[Sigma], D]]*)
 ```
 
 ```mathematica
 LCD[\[Mu], \[Nu]][p, q]
-% // FCI // StandardForm
 ```
 
 $$\overset{\text{}}{\epsilon }^{\mu \nu pq}$$
 
-```
+```mathematica
+LCD[\[Mu], \[Nu]][p, q] // FCI // StandardForm
+
 (*Eps[LorentzIndex[\[Mu], D], LorentzIndex[\[Nu], D], Momentum[p, D], Momentum[q, D]]*)
 ```
 

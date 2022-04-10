@@ -1,25 +1,26 @@
 ## GluonPropagator
 
-`GluonPropagator[p, {μ, a}, {ν, b}]` or `GluonPropagator[p, μ, a, ν, b]` yields the gluon propagator.
+`GluonPropagator[p, {mu, a}, {nu, b}]` or `GluonPropagator[p, mu, a, nu, b]` yields the gluon propagator.
 
-`GluonPropagator[p, {μ}, {ν}]` or `GluonPropagator[p, μ, ν]` omits the `SUNDelta`.
+`GluonPropagator[p, {mu}, {nu}]` or `GluonPropagator[p, mu, nu]` omits the `SUNDelta`.
 
 `GP` can be used as an abbreviation of `GluonPropagator`.
 
 The gauge and the dimension are determined by the options `Gauge` and `Dimension`. The following settings of `Gauge` are possible:
 
- `1` for the Feynman gauge;  
-`alpha` for the general covariant gauge;
- `Momentum[n] ,1}` for the axial gauge.
+-  `1` for the Feynman gauge;  
+- `alpha` for the general covariant gauge;
+- `Momentum[n] ,1}` for the axial gauge.
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [GluonSelfEnergy](GluonSelfEnergy.md), [GluonVertex](GluonVertex.md), [GhostVertex](GhostVertex.md), [GhostPropagator](GhostPropagator.md), [GluonGhostVertex](GluonGhostVertex.md).
+[Overview](Extra/FeynCalc.md), [GluonSelfEnergy](GluonSelfEnergy.md), [GluonVertex](GluonVertex.md), [GluonGhostVertex](GluonGhostVertex.md), [GhostPropagator](GhostPropagator.md), [GluonGhostVertex](GluonGhostVertex.md).
 
 ### Examples
 
 ```mathematica
-GluonPropagator[p, \[Mu], a, \[Nu], b]
+GluonPropagator[p, \[Mu], a, \[Nu], b] 
+ 
 Explicit[%]
 ```
 
@@ -28,7 +29,8 @@ $$\Pi _{ab}^{\mu \nu }(p)$$
 $$-\frac{i \delta ^{ab} g^{\mu \nu }}{p^2}$$
 
 ```mathematica
-GP[p, \[Mu], a, \[Nu], b, Gauge -> \[Alpha]]
+GP[p, \[Mu], a, \[Nu], b, Gauge -> \[Alpha]] 
+ 
 Explicit[%]
 ```
 

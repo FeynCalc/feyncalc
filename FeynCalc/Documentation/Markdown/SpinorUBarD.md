@@ -10,28 +10,31 @@
 
 ```mathematica
 SpinorUBarD[p, m]
-FCI[%] // StandardForm
 ```
 
 $$\bar{u}(p,m)$$
 
-```
+```mathematica
+SpinorUBarD[p, m] // FCI // StandardForm
+
 (*Spinor[Momentum[p, D], m, 1]*)
 ```
 
 ```mathematica
 SpinorUBarD[p]
-FCI[%] // StandardForm
 ```
 
 $$\bar{u}(p)$$
 
-```
+```mathematica
+SpinorUBarD[p] // FCI // StandardForm
+
 (*Spinor[Momentum[p, D], 0, 1]*)
 ```
 
 ```mathematica
-SpinorUBarD[p] . GSD[p]
+SpinorUBarD[p] . GSD[p] 
+ 
 DiracEquation[%]
 ```
 

@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-CSIS[p1] . CSI[i] . CSIS[p2]
+CSIS[p1] . CSI[i] . CSIS[p2] 
+ 
 PauliSimplify[%]
 ```
 
@@ -18,7 +19,8 @@ $$\left(\overline{\sigma }\cdot \overline{\text{p1}}\right).\overline{\sigma }^i
 $$\left(\overline{\sigma }\cdot \overline{\text{p1}}\right).\overline{\sigma }^i.\left(\overline{\sigma }\cdot \overline{\text{p2}}\right)$$
 
 ```mathematica
-CSIS[p] . CSI[i, j, k] . CSIS[p]
+CSIS[p] . CSI[i, j, k] . CSIS[p] 
+ 
 PauliSimplify[%]
 ```
 
@@ -33,7 +35,8 @@ PauliSimplify[CSIS[p] . CSI[i, j, k] . CSIS[p], PauliReduce -> False]
 $$-\overline{p}^2 \overline{\sigma }^i.\overline{\sigma }^j.\overline{\sigma }^k+2 \overline{p}^k \overline{\sigma }^i.\overline{\sigma }^j.\left(\overline{\sigma }\cdot \overline{p}\right)-2 \overline{p}^j \overline{\sigma }^i.\overline{\sigma }^k.\left(\overline{\sigma }\cdot \overline{p}\right)+2 \overline{p}^i \overline{\sigma }^j.\overline{\sigma }^k.\left(\overline{\sigma }\cdot \overline{p}\right)$$
 
 ```mathematica
-CSID[i, j, i]
+CSID[i, j, i] 
+ 
 PauliSimplify[%]
 ```
 
@@ -42,7 +45,8 @@ $$\sigma ^i.\sigma ^j.\sigma ^i$$
 $$3 \sigma ^j-D \sigma ^j$$
 
 ```mathematica
-CSID[i, j, k, l, m, i]
+CSID[i, j, k, l, m, i] 
+ 
 PauliSimplify[%]
 ```
 

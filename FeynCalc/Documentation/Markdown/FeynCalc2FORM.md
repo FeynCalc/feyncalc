@@ -21,7 +21,8 @@ FORM2FeynCalc
 $$\text{FORM2FeynCalc}$$
 
 ```mathematica
-MT[\[Mu], \[Nu]] FV[p, \[Rho]] y^2/d
+MT[\[Mu], \[Nu]] FV[p, \[Rho]] y^2/d 
+ 
 FeynCalc2FORM[%];
 ```
 
@@ -30,7 +31,8 @@ $$\frac{y^2 \overline{p}^{\rho } \bar{g}^{\mu \nu }}{d}$$
 (y^2*d_(mu,nu)*p(ro))/d
 
 ```mathematica
-LC[\[Alpha], \[Beta], \[Delta], \[Rho]]
+LC[\[Alpha], \[Beta], \[Delta], \[Rho]] 
+ 
 FeynCalc2FORM[%];
 ```
 
@@ -39,7 +41,8 @@ $$\bar{\epsilon }^{\alpha \beta \delta \rho }$$
 (-i_)*e_(al,be,de,ro)
 
 ```mathematica
-DiracTrace[GA[\[Mu], \[Nu], \[Rho], \[Sigma]]]
+DiracTrace[GA[\[Mu], \[Nu], \[Rho], \[Sigma]]] 
+ 
 FeynCalc2FORM[%];
 ```
 
@@ -48,7 +51,8 @@ $$\text{tr}\left(\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\rho }
 g_(0,mu)*g_(0,nu)*g_(0,ro)*g_(0,si)
 
 ```mathematica
-DiracTrace[GA[\[Mu], \[Nu]]] DiracTrace[GA[\[Mu], \[Rho]]]
+DiracTrace[GA[\[Mu], \[Nu]]] DiracTrace[GA[\[Mu], \[Rho]]] 
+ 
 FeynCalc2FORM[%];
 ```
 

@@ -1,3 +1,5 @@
+## Li3
+
 `Li3` is an abbreviation for the trilogarithm function, i.e. `Li3 = PolyLog[3, #]&`.
 
 ### See also

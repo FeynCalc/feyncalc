@@ -19,7 +19,8 @@ The result is returned as a list with the 4 above elements.
 ### Examples
 
 ```mathematica
-FVD[q, \[Mu]] FAD[{q, m}]
+FVD[q, \[Mu]] FAD[{q, m}] 
+ 
 FCLoopSplit[%, {q}]
 ```
 
@@ -28,7 +29,8 @@ $$\frac{q^{\mu }}{q^2-m^2}$$
 $$\left\{0,0,0,\frac{q^{\mu }}{q^2-m^2}\right\}$$
 
 ```mathematica
-x + GSD[p + q] FAD[{q, m}]
+x + GSD[p + q] FAD[{q, m}] 
+ 
 FCLoopSplit[%, {q}]
 ```
 

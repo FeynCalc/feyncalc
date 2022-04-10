@@ -18,4 +18,4 @@ $$a+b+c+d$$
 Isolate[a + b + c + d, a, IsolatePlus -> True]
 ```
 
-$$a+\text{KK}(24)$$
+$$a+\text{KK}(19)$$

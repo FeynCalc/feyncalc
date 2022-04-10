@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-FCI@SFAD[q, q - p]
+FCI@SFAD[q, q - p] 
+ 
 FCLoopSamePropagatorHeadsQ[%]
 ```
 
@@ -18,7 +19,8 @@ $$\frac{1}{(q^2+i \eta ).((q-p)^2+i \eta )}$$
 $$\text{True}$$
 
 ```mathematica
-FeynAmpDenominatorCombine[CFAD[q, q - p] SFAD[l, l + k]]
+FeynAmpDenominatorCombine[CFAD[q, q - p] SFAD[l, l + k]] 
+ 
 FCLoopSamePropagatorHeadsQ[%]
 ```
 

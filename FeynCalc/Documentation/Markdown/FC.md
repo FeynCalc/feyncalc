@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-FI
+FI 
+ 
 {DiracGamma[5], DiracGamma[Momentum[p]]}
 ```
 
@@ -18,7 +19,8 @@ FI
 ```
 
 ```mathematica
-FC
+FC 
+ 
 {DiracGamma[5], DiracGamma[Momentum[p]]}
 ```
 

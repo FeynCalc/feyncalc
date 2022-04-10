@@ -8,7 +8,7 @@ Furthermore, when working with lists of topologies one can write `FCLoopCreateRu
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [FCTopology](FCTopology.md), [GLI](GLI.md), [FCFindTopologies](FCFindTopologies.md), [FCFindTopologyMappings](FCFindTopologyMappings.md).
+[Overview](Extra/FeynCalc.md), [FCTopology](FCTopology.md), [GLI](GLI.md), [FCLoopFindTopologies](FCLoopFindTopologies.md), [FCLoopFindTopologyMappings](FCLoopFindTopologyMappings.md).
 
 ### Examples
 
@@ -59,7 +59,8 @@ FCLoopCreateRuleGLIToGLI[FCTopology["tmpTopo4",
 $$G^{\text{tmpTopo18}}(\text{n1$\_$},\text{n3$\_$},\text{n4$\_$},\text{n5$\_$},\text{n6$\_$},\text{n7$\_$},\text{n8$\_$},\text{n9$\_$},\text{n10$\_$},\text{n11$\_$},\text{n12$\_$}):\to G^{\text{tmpTopo4}}(\text{n1},0,\text{n3},\text{n4},\text{n5},\text{n6},\text{n7},\text{n8},\text{n9},\text{n10},\text{n11},\text{n12})$$
 
 ```mathematica
-FCLoopIntegralToGraph[FCTopology["tad2l", {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - p2, m3}]}, {p1, p2}, {}, {}, {}]]
+FCLoopIntegralToGraph[FCTopology["tad2l", {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - p2, m3}]}, 
+   {p1, p2}, {}, {}, {}]]
 ```
 
 $$\left\{\{1\to 2,1\to 2,1\to 2\},\left(
@@ -72,11 +73,14 @@ $$\left\{\{1\to 2,1\to 2,1\to 2\},\left(
 
 ```mathematica
 FCLoopCreateRuleGLIToGLI[
-  {FCTopology["prop2l", {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - q, m3}], FAD[{p1 - q, m4}], FAD[{p1 - p2, m5}]}, {p1, p2}, {q}, {}, {}], 
+  {FCTopology["prop2l", {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - q, m3}], FAD[{p1 - q, m4}], 
+     FAD[{p1 - p2, m5}]}, {p1, p2}, {q}, {}, {}], 
    FCTopology["tad2l", {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - p2, m3}]}, {p1, p2}, {}, {}, {}]}, {
    {
-    FCTopology["prop2lX1", {FAD[{p2, m2}], FAD[{p1 - q, m3}], FAD[{p1 - q, m4}], FAD[{p1 - p2, m5}]}, {p1, p2}, {q}, {}, {}], 
-    FCTopology["prop2lX5", {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - q, m3}], FAD[{p1 - q, m4}]}, {p1, p2}, {q}, {}, {}] 
+    FCTopology["prop2lX1", {FAD[{p2, m2}], FAD[{p1 - q, m3}], FAD[{p1 - q, m4}], FAD[{p1 - p2, m5}]}, 
+     {p1, p2}, {q}, {}, {}], 
+    FCTopology["prop2lX5", {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - q, m3}], FAD[{p1 - q, m4}]}, 
+     {p1, p2}, {q}, {}, {}] 
    }, 
    {
     FCTopology["tad2lX2", {FAD[{p1, m1}], FAD[{p1 - p2, m3}]}, {p1, p2}, {}, {}, {}], 

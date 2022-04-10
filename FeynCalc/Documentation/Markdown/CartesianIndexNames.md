@@ -9,20 +9,19 @@
 ### Examples
 
 ```mathematica
-CLC[i1, i2, i3] CGA[i1, i2, i3]
+CLC[i1, i2, i3] CGA[i1, i2, i3] 
+ 
 FCCanonicalizeDummyIndices[%]
 ```
 
 $$\overline{\gamma }^{\text{i1}}.\overline{\gamma }^{\text{i2}}.\overline{\gamma }^{\text{i3}} \bar{\epsilon }^{\text{i1}\;\text{i2}\;\text{i3}}$$
 
-$$\overline{\gamma }^{\text{FCGV}(\text{ci251})}.\overline{\gamma }^{\text{FCGV}(\text{ci252})}.\overline{\gamma }^{\text{FCGV}(\text{ci253})} \bar{\epsilon }^{\text{FCGV}(\text{ci251})\text{FCGV}(\text{ci252})\text{FCGV}(\text{ci253})}$$
+$$\overline{\gamma }^{\text{FCGV}(\text{ci201})}.\overline{\gamma }^{\text{FCGV}(\text{ci202})}.\overline{\gamma }^{\text{FCGV}(\text{ci203})} \bar{\epsilon }^{\text{FCGV}(\text{ci201})\text{FCGV}(\text{ci202})\text{FCGV}(\text{ci203})}$$
 
 ```mathematica
-CLC[i1, i2, i3] CGA[i1, i2, i3]
-FCCanonicalizeDummyIndices[%, CartesianIndexNames -> {i, j, k}] 
-  
+CLC[i1, i2, i3] CGA[i1, i2, i3] 
  
-
+FCCanonicalizeDummyIndices[%, CartesianIndexNames -> {i, j, k}]
 ```
 
 $$\overline{\gamma }^{\text{i1}}.\overline{\gamma }^{\text{i2}}.\overline{\gamma }^{\text{i3}} \bar{\epsilon }^{\text{i1}\;\text{i2}\;\text{i3}}$$

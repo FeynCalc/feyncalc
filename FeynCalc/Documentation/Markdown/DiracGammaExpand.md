@@ -9,16 +9,18 @@
 ### Examples
 
 ```mathematica
-GS[q] . GS[p - q]
-DiracGammaExpand[%]
-StandardForm[%]
+GS[q] . GS[p - q] 
+ 
+ex = DiracGammaExpand[%]
 ```
 
 $$\left(\bar{\gamma }\cdot \overline{q}\right).\left(\bar{\gamma }\cdot \left(\overline{p}-\overline{q}\right)\right)$$
 
 $$\left(\bar{\gamma }\cdot \overline{q}\right).\left(\bar{\gamma }\cdot \overline{p}-\bar{\gamma }\cdot \overline{q}\right)$$
 
-```
+```mathematica
+ex // StandardForm
+
 (*DiracGamma[Momentum[q]] . (DiracGamma[Momentum[p]] - DiracGamma[Momentum[q]])*)
 ```
 
@@ -27,23 +29,26 @@ $$\left(\bar{\gamma }\cdot \overline{q}\right).\left(\bar{\gamma }\cdot \overlin
 The inverse operation is `DiracGammaCombine`.
 
 ```mathematica
-GS[q] . (GS[p] - GS[q])
-DiracGammaCombine[%]
-StandardForm[%]
+GS[q] . (GS[p] - GS[q]) 
+ 
+ex = DiracGammaCombine[%]
 ```
 
 $$\left(\bar{\gamma }\cdot \overline{q}\right).\left(\bar{\gamma }\cdot \overline{p}-\bar{\gamma }\cdot \overline{q}\right)$$
 
 $$\left(\bar{\gamma }\cdot \overline{q}\right).\left(\bar{\gamma }\cdot \left(\overline{p}-\overline{q}\right)\right)$$
 
-```
+```mathematica
+ex // StandardForm
+
 (*DiracGamma[Momentum[q]] . DiracGamma[Momentum[p - q]]*)
 ```
 
 It is possible to perform the expansions only on Dirac matrices contracted with particular momenta.
 
 ```mathematica
-c1 GAD[\[Mu]] . (GSD[p1 + p2] + m) . GAD[\[Nu]] + c2 GAD[\[Mu]] . (GSD[q1 + q2] + m) . GAD[\[Nu]]
+c1 GAD[\[Mu]] . (GSD[p1 + p2] + m) . GAD[\[Nu]] + c2 GAD[\[Mu]] . (GSD[q1 + q2] + m) . GAD[\[Nu]] 
+ 
 DiracGammaExpand[%, Momentum -> {q1}]
 ```
 
@@ -54,7 +59,8 @@ $$\text{c1} \gamma ^{\mu }.(m+\gamma \cdot (\text{p1}+\text{p2})).\gamma ^{\nu }
 If the input expression contains `DiracSigma`,  `DiracGammaExpand` will expand Feynman slashes inside `DiracSigma` and call `DiracSigmaExpand`.
 
 ```mathematica
-DiracSigma[GSD[p + q], GSD[r]]
+DiracSigma[GSD[p + q], GSD[r]] 
+ 
 DiracGammaExpand[%]
 ```
 

@@ -31,7 +31,8 @@ Calc[SUNF[a, b, c] SUNF[a, b, e]]
 $$C_A \delta ^{ce}$$
 
 ```mathematica
-FV[p + r, \[Mu]] MT[\[Mu], \[Nu]] FV[q - p, \[Nu]]
+FV[p + r, \[Mu]] MT[\[Mu], \[Nu]] FV[q - p, \[Nu]] 
+ 
 Calc[%]
 ```
 
@@ -40,11 +41,9 @@ $$\bar{g}^{\mu \nu } \left(\overline{q}-\overline{p}\right)^{\nu } \left(\overli
 $$\overline{p}\cdot \overline{q}-\overline{p}\cdot \overline{r}-\overline{p}^2+\overline{q}\cdot \overline{r}$$
 
 ```mathematica
-GluonVertex[{p, li1}, {q, li2}, {-p - q, li3}]
-Calc[% FVD[p, li1] FVD[q, li2] FVD[-p - q, li3]] 
-  
+GluonVertex[{p, li1}, {q, li2}, {-p - q, li3}] 
  
-
+Calc[% FVD[p, li1] FVD[q, li2] FVD[-p - q, li3]]
 ```
 
 $$V^{\text{li1}\;\text{li2}\;\text{li3}}(p\text{, }q\text{, }-p-q)$$

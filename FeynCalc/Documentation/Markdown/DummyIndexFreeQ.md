@@ -13,7 +13,8 @@ The function is optimized for large expressions, i.e. it is not so good as a cri
 ### Examples
 
 ```mathematica
-FCI[FV[p, \[Mu]] FV[q, \[Nu]]]
+FCI[FV[p, \[Mu]] FV[q, \[Nu]]] 
+ 
 DummyIndexFreeQ[%, {LorentzIndex}]
 ```
 
@@ -22,7 +23,8 @@ $$\overline{p}^{\mu } \overline{q}^{\nu }$$
 $$\text{True}$$
 
 ```mathematica
-FCI[FV[p, \[Mu]] FV[q, \[Mu]]]
+FCI[FV[p, \[Mu]] FV[q, \[Mu]]] 
+ 
 DummyIndexFreeQ[%, {LorentzIndex}]
 ```
 
@@ -31,7 +33,8 @@ $$\overline{p}^{\mu } \overline{q}^{\mu }$$
 $$\text{False}$$
 
 ```mathematica
-FCI[SUNT[a, b]]
+FCI[SUNT[a, b]] 
+ 
 DummyIndexFreeQ[%, {SUNIndex}]
 ```
 
@@ -40,11 +43,9 @@ $$T^a.T^b$$
 $$\text{True}$$
 
 ```mathematica
-FCI[SUNT[a, a]]
-DummyIndexFreeQ[%, {SUNIndex}] 
-  
+FCI[SUNT[a, a]] 
  
-
+DummyIndexFreeQ[%, {SUNIndex}]
 ```
 
 $$T^a.T^a$$

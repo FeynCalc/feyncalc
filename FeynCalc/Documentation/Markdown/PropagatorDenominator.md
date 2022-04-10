@@ -17,7 +17,7 @@ FeynAmpDenominator[PropagatorDenominator[Momentum[p], m]]
 $$\frac{1}{\overline{p}^2-m^2}$$
 
 ```mathematica
- FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], m]]
+FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], m]]
 ```
 
 $$\frac{1}{p^2-m^2}$$

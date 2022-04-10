@@ -43,8 +43,10 @@ FeynAmpDenominatorSimplify[f[k] FAD[k, k - q, k - q], k]
 $$\frac{f(q-k)}{\left(k^2\right)^2.(k-q)^2}$$
 
 ```mathematica
-FeynAmpDenominatorSimplify[FAD[k - Subscript[p, 1], k - Subscript[p, 2]] SPD[k, k], k]
-ApartFF[%, {k}]
+FeynAmpDenominatorSimplify[FAD[k - Subscript[p, 1], k - Subscript[p, 2]] SPD[k, k], k] 
+ 
+ApartFF[%, {k}] 
+ 
 TID[%, k] // Factor2
 ```
 

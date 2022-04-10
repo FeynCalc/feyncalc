@@ -10,39 +10,42 @@
 
 ```mathematica
 FeynCalcExternal[DiracGamma[5]]
-% // StandardForm
 ```
 
 $$\bar{\gamma }^5$$
 
-```
+```mathematica
+FeynCalcExternal[DiracGamma[5]] // StandardForm
+
 (*GA[5]*)
 ```
 
 ```mathematica
 ex = {GA[\[Mu]], GAD[\[Rho]], GS[p], SP[p, q], MT[\[Alpha], \[Beta]], FV[p, \[Mu]]}
-% // StandardForm
 ```
 
 $$\left\{\bar{\gamma }^{\mu },\gamma ^{\rho },\bar{\gamma }\cdot \overline{p},\overline{p}\cdot \overline{q},\bar{g}^{\alpha \beta },\overline{p}^{\mu }\right\}$$
 
-```
+```mathematica
+ex // StandardForm
+
 (*{GA[\[Mu]], GAD[\[Rho]], GS[p], SP[p, q], MT[\[Alpha], \[Beta]], FV[p, \[Mu]]}*)
 ```
 
 ```mathematica
 ex // FeynCalcInternal
-% // StandardForm
-FeynCalcExternal[%] // StandardForm 
-  
- 
-
 ```
 
 $$\left\{\bar{\gamma }^{\mu },\gamma ^{\rho },\bar{\gamma }\cdot \overline{p},\overline{p}\cdot \overline{q},\bar{g}^{\alpha \beta },\overline{p}^{\mu }\right\}$$
 
-```
+```mathematica
+ex // FeynCalcInternal // StandardForm
+
 (*{DiracGamma[LorentzIndex[\[Mu]]], DiracGamma[LorentzIndex[\[Rho], D], D], DiracGamma[Momentum[p]], Pair[Momentum[p], Momentum[q]], Pair[LorentzIndex[\[Alpha]], LorentzIndex[\[Beta]]], Pair[LorentzIndex[\[Mu]], Momentum[p]]}*)
+```
+
+```mathematica
+ex // FeynCalcInternal // FeynCalcExternal // StandardForm
 
 (*{GA[\[Mu]], GAD[\[Rho]], GS[p], SP[p, q], MT[\[Alpha], \[Beta]], FV[p, \[Mu]]}*)
 ```

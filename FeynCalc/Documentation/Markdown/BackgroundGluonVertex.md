@@ -22,7 +22,7 @@ $$g_s f^{abc} \left(g^{\mu \nu } (-k+p-q)^{\lambda }+g^{\lambda \mu } (k-p+q)^{\
 BackgroundGluonVertex[{p, \[Mu], a}, {q, \[Nu], b}, {k, \[Lambda], c}, {s, \[Sigma], d}]
 ```
 
-$$-i g_s^2 \left(f^{ad\text{FCGV}(\text{u24})} f^{bc\text{FCGV}(\text{u24})} \left(g^{\lambda \sigma } g^{\mu \nu }-g^{\lambda \nu } g^{\mu \sigma }-g^{\lambda \mu } g^{\nu \sigma }\right)+f^{ac\text{FCGV}(\text{u24})} f^{bd\text{FCGV}(\text{u24})} \left(g^{\lambda \sigma } g^{\mu \nu }-g^{\lambda \nu } g^{\mu \sigma }\right)+f^{ab\text{FCGV}(\text{u24})} f^{cd\text{FCGV}(\text{u24})} \left(g^{\lambda \sigma } g^{\mu \nu }-g^{\lambda \nu } g^{\mu \sigma }+g^{\lambda \mu } g^{\nu \sigma }\right)\right)$$
+$$-i g_s^2 \left(f^{ad\text{FCGV}(\text{u19})} f^{bc\text{FCGV}(\text{u19})} \left(g^{\lambda \sigma } g^{\mu \nu }-g^{\lambda \nu } g^{\mu \sigma }-g^{\lambda \mu } g^{\nu \sigma }\right)+f^{ac\text{FCGV}(\text{u19})} f^{bd\text{FCGV}(\text{u19})} \left(g^{\lambda \sigma } g^{\mu \nu }-g^{\lambda \nu } g^{\mu \sigma }\right)+f^{ab\text{FCGV}(\text{u19})} f^{cd\text{FCGV}(\text{u19})} \left(g^{\lambda \sigma } g^{\mu \nu }-g^{\lambda \nu } g^{\mu \sigma }+g^{\lambda \mu } g^{\nu \sigma }\right)\right)$$
 
 ```mathematica
 BackgroundGluonVertex[{p, \[Mu], a}, {q, \[Nu], b}, {k, \[Lambda], c},Gauge -> \[Alpha]]
@@ -34,4 +34,4 @@ $$g_s f^{abc} \left(g^{\mu \nu } \left(-\frac{k}{\alpha }+p-q\right)^{\lambda }+
 BackgroundGluonVertex[{p, \[Mu], a}, {q, \[Nu], b}, {k, \[Lambda], c}, {s, \[Sigma], d}, Gauge -> \[Alpha]]
 ```
 
-$$-i g_s^2 \left(f^{ad\text{FCGV}(\text{u25})} f^{bc\text{FCGV}(\text{u25})} \left(-\frac{g^{\lambda \nu } g^{\mu \sigma }}{\alpha }+g^{\lambda \sigma } g^{\mu \nu }-g^{\lambda \mu } g^{\nu \sigma }\right)+f^{ab\text{FCGV}(\text{u25})} f^{cd\text{FCGV}(\text{u25})} \left(\frac{g^{\lambda \sigma } g^{\mu \nu }}{\alpha }-g^{\lambda \nu } g^{\mu \sigma }+g^{\lambda \mu } g^{\nu \sigma }\right)+f^{ac\text{FCGV}(\text{u25})} f^{bd\text{FCGV}(\text{u25})} \left(g^{\lambda \sigma } g^{\mu \nu }-g^{\lambda \nu } g^{\mu \sigma }\right)\right)$$
+$$-i g_s^2 \left(f^{ad\text{FCGV}(\text{u20})} f^{bc\text{FCGV}(\text{u20})} \left(-\frac{g^{\lambda \nu } g^{\mu \sigma }}{\alpha }+g^{\lambda \sigma } g^{\mu \nu }-g^{\lambda \mu } g^{\nu \sigma }\right)+f^{ab\text{FCGV}(\text{u20})} f^{cd\text{FCGV}(\text{u20})} \left(\frac{g^{\lambda \sigma } g^{\mu \nu }}{\alpha }-g^{\lambda \nu } g^{\mu \sigma }+g^{\lambda \mu } g^{\nu \sigma }\right)+f^{ac\text{FCGV}(\text{u20})} f^{bd\text{FCGV}(\text{u20})} \left(g^{\lambda \sigma } g^{\mu \nu }-g^{\lambda \nu } g^{\mu \sigma }\right)\right)$$

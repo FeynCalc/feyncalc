@@ -59,7 +59,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
  - [PlusDistribution](../PlusDistribution.md) - a special distribution
  - [PropagatorDenominator](../PropagatorDenominator.md), [PD](../PD.md), [StandardPropagatorDenominator](../StandardPropagatorDenominator.md), [CartesianPropagatorDenominator](../CartesianPropagatorDenominator.md), [GenericPropagatorDenominator](../GenericPropagatorDenominator.md) - internal representation of propagator denominators
  - [QuantumField](../QuantumField.md) - generic name of a quantum field
- - [ScaleMu](../ScaleMu.md) - μ scale in dimensional regularization
+ - [ScaleMu](../ScaleMu.md) - $\mu$ scale in dimensional regularization
  - [SD](../SD.md), [SUNDelta](../SUNDelta.md) - Kronecker delta for adjoint $SU(N)$ indices
  - [SDF](../SDF.md), [SUNFDelta](../SUNFDelta.md) - Kronecker delta for fundamental $SU(N)$ indices
  - [SI](../SI.md), [SID](../SID.md), [SIE](../SIE.md), [SIS](../SIS.md), [SISD](../SISD.md), [SISE](../SISE.md) - Pauli matrices with Lorentz indices or Pauli matrices contracted to $4$-momenta
@@ -81,6 +81,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 
 ## Basic functions
 
+ - [Abbreviation](../Abbreviation.md), [FCAbbreviate](../FCAbbreviate.md) - introduces abbreviations
  - [Apart1](../Apart1.md), [Apart3](../Apart3.md) - alternative to Mathematica's `Apart`
  - [Cases2](../Cases2.md) - alternative to Mathematica's `Cases`
  - [Coefficient2](../Coefficient2.md) - alternative to Mathematica's `Coefficient`
@@ -94,7 +95,6 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
  - [Factor1](../Factor1.md), [Factor2](../Factor2.md) - alternatives to Mathematica's `Factor`
  - [FactorList2](../FactorList2.md) - alternative to Mathematica's `FactorList2`
  - [FC](../FC.md) - changes the output format to [FeynCalcForm](../FeynCalcForm.md)
- - [FCAbbreviate](../FCAbbreviate.md) - introduces abbreviations
  - [FCAntiSymmetrize](../FCAntiSymmetrize.md) - antisymmetrizes with respect to the given variables
  - [FCDeclareHeader](../FCDeclareHeader.md), [FCPrint](../FCPrint.md), [FCReloadAddOns](../FCReloadAddOns.md), [FCReloadFunctionFromFile](../FCReloadFunctionFromFile.md) - for writing or debugging new FeynCalc functions or add-ons
  - [FCDuplicateFreeQ](../FCDuplicateFreeQ.md) - alternative to Mathematica's `DuplicateFreeQ`

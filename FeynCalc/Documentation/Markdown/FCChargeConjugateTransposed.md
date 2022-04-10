@@ -11,7 +11,8 @@ The shortcut for `FCChargeConjugateTransposed` is `FCCCT`.
 ### Examples
 
 ```mathematica
-GA[\[Mu], \[Nu], \[Rho]]
+GA[\[Mu], \[Nu], \[Rho]] 
+ 
 FCChargeConjugateTransposed[%]
 ```
 
@@ -26,8 +27,10 @@ FCChargeConjugateTransposed[GA[\[Mu], \[Nu], \[Rho]], Explicit -> True]
 $$-\bar{\gamma }^{\rho }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\mu }$$
 
 ```mathematica
-GA[5]
-FCCCT[%]
+GA[5] 
+ 
+FCCCT[%] 
+ 
 % // Explicit
 ```
 

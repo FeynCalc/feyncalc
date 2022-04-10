@@ -15,7 +15,8 @@
 ### Examples
 
 ```mathematica
-SpinorUBar[p, m] . SpinorU[p, m]
+SpinorUBar[p, m] . SpinorU[p, m] 
+ 
 DiracSimplify[%]
 ```
 
@@ -24,7 +25,8 @@ $$\bar{u}(p,m).u(p,m)$$
 $$2 m$$
 
 ```mathematica
-SpinorUBar[p, m] . SpinorU[p, m]
+SpinorUBar[p, m] . SpinorU[p, m] 
+ 
 DiracSimplify[%, DiracSpinorNormalization -> "Rest"]
 ```
 
@@ -33,11 +35,9 @@ $$\bar{u}(p,m).u(p,m)$$
 $$1$$
 
 ```mathematica
-SpinorUBar[p, m] . SpinorU[p, m]
-DiracSimplify[%, DiracSpinorNormalization -> "Nonrelativistic"] 
-  
+SpinorUBar[p, m] . SpinorU[p, m] 
  
-
+DiracSimplify[%, DiracSpinorNormalization -> "Nonrelativistic"]
 ```
 
 $$\bar{u}(p,m).u(p,m)$$

@@ -9,8 +9,10 @@
 ### Examples
 
 ```mathematica
-FAD[{q, m}, {q, M}, q - p]
-Apart2[%]
+FAD[{q, m}, {q, M}, q - p] 
+ 
+Apart2[%] 
+ 
 StandardForm[FCE[%]]
 ```
 
@@ -23,7 +25,8 @@ $$\frac{\text{FAD}[\{q,m\},-p+q]-\text{FAD}[\{q,M\},-p+q]}{m^2-M^2}$$
 Apart2 can also handle Cartesian propagators with square roots. To disable this mode use $text{Sqrt}to text{False}$ 
 
 ```mathematica
-int = CFAD[{{k, 0}, {+m^2, -1}, 1}, {{k - p, 0}, {0, -1}, 1}] GFAD[{{DE - Sqrt[CSPD[k, k]], 1}, 1}]
+int = CFAD[{{k, 0}, {+m^2, -1}, 1}, {{k - p, 0}, {0, -1}, 1}] GFAD[{{DE - Sqrt[CSPD[k, k]], 1}, 1}] 
+ 
 int // FeynAmpDenominatorCombine // Apart2
 ```
 

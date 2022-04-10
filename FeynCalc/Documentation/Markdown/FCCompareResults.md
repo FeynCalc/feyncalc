@@ -4,7 +4,7 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [FCMathcSolve](FCMathcSolve.md).
+[Overview](Extra/FeynCalc.md), [FCMatchSolve](FCMatchSolve.md).
 
 ### Examples
 
@@ -17,10 +17,7 @@ $$\text{Check of the results:} \;\text{The results agree.}$$
 $$\text{True}$$
 
 ```mathematica
-FCCompareResults[{3, 5}, {2^2, 8/2}] 
-  
- 
-
+FCCompareResults[{3, 5}, {2^2, 8/2}]
 ```
 
 $$\text{Check of the results:} \;\text{The results disagree.}$$

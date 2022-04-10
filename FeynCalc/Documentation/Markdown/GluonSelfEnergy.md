@@ -1,6 +1,6 @@
 ## GluonSelfEnergy
 
-`GluonSelfEnergy[{μ, a}, {ν, b}]` yields the 1-loop gluon self-energy.
+`GluonSelfEnergy[{mu, a}, {nu, b}]` yields the 1-loop gluon self-energy.
 
 ### See also
 

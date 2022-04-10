@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-PCHN[(CSIS[p] + m) . CSI[a], i, j]
+PCHN[(CSIS[p] + m) . CSI[a], i, j] 
+ 
 PauliChainExpand[%]
 ```
 

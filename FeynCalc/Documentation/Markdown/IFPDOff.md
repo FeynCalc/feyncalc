@@ -10,22 +10,24 @@
 
 ```mathematica
 IFPD[Momentum[p], m]
-% // StandardForm
 ```
 
 $$(\overline{p}^2\text{ - }m^2)$$
 
-```
+```mathematica
+IFPD[Momentum[p], m] // StandardForm
+
 (*IFPD[Momentum[p], m]*)
 ```
 
 ```mathematica
-IFPDOff[%, p]
-% // StandardForm
+ex = IFPDOff[IFPD[Momentum[p], m], p]
 ```
 
 $$\overline{p}^2-m^2$$
 
-```
+```mathematica
+ex // StandardForm
+
 (*-m^2 + Pair[Momentum[p], Momentum[p]]*)
 ```

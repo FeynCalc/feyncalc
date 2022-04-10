@@ -12,36 +12,36 @@ ToGFAD is the inverse operation to FromGFAD.
 
 ```mathematica
 ToGFAD[FAD[p]]
-% // StandardForm
 ```
 
 $$\frac{1}{(p^2+i \eta )}$$
 
-```
+```mathematica
+ToGFAD[FAD[p]] // StandardForm
+
 (*FeynAmpDenominator[GenericPropagatorDenominator[Pair[Momentum[p, D], Momentum[p, D]], {1, 1}]]*)
 ```
 
 ```mathematica
 ToGFAD[SFAD[{p + q, m^2}]]
-% // StandardForm
 ```
 
 $$\frac{1}{(-m^2+p^2+2 (p\cdot q)+q^2+i \eta )}$$
 
-```
+```mathematica
+ToGFAD[SFAD[{p + q, m^2}]] // StandardForm
+
 (*FeynAmpDenominator[GenericPropagatorDenominator[-m^2 + Pair[Momentum[p, D], Momentum[p, D]] + 2 Pair[Momentum[p, D], Momentum[q, D]] + Pair[Momentum[q, D], Momentum[q, D]], {1, 1}]]*)
 ```
 
 ```mathematica
 ToGFAD[SFAD[{p + q, m^2}], FinalSubstitutions -> {SPD[q] -> 0}]
-% // StandardForm 
-  
- 
-
 ```
 
 $$\frac{1}{(-m^2+p^2+2 (p\cdot q)+i \eta )}$$
 
-```
+```mathematica
+ToGFAD[SFAD[{p + q, m^2}], FinalSubstitutions -> {SPD[q] -> 0}] // StandardForm
+
 (*FeynAmpDenominator[GenericPropagatorDenominator[-m^2 + Pair[Momentum[p, D], Momentum[p, D]] + 2 Pair[Momentum[p, D], Momentum[q, D]], {1, 1}]]*)
 ```

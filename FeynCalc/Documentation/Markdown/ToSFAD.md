@@ -10,34 +10,36 @@
 
 ```mathematica
 ToSFAD[FAD[p]]
-% // StandardForm
 ```
 
 $$\frac{1}{(p^2+i \eta )}$$
 
-```
-(*SFAD[{{p, 0}, {0, 1}, 1}]*)
+```mathematica
+ToSFAD[FAD[p]] // StandardForm
+
+(*FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, 0, {1, 1}]]*)
 ```
 
 ```mathematica
 ToSFAD[FAD[{p, m}]]
-% // StandardForm
 ```
 
 $$\frac{1}{(p^2-m^2+i \eta )}$$
 
-```
-(*SFAD[{{p, 0}, {m^2, 1}, 1}]*)
+```mathematica
+ToSFAD[FAD[{p, m}]] // StandardForm
+
+(*FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p, D], 0, -m^2, {1, 1}]]*)
 ```
 
 ```mathematica
 ToSFAD[FAD[{p + q, m, 2}]]
-% // StandardForm
-
 ```
 
 $$\frac{1}{((p+q)^2-m^2+i \eta )^2}$$
 
-```
-(*SFAD[{{p + q, 0}, {m^2, 1}, 1}, {{p + q, 0}, {m^2, 1}, 1}]*)
+```mathematica
+ToSFAD[FAD[{p + q, m, 2}]] // StandardForm
+
+(*FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p + q, D], 0, -m^2, {1, 1}], StandardPropagatorDenominator[Momentum[p + q, D], 0, -m^2, {1, 1}]]*)
 ```

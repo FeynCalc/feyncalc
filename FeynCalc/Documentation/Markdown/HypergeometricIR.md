@@ -15,7 +15,8 @@ HypergeometricIR[Hypergeometric2F1[a, b, c, z], t]
 $$\frac{t^{b-1} \Gamma (c) (1-t z)^{-a} (1-t)^{-b+c-1}}{\Gamma (b) \Gamma (c-b)}$$
 
 ```mathematica
-ToHypergeometric[t^b (1 - t)^c (1 + t z)^a, t]
+ToHypergeometric[t^b (1 - t)^c (1 + t z)^a, t] 
+ 
 HypergeometricIR[%, t] 
   
  

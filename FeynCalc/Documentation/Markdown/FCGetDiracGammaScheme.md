@@ -9,8 +9,10 @@
 ### Examples
 
 ```mathematica
-FCSetDiracGammaScheme["BMHV"]
-FCGetDiracGammaScheme[]
+FCSetDiracGammaScheme["BMHV"] 
+ 
+FCGetDiracGammaScheme[] 
+ 
 % // FullForm
 ```
 
@@ -21,8 +23,10 @@ $$\text{BMHV}$$
 $$\text{BMHV}$$
 
 ```mathematica
-FCSetDiracGammaScheme["NDR"]
-FCGetDiracGammaScheme[]
+FCSetDiracGammaScheme["NDR"] 
+ 
+FCGetDiracGammaScheme[] 
+ 
 % // FullForm
 ```
 

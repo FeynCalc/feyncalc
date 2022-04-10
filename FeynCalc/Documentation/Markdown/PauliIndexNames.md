@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-PCHN[CSI[a], i, j] PCHN[CSI[b], j, k]
+PCHN[CSI[a], i, j] PCHN[CSI[b], j, k] 
+ 
 FCCanonicalizeDummyIndices[%]
 ```
 
@@ -18,7 +19,8 @@ $$\left(\overline{\sigma }^a\right){}_{ij} \left(\overline{\sigma }^b\right){}_{
 $$\left(\overline{\sigma }^a\right){}_{i\text{FCGV}(\text{pi251})} \left(\overline{\sigma }^b\right){}_{\text{FCGV}(\text{pi251})k}$$
 
 ```mathematica
-PCHN[CSI[a], i, j] PCHN[CSI[b], j, k]
+PCHN[CSI[a], i, j] PCHN[CSI[b], j, k] 
+ 
 FCCanonicalizeDummyIndices[%, PauliIndexNames -> {l}] 
   
  

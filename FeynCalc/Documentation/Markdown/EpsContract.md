@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-LCD[\[Mu], \[Nu], \[Rho], \[Sigma]]
+LCD[\[Mu], \[Nu], \[Rho], \[Sigma]] 
+ 
 EpsContract[% %] // Factor2
 ```
 

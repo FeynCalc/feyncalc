@@ -12,16 +12,16 @@
 $SystemMemory
 ```
 
-$$32832512000$$
+$$32898408448$$
 
 ```mathematica
 Floor[$SystemMemory/10^6/4]
 ```
 
-$$8208$$
+$$8224$$
 
 ```mathematica
 $FCMemoryAvailable
 ```
 
-$$8208$$
+$$8224$$

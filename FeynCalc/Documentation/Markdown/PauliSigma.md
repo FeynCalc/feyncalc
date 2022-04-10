@@ -37,7 +37,8 @@ PauliSigma[CartesianMomentum[p]]
 $$\overline{\sigma }\cdot \overline{p}$$
 
 ```mathematica
-PauliSigma[Momentum[q]] . PauliSigma[Momentum[p - q]]
+PauliSigma[Momentum[q]] . PauliSigma[Momentum[p - q]] 
+ 
 % // PauliSigmaExpand
 ```
 
@@ -46,7 +47,8 @@ $$\left(\bar{\sigma }\cdot \overline{q}\right).\left(\bar{\sigma }\cdot \left(\o
 $$\left(\bar{\sigma }\cdot \overline{q}\right).\left(\bar{\sigma }\cdot \overline{p}-\bar{\sigma }\cdot \overline{q}\right)$$
 
 ```mathematica
-PauliSigma[CartesianMomentum[q]] . PauliSigma[CartesianMomentum[p - q]]
+PauliSigma[CartesianMomentum[q]] . PauliSigma[CartesianMomentum[p - q]] 
+ 
 % // PauliSigmaExpand 
   
  

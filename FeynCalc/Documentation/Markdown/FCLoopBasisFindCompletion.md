@@ -13,7 +13,8 @@ The input can also consist of an `FCTopology` object or a list thereof.
 ### Examples
 
 ```mathematica
-FAD[q, {q - p + l, m}]
+FAD[q, {q - p + l, m}] 
+ 
 FCLoopBasisFindCompletion[%, {q}]
 ```
 
@@ -22,7 +23,8 @@ $$\frac{1}{q^2.\left((l-p+q)^2-m^2\right)}$$
 $$\left\{\frac{1}{q^2.\left((l-p+q)^2-m^2\right)},\{l\cdot q\}\right\}$$
 
 ```mathematica
-FAD[{q1, m1}, {q2, m2}]
+FAD[{q1, m1}, {q2, m2}] 
+ 
 FCLoopBasisFindCompletion[%, {q1, q2}]
 ```
 
@@ -31,7 +33,8 @@ $$\frac{1}{\left(\text{q1}^2-\text{m1}^2\right).\left(\text{q2}^2-\text{m2}^2\ri
 $$\left\{\frac{1}{\left(\text{q1}^2-\text{m1}^2\right).\left(\text{q2}^2-\text{m2}^2\right)},\{\text{q1}\cdot \;\text{q2}\}\right\}$$
 
 ```mathematica
-FAD[q1 + p, q2 - k] SPD[q1, q2]
+FAD[q1 + p, q2 - k] SPD[q1, q2] 
+ 
 FCLoopBasisFindCompletion[%, {q1, q2}, Method -> {FAD[{q2 + k, m}], FAD[{q1 - p, m}], SPD[p, q2], SPD[k, q1]}]
 ```
 
@@ -42,7 +45,8 @@ $$\left\{\frac{\text{q1}\cdot \;\text{q2}}{(p+\text{q1})^2.(\text{q2}-k)^2},\lef
 Cartesian integrals are also supported.
 
 ```mathematica
-CFAD[q1, q2, {q1 - l1, m1}, {q2 - l2, m2}]
+CFAD[q1, q2, {q1 - l1, m1}, {q2 - l2, m2}] 
+ 
 FCLoopBasisFindCompletion[%, {q1, q2}]
 ```
 

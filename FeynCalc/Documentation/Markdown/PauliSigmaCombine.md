@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-SIS[p] + SIS[q]
+SIS[p] + SIS[q] 
+ 
 PauliSigmaCombine[%]
 ```
 
@@ -18,7 +19,8 @@ $$\bar{\sigma }\cdot \overline{p}+\bar{\sigma }\cdot \overline{q}$$
 $$\bar{\sigma }\cdot \left(\overline{p}+\overline{q}\right)$$
 
 ```mathematica
-PauliXi[-I] . (SIS[p1 + p2] + SIS[q]) . PauliEta[I]
+PauliXi[-I] . (SIS[p1 + p2] + SIS[q]) . PauliEta[I] 
+ 
 PauliSigmaCombine[%]
 ```
 

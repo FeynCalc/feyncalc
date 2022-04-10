@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-x^a y^a
+x^a y^a 
+ 
 PowerFactor[%] 
   
  

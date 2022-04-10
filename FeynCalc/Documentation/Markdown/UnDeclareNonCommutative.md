@@ -23,14 +23,16 @@ $$\text{True}$$
 The inverse operation is UnDeclareNonCommutative.
 
 ```mathematica
-UnDeclareNonCommutative[x]
+UnDeclareNonCommutative[x] 
+ 
 DataType[x, NonCommutative]
 ```
 
 $$\text{False}$$
 
 ```mathematica
-DeclareNonCommutative[y, z]
+DeclareNonCommutative[y, z] 
+ 
 DataType[y, z, NonCommutative]
 
 ```
@@ -38,7 +40,8 @@ DataType[y, z, NonCommutative]
 $$\{\text{True},\text{True}\}$$
 
 ```mathematica
-UnDeclareNonCommutative[y, z]
+UnDeclareNonCommutative[y, z] 
+ 
 DataType[y, z, NonCommutative]
 ```
 

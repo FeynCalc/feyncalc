@@ -10,14 +10,18 @@
 
 ```mathematica
 SDF[a, b]
-% // FCI // StandardForm
-% // FCE // StandardForm
 ```
 
 $$\delta _{ab}$$
 
-```
+```mathematica
+SDF[a, b] // FCI // StandardForm
+
 (*SUNFDelta[SUNFIndex[a], SUNFIndex[b]]*)
+```
+
+```mathematica
+SDF[a, b] // FCE // StandardForm
 
 (*SDF[a, b]*)
 ```

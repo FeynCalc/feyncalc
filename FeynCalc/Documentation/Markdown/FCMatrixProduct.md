@@ -13,14 +13,15 @@ The resulting expression can be then further simplified using `DotSimplify`.
 
 #### Generic matrices
 
-Consider two generic `2 \times 2`-matrices containing noncommutative heads
+Consider two generic $2 \times 2$-matrices containing noncommutative heads
 
 ```mathematica
 DeclareNonCommutative[opA, opB, opC, opD]
 ```
 
 ```mathematica
-mat[1] = {{opA[1], opB[1]}, {opC[1], opD[1]}}
+mat[1] = {{opA[1], opB[1]}, {opC[1], opD[1]}} 
+ 
 mat[2] = {{opA[2], opB[2]}, {opC[2], opD[2]}}
 ```
 
@@ -106,18 +107,17 @@ $$\left(
 Let us define Dirac matrices in the Dirac basis in terms of Pauli matrices
 
 ```mathematica
-gamma[0] = {{1, 0}, {0, -1}};
+gamma[0] = {{1, 0}, {0, -1}}; 
+ 
 gamma[i_] := {{0, CSI[i]}, {-CSI[i], 0}};
 ```
 
 and express $\gamma^i \gamma^j \gamma^i$ as a $2 \times 2$-matrix
 
 ```mathematica
-FCMatrixProduct[gamma[i], gamma[j], gamma[i]]
-DotSimplify[%] 
-  
+FCMatrixProduct[gamma[i], gamma[j], gamma[i]] 
  
-
+DotSimplify[%]
 ```
 
 $$\left(

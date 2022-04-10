@@ -9,15 +9,18 @@
 ### Examples
 
 ```mathematica
-ScalarProduct[p, p] = m^2;
+ScalarProduct[p, p] = m^2; 
+ 
 Pair[Momentum[p], Momentum[p]]
 ```
 
 $$m^2$$
 
 ```mathematica
-FCClearScalarProducts[]
-Pair[Momentum[p], Momentum[p]]
+FCClearScalarProducts[] 
+ 
+Pair[Momentum[p], Momentum[p]] 
+ 
 SP[p, p] 
   
  

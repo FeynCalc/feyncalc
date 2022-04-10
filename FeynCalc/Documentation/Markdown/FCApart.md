@@ -11,7 +11,8 @@ There is actually no reason, why one would want to apply `FCApart` instead of `A
 ### Examples
 
 ```mathematica
-SPD[q, q] FAD[{q, m}]
+SPD[q, q] FAD[{q, m}] 
+ 
 FCApart[%, {q}]
 ```
 
@@ -20,7 +21,8 @@ $$\frac{q^2}{q^2-m^2}$$
 $$\frac{m^2}{q^2-m^2}$$
 
 ```mathematica
-SPD[q, p] SPD[q, r] FAD[{q}, {q - p}, {q - r}]
+SPD[q, p] SPD[q, r] FAD[{q}, {q - p}, {q - r}] 
+ 
 FCApart[%, {q}]
 ```
 
@@ -29,7 +31,8 @@ $$\frac{(p\cdot q) (q\cdot r)}{q^2.(q-p)^2.(q-r)^2}$$
 $$\frac{p^2 r^2}{4 q^2.(q-p)^2.(q-r)^2}+\frac{p^2+2 r^2}{4 q^2.(-p+q+r)^2}+\frac{q\cdot r}{2 q^2.(-p+q+r)^2}+-\frac{p^2}{4 q^2.(q-p)^2}-\frac{r^2}{4 q^2.(q-r)^2}$$
 
 ```mathematica
-SPD[p, q1] SPD[p, q2]^2 FAD[{q1, m}, {q2, m}, q1 - p, q2 - p, q1 - q2]
+SPD[p, q1] SPD[p, q2]^2 FAD[{q1, m}, {q2, m}, q1 - p, q2 - p, q1 - q2] 
+ 
 FCApart[%, {q1, q2}]
 ```
 

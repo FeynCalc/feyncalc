@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-GS[p] . SpinorU[p, m]
+GS[p] . SpinorU[p, m] 
+ 
 DiracSimplify[%]
 ```
 
@@ -18,7 +19,8 @@ $$\left(\bar{\gamma }\cdot \overline{p}\right).u(p,m)$$
 $$m \left(\varphi (\overline{p},m)\right)$$
 
 ```mathematica
-GS[p] . SpinorU[p, m]
+GS[p] . SpinorU[p, m] 
+ 
 DiracEquation[%]
 ```
 
@@ -27,7 +29,8 @@ $$\left(\bar{\gamma }\cdot \overline{p}\right).u(p,m)$$
 $$m \left(\varphi (\overline{p},m)\right)$$
 
 ```mathematica
-GS[p] . SpinorV[p, m]
+GS[p] . SpinorV[p, m] 
+ 
 DiracEquation[%]
 ```
 
@@ -36,7 +39,8 @@ $$\left(\bar{\gamma }\cdot \overline{p}\right).v(p,m)$$
 $$-m \left(\varphi (-\overline{p},m)\right)$$
 
 ```mathematica
-SpinorUBar[p, 0] . GS[p]
+SpinorUBar[p, 0] . GS[p] 
+ 
 DiracEquation[%]
 ```
 
@@ -47,7 +51,8 @@ $$0$$
 `DiracEquation` also works in $D$-dimensions
 
 ```mathematica
-SpinorVBarD[p, m] . GSD[p]
+SpinorVBarD[p, m] . GSD[p] 
+ 
 DiracEquation[%]
 ```
 

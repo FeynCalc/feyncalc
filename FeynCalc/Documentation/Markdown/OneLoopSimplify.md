@@ -11,8 +11,10 @@ If the first argument has head `FeynAmp` then `OneLoopSimplify[FeynAmp[name, k, 
 ### Examples
 
 ```mathematica
-SPD[k, r] FAD[{k, m} , k - p] // FCI
-OneLoopSimplify[%, k]
+SPD[k, r] FAD[{k, m} , k - p] // FCI 
+ 
+OneLoopSimplify[%, k] 
+ 
 OneLoopSimplify[% /. m -> 0, k]
 ```
 
@@ -23,8 +25,10 @@ $$\frac{\left(m^2+p^2\right) (p\cdot r)}{2 p^2 k^2.\left((k-p)^2-m^2\right)}-\fr
 $$\frac{p\cdot r}{2 k^2.(k-p)^2}$$
 
 ```mathematica
-FAD[k, k, k - Subscript[p, 1], k - Subscript[p, 2]] FVD[k, \[Mu]] // FCI
-OneLoopSimplify[ %, k]
+FAD[k, k, k - Subscript[p, 1], k - Subscript[p, 2]] FVD[k, \[Mu]] // FCI 
+ 
+OneLoopSimplify[ %, k] 
+ 
 FCE[%] /. SPD[Subscript[p, 1]] -> 0 // FCI
 ```
 

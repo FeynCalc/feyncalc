@@ -12,37 +12,37 @@
 t0 = Isolate[a + b]
 ```
 
-$$\text{KK}(24)$$
+$$\text{KK}(19)$$
 
 ```mathematica
 t1 = Isolate[(a + b) f + (c + d) f + e, f]
 ```
 
-$$e+f \;\text{KK}(24)+f \;\text{KK}(25)$$
+$$e+f \;\text{KK}(19)+f \;\text{KK}(20)$$
 
 ```mathematica
 StandardForm[t1]
 ```
 
-$$e+f \;\text{KK}[24]+f \;\text{KK}[25]$$
+$$e+f \;\text{KK}[19]+f \;\text{KK}[20]$$
 
 ```mathematica
 {t0, t1, ReleaseHold[t1]}
 ```
 
-$$\{\text{KK}(24),e+f \;\text{KK}(24)+f \;\text{KK}(25),f (a+b)+f (c+d)+e\}$$
+$$\{\text{KK}(19),e+f \;\text{KK}(19)+f \;\text{KK}(20),f (a+b)+f (c+d)+e\}$$
 
 ```mathematica
 Isolate[a[z] (b + c (y + z)) + d[z] (y + z), {a, d}, IsolateNames -> fF]
 ```
 
-$$\text{fF}(27) a(z)+\text{fF}(26) d(z)$$
+$$\text{fF}(22) a(z)+\text{fF}(21) d(z)$$
 
 ```mathematica
 Information[fF]
 ```
 
-![1h43hlg7mmzzn](img/1h43hlg7mmzzn.svg)
+![0gi2hdxwlvyo6](img/0gi2hdxwlvyo6.pdf)
 
 ```mathematica
 Global`fF
@@ -66,7 +66,7 @@ $$b+c \;\text{fF}(26)$$
 Isolate[a - b - c - d - e, IsolateNames -> l, IsolateSplit -> 15]
 ```
 
-$$l(29)$$
+$$l(24)$$
 
 ```mathematica
 Clear[t0, t1, l, fF]

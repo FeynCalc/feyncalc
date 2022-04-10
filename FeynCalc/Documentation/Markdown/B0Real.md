@@ -16,7 +16,7 @@ B0[s, 0, s]
 
 $$\text{B}_0(s,0,s)$$
 
-With B0RealTrue, transformation is done.
+With `B0Real->True`, transformation is done.
 
 ```mathematica
 B0[s, 0, s, B0Real -> True, B0Unique -> True]

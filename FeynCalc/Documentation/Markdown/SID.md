@@ -28,12 +28,13 @@ StandardForm[FCI[SID[\[Mu]]]]
 
 ```mathematica
 SID[\[Mu], \[Nu], \[Rho], \[Sigma]]
-% // StandardForm
 ```
 
 $$\sigma ^{\mu }.\sigma ^{\nu }.\sigma ^{\rho }.\sigma ^{\sigma }$$
 
-```
+```mathematica
+SID[\[Mu], \[Nu], \[Rho], \[Sigma]] // StandardForm
+
 (*SID[\[Mu]] . SID[\[Nu]] . SID[\[Rho]] . SID[\[Sigma]]*)
 ```
 

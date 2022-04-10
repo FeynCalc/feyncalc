@@ -43,13 +43,8 @@ $$B_{\mu }$$
 Color indices should be put after the Lorentz ones.
 
 ```mathematica
-QuantumField[GaugeField, {\[Mu]}, {a}]
-% // StandardForm
-```
+QuantumField[GaugeField, {\[Mu]}, {a}] // StandardForm
 
-$$A_{\mu }^a$$
-
-```
 (*QuantumField[GaugeField, LorentzIndex[\[Mu]], SUNIndex[a]]*)
 ```
 

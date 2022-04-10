@@ -9,18 +9,17 @@
 ### Examples
 
 ```mathematica
-Contract[LC[\[Mu], \[Nu], \[Rho], \[Sigma]] FV[p + q, \[Sigma]]] // MomentumCombine
-EpsEvaluate[%]
-StandardForm[%] 
-  
+Contract[LC[\[Mu], \[Nu], \[Rho], \[Sigma]] FV[p + q, \[Sigma]]] // MomentumCombine 
  
-
+ex = EpsEvaluate[%]
 ```
 
 $$\bar{\epsilon }^{\mu \nu \rho \overline{p}+\overline{q}}$$
 
 $$\bar{\epsilon }^{\mu \nu \rho \overline{p}}+\bar{\epsilon }^{\mu \nu \rho \overline{q}}$$
 
-```
+```mathematica
+ex // StandardForm
+
 (*Eps[LorentzIndex[\[Mu]], LorentzIndex[\[Nu]], LorentzIndex[\[Rho]], Momentum[p]] + Eps[LorentzIndex[\[Mu]], LorentzIndex[\[Nu]], LorentzIndex[\[Rho]], Momentum[q]]*)
 ```

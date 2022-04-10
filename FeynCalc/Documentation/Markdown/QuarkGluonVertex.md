@@ -1,6 +1,6 @@
 ## QuarkGluonVertex
 
-`QuarkGluonVertex[μ, a]` gives the Feynman rule for the quark-gluon vertex.
+`QuarkGluonVertex[mu, a]` gives the Feynman rule for the quark-gluon vertex.
 
 `QGV` can be used as an abbreviation of `QuarkGluonVertex`.
 

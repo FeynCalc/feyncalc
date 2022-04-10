@@ -13,7 +13,8 @@ DeclareNonCommutative[a, b, c, d]
 ```
 
 ```mathematica
-Commutator[a, b]
+Commutator[a, b] 
+ 
 CommutatorExplicit[%]
 ```
 
@@ -22,7 +23,8 @@ $$[a,b]$$
 $$a.b-b.a$$
 
 ```mathematica
-AntiCommutator[a - c, b - d]
+AntiCommutator[a - c, b - d] 
+ 
 CommutatorExplicit[%]
 ```
 

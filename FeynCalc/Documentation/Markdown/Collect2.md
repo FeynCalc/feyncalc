@@ -43,11 +43,12 @@ Collect2[2 a (b - a) (h - 1) - b^2 (e a - c) + b^2, {a, b}]
 $$-2 a^2 (h-1)-a b^2 e+2 a b (h-1)+b^2 (c+1)$$
 
 ```mathematica
-Collect2[Expand[(a - b - c - d)^5], a, IsolateNames -> KK]
+Collect2[Expand[(a - b - c - d)^5], a, IsolateNames -> KK] 
+ 
 FRH[%]
 ```
 
-$$a^5-5 a^4 \;\text{KK}(24)+10 a^3 \;\text{KK}(25)-10 a^2 \;\text{KK}(27)+5 a \;\text{KK}(26)-\text{KK}(28)$$
+$$a^5-5 a^4 \;\text{KK}(19)+10 a^3 \;\text{KK}(20)-10 a^2 \;\text{KK}(22)+5 a \;\text{KK}(21)-\text{KK}(23)$$
 
 $$a^5-5 a^4 (b+c+d)+10 a^3 (b+c+d)^2-10 a^2 (b+c+d)^3+5 a (b+c+d)^4-(b+c+d)^5$$
 
@@ -66,7 +67,8 @@ Collect2[Expand[(a - b - c - d)^5], a, Head -> {h1, h2}]
 $$\text{h2}\left(1,\text{h1}\left(a^5\right)\right)+\text{h2}\left(-5 (b+c+d),\text{h1}\left(a^4\right)\right)+\text{h2}\left(10 (b+c+d)^2,\text{h1}\left(a^3\right)\right)+\text{h2}\left(-10 (b+c+d)^3,\text{h1}\left(a^2\right)\right)+\text{h2}\left(5 (b+c+d)^4,\text{h1}(a)\right)+\text{h2}\left(-(b+c+d)^5,1\right)$$
 
 ```mathematica
-Collect2[Expand[(a - b - c - d)^5], a, Head -> {Identity, h2}]
+Collect2[Expand[(a - b - c - d)^5], a, Head -> {Identity, h2}] 
+ 
 Cases2[%, h2]
 ```
 
@@ -77,8 +79,10 @@ $$\left\{\text{h2}\left(1,a^5\right),\text{h2}\left(-5 (b+c+d),a^4\right),\text{
 It is possible to use different factoring functions
 
 ```mathematica
-Clear[fun]
-Collect2[Expand[(a - b - c)^3], a, Factoring -> fun]
+Clear[fun] 
+ 
+Collect2[Expand[(a - b - c)^3], a, Factoring -> fun] 
+ 
 % /. fun -> FactorTerms
 ```
 
@@ -98,7 +102,8 @@ $$\text{a1}^6+6 \;\text{a2} \;\text{a1}^5+6 \;\text{a3} \;\text{a1}^5+15 \;\text
 The options `IsolateFast` allows to save some time when Isolating prefactors, provided that no factoring is involved.
 
 ```mathematica
-ClearAll[h, g, a, b, c];
+ClearAll[h, g, a, b, c]; 
+ 
 exp = Sum[h[i], {i, 1, 200000}]*a + Sum[g[i], {i, 1, 200000}]*b + Sum[j[i], {i, 1, 200000}]*c;
 ```
 
@@ -106,13 +111,13 @@ exp = Sum[h[i], {i, 1, 200000}]*a + Sum[g[i], {i, 1, 200000}]*b + Sum[j[i], {i, 
 AbsoluteTiming[Collect2[exp, {a, b, c}, Factoring -> False, IsolateNames -> KK, Expanding -> False]]
 ```
 
-$$\{4.08036,a \;\text{KK}(33)+b \;\text{KK}(34)+c \;\text{KK}(32)\}$$
+$$\{2.28593,a \;\text{KK}(28)+b \;\text{KK}(29)+c \;\text{KK}(27)\}$$
 
 ```mathematica
 AbsoluteTiming[Collect2[exp, {a, b, c}, Factoring -> False, IsolateNames -> KK, IsolateFast -> True, Expanding -> False]]
 ```
 
-$$\{1.91043,a \;\text{KK}(33)+b \;\text{KK}(34)+c \;\text{KK}(32)\}$$
+$$\{1.38613,a \;\text{KK}(28)+b \;\text{KK}(29)+c \;\text{KK}(27)\}$$
 
 ```mathematica
 ClearAll[exp]

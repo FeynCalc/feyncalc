@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-SP[p, q]
+SP[p, q] 
+ 
 FourDivergence[%, FV[q, \[Mu]]]
 ```
 
@@ -18,7 +19,8 @@ $$\overline{p}\cdot \overline{q}$$
 $$\overline{p}^{\mu }$$
 
 ```mathematica
-SP[p - k, q]
+SP[p - k, q] 
+ 
 FourDivergence[%, FV[k, \[Mu]]]
 ```
 
@@ -27,7 +29,8 @@ $$(\overline{p}-\overline{k})\cdot \overline{q}$$
 $$-\overline{q}^{\mu }$$
 
 ```mathematica
-SFAD[{p, m^2}]
+SFAD[{p, m^2}] 
+ 
 FourDivergence[%, FVD[p, \[Nu]]]
 ```
 
@@ -36,7 +39,8 @@ $$\frac{1}{(p^2-m^2+i \eta )}$$
 $$-\frac{2 p^{\nu }}{(p^2-m^2+i \eta )^2}$$
 
 ```mathematica
-FVD[l, \[Mu]] FAD[{l, 0}, {l - p, 0}]
+FVD[l, \[Mu]] FAD[{l, 0}, {l - p, 0}] 
+ 
 FourDivergence[%, FVD[l, \[Mu]]]
 ```
 
@@ -45,7 +49,8 @@ $$\frac{l^{\mu }}{l^2.(l-p)^2}$$
 $$\frac{D}{l^2.(l-p)^2}-\frac{2 l^2}{\left(l^2\right)^2.(l-p)^2}+\frac{2 (l\cdot p)-2 l^2}{l^2.(l-p)^4}$$
 
 ```mathematica
-SP[p, w]*SpinorUBar[p2, m] . GS[w] . SpinorU[p1, m]
+SP[p, w]*SpinorUBar[p2, m] . GS[w] . SpinorU[p1, m] 
+ 
 FourDivergence[%, FV[w, a]]
 ```
 
@@ -59,7 +64,7 @@ Differentiation of $4$-vectors living  in different dimensions ($4$, $D$, $D-4$)
 FourDivergence[FVD[p, mu], FV[p, nu]]
 ```
 
-![0n13hj2mmcy3r](img/0n13hj2mmcy3r.svg)
+![0n13hj2mmcy3r](img/0n13hj2mmcy3r.pdf)
 
 $$\text{\$Aborted}$$
 

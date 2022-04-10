@@ -9,22 +9,24 @@ The Boolean setting of `$FCShowIEta` determines whether $i \eta$ should be displ
 ### Examples
 
 ```mathematica
-$FCShowIEta
+$FCShowIEta 
+ 
 SFAD[{p, m^2}]
 ```
 
-$$\text{\$FCShowIEta}$$
+$$\text{True}$$
 
-$$\text{SFAD}\left(\left\{p,m^2\right\}\right)$$
+$$\frac{1}{(p^2-m^2+i \eta )}$$
 
 ```mathematica
-$FCShowIEta = False
+$FCShowIEta = False 
+ 
 SFAD[{p, m^2}]
 ```
 
 $$\text{False}$$
 
-$$\text{SFAD}\left(\left\{p,m^2\right\}\right)$$
+$$\frac{1}{(p^2-m^2)}$$
 
 ```mathematica
 $FCShowIEta = True

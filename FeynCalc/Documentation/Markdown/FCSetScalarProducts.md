@@ -11,7 +11,8 @@ The values can be also modified if the quantities in the first list are entered 
 ### Examples
 
 ```mathematica
-FCClearScalarProducts[];
+FCClearScalarProducts[]; 
+ 
 FCSetScalarProducts[{SPD[p1], SPD[p2], SPD[p3, p4]}, {0, xx1, xx2}];
 ```
 

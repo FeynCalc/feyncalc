@@ -9,26 +9,29 @@
 ### Examples
 
 ```mathematica
-FAD[q] FAD[q - p]
-FeynAmpDenominatorCombine[%]
-% // FCE // StandardForm
+FAD[q] FAD[q - p] 
+ 
+ex = FeynAmpDenominatorCombine[%]
 ```
 
 $$\frac{1}{q^2 (q-p)^2}$$
 
 $$\frac{1}{q^2.(q-p)^2}$$
 
-```
+```mathematica
+ex // FCE // StandardForm
+
 (*FAD[q, -p + q]*)
 ```
 
 ```mathematica
-FeynAmpDenominatorSplit[%]
-% // FCE // StandardForm
+ex2 = FeynAmpDenominatorSplit[ex]
 ```
 
 $$\frac{1}{q^2 (q-p)^2}$$
 
-```
+```mathematica
+ex2 // FCE // StandardForm
+
 (*FAD[q] FAD[-p + q]*)
 ```

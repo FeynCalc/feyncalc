@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-Hill[a, b]
+Hill[a, b] 
+ 
 % /. a :> .123 /. b :> .656 // Chop
 ```
 
@@ -18,7 +19,8 @@ $$\text{Li}_2\left(\frac{1-a}{1-b}\right)+\text{Li}_2\left(\frac{b}{a}\right)-\t
 $$0$$
 
 ```mathematica
-Hill[x, x y] // PowerExpand // SimplifyPolyLog // Expand
+Hill[x, x y] // PowerExpand // SimplifyPolyLog // Expand 
+ 
 % /. x :> .34 /. y -> .6 // N // Chop 
   
  

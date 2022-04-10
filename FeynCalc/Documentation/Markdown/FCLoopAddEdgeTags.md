@@ -11,24 +11,23 @@
 If you use `FCLoopIntegralToGraph` for visualizing loop integrals, the first two entries of its output can be used as the input for FCLoopAddEdgeTags, e.g.  
 
 ```mathematica
-FCLoopAddEdgeTags[FCLoopIntegralToGraph[FAD[p, p - k], {p}][[1 ;; 2]]]
+FCLoopAddEdgeTags[FCLoopIntegralToGraph[FAD[p, p - k], {p}][[1 ;; 2]]] 
+ 
 GraphPlot[%]
 ```
 
 $$\{-3\leftrightarrow 2,-1\leftrightarrow 1,1\leftrightarrow 2,1\leftrightarrow 2\}$$
 
-![0z92umyme84rx](img/0z92umyme84rx.svg)
+![0z92umyme84rx](img/0z92umyme84rx.pdf)
 
 If you just want to plot the obtained graph, it is easier to process the output of `FCLoopIntegralToGraph` directly with `FCLoopGraphPlot`, which internally uses `FCLoopAddEdgeTags`.
 
 ```mathematica
-FCLoopIntegralToGraph[FAD[p, p - k], {p}]
-FCLoopGraphPlot[%] 
-  
+FCLoopIntegralToGraph[FAD[p, p - k], {p}] 
  
-
+FCLoopGraphPlot[%]
 ```
 
 $$\left\{\{-3\to 2,-1\to 1,1\to 2,1\to 2\},\{k,k,\{p,1,0\},\{p-k,1,0\}\},\left\{0,0,\frac{1}{(p^2+i \eta )},\frac{1}{((p-k)^2+i \eta )}\right\},1\right\}$$
 
-![18zlvfvc5dy6q](img/18zlvfvc5dy6q.svg)
+![18zlvfvc5dy6q](img/18zlvfvc5dy6q.pdf)

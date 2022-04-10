@@ -11,7 +11,8 @@
 When applied to chains of Dirac matrices that do not require noncommutative expansions, contractions with other tensors, simplifications of spinor chains or evaluations of Dirac traces,  `DiracTrick` will produce results similar to those of `DiracSimplify`.
 
 ```mathematica
-GA[\[Mu], \[Nu], \[Mu]]
+GA[\[Mu], \[Nu], \[Mu]] 
+ 
 DiracTrick[%]
 ```
 
@@ -20,7 +21,8 @@ $$\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\mu }$$
 $$-2 \bar{\gamma }^{\nu }$$
 
 ```mathematica
-GS[p] . GS[p]
+GS[p] . GS[p] 
+ 
 DiracTrick[%]
 ```
 
@@ -29,7 +31,8 @@ $$\left(\bar{\gamma }\cdot \overline{p}\right).\left(\bar{\gamma }\cdot \overlin
 $$\overline{p}^2$$
 
 ```mathematica
-GA[5, \[Mu], \[Nu]]
+GA[5, \[Mu], \[Nu]] 
+ 
 DiracTrick[%]
 ```
 
@@ -38,7 +41,8 @@ $$\bar{\gamma }^5.\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }$$
 $$\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^5$$
 
 ```mathematica
-(1/2 - GA[5]/2) . (-((a + GS[p + q])/b)) . (1/2 + GA[5]/2)
+(1/2 - GA[5]/2) . (-((a + GS[p + q])/b)) . (1/2 + GA[5]/2) 
+ 
 DiracTrick[%]
 ```
 
@@ -49,7 +53,8 @@ $$-\frac{\left(\bar{\gamma }\cdot \left(\overline{p}+\overline{q}\right)\right).
 Dirac traces are not evaluated by `DiracTrick`
 
 ```mathematica
-DiracTrace[GAD[\[Mu], \[Nu]]]
+DiracTrace[GAD[\[Mu], \[Nu]]] 
+ 
 DiracTrick[%]
 ```
 

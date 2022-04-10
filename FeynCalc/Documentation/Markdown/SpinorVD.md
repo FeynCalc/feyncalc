@@ -10,28 +10,31 @@
 
 ```mathematica
 SpinorVD[p, m]
-FCI[%] // StandardForm
 ```
 
 $$v(p,m)$$
 
-```
+```mathematica
+SpinorVD[p, m] // FCI // StandardForm
+
 (*Spinor[-Momentum[p, D], m, 1]*)
 ```
 
 ```mathematica
 SpinorVD[p]
-FCI[%] // StandardForm
 ```
 
 $$v(p)$$
 
-```
+```mathematica
+SpinorVD[p] // FCI // StandardForm
+
 (*Spinor[-Momentum[p, D], 0, 1]*)
 ```
 
 ```mathematica
-GSD[p] . SpinorVD[p]
+GSD[p] . SpinorVD[p] 
+ 
 DiracEquation[%]
 ```
 

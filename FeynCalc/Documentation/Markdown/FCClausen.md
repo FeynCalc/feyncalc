@@ -22,23 +22,24 @@ $$\frac{1}{2} i \left(\text{Li}_2\left(e^{-i x}\right)-\text{Li}_2\left(e^{i x}\
 
 ```mathematica
 FCClausen[2, 1.3]
-% // N
 ```
 
 $$\text{Cl}_2(1.3)$$
+
+```mathematica
+FCClausen[2, 1.3] // N
+```
 
 $$0.989703\, +0. i$$
 
 ```mathematica
 FCClausen[2, Pi/2, Explicit -> True]
-% // StandardForm 
-  
- 
-
 ```
 
 $$C$$
 
-```
+```mathematica
+FCClausen[2, Pi/2, Explicit -> True] // StandardForm
+
 (*Catalan*)
 ```

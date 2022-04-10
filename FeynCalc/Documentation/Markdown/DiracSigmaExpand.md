@@ -9,23 +9,26 @@
 ### Examples
 
 ```mathematica
-DiracSigma[GSD[p] + GSD[q], GSD[r]]
-% // DiracSigmaExpand
-% // FCE // StandardForm
+DiracSigma[GSD[p] + GSD[q], GSD[r]] 
+ 
+ex = % // DiracSigmaExpand
 ```
 
 $$\text{DiracSigma}(\gamma \cdot p+\gamma \cdot q,\gamma \cdot r)$$
 
 $$\sigma ^{pr}+\sigma ^{qr}$$
 
-```
+```mathematica
+ex // FCE // StandardForm
+
 (*DiracSigma[GSD[p], GSD[r]] + DiracSigma[GSD[q], GSD[r]]*)
 ```
 
 Notice that DiracSigmaExpand does not expand Dirac matrices contracted to linear combinations of $4$-vectors by default.
 
 ```mathematica
-DiracSigma[GSD[p + q], GSD[r]]
+DiracSigma[GSD[p + q], GSD[r]] 
+ 
 DiracSigmaExpand[%]
 ```
 
@@ -44,7 +47,8 @@ $$\sigma ^{pr}+\sigma ^{qr}$$
 The option Momentum allows us to perform more fine-grained expansions of `DiracSigma`.
 
 ```mathematica
-DiracSigma[GSD[p], GSD[r] + GSD[t]] + DiracSigma[GSD[l] + GSD[n], GSD[p]]
+DiracSigma[GSD[p], GSD[r] + GSD[t]] + DiracSigma[GSD[l] + GSD[n], GSD[p]] 
+ 
 DiracSigmaExpand[%, Momentum -> {r}]
 ```
 

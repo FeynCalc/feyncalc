@@ -12,23 +12,25 @@
 
 ```mathematica
 CLC[i, j, k]
-% // FCI // StandardForm
 ```
 
 $$\bar{\epsilon }^{ijk}$$
 
-```
+```mathematica
+CLC[i, j, k] // FCI // StandardForm
+
 (*Eps[CartesianIndex[i], CartesianIndex[j], CartesianIndex[k]]*)
 ```
 
 ```mathematica
 CLC[i][p, q]
-% // FCI // StandardForm
 ```
 
 $$\bar{\epsilon }^{i\overline{p}\overline{q}}$$
 
-```
+```mathematica
+CLC[i][p, q] // FCI // StandardForm
+
 (*Eps[CartesianIndex[i], CartesianMomentum[p], CartesianMomentum[q]]*)
 ```
 

@@ -10,39 +10,42 @@
 
 ```mathematica
 MomentumExpand[Momentum[p + q]] // StandardForm
-ScalarProduct[p + q, r]
-% // StandardForm
 
 (*Momentum[p] + Momentum[q]*)
 ```
 
+```mathematica
+ScalarProduct[p + q, r]
+```
+
 $$(\overline{p}+\overline{q})\cdot \overline{r}$$
 
-```
+```mathematica
+ScalarProduct[p + q, r] // StandardForm
+
 (*Pair[Momentum[p + q], Momentum[r]]*)
 ```
 
 ```mathematica
-MomentumExpand[ScalarProduct[p + q, r]]
-% // StandardForm
+ex = MomentumExpand[ScalarProduct[p + q, r]]
 ```
 
 $$(\overline{p}+\overline{q})\cdot \overline{r}$$
 
-```
+```mathematica
+ex // StandardForm
+
 (*Pair[Momentum[p] + Momentum[q], Momentum[r]]*)
 ```
 
 ```mathematica
-MomentumExpand[ScalarProduct[p + q, r - p]]
-% // StandardForm 
-  
- 
-
+ex = MomentumExpand[ScalarProduct[p + q, r - p]]
 ```
 
 $$(\overline{p}+\overline{q})\cdot (\overline{r}-\overline{p})$$
 
-```
+```mathematica
+ex // StandardForm
+
 (*Pair[Momentum[p] + Momentum[q], -Momentum[p] + Momentum[r]]*)
 ```

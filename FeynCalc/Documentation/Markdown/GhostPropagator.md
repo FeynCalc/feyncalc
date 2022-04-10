@@ -13,7 +13,8 @@
 ### Examples
 
 ```mathematica
-GhostPropagator[p, a, b]
+GhostPropagator[p, a, b] 
+ 
 Explicit[%]
 ```
 
@@ -22,7 +23,8 @@ $$\Pi _{ab}(p)$$
 $$\frac{i \delta ^{ab}}{p^2}$$
 
 ```mathematica
-GHP[p]
+GHP[p] 
+ 
 Explicit[%]
 ```
 

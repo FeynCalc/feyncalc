@@ -19,14 +19,18 @@ The function can also directly perform the renaming of the Feynman parameter var
 Let us consider the following product of `U` and `F` polynomials of some loop integral
 
 ```mathematica
-poly = (x[1]*x[2] + x[1]*x[3] + x[2]*x[3] + x[2]*x[4] + x[3]*x[4] + x[1]*x[5] + x[2]*x[5] + x[4]*x[5])*
-   (m1^2*x[1]^2*x[2] + m3^2*x[1]*x[2]^2 + m1^2*x[1]^2*x[3] + m1^2*x[1]*x[2]*x[3] + m2^2*x[1]*x[2]*x[3] + 
-      m3^2*x[1]*x[2]*x[3] + m3^2*x[2]^2*x[3] + m2^2*x[1]*x[3]^2 + m2^2*x[2]*x[3]^2 + m1^2*x[1]*x[2]*x[4] - 
-      SPD[q, q]*x[1]*x[2]*x[4] + m3^2*x[2]^2*x[4] + m1^2*x[1]*x[3]*x[4] - SPD[q, q]*x[1]*x[3]*x[4] + 
-      m2^2*x[2]*x[3]*x[4] + m3^2*x[2]*x[3]*x[4] - SPD[q, q]*x[2]*x[3]*x[4] + m2^2*x[3]^2*x[4] + m1^2*x[1]^2*x[5] + 
-      m1^2*x[1]*x[2]*x[5] + m3^2*x[1]*x[2]*x[5] - SPD[q, q]*x[1]*x[2]*x[5] + m3^2*x[2]^2*x[5] + m2^2*x[1]*x[3]*x[5] - 
-      SPD[q, q]*x[1]*x[3]*x[5] + m2^2*x[2]*x[3]*x[5] - SPD[q, q]*x[2]*x[3]*x[5] + m1^2*x[1]*x[4]*x[5] - 
-      SPD[q, q]*x[1]*x[4]*x[5] + m3^2*x[2]*x[4]*x[5] + m2^2*x[3]*x[4]*x[5] - SPD[q, q]*x[3]*x[4]*x[5])
+poly = (x[1]*x[2] + x[1]*x[3] + x[2]*x[3] + x[2]*x[4] + x[3]*x[4] + x[1]*x[5] + 
+     x[2]*x[5] + x[4]*x[5])* (m1^2*x[1]^2*x[2] + m3^2*x[1]*x[2]^2 + m1^2*x[1]^2*x[3] + 
+     m1^2*x[1]*x[2]*x[3] + m2^2*x[1]*x[2]*x[3] +   m3^2*x[1]*x[2]*x[3] + 
+     m3^2*x[2]^2*x[3] + m2^2*x[1]*x[3]^2 + m2^2*x[2]*x[3]^2 + m1^2*x[1]*x[2]*x[4] - 
+      SPD[q, q]*x[1]*x[2]*x[4] + m3^2*x[2]^2*x[4] + m1^2*x[1]*x[3]*x[4] - 
+      SPD[q, q]*x[1]*x[3]*x[4] +   m2^2*x[2]*x[3]*x[4] + m3^2*x[2]*x[3]*x[4] - 
+      SPD[q, q]*x[2]*x[3]*x[4] + m2^2*x[3]^2*x[4] + m1^2*x[1]^2*x[5] +   
+      m1^2*x[1]*x[2]*x[5] + m3^2*x[1]*x[2]*x[5] - SPD[q, q]*x[1]*x[2]*x[5] + 
+      m3^2*x[2]^2*x[5] + m2^2*x[1]*x[3]*x[5] -   SPD[q, q]*x[1]*x[3]*x[5] + 
+      m2^2*x[2]*x[3]*x[5] - SPD[q, q]*x[2]*x[3]*x[5] + m1^2*x[1]*x[4]*x[5] - 
+      SPD[q, q]*x[1]*x[4]*x[5] + m3^2*x[2]*x[4]*x[5] + m2^2*x[3]*x[4]*x[5] - 
+      SPD[q, q]*x[3]*x[4]*x[5])
 ```
 
 $$(x(1) x(2)+x(3) x(2)+x(4) x(2)+x(5) x(2)+x(1) x(3)+x(3) x(4)+x(1) x(5)+x(4) x(5)) \left(\text{m1}^2 x(1)^2 x(2)+\text{m1}^2 x(1)^2 x(3)+\text{m1}^2 x(1) x(2) x(3)+\text{m1}^2 x(1) x(2) x(4)+\text{m1}^2 x(1) x(3) x(4)+\text{m1}^2 x(1)^2 x(5)+\text{m1}^2 x(1) x(2) x(5)+\text{m1}^2 x(1) x(4) x(5)+\text{m2}^2 x(1) x(3)^2+\text{m2}^2 x(2) x(3)^2+\text{m2}^2 x(1) x(2) x(3)+\text{m2}^2 x(3)^2 x(4)+\text{m2}^2 x(2) x(3) x(4)+\text{m2}^2 x(1) x(3) x(5)+\text{m2}^2 x(2) x(3) x(5)+\text{m2}^2 x(3) x(4) x(5)+\text{m3}^2 x(1) x(2)^2+\text{m3}^2 x(2)^2 x(3)+\text{m3}^2 x(1) x(2) x(3)+\text{m3}^2 x(2)^2 x(4)+\text{m3}^2 x(2) x(3) x(4)+\text{m3}^2 x(2)^2 x(5)+\text{m3}^2 x(1) x(2) x(5)+\text{m3}^2 x(2) x(4) x(5)-q^2 x(1) x(2) x(4)-q^2 x(1) x(3) x(4)-q^2 x(2) x(3) x(4)-q^2 x(1) x(2) x(5)-q^2 x(1) x(3) x(5)-q^2 x(2) x(3) x(5)-q^2 x(1) x(4) x(5)-q^2 x(3) x(4) x(5)\right)$$
@@ -95,7 +99,8 @@ However, one can easily recognize that they are actually the same upon renaming 
 `x[i]` in a suitable way. `FCLoopPakOrder` can do such renamings automatically
 
 ```mathematica
-canoPoly1 = FCLoopPakOrder[poly1, x, Rename -> True]
+canoPoly1 = FCLoopPakOrder[poly1, x, Rename -> True] 
+ 
 canoPoly2 = FCLoopPakOrder[poly2, x, Rename -> True]
 ```
 

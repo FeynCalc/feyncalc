@@ -28,12 +28,13 @@ StandardForm[FCI[SIE[\[Mu]]]]
 
 ```mathematica
 SIE[\[Mu], \[Nu], \[Rho], \[Sigma]]
-% // StandardForm
 ```
 
 $$\hat{\sigma }^{\mu }.\hat{\sigma }^{\nu }.\hat{\sigma }^{\rho }.\hat{\sigma }^{\sigma }$$
 
-```
+```mathematica
+SIE[\[Mu], \[Nu], \[Rho], \[Sigma]] // StandardForm
+
 (*SIE[\[Mu]] . SIE[\[Nu]] . SIE[\[Rho]] . SIE[\[Sigma]]*)
 ```
 

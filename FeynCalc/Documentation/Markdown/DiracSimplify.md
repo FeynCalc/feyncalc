@@ -11,7 +11,8 @@
 Simplify a 4-dimensional Dirac matrix chain with a dummy Lorentz index
 
 ```mathematica
-GA[\[Mu], \[Nu], \[Mu]]
+GA[\[Mu], \[Nu], \[Mu]] 
+ 
 DiracSimplify[%]
 ```
 
@@ -22,7 +23,8 @@ $$-2 \bar{\gamma }^{\nu }$$
 Another common simplification concerns Dirac matrices contracted to the same $4$-vector
 
 ```mathematica
-GS[p] . GS[p]
+GS[p] . GS[p] 
+ 
 DiracSimplify[%]
 ```
 
@@ -33,7 +35,8 @@ $$\overline{p}^2$$
 Unlike `DiracTrick`, `DiracSimplify` also carries out noncommutative expansions
 
 ```mathematica
-GS[a + b] . GS[p] . GS[c + d] . GS[p]
+GS[a + b] . GS[p] . GS[c + d] . GS[p] 
+ 
 DiracSimplify[%]
 ```
 
@@ -58,7 +61,8 @@ $$-\overline{p}^2 \left(\bar{\gamma }\cdot \overline{a}+\bar{\gamma }\cdot \over
 The matrix chain may also live in $D$ dimensions
 
 ```mathematica
-GAD[\[Mu], \[Nu], \[Mu]]
+GAD[\[Mu], \[Nu], \[Mu]] 
+ 
 DiracSimplify[%]
 ```
 
@@ -67,7 +71,8 @@ $$\gamma ^{\mu }.\gamma ^{\nu }.\gamma ^{\mu }$$
 $$2 \gamma ^{\nu }-D \gamma ^{\nu }$$
 
 ```mathematica
-GSD[p] . GAD[\[Alpha], \[Beta]] . GSD[p]
+GSD[p] . GAD[\[Alpha], \[Beta]] . GSD[p] 
+ 
 DiracSimplify[%]
 ```
 
@@ -76,7 +81,8 @@ $$(\gamma \cdot p).\gamma ^{\alpha }.\gamma ^{\beta }.(\gamma \cdot p)$$
 $$p^2 \gamma ^{\alpha }.\gamma ^{\beta }+2 p^{\alpha } \gamma ^{\beta }.(\gamma \cdot p)-2 p^{\beta } \gamma ^{\alpha }.(\gamma \cdot p)$$
 
 ```mathematica
-GAD @@ Join[{\[Mu]}, Table[Subscript[\[Nu], i], {i, 6}], {\[Mu]}]
+GAD @@ Join[{\[Mu]}, Table[Subscript[\[Nu], i], {i, 6}], {\[Mu]}] 
+ 
 DiracSimplify[%]
 ```
 
@@ -85,7 +91,8 @@ $$\gamma ^{\mu }.\gamma ^{\nu _1}.\gamma ^{\nu _2}.\gamma ^{\nu _3}.\gamma ^{\nu
 $$-12 \gamma ^{\nu _1}.\gamma ^{\nu _2}.\gamma ^{\nu _3}.\gamma ^{\nu _4}.\gamma ^{\nu _5}.\gamma ^{\nu _6}+D \gamma ^{\nu _1}.\gamma ^{\nu _2}.\gamma ^{\nu _3}.\gamma ^{\nu _4}.\gamma ^{\nu _5}.\gamma ^{\nu _6}+4 \gamma ^{\nu _3}.\gamma ^{\nu _4}.\gamma ^{\nu _5}.\gamma ^{\nu _6} g^{\nu _1\nu _2}-4 \gamma ^{\nu _2}.\gamma ^{\nu _4}.\gamma ^{\nu _5}.\gamma ^{\nu _6} g^{\nu _1\nu _3}+4 \gamma ^{\nu _2}.\gamma ^{\nu _3}.\gamma ^{\nu _5}.\gamma ^{\nu _6} g^{\nu _1\nu _4}-4 \gamma ^{\nu _2}.\gamma ^{\nu _3}.\gamma ^{\nu _4}.\gamma ^{\nu _6} g^{\nu _1\nu _5}+4 \gamma ^{\nu _2}.\gamma ^{\nu _3}.\gamma ^{\nu _4}.\gamma ^{\nu _5} g^{\nu _1\nu _6}+4 \gamma ^{\nu _1}.\gamma ^{\nu _4}.\gamma ^{\nu _5}.\gamma ^{\nu _6} g^{\nu _2\nu _3}-4 \gamma ^{\nu _1}.\gamma ^{\nu _3}.\gamma ^{\nu _5}.\gamma ^{\nu _6} g^{\nu _2\nu _4}+4 \gamma ^{\nu _1}.\gamma ^{\nu _3}.\gamma ^{\nu _4}.\gamma ^{\nu _6} g^{\nu _2\nu _5}-4 \gamma ^{\nu _1}.\gamma ^{\nu _3}.\gamma ^{\nu _4}.\gamma ^{\nu _5} g^{\nu _2\nu _6}+4 \gamma ^{\nu _1}.\gamma ^{\nu _2}.\gamma ^{\nu _5}.\gamma ^{\nu _6} g^{\nu _3\nu _4}-4 \gamma ^{\nu _1}.\gamma ^{\nu _2}.\gamma ^{\nu _4}.\gamma ^{\nu _6} g^{\nu _3\nu _5}+4 \gamma ^{\nu _1}.\gamma ^{\nu _2}.\gamma ^{\nu _4}.\gamma ^{\nu _5} g^{\nu _3\nu _6}+4 \gamma ^{\nu _1}.\gamma ^{\nu _2}.\gamma ^{\nu _3}.\gamma ^{\nu _6} g^{\nu _4\nu _5}-4 \gamma ^{\nu _1}.\gamma ^{\nu _2}.\gamma ^{\nu _3}.\gamma ^{\nu _5} g^{\nu _4\nu _6}+4 \gamma ^{\nu _1}.\gamma ^{\nu _2}.\gamma ^{\nu _3}.\gamma ^{\nu _4} g^{\nu _5\nu _6}$$
 
 ```mathematica
--1/2 GA[5] . (GAD[\[Mu]] . GSD[v] - FVD[v, \[Mu]]) FVD[v, \[Mu]]
+-1/2 GA[5] . (GAD[\[Mu]] . GSD[v] - FVD[v, \[Mu]]) FVD[v, \[Mu]] 
+ 
 DiracSimplify[%]
 ```
 
@@ -96,7 +103,8 @@ $$0$$
 $\gamma^5$ and the chirality projectors are always moved to the right
 
 ```mathematica
-GA[5, \[Mu], \[Nu]]
+GA[5, \[Mu], \[Nu]] 
+ 
 DiracSimplify[%]
 ```
 
@@ -105,7 +113,8 @@ $$\bar{\gamma }^5.\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }$$
 $$\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^5$$
 
 ```mathematica
-GA[6] . GS[p + q]
+GA[6] . GS[p + q] 
+ 
 DiracSimplify[%]
 ```
 
@@ -116,7 +125,8 @@ $$\left(\bar{\gamma }\cdot \overline{p}\right).\bar{\gamma }^7+\left(\bar{\gamma
 The properties of the chirality projectors are taken into account without substituting explicit expressions for $\gamma^6$ and $\gamma^7$.
 
 ```mathematica
-GA[\[Mu]] . (c1 GA[6] + c2 GA[7]) . (GA[p] + m) . (c3 GA[6] + c4 GA[7]) . GA[\[Mu]]
+GA[\[Mu]] . (c1 GA[6] + c2 GA[7]) . (GA[p] + m) . (c3 GA[6] + c4 GA[7]) . GA[\[Mu]] 
+ 
 DiracSimplify[%]
 ```
 
@@ -124,10 +134,11 @@ $$\bar{\gamma }^{\mu }.\left(\text{c1} \bar{\gamma }^6+\text{c2} \bar{\gamma }^7
 
 $$4 \;\text{c1} \;\text{c3} m \bar{\gamma }^7-2 \;\text{c1} \;\text{c4} \bar{\gamma }^p.\bar{\gamma }^6-2 \;\text{c2} \;\text{c3} \bar{\gamma }^p.\bar{\gamma }^7+4 \;\text{c2} \;\text{c4} m \bar{\gamma }^6$$
 
-Moreover,  $frac{1}{2} \left( 1 \pm \ gamma^5 \right)$ is automatically replaced by $\gamma^{6/7}$.
+Moreover,  $\frac{1}{2} \left( 1 \pm \gamma^5 \right)$ is automatically replaced by $\gamma^{6/7}$.
 
 ```mathematica
-(1/2 - GA[5]/2) . (-((a + GS[p + q])/b)) . (1/2 + GA[5]/2)
+(1/2 - GA[5]/2) . (-((a + GS[p + q])/b)) . (1/2 + GA[5]/2) 
+ 
 DiracSimplify[%]
 ```
 
@@ -165,7 +176,8 @@ The Dirac equation is routinely used to simplify closed spinor chains.
 
 ```mathematica
 (SpinorVBar[Subscript[p, 2], Subscript[m, 2]] . (GS[Subscript[p, 1]] + 
-     Subscript[m, 1]) . SpinorU[Subscript[p, 1], Subscript[m, 1]])
+      Subscript[m, 1]) . SpinorU[Subscript[p, 1], Subscript[m, 1]]) 
+ 
 DiracSimplify[%]
 ```
 
@@ -174,7 +186,8 @@ $$\bar{v}\left(p_2,m_2\right).\left(\bar{\gamma }\cdot \overline{p}_1+m_1\right)
 $$2 m_1 \left(\varphi (-\overline{p}_2,m_2)\right).\left(\varphi (\overline{p}_1,m_1)\right)$$
 
 ```mathematica
-SpinorVBar[p] . GS[p] . SpinorU[q]
+SpinorVBar[p] . GS[p] . SpinorU[q] 
+ 
 DiracSimplify[%]
 ```
 
@@ -194,8 +207,9 @@ Suitable products of $4$-dimensional spinor chains are simplified using Sirlin's
 
 ```mathematica
 (SpinorUBar[Subscript[p, 3], Subscript[m, 3]] . GA[\[Mu], \[Rho], \[Nu], 6] . SpinorU[Subscript[p, 1], 
-     Subscript[m, 1]] SpinorUBar[Subscript[p, 4], 
-     Subscript[m, 4]] . GA[\[Mu], \[Tau], \[Nu], 6] . SpinorU[Subscript[p, 2], Subscript[m, 2]])
+      Subscript[m, 1]] SpinorUBar[Subscript[p, 4], 
+      Subscript[m, 4]] . GA[\[Mu], \[Tau], \[Nu], 6] . SpinorU[Subscript[p, 2], Subscript[m, 2]]) 
+ 
 DiracSimplify[%]
 ```
 
@@ -206,7 +220,10 @@ $$\left(\varphi (\overline{p}_3,m_3)\right).\bar{\gamma }^{\mu }.\bar{\gamma }^{
 The applications of Sirlin's identities can be disabled by setting the option `SirlinSimplify` to `False`.
 
 ```mathematica
-DiracSimplify[SpinorUBar[Subscript[p, 3], Subscript[m, 3]] . GA[\[Mu], \[Rho], \[Nu], 6] . SpinorU[Subscript[p, 1], Subscript[m, 1]] SpinorUBar[Subscript[p, 4], Subscript[m, 4]] . GA[\[Mu], \[Tau], \[Nu], 6] . SpinorU[Subscript[p, 2], Subscript[m, 2]], SirlinSimplify -> False]
+DiracSimplify[SpinorUBar[Subscript[p, 3], Subscript[m, 3]] . GA[\[Mu], \[Rho], \[Nu], 
+     6] . SpinorU[Subscript[p, 1], Subscript[m, 1]]*
+   SpinorUBar[Subscript[p, 4], Subscript[m, 4]] . GA[\[Mu], \[Tau], \[Nu], 
+     6] . SpinorU[Subscript[p, 2], Subscript[m, 2]], SirlinSimplify -> False]
 ```
 
 $$\left(\varphi (\overline{p}_3,m_3)\right).\bar{\gamma }^{\mu }.\bar{\gamma }^{\rho }.\bar{\gamma }^{\nu }.\bar{\gamma }^6.\left(\varphi (\overline{p}_1,m_1)\right) \left(\varphi (\overline{p}_4,m_4)\right).\bar{\gamma }^{\mu }.\bar{\gamma }^{\tau }.\bar{\gamma }^{\nu }.\bar{\gamma }^6.\left(\varphi (\overline{p}_2,m_2)\right)$$
@@ -215,11 +232,12 @@ Even when the usage of Sirlin's identities is disabled, DiracSimplify will still
 
 ```mathematica
 (c1 SpinorUBar[Subscript[p, 3], Subscript[m, 3]] . GA[\[Mu], \[Rho], \[Nu], 6] . SpinorU[Subscript[p, 
-       1], Subscript[m, 1]] SpinorUBar[Subscript[p, 4], Subscript[m, 
-       4]] . GA[\[Mu], \[Tau], \[Nu], 6] . SpinorU[Subscript[p, 2], Subscript[m, 2]] + 
-   c2 SpinorUBar[Subscript[p, 3], Subscript[m, 3]] . GA[\[Alpha], \[Rho], 
-      \[Nu], 6] . SpinorU[Subscript[p, 1], Subscript[m, 1]] SpinorUBar[Subscript[p, 
-       4], Subscript[m, 4]] . GA[\[Alpha], \[Tau], \[Nu], 6] . SpinorU[Subscript[p, 2], Subscript[m, 2]])
+        1], Subscript[m, 1]] SpinorUBar[Subscript[p, 4], Subscript[m, 
+        4]] . GA[\[Mu], \[Tau], \[Nu], 6] . SpinorU[Subscript[p, 2], Subscript[m, 2]] + 
+    c2 SpinorUBar[Subscript[p, 3], Subscript[m, 3]] . GA[\[Alpha], \[Rho], 
+       \[Nu], 6] . SpinorU[Subscript[p, 1], Subscript[m, 1]] SpinorUBar[Subscript[p, 
+        4], Subscript[m, 4]] . GA[\[Alpha], \[Tau], \[Nu], 6] . SpinorU[Subscript[p, 2], Subscript[m, 2]]) 
+ 
 DiracSimplify[%, SirlinSimplify -> False] // Factor
 ```
 
@@ -245,7 +263,8 @@ $$\text{c1} \left(\varphi (\overline{p}_3,m_3)\right).\bar{\gamma }^{\mu }.\bar{
 `DiracSimplify` will not reorder Dirac matrices lexicographically, but can be forced to do so via the option `DiracOrder`.
 
 ```mathematica
-DiracSimplify[GA[\[Nu], \[Mu]]]
+DiracSimplify[GA[\[Nu], \[Mu]]] 
+ 
 DiracSimplify[GA[\[Nu], \[Mu]], DiracOrder -> True]
 ```
 
@@ -256,7 +275,8 @@ $$2 \bar{g}^{\mu \nu }-\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }$$
 Setting `InsideDiracTrace` to `True`$ makes the function assume that it is acting inside a Dirac trace. For instance, chains with an odd number of Dirac matrices will be set to zero.
 
 ```mathematica
-GA[\[Mu], \[Nu], \[Rho]]
+GA[\[Mu], \[Nu], \[Rho]] 
+ 
 DiracSimplify[%, InsideDiracTrace -> True]
 ```
 
@@ -267,7 +287,8 @@ $$0$$
 Yet, it will not explicitly calculate the trace
 
 ```mathematica
-GA[\[Mu], \[Nu], \[Rho], \[Sigma]]
+GA[\[Mu], \[Nu], \[Rho], \[Sigma]] 
+ 
 DiracSimplify[%, InsideDiracTrace -> True]
 ```
 
@@ -278,7 +299,8 @@ $$\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\rho }.\bar{\gamma }^
 Since FeynCalc 9.3, `DiracSimplify` will automatically evaluate Dirac traces in the input expression
 
 ```mathematica
-DiracTrace[GA[\[Mu], \[Nu], \[Rho], \[Sigma]]]
+DiracTrace[GA[\[Mu], \[Nu], \[Rho], \[Sigma]]] 
+ 
 DiracSimplify[%]
 ```
 
@@ -288,6 +310,7 @@ $$4 \bar{g}^{\mu \sigma } \bar{g}^{\nu \rho }-4 \bar{g}^{\mu \rho } \bar{g}^{\nu
 
 ```mathematica
 DiracTrace[(-GSD[q] + SMP["m_e"]) . GAD[\[Nu]] . (GSD[p - q] + SMP["m_e"]) . GAD[\[Mu]]] 
+ 
 DiracSimplify[%]
 ```
 
@@ -318,20 +341,22 @@ When doing calculations at one loop and above, you may encounter expressions tha
 Although `DiracSimplify` can handle such terms effortlessly, it will not do so unless you certify that you fully understand what you are doing: being sloppy with the dimensions easily leads to inconsistencies and wrong results!
 
 ```mathematica
-GAD[\[Mu]] . (GA[p] + m) . GAD[\[Mu]]
+GAD[\[Mu]] . (GA[p] + m) . GAD[\[Mu]] 
+ 
 DiracSimplify[%]
 ```
 
 $$\gamma ^{\mu }.\left(\bar{\gamma }^p+m\right).\gamma ^{\mu }$$
 
-![18wp72b9tavlt](img/18wp72b9tavlt.svg)
+![161ti5temvheu](img/161ti5temvheu.pdf)
 
 $$\text{\$Aborted}$$
 
 By default, FeynCalc uses the naive dimensional regularization (NDR) scheme, where all Dirac matrices are taken to be $D$-dimensional. Therefore, in NDR you may not have mixtures of Dirac matrices living in $D$ and $4$ dimensions. However, such expressions are possible in the t'Hooft-Veltman-Breitenlohner-Maison (BMHV) scheme.
 
 ```mathematica
-FCSetDiracGammaScheme["BMHV"];
+FCSetDiracGammaScheme["BMHV"]; 
+ 
 DiracSimplify[GAD[\[Mu]] . (GA[p] + m) . GAD[\[Mu]]]
 ```
 
@@ -346,7 +371,8 @@ The BMHV scheme is a special prescription for handling $\gamma^5$ in dimensional
 Traces that contain an odd number of  $\gamma^5$  or chirality projectors cannot be calculated unambiguously in NDR. To avoid inconsistencies, DiracTrace will refuse to evaluate such traces in NDR.
 
 ```mathematica
-DiracTrace[GAD[\[Mu], \[Nu], \[Rho], \[Sigma], \[Alpha], \[Beta]] . GA[5]]
+DiracTrace[GAD[\[Mu], \[Nu], \[Rho], \[Sigma], \[Alpha], \[Beta]] . GA[5]] 
+ 
 DiracSimplify[%]
 ```
 
@@ -357,7 +383,8 @@ $$\text{tr}\left(\gamma ^{\mu }.\gamma ^{\nu }.\gamma ^{\rho }.\gamma ^{\sigma }
 Such traces can be consistently calculated in the BMHV scheme. Our scheme choice as of course also possible, but those are not implemented in FeynCalc.
 
 ```mathematica
-FCSetDiracGammaScheme["BMHV"];
+FCSetDiracGammaScheme["BMHV"]; 
+ 
 DiracSimplify[DiracTrace[GAD[\[Mu], \[Nu], \[Rho], \[Sigma], \[Alpha], \[Beta]] . GA[5]]]
 ```
 
@@ -372,7 +399,8 @@ Keep in mind that the BMHV scheme violates axial Ward identities and requires sp
 Since FeynCalc 9.3 it is also possible to simplify Dirac matrices with Cartesian or temporal indices. However, the support of nonrelativistic calculations is a very new feature, so that things may not work as smooth as they do for manifestly Lorentz covariant expressions.
 
 ```mathematica
-CGA[i] . CGA[i]
+CGA[i] . CGA[i] 
+ 
 DiracSimplify[%]
 ```
 
@@ -381,7 +409,8 @@ $$\overline{\gamma }^i.\overline{\gamma }^i$$
 $$-3$$
 
 ```mathematica
-CGA[i] . CGS[p] . CGA[j] . CGS[p + q]
+CGA[i] . CGS[p] . CGA[j] . CGS[p + q] 
+ 
 DiracSimplify[%]
 ```
 
@@ -390,7 +419,8 @@ $$\overline{\gamma }^i.\left(\overline{\gamma }\cdot \overline{p}\right).\overli
 $$\overline{p}^2 \overline{\gamma }^i.\overline{\gamma }^j-2 \overline{p}^j \overline{\gamma }^i.\left(\overline{\gamma }\cdot \overline{p}\right)+\overline{\gamma }^i.\left(\overline{\gamma }\cdot \overline{p}\right).\overline{\gamma }^j.\left(\overline{\gamma }\cdot \overline{q}\right)$$
 
 ```mathematica
-CGA[i] . CGS[p] . CGA[j] . CGS[p + q] KD[i, j]
+CGA[i] . CGS[p] . CGA[j] . CGS[p + q] KD[i, j] 
+ 
 DiracSimplify[%]
 ```
 
@@ -399,7 +429,8 @@ $$\bar{\delta }^{ij} \overline{\gamma }^i.\left(\overline{\gamma }\cdot \overlin
 $$\left(\overline{\gamma }\cdot \overline{p}\right).\left(\overline{\gamma }\cdot \overline{q}\right)-\overline{p}^2$$
 
 ```mathematica
-TGA[] . CGA[i] . TGA[]
+TGA[] . CGA[i] . TGA[] 
+ 
 DiracSimplify[%]
 ```
 
@@ -408,7 +439,8 @@ $$\bar{\gamma }^0.\overline{\gamma }^i.\bar{\gamma }^0$$
 $$-\overline{\gamma }^i$$
 
 ```mathematica
-DiracTrace[CGAD[i, j, k, l]]
+DiracTrace[CGAD[i, j, k, l]] 
+ 
 DiracSimplify[%]
 ```
 
@@ -420,9 +452,10 @@ For performance reasons `DiracSimplify` will not canonically order Dirac matrice
 
 ```mathematica
 ex = (Spinor[-Momentum[p1, D], mb, 1] . GAD[\[Mu]] . GA[7] . GAD[\[Nu]] . GAD[\[Alpha]] . 
-     GAD[\[Beta]] . GAD[\[Delta]] . GA[7] . Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0, 
-      1] . GAD[\[Alpha]] . GAD[\[Beta]] . GAD[\[Delta]] . GA[7] . GAD[\[Nu]] . GAD[\[Mu]] . 
-     GA[7] . Spinor[Momentum[p2, D], 0, 1])
+      GAD[\[Beta]] . GAD[\[Delta]] . GA[7] . Spinor[-Momentum[p4, D], 0, 1] Spinor[Momentum[p3, D], 0, 
+       1] . GAD[\[Alpha]] . GAD[\[Beta]] . GAD[\[Delta]] . GA[7] . GAD[\[Nu]] . GAD[\[Mu]] . 
+      GA[7] . Spinor[Momentum[p2, D], 0, 1]) 
+ 
 DiracSimplify[ex]
 ```
 
@@ -439,7 +472,8 @@ $$-24 D^2 (\varphi (\text{p3})).\gamma ^{\text{i1}}.\bar{\gamma }^7.(\varphi (\t
 `DiracSimplify` automatically evaluates suitable spinor products with equal momenta, e.g.
 
 ```mathematica
-ex = SpinorUBar[p, m] . SpinorU[p, m]
+ex = SpinorUBar[p, m] . SpinorU[p, m] 
+ 
 DiracSimplify[ex]
 ```
 

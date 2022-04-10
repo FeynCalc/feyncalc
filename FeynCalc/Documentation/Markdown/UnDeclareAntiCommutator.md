@@ -13,7 +13,8 @@ AntiCommutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A], QuantumField[A]]
 ```
 
 ```mathematica
-QuantumField[A] . QuantumField[A] . LeftPartialD[\[Nu]]
+QuantumField[A] . QuantumField[A] . LeftPartialD[\[Nu]] 
+ 
 ExpandPartialD[%]
 ```
 

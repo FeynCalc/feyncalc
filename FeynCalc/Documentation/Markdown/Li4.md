@@ -1,3 +1,5 @@
+## Li4
+
 `Li4` is an abbreviation for the weight 4 polylogarithm function, i.e. `Li4 = PolyLog[4, #]&`.
 
 ### See also

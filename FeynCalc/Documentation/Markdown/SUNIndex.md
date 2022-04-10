@@ -10,23 +10,25 @@
 
 ```mathematica
 SUNIndex[i]
-% // StandardForm
 ```
 
 $$i$$
 
-```
+```mathematica
+SUNIndex[i] // StandardForm
+
 (*SUNIndex[i]*)
 ```
 
 ```mathematica
 SUNIndex[2]
-% // StandardForm
 ```
 
 $$2$$
 
-```
+```mathematica
+SUNIndex[2] // StandardForm
+
 (*ExplicitSUNIndex[2]*)
 ```
 

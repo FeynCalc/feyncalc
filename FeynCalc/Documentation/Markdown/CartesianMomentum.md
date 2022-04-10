@@ -34,23 +34,25 @@ $$p$$
 
 ```mathematica
 a1 = CartesianMomentum[-q]
-a1 // StandardForm
 ```
 
 $$-\overline{q}$$
 
-```
+```mathematica
+a1 // StandardForm
+
 (*-CartesianMomentum[q]*)
 ```
 
 ```mathematica
 a2 = CartesianMomentum[p - q] + CartesianMomentum[2 q]
-a2 // StandardForm
 ```
 
 $$\left(\overline{p}-\overline{q}\right)+2 \overline{q}$$
 
-```
+```mathematica
+a2 // StandardForm
+
 (*CartesianMomentum[p - q] + 2 CartesianMomentum[q]*)
 ```
 

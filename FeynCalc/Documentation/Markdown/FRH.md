@@ -24,7 +24,7 @@ $$0$$
 Isolate[ToRadicals[Solve[x^3 - x - 1 == 0]], x, IsolateNames -> KK]
 ```
 
-$$\{\{x\to \;\text{KK}(26)\},\{x\to \;\text{KK}(29)\},\{x\to \;\text{KK}(30)\}\}$$
+$$\{\{x\to \;\text{KK}(21)\},\{x\to \;\text{KK}(24)\},\{x\to \;\text{KK}(25)\}\}$$
 
 ```mathematica
 FRH[%]

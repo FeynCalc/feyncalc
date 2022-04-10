@@ -9,10 +9,11 @@
 ### Examples
 
 ```mathematica
-SpinorUBar[p3, m3] . GA[\[Mu], \[Rho], \[Nu], 7] . SpinorU[p1, m1] SpinorUBar[p4, m4] . GA[\[Mu], \[Tau], \[Nu], 7] . SpinorU[p2, m2]
+SpinorUBar[p3, m3] . GA[\[Mu], \[Rho], \[Nu], 7] . SpinorU[p1, m1] SpinorUBar[p4, m4] . GA[\[Mu], \[Tau], \[Nu], 7] . SpinorU[p2, m2] 
+ 
 SirlinSimplify[%]
 ```
 
 $$\bar{u}(\text{p3},\text{m3}).\bar{\gamma }^{\mu }.\bar{\gamma }^{\rho }.\bar{\gamma }^{\nu }.\bar{\gamma }^7.u(\text{p1},\text{m1}) \bar{u}(\text{p4},\text{m4}).\bar{\gamma }^{\mu }.\bar{\gamma }^{\tau }.\bar{\gamma }^{\nu }.\bar{\gamma }^7.u(\text{p2},\text{m2})$$
 
-$$4 \bar{g}^{\rho \tau } \left(\varphi (\overline{\text{p3}},\text{m3})\right).\bar{\gamma }^{\text{liS33}}.\bar{\gamma }^7.\left(\varphi (\overline{\text{p1}},\text{m1})\right) \left(\varphi (\overline{\text{p4}},\text{m4})\right).\bar{\gamma }^{\text{liS33}}.\bar{\gamma }^7.\left(\varphi (\overline{\text{p2}},\text{m2})\right)$$
+$$4 \bar{g}^{\rho \tau } \left(\varphi (\overline{\text{p3}},\text{m3})\right).\bar{\gamma }^{\text{liS29}}.\bar{\gamma }^7.\left(\varphi (\overline{\text{p1}},\text{m1})\right) \left(\varphi (\overline{\text{p4}},\text{m4})\right).\bar{\gamma }^{\text{liS29}}.\bar{\gamma }^7.\left(\varphi (\overline{\text{p2}},\text{m2})\right)$$

@@ -15,24 +15,26 @@ SI[\[Mu]]
 $$\bar{\sigma }^{\mu }$$
 
 ```mathematica
-SI[\[Mu], \[Nu]] - SI[\[Nu], \[Mu]]
-StandardForm[FCI[SI[\[Mu]]]]
-```
+SI[\[Mu]] // FCI // StandardForm
 
-$$\bar{\sigma }^{\mu }.\bar{\sigma }^{\nu }-\bar{\sigma }^{\nu }.\bar{\sigma }^{\mu }$$
-
-```
 (*PauliSigma[LorentzIndex[\[Mu]]]*)
 ```
 
 ```mathematica
+SI[\[Mu], \[Nu]] - SI[\[Nu], \[Mu]]
+```
+
+$$\bar{\sigma }^{\mu }.\bar{\sigma }^{\nu }-\bar{\sigma }^{\nu }.\bar{\sigma }^{\mu }$$
+
+```mathematica
 SI[\[Mu], \[Nu], \[Rho], \[Sigma]]
-% // StandardForm
 ```
 
 $$\bar{\sigma }^{\mu }.\bar{\sigma }^{\nu }.\bar{\sigma }^{\rho }.\bar{\sigma }^{\sigma }$$
 
-```
+```mathematica
+SI[\[Mu], \[Nu], \[Rho], \[Sigma]] // StandardForm
+
 (*SI[\[Mu]] . SI[\[Nu]] . SI[\[Rho]] . SI[\[Sigma]]*)
 ```
 

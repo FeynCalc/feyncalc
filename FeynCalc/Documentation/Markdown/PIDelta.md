@@ -15,7 +15,8 @@ PIDelta[i, j]
 $$\delta _{ij}$$
 
 ```mathematica
-PIDelta[i, i]
+PIDelta[i, i] 
+ 
 PauliChainJoin[%]
 ```
 
@@ -24,7 +25,8 @@ $$\delta _{ii}$$
 $$4$$
 
 ```mathematica
-PIDelta[i, j]^2
+PIDelta[i, j]^2 
+ 
 PauliChainJoin[%]
 ```
 
@@ -33,7 +35,8 @@ $$\delta _{ij}^2$$
 $$4$$
 
 ```mathematica
-PIDelta[i, j] PIDelta[j, k]
+PIDelta[i, j] PIDelta[j, k] 
+ 
 PauliChainJoin[%]
 ```
 

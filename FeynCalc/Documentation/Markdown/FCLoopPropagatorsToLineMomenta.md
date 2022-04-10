@@ -21,7 +21,8 @@ $$\left(
 \right)$$
 
 ```mathematica
-FCLoopPropagatorsToLineMomenta[{CFAD[{{0, 2 v . (q + r)}, m^2}]}, FCE -> True, AuxiliaryMomenta -> {v}]
+FCLoopPropagatorsToLineMomenta[{CFAD[{{0, 2 v . (q + r)}, m^2}]}, FCE -> True, 
+  AuxiliaryMomenta -> {v}]
 ```
 
 $$\left(
@@ -35,7 +36,8 @@ $$\left(
 Reversed signs are also supported
 
 ```mathematica
-{SFAD[{I (q + l), -m^2}], SFAD[{I p, -m^2}]}
+{SFAD[{I (q + l), -m^2}], SFAD[{I p, -m^2}]} 
+ 
 FCLoopPropagatorsToLineMomenta[%, FCE -> True]
 ```
 
@@ -50,7 +52,8 @@ $$\left(
 \right)$$
 
 ```mathematica
-FCLoopPropagatorsToLineMomenta[{SFAD[{I (q + l), -m^2}], SFAD[{I p, -m^2}]}, FCE -> True] // InputForm
+FCLoopPropagatorsToLineMomenta[{SFAD[{I (q + l), -m^2}], SFAD[{I p, -m^2}]}, 
+   FCE -> True] // InputForm
 ```
 
 ```mathematica

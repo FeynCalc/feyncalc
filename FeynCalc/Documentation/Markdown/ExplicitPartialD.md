@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-LeftRightPartialD[\[Mu]]
+LeftRightPartialD[\[Mu]] 
+ 
 ExplicitPartialD[%]
 ```
 
@@ -18,7 +19,8 @@ $$\overleftrightarrow{\partial }_{\mu }$$
 $$\frac{1}{2} \left(\vec{\partial }_{\mu }-\overleftarrow{\partial }_{\mu }\right)$$
 
 ```mathematica
-LeftRightPartialD2[\[Mu]]
+LeftRightPartialD2[\[Mu]] 
+ 
 ExplicitPartialD[%]
 ```
 
@@ -27,7 +29,8 @@ $$\overleftrightarrow{\partial }_{\mu }$$
 $$\overleftarrow{\partial }_{\mu }+\vec{\partial }_{\mu }$$
 
 ```mathematica
-LeftRightPartialD[OPEDelta]
+LeftRightPartialD[OPEDelta] 
+ 
 ExplicitPartialD[%]
 ```
 
@@ -36,7 +39,8 @@ $$\overleftrightarrow{\partial }_{\Delta }$$
 $$\frac{1}{2} \left(\vec{\partial }_{\Delta }-\overleftarrow{\partial }_{\Delta }\right)$$
 
 ```mathematica
-16 LeftRightPartialD[OPEDelta]^4
+16 LeftRightPartialD[OPEDelta]^4 
+ 
 ExplicitPartialD[%]
 ```
 

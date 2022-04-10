@@ -11,7 +11,8 @@ The shortcut `MetricTensor` is deprecated, please use `MT` instead!
 ### Examples
 
 ```mathematica
-MetricTensor[\[Alpha], \[Beta]]
+MetricTensor[\[Alpha], \[Beta]] 
+ 
 Contract[% %]
 ```
 
@@ -20,7 +21,8 @@ $$\bar{g}^{\alpha \beta }$$
 $$4$$
 
 ```mathematica
-MetricTensor[\[Alpha], \[Beta], Dimension -> D]
+MetricTensor[\[Alpha], \[Beta], Dimension -> D] 
+ 
 Contract[% %]
 ```
 
@@ -49,11 +51,9 @@ MTD[\[Mu], \[Nu]]
 $$g^{\mu \nu }$$
 
 ```mathematica
-FCI[MT[\[Mu], \[Nu]]] === MetricTensor[\[Mu], \[Nu]]
-FCI[MTD[\[Mu], \[Nu]]] === MetricTensor[\[Mu], \[Nu], Dimension -> D] 
-  
+FCI[MT[\[Mu], \[Nu]]] === MetricTensor[\[Mu], \[Nu]] 
  
-
+FCI[MTD[\[Mu], \[Nu]]] === MetricTensor[\[Mu], \[Nu], Dimension -> D]
 ```
 
 $$\text{True}$$

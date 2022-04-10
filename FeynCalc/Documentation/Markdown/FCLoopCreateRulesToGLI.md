@@ -6,7 +6,7 @@ It is also possible to use `FCLoopCreateRulesToGLI[{topo1, topo2, ...}]`.
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [FCTopology](FCTopology.md), [GLI](GLI.md), [FCFindTopologies](FCFindTopologies.md), [FCFindTopologyMappings](FCFindTopologyMappings.md).
+[Overview](Extra/FeynCalc.md), [FCTopology](FCTopology.md), [GLI](GLI.md), [FCLoopFindTopologies](FCLoopFindTopologies.md), [FCLoopFindTopologyMappings](FCLoopFindTopologyMappings.md).
 
 ### Examples
 
@@ -21,7 +21,8 @@ $$\left\{\text{p1}^2\to G^{\text{topo1}}(-1)+m^2\right\}$$
 2-loop tadpole with 3 different masses
 
 ```mathematica
-FCLoopCreateRulesToGLI[FCTopology[topo1, {SFAD[{p1, m1^2}], SFAD[{p2, m2^2}], SFAD[{p1 - p2, m3^2}]}, {p1, p2}, {}, {}, {}]]
+FCLoopCreateRulesToGLI[FCTopology[topo1, {SFAD[{p1, m1^2}], SFAD[{p2, m2^2}], 
+    SFAD[{p1 - p2, m3^2}]}, {p1, p2}, {}, {}, {}]]
 ```
 
 $$\left\{\text{p1}^2\to G^{\text{topo1}}(-1,0,0)+\text{m1}^2,\text{p2}^2\to G^{\text{topo1}}(0,-1,0)+\text{m2}^2,\text{p1}\cdot \;\text{p2}\to \frac{1}{2} \left(G^{\text{topo1}}(-1,0,0)+G^{\text{topo1}}(0,-1,0)-G^{\text{topo1}}(0,0,-1)+\text{m1}^2+\text{m2}^2-\text{m3}^2\right)\right\}$$
@@ -30,7 +31,8 @@ $$\left\{\text{p1}^2\to G^{\text{topo1}}(-1,0,0)+\text{m1}^2,\text{p2}^2\to G^{\
 
 ```mathematica
 FCLoopCreateRulesToGLI[FCTopology["prop2Lv1", 
-   {SFAD[{p1, m1^2}], SFAD[{p2, m2^2}], SFAD[p1 - q], SFAD[p2 - q], SFAD[{p1 - p2, m3^2}]}, {p1, p2}, {Q}, {}, {}]]
+   {SFAD[{p1, m1^2}], SFAD[{p2, m2^2}], SFAD[p1 - q], SFAD[p2 - q], 
+    SFAD[{p1 - p2, m3^2}]}, {p1, p2}, {Q}, {}, {}]]
 ```
 
 $$\left\{\text{p1}^2\to G^{\text{prop2Lv1}}(-1,0,0,0,0)+\text{m1}^2,\text{p2}^2\to G^{\text{prop2Lv1}}(0,-1,0,0,0)+\text{m2}^2,\text{p1}\cdot \;\text{p2}\to \frac{1}{2} \left(G^{\text{prop2Lv1}}(-1,0,0,0,0)+G^{\text{prop2Lv1}}(0,-1,0,0,0)-G^{\text{prop2Lv1}}(0,0,0,0,-1)+\text{m1}^2+\text{m2}^2-\text{m3}^2\right),\text{p1}\cdot q\to \frac{1}{2} \left(G^{\text{prop2Lv1}}(-1,0,0,0,0)-G^{\text{prop2Lv1}}(0,0,-1,0,0)+\text{m1}^2+q^2\right),\text{p2}\cdot q\to \frac{1}{2} \left(G^{\text{prop2Lv1}}(0,-1,0,0,0)-G^{\text{prop2Lv1}}(0,0,0,-1,0)+\text{m2}^2+q^2\right)\right\}$$

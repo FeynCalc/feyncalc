@@ -21,7 +21,8 @@ FCGetPauliSigmaScheme[]
 $$\text{None}$$
 
 ```mathematica
-CSID[i, j, k]
+CSID[i, j, k] 
+ 
 PauliSimplify[%, PauliReduce -> True]
 ```
 
@@ -40,13 +41,14 @@ FCGetPauliSigmaScheme[]
 $$\text{Naive}$$
 
 ```mathematica
-PauliSimplify[CSID[i, j, k], PauliReduce -> True]
-% // FCE // StandardForm
+ex = PauliSimplify[CSID[i, j, k], PauliReduce -> True]
 ```
 
 $$i \overset{\text{}}{\epsilon }^{ijk}+D \sigma ^i \delta ^{jk}-D \sigma ^j \delta ^{ik}-3 \sigma ^i \delta ^{jk}+3 \sigma ^j \delta ^{ik}+\sigma ^k \delta ^{ij}$$
 
-```
+```mathematica
+ex // FCE // StandardForm
+
 (*I CLCD[i, j, k] + CSID[k] KDD[i, j] + 3 CSID[j] KDD[i, k] - D CSID[j] KDD[i, k] - 3 CSID[i] KDD[j, k] + D CSID[i] KDD[j, k]*)
 ```
 

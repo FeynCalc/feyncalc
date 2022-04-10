@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-CSIS[p1] . CSI[i] . CSIS[p2]
+CSIS[p1] . CSI[i] . CSIS[p2] 
+ 
 PauliTrick[%] // Contract
 ```
 
@@ -18,7 +19,8 @@ $$\left(\overline{\sigma }\cdot \overline{\text{p1}}\right).\overline{\sigma }^i
 $$\left(\overline{\sigma }\cdot \overline{\text{p1}}\right).\overline{\sigma }^i.\left(\overline{\sigma }\cdot \overline{\text{p2}}\right)$$
 
 ```mathematica
-CSID[i, j, i]
+CSID[i, j, i] 
+ 
 PauliTrick[%] // Contract
 ```
 
@@ -27,8 +29,10 @@ $$\sigma ^i.\sigma ^j.\sigma ^i$$
 $$-\left((D-3) \sigma ^j\right)$$
 
 ```mathematica
-CSIS[p] . CSI[j] . CSIS[p] . CSIS[i]
-PauliTrick[%] // Contract // EpsEvaluate // FCCanonicalizeDummyIndices
+CSIS[p] . CSI[j] . CSIS[p] . CSIS[i] 
+ 
+PauliTrick[%] // Contract // EpsEvaluate // FCCanonicalizeDummyIndices 
+ 
 PauliTrick[%%, PauliReduce -> False]
 ```
 

@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-DiracSigma[GA[\[Alpha]], GA[\[Beta]]]
+DiracSigma[GA[\[Alpha]], GA[\[Beta]]] 
+ 
 DiracSigmaExplicit[%]
 ```
 
@@ -18,7 +19,8 @@ $$\sigma ^{\alpha \beta }$$
 $$\frac{1}{2} i \left(\bar{\gamma }^{\alpha }.\bar{\gamma }^{\beta }-\bar{\gamma }^{\beta }.\bar{\gamma }^{\alpha }\right)$$
 
 ```mathematica
-GSD[p] . DiracSigma[GAD[\[Mu]], GAD[\[Nu]]] . GSD[q]
+GSD[p] . DiracSigma[GAD[\[Mu]], GAD[\[Nu]]] . GSD[q] 
+ 
 DiracSigmaExplicit[%]
 ```
 

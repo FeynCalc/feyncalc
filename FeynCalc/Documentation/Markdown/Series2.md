@@ -61,7 +61,8 @@ Series2[HypergeometricPFQ[{1, OPEm, Epsilon/2 + OPEm}, {1 + OPEm, Epsilon + OPEm
 $$\frac{1}{4} \varepsilon  \zeta (2) m+\frac{2 m}{\varepsilon }+\frac{1}{4} \varepsilon  m \psi ^{(0)}(m)^2+\frac{3}{4} \varepsilon  m \psi ^{(1)}(m)-\frac{1}{2} \varepsilon  m S_{11}(m-1)$$
 
 ```mathematica
-Hypergeometric2F1[1, Epsilon, 1 + 2 Epsilon, x]
+Hypergeometric2F1[1, Epsilon, 1 + 2 Epsilon, x] 
+ 
 Series2[%, Epsilon, 3]
 ```
 

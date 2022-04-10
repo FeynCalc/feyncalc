@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-DiracTrace[1]
+DiracTrace[1] 
+ 
 DiracSimplify[%]
 ```
 
@@ -18,7 +19,8 @@ $$\text{tr}(1)$$
 $$4$$
 
 ```mathematica
-DiracTrace[1, TraceOfOne -> tr1]
+DiracTrace[1, TraceOfOne -> tr1] 
+ 
 DiracSimplify[%]
 ```
 

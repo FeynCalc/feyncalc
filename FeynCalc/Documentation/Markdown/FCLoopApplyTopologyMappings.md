@@ -1,10 +1,10 @@
 ## FCLoopApplyTopologyMappings
 
-`FCLoopApplyTopologyMappings[expr, mappings]` applies mappings between topologies obtained using `FCFindTopologyMappings` to the output of `FCFindTopologies` denoted as `expr`.
+`FCLoopApplyTopologyMappings[expr, mappings]` applies mappings between topologies obtained using `FCLoopFindTopologyMappings` to the output of `FCLoopFindTopologies` denoted as `expr`.
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [FCTopology](FCTopology.md), [GLI](GLI.md), [FCFindTopologies](FCFindTopologies.md), [FCFindTopologyMappings](FCFindTopologyMappings.md).
+[Overview](Extra/FeynCalc.md), [FCTopology](FCTopology.md), [GLI](GLI.md), [FCLoopFindTopologies](FCLoopFindTopologies.md), [FCLoopFindTopologyMappings](FCLoopFindTopologyMappings.md).
 
 ### Examples
 
@@ -29,17 +29,20 @@ mappings = {
       SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p1 + p3, 0}, {0, 1}, 1}], 
       SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], 
       SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}], {p1 -> -p1 - p3 + Q,p2 -> -p2 - p3 + Q, p3 -> p3}, 
-    GLI[fctopology3, {n1_, n7_, n8_, n5_, n6_, n4_, n2_, n3_, n9_}] :>GLI[fctopology1, {n1, n2, n3, n4, n5, n6, n7, n8, n9}]}, 
+    GLI[fctopology3, {n1_, n7_, n8_, n5_, n6_, n4_, n2_, n3_, n9_}] :>
+     GLI[fctopology1, {n1, n2, n3, n4, n5, n6, n7, n8, n9}]}, 
    
    {FCTopology[fctopology4, {SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], 
       SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p1 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], 
       SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}], {p1 -> -p2 + Q, p2 -> -p1 + Q, p3 -> -p3}, 
-    GLI[fctopology4, {n1_, n6_, n5_, n8_, n7_, n3_, n2_, n4_, n9_}] :>GLI[fctopology1, {n1, n2, n3, n4, n5, n6, n7, n8, n9}]}, 
+    GLI[fctopology4, {n1_, n6_, n5_, n8_, n7_, n3_, n2_, n4_, n9_}] :>
+     GLI[fctopology1, {n1, n2, n3, n4, n5, n6, n7, n8, n9}]}, 
    
    {FCTopology[fctopology5, {SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], 
       SFAD[{{p1 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}],SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], 
       SFAD[{{p1 + p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}], {p1 -> p2, p2 -> p1, p3 -> p3}, 
-    GLI[fctopology5, {n1_, n3_, n2_, n4_, n6_, n5_, n7_, n8_, n9_}] :>GLI[fctopology2, {n1, n2, n3, n4, n5, n6, n7, n8, n9}]}}
+    GLI[fctopology5, {n1_, n3_, n2_, n4_, n6_, n5_, n7_, n8_, n9_}] :>
+     GLI[fctopology2, {n1, n2, n3, n4, n5, n6, n7, n8, n9}]}}
 ```
 
 $$\left(

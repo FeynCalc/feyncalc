@@ -1,6 +1,6 @@
 ## PauliEta
 
-`PauliEta[I]` represents a two-component Pauli spinor `\eta`, while `PauliEta[-I]` stands for $\eta^{\dagger }$.
+`PauliEta[I]` represents a two-component Pauli spinor $\eta$, while `PauliEta[-I]` stands for $\eta^{\dagger }$.
 
 ### See also
 
@@ -21,7 +21,8 @@ PauliEta[-I]
 $$\eta ^{\dagger }$$
 
 ```mathematica
-PauliEta[-I] . SIS[p] . PauliXi[I]
+PauliEta[-I] . SIS[p] . PauliXi[I] 
+ 
 % // ComplexConjugate
 ```
 

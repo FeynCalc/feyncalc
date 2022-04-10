@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-FV[OPEDelta, \[Mu]]
+FV[OPEDelta, \[Mu]] 
+ 
 Contract[% %]
 ```
 

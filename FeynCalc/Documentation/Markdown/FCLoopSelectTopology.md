@@ -33,7 +33,8 @@ $$\left\{\text{FCTopology}\left(\text{prop2Ltopo13311},\left\{\frac{1}{(-\text{p
 Products of `GLI`s in the first argument are also supported.
 
 ```mathematica
-FCLoopSelectTopology[{GLI[prop2Ltopo13311, {1, 0, 0, 0, 0}]^2, GLI[prop2Ltopo13311, {1, 1, 1, 1, 1}]}, topos, FCE -> True]
+FCLoopSelectTopology[{GLI[prop2Ltopo13311, {1, 0, 0, 0, 0}]^2, 
+   GLI[prop2Ltopo13311, {1, 1, 1, 1, 1}]}, topos, FCE -> True]
 ```
 
 $$\left\{\text{FCTopology}\left(\text{prop2Ltopo13311},\left\{\frac{1}{(-\text{p1}^2+\text{m1}^2-i \eta )},\frac{1}{(-(\text{p1}+\text{q1})^2+\text{m3}^2-i \eta )},\frac{1}{(-\text{p3}^2+\text{m3}^2-i \eta )},\frac{1}{(-(\text{p3}+\text{q1})^2+\text{m1}^2-i \eta )},\frac{1}{(-(\text{p1}-\text{p3})^2+\text{m1}^2-i \eta )}\right\},\{\text{p1},\text{p3}\},\{\text{q1}\},\left\{\text{q1}^2\to \;\text{m1}^2\right\},\{\}\right)\right\}$$

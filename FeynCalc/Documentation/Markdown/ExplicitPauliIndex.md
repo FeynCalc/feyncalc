@@ -10,14 +10,12 @@
 
 ```mathematica
 PCHN[SI[i], 1, 2]
-% // FCI // StandardForm 
-  
- 
-
 ```
 
 $$\left(\bar{\sigma }^i\right){}_{12}$$
 
-```
+```mathematica
+PCHN[SI[i], 1, 2] // FCI // StandardForm
+
 (*PauliChain[PauliSigma[LorentzIndex[i]], ExplicitPauliIndex[1], ExplicitPauliIndex[2]]*)
 ```

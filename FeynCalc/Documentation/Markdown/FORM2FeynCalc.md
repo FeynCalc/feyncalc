@@ -16,45 +16,51 @@ If the option `Set` is `True`, the variables `x1`, `x2` are assigned to the righ
 
 ```mathematica
 FORM2FeynCalc["p.q + 2*x m^2"]
-% // StandardForm
 ```
 
 $$\overline{p}\cdot \overline{q}+2 m^2.x$$
 
-```
-(*2 m^2 . x + SP[p, q]*)
+```mathematica
+FORM2FeynCalc["p.q + 2*x m^2"] // StandardForm
+
+(*2 x . m^2 + SP[p, q]*)
 ```
 
 Functions are automatically converted in a proper way, but bracketed expressions need to be substituted explicitly.
 
 ```mathematica
 FORM2FeynCalc["x +f(z)+ log(x)^2+[li2(1-x)]", Replace -> {"[li2(1-x)]" -> "PolyLog[2,1-x]"}]
-% // StandardForm
 ```
 
 $$f(z)+\text{Li}_2(1-x)+x+\log ^2(x)$$
 
-```
+```mathematica
+FORM2FeynCalc["x +f(z)+ log(x)^2+[li2(1-x)]", Replace -> {"[li2(1-x)]" -> "PolyLog[2,1-x]"}] // StandardForm
+
 (*x + f[z] + Log[x]^2 + PolyLog[2, 1 - x]*)
 ```
 
 ```mathematica
 FORM2FeynCalc["x + [(1)]*y -[(-1)^m]"]
-ReleaseHold[%]
 ```
 
 $$-\text{Hold}\left[(-1)^m\right]+\text{Hold}[1].y+x$$
 
-$$(-1)^{m+1}+x+1.y$$
+```mathematica
+ReleaseHold[FORM2FeynCalc["x + [(1)]*y -[(-1)^m]"]]
+```
+
+$$-(-1)^m+x+1.y$$
 
 ```mathematica
 FORM2FeynCalc["p(mu)*q(nu)+d_(mu,nu)"]
-% // StandardForm
 ```
 
 $$\bar{g}^{\text{mu}\;\text{nu}}+p(\text{mu}).q(\text{nu})$$
 
-```
+```mathematica
+FORM2FeynCalc["p(mu)*q(nu)+d_(mu,nu)"] // StandardForm
+
 (*p[mu] . q[nu] + MT[mu, nu]*)
 ```
 

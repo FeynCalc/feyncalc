@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-(a + I b)^2
+(a + I b)^2 
+ 
 FCAbbreviate[%, {}, {}]
 ```
 
@@ -18,7 +19,8 @@ $$(a+i b)^2$$
 $$\{\{\},\{\},\{a\to \;\text{var1},b\to \;\text{var2}\}\}$$
 
 ```mathematica
-SPD[p, k] FAD[{q, SMP["m_e"]}, {q + p, m}]
+SPD[p, k] FAD[{q, SMP["m_e"]}, {q + p, m}] 
+ 
 FCAbbreviate[%, {q}, {p, k}, Head -> spd]
 ```
 
@@ -28,11 +30,17 @@ $$\left\{\{\text{spd}(k,k)\to \;\text{sp1},\text{spd}(k,p)\to \;\text{sp2},\text
 
 ```mathematica
 FCClearScalarProducts[]; 
-SPD[p1, p1] = 0;
-SPD[p2, p2] = 0;
-SPD[p3, p3] = 0;
-SPD[p1, p2] = s/2; SPD[p1, p3] = -(s + t)/2; SPD[p2, p3] = t/2;
-SPD[p2, p3] FAD[q, q - p1 - p2, q - p1 - p2 - p3]
+ 
+SPD[p1, p1] = 0; 
+ 
+SPD[p2, p2] = 0; 
+ 
+SPD[p3, p3] = 0; 
+ 
+SPD[p1, p2] = s/2; SPD[p1, p3] = -(s + t)/2; SPD[p2, p3] = t/2; 
+ 
+SPD[p2, p3] FAD[q, q - p1 - p2, q - p1 - p2 - p3] 
+ 
 FCAbbreviate[%, {q}, {p1, p2, p3}, Head -> spd]
 ```
 

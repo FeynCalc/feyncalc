@@ -21,7 +21,8 @@ PauliTrace[CSI[i, j, k, l], PauliTraceEvaluate -> True]
 $$2 \left(\bar{\delta }^{il} \bar{\delta }^{jk}-\bar{\delta }^{ik} \bar{\delta }^{jl}+\bar{\delta }^{ij} \bar{\delta }^{kl}\right)$$
 
 ```mathematica
-PauliTrace[CSI[i, j, k, l]]
+PauliTrace[CSI[i, j, k, l]] 
+ 
 % // PauliSimplify 
   
  

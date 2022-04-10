@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-StringChomp[" abc "]
+StringChomp[" abc "] 
+ 
 % // InputForm
 ```
 

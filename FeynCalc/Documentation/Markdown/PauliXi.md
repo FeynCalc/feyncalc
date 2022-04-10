@@ -21,7 +21,8 @@ PauliXi[-I]
 $$\xi ^{\dagger }$$
 
 ```mathematica
-PauliXi[-I] . SIS[p] . PauliEta[I]
+PauliXi[-I] . SIS[p] . PauliEta[I] 
+ 
 % // ComplexConjugate 
   
  

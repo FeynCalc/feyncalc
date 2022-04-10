@@ -14,7 +14,7 @@ This should reach to be done
 TimedIntegrate[Log[x^5], {x, 0, 1}, Timing -> 1]
 ```
 
-$$\left(\int _0^1dx\, \right).\log \left(x^5\right)$$
+$$-5$$
 
 This shouldn't
 

@@ -15,8 +15,10 @@ PauliIndexDelta[PauliIndex[i], PauliIndex[j]]
 $$\delta _{ij}$$
 
 ```mathematica
-PauliIndexDelta[PauliIndex[i], PauliIndex[j]]^2
-PauliChainJoin[%]
+PauliIndexDelta[PauliIndex[i], PauliIndex[j]]^2 
+ 
+PauliChainJoin[%] 
+ 
 PauliChainJoin[%%, TraceOfOne -> D]
 ```
 
@@ -27,7 +29,8 @@ $$4$$
 $$D$$
 
 ```mathematica
-PauliIndexDelta[PauliIndex[i], PauliIndex[j]] PauliIndexDelta[PauliIndex[j], PauliIndex[k]]
+PauliIndexDelta[PauliIndex[i], PauliIndex[j]] PauliIndexDelta[PauliIndex[j], PauliIndex[k]] 
+ 
 PauliChainJoin[%]
 ```
 
@@ -42,7 +45,8 @@ PauliChain[PauliEta[-I], PauliIndex[i0]] PIDelta[i0, i1] // FCI // PauliChainJoi
 $$\left(\eta ^{\dagger }\right){}_{\text{i1}}$$
 
 ```mathematica
-PauliIndexDelta[PauliIndex[i2], PauliIndex[i3]] PauliIndexDelta[PauliIndex[i4], PauliIndex[i5]] PauliChain[PauliIndex[i7], PauliXi[I]] PauliChain[PauliEta[-I], PauliIndex[i0]] PauliChain[PauliSigma[CartesianIndex[a]], PauliIndex[i1], PauliIndex[i2]] PauliChain[PauliSigma[CartesianIndex[b]], PauliIndex[i5], PauliIndex[i6]] PauliChain[m + PauliSigma[CartesianMomentum[p]], PauliIndex[i3], PauliIndex[i4]]
+PauliIndexDelta[PauliIndex[i2], PauliIndex[i3]] PauliIndexDelta[PauliIndex[i4], PauliIndex[i5]] PauliChain[PauliIndex[i7], PauliXi[I]] PauliChain[PauliEta[-I], PauliIndex[i0]] PauliChain[PauliSigma[CartesianIndex[a]], PauliIndex[i1], PauliIndex[i2]] PauliChain[PauliSigma[CartesianIndex[b]], PauliIndex[i5], PauliIndex[i6]] PauliChain[m + PauliSigma[CartesianMomentum[p]], PauliIndex[i3], PauliIndex[i4]] 
+ 
 PauliChainJoin[%]
 ```
 

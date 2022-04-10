@@ -12,17 +12,18 @@
 
 ```mathematica
 SD[a, b]
-% // FCI // StandardForm
-% // FCE // StandardForm 
-  
- 
-
 ```
 
 $$\delta ^{ab}$$
 
-```
+```mathematica
+SD[a, b] // FCI // StandardForm
+
 (*SUNDelta[SUNIndex[a], SUNIndex[b]]*)
+```
+
+```mathematica
+SD[a, b] // FCE // StandardForm
 
 (*SD[a, b]*)
 ```

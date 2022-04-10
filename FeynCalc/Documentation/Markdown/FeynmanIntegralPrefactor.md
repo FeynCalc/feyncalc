@@ -22,7 +22,8 @@ FCFeynmanParametrize[FAD[p, p - q], {p}, Names -> x, FCReplaceD -> {D -> 4 - 2 E
 $$\left\{(x(1)+x(2))^{2 \varepsilon -2} \left(-q^2 x(1) x(2)\right)^{-\varepsilon },\Gamma (\varepsilon ),\{x(1),x(2)\}\right\}$$
 
 ```mathematica
-FCFeynmanParametrize[FAD[p, p - q], {p}, Names -> x, FCReplaceD -> {D -> 4 - 2 Epsilon}]
+FCFeynmanParametrize[FAD[p, p - q], {p}, Names -> x, FCReplaceD -> {D -> 4 - 2 Epsilon}] 
+ 
 Times @@ Most[%]
 ```
 
@@ -32,7 +33,8 @@ $$\Gamma (\varepsilon ) (x(1)+x(2))^{2 \varepsilon -2} \left(-q^2 x(1) x(2)\righ
 
 ```mathematica
 FCFeynmanParametrize[FAD[p, p - q], {p}, Names -> x, FCReplaceD -> {D -> 4 - 2 Epsilon}, 
- 	FeynmanIntegralPrefactor -> "Multiloop1"]
+   FeynmanIntegralPrefactor -> "Multiloop1"] 
+ 
 Times @@ Most[%]
 ```
 
@@ -42,8 +44,9 @@ $$\Gamma (\varepsilon ) (x(1)+x(2))^{2 \varepsilon -2} \left(-q^2 x(1) x(2)\righ
 
 ```mathematica
 FCFeynmanParametrize[FAD[p, p - q], {p}, Names -> x, FCReplaceD -> {D -> 4 - 2 Epsilon}, 
- 	FeynmanIntegralPrefactor -> "Unity"]
-Times @@ Most[%]	
+   FeynmanIntegralPrefactor -> "Unity"] 
+ 
+Times @@ Most[%]
 ```
 
 $$\left\{(x(1)+x(2))^{2 \varepsilon -2} \left(-q^2 x(1) x(2)\right)^{-\varepsilon },i \pi ^{2-\varepsilon } \Gamma (\varepsilon ),\{x(1),x(2)\}\right\}$$
@@ -52,8 +55,9 @@ $$i \pi ^{2-\varepsilon } \Gamma (\varepsilon ) (x(1)+x(2))^{2 \varepsilon -2} \
 
 ```mathematica
 FCFeynmanParametrize[FAD[p, p - q], {p}, Names -> x, FCReplaceD -> {D -> 4 - 2 Epsilon}, 
- 	FeynmanIntegralPrefactor -> "Textbook"]
-Times @@ Most[%]	
+   FeynmanIntegralPrefactor -> "Textbook"] 
+ 
+Times @@ Most[%]
 ```
 
 $$\left\{(x(1)+x(2))^{2 \varepsilon -2} \left(-q^2 x(1) x(2)\right)^{-\varepsilon },i 2^{2 \varepsilon -4} \pi ^{\varepsilon -2} \Gamma (\varepsilon ),\{x(1),x(2)\}\right\}$$
@@ -62,8 +66,9 @@ $$i 2^{2 \varepsilon -4} \pi ^{\varepsilon -2} \Gamma (\varepsilon ) (x(1)+x(2))
 
 ```mathematica
 FCFeynmanParametrize[FAD[p, p - q], {p}, Names -> x, FCReplaceD -> {D -> 4 - 2 Epsilon}, 
- 	FeynmanIntegralPrefactor -> "Multiloop2"]
-Times @@ Most[%]	
+   FeynmanIntegralPrefactor -> "Multiloop2"] 
+ 
+Times @@ Most[%]
 ```
 
 $$\left\{(x(1)+x(2))^{2 \varepsilon -2} \left(-q^2 x(1) x(2)\right)^{-\varepsilon },e^{\gamma  \varepsilon } \Gamma (\varepsilon ),\{x(1),x(2)\}\right\}$$
@@ -72,8 +77,10 @@ $$e^{\gamma  \varepsilon } \Gamma (\varepsilon ) (x(1)+x(2))^{2 \varepsilon -2} 
 
 ```mathematica
 FCFeynmanParametrize[FAD[{p, m}], {p}, Names -> x, FCReplaceD -> {D -> 4 - 2 Epsilon}, 
- 	FeynmanIntegralPrefactor -> "Multiloop2"]
-Times @@ Most[%]	
+   FeynmanIntegralPrefactor -> "Multiloop2"] 
+ 
+Times @@ Most[%] 
+ 
 Series[%, {Epsilon, 0, 1}] // Normal // FunctionExpand 
   
  

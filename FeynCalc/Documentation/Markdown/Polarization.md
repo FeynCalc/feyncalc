@@ -36,13 +36,13 @@ $$\text{Polarization}(k)$$
 Polarization[k] // ComplexConjugate
 ```
 
-$$\text{ComplexConjugate}(\text{Polarization}(k))$$
+$$\text{Polarization}(k)$$
 
 ```mathematica
 GS[Polarization[k]]
 ```
 
-$$\text{GS}(\text{Polarization}(k))$$
+$$\bar{\gamma }\cdot \overline{\text{Polarization}(k)}$$
 
 ```mathematica
 GS[Polarization[k]] // StandardForm
@@ -54,4 +54,4 @@ GS[Polarization[k]] // StandardForm
 Pair[Momentum[k], Momentum[Polarization[k, I]]]
 ```
 
-$$\text{Pair}(\text{Momentum}(k),\text{Momentum}(\text{Polarization}(k,i)))$$
+$$\overline{k}\cdot \bar{\varepsilon }(k)$$

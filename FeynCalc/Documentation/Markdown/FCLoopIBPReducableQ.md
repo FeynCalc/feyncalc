@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-FAD[q, q - p]
+FAD[q, q - p] 
+ 
 FCLoopIBPReducableQ[FCI[%]]
 ```
 
@@ -18,7 +19,8 @@ $$\frac{1}{q^2.(q-p)^2}$$
 $$\text{False}$$
 
 ```mathematica
-FAD[{q, 0, 2}, q - p]
+FAD[{q, 0, 2}, q - p] 
+ 
 FCLoopIBPReducableQ[FCI[%]]
 ```
 

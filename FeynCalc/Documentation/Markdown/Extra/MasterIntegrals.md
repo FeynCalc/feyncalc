@@ -17,7 +17,7 @@ nothing similar to Package-X beyond 1-loop
 - The available libraries usually focus on very specific integral families,
 e.g. [Mincer](https://www.nikhef.nl/~form/maindir/packages/mincer/mincer.html) (3-loop massless 2-point functions), 
 [Forcer](https://github.com/benruijl/forcer) (4-loop massless 2-point functions), [MATAD](https://www.ttp.kit.edu/~ms/software.html), [MATAD-ng](https://github.com/apik/matad-ng) (massive 3-loop tadpoles),
-[FMFT](https://github.com/apik/fmft) (massive 4-loop tadpoles), [ON-SHELL2] (http://theor.jinr.ru/~kalmykov/onshell2/onshell2.html)
+[FMFT](https://github.com/apik/fmft) (massive 4-loop tadpoles), [ON-SHELL2](http://theor.jinr.ru/~kalmykov/onshell2/onshell2.html)
 (on-shell 2-point functions with one mass scale)
 
 - The main source for analytic results are scientific publications. When people calculate
@@ -34,7 +34,7 @@ is still far from being comprehensive.
 ### Numerical results
 
 - Numerical results are much simpler to obtain and universal libraries
-that can calculate almost any integral (given enough time and computing ressources)
+that can calculate almost any integral (given enough time and computing resources)
 are publicly available. Two prominent examples are [pySecDec](https://secdec.readthedocs.io/en/stable/) and [FIESTA](https://bitbucket.org/feynmanIntegrals/fiesta/src/master/)
 - Apart from that, there are also libraries that cover specific integral families
 and may offer better numerical stability due to the corresponding optimizations. Two

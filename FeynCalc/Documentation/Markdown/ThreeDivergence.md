@@ -13,8 +13,9 @@ Owing to the fact that in FeynCalc dummy Cartesian index are always understood t
 ### Examples
 
 ```mathematica
-CSP[p, q]
-ThreeDivergence[%, CV[q, i]] 
+CSP[p, q] 
+ 
+ThreeDivergence[%, CV[q, i]]
 ```
 
 $$\overline{p}\cdot \overline{q}$$
@@ -22,7 +23,8 @@ $$\overline{p}\cdot \overline{q}$$
 $$\overline{p}^i$$
 
 ```mathematica
-CSP[p - k, q]
+CSP[p - k, q] 
+ 
 ThreeDivergence[%, CV[k, i]]
 ```
 
@@ -31,7 +33,8 @@ $$(\overline{p}-\overline{k})\cdot \overline{q}$$
 $$-\overline{q}^i$$
 
 ```mathematica
-CFAD[{p, m^2}, p - q]
+CFAD[{p, m^2}, p - q] 
+ 
 ThreeDivergence[%, CVD[p, i]]
 ```
 
@@ -45,7 +48,7 @@ Differentiation of $3$-vectors living  in different dimensions ($3$, $D-1$, $D-4
 ThreeDivergence[CVD[p, i], CV[p, j]]
 ```
 
-![1h9o7vmxcyb17](img/1h9o7vmxcyb17.svg)
+![1h9o7vmxcyb17](img/1h9o7vmxcyb17.pdf)
 
 $$\text{\$Aborted}$$
 

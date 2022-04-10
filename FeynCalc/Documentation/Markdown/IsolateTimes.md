@@ -22,4 +22,4 @@ Now an abbreviation is introduced
  Isolate[a*b*c*d, a, IsolateTimes -> True]
 ```
 
-$$a \;\text{KK}(24)$$
+$$a \;\text{KK}(19)$$

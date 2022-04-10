@@ -25,7 +25,8 @@ QuarkPropagator[{p, m}, Explicit -> True]
 $$\frac{i (m+\gamma \cdot p)}{p^2-m^2}$$
 
 ```mathematica
-QP[{p, m}]
+QP[{p, m}] 
+ 
 Explicit[%]
 ```
 

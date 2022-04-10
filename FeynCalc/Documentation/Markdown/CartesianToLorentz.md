@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-CGS[p]
+CGS[p] 
+ 
 % // CartesianToLorentz
 ```
 
@@ -18,11 +19,9 @@ $$\overline{\gamma }\cdot \overline{p}$$
 $$p^0 \bar{\gamma }^0-\bar{\gamma }\cdot \overline{p}$$
 
 ```mathematica
-CSP[p, q]
-% // CartesianToLorentz 
-  
+CSP[p, q] 
  
-
+% // CartesianToLorentz
 ```
 
 $$\overline{p}\cdot \overline{q}$$

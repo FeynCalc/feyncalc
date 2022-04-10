@@ -32,7 +32,7 @@ Scalar integrals can be converted to the Passarino-Veltman notation via the opti
 TID[int, k, ToPaVe -> True]
 ```
 
-$$\frac{i \pi ^2 \left(p_1{}^2 p_2{}^{\mu }-p_1{}^{\mu } \left(p_1\cdot p_2\right)\right) \;\text{B}_0\left(p_1{}^2,0,m^2\right)}{2 \left((p_1\cdot p_2){}^2-p_1{}^2 p_2{}^2\right)}-\frac{i \pi ^2 \left(p_2{}^{\mu } \left(p_1\cdot p_2\right)-p_2{}^2 p_1{}^{\mu }\right) \;\text{B}_0\left(p_2{}^2,0,m^2\right)}{2 \left((p_1\cdot p_2){}^2-p_1{}^2 p_2{}^2\right)}-\frac{i \pi ^2 \left(p_1{}^2 p_2{}^{\mu }+p_2{}^2 p_1{}^{\mu }-p_1{}^{\mu } \left(p_1\cdot p_2\right)-p_2{}^{\mu } \left(p_1\cdot p_2\right)\right) \;\text{B}_0\left(p_1{}^2-2 \left(p_1\cdot p_2\right)+p_2{}^2,0,0\right)}{2 \left((p_1\cdot p_2){}^2-p_1{}^2 p_2{}^2\right)}-\frac{1}{2 \left((p_1\cdot p_2){}^2-p_1{}^2 p_2{}^2\right)}i \pi ^2 \left(p_2{}^2 \left(m^2+p_1{}^2\right) p_1{}^{\mu }+p_1{}^2 \left(m^2+p_2{}^2\right) p_2{}^{\mu }+\left(m^2+p_1{}^2\right) \left(-p_2{}^{\mu }\right) \left(p_1\cdot p_2\right)-\left(m^2+p_2{}^2\right) p_1{}^{\mu } \left(p_1\cdot p_2\right)\right) \;\text{C}_0\left(p_1{}^2,p_2{}^2,p_1{}^2-2 \left(p_1\cdot p_2\right)+p_2{}^2,0,m^2,0\right)$$
+$$\frac{i \pi ^2 \left(p_1{}^2 p_2{}^{\mu }-p_1{}^{\mu } \left(p_1\cdot p_2\right)\right) \;\text{B}_0\left(p_1{}^2,0,m^2\right)}{2 \left((p_1\cdot p_2){}^2-p_1{}^2 p_2{}^2\right)}-\frac{i \pi ^2 \left(p_2{}^{\mu } \left(p_1\cdot p_2\right)-p_2{}^2 p_1{}^{\mu }\right) \;\text{B}_0\left(p_2{}^2,0,m^2\right)}{2 \left((p_1\cdot p_2){}^2-p_1{}^2 p_2{}^2\right)}-\frac{i \pi ^2 \left(p_1{}^2 p_2{}^{\mu }+p_2{}^2 p_1{}^{\mu }-p_1{}^{\mu } \left(p_1\cdot p_2\right)-p_2{}^{\mu } \left(p_1\cdot p_2\right)\right) \;\text{B}_0\left(p_1{}^2-2 \left(p_1\cdot p_2\right)+p_2{}^2,0,0\right)}{2 \left((p_1\cdot p_2){}^2-p_1{}^2 p_2{}^2\right)}-\frac{i \pi ^2 \left(p_2{}^2 \left(m^2+p_1{}^2\right) p_1{}^{\mu }+p_1{}^2 \left(m^2+p_2{}^2\right) p_2{}^{\mu }+\left(m^2+p_1{}^2\right) \left(-p_2{}^{\mu }\right) \left(p_1\cdot p_2\right)-\left(m^2+p_2{}^2\right) p_1{}^{\mu } \left(p_1\cdot p_2\right)\right) \;\text{C}_0\left(p_1{}^2,p_2{}^2,p_1{}^2-2 \left(p_1\cdot p_2\right)+p_2{}^2,0,m^2,0\right)}{2 \left((p_1\cdot p_2){}^2-p_1{}^2 p_2{}^2\right)}$$
 
 We can force the reduction algorithm to use Passarino-Veltman coefficient functions via the option `UsePaVeBasis`
 
@@ -76,11 +76,16 @@ $$\frac{1}{2} i \pi ^2 \left(m^2-p^2\right) p^{\text{mu}} \left(\frac{\left(m^2-
 The basis of Passarino-Veltman coefficient functions is used automatically if there are zero Gram determinants
 
 ```mathematica
-FCClearScalarProducts[];
-SPD[Subscript[p, 1], Subscript[p, 1]] = 0;
-SPD[Subscript[p, 2], Subscript[p, 2]] = 0;
-SPD[Subscript[p, 1], Subscript[p, 2]] = 0;
-TID[FAD[{k, m}, k - Subscript[p, 1], k - Subscript[p, 2]] FVD[k, \[Mu]] // FCI, k]
+FCClearScalarProducts[]; 
+ 
+SPD[Subscript[p, 1], Subscript[p, 1]] = 0; 
+ 
+SPD[Subscript[p, 2], Subscript[p, 2]] = 0; 
+ 
+SPD[Subscript[p, 1], Subscript[p, 2]] = 0; 
+ 
+TID[FAD[{k, m}, k - Subscript[p, 1], k - Subscript[p, 2]] FVD[k, \[Mu]] // FCI, k] 
+ 
 FCClearScalarProducts[];
 ```
 
@@ -89,11 +94,16 @@ $$-i \pi ^2 \left(p_1{}^{\mu }+p_2{}^{\mu }\right) \;\text{C}_1\left(0,0,0,0,0,m
 In FeynCalc, Passarino-Veltman coefficient functions are defined in the same way as in LoopTools. If one wants to use a different definition, it is useful to activate the option GenPaVe
 
 ```mathematica
-FCClearScalarProducts[];
-SPD[Subscript[p, 1], Subscript[p, 1]] = 0;
-SPD[Subscript[p, 2], Subscript[p, 2]] = 0;
-SPD[Subscript[p, 1], Subscript[p, 2]] = 0;
-TID[FAD[{k, m}, k - Subscript[p, 1], k - Subscript[p, 2]] FVD[k, \[Mu]] // FCI, k, GenPaVe -> True]
+FCClearScalarProducts[]; 
+ 
+SPD[Subscript[p, 1], Subscript[p, 1]] = 0; 
+ 
+SPD[Subscript[p, 2], Subscript[p, 2]] = 0; 
+ 
+SPD[Subscript[p, 1], Subscript[p, 2]] = 0; 
+ 
+TID[FAD[{k, m}, k - Subscript[p, 1], k - Subscript[p, 2]] FVD[k, \[Mu]] // FCI, k, GenPaVe -> True] 
+ 
 FCClearScalarProducts[];
 ```
 
@@ -114,7 +124,8 @@ $$-i \pi ^2 p_1{}^{\mu } \;\text{GenPaVe}\left(\{1\},\left(
 To simplify manifestly IR-finite 1-loop results written in terms of Passarino-Veltman functions, we may employ the option `PaVeLimitTo4` (must be used together with `ToPaVe`). The result is valid up to 0th order in `Epsilon`, i.e. sufficient for 1-loop calculations.
 
 ```mathematica
-FCClearScalarProducts[];
+FCClearScalarProducts[]; 
+ 
 int = (D - 1) (D - 2)/(D - 3) FVD[p, mu] FVD[p, nu] FAD[p, p - q]
 ```
 

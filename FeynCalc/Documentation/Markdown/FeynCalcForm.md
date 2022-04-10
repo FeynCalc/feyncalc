@@ -21,8 +21,10 @@ $$\text{tr}(T^a.T^b.T^c)$$
 This is the shorthand (terminal) display (easy-to-read form):
 
 ```mathematica
-$PrePrint = FeynCalcForm;
-SetOptions[$FrontEndSession, Evaluate[(Options[$FrontEndSession, "CommonDefaultFormatTypes"] /. ("Output" -> _) -> ("Output" -> OutputForm))[[1]]]];
+$PrePrint = FeynCalcForm; 
+ 
+SetOptions[$FrontEndSession, Evaluate[(Options[$FrontEndSession, "CommonDefaultFormatTypes"] /. ("Output" -> _) -> ("Output" ->OutputForm))[[1]]]]; 
+ 
 SUNTrace[SUNT[a] . SUNT[b] . SUNT[c]]
 ```
 
@@ -31,8 +33,10 @@ $$\text{tr}(T^a.T^b.T^c)$$
 Reset to normal notebook display:
 
 ```mathematica
-$PrePrint =.;
-SetOptions[$FrontEndSession, Evaluate[(Options[$FrontEndSession, "CommonDefaultFormatTypes"] /. ("Output" -> _) -> ("Output" -> TraditionalForm))[[1]]]];
+$PrePrint =.; 
+ 
+SetOptions[$FrontEndSession, Evaluate[(Options[$FrontEndSession, "CommonDefaultFormatTypes"] /. ("Output" -> _) -> ("Output" ->TraditionalForm))[[1]]]]; 
+ 
 SUNTrace[SUNT[a] . SUNT[b] . SUNT[c]]
 ```
 

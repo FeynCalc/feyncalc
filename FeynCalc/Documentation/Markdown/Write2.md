@@ -23,7 +23,8 @@ $$4 a^4-8 a^3 (b+c)+8 a^2 \left(b^2+b c+c^2\right)-4 a (b+c) \left(b^2+c^2\right
 This writes the assignment r=t to a file.
 
 ```mathematica
-tempfilename = ToString[$SessionID] <> ".s";
+tempfilename = ToString[$SessionID] <> ".s"; 
+ 
 Write2[tempfilename, r = t];
 ```
 
@@ -47,7 +48,7 @@ DeleteFile[If[$OperatingSystem === "MacOS", ":", ""] <> tempfilename]
 t2 = x + Isolate[t, a, IsolateNames -> w]
 ```
 
-$$4 a^4-8 a^3 w(24)+8 a^2 w(26)-4 a w(24) w(25)+w(25)^2+x$$
+$$4 a^4-8 a^3 w(19)+8 a^2 w(21)-4 a w(19) w(20)+w(20)^2+x$$
 
 ```mathematica
 Write2[tempfilename, r = t2];
@@ -58,14 +59,14 @@ TableForm[ReadList[If[$OperatingSystem === "MacOS", ":", ""] <> tempfilename, St
 ```
 
 $$\begin{array}{l}
- \;\text{w[24] = (b + c} \\
+ \;\text{w[19] = (b + c} \\
  \;\text{       );} \\
- \;\text{w[25] = (b${}^{\wedge}$2 + c${}^{\wedge}$2} \\
+ \;\text{w[20] = (b${}^{\wedge}$2 + c${}^{\wedge}$2} \\
  \;\text{       );} \\
- \;\text{w[26] = (b${}^{\wedge}$2 + b*c + c${}^{\wedge}$2} \\
+ \;\text{w[21] = (b${}^{\wedge}$2 + b*c + c${}^{\wedge}$2} \\
  \;\text{       );} \\
- \;\text{r = ( 4*a${}^{\wedge}$4 + x - 8*a${}^{\wedge}$3*HoldForm[w[24]] - 4*a*HoldForm[w[24]]*} \\
- \;\text{  HoldForm[w[25]] + HoldForm[w[25]]${}^{\wedge}$2 + 8*a${}^{\wedge}$2*HoldForm[w[26]]} \\
+ \;\text{r = ( 4*a${}^{\wedge}$4 + x - 8*a${}^{\wedge}$3*HoldForm[w[19]] - 4*a*HoldForm[w[19]]*} \\
+ \;\text{  HoldForm[w[20]] + HoldForm[w[20]]${}^{\wedge}$2 + 8*a${}^{\wedge}$2*HoldForm[w[21]]} \\
  \;\text{       );} \\
 \end{array}$$
 
@@ -84,15 +85,16 @@ TableForm[ReadList[If[$OperatingSystem === "MacOS", ":", ""] <> tempfilename, St
 ```
 
 $$\begin{array}{l}
- \;\text{        w(24)= b + c} \\
- \;\text{        w(25)= b**2 + c**2} \\
- \;\text{        w(26)= b**2 + b*c + c**2} \\
- \;\text{        r = x + a**4*4D0 - a**3*8D0*w(24) - a*4D0*w(24)*w(25) + } \\
- \;\text{     $\&$  w(25)**2 + a**2*8D0*w(26)} \\
+ \;\text{        w(19)= b + c} \\
+ \;\text{        w(20)= b**2 + c**2} \\
+ \;\text{        w(21)= b**2 + b*c + c**2} \\
+ \;\text{        r = x + a**4*4D0 - a**3*8D0*w(19) - a*4D0*w(19)*w(20) + } \\
+ \;\text{     $\&$  w(20)**2 + a**2*8D0*w(21)} \\
  \;\text{                  } \\
 \end{array}$$
 
 ```mathematica
-DeleteFile[If[$OperatingSystem === "MacOS", ":", ""] <> tempfilename];
+DeleteFile[If[$OperatingSystem === "MacOS", ":", ""] <> tempfilename]; 
+ 
 Clear[w, t, t2, r, tempfilename];
 ```

@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-LC[\[Mu], \[Nu], \[Rho], \[Sigma]] LC[\[Alpha], \[Nu], \[Rho], \[Sigma]]
+LC[\[Mu], \[Nu], \[Rho], \[Sigma]] LC[\[Alpha], \[Nu], \[Rho], \[Sigma]] 
+ 
 Contract[%, EpsContract -> False, Rename -> True] 
   
  

@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-DCHN[(GS[p] + m) . GA[mu], i, j]
+DCHN[(GS[p] + m) . GA[mu], i, j] 
+ 
 DiracChainExpand[%]
 ```
 

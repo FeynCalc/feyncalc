@@ -9,7 +9,8 @@
 Available symmetry relations are saved here
 
 ```mathematica
-FileBaseName /@ FileNames["*.sym", FileNameJoin[{$FeynCalcDirectory, "Tables", "PaVeSymmetries"}]]
+FileBaseName /@ FileNames["*.sym", FileNameJoin[{$FeynCalcDirectory, "Tables", 
+     "PaVeSymmetries"}]]
 ```
 
 $$\{\text{ScalarFunctions},\text{TensorBFunctions},\text{TensorCFunctions},\text{TensorDFunctions},\text{TensorEFunctions},\text{TensorFFunctions}\}$$
@@ -67,7 +68,9 @@ $$\text{D}_0(a,b,c,d,e,f,\text{m12},\text{m22},\text{m32},\text{m42})+\text{D}_0
 PaVeOrder can be useful to show that a particular linear combination of `PaVe` functions yields zero
 
 ```mathematica
-diff = PaVe[0, 0, {p14, p30, p24, p13, p20, p40, p34, p23, p12, p10}, {m4, m3, m2,m1, m0}, PaVeAutoOrder -> False] - PaVe[0, 0, {p10, p13, p12, p40, p30, p34, p20, p24, p14, p23}, {m3, m0, m1, m4, m2}, PaVeAutoOrder -> False]
+diff = PaVe[0, 0, {p14, p30, p24, p13, p20, p40, p34, p23, p12, p10}, {m4, m3, m2,m1, m0}, 
+    PaVeAutoOrder -> False] - PaVe[0, 0, {p10, p13, p12, p40, p30, p34, p20, p24, p14, p23}, 
+    {m3, m0, m1, m4, m2}, PaVeAutoOrder -> False]
 ```
 
 $$\text{E}_{00}(\text{p14},\text{p30},\text{p24},\text{p13},\text{p20},\text{p40},\text{p34},\text{p23},\text{p12},\text{p10},\text{m4},\text{m3},\text{m2},\text{m1},\text{m0})-\text{E}_{00}(\text{p10},\text{p13},\text{p12},\text{p40},\text{p30},\text{p34},\text{p20},\text{p24},\text{p14},\text{p23},\text{m3},\text{m0},\text{m1},\text{m4},\text{m2})$$
@@ -78,10 +81,11 @@ diff // PaVeOrder
 
 $$0$$
 
-In most cases, such simplifications require not only 1-to-1 relations but also linear relations between PaVe functions. For example, here we have a 1-to-1 relation between $C_1$ and $C_2$
+In most cases, such simplifications require not only 1-to-1 relations but also linear relations between `PaVe` functions. For example, here we have a 1-to-1 relation between $C_1$ and $C_2$
 
 ```mathematica
-PaVe[2, {p10, p12, p20}, {m1^2, m2^2, m3^2}, PaVeAutoOrder -> False]
+PaVe[2, {p10, p12, p20}, {m1^2, m2^2, m3^2}, PaVeAutoOrder -> False] 
+ 
 PaVeOrder[%]
 ```
 
@@ -116,7 +120,8 @@ $$-\text{C}_0\left(\text{p10},\text{p20},\text{p12},\text{m2}^2,\text{m1}^2,\tex
 When trying to minimize the number of `PaVe` functions in the expression, one often has to try different orderings first
 
 ```mathematica
-diff = (C0[0, SP[p, p], SP[p, p], 0, 0, 0] + 2 PaVe[1, {0, SP[p, p], SP[p, p]}, {0, 0, 0}] + PaVe[1, {SP[p, p], SP[p, p], 0}, {0, 0, 0}])
+diff = (C0[0, SP[p, p], SP[p, p], 0, 0, 0] + 2 PaVe[1, {0, SP[p, p], SP[p, p]}, {0, 0, 0}] + 
+    PaVe[1, {SP[p, p], SP[p, p], 0}, {0, 0, 0}])
 ```
 
 $$\text{C}_0\left(0,\overline{p}^2,\overline{p}^2,0,0,0\right)+2 \;\text{C}_1\left(0,\overline{p}^2,\overline{p}^2,0,0,0\right)+\text{C}_1\left(\overline{p}^2,\overline{p}^2,0,0,0,0\right)$$
@@ -124,7 +129,8 @@ $$\text{C}_0\left(0,\overline{p}^2,\overline{p}^2,0,0,0\right)+2 \;\text{C}_1\le
 This ordering doesn't look very helpful
 
 ```mathematica
-PaVeOrder[diff, PaVeOrderList -> {0, SP[p, p], SP[p, p]}, Sum -> True]
+PaVeOrder[diff, PaVeOrderList -> {0, SP[p, p], SP[p, p]}, Sum -> True] 
+ 
 % // PaVeOrder
 ```
 
@@ -135,7 +141,8 @@ $$\text{C}_0\left(0,\overline{p}^2,\overline{p}^2,0,0,0\right)+2 \;\text{C}_1\le
 But this one does the job
 
 ```mathematica
-PaVeOrder[diff, PaVeOrderList -> {SP[p, p], 0, SP[p, p]}, Sum -> True]
+PaVeOrder[diff, PaVeOrderList -> {SP[p, p], 0, SP[p, p]}, Sum -> True] 
+ 
 % // PaVeOrder
 ```
 
@@ -158,7 +165,8 @@ PaVeOrder[diff, PaVeOrderList -> {m2, m3}, Sum -> True]
 $$0$$
 
 ```mathematica
-diff = PaVe[0, {0}, {m2^2, m3^2}] + 2 PaVe[1, {0}, {m3^2, m2^2}] - PaVe[1, 1, {0}, {m2^2, m3^2}] + PaVe[1, 1, {0}, {m3^2, m2^2}]
+diff = PaVe[0, {0}, {m2^2, m3^2}] + 2 PaVe[1, {0}, {m3^2, m2^2}] - PaVe[1, 1, {0}, {m2^2, m3^2}] + 
+   PaVe[1, 1, {0}, {m3^2, m2^2}]
 ```
 
 $$\text{B}_0\left(0,\text{m2}^2,\text{m3}^2\right)+2 \;\text{B}_1\left(0,\text{m3}^2,\text{m2}^2\right)-\text{B}_{11}\left(0,\text{m2}^2,\text{m3}^2\right)+\text{B}_{11}\left(0,\text{m3}^2,\text{m2}^2\right)$$
@@ -170,8 +178,10 @@ PaVeOrder[diff, Sum -> True, PaVeOrderList -> {m3, m2}]
 $$0$$
 
 ```mathematica
-diff = PaVe[0, {0, 0, 0}, {m2^2, m3^2, m4^2}] + 2 PaVe[1, {0, 0, 0}, {m2^2, m3^2, m4^2}] + 2 PaVe[1, {0, 0, 0}, {m3^2, m2^2, m4^2}] + 
-   PaVe[1, 1, {0, 0, 0}, {m2^2, m3^2, m4^2}] - PaVe[1, 1, {0, 0, 0}, {m2^2, m4^2, m3^2}] + PaVe[1, 1, {0, 0, 0}, {m3^2, m2^2, m4^2}] + 2 PaVe[1, 2, {0, 0, 0}, {m4^2, m2^2, m3^2}]
+diff = PaVe[0, {0, 0, 0}, {m2^2, m3^2, m4^2}] + 2 PaVe[1, {0, 0, 0}, {m2^2, m3^2, m4^2}] + 
+   2 PaVe[1, {0, 0, 0}, {m3^2, m2^2, m4^2}] + PaVe[1, 1, {0, 0, 0}, {m2^2, m3^2, m4^2}] - 
+   PaVe[1, 1, {0, 0, 0}, {m2^2, m4^2, m3^2}] + PaVe[1, 1, {0, 0, 0}, {m3^2, m2^2, m4^2}] + 
+   2 PaVe[1, 2, {0, 0, 0}, {m4^2, m2^2, m3^2}]
 ```
 
 $$\text{C}_0\left(0,0,0,\text{m2}^2,\text{m3}^2,\text{m4}^2\right)+2 \;\text{C}_1\left(0,0,0,\text{m2}^2,\text{m3}^2,\text{m4}^2\right)+2 \;\text{C}_1\left(0,0,0,\text{m3}^2,\text{m2}^2,\text{m4}^2\right)+\text{C}_{11}\left(0,0,0,\text{m2}^2,\text{m3}^2,\text{m4}^2\right)-\text{C}_{11}\left(0,0,0,\text{m2}^2,\text{m4}^2,\text{m3}^2\right)+\text{C}_{11}\left(0,0,0,\text{m3}^2,\text{m2}^2,\text{m4}^2\right)+2 \;\text{C}_{12}\left(0,0,0,\text{m4}^2,\text{m2}^2,\text{m3}^2\right)$$

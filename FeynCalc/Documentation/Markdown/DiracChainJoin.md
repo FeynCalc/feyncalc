@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-DCHN[SpinorUBar[p1, m1], i] DCHN[GAD[\[Mu]] . GAD[\[Nu]], i, j] DCHN[j, SpinorV[p2, m2]]
+DCHN[SpinorUBar[p1, m1], i] DCHN[GAD[\[Mu]] . GAD[\[Nu]], i, j] DCHN[j, SpinorV[p2, m2]] 
+ 
 DiracChainJoin[%]
 ```
 

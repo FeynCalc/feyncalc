@@ -10,14 +10,18 @@
 
 ```mathematica
 Options[ScalarProduct]
-ScalarProduct[m, n, Dimension -> d]
-% // StandardForm
 ```
 
 $$\{\text{Dimension}\to 4,\text{FeynCalcInternal}\to \;\text{True},\text{SetDimensions}\to \{4,D\}\}$$
 
+```mathematica
+ex = ScalarProduct[m, n, Dimension -> d]
+```
+
 $$m\cdot n$$
 
-```
+```mathematica
+ex // StandardForm
+
 (*Pair[Momentum[m, d], Momentum[n, d]]*)
 ```

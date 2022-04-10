@@ -40,23 +40,25 @@ $$p$$
 
 ```mathematica
 Momentum[-q]
-% // StandardForm
 ```
 
 $$-\overline{q}$$
 
-```
+```mathematica
+Momentum[-q] // StandardForm
+
 (*-Momentum[q]*)
 ```
 
 ```mathematica
 ex = Momentum[p - q] + Momentum[2 q]
-% // StandardForm
 ```
 
 $$\left(\overline{p}-\overline{q}\right)+2 \overline{q}$$
 
-```
+```mathematica
+ex // StandardForm
+
 (*Momentum[p - q] + 2 Momentum[q]*)
 ```
 

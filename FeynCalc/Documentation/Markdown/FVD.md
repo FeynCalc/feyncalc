@@ -35,12 +35,13 @@ FCI[FVD[p, \[Mu]]] // StandardForm
 There is no special function to expand momenta in `FVD`.
 
 ```mathematica
-ExpandScalarProduct[FVD[p - q, \[Mu]]]
-StandardForm[%]
+ex = ExpandScalarProduct[FVD[p - q, \[Mu]]]
 ```
 
 $$p^{\mu }-q^{\mu }$$
 
-```
+```mathematica
+ex // StandardForm
+
 (*Pair[LorentzIndex[\[Mu], D], Momentum[p, D]] - Pair[LorentzIndex[\[Mu], D], Momentum[q, D]]*)
 ```

@@ -19,7 +19,8 @@ The Mathematica build-in function `Tr` is overloaded to call `TR` if any of `Dir
 ### Examples
 
 ```mathematica
-GA[\[Mu], \[Nu]]
+GA[\[Mu], \[Nu]] 
+ 
 TR[%]
 ```
 
@@ -58,8 +59,10 @@ TR[GA[\[Alpha], \[Beta]], FCE -> True]
 $$4 \bar{g}^{\alpha \beta }$$
 
 ```mathematica
-GA[\[Mu], \[Nu]] SUNT[b] . SUNT[c] SUNDelta[c, b]
-TR[%, SUNTrace -> False, SUNNToCACF -> True]
+GA[\[Mu], \[Nu]] SUNT[b] . SUNT[c] SUNDelta[c, b] 
+ 
+TR[%, SUNTrace -> False, SUNNToCACF -> True] 
+ 
 TR[%%, SUNTrace -> True, SUNNToCACF -> True]
 ```
 

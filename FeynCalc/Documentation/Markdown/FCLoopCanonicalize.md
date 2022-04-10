@@ -15,9 +15,9 @@ FCLoopCanonicalize[myHead[FVD[q, \[Mu]]], q, myHead]
 $$\left(
 \begin{array}{c}
  \;\text{myHead}\left(q^{\mu }\right) \\
- \{\text{FCGV}(\text{cli241})\to \mu \} \\
- \;\text{myHead}\left(q^{\text{FCGV}(\text{cli241})}\right) \\
- \;\text{myHead}\left(q^{\text{FCGV}(\text{cli241})}\right) \\
+ \{\text{FCGV}(\text{cli191})\to \mu \} \\
+ \;\text{myHead}\left(q^{\text{FCGV}(\text{cli191})}\right) \\
+ \;\text{myHead}\left(q^{\text{FCGV}(\text{cli191})}\right) \\
 \end{array}
 \right)$$
 
@@ -25,4 +25,4 @@ $$\left(
 FCLoopCanonicalize[myHead[FVD[q, \[Mu]] FVD[q, \[Nu]] FAD[q, {q + p, m}]] + myHead[FVD[q, \[Rho]] FVD[q, \[Sigma]] FAD[q, {q + p, m}]], q, myHead]
 ```
 
-$$\left\{\left\{\text{myHead}\left(\frac{q^{\mu } q^{\nu }}{q^2.\left((p+q)^2-m^2\right)}\right),\text{myHead}\left(\frac{q^{\rho } q^{\sigma }}{q^2.\left((p+q)^2-m^2\right)}\right)\right\},\{\{\text{FCGV}(\text{cli251})\to \mu ,\text{FCGV}(\text{cli252})\to \nu \},\{\text{FCGV}(\text{cli251})\to \rho ,\text{FCGV}(\text{cli252})\to \sigma \}\},\left\{\text{myHead}\left(\frac{q^{\text{FCGV}(\text{cli251})} q^{\text{FCGV}(\text{cli252})}}{q^2.\left((p+q)^2-m^2\right)}\right),\text{myHead}\left(\frac{q^{\text{FCGV}(\text{cli251})} q^{\text{FCGV}(\text{cli252})}}{q^2.\left((p+q)^2-m^2\right)}\right)\right\},\left\{\text{myHead}\left(\frac{q^{\text{FCGV}(\text{cli251})} q^{\text{FCGV}(\text{cli252})}}{q^2.\left((p+q)^2-m^2\right)}\right)\right\}\right\}$$
+$$\left\{\left\{\text{myHead}\left(\frac{q^{\mu } q^{\nu }}{q^2.\left((p+q)^2-m^2\right)}\right),\text{myHead}\left(\frac{q^{\rho } q^{\sigma }}{q^2.\left((p+q)^2-m^2\right)}\right)\right\},\{\{\text{FCGV}(\text{cli201})\to \mu ,\text{FCGV}(\text{cli202})\to \nu \},\{\text{FCGV}(\text{cli201})\to \rho ,\text{FCGV}(\text{cli202})\to \sigma \}\},\left\{\text{myHead}\left(\frac{q^{\text{FCGV}(\text{cli201})} q^{\text{FCGV}(\text{cli202})}}{q^2.\left((p+q)^2-m^2\right)}\right),\text{myHead}\left(\frac{q^{\text{FCGV}(\text{cli201})} q^{\text{FCGV}(\text{cli202})}}{q^2.\left((p+q)^2-m^2\right)}\right)\right\},\left\{\text{myHead}\left(\frac{q^{\text{FCGV}(\text{cli201})} q^{\text{FCGV}(\text{cli202})}}{q^2.\left((p+q)^2-m^2\right)}\right)\right\}\right\}$$

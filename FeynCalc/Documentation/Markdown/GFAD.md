@@ -13,8 +13,10 @@ If `n` is not explicitly specified, then the default value `1` is assumed. Trans
 ### Examples
 
 ```mathematica
-GFAD[2 z SPD[p1, q] SPD[p2, q] + x SPD[p1, p2]]
-FeynAmpDenominatorExplicit[%]
+GFAD[2 z SPD[p1, q] SPD[p2, q] + x SPD[p1, p2]] 
+ 
+FeynAmpDenominatorExplicit[%] 
+ 
 % // FCE // StandardForm
 ```
 

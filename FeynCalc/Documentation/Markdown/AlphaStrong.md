@@ -11,7 +11,8 @@ The shortcut `AlphaStrong` is deprecated, please use `SMP["alpha_s"]` instead!
 ### Examples
 
 ```mathematica
-AlphaStrong
+AlphaStrong 
+ 
 % // InputForm
 ```
 

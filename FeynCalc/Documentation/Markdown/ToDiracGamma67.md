@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-GA[\[Mu]] . (1/2 + GA[5]/2) . GA[\[Nu]]
+GA[\[Mu]] . (1/2 + GA[5]/2) . GA[\[Nu]] 
+ 
 ToDiracGamma67[%]
 ```
 
@@ -20,7 +21,8 @@ $$\bar{\gamma }^{\mu }.\bar{\gamma }^6.\bar{\gamma }^{\nu }$$
 When the option `All` is set to `True`, also standalone $\gamma^5$ will be replaced
 
 ```mathematica
-GA[\[Mu], 5, \[Nu]]
+GA[\[Mu], 5, \[Nu]] 
+ 
 ToDiracGamma67[%, All -> True]
 ```
 

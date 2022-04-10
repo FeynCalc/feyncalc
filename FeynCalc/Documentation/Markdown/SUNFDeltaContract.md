@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-SUNFDelta[SUNFIndex[a], SUNFIndex[b]]^2
+SUNFDelta[SUNFIndex[a], SUNFIndex[b]]^2 
+ 
 SUNFDeltaContract[%]
 ```
 

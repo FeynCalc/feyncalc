@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-GA[\[Beta], \[Alpha]]
+GA[\[Beta], \[Alpha]] 
+ 
 DiracOrder[%]
 ```
 
@@ -20,7 +21,8 @@ $$2 \bar{g}^{\alpha \beta }-\bar{\gamma }^{\alpha }.\bar{\gamma }^{\beta }$$
 `DiracOrder` also works with Dirac matrices in  $D$-dimensions.
 
 ```mathematica
-GAD[\[Rho], \[Nu], \[Mu], \[Nu]]
+GAD[\[Rho], \[Nu], \[Mu], \[Nu]] 
+ 
 DiracOrder[%]
 ```
 
@@ -31,7 +33,8 @@ $$(D-2) \gamma ^{\mu }.\gamma ^{\rho }+2 (2-D) g^{\mu \rho }$$
 By default $\gamma^5$ is moved to the right.
 
 ```mathematica
-GA[5, \[Mu], \[Nu]]
+GA[5, \[Mu], \[Nu]] 
+ 
 DiracOrder[%]
 ```
 
@@ -40,7 +43,8 @@ $$\bar{\gamma }^5.\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }$$
 $$\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^5$$
 
 ```mathematica
-GA[6, \[Mu], 7]
+GA[6, \[Mu], 7] 
+ 
 DiracOrder[%]
 ```
 
@@ -51,7 +55,8 @@ $$\bar{\gamma }^{\mu }.\bar{\gamma }^7$$
 `orderlist` comes into play when we need an ordering that is not lexicographic
 
 ```mathematica
-GA[\[Alpha], \[Beta], \[Delta]]
+GA[\[Alpha], \[Beta], \[Delta]] 
+ 
 DiracOrder[%]
 ```
 

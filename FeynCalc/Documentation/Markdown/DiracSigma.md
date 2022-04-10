@@ -11,7 +11,8 @@
 ### Examples
 
 ```mathematica
-DiracSigma[GA[\[Alpha]], GA[\[Beta]]]
+DiracSigma[GA[\[Alpha]], GA[\[Beta]]] 
+ 
 DiracSigmaExplicit[%]
 ```
 
@@ -26,7 +27,8 @@ DiracSigma[GA[\[Beta]], GA[\[Alpha]]]
 $$-\sigma ^{\alpha \beta }$$
 
 ```mathematica
-DiracSigma[GS[p], GS[q]]
+DiracSigma[GS[p], GS[q]] 
+ 
 DiracSigmaExplicit[%]
 ```
 

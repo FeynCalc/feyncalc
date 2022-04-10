@@ -9,7 +9,8 @@ DiracSubstitute5[exp] rewrites $\gamma^5$ in terms of the chirality projectors $
 ### Examples
 
 ```mathematica
-GA[5]
+GA[5] 
+ 
 DiracSubstitute5[%]
 ```
 
@@ -18,7 +19,8 @@ $$\bar{\gamma }^5$$
 $$\bar{\gamma }^6-\bar{\gamma }^7$$
 
 ```mathematica
-SpinorUBar[Subscript[p, 1]] . GA[\[Mu]] . GA[5] . GA[\[Nu]] . SpinorU[Subscript[p, 2]]
+SpinorUBar[Subscript[p, 1]] . GA[\[Mu]] . GA[5] . GA[\[Nu]] . SpinorU[Subscript[p, 2]] 
+ 
 DiracSubstitute5[%]
 ```
 

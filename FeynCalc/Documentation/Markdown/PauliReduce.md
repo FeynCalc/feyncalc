@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-CSI[i, j, k]
+CSI[i, j, k] 
+ 
 PauliSimplify[%]
 ```
 
@@ -18,11 +19,9 @@ $$\overline{\sigma }^i.\overline{\sigma }^j.\overline{\sigma }^k$$
 $$\overline{\sigma }^i.\overline{\sigma }^j.\overline{\sigma }^k$$
 
 ```mathematica
-CSI[i, j, k]
-PauliSimplify[%, PauliReduce -> True] 
-  
+CSI[i, j, k] 
  
-
+PauliSimplify[%, PauliReduce -> True]
 ```
 
 $$\overline{\sigma }^i.\overline{\sigma }^j.\overline{\sigma }^k$$

@@ -9,8 +9,10 @@
 ### Examples
 
 ```mathematica
-FAD[{q, m}, {q - p, 0}]
-FeynAmpDenominatorExplicit[%]
+FAD[{q, m}, {q - p, 0}] 
+ 
+FeynAmpDenominatorExplicit[%] 
+ 
 % // FCE // StandardForm
 ```
 

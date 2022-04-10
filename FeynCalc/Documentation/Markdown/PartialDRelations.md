@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-QuantumField[A, {\[Mu]}] . QuantumField[B, {\[Mu]}] . LeftPartialD[\[Nu]]
+QuantumField[A, {\[Mu]}] . QuantumField[B, {\[Mu]}] . LeftPartialD[\[Nu]] 
+ 
 ExpandPartialD[%, PartialDRelations -> {A -> C}]
 ```
 

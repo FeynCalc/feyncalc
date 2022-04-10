@@ -13,7 +13,8 @@ DeclareNonCommutative[a, b, c, d]
 ```
 
 ```mathematica
-Commutator[a, b]
+Commutator[a, b] 
+ 
 CommutatorExplicit[%]
 ```
 
@@ -23,6 +24,7 @@ $$a.b-b.a$$
 
 ```mathematica
 DotSimplify[Commutator[a + b, c + d]] 
+ 
 UnDeclareNonCommutative[a, b, c, d]
 ```
 
@@ -35,7 +37,8 @@ Verify the Jacobi identity.
 ```
 
 ```mathematica
-\[Chi][x, \[Chi][y, z]] + \[Chi][y, \[Chi][z, x]] + \[Chi][z, \[Chi][x, y]]
+\[Chi][x, \[Chi][y, z]] + \[Chi][y, \[Chi][z, x]] + \[Chi][z, \[Chi][x, y]] 
+ 
 DotSimplify[%]
 ```
 
@@ -44,6 +47,7 @@ $$[x,[y,z]]+[y,[z,x]]+[z,[x,y]]$$
 $$0$$
 
 ```mathematica
-Clear[\[Chi]]
+Clear[\[Chi]] 
+ 
 UnDeclareNonCommutative[x, y, z]
 ```

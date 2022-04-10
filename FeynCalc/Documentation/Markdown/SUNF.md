@@ -9,8 +9,10 @@
 ### Examples
 
 ```mathematica
-SUNF[a, b, c] x + SUNF[b, a, c]
-Calc[%]
+SUNF[a, b, c] x + SUNF[b, a, c] 
+ 
+Calc[%] 
+ 
 SUNSimplify[%%]
 ```
 
@@ -21,7 +23,8 @@ $$x f^{abc}-f^{abc}$$
 $$(x-1) f^{abc}$$
 
 ```mathematica
-SUNF[a, a, b]
+SUNF[a, a, b] 
+ 
 % // Calc
 ```
 
@@ -68,7 +71,8 @@ SUNF[a, b, c] // FCI // FCE // StandardForm
 ```
 
 ```mathematica
-SUNF[b, a, c]
+SUNF[b, a, c] 
+ 
 % // FCI
 ```
 

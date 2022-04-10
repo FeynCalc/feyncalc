@@ -14,23 +14,25 @@ Dirac indices are the indices that denote the components of Dirac matrices or sp
 
 ```mathematica
 DiracIndex[i]
-% // StandardForm
 ```
 
 $$i$$
 
-```
+```mathematica
+DiracIndex[i] // StandardForm
+
 (*DiracIndex[i]*)
 ```
 
 ```mathematica
 DiracIndex[2]
-% // StandardForm
 ```
 
 $$2$$
 
-```
+```mathematica
+DiracIndex[2] // StandardForm
+
 (*ExplicitDiracIndex[2]*)
 ```
 

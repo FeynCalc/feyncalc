@@ -99,7 +99,8 @@ ExpandScalarProduct[CartesianPair[CartesianMomentum[p - q], CartesianMomentum[p]
 $$\overline{p}^2-\overline{p}\cdot \overline{q}$$
 
 ```mathematica
-CartesianPair[CartesianMomentum[-q], CartesianMomentum[p]] + CartesianPair[CartesianMomentum[q], CartesianMomentum[p]]
+CartesianPair[CartesianMomentum[-q], CartesianMomentum[p]] + 
+  CartesianPair[CartesianMomentum[q], CartesianMomentum[p]]
 ```
 
 $$0$$

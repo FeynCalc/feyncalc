@@ -9,8 +9,10 @@
 ### Examples
 
 ```mathematica
-ClearAll[s, t, u]
-(s + t - u) (2 SMP["m_W"]^2 - t - u)
+ClearAll[s, t, u] 
+ 
+(s + t - u) (2 SMP["m_W"]^2 - t - u) 
+ 
 TrickMandelstam[%, {s, t, u, 2 SMP["m_W"]^2}] // Factor2
 ```
 
@@ -19,7 +21,8 @@ $$(s+t-u) \left(2 m_W^2-t-u\right)$$
 $$-2 s \left(u-m_W^2\right)$$
 
 ```mathematica
-M^2 s - s^2 + M^2 t - s t + M^2 u - s u
+M^2 s - s^2 + M^2 t - s t + M^2 u - s u 
+ 
 TrickMandelstam[%, {s, t, u, 2 M^2}] 
   
  

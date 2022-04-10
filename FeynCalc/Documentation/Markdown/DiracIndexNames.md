@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-DCHN[GA[mu], i, j] DCHN[GA[nu], j, k]
+DCHN[GA[mu], i, j] DCHN[GA[nu], j, k] 
+ 
 FCCanonicalizeDummyIndices[%]
 ```
 
@@ -18,11 +19,9 @@ $$\left(\bar{\gamma }^{\text{mu}}\right){}_{ij} \left(\bar{\gamma }^{\text{nu}}\
 $$\left(\bar{\gamma }^{\text{mu}}\right){}_{i\text{FCGV}(\text{di241})} \left(\bar{\gamma }^{\text{nu}}\right){}_{\text{FCGV}(\text{di241})k}$$
 
 ```mathematica
-DCHN[GA[mu], i, j] DCHN[GA[nu], j, k]
-FCCanonicalizeDummyIndices[%, DiracIndexNames -> {a}] 
-  
+DCHN[GA[mu], i, j] DCHN[GA[nu], j, k] 
  
-
+FCCanonicalizeDummyIndices[%, DiracIndexNames -> {a}]
 ```
 
 $$\left(\bar{\gamma }^{\text{mu}}\right){}_{ij} \left(\bar{\gamma }^{\text{nu}}\right){}_{jk}$$

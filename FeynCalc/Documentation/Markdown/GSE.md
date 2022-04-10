@@ -10,24 +10,25 @@
 
 ```mathematica
 GSE[p]
-GSE[p] // FCI // StandardForm
-
 ```
 
 $$\hat{\gamma }\cdot \hat{p}$$
 
-```
+```mathematica
+GSE[p] // FCI // StandardForm
+
 (*DiracGamma[Momentum[p, -4 + D], -4 + D]*)
 ```
 
 ```mathematica
 GSE[p, q, r, s]
-GSE[p, q, r, s] // StandardForm
 ```
 
 $$\left(\hat{\gamma }\cdot \hat{p}\right).\left(\hat{\gamma }\cdot \hat{q}\right).\left(\hat{\gamma }\cdot \hat{r}\right).\left(\hat{\gamma }\cdot \hat{s}\right)$$
 
-```
+```mathematica
+GSE[p, q, r, s] // StandardForm
+
 (*GSE[p] . GSE[q] . GSE[r] . GSE[s]*)
 ```
 
@@ -40,16 +41,18 @@ $$\left(\hat{\gamma }\cdot \hat{q}\right).\left(m+\hat{\gamma }\cdot \hat{p}\rig
 In order to use Dirac algebra with $D-4$ dimensional objects you need to activate the t'Hooft-Veltman-Breitenlohner-Maison scheme first
 
 ```mathematica
-FCSetDiracGammaScheme["NDR"];
+FCSetDiracGammaScheme["NDR"]; 
+ 
 DiracSimplify[GSE[q] . GS[q] . GSE[q]]
 ```
 
-![0ek7n8h3ou34v](img/0ek7n8h3ou34v.svg)
+![1h0chl63b60ya](img/1h0chl63b60ya.pdf)
 
 $$\text{\$Aborted}$$
 
 ```mathematica
-FCSetDiracGammaScheme["BMHV"];
+FCSetDiracGammaScheme["BMHV"]; 
+ 
 DiracSimplify[GSE[q] . GS[q] . GSE[q]]
 ```
 

@@ -9,19 +9,26 @@
 ### Examples
 
 ```mathematica
-FCClearScalarProducts[]
-SPD[p1] = 0;
-SPD[p1, p4] = 0;
-SPD[p3, p4] = 0;
-SPD[p1, p2] = 0;
-SPD[p2, p4] = 0;
+FCClearScalarProducts[] 
+ 
+SPD[p1] = 0; 
+ 
+SPD[p1, p4] = 0; 
+ 
+SPD[p3, p4] = 0; 
+ 
+SPD[p1, p2] = 0; 
+ 
+SPD[p2, p4] = 0; 
+ 
 int = FCI[FAD[{q, m0}, {q + p1, 0}, {q + p2, 0}, {q + p3, 0}, {q + p4, 0}]]
 ```
 
 $$\frac{1}{\left(q^2-\text{m0}^2\right).(\text{p1}+q)^2.(\text{p2}+q)^2.(\text{p3}+q)^2.(\text{p4}+q)^2}$$
 
 ```mathematica
-NPointTo4Point[int, q, FCE -> True, FCVerbose -> -1]
+NPointTo4Point[int, q, FCE -> True, FCVerbose -> -1] 
+ 
 FCClearScalarProducts[]
 ```
 

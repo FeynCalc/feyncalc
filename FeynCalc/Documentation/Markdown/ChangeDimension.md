@@ -13,16 +13,18 @@ Notice that the dimension of `CartesianIndex` and `CartesianMomentum` objects wi
 Remember that `LorentzIndex[mu, 4]` is simplified to `LorentzIndex[mu]` and `Momentum[p, 4]` to `Momentum[p]`. Thus the following objects are defined in four dimensions.
 
 ```mathematica
-{LorentzIndex[\[Mu]], Momentum[p]}
-ChangeDimension[%, D]
-% // StandardForm
+{LorentzIndex[\[Mu]], Momentum[p]} 
+ 
+ex = ChangeDimension[%, D]
 ```
 
 $$\left\{\mu ,\overline{p}\right\}$$
 
 $$\{\mu ,p\}$$
 
-```
+```mathematica
+ex // StandardForm
+
 (*{LorentzIndex[\[Mu], D], Momentum[p, D]}*)
 ```
 
@@ -37,8 +39,10 @@ ChangeDimension[%%, 4] // StandardForm
 Consider the following list of 4- and D-dimensional objects
 
 ```mathematica
-{GA[\[Mu], \[Nu]] MT[\[Mu], \[Nu]], GAD[\[Mu], \[Nu]] MTD[\[Mu], \[Nu]] f[D]}
-DiracTrick /@ Contract /@ %
+{GA[\[Mu], \[Nu]] MT[\[Mu], \[Nu]], GAD[\[Mu], \[Nu]] MTD[\[Mu], \[Nu]] f[D]} 
+ 
+DiracTrick /@ Contract /@ % 
+ 
 DiracTrick /@ Contract /@ ChangeDimension[%%, n]
 ```
 
@@ -51,8 +55,10 @@ $$\{n,n f(D)\}$$
 Any explicit occurrence of $D$ (like in $f(D)$) is not replaced by `ChangeDimension`.
 
 ```mathematica
-LC[\[Mu], \[Nu], \[Rho], \[Sigma]]
-ChangeDimension[%, D]
+LC[\[Mu], \[Nu], \[Rho], \[Sigma]] 
+ 
+ChangeDimension[%, D] 
+ 
 Factor2[Contract[%^2]]
 ```
 

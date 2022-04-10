@@ -1,3 +1,5 @@
+## FCLoopToPakForm
+
 `FCLoopToPakForm[int, {p1, p2, ...}]` determines a canonical $UF$-based representation for the scalar multi-loop integral `int` that depend on the loop momenta `p1, p2, ...` using the algorithm of Alexey Pak [arXiv:1111.0868](https://arxiv.org/abs/1111.0868).
 
 The current implementation is based on the `FindEquivalents` function from FIRE 6 [arXiv:1901.07808](https://arxiv.org/abs/1901.07808). `FCLoopToPakForm` is a backend function used in `FCLoopPakScalelessQ`, `FCLoopFindIntegralMappings`, `FCLoopFindTopologyMappings` etc.
@@ -24,7 +26,8 @@ $$\left\{\frac{1}{\text{p1}^2.\left(\text{p3}^2-\text{m1}^2\right).\left((\text{
 \right)\right)\right\}$$
 
 ```mathematica
-topo1 = FCTopology["prop2Lv1", {SFAD[{p1, m1^2}], SFAD[{p2, m2^2}], SFAD[p1 - q], SFAD[p2 - q], SFAD[{p1 - p2, m3^2}]}, {p1, p2}, {Q}, {}, {}]
+topo1 = FCTopology["prop2Lv1", {SFAD[{p1, m1^2}], SFAD[{p2, m2^2}], SFAD[p1 - q], SFAD[p2 - q], SFAD[{p1 - p2, m3^2}]}, {p1, p2}, {Q}, {}, {}] 
+ 
 topo2 = FCTopology["prop2Lv2", {SFAD[{p1, m1^2}], SFAD[{p2, m2^2}], SFAD[{p1 - q, M^2}], SFAD[{p2 - q, M^2}], SFAD[p1 - p2]}, {p1, p2}, {Q}, {}, {}]
 ```
 

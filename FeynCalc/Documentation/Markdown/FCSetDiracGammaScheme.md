@@ -21,8 +21,10 @@ Following schemes are supported:
 In NDR chiral traces remain unevaluated. You decide how to treat them.
 
 ```mathematica
-FCSetDiracGammaScheme["NDR"]
-DiracTrace[GAD[\[Mu], \[Nu], \[Rho], \[Sigma], \[Tau], \[Kappa], 5]]
+FCSetDiracGammaScheme["NDR"] 
+ 
+DiracTrace[GAD[\[Mu], \[Nu], \[Rho], \[Sigma], \[Tau], \[Kappa], 5]] 
+ 
 DiracSimplify[%]
 ```
 
@@ -35,7 +37,8 @@ $$\text{tr}\left(\gamma ^{\mu }.\gamma ^{\nu }.\gamma ^{\rho }.\gamma ^{\sigma }
 If you know that such traces do not contribute, use NDR-Discard scheme to put them to zero
 
 ```mathematica
-FCSetDiracGammaScheme["NDR-Discard"]
+FCSetDiracGammaScheme["NDR-Discard"] 
+ 
 DiracSimplify[DiracTrace[GAD[\[Mu], \[Nu], \[Rho], \[Sigma], \[Tau], \[Kappa], 5]]]
 ```
 
@@ -46,7 +49,8 @@ $$0$$
 In BMHV chiral traces are algebraically well-defined
 
 ```mathematica
-FCSetDiracGammaScheme["BMHV"]
+FCSetDiracGammaScheme["BMHV"] 
+ 
 res1 = DiracSimplify[DiracTrace[GAD[\[Mu], \[Nu], \[Rho], \[Sigma], \[Tau], \[Kappa], 5]]]
 ```
 
@@ -57,7 +61,8 @@ $$-4 i g^{\kappa \mu } \bar{\epsilon }^{\nu \rho \sigma \tau }+4 i g^{\kappa \nu
 Larin's scheme reproduces the results of the BMHV scheme, but this may not be immediately obvious
 
 ```mathematica
-FCSetDiracGammaScheme["Larin"]
+FCSetDiracGammaScheme["Larin"] 
+ 
 res2 = DiracSimplify[DiracTrace[GAD[\[Mu], \[Nu], \[Rho], \[Sigma], \[Tau], \[Kappa], 5]]]
 ```
 
@@ -68,8 +73,10 @@ $$4 i g^{\mu \nu } \overset{\text{}}{\epsilon }^{\kappa \rho \sigma \tau }-4 i g
 Owing to Schouten identities, proving the equivalence of chiral traces is not so simple, especially for many terms. `FCSchoutenBruteForce` can be helpful here
 
 ```mathematica
-diff = ChangeDimension[res1 - res2, D]
-Contract[FV[p1, \[Mu]] FV[p2, \[Nu]] FV[p3, \[Rho]] FV[p4, \[Sigma]] FV[p5, \[Tau]] FV[p6, \[Kappa]] diff]
+diff = ChangeDimension[res1 - res2, D] 
+ 
+Contract[FV[p1, \[Mu]] FV[p2, \[Nu]] FV[p3, \[Rho]] FV[p4, \[Sigma]] FV[p5, \[Tau]] FV[p6, \[Kappa]] diff] 
+ 
 FCSchoutenBruteForce[%, {}, {}]
 ```
 

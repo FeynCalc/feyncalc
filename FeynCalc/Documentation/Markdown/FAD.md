@@ -4,7 +4,7 @@
 
 `FAD[q, q-p, ...]` is $\frac{1}{q^2 (q-p)^2 \ldots}$.
 
-`FAD[{q1,m}, {q1-p,m}, q2, ...]` is \frac{1}{[q1^2 - m^2][(q1-p)^2 - m^2] q2^2 }. Translation into FeynCalc internal form is performed by `FeynCalcInternal`.
+`FAD[{q1,m}, {q1-p,m}, q2, ...]` is $\frac{1}{[q1^2 - m^2][(q1-p)^2 - m^2] q2^2}$. Translation into FeynCalc internal form is performed by `FeynCalcInternal`.
 
 ### See also
 

@@ -17,7 +17,8 @@ DIDelta[i, j]
 $$\delta _{ij}$$
 
 ```mathematica
-DIDelta[i, i]
+DIDelta[i, i] 
+ 
 DiracChainJoin[%]
 ```
 
@@ -26,7 +27,8 @@ $$\delta _{ii}$$
 $$4$$
 
 ```mathematica
-DIDelta[i, j]^2
+DIDelta[i, j]^2 
+ 
 DiracChainJoin[%]
 ```
 
@@ -35,7 +37,8 @@ $$\delta _{ij}^2$$
 $$4$$
 
 ```mathematica
-DIDelta[i, j] DIDelta[j, k]
+DIDelta[i, j] DIDelta[j, k] 
+ 
 DiracChainJoin[%]
 ```
 

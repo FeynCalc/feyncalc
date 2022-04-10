@@ -22,12 +22,13 @@ SISD[p] // FCI // StandardForm
 
 ```mathematica
 SISD[p, q, r, s]
-% // StandardForm
 ```
 
 $$(\sigma \cdot p).(\sigma \cdot q).(\sigma \cdot r).(\sigma \cdot s)$$
 
-```
+```mathematica
+SISD[p, q, r, s] // StandardForm
+
 (*SISD[p] . SISD[q] . SISD[r] . SISD[s]*)
 ```
 

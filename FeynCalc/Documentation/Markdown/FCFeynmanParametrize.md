@@ -59,7 +59,8 @@ $$\left\{(x(1)+x(2))^{2-D} \left(-p^2 x(1) x(2)\right)^{\frac{D}{2}-2},\Gamma \l
 With $p^2$ replaced by `pp` and `D` set to `4 - 2 Epsilon`
 
 ```mathematica
-FCFeynmanParametrize[FAD[q, q - p], {q}, Names -> x, FinalSubstitutions -> SPD[p] -> pp, FCReplaceD -> {D -> 4 - 2 Epsilon}]
+FCFeynmanParametrize[FAD[q, q - p], {q}, Names -> x, FinalSubstitutions -> SPD[p] -> pp, 
+  FCReplaceD -> {D -> 4 - 2 Epsilon}]
 ```
 
 $$\left\{(x(1)+x(2))^{2 \varepsilon -2} (-\text{pp} x(1) x(2))^{-\varepsilon },\Gamma (\varepsilon ),\{x(1),x(2)\}\right\}$$
@@ -67,8 +68,8 @@ $$\left\{(x(1)+x(2))^{2 \varepsilon -2} (-\text{pp} x(1) x(2))^{-\varepsilon },\
 Standard text-book prefactor of the loop integral measure
 
 ```mathematica
-FCFeynmanParametrize[FAD[q, q - p], {q}, Names -> x, FinalSubstitutions -> SPD[p] -> pp, FCReplaceD -> {D -> 4 - 2 Epsilon}, 
-  FeynmanIntegralPrefactor -> "Textbook"]
+FCFeynmanParametrize[FAD[q, q - p], {q}, Names -> x, FinalSubstitutions -> SPD[p] -> pp, 
+  FCReplaceD -> {D -> 4 - 2 Epsilon}, FeynmanIntegralPrefactor -> "Textbook"]
 ```
 
 $$\left\{(x(1)+x(2))^{2 \varepsilon -2} (-\text{pp} x(1) x(2))^{-\varepsilon },i 2^{2 \varepsilon -4} \pi ^{\varepsilon -2} \Gamma (\varepsilon ),\{x(1),x(2)\}\right\}$$
@@ -76,8 +77,8 @@ $$\left\{(x(1)+x(2))^{2 \varepsilon -2} (-\text{pp} x(1) x(2))^{-\varepsilon },i
 Same integral but with the Euclidean metric signature
 
 ```mathematica
-FCFeynmanParametrize[FAD[q, q - p], {q}, Names -> x, FinalSubstitutions -> SPD[p] -> pp, FCReplaceD -> {D -> 4 - 2 Epsilon}, 
-  FeynmanIntegralPrefactor -> "Textbook", "Euclidean" -> True]
+FCFeynmanParametrize[FAD[q, q - p], {q}, Names -> x, FinalSubstitutions -> SPD[p] -> pp, 
+  FCReplaceD -> {D -> 4 - 2 Epsilon}, FeynmanIntegralPrefactor -> "Textbook", "Euclidean" -> True]
 ```
 
 $$\left\{(x(1)+x(2))^{2 \varepsilon -2} (\text{pp} x(1) x(2))^{-\varepsilon },2^{2 \varepsilon -4} \pi ^{\varepsilon -2} \Gamma (\varepsilon ),\{x(1),x(2)\}\right\}$$
@@ -85,7 +86,8 @@ $$\left\{(x(1)+x(2))^{2 \varepsilon -2} (\text{pp} x(1) x(2))^{-\varepsilon },2^
 A tensor integral
 
 ```mathematica
-FCFeynmanParametrize[FAD[{q, m}] FAD[{q - p, m2}] FVD[q, mu] FVD[q, nu], {q}, Names -> x, FCE -> True]
+FCFeynmanParametrize[FAD[{q, m}] FAD[{q - p, m2}] FVD[q, mu] FVD[q, nu], {q}, 
+  Names -> x, FCE -> True]
 ```
 
 $$\left\{(x(1)+x(2))^{-D} \left(m^2 x(1)^2+m^2 x(1) x(2)+\text{m2}^2 x(2)^2+\text{m2}^2 x(1) x(2)-p^2 x(1) x(2)\right)^{\frac{D}{2}-2} \left(x(2)^2 \Gamma \left(2-\frac{D}{2}\right) p^{\text{mu}} p^{\text{nu}}-\frac{1}{2} \Gamma \left(1-\frac{D}{2}\right) g^{\text{mu}\;\text{nu}} \left(m^2 x(1)^2+m^2 x(1) x(2)+\text{m2}^2 x(2)^2+\text{m2}^2 x(1) x(2)-p^2 x(1) x(2)\right)\right),1,\{x(1),x(2)\}\right\}$$
@@ -93,8 +95,10 @@ $$\left\{(x(1)+x(2))^{-D} \left(m^2 x(1)^2+m^2 x(1) x(2)+\text{m2}^2 x(2)^2+\tex
 1-loop master formulas for Minkowski integrals (cf. Eq. 9.49b in Sterman's An introduction to QFT)
 
 ```mathematica
-SFAD[{{k, 2 p . k}, M^2, s}]
-FCFeynmanParametrize[%, {k}, Names -> x, FCE -> True, FeynmanIntegralPrefactor -> 1, FCReplaceD -> {D -> n}]
+SFAD[{{k, 2 p . k}, M^2, s}] 
+ 
+FCFeynmanParametrize[%, {k}, Names -> x, FCE -> True, FeynmanIntegralPrefactor -> 1, 
+  FCReplaceD -> {D -> n}]
 ```
 
 $$(k^2+2 (k\cdot p)-M^2+i \eta )^{-s}$$
@@ -102,8 +106,10 @@ $$(k^2+2 (k\cdot p)-M^2+i \eta )^{-s}$$
 $$\left\{1,\frac{i \pi ^{n/2} (-1)^s \Gamma \left(s-\frac{n}{2}\right) \left(M^2+p^2\right)^{\frac{n}{2}-s}}{\Gamma (s)},\{\}\right\}$$
 
 ```mathematica
-FVD[k, \[Mu]] SFAD[{{k, 2 p . k}, M^2, s}]
-FCFeynmanParametrize[%, {k}, Names -> x, FCE -> True, FeynmanIntegralPrefactor -> 1, FCReplaceD -> {D -> n}]
+FVD[k, \[Mu]] SFAD[{{k, 2 p . k}, M^2, s}] 
+ 
+FCFeynmanParametrize[%, {k}, Names -> x, FCE -> True, FeynmanIntegralPrefactor -> 1, 
+  FCReplaceD -> {D -> n}]
 ```
 
 $$k^{\mu } (k^2+2 (k\cdot p)-M^2+i \eta )^{-s}$$
@@ -111,8 +117,10 @@ $$k^{\mu } (k^2+2 (k\cdot p)-M^2+i \eta )^{-s}$$
 $$\left\{1,-\frac{i \pi ^{n/2} (-1)^s p^{\mu } \Gamma \left(s-\frac{n}{2}\right) \left(M^2+p^2\right)^{\frac{n}{2}-s}}{\Gamma (s)},\{\}\right\}$$
 
 ```mathematica
-FVD[k, \[Mu]] FVD[k, \[Nu]] SFAD[{{k, 2 p . k}, M^2, s}]
-FCFeynmanParametrize[%, {k}, Names -> x, FCE -> True, FeynmanIntegralPrefactor -> 1, FCReplaceD -> {D -> n}]
+FVD[k, \[Mu]] FVD[k, \[Nu]] SFAD[{{k, 2 p . k}, M^2, s}] 
+ 
+FCFeynmanParametrize[%, {k}, Names -> x, FCE -> True, FeynmanIntegralPrefactor -> 1, 
+  FCReplaceD -> {D -> n}]
 ```
 
 $$k^{\mu } k^{\nu } (k^2+2 (k\cdot p)-M^2+i \eta )^{-s}$$
@@ -122,8 +130,10 @@ $$\left\{1,\frac{i \pi ^{n/2} (-1)^s \left(M^2+p^2\right)^{\frac{n}{2}-s} \left(
 1-loop master formulas for Euclidean integrals (cf. Eq. 9.49a in Sterman's An introduction to QFT)
 
 ```mathematica
-SFAD[{{k, 2 p . k}, -M^2, s}]
-FCFeynmanParametrize[%, {k}, Names -> x, FCE -> True, "Euclidean" -> True, FeynmanIntegralPrefactor -> I]
+SFAD[{{k, 2 p . k}, -M^2, s}] 
+ 
+FCFeynmanParametrize[%, {k}, Names -> x, FCE -> True, "Euclidean" -> True, 
+  FeynmanIntegralPrefactor -> I]
 ```
 
 $$(k^2+2 (k\cdot p)+M^2+i \eta )^{-s}$$
@@ -131,8 +141,10 @@ $$(k^2+2 (k\cdot p)+M^2+i \eta )^{-s}$$
 $$\left\{1,\frac{i \pi ^{D/2} \Gamma \left(s-\frac{D}{2}\right) \left(M^2-p^2\right)^{\frac{D}{2}-s}}{\Gamma (s)},\{\}\right\}$$
 
 ```mathematica
-FVD[k, \[Mu]] SFAD[{{k, 2 p . k}, -M^2, s}]
-FCFeynmanParametrize[%, {k}, Names -> x, FCE -> True, FeynmanIntegralPrefactor -> I, FCReplaceD -> {D -> n}, "Euclidean" -> True]
+FVD[k, \[Mu]] SFAD[{{k, 2 p . k}, -M^2, s}] 
+ 
+FCFeynmanParametrize[%, {k}, Names -> x, FCE -> True, FeynmanIntegralPrefactor -> I, 
+  FCReplaceD -> {D -> n}, "Euclidean" -> True]
 ```
 
 $$k^{\mu } (k^2+2 (k\cdot p)+M^2+i \eta )^{-s}$$
@@ -140,8 +152,10 @@ $$k^{\mu } (k^2+2 (k\cdot p)+M^2+i \eta )^{-s}$$
 $$\left\{1,-\frac{i \pi ^{n/2} p^{\mu } \Gamma \left(s-\frac{n}{2}\right) \left(M^2-p^2\right)^{\frac{n}{2}-s}}{\Gamma (s)},\{\}\right\}$$
 
 ```mathematica
-FVD[k, \[Mu]] FVD[k, \[Nu]] SFAD[{{k, 2 p . k}, -M^2, s}]
-FCFeynmanParametrize[%, {k}, Names -> x, FCE -> True, FeynmanIntegralPrefactor -> I, FCReplaceD -> {D -> n}, "Euclidean" -> True]
+FVD[k, \[Mu]] FVD[k, \[Nu]] SFAD[{{k, 2 p . k}, -M^2, s}] 
+ 
+FCFeynmanParametrize[%, {k}, Names -> x, FCE -> True, FeynmanIntegralPrefactor -> I, 
+  FCReplaceD -> {D -> n}, "Euclidean" -> True]
 ```
 
 $$k^{\mu } k^{\nu } (k^2+2 (k\cdot p)+M^2+i \eta )^{-s}$$
@@ -151,7 +165,8 @@ $$\left\{1,\frac{i \pi ^{n/2} \left(M^2-p^2\right)^{\frac{n}{2}-s} \left(\frac{1
 1-loop massless box
 
 ```mathematica
-FAD[p, p + q1, p + q1 + q2, p + q1 + q2 + q3]
+FAD[p, p + q1, p + q1 + q2, p + q1 + q2 + q3] 
+ 
 FCFeynmanParametrize[%, {p}, Names -> x, FCReplaceD -> {D -> 4 - 2 Epsilon}]
 ```
 
@@ -163,8 +178,9 @@ $$\left\{(x(1)+x(2)+x(3)+x(4))^{2 \varepsilon } \left(-2 x(1) x(3) (\text{q1}\cd
 
 ```mathematica
 SFAD[{{p1, 0}, {m^2, 1}, 1}, {{p2, 0}, {0, 1}, 1}, {{p3, 0}, {0, 1}, 1}, 
-  {{p2 + p3, 0}, {0, 1}, 1}, {{p1 - Q, 0}, {m^2, 1}, 1}, {{p2 - Q, 0}, {0, 1}, 1}, 
-  {{p2 + p3 - Q, 0}, {0, 1}, 1}, {{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]
+   {{p2 + p3, 0}, {0, 1}, 1}, {{p1 - Q, 0}, {m^2, 1}, 1}, {{p2 - Q, 0}, {0, 1}, 1}, 
+   {{p2 + p3 - Q, 0}, {0, 1}, 1}, {{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}] 
+ 
 FCFeynmanParametrize[%, {p1, p2, p3}, Names -> x, FCReplaceD -> {D -> 4 - 2 Epsilon}]
 ```
 
@@ -175,7 +191,8 @@ $$\left\{(x(1) x(2) x(3)+x(1) x(4) x(3)+x(2) x(5) x(3)+x(4) x(5) x(3)+x(1) x(6) 
 An example of using `FCFeynmanParametrize` together with `FCFeynmanParameterJoin`
 
 ```mathematica
-props = {SFAD[{p1, m^2}], SFAD[{p3, m^2}], SFAD[{{0, 2 p1 . n}}], SFAD[{{0, 2 (p1 + p3) . n}}]}
+props = {SFAD[{p1, m^2}], SFAD[{p3, m^2}], SFAD[{{0, 2 p1 . n}}], 
+   SFAD[{{0, 2 (p1 + p3) . n}}]}
 ```
 
 $$\left\{\frac{1}{(\text{p1}^2-m^2+i \eta )},\frac{1}{(\text{p3}^2-m^2+i \eta )},\frac{1}{(2 (n\cdot \;\text{p1})+i \eta )},\frac{1}{(2 (n\cdot (\text{p1}+\text{p3}))+i \eta )}\right\}$$
@@ -191,8 +208,8 @@ Here the Feynman parameter variables $x_i$ and $y_i$ are independent from each o
 This gives us much more freedom when exploiting the Cheng-Wu theorem.
 
 ```mathematica
-FCFeynmanParametrize[intT[[1]], intT[[2]], {p1, p3}, Indexed -> True, FCReplaceD -> {D -> 4 - 2 ep}, 
-  FinalSubstitutions -> {SPD[n] -> 1, m -> 1}, Variables -> intT[[3]]]
+FCFeynmanParametrize[intT[[1]], intT[[2]], {p1, p3}, Indexed -> True, 
+  FCReplaceD -> {D -> 4 - 2 ep}, FinalSubstitutions -> {SPD[n] -> 1, m -> 1}, Variables -> intT[[3]]]
 ```
 
 $$\left\{y(1) \left(x(1) x(2) y(1)^2\right)^{3 \;\text{ep}-2} \left(y(1) \left(x(1) x(2)^2 y(1)^2+x(1)^2 x(2) y(1)^2+x(2) y(2)^2+x(1) y(3)^2+x(2) y(3)^2+2 x(2) y(2) y(3)\right)\right)^{-2 \;\text{ep}},\Gamma (2 \;\text{ep}),\{x(1),x(2),y(1),y(2),y(3)\}\right\}$$
@@ -201,7 +218,8 @@ In the case that we need `U` and `F` polynomials in addition to the normal outpu
 
 ```mathematica
 (SFAD[{{0, 2*k1 . n}}]*SFAD[{{0, 2*k2 . n}}]*SFAD[{k1, m^2}]*
-   SFAD[{k2, m^2}]*SFAD[{k1 - k2, m^2}])
+    SFAD[{k2, m^2}]*SFAD[{k1 - k2, m^2}]) 
+ 
 out = FCFeynmanParametrize[%, {k1, k2}, Names -> x, FCReplaceD -> {D -> 4 - 2 Epsilon}, 
    FCFeynmanPrepare -> True]
 ```
@@ -226,7 +244,8 @@ $$\left\{(x(3) x(4)+x(5) x(4)+x(3) x(5))^{3 \varepsilon -1} \left(m^2 x(3) x(4)^
 From this output we can easily extract the integrand, its $x_i$-independent prefactor and the two Symanzik polynomials
 
 ```mathematica
-{integrand, pref} = out[[1 ;; 2]]
+{integrand, pref} = out[[1 ;; 2]] 
+ 
 {uPoly, fPoly} = out[[4]][[1 ;; 2]]
 ```
 
@@ -237,8 +256,10 @@ $$\left\{x(3) x(4)+x(5) x(4)+x(3) x(5),m^2 x(3) x(4)^2+m^2 x(3) x(5)^2+m^2 x(4) 
 Symbolic propagator powers are fully supported
 
 ```mathematica
-SFAD[{I k, 0, -1/2 + ep}, {I (k + p), 0, 1}, EtaSign -> -1]
-v1 = FCFeynmanParametrize[%, {k}, Names -> x, FCReplaceD -> {D -> 4 - 2 ep}, FinalSubstitutions -> {SPD[p] -> 1}]
+SFAD[{I k, 0, -1/2 + ep}, {I (k + p), 0, 1}, EtaSign -> -1] 
+ 
+v1 = FCFeynmanParametrize[%, {k}, Names -> x, FCReplaceD -> {D -> 4 - 2 ep}, 
+   FinalSubstitutions -> {SPD[p] -> 1}]
 ```
 
 $$\frac{1}{(-k^2-i \eta )^{\text{ep}-\frac{1}{2}}.(-(k+p)^2-i \eta )}$$
@@ -248,8 +269,10 @@ $$\left\{(-x(1)-x(2))^{3 \;\text{ep}-\frac{7}{2}} x(2)^{\text{ep}-\frac{3}{2}} (
 An alternative representation for symbolic powers can be obtained using the option `SplitSymbolicPowers`
 
 ```mathematica
-SFAD[{I k, 0, -1/2 + ep}, {I (k + p), 0, 1}, EtaSign -> -1]
-v2 = FCFeynmanParametrize[%, {k}, Names -> x, FCReplaceD -> {D -> 4 - 2 ep}, FinalSubstitutions -> {SPD[p] -> 1}, SplitSymbolicPowers -> True]
+SFAD[{I k, 0, -1/2 + ep}, {I (k + p), 0, 1}, EtaSign -> -1] 
+ 
+v2 = FCFeynmanParametrize[%, {k}, Names -> x, FCReplaceD -> {D -> 4 - 2 ep}, 
+   FinalSubstitutions -> {SPD[p] -> 1}, SplitSymbolicPowers -> True]
 ```
 
 $$\frac{1}{(-k^2-i \eta )^{\text{ep}-\frac{1}{2}}.(-(k+p)^2-i \eta )}$$
@@ -259,7 +282,8 @@ $$\left\{x(2)^{\text{ep}-\frac{1}{2}} \left(\left(\frac{1}{2} (1-2 \;\text{ep})+
 Even though the parametric integrals evaluate to different values, the product of the integral and its prefactor remains the same
 
 ```mathematica
-Integrate[Normal[Series[v1[[1]] /. x[1] -> 1, {ep, 0, 0}]] /. x[1] -> 1, {x[2],0, Infinity}]
+Integrate[Normal[Series[v1[[1]] /. x[1] -> 1, {ep, 0, 0}]] /. x[1] -> 1, {x[2], 0, Infinity}] 
+ 
 Normal@Series[v1[[2]] %, {ep, 0, 0}]
 ```
 
@@ -268,7 +292,8 @@ $$\frac{2}{5}$$
 $$-\frac{4 i}{15}$$
 
 ```mathematica
-Integrate[Normal[Series[v2[[1]] /. x[1] -> 1, {ep, 0, 0}]] /. x[1] -> 1, {x[2],0, Infinity}]
+Integrate[Normal[Series[v2[[1]] /. x[1] -> 1, {ep, 0, 0}]] /. x[1] -> 1, {x[2], 0, Infinity}] 
+ 
 Normal@Series[v2[[2]] %, {ep, 0, 0}]
 ```
 

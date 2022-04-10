@@ -12,14 +12,15 @@
 Uncontract[ScalarProduct[p, q], q, Pair -> All]
 ```
 
-$$\overline{p}^{\text{\$AL}(\text{\$24})} \overline{q}^{\text{\$AL}(\text{\$24})}$$
+$$\overline{p}^{\text{\$AL}(\text{\$19})} \overline{q}^{\text{\$AL}(\text{\$19})}$$
 
 ```mathematica
-$AL = \[Mu];
+$AL = \[Mu]; 
+ 
 Uncontract[ScalarProduct[p, q], q, Pair -> All]
 ```
 
-$$\overline{p}^{\mu (\text{\$25})} \overline{q}^{\mu (\text{\$25})}$$
+$$\overline{p}^{\mu (\text{\$20})} \overline{q}^{\mu (\text{\$20})}$$
 
 ```mathematica
 $AL =.;

@@ -17,7 +17,8 @@ FCClearScalarProducts[]
 ```
 
 ```mathematica
-SPD[q, q] FAD[{q, m}]
+SPD[q, q] FAD[{q, m}] 
+ 
 ApartFF[%, {q}]
 ```
 
@@ -26,7 +27,8 @@ $$\frac{q^2}{q^2-m^2}$$
 $$\frac{m^2}{q^2-m^2}$$
 
 ```mathematica
-SPD[q, p] SPD[q, r] FAD[{q}, {q - p}, {q - r}]
+SPD[q, p] SPD[q, r] FAD[{q}, {q - p}, {q - r}] 
+ 
 ApartFF[%, {q}]
 ```
 
@@ -35,7 +37,8 @@ $$\frac{(p\cdot q) (q\cdot r)}{q^2.(q-p)^2.(q-r)^2}$$
 $$\frac{p^2 r^2}{4 q^2.(q-r)^2.(q-p)^2}+\frac{p^2+2 (q\cdot r)+2 r^2}{4 q^2.(-p+q+r)^2}+-\frac{p^2}{4 q^2.(q-p)^2}-\frac{r^2}{4 q^2.(q-r)^2}$$
 
 ```mathematica
-FAD[{q}, {q - p}, {q + p}]
+FAD[{q}, {q - p}, {q + p}] 
+ 
 ApartFF[%, {q}]
 ```
 
@@ -44,7 +47,8 @@ $$\frac{1}{q^2.(q-p)^2.(p+q)^2}$$
 $$\frac{1}{p^2 q^2.(q-p)^2}-\frac{1}{p^2 q^2.(q-2 p)^2}$$
 
 ```mathematica
-SPD[p, q1] SPD[p, q2]^2 FAD[{q1, m}, {q2, m}, q1 - p, q2 - p, q1 - q2]
+SPD[p, q1] SPD[p, q2]^2 FAD[{q1, m}, {q2, m}, q1 - p, q2 - p, q1 - q2] 
+ 
 ApartFF[%, {q1, q2}]
 ```
 
@@ -53,7 +57,8 @@ $$\frac{(p\cdot \;\text{q1}) (p\cdot \;\text{q2})^2}{\left(\text{q1}^2-m^2\right
 $$\frac{\left(m^2+p^2\right)^3}{8 \left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right).(\text{q2}-p)^2.(\text{q1}-\text{q2})^2.(\text{q1}-p)^2}-\frac{\left(m^2+p^2\right)^2}{4 \left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right).(\text{q1}-\text{q2})^2.(\text{q1}-p)^2}+\frac{\left(m^2+p^2\right) \left(m^2+2 p^2\right)}{4 \;\text{q2}^2.\text{q1}^2.\left((\text{q1}-p)^2-m^2\right).(\text{q1}-\text{q2})^2}-\frac{\left(m^2+p^2\right) (p\cdot \;\text{q1})}{4 \left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right).(\text{q2}-p)^2.(\text{q1}-\text{q2})^2}-\frac{\left(m^2+p^2\right) (p\cdot \;\text{q1})}{4 \;\text{q2}^2.\text{q1}^2.(\text{q1}-\text{q2})^2.\left((\text{q2}-p)^2-m^2\right)}-\frac{p\cdot \;\text{q1}}{4 \left(\text{q2}^2-m^2\right).(\text{q1}-\text{q2})^2.(\text{q1}-p)^2}-\frac{m^2+p\cdot \;\text{q1}+p^2}{4 \left(\text{q1}^2-m^2\right).(\text{q2}-p)^2.(\text{q1}-\text{q2})^2}+\frac{m^2+2 (p\cdot \;\text{q1})+p^2}{8 \left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right).(\text{q1}-\text{q2})^2}$$
 
 ```mathematica
-SPD[q, p] FAD[{q, m}, {q - p, 0}]
+SPD[q, p] FAD[{q, m}, {q - p, 0}] 
+ 
 ApartFF[%, {q}]
 ```
 

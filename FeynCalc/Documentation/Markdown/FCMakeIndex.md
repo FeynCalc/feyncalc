@@ -10,36 +10,36 @@
 
 ```mathematica
 FCMakeIndex["Lor", "1"]
-% // StandardForm
 ```
 
 $$\text{Lor1}$$
 
-```
+```mathematica
+FCMakeIndex["Lor", "1"] // StandardForm
+
 (*Lor1*)
 ```
 
 ```mathematica
 FCMakeIndex["Lor", {3, 1, 4}, LorentzIndex]
-% // StandardForm
 ```
 
 $$\{\text{Lor3},\text{Lor1},\text{Lor4}\}$$
 
-```
+```mathematica
+FCMakeIndex["Lor", {3, 1, 4}, LorentzIndex] // StandardForm
+
 (*{LorentzIndex[Lor3], LorentzIndex[Lor1], LorentzIndex[Lor4]}*)
 ```
 
 ```mathematica
 FCMakeIndex["Sun", {"a", 1, -4}]
-% // StandardForm 
-  
- 
-
 ```
 
 $$\{\text{Suna},\text{Sun1},\text{SunMinus4}\}$$
 
-```
+```mathematica
+FCMakeIndex["Sun", {"a", 1, -4}] // StandardForm
+
 (*{Suna, Sun1, SunMinus4}*)
 ```

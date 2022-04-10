@@ -7,8 +7,6 @@ This function employs the analytic regularization algorithm introduced by Erik P
 The function returns a list of lists of the form `{{{x[i], x[j], ...}, {x[k], x[l], ...}, sdd}, ...}`, where
 `{x[i],x[j], ...}` need to approach zero, while `{x[k], x[l], ...}` must tend towards infinity to generate the superficial degree of divergence `sdd`.
 
-`FCFeynmanParametrize` can also be employed in conjunction with `FCFeynmanParameterJoin`, where one first joins suitable propagators using auxiliary Feynman parameters and then finally integrates out loop momenta.
-
 It is important to apply the function directly to the Feynman parametric integrand obtained e.g. from `FCFeynmanParametrize`. If the integrand has already been modified using variable transformations or the Cheng-Wu theorem, the  algorithm may not work properly.
 
 Furthermore, divergences that arise inside the integration domain cannot be identified using this method.
@@ -24,7 +22,8 @@ The identified divergences can be regularized using the function `FCFeynmanRegul
 #### Feynman representation
 
 ```mathematica
-int = SFAD[l, k + l, {{k, -2 k . q}}]
+int = SFAD[l, k + l, {{k, -2 k . q}}] 
+ 
 fpar = FCFeynmanParametrize[int, {k, l}, Names -> x, FCReplaceD -> {D -> 4 - 2 Epsilon}]
 ```
 

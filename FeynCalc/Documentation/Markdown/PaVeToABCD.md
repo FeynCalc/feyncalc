@@ -9,47 +9,49 @@
 ### Examples
 
 ```mathematica
-PaVe[0, {pp}, {m1^2, m2^2}]
-PaVeToABCD[%]
-% // FCI // StandardForm
+PaVe[0, {pp}, {m1^2, m2^2}] 
+ 
+ex = PaVeToABCD[%]
 ```
 
 $$\text{B}_0\left(\text{pp},\text{m1}^2,\text{m2}^2\right)$$
 
 $$\text{B}_0\left(\text{pp},\text{m1}^2,\text{m2}^2\right)$$
 
-```
+```mathematica
+ex // FCI // StandardForm
+
 (*B0[pp, m1^2, m2^2]*)
 ```
 
 ```mathematica
-PaVe[0, {SPD[p1], 0, SPD[p2]}, {m1^2, m2^2, m3^2}]
-PaVeToABCD[%]
-% // FCI // StandardForm
-
+PaVe[0, {SPD[p1], 0, SPD[p2]}, {m1^2, m2^2, m3^2}] 
+ 
+ex = PaVeToABCD[%]
 ```
 
 $$\text{C}_0\left(0,\text{p1}^2,\text{p2}^2,\text{m3}^2,\text{m2}^2,\text{m1}^2\right)$$
 
 $$\text{C}_0\left(0,\text{p1}^2,\text{p2}^2,\text{m3}^2,\text{m2}^2,\text{m1}^2\right)$$
 
-```
+```mathematica
+ex // FCI // StandardForm
+
 (*C0[0, Pair[Momentum[p1, D], Momentum[p1, D]], Pair[Momentum[p2, D], Momentum[p2, D]], m3^2, m2^2, m1^2]*)
 ```
 
 ```mathematica
-PaVe[0, 0, {SPD[p1], 0, SPD[p2]}, {m1^2, m2^2, m3^2}]
-PaVeToABCD[%]
-% // FCI // StandardForm 
-  
+PaVe[0, 0, {SPD[p1], 0, SPD[p2]}, {m1^2, m2^2, m3^2}] 
  
-
+ex = PaVeToABCD[%]
 ```
 
 $$\text{C}_{00}\left(0,\text{p1}^2,\text{p2}^2,\text{m3}^2,\text{m2}^2,\text{m1}^2\right)$$
 
 $$\text{C}_{00}\left(0,\text{p1}^2,\text{p2}^2,\text{m3}^2,\text{m2}^2,\text{m1}^2\right)$$
 
-```
+```mathematica
+ex // FCI // StandardForm
+
 (*PaVe[0, 0, {0, Pair[Momentum[p1, D], Momentum[p1, D]], Pair[Momentum[p2, D], Momentum[p2, D]]}, {m3^2, m2^2, m1^2}]*)
 ```

@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-DiracGamma[6]
+DiracGamma[6] 
+ 
 DiracSubstitute67[%]
 ```
 
@@ -18,7 +19,8 @@ $$\bar{\gamma }^6$$
 $$\frac{\bar{\gamma }^5}{2}+\frac{1}{2}$$
 
 ```mathematica
-DiracGamma[7]
+DiracGamma[7] 
+ 
 DiracSubstitute67[%]
 ```
 
@@ -27,7 +29,8 @@ $$\bar{\gamma }^7$$
 $$\frac{1}{2}-\frac{\bar{\gamma }^5}{2}$$
 
 ```mathematica
-SpinorUBar[Subscript[p, 1]] . GA[6] . SpinorU[Subscript[p, 2]]
+SpinorUBar[Subscript[p, 1]] . GA[6] . SpinorU[Subscript[p, 2]] 
+ 
 DiracSubstitute67[%]
 ```
 
@@ -36,7 +39,8 @@ $$\bar{u}\left(p_1\right).\bar{\gamma }^6.u\left(p_2\right)$$
 $$\left(\varphi (\overline{p}_1)\right).\left(\frac{\bar{\gamma }^5}{2}+\frac{1}{2}\right).\left(\varphi (\overline{p}_2)\right)$$
 
 ```mathematica
-SpinorUBar[Subscript[p, 1]] . GA[7] . SpinorU[Subscript[p, 2]]
+SpinorUBar[Subscript[p, 1]] . GA[7] . SpinorU[Subscript[p, 2]] 
+ 
 DiracSubstitute67[%]
 ```
 

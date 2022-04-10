@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
--I/Pi^2 FAD[{q, m}]
+-I/Pi^2 FAD[{q, m}] 
+ 
 OneLoop[q, %]
 ```
 
@@ -19,6 +20,7 @@ $$\text{A}_0\left(m^2\right)$$
 
 ```mathematica
 I ((el^2)/(16 Pi^4 (1 - D))) FAD[{q, mf}, {q - k, mf}] DiracTrace[(mf + GSD[q - k]) . GAD[\[Mu]] . (mf + GSD[q]) . GAD[\[Mu]]] 
+ 
 OneLoop[q, %]
 ```
 

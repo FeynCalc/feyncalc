@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-SFAD[p1]
+SFAD[p1] 
+ 
 FCLoopBasisIntegralToPropagators[%, {p1}]
 ```
 
@@ -18,7 +19,8 @@ $$\frac{1}{(\text{p1}^2+i \eta )}$$
 $$\left\{\frac{1}{(\text{p1}^2+i \eta )}\right\}$$
 
 ```mathematica
-SFAD[p1, p2]
+SFAD[p1, p2] 
+ 
 FCLoopBasisIntegralToPropagators[%, {p1, p2}]
 ```
 
@@ -27,7 +29,8 @@ $$\frac{1}{(\text{p1}^2+i \eta ).(\text{p2}^2+i \eta )}$$
 $$\left\{\frac{1}{(\text{p1}^2+i \eta )},\frac{1}{(\text{p2}^2+i \eta )}\right\}$$
 
 ```mathematica
-SPD[q, p] SFAD[q, q - p, q - p]
+SPD[q, p] SFAD[q, q - p, q - p] 
+ 
 FCLoopBasisIntegralToPropagators[%, {q}]
 ```
 

@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-SIS[q] . SIS[p - q]
+SIS[q] . SIS[p - q] 
+ 
 PauliSigmaExpand[%]
 ```
 
@@ -18,8 +19,10 @@ $$\left(\bar{\sigma }\cdot \overline{q}\right).\left(\bar{\sigma }\cdot \left(\o
 $$\left(\bar{\sigma }\cdot \overline{q}\right).\left(\bar{\sigma }\cdot \overline{p}-\bar{\sigma }\cdot \overline{q}\right)$$
 
 ```mathematica
-SIS[a + b] . SIS[c + d]
-PauliSigmaExpand[%, Momentum -> {a}]
+SIS[a + b] . SIS[c + d] 
+ 
+PauliSigmaExpand[%, Momentum -> {a}] 
+ 
 PauliSigmaExpand[%%, Momentum -> All]
 ```
 

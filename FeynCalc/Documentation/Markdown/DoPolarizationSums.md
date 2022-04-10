@@ -22,8 +22,10 @@ Cf. `PolarizationSum` for more examples and explanations on different polarizati
 The standard formula for massless vector bosons is valid for all types of the corresponding particles, including gluons.
 
 ```mathematica
-FCClearScalarProducts[]
-SP[p] = 0;
+FCClearScalarProducts[] 
+ 
+SP[p] = 0; 
+ 
 Pair[LorentzIndex[\[Mu]], Momentum[Polarization[p, -I]]] Pair[LorentzIndex[\[Nu]], 
    Momentum[Polarization[p, I]]]
 ```
@@ -39,8 +41,10 @@ $$-\frac{\overline{n}^2 \overline{p}^{\mu } \overline{p}^{\nu }}{(\overline{n}\c
 In QED the gauge invariance ensures the cancellation of the unphysical polarizations so that for photons one can also employ the simpler replacement with the metric tensor.
 
 ```mathematica
-FCClearScalarProducts[]
-SP[p] = 0;
+FCClearScalarProducts[] 
+ 
+SP[p] = 0; 
+ 
 Pair[LorentzIndex[\[Mu]], Momentum[Polarization[p, -I]]] Pair[LorentzIndex[\[Nu]], 
    Momentum[Polarization[p, I]]]
 ```
@@ -59,11 +63,13 @@ Notice that in this case you should not make the polarization vectors transverse
 
 Furthermore, the averaging over the polarizations of the initial gluons must be done on the physical amplitude squared, i.e. after the ghost contributions have been subtracted.
 
-Massive vector bosons (e.g. W or Z) have 3 degrees of freedom and require no auxiliary vector.
+Massive vector bosons (e.g. $W$ or $Z$) have $3$ degrees of freedom and require no auxiliary vector.
 
 ```mathematica
-FCClearScalarProducts[]
-SP[p] = m^2;
+FCClearScalarProducts[] 
+ 
+SP[p] = m^2; 
+ 
 Pair[LorentzIndex[\[Mu]], Momentum[Polarization[p, -I]]] Pair[LorentzIndex[\[Nu]], 
    Momentum[Polarization[p, I]]]
 ```
@@ -79,10 +85,14 @@ $$\frac{\overline{p}^{\mu } \overline{p}^{\nu }}{m^2}-\bar{g}^{\mu \nu }$$
 A more realistic example of summing over the polarizations of the photons in $e^+e^ \to  \gamma \gamma$
 
 ```mathematica
-ClearAll[s, t, u];
-FCClearScalarProducts[];
-SP[k1] = 0;
-SP[k2] = 0;
+ClearAll[s, t, u]; 
+ 
+FCClearScalarProducts[]; 
+ 
+SP[k1] = 0; 
+ 
+SP[k2] = 0; 
+ 
 amp = (-((Spinor[Momentum[p1], 0, 1] . GS[Polarization[k1, I, 
              Transversality -> True]] . GS[k2 - p2] . GS[Polarization[k2, I, 
              Transversality -> True]] . Spinor[-Momentum[p2], 0, 1]*SMP["e"]^2)/t) - 
@@ -114,9 +124,12 @@ It is customary to take the 4-momentum of another gluon as the auxiliary vector 
 The option `ExtraFactor` is used to average over the polarizations of the initial gluons.
 
 ```mathematica
-ClearAll[s, t, u];
-FCClearScalarProducts[];
-SP[p1] = 0;
+ClearAll[s, t, u]; 
+ 
+FCClearScalarProducts[]; 
+ 
+SP[p1] = 0; 
+ 
 SP[p2] = 0;
 ```
 
@@ -152,10 +165,14 @@ $$-\frac{1}{N \left(N^2-1\right) s^2 u^2 (\overline{\text{p1}}\cdot \overline{\t
 We can also do the same calculation in $D$-dimensions
 
 ```mathematica
-ClearAll[s, t, u];
-FCClearScalarProducts[];
-SPD[p1] = 0;
-SPD[p2] = 0;
+ClearAll[s, t, u]; 
+ 
+FCClearScalarProducts[]; 
+ 
+SPD[p1] = 0; 
+ 
+SPD[p2] = 0; 
+ 
 ChangeDimension[amp, D] // DoPolarizationSums[#, p1, p2, ExtraFactor -> 1/2] & // 
    DoPolarizationSums[#, p2, p1, ExtraFactor -> 1/2] & // Simplify
 ```
@@ -165,22 +182,26 @@ $$-\frac{1}{N \left(N^2-1\right) s^2 u^2 (\text{p1}\cdot \;\text{p2})^2}g_s^4 \l
 `DoPolarizationSums` will complain if you try to sum over the polarizations of a massless vector boson that is not on-shell
 
 ```mathematica
-PolarizationVector[p, mu] ComplexConjugate[PolarizationVector[p, mu]]
+PolarizationVector[p, mu] ComplexConjugate[PolarizationVector[p, mu]] 
+ 
 DoPolarizationSums[%, p, 0]
 ```
 
 $$\bar{\varepsilon }^{*\text{mu}}(p) \bar{\varepsilon }^{\text{mu}}(p)$$
 
-![1l0desl1odmbt](img/1l0desl1odmbt.svg)
+![1l0desl1odmbt](img/1l0desl1odmbt.pdf)
 
 $$-4$$
 
 The obvious solution to remove this warning is to put the boson on-shell
 
 ```mathematica
-FCClearScalarProducts[]
-ScalarProduct[p, p] = 0
-PolarizationVector[p, mu] ComplexConjugate[PolarizationVector[p, mu]]
+FCClearScalarProducts[] 
+ 
+ScalarProduct[p, p] = 0 
+ 
+PolarizationVector[p, mu] ComplexConjugate[PolarizationVector[p, mu]] 
+ 
 DoPolarizationSums[%, p, 0]
 ```
 
@@ -193,8 +214,10 @@ $$-4$$
 However, if you have a massless virtual boson in the final state that by definition cannot be on-shell, (e.g. in the process $q \bar{q} \to g \gamma^\ast$), you can tell this to the function by setting the option `VirtualBoson` to `True`.
 
 ```mathematica
-FCClearScalarProducts[]
-PolarizationVector[p, mu] ComplexConjugate[PolarizationVector[p, mu]]
+FCClearScalarProducts[] 
+ 
+PolarizationVector[p, mu] ComplexConjugate[PolarizationVector[p, mu]] 
+ 
 DoPolarizationSums[%, p, 0, VirtualBoson -> True]
 ```
 
@@ -207,9 +230,12 @@ It may happen that your expression is not directly proportional to a pair of pol
 Here we have 2 physical polarizations (massless vector boson)
 
 ```mathematica
-FCClearScalarProducts[];
-ScalarProduct[p, p] = 0;
-PolarizationVector[p, mu] ComplexConjugate[PolarizationVector[p, mu]] + xyz
+FCClearScalarProducts[]; 
+ 
+ScalarProduct[p, p] = 0; 
+ 
+PolarizationVector[p, mu] ComplexConjugate[PolarizationVector[p, mu]] + xyz 
+ 
 DoPolarizationSums[%, p, n]
 ```
 
@@ -222,10 +248,13 @@ $$2 \;\text{xyz}-2$$
 In $D$ dimensions the number of polarizations becomes $D-2$
 
 ```mathematica
-FCClearScalarProducts[];
-ScalarProduct[p, p] = 0;
+FCClearScalarProducts[]; 
+ 
+ScalarProduct[p, p] = 0; 
+ 
 ChangeDimension[PolarizationVector[p, mu]*
-    ComplexConjugate[PolarizationVector[p, mu]] + xyz, D]
+     ComplexConjugate[PolarizationVector[p, mu]] + xyz, D] 
+ 
 DoPolarizationSums[%, p, n]
 ```
 
@@ -238,9 +267,12 @@ $$(D-2) \;\text{xyz}-D+2$$
 A massive vector boson has 3 physical polarizations in 4 dimensions
 
 ```mathematica
-FCClearScalarProducts[];
-ScalarProduct[p, p] = M^2;
-PolarizationVector[p, mu] ComplexConjugate[PolarizationVector[p, mu]] + xyz
+FCClearScalarProducts[]; 
+ 
+ScalarProduct[p, p] = M^2; 
+ 
+PolarizationVector[p, mu] ComplexConjugate[PolarizationVector[p, mu]] + xyz 
+ 
 DoPolarizationSums[%, p]
 ```
 
@@ -253,10 +285,13 @@ $$3 \;\text{xyz}-3$$
 or $D-1$ physical polarizations in $D$ dimensions
 
 ```mathematica
-FCClearScalarProducts[];
-ScalarProduct[p, p] = M^2;
+FCClearScalarProducts[]; 
+ 
+ScalarProduct[p, p] = M^2; 
+ 
 ChangeDimension[PolarizationVector[p, mu]*
-    ComplexConjugate[PolarizationVector[p, mu]] + xyz, D]
+     ComplexConjugate[PolarizationVector[p, mu]] + xyz, D] 
+ 
 DoPolarizationSums[%, p]
 ```
 
@@ -273,17 +308,14 @@ has no way to determine the correct number of polarizations.
 DoPolarizationSums[xyz, p, n]
 ```
 
-![18de6vblvu214](img/18de6vblvu214.svg)
+![18de6vblvu214](img/18de6vblvu214.pdf)
 
 $$\text{\$Aborted}$$
 
 Here additional user input is needed
 
 ```mathematica
-DoPolarizationSums[xyz, p, NumberOfPolarizations -> 2] 
-  
- 
-
+DoPolarizationSums[xyz, p, NumberOfPolarizations -> 2]
 ```
 
 $$\text{DoPolarizationSums: The input expression contains terms free of polarization vectors. Those will be multiplied with the number of polarizations given by }2.$$

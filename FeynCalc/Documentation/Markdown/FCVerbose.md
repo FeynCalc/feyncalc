@@ -15,7 +15,7 @@
 ### Examples
 
 ```mathematica
-DiracSimplify[GA[mu, nu, rho, mu, nu], FCVerbose -> 1]
+DiracSimplify[GA[\[Mu], \[Nu], \[Rho], \[Mu], \[Nu]], FCVerbose -> 1]
 ```
 
 $$\text{DiracSimplify: Entering.}$$
@@ -24,40 +24,40 @@ $$\text{DiracSimplify: Normal mode.}$$
 
 $$\text{DiracSimplify: Extracting Dirac objects.}$$
 
-$$\text{DiracSimplify: Done extracting Dirac objects, timing: }0.03630$$
+$$\text{DiracSimplify: Done extracting Dirac objects, timing: }0.03636$$
 
 $$\text{DiracSimplify: Doing index contractions.}$$
 
-$$\text{DiracSimplify: Index contractions done, timing: }0.000572$$
+$$\text{DiracSimplify: Index contractions done, timing: }0.000453$$
 
 $$\text{DiracSimplify: Applying diracSimplifyEval}$$
 
-$$\text{DiracSimplify: diracSimplifyEval done, timing: }0.02439$$
+$$\text{DiracSimplify: diracSimplifyEval done, timing: }0.01655$$
 
 $$\text{DiracSimplify: Inserting Dirac objects back into products.}$$
 
-$$\text{DiracSimplify: Done inserting Dirac objects back into products, timing: }0.000169$$
+$$\text{DiracSimplify: Done inserting Dirac objects back into products, timing: }0.000132$$
 
 $$\text{DiracSimplify: Applying SpinorChainTrick.}$$
 
-$$\text{DiracSimplify: Done applying SpinorChainTrick, timing: }0.001392$$
+$$\text{DiracSimplify: Done applying SpinorChainTrick, timing: }0.001167$$
 
 $$\text{DiracSimplify: Creating the final replacement rule.}$$
 
-$$\text{DiracSimplify: Final replacement rule done, timing: }0.000144$$
+$$\text{DiracSimplify: Final replacement rule done, timing: }0.000119$$
 
 $$\text{DiracSimplify: Expanding the result.}$$
 
-$$\text{DiracSimplify: Expanding done, timing: }0.000476$$
+$$\text{DiracSimplify: Expanding done, timing: }0.000413$$
 
 $$\text{DiracSimplify: Leaving.}$$
 
-$$\text{DiracSimplify: Total timing: }0.07809$$
+$$\text{DiracSimplify: Total timing: }0.06579$$
 
-$$4 \bar{\gamma }^{\text{rho}}$$
+$$4 \bar{\gamma }^{\rho }$$
 
 ```mathematica
-DiracSimplify[GA[mu, nu, rho, mu, nu], FCVerbose -> 2]
+DiracSimplify[GA[\[Mu], \[Nu], \[Rho], \[Mu], \[Nu]], FCVerbose -> 2]
 ```
 
 $$\text{DiracSimplify: Entering.}$$
@@ -66,11 +66,11 @@ $$\text{DiracSimplify: Normal mode.}$$
 
 $$\text{DiracSimplify: Extracting Dirac objects.}$$
 
-$$\text{DiracSimplify: Done extracting Dirac objects, timing: }0.006305$$
+$$\text{DiracSimplify: Done extracting Dirac objects, timing: }0.008883$$
 
 $$\text{DiracSimplify: Doing index contractions.}$$
 
-$$\text{DiracSimplify: Index contractions done, timing: }0.000834$$
+$$\text{DiracSimplify: Index contractions done, timing: }0.000426$$
 
 $$\text{DiracSimplify: Applying diracSimplifyEval}$$
 
@@ -78,139 +78,136 @@ $$\text{DiracSimplify: diracSimplifyEval: Entering}$$
 
 $$\text{DiracSimplify: diracSimplifyEval: Applying DiracTrick.}$$
 
-$$\text{DiracSimplify: diracSimplifyEval: DiracTrick done, timing: }0.002788$$
+$$\text{DiracSimplify: diracSimplifyEval: DiracTrick done, timing: }0.003183$$
 
 $$\text{DiracSimplify: diracSimplifyEval: Applying Dotsimplify.}$$
 
-$$\text{DiracSimplify: diracSimplifyEval: Dotsimplify done, timing: }0.002267$$
+$$\text{DiracSimplify: diracSimplifyEval: Dotsimplify done, timing: }0.002288$$
 
 $$\text{DiracSimplify: diracSimplifyEval: Applying DiracTrick.}$$
 
-$$\text{DiracSimplify: diracSimplifyEval: DiracTrick done, timing: }0.007126$$
+$$\text{DiracSimplify: diracSimplifyEval: DiracTrick done, timing: }0.006512$$
 
 $$\text{DiracSimplify: diracSimplifyEval: Applying Dotsimplify.}$$
 
-$$\text{DiracSimplify: diracSimplifyEval: Dotsimplify done, timing: }0.002351$$
+$$\text{DiracSimplify: diracSimplifyEval: Dotsimplify done, timing: }0.002125$$
 
-$$\text{DiracSimplify: diracSimplifyEval done, timing: }0.01912$$
+$$\text{DiracSimplify: diracSimplifyEval done, timing: }0.01820$$
 
 $$\text{DiracSimplify: Inserting Dirac objects back into products.}$$
 
-$$\text{DiracSimplify: Done inserting Dirac objects back into products, timing: }0.000155$$
+$$\text{DiracSimplify: Done inserting Dirac objects back into products, timing: }0.000146$$
 
 $$\text{DiracSimplify: Applying SpinorChainTrick.}$$
 
-$$\text{DiracSimplify: Done applying SpinorChainTrick, timing: }0.000854$$
+$$\text{DiracSimplify: Done applying SpinorChainTrick, timing: }0.001152$$
 
 $$\text{DiracSimplify: Creating the final replacement rule.}$$
 
-$$\text{DiracSimplify: Final replacement rule done, timing: }0.000090$$
+$$\text{DiracSimplify: Final replacement rule done, timing: }0.000123$$
 
 $$\text{DiracSimplify: Expanding the result.}$$
 
-$$\text{DiracSimplify: Expanding done, timing: }0.000533$$
+$$\text{DiracSimplify: Expanding done, timing: }0.000374$$
 
 $$\text{DiracSimplify: Leaving.}$$
 
-$$\text{DiracSimplify: Total timing: }0.03372$$
+$$\text{DiracSimplify: Total timing: }0.03523$$
 
-$$4 \bar{\gamma }^{\text{rho}}$$
+$$4 \bar{\gamma }^{\rho }$$
 
 ```mathematica
-DiracSimplify[GA[mu, nu, rho, mu, nu], FCVerbose -> 3] 
-  
- 
-
+DiracSimplify[GA[\[Mu], \[Nu], \[Rho], \[Mu], \[Nu]], FCVerbose -> 3]
 ```
 
 $$\text{DiracSimplify: Entering.}$$
 
-$$\text{DiracSimplify: Entering with }\bar{\gamma }^{\text{mu}}.\bar{\gamma }^{\text{nu}}.\bar{\gamma }^{\text{rho}}.\bar{\gamma }^{\text{mu}}.\bar{\gamma }^{\text{nu}}$$
+$$\text{DiracSimplify: Entering with }\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\rho }.\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }$$
 
 $$\text{DiracSimplify: Normal mode.}$$
 
 $$\text{DiracSimplify: Extracting Dirac objects.}$$
 
-$$\text{DiracSimplify: dsPart: }\;\text{FeynCalc$\grave{ }$DiracSimplify$\grave{ }$Private$\grave{ }$dsHeadAll}\left(\text{FeynCalc$\grave{ }$DiracSimplify$\grave{ }$Private$\grave{ }$dsHead}\left(\bar{\gamma }^{\text{mu}}.\bar{\gamma }^{\text{nu}}.\bar{\gamma }^{\text{rho}}.\bar{\gamma }^{\text{mu}}.\bar{\gamma }^{\text{nu}}\right)\right)$$
+$$\text{DiracSimplify: dsPart: }\;\text{FeynCalc$\grave{ }$DiracSimplify$\grave{ }$Private$\grave{ }$dsHeadAll}\left(\text{FeynCalc$\grave{ }$DiracSimplify$\grave{ }$Private$\grave{ }$dsHead}\left(\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\rho }.\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }\right)\right)$$
 
 $$\text{DiracSimplify: freePart: }0$$
 
-$$\text{DiracSimplify: Done extracting Dirac objects, timing: }0.006700$$
+$$\text{DiracSimplify: Done extracting Dirac objects, timing: }0.009456$$
 
-$$\text{DiracSimplify: diracObjects: }\left\{\text{FeynCalc$\grave{ }$DiracSimplify$\grave{ }$Private$\grave{ }$dsHead}\left(\bar{\gamma }^{\text{mu}}.\bar{\gamma }^{\text{nu}}.\bar{\gamma }^{\text{rho}}.\bar{\gamma }^{\text{mu}}.\bar{\gamma }^{\text{nu}}\right)\right\}$$
+$$\text{DiracSimplify: diracObjects: }\left\{\text{FeynCalc$\grave{ }$DiracSimplify$\grave{ }$Private$\grave{ }$dsHead}\left(\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\rho }.\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }\right)\right\}$$
 
 $$\text{DiracSimplify: Doing index contractions.}$$
 
-$$\text{DiracSimplify: Index contractions done, timing: }0.000298$$
+$$\text{DiracSimplify: Index contractions done, timing: }0.000418$$
 
-$$\text{DiracSimplify: diracObjectsEval after index contractions: }\left\{\text{FeynCalc$\grave{ }$DiracSimplify$\grave{ }$Private$\grave{ }$dsHead}\left(\bar{\gamma }^{\text{mu}}.\bar{\gamma }^{\text{nu}}.\bar{\gamma }^{\text{rho}}.\bar{\gamma }^{\text{mu}}.\bar{\gamma }^{\text{nu}}\right)\right\}$$
+$$\text{DiracSimplify: diracObjectsEval after index contractions: }\left\{\text{FeynCalc$\grave{ }$DiracSimplify$\grave{ }$Private$\grave{ }$dsHead}\left(\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\rho }.\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }\right)\right\}$$
 
 $$\text{DiracSimplify: Applying diracSimplifyEval}$$
 
 $$\text{DiracSimplify: diracSimplifyEval: Entering}$$
 
-$$\text{DiracSimplify: diracSimplifyEval: Entering with: }\bar{\gamma }^{\text{mu}}.\bar{\gamma }^{\text{nu}}.\bar{\gamma }^{\text{rho}}.\bar{\gamma }^{\text{mu}}.\bar{\gamma }^{\text{nu}}$$
+$$\text{DiracSimplify: diracSimplifyEval: Entering with: }\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\rho }.\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }$$
 
 $$\text{DiracSimplify: diracSimplifyEval: Applying DiracTrick.}$$
 
-$$\text{DiracSimplify: diracSimplifyEval: DiracTrick done, timing: }0.002259$$
+$$\text{DiracSimplify: diracSimplifyEval: DiracTrick done, timing: }0.002919$$
 
-$$\text{DiracSimplify: diracSimplifyEval: After DiracTrick: }4 \bar{\gamma }^{\text{rho}}$$
+$$\text{DiracSimplify: diracSimplifyEval: After DiracTrick: }4 \bar{\gamma }^{\rho }$$
 
 $$\text{DiracSimplify: diracSimplifyEval: Applying Dotsimplify.}$$
 
-$$\text{DiracSimplify: diracSimplifyEval: Dotsimplify done, timing: }0.001613$$
+$$\text{DiracSimplify: diracSimplifyEval: Dotsimplify done, timing: }0.002082$$
 
-$$\text{DiracSimplify: diracSimplifyEval: After Dotsimplify: }4 \bar{\gamma }^{\text{rho}}$$
+$$\text{DiracSimplify: diracSimplifyEval: After Dotsimplify: }4 \bar{\gamma }^{\rho }$$
 
 $$\text{DiracSimplify: diracSimplifyEval: Applying DiracTrick.}$$
 
-$$\text{DiracSimplify: diracSimplifyEval: DiracTrick done, timing: }0.005484$$
+$$\text{DiracSimplify: diracSimplifyEval: DiracTrick done, timing: }0.006242$$
 
-$$\text{DiracSimplify: diracSimplifyEval: After DiracTrick: }4 \bar{\gamma }^{\text{rho}}$$
+$$\text{DiracSimplify: diracSimplifyEval: After DiracTrick: }4 \bar{\gamma }^{\rho }$$
 
 $$\text{DiracSimplify: diracSimplifyEval: Applying Dotsimplify.}$$
 
-$$\text{DiracSimplify: diracSimplifyEval: Dotsimplify done, timing: }0.001592$$
+$$\text{DiracSimplify: diracSimplifyEval: Dotsimplify done, timing: }0.002124$$
 
-$$\text{DiracSimplify: diracSimplifyEval: After Dotsimplify: }4 \bar{\gamma }^{\text{rho}}$$
+$$\text{DiracSimplify: diracSimplifyEval: After Dotsimplify: }4 \bar{\gamma }^{\rho }$$
 
-$$\text{DiracSimplify: diracSimplifyEval: Leaving with: }4 \bar{\gamma }^{\text{rho}}$$
+$$\text{DiracSimplify: diracSimplifyEval: Leaving with: }4 \bar{\gamma }^{\rho }$$
 
-$$\text{DiracSimplify: After diracSimplifyEval: }\left\{4 \bar{\gamma }^{\text{rho}}\right\}$$
+$$\text{DiracSimplify: After diracSimplifyEval: }\left\{4 \bar{\gamma }^{\rho }\right\}$$
 
-$$\text{DiracSimplify: diracSimplifyEval done, timing: }0.01650$$
+$$\text{DiracSimplify: diracSimplifyEval done, timing: }0.02049$$
 
 $$\text{DiracSimplify: Inserting Dirac objects back into products.}$$
 
-$$\text{DiracSimplify: repRule: }\left\{\text{FeynCalc$\grave{ }$DiracSimplify$\grave{ }$Private$\grave{ }$dsHead}\left(\bar{\gamma }^{\text{mu}}.\bar{\gamma }^{\text{nu}}.\bar{\gamma }^{\text{rho}}.\bar{\gamma }^{\text{mu}}.\bar{\gamma }^{\text{nu}}\right)\to 4 \bar{\gamma }^{\text{rho}}\right\}$$
+$$\text{DiracSimplify: repRule: }\left\{\text{FeynCalc$\grave{ }$DiracSimplify$\grave{ }$Private$\grave{ }$dsHead}\left(\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\rho }.\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }\right)\to 4 \bar{\gamma }^{\rho }\right\}$$
 
-$$\text{DiracSimplify: Done inserting Dirac objects back into products, timing: }0.000851$$
+$$\text{DiracSimplify: Done inserting Dirac objects back into products, timing: }0.001005$$
 
-$$\text{DiracSimplify: Intermediate result: }\left\{4 \bar{\gamma }^{\text{rho}}\right\}$$
+$$\text{DiracSimplify: Intermediate result: }\left\{4 \bar{\gamma }^{\rho }\right\}$$
 
 $$\text{DiracSimplify: Applying SpinorChainTrick.}$$
 
-$$\text{DiracSimplify: Done applying SpinorChainTrick, timing: }0.000950$$
+$$\text{DiracSimplify: Done applying SpinorChainTrick, timing: }0.001158$$
 
-$$\text{DiracSimplify: After SpinorChainTrick: }\left\{4 \bar{\gamma }^{\text{rho}}\right\}$$
+$$\text{DiracSimplify: After SpinorChainTrick: }\left\{4 \bar{\gamma }^{\rho }\right\}$$
 
 $$\text{DiracSimplify: Creating the final replacement rule.}$$
 
-$$\text{DiracSimplify: repRule: }\left\{\text{FeynCalc$\grave{ }$DiracSimplify$\grave{ }$Private$\grave{ }$dsHeadAll}\left(\text{FeynCalc$\grave{ }$DiracSimplify$\grave{ }$Private$\grave{ }$dsHead}\left(\bar{\gamma }^{\text{mu}}.\bar{\gamma }^{\text{nu}}.\bar{\gamma }^{\text{rho}}.\bar{\gamma }^{\text{mu}}.\bar{\gamma }^{\text{nu}}\right)\right)\to 4 \bar{\gamma }^{\text{rho}}\right\}$$
+$$\text{DiracSimplify: repRule: }\left\{\text{FeynCalc$\grave{ }$DiracSimplify$\grave{ }$Private$\grave{ }$dsHeadAll}\left(\text{FeynCalc$\grave{ }$DiracSimplify$\grave{ }$Private$\grave{ }$dsHead}\left(\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\rho }.\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }\right)\right)\to 4 \bar{\gamma }^{\rho }\right\}$$
 
-$$\text{DiracSimplify: Final replacement rule done, timing: }0.000830$$
+$$\text{DiracSimplify: Final replacement rule done, timing: }0.000980$$
 
 $$\text{DiracSimplify: Expanding the result.}$$
 
-$$\text{DiracSimplify: Expanding done, timing: }0.000352$$
+$$\text{DiracSimplify: Expanding done, timing: }0.000399$$
 
-$$\text{DiracSimplify: After expanding: }4 \bar{\gamma }^{\text{rho}}$$
+$$\text{DiracSimplify: After expanding: }4 \bar{\gamma }^{\rho }$$
 
 $$\text{DiracSimplify: Leaving.}$$
 
-$$\text{DiracSimplify: Total timing: }0.03405$$
+$$\text{DiracSimplify: Total timing: }0.04359$$
 
-$$\text{DiracSimplify: Leaving with }4 \bar{\gamma }^{\text{rho}}$$
+$$\text{DiracSimplify: Leaving with }4 \bar{\gamma }^{\rho }$$
 
-$$4 \bar{\gamma }^{\text{rho}}$$
+$$4 \bar{\gamma }^{\rho }$$

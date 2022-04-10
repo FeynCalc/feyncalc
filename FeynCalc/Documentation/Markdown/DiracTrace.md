@@ -1,3 +1,7 @@
+```mathematica
+ 
+```
+
 ## DiracTrace
 
 `DiracTrace[exp]` is the head of Dirac traces. By default the trace is not evaluated. The evaluation occurs only when the option `DiracTraceEvaluate` is set to `True`. It is recommended to use `DiracSimplify`, which will automatically evaluate all Dirac traces in the input expression.
@@ -37,7 +41,8 @@ DiracSimplify[DiracTrace[GA[\[Mu], \[Nu], \[Rho], \[Sigma]]]]
 $$4 \bar{g}^{\mu \sigma } \bar{g}^{\nu \rho }-4 \bar{g}^{\mu \rho } \bar{g}^{\nu \sigma }+4 \bar{g}^{\mu \nu } \bar{g}^{\rho \sigma }$$
 
 ```mathematica
-DiracTrace[GS[p, q, r, s]]
+DiracTrace[GS[p, q, r, s]] 
+ 
 DiracSimplify[%]
 ```
 
@@ -50,7 +55,8 @@ The old methods of evaluating traces by replacing `DiracTrace` with `Tr` or `TR`
 Traces involving $\gamma^5$ or chirality projectors in $4$ dimensions are also possible
 
 ```mathematica
-DiracTrace[GA[\[Mu], \[Nu], \[Rho], \[Sigma], 5]]
+DiracTrace[GA[\[Mu], \[Nu], \[Rho], \[Sigma], 5]] 
+ 
 DiracSimplify[%]
 ```
 
@@ -59,7 +65,8 @@ $$\text{tr}\left(\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\rho }
 $$-4 i \bar{\epsilon }^{\mu \nu \rho \sigma }$$
 
 ```mathematica
-DiracTrace[GA[\[Mu], \[Nu], \[Rho], \[Sigma], \[Delta], \[Tau], 5]]
+DiracTrace[GA[\[Mu], \[Nu], \[Rho], \[Sigma], \[Delta], \[Tau], 5]] 
+ 
 DiracSimplify[%]
 ```
 
@@ -68,7 +75,8 @@ $$\text{tr}\left(\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\rho }
 $$-4 i \bar{g}^{\delta \mu } \bar{\epsilon }^{\nu \rho \sigma \tau }-4 i \bar{g}^{\delta \tau } \bar{\epsilon }^{\mu \nu \rho \sigma }-4 i \bar{g}^{\mu \tau } \bar{\epsilon }^{\delta \nu \rho \sigma }-4 i \bar{g}^{\nu \rho } \bar{\epsilon }^{\delta \mu \sigma \tau }+4 i \bar{g}^{\nu \sigma } \bar{\epsilon }^{\delta \mu \rho \tau }-4 i \bar{g}^{\rho \sigma } \bar{\epsilon }^{\delta \mu \nu \tau }$$
 
 ```mathematica
-DiracTrace[GA[\[Mu], \[Nu], \[Rho], \[Sigma], \[Delta], \[Tau], 6]]
+DiracTrace[GA[\[Mu], \[Nu], \[Rho], \[Sigma], \[Delta], \[Tau], 6]] 
+ 
 DiracSimplify[%]
 ```
 
@@ -80,6 +88,7 @@ $D$-dimensional traces that do not involve $\gamma^5$ are unambiguous.
 
 ```mathematica
 DiracTrace[(-GSD[q] + SMP["m_e"]) . GAD[\[Nu]] . (GSD[p - q] + SMP["m_e"]) . GAD[\[Mu]]] 
+ 
 DiracSimplify[%]
 ```
 
@@ -90,7 +99,8 @@ $$4 m_e^2 g^{\mu \nu }+4 g^{\mu \nu } (p\cdot q)-4 q^2 g^{\mu \nu }-4 p^{\nu } q
 Traces that contain $\gamma^5$ in $D$ dimensions are scheme-dependent. The default scheme used in FeynCalc is the naive dimension regularization (NDR), where $\gamma^5$ is assumed to anticommute with all other Dirac matrices. However, chiral traces are ambiguous in NDR, unless the trace contains an even number of $\gamma^5$. This is why FeynCalc will leave such traces unevaluated.
 
 ```mathematica
-DiracTrace[GAD[\[Mu], \[Nu], \[Rho]] . GA[5] . GAD[\[Sigma], \[Delta], \[Tau]] . GA[5]]
+DiracTrace[GAD[\[Mu], \[Nu], \[Rho]] . GA[5] . GAD[\[Sigma], \[Delta], \[Tau]] . GA[5]] 
+ 
 DiracSimplify[%]
 ```
 
@@ -99,7 +109,8 @@ $$\text{tr}\left(\gamma ^{\mu }.\gamma ^{\nu }.\gamma ^{\rho }.\bar{\gamma }^5.\
 $$-4 g^{\delta \tau } g^{\mu \sigma } g^{\nu \rho }-4 g^{\delta \sigma } g^{\mu \tau } g^{\nu \rho }+4 g^{\delta \mu } g^{\nu \rho } g^{\sigma \tau }+4 g^{\delta \tau } g^{\mu \rho } g^{\nu \sigma }+4 g^{\delta \rho } g^{\mu \tau } g^{\nu \sigma }+4 g^{\delta \sigma } g^{\mu \rho } g^{\nu \tau }-4 g^{\delta \rho } g^{\mu \sigma } g^{\nu \tau }-4 g^{\delta \tau } g^{\mu \nu } g^{\rho \sigma }-4 g^{\delta \nu } g^{\mu \tau } g^{\rho \sigma }+4 g^{\delta \mu } g^{\nu \tau } g^{\rho \sigma }-4 g^{\delta \sigma } g^{\mu \nu } g^{\rho \tau }+4 g^{\delta \nu } g^{\mu \sigma } g^{\rho \tau }-4 g^{\delta \mu } g^{\nu \sigma } g^{\rho \tau }+4 g^{\delta \rho } g^{\mu \nu } g^{\sigma \tau }-4 g^{\delta \nu } g^{\mu \rho } g^{\sigma \tau }$$
 
 ```mathematica
-DiracTrace[GAD[\[Mu], \[Nu], \[Rho]] . GA[5] . GAD[\[Sigma], \[Delta], \[Tau]] . GA[7]]
+DiracTrace[GAD[\[Mu], \[Nu], \[Rho]] . GA[5] . GAD[\[Sigma], \[Delta], \[Tau]] . GA[7]] 
+ 
 DiracSimplify[%]
 ```
 
@@ -110,7 +121,8 @@ $$-\frac{1}{2} \;\text{tr}\left(\gamma ^{\mu }.\gamma ^{\nu }.\gamma ^{\rho }.\g
 Over the years people invented many different schemes to deal with $\gamma^5$ in dimensional regularization. Currently, only the t'Hooft-Veltman-Breitenlohner-Maison  (BMHV) prescription is fully supported in FeynCalc.
 
 ```mathematica
-FCSetDiracGammaScheme["BMHV"];
+FCSetDiracGammaScheme["BMHV"]; 
+ 
 DiracSimplify[DiracTrace[GAD[\[Mu], \[Nu], \[Rho]] . GA[5] . GAD[\[Sigma], \[Delta], \[Tau]] . GA[7]]]
 ```
 
@@ -122,30 +134,38 @@ Traces that are free of  $\gamma^5$ but contain both $4$- and $D$-dimensional Di
 
 ```mathematica
 FCSetDiracGammaScheme["NDR"];
+```
+
+```mathematica
 DiracTrace[(-GSD[q] + SMP["m_e"]) . GA[\[Nu]] . (GS[p] - GSD[q] + SMP["m_e"]) . GA[\[Mu]]] 
+ 
 DiracSimplify[%]
 ```
 
 $$\text{tr}\left(\left(m_e-\gamma \cdot q\right).\bar{\gamma }^{\nu }.\left(\bar{\gamma }\cdot \overline{p}+m_e-\gamma \cdot q\right).\bar{\gamma }^{\mu }\right)$$
 
-![1qthu1dh30y15](img/1qthu1dh30y15.svg)
+![1pt4vjhepgnk6](img/1pt4vjhepgnk6.pdf)
 
 $$\text{\$Aborted}$$
 
 ```mathematica
 FCSetDiracGammaScheme["BMHV"];
-DiracSimplify[DiracTrace[(-GSD[q] + SMP["m_e"]) . GA[\[Nu]] . (GS[p] - GSD[q] + SMP["m_e"]) . GA[\[Mu]]] ] 
- 
-% // FCE // StandardForm 
- 
-FCSetDiracGammaScheme["NDR"];
+```
 
+```mathematica
+ex = DiracSimplify[DiracTrace[(-GSD[q] + SMP["m_e"]) . GA[\[Nu]] . (GS[p] - GSD[q] + SMP["m_e"]) . GA[\[Mu]]] ]
 ```
 
 $$4 m_e^2 \bar{g}^{\mu \nu }+4 \bar{g}^{\mu \nu } \left(\overline{p}\cdot \overline{q}\right)-4 q^2 \bar{g}^{\mu \nu }-4 \overline{p}^{\nu } \overline{q}^{\mu }-4 \overline{p}^{\mu } \overline{q}^{\nu }+8 \overline{q}^{\mu } \overline{q}^{\nu }$$
 
-```
+```mathematica
+ex // FCE // StandardForm
+
 (*-4 FV[p, \[Nu]] FV[q, \[Mu]] - 4 FV[p, \[Mu]] FV[q, \[Nu]] + 8 FV[q, \[Mu]] FV[q, \[Nu]] + 4 MT[\[Mu], \[Nu]] SMP["m_e"]^2 + 4 MT[\[Mu], \[Nu]] SP[p, q] - 4 MT[\[Mu], \[Nu]] SPD[q, q]*)
+```
+
+```mathematica
+FCSetDiracGammaScheme["NDR"];
 ```
 
 Notice that in this case the result contains $4$- and $D$-dimensional tensors.
@@ -153,17 +173,19 @@ Notice that in this case the result contains $4$- and $D$-dimensional tensors.
 Traces involving $\gamma^5$ in the BMHV scheme are evaluated using West's formula. It is possible to turn it off by setting the option `West` to `False`, but then the evaluation will require much more time.
 
 ```mathematica
-FCSetDiracGammaScheme["BMHV"];
+FCSetDiracGammaScheme["BMHV"]; 
+ 
 AbsoluteTiming[r1 = DiracSimplify[DiracTrace[GAD[\[Mu], \[Nu], \[Rho]] . GA[5] . GAD[\[Sigma], \[Delta], \[Tau]] . GA[7]]];]
 ```
 
-$$\{0.29598,\text{Null}\}$$
+$$\{0.225294,\text{Null}\}$$
 
 ```mathematica
-AbsoluteTiming[r2 = DiracSimplify[DiracTrace[GAD[\[Mu], \[Nu], \[Rho]] . GA[5] . GAD[\[Sigma], \[Delta], \[Tau]] . GA[7], West -> False]];]
+AbsoluteTiming[r2 = DiracSimplify[DiracTrace[GAD[\[Mu], \[Nu], \[Rho]] . GA[5] . GAD[\[Sigma], \[Delta], \[Tau]] . GA[7], 
+      West -> False]];]
 ```
 
-$$\{3.65841,\text{Null}\}$$
+$$\{1.82085,\text{Null}\}$$
 
 ```mathematica
 r1 === r2
@@ -172,14 +194,16 @@ r1 === r2
 $$\text{True}$$
 
 ```mathematica
-FCSetDiracGammaScheme["NDR"];
+FCSetDiracGammaScheme["NDR"]; 
+ 
 ClearAll[r1, r2]
 ```
 
 If you know that traces with one $\gamma^5$  do not contribute to your final result, use the new NDR-Discard scheme to put them to zero
 
 ```mathematica
-FCSetDiracGammaScheme["NDR-Discard"];
+FCSetDiracGammaScheme["NDR-Discard"]; 
+ 
 DiracSimplify[DiracTrace[GAD[\[Mu], \[Nu], \[Rho]] . GA[5] . GAD[\[Sigma], \[Delta], \[Tau]] . GA[7]]]
 ```
 
@@ -192,7 +216,8 @@ FCSetDiracGammaScheme["NDR"];
 Sorting of the matrices inside $4$-dimensional traces helps to avoid some spurious terms.
 
 ```mathematica
-DiracTrace[GA[\[Mu], \[Nu], 5, \[Rho], \[Sigma], \[Tau], \[Kappa]], DiracTraceEvaluate -> True] - DiracTrace[GA[\[Mu], \[Nu], \[Rho], \[Sigma], \[Tau], \[Kappa], 5], DiracTraceEvaluate -> True] // Expand
+DiracTrace[GA[\[Mu], \[Nu], 5, \[Rho], \[Sigma], \[Tau], \[Kappa]], DiracTraceEvaluate -> True] - 
+   DiracTrace[GA[\[Mu], \[Nu], \[Rho], \[Sigma], \[Tau], \[Kappa], 5],DiracTraceEvaluate -> True] // Expand
 ```
 
 $$0$$
@@ -200,7 +225,8 @@ $$0$$
 When the sorting is turned off via `Sort` to `True`, one may obtain some spurious terms that vanish by Schouten's identity.
 
 ```mathematica
-DiracTrace[GA[\[Mu], \[Nu], 5, \[Rho], \[Sigma], \[Tau], \[Kappa]], DiracTraceEvaluate -> True, Sort -> False] - DiracTrace[GA[\[Mu], \[Nu], \[Rho], \[Sigma], \[Tau], \[Kappa], 5], DiracTraceEvaluate -> True, Sort -> False] // Expand
+DiracTrace[GA[\[Mu], \[Nu], 5, \[Rho], \[Sigma], \[Tau], \[Kappa]], DiracTraceEvaluate -> True, Sort -> False] - 
+   DiracTrace[GA[\[Mu], \[Nu], \[Rho], \[Sigma], \[Tau], \[Kappa], 5],DiracTraceEvaluate -> True, Sort -> False] // Expand
 ```
 
 $$4 i \bar{g}^{\kappa \mu } \bar{\epsilon }^{\nu \rho \sigma \tau }-4 i \bar{g}^{\kappa \nu } \bar{\epsilon }^{\mu \rho \sigma \tau }-4 i \bar{g}^{\kappa \sigma } \bar{\epsilon }^{\mu \nu \rho \tau }+4 i \bar{g}^{\kappa \tau } \bar{\epsilon }^{\mu \nu \rho \sigma }+4 i \bar{g}^{\mu \rho } \bar{\epsilon }^{\kappa \nu \sigma \tau }-4 i \bar{g}^{\nu \rho } \bar{\epsilon }^{\kappa \mu \sigma \tau }+4 i \bar{g}^{\rho \sigma } \bar{\epsilon }^{\kappa \mu \nu \tau }-4 i \bar{g}^{\rho \tau } \bar{\epsilon }^{\kappa \mu \nu \sigma }$$
@@ -208,7 +234,8 @@ $$4 i \bar{g}^{\kappa \mu } \bar{\epsilon }^{\nu \rho \sigma \tau }-4 i \bar{g}^
 The trace of the unit matrix in the Dirac space is fixed to 4, which is the standard choice in dimensional regularization.
 
 ```mathematica
-DiracTrace[1]
+DiracTrace[1] 
+ 
 DiracSimplify[%]
 ```
 
@@ -233,7 +260,8 @@ $$D g^{\mu \nu }$$
 Since FeynCalc 9.3 it is also possible to compute traces of Dirac matrices with Cartesian or temporal indices. However, the support of nonrelativistic calculations is a very new feature, so that things may not work as smooth as they do for manifestly Lorentz covariant expressions.
 
 ```mathematica
-DiracTrace[CGAD[i, j, k, l]]
+DiracTrace[CGAD[i, j, k, l]] 
+ 
 DiracSimplify[%]
 ```
 
@@ -242,7 +270,8 @@ $$\text{tr}\left(\gamma ^i.\gamma ^j.\gamma ^k.\gamma ^l\right)$$
 $$4 \delta ^{il} \delta ^{jk}-4 \delta ^{ik} \delta ^{jl}+4 \delta ^{ij} \delta ^{kl}$$
 
 ```mathematica
-DiracTrace[CGA[i, j, k, l] . GA[6] . CGA[m, n]]
+DiracTrace[CGA[i, j, k, l] . GA[6] . CGA[m, n]] 
+ 
 DiracSimplify[%]
 ```
 

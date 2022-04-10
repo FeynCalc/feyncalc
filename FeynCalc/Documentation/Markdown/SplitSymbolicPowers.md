@@ -31,16 +31,15 @@ $$\left\{1,\frac{m^6 (-1)^{r-1} (r-1) \left(m^2\right)^{-\varepsilon -r} \Gamma 
 Both parametrizations lead to the same results (as expected)
 
 ```mathematica
-Series[v1[[2]], {Epsilon, 0, 1}] // Normal
-Series[v2[[2]], {Epsilon, 0, 1}] // Normal
-% - %% // Simplify // FunctionExpand 
-  
+Series[v1[[2]], {Epsilon, 0, 1}] // Normal 
  
-
+Series[v2[[2]], {Epsilon, 0, 1}] // Normal 
+ 
+% - %% // Simplify // FunctionExpand
 ```
 
-$$\frac{\varepsilon  m^6 (-1)^r \left(m^2\right)^{-r} \Gamma (r-3) \left(\log \left(m^2\right)-\psi ^{(0)}(r-3)\right)}{\Gamma (r-1)}+\frac{m^6 (-1)^{r-1} \left(m^2\right)^{-r} \Gamma (r-3)}{\Gamma (r-1)}$$
+$$\frac{\varepsilon  m^6 (-1)^r \left(m^2\right)^{-r} \Gamma (r-3) \left(\log \left(m^2\right)-\psi ^{(0)}(r-3)\right)}{\Gamma (r-1)}-\frac{m^6 (-1)^r \left(m^2\right)^{-r} \Gamma (r-3)}{\Gamma (r-1)}$$
 
-$$\frac{\varepsilon  m^6 (-1)^r (r-1) \left(m^2\right)^{-r} \Gamma (r-3) \left(\log \left(m^2\right)-\psi ^{(0)}(r-3)\right)}{\Gamma (r)}+\frac{m^6 (-1)^{r-1} (r-1) \left(m^2\right)^{-r} \Gamma (r-3)}{\Gamma (r)}$$
+$$\frac{\varepsilon  m^6 (-1)^r (r-1) \left(m^2\right)^{-r} \Gamma (r-3) \left(\log \left(m^2\right)-\psi ^{(0)}(r-3)\right)}{\Gamma (r)}-\frac{m^6 (-1)^r (r-1) \left(m^2\right)^{-r} \Gamma (r-3)}{\Gamma (r)}$$
 
 $$0$$

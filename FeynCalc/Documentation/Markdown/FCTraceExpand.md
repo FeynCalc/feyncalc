@@ -33,7 +33,8 @@ FCTraceExpand[ex, DiracTrace -> False]
 $$\text{tr}\left(\bar{\gamma }^{\mu }.\left(\bar{\gamma }\cdot \overline{\text{p1}}+\text{m1}\right).\bar{\gamma }^{\nu }.\left(\bar{\gamma }\cdot \overline{\text{p2}}+\text{m2}\right).\bar{\gamma }^{\rho }+x\right)$$
 
 ```mathematica
-a*DiracTrace[GA[\[Mu]] . (GS[p1] + m1) . GA[\[Nu]]] + b*DiracTrace[GA[\[Mu]] . (GS[p2] + m2) . GA[\[Nu]]]
+a*DiracTrace[GA[\[Mu]] . (GS[p1] + m1) . GA[\[Nu]]] + b*DiracTrace[GA[\[Mu]] . (GS[p2] + m2) . GA[\[Nu]]] 
+ 
 FCTraceExpand[%, Momentum -> {p1}]
 ```
 

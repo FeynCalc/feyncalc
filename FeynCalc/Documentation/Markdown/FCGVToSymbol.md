@@ -11,7 +11,8 @@ The option `StringReplace` can be used to specify string replacement rules that 
 ### Examples
 
 ```mathematica
-FCGV["a"] // FCGVToSymbol
+FCGV["a"] // FCGVToSymbol 
+ 
 % // InputForm
 ```
 
@@ -22,7 +23,8 @@ a
 ```
 
 ```mathematica
-FCGV["$MU"] // FCGVToSymbol
+FCGV["$MU"] // FCGVToSymbol 
+ 
 % // InputForm
 ```
 

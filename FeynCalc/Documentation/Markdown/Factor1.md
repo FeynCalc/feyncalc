@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-(a - x) (b - x)
+(a - x) (b - x) 
+ 
 {Factor1[%], Factor[%]}
 ```
 

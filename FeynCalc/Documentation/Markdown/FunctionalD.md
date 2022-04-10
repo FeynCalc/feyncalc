@@ -1,6 +1,10 @@
 ## FunctionalD
 
-FunctionalD[exp, {QuantumField[name, LorentzIndex[mu], ..., SUNIndex[a]][p], ...}] calculates the functional derivative of exp with respect to the QuantumField list (with incoming momenta $\text{p}$, etc.) and does the Fourier transform.   FunctionalD[expr, {QuantumField[name, LorentzIndex[mu], ... SUNIndex[a]], ...}] calculates the functional derivative and does partial integration but omits the $\text{x}$-space delta functions.FunctionalD is a low level function used in FeynRule.
+`FunctionalD[exp, {QuantumField[name, LorentzIndex[mu], ..., SUNIndex[a]][p], ...}]` calculates the functional derivative of exp with respect to the QuantumField list (with incoming momenta $\text{p}$, etc.) and does the Fourier transform.
+
+`FunctionalD[expr, {QuantumField[name, LorentzIndex[mu], ... SUNIndex[a]], ...}]` calculates the functional derivative and does partial integration but omits the $\text{x}$-space delta functions.
+
+`FunctionalD` is a low level function used in `FeynRule`.
 
 ### See also
 
@@ -32,7 +36,8 @@ $$-\vec{\partial }_{\mu }$$
 
 ```mathematica
 (QuantumField[FCPartialD[LorentzIndex[\[Mu]]], \[Phi]] . QuantumField[FCPartialD[LorentzIndex[\[Mu]]] 
-      , \[Phi]] - m^2 QuantumField[\[Phi]] . QuantumField[\[Phi]])/2
+       , \[Phi]] - m^2 QuantumField[\[Phi]] . QuantumField[\[Phi]])/2 
+ 
 FunctionalD[%, QuantumField[\[Phi]]]
 ```
 
@@ -40,13 +45,15 @@ $$\frac{1}{2} \left(\left(\left.(\partial _{\mu }\phi \right)\right).\left(\left
 
 $$m^2 (-\phi )-\left(\partial _{\mu }\partial _{\mu }\phi \right)$$
 
-$S[A] = -\int  d^Dx \frac{1}{4} F_a^{\mu \n u }(x) F_{\text{$\mu \nu $a}}(x)$
+Consider $S[A] = -\int  d^D x \frac{1}{4} F_a^{\mu \nu }(x) F_{\mu \nu }(x)$
 
 First approach:
 
 ```mathematica
-F1 = FieldStrength[\[Mu], \[Nu], a, {A, b, c}, 1, Explicit -> True]
-F2 = FieldStrength[\[Mu], \[Nu], a, {A, d, e}, 1, Explicit -> True]
+F1 = FieldStrength[\[Mu], \[Nu], a, {A, b, c}, 1, Explicit -> True] 
+ 
+F2 = FieldStrength[\[Mu], \[Nu], a, {A, d, e}, 1, Explicit -> True] 
+ 
 S[A] = -1/4 F1 . F2
 ```
 
@@ -60,7 +67,7 @@ In order to derive the equation of motion, the functional derivative of $S$ with
 
 Act with the functional derivative operator on the first field strength:
 
-$0 = (\delta S)  / ( \delta A_ {\sigma }^g(y) ) =-2/4 \int d^D x (\delta / (\delta A_ {\sigma }^g (y) ) F_{\mu \nu}(x)) F_a^{\mu \nu}(x)$
+$0 = (\delta S)  / ( \delta A_ {\sigma }^g(y) ) =-2/4 \int d^D x (\delta / (\delta A_ {\sigma }^g (y) ) F^a_{\mu \nu}(x)) F_a^{\mu \nu} (x)$
 
 See what happens with just $(\delta S[A]) / (\delta A_{\sigma }^g)$
 
@@ -91,7 +98,8 @@ F /: QuantumField[pard___, F, \[Beta]_, \[Alpha]_, s_] := -QuantumField[pard, F,
 ```
 
 ```mathematica
-QuantumField[F, {\[Mu], \[Nu]}, {a}]
+QuantumField[F, {\[Mu], \[Nu]}, {a}] 
+ 
 % /. {\[Mu] :> \[Nu], \[Nu] :> \[Mu]}
 ```
 
@@ -100,13 +108,15 @@ $$F_{\mu \nu }^a$$
 $$-F_{\mu \nu }^a$$
 
 ```mathematica
-t2 = Contract[ExpandPartialD[-1/2 t1 . QuantumField[F, LorentzIndex[\[Mu]], LorentzIndex[\[Nu]], SUNIndex[a]]]] /. Dot -> Times
+t2 = Contract[ExpandPartialD[-1/2 t1 . QuantumField[F, LorentzIndex[\[Mu]], LorentzIndex[\[Nu]], 
+        SUNIndex[a]]]] /. Dot -> Times
 ```
 
 $$-\frac{1}{2} A_{\mu }^c f^{acg} F_{\mu \sigma }^a-\frac{1}{2} A_{\nu }^c f^{acg} F_{\nu \sigma }^a+\frac{1}{2} \left(\left.(\partial _{\mu }F_{\mu \sigma }^g\right)\right)+\frac{1}{2} \left(\left.(\partial _{\nu }F_{\nu \sigma }^g\right)\right)$$
 
 ```mathematica
-t3 = FCCanonicalizeDummyIndices[t2, LorentzIndexNames -> {mu}, SUNIndexNames -> {aa, cc}] /. {mu -> \[Mu], aa -> a, cc -> c}
+t3 = FCCanonicalizeDummyIndices[t2, LorentzIndexNames -> {mu}, SUNIndexNames -> {aa, 
+      cc}] /. {mu -> \[Mu], aa -> a, cc -> c}
 ```
 
 $$A_{\mu }^a f^{acg} F_{\mu \sigma }^c+\left.(\partial _{\mu }F_{\mu \sigma }^g\right)$$
@@ -140,8 +150,12 @@ This is just functional derivation and partial integration and simple contractio
 With a general replacement rule only valid for commuting fields the color indices can be canonicalized a bit more. The idea is to use the commutative properties of the vector fields, and canonicalize the color indices by a trick.
 
 ```mathematica
-Commutator[QuantumField[aaa___FCPartialD, A, bbb__], QuantumField[ccc___FCPartialD, A, ddd__]] = 0;
-r2 = r1 // DotSimplify // FCCanonicalizeDummyIndices[#, SUNIndexNames -> {a1, b1, c1, d1}, LorentzIndexNames -> {mu, nu, rho}] & // ReplaceAll[#, {a1 -> a, b1 -> b, c1 -> c, d1 -> d, mu -> \[Mu], nu -> \[Nu], rho -> \[Rho]}] & // Collect2[#, SUNF] &
+Commutator[QuantumField[aaa___FCPartialD, A, bbb__], QuantumField[ccc___FCPartialD, A, 
+      ddd__]] = 0; 
+ 
+r2 = r1 // DotSimplify // FCCanonicalizeDummyIndices[#, SUNIndexNames -> {a1, b1, c1, d1}, 
+       LorentzIndexNames -> {mu, nu, rho}] & // ReplaceAll[#, {a1 -> a, b1 -> b, c1 -> c, 
+       d1 -> d, mu -> \[Mu], nu -> \[Nu], rho -> \[Rho]}] & // Collect2[#, SUNF] &
 ```
 
 $$\frac{1}{2} f^{adg} f^{bcd} A_{\mu }^a.A_{\mu }^b.A_{\sigma }^c+\frac{1}{2} f^{acd} f^{bdg} A_{\mu }^a.A_{\mu }^b.A_{\sigma }^c+f^{abg} \left(2 A_{\mu }^a.\left(\left.(\partial _{\mu }A_{\sigma }^b\right)\right)-A_{\mu }^a.\left(\left.(\partial _{\sigma }A_{\mu }^b\right)\right)-A_{\sigma }^a.\left(\left.(\partial _{\mu }A_{\mu }^b\right)\right)\right)+\left(\partial _{\mu }\partial _{\mu }A_{\sigma }^g\right)-\left(\partial _{\mu }\partial _{\sigma }A_{\mu }^g\right)$$
@@ -175,7 +189,9 @@ t4
 $$\left.(\partial _{\mu }F_{\mu \sigma }^g\right)-A_{\mu }^a f^{gca} F_{\mu \sigma }^c$$
 
 ```mathematica
-w0 = RightPartialD[\[Mu]] . FieldStrength[\[Mu], \[Sigma], g, {A, a, b}, 1] + QuantumField[A, LorentzIndex[\[Mu]], SUNIndex[c]] . FieldStrength[\[Mu], \[Sigma], a, {A, b, d}, 1] SUNF[g, c, a]
+w0 = RightPartialD[\[Mu]] . FieldStrength[\[Mu], \[Sigma], g, {A, a, b}, 1] + 
+   QuantumField[A, LorentzIndex[\[Mu]], SUNIndex[c]] . FieldStrength[\[Mu], \[Sigma], a, 
+      {A, b, d}, 1] SUNF[g, c, a]
 ```
 
 $$f^{gca} A_{\mu }^c.F_{\mu \sigma }^{a\{A,b,d\}1}+\vec{\partial }_{\mu }.F_{\mu \sigma }^{g\{A,a,b\}1}$$
@@ -209,5 +225,6 @@ $$0$$
 Finally, unset the commutator of the bosonic fields.
 
 ```mathematica
-UnDeclareCommutator[QuantumField[aaa___FCPartialD, A, bbb__], QuantumField[ccc___FCPartialD, A, ddd__]] = 0;
+UnDeclareCommutator[QuantumField[aaa___FCPartialD, A, bbb__], 
+    QuantumField[ccc___FCPartialD, A, ddd__]] = 0;
 ```

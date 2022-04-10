@@ -1,6 +1,8 @@
 ## StandardPropagatorDenominator
 
-`StandardPropagatorDenominator[Momentum[q1, D] +..., Pair[Momentum[q1, D], Momentum[p1, D] +..., m^2, {n, s}]` encodes a generic Lorentzian propagator denominator $\frac{1}{[(q_1+ \ldots)^2 + q_1 \cdot p_1 + \ldots + m^2 + s i \eta]^n}$.
+`StandardPropagatorDenominator[propSq + ..., propEik +..., m^2, {n, s}]` encodes a generic Lorentzian propagator denominator $\frac{1}{[(q_1+ \ldots)^2 + q_1 \cdot p_1 + \ldots + m^2 + s i \eta]^n}$.
+
+`propSq` should be of the form `Momentum[q1, D]`, while `propEik` should look like `Pair[Momentum[q1, D], Momentum[p1, D]`.
 
 This allows to accommodate for standard propagators of the type $1/(p^2-m^2)$ but also for propagators encountered in manifestly Lorentz covariant effective field theories such as HQET or SCET.
 

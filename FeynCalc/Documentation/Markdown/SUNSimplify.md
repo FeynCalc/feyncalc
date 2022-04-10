@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-SUNDelta[a, b] SUNDelta[b, c]
+SUNDelta[a, b] SUNDelta[b, c] 
+ 
 SUNSimplify[%]
 ```
 
@@ -18,7 +19,8 @@ $$\delta ^{ab} \delta ^{bc}$$
 $$\delta ^{ac}$$
 
 ```mathematica
-SUNT[a] . SUNT[a]
+SUNT[a] . SUNT[a] 
+ 
 SUNSimplify[%]
 ```
 
@@ -33,7 +35,8 @@ SUNSimplify[SUNT[a] . SUNT[a], SUNNToCACF -> False]
 $$\frac{N^2-1}{2 N}$$
 
 ```mathematica
-SUNF[a, r, s] SUNF[b, r, s]
+SUNF[a, r, s] SUNF[b, r, s] 
+ 
 SUNSimplify[%]
 ```
 
@@ -42,7 +45,8 @@ $$f^{ars} f^{brs}$$
 $$C_A \delta ^{ab}$$
 
 ```mathematica
-SUNF[a, b, c]  SUNF[a, b, c]
+SUNF[a, b, c]  SUNF[a, b, c] 
+ 
 SUNSimplify[%]
 ```
 
@@ -51,7 +55,8 @@ $$\left(f^{abc}\right)^2$$
 $$2 C_A^2 C_F$$
 
 ```mathematica
-SUNF[a, b, c] SUNF[d, b, c]
+SUNF[a, b, c] SUNF[d, b, c] 
+ 
 SUNSimplify[%]
 ```
 
@@ -60,7 +65,8 @@ $$f^{abc} f^{dbc}$$
 $$C_A \delta ^{ad}$$
 
 ```mathematica
-SUNF[a, b, c] SUND[d, b, c]
+SUNF[a, b, c] SUND[d, b, c] 
+ 
 SUNSimplify[%, Explicit -> True]
 ```
 
@@ -69,7 +75,8 @@ $$d^{bcd} f^{abc}$$
 $$0$$
 
 ```mathematica
-SUND[a, b, c] SUND[a, b, c]
+SUND[a, b, c] SUND[a, b, c] 
+ 
 SUNSimplify[%, SUNNToCACF -> False] // Factor2
 ```
 
@@ -96,7 +103,8 @@ SUNSimplify[SUND[a, b, c], Explicit -> True]
 $$2 \left(\text{tr}(T^a.T^b.T^c)+\text{tr}(T^b.T^a.T^c)\right)$$
 
 ```mathematica
-SUNF[a, b, c] SUNT[c, b, a]
+SUNF[a, b, c] SUNT[c, b, a] 
+ 
 SUNSimplify[%]
 ```
 
@@ -105,8 +113,10 @@ $$f^{abc} T^c.T^b.T^a$$
 $$-\frac{1}{2} i C_A C_F$$
 
 ```mathematica
-SUNF[a, b, e] SUNF[c, d, e] + SUNF[a, b, z] SUNF[c, d, z]
-SUNSimplify[%, Explicit -> False]
+SUNF[a, b, e] SUNF[c, d, e] + SUNF[a, b, z] SUNF[c, d, z] 
+ 
+SUNSimplify[%, Explicit -> False] 
+ 
 SUNSimplify[%, Explicit -> False, SUNIndexRename -> False]
 ```
 

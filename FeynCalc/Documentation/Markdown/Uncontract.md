@@ -13,28 +13,30 @@ The option `Pair -> All` uncontracts all momenta except `OPEDelta`.
 ### Examples
 
 ```mathematica
-LC[\[Mu], \[Nu]][p, q]
+LC[\[Mu], \[Nu]][p, q] 
+ 
 Uncontract[%, p]
 ```
 
 $$\bar{\epsilon }^{\mu \nu \overline{p}\overline{q}}$$
 
-$$\overline{p}^{\text{\$AL}(\text{\$24})} \bar{\epsilon }^{\mu \nu \;\text{\$AL}(\text{\$24})\overline{q}}$$
+$$\overline{p}^{\text{\$AL}(\text{\$19})} \bar{\epsilon }^{\mu \nu \;\text{\$AL}(\text{\$19})\overline{q}}$$
 
 ```mathematica
-GS[p]
+GS[p] 
+ 
 Uncontract[%, p]
 ```
 
 $$\bar{\gamma }\cdot \overline{p}$$
 
-$$\bar{\gamma }^{\text{\$AL}(\text{\$25})} \overline{p}^{\text{\$AL}(\text{\$25})}$$
+$$\bar{\gamma }^{\text{\$AL}(\text{\$20})} \overline{p}^{\text{\$AL}(\text{\$20})}$$
 
 ```mathematica
 Uncontract[LC[\[Mu], \[Nu]][p, q], p, q]
 ```
 
-$$\overline{p}^{\text{\$AL}(\text{\$27})} \overline{q}^{\text{\$AL}(\text{\$26})} \left(-\bar{\epsilon }^{\mu \nu \;\text{\$AL}(\text{\$26})\text{\$AL}(\text{\$27})}\right)$$
+$$\overline{p}^{\text{\$AL}(\text{\$22})} \overline{q}^{\text{\$AL}(\text{\$21})} \left(-\bar{\epsilon }^{\mu \nu \;\text{\$AL}(\text{\$21})\text{\$AL}(\text{\$22})}\right)$$
 
 By default scalar products are not uncontracted.
 
@@ -50,13 +52,13 @@ Use the option `Pair->All` to make the function take care of the scalar products
 Uncontract[SP[p, q], q, Pair -> All]
 ```
 
-$$\overline{p}^{\text{\$AL}(\text{\$28})} \overline{q}^{\text{\$AL}(\text{\$28})}$$
+$$\overline{p}^{\text{\$AL}(\text{\$23})} \overline{q}^{\text{\$AL}(\text{\$23})}$$
 
 ```mathematica
 Uncontract[SP[p, q]^2, q, Pair -> All]
 ```
 
-$$\overline{p}^{\text{\$AL}(\text{\$29})} \overline{p}^{\text{\$AL}(\text{\$30})} \overline{q}^{\text{\$AL}(\text{\$29})} \overline{q}^{\text{\$AL}(\text{\$30})}$$
+$$\overline{p}^{\text{\$AL}(\text{\$24})} \overline{p}^{\text{\$AL}(\text{\$25})} \overline{q}^{\text{\$AL}(\text{\$24})} \overline{q}^{\text{\$AL}(\text{\$25})}$$
 
 For Cartesian scalar products you need to use the option `CartesianPair->All`
 
@@ -70,4 +72,4 @@ $$\overline{p}\cdot \overline{q}$$
 Uncontract[CSP[p, q], q, CartesianPair -> All]
 ```
 
-$$\overline{p}^{\text{\$AL}(\text{\$31})} \overline{q}^{\text{\$AL}(\text{\$31})}$$
+$$\overline{p}^{\text{\$AL}(\text{\$26})} \overline{q}^{\text{\$AL}(\text{\$26})}$$

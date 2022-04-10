@@ -1,14 +1,14 @@
 ## DiracReduce
 
-`DiracReduce[exp]` reduces all $4$-dimensional Dirac matrices in exp to the standard basis $(S,P,V,A,T)$ using the Chisholm identity.
+`DiracReduce[exp]` reduces all $4$-dimensional Dirac matrices in exp to the standard basis $(S, P, V, A, T)$ using the Chisholm identity.
 
 In the result the basic Dirac structures can be wrapped with a head `DiracBasis`, that is
 
 - $S$: `DiracBasis[1]`
 - $P$: `DiracBasis[GA[5]]`
-- $V$: `DiracBasis[GA[$\mu$]]`
-- $A$: `DiracBasis[GA[$\mu$,5]]`
-- $T$: `DiracBasis[DiracSigma[GA[$\mu$,$\nu$]]]`
+- $V$: `DiracBasis[GA[mu]]`
+- $A$: `DiracBasis[GA[mu, 5]]`
+- $T$: `DiracBasis[DiracSigma[GA[mu, nu]]]`
 
 By default `DiracBasis` is substituted to `Identity`.
 
@@ -19,7 +19,8 @@ By default `DiracBasis` is substituted to `Identity`.
 ### Examples
 
 ```mathematica
-GA[\[Mu], \[Nu]]
+GA[\[Mu], \[Nu]] 
+ 
 DiracReduce[%]
 ```
 
@@ -30,7 +31,8 @@ $$\bar{g}^{\mu \nu }-i \sigma ^{\mu \nu }$$
 `DiracReduce` only works with Dirac matrices in $4$ dimensions, $D$-dimensional matrices are ignored.
 
 ```mathematica
-GAD[\[Mu], \[Nu]]
+GAD[\[Mu], \[Nu]] 
+ 
 DiracReduce[%]
 ```
 
@@ -39,16 +41,18 @@ $$\gamma ^{\mu }.\gamma ^{\nu }$$
 $$\gamma ^{\mu }.\gamma ^{\nu }$$
 
 ```mathematica
-SpinorUBar[Subscript[p, 1], Subscript[m, 1]] . GA[\[Mu], \[Nu], \[Rho]] . SpinorV[Subscript[p, 2], Subscript[m, 2]]
+SpinorUBar[Subscript[p, 1], Subscript[m, 1]] . GA[\[Mu], \[Nu], \[Rho]] . SpinorV[Subscript[p, 2], Subscript[m, 2]] 
+ 
 DiracReduce[%]
 ```
 
 $$\bar{u}\left(p_1,m_1\right).\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\rho }.v\left(p_2,m_2\right)$$
 
-$$i \bar{\epsilon }^{\mu \nu \rho \;\text{\$MU}(\text{\$36})} \left(\varphi (\overline{p}_1,m_1)\right).\bar{\gamma }^{\text{\$MU}(\text{\$36})}.\bar{\gamma }^5.\left(\varphi (-\overline{p}_2,m_2)\right)+\bar{g}^{\mu \nu } \left(\varphi (\overline{p}_1,m_1)\right).\bar{\gamma }^{\rho }.\left(\varphi (-\overline{p}_2,m_2)\right)-\bar{g}^{\mu \rho } \left(\varphi (\overline{p}_1,m_1)\right).\bar{\gamma }^{\nu }.\left(\varphi (-\overline{p}_2,m_2)\right)+\bar{g}^{\nu \rho } \left(\varphi (\overline{p}_1,m_1)\right).\bar{\gamma }^{\mu }.\left(\varphi (-\overline{p}_2,m_2)\right)$$
+$$i \bar{\epsilon }^{\mu \nu \rho \;\text{\$MU}(\text{\$31})} \left(\varphi (\overline{p}_1,m_1)\right).\bar{\gamma }^{\text{\$MU}(\text{\$31})}.\bar{\gamma }^5.\left(\varphi (-\overline{p}_2,m_2)\right)+\bar{g}^{\mu \nu } \left(\varphi (\overline{p}_1,m_1)\right).\bar{\gamma }^{\rho }.\left(\varphi (-\overline{p}_2,m_2)\right)-\bar{g}^{\mu \rho } \left(\varphi (\overline{p}_1,m_1)\right).\bar{\gamma }^{\nu }.\left(\varphi (-\overline{p}_2,m_2)\right)+\bar{g}^{\nu \rho } \left(\varphi (\overline{p}_1,m_1)\right).\bar{\gamma }^{\mu }.\left(\varphi (-\overline{p}_2,m_2)\right)$$
 
 ```mathematica
-GA[\[Mu], \[Nu], \[Rho], \[Sigma]]
+GA[\[Mu], \[Nu], \[Rho], \[Sigma]] 
+ 
 DiracReduce[%]
 ```
 

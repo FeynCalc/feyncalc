@@ -12,13 +12,13 @@ Use the rule `FCGV[s_] :> ToExpression[s]` if you want to convert the string `x`
 
 ```mathematica
 FCGV["x"]
-% // InputForm 
-  
- 
-
 ```
 
 $$\text{FCGV}(\text{x})$$
+
+```mathematica
+FCGV["x"] // InputForm
+```
 
 ```mathematica
 FCGV["x"]

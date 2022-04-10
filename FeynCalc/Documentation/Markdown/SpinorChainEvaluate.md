@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-ex = SpinorUBar[p, m] . SpinorU[p, m]
+ex = SpinorUBar[p, m] . SpinorU[p, m] 
+ 
 SpinorChainEvaluate[ex]
 ```
 
@@ -30,7 +31,8 @@ SpinorChainEvaluate[ex, DiracSpinorNormalization -> "Rest"]
 $$1$$
 
 ```mathematica
-ex = SpinorUBarD[p, m] . GA[5] . SpinorUD[p, m]
+ex = SpinorUBarD[p, m] . GA[5] . SpinorUD[p, m] 
+ 
 SpinorChainEvaluate[ex]
 ```
 
@@ -39,7 +41,8 @@ $$\bar{u}(p,m).\bar{\gamma }^5.u(p,m)$$
 $$0$$
 
 ```mathematica
-FCSetDiracGammaScheme["BMHV"]
+FCSetDiracGammaScheme["BMHV"] 
+ 
 SpinorChainEvaluate[ex]
 ```
 

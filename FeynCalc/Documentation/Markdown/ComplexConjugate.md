@@ -30,7 +30,8 @@ $$\frac{\text{e}^2 \left(\varphi (\overline{\text{p2}},m_e)\right).\bar{\gamma }
 Although one can also apply the function to standalone Dirac matrices, it should be understood that the result is not equivalent to the complex conjugation of such matrices.
 
 ```mathematica
-GA[\[Mu]]
+GA[\[Mu]] 
+ 
 ComplexConjugate[%]
 ```
 
@@ -39,7 +40,8 @@ $$\bar{\gamma }^{\mu }$$
 $$\bar{\gamma }^{\mu }$$
 
 ```mathematica
-GA[5]
+GA[5] 
+ 
 ComplexConjugate[%]
 ```
 
@@ -49,7 +51,8 @@ $$-\bar{\gamma }^5$$
 
 ```mathematica
 (GS[Polarization[k1, -I, Transversality -> True]] . (GS[k1 - p2] + SMP["m_e"]) . 
-   GS[Polarization[k2, -I, Transversality -> True]])
+    GS[Polarization[k2, -I, Transversality -> True]]) 
+ 
 ComplexConjugate[%]
 ```
 
@@ -58,7 +61,8 @@ $$\left(\bar{\gamma }\cdot \bar{\varepsilon }^*(\text{k1})\right).\left(\bar{\ga
 $$\left(\bar{\gamma }\cdot \bar{\varepsilon }(\text{k2})\right).\left(\bar{\gamma }\cdot \left(\overline{\text{k1}}-\overline{\text{p2}}\right)+m_e\right).\left(\bar{\gamma }\cdot \bar{\varepsilon }(\text{k1})\right)$$
 
 ```mathematica
-SUNTrace[SUNT[a, b, c]]
+SUNTrace[SUNT[a, b, c]] 
+ 
 ComplexConjugate[%]
 ```
 
@@ -69,7 +73,8 @@ $$\text{tr}(T^c.T^b.T^a)$$
 Since FeynCalc 9.3 `ComplexConjugate` will automatically rename dummy indices.
 
 ```mathematica
-PolarizationVector[p1, \[Mu]] PolarizationVector[p2, \[Nu]] MT[\[Mu], \[Nu]]
+PolarizationVector[p1, \[Mu]] PolarizationVector[p2, \[Nu]] MT[\[Mu], \[Nu]] 
+ 
 ComplexConjugate[%]
 ```
 
@@ -78,7 +83,8 @@ $$\bar{g}^{\mu \nu } \bar{\varepsilon }^{\mu }(\text{p1}) \bar{\varepsilon }^{\n
 $$\bar{g}^{\text{\$AL}(\text{\$19})\text{\$AL}(\text{\$20})} \bar{\varepsilon }^{*\text{\$AL}(\text{\$19})}(\text{p1}) \bar{\varepsilon }^{*\text{\$AL}(\text{\$20})}(\text{p2})$$
 
 ```mathematica
-GA[\[Mu], \[Nu]] LC[\[Mu], \[Nu]][p1, p2]
+GA[\[Mu], \[Nu]] LC[\[Mu], \[Nu]][p1, p2] 
+ 
 ComplexConjugate[%]
 ```
 
@@ -97,7 +103,8 @@ $$\bar{\gamma }^{\nu }.\bar{\gamma }^{\mu } \bar{\epsilon }^{\mu \nu \overline{\
 If particular variables must be replaced with their conjugate values, use the option `Conjugate`.
 
 ```mathematica
-GA[\[Mu]] . (c1 GA[6] + c2 GA[7]) . GA[\[Nu]]
+GA[\[Mu]] . (c1 GA[6] + c2 GA[7]) . GA[\[Nu]] 
+ 
 ComplexConjugate[%]
 ```
 
@@ -106,20 +113,22 @@ $$\bar{\gamma }^{\mu }.\left(\text{c1} \bar{\gamma }^6+\text{c2} \bar{\gamma }^7
 $$\bar{\gamma }^{\nu }.\left(\text{c1} \bar{\gamma }^7+\text{c2} \bar{\gamma }^6\right).\bar{\gamma }^{\mu }$$
 
 ```mathematica
-ComplexConjugate[GA[\[Mu]] . (c1 GA[6] + c2 GA[7]) . GA[\[Nu]], Conjugate -> {c1, c2}]
-% // StandardForm
+ex = ComplexConjugate[GA[\[Mu]] . (c1 GA[6] + c2 GA[7]) . GA[\[Nu]], Conjugate -> {c1, c2}]
 ```
 
 $$\bar{\gamma }^{\nu }.\left(\bar{\gamma }^7 \;\text{c1}^*+\bar{\gamma }^6 \;\text{c2}^*\right).\bar{\gamma }^{\mu }$$
 
-```
+```mathematica
+ex // StandardForm
+
 (*DiracGamma[LorentzIndex[\[Nu]]] . (Conjugate[c2] DiracGamma[6] + Conjugate[c1] DiracGamma[7]) . DiracGamma[LorentzIndex[\[Mu]]]*)
 ```
 
 It may happen that one needs to deal with amplitudes with amputated spinors, i.e. with open Dirac or Pauli indices. If the amplitude contains only a single chain of Dirac/Pauli matrices, everything remains unambiguous and the missing spinors are understood
 
 ```mathematica
-GA[\[Mu], \[Nu], \[Rho], 5] CSI[i, j]
+GA[\[Mu], \[Nu], \[Rho], 5] CSI[i, j] 
+ 
 ComplexConjugate[%]
 ```
 
@@ -130,7 +139,8 @@ $$-\overline{\sigma }^j.\overline{\sigma }^i \bar{\gamma }^5.\bar{\gamma }^{\rho
 However, when there are at least two spinor chains of the same type involved, such expressions do not make sense anymore. In these cases one should introduce explicit spinor indices to avoid ambiguities
 
 ```mathematica
-DCHN[GA[\[Mu], \[Nu], \[Rho], 5], i, j] DCHN[GA[\[Mu], \[Nu], \[Rho], 5], k, l]
+DCHN[GA[\[Mu], \[Nu], \[Rho], 5], i, j] DCHN[GA[\[Mu], \[Nu], \[Rho], 5], k, l] 
+ 
 ComplexConjugate[%]
 ```
 
@@ -139,7 +149,8 @@ $$\left(\bar{\gamma }^{\mu }.\bar{\gamma }^{\nu }.\bar{\gamma }^{\rho }.\bar{\ga
 $$\left(\bar{\gamma }^5.\bar{\gamma }^{\text{\$AL}(\text{\$23})}.\bar{\gamma }^{\text{\$AL}(\text{\$24})}.\bar{\gamma }^{\text{\$AL}(\text{\$25})}\right){}_{ji} \left(\bar{\gamma }^5.\bar{\gamma }^{\text{\$AL}(\text{\$23})}.\bar{\gamma }^{\text{\$AL}(\text{\$24})}.\bar{\gamma }^{\text{\$AL}(\text{\$25})}\right){}_{lk}$$
 
 ```mathematica
-PCHN[CSI[i, j, k], a, b] PCHN[CSI[i, j, k], c, d]
+PCHN[CSI[i, j, k], a, b] PCHN[CSI[i, j, k], c, d] 
+ 
 ComplexConjugate[%]
 ```
 
@@ -150,7 +161,8 @@ $$\left(\overline{\sigma }^{\text{\$AL}(\text{\$26})}.\overline{\sigma }^{\text{
 The function does not apply `Conjugate` to symbols that do not depend on `I` and are unrelated to Dirac/Pauli/Color matrices. One can specify symbols that need to be explicitly conjugated using the `Conjugate` option
 
 ```mathematica
-cc SpinorU[p1] . GA[mu] . SpinorV[p2]
+cc SpinorU[p1] . GA[mu] . SpinorV[p2] 
+ 
 ComplexConjugate[%]
 ```
 
@@ -159,11 +171,9 @@ $$\text{cc} u(\text{p1}).\bar{\gamma }^{\text{mu}}.v(\text{p2})$$
 $$\text{cc} \left(\varphi (-\overline{\text{p2}})\right).\bar{\gamma }^{\text{mu}}.\left(\varphi (\overline{\text{p1}})\right)$$
 
 ```mathematica
-cc SpinorU[p1] . GA[mu] . SpinorV[p2]
-ComplexConjugate[%, Conjugate -> {cc}] 
-  
+cc SpinorU[p1] . GA[mu] . SpinorV[p2] 
  
-
+ComplexConjugate[%, Conjugate -> {cc}]
 ```
 
 $$\text{cc} u(\text{p1}).\bar{\gamma }^{\text{mu}}.v(\text{p2})$$

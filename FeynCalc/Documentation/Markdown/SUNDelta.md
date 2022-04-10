@@ -15,7 +15,8 @@ SUNDelta[SUNIndex[a], SUNIndex[b]]
 $$\delta ^{ab}$$
 
 ```mathematica
-SUNDelta[SUNIndex[a], SUNIndex[b]] SUNDelta[SUNIndex[b], SUNIndex[c]]
+SUNDelta[SUNIndex[a], SUNIndex[b]] SUNDelta[SUNIndex[b], SUNIndex[c]] 
+ 
 SUNSimplify[%]
 ```
 
@@ -24,13 +25,8 @@ $$\delta ^{ab} \delta ^{bc}$$
 $$\delta ^{ac}$$
 
 ```mathematica
-SUNDelta[SUNIndex[a], SUNIndex[b]]
-% // StandardForm
-```
+SUNDelta[SUNIndex[a], SUNIndex[b]] // StandardForm
 
-$$\delta ^{ab}$$
-
-```
 (*SUNDelta[SUNIndex[a], SUNIndex[b]]*)
 ```
 
@@ -49,14 +45,13 @@ SD[a, b] // FCI // StandardForm
 The arguments of `SUNDelta` may also represent explicit integer indices via the head `ExplictiSUNIndex`. The difference is that `SUNSimplify` will only sum over symbolic indices.
 
 ```mathematica
-SUNDelta[SUNIndex[a], ExplicitSUNIndex[2]] SUNDelta[SUNIndex[a], SUNIndex[b]]*
-   SUNDelta[SUNIndex[c], ExplicitSUNIndex[2]] // SUNSimplify
+ex = SUNDelta[SUNIndex[a], ExplicitSUNIndex[2]] SUNDelta[SUNIndex[a], SUNIndex[b]] SUNDelta[SUNIndex[c], ExplicitSUNIndex[2]] // SUNSimplify
 ```
 
 $$\delta ^{2b} \delta ^{2c}$$
 
 ```mathematica
-% // StandardForm
+ex // StandardForm
 
 (*SUNDelta[ExplicitSUNIndex[2], SUNIndex[b]] SUNDelta[ExplicitSUNIndex[2], SUNIndex[c]]*)
 ```

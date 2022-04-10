@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-FCI[FVD[p, mu] CFAD[q, q - p]]
+FCI[FVD[p, mu] CFAD[q, q - p]] 
+ 
 FCLoopMixedIntegralQ[%]
 ```
 
@@ -18,7 +19,8 @@ $$\frac{p^{\text{mu}}}{(q^2-i \eta ).((q-p)^2-i \eta )}$$
 $$\text{True}$$
 
 ```mathematica
-FCI[FVD[p, mu] FAD[q, q - p]]
+FCI[FVD[p, mu] FAD[q, q - p]] 
+ 
 FCLoopMixedIntegralQ[%]
 ```
 

@@ -1,3 +1,5 @@
+## Li2
+
 `Li2` is an abbreviation for the dilogarithm function, i.e. `Li2 = PolyLog[2, #]&`.
 
 ### See also

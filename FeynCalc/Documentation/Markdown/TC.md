@@ -30,11 +30,12 @@ FCI[TC[p]] // StandardForm
 
 ```mathematica
 ExpandScalarProduct[TC[p - q]]
-% // StandardForm
 ```
 
 $$p^0-q^0$$
 
-```
+```mathematica
+ExpandScalarProduct[TC[p - q]] // StandardForm
+
 (*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p]] - TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q]]*)
 ```

@@ -9,8 +9,10 @@
 ### Examples
 
 ```mathematica
-FCClearScalarProducts[]
-FeynArts`FAFeynAmpDenominator[FeynArts`FAPropagatorDenominator[Momentum[P, D], MW Sqrt[FeynArts`FAGaugeXi[W]]], FeynArts`FAPropagatorDenominator[Momentum[k, D], m]]
+FCClearScalarProducts[] 
+ 
+FeynArts`FAFeynAmpDenominator[FeynArts`FAPropagatorDenominator[Momentum[P, D], MW Sqrt[FeynArts`FAGaugeXi[W]]], FeynArts`FAPropagatorDenominator[Momentum[k, D], m]] 
+ 
 FCPrepareFAAmp[%]
 ```
 
@@ -19,7 +21,8 @@ $$\text{FeynArts$\grave{ }$FAFeynAmpDenominator}\left(\text{FeynArts$\grave{ }$F
 $$\frac{1}{\left(\overline{P}^2-\text{MW}^2 \xi _W\right).\left(\overline{k}^2-m^2\right)}$$
 
 ```mathematica
-FeynArts`IndexDelta[FeynArts`Index[Global`Gluon, 1], FeynArts`Index[Global`Gluon, 2]]
+FeynArts`IndexDelta[FeynArts`Index[Global`Gluon, 1], FeynArts`Index[Global`Gluon, 2]] 
+ 
 FCPrepareFAAmp[%]
 ```
 

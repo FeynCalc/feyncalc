@@ -9,9 +9,12 @@
 ### Examples
 
 ```mathematica
-FCClearScalarProducts[]
-ClearAll[t]
-SetTemporalComponent[p, t]
+FCClearScalarProducts[] 
+ 
+ClearAll[t] 
+ 
+SetTemporalComponent[p, t] 
+ 
 TC[p]
 ```
 

@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-SP[q, q]
+SP[q, q] 
+ 
 FourLaplacian[%, q, q]
 ```
 
@@ -18,11 +19,9 @@ $$\overline{q}^2$$
 $$2 D$$
 
 ```mathematica
-SOD[q]^OPEmFAD[q, q - p]
-FourLaplacian[%, q, q] 
-  
+SOD[q]^OPEmFAD[q, q - p] 
  
-
+FourLaplacian[%, q, q]
 ```
 
 $$(\Delta \cdot q)^{\text{OPEmFAD}(q,q-p)}$$

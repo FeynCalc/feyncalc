@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-PCHN[PauliXi[-I], i] PCHN[CSID[a] . CSID[b], i, j] PCHN[j, PauliEta[I]]
+PCHN[PauliXi[-I], i] PCHN[CSID[a] . CSID[b], i, j] PCHN[j, PauliEta[I]] 
+ 
 PauliChainJoin[%]
 ```
 

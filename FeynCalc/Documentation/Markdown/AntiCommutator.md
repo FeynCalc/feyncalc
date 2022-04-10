@@ -11,8 +11,10 @@
 This declares `a` and `b` as noncommutative variables.
 
 ```mathematica
-DeclareNonCommutative[a, b]
-AntiCommutator[a, b]
+DeclareNonCommutative[a, b] 
+ 
+AntiCommutator[a, b] 
+ 
 CommutatorExplicit[%]
 ```
 
@@ -39,7 +41,8 @@ DeclareNonCommutative[c, d, ct, dt]
 Defining `{c,d} = z` results in replacements of `c.d` by `z-d.c.`
 
 ```mathematica
-AntiCommutator[c, d] = z
+AntiCommutator[c, d] = z 
+ 
 DotSimplify[ d . c . d ]
 ```
 
@@ -60,6 +63,7 @@ DotSimplify[dt . ct . dt]
 $$\text{dt} \;\text{zt}-\text{ct}.\text{dt}.\text{dt}$$
 
 ```mathematica
-UnDeclareNonCommutative[a, b, c, d, ct, dt]
+UnDeclareNonCommutative[a, b, c, d, ct, dt] 
+ 
 UnDeclareAllAntiCommutators[]
 ```

@@ -18,13 +18,13 @@ exp = Sum[p[i], {i, 1, 100}] Sum[q[i], {i, 1, 1000}];
 AbsoluteTiming[res1 = ExpandAll[exp];]
 ```
 
-$$\{0.371317,\text{Null}\}$$
+$$\{0.679579,\text{Null}\}$$
 
 ```mathematica
 AbsoluteTiming[res2 = ExpandAll2[exp];]
 ```
 
-$$\{0.150584,\text{Null}\}$$
+$$\{0.250011,\text{Null}\}$$
 
 ```mathematica
 res1 === res2

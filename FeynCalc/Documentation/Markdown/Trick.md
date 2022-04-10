@@ -17,7 +17,8 @@ Trick[{GA[\[Mu]] MT[\[Mu], \[Nu]], MTD[\[Nu], \[Nu]]}]
 $$\left\{\bar{\gamma }^{\nu },D\right\}$$
 
 ```mathematica
-FV[p + r, \[Mu]] MT[\[Mu], \[Nu]] FV[q - p, \[Nu]]
+FV[p + r, \[Mu]] MT[\[Mu], \[Nu]] FV[q - p, \[Nu]] 
+ 
 Trick[%]
 ```
 
@@ -27,11 +28,12 @@ $$\overline{p}\cdot \overline{q}-\overline{p}\cdot \overline{r}-\overline{p}^2+\
 
 ```mathematica
 Trick[c . b . a . GA[d] . GA[e]]
-% // FCE // StandardForm
 ```
 
 $$a b c \bar{\gamma }^d.\bar{\gamma }^e$$
 
-```
+```mathematica
+Trick[c . b . a . GA[d] . GA[e]] // FCE // StandardForm
+
 (*a b c GA[d] . GA[e]*)
 ```

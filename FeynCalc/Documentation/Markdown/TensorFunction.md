@@ -12,23 +12,25 @@ A symmetric tensor can be obtained by `TensorFunction[{t, "S"}, mu, nu, ...]`, a
 
 ```mathematica
 TensorFunction[t, \[Mu], \[Nu], \[Tau]]
-% // StandardForm
 ```
 
 $$t(\mu ,\nu ,\tau )$$
 
-```
+```mathematica
+TensorFunction[t, \[Mu], \[Nu], \[Tau]] // StandardForm
+
 (*t[LorentzIndex[\[Mu]], LorentzIndex[\[Nu]], LorentzIndex[\[Tau]]]*)
 ```
 
 ```mathematica
-Contract[FV[p, \[Mu]] %]
-% // StandardForm
+Contract[FV[p, \[Mu]] TensorFunction[t, \[Mu], \[Nu], \[Tau]]]
 ```
 
 $$t\left(\overline{p},\nu ,\tau \right)$$
 
-```
+```mathematica
+Contract[FV[p, \[Mu]] TensorFunction[t, \[Mu], \[Nu], \[Tau]]] // StandardForm
+
 (*t[Momentum[p], LorentzIndex[\[Nu]], LorentzIndex[\[Tau]]]*)
 ```
 
@@ -39,13 +41,8 @@ TensorFunction[{f, "S"}, \[Alpha], \[Beta]]
 $$f(\alpha ,\beta )$$
 
 ```mathematica
-TensorFunction[{f, "S"}, \[Beta], \[Alpha]]
-% // StandardForm
-```
+TensorFunction[{f, "S"}, \[Beta], \[Alpha]] // StandardForm
 
-$$f(\alpha ,\beta )$$
-
-```
 (*f[LorentzIndex[\[Alpha]], LorentzIndex[\[Beta]]]*)
 ```
 

@@ -9,7 +9,8 @@
 ### Examples
 
 ```mathematica
-Hypergeometric2F1[a, b, c, z]
+Hypergeometric2F1[a, b, c, z] 
+ 
 HypInt[%, t]
 ```
 

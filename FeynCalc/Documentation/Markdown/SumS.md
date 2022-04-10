@@ -47,14 +47,16 @@ SumS[3, m + 2, Reduce -> True]
 $$S_3(m+1)+\frac{1}{(m+2)^3}$$
 
 ```mathematica
-SetOptions[SumS, Reduce -> True];
+SetOptions[SumS, Reduce -> True]; 
+ 
 SumS[3, m + 2]
 ```
 
 $$\frac{1}{m^3}+S_3(m-1)+\frac{1}{(m+1)^3}+\frac{1}{(m+2)^3}$$
 
 ```mathematica
-SetOptions[SumS, Reduce -> False];
+SetOptions[SumS, Reduce -> False]; 
+ 
 SumS[1, 4]
 ```
 

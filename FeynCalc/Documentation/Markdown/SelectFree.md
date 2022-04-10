@@ -1,3 +1,5 @@
+## SelectFree
+
 `SelectFree[expr, a, b, ...]` is equivalent to `Select[expr, FreeQ2[#, {a,b, ...}]&]`, except the special cases: `SelectFree[a, b]` returns `a` and `SelectFree[a,a]` returns 1 (where `a` is not a product or a sum).
 
 ### See also

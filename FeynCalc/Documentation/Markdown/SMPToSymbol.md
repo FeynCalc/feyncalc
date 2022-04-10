@@ -6,12 +6,13 @@ The option `StringReplace` can be used to specify string replacement rules that 
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [SMP](SMP.md).
+[Overview](Extra/FeynCalc.md), [SMP](SMP.md), [FCGVToSymbol](FCGVToSymbol.md).
 
 ### Examples
 
 ```mathematica
-SP[p] - SMP["m_e"]^2
+SP[p] - SMP["m_e"]^2 
+ 
 SMPToSymbol[%]
 ```
 

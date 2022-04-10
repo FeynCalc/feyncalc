@@ -15,7 +15,8 @@ TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p]]
 $$p^0$$
 
 ```mathematica
-TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p + q]]
+TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p + q]] 
+ 
 % // ExpandScalarProduct
 ```
 

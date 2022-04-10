@@ -9,14 +9,16 @@
 ### Examples
 
 ```mathematica
-FCDisableTraditionalFormOutput[]
+FCDisableTraditionalFormOutput[] 
+ 
 FV[p, \[Mu]]
 ```
 
 $$\overline{p}^{\mu }$$
 
 ```mathematica
-FCEnableTraditionalFormOutput[]
+FCEnableTraditionalFormOutput[] 
+ 
 FV[p, \[Mu]]
 ```
 

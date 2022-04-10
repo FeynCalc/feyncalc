@@ -9,11 +9,9 @@
 ### Examples
 
 ```mathematica
-Commutator[a, b] + Commutator[b, a]
-CommutatorOrder[%] 
-  
+Commutator[a, b] + Commutator[b, a] 
  
-
+CommutatorOrder[%]
 ```
 
 $$[a,b]+[b,a]$$

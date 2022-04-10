@@ -26,12 +26,13 @@ $$\bar{\epsilon }^{\overline{p}\overline{q}\overline{r}\overline{s}}$$
 
 ```mathematica
 LeviCivita[\[Alpha], \[Beta]][p, q]
-StandardForm[%]
 ```
 
 $$\bar{\epsilon }^{\alpha \beta \overline{p}\overline{q}}$$
 
-```
+```mathematica
+LeviCivita[\[Alpha], \[Beta]][p, q] // StandardForm
+
 (*Eps[LorentzIndex[\[Alpha]], LorentzIndex[\[Beta]], Momentum[p], Momentum[q]]*)
 ```
 

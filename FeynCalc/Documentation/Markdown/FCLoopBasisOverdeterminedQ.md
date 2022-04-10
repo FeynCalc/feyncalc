@@ -11,7 +11,8 @@ The input can also consist of an `FCTopology` object or a list thereof.
 ### Examples
 
 ```mathematica
-FAD[{q1, m1}, {q1 - l + p, m}]
+FAD[{q1, m1}, {q1 - l + p, m}] 
+ 
 FCLoopBasisOverdeterminedQ[%, {q1}]
 ```
 
@@ -20,7 +21,8 @@ $$\frac{1}{\left(\text{q1}^2-\text{m1}^2\right).\left((-l+p+\text{q1})^2-m^2\rig
 $$\text{False}$$
 
 ```mathematica
-FAD[q1, {q1, m1}]
+FAD[q1, {q1, m1}] 
+ 
 FCLoopBasisOverdeterminedQ[%, {q1}]
 ```
 
@@ -29,7 +31,8 @@ $$\frac{1}{\text{q1}^2.\left(\text{q1}^2-\text{m1}^2\right)}$$
 $$\text{True}$$
 
 ```mathematica
-FAD[q1, q2, {q1 + l, m1}, {q1 - l, m1}, {q2 + l, m1}, {q2 - l, m1}]
+FAD[q1, q2, {q1 + l, m1}, {q1 - l, m1}, {q2 + l, m1}, {q2 - l, m1}] 
+ 
 FCLoopBasisOverdeterminedQ[%, {q1, q2}]
 ```
 
