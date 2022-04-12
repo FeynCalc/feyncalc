@@ -30,4 +30,16 @@ of FeynCalc documentaion
 
     ```
     ./generateHTML.sh /media/Data/Projects/VS/feyncalc.github.io/FeynCalcBookDev
-    ```    
+    ```
+    
+* To update the TeX documentation use
+
+    ```
+    ./generateTeX.sh /media/Data/Projects/VS/feyncalc-manual
+    ```        
+    
+* To build the TeX documentation use
+
+    ```
+    arara FeynCalcManual.tex
+    ```

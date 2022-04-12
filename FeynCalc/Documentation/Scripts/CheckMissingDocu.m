@@ -22,12 +22,16 @@ Print[StringRiffle[Complement[SelectFree[fcSymbols,{"FerSolve",
 
 Print[""]; Print[""];
 Print["Documentation pages for nonexisting FeynCalc symbols:"];
-Print[StringRiffle[Complement[docFiles,fcSymbols],"\n"]];
+Print[StringRiffle[SelectFree[Complement[docFiles,fcSymbols],"Vectors"],"\n"]];
 
 
 in=Import[FileNameJoin[{$FeynCalcDirectory,"Documentation","Markdown","Extra","FeynCalc.md"}],"Text"];
 str=StringCases[in,"- "~~Shortest[x__]~~" - "/;!StringFreeQ[x,"["]:>x];
-overviewSymbols=StringReplace[Union[Flatten[StringCases[#,"["~~Shortest[x__]~~"]":>x]&/@StringSplit[str,","]]],"\\"->""];
+overviewSymbols=SelectFree[StringReplace[Union[Flatten[StringCases[#,"["~~Shortest[x__]~~"]":>x]&/@StringSplit[str,","]]],"\\"->""],
+{"Upper and lower indices","FeynArts sign conventions"}];
+
+
+FileNameJoin[{$FeynCalcDirectory,"Documentation","Markdown","Extra","FeynCalc.md"}]
 
 
 Print[""]; Print[""];

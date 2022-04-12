@@ -1,0 +1,7 @@
+% !TeX program = pdflatex
+% !TeX root = $subtitle$.tex
+
+\documentclass[../FeynCalcManual.tex]{subfiles}
+\begin{document}
+$body$
+\end{document}

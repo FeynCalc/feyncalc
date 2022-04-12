@@ -7,15 +7,23 @@
 
 # Description:
 
-# Updates the usage information of FeynCalc symbols to keep it in sync with the documentation
+# Generates list of tex subfile to include in the manual
+# This script is automatically called by generateTeX.sh
 
 # Usage examples
 
-# ./updateUsageInformation.sh math
+# ./generateSubfiles.sh math /media/Data/Projects/VS/feyncalc-manual/
+
 
 scriptDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 mainDir="$(dirname $scriptDIR)"
 
 MATH=$1
+OUTDIR=$2
 
-$MATH -nopromt -script "$scriptDIR"/UpdateUsageInformation.m
+if [[ $# -eq 2 ]] ; then
+    $MATH -nopromt -script "$scriptDIR"/GenerateSubfiles.m -run outputDir="\"$2\""
+fi
+
+
+

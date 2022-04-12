@@ -1,59 +1,50 @@
 #!/bin/bash
 
 # This software is covered by the GNU General Public License 3.
-# Copyright (C) 1990-2021 Rolf Mertig
-# Copyright (C) 1997-2021 Frederik Orellana
-# Copyright (C) 2014-2021 Vladyslav Shtabovenko
+# Copyright (C) 1990-2022 Rolf Mertig
+# Copyright (C) 1997-2022 Frederik Orellana
+# Copyright (C) 2014-2022 Vladyslav Shtabovenko
 
 # Description:
 
-# Converts FeynCalc documentation to HTML
+# Converts FeynCalc documentation from Markdown to LaTeX
 
 # Usage examples
 
-# ./generateTeX.sh "~/Downloads/TeX"
-# ./generateTeX.sh "/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation/Markdown/ApartFF.md" "~/Downloads/TeX"
+# ./generateTeX.sh ~/Downloads/TeX
+# ./generateTeX.sh "/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation/Markdown/CSP.md" /media/Data/Projects/VS/feyncalc-manual/
 
 scriptDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 mainDir="$(dirname $scriptDIR)"
 
+PAGESDIR="pages"
+IMGDIR="img"
+FILTERSDIR="filters"
+TEMPLATESDIR="templates"
+
 OUTDIR=$1
+SOURCEDIR="$mainDir"/Markdown/
 
-if [[ $# -eq 2 ]] ; then
-    sed -i -e 's|\$\\\$\$|\\$|g' $1;
-    sed -i -e 's|\^\*\^{|\^\{\*|g' $1;
-    sed -i -e 's| \\text{| \\;\\text\{|g' $1;
-    sed -i -e 's|}\\text{|}\\;\\text\{|g' $1;
-    sed -i -e 's|}\\overline{\\text{|}\\;\\overline{\\text\{|g' $1;
-    sed -i -e "s|\^'\(.*\)\$\\$|\^{'\1}\$\$|" $1;
-    sed -i -e "s|unicode{f4a1}|to |g" $1;
-    sed -i -e "s|unicode{f3d4}|leftrightarrow |g" $1;
-    sed -i -e "s|unicode{f3d4}|leftrightarrow |g" $1;    
-    sed -i -e "s|\^2\^2|\^4|g" $1;
-    sed -i -e "s|\^2\^3|\^6|g" $1;
-    sed -i -e 's|g\^{\\mu \\nu }^2|(g\^{\\mu \\nu})^2|' $1;
-    sed -i -e 's|\\bar{\\delta }\^{ij}\^2|(\\bar{\\delta}\^{ij})^2|' $1;
-    sed -i -e 's|\$\$\(!\[.*\)\$\$|\1|' $1;    
-    pandoc "$1" -f markdown -t latex -s -o "$2"/$(basename -s .md "$1").tex
+if [[ $# -eq 2 ]] ; then    
+    echo "Creating TeX file for $1"
+    output="$2"/$(basename -s .md "$1")
+    output=$(echo $output | sed 's/\$/Dollar/g')
+    echo $output
+    texname=$(basename -s .md "$1")
+    texname=${texname/$/Dollar}   
+    
+    pandoc "$1" -f markdown -t latex  --lua-filter="$FILTERSDIR"/dmath.lua --lua-filter="$FILTERSDIR"/svg2pdf.lua --lua-filter="$FILTERSDIR"/allowbreak.lua --lua-filter="$FILTERSDIR"/href.lua  --lua-filter="$FILTERSDIR"/fixlabels.lua --metadata=subtitle:"$texname" --default-image-extension=pdf --top-level-division=chapter --template="$TEMPLATESDIR"/feyncalc.latex -o "$output".tex
 else
- 
-allFilesRaw=$(find $mainDir/Markdown/ -type f -name '*.md' -print)
-allFilesRaw=($(printf "%s\n" "${allFilesRaw[@]}" | sort -V))
 
-declare -a allFiles
-for i in "${allFilesRaw[@]}"; do  
-  name=$(basename -s .m $i)
-  fullPath=$OUTDIR/$name".tex"
-  if [ -f $fullPath ]; then
-    true
-    #echo "Skipping $name - file already exists."
-    #echo
-  else
-#   echo "Adding $name";
-    allFiles+=($i) 
-  fi
-done
-echo 
+mkdir -p "$OUTDIR"/"$PAGESDIR"
+mkdir -p "$OUTDIR"/"$IMGDIR"
+
+ 
+allFilesRaw=$(find $SOURCEDIR -type f -name '*.md' -print)
+allFiles=($(printf "%s\n" "${allFilesRaw[@]}" | sort -V))
+
+
+
 
 echo "Relevant files"
 for value in "${allFiles[@]}"
@@ -66,12 +57,9 @@ if [ -z ${allFiles} ]; then
     exit 0;
 fi
 
-
-
-parallel -j 6 -u --eta --bar "$scriptDIR/generateTeX.sh {} $OUTDIR" ::: ${allFiles[@]};
-#mkdir $OUTDIR/Extra &> /dev/null;
-#mv $OUTDIR/FeynCalc.html $OUTDIR/Extra/FeynCalc.html;
-#rm -rf $OUTDIR/img;
-#cp -a $mainDir/Markdown/img $OUTDIR/img;
+parallel -j 6 -u --eta --bar "$scriptDIR/generateTeX.sh {} $OUTDIR/$PAGESDIR/" ::: ${allFiles[@]};
+rm -rf "$OUTDIR"/"$IMGDIR"/*.pdf;
+$scriptDIR/svgToPdf.sh "$OUTDIR"/"$IMGDIR";
+$scriptDIR/generateSubfiles.sh math "$OUTDIR"
 
 fi
