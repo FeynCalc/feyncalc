@@ -2,18 +2,19 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: MomentumExpand                                                   *)
+(* :Title: MomentumExpand													*)
 
 (*
-		This software is covered by the GNU General Public License 3.
-		Copyright (C) 1990-2021 Rolf Mertig
-		Copyright (C) 1997-2021 Frederik Orellana
-		Copyright (C) 2014-2021 Vladyslav Shtabovenko
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2022 Rolf Mertig
+	Copyright (C) 1997-2022 Frederik Orellana
+	Copyright (C) 2014-2022 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Expands momenta                                               *)
+(* :Summary: Expands momenta.												*)
 
 (* ------------------------------------------------------------------------ *)
+
 
 MomentumExpand::usage =
 "MomentumExpand[expr] expands Momentum[a+b+ ...] in expr into Momentum[a] +
