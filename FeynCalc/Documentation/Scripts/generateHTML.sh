@@ -64,7 +64,8 @@ mv $OUTDIR/MasterIntegrals.html $OUTDIR/Extra/MasterIntegrals.html;
 mv $OUTDIR/Indices.html $OUTDIR/Extra/Indices.html;
 mv $OUTDIR/FeynArtsSigns.html $OUTDIR/Extra/FeynArtsSigns.html;
 rm -rf $OUTDIR/img;
-cp -a $mainDir/Markdown/img $OUTDIR/img;
+mkdir -p $OUTDIR/img;
+cp -a $mainDir/Markdown/img/*.svg $OUTDIR/img/;
 
 sed -i -e "s|css/feyncalc.css|../css/feyncalc.css|g" $OUTDIR/Extra/FeynCalc.html;
 sed -i -e "s|css/feyncalc.css|../css/feyncalc.css|g" $OUTDIR/Extra/MasterIntegrals.html;
