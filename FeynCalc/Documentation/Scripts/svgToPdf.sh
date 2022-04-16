@@ -8,7 +8,7 @@
 # Description:
 
 # Converts svg vector graphics to pdf
-# This script is automatically called by generateTeX.sh
+# This script is automatically called by generatePFDsForTeX.sh
 
 # Usage examples
 

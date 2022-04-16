@@ -19,8 +19,6 @@ The identified divergences can be regularized using the function `FCFeynmanRegul
 
 ### Examples
 
-#### Feynman representation
-
 ```mathematica
 int = SFAD[l, k + l, {{k, -2 k . q}}] 
  
@@ -31,7 +29,7 @@ $$\frac{1}{(l^2+i \eta ).((k+l)^2+i \eta ).(k^2-2 (k\cdot q)+i \eta )}$$
 
 $$\left\{(x(1) x(2)+x(3) x(2)+x(1) x(3))^{3 \varepsilon -3} \left(q^2 x(1)^2 (x(2)+x(3))\right)^{1-2 \varepsilon },-\Gamma (2 \varepsilon -1),\{x(1),x(2),x(3)\}\right\}$$
 
-This Feynman parametric integral integrand contains logarithmic divergences for $x_1 \to \infty$ and $x_{2,3} \to 0$
+This Feynman parametric integral contains logarithmic divergences for $x_1 \to \infty$ and $x_{2,3} \to 0$
 
 ```mathematica
 FCFeynmanFindDivergences[fpar[[1]], x]

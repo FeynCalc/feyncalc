@@ -58,8 +58,6 @@ if [ -z ${allFiles} ]; then
 fi
 
 parallel -j 6 -u --eta --bar "$scriptDIR/generateTeX.sh {} $OUTDIR/$PAGESDIR/" ::: ${allFiles[@]};
-rm -rf "$OUTDIR"/"$IMGDIR"/*.pdf;
-$scriptDIR/svgToPdf.sh "$OUTDIR"/"$IMGDIR";
 $scriptDIR/generateSubfiles.sh math "$OUTDIR"
 
 fi

@@ -44,17 +44,13 @@
 (*Examples*)
 
 
-(* ::Subsubsection:: *)
-(*Feynman representation*)
-
-
 int=SFAD[l,k+l,{{k,-2k . q}}]
 
 fpar=FCFeynmanParametrize[int,{k,l},Names->x,FCReplaceD->{D->4-2Epsilon}]
 
 
 (* ::Text:: *)
-(*This Feynman parametric integral integrand contains logarithmic divergences for $x_1 \to \infty$ and $x_{2,3} \to 0$*)
+(*This Feynman parametric integral contains logarithmic divergences for $x_1 \to \infty$ and $x_{2,3} \to 0$*)
 
 
 FCFeynmanFindDivergences[fpar[[1]],x]
