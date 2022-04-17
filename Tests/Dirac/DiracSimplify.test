@@ -239,7 +239,30 @@ x Spinor[Momentum[p, D], 0, 1].GAD[mu].Spinor[Momentum[p, D], 0, 1]"},
 GSD[p] . GAD[mu] . GSD[p] LCD[mu][p1 + q1, p2 + q2, p3 + q3],
 EpsExpand -> False, FCE -> True]",
 "2 GSD[p] LCD[][p, p1 + q1, p2 + q2, p3 + q3] -
-GAD[mu] SPD[p, p] LCD[mu][p1 + q1, p2 + q2, p3 + q3]"}
+GAD[mu] SPD[p, p] LCD[mu][p1 + q1, p2 + q2, p3 + q3]"},
+
+
+
+{"fcstDiracSimplify-ID49",
+"DiracTrace[
+GAD[\[Mu]] . GA[5] . SUNT[a] . SUNT[cola, colb] . GAD[lorc] .
+	GSD[x] . GAD[lord] . GAD[\[Nu]] .
+	GA[5] . (SUNT[colc] . FVD[x, lore] . GAD[lorf] +
+	SUNT[colc] . GAD[lore] . GAD[lorf] . GSD[x]) MTD[lorc,
+	lore] MTD[lord, lorf] SUNF[cola, colb, colc]] //
+DiracSimplify[#, FCE -> True] &",
+"64 SUNT[a] . SUNT[cola] . SUNT[colb] . SUNT[colc] FVD[x, \[Mu]] FVD[
+x, \[Nu]] SUNF[cola, colb, colc] -
+48 D SUNT[a] . SUNT[cola] . SUNT[colb] . SUNT[colc] FVD[
+x, \[Mu]] FVD[x, \[Nu]] SUNF[cola, colb, colc] +
+8 D^2 SUNT[a] . SUNT[cola] . SUNT[colb] . SUNT[colc] FVD[
+x, \[Mu]] FVD[x, \[Nu]] SUNF[cola, colb, colc] -
+40 SUNT[a] . SUNT[cola] . SUNT[colb] .
+SUNT[colc] MTD[\[Mu], \[Nu]] SPD[x, x] SUNF[cola, colb, colc] +
+28 D SUNT[a] . SUNT[cola] . SUNT[colb] .
+SUNT[colc] MTD[\[Mu], \[Nu]] SPD[x, x] SUNF[cola, colb, colc] -
+4 D^2 SUNT[a] . SUNT[cola] . SUNT[colb] .
+SUNT[colc] MTD[\[Mu], \[Nu]] SPD[x, x] SUNF[cola, colb, colc]"}
 };
 
 

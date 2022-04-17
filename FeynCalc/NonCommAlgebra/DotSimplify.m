@@ -355,24 +355,41 @@ DotSimplify[expr_, OptionsPattern[]] :=
 		(* Dirac, Pauli and SU(N) matrices commute with each other, so they need to be properly separated*)
 		If[ !FreeQ2[x, {SUNT,PauliSigma,PauliEta,PauliXi}],
 			time=AbsoluteTime[];
-			FCPrint[1, "DotSimplify: Pulling out SU(N) matrices", FCDoControl->dsVerbose];
 			x  = x /. DOT->holdDOT;
-			(* Notice that here we are checking heads, so this will not break a possibly complicated nested structure *)
+			(*
+				Notice that even though we are checking heads here, one could still possibly mess up
+				some complicated nested structure. This could happend if the option Expanding has been
+				set to False so that we have DOTs inside DOTs.
 
-			x = x //. holdDOT[zzz__] :> (holdDOTColor@@Select[{zzz}, (Head[#] === SUNT) &])(holdDOTRest1@@Select[{zzz}, (Head[#] =!= SUNT) &]);
+				To avoid this situation, DOTs with nested must be left untouched. Otherwise, something like
+
+				GAD[mu] . SUNT[a] . (SUNT[cola, colb] .  GAD[nu]) . (SUNT[colc] . GAD[rho] . GSD[x] + SUNT[colc] . GSD[y] . GAD[rho] . GAD[lorf])
+
+				turns into
+
+				GAD[mu] . GAD[nu] . (GAD[rho] . GSD[x] SUNT[colc] + GSD[y] . GAD[rho] . GAD[lorf] SUNT[colc]) SUNT[a] . SUNT[cola] . SUNT[colb]
+
+				where the color structure gets messed up!
+			*)
+			FCPrint[1, "DotSimplify: Pulling out SU(N) matrices", FCDoControl->dsVerbose];
+			x = x //. holdDOT[zzz__]/; FreeQ2[{zzz}, {holdDOT, holdDOTColor}] :>
+				(holdDOTColor@@Select[{zzz}, (Head[#] === SUNT) &])(holdDOTRest1@@Select[{zzz}, (Head[#] =!= SUNT) &]);
+			FCPrint[3, "DotSimplify: After pulling out SU(N) matrices:", x, FCDoControl->dsVerbose];
+
 			FCPrint[1, "DotSimplify: Pulling out Dirac matrices", FCDoControl->dsVerbose];
-
 			x = x //. holdDOTRest1[zzz__] :> (holdDOTDirac@@Select[{zzz}, !FreeQ2[{#},{DiracGamma,Spinor}]& ])*
 			(holdDOTRest2@@Select[{zzz}, FreeQ2[{#},{DiracGamma,Spinor}]& ]);
-			FCPrint[1, "DotSimplify: Pulling out Pauli matrices", FCDoControl->dsVerbose];
+			FCPrint[3, "DotSimplify: After pulling out Dirac matrices: ", x, FCDoControl->dsVerbose];
 
+			FCPrint[1, "DotSimplify: Pulling out Pauli matrices", FCDoControl->dsVerbose];
 			x = x //. holdDOTRest2[zzz__] :> (holdDOTPauli@@Select[{zzz}, !FreeQ2[{#},{PauliSigma,PauliEta,PauliXi}]& ])*
 			(holdDOTRest3@@Select[{zzz}, FreeQ2[{#},{PauliSigma,PauliEta,PauliXi}]&]);
+			FCPrint[3, "DotSimplify: After pulling out Pauli matrices: ", x, FCDoControl->dsVerbose];
 
 			(* SUNT's and PauliSigma's in a DiracTrace are pulled out but NOT summed over *)
 			x = x //. DiracTrace[f_ g :(_holdDOTColor | _holdDOTPauli ) ] :> g DiracTrace[f]/.
-			(holdDOTColor|holdDOTDirac|holdDOTPauli|holdDOTRest1|holdDOTRest2|holdDOTRest3)[] -> 1  /.
-			holdDOTColor|holdDOTDirac|holdDOTPauli|holdDOTRest1|holdDOTRest2|holdDOTRest3 -> DOT;
+			(holdDOT|holdDOTColor|holdDOTDirac|holdDOTPauli|holdDOTRest1|holdDOTRest2|holdDOTRest3)[] -> 1  /.
+			holdDOT|holdDOTColor|holdDOTDirac|holdDOTPauli|holdDOTRest1|holdDOTRest2|holdDOTRest3 -> DOT;
 			FCPrint[1, "DotSimplify: Done pulling out all matrices, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 			FCPrint[3, "DotSimplify: After pulling out all matrices: ", x,  FCDoControl->dsVerbose]
 		];

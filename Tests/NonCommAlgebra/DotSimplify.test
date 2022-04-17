@@ -121,5 +121,31 @@ DotSimplify[ExpandPartialD[QuantumField[A1].QuantumField[A1].LeftPartialD[nu]]]"
 {"fcstDotSimplify-ID24","AntiCommutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A2], QuantumField[A2]] = 0;
 DotSimplify[ExpandPartialD[QuantumField[A2].QuantumField[A2].LeftPartialD[nu]]]","0"},
 {"fcstDotSimplify-ID25","DotSimplify[DCHN[GA[mu].(x GS[p]).GA[nu], i, j], FCE -> True]",
-"x DCHN[GA[mu].GS[p].GA[nu], i, j]"}
+"x DCHN[GA[mu].GS[p].GA[nu], i, j]"},
+{"fcstDotSimplify-ID26","DotSimplify[
+GAD[mu] . SUNT[a] . (SUNT[cola, colb] . GAD[nu]) . (SUNT[colc] . GAD[rho] . GSD[x] +
+	SUNT[colc] . GSD[y] . GAD[rho] . GAD[lorf]), Expanding -> False,
+FCE -> True]",
+"GAD[mu] . SUNT[a] . SUNT[cola] . SUNT[colb] .
+GAD[nu] . (GAD[rho] . GSD[x] SUNT[colc] +
+GSD[y] . GAD[rho] . GAD[lorf] SUNT[colc])"},
+
+{"fcstDotSimplify-ID27","DotSimplify[
+DiracGammaCombine[
+DiracTrace[
+MTD[lord, lorf] MTD[lorc, lore] SUNF[cola, colb,
+	colc] GAD[\[Mu]] . GA[5] .
+	SUNT[a] . (SUNT[cola, colb] . GAD[lorc] . GSD[x] . GAD[lord]) .
+	GAD[\[Nu]] .
+	GA[5] . (SUNT[colc] . GAD[lore, lorf] . GSD[x] +
+	SUNT[colc] . FVD[x, lore] . GAD[lorf])]], Expanding -> False,
+FCE -> True]",
+"DiracTrace[
+GAD[\[Mu]] . GA[5] . SUNT[a] . SUNT[cola] . SUNT[colb] . GAD[lorc] .
+GSD[x] . GAD[lord] . GAD[\[Nu]] .
+GA[5] . (GAD[lore] . GAD[lorf] . GSD[x] SUNT[colc] +
+	 FVD[x, lore] GAD[lorf] SUNT[colc]) MTD[lorc, lore] MTD[lord,
+lorf] SUNF[cola, colb, colc]]"}
+
+
 }
