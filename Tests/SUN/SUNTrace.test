@@ -31,6 +31,12 @@ Tests`SUN`fcstSUNTraceColorTraces = {
 {"fcstSUNTraceColorTraces-ID8","SUNTrace[SUNF[a, r, s] SUNF[b, r, s]] // SUNSimplify",
 	"CA^2*SUNDelta[SUNIndex[a], SUNIndex[b]]"},
 {"fcstSUNTraceColorTraces-ID9","SUNTrace[SUNT[a, b, c, a, b, c]]",
-	"-(1/(8 SUNN^2)) + SUNN^2/8"}
+	"-(1/(8 SUNN^2)) + SUNN^2/8"},
+{"fcstSUNTraceColorTraces-ID10","SUNTrace[GAD[\[Mu]] . GA[5] . SUNT[a] . SUNT[cola, colb] .
+GAD[lorc] . GSD[x] . GAD[lord] . GAD[\[Nu]] .
+GA[5] . (SUNT[colc] . FVD[x, lore] . GAD[lorf] +
+	SUNT[colc] . GAD[lore] . GAD[lorf] . GSD[x]) MTD[lorc, lore] MTD[
+lord, lorf] SUNF[cola, colb, colc]]",
+	"0"}
 };
 
