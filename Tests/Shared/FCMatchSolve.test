@@ -79,8 +79,7 @@ a4, Log, xil, nc, tauPref, evFlag, nf},FCVerbose\[Rule]-1]",
 8 + (a4*(alphaE51a0 + 8*alphaE61a0)*OP[E4QS])/(8*nc) - (a4*
 	alphaE61a0*gxi*OP[E4QS])/nc , {a4, OP, nc, gxi, Epsilon},
 FCVerbose -> -1]","{}"},
-
-{"fcstFCMatchSolve-ID6",
+{"fcstFCMatchSolve-ID7",
 "FCMatchSolve[(tauPref*(36*CMMC3^2*fcqLoop + 5*CMMC4^2*fcqLoop +
 	720*CMMC3*CMMC5*fcqLoop + 4896*CMMC5^2*fcqLoop +
 	100*CMMC4*CMMC6*fcqLoop + 680*CMMC6^2*fcqLoop +
@@ -208,5 +207,10 @@ F$LO -> (36*CMMC3^2*fcqLoop + 5*CMMC4^2*fcqLoop + 720*CMMC3*CMMC5*fcqLoop +
 	324*CMMC4^2*flqLoop*Log[mg^(-1)] + 6480*CMMC4*CMMC6*flqLoop*Log[mg^(-1)] - 14688*CMMC6^2*flqLoop*Log[mg^(-1)] -
 	108*CMMC4^2*fsqLoop*Log[mg^(-1)] - 2160*CMMC4*CMMC6*fsqLoop*Log[mg^(-1)] -
 	14688*CMMC6^2*fsqLoop*Log[mg^(-1)] - 5598720*CMMC5^2*fcqLoop*z*Log[mg^(-1)] - 31104*CMMC6^2*fcqLoop*z*Log[mg^(-1)] -
-	6718464*CMMC5^2*fcqLoop*z*Log[z] - 373248*CMMC6^2*fcqLoop*z*Log[z])/648}"}
+	6718464*CMMC5^2*fcqLoop*z*Log[z] - 373248*CMMC6^2*fcqLoop*z*Log[z])/648}"},
+{"fcstFCMatchSolve-ID8",
+"FCMatchSolve[-(nc*tauPref*(-1 + evFlag[2, 1])*OP[Q]) + (2*
+	tauPref*(evFlag[2, 1] - evFlag[3, 1])*OP[Q])/nc +
+tauPref*(-1 + 2*evFlag[2, 1] - evFlag[3, 1])*OP[Q], {OP, nc, a4,
+tauPref}, FCVerbose -> -1]","{evFlag[2, 1] -> 1, evFlag[3, 1] -> 1}"}
 })

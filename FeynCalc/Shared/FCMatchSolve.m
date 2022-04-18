@@ -131,7 +131,7 @@ FCMatchSolve[expr_, notvars_List/; (!OptionQ[notvars] || notvars==={}), OptionsP
 			varsToRemove = {};
 			nVarsAlreadyRemoved = 0;
 			Map[
-				If[	canRemoveVarsQ[allEqVars, Join[varsToRemove, {#}]] && (nVarsAlreadyRemoved < nVarsToRemove),
+				If[	canRemoveVarsQ[allEqVars, eqSys, Join[varsToRemove, {#}]] && (nVarsAlreadyRemoved < nVarsToRemove),
 					nVarsAlreadyRemoved++;
 					varsToRemove = Join[varsToRemove, {#}]
 				]&, vars];
@@ -211,8 +211,8 @@ Block[{	trivialEqs,newZeroVars, newVars, newEqSys, res},
 
 ]/; FreeQ[eqSys,False];
 
-canRemoveVarsQ[allEqVars_, vars_] :=
-	FreeQ[SelectFree[#, Sequence @@ vars] & /@ allEqVars, {}];
+canRemoveVarsQ[allEqVars_, eqSys_, vars_] :=
+	FreeQ[SelectFree[#, Sequence @@ vars] & /@ allEqVars, {}] && (SelectFree[eqSys, Sequence @@ vars]==={});
 
 
 FCPrint[1,"FCMatchSolve.m loaded"];
