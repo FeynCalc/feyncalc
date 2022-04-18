@@ -11,7 +11,7 @@
 
 # Usage examples
 
-# ./generateTeX.sh ~/Downloads/TeX
+# ./generateTeX.sh /media/Data/Projects/VS/feyncalc-manual/
 # ./generateTeX.sh "/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation/Markdown/CSP.md" /media/Data/Projects/VS/feyncalc-manual/
 
 scriptDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
@@ -59,5 +59,5 @@ fi
 
 parallel -j 6 -u --eta --bar "$scriptDIR/generateTeX.sh {} $OUTDIR/$PAGESDIR/" ::: ${allFiles[@]};
 $scriptDIR/generateSubfiles.sh math "$OUTDIR"
-
+rm -rf $OUTDIR/$PAGESDIR/"FeynCalc.tex"
 fi

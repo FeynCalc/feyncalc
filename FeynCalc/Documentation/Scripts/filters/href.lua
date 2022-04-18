@@ -10,12 +10,12 @@ return {
          return li
       else
         --print(name," ",target)
-        name = string.gsub(name, '.md', '')
-        target = name:lower()
+        name = string.gsub(name, '.md', '')        
+        target = name:lower()        
         name = string.gsub(name, '%$', '\\$')
-        target = string.gsub(target, '%$', '')
-        target = string.gsub(target, '.md', '')
-      end      
+        target = string.gsub(target, '%$', 'dollar')        
+      end
+      
       return pandoc.RawInline('tex', '\\hyperlink{' .. target  .. '}{' .. name .. '}')
     end
  }
