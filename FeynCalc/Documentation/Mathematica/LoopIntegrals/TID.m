@@ -122,3 +122,18 @@ TID[int,p,ToPaVe->True]
 
 
 TID[int,p,ToPaVe->True,PaVeLimitTo4->True]
+
+
+(* ::Text:: *)
+(*Sometimes one would like to have external momenta multiplied by symbolic parameters in the propagators. In this case one should first declare the corresponding variables to be of `FCVariable` type*)
+
+
+DataType[z, FCVariable] = True;
+DataType[(1 - z), FCVariable] = True;
+
+
+FVD[q, mu] FAD[q, q + z p, q + (1 - z) p]
+TID[%, q]
+
+
+

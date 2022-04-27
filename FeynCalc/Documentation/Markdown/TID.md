@@ -142,3 +142,22 @@ TID[int, p, ToPaVe -> True, PaVeLimitTo4 -> True]
 ```
 
 $$\frac{1}{2} i \pi ^2 \;\text{B}_0\left(\overline{q}^2,0,0\right) \left(4 \overline{q}^{\text{mu}} \overline{q}^{\text{nu}}-\overline{q}^2 \bar{g}^{\text{mu}\;\text{nu}}\right)+\frac{1}{2} i \pi ^2 \left(2 \overline{q}^{\text{mu}} \overline{q}^{\text{nu}}-\overline{q}^2 \bar{g}^{\text{mu}\;\text{nu}}\right)$$
+
+Sometimes one would like to have external momenta multiplied by symbolic parameters in the propagators. In this case one should first declare the corresponding variables to be of `FCVariable` type
+
+```mathematica
+DataType[z, FCVariable] = True;
+DataType[(1 - z), FCVariable] = True;
+```
+
+```mathematica
+FVD[q, mu] FAD[q, q + z p, q + (1 - z) p]
+TID[%, q] 
+  
+ 
+
+```
+
+$$\frac{q^{\text{mu}}}{q^2.(z p+q)^2.(-z p+p+q)^2}$$
+
+$$\frac{\left(2 z^2-(z-1)^2-4 z+2\right) p^{\text{mu}}}{2 p^2 (1-2 z) (1-z) z q^2.(z p-p+q)^2}-\frac{\left(4 z^2-6 z-(2 z-1)^2+2\right) p^{\text{mu}}}{2 p^2 (1-2 z) (1-z) z q^2.(2 z p-p+q)^2}+-\frac{z p^{\text{mu}}}{2 p^2 (1-2 z) (1-z) q^2.(q-z p)^2}$$
