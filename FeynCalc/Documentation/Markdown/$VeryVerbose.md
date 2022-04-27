@@ -70,7 +70,7 @@ $$\text{Collect2: Computing CoefficientArrays.}$$
 
 $$\text{Collect2: CoefficientArrays ready, timing: }0.000387$$
 
-![1fqy7jqjvvk1u](img/1fqy7jqjvvk1u.pdf)
+![1fqy7jqjvvk1u](img/1fqy7jqjvvk1u.svg)
 
 $$\text{Collect2: Collecting the monomials.}$$
 
@@ -78,7 +78,7 @@ $$\text{Collect2: tvm: }\left\{x,x^2,x^3,x^4,x^5,x^6\right\}$$
 
 $$\text{Collect2: Done collecting the monomials, timing: }0.001726$$
 
-![0gyiguncykrsk](img/0gyiguncykrsk.pdf)
+![0gyiguncykrsk](img/0gyiguncykrsk.svg)
 
 $$\text{Collect2: Obtaining the final result.}$$
 

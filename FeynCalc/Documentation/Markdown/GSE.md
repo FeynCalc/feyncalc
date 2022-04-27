@@ -46,7 +46,7 @@ FCSetDiracGammaScheme["NDR"];
 DiracSimplify[GSE[q] . GS[q] . GSE[q]]
 ```
 
-![1h0chl63b60ya](img/1h0chl63b60ya.pdf)
+![1h0chl63b60ya](img/1h0chl63b60ya.svg)
 
 $$\text{\$Aborted}$$
 

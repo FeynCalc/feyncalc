@@ -144,7 +144,7 @@ DiracSimplify[%]
 
 $$\text{tr}\left(\left(m_e-\gamma \cdot q\right).\bar{\gamma }^{\nu }.\left(\bar{\gamma }\cdot \overline{p}+m_e-\gamma \cdot q\right).\bar{\gamma }^{\mu }\right)$$
 
-![1pt4vjhepgnk6](img/1pt4vjhepgnk6.pdf)
+![1pt4vjhepgnk6](img/1pt4vjhepgnk6.svg)
 
 $$\text{\$Aborted}$$
 

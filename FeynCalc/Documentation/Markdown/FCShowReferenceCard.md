@@ -22,4 +22,4 @@ $$\left(
 FCShowReferenceCard[{"FeynArts"}]
 ```
 
-![1srqg00tuwkkz](img/1srqg00tuwkkz.pdf)
+![1srqg00tuwkkz](img/1srqg00tuwkkz.svg)

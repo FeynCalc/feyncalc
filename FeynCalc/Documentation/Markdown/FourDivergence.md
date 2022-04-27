@@ -64,7 +64,7 @@ Differentiation of $4$-vectors living  in different dimensions ($4$, $D$, $D-4$)
 FourDivergence[FVD[p, mu], FV[p, nu]]
 ```
 
-![0n13hj2mmcy3r](img/0n13hj2mmcy3r.pdf)
+![0n13hj2mmcy3r](img/0n13hj2mmcy3r.svg)
 
 $$\text{\$Aborted}$$
 

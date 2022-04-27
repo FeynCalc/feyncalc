@@ -48,7 +48,7 @@ Differentiation of $3$-vectors living  in different dimensions ($3$, $D-1$, $D-4
 ThreeDivergence[CVD[p, i], CV[p, j]]
 ```
 
-![1h9o7vmxcyb17](img/1h9o7vmxcyb17.pdf)
+![1h9o7vmxcyb17](img/1h9o7vmxcyb17.svg)
 
 $$\text{\$Aborted}$$
 

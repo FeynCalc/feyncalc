@@ -42,7 +42,7 @@ $$\text{fF}(22) a(z)+\text{fF}(21) d(z)$$
 Information[fF]
 ```
 
-![0gi2hdxwlvyo6](img/0gi2hdxwlvyo6.pdf)
+![0gi2hdxwlvyo6](img/0gi2hdxwlvyo6.svg)
 
 ```mathematica
 Global`fF

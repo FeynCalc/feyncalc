@@ -59,7 +59,7 @@ FCLoopValidTopologyQ[%]
 
 $$\text{FCTopology}\left(\text{topo},\left\{\frac{1}{(\text{p1}^2+i \eta )},\frac{1}{((\text{p2}+\text{p3}+Q)^2+i \eta )},\frac{1}{(\text{p2}^2+i \eta )},\frac{1}{((\text{p1}+\text{p3}-Q)^2+i \eta )}\right\},\{\text{p1},\text{p2}+Q,\text{p3}\},\{Q\},\{\},\{\}\right)$$
 
-![0u1i6qpgdpbjs](img/0u1i6qpgdpbjs.pdf)
+![0u1i6qpgdpbjs](img/0u1i6qpgdpbjs.svg)
 
 $$\text{False}$$
 

@@ -49,7 +49,7 @@ FCClearScalarProducts[]
 PolarizationSum[\[Mu], \[Nu], k, 0, Dimension -> D]
 ```
 
-![04px53fl0bwhw](img/04px53fl0bwhw.pdf)
+![04px53fl0bwhw](img/04px53fl0bwhw.svg)
 
 $$-g^{\mu \nu }$$
 

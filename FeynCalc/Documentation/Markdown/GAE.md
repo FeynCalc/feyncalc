@@ -62,7 +62,7 @@ DiracSimplify[GAE[\[Mu]] . GAD[\[Mu]]]
 
 $$\text{NDR}$$
 
-![1mv5oz2r1f8id](img/1mv5oz2r1f8id.pdf)
+![1mv5oz2r1f8id](img/1mv5oz2r1f8id.svg)
 
 $$\text{\$Aborted}$$
 

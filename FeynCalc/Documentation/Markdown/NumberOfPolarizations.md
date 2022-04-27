@@ -46,7 +46,7 @@ Here it is not
 DoPolarizationSums[xyz, p, n]
 ```
 
-![0emyzef54vvcu](img/0emyzef54vvcu.pdf)
+![0emyzef54vvcu](img/0emyzef54vvcu.svg)
 
 $$\text{\$Aborted}$$
 

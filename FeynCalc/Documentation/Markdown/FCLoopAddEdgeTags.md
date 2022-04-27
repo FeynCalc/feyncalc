@@ -18,7 +18,7 @@ GraphPlot[%]
 
 $$\{-3\leftrightarrow 2,-1\leftrightarrow 1,1\leftrightarrow 2,1\leftrightarrow 2\}$$
 
-![0z92umyme84rx](img/0z92umyme84rx.pdf)
+![0z92umyme84rx](img/0z92umyme84rx.svg)
 
 If you just want to plot the obtained graph, it is easier to process the output of `FCLoopIntegralToGraph` directly with `FCLoopGraphPlot`, which internally uses `FCLoopAddEdgeTags`.
 
@@ -30,4 +30,4 @@ FCLoopGraphPlot[%]
 
 $$\left\{\{-3\to 2,-1\to 1,1\to 2,1\to 2\},\{k,k,\{p,1,0\},\{p-k,1,0\}\},\left\{0,0,\frac{1}{(p^2+i \eta )},\frac{1}{((p-k)^2+i \eta )}\right\},1\right\}$$
 
-![18zlvfvc5dy6q](img/18zlvfvc5dy6q.pdf)
+![18zlvfvc5dy6q](img/18zlvfvc5dy6q.svg)

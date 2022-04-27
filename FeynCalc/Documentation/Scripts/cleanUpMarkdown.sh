@@ -20,6 +20,7 @@ mainDir="$(dirname $scriptDIR)"
 if [[ -f $1 ]]; then
     echo Post processing the file "$1"
     echo
+    sed -i -e "s|img/\(.*\).pdf)|img/\1.svg)|g" $1;
     sed -i -e 's|\$\\\$\$|\\$|g' $1;
     sed -i -e 's|\^\*\^{|\^\{\*|g' $1;
     sed -i -e 's|\^+\^{|\^\{+|g' $1;

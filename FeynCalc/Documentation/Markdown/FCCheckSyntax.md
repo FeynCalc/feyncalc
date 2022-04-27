@@ -16,7 +16,7 @@ Typical mistake, using `Times` instead of `Dot` in noncommutative products
 FCCheckSyntax[GA[mu]*GA[nu]]
 ```
 
-![10x7yb8v4z8tt](img/10x7yb8v4z8tt.pdf)
+![10x7yb8v4z8tt](img/10x7yb8v4z8tt.svg)
 
 $$\text{\$Aborted}$$
 
@@ -26,6 +26,6 @@ Another common mistake, Einstein summation convention is violated
 FCCheckSyntax[FV[p, \[Mu]] FV[q, \[Mu]] FV[r, \[Mu]]]
 ```
 
-![1pck0pnu8c08i](img/1pck0pnu8c08i.pdf)
+![1pck0pnu8c08i](img/1pck0pnu8c08i.svg)
 
 $$\text{\$Aborted}$$

@@ -189,7 +189,7 @@ DoPolarizationSums[%, p, 0]
 
 $$\bar{\varepsilon }^{*\text{mu}}(p) \bar{\varepsilon }^{\text{mu}}(p)$$
 
-![1l0desl1odmbt](img/1l0desl1odmbt.pdf)
+![1l0desl1odmbt](img/1l0desl1odmbt.svg)
 
 $$-4$$
 
@@ -308,7 +308,7 @@ has no way to determine the correct number of polarizations.
 DoPolarizationSums[xyz, p, n]
 ```
 
-![18de6vblvu214](img/18de6vblvu214.pdf)
+![18de6vblvu214](img/18de6vblvu214.svg)
 
 $$\text{\$Aborted}$$
 

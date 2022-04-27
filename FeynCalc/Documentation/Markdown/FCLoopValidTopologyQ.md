@@ -44,6 +44,6 @@ $$\text{FCTopology}\left(\text{topo1},\left\{\frac{1}{\text{p1}^2},\frac{1}{\tex
 FCLoopValidTopologyQ[topoWrong]
 ```
 
-![074ejzubvewb2](img/074ejzubvewb2.pdf)
+![074ejzubvewb2](img/074ejzubvewb2.svg)
 
 $$\text{False}$$

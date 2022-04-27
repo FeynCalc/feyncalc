@@ -348,7 +348,7 @@ DiracSimplify[%]
 
 $$\gamma ^{\mu }.\left(\bar{\gamma }^p+m\right).\gamma ^{\mu }$$
 
-![161ti5temvheu](img/161ti5temvheu.pdf)
+![161ti5temvheu](img/161ti5temvheu.svg)
 
 $$\text{\$Aborted}$$
 

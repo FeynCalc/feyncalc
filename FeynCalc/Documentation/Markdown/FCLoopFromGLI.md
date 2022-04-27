@@ -34,7 +34,7 @@ defined for unknown topologies
 FCLoopFromGLI[GLI["topoXYZ", {1, 1, 1, 1, 1}], topos]
 ```
 
-![00f6ck72ejb3p](img/00f6ck72ejb3p.pdf)
+![00f6ck72ejb3p](img/00f6ck72ejb3p.svg)
 
 $$\text{\$Aborted}$$
 
