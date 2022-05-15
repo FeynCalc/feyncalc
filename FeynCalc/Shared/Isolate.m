@@ -84,7 +84,7 @@ Isolate[x_?NumberQ, _, OptionsPattern[]] :=
 Isolate[x_Symbol, _, OptionsPattern[]] :=
 	x;
 
-Isolate[x_ /; NumericalFactor[x] =!=1, z_, opts:OptionsPattern[]] :=
+Isolate[x_ /; Apply[And[#=!=1, ExactNumberQ[#]]&, {NumericalFactor[x]}], z_, opts:OptionsPattern[]] :=
 	(NumericalFactor[x] Isolate[x/NumericalFactor[x], z, opts]) /; x=!=0 && (!OptionQ[z] || z==={})
 
 Isolate[ex_, (opts:OptionsPattern[])/;opts=!={}] :=
@@ -93,7 +93,7 @@ Isolate[ex_, (opts:OptionsPattern[])/;opts=!={}] :=
 Isolate[ex_, var:Except[_?OptionQ], opts:OptionsPattern[]] :=
 	Isolate[ex, {var}, opts]/; Head[var] =!= List;
 
-Isolate[ exp_ /; Apply[Or[#===1, #===0]&, {NumericalFactor[exp]}], vars_List, opts:OptionsPattern[]] :=
+Isolate[exp_ /; Apply[Or[#===1, #===0, InexactNumberQ[#]]&, {NumericalFactor[exp]}], vars_List, opts:OptionsPattern[]] :=
 	Block[{	plush,vlist,res,split,kk, di=1, defhead, abbprint, holdformlist = {},
 			hres, nhres, remche, timesSplit, plusSplit, tmpIso, tmpKeep,
 			isoIgnore, repRule},

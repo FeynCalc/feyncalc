@@ -38,5 +38,6 @@ Momentum[p, D], Momentum[p, D]]"},
 {"fcstIsolate-ID9","Isolate[-1 x]","-x"},
 {"fcstIsolate-ID10","MatchQ[Isolate[Total[Table[Sqrt[TZ[i] + 2 ZZ[i]]/
 HH[ToString[i] + ToString[i + 2] + ToString[i + 4]], {i, 1,
-10000}]], IsolateFast -> True], HoldForm[KK[_]]]","True"}
+10000}]], IsolateFast -> True], HoldForm[KK[_]]]","True"},
+{"fcstIsolate-ID11","MatchQ[Head[Isolate[2.` (1.` aa + 5`)]], HoldForm]","True"}
 };
