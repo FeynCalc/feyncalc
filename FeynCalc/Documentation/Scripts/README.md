@@ -1,45 +1,45 @@
 # Documentation scripts
 
-This directory contains Mathematica/Bash scripts that help to ensure the quality
-of FeynCalc documentaion
+This directory contains Mathematica/Bash scripts that help to ensure the quality of the FeynCalc documentaion
 
 * To check for FeynCalc symbols that are not properly documented, use 
 
     ```
-    ./checkMissingDocu.sh math
+    export MAKE_DOCU_LOAD_ADDONS="{}"; export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; export DOCU_INDEX_FILE=$DOCU_SOURCE_DIR/Markdown/Extra/FeynCalc.md; ./checkMissingDocu.sh math
     ```
 * To check for poorly formatted documentation files use
 
     ```
-    ./checkQuality.sh math
+    export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation";  ./checkQuality.sh
     ```
 
 * To synchronize the usage information strings of FeynCalc symbols with the documentation files use
 
     ```
-    ./updateUsageInformation.sh math
+    export MAKE_DOCU_LOAD_ADDONS="{}"; export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; ./updateUsageInformation.sh math
     ```
 
 * To generate Markdown documentation from .m-files use
 
     ```
-    ./exportToMD.sh math ../Markdown/
+    export MAKE_DOCU_LOAD_ADDONS="{}"; DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; ./exportToMD.sh math "$DOCU_SOURCE_DIR"/Markdown
     ```
     
 * To update the HTML documentation use
 
     ```
-    ./generateHTML.sh /media/Data/Projects/VS/feyncalc.github.io/FeynCalcBookDev
+    export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; ./generateHTML.sh /media/Data/Projects/VS/feyncalc.github.io/FeynCalcBookDev
     ```
     
 * To update the TeX documentation use
 
     ```
-    ./generateTeX.sh /media/Data/Projects/VS/feyncalc-manual
+    export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; export DOCU_MANUAL_NAME="FeynCalcManual"; ./generateTeX.sh /media/Data/Projects/VS/feyncalc-manual/
     ```        
     
 * To build the TeX documentation use
 
     ```
-    arara FeynCalcManual.tex
+    cd /media/Data/Projects/VS/feyncalc-manual/
+    latexmk -pdf FeynCalcManual.tex
     ```

@@ -3,7 +3,7 @@ return {
     Link = function (li)
       local target
       local name = li.target      
-      if (name == "Extra/FeynCalc.md") or (name == "FeynCalc.md") then
+      if (name == "Extra/FeynCalc.md") or (name == "FeynCalc.md") or (name == "Extra/FeynHelpers.md") or (name == "FeynHelpers.md") then
          name ="Overview"
          target = "toc"
       elseif string.sub(name,1, 4) == "http" then

@@ -12,31 +12,46 @@
 
 # Usage examples
 
-# ./svgToPdf.sh /media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation/Markdown/img/0gi2hdxwlvyo6.svg ~/Downloads/TeX/img
-# ./svgToPdf.sh ~/Downloads/TeX/img
+# export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; ./svgToPdf.sh $DOCU_SOURCE_DIR/Markdown/img/0gi2hdxwlvyo6.svg ~/Downloads/TeX/img
+# export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; ./svgToPdf.sh ~/Downloads/TeX/img
+
+# export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/AddOns/FeynHelpers/Documentation"; ./svgToPdf.sh $DOCU_SOURCE_DIR/Markdown/img/0gi2hdxwlvyo6.svg ~/Downloads/TeX/img
+# export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/AddOns/FeynHelpers/Documentation"; ./svgToPdf.sh ~/Downloads/TeX/img
+
+if [[ -z "${DOCU_SOURCE_DIR}" ]]; then
+  echo "You need to set the environmental variable DOCU_SOURCE_DIR that contains the full path to the relevant Documentation directory"
+  exit
+else
+  mainDir="${DOCU_SOURCE_DIR}"
+fi
+
+if [[ -z "${MAKE_DOCU_NTHREADS}" ]]; then
+  nThreads=6
+else
+  nThreads="${MAKE_DOCU_NTHREADS}"
+fi
 
 scriptDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-mainDir="$(dirname $scriptDIR)"
-
+SOURCEDIR="$mainDir"/Markdown/img
 OUTDIR=$1
 
 if [[ $# -eq 2 ]] ; then
-    inkscape --export-type=pdf "$1" -o "$2"/$(basename -s .svg "$1").pdf    
+    inkscape --export-type=pdf "$1" -o "$2"/$(basename -s .svg "$1").pdf
 else
  
-allFilesRaw=$(find $mainDir/Markdown/img -type f -name '*.svg' -print)
+allFilesRaw=$(find $SOURCEDIR -type f -name '*.svg' -print)
 allFilesRaw=($(printf "%s\n" "${allFilesRaw[@]}" | sort -V))
 
 declare -a allFiles
 for i in "${allFilesRaw[@]}"; do  
   name=$(basename -s .svg $i)
   fullPath=$OUTDIR/$name".pdf"
+  # echo $fullPath
   if [ -f $fullPath ]; then
     true
     #echo "Skipping $name - file already exists."
-    #echo
   else
-#   echo "Adding $name";
+    #echo "Adding $name";
     allFiles+=($i) 
   fi
 done
@@ -53,12 +68,6 @@ if [ -z ${allFiles} ]; then
     exit 0;
 fi
 
-
-
-parallel -j 6 -u --eta --bar "$scriptDIR/svgToPdf.sh {} $OUTDIR" ::: ${allFiles[@]};
-#mkdir $OUTDIR/Extra &> /dev/null;
-#mv $OUTDIR/FeynCalc.html $OUTDIR/Extra/FeynCalc.html;
-#rm -rf $OUTDIR/img;
-#cp -a $mainDir/Markdown/img $OUTDIR/img;
+parallel -j $nThreads -u --eta --bar "$scriptDIR/svgToPdf.sh {} $OUTDIR" ::: ${allFiles[@]};
 
 fi

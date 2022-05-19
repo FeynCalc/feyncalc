@@ -7,15 +7,23 @@
 
 # Description:
 
-# Converts FeynCalc documentation images from SVG to PDF
+# Converts FeynCalc/add-on documentation from SVG to PDF
 
 # Usage examples
 
-# ./generatePDFsForTeX.sh /media/Data/Projects/VS/feyncalc-manual/
+# export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; ./generatePDFsForTeX.sh /media/Data/Projects/VS/feyncalc-manual/
 
+# export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/AddOns/FeynHelpers/Documentation"; ./generatePDFsForTeX.sh /media/Data/Projects/VS/feynhelpers-manual/
+
+
+if [[ -z "${DOCU_SOURCE_DIR}" ]]; then
+  echo "You need to set the environmental variable DOCU_SOURCE_DIR that contains the full path to the relevant Documentation directory"
+  exit
+else
+  mainDir="${DOCU_SOURCE_DIR}"
+fi
 
 scriptDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-mainDir="$(dirname $scriptDIR)"
 
 PAGESDIR="pages"
 IMGDIR="img"
@@ -24,6 +32,5 @@ TEMPLATESDIR="templates"
 
 OUTDIR=$1
 SOURCEDIR="$mainDir"/Markdown/
-
 rm -rf "$OUTDIR"/"$IMGDIR"/*.pdf;
 $scriptDIR/svgToPdf.sh "$OUTDIR"/"$IMGDIR";

@@ -1,13 +1,5 @@
 (* ::Package:: *)
 
-(*Print[inputNB];
-Print[outputDir];
-Print[""];
-Print[Head[inputNB]];
-Print[Head[outputDir]]
-Quit[]*)
-
-
 QuitAbort[]:=
 If[$FrontEnd===Null,
 	Quit[],
@@ -33,10 +25,14 @@ force=True;
 $fcDEBUG=True;
 inputNB="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation/Mathematica/LoopIntegrals/FCLoopGraphPlot.m";
 outputDir=FileNameJoin[{$HomeDirectory,"Downloads","outputMD"}];
-*)
 
 
-outputMD=FileNameJoin[{outputDir,FileBaseName[inputNB]<>".md"}]
+inputNB="/media/Data/Projects/VS/FeynCalc/FeynCalc/AddOns/FeynHelpers/Documentation/Mathematica/FIRE/Functions/FIRECreateConfigFile.m";
+outputDir="/media/Data/Projects/VS/FeynCalc/FeynCalc/AddOns/FeynHelpers/Documentation/Markdown";
+loadAddOns="FeynHelpers";*)
+
+
+outputMD=FileNameJoin[{outputDir,FileBaseName[inputNB]<>".md"}];
 
 
 SetDirectory[outputDir];
@@ -50,10 +46,12 @@ If[!DirectoryQ[outputDir],
 	Print["ERROR! The directory ", outputDir, " does not exist!" ];
 	QuitAbort[]
 ];
-(*If[FileExistsQ[outputMD] && force=!=True,
-	Print["Markdown file ", outputMD, " already exists, skipping." ];
-	QuitAbort[]
-];*)
+
+
+If[loadAddOns==="{}",
+	loadAddOns={},	
+	loadAddOns=ToString/@ToExpression[loadAddOns]
+];
 
 
 (*
@@ -85,7 +83,8 @@ SetSelectedNotebook[nb];
 
 
 (*Insert the FeynCalc cell*)
-NotebookWrite[nb,"$FeynCalcStartupMessages=False; \n <<FeynCalc`"]
+NotebookWrite[nb,"$FeynCalcStartupMessages=False; \n $LoadAddOns = "<>
+ToString[loadAddOns,InputForm]<>"; \n <<FeynCalc`"];
 SelectionMove[nb, Next, Cell];
 SelectionMove[nb, Previous, Cell];
 SelectionEvaluate[nb];
@@ -147,11 +146,11 @@ Block[{res},
   ToImageElement[res, opt]
 ]
 
+add 
 
-
-
-
-
+M2MD[ "Print", Cell[inputForm_String, ___], ___]:= MDElement["Output", inputForm, $CodeLanguage];
+after
+M2MD[ "Output", Cell[inputForm_String, ___], ___]:= MDElement["CodeBlock", inputForm, $CodeLanguage];
 
 also rename *.png to *.svg everywhere in the source
 *)
@@ -177,9 +176,29 @@ M2MD[style_, cell : _[BoxData @ RowBox[__], ___],
 System`Convert`TeXFormDump`maketex[i_Integer] := ToString[i];
 
 
+(*M2MD[Cell["\<\
+#compressor zstd
+#threads 8
+#fthreads s16
+#lthreads 4
+#sthreads 8
+#variables d, mb, mg
+#bucket 29
+#start
+#folder ./
+#problem 4242 asyR1prop2Ltopo01310X11111N1.start
+#integrals LIs.m
+#output asyR1prop2Ltopo01310X11111N1.tables\
+\>", "Print",
+ CellLabel->"During evaluation of In[58]:="]]*)
+
+
 fixTitle[cell_, ___]:= "---\ntitle: "<>
 	M2MD`Private`BoxesToString[cell, "PlainText"]<>"\n---\n";
 Print["Exporting the notebook to ", outputMD];
 MDExport[outputMD, nb,"CellStyleRules"-> <|
   "Title"->{"Text",fixTitle}|>];
 Print["Export done."];
+
+
+

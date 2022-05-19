@@ -11,10 +11,18 @@
 
 # Usage examples
 
-# ./checkQuality.sh
+# export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation";  ./checkQuality.sh
+
+# export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/AddOns/FeynHelpers/Documentation"; ./checkQuality.sh
+
+if [[ -z "${DOCU_SOURCE_DIR}" ]]; then
+  echo "You need to set the environmental variable DOCU_SOURCE_DIR that contains the full path to the relevant Documentation directory"
+  exit
+else
+  mainDir="${DOCU_SOURCE_DIR}"
+fi
 
 scriptDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-mainDir="$(dirname $scriptDIR)"
 
 echo "Check documentation files missing the |See Also| section:"
 grep -RL "See also" $mainDir"/Mathematica"

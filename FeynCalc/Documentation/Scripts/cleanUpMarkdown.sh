@@ -15,7 +15,6 @@
 # ./cleanUpMarkdown.sh "/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation/Markdown"
 
 scriptDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-mainDir="$(dirname $scriptDIR)"
 
 if [[ -f $1 ]]; then
     echo Post processing the file "$1"
@@ -38,7 +37,7 @@ if [[ -f $1 ]]; then
     sed -i -e 's|\$\$\(!\[.*\)\$\$|\1|' $1;
 elif [[ -d $1 ]]; then
  
-allFilesRaw=$(find $mainDir/Markdown/ -type f -name '*.md' -print)
+allFilesRaw=$(find $1 -type f -name '*.md' -print)
 allFiles=($(printf "%s\n" "${allFilesRaw[@]}" | sort -V))
 
 

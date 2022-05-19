@@ -1,9 +1,5 @@
 (* ::Package:: *)
 
-$FeynCalcStartupMessages=False;
-<<FeynCalc`
-
-
 QuitAbort[]:=
 If[$FrontEnd===Null,
 	Quit[],
@@ -11,11 +7,26 @@ If[$FrontEnd===Null,
 ];
 
 
-fcSymbols=Names["FeynCalc`*"];
-docFiles=FileBaseName/@FileNames["*.m",FileNameJoin[{$FeynCalcDirectory,"Documentation","Mathematica"}],Infinity];
+If[!DirectoryQ[docuDir],
+	Print["ERROR! The file ", indexFile, " does not exist!" ];
+	QuitAbort[]
+];
 
 
-in=Import[FileNameJoin[{$FeynCalcDirectory,"Documentation","Markdown","Extra","FeynCalc.md"}],"Text"];
+If[!FileExistsQ[indexFile],
+	Print["ERROR! The file ", indexFile, " does not exist!" ];
+	QuitAbort[]
+];
+
+
+$FeynCalcStartupMessages=False;
+<<FeynCalc`
+
+
+docFiles=FileBaseName/@FileNames["*.m",FileNameJoin[{docuDir,"Mathematica"}],Infinity];
+
+
+in=Import[indexFile,"Text"];
 str=StringCases[in,"- "~~Shortest[x__]~~" - "/;!StringFreeQ[x,"["]:>x];
 overviewSymbols=StringReplace[Union[Flatten[StringCases[#,"["~~Shortest[x__]~~"]":>x]&/@StringSplit[str,","]]],"\\"->""];
 
@@ -57,11 +68,5 @@ finalStr=StringReplace[finalStr,{"/$"->"/Dollar"}];
 finalStr
 
 
-Print["Saving the output to", FileNameJoin[{outputDir,"includes.tex"}]];
+Print["Saving the output to ", FileNameJoin[{outputDir,"includes.tex"}]];
 WriteString[FileNameJoin[{outputDir,"includes.tex"}],finalStr];
-
-
-
-
-
-

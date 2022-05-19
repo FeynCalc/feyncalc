@@ -7,15 +7,35 @@
 
 # Description:
 
-# Converts FeynCalc documentation from Markdown to HTML
+# Converts FeynCalc/add-on documentation from Markdown to HTML
 
 # Usage examples
 
-# ./generateHTML.sh /media/Data/Projects/VS/feyncalc.github.io/FeynCalcBookDev
-# ./generateHTML.sh "/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation/Markdown/ApartFF.md" /media/Data/Projects/VS/feyncalc.github.io/FeynCalcBookDev
+# export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; ./generateHTML.sh /media/Data/Projects/VS/feyncalc.github.io/FeynCalcBookDev
+
+# export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/AddOns/FeynHelpers/Documentation"; ./generateHTML.sh /media/Data/Projects/VS/feyncalc.github.io/FeynHelpersBookDev
+
+# export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; ./generateHTML.sh "/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation/Markdown/ApartFF.md" /media/Data/Projects/VS/feyncalc.github.io/FeynCalcBookDev
+
+
+
+
+if [[ -z "${DOCU_SOURCE_DIR}" ]]; then
+  echo "You need to set the environmental variable DOCU_SOURCE_DIR that contains the full path to the relevant Documentation directory"
+  exit
+else
+  mainDir="${DOCU_SOURCE_DIR}"
+fi
+
+if [[ -z "${MAKE_DOCU_NTHREADS}" ]]; then
+  nThreads=6
+else
+  nThreads="${MAKE_DOCU_NTHREADS}"
+fi
+
 
 scriptDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-mainDir="$(dirname $scriptDIR)"
+docuTitle=$(basename $(dirname "$mainDir"))
 
 FILTERSDIR="filters"
 TEMPLATESDIR="templates"
@@ -23,7 +43,7 @@ TEMPLATESDIR="templates"
 OUTDIR=$1
 
 if [[ $# -eq 2 ]] ; then    
-    pandoc "$1" -f markdown -t html5  --katex -fmarkdown-implicit_figures --lua-filter="$FILTERSDIR"/md2html.lua -s --metadata title="FeynCalc manual (development version)" -c "css/feyncalc.css" --metadata=classoption:fleqn -o "$2"/$(basename -s .md "$1").html
+    pandoc "$1" -f markdown -t html5  --katex -fmarkdown-implicit_figures --lua-filter="$FILTERSDIR"/md2html.lua -s --metadata title="$docuTitle manual (development version)" -c "css/feyncalc.css" --metadata=classoption:fleqn -o "$2"/$(basename -s .md "$1").html
 else
  
 allFilesRaw=$(find $mainDir/Markdown/ -type f -name '*.md' -print)
@@ -36,9 +56,8 @@ for i in "${allFilesRaw[@]}"; do
   if [ -f $fullPath ]; then
     true
     #echo "Skipping $name - file already exists."
-    #echo
   else
-#   echo "Adding $name";
+    #echo "Adding $name";
     allFiles+=($i) 
   fi
 done
@@ -55,22 +74,19 @@ if [ -z ${allFiles} ]; then
     exit 0;
 fi
 
-
-
-parallel -j 6 -u --eta --bar "$scriptDIR/generateHTML.sh {} $OUTDIR" ::: ${allFiles[@]};
+parallel -j $nThreads -u --eta --bar "$scriptDIR/generateHTML.sh {} $OUTDIR" ::: ${allFiles[@]};
 mkdir $OUTDIR/Extra &> /dev/null;
-mv $OUTDIR/FeynCalc.html $OUTDIR/Extra/FeynCalc.html;
-mv $OUTDIR/MasterIntegrals.html $OUTDIR/Extra/MasterIntegrals.html;
-mv $OUTDIR/Indices.html $OUTDIR/Extra/Indices.html;
-mv $OUTDIR/FeynArtsSigns.html $OUTDIR/Extra/FeynArtsSigns.html;
+
+allFilesExtra=$(find $mainDir/Markdown/Extra -type f -name '*.md' -print)
+allFilesExtra=($(printf "%s\n" "${allFilesExtra[@]}" | sort -V))
+for i in "${allFilesExtra[@]}"; do
+  name=$(basename -s .md $i);
+  mv $OUTDIR/$name.html $OUTDIR/Extra/;
+  sed -i -e "s|css/feyncalc.css|../css/feyncalc.css|g" $OUTDIR/Extra/$name.html;
+done
+
 rm -rf $OUTDIR/img;
 mkdir -p $OUTDIR/img;
 cp -a $mainDir/Markdown/img/*.svg $OUTDIR/img/;
-
-sed -i -e "s|css/feyncalc.css|../css/feyncalc.css|g" $OUTDIR/Extra/FeynCalc.html;
-sed -i -e "s|css/feyncalc.css|../css/feyncalc.css|g" $OUTDIR/Extra/MasterIntegrals.html;
-sed -i -e "s|css/feyncalc.css|../css/feyncalc.css|g" $OUTDIR/Extra/FeynArtsSigns.html;
-sed -i -e "s|css/feyncalc.css|../css/feyncalc.css|g" $OUTDIR/Extra/Indices.html;
-
 
 fi

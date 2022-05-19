@@ -4,11 +4,22 @@ $FeynCalcStartupMessages=False;
 <<FeynCalc`
 
 
+If[loadAddOns=!="{}",
+	FCReloadAddOns[ToString/@ToExpression[loadAddOns]]
+];
+
+
+If[!DirectoryQ[docuDir],
+	Print["ERROR! The file ", indexFile, " does not exist!" ];
+	QuitAbort[]
+];
+
+
 ClearAll[docuToUsage];
 docuToUsage[name_String]:=
 Block[{path,text,tmp,res},
 
-	path=FileNames[name<>".m",FileNameJoin[{$FeynCalcDirectory,"Documentation","Mathematica"}],Infinity];
+	path=FileNames[name<>".m",FileNameJoin[{docuDir,"Mathematica"}],Infinity];
 	If[Length[path]=!=1,
 		Print["Error, failed to find the documentation file for ", name];
 		Abort[],
@@ -16,30 +27,33 @@ Block[{path,text,tmp,res},
 	];
 	
 	text=Import[path,"Text"];
-
 	tmp=StringCases[text,"(* ::Section:: *)\n(*"<>name<>"*)"~~Shortest[x__]~~"(* ::Subsection:: *)":>x];
-
 	If[Length[tmp]=!=1,	
 		Print["Error: The documentation file for " name, " is missing a proper section header"];
 		Abort[],
 		tmp=First[tmp]
 	];
+	tmp=StringReplace[tmp,{"(* ::Text:: *)"->"","*)"|"(*"|"`"->"","\""->"\\\""}];	
 	
-	tmp=StringReplace[tmp,{"(* ::Text:: *)"->"","*)"|"(*"|"`"->"","\""->"\\\""}];
-
 	tmp=FixedPoint[StringReplace[#,"\n\n\n"->"\n\n"]&,tmp];
-
 	tmp=StringTrim[tmp];
 
 	res=StringRiffle[InsertLinebreaks/@StringSplit[tmp,"\n"],"\n"];
 	res=StringReplace[res,"\\"~~x:WordCharacter:>"\\\\"<>x];
 	res
-];
+];	
 
 
 ClearAll[updateUsage,importAllSymbols, allFiles,importAllSymbols];
-allFiles[]:=Join[(FileNames["*.m",FileNameJoin[{$FeynCalcDirectory,#}]&/@{"Dirac","ExportImport","Feynman",
-"LoopIntegrals","Lorentz","NonCommAlgebra","Pauli","QCD","Shared","SUN","Tables"},Infinity]),{FileNameJoin[{$FeynCalcDirectory,"FCMain.m"}],FileNameJoin[{$FeynCalcDirectory,"FeynCalc.m"}]}];
+Switch[ToLowerCase[FileBaseName[ParentDirectory[docuDir]]],
+"feyncalc",
+allFiles[]:=Join[(FileNames["*.m",FileNameJoin[{ParentDirectory[docuDir],#}]&/@{"Dirac","ExportImport","Feynman",
+"LoopIntegrals","Lorentz","NonCommAlgebra","Pauli","QCD","Shared","SUN","Tables"},Infinity]),{FileNameJoin[{$FeynCalcDirectory,"FCMain.m"}],FileNameJoin[{$FeynCalcDirectory,"FeynCalc.m"}]}],
+"feynhelpers",
+allFiles[]:=Join[(FileNames["*.m",FileNameJoin[{ParentDirectory[docuDir],"Interfaces",#}]&/@{"LoopTools","FIRE","QGRAF",
+"pySecDec"},Infinity]),{FileNameJoin[{ParentDirectory[docuDir],"FeynHelpers.m"}],FileNameJoin[{ParentDirectory[docuDir],"Interfaces","PackageX.m"}],FileNameJoin[{ParentDirectory[docuDir],"Interfaces","Fermat.m"}]}]
+];
+
 importAllSymbols[]:=Import[#,"Text"]&/@allFiles[];
 rereadSymbols=True;
 updateUsage[name_String,newText_String,save_:False]:=
@@ -77,7 +91,7 @@ Block[{path,pos,text,tmp,res,outFile},
 ];
 
 
-baseNames=FileBaseName/@FileNames["*.m",FileNameJoin[{$FeynCalcDirectory,"Documentation","Mathematica"}],Infinity];
+baseNames=FileBaseName/@FileNames["*.m",FileNameJoin[{docuDir,"Mathematica"}],Infinity];
 Print["In total there are ", Length[baseNames], " FeynCalc symbols having usage information."]
 
 

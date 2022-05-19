@@ -12,6 +12,7 @@ return {
       new = string.gsub(new, '#', '\\#{}\\allowbreak{}')
       new = string.gsub(new, '&', '\\&{}\\allowbreak{}')
       new = string.gsub(new, '%$', '\\$')
+      new = string.gsub(new, '`', '\\textasciigrave ')
       return pandoc.RawInline('tex', '\\texttt{' .. new  .. '}')
       end
     end

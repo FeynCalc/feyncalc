@@ -12,31 +12,46 @@
 
 # Usage examples
 
-# ./pdfToSvg.sh /media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation/Markdown/img/0gi2hdxwlvyo6.svg ~/Downloads/TeX/img
-# ./pdfToSvg.sh /media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation/Markdown/img/
+# export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; ./pdfToSvg.sh $DOCU_SOURCE_DIR/Markdown/img/0gi2hdxwlvyo6.pdf ~/Downloads/TeX/img
+# export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; ./pdfToSvg.sh ~/Downloads/TeX/img
+
+# export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/AddOns/FeynHelpers/Documentation"; ./pdfToSvg.sh $DOCU_SOURCE_DIR/Markdown/img/0nwzbpg5gzgtm.pdf ~/Downloads/TeX/img
+# export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/AddOns/FeynHelpers/Documentation"; ./pdfToSvg.sh ~/Downloads/TeX/img
+
+if [[ -z "${DOCU_SOURCE_DIR}" ]]; then
+  echo "You need to set the environmental variable DOCU_SOURCE_DIR that contains the full path to the relevant Documentation directory"
+  exit
+else
+  mainDir="${DOCU_SOURCE_DIR}"
+fi
+
+if [[ -z "${MAKE_DOCU_NTHREADS}" ]]; then
+  nThreads=6
+else
+  nThreads="${MAKE_DOCU_NTHREADS}"
+fi
 
 scriptDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-mainDir="$(dirname $scriptDIR)"
-
+SOURCEDIR="$mainDir"/Markdown/img
 OUTDIR=$1
 
 if [[ $# -eq 2 ]] ; then
     inkscape --export-type=svg "$1" -o "$2"/$(basename -s .pdf "$1").svg    
 else
-echo $mainDir/Markdown/img
-allFilesRaw=$(find $mainDir/Markdown/img -type f -name '*.pdf' -print)
+
+allFilesRaw=$(find $SOURCEDIR -type f -name '*.pdf' -print)
 allFilesRaw=($(printf "%s\n" "${allFilesRaw[@]}" | sort -V))
-echo $allFilesRaw
+
 declare -a allFiles
 for i in "${allFilesRaw[@]}"; do  
   name=$(basename -s .pdf $i)
   fullPath=$OUTDIR/$name".svg"
+  # echo $fullPath
   if [ -f $fullPath ]; then
     true
     #echo "Skipping $name - file already exists."
-    #echo
   else
-#   echo "Adding $name";
+    #echo "Adding $name";
     allFiles+=($i) 
   fi
 done
@@ -53,9 +68,6 @@ if [ -z ${allFiles} ]; then
     exit 0;
 fi
 
-
-
-parallel -j 6 -u --eta --bar "$scriptDIR/pdfToSvg.sh {} $OUTDIR" ::: ${allFiles[@]};
-
+parallel -j $nThreads -u --eta --bar "$scriptDIR/pdfToSvg.sh {} $OUTDIR" ::: ${allFiles[@]};
 
 fi
