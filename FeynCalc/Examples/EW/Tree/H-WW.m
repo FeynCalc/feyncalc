@@ -55,6 +55,7 @@ Paint[diags, ColumnsXRows -> {2, 1}, Numbering -> Simple,
 
 amp[0]=FCFAConvert[CreateFeynAmp[diags],IncomingMomenta->{pH},
 	OutgoingMomenta->{k1,k2},List->False,ChangeDimension->4,
+	TransversePolarizationVectors->{k1,k2},
 	DropSumOver->True,SMP->True,Contract->True,UndoChiralSplittings->True]
 
 
@@ -114,3 +115,6 @@ Text->{"\tCompare to Gunion, Haber, Kane and Dawson, \
 Higgs Hunter Guide, Eq 2.11:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];
+
+
+

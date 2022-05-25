@@ -63,6 +63,7 @@ Paint[diags, ColumnsXRows -> {2, 1}, Numbering -> Simple,
 
 amp[0] = FCFAConvert[CreateFeynAmp[diags], IncomingMomenta->{p},
 	OutgoingMomenta->{k1,k2},ChangeDimension->4,List->False, SMP->True,
+	TransversePolarizationVectors->{p},
 	Contract->True,DropSumOver->True, FinalSubstitutions->
 	{SMP["e"]->Sqrt[8/Sqrt[2]SMP["G_F"] SMP["m_W"]^2SMP["sin_W"]^2]}]
 
@@ -120,3 +121,6 @@ Text->{"\tCompare to Grozin, \
 Using REDUCE in High Energy Physics, Chapter 5.2:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];
+
+
+
