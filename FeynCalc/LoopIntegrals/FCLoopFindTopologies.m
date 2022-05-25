@@ -53,10 +53,10 @@ Options[FCLoopFindTopologies] = {
 	FCI 						-> False,
 	FCLoopBasisOverdeterminedQ	-> False,
 	FCLoopIsolate				-> True,
-	FCPrint						-> True,
 	FCVerbose					-> False,
 	FDS							-> True,
 	Factoring					-> False,
+	FinalSubstitutions			-> {},
 	Head						-> {Identity, FCGV["GLIProduct"]},
 	IsolateFast					-> False,
 	IsolateNames				-> False,
@@ -80,7 +80,7 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 			extraPropagatorsFirst,extraPropagatorsLast, addF, addL, arrayF, arrayL, denFreePart, denPart,
 			denFreeTopoName, topoTempName, optFactoring, namesPreferredTopologies, preferredTopologiesAbsent, optFDS, allFADs,
 			allFADsSimp, ruleFADsSimp, exFinal, optOrdering, orderingFirst, orderingLast, topoName, optHead,
-			momenta},
+			momenta, optFinalSubstitutions, optFCLoopIsolate},
 
 		optExtraPropagators 	= OptionValue[ExtraPropagators];
 		optOrdering 			= OptionValue[Ordering];
@@ -90,6 +90,7 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 		optFactoring 			= OptionValue[Factoring];
 		optNames 				= OptionValue[Names];
 		optFDS					= OptionValue[FDS];
+		optFinalSubstitutions   = OptionValue[FinalSubstitutions];
 		optFCLoopIsolate 		= OptionValue[FCLoopIsolate];
 
 		optPreferredTopologies = optPreferredTopologies /. FCTopology[id_,re_]:> FCTopology[topoName[id],re];
@@ -106,10 +107,6 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 			Abort[]
 		];
 
-		If[	Head[expr]===List,
-			Message[FCLoopFindTopologies::failmsg, "Lists of amplitudes are currently not supported"];
-			Abort[]
-		];
 
 		(*	Internal temporary name for the identified topologies.	*)
 		topoTempName="dummyTmpTp";
@@ -125,6 +122,7 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1,"FCLoopFindTopologies: Applying FCI.", FCDoControl->fcfsopVerbose];
 			ex = FCI[expr];
+			optFinalSubstitutions = FCI[optFinalSubstitutions];
 			FCPrint[1, "FCLoopFindTopologies: Done applying FCI, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfsopVerbose],
 
 			ex = expr
@@ -279,18 +277,20 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 		];
 		FCPrint[1, "FCLoopFindTopologies: Done extracting unique denominators, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfsopVerbose];
 
-
 		(*	Extract the piece that has no loop-momentum dependent denominators.	*)
 		time=AbsoluteTime[];
 		FCPrint[1,"FCLoopFindTopologies: Splitting loop from non-loop parts.", FCDoControl->fcfsopVerbose];
-		{denFreePart, denPart} = FCSplit[tmp, {loopDen}, Expanding->False];
+		If[	Head[tmp]=!=List,
+			tmp= {tmp}
+		];
+		{denFreePart, denPart} = Transpose[FCSplit[#, {loopDen}, Expanding->False]&/@tmp];
 		FCPrint[1, "FCLoopFindTopologies: Done splitting loop from non-loop parts, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfsopVerbose];
 
 
 		FCPrint[3, "FCLoopFindTopologies: denFreePart: ", denFreePart, FCDoControl->fcfsopVerbose];
 		FCPrint[3, "FCLoopFindTopologies: denPart: ", denPart, FCDoControl->fcfsopVerbose];
 
-		If[	denPart===0,
+		If[	MatchQ[denPart,{0..}],
 
 			(* If there are no loop-momentum dependent denominators, there is nothing to do here.	*)
 			finalRule={},
@@ -307,7 +307,12 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 
 			time=AbsoluteTime[];
 			FCPrint[1, "FCLoopFindTopologies: Applying FCLoopBasisIntegralToPropagators.", FCDoControl->fcfsopVerbose];
-			denListEval = FCLoopBasisIntegralToPropagators[#, lmoms, FCI -> True, Tally -> True] & /@ (denList/.loopDen->Identity);
+			If[	optFDS,
+				denListEval = FCLoopBasisIntegralToPropagators[FDS[#,FCI->True, Rename->False, ApartFF -> False, DetectLoopTopologies->False],
+					lmoms, FCI -> True, Tally -> True] & /@ (denList/.loopDen->Identity),
+
+				denListEval = FCLoopBasisIntegralToPropagators[#, lmoms, FCI -> True, Tally -> True] & /@ (denList/.loopDen->Identity);
+			];
 			FCPrint[1, "FCLoopFindTopologies: Done applying FCLoopBasisIntegralToPropagators, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfsopVerbose];
 			FCPrint[3, "FCLoopFindTopologies: List of the unique denominators after FCLoopBasisIntegralToPropagators: ", denListEval, FCDoControl->fcfsopVerbose];
 
@@ -401,7 +406,7 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 			topoList2 = MapIndexed[(
 
 				momenta = Union[Cases[MomentumExpand[#1[[1]]],Momentum[m_,___]:>m,Infinity]];
-				FCTopology[topoTempName <> ToString[First[#2]], #1[[1]], Intersection[momenta,lmoms], SelectFree[momenta,lmoms], {}, {}]
+				FCTopology[topoTempName <> ToString[First[#2]], #1[[1]], Intersection[momenta,lmoms], SelectFree[momenta,lmoms], optFinalSubstitutions, {}]
 
 				)&,
 				topoList];
@@ -420,6 +425,7 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 
 
 			time=AbsoluteTime[];
+
 			FCPrint[1,"FCLoopFindTopologies: Identifying the subtopologies.", FCDoControl->fcfsopVerbose];
 			matchedSubtopologies = (checkSubtopology /@ topoList2) /.  Null -> Unevaluated[Sequence[]];
 
@@ -501,7 +507,7 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 
 
 		(*	Take care of the piece free of FADs.	*)
-		If[ denFreePart=!=0,
+		If[ !MatchQ[denFreePart,{0..}],
 
 			time=AbsoluteTime[];
 			FCPrint[1,"FCLoopFindTopologies: Handling the loop-momentum denominator free part of the expression.", FCDoControl->fcfsopVerbose];
@@ -580,6 +586,10 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 				exFinal = Collect2[exFinal,GLI,Factoring->optFactoring,IsolateNames->OptionValue[IsolateNames],IsolateFast->OptionValue[IsolateFast],
 				Head->optHead];
 				FCPrint[1, "FCLoopFindTopologies: Done collecting w.r.t the unique denominators, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfsopVerbose]
+		];
+
+		If[Head[ex]=!=List && Head[exFinal]===List && Length[exFinal]===1,
+			exFinal=First[exFinal]
 		];
 
 		res = {exFinal,finalTopologies}  /. topoName->Identity;

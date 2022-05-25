@@ -17,7 +17,7 @@ Tests`LoopIntegrals`fcstFCLoopFindTopologies =
 ({
 {"fcstFCLoopFindTopologies-ID1",
 "FCLoopFindTopologies[a,{p1,p2,p3,p4},ExtraPropagators->{{SFAD[p1],\
-SFAD[p2]},{SFAD[p3],SFAD[p4]}},FCE->True,FCPrint->False]",
+SFAD[p2]},{SFAD[p3],SFAD[p4]}},FCE->True]",
 "{FCGV[\"GLIProduct\"][a, GLI[\"fctopology1\", {1, 1, 1, 1}]], \
 {FCTopology[\"fctopology1\", {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, \
 0}, {0, 1}, 1}], SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p4, 0}, {0, 1}, \
@@ -253,7 +253,7 @@ p4]) + (1 - c)*SPD[p2, Q]*SPD[p4, Q], 1}, 1}]}, {p1, p2, p4}, {Q}, \
 SPD[k,p],1},1}] SFAD[{{0,k.nb},{1-z,1},1}] SFAD[{{k-p-p2,0},{0,1},1}] \
 SFAD[{{p2,0},{0,1},1}] SFAD[{{k-p2-p3,0},{0,1},1}] \
 SFAD[{{p3,0},{0,1},1}] \
-SPD[nb,p2+p3],{p2,p3,k},FCPrint->False,PreferredTopologies->{\
+SPD[nb,p2+p3],{p2,p3,k},PreferredTopologies->{\
 FCTopology[1,{SFAD[p2],SFAD[p3],SFAD[k-p2-p3],SFAD[{{0,k.nb},1-z}],\
 SFAD[{{0,nb.(-k+p2+p3)},-1}],SFAD[{{0,p.(k-p2-p3)}}],SFAD[{{0,p.p3}}],\
 SFAD[k-p],SFAD[{{0,p2.(k-p2-p3)}}],SFAD[{{0,p2.p3}}],SFAD[{{0,nb.(-k+\
@@ -268,5 +268,62 @@ k-p2-p3)}}],SFAD[{{0,p.p3}}],SFAD[k-p],SFAD[{{0,p2.p3}}],SFAD[k-p-p2],\
 SFAD[{{0,nb.p3}}],SFAD[-p+p2+p3],GFAD[-1-SPD[k,k]+2 SPD[k,nb] \
 SPD[k,p]]},{p2,p3,k},{nb,p},{},{}]},FCE->True,FCVerbose->-1]",
 "{FCGV[\"GLIProduct\"][SPD[nb, p2 + p3], GLI[2, {1, 1, 1, 1, 0, 0, \
-0, 0, 1, 0, 0, 0, 1}]], {}}"}
+0, 0, 1, 0, 0, 0, 1}]], {}}"},
+{"fcstFCLoopFindTopologies-ID10",
+"FCLoopFindTopologies[-(FAD[{-k1, 0}]*FAD[{k2, mc}]*FAD[{k1 - p1, mb}]*
+FAD[{-k1 + p1, mb}]*FAD[{-k1 + k2 + p1, mc}]), {k1, k2, k3},
+FCVerbose -> -1, Head -> gp, FCE -> True, Names -> topo]",
+"{-gp[GLI[topo1, {1, 1, 2, 1}]], {FCTopology[topo1, {SFAD[{{k1, 0}, {0, 1}, 1}],
+SFAD[{{k2, 0}, {mc^2, 1}, 1}], SFAD[{{k1 - p1, 0}, {mb^2, 1}, 1}],
+SFAD[{{k1 - k2 - p1, 0}, {mc^2, 1}, 1}]}, {k1, k2}, {p1}, {}, {}]}}"},
+{"fcstFCLoopFindTopologies-ID11",
+"FCLoopFindTopologies[{FAD[{k1, mc}]*FAD[{k1 - k2, mb}]*FAD[{k2, mc}]*
+FAD[{k1 - p1, mc}]*FAD[{-k1 + k2 + p1, 0}],
+FAD[{k1, mc}]*FAD[{k1 - k2, mb}]*FAD[{k2, mc}]*FAD[{k1 - p1, mc}]*
+FAD[{-k1 + k2 + p1, 0}],
+FAD[{k1, mc}]*FAD[{k1 - k2, mb}]*FAD[{k2, mc}]*FAD[{k1 - p1, mc}]*
+FAD[{-k1 + k2 + p1, 0}],
+FAD[{k1, mc}]*FAD[{k1 - k2, mb}]*FAD[{k2, mc}]*FAD[{k1 - p1, mc}]*
+FAD[{-k1 + k2 + p1, 0}],
+FAD[{k1, mc}]*FAD[{k1 - k2, mc}]*FAD[{k2, 0}]^2*FAD[{k1 - p1, mc}],
+FAD[{k1, mc}]*FAD[{k1 - k2, mc}]*FAD[{k2, 0}]^2*FAD[{k1 - p1, mc}],
+FAD[{k1, mc}]*FAD[{k1 - k2, mc}]*FAD[{k2, 0}]^2*FAD[{k1 - p1, mc}],
+FAD[{k1, mc}]*FAD[{k1 - k2, mc}]*FAD[{k2, 0}]^2*FAD[{k1 - p1, mc}],
+FAD[{k1, mc}]*FAD[{k1 - k2, mb}]*FAD[{k2, mc}]*FAD[{k1 - p1, mc}]*
+FAD[{-k1 + k2 + p1, 0}],
+FAD[{k1, mc}]*FAD[{k1 - k2, mb}]*FAD[{k2, mc}]*FAD[{k1 - p1, mc}]*
+FAD[{-k1 + k2 + p1, 0}],
+FAD[{k1, mc}]*FAD[{k1 - k2, mb}]*FAD[{k2, mc}]*FAD[{k1 - p1, mc}]*
+FAD[{-k1 + k2 + p1, 0}],
+FAD[{k1, mc}]*FAD[{k1 - k2, mb}]*FAD[{k2, mc}]*FAD[{k1 - p1, mc}]*
+FAD[{-k1 + k2 + p1, 0}],
+FAD[{k1, mc}]*FAD[{k1 - k2, mc}]*FAD[{k2, 0}]^2*FAD[{k1 - p1, mc}],
+FAD[{k1, mc}]*FAD[{k1 - k2, mc}]*FAD[{k2, 0}]^2*FAD[{k1 - p1, mc}],
+FAD[{k1, mc}]*FAD[{k1 - k2, mc}]*FAD[{k2, 0}]^2*FAD[{k1 - p1, mc}],
+FAD[{k1, mc}]*FAD[{k1 - k2, mc}]*FAD[{k2, 0}]^2*FAD[{k1 - p1, mc}],
+FAD[{k1, mc}]*FAD[{k1 - k2, mb}]*FAD[{k2, mc}]*FAD[{k1 - p1, mc}]*
+FAD[{-k1 + k2 + p1, 0}],
+FAD[{k1, mc}]*FAD[{k1 - k2, mb}]*FAD[{k2, mc}]*FAD[{k1 - p1, mc}]*
+FAD[{-k1 + k2 + p1, 0}],
+FAD[{k1, mc}]*FAD[{k1 - k2, mb}]*FAD[{k2, mc}]*FAD[{k1 - p1, mc}]*
+FAD[{-k1 + k2 + p1, 0}],
+FAD[{k1, mc}]*FAD[{k1 - k2, mb}]*FAD[{k2, mc}]*FAD[{k1 - p1, mc}]*
+FAD[{-k1 + k2 + p1, 0}]}, {k1, k2, k3}, Head -> gp, FCE -> True,
+FCVerbose -> -1, Names -> topo]",
+"{{gp[GLI[topo1, {1, 1, 1, 1, 1}]], gp[GLI[topo1, {1, 1, 1, 1, 1}]],
+gp[GLI[topo1, {1, 1, 1, 1, 1}]], gp[GLI[topo1, {1, 1, 1, 1, 1}]],
+gp[GLI[topo2, {2, 1, 1, 1}]], gp[GLI[topo2, {2, 1, 1, 1}]], gp[GLI[topo2, {2, 1, 1, 1}]],
+gp[GLI[topo2, {2, 1, 1, 1}]], gp[GLI[topo1, {1, 1, 1, 1, 1}]],
+gp[GLI[topo1, {1, 1, 1, 1, 1}]], gp[GLI[topo1, {1, 1, 1, 1, 1}]],
+gp[GLI[topo1, {1, 1, 1, 1, 1}]], gp[GLI[topo2, {2, 1, 1, 1}]],
+gp[GLI[topo2, {2, 1, 1, 1}]], gp[GLI[topo2, {2, 1, 1, 1}]],
+gp[GLI[topo2, {2, 1, 1, 1}]], gp[GLI[topo1, {1, 1, 1, 1, 1}]],
+gp[GLI[topo1, {1, 1, 1, 1, 1}]],
+gp[GLI[topo1, {1, 1, 1, 1, 1}]], gp[GLI[topo1, {1, 1, 1, 1, 1}]]},
+{FCTopology[topo1, {SFAD[{{k2, 0}, {mc^2, 1}, 1}], SFAD[{{k1, 0}, {mc^2, 1},
+1}], SFAD[{{k1 - k2 - p1, 0}, {0, 1}, 1}], SFAD[{{k1 - p1, 0}, {mc^2, 1},
+1}], SFAD[{{k1 - k2, 0}, {mb^2, 1}, 1}]}, {k1, k2}, {p1}, {}, {}],
+FCTopology[topo2, {SFAD[{{k2, 0}, {0, 1}, 1}], SFAD[{{k1, 0}, {mc^2, 1}, 1}],
+SFAD[{{k1 - p1, 0}, {mc^2, 1}, 1}], SFAD[{{k1 - k2, 0},
+{mc^2, 1}, 1}]}, {k1, k2}, {p1}, {}, {}]}}"}
 });
