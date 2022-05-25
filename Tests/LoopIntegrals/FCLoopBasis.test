@@ -1092,7 +1092,13 @@ Tally -> True, FCE -> True]",
 {"fcstFCLoopBasisExtract-ID65",
 "FCLoopBasisIntegralToPropagators[
 SFAD[{ k, 0, -3/2}, { (k + p), 0, 1}], {k}, FCE -> True]",
-"{SFAD[{{k, 0}, {0, 1}, -1}], SFAD[{{k + p, 0}, {0, 1}, 1}]}"}
+"{SFAD[{{k, 0}, {0, 1}, -1}], SFAD[{{k + p, 0}, {0, 1}, 1}]}"},
+{"fcstFCLoopBasisExtract-ID66",
+"FCLoopBasisIntegralToPropagators[SFAD[{{-k1,0},{mc^2,1},1}] SFAD[{{-k1-k2,0},{mc^2,1},1}]
+SFAD[{{-k2,0},{0,1},1}] SFAD[{{-k2,0},{0,1},2}] SFAD[{{-k3,0},{mc^2,1},1}] *
+SFAD[{{k1-k3-p1,0},{0,1},1}] SFAD[{{-k1-k2+k3+p1,0},{0,1},1}] SFAD[{{-k1-k2+k3+p1,0},{0,1},2}],{k1,k2,k3},Tally->True,FCE->True]",
+"{{SFAD[{{-k2, 0}, {0, 1}, 1}], 3}, {SFAD[{{-k3, 0}, {mc^2, 1}, 1}], 1}, {SFAD[{{-k1, 0}, {mc^2, 1}, 1}], 1},
+{SFAD[{{k1 - k3 - p1, 0}, {0, 1}, 1}], 1}, {SFAD[{{-k1 - k2 + k3 + p1, 0}, {0, 1}, 1}], 3}, {SFAD[{{-k1 - k2, 0}, {mc^2, 1}, 1}], 1}}"}
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisCreateScalarProducts =

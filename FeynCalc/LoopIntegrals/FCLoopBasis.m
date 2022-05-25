@@ -315,6 +315,7 @@ FCLoopBasisIntegralToPropagators[expr_, lmoms_List, OptionsPattern[]]:=
 		FCPrint[1,"FCLoopBasisIntegralToPropagators: Entering.", FCDoControl->itpVerbose];
 		FCPrint[3,"FCLoopBasisIntegralToPropagators: Entering with ", exp, FCDoControl->itpVerbose];
 
+		exp = FCLoopPropagatorPowersCombine[exp,FCI->True];
 		exp = FeynAmpDenominatorSplit[exp,FCI->True,MomentumExpand->False];
 
 		FCPrint[3,"FCLoopBasisIntegralToPropagators: After FeynAmpDenominatorSplit: ", exp, FCDoControl->itpVerbose];
