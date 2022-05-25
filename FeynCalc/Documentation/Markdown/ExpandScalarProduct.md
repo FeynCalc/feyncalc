@@ -6,7 +6,7 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [Calc](Calc.md), [MomentumExpand](MomentumExpand.md), [MomentumCombine](MomentumCombine.md).
+[Overview](Extra/FeynCalc.md), [Calc](Calc.md), [MomentumExpand](MomentumExpand.md), [MomentumCombine](MomentumCombine.md), [FCVariable](FCVariable.md)
 
 ### Examples
 
@@ -113,12 +113,31 @@ $$\overline{\text{p1}}\cdot \overline{\text{p3}}+\overline{\text{p1}}\cdot \over
 ```mathematica
 CLC[][p1 + p2, p3 + p4, p5 + p6] 
  
-ExpandScalarProduct[%, EpsEvaluate -> True] 
-  
- 
-
+ExpandScalarProduct[%, EpsEvaluate -> True]
 ```
 
 $$\bar{\epsilon }^{\overline{\text{p1}}+\overline{\text{p2}}\;\overline{\text{p3}}+\overline{\text{p4}}\;\overline{\text{p5}}+\overline{\text{p6}}}$$
 
 $$\bar{\epsilon }^{\overline{\text{p1}}\;\overline{\text{p3}}\;\overline{\text{p5}}}+\bar{\epsilon }^{\overline{\text{p1}}\;\overline{\text{p3}}\;\overline{\text{p6}}}+\bar{\epsilon }^{\overline{\text{p1}}\;\overline{\text{p4}}\;\overline{\text{p5}}}+\bar{\epsilon }^{\overline{\text{p1}}\;\overline{\text{p4}}\;\overline{\text{p6}}}+\bar{\epsilon }^{\overline{\text{p2}}\;\overline{\text{p3}}\;\overline{\text{p5}}}+\bar{\epsilon }^{\overline{\text{p2}}\;\overline{\text{p3}}\;\overline{\text{p6}}}+\bar{\epsilon }^{\overline{\text{p2}}\;\overline{\text{p4}}\;\overline{\text{p5}}}+\bar{\epsilon }^{\overline{\text{p2}}\;\overline{\text{p4}}\;\overline{\text{p6}}}$$
+
+Sometimes one would like to have external momenta multiplied by symbolic parameters in the propagators. In this case one should first declare the corresponding variables to be of `FCVariable` type
+
+```mathematica
+DataType[a, FCVariable] = True;
+DataType[b, FCVariable] = True;
+```
+
+```mathematica
+ExpandScalarProduct[SP[P, Q] /. P -> a P1 + b P2] 
+ 
+StandardForm[%] 
+  
+ 
+
+```
+
+$$a \left(\overline{\text{P1}}\cdot \overline{Q}\right)+b \left(\overline{\text{P2}}\cdot \overline{Q}\right)$$
+
+```
+(*a Pair[Momentum[P1], Momentum[Q]] + b Pair[Momentum[P2], Momentum[Q]]*)
+```

@@ -37,3 +37,19 @@ ex=FCLoopPropagatorPowersCombine[%]
 
 
 ex//StandardForm
+
+
+(* ::Text:: *)
+(*The function automatically employs `FeynAmpDenominatorCombine`.*)
+
+
+int=SFAD[{{-k1,0},{mc^2,1},1}]  SFAD[{{-k1-k2+k3+p1,0},{0,1},1}] SFAD[{{-k1-k2+k3+p1,0},{0,1},2}]
+
+
+int//FCI//StandardForm
+
+
+res=FCLoopPropagatorPowersCombine[int]
+
+
+res//FCI//StandardForm

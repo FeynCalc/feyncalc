@@ -146,18 +146,21 @@ $$\frac{1}{2} i \pi ^2 \;\text{B}_0\left(\overline{q}^2,0,0\right) \left(4 \over
 Sometimes one would like to have external momenta multiplied by symbolic parameters in the propagators. In this case one should first declare the corresponding variables to be of `FCVariable` type
 
 ```mathematica
-DataType[z, FCVariable] = True;
-DataType[(1 - z), FCVariable] = True;
+DataType[a, FCVariable] = True;
+DataType[b, FCVariable] = True;
 ```
 
 ```mathematica
-FVD[q, mu] FAD[q, q + z p, q + (1 - z) p]
-TID[%, q] 
+ExpandScalarProduct[SP[P, Q] /. P -> a P1 + b P2] 
+ 
+StandardForm[%] 
   
  
 
 ```
 
-$$\frac{q^{\text{mu}}}{q^2.(z p+q)^2.(-z p+p+q)^2}$$
+$$a \left(\overline{\text{P1}}\cdot \overline{Q}\right)+b \left(\overline{\text{P2}}\cdot \overline{Q}\right)$$
 
-$$\frac{\left(2 z^2-(z-1)^2-4 z+2\right) p^{\text{mu}}}{2 p^2 (1-2 z) (1-z) z q^2.(z p-p+q)^2}-\frac{\left(4 z^2-6 z-(2 z-1)^2+2\right) p^{\text{mu}}}{2 p^2 (1-2 z) (1-z) z q^2.(2 z p-p+q)^2}+-\frac{z p^{\text{mu}}}{2 p^2 (1-2 z) (1-z) q^2.(q-z p)^2}$$
+```
+(*a Pair[Momentum[P1], Momentum[Q]] + b Pair[Momentum[P2], Momentum[Q]]*)
+```

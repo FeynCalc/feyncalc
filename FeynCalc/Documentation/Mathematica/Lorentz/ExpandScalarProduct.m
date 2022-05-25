@@ -20,7 +20,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [Calc](Calc.md), [MomentumExpand](MomentumExpand.md), [MomentumCombine](MomentumCombine.md).*)
+(*[Overview](Extra/FeynCalc.md), [Calc](Calc.md), [MomentumExpand](MomentumExpand.md), [MomentumCombine](MomentumCombine.md), [FCVariable](FCVariable.md)*)
 
 
 (* ::Subsection:: *)
@@ -95,6 +95,19 @@ ExpandScalarProduct[%]
 CLC[][p1+p2,p3+p4,p5+p6]
 
 ExpandScalarProduct[%,EpsEvaluate->True]
+
+
+(* ::Text:: *)
+(*Sometimes one would like to have external momenta multiplied by symbolic parameters in the propagators. In this case one should first declare the corresponding variables to be of `FCVariable` type*)
+
+
+DataType[a, FCVariable] = True;
+DataType[b, FCVariable] = True;
+
+
+ExpandScalarProduct[SP[P,Q]/.P->a P1 +b P2]
+
+StandardForm[%]
 
 
 
