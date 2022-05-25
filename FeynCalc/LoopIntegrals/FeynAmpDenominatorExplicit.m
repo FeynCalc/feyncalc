@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 FeynAmpDenominatorExplicit::usage =
-"FeynAmpDenominatorExplicit[exp] changes each occurence of
+"FeynAmpDenominatorExplicit[exp] changes each occurrence of
 PropagatorDenominator[a,b] in exp into 1/(SPD[a,a]-b^2) and replaces
 FeynAmpDenominator by Identity.";
 

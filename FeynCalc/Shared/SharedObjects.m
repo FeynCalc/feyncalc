@@ -178,10 +178,15 @@ q2^2}$. Translation into FeynCalc internal form is performed by
 FeynCalcInternal.";
 
 FCTopology::usage=
-"FCTopology[id, {prop1, prop2, ...}] denotes a topology with the identifier id
-that is characterized by the propagators {prop1, prop2, ...}. The propagators
-in the list do not necessarily have to form a valid basis, i.e. the basis may
-also be incomplete or overdetermined.";
+"FCTopology[id, {prop1, prop2, ...}, {l1, l2, ...}, {p1, p2, ...}, {kRule1,
+kRule2, ...}, {}] denotes a topology with the identifier id that is
+characterized by the propagators {prop1, prop2, ...}. The propagators in the
+list do not necessarily have to form a valid basis, i.e. the basis may also be
+incomplete or overdetermined. The lists {l1, l2, ...} and {p1, p2, ...} stand
+for the loop and external momenta respectively. Furthermore, {kRule1, kRule2,
+...} denotes replacement rules for kinematic invariants.
+
+The last argument (an empty list) is reserved for future improvements.";
 
 GLI::usage =
 "GLI[id,{indices}] is a generic loop integral, where the indices denote powers
