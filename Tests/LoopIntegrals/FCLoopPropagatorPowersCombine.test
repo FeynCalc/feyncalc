@@ -55,5 +55,11 @@ GenericPropagatorDenominator[-m^2 +
 	Pair[Momentum[p, D], Momentum[p, D]], {1, 1}]]]",
 "FeynAmpDenominator[
 GenericPropagatorDenominator[-m^2 +
-Pair[Momentum[p, D], Momentum[p, D]], {3, 1}]]"}
+Pair[Momentum[p, D], Momentum[p, D]], {3, 1}]]"},
+{"fcstFCLoopPropagatorPowersCombine-ID10",
+"FCLoopPropagatorPowersCombine[SFAD[{{-k1,0},{mc^2,1},1}] SFAD[{{-k1-k2,0},{mc^2,1},1}]
+SFAD[{{-k2,0},{0,1},1}] SFAD[{{-k2,0},{0,1},2}] SFAD[{{-k3,0},{mc^2,1},1}] SFAD[{{k1-k3-p1,0},
+{0,1},1}] SFAD[{{-k1-k2+k3+p1,0},{0,1},1}] SFAD[{{-k1-k2+k3+p1,0},{0,1},2}],FCE->True]",
+"SFAD[{{-k1, 0}, {mc^2, 1}, 1}, {{-k2, 0}, {0, 1}, 3}, {{-k3, 0}, {mc^2, 1}, 1}, {{-k1 - k2, 0},
+{mc^2, 1}, 1}, {{k1 - k3 - p1, 0}, {0, 1}, 1}, {{-k1 - k2 + k3 + p1, 0}, {0, 1}, 3}]"}
 });

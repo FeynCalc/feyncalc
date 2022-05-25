@@ -31,8 +31,9 @@ End[]
 Begin["`FCLoopPropagatorPowersCombine`Private`"]
 
 Options[FCLoopPropagatorPowersCombine] = {
-	FCE -> False,
-	FCI -> False
+	FeynAmpDenominatorCombine	-> True,
+	FCE 						-> False,
+	FCI							-> False
 };
 
 FCLoopPropagatorPowersCombine[expr_, OptionsPattern[]] :=
@@ -45,6 +46,11 @@ FCLoopPropagatorPowersCombine[expr_, OptionsPattern[]] :=
 
 		If[FreeQ2[ex, {StandardPropagatorDenominator, CartesianPropagatorDenominator, GenericPropagatorDenominator}],
 			Return[ex]
+		];
+
+
+		If[	OptionValue[FeynAmpDenominatorCombine],
+			ex= FeynAmpDenominatorCombine[ex,FCI->True]
 		];
 
 		fadsList = Cases2[ex, FeynAmpDenominator];
