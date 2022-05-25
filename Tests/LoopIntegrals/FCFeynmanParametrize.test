@@ -300,5 +300,12 @@ Names -> x, FCReplaceD -> {D -> 4 - 2 ep},
 FinalSubstitutions -> {SPD[p] -> 1}] // Simplify",
 "{((-x[1] - x[2])^(-13/2 + 2*ep)*(-(x[1]*x[2]))^(5/2 - ep)*((15 -
 16*ep + 4*ep^2)*x[1]^2 - 4*(15 - 11*ep + 2*ep^2)*x[1]*x[2] + 4*(6 - 5*ep +
-ep^2)*x[2]^2))/(4*x[2]^(5/2)), ((-I)*Gamma[-5/2 + ep])/Sqrt[Pi],{x[1], x[2]}}"}
+ep^2)*x[2]^2))/(4*x[2]^(5/2)), ((-I)*Gamma[-5/2 + ep])/Sqrt[Pi],{x[1], x[2]}}"},
+{"fcstFCFeynmanParametrize-ID45",
+"FCFeynmanParametrize[FAD[{q, 0}, {q - r, 0}, {q - s, 0}], {q},
+Names -> x, FCReplaceD -> {D -> 4 - 2 ep},
+FeynmanIntegralPrefactor -> \"LoopTools\",
+FinalSubstitutions -> {SPD[r] -> 0, SPD[s] -> 0, SPD[r, s] -> -1/2}]",
+"{(-(x[2]*x[3]))^(-1 - ep)*(x[1] + x[2] + x[3])^(-1 + 2*ep),
+-(Gamma[1 - 2*ep]/Gamma[1 - ep]^2), {x[1], x[2], x[3]}}"}
 });
