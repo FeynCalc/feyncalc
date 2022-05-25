@@ -14,6 +14,7 @@ If you want to have the standard $\frac{1}{(2 \pi)^D}$ normalization or yet anot
 - "MultiLoop2" - like the default value but with an extra $e^{\gamma_E \frac{4-D}{2}}$ per loop
 - "Textbook" - $\frac{1}{(2 \pi)^D}$ per loop
 - "Unity" - no extra prefactor multiplying the integral measure
+- "LoopTools" - overall prefactor $\frac{1}{i (\pi)^{D/2} r_{\Gamma}}$ with $r_{\Gamma} = \frac{\Gamma(3-D/2) \Gamma^2 (D/2-1)}{\Gamma(D-3)}$ at 1 loop. This matches the the normalization of 1-loop integrals in LoopTools. For 2 loops and above an extra $\frac{1}{i \pi^{D/2}}$ is added per loop.
 
 The calculation of $D$-dimensional Minkowski integrals and $D-1$-dimensional Cartesian integrals is straightforward.
 
@@ -300,6 +301,64 @@ Normal@Series[v2[[2]] %, {ep, 0, 0}]
 $$-\frac{1}{5}$$
 
 $$-\frac{4 i}{15}$$
+
+Calculate  the simplest divergent triangle integral from (https://qcdloop.fnal.gov/tridiv1.pdf)
+
+```mathematica
+FCClearScalarProducts[];
+SPD[r] = 0;
+SPD[s] = 0;
+SPD[r, s] = -1/2;
+int = FAD[{q, 0}, {q - r, 0}, {q - s, 0}]
+```
+
+$$\frac{1}{q^2.(q-r)^2.(q-s)^2}$$
+
+```mathematica
+ToPaVe[int, q]
+```
+
+$$i \pi ^2 \;\text{C}_0(0,0,1,0,0,0)$$
+
+```mathematica
+fp = FCFeynmanParametrize[int, {q}, Names -> x, FCReplaceD -> {D -> 4 - 2 ep}, FeynmanIntegralPrefactor -> "LoopTools"]
+```
+
+$$\left\{(-x(2) x(3))^{-\text{ep}-1} (x(1)+x(2)+x(3))^{2 \;\text{ep}-1},-\frac{\Gamma (1-2 \;\text{ep})}{\Gamma (1-\text{ep})^2},\{x(1),x(2),x(3)\}\right\}$$
+
+```mathematica
+intRaw = Integrate[fp[[1]] /. x[2] -> 1, {x[1], 0, Infinity}, Assumptions -> {ep < 0, x[3] >= 0}]
+```
+
+$$-\frac{(-x(3))^{-\text{ep}-1} (x(3)+1)^{2 \;\text{ep}}}{2 \;\text{ep}}$$
+
+Reintroduce the correct $i \eta$-prescription to get the  imaginary part right
+
+```mathematica
+intRes = Integrate[intRaw, {x[3], 0, Infinity}, Assumptions -> {ep < 0}] /. (-1)^(-ep) -> (-1 - I eta)^(-ep)
+```
+
+$$\frac{(-1-i \;\text{eta})^{-\text{ep}} \Gamma (-\text{ep})^2}{2 \;\text{ep} \Gamma (-2 \;\text{ep})}$$
+
+```mathematica
+res = (Series[fp[[2]] intRes, {ep, 0, 0}] // Normal) /. Log[-1 - I eta] -> Log[1] - I Pi
+```
+
+$$\frac{1}{\text{ep}^2}+\frac{i \pi }{\text{ep}}-\frac{\pi ^2}{2}$$
+
+Compare to the known result
+
+```mathematica
+resLit = Series[ScaleMu^(2 ep)/ep^2 1/pp^2 (-pp - I eta)^(-ep), {ep, 0, 0}] /. Log[-pp - I eta] -> Log[pp] - I Pi // Normal
+```
+
+$$\frac{1}{\text{ep}^2 \;\text{pp}^2}+\frac{2 \log (\mu )-\log (\text{pp})+i \pi }{\text{ep} \;\text{pp}^2}+\frac{4 \log ^2(\mu )-4 \log (\mu ) (\log (\text{pp})-i \pi )+(\log (\text{pp})-i \pi )^2}{2 \;\text{pp}^2}$$
+
+```mathematica
+(res - resLit) /. pp | ScaleMu -> 1
+```
+
+$$0$$
 
 #### Lee-Pomeransky representation
 

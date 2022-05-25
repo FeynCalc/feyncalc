@@ -40,6 +40,10 @@ Following values are available
 \\frac{4-D}{2}}$ per loop
 - \"Textbook\" - $\\frac{1}{(2 \\pi)^D}$ per loop
 - \"Unity\" - no extra prefactor multiplying the integral measure
+- \"LoopTools\" - overall prefactor $\\frac{1}{i (\\pi)^{D/2} r_{\\Gamma}}$ with
+$r_{\\Gamma} = \\frac{\\Gamma(3-D/2) \\Gamma^2 (D/2-1)}{\\Gamma(D-3)}$ at 1 loop.
+This matches the the normalization of 1-loop integrals in LoopTools. For 2
+loops and above an extra $\\frac{1}{i \\pi^{D/2}}$ is added per loop.
 
 The calculation of $D$-dimensional Minkowski integrals and $D-1$-dimensional
 Cartesian integrals is straightforward.
@@ -382,6 +386,8 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 					Null,
 					"Multiloop2",
 					pref = Exp[nLoops*EulerGamma*(4-dim)/2] pref,
+					"LoopTools",
+					pref = Gamma[-3 + D]/(Gamma[3 - D/2]*Gamma[-1 + D/2]^2) pref,
 					_,
 					Message[FCFeynmanParametrize::failmsg, "Unknown convention for the Feynman integral prefactor."];
 					Abort[]

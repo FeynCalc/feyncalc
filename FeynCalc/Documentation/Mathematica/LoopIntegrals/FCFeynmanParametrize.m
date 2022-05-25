@@ -32,6 +32,7 @@
 (*- "MultiLoop2" - like the default value but with an extra $e^{\gamma_E \frac{4-D}{2}}$ per loop*)
 (*- "Textbook" - $\frac{1}{(2 \pi)^D}$ per loop*)
 (*- "Unity" - no extra prefactor multiplying the integral measure*)
+(*- "LoopTools" - overall prefactor $\frac{1}{i (\pi)^{D/2} r_{\Gamma}}$ with $r_{\Gamma} = \frac{\Gamma(3-D/2) \Gamma^2 (D/2-1)}{\Gamma(D-3)}$ at 1 loop. This matches the the normalization of 1-loop integrals in LoopTools. For 2 loops and above an extra $\frac{1}{i \pi^{D/2}}$ is added per loop.*)
 
 
 (* ::Text:: *)
@@ -264,6 +265,46 @@ Normal@Series[v1[[2]] %,{ep,0,0}]
 Integrate[Normal[Series[v2[[1]]/.x[1]->1,{ep,0,0}]]/.x[1]->1,{x[2],0,Infinity}]
 
 Normal@Series[v2[[2]] %,{ep,0,0}]
+
+
+(* ::Text:: *)
+(*Calculate  the simplest divergent triangle integral from (https://qcdloop.fnal.gov/tridiv1.pdf)*)
+
+
+FCClearScalarProducts[];
+SPD[r]=0;
+SPD[s]=0;
+SPD[r,s]=-1/2;
+int=FAD[{q,0},{q-r,0},{q-s,0}]
+
+
+ToPaVe[int,q]
+
+
+fp=FCFeynmanParametrize[int,{q},Names->x,FCReplaceD->{D->4-2ep},FeynmanIntegralPrefactor->"LoopTools"]
+
+
+intRaw=Integrate[fp[[1]]/.x[2]->1,{x[1],0,Infinity},Assumptions->{ep<0,x[3]>=0}]
+
+
+(* ::Text:: *)
+(*Reintroduce the correct $i \eta$-prescription to get the  imaginary part right*)
+
+
+intRes=Integrate[intRaw,{x[3],0,Infinity},Assumptions->{ep<0}]/.(-1)^(-ep)->(-1-I eta)^(-ep)
+
+
+res=(Series[fp[[2]]intRes,{ep,0,0}]//Normal)/.Log[-1-I eta]->Log[1]-I Pi
+
+
+(* ::Text:: *)
+(*Compare to the known result*)
+
+
+resLit=Series[ScaleMu^(2ep)/ep^2 1/pp^2 (-pp-I eta)^(-ep),{ep,0,0}]/.Log[-pp-I eta]->Log[pp]-I Pi//Normal
+
+
+(res-resLit)/.pp|ScaleMu->1
 
 
 (* ::Subsubsection:: *)
