@@ -6,6 +6,11 @@ FeynCalc/Examples/*/WIP
 FeynCalc/Examples/WIP
 FeynCalc/Database/*.start
 FeynCalc/Database/*.m
+FeynCalc/Database/*.py
+FeynCalc/Database/*/*.m
+FeynCalc/Database/*/*.config
+FeynCalc/Database/*/*.py
+FeynCalc/Database/*/*.start
 FeynCalc/Database/*.nb
 FeynCalc/Tarcer/*.mx
 FeynCalc/AddOns/*
