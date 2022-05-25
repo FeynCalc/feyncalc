@@ -52,6 +52,7 @@ Options[FCLoopFindTopologies] = {
 	FCE							-> False,
 	FCI 						-> False,
 	FCLoopBasisOverdeterminedQ	-> False,
+	FCLoopIsolate				-> True,
 	FCPrint						-> True,
 	FCVerbose					-> False,
 	FDS							-> True,
@@ -89,6 +90,7 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 		optFactoring 			= OptionValue[Factoring];
 		optNames 				= OptionValue[Names];
 		optFDS					= OptionValue[FDS];
+		optFCLoopIsolate 		= OptionValue[FCLoopIsolate];
 
 		optPreferredTopologies = optPreferredTopologies /. FCTopology[id_,re_]:> FCTopology[topoName[id],re];
 
@@ -264,7 +266,17 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 		(*	The input expression is rewritten as a linear combination of sets of denominators.	*)
 		time=AbsoluteTime[];
 		FCPrint[1,"FCLoopFindTopologies: Extracting unique denominators.", FCDoControl->fcfsopVerbose];
-		tmp = FCLoopIsolate[ex, lmoms, FCI->True, Collecting-> True, Factoring -> False, Numerator -> False, Head -> loopDen];
+		Which[
+				optFCLoopIsolate===True,
+					tmp = FCLoopIsolate[ex, lmoms, FCI->True, Collecting-> optCollecting, Factoring -> False, Numerator -> False, Head -> loopDen],
+				MatchQ[optFCLoopIsolate,_Symbol] && optFCLoopIsolate=!=False,
+					(*If the input is already isolated, we may skip the FCLoopIsolate step.*)
+					loopDen = optFCLoopIsolate;
+					tmp = ex,
+				_,
+					Message[FCLoopFindTopologies::failmsg, "Invalid value of the FCLoopIsolate option."];
+					Abort[]
+		];
 		FCPrint[1, "FCLoopFindTopologies: Done extracting unique denominators, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfsopVerbose];
 
 
