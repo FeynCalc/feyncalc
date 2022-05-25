@@ -22,7 +22,7 @@ This directory contains Mathematica/Bash scripts that help to ensure the quality
 * To generate Markdown documentation from .m-files use
 
     ```
-    export MAKE_DOCU_LOAD_ADDONS="{}"; DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; ./exportToMD.sh math "$DOCU_SOURCE_DIR"/Markdown
+    export MAKE_DOCU_LOAD_ADDONS="{}"; export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; ./exportToMD.sh math "$DOCU_SOURCE_DIR"/Markdown
     ```
     
 * To update the HTML documentation use
@@ -34,7 +34,7 @@ This directory contains Mathematica/Bash scripts that help to ensure the quality
 * To update the TeX documentation use
 
     ```
-    export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; export DOCU_MANUAL_NAME="FeynCalcManual"; ./generateTeX.sh /media/Data/Projects/VS/feyncalc-manual/
+    export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; export DOCU_MANUAL_NAME="FeynCalcManual"; export DOCU_INDEX_FILE=$DOCU_SOURCE_DIR/Markdown/Extra/FeynCalc.md; ./generateTeX.sh /media/Data/Projects/VS/feyncalc-manual/
     ```        
     
 * To build the TeX documentation use

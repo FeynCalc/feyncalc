@@ -77,7 +77,6 @@ if [ -z ${allFiles} ]; then
 fi
 
 parallel -j "$nThreads" -u --eta --bar "$MATH -nopromt -script $scriptDIR/ExportToMD.m  -run loadAddOns='\"$requestedAddOns\"' -run outputDir='\"$2\"'" -run inputNB='\"{}\"'  ::: ${allFiles[@]}
-exit;
 $scriptDIR/cleanUpMarkdown.sh $OUTDIR
 $scriptDIR/pdfToSvg.sh $OUTDIR/img/
 #-------------------------------------------------------------------------------

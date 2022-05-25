@@ -11,11 +11,13 @@
 
 # Usage examples
 
-# export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; export DOCU_MANUAL_NAME="FeynCalcManual"; ./generateTeX.sh /media/Data/Projects/VS/feyncalc-manual/
+# export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; export DOCU_MANUAL_NAME="FeynCalcManual"; export DOCU_INDEX_FILE=$DOCU_SOURCE_DIR/Markdown/Extra/FeynCalc.md; ./generateTeX.sh /media/Data/Projects/VS/feyncalc-manual/
 
-# export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/AddOns/FeynHelpers/Documentation"; export DOCU_MANUAL_NAME="FeynHelpersManual"; ./generateTeX.sh /media/Data/Projects/VS/feynhelpers-manual/
+# export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/AddOns/FeynHelpers/Documentation"; export DOCU_MANUAL_NAME="FeynHelpersManual"; export DOCU_INDEX_FILE=$DOCU_SOURCE_DIR/Markdown/Extra/FeynHelpers.md; ./generateTeX.sh /media/Data/Projects/VS/feynhelpers-manual/
 
-# export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; export DOCU_MANUAL_NAME="FeynCalcManual"; ./generateTeX.sh "$DOCU_SOURCE_DIR/Markdown/CSP.md" /media/Data/Projects/VS/feyncalc-manual/
+# export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; export DOCU_MANUAL_NAME="FeynCalcManual"; export DOCU_INDEX_FILE=$DOCU_SOURCE_DIR/Markdown/Extra/FeynCalc.md; ./generateTeX.sh "$DOCU_SOURCE_DIR/Markdown/CSP.md" /media/Data/Projects/VS/feyncalc-manual/pages/
+
+# export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/AddOns/FeynHelpers/Documentation"; export DOCU_MANUAL_NAME="FeynHelpersManual"; export DOCU_INDEX_FILE=$DOCU_SOURCE_DIR/Markdown/Extra/FeynHelpers.md; ./generateTeX.sh "$DOCU_SOURCE_DIR/Markdown/Extra/Cite.md" /media/Data/Projects/VS/feynhelpers-manual/pages/
 
 
 if [[ -z "${DOCU_SOURCE_DIR}" ]]; then
@@ -51,11 +53,22 @@ if [[ $# -eq 2 ]] ; then
     echo "Creating TeX file for $1"
     output="$2"/$(basename -s .md "$1")
     output=$(echo $output | sed 's/\$/Dollar/g')
-    echo $output
+    #echo $output
     texname=$(basename -s .md "$1")
     texname=${texname/$/Dollar}
 
-    cat <<EOF > template.latex
+    
+
+
+    pandoc "$1" -f markdown -t latex  --lua-filter="$FILTERSDIR"/dmath.lua --lua-filter="$FILTERSDIR"/svg2pdf.lua --lua-filter="$FILTERSDIR"/allowbreak.lua --lua-filter="$FILTERSDIR"/href.lua  --lua-filter="$FILTERSDIR"/fixlabels.lua --metadata=subtitle:"$texname" --default-image-extension=pdf --top-level-division=chapter --template=template.latex -o "$output".tex;
+
+    
+else
+
+mkdir -p "$OUTDIR"/"$PAGESDIR"
+mkdir -p "$OUTDIR"/"$IMGDIR"
+
+cat <<EOF > template.latex
 % !TeX program = pdflatex
 % !TeX root = \$subtitle\$.tex
 
@@ -64,13 +77,6 @@ if [[ $# -eq 2 ]] ; then
 \$body\$
 \end{document}
 EOF
-    pandoc "$1" -f markdown -t latex  --lua-filter="$FILTERSDIR"/dmath.lua --lua-filter="$FILTERSDIR"/svg2pdf.lua --lua-filter="$FILTERSDIR"/allowbreak.lua --lua-filter="$FILTERSDIR"/href.lua  --lua-filter="$FILTERSDIR"/fixlabels.lua --metadata=subtitle:"$texname" --default-image-extension=pdf --top-level-division=chapter --template=template.latex -o "$output".tex;
-
-    #rm -rf template.latex;
-else
-
-mkdir -p "$OUTDIR"/"$PAGESDIR"
-mkdir -p "$OUTDIR"/"$IMGDIR"
 
  
 allFilesRaw=$(find $SOURCEDIR -type f -name '*.md' -print)
@@ -92,5 +98,5 @@ fi
 
 parallel -j $nThreads -u --eta --bar "$scriptDIR/generateTeX.sh {} $OUTDIR/$PAGESDIR/" ::: ${allFiles[@]};
 $scriptDIR/generateSubfiles.sh math "$OUTDIR"
-
+rm -rf template.latex;
 fi
