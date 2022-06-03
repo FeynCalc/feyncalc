@@ -105,6 +105,8 @@ FCFeynmanProjectivize[ex_, var_, OptionsPattern[]] :=
 
 		check = Simplify[la^Length[xVars] (ex /. cru),	Assumptions -> Join[optAssumptions, {la > 0}]];
 
+		FCPrint[3,"FCFeynmanProjectivize: Check: " , check, FCDoControl->fcfprVerbose];
+
 		If[	FreeQ[check, la],
 
 			FCPrint[0,"FCFeynmanProjectivize: The integral is already projective, no further transformations are required.", FCDoControl->fcfprVerbose];
