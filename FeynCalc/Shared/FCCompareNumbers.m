@@ -164,7 +164,7 @@ FCCompareNumbers[xRaw_/;Head[xRaw]=!=List,yRaw_/;Head[yRaw]=!=List,OptionsPatter
 
 		FCPrint[3, "FCCompareNumbers: diff after calculating relative differences: ", diff, FCDoControl->fccnVerbose];
 
-		diff = diff /. tmpHead[0.|0]->0 /. tmpHead[aa_?NumericQ]/; aa!=0. :> optHead[-N[Log[10,aa]]];
+		diff = diff /. tmpHead[nn_]/;PossibleZeroQ[nn]->0 /. tmpHead[aa_?NumericQ]/; aa!=0. :> optHead[-N[Log[10,aa]]];
 
 		FCPrint[3, "FCCompareNumbers: diff after calculating agreeing significant digits: ", diff, FCDoControl->fccnVerbose];
 

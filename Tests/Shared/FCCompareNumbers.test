@@ -66,5 +66,7 @@ I)*coeffO^2*parX^2*parZ,FCVerbose->-1]", "0"},
 2.3099945982277887*mg*Log[mg] + 0.27049953511783786*mg^2*Log[mg] +
 0.11708585293244765*mg^3*Log[mg] +
 0.13516435986159167*mg^2*Log[mg]^2, DigitCount -> 4,
-FCVerbose -> -1]","0"}
+FCVerbose -> -1]","0"},
+{"fcstFCCompareNumbers-ID10","FCCompareNumbers[44.4132197952625489,
+44.4132197952625489`17.64751225906935, FCVerbose -> -1]","0"}
 });
