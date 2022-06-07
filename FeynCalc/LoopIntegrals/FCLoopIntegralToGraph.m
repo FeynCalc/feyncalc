@@ -228,7 +228,8 @@ FCLoopIntegralToGraph[expr_/; FreeQ[{GLI,FCTopology},expr], lmomsRaw_List, Optio
 		time=AbsoluteTime[];
 		FCPrint[1,"FCLoopIntegralToGraph: Calling FCLoopIntegralToPropagators.", FCDoControl->lbtgVerbose];
 
-		props = FCLoopIntegralToPropagators[ex, lmoms, FCI->True, Tally->True];
+		(*	Preserve the original ordering of propagators if the input is a list! *)
+		props = FCLoopIntegralToPropagators[ex, lmoms, FCI->True, Tally->True, Sort->(Head[ex]=!=List)];
 		FCPrint[1,"FCLoopIntegralToGraph: FCLoopIntegralToPropagators done, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->lbtgVerbose];
 		FCPrint[3, "FCLoopIntegralToGraph: After FCLoopIntegralToPropagators: ", props, FCDoControl->lbtgVerbose];
 

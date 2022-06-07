@@ -53,6 +53,10 @@ FCLoopIntegralToGraph[FAD[{q-k1},k1,q-k2,k2,{k2-k3,mb},{k1-k3,mb}],{k1,k2,k3}]
 FAD[q-k1,k1,q-k2,k2,{k2-k3,mb},{k1-k3,mb}]
 
 
+(* ::Text:: *)
+(*If the input is given as a list of propagators, their ordering will be preserved when constructing the graph*)
+
+
 FCLoopIntegralToGraph[FCTopology[topo1,{FAD[q-k1],FAD[k1],FAD[q-k2],FAD[k2],
 FAD[{k2-k3,mb}],FAD[{k1-k3,mb}]},{k1,k2,k3},{q},{},{}]]
 
