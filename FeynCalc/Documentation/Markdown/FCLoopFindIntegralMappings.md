@@ -8,6 +8,12 @@ It is also possible to invoke the function as `FCLoopFindIntegralMappings[{GLI[.
 
 Notice that in this case the value of the option `FinalSubstitutions` is ignored, as replacement rules will be extracted directly from the definition of the topology.
 
+The default output is a list of two lists. The first list contains mapping rules between different loop integrals, while the second list provides all unique master integrals extracted from the input.
+
+An alternative output mode is activated when the option `List` is set to `True`. In this case the output is a list of lists, where each list contains master integrals that were identified to be identical.
+
+The option `PreferredIntegrals` can be used to enforce the mapping onto a preferred set of master integral. Notice that the final result will only contain those preferred integrals, that are actually present in the input.
+
 ### See also
 
 [Overview](Extra/FeynCalc.md), [FCTopology](FCTopology.md), [GLI](GLI.md), [FCLoopToPakForm](FCLoopToPakForm.md), [FCLoopPakOrder](FCLoopPakOrder.md), [FCLoopFindTopologyMappings](FCLoopFindTopologyMappings.md)
@@ -84,7 +90,7 @@ FCLoopFindIntegralMappings[glis, topos, List -> True]
 
 $$\left\{\left\{G^{\text{topo1}}(1,1),G^{\text{topo2}}(1,1)\right\},\left\{G^{\text{topo1}}(1,2),G^{\text{topo1}}(2,1)\right\},\left\{G^{\text{topo2}}(2,2)\right\}\right\}$$
 
-In practice, one usually has a list of preferred integrals onto which one would like to map the occurring master integrals. Such integrals can be specified via the `PreferredIntegrals` options
+In practice, one usually has a list of preferred integrals onto which one would like to map the occurring master integrals. Such integrals can be specified via the `PreferredIntegrals` option
 
 ```mathematica
 FCLoopFindIntegralMappings[glis, topos, PreferredIntegrals -> {GLI[topo2, {1, 1}], 

@@ -60,7 +60,8 @@ whiteListNames = {
 	FeynCalc`NPointTo4Point`Private`getDet,
 	FeynCalc`SimplifyPolyLog`Private`simplifyArgument,
 	FeynCalc`FCApart`Private`pfracRaw,
-	FeynCalc`Package`momentumRoutingDenner
+	FeynCalc`Package`momentumRoutingDenner,
+	FeynCalc`FCLoopFindIntegralMappings`Private`makeMappingRules
 };
 
 standardSetAssociation = {};
@@ -104,6 +105,8 @@ FCUseCache[fcFunc_, args_List, opts_List: {}] :=
 			fcFunc === FeynCalc`FCApart`Private`pfracRaw,
 				depArgs = Hash[standardSet],
 			fcFunc === FeynCalc`Package`momentumRoutingDenner,
+				depArgs = Hash[standardSet],
+			fcFunc === FeynCalc`FCLoopFindIntegralMappings`Private`makeMappingRules,
 				depArgs = Hash[standardSet],
 			True,
 				Message[FCUseCache::blacklist,fcFunc];

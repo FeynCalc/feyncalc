@@ -30,7 +30,19 @@ FCLoopFindIntegralMappings[{FCTopology[...], ...}].
 
 Notice that in this case the value of the option FinalSubstitutions is
 ignored, as replacement rules will be extracted directly from the definition
-of the topology.";
+of the topology.
+
+The default output is a list of two lists. The first list contains mapping
+rules between different loop integrals, while the second list provides all
+unique master integrals extracted from the input.
+
+An alternative output mode is activated when the option List is set to True.
+In this case the output is a list of lists, where each list contains master
+integrals that were identified to be identical.
+
+The option PreferredIntegrals can be used to enforce the mapping onto a
+preferred set of master integral. Notice that the final result will only
+contain those preferred integrals, that are actually present in the input.";
 
 FCLoopFindIntegralMappings::failmsg =
 "Error! FCLoopFindIntegralMappings has encountered a fatal problem and must abort the computation. \
@@ -42,6 +54,7 @@ End[]
 Begin["`FCLoopFindIntegralMappings`Private`"]
 
 fcfpmVerbose::usage = "";
+lhs::usage ="";
 
 Options[FCLoopFindIntegralMappings] = {
 	CharacteristicPolynomial	-> Function[{U,F}, U+F],
@@ -99,6 +112,9 @@ FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 
 		FCPrint[3, "FCLoopFindIntegralMappings: Output of FCLoopToPakForm: ", pakFormInts, FCDoControl->fcfpmVerbose];
 
+
+		time=AbsoluteTime[];
+		FCPrint[1, "FCLoopFindIntegralMappings: Extracting the mappings.", FCDoControl -> fcfpmVerbose];
 		(* 2nd element are the grouped mappings *)
 		res = Reap[(Sow[Sequence @@ #] & /@ pakFormInts), _][[2]];
 
@@ -113,16 +129,27 @@ FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 			Message[FCLoopFindIntegralMappings::failmsg,"Something went wrong while trying to process the output of FCLoopToPakForm."];
 			Abort[]
 		];
+		FCPrint[1, "FCLoopFindIntegralMappings: Done extracting the mappings, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfpmVerbose];
 
 		FCPrint[3, "FCLoopFindIntegralMappings: Preliminary result: ", res, FCDoControl->fcfpmVerbose];
 
-		(*TODO Filter out preferred masters that do not occur here*)
+		time=AbsoluteTime[];
+		FCPrint[1, "FCLoopFindIntegralMappings: Removing irrelevant integrals from the preferred list.", FCDoControl -> fcfpmVerbose];
+		res = Map[
+			If[	SelectFree[#,optPreferredIntegrals]==={},
+				Unevaluated[Sequence[]],
+				#]&,res];
+		FCPrint[1, "FCLoopFindIntegralMappings: Done removing irrelevant integrals, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfpmVerbose];
+
+		FCPrint[3, "FCLoopFindIntegralMappings: Preliminary result without irrelevant integrals: ", res, FCDoControl->fcfpmVerbose];
 
 		(*Only return replacement rules if the input is a list of GLIs and the List option is set to False*)
 		If[	!OptionValue[List] && MatchQ[expr,{(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..}],
 
-				res = makeMappingRules[#,optPreferredIntegrals]&/@res;
+				time=AbsoluteTime[];
+				FCPrint[1, "FCLoopFindIntegralMappings: Creating final mapping rules.", FCDoControl -> fcfpmVerbose];
 
+				res = Map[FCUseCache[makeMappingRules,{#,optPreferredIntegrals}, {}]&,res];
 				FCPrint[3, "FCLoopFindIntegralMappings: After makeMappingRules: ", res, FCDoControl->fcfpmVerbose];
 
 				If[	!FreeQ[res,makeMappingRules],
@@ -132,8 +159,8 @@ FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 				res= Flatten[res];
 				finalMasters = Union[Last/@ res];
 				res = res/. Rule[a_,a_] :> Unevaluated[Sequence[]];
-				res = {res,finalMasters}
-
+				res = {res,finalMasters};
+				FCPrint[1, "FCLoopFindIntegralMappings: Done creating mapping rules, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfpmVerbose];
 		];
 
 		If[	OptionValue[FCE],
@@ -146,17 +173,16 @@ FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 		res
 	];
 
-(*TODO Memoization*)
-makeMappingRules[ints_List, (*preferredIntegrals*)_List]:=
+makeMappingRules[ints_List, (*preferredIntegrals*)_List, {}]:=
 	{ints[[1]] -> ints[[1]]}/; Length[ints]===1;
 
-makeMappingRules[ints_List, preferredIntegrals_List/; preferredIntegrals=!={}]:=
+makeMappingRules[ints_List, preferredIntegrals_List/; preferredIntegrals=!={}, {}]:=
 	Rule[#, First[ints]]&/@Rest[ints]/; Length[ints]>1 && FreeQ2[ints,preferredIntegrals];
 
-makeMappingRules[ints_List, {}]:=
+makeMappingRules[ints_List, {}, {}]:=
 	Rule[#, First[ints]]&/@Rest[ints]/; Length[ints]>1;
 
-makeMappingRules[ints_List, preferredIntegrals_List/; preferredIntegrals=!={}]:=
+makeMappingRules[ints_List, preferredIntegrals_List/; preferredIntegrals=!={}, {}]:=
 	(
 	lhs = First[SelectNotFree[ints,preferredIntegrals]];
 	Rule[#,lhs]&/@ (SelectFree[ints,lhs])
