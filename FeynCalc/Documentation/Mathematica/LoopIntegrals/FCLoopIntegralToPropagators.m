@@ -4,11 +4,11 @@
 
 
 (* ::Section:: *)
-(*FCLoopBasisIntegralToPropagators*)
+(*FCLoopIntegralToPropagators*)
 
 
 (* ::Text:: *)
-(*`FCLoopBasisIntegralToPropagators[int, {q1, q2, ...}]` is an auxiliary function that converts the loop integral `int` that depends on the loop momenta `q1, q2, ...` to a list of propagators and scalar products. *)
+(*`FCLoopIntegralToPropagators[int, {q1, q2, ...}]` is an auxiliary function that converts the loop integral `int` that depends on the loop momenta `q1, q2, ...` to a list of propagators and scalar products.*)
 
 
 (* ::Text:: *)
@@ -20,7 +20,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md)*)
+(*[Overview](Extra/FeynCalc.md), [FCLoopPropagatorsToTopology](FCLoopPropagatorsToTopology.md)*)
 
 
 (* ::Subsection:: *)
@@ -29,12 +29,12 @@
 
 SFAD[p1]
 
-FCLoopBasisIntegralToPropagators[%,{p1}]
+FCLoopIntegralToPropagators[%,{p1}]
 
 
 SFAD[p1,p2]
 
-FCLoopBasisIntegralToPropagators[%,{p1,p2}]
+FCLoopIntegralToPropagators[%,{p1,p2}]
 
 
 (* ::Text:: *)
@@ -44,14 +44,14 @@ FCLoopBasisIntegralToPropagators[%,{p1,p2}]
 int=SPD[q,p] SFAD[q,q-p,q-p]
 
 
-FCLoopBasisIntegralToPropagators[int,{q}]
+FCLoopIntegralToPropagators[int,{q}]
 
 
 (* ::Text:: *)
 (*However, setting the option `Tally` to `True` will count the powers of the appearing propagators.*)
 
 
-FCLoopBasisIntegralToPropagators[int,{q},Tally->True]
+FCLoopIntegralToPropagators[int,{q},Tally->True]
 
 
 (* ::Text:: *)
@@ -61,4 +61,4 @@ FCLoopBasisIntegralToPropagators[int,{q},Tally->True]
 int=SFAD[{{-k1,0},{mc^2,1},1}] SFAD[{{-k1-k2,0},{mc^2,1},1}]SFAD[{{-k2,0},{0,1},1}] SFAD[{{-k2,0},{0,1},2}] SFAD[{{-k3,0},{mc^2,1},1}] *SFAD[{{k1-k3-p1,0},{0,1},1}] SFAD[{{-k1-k2+k3+p1,0},{0,1},1}] SFAD[{{-k1-k2+k3+p1,0},{0,1},2}]
 
 
-FCLoopBasisIntegralToPropagators[int,{k1,k2,k3},Tally->True]
+FCLoopIntegralToPropagators[int,{k1,k2,k3},Tally->True]

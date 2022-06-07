@@ -116,7 +116,7 @@ FCLoopCreateRulesToGLI[topoRaw_FCTopology, OptionsPattern[]] :=
 
 		(*props = props /. FeynAmpDenominator[g_GenericPropagatorDenominator] :> gfad[FeynAmpDenominator[g]];*)
 
-		inverseProps = FCLoopBasisPropagatorsToTopology[props,FCI->True,ExpandScalarProduct->True];
+		inverseProps = FCLoopPropagatorsToTopology[props,FCI->True,ExpandScalarProduct->True];
 
 		FCPrint[3,"FCLoopCreateRulesToGLI: List of the inverse propagators: ", inverseProps, FCDoControl->crtgVerbose];
 

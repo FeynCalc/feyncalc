@@ -288,10 +288,8 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
  - [FCLoopBasisGetSize](../FCLoopBasisGetSize.md) - returns the number of propagators in a topology
  - [FCLoopBasisIncompleteQ](../FCLoopBasisIncompleteQ.md) - checks if the propagators of a loop integral do not form a basis
  - [FCLoopBasisOverdeterminedQ](../FCLoopBasisOverdeterminedQ.md) - checks if the propagators of a loop integral are linearly dependent
- - [FCLoopBasisPropagatorsToTopology](../FCLoopBasisPropagatorsToTopology.md) - auxiliary function that generates a list of propagators to describe a topology
  - [FCLoopBasisSplit](../FCLoopBasisSplit.md) - checks if the loop integral factorizes into a product of separate integrals
  - [FCLoopBasisExtract](../FCLoopBasisExtract.md) - auxiliary function that extracts the scalar products from a loop integral
- - [FCLoopBasisIntegralToPropagators](../FCLoopBasisIntegralToPropagators.md) - auxiliary function that converts a loop integral into a list of propagators
  - [FCLoopCanonicalize](../FCLoopCanonicalize.md) - auxiliary function that canonicalizes free Lorentz indices of 1-loop integrals
  - [FCLoopCreateRulesToGLI](../FCLoopCreateRulesToGLI.md) - rewrites scalar products as linear combinations of [GLI](../GLI.md)s with negative indices
  - [FCLoopEikonalPropagatorFreeQ](../FCLoopEikonalPropagatorFreeQ.md) - checks if the integral contains eikonal propagators
@@ -301,6 +299,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
  - [FCLoopGLIDifferentiate](../FCLoopGLIDifferentiate.md) - differentiates [GLI](../GLI.md)s with respect to a scalar variable.
  - [FCLoopGLIExpand](../FCLoopGLIExpand.md) - series expansion of expressions with [GLI](../GLI.md)s with respect to a scalar variable
  - [FCLoopIBPReducableQ](../FCLoopIBPReducableQ.md) - checks if the integral contains propagators raised to integer powers
+ - [FCLoopIntegralToPropagators](../FCLoopIntegralToPropagators.md) - auxiliary function that converts a loop integral into a list of propagators
  - [FCLoopIsolate](../FCLoopIsolate.md) - wraps loop integrals into specified heads
  - [FCLoopMixedIntegralQ](../FCLoopMixedIntegralQ.md) - checks if the integral depends on both $4$-vectors and $3$-vectors
  - [FCLoopMixedToCartesianAndTemporal](../FCLoopMixedToCartesianAndTemporal.md) - eliminates the dependence on $4$-vectors by trading them for temporal components and $3$-vectors
@@ -308,6 +307,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
  - [FCLoopPakScalelessQ](../FCLoopPakScalelessQ.md), [FCLoopScalelessQ](../FCLoopScalelessQ.md) - detects scaleless loop integrals
  - [FCLoopPropagatorPowersCombine](../FCLoopPropagatorPowersCombine.md) - combines same propagators into one raised to the corresponding integer power
  - [FCLoopPropagatorPowersExpand](../FCLoopPropagatorPowersExpand.md) - rewrites propagators raised to integer powers as products of propagators
+ - [FCLoopPropagatorsToTopology](../FCLoopPropagatorsToTopology.md) - auxiliary function that generates a list of propagators to describe a topology
  - [FCLoopSamePropagatorHeadsQ](../FCLoopSamePropagatorHeadsQ.md) - checks if the integral contains different types of propagators
  - [FCLoopRemoveNegativePropagatorPowers](../FCLoopRemoveNegativePropagatorPowers.md) - rewrites propagators rasied to negative integer powers as numerators
  - [FCLoopSelectTopology](../FCLoopSelectTopology.md) - selects topologies belonging for the given `GLI`s

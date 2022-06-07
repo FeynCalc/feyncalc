@@ -1,0 +1,395 @@
+
+
+(* :Title: FCLoopIntegralToPropagators.test							*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2022 Rolf Mertig
+	Copyright (C) 1997-2022 Frederik Orellana
+	Copyright (C) 2014-2022 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for
+				FCLoopIntegralToPropagators		  					*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopIntegralToPropagators =
+({
+{"fcstFCLoopIntegralToPropagators-ID1",
+"FCLoopIntegralToPropagators[FCI[SFAD[p1]],{p1}]",
+"{FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p1, \
+D], 0, 0, {1, 1}]]}"},
+{"fcstFCLoopIntegralToPropagators-ID2",
+"FCLoopIntegralToPropagators[x FCI[SFAD[p1]],{p1}]",
+"{FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p1, \
+D], 0, 0, {1, 1}]]}"},
+{"fcstFCLoopIntegralToPropagators-ID3",
+"FCLoopIntegralToPropagators[FCI[SFAD[p1,p2]],{p1,p2}]",
+"{FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p2, D], 0, \
+0, {1, 1}]]}"},
+{"fcstFCLoopIntegralToPropagators-ID4",
+"FCLoopIntegralToPropagators[FCI[SFAD[p1,p2]],{p2}]",
+"{FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p2, \
+D], 0, 0, {1, 1}]]}"},
+{"fcstFCLoopIntegralToPropagators-ID5",
+"FCLoopIntegralToPropagators[FCI[SPD[p1,p2]],{p2}]",
+"{FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[p1, D], Momentum[p2, D]], 0, {-1, 1}]]}"},
+{"fcstFCLoopIntegralToPropagators-ID6",
+"FCLoopIntegralToPropagators[FCI[ty CFAD[q,q-p,q-p]],{q}]",
+"{FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[q, -1 + D],
+0, 0, {1, -1}]], FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[-p + q, -1 + D], 0, 0, {1, -1}]]}"},
+{"fcstFCLoopIntegralToPropagators-ID7",
+"FCLoopIntegralToPropagators[FCI[CSP[q,p]CFAD[q,q-p,q-p]],{q}]",
+"{FeynAmpDenominator[
+CartesianPropagatorDenominator[0,
+CartesianPair[CartesianMomentum[p], CartesianMomentum[q]],
+0, {-1, -1}]],
+FeynAmpDenominator[
+CartesianPropagatorDenominator[CartesianMomentum[q, -1 + D], 0,
+0, {1, -1}]],
+FeynAmpDenominator[
+CartesianPropagatorDenominator[CartesianMomentum[-p + q, -1 + D],
+0, 0, {1, -1}]]}"},
+{"fcstFCLoopIntegralToPropagators-ID8",
+"FCLoopIntegralToPropagators[FCI[CSPD[q,p]CFAD[q,q-p,q-p]],{q}]",
+	"{FeynAmpDenominator[CartesianPropagatorDenominator[0, CartesianPair[CartesianMomentum[p, -1 + D],
+	CartesianMomentum[q, -1 + D]], 0, {-1, -1}]],
+	FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[q, -1 + D],
+	0, 0, {1, -1}]], FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[-p + q, -1 + D], 0, 0, {1, -1}]]}"},
+{"fcstFCLoopIntegralToPropagators-ID9",
+"FCLoopIntegralToPropagators[FCI[SFAD[q,q-p,q-p]],{q}]",
+"{FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], 0, 0, {1, 1}]],
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[-p + q, D], 0, 0, {1, 1}]]}"},
+{"fcstFCLoopIntegralToPropagators-ID10",
+"FCLoopIntegralToPropagators[FCI[SPD[q,p] SFAD[q,q-p,q-p]],{q}]",
+	"{FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, D], Momentum[q, D]], 0, {-1, 1}]],
+	FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], 0, 0, {1, 1}]],
+	FeynAmpDenominator[StandardPropagatorDenominator[Momentum[-p + q, D], 0, 0, {1, 1}]]}"},
+{"fcstFCLoopIntegralToPropagators-ID11",
+"FCLoopIntegralToPropagators[FCI@CFAD[{k,0,4},l-k],{k}]",
+"{FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[k, -1 + D], 0, 0, {1, -1}]],
+FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[-k + l, -1 + D], 0, 0, {1, -1}]]}"},
+{"fcstFCLoopIntegralToPropagators-ID12",
+"FCLoopIntegralToPropagators[FCI[FAD[q,{q,0,3}]],{q}]",
+"{FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], 0, 0, {1, 1}]]}"},
+{"fcstFCLoopIntegralToPropagators-ID13",
+"FCLoopIntegralToPropagators[FCI[SPD[q,p] SFAD[q,q-p,q-p] \
+SFAD[q-p]],{q},Tally\[Rule]True]",
+"{{FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], 0, 0, {1, 1}]], 1},
+{FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, D], Momentum[q, D]],
+0, {-1, 1}]], 1}, {FeynAmpDenominator[StandardPropagatorDenominator[Momentum[-p + q, D],
+0, 0, {1, 1}]], 3}}"},
+{"fcstFCLoopIntegralToPropagators-ID14",
+"FCLoopIntegralToPropagators[FCI[SPD[q,p] SFAD[q,q-p,q-p] \
+SFAD[q-p]],{q},Tally\[Rule]True,FCE->True]",
+"{{SFAD[{{q, 0}, {0, 1}, 1}], 1}, {SFAD[{{0, p . q},
+{0, 1}, -1}], 1}, {SFAD[{{-p + q, 0}, {0, 1}, 1}], 3}}"},
+{"fcstFCLoopIntegralToPropagators-ID15",
+"FCLoopIntegralToPropagators[FCI[SPD[q,p] FAD[q,q-p,q-p] \
+FAD[q-p]],{q},Tally\[Rule]True,FCE\[Rule]True]",
+"{{SFAD[{{q, 0}, {0, 1}, 1}], 1}, {SFAD[{{0, p.q}, {0, 1}, -1}],
+1}, {SFAD[{{-p + q, 0}, {0, 1}, 1}], 3}}"},
+{"fcstFCLoopIntegralToPropagators-ID16",
+"FCLoopIntegralToPropagators[FCI[SPD[q,p] FAD[q,q-p,q-p] \
+FAD[q-p]],{q},Tally\[Rule]True,FCE\[Rule]True]",
+"{{SFAD[{{q, 0}, {0, 1}, 1}], 1}, {SFAD[{{0, p.q}, {0, 1}, -1}],
+1}, {SFAD[{{-p + q, 0}, {0, 1}, 1}], 3}}"},
+{"fcstFCLoopIntegralToPropagators-ID17",
+"FCLoopIntegralToPropagators[FCI[SPD[q,p] FAD[q,q-p,q-p] \
+SFAD[q-p]],{q},Tally\[Rule]True,FCE\[Rule]True]",
+"{{SFAD[{{q, 0}, {0, 1}, 1}], 1}, {SFAD[{{0, p.q}, {0, 1}, -1}],
+1}, {SFAD[{{-p + q, 0}, {0, 1}, 1}], 3}}"},
+{"fcstFCLoopIntegralToPropagators-ID18",
+"FCLoopIntegralToPropagators[FCI[SPD[q,p]FAD[q,q-p,q-p] \
+SFAD[q-p]],{q},Tally\[Rule]True,FCE\[Rule]True]",
+"{{SFAD[{{q, 0}, {0, 1}, 1}], 1}, {SFAD[{{0, p.q}, {0, 1}, -1}],
+1}, {SFAD[{{-p + q, 0}, {0, 1}, 1}], 3}}"},
+{"fcstFCLoopIntegralToPropagators-ID19",
+"FCLoopIntegralToPropagators[FAD[p]SFAD[p],{p},FCE\[Rule]True]",
+"{SFAD[{{p, 0}, {0, 1}, 1}]}"},
+{"fcstFCLoopIntegralToPropagators-ID20",
+"FCLoopIntegralToPropagators[SPD[p,q]^2 \
+FCI[SPD[p,q]]SFAD[q,p-q],{q},FCE->True]",
+"{SFAD[{{0, p . q}, {0, 1}, -1}], SFAD[{{p - q, 0}, {0, 1}, 1}], \
+SFAD[{{q, 0}, {0, 1}, 1}]}"},
+{"fcstFCLoopIntegralToPropagators-ID21",
+"FCLoopIntegralToPropagators[SPD[p,q]^2 \
+FCI[SPD[p,q]]SFAD[q,p-q]^6,{q},FCE->True]",
+"{SFAD[{{0, p . q}, {0, 1}, -1}], SFAD[{{p - q, 0}, {0, 1}, 1}], \
+SFAD[{{q, 0}, {0, 1}, 1}]}"},
+{"fcstFCLoopIntegralToPropagators-ID22",
+"FCLoopIntegralToPropagators[SPD[p,q]^2 \
+FCI[SPD[p,q]]SFAD[q,p-q],{q},Tally\[Rule]True,FCE->True]",
+"{{SFAD[{{q, 0}, {0, 1}, 1}], 1}, {SFAD[{{0, p.q}, {0, 1}, -1}],
+3}, {SFAD[{{p - q, 0}, {0, 1}, 1}], 1}}"},
+{"fcstFCLoopIntegralToPropagators-ID23",
+"FCLoopIntegralToPropagators[SPD[p,q]^2 \
+FCI[SPD[p,q]]SFAD[q,p-q]^6,{q},Tally\[Rule]True,FCE->True]",
+"{{SFAD[{{q, 0}, {0, 1}, 1}], 6}, {SFAD[{{0, p.q}, {0, 1}, -1}],
+3}, {SFAD[{{p - q, 0}, {0, 1}, 1}], 6}}"},
+{"fcstFCLoopIntegralToPropagators-ID24",
+"FCLoopIntegralToPropagators[x  FCI[SFAD[p1]], {p1}, Rest -> True,
+FCE -> True]",
+"{{SFAD[{{p1, 0}, {0, 1}, 1}]}, x}"},
+{"fcstFCLoopIntegralToPropagators-ID25",
+"FCLoopIntegralToPropagators[x*t  FCI[SFAD[p1]], {p1}, Rest -> True,
+FCE -> True]",
+"{{SFAD[{{p1, 0}, {0, 1}, 1}]}, x*t}"},
+{"fcstFCLoopIntegralToPropagators-ID26",
+"FCLoopIntegralToPropagators[SPD[p, q]^2 FCI[SPD[p, q]] SFAD[q, p - q], {q},
+	Tally -> True, FCE -> True, Negative -> True]",
+"{{SFAD[{{q, 0}, {0, 1}, 1}], 1}, {SFAD[{{0, p . q}, {0, 1}, -1}], -3}, {SFAD[{{p - q, 0}, {0, 1}, 1}], 1}}"},
+{"fcstFCLoopIntegralToPropagators-ID27",
+"FCLoopIntegralToPropagators[SPD[p, q]^2 FCI[SPD[p, q]] SFAD[q, p - q], {q}, Tally -> True,
+FCE -> True, Negative -> True, Pair -> True]",
+"{{SFAD[{{q, 0}, {0, 1}, 1}],
+1}, {SPD[p, q], -3}, {SFAD[{{p - q, 0}, {0, 1}, 1}], 1}}"},
+{"fcstFCLoopIntegralToPropagators-ID28",
+"FCLoopIntegralToPropagators[
+CSPD[p, q]^2 FCI[CSPD[p, q]] CFAD[q, p - q], {q}, Tally -> True,
+FCE -> True, Negative -> True, CartesianPair -> True]",
+"{{CFAD[{{q, 0}, {0, -1}, 1}], 1}, {CFAD[{{p - q, 0}, {0, -1}, 1}], 1}, {CSPD[p, q], -3}}"},
+{"fcstFCLoopIntegralToPropagators-ID29",
+"FCLoopIntegralToPropagators[CFAD[{k, 0, 4}, l - k], {k},
+Tally -> True, FCE -> True]",
+"{{CFAD[{{k, 0}, {0, -1}, 1}], 4}, {CFAD[{{-k + l, 0}, {0, -1}, 1}],
+1}}"},
+{"fcstFCLoopIntegralToPropagators-ID30",
+"FCLoopIntegralToPropagators[SFAD[{k, 0, 4}, l - k], {k},
+Tally -> True, FCE -> True]",
+"{{SFAD[{{k, 0}, {0, 1}, 1}], 4}, {SFAD[{{-k + l, 0}, {0, 1}, 1}], 1}}"},
+{"fcstFCLoopIntegralToPropagators-ID31",
+"FCLoopIntegralToPropagators[(Pair[Momentum[-k1/2, D],
+	Momentum[l, D]] +
+	Pair[Momentum[-k2/2, D], Momentum[l, D]]) FAD[{l, 0,
+	2}, {-k1/2 - k2/2 + l, m}, {k1/2 - k2/2 + l, m}], {l},
+MomentumCombine -> True, Tally -> False]",
+"{FeynAmpDenominator[StandardPropagatorDenominator[0, -1/2*Pair[Momentum[k1 + k2, D], Momentum[l, D]], 0, {-1, 1}]],
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[l, D], 0, 0, {1, 1}]],
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[-1/2*k1 - k2/2 + l, D],
+0, -m^2, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1/2 - k2/2 + l, D], 0, -m^2, {1, 1}]]}"},
+{"fcstFCLoopIntegralToPropagators-ID32",
+"FCLoopIntegralToPropagators[GFAD[{p1.q p2.q + x}] SFAD[p1], {p1, p2}, FCE -> True]",
+"{GFAD[{{x + p1.q p2.q, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}]}"},
+{"fcstFCLoopIntegralToPropagators-ID33",
+"FCLoopIntegralToPropagators[GFAD[{p1.q p2.q + x, 2}] SFAD[p1], {p1, p2}, Tally -> True,FCE -> True]",
+"{{SFAD[{{p1, 0}, {0, 1}, 1}], 1}, {GFAD[{{x + p1 . q*p2 . q, 1}, 1}], 2}}"},
+{"fcstFCLoopIntegralToPropagators-ID34",
+"FCLoopIntegralToPropagators[FeynAmpDenominator[
+StandardPropagatorDenominator[-Momentum[p2, D] + Momentum[Q, D], 0,
+0, {1, 1}]]^2, {p1, p2, p3}, FCE -> True]",
+"{SFAD[{{-p2 + Q, 0}, {0, 1}, 1}]}"},
+{"fcstFCLoopIntegralToPropagators-ID35",
+"FCLoopIntegralToPropagators[FeynAmpDenominator[
+StandardPropagatorDenominator[-Momentum[p2, D] + Momentum[Q, D], 0,
+0, {1, 1}]]^2, {p1, p2, p3}, FCE -> True, Tally->True]",
+"{{SFAD[{{-p2 + Q, 0}, {0, 1}, 1}], 2}}"},
+{"fcstFCLoopIntegralToPropagators-ID36",
+"FCLoopIntegralToPropagators[
+ExpandScalarProduct[SPD[l, -p1 - p2 - p3]^3 FAD[l, l - p2, l - p1 - p2 - p3]], {l},
+FCE -> True]",
+"{SFAD[{{0, -l . (p1 + p2 + p3)}, {0, 1}, -1}],
+SFAD[{{l, 0}, {0, 1}, 1}], SFAD[{{l - p2, 0}, {0, 1}, 1}],
+SFAD[{{l - p1 - p2 - p3, 0}, {0, 1}, 1}]}"},
+{"fcstFCLoopIntegralToPropagators-ID37",
+"FCLoopIntegralToPropagators[
+ExpandScalarProduct[SPD[l, -p1 - p2 - p3]^3 FAD[l, l - p2, l - p1 - p2 - p3]], {l},
+FCE -> True, MomentumCombine->True]",
+"{SFAD[{{0, -l.(p1 + p2 + p3)}, {0, 1}, -1}],
+SFAD[{{l, 0}, {0, 1}, 1}], SFAD[{{l - p2, 0}, {0, 1}, 1}],
+SFAD[{{l - p1 - p2 - p3, 0}, {0, 1}, 1}]}"},
+{"fcstFCLoopIntegralToPropagators-ID38",
+"FCLoopIntegralToPropagators[
+ExpandScalarProduct[
+CSPD[l, -p1 - p2 - p3]^3 FAD[l, l - p2, l - p1 - p2 - p3]], {l},
+MomentumCombine -> True, FCE -> True]",
+"{CFAD[{{0, -l.(p1 + p2 + p3)}, {0, -1}, -1}],
+SFAD[{{l, 0}, {0, 1}, 1}], SFAD[{{l - p2, 0}, {0, 1}, 1}],
+SFAD[{{l - p1 - p2 - p3, 0}, {0, 1}, 1}]}"},
+{"fcstFCLoopIntegralToPropagators-ID40",
+"FCLoopIntegralToPropagators[
+ExpandScalarProduct[
+CSPD[l, -p1 - p2 - p3]^3 FAD[l, l - p2, l - p1 - p2 - p3]], {l},
+MomentumCombine -> True, FCE -> True]",
+"{CFAD[{{0, -l.(p1 + p2 + p3)}, {0, -1}, -1}],
+SFAD[{{l, 0}, {0, 1}, 1}], SFAD[{{l - p2, 0}, {0, 1}, 1}],
+SFAD[{{l - p1 - p2 - p3, 0}, {0, 1}, 1}]}"},
+{"fcstFCLoopIntegralToPropagators-ID41",
+"FCLoopIntegralToPropagators[GFAD[(TC[q]-x)]SFAD[{{0,p.q},x}],\
+{q}]", "{FeynAmpDenominator[GenericPropagatorDenominator[-x + \
+TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q]], {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, \
+D], Momentum[q, D]], -x, {1, 1}]]}"},
+{"fcstFCLoopIntegralToPropagators-ID42",
+"FCLoopIntegralToPropagators[GFAD[(TC[q]-x)]SFAD[{{0,p.q},x}],\
+{q},Tally\[Rule]True]",
+"{{FeynAmpDenominator[GenericPropagatorDenominator[-x + \
+TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q]], {1, 1}]], 1}, \
+{FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, \
+D], Momentum[q, D]], -x, {1, 1}]], 1}}"},
+{"fcstFCLoopIntegralToPropagators-ID43",
+"FCLoopIntegralToPropagators[TC[q]GFAD[(TC[q]-x)]SFAD[{{0,p.q}\
+,x}],{q}]",
+"{FeynAmpDenominator[GenericPropagatorDenominator[TemporalPair[\
+ExplicitLorentzIndex[0], TemporalMomentum[q]], {-1, 1}]], \
+FeynAmpDenominator[GenericPropagatorDenominator[-x + \
+TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q]], {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[p, \
+D], Momentum[q, D]], -x, {1, 1}]]}"},
+{"fcstFCLoopIntegralToPropagators-ID44",
+"FCLoopIntegralToPropagators[TC[q]GFAD[(TC[q]-x)]SFAD[{{0,p.q}\
+,x}],{q},Tally\[Rule]True]",
+"{{FeynAmpDenominator[
+GenericPropagatorDenominator[
+	TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q]], {-1,
+	1}]], 1}, {FeynAmpDenominator[
+GenericPropagatorDenominator[-x +
+	TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q]], {1,
+	1}]], 1}, {FeynAmpDenominator[
+StandardPropagatorDenominator[0,
+	Pair[Momentum[p, D], Momentum[q, D]], -x, {1, 1}]], 1}}"},
+{"fcstFCLoopIntegralToPropagators-ID45",
+"FCLoopIntegralToPropagators[{SPD[p1]},{p1},FCE->True]",
+"{SFAD[{{0, p1 . p1}, {0, 1}, -1}]}"},
+{"fcstFCLoopIntegralToPropagators-ID46",
+"FCLoopIntegralToPropagators[{SPD[p1]-m1^2},{p1},FCE->True]",
+"{GFAD[{{-m1^2 + SPD[p1, p1], 1}, -1}]}"},
+{"fcstFCLoopIntegralToPropagators-ID47",
+"FCLoopIntegralToPropagators[{SPD[p1]-m1^2,SPD[p1,q]},{p1},\
+FCE->True]",
+"{GFAD[{{-m1^2 + SPD[p1, p1], 1}, -1}], SFAD[{{0, p1 . q}, {0, 1}, \
+-1}]}"},
+{"fcstFCLoopIntegralToPropagators-ID48",
+"FCLoopIntegralToPropagators[{SPD[p3],SPD[p1]-m1^2,SPD[p1,q],\
+SPD[p1-p3]},{p1,p3},FCE->True]",
+"{GFAD[{{-m1^2 + SPD[p1, p1], 1}, -1}], SFAD[{{0, p1 . q}, {0, 1}, \
+-1}], SFAD[{{0, (p1 - p3) . (p1 - p3)}, {0, 1}, -1}], SFAD[{{0, p3 . \
+p3}, {0, 1}, -1}]}"},
+{"fcstFCLoopIntegralToPropagators-ID49",
+"FCLoopIntegralToPropagators[{SPD[p3],SPD[p1]-m1^2,SPD[p1,q],\
+SPD[p1-p3]},{p1,p3},Sort\[Rule]False,FCE->True]",
+"{SFAD[{{0, p3 . p3}, {0, 1}, -1}], GFAD[{{-m1^2 + SPD[p1, p1], \
+1}, -1}], SFAD[{{0, p1 . q}, {0, 1}, -1}], SFAD[{{0, (p1 - p3) . (p1 \
+- p3)}, {0, 1}, -1}]}"},
+{"fcstFCLoopIntegralToPropagators-ID50",
+"FCLoopIntegralToPropagators[{CSPD[p1]},{p1},FCE->True]",
+"{CFAD[{{0, p1 . p1}, {0, -1}, -1}]}"},
+{"fcstFCLoopIntegralToPropagators-ID51",
+"FCLoopIntegralToPropagators[{CSPD[p1]+m1^2},{p1},FCE->True]",
+	"{GFAD[{{m1^2 + CSPD[p1, p1], 1}, -1}]}"},
+{"fcstFCLoopIntegralToPropagators-ID52",
+"FCLoopIntegralToPropagators[{CSPD[p1]+m1^2,CSPD[p1,q]},{p1},\
+FCE->True]",
+"{CFAD[{{0, p1 . q}, {0, -1}, -1}], GFAD[{{m1^2 + CSPD[p1, p1], \
+1}, -1}]}"},
+{"fcstFCLoopIntegralToPropagators-ID53",
+"FCLoopIntegralToPropagators[{CSPD[p3],SPD[p1]+m1^2,SPD[p1,q],\
+SPD[p1-p3]},{p1,p3},FCE->True]",
+"{CFAD[{{0, p3 . p3}, {0, -1}, -1}], GFAD[{{m1^2 + SPD[p1, p1], \
+1}, -1}], SFAD[{{0, p1 . q}, {0, 1}, -1}], SFAD[{{0, (p1 - p3) . (p1 \
+- p3)}, {0, 1}, -1}]}"},
+{"fcstFCLoopIntegralToPropagators-ID54",
+"FCLoopIntegralToPropagators[{CSPD[p3],CSPD[p1]+m1^2,SPD[p1,q]\
+,SPD[p1-p3]},{p1,p3},Sort\[Rule]False,FCE->True]",
+"{CFAD[{{0, p3 . p3}, {0, -1}, -1}], GFAD[{{m1^2 + CSPD[p1, p1], \
+1}, -1}], SFAD[{{0, p1 . q}, {0, 1}, -1}], SFAD[{{0, (p1 - p3) . (p1 \
+- p3)}, {0, 1}, -1}]}"},
+{"fcstFCLoopIntegralToPropagators-ID55",
+"FCLoopBasisExtract[SFAD[{p1,m^2,n},{k+p3}],{p1},FCE\[Rule]True,\
+Rest\[Rule]False]",
+"{{-m^2 + SPD[p1, p1]}, {SPD[p1, p1]}, {n}, {SFAD[{{p1, 0}, {m^2, \
+1}, 1}]}}"},
+{"fcstFCLoopIntegralToPropagators-ID56",
+"FCLoopBasisExtract[SFAD[{p1,m^2,n}],{p1},FCE\[Rule]True]",
+"{{-m^2 + SPD[p1, p1]}, {SPD[p1, p1]}, {n}, {SFAD[{{p1, 0}, {m^2, \
+1}, 1}]}}"},
+{"fcstFCLoopIntegralToPropagators-ID57",
+"FCLoopBasisExtract[SFAD[{p3+q1,m3^2,3},{p3-p1,0,n},{{0,p1.q}}]\
+SFAD[{p3-p1,0,n}]^3,{p3,p1},FCE\[Rule]True]",
+"{{SPD[p1, q], SPD[p1, p1] - 2*SPD[p1, p3] + SPD[p3, p3], -m3^2 + \
+SPD[p3, p3] + 2*SPD[p3, q1] + SPD[q1, q1]}, {SPD[p1, p1], SPD[p1, \
+p3], SPD[p1, q], SPD[p1, q1], SPD[p3, p3], SPD[p3, q], SPD[p3, q1]}, \
+{1, 4*n, 3}, {SFAD[{{0, p1 . q}, {0, 1}, 1}], SFAD[{{-p1 + p3, 0}, \
+{0, 1}, 1}], SFAD[{{p3 + q1, 0}, {m3^2, 1}, 1}]}}"},
+{"fcstFCLoopIntegralToPropagators-ID58",
+"FCLoopBasisExtract[+SFAD[{p3+q1,m3^2,3},{p3-p1,0,n},{{0,p1.q}},{\
+p3-p1,0,2}],{p3,p1},FCE\[Rule]True]",
+"{{SPD[p1, q], SPD[p1, p1] - 2*SPD[p1, p3] + SPD[p3, p3], -m3^2 + \
+SPD[p3, p3] + 2*SPD[p3, q1] + SPD[q1, q1]}, {SPD[p1, p1], SPD[p1, \
+p3], SPD[p1, q], SPD[p1, q1], SPD[p3, p3], SPD[p3, q], SPD[p3, q1]}, \
+{1, 2 + n, 3}, {SFAD[{{0, p1 . q}, {0, 1}, 1}], SFAD[{{-p1 + p3, 0}, \
+{0, 1}, 1}], SFAD[{{p3 + q1, 0}, {m3^2, 1}, 1}]}}"},
+{"fcstFCLoopIntegralToPropagators-ID59",
+"FCLoopBasisExtract[+SFAD[{p3+q1,m3^2,3},{p3-p1,0,n},{{0,p1.q}}],{\
+p3,p1},FCE\[Rule]True]",
+"{{SPD[p1, q], SPD[p1, p1] - 2*SPD[p1, p3] + SPD[p3, p3], -m3^2 + \
+SPD[p3, p3] + 2*SPD[p3, q1] + SPD[q1, q1]}, {SPD[p1, p1], SPD[p1, \
+p3], SPD[p1, q], SPD[p1, q1], SPD[p3, p3], SPD[p3, q], SPD[p3, q1]}, \
+{1, n, 3}, {SFAD[{{0, p1 . q}, {0, 1}, 1}], SFAD[{{-p1 + p3, 0}, {0, \
+1}, 1}], SFAD[{{p3 + q1, 0}, {m3^2, 1}, 1}]}}"},
+{"fcstFCLoopIntegralToPropagators-ID60",
+"FCLoopIntegralToPropagators[
+Sqrt[CSPD[k]] GFAD[Sqrt[CSPD[k]] - x], {k}, FCE -> True]",
+"{GFAD[{{-x + Sqrt[CSPD[k, k]], 1}, 1}],
+GFAD[{{Sqrt[CSPD[k, k]], 1}, -1}]}"},
+{"fcstFCLoopIntegralToPropagators-ID61",
+"FCLoopBasisExtract[
+GFAD[{{CSPD[k, k] x[1] + (CSPD[k, k - 2 p] + CSPD[p, p]) x[2], 1},
+	1 + s}] CFAD[{k, -c^2}], {k}, FCE -> True]",
+"{{CSPD[k, k]*x[1] + CSPD[k, k]*x[2] - 2*CSPD[k, p]*x[2] +
+CSPD[p, p]*x[2], -c^2 + CSPD[k, k]}, {CSPD[k, k], CSPD[k, p]}, {1 + s, 1},
+{GFAD[{{CSPD[k, k]*x[1] + (CSPD[k, k - 2*p] + CSPD[p, p])*x[2], 1}, 1}], CFAD[{{k, 0}, {-c^2, -1}, 1}]}}"},
+{"fcstFCLoopIntegralToPropagators-ID62",
+"FCLoopIntegralToPropagators[
+FCI[CFAD[{{k, 0}, {0, -1}, 1}, {{k, 0}, {0, -1},
+	1}, {{k - p, 0}, {0, -1}, 1}] Sqrt[CSPD[k, k]] CSPD[k,
+	k]], {k}] // FCE","{CFAD[{{0, Sqrt[k.k]}, {0, -1}, -1}], CFAD[{{0, k.k}, {0, -1}, -1}],
+CFAD[{{k, 0}, {0, -1}, 1}], CFAD[{{k - p, 0}, {0, -1}, 1}]}"},
+{"fcstFCLoopBasisExtract-ID63",
+"FCLoopIntegralToPropagators[
+SFAD[{ k, 0, -3/2}, { (k + p), 0, 1}], {k}, Tally -> True, FCE->True]",
+"{{SFAD[{{k, 0}, {0, 1}, 1}], -(3/2)}, {SFAD[{{k + p, 0}, {0, 1}, 1}],
+1}}"},
+{"fcstFCLoopBasisExtract-ID64",
+"FCLoopIntegralToPropagators[
+SFAD[{ k, 0, -3/2}, { (k + p), 0, 1}, { k, 0, 2}], {k},
+Tally -> True, FCE -> True]",
+"{{SFAD[{{k, 0}, {0, 1}, 1}], 1/2}, {SFAD[{{k + p, 0}, {0, 1}, 1}], 1}}"},
+{"fcstFCLoopBasisExtract-ID65",
+"FCLoopIntegralToPropagators[
+SFAD[{ k, 0, -3/2}, { (k + p), 0, 1}], {k}, FCE -> True]",
+"{SFAD[{{k, 0}, {0, 1}, -1}], SFAD[{{k + p, 0}, {0, 1}, 1}]}"},
+{"fcstFCLoopBasisExtract-ID66",
+"FCLoopIntegralToPropagators[SFAD[{{-k1,0},{mc^2,1},1}] SFAD[{{-k1-k2,0},{mc^2,1},1}]
+SFAD[{{-k2,0},{0,1},1}] SFAD[{{-k2,0},{0,1},2}] SFAD[{{-k3,0},{mc^2,1},1}] *
+SFAD[{{k1-k3-p1,0},{0,1},1}] SFAD[{{-k1-k2+k3+p1,0},{0,1},1}] SFAD[{{-k1-k2+k3+p1,0},{0,1},2}],{k1,k2,k3},Tally->True,FCE->True]",
+"{{SFAD[{{-k2, 0}, {0, 1}, 1}], 3}, {SFAD[{{-k3, 0}, {mc^2, 1}, 1}], 1}, {SFAD[{{-k1, 0}, {mc^2, 1}, 1}], 1},
+{SFAD[{{k1 - k3 - p1, 0}, {0, 1}, 1}], 1}, {SFAD[{{-k1 - k2 + k3 + p1, 0}, {0, 1}, 1}], 3}, {SFAD[{{-k1 - k2, 0}, {mc^2, 1}, 1}], 1}}"},
+{"fcstFCLoopIntegralToPropagators-ID67",
+"FCLoopIntegralToPropagators[SFAD[{p1,m^2,n}],{p1},Tally\
+\[Rule]True,FCE\[Rule]True]", "{{SFAD[{{p1, 0}, {m^2, 1}, 1}], n}}"},
+{"fcstFCLoopIntegralToPropagators-ID68",
+"FCLoopIntegralToPropagators[SFAD[{p3+q1,m3^2,3},{p3-p1,0,n},{\
+{0,p1.q}}]SFAD[{p3-p1,0,n}]^3,{p3,p1},Tally\[Rule]True,FCE\[Rule]True]\
+", "{{SFAD[{{-p1 + p3, 0}, {0, 1}, 1}], 4*n}, {SFAD[{{0, p1 . q}, {0, 1}, 1}], 1},
+{SFAD[{{p3 + q1, 0}, {m3^2, 1}, 1}], 3}}"},
+{"fcstFCLoopIntegralToPropagators-ID69",
+"FCLoopIntegralToPropagators[+SFAD[{p3+q1,m3^2,3},{p3-p1,0,n},\
+{{0,p1.q}},{p3-p1,0,2}],{p3,p1},Tally\[Rule]True,FCE\[Rule]True]",
+"{{SFAD[{{-p1 + p3, 0}, {0, 1}, 1}], 2 + n}, {SFAD[{{0, p1 . q}, {0, 1}, 1}], 1},
+{SFAD[{{p3 + q1, 0}, {m3^2, 1}, 1}], 3}}"},
+{"fcstFCLoopIntegralToPropagators-ID70",
+"FCLoopIntegralToPropagators[+SFAD[{p3+q1,m3^2,3},{p3-p1,0,n},\
+{{0,p1.q}},{p3-p1,0,2}],{p3,p1},FCE\[Rule]True]",
+"{SFAD[{{0, p1 . q}, {0, 1}, 1}], SFAD[{{-p1 + p3, 0}, {0, 1}, \
+1}], SFAD[{{p3 + q1, 0}, {m3^2, 1}, 1}]}"},
+{"fcstFCLoopIntegralToPropagators-ID71",
+"FCLoopIntegralToPropagators[+SFAD[{p3+q1,m3^2,3},{p3-p1,0,n},\
+{{0,p1.q}}],{p3,p1},FCE\[Rule]True]",
+"{SFAD[{{0, p1 . q}, {0, 1}, 1}], SFAD[{{-p1 + p3, 0}, {0, 1}, \
+1}], SFAD[{{p3 + q1, 0}, {m3^2, 1}, 1}]}"}
+});

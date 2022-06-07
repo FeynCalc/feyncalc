@@ -306,15 +306,15 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 			];
 
 			time=AbsoluteTime[];
-			FCPrint[1, "FCLoopFindTopologies: Applying FCLoopBasisIntegralToPropagators.", FCDoControl->fcfsopVerbose];
+			FCPrint[1, "FCLoopFindTopologies: Applying FCLoopIntegralToPropagators.", FCDoControl->fcfsopVerbose];
 			If[	optFDS,
-				denListEval = FCLoopBasisIntegralToPropagators[FDS[#,FCI->True, Rename->False, ApartFF -> False, DetectLoopTopologies->False],
+				denListEval = FCLoopIntegralToPropagators[FDS[#,FCI->True, Rename->False, ApartFF -> False, DetectLoopTopologies->False],
 					lmoms, FCI -> True, Tally -> True] & /@ (denList/.loopDen->Identity),
 
-				denListEval = FCLoopBasisIntegralToPropagators[#, lmoms, FCI -> True, Tally -> True] & /@ (denList/.loopDen->Identity);
+				denListEval = FCLoopIntegralToPropagators[#, lmoms, FCI -> True, Tally -> True] & /@ (denList/.loopDen->Identity);
 			];
-			FCPrint[1, "FCLoopFindTopologies: Done applying FCLoopBasisIntegralToPropagators, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfsopVerbose];
-			FCPrint[3, "FCLoopFindTopologies: List of the unique denominators after FCLoopBasisIntegralToPropagators: ", denListEval, FCDoControl->fcfsopVerbose];
+			FCPrint[1, "FCLoopFindTopologies: Done applying FCLoopIntegralToPropagators, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfsopVerbose];
+			FCPrint[3, "FCLoopFindTopologies: List of the unique denominators after FCLoopIntegralToPropagators: ", denListEval, FCDoControl->fcfsopVerbose];
 
 
 

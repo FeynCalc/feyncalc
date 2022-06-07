@@ -226,11 +226,11 @@ FCLoopIntegralToGraph[expr_/; FreeQ[{GLI,FCTopology},expr], lmomsRaw_List, Optio
 		FCPrint[2, "FCLoopIntegralToGraph: Auxiliary momenta: ", optAuxiliaryMomenta, FCDoControl->lbtgVerbose];
 
 		time=AbsoluteTime[];
-		FCPrint[1,"FCLoopIntegralToGraph: Calling FCLoopBasisIntegralToPropagators.", FCDoControl->lbtgVerbose];
+		FCPrint[1,"FCLoopIntegralToGraph: Calling FCLoopIntegralToPropagators.", FCDoControl->lbtgVerbose];
 
-		props = FCLoopBasisIntegralToPropagators[ex, lmoms, FCI->True, Tally->True];
-		FCPrint[1,"FCLoopIntegralToGraph: FCLoopBasisIntegralToPropagators done, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->lbtgVerbose];
-		FCPrint[3, "FCLoopIntegralToGraph: After FCLoopBasisIntegralToPropagators: ", props, FCDoControl->lbtgVerbose];
+		props = FCLoopIntegralToPropagators[ex, lmoms, FCI->True, Tally->True];
+		FCPrint[1,"FCLoopIntegralToGraph: FCLoopIntegralToPropagators done, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->lbtgVerbose];
+		FCPrint[3, "FCLoopIntegralToGraph: After FCLoopIntegralToPropagators: ", props, FCDoControl->lbtgVerbose];
 
 
 		dots  = Transpose[props][[2]];
@@ -737,5 +737,5 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 
 
 
-FCPrint[1,"FCLoopBasis.m loaded."];
+FCPrint[1,"FCLoopIntegralToGraph.m loaded."];
 End[]
