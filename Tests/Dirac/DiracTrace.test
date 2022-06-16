@@ -460,5 +460,13 @@ mu2, mu5, mu6]*MTD[mu3, mu4]*MTD[mu7, mu8] - LCD[mu1, mu2, mu4, \
 mu5]*MTD[mu3, mu6]*MTD[mu7, mu8] + LCD[mu1, mu2, mu3, mu5]*MTD[mu4, \
 mu6]*MTD[mu7, mu8])"},
 {"fcstDiracTrace-ID60", "FCSetDiracGammaScheme[\"NDR\"];\n DiracTrace[GS[p1 + p2 + p3] . GA[i1, i2, i3] . GA[5],
-DiracTraceEvaluate -> True, EpsExpand -> False, FCE -> True]", "4 I LC[i1, i2, i3][p1 + p2 + p3]"}
+DiracTraceEvaluate -> True, EpsExpand -> False, FCE -> True]", "4 I LC[i1, i2, i3][p1 + p2 + p3]"},
+{"fcstDiracTrace-ID61", "FCSetDiracGammaScheme[\"BMHV\"];\n DiracTrace[(GA[5] . GAD[\[Mu]] . GAD[lor1] . GAD[lorb] . GAD[lor2] .
+	GAD[lorz] . GAD[lor3] . GAD[\[Sigma]] -
+	GAD[\[Sigma]] . GAD[lor1] . GAD[lorb] . GAD[lor2] . GAD[lorz] .
+	GAD[lor3] . GA[5] . GAD[\[Mu]]) . (GSD[x] . GAD[\[Nu]] .
+	GAD[lor5] . GAD[lorz] . GAD[lor4]*FVD[x, lor1]*FVD[x, lor3]*
+	MTD[lor2, lor5]*MTD[lor4, lora]*MTD[lora, \[Rho]]*
+	MTD[lorb, \[Nu]]), DiracTraceEvaluate -> True, FCE -> True]",
+	"-16 I (56 - 30 D + 3 D^2) SPD[x, x] LC[\[Mu], \[Rho], \[Sigma]][x]"}
 });

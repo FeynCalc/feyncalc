@@ -314,7 +314,9 @@ ExpandScalarProduct // Expand // FCE; \n FCClearScalarProducts[]; \n tmp",
 	ExpandScalarProduct // Expand // FCE; \n FCClearScalarProducts[]; \n tmp",
 	"-((4 SP[l, p]^2)/SP[l, o]) - (4 eps SP[l, p]^2)/SP[l, o] - (4 SP[l, p] SP[o, p])/SP[l, o] - (4 eps SP[l, p] SP[o, p])/SP[l, o]"},
 {"fcstTr-ID32", "Tr[FV[k1 + k2, mu] (GA[al] FV[k1, al] + m).(GA[mu] f1 - 1/2 I/m 1/2 I (GA[mu, nu] - GA[nu, mu]) FV[k1 - k2, nu] f2).(GS[k1] + m)]//FCE",
-"8 f1 m (SP[k1, k1] + SP[k1, k2])"},
+"(4*(2*f1*m^2*SP[k1, k1] - f2*SP[k1, k1]*SP[k1, k1 - k2] + \
+2*f1*m^2*SP[k1, k2] - f2*SP[k1, k1 - k2]*SP[k1, k2] + f2*SP[k1, \
+k1]*SP[k1, k1 + k2] - f2*SP[k1, k2]*SP[k1, k1 + k2]))/m"},
 {"fcstTr-ID33", "Tr[1/32 GA[m].(1 - GA[5]).GS[k].(1 + GA[5]).GA[n].(1 - GA[5]).GS[p].(1 + GA[5])] // FCE",
 "FV[k, n] FV[p, m] + FV[k, m] FV[p, n] - MT[m, n] SP[k, p] +I LC[m, n][k, p]"},
 {"fcstTr-ID34", "Tr[GA[5].(GA[5] + GS[p]).GA[5].GS[q]]//FCE", "-4 SP[p, q]"},

@@ -257,7 +257,10 @@ diracTraceEvaluate[expr_/;!FreeQ[expr,DiracGamma], opts:OptionsPattern[]] :=
 
 		time=AbsoluteTime[];
 		FCPrint[1,"DiracTrace: diracTraceEvaluate: Applying DiracTrick.", FCDoControl->diTrVerbose];
-		tmp = DiracTrick[tmp, FCI -> True, InsideDiracTrace->True, FCDiracIsolate->False];
+
+		(* 	If there are no nested DOTs, then FCDiracIsolate is not needed, otherwise one should use it *)
+			tmp = DiracTrick[tmp, FCI -> True, InsideDiracTrace->True, FCDiracIsolate->FeynCalc`Package`containsNestedDOTsQ[tmp]];
+
 		FCPrint[1,"DiracTrace: diracTraceEvaluate: DiracTrick done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->diTrVerbose];
 		FCPrint[3,"DiracTrace: diracTraceEvaluate: After DiracTrick: ", tmp, FCDoControl->diTrVerbose];
 

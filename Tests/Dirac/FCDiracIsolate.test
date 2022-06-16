@@ -311,6 +311,22 @@ c dAll[dch[
 	q2].Spinor[-Momentum[p4], m, 1]]]"},
 {"fcstFCDiracIsolate-ID35", "FCDiracIsolate[GA[i] == x, Head -> dch, FCE -> True]", "dch[GA[i]] == x"},
 {"fcstFCDiracIsolate-ID36", "FCDiracIsolate[{GA[i], GS[p]}, Head -> dch, FCE -> True]",
-"{dch[GA[i]], dch[GS[p]]}"}
+"{dch[GA[i]], dch[GS[p]]}"},
+{"fcstFCDiracIsolate-ID37", "FCDiracIsolate[(GA[5] . GAD[\[Mu]] . GAD[lor1] . GAD[lorb] .
+	GAD[lor2] . GAD[lorz] . GAD[lor3] . GAD[\[Sigma]] -
+	GAD[\[Sigma]] . GAD[lor1] . GAD[lorb] . GAD[lor2] . GAD[lorz] .
+	GAD[lor3] . GA[5] . GAD[\[Mu]]) . (GSD[x] . GAD[\[Nu]] .
+	GAD[lor5] . GAD[lorz] . GAD[lor4]*FVD[x, lor1]*FVD[x, lor3]*
+	MTD[lor2, lor5]*MTD[lor4, lora]*MTD[lora, \[Rho]]*
+	MTD[lorb, \[Nu]]), DotSimplify -> True, Head -> dsHead,
+FCE -> True,\"ExpandNestedDOTs\"->True]","dsHead[GA[5] . GAD[\[Mu]] . GAD[lor1] . GAD[lorb] . GAD[lor2] .
+	GAD[lorz] . GAD[lor3] . GAD[\[Sigma]] . GSD[x] . GAD[\[Nu]] .
+	GAD[lor5] . GAD[lorz] . GAD[lor4]] FVD[x, lor1] FVD[x, lor3] MTD[
+lor2, lor5] MTD[lor4, lora] MTD[lora, \[Rho]] MTD[lorb, \[Nu]] -
+dsHead[GAD[\[Sigma]] . GAD[lor1] . GAD[lorb] . GAD[lor2] .
+	GAD[lorz] . GAD[lor3] . GA[5] . GAD[\[Mu]] . GSD[x] .
+	GAD[\[Nu]] . GAD[lor5] . GAD[lorz] . GAD[lor4]] FVD[x, lor1] FVD[
+x, lor3] MTD[lor2, lor5] MTD[lor4, lora] MTD[lora, \[Rho]] MTD[
+lorb, \[Nu]]"}
 });
 

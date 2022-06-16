@@ -166,9 +166,10 @@ DiracTrick[expr_,OptionsPattern[]] :=
 			FCPrint[1, "DiracTrick: Extracting Dirac objects.", FCDoControl->diTrVerbose];
 			(* 	First of all we need to extract all the Dirac structures in the input. *)
 			If[	TrueQ[Head[optFCDiracIsolate]===List],
-				ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, optFCDiracIsolate],
+				ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, optFCDiracIsolate, "ExpandNestedDOTs"->True],
 				ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracGammaCombine],
-					FCJoinDOTs -> optJoin, LorentzIndex->True, ToDiracGamma67-> OptionValue[ToDiracGamma67], DiracChain->OptionValue[DiracChain]];
+					FCJoinDOTs -> optJoin, LorentzIndex->True, ToDiracGamma67-> OptionValue[ToDiracGamma67], DiracChain->OptionValue[DiracChain],
+					"ExpandNestedDOTs"->True];
 			];
 
 			{freePart,dsPart} = FCSplit[ex,{dsHead}];
@@ -540,6 +541,13 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 
 		res = res/. DOT -> holdDOT;
 
+		(*	There should be no nested dots *)
+		If[	FeynCalc`Package`containsNestedDOTsQ[res,holdDOT],
+			Message[DiracTrick::failmsg,"Unexpanded nested DOTs detected!"];
+			Abort[]
+		];
+
+
 		If[	gamma5Present,
 			res = res /. holdDOT -> commonGamma5Properties /. commonGamma5Properties -> holdDOT;
 			gamma5Present = !FreeQ2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
@@ -695,7 +703,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 		If[	insideDiracTrace && res=!=0,
 			time=AbsoluteTime[];
 			FCPrint[2, "DiracTrick: diracTrickEval: Applying diracTraceSimplify again ", FCDoControl->diTrVerbose];
-			res = FCDiracIsolate[res, DotSimplify->False, FCI->True, DiracGammaCombine->False, FCJoinDOTs->optJoin, Head->dsHead];
+			res = FCDiracIsolate[res, DotSimplify->False, FCI->True, DiracGammaCombine->False, FCJoinDOTs->optJoin, Head->dsHead,"ExpandNestedDOTs"->True];
 			res = res  /. {dsHead[DiracGamma[5]] :> 0, dsHead[DiracGamma[6|7]] :> 1/2 } /. DOT-> holdDOT/.
 			dsHead[holdDOT[x__]] :>  diracTraceSimplify[x];
 			res = res /. diracTraceSimplify -> DOT /. dsHead-> Identity /. holdDOT -> DOT;
