@@ -166,8 +166,8 @@ DiracSimplify[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 
 			(* 	First of all we need to extract all Dirac structures in the input. *)
 			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DotSimplify->True, DiracGammaCombine->OptionValue[DiracGammaCombine],
-				DiracSigmaExplicit->OptionValue[DiracSigmaExplicit], LorentzIndex->True, CartesianIndex->True,
-				ToDiracGamma67->optToDiracGamma67, DiracChain->OptionValue[DiracChain], Split->dsHeadAll];
+				DiracSigmaExplicit->OptionValue[DiracSigmaExplicit], LorentzIndex->All, CartesianIndex->True,
+				ToDiracGamma67->optToDiracGamma67, DiracChain->OptionValue[DiracChain], Split->dsHeadAll, "ExpandNestedDOTs"->True];
 
 			If[	!FreeQ[ex,DiracTrace] && !OptionValue[DiracTrace],
 				ex = ex /. dsHead[zz_]/; !FreeQ[zz,DiracTrace] :> zz

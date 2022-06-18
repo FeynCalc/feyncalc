@@ -1761,8 +1761,9 @@ InsideDiracTrace\[Rule]True]//FCE",
 {"fcstDiracTrickInsideDiracTrace-ID29",
 "DiracTrick[(m+GS[p]).(-fa GA[5].GA[nu]+f1 GA[nu]).(m+GS[pp]).(fa \
 GA[mu].GA[5]+f1 GA[mu]),InsideDiracTrace\[Rule]True]//FCE",
-"(m + GS[p]) . (fa*GA[nu] . GA[5] + f1*GA[nu]) . (m + GS[pp]) . \
-(fa*GA[mu] . GA[5] + f1*GA[mu])"},
+"f1^2*GS[p] . GA[nu] . GS[pp] . GA[mu] + fa^2*GS[p] . GA[nu] . GS[pp] . GA[mu] -
+f1*fa*GA[nu] . GS[pp] . GA[mu] . GS[p] . GA[5] + f1*fa*GS[p] .
+GA[nu] . GS[pp] . GA[mu] . GA[5] + f1^2*m^2*MT[mu, nu] - fa^2*m^2*MT[mu, nu]"},
 {"fcstDiracTrickInsideDiracTrace-ID30",
 "DiracTrick[GS[p].GA[nu, 5, mu, 5], InsideDiracTrace -> True]",
 "0"},

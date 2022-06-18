@@ -25,6 +25,9 @@ FCDiracIsolate::fail =
 "FCDiracIsolate failed to isolate Dirac structures in `1`!";
 
 Begin["`Package`"]
+
+containsNestedDOTsQ;
+
 End[]
 
 Begin["`FCDiracIsolate`Private`"]
@@ -55,6 +58,7 @@ Options[FCDiracIsolate] = {
 	IsolateNames		-> KK,
 	LorentzIndex		-> False,
 	Polarization		-> False,
+	"ExpandNestedDOTs"	-> False,
 	Spinor				-> True,
 	Split				-> True,
 	TimeConstrained		-> 3,
@@ -65,6 +69,12 @@ makeSelectionList[expr_,heads_List]:=
 	MemSet[makeSelectionList[expr,heads],
 		Join[heads,Intersection[Cases[SelectFree[expr, heads], l: (_LorentzIndex| _CartesianIndex) :> l[[1]] ,Infinity],
 			Cases[SelectNotFree[expr, heads],  l: (_LorentzIndex| _CartesianIndex) :> l[[1]] ,Infinity]]]
+];
+
+containsNestedDOTsQ[expr_, dot_: DOT]:=
+Block[{chk,holdDOT2,holdDOT3,null1,null2},
+	chk = Cases[(expr /. dot->holdDOT2) + null1 + null2, holdDOT2[__],Infinity];
+	!FreeQ[holdDOT3@@@chk,holdDOT2]
 ];
 
 holdDOT[]=1;
@@ -79,7 +89,7 @@ FCDiracIsolate[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 	Block[{	res, null1, null2, ex,tmp, head, selectionList,
 			time, fcdiVerbose, headsList, headsOrig, optTimeConstrained,
 			optHead, headR, allHeads, allHeadsEval, headNoMatrix, collectList,
-			optSplit},
+			optSplit, aux},
 
 		If [OptionValue[FCVerbose]===False,
 			fcdiVerbose=$VeryVerbose,
@@ -172,9 +182,21 @@ FCDiracIsolate[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1, "FCDiracIsolate: Applying DotSimplify.", FCDoControl->fcdiVerbose];
 			tmp = FCSplit[ex, headsList, Expanding->OptionValue[Expanding]];
-			ex = tmp[[1]]+ DotSimplify[tmp[[2]],Expanding->False,FCI->True, FCJoinDOTs->OptionValue[FCJoinDOTs]];
+			aux = DotSimplify[tmp[[2]],Expanding->False,FCI->True, FCJoinDOTs->OptionValue[FCJoinDOTs]];
 			FCPrint[1, "FCDiracIsolate: Done applying DotSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
-			FCPrint[3, "FCDiracIsolate: After DotSimplify: ", ex, FCDoControl->fcdiVerbose]
+			FCPrint[3, "FCDiracIsolate: After DotSimplify: ", aux, FCDoControl->fcdiVerbose];
+
+			If[	OptionValue["ExpandNestedDOTs"],
+				If[	containsNestedDOTsQ[aux,DOT],
+					FCPrint[1, "FCDiracIsolate: Nested DOTs detected. Rerunning DotSimplify with Expanding set to True.", FCDoControl->fcdiVerbose];
+					time=AbsoluteTime[];
+					aux = DotSimplify[aux,Expanding->True,FCI->True, FCJoinDOTs->OptionValue[FCJoinDOTs]];
+					FCPrint[1, "FCDiracIsolate: Done applying DotSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
+					FCPrint[3, "FCDiracIsolate: After DotSimplify: ", aux, FCDoControl->fcdiVerbose];
+				];
+			];
+
+			ex = tmp[[1]]+ aux;
 		];
 
 		If[	OptionValue[FCTraceExpand],
@@ -203,6 +225,7 @@ FCDiracIsolate[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 				ex + null1 + null2] /. {null1 | null2 -> 0} /. head[1] -> 1)
 		];
 		FCPrint[1, "FCDiracIsolate: Done isolating heads, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcdiVerbose];
+		FCPrint[3, "FCDiracIsolate: After isolating heads: ", ex, FCDoControl->fcdiVerbose];
 
 		If[ Together[(res /. restHead|head -> Identity)-ex] =!= 0,
 			Message[FCDiracIsolate::fail, ex];
