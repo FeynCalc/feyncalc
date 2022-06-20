@@ -12,6 +12,10 @@
 
 
 (* ::Text:: *)
+(*Notice that `div` can be also a list made of divergences found by `FCFeynmanFindDivergences`.*)
+
+
+(* ::Text:: *)
 (*This function uses the method of analytic regularization  introduced by Erik Panzer in [1403.3385](https://arxiv.org/abs/1403.3385), [1401.4361](https://arxiv.org/abs/1401.4361) and [1506.07243](https://arxiv.org/abs/1506.07243).*)
 
 
@@ -65,3 +69,11 @@ FCFeynmanFindDivergences[intReg,x]
 
 
 Series[intReg,{Epsilon,0,0}]//Normal
+
+
+(* ::Text:: *)
+(*Here is an example of regularizing two divergences at a time*)
+
+
+FCFeynmanRegularizeDivergence[(y[1]*(y[1] + y[2] + y[3])^(2*ep)*(y[1]^2 - 4*y[2]*y[3])^(-2 -
+ep))/(x[1] + x[2])^2, {{{{y[2]}, {y[3]}}, -2*ep}, {{{y[3]}, {y[2]}}, -2*ep}}]

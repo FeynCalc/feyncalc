@@ -51,7 +51,11 @@ Options[FCFeynmanRegularizeDivergence] = {
 	FactorList2	-> True
 };
 
-FCFeynmanRegularizeDivergence[ex_, {{zeroVars_List, infVars_List}, divDeg_}, OptionsPattern[]] :=
+
+FCFeynmanRegularizeDivergence[ex_, divs:{{{_List, _List}, divDeg_/;Head[divDeg]=!=List},__}, opts:OptionsPattern[]] :=
+	Fold[FCFeynmanRegularizeDivergence[#1, #2, opts] &, ex, divs]
+
+FCFeynmanRegularizeDivergence[ex_, {{zeroVars_List, infVars_List}, divDeg_/;Head[divDeg]=!=List}, OptionsPattern[]] :=
 	Block[{	res, tmp, scalingVar},
 
 
