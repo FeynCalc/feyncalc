@@ -21,7 +21,22 @@ propagators in int using Feynman parameters but does not integrate over the
 loop momenta $p_i$. The function returns {fpInt,pref,vars}, where fpInt is the
 piece of the integral that contains a single GFAD-type propagator and pref is
 the part containing the res. The introduced Feynman parameters are listed in
-vars. The overall Dirac delta is omitted.";
+vars. The overall Dirac delta is omitted.
+
+Notice that each inner list must contain exactly thee elements, the first two
+being propagators (or products of propagators) and the last one denoting the
+head of Feynman parameter variables used to join those propagators. For
+example,
+{FAD[{p1,m1}],FAD[{p2,m2}],x},  but also
+{FAD[{p1,m1}],FAD[{p2,m2}]FAD[{p3,m3}],x} or even
+{FAD[{p1,m1}]FAD[{p2,m2}],FAD[{p3,m3}]FAD[{p4,m4}],x} represent valid examples
+of such lists, while something like {FAD[{p1,m1}],FAD[{p2,m2}],FAD[{p3,m3}],x}
+(4 instead of 3 list elements) is invalid and will not work.
+
+Having obtained an output of FCFeynmanParameterJoin (e.g. called intT), you
+should use the following syntax to pass this to
+FCFeynmanParametrize:  FCFeynmanParametrize[intT[[1]],intT[[2]],{lmom1, lmom2,
+...},Variables->intT[[3]]]";
 
 FCFeynmanParameterJoin::failmsg =
 "Error! FCFeynmanParameterJoin has encountered a fatal problem and must abort the computation. \

@@ -2,6 +2,8 @@
 
 `FCFeynmanRegularizeDivergence[exp, div]` regularizes the divergence `div` in the Feynman parametric integral `exp`. Provided that all divergences have been regularized in this fashion,  upon expanding the integrand around $\varepsilon = 0$ one can safely integrate in the Feynman parameters.
 
+Notice that `div` can be also a list made of divergences found by `FCFeynmanFindDivergences`.
+
 This function uses the method of analytic regularization  introduced by Erik Panzer in [1403.3385](https://arxiv.org/abs/1403.3385), [1401.4361](https://arxiv.org/abs/1401.4361) and [1506.07243](https://arxiv.org/abs/1506.07243).
 
 Its current implementation is very much based on the code of the `dimregPartial` routine from the Maple package [HyperInt](https://bitbucket.org/PanzerErik/hyperint/) by Erik Panzer.
@@ -59,3 +61,12 @@ Series[intReg, {Epsilon, 0, 0}] // Normal
 ```
 
 $$\frac{3 q^2 x(1)^2 x(2) x(3) (x(2)+x(3))}{\varepsilon  (x(1) x(2)+x(3) x(2)+x(1) x(3))^4}-\frac{3 q^2 x(1)^2 x(2) x(3) (x(2)+x(3)) \left(2 \log \left(q^2 x(1)^2 (x(2)+x(3))\right)-3 \log (x(1) x(2)+x(3) x(2)+x(1) x(3))+1\right)}{(x(1) x(2)+x(3) x(2)+x(1) x(3))^4}$$
+
+Here is an example of regularizing two divergences at a time
+
+```mathematica
+FCFeynmanRegularizeDivergence[(y[1]*(y[1] + y[2] + y[3])^(2*ep)*(y[1]^2 - 4*y[2]*y[3])^(-2 - 
+        ep))/(x[1] + x[2])^2, {{{{y[2]}, {y[3]}}, -2*ep}, {{{y[3]}, {y[2]}}, -2*ep}}]
+```
+
+$$\frac{1}{2 \;\text{ep} (x(1)+x(2))^2}y(1) (y(1)+y(2)+y(3))^{2 (\text{ep}-1)} \left(y(1)^2-4 y(2) y(3)\right)^{-\text{ep}-2} \left(2 \;\text{ep} y(1)^2+4 \;\text{ep} y(2) y(1)+4 \;\text{ep} y(3) y(1)+8 \;\text{ep} y(2) y(3)-y(2) y(1)-y(3) y(1)-4 y(2) y(3)\right)$$

@@ -21,6 +21,9 @@ Feynman parametric integral exp. Provided that all divergences have been
 regularized in this fashion,  upon expanding the integrand around $\\varepsilon
 = 0$ one can safely integrate in the Feynman parameters.
 
+Notice that div can be also a list made of divergences found by
+FCFeynmanFindDivergences.
+
 This function uses the method of analytic regularization  introduced by Erik
 Panzer in [1403.3385](https://arxiv.org/abs/1403.3385),
 [1401.4361](https://arxiv.org/abs/1401.4361) and

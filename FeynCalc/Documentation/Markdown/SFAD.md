@@ -37,3 +37,9 @@ SFAD[{{0, p . q}, m^2}]
 ```
 
 $$\frac{1}{(p\cdot q-m^2+i \eta )}$$
+
+```mathematica
+SFAD[{{0, n . q}}]
+```
+
+$$\frac{1}{(n\cdot q+i \eta )}$$
