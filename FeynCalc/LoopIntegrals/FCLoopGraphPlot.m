@@ -73,6 +73,8 @@ Options[FCLoopGraphPlot] = {
 	GraphPlot -> False
 };
 
+FCLoopGraphPlot[False, OptionsPattern[]] :=
+	Graphics[];
 
 FCLoopGraphPlot[{edges_List, labels_List, _List, pref_/;Head[pref]=!=List}, opts : OptionsPattern[]] :=
 	FCLoopGraphPlot[{edges, labels, pref}, opts];
