@@ -63,5 +63,23 @@ SFAD[{{p1,0},{0,1},1}],SFAD[{{p1-Q,0},{0,1},1}],SFAD[{{p1+p3,0},{0,1},\
 ,{0,1},1}],SFAD[{{p+q1,0},{0,1},1}]},{q1,q2},{p},{},{}]},FCTopology[\
 prop2L,{SFAD[{{q1-q2,0},{0,1},1}],SFAD[{{q1,0},{0,1},1}],SFAD[{{-p+q1,\
 0},{0,1},1}],SFAD[{{q2,0},{0,1},1}],SFAD[{{-p+q2,0},{0,1},1}]},{q1,q2}\
-,{p},{},{}]]", "{{q1 -> -q2, q2 -> q1}}"}
+,{p},{},{}]]", "{{q1 -> -q2, q2 -> q1}}"},
+{"fcstfcstFCLoopFindMomentumShifts-ID7",
+"FCLoopFindMomentumShifts[{FCTopology[
+topo1, {FeynAmpDenominator[
+	PropagatorDenominator[Momentum[l1, D], mt]],
+	FeynAmpDenominator[
+	PropagatorDenominator[Momentum[l1 + q1, D], mt]],
+	FeynAmpDenominator[
+	PropagatorDenominator[Momentum[l1 - q2, D], mt]]}, {l1}, {q1,
+	q2}, {}, {}]},
+FCTopology[
+topo2, {FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[l1, D], 0, -mt^2, {1, 1}]],
+	FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[l1 - q1, D],
+	0, -mt^2, {1, 1}]],
+FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[l1 + q2, D],
+	0, -mt^2, {1, 1}]]}, {l1}, {q1, q2}, {}, {}]]", "{{l1 -> -l1}}"}
 });

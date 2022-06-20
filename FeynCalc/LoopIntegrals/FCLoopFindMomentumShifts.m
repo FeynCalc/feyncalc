@@ -152,7 +152,7 @@ findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmomsRaw_List]
 		];
 
 		res = (First[sol] /. mark -> Identity);
-		If[	MomentumCombine[FDS[from/.res]]=!=MomentumCombine[FDS[to]],
+		If[	MomentumCombine[FDS[ToSFAD[from/.res,FCI->True],FCI->True]]=!=MomentumCombine[FDS[ToSFAD[to,FCI->True],FCI->True]],
 			FCPrint[3, "FCLoopFindMomentumShifts: LHS (from):  ", MomentumCombine[FDS[from/.res]], FCDoControl -> fcflsVerbose];
 			FCPrint[3, "FCLoopFindMomentumShifts: RHS (to):  ", MomentumCombine[FDS[to]], FCDoControl -> fcflsVerbose];
 			Message[FCLoopFindMomentumShifts::failmsg,"The obtained set of shifts is incorrect."];

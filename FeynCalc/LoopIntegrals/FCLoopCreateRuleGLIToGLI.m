@@ -45,7 +45,8 @@ crgtgVerbose::usage="";
 Options[FCLoopCreateRuleGLIToGLI] = {
 	FCI				-> False,
 	FCVerbose		-> False,
-	MomentumExpand	-> True
+	MomentumExpand	-> True,
+	ToSFAD			-> True
 };
 
 
@@ -78,9 +79,14 @@ FCLoopCreateRuleGLIToGLI[mainTopo_FCTopology, subTopo_FCTopology, OptionsPattern
 			{mainProps, subProps} 	= {mainTopo[[2]], subTopo[[2]]}
 		];
 
+		If[ OptionValue[ToSFAD],
+			{mainProps, subProps} = ToSFAD[{mainProps, subProps},FCI->True]
+		];
+
 		If[ OptionValue[MomentumExpand],
 			{mainProps, subProps} = MomentumExpand[{mainProps, subProps}]
 		];
+
 
 		{mainLen, subLen} = Length/@{mainProps, subProps};
 

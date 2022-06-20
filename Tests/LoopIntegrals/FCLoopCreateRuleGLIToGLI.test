@@ -62,5 +62,25 @@ FCTopology[
 tad2lX3, {FAD[{p1, m1}], FAD[{p2, m2}]}, {p1, p2}, {}, {}, {}]}}]",
 "{{GLI[prop2lX1, {n2_, n3_, n4_, n5_}] :> GLI[prop2l, {0, n2, n3, n4, n5}],
 GLI[prop2lX5, {n1_, n2_, n3_, n4_}] :> GLI[prop2l, {n1, n2, n3, n4, 0}]},
-{GLI[tad2lX2, {n1_, n3_}] :> GLI[tad2l, {n1, 0, n3}], GLI[tad2lX3, {n1_, n2_}] :> GLI[tad2l, {n1, n2, 0}]}}"}
+{GLI[tad2lX2, {n1_, n3_}] :> GLI[tad2l, {n1, 0, n3}], GLI[tad2lX3, {n1_, n2_}] :> GLI[tad2l, {n1, n2, 0}]}}"},
+{"FCLoopCreateRuleGLIToGLI-ID7",
+"FCLoopCreateRuleGLIToGLI[
+FCTopology[
+\"fctopology1\", {FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[l1, D], 0, -mt^2, {1, 1}]],
+	FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[l1, D] + Momentum[q2, D],
+	0, -mt^2, {1, 1}]],
+FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[l1, D] - Momentum[q1, D],
+	0, -mt^2, {1, 1}]]}, {l1}, {q1, q2}, {}, {}],
+FCTopology[
+\"tri1l\", {FeynAmpDenominator[
+	PropagatorDenominator[Momentum[l1, D], mt]],
+FeynAmpDenominator[
+	PropagatorDenominator[Momentum[l1, D] - Momentum[q1, D], mt]],
+FeynAmpDenominator[
+	PropagatorDenominator[Momentum[l1, D] + Momentum[q2, D],
+	mt]]}, {-l1}, {q1, q2}, {}, {}]]",
+"GLI[\"tri1l\", {n1_, n3_, n2_}] :> GLI[\"fctopology1\", {n1, n2, n3}]"}
 });

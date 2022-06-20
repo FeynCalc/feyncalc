@@ -206,5 +206,29 @@ n4_}] :> GLI[prop2LX3, {n1, n2, n3, n4}]}, {FCTopology[fctopology3, \
 {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{p - \
 q1, 0}, {0, 1}, 1}], SFAD[{{p - q1 + q2, 0}, {0, 1}, 1}]}, {q1, q2}, \
 {p}, {}, {}], {q1 -> q2, q2 -> -q1 + q2}, GLI[fctopology3, {n2_, n1_, \
-n4_, n3_}] :> GLI[prop2LX1, {n1, n2, n3, n4}]}}"}
+n4_, n3_}] :> GLI[prop2LX1, {n1, n2, n3, n4}]}}"},
+{"fcstFCLoopFindTopologyMappings-ID5",
+"FCLoopFindTopologyMappings[{FCTopology[
+tri1l, {FAD[{l1, mt}], FAD[{l1 + q1, mt}],
+	FAD[{l1 - q2, mt}]}, {l1}, {q1, q2}, {}, {}],
+FCTopology[
+fcTopo1, {FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[l1, D],
+	0, -mt^2, {1, 1}]],
+	FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[l1 + q2, D],
+	0, -mt^2, {1, 1}]],
+	FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[l1 - q1, D],
+0, -mt^2, {1, 1}]]}, {l1}, {q1, q2}, {}, {}]}]",
+"{{FCTopology[
+tri1l, {FeynAmpDenominator[
+	PropagatorDenominator[Momentum[l1, D], mt]],
+	FeynAmpDenominator[
+	PropagatorDenominator[Momentum[l1, D] + Momentum[q1, D], mt]],
+	FeynAmpDenominator[
+	PropagatorDenominator[Momentum[l1, D] - Momentum[q2, D],
+	mt]]}, {l1}, {q1, q2}, {}, {}], {l1 -> -l1},
+GLI[tri1l, {n1_, n3_, n2_}] :> GLI[fcTopo1, {n1, n2, n3}]}}"}
+
 });
