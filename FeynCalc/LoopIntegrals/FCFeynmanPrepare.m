@@ -100,7 +100,7 @@ FCFeynmanPrepare[gli_, topo_FCTopology, opts:OptionsPattern[]] :=
 		optLoopMomenta = OptionValue[LoopMomenta];
 		lmomsHead = Head[optLoopMomenta[1,1]];
 
-		int = FCLoopFromGLI[gli, topo, FCI->OptionValue[FCI], LoopMomenta->optLoopMomenta];
+		int = FCLoopFromGLI[gli, topo, FCI->OptionValue[FCI], LoopMomenta->optLoopMomenta, FeynAmpDenominatorExplicit->False];
 
 		If[	OptionValue[FCI],
 			optFinalSubstitutions = topo[[5]],
@@ -132,7 +132,7 @@ FCFeynmanPrepare[glis_, topos:{__FCTopology}, opts:OptionsPattern[]] :=
 		optLoopMomenta = OptionValue[LoopMomenta];
 		lmomsHead = Head[optLoopMomenta[1,1]];
 
-		ints = FCLoopFromGLI[glis, topos, FCI->OptionValue[FCI], LoopMomenta->optLoopMomenta];
+		ints = FCLoopFromGLI[glis, topos, FCI->OptionValue[FCI], LoopMomenta->optLoopMomenta, FeynAmpDenominatorExplicit->False];
 
 		(*relTopos is a list of lists*)
 		relTopos= FCLoopSelectTopology[{#},topos]&/@glis;
