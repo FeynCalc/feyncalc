@@ -43,25 +43,53 @@ mappings={
 {FCTopology[fctopology3,{SFAD[{{p3,0},{0,1},1}],SFAD[{{p2,0},{0,1},1}],
 SFAD[{{p1,0},{0,1},1}],SFAD[{{p2+p3,0},{0,1},1}],SFAD[{{p1+p3,0},{0,1},1}],
 SFAD[{{p2-Q,0},{0,1},1}],SFAD[{{p2+p3-Q,0},{0,1},1}],SFAD[{{p1+p3-Q,0},{0,1},1}],
-SFAD[{{p1+p2+p3-Q,0},{0,1},1}]}],{p1->-p1-p3+Q,p2->-p2-p3+Q,p3->p3},
+SFAD[{{p1+p2+p3-Q,0},{0,1},1}]},{p1,p2,p3},{Q},{},{}],{p1->-p1-p3+Q,p2->-p2-p3+Q,p3->p3},
 GLI[fctopology3,{n1_,n7_,n8_,n5_,n6_,n4_,n2_,n3_,n9_}]:>
 GLI[fctopology1,{n1,n2,n3,n4,n5,n6,n7,n8,n9}]},
 
 {FCTopology[fctopology4,{SFAD[{{p3,0},{0,1},1}],SFAD[{{p2,0},{0,1},1}],SFAD[{{p1,0},{0,1},1}],
 SFAD[{{p2+p3,0},{0,1},1}],SFAD[{{p1+p3,0},{0,1},1}],SFAD[{{p2-Q,0},{0,1},1}],SFAD[{{p1-Q,0},{0,1},1}],
-SFAD[{{p1+p3-Q,0},{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,1},1}]}],{p1->-p2+Q,p2->-p1+Q,p3->-p3},
+SFAD[{{p1+p3-Q,0},{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,1},1}]},{p1,p2,p3},{Q},{},{}],{p1->-p2+Q,p2->-p1+Q,p3->-p3},
 GLI[fctopology4,{n1_,n6_,n5_,n8_,n7_,n3_,n2_,n4_,n9_}]:>
 GLI[fctopology1,{n1,n2,n3,n4,n5,n6,n7,n8,n9}]},
 
 {FCTopology[fctopology5,{SFAD[{{p3,0},{0,1},1}],SFAD[{{p2,0},{0,1},1}],SFAD[{{p1,0},{0,1},1}],
 SFAD[{{p1+p3,0},{0,1},1}],SFAD[{{p2-Q,0},{0,1},1}],SFAD[{{p1-Q,0},{0,1},1}],SFAD[{{p1+p3-Q,0},{0,1},1}],
-SFAD[{{p1+p2-Q,0},{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,1},1}]}],{p1->p2,p2->p1,p3->p3},
+SFAD[{{p1+p2-Q,0},{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,1},1}]},{p1,p2,p3},{Q},{},{}],{p1->p2,p2->p1,p3->p3},
 GLI[fctopology5,{n1_,n3_,n2_,n4_,n6_,n5_,n7_,n8_,n9_}]:>
 GLI[fctopology2,{n1,n2,n3,n4,n5,n6,n7,n8,n9}]}}
 
 
 (* ::Text:: *)
-(*`FCLoopApplyTopologyMappings`  applies the given mappings to the expression creating an output that is ready to be processed further.*)
+(*These are the two topologies onto which everything is mapped*)
 
 
-FCLoopApplyTopologyMappings[ex,mappings,Head->gliProduct]
+finalTopos={
+FCTopology[fctopology1,{SFAD[{{p3,0},{0,1},1}],SFAD[{{p2,0},{0,1},1}],SFAD[{{p1,0},{0,1},1}],SFAD[{{p2+p3,0},{0,1},1}],SFAD[{{p2-Q,0},{0,1},1}],
+SFAD[{{p1-Q,0},{0,1},1}],SFAD[{{p2+p3-Q,0},{0,1},1}],SFAD[{{p1+p3-Q,0},{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,1},1}]},{p1,p2,p3},{Q},{},{}],
+FCTopology[fctopology2,{SFAD[{{p3,0},{0,1},1}],SFAD[{{p2,0},{0,1},1}],SFAD[{{p1,0},{0,1},1}],SFAD[{{p2+p3,0},{0,1},1}],SFAD[{{p2-Q,0},{0,1},1}],
+SFAD[{{p1-Q,0},{0,1},1}],SFAD[{{p2+p3-Q,0},{0,1},1}],SFAD[{{p1+p2-Q,0},{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,1},1}]},{p1,p2,p3},{Q},{},{}]}
+
+
+(* ::Text:: *)
+(*`FCLoopApplyTopologyMappings`  applies the given mappings to the expression creating an output that is ready to be processed further*)
+
+
+res=FCLoopApplyTopologyMappings[ex,mappings,Head->gliProduct]
+
+
+(* ::Text:: *)
+(*Using `FCLoopCreateRulesToGLI` we obtain rules for rewriting scalar products as inverse `GLI`s*)
+
+
+spToGliRules=FCLoopCreateRulesToGLI[finalTopos]
+
+
+aux=res/.gliProduct[x_,y:GLI[idd_,inds_List]]/;(!FreeQ[spToGliRules,idd]):>gliProduct2[ExpandScalarProduct[x]/.SelectNotFree[spToGliRules,idd][[1]],y]/.gliProduct2[x_,y_]/;FreeQ[x,Pair]:> x y
+
+
+(* ::Text:: *)
+(*And here is our final expression written only in terms `GLI`s*)
+
+
+resFinal=Collect2[aux/.gliProduct2->Times,GLI]/.GLI->GLIMultiply/.GLIMultiply->GLI

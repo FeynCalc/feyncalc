@@ -8,35 +8,43 @@
 
 ### Examples
 
+Here we have a set of 5 topologies
+
 ```mathematica
-FCLoopFindTopologyMappings[{
-   FCTopology[fctopology1, {SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], 
-     SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], 
-     SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], 
-     SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, {}], 
-   FCTopology[fctopology2, {SFAD[{{p3, 0}, {0, 1}, 1}], 
-     SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], 
-     SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], 
-     SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 - Q, 0}, {0, 1}, 1}], 
-     SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, {}], 
-   FCTopology[fctopology3, {SFAD[{{p3, 0}, {0, 1}, 1}], 
-     SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], 
-     SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p1 + p3, 0}, {0, 1}, 1}],
-     SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], 
-     SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, 
-    {p1, p2, p3}, {Q}, {}, {}], 
-   FCTopology[fctopology4, {SFAD[{{p3, 0}, {0, 1}, 1}], 
-     SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], 
-     SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p1 + p3, 0}, {0, 1}, 1}],
-     SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], 
-     SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, 
-    {p1, p2, p3}, {Q}, {}, {}], 
-   FCTopology[fctopology5, {SFAD[{{p3, 0}, {0, 1}, 1}], 
-     SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], 
-     SFAD[{{p1 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], 
-     SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], 
-     SFAD[{{p1 + p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, 
-    {p1, p2, p3}, {Q}, {}, {}]}]
+topos1 = {
+    FCTopology[fctopology1, {SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], 
+      SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], 
+      SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], 
+      SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, {}], 
+    FCTopology[fctopology2, {SFAD[{{p3, 0}, {0, 1}, 1}], 
+      SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], 
+      SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], 
+      SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 - Q, 0}, {0, 1}, 1}], 
+      SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, {}], 
+    FCTopology[fctopology3, {SFAD[{{p3, 0}, {0, 1}, 1}], 
+      SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], 
+      SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p1 + p3, 0}, {0, 1}, 1}], 
+      SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], 
+      SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, 
+     {p1, p2, p3}, {Q}, {}, {}], 
+    FCTopology[fctopology4, {SFAD[{{p3, 0}, {0, 1}, 1}], 
+      SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], 
+      SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p1 + p3, 0}, {0, 1}, 1}], 
+      SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], 
+      SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, 
+     {p1, p2, p3}, {Q}, {}, {}], 
+    FCTopology[fctopology5, {SFAD[{{p3, 0}, {0, 1}, 1}], 
+      SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], 
+      SFAD[{{p1 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}],
+      SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], 
+      SFAD[{{p1 + p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, 
+     {p1, p2, p3}, {Q}, {}, {}]};
+```
+
+3 of them can be mapped to the other two
+
+```mathematica
+mappings1 = FCLoopFindTopologyMappings[topos1]
 ```
 
 $$\left(
@@ -47,23 +55,46 @@ $$\left(
 \end{array}
 \right)$$
 
+And these are the final topologies
+
 ```mathematica
-FCLoopFindTopologyMappings[{FCTopology[fctopology1, {SFAD[{{q2, 0}, {0, 1}, 1}], 
+finalTopos1 = FCLoopSelectTopology[Last /@ Last[Transpose[mappings1]], topos1] // FCE // StandardForm
+
+(*{FCTopology[fctopology1, {SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, {}], FCTopology[fctopology2, {SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, {}]}*)
+```
+
+Here is another example
+
+```mathematica
+topos2 = {FCTopology[fctopology1, {SFAD[{{q2, 0}, {0, 1}, 1}], 
      SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{q1 + q2, 0}, {0, 1}, 1}], SFAD[{{p + q1, 0}, {0, 1}, 1}], 
      SFAD[{{p - q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}], 
    FCTopology[fctopology2, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}], 
      SFAD[{{p + q2, 0}, {0, 1}, 1}], SFAD[{{p - q1, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}], 
    FCTopology[fctopology3, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}], 
-     SFAD[{{p - q1, 0}, {0, 1}, 1}], SFAD[{{p - q1 + q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}]}, 
-  PreferredTopologies -> {FCTopology[prop2L, {SFAD[{{q1, 0}, {0, 1}, 1}], 
-      SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1 - q2, 0}, {0, 1}, 1}], SFAD[{{-p + q1, 0}, {0, 1}, 1}], 
-      SFAD[{{-p + q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}], 
-    FCTopology[prop2LX1, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1 - q2, 0}, {0, 1}, 1}], 
-      SFAD[{{-p + q1, 0}, {0, 1}, 1}], SFAD[{{-p + q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}], 
-    FCTopology[prop2LX3, {SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{q2, 0}, {0, 1}, 1}],
-      SFAD[{{-p + q1, 0}, {0, 1}, 1}], SFAD[{{-p + q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}], 
-    FCTopology[prop2LX15, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1 - q2, 0}, {0, 1}, 1}], 
-      SFAD[{{-p + q1, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}]}]
+     SFAD[{{p - q1, 0}, {0, 1}, 1}], SFAD[{{p - q1 + q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}]}
+```
+
+$$\left\{\text{FCTopology}\left(\text{fctopology1},\left\{\frac{1}{(\text{q2}^2+i \eta )},\frac{1}{(\text{q1}^2+i \eta )},\frac{1}{((\text{q1}+\text{q2})^2+i \eta )},\frac{1}{((p+\text{q1})^2+i \eta )},\frac{1}{((p-\text{q2})^2+i \eta )}\right\},\{\text{q1},\text{q2}\},\{p\},\{\},\{\}\right),\text{FCTopology}\left(\text{fctopology2},\left\{\frac{1}{(\text{q2}^2+i \eta )},\frac{1}{(\text{q1}^2+i \eta )},\frac{1}{((p+\text{q2})^2+i \eta )},\frac{1}{((p-\text{q1})^2+i \eta )}\right\},\{\text{q1},\text{q2}\},\{p\},\{\},\{\}\right),\text{FCTopology}\left(\text{fctopology3},\left\{\frac{1}{(\text{q2}^2+i \eta )},\frac{1}{(\text{q1}^2+i \eta )},\frac{1}{((p-\text{q1})^2+i \eta )},\frac{1}{((p-\text{q1}+\text{q2})^2+i \eta )}\right\},\{\text{q1},\text{q2}\},\{p\},\{\},\{\}\right)\right\}$$
+
+Yet this time we have some preferred set of topologies and want to match to them (if possible)
+
+```mathematica
+preferredTopos2 = {FCTopology[prop2L, {SFAD[{{q1, 0}, {0, 1}, 1}], 
+     SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1 - q2, 0}, {0, 1}, 1}], SFAD[{{-p + q1, 0}, {0, 1}, 1}], 
+     SFAD[{{-p + q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}], 
+   FCTopology[prop2LX1, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1 - q2, 0}, {0, 1}, 1}], 
+     SFAD[{{-p + q1, 0}, {0, 1}, 1}], SFAD[{{-p + q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}], 
+   FCTopology[prop2LX3, {SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{q2, 0}, {0, 1}, 1}], 
+     SFAD[{{-p + q1, 0}, {0, 1}, 1}], SFAD[{{-p + q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}], 
+   FCTopology[prop2LX15, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1 - q2, 0}, {0, 1}, 1}], 
+     SFAD[{{-p + q1, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}]}
+```
+
+$$\left\{\text{FCTopology}\left(\text{prop2L},\left\{\frac{1}{(\text{q1}^2+i \eta )},\frac{1}{(\text{q2}^2+i \eta )},\frac{1}{((\text{q1}-\text{q2})^2+i \eta )},\frac{1}{((\text{q1}-p)^2+i \eta )},\frac{1}{((\text{q2}-p)^2+i \eta )}\right\},\{\text{q1},\text{q2}\},\{p\},\{\},\{\}\right),\text{FCTopology}\left(\text{prop2LX1},\left\{\frac{1}{(\text{q2}^2+i \eta )},\frac{1}{((\text{q1}-\text{q2})^2+i \eta )},\frac{1}{((\text{q1}-p)^2+i \eta )},\frac{1}{((\text{q2}-p)^2+i \eta )}\right\},\{\text{q1},\text{q2}\},\{p\},\{\},\{\}\right),\text{FCTopology}\left(\text{prop2LX3},\left\{\frac{1}{(\text{q1}^2+i \eta )},\frac{1}{(\text{q2}^2+i \eta )},\frac{1}{((\text{q1}-p)^2+i \eta )},\frac{1}{((\text{q2}-p)^2+i \eta )}\right\},\{\text{q1},\text{q2}\},\{p\},\{\},\{\}\right),\text{FCTopology}\left(\text{prop2LX15},\left\{\frac{1}{(\text{q2}^2+i \eta )},\frac{1}{((\text{q1}-\text{q2})^2+i \eta )},\frac{1}{((\text{q1}-p)^2+i \eta )}\right\},\{\text{q1},\text{q2}\},\{p\},\{\},\{\}\right)\right\}$$
+
+```mathematica
+mappings2 = FCLoopFindTopologyMappings[topos2, PreferredTopologies -> preferredTopos2]
 ```
 
 $$\left(
@@ -73,3 +104,11 @@ $$\left(
  \;\text{FCTopology}\left(\text{fctopology3},\left\{\frac{1}{(\text{q2}^2+i \eta )},\frac{1}{(\text{q1}^2+i \eta )},\frac{1}{((p-\text{q1})^2+i \eta )},\frac{1}{((p-\text{q1}+\text{q2})^2+i \eta )}\right\},\{\text{q1},\text{q2}\},\{p\},\{\},\{\}\right) & \{\text{q1}\to \;\text{q2},\text{q2}\to \;\text{q2}-\text{q1}\} & G^{\text{fctopology3}}(\text{n2$\_$},\text{n1$\_$},\text{n4$\_$},\text{n3$\_$}):\to G^{\text{prop2LX1}}(\text{n1},\text{n2},\text{n3},\text{n4}) \\
 \end{array}
 \right)$$
+
+And these are the final occurring topologies
+
+```mathematica
+finalTopos2 = FCLoopSelectTopology[Last /@ Last[Transpose[mappings2]], Join[topos2, preferredTopos2]]
+```
+
+$$\left\{\text{FCTopology}\left(\text{prop2L},\left\{\frac{1}{(\text{q1}^2+i \eta )},\frac{1}{(\text{q2}^2+i \eta )},\frac{1}{((\text{q1}-\text{q2})^2+i \eta )},\frac{1}{((\text{q1}-p)^2+i \eta )},\frac{1}{((\text{q2}-p)^2+i \eta )}\right\},\{\text{q1},\text{q2}\},\{p\},\{\},\{\}\right),\text{FCTopology}\left(\text{prop2LX1},\left\{\frac{1}{(\text{q2}^2+i \eta )},\frac{1}{((\text{q1}-\text{q2})^2+i \eta )},\frac{1}{((\text{q1}-p)^2+i \eta )},\frac{1}{((\text{q2}-p)^2+i \eta )}\right\},\{\text{q1},\text{q2}\},\{p\},\{\},\{\}\right),\text{FCTopology}\left(\text{prop2LX3},\left\{\frac{1}{(\text{q1}^2+i \eta )},\frac{1}{(\text{q2}^2+i \eta )},\frac{1}{((\text{q1}-p)^2+i \eta )},\frac{1}{((\text{q2}-p)^2+i \eta )}\right\},\{\text{q1},\text{q2}\},\{p\},\{\},\{\}\right)\right\}$$
