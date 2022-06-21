@@ -136,7 +136,7 @@ FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1, "FCLoopFindIntegralMappings: Removing irrelevant integrals from the preferred list.", FCDoControl -> fcfpmVerbose];
 		res = Map[
-			If[	SelectFree[#,optPreferredIntegrals]==={},
+			If[	Complement[#,optPreferredIntegrals]==={},
 				Unevaluated[Sequence[]],
 				#]&,res];
 		FCPrint[1, "FCLoopFindIntegralMappings: Done removing irrelevant integrals, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfpmVerbose];
@@ -144,7 +144,7 @@ FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 		FCPrint[3, "FCLoopFindIntegralMappings: Preliminary result without irrelevant integrals: ", res, FCDoControl->fcfpmVerbose];
 
 		(*Only return replacement rules if the input is a list of GLIs and the List option is set to False*)
-		If[	!OptionValue[List] && MatchQ[expr,{(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..}],
+		If[	!OptionValue[List] && FreeQ[expr,FCTopology] (*MatchQ[expr,{(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..}]*),
 
 				time=AbsoluteTime[];
 				FCPrint[1, "FCLoopFindIntegralMappings: Creating final mapping rules.", FCDoControl -> fcfpmVerbose];
