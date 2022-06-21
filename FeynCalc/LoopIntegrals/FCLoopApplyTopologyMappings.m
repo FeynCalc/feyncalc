@@ -76,7 +76,7 @@ FCLoopApplyTopologyMappings[expr_, mappings_List, OptionsPattern[]] :=
 		repRule = Flatten[repRule] /. rule->Rule;
 
 
-		res = tmp /. Dispatch[repRule] /. optHead -> Times;
+		res = tmp /. Dispatch[repRule] (*/. optHead -> Times*);
 
 
 		If[	OptiopnValue[FCE],
@@ -88,7 +88,7 @@ FCLoopApplyTopologyMappings[expr_, mappings_List, OptionsPattern[]] :=
 	];
 
 applyMapping[terms_List, mappingRules_List] :=
-	Map[rule[#, # /. mappingRules[[2]] /. mappingRules[[3]] /. optHead -> Times] &, terms]
+	Map[rule[#, # /. mappingRules[[2]] /. mappingRules[[3]] (*/. optHead -> Times*)] &, terms]
 
 FCPrint[1,"FCLoopApplyTopologyMappings.m loaded."];
 End[]

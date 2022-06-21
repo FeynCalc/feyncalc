@@ -41,13 +41,17 @@ n9}]},{FCTopology[fctopology5,{SFAD[{{p3,0},{0,1},1}],SFAD[{{p2,0},{0,\
 {p1+p2-Q,0},{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,1},1}]}],{p1->p2,p2->p1,\
 p3->p3},GLI[fctopology5,{n1_,n3_,n2_,n4_,n6_,n5_,n7_,n8_,n9_}]:>GLI[\
 fctopology2,{n1,n2,n3,n4,n5,n6,n7,n8,n9}]}},Head->gliProduct]",
-"cc6*GLI[fctopology1, {1, 1, 2, 1, 1, 1, 1, 1, \
-1}]*Pair[Momentum[p1, D], Momentum[p1, D]] + cc2*GLI[fctopology2, {1, \
-1, 1, 1, 1, 1, 1, 1, 1}]*Pair[Momentum[p1, D], Momentum[p2, D]] + \
-cc1*GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 1, 1}]*Pair[Momentum[p1, \
-D], Momentum[Q, D]] + cc5*GLI[fctopology2, {1, 1, 1, 1, 1, 1, 1, 1, \
-1}]*Pair[Momentum[p1, D], Momentum[Q, D]] + cc4*GLI[fctopology1, {1, \
-1, 1, 1, 1, 1, 1, 1, 1}]*Pair[Momentum[-p1 + Q, D], Momentum[-p2 + Q, \
-D]] + cc3*GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 1, \
-1}]*Pair[Momentum[-p2 - p3 + Q, D], Momentum[-p2 - p3 + Q, D]]"}
+"gliProduct[cc6*Pair[Momentum[p1, D], Momentum[p1, D]],
+GLI[fctopology1, {1, 1, 2, 1, 1, 1, 1, 1, 1}]] +
+gliProduct[cc2*Pair[Momentum[p1, D], Momentum[p2, D]],
+GLI[fctopology2, {1, 1, 1, 1, 1, 1, 1, 1, 1}]] +
+gliProduct[cc1*Pair[Momentum[p1, D], Momentum[Q, D]],
+GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 1, 1}]] +
+gliProduct[cc5*Pair[Momentum[p1, D], Momentum[Q, D]],
+GLI[fctopology2, {1, 1, 1, 1, 1, 1, 1, 1, 1}]] +
+gliProduct[cc4*Pair[Momentum[-p1 + Q, D], Momentum[-p2 + Q, D]],
+GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 1, 1}]] +
+gliProduct[
+cc3*Pair[Momentum[-p2 - p3 + Q, D], Momentum[-p2 - p3 + Q, D]],
+GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 1, 1}]]"}
 });
