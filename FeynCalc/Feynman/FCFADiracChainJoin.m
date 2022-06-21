@@ -198,7 +198,7 @@ diracChainEvalS[rest_. DiracChain[S: Spinor[_. m1_Momentum, ___], a_DiracIndex] 
 
 (* u_i v_j A_ij -> ubar.A.v or vbar.A.u *)
 diracChainEvalS[rest_. DiracChain[S: Spinor[_. m1_Momentum, ___], a_DiracIndex] DiracChain[z_, a_DiracIndex, b_DiracIndex] DiracChain[Spinor[s_. m2_Momentum, r___], b_DiracIndex]]:=
-	diracChainEvalS[rest ordering[First[m2],First[m1]]] FCCCT[DOT[S, z, Spinor[-s m2, r]], Explicit->True, FCDiracIsolate->True, FCI->True]/; MemberQ[optFirst, Spinor[s m2, r]];
+	diracChainEvalS[rest ordering[First[m2],First[m1]]] SpinorChainTranspose[DOT[S, z, Spinor[-s m2, r]], FCI->True]/; MemberQ[optFirst, Spinor[s m2, r]];
 
 diracChainEvalS[rest_. ordering[a__] ordering[b__]]:=
 	diracChainEvalS[rest ordering[a,b]];
