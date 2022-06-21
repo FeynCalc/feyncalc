@@ -191,7 +191,25 @@ Col6] SUNTF[{Glu5}, colInB, Col7]"},
 	DiracIndex[Dir6]]}, FCE -> True]",
 "{Spinor[-Momentum[InMom2], mqu, 1] . GA[Lor1] .
 GA[7] . (mqu - GS[InMom2 - OutMom3]) . GS[-OutMom1 - OutMom2] .
-GA[Lor2] . GA[7] . Spinor[Momentum[InMom1], mqu, 1]}"}
+GA[Lor2] . GA[7] . Spinor[Momentum[InMom1], mqu, 1]}"},
+{"fcstFCFADiracChainJoin-ID7","FCFADiracChainJoin[
+DiracChain[Spinor[-Momentum[p1, D], mqu, 1],
+	DiracIndex[Dir1]] DiracChain[Spinor[-Momentum[p2, D], mqu, 1],
+	DiracIndex[Dir2]] DiracChain[DiracGamma[LorentzIndex[Lor2, D], D],
+	DiracIndex[Dir5], DiracIndex[Dir1]] DiracChain[
+	DiracGamma[LorentzIndex[Lor3, D], D], DiracIndex[Dir2],
+	DiracIndex[Dir7]] DiracChain[
+	mqu + DiracGamma[Momentum[-l - p2, D], D], DiracIndex[Dir7],
+	DiracIndex[Dir8]] DiracChain[
+	mqu + DiracGamma[Momentum[-k - k1 - k2 + l + p2, D], D],
+	DiracIndex[Dir5], DiracIndex[Dir6]] DiracChain[
+	DiracGamma[LorentzIndex[LCdummy2, D], D] . DiracGamma[6],
+	DiracIndex[Dir8], DiracIndex[Dir6]] // FCE,
+First -> {Spinor[-Momentum[p2, D], mqu, 1]}, FCE -> True]",
+"-Spinor[-Momentum[p2, D], mqu, 1] .
+GAD[Lor3] . (mqu + GSD[-l - p2]) . GAD[LCdummy2] .
+GA[6] . (mqu - GSD[-k - k1 - k2 + l + p2]) . GAD[Lor2] .
+Spinor[Momentum[p1, D], mqu, 1]"}
 };
 
 
