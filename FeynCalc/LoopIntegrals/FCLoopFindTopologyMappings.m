@@ -101,7 +101,7 @@ FCLoopFindTopologyMappings[topos:{__FCTopology}, OptionsPattern[]] :=
 
 
 findMappings[input_List, preferred_List] :=
-	Block[{target, source, shifts, gliRules, sourceShifted},
+	Block[{target, source, shifts, gliRules, sourceShifted, time},
 
 	If[	preferred === {},
 		target = input[[1]],
@@ -122,7 +122,14 @@ findMappings[input_List, preferred_List] :=
 
 	(*TODO More checks and debugging output *)
 
+	FCPrint[3, "FCLoopFindTopologyMappings: findMappings: source topologies:", Last/@source, FCDoControl -> fclftpVerbose];
+	FCPrint[3, "FCLoopFindTopologyMappings: findMappings: target topology:", Last[target], FCDoControl -> fclftpVerbose];
+
+	time=AbsoluteTime[];
+	FCPrint[2, "FCLoopFindTopologyMappings: findMappings: Calling FCLoopFindMomentumShifts.", FCDoControl -> fclftpVerbose];
+
 	shifts = FCLoopFindMomentumShifts[Last/@source, Last[target]];
+	FCPrint[2, "FCLoopFindTopologyMappings: findMappings: FCLoopFindMomentumShifts done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclftpVerbose];
 
 	sourceShifted = MapThread[ReplaceAll[First[#1], #2]&, {source, shifts}];
 
