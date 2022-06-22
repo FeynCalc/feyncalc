@@ -180,6 +180,12 @@ Gauge::usage =
 "Gauge is an option for GluonPropagator. If set to 1 the 't Hooft Feynman gauge
 is used.";
 
+SameSideExternalEdges::usage =
+"SameSideExternalEdges is an option for FCGraphCuttableQ, FCGraphFindPath and
+other functions. It specifies external edges located on the same side of the
+graph so that a path that starts and ends on edges from this set does not
+prevent us from cutting the integral.";
+
 InitialSubstitutions::usage =
 "InitialSubstitutions is an option for OneLoop and OneLoopSum and Write2. All
 substitutions indicated hereby are done at the end of the calculation.";
