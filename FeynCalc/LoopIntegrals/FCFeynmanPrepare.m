@@ -400,7 +400,7 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 		];
 
 
-		If[ OptionValue[Check],
+		If[ OptionValue[Check] && {symU, symF}=!={0,0},
 			time=AbsoluteTime[];
 			FCPrint[1, "FCFeynmanPrepare: Checking the results.", FCDoControl -> fcszVerbose];
 			(* Check F *)
@@ -591,8 +591,9 @@ buildF[{oldSymU_, oldSymF_}, lmom_] :=
 		FCPrint[3,"FCFeynmanPrepare: buildF: lambda: ", lambda, FCDoControl->fcszVerbose];
 
 		If[	lambda===0,
-			Message[FCFeynmanPrepare::failmsg,"The coefficient of one of the loop momenta squared is zero."];
-			Abort[]
+			Return[{0,0}];
+			(*Message[FCFeynmanPrepare::failmsg,"The coefficient of one of the loop momenta squared is zero."];
+			Abort[]*)
 		];
 
 		time=AbsoluteTime[];
