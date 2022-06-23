@@ -31,7 +31,11 @@ FCLoopFindMomentumShifts[{FCTopology[...], FCTopology[...]}, FCTopology[...]].";
 
 FCLoopFindMomentumShifts::failmsg =
 "Error! FCLoopFindMomentumShifts has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
+
+FCLoopFindMomentumShifts::shifts =
+"Error! FCLoopFindMomentumShifts has encountered a fatal problem and must abort the computation. \
+The problem reads: Failed to find momentum shifts for one of the topologies.";
 
 Begin["`Package`"]
 End[]
@@ -39,10 +43,14 @@ End[]
 Begin["`FCLoopFindMomentumShifts`Private`"]
 
 fcflsVerbose::usage = "";
+optMomentum::usage = "";
+optAbort::usage = "";
 
 Options[FCLoopFindMomentumShifts] = {
+	Abort						-> True,
 	FCI 						-> False,
-	FCVerbose 					-> False
+	FCVerbose 					-> False,
+	Momentum					-> {}
 };
 
 FCLoopFindMomentumShifts[fromRaw:{__FCTopology}, toRaw_FCTopology, opts:OptionsPattern[]] :=
@@ -63,7 +71,13 @@ FCLoopFindMomentumShifts[fromRaw:{__FCTopology}, toRaw_FCTopology, opts:OptionsP
 			Abort[]
 		];
 
-		FCLoopFindMomentumShifts[#[[2]]&/@from, to[[2]], to[[3]], Join[{FCI->True}, FilterRules[{opts}, Except[FCI]]]]
+		optMomentum = OptionValue[Momentum];
+
+		If[	optMomentum===All,
+			optMomentum = to[[4]]
+		];
+
+		FCLoopFindMomentumShifts[#[[2]]&/@from, to[[2]], to[[3]], Join[{FCI->True,Momentum->optMomentum}, FilterRules[{opts}, Except[FCI|Momentum]]]]
 	];
 
 
@@ -81,9 +95,13 @@ FCLoopFindMomentumShifts[fromRaw_List/;FreeQ[fromRaw,FCTopology], toRaw_/;FreeQ[
 			{from, to} = FCI[{fromRaw, toRaw}]
 		];
 
+		optMomentum = OptionValue[Momentum];
+		optAbort = OptionValue[Abort];
+
 		FCPrint[1, "FCLoopFindMomentumShifts: Entering.", FCDoControl -> fcflsVerbose];
 		FCPrint[3, "FCLoopFindMomentumShifts: List of source topologies: ", from, FCDoControl -> fcflsVerbose];
 		FCPrint[3, "FCLoopFindMomentumShifts: Target topology: ", to, FCDoControl -> fcflsVerbose];
+		FCPrint[2, "FCLoopFindMomentumShifts: Allowing kinematic shifts for the following external momenta: ", optMomentum, FCDoControl -> fcflsVerbose];
 
 		If[	!MatchQ[from,{{__FeynAmpDenominator}..}],
 			Message[FCLoopFindMomentumShifts::failmsg,"The list of source topologies is not a list of lists of FeynAmpDenominator objects."];
@@ -109,7 +127,7 @@ FCLoopFindMomentumShifts[fromRaw_List/;FreeQ[fromRaw,FCTopology], toRaw_/;FreeQ[
 
 
 findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmomsRaw_List]:=
-	Block[{lhs, rhs, eq, mark, vars, sol, res, lmoms},
+	Block[{lhs, rhs, eq, mark, vars, sol, res, lmoms, allmoms, extmoms},
 		lhs = MomentumCombine[from,FCI->True];
 		rhs = MomentumCombine[to,FCI->True];
 		{lhs, rhs} = {lhs, rhs} /. {
@@ -125,14 +143,15 @@ findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmomsRaw_List]
 		FCPrint[3, "FCLoopFindMomentumShifts: Preliminary rhs: ", rhs, FCDoControl -> fcflsVerbose];
 
 		If[	!FreeQ[{lhs,rhs},FeynAmpDenominator],
-			Message[FCLoopFindMomentumShifts::failmsg,"Failed to set up a proper system of equations."];
+			Message[FCLoopFindMomentumShifts::shifts];
 			Abort[]
 		];
 
 		lmoms = Select[lmomsRaw,!FreeQ[lhs,#]&];
-
-		vars = mark/@(lmoms);
-		lhs = lhs /. Thread[Rule[lmoms,vars]];
+		extmoms = Select[optMomentum,!FreeQ[lhs,#]&];
+		allmoms = Join[lmoms,extmoms];
+		vars = mark/@(allmoms);
+		lhs = lhs /. Thread[Rule[allmoms,vars]];
 
 		FCPrint[3, "FCLoopFindMomentumShifts: Final lhs: ", lhs, FCDoControl -> fcflsVerbose];
 		FCPrint[3, "FCLoopFindMomentumShifts: Final rhs: ", rhs, FCDoControl -> fcflsVerbose];
@@ -141,23 +160,58 @@ findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmomsRaw_List]
 
 
 		eq = Thread[Equal[lhs^2,rhs^2]];
-
 		sol = Solve[eq,vars];
 
 		FCPrint[3, "FCLoopFindMomentumShifts: Possible shifts: ", sol, FCDoControl -> fcflsVerbose];
 
 		If[	sol==={},
-			Message[FCLoopFindMomentumShifts::failmsg,"Failed to find momentum shifts for one of the topologies."];
-			Abort[]
+			Message[FCLoopFindMomentumShifts::shifts];
+			If[optAbort,
+				Abort[],
+				Return[{}]
+			]
 		];
 
-		res = (First[sol] /. mark -> Identity);
-		If[	MomentumCombine[FDS[ToSFAD[from/.res,FCI->True],FCI->True]]=!=MomentumCombine[FDS[ToSFAD[to,FCI->True],FCI->True]],
-			FCPrint[3, "FCLoopFindMomentumShifts: LHS (from):  ", MomentumCombine[FDS[from/.res]], FCDoControl -> fcflsVerbose];
-			FCPrint[3, "FCLoopFindMomentumShifts: RHS (to):  ", MomentumCombine[FDS[to]], FCDoControl -> fcflsVerbose];
-			Message[FCLoopFindMomentumShifts::failmsg,"The obtained set of shifts is incorrect."];
-			Abort[]
+		(*We need to pick a solution that doesn't mix external momenta into loop momenta*)
+		If[	optMomentum=!={},
+			sol = Map[	If[FreeQ2[(mark/@extmoms)/.#,lmoms],
+					#,
+					Unevaluated[Sequence[]]
+					]&, sol
+			];
+
+			If[	sol==={},
+				Message[FCLoopFindMomentumShifts::shifts];
+				If[	optAbort,
+					Abort[],
+					Return[{}]
+				]
+			];
+
 		];
+
+		(*	In the case of multiple solutions we should select the correct one. For example, in the case of
+			[l^2][l1^2-m^2][l1.q2] and [(l2+q2)^2][l1^2-m^2][l1.q2], a set of shifts containing l1->-l2 is not
+			acceptable.
+
+		*)
+		sol = Map[If[
+			MatchQ[MomentumCombine[FDS[ToSFAD[(from/.#)-to,FCI->True],FCI->True]],{0..}],
+			#,
+			Unevaluated[Sequence[]]
+		]&, sol/. mark -> Identity];
+
+		FCPrint[3, "FCLoopFindMomentumShifts: Valid shifts: ", sol, FCDoControl -> fcflsVerbose];
+
+		If[	sol==={},
+			Message[FCLoopFindMomentumShifts::shifts];
+			If[optAbort,
+				Abort[],
+				Return[{}]
+			]
+		];
+
+		res = First[sol];
 
 		res
 

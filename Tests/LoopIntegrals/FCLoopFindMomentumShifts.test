@@ -81,5 +81,36 @@ topo2, {FeynAmpDenominator[
 	0, -mt^2, {1, 1}]],
 FeynAmpDenominator[
 	StandardPropagatorDenominator[Momentum[l1 + q2, D],
-	0, -mt^2, {1, 1}]]}, {l1}, {q1, q2}, {}, {}]]", "{{l1 -> -l1}}"}
+	0, -mt^2, {1, 1}]]}, {l1}, {q1, q2}, {}, {}]]", "{{l1 -> -l1}}"},
+{"fcstFCLoopFindMomentumShifts-ID8",
+"FCLoopFindMomentumShifts[{FCTopology[fctopology4newR2456,{SFAD[{{\
+l2,0},{0,1},1}],SFAD[{{l1,0},{m^2,1},1}],SFAD[{{0,l1.q2},{0,1},1}]},{\
+l1,l2},{q2},{},{}]},FCTopology[fctopology4newR1456,{SFAD[{{l2+q2,0},{\
+0,1},1}],SFAD[{{l1,0},{m^2,1},1}],SFAD[{{0,l1.q2},{0,1},1}]},{l1,l2},{\
+q2},{},{}]]", "{{l1 -> l1, l2 -> -l2 - q2}}"},
+{"fcstFCLoopFindMomentumShifts-ID9",
+"FCLoopFindMomentumShifts[{FCTopology[topo1, {SFAD[{{l1 + q1, 0}, \
+{m^2, 1}, 1}], SFAD[{{l1 - l2, 0}, {0, 1}, 1}], SFAD[{{l2 + q1, 0}, \
+{m^2, 1}, 1}], SFAD[{{l2 - q2, 0}, {m^2, 1}, 1}], SFAD[{{l2, 0}, {0, \
+1}, 1}]}, {l1, l2}, {q1, q2}, {SPD[q1, q1] -> 0, SPD[q2, q2] -> 0, \
+SPD[q1, q2] -> s/2},
+{}]},
+FCTopology[topo2, {SFAD[{{l1 - l2, 0}, {m^2, 1}, 1}], SFAD[{{l1 - \
+q2, 0}, {0, 1}, 1}], SFAD[{{l2 - q2, 0}, {m^2, 1}, 1}], SFAD[{{l2 + \
+q1, 0}, {m^2, 1}, 1}], SFAD[{{l2, 0}, {0, 1}, 1}]}, {l1, l2}, {q1, \
+q2}, {SPD[q1, q1] -> 0, SPD[q2, q2] -> 0, SPD[q1, q2] -> s/2},
+{}],Momentum->All]",
+"{{l1 -> l1 - l2 - q2, l2 -> -l2, q1 -> q2, q2 -> q1}}"},
+{"fcstFCLoopFindMomentumShifts-ID10",
+"Quiet[FCLoopFindMomentumShifts[{FCTopology[topo1, {SFAD[{{l1 + \
+q1, 0}, {m^2, 1}, 1}], SFAD[{{l1 - l2, 0}, {0, 1}, 1}], SFAD[{{l2 + \
+q1, 0}, {m^2, 1}, 1}], SFAD[{{l2 - q2, 0}, {m^2, 1}, 1}], SFAD[{{l2, \
+0}, {0, 1}, 1}]}, {l1, l2}, {q1, q2}, {SPD[q1, q1] -> 0, SPD[q2, q2] -> \
+0, SPD[q1, q2] -> s/2},
+{}]},
+FCTopology[topo2, {SFAD[{{l1 - l2, 0}, {m^2, 1}, 1}], SFAD[{{l1 - \
+q2, 0}, {0, 1}, 1}], SFAD[{{l2 - q2, 0}, {m^2, 1}, 1}], SFAD[{{l2 + \
+q1, 0}, {m^2, 1}, 1}], SFAD[{{l2, 0}, {0, 1}, 1}]}, {l1, l2}, {q1, \
+q2}, {SPD[q1, q1] -> 0, SPD[q2, q2] -> 0, SPD[q1, q2] -> s/2},
+{}],Abort->False]]", "{{}}"}
 });
