@@ -465,7 +465,7 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 	Block[{	fullyConnectedEdges, currentVertexDegree, intVerticesFound, extVerticesFound,
 			relEdgesList, numEdges, signs, candidates, numExtMoms, intVertexCandidateSets,
 			verticesRaw, fullyConnectedEdgesTest, auxExternalMoms, allVertices, verts,
-			rawInt, rawExt, tmp, lastExtEdge, lastExtVertex} ,
+			rawInt, rawExt, tmp, lastExtEdge, lastExtVertex, list} ,
 
 		fullyConnectedEdges 	= {};
 		intVerticesFound 		= {};
@@ -600,12 +600,13 @@ reconstructAllVertices[intEdgesList_List,extEdgesList_List,auxExtEdgesList_List,
 
 			(*	It may happen that we find multiple candidates for a particular external vertex within one set.	*)
 			verticesRaw = Map[Function[x,
-								If[	Length[x[[2]]] >= numExtVertices-1,
-									First[Map[{x[[1]], #} &, Subsets[x[[2]], {numExtVertices-1}]]],
-									x
+								If[Length[x[[2]]] >= numExtVertices-1,
+									Map[list[x[[1]], #] &, Subsets[x[[2]], {numExtVertices-1}]],
+									Unevaluated[Sequence[]]
 								]
 							], verticesRaw];
 
+			verticesRaw = (Cases2[verticesRaw,list]/.list->List);
 			FCPrint[3, "FCLoopIntegralToGraph: reconstructAllVertices: Possible vertex candidates after revision I: ", verticesRaw, FCDoControl->lbtgVerbose];
 
 			verticesRaw = Select[verticesRaw, ((Length[#[[1]]] === numIntVertices) && (Length[#[[2]]] === numExtVertices - 1))&];
