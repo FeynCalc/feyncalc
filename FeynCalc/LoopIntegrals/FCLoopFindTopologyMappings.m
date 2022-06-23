@@ -21,7 +21,13 @@ topologies (written as FCTopology objects) topo1, topo2, .... For each source
 topology the function returns a list of loop momentum shifts and a GLI
 replacement rule needed to map it to the given target topology. If you need to
 map everything to a particular set of target topologies, you can specify them
-via the PreferredTopologies option.";
+via the PreferredTopologies option.
+
+The output is a list of two lists, the former containing the mappings and  the
+latter enumerating the final contributing topologies
+
+To enable shifts in the external momenta you need to set the option Momentum
+to All.";
 
 FCLoopFindTopologyMappings::failmsg =
 "Error! FCLoopFindTopologyMappings has encountered a fatal problem and must abort the computation. \

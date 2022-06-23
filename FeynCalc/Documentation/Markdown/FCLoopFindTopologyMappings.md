@@ -2,6 +2,10 @@
 
 `FCLoopFindTopologyMappings[{topo1, topo2, ...}]` finds mappings between topologies (written as `FCTopology` objects) `topo1, topo2, ...`. For each source topology the function returns a list of loop momentum shifts and a `GLI` replacement rule needed to map it to the given target topology. If you need to map everything to a particular set of target topologies, you can specify them via the `PreferredTopologies` option.
 
+The output is a list of two lists, the former containing the mappings and  the latter enumerating the final contributing topologies
+
+To enable shifts in the external momenta you need to set the option `Momentum` to `All`.
+
 ### See also
 
 [Overview](Extra/FeynCalc.md), [FCTopology](FCTopology.md), [GLI](GLI.md), [FCLoopFindTopologies](FCLoopFindTopologies.md).
@@ -44,7 +48,11 @@ topos1 = {
 3 of them can be mapped to the other two
 
 ```mathematica
-mappings1 = FCLoopFindTopologyMappings[topos1]
+mappings1 = FCLoopFindTopologyMappings[topos1];
+```
+
+```mathematica
+mappings1[[1]]
 ```
 
 $$\left(
@@ -58,10 +66,10 @@ $$\left(
 And these are the final topologies
 
 ```mathematica
-finalTopos1 = FCLoopSelectTopology[Last /@ Last[Transpose[mappings1]], topos1] // FCE // StandardForm
-
-(*{FCTopology[fctopology1, {SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, {}], FCTopology[fctopology2, {SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, {}]}*)
+mappings1[[2]]
 ```
+
+$$\left\{\text{FCTopology}\left(\text{fctopology1},\left\{\frac{1}{(\text{p3}^2+i \eta )},\frac{1}{(\text{p2}^2+i \eta )},\frac{1}{(\text{p1}^2+i \eta )},\frac{1}{((\text{p2}+\text{p3})^2+i \eta )},\frac{1}{((\text{p2}-Q)^2+i \eta )},\frac{1}{((\text{p1}-Q)^2+i \eta )},\frac{1}{((\text{p2}+\text{p3}-Q)^2+i \eta )},\frac{1}{((\text{p1}+\text{p3}-Q)^2+i \eta )},\frac{1}{((\text{p1}+\text{p2}+\text{p3}-Q)^2+i \eta )}\right\},\{\text{p1},\text{p2},\text{p3}\},\{Q\},\{\},\{\}\right),\text{FCTopology}\left(\text{fctopology2},\left\{\frac{1}{(\text{p3}^2+i \eta )},\frac{1}{(\text{p2}^2+i \eta )},\frac{1}{(\text{p1}^2+i \eta )},\frac{1}{((\text{p2}+\text{p3})^2+i \eta )},\frac{1}{((\text{p2}-Q)^2+i \eta )},\frac{1}{((\text{p1}-Q)^2+i \eta )},\frac{1}{((\text{p2}+\text{p3}-Q)^2+i \eta )},\frac{1}{((\text{p1}+\text{p2}-Q)^2+i \eta )},\frac{1}{((\text{p1}+\text{p2}+\text{p3}-Q)^2+i \eta )}\right\},\{\text{p1},\text{p2},\text{p3}\},\{Q\},\{\},\{\}\right)\right\}$$
 
 Here is another example
 
@@ -94,7 +102,11 @@ preferredTopos2 = {FCTopology[prop2L, {SFAD[{{q1, 0}, {0, 1}, 1}],
 $$\left\{\text{FCTopology}\left(\text{prop2L},\left\{\frac{1}{(\text{q1}^2+i \eta )},\frac{1}{(\text{q2}^2+i \eta )},\frac{1}{((\text{q1}-\text{q2})^2+i \eta )},\frac{1}{((\text{q1}-p)^2+i \eta )},\frac{1}{((\text{q2}-p)^2+i \eta )}\right\},\{\text{q1},\text{q2}\},\{p\},\{\},\{\}\right),\text{FCTopology}\left(\text{prop2LX1},\left\{\frac{1}{(\text{q2}^2+i \eta )},\frac{1}{((\text{q1}-\text{q2})^2+i \eta )},\frac{1}{((\text{q1}-p)^2+i \eta )},\frac{1}{((\text{q2}-p)^2+i \eta )}\right\},\{\text{q1},\text{q2}\},\{p\},\{\},\{\}\right),\text{FCTopology}\left(\text{prop2LX3},\left\{\frac{1}{(\text{q1}^2+i \eta )},\frac{1}{(\text{q2}^2+i \eta )},\frac{1}{((\text{q1}-p)^2+i \eta )},\frac{1}{((\text{q2}-p)^2+i \eta )}\right\},\{\text{q1},\text{q2}\},\{p\},\{\},\{\}\right),\text{FCTopology}\left(\text{prop2LX15},\left\{\frac{1}{(\text{q2}^2+i \eta )},\frac{1}{((\text{q1}-\text{q2})^2+i \eta )},\frac{1}{((\text{q1}-p)^2+i \eta )}\right\},\{\text{q1},\text{q2}\},\{p\},\{\},\{\}\right)\right\}$$
 
 ```mathematica
-mappings2 = FCLoopFindTopologyMappings[topos2, PreferredTopologies -> preferredTopos2]
+mappings2 = FCLoopFindTopologyMappings[topos2, PreferredTopologies -> preferredTopos2];
+```
+
+```mathematica
+mappings2[[1]]
 ```
 
 $$\left(
@@ -108,7 +120,103 @@ $$\left(
 And these are the final occurring topologies
 
 ```mathematica
-finalTopos2 = FCLoopSelectTopology[Last /@ Last[Transpose[mappings2]], Join[topos2, preferredTopos2]]
+mappings2[[2]]
 ```
 
 $$\left\{\text{FCTopology}\left(\text{prop2L},\left\{\frac{1}{(\text{q1}^2+i \eta )},\frac{1}{(\text{q2}^2+i \eta )},\frac{1}{((\text{q1}-\text{q2})^2+i \eta )},\frac{1}{((\text{q1}-p)^2+i \eta )},\frac{1}{((\text{q2}-p)^2+i \eta )}\right\},\{\text{q1},\text{q2}\},\{p\},\{\},\{\}\right),\text{FCTopology}\left(\text{prop2LX1},\left\{\frac{1}{(\text{q2}^2+i \eta )},\frac{1}{((\text{q1}-\text{q2})^2+i \eta )},\frac{1}{((\text{q1}-p)^2+i \eta )},\frac{1}{((\text{q2}-p)^2+i \eta )}\right\},\{\text{q1},\text{q2}\},\{p\},\{\},\{\}\right),\text{FCTopology}\left(\text{prop2LX3},\left\{\frac{1}{(\text{q1}^2+i \eta )},\frac{1}{(\text{q2}^2+i \eta )},\frac{1}{((\text{q1}-p)^2+i \eta )},\frac{1}{((\text{q2}-p)^2+i \eta )}\right\},\{\text{q1},\text{q2}\},\{p\},\{\},\{\}\right)\right\}$$
+
+If we need to match subtopologies into larger topologies, we first need to generate all possible subtopologies for each relevant topology.
+
+```mathematica
+topos3 = {
+   FCTopology[fctopology1, {
+     SFAD[{{l1 + l2 - q1, 0}, {0, 1}, 1}], 
+     SFAD[{{l2, 0}, {SMP["m_t"]^2, 1}, 1}], 
+     SFAD[{{l1, 0}, {SMP["m_t"]^2, 1}, 1}], 
+     SFAD[{{l2 + q2, 0}, {SMP["m_t"]^2, 1}, 1}], 
+     SFAD[{{l1 - q1, 0}, {SMP["m_t"]^2, 1}, 1}], 
+     SFAD[{{l1 - q1 - q2, 0}, {SMP["m_t"]^2, 1}, 1}]}, {l1, l2}, {q1, q2}, {}, {}], 
+   FCTopology[fctopology9, {
+     SFAD[{{l1 + l2 + q2, 0}, {0, 1}, 1}], 
+     SFAD[{{l2, 0}, {SMP["m_t"]^2, 1}, 1}], 
+     SFAD[{{l1, 0}, {SMP["m_t"]^2, 1}, 1}], 
+     SFAD[{{l1 + q2, 0}, {SMP["m_t"]^2, 1}, 1}], 
+     SFAD[{{l1 - q1, 0}, {SMP["m_t"]^2, 1}, 1}]}, {l1, l2}, {q1, q2}, {}, {}] 
+   }
+```
+
+$$\left\{\text{FCTopology}\left(\text{fctopology1},\left\{\frac{1}{((\text{l1}+\text{l2}-\text{q1})^2+i \eta )},\frac{1}{(\text{l2}^2-m_t^2+i \eta )},\frac{1}{(\text{l1}^2-m_t^2+i \eta )},\frac{1}{((\text{l2}+\text{q2})^2-m_t^2+i \eta )},\frac{1}{((\text{l1}-\text{q1})^2-m_t^2+i \eta )},\frac{1}{((\text{l1}-\text{q1}-\text{q2})^2-m_t^2+i \eta )}\right\},\{\text{l1},\text{l2}\},\{\text{q1},\text{q2}\},\{\},\{\}\right),\text{FCTopology}\left(\text{fctopology9},\left\{\frac{1}{((\text{l1}+\text{l2}+\text{q2})^2+i \eta )},\frac{1}{(\text{l2}^2-m_t^2+i \eta )},\frac{1}{(\text{l1}^2-m_t^2+i \eta )},\frac{1}{((\text{l1}+\text{q2})^2-m_t^2+i \eta )},\frac{1}{((\text{l1}-\text{q1})^2-m_t^2+i \eta )}\right\},\{\text{l1},\text{l2}\},\{\text{q1},\text{q2}\},\{\},\{\}\right)\right\}$$
+
+```mathematica
+subTopos3 = Flatten[FCLoopFindSubtopologies[topos3]];
+```
+
+```mathematica
+subTopos3 // Length
+```
+
+$$37$$
+
+Now we can match a smaller topology into a larger topology
+
+```mathematica
+mappings3 = FCLoopFindTopologyMappings[topos3, PreferredTopologies -> subTopos3];
+```
+
+```mathematica
+mappings3[[1]]
+```
+
+$$\left(
+\begin{array}{ccc}
+ \;\text{FCTopology}\left(\text{fctopology9},\left\{\frac{1}{((\text{l1}+\text{l2}+\text{q2})^2+i \eta )},\frac{1}{(\text{l2}^2-m_t^2+i \eta )},\frac{1}{(\text{l1}^2-m_t^2+i \eta )},\frac{1}{((\text{l1}+\text{q2})^2-m_t^2+i \eta )},\frac{1}{((\text{l1}-\text{q1})^2-m_t^2+i \eta )}\right\},\{\text{l1},\text{l2}\},\{\text{q1},\text{q2}\},\{\},\{\}\right) & \{\text{l1}\to \;\text{q1}-\text{l1},\text{l2}\to -\text{l2}-\text{q2}\} & G^{\text{fctopology9}}(\text{n1$\_$},\text{n3$\_$},\text{n4$\_$},\text{n5$\_$},\text{n2$\_$}):\to G^{\text{fctopology1}}(\text{n1},0,\text{n2},\text{n3},\text{n4},\text{n5}) \\
+\end{array}
+\right)$$
+
+```mathematica
+mappings3[[2]]
+```
+
+$$\left\{\text{FCTopology}\left(\text{fctopology1},\left\{\frac{1}{((\text{l1}+\text{l2}-\text{q1})^2+i \eta )},\frac{1}{(\text{l2}^2-m_t^2+i \eta )},\frac{1}{(\text{l1}^2-m_t^2+i \eta )},\frac{1}{((\text{l2}+\text{q2})^2-m_t^2+i \eta )},\frac{1}{((\text{l1}-\text{q1})^2-m_t^2+i \eta )},\frac{1}{((\text{l1}-\text{q1}-\text{q2})^2-m_t^2+i \eta )}\right\},\{\text{l1},\text{l2}\},\{\text{q1},\text{q2}\},\{\},\{\}\right)\right\}$$
+
+Mapping the following two topologies onto each other requires shifts in the external momenta due to the chosen kinematic constraints.
+
+```mathematica
+topos4 = {
+   FCTopology[topo1, {
+     SFAD[{{l1 + q1, 0}, {m^2, 1}, 1}], 
+     SFAD[{{l1 - l2, 0}, {0, 1}, 1}], 
+     SFAD[{{l2 + q1, 0}, {m^2, 1}, 1}], 
+     SFAD[{{l2 - q2, 0}, {m^2, 1}, 1}], 
+     SFAD[{{l2, 0}, {0, 1}, 1}]}, {l1, l2}, {q1, q2}, {SPD[q1, q1] -> 0, SPD[q2, q2] -> 0, SPD[q1, q2] -> s/2}, {}], 
+   FCTopology[topo2, {
+     SFAD[{{l1 - l2, 0}, {m^2, 1}, 1}], 
+     SFAD[{{l1 - q2, 0}, {0, 1}, 1}], 
+     SFAD[{{l2 - q2, 0}, {m^2, 1}, 1}], 
+     SFAD[{{l2 + q1, 0}, {m^2, 1}, 1}], 
+     SFAD[{{l2, 0}, {0, 1}, 1}]}, {l1, l2}, {q1, q2}, {SPD[q1, q1] -> 0, SPD[q2, q2] -> 0, SPD[q1, q2] -> s/2}, {}]}
+```
+
+$$\left\{\text{FCTopology}\left(\text{topo1},\left\{\frac{1}{((\text{l1}+\text{q1})^2-m^2+i \eta )},\frac{1}{((\text{l1}-\text{l2})^2+i \eta )},\frac{1}{((\text{l2}+\text{q1})^2-m^2+i \eta )},\frac{1}{((\text{l2}-\text{q2})^2-m^2+i \eta )},\frac{1}{(\text{l2}^2+i \eta )}\right\},\{\text{l1},\text{l2}\},\{\text{q1},\text{q2}\},\left\{\text{q1}^2\to 0,\text{q2}^2\to 0,\text{q1}\cdot \;\text{q2}\to \frac{s}{2}\right\},\{\}\right),\text{FCTopology}\left(\text{topo2},\left\{\frac{1}{((\text{l1}-\text{l2})^2-m^2+i \eta )},\frac{1}{((\text{l1}-\text{q2})^2+i \eta )},\frac{1}{((\text{l2}-\text{q2})^2-m^2+i \eta )},\frac{1}{((\text{l2}+\text{q1})^2-m^2+i \eta )},\frac{1}{(\text{l2}^2+i \eta )}\right\},\{\text{l1},\text{l2}\},\{\text{q1},\text{q2}\},\left\{\text{q1}^2\to 0,\text{q2}^2\to 0,\text{q1}\cdot \;\text{q2}\to \frac{s}{2}\right\},\{\}\right)\right\}$$
+
+```mathematica
+mappings4 = FCLoopFindTopologyMappings[topos4, Momentum -> All];
+```
+
+```mathematica
+mappings4[[1]]
+```
+
+$$\left(
+\begin{array}{ccc}
+ \;\text{FCTopology}\left(\text{topo2},\left\{\frac{1}{((\text{l1}-\text{l2})^2-m^2+i \eta )},\frac{1}{((\text{l1}-\text{q2})^2+i \eta )},\frac{1}{((\text{l2}-\text{q2})^2-m^2+i \eta )},\frac{1}{((\text{l2}+\text{q1})^2-m^2+i \eta )},\frac{1}{(\text{l2}^2+i \eta )}\right\},\{\text{l1},\text{l2}\},\{\text{q1},\text{q2}\},\left\{\text{q1}^2\to 0,\text{q2}^2\to 0,\text{q1}\cdot \;\text{q2}\to \frac{s}{2}\right\},\{\}\right) & \{\text{l1}\to -\text{l1}+\text{l2}-\text{q1},\text{l2}\to \;\text{l2},\text{q1}\to -\text{q2},\text{q2}\to -\text{q1}\} & G^{\text{topo2}}(\text{n1$\_$},\text{n2$\_$},\text{n3$\_$},\text{n4$\_$},\text{n5$\_$}):\to G^{\text{topo1}}(\text{n1},\text{n2},\text{n3},\text{n4},\text{n5}) \\
+\end{array}
+\right)$$
+
+Otherwise no mappings exist
+
+```mathematica
+FCLoopFindTopologyMappings[topos4][[1]]
+```
+
+$$\{\}$$

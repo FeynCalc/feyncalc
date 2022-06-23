@@ -1,6 +1,12 @@
 ## FCLoopApplyTopologyMappings
 
-`FCLoopApplyTopologyMappings[expr, mappings]` applies mappings between topologies obtained using `FCLoopFindTopologyMappings` to the output of `FCLoopFindTopologies` denoted as `expr`.
+`FCLoopApplyTopologyMappings[expr, {mappings, topos}]` applies mappings between topologies obtained using `FCLoopFindTopologyMappings` to the output of `FCLoopFindTopologies` denoted as `expr`. The argument `topos` denotes the final set of topologies present in the expression.
+
+Instead of `{mappings, topos}` one can directly use the output `FCLoopFindTopologyMappings`.
+
+By default the function will attempt to rewrite all the occurring loop integrals as `GLI`s. If you just want to apply the mappings without touching the remaining scalar products, 
+set the option `FCLoopCreateRulesToGLI` to `False`. Even when all scalar products depending on loop momenta are rewritten as `GLI`s, you can still suppress the step of multiplying out products
+of `GLI`s by setting the option `GLIMultiply` to `False`.
 
 ### See also
 
@@ -68,29 +74,23 @@ $$\left\{\text{FCTopology}\left(\text{fctopology1},\left\{\frac{1}{(\text{p3}^2+
 `FCLoopApplyTopologyMappings`  applies the given mappings to the expression creating an output that is ready to be processed further
 
 ```mathematica
-res = FCLoopApplyTopologyMappings[ex, mappings, Head -> gliProduct]
+FCLoopApplyTopologyMappings[ex, {mappings, finalTopos}, Head -> gliProduct, FCVerbose -> 0]
+```
+
+$$\frac{1}{2} G^{\text{fctopology1}}(1,1,1,1,1,1,1,1,1) \left(\text{cc1} Q^2+\text{cc4} Q^2+2 \;\text{cc6}\right)+\frac{1}{2} (\text{cc1}-\text{cc4}) G^{\text{fctopology1}}(1,1,0,1,1,1,1,1,1)-\frac{1}{2} (\text{cc1}-\text{cc4}) G^{\text{fctopology1}}(1,1,1,1,1,0,1,1,1)+\frac{1}{2} Q^2 (\text{cc2}+\text{cc5}) G^{\text{fctopology2}}(1,1,1,1,1,1,1,1,1)-\frac{1}{2} (\text{cc2}+\text{cc5}) G^{\text{fctopology2}}(1,1,1,1,1,0,1,1,1)-\frac{1}{2} \;\text{cc2} G^{\text{fctopology2}}(1,1,1,1,0,1,1,1,1)+\frac{1}{2} \;\text{cc2} G^{\text{fctopology2}}(1,1,1,1,1,1,1,0,1)+\text{cc3} G^{\text{fctopology1}}(1,1,1,1,1,1,0,1,1)+\frac{1}{2} \;\text{cc4} G^{\text{fctopology1}}(0,1,1,1,1,1,1,1,1)-\frac{1}{2} \;\text{cc4} G^{\text{fctopology1}}(1,1,1,0,1,1,1,1,1)-\frac{1}{2} \;\text{cc4} G^{\text{fctopology1}}(1,1,1,1,1,1,1,0,1)+\frac{1}{2} \;\text{cc4} G^{\text{fctopology1}}(1,1,1,1,1,1,1,1,0)+\frac{1}{2} \;\text{cc5} G^{\text{fctopology2}}(1,1,0,1,1,1,1,1,1)$$
+
+This just applies the mappings without any further simplifications
+
+```mathematica
+FCLoopApplyTopologyMappings[ex, {mappings, finalTopos}, Head -> gliProduct, FCLoopCreateRulesToGLI -> False]
 ```
 
 $$\text{gliProduct}\left(\text{cc3} (-\text{p2}-\text{p3}+Q)^2,G^{\text{fctopology1}}(1,1,1,1,1,1,1,1,1)\right)+\text{gliProduct}\left(\text{cc4} ((Q-\text{p1})\cdot (Q-\text{p2})),G^{\text{fctopology1}}(1,1,1,1,1,1,1,1,1)\right)+\text{gliProduct}\left(\text{cc1} (\text{p1}\cdot Q),G^{\text{fctopology1}}(1,1,1,1,1,1,1,1,1)\right)+\text{gliProduct}\left(\text{cc2} (\text{p1}\cdot \;\text{p2}),G^{\text{fctopology2}}(1,1,1,1,1,1,1,1,1)\right)+\text{gliProduct}\left(\text{cc5} (\text{p1}\cdot Q),G^{\text{fctopology2}}(1,1,1,1,1,1,1,1,1)\right)+\text{gliProduct}\left(\text{cc6} \;\text{p1}^2,G^{\text{fctopology1}}(1,1,2,1,1,1,1,1,1)\right)$$
 
-Using `FCLoopCreateRulesToGLI` we obtain rules for rewriting scalar products as inverse `GLI`s
+This applies the mappings and eliminates the numerators but still keeps products of `GLI`s in the expression
 
 ```mathematica
-spToGliRules = FCLoopCreateRulesToGLI[finalTopos]
+FCLoopApplyTopologyMappings[ex, {mappings, finalTopos}, Head -> gliProduct, FCLoopCreateRulesToGLI -> True, GLIMultiply -> False]
 ```
 
-$$\left\{\left\{\text{p1}^2\to G^{\text{fctopology1}}(0,0,-1,0,0,0,0,0,0),\text{p2}^2\to G^{\text{fctopology1}}(0,-1,0,0,0,0,0,0,0),\text{p3}^2\to G^{\text{fctopology1}}(-1,0,0,0,0,0,0,0,0),\text{p1}\cdot \;\text{p2}\to \frac{1}{2} \left(G^{\text{fctopology1}}(-1,0,0,0,0,0,0,0,0)+G^{\text{fctopology1}}(0,-1,0,0,0,0,0,0,0)-G^{\text{fctopology1}}(0,0,0,-1,0,0,0,0,0)-G^{\text{fctopology1}}(0,0,0,0,-1,0,0,0,0)-G^{\text{fctopology1}}(0,0,0,0,0,0,0,-1,0)+G^{\text{fctopology1}}(0,0,0,0,0,0,0,0,-1)+Q^2\right),\text{p1}\cdot \;\text{p3}\to \frac{1}{2} \left(-G^{\text{fctopology1}}(-1,0,0,0,0,0,0,0,0)-G^{\text{fctopology1}}(0,-1,0,0,0,0,0,0,0)+G^{\text{fctopology1}}(0,0,0,-1,0,0,0,0,0)+G^{\text{fctopology1}}(0,0,0,0,-1,0,0,0,0)-G^{\text{fctopology1}}(0,0,0,0,0,-1,0,0,0)-G^{\text{fctopology1}}(0,0,0,0,0,0,-1,0,0)+G^{\text{fctopology1}}(0,0,0,0,0,0,0,-1,0)\right),\text{p2}\cdot \;\text{p3}\to \frac{1}{2} \left(-G^{\text{fctopology1}}(-1,0,0,0,0,0,0,0,0)-G^{\text{fctopology1}}(0,-1,0,0,0,0,0,0,0)+G^{\text{fctopology1}}(0,0,0,-1,0,0,0,0,0)\right),\text{p1}\cdot Q\to \frac{1}{2} \left(G^{\text{fctopology1}}(0,0,-1,0,0,0,0,0,0)-G^{\text{fctopology1}}(0,0,0,0,0,-1,0,0,0)+Q^2\right),\text{p2}\cdot Q\to \frac{1}{2} \left(G^{\text{fctopology1}}(0,-1,0,0,0,0,0,0,0)-G^{\text{fctopology1}}(0,0,0,0,-1,0,0,0,0)+Q^2\right),\text{p3}\cdot Q\to \frac{1}{2} \left(-G^{\text{fctopology1}}(0,-1,0,0,0,0,0,0,0)+G^{\text{fctopology1}}(0,0,0,-1,0,0,0,0,0)+G^{\text{fctopology1}}(0,0,0,0,-1,0,0,0,0)-G^{\text{fctopology1}}(0,0,0,0,0,0,-1,0,0)\right)\right\},\left\{\text{p1}^2\to G^{\text{fctopology2}}(0,0,-1,0,0,0,0,0,0),\text{p2}^2\to G^{\text{fctopology2}}(0,-1,0,0,0,0,0,0,0),\text{p3}^2\to G^{\text{fctopology2}}(-1,0,0,0,0,0,0,0,0),\text{p1}\cdot \;\text{p2}\to \frac{1}{2} \left(-G^{\text{fctopology2}}(0,0,0,0,-1,0,0,0,0)-G^{\text{fctopology2}}(0,0,0,0,0,-1,0,0,0)+G^{\text{fctopology2}}(0,0,0,0,0,0,0,-1,0)+Q^2\right),\text{p1}\cdot \;\text{p3}\to \frac{1}{2} \left(G^{\text{fctopology2}}(0,0,0,0,-1,0,0,0,0)-G^{\text{fctopology2}}(0,0,0,0,0,0,-1,0,0)-G^{\text{fctopology2}}(0,0,0,0,0,0,0,-1,0)+G^{\text{fctopology2}}(0,0,0,0,0,0,0,0,-1)\right),\text{p2}\cdot \;\text{p3}\to \frac{1}{2} \left(-G^{\text{fctopology2}}(-1,0,0,0,0,0,0,0,0)-G^{\text{fctopology2}}(0,-1,0,0,0,0,0,0,0)+G^{\text{fctopology2}}(0,0,0,-1,0,0,0,0,0)\right),\text{p1}\cdot Q\to \frac{1}{2} \left(G^{\text{fctopology2}}(0,0,-1,0,0,0,0,0,0)-G^{\text{fctopology2}}(0,0,0,0,0,-1,0,0,0)+Q^2\right),\text{p2}\cdot Q\to \frac{1}{2} \left(G^{\text{fctopology2}}(0,-1,0,0,0,0,0,0,0)-G^{\text{fctopology2}}(0,0,0,0,-1,0,0,0,0)+Q^2\right),\text{p3}\cdot Q\to \frac{1}{2} \left(-G^{\text{fctopology2}}(0,-1,0,0,0,0,0,0,0)+G^{\text{fctopology2}}(0,0,0,-1,0,0,0,0,0)+G^{\text{fctopology2}}(0,0,0,0,-1,0,0,0,0)-G^{\text{fctopology2}}(0,0,0,0,0,0,-1,0,0)\right)\right\}\right\}$$
-
-```mathematica
-aux = res /. gliProduct[x_, y : GLI[idd_, inds_List]] /; (! FreeQ[spToGliRules, idd]) :> gliProduct2[ExpandScalarProduct[x] /. SelectNotFree[spToGliRules, idd][[1]], y] /. gliProduct2[x_, y_] /; FreeQ[x, Pair] :> x y
-```
-
-$$\text{gliProduct2}\left(\frac{1}{2} \;\text{cc1} \left(G^{\text{fctopology1}}(0,0,-1,0,0,0,0,0,0)-G^{\text{fctopology1}}(0,0,0,0,0,-1,0,0,0)+Q^2\right),G^{\text{fctopology1}}(1,1,1,1,1,1,1,1,1)\right)+\text{gliProduct2}\left(\frac{1}{2} \;\text{cc2} \left(-G^{\text{fctopology2}}(0,0,0,0,-1,0,0,0,0)-G^{\text{fctopology2}}(0,0,0,0,0,-1,0,0,0)+G^{\text{fctopology2}}(0,0,0,0,0,0,0,-1,0)+Q^2\right),G^{\text{fctopology2}}(1,1,1,1,1,1,1,1,1)\right)+\text{gliProduct2}\left(\text{cc4} \left(\frac{1}{2} \left(-G^{\text{fctopology1}}(0,-1,0,0,0,0,0,0,0)+G^{\text{fctopology1}}(0,0,0,0,-1,0,0,0,0)-Q^2\right)+\frac{1}{2} \left(-G^{\text{fctopology1}}(0,0,-1,0,0,0,0,0,0)+G^{\text{fctopology1}}(0,0,0,0,0,-1,0,0,0)-Q^2\right)+\frac{1}{2} \left(G^{\text{fctopology1}}(-1,0,0,0,0,0,0,0,0)+G^{\text{fctopology1}}(0,-1,0,0,0,0,0,0,0)-G^{\text{fctopology1}}(0,0,0,-1,0,0,0,0,0)-G^{\text{fctopology1}}(0,0,0,0,-1,0,0,0,0)-G^{\text{fctopology1}}(0,0,0,0,0,0,0,-1,0)+G^{\text{fctopology1}}(0,0,0,0,0,0,0,0,-1)+Q^2\right)+Q^2\right),G^{\text{fctopology1}}(1,1,1,1,1,1,1,1,1)\right)+\text{gliProduct2}\left(\frac{1}{2} \;\text{cc5} \left(G^{\text{fctopology2}}(0,0,-1,0,0,0,0,0,0)-G^{\text{fctopology2}}(0,0,0,0,0,-1,0,0,0)+Q^2\right),G^{\text{fctopology2}}(1,1,1,1,1,1,1,1,1)\right)+\text{cc3} G^{\text{fctopology1}}(0,0,0,0,0,0,-1,0,0) G^{\text{fctopology1}}(1,1,1,1,1,1,1,1,1)+\text{cc6} G^{\text{fctopology1}}(0,0,-1,0,0,0,0,0,0) G^{\text{fctopology1}}(1,1,2,1,1,1,1,1,1)$$
-
-And here is our final expression written only in terms `GLI`s
-
-```mathematica
-resFinal = Collect2[aux /. gliProduct2 -> Times, GLI] /. GLI -> GLIMultiply /. GLIMultiply -> GLI
-```
-
-$$\frac{1}{2} Q^2 (\text{cc1}+\text{cc4}) G^{\text{fctopology1}}(1,1,1,1,1,1,1,1,1)+\frac{1}{2} (\text{cc1}-\text{cc4}) G^{\text{fctopology1}}(1,1,0,1,1,1,1,1,1)-\frac{1}{2} (\text{cc1}-\text{cc4}) G^{\text{fctopology1}}(1,1,1,1,1,0,1,1,1)+\frac{1}{2} Q^2 (\text{cc2}+\text{cc5}) G^{\text{fctopology2}}(1,1,1,1,1,1,1,1,1)-\frac{1}{2} (\text{cc2}+\text{cc5}) G^{\text{fctopology2}}(1,1,1,1,1,0,1,1,1)-\frac{1}{2} \;\text{cc2} G^{\text{fctopology2}}(1,1,1,1,0,1,1,1,1)+\frac{1}{2} \;\text{cc2} G^{\text{fctopology2}}(1,1,1,1,1,1,1,0,1)+\text{cc3} G^{\text{fctopology1}}(1,1,1,1,1,1,0,1,1)+\frac{1}{2} \;\text{cc4} G^{\text{fctopology1}}(0,1,1,1,1,1,1,1,1)-\frac{1}{2} \;\text{cc4} G^{\text{fctopology1}}(1,1,1,0,1,1,1,1,1)-\frac{1}{2} \;\text{cc4} G^{\text{fctopology1}}(1,1,1,1,1,1,1,0,1)+\frac{1}{2} \;\text{cc4} G^{\text{fctopology1}}(1,1,1,1,1,1,1,1,0)+\frac{1}{2} \;\text{cc5} G^{\text{fctopology2}}(1,1,0,1,1,1,1,1,1)+\text{cc6} G^{\text{fctopology1}}(1,1,1,1,1,1,1,1,1)$$
+$$\text{gliProduct}\left(\frac{1}{2} \;\text{cc1} \left(G^{\text{fctopology1}}(0,0,-1,0,0,0,0,0,0)-G^{\text{fctopology1}}(0,0,0,0,0,-1,0,0,0)+Q^2\right),G^{\text{fctopology1}}(1,1,1,1,1,1,1,1,1)\right)+\text{gliProduct}\left(\frac{1}{2} \;\text{cc2} \left(-G^{\text{fctopology2}}(0,0,0,0,-1,0,0,0,0)-G^{\text{fctopology2}}(0,0,0,0,0,-1,0,0,0)+G^{\text{fctopology2}}(0,0,0,0,0,0,0,-1,0)+Q^2\right),G^{\text{fctopology2}}(1,1,1,1,1,1,1,1,1)\right)+\text{gliProduct}\left(\text{cc3} G^{\text{fctopology1}}(0,0,0,0,0,0,-1,0,0),G^{\text{fctopology1}}(1,1,1,1,1,1,1,1,1)\right)+\text{gliProduct}\left(\text{cc4} \left(\frac{1}{2} \left(-G^{\text{fctopology1}}(0,-1,0,0,0,0,0,0,0)+G^{\text{fctopology1}}(0,0,0,0,-1,0,0,0,0)-Q^2\right)+\frac{1}{2} \left(-G^{\text{fctopology1}}(0,0,-1,0,0,0,0,0,0)+G^{\text{fctopology1}}(0,0,0,0,0,-1,0,0,0)-Q^2\right)+\frac{1}{2} \left(G^{\text{fctopology1}}(-1,0,0,0,0,0,0,0,0)+G^{\text{fctopology1}}(0,-1,0,0,0,0,0,0,0)-G^{\text{fctopology1}}(0,0,0,-1,0,0,0,0,0)-G^{\text{fctopology1}}(0,0,0,0,-1,0,0,0,0)-G^{\text{fctopology1}}(0,0,0,0,0,0,0,-1,0)+G^{\text{fctopology1}}(0,0,0,0,0,0,0,0,-1)+Q^2\right)+Q^2\right),G^{\text{fctopology1}}(1,1,1,1,1,1,1,1,1)\right)+\text{gliProduct}\left(\frac{1}{2} \;\text{cc5} \left(G^{\text{fctopology2}}(0,0,-1,0,0,0,0,0,0)-G^{\text{fctopology2}}(0,0,0,0,0,-1,0,0,0)+Q^2\right),G^{\text{fctopology2}}(1,1,1,1,1,1,1,1,1)\right)+\text{gliProduct}\left(\text{cc6} G^{\text{fctopology1}}(0,0,-1,0,0,0,0,0,0),G^{\text{fctopology1}}(1,1,2,1,1,1,1,1,1)\right)$$

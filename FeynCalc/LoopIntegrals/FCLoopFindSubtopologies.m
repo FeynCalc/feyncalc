@@ -16,8 +16,13 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopFindSubtopologies::usage =
-"FCLoopFindSubtopologies[topo] finds all nonvanishing subtopologies of the
-FCTopology topo.";
+"FCLoopFindSubtopologies[topo] finds all scalefull subtopologies of the
+FCTopology topo.
+
+Each subtopology receives a marker that specifies the topology from which it
+was derived. The symbol denoting the marker is specified via the option
+SubtopologyMarker. Setting it to False will disable the inclusion of the
+markers";
 
 FCLoopFindSubtopologies::failmsg =
 "Error! FCLoopFindSubtopologies has encountered a fatal problem and must abort the computation. \

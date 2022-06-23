@@ -16,9 +16,21 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopApplyTopologyMappings::usage =
-"FCLoopApplyTopologyMappings[expr, mappings] applies mappings between
+"FCLoopApplyTopologyMappings[expr, {mappings, topos}] applies mappings between
 topologies obtained using FCLoopFindTopologyMappings to the output of
-FCLoopFindTopologies denoted as expr.";
+FCLoopFindTopologies denoted as expr. The argument topos denotes the final set
+of topologies present in the expression.
+
+Instead of {mappings, topos} one can directly use the output
+FCLoopFindTopologyMappings.
+
+By default the function will attempt to rewrite all the occurring loop
+integrals as GLIs. If you just want to apply the mappings without touching the
+remaining scalar products, 
+set the option FCLoopCreateRulesToGLI to False. Even when all scalar products
+depending on loop momenta are rewritten as GLIs, you can still suppress the
+step of multiplying out products
+of GLIs by setting the option GLIMultiply to False.";
 
 FCLoopApplyTopologyMappings::failmsg =
 "Error! FCLoopApplyTopologyMappings has encountered a fatal problem and must abort the computation. \
