@@ -139,7 +139,7 @@ SpinorChainTranspose[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		diracObjectsEval = (diracObjects/.dsHead->Identity /. DOT->holdDOT)/. {
 			holdDOT[Spinor[p1_,r1__], b___, Spinor[p2_,r2__]] :>
-			-1*optHead[DOT[Spinor[-p2,r2], FCChargeConjugateTransposed[DOT[b],FCI->True,Explicit->True,DotSimplify->False],Spinor[-p1,r1]]]
+			(-1*optHead[DOT[Spinor[-p2,r2], FCChargeConjugateTransposed[DOT[b]/.holdDOT->DOT,FCI->True,Explicit->True,DotSimplify->False],Spinor[-p1,r1]]])
 		} /. holdDOT -> DOT;
 
 		FCPrint[1, "SpinorChainTranspose: Done transposing spinor chains, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->sctrVerbose];
