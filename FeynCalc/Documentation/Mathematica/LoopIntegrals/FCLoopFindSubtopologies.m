@@ -5,7 +5,13 @@
 
 
 (* ::Text:: *)
-(*`FCLoopFindSubtopologies[topo]` finds all nonvanishing subtopologies of the FCTopology `topo`.*)
+(*`FCLoopFindSubtopologies[topo]` finds all scalefull subtopologies of the FCTopology `topo`.*)
+
+
+(* ::Text:: *)
+(*Each subtopology receives a marker that specifies the topology from which it was derived. The symbol*)
+(*denoting the marker is specified via the option `SubtopologyMarker`. Setting it to `False` will disable *)
+(*the inclusion of the markers*)
 
 
 (* ::Subsection:: *)
@@ -13,7 +19,8 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [FCTopology](FCTopology.md), [FCLoopFindTopologies](FCLoopFindTopologies.md), [FCLoopFindTopologyMappings](FCLoopFindTopologyMappings.md).*)
+(*[Overview](Extra/FeynCalc.md), [FCTopology](FCTopology.md), [FCLoopFindTopologies](FCLoopFindTopologies.md), [FCLoopFindTopologyMappings](FCLoopFindTopologyMappings.md),*)
+(*[SubtopologyMarker](SubtopologyMarker.md).*)
 
 
 (* ::Subsection:: *)

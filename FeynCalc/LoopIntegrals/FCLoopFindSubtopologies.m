@@ -37,13 +37,17 @@ Options[FCLoopFindSubtopologies] = {
 	FinalSubstitutions			-> {},
 	LightPak					-> False,
 	MaxIterations				-> Infinity,
-	Names						-> "X",
+	Names						-> "R",
+	SubtopologyMarker			-> FCGV["SubtopologyOf"],
 	ToSFAD						-> True
 };
 
+FCLoopFindSubtopologies[topos:{__FCTopology}, opts:OptionsPattern[]] :=
+	FCLoopFindSubtopologies[#, opts]&/@topos;
+
 FCLoopFindSubtopologies[topoRaw_FCTopology, OptionsPattern[]] :=
 	Block[{	topo, pakPoly, pakForm, res, time, x, tmp, counter=0, optNames,
-			optFinalSubstitutions},
+			optFinalSubstitutions, optSubtopologyMarker},
 
 		If[	OptionValue[FCVerbose] === False,
 			fclfsVerbose = $VeryVerbose,
@@ -53,6 +57,7 @@ FCLoopFindSubtopologies[topoRaw_FCTopology, OptionsPattern[]] :=
 
 		optNames 				= OptionValue[Names];
 		optFinalSubstitutions	= OptionValue[FinalSubstitutions];
+		optSubtopologyMarker 	= OptionValue[SubtopologyMarker];
 
 		FCPrint[1, "FCLoopFindSubtopologies: Entering.", FCDoControl -> fclfsVerbose];
 		FCPrint[3, "FCLoopFindSubtopologies: Entering with: ", topo, FCDoControl -> fclfsVerbose];
@@ -63,6 +68,11 @@ FCLoopFindSubtopologies[topoRaw_FCTopology, OptionsPattern[]] :=
 
 		If[ OptionValue[ToSFAD] && !FreeQ[topo,PropagatorDenominator],
 			topo = ToSFAD[topo,FCI->True];
+		];
+
+		If[	!FCLoopValidTopologyQ[topo],
+			Message[FCLoopFromGLI::failmsg, "The supplied topology is incorrect."];
+			Abort[]
 		];
 
 		time=AbsoluteTime[];
@@ -89,10 +99,9 @@ FCLoopFindSubtopologies[topoRaw_FCTopology, OptionsPattern[]] :=
 
 		tmp = Transpose[Flatten[tmp, 1]][[1]];
 
-
 		(*	Giving names to the discovered subtopologies according to the prescription given in the option Names.	*)
 		Switch[
-			Head[optNames],
+			optNames,
 			_String,
 				res = Map[FCTopology[ToString[topo[[1]]] <> ToString[optNames] <> StringJoin[ToString /@ (Flatten[#])],Delete[topo[[2]], #]] &, tmp],
 			_Symbol,
@@ -104,7 +113,11 @@ FCLoopFindSubtopologies[topoRaw_FCTopology, OptionsPattern[]] :=
 			Abort[]
 		];
 
-		res = Map[FCTopology[#[[1]],#[[2]],topo[[3]],Select[topo[[4]],Function[xx,!FreeQ[#[[2]],xx]]],Sequence@@topo[[5;;]]]&,res];
+		If[	TrueQ[optSubtopologyMarker===False],
+			res = Map[FCTopology[#[[1]],#[[2]],topo[[3]],Select[topo[[4]],Function[xx,!FreeQ[#[[2]],xx]]],topo[[5]],topo[[6]]]&,res],
+			res = Map[FCTopology[#[[1]],#[[2]],topo[[3]],Select[topo[[4]],Function[xx,!FreeQ[#[[2]],xx]]],topo[[5]],Join[topo[[6]],{FCGV["SubtopologyOf"]->topo[[1]]}] ]&,res];
+		];
+
 
 		res = Join[{topo},res];
 
@@ -128,6 +141,7 @@ removeVanishingSubtopos[{zeroVars_List, poly_}, var_] :=
 Block[{allVars, aux, res, time},
 
 	FCPrint[4, "FCLoopFindSubtopologies: removeVanishingSubtopos: Entering with: ", zeroVars, FCDoControl->fclfsVerbose];
+	FCPrint[4, "FCLoopFindSubtopologies: removeVanishingSubtopos: Polynomial: ", poly, FCDoControl->fclfsVerbose];
 	allVars = Cases2[poly, var];
 
 	FCPrint[4, "FCLoopFindSubtopologies: removeVanishingSubtopos: Remaining variables: ", allVars, FCDoControl->fclfsVerbose];

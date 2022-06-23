@@ -326,6 +326,20 @@ identity. It is similar to SchoutenAllowZeroGain with the difference that even
 transformations that increase the total number of terms might be applied in an
 attempt to arrive at a shorter expressions at a later stage.";
 
+SubtopologyMarker::usage=
+"SubtopologyMarker is an option for FCLoopFindTopologies, FCLoopFindTopologyMappings
+and other topology related functions. It denotes the symbol that is used to
+specify that the given topology is a subtopology of another topology that has
+been obtained by removing some of the original propagators.
+
+This information must be put into the very last list of the FCTopology object
+describing the corresponding subtopology. The syntax is marker->topoID where
+topoID is the ID of the larger topology.
+
+Setting SubtopologyMarker to False means that the information about
+subtopologies will not be added when generating subtopologies and will
+be ignored by routines related to topology mappings.";
+
 SetDimensions::usage =
 "SetDimensions is an option for ScalarProduct, CartesianScalarProduct and
 various FCLoopBasis* functions.
