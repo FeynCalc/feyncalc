@@ -8,7 +8,17 @@
 
 
 (* ::Text:: *)
-(*`FCLoopApplyTopologyMappings[expr, mappings]` applies mappings between topologies obtained using `FCLoopFindTopologyMappings` to the output of `FCLoopFindTopologies` denoted as `expr`.*)
+(*`FCLoopApplyTopologyMappings[expr, {mappings, topos}]` applies mappings between topologies obtained using `FCLoopFindTopologyMappings` to the output of `FCLoopFindTopologies` denoted as `expr`. The argument `topos` denotes the final set of topologies present in the expression.*)
+
+
+(* ::Text:: *)
+(*Instead of `{mappings, topos}` one can directly use the output `FCLoopFindTopologyMappings`.*)
+
+
+(* ::Text:: *)
+(*By default the function will attempt to rewrite all the occurring loop integrals as `GLI`s. If you just want to apply the mappings without touching the remaining scalar products, *)
+(*set the option `FCLoopCreateRulesToGLI` to `False`. Even when all scalar products depending on loop momenta are rewritten as `GLI`s, you can still suppress the step of multiplying out products*)
+(*of `GLI`s by setting the option `GLIMultiply` to `False`.*)
 
 
 (* ::Subsection:: *)
@@ -75,21 +85,18 @@ SFAD[{{p1-Q,0},{0,1},1}],SFAD[{{p2+p3-Q,0},{0,1},1}],SFAD[{{p1+p2-Q,0},{0,1},1}]
 (*`FCLoopApplyTopologyMappings`  applies the given mappings to the expression creating an output that is ready to be processed further*)
 
 
-res=FCLoopApplyTopologyMappings[ex,mappings,Head->gliProduct]
+FCLoopApplyTopologyMappings[ex,{mappings,finalTopos},Head->gliProduct,FCVerbose->0]
 
 
 (* ::Text:: *)
-(*Using `FCLoopCreateRulesToGLI` we obtain rules for rewriting scalar products as inverse `GLI`s*)
+(*This just applies the mappings without any further simplifications*)
 
 
-spToGliRules=FCLoopCreateRulesToGLI[finalTopos]
-
-
-aux=res/.gliProduct[x_,y:GLI[idd_,inds_List]]/;(!FreeQ[spToGliRules,idd]):>gliProduct2[ExpandScalarProduct[x]/.SelectNotFree[spToGliRules,idd][[1]],y]/.gliProduct2[x_,y_]/;FreeQ[x,Pair]:> x y
+FCLoopApplyTopologyMappings[ex,{mappings,finalTopos},Head->gliProduct,FCLoopCreateRulesToGLI->False]
 
 
 (* ::Text:: *)
-(*And here is our final expression written only in terms `GLI`s*)
+(*This applies the mappings and eliminates the numerators but still keeps products of `GLI`s in the expression*)
 
 
-resFinal=Collect2[aux/.gliProduct2->Times,GLI]/.GLI->GLIMultiply/.GLIMultiply->GLI
+FCLoopApplyTopologyMappings[ex,{mappings,finalTopos},Head->gliProduct,FCLoopCreateRulesToGLI->True,GLIMultiply->False]
