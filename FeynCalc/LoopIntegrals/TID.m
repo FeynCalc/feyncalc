@@ -487,9 +487,9 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 
 					FCPrint[1, "TID: Applying Isolate.", FCDoControl->tidVerbose];
 					time=AbsoluteTime[];
-					res= Isolate[res,{LorentzIndex,CartesianIndex,holdExplicitLorentzIndex},IsolateNames->isoContract]//
-					ReplaceAll[#,LorentzIndex[z__]/;!FreeQ[{z},HoldForm]:>FRH[LorentzIndex[z]]]&//
-					ReplaceAll[#,CartesianIndex[z__]/;!FreeQ[{z},HoldForm]:>FRH[CartesianIndex[z]]]&;
+					res= Isolate[res/.holdExplicitLorentzIndex->ExplicitLorentzIndex,{LorentzIndex,CartesianIndex,ExplicitLorentzIndex},IsolateNames->isoContract]//
+					ReplaceAll[#,Pair[z__]/; !FreeQ[{z},HoldForm] && !FreeQ2[{z},{LorentzIndex,ExplicitLorentzIndex}] :>FRH[Pair[z]]]&//
+					ReplaceAll[#,CartesianPair[z__]/;!FreeQ[{z},HoldForm]  && !FreeQ2[{z},CartesianIndex] :>FRH[CartesianPair[z]]]&;
 					FCPrint[1, "TID: Done applying Isolate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 					FCPrint[3, "TID: After Isolate: ", res , FCDoControl->tidVerbose];
 
