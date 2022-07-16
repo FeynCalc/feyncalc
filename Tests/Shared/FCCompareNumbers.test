@@ -68,5 +68,9 @@ I)*coeffO^2*parX^2*parZ,FCVerbose->-1]", "0"},
 0.13516435986159167*mg^2*Log[mg]^2, DigitCount -> 4,
 FCVerbose -> -1]","0"},
 {"fcstFCCompareNumbers-ID10","FCCompareNumbers[44.4132197952625489,
-44.4132197952625489`17.64751225906935, FCVerbose -> -1]","0"}
+44.4132197952625489`17.64751225906935, FCVerbose -> -1]","0"},
+{"fcstToStandardMatrixElement-ID11",
+"FCCompareNumbers[(0. +3.655896106264908*^-18*I)*(0.016900000000000002*gP^2 - 3.9831*gS^2)*Mx^2*
+StandardMatrixElement[Spinor[Momentum[p1, D], Mx, 1]], 0, FCVerbose -> -1]",
+"0"}
 });

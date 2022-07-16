@@ -50,7 +50,7 @@ FCCompareNumbers[xRaw_/;Head[xRaw]=!=List,yRaw_/;Head[yRaw]=!=List,OptionsPatter
 	Block[{	num1Pref, num2Pref, lhs, rhs, vars, headRaw, diff, lhsRe,lhsIm,rhsRe, rhsIm,
 			comp, varsX, varsY, x, y, xNums, yNums, optChop, xChopped, yChopped,
 			optHead, optDigitCount, null1, null2, tmpHead, dummy, ruleRemoveZero,
-			zeroHold1, zeroHold2, optIntialSubstitutions},
+			zeroHold1, zeroHold2, optIntialSubstitutions, optUnequal},
 
 		If [OptionValue[FCVerbose]===False,
 				fccnVerbose=$VeryVerbose,
@@ -63,6 +63,7 @@ FCCompareNumbers[xRaw_/;Head[xRaw]=!=List,yRaw_/;Head[yRaw]=!=List,OptionsPatter
 		optHead					= OptionValue[Head];
 		optDigitCount			= OptionValue[DigitCount];
 		optIntialSubstitutions	= OptionValue[InitialSubstitutions];
+		optUnequal				= OptionValue[Unequal];
 
 		ruleRemoveZero = {0. +0. I -> 0, 0. -> 0};
 
@@ -155,6 +156,10 @@ FCCompareNumbers[xRaw_/;Head[xRaw]=!=List,yRaw_/;Head[yRaw]=!=List,OptionsPatter
 		rhs=Collect2[rhsRe+rhsIm,vars,Factoring->num2Pref];
 		diff=Collect2[lhs-rhs,vars,Factoring->headRaw];
 
+		If[	PossibleZeroQ[diff],
+			Return[0]
+		];
+
 		If[	!FreeQ[diff,Complex],
 			Message[FCCompareNumbers::failmsg,"Something went wrong when separating real and imaginary parts."];
 			Abort[]
@@ -172,7 +177,9 @@ FCCompareNumbers[xRaw_/;Head[xRaw]=!=List,yRaw_/;Head[yRaw]=!=List,OptionsPatter
 
 		FCPrint[3, "FCCompareNumbers: diff after removing terms that agree in the required number of significant digits: ", diff, FCDoControl->fccnVerbose];
 
-		diff = diff /. {comp[0,1] -> OptionValue[Complex], headRaw -> OptionValue[Unequal]} /. num1Pref|num2Pref->Identity;
+		diff = diff /. {comp[0,1] -> OptionValue[Complex], headRaw -> optUnequal} /. num1Pref|num2Pref->Identity;
+
+		diff = diff  /. optUnequal[z_]/; PossibleZeroQ[z] -> 0;
 
 		FCPrint[3, "FCCompareNumbers: Leaving with: ", diff, FCDoControl->fccnVerbose];
 		FCPrint[1, "FCCompareNumbers: Leaving.", FCDoControl->fccnVerbose];
