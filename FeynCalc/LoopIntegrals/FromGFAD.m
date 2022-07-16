@@ -41,12 +41,15 @@ Begin["`FromGFAD`Private`"]
 fgfVerbose::usage="";
 dummy::usage="";
 optPowerExpand::usage="";
+optFeynAmpDenominatorExplicit="";
+noFAD::usage="";
 
 Options[FromGFAD] = {
 		Check						-> 	True,
 		FCE							->	False,
 		FCI							->	False,
 		FCVerbose					-> 	False,
+		FeynAmpDenominatorExplicit	-> 	True,
 		InitialSubstitutions		->	{},
 		IntermediateSubstitutions	->	{},
 		PowerExpand					-> 	{}
@@ -59,6 +62,7 @@ FromGFAD[expr_, OptionsPattern[]] :=
 		optInitialSubstitutions 		= OptionValue[InitialSubstitutions];
 		optIntermediateSubstitutions	= OptionValue[IntermediateSubstitutions];
 		optPowerExpand					= OptionValue[PowerExpand];
+		optFeynAmpDenominatorExplicit	= OptionValue[FeynAmpDenominatorExplicit];
 
 		If[	Head[optPowerExpand]=!=List,
 			Message[FromGFAD::failmsg,"The value of the option PowerExpand must be a list."];
@@ -106,8 +110,8 @@ FromGFAD[expr_, OptionsPattern[]] :=
 		];
 
 		If[	OptionValue[Check],
-			check=ExpandAll[powExp[(1/FeynAmpDenominatorExplicit[FeynAmpDenominator/@pdsConverted,FCE->True] -
-					1/FeynAmpDenominatorExplicit[FeynAmpDenominator/@pds,FCE->True])/. optInitialSubstitutions /. optIntermediateSubstitutions]];
+			check=ExpandAll[(powExp[(1/FeynAmpDenominatorExplicit[FeynAmpDenominator/@pdsConverted,FCE->True] -
+					1/FeynAmpDenominatorExplicit[FeynAmpDenominator/@pds,FCE->True])/. optInitialSubstitutions /. optIntermediateSubstitutions])/. noFAD->Identity];
 			If[	!MatchQ[check,{0..}],
 				FCPrint[3, "FromGFAD: Check: ", check, FCDoControl->fgfVerbose];
 				Message[FromGFAD::failmsg,"Something went wrong when elmiinating GenericPropagatorDenominators."];
@@ -121,6 +125,11 @@ FromGFAD[expr_, OptionsPattern[]] :=
 
 
 		res = ex /. Dispatch[rulePds];
+
+		If[!FreeQ[res,noFAD],
+			res = res //. FeynAmpDenominator[noFAD[r_]] :> r //. FeynAmpDenominator[x___,noFAD[r_],y___] :> r FeynAmpDenominator[x,y]
+		];
+
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
@@ -160,6 +169,9 @@ fromGFAD[GenericPropagatorDenominator[pref_. Pair[Momentum[a_,dim___],Momentum[b
 	StandardPropagatorDenominator[0, pref Pair[Momentum[a,dim],Momentum[b,dim]],c,{n, s}] /; FreeQ2[c,{Pair,CartesianPair,TemporalPair,Momentum,CartesianMomentum,TemporalMomentum}];
 
 
+fromGFAD[GenericPropagatorDenominator[c_:0,{n_,s_}]] :=
+	noFAD[FeynAmpDenominatorExplicit[FeynAmpDenominator[GenericPropagatorDenominator[c,{n,s}]]]] /; FreeQ2[c,{Pair,CartesianPair,TemporalPair,Momentum,CartesianMomentum,TemporalMomentum}] &&
+	optFeynAmpDenominatorExplicit;
 
 (*CFADs*)
 
