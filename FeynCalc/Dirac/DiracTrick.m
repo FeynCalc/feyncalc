@@ -1699,30 +1699,43 @@ diracologyBMHV2[b___ , DiracGamma[Momentum[c_, dim_Symbol-4], dim_Symbol-4],
 			DiracGamma[Momentum[c_, dim_Symbol-4], dim_Symbol-4], d___] :=
 	(-1)^Length[{ch}] FCUseCache[ExpandScalarProduct,{Pair[Momentum[c,dim-4],Momentum[c,dim-4]]},{}] diracologyBMHV2[b,ch, d];
 
-(* Simplification for Slash(p) g^nu_1 ... g^nu_n Slash(p) where the slashes
-	are in D and g^nu_i are in 4 dimensions. This applies for n>1.           *)
+(*
+	Simplification for Slash(p) g^nu_1 ... g^nu_n Slash(p) where the slashes
+	are in D and g^nu_i are in 4 dimensions. This applies for n>=1.
+*)
 (* ------------------------------------------------------------------------ *)
 
 diracologyBMHV2[b___ , DiracGamma[Momentum[c_, dim_Symbol], dim_Symbol],
 			ch : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_]]..,
 			DiracGamma[Momentum[c_, dim_Symbol], dim_Symbol], d___] :=
+	(
 	diracologyBMHV2[b,DiracGamma[Momentum[c]], ch, DiracGamma[Momentum[c]], d] +
-	(-1)^Length[{ch}] FCUseCache[ExpandScalarProduct,{Pair[Momentum[c,dim-4],Momentum[c,dim-4]]},{}] diracologyBMHV2[b,ch, d]/; Length[{ch}]>1;
+	(-1)^Length[{ch}] FCUseCache[ExpandScalarProduct,{Pair[Momentum[c,dim-4],Momentum[c,dim-4]]},{}] diracologyBMHV2[b,ch, d] +
+	(-1)^Length[{ch}] diracologyBMHV2[b,DiracGamma[Momentum[c]],DiracGamma[Momentum[c,dim-4],dim-4],ch, d] +
+	(-1)^Length[{ch}] diracologyBMHV2[b,ch,DiracGamma[Momentum[c,dim-4],dim-4],DiracGamma[Momentum[c]],d]
+	)/; Length[{ch}]>1;
 
-(* Simplification for Slash(p) g^nu_1 ... g^nu_n Slash(p) where the slashes are
-	in D and g^nu_i are in D-4 dimensions. This applies for n>1.             *)
+(*
+	Simplification for Slash(p) g^nu_1 ... g^nu_n Slash(p) where the slashes are
+	in D and g^nu_i are in D-4 dimensions. This applies for n>=1.
+*)
 (* ------------------------------------------------------------------------ *)
 
 diracologyBMHV2[b___ , DiracGamma[Momentum[c_, dim_Symbol], dim_Symbol],
-			ch : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_,
-			dim_Symbol-4],dim_Symbol-4]..,
+			ch : DiracGamma[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_,dim_Symbol-4],dim_Symbol-4]..,
 			DiracGamma[Momentum[c_, dim_Symbol], dim_Symbol], d___] :=
+	(
 	diracologyBMHV2[b,DiracGamma[Momentum[c,dim-4],dim-4], ch, DiracGamma[Momentum[c,dim-4],dim-4], d] +
-	(-1)^Length[{ch}] FCUseCache[ExpandScalarProduct,{Pair[Momentum[c],Momentum[c]]},{}]  diracologyBMHV2[b,ch, d]/; Length[{ch}]>1;
+	(-1)^Length[{ch}] FCUseCache[ExpandScalarProduct,{Pair[Momentum[c],Momentum[c]]},{}]  diracologyBMHV2[b,ch, d] +
+	(-1)^Length[{ch}] diracologyBMHV2[b,DiracGamma[Momentum[c,dim-4],dim-4],DiracGamma[Momentum[c]],ch, d] +
+	(-1)^Length[{ch}] diracologyBMHV2[b,ch,DiracGamma[Momentum[c]],DiracGamma[Momentum[c,dim-4],dim-4],d]
+	)/; Length[{ch}]>1;
 
 
-(* Evaluation of Slash(p) g^nu Slash(p) for Dirac matrices in different
-	dimensions                                                               *)
+(*
+	Evaluation of Slash(p) g^nu Slash(p) for Dirac matrices in different
+	dimensions for the remaining cases: 4-D-4, (D-4)-D-(D-4)
+*)
 (* ------------------------------------------------------------------------ *)
 
 diracologyBMHV2[b___ , DiracGamma[Momentum[c_, dim1_ : 4], dim1_ : 4],

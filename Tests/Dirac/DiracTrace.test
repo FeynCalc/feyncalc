@@ -468,5 +468,28 @@ DiracTraceEvaluate -> True, EpsExpand -> False, FCE -> True]", "4 I LC[i1, i2, i
 	GAD[lor5] . GAD[lorz] . GAD[lor4]*FVD[x, lor1]*FVD[x, lor3]*
 	MTD[lor2, lor5]*MTD[lor4, lora]*MTD[lora, \[Rho]]*
 	MTD[lorb, \[Nu]]), DiracTraceEvaluate -> True, FCE -> True]",
-	"-16 I (56 - 30 D + 3 D^2) SPD[x, x] LC[\[Mu], \[Rho], \[Sigma]][x]"}
+	"-16 I (56 - 30 D + 3 D^2) SPD[x, x] LC[\[Mu], \[Rho], \[Sigma]][x]"},
+{"fcstDiracTrace-ID61","DiracTrace[
+GAD[mu] . GSD[x] . GAE[lora] . GAE[lor2] . GAE[nu] . GSD[x],
+DiracTraceEvaluate -> True, FCE -> True]","-4 (-2 FV[x, mu] FVE[x, nu] MTE[lor2, lora] -
+2 FVE[x, mu] FVE[x, nu] MTE[lor2, lora] -
+2 FV[x, mu] FVE[x, lora] MTE[lor2, nu] -
+2 FVE[x, lora] FVE[x, mu] MTE[lor2, nu] +
+2 FV[x, mu] FVE[x, lor2] MTE[lora, nu] +
+2 FVE[x, lor2] FVE[x, mu] MTE[lora, nu] +
+MTE[lor2, nu] MTE[lora, mu] SP[x, x] -
+MTE[lor2, mu] MTE[lora, nu] SP[x, x] +
+MTE[lor2, lora] MTE[mu, nu] SP[x, x] +
+MTE[lor2, nu] MTE[lora, mu] SPE[x, x] -
+MTE[lor2, mu] MTE[lora, nu] SPE[x, x] +
+MTE[lor2, lora] MTE[mu, nu] SPE[x, x])"},
+{"fcstDiracTrace-ID62","DiracTrace[
+GSD[x] . GAD[mu] . GSD[x] . GAE[lora] . GAE[lor2] . GAE[nu],
+DiracTraceEvaluate -> True, FCE -> True]",
+"-4 (-2 FVD[x, mu] FVE[x, nu] MTE[lor2, lora] -
+2 FVD[x, mu] FVE[x, lora] MTE[lor2, nu] +
+2 FVD[x, mu] FVE[x, lor2] MTE[lora, nu] +
+MTE[lor2, nu] MTE[lora, mu] SPD[x, x] -
+MTE[lor2, mu] MTE[lora, nu] SPD[x, x] +
+MTE[lor2, lora] MTE[mu, nu] SPD[x, x])"}
 });
