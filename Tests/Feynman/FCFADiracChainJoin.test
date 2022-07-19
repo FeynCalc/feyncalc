@@ -206,10 +206,9 @@ DiracChain[Spinor[-Momentum[p1, D], mqu, 1],
 	DiracGamma[LorentzIndex[LCdummy2, D], D] . DiracGamma[6],
 	DiracIndex[Dir8], DiracIndex[Dir6]] // FCE,
 First -> {Spinor[-Momentum[p2, D], mqu, 1]}, FCE -> True]",
-"-Spinor[-Momentum[p2, D], mqu, 1] .
-GAD[Lor3] . (mqu + GSD[-l - p2]) . GAD[LCdummy2] .
-GA[6] . (mqu - GSD[-k - k1 - k2 + l + p2]) . GAD[Lor2] .
-Spinor[Momentum[p1, D], mqu, 1]"},
+"Spinor[-Momentum[p2, D], mqu, 1] . GAD[Lor3] . (mqu + GSD[-l - p2]) .
+GAD[LCdummy2] . GA[6] . (mqu - GSD[-k - k1 - k2 + l + p2]) .
+GAD[Lor2] . Spinor[Momentum[p1, D], mqu, 1]"},
 {"fcstFCFADiracChainJoin-ID8","FCFADiracChainJoin[
 DiracChain[Spinor[Momentum[k1, D], mle, 1],
 DiracIndex[Dir3]] DiracChain[Spinor[Momentum[k2, D], mle, 1],
@@ -242,11 +241,30 @@ DiracIndex[Dir3], DiracIndex[Dir4]] DiracChain[
 DiracGamma[LorentzIndex[LCdummy2, D], D] . DiracGamma[6],
 DiracIndex[Dir2], DiracIndex[Dir6]],
 First -> {Spinor[-Momentum[p2, D], mqu, 1],
+Spinor[Momentum[k1, D], mle, 1]},FCE->True]",
+"-Spinor[Momentum[k1, D], mle, 1] . GAD[LCdummy1] . GA[6] .
+Spinor[-Momentum[k2, D], mle, 1] Spinor[-Momentum[p2, D], mqu,
+1] . GAD[LCdummy2] . GA[6] . (mqu - GSD[-k - k1 - k2 + l + p2]) .
+GAD[Lor2] . Spinor[Momentum[p1, D], mqu, 1]"},
+{"fcstFCFADiracChainJoin-ID10","FCFADiracChainJoin[
+DiracChain[Spinor[Momentum[k1, D], mle, 1],
+DiracIndex[Dir3]] DiracChain[Spinor[Momentum[k2, D], mle, 1],
+DiracIndex[Dir4]] DiracChain[Spinor[-Momentum[p1, D], mqu, 1],
+DiracIndex[Dir1]] DiracChain[Spinor[-Momentum[p2, D], mqu, 1],
+DiracIndex[Dir2]] DiracChain[DiracGamma[LorentzIndex[Lor2, D], D],
+DiracIndex[Dir5], DiracIndex[Dir1]] DiracChain[
+mqu + DiracGamma[Momentum[-k - k1 - k2 + l + p2, D], D],
+DiracIndex[Dir5], DiracIndex[Dir6]] DiracChain[
+DiracGamma[LorentzIndex[LCdummy1, D], D] . DiracGamma[6],
+DiracIndex[Dir3], DiracIndex[Dir4]] DiracChain[
+DiracGamma[LorentzIndex[LCdummy2, D], D] . DiracGamma[6],
+DiracIndex[Dir2], DiracIndex[Dir6]],
+First -> {Spinor[-Momentum[p2, D], mqu, 1],
 Spinor[Momentum[k1, D], mle, 1]}]",
-"Spinor[Momentum[k1, D], mle, 1] .
+"-Spinor[Momentum[k1, D], mle, 1] .
 DiracGamma[LorentzIndex[LCdummy1, D], D] . DiracGamma[6] .
-Spinor[-Momentum[k2, D], mle, 1] Spinor[-Momentum[p2, D], mqu, 1] .
-DiracGamma[LorentzIndex[LCdummy2, D], D] .
+Spinor[-Momentum[k2, D], mle, 1] Spinor[-Momentum[p2, D], mqu,
+1] . DiracGamma[LorentzIndex[LCdummy2, D], D] .
 DiracGamma[
 6] . (mqu - DiracGamma[Momentum[-k - k1 - k2 + l + p2, D], D]) .
 DiracGamma[LorentzIndex[Lor2, D], D] .
