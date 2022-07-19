@@ -99,7 +99,18 @@ FCE -> True]","-Spinor[-Momentum[q], 0, 1].GA[nu].GA[5].GA[mu].Spinor[Momentum[p
 FCE -> True]", "-Spinor[Momentum[p2, D], m2, 1].Spinor[Momentum[p1, D], m1, 1] == x"},
 {"fcstSpinorChainTranspose-ID22","SpinorChainTranspose[{SpinorVBarD[p1, m1].SpinorVD[p2, m2],
 SpinorUBarD[p1, m1].SpinorUD[p2, m2]}, FCE -> True]", "{-Spinor[Momentum[p2, D], m2, 1].Spinor[Momentum[p1, D], m1, 1],
-Spinor[Momentum[p1, D], m1, 1].Spinor[Momentum[p2, D], m2, 1]}"}
+Spinor[Momentum[p1, D], m1, 1].Spinor[Momentum[p2, D], m2, 1]}"},
+{"fcstSpinorChainTranspose-ID23",
+"SpinorChainTranspose[
+Spinor[-Momentum[p1, D], mqu,
+1] . (-DiracGamma[LorentzIndex[Lor2, D], D]) . (mqu +
+	DiracGamma[Momentum[-k - k1 - k2 + l + p2, D],
+	D]) . (-DiracGamma[6] .
+	DiracGamma[LorentzIndex[LCdummy2, D], D]) .
+Spinor[Momentum[p2, D], mqu, 1], FCE -> True]",
+"-Spinor[-Momentum[p2, D], mqu, 1] . GAD[LCdummy2] .
+GA[6] . (mqu - GSD[-k - k1 - k2 + l + p2]) . GAD[Lor2] .
+Spinor[Momentum[p1, D], mqu, 1]"}
 });
 
 Tests`Dirac`fcstAbortSpinorChainTranspose = {
