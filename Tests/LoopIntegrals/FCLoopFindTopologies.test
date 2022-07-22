@@ -16,15 +16,17 @@
 Tests`LoopIntegrals`fcstFCLoopFindTopologies =
 ({
 {"fcstFCLoopFindTopologies-ID1",
-"FCLoopFindTopologies[a,{p1,p2,p3,p4},ExtraPropagators->{{SFAD[p1],\
-SFAD[p2]},{SFAD[p3],SFAD[p4]}},FCE->True]",
-"{FCGV[\"GLIProduct\"][a, GLI[\"fctopology1\", {1, 1, 1, 1}]], \
-{FCTopology[\"fctopology1\", {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, \
-0}, {0, 1}, 1}], SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p4, 0}, {0, 1}, \
-1}]}]}}"},
+"FCLoopFindTopologies[a, {p1, p2, p3, p4},
+ExtraPropagators -> {{SFAD[{p1, mm}],
+	SFAD[{p2, mm}]}, {SFAD[{p3, mm}], SFAD[{p4, mm}]}}, FCE -> True,
+FCVerbose -> -1, Names -> topo, Head -> gliProd]",
+"{a gliProd[GLI[topo1, {1, 1, 1, 1}]], {FCTopology[
+topo1, {SFAD[{{p1, 0}, {mm, 1}, 1}], SFAD[{{p2, 0}, {mm, 1}, 1}],
+SFAD[{{p3, 0}, {mm, 1}, 1}], SFAD[{{p4, 0}, {mm, 1}, 1}]}, {p1,
+p2, p3, p4}, {}, {}, {}]}}"},
 {"fcstFCLoopFindTopologies-ID2",
 "FCLoopFindTopologies[a+SFAD[p1+p2],{p1,p2,p3,p4},ExtraPropagators->{\
-{SFAD[p1],SFAD[p2]},{SFAD[p3],SFAD[p4]}},FCE->True,FCVerbose->-1]",
+{SFAD[p1],SFAD[p2]},{SFAD[p3],SFAD[p4]}},FCE->True,FCVerbose->-1,FCLoopScalelessQ -> True]",
 "{FCGV[\"GLIProduct\"][1, GLI[\"fctopology1\", {1, 1, 1, 1, 1}]] + \
 FCGV[\"GLIProduct\"][a, GLI[\"fctopology1\", {1, 1, 0, 1, 1}]], \
 {FCTopology[\"fctopology1\", {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, \

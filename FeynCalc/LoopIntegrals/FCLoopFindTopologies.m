@@ -513,6 +513,13 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 
 				(*	This assumes that denPart is zero.	*)
 				realTopologies = {FCTopology[topoTempName<>"1", Join[extraPropagatorsFirst,extraPropagatorsLast]]};
+
+				realTopologies = MapIndexed[(
+				momenta = Union[Cases[MomentumExpand[#[[2]]],Momentum[m_,___]:>m,Infinity]];
+				FCTopology[#[[1]], #[[2]], Intersection[momenta,lmoms], SelectFree[momenta,lmoms], optFinalSubstitutions, {}]
+				)&,
+				realTopologies];
+
 				denFreePart = denFreePart GLI[topoTempName<>"1", Join[ConstantArray[1,Length[extraPropagatorsFirst]],ConstantArray[1,Length[extraPropagatorsLast]]]],
 
 				(*	If denPart is not zero, we can just take the first identified topology.	*)
