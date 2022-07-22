@@ -26,7 +26,7 @@ FCLoopFindTopologyMappings.
 
 By default the function will attempt to rewrite all the occurring loop
 integrals as GLIs. If you just want to apply the mappings without touching the
-remaining scalar products, 
+remaining scalar products,
 set the option FCLoopCreateRulesToGLI to False. Even when all scalar products
 depending on loop momenta are rewritten as GLIs, you can still suppress the
 step of multiplying out products
@@ -98,10 +98,27 @@ FCLoopApplyTopologyMappings[expr_, {mappings_List, toposRaw_List}, OptionsPatter
 
 		FCPrint[3,"FCLoopApplyTopologyMappings: Unique products of GLIs and scalar products: ", uniqueProductsList , FCDoControl->fclamVerbose];
 
+		If[	uniqueProductsList==={},
+			(*Nothing to do*)
+			FCPrint[1, "FCLoopApplyTopologyMappings: Leaving.", FCDoControl->fclamVerbose];
+			res = ex;
+			If[	OptionValue[FCE],
+				res = FCE[res]
+			];
+			Return[res]
+		];
+
 		(*TODO More checks ...*)
 		time=AbsoluteTime[];
 		FCPrint[1,"FCLoopApplyTopologyMappings: Creating initial replacement rules for the products.", FCDoControl->fclamVerbose];
-		repRule = Map[applyMapping[(SelectNotFree[uniqueProductsList, #[[1]][[1]]]), #] &, mappings];
+
+		If[	TrueQ[mappings==={}],
+			aux = Map[List[#,{},{}]&,topos],
+			aux = mappings
+		];
+
+
+		repRule = Map[applyMapping[(SelectNotFree[uniqueProductsList, #[[1]][[1]]]), #] &, aux];
 
 
 		aux = Complement[uniqueProductsList,First[First[#]]&/@repRule];
@@ -111,7 +128,7 @@ FCLoopApplyTopologyMappings[expr_, {mappings_List, toposRaw_List}, OptionsPatter
 
 		repRule = Flatten[repRule] /. rule->Rule;
 		FCPrint[1, "FCLoopApplyTopologyMappings: Done creating rules, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclamVerbose];
-		FCPrint[2,"FCLoopApplyTopologyMappings: Generated ", Length[repRule], "initial replacement rules", FCDoControl->fclamVerbose];
+		FCPrint[2,"FCLoopApplyTopologyMappings: Generated ", Length[repRule], " initial replacement rules", FCDoControl->fclamVerbose];
 		FCPrint[3,"FCLoopApplyTopologyMappings: Replacement rules: ",repRule, FCDoControl->fclamVerbose];
 
 		If[	TrueQ[optFCLoopCreateRulesToGLI=!=False],
@@ -119,9 +136,12 @@ FCLoopApplyTopologyMappings[expr_, {mappings_List, toposRaw_List}, OptionsPatter
 			FCPrint[1,"FCLoopApplyTopologyMappings: Rewriting numerators with loop momenta as GLIs.", FCDoControl->fclamVerbose];
 
 			repRule = Join[repRule,repRuleExtra];
-			rulesToGLI = FCLoopCreateRulesToGLI[topos,FCI->True];
-			topoIDs= First[Last[Last[#]]]&/@repRule;
 
+			rulesToGLI = FCLoopCreateRulesToGLI[topos,FCI->True];
+
+			FCPrint[3,"FCLoopApplyTopologyMappings: Replacement rules for numerators in terms of GLIs: ", rulesToGLI, FCDoControl->fclamVerbose];
+
+			topoIDs= First[Last[Last[#]]]&/@repRule;
 
 			If[	Union[First/@topos]=!=Union[topoIDs],
 				Message[FCLoopApplyTopologyMappings::failmsg,"Missing topologies present in the input expression"];
@@ -129,6 +149,8 @@ FCLoopApplyTopologyMappings[expr_, {mappings_List, toposRaw_List}, OptionsPatter
 			];
 
 			rulesToGLIFinal= Map[First[SelectNotFree[rulesToGLI,#]]&,topoIDs];
+
+			FCPrint[3,"FCLoopApplyTopologyMappings: Final rules for numerators: ", rulesToGLIFinal, FCDoControl->fclamVerbose];
 
 			If[	OptionValue[ExpandScalarProduct],
 				sps = Cases2[Last/@repRule, Pair,CartesianPair];
@@ -170,9 +192,11 @@ FCLoopApplyTopologyMappings[expr_, {mappings_List, toposRaw_List}, OptionsPatter
 			res = Collect2[res,GLI,Factoring->OptionValue[Factoring],TimeConstrained->OptionValue[TimeConstrained]];
 		];
 
-		If[	OptiopnValue[FCE],
+		If[	OptionValue[FCE],
 			res = FCE[res]
 		];
+
+		FCPrint[1, "FCLoopApplyTopologyMappings: Leaving.", FCDoControl->fclamVerbose];
 
 		res
 

@@ -175,5 +175,48 @@ D], Momentum[Q, D]])/2 + Pair[Momentum[Q, D], Momentum[Q, D]] + \
 0, 0, 0}] - GLI[fctopology1, {0, 0, 0, 0, -1, 0, 0, 0, 0}] - \
 GLI[fctopology1, {0, 0, 0, 0, 0, 0, 0, -1, 0}] + GLI[fctopology1, {0, \
 0, 0, 0, 0, 0, 0, 0, -1}] + Pair[Momentum[Q, D], Momentum[Q, D]])/2), \
-GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 1, 1}]]"}
+GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 1, 1}]]"},
+
+
+{"fcstFCLoopApplyTopologyMappings-ID4","FCLoopApplyTopologyMappings[
+gliProduct[cc6*SPD[p1, p1],
+GLI[fctopology1, {1, 1, 2, 1, 1, 1, 1, 1, 1}]] +
+gliProduct[cc1*SPD[p1, Q],
+GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 1, 1}]], {{}, {FCTopology[
+	fctopology1, {SFAD[{{p3, 0}, {0, 1}, 1}],
+	SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2,
+	p3}, {Q}, {}, {}]}}, FCE -> True]",
+	"gliProduct[cc6 SPD[p1, p1],
+GLI[fctopology1, {1, 1, 2, 1, 1, 1, 1, 1, 1}]] +
+gliProduct[cc1 SPD[p1, Q],
+GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 1, 1}]]"},
+{"fcstFCLoopApplyTopologyMappings-ID5",
+"FCLoopApplyTopologyMappings[
+gliProduct[cc6*SPD[p1, p1],
+GLI[fctopology1, {1, 1, 2, 1, 1, 1, 1, 1, 1}]] +
+gliProduct[cc1*SPD[p1, Q],
+GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 1, 1}]], {{}, {FCTopology[
+	fctopology1, {SFAD[{{p3, 0}, {0, 1}, 1}],
+	SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2,
+	p3}, {Q}, {}, {}]}}, Head -> gliProduct, FCE -> True]",
+	"1/2 cc1 GLI[fctopology1, {1, 1, 0, 1, 1, 1, 1, 1, 1}] -
+1/2 cc1 GLI[fctopology1, {1, 1, 1, 1, 1, 0, 1, 1, 1}] +
+1/2 GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 1, 1}] (2 cc6 +
+	cc1 SPD[Q, Q])"}
+
+
+
+
+
+
 });
