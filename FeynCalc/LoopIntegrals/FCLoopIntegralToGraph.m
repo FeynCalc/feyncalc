@@ -217,6 +217,8 @@ FCLoopIntegralToGraph[expr_/; FreeQ[{GLI,FCTopology},expr], lmomsRaw_List, Optio
 		(*Check if the F-polynomial corresponds to a tadpole *)
 		If[	FreeQ2[ExpandScalarProduct[aux[[2]],FCI->True],{Momentum,CartesianMomentum,TemporalMomentum}],
 			(*tadpole!*)
+			ex = ex /. Thread[Rule[extmoms,ConstantArray[0,Length[extmoms]]]];
+			FCPrint[2, "FCLoopIntegralToGraph: Integral with fake external momenta removed: ", ex, FCDoControl->lbtgVerbose];
 			extmoms={}
 		];
 
