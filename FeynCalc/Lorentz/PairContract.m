@@ -1,7 +1,17 @@
-(* ------------------------------------------------------------------------ *)
-(* ------------------------------------------------------------------------ *)
+(* ::Package:: *)
 
-(* :Summary: PairContract *)
+
+
+(* :Title: PairContract														*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2022 Rolf Mertig
+	Copyright (C) 1997-2022 Frederik Orellana
+	Copyright (C) 2014-2022 Vladyslav Shtabovenko
+*)
+
+(* :Summary:	Local contraction rules										*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -15,6 +25,10 @@ PairContract3::usage =
 "PairContract3 is like Pair, but with local contraction properties \
 among PairContract3's.";
 
+CartesianPairContract::failmsg =
+"Error! CartesianPairContract has encountered a fatal problem and must abort the computation. \
+The problem reads: `1`";
+
 PairContract::failmsg =
 "Error! PairContract has encountered a fatal problem and must abort the computation. \
 The problem reads: `1`"
@@ -23,153 +37,71 @@ The problem reads: `1`"
 
 Begin["`Package`"]
 
-(*pairContract3NoExpand is like PairContract3, but without ExpandScalarProduct *)
-pairContract3NoExpand;
-
 End[]
 
 Begin["`PairContract`Private`"]
 
 SetAttributes[CartesianPairContract,Orderless];
 
-
-CartesianPairContract[CartesianIndex[i_],CartesianIndex[i_]]:=
-	3;
-
-CartesianPairContract[CartesianIndex[i_],CartesianIndex[i_, _Symbol-4]]:=
+CartesianPairContract[0,_]:=
 	0;
 
-CartesianPairContract[CartesianIndex[i_],CartesianIndex[i_, _Symbol-1]]:=
-	3;
+CartesianPairContract[CartesianIndex[x_, dim1_:3], CartesianIndex[x_, dim2_:3] ] :=
+	dimEval[dim1,dim2]/; Head[dimEval[dim1,dim2]]=!=dimEval;
 
-CartesianPairContract[CartesianIndex[i_, dim_],CartesianIndex[i_, dim_]]:=
-	dim;
-
-CartesianPairContract[CartesianIndex[i_, dim_Symbol-1],CartesianIndex[i_, dim_Symbol-4]]:=
-	dim-4;
+CartesianPairContract[
+	(h1: CartesianIndex | CartesianMomentum)[x_, dim1_:3],
+	(h2: CartesianIndex | CartesianMomentum)[y_, dim2_:3]
+	]/;({dim1}=!={dim2}) :=
+	CartesianPairContract[h1[x, dimEval[dim1,dim2]], h2[y, dimEval[dim1,dim2]]]/; Head[dimEval[dim1,dim2]]=!=dimEval;
 
 CartesianPairContract/:
 	CartesianPairContract[_CartesianIndex,x_]^2 :=
 		CartesianPairContract[x,x];
 
 CartesianPairContract /:
-	CartesianPairContract[a_, b_LorentzIndex]^(n_ /; n > 2) :=
+	CartesianPairContract[a_, b_CartesianIndex]^(n_ /; n > 2) :=
 		(
-		Message[PairContract::failmsg, "The expression " <> ToString[CartesianPair[a, b]^n, InputForm] <> " violates Lorentz covariance!"];
+		Message[CartesianPairContract::failmsg, "The expression " <> ToString[CartesianPair[a, b]^n, InputForm] <> " violates Einstein summation."];
 		Abort[]
 		) /; a =!= b;
 
-CartesianPairContract/:
-	CartesianPairContract[i_CartesianIndex,x_] f_[a__]:=
-		(f[a]/. CartesianIndex[First[i],___] -> x)/; !FreeQ[f[a], CartesianIndex[First[i],___]];
+(*here f could be anything (Dirac matrix, tensor function etc.) carrying a Cartesian index*)
+CartesianPairContract/: CartesianPairContract[CartesianIndex[z_,dim___],(h:CartesianIndex|CartesianMomentum)[x_,dim___]] f_[a__] :=
+	(f[a] /. CartesianIndex[z, ___]->h[x,dim]) /;(!FreeQ[f[a], CartesianIndex[z,___]]);
 
-CartesianPairContract/:
-	CartesianPairContract[CartesianIndex[i_,___],j_CartesianIndex] (h:Pair|PairContract)[CartesianIndex[i_,___], l_LorentzIndex]:=
-		h[j,l];
+(* #################################################################### *)
 
-
-SetAttributes[PairContract3,Orderless];
-
-PairContract3[LorentzIndex[z_], LorentzIndex[z_]] :=
-	4;
-
-PairContract3[LorentzIndex[z_,dim_], LorentzIndex[z_,dim_]] :=
-	dim;
-
-PairContract3[(h1:Momentum|CartesianMomentum)[a__], (h2:Momentum|CartesianMomentum)[b__]] :=
-	ExpandScalarProduct[Pair[h1[a], h2[b]],FCI->True];
-
-PairContract3 /:
-	PairContract3[_LorentzIndex,x_LorentzIndex]^2 :=
-		PairContract3[x,x];
-
-PairContract3 /:
-	PairContract3[_LorentzIndex,(h:Momentum|CartesianMomentum)[x__]]^2 :=
-		ExpandScalarProduct[Pair[h[x],h[x]],FCI->True];
-
-PairContract3 /:
-	PairContract3[a_, b_LorentzIndex]^(n_ /; n > 2) :=
-		(
-		Message[PairContract::failmsg, "The expression " <> ToString[Pair[a, b]^n, InputForm] <> " violates Lorentz covariance!"];
-		Abort[]
-		) /; a =!= b;
-
-PairContract3/:
-	PairContract3[LorentzIndex[z__],x_] PairContract3[LorentzIndex[z__],y_] :=
-		If[ FreeQ[{x,y}, LorentzIndex],
-			ExpandScalarProduct[Pair[x,y],FCI->True],
-			PairContract3[x,y]
-		];
-
-
-
-SetAttributes[pairContract3NoExpand,Orderless];
-
-
-pairContract3NoExpand[LorentzIndex[z_], LorentzIndex[z_]] :=
-	4;
-
-pairContract3NoExpand[LorentzIndex[z_,dim_], LorentzIndex[z_,dim_]] :=
-	dim;
-
-
-pairContract3NoExpand[Momentum[a__], Momentum[b__]] :=
-	Pair[Momentum[a], Momentum[b]];
-
-pairContract3NoExpand /:
-	pairContract3NoExpand[_LorentzIndex, x_LorentzIndex]^2 :=
-		pairContract3NoExpand[x,x];
-
-pairContract3NoExpand /:
-	pairContract3NoExpand[_LorentzIndex,(h:Momentum|CartesianMomentum)[x__]]^2 :=
-		Pair[h[x],h[x]];
-
-
-pairContract3NoExpand/:
-	pairContract3NoExpand[LorentzIndex[z__],x_] pairContract3NoExpand[LorentzIndex[z__],y_] :=
-		If[ FreeQ[{x,y}, LorentzIndex],
-			Pair[x,y],
-			pairContract3NoExpand[x,y]
-		];
-
-pairContract3NoExpand /:
-	pairContract3NoExpand[a_, b_LorentzIndex]^(n_ /; n > 2) :=
-		(
-		Message[PairContract::failmsg, "The expression " <> ToString[Pair[a, b]^n, InputForm] <> " violates Lorentz covariance!"];
-		Abort[]
-		) /; a =!= b;
-
-SetAttributes@@{{PairContract,sceins,sce,sczwei} ,Orderless};
-(* this option is only to be set by SetOptions ... *)
-Options[PairContract] = {Factoring -> False};
-
+SetAttributes[PairContract,Orderless];
 
 PairContract[0,_]:=
 	0;
 
-PairContract[ LorentzIndex[x_], LorentzIndex[x_] ] :=
-	4;
+PairContract[LorentzIndex[x_, dim1_:4], LorentzIndex[x_, dim2_:4] ] :=
+	dimEval[dim1,dim2]/; Head[dimEval[dim1,dim2]]=!=dimEval;
 
-PairContract[ LorentzIndex[x_], LorentzIndex[x_,_Symbol] ] :=
-	4;
+PairContract[CartesianIndex[x_, dim1_:3], CartesianIndex[x_, dim2_:3] ] :=
+	dimEval[dim1,dim2]* FeynCalc`Package`MetricS/; Head[dimEval[dim1,dim2]]=!=dimEval;
 
-PairContract[ LorentzIndex[x_,di_], LorentzIndex[x_,di_] ] :=
-	di;
+PairContract[
+	(h1: LorentzIndex | Momentum | TemporalMomentum | ExplicitLorentzIndex)[x_, dim1_:4],
+	(h2: LorentzIndex | Momentum | TemporalMomentum | ExplicitLorentzIndex)[y_, dim2_:4]
+	]/;({dim1}=!={dim2}) :=
+	PairContract[h1[x, dimEval[dim1,dim2]], h2[y, dimEval[dim1,dim2]]]/; Head[dimEval[dim1,dim2]]=!=dimEval;
 
-PairContract[ CartesianIndex[x_], CartesianIndex[x_] ] :=
-	3 FeynCalc`Package`MetricS;
+PairContract[
+	(h1: LorentzIndex | Momentum | TemporalMomentum | ExplicitLorentzIndex)[x_, dim1_:4],
+	(h2: CartesianIndex | CartesianMomentum)[y_, dim2_:3]
+	]/;({dim1}=!={dim2}) :=
+	Block[{dims=dimEvalLorentzCartesian[dim1,dim2]},
+		PairContract[h1[x, dims[[1]]], h2[y, dims[[2]]]]
+	]/; Head[dimEvalLorentzCartesian[dim1,dim2]]=!=dimEvalLorentzCartesian;
 
-PairContract[ CartesianIndex[x_], CartesianIndex[x_, _Symbol-1] ] :=
-	3 FeynCalc`Package`MetricS;
-
-PairContract[ CartesianIndex[x_], CartesianIndex[x_, _Symbol-4] ] :=
-	0;
-
-PairContract[ CartesianIndex[x_, di_], CartesianIndex[x_, di_] ] :=
-	di FeynCalc`Package`MetricS;
-
-PairContract[ CartesianIndex[x_, di_Symbol-1], CartesianIndex[x_, di_Symbol-4] ] :=
-	(di-4) FeynCalc`Package`MetricS;
+PairContract[
+	(h1: CartesianIndex | CartesianMomentum)[x_, dim1_:3],
+	(h2: CartesianIndex | CartesianMomentum)[y_, dim2_:3]
+	]/;({dim1}=!={dim2}) :=
+	PairContract[h1[x, dimEval[dim1,dim2]], h2[y, dimEval[dim1,dim2]]]/; Head[dimEval[dim1,dim2]]=!=dimEval;
 
 PairContract /:
 	PairContract[_LorentzIndex,x_]^2 :=
@@ -178,65 +110,185 @@ PairContract /:
 PairContract /:
 	PairContract[a_, b_LorentzIndex]^(n_ /; n > 2) :=
 		(
+		Message[PairContract::failmsg, "The expression " <> ToString[Pair[a, b]^n, InputForm] <> " violates Einstein summation."];
+		Abort[]
+		) /; a =!= b;
+
+(*here f could be anything (Dirac matrix, tensor function etc.) carrying a Lorentz index*)
+PairContract/: PairContract[LorentzIndex[z_,dim___],(h:LorentzIndex|Momentum|ExplicitLorentzIndex)[x_,dim___]] f_[a__] :=
+	(f[a] /. LorentzIndex[z, ___]->h[x,dim]) /;(!FreeQ[f[a], LorentzIndex[z,___]]);
+
+PairContract/: PairContract[LorentzIndex[z_,dimL_:4],(h:CartesianIndex|CartesianMomentum)[x_,dimC_:3]] f_[a__] :=
+	(f[a] /. LorentzIndex[z, ___]->h[x,dimC]) /;(!FreeQ[f[a], LorentzIndex[z,___]]) && MatchQ[{dimL,dimC},{4,3}|{_Symbol,_Symbol-1}|{_Symbol-4,_Symbol-4}];
+
+
+
+(*	covers cases such as PairContract[Momentum[(a + b + c) + (-b - c)], Momentum[f]]
+	or
+	FCClearScalarProducts[];
+	SP[p1, p2] = s2;
+	SP[p1, p3] = s3;
+	FCI[SP[p1, p2 + p3]] /. Pair -> PairContract
+	(*s2+s3*)
+ *)
+PairContract[a_, b_]:=
+	Block[{pairExpanded = FCUseCache[ExpandScalarProduct,{Pair[a,b]},{FCI->True}]},
+		If[	FreeQ2[pairExpanded,{Pair,CartesianPair}] || Head[pairExpanded]=!=Plus,
+			pairExpanded,
+			Pair[a,b]
+		]
+	]/;FreeQ2[{a,b},{LorentzIndex,CartesianIndex}]
+
+
+(* #################################################################### *)
+
+(*
+	The main difference between PairContract and PairContract3 is that the latter immediately expands all scalar products,
+	while PairContract only does this for some special cases.
+*)
+SetAttributes[PairContract3,Orderless];
+
+PairContract3[0,_]:=
+	0;
+
+PairContract3[LorentzIndex[x_, dim1_:4], LorentzIndex[x_, dim2_:4] ] :=
+	dimEval[dim1,dim2]/; Head[dimEval[dim1,dim2]]=!=dimEval;
+
+PairContract3[CartesianIndex[x_, dim1_:3], CartesianIndex[x_, dim2_:3] ] :=
+	dimEval[dim1,dim2]* FeynCalc`Package`MetricS/; Head[dimEval[dim1,dim2]]=!=dimEval;
+
+PairContract3[
+	(h1: LorentzIndex | Momentum | TemporalMomentum | ExplicitLorentzIndex)[x_, dim1_:4],
+	(h2: LorentzIndex | Momentum | TemporalMomentum | ExplicitLorentzIndex)[y_, dim2_:4]
+	]/;({dim1}=!={dim2}) :=
+	PairContract3[h1[x, dimEval[dim1,dim2]], h2[y, dimEval[dim1,dim2]]]/; Head[dimEval[dim1,dim2]]=!=dimEval;
+
+PairContract3[
+	(h1: LorentzIndex | Momentum | TemporalMomentum | ExplicitLorentzIndex)[x_, dim1_:4],
+	(h2: CartesianIndex | CartesianMomentum)[y_, dim2_:3]
+	]/;({dim1}=!={dim2}) :=
+	Block[{dims=dimEvalLorentzCartesian[dim1,dim2]},
+		PairContract3[h1[x, dims[[1]]], h2[y, dims[[2]]]]
+	]/; Head[dimEvalLorentzCartesian[dim1,dim2]]=!=dimEvalLorentzCartesian;
+
+PairContract3[
+	(h1: CartesianIndex | CartesianMomentum)[x_, dim1_:3],
+	(h2: CartesianIndex | CartesianMomentum)[y_, dim2_:3]
+	]/;({dim1}=!={dim2}) :=
+	PairContract3[h1[x, dimEval[dim1,dim2]], h2[y, dimEval[dim1,dim2]]]/; Head[dimEval[dim1,dim2]]=!=dimEval;
+
+
+PairContract3 /:
+	PairContract3[_LorentzIndex,x_]^2 :=
+		PairContract3[x,x];
+
+PairContract3 /:
+	PairContract3[a_, b_LorentzIndex]^(n_ /; n > 2) :=
+		(
 		Message[PairContract::failmsg, "The expression " <> ToString[Pair[a, b]^n, InputForm] <> " violates Lorentz covariance!"];
 		Abort[]
 		) /; a =!= b;
 
-PairContract/: PairContract[LorentzIndex[z_,___],x_] f_[a__] :=
-	(f[a]/.LorentzIndex[z,___]->x)/; (!FreeQ[f[a],LorentzIndex[z,___]]);
+(*here f could be anything (Dirac matrix, tensor function etc.) carrying a Lorentz index*)
+PairContract3/: PairContract3[LorentzIndex[z_,dim___],(h:LorentzIndex|Momentum|ExplicitLorentzIndex)[x_,dim___]] f_[a__] :=
+	(f[a] /. LorentzIndex[z, ___]->h[x,dim]) /;(!FreeQ[f[a], LorentzIndex[z,___]]);
 
-PairContract/:
-	DOT[A___, HoldPattern[PairContract[lor_[z_,___],x_]], B___, m_. f_[a__], c___ ] :=
-		DOT[A,B,(m f[a]/.LorentzIndex[z,___]->x),c]/; ((!FreeQ[f[a], LorentzIndex[z,___]]) && (lor === LorentzIndex));
-
-PairContract/:
-	DOT[A___, m_. f_[a__], B___, HoldPattern[PairContract[lor_[z_,___],x_]], c___ ] :=
-		DOT[A.(m f[a]/.LorentzIndex[z,___]->x),B,c]/; ((!FreeQ[f[a]//Hold,LorentzIndex[z,___]]) && (lor === LorentzIndex));
-
-(* **************************************************************** *)
-(* definitions for dimension = D-4                                  *)
-(* **************************************************************** *)
-PairContract[ _[_,_Symbol-4],_[_] ] :=
-	0;
-
-PairContract[ v_[x_,di_Symbol-4],w_[y_,di_Symbol] ] :=
-	PairContract[v[x,di-4],w[y,di-4] ]/; FreeQ2[{x,y},{CartesianIndex,CartesianMomentum,ExplicitLorentzIndex[0],TemporalMomentum}];
-
-PairContract[ w_[y_,_Symbol],v_[x_] ] :=
-	PairContract[ v[x], w[y] ]/; FreeQ2[{x,y},{CartesianIndex,CartesianMomentum,ExplicitLorentzIndex[0],TemporalMomentum}];
-
-PairContract[ v_[x_], w_[y_,_Symbol] ] :=
-	PairContract[ v[x], w[y] ]/; FreeQ2[{x,y},{CartesianIndex,CartesianMomentum,ExplicitLorentzIndex[0],TemporalMomentum}];
+PairContract3/: PairContract3[LorentzIndex[z_,dimL_:4],(h:CartesianIndex|CartesianMomentum)[x_,dimC_:3]] f_[a__] :=
+	(f[a] /. LorentzIndex[z, ___]->h[x,dimC]) /;(!FreeQ[f[a], LorentzIndex[z,___]]) && MatchQ[{dimL,dimC},{4,3}|{_Symbol,_Symbol-1}|{_Symbol-4,_Symbol-4}];
 
 
+PairContract3[a_, b_]:=
+	FCUseCache[ExpandScalarProduct,{Pair[a,b]},{FCI->True}]/;FreeQ2[{a,b},{LorentzIndex,CartesianIndex}];
 
-sceins[0,_] :=
-	0;
-sceins[a_LorentzIndex b_, c_] :=
-	b sceins[a, c];
-sceins[a_Momentum b_, c_] :=
-	b sceins[a, c];
-sczwei[ _[_],_[_,_Symbol-4] ] :=
-	0;             (*sczweidef*)
-sczwei[ v_[x_,di_Symbol-4],w_[y_,di_Symbol] ] :=
-	sczwei[v[x, di-4], w[y, di-4]];
-sczwei[ w_[y_,_Symbol],v_[x_] ] :=
-	sczwei[ v[x],w[y] ];
+(* #################################################################### *)
 
-sce[x_,y_] :=
-	If[ (Factoring /. Options[PairContract]) === True,
-		Factor2[Distribute[sceins@@( Expand[ MomentumExpand/@{x,y} ])]/.sceins->sczwei/.sczwei->Pair],
-				Distribute[sceins@@( Expand[ MomentumExpand/@{x,y} ]) ]/.sceins->sczwei/.sczwei->Pair
+(*Obviously memoization safe*)
+SetAttributes[dimEval, Orderless];
+
+(*{4,4}, {D,D}, {D-4,D-4} *)
+dimEval[d_,d_]:=
+	MemSet[dimEval[d,d],
+		d
 	];
 
-PairContract[x_,y_] :=
-	Block[ {sCOt = sce[x,y]},
-		If[ FreeQ[ sCOt, Pair ] || (Head[sCOt]=!=Plus),
-			sCOt,
-			Pair[x,y]
-		]
-	]/;FreeQ2[{x,y},{LorentzIndex,CartesianIndex}];
+(* {D,4} -> 4*)
+dimEval[d_Symbol,4]:=
+	MemSet[dimEval[d,4],
+		4
+	];
 
+(* {D-4,4} -> 0*)
+dimEval[d_Symbol-4,4]:=
+	MemSet[dimEval[d-4,4],
+		0
+	];
+
+(* {D-4,D} -> D-4*)
+dimEval[d_Symbol-4,d_Symbol]:=
+	MemSet[dimEval[d-4,d],
+		d-4
+	];
+
+(* {D-1,3} -> 3*)
+dimEval[d_Symbol-1,3]:=
+	MemSet[dimEval[d-1,3],
+		3
+	];
+
+(* {D-4,3} -> 0*)
+dimEval[d_Symbol-4,3]:=
+	MemSet[dimEval[d-4,3],
+		0
+	];
+
+(* {D-4,D-1} -> D-4*)
+dimEval[d_Symbol-4,d_Symbol-1]:=
+	MemSet[dimEval[d-4,d-1],
+		d-4
+	];
+
+(* #################################################################### *)
+
+(*Obviously memoization safe*)
+SetAttributes[dimEvalLorentzCartesian, Orderless];
+
+(*The function only returns something if a simplification is possible*)
+
+(* {4, D-1} -> {4, 3}*)
+dimEvalLorentzCartesian[4, d_Symbol-1]:=
+	MemSet[dimEvalLorentzCartesian[4, d-1],
+		{4,3}
+	];
+
+(* {4, D-4} -> {0, 0}*)
+dimEvalLorentzCartesian[4, d_Symbol-4]:=
+	MemSet[dimEvalLorentzCartesian[4, d-4],
+		{0,0}
+	];
+
+(* {D, D-4} -> {D-4, D-4}*)
+dimEvalLorentzCartesian[d_Symbol, d_Symbol-4]:=
+	MemSet[dimEvalLorentzCartesian[d, d-4],
+		{d-4,d-4}
+	];
+
+(* {D, 3} -> {4, 3}*)
+dimEvalLorentzCartesian[d_Symbol, 3]:=
+	MemSet[dimEvalLorentzCartesian[d, 3],
+		{4,3}
+	];
+
+(* {D-4,3} -> {0,0}*)
+dimEvalLorentzCartesian[d_Symbol-4,3]:=
+	MemSet[dimEvalLorentzCartesian[d-4,3],
+		{0,0}
+	];
+
+(* {D-4,D-1} -> {D-4,D-4}*)
+dimEvalLorentzCartesian[d_Symbol-4,d_Symbol-1]:=
+	MemSet[dimEvalLorentzCartesian[d-4,d-1],
+		{d-4,d-4}
+	];
 
 FCPrint[1,"PairContract.m loaded."];
 End[]

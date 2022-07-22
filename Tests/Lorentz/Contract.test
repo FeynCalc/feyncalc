@@ -350,7 +350,17 @@ Tests`Lorentz`fcstContractBMHV = {
 {"fcstContractBMHV-ID55","Contract[MTD[Lor1, Lor2] MTD[Lor1,i] (FVD[k, Lor6] MTD[Lor2, Lor4] +
 	FVD[k, Lor4] MTD[Lor2, Lor6]) MTD[Lor3, Lor4] MTD[Lor5,
 Lor6] (FVE[k, Lor5] MTE[Lor3, i] + FVD[k, Lor3] MTE[Lor5, i])]//FCE",
-"(-4 + D) SPD[k, k] + 2 SPE[k, k] + (-4 + D) SPE[k, k]"}
+"(-4 + D) SPD[k, k] + 2 SPE[k, k] + (-4 + D) SPE[k, k]"},
+{"fcstContractBMHV-ID56","Contract[(MTD[loor2, lora] MTD[lor1, lor2] MTE[loor1, lorb] -
+	D MTD[loor1, lora] MTD[lor1, lor2] MTE[loor2, lorb]) (FVD[q,
+	loor1] FVD[q, lor2] MTD[loor2, lor1] MTD[lora, lorb] +
+	FVD[q, loor1] FVD[q, lor1] MTD[loor2, lor2] MTD[lora, lorb]),
+FCE -> True]","2 SPE[q, q] - 2 D SPE[q, q]"},
+{"fcstContractBMHV-ID57","Contract[ExpandAll[(MTD[loor2, lora] MTD[lor1, lor2] MTE[loor1, lorb] -
+	D MTD[loor1, lora] MTD[lor1, lor2] MTE[loor2, lorb]) (FVD[q,
+	loor1] FVD[q, lor2] MTD[loor2, lor1] MTD[lora, lorb] +
+	FVD[q, loor1] FVD[q, lor1] MTD[loor2, lor2] MTD[lora, lorb])],
+FCE -> True]","2 SPE[q, q] - 2 D SPE[q, q]"}
 };
 
 Tests`Lorentz`fcstContractCartesian = {
@@ -359,7 +369,11 @@ Tests`Lorentz`fcstContractCartesian = {
 {"fcstContractCartesian-ID3","Simplify[LorentzToCartesian[
 Contract[LC[0][p1, p2, p3] LC[0][q1, q2, q3]]] - Contract[EpsEvaluate[LC[0][p1, p2, p3] LC[0][q1, q2, q3]]]]","0"},
 {"fcstContractCartesian-ID4","Contract[CLC[i2, a, i1] KD[b, i1] KD[c, i2] -CLC[i1, a, i3] CLC[i3, b, i4] CLC[i4, c, i2] KD[i1, i2],FCE -> True]",
-"2 CLC[a, b, c]"}
+"2 CLC[a, b, c]"},
+{"fcstContractCartesian-ID5","Contract[(CVD[q, loor1] CVD[q, lor2] KDD[loor2, lor1] KDD[lora,
+	lorb] + CVD[q, loor1] CVD[q, lor1] KDD[loor2, lor2] KDD[lora,
+	lorb]) (KDD[loor2, lora] KDD[lor1, lor2] KDE[loor1, lorb] -
+	D KDD[loor1, lora] KDD[lor1, lor2] KDE[loor2, lorb]), FCE -> True]","2 CSPE[q, q] - 2 D CSPE[q, q]"}
 }
 
 

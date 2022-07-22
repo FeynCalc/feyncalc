@@ -49,7 +49,12 @@ Tests`Lorentz`fcstPairContract =
 "Pair[Momentum[p, -4 + D], Momentum[p, -4 + D]]"},
 {"fcstPairContract-ID15",
 "PairContract[Momentum[p,D1],Momentum[p,D2]]",
-"Pair[Momentum[p, D1], Momentum[p, D2]]"}
+"Pair[Momentum[p, D1], Momentum[p, D2]]"},
+{"fcstPairContract-ID16",
+"PairContract[-Momentum[q2],
+Momentum[Polarization[q1, I, Transversality -> True]]]",
+"-Pair[Momentum[q2],
+Momentum[Polarization[q1, I, Transversality -> True]]]"}
 });
 
 Tests`Lorentz`fcstPairContract3 = {
@@ -195,7 +200,7 @@ PairContract/.CartesianPairContract\[Rule]CartesianPair/.PairContract\[Rule]Pair
 CartesianPair[CartesianIndex[i,D-1],CartesianMomentum[p,D-1]]/.CartesianPair\[Rule]\
 CartesianPairContract/.Pair\[Rule]PairContract/.CartesianPairContract\[Rule]\
 CartesianPair/.PairContract\[Rule]Pair",
-"Pair[CartesianMomentum[p, -1 + D], LorentzIndex[\[Mu]]]"},
+"Pair[CartesianMomentum[p], LorentzIndex[\[Mu]]]"},
 {"fcstCartesianPairContract-ID40",
 "Pair[CartesianIndex[i,D-1],LorentzIndex[\[Mu],D]] \
 CartesianPair[CartesianIndex[i,D-1],CartesianMomentum[p,D-1]]/.CartesianPair\[Rule]\

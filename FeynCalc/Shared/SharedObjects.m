@@ -1766,17 +1766,41 @@ Pair[i_CartesianIndex, p_CartesianMomentum]:=
 Pair[p_CartesianMomentum, q_CartesianMomentum]:=
 	FeynCalc`Package`MetricS CartesianPair[p, q];
 
+(* {4,3} -> {3,3} *)
 Pair[Momentum[q_], CartesianMomentum[p_]]:=
 	CartesianPair[CartesianMomentum[q], CartesianMomentum[p]];
 
+(* {4,D-1} -> {3,3} *)
+Pair[Momentum[q_], CartesianMomentum[p_,_Symbol]]:=
+	CartesianPair[CartesianMomentum[q], CartesianMomentum[p]];
+
+(* {4,D-4} -> 0 *)
+Pair[Momentum[_], CartesianMomentum[_,_Symbol-4]]:=
+	0;
+
+(* {D-4,D-4} -> {D-4,D-4} *)
 Pair[Momentum[q_, dim_Symbol-4], CartesianMomentum[p_, dim_Symbol-4]]:=
 	CartesianPair[CartesianMomentum[q,dim-4], CartesianMomentum[p,dim-4]];
 
+(* {D-4,D-1} -> {D-4,D-4} *)
+Pair[Momentum[q_, dim_Symbol-4], CartesianMomentum[p_, dim_Symbol-1]]:=
+	CartesianPair[CartesianMomentum[q,dim-4], CartesianMomentum[p,dim-4]];
+
+(* {D-4,3} -> 0 *)
+Pair[Momentum[_,_Symbol-4], CartesianMomentum[_]]:=
+	0;
+
+(* {D,D-1} -> {D-1,D-1} *)
 Pair[Momentum[q_, dim_Symbol], CartesianMomentum[p_, dim_Symbol-1]]:=
 	CartesianPair[CartesianMomentum[q,dim-1], CartesianMomentum[p,dim-1]];
 
-Pair[p_Momentum, q_CartesianMomentum]:=
-	CartesianPair[p, q];
+(* {D,D-4} -> {D-4,D-4} *)
+Pair[Momentum[q_, dim_Symbol], CartesianMomentum[p_, dim_Symbol-4]]:=
+	CartesianPair[CartesianMomentum[q,dim-4], CartesianMomentum[p,dim-4]];
+
+(* {D,3} -> {3,3} *)
+Pair[Momentum[q_,_Symbol], CartesianMomentum[p_]]:=
+	CartesianPair[CartesianMomentum[q], CartesianMomentum[p]];
 
 
 FCPartialD[x__] :=
