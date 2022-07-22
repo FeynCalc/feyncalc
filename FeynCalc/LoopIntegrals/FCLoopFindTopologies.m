@@ -53,6 +53,7 @@ Options[FCLoopFindTopologies] = {
 	FCI 						-> False,
 	FCLoopBasisOverdeterminedQ	-> False,
 	FCLoopIsolate				-> True,
+	FCLoopScalelessQ			-> False,
 	FCVerbose					-> False,
 	FDS							-> True,
 	Factoring					-> False,
@@ -80,7 +81,7 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 			extraPropagatorsFirst,extraPropagatorsLast, addF, addL, arrayF, arrayL, denFreePart, denPart,
 			denFreeTopoName, topoTempName, optFactoring, namesPreferredTopologies, preferredTopologiesAbsent, optFDS, allFADs,
 			allFADsSimp, ruleFADsSimp, exFinal, optOrdering, orderingFirst, orderingLast, topoName, optHead,
-			momenta, optFinalSubstitutions, optFCLoopIsolate},
+			momenta, optFinalSubstitutions, optFCLoopIsolate, scalelessTopologies ,ruleScalelessTopologies},
 
 		optExtraPropagators 	= OptionValue[ExtraPropagators];
 		optOrdering 			= OptionValue[Ordering];
@@ -94,6 +95,8 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 		optFCLoopIsolate 		= OptionValue[FCLoopIsolate];
 
 		optPreferredTopologies = optPreferredTopologies /. FCTopology[id_,re_]:> FCTopology[topoName[id],re];
+
+		ruleScalelessTopologies = {};
 
 		If[	OptionValue[FCVerbose]===False,
 			fcfsopVerbose=$VeryVerbose,
@@ -472,12 +475,6 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 			FCPrint[3, "FCLoopFindTopologies: Identified subtopologies: ", matchedSubtopologies, FCDoControl->fcfsopVerbose];
 			FCPrint[3, "FCLoopFindTopologies: Final topologies: ", realTopologies, FCDoControl->fcfsopVerbose];
 
-			(*If[	Length[matchedSubtopologies]+Length[realTopologies]=!=Length[topoList2]+Length[namesPreferredTopologies],
-				Message[FCLoopFindTopologies::failmsg,"The numbers of the total, final and matched topologies do not agree."];
-				Abort[]
-			];*)
-
-
 
 			FCPrint[0, "Number of the initial candidate topologies: ", Length[topoList2], FCDoControl->fcfsopVerbose];
 			FCPrint[0, "Number of the identified unique topologies: ", Length[realTopologies], FCDoControl->fcfsopVerbose];
@@ -574,10 +571,32 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 
 		FCPrint[3, "FCLoopFindTopologies: Final list of the identified topologies: ", finalTopologies, FCDoControl->fcfsopVerbose];
 
+		If[	!OptionValue[FCLoopScalelessQ],
+
+			If[	!FreeQ[finalTopologies, GenericPropagatorDenominator],
+
+					FCPrint[0, "Some topology candidates contain GFADs. To avoid false positives, those will not be checked with FCLoopScalelessQ.", FCDoControl->fcfsopVerbose];
+					scalelessTopologies = Thread[Rule[SelectFree[finalTopologies,GenericPropagatorDenominator], FCLoopScalelessQ[SelectFree[finalTopologies,GenericPropagatorDenominator]]]],
+
+					scalelessTopologies = Thread[Rule[finalTopologies, FCLoopScalelessQ[finalTopologies]]]
+			];
+			scalelessTopologies = scalelessTopologies /. {
+						Rule[_FCTopology, False] :> Unevaluated[Sequence[]],
+						Rule[a_FCTopology, True] :> First[a]
+			};
+
+			If[	scalelessTopologies=!={},
+				FCPrint[0, "Follwing identified topologies are scaleless and will be set to zero: ",
+					SelectNotFree[finalTopologies,scalelessTopologies], FCDoControl->fcfsopVerbose];
+
+				finalTopologies = SelectFree[finalTopologies,scalelessTopologies];
+				ruleScalelessTopologies = Map[Rule[GLI[#,_],0]&,scalelessTopologies]
+			]
+		];
 
 		time=AbsoluteTime[];
 		FCPrint[1, "FCLoopFindTopologies: Assembling the final result.", FCDoControl->fcfsopVerbose];
-		exFinal = (denFreePart+denPart)/.Dispatch[finalRule]/.Dispatch[ruleNames];
+		exFinal = (denFreePart+denPart)/.Dispatch[finalRule]/.Dispatch[ruleNames]/.Dispatch[ruleScalelessTopologies];
 		FCPrint[1, "FCLoopFindTopologies: Done assembling the final result, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfsopVerbose];
 
 		If[	optCollecting,

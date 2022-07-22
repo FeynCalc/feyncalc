@@ -325,5 +325,25 @@ gp[GLI[topo1, {1, 1, 1, 1, 1}]], gp[GLI[topo1, {1, 1, 1, 1, 1}]]},
 1}], SFAD[{{k1 - k2, 0}, {mb^2, 1}, 1}]}, {k1, k2}, {p1}, {}, {}],
 FCTopology[topo2, {SFAD[{{k2, 0}, {0, 1}, 1}], SFAD[{{k1, 0}, {mc^2, 1}, 1}],
 SFAD[{{k1 - p1, 0}, {mc^2, 1}, 1}], SFAD[{{k1 - k2, 0},
-{mc^2, 1}, 1}]}, {k1, k2}, {p1}, {}, {}]}}"}
+{mc^2, 1}, 1}]}, {k1, k2}, {p1}, {}, {}]}}"},
+{"fcstFCLoopFindTopologies-ID11",
+"FCLoopFindTopologies[
+a FAD[{p1, m}] SFAD[{{0, p2 . q}}] +
+b FAD[{p1, m}] FAD[{p2, m}], {p1, p2}, FCVerbose -> -1,
+Head -> gliProd, Names -> topo, FCE -> True]",
+"{b gliProd[GLI[topo1, {1, 1}]], {FCTopology[
+topo1, {SFAD[{{p2, 0}, {m^2, 1}, 1}],
+	SFAD[{{p1, 0}, {m^2, 1}, 1}]}, {p1, p2}, {}, {}, {}]}}"},
+{"fcstFCLoopFindTopologies-ID12",
+"FCLoopFindTopologies[
+a FAD[{p1, m}] SFAD[{{0, p2 . q}}] +
+b FAD[{p1, m}] FAD[{p2, m}], {p1, p2}, FCVerbose -> -1,
+Head -> gliProd, Names -> topo, FCE -> True, FCLoopScalelessQ -> True]",
+"{b gliProd[GLI[topo1, {1, 1}]] +
+a gliProd[GLI[topo2, {1, 1}]], {FCTopology[
+topo1, {SFAD[{{p2, 0}, {m^2, 1}, 1}],
+	SFAD[{{p1, 0}, {m^2, 1}, 1}]}, {p1, p2}, {}, {}, {}],
+FCTopology[
+topo2, {SFAD[{{0, p2 . q}, {0, 1}, 1}],
+	SFAD[{{p1, 0}, {m^2, 1}, 1}]}, {p1, p2}, {q}, {}, {}]}}"}
 });
