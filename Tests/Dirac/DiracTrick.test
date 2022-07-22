@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2022 Rolf Mertig
+	Copyright (C) 1997-2022 Frederik Orellana
+	Copyright (C) 2014-2022 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for DiracTrick               *)
@@ -1010,100 +1010,73 @@ DiracGamma[LorentzIndex[i8, -4 + D], -4 + D]*Pair[Momentum[p, -4 + \
 D], Momentum[p, -4 + D]]"},
 {"fcstDiracTrickCoreProperties-ID114", "DiracTrick[
 		GSD[p].GA[i1, i2, i3, i4, i5, i6, i7, i8, i9, i10].GSD[p]]//FCE",
-	"2*(GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] \
-. GA[i9] . GA[i10] . GS[p]*FV[p, i1] - GA[i1] . GA[i2] . GA[i3] . \
-GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GS[p]*FV[p, \
-i10] - GA[i1] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . \
-GA[i9] . GA[i10] . GS[p]*FV[p, i2] + GA[i1] . GA[i2] . GA[i4] . \
-GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10] . GS[p]*FV[p, \
-i3] - GA[i1] . GA[i2] . GA[i3] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . \
-GA[i9] . GA[i10] . GS[p]*FV[p, i4] + GA[i1] . GA[i2] . GA[i3] . \
-GA[i4] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10] . GS[p]*FV[p, \
-i5] - GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i7] . GA[i8] . \
-GA[i9] . GA[i10] . GS[p]*FV[p, i6] + GA[i1] . GA[i2] . GA[i3] . \
-GA[i4] . GA[i5] . GA[i6] . GA[i8] . GA[i9] . GA[i10] . GS[p]*FV[p, \
-i7] - GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . \
-GA[i9] . GA[i10] . GS[p]*FV[p, i8] + GA[i1] . GA[i2] . GA[i3] . \
-GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i10] . GS[p]*FV[p, \
-i9]) + GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . \
-GA[i8] . GA[i9] . GA[i10]*SP[p, p] + GA[i1] . GA[i2] . GA[i3] . \
-GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10]*SPE[p, \
-p]"},
+	"GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10] . GSE[p] . GS[p] +
+	GS[p] . GSE[p] . GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10] +
+	2*(GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10] . GS[p]*FV[p, i1] -
+	GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GS[p]*FV[p, i10] -
+	GA[i1] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10] . GS[p]*FV[p, i2] +
+	GA[i1] . GA[i2] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10] . GS[p]*FV[p, i3] -
+	GA[i1] . GA[i2] . GA[i3] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10] . GS[p]*FV[p, i4] +
+	GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10] . GS[p]*FV[p, i5] -
+	GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i7] . GA[i8] . GA[i9] . GA[i10] . GS[p]*FV[p, i6] +
+	GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i8] . GA[i9] . GA[i10] . GS[p]*FV[p, i7] -
+	GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i9] . GA[i10] . GS[p]*FV[p, i8] +
+	GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i10] . GS[p]*FV[p, i9]) +
+	GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10]*SP[p, p] +
+	GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10]*SPE[p, p]"},
 {"fcstDiracTrickCoreProperties-ID115", "DiracTrick[
 		GSD[p].GA[i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, \
 i11].GSD[p]]//FCE",
-"2*(GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . \
-GA[i9] . GA[i10] . GA[i11] . GS[p]*FV[p, i1] - GA[i1] . GA[i2] . \
-GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . \
-GA[i11] . GS[p]*FV[p, i10] + GA[i1] . GA[i2] . GA[i3] . GA[i4] . \
-GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10] . GS[p]*FV[p, \
-i11] - GA[i1] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . \
-GA[i9] . GA[i10] . GA[i11] . GS[p]*FV[p, i2] + GA[i1] . GA[i2] . \
-GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10] . \
-GA[i11] . GS[p]*FV[p, i3] - GA[i1] . GA[i2] . GA[i3] . GA[i5] . \
-GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10] . GA[i11] . GS[p]*FV[p, \
-i4] + GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i6] . GA[i7] . GA[i8] . \
-GA[i9] . GA[i10] . GA[i11] . GS[p]*FV[p, i5] - GA[i1] . GA[i2] . \
-GA[i3] . GA[i4] . GA[i5] . GA[i7] . GA[i8] . GA[i9] . GA[i10] . \
-GA[i11] . GS[p]*FV[p, i6] + GA[i1] . GA[i2] . GA[i3] . GA[i4] . \
-GA[i5] . GA[i6] . GA[i8] . GA[i9] . GA[i10] . GA[i11] . GS[p]*FV[p, \
-i7] - GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . \
-GA[i9] . GA[i10] . GA[i11] . GS[p]*FV[p, i8] + GA[i1] . GA[i2] . \
-GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i10] . \
-GA[i11] . GS[p]*FV[p, i9]) - GA[i1] . GA[i2] . GA[i3] . GA[i4] . \
-GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10] . GA[i11]*SP[p, \
-p] - GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . \
-GA[i8] . GA[i9] . GA[i10] . GA[i11]*SPE[p, p]"},
+"-GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10] . GA[i11] . GSE[p] . GS[p] -
+GS[p] . GSE[p] . GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10] . GA[i11] +
+2*(GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10] . GA[i11] . GS[p]*FV[p, i1] -
+GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i11] . GS[p]*FV[p, i10] +
+GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10] . GS[p]*FV[p, i11] -
+GA[i1] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10] . GA[i11] . GS[p]*FV[p, i2] +
+GA[i1] . GA[i2] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10] . GA[i11] . GS[p]*FV[p, i3] -
+GA[i1] . GA[i2] . GA[i3] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10] . GA[i11] . GS[p]*FV[p, i4] +
+GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10] . GA[i11] . GS[p]*FV[p, i5] -
+GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i7] . GA[i8] . GA[i9] . GA[i10] . GA[i11] . GS[p]*FV[p, i6] +
+GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i8] . GA[i9] . GA[i10] . GA[i11] . GS[p]*FV[p, i7] -
+GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i9] . GA[i10] . GA[i11] . GS[p]*FV[p, i8] +
+GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i10] . GA[i11] . GS[p]*FV[p, i9]) -
+GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10] . GA[i11]*SP[p, p] -
+GA[i1] . GA[i2] . GA[i3] . GA[i4] . GA[i5] . GA[i6] . GA[i7] . GA[i8] . GA[i9] . GA[i10] . GA[i11]*SPE[p, p]"},
 {"fcstDiracTrickCoreProperties-ID116", "DiracTrick[
 		GSD[p].GAE[i1, i2, i3, i4, i5, i6, i7, i8, i9, \
 i10].GSD[p]]//FCE",
-"2*(GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . \
-GAE[i8] . GAE[i9] . GAE[i10] . GSE[p]*FVE[p, i1] - GAE[i1] . GAE[i2] \
-. GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] \
-. GSE[p]*FVE[p, i10] - GAE[i1] . GAE[i3] . GAE[i4] . GAE[i5] . \
-GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10] . GSE[p]*FVE[p, i2] \
-+ GAE[i1] . GAE[i2] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] \
-. GAE[i9] . GAE[i10] . GSE[p]*FVE[p, i3] - GAE[i1] . GAE[i2] . \
-GAE[i3] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10] \
-. GSE[p]*FVE[p, i4] + GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i6] \
-. GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10] . GSE[p]*FVE[p, i5] - \
-GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i7] . GAE[i8] . \
-GAE[i9] . GAE[i10] . GSE[p]*FVE[p, i6] + GAE[i1] . GAE[i2] . GAE[i3] \
-. GAE[i4] . GAE[i5] . GAE[i6] . GAE[i8] . GAE[i9] . GAE[i10] . \
-GSE[p]*FVE[p, i7] - GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . \
-GAE[i6] . GAE[i7] . GAE[i9] . GAE[i10] . GSE[p]*FVE[p, i8] + GAE[i1] \
-. GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] \
-. GAE[i10] . GSE[p]*FVE[p, i9]) + GAE[i1] . GAE[i2] . GAE[i3] . \
-GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . \
-GAE[i10]*SP[p, p] + GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . \
-GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10]*SPE[p, p]"},
+"GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10] . GS[p] . GSE[p] +
+GSE[p] . GS[p] . GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10] +
+2*(GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10] . GSE[p]*FVE[p, i1] -
+GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . GSE[p]*FVE[p, i10] -
+GAE[i1] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10] . GSE[p]*FVE[p, i2] +
+GAE[i1] . GAE[i2] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10] . GSE[p]*FVE[p, i3] -
+GAE[i1] . GAE[i2] . GAE[i3] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10] . GSE[p]*FVE[p, i4] +
+GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10] . GSE[p]*FVE[p, i5] -
+GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10] . GSE[p]*FVE[p, i6] +
+GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i8] . GAE[i9] . GAE[i10] . GSE[p]*FVE[p, i7] -
+GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i9] . GAE[i10] . GSE[p]*FVE[p, i8] +
+GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i10] . GSE[p]*FVE[p, i9]) +
+GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10]*SP[p, p] +
+GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10]*SPE[p, p]"},
 {"fcstDiracTrickCoreProperties-ID117", "DiracTrick[
 		GSD[p].GAE[i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, \
 i11].GSD[p]]//FCE",
-"2*(GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . \
-GAE[i8] . GAE[i9] . GAE[i10] . GAE[i11] . GSE[p]*FVE[p, i1] - GAE[i1] \
-. GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] \
-. GAE[i9] . GAE[i11] . GSE[p]*FVE[p, i10] + GAE[i1] . GAE[i2] . \
-GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . \
-GAE[i10] . GSE[p]*FVE[p, i11] - GAE[i1] . GAE[i3] . GAE[i4] . GAE[i5] \
-. GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10] . GAE[i11] . \
-GSE[p]*FVE[p, i2] + GAE[i1] . GAE[i2] . GAE[i4] . GAE[i5] . GAE[i6] . \
-GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10] . GAE[i11] . GSE[p]*FVE[p, i3] \
-- GAE[i1] . GAE[i2] . GAE[i3] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] \
-. GAE[i9] . GAE[i10] . GAE[i11] . GSE[p]*FVE[p, i4] + GAE[i1] . \
-GAE[i2] . GAE[i3] . GAE[i4] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . \
-GAE[i10] . GAE[i11] . GSE[p]*FVE[p, i5] - GAE[i1] . GAE[i2] . GAE[i3] \
-. GAE[i4] . GAE[i5] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10] . \
-GAE[i11] . GSE[p]*FVE[p, i6] + GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] \
-. GAE[i5] . GAE[i6] . GAE[i8] . GAE[i9] . GAE[i10] . GAE[i11] . \
-GSE[p]*FVE[p, i7] - GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . \
-GAE[i6] . GAE[i7] . GAE[i9] . GAE[i10] . GAE[i11] . GSE[p]*FVE[p, i8] \
-+ GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] \
-. GAE[i8] . GAE[i10] . GAE[i11] . GSE[p]*FVE[p, i9]) - GAE[i1] . \
-GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . \
-GAE[i9] . GAE[i10] . GAE[i11]*SP[p, p] - GAE[i1] . GAE[i2] . GAE[i3] \
-. GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . \
-GAE[i10] . GAE[i11]*SPE[p, p]"},
+"-GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10] . GAE[i11] . GS[p] . GSE[p] -
+GSE[p] . GS[p] . GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10] . GAE[i11] +
+2*(GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10] . GAE[i11] . GSE[p]*FVE[p, i1] -
+GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i11] . GSE[p]*FVE[p, i10] +
+GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10] . GSE[p]*FVE[p, i11] -
+GAE[i1] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10] . GAE[i11] . GSE[p]*FVE[p, i2] +
+GAE[i1] . GAE[i2] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10] . GAE[i11] . GSE[p]*FVE[p, i3] -
+GAE[i1] . GAE[i2] . GAE[i3] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10] . GAE[i11] . GSE[p]*FVE[p, i4] +
+GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10] . GAE[i11] . GSE[p]*FVE[p, i5] -
+GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10] . GAE[i11] . GSE[p]*FVE[p, i6] +
+GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i8] . GAE[i9] . GAE[i10] . GAE[i11] . GSE[p]*FVE[p, i7] -
+GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i9] . GAE[i10] . GAE[i11] . GSE[p]*FVE[p, i8] +
+GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i10] . GAE[i11] . GSE[p]*FVE[p, i9]) -
+GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10] . GAE[i11]*SP[p, p] -
+GAE[i1] . GAE[i2] . GAE[i3] . GAE[i4] . GAE[i5] . GAE[i6] . GAE[i7] . GAE[i8] . GAE[i9] . GAE[i10] . GAE[i11]*SPE[p, p]"},
 {"fcstDiracTrickCoreProperties-ID118",
 "DiracTrick[GA[i, j].FCNCA.GA[i, j]] // FCE", "GA[i] . GA[j] . FCNCA . GA[i] . GA[j]"},
 {"fcstDiracTrickCoreProperties-ID119",

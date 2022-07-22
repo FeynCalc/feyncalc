@@ -248,7 +248,13 @@ SUNT[colc] MTD[\[Mu], \[Nu]] SPD[x, x] SUNF[cola, colb, colc] +
 28 D SUNT[a] . SUNT[cola] . SUNT[colb] .
 SUNT[colc] MTD[\[Mu], \[Nu]] SPD[x, x] SUNF[cola, colb, colc] -
 4 D^2 SUNT[a] . SUNT[cola] . SUNT[colb] .
-SUNT[colc] MTD[\[Mu], \[Nu]] SPD[x, x] SUNF[cola, colb, colc]"}
+SUNT[colc] MTD[\[Mu], \[Nu]] SPD[x, x] SUNF[cola, colb, colc]"},
+{"fcstDiracSimplify-ID50",
+"FCSetDiracGammaScheme[\"BMHV\"];\n res=DiracSimplify[-GSE[q] . GSE[a] . GSE[b] . GSE[c] . GSE[q] +
+2 GSE[b] . GSE[c] . GSE[q] SPE[a, q] -
+2 GSE[a] . GSE[c] . GSE[q] SPE[b, q] +
+2 GSE[a] . GSE[b] . GSE[q] SPE[c, q] -
+GSE[a] . GSE[b] . GSE[c] SPE[q, q]]; \n FCSetDiracGammaScheme[\"NDR\"];\n res","0"}
 };
 
 
