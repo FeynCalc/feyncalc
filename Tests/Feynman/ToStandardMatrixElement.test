@@ -18,16 +18,16 @@ Tests`Feynman`fcstToStandardMatrixElement =
 {"fcstToStandardMatrixElement-ID1", "ToStandardMatrixElement[1]",
 "1"},
 {"fcstToStandardMatrixElement-ID2",
-"ToStandardMatrixElement[GA[i,k]]",
+"ToStandardMatrixElement[GA[i,k],DiracSubstitute5->False]",
 "StandardMatrixElement[DiracGamma[LorentzIndex[i]] . \
 DiracGamma[LorentzIndex[k]]]"},
 {"fcstToStandardMatrixElement-ID3",
 "ToStandardMatrixElement[SUNT[a]]",
 "StandardMatrixElement[SUNT[SUNIndex[a]]]"},
 {"fcstToStandardMatrixElement-ID4",
-"ToStandardMatrixElement[SUNT[a]GA[i,k]+x]",
-"x + StandardMatrixElement[DiracGamma[LorentzIndex[i]] . \
-DiracGamma[LorentzIndex[k]]*SUNT[SUNIndex[a]]]"},
+"ToStandardMatrixElement[SUNT[a]GA[i,k]+x,FCE->True]",
+"x*StandardMatrixElement[GA[6]] + x*StandardMatrixElement[GA[7]] +
+StandardMatrixElement[GA[i] . GA[k] . GA[6]*SUNT[a]] + StandardMatrixElement[GA[i] . GA[k] . GA[7]*SUNT[a]]"},
 {"fcstToStandardMatrixElement-ID5",
 "ToStandardMatrixElement[x \
 SpinorUBar[p2,m2].GA[6].SpinorV[p1,m1]+y \
@@ -299,10 +299,6 @@ mb*(C0[SPD[p1, p1], SPD[p2, p2], SPD[p1, p1] + 2*SPD[p1, p2] + SPD[p2, p2], mt^2
 2*PaVe[2, 2, {SPD[p1, p1], SPD[p1, p1] + 2*SPD[p1, p2] + SPD[p2, p2], SPD[p2, p2]}, {mh^2, mt^2, mh^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True])*
 StandardMatrixElement[Spinor[Momentum[p3], ms, 1] . GS[p2] . GA[7] . Spinor[Momentum[p1], mb, 1]*SP[p2, Polarization[p2, I]]]"},
 
-
-
-
-
 {"fcstToStandardMatrixElement-ID12",
 "ToStandardMatrixElement[-(1/\[Pi]^2)
 	I (2 I \[Pi]^2 Spinor[Momentum[p3], ms, 1].GS[
@@ -428,5 +424,18 @@ Spinor[Momentum[p, D], 0, 1].GAD[mu].GA[6].Spinor[Momentum[p, D],
 	0, 1]] +
 x StandardMatrixElement[
 Spinor[Momentum[p, D], 0, 1].GAD[mu].GA[7].Spinor[Momentum[p, D],
-	0, 1]]"}
+	0, 1]]"},
+{"fcstToStandardMatrixElement-ID14","ToStandardMatrixElement[
+I (-1 + Zx) GSD[p1] +
+Mx ((-1 + 2 I) + Zmx5 - I Zmx Zx - I ZmxR Zx) GA[6] -
+Mx ((-1 - 2 I) + Zmx5 + I Zmx Zx + I ZmxL Zx) GA[7],
+DiracSubstitute67 -> True, FCE -> True]",
+"I (-1 + Zx) StandardMatrixElement[GSD[p1] . GA[6]] +
+I (-1 + Zx) StandardMatrixElement[GSD[p1] . GA[7]] +
+Mx ((-1 + 2 I) + Zmx5 - I Zmx Zx - I ZmxR Zx) StandardMatrixElement[GA[6]] -
+Mx ((-1 - 2 I) + Zmx5 + I Zmx Zx + I ZmxL Zx) StandardMatrixElement[GA[7]]"},
+{"fcstToStandardMatrixElement-ID15",
+"ToStandardMatrixElement[GA[i,k]]",
+"StandardMatrixElement[DiracGamma[LorentzIndex[i]] . DiracGamma[LorentzIndex[k]]. DiracGamma[6]]+
+StandardMatrixElement[DiracGamma[LorentzIndex[i]] . DiracGamma[LorentzIndex[k]]. DiracGamma[7]]"}
 });

@@ -69,7 +69,9 @@ ToStandardMatrixElement[expr_List, opts:OptionsPattern[]]:=
 	ToStandardMatrixElement[#, opts]&/@expr;
 
 ToStandardMatrixElement[expr_/;Head[expr]=!=List, OptionsPattern[]]:=
-	Block[{ex,res,time, chead, dhead, holdDOT, optTimeConstrained,optClearHeads},
+	Block[{	ex,res,time, chead, dhead, holdDOT, optTimeConstrained,
+			optClearHeads, unitMatrix, null1, null2, optDiracSubstitute5,
+			dheadList, dheadListEval},
 
 
 		If [OptionValue[FCVerbose]===False,
@@ -79,8 +81,9 @@ ToStandardMatrixElement[expr_/;Head[expr]=!=List, OptionsPattern[]]:=
 			];
 		];
 
-		optTimeConstrained = OptionValue[TimeConstrained];
-		optClearHeads = OptionValue[ClearHeads];
+		optTimeConstrained 	= OptionValue[TimeConstrained];
+		optClearHeads 		= OptionValue[ClearHeads];
+		optDiracSubstitute5 = OptionValue[DiracSubstitute5];
 
 		FCPrint[1,"ToStandardMatrixElement: Entering.", FCDoControl->tsmeVerbose];
 		FCPrint[3,"ToStandardMatrixElement: Entering with: ", expr, FCDoControl->tsmeVerbose];
@@ -127,6 +130,17 @@ ToStandardMatrixElement[expr_/;Head[expr]=!=List, OptionsPattern[]]:=
 			FCPrint[3, "ToStandardMatrixElement: After FCDiracIsolate: ", ex, FCDoControl->tsmeVerbose]
 		];
 
+		unitMatrix = SelectFree[ex+null1+null2,dhead] /. null1|null2->0;
+
+		If[	(unitMatrix=!=0) && !FreeQ[ex,dhead],
+			FCPrint[1, "ToStandardMatrixElement: Adding the decomposition of the unit matrix in Dirac space.", FCDoControl->tsmeVerbose];
+			If[	optDiracSubstitute5,
+				ex = ex - unitMatrix + unitMatrix*dhead[DiracGamma[6]] + unitMatrix*dhead[DiracGamma[7]],
+				ex = ex - unitMatrix + unitMatrix*dhead[1]
+			]
+		];
+
+
 		If[	OptionValue[Spinor],
 			ex = ex /. dhead[x_]/; FreeQ[x,Spinor] :> x
 		];
@@ -141,11 +155,26 @@ ToStandardMatrixElement[expr_/;Head[expr]=!=List, OptionsPattern[]]:=
 			FCPrint[3, "ToStandardMatrixElement: After FCColorIsolate: ", ex, FCDoControl->tsmeVerbose];
 		];
 
+
+		If[	optDiracSubstitute5,
+			dheadList =Cases2[ex,dhead];
+			dheadListEval = dheadList /. {
+				dhead[x_]/; (FreeQ2[x,{DiracGamma[6],DiracGamma[7]}] && FreeQ[x,Spinor]) :> dhead[x.DiracGamma[6]]+dhead[x.DiracGamma[7]](*,
+
+
+				dhead[c_. DOT[a_Spinor,x___, b_Spinor]]/; (FreeQ2[{x},{DiracGamma[6],DiracGamma[7]}] && FreeQ[{x},Spinor]) :>
+					dhead[c DOT[a,x,DiracGamma[6],b]]+dhead[c DOT[a,x,DiracGamma[7],b]]
+				*)
+			};
+			ex = ex /. Dispatch[Thread[Rule[dheadList,dheadListEval]]]
+		];
+
 		time=AbsoluteTime[];
 		FCPrint[1, "ToStandardMatrixElement: Applying Collect2.", FCDoControl->tsmeVerbose];
 		ex = Collect2[ex,dhead,chead, Factoring->OptionValue[Factoring],TimeConstrained->optTimeConstrained];
 		FCPrint[1, "ToStandardMatrixElement: Collect2 done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tsmeVerbose];
 		FCPrint[3, "ToStandardMatrixElement: After Collect2: ", ex, FCDoControl->tsmeVerbose];
+
 
 		ex = ex //. chead|dhead->standmat /. standmat -> StandardMatrixElement;
 
