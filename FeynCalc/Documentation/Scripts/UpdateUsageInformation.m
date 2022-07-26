@@ -4,13 +4,20 @@ $FeynCalcStartupMessages=False;
 <<FeynCalc`
 
 
+(*Debugging only*)
+(*
+loadAddOns={"FeynHelpers"};
+docuDir=FileNameJoin[{$FeynCalcDirectory,"AddOns","FeynHelpers","Documentation"}];
+*)
+
+
 If[loadAddOns=!="{}",
 	FCReloadAddOns[ToString/@ToExpression[loadAddOns]]
 ];
 
 
 If[!DirectoryQ[docuDir],
-	Print["ERROR! The file ", indexFile, " does not exist!" ];
+	Print["ERROR! The directory ", docuDir, " does not exist!" ];
 	QuitAbort[]
 ];
 
@@ -28,12 +35,13 @@ Block[{path,text,tmp,res},
 	
 	text=Import[path,"Text"];
 	tmp=StringCases[text,"(* ::Section:: *)\n(*"<>name<>"*)"~~Shortest[x__]~~"(* ::Subsection:: *)":>x];
+
 	If[Length[tmp]=!=1,	
 		Print["Error: The documentation file for " name, " is missing a proper section header"];
 		Abort[],
 		tmp=First[tmp]
 	];
-	tmp=StringReplace[tmp,{"(* ::Text:: *)"->"","*)"|"(*"|"`"->"","\""->"\\\""}];	
+	tmp=StringReplace[tmp,{"(* ::Text:: *)"->"","*)"|"(*"|"`"->"","\""->"\\\""}];
 	
 	tmp=FixedPoint[StringReplace[#,"\n\n\n"->"\n\n"]&,tmp];
 	tmp=StringTrim[tmp];
@@ -41,7 +49,7 @@ Block[{path,text,tmp,res},
 	res=StringRiffle[InsertLinebreaks/@StringSplit[tmp,"\n"],"\n"];
 	res=StringReplace[res,"\\"~~x:WordCharacter:>"\\\\"<>x];
 	res
-];	
+];
 
 
 ClearAll[updateUsage,importAllSymbols, allFiles,importAllSymbols];
@@ -51,7 +59,7 @@ allFiles[]:=Join[(FileNames["*.m",FileNameJoin[{ParentDirectory[docuDir],#}]&/@{
 "LoopIntegrals","Lorentz","NonCommAlgebra","Pauli","QCD","Shared","SUN","Tables"},Infinity]),{FileNameJoin[{$FeynCalcDirectory,"FCMain.m"}],FileNameJoin[{$FeynCalcDirectory,"FeynCalc.m"}]}],
 "feynhelpers",
 allFiles[]:=Join[(FileNames["*.m",FileNameJoin[{ParentDirectory[docuDir],"Interfaces",#}]&/@{"LoopTools","FIRE","QGRAF",
-"pySecDec"},Infinity]),{FileNameJoin[{ParentDirectory[docuDir],"FeynHelpers.m"}],FileNameJoin[{ParentDirectory[docuDir],"Interfaces","PackageX.m"}],FileNameJoin[{ParentDirectory[docuDir],"Interfaces","Fermat.m"}]}]
+"pySecDec","Fermat"},Infinity]),{FileNameJoin[{ParentDirectory[docuDir],"FeynHelpers.m"}],FileNameJoin[{ParentDirectory[docuDir],"Interfaces","PackageX.m"}]}]
 ];
 
 importAllSymbols[]:=Import[#,"Text"]&/@allFiles[];
@@ -102,7 +110,13 @@ If[First[#2]===1||Mod[First[#2],80]===0,
 	WriteString["stdout","\n"<>ToString[First[#2]]<>"/"<>ToString[Length[input]]<>"\n"];
 ];
 WriteString["stdout","."];
-aux=docuToUsage[#1];updateUsage[#1,aux,True]
+aux=docuToUsage[#1];(*Print[aux];*)updateUsage[#1,aux,True]
 )&,input
 ]
 (*,ProgressIndicator[counter,{1,Length[input]}]]*)
+
+
+
+
+
+

@@ -7,8 +7,21 @@ If[$FrontEnd===Null,
 ];
 
 
+$FeynCalcStartupMessages=False;
+<<FeynCalc`
+
+
+(*Debugging only*)
+(*
+loadAddOns={"FeynHelpers"};
+docuDir=FileNameJoin[{$FeynCalcDirectory,"AddOns","FeynHelpers","Documentation"}];
+indexFile=FileNameJoin[{$FeynCalcDirectory,"AddOns","FeynHelpers","Documentation",
+"Markdown","Extra","FeynHelpers.md"}];
+*)
+
+
 If[!DirectoryQ[docuDir],
-	Print["ERROR! The file ", indexFile, " does not exist!" ];
+	Print["ERROR! The directory ", docuDir, " does not exist!" ];
 	QuitAbort[]
 ];
 
@@ -17,10 +30,6 @@ If[!FileExistsQ[indexFile],
 	Print["ERROR! The file ", indexFile, " does not exist!" ];
 	QuitAbort[]
 ];
-
-
-$FeynCalcStartupMessages=False;
-<<FeynCalc`
 
 
 If[loadAddOns==="{}",
@@ -34,8 +43,6 @@ If[loadAddOns==="{}",
 
 
 docFiles=FileBaseName/@FileNames["*.m",FileNameJoin[{docuDir,"Mathematica"}],Infinity];
-
-
 mdFiles=FileNames["*.md",FileNameJoin[{docuDir,"Markdown"}],Infinity];
 mdFilesImported=Import[#,"Text"]&/@mdFiles;
 aux2=First[StringSplit[#,"\n"]]&/@mdFilesImported;
@@ -48,20 +55,20 @@ Print["Symbols missing documentation pages:"];
 Switch[FileBaseName[indexFile],
 	"FeynCalc",
 		Print[StringRiffle[Complement[SelectFree[fcSymbols,{"FerSolve","FeynCalc","SharedObjects","FCLoopBasis","ToSymbol"}],docFiles],"\n"]],
-	_,
-		Print[StringRiffle[Complement[SelectFree[fcSymbols,{}],docFiles],"\n"]]
+	"FeynHelpers",
+		Print[StringRiffle[Complement[SelectFree[fcSymbols,{"FerSolve","FerShared","LTools","QGShared"}],docFiles],"\n"]]
 	];
 
 
 Print[""]; Print[""];
 Print["Documentation pages for nonexisting symbols:"];
-Print[StringRiffle[SelectFree[Complement[docFiles,fcSymbols],"Vectors"],"\n"]];
+Print[StringRiffle[SelectFree[Complement[docFiles,fcSymbols],{"Vectors","FerSolve"}],"\n"]];
 
 Switch[FileBaseName[indexFile],
 	"FeynCalc",
 		Print[StringRiffle[SelectFree[Complement[docFiles,fcSymbols],{"Vectors"}],"\n"]],
-	_,
-		Print[StringRiffle[SelectFree[Complement[docFiles,fcSymbols],{}],"\n"]]
+	"FeynHelpers",
+		Print[StringRiffle[SelectFree[Complement[docFiles,fcSymbols],{"FerSolve"}],"\n"]]
 	];
 
 
@@ -84,11 +91,19 @@ Print["Symbols missing in the overview:"];
 Switch[FileBaseName[indexFile],
 	"FeynCalc",
 		Print[StringRiffle[Complement[SelectFree[fcSymbols,{"FerSolve","FeynCalc","SharedObjects","FCLoopBasis","ToSymbol"}],overviewSymbols],"\n"]];,
-	_,
-		Print[StringRiffle[Complement[SelectFree[fcSymbols,{}],overviewSymbols],"\n"]]
+	"FeynHelpers",
+		Print[StringRiffle[Complement[SelectFree[fcSymbols,{"FerShared","LTools","QGShared"}],overviewSymbols],"\n"]]
 	];
 
 
 Print[""]; Print[""];
 Print["Nonexisting symbols in the overview:"];
-Print[StringRiffle[Complement[overviewSymbols,fcSymbols],"\n"]];
+Switch[FileBaseName[indexFile],
+	"FeynCalc",
+		Print[StringRiffle[Complement[overviewSymbols,fcSymbols],"\n"]],
+	"FeynHelpers",
+		StringRiffle[SelectFree[Complement[overviewSymbols,fcSymbols],"FerSolve"],"\n"]
+	];
+
+
+
