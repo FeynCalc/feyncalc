@@ -12,7 +12,7 @@
 
 
 (* ::Text:: *)
-(*`ExplicitPartialD[LeftRightPartialD2[mu]] gives `(RightPartialD[mu] + LeftPartialD[mu])`.*)
+(*`ExplicitPartialD[LeftRightPartialD2[mu]]` gives `(RightPartialD[mu] + LeftPartialD[mu])`.*)
 
 
 (* ::Subsection:: *)

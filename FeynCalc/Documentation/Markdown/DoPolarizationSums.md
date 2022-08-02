@@ -5,8 +5,7 @@
 Depending on the arguments of the function, it will perform a sum over the polarization of $\varepsilon(k)$ and its c.c.
 
 - `DoPolarizationSums[exp, k]` sums over the three physical polarizations of an external massive vector boson with the $4$-momentum `k` and the mass $k^2$.
-- `DoPolarizationSums[exp, k, 0]` replaces the polarization sum of an external massless vector boson with the momentum `k` by $-g^{\mu \nu}$.
-This corresponds to the summation over all 4 polarizations, including the unphysical ones.
+- `DoPolarizationSums[exp, k, 0]` replaces the polarization sum of an external massless vector boson with the momentum `k` by $-g^{\mu \nu}$. This corresponds to the summation over all 4 polarizations, including the unphysical ones.
 - `DoPolarizationSums[exp, k, n]` sums over physical (transverse) polarizations of an external massless vector boson with the momentum `k`, where `n` is an auxiliary 4-vector from the gauge-dependent polarization sum formula.
 
 Cf. `PolarizationSum` for more examples and explanations on different polarizations.
@@ -113,7 +112,7 @@ $$\left(-\frac{\text{e}^2 \left(\varphi (\overline{\text{p1}})\right).\left(\bar
 amp // DoPolarizationSums[#, k1, 0] & // DoPolarizationSums[#, k2, 0] &
 ```
 
-$$\frac{\text{e}^4 \left(\varphi (-\overline{\text{p2}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$26})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k1}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$28})}.\left(\varphi (\overline{\text{p1}})\right) \left(\varphi (\overline{\text{p1}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$26})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k2}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$28})}.\left(\varphi (-\overline{\text{p2}})\right)}{t u}+\frac{\text{e}^4 \left(\varphi (\overline{\text{p1}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$28})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k1}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$26})}.\left(\varphi (-\overline{\text{p2}})\right) \left(\varphi (-\overline{\text{p2}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$28})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k2}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$26})}.\left(\varphi (\overline{\text{p1}})\right)}{t u}+\frac{\text{e}^4 \left(\varphi (\overline{\text{p1}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$28})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k1}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$26})}.\left(\varphi (-\overline{\text{p2}})\right) \left(\varphi (-\overline{\text{p2}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$26})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k1}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$28})}.\left(\varphi (\overline{\text{p1}})\right)}{u^2}+\frac{\text{e}^4 \left(\varphi (\overline{\text{p1}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$26})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k2}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$28})}.\left(\varphi (-\overline{\text{p2}})\right) \left(\varphi (-\overline{\text{p2}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$28})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k2}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$26})}.\left(\varphi (\overline{\text{p1}})\right)}{t^2}$$
+$$\frac{\text{e}^4 \left(\varphi (-\overline{\text{p2}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$27})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k1}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$29})}.\left(\varphi (\overline{\text{p1}})\right) \left(\varphi (\overline{\text{p1}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$27})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k2}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$29})}.\left(\varphi (-\overline{\text{p2}})\right)}{t u}+\frac{\text{e}^4 \left(\varphi (\overline{\text{p1}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$29})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k1}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$27})}.\left(\varphi (-\overline{\text{p2}})\right) \left(\varphi (-\overline{\text{p2}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$29})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k2}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$27})}.\left(\varphi (\overline{\text{p1}})\right)}{t u}+\frac{\text{e}^4 \left(\varphi (\overline{\text{p1}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$29})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k1}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$27})}.\left(\varphi (-\overline{\text{p2}})\right) \left(\varphi (-\overline{\text{p2}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$27})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k1}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$29})}.\left(\varphi (\overline{\text{p1}})\right)}{u^2}+\frac{\text{e}^4 \left(\varphi (\overline{\text{p1}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$27})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k2}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$29})}.\left(\varphi (-\overline{\text{p2}})\right) \left(\varphi (-\overline{\text{p2}})\right).\bar{\gamma }^{\text{\$MU}(\text{\$29})}.\left(\bar{\gamma }\cdot \left(\overline{\text{k2}}-\overline{\text{p2}}\right)\right).\bar{\gamma }^{\text{\$MU}(\text{\$27})}.\left(\varphi (\overline{\text{p1}})\right)}{t^2}$$
 
 This is a small piece of the matrix element squared for $g g to  Q \bar{Q}$.
 
@@ -189,7 +188,7 @@ DoPolarizationSums[%, p, 0]
 
 $$\bar{\varepsilon }^{*\text{mu}}(p) \bar{\varepsilon }^{\text{mu}}(p)$$
 
-![1l0desl1odmbt](img/1l0desl1odmbt.svg)
+![0vfxwqdmhs15m](img/0vfxwqdmhs15m.svg)
 
 $$-4$$
 
@@ -308,7 +307,7 @@ has no way to determine the correct number of polarizations.
 DoPolarizationSums[xyz, p, n]
 ```
 
-![18de6vblvu214](img/18de6vblvu214.svg)
+![02zq1seb6t6v9](img/02zq1seb6t6v9.svg)
 
 $$\text{\$Aborted}$$
 

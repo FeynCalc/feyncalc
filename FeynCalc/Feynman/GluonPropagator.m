@@ -30,9 +30,9 @@ GP can be used as an abbreviation of GluonPropagator.
 The gauge and the dimension are determined by the options Gauge and Dimension.
 The following settings of Gauge are possible:
 
--  1 for the Feynman gauge;  
-- alpha for the general covariant gauge;
-- Momentum[n] ,1} for the axial gauge.";
+- 1 for the Feynman gauge
+- alpha for the general covariant gauge
+- {Momentum[n] ,1} for the axial gauge";
 
 Begin["`Package`"]
 End[]

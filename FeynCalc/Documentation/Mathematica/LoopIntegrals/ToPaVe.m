@@ -42,7 +42,7 @@ ToPaVe[%,q]
 
 
 (* ::Text:: *)
-(*By default, `ToPaVe` has the option `PaVeToABCD ` set to `True`. This means that some of the `PaVe` functions are automatically converted to direct Passarino-Veltman functions (`A0`,  `A00`, `B0`, `B1`, `B00`, `B11`, `C0`, `D0`). This also has consequences for `TID`*)
+(*By default, `ToPaVe` has the option `PaVeToABCD` set to `True`. This means that some of the `PaVe` functions are automatically converted to direct Passarino-Veltman functions (`A0`,  `A00`, `B0`, `B1`, `B00`, `B11`, `C0`, `D0`). This also has consequences for `TID`*)
 
 
 TID[FVD[q,mu]FAD[{q,m1},{q+p}],q,ToPaVe->True]

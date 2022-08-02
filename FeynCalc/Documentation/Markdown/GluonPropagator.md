@@ -8,9 +8,9 @@
 
 The gauge and the dimension are determined by the options `Gauge` and `Dimension`. The following settings of `Gauge` are possible:
 
--  `1` for the Feynman gauge;  
-- `alpha` for the general covariant gauge;
-- `Momentum[n] ,1}` for the axial gauge.
+- `1` for the Feynman gauge
+- `alpha` for the general covariant gauge
+- `{Momentum[n] ,1}` for the axial gauge
 
 ### See also
 
@@ -42,7 +42,7 @@ $$\frac{i \delta ^{ab} \left(\frac{(1-\alpha ) p^{\mu } p^{\nu }}{p^2}-g^{\mu \n
 GluonPropagator[p, \[Mu], a, \[Nu], b, Gauge -> {Momentum[n], 1}, Explicit -> True]
 ```
 
-$$\frac{i \delta ^{ab} \left(-\frac{\overline{n}^2 p^{\mu } p^{\nu }-p^2 \overline{n}^{\mu } \overline{n}^{\nu }}{(\overline{n}\cdot \overline{p})^2}+\frac{p^{\mu } \overline{n}^{\nu }+p^{\nu } \overline{n}^{\mu }}{\overline{n}\cdot \overline{p}}-g^{\mu \nu }\right)}{p^2}$$
+$$\frac{i \delta ^{ab} \left(\frac{p^{\mu } \overline{n}^{\nu }+p^{\nu } \overline{n}^{\mu }}{(\overline{n}\cdot \overline{p}+i \eta )}-\frac{\overline{n}^2 p^{\mu } p^{\nu }-p^2 \overline{n}^{\mu } \overline{n}^{\nu }}{(\overline{n}\cdot \overline{p}+i \eta )^{21}}-g^{\mu \nu }\right)}{p^2}$$
 
 ```mathematica
 GP[p, \[Mu], \[Nu]]

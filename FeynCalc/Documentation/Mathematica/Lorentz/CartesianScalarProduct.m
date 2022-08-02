@@ -20,11 +20,11 @@
 
 
 (* ::Text:: *)
-(*Scalar products may be set, e.g. via `ScalarProduct[a, b] = m^2;` but `a` and `b` may not contain sums.*)
+(*Scalar products may be set, e.g. via `CartesianScalarProduct[a, b] = m^2;` but `a` and `b` may not contain sums.*)
 
 
 (* ::Text:: *)
-(*`CartesianScalarProduct[a] ` corresponds to `CartesianScalarProduct[a,a] `*)
+(*`CartesianScalarProduct[a]` corresponds to `CartesianScalarProduct[a,a]`*)
 
 
 (* ::Text:: *)
@@ -32,7 +32,7 @@
 
 
 (* ::Text:: *)
-(*It is highly recommended to set `ScalarProduct`s before any calculation. This improves the performance of FeynCalc.*)
+(*It is highly recommended to set `CartesianScalarProduct`s before any calculation. This improves the performance of FeynCalc.*)
 
 
 (* ::Subsection:: *)

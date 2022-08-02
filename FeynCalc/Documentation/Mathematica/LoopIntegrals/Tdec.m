@@ -15,10 +15,6 @@
 (*The automatic symmetrization of the tensor basis is done using Alexey Pak's algorithm described in [arXiv:1111.0868](https://arxiv.org/abs/1111.0868).*)
 
 
-(* ::Text:: *)
-(**)
-
-
 (* ::Subsection:: *)
 (*See also*)
 

@@ -2,7 +2,7 @@
 
 `LeftRightPartialD2[mu]` denotes $\overleftrightarrow{\partial }_{\mu }$, acting to the left and right.
 
-`ExplicitPartialD[LeftRightPartialD2[mu]] gives `(RightPartialD[mu] + LeftPartialD[mu])`.
+`ExplicitPartialD[LeftRightPartialD2[mu]]` gives `(RightPartialD[mu] + LeftPartialD[mu])`.
 
 ### See also
 

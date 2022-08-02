@@ -1,10 +1,10 @@
 ## SumS
 
-`SumS[1, m]` is the harmonic number $S_ 1(m) = \sum _ {i=1}^m i^{-1}$.
+`SumS[1, m]` is the harmonic number $S_ 1(m) = \sum_ {i=1}^m i^{-1}$.
 
 `SumS[1,1,m]` is $\sum_{i=1}^m S_ 1 (i)/i$.
 
-`SumS[k,l,m]` is $\sum _ {i=1}^m S_l (i)/i^k$.
+`SumS[k,l,m]` is $\sum_{i=1}^m S_l (i)/i^k$.
 
 `SumS[r, n]` represents `Sum[Sign[r]^i/i^Abs[r], {i, 1, n}]`.
 

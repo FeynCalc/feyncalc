@@ -24,9 +24,8 @@ polarization of $\\varepsilon(k)$ and its c.c.
 - DoPolarizationSums[exp, k] sums over the three physical polarizations of an
 external massive vector boson with the $4$-momentum k and the mass $k^2$.
 - DoPolarizationSums[exp, k, 0] replaces the polarization sum of an external
-massless vector boson with the momentum k by $-g^{\\mu \\nu}$.
-This corresponds to the summation over all 4 polarizations, including the
-unphysical ones.
+massless vector boson with the momentum k by $-g^{\\mu \\nu}$. This corresponds
+to the summation over all 4 polarizations, including the unphysical ones.
 - DoPolarizationSums[exp, k, n] sums over physical (transverse) polarizations
 of an external massless vector boson with the momentum k, where n is an
 auxiliary 4-vector from the gauge-dependent polarization sum formula.

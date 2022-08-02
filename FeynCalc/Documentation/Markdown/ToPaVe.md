@@ -44,7 +44,7 @@ $$\frac{1}{\left(q^2-\text{m1}^2\right).\left((\text{p1}+q)^2-\text{m2}^2\right)
 
 $$i \pi ^2 \;\text{E}_0\left(\text{p1}^2,\text{p2}^2,-2 (\text{p2}\cdot \;\text{p3})+\text{p2}^2+\text{p3}^2,-2 (\text{p3}\cdot \;\text{p4})+\text{p3}^2+\text{p4}^2,-2 (\text{p1}\cdot \;\text{p4})+\text{p1}^2+\text{p4}^2,-2 (\text{p1}\cdot \;\text{p2})+\text{p1}^2+\text{p2}^2,\text{p3}^2,-2 (\text{p2}\cdot \;\text{p4})+\text{p2}^2+\text{p4}^2,-2 (\text{p1}\cdot \;\text{p3})+\text{p1}^2+\text{p3}^2,\text{p4}^2,\text{m2}^2,\text{m1}^2,\text{m3}^2,\text{m4}^2,\text{m5}^2\right)$$
 
-By default, `ToPaVe` has the option `PaVeToABCD ` set to `True`. This means that some of the `PaVe` functions are automatically converted to direct Passarino-Veltman functions (`A0`,  `A00`, `B0`, `B1`, `B00`, `B11`, `C0`, `D0`). This also has consequences for `TID`
+By default, `ToPaVe` has the option `PaVeToABCD` set to `True`. This means that some of the `PaVe` functions are automatically converted to direct Passarino-Veltman functions (`A0`,  `A00`, `B0`, `B1`, `B00`, `B11`, `C0`, `D0`). This also has consequences for `TID`
 
 ```mathematica
 TID[FVD[q, mu] FAD[{q, m1}, {q + p}], q, ToPaVe -> True]

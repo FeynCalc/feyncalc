@@ -111,7 +111,7 @@ FCGetMetricSignature::usage =
 working with Cartesian objects, such as CartesianPair, CartesianIndex,
 CartesianMomentum etc.
 
- {1,-1} corresponds to $(1,-1,-1,-1)$ and {-1,1} means $(-1, 1, 1, 1)$.";
+{1,-1} corresponds to $(1,-1,-1,-1)$ and {-1,1} means $(-1, 1, 1, 1)$.";
 
 FCPrint::usage =
 "FCPrint[level, x] outputs Print[x] if the value of $VeryVerbose is larger than

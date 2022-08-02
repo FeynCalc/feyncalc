@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*` LorentzIndex[mu, 4]` simplifies to `LorentzIndex[mu]`.*)
+(*`LorentzIndex[mu, 4]` simplifies to `LorentzIndex[mu]`.*)
 
 
 (* ::Subsection:: *)

@@ -24,22 +24,36 @@ This directory contains Mathematica/Bash scripts that help to ensure the quality
     ```
     export MAKE_DOCU_LOAD_ADDONS="{}"; export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; ./exportToMD.sh math "$DOCU_SOURCE_DIR"/Markdown
     ```
-    
+
 * To update the HTML documentation use
 
     ```
     export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; ./generateHTML.sh /media/Data/Projects/VS/feyncalc.github.io/FeynCalcBookDev
     ```
-    
+
 * To update the TeX documentation use
 
     ```
     export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; export DOCU_MANUAL_NAME="FeynCalcManual"; export DOCU_INDEX_FILE=$DOCU_SOURCE_DIR/Markdown/Extra/FeynCalc.md; ./generateTeX.sh /media/Data/Projects/VS/feyncalc-manual/
-    ```        
-    
+    ```
+
 * To build the TeX documentation use
 
     ```
     cd /media/Data/Projects/VS/feyncalc-manual/
     latexmk -pdf FeynCalcManual.tex
+    ```
+
+    Notice that when there are new figures (svg files), one would need to run something like
+
+    ```
+    export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; ./svgToPdf.sh $DOCU_SOURCE_DIR/Markdown/img/0gi2hdxwlvyo6.svg ~/Downloads/TeX/img
+    ```
+
+    and then copy the new pdf files to `*-manual/img` without overwriting the existing ones.
+
+* To check Markdown files using mdl (`gem install mdl`, cf. [GitHub repo](https://github.com/markdownlint/markdownlint))
+
+    ```
+    mdl -r ~MD009,~MD013,~MD002,~MD010 ../Markdown
     ```

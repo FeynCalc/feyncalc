@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`FreeIndexFreeQ[exp, {head1, head2, ...}]`  returns `True` if the expression contains uncontracted indices with heads `head1`, `head2, ... and `False` otherwise.*)
+(*`FreeIndexFreeQ[exp, {head1, head2, ...}]`  returns `True` if the expression contains uncontracted indices with heads `head1`, `head2`, ... and `False` otherwise.*)
 
 
 (* ::Text:: *)

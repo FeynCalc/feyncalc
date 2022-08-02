@@ -66,7 +66,7 @@ PropagatorDenominator::usage =
 propagator. If q is supposed to be $D$-dimensional, use
 PropagatorDenominator[Momentum[q, D], m]. What is meant is $1/(q^2-m^2)$.
 
- PropagatorDenominator must appear inside FeynAmpDenominator, it is not a
+PropagatorDenominator must appear inside FeynAmpDenominator, it is not a
 standalone object.";
 
 DeltaFunction::usage =
@@ -360,7 +360,7 @@ LorentzIndex::usage =
 
 For other than $4$ dimensions: LorentzIndex[mu, D] or LorentzIndex[mu] etc.
 
- LorentzIndex[mu, 4] simplifies to LorentzIndex[mu].";
+LorentzIndex[mu, 4] simplifies to LorentzIndex[mu].";
 
 Momentum::usage =
 "Momentum[p] is the head of a four momentum p.
@@ -843,7 +843,7 @@ CSP::usage =
 into CartesianPair[CartesianMomentum[p],CartesianMomentum[q]] by
 FeynCalcInternal.
 
- CSP[p] is the same as CSP[p,p] ($=p^2$).";
+CSP[p] is the same as CSP[p,p] ($=p^2$).";
 
 CSPD::usage =
 "CSPD[p, q] is the $D-1$-dimensional scalar product of p with q and is
@@ -857,7 +857,7 @@ CSPE::usage =
 transformed into CartesianPair[CartesianMomentum[p, D-4],CartesianMomentum[q,
 D-4]] by FeynCalcInternal.
 
- CSPE[p] is the same as CSPE[p,p] ( $=p^2$).";
+CSPE[p] is the same as CSPE[p,p] ( $=p^2$).";
 
 CLC::usage =
 "CLC[m, n, r] evaluates to Eps[CartesianIndex[m], CartesianIndex[n],

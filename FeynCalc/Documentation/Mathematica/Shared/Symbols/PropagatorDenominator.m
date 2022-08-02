@@ -12,7 +12,7 @@
 
 
 (* ::Text:: *)
-(*` PropagatorDenominator` must appear inside `FeynAmpDenominator`, it is not a standalone object.*)
+(*`PropagatorDenominator` must appear inside `FeynAmpDenominator`, it is not a standalone object.*)
 
 
 (* ::Subsection:: *)

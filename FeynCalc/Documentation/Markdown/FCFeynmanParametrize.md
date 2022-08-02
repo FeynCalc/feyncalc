@@ -302,7 +302,7 @@ $$-\frac{1}{5}$$
 
 $$-\frac{4 i}{15}$$
 
-Calculate  the simplest divergent triangle integral from (https://qcdloop.fnal.gov/tridiv1.pdf)
+Calculate  the simplest divergent triangle integral from [QCDLoop](https://qcdloop.fnal.gov/tridiv1.pdf)
 
 ```mathematica
 FCClearScalarProducts[];

@@ -12,7 +12,7 @@
 
 
 (* ::Text:: *)
-(*` {1,-1}` corresponds to $(1,-1,-1,-1)$ and `{-1,1}` means $(-1, 1, 1, 1)$.*)
+(*`{1,-1}` corresponds to $(1,-1,-1,-1)$ and `{-1,1}` means $(-1, 1, 1, 1)$.*)
 
 
 (* ::Subsection:: *)

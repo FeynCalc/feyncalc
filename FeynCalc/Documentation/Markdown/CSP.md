@@ -2,7 +2,7 @@
 
 `CSP[p, q]` is the 3-dimensional scalar product of `p` with `q` and is transformed into `CartesianPair[CartesianMomentum[p],CartesianMomentum[q]]` by `FeynCalcInternal`.
 
-` CSP[p]` is the same as `CSP[p,p]` ($=p^2$).
+`CSP[p]` is the same as `CSP[p,p]` ($=p^2$).
 
 ### See also
 

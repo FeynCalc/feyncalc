@@ -4,7 +4,7 @@
 
 For other than $4$ dimensions: `LorentzIndex[mu, D]` or `LorentzIndex[mu]` etc.
 
-` LorentzIndex[mu, 4]` simplifies to `LorentzIndex[mu]`.
+`LorentzIndex[mu, 4]` simplifies to `LorentzIndex[mu]`.
 
 ### See also
 

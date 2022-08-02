@@ -12,7 +12,7 @@
 
 
 (* ::Text:: *)
-(*Furthermore, `(-1)^(a+n) ` and `I^(a+n)` are expanded and `(I)^(2 m) -> (-1)^m and (-1)^(n_Integer?EvenQ m) -> 1` and `(-1)^(n_Integer?OddQ m) -> (-1)^m` for `n` even and odd respectively and (-1)^(-n) -> (-1)^n and Exp[I m Pi] -> (-1)^m.*)
+(*Furthermore, `(-1)^(a+n)` and `I^(a+n)` are expanded and `(I)^(2 m) -> (-1)^m and (-1)^(n_Integer?EvenQ m) -> 1` and `(-1)^(n_Integer?OddQ m) -> (-1)^m` for `n` even and odd respectively and `(-1)^(-n) -> (-1)^n` and `Exp[I m Pi] -> (-1)^m`.*)
 
 
 (* ::Subsection:: *)

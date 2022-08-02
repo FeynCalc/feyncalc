@@ -28,8 +28,8 @@ FeynRules.";
 
 FAModelsDirectory::usage =
 "FAModelsDirectory is an option of FAPatch. It points to the directory that
-contains FeynArts models. The default value is \"Models\"' inside
-$FeynArtsDirectory'.";
+contains FeynArts models. The default value is \"Models\" inside
+$FeynArtsDirectory.";
 
 FCFilePatch::usage =
 "FCFilePatch[input,output, rp] replaces the patterns given by rp in the file

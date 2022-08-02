@@ -12,7 +12,7 @@
 
 
 (* ::Text:: *)
-(*` CSPE[p]` is the same as `CSPE[p,p]` ( $=p^2$).*)
+(*`CSPE[p]` is the same as `CSPE[p,p]` ( $=p^2$).*)
 
 
 (* ::Subsection:: *)

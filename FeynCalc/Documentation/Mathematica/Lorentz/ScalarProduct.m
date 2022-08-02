@@ -24,7 +24,7 @@
 
 
 (* ::Text:: *)
-(*`ScalarProduct[a] ` corresponds to `ScalarProduct[a,a] `*)
+(*`ScalarProduct[a]` corresponds to `ScalarProduct[a,a]`*)
 
 
 (* ::Text:: *)

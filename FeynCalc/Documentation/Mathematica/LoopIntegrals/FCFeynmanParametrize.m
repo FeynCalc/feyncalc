@@ -268,7 +268,7 @@ Normal@Series[v2[[2]] %,{ep,0,0}]
 
 
 (* ::Text:: *)
-(*Calculate  the simplest divergent triangle integral from (https://qcdloop.fnal.gov/tridiv1.pdf)*)
+(*Calculate  the simplest divergent triangle integral from [QCDLoop](https://qcdloop.fnal.gov/tridiv1.pdf)*)
 
 
 FCClearScalarProducts[];
