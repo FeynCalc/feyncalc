@@ -28,6 +28,3 @@ some basic facts about master integrals in multiloop calculations
 - The most comprehensive pedagogical reference for learning different calculational techniques is the book [Feynman Integral Calculus](https://link.springer.com/book/10.1007/3-540-30611-0) by V. Smirnov.
 - The [course on Feynman integrals](https://arxiv.org/pdf/2201.03593) by S. Weinzierl also provides a lot of valuable information.
 - [Introduction to Loop Calculations](https://www.ippp.dur.ac.uk/~gudrun/teaching/ILC.pdf) by G. Heinrich might be a good start for beginners.
-
-
-### References
