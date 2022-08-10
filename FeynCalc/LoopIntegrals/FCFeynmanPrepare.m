@@ -262,7 +262,7 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 		dim = FCGetDimensions[ex/. {TemporalPair[_,ExplicitLorentzIndex[0]]:>Unique[]}] ;
 
 		If[	Length[dim]=!=1,
-			Message[FCFeynmanPrepare::failmsg,"The loop integrals contains momenta in different dimensions."];
+			Message[FCFeynmanPrepare::failmsg,"The loop integrals contains momenta in different dimensions: " <> ToString[dim,InputForm]];
 			Abort[]
 		];
 		dim = First[dim];
