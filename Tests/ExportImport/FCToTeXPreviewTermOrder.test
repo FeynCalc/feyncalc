@@ -1,0 +1,51 @@
+
+
+(* :Title: FCToTeXPreviewTermOrder.test                                                 *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2022 Rolf Mertig
+	Copyright (C) 1997-2022 Frederik Orellana
+	Copyright (C) 2014-2022 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCToTeXPreviewTermOrder	  			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`ExportImport`fcstFCToTeXPreviewTermOrder =
+({
+{"fcstFCToTeXPreviewTermOrder-ID1",
+"FCToTeXPreviewTermOrder[{CMMC3^2,{(-OP[EV31]-2*OP[EV51]+112*OP[Q]-\
+200*OP[QTS]+216*OP[R])/8,{-1/12*(Epsilon*(4*OP[EV31]+5*OP[EV51]-262*\
+OP[Q]+500*OP[QTS]-516*OP[R])),{-1/4*(Epsilon*(OP[EV31]+2*OP[EV51]-112*\
+OP[Q]+200*OP[QTS]-216*OP[R])),Log[mb^(-1)],Times},{18*Epsilon*(OP[Q]-\
+2*OP[QTS]+2*OP[R]),z,Times},Plus},Plus},Times}]",
+"CMMC3^2*HoldForm[(-OP[EV31] - 2*OP[EV51] + 112*OP[Q] - \
+200*OP[QTS] + 216*OP[R])/8 + HoldForm[-1/12*(Epsilon*(4*OP[EV31] + \
+5*OP[EV51] - 262*OP[Q] + 500*OP[QTS] - 516*OP[R])) - \
+(Epsilon*(OP[EV31] + 2*OP[EV51] - 112*OP[Q] + 200*OP[QTS] - \
+216*OP[R])*Log[mb^(-1)])/4 + 18*Epsilon*(OP[Q] - 2*OP[QTS] + \
+2*OP[R])*z]]"},
+{"fcstFCToTeXPreviewTermOrder-ID2",
+"FCToTeXPreviewTermOrder[{{{(c+a*M+b*M)/M,ep,Times},{(d2+d1*M)/M,\
+ep^(-1),Times},Plus},(c2+c1*M)/M,Plus}]",
+"HoldForm[HoldForm[((c + a*M + b*M)*ep)/M + (d2 + d1*M)/(M*ep)] + \
+(c2 + c1*M)/M]"},
+{"fcstFCToTeXPreviewTermOrder-ID3",
+"FCToTeXPreviewTermOrder[{{{{c/M,{a,b,Plus},Plus},ep,Times},{{d2/M,\
+d1,Plus},ep^(-1),Times},Plus},{c2/M,c1,Plus},Plus}]",
+"HoldForm[HoldForm[HoldForm[c/M + HoldForm[a + b]]*ep + \
+HoldForm[d2/M + d1]/ep] + HoldForm[c2/M + c1]]"},
+{"fcstFCToTeXPreviewTermOrder-ID4",
+"FCToTeXPreviewTermOrder[{{{-1484/27+(25*NH)/27+(50*NL)/27+(50*NV)/\
+27+(764*z)/3,L1,Times},{8/27+8*z,L2,Times},Plus},{{32,z*Log[z],Times},\
+{22100/27+(50*NL)/9+(100*NV)/9+(8*Pi^2)/9,z,Times},-4543/27+(380*NH)/\
+81+(130*NL)/81+(130*NV)/81+(20*Pi)/(27*Sqrt[3])-(25*NH*Pi)/(9*Sqrt[3])\
++(40*Pi^2)/9,Plus},Plus}]",
+"HoldForm[HoldForm[(-1484/27 + (25*NH)/27 + (50*NL)/27 + \
+(50*NV)/27 + (764*z)/3)*L1 + (8/27 + 8*z)*L2] + HoldForm[32*z*Log[z] \
++ (22100/27 + (50*NL)/9 + (100*NV)/9 + (8*Pi^2)/9)*z + (-4543/27 + \
+(380*NH)/81 + (130*NL)/81 + (130*NV)/81 + (20*Pi)/(27*Sqrt[3]) - \
+(25*NH*Pi)/(9*Sqrt[3]) + (40*Pi^2)/9)]]"}
+})

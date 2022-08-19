@@ -28,4 +28,21 @@ If[	$OnlySubTest=!="",
 FCClearScalarProducts[];
 
 Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
-	Join@@(ToExpression/@Names["Tests`ExportImport`*"])];
+	Join@@(ToExpression/@Select[Names["Tests`ExportImport`*"],
+	!StringMatchQ[#, "*fcstFCToTeXPreviewTermOrder"] &])
+
+	];
+
+holdFormCompare[x_,y_]:=
+	Block[	{lhs,rhs},
+			{lhs,rhs} = StringReplace[ToString[#,InputForm],{" "|"\n"->"","(-12^(-1))"->"-1/12"}]&/@{x,y};
+			lhs===rhs
+	]
+
+If[ Names["Tests`ExportImport`fcstFCToTeXPreviewTermOrder"]=!={},
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],{},testID->#[[1]],
+		(*MessagesEquivalenceFunction->Function[{x,y},True],*)
+		EquivalenceFunction->holdFormCompare]&,
+		Join@@(ToExpression/@Names["Tests`ExportImport`fcstFCToTeXPreviewTermOrder"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test
+];

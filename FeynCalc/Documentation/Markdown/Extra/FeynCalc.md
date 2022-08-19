@@ -359,6 +359,8 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 
 - [FCGVToSymbol](../FCGVToSymbol.md) - converts [FCGV](../FCGV.md)s to symbols
 - [FCLoopGLIToSymbol](../FCLoopGLIToSymbol.md) - converts [GLI](../GLI.md)s to symbols
+- [FCToTeXReorder](../FCToTeXReorder.md) - custom ordering of terms in expressions
+- [FCToTeXPreviewTermOrder](../FCToTeXPreviewTermOrder.md) - previews the output of [FCToTeXReorder](../FCToTeXReorder.md)
 - [FeynCalc2FORM](../FeynCalc2FORM.md) - displays expression in FORM syntax
 - [FeynCalcToLaTeX](../FeynCalcToLaTeX.md) - generates LaTeX
 - [FORM2FeynCalc](../FORM2FeynCalc.md) - translates the FORM expression in file into FeynCalc notation
