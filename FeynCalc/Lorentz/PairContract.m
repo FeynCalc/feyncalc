@@ -16,15 +16,48 @@
 (* ------------------------------------------------------------------------ *)
 
 PairContract::usage =
-"PairContract is like Pair, but with (local) contraction properties.";
+"PairContract is like Pair, but with (local) contraction properties. The
+function fully supports the BMHV algebra and will expand momenta inside scalar
+products when it leads to simpler expressions.
+
+PairContract is an auxiliary function used in higher level FeynCalc functions
+that require fast contractions between multiple expressions, where Contract
+would be too slow.";
+
+PairContract2::usage =
+"PairContract2 is like Pair, but with local contraction properties. It works
+best with products of Pairs that are expected to evaluate to a product of
+scalar products.
+
+- Suitable contractions between products of PairContract2 symbols are
+evaluated immediately.
+- Momenta are never expanded and every PairContract2 symbol containing
+Momentum in both slots is immediately converted to a Pair.
+- BMHV algebra is not supported, every tensor must be purely 4 or
+D-dimensional
+
+PairContract2 is an auxiliary function used in higher level FeynCalc functions
+that require fast contractions between multiple expressions, where Contract
+would be too slow.";
 
 CartesianPairContract::usage =
 "CartesianPairContract is like CartesianPair, but with (local) contraction
-properties.";
+properties.  The function fully supports the BMHV algebra and will not expand
+momenta inside scalar products.
+
+CartesianPairContract is an auxiliary function used in higher level FeynCalc
+functions that require fast contractions between multiple expressions, where
+Contract would be too slow.";
 
 PairContract3::usage =
 "PairContract3 is like Pair, but with local contraction properties among
-PairContract3s.";
+PairContract3s. The function fully supports the BMHV algebra and, unlike
+PairContract or PairContract2 will always expand momenta inside scalar
+products.
+
+PairContract3 is an auxiliary function used in higher level FeynCalc functions
+that require fast contractions between multiple expressions, where Contract
+would be too slow.";
 
 CartesianPairContract::failmsg =
 "Error! CartesianPairContract has encountered a fatal problem and must abort the computation. \
@@ -139,6 +172,44 @@ PairContract[a_, b_]:=
 			Pair[a,b]
 		]
 	]/;FreeQ2[{a,b},{LorentzIndex,CartesianIndex}]
+
+
+(* #################################################################### *)
+
+SetAttributes[PairContract2,Orderless];
+
+PairContract2[0,_]:=
+	0;
+
+PairContract2[LorentzIndex[x_], LorentzIndex[x_]] :=
+	4;
+
+PairContract2[LorentzIndex[x_, dim__], LorentzIndex[x_, dim__]] :=
+	dim;
+
+PairContract2[LorentzIndex[x_, dim__], LorentzIndex[x_, dim__]] :=
+	dim;
+
+PairContract2[Momentum[a__], Momentum[b__]] :=
+	Pair[Momentum[a], Momentum[b]];
+
+PairContract2 /:
+	PairContract2[_LorentzIndex, x_]^2 :=
+		PairContract2[x,x];
+
+PairContract2/:
+	PairContract2[LorentzIndex[z__],x_] PairContract2[LorentzIndex[z__],y_] :=
+		If[ FreeQ[{x,y}, LorentzIndex],
+			Pair[x,y],
+			PairContract2[x,y]
+		];
+
+PairContract2 /:
+	PairContract2[a_, b_LorentzIndex]^(n_ /; n > 2) :=
+		(
+		Message[PairContract::failmsg, "The expression " <> ToString[Pair[a, b]^n, InputForm] <> " violates Lorentz covariance!"];
+		Abort[]
+		) /; a =!= b;
 
 
 (* #################################################################### *)

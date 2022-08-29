@@ -57,6 +57,48 @@ Momentum[Polarization[q1, I, Transversality -> True]]]",
 Momentum[Polarization[q1, I, Transversality -> True]]]"}
 });
 
+Tests`Lorentz`fcstPairContract2 =
+({
+{"fcstPairContract2-ID1", "PairContract2[0,x]", "0"},
+{"fcstPairContract2-ID2",
+"PairContract2[LorentzIndex[i],LorentzIndex[i]]", "4"},
+{"fcstPairContract2-ID3",
+"PairContract2[LorentzIndex[i,D],LorentzIndex[i,D]]", "D"},
+{"fcstPairContract2-ID4",
+"PairContract2[LorentzIndex[i,D-4],LorentzIndex[i,D-4]]", "-4 + D"},
+{"fcstPairContract2-ID5",
+"PairContract2[LorentzIndex[i,D],LorentzIndex[i]]",
+"PairContract2[LorentzIndex[i], LorentzIndex[i, D]]"},
+{"fcstPairContract2-ID6",
+"PairContract2[LorentzIndex[i,D-4],LorentzIndex[i]]",
+"PairContract2[LorentzIndex[i], LorentzIndex[i, -4 + D]]"},
+{"fcstPairContract2-ID7",
+"PairContract2[LorentzIndex[i,D-4],LorentzIndex[i,D]]",
+"PairContract2[LorentzIndex[i, -4 + D], LorentzIndex[i, D]]"},
+{"fcstPairContract2-ID8",
+"PairContract2[LorentzIndex[i,D1],LorentzIndex[i,D2]]",
+"PairContract2[LorentzIndex[i, D1], LorentzIndex[i, D2]]"},
+{"fcstPairContract2-ID9", "PairContract2[Momentum[p],Momentum[p]]",
+"Pair[Momentum[p], Momentum[p]]"},
+{"fcstPairContract2-ID10",
+"PairContract2[Momentum[p,D],Momentum[p,D]]",
+"Pair[Momentum[p, D], Momentum[p, D]]"},
+{"fcstPairContract2-ID11",
+"PairContract2[Momentum[p,D-4],Momentum[p,D-4]]",
+"Pair[Momentum[p, -4 + D], Momentum[p, -4 + D]]"},
+{"fcstPairContract2-ID12",
+"PairContract2[Momentum[p,D],Momentum[p]]",
+"Pair[Momentum[p], Momentum[p]]"},
+{"fcstPairContract2-ID13",
+"PairContract2[Momentum[p,D-4],Momentum[p]]", "0"},
+{"fcstPairContract2-ID14",
+"PairContract2[Momentum[p,D-4],Momentum[p,D]]",
+"Pair[Momentum[p, -4 + D], Momentum[p, -4 + D]]"},
+{"fcstPairContract2-ID15",
+"PairContract2[Momentum[p,D1],Momentum[p,D2]]",
+"Pair[Momentum[p, D1], Momentum[p, D2]]"}
+})
+
 Tests`Lorentz`fcstPairContract3 = {
 {"fcstPairContract3-ID1","SP[p, p] = (a + b)^2; \n tmp = PairContract3[Momentum[p], Momentum[p]]; \n
 FCClearScalarProducts[]; \n tmp","(a + b)^2"}

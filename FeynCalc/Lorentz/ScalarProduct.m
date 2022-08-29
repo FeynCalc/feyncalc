@@ -27,7 +27,7 @@ ExpandScalarProduct.
 Scalar products may be set, e.g. via ScalarProduct[a, b] = m^2; but a and b
 may not contain sums.
 
-ScalarProduct[a]  corresponds to ScalarProduct[a,a] 
+ScalarProduct[a] corresponds to ScalarProduct[a,a]
 
 Note that ScalarProduct[a, b] = m^2 actually sets Lorentzian scalar products
 in different dimensions specified by the value of the SetDimensions option.
@@ -44,16 +44,16 @@ CartesianScalarProduct[p] is equivalent to CartesianScalarProduct[p, p].
 Expansion of sums of momenta in CartesianScalarProduct is done with
 ExpandScalarProduct.
 
-Scalar products may be set, e.g. via ScalarProduct[a, b] = m^2; but a and b
-may not contain sums.
+Scalar products may be set, e.g. via CartesianScalarProduct[a, b] = m^2; but a
+and b may not contain sums.
 
-CartesianScalarProduct[a]  corresponds to CartesianScalarProduct[a,a] 
+CartesianScalarProduct[a] corresponds to CartesianScalarProduct[a,a]
 
 Note that ScalarProduct[a, b] = m^2 actually sets Cartesian scalar products in
 different dimensions specified by the value of the SetDimensions option.
 
-It is highly recommended to set ScalarProducts before any calculation. This
-improves the performance of FeynCalc.";
+It is highly recommended to set CartesianScalarProducts before any
+calculation. This improves the performance of FeynCalc.";
 
 SetTemporalComponent::usage =
 "SetTemporalComponent[p, val] sets the value of the temporal component of a

@@ -178,7 +178,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [LorentzToCartesian](../LorentzToCartesian.md) - rewrties Lorentz tensors in terms of Cartesian tensors
 - [MomentumCombine](../MomentumCombine.md) - inverse operation to [MomentumExpand](../MomentumExpand.md) and [ExpandScalarProduct](../ExpandScalarProduct.md)
 - [MomentumExpand](../MomentumExpand.md) - expands [Momentum](../Momentum.md)
-- [PairContract](../PairContract.md), [PairContract3](../PairContract3.md), - like [Pair](../Pair.md) but with local contraction properties
+- [PairContract](../PairContract.md), [PairContract2](../PairContract2.md), [PairContract3](../PairContract3.md), - like [Pair](../Pair.md) but with local contraction properties
 - [Schouten](../Schouten.md) - applies [Schouten](../Schouten.md)'s identity (random guess)
 - [SetMandelstam](../SetMandelstam.md) - defines the Mandelstam variables
 - [SetTemporalComponent](../SetTemporalComponent.md) - assings values to temporal components of Lorentz vectors
