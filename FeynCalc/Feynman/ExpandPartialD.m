@@ -196,12 +196,13 @@ qfe[dot_, x_] :=
 		(*The replacement below commented out by F.Orellana, 12/3/2005.
 		It breaks the procedure of applying the expansion to all
 		products in $Multiplications (see above). What is it good for?*)
-		ru ={ FCPartialD[Momentum[OPEDelta]]^ (mm_ (*/; Head[mm]=!=Integer*)):>
-		FCPartialD[Momentum[OPEDelta]^mm],
-		LeftPartialD[Momentum[OPEDelta]]^ (mm_ (*/; Head[mm]=!=Integer*)):>
-		LeftPartialD[Momentum[OPEDelta]^mm],
-		RightPartialD[Momentum[OPEDelta]]^ (mm_ (*/; Head[mm]=!=Integer*)):>
-		RightPartialD[Momentum[OPEDelta]^mm]
+		ru = {
+			FCPartialD[Momentum[OPEDelta]]^ (mm_ (*/; Head[mm]=!=Integer*)):>
+				FCPartialD[Momentum[OPEDelta]^mm],
+			LeftPartialD[Momentum[OPEDelta]]^ (mm_ (*/; Head[mm]=!=Integer*)):>
+				LeftPartialD[Momentum[OPEDelta]^mm],
+			RightPartialD[Momentum[OPEDelta]]^ (mm_ (*/; Head[mm]=!=Integer*)):>
+				RightPartialD[Momentum[OPEDelta]^mm]
 		};
 
 		aux = fcovcheck[x(*/.Times->dot*)];
@@ -225,11 +226,11 @@ qfe[dot_, x_] :=
 		aux = aux /. qf3 -> qf5;
 		FCPrint[4,"ExpandPartialD: qfe: After qf5: ", aux, FCDoControl->epdVerbose];
 
-		aux = aux /. qf5 -> dot /. QuantumField -> quanf;
-		FCPrint[4,"ExpandPartialD: qfe: After quanf: ", aux, FCDoControl->epdVerbose];
+		aux = aux /. qf5 -> dot /. QuantumField -> quantumFieldSimplify;
+		FCPrint[4,"ExpandPartialD: qfe: After quantumFieldSimplify: ", aux, FCDoControl->epdVerbose];
 
-		aux = aux /. quanf -> QuantumField /. OPESum -> opesumplus;
-		FCPrint[4,"ExpandPartialD: qfe: After quanf: ", aux, FCDoControl->epdVerbose];
+		aux = aux /. quantumFieldSimplify -> QuantumField /. OPESum -> opesumplus;
+		FCPrint[4,"ExpandPartialD: qfe: After quantumFieldSimplify: ", aux, FCDoControl->epdVerbose];
 
 		tmp = DotSimplify[aux, FCI->True];
 		FCPrint[4,"ExpandPartialD: qfe: After DotSimplify: ", aux, FCDoControl->epdVerbose];
@@ -237,7 +238,7 @@ qfe[dot_, x_] :=
 		(*tmp = DotSimplify[
 		DotSimplify[ExplicitPartialD[fcovcheck[x(*/.Times->dot*)]] /. ru
 		, FCI->True] /. dot -> qf1 /. qf1 -> qf2 /. qf2 -> qf1 /. qf1 -> qf3 /. qf3 -> qf5 /. qf5 -> dot /. QuantumField ->
-		quanf /. quanf -> QuantumField /. OPESum -> opesumplus, FCI->True];*)
+		quantumFieldSimplify /. quantumFieldSimplify -> QuantumField /. OPESum -> opesumplus, FCI->True];*)
 		tmp
 	];
 (* linearity *)
@@ -288,23 +289,23 @@ qf3[a___, n_. f1_QuantumField f2_QuantumField, b___] :=
 qf5[] = 1;
 
 qf5[a___, RightPartialD[mu_], QuantumField[f1__]] :=
-	qf5st[a, quanf[FCPartialD[mu], f1]] /. quanf -> QuantumField /.
+	qf5st[a, quantumFieldSimplify[FCPartialD[mu], f1]] /. quantumFieldSimplify -> QuantumField /.
 		qf5st -> qf5;
 
 qf5[a___, QuantumField[f1__], LeftPartialD[mu_], b___] :=
-	(qf5st[a, quanf[FCPartialD[mu], f1], b] /. quanf -> QuantumField /.
+	(qf5st[a, quantumFieldSimplify[FCPartialD[mu], f1], b] /. quantumFieldSimplify -> QuantumField /.
 		qf5st -> qf5) /; FreeQ2[{a}, {FCPartialD, QuantumField, LeftPartialD, RightPartialD}];
 
 qf5[a___, QuantumField[f2__], QuantumField[f1__], LeftPartialD[mu_], b___] :=
-	((qf5st[a, quanf[f2],  quanf[FCPartialD[mu], f1], b] +
-		qf5st[a, quanf[f2], LeftPartialD[mu], quanf[f1], b]
-		) /. quanf -> QuantumField /. qf5st -> qf5
+	((qf5st[a, quantumFieldSimplify[f2],  quantumFieldSimplify[FCPartialD[mu], f1], b] +
+		qf5st[a, quantumFieldSimplify[f2], LeftPartialD[mu], quantumFieldSimplify[f1], b]
+		) /. quantumFieldSimplify -> QuantumField /. qf5st -> qf5
 	) /; MemberQ[{LorentzIndex,ExplicitLorentzIndex,Momentum,CartesianIndex,CartesianMomentum,List},Head[mu]];
 
 qf5[a___, RightPartialD[mu_], QuantumField[f1__], QuantumField[f2__], b___] :=
-	((qf5st[a, quanf[FCPartialD[mu], f1], quanf[f2],  b] +
-		qf5st[a, quanf[f1], RightPartialD[mu], quanf[f2], b]
-	) /. quanf -> QuantumField /. qf5st -> qf5
+	((qf5st[a, quantumFieldSimplify[FCPartialD[mu], f1], quantumFieldSimplify[f2],  b] +
+		qf5st[a, quantumFieldSimplify[f1], RightPartialD[mu], quantumFieldSimplify[f2], b]
+	) /. quantumFieldSimplify -> QuantumField /. qf5st -> qf5
 	) /; MemberQ[{LorentzIndex,ExplicitLorentzIndex,Momentum,CartesianIndex,CartesianMomentum,List},Head[mu]];
 
 qf5st[a___, RightPartialD[Momentum[OPEDelta]^m_], RightPartialD[Momentum[OPEDelta]^n_], b___] :=
@@ -320,8 +321,8 @@ qf5st[a___, FCPartialD[Momentum[OPEDelta]^m_], FCPartialD[Momentum[OPEDelta]^n_]
 qf5[c_/;Head[c] =!= LeftPartialD, b___, QuantumField[f1__], LeftPartialD[Momentum[OPEDelta]^m_], a___] :=
 	(
 	(opk = OPEk[$OPEKCOUNT++];
-	OPESum[Binomial[m, opk] qf5st[c, b, LeftPartialD[Momentum[OPEDelta]^(m-opk)], quanf[FCPartialD[Momentum[OPEDelta]^opk], f1], a], {opk, 0, m}]
-	)/. quanf -> QuantumField /. qf5st -> qf5
+	OPESum[Binomial[m, opk] qf5st[c, b, LeftPartialD[Momentum[OPEDelta]^(m-opk)], quantumFieldSimplify[FCPartialD[Momentum[OPEDelta]^opk], f1], a], {opk, 0, m}]
+	)/. quantumFieldSimplify -> QuantumField /. qf5st -> qf5
 	);
 
 (* start from the left *)
@@ -329,44 +330,44 @@ qf5[c_/;Head[c] =!= LeftPartialD, b___, QuantumField[f1__], LeftPartialD[Momentu
 qf5[a___,RightPartialD[Momentum[OPEDelta]^m_], QuantumField[f1__], b___,c_/;FreeQ[{FCPartialD,RightPartialD},Head[c]]] :=
 	(
 	(opk = OPEk[$OPEKCOUNT++];
-	OPESum[Binomial[m, opk] qf5st[a, quanf[FCPartialD[Momentum[OPEDelta]^opk], f1],
+	OPESum[Binomial[m, opk] qf5st[a, quantumFieldSimplify[FCPartialD[Momentum[OPEDelta]^opk], f1],
 		RightPartialD[Momentum[OPEDelta]^(m-opk)], b, c], {opk, 0, m} ]
-	)/. quanf -> QuantumField /. qf5st -> qf5
+	)/. quantumFieldSimplify -> QuantumField /. qf5st -> qf5
 	);
 
-quanf[quanf[a__], b___, c_ /; Head[c] =!= FCPartialD] :=
-	quanfDot[quanf[a], qf5[b,c]];
+quantumFieldSimplify[quantumFieldSimplify[a__], b___, c_ /; Head[c] =!= FCPartialD] :=
+	quanfDot[quantumFieldSimplify[a], qf5[b,c]];
 
-quanf[f1___, FCPartialD[Momentum[OPEDelta]^m_], FCPartialD[Momentum[OPEDelta]], f2___] :=
-	quanf[f1, FCPartialD[Momentum[OPEDelta]^(m+1)], f2];
+quantumFieldSimplify[f1___, FCPartialD[Momentum[OPEDelta]^m_], FCPartialD[Momentum[OPEDelta]], f2___] :=
+	quantumFieldSimplify[f1, FCPartialD[Momentum[OPEDelta]^(m+1)], f2];
 
-quanf[f1___, LeftPartialD[Momentum[OPEDelta]^m_], LeftPartialD[Momentum[OPEDelta]], f2___] :=
-	quanf[f1, LeftPartialD[Momentum[OPEDelta]^(m+1)], f2];
+quantumFieldSimplify[f1___, LeftPartialD[Momentum[OPEDelta]^m_], LeftPartialD[Momentum[OPEDelta]], f2___] :=
+	quantumFieldSimplify[f1, LeftPartialD[Momentum[OPEDelta]^(m+1)], f2];
 
-quanf[f1___, RightPartialD[Momentum[OPEDelta]^m_], RightPartialD[Momentum[OPEDelta]], f2___] :=
-	quanf[f1, RightPartialD[Momentum[OPEDelta]^(m+1)], f2];
+quantumFieldSimplify[f1___, RightPartialD[Momentum[OPEDelta]^m_], RightPartialD[Momentum[OPEDelta]], f2___] :=
+	quantumFieldSimplify[f1, RightPartialD[Momentum[OPEDelta]^(m+1)], f2];
 
-quanf[f1___, FCPartialD[Momentum[OPEDelta]], FCPartialD[Momentum[OPEDelta]^m_], f2___] :=
-	quanf[f1, FCPartialD[Momentum[OPEDelta]^(m+1)], f2];
+quantumFieldSimplify[f1___, FCPartialD[Momentum[OPEDelta]], FCPartialD[Momentum[OPEDelta]^m_], f2___] :=
+	quantumFieldSimplify[f1, FCPartialD[Momentum[OPEDelta]^(m+1)], f2];
 
-quanf[f1___, RightPartialD[Momentum[OPEDelta]], RightPartialD[Momentum[OPEDelta]^m_], f2___] :=
-	quanf[f1, RightPartialD[Momentum[OPEDelta]^(m+1)], f2];
+quantumFieldSimplify[f1___, RightPartialD[Momentum[OPEDelta]], RightPartialD[Momentum[OPEDelta]^m_], f2___] :=
+	quantumFieldSimplify[f1, RightPartialD[Momentum[OPEDelta]^(m+1)], f2];
 
-quanf[f1___, LeftPartialD[Momentum[OPEDelta]], LeftPartialD[Momentum[OPEDelta]^m_], f2___] :=
-	quanf[f1, LeftPartialD[Momentum[OPEDelta]^(m+1)], f2];
+quantumFieldSimplify[f1___, LeftPartialD[Momentum[OPEDelta]], LeftPartialD[Momentum[OPEDelta]^m_], f2___] :=
+	quantumFieldSimplify[f1, LeftPartialD[Momentum[OPEDelta]^(m+1)], f2];
 
-quanf[f1___, FCPartialD[Momentum[OPEDelta]^m_], FCPartialD[Momentum[OPEDelta]^n_], f2___] :=
-	quanf[f1, FCPartialD[Momentum[OPEDelta]^(m+n)], f2];
+quantumFieldSimplify[f1___, FCPartialD[Momentum[OPEDelta]^m_], FCPartialD[Momentum[OPEDelta]^n_], f2___] :=
+	quantumFieldSimplify[f1, FCPartialD[Momentum[OPEDelta]^(m+n)], f2];
 
-quanf[f1___, LeftPartialD[Momentum[OPEDelta]^m_], LeftPartialD[Momentum[OPEDelta]^n_], f2___] :=
-	quanf[f1, LeftPartialD[Momentum[OPEDelta]^(m+n)], f2];
+quantumFieldSimplify[f1___, LeftPartialD[Momentum[OPEDelta]^m_], LeftPartialD[Momentum[OPEDelta]^n_], f2___] :=
+	quantumFieldSimplify[f1, LeftPartialD[Momentum[OPEDelta]^(m+n)], f2];
 
-quanf[f1___, RightPartialD[Momentum[OPEDelta]^m_], RightPartialD[Momentum[OPEDelta]^n_], f2___] :=
-	quanf[f1, RightPartialD[Momentum[OPEDelta]^(m+n)], f2];
+quantumFieldSimplify[f1___, RightPartialD[Momentum[OPEDelta]^m_], RightPartialD[Momentum[OPEDelta]^n_], f2___] :=
+	quantumFieldSimplify[f1, RightPartialD[Momentum[OPEDelta]^(m+n)], f2];
 
 (* new 03/98 commutativity in partial derivatives *)
-quanf[par1_FCPartialD, parr__FCPartialD, fname_/;Head[fname]=!=FCPartialD, rest___] :=
-	(((quanf[##, fname, rest])&)@@Sort[{par1,parr}]) /; !OrderedQ[{par1,parr}]
+quantumFieldSimplify[par1_FCPartialD, parr__FCPartialD, fname_/;Head[fname]=!=FCPartialD, rest___] :=
+	(((quantumFieldSimplify[##, fname, rest])&)@@Sort[{par1,parr}]) /; !OrderedQ[{par1,parr}]
 
 FCPrint[1,"ExpandPartialD.m loaded."];
 End[]
