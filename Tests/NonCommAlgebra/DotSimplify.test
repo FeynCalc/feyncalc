@@ -144,8 +144,23 @@ FCE -> True]",
 GAD[\[Mu]] . GA[5] . SUNT[a] . SUNT[cola] . SUNT[colb] . GAD[lorc] .
 GSD[x] . GAD[lord] . GAD[\[Nu]] .
 GA[5] . (GAD[lore] . GAD[lorf] . GSD[x] SUNT[colc] +
-	 FVD[x, lore] GAD[lorf] SUNT[colc]) MTD[lorc, lore] MTD[lord,
-lorf] SUNF[cola, colb, colc]]"}
-
-
+	FVD[x, lore] GAD[lorf] SUNT[colc]) MTD[lorc, lore] MTD[lord,
+lorf] SUNF[cola, colb, colc]]"},
+{"fcstDotSimplify-ID28",
+"DotSimplify[QuantumField[QuarkFieldChiDagger].SUNT[a].\
+QuantumField[QuarkFieldChi]]",
+"QuantumField[QuarkFieldChiDagger] . \
+QuantumField[QuarkFieldChi]*SUNT[SUNIndex[a]]"},
+{"fcstDotSimplify-ID29",
+"(DataType[QuarkFieldChiDagger,ImplicitSUNFIndex]=True;res=\
+DotSimplify[QuantumField[QuarkFieldChiDagger].SUNT[a].QuantumField[\
+QuarkFieldChi]];res;DataType[QuarkFieldChiDagger,ImplicitSUNFIndex]=\
+False;res)",
+"QuantumField[QuarkFieldChiDagger] . SUNT[SUNIndex[a]] . \
+QuantumField[QuarkFieldChi]"},
+{"fcstDotSimplify-ID30",
+"DotSimplify[QuantumField[QuarkFieldChiDagger].SUNT[a].\
+QuantumField[QuarkFieldChi]]",
+"QuantumField[QuarkFieldChiDagger] . \
+QuantumField[QuarkFieldChi]*SUNT[SUNIndex[a]]"}
 }

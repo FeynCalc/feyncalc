@@ -353,7 +353,7 @@ DotSimplify[expr_, OptionsPattern[]] :=
 		];
 
 		(* Dirac, Pauli and SU(N) matrices commute with each other, so they need to be properly separated*)
-		If[ !FreeQ2[x, {SUNT,PauliSigma,PauliEta,PauliXi}],
+		If[ !FreeQ2[x, {SUNT,PauliSigma,PauliEta,PauliXi}] && FreeQ[x,QuantumField],
 			time=AbsoluteTime[];
 			x  = x /. DOT->holdDOT;
 			(*
@@ -398,8 +398,14 @@ DotSimplify[expr_, OptionsPattern[]] :=
 		If[ !FreeQ[x, QuantumField],
 			time=AbsoluteTime[];
 			FCPrint[1, "DotSimplify: Factoring out QuantumField's", FCDoControl->dsVerbose];
-			x = x /. DOT->holdDOT //. {holdDOT[a___,b_/;Head[b] =!= SUNT, c__SUNT,d___] :> holdDOT[a,c,b,d]} /. holdDOT->DOT;
-			x = x /. DOT[a__SUNT, b__QuantumField] :> (DOT[a]*DOT[b]);
+			x = x /. DOT->holdDOT //. {
+				holdDOT[a___,b_/; !MemberQ[{QuantumField,SUNT},Head[b]], c__SUNT,d___] :> holdDOT[a,c,b,d],
+
+				holdDOT[a___, (b: QuantumField[___FCPartialD,fName_,___]), c__SUNT,d___]/; !DataType[fName,ImplicitSUNFIndex] :> holdDOT[a,c,b,d]
+
+			};
+			x = x /. holdDOT[a__SUNT, (b: QuantumField[___FCPartialD,fName_,___]), rest___]/; !DataType[fName,ImplicitSUNFIndex] :> (holdDOT[a]*holdDOT[b,rest]);
+			x = x /. holdDOT->DOT;
 			FCPrint[1, "DotSimplify: Done factoring out QuantumField's, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
 			FCPrint[3, "DotSimplify: After factoring out QuantumFields", x, FCDoControl->dsVerbose]
 		];

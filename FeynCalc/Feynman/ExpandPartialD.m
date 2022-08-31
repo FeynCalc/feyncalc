@@ -267,7 +267,16 @@ qf2[a___, RightPartialD[x_]^px_. , LeftPartialD[y_]^py_. , b___] :=
 (* move all DiracGamma, etc. to the left *)
 qf2[a___, b_, n_, c___] :=
 	qf2[a, n, b, c] /; (!NonCommFreeQ[n]) && FreeQ2[n, {Pattern, FCPartialD, LeftPartialD, RightPartialD, QuantumField, Blank, qf1, qf2} ] &&
-	((Head[b] === FCPartialD) || (Head[b] === QuantumField) || (Head[b] === LeftPartialD) || (Head[b] === RightPartialD));
+	((Head[b] === FCPartialD) || (Head[b] === LeftPartialD) || (Head[b] === RightPartialD));
+
+qf2[a___, (b:QuantumField[___FCPartialD,fName_,___]), n_DiracGamma, c___] :=
+	qf2[a, n, b, c] /; FCPatternFreeQ[{n}] && !DataType[fName,ImplicitDiracIndex];
+
+qf2[a___, (b:QuantumField[___FCPartialD,fName_,___]), n_PauliSigma, c___] :=
+	qf2[a, n, b, c] /; FCPatternFreeQ[{n}] && !DataType[fName,ImplicitPauliIndex];
+
+qf2[a___, (b:QuantumField[___FCPartialD,fName_,___]), n_SUNT, c___] :=
+	qf2[a, n, b, c] /; FCPatternFreeQ[{n}] && !DataType[fName,ImplicitSUNFIndex];
 
 qf3[f1_qf3] :=
 	f1;

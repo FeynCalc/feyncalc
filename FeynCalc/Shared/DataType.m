@@ -34,6 +34,45 @@ FCTensor::usage =
 FCVariable::usage =
 "FCVariable  is a data type. E.g. DataType[z, FCVariable] = True.";
 
+ImplicitDiracIndex::usage =
+"ImplicitDiracIndex is a data type. It mainly applies to names of quantum
+fields specifying that the corresponding field carries an implicit Dirac
+index.
+
+This information can be supplied e.g. via DataType[QuarkField,
+ImplicitDiracIndex] = True, where QuarkField is a possible name of the
+relevant field.
+
+The ImplicitDiracIndex property becomes relevant when simplifying 
+noncommutative products involving QuantumFields via ExpandPartialD,
+DotSimplify.";
+
+ImplicitPauliIndex::usage =
+"ImplicitPauliIndex is a data type. It mainly applies to names of quantum
+fields specifying that the corresponding field carries an implicit Pauli
+index.
+
+This information can be supplied e.g. via DataType[QuarkFieldChi,
+ImplicitPauliIndex] = True, where QuarkFieldChi is a possible name of the
+relevant field.
+
+The ImplicitDiracIndex property becomes relevant when simplifying 
+noncommutative products involving QuantumFields via ExpandPartialD,
+DotSimplify.";
+
+ImplicitSUNFIndex::usage =
+"ImplicitSUNFIndex is a data type. It mainly applies to names of quantum fields
+specifying that the corresponding field carries an implicit $SU(N)$ index in
+the fundamental representation.
+
+This information can be supplied e.g. via DataType[QuarkField,
+ImplicitSUNFIndex] = True, where QuarkField is a possible name of the relevant
+field.
+
+The ImplicitSUNFIndex property becomes relevant when simplifying 
+noncommutative products involving QuantumFields via ExpandPartialD,
+DotSimplify.";
+
 DataType::usage =
 "DataType[exp, type] = True defines the object exp to have data-type type.
 
@@ -56,6 +95,14 @@ Currently used DataTypes:
 - FreeIndex
 
 - GrassmannParity
+
+- FCTensor
+
+- ImplicitDiracIndex
+
+- ImplicitPauliIndex
+
+- ImplicitSUNFIndex
 
 If loaded, PHI adds the DataTypes: UMatrix, UScalar.";
 

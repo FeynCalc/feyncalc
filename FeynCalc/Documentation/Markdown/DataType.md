@@ -20,11 +20,19 @@ To assign a certain data-type, do, e.g., `DataType[x, PositiveInteger] = True`. 
 
 - `GrassmannParity`
 
+- `FCTensor`
+
+- `ImplicitDiracIndex`
+
+- `ImplicitPauliIndex`
+
+- `ImplicitSUNFIndex`
+
 If loaded, PHI adds the `DataTypes`: `UMatrix`, `UScalar`.
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [DeclareNonCommutative](DeclareNonCommutative.md).
+[Overview](Extra/FeynCalc.md), [DeclareNonCommutative](DeclareNonCommutative.md), [NonCommutative](NonCommutative.md), [PositiveInteger](PositiveInteger.md), [NegativeInteger](NegativeInteger.md), [PositiveNumber](PositiveNumber.md), [FreeIndex](FreeIndex.md), [GrassmannParity](GrassmannParity.md), [FCTensor](FCTensor.md), [ImplicitDiracIndex](ImplicitDiracIndex.md), [ImplicitPauliIndex](ImplicitPauliIndex.md), [ImplicitSUNFIndex](ImplicitSUNFIndex.md).
 
 ### Examples
 

@@ -48,6 +48,22 @@
 
 
 (* ::Text:: *)
+(*- `FCTensor`*)
+
+
+(* ::Text:: *)
+(*- `ImplicitDiracIndex`*)
+
+
+(* ::Text:: *)
+(*- `ImplicitPauliIndex`*)
+
+
+(* ::Text:: *)
+(*- `ImplicitSUNFIndex`*)
+
+
+(* ::Text:: *)
 (*If loaded, PHI adds the `DataTypes`: `UMatrix`, `UScalar`.*)
 
 
@@ -56,7 +72,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [DeclareNonCommutative](DeclareNonCommutative.md).*)
+(*[Overview](Extra/FeynCalc.md), [DeclareNonCommutative](DeclareNonCommutative.md), [NonCommutative](NonCommutative.md), [PositiveInteger](PositiveInteger.md), [NegativeInteger](NegativeInteger.md), [PositiveNumber](PositiveNumber.md), [FreeIndex](FreeIndex.md), [GrassmannParity](GrassmannParity.md), [FCTensor](FCTensor.md), [ImplicitDiracIndex](ImplicitDiracIndex.md), [ImplicitPauliIndex](ImplicitPauliIndex.md), [ImplicitSUNFIndex](ImplicitSUNFIndex.md).*)
 
 
 (* ::Subsection:: *)
