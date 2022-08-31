@@ -122,9 +122,9 @@ GluonPropagator[pi_, {mui_,  ai___}, {nui_, bi___}, opt:OptionsPattern[]] :=
 						n = Momentum[n, dim]
 					];
 					glp = I FeynAmpDenominator[PD[p, gluemass]] *
-					sundelta (- Pair[mu, nu] + (Pair[n, mu] Pair[p,nu] + Pair[p, mu] Pair[n,nu]) / Pair[n, p] -
+					sundelta (- Pair[mu, nu] + (Pair[n, mu] Pair[p,nu] + Pair[p, mu] Pair[n,nu])  FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[n, p], 0, {1, 1}]] -
 					(Pair[n, n] Pair[p,mu] Pair[p,nu]- gauge[[2]] Pair[p,p] Pair[n,mu] *
-					Pair[n,nu]) /Pair[n,p]^2),
+					Pair[n,nu]) FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[n, p], 0, {2, 1}]]),
 					glp  = I FeynAmpDenominator[PD[p, gluemass]] *
 					sundelta (- Pair[mu, nu] + (1-gauge) Pair[p, mu] Pair[p, nu] *
 					FeynAmpDenominator[PD[MomentumExpand[p], gluemass]]);
