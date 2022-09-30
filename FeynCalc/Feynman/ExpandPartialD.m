@@ -33,18 +33,23 @@ Begin["`ExpandPartialD`Private`"]
 
 epdVerbose::usage="";
 optPartialDRelations::usage="";
+optMaxIterations::usage="";
 opk::usage="";
+dotHOLD::usage="";
 
 quanfDot = DOT;
 epskillDot = DOT;
 
-Options[ExpandPartialD] = {
-	FCI -> False,
-	FCVerbose -> False,
-	PartialDRelations -> {DOT[a___, FCPartialD[x_,LorentzIndex[i_]], b___] :> DOT[a, FieldDerivative[dot[b], x, LorentzIndex[i]]]}
-}
+quantumFieldArguments =
 
-(* Expand one multiplication at a time. F.Orellana *)
+Options[ExpandPartialD] = {
+	FCE					-> False,
+	FCI					-> False,
+	FCVerbose 			-> False,
+	MaxIterations		-> Infinity,
+	PartialDRelations	-> {DOT[a___, FCPartialD[x_,LorentzIndex[i_]], b___] :> DOT[a, FieldDerivative[dot[b], x, LorentzIndex[i]]]}
+};
+
 ExpandPartialD[expr_, OptionsPattern[]] :=
 	Block[{res, ex},
 
@@ -56,6 +61,7 @@ ExpandPartialD[expr_, OptionsPattern[]] :=
 		];
 
 		optPartialDRelations = OptionValue[PartialDRelations];
+		optMaxIterations = OptionValue[MaxIterations];
 
 		FCPrint[1, "ExpandPartialD: Entering.", FCDoControl->epdVerbose];
 
@@ -64,9 +70,18 @@ ExpandPartialD[expr_, OptionsPattern[]] :=
 			ex = FCI[expr]
 		];
 
+		ex = DotSimplify[ex, FCI->True];
+
+		FCPrint[3, "ExpandPartialD: After DotSimplify: ", ex, FCDoControl->epdVerbose];
+
+
 		res = Fold[internalExpand[#1, #2]&, ex, Complement[$Multiplications, {Times}]];
 
 		FCPrint[1, "ExpandPartialD: Leaving.", FCDoControl->epdVerbose];
+
+		If[ OptionValue[FCE],
+			res = FCE[res]
+		];
 
 		res
 
@@ -87,7 +102,7 @@ internalExpand[x_, dot_] :=
 		quanfDot = dot;
 		epskillDot = dot;
 
-		res = FixedPoint[qfe[dot,#]&,x,3];
+		res = FixedPoint[qfe[dot,#]&,x,optMaxIterations];
 		FCPrint[3,"ExpandPartialD: internalExpand: After qfe ", res, FCDoControl->epdVerbose];
 
 		If[!FreeQ[res,SUNIndex],
@@ -96,7 +111,7 @@ internalExpand[x_, dot_] :=
 
 		If[!FreeQ[res,Eps],
 			FCPrint[1,"ExpandPartialD: Applying epskill.", FCDoControl->epdVerbose];
-			res = epskill[Expand[res,Eps]]  /. epskill -> Identity;
+			res = epskill[Expand2[res,{Eps,dot}]]  /. epskill -> Identity;
 			FCPrint[3,"ExpandPartialD: internalExpand: After epskill: ", res, FCDoControl->epdVerbose];
 		];
 
@@ -110,69 +125,114 @@ internalExpand[x_, dot_] :=
 
 	] /; Head[x] =!= Plus;
 
-$OPEKCOUNT = 0;
-
-(* suggested by Peter Cho; ADDED 03/16/1998 *)
 epskill[exp_ /; FreeQ[exp, Eps]] :=
 	exp;
 
 epskill[exp_Plus] :=
 	Map[epskill, exp];
 
-epskill[any_ /; FreeQ2[any,{RightPartialD, LeftPartialD}]] :=
-	any;
-
-(* careful, ..., LeftPartialD and RightPartialD are operators,
-	thus here is no need to look at QuantumField's	*)
+(* careful, works only for flat dots *)
 epskill[prod_Times] :=
-	( (prod /. epskillDot -> mydot) //. {
+	( (prod /. epskillDot -> dotHOLD) //. {
 
-		(Eps[a___, LorentzIndex[mu_,___], b___, LorentzIndex[nu_, ___], c___] *
-			mydot[	pa1___, (LeftPartialD | RightPartialD)[LorentzIndex[mu_,___]],
-					pa2___, (LeftPartialD | RightPartialD)[LorentzIndex[nu_,___]], pa3___]) :> 0,
-
-		(Eps[a___, LorentzIndex[mu_,___], b___, LorentzIndex[nu_, ___], c___] *
-			mydot[	pa1___, (LeftPartialD | RightPartialD)[LorentzIndex[nu_,___]],
-					pa2___,	(LeftPartialD | RightPartialD)[LorentzIndex[mu_,___]], pa3___]) :> 0,
-
-
-		(Eps[a___, CartesianIndex[mu_,___], b___, CartesianIndex[nu_, ___], c___] *
-			mydot[	pa1___, (LeftPartialD | RightPartialD)[CartesianIndex[mu_,___]],
-					pa2___, (LeftPartialD | RightPartialD)[CartesianIndex[nu_,___]], pa3___]) :> 0,
-
-		(Eps[a___, CartesianIndex[mu_,___], b___, CartesianIndex[nu_, ___], c___] *
-			mydot[	pa1___, (LeftPartialD | RightPartialD)[CartesianIndex[nu_,___]],
-					pa2___,	(LeftPartialD | RightPartialD)[CartesianIndex[mu_,___]], pa3___]) :> 0,
-
-		(* however, here (03/21/98) one has to be careful ... *)
-		(*BUGFIXED ?*)
-
+		(*e^{mu nu rho si} d^abc (... A^a_mu .... A^b_nu ...)*)
 		(
-		(Eps[a___, LorentzIndex[mu_,___], b___, LorentzIndex[nu_,___], c___ ] | Eps[a___, LorentzIndex[nu_,___], b___, LorentzIndex[mu_,___], c___ ]) *
-			(SUND[de1___SUNIndex, SUNIndex[s1_], de2___SUNIndex, SUNIndex[s2_], de3___SUNIndex ] | SUND[de1___SUNIndex, SUNIndex[s2_], de2___SUNIndex, SUNIndex[s1_], de3___SUNIndex ]) *
-			mydot[	pa1___, QuantumField[___FCPartialD, FCPartialD[LorentzIndex[mu_,___]], ___FCPartialD, fieldname_, LorentzIndex[_,___], SUNIndex[s1_]],
-					pa2___, QuantumField[___FCPartialD, FCPartialD[LorentzIndex[nu_,___]], ___FCPartialD, fieldname_, LorentzIndex[_,___], SUNIndex[s2_]], pa3___]
-		) :> 0 ,
+		(Eps[___, LorentzIndex[mu_,___], ___, LorentzIndex[nu_,___], ___] | Eps[___, LorentzIndex[nu_,___], ___, LorentzIndex[mu_,___], ___]) *
+			(SUND[___, SUNIndex[s1_], ___, SUNIndex[s2_], ___] | SUND[___, SUNIndex[s2_], ___, SUNIndex[s1_], ___]) *
+			dotHOLD[	___, QuantumField[___FCPartialD, FCPartialD[LorentzIndex[mu_,___]], ___FCPartialD, name_, _LorentzIndex, SUNIndex[s1_]],
+					___, QuantumField[___FCPartialD, FCPartialD[LorentzIndex[nu_,___]], ___FCPartialD, name_, _LorentzIndex, SUNIndex[s2_]], ___]
+		)/; !MemberQ[{LorentzIndex,ExplicitLorentzIndex,Momentum,CartesianIndex,CartesianMomentum,FCPartialD,List},Head[name]] :> 0 ,
 
-		(
-		(Eps[a___, LorentzIndex[nu_,___], b___, LorentzIndex[mu_, ___],c___] | Eps[a___, LorentzIndex[mu_,___], b___, LorentzIndex[nu_, ___],c___]) *
-			QuantumField[___FCPartialD,	FCPartialD[LorentzIndex[mu_,___]], ___FCPartialD, FCPartialD[LorentzIndex[nu_,___]], ___FCPartialD,
-			name_ /; (Head[name]=!=FCPartialD) && (Head[name]=!=LorentzIndex), LorentzIndex[_,___], l___]
-		) :> 0 /; Length[{l}]<2,
+		(* e^{... mu ... nu ...} (... d_mu ... d_nu ...) -> 0 ; Contains LeftPartialD and RightPartialD *)
+		((Eps[___, indHead_[nu_,___], ___, indHead_[mu_, ___], ___] | Eps[___, indHead_[mu_,___], ___, indHead_[nu_, ___], ___])*
+			dotHOLD[(LeftPartialD | RightPartialD)[__] ..., (LeftPartialD|RightPartialD)[indHead_[mu_,___]], (LeftPartialD | RightPartialD)[__] ...,
+				(LeftPartialD|RightPartialD)[indHead_[nu_,___]], (LeftPartialD | RightPartialD)[__] ...])/;
+			MemberQ[{LorentzIndex, CartesianIndex},indHead] :> 0,
 
-		((e : (Eps[a___, LorentzIndex[n_,___], b___, LorentzIndex[m_, ___],c___] | Eps[a___, LorentzIndex[m_,___], b___, LorentzIndex[n_, ___],c___])) *
-			QuantumField[p___FCPartialD, FCPartialD[LorentzIndex[m_,d___]], q___FCPartialD,	t_ /;
-				(Head[t] =!= FCPartialD) && (Head[t] =!= LorentzIndex), LorentzIndex[nu_,s___], r___]
-		) :>
-			(EpsEvaluate[e /. {m:>n, n:>m}, FCI->True] QuantumField[p,FCPartialD[LorentzIndex[n,s]], q, t, LorentzIndex[m, d],r]) /; !OrderedQ[{m,n}],
+		(* e^{... mu ... nu ...} (d_mu d_nu A^...) -> 0  *)
+		((Eps[___, indHead_[nu_,___], ___, indHead_[mu_, ___], ___] | Eps[___, indHead_[mu_,___], ___, indHead_[nu_, ___], ___])*
+			QuantumField[___,	FCPartialD[indHead_[mu_,___]], ___, FCPartialD[indHead_[nu_,___]], ___])/;
+			MemberQ[{LorentzIndex, CartesianIndex},indHead] :> 0,
 
-		((e : (Eps[a___, LorentzIndex[n_,___], b___, LorentzIndex[m_, ___],c___] | Eps[a___, LorentzIndex[m_,___], b___, LorentzIndex[n_, ___],c___])) *
-				mydot[quf1___, QuantumField[p___FCPartialD, FCPartialD[LorentzIndex[m_,s___]], q___FCPartialD, t_ /;
-				(Head[t] =!= FCPartialD) && (Head[t] =!= LorentzIndex), LorentzIndex[nu_,d___], r___], x___]
-		) :>
-			(EpsEvaluate[e/.{m:>n, n:>m}, FCI->True] mydot[x, QuantumField[p,FCPartialD[LorentzIndex[n, d]], q, t, LorentzIndex[m,s], r], x]) /; !OrderedQ[{m, n}]
+		((Eps[___, indHead_[nu_,___], ___, indHead_[mu_, ___], ___] | Eps[___, indHead_[mu_,___], ___, indHead_[nu_, ___], ___])*
+			dotHOLD[___, QuantumField[___,	FCPartialD[indHead_[mu_,___]], ___, FCPartialD[indHead_[nu_,___]], ___], ___])/;
+			MemberQ[{LorentzIndex, CartesianIndex},indHead] :> 0,
 
-		} /. mydot-> epskillDot) /; !FreeQ2[prod, {Eps,LeftPartialD,RightPartialD}];
+		(* reordering of indices in contractions of the eps-tensor with derivatives and field indices *)
+
+		(* e^{... mu ... nu ...} A^{... mu ... nu ...}  *)
+		((e : (Eps[___, indHead_[n_,___], ___, indHead_[m_, ___], ___] | Eps[___, indHead_[m_,___], ___, indHead_[n_, ___], ___])) *
+			QuantumField[p__, (a:indHead_[m_,___]), q___, (b:indHead_[n_,___]), r___]) /;
+			!OrderedQ[{m, n}] && MemberQ[{LorentzIndex, CartesianIndex}, indHead] :>
+				(EpsEvaluate[e /. {m:>n, n:>m}, FCI->True] QuantumField[p, b, q, a, r]),
+
+		((e : (Eps[___, indHead_[n_,___], ___, indHead_[m_, ___], ___] | Eps[___, indHead_[m_,___], ___, indHead_[n_, ___],___])) *
+				dotHOLD[x___, QuantumField[p__, (a:indHead_[m_,___]), q___, (b:indHead_[n_,___]), r___], y___]
+		)/; !OrderedQ[{m, n}] && MemberQ[{LorentzIndex, CartesianIndex},indHead] :>
+				(EpsEvaluate[e /.{m:>n, n:>m}, FCI->True] dotHOLD[x, QuantumField[p, b, q, a, r], y]),
+
+		(* e^{... mu ... nu ...} (d_mu A^nu)  *)
+		((e : (Eps[___, indHead_[n_,___], ___, indHead_[m_, ___], ___] | Eps[___, indHead_[m_,___], ___, indHead_[n_, ___], ___])) *
+			QuantumField[p___, FCPartialD[(a:indHead_[m_,___])], q__, (b:indHead_[n_,___]), r___]
+		)/; MemberQ[{LorentzIndex,CartesianIndex},indHead] && !OrderedQ[{m, n}] :>
+				(EpsEvaluate[e /. {m:>n, n:>m}, FCI->True] QuantumField[p, FCPartialD[b], q, a, r]),
+
+		((e : (Eps[___, indHead_[n_,___], ___, indHead_[m_, ___], ___] | Eps[___, indHead_[m_,___], ___, indHead_[n_, ___], ___])) *
+			dotHOLD[y___,QuantumField[p___, FCPartialD[(a:indHead_[m_,___])], q__, (b:indHead_[n_,___]), r___],z___]
+		)/; MemberQ[{LorentzIndex,CartesianIndex},indHead] && !OrderedQ[{m, n}] :>
+				(EpsEvaluate[e /. {m:>n, n:>m}, FCI->True] dotHOLD[y,QuantumField[p, FCPartialD[b], q, a, r],z]),
+
+		(* e^{... mu ... nu ...} (d_mu A^...) B^nu  *)
+		((e : (Eps[___, indHead_[n_,___], ___, indHead_[m_, ___], ___] | Eps[___, indHead_[m_,___], ___, indHead_[n_, ___], ___])) *
+				dotHOLD[y___, QuantumField[p___, FCPartialD[(a:indHead_[m_,___])], q___], z___, QuantumField[t___, (b:indHead_[n_,___]), r___], w___]
+		)/; MemberQ[{LorentzIndex, CartesianIndex},indHead] && !OrderedQ[{m, n}] :>
+				(EpsEvaluate[e /.{m:>n, n:>m}, FCI->True] dotHOLD[y, QuantumField[p, FCPartialD[b], q], z, QuantumField[t, a, r], w]),
+
+		(* e^{... mu ... nu ...} B^nu (d_mu A^...)   *)
+		((e : (Eps[___, indHead_[n_,___], ___, indHead_[m_, ___], ___] | Eps[___, indHead_[m_,___], ___, indHead_[n_, ___], ___])) *
+				dotHOLD[y___, QuantumField[p___, (a:indHead_[m_,___]), q___], z___, QuantumField[t___, FCPartialD[(b:indHead_[n_,___])], r___] , w___]
+		)/; MemberQ[{LorentzIndex, CartesianIndex},indHead] && !OrderedQ[{m, n}] :>
+				(EpsEvaluate[e /.{m:>n, n:>m}, FCI->True] dotHOLD[y, QuantumField[p, b, q], z, QuantumField[t, FCPartialD[a], r], w]),
+
+
+		(* e^{... mu ... nu ...} (d_mu A^...) (d^nu B^...)  *)
+		((e : (Eps[___, indHead_[n_,___], ___, indHead_[m_, ___], ___] | Eps[___, indHead_[m_,___], ___, indHead_[n_, ___], ___])) *
+				dotHOLD[x___, QuantumField[p___, FCPartialD[(a:indHead_[m_,___])], q___], y___, QuantumField[t___, FCPartialD[(b:indHead_[n_,___])], r___], z___]
+		)/; MemberQ[{LorentzIndex, CartesianIndex},indHead] && !OrderedQ[{m, n}] :>
+				(EpsEvaluate[e /.{m:>n, n:>m}, FCI->True] dotHOLD[x, QuantumField[p, FCPartialD[b], q], y, QuantumField[t, FCPartialD[a], r], z]),
+
+		(* e^{... mu ... nu ...} (... A^mu ... B^nu ...)   *)
+		((e : (Eps[___, indHead_[n_,___], ___, indHead_[m_, ___], ___] | Eps[___, indHead_[m_,___], ___, indHead_[n_, ___], ___])) *
+				dotHOLD[x___, QuantumField[p___, (a:indHead_[m_,___]), q___], y___, QuantumField[t___, (b:indHead_[n_,___]), r___] , z___]
+		)/; MemberQ[{LorentzIndex, CartesianIndex},indHead] && !OrderedQ[{m, n}] :>
+				(EpsEvaluate[e /.{m:>n, n:>m}, FCI->True] dotHOLD[x, QuantumField[p, b, q], y, QuantumField[t, a, r], z]),
+
+		(* e^{... mu ... nu ...} g_mu d_nu A^...  *)
+		((e : (Eps[___, indHead_[n_,___], ___, indHead_[m_, ___], ___] | Eps[___, indHead_[m_,___], ___, indHead_[n_, ___], ___])) *
+				dotHOLD[x___, g_[(a:indHead_[m_,d___]),d___], y___, QuantumField[p___, FCPartialD[(b:indHead_[n_,d___])], q___], z___]
+		)/; !OrderedQ[{m, n}] && MemberQ[{LorentzIndex, CartesianIndex},indHead] && MemberQ[{DiracGamma, PauliSigma},g] :>
+			(EpsEvaluate[e /.{m:>n, n:>m}, FCI->True] dotHOLD[x, g[b, d], y, QuantumField[p, FCPartialD[a], q], z]),
+
+		(* e^{... mu ... nu ...} d_nu A^... g_mu   *)
+		((e : (Eps[___, indHead_[n_,___], ___, indHead_[m_, ___], ___] | Eps[___, indHead_[m_,___], ___, indHead_[n_, ___], ___])) *
+				dotHOLD[x___, QuantumField[p___, FCPartialD[(a:indHead_[m_,d___])], q___], y___, g_[(b:indHead_[n_,d___]),d___] , z___]
+		)/; !OrderedQ[{m, n}] && MemberQ[{LorentzIndex, CartesianIndex},indHead] && MemberQ[{DiracGamma, PauliSigma},g] :>
+			(EpsEvaluate[e /.{m:>n, n:>m}, FCI->True] dotHOLD[x, QuantumField[p, FCPartialD[b], q], y, g[a, d] , z]),
+
+		(* e^{... mu ... nu ...} g_mu A^nu  *)
+		((e : (Eps[___, indHead_[n_, d___], ___, indHead_[m_, d___], ___] | Eps[___, indHead_[m_, d___], ___, indHead_[n_, d___], ___])) *
+				dotHOLD[x___, g_[(a:indHead_[m_,d___]),d___], y___, QuantumField[p___, (b:indHead_[n_,d___]), q___], z___]
+		)/; !OrderedQ[{m, n}] && MemberQ[{LorentzIndex, CartesianIndex},indHead] && MemberQ[{DiracGamma, PauliSigma},g]  :>
+			(EpsEvaluate[e /.{m:>n, n:>m}, FCI->True] dotHOLD[x, g[b, d], y, QuantumField[p, a, q], z]),
+
+		(* e^{... mu ... nu ...} A^nu g_mu  *)
+		((e : (Eps[___, indHead_[n_,d___], ___, indHead_[m_, d___], ___] | Eps[___, indHead_[m_, d___], ___, indHead_[n_, d___], ___])) *
+				dotHOLD[x___, QuantumField[p___, (a:indHead_[m_,d___]), q___], y___, g_[(b:indHead_[n_,d___]),d___], z___]
+		)/; !OrderedQ[{m, n}] && MemberQ[{LorentzIndex, CartesianIndex},indHead] && MemberQ[{DiracGamma, PauliSigma},g]  :>
+			(EpsEvaluate[e /.{m:>n, n:>m}, FCI->True] dotHOLD[x, QuantumField[p, b, q], y, g[a, d], z])
+
+
+		} /. dotHOLD-> epskillDot) /; !FreeQ[prod,Eps] && !FreeQ2[prod, {QuantumField, FCPartialD, LorentzIndex, CartesianIndex, SUNIndex}];
 
 
 (* Ignore CovariantD[x, LorentzIndex[mu]] - it will be caught by PartialDRelations*)
@@ -211,6 +271,7 @@ qfe[dot_, x_] :=
 		aux = ExplicitPartialD[aux];
 		FCPrint[4,"ExpandPartialD: qfe: After ExplicitPartialD: ", aux, FCDoControl->epdVerbose];
 
+		(*TODO Must AVOID NESTED DOTS!!!!!!!!!*)
 		aux = aux /. dot -> qf1;
 		FCPrint[4,"ExpandPartialD: qfe: After qf1: ", aux, FCDoControl->epdVerbose];
 
@@ -252,7 +313,7 @@ qf1[a___, b_Plus, c___] :=
 	Expand[Map[qf1[a, #, c]&, b]];
 
 qf2[b___, n_ ,c___] :=
-	( n qf2[b, c] ) /;
+	n qf2[b, c] /;
 	FreeQ2[n, {Pattern, Blank, qf1, qf2}] && NonCommFreeQ[n] === True;
 
 qf2[b___, n_ f1_, c___] :=
@@ -269,14 +330,14 @@ qf2[a___, b_, n_, c___] :=
 	qf2[a, n, b, c] /; (!NonCommFreeQ[n]) && FreeQ2[n, {Pattern, FCPartialD, LeftPartialD, RightPartialD, QuantumField, Blank, qf1, qf2} ] &&
 	((Head[b] === FCPartialD) || (Head[b] === LeftPartialD) || (Head[b] === RightPartialD));
 
-qf2[a___, (b:QuantumField[___FCPartialD,fName_,___]), n_DiracGamma, c___] :=
-	qf2[a, n, b, c] /; FCPatternFreeQ[{n}] && !DataType[fName,ImplicitDiracIndex];
+qf2[a___, (b:QuantumField[Longest[___FCPartialD],fName_,___]), n_DiracGamma, c___] :=
+	qf2[a, n, b, c] /; FCPatternFreeQ[{n}] && !DataType[fName,ImplicitDiracIndex] && (Head[fName] =!= FCPartialD);
 
-qf2[a___, (b:QuantumField[___FCPartialD,fName_,___]), n_PauliSigma, c___] :=
-	qf2[a, n, b, c] /; FCPatternFreeQ[{n}] && !DataType[fName,ImplicitPauliIndex];
+qf2[a___, (b:QuantumField[Longest[___FCPartialD],fName_,___]), n_PauliSigma, c___] :=
+	qf2[a, n, b, c] /; FCPatternFreeQ[{n}] && !DataType[fName,ImplicitPauliIndex] && (Head[fName] =!= FCPartialD);
 
 qf2[a___, (b:QuantumField[___FCPartialD,fName_,___]), n_SUNT, c___] :=
-	qf2[a, n, b, c] /; FCPatternFreeQ[{n}] && !DataType[fName,ImplicitSUNFIndex];
+	qf2[a, n, b, c] /; FCPatternFreeQ[{n}] && !DataType[fName,ImplicitSUNFIndex] && (Head[fName] =!= FCPartialD);
 
 qf3[f1_qf3] :=
 	f1;
@@ -297,9 +358,9 @@ qf3[a___, n_. f1_QuantumField f2_QuantumField, b___] :=
 (* Leibnitz rule *)
 qf5[] = 1;
 
-qf5[a___, RightPartialD[mu_], QuantumField[f1__]] :=
-	qf5st[a, quantumFieldSimplify[FCPartialD[mu], f1]] /. quantumFieldSimplify -> QuantumField /.
-		qf5st -> qf5;
+qf5[a___, RightPartialD[mu_], QuantumField[f1__], rest___] :=
+	(qf5st[a, quantumFieldSimplify[FCPartialD[mu], f1], rest] /. quantumFieldSimplify -> QuantumField /.
+		qf5st -> qf5)/; FreeQ[{rest}, QuantumField];
 
 qf5[a___, QuantumField[f1__], LeftPartialD[mu_], b___] :=
 	(qf5st[a, quantumFieldSimplify[FCPartialD[mu], f1], b] /. quantumFieldSimplify -> QuantumField /.
@@ -311,11 +372,21 @@ qf5[a___, QuantumField[f2__], QuantumField[f1__], LeftPartialD[mu_], b___] :=
 		) /. quantumFieldSimplify -> QuantumField /. qf5st -> qf5
 	) /; MemberQ[{LorentzIndex,ExplicitLorentzIndex,Momentum,CartesianIndex,CartesianMomentum,List},Head[mu]];
 
-qf5[a___, RightPartialD[mu_], QuantumField[f1__], QuantumField[f2__], b___] :=
-	((qf5st[a, quantumFieldSimplify[FCPartialD[mu], f1], quantumFieldSimplify[f2],  b] +
-		qf5st[a, quantumFieldSimplify[f1], RightPartialD[mu], quantumFieldSimplify[f2], b]
+qf5[a___, RightPartialD[mu_], QuantumField[f1__], rest___, QuantumField[f2__], b___] :=
+	((qf5st[a, quantumFieldSimplify[FCPartialD[mu], f1], rest, quantumFieldSimplify[f2],  b] +
+		qf5st[a, quantumFieldSimplify[f1], rest, RightPartialD[mu], quantumFieldSimplify[f2], b]
 	) /. quantumFieldSimplify -> QuantumField /. qf5st -> qf5
-	) /; MemberQ[{LorentzIndex,ExplicitLorentzIndex,Momentum,CartesianIndex,CartesianMomentum,List},Head[mu]];
+	) /; MemberQ[{LorentzIndex,ExplicitLorentzIndex,Momentum,CartesianIndex,CartesianMomentum,List},Head[mu]] &&
+			FreeQ2[{rest}, {QuantumField}];
+
+(* new 03/98 commutativity in partial derivatives *)
+quantumFieldSimplify[par1_FCPartialD, parr__FCPartialD, fname_/;Head[fname]=!=FCPartialD, rest___] :=
+	(((quantumFieldSimplify[##, fname, rest])&)@@Sort[{par1,parr}]) /; !OrderedQ[{par1,parr}]
+
+
+(* OPEDelta stuff *)
+
+$OPEKCOUNT = 0;
 
 qf5st[a___, RightPartialD[Momentum[OPEDelta]^m_], RightPartialD[Momentum[OPEDelta]^n_], b___] :=
 	qf5st[a, RightPartialD[Momentum[OPEDelta]^(m+n)], b];
@@ -373,10 +444,6 @@ quantumFieldSimplify[f1___, LeftPartialD[Momentum[OPEDelta]^m_], LeftPartialD[Mo
 
 quantumFieldSimplify[f1___, RightPartialD[Momentum[OPEDelta]^m_], RightPartialD[Momentum[OPEDelta]^n_], f2___] :=
 	quantumFieldSimplify[f1, RightPartialD[Momentum[OPEDelta]^(m+n)], f2];
-
-(* new 03/98 commutativity in partial derivatives *)
-quantumFieldSimplify[par1_FCPartialD, parr__FCPartialD, fname_/;Head[fname]=!=FCPartialD, rest___] :=
-	(((quantumFieldSimplify[##, fname, rest])&)@@Sort[{par1,parr}]) /; !OrderedQ[{par1,parr}]
 
 FCPrint[1,"ExpandPartialD.m loaded."];
 End[]

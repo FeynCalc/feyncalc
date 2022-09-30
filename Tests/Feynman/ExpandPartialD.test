@@ -137,5 +137,339 @@ QuantumField[QuarkFieldChi]"},
 ExpandPartialD[QuantumField[QuarkFieldChiDagger].SUNT[a].QuantumField[\
 QuarkFieldChi]];DataType[QuarkFieldChiDagger,ImplicitSUNFIndex]=False;\
 res)", "QuantumField[QuarkFieldChiDagger] . SUNT[SUNIndex[a]] . \
-QuantumField[QuarkFieldChi]"}
+QuantumField[QuarkFieldChi]"},
+{"fcstExpandPartialD-ID19",
+"(
+DataType[QuarkFieldPsiDagger, ImplicitPauliIndex] = True; \n
+DataType[QuarkFieldPsi, ImplicitPauliIndex] = True; \n
+res = ExpandPartialD[RightPartialD[CartesianIndex[k]] . QuantumField[QuarkFieldPsiDagger] . \n
+PauliSigma[CartesianIndex[i]].QuantumField[vecA,ExplicitLorentzIndex[0]].QuantumField[QuarkFieldPsi]]; \n
+res)",
+"QuantumField[QuarkFieldPsiDagger] . PauliSigma[CartesianIndex[i]] .
+QuantumField[vecA, ExplicitLorentzIndex[0]] .
+QuantumField[FCPartialD[CartesianIndex[k]], QuarkFieldPsi] +
+QuantumField[QuarkFieldPsiDagger] . PauliSigma[CartesianIndex[i]] .
+QuantumField[FCPartialD[CartesianIndex[k]], vecA,
+ExplicitLorentzIndex[0]] . QuantumField[QuarkFieldPsi] +
+QuantumField[FCPartialD[CartesianIndex[k]], QuarkFieldPsiDagger] .
+PauliSigma[CartesianIndex[i]] .
+QuantumField[vecA, ExplicitLorentzIndex[0]] .
+QuantumField[QuarkFieldPsi]"},
+{"fcstExpandPartialD-ID20",
+"ExpandPartialD[Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k]] QuantumField[FCPartialD[LorentzIndex[j]], FCPartialD[LorentzIndex[k]],
+QuarkFieldPsi]]","0"},
+{"fcstExpandPartialD-ID21",
+"ExpandPartialD[Eps[CartesianIndex[i], CartesianIndex[j], CartesianIndex[k]] QuantumField[FCPartialD[CartesianIndex[j]],
+FCPartialD[CartesianIndex[k]], QuarkFieldPsi]]","0"},
+{"fcstExpandPartialD-ID22",
+"ExpandPartialD[
+QuantumField[QuarkFieldPsiDagger] . PauliSigma[LorentzIndex[i]] .
+QuantumField[vecA, ExplicitLorentzIndex[0]] .
+QuantumField[FCPartialD[LorentzIndex[j]],
+	FCPartialD[LorentzIndex[k]], QuarkFieldPsi] Eps[LorentzIndex[i],
+LorentzIndex[j], LorentzIndex[k]]]","0"},
+{"fcstExpandPartialD-ID23",
+"ExpandPartialD[
+QuantumField[QuarkFieldPsiDagger] . PauliSigma[CartesianIndex[i]] .
+QuantumField[vecA, ExplicitLorentzIndex[0]] .
+QuantumField[FCPartialD[CartesianIndex[j]],
+FCPartialD[CartesianIndex[k]], QuarkFieldPsi]*
+Eps[CartesianIndex[i], CartesianIndex[j], CartesianIndex[k]]]","0"},
+{"fcstExpandPartialD-ID24",
+"ExpandPartialD[
+LC[al, mu, nu, rho] SUND[s1, s2,
+s3] QuantumField[FCPartialD[LorentzIndex[mu]], GluonField,
+	LorentzIndex[rho], SUNIndex[s1]] .
+QuantumField[FCPartialD[LorentzIndex[nu]], GluonField,
+	LorentzIndex[tau], SUNIndex[s2]]]","0"},
+{"fcstExpandPartialD-ID25",
+"ExpandPartialD[
+LC[al, mu, nu, rho] QuantumField[FCPartialD[LorentzIndex[rho]],
+GluonField, LorentzIndex[mu]], FCE -> True]",
+"-LC[al, mu, nu, rho] QuantumField[FCPartialD[LorentzIndex[mu]],
+GluonField, LorentzIndex[rho]]"},
+{"fcstExpandPartialD-ID26",
+"ExpandPartialD[
+LC[al, mu, nu, rho] QuantumField[AntiQuarkField] .
+QuantumField[FCPartialD[LorentzIndex[rho]], GluonField,
+	LorentzIndex[mu]] . QuantumField[QuarkField], FCE -> True]",
+"-QuantumField[AntiQuarkField] .
+QuantumField[FCPartialD[LorentzIndex[mu]], GluonField,
+	LorentzIndex[rho]] . QuantumField[QuarkField] LC[al, mu, nu, rho]"},
+{"fcstExpandPartialD-ID27",
+"ExpandPartialD[LC[i,j,k,l]QuantumField[FCPartialD[LorentzIndex[j]]\
+,A,LorentzIndex[i]]]",
+"-(Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], \
+LorentzIndex[l]]*QuantumField[FCPartialD[LorentzIndex[i]], A, \
+LorentzIndex[j]])"},
+{"fcstExpandPartialD-ID28",
+"ExpandPartialD[CLC[i,j,k]QuantumField[FCPartialD[CartesianIndex[j]\
+],A,CartesianIndex[i]]]",
+"-(Eps[CartesianIndex[i], CartesianIndex[j], \
+CartesianIndex[k]]*QuantumField[FCPartialD[CartesianIndex[i]], A, \
+CartesianIndex[j]])"},
+{"fcstExpandPartialD-ID29",
+"ExpandPartialD[LC[i,j,k,l]QuantumField[FCPartialD[LorentzIndex[mu]\
+],A,LorentzIndex[j],LorentzIndex[i]]]",
+"-(Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], \
+LorentzIndex[l]]*QuantumField[FCPartialD[LorentzIndex[mu]], A, \
+LorentzIndex[i], LorentzIndex[j]])"},
+{"fcstExpandPartialD-ID30",
+"ExpandPartialD[CLC[i,j,k]QuantumField[FCPartialD[CartesianIndex[\
+mu]],A,CartesianIndex[j],CartesianIndex[i]]]",
+"-(Eps[CartesianIndex[i], CartesianIndex[j], \
+CartesianIndex[k]]*QuantumField[FCPartialD[CartesianIndex[mu]], A, \
+CartesianIndex[i], CartesianIndex[j]])"},
+{"fcstExpandPartialD-ID31",
+"ExpandPartialD[LC[i,j,k,l]QuantumField[QuarkFieldChiDagger].\
+QuantumField[FCPartialD[LorentzIndex[j]],A,LorentzIndex[i]].\
+QuantumField[QuarkFieldPsi]]",
+"-(QuantumField[QuarkFieldChiDagger] . \
+QuantumField[FCPartialD[LorentzIndex[i]], A, LorentzIndex[j]] . \
+QuantumField[QuarkFieldPsi]*Eps[LorentzIndex[i], LorentzIndex[j], \
+LorentzIndex[k], LorentzIndex[l]])"},
+{"fcstExpandPartialD-ID32",
+"ExpandPartialD[CLC[i,j,k]QuantumField[QuarkFieldChiDagger].\
+QuantumField[FCPartialD[CartesianIndex[j]],A,CartesianIndex[i]].\
+QuantumField[QuarkFieldPsi]]",
+"-(QuantumField[QuarkFieldChiDagger] . \
+QuantumField[FCPartialD[CartesianIndex[i]], A, CartesianIndex[j]] . \
+QuantumField[QuarkFieldPsi]*Eps[CartesianIndex[i], CartesianIndex[j], \
+CartesianIndex[k]])"},
+{"fcstExpandPartialD-ID33",
+"ExpandPartialD[LC[i,j,k,l]QuantumField[QuarkFieldChiDagger].\
+QuantumField[FCPartialD[LorentzIndex[j]],A,LorentzIndex[mu]].\
+QuantumField[phi].QuantumField[B,LorentzIndex[i]].QuantumField[\
+QuarkFieldPsi]]",
+"-(QuantumField[QuarkFieldChiDagger] . \
+QuantumField[FCPartialD[LorentzIndex[i]], A, LorentzIndex[mu]] . \
+QuantumField[phi] . QuantumField[B, LorentzIndex[j]] . \
+QuantumField[QuarkFieldPsi]*Eps[LorentzIndex[i], LorentzIndex[j], \
+LorentzIndex[k], LorentzIndex[l]])"},
+{"fcstExpandPartialD-ID34",
+"ExpandPartialD[CLC[i,j,k]QuantumField[QuarkFieldChiDagger].\
+QuantumField[FCPartialD[CartesianIndex[j]],A,CartesianIndex[mu]].\
+QuantumField[phi].QuantumField[B,CartesianIndex[i]].QuantumField[\
+QuarkFieldPsi]]",
+"-(QuantumField[QuarkFieldChiDagger] . \
+QuantumField[FCPartialD[CartesianIndex[i]], A, CartesianIndex[mu]] . \
+QuantumField[phi] . QuantumField[B, CartesianIndex[j]] . \
+QuantumField[QuarkFieldPsi]*Eps[CartesianIndex[i], CartesianIndex[j], \
+CartesianIndex[k]])"},
+{"fcstExpandPartialD-ID35",
+"ExpandPartialD[LC[i,j,k,l]QuantumField[QuarkFieldChiDagger].\
+QuantumField[B,LorentzIndex[j]].QuantumField[phi].QuantumField[\
+FCPartialD[LorentzIndex[i]],A,LorentzIndex[mu]].QuantumField[\
+QuarkFieldPsi]]",
+"-(QuantumField[QuarkFieldChiDagger] . QuantumField[B, \
+LorentzIndex[i]] . QuantumField[phi] . \
+QuantumField[FCPartialD[LorentzIndex[j]], A, LorentzIndex[mu]] . \
+QuantumField[QuarkFieldPsi]*Eps[LorentzIndex[i], LorentzIndex[j], \
+LorentzIndex[k], LorentzIndex[l]])"},
+{"fcstExpandPartialD-ID36",
+"ExpandPartialD[CLC[i,j,k]QuantumField[QuarkFieldChiDagger].\
+QuantumField[B,CartesianIndex[j]].QuantumField[phi].QuantumField[\
+FCPartialD[CartesianIndex[i]],A,CartesianIndex[mu]].QuantumField[\
+QuarkFieldPsi]]",
+"-(QuantumField[QuarkFieldChiDagger] . QuantumField[B, \
+CartesianIndex[i]] . QuantumField[phi] . \
+QuantumField[FCPartialD[CartesianIndex[j]], A, CartesianIndex[mu]] . \
+QuantumField[QuarkFieldPsi]*Eps[CartesianIndex[i], CartesianIndex[j], \
+CartesianIndex[k]])"},
+{"fcstExpandPartialD-ID37",
+"ExpandPartialD[LC[i,j,k,l]QuantumField[QuarkFieldChiDagger].\
+QuantumField[FCPartialD[LorentzIndex[j]],A,LorentzIndex[mu]].\
+QuantumField[phi].QuantumField[FCPartialD[LorentzIndex[i]],B,\
+LorentzIndex[nu]].QuantumField[QuarkFieldPsi]]",
+"-(QuantumField[QuarkFieldChiDagger] . \
+QuantumField[FCPartialD[LorentzIndex[i]], A, LorentzIndex[mu]] . \
+QuantumField[phi] . QuantumField[FCPartialD[LorentzIndex[j]], B, \
+LorentzIndex[nu]] . QuantumField[QuarkFieldPsi]*Eps[LorentzIndex[i], \
+LorentzIndex[j], LorentzIndex[k], LorentzIndex[l]])"},
+{"fcstExpandPartialD-ID38",
+"ExpandPartialD[CLC[i,j,k]QuantumField[QuarkFieldChiDagger].\
+QuantumField[FCPartialD[CartesianIndex[j]],A,CartesianIndex[mu]].\
+QuantumField[phi].QuantumField[FCPartialD[CartesianIndex[i]],B,\
+CartesianIndex[nu]].QuantumField[QuarkFieldPsi]]",
+"-(QuantumField[QuarkFieldChiDagger] . \
+QuantumField[FCPartialD[CartesianIndex[i]], A, CartesianIndex[mu]] . \
+QuantumField[phi] . QuantumField[FCPartialD[CartesianIndex[j]], B, \
+CartesianIndex[nu]] . \
+QuantumField[QuarkFieldPsi]*Eps[CartesianIndex[i], CartesianIndex[j], \
+CartesianIndex[k]])"},
+{"fcstExpandPartialD-ID39",
+"(DataType[QuarkFieldChiDagger,ImplicitPauliIndex]=True;DataType[\
+QuarkFieldChiDagger,ImplicitDiracIndex]=True;\[IndentingNewLine]res=\
+ExpandPartialD[LC[i,j,k,l]QuantumField[QuarkFieldChiDagger].\
+DiracGamma[LorentzIndex[j]].QuantumField[phi].QuantumField[FCPartialD[\
+LorentzIndex[i]],A,LorentzIndex[mu]].QuantumField[QuarkFieldPsi]];\
+\[IndentingNewLine]DataType[QuarkFieldChiDagger,ImplicitPauliIndex]=\
+False;DataType[QuarkFieldChiDagger,ImplicitDiracIndex]=False;res)",
+"-(QuantumField[QuarkFieldChiDagger] . DiracGamma[LorentzIndex[i]] \
+. QuantumField[phi] . QuantumField[FCPartialD[LorentzIndex[j]], A, \
+LorentzIndex[mu]] . QuantumField[QuarkFieldPsi]*Eps[LorentzIndex[i], \
+LorentzIndex[j], LorentzIndex[k], LorentzIndex[l]])"},
+{"fcstExpandPartialD-ID40",
+"(DataType[QuarkFieldChiDagger,ImplicitPauliIndex]=True;DataType[\
+QuarkFieldChiDagger,ImplicitDiracIndex]=True;\[IndentingNewLine]res=\
+ExpandPartialD[CLC[i,j,k]QuantumField[QuarkFieldChiDagger].DiracGamma[\
+CartesianIndex[j]].QuantumField[phi].QuantumField[FCPartialD[\
+CartesianIndex[i]],A,CartesianIndex[mu]].QuantumField[QuarkFieldPsi]];\
+\[IndentingNewLine]DataType[QuarkFieldChiDagger,ImplicitPauliIndex]=\
+False;DataType[QuarkFieldChiDagger,ImplicitDiracIndex]=False;res)",
+"-(QuantumField[QuarkFieldChiDagger] . \
+DiracGamma[CartesianIndex[i]] . QuantumField[phi] . \
+QuantumField[FCPartialD[CartesianIndex[j]], A, CartesianIndex[mu]] . \
+QuantumField[QuarkFieldPsi]*Eps[CartesianIndex[i], CartesianIndex[j], \
+CartesianIndex[k]])"},
+{"fcstExpandPartialD-ID41",
+"(DataType[QuarkFieldChiDagger,ImplicitPauliIndex]=True;DataType[\
+QuarkFieldChiDagger,ImplicitDiracIndex]=True;\[IndentingNewLine]\
+DataType[phi,ImplicitPauliIndex]=True;DataType[phi,ImplicitDiracIndex]\
+=True;\[IndentingNewLine]res=ExpandPartialD[LC[i,j,k,l]QuantumField[\
+QuarkFieldChiDagger].QuantumField[FCPartialD[LorentzIndex[j]],A,\
+LorentzIndex[mu]].QuantumField[phi].DiracGamma[LorentzIndex[i]].\
+QuantumField[QuarkFieldPsi]];\[IndentingNewLine]DataType[\
+QuarkFieldChiDagger,ImplicitPauliIndex]=False;DataType[\
+QuarkFieldChiDagger,ImplicitDiracIndex]=False;DataType[phi,\
+ImplicitPauliIndex]=False;DataType[phi,ImplicitDiracIndex]=False;res)\
+", "-(QuantumField[QuarkFieldChiDagger] . \
+QuantumField[FCPartialD[LorentzIndex[i]], A, LorentzIndex[mu]] . \
+QuantumField[phi] . DiracGamma[LorentzIndex[j]] . \
+QuantumField[QuarkFieldPsi]*Eps[LorentzIndex[i], LorentzIndex[j], \
+LorentzIndex[k], LorentzIndex[l]])"},
+{"fcstExpandPartialD-ID42",
+"(DataType[QuarkFieldChiDagger,ImplicitPauliIndex]=True;DataType[\
+QuarkFieldChiDagger,ImplicitDiracIndex]=True;\[IndentingNewLine]\
+DataType[phi,ImplicitPauliIndex]=True;DataType[phi,ImplicitDiracIndex]\
+=True;\[IndentingNewLine]res=ExpandPartialD[CLC[i,j,k]QuantumField[\
+QuarkFieldChiDagger].QuantumField[FCPartialD[CartesianIndex[j]],A,\
+CartesianIndex[mu]].QuantumField[phi].DiracGamma[CartesianIndex[i]].\
+QuantumField[QuarkFieldPsi]];\[IndentingNewLine]DataType[\
+QuarkFieldChiDagger,ImplicitPauliIndex]=False;DataType[\
+QuarkFieldChiDagger,ImplicitDiracIndex]=False;DataType[phi,\
+ImplicitPauliIndex]=False;DataType[phi,ImplicitDiracIndex]=False;res)\
+", "-(QuantumField[QuarkFieldChiDagger] . \
+QuantumField[FCPartialD[CartesianIndex[i]], A, CartesianIndex[mu]] . \
+QuantumField[phi] . DiracGamma[CartesianIndex[j]] . \
+QuantumField[QuarkFieldPsi]*Eps[CartesianIndex[i], CartesianIndex[j], \
+CartesianIndex[k]])"},
+{"fcstExpandPartialD-ID43",
+"(DataType[QuarkFieldChiDagger,ImplicitPauliIndex]=True;DataType[\
+QuarkFieldChiDagger,ImplicitDiracIndex]=True;\[IndentingNewLine]res=\
+ExpandPartialD[LC[i,j,k,l]QuantumField[QuarkFieldChiDagger].\
+PauliSigma[LorentzIndex[j]].QuantumField[phi].QuantumField[FCPartialD[\
+LorentzIndex[i]],A,LorentzIndex[mu]].QuantumField[QuarkFieldPsi]];\
+\[IndentingNewLine]DataType[QuarkFieldChiDagger,ImplicitPauliIndex]=\
+False;DataType[QuarkFieldChiDagger,ImplicitDiracIndex]=False;res)",
+"-(QuantumField[QuarkFieldChiDagger] . PauliSigma[LorentzIndex[i]] \
+. QuantumField[phi] . QuantumField[FCPartialD[LorentzIndex[j]], A, \
+LorentzIndex[mu]] . QuantumField[QuarkFieldPsi]*Eps[LorentzIndex[i], \
+LorentzIndex[j], LorentzIndex[k], LorentzIndex[l]])"},
+{"fcstExpandPartialD-ID44",
+"(DataType[QuarkFieldChiDagger,ImplicitPauliIndex]=True;DataType[\
+QuarkFieldChiDagger,ImplicitDiracIndex]=True;\[IndentingNewLine]res=\
+ExpandPartialD[CLC[i,j,k]QuantumField[QuarkFieldChiDagger].PauliSigma[\
+CartesianIndex[j]].QuantumField[phi].QuantumField[FCPartialD[\
+CartesianIndex[i]],A,CartesianIndex[mu]].QuantumField[QuarkFieldPsi]];\
+\[IndentingNewLine]DataType[QuarkFieldChiDagger,ImplicitPauliIndex]=\
+False;DataType[QuarkFieldChiDagger,ImplicitDiracIndex]=False;res)",
+"-(QuantumField[QuarkFieldChiDagger] . \
+PauliSigma[CartesianIndex[i]] . QuantumField[phi] . \
+QuantumField[FCPartialD[CartesianIndex[j]], A, CartesianIndex[mu]] . \
+QuantumField[QuarkFieldPsi]*Eps[CartesianIndex[i], CartesianIndex[j], \
+CartesianIndex[k]])"},
+{"fcstExpandPartialD-ID45",
+"(DataType[QuarkFieldChiDagger,ImplicitPauliIndex]=True;DataType[\
+QuarkFieldChiDagger,ImplicitDiracIndex]=True;\[IndentingNewLine]\
+DataType[phi,ImplicitPauliIndex]=True;DataType[phi,ImplicitDiracIndex]\
+=True;\[IndentingNewLine]res=ExpandPartialD[LC[i,j,k,l]QuantumField[\
+QuarkFieldChiDagger].QuantumField[FCPartialD[LorentzIndex[j]],A,\
+LorentzIndex[mu]].QuantumField[phi].PauliSigma[LorentzIndex[i]].\
+QuantumField[QuarkFieldPsi]];\[IndentingNewLine]DataType[\
+QuarkFieldChiDagger,ImplicitPauliIndex]=False;DataType[\
+QuarkFieldChiDagger,ImplicitDiracIndex]=False;DataType[phi,\
+ImplicitPauliIndex]=False;DataType[phi,ImplicitDiracIndex]=False;res)\
+", "-(QuantumField[QuarkFieldChiDagger] . \
+QuantumField[FCPartialD[LorentzIndex[i]], A, LorentzIndex[mu]] . \
+QuantumField[phi] . PauliSigma[LorentzIndex[j]] . \
+QuantumField[QuarkFieldPsi]*Eps[LorentzIndex[i], LorentzIndex[j], \
+LorentzIndex[k], LorentzIndex[l]])"},
+{"fcstExpandPartialD-ID46",
+"(DataType[QuarkFieldChiDagger,ImplicitPauliIndex]=True;DataType[\
+QuarkFieldChiDagger,ImplicitDiracIndex]=True;\[IndentingNewLine]\
+DataType[phi,ImplicitPauliIndex]=True;DataType[phi,ImplicitDiracIndex]\
+=True;\[IndentingNewLine]res=ExpandPartialD[CLC[i,j,k]QuantumField[\
+QuarkFieldChiDagger].QuantumField[FCPartialD[CartesianIndex[j]],A,\
+CartesianIndex[mu]].QuantumField[phi].PauliSigma[CartesianIndex[i]].\
+QuantumField[QuarkFieldPsi]];\[IndentingNewLine]DataType[\
+QuarkFieldChiDagger,ImplicitPauliIndex]=False;DataType[\
+QuarkFieldChiDagger,ImplicitDiracIndex]=False;DataType[phi,\
+ImplicitPauliIndex]=False;DataType[phi,ImplicitDiracIndex]=False;res)\
+", "-(QuantumField[QuarkFieldChiDagger] . \
+QuantumField[FCPartialD[CartesianIndex[i]], A, CartesianIndex[mu]] . \
+QuantumField[phi] . PauliSigma[CartesianIndex[j]] . \
+QuantumField[QuarkFieldPsi]*Eps[CartesianIndex[i], CartesianIndex[j], \
+CartesianIndex[k]])"},
+{"fcstExpandPartialD-ID47",
+"ExpandPartialD[LC[i,j,k,l]QuantumField[QuarkFieldChiDagger].\
+LeftPartialD[LorentzIndex[i]].QuantumField[A].RightPartialD[\
+LorentzIndex[j]].QuantumField[QuarkFieldPsi]]",
+"QuantumField[FCPartialD[LorentzIndex[i]], QuarkFieldChiDagger] . \
+QuantumField[A] . QuantumField[FCPartialD[LorentzIndex[j]], \
+QuarkFieldPsi]*Eps[LorentzIndex[i], LorentzIndex[j], LorentzIndex[k], \
+LorentzIndex[l]]"},
+{"fcstExpandPartialD-ID48",
+"ExpandPartialD[CLC[i,j,k]QuantumField[QuarkFieldChiDagger].\
+LeftPartialD[CartesianIndex[i]].QuantumField[A].RightPartialD[\
+CartesianIndex[j]].QuantumField[QuarkFieldPsi]]",
+"QuantumField[FCPartialD[CartesianIndex[i]], QuarkFieldChiDagger] \
+. QuantumField[A] . QuantumField[FCPartialD[CartesianIndex[j]], \
+QuarkFieldPsi]*Eps[CartesianIndex[i], CartesianIndex[j], \
+CartesianIndex[k]]"},
+{"fcstExpandPartialD-ID49",
+"ExpandPartialD[LC[i,j,k,l]QuantumField[FCPartialD[LorentzIndex[i]]\
+,FCPartialD[LorentzIndex[j]],A]]", "0"},
+{"fcstExpandPartialD-ID50",
+"ExpandPartialD[CLC[i,j,k]QuantumField[FCPartialD[CartesianIndex[i]\
+],FCPartialD[CartesianIndex[j]],A]]", "0"},
+{"fcstExpandPartialD-ID51",
+"ExpandPartialD[LC[i,j,k,l]QuantumField[QuarkFieldChiDagger].\
+QuantumField[FCPartialD[LorentzIndex[i]],FCPartialD[LorentzIndex[j]],\
+A].QuantumField[QuarkFieldPsi]]", "0"},
+{"fcstExpandPartialD-ID52",
+"ExpandPartialD[CLC[i,j,k]QuantumField[QuarkFieldChiDagger].\
+QuantumField[FCPartialD[CartesianIndex[i]],FCPartialD[CartesianIndex[\
+j]],A].QuantumField[QuarkFieldPsi]]", "0"},
+{"fcstExpandPartialD-ID53",
+"(DataType[QuarkFieldPsiDagger, ImplicitPauliIndex] = True;
+DataType[QuarkFieldChiDagger, ImplicitPauliIndex] = True;
+res = ExpandPartialD[
+QuantumField[
+	QuarkFieldPsiDagger] . ((I/4)*CLC[i, j, k]*
+	CSI[i] .
+		QuantumField[FCPartialD[ExplicitLorentzIndex[0]], vecA,
+		CartesianIndex[j]] . (-RightPartialD[CartesianIndex[k]]) -
+	(I/4)*CLC[i, j, k]*
+	CSI[i] . (-RightPartialD[CartesianIndex[j]]) .
+		QuantumField[FCPartialD[ExplicitLorentzIndex[0]], vecA,
+		CartesianIndex[k]] +
+	(I/4)*CLC[i, j, k]*
+	CSI[i] . (-RightPartialD[CartesianIndex[j]]) .
+		QuantumField[vecA,
+		ExplicitLorentzIndex[
+		0]] . (-RightPartialD[CartesianIndex[k]])) .
+	QuantumField[QuarkFieldPsi]];
+DataType[QuarkFieldPsiDagger, ImplicitPauliIndex] = False;
+DataType[QuarkFieldChiDagger, ImplicitPauliIndex] = False; res)",
+"(I/4)*QuantumField[QuarkFieldPsiDagger] . PauliSigma[CartesianIndex[i]] .
+QuantumField[FCPartialD[CartesianIndex[j]], vecA, ExplicitLorentzIndex[0]] .
+QuantumField[FCPartialD[CartesianIndex[k]], QuarkFieldPsi]*Eps[CartesianIndex[i],
+CartesianIndex[j], CartesianIndex[k]] - (I/2)*QuantumField[QuarkFieldPsiDagger] .
+PauliSigma[CartesianIndex[i]] . QuantumField[FCPartialD[ExplicitLorentzIndex[0]],
+vecA, CartesianIndex[j]] . QuantumField[FCPartialD[CartesianIndex[k]], QuarkFieldPsi]*
+Eps[CartesianIndex[i], CartesianIndex[j], CartesianIndex[k]] + (I/4)*QuantumField[QuarkFieldPsiDagger] .
+PauliSigma[CartesianIndex[i]] . QuantumField[FCPartialD[CartesianIndex[j]],
+FCPartialD[ExplicitLorentzIndex[0]], vecA, CartesianIndex[k]] . QuantumField[QuarkFieldPsi]*
+Eps[CartesianIndex[i], CartesianIndex[j], CartesianIndex[k]]"}
 });
