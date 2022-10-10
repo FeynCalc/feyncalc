@@ -53,3 +53,10 @@ ex=ExpandPartialD[%]
 
 
 ex//StandardForm
+
+
+(* ::Text:: *)
+(*`FCPartialD` also accepts `FCGV` symbols as arguments, which can be sometimes useful to make the final expression look nicer.*)
+
+
+QuantumField[FCPartialD[FCGV["\[Del]"]],S,x]

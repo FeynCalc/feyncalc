@@ -24,7 +24,7 @@ ex = ExpandPartialD[%]
 
 $$A_{\mu }.\overleftarrow{\partial }_{\nu }$$
 
-$$\left.(\partial _{\nu }A_{\mu }\right)$$
+$$\left(\partial _{\nu }A_{\mu }\right)$$
 
 ```mathematica
 ex // StandardForm
@@ -40,10 +40,18 @@ ex = ExpandPartialD[%]
 
 $$\vec{\partial }_{\{i,x\}}.S^x$$
 
-$$\left.(\partial _{\{i,x\}}S^x\right)$$
+$$\left(\partial _{\{i,x\}}S^x\right)$$
 
 ```mathematica
 ex // StandardForm
 
 (*QuantumField[FCPartialD[{CartesianIndex[i], x}], S, x]*)
 ```
+
+`FCPartialD` also accepts `FCGV` symbols as arguments, which can be sometimes useful to make the final expression look nicer.
+
+```mathematica
+QuantumField[FCPartialD[FCGV["\[Del]"]], S, x]
+```
+
+$$\left(\nabla S^x\right)$$

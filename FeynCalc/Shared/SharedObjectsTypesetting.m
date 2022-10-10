@@ -1499,18 +1499,35 @@ PauliEta/:
 (* ------------------------------------------------------------------------ *)
 
 FCPartialD /:
+	MakeBoxes[ FCPartialD[FCGV[arg__]], TraditionalForm]:=
+		ToBoxes[arg,TraditionalForm];
+
+FCPartialD /:
+	MakeBoxes[ FCPartialD[FCGV[arg1__][arg2___]], TraditionalForm]:=
+		ToBoxes[arg1[arg2],TraditionalForm];
+
+FCPartialD /:
+	MakeBoxes[ FCPartialD[FCGV[arg1__][arg2___]^n_], TraditionalForm]:=
+		SuperscriptBox[ToBoxes[arg1[arg2],TraditionalForm],ToBoxes[n,TraditionalForm]];
+
+FCPartialD /:
+	MakeBoxes[ FCPartialD[FCGV[arg__]^n_], TraditionalForm]:=
+		SuperscriptBox[ToBoxes[arg,TraditionalForm],ToBoxes[n,TraditionalForm]];
+
+
+FCPartialD /:
 	MakeBoxes[FCPartialD[x_ ^n_], TraditionalForm]:=
 		SubsuperscriptBox["\[PartialD]", TBox[x],
 		TBox[n]] /; Head[x] === Momentum;
 
 FCPartialD /:
 	MakeBoxes[ FCPartialD[x_], TraditionalForm]:=
-		SubscriptBox["\[PartialD]", ToBoxes[x,TraditionalForm]];
+		SubscriptBox["\[PartialD]", ToBoxes[x,TraditionalForm]]/; Head[x]=!=FCGV;
 
 FCPartialD /:
 	MakeBoxes[ FCPartialD[x_, LorentzIndex[mu__]], TraditionalForm]:=
 		RowBox[{"\[PartialD]", "/", "\[PartialD]", SuperscriptBox[ToBoxes[x,TraditionalForm],
-		ToBoxes[LorentzIndex[mu],TraditionalForm]]}];
+		ToBoxes[LorentzIndex[mu],TraditionalForm]]}]/; Head[x]=!=FCGV;
 
 PlusDistribution /:
 	MakeBoxes[PlusDistribution[ a_ ], TraditionalForm]:=
@@ -1550,15 +1567,15 @@ QuantumField /:
 	MakeBoxes[ QuantumField[FCPartialD[pa_], a_/;Head[a]=!=FCPartialD, lori: (LorentzIndex | ExplicitLorentzIndex| Momentum)[_,_ : 4]...,
 	otherIndices1_/;!MatchQ[Head[otherIndices1],LorentzIndex|ExplicitLorentzIndex|Momentum], otherIndices2___], TraditionalForm]:=
 		If[ {lori}=!={},
-			RowBox[{SubscriptBox["(\[PartialD]", TBox[pa]], SubsuperscriptBox[TBox[a], TBox[lori], TBox[otherIndices1, otherIndices2]],")"}],
-			RowBox[{SubscriptBox["(\[PartialD]", TBox[pa]], SuperscriptBox[TBox[a], TBox[otherIndices1, otherIndices2]],")"}]
+			RowBox[{"(",TBox[FCPartialD[pa]], SubsuperscriptBox[TBox[a], TBox[lori], TBox[otherIndices1, otherIndices2]],")"}],
+			RowBox[{"(",TBox[FCPartialD[pa]], SuperscriptBox[TBox[a], TBox[otherIndices1, otherIndices2]],")"}]
 		];
 
 QuantumField /:
 	MakeBoxes[ QuantumField[FCPartialD[pa_], a_/;Head[a]=!=FCPartialD, lori: (LorentzIndex | ExplicitLorentzIndex| Momentum)[_,_ : 4]...], TraditionalForm]:=
 		If[ {lori}=!={},
-			RowBox[{SubscriptBox["(\[PartialD]", TBox[pa]], SubscriptBox[TBox[a], TBox[lori]],")"}],
-			RowBox[{SubscriptBox["(\[PartialD]", TBox[pa]], TBox[a],")"}]
+			RowBox[{"(",TBox[FCPartialD[pa]], SubscriptBox[TBox[a], TBox[lori]],")"}],
+			RowBox[{"(",TBox[FCPartialD[pa]], TBox[a],")"}]
 		];
 
 

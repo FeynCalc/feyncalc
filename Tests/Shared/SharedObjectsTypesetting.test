@@ -1599,78 +1599,46 @@ RowBox[{FormBox[FormBox[\"mu\", TraditionalForm], TraditionalForm], \
 FormBox[OverscriptBox[FormBox[\"p\", TraditionalForm], \"_\"], \
 TraditionalForm]}], FormBox[FormBox[\"a\", TraditionalForm], \
 TraditionalForm]], \"(\", FormBox[\"q\", TraditionalForm], \")\"}]"},
-{"fcstSharedObjectsTypesetting-ID264",
-"MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], f, \
-LorentzIndex[mu], SUNIndex[a]][q], TraditionalForm]",
-"RowBox[{RowBox[{\"(\", RowBox[{SubscriptBox[\"(\[PartialD]\", \
-FormBox[FormBox[\"f\", TraditionalForm], TraditionalForm]], \
-SubsuperscriptBox[FormBox[\"f\", TraditionalForm], \
-FormBox[FormBox[\"mu\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"a\", TraditionalForm], TraditionalForm]], \")\"}], \
-\")\"}], \"\[InvisibleApplication]\", RowBox[{\"(\", \"q\", \
-\")\"}]}]"},
 {"fcstSharedObjectsTypesetting-ID265",
-"MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], f, \
-ExplicitLorentzIndex[2], SUNIndex[a]][q], TraditionalForm]",
-"RowBox[{RowBox[{\"(\", RowBox[{SubscriptBox[\"(\[PartialD]\", \
-FormBox[FormBox[\"f\", TraditionalForm], TraditionalForm]], \
-SubsuperscriptBox[FormBox[\"f\", TraditionalForm], \
-FormBox[FormBox[\"2\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"a\", TraditionalForm], TraditionalForm]], \")\"}], \
-\")\"}], \"\[InvisibleApplication]\", RowBox[{\"(\", \"q\", \
-\")\"}]}]"},
+"MakeBoxes[\"QuantumField[FCPartialD[LorentzIndex[f]],f,\
+LorentzIndex[mu],SUNIndex[a]][q]\", TraditionalForm]",
+"\"\\\"QuantumField[FCPartialD[LorentzIndex[f]],f,LorentzIndex[mu],\
+SUNIndex[a]][q]\\\"\""},
 {"fcstSharedObjectsTypesetting-ID266",
-"MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], f, \
-LorentzIndex[mu]][q], TraditionalForm]",
-"RowBox[{RowBox[{\"(\", RowBox[{SubscriptBox[\"(\[PartialD]\", \
-FormBox[FormBox[\"f\", TraditionalForm], TraditionalForm]], \
-SubscriptBox[FormBox[\"f\", TraditionalForm], FormBox[FormBox[\"mu\", \
-TraditionalForm], TraditionalForm]], \")\"}], \")\"}], \"\
-\[InvisibleApplication]\", RowBox[{\"(\", \"q\", \")\"}]}]"},
+"MakeBoxes[\"QuantumField[FCPartialD[LorentzIndex[f]],f,\
+ExplicitLorentzIndex[2],SUNIndex[a]][q]\", TraditionalForm]",
+"\"\\\"QuantumField[FCPartialD[LorentzIndex[f]],f,\
+ExplicitLorentzIndex[2],SUNIndex[a]][q]\\\"\""},
 {"fcstSharedObjectsTypesetting-ID267",
-"MakeBoxes[2*QuantumField[FCPartialD[LorentzIndex[f]], f, \
-LorentzIndex[mu], SUNIndex[a]][q], TraditionalForm]",
-"RowBox[{\"2\", \" \", RowBox[{RowBox[{\"(\", \
-RowBox[{SubscriptBox[\"(\[PartialD]\", FormBox[FormBox[\"f\", \
-TraditionalForm], TraditionalForm]], SubsuperscriptBox[FormBox[\"f\", \
-TraditionalForm], FormBox[FormBox[\"mu\", TraditionalForm], \
-TraditionalForm], FormBox[FormBox[\"a\", TraditionalForm], \
-TraditionalForm]], \")\"}], \")\"}], \"\[InvisibleApplication]\", \
-RowBox[{\"(\", \"q\", \")\"}]}]}]"},
+"MakeBoxes[\"QuantumField[FCPartialD[LorentzIndex[f]],f,\
+LorentzIndex[mu]][q]\", TraditionalForm]",
+"\"\\\"QuantumField[FCPartialD[LorentzIndex[f]],f,LorentzIndex[mu]]\
+[q]\\\"\""},
 {"fcstSharedObjectsTypesetting-ID268",
-"MakeBoxes[2*QuantumField[FCPartialD[LorentzIndex[f]], f, \
-ExplicitLorentzIndex[2], SUNIndex[a]][q], TraditionalForm]",
-"RowBox[{\"2\", \" \", RowBox[{RowBox[{\"(\", \
-RowBox[{SubscriptBox[\"(\[PartialD]\", FormBox[FormBox[\"f\", \
-TraditionalForm], TraditionalForm]], SubsuperscriptBox[FormBox[\"f\", \
-TraditionalForm], FormBox[FormBox[\"2\", TraditionalForm], \
-TraditionalForm], FormBox[FormBox[\"a\", TraditionalForm], \
-TraditionalForm]], \")\"}], \")\"}], \"\[InvisibleApplication]\", \
-RowBox[{\"(\", \"q\", \")\"}]}]}]"},
+"MakeBoxes[\"2*QuantumField[FCPartialD[LorentzIndex[f]],f,\
+LorentzIndex[mu],SUNIndex[a]][q]\", TraditionalForm]",
+"\"\\\"2*QuantumField[FCPartialD[LorentzIndex[f]],f,LorentzIndex[\
+mu],SUNIndex[a]][q]\\\"\""},
 {"fcstSharedObjectsTypesetting-ID269",
-"MakeBoxes[2*QuantumField[FCPartialD[LorentzIndex[f]], f, \
-LorentzIndex[mu]][q], TraditionalForm]",
-"RowBox[{\"2\", \" \", RowBox[{RowBox[{\"(\", \
-RowBox[{SubscriptBox[\"(\[PartialD]\", FormBox[FormBox[\"f\", \
-TraditionalForm], TraditionalForm]], SubscriptBox[FormBox[\"f\", \
-TraditionalForm], FormBox[FormBox[\"mu\", TraditionalForm], \
-TraditionalForm]], \")\"}], \")\"}], \"\[InvisibleApplication]\", \
-RowBox[{\"(\", \"q\", \")\"}]}]}]"},
+"MakeBoxes[\"2*QuantumField[FCPartialD[LorentzIndex[f]],f,\
+ExplicitLorentzIndex[2],SUNIndex[a]][q]\", TraditionalForm]",
+"\"\\\"2*QuantumField[FCPartialD[LorentzIndex[f]],f,\
+ExplicitLorentzIndex[2],SUNIndex[a]][q]\\\"\""},
 {"fcstSharedObjectsTypesetting-ID270",
-"MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], f, \
-Momentum[p], SUNIndex[a]], TraditionalForm]",
-"RowBox[{SubscriptBox[\"(\[PartialD]\", FormBox[FormBox[\"f\", \
-TraditionalForm], TraditionalForm]], SubsuperscriptBox[FormBox[\"f\", \
-TraditionalForm], FormBox[OverscriptBox[FormBox[\"p\", \
-TraditionalForm], \"_\"], TraditionalForm], FormBox[FormBox[\"a\", \
-TraditionalForm], TraditionalForm]], \")\"}]"},
+"MakeBoxes[\"2*QuantumField[FCPartialD[LorentzIndex[f]],f,\
+LorentzIndex[mu]][q]\", TraditionalForm]",
+"\"\\\"2*QuantumField[FCPartialD[LorentzIndex[f]],f,LorentzIndex[\
+mu]][q]\\\"\""},
 {"fcstSharedObjectsTypesetting-ID271",
-"MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], f, \
-Momentum[p]], TraditionalForm]",
-"RowBox[{SubscriptBox[\"(\[PartialD]\", FormBox[FormBox[\"f\", \
-TraditionalForm], TraditionalForm]], SubscriptBox[FormBox[\"f\", \
-TraditionalForm], FormBox[OverscriptBox[FormBox[\"p\", \
-TraditionalForm], \"_\"], TraditionalForm]], \")\"}]"},
+"MakeBoxes[\"QuantumField[FCPartialD[LorentzIndex[f]],f,Momentum[p]\
+,SUNIndex[a]]\", TraditionalForm]",
+"\"\\\"QuantumField[FCPartialD[LorentzIndex[f]],f,Momentum[p],\
+SUNIndex[a]]\\\"\""},
+{"fcstSharedObjectsTypesetting-ID272",
+"MakeBoxes[\"QuantumField[FCPartialD[LorentzIndex[f]],f,Momentum[p]\
+]\", TraditionalForm]",
+"\"\\\"QuantumField[FCPartialD[LorentzIndex[f]],f,Momentum[p]]\\\"\
+\""},
 {"fcstSharedObjectsTypesetting-ID272",
 "MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], \
 FCPartialD[LorentzIndex[g]], f, Momentum[p], SUNIndex[a]], \
