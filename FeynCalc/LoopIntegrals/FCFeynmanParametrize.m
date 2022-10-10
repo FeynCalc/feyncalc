@@ -93,11 +93,7 @@ End[]
 
 Begin["`FCFeynmanParametrize`Private`"]
 
-dim::usage="";
 fcfpVerbose::usage="";
-null1::usage="";
-null2::usage="";
-isCartesian::usage="";
 
 Options[FCFeynmanParametrize] = {
 	Assumptions					-> {},
@@ -124,13 +120,13 @@ Options[FCFeynmanParametrize] = {
 FCFeynmanParametrize[expr_, lmoms_List /; ! OptionQ[lmoms], opts:OptionsPattern[]]:=
 	FCFeynmanParametrize[expr, 1, lmoms, opts];
 
-FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ[lmoms], OptionsPattern[]] :=
-	Block[{	res, optFinalSubstitutions, dim, uPoly, fPoly, pows, mat, powsT, propPowers,
+FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmomsRaw_List /; ! OptionQ[lmomsRaw], OptionsPattern[]] :=
+	Block[{	res, optFinalSubstitutions, dim, uPoly, fPoly, pows, mat, powsT, propPowers, lmoms,
 			propPowersHat, propPowersTilde, ppSymbols, ppSymbolsRule,
 			denPowers, zeroPowerProps, numPowers, numVars, zeroDenVars,
 			nM,nLoops,fPow,pref, fpInt, fpPref, optFCReplaceD, vars, optVariavbles,
 			aux, ex, Q, J, tensorPart, tensorRank, optMethod, extraPref, optFeynmanIntegralPrefactor,
-			optEuclidean, inverseMeasure, optNames, outputFCFeynmanPrepare},
+			optEuclidean, inverseMeasure, optNames, outputFCFeynmanPrepare, isCartesian},
 
 		optFinalSubstitutions		= OptionValue[FinalSubstitutions];
 		optFCReplaceD				= OptionValue[FCReplaceD];
@@ -148,8 +144,8 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 		];
 
 		If[	OptionValue[FCI],
-			ex = expr,
-			{ex,optFinalSubstitutions} = FCI[{expr,optFinalSubstitutions}]
+			{ex,lmoms} = {expr,lmomsRaw},
+			{ex,optFinalSubstitutions,lmoms} = FCI[{expr,optFinalSubstitutions,lmomsRaw}]
 		];
 
 		Which[
@@ -167,16 +163,19 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 
 		(*extraPref is just a loop-unrelated prefactor multiplying the integral *)
 		If[	TrueQ[Head[ex]=!=List],
-			{extraPref, ex} = FCProductSplit[ex, Join[{lmoms},{FeynAmpDenominator, Pair, CartesianPair}]],
+			{extraPref, ex} = FCProductSplit[ex, Join[{lmoms},{FeynAmpDenominator, Pair, CartesianPair, GLI}]],
 			extraPref = 1
 		];
 
 		FCPrint[1,"FCFeynmanParametrize: Prefactor in the input: ", extraPref, FCDoControl->fcfpVerbose];
 
-		dim = FCGetDimensions[ex/. {TemporalPair[_,ExplicitLorentzIndex[0]]:>Unique[]}] ;
+		If[	FreeQ[ex,GLI],
+			dim = FCGetDimensions[ex/. {TemporalPair[_,ExplicitLorentzIndex[0]]:>Unique[]}],
+			dim = FCGetDimensions[FCLoopSelectTopology[ex,lmoms]/. {TemporalPair[_,ExplicitLorentzIndex[0]]:>Unique[]}]
+		];
 
 		If[	Length[dim]=!=1,
-			Message[FCFeynmanPrepare::failmsg,"The loop integrals contains momenta in different dimensions."];
+			Message[FCFeynmanParametrize::failmsg,"The loop integrals contains momenta in different dimensions."];
 			Abort[]
 		];
 		dim = First[dim];
@@ -191,8 +190,11 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 
 		outputFCFeynmanPrepare = {uPoly, fPoly, pows, mat, Q, J, tensorPart, tensorRank};
 
+		If[	FreeQ[ex,GLI],
+			nLoops	= Length[lmoms],
+			nLoops = Length[FCLoopSelectTopology[ex,lmoms][[3]]]
+		];
 
-		nLoops	= Length[lmoms];
 		powsT 	= Transpose[pows];
 		nM 		= Total[Last[powsT]];
 
@@ -203,6 +205,12 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 		FCPrint[1,"FCFeynmanParametrize: Number of loops: ", nLoops, FCDoControl->fcfpVerbose];
 		FCPrint[1,"FCFeynmanParametrize: Sum of propagator powers: ", nM, FCDoControl->fcfpVerbose];
 		FCPrint[1,"FCFeynmanParametrize: Tensor part: ", tensorPart, FCDoControl->fcfpVerbose];
+
+		If[	!IntegerQ[nLoops],
+			Message[FCFeynmanParametrize::failmsg,"Failed to determine the number of loops."];
+			Abort[]
+		];
+
 
 		propPowers 	= Last[powsT];
 
@@ -273,16 +281,19 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmoms_List /; ! OptionQ
 					fPow = nM - nLoops dim/2;
 					If[	TrueQ[tensorPart=!=1],
 						(* Tensor integral *)
+						FCPrint[2,"FCFeynmanParametrize: Tensor integral.", FCDoControl->fcfpVerbose];
 						tensorPart = tensorPart /. FCGV["F"] -> fPoly;
 						(* [\prod_{j-1}^N \Gamma(\nu_j)]^{-1} *)
 						pref = extraPref/(Times @@ (Gamma /@ propPowersTilde)),
 
 						(* Scalar integral *)
+						FCPrint[2,"FCFeynmanParametrize: Scalar integral.", FCDoControl->fcfpVerbose];
 						(* \Gamma(N_\nu - L D/2) [\prod_{j-1}^N \Gamma(\nu_j)]^{-1} *)
 						pref = extraPref*Gamma[fPow]/(Times @@ (Gamma /@ propPowersTilde))
 					];
 					fpInt =  Power[uPoly,fPow - dim/2 - tensorRank]/Power[fPoly,fPow]*tensorPart;
 					If[	!isCartesian && !optEuclidean,
+						FCPrint[2,"FCFeynmanParametrize: Minkowskian integral.", FCDoControl->fcfpVerbose];
 						pref = pref*(-1)^nM;
 						inverseMeasure = (I Pi^(dim/2))^nLoops,
 						inverseMeasure = (Pi^(dim/2))^nLoops

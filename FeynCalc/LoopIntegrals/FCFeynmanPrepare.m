@@ -94,6 +94,11 @@ Options[FCFeynmanPrepare] = {
 	TimeConstrained 		-> 3
 };
 
+
+FCFeynmanPrepare[gli_, topos:{__FCTopology}, opts:OptionsPattern[]] :=
+	FCFeynmanPrepare[gli,FCLoopSelectTopology[gli,topos],opts]/;
+		MatchQ[gli, (_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..])];
+
 FCFeynmanPrepare[gli_, topo_FCTopology, opts:OptionsPattern[]] :=
 	Block[{int,optFinalSubstitutions, lmomsHead, lmoms, optLoopMomenta},
 
