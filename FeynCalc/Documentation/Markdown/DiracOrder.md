@@ -85,3 +85,11 @@ DiracSimplify[GAD[\[Mu], \[Nu]] + GAD[\[Nu], \[Mu]], DiracOrder -> True]
 ```
 
 $$2 g^{\mu \nu }$$
+
+Reproduce Eq. 18.128 from [An Introduction to Quantum Field Theory](https://doi.org/10.1201/9780429503559) by M. Peskin and D. Schroeder.
+
+```mathematica
+DiracSimplify[1/2 (GAD[\[Mu], \[Alpha], \[Nu]] + GAD[\[Nu], \[Alpha], \[Mu]]), DiracOrder -> True]
+```
+
+$$\gamma ^{\nu } g^{\alpha \mu }+\gamma ^{\mu } g^{\alpha \nu }-\gamma ^{\alpha } g^{\mu \nu }$$

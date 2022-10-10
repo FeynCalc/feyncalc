@@ -125,6 +125,33 @@ FCFactorOut-> I CH SMP["g_s"]^2]&
 
 
 (* ::Text:: *)
+(*2-quark Feynman rules (unpolarized).*)
+
+
+Lagrangian["oqu"]
+FeynRule[%,{QuantumField[QuarkField][p],QuantumField[AntiQuarkField][q]},
+ZeroMomentumInsertion->False]//Factor
+
+
+?ZeroMomentumInsertion
+
+
+ExpandPartialD[Lagrangian["oqu"]/.OPEm->3]
+
+
+Lagrangian["oqu"]
+FeynRule[%/.OPEm->3,{QuantumField[QuarkField][p],QuantumField[AntiQuarkField][q],
+QuantumField[GaugeField,{\[Mu]},{a}][r]},ZeroMomentumInsertion->True]
+FCReplaceMomenta[%,{r->-p-q}]//ExpandScalarProduct//Expand
+
+
+Lagrangian["oqu"]
+FeynRule[%/.OPEm->4,{QuantumField[QuarkField][p],QuantumField[AntiQuarkField][q],
+QuantumField[GaugeField,{\[Mu]},{a}][r]},ZeroMomentumInsertion->True]
+FCReplaceMomenta[%,{r->-p-q}]//ExpandScalarProduct//Expand
+
+
+(* ::Text:: *)
 (*2-gluon Feynman rules (unpolarized).*)
 
 

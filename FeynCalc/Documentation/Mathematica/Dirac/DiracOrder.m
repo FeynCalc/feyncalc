@@ -75,3 +75,10 @@ DiracSimplify[GAD[\[Mu],\[Nu]]+GAD[\[Nu],\[Mu]]]
 
 
 DiracSimplify[GAD[\[Mu],\[Nu]]+GAD[\[Nu],\[Mu]],DiracOrder->True]
+
+
+(* ::Text:: *)
+(*Reproduce Eq. 18.128 from [An Introduction to Quantum Field Theory](https://doi.org/10.1201/9780429503559) by M. Peskin and D. Schroeder.*)
+
+
+DiracSimplify[1/2(GAD[\[Mu],\[Alpha],\[Nu]]+GAD[\[Nu],\[Alpha],\[Mu]]),DiracOrder->True]

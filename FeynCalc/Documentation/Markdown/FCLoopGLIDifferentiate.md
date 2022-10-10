@@ -1,6 +1,6 @@
 ## FCLoopGLIDifferentiate
 
-`FCLoopGLIDifferentiate[exp , topos, inv]` calculates the partial derivative of GLIs present in `exp` with respect to the scalar quantity `inv`.
+`FCLoopGLIDifferentiate[exp, topos, inv]` calculates the partial derivative of GLIs present in `exp` with respect to the scalar quantity `inv`.
 Here `inv` can be a constant (e.g. mass), a scalar product of some momenta or a 4-vector.
 
 The list topos must contain the topologies describing all of the occurring GLIs.

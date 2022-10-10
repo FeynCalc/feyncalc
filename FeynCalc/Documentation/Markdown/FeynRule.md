@@ -18,7 +18,7 @@ The option `ZeroMomentumInsertion` can be used for twist-2 and higher twist oper
 ?Lagrangian
 ```
 
-![1q4w0yoqha2oe](img/1q4w0yoqha2oe.svg)
+![036itccnlyi3l](img/036itccnlyi3l.svg)
 
 $\phi ^4$ Feynman rule
 
@@ -61,9 +61,9 @@ FCCanonicalizeDummyIndices[% - %%] // Factor
 
 $$-\frac{1}{4} F_{\alpha \beta }^i.F_{\alpha \beta }^i$$
 
-$$i g_s^2 f^{ad\text{FCGV}(\text{si46})} f^{bc\text{FCGV}(\text{si46})} \left(\bar{g}^{\mu \rho } \bar{g}^{\nu \sigma }-\bar{g}^{\mu \nu } \bar{g}^{\rho \sigma }\right)+i g_s^2 f^{ac\text{FCGV}(\text{si46})} f^{bd\text{FCGV}(\text{si46})} \left(\bar{g}^{\mu \sigma } \bar{g}^{\nu \rho }-\bar{g}^{\mu \nu } \bar{g}^{\rho \sigma }\right)+i g_s^2 f^{ab\text{FCGV}(\text{si46})} f^{cd\text{FCGV}(\text{si46})} \left(\bar{g}^{\mu \sigma } \bar{g}^{\nu \rho }-\bar{g}^{\mu \rho } \bar{g}^{\nu \sigma }\right)$$
+$$i g_s^2 f^{ad\text{FCGV}(\text{si49})} f^{bc\text{FCGV}(\text{si49})} \left(\bar{g}^{\mu \rho } \bar{g}^{\nu \sigma }-\bar{g}^{\mu \nu } \bar{g}^{\rho \sigma }\right)+i g_s^2 f^{ac\text{FCGV}(\text{si49})} f^{bd\text{FCGV}(\text{si49})} \left(\bar{g}^{\mu \sigma } \bar{g}^{\nu \rho }-\bar{g}^{\mu \nu } \bar{g}^{\rho \sigma }\right)+i g_s^2 f^{ab\text{FCGV}(\text{si49})} f^{cd\text{FCGV}(\text{si49})} \left(\bar{g}^{\mu \sigma } \bar{g}^{\nu \rho }-\bar{g}^{\mu \rho } \bar{g}^{\nu \sigma }\right)$$
 
-$$-i g_s^2 \left(f^{ad\text{FCGV}(\text{u53})} f^{bc\text{FCGV}(\text{u53})} \left(\bar{g}^{\mu \nu } \bar{g}^{\rho \sigma }-\bar{g}^{\mu \rho } \bar{g}^{\nu \sigma }\right)+f^{ac\text{FCGV}(\text{u53})} f^{bd\text{FCGV}(\text{u53})} \left(\bar{g}^{\mu \nu } \bar{g}^{\rho \sigma }-\bar{g}^{\mu \sigma } \bar{g}^{\nu \rho }\right)+f^{ab\text{FCGV}(\text{u53})} f^{cd\text{FCGV}(\text{u53})} \left(\bar{g}^{\mu \rho } \bar{g}^{\nu \sigma }-\bar{g}^{\mu \sigma } \bar{g}^{\nu \rho }\right)\right)$$
+$$-i g_s^2 \left(f^{ad\text{FCGV}(\text{u56})} f^{bc\text{FCGV}(\text{u56})} \left(\bar{g}^{\mu \nu } \bar{g}^{\rho \sigma }-\bar{g}^{\mu \rho } \bar{g}^{\nu \sigma }\right)+f^{ac\text{FCGV}(\text{u56})} f^{bd\text{FCGV}(\text{u56})} \left(\bar{g}^{\mu \nu } \bar{g}^{\rho \sigma }-\bar{g}^{\mu \sigma } \bar{g}^{\nu \rho }\right)+f^{ab\text{FCGV}(\text{u56})} f^{cd\text{FCGV}(\text{u56})} \left(\bar{g}^{\mu \rho } \bar{g}^{\nu \sigma }-\bar{g}^{\mu \sigma } \bar{g}^{\nu \rho }\right)\right)$$
 
 $$0$$
 
@@ -128,6 +128,56 @@ $$i \;\text{CH} g_s^2 \left(f^{ade} f^{bce} \left(\bar{g}^{ik} \bar{g}^{jl}-\bar
 
 Some OPE-related examples:
 
+2-quark Feynman rules (unpolarized).
+
+```mathematica
+Lagrangian["oqu"]
+FeynRule[%, {QuantumField[QuarkField][p], QuantumField[AntiQuarkField][q]}, 
+   ZeroMomentumInsertion -> False] // Factor
+```
+
+$$i^m \bar{\psi }.\left(\bar{\gamma }\cdot \Delta \right).D_{\Delta }{}^{m-1}.\psi$$
+
+$$-i i^m \left(\bar{\gamma }\cdot \Delta \right).\left(\vec{\partial }_{\Delta }\right){}^{m-1}$$
+
+```mathematica
+?ZeroMomentumInsertion
+```
+
+![1cklte43ogg8m](img/1cklte43ogg8m.svg)
+
+```mathematica
+ExpandPartialD[Lagrangian["oqu"] /. OPEm -> 3]
+```
+
+$$i g_s^2 T^{\text{c152}}.T^{\text{c153}}.\left(\bar{\gamma }\cdot \Delta \right).\bar{\psi }.A_{\Delta }^{\text{c152}}.A_{\Delta }^{\text{c153}}.\psi -g_s T^{\text{c152}}.\left(\bar{\gamma }\cdot \Delta \right).\bar{\psi }.A_{\Delta }^{\text{c152}}.\left(\partial _{\Delta }\psi \right)-g_s T^{\text{c153}}.\left(\bar{\gamma }\cdot \Delta \right).\bar{\psi }.A_{\Delta }^{\text{c153}}.\left(\partial _{\Delta }\psi \right)-g_s T^{\text{c153}}.\left(\bar{\gamma }\cdot \Delta \right).\bar{\psi }.\left(\partial _{\Delta }A_{\Delta }^{\text{c153}}\right).\psi -i \left(\bar{\gamma }\cdot \Delta \right).\bar{\psi }.\left(\partial _{\Delta }\partial _{\Delta }\psi \right)$$
+
+```mathematica
+Lagrangian["oqu"]
+FeynRule[% /. OPEm -> 3, {QuantumField[QuarkField][p], QuantumField[AntiQuarkField][q], 
+   QuantumField[GaugeField, {\[Mu]}, {a}][r]}, ZeroMomentumInsertion -> True]
+FCReplaceMomenta[%, {r -> -p - q}] // ExpandScalarProduct // Expand
+```
+
+$$i^m \bar{\psi }.\left(\bar{\gamma }\cdot \Delta \right).D_{\Delta }{}^{m-1}.\psi$$
+
+$$T^a \Delta ^{\mu } g_s \left(-\left(\bar{\gamma }\cdot \Delta \right)\right) \left(2 \left(\Delta \cdot \overline{q}\right)+\Delta \cdot \overline{r}\right)$$
+
+$$T^a \Delta ^{\mu } g_s \bar{\gamma }\cdot \Delta  \left(\Delta \cdot \overline{p}\right)-T^a \Delta ^{\mu } g_s \bar{\gamma }\cdot \Delta  \left(\Delta \cdot \overline{q}\right)$$
+
+```mathematica
+Lagrangian["oqu"]
+FeynRule[% /. OPEm -> 4, {QuantumField[QuarkField][p], QuantumField[AntiQuarkField][q], 
+   QuantumField[GaugeField, {\[Mu]}, {a}][r]}, ZeroMomentumInsertion -> True]
+FCReplaceMomenta[%, {r -> -p - q}] // ExpandScalarProduct // Expand
+```
+
+$$i^m \bar{\psi }.\left(\bar{\gamma }\cdot \Delta \right).D_{\Delta }{}^{m-1}.\psi$$
+
+$$T^a \Delta ^{\mu } g_s \bar{\gamma }\cdot \Delta  \left(3 (\Delta \cdot \overline{q})^2+(\Delta \cdot \overline{r})^2+3 \left(\Delta \cdot \overline{q}\right) \left(\Delta \cdot \overline{r}\right)\right)$$
+
+$$T^a \Delta ^{\mu } g_s \bar{\gamma }\cdot \Delta  (\Delta \cdot \overline{p})^2+T^a \Delta ^{\mu } g_s \bar{\gamma }\cdot \Delta  (\Delta \cdot \overline{q})^2-T^a \Delta ^{\mu } g_s \bar{\gamma }\cdot \Delta  \left(\Delta \cdot \overline{p}\right) \left(\Delta \cdot \overline{q}\right)$$
+
 2-gluon Feynman rules (unpolarized).
 
 ```mathematica
@@ -152,7 +202,7 @@ Factor2[Calc[% /. p -> -q, Assumptions -> Automatic]]
 
 $$\frac{1}{2} i^m \bar{\epsilon }^{\text{FCGV}(\alpha )\text{FCGV}(\beta )\text{FCGV}(\gamma )\Delta }.F_{\text{FCGV}(\beta )\text{FCGV}(\gamma )}^{\text{FCGV}(\text{a})}.\left(D_{\Delta }^{\text{FCGV}(\text{a})\text{FCGV}(\text{b})}\right){}^{m-2}.F_{\text{FCGV}(\alpha )\Delta }^{\text{FCGV}(\text{b})}$$
 
-$$0$$
+$$i^{m+1} \delta ^{ab} \left(\vec{\partial }_{\Delta }\right){}^{m-2} \left(\Delta ^{\mu } \bar{\epsilon }^{\nu \Delta \overline{p}\overline{q}}-\Delta ^{\nu } \bar{\epsilon }^{\mu \Delta \overline{p}\overline{q}}-\left(\Delta \cdot \overline{p}\right) \bar{\epsilon }^{\mu \nu \Delta \overline{q}}+\left(\Delta \cdot \overline{q}\right) \bar{\epsilon }^{\mu \nu \Delta \overline{p}}\right)$$
 
 $$0$$
 
@@ -176,11 +226,15 @@ frule = FeynRule[%, {QuantumField[QuarkField][p], QuantumField[AntiQuarkField][q
 
 $$i^m \bar{\psi }.\left(\bar{\gamma }\cdot \Delta \right).D_{\Delta }{}^{m-1}.\psi$$
 
+![1utkt5lswqq9j](img/1utkt5lswqq9j.svg)
+
+$$\text{\$Aborted}$$
+
 ```mathematica
 LeafCount[frule]
 ```
 
-$$39364$$
+$$1$$
 
 ```mathematica
 Twist2QuarkOperator[{p}, {q}, {r, \[Mu], a}, {s, \[Nu], b}, Polarization -> 0]
