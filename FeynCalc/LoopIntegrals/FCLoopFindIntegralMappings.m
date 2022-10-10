@@ -94,11 +94,13 @@ FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 
 		If[	lmomsRaw==={FCGV["dummy"]},
 			lmoms=Sequence[],
-			lmoms=lmomsRaw
+			lmoms=Flatten[lmomsRaw]
 		];
 
 		If[	MatchQ[exprRaw,{(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..}],
-			expr = Union[Join[exprRaw,optPreferredIntegrals]],
+			expr = Union[Join[exprRaw,optPreferredIntegrals]];
+			(*Make sure that we have all the topologies needed *)
+			lmoms = FCLoopSelectTopology[expr,lmoms],
 			expr = exprRaw
 		];
 
