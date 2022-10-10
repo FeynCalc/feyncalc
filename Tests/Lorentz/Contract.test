@@ -167,7 +167,9 @@ ExpandScalarProduct -> False, FCE -> True]",
 (2*SP[P, p1]*SP[P, p3 - p4]*SP[p1, p2]*SP[p2, p3 - p4])/M^2 + (2*SP[P, p1]*SP[P, p2]*SP[p1, p3 - p4]*SP[p2, p3 - p4])/M^2 + 2*SP[p1, p2]*SP[p1, p3 - p4]*SP[p2, p3 - p4] -
 (2*SP[P, P]*SP[p1, p2]*SP[p1, p3 - p4]*SP[p2, p3 - p4])/M^2 - (SP[P, p1]^2*SP[p2, p3 - p4]^2)/M^2 - SP[p1, p1]*SP[p2, p3 - p4]^2 + (SP[P, P]*SP[p1, p1]*SP[p2, p3 - p4]^2)/M^2 + (SP[P, p2]^2*SP[p1, p1]*SP[p3 - p4, p3 - p4])/M^2 -
 (2*SP[P, p1]*SP[P, p2]*SP[p1, p2]*SP[p3 - p4, p3 - p4])/M^2 - SP[p1, p2]^2*SP[p3 - p4, p3 - p4] + (SP[P, P]*SP[p1, p2]^2*SP[p3 - p4, p3 - p4])/M^2 + (SP[P, p1]^2*SP[p2, p2]*SP[p3 - p4, p3 - p4])/M^2 +
-SP[p1, p1]*SP[p2, p2]*SP[p3 - p4, p3 - p4] - (SP[P, P]*SP[p1, p1]*SP[p2, p2]*SP[p3 - p4, p3 - p4])/M^2"}
+SP[p1, p1]*SP[p2, p2]*SP[p3 - p4, p3 - p4] - (SP[P, P]*SP[p1, p1]*SP[p2, p2]*SP[p3 - p4, p3 - p4])/M^2"},
+{"fcstContractContractionsIn4dims-ID35","Contract[P (FV[p, mu] SP[k, p] + FV[k, mu]) . (FV[k, mu] -
+FV[p, mu] SP[k, p]), FCE -> True]","P*(SP[k, k] - SP[k, p]^2*SP[p, p])"}
 };
 
 Tests`Lorentz`fcstContractDDims = {
