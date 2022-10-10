@@ -24,6 +24,10 @@ PartialDRelations::usage =
 "PartialDRelations is an option for ExpandPartialD. It is a list of rules
 applied by ExpandPartialD at the end.";
 
+ExpandPartialD::failmsg =
+"Error! ExpandPartialD has encountered a fatal problem and must abort the computation. \
+The problem reads: `1`"
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -92,7 +96,8 @@ internalExpand[x_Plus, dot_] :=
 
 internalExpand[x_, dot_] :=
 	Block[{res},
-		If[	FreeQ2[x, {FCPartialD, LeftPartialD, RightPartialD, LeftRightPartialD, FieldStrength, QuantumField}],
+		If[	FreeQ2[x, {QuantumField, FieldStrength, FCPartialD, LeftPartialD, RightPartialD, LeftRightPartialD, LeftRightPartialD2,
+			LeftNabladD, RightNablaD, LeftRightNablaD, LeftRightNablaD2}],
 			Return[x]
 		];
 
@@ -270,6 +275,11 @@ qfe[dot_, x_] :=
 
 		aux = ExplicitPartialD[aux];
 		FCPrint[4,"ExpandPartialD: qfe: After ExplicitPartialD: ", aux, FCDoControl->epdVerbose];
+
+		If[	!FreeQ2[aux,{LeftNablaD,RightNablaD,LeftRightPartialD,LeftRightPartialD2,LeftRightNablaD,LeftRightNablaD2}],
+			Message[ExpandPartialD::failmsg,"Failed to rewrite all partial derivatives in terms of RightPartialD and LeftPartialD"];
+			Abort[]
+		];
 
 		(*TODO Must AVOID NESTED DOTS!!!!!!!!!*)
 		aux = aux /. dot -> qf1;

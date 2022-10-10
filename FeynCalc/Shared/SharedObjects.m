@@ -343,6 +343,22 @@ to the left and right.
 ExplicitPartialD[LeftRightPartialD2[mu]] gives (RightPartialD[mu] +
 LeftPartialD[mu]).";
 
+LeftNablaD::usage =
+"LeftNablaD[i] denotes $\\overleftarrow{\\nabla}_{i}$ acting to the left.";
+
+LeftRightNablaD::usage =
+"LeftRightNablaD[i] denotes $\\overleftrightarrow {\\nabla}_{i}$, acting to the
+left and right.
+
+ExplicitPartialD[LeftRightNablaD[i]] gives 1/2 (RightNablaD[i] -
+LeftNablaD[i]).";
+
+LeftRightNablaD2::usage =
+"LeftRightNablaD2[mu] denotes $\\overleftrightarrow{\\nabla }_{i}$, acting to the
+left and right.
+
+ExplicitPartialD[LeftRightNablaD2[mu]] gives (RightNablaD[i] + LeftNablaD[i]).";
+
 Li2::usage =
 "Li2 is an abbreviation for the dilogarithm function, i.e. Li2 = PolyLog[2,
 #]&.";
@@ -499,6 +515,9 @@ no functional properties. Only typesetting rules are attached.";
 
 RightPartialD::usage =
 "RightPartialD[mu] denotes $\\partial _{\\mu }$, acting to the right.";
+
+RightNablaD::usage =
+"RightNablaD[i] denotes $\\nabla _{i}$, acting to the right.";
 
 ScaleMu::usage =
 "ScaleMu is the mass scale used for dimensional regularization of loop
@@ -1069,10 +1088,15 @@ DeclareNonCommutative[GSE];
 DeclareNonCommutative[LeftPartialD];
 DeclareNonCommutative[LeftRightPartialD];
 DeclareNonCommutative[LeftRightPartialD2];
+DeclareNonCommutative[LeftNablaD];
+DeclareNonCommutative[LeftRightNablaD];
+DeclareNonCommutative[LeftRightNablaD2];
+
 DeclareNonCommutative[FCPartialD];
 DeclareNonCommutative[OPESum];
 DeclareNonCommutative[QuantumField];
 DeclareNonCommutative[RightPartialD];
+DeclareNonCommutative[RightNablaD];
 DeclareNonCommutative[Spinor];
 DeclareNonCommutative[SpinorU];
 DeclareNonCommutative[SpinorUBar];
@@ -1738,6 +1762,14 @@ LC[x___]/; (Length[{x}] > 4) && (FCPatternFreeQ[{x}]) :=
 LCD[x___]/; (Length[{x}] > 4) && (FCPatternFreeQ[{x}]) :=
 	Message[LCD::argrx, "LCD["<>ToString[{x}]<>"]", Length[{x}], 4];
 
+LeftNablaD[x__] :=
+	LeftNablaD @@ (CartesianIndex /@ {x}) /;FreeQ2[{x},
+	{LorentzIndex, ExplicitLorentzIndex, CartesianIndex, Momentum, CartesianMomentum, OPEDelta, RowBox,
+	Pattern, Blank}] && (Union[{x}]=!={1});
+
+LeftNablaD[x_, y__]/; MatchQ[{x,y},{(__ExplicitLorentzIndex | __CartesianIndex | __CartesianMomentum)}] :=
+	DOT @@ Map[LeftNablaD, {x, y}];
+
 LeftPartialD[x__] :=
 	LeftPartialD @@ (LorentzIndex /@ {x}) /;FreeQ2[{x},
 	{LorentzIndex, ExplicitLorentzIndex, CartesianIndex, Momentum, CartesianMomentum, OPEDelta, RowBox,
@@ -1751,7 +1783,6 @@ LeftPartialD[c:OPEDelta..] :=
 
 LeftPartialD[x_, y__]/; MatchQ[{x,y},{(__LorentzIndex | __ExplicitLorentzIndex | __CartesianIndex | __Momentum | __CartesianMomentum)}] :=
 	DOT @@ Map[LeftPartialD, {x, y}];
-
 
 LeftPartialD[r1__, {i_, x_} ,r2__]:=
 	DOT[LeftPartialD[r1], LeftPartialD[{i, x}], LeftPartialD[r2]]/;
@@ -1769,6 +1800,23 @@ LeftPartialD[r__, {i_, x_}]:=
 	is not able to convert this into rules. But I also don't want
 	WWB to complain about unused variables here. So... *)
 ToExpression["Commutator[RightPartialD[x_], LeftPartialD[y_]] = 0;"];
+
+LeftRightNablaD[xx__] :=
+	LeftRightNablaD@@ (CartesianIndex /@ {xx}) /;
+	FreeQ2[{xx}, {LorentzIndex, ExplicitLorentzIndex, CartesianIndex,
+		Momentum, CartesianMomentum, OPEDelta, RowBox, Pattern, Blank}] && (Union[{xx}]=!={1});
+
+LeftRightNablaD[x_, y__]/; MatchQ[{x,y},{(__ExplicitLorentzIndex | __CartesianIndex | __CartesianMomentum)}] :=
+	DOT @@ Map[LeftRightNablaD, {x, y}]
+
+LeftRightNablaD2[xx__] :=
+	LeftRightNablaD2@@ (CartesianIndex /@ {xx}) /;
+	FreeQ2[{xx}, {LorentzIndex, ExplicitLorentzIndex, CartesianIndex,
+		Momentum, CartesianMomentum, OPEDelta, RowBox, Pattern, Blank}] && (Union[{xx}]=!={1});
+
+LeftRightNablaD2[x_, y__]/; MatchQ[{x,y},{(__ExplicitLorentzIndex | __CartesianIndex | __CartesianMomentum)}] :=
+	DOT @@ Map[LeftRightNablaD2, {x, y}];
+
 
 LeftRightPartialD[xx__] :=
 	LeftRightPartialD@@ (LorentzIndex /@ {xx}) /;
@@ -2007,12 +2055,6 @@ Pair[Momentum[q_, dim_Symbol], CartesianMomentum[p_, dim_Symbol-4]]:=
 Pair[Momentum[q_,_Symbol], CartesianMomentum[p_]]:=
 	CartesianPair[CartesianMomentum[q], CartesianMomentum[p]];
 
-(*
-FCPartialD[x__] :=
-	FCPartialD @@ (LorentzIndex /@ {x}) /;FreeQ2[{x},
-	{LorentzIndex, ExplicitLorentzIndex, CartesianIndex, Momentum, CartesianMomentum, OPEDelta, RowBox,
-	Pattern, Blank}] && (Union[{x}]=!={1});
-*)
 FCPartialD[(1)..] =
 	1;
 
@@ -2076,6 +2118,15 @@ QuantumField[f___,g_/;Head[g]=!=List,{lilo___},{suli___}] :=
 
 QuantumField[f1_QuantumField] :=
 	f1;
+
+RightNablaD[x__] :=
+	RightNablaD @@ (CartesianIndex /@ {x}) /;FreeQ2[{x},
+	{LorentzIndex, ExplicitLorentzIndex, CartesianIndex, Momentum, CartesianMomentum, OPEDelta, RowBox,
+	Pattern, Blank}] && (Union[{x}]=!={1});
+
+
+RightNablaD[x_, y__]/; MatchQ[{x,y},{(__ExplicitLorentzIndex | __CartesianIndex | __CartesianMomentum)}] :=
+	DOT @@ Map[RightNablaD, {x, y}];
 
 RightPartialD[x__] :=
 	RightPartialD @@ (LorentzIndex /@ {x}) /;FreeQ2[{x},

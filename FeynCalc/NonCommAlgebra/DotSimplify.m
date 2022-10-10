@@ -261,14 +261,14 @@ DotSimplify[expr_, OptionsPattern[]] :=
 			cotorules[a__List] :=
 				(
 				(*cotorules[a] =*)
-					Select[Map[ruleCommutator,	a /. (h:LeftPartialD|RightPartialD|FCPartialD|LeftRightPartialD|LeftRightPartialD2) -> hold[h]
+					Select[Map[ruleCommutator,	a /. (h:FCPartialD|LeftPartialD|RightPartialD|LeftRightPartialD|LeftRightPartialD2|LeftNablaD|RightNablaD|LeftRightNablaD|LeftRightNablaD2) -> hold[h]
 						/. Commutator -> commm /. HoldPattern :> Identity /. RuleDelayed -> List], FreeQ[#, ruleCommutator]&]
 				)/; a=!={};
 
 			actorules[{}] = {};
 			actorules[a__List] :=
 				(
-				(*actorules[a] = *)Select[Map[ruleAntiCommutator,	a /. (h:LeftPartialD|RightPartialD|FCPartialD|LeftRightPartialD|LeftRightPartialD2) -> hold[h]
+				(*actorules[a] = *)Select[Map[ruleAntiCommutator,	a /. (h:FCPartialD|LeftPartialD|RightPartialD|LeftRightPartialD|LeftRightPartialD2|LeftNablaD|RightNablaD|LeftRightNablaD|LeftRightNablaD2) -> hold[h]
 					/. AntiCommutator -> acommm /. HoldPattern :> Identity /. RuleDelayed -> List], FreeQ[#, ruleAntiCommutator]&]
 				)/; a=!={};
 

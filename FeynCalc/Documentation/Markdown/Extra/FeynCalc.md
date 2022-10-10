@@ -37,7 +37,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FUNCTION](../FUNCTION.md) - declaration of functions for [Write2](../Write2.md)
 - [DCHN](../DCHN.md), [DiracChain](../DiracChain.md) - Dirac chain with explicit open Dirac indices
 - [FeynAmp](../FeynAmp.md), [FeynAmpList](../FeynAmpList.md) - Feynman amplitudes
-- [FCPartialD](../FCPartialD.md), [LeftPartialD](../LeftPartialD.md), [LeftRightPartialD](../LeftRightPartialD.md), [LeftRightPartialD2](../LeftRightPartialD2.md), [RightPartialD](../RightPartialD.md) - partial derivatives acting on operators
+- [FCPartialD](../FCPartialD.md), [LeftNablaD](../LeftNablaD.md), [LeftRightNablaD](../LeftRightNablaD.md), [LeftRightNablaD2](../LeftRightNablaD2.md), [LeftPartialD](../LeftNablaD.md), [LeftRightPartialD](../LeftRightPartialD.md), [LeftRightPartialD2](../LeftRightNablaD2.md), [RightNablaD](../RightNablaD.md), [RightPartialD](../RightPartialD.md) - partial derivatives acting on operators
 - [FCTopology](../FCTopology.md) - representation of a loop integral family topology
 - [FV](../FV.md), [FVD](../FVD.md), [FVE](../FVE.md) - Minkowskian $4$-vectors
 - [GaugeField](../GaugeField.md) - name of a gauge field

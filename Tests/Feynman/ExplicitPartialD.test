@@ -33,5 +33,32 @@ RightPartialD[Momentum[OPEDelta]])/2"},
 RightPartialD[Momentum[OPEDelta]])^4"},
 {"fcstExplicitPartialD-ID5",
 "FCE[ExplicitPartialD[LeftRightPartialD[CartesianIndex[i]]]]",
-"(-LeftPartialD[CartesianIndex[i]] + RightPartialD[CartesianIndex[i]])/2"}
+"(-LeftPartialD[CartesianIndex[i]] + RightPartialD[CartesianIndex[i]])/2"},
+{"fcstExplicitPartialD-ID6", "ExplicitPartialD[RightNablaD[i]]",
+"-RightPartialD[CartesianIndex[i]]"},
+{"fcstExplicitPartialD-ID7", "ExplicitPartialD[LeftNablaD[i]]",
+"-LeftPartialD[CartesianIndex[i]]"},
+{"fcstExplicitPartialD-ID8", "ExplicitPartialD[LeftRightNablaD[i]]",
+	"(LeftPartialD[CartesianIndex[i]] - \
+RightPartialD[CartesianIndex[i]])/2"},
+{"fcstExplicitPartialD-ID9",
+"ExplicitPartialD[LeftRightNablaD2[i]]",
+"-LeftPartialD[CartesianIndex[i]] - \
+RightPartialD[CartesianIndex[i]]"},
+{"fcstExplicitPartialD-ID10",
+"ExplicitPartialD[QuantumField[X].RightNablaD[i].QuantumField[Y]]",
+	"QuantumField[X] . (-RightPartialD[CartesianIndex[i]]) . \
+QuantumField[Y]"},
+{"fcstExplicitPartialD-ID11",
+"ExplicitPartialD[QuantumField[X].LeftNablaD[i].QuantumField[Y]]",
+"QuantumField[X] . (-LeftPartialD[CartesianIndex[i]]) . \
+QuantumField[Y]"},
+{"fcstExplicitPartialD-ID12",
+"ExplicitPartialD[QuantumField[X].LeftRightNablaD[i].QuantumField[\
+Y]]", "QuantumField[X] . ((LeftPartialD[CartesianIndex[i]] - \
+RightPartialD[CartesianIndex[i]])/2) . QuantumField[Y]"},
+{"fcstExplicitPartialD-ID13",
+"ExplicitPartialD[QuantumField[X].LeftRightNablaD2[i].QuantumField[\
+Y]]", "QuantumField[X] . (-LeftPartialD[CartesianIndex[i]] - \
+RightPartialD[CartesianIndex[i]]) . QuantumField[Y]"}
 });

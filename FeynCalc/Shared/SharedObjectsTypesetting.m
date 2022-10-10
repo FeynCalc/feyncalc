@@ -1202,6 +1202,22 @@ LeftRightPartialD2 /:
 	MakeBoxes[LeftRightPartialD2[x_], TraditionalForm]:=
 		ToBoxes[LeftRightPartialD[x],TraditionalForm];
 
+LeftNablaD /:
+	MakeBoxes[LeftNablaD[x_], TraditionalForm]:=
+		SuperscriptBox[OverscriptBox["\[Del]",
+		"\[LeftArrow]"], TBox[x]];
+
+LeftRightNablaD /:
+	MakeBoxes[LeftRightNablaD[x_] , TraditionalForm]:=
+		SubscriptBox[OverscriptBox["\[Del]",
+		"\[LeftRightArrow]"], TBox[x]];
+
+LeftRightNablaD2 /:
+	MakeBoxes[LeftRightNablaD2[x_], TraditionalForm]:=
+		ToBoxes[LeftRightNablaD[x],TraditionalForm];
+
+
+
 LorentzIndex /:
 	MakeBoxes[ LorentzIndex[p_, ___], TraditionalForm]:=
 		ToBoxes[p,TraditionalForm];
@@ -1593,6 +1609,13 @@ QuarkFieldPsiDagger /:
 
 QuarkFieldChiDagger /:
 	MakeBoxes[QuarkFieldChiDagger, TraditionalForm]:= SuperscriptBox["\[Chi]","\[Dagger]"];
+
+
+RightNablaD /:
+	MakeBoxes[RightNablaD[x_] ,TraditionalForm]:=
+		SuperscriptBox[RowBox[{OverscriptBox["\[Del]",
+		"\[RightArrow]"]}], TBox[x]];
+
 
 RightPartialD /:
 	MakeBoxes[RightPartialD[x_ ^n_],TraditionalForm]:=

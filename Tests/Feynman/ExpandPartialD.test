@@ -471,5 +471,20 @@ vecA, CartesianIndex[j]] . QuantumField[FCPartialD[CartesianIndex[k]], QuarkFiel
 Eps[CartesianIndex[i], CartesianIndex[j], CartesianIndex[k]] + (I/4)*QuantumField[QuarkFieldPsiDagger] .
 PauliSigma[CartesianIndex[i]] . QuantumField[FCPartialD[CartesianIndex[j]],
 FCPartialD[ExplicitLorentzIndex[0]], vecA, CartesianIndex[k]] . QuantumField[QuarkFieldPsi]*
-Eps[CartesianIndex[i], CartesianIndex[j], CartesianIndex[k]]"}
+Eps[CartesianIndex[i], CartesianIndex[j], CartesianIndex[k]]"},
+{"fcstExpandPartialD-ID54",
+"ExpandPartialD[RightNablaD[i] . QuantumField[A,LorentzIndex[mu] \
+]. QuantumField[A,LorentzIndex[nu]]]",
+"-QuantumField[A, LorentzIndex[mu]] . \
+QuantumField[FCPartialD[CartesianIndex[i]], A, LorentzIndex[nu]] - \
+QuantumField[FCPartialD[CartesianIndex[i]], A, LorentzIndex[mu]] . \
+QuantumField[A, LorentzIndex[nu]]"},
+{"fcstExpandPartialD-ID55",
+"ExpandPartialD[LeftRightNablaD[i] . \
+QuantumField[A,LorentzIndex[nu]]]",
+"(LeftPartialD[CartesianIndex[i]] . QuantumField[A, \
+LorentzIndex[nu]] - QuantumField[FCPartialD[CartesianIndex[i]], A, \
+LorentzIndex[nu]])/2"},
+{"fcstExpandPartialD-ID56",
+"ExpandPartialD[CLC[i,j,k] RightNablaD[i,j,k]]", "0"}
 });
