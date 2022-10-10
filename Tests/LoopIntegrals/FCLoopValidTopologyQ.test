@@ -54,5 +54,23 @@ asyR1prop2Ltopo01013X11111N1, {-FeynAmpDenominator[
 	0, {1, 1}]], -FeynAmpDenominator[
 	StandardPropagatorDenominator[
 	0, -Pair[Momentum[p1, D], Momentum[q, D]], 0, {1, 1}]]}, {p1,
+p3}, {q}, {Pair[Momentum[q, D], Momentum[q, D]] -> mb^2}, {}]]", "True"},
+{"fcstFCLoopValidTopologyQ-ID9",
+"FCLoopValidTopologyQ[
+FCTopology[
+asyR1prop2Ltopo01013X11111N1, {c1 FeynAmpDenominator[
+	StandardPropagatorDenominator[-Momentum[p3, D], 0, 0, {1, 1}]],
+c2 FeynAmpDenominator[
+	StandardPropagatorDenominator[-Momentum[p1, D],
+	0, -mg^2, {1, 1}]],
+c3 FeynAmpDenominator[
+	StandardPropagatorDenominator[-Momentum[p3, D],
+	2*Pair[Momentum[p3, D], Momentum[q, D]], 0, {1, 1}]],
+c4 FeynAmpDenominator[
+	StandardPropagatorDenominator[
+	0, -Pair[Momentum[p1, D], Momentum[p3, D]], 0, {1, 1}]],
+c5 FeynAmpDenominator[
+	StandardPropagatorDenominator[
+	0, -Pair[Momentum[p1, D], Momentum[q, D]], 0, {1, 1}]]}, {p1,
 p3}, {q}, {Pair[Momentum[q, D], Momentum[q, D]] -> mb^2}, {}]]", "True"}
 });
