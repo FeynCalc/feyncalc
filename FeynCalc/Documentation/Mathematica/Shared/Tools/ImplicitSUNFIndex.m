@@ -19,10 +19,6 @@
 (*The `ImplicitSUNFIndex` property becomes relevant when simplifying  noncommutative products involving `QuantumField`s via `ExpandPartialD`, `DotSimplify`.*)
 
 
-(* ::Text:: *)
-(**)
-
-
 (* ::Subsection:: *)
 (*See also*)
 

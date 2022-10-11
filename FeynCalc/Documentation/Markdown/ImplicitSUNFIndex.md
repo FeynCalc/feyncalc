@@ -6,8 +6,6 @@ This information can be supplied e.g. via `DataType[QuarkField, ImplicitSUNFInde
 
 The `ImplicitSUNFIndex` property becomes relevant when simplifying  noncommutative products involving `QuantumField`s via `ExpandPartialD`, `DotSimplify`.
 
-
-
 ### See also
 
 [Overview](Extra/FeynCalc.md), [DataType](DataType.md), [ImplicitDiracIndex](ImplicitDiracIndex.md), [ImplicitPauliIndex](ImplicitPauliIndex.md)

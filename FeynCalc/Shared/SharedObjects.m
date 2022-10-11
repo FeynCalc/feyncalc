@@ -129,7 +129,13 @@ a and b must have head DiracGamma, GA or GS. Only antisymmetry is implemented.";
 
 Eps::usage =
 "Eps[a, b, c, d] is the head of the totally antisymmetric $\\epsilon$
-(Levi-Civita) tensor. The a,b, ... may have head LorentzIndex or Momentum.";
+(Levi-Civita) tensor. The a,b, ... may have head LorentzIndex or Momentum.
+
+When some indices of a Levi-Civita-tensor are contracted with 4-vectors,
+FeynCalc suppresses explicit dummy indices by putting those vectors into the
+corresponding index slots. For example,  $\\varepsilon^{p_1 p_2 p_3 p_4}$
+(accessible via LC[][p1,p2,p3,p4]) correspond to $\\varepsilon_{\\mu \\nu \\rho
+\\sigma} p_1^\\mu p_2^\\nu p_3^\\rho p_4^\\sigma$.";
 
 Epsilon::usage =
 "Epsilon is $(n-4)$, where $n$ is the space-time dimension.
@@ -316,14 +322,26 @@ LC::usage =
 applying FeynCalcInternal.
 
 LC[m,...][p, ...] evaluates to 4-dimensional $\\epsilon ^{m \\ldots  \\mu 
-\\ldots}p_{\\mu  \\ldots}$ applying FeynCalcInternal.";
+\\ldots}p_{\\mu  \\ldots}$ applying FeynCalcInternal.
+
+When some indices of a Levi-Civita-tensor are contracted with 4-vectors,
+FeynCalc suppresses explicit dummy indices by putting those vectors into the
+corresponding index slots. For example,  $\\varepsilon^{p_1 p_2 p_3 p_4}$
+(accessible via LC[][p1,p2,p3,p4]) correspond to $\\varepsilon_{\\mu \\nu \\rho
+\\sigma} p_1^\\mu p_2^\\nu p_3^\\rho p_4^\\sigma$.";
 
 LCD::usage =
 "LCD[m, n, r, s] evaluates to $D$-dimensional $\\varepsilon^{m n r s}$ by virtue
 of applying FeynCalcInternal.
 
 LCD[m,...][p, ...] evaluates to $D$-dimensional $\\epsilon ^{m \\ldots  \\mu 
-\\ldots}p_{\\mu  \\ldots}$ applying FeynCalcInternal.";
+\\ldots}p_{\\mu  \\ldots}$ applying FeynCalcInternal.
+
+When some indices of a Levi-Civita-tensor are contracted with 4-vectors,
+FeynCalc suppresses explicit dummy indices by putting those vectors into the
+corresponding index slots. For example,  $\\varepsilon^{p_1 p_2 p_3 p_4}$
+(accessible via LCD[][p1,p2,p3,p4]) correspond to $\\varepsilon_{\\mu \\nu \\rho
+\\sigma} p_1^\\mu p_2^\\nu p_3^\\rho p_4^\\sigma$.";
 
 LeftPartialD::usage =
 "LeftPartialD[mu] denotes $\\overleftarrow{\\partial }_{\\mu }$ acting to the
@@ -883,14 +901,26 @@ CLC::usage =
 CartesianIndex[r]] applying FeynCalcInternal.
 
 CLC[m,...][p, ...] evaluates to Eps[CartesianIndex[m], ...,
-CartesianMomentum[p], ...] applying FeynCalcInternal.";
+CartesianMomentum[p], ...] applying FeynCalcInternal.
+
+When some indices of a Levi-Civita-tensor are contracted with 3-vectors,
+FeynCalc suppresses explicit dummy indices by putting those vectors into the
+corresponding index slots. For example,  $\\varepsilon^{p_1 p_2 p_3}$
+(accessible via CLC[][p1,p2,p3]) correspond to $\\varepsilon^{i j k} p_1^i
+p_2^j p_3^k$.";
 
 CLCD::usage =
 "CLCD[m, n, r]  evaluates to Eps[CartesianIndex[m, D-1], CartesianIndex[n,
 D-1], CartesianIndex[r,D-1]] applying FeynCalcInternal.
 
 CLC[m,...][p, ...] evaluates to Eps[CartesianIndex[m, D-1], ...,
-CartesianMomentum[p, D-1], ...] applying FeynCalcInternal.";
+CartesianMomentum[p, D-1], ...] applying FeynCalcInternal.
+
+When some indices of a Levi-Civita-tensor are contracted with 3-vectors,
+FeynCalc suppresses explicit dummy indices by putting those vectors into the
+corresponding index slots. For example,  $\\varepsilon^{p_1 p_2 p_3}$
+(accessible via CLCD[][p1,p2,p3]) correspond to $\\varepsilon^{i j k} p_1^i
+p_2^j p_3^k$.";
 
 TGA::usage =
 "TGA[]  can be used as input for $\\gamma^0$ in $4$ dimensions and is

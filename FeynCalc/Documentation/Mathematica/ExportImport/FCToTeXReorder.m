@@ -70,7 +70,7 @@ exp=((L2*(-5 + nc)*(1 + nc)*(-32*nc - 32*nc^2))/nc^3 + (L1*(1 + nc)*(672*nc + 25
 
 
 (* ::Text:: *)
-(*Split into pieces that depend on `L1`, `L2` and those then don' t . Then collect terms in the first group w.r.t `L1, L2` . Collect terms in the second group `w.r.t. `z` . Use `ExpandAll` as the factoring function in both groups . Sort the resulting terms in the first group such, that terms containing `L1` come first, then those with `L2` and finally all the rest . Put terms that depend on `z` in the second group first .*)
+(*Split into pieces that depend on `L1`, `L2` and those then don' t . Then collect terms in the first group w.r.t `L1, L2` . Collect terms in the second group w.r.t. `z` . Use `ExpandAll` as the factoring function in both groups . Sort the resulting terms in the first group such, that terms containing `L1` come first, then those with `L2` and finally all the rest . Put terms that depend on `z` in the second group first .*)
 
 
 out1=FCToTeXReorder[exp,{{L1,L2},{L1,L2},{z}},Split->True,Factoring->{Function[x,
