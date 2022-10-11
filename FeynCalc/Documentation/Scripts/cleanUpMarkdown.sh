@@ -35,6 +35,8 @@ if [[ -f $1 ]]; then
     sed -i -e 's|g\^{\\mu \\nu }^2|(g\^{\\mu \\nu})^2|' $1;
     sed -i -e 's|\\bar{\\delta }\^{ij}\^2|(\\bar{\\delta}\^{ij})^2|' $1;
     sed -i -e 's|\$\$\(!\[.*\)\$\$|\1|' $1;
+    sed -i -e 's|\^{\\dagger }\^{|\^{\\dagger |g' $1;
+    sed -i -e 's|\^{\\dagger }\^{|\^{\\dagger |g' $1;
 elif [[ -d $1 ]]; then
  
 allFilesRaw=$(find $1 -type f -name '*.md' -print)

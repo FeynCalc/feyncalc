@@ -82,6 +82,7 @@ Notice that package `TRACER` resolves the redundancy of having $\gamma^\mu = \ba
 Contractions of Dirac matrices and vectors with the metric read
 
 $$
+\begin{align}
 \begin{split}
 g^{\mu \nu} \gamma_\nu &= \gamma^\mu, \\
 \bar{g}^{\mu \nu} \bar{\gamma}_\nu &= g^{\mu \nu} \bar{\gamma}_\nu = \bar{g}^{\mu \nu} \gamma_\nu = \bar{\gamma}^\mu, \\
@@ -94,11 +95,13 @@ g^{\mu \nu} p_\nu &= p^\mu, \\
 \hat{g}^{\mu \nu} \hat{p}_\nu &= g^{\mu \nu} \hat{p}_\nu = \hat{g}^{\mu \nu} p_\nu = \hat{p}^\mu, \\
 \bar{g}^{\mu \nu} \hat{p}_\nu &= \hat{g}^{\mu \nu} \bar{p}_\nu = 0.
 \end{split}
+\end{align}
 $$
 
 Contractions of the metric with itself 
 
 $$
+\begin{align}
 \begin{split}
 g^{\mu \nu} g_{\nu \rho} & = g^\mu_\rho \\
 \bar{g}^{\mu \nu} \bar{g}_{\nu \rho} & =g^{\mu \nu} \bar{g}_{\nu \rho} = \bar{g}^{\mu \nu} g_{\nu \rho} = \bar{g}^\mu_\rho \\
@@ -111,11 +114,13 @@ g^{\mu \nu} g_{\mu \nu} & = d, \\
 \hat{g}^{\mu \nu} \hat{g}_{\mu \nu} & = g^{\mu \nu} \hat{g}_{\mu \nu} = \hat{g}^{\mu \nu} g_{\mu \nu} = d-4, \\
 \bar{g}^{\mu \nu} \hat{g}_{\mu \nu} &= \hat{g}^{\mu \nu} \bar{g}_{\mu \nu}  = 0.
 \end{split}
+\end{align}
 $$
 
 Contractions of Dirac matrices and vectors with themselves
 
 $$
+\begin{align}
 \begin{split}
 \gamma^\mu \gamma_\mu  &=  D, \\
 \bar{\gamma}^\mu \bar{\gamma}_\mu  &= \gamma^\mu \bar{\gamma}_\mu  = \bar{\gamma}^\mu \gamma_\mu = 4, \\
@@ -128,17 +133,20 @@ p^\mu p_\mu &= p^2, \\
 \hat{p}^\mu \hat{p}_\mu &= \hat{p}^\mu p_\mu = p^\mu \hat{p}_\mu =  \hat{p}^2, \\
 \bar{p}^\mu \hat{p}_\mu &= \hat{p}^\mu \bar{p}_\mu = 0.
 \end{split}
+\end{align}
 $$
 
 Dirac slashes
 
 $$
+\begin{align}
 \begin{split}
 \gamma^\mu p_\mu &= \gamma \cdot p, \\
 \bar{\gamma}^\mu \bar{p}_\mu &= \bar{\gamma}^\mu p_\mu = \gamma^\mu \bar{p}_\mu = \bar{\gamma} \cdot \bar{p}, \\
 \hat{\gamma}^\mu p_\mu &= \hat{\gamma}^\mu p_\mu = \gamma^\mu \hat{p}_\mu = \hat{\gamma} \cdot \hat{p}, \\
 \bar{\gamma}^\mu \hat{p}_\mu &= \hat{\gamma}^\mu \bar{p}_\mu = 0. \\
 \end{split}
+\end{align}
 $$
 
 Index pairs with one, two, three, four or five free indices

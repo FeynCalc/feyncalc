@@ -5,8 +5,11 @@ if not FORMAT:match('tex$') then return {} end
 function Math (m)
   --local delimiter = m.mathtype == '$$' and '$' or '$$'
   if m.mathtype == "DisplayMath" then
-  --return pandoc.RawInline('tex', '\\begin{dgroup}\\begin{dmath}' .. m.text .. '\\end{dmath}\\end{dgroup}')
-  return pandoc.RawInline('tex', '\\begin{dmath*}\\breakingcomma\n' .. m.text .. '\n\\end{dmath*}')
+    if string.find(m.text, "\\begin{align}") or string.find(m.text, "\\begin{split}") then
+        return pandoc.RawInline('tex', m.text)
+     else
+       return pandoc.RawInline('tex', '\\begin{dmath*}\\breakingcomma\n' .. m.text .. '\n\\end{dmath*}')
+    end
   else
   return m
   end
