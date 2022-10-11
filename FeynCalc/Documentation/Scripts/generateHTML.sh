@@ -9,6 +9,8 @@
 
 # Converts FeynCalc/add-on documentation from Markdown to HTML
 
+# Use --to=native for debugging!
+
 # Usage examples
 
 # export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; ./generateHTML.sh /media/Data/Projects/VS/feyncalc.github.io/FeynCalcBookDev
@@ -43,7 +45,7 @@ TEMPLATESDIR="templates"
 OUTDIR=$1
 
 if [[ $# -eq 2 ]] ; then    
-    pandoc "$1" -f markdown -t html5  --katex -fmarkdown-implicit_figures --lua-filter="$FILTERSDIR"/md2html.lua -s --metadata title="$docuTitle manual (development version)" -c "css/feyncalc.css" --metadata=classoption:fleqn -o "$2"/$(basename -s .md "$1").html
+    pandoc "$1" -f markdown -t html5 --template="$TEMPLATESDIR"/feyncalc.html5 --katex=js/ -fmarkdown-implicit_figures --lua-filter="$FILTERSDIR"/md2html.lua -s --metadata title="$docuTitle manual (development version)" -c "css/feyncalc.css" --metadata=classoption:fleqn -o "$2"/$(basename -s .md "$1").html
 else
  
 allFilesRaw=$(find $mainDir/Markdown/ -type f -name '*.md' -print)
@@ -83,6 +85,7 @@ for i in "${allFilesExtra[@]}"; do
   name=$(basename -s .md $i);
   mv $OUTDIR/$name.html $OUTDIR/Extra/;
   sed -i -e "s|css/feyncalc.css|../css/feyncalc.css|g" $OUTDIR/Extra/$name.html;
+  sed -i -e "s|js/|../js/|g" $OUTDIR/Extra/$name.html;
 done
 
 rm -rf $OUTDIR/img;
