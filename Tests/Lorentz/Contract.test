@@ -288,9 +288,7 @@ Pair[LorentzIndex[i1], LorentzIndex[j2]]*Pair[LorentzIndex[i2], LorentzIndex[j1]
 	"Eps[LorentzIndex[i1, D], LorentzIndex[i2, D], LorentzIndex[i3, D], Momentum[p]]"},
 {"fcstContractDDims-ID14","LCD[i1, i2, i3, i4] FVD[p, i4] // Contract",
 	"Eps[LorentzIndex[i1, D], LorentzIndex[i2, D], LorentzIndex[i3, D], Momentum[p, D]]"},
-{"fcstContractDDims-ID15","Contract[PairContract[LorentzIndex[i, D], Momentum[p, D]]] // FCE","FVD[p, i]"},
-{"fcstContractDDims-ID16","Contract[LC[i1, i2, i3][p1 + p2 + p3] LC[i1, i2, i3][q1 + q2 + q3],
-EpsExpand -> False, FCE -> True]","-6 SP[p1 + p2 + p3, q1 + q2 + q3]"}
+{"fcstContractDDims-ID15","Contract[PairContract[LorentzIndex[i, D], Momentum[p, D]]] // FCE","FVD[p, i]"}
 };
 
 
