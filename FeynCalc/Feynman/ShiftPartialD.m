@@ -16,9 +16,11 @@
 (* ------------------------------------------------------------------------ *)
 
 ShiftPartialD::usage =
-"ShiftPartialD[exp,{derivs},field] uses integration-by-parts identitites to
-shift the derivatives such, that a term containing derivs acting on field
-is eliminated from the final expression.";
+"ShiftPartialD[exp, {derivs}, field] uses integration-by-parts identities to
+shift the derivatives of QuantumFields such, that a term containing derivs
+acting on field is eliminated from the final expression.
+
+The function always assumes that the surface term vanishes";
 
 ShiftPartialD::failmsg =
 "Error! ShiftPartialD has encountered a fatal problem and must abort the computation. \

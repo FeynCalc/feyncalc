@@ -395,6 +395,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [QuarkGluonVertex](../QuarkGluonVertex.md), [QGV](../QGV.md) - quark gluon vertex
 - [QuarkPropagator](../QuarkPropagator.md), [QP](../QP.md) - quark propagator
 - [ScalarGluonVertex](../ScalarGluonVertex.md) - scalar-scalar-gluon vertex
+- [ShiftPartialD](../ShiftPartialD.md) - shifts partial derivatives acting on [QuantumField](../QuantumField.md)s using IBPs
 - [SquareAmplitude](../SquareAmplitude.md) - writes $|\mathcal{M}|^2$ as a list of amplitude products
 - [SMP](../SMP.md) - symbols for various SM paremeters
 - [SMVertex](../SMVertex.md) - some SM vertices
