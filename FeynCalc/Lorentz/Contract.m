@@ -580,22 +580,24 @@ reduceSumsToProducts[a_,b_]:=
 
 			(*
 				b is a product, but not w.r.t Pairs, e.g. "x * (FV[p1, mu] + FV[p2, mu])(FV[p1, nu] + FV[p3, nu])"
-				We need to collect this w.r.t LorentIndices, since this is what contractSumSum expects.
+				We need to collect this w.r.t LorentIndices, since this is what reduceSumsToProducts expects.
 			*)
 			bnew = Collect2[b, {LorentzIndex,CartesianIndex}];
 			If[ Head[bnew] === Plus,
 				(*If b does not factorize, use contractWithProductOfPairs*)
-				FCPrint[3, "Contract: contractProduct: b does not factorize, calling reduceSumsToProducts", FCDoControl->cnVerbose];
+				FCPrint[3, "Contract: reduceSumsToProducts: b does not factorize, calling reduceSumsToProducts", FCDoControl->cnVerbose];
 				res = Map[reduceSumsToProducts[a,#]&,bnew],
 
 				(*
 					If b factorizes, use contractWithProductOfPairs
-					Think of sth like[aa ((D - 4) FV[p1, mu] + D FV[p1, mu])
+					Think of sth like [aa ((D - 4) FV[p1, mu] + D FV[p1, mu])
 				*)
 				res = contractWithProductOfPairs[a, bnew];
-				FCPrint[3, "Contract: contractProduct: b factorizes, calling contractWithProductOfPairs.", FCDoControl->cnVerbose]
+				FCPrint[3, "Contract: reduceSumsToProducts: b factorizes, calling contractWithProductOfPairs.", FCDoControl->cnVerbose]
 			]
 		];
+
+		FCPrint[3, "Contract: reduceSumsToProducts: result: ", res, FCDoControl->cnVerbose];
 
 		If[	optExpandScalarProduct,
 			res = ExpandScalarProduct[res,FCI->True];
@@ -652,6 +654,10 @@ contractWithSinglePair[a_, Pair[LorentzIndex[ind_, dim1___], (h:LorentzIndex|Mom
 
 contractWithSinglePair[a_, Pair[CartesianIndex[ind_, dimL_:4], (h:CartesianIndex|CartesianMomentum)[x_, dimC_:3]]] :=
 	Expand2[a CartesianPair[CartesianIndex[ind, dimL], h[x, dimC]], CartesianPair]/; MatchQ[{dimL,dimC},{4,3}|{_Symbol,_Symbol-1}|{_Symbol-4,_Symbol-4}];
+
+(*for things like contractWithProductOfPairs[FV[k - p, mu] SP[k, p], FV[p, mu] SP[k, p]] *)
+contractWithSinglePair[a_,b_]:=
+	Expand2[a b, {Pair,CartesianPair}]/; FreeQ2[{a,b},{LorentzIndex,CartesianIndex}]
 
 (* #################################################################### *)
 
