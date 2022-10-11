@@ -1,0 +1,75 @@
+
+
+(* :Title: FCLoopAddScalingParameter.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2022 Rolf Mertig
+	Copyright (C) 1997-2022 Frederik Orellana
+	Copyright (C) 2014-2022 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopAddScalingParameter		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopAddScalingParameter =
+({
+{"fcstFCLoopAddScalingParameter-ID1", "DataType[la,FCVariable]=True;
+FCLoopAddScalingParameter[FCTopology[prop1LtopoC11,{SFAD[{{I \
+p1,0},{-mc^2,-1},1}],SFAD[{{I \
+(p1-q),0},{-mc^2,-1},1}]},{p1},{q},{SPD[q,q]\[Rule]mb^2},{}],la,{},\
+FCVerbose->-1,FCE->True]",
+"FCTopology[prop1LtopoC11, {SFAD[{{I*p1, 0}, {-mc^2, -1}, 1}], \
+SFAD[{{I*(p1 - q), 0}, {-mc^2, -1}, 1}]}, {p1}, {q}, {SPD[q, q] -> \
+mb^2}, {}]"},
+{"fcstFCLoopAddScalingParameter-ID2",
+"FCLoopAddScalingParameter[FCTopology[prop1LtopoC11,{SFAD[{{I \
+p1,0},{-mc^2,-1},1}],SFAD[{{I \
+(p1-q),0},{-mc^2,-1},1}]},{p1},{q},{SPD[q,q]->mb^2},{}],la,{q->la^0 \
+q,mc->la^1 mc},FCVerbose->-1,FCE->True]",
+"FCTopology[prop1LtopoC11, {GFAD[{{la^2*mc^2 - SPD[p1, p1], -1}, \
+1}], GFAD[{{-mb^2 + la^2*mc^2 + SPD[p1, -p1 + 2*q], -1}, 1}]}, {p1}, \
+{q}, {SPD[q, q] -> mb^2}, {}]"},
+{"fcstFCLoopAddScalingParameter-ID3",
+"FCLoopAddScalingParameter[FCTopology[prop1LtopoC11,{SFAD[{{I \
+p1,0},{-mc^2,-1},1}],SFAD[{{I \
+(p1-q),0},{-mc^2,-1},1}]},{p1},{q},{SPD[q,q]->mb^2},{}],la,{q->la^0 \
+q,mc->la^1 \
+mc},Names->Function[{x},ToExpression[ToString[x]<>\"ff\"]],FCVerbose->-\
+1,FCE->True]",
+"FCTopology[prop1LtopoC11ff, {GFAD[{{la^2*mc^2 - SPD[p1, p1], -1}, \
+1}], GFAD[{{-mb^2 + la^2*mc^2 + SPD[p1, -p1 + 2*q], -1}, 1}]}, {p1}, \
+{q}, {SPD[q, q] -> mb^2}, {}]"},
+{"fcstFCLoopAddScalingParameter-ID4",
+"FCLoopAddScalingParameter[FCTopology[prop2Ltopo22012,{SFAD[{{I \
+(p1-q),0},{-mc^2,-1},1}],SFAD[{{I p1,0},{-mc^2,-1},1}],SFAD[{{I \
+(p1+p3-q),0},{0,-1},1}],SFAD[{{I (p1+p3),0},{-mb^2,-1},1}],SFAD[{{-I \
+p3,0},{-mc^2,-1},1}]},{p1,p3},{q},{SPD[q,q]->mb^2},{}],la,{mc->la^1 \
+mc,p1->la^1 p1,p3->la^0 p3},FCVerbose->-1,FCE->True]",
+"FCTopology[prop2Ltopo22012, {GFAD[{{-mb^2 + la^2*mc^2 - \
+la^2*SPD[p1, p1] + 2*la*SPD[p1, q], -1}, 1}], SFAD[{{I*p1, 0}, \
+{-mc^2, -1}, 1}], GFAD[{{-mb^2 - la^2*SPD[p1, p1] - 2*la*SPD[p1, p3] \
++ 2*la*SPD[p1, q] + SPD[p3, -p3 + 2*q], -1}, 1}], GFAD[{{mb^2 - \
+la^2*SPD[p1, p1] - 2*la*SPD[p1, p3] - SPD[p3, p3], -1}, 1}], \
+GFAD[{{la^2*mc^2 - SPD[p3, p3], -1}, 1}]}, {p1, p3}, {q}, {SPD[q, q] -> \
+mb^2}, {}]"},
+{"fcstFCLoopAddScalingParameter-ID5",
+"FCLoopAddScalingParameter[{FCTopology[prop1LtopoC11,{SFAD[{{I \
+p1,0},{-mc^2,-1},1}],SFAD[{{I \
+(p1-q),0},{-mc^2,-1},1}]},{p1},{q},{SPD[q,q]->mb^2},{}],FCTopology[\
+prop2Ltopo22012,{SFAD[{{I (p1-q),0},{-mc^2,-1},1}],SFAD[{{I \
+p1,0},{-mc^2,-1},1}],SFAD[{{I (p1+p3-q),0},{0,-1},1}],SFAD[{{I \
+(p1+p3),0},{-mb^2,-1},1}],SFAD[{{-I \
+p3,0},{-mc^2,-1},1}]},{p1,p3},{q},{SPD[q,q]->mb^2},{}]},la,{mc->la^1 \
+mc,p1->la^1 p1,p3->la^0 p3},FCVerbose->-1,FCE->True]",
+"{FCTopology[prop1LtopoC11, {SFAD[{{I*p1, 0}, {-mc^2, -1}, 1}], \
+GFAD[{{-mb^2 + la^2*mc^2 - la^2*SPD[p1, p1] + 2*la*SPD[p1, q], -1}, \
+1}]}, {p1}, {q}, {SPD[q, q] -> mb^2}, {}], \
+FCTopology[prop2Ltopo22012, {GFAD[{{-mb^2 + la^2*mc^2 - la^2*SPD[p1, \
+p1] + 2*la*SPD[p1, q], -1}, 1}], SFAD[{{I*p1, 0}, {-mc^2, -1}, 1}], \
+GFAD[{{-mb^2 - la^2*SPD[p1, p1] - 2*la*SPD[p1, p3] + 2*la*SPD[p1, q] \
++ SPD[p3, -p3 + 2*q], -1}, 1}], GFAD[{{mb^2 - la^2*SPD[p1, p1] - \
+2*la*SPD[p1, p3] - SPD[p3, p3], -1}, 1}], GFAD[{{la^2*mc^2 - SPD[p3, \
+p3], -1}, 1}]}, {p1, p3}, {q}, {SPD[q, q] -> mb^2}, {}]}"}
+})
