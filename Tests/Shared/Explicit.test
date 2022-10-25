@@ -78,5 +78,21 @@ Pair[LorentzIndex[la, D],
 	"QuantumField[FCPartialD[LorentzIndex[mu, D]], GaugeField,
 	LorentzIndex[nu, D]] -
 	QuantumField[FCPartialD[LorentzIndex[nu, D]], GaugeField,
-	LorentzIndex[mu, D]]"}
+	LorentzIndex[mu, D]]"},
+{"fcstExplicit-ID18","Explicit[SUNF[a,b,c],SUNF->True]",
+	"2 I (-SUNTrace[
+	SUNT[SUNIndex[a]].SUNT[SUNIndex[b]].SUNT[SUNIndex[c]]] +
+SUNTrace[SUNT[SUNIndex[a]].SUNT[SUNIndex[c]].SUNT[SUNIndex[b]]])"},
+{"fcstExplicit-ID19","Explicit[SUNF[a,b,c]]",
+	"SUNF[SUNIndex[a], SUNIndex[b], SUNIndex[c]]"},
+{"fcstExplicit-ID20","Explicit[SUND[a,b,c]]",
+	"SUND[SUNIndex[a], SUNIndex[b], SUNIndex[c]]"},
+{"fcstExplicit-ID21","Explicit[SUND[a,b,c], SUND->True]",
+	"2 SUNTrace[SUNT[SUNIndex[a]].SUNT[SUNIndex[b]].SUNT[SUNIndex[c]]] +
+2 SUNTrace[SUNT[SUNIndex[b]].SUNT[SUNIndex[a]].SUNT[SUNIndex[c]]]"},
+{"fcstExplicit-ID22","Explicit[SUNTrace[SUNT[a,b,c]]]",
+	"SUNTrace[SUNT[a,b,c]]"},
+{"fcstExplicit-ID23","Explicit[SUNTrace[SUNT[a,b,c]],SUNTrace->True]",
+	"SUND[SUNIndex[a], SUNIndex[b], SUNIndex[c]]/4 +
+	(I/4)*SUNF[SUNIndex[a], SUNIndex[b], SUNIndex[c]]"}
 };

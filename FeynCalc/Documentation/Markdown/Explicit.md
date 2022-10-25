@@ -1,8 +1,12 @@
 ## Explicit
 
-`Explicit` is an option for `FieldStrength`, `GluonVertex`, `SUNF`, and `Twist2GluonOperator`. If set to `True` the full form of the operator is inserted.
+`Explicit[exp]` inserts explicit expressions of `GluonVertex`, `Twist2GluonOperator`, `SUNF` etc. in `exp`.
 
-`Explicit[exp]` inserts explicit expressions of `GluonVertex`, `Twist2GluonOperator` etc. in `exp`. `SUNF`s are replaced by `SUNTrace` objects.
+To rewrite the $SU(N)$ structure constants in terms of traces, please set the corresponding options `SUNF` or `SUND` to `True`.
+
+The color traces are left untouched unless the option `SUNTrace` is set to `True`. In this case they will be rewritten in terms of structure constants.
+
+`Explicit` is also an option for `FieldStrength`, `GluonVertex`, `SUNF`,  `Twist2GluonOperator` etc. If set to `True` the full form of the operator is inserted.
 
 ### See also
 
@@ -11,14 +15,22 @@
 ### Examples
 
 ```mathematica
-GluonVertex[p, \[Mu], a, q, \[Nu], b, r, \[Rho], c] 
- 
-Explicit[%]
+gv = GluonVertex[p, \[Mu], a, q, \[Nu], b, r, \[Rho], c]
 ```
 
 $$f^{abc} V^{\mu \nu \rho }(p\text{, }q\text{, }r)$$
 
+```mathematica
+Explicit[gv]
+```
+
 $$g_s f^{abc} \left(g^{\mu \nu } \left(p^{\rho }-q^{\rho }\right)+g^{\mu \rho } \left(r^{\nu }-p^{\nu }\right)+g^{\nu \rho } \left(q^{\mu }-r^{\mu }\right)\right)$$
+
+```mathematica
+Explicit[gv, SUNF -> True]
+```
+
+$$2 i g_s \left(\text{tr}(T^a.T^c.T^b)-\text{tr}(T^a.T^b.T^c)\right) \left(g^{\mu \nu } \left(p^{\rho }-q^{\rho }\right)+g^{\mu \rho } \left(r^{\nu }-p^{\nu }\right)+g^{\nu \rho } \left(q^{\mu }-r^{\mu }\right)\right)$$
 
 ```mathematica
 Twist2GluonOperator[p, \[Mu], a, \[Nu], b] 
@@ -33,12 +45,45 @@ $$\frac{1}{2} \left((-1)^m+1\right) \delta ^{ab} (\Delta \cdot p)^{m-2} \left(g^
 ```mathematica
 FieldStrength[\[Mu], \[Nu], a] 
  
-Explicit[%] 
-  
- 
-
+Explicit[%]
 ```
 
 $$F_{\mu \nu }^a$$
 
-$$g_s f^{a\text{b19}\;\text{c20}} A_{\mu }^{\text{b19}}.A_{\nu }^{\text{c20}}+\left.(\partial _{\mu }A_{\nu }^a\right)-\left.(\partial _{\nu }A_{\mu }^a\right)$$
+$$g_s f^{a\text{b19}\;\text{c20}} A_{\mu }^{\text{b19}}.A_{\nu }^{\text{c20}}+\left(\partial _{\mu }A_{\nu }^a\right)-\left(\partial _{\nu }A_{\mu }^a\right)$$
+
+```mathematica
+Explicit[SUNF[a, b, c]]
+```
+
+$$f^{abc}$$
+
+```mathematica
+Explicit[SUNF[a, b, c], SUNF -> True]
+```
+
+$$2 i \left(\text{tr}(T^a.T^c.T^b)-\text{tr}(T^a.T^b.T^c)\right)$$
+
+```mathematica
+Explicit[SUND[a, b, c]]
+```
+
+$$d^{abc}$$
+
+```mathematica
+Explicit[SUND[a, b, c], SUND -> True]
+```
+
+$$2 \left(\text{tr}(T^a.T^b.T^c)\right)+2 \left(\text{tr}(T^b.T^a.T^c)\right)$$
+
+```mathematica
+Explicit[SUNTrace[SUNT[a, b, c]]]
+```
+
+$$\text{tr}(T^a.T^b.T^c)$$
+
+```mathematica
+Explicit[SUNTrace[SUNT[a, b, c]], SUNTrace -> True]
+```
+
+$$\frac{d^{abc}}{4}+\frac{1}{4} i f^{abc}$$
