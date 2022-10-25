@@ -373,6 +373,9 @@ loopSplitFu[done_List, remaining_, lmoms_, subsets_] :=
 loopSplitFu[done_List, 1, _, _] :=
 	done;
 
+FCLoopBasisSplit[ex_,_List, OptionsPattern[]]:=
+	ex/;FreeQ[ex,FeynAmpDenominator];
+
 FCLoopBasisSplit[sps_. fad_FeynAmpDenominator, lmoms_List, OptionsPattern[]] :=
 	Block[{ex, rest, res, loopMomenta},
 		ex = FeynAmpDenominatorSplit[sps fad, FCI->True];

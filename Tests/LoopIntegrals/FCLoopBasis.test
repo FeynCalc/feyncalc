@@ -505,7 +505,10 @@ loop[CFAD[{{q1, 0}, {0, -1}, 1}, {{q2, 0}, {0, -1}, 1},
 Head -> loop, FCE -> True]",
 "{loop[SFAD[{{q3, 0}, {m^2, 1}, 1}], {q3}],
 loop[SFAD[{{q1, 0}, {0, 1}, 1}, {{q2, 0}, {0, 1}, 1},
-{{q1 - q2, 0}, {0, 1}, 1}], {q1, q2}]}"}
+{{q1 - q2, 0}, {0, 1}, 1}], {q1, q2}]}"},
+{"fcstFCLoopBasisSplit-ID10",
+"FCLoopBasisSplit[SP[q1, q2], {q1, q2}]",
+"SP[q1, q2]"}
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisExtract =
