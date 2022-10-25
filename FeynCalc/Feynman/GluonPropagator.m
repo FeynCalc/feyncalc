@@ -58,8 +58,8 @@ GluonPropagator[q_, {li_},{mu_},opt:OptionsPattern[]] :=
 	GluonPropagator[-q, {li}, {mu}, opt] /;
 	NumericalFactor[q] === -1;
 
-GluonPropagator[pi_, mu_, nu_, OptionsPattern[]] :=
-	GluonPropagator[pi, {mu}, {nu}]/;
+GluonPropagator[pi_, mu_, nu_, opt:OptionsPattern[]] :=
+	GluonPropagator[pi, {mu}, {nu}, opt]/;
 	!MemberQ[{Rule, List}, Head[mu]] &&
 	!MemberQ[{Rule, List}, Head[nu]];
 
