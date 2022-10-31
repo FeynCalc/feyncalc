@@ -212,11 +212,48 @@ GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 1, 1}]], {{}, {FCTopology[
 	"1/2 cc1 GLI[fctopology1, {1, 1, 0, 1, 1, 1, 1, 1, 1}] -
 1/2 cc1 GLI[fctopology1, {1, 1, 1, 1, 1, 0, 1, 1, 1}] +
 1/2 GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 1, 1}] (2 cc6 +
-	cc1 SPD[Q, Q])"}
-
-
-
-
-
-
+	cc1 SPD[Q, Q])"},
+{"fcstFCLoopApplyTopologyMappings-ID6",
+"FCLoopApplyTopologyMappings[FCGV[\"GLIProduct\"][-(FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*Pair[Momentum[p, D], Momentum[q1, D]]*Pair[Momentum[p, D], Momentum[q2, D]]*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*
+	SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]]), GLI[\"fctopology2\", {1, 1, 1, 1}]] +
+FCGV[\"GLIProduct\"][FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*(GaugeXi*Pair[Momentum[p, D], Momentum[p, D]]*Pair[Momentum[p, D], Momentum[q1, D]]*Pair[Momentum[p, D], Momentum[q2, D]]*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*
+	SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]] - GaugeXi*Pair[Momentum[p, D], Momentum[q1, D]]^2*Pair[Momentum[p, D], Momentum[q2, D]]*SMP[\"g_s\"]^4*
+	SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]] -
+	GaugeXi*Pair[Momentum[p, D], Momentum[p, D]]*Pair[Momentum[p, D], Momentum[q2, D]]*Pair[Momentum[q1, D], Momentum[q1, D]]*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*
+	SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]] + GaugeXi*Pair[Momentum[p, D], Momentum[q1, D]]*Pair[Momentum[p, D], Momentum[q2, D]]*Pair[Momentum[q1, D], Momentum[q1, D]]*SMP[\"g_s\"]^4*
+	SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]]), GLI[\"fctopology2\", {1, 1, 1, 2}]],
+	{{{FCTopology[\"fctopology3\", {FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q2, D], 0, 0, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q1, D], 0, 0, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p - q1, D], 0, 0, {1, 1}]],
+	FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p - q1 + q2, D], 0, 0, {1, 1}]]}, {q1, q2}, {p}, {}, {}], {q1 -> -q1, q2 -> -q1 - q2}, GLI[\"fctopology3\", {n2_, n1_, n3_, n4_}] :> GLI[\"fctopology1\", {0, n1, n2, n3, n4}]},
+{FCTopology[\"fctopology2\", {FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q2, D], 0, 0, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q1, D], 0, 0, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p + q2, D], 0, 0, {1, 1}]],
+	FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p - q1, D], 0, 0, {1, 1}]]}, {q1, q2}, {p}, {}, {}], {q1 -> -q1, q2 -> -q2}, GLI[\"fctopology2\", {n1_, n2_, n4_, n3_}] :> GLI[\"fctopology1\", {n1, n2, 0, n3, n4}]}},
+{FCTopology[\"fctopology1\", {FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q2, D], 0, 0, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q1, D], 0, 0, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q1 + q2, D], 0, 0, {1, 1}]],
+	FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p + q1, D], 0, 0, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p - q2, D], 0, 0, {1, 1}]]}, {q1, q2}, {p}, {}, {}]}}
+	]",
+	"-1/8*(GaugeXi*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {0, -1, 0, 2, 1}]*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*
+SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]]) + (FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {0, 0, 0, 1, 1}]*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*
+SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/4 -
+((2 - GaugeXi)*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {0, 1, 0, 0, 1}]*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*
+SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/8 + (GaugeXi*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {1, -1, 0, 2, 0}]*SMP[\"g_s\"]^4*
+SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/8 -
+(FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {1, 0, 0, 1, 0}]*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*
+SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/4 + ((2 - GaugeXi)*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {1, 1, 0, 0, 0}]*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*
+SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/8 +
+(GaugeXi*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {0, 0, 0, 2, 1}]*Pair[Momentum[p, D], Momentum[p, D]]*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*
+SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/4 + (FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {0, 1, 0, 1, 1}]*Pair[Momentum[p, D], Momentum[p, D]]*SMP[\"g_s\"]^4*
+SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/4 -
+(GaugeXi*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {1, -1, 0, 2, 1}]*Pair[Momentum[p, D], Momentum[p, D]]*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*
+SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/8 + (FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {1, 0, 0, 1, 1}]*Pair[Momentum[p, D], Momentum[p, D]]*SMP[\"g_s\"]^4*
+SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/4 -
+(GaugeXi*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {1, 0, 0, 2, 0}]*Pair[Momentum[p, D], Momentum[p, D]]*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*
+SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/4 - ((2 - GaugeXi)*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {1, 1, 0, 0, 1}]*Pair[Momentum[p, D], Momentum[p, D]]*SMP[\"g_s\"]^4*
+SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/8 -
+(FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {1, 1, 0, 1, 0}]*Pair[Momentum[p, D], Momentum[p, D]]*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*
+SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/4 - (GaugeXi*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {0, 1, 0, 2, 1}]*Pair[Momentum[p, D], Momentum[p, D]]^2*SMP[\"g_s\"]^4*
+SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/8 +
+(GaugeXi*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {1, 0, 0, 2, 1}]*Pair[Momentum[p, D], Momentum[p, D]]^2*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*
+SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/4 + (FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {1, 1, 0, 1, 1}]*Pair[Momentum[p, D], Momentum[p, D]]^2*SMP[\"g_s\"]^4*
+SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/4 +
+(GaugeXi*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {1, 1, 0, 2, 0}]*Pair[Momentum[p, D], Momentum[p, D]]^2*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*
+SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/8 - (GaugeXi*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {1, 1, 0, 2, 1}]*Pair[Momentum[p, D], Momentum[p, D]]^3*SMP[\"g_s\"]^4*
+SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/8"}
 });
