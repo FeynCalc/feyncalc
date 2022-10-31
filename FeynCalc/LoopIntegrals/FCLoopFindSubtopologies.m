@@ -102,6 +102,8 @@ FCLoopFindSubtopologies[topoRaw_FCTopology, OptionsPattern[]] :=
 
 		tmp = Rest[tmp] /. x -> List;
 
+		If[	tmp=!={{}},
+
 		tmp = Transpose[Flatten[tmp, 1]][[1]];
 
 		(*	Giving names to the discovered subtopologies according to the prescription given in the option Names.	*)
@@ -121,6 +123,11 @@ FCLoopFindSubtopologies[topoRaw_FCTopology, OptionsPattern[]] :=
 		If[	TrueQ[optSubtopologyMarker===False],
 			res = Map[FCTopology[#[[1]],#[[2]],topo[[3]],Select[topo[[4]],Function[xx,!FreeQ[#[[2]],xx]]],topo[[5]],topo[[6]]]&,res],
 			res = Map[FCTopology[#[[1]],#[[2]],topo[[3]],Select[topo[[4]],Function[xx,!FreeQ[#[[2]],xx]]],topo[[5]],Join[topo[[6]],{FCGV["SubtopologyOf"]->topo[[1]]}] ]&,res];
+		],
+
+		(*No subtopologies found*)
+		res={}
+
 		];
 
 

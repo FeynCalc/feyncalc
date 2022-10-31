@@ -610,5 +610,27 @@ FCTopology[\"prop2LR1\", {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1 - q2, \
 q1, 0}, {0, 1}, 1}], SFAD[{{-p + q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, \
 {}, {}], FCTopology[\"prop2LR15\", {SFAD[{{q2, 0}, {0, 1}, 1}], \
 SFAD[{{q1 - q2, 0}, {0, 1}, 1}], SFAD[{{-p + q1, 0}, {0, 1}, 1}]}, \
-{q1, q2}, {p}, {}, {}]}"}
+{q1, q2}, {p}, {}, {}]}"},
+{"fcstFCLoopFindSubtopologies-ID6",
+"FCLoopFindSubtopologies[{FCTopology[
+topo1, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}],
+	SFAD[{{q1 + q2, 0}, {0, 1}, 1}], SFAD[{{p + q1, 0}, {0, 1}, 1}],
+	SFAD[{{p - q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}],
+FCTopology[
+topo2, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}],
+	SFAD[{{p + q2, 0}, {0, 1}, 1}],
+	SFAD[{{p - q1, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}],
+FCTopology[
+topo3, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}],
+	SFAD[{{p - q1, 0}, {0, 1}, 1}],
+	SFAD[{{p - q1 + q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}]},
+FCE -> True]
+","
+{{FCTopology[topo1, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{q1 + q2, 0}, {0, 1}, 1}], SFAD[{{p + q1, 0}, {0, 1}, 1}], SFAD[{{p - q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}],
+FCTopology[\"topo1R1\", {SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{q1 + q2, 0}, {0, 1}, 1}], SFAD[{{p + q1, 0}, {0, 1}, 1}], SFAD[{{p - q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {FCGV[\"SubtopologyOf\"] -> topo1}],
+FCTopology[\"topo1R3\", {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{p + q1, 0}, {0, 1}, 1}], SFAD[{{p - q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {FCGV[\"SubtopologyOf\"] -> topo1}],
+FCTopology[\"topo1R14\", {SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{q1 + q2, 0}, {0, 1}, 1}], SFAD[{{p - q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {FCGV[\"SubtopologyOf\"] -> topo1}]},
+{FCTopology[topo2, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{p + q2, 0}, {0, 1}, 1}], SFAD[{{p - q1, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}]},
+{FCTopology[topo3, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{p - q1, 0}, {0, 1}, 1}], SFAD[{{p - q1 + q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}],
+FCTopology[\"topo3R3\", {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{p - q1 + q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {FCGV[\"SubtopologyOf\"] -> topo3}]}}"}
 })
