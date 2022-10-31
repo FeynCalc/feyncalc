@@ -50,5 +50,50 @@ Tests`LoopIntegrals`ToSFAD =
 "ToSFAD[FAD[{I p1+ I p2,I m}],FCE->True,EtaSign->1]",
 "SFAD[{{I*(p1 + p2), 0}, {-m^2, 1}, 1}]"},
 {"fcstToSFAD-ID15", "ToSFAD[FAD[p],FCE->True,EtaSign->-1]",
-"SFAD[{{p, 0}, {0, -1}, 1}]"}
+"SFAD[{{p, 0}, {0, -1}, 1}]"},
+{"fcstToSFAD-ID16",
+"ToSFAD[FeynAmpDenominator[CartesianPropagatorDenominator[\
+CartesianMomentum[q1, -1 + D], 0, QGMassV^2 - \
+TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q1]]^2, {1, \
+-1}]]]", "FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[\
+q1, D], 0, QGMassV^2, {1, -1}]]"},
+{"fcstToSFAD-ID17",
+"ToSFAD[FeynAmpDenominator[CartesianPropagatorDenominator[\
+CartesianMomentum[q1, -1 + D], 0, QGMassV^2 - \
+TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q1]]^2, {2, \
+-1}]]]", "FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[\
+q1, D], 0, QGMassV^2, {2, -1}]]"},
+{"fcstToSFAD-ID18",
+"ToSFAD[FeynAmpDenominator[CartesianPropagatorDenominator[\
+CartesianMomentum[q1, -1 + D], 0, QGMassV^2 - \
+TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q1]]^2, {n, \
+-1}]]]", "FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[\
+q1, D], 0, QGMassV^2, {n, -1}]]"},
+{"fcstToSFAD-ID19",
+"ToSFAD[FeynAmpDenominator[CartesianPropagatorDenominator[\
+CartesianMomentum[q1, -1 + D], 0, QGMassV^2 - \
+TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q1]]^2, {n, \
+1}]]]", "FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[\
+q1, D], 0, QGMassV^2, {n, 1}]]"},
+{"fcstToSFAD-ID20",
+"ToSFAD[FeynAmpDenominator[ CartesianPropagatorDenominator[I \
+CartesianMomentum[q1, -1 + D], 0,- \
+QGMassV^2+TemporalPair[ExplicitLorentzIndex[0], \
+TemporalMomentum[q1]]^2, {1, 1}]]]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q1, D], \
+0, -QGMassV^2, {1, 1}]]"},
+{"fcstToSFAD-ID21",
+"ToSFAD[FeynAmpDenominator[ CartesianPropagatorDenominator[I \
+CartesianMomentum[q1, -1 + D], 0,- \
+QGMassV^2+TemporalPair[ExplicitLorentzIndex[0], \
+TemporalMomentum[q1]]^2, {n, 1}]]]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q1, D], \
+0, -QGMassV^2, {n, 1}]]"},
+{"fcstToSFAD-ID22",
+"ToSFAD[FeynAmpDenominator[ CartesianPropagatorDenominator[I \
+CartesianMomentum[q1, -1 + D], 0,- \
+QGMassV^2+TemporalPair[ExplicitLorentzIndex[0], \
+TemporalMomentum[q1]]^2, {n, -1}]]]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q1, D], \
+0, -QGMassV^2, {n, -1}]]"}
 });

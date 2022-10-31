@@ -50,16 +50,18 @@ ToSFAD[expr_, OptionsPattern[]] :=
 			ex = FCI[expr]
 		];
 
-		If[	FreeQ2[{ex}, {PropagatorDenominator}],
+		If[	FreeQ2[{ex}, {PropagatorDenominator, CartesianPropagatorDenominator}],
 			(*	Nothing to do.	*)
 			Return[ex]
 		];
 
 		optEtaSign = OptionValue[EtaSign];
 
-		pds = Cases2[ex, PropagatorDenominator];
+		pds = Cases2[ex, {PropagatorDenominator, CartesianPropagatorDenominator}];
 
 		pdsEval = toSFAD[MomentumCombine[#,FCI->True]]&/@pds;
+
+		pdsEval = pdsEval /. toSFAD[x_CartesianPropagatorDenominator] :> x;
 
 		If[ !FreeQ[pdsEval,toSFAD],
 			Message[ToSFAD::failmsg,"Failed to convert all PropagatorDenominators to StandardPropagatorDenominators."];
@@ -81,6 +83,13 @@ ToSFAD[expr_, OptionsPattern[]] :=
 		res
 
 	];
+
+(* (q^0)^2 - (q^i)^2 - m^2 -> q^2 - m^2 *)
+toSFAD[CartesianPropagatorDenominator[CartesianMomentum[q_, dim_ - 1], 0, (c_:0) - TemporalPair[ExplicitLorentzIndex[0],TemporalMomentum[q_]]^2, {n_, s_}]]:=
+	StandardPropagatorDenominator[Complex[0,1] Momentum[q,dim],0,c,{n,s}]/; FreeQ2[{c,q},{Complex,TemporalPair}] && (FeynCalc`Package`MetricS===-1) && (FeynCalc`Package`MetricT===1);
+
+toSFAD[CartesianPropagatorDenominator[Complex[0,1] CartesianMomentum[q_, dim_ - 1], 0, (c_:0) + TemporalPair[ExplicitLorentzIndex[0],TemporalMomentum[q_]]^2, {n_, s_}]]:=
+	StandardPropagatorDenominator[Momentum[q,dim],0,c,{n,s}]/; FreeQ2[{c,q},{Complex,TemporalPair}] && (FeynCalc`Package`MetricS===-1) && (FeynCalc`Package`MetricT===1);
 
 toSFAD[PropagatorDenominator[c_. Momentum[q_,dim___],b_]]:=
 	StandardPropagatorDenominator[c Momentum[q,dim],0,-b^2,{1, 1}]/; FreeQ[{c,q},Complex] && optEtaSign===Automatic;
