@@ -27,58 +27,68 @@ etc. in exp. SUNFs are replaced by SUNTrace objects.";
 
 Begin["`Package`"];
 
-SymbolsWithExplicitOption;
+RulesForSymbolsWithExplicitOption;
 
-SymbolsWithExplicitOption[optsExplicit___]:= {
 
-	FeynCalc`SUNF[xx__, op:OptionsPattern[]]  :>
-		FeynCalc`SUNF[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[SUNF]], op],
-
-	FeynCalc`SUND[xx__, op:OptionsPattern[]]  :>
-		FeynCalc`SUND[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[SUND]], op],
-
-	FeynCalc`SUNTrace[xx__, op:OptionsPattern[]]  :>
-		FeynCalc`SUNTrace[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[SUNTrace]], op],
-
-	FeynCalc`GluonVertex[xx__, op:OptionsPattern[]]  :>
-		FeynCalc`GluonVertex[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[GluonVertex]], op],
-
-	FeynCalc`GluonPropagator[xx__, op : OptionsPattern[]] :>
-		FeynCalc`GluonPropagator[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[GluonPropagator]], op],
-
-	FeynCalc`GhostPropagator[xx__, op : OptionsPattern[]] :>
-		FeynCalc`GhostPropagator[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[GhostPropagator]], op],
-
-	FeynCalc`QuarkPropagator[xx__, op : OptionsPattern[]] :>
-		FeynCalc`QuarkPropagator[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[QuarkPropagator]], op],
-
-	FeynCalc`GluonGhostVertex[xx__, op : OptionsPattern[]] :>
-		FeynCalc`GluonGhostVertex[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[GluonGhostVertex]], op],
-
-	FeynCalc`QuarkGluonVertex[xx__, op : OptionsPattern[]] :>
-		FeynCalc`QuarkGluonVertex[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[QuarkGluonVertex]], op],
-
-	FeynCalc`Twist2GluonOperator[xx__, op : OptionsPattern[]] :>
-		FeynCalc`Twist2GluonOperator[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[Twist2GluonOperator]], op],
-
-	FeynCalc`Twist2QuarkOperator[xx__, op : OptionsPattern[]] :>
-		FeynCalc`Twist2QuarkOperator[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[Twist2QuarkOperator]], op],
-
-	FeynCalc`FieldStrength[xx__, op : OptionsPattern[]] :>
-		FeynCalc`FieldStrength[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[FieldStrength]], op],
-
-	FeynCalc`FCChargeConjugateTransposed[xx_, op:OptionsPattern[]]  :>
-		FeynCalc`FCChargeConjugateTransposed[xx, Explicit->True, Sequence@@FilterRules[{op}, Except[Explicit]]],
-
-	FeynCalc`FCClausen[xx_, yy_, op:OptionsPattern[]]  :>
-		FeynCalc`FCClausen[xx, yy, Explicit->True,	Sequence@@FilterRules[{op}, Except[Explicit]]]
-};
 
 End[]
 
 Begin["`Explicit`Private`"];
 
 exVerbose::usage="";
+
+
+RulesForSymbolsWithExplicitOption = {
+	BuiltInSymbolsWithExplicitOption
+};
+
+BuiltInSymbolsWithExplicitOption[optsExplicit___]:= {
+
+	FCTripleProduct[xx__, op:OptionsPattern[]]  :>
+		FCTripleProduct[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[FCTripleProduct]], op],
+
+	SUNF[xx__, op:OptionsPattern[]]  :>
+		SUNF[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[SUNF]], op],
+
+	SUND[xx__, op:OptionsPattern[]]  :>
+		SUND[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[SUND]], op],
+
+	SUNTrace[xx__, op:OptionsPattern[]]  :>
+		SUNTrace[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[SUNTrace]], op],
+
+	GluonVertex[xx__, op:OptionsPattern[]]  :>
+		GluonVertex[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[GluonVertex]], op],
+
+	GluonPropagator[xx__, op : OptionsPattern[]] :>
+		GluonPropagator[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[GluonPropagator]], op],
+
+	GhostPropagator[xx__, op : OptionsPattern[]] :>
+		GhostPropagator[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[GhostPropagator]], op],
+
+	QuarkPropagator[xx__, op : OptionsPattern[]] :>
+		QuarkPropagator[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[QuarkPropagator]], op],
+
+	GluonGhostVertex[xx__, op : OptionsPattern[]] :>
+		GluonGhostVertex[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[GluonGhostVertex]], op],
+
+	QuarkGluonVertex[xx__, op : OptionsPattern[]] :>
+		QuarkGluonVertex[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[QuarkGluonVertex]], op],
+
+	Twist2GluonOperator[xx__, op : OptionsPattern[]] :>
+		Twist2GluonOperator[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[Twist2GluonOperator]], op],
+
+	Twist2QuarkOperator[xx__, op : OptionsPattern[]] :>
+		Twist2QuarkOperator[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[Twist2QuarkOperator]], op],
+
+	FieldStrength[xx__, op : OptionsPattern[]] :>
+		FieldStrength[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[FieldStrength]], op],
+
+	FCChargeConjugateTransposed[xx_, op:OptionsPattern[]]  :>
+		FCChargeConjugateTransposed[xx, Explicit->True, Sequence@@FilterRules[{op}, Except[Explicit]]],
+
+	FCClausen[xx_, yy_, op:OptionsPattern[]]  :>
+		FCClausen[xx, yy, Explicit->True,	Sequence@@FilterRules[{op}, Except[Explicit]]]
+};
 
 Options[Explicit] = {
 	CouplingConstant	-> SMP["g_s"],
@@ -95,7 +105,7 @@ Options[Explicit] = {
 };
 
 Explicit[expr_, opts:OptionsPattern[]] :=
-	Block[{heads, ex, res, rule, list, listEval},
+	Block[{heads, ex, res, rule, list, listEval, repRules},
 
 		If [OptionValue[FCVerbose]===False,
 			exVerbose=$VeryVerbose,
@@ -112,7 +122,9 @@ Explicit[expr_, opts:OptionsPattern[]] :=
 			ex = FCI[expr]
 		];
 
-		heads = Head /@ First /@ FeynCalc`Package`SymbolsWithExplicitOption[];
+		heads = Head/@Union[Flatten[Map[Function[x, {First /@ x[{}]}], RulesForSymbolsWithExplicitOption]]];
+
+		FCPrint[3,"Explicit: Relevant heads: ", heads, FCDoControl->exVerbose];
 
 		If[	!OptionValue[SUND],
 			heads = SelectFree[heads,SUND]
@@ -130,7 +142,9 @@ Explicit[expr_, opts:OptionsPattern[]] :=
 
 		FCPrint[3,"Explicit: Relevant symbols in the expression: ", list, FCDoControl->exVerbose];
 
-		listEval = list /. FeynCalc`Package`SymbolsWithExplicitOption[opts];
+		repRules = Flatten[Map[#[opts] &, RulesForSymbolsWithExplicitOption]];
+
+		listEval = list /. repRules;
 
 		FCPrint[3,"Explicit: Explicit form of the relevant symbols: ", listEval, FCDoControl->exVerbose];
 
