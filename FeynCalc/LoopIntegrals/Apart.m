@@ -163,11 +163,13 @@ ApartFF[int_, lmoms_List , opts:OptionsPattern[]]:=
 ApartFF[int_, extraPiece_, lmoms_List , OptionsPattern[]]:=
 	Block[{	exp,tmp,loopHead,null1,null2,res,rest,
 			loopInts,intsUnique,solsList,repRule, time,
-			optCollecting, tcRepList, optFDS, optDropScaleless},
+			optCollecting, tcRepList, optFDS, optDropScaleless,
+			optTemporalMomentum	},
 
 		optCollecting 		= OptionValue[Collecting];
 		optFDS 				= OptionValue[FDS];
 		optDropScaleless	= OptionValue[DropScaleless];
+		optTemporalMomentum = OptionValue[TemporalMomentum];
 
 		If [OptionValue[FCVerbose]===False,
 			affVerbose=$VeryVerbose,
@@ -209,7 +211,7 @@ ApartFF[int_, extraPiece_, lmoms_List , OptionsPattern[]]:=
 			are not regularized in DR.
 		*)
 		tcRepList = {};
-		If[	!OptionValue[TemporalMomentum] && !FreeQ[exp,TemporalMomentum],
+		If[	!optTemporalMomentum && !FreeQ[exp,TemporalMomentum],
 			tcRepList = Map[Rule[TemporalMomentum[#], TemporalMomentum[Unique["fctm"]]] &, lmoms];
 			exp = exp /. Dispatch[tcRepList]
 		];

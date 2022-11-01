@@ -70,6 +70,8 @@ Options[FeynAmpDenominatorSimplify] = {
 	Factoring					-> Factor,
 	FeynAmpDenominatorCombine	-> True,
 	IntegralTable 				-> {},
+	FCLoopPropagatorPowersExpand -> True,
+	FCLoopPropagatorPowersCombine -> True,
 	Rename 						-> True
 };
 
@@ -117,6 +119,10 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 			power -> Power /. fadHold -> FeynAmpDenominator;
 
 		FCPrint[3,"FDS: Original list of propagators with combined powers: ", fadListEval, FCDoControl->fdsVerbose];
+
+		If[OptionValue[FCLoopPropagatorPowersExpand],
+			fadListEval = FCLoopPropagatorPowersExpand[fadListEval,FCI->True]
+		];
 
 		If[	!FreeQ[fadListEval, PD],
 			fadListEval = fadListEval /. PD -> procan /. procan -> PD
@@ -182,6 +188,10 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 			sLoopHead[z_,{_,__}] :> z,
 			cLoopHead[z_,{_,__}] :> z
 		};
+
+		If[OptionValue[FCLoopPropagatorPowersCombine],
+			solsList = FCLoopPropagatorPowersCombine[solsList,FCI->True];
+		];
 
 		solsList = (FeynAmpDenominatorCombine[#]/. FeynAmpDenominator -> feynord[{qs}])&/@solsList;
 
@@ -272,6 +282,8 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 			FCPrint[1, "FDS: Done applying ExpandScalarProduct, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fdsVerbose];
 			FCPrint[3, "FDS: After ExpandScalarProduct: ", res, FCDoControl->fdsVerbose]
 		];
+
+
 
 		If[	optCollecting=!=False,
 			FCPrint[1,"FDS: Applying Collect2. ", FCDoControl->fdsVerbose];

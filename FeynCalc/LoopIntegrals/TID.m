@@ -105,6 +105,7 @@ Options[TID] = {
 	SpinorChainEvaluate						-> True,
 	TimeConstrained 						-> 3,
 	ToPaVe									-> False,
+	ToSFAD									-> True,
 	UsePaVeBasis 							-> False
 };
 
@@ -197,6 +198,10 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 		t0 = Isolate[t0,{q,FeynAmpDenominator,Dot}, IsolateNames->tempIsolate]/.Dot[x___]:>FRH[Dot[x],IsolateNames->tempIsolate];
 		FCPrint[1, "TID: Done applying Isolate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 		FCPrint[3, "TID: After Isolate: ", t0 , FCDoControl->tidVerbose];
+
+		If[OptionValue[ToSFAD] && !FreeQ2[t0,{StandardPropagatorDenominator}],
+			t0 = ToSFAD[t0]
+		];
 
 		If[	!FreeQ2[Union[FCGetDimensions[t0, FreeQ->{DiracGamma[5|6|7], TemporalPair[__]},	ChangeDimension->True]],{4,-4}] && (FeynCalc`Package`DiracGammaScheme =!= "BMHV"),
 			Message[TID::failmsg,"Your input contains a mixture of 4- and D-dimensional quantities. This is in general not allowed in dimensional regularization, unless you are using the Breitenlohner-Maison-t'Hooft-Veltman scheme."];
