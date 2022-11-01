@@ -11989,3 +11989,80 @@ Tests`Shared`fcstSharedObjectsTypesettingCustomRules =
 "SubsuperscriptBox[\"m\", \"1\", \"2\"]"}
 }
 
+
+Tests`Shared`fcstSharedObjectsTypesettingFCTripleProduct =
+({
+{"fcstSharedObjectsTypesettingFCTripleProduct-ID1",
+"MakeBoxes[FCTripleProduct[a, b, c], TraditionalForm]",
+"RowBox[{FormBox[OverscriptBox[FormBox[StyleBox[\"a\", Bold, \
+StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm], \
+\"\[CenterDot]\", \"(\", \
+FormBox[OverscriptBox[FormBox[StyleBox[\"b\", Bold, StripOnInput -> \
+False], TraditionalForm], \"_\"], TraditionalForm], \"\[Cross]\", \
+FormBox[OverscriptBox[FormBox[StyleBox[\"c\", Bold, StripOnInput -> \
+False], TraditionalForm], \"_\"], TraditionalForm], \")\"}]"},
+{"fcstSharedObjectsTypesettingFCTripleProduct-ID2",
+"MakeBoxes[FCTripleProduct[CartesianIndex[a], b, c], \
+TraditionalForm]",
+"SuperscriptBox[RowBox[{\"(\", \
+FormBox[OverscriptBox[FormBox[StyleBox[\"b\", Bold, StripOnInput -> \
+False], TraditionalForm], \"_\"], TraditionalForm], \"\[Cross]\", \
+FormBox[OverscriptBox[FormBox[StyleBox[\"c\", Bold, StripOnInput -> \
+False], TraditionalForm], \"_\"], TraditionalForm], \")\"}], \
+FormBox[FormBox[StyleBox[\"a\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]]"},
+{"fcstSharedObjectsTypesettingFCTripleProduct-ID3",
+"MakeBoxes[FCTripleProduct[a, CartesianIndex[b], c], \
+TraditionalForm]",
+"SuperscriptBox[RowBox[{\"-(\", \
+FormBox[OverscriptBox[FormBox[StyleBox[\"a\", Bold, StripOnInput -> \
+False], TraditionalForm], \"_\"], TraditionalForm], \"\[Cross]\", \
+FormBox[OverscriptBox[FormBox[StyleBox[\"c\", Bold, StripOnInput -> \
+False], TraditionalForm], \"_\"], TraditionalForm], \")\"}], \
+FormBox[FormBox[StyleBox[\"b\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]]"},
+{"fcstSharedObjectsTypesettingFCTripleProduct-ID4",
+"MakeBoxes[FCTripleProduct[a, b, CartesianIndex[c]], \
+TraditionalForm]",
+"SuperscriptBox[RowBox[{\"(\", \
+FormBox[OverscriptBox[FormBox[StyleBox[\"a\", Bold, StripOnInput -> \
+False], TraditionalForm], \"_\"], TraditionalForm], \"\[Cross]\", \
+FormBox[OverscriptBox[FormBox[StyleBox[\"b\", Bold, StripOnInput -> \
+False], TraditionalForm], \"_\"], TraditionalForm], \")\"}], \
+FormBox[FormBox[StyleBox[\"c\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]]"},
+{"fcstSharedObjectsTypesettingFCTripleProduct-ID5",
+"MakeBoxes[FCTripleProduct[CartesianIndex[a], CartesianIndex[b], \
+c], TraditionalForm]",
+"FormBox[SuperscriptBox[OverscriptBox[\"\[Epsilon]\", \"_\"], \
+RowBox[{FormBox[FormBox[StyleBox[\"a\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm], FormBox[FormBox[StyleBox[\"b\", \
+Bold, StripOnInput -> False], TraditionalForm], TraditionalForm], \
+FormBox[\"c\", TraditionalForm]}]], TraditionalForm]"},
+{"fcstSharedObjectsTypesettingFCTripleProduct-ID6",
+"MakeBoxes[FCTripleProduct[CartesianIndex[a], b, \
+CartesianIndex[c]], TraditionalForm]",
+"FormBox[SuperscriptBox[OverscriptBox[\"\[Epsilon]\", \"_\"], \
+RowBox[{FormBox[FormBox[StyleBox[\"a\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm], FormBox[\"b\", TraditionalForm], \
+FormBox[FormBox[StyleBox[\"c\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+{"fcstSharedObjectsTypesettingFCTripleProduct-ID7",
+"MakeBoxes[FCTripleProduct[a, CartesianIndex[b], \
+CartesianIndex[c]], TraditionalForm]",
+"FormBox[SuperscriptBox[OverscriptBox[\"\[Epsilon]\", \"_\"], \
+RowBox[{FormBox[\"a\", TraditionalForm], FormBox[FormBox[StyleBox[\"b\
+\", Bold, StripOnInput -> False], TraditionalForm], TraditionalForm], \
+FormBox[FormBox[StyleBox[\"c\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+{"fcstSharedObjectsTypesettingFCTripleProduct-ID8",
+"MakeBoxes[FCTripleProduct[CartesianIndex[a], CartesianIndex[b], \
+CartesianIndex[c]], TraditionalForm]",
+"FormBox[SuperscriptBox[OverscriptBox[\"\[Epsilon]\", \"_\"], \
+RowBox[{FormBox[FormBox[StyleBox[\"a\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm], FormBox[FormBox[StyleBox[\"b\", \
+Bold, StripOnInput -> False], TraditionalForm], TraditionalForm], \
+FormBox[FormBox[StyleBox[\"c\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]}]], TraditionalForm]"}
+})
+

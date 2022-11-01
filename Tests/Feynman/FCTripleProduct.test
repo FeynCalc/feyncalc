@@ -1,0 +1,48 @@
+
+
+(* :Title: FCTripleProduct.test											*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2022 Rolf Mertig
+	Copyright (C) 1997-2022 Frederik Orellana
+	Copyright (C) 2014-2022 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCTripleProduct  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Feynman`fcstFCTripleProduct =
+({
+{"fcstFCTripleProduct-ID1", "Explicit[FCTP[a,b,c]]",
+"Eps[CartesianMomentum[a], CartesianMomentum[b], \
+CartesianMomentum[c]]"},
+{"fcstFCTripleProduct-ID2", "Explicit[FCTP[a,b,c,Dimension->D-1]]",
+"Eps[CartesianMomentum[a, -1 + D], CartesianMomentum[b, -1 + D], \
+CartesianMomentum[c, -1 + D]]"},
+{"fcstFCTripleProduct-ID3",
+"MatchQ[Explicit[FCTP[a,b,c,NonCommutative->True]],\
+\[IndentingNewLine]CartesianPair[CartesianIndex[$AL$13547_],\
+CartesianMomentum[a]].CartesianPair[CartesianIndex[$AL$13548_],\
+CartesianMomentum[b]].CartesianPair[CartesianIndex[$AL$13549_],\
+CartesianMomentum[c]] \
+Eps[CartesianIndex[$AL$13547_],CartesianIndex[$AL$13548_],\
+CartesianIndex[$AL$13549_]]]", "True"},
+{"fcstFCTripleProduct-ID4",
+"MatchQ[Explicit[FCTP[a,b,c,NonCommutative->True,\
+CartesianIndexNames->{i}],FCE->True],CLC[i,$AL$14193_,$AL$14194_] \
+CV[a,i].CV[b,$AL$14193_].CV[c,$AL$14194_]]", "True"},
+{"fcstFCTripleProduct-ID5",
+"MatchQ[Explicit[FCTP[a,b,c,NonCommutative->True,\
+CartesianIndexNames->{i,j}],FCE->True],CLC[i,j,$AL$14294_] \
+CV[a,i].CV[b,j].CV[c,$AL$14294_]]", "True"},
+{"fcstFCTripleProduct-ID6",
+"Explicit[FCTP[a,b,c,NonCommutative->True,CartesianIndexNames->{i,\
+j,k}],FCE->True]", "CLC[i, j, k]*CV[a, i] . CV[b, j] . CV[c, k]"},
+{"fcstFCTripleProduct-ID7",
+"Explicit[FCTP[QuantumField[a,CartesianIndex[l]],c,QuantumField[b,\
+CartesianIndex[h]],CartesianIndexNames->{j,j}],FCE->True]",
+"CLC[l, j, h]*QuantumField[a, CartesianIndex[l]] . CV[c, j] . \
+QuantumField[b, CartesianIndex[h]]"}
+});

@@ -382,6 +382,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCAttachTypesettingRule](../FCAttachTypesettingRule.md), [FCRemoveTypesettingRules](../FCRemoveTypesettingRules.md) - attaches custom typesetting rules
 - [FCFAConvert](../FCFAConvert.md) - converts a FeynArts amplitude to FeynCalc
 - [FCPrepareFAAmp](../FCPrepareFAAmp.md) - auxiliary function for a partial conversion of a FeynArts amplitude to FeynCalc
+- [FCTP](../FCTP.md), [FCTripleProduct](../FCTripleProduct.md) - triple product in 3 dimensions
 - [FermionSpinSum](../FermionSpinSum.md) - constructs Dirac traces out of squared ampliudes with external Dirac fermions
 - [FeynRule](../FeynRule.md) - determines Feynman rules from [Lagrangian](../Lagrangian.md)s
 - [FieldDerivative](../FieldDerivative.md), [FDr](../FDr.md) - field derivative
