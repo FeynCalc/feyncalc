@@ -16,8 +16,12 @@
 (* ------------------------------------------------------------------------ *)
 
 ExpandPartialD::usage =
-"ExpandPartialD[exp] expands noncommutative products of QuantumField}s and
-partial differentiation operators in exp and applies the Leibniz rule.";
+"ExpandPartialD[exp] expands noncommutative products of QuantumFields and
+partial differentiation operators in exp and applies the Leibniz rule.
+
+By default the function assumes that there are no expressions outside of exp 
+on which the derivatives inside exp could act. If this is not the case, please
+set the options LeftPartialD or RIghtPartialD to True.";
 
 (* Added 22/2-2003 in order to use FieldDerivative in a flexible way. F.Orellana *)
 PartialDRelations::usage =
@@ -51,11 +55,14 @@ Options[ExpandPartialD] = {
 	FCI					-> False,
 	FCVerbose 			-> False,
 	MaxIterations		-> Infinity,
+	LeftPartialD		-> False,
+	RightPartialD		-> False,
 	PartialDRelations	-> {DOT[a___, FCPartialD[x_,LorentzIndex[i_]], b___] :> DOT[a, FieldDerivative[dot[b], x, LorentzIndex[i]]]}
 };
 
 ExpandPartialD[expr_, OptionsPattern[]] :=
-	Block[{res, ex},
+	Block[{	res, ex, optLeftPartialD, optRightPartialD,
+			dummyFieldRight,dummyFieldLeft},
 
 		If [OptionValue[FCVerbose]===False,
 			epdVerbose=$VeryVerbose,
@@ -66,6 +73,8 @@ ExpandPartialD[expr_, OptionsPattern[]] :=
 
 		optPartialDRelations = OptionValue[PartialDRelations];
 		optMaxIterations = OptionValue[MaxIterations];
+		optLeftPartialD = OptionValue[LeftPartialD];
+		optRightPartialD = OptionValue[RightPartialD];
 
 		FCPrint[1, "ExpandPartialD: Entering.", FCDoControl->epdVerbose];
 
@@ -74,12 +83,40 @@ ExpandPartialD[expr_, OptionsPattern[]] :=
 			ex = FCI[expr]
 		];
 
+		If[optRightPartialD,
+			ex = ex.QuantumField[dummyFieldRight]
+		];
+
+		If[optLeftPartialD,
+			ex = QuantumField[dummyFieldLeft].ex
+		];
+
 		ex = DotSimplify[ex, FCI->True];
 
 		FCPrint[3, "ExpandPartialD: After DotSimplify: ", ex, FCDoControl->epdVerbose];
 
 
 		res = Fold[internalExpand[#1, #2]&, ex, Complement[$Multiplications, {Times}]];
+
+		FCPrint[3, "ExpandPartialD: After internalExpand: ", res, FCDoControl->epdVerbose];
+
+		If[!FreeQ2[res,{dummyFieldRight,dummyFieldLeft}],
+			res = res //. {
+				QuantumField[x__FCPartialD,dummyFieldRight] :>
+					DOT[RightPartialD[Sequence @@ (First /@ {x})],QuantumField[dummyFieldRight]],
+
+				QuantumField[x__FCPartialD,dummyFieldLeft] :>
+					DOT[QuantumField[dummyFieldLeft],LeftPartialD[Sequence @@ (First /@ {x})]]
+				} /. QuantumField[dummyFieldRight]|QuantumField[dummyFieldLeft] :> Unevaluated[Sequence[]]
+		];
+
+		If[	!FreeQ2[res,{dummyFieldRight,dummyFieldLeft}],
+			Message[ExpandPartialD::failmsg, "Something went wrong when removing fake fields."];
+			Abort[]
+		];
+
+		FCPrint[3, "ExpandPartialD: After internalExpand: ", ex, FCDoControl->epdVerbose];
+
 
 		FCPrint[1, "ExpandPartialD: Leaving.", FCDoControl->epdVerbose];
 

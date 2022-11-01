@@ -8,7 +8,11 @@
 
 
 (* ::Text:: *)
-(*`ExpandPartialD[exp]` expands noncommutative products of `QuantumField}`s and partial differentiation operators in `exp` and applies the Leibniz rule.*)
+(*`ExpandPartialD[exp]` expands noncommutative products of `QuantumField`s and partial differentiation operators in `exp` and applies the Leibniz rule.*)
+
+
+(* ::Text:: *)
+(*By default the function assumes that there are no expressions outside of `exp`  on which the derivatives inside `exp` could act. If this is not the case, please set the options `LeftPartialD` or `RIghtPartialD` to `True`.*)
 
 
 (* ::Subsection:: *)
@@ -78,4 +82,21 @@ RightPartialD[{CartesianIndex[i],x}] . QuantumField[S,x]
 %//ExpandPartialD
 
 
+(* ::Text:: *)
+(*By default the derivative won't act on anything outside of the input expression. But it can be made to by setting the option `RightPartialD` to `True`*)
 
+
+ExpandPartialD[RightPartialD[\[Mu]] . QuantumField[A,LorentzIndex[\[Mu]]] . QuantumField[A,LorentzIndex[\[Nu]]]]
+
+
+ExpandPartialD[RightPartialD[\[Mu]] . QuantumField[A,LorentzIndex[\[Mu]]] . QuantumField[A,LorentzIndex[\[Nu]]],RightPartialD->True]
+
+
+(* ::Text:: *)
+(*The same applies also to `LeftPartialD`*)
+
+
+ExpandPartialD[QuantumField[A,LorentzIndex[\[Nu]]].LeftNablaD[i]]
+
+
+ExpandPartialD[QuantumField[A,LorentzIndex[\[Nu]]].LeftNablaD[i],LeftPartialD->True]

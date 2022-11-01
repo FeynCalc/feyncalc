@@ -1,6 +1,8 @@
 ## ExpandPartialD
 
-`ExpandPartialD[exp]` expands noncommutative products of `QuantumField}`s and partial differentiation operators in `exp` and applies the Leibniz rule.
+`ExpandPartialD[exp]` expands noncommutative products of `QuantumField`s and partial differentiation operators in `exp` and applies the Leibniz rule.
+
+By default the function assumes that there are no expressions outside of `exp`  on which the derivatives inside `exp` could act. If this is not the case, please set the options `LeftPartialD` or `RIghtPartialD` to `True`.
 
 ### See also
 
@@ -110,12 +112,37 @@ $$\left(\partial _iS^x\right)$$
 ```mathematica
 RightPartialD[{CartesianIndex[i], x}] . QuantumField[S, x] 
  
-% // ExpandPartialD 
-  
- 
-
+% // ExpandPartialD
 ```
 
 $$\vec{\partial }_{\{i,x\}}.S^x$$
 
 $$\left(\partial _{\{i,x\}}S^x\right)$$
+
+By default the derivative won't act on anything outside of the input expression. But it can be made to by setting the option `RightPartialD` to `True`
+
+```mathematica
+ExpandPartialD[RightPartialD[\[Mu]] . QuantumField[A, LorentzIndex[\[Mu]]] . QuantumField[A, LorentzIndex[\[Nu]]]]
+```
+
+$$A_{\mu }.\left(\partial _{\mu }A_{\nu }\right)+\left(\partial _{\mu }A_{\mu }\right).A_{\nu }$$
+
+```mathematica
+ExpandPartialD[RightPartialD[\[Mu]] . QuantumField[A, LorentzIndex[\[Mu]]] . QuantumField[A, LorentzIndex[\[Nu]]], RightPartialD -> True]
+```
+
+$$A_{\mu }.\left(\partial _{\mu }A_{\nu }\right)+\left(\partial _{\mu }A_{\mu }\right).A_{\nu }+A_{\mu }.A_{\nu }.\vec{\partial }_{\mu }$$
+
+The same applies also to `LeftPartialD`
+
+```mathematica
+ExpandPartialD[QuantumField[A, LorentzIndex[\[Nu]]] . LeftNablaD[i]]
+```
+
+$$-\left(\partial _iA_{\nu }\right)$$
+
+```mathematica
+ExpandPartialD[QuantumField[A, LorentzIndex[\[Nu]]] . LeftNablaD[i], LeftPartialD -> True]
+```
+
+$$-\left(\partial _iA_{\nu }\right)-\overleftarrow{\partial }_i.A_{\nu }$$

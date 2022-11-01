@@ -486,5 +486,83 @@ QuantumField[A,LorentzIndex[nu]]]",
 LorentzIndex[nu]] - QuantumField[FCPartialD[CartesianIndex[i]], A, \
 LorentzIndex[nu]])/2"},
 {"fcstExpandPartialD-ID56",
-"ExpandPartialD[CLC[i,j,k] RightNablaD[i,j,k]]", "0"}
+"ExpandPartialD[CLC[i,j,k] RightNablaD[i,j,k]]", "0"},
+{"fcstExpandPartialD-ID57",
+"ExpandPartialD[RightPartialD[mu].QuantumField[A],\
+RightPartialD->True]",
+"QuantumField[A] . RightPartialD[LorentzIndex[mu]] + \
+QuantumField[FCPartialD[LorentzIndex[mu]], A]"},
+{"fcstExpandPartialD-ID58",
+"ExpandPartialD[RightPartialD[mu].QuantumField[A],\
+LeftPartialD->True]", "QuantumField[FCPartialD[LorentzIndex[mu]], A]"},
+{"fcstExpandPartialD-ID59",
+"ExpandPartialD[QuantumField[A].LeftPartialD[mu],\
+RightPartialD->True]",
+"QuantumField[FCPartialD[LorentzIndex[mu]], A]"},
+{"fcstExpandPartialD-ID60",
+"ExpandPartialD[QuantumField[A].LeftPartialD[mu],\
+LeftPartialD->True]",
+"LeftPartialD[LorentzIndex[mu]] . QuantumField[A] + \
+QuantumField[FCPartialD[LorentzIndex[mu]], A]"},
+{"fcstExpandPartialD-ID61",
+"ExpandPartialD[RightPartialD[mu].RightPartialD[nu].QuantumField[A]\
+,RightPartialD->True]",
+"QuantumField[FCPartialD[LorentzIndex[mu]], A] . \
+RightPartialD[LorentzIndex[nu]] + \
+QuantumField[FCPartialD[LorentzIndex[nu]], A] . \
+RightPartialD[LorentzIndex[mu]] + QuantumField[A] . \
+RightPartialD[LorentzIndex[mu]] . RightPartialD[LorentzIndex[nu]] + \
+QuantumField[FCPartialD[LorentzIndex[mu]], \
+FCPartialD[LorentzIndex[nu]], A]"},
+{"fcstExpandPartialD-ID62",
+"ExpandPartialD[RightPartialD[mu].RightPartialD[nu].QuantumField[A]\
+,LeftPartialD->True]",
+"QuantumField[FCPartialD[LorentzIndex[mu]], \
+FCPartialD[LorentzIndex[nu]], A]"},
+{"fcstExpandPartialD-ID63",
+"ExpandPartialD[QuantumField[A].LeftPartialD[mu].LeftPartialD[nu],\
+RightPartialD->True]",
+"QuantumField[FCPartialD[LorentzIndex[mu]], \
+FCPartialD[LorentzIndex[nu]], A]"},
+{"fcstExpandPartialD-ID64",
+"ExpandPartialD[QuantumField[A].LeftPartialD[mu].LeftPartialD[nu],\
+LeftPartialD->True]",
+"LeftPartialD[LorentzIndex[mu]] . \
+QuantumField[FCPartialD[LorentzIndex[nu]], A] + \
+LeftPartialD[LorentzIndex[nu]] . \
+QuantumField[FCPartialD[LorentzIndex[mu]], A] + \
+LeftPartialD[LorentzIndex[mu]] . LeftPartialD[LorentzIndex[nu]] . \
+QuantumField[A] + QuantumField[FCPartialD[LorentzIndex[mu]], \
+FCPartialD[LorentzIndex[nu]], A]"},
+{"fcstExpandPartialD-ID65",
+"ExpandPartialD[RightPartialD[mu].RightPartialD[nu].QuantumField[A]\
++QuantumField[B],RightPartialD->True]",
+"QuantumField[FCPartialD[LorentzIndex[mu]], A] . \
+RightPartialD[LorentzIndex[nu]] + \
+QuantumField[FCPartialD[LorentzIndex[nu]], A] . \
+RightPartialD[LorentzIndex[mu]] + QuantumField[A] . \
+RightPartialD[LorentzIndex[mu]] . RightPartialD[LorentzIndex[nu]] + \
+QuantumField[B] + QuantumField[FCPartialD[LorentzIndex[mu]], \
+FCPartialD[LorentzIndex[nu]], A]"},
+{"fcstExpandPartialD-ID66",
+"ExpandPartialD[RightPartialD[mu].RightPartialD[nu].QuantumField[A]\
++QuantumField[B],LeftPartialD->True]",
+"QuantumField[B] + QuantumField[FCPartialD[LorentzIndex[mu]], \
+FCPartialD[LorentzIndex[nu]], A]"},
+{"fcstExpandPartialD-ID67",
+"ExpandPartialD[QuantumField[A].LeftPartialD[mu].LeftPartialD[nu]+\
+QuantumField[B],RightPartialD->True]",
+"QuantumField[B] + QuantumField[FCPartialD[LorentzIndex[mu]], \
+FCPartialD[LorentzIndex[nu]], A]"},
+{"fcstExpandPartialD-ID68",
+"ExpandPartialD[QuantumField[A].LeftPartialD[mu].LeftPartialD[nu]+\
+QuantumField[B],LeftPartialD->True]",
+"LeftPartialD[LorentzIndex[mu]] . \
+QuantumField[FCPartialD[LorentzIndex[nu]], A] + \
+LeftPartialD[LorentzIndex[nu]] . \
+QuantumField[FCPartialD[LorentzIndex[mu]], A] + \
+LeftPartialD[LorentzIndex[mu]] . LeftPartialD[LorentzIndex[nu]] . \
+QuantumField[A] + QuantumField[B] + \
+QuantumField[FCPartialD[LorentzIndex[mu]], \
+FCPartialD[LorentzIndex[nu]], A]"}
 });
