@@ -499,7 +499,42 @@ Tests`Shared`fcstCoefficient2 =
 +1/ep z2 + z3 +x4 ep),{a4,1},{ep,0}]", "x2"},
 {"fcstCoefficient2-ID6",
 "Coefficient2[y0+ep y1+a4(1/ep x1 + x2 +x3 ep)+ a4^2(1/ep^2z1 \
-+1/ep z2 + z3 +x4 ep),a4,ep]", "x3"}
++1/ep z2 + z3 +x4 ep),a4,ep]", "x3"},
+{"fcstCoefficient2-ID7",
+"Coefficient2[y0+ep y1+a4(1/ep x1+x2+x3 ep)+a4^2(1/ep^2z1+1/ep \
+z2+z3+x4 ep),a4,Prefactor->True]", "a4*(x1/ep + x2 + ep*x3)"},
+{"fcstCoefficient2-ID8",
+"Coefficient2[y0+ep y1+a4(1/ep x1+x2+x3 ep)+a4^2(1/ep^2z1+1/ep \
+z2+z3+x4 ep),a4,2,Prefactor->True]",
+"a4^2*(ep*x4 + z1/ep^2 + z2/ep + z3)"},
+{"fcstCoefficient2-ID9",
+"Coefficient2[y0+ep y1+a4(1/ep x1+x2+x3 ep)+a4^2(1/ep^2z1+1/ep \
+z2+z3+x4 ep),{a4,2},Prefactor->True]",
+"a4^2*(ep*x4 + z1/ep^2 + z2/ep + z3)"},
+{"fcstCoefficient2-ID10",
+"Coefficient2[y0+ep y1+a4(1/ep x1+x2+x3 ep)+a4^2(1/ep^2z1+1/ep \
+z2+z3+x4 ep),{a4,1},x1]", "ep^(-1)"},
+{"fcstCoefficient2-ID11",
+"Coefficient2[y0+ep y1+a4(1/ep x1+x2+x3 ep)+a4^2(1/ep^2z1+1/ep \
+z2+z3+x4 ep),{a4,2},ep,-2]", "z1"},
+{"fcstCoefficient2-ID12",
+"Coefficient2[y0+ep y1+a4(1/ep x1+x2+x3 ep)+a4^2(1/ep^2z1+1/ep \
+z2+z3+x4 ep),{a4,2},ep]", "x4"},
+{"fcstCoefficient2-ID13",
+"Coefficient2[y0+ep y1+a4(1/ep x1+x2+x3 ep)+a4^2(1/ep^2z1+1/ep \
+z2+z3+x4 ep),{a4,1},{ep,0}]", "x2"},
+{"fcstCoefficient2-ID14",
+"Coefficient2[y0+ep y1+a4(1/ep x1+x2+x3 ep)+a4^2(1/ep^2z1+1/ep \
+z2+z3+x4 ep),{a4,1},x1,Prefactor->True]", "(a4*x1)/ep"},
+{"fcstCoefficient2-ID15",
+"Coefficient2[y0+ep y1+a4(1/ep x1+x2+x3 ep)+a4^2(1/ep^2z1+1/ep \
+z2+z3+x4 ep),{a4,2},ep,-2,Prefactor->True]", "(a4^2*z1)/ep^2"},
+{"fcstCoefficient2-ID16",
+"Coefficient2[y0+ep y1+a4(1/ep x1+x2+x3 ep)+a4^2(1/ep^2z1+1/ep \
+z2+z3+x4 ep),{a4,2},ep,Prefactor->True]", "a4^2*ep*x4"},
+{"fcstCoefficient2-ID17",
+"Coefficient2[y0+ep y1+a4(1/ep x1+x2+x3 ep)+a4^2(1/ep^2z1+1/ep \
+z2+z3+x4 ep),{a4,1},{ep,0},Prefactor->True]", "a4*x2"}
 })
 
 Tests`Shared`fcstFactorList2 =

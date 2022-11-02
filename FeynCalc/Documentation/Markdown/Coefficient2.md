@@ -2,6 +2,8 @@
 
 `Coefficient2[exp, form1, form2, ...]` is like Coefficient, but it also allows to extracts coefficients  of `form1, form2, ...` sequentially. To specify the power in `formi`, write it as `{var,pow}`.
 
+To keep the prefactor whose coefficient you extracted you need to set the option `Prefactor` to `True`.
+
 ### See also
 
 [Overview](Extra/FeynCalc.md), [Cases2](Cases2.md).
@@ -39,6 +41,18 @@ Coefficient2[ex, {a4, 2}, {ep, -1}]
 $$\text{z2}$$
 
 ```mathematica
+Coefficient2[ex, {a4, 2}, ep]
+```
+
+$$\text{x4}$$
+
+```mathematica
+Coefficient2[ex, a4, 2, ep]
+```
+
+$$\text{x4}$$
+
+```mathematica
 Coefficient2[ex, {a4, 1}, {ep, 0}]
 ```
 
@@ -49,3 +63,9 @@ Coefficient2[ex, a4, ep]
 ```
 
 $$\text{x3}$$
+
+```mathematica
+Coefficient2[ex, {a4, 1}, {ep, 0}, Prefactor -> True]
+```
+
+$$\text{a4} \;\text{x2}$$

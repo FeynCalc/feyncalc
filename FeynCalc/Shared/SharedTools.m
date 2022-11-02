@@ -27,7 +27,10 @@ Cases[{expr},f[___] | g[___] ...].";
 Coefficient2::usage=
 "Coefficient2[exp, form1, form2, ...] is like Coefficient, but it also allows
 to extracts coefficients  of form1, form2, ... sequentially. To specify the
-power in formi, write it as {var,pow}.";
+power in formi, write it as {var,pow}.
+
+To keep the prefactor whose coefficient you extracted you need to set the
+option Prefactor to True.";
 
 Combine::usage=
 "Combine[expr] puts terms in a sum over a common denominator and cancels
@@ -359,6 +362,10 @@ Options[Cases2] = {
 	Heads -> False
 };
 
+Options[Coefficient2] = {
+	Prefactor -> False
+};
+
 Options[Combine] = {
 	Expanding -> False
 };
@@ -432,17 +439,33 @@ Cases2[expr_, f_, g__, opts:OptionsPattern[]] :=
 	Infinity, FilterRules[{opts}, Options[Cases]]]];
 
 
-Coefficient2[ex_, {var_, pow_}] :=
-	Coefficient[ex, var, pow];
+Coefficient2[ex_, {var_, pow_Integer}, OptionsPattern[]] :=
+	Block[{res},
+		res = Coefficient[ex, var, pow];
 
-Coefficient2[ex_, var_, pow_Integer] :=
-	Coefficient[ex, var, pow];
+		If[ OptionValue[Prefactor],
+			res = var^pow res
+		];
 
-Coefficient2[ex_, form_] :=
-	Coefficient[ex, form]/; Head[form]=!=List;
+		res
+	];
 
-Coefficient2[ex_, form1_, form2__] :=
-	Fold[Coefficient2, ex, {form1, form2}]/; !MatchQ[{form2},{_Integer}];
+Coefficient2[ex_, var_, pow_Integer, opts:OptionsPattern[]] :=
+	Coefficient2[ex, {var, pow}, opts];
+
+Coefficient2[ex_, form_, opts:OptionsPattern[]] :=
+	Coefficient2[ex, {form, 1}, opts]/; Head[form]=!=List;
+
+Coefficient2[ex_, form1_List, rest__/;!OptionQ[{rest}], opts:OptionsPattern[]] :=
+	Coefficient2[Coefficient2[ex,form1,opts],rest, opts];
+
+
+Coefficient2[ex_, form1_, form2_Integer, rest__/;!OptionQ[{rest}], opts:OptionsPattern[]] :=
+	Coefficient2[Coefficient2[ex,{form1,form2},opts],rest, opts];
+
+Coefficient2[ex_, form1_, form2_, rest___, opts:OptionsPattern[]] :=
+	Coefficient2[Coefficient2[ex,{form1,1},opts],{form2,1},rest,opts]/;
+		Head[form2]=!=Integer && Head[form1]=!=List;
 
 Combine[x_, OptionsPattern[]] :=
 	Block[{combinet1, combinet2, expanding, num, le},
