@@ -1,0 +1,57 @@
+
+
+(* :Title: FCGetDummyIndices.test											*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2022 Rolf Mertig
+	Copyright (C) 1997-2022 Frederik Orellana
+	Copyright (C) 2014-2022 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCGetDummyIndices		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Lorentz`fcstFCGetDummyIndices =
+({
+{"fcstFCGetDummyIndices-ID1", "FCGetDummyIndices[0,{LorentzIndex}]",
+	"{}"},
+{"fcstFCGetDummyIndices-ID2", "FCGetDummyIndices[a,{LorentzIndex}]",
+	"{}"},
+{"fcstFCGetDummyIndices-ID3",
+"FCGetDummyIndices[FCI[FV[p,i]],{LorentzIndex}]", "{}"},
+{"fcstFCGetDummyIndices-ID4",
+"FCGetDummyIndices[FCI[FV[p,i]^2],{LorentzIndex}]", "{i}"},
+{"fcstFCGetDummyIndices-ID5",
+"FCGetDummyIndices[xxx(Sum[Pair[Momentum[p[i]],LorentzIndex[li]],{\
+i,1,5000}]),{LorentzIndex}]", "{}"},
+{"fcstFCGetDummyIndices-ID6",
+"FCGetDummyIndices[xxx(Sum[Pair[Momentum[p[i]],LorentzIndex[li]],{\
+i,1,5000}])+FCI[FV[q,i]MT[j,j]],{LorentzIndex}]", "{j}"},
+{"fcstFCGetDummyIndices-ID7",
+"FCGetDummyIndices[FCI[FV[p1,i]+FV[p2,i]+FV[p3,i]MT[j,j]],{\
+LorentzIndex}]", "{j}"},
+{"fcstFCGetDummyIndices-ID8",
+"FCGetDummyIndices[CartesianPair[CartesianIndex[i],\
+CartesianMomentum[p]],{CartesianIndex}]", "{}"},
+{"fcstFCGetDummyIndices-ID9",
+"FCGetDummyIndices[CartesianPair[CartesianIndex[i],\
+CartesianMomentum[p]]^2,{CartesianIndex}]", "{i}"},
+{"fcstFCGetDummyIndices-ID10",
+"FCGetDummyIndices[xxx(Sum[CartesianPair[CartesianMomentum[p[i]],\
+CartesianIndex[li]],{i,1,5000}]),{CartesianIndex}]", "{}"},
+{"fcstFCGetDummyIndices-ID11",
+"FCGetDummyIndices[xxx(Sum[Pair[CartesianMomentum[p[i]],\
+CartesianIndex[li]],{i,1,5000}])+CartesianPair[CartesianIndex[i],\
+CartesianMomentum[q]] \
+CartesianPair[CartesianIndex[j],CartesianIndex[j]],{CartesianIndex}]",
+	"{j}"},
+{"fcstFCGetDummyIndices-ID12",
+"FCGetDummyIndices[CartesianPair[CartesianIndex[i],\
+CartesianMomentum[p1]]+CartesianPair[CartesianIndex[i],\
+CartesianMomentum[p2]]+CartesianPair[CartesianIndex[i],\
+CartesianMomentum[p3]] \
+CartesianPair[CartesianIndex[j],CartesianIndex[j]],{CartesianIndex}]",
+	"{j}"}
+});

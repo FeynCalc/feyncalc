@@ -165,6 +165,8 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCCanonicalizeDummyIndices](../FCCanonicalizeDummyIndices.md) - canonicalizes dummy indices
 - [FCClearScalarProducts](../FCClearScalarProducts.md) - removes all user-specific definitions of scalar products
 - [FCGetDimensions](../FCGetDimensions.md) - returns the space-time dimensions of objects in the expression
+- [FCGetDummyIndices](../FCGetDummyIndices.md) - extracts dummy indices in the expression
+- [FCGetFreeIndices](../FCGetFreeIndices.md) - extracts free indices in the expression
 - [FCPermuteMomentaRules](../FCPermuteMomentaRules.md) - generates rules for permutations of momenta
 - [FCRenameDummyIndices](../FCRenameDummyIndices.md) - renames dummy indices
 - [FCReplaceMomenta](../FCReplaceMomenta.md) - replaces momenta in the expression
@@ -274,9 +276,10 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [DB0](../DB0.md) - derivative of [B0](../B0.md) with respect to the external momentum
 - [DB1](../DB1.md) - derivative of [B1](../B1.md) with respect to the external momentum
 - [FCApart](../FCApart.md) - backend of [[ApartFF](ApartFF)](../[ApartFF](ApartFF).md), works only on single loop integrals
+- [FCClausen](../FCClausen.md) - Clausen's function
 - [FCGramMatrix](../FCGramMatrix.md) - generates the Gram matrix from the given momenta
 - [FCGramDeterminant](../FCGramDeterminant.md) - calculates the Gram determinant
-- [FCClausen](../FCClausen.md) - Clausen's function
+- [FCDiffEqChangeVariables](../FCDiffEqChangeVariables.md) - change of variables in a differential equation
 - [FCHideEpsilon](../FCHideEpsilon.md) - substitutes $\frac{1}{\varepsilon} - \Gamma_E + \log (4 \pi)$ with $\Delta$
 - [FCShowEpsilon](../FCShowEpsilon.md) - substitutes $\Delta$ with $\frac{1}{\varepsilon} - \Gamma_E + \log (4 \pi)$
 - [FCIntegral](../FCIntegral.md) - head of loop integrals

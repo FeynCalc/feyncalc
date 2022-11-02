@@ -1,0 +1,48 @@
+
+
+(* :Title: FCGetFreeIndices.test											*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2022 Rolf Mertig
+	Copyright (C) 1997-2022 Frederik Orellana
+	Copyright (C) 2014-2022 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCGetFreeIndices			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Lorentz`fcstFCGetFreeIndices =
+({
+{"fcstFCGetFreeIndices-ID1", "FCGetFreeIndices[0,{LorentzIndex}]",
+"{}"},
+{"fcstFCGetFreeIndices-ID2", "FCGetFreeIndices[a,{LorentzIndex}]",
+"{}"},
+{"fcstFCGetFreeIndices-ID3",
+"FCGetFreeIndices[FCI[FV[p,i]],{LorentzIndex}]", "{i}"},
+{"fcstFCGetFreeIndices-ID4",
+"FCGetFreeIndices[FCI[FV[p,i]],{CartesianIndex}]", "{}"},
+{"fcstFCGetFreeIndices-ID5",
+"FCGetFreeIndices[FCI[FV[p,i]^2],{LorentzIndex}]", "{}"},
+{"fcstFCGetFreeIndices-ID6",
+"FCGetFreeIndices[FCI[FV[p1,i]+FV[p2,i]+FV[p3,i]MT[j,j]],{\
+LorentzIndex}]", "{i}"},
+{"fcstFCGetFreeIndices-ID7",
+"FCGetFreeIndices[FCI[FV[p,mu]FV[q,mu]FV[t,bh].GA[bh]+GS[nh]],{\
+LorentzIndex}]", "{}"},
+{"fcstFCGetFreeIndices-ID8",
+"FCGetFreeIndices[FCI[FV[p,mu]FV[q,nu]FV[t,bh].GA[bh]+GS[nh].GA[nn]\
+],{LorentzIndex}]", "{mu,nn, nu}"},
+{"fcstFCGetFreeIndices-ID9",
+"FCGetFreeIndices[
+FCI[FV[p, mu] FV[q, nu] FV[t, bh] . GA[bh] +
+GS[nh] . GA[nn]], {LorentzIndex}, First -> True]", "{nn}"},
+{"fcstFCGetFreeIndices-ID10",
+"FCGetFreeIndices[
+FCI[GA[la] . (c1 FV[p, mu] + c2 FV[q, mu]) . GA[la]], {LorentzIndex},
+DotSimplify -> False]", "{}"},
+{"fcstFCGetFreeIndices-ID11",
+"FCGetFreeIndices[
+FCI[GA[la] . (c1 FV[p, mu] + c2 FV[q, mu]) . GA[la]], {LorentzIndex}]", "{mu}"}
+})

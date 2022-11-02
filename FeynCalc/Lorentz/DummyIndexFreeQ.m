@@ -33,72 +33,11 @@ End[]
 
 Begin["`DummyIndexFreeQ`Private`"]
 
-difVerbose::usage="";
-
-Options[DummyIndexFreeQ]={
-	FCVerbose -> False
-}
-
-DummyIndexFreeQ[expr_, heads_List, OptionsPattern[]] :=
+DummyIndexFreeQ[expr_, heads_List] :=
 	True/; FreeQ2[expr,heads];
 
-DummyIndexFreeQ[expr_, heads_List, OptionsPattern[]] :=
-	Block[{fullLiList, freeLiList, ex, times, i, sel, sel2},
-
-		If [OptionValue[FCVerbose]===False,
-			difVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[FCVerbose], _Integer],
-				difVerbose=OptionValue[FCVerbose]
-			];
-		];
-
-
-		FCPrint[1, "DummyIndexFreeQ: Entering.", FCDoControl->difVerbose];
-		FCPrint[3, "DummyIndexFreeQ: Entering with: ", expr, FCDoControl->difVerbose];
-
-		If[ Head[expr]===Times,
-			ex = SelectNotFree[expr, heads],
-			ex = expr
-		];
-
-		ex = ExpandAll2[ex];
-
-		If[Head[ex]===Plus,
-			ex=First[ex]
-		];
-
-		If[	!FreeQ[ex, Power],
-			ex = ex /. Power[a_, b_Integer?Positive] /; !FreeQ2[a, heads] :>
-				Apply[times, Table[a, {i, b}]];
-		];
-
-		FCPrint[3, "DummyIndexFreeQ: Final ex: ", ex, FCDoControl->difVerbose];
-
-		sel = Blank/@heads;
-		If[	Length[heads]===1,
-			sel = Identity@@(Blank/@heads);
-			sel2 = Identity@@heads,
-
-			sel = Alternatives@@(Blank/@heads);
-			sel2 = Alternatives@@heads
-		];
-
-		FCPrint[1, "DummyIndexFreeQ: sel: ", sel, FCDoControl->difVerbose];
-		FCPrint[1, "DummyIndexFreeQ: sel2: ", sel2, FCDoControl->difVerbose];
-
-		freeLiList = Cases[ex, sel, Infinity]//
-			ReplaceAll[#, (sel2)[z_, ___] :> z] & // Tally // Cases[#, {z_, 1} :> z] &;
-
-		FCPrint[3, "DummyIndexFreeQ: freeLiList: ", freeLiList, FCDoControl->difVerbose];
-
-		fullLiList = Cases[expr, sel, Infinity] // DeleteDuplicates // Sort;
-		FCPrint[3, "DummyIndexFreeQ: fullLiList: ", fullLiList, FCDoControl->difVerbose];
-
-		fullLiList = fullLiList // ReplaceAll[#, (sel2)[z_, ___] :> z] & // DeleteDuplicates // Sort;
-		FCPrint[3, "DummyIndexFreeQ: fullLiList: ", fullLiList, FCDoControl->difVerbose];
-
-		(Complement[fullLiList, freeLiList] === {})
-	]/; !FreeQ2[expr,heads];
+DummyIndexFreeQ[expr_, heads_List] :=
+	(FCGetDummyIndices[expr,heads]==={})/; !FreeQ2[expr,heads];
 
 FCPrint[1,"DummyIndexFreeQ.m loaded."];
 End[]
