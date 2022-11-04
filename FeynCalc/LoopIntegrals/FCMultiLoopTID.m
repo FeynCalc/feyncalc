@@ -64,17 +64,13 @@ FCMultiLoopTID[expr_List, qs_List/; FreeQ[qs, OptionQ], opts:OptionsPattern[]] :
 
 FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 	Block[{	n, ex, rest, loopInts, intsUnique, repRule, solsList,
-			null1, null2, res,  tmpli, time, mltidIsolate, optFactoring,
-			optTimeConstrained, optUncontract, nonDmoms, nonDcmoms,
-			pairUncontract, cpairUncontract},
+			null1, null2, res, time, mltidIsolate, optFactoring,
+			optTimeConstrained, optUncontract},
 
 		optFactoring 		= OptionValue[Factoring];
 		optTimeConstrained	= OptionValue[TimeConstrained];
 		optUncontract 		= OptionValue[Uncontract];
 		n 					= OptionValue[Dimension];
-
-		nonDmoms  = Join[(Momentum[#, n - 4] & /@ qs),(Momentum/@ qs)];
-		nonDcmoms = Join[(CartesianMomentum[#, n - 4] & /@ qs),(CartesianMomentum/@ qs)];
 
 		If [OptionValue[FCVerbose]===False,
 			mltidVerbose=$VeryVerbose,
@@ -121,8 +117,6 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 			FCPrint[1, "FCMultiLoopTID: Done applying DiracSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose]
 		];
 
-
-
 		If[	OptionValue[ApartFF],
 			time=AbsoluteTime[];
 			FCPrint[1, "FCMultiLoopTID: Applying ApartFF.", FCDoControl->mltidVerbose];
@@ -131,12 +125,103 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 			FCPrint[1, "FCMultiLoopTID: Done applying ApartFF, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose]
 		];
 
-		ex = Collect2[ex, qs, Factoring -> optFactoring, TimeConstrained -> optTimeConstrained, IsolateNames -> mltidIsolate]  /.
-			(h: Pair|FeynAmpDenominator)[x__] /; !FreeQ[{x}, q_]/; MemberQ[qs,q] :> FRH[h[x], IsolateNames->mltidIsolate];
+		ex = ucontractLoopMomenta[ex, qs, n, optUncontract, optFactoring, optTimeConstrained, mltidIsolate];
+
+		time=AbsoluteTime[];
+		FCPrint[1, "FCMultiLoopTID: Applying FCLoopExtract.", FCDoControl->mltidVerbose];
+
+		{rest,loopInts,intsUnique} = FCLoopExtract[ex, qs,loopHead, FCLoopSplit -> {4}, MultiLoop->False,FCI->True,PaVe->False,
+			Factoring -> optFactoring, TimeConstrained -> optTimeConstrained];
+		FCPrint[1, "FCMultiLoopTID: Done applying FCLoopExtract, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
+		FCPrint[2, "FCMultiLoopTID: List of the unique integrals: ", intsUnique, FCDoControl->mltidVerbose];
+
+		(*	Apply tidSingleIntegral to each of the unique loop integrals	*)
+		time=AbsoluteTime[];
+		FCPrint[1, "FCMultiLoopTID: Applying tidSingleIntegral.", FCDoControl->mltidVerbose];
+		solsList = Map[tidSingleIntegral[#,qs,n]&,(intsUnique/.loopHead->Identity)];
+		FCPrint[1, "FCMultiLoopTID: Done applying tidSingleIntegral, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
+		FCPrint[3, "FCMultiLoopTID: List of the simplified integrals: ", solsList, FCDoControl->mltidVerbose];
+
+		If[!FreeQ[solsList,tidSingleIntegral],
+			Message[FCMultiLoopTID::failmsg,
+				"FCMultiLoopTID: tidSingleIntegral couldn't be applied to some of the unique integrals."];
+			Abort[]
+		];
+
+		If[	OptionValue[ApartFF]===True || OptionValue[ApartFF]===Last,
+			time=AbsoluteTime[];
+			FCPrint[1, "FCMultiLoopTID: Applying ApartFF to each of the unique integrals.", FCDoControl->mltidVerbose];
+			solsList = ApartFF[#,qs,FCI->True,FDS->OptionValue[FDS]]&/@solsList;
+			FCPrint[3, "FCMultiLoopTID: After last ApartFF: ", solsList, FCDoControl->mltidVerbose];
+			FCPrint[1, "FCMultiLoopTID: Done applying ApartFF, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose]
+		];
+
+		If[	OptionValue[FDS],
+			time=AbsoluteTime[];
+			FCPrint[1, "FCMultiLoopTID: Applying FDS to each of the unique integrals.", FCDoControl->mltidVerbose];
+			solsList = FDS[#,Sequence@@qs,FCI->True]&/@solsList;
+			FCPrint[3, "FCMultiLoopTID: After last FDS: ", solsList, FCDoControl->mltidVerbose];
+			FCPrint[1, "FCMultiLoopTID: Done applying FDS, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose]
+		];
+
+		repRule = Thread[Rule[intsUnique,solsList]];
+		FCPrint[3,"FCMultiLoopTID: Replacement rule: ", repRule, FCDoControl->mltidVerbose];
+
+		res = rest + (loopInts/. Dispatch[repRule]);
+
+		FCPrint[3,"FCMultiLoopTID: Prelmininary result: ", res, FCDoControl->mltidVerbose];
+
+		If [OptionValue[ExpandScalarProduct],
+			time=AbsoluteTime[];
+			FCPrint[1, "FCMultiLoopTID: Applying ExpandScalarProduct.", FCDoControl->mltidVerbose];
+			res = ExpandScalarProduct[res, FCI->True];
+			FCPrint[3, "FCMultiLoopTID: After ExpandScalarProduct: ", res, FCDoControl->mltidVerbose];
+			FCPrint[1, "FCMultiLoopTID: Done applying ExpandScalarProduct, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose]
+		];
+
+		If[	OptionValue[Contract],
+			time=AbsoluteTime[];
+			FCPrint[1, "FCMultiLoopTID: Applying Contract.", FCDoControl->mltidVerbose];
+			res = Contract[res, FCI->True];
+			FCPrint[3, "FCMultiLoopTID: After Contract: ", res, FCDoControl->mltidVerbose];
+			FCPrint[1, "FCMultiLoopTID: Done applying Contract, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose]
+		];
+
+		res = FRH[res,IsolateNames->mltidIsolate];
+
+		If[	OptionValue[Collecting],
+			time=AbsoluteTime[];
+			FCPrint[1, "FCMultiLoopTID: Applying Collect2.", FCDoControl->mltidVerbose];
+			res = Collect2[res,FeynAmpDenominator,Sequence@@qs, Factoring -> optFactoring, TimeConstrained -> optTimeConstrained];
+			FCPrint[3, "FCMultiLoopTID: After Collect2: ", res, FCDoControl->mltidVerbose];
+			FCPrint[1, "FCMultiLoopTID: Done applying Collect2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose]
+		];
+
+		If[	OptionValue[FCE],
+			res = FCE[res]
+		];
+
+		FCPrint[3, "FCMultiLoopTID: Leaving with: ", res, FCDoControl->mltidVerbose];
+		res
+	];
+
+
+ucontractLoopMomenta[exRaw_, qs_, n_, optUncontract_, optFactoring_, optTimeConstrained_, mltidIsolate_]:=
+	Block[{ex = exRaw,	time, nonDmoms, nonDcmoms, pairUncontract, cpairUncontract, stmpli, tmpli},
+
+		FCPrint[1, "FCMultiLoopTID: ucontractLoopMomenta: Entering. ", FCDoControl->mltidVerbose];
+
+		nonDmoms  = Join[(Momentum[#, n - 4] & /@ qs),(Momentum/@ qs)];
+		nonDcmoms = Join[(CartesianMomentum[#, n - 4] & /@ qs),(CartesianMomentum/@ qs)];
+
+		ex = Collect2[ex, qs, Factoring -> optFactoring, TimeConstrained -> optTimeConstrained, IsolateNames -> mltidIsolate];
+		ex = ex /. (h: CartesianPair|Pair|FeynAmpDenominator)[x__] /; !FreeQ[{x}, q_]/; MemberQ[qs,q] :> FRH[h[x], IsolateNames->mltidIsolate];
+
+		FCPrint[3, "FCMultiLoopTID: ucontractLoopMomenta: After Collect2: ", ex, FCDoControl->mltidVerbose];
 
 		(* Single out relevant loop momenta *)
 		time=AbsoluteTime[];
-		FCPrint[1, "FCMultiLoopTID: Expanding w.r.t the relevant loop momenta.", FCDoControl->mltidVerbose];
+		FCPrint[1, "FCMultiLoopTID: ucontractLoopMomenta: Expanding w.r.t the relevant loop momenta.", FCDoControl->mltidVerbose];
 		ex = ex//DiracGammaExpand[#,Momentum->qs, FCI->True]&//ExpandScalarProduct[#,Momentum->qs,EpsEvaluate->True, FCI->True]&;
 
 		If[	!FreeQ[ex,DiracChain],
@@ -147,8 +232,8 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 			ex = PauliChainExpand[ex,FCI->True,Momentum->qs]
 		];
 
-		FCPrint[1, "FCMultiLoopTID: Done expanding w.r.t the relevant loop momenta, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
-		FCPrint[3, "FCMultiLoopTID: After the expansion: ", ex, FCDoControl->mltidVerbose];
+		FCPrint[1, "FCMultiLoopTID: ucontractLoopMomenta: Done expanding w.r.t the relevant loop momenta, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
+		FCPrint[3, "FCMultiLoopTID: ucontractLoopMomenta: After the expansion: ", ex, FCDoControl->mltidVerbose];
 
 		(*	The Dirac matrices and epsilon tensors could also be 4-dimensional. Then we need
 			to first uncontract and then convert the loop momenta to D dimensions	*)
@@ -159,17 +244,17 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 		pairUncontract  = Join[optUncontract, nonDmoms];
 		cpairUncontract = Join[optUncontract, nonDcmoms];
 
-		FCPrint[2, "FCMultiLoopTID: Lorentz vectors to be uncontracted: ", pairUncontract, FCDoControl->mltidVerbose];
-		FCPrint[2, "FCMultiLoopTID: Cartesian vectors to be uncontracted: ", cpairUncontract, FCDoControl->mltidVerbose];
+		FCPrint[2, "FCMultiLoopTID: ucontractLoopMomenta: Lorentz vectors to be uncontracted: ", pairUncontract, FCDoControl->mltidVerbose];
+		FCPrint[2, "FCMultiLoopTID: ucontractLoopMomenta: Cartesian vectors to be uncontracted: ", cpairUncontract, FCDoControl->mltidVerbose];
 
 		ex = Uncontract[ex, Sequence@@qs, Pair -> pairUncontract, CartesianPair-> cpairUncontract, FCI->True];
 
 		If[	!FreeQ[ex,DiracTrace],
-			FCPrint[1, "FCMultiLoopTID: Applying FCTraceExpand.", FCDoControl->mltidVerbose];
+			FCPrint[1, "FCMultiLoopTID: ucontractLoopMomenta: Applying FCTraceExpand.", FCDoControl->mltidVerbose];
 			time=AbsoluteTime[];
 			ex = ex /. DiracTrace[x__]/;!FreeQ2[x, qs] :> FCTraceExpand[DiracTrace[x],FCI->True];
-			FCPrint[1, "FCMultiLoopTID: Done applying FCTraceExpand timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
-			FCPrint[3, "FCMultiLoopTID: After FCTraceExpand: ", ex , FCDoControl->mltidVerbose];
+			FCPrint[1, "FCMultiLoopTID: ucontractLoopMomenta: Done applying FCTraceExpand timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
+			FCPrint[3, "FCMultiLoopTID: ucontractLoopMomenta: After FCTraceExpand: ", ex , FCDoControl->mltidVerbose];
 		];
 
 
@@ -181,8 +266,8 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 			ex = PauliChainFactor[ex,FCI->True]
 		];
 
-		FCPrint[1, "FCMultiLoopTID: Done uncontracting Lorentz indices, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
-		FCPrint[3, "FCMultiLoopTID: After Uncontract: ", ex, FCDoControl->mltidVerbose];
+		FCPrint[1, "FCMultiLoopTID: ucontractLoopMomenta: Done uncontracting Lorentz indices, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
+		FCPrint[3, "FCMultiLoopTID: ucontractLoopMomenta: After Uncontract: ", ex, FCDoControl->mltidVerbose];
 
 		If[ (FeynCalc`Package`DiracGammaScheme === "BMHV") && !FreeQ2[ex,{LorentzIndex,CartesianIndex}],
 			time=AbsoluteTime[];
@@ -204,88 +289,12 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 				Abort[]
 			];
 
-			FCPrint[2,"FCMultiLoopTID: Tensor parts after handling 4 and D-4 dimensional loop momenta: ", ex, FCDoControl->mltidVerbose];
-			FCPrint[1, "FCMultiLoopTID: Done handling 4 and D-4 dimensional loop momenta, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
+			FCPrint[2, "FCMultiLoopTID: ucontractLoopMomenta: Tensor parts after handling 4 and D-4 dimensional loop momenta: ", ex, FCDoControl->mltidVerbose];
+			FCPrint[1, "FCMultiLoopTID: ucontractLoopMomenta: Done handling 4 and D-4 dimensional loop momenta, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
 		];
+		ex
 
-
-		time=AbsoluteTime[];
-		FCPrint[1, "FCMultiLoopTID: Applying FCLoopExtract.", FCDoControl->mltidVerbose];
-
-		{rest,loopInts,intsUnique} = FCLoopExtract[ex, qs,loopHead, FCLoopSplit -> {4}, MultiLoop->False,FCI->True,PaVe->False,
-			Factoring -> optFactoring, TimeConstrained -> optTimeConstrained];
-		FCPrint[1, "FCMultiLoopTID: Done applying FCLoopExtract, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
-		FCPrint[2,"FCMultiLoopTID: List of the unique integrals: ", intsUnique, FCDoControl->mltidVerbose];
-
-		(*	Apply tidSingleIntegral to each of the unique loop integrals	*)
-		time=AbsoluteTime[];
-		FCPrint[1, "FCMultiLoopTID: Applying tidSingleIntegral.", FCDoControl->mltidVerbose];
-		solsList = Map[tidSingleIntegral[#,qs,n]&,(intsUnique/.loopHead->Identity)];
-		FCPrint[1, "FCMultiLoopTID: Done applying tidSingleIntegral, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
-		FCPrint[3,"FCMultiLoopTID: List of the simplified integrals: ", solsList, FCDoControl->mltidVerbose];
-
-		If[!FreeQ[solsList,tidSingleIntegral],
-			Message[FCMultiLoopTID::failmsg,
-				"FCMultiLoopTID: tidSingleIntegral couldn't be applied to some of the unique integrals."];
-			Abort[]
-		];
-
-		If[	OptionValue[ApartFF]===True || OptionValue[ApartFF]===Last,
-			time=AbsoluteTime[];
-			FCPrint[1, "FCMultiLoopTID: Applying ApartFF to each of the unique integrals.", FCDoControl->mltidVerbose];
-			solsList = ApartFF[#,qs,FCI->True,FDS->OptionValue[FDS]]&/@solsList;
-			FCPrint[3,"FCMultiLoopTID: After last ApartFF: ", solsList, FCDoControl->mltidVerbose];
-			FCPrint[1, "FCMultiLoopTID: Done applying ApartFF, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose]
-		];
-
-		If[	OptionValue[FDS],
-			time=AbsoluteTime[];
-			FCPrint[1, "FCMultiLoopTID: Applying FDS to each of the unique integrals.", FCDoControl->mltidVerbose];
-			solsList = FDS[#,Sequence@@qs,FCI->True]&/@solsList;
-			FCPrint[3,"FCMultiLoopTID: After last FDS: ", solsList, FCDoControl->mltidVerbose];
-			FCPrint[1, "FCMultiLoopTID: Done applying FDS, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose]
-		];
-
-		repRule = Thread[Rule[intsUnique,solsList]];
-		FCPrint[3,"FCMultiLoopTID: Replacement rule: ", repRule, FCDoControl->mltidVerbose];
-
-		res = rest + (loopInts/. Dispatch[repRule]);
-
-		FCPrint[3,"FCMultiLoopTID: Prelmininary result: ", res, FCDoControl->mltidVerbose];
-
-		If [OptionValue[ExpandScalarProduct],
-			time=AbsoluteTime[];
-			FCPrint[1, "FCMultiLoopTID: Applying ExpandScalarProduct.", FCDoControl->mltidVerbose];
-			res = ExpandScalarProduct[res, FCI->True];
-			FCPrint[3,"FCMultiLoopTID: After ExpandScalarProduct: ", res, FCDoControl->mltidVerbose];
-			FCPrint[1, "FCMultiLoopTID: Done applying ExpandScalarProduct, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose]
-		];
-
-		If[	OptionValue[Contract],
-			time=AbsoluteTime[];
-			FCPrint[1, "FCMultiLoopTID: Applying Contract.", FCDoControl->mltidVerbose];
-			res = Contract[res, FCI->True];
-			FCPrint[3,"FCMultiLoopTID: After Contract: ", res, FCDoControl->mltidVerbose];
-			FCPrint[1, "FCMultiLoopTID: Done applying Contract, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose]
-		];
-
-		res = FRH[res,IsolateNames->mltidIsolate];
-
-		If[	OptionValue[Collecting],
-			time=AbsoluteTime[];
-			FCPrint[1, "FCMultiLoopTID: Applying Collect2.", FCDoControl->mltidVerbose];
-			res = Collect2[res,FeynAmpDenominator,Sequence@@qs, Factoring -> optFactoring, TimeConstrained -> optTimeConstrained];
-			FCPrint[3,"FCMultiLoopTID: After Collect2: ", res, FCDoControl->mltidVerbose];
-			FCPrint[1, "FCMultiLoopTID: Done applying Collect2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose]
-		];
-
-		If[	OptionValue[FCE],
-			res = FCE[res]
-		];
-
-		FCPrint[3, "FCMultiLoopTID: Leaving with: ", res, FCDoControl->mltidVerbose];
-		res
-	];
+];
 
 
 tidSingleIntegral[int_, qs_List , n_] :=
