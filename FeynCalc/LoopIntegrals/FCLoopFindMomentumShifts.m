@@ -138,6 +138,7 @@ FCLoopFindMomentumShifts[fromRaw_List/;FreeQ[fromRaw,FCTopology], toRaw_/;FreeQ[
 
 findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmomsRaw_List]:=
 	Block[{lhs, rhs, eq, mark, vars, sol, res, lmoms, allmoms, extmoms},
+
 		lhs = MomentumCombine[from,FCI->True];
 		rhs = MomentumCombine[to,FCI->True];
 		{lhs, rhs} = {lhs, rhs} /. {
@@ -225,9 +226,10 @@ findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmomsRaw_List]
 
 		res
 
-	]
+	]/; Length[from]===Length[to];
 
-
+findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, _List]:=
+	{}/; Length[from]=!=Length[to];
 
 
 
