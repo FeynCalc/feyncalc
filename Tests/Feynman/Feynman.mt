@@ -43,9 +43,8 @@ tmpTest = Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]],
 	EquivalenceFunction -> fcCompare]&,
 	Join@@(ToExpression/@Select[Names["Tests`Feynman`*"], !StringMatchQ[#, "*fcstAbort*"] &])];
 
-
 If[ Names["Tests`Feynman`fcstAbort*"]=!={},
-	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],(#[[4]]),testID->#[[1]],
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],(#[[2]]),testID->#[[1]],
 		MessagesEquivalenceFunction->stringCompareIgnore]&,
 		Join@@(ToExpression/@Names["Tests`Feynman`fcstAbort*"])];
 	tmpTest = tmpTest /. testID->TestID /. test->Test
