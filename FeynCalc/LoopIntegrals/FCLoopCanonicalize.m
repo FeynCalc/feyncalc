@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopCanonicalize::usage =
-"FCLoopCanonicalize[exp, q, loopHead] is an auxiliary internal function that
+"FCLoopCanonicalize[exp, {q1, q2,...} loopHead] is an auxiliary internal function that
 canonicalizes indices of 1-loop integrals with loop momentum q that are
 wrapped with loopHead. The output is given as a list of 4 entries, of which
 the last one contains a list of all the unique 1-loop integrals in the given
@@ -39,7 +39,10 @@ Options[FCLoopCanonicalize] = {
 	PaVeIntegralHeads -> FeynCalc`Package`PaVeHeadsList
 };
 
-FCLoopCanonicalize[expr_, q_, head_, OptionsPattern[]] :=
+FCLoopCanonicalize[expr_, q_/;Head[q]=!=List, head_, opts:OptionsPattern[]] :=
+	FCLoopCanonicalize[expr, {q}, head, opts];
+
+FCLoopCanonicalize[expr_, qs_List, head_, OptionsPattern[]] :=
 	Block[{	ex, loopList, repIndexList, reversedRepIndexList,
 			canIndexList, uniqueCanIndexList, null1, null2, seed,
 			res, loopIntHeads},
@@ -60,7 +63,7 @@ FCLoopCanonicalize[expr_, q_, head_, OptionsPattern[]] :=
 			Abort[]
 		];
 
-		If[ Cases[loopList, head[x_]/;FreeQ2[x,Join[{q},loopIntHeads]] , Infinity]=!={},
+		If[ Cases[loopList, head[x_]/;FreeQ2[x,Join[qs,loopIntHeads]] , Infinity]=!={},
 			Message[FCLoopCanonicalize::failmsg, "The input expression incorrect contains nonloop terms."];
 			Abort[]
 		];
@@ -71,10 +74,10 @@ FCLoopCanonicalize[expr_, q_, head_, OptionsPattern[]] :=
 					Which[
 						!FreeQ[#,LorentzIndex] && FreeQ[#,CartesianIndex],
 							((MapIndexed[Rule[#1,LorentzIndex[FCGV[(seed <> ToString[Identity @@ #2])], (#1/.LorentzIndex[_,dim_:4]:>dim)]] &,
-								Cases[#, Pair[x_, LorentzIndex[y__]] /; ! FreeQ[x, q] :> LorentzIndex[y], Infinity] // Union] // Flatten)),
+								Cases[#, Pair[x_, LorentzIndex[y__]] /; ! FreeQ2[x, qs] :> LorentzIndex[y], Infinity] // Union] // Flatten)),
 						FreeQ[#,LorentzIndex] && !FreeQ[#,CartesianIndex],
 							(MapIndexed[Rule[#1,CartesianIndex[FCGV[(seed <> ToString[Identity @@ #2])], (#1/.CartesianIndex[_,dim_:3]:>dim)]] &, Cases[#,
-								CartesianPair[x_, CartesianIndex[y__]] /; ! FreeQ[x, q] :>
+								CartesianPair[x_, CartesianIndex[y__]] /; ! FreeQ2[x, qs] :>
 									CartesianIndex[y], Infinity] // Union] // Flatten),
 						FreeQ[#,LorentzIndex] && FreeQ[#,CartesianIndex],
 							{},
