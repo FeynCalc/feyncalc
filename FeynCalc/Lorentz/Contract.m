@@ -620,6 +620,9 @@ contractWithProductOfPairs[a_, b_Pair] :=
 contractWithProductOfPairs[a_, b_CartesianPair] :=
 	contractWithSinglePair[a, b];
 
+contractWithProductOfPairs[a_, b_/;!MemberQ[{Pair,CartesianPair,Times},Head[b]]] :=
+	a b;
+
 contractWithProductOfPairs[a_, b_Times] :=
 	(Fold[contractWithSinglePair,a, List@@b]/. Pair -> PairContract /. PairContract -> Pair)/; FreeQ2[{a,b},{CartesianPair,CartesianMomentum,CartesianIndex}];
 
