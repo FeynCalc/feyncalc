@@ -54,7 +54,7 @@ ExcludeMasses::usage =
 partial fraction decomposition should not be performed, e.g.
 ExcludeMasses->{m1,m2,3}.";
 
-ApartFF::failmsg = "Error! ScalApartFF has encountered a fatal problem and must \
+ApartFF::failmsg = "Error! ApartFF has encountered a fatal problem and must \
 abort the computation. The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
