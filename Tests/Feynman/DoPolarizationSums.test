@@ -387,7 +387,32 @@ DoPolarizationSums[#, k, FCE -> True] &", "CSP[p, q] + (CSP[k, p] CSP[k, q])/SP[
 CartesianMomentum[Polarization[k, -I], D - 1]] CartesianPair[
 CartesianMomentum[q, D - 1],
 CartesianMomentum[Polarization[k, I], D - 1]] //
-DoPolarizationSums[#, k, FCE -> True] &", "CSPD[p, q] + (CSPD[k, p] CSPD[k, q])/SPD[k, k]"}
+DoPolarizationSums[#, k, FCE -> True] &", "CSPD[p, q] + (CSPD[k, p] CSPD[k, q])/SPD[k, k]"},
+{"fcstDoPolarizationSums-ID44",
+	"DoPolarizationSums[((2*cV3*gV*CV[Polarization[q, -I], ciMinus2]*
+	QMCHN[FMBra[p] . delr[CartesianIndex[hold[ciMinus2]]] .
+		FMKet[n]])/M -
+	cV1*gV*CV[q, ciMinus2]*
+	QMCHN[FMBra[p] . r[CartesianIndex[hold[ciMinus2]]] . FMKet[n]]*
+	TC[Polarization[q, -I]])*((2*cV3*gV*
+	CV[Polarization[q, I], ciMinus2]*
+	QMCHN[FMBra[n] . delr[CartesianIndex[hold[ciMinus2]]] .
+		FMKet[p]])/M -
+	cV1*gV*CV[q, ciMinus2]*
+	QMCHN[FMBra[n] . r[CartesianIndex[hold[ciMinus2]]] . FMKet[p]]*
+	TC[Polarization[q, I]]), q, FCE -> True]",
+	"(12*cV3^2*gV^2*QMCHN[delr[CartesianIndex[hold[ciMinus2]]]*FMBra[p]*FMKet[n]]*
+QMCHN[delr[CartesianIndex[hold[ciMinus2]]]*FMBra[n]*FMKet[p]])/M^2 -
+cV1^2*gV^2*CSP[q, q]*QMCHN[FMBra[p]*FMKet[n]*r[CartesianIndex[hold[ciMinus2]]]]*
+QMCHN[FMBra[n]*FMKet[p]*r[CartesianIndex[hold[ciMinus2]]]] +
+(4*cV3^2*gV^2*CSP[q, q]*QMCHN[delr[CartesianIndex[hold[ciMinus2]]]*FMBra[p]*FMKet[n]]*
+QMCHN[delr[CartesianIndex[hold[ciMinus2]]]*FMBra[n]*FMKet[p]])/(M^2*SP[q, q]) -
+(2*cV1*cV3*gV^2*CSP[q, q]*QMCHN[delr[CartesianIndex[hold[ciMinus2]]]*FMBra[n]*FMKet[p]]*
+QMCHN[FMBra[p]*FMKet[n]*r[CartesianIndex[hold[ciMinus2]]]]*TC[q])/(M*SP[q, q]) -
+(2*cV1*cV3*gV^2*CSP[q, q]*QMCHN[delr[CartesianIndex[hold[ciMinus2]]]*FMBra[p]*FMKet[n]]*
+QMCHN[FMBra[n]*FMKet[p]*r[CartesianIndex[hold[ciMinus2]]]]*TC[q])/(M*SP[q, q]) +
+(cV1^2*gV^2*CSP[q, q]*QMCHN[FMBra[p]*FMKet[n]*r[CartesianIndex[hold[ciMinus2]]]]*
+QMCHN[FMBra[n]*FMKet[p]*r[CartesianIndex[hold[ciMinus2]]]]*TC[q]^2)/SP[q, q]"}
 };
 
 

@@ -100,8 +100,8 @@ DoPolarizationSums[expr_, bosonMomentum_, opts:OptionsPattern[]]:=
 
 DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
 	Block[ {polInd1, polInd2, res, ex, tmp, dim, polVectorsList, freePart,
-			polPart, head1=Null, head2=Null, optNumberOfPolarizations,
-			nPolarizations, optVirtualBoson},
+			polPart, optNumberOfPolarizations, nPolarizations,
+			optVirtualBoson, dummyInd1, dummyInd2},
 
 		If [OptionValue[FCVerbose]===False,
 			dpsVerbose=$VeryVerbose,
@@ -150,7 +150,29 @@ DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
 			Abort[]
 		];
 
-		polVectorsList = SelectNotFree[SelectNotFree[Sort[DeleteDuplicates[Cases[ex ,_Momentum | _CartesianMomentum,
+
+		ex = ex /.
+
+
+			{
+			CartesianPair[CartesianMomentum[Polarization[bosonMomentum,rest1__],di_:3],CartesianMomentum[Polarization[bosonMomentum,rest2__],di_:3]] :>
+				(dummyInd1=Unique["polInd"]; dummyInd2=Unique["polInd"];
+				Pair[Momentum[Polarization[bosonMomentum,rest1],di+1],LorentzIndex[dummyInd1,di+1]]*
+				Pair[Momentum[Polarization[bosonMomentum,rest2],di+1],LorentzIndex[dummyInd2,di+1]]*
+				Pair[LorentzIndex[dummyInd1,di+1],LorentzIndex[dummyInd2,di+1]])
+			} /. {
+				TemporalPair[ExplicitLorentzIndex[0],TemporalMomentum[Polarization[bosonMomentum,rest__]]] :>
+				(dummyInd1=Unique["polInd"]; Pair[Momentum[Polarization[bosonMomentum,rest]],LorentzIndex[dummyInd1]]*
+					Pair[ExplicitLorentzIndex[0],LorentzIndex[dummyInd1]]),
+
+				CartesianPair[slot_,CartesianMomentum[Polarization[bosonMomentum,rest__],di_:3]] :>
+				(dummyInd1=Unique["polInd"]; Pair[Momentum[Polarization[bosonMomentum,rest],di+1],LorentzIndex[dummyInd1,di+1]]*
+					Pair[slot,LorentzIndex[dummyInd1,di+1]])
+		};
+
+		FCPrint[1,"DoPolarizationSums: Intermediate expression: ", ex, FCDoControl->dpsVerbose];
+
+		polVectorsList = SelectNotFree[SelectNotFree[Sort[DeleteDuplicates[Cases[ex ,_Momentum | _CartesianMomentum | _TemporalMomentum,
 			Infinity]]],Polarization],bosonMomentum];
 
 		FCPrint[1,"DoPolarizationSums: Polarization vectors present in the expression: ", polVectorsList, FCDoControl->dpsVerbose];
@@ -167,11 +189,13 @@ DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
 
 			(* Polarization vectors present *)
 
+			FCPrint[1,"DoPolarizationSums: Polarization vectors in the expression: ", polVectorsList, FCDoControl->dpsVerbose];
+
 			If[	!MatchQ[polVectorsList, {
-					(CartesianMomentum|Momentum)[Polarization[bosonMomentum,Complex[0,1], ___Rule],di___],
-					(CartesianMomentum|Momentum)[Polarization[bosonMomentum,Complex[0,-1], ___Rule],di___]} | {
-					(CartesianMomentum|Momentum)[Polarization[bosonMomentum,Complex[0,-1], ___Rule],di___],
-					(CartesianMomentum|Momentum)[Polarization[bosonMomentum,Complex[0,1], ___Rule],di___]}],
+					(Momentum)[Polarization[bosonMomentum,Complex[0,1], ___Rule],di___],
+					(Momentum)[Polarization[bosonMomentum,Complex[0,-1], ___Rule],di___]} | {
+					(Momentum)[Polarization[bosonMomentum,Complex[0,-1], ___Rule],di___],
+					(Momentum)[Polarization[bosonMomentum,Complex[0,1], ___Rule],di___]}],
 				Message[DoPolarizationSums::failmsg,"Polarization vectors do not seem to appear in a proper way in the expression."];
 				Abort[]
 			];
@@ -186,20 +210,16 @@ DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
 				dim = First[dim]
 			];
 
-			tmp = ex /. {
 
+
+			tmp = ex /.{
 				Momentum[Polarization[bosonMomentum,Complex[0,1], ___Rule],dim] :>
-					(head1=LorentzIndex; LorentzIndex[polInd1,dim]),
-				CartesianMomentum[Polarization[bosonMomentum,Complex[0,1], ___Rule],dim-1] :>
-					(head1=CartesianIndex; CartesianIndex[polInd1,dim-1]),
-
+					LorentzIndex[polInd1,dim],
 				Momentum[Polarization[bosonMomentum,Complex[0,-1], ___Rule],dim] :>
-					(head2=LorentzIndex; LorentzIndex[polInd2,dim]),
-				CartesianMomentum[Polarization[bosonMomentum,Complex[0,-1], ___Rule],dim-1] :>
-					(head2=CartesianIndex; CartesianIndex[polInd2,dim-1])
+					LorentzIndex[polInd2,dim]
 			};
 
-			FCPrint[2,"DoPolarizationSums: {head1, head2}: ", {head1, head2}, FCDoControl->dpsVerbose];
+			FCPrint[3,"DoPolarizationSums: Intermediate expression: ", tmp, FCDoControl->dpsVerbose];
 
 			{freePart, polPart} = FCSplit[tmp,{polInd1,polInd2}]
 		];
@@ -210,7 +230,7 @@ DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
 			bosonMomentum=!=0 && auxMomentum===-1,
 				FCPrint[1,"DoPolarizationSums: Inserting polarization sum for a massive vector boson.", FCDoControl->dpsVerbose];
 				If[ polPart=!=0,
-					polPart = OptionValue[Head][PolarizationSum[polInd1,polInd2,bosonMomentum, Dimension->dim, Heads->{head1,head2}]] polPart
+					polPart = OptionValue[Head][PolarizationSum[polInd1,polInd2,bosonMomentum, Dimension->dim, Heads->{LorentzIndex,LorentzIndex}]] polPart
 				];
 				If[	optNumberOfPolarizations=!=Automatic,
 					nPolarizations = optNumberOfPolarizations,
@@ -221,7 +241,7 @@ DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
 			bosonMomentum=!=0 && auxMomentum===0,
 				FCPrint[1,"DoPolarizationSums: Inserting polarization sum for a massless vector boson with 4 polarizations (2 of which are unphysical).", FCDoControl->dpsVerbose];
 				If[	polPart=!=0,
-					polPart = OptionValue[Head][PolarizationSum[polInd1,polInd2,bosonMomentum, auxMomentum, Dimension->dim, VirtualBoson-> optVirtualBoson, Heads->{head1,head2}]] polPart;
+					polPart = OptionValue[Head][PolarizationSum[polInd1,polInd2,bosonMomentum, auxMomentum, Dimension->dim, VirtualBoson-> optVirtualBoson, Heads->{LorentzIndex,LorentzIndex}]] polPart;
 				];
 				If[	optNumberOfPolarizations=!=Automatic,
 					nPolarizations = optNumberOfPolarizations,
@@ -236,7 +256,7 @@ DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
 			bosonMomentum=!=0 && !MemberQ[{0,-1}, auxMomentum],
 				FCPrint[1,"DoPolarizationSums: Inserting polarization sum for a massless vector boson with 2 physical polarizations (axial gauge).", FCDoControl->dpsVerbose];
 				If[	polPart=!=0,
-					polPart = OptionValue[Head][PolarizationSum[polInd1,polInd2,bosonMomentum, auxMomentum, Dimension->dim, VirtualBoson-> optVirtualBoson, Heads->{head1,head2}]] polPart;
+					polPart = OptionValue[Head][PolarizationSum[polInd1,polInd2,bosonMomentum, auxMomentum, Dimension->dim, VirtualBoson-> optVirtualBoson, Heads->{LorentzIndex,LorentzIndex}]] polPart;
 				];
 				If[	optNumberOfPolarizations=!=Automatic,
 					nPolarizations = optNumberOfPolarizations,
