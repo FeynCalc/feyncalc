@@ -68,7 +68,14 @@ ExplicitPartialD[expr_, OptionsPattern[]] :=
 				FeynCalc`Package`MetricS RightPartialD[a],
 
 			LeftNablaD[a_]/; MemberQ[{CartesianIndex,CartesianMomentum}, Head[a]] :>
-				FeynCalc`Package`MetricS LeftPartialD[a]
+				FeynCalc`Package`MetricS LeftPartialD[a],
+
+
+			RightNablaD[{a_,rest___}]/; MemberQ[{CartesianIndex,CartesianMomentum}, Head[a]] :>
+				FeynCalc`Package`MetricS RightPartialD[{a,rest}],
+
+			LeftNablaD[{a_,rest___}]/; MemberQ[{CartesianIndex,CartesianMomentum}, Head[a]] :>
+				FeynCalc`Package`MetricS LeftPartialD[{a,rest}]
 		};
 
 		res

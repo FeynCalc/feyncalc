@@ -60,5 +60,8 @@ RightPartialD[CartesianIndex[i]])/2) . QuantumField[Y]"},
 {"fcstExplicitPartialD-ID13",
 "ExplicitPartialD[QuantumField[X].LeftRightNablaD2[i].QuantumField[\
 Y]]", "QuantumField[X] . (-LeftPartialD[CartesianIndex[i]] - \
-RightPartialD[CartesianIndex[i]]) . QuantumField[Y]"}
+RightPartialD[CartesianIndex[i]]) . QuantumField[Y]"},
+{"fcstExplicitPartialD-ID14",
+"ExplicitPartialD[RightNablaD[{CartesianIndex[i], x}] . QuantumField[Phi, x]]",
+"(-RightPartialD[{CartesianIndex[i], x}]) . QuantumField[Phi, x]"}
 });
