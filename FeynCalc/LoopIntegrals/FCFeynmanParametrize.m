@@ -175,7 +175,7 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmomsRaw_List /; ! Opti
 		];
 
 		If[	Length[dim]=!=1,
-			Message[FCFeynmanParametrize::failmsg,"The loop integrals contains momenta in different dimensions."];
+			Message[FCFeynmanParametrize::failmsg,"The loop integrals contains momenta in different dimensions: "<>ToString[dim,InputForm]];
 			Abort[]
 		];
 		dim = First[dim];
