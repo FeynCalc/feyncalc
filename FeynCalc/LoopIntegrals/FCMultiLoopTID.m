@@ -33,6 +33,8 @@ FCMultiLoopTID cannot handle such cases properly.";
 
 Begin["`Package`"]
 
+ucontractLoopMomenta::usage="";
+
 End[]
 
 Begin["`FCMultiLoopTID`Private`"]
@@ -40,6 +42,8 @@ Begin["`FCMultiLoopTID`Private`"]
 (*	This is just for the Workbench to know
 	that these internal functions are not typos *)
 mltidVerbose::usage="";
+
+
 
 Options[FCMultiLoopTID] = {
 	ApartFF						-> True,
