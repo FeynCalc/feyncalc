@@ -6243,6 +6243,20 @@ FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
 FormBox[FormBox[\"p2\", TraditionalForm], TraditionalForm]}], \"\\\"+\
 \\\"\", RowBox[{\"\[ImaginaryI]\", \" \", \"\\\"\[Eta]\\\"\"}], \
 \"\\\")\\\"\"}, \"RowDefault\"]], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID707.1",
+"MakeBoxes[\"FeynAmpDenominator[StandardPropagatorDenominator[\
+Momentum[q2,D],0,-((1-GaugeXi) \
+SMP[\\\"m_Z\\\"\\!\\(\\*SuperscriptBox[\\(]\\), \
+\\(2\\)]\\)),{1,1}]]\"*\"SFAD[{{q2,0},{(1-GaugeXi) \
+SMP[\\\"m_Z\\\"\\!\\(\\*SuperscriptBox[\\(]\\), \\(2\\)]\\),1},1}]\", \
+TraditionalForm]",
+"RowBox[{\"\\\"FeynAmpDenominator[StandardPropagatorDenominator[\
+Momentum[q2,D],0,-((1-GaugeXi) \
+SMP[\\\\\\\"m_Z\\\\\\\"\\\\!\\\\(\\\\*SuperscriptBox[\\\\(]\\\\), \
+\\\\(2\\\\)]\\\\)),{1,1}]]\\\"\", \" \", \
+\"\\\"SFAD[{{q2,0},{(1-GaugeXi) \
+SMP[\\\\\\\"m_Z\\\\\\\"\\\\!\\\\(\\\\*SuperscriptBox[\\\\(]\\\\), \
+\\\\(2\\\\)]\\\\),1},1}]\\\"\"}]"},
 {"fcstSharedObjectsTypesetting-ID708",
 "MakeBoxes[PauliIndex[i], TraditionalForm]",
 "FormBox[\"i\", TraditionalForm]"},

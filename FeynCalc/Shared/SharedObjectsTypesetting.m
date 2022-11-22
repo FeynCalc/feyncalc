@@ -969,6 +969,8 @@ feynAmpDenominatorTypeset[PropagatorDenominator[p_,m_]]:=
 	SequenceForm[Pair[p,p], "-", m^2];
 
 feynAmpDenominatorTypeset[StandardPropagatorDenominator[ex1_,ex2_,m2_,{n_,s_}]]:=
+	(
+	m2Exp=Expand[m2];
 	Row[{"(",
 
 		If[	ex1=!=0,
@@ -989,18 +991,37 @@ feynAmpDenominatorTypeset[StandardPropagatorDenominator[ex1_,ex2_,m2_,{n_,s_}]]:
 			Unevaluated[Sequence[]]
 		],
 
-		If[m2=!=0,
-			(*If m2 is negative *)
-			Sequence@@{If[((Abs[m2] /. Abs -> Identity) =!= (-m2)),
-				If[	(ex1===0 && ex2===0),
-					Unevaluated[Sequence[]],
-					"+"
-				],
+		If[	m2Exp=!=0,
+
+				Sequence@@{
+					If[	(ex1===0 && ex2===0),
+						(*	ex1 and ex2 are both zero -> no extra sign	*)
+						Unevaluated[Sequence[]],
+
+						(*	at least one of the two is not zero -> extra sign might be needed	*)
+						If[	Head[m2Exp]===Plus,
+							(*	we have a sum	*)
+							m2ExpFirst = With[{xx = m2Exp}, ToExpression[First[First[MakeBoxes[xx, TraditionalForm]]]]];
+							If[
+								(Abs[m2ExpFirst]/.Abs->Identity) =!= m2ExpFirst,
+								(*there is a relative minus sign! *)
+								Unevaluated[Sequence[]],
+								(*there is no relative minus sign! *)
+								"+"
+							],
+							(*	we have a single term	*)
+							If[	((Abs[m2Exp] /. Abs -> Identity) =!= (m2Exp)),
+								(*there is a relative minus sign! *)
+								Unevaluated[Sequence[]],
+								(*there is no relative minus sign! *)
+								"+"
+							]
+						]
+					],
+					m2Exp
+				},
 				Unevaluated[Sequence[]]
 			],
-			Expand[m2]},
-			Unevaluated[Sequence[]]
-		],
 
 		If[$FCShowIEta,
 
@@ -1012,7 +1033,8 @@ feynAmpDenominatorTypeset[StandardPropagatorDenominator[ex1_,ex2_,m2_,{n_,s_}]]:
 			Unevaluated[Sequence[]]
 		],
 
-	")"}]^(n);
+	")"}]^(n)
+	);
 
 feynAmpDenominatorTypeset[CartesianPropagatorDenominator[ex1_,ex2_,m2_,{n_,s_}]]:=
 	Row[{"(",
