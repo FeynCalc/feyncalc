@@ -68,7 +68,8 @@ Options[FCLoopFindTopologies] = {
 	MomentumCombine				-> True,
 	Names						-> "fctopology",
 	Ordering					-> {},
-	PreferredTopologies			-> {}
+	PreferredTopologies			-> {},
+	SetDimensions				-> {D}
 };
 
 sortingFu[x_, y_] :=
@@ -85,7 +86,8 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 			extraPropagatorsFirst,extraPropagatorsLast, addF, addL, arrayF, arrayL, denFreePart, denPart,
 			denFreeTopoName, topoTempName, optFactoring, namesPreferredTopologies, preferredTopologiesAbsent, optFDS, allFADs,
 			allFADsSimp, ruleFADsSimp, exFinal, optOrdering, orderingFirst, orderingLast, topoName, optHead,
-			momenta, optFinalSubstitutions, optFCLoopIsolate, scalelessTopologies ,ruleScalelessTopologies},
+			momenta, optFinalSubstitutions, optFCLoopIsolate, scalelessTopologies ,ruleScalelessTopologies, emoms,
+			spsFromDownValues, optSetDimensions},
 
 		optExtraPropagators 	= OptionValue[ExtraPropagators];
 		optOrdering 			= OptionValue[Ordering];
@@ -97,6 +99,7 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 		optFDS					= OptionValue[FDS];
 		optFinalSubstitutions   = OptionValue[FinalSubstitutions];
 		optFCLoopIsolate 		= OptionValue[FCLoopIsolate];
+		optSetDimensions		= OptionValue[SetDimensions];
 
 		optPreferredTopologies = optPreferredTopologies /. FCTopology[id_,re_]:> FCTopology[topoName[id],re];
 
@@ -413,8 +416,10 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 			topoList2 = MapIndexed[(
 
 				momenta = Union[Cases[MomentumExpand[#1[[1]]],Momentum[m_,___]:>m,Infinity]];
-				FCTopology[topoTempName <> ToString[First[#2]], #1[[1]], Intersection[momenta,lmoms], SelectFree[momenta,lmoms], optFinalSubstitutions, {}]
+				emoms = SelectFree[momenta,lmoms];
+				spsFromDownValues = FCGetScalarProducts[emoms,SetDimensions->optSetDimensions];
 
+				FCTopology[topoTempName <> ToString[First[#2]], #1[[1]], Intersection[momenta,lmoms], emoms, Join[optFinalSubstitutions,spsFromDownValues], {}]
 				)&,
 				topoList];
 			ruleGLI = topoList2 /. FCTopology[x_, y_, ___] :> Rule[topoHead[y], x];

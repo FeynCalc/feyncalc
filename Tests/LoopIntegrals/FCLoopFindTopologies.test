@@ -347,5 +347,15 @@ topo1, {SFAD[{{p2, 0}, {m^2, 1}, 1}],
 	SFAD[{{p1, 0}, {m^2, 1}, 1}]}, {p1, p2}, {}, {}, {}],
 FCTopology[
 topo2, {SFAD[{{0, p2 . q}, {0, 1}, 1}],
-	SFAD[{{p1, 0}, {m^2, 1}, 1}]}, {p1, p2}, {q}, {}, {}]}}"}
+	SFAD[{{p1, 0}, {m^2, 1}, 1}]}, {p1, p2}, {q}, {}, {}]}}"},
+{"fcstFCLoopFindTopologies-ID13",
+"FCClearScalarProducts[]; \n SPD[q] = mx^2; \n
+res = FCLoopFindTopologies[
+a FAD[{p1, m}] SFAD[{{0, p2.q}}] +
+b FAD[{p1 - q, m}] FAD[{p2, m}], {p1, p2}, FCVerbose -> -1,
+Head -> gliProd, Names -> topo, FCE -> True]; \n
+FCClearScalarProducts[]; \n res",
+"{b*gliProd[GLI[topo1, {1, 1}]], {FCTopology[topo1, {SFAD[{{p2, 0}, {m^2, 1}, 1}],
+SFAD[{{p1 - q, 0}, {m^2, 1}, 1}]}, {p1, p2}, {q}, {Hold[Pair][Momentum[q, D],
+Momentum[q, D]] -> mx^2}, {}]}}"}
 });
