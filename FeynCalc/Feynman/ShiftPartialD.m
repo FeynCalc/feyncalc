@@ -34,17 +34,17 @@ End[]
 Begin["`ShiftPartialD`Private`"]
 
 spdVerbose::usage="";
-
-quanfDot = DOT;
-epskillDot = DOT;
+optSortBy::usage="";
 
 Options[ShiftPartialD] = {
 	FCI 		-> False,
-	FCVerbose	-> False
+	FCVerbose	-> False,
+	Select		-> All,
+	SortBy		-> {Automatic,Automatic}
 }
 
 ShiftPartialD[expr_, derivs_List, field_, OptionsPattern[]] :=
-	Block[{tmp, ex, res, holdDOT, ncStruct, ibp},
+	Block[{tmp, ex, res, holdDOT, ncStruct, ibp, optSelect},
 
 		If [OptionValue[FCVerbose]===False,
 			spdVerbose=$VeryVerbose,
@@ -52,6 +52,9 @@ ShiftPartialD[expr_, derivs_List, field_, OptionsPattern[]] :=
 				spdVerbose=OptionValue[FCVerbose]
 			];
 		];
+
+		optSortBy = OptionValue[SortBy];
+		optSelect = OptionValue[Select];
 
 		FCPrint[1, "ShiftPartialD: Entering.", FCDoControl->spdVerbose];
 
@@ -61,7 +64,7 @@ ShiftPartialD[expr_, derivs_List, field_, OptionsPattern[]] :=
 		];
 
 		FCPrint[1, "ShiftPartialD: Applying ExpandPartialD.", FCDoControl->spdVerbose];
-		tmp = ExpandPartialD[ex,FCI->True];
+		tmp = ExpandPartialD[ex, FCI->True, SortBy->optSortBy];
 		FCPrint[3, "ShiftPartialD: After ExpandPartialD: ", tmp, FCDoControl->spdVerbose];
 
 		tmp = tmp /. DOT -> holdDOT;
@@ -69,6 +72,11 @@ ShiftPartialD[expr_, derivs_List, field_, OptionsPattern[]] :=
 		FCPrint[1, "ShiftPartialD: Applying Collect2.", FCDoControl->spdVerbose];
 		tmp = Collect2[tmp, holdDOT, Head -> ncStruct];
 		FCPrint[3, "ShiftPartialD: After Collect2: ", tmp, FCDoControl->spdVerbose];
+
+		If[	optSelect=!=All,
+			tmp = tmp /. ncStruct[x_]/; !optSelect[x] :> x;
+			FCPrint[3, "ShiftPartialD: After removing irrelevant terms: ", tmp, FCDoControl->spdVerbose];
+		];
 
 		tmp = tmp /. ncStruct[holdDOT[Shortest[a___], QuantumField[ds__FCPartialD, field, rest___], b___]] /; FCSubsetQ[{ds}, derivs] :>
 			ibp[SelectNotFree[{ds}, derivs], DOT[a, QuantumField[Sequence @@ SelectFree[{ds}, derivs], field, rest], b], DOT[a, QuantumField[ds, field, rest], b]];
@@ -83,7 +91,7 @@ ShiftPartialD[expr_, derivs_List, field_, OptionsPattern[]] :=
 		FCPrint[3, "ShiftPartialD: After ibpSimp: ", tmp, FCDoControl->spdVerbose];
 
 		FCPrint[1, "ShiftPartialD: Applying ExpandPartialD.", FCDoControl->spdVerbose];
-		res = ExpandPartialD[tmp,FCI->True];
+		res = ExpandPartialD[tmp, FCI->True, SortBy->optSortBy];
 		FCPrint[3, "ShiftPartialD: After ExpandPartialD: ", tmp, FCDoControl->spdVerbose];
 
 
@@ -96,18 +104,24 @@ ShiftPartialD[expr_, derivs_List, field_, OptionsPattern[]] :=
 	];
 
 ibpSimp[ds_List, toDiff_, solveFor_] :=
-	Block[{tmp, in, sol, res},
+	Block[{tmp, in, sol, res, sf},
+
+		FCPrint[3, "ShiftPartialD: ibpSimp: Entering", FCDoControl->spdVerbose];
+
 		in = (DOT @@ (ds /. FCPartialD -> RightPartialD)).toDiff;
-		in = ExpandPartialD[in];
+
+		in = ExpandPartialD[in,FCI->True, SortBy->optSortBy];
+		sf = ExpandPartialD[solveFor,FCI->True, SortBy->optSortBy];
 
 		FCPrint[3, "ShiftPartialD: ibpSimp: Equation to invert: ", in, FCDoControl->spdVerbose];
-		sol = Solve[in == 0, solveFor];
+		FCPrint[3, "ShiftPartialD: ibpSimp: Solving for: ", sf, FCDoControl->spdVerbose];
+		sol = Solve[in == 0, sf];
 		If[sol === {},
 			Message[ShiftPartialD::failmsg,"Failed to solve the total derivative relation"];
 			Abort[]
 		];
 
-		res = solveFor /. First[sol];
+		res = sf /. First[sol];
 
 		FCPrint[0, "Applying the following IBP relation: ", First[sol], FCDoControl->spdVerbose];
 

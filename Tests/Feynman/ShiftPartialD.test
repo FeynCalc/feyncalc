@@ -58,5 +58,22 @@ FCPartialD[CartesianIndex[i]], FCPartialD[CartesianIndex[j]], \
 QuarkFieldPsi] - QuantumField[FCPartialD[CartesianIndex[j]], \
 QuarkFieldPsiDagger] . QuantumField[FCPartialD[CartesianIndex[i]], \
 phi] . QuantumField[FCPartialD[CartesianIndex[i]], \
-FCPartialD[CartesianIndex[j]], QuarkFieldPsi]"}
+FCPartialD[CartesianIndex[j]], QuarkFieldPsi]"},
+{"fcstShiftPartialD-ID5",
+"ShiftPartialD[
+QuantumField[GaugeField, LorentzIndex[nu]].QuantumField[
+	FCPartialD[LorentzIndex[mu]], FCPartialD[LorentzIndex[mu]],
+	FCPartialD[LorentzIndex[nu]], FCPartialD[LorentzIndex[rho]],
+	FCPartialD[LorentzIndex[rho]], FCPartialD[LorentzIndex[tau]],
+	GaugeField, LorentzIndex[tau]] +
+QuantumField[FCPartialD[LorentzIndex[mu]], GaugeField,
+	LorentzIndex[nu]].QuantumField[FCPartialD[LorentzIndex[mu]],
+	FCPartialD[LorentzIndex[nu]], FCPartialD[LorentzIndex[rho]],
+	FCPartialD[LorentzIndex[rho]], FCPartialD[LorentzIndex[tau]],
+	GaugeField, LorentzIndex[tau]], {FCPartialD[
+LorentzIndex[mu]]}, GaugeField,
+Select ->
+Function[x, FreeQ[x, QuantumField[GaugeField, LorentzIndex[nu]]]],
+FCVerbose -> -1]",
+"0"}
 })
