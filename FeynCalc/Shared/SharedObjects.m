@@ -2187,10 +2187,10 @@ RightPartialD[x_, y__]/; MatchQ[{x,y},{(__LorentzIndex | __ExplicitLorentzIndex 
 MT[0,0] =
 	FeynCalc`Package`MetricT;
 
-MT[(i: 1|2|3),(i: 1|2|3)] =
+MT[(i: 1|2|3),(i: 1|2|3)] :=
 	FeynCalc`Package`MetricS;
 
-MT[(i: 1|2|3),(j: 1|2|3)] =
+MT[(i: 1|2|3),(j: 1|2|3)] :=
 	0/; i=!=j;
 
 MT[0,1|2|3] =
