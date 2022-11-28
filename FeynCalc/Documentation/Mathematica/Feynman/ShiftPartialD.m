@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*Often, when dealing with large expressions one would to integrate by parts only certain terms but not every term containing given fields and derivatives. In such situation one can specify a filter function via the option `Select`. *)
+(*Often, when dealing with large expressions one would to integrate by parts only certain terms but not every term containing given fields and derivatives. In such situation one can specify a filter function via the option `Select`.*)
 
 
 (* ::Text:: *)

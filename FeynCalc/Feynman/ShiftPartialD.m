@@ -16,11 +16,18 @@
 (* ------------------------------------------------------------------------ *)
 
 ShiftPartialD::usage =
-"ShiftPartialD[exp, {derivs}, field] uses integration-by-parts identities to
-shift the derivatives of QuantumFields such, that a term containing derivs
-acting on field is eliminated from the final expression.
+"ShiftPartialD[exp, {FCPartialD[i1], FCPartialD[i2], ...}, field] uses
+integration-by-parts identities to shift the derivatives of QuantumFields
+such, that a term containing derivatives with indices i1, i2, ... acting on
+field is eliminated from the final expression.
 
-The function always assumes that the surface term vanishes";
+Notice that one must explicitly specify the type of the indices, e.g. by
+writing FCPartialD[LorentzIndex[mu]] or FCPartialD[CartesianIndex[i]].
+Furthermore, the function always assumes that the surface term vanishes.
+
+Often, when dealing with large expressions one would to integrate by parts
+only certain terms but not every term containing given fields and derivatives.
+In such situation one can specify a filter function via the option Select.";
 
 ShiftPartialD::failmsg =
 "Error! ShiftPartialD has encountered a fatal problem and must abort the computation. \

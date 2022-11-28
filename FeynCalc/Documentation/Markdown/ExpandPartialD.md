@@ -2,7 +2,7 @@
 
 `ExpandPartialD[exp]` expands noncommutative products of `QuantumField`s and partial differentiation operators in `exp` and applies the Leibniz rule.
 
-By default the function assumes that there are no expressions outside of `exp`  on which the derivatives inside `exp` could act. If this is not the case, please set the options `LeftPartialD` or `RIghtPartialD` to `True`.
+By default the function assumes that there are no expressions outside of `exp` on which the derivatives inside `exp` could act. If this is not the case, please set the options `LeftPartialD` or `RIghtPartialD` to `True`.
 
 ### See also
 

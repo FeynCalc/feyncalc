@@ -92,7 +92,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [Expand2](../Expand2.md) - alternative to Mathematica's `Expand`
 - [ExpandAll2](../ExpandAll2.md) - alternative to Mathematica's `ExpandAll`
 - [Explicit](../Explicit.md) - inserts explicit expressions for certain objects
-- [Factor1](../Factor1.md), [Factor2](../Factor2.md) - alternatives to Mathematica's `Factor`
+- [Factor1](../Factor1.md), [Factor2](../Factor2.md), [Factor3](../Factor3.md) - alternatives to Mathematica's `Factor`
 - [FactorList2](../FactorList2.md) - alternative to Mathematica's `FactorList2`
 - [FC](../FC.md) - changes the output format to [FeynCalcForm](../FeynCalcForm.md)
 - [FCAbbreviate](../FCAbbreviate.md) - introduces abbreviations
@@ -167,6 +167,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCGetDimensions](../FCGetDimensions.md) - returns the space-time dimensions of objects in the expression
 - [FCGetDummyIndices](../FCGetDummyIndices.md) - extracts dummy indices in the expression
 - [FCGetFreeIndices](../FCGetFreeIndices.md) - extracts free indices in the expression
+- [FCGetScalarProducts](../FCGetScalarProducts.md) - returns scalar products assigned to some values
 - [FCPermuteMomentaRules](../FCPermuteMomentaRules.md) - generates rules for permutations of momenta
 - [FCRenameDummyIndices](../FCRenameDummyIndices.md) - renames dummy indices
 - [FCReplaceMomenta](../FCReplaceMomenta.md) - replaces momenta in the expression
