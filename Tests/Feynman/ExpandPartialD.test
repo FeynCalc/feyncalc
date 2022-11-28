@@ -564,5 +564,29 @@ QuantumField[FCPartialD[LorentzIndex[mu]], A] + \
 LeftPartialD[LorentzIndex[mu]] . LeftPartialD[LorentzIndex[nu]] . \
 QuantumField[A] + QuantumField[B] + \
 QuantumField[FCPartialD[LorentzIndex[mu]], \
-FCPartialD[LorentzIndex[nu]], A]"}
+FCPartialD[LorentzIndex[nu]], A]"},
+{"fcstExpandPartialD-ID69",
+"ExpandPartialD[
+QuantumField[GaugeField, LorentzIndex[nu]] .
+QuantumField[FCPartialD[LorentzIndex[mu]],
+	FCPartialD[LorentzIndex[mu]], FCPartialD[LorentzIndex[nu]],
+	FCPartialD[LorentzIndex[rho]],
+	FCPartialD[LorentzIndex[rho]], FCPartialD[LorentzIndex[tau]],
+	GaugeField, LorentzIndex[tau]] +
+QuantumField[FCPartialD[LorentzIndex[mu]], GaugeField,
+	LorentzIndex[nu]] . QuantumField[FCPartialD[LorentzIndex[mu]],
+	FCPartialD[LorentzIndex[nu]], FCPartialD[LorentzIndex[rho]],
+	FCPartialD[LorentzIndex[rho]], FCPartialD[LorentzIndex[tau]],
+	GaugeField, LorentzIndex[tau]]]",
+	"QuantumField[GaugeField, LorentzIndex[nu]] .
+QuantumField[FCPartialD[LorentzIndex[mu]],
+FCPartialD[LorentzIndex[mu]], FCPartialD[LorentzIndex[rho]],
+FCPartialD[LorentzIndex[rho]], FCPartialD[LorentzIndex[nu]],
+FCPartialD[LorentzIndex[tau]], GaugeField, LorentzIndex[tau]] +
+QuantumField[FCPartialD[LorentzIndex[mu]], GaugeField,
+LorentzIndex[nu]] .
+QuantumField[FCPartialD[LorentzIndex[rho]],
+FCPartialD[LorentzIndex[rho]], FCPartialD[LorentzIndex[mu]],
+FCPartialD[LorentzIndex[nu]], FCPartialD[LorentzIndex[tau]],
+GaugeField, LorentzIndex[tau]]"}
 });

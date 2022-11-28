@@ -19,7 +19,7 @@ ExpandPartialD::usage =
 "ExpandPartialD[exp] expands noncommutative products of QuantumFields and
 partial differentiation operators in exp and applies the Leibniz rule.
 
-By default the function assumes that there are no expressions outside of exp 
+By default the function assumes that there are no expressions outside of exp
 on which the derivatives inside exp could act. If this is not the case, please
 set the options LeftPartialD or RIghtPartialD to True.";
 
@@ -44,6 +44,7 @@ optPartialDRelations::usage="";
 optMaxIterations::usage="";
 opk::usage="";
 dotHOLD::usage="";
+optSortBy::usage="";
 
 quanfDot = DOT;
 epskillDot = DOT;
@@ -57,7 +58,8 @@ Options[ExpandPartialD] = {
 	MaxIterations		-> Infinity,
 	LeftPartialD		-> False,
 	RightPartialD		-> False,
-	PartialDRelations	-> {DOT[a___, FCPartialD[x_,LorentzIndex[i_]], b___] :> DOT[a, FieldDerivative[dot[b], x, LorentzIndex[i]]]}
+	PartialDRelations	-> {DOT[a___, FCPartialD[x_,LorentzIndex[i_]], b___] :> DOT[a, FieldDerivative[dot[b], x, LorentzIndex[i]]]},
+	SortBy				-> {Automatic,Automatic}
 };
 
 ExpandPartialD[expr_, OptionsPattern[]] :=
@@ -71,10 +73,11 @@ ExpandPartialD[expr_, OptionsPattern[]] :=
 			];
 		];
 
-		optPartialDRelations = OptionValue[PartialDRelations];
-		optMaxIterations = OptionValue[MaxIterations];
-		optLeftPartialD = OptionValue[LeftPartialD];
-		optRightPartialD = OptionValue[RightPartialD];
+		optPartialDRelations	= OptionValue[PartialDRelations];
+		optMaxIterations		= OptionValue[MaxIterations];
+		optLeftPartialD			= OptionValue[LeftPartialD];
+		optRightPartialD		= OptionValue[RightPartialD];
+		optSortBy 				= OptionValue[SortBy];
 
 		FCPrint[1, "ExpandPartialD: Entering.", FCDoControl->epdVerbose];
 
@@ -91,7 +94,7 @@ ExpandPartialD[expr_, OptionsPattern[]] :=
 			ex = QuantumField[dummyFieldLeft].ex
 		];
 
-		ex = DotSimplify[ex, FCI->True];
+		ex = DotSimplify[ex, FCI->True, SortBy->optSortBy];
 
 		FCPrint[3, "ExpandPartialD: After DotSimplify: ", ex, FCDoControl->epdVerbose];
 
@@ -340,7 +343,7 @@ qfe[dot_, x_] :=
 		aux = aux /. quantumFieldSimplify -> QuantumField /. OPESum -> opesumplus;
 		FCPrint[4,"ExpandPartialD: qfe: After quantumFieldSimplify: ", aux, FCDoControl->epdVerbose];
 
-		tmp = DotSimplify[aux, FCI->True];
+		tmp = DotSimplify[aux, FCI->True , SortBy->optSortBy];
 		FCPrint[4,"ExpandPartialD: qfe: After DotSimplify: ", aux, FCDoControl->epdVerbose];
 
 		(*tmp = DotSimplify[
@@ -426,10 +429,29 @@ qf5[a___, RightPartialD[mu_], QuantumField[f1__], rest___, QuantumField[f2__], b
 	) /; MemberQ[{LorentzIndex,ExplicitLorentzIndex,Momentum,CartesianIndex,CartesianMomentum,List},Head[mu]] &&
 			FreeQ2[{rest}, {QuantumField}];
 
-(* new 03/98 commutativity in partial derivatives *)
+(* Partial derivatives are assumed to commute with each other *)
 quantumFieldSimplify[par1_FCPartialD, parr__FCPartialD, fname_/;Head[fname]=!=FCPartialD, rest___] :=
-	(((quantumFieldSimplify[##, fname, rest])&)@@Sort[{par1,parr}]) /; !OrderedQ[{par1,parr}]
+	quantumFieldSimplify[Sequence@@sortDerivatives[{par1,parr}], fname, rest] /; {par1,parr} =!= sortDerivatives[{par1,parr}];
 
+(* To simplify the canonicalization of expressions with multiple derivatives, we want
+to write squared derivatives first *)
+sortDerivatives[{ex__FCPartialD}] :=
+	MemSet[
+		sortDerivatives[{ex}],
+		Flatten[ReplaceAll[tallySort[Tally[{ex}]], {x_FCPartialD, n_} :> ConstantArray[x, n]]]
+	];
+
+tallySort[ex_List]:=
+	Sort[ex,
+		Which[
+			#1[[2]] > #2[[2]],
+				True,
+			#1[[2]] < #2[[2]],
+				False,
+			True,
+				OrderedQ[{#1[[1]], #2[[1]]}]
+		] &
+	];
 
 (* OPEDelta stuff *)
 
