@@ -668,5 +668,21 @@ StandardPropagatorDenominator[Momentum[l2 + q2, D], 0,
 Names -> x, FCE -> True]",
 "{0, 0, {{x[1], SFAD[{{0, l1 . q2}, {0, 1}, 1}], 1}, {x[2],
 SFAD[{{l2, 0}, {0, 1}, 1}], 1}, {x[3], SFAD[{{l2 + q2, 0}, {0, 1}, 1}], 1}}, {{0, 0}, {0, x[2] + x[3]}},
-{-1/2*(FVD[q2, FCGV[\"mu\"]]*x[1]), -(FVD[q2, FCGV[\"mu\"]]*x[3])}, SPD[q2, q2]*x[3], 1, 0}"}
+{-1/2*(FVD[q2, FCGV[\"mu\"]]*x[1]), -(FVD[q2, FCGV[\"mu\"]]*x[3])}, SPD[q2, q2]*x[3], 1, 0}"},
+{"fcstFCFeynmanPrepare-ID67",
+"FCFeynmanPrepare[
+FCTopology[
+topo1, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}],
+SFAD[{{q1 + q2, 0}, {0, 1}, 1}], SFAD[{{p + q1, 0}, {0, 1}, 1}],
+SFAD[{{p - q2, 0}, {0, 1}, 1}]}, {q1,
+q2}, {p}, {Hold[Pair][Momentum[p, D], Momentum[p, D]] -> pp}, {}],
+Names -> x, FCE -> True]",
+"{x[1]*x[2] + x[1]*x[3] + x[2]*x[3] + x[1]*x[4] + x[3]*x[4] + x[2]*x[5] + x[3]*x[5] + x[4]*x[5],
+-(pp*(x[1]*x[2]*x[4] + x[1]*x[3]*x[4] + x[2]*x[3]*x[4] + x[1]*x[2]*x[5] +
+x[1]*x[3]*x[5] + x[2]*x[3]*x[5] + x[1]*x[4]*x[5] + x[2]*x[4]*x[5])),
+{{x[1], SFAD[{{q2, 0}, {0, 1}, 1}], 1}, {x[2], SFAD[{{q1, 0}, {0, 1}, 1}],
+1}, {x[3], SFAD[{{q1 + q2, 0}, {0, 1}, 1}], 1}, {x[4], SFAD[{{p + q1, 0}, {0, 1},
+1}], 1}, {x[5], SFAD[{{p - q2, 0}, {0, 1}, 1}], 1}},
+{{x[2] + x[3] + x[4], x[3]}, {x[3], x[1] + x[3] + x[5]}}, {-(FVD[p,
+FCGV[\"mu\"]]*x[4]), FVD[p, FCGV[\"mu\"]]*x[5]}, pp*(x[4] + x[5]), 1, 0}"}
 });

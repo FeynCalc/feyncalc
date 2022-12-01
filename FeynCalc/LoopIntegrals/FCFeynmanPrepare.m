@@ -112,6 +112,8 @@ FCFeynmanPrepare[gli_, topo_FCTopology, opts:OptionsPattern[]] :=
 			optFinalSubstitutions = FCI[topo[[5]]]
 		];
 
+		optFinalSubstitutions = FRH[optFinalSubstitutions];
+
 		If[	!FreeQ[int,lmomsHead],
 			lmoms = Join[Cases2[int,lmomsHead],topo[[3]]],
 			lmoms = topo[[3]]
@@ -187,7 +189,7 @@ FCFeynmanPrepare[topoRaw_FCTopology, opts:OptionsPattern[]] :=
 			Abort[]
 		];
 
-		FCFeynmanPrepare[topo[[2]], topo[[3]], Join[{FCI->True,FinalSubstitutions->topo[[5]]},
+		FCFeynmanPrepare[topo[[2]], topo[[3]], Join[{FCI->True,FinalSubstitutions->FRH[topo[[5]]]},
 			FilterRules[{opts}, Except[FCI | FinalSubstitutions]]]]
 
 	];
