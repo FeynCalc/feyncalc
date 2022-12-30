@@ -59,8 +59,9 @@ SUNFDeltaContract/:
 
 SUNFDeltaContract/:
 	SUNFDeltaContract[i_SUNFIndex, j_SUNFIndex ] y_[z__] :=
-		( y[z] /. i -> j ) /; FreeQ[y[z], _FeynArts`SumOver] &&
-				!FreeQ[y[z]//Hold, i] && FreeQ[y[z], SUNFDeltaContract[__]^n_Integer?Negative];
+		(
+		( y[z] /. {i -> j} )
+		)/; FreeQ[y[z], _FeynArts`SumOver] && !FreeQ[y[z]//Hold, i] && FreeQ[y[z], SUNFDeltaContract[__]^n_Integer?Negative];
 
 FCPrint[1,"SUNFDeltaContract.m loaded"];
 End[]
