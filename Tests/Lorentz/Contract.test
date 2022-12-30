@@ -333,7 +333,24 @@ Pair[LorentzIndex[i1], LorentzIndex[j2]]*Pair[LorentzIndex[i2], LorentzIndex[j1]
 	"Eps[LorentzIndex[i1, D], LorentzIndex[i2, D], LorentzIndex[i3, D], Momentum[p, D]]"},
 {"fcstContractDDims-ID15","Contract[PairContract[LorentzIndex[i, D], Momentum[p, D]]] // FCE","FVD[p, i]"},
 {"fcstContractDDims-ID16","Contract[LC[i1, i2, i3][p1 + p2 + p3] LC[i1, i2, i3][q1 + q2 + q3],
-EpsExpand -> False, FCE -> True]","-6 SP[p1 + p2 + p3, q1 + q2 + q3]"}
+EpsExpand -> False, FCE -> True]","-6 SP[p1 + p2 + p3, q1 + q2 + q3]"},
+{"fcstContractDDims-ID17","Contract[(MTD[r, a] MTD[s, b] + MTD[r, b] MTD[s, a]) FVD[p,
+mu] (MTD[r, a] MTD[s, b] FVD[l, la] FVD[l, la] +
+	MTD[r, b] MTD[s, a] FVD[l, la] FVD[l, la]), FCE -> True]",
+	"2*D*FVD[p, mu]*SPD[l, l] + 2*D^2*FVD[p, mu]*SPD[l, l]"},
+{"fcstContractDDims-ID18","Contract[(MTD[r, a] MTD[s, b] + MTD[r, b] MTD[s, a]) FVD[p,
+mu] (MTD[r, a] MTD[s, b] + MTD[r, b] MTD[s, a]) FVD[l, la] FVD[l,
+la], FCE -> True]",
+	"2 D FVD[p, mu] SPD[l, l] + 2 D^2 FVD[p, mu] SPD[l, l]"},
+{"fcstContractDDims-ID19","Contract[(MTD[r, a] MTD[s, b] + MTD[r, b] MTD[s, a]) FVD[p,
+mu] (MTD[r, a] MTD[s, b] +
+	MTD[r, b] MTD[s, a] FVD[l, la] FVD[l, la]), FCE -> True]",
+	"D*FVD[p, mu] + D^2*FVD[p, mu] + D*FVD[p, mu]*SPD[l, l] + D^2*FVD[p, mu]*SPD[l, l]"},
+{"fcstContractDDims-ID20","Contract[(MTD[r, a] MTD[s, b] + MTD[r, b] MTD[s, a]) MTD[mu,
+nu] (MTD[r, a] MTD[s, b] +
+	MTD[r, b] MTD[s, a] FVD[l, la] FVD[l, la]), FCE -> True]",
+	"D*MTD[mu, nu] + D^2*MTD[mu, nu] + D*MTD[mu, nu]*SPD[l, l] +
+	D^2*MTD[mu, nu]*SPD[l, l]"}
 };
 
 

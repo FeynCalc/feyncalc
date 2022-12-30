@@ -577,6 +577,7 @@ reduceSumsToProducts[a_,b_]:=
 
 			(*The simpler piece is just a product of Pairs times some irrelevant term *)
 			FCPrint[3, "Contract: reduceSumsToProducts: b factorizes, calling contractWithProductOfPairs.", FCDoControl->cnVerbose];
+			FCPrint[4, "Contract: reduceSumsToProducts: {a,b}:", {a,b}, FCDoControl->cnVerbose];
 			res = contractWithProductOfPairs[a, b],
 
 			(*
@@ -593,8 +594,9 @@ reduceSumsToProducts[a_,b_]:=
 					If b factorizes, use contractWithProductOfPairs
 					Think of sth like [aa ((D - 4) FV[p1, mu] + D FV[p1, mu])
 				*)
-				res = contractWithProductOfPairs[a, bnew];
-				FCPrint[3, "Contract: reduceSumsToProducts: b factorizes, calling contractWithProductOfPairs.", FCDoControl->cnVerbose]
+				FCPrint[3, "Contract: reduceSumsToProducts: b factorizes, calling contractWithProductOfPairs.", FCDoControl->cnVerbose];
+				res = contractWithProductOfPairs[a, bnew]
+
 			]
 		];
 
@@ -661,7 +663,7 @@ contractWithSinglePair[a_, Pair[CartesianIndex[ind_, dimL_:4], (h:CartesianIndex
 
 (*for things like contractWithProductOfPairs[FV[k - p, mu] SP[k, p], FV[p, mu] SP[k, p]] *)
 contractWithSinglePair[a_,b_]:=
-	Expand2[a b, {Pair,CartesianPair}]/; FreeQ2[{a,b},{LorentzIndex,CartesianIndex}]
+	Expand2[a b, {Pair,CartesianPair}]/; FreeQ2[{a},{LorentzIndex,CartesianIndex}] || FreeQ2[{b},{LorentzIndex,CartesianIndex}]
 
 (* #################################################################### *)
 
