@@ -77,6 +77,8 @@ FCTraceExpand[expr_, OptionsPattern[]] :=
 			sunTraces = Cases2[ex, SUNTrace];
 			sunTraces2 = sunTraces;
 
+			FCPrint[3, "FCTraceExpand: Unique SU(N) traces:", sunTraces, FCDoControl->fctreVerbose];
+
 			If[	OptionValue[FCTraceFactor],
 				sunTraces2 = FCTraceFactor/@sunTraces2
 			];
@@ -182,10 +184,10 @@ expandPauli[x_] :=
 		Distribute[PauliTrace@(Expand[x])]
 	];
 
-expandColor[x_] :=
+expandColor[x_, OptionsPattern[]] :=
 	If [dotSimp,
-		Distribute[SUNTrace@(Expand[DotSimplify[x,PreservePropagatorStructures->propPres,FCI->True]])],
-		Distribute[SUNTrace@(Expand[x])]
+		Distribute[SUNTrace@(Expand2[DotSimplify[x,PreservePropagatorStructures->propPres,FCI->True],{SUNIndex,SUNFIndex}])],
+		Distribute[SUNTrace@(Expand2[x,{SUNIndex,SUNFIndex}])]
 	];
 
 FCPrint[1,"FCTraceExpand.m loaded."];

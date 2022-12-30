@@ -164,5 +164,21 @@ False,FCE->True]", "PauliTrace[CSIS[x] + CSIS[y]]"},
 "PauliTrace[CGSD[k+p].CSI[j].CGSD[l-p].CSID[nu].CGSD[l].CSID[la].\
 CGSD[k+l]]//FCTraceExpand//FCE",
 "PauliTrace[CSI[j] . CSID[nu] . CSID[la]*CGSD[k + p] . CGSD[l - p] \
-. CGSD[l] . CGSD[k + l]]"}
+. CGSD[l] . CGSD[k + l]]"},
+
+{"fcstFCTraceExpand-ID30",
+"FCTraceExpand[-SUNTrace[
+SUNF[SUNIndex[aa1], SUNIndex[aa2], SUNIndex[aa3]]*
+SUNF[SUNIndex[aa4], SUNIndex[aa5], SUNIndex[aa3]]*
+(I*(-1/2*SUNT[SUNIndex[aa1]] . SUNT[SUNIndex[aa5]] .
+SUNT[SUNIndex[aa2]] . SUNT[SUNIndex[aa4]]/SUNN +
+(SUNT[SUNIndex[aa1]] . SUNT[SUNIndex[aa5]]*
+SUNDelta[SUNIndex[aa2], SUNIndex[aa4]])/4) -
+I*(-1/2*SUNT[SUNIndex[aa1]] . SUNT[SUNIndex[aa5]] .
+SUNT[SUNIndex[aa2]] . SUNT[SUNIndex[aa4]]/SUNN +
+(SUNT[SUNIndex[aa1]]*SUNTrace[SUNT[SUNIndex[aa5]] . SUNT[SUNIndex[aa2]] .
+SUNT[SUNIndex[aa4]]])/2))]]", "-(SUNF[SUNIndex[aa1], SUNIndex[aa2], SUNIndex[aa3]]*SUNF[SUNIndex[aa3], SUNIndex[aa4],
+SUNIndex[aa5]]*(((I/2)*SUNTrace[SUNT[SUNIndex[aa1]] . SUNT[SUNIndex[aa5]] . SUNT[SUNIndex[aa2]] . SUNT[SUNIndex[aa4]]])/SUNN +
+I*((SUNDelta[SUNIndex[aa1], SUNIndex[aa5]]*SUNDelta[SUNIndex[aa2], SUNIndex[aa4]])/8 -
+SUNTrace[SUNT[SUNIndex[aa1]] . SUNT[SUNIndex[aa5]] . SUNT[SUNIndex[aa2]] . SUNT[SUNIndex[aa4]]]/(2*SUNN))))"}
 })
