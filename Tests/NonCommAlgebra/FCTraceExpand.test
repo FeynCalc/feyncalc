@@ -177,8 +177,9 @@ SUNDelta[SUNIndex[aa2], SUNIndex[aa4]])/4) -
 I*(-1/2*SUNT[SUNIndex[aa1]] . SUNT[SUNIndex[aa5]] .
 SUNT[SUNIndex[aa2]] . SUNT[SUNIndex[aa4]]/SUNN +
 (SUNT[SUNIndex[aa1]]*SUNTrace[SUNT[SUNIndex[aa5]] . SUNT[SUNIndex[aa2]] .
-SUNT[SUNIndex[aa4]]])/2))]]", "-(SUNF[SUNIndex[aa1], SUNIndex[aa2], SUNIndex[aa3]]*SUNF[SUNIndex[aa3], SUNIndex[aa4],
-SUNIndex[aa5]]*(((I/2)*SUNTrace[SUNT[SUNIndex[aa1]] . SUNT[SUNIndex[aa5]] . SUNT[SUNIndex[aa2]] . SUNT[SUNIndex[aa4]]])/SUNN +
-I*((SUNDelta[SUNIndex[aa1], SUNIndex[aa5]]*SUNDelta[SUNIndex[aa2], SUNIndex[aa4]])/8 -
-SUNTrace[SUNT[SUNIndex[aa1]] . SUNT[SUNIndex[aa5]] . SUNT[SUNIndex[aa2]] . SUNT[SUNIndex[aa4]]]/(2*SUNN))))"}
+SUNT[SUNIndex[aa4]]])/2))]]", "-(SUNF[SUNIndex[aa1], SUNIndex[aa2], SUNIndex[aa3]]*
+SUNF[SUNIndex[aa3], SUNIndex[aa4],
+SUNIndex[aa5]]*((I/4)*SUNDelta[SUNIndex[aa2], SUNIndex[aa4]]*
+SUNTrace[SUNT[SUNIndex[aa1]] . SUNT[SUNIndex[aa5]]] - (I/2)*
+SUNTrace[SUNT[SUNIndex[aa5]] . SUNT[SUNIndex[aa2]] .SUNT[SUNIndex[aa4]]]*SUNTrace[SUNT[SUNIndex[aa1]]]))"}
 })

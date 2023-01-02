@@ -4,8 +4,6 @@
 
 To rewrite the $SU(N)$ structure constants in terms of traces, please set the corresponding options `SUNF` or `SUND` to `True`.
 
-The color traces are left untouched unless the option `SUNTrace` is set to `True`. In this case they will be rewritten in terms of structure constants.
-
 `Explicit` is also an option for `FieldStrength`, `GluonVertex`, `SUNF`,  `Twist2GluonOperator` etc. If set to `True` the full form of the operator is inserted.
 
 ### See also
@@ -30,7 +28,7 @@ $$g_s f^{abc} \left(g^{\mu \nu } \left(p^{\rho }-q^{\rho }\right)+g^{\mu \rho } 
 Explicit[gv, SUNF -> True]
 ```
 
-$$2 i g_s \left(\text{tr}(T^a.T^c.T^b)-\text{tr}(T^a.T^b.T^c)\right) \left(g^{\mu \nu } \left(p^{\rho }-q^{\rho }\right)+g^{\mu \rho } \left(r^{\nu }-p^{\nu }\right)+g^{\nu \rho } \left(q^{\mu }-r^{\mu }\right)\right)$$
+$$2 i g_s \left(\text{tr}\left(T^a.T^c.T^b\right)-\text{tr}\left(T^a.T^b.T^c\right)\right) \left(g^{\mu \nu } \left(p^{\rho }-q^{\rho }\right)+g^{\mu \rho } \left(r^{\nu }-p^{\nu }\right)+g^{\nu \rho } \left(q^{\mu }-r^{\mu }\right)\right)$$
 
 ```mathematica
 Twist2GluonOperator[p, \[Mu], a, \[Nu], b] 
@@ -62,7 +60,7 @@ $$f^{abc}$$
 Explicit[SUNF[a, b, c], SUNF -> True]
 ```
 
-$$2 i \left(\text{tr}(T^a.T^c.T^b)-\text{tr}(T^a.T^b.T^c)\right)$$
+$$2 i \left(\text{tr}\left(T^a.T^c.T^b\right)-\text{tr}\left(T^a.T^b.T^c\right)\right)$$
 
 ```mathematica
 Explicit[SUND[a, b, c]]
@@ -74,16 +72,4 @@ $$d^{abc}$$
 Explicit[SUND[a, b, c], SUND -> True]
 ```
 
-$$2 \left(\text{tr}(T^a.T^b.T^c)\right)+2 \left(\text{tr}(T^b.T^a.T^c)\right)$$
-
-```mathematica
-Explicit[SUNTrace[SUNT[a, b, c]]]
-```
-
-$$\text{tr}(T^a.T^b.T^c)$$
-
-```mathematica
-Explicit[SUNTrace[SUNT[a, b, c]], SUNTrace -> True]
-```
-
-$$\frac{d^{abc}}{4}+\frac{1}{4} i f^{abc}$$
+$$2 \;\text{tr}\left(T^a.T^b.T^c\right)+2 \;\text{tr}\left(T^b.T^a.T^c\right)$$

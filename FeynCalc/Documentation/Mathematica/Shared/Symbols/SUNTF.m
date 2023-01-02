@@ -36,18 +36,14 @@ SUNTF[{a,b},i,j]
 SUNTF[{a,b},i,j]SUNTF[{c,d},j,k]
 
 
-SUNTF[{a,b},i,j]SUNTF[{c,d},j,k]//SUNFSimplify
+SUNTF[{a,b},i,j]SUNTF[{c,d},j,k]//SUNSimplify
 
 
 (* ::Text:: *)
 (*A chain with closed indices is automatically converted into a trace*)
 
 
-SUNTF[{a,b},i,j]SUNTF[{c,d},j,i]//SUNFSimplify
-
-
-(* ::Text:: *)
-(*`SUNFSimplify` is a dedicated function to deal with `SUNTF`s. However, `SUNSimplify` will also call `SUNFSimplify` when it detects `SUNTF`objects in the input*)
+SUNTF[{a,b},i,j]SUNTF[{c,d},j,i]//SUNSimplify
 
 
 SUNDelta[a,b]SUNTF[{a,b},i,j]SUNTF[{c,d},j,i]//SUNSimplify

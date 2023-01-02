@@ -84,7 +84,7 @@ SUNIndex[aa3]]*SUNF[SUNIndex[aa3], SUNIndex[aa4], \
 SUNIndex[aa5]]*SUNTrace[SUNT[SUNIndex[a1]] . SUNT[SUNIndex[a2]] . \
 SUNT[SUNIndex[a3]]]"},
 {"fcstFCTraceFactor-ID21",
-"FCTraceFactor[SUNTrace[xx SUNT[a1,a2,a3],Explicit->False]]",
+"FCTraceFactor[SUNTrace[xx SUNT[a1,a2,a3]]]",
 "xx*SUNTrace[SUNT[SUNIndex[a1]] . SUNT[SUNIndex[a2]] . \
-SUNT[SUNIndex[a3]], Explicit -> False]"}
+SUNT[SUNIndex[a3]]]"}
 })

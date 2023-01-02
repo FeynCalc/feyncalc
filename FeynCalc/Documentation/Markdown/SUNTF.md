@@ -29,7 +29,7 @@ SUNTF[{a, b}, i, j] SUNTF[{c, d}, j, k]
 $$\left(T^aT^b\right){}_{ij} \left(T^cT^d\right){}_{jk}$$
 
 ```mathematica
-SUNTF[{a, b}, i, j] SUNTF[{c, d}, j, k] // SUNFSimplify
+SUNTF[{a, b}, i, j] SUNTF[{c, d}, j, k] // SUNSimplify
 ```
 
 $$\left(T^aT^bT^cT^d\right){}_{ik}$$
@@ -37,12 +37,10 @@ $$\left(T^aT^bT^cT^d\right){}_{ik}$$
 A chain with closed indices is automatically converted into a trace
 
 ```mathematica
-SUNTF[{a, b}, i, j] SUNTF[{c, d}, j, i] // SUNFSimplify
+SUNTF[{a, b}, i, j] SUNTF[{c, d}, j, i] // SUNSimplify
 ```
 
-$$\text{tr}(T^a.T^b.T^c.T^d)$$
-
-`SUNFSimplify` is a dedicated function to deal with `SUNTF`s. However, `SUNSimplify` will also call `SUNFSimplify` when it detects `SUNTF`objects in the input
+$$\text{tr}\left(T^a.T^b.T^c.T^d\right)$$
 
 ```mathematica
 SUNDelta[a, b] SUNTF[{a, b}, i, j] SUNTF[{c, d}, j, i] // SUNSimplify

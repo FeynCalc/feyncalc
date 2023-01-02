@@ -25,7 +25,7 @@ corresponding options SUNF or SUND to True.
 The color traces are left untouched unless the option SUNTrace is set to True.
 In this case they will be rewritten in terms of structure constants.
 
-Explicit is also an option for FieldStrength, GluonVertex, SUNF, 
+Explicit is also an option for FieldStrength, GluonVertex, SUNF,
 Twist2GluonOperator etc. If set to True the full form of the operator is
 inserted.";
 
@@ -59,9 +59,6 @@ BuiltInSymbolsWithExplicitOption[optsExplicit___]:= {
 
 	SUND[xx__, op:OptionsPattern[]]  :>
 		SUND[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[SUND]], op],
-
-	SUNTrace[xx__, op:OptionsPattern[]]  :>
-		SUNTrace[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[SUNTrace]], op],
 
 	GluonVertex[xx__, op:OptionsPattern[]]  :>
 		GluonVertex[xx, Explicit -> True, Sequence@@FilterRules[{optsExplicit}, Options[GluonVertex]], op],
@@ -107,8 +104,7 @@ Options[Explicit] = {
 	Gauge 				-> 1,
 	OPE 				-> False,
 	SUND				-> False,
-	SUNF				-> False,
-	SUNTrace			-> False
+	SUNF				-> False
 };
 
 Explicit[expr_, opts:OptionsPattern[]] :=
@@ -139,10 +135,6 @@ Explicit[expr_, opts:OptionsPattern[]] :=
 
 		If[	!OptionValue[SUNF],
 			heads = SelectFree[heads,SUNF]
-		];
-
-		If[	!OptionValue[SUNTrace],
-			heads = SelectFree[heads,SUNTrace]
 		];
 
 		list = Cases2[ex,heads];

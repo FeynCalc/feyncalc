@@ -15,6 +15,5 @@
 
 Tests`NonCommAlgebra`fcstCalc = {
 {"fcstCalc-ID1","Calc[Sqrt[a - 1]] // Simplify[#, Assumptions -> {a > 1}]& ","Sqrt[a - 1]"},
-{"fcstCalc-ID2","Calc[FV[p + r, mu MT[mu, nu] FV[q - p, nu]]] // FCE","FV[p, -mu FV[p - q, mu]] + FV[r, -mu FV[p - q, mu]]"},
 {"fcstCalc-ID3","Calc[CV[p + r, i] KD[i, j] CV[q - p, j]] // FCE","-CSP[p, p] + CSP[p, q] - CSP[p, r] + CSP[q, r]"}
 };

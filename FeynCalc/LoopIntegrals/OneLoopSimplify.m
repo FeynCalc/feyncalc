@@ -58,7 +58,7 @@ Options[OneLoopSimplify] = {
 	PowerSimplify				-> True,
 	SpinorChainEvaluate 		-> True,
 	SUNNToCACF					-> True,
-	SUNTrace					-> False,
+	SUNTraceEvaluate			-> False,
 	ToPaVe						-> False,
 	UsePaVeBasis				-> False
 };
@@ -111,7 +111,7 @@ OneLoopSimplify[expr_, qu_, OptionsPattern[]] :=
 		dim					= OptionValue[Dimension];
 		optDiracSimplify	= OptionValue[DiracSimplify];
 		sunntocacf 			= OptionValue[SUNNToCACF];
-		suntrace 			= OptionValue[SUNTrace];
+		suntrace 			= OptionValue[SUNTraceEvaluate];
 		ope1loop 			= OptionValue[OPE1Loop];
 		substis 			= OptionValue[FinalSubstitutions];
 		optCollecting	 	= OptionValue[Collecting];
@@ -147,7 +147,7 @@ OneLoopSimplify[expr_, qu_, OptionsPattern[]] :=
 		If[ !FreeQ2[tmp, FeynCalc`Package`SUNHeadsList],
 			time=AbsoluteTime[];
 			FCPrint[1, "OneLoopSimplify: Applying SUNSimplify.", FCDoControl->olsVerbose];
-			tmp = SUNSimplify[tmp, SUNNToCACF -> sunntocacf, SUNTrace -> suntrace, Explicit -> False];
+			tmp = SUNSimplify[tmp, SUNNToCACF -> sunntocacf, SUNTraceEvaluate -> suntrace, Explicit -> False];
 			FCPrint[1, "OneLoopSimplify: SUNSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->olsVerbose];
 			FCPrint[3, "OneLoopSimplify: After SUNSimplify: ", tmp, FCDoControl->olsVerbose]
 		];

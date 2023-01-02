@@ -52,10 +52,10 @@ SDF[a, b] // FCI // StandardForm
 (*SUNFDelta[SUNFIndex[a], SUNFIndex[b]]*)
 ```
 
-The arguments of `SUNFDelta` may also represent explicit integer indices via the head `ExplictiSUNFIndex`. The difference is that `SUNSimplify` and `SUNFSimplify` will only sum over symbolic indices.
+The arguments of `SUNFDelta` may also represent explicit integer indices via the head `ExplictiSUNFIndex`. The difference is that `SUNSimplify`  will only sum over symbolic indices.
 
 ```mathematica
-ex = SUNFDelta[SUNFIndex[a], ExplicitSUNFIndex[2]] SUNFDelta[SUNFIndex[a], SUNFIndex[b]] SUNFDelta[SUNFIndex[c], ExplicitSUNFIndex[2]] // SUNFSimplify
+ex = SUNFDelta[SUNFIndex[a], ExplicitSUNFIndex[2]] SUNFDelta[SUNFIndex[a], SUNFIndex[b]] SUNFDelta[SUNFIndex[c], ExplicitSUNFIndex[2]] // SUNSimplify
 ```
 
 $$\delta _{2b} \delta _{2c}$$

@@ -106,7 +106,7 @@ FeynAmpDenominator[a___,PD[Momentum[q_,dim_:4]-Momentum[p_,dim_:4],0],b___]:>
 };
 ClearAll[diagCompute];
 diagCompute[ex_]:=
-ex//SUNSimplify[#,Explicit->True,SUNTrace->True]&//
+ex//SUNSimplify[#]&//
 ReplaceAll[#,DiracTrace[x__]:>DiracTrace[x,DiracTraceEvaluate->True]]&//
 Contract//FCLoopIsolate[#,{q1,q2},Head->loopHead]&//ReplaceRepeated[#,RepRuleCancelQP]&//
 ReplaceAll[#,loopHead->Identity]&//ToTFI[#,q1,q2,p]&;
@@ -237,6 +237,7 @@ Text->{"\tCompare to Davydychev, Osland and Tarasov, hep-ph/9801380, \
 Eqs. 6.12-6.15:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic},Factoring->Simplify];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
+
 
 
 

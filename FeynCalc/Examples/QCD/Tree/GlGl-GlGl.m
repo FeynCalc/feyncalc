@@ -81,11 +81,6 @@ SetMandelstam[s, t, u, k1, k2, -k3, -k4, 0, 0, 0, 0];
 (*Square the amplitude*)
 
 
-ampSquared[0] = 1/((SUNN^2-1)^2)(amp[1] (ComplexConjugate[amp[0]]))//
-	FeynAmpDenominatorExplicit//SUNSimplify[#,Explicit->True,
-	SUNNToCACF->False]&;
-
-
 polsums[x_,vec_,aux_,spinfac_]:=x//Collect2[#,Pair[_,
 Momentum[Polarization[vec,__]]]]&//Isolate[#,{Polarization[vec,__]}]&//
 DoPolarizationSums[#,vec,aux,ExtraFactor->spinfac]&//FixedPoint[ReleaseHold,#]&
@@ -134,3 +129,6 @@ Text->{"\tCompare to Ellis, Stirling and Weber, QCD and Collider Physics, \
 Table 7.1:","CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic},Factoring->
 Function[x,Simplify[TrickMandelstam[x,{s,t,u,0}]]]]
 Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];
+
+
+
