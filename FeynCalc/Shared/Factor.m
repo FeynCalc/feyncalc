@@ -28,11 +28,18 @@ work faster than Factor2.";
 
 
 Factor3::usage=
-"Factor3[exp] factors a rational function exp over the field of complex numbers.
+"Factor3[exp] factors a rational function exp over the field of complex
+numbers.
 
-Factor3 is meant to be used on differential equations and Feynman parametric
-representations of loop integrals. Its main goal is to rewrite all denominators
-such, that they can be integrated in terms of HPLs or GPLs (when possible).";
+Factor3 is primarily meant to be used on matrices from differential equations
+and Feynman parametric
+representations of loop integrals. Its main goal is to rewrite all
+denominators such, that they can be integrated in terms of HPLs or GPLs (when
+possible).
+
+To avoid performance bottlenecks, in the case of ration functions only the
+denominator will be factored by default. This can be changed by setting the
+option Numerator to True.";
 
 FactorFull::usage=
 "FactorFull is an option of Factor2 (default False). If set to False, products
@@ -213,6 +220,7 @@ Factor3[poly_/;Head[poly] =!= List, OptionsPattern[]] :=
 
 		If[	vars==={} || FreeQ2[poly,vars] || !PolynomialQ[poly,vars],
 			(*Nothing to do*)
+			FCPrint[1, "Factor3: Leaving.", FCDoControl->f3Verbose];
 			Return[poly]
 		];
 
@@ -236,7 +244,8 @@ Factor3[poly_/;Head[poly] =!= List, OptionsPattern[]] :=
 
 		If[	factors==={},
 			Message[Factor3::nonfact,ToString[poly,InputForm]];
-			Return[poly]
+			Return[poly](*,
+			factors = First[factors]*)
 		];
 
 		varsNum	= Table[RandomPrime[optRandomPrime],{i,1,Length[vars]}];
@@ -250,6 +259,8 @@ Factor3[poly_/;Head[poly] =!= List, OptionsPattern[]] :=
 		];
 
 		res = (Times @@ Flatten[factors /. Rule -> Subtract]);
+
+		FCPrint[2, "Factor3: Raw result: ", res, FCDoControl->f3Verbose];
 
 		pref = (poly/res)/.repRule;
 

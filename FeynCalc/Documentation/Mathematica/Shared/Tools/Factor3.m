@@ -17,7 +17,7 @@
 
 
 (* ::Text:: *)
-(*To avoid performance bottlenecks, in the case of ration functions only the denominator will be factored by default. This can be changed by setting the option `Numerator` to `True`.*)
+(*To avoid performance bottlenecks, in the case of rational functions only the denominator will be factored by default. This can be changed by setting the option `Numerator` to `True`.*)
 
 
 (* ::Subsection:: *)

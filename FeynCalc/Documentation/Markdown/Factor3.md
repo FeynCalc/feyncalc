@@ -5,7 +5,7 @@
 `Factor3` is primarily meant to be used on matrices from differential equations and Feynman parametric
 representations of loop integrals. Its main goal is to rewrite all denominators such, that they can be integrated in terms of HPLs or GPLs (when possible).
 
-To avoid performance bottlenecks, in the case of ration functions only the denominator will be factored by default. This can be changed by setting the option `Numerator` to `True`.
+To avoid performance bottlenecks, in the case of rational functions only the denominator will be factored by default. This can be changed by setting the option `Numerator` to `True`.
 
 ### See also
 
