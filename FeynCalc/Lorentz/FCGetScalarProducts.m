@@ -16,10 +16,11 @@
 (* ------------------------------------------------------------------------ *)
 
 FCGetScalarProducts::usage =
-"FCGetScalarProducts[{moms}] returns all scalar products involving external
-momenta moms that were set using down values. The lhs is wrapped with Hold.
-Applying FRH to the output gives the values of the scalar products.
-";
+"FCGetScalarProducts[{p1, p2, ...}] returns all scalar products involving
+external momenta p1, p2, ... that were set using down values.
+
+Using the option SetDimensions one can specify the dimensions of scalar
+products one is interested in.";
 
 (* ------------------------------------------------------------------------ *)
 

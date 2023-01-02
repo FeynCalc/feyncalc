@@ -121,3 +121,33 @@ ApartFF[int FAD[k],SPD[k],{k}]//ApartFF[#,{k}]&
 
 (* ::Text:: *)
 (*Here we need a second call to `ApartFF` since the first execution doesn't drop scaleless integrals or perform any shifts in the denominators.*)
+
+
+(* ::Text:: *)
+(*Other examples of doing partial fraction decomposition for eikonal integrals (e.g. in SCET) *)
+
+
+int1=SFAD[{{0,nb . k2}},{{0,nb . (k1+k2)}}]
+
+
+ApartFF[int1,{k1,k2}]
+
+
+ApartFF[ApartFF[SFAD[{{0,nb . k1}}]int1,SPD[nb,k1],{k1,k2}],{k1,k2}]
+
+
+int2=SPD[nb,k2]SFAD[{{0,nb . (k1+k2)}}]
+
+
+ApartFF[int2,{k1,k2}]
+
+
+ApartFF[ApartFF[SFAD[{{0,nb . k1}}]int2,SPD[nb,k1],{k1,k2}],{k1,k2}]
+
+
+(* ::Text:: *)
+(*If we are working with a subset of propagators from a full integral, one should better turn off loop momentum shifts and the dropping of scaleless integrals*)
+
+
+ApartFF[ApartFF[SFAD[{{0,nb . k1}}]int2,SPD[nb,k1],{k1,k2}],{k1,k2},FDS->False,
+DropScaleless->False]
