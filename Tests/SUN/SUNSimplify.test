@@ -212,6 +212,9 @@ SUNTraceEvaluate -> False, FCE -> True]",
 SUNTraceEvaluate -> False, FCE -> True]",
 "2 SUNTrace[SUNT[a] . SUNT[b] . SUNT[c]] +
 2 SUNTrace[SUNT[a] . SUNT[c] . SUNT[b]]"
-}
+},
+{"fcstSUNSimplify-ID63",
+"SUNSimplify[SUNTrace[SUNT[b, d, a, b, d]]]",
+"0"}
 };
 

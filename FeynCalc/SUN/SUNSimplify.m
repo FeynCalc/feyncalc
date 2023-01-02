@@ -361,6 +361,13 @@ colorSimplifyGeneric[rest_]:=
 colorSimplifyGeneric[rest_. sunTrace[holdDOTColor[]]^n_.]:=
 	SUNN^n colorSimplifyGeneric[rest];
 
+(* Tr(T^a) *)
+colorSimplifyGeneric[_. sunTrace[holdDOTColor[SUNT[_SUNIndex]]]]:=
+	0;
+
+colorSimplifyGeneric[_. sunTrace[SUNT[_SUNIndex]]]:=
+	0;
+
 (* Tr(T^a T^b) *)
 colorSimplifyGeneric[rest_. sunTrace[holdDOTColor[SUNT[x_SUNIndex] , SUNT[y_SUNIndex]]]]:=
 	1/2 colorSimplifyGeneric[rest SUNDelta[x, y]]/; optSUNTraceEvaluate===Automatic;
