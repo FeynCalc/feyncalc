@@ -146,6 +146,7 @@ Options[FCLoopBasisFindCompletion] = {
 	FCVerbose 			-> False,
 	Check 				-> True,
 	Method				-> ScalarProduct,
+	Names				-> "C",
 	SetDimensions		-> {3, 4, D, D-1}
 };
 
@@ -576,7 +577,7 @@ FCLoopBasisFindCompletion[topos:{__FCTopology}, opts:OptionsPattern[]] :=
 
 FCLoopBasisFindCompletion[topoRaw_FCTopology, opts:OptionsPattern[]] :=
 	Block[{	topo, fclbfcVerbose, optFinalSubstitutions, tmp, tmp2,
-			aux, auxEval, head, res, etaSign},
+			aux, auxEval, head, res, etaSign, optNames, newName, marker},
 
 
 		If [OptionValue[FCVerbose]===False,
@@ -598,6 +599,8 @@ FCLoopBasisFindCompletion[topoRaw_FCTopology, opts:OptionsPattern[]] :=
 			Message[FCLoopBasisFindCompletion::failmsg, "The supplied topology is incorrect."];
 			Abort[]
 		];
+
+		optNames = OptionValue[Names];
 
 		tmp = FCLoopBasisFindCompletion[FeynAmpDenominatorCombine[Times@@topo[[2]],FCI->True], topo[[3]], Join[{FCI->True,FCE->False},FilterRules[{opts}, Except[FCI|FCE]]]];
 
@@ -629,7 +632,33 @@ FCLoopBasisFindCompletion[topoRaw_FCTopology, opts:OptionsPattern[]] :=
 			auxEval={}
 		];
 
-		res = FCTopology[topo[[1]],Join[topo[[2]],auxEval], Sequence@@topo[[3;;]]];
+		If[	auxEval=!={},
+
+			marker = {FCGV["BasisCompletion"]};
+			Switch[
+				optNames,
+				_String,
+					newName=ToString[topo[[1]]]<>optNames,
+				_Symbol,
+					newName=ToExpression[ToString[topo[[1]]]<>ToString[optNames]],
+				_Function,
+					newName=optNames[topo[[1]]],
+				_,
+				Message[FCLoopBasisFindCompletion::failmsg,"Unknown value of the Names option."];
+				Abort[]
+			],
+
+
+
+			newName = topo[[1]];
+			marker = {}
+		];
+
+		If[	Head[topo[[1]]]===Symbol,
+			newName=ToExpression[newName]
+		];
+
+		res = FCTopology[newName,Join[topo[[2]],auxEval], Sequence@@topo[[3;;5]], Join[topo[[6]],marker]];
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
