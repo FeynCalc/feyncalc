@@ -447,22 +447,22 @@ cartesianContract[x : Except[_Plus], opts:OptionsPattern[]] :=
 
 			contractexpandopt = OptionValue[Contract,{opts},Expanding];
 
-			FCPrint[1, "Contract: cartesianContract: Entering", FCDoControl->cnVerbose];
-			FCPrint[3, "Contract: cartesianContract: Entering with ",x, FCDoControl->cnVerbose];
+			FCPrint[3, "Contract: cartesianContract: Entering", FCDoControl->cnVerbose];
+			FCPrint[4, "Contract: cartesianContract: Entering with ",x, FCDoControl->cnVerbose];
 
 			If[	contractexpandopt,
 				contractres = Expand2[contractres,CartesianIndex]
 			];
 
 			time=AbsoluteTime[];
-			FCPrint[1, "Contract: cartesianContract: Applying PairContract.", FCDoControl->cnVerbose];
+			FCPrint[3, "Contract: cartesianContract: Applying PairContract.", FCDoControl->cnVerbose];
 			contractres = contractres /. Pair -> PairContract /. CartesianPair -> CartesianPairContract /. PairContract->Pair /. CartesianPairContract->CartesianPair;
-			FCPrint[1,"Contract: cartesianContract: PairContract done. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
-			FCPrint[3,"Contract: cartesianContract: After PairContract: ", contractres , FCDoControl->cnVerbose];
+			FCPrint[3,"Contract: cartesianContract: PairContract done. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
+			FCPrint[4,"Contract: cartesianContract: After PairContract: ", contractres , FCDoControl->cnVerbose];
 
 
-			FCPrint[1,"Contract: cartesianContract: Leaving.", FCDoControl->cnVerbose];
-			FCPrint[3,"Contract: cartesianContract: Leaving with: ", contractres , FCDoControl->cnVerbose];
+			FCPrint[3,"Contract: cartesianContract: Leaving.", FCDoControl->cnVerbose];
+			FCPrint[4,"Contract: cartesianContract: Leaving with: ", contractres , FCDoControl->cnVerbose];
 
 			contractres
 		];
@@ -494,45 +494,45 @@ prepareProductContractions[ex_Plus] :=
 prepareProductContractions[expr_Times] :=
 	Block[{ex=expr, irrelevantPart, relevantPart, listOfProducts, time, res},
 
-		FCPrint[1,"Contract: prepareProductContractions: Entering.", FCDoControl->cnVerbose];
-		FCPrint[3,"Contract: prepareProductContractions: Entering with: ", expr, FCDoControl->cnVerbose];
+		FCPrint[3,"Contract: prepareProductContractions: Entering.", FCDoControl->cnVerbose];
+		FCPrint[4,"Contract: prepareProductContractions: Entering with: ", expr, FCDoControl->cnVerbose];
 
 		If[ !FreeQ2[ex, {DiracGamma, DiracChain, PauliSigma, PauliChain, Eps, Rule}],
-			FCPrint[1,"Contract: prepareProductContractions: Expression contains DiracGamma, PauliSigma or Eps. Passing to Contract.", FCDoControl->cnVerbose];
+			FCPrint[3,"Contract: prepareProductContractions: Expression contains DiracGamma, PauliSigma or Eps. Passing to Contract.", FCDoControl->cnVerbose];
 			Return[ex]
 		];
 
 		If[	DummyIndexFreeQ[ex, {LorentzIndex, CartesianIndex}],
-			FCPrint[1,"Contract: prepareProductContractions: Expression is free of Lorentz indices. Leaving.", FCDoControl->cnVerbose];
+			FCPrint[3,"Contract: prepareProductContractions: Expression is free of Lorentz indices. Leaving.", FCDoControl->cnVerbose];
 			Return[ex]
 		];
 
 		time=AbsoluteTime[];
-		FCPrint[1,"Contract: prepareProductContractions: Splitting into parts free and not free of Lorentz indices.", FCDoControl->cnVerbose];
+		FCPrint[3,"Contract: prepareProductContractions: Splitting into parts free and not free of Lorentz indices.", FCDoControl->cnVerbose];
 		{irrelevantPart,relevantPart} = FCProductSplit[ex,{LorentzIndex,CartesianIndex}];
-		FCPrint[1,"Contract: prepareProductContractions: Splitting done. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
+		FCPrint[3,"Contract: prepareProductContractions: Splitting done. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
 
-		FCPrint[3,"Contract: prepareProductContractions: Part free of Lorentz indices: ", irrelevantPart, FCDoControl->cnVerbose];
-		FCPrint[3,"Contract: prepareProductContractions: Part with Lorentz indices: ", relevantPart, FCDoControl->cnVerbose];
+		FCPrint[4,"Contract: prepareProductContractions: Part free of Lorentz indices: ", irrelevantPart, FCDoControl->cnVerbose];
+		FCPrint[4,"Contract: prepareProductContractions: Part with Lorentz indices: ", relevantPart, FCDoControl->cnVerbose];
 
 		Switch[Head[relevantPart],
 			Plus,
 				time=AbsoluteTime[];
-				FCPrint[1,"Contract: prepareProductContractions: The indexed part is a sum, applying prepareProductContractions again.", FCDoControl->cnVerbose];
+				FCPrint[3,"Contract: prepareProductContractions: The indexed part is a sum, applying prepareProductContractions again.", FCDoControl->cnVerbose];
 				relevantPart = prepareProductContractions[relevantPart];
-				FCPrint[1,"Contract: prepareProductContractions: Done applying prepareProductContractions. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose],
+				FCPrint[3,"Contract: prepareProductContractions: Done applying prepareProductContractions. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose],
 			Times,
 				time=AbsoluteTime[];
-				FCPrint[1,"Contract: prepareProductContractions: The indexed part is a product, applying reduceSumsToProducts.", FCDoControl->cnVerbose];
-				FCPrint[1,"Contract: prepareProductContractions: Applying reduceSumsToProducts.", FCDoControl->cnVerbose];
+				FCPrint[3,"Contract: prepareProductContractions: The indexed part is a product, applying reduceSumsToProducts.", FCDoControl->cnVerbose];
+				FCPrint[3,"Contract: prepareProductContractions: Applying reduceSumsToProducts.", FCDoControl->cnVerbose];
 				listOfProducts = List@@relevantPart;
 				relevantPart = Fold[reduceSumsToProducts[#1,#2]&,listOfProducts];
 				If[	optExpandScalarProduct,
 					res = ExpandScalarProduct[relevantPart,FCI->True];
 				];
-				FCPrint[1,"Contract: prepareProductContractions: Done applying reduceSumsToProducts. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose],
+				FCPrint[3,"Contract: prepareProductContractions: Done applying reduceSumsToProducts. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose],
 			_,
-				FCPrint[1,"Contract: prepareProductContractions: The indexed part is a single term or something else.", FCDoControl->cnVerbose];
+				FCPrint[3,"Contract: prepareProductContractions: The indexed part is a single term or something else.", FCDoControl->cnVerbose];
 				True
 		];
 
@@ -544,8 +544,8 @@ prepareProductContractions[expr_Times] :=
 
 
 		res = relevantPart irrelevantPart;
-		FCPrint[1,"Contract: prepareProductContractions: Leaving.",  FCDoControl->cnVerbose];
-		FCPrint[3,"Contract: prepareProductContractions: Leaving with: ", res, FCDoControl->cnVerbose];
+		FCPrint[3,"Contract: prepareProductContractions: Leaving.",  FCDoControl->cnVerbose];
+		FCPrint[4,"Contract: prepareProductContractions: Leaving with: ", res, FCDoControl->cnVerbose];
 
 		res
 	];
@@ -565,8 +565,8 @@ reduceSumsToProducts[a_,b_]:=
 reduceSumsToProducts[a_,b_]:=
 	Block[{res, bnew},
 
-		FCPrint[1, "Contract: reduceSumsToProducts: Entering.",  FCDoControl->cnVerbose];
-		FCPrint[3, "Contract: reduceSumsToProducts: Entering with: {a,b}: ", {a,b}, FCDoControl->cnVerbose];
+		FCPrint[3, "Contract: reduceSumsToProducts: Entering.",  FCDoControl->cnVerbose];
+		FCPrint[4, "Contract: reduceSumsToProducts: Entering with: {a,b}: ", {a,b}, FCDoControl->cnVerbose];
 
 		If[FreeQ2[b,{LorentzIndex,CartesianIndex}],
 			Return[a b]
@@ -587,20 +587,20 @@ reduceSumsToProducts[a_,b_]:=
 			bnew = Collect2[b, {LorentzIndex,CartesianIndex}];
 			If[ Head[bnew] === Plus,
 				(*If b does not factorize, use contractWithProductOfPairs*)
-				FCPrint[3, "Contract: reduceSumsToProducts: b does not factorize, calling reduceSumsToProducts", FCDoControl->cnVerbose];
+				FCPrint[4, "Contract: reduceSumsToProducts: b does not factorize, calling reduceSumsToProducts", FCDoControl->cnVerbose];
 				res = Map[reduceSumsToProducts[a,#]&,bnew],
 
 				(*
 					If b factorizes, use contractWithProductOfPairs
 					Think of sth like [aa ((D - 4) FV[p1, mu] + D FV[p1, mu])
 				*)
-				FCPrint[3, "Contract: reduceSumsToProducts: b factorizes, calling contractWithProductOfPairs.", FCDoControl->cnVerbose];
+				FCPrint[4, "Contract: reduceSumsToProducts: b factorizes, calling contractWithProductOfPairs.", FCDoControl->cnVerbose];
 				res = contractWithProductOfPairs[a, bnew]
 
 			]
 		];
 
-		FCPrint[3, "Contract: reduceSumsToProducts: result: ", res, FCDoControl->cnVerbose];
+		FCPrint[4, "Contract: reduceSumsToProducts: result: ", res, FCDoControl->cnVerbose];
 
 		If[	optExpandScalarProduct,
 			res = ExpandScalarProduct[res,FCI->True];
@@ -609,6 +609,8 @@ reduceSumsToProducts[a_,b_]:=
 		If[ !FreeQ2[res, {LorentzIndex,CartesianIndex}],
 			res = Expand2[res, {LorentzIndex,CartesianIndex}];
 		];
+
+		FCPrint[3, "Contract: reduceSumsToProducts: Leaving.", FCDoControl->cnVerbose];
 
 		res
 
