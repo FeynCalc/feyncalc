@@ -48,6 +48,9 @@ Options[FCReplaceD] = {
 	FCVerbose	-> False
 };
 
+FCReplaceD[expr_, {ru_Rule}, opts:OptionsPattern[]] :=
+	FCReplaceD[expr, ru, opts];
+
 FCReplaceD[expr_, Rule[dim_Symbol, x_], OptionsPattern[]] :=
 	Block[{ex,vectorSet,res,check, scalarTerm, vectorTerm=1, pref=1, tmp,
 		scaleless1=0,scaleless2=0,ruleProtect,holddim,diga, pasi, dchn, pchn},

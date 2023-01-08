@@ -68,5 +68,6 @@ D PauliSigma[CartesianIndex[a, D - 1], D - 1], PauliIndex[i],
 PauliIndex[j]] PauliChain[
 PauliSigma[CartesianIndex[a, D - 1], D - 1], PauliIndex[k],
 PauliIndex[l]], D -> 4 - 2 Epsilon, FCE -> True]",
-"(2 - 2*Epsilon)*PCHN[CSID[a], k, l]*PCHN[(4 - 2*Epsilon)*CSID[a], i, j]"}
+"(2 - 2*Epsilon)*PCHN[CSID[a], k, l]*PCHN[(4 - 2*Epsilon)*CSID[a], i, j]"},
+{"fcstFCReplaceD-ID20","FCReplaceD[D, D -> 4]","4"}
 }
