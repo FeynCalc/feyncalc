@@ -26,7 +26,7 @@ FCLoopFindTopologyMappings.
 
 By default the function will attempt to rewrite all the occurring loop
 integrals as GLIs. If you just want to apply the mappings without touching the
-remaining scalar products, 
+remaining scalar products,
 set the option FCLoopCreateRulesToGLI to False. Even when all scalar products
 depending on loop momenta are rewritten as GLIs, you can still suppress the
 step of multiplying out products
@@ -191,15 +191,20 @@ FCLoopApplyTopologyMappings[expr_, {mappings_List, toposRaw_List}, OptionsPatter
 		FCPrint[1, "FCLoopApplyTopologyMappings: Done applying the final replacement rule, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclamVerbose];
 
 		If[	OptionValue[GLIMultiply] && optFCLoopCreateRulesToGLI,
-
+			FCPrint[1,"FCLoopApplyTopologyMappings: Checking for the remaining loop momenta.", FCDoControl->fclamVerbose];
+			time = AbsoluteTime[];
 			lmoms = Union[Flatten[#[[3]]&/@topos]];
 			If[	!FreeQ2[res,lmoms],
 				Message[FCLoopApplyTopologyMappings::lmoms]
-			]
+			];
+			FCPrint[1, "FCLoopApplyTopologyMappings: Done checking for the remaining loop momenta, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclamVerbose]
 		];
 
 		If[	OptionValue[Collecting],
+			FCPrint[1,"FCLoopApplyTopologyMappings: Collecting w.r.t. GLIs.", FCDoControl->fclamVerbose];
+			time = AbsoluteTime[];
 			res = Collect2[res,GLI,Factoring->OptionValue[Factoring],TimeConstrained->OptionValue[TimeConstrained],IsolateNames->OptionValue[IsolateNames]];
+			FCPrint[1, "FCLoopApplyTopologyMappings: Done collecting w.r.t. GLIs, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclamVerbose]
 		];
 
 		If[	OptionValue[FCE],
