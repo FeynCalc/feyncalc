@@ -417,7 +417,7 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 
 				momenta = Union[Cases[MomentumExpand[#1[[1]]],Momentum[m_,___]:>m,Infinity]];
 				emoms = SelectFree[momenta,lmoms];
-				spsFromDownValues = FCGetScalarProducts[emoms,SetDimensions->optSetDimensions];
+				spsFromDownValues = SelectFree[FCGetScalarProducts[emoms,SetDimensions->optSetDimensions],TemporalMomentum];
 
 				FCTopology[topoTempName <> ToString[First[#2]], #1[[1]], Intersection[momenta,lmoms], emoms, Join[optFinalSubstitutions,spsFromDownValues], {}]
 				)&,
