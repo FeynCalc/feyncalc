@@ -5,9 +5,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2022 Rolf Mertig
-	Copyright (C) 1997-2022 Frederik Orellana
-	Copyright (C) 2014-2022 Vladyslav Shtabovenko
+	Copyright (C) 1990-2023 Rolf Mertig
+	Copyright (C) 1997-2023 Frederik Orellana
+	Copyright (C) 2014-2023 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Substitutes DiracGamma[6] and DiracGamma[7] in terms of
