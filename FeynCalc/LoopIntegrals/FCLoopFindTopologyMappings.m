@@ -76,6 +76,11 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 			{topos, optPreferredTopologies} = FCI[{toposRaw, optPreferredTopologies}]
 		];
 
+		(*Since FCLoopFindSubtopologies usually generated lists of lists ... *)
+		If[	Head[optPreferredTopologies]===List,
+			optPreferredTopologies = Flatten[optPreferredTopologies]
+		];
+
 		optPreferredTopologies =
 			If[	TrueQ[Head[#]=!=FCTopology],
 				If[	!FreeQ[topos,#],
