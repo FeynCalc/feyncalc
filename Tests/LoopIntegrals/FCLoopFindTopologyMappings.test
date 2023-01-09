@@ -322,5 +322,56 @@ n5}]}}, {FCTopology[topo1, {SFAD[{{l1 + q1, 0}, {m^2, 1}, 1}], \
 SFAD[{{l1 - l2, 0}, {0, 1}, 1}], SFAD[{{l2 + q1, 0}, {m^2, 1}, 1}], \
 SFAD[{{l2 - q2, 0}, {m^2, 1}, 1}], SFAD[{{l2, 0}, {0, 1}, 1}]}, {l1, \
 l2}, {q1, q2}, {SPD[q1, q1] -> 0, SPD[q2, q2] -> 0, SPD[q1, q2] -> \
-s/2}, {}]}}"}
+s/2}, {}]}}"},
+
+{"fcstFCLoopFindTopologyMappings-ID14","FCLoopFindTopologyMappings[{FCTopology[
+fctopology3, {SFAD[{{l, 0}, {mQ^2, 1}, 1}],
+	SFAD[{{l - P/2, 0}, {0, 1}, 1}],
+	SFAD[{{k1 + l - P, 0}, {mQ^2, 1}, 1}]}, {l}, {k1,
+	P}, {Hold[Pair][Momentum[k1, D], Momentum[k1, D]] -> 0,
+	Hold[Pair][Momentum[P, D], Momentum[q, D]] -> 0,
+	Hold[Pair][Momentum[P, D], Momentum[P, D]] -> 4*mQ^2,
+	Hold[Pair][Momentum[k1, D], Momentum[P, D]] -> 2*mQ^2,
+	Hold[Pair][Momentum[k2, D], Momentum[P, D]] -> 2*mQ^2,
+	Hold[Pair][Momentum[k1, D], Momentum[k2, D]] -> 2*mQ^2}, {}],
+FCTopology[
+fctopology6, {SFAD[{{l, 0}, {0, 1}, 1}],
+	SFAD[{{l + P/2, 0}, {mQ^2, 1}, 1}],
+	SFAD[{{k1 - l - P/2, 0}, {mQ^2, 1}, 1}]}, {l}, {k1,
+	P}, {Hold[Pair][Momentum[k1, D], Momentum[k1, D]] -> 0,
+	Hold[Pair][Momentum[P, D], Momentum[q, D]] -> 0,
+	Hold[Pair][Momentum[P, D], Momentum[P, D]] -> 4*mQ^2,
+	Hold[Pair][Momentum[k1, D], Momentum[P, D]] -> 2*mQ^2,
+	Hold[Pair][Momentum[k2, D], Momentum[P, D]] -> 2*mQ^2,
+	Hold[Pair][Momentum[k1, D], Momentum[k2, D]] -> 2*mQ^2}, {}],
+FCTopology[
+fctopology7, {SFAD[{{l, 0}, {0, 1}, 1}],
+	SFAD[{{l - P/2, 0}, {mQ^2, 1}, 1}],
+	SFAD[{{k1 + l - P/2, 0}, {mQ^2, 1}, 1}]}, {l}, {k1,
+	P}, {Hold[Pair][Momentum[k1, D], Momentum[k1, D]] -> 0,
+	Hold[Pair][Momentum[P, D], Momentum[q, D]] -> 0,
+	Hold[Pair][Momentum[P, D], Momentum[P, D]] -> 4*mQ^2,
+	Hold[Pair][Momentum[k1, D], Momentum[P, D]] -> 2*mQ^2,
+	Hold[Pair][Momentum[k2, D], Momentum[P, D]] -> 2*mQ^2,
+	Hold[Pair][Momentum[k1, D], Momentum[k2, D]] -> 2*mQ^2}, {}]},
+FCE -> True]","{{{FCTopology[fctopology7, {SFAD[{{l, 0}, {0, 1}, 1}],
+SFAD[{{l - P/2, 0}, {mQ^2, 1}, 1}], SFAD[{{k1 + l - P/2, 0}, {mQ^2, 1}, 1}]},
+{l}, {k1, P}, {Hold[Pair][Momentum[k1, D], Momentum[k1, D]] -> 0, Hold[Pair][Momentum[P, D],
+Momentum[q, D]] -> 0, Hold[Pair][Momentum[P, D], Momentum[P, D]] -> 4*mQ^2,
+	Hold[Pair][Momentum[k1, D], Momentum[P, D]] -> 2*mQ^2, Hold[Pair][Momentum[k2, D],
+	Momentum[P, D]] -> 2*mQ^2, Hold[Pair][Momentum[k1, D], Momentum[k2, D]] -> 2*mQ^2},
+	{}], {l -> -l}, GLI[fctopology7, {n1_, n2_, n3_}] :> GLI[fctopology6, {n1, n2, n3}]}},
+{FCTopology[fctopology3, {SFAD[{{l, 0}, {mQ^2, 1}, 1}], SFAD[{{l - P/2, 0}, {0, 1}, 1}],
+SFAD[{{k1 + l - P, 0}, {mQ^2, 1}, 1}]}, {l}, {k1, P}, {Hold[Pair][Momentum[k1, D],
+Momentum[k1, D]] -> 0, Hold[Pair][Momentum[P, D], Momentum[q, D]] -> 0,
+Hold[Pair][Momentum[P, D], Momentum[P, D]] -> 4*mQ^2,
+	Hold[Pair][Momentum[k1, D], Momentum[P, D]] -> 2*mQ^2, Hold[Pair][Momentum[k2, D],
+	Momentum[P, D]] -> 2*mQ^2, Hold[Pair][Momentum[k1, D], Momentum[k2, D]] -> 2*mQ^2},
+	{}], FCTopology[fctopology6, {SFAD[{{l, 0}, {0, 1}, 1}], SFAD[{{l + P/2, 0}, {mQ^2,
+	1}, 1}], SFAD[{{k1 - l - P/2, 0}, {mQ^2, 1}, 1}]},
+{l}, {k1, P}, {Hold[Pair][Momentum[k1, D], Momentum[k1, D]] -> 0,
+Hold[Pair][Momentum[P, D], Momentum[q, D]] -> 0, Hold[Pair][Momentum[P, D],
+Momentum[P, D]] -> 4*mQ^2, Hold[Pair][Momentum[k1, D], Momentum[P, D]] -> 2*mQ^2,
+Hold[Pair][Momentum[k2, D], Momentum[P, D]] -> 2*mQ^2,
+	Hold[Pair][Momentum[k1, D], Momentum[k2, D]] -> 2*mQ^2}, {}]}}"}
 });
