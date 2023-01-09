@@ -126,7 +126,7 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmomsRaw_List /; ! Opti
 			denPowers, zeroPowerProps, numPowers, numVars, zeroDenVars,
 			nM,nLoops,fPow,pref, fpInt, fpPref, optFCReplaceD, vars, optVariavbles,
 			aux, ex, Q, J, tensorPart, tensorRank, optMethod, extraPref, optFeynmanIntegralPrefactor,
-			optEuclidean, inverseMeasure, optNames, outputFCFeynmanPrepare, isCartesian},
+			optEuclidean, inverseMeasure, optNames, outputFCFeynmanPrepare, isCartesian, cartesianCheck},
 
 		optFinalSubstitutions		= OptionValue[FinalSubstitutions];
 		optFCReplaceD				= OptionValue[FCReplaceD];
@@ -148,16 +148,26 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmomsRaw_List /; ! Opti
 			{ex,optFinalSubstitutions,lmoms} = FCI[{expr,optFinalSubstitutions,lmomsRaw}]
 		];
 
+		If[	FreeQ[ex,GLI],
+			cartesianCheck = ex,
+			cartesianCheck = FCLoopSelectTopology[ex,lmoms]
+		];
+
 		Which[
-			!FreeQ[ex,Momentum] && FreeQ[ex,CartesianMomentum],
+			!FreeQ[cartesianCheck, Momentum] && FreeQ[cartesianCheck, CartesianMomentum],
 			isCartesian=False,
 			(*Lorentzian integral *)
-			FreeQ[ex,Momentum] && !FreeQ[ex,CartesianMomentum],
+			FreeQ[cartesianCheck, Momentum] && !FreeQ[cartesianCheck, CartesianMomentum],
 			isCartesian=True,
 			(*Cartesian integral *)
-			!FreeQ[ex,Momentum] && !FreeQ[ex,CartesianMomentum],
+			!FreeQ[cartesianCheck, Momentum] && !FreeQ[cartesianCheck, CartesianMomentum],
 			(*Mixed integral*)
 			Message[FCFeynmanParametrize::failmsg,"Integrals that simultaneously depend on Lorentz and Cartesian vectors are not supported."];
+			Abort[]
+		];
+
+		If[	!MemberQ[{True,False},isCartesian],
+			Message[FCFeynmanParametrize::failmsg,"Failed to determine whether the integral is Lorentzian or Cartesian."];
 			Abort[]
 		];
 
@@ -292,6 +302,7 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmomsRaw_List /; ! Opti
 						pref = extraPref*Gamma[fPow]/(Times @@ (Gamma /@ propPowersTilde))
 					];
 					fpInt =  Power[uPoly,fPow - dim/2 - tensorRank]/Power[fPoly,fPow]*tensorPart;
+
 					If[	!isCartesian && !optEuclidean,
 						FCPrint[2,"FCFeynmanParametrize: Minkowskian integral.", FCDoControl->fcfpVerbose];
 						pref = pref*(-1)^nM;
