@@ -126,7 +126,6 @@ FCLoopApplyTopologyMappings[expr_, {mappings_List, toposRaw_List}, OptionsPatter
 		*)
 
 		aux = Complement[uniqueProductsList,First/@Flatten[repRule]];
-
 		If[	Length[uniqueProductsList]=!=Length[aux]+Length[Flatten[repRule]],
 				Message[FCLoopApplyTopologyMappings::failmsg,"The number of replacement rules does not match the number of the relevant terms."];
 				Abort[]
@@ -153,8 +152,9 @@ FCLoopApplyTopologyMappings[expr_, {mappings_List, toposRaw_List}, OptionsPatter
 
 			topoIDs = First[(Last[#] /. optHead[_, x_] :> x)] & /@ (repRule);
 
-			If[	Union[First/@topos]=!=Union[topoIDs],
-				Message[FCLoopApplyTopologyMappings::failmsg,"Missing topologies present in the input expression"];
+			If[	!FCSubsetQ[First/@topos, Union[topoIDs]],
+				Message[FCLoopApplyTopologyMappings::failmsg,"Missing topologies present in the input expression: " <>
+					ToString[Union[topoIDs],InputForm] <> " is not a subset of " <> ToString[First/@topos,InputForm]] ;
 				Abort[]
 			];
 
