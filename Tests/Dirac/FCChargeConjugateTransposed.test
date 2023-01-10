@@ -107,6 +107,8 @@ Explicit -> False, FeynCalcExternal -> True]"},
 {"fcstFCChargeConjugateTransposed-ID28","FCChargeConjugateTransposed[-DiracGamma[7] .
 DiracGamma[LorentzIndex[Lor1]], Explicit -> True,
 FCDiracIsolate -> False, FCI -> True, FCE -> True]",
-"GA[Lor1] . GA[7]"}
+"GA[Lor1] . GA[7]"},
+{"fcstFCChargeConjugateTransposed-ID29","FCChargeConjugateTransposed[GAD[u] . (GAD[a, b] - GAD[b, a]),
+Explicit -> True,FCE->True]","GAD[a] . GAD[b] . GAD[u] - GAD[b] . GAD[a] . GAD[u]"}
 });
 
