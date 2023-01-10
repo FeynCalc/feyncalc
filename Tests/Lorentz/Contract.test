@@ -3,9 +3,9 @@
 (* :Title: Contract.test                                                    *)
 
 (* This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2022 Rolf Mertig
+	Copyright (C) 1997-2022 Frederik Orellana
+	Copyright (C) 2014-2022 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for Contract                 *)
@@ -157,7 +157,11 @@ DiracChain[GA[mu].(GS[p] + m).GA[nu], DiracIndex[i],
 {"fcstContractContractionsIn4dims-ID32","Contract[DCHN[FV[p, mu] GA[nu, mu, rho], i, j], FCE -> True]",
 	"DCHN[GA[nu].GS[p].GA[rho], i, j]"},
 {"fcstContractContractionsIn4dims-ID33","Contract[FV[p, mu] DCHN[GA[nu, mu, rho], i, j], FCE -> True]",
-	"DCHN[GA[nu].GS[p].GA[rho], i, j]"}
+	"DCHN[GA[nu].GS[p].GA[rho], i, j]"},
+{"fcstContractContractionsIn4dims-ID35","Contract[P (FV[p, mu] SP[k, p] + FV[k, mu]) . (FV[k, mu] -
+FV[p, mu] SP[k, p]), FCE -> True]","P*(SP[k, k] - SP[k, p]^2*SP[p, p])"},
+{"fcstContractContractionsIn4dims-ID36","Contract[P (FV[p, mu] SP[k, p] + FV[k, mu]) . (FV[k, mu] -
+FV[p, mu] SP[k, p]), FCE -> True]","P*(SP[k, k] - SP[k, p]^2*SP[p, p])"}
 };
 
 Tests`Lorentz`fcstContractDDims = {
@@ -288,7 +292,24 @@ Pair[LorentzIndex[i1], LorentzIndex[j2]]*Pair[LorentzIndex[i2], LorentzIndex[j1]
 	"Eps[LorentzIndex[i1, D], LorentzIndex[i2, D], LorentzIndex[i3, D], Momentum[p]]"},
 {"fcstContractDDims-ID14","LCD[i1, i2, i3, i4] FVD[p, i4] // Contract",
 	"Eps[LorentzIndex[i1, D], LorentzIndex[i2, D], LorentzIndex[i3, D], Momentum[p, D]]"},
-{"fcstContractDDims-ID15","Contract[PairContract[LorentzIndex[i, D], Momentum[p, D]]] // FCE","FVD[p, i]"}
+{"fcstContractDDims-ID15","Contract[PairContract[LorentzIndex[i, D], Momentum[p, D]]] // FCE","FVD[p, i]"},
+{"fcstContractDDims-ID17","Contract[(MTD[r, a] MTD[s, b] + MTD[r, b] MTD[s, a]) FVD[p,
+mu] (MTD[r, a] MTD[s, b] FVD[l, la] FVD[l, la] +
+	MTD[r, b] MTD[s, a] FVD[l, la] FVD[l, la]), FCE -> True]",
+	"2*D*FVD[p, mu]*SPD[l, l] + 2*D^2*FVD[p, mu]*SPD[l, l]"},
+{"fcstContractDDims-ID18","Contract[(MTD[r, a] MTD[s, b] + MTD[r, b] MTD[s, a]) FVD[p,
+mu] (MTD[r, a] MTD[s, b] + MTD[r, b] MTD[s, a]) FVD[l, la] FVD[l,
+la], FCE -> True]",
+	"2 D FVD[p, mu] SPD[l, l] + 2 D^2 FVD[p, mu] SPD[l, l]"},
+{"fcstContractDDims-ID19","Contract[(MTD[r, a] MTD[s, b] + MTD[r, b] MTD[s, a]) FVD[p,
+mu] (MTD[r, a] MTD[s, b] +
+	MTD[r, b] MTD[s, a] FVD[l, la] FVD[l, la]), FCE -> True]",
+	"D*FVD[p, mu] + D^2*FVD[p, mu] + D*FVD[p, mu]*SPD[l, l] + D^2*FVD[p, mu]*SPD[l, l]"},
+{"fcstContractDDims-ID20","Contract[(MTD[r, a] MTD[s, b] + MTD[r, b] MTD[s, a]) MTD[mu,
+nu] (MTD[r, a] MTD[s, b] +
+	MTD[r, b] MTD[s, a] FVD[l, la] FVD[l, la]), FCE -> True]",
+	"D*MTD[mu, nu] + D^2*MTD[mu, nu] + D*MTD[mu, nu]*SPD[l, l] +
+	D^2*MTD[mu, nu]*SPD[l, l]"}
 };
 
 
