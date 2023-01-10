@@ -126,13 +126,14 @@ FCCompareNumbers[xRaw_/;Head[xRaw]=!=List,yRaw_/;Head[yRaw]=!=List,OptionsPatter
 		];
 		vars = Join[vars,{comp}];
 
+		x = x /. HoldPattern[Complex[a_, b_]] -> a + b comp[0, 1];
+		y = y /. HoldPattern[Complex[a_, b_]] -> a + b comp[0, 1];
 
-		lhsRe=SelectFree[x+null1+null2,Complex,I] /. null1|null2->0 /. ruleRemoveZero  /. dummy->1;
-		lhsIm=SelectNotFree[x+null1+null2,Complex,I]/. {Complex->comp,I->comp[0,1]}  /. null1|null2->0 /. ruleRemoveZero  /. dummy->1;
+		lhsRe=SelectFree2[x+null1+null2,{Complex,I,comp}] /. null1|null2->0 /. ruleRemoveZero  /. dummy->1;
+		lhsIm=SelectNotFree2[x+null1+null2,{Complex,I,comp}]/. {Complex->comp,I->comp[0,1]}  /. null1|null2->0 /. ruleRemoveZero  /. dummy->1;
 
-		rhsRe=SelectFree[y+null1+null2,Complex,I] /. null1|null2->0 /. ruleRemoveZero  /. dummy->1;
-		rhsIm=SelectNotFree[y+null1+null2,Complex,I]/. {Complex->comp,I->comp[0,1]}  /. null1|null2->0 /. ruleRemoveZero  /. dummy->1;
-
+		rhsRe=SelectFree2[y+null1+null2,{Complex,I,comp}] /. null1|null2->0 /. ruleRemoveZero  /. dummy->1;
+		rhsIm=SelectNotFree2[y+null1+null2,{Complex,I,comp}]/. {Complex->comp,I->comp[0,1]} /.  null1|null2->0 /. ruleRemoveZero  /. dummy->1;
 
 		FCPrint[3, "FCCompareNumbers: Real part of the lhs: ", lhsRe, FCDoControl->fccnVerbose];
 		FCPrint[3, "FCCompareNumbers: Imaginary part of the lhs: ", lhsIm, FCDoControl->fccnVerbose];
