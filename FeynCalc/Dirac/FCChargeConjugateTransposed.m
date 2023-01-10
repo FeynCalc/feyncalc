@@ -98,7 +98,7 @@ FCChargeConjugateTransposed[expr_/; !MemberQ[{List,Equal},expr], opts:OptionsPat
 				ex  = DiracChainExpand[ex, FCI->True];
 			];
 
-			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, Factoring-> nonDsHead, DiracChain->True];
+			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, Factoring-> nonDsHead, DiracChain->True, "ExpandNestedDOTs" -> True];
 			ex = ex /. dsHead[z_]/;!FreeQ[z,Spinor] :> nonDsHead[z];
 
 			If[	!FreeQ[ex, DiracChain],
