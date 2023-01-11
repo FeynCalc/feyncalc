@@ -632,5 +632,22 @@ FCTopology[\"topo1R3\", {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}],
 FCTopology[\"topo1R14\", {SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{q1 + q2, 0}, {0, 1}, 1}], SFAD[{{p - q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {FCGV[\"SubtopologyOf\"] -> topo1}]},
 {FCTopology[topo2, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{p + q2, 0}, {0, 1}, 1}], SFAD[{{p - q1, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}]},
 {FCTopology[topo3, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{p - q1, 0}, {0, 1}, 1}], SFAD[{{p - q1 + q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}],
-FCTopology[\"topo3R3\", {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{p - q1 + q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {FCGV[\"SubtopologyOf\"] -> topo3}]}}"}
+FCTopology[\"topo3R3\", {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{p - q1 + q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {FCGV[\"SubtopologyOf\"] -> topo3}]}}"},
+
+
+{"fcstFCLoopFindSubtopologies-ID7",
+"FCLoopFindSubtopologies[
+FCTopology[fctopo, {SFAD[{{I*p1, 0}, {0, -1}, 1}],
+	SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}],
+	SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}],
+	SFAD[{{0, p1 . p3}, {0, -1}, 1}],
+	SFAD[{{0, p3 . q}, {0, -1}, 1}]}, {p1,
+	p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] ->
+	mb^2}, {}], FCE -> True]",
+	"{FCTopology[fctopo, {SFAD[{{I*p1, 0}, {0, -1}, 1}], SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}], SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}], SFAD[{{0, p1 . p3}, {0, -1}, 1}], SFAD[{{0, p3 . q}, {0, -1}, 1}]}, {p1, p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] -> mb^2}, {}],
+FCTopology[\"fctopoR1\", {SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}], SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}], SFAD[{{0, p1 . p3}, {0, -1}, 1}], SFAD[{{0, p3 . q}, {0, -1}, 1}]}, {p1, p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] -> mb^2}, {FCGV[\"SubtopologyOf\"] -> fctopo}],
+FCTopology[\"fctopoR4\", {SFAD[{{I*p1, 0}, {0, -1}, 1}], SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}], SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}], SFAD[{{0, p3 . q}, {0, -1}, 1}]}, {p1, p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] -> mb^2}, {FCGV[\"SubtopologyOf\"] -> fctopo}],
+FCTopology[\"fctopoR5\", {SFAD[{{I*p1, 0}, {0, -1}, 1}], SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}], SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}], SFAD[{{0, p1 . p3}, {0, -1}, 1}]}, {p1, p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] -> mb^2}, {FCGV[\"SubtopologyOf\"] -> fctopo}],
+FCTopology[\"fctopoR15\", {SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}], SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}], SFAD[{{0, p1 . p3}, {0, -1}, 1}]}, {p1, p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] -> mb^2}, {FCGV[\"SubtopologyOf\"] -> fctopo}],
+FCTopology[\"fctopoR45\", {SFAD[{{I*p1, 0}, {0, -1}, 1}], SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}], SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}]}, {p1, p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] -> mb^2}, {FCGV[\"SubtopologyOf\"] -> fctopo}]}"}
 })

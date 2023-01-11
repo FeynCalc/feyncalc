@@ -211,7 +211,7 @@ pakProcess[{uPolyRaw_, fPolyRaw_, powsRaw_List, matRaw_List, QRaw_List, JRaw_, t
 				pVarsRepRule =  Thread[Rule[Extract[pVars, List /@ sigma], pVars]];
 
 				FCPrint[3, "FCLoopToPakForm: Reordering rule: ", pVarsRepRule, FCDoControl -> fctpfVerbose];
-				powsReordered = Extract[pows, List /@ sigma];
+				powsReordered = Extract[pows, List /@ sigma] /. pVarsRepRule;
 				uPoly = uPoly /. pVarsRepRule;
 				fPoly = fPoly /. pVarsRepRule;
 				pPoly = pPoly /. pVarsRepRule;
