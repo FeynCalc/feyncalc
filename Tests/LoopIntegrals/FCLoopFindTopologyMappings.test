@@ -373,5 +373,69 @@ Hold[Pair][Momentum[P, D], Momentum[P, D]] -> 4*mQ^2,
 Hold[Pair][Momentum[P, D], Momentum[q, D]] -> 0, Hold[Pair][Momentum[P, D],
 Momentum[P, D]] -> 4*mQ^2, Hold[Pair][Momentum[k1, D], Momentum[P, D]] -> 2*mQ^2,
 Hold[Pair][Momentum[k2, D], Momentum[P, D]] -> 2*mQ^2,
-	Hold[Pair][Momentum[k1, D], Momentum[k2, D]] -> 2*mQ^2}, {}]}}"}
+	Hold[Pair][Momentum[k1, D], Momentum[k2, D]] -> 2*mQ^2}, {}]}}"},
+
+
+{"fcstFCLoopFindTopologyMappings-ID15",
+"FCLoopFindTopologyMappings[{FCTopology[
+asyR1prop2Ltopo22012X01101NAux1, {SFAD[{{I*p1, 0}, {0, -1}, 1}],
+	SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}],
+	SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}]}, {p1,
+	p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] ->
+	mb^2}, {}]},
+PreferredTopologies -> {{FCTopology[
+	asyR1prop2Ltopo22012X01101NAux1C, {SFAD[{{I*p1, 0}, {0, -1}, 1}],
+	SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}],
+	SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}],
+	SFAD[{{0, p1 . p3}, {0, -1}, 1}],
+	SFAD[{{0, p3 . q}, {0, -1}, 1}]}, {p1,
+	p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] ->
+	mb^2}, {}],
+	FCTopology[
+	asyR1prop2Ltopo22012X01101NAux1CR1, {SFAD[{{(-I)*p3,
+		0}, {-mc^2, -1}, 1}], SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}],
+	SFAD[{{0, p1 . p3}, {0, -1}, 1}],
+	SFAD[{{0, p3 . q}, {0, -1}, 1}]}, {p1,
+	p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] ->
+	mb^2}, {FCGV[\"SubtopologyOf\"] ->
+	asyR1prop2Ltopo22012X01101NAux1C}],
+	FCTopology[
+	asyR1prop2Ltopo22012X01101NAux1CR4, {SFAD[{{I*p1, 0}, {0, -1},
+		1}], SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}],
+	SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}],
+	SFAD[{{0, p3 . q}, {0, -1}, 1}]}, {p1,
+	p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] ->
+	mb^2}, {FCGV[\"SubtopologyOf\"] ->
+	asyR1prop2Ltopo22012X01101NAux1C}],
+	FCTopology[
+	asyR1prop2Ltopo22012X01101NAux1CR5, {SFAD[{{I*p1, 0}, {0, -1},
+		1}], SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}],
+	SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}],
+	SFAD[{{0, p1 . p3}, {0, -1}, 1}]}, {p1,
+	p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] ->
+	mb^2}, {FCGV[\"SubtopologyOf\"] ->
+	asyR1prop2Ltopo22012X01101NAux1C}],
+	FCTopology[
+	asyR1prop2Ltopo22012X01101NAux1CR15, {SFAD[{{(-I)*p3,
+		0}, {-mc^2, -1}, 1}], SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}],
+	SFAD[{{0, p1 . p3}, {0, -1}, 1}]}, {p1,
+	p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] ->
+	mb^2}, {FCGV[\"SubtopologyOf\"] ->
+	asyR1prop2Ltopo22012X01101NAux1C}],
+	FCTopology[
+	asyR1prop2Ltopo22012X01101NAux1CR45, {SFAD[{{I*p1, 0}, {0, -1},
+		1}], SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}],
+	SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}]}, {p1,
+	p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] ->
+	mb^2}, {FCGV[\"SubtopologyOf\"] ->
+	asyR1prop2Ltopo22012X01101NAux1C}]}}, FCE -> True]",
+	"{{{FCTopology[asyR1prop2Ltopo22012X01101NAux1, {SFAD[{{I*p1, 0}, {0, -1}, 1}],
+	SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}], SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}]},
+	{p1, p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] -> mb^2},
+	{}], {p1 -> p1, p3 -> p3},GLI[asyR1prop2Ltopo22012X01101NAux1, {n1_, n2_, n3_}] :>
+	GLI[asyR1prop2Ltopo22012X01101NAux1C, {n1, n2, n3, 0, 0}]}},
+	{FCTopology[asyR1prop2Ltopo22012X01101NAux1C, {SFAD[{{I*p1, 0}, {0, -1}, 1}],
+	SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}], SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}],
+	SFAD[{{0, p1 . p3}, {0, -1}, 1}], SFAD[{{0, p3 . q}, {0, -1}, 1}]}, {p1, p3},
+	{q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] -> mb^2}, {}]}}"}
 });
