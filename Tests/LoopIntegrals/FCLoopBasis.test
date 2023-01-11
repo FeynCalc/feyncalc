@@ -682,45 +682,34 @@ TC[k], 1}, 1}], GFAD[{{TC[k], 1}, -1}]}}"},
 {"fcstFCLoopBasisExtract-ID17",
 "FCLoopBasisExtract[{FAD[q1-p1],SPD[q1,p]},{q1},SetDimensions\
 \[Rule]{D},FCE\[Rule]True]",
-"{{SPD[p, q1], SPD[p1, p1] - 2*SPD[p1, q1] + SPD[q1, q1]}, {SPD[p, \
-q1], SPD[p1, q1], SPD[q1, q1]}, {-1, 1}, {SPD[p, q1], FAD[-p1 + \
-q1]}}"},
+"{{SPD[p1, p1] - 2*SPD[p1, q1] + SPD[q1, q1], SPD[p, q1]}, {SPD[p, q1], SPD[p1, q1], SPD[q1, q1]},
+{1, -1}, {FAD[-p1 + q1], SPD[p, q1]}}"},
 {"fcstFCLoopBasisExtract-ID18",
-"FCLoopBasisExtract[{FAD[q1-p1],FAD[{q1,m1}],SPD[q1,p]},{q1},\
-SetDimensions\[Rule]{D},FCE\[Rule]True]",
-"{{SPD[p, q1], SPD[p1, p1] - 2*SPD[p1, q1] + SPD[q1, q1], -m1^2 + \
-SPD[q1, q1]}, {SPD[p, q1], SPD[p1, q1], SPD[q1, q1]}, {-1, 1, 1}, \
-{SPD[p, q1], FAD[-p1 + q1], FAD[{q1, m1}]}}"},
+"FCLoopBasisExtract[{FAD[q1-p1],FAD[{q1,m1}],SPD[q1,p]},{q1},SetDimensions\[Rule]{D},FCE\[Rule]True]",
+"{{SPD[p1, p1] - 2*SPD[p1, q1] + SPD[q1, q1], -m1^2 + SPD[q1, q1], SPD[p, q1]}, {SPD[p, q1], SPD[p1, q1], SPD[q1, q1]}, {1, 1, -1}, {FAD[-p1 + q1], FAD[{q1, m1}], SPD[p, q1]}}"},
 {"fcstFCLoopBasisExtract-ID19",
 "FCLoopBasisExtract[{FAD[q1],FAD[q1-k1,q2,q1+q2], SPD[2 k1-q1,q1+2 \
 q2]},{q1,q2},FCE\[Rule]True]",
-"{{2*SPD[k1, q1] + 4*SPD[k1, q2] - SPD[q1, q1] - 2*SPD[q1, q2],
-SPD[q1, q1], SPD[q2, q2], SPD[k1, k1] - 2*SPD[k1, q1] + SPD[q1, q1],
-SPD[q1, q1] + 2*SPD[q1, q2] + SPD[q2, q2]}, {SPD[k1, q1],
-SPD[k1, q2], SPD[q1, q1], SPD[q1, q2], SPD[q2, q2]}, {-1, 1, 1, 1,
-1}, {2*SPD[k1, q1] + 4*SPD[k1, q2] - SPD[q1, q1] - 2*SPD[q1, q2],
-FAD[q1], FAD[q2], FAD[-k1 + q1], FAD[q1 + q2]}}"},
+"{{SPD[q1, q1], SPD[q2, q2], SPD[k1, k1] - 2*SPD[k1, q1] + SPD[q1, q1], SPD[q1, q1] + 2*SPD[q1, q2] +
+SPD[q2, q2], 2*SPD[k1, q1] + 4*SPD[k1, q2] - SPD[q1, q1] - 2*SPD[q1, q2]}, {SPD[k1, q1], SPD[k1, q2],
+SPD[q1, q1], SPD[q1, q2], SPD[q2, q2]}, {1, 1, 1, 1, -1}, {FAD[q1], FAD[q2], FAD[-k1 + q1], FAD[q1 +
+q2], 2*SPD[k1, q1] + 4*SPD[k1, q2] - SPD[q1, q1] - 2*SPD[q1, q2]}}"},
 {"fcstFCLoopBasisExtract-ID20",
 "FCLoopBasisExtract[{FAD[q1-p1],SPD[q1,p]},{q1},SetDimensions\
 \[Rule]{D},FCE\[Rule]True]",
-"{{SPD[p, q1], SPD[p1, p1] - 2*SPD[p1, q1] + SPD[q1, q1]}, {SPD[p, \
-q1], SPD[p1, q1], SPD[q1, q1]}, {-1, 1}, {SPD[p, q1], FAD[-p1 + \
-q1]}}"},
+"{{SPD[p1, p1] - 2*SPD[p1, q1] + SPD[q1, q1], SPD[p, q1]}, {SPD[p, q1], SPD[p1, q1], SPD[q1, q1]}, {1, -1}, {FAD[-p1 + q1], SPD[p, q1]}}"},
 {"fcstFCLoopBasisExtract-ID21",
 "FCLoopBasisExtract[{FAD[q1-p1],FAD[{q1,m1}],SPD[q1,p]},{q1},\
 SetDimensions\[Rule]{D},FCE\[Rule]True]",
-"{{SPD[p, q1], SPD[p1, p1] - 2*SPD[p1, q1] + SPD[q1, q1], -m1^2 + \
-SPD[q1, q1]}, {SPD[p, q1], SPD[p1, q1], SPD[q1, q1]}, {-1, 1, 1}, \
-{SPD[p, q1], FAD[-p1 + q1], FAD[{q1, m1}]}}"},
+"{{SPD[p1, p1] - 2*SPD[p1, q1] + SPD[q1, q1], -m1^2 + SPD[q1, q1], SPD[p, q1]}, {SPD[p, q1],
+SPD[p1, q1], SPD[q1, q1]}, {1, 1, -1}, {FAD[-p1 + q1], FAD[{q1, m1}], SPD[p, q1]}}"},
 {"fcstFCLoopBasisExtract-ID22",
 "FCLoopBasisExtract[{FAD[q1],FAD[q1-k1,q2,q1+q2], SPD[2 k1-q1,q1+2 \
 q2]},{q1,q2},FCE\[Rule]True]",
-"{{2*SPD[k1, q1] + 4*SPD[k1, q2] - SPD[q1, q1] - 2*SPD[q1, q2],
-SPD[q1, q1], SPD[q2, q2], SPD[k1, k1] - 2*SPD[k1, q1] + SPD[q1, q1],
-SPD[q1, q1] + 2*SPD[q1, q2] + SPD[q2, q2]}, {SPD[k1, q1],
-SPD[k1, q2], SPD[q1, q1], SPD[q1, q2], SPD[q2, q2]}, {-1, 1, 1, 1,
-1}, {2*SPD[k1, q1] + 4*SPD[k1, q2] - SPD[q1, q1] - 2*SPD[q1, q2],
-FAD[q1], FAD[q2], FAD[-k1 + q1], FAD[q1 + q2]}}"},
+"{{SPD[q1, q1], SPD[q2, q2], SPD[k1, k1] - 2*SPD[k1, q1] + SPD[q1, q1], SPD[q1, q1] +
+2*SPD[q1, q2] + SPD[q2, q2], 2*SPD[k1, q1] + 4*SPD[k1, q2] - SPD[q1, q1] - 2*SPD[q1, q2]},
+{SPD[k1, q1], SPD[k1, q2], SPD[q1, q1], SPD[q1, q2], SPD[q2, q2]}, {1, 1, 1, 1, -1},
+{FAD[q1], FAD[q2], FAD[-k1 + q1], FAD[q1 + q2], 2*SPD[k1, q1] + 4*SPD[k1, q2] - SPD[q1, q1] - 2*SPD[q1, q2]}}"},
 {"fcstFCLoopBasisExtract-ID23",
 "FCLoopBasisExtract[
 GFAD[{{CSPD[k, k] x[1] + (CSPD[k, k - 2 p] + CSPD[p, p]) x[2], 1},
@@ -729,12 +718,21 @@ GFAD[{{CSPD[k, k] x[1] + (CSPD[k, k - 2 p] + CSPD[p, p]) x[2], 1},
 -c^2 + CSPD[k, k]}, {CSPD[k, k], CSPD[k, p]}, {1 + s, 1},
 {GFAD[{{CSPD[k, k]*x[1] + (CSPD[k, k - 2*p] +
 CSPD[p, p])*x[2], 1}, 1}], CFAD[{{k, 0}, {-c^2, -1}, 1}]}}"},
-{"fcstFCLoopBasisExtract-ID29","FCLoopBasisExtract[SFAD[p, p - q] SPD[p, q], {p},
+{"fcstFCLoopBasisExtract-ID24","FCLoopBasisExtract[SFAD[p, p - q] SPD[p, q], {p},
 SortBy -> Function[x, x[[2]] < 0], FCE -> True]",
 "{{SPD[p, p], SPD[p, p] - 2 SPD[p, q] + SPD[q, q],
 SPD[p, q]}, {SPD[p, p], SPD[p, q]}, {1,
 1, -1}, {SFAD[{{p, 0}, {0, 1}, 1}], SFAD[{{p - q, 0}, {0, 1}, 1}],
-SPD[p, q]}}"}
+SPD[p, q]}}"},
+{"fcstFCLoopBasisExtract-ID25","FCLoopBasisExtract[{SFAD[{{I*p1, 0}, {0, -1}, 1}],
+SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}],
+SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}],
+SFAD[{{0, p1 . p3}, {0, -1}, 1}],
+SFAD[{{0, p3 . q}, {0, -1}, 1}]}, {p1, p3}, FCE -> True]",
+"{{-SPD[p1, p1], mc^2 - SPD[p3, p3], -SPD[p1, p1] + 2*SPD[p1, q] - SPD[q, q], SPD[p1, p3],
+SPD[p3, q]}, {SPD[p1, p1], SPD[p1, p3], SPD[p1, q], SPD[p3, p3], SPD[p3, q]}, {1, 1, 1, 1, 1},
+{SFAD[{{I*p1, 0}, {0, -1}, 1}], SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}],
+SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}], SFAD[{{0, p1 . p3}, {0, -1}, 1}], SFAD[{{0, p3 . q}, {0, -1}, 1}]}}"}
 };
 
 Tests`LoopIntegrals`fcstFCLoopBasisGetSize =

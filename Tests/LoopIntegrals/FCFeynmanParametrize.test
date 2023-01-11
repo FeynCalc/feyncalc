@@ -259,12 +259,13 @@ ep]/Gamma[2 - 2*ep], {x[1], x[2]}}"},
 p3,m^2}],SFAD[{(p3-p1),m^2}],SFAD[{{0,2p1.n}}],SFAD[{{0,2p3.n}}]},{p1,\
 p3},Names->x,Method->\"Lee-Pomeransky\",FCReplaceD->{D->4-2ep},\
 FCE->True]",
-"{(SPD[n, n]*x[2]^2*x[3] + SPD[n, n]*x[1]^2*x[4] + x[3]*x[4] + \
-m^2*x[3]^2*x[4] + m^2*x[3]*x[4]^2 + SPD[n, n]*x[1]^2*x[5] + 2*SPD[n, \
-n]*x[1]*x[2]*x[5] + SPD[n, n]*x[2]^2*x[5] + x[3]*x[5] + \
-m^2*x[3]^2*x[5] + x[4]*x[5] + 3*m^2*x[3]*x[4]*x[5] + m^2*x[4]^2*x[5] \
-+ m^2*x[3]*x[5]^2 + m^2*x[4]*x[5]^2)^(-2 + ep), -(Gamma[2 - \
-ep]/Gamma[1 - 3*ep]), {x[1], x[2], x[3], x[4], x[5]}}"},
+"{(x[1]*x[2] + m^2*x[1]^2*x[2] + m^2*x[1]*x[2]^2 + x[1]*x[3] +
+	m^2*x[1]^2*x[3] + x[2]*x[3] + 3*m^2*x[1]*x[2]*x[3] +
+	m^2*x[2]^2*x[3] + m^2*x[1]*x[3]^2 + m^2*x[2]*x[3]^2 +
+	SPD[n, n]*x[2]*x[4]^2 + SPD[n, n]*x[3]*x[4]^2 +
+	2*SPD[n, n]*x[3]*x[4]*x[5] + SPD[n, n]*x[1]*x[5]^2 +
+	SPD[n, n]*x[3]*x[5]^2)^(-2 + ep), -(Gamma[2 - ep]/
+	Gamma[1 - 3*ep]), {x[1], x[2], x[3], x[4], x[5]}}"},
 {"fcstFCFeynmanParametrize-ID41","FCFeynmanParametrize[
 SFAD[{{0, 2*k1 . n}}]*SFAD[{{0, 2*k2 . n}}]*SFAD[{k1, m^2}]*
 SFAD[{k2, m^2}]*SFAD[{k1 - k2, m^2}], {k1, k2}, Names -> x,

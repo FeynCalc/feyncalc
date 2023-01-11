@@ -263,9 +263,14 @@ FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 
 		FCPrint[3,"FCLoopBasisExtract: Integral basis from FCLoopIntegralToPropagators: ", integralBasis, FCDoControl->fclbeVerbose];
 
-		integralBasis = Join[SelectNotFree[integralBasis,Pair,CartesianPair],SelectFree[integralBasis,Pair,CartesianPair]];
-
-		FCPrint[3,"FCLoopBasisExtract: Reshuffled integral basis: ", integralBasis, FCDoControl->fclbeVerbose];
+		If[ FreeQ2[expr,{FCTopology,GLI}] && Head[expr]=!=List,
+			(*
+				We can reshuffle the propagators to have quadratic ones coming first and the eikonals last
+				only if their ordering in the original integral did not matter!
+			*)
+			integralBasis = Join[SelectNotFree[integralBasis,Pair,CartesianPair],SelectFree[integralBasis,Pair,CartesianPair]];
+			FCPrint[3,"FCLoopBasisExtract: Reordered integral basis: ", integralBasis, FCDoControl->fclbeVerbose];
+		];
 
 		If[	optSortBy=!=Identity,
 			integralBasis = SortBy[integralBasis, optSortBy];
