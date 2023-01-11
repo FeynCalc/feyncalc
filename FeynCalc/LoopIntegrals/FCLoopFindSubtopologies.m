@@ -86,7 +86,8 @@ FCLoopFindSubtopologies[topoRaw_FCTopology, OptionsPattern[]] :=
 			FCLoopPakOrder -> False, FinalSubstitutions -> optFinalSubstitutions, FCI-> OptionValue[FCI], LightPak->OptionValue[LightPak]];
 
 		FCPrint[1, "FCLoopFindSubtopologies: FCLoopToPakForm done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclfsVerbose];
-		FCPrint[3, "FCLoopFindSubtopologies: After FCLoopToPakForm: ", pakForm[[1]], FCDoControl->fclfsVerbose];
+
+		FCPrint[3, "FCLoopFindSubtopologies: After FCLoopToPakForm: ", pakForm[[2]], FCDoControl->fclfsVerbose];
 
 		pakPoly = pakForm[[2]][[1]];
 
@@ -152,7 +153,7 @@ removeVanishingSubtopos[{}, _] :=
 removeVanishingSubtopos[{zeroVars_List, poly_}, var_] :=
 Block[{allVars, aux, res, time},
 
-	FCPrint[4, "FCLoopFindSubtopologies: removeVanishingSubtopos: Entering with: ", zeroVars, FCDoControl->fclfsVerbose];
+	FCPrint[4, "FCLoopFindSubtopologies: removeVanishingSubtopos: Entering with: ", zeroVarsRaw, FCDoControl->fclfsVerbose];
 	FCPrint[4, "FCLoopFindSubtopologies: removeVanishingSubtopos: Polynomial: ", poly, FCDoControl->fclfsVerbose];
 	allVars = Cases2[poly, var];
 
@@ -170,6 +171,7 @@ Block[{allVars, aux, res, time},
 
 	FCPrint[2, "FCLoopFindSubtopologies: removeVanishingSubtopos: Done applying FCLoopPakScalelessQ, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclfsVerbose];
 
+	FCPrint[4, "FCLoopFindSubtopologies: removeVanishingSubtopos: Leaving with: ", res, FCDoControl->fclfsVerbose];
 	FCPrint[4, "FCLoopFindSubtopologies: removeVanishingSubtopos: Leaving.", FCDoControl->fclfsVerbose];
 
 	res
@@ -181,6 +183,7 @@ removeDuplicateSubtopos[subtopos_List, var_] :=
 	Block[{tmp, myPoly, myVarsRaw, myVars, y, newVarsRule, sigma, pVarsRepRule, keep, time},
 
 		FCPrint[4, "FCLoopFindSubtopologies: removeDuplicateSubtopos: Entering.", FCDoControl->fclfsVerbose];
+		FCPrint[4, "FCLoopFindSubtopologies: removeDuplicateSubtopos: Entering with: ", subtopos, FCDoControl->fclfsVerbose];
 		time=AbsoluteTime[];
 		FCPrint[2, "FCLoopFindSubtopologies: removeDuplicateSubtopos: Applying FCLoopPakOrder to the list of topologies.", FCDoControl -> fclfsVerbose];
 		tmp = MapIndexed[(

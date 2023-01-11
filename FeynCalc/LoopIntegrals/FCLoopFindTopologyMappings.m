@@ -219,7 +219,7 @@ findMappings[input_List, preferred_List, targetEl_:1] :=
 	FCPrint[3, "FCLoopFindTopologyMappings: findMappings: Calling FCLoopFindMomentumShifts.", FCDoControl -> fclftpVerbose];
 	(*Some shifts cannot be found unless shifts of external momenta are explicitly allowed!*)
 
-	shifts = Quiet[FCLoopFindMomentumShifts[Last/@source, Last[target],Abort->False,Momentum->optMomentum],{FCLoopFindMomentumShifts::shifts,Solve::svars}];
+	shifts = Quiet[FCLoopFindMomentumShifts[Last/@source, Last[target], {Momentum->optMomentum,Abort->False}],{FCLoopFindMomentumShifts::shifts,Solve::svars}];
 	(*TODO Redo if shitfs were found only between the preferred topologies*)
 
 	If[	MatchQ[shifts,{{}..}],

@@ -167,15 +167,17 @@ FCLoopIntegralToGraph[expr_/; FreeQ[{GLI,FCTopology},expr], lmomsRaw_List, Optio
 			Abort[]
 		];
 
+		FCPrint[1,"FCLoopIntegralToGraph: Entering. ", FCDoControl->lbtgVerbose];
+		FCPrint[2,"FCLoopIntegralToGraph: Entering  with: ", ex, FCDoControl->lbtgVerbose];
+		FCPrint[2,"FCLoopIntegralToGraph: Kinematics: ", optInitialSubstitutions, FCDoControl->lbtgVerbose];
+
 		If[	!MatchQ[ex,{__}|_. _FeynAmpDenominator],
 			Message[FCLoopIntegralToGraph::failmsg, "The input expression is not a proper integral or list of propagators"];
 			Abort[]
 		];
 
 
-		FCPrint[1,"FCLoopIntegralToGraph: Entering. ", FCDoControl->lbtgVerbose];
-		FCPrint[2,"FCLoopIntegralToGraph: Entering  with: ", ex, FCDoControl->lbtgVerbose];
-		FCPrint[2,"FCLoopIntegralToGraph: Kinematics: ", optInitialSubstitutions, FCDoControl->lbtgVerbose];
+
 
 		(*
 			Normally, when graphing an integral we care only about the denominators. Hence, the numerator should

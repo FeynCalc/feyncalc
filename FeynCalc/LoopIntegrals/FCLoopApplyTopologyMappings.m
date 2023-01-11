@@ -125,7 +125,10 @@ FCLoopApplyTopologyMappings[expr_, {mappings_List, toposRaw_List}, OptionsPatter
 			of topologies that can be mapped to other topologies.
 		*)
 
+		FCPrint[3,"FCLoopApplyTopologyMappings: repRule: ", repRule, FCDoControl->fclamVerbose];
+
 		aux = Complement[uniqueProductsList,First/@Flatten[repRule]];
+
 		If[	Length[uniqueProductsList]=!=Length[aux]+Length[Flatten[repRule]],
 				Message[FCLoopApplyTopologyMappings::failmsg,"The number of replacement rules does not match the number of the relevant terms."];
 				Abort[]

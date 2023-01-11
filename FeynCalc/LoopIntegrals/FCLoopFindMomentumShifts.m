@@ -154,7 +154,8 @@ findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmomsRaw_List]
 		FCPrint[3, "FCLoopFindMomentumShifts: Preliminary rhs: ", rhs, FCDoControl -> fcflsVerbose];
 
 		If[	!FreeQ[{lhs,rhs},FeynAmpDenominator],
-			Message[FCLoopFindMomentumShifts::shifts];
+			Message[FCLoopFindMomentumShifts::failmsg, "Failed to determine the momentum flow in the propagator(s) " <>
+				ToString[Cases2[{lhs,rhs},FeynAmpDenominator],InputForm]];
 			Abort[]
 		];
 
