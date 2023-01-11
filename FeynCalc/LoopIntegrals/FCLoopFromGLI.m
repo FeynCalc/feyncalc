@@ -41,6 +41,7 @@ Options[FCLoopFromGLI] = {
 	FCVerbose					->	False,
 	FeynAmpDenominatorCombine	->	False,
 	FeynAmpDenominatorExplicit	->	True,
+	List						-> 	False,
 	LoopMomenta					-> 	Function[{x,y},FCGV["lmom"<>ToString[x]<>ToString[y]]]
 };
 
@@ -121,7 +122,6 @@ FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
 			Table[pattern[ToExpression["n"<>ToString[i]],_],{i,1,Length[#[[2]]]}]], powFu[#[[2]]]]&,relevantTopos]/.pattern->Pattern/.rule->RuleDelayed;
 
 
-
 		FCPrint[3,"FCLoopFromGLI: Conversion rules: ", fromGliRule, FCDoControl->fgliVerbose];
 
 		If[	!MatchQ[listGLI,{__GLI}],
@@ -129,13 +129,16 @@ FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
 			listGLIEval = listGLI /. Dispatch[fromGliRule] /. powerHold->power
 		];
 
-
-
-
-
 		FCPrint[3,"FCLoopFromGLI: Converted GLIs: ", listGLIEval, FCDoControl->fgliVerbose];
 
-		If[	!FreeQ2[listGLIEval,{GLI,power,powFu,gliToFAD}],
+		If[	TrueQ[OptionValue[List]],
+			listGLIEval = listGLIEval/. list->List,
+			listGLIEval = listGLIEval/. list->Times
+		];
+
+
+
+		If[	!FreeQ2[listGLIEval,{GLI,power,powFu,gliToFAD,list}],
 			Message[FCLoopFromGLI::failmsg, "Failed to eliminate some of the GLIs."];
 			Abort[]
 		];
@@ -217,6 +220,9 @@ power[c_. FeynAmpDenominator[(h:StandardPropagatorDenominator|CartesianPropagato
 
 
 powFu[x_]:=
-	Times@@MapIndexed[powerHold[#1,ToExpression["n"<>ToString[First[#2]]]]&,x];
+	list@@MapIndexed[powerHold[#1,ToExpression["n"<>ToString[First[#2]]]]&,x];
+
+list[a___,1,b___]:=
+	list[a,b];
 
 End[]

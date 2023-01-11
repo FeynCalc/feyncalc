@@ -180,6 +180,15 @@ FCE->True]",
 1}]*SFAD[{{I*lm[6, 1], 0}, {-m1^2, -1}, 1}]*SFAD[{{I*(lm[6, 1] - \
 lm[6, 2]), 0}, {-m1^2, -1}, 1}]*SFAD[{{I*lm[7, 1], 0}, {-m1^2, -1}, \
 1}]*SFAD[{{I*(lm[7, 1] - lm[7, 2]), 0}, {-m1^2, -1}, \
-1}]*SFAD[{{I*lm[7, 2], 0}, {-m3^2, -1}, 1}]}"}
+1}]*SFAD[{{I*lm[7, 2], 0}, {-m3^2, -1}, 1}]}"},
+{"fcstFCLoopFromGLI-ID28",
+"FCLoopFromGLI[GLI[mytopo, {1, 1, 0}],
+FCTopology[
+mytopo, {SFAD[{{I*p1, 0}, {0, -1}, 1}],
+SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}],
+SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}]}, {p1,
+p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] ->
+	mb^2}, {}], List -> True, FCE -> True]",
+	"{SFAD[{{I*p1, 0}, {0, -1}, 1}], SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}]}"}
 });
 
