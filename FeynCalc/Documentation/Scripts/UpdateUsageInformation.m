@@ -59,7 +59,7 @@ allFiles[]:=Join[(FileNames["*.m",FileNameJoin[{ParentDirectory[docuDir],#}]&/@{
 "LoopIntegrals","Lorentz","NonCommAlgebra","Pauli","QCD","Shared","SUN","Tables"},Infinity]),{FileNameJoin[{$FeynCalcDirectory,"FCMain.m"}],FileNameJoin[{$FeynCalcDirectory,"FeynCalc.m"}]}],
 "feynhelpers",
 allFiles[]:=Join[(FileNames["*.m",FileNameJoin[{ParentDirectory[docuDir],"Interfaces",#}]&/@{"LoopTools","FIRE","QGRAF",
-"pySecDec","Fermat"},Infinity]),{FileNameJoin[{ParentDirectory[docuDir],"FeynHelpers.m"}],FileNameJoin[{ParentDirectory[docuDir],"Interfaces","PackageX.m"}]}]
+"pySecDec","Fermat","Kira"},Infinity]),{FileNameJoin[{ParentDirectory[docuDir],"FeynHelpers.m"}],FileNameJoin[{ParentDirectory[docuDir],"Interfaces","PackageX.m"}]}]
 ];
 
 importAllSymbols[]:=Import[#,"Text"]&/@allFiles[];
