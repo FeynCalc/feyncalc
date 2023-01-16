@@ -22,10 +22,7 @@ Twist2GluonOperator, SUNF etc. in exp.
 To rewrite the $SU(N)$ structure constants in terms of traces, please set the
 corresponding options SUNF or SUND to True.
 
-The color traces are left untouched unless the option SUNTrace is set to True.
-In this case they will be rewritten in terms of structure constants.
-
-Explicit is also an option for FieldStrength, GluonVertex, SUNF,
+Explicit is also an option for FieldStrength, GluonVertex, SUNF, 
 Twist2GluonOperator etc. If set to True the full form of the operator is
 inserted.";
 

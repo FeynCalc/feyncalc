@@ -26,7 +26,7 @@ FCLoopFindTopologyMappings.
 
 By default the function will attempt to rewrite all the occurring loop
 integrals as GLIs. If you just want to apply the mappings without touching the
-remaining scalar products,
+remaining scalar products, 
 set the option FCLoopCreateRulesToGLI to False. Even when all scalar products
 depending on loop momenta are rewritten as GLIs, you can still suppress the
 step of multiplying out products

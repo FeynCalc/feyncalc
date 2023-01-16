@@ -12,7 +12,7 @@
 
 TR::usage=
 "TR[exp] calculates the Dirac trace of exp. Depending on the setting of the
-option SUNTraceEvaluate also a trace over $SU(N)$ objects is performed.
+option SUNTrace also a trace over $SU(N)$ objects is performed.
 
 The Mathematica build-in function Tr is overloaded to call TR if any of
 DiracGamma, GA, GAD, GS or GSD are in the expression.
