@@ -299,6 +299,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCLoopCreateRulesToGLI](../FCLoopCreateRulesToGLI.md) - rewrites scalar products as linear combinations of [GLI](../GLI.md)s with negative indices
 - [FCLoopEikonalPropagatorFreeQ](../FCLoopEikonalPropagatorFreeQ.md) - checks if the integral contains eikonal propagators
 - [FCLoopExtract](../FCLoopExtract.md) - extracts loop integrals
+- [FCLoopFindSectors](../FCLoopFindSectors.md) - returns sectors for the given [GLI](../GLI.md)s
 - [FCLoopFromGLI](../FCLoopFromGLI.md) - converts [GLI](../GLI.md)s into explicit integrals with [FeynAmpDenominator](../FeynAmpDenominator.md)s
 - [FCLoopGetEtaSigns](../FCLoopGetEtaSigns.md) - extracts the signs of $i \eta$ from all propagators
 - [FCLoopGLIDifferentiate](../FCLoopGLIDifferentiate.md) - differentiates [GLI](../GLI.md)s with respect to a scalar variable.

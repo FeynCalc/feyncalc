@@ -1,0 +1,39 @@
+
+
+(* :Title: fcstFCLoopFindSectors.test							*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2023 Rolf Mertig
+	Copyright (C) 1997-2023 Frederik Orellana
+	Copyright (C) 2014-2023 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for
+				fcstFCLoopFindSectors							*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopFindSectors =
+({
+{"fcstFCLoopFindSectors-ID1",
+"FCLoopFindSectors[{GLI[topo1,{1,1,1,1}],GLI[topo1,{2,1,2,1}],GLI[\
+topo2,{1,0,1,1}],GLI[topo3,{1,0,1,-1}]}]",
+"{{{{1, 0, 1, 0}, {GLI[topo3, {1, 0, 1, -1}]}}, {{1, 0, 1, 1}, \
+{GLI[topo2, {1, 0, 1, 1}]}}, {{1, 1, 1, 1}, {GLI[topo1, {1, 1, 1, \
+1}], GLI[topo1, {2, 1, 2, 1}]}}}, {{1, 0, 1, 0}, {1, 0, 1, 1}, {1, 1, \
+1, 1}}}"},
+{"fcstFCLoopFindSectors-ID2",
+"FCLoopFindSectors[{GLI[topo1,{1,1,1,1}],GLI[topo1,{2,1,2,1}],GLI[\
+topo2,{1,0,1,1}],GLI[topo3,{1,0,1,-1}]},Last->True]",
+"{{1, 1, 1, 1}, {GLI[topo1, {1, 1, 1, 1}], GLI[topo1, {2, 1, 2, \
+1}]}}"},
+{"fcstFCLoopFindSectors-ID3",
+"FCLoopFindSectors[{GLI[topo1,{1,1,1,1}],GLI[topo1,{2,1,2,1}],GLI[\
+topo2,{1,0,1,1}],GLI[topo3,{1,0,1,-1}]},GatherBy->False]",
+"{{1, 0, 1, 0}, {1, 0, 1, 1}, {1, 1, 1, 1}}"},
+{"fcstFCLoopFindSectors-ID4",
+"FCLoopFindSectors[{GLI[topo1,{1,1,1,1}],GLI[topo1,{2,1,2,1}],GLI[\
+topo2,{1,0,1,1}],GLI[topo3,{1,0,1,-1}]},Last->True,GatherBy->False]",
+"{1, 1, 1, 1}"}
+});
