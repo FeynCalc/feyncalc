@@ -73,7 +73,8 @@ FCLoopTensorReduce[expr_, toposRaw_List, OptionsPattern[]] :=
 			loopMoms, extMoms, aux, tidIsolate,	gliList, optFactoring,
 			optTimeConstrained,	loopNumeratorsList,loopNumeratorsListEval,
 			numerators, canoNums, tdecList, tdecListEval, auxRule,
-			uniqueProductsListEval},
+			uniqueProductsListEval, optUncontract, extraMomentaToUncontract,
+			allMoms},
 
 		If[	OptionValue[FCVerbose] === False,
 			fctrVerbose = $VeryVerbose,
@@ -82,9 +83,9 @@ FCLoopTensorReduce[expr_, toposRaw_List, OptionsPattern[]] :=
 		];
 
 		optHead 					= OptionValue[Head];
-
 		optFactoring 				= OptionValue[Factoring];
 		optTimeConstrained 			= OptionValue[TimeConstrained];
+		optUncontract				= OptionValue[Uncontract];
 
 
 		If[	!OptionValue[FCI],
@@ -125,6 +126,9 @@ FCLoopTensorReduce[expr_, toposRaw_List, OptionsPattern[]] :=
 
 		aux = Map[(#/. optHead[numerator_, gli_GLI] :> {numerator, FCLoopSelectTopology[gli,topos], gli})&, uniqueProductsList];
 		aux = Transpose[aux];
+
+		FCPrint[2,"FCLoopTensorReduce: Intermediate aux: ", aux, FCDoControl->fctrVerbose];
+
 		gliList = aux[[3]];
 
 		If[	!MatchQ[aux[[2]],{__FCTopology}],
@@ -132,12 +136,18 @@ FCLoopTensorReduce[expr_, toposRaw_List, OptionsPattern[]] :=
 			Abort[]
 		];
 
-		loopMoms = #[[3]]&/@aux[[2]];
-		extMoms = #[[4]]&/@aux[[2]];
-
+		(*
+			The numerators may contain external momenta (e.g. p1,p2, etc.) that are present in the denominators.
+			In this case we must uncontract such scalar products as well, since otherwise the reduction will be incorrect.
+		*)
+		allMoms		= SelectFree[Union[Cases[#,Momentum[x_,___]:>x,Infinity]],Polarization]&/@aux[[1]];
+		loopMoms	= #[[3]]&/@aux[[2]];
+		extMoms		= #[[4]]&/@aux[[2]];
+		extraMomentaToUncontract = MapThread[Join[Complement[#1,#2,#3],optUncontract]&,{allMoms,loopMoms,extMoms}];
 
 		FCPrint[2,"FCLoopTensorReduce: Loop momenta: ", loopMoms, FCDoControl->fctrVerbose];
 		FCPrint[2,"FCLoopTensorReduce: External momenta: ", extMoms, FCDoControl->fctrVerbose];
+		FCPrint[2,"FCLoopTensorReduce: Momenta to be uncontracted: ", extraMomentaToUncontract, FCDoControl->fctrVerbose];
 
 		If[	!MatchQ[loopMoms,{{__Symbol}..}],
 			Message[FCLoopTensorReduce::failmsg, "Something went wrong when extracting loop momenta."];
@@ -164,8 +174,8 @@ FCLoopTensorReduce[expr_, toposRaw_List, OptionsPattern[]] :=
 
 		time=AbsoluteTime[];
 		FCPrint[1,"FCLoopTensorReduce: Uncontracting loop momenta.", FCDoControl->fctrVerbose];
-		tmp = MapThread[FeynCalc`Package`ucontractLoopMomenta[#1, #2,	OptionValue[Dimension], OptionValue[Uncontract],
-			optFactoring,optTimeConstrained, tidIsolate] &, {aux,loopMoms}];
+		tmp = MapThread[FeynCalc`Package`ucontractLoopMomenta[#1, #2,	OptionValue[Dimension], #3,
+			optFactoring, optTimeConstrained, tidIsolate] &, {aux,loopMoms, extraMomentaToUncontract}];
 		FCPrint[1, "FCLoopTensorReduce: Done uncontracting loop momenta, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctrVerbose];
 
 		time=AbsoluteTime[];
@@ -213,8 +223,9 @@ FCLoopTensorReduce[expr_, toposRaw_List, OptionsPattern[]] :=
 		auxRule = Dispatch[Thread[Rule[tdecList, tdecListEval]]];
 		auxRule = Map[(Last[#] /. auxRule) &, canoNums];
 		auxRule = MapThread[FCLoopSolutionList[#1, #2] &, {canoNums, auxRule}];
-		auxRule = Dispatch[Flatten[Normal /@ auxRule]];
-		res = FRH[tmp /. auxRule, IsolateNames-> tidIsolate];
+		auxRule = Flatten[Normal /@ auxRule];
+		FCPrint[3,"FCLoopTensorReduce: Replacement rule: ", auxRule, FCDoControl->fctrVerbose];
+		res = FRH[tmp /. Dispatch[auxRule], IsolateNames-> tidIsolate];
 		FCPrint[1,"FCLoopTensorReduce: Done inserting the results, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctrVerbose];
 
 		If[	OptionValue[Contract],
