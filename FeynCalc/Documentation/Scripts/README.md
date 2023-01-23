@@ -47,7 +47,7 @@ This directory contains Mathematica/Bash scripts that help to ensure the quality
     Notice that when there are new figures (svg files), one would need to run something like
 
     ```
-    export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; ./svgToPdf.sh $DOCU_SOURCE_DIR/Markdown/img/0gi2hdxwlvyo6.svg ~/Downloads/TeX/img
+    export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; ./svgToPdf.sh $DOCU_SOURCE_DIR/Markdown/img/0gi2hdxwlvyo6.svg $DOCU_SOURCE_DIR/Markdown/img/
     ```
 
     and then copy the new pdf files to `*-manual/img` without overwriting the existing ones.
