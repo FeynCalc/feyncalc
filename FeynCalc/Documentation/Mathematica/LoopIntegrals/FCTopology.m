@@ -20,7 +20,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [FCLoopValidTopologyQ](FCLoopValidTopologyQ.md), [GLI](GLI.md).*)
+(*[Overview](Extra/FeynCalc.md), [FCLoopFromGLI](FCLoopFromGLI.md), [FCLoopValidTopologyQ](FCLoopValidTopologyQ.md), [GLI](GLI.md).*)
 
 
 (* ::Subsection:: *)
@@ -31,7 +31,8 @@
 (*A 2-loop topology with one external momentum `Q`*)
 
 
-FCTopology[topo1,{SFAD[p1],SFAD[p2],SFAD[Q-p1-p2],SFAD[Q-p2],SFAD[Q-p1]},{p1,p2},{Q},{},{}]
+FCTopology[topo1,{SFAD[p1],SFAD[p2],SFAD[Q-p1-p2],SFAD[Q-p2],SFAD[Q-p1]},{p1,p2},{Q},{
+Hold[SPD[Q]]->qq},{}]
 
 
 (* ::Text:: *)
@@ -47,3 +48,14 @@ SFAD[Q-p1],SFAD[Q-p2],SFAD[p1+p3],SFAD[p2+p3]},{p1,p2,p3},{Q},{},{}]
 
 
 FCLoopValidTopologyQ[topo]
+
+
+(* ::Text:: *)
+(*The list of propagators in the topology essentially defines the propagator representation of a `GLI`. Notice that propagators are allowed to have symbolical or numerical prefactors, as long as those do not depend on loop or external momenta*)
+
+
+topo2=FCTopology[topoTest,{a SFAD[p1],b SFAD[p2],c SFAD[Q-p1-p2],d SFAD[Q-p2],
+e SFAD[Q-p1]},{p1,p2},{Q},{},{}]
+
+
+FCLoopFromGLI[GLI[topoTest,{1,1,1,1,1}],topo2]
