@@ -51,11 +51,12 @@ FCLoopFromGLI[expr_, topo_FCTopology, opts:OptionsPattern[]] :=
 
 FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
 	Block[{	res, topos, listGLI, rule, optLoopMomenta,
-			pattern, fromGliRule, listGLIEval, ruleFinal, relevantTopos},
+			pattern, fromGliRule, listGLIEval, ruleFinal, relevantTopos, optList},
 
 		optFeynAmpDenominatorExplicit	= OptionValue[FeynAmpDenominatorExplicit];
 		optExpandScalarProduct 			= OptionValue[ExpandScalarProduct];
 		optLoopMomenta					= OptionValue[LoopMomenta];
+		optList							= OptionValue[List];
 
 		If [OptionValue[FCVerbose]===False,
 				fgliVerbose=$VeryVerbose,
@@ -131,12 +132,18 @@ FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
 
 		FCPrint[3,"FCLoopFromGLI: Converted GLIs: ", listGLIEval, FCDoControl->fgliVerbose];
 
-		If[	TrueQ[OptionValue[List]],
+
+		Switch[optList,
+			True,
 			listGLIEval = listGLIEval/. list->List,
-			listGLIEval = listGLIEval/. list->Times
+			False,
+			listGLIEval = listGLIEval/. list->Times,
+			FeynAmpDenominator,
+			listGLIEval = listGLIEval/. FeynAmpDenominator-> Sequence /. list->FeynAmpDenominator,
+			_,
+			Message[FCLoopFromGLI::failmsg, "Unknown value of the option List."];
+			Abort[]
 		];
-
-
 
 		If[	!FreeQ2[listGLIEval,{GLI,power,powFu,gliToFAD,list}],
 			Message[FCLoopFromGLI::failmsg, "Failed to eliminate some of the GLIs."];

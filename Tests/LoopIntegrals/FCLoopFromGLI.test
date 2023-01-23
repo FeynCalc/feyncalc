@@ -189,6 +189,18 @@ SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}],
 SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}]}, {p1,
 p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] ->
 	mb^2}, {}], List -> True, FCE -> True]",
-	"{SFAD[{{I*p1, 0}, {0, -1}, 1}], SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}]}"}
+	"{SFAD[{{I*p1, 0}, {0, -1}, 1}], SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}]}"},
+{"fcstFCLoopFromGLI-ID29",
+"FCLoopFromGLI[
+a1 GLI[topoBox1L, {1, 1, 1, 1}] +
+a2 GLI[topoTad2L, {1, 2, 2}], {FCTopology[
+topoBox1L, {FAD[{q, m0}], FAD[{q + p1, m1}], FAD[{q + p2, m2}],
+	FAD[{q + p2, m3}]}, {q}, {p1, p2, p3}, {}, {}],
+FCTopology[
+topoTad2L, {FAD[{q1, m1}], FAD[{q2, m2}], FAD[{q1 - q2, 0}]}, {q1,
+	q2}, {}, {}, {}]}, FeynAmpDenominatorCombine -> False,
+List -> FeynAmpDenominator, FCE->True]",
+	"a1 FAD[{q, m0}, {p1 + q, m1}, {p2 + q, m2}, {p2 + q, m3}] +
+a2 FAD[{q1, m1}, {q2, m2}, {q2, m2}, q1 - q2, q1 - q2]"}
 });
 

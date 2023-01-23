@@ -1,3 +1,5 @@
+## FCLoopFromGLI
+
 `FCLoopFromGLI[exp, topologies]` replaces `GLI`s in `exp` with the corresponding loop integrals in the `FeynAmpDenominator` notation according to the information provided in topologies.
 
 ### See also
@@ -34,7 +36,7 @@ defined for unknown topologies
 FCLoopFromGLI[GLI["topoXYZ", {1, 1, 1, 1, 1}], topos]
 ```
 
-![00f6ck72ejb3p](img/00f6ck72ejb3p.svg)
+![047duy8jklfe9](img/047duy8jklfe9.svg)
 
 $$\text{\$Aborted}$$
 
@@ -60,3 +62,12 @@ FCLoopFromGLI[GLI["topoBox1L", {1, 0, 1, 0}] GLI["topoBox1L", {0, 1, 0, 1}], top
 ```
 
 $$\frac{1}{\left(\text{p22}^2-\text{m0}^2\right) \left((\text{p11}+\text{p1})^2-\text{m1}^2\right) \left((\text{p22}+\text{p2})^2-\text{m2}^2\right) \left((\text{p11}+\text{p2})^2-\text{m3}^2\right)}$$
+
+In general, `FCLoopFromGLI` can change the ordering of propagators inside `FeynAmpDenominator`,
+as compared to the their ordering inside `FCTopology`. This is because by default it calls `FeynAmpDenominatorCombine`. Ordering may also change when applying `FeynAmpDenominatorSimplify`. You want the ordering to remain unchanged, the following should help
+
+```mathematica
+FCLoopFromGLI[exp, topos, FeynAmpDenominatorCombine -> False, List -> FeynAmpDenominator]
+```
+
+$$\frac{\text{a1}}{\left(q^2-\text{m0}^2\right).\left((\text{p1}+q)^2-\text{m1}^2\right).\left((\text{p2}+q)^2-\text{m2}^2\right).\left((\text{p2}+q)^2-\text{m3}^2\right)}+\frac{\text{a2}}{\left(\text{q1}^2-\text{m1}^2\right).\left(\text{q2}^2-\text{m2}^2\right)^2.(\text{q1}-\text{q2})^4}$$

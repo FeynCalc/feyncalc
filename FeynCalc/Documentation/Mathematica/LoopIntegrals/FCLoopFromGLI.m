@@ -56,3 +56,11 @@ SelectNotFree[Options[FCLoopFromGLI],LoopMomenta]
 
 FCLoopFromGLI[GLI["topoBox1L",{1,0,1,0}]GLI["topoBox1L",{0,1,0,1}],topos,
 LoopMomenta->Function[{x,y}, "p"<>ToString[x]<>ToString[x]]]
+
+
+(* ::Text:: *)
+(*In general, `FCLoopFromGLI` can change the ordering of propagators inside `FeynAmpDenominator`,*)
+(*as compared to the their ordering inside `FCTopology`. This is because by default it calls `FeynAmpDenominatorCombine`. Ordering may also change when applying `FeynAmpDenominatorSimplify`. You want the ordering to remain unchanged, the following should help*)
+
+
+FCLoopFromGLI[exp,topos,FeynAmpDenominatorCombine->False,List->FeynAmpDenominator]
