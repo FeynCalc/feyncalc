@@ -90,6 +90,10 @@ i]*SUNF[a, b, j]*SUNF[e, i, j])/16"},
 "(-1 + SUNN^2)/8 + (-1 + SUNN^2)/(8*SUNN^2)"},
 {"fcstSUNTrace-ID23",
 "SUNTrace[SUNT[i1,i2,i3,i4,i1,i2,i3,i4],SUNTraceEvaluate->True]",
-"-1/16*(-1 + SUNN^2)/SUNN^3 - (3*(-1 + SUNN^2))/(16*SUNN)"}
+"-1/16*(-1 + SUNN^2)/SUNN^3 - (3*(-1 + SUNN^2))/(16*SUNN)"},
+{"fcstSUNTrace-ID24",
+"SUNTrace[SUNT[a] . SUNT[b] . SUNT[c] - SUNT[c] . SUNT[b] . SUNT[a],
+SUNTraceEvaluate -> True]",
+"(I/2)*SUNF[SUNIndex[a], SUNIndex[b], SUNIndex[c]]"}
 };
 

@@ -55,6 +55,7 @@ optSUNTraceEvaluate::usage="";
 SetAttributes[SUNSimplify, Listable];
 
 Options[SUNSimplify] = {
+	Check				-> True,
 	Collecting			-> True,
 	Explicit			-> False,
 	FCI 				-> False,
@@ -72,7 +73,7 @@ Options[SUNSimplify] = {
 SUNSimplify[expr_, OptionsPattern[]] :=
 	Block[{	ex, temp, optSUNNToCACF, optExplicit, optFactoring, time, sunsiIso, listColoredObjects,
 			listColoredObjectsEval, finalRepRule, optSUNFJacobi, optCollecting, res, optTimeConstrained,
-			listColorFactor, listColorFactorEval},
+			listColorFactor, listColorFactorEval, check, mark, hash},
 
 		optCollecting		= OptionValue[Collecting];
 		optFactoring		= OptionValue[Factoring];
@@ -101,9 +102,23 @@ SUNSimplify[expr_, OptionsPattern[]] :=
 		(* Isolate everything except for the color structures that we are interested in*)
 		time=AbsoluteTime[];
 		FCPrint[1, "SUNSimplify: Collecting terms w.r.t. colored objects.", FCDoControl->sunSiVerbose];
-		temp = FCColorIsolate[temp, FCI->True,Isolate->True, IsolateFast->True, IsolateNames->sunsiIso, Head->sunObj, ClearHeads->{sunObj}, ExceptHeads->{SUNN,CA,CF}, "ExpandNestedDOTs" -> True];
+		temp = FCColorIsolate[temp, FCI->True,Isolate->True, IsolateFast->True, IsolateNames->sunsiIso, Head->sunObj,
+			ClearHeads->{sunObj}, ExceptHeads->{SUNN,CA,CF}, "ExpandNestedDOTs" -> True, FCTraceExpand->True];
 		FCPrint[1,"SUNSimplify: collecting done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->sunSiVerbose];
 		FCPrint[3, "SUNSimplify: After collecting terms w.r.t. colored objects: ",temp, FCDoControl->sunSiVerbose];
+
+		(*	Verify that all color expressions have been properly isolated *)
+		If[	OptionValue[Check],
+			check = temp /. SUNTrace -> sunTrace /. DOT -> holdDOTColor;
+			check = check /. sunTrace[holdDOTColor[x__SUNT]] :> hash[Hash[{x}]] /. sunObj[x_]/;!FreeQ[x,Plus] :> mark[sunObj[x]];
+
+			If[	!FreeQ[check,sunTrace] || !FreeQ[check,mark],
+				FCPrint[4, "SUNSimplify: Check: ",check, FCDoControl->sunSiVerbose];
+				Message[SUNSimplify::failmsg,"Failed to properly isolate the color algebraic expressions."];
+				Abort[]
+			];
+		];
+
 
 		(* It is better to canonicalize the indices at the very beginning. FCCanonicalizeDummyIndices can handle this automatically*)
 		time=AbsoluteTime[];
@@ -186,7 +201,6 @@ SUNSimplify[expr_, OptionsPattern[]] :=
 		temp = ex /. Dispatch[finalRepRule] /. sunObj->Identity;
 
 		(* Canonicalize indices once again to account for the introduced dummy indices *)
-
 		time=AbsoluteTime[];
 		FCPrint[1, "SUNSimplify: Renaming.", FCDoControl->sunSiVerbose];
 		temp = FCCanonicalizeDummyIndices[temp, FCI -> True, Head ->{SUNIndex,SUNFIndex}, SUNIndexNames->OptionValue[SUNIndexNames], SUNFIndexNames->OptionValue[SUNFIndexNames]];
@@ -217,6 +231,11 @@ SUNSimplify[expr_, OptionsPattern[]] :=
 		temp = temp /. SUNTrace-> sunTrace /. DOT->holdDOTColor /. sunTrace -> sunTraceOrder /. holdDOTColor->DOT /. sunTrace->SUNTrace;
 
 		FCPrint[3, "SUNSimplify: After reordering color traces: ", temp, FCDoControl->sunSiVerbose];
+
+		If[	!FreeQ[temp, sunTraceOrder],
+			Message[SUNSimplify::failmsg, "Something went wrong when reordering the color traces."];
+			Abort[]
+		];
 
 		(*
 			Introducing SU(N) structure constants, this must be the last operation, since any kind of factoring would rewrite structure

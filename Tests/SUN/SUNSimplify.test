@@ -215,6 +215,16 @@ SUNTraceEvaluate -> False, FCE -> True]",
 },
 {"fcstSUNSimplify-ID63",
 "SUNSimplify[SUNTrace[SUNT[b, d, a, b, d]]]",
-"0"}
+"0"},
+{"fcstSUNSimplify-ID64",
+"SUNSimplify[
+SUNTrace[SUNT[a] . SUNT[b] . SUNT[c] - SUNT[c] . SUNT[b] . SUNT[a]]]",
+"(I/2)*SUNF[SUNIndex[a], SUNIndex[b], SUNIndex[c]]"},
+{"fcstSUNSimplify-ID65",
+"SUNSimplify[
+SUNTrace[SUNT[a] . SUNT[b] . SUNT[c] - SUNT[c] . SUNT[b] . SUNT[a]],
+SUNTraceEvaluate -> False]",
+"SUNTrace[SUNT[SUNIndex[a]] . SUNT[SUNIndex[b]] . SUNT[SUNIndex[c]]] -
+SUNTrace[SUNT[SUNIndex[a]] . SUNT[SUNIndex[c]] . SUNT[SUNIndex[b]]]"}
 };
 
