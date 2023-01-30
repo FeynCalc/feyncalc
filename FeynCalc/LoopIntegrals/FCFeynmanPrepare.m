@@ -112,7 +112,7 @@ FCFeynmanPrepare[gli_, topo_FCTopology, opts:OptionsPattern[]] :=
 			optFinalSubstitutions = FCI[topo[[5]]]
 		];
 
-		optFinalSubstitutions = FRH[optFinalSubstitutions];
+		optFinalSubstitutions = FCI@FRH[optFinalSubstitutions];
 
 		If[	!FreeQ[int,lmomsHead],
 			lmoms = Join[Cases2[int,lmomsHead],topo[[3]]],
@@ -151,8 +151,7 @@ FCFeynmanPrepare[glis_, topos:{__FCTopology}, opts:OptionsPattern[]] :=
 
 		finalSubstitutions = Flatten /@ Map[Function[x, Map[#[[5]] &, x]], relTopos];
 
-		(*TODO: Tricky, if different topologies define different substitutions w.r.t. to
-		the same scalar products ...*)
+		(*TODO: Tricky, if different topologies define different substitutions w.r.t. the same scalar products ...*)
 
 		lmomsList = Union[Flatten[#[[3]]&/@Flatten[relTopos]]];
 
@@ -167,7 +166,7 @@ FCFeynmanPrepare[glis_, topos:{__FCTopology}, opts:OptionsPattern[]] :=
 			finalSubstitutions = FCI[finalSubstitutions]
 		];
 
-		finalSubstitutions = FRH[finalSubstitutions];
+		finalSubstitutions = FCI@FRH[finalSubstitutions];
 
 		MapThread[FCFeynmanPrepare[#1, lmomsList, Join[{FCI->True,FinalSubstitutions->#2},
 			FilterRules[{opts}, Except[FCI | FinalSubstitutions]]]]&,{ints,finalSubstitutions}]
@@ -185,15 +184,16 @@ FCFeynmanPrepare[topoRaw_FCTopology, opts:OptionsPattern[]] :=
 
 		If[	OptionValue[FCI],
 			topo = topoRaw,
-			topo = FCI[topoRaw]
+			{topo,optFinalSubstitutions} = FCI[{topoRaw,optFinalSubstitutions}]
 		];
 
 		If[	!FCLoopValidTopologyQ[topo],
 			Message[FCFeynmanPrepare::failmsg, "The supplied topology is incorrect."];
 			Abort[]
 		];
+		optFinalSubstitutions = Join[optFinalSubstitutions,FCI@FRH[topo[[5]]]];
 
-		FCFeynmanPrepare[topo[[2]], topo[[3]], Join[{FCI->True,FinalSubstitutions->FRH[topo[[5]]]},
+		FCFeynmanPrepare[topo[[2]], topo[[3]], Join[{FCI->True,FinalSubstitutions->optFinalSubstitutions},
 			FilterRules[{opts}, Except[FCI | FinalSubstitutions]]]]
 
 	];
@@ -227,6 +227,7 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 
 		FCPrint[1,"FCFeynmanPrepare: Entering. ", FCDoControl->fcszVerbose];
 		FCPrint[3,"FCFeynmanPrepare: Entering  with: ", ex, FCDoControl->fcszVerbose];
+		FCPrint[3,"FCFeynmanPrepare: Final substitutions: ", optFinalSubstitutions, FCDoControl->fcszVerbose];
 
 		lmoms = Select[lmomsRaw,!FreeQ[ex,#]&];
 
