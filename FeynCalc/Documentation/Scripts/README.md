@@ -40,14 +40,14 @@ This directory contains Mathematica/Bash scripts that help to ensure the quality
 * To build the TeX documentation use
 
     ```
-    cd /media/Data/Projects/VS/feyncalc-manual/
-    latexmk -pdf FeynCalcManual.tex
+    latexmk -cd /media/Data/Projects/VS/feyncalc-manual/FeynCalcManual.tex -pdf
     ```
 
     Notice that when there are new figures (svg files), one would need to run something like
 
     ```
     export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; ./svgToPdf.sh $DOCU_SOURCE_DIR/Markdown/img/0gi2hdxwlvyo6.svg $DOCU_SOURCE_DIR/Markdown/img/
+    cp -n $DOCU_SOURCE_DIR/Markdown/img/*.pdf /media/Data/Projects/VS/feyncalc-manual/img/
     ```
 
     and then copy the new pdf files to `*-manual/img` without overwriting the existing ones.
@@ -55,5 +55,5 @@ This directory contains Mathematica/Bash scripts that help to ensure the quality
 * To check Markdown files using mdl (`gem install mdl`, cf. [GitHub repo](https://github.com/markdownlint/markdownlint))
 
     ```
-    mdl -r ~MD009,~MD013,~MD002,~MD010 ../Markdown
+    mdl -r ~MD009,~MD013,~MD002,~MD010,~MD047 ../Markdown
     ```

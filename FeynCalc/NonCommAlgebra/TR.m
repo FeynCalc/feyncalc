@@ -20,7 +20,7 @@ TR[list, f] finds a generalized trace, combining terms with f instead of Plus.
 
 TR[list, f, n] goes down to level n in list.
 
-Tr[expression] calculates the DiracTrace, i.e., TR[expression] if any of
+TR[expression] calculates the DiracTrace, i.e., TR[expression] if any of
 DiracGamma, GA, GAD, GS or GSD is present in expression.";
 
 (* ------------------------------------------------------------------------ *)

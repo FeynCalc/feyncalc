@@ -19,10 +19,6 @@
 (*Often, when dealing with large expressions one would to integrate by parts only certain terms but not every term containing given fields and derivatives. In such situation one can specify a filter function via the option `Select`.*)
 
 
-(* ::Text:: *)
-(**)
-
-
 (* ::Subsection:: *)
 (*See also*)
 
@@ -68,6 +64,4 @@ ShiftPartialD[exp2,{FCPartialD[LorentzIndex[mu]]},GaugeField]
 
 ShiftPartialD[exp2,{FCPartialD[LorentzIndex[mu]]},GaugeField,Select -> 
   Function[x, FreeQ[x, QuantumField[GaugeField, LorentzIndex[nu]]]]]
-
-
 

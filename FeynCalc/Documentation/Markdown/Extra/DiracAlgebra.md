@@ -2,8 +2,6 @@
 
 ### See also
 
-
-
 [Overview](FeynCalc.md).
 
 This section contains some explicit formulas used by FeynCalc when simpifying chains of Dirac matrices. Such relations can be found e.g.

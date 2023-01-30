@@ -1,3 +1,7 @@
+```mathematica
+ 
+```
+
 ## ShiftPartialD
 
 `ShiftPartialD[exp, {FCPartialD[i1], FCPartialD[i2], ...}, field]` uses integration-by-parts identities to shift the derivatives of `QuantumField`s such, that a term containing derivatives with indices `i1, i2, ...` acting on `field` is eliminated from the final expression.
@@ -5,8 +9,6 @@
 Notice that one must explicitly specify the type of the indices, e.g. by writing `FCPartialD[LorentzIndex[mu]]` or `FCPartialD[CartesianIndex[i]]`. Furthermore, the function always assumes that the surface term vanishes.
 
 Often, when dealing with large expressions one would to integrate by parts only certain terms but not every term containing given fields and derivatives. In such situation one can specify a filter function via the option `Select`.
-
-
 
 ### See also
 
@@ -19,19 +21,19 @@ exp1 = QuantumField[QuarkFieldPsiDagger, PauliIndex[di1]] . RightPartialD[Cartes
     ]] . QuantumField[\[Phi]] . RightPartialD[CartesianIndex[j]] . QuantumField[QuarkFieldPsi, PauliIndex[di2]]
 ```
 
-$$\psi ^{\dagger \;\text{di1}}.\vec{\partial }_i.\phi .\vec{\partial }_j.\psi ^{\text{di2}}$$
+$$\psi ^{\dagger \text{di1}}.\vec{\partial }_i.\phi .\vec{\partial }_j.\psi ^{\text{di2}}$$
 
 ```mathematica
 exp1 // ExpandPartialD
 ```
 
-$$\psi ^{\dagger \;\text{di1}}.\phi .\left(\partial _i\partial _j\psi ^{\text{di2}}\right)+\psi ^{\dagger \;\text{di1}}.\left(\partial _i\phi \right).\left(\partial _j\psi ^{\text{di2}}\right)$$
+$$\psi ^{\dagger \text{di1}}.\phi .\left(\partial _i\partial _j\psi ^{\text{di2}}\right)+\psi ^{\dagger \text{di1}}.\left(\partial _i\phi \right).\left(\partial _j\psi ^{\text{di2}}\right)$$
 
 ```mathematica
 ShiftPartialD[exp1, {FCPartialD[CartesianIndex[i]]}, QuarkFieldPsi, FCVerbose -> -1]
 ```
 
-$$-\left(\partial _i\psi ^{\dagger \;\text{di1}}\right).\phi .\left(\partial _j\psi ^{\text{di2}}\right)$$
+$$-\left(\partial _i\psi ^{\dagger \text{di1}}\right).\phi .\left(\partial _j\psi ^{\text{di2}}\right)$$
 
 This expression vanishes if one integrates by parts the term containing $\partial_\mu A_\nu$
 
@@ -60,9 +62,7 @@ Using a suitable filter function we can readily achieve the desired result
 
 ```mathematica
 ShiftPartialD[exp2, {FCPartialD[LorentzIndex[mu]]}, GaugeField, Select -> 
-     Function[x, FreeQ[x, QuantumField[GaugeField, LorentzIndex[nu]]]]] 
-  
- 
+    Function[x, FreeQ[x, QuantumField[GaugeField, LorentzIndex[nu]]]]]
 
 ```
 

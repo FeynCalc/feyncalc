@@ -455,4 +455,3 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [PropagatorDenominatorExplicit](../PropagatorDenominatorExplicit.md) - use [FeynAmpDenominator](../FeynAmpDenominator.md) instead
 - [ScalarProductCancel](../ScalarProductCancel.md), [SPC](../SPC.md) - use [ApartFF](../ApartFF.md) instead
 - [ScalarProductExpand](../ScalarProductExpand.md) - use [ExpandScalarProduct](../ExpandScalarProduct.md) instead
-

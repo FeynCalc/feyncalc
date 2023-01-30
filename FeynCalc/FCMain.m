@@ -90,8 +90,8 @@ $FeynCalcDevelopmentVersion::usage =
 current version is a development or a stable version.";
 
 $FeynCalcLastCommitDateHash::usage =
-"The setting of $FeynCalcLastCommitDateHash provides the date and the hash
-of the last commit in the branch from which the current FeynCalc version
+"The setting of $FeynCalcLastCommitDateHash provides the date and the hash of
+the last commit in the branch from which the current FeynCalc version
 originates.";
 
 $FCTensorList::usage =
@@ -151,7 +151,7 @@ $LeviCivitaSign::usage =
 "$LeviCivitaSign is a global variable that determines the sign in the result of
 a Dirac trace of four gamma matrices and $\\gamma^5$.  $LeviCivitaSign is by
 default set to -1 which corresponds to the convention TR[LC[a,b,c,d,5]] =
--4*I*Eps[a,b,c,d]. Setting $LeviCivitaSign=-I  will switch to the
+-4*I*Eps[a,b,c,d]. Setting $LeviCivitaSign=-I will switch to the
 FORM-convention.";
 
 $LimitTo4::usage =
@@ -356,7 +356,7 @@ dimensions. Following schemes are supported:
 - \"None\" - This is the default value. The anticommutator relation is not
 applied to $D-1$ dimensional Pauli matrices.
 
-- \"Naive\" - Naively apply the commutator relation in $D-1$-dimensions, i.e.
+- \"Naive\" - Naively apply the commutator relation in $D-1$-dimensions, i.e. 
 $\{\\sigma^i, \\sigma^j \} = 2 i \\varepsilon^{ijk} \\sigma^k$. The Levi-Civita
 tensor lives in $D-1$-dimensions, so that a contraction of two such tensors
 which have all indices in common yields $(D-3) (D-2) (D-1)$.";
