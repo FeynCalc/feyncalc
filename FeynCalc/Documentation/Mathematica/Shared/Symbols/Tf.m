@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [Tr2](Tr2.md), [GluonPropagator](GluonPropagator.md), [GluonSelfEnergy](GluonSelfEnergy.md).*)
+(*[Overview](Extra/FeynCalc.md), [GluonPropagator](GluonPropagator.md), [GluonSelfEnergy](GluonSelfEnergy.md).*)
 
 
 (* ::Subsection:: *)

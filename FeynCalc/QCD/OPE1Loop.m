@@ -164,7 +164,7 @@ OPE1Loop[(*grname*)_,k_ /; Head[k] =!= List, integ_ /; Head[integ] =!= Plus,opts
 			];
 			If[ subloop =!= True,
 				amp = ChangeDimension[integ//FeynCalcInternal, dim]//Trick;
-				amp = amp /. DiracTrace -> Tr2;
+				amp = amp /. DiracTrace[x__] :> DiracTrace[x,DiracTraceEvaluate->True];
 				amp = FeynAmpDenominatorCombine[amp];
 
 				If[ !FreeQ[amp,OPE],

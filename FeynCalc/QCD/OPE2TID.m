@@ -206,7 +206,7 @@ ope2TID[exp_, k1_, k2_, p_, opt___Rule] :=
 				If[ k12shift =!= {},
 					FCPrint[2,"shifting ",k12shift[[1]]];
 					temp = Collect2[ApartFF[EpsEvaluate[ExpandScalarProduct[
-									(temp /. k12shift)/.DiracTrace->Tr2]//diracsimp],{k1,k2}
+									(temp /. k12shift)/. DiracTrace[x__] :> DiracTrace[x,DiracTraceEvaluate->True]]//diracsimp],{k1,k2}
 																	],{k1,k2}
 													],
 					If[ !FreeQ[temp,DiracGamma],
@@ -2284,7 +2284,7 @@ ope2TID[exp_, k1_, k2_, p_, opt___Rule] :=
 										FCPrint[1,"collecting DiracTrace"];
 										temp = Collect2[temp, DiracTrace,
 																					Factoring -> False
-																	]/. DiracTrace -> Tr2
+																	]/. DiracTrace[x__] :> DiracTrace[x,DiracTraceEvaluate->True]
 									];
 									If[ contractlabel === True,
 										temp = Expand2[temp, LorentzIndex];
