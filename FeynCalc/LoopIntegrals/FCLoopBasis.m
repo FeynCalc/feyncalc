@@ -715,7 +715,7 @@ FCLoopBasisFindCompletion[expr_/;FreeQ[expr,FCTopology], lmoms_List, OptionsPatt
 
 
 			(* If the heads of the user-supplied scalar products are all known, we can bypass the more complicated check *)
-			If[ !FCSubsetQ[{FeynAmpDenominator,Pair,CartesianPair}, DeleteDuplicates[Sort[Head/@prs]]],
+			If[ !SubsetQ[{FeynAmpDenominator,Pair,CartesianPair}, DeleteDuplicates[Sort[Head/@prs]]],
 
 				If[ Union[Flatten[propCheck/@prs]]=!={True},
 					Message[FCLoopBasisFindCompletion::failmsg,"User-supplied propagators are not in a proper form."];

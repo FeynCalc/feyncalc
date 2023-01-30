@@ -85,7 +85,7 @@ ShiftPartialD[expr_, derivs_List, field_, OptionsPattern[]] :=
 			FCPrint[3, "ShiftPartialD: After removing irrelevant terms: ", tmp, FCDoControl->spdVerbose];
 		];
 
-		tmp = tmp /. ncStruct[holdDOT[Shortest[a___], QuantumField[ds__FCPartialD, field, rest___], b___]] /; FCSubsetQ[{ds}, derivs] :>
+		tmp = tmp /. ncStruct[holdDOT[Shortest[a___], QuantumField[ds__FCPartialD, field, rest___], b___]] /; SubsetQ[{ds}, derivs] :>
 			ibp[SelectNotFree[{ds}, derivs], DOT[a, QuantumField[Sequence @@ SelectFree[{ds}, derivs], field, rest], b], DOT[a, QuantumField[ds, field, rest], b]];
 
 		FCPrint[3, "ShiftPartialD: Intermediate result: ", tmp, FCDoControl->spdVerbose];

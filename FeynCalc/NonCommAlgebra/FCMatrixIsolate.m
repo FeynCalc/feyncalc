@@ -74,7 +74,7 @@ FCMatrixIsolate[expr_/;Head[expr]=!=List, OptionsPattern[]] :=
 			];
 		];
 
-		If[	!MatchQ[optOrdering,{__}] || !FCSubsetQ[{FCDiracIsolate,FCColorIsolate,FCPauliIsolate},Union[optOrdering]],
+		If[	!MatchQ[optOrdering,{__}] || !SubsetQ[{FCDiracIsolate,FCColorIsolate,FCPauliIsolate},Union[optOrdering]],
 			Message[FCMatrixIsolate::failmsg, "The value of the Ordering option is incorrect."];
 			Abort[]
 		];

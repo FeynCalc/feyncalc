@@ -113,7 +113,7 @@ FCGraphFindPath[graphRaw_List, weights_List, OptionsPattern[]] :=
 			FCPrint[2, "FCGraphFindPath: Same side external edges: ", optSameSideExternalEdges, FCDoControl->fcgfpVerbose];
 			FCPrint[2, "FCGraphFindPath: Opposite side external edges: ", oppositeSideExternalEdges, FCDoControl->fcgfpVerbose];
 
-			res= Map[ (extEdges=Cases[#, _Integer?Negative, Infinity];	 If[ FCSubsetQ[optSameSideExternalEdges,extEdges] || FCSubsetQ[oppositeSideExternalEdges,extEdges],
+			res= Map[ (extEdges=Cases[#, _Integer?Negative, Infinity];	 If[ SubsetQ[optSameSideExternalEdges,extEdges] || SubsetQ[oppositeSideExternalEdges,extEdges],
 					Unevaluated[Sequence[]],
 					#
 				])&, res];

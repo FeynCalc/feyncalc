@@ -155,7 +155,7 @@ FCLoopApplyTopologyMappings[expr_, {mappings_List, toposRaw_List}, OptionsPatter
 
 			topoIDs = First[(Last[#] /. optHead[_, x_] :> x)] & /@ (repRule);
 
-			If[	!FCSubsetQ[First/@topos, Union[topoIDs]],
+			If[	!SubsetQ[First/@topos, Union[topoIDs]],
 				Message[FCLoopApplyTopologyMappings::failmsg,"Missing topologies present in the input expression: " <>
 					ToString[Union[topoIDs],InputForm] <> " is not a subset of " <> ToString[First/@topos,InputForm]] ;
 				Abort[]

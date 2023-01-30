@@ -237,7 +237,7 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 			Abort[]
 		];
 
-		If[	!FCDuplicateFreeQ[lmoms],
+		If[	!DuplicateFreeQ[lmoms],
 			Message[FCFeynmanPrepare::failmsg, "The list of the loop momenta may not contain duplicate entries."];
 			Abort[]
 		];
@@ -511,7 +511,7 @@ buildN[tensorPart_, U_, M_, fpQ_, powers_, lmoms_List]:=
 			Abort[]
 		];
 
-		If [ !FCSubsetQ[lmoms,Union[Cases[tensorList, CartesianMomentum | Momentum[p_, ___] :> p, Infinity]]],
+		If [ !SubsetQ[lmoms,Union[Cases[tensorList, CartesianMomentum | Momentum[p_, ___] :> p, Infinity]]],
 			Message[FCFeynmanPrepare::failmsg,"Only loop momenta with uncontracted indices are allowed in the numerator."];
 			Abort[]
 

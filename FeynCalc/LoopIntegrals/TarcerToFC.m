@@ -68,7 +68,7 @@ TarcerToFC[expr_/;Head[expr]=!=List, {q1_, q2_}, OptionsPattern[]] :=
 			momConvRules = Join[momConvRules,Map[Rule[momconv[#[[1]]], #[[2]]] &, optScalarProduct]]
 		];
 
-		If[	!FCDuplicateFreeQ[First/@momConvRules],
+		If[	!DuplicateFreeQ[First/@momConvRules],
 			Message[TarcerToFC::failmsg,"The rules given via the ScalarProduct option must be unambiguous."];
 			Abort[]
 		];

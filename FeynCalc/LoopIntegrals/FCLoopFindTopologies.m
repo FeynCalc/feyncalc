@@ -654,7 +654,7 @@ checkSubtopology[currentTopo_] :=
 	Block[{check, res},
 		res =
 			Catch[
-					Map[(check = FCSubsetQ[#[[2]], currentTopo[[2]]];
+					Map[(check = SubsetQ[#[[2]], currentTopo[[2]]];
 						If[	check === True,
 							Throw[#]
 						];

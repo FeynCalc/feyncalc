@@ -50,7 +50,7 @@ FCPermuteMomentaRules[{_}] :=
 FCPermuteMomentaRules[lmoms_List] :=
 	Block[{	permutations, len, rule, res},
 
-		If[! FCDuplicateFreeQ[lmoms],
+		If[ !DuplicateFreeQ[lmoms],
 			Message[FCPermuteMomentaRules::failmsg, "The list of the momenta contains duplicates."];
 			Abort[]
 		];

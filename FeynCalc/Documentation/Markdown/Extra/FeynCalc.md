@@ -99,7 +99,6 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCAbbreviate](../FCAbbreviate.md) - introduces abbreviations
 - [FCAntiSymmetrize](../FCAntiSymmetrize.md) - antisymmetrizes with respect to the given variables
 - [FCDeclareHeader](../FCDeclareHeader.md), [FCPrint](../FCPrint.md), [FCReloadAddOns](../FCReloadAddOns.md), [FCReloadFunctionFromFile](../FCReloadFunctionFromFile.md) - for writing or debugging new FeynCalc functions or add-ons
-- [FCDuplicateFreeQ](../FCDuplicateFreeQ.md) - alternative to Mathematica's `DuplicateFreeQ`
 - [FCClearCache](../FCClearCache.md), [FCMemoryAvailable](../FCMemoryAvailable.md), [FCShowCache](../FCShowCache.md), [FCUseCache](../FCUseCache.md) - cache management
 - [FCCheckSyntax](../FCCheckSyntax.md) - checks for syntax errors in the input expressions
 - [FCCheckVersion](../FCCheckVersion.md) - checks the FeynCalc version
@@ -123,7 +122,6 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCReplaceRepeated](../FCReplaceRepeated.md) - alternative to Mathematica's `ReplaceRepeated`
 - [FCShowReferenceCard](../FCShowReferenceCard.md) - FeynArts cheatsheet
 - [FCSplit](../FCSplit.md), [FCProductSplit](../FCProductSplit.md), [PartitHead](../PartitHead.md), [SelectFree](../SelectFree.md), [SelectNotFree](../SelectNotFree.md), [SelectFree2](../SelectFree2.md), [SelectNotFree2](../SelectNotFree2.md), [SelectSplit](../SelectSplit.md) - alternatives to Mathematica's `Select`
-- [FCSubsetQ](../FCSubsetQ.md) - alternative to Mathematica's `SubsetQ`
 - [FCSymmetrize](../FCSymmetrize.md) - symmetrizes with respect to the given variables
 - [FeynCalcHowToCite](../FeynCalcHowToCite.md) - lists relevant FeynCalc publications
 - [FI](../FI.md) - changes the output format to `InputForm`

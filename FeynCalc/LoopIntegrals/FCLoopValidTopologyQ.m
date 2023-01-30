@@ -41,7 +41,7 @@ FCLoopValidTopologyQ[topos_List]:=
 			Return[False]
 		];
 
-		If[	!FCDuplicateFreeQ[First/@topos],
+		If[	!DuplicateFreeQ[First/@topos],
 			Message[FCLoopValidTopologyQ::inv, "Detected duplicate topologies in the given list."];
 			Return[False]
 		];

@@ -423,33 +423,6 @@ Tests`Shared`fcstSharedToolsFCFactorOut = {
 	"3 b head[1 + a/(3 b)]"}
 };
 
-Tests`Shared`fcstSharedToolsFCSubsetQ =
-({
-{"fcstSharedToolsFCSubsetQ-ID1", "FCSubsetQ[{a,b,c,d},{a,d,e}]",
-"False"},
-{"fcstSharedToolsFCSubsetQ-ID2", "FCSubsetQ[{a,b,c,d},{a,d}]",
-"True"},
-{"fcstSharedToolsFCSubsetQ-ID3", "FCSubsetQ[{a,b,c,d},{}]",
-"True"},
-{"fcstSharedToolsFCSubsetQ-ID4", "FCSubsetQ[{},{}]", "True"},
-{"fcstSharedToolsFCSubsetQ-ID5", "FCSubsetQ[{},{a}]", "False"}
-});
-
-Tests`Shared`fcstFCDuplicateFreeQ =
-({
-{"fcstFCDuplicateFreeQ-ID1", "FCDuplicateFreeQ[{}]", "True"},
-{"fcstFCDuplicateFreeQ-ID2", "FCDuplicateFreeQ[{a}]", "True"},
-{"fcstFCDuplicateFreeQ-ID3", "FCDuplicateFreeQ[{a,b,c}]", "True"},
-{"fcstFCDuplicateFreeQ-ID4", "FCDuplicateFreeQ[{a,b,c,d}]",
-"True"},
-{"fcstFCDuplicateFreeQ-ID5", "FCDuplicateFreeQ[{a,b,c,a}]", "False"},
-{"fcstFCDuplicateFreeQ-ID6", "FCDuplicateFreeQ[{{a,b},{a,c}}]",
-"True"},
-{"fcstFCDuplicateFreeQ-ID7",
-"FCDuplicateFreeQ[{{a,b},{a,c}},Function[{x,y},First[x]===First[y]]\
-]", "False"}
-});
-
 Tests`Shared`fcstFCHighlight =
 ({
 {"fcstFCHighlight-ID1", "FCHighlight[Expand[(a+b+c)^2],{}]",

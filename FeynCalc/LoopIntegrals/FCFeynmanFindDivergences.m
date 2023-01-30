@@ -125,7 +125,7 @@ FCFeynmanFindDivergences[ex_, var_, OptionsPattern[]] :=
 		FCPrint[1, "FCFeynmanFindDivergences: Variables appearing in the exponents: ", expVars, FCDoControl->fcffdVerbose];
 		FCPrint[1, "FCFeynmanFindDivergences: Kinematic variables: ", kinVars, FCDoControl->fcffdVerbose];
 
-		If[	!FCSubsetQ[Join[xVars,expVars,kinVars],allVars],
+		If[	!SubsetQ[Join[xVars,expVars,kinVars],allVars],
 			Message[FCFeynmanFindDivergences::failmsg, "Something went wrong identifying different variable types."];
 			Abort[]
 		];

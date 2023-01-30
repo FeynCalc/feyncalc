@@ -85,17 +85,6 @@ running without the frontend) if the loaded FeynCalc version is older than
 
 Notice that this function is available only since FeynCalc 9.3.";
 
-FCDuplicateFreeQ::usage=
-"FCDuplicateFreeQ[list] yields True if list contains no duplicates and False
-otherwise.
-
-FCDuplicateFreeQ[list,test] uses test to determine whether two objects should
-be considered duplicates.
-
-FCDuplicateFreeQ returns the same results as the standard DuplicateFreeQ. The
-only reason for introducing FCDuplicateFreeQ is that DuplicateFreeQ is not
-available in Mathematica 8 and 9, which are still supported by FeynCalc.";
-
 FCGetNotebookDirectory::usage=
 "FCGetNotebookDirectory[] is a convenience function that returns the directory
 in which the current notebook or .m file is located. It also works when the
@@ -189,12 +178,6 @@ any occurrence of v1, v2, ... and pieces that contain those variables. This
 works both only for products. The output is provided in the form of a two
 element list. One can recover the original expression by applying Times to
 that list.";
-
-FCSubsetQ::usage=
-"FCSubsetQ[list1, list2]  yields True if list2 is a subset of list1 and False
-otherwise. It returns the same results as the standard SubsetQ. The only
-reason for introducing FCSubsetQ is that SubsetQ is not available in
-Mathematica 8 and 9, which are still supported by FeynCalc.";
 
 FCSymmetrize::usage=
 "FCSymmetrize[expr, {a1, a2, ...}] symmetrizes expr with respect to the
@@ -339,10 +322,6 @@ The problem reads: `1`";
 
 FCReloadFunctionFromFile::failmsg =
 "Error! FCReloadFunctionFromFile has encountered a fatal problem and must abort the computation. \n
-The problem reads: `1`";
-
-FCDuplicateFreeQ::failmsg =
-"Error! FCDuplicateFreeQ has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`";
 
 FCMakeSymbols::failmsg =
@@ -637,40 +616,6 @@ FCCheckVersion[major_Integer?NonNegative, minor_Integer?NonNegative, build_Integ
 		]
 	];
 
-
-FCDuplicateFreeQ[ex_/; Head[ex] =!= List, ___] :=
-	(
-	Message[FCDuplicateFreeQ::failmsg, "The input expression is not a list."];
-	Abort[]
-	);
-
-FCDuplicateFreeQ[{}, ___] :=
-	True;
-
-FCDuplicateFreeQ[ex_List, test_ : FCGV[""]] :=
-	Block[{tmp, num},
-
-		If[	test === FCGV[""],
-			tmp = Last[SortBy[Tally[ex], Last]],
-			tmp = Check[Last[SortBy[Tally[ex, test], Last]], $Failed, Tally::smtst]
-		];
-
-		If[	Head[tmp] =!= List || tmp === {},
-			Message[FCDuplicateFreeQ::failmsg, "Failed to count the elements in the list."];
-			Abort[]
-		];
-
-		num = Last[tmp];
-
-		If[	!MatchQ[num, _Integer?NonNegative],
-			Message[FCDuplicateFreeQ::failmsg, "Failed to count the elements in the list."];
-			Abort[]
-		];
-
-		num < 2
-	];
-
-
 FCMakeIndex[x_String, y_List, head_: Identity] :=
 	MemSet[	FCMakeIndex[x, y, head],
 			FCMakeIndex[x,#,head]&/@y
@@ -898,13 +843,6 @@ FCSymmetrize[x_,v_List] :=
 		su[y_, {a__}, {b__}] := y /. Thread[{a} -> {b}];
 		1 / Factorial[Length[v]] Plus@@Map[su[x, v, #]&, Permutations[v]]
 	];
-
-
-FCSubsetQ[l1_List, l2_List] :=
-(DeleteDuplicates[Sort[MemberQ[l1, #] & /@ l2]] === {True}) /; l2 =!= {};
-
-FCSubsetQ[_List, {}] :=
-	True;
 
 FreeQ2[_,{}] :=
 	True;

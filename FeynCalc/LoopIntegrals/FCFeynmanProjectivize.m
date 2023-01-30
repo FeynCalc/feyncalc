@@ -85,7 +85,7 @@ FCFeynmanProjectivize[ex_, var_, OptionsPattern[]] :=
 			Abort[]
 		];
 
-		If[	!FCSubsetQ[Join[xVars,expVars,kinVars],allVars],
+		If[	!SubsetQ[Join[xVars,expVars,kinVars],allVars],
 			Message[FCFeynmanProjectivize::failmsg, "Something went wrong identifying different variable types."];
 			Abort[]
 		];
