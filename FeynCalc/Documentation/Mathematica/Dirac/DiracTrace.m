@@ -52,7 +52,7 @@ DiracSimplify[%]
 
 
 (* ::Text:: *)
-(*The old methods of evaluating traces by replacing `DiracTrace` with `Tr` or `TR` are deprecated and should not be used anymore. In particular, they are slower are less efficient than using `DiracSimplify`.*)
+(*The old methods of evaluating traces by replacing `DiracTrace` with `TR` are deprecated and should not be used anymore. In particular, they are slower are less efficient than using `DiracSimplify`.*)
 
 
 (* ::Text:: *)

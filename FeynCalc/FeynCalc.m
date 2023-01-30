@@ -256,20 +256,6 @@ If[	$FCTraditionalFormOutput,
 	CurrentValue[$FrontEndSession, {CommonDefaultFormatTypes, "Output"}] = TraditionalForm
 ];
 
-(* From Mathematica 4.0 onwards there is  "Tr" functions; Overload Tr to use TR *)
-Unprotect[Tr];
-Tr[Pattern[FeynCalc`Private`trarg,BlankSequence[]]] :=
-	TR[FeynCalc`Private`trarg] /; !FreeQ[{FeynCalc`Private`trarg}, FeynCalc`Package`TrFeynCalcObjects];
-Tr::usage =
-"FeynCalc extension: Tr[list] finds the trace of the matrix or tensor list. Tr[list, f] finds a
-generalized trace, combining terms with f instead of Plus. Tr[list, f, n] goes down to level n
-in list. \n
-Tr[ expression ] calculates the DiracTrace, i.e.,  TR[ expression ], if any of DiracGamma,
-GA, GAD, GAE, GS, GSD or GAE are present in expression.";
-Tr/:Options[Tr]:=Options[TR];
-Protect[Tr];
-
-
 If[ !$Notebooks && $FeynCalcStartupMessages,
 	$PrePrint = FeynCalcForm;
 	WriteString["stdout",

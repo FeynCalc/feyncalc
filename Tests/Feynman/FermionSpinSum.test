@@ -49,7 +49,7 @@ mq])*ComplexConjugate[SpinorUBar[p, mp].SpinorV[q, mq]]]//FCE",
 {"fcstFermionSpinSum-ID8",
 "FermionSpinSum[Spinor[Momentum@pp, m].(GA[mu] f1 + GA[mu, 5] fa).Spinor[Momentum@p, \
 m] Spinor[Momentum[p], m, 1].(-fa GA[5].GA[nu] + f1 GA[nu]).Spinor[
-	Momentum[pp], m, 1]] // ReplaceAll[#, DiracTrace -> Tr] & // FCE",
+	Momentum[pp], m, 1]] // DiracSimplify // FCE",
 	"4*(f1^2*FV[p, nu]*FV[pp, mu] + fa^2*FV[p, nu]*FV[pp, mu] + \
 f1^2*FV[p, mu]*FV[pp, nu] + fa^2*FV[p, mu]*FV[pp, nu] + \
 f1^2*m^2*MT[mu, nu] - fa^2*m^2*MT[mu, nu] - f1^2*MT[mu, nu]*SP[p, pp] \

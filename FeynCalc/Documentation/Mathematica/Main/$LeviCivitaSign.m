@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`$LeviCivitaSign` is a global variable that determines the sign in the result of a Dirac trace of four gamma matrices and $\gamma^5$.  `$LeviCivitaSign` is by default set to `-1` which corresponds to the convention `Tr[LC[a,b,c,d,5]] = -4*I*Eps[a,b,c,d]`. Setting `$LeviCivitaSign=-I`  will switch to the FORM-convention.*)
+(*`$LeviCivitaSign` is a global variable that determines the sign in the result of a Dirac trace of four gamma matrices and $\gamma^5$.  `$LeviCivitaSign` is by default set to `-1` which corresponds to the convention `TR[LC[a,b,c,d,5]] = -4*I*Eps[a,b,c,d]`. Setting `$LeviCivitaSign=-I` will switch to the FORM-convention.*)
 
 
 (* ::Subsection:: *)
@@ -25,7 +25,7 @@
 
 $LeviCivitaSign
 
-Tr[GA[\[Mu],\[Nu],\[Rho],\[Sigma],5]]
+DiracTrace[GA[\[Mu],\[Nu],\[Rho],\[Sigma],5]]//DiracSimplify
 
 
 (* ::Text:: *)
@@ -34,7 +34,7 @@ Tr[GA[\[Mu],\[Nu],\[Rho],\[Sigma],5]]
 
 $LeviCivitaSign=-I;
 
-Tr[GA[\[Mu],\[Nu],\[Rho],\[Sigma],5]]
+DiracTrace[GA[\[Mu],\[Nu],\[Rho],\[Sigma],5]]//DiracSimplify
 
 
 (* ::Text:: *)

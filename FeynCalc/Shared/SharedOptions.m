@@ -120,7 +120,7 @@ SUNSimplify, only a limited set of simplifications (multiplicative linearity
 etc.) is performed.";
 
 Factoring::usage =
-"Factoring is an option for Collect2, Contract, Tr and more functions. If set
+"Factoring is an option for Collect2, Contract, TR and more functions. If set
 to True, the result will be factored, using Factor2. If set to any function f,
 this function will be used.";
 
@@ -263,7 +263,7 @@ whether a chain of Pauli matrices should be reduced to at most one matrix by
 rewriting every pair of matrices in terms of commutator and anticommutator.";
 
 Mandelstam::usage =
-"Mandelstam is an option for DiracTrace, OneLoop, OneLoopSum, Tr and
+"Mandelstam is an option for DiracTrace, OneLoop, OneLoopSum, TR and
 TrickMandelstam.  A typical setting is Mandelstam -> {s, t, u,
 m1^2+m2^2+m3^2+m4^2}, which implies $s + t + u = m_1^2+m_2^2+m_3^2+m_4^2$. If
 other than four-particle processes are calculated, the setting should be
@@ -372,7 +372,7 @@ the Casimir operator eigenvalues CA ($=n_c$) and CF ($=(n_c^2-1)/(2 n_c)$) are
 introduced.";
 
 TraceOfOne::usage =
-"TraceOfOne is an option for Tr and DiracTrace. Its setting determines the
+"TraceOfOne is an option for TR and DiracTrace. Its setting determines the
 value of the unit trace.";
 
 VirtualBoson::usage =

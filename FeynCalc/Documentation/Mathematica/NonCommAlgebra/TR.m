@@ -12,23 +12,19 @@
 
 
 (* ::Text:: *)
-(*The Mathematica build-in function `Tr` is overloaded to call `TR` if any of `DiracGamma`, `GA`, `GAD`, `GS` or `GSD` are in the expression.*)
+(*`TR[list]` finds the trace of the matrix or tensor list.*)
 
 
 (* ::Text:: *)
-(*`Tr[list]` finds the trace of the matrix or tensor list.*)
+(*`TR[list, f]` finds a generalized trace, combining terms with f instead of `Plus`.*)
 
 
 (* ::Text:: *)
-(*`Tr[list, f]` finds a generalized trace, combining terms with f instead of `Plus`.*)
+(*`TR[list, f, n]` goes down to level `n` in `list`.*)
 
 
 (* ::Text:: *)
-(*`Tr[list, f, n]` goes down to level `n` in `list`.*)
-
-
-(* ::Text:: *)
-(*`Tr[expression]` calculates the `DiracTrace`, i.e., `TR[expression]` if any of `DiracGamma`, `GA`, `GAD`, `GS` or `GSD` is present in expression.*)
+(*`TR[expression]` calculates the `DiracTrace`, i.e., `TR[expression]` if any of `DiracGamma`, `GA`, `GAD`, `GS` or `GSD` is present in expression.*)
 
 
 (* ::Subsection:: *)
@@ -74,6 +70,3 @@ TR[1,SUNTrace->False,SUNNToCACF->True]
 
 
 TR[1,SUNTrace->True,SUNNToCACF->True]
-
-
-Tr[ GA[m,n]]
