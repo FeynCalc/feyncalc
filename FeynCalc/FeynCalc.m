@@ -249,7 +249,7 @@ Remove["FeynCalc`fcSelfPatch"];
 Remove["FeynCalc`patched*"];
 Remove["FeynCalc`originalCode"];
 Remove["FeynCalc`repList"];
-Remove["FeynCalc`file"];
+
 
 (* If necessary, swtich the output format of the current frontend to TraditionalForm *)
 If[	$FCTraditionalFormOutput,
@@ -272,6 +272,20 @@ If[	TrueQ[FileExistsQ[FileNameJoin[{FeynCalc`$FeynCalcDirectory, ".version"}]]],
 	FeynCalc`$FeynCalcLastCommitDateHash = Import[FileNameJoin[{FeynCalc`$FeynCalcDirectory, ".version"}],"Text"];
 	If[	TrueQ[StringFreeQ[FeynCalc`$FeynCalcLastCommitDateHash,"$"]],
 		FeynCalc`$FeynCalcLastCommitDateHash = StringRiffle[ToExpression[FeynCalc`$FeynCalcLastCommitDateHash], ", "],
+		FeynCalc`$FeynCalcLastCommitDateHash = ""
+	],
+	FeynCalc`$FeynCalcLastCommitDateHash = ""
+];
+
+FeynCalc`file = FileNameJoin[{ParentDirectory[AbsoluteFileName[$FeynCalcDirectory]], ".git", "HEAD"}];
+
+If[	TrueQ[FileExistsQ[FeynCalc`file] && FeynCalc`$FeynCalcLastCommitDateHash === ""],
+
+	FeynCalc`file = FileNameJoin[{ParentDirectory[AbsoluteFileName[$FeynCalcDirectory]], ".git", Last[StringSplit[Import[FeynCalc`file, "Text"], ": "]]}];
+
+	If[	TrueQ[FileExistsQ[FeynCalc`file]],
+		FeynCalc`$FeynCalcLastCommitDateHash = StringJoin[{DateString[FileDate[FeynCalc`file], {"Year", "-", "Month", "-", "Day", " ", "Time",
+		" ", "ISOTimeZone"}], ", ", StringTake[Import[FeynCalc`file, "Text"], 8]}],
 		FeynCalc`$FeynCalcLastCommitDateHash = ""
 	],
 	FeynCalc`$FeynCalcLastCommitDateHash = ""
@@ -304,6 +318,8 @@ If[ $FeynCalcStartupMessages =!= False,
 
 	];
 
+
+Remove["FeynCalc`file"];
 
 (* 	Some addons might need to add new stuff to the $ContextPath. While inside the
 	FeynCalc` path they obviously cannot do this by themselves. However, via
