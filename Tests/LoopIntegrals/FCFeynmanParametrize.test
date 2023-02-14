@@ -335,5 +335,9 @@ fctopology3, {SFAD[{{l, 0}, {mq^2, 1}, 1}],
 	0}, {}]}, Names -> x, FCReplaceD -> {D -> 4 - 2 ep},
 FeynmanIntegralPrefactor -> \"Textbook\"]","{(x[1] + x[2] + x[3])^(-1 +
 2*ep)*(mq^2*(x[1]^2 + 2*x[1]*x[2] + x[2]^2 + 2*x[2]*x[3]))^(-1 - ep),
-(-I)*2^(-4 + 2*ep)*Pi^(-2 + ep)*Gamma[1 + ep], {x[1], x[2], x[3]}}"}
+(-I)*2^(-4 + 2*ep)*Pi^(-2 + ep)*Gamma[1 + ep], {x[1], x[2], x[3]}}"},
+{"fcstFCFeynmanParametrize-ID48",
+"FCFeynmanParametrize[FAD[q, q - p], {q}, Names -> x, EtaSign -> True]",
+"{(x[1] + x[2])^(2 - D)*((-I)*SMP[\"Eta\"] - Pair[Momentum[p, D],
+Momentum[p, D]]*x[1]*x[2])^(-2 + D/2), Gamma[2 - D/2], {x[1], x[2]}}"}
 });

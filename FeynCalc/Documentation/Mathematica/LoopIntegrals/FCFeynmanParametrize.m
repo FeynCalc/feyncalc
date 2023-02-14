@@ -89,11 +89,17 @@
 FCFeynmanParametrize[FAD[{q,m}],{q},Names->x]
 
 
+FCFeynmanParametrize[FAD[{q,m}],{q},Names->x,EtaSign->True]
+
+
 (* ::Text:: *)
 (*Massless 1-loop 2-point function*)
 
 
 FCFeynmanParametrize[FAD[q,q-p],{q},Names->x]
+
+
+FCFeynmanParametrize[FAD[q,q-p],{q},Names->x,EtaSign->True]
 
 
 (* ::Text:: *)

@@ -98,6 +98,7 @@ fcfpVerbose::usage="";
 Options[FCFeynmanParametrize] = {
 	Assumptions					-> {},
 	DiracDelta					-> False,
+	EtaSign						-> False,
 	Expanding					-> True,
 	"Euclidean"					-> False,
 	FCE							-> False,
@@ -196,7 +197,7 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmomsRaw_List /; ! Opti
 
 		{uPoly, fPoly, pows, mat, Q, J, tensorPart, tensorRank} = FCFeynmanPrepare[ex,lmoms, FCI->True,
 			FinalSubstitutions->optFinalSubstitutions, Names->optNames, Indexed->OptionValue[Indexed], Reduce->OptionValue[Reduce],
-			"Euclidean" -> optEuclidean];
+			"Euclidean" -> optEuclidean, EtaSign -> OptionValue[EtaSign]];
 
 		outputFCFeynmanPrepare = {uPoly, fPoly, pows, mat, Q, J, tensorPart, tensorRank};
 
@@ -345,7 +346,7 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmomsRaw_List /; ! Opti
 
 					fpInt = fpInt fpPref;
 					(* Check the scalefullness *)
-					If[	FCLoopPakScalelessQ[uPoly*fPoly,vars],
+					If[	FCLoopPakScalelessQ[uPoly*fPoly /. SMP["Eta"]->0,vars],
 						FCPrint[1,"FCFeynmanParametrize: According to FCLoopPakScalelessQ this integral is scaleless.", FCDoControl->fcfpVerbose];
 						fpInt = 0
 					];

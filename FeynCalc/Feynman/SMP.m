@@ -180,6 +180,11 @@ SMP /:
 	MakeBoxes[SMP["alpha_s"], TraditionalForm] :=
 		SubscriptBox["\[Alpha]", "s"];
 
+
+SMP /:
+	MakeBoxes[SMP["Eta"], TraditionalForm] :=
+		"\[Eta]";
+
 (* CKM matrix *)
 
 SMP /:

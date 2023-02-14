@@ -80,6 +80,7 @@ Options[FCFeynmanPrepare] = {
 	Check					-> True,
 	Collecting				-> True,
 	"Euclidean"				-> False,
+	EtaSign					-> False,
 	FCE						-> False,
 	FCI						-> False,
 	FCLoopGetEtaSigns		-> True,
@@ -320,7 +321,8 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 				Message[FCFeynmanPrepare::failmsg, "The integral contains propagators with different EtaSign prescriptions. " <>
 				"Please use FCLoopSwitchEtaSign to have the same prescription in all propagators or set the option FCLoopGetEtaSigns to False."];
 				Abort[]
-			]
+			],
+			etaSigns = {0}
 		];
 
 		nDenoms = Length[tmp[[1]]];
@@ -407,6 +409,7 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 		FCPrint[3,"FCFeynmanPrepare: Raw U: ", symU, FCDoControl->fcszVerbose];
 		FCPrint[3,"FCFeynmanPrepare: Raw F: ", symF, FCDoControl->fcszVerbose];
 
+
 		If[	tensorPart=!=1,
 			time=AbsoluteTime[];
 			FCPrint[1, "FCFeynmanPrepare: Constructing N.", FCDoControl -> fcszVerbose];
@@ -414,10 +417,15 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 			FCPrint[1, "FCFeynmanPrepare: N ready, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose];
 		];
 		If[	!isCartesian && !optEuclidean,
-			res = {symU, -Together[symU symF], powers, matrix, fpQ, fpJ, tensorPart, tensorRank},
+			res = {symU, -Together[symU symF] - I*etaSigns[[1]]*SMP["Eta"], powers, matrix, fpQ, fpJ, tensorPart, tensorRank},
 			(*in the case of a Euclidean integral there is no Wick rotation and we pick up -Q^T.M^(-1).Q+J *)
-			res = {symU, Together[symU symF], powers, matrix, fpQ, fpJ, tensorPart, tensorRank};
+			res = {symU, Together[symU symF] + I*etaSigns[[1]]*SMP["Eta"], powers, matrix, fpQ, fpJ, tensorPart, tensorRank};
 		];
+
+		If[!OptionValue[EtaSign],
+			res = res /.SMP["Eta"] -> 0
+		];
+
 
 
 		If[ OptionValue[Check] && {symU, symF}=!={0,0},
@@ -425,11 +433,11 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 			FCPrint[1, "FCFeynmanPrepare: Checking the results.", FCDoControl -> fcszVerbose];
 			(* Check F *)
 			If[	!isCartesian && !optEuclidean,
-				If[Factor[Together[symU*(ExpandScalarProduct[Contract[fpQ.Inverse[matrix].fpQ,FCI->True],FCI->True]-fpJ)-res[[2]]]]=!=0,
+				If[Factor[Together[symU*(ExpandScalarProduct[Contract[fpQ.Inverse[matrix].fpQ,FCI->True],FCI->True]-fpJ)-(res[[2]]/.SMP["Eta"]->0)]]=!=0,
 					Message[FCFeynmanPrepare::failmsg,"The obtained Q and J are incorrect."];
 					Abort[]
 				],
-				If[Factor[Together[symU*(-ExpandScalarProduct[Contract[fpQ.Inverse[matrix].fpQ,FCI->True],FCI->True]+fpJ)-res[[2]]]]=!=0,
+				If[Factor[Together[symU*(-ExpandScalarProduct[Contract[fpQ.Inverse[matrix].fpQ,FCI->True],FCI->True]+fpJ)-(res[[2]]/.SMP["Eta"]->0)]]=!=0,
 					Message[FCFeynmanPrepare::failmsg,"The obtained Q and J are incorrect."];
 					Abort[]
 				]

@@ -1,3 +1,7 @@
+```mathematica
+ 
+```
+
 ## FCFeynmanParametrize
 
 `FCFeynmanParametrize[int, {q1, q2, ...}]` introduces Feynman parameters for the multi-loop integral int.
@@ -49,6 +53,12 @@ FCFeynmanParametrize[FAD[{q, m}], {q}, Names -> x]
 
 $$\left\{1,-\left(m^2\right)^{\frac{D}{2}-1} \Gamma \left(1-\frac{D}{2}\right),\{\}\right\}$$
 
+```mathematica
+FCFeynmanParametrize[FAD[{q, m}], {q}, Names -> x, EtaSign -> True]
+```
+
+$$\left\{1,-\Gamma \left(1-\frac{D}{2}\right) \left(m^2-i \eta \right)^{\frac{D}{2}-1},\{\}\right\}$$
+
 Massless 1-loop 2-point function
 
 ```mathematica
@@ -56,6 +66,12 @@ FCFeynmanParametrize[FAD[q, q - p], {q}, Names -> x]
 ```
 
 $$\left\{(x(1)+x(2))^{2-D} \left(-p^2 x(1) x(2)\right)^{\frac{D}{2}-2},\Gamma \left(2-\frac{D}{2}\right),\{x(1),x(2)\}\right\}$$
+
+```mathematica
+FCFeynmanParametrize[FAD[q, q - p], {q}, Names -> x, EtaSign -> True]
+```
+
+$$\left\{(x(1)+x(2))^{2-D} \left(-p^2 x(1) x(2)-i \eta \right)^{\frac{D}{2}-2},\Gamma \left(2-\frac{D}{2}\right),\{x(1),x(2)\}\right\}$$
 
 With $p^2$ replaced by `pp` and `D` set to `4 - 2 Epsilon`
 
@@ -387,4 +403,4 @@ FCFeynmanParametrize[{SFAD[{ p1, m^2}], SFAD[{ p3, m^2}],
   FinalSubstitutions -> {SPD[n] -> 1, m -> 1}]
 ```
 
-$$\left\{\left(x(4) x(1)^2+x(5) x(1)^2+2 x(2) x(5) x(1)+x(3) x(4)^2+x(3) x(5)^2+x(4) x(5)^2+x(2)^2 x(3)+x(3)^2 x(4)+x(3) x(4)+x(2)^2 x(5)+x(3)^2 x(5)+x(4)^2 x(5)+x(3) x(5)+3 x(3) x(4) x(5)+x(4) x(5)\right)^{\text{ep}-2},-\frac{\Gamma (2-\text{ep})}{\Gamma (1-3 \;\text{ep})},\{x(1),x(2),x(3),x(4),x(5)\}\right\}$$
+$$\left\{\left(x(2) x(1)^2+x(3) x(1)^2+x(2)^2 x(1)+x(3)^2 x(1)+x(5)^2 x(1)+x(2) x(1)+3 x(2) x(3) x(1)+x(3) x(1)+x(2) x(3)^2+x(2) x(4)^2+x(3) x(4)^2+x(3) x(5)^2+x(2)^2 x(3)+x(2) x(3)+2 x(3) x(4) x(5)\right)^{\text{ep}-2},-\frac{\Gamma (2-\text{ep})}{\Gamma (1-3 \;\text{ep})},\{x(1),x(2),x(3),x(4),x(5)\}\right\}$$
