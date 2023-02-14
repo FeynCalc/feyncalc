@@ -110,8 +110,8 @@ FromGFAD[expr_, OptionsPattern[]] :=
 		];
 
 		If[	OptionValue[Check],
-			check=ExpandAll[(powExp[(1/FeynAmpDenominatorExplicit[FeynAmpDenominator/@pdsConverted,FCE->True] -
-					1/FeynAmpDenominatorExplicit[FeynAmpDenominator/@pds,FCE->True])/. optInitialSubstitutions /. optIntermediateSubstitutions])/. noFAD->Identity];
+			check=ExpandAll[(powExp[(1/FeynAmpDenominatorExplicit[FeynAmpDenominator/@pdsConverted] -
+					1/FeynAmpDenominatorExplicit[FeynAmpDenominator/@pds])/. optInitialSubstitutions /. optIntermediateSubstitutions])/. noFAD->Identity];
 			If[	!MatchQ[check,{0..}],
 				FCPrint[3, "FromGFAD: Check: ", check, FCDoControl->fgfVerbose];
 				Message[FromGFAD::failmsg,"Something went wrong when elmiinating GenericPropagatorDenominators."];
