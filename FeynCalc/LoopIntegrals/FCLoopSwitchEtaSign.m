@@ -132,24 +132,24 @@ propReverse[(h:StandardPropagatorDenominator|CartesianPropagatorDenominator|Gene
 
 (* SFAD, +/- (p1+...)^2 +/- (p1.p2 + ...) +/- m^2*)
 propReverse[StandardPropagatorDenominator[c_. Momentum[p_, dim___], sp_, msq_,{n_, s1:(1|-1)}], s2:(1|-1)]:=
-	overallSign[(-1)^n] StandardPropagatorDenominator[Complex[0,1] c Momentum[p, dim], -sp ,-msq, {n, s2}]/; (s1+s2 === 0);
+	overallSign[1/(-1)^n] StandardPropagatorDenominator[Complex[0,1] c Momentum[p, dim], -sp ,-msq, {n, s2}]/; (s1+s2 === 0);
 
 (* SFAD, +/- (p1.p2 + ...) +/- m^2*)
 propReverse[StandardPropagatorDenominator[0, sp_, msq_,{n_, s1:(1|-1)}], s2:(1|-1)]:=
-	overallSign[(-1)^n] StandardPropagatorDenominator[0, -sp ,-msq, {n, s2}]/; (s1+s2 === 0);
+	overallSign[1/(-1)^n] StandardPropagatorDenominator[0, -sp ,-msq, {n, s2}]/; (s1+s2 === 0);
 
 
 (* CFAD, +/- (p1+...)^2 +/- (p1.p2 + ...) +/- m^2*)
 propReverse[CartesianPropagatorDenominator[c_. CartesianMomentum[p_, dim___], sp_, msq_,{n_, s1:(1|-1)}], s2:(1|-1)]:=
-	overallSign[(-1)^n] CartesianPropagatorDenominator[Complex[0,1] c CartesianMomentum[p, dim], -sp ,-msq, {n, s2}]/; (s1+s2 === 0);
+	overallSign[1/(-1)^n] CartesianPropagatorDenominator[Complex[0,1] c CartesianMomentum[p, dim], -sp ,-msq, {n, s2}]/; (s1+s2 === 0);
 
 (* CFAD, +/- (p1.p2 + ...) +/- m^2*)
 propReverse[CartesianPropagatorDenominator[0, sp_, msq_,{n_, s1:(1|-1)}], s2:(1|-1)]:=
-	overallSign[(-1)^n] CartesianPropagatorDenominator[0, -sp ,-msq, {n, s2}]/; (s1+s2 === 0);
+	overallSign[1/(-1)^n] CartesianPropagatorDenominator[0, -sp ,-msq, {n, s2}]/; (s1+s2 === 0);
 
 (* GFAD *)
 propReverse[GenericPropagatorDenominator[z_, {n_, s1:(1|-1)}], s2:(1|-1)]:=
-	overallSign[(-1)^n]  GenericPropagatorDenominator[-z , {n, s2}]/; s1=!=s2;
+	overallSign[1/(-1)^n]  GenericPropagatorDenominator[-z , {n, s2}]/; s1=!=s2;
 
 
 
