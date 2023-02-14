@@ -36,6 +36,7 @@ fcfprVerbose::usage="";
 
 
 Options[FCFeynmanProjectivize] = {
+	Abort		-> True,
 	Assumptions	-> {},
 	Check		-> True,
 	FCVerbose 	-> False,
@@ -107,7 +108,7 @@ FCFeynmanProjectivize[ex_, var_, OptionsPattern[]] :=
 
 		FCPrint[3,"FCFeynmanProjectivize: Check: " , check, FCDoControl->fcfprVerbose];
 
-		If[	FreeQ[check, la],
+		If[	FreeQ[check, la] && OptionValue[Abort],
 
 			FCPrint[0,"FCFeynmanProjectivize: The integral is already projective, no further transformations are required.", FCDoControl->fcfprVerbose];
 			Return[ex],
