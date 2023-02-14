@@ -75,7 +75,7 @@ FCLoopGetKinematicInvariants[topoRaw_FCTopology, OptionsPattern[]]:=
 			If[	TrueQ[OptionValue[FCFeynmanPrepare]],
 				time=AbsoluteTime[];
 				FCPrint[1,"FCLoopGetKinematicInvariants: Calling FCFeynmanPrepare.", FCDoControl->lgkVerbose];
-				aux = FCFeynmanPrepare[topo, Names->x, FCI -> True, Check->False, Collecting -> False];
+				aux = FCFeynmanPrepare[topo, Names->x, FCI -> True, Check->False, Collecting -> False, FCLoopGetEtaSigns -> False];
 				FCPrint[1,"FCLoopGetKinematicInvariants: FCFeynmanPrepare done, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->lgkVerbose];
 				FCPrint[3, "FCLoopGetKinematicInvariants: After FCFeynmanPrepare: ", aux, FCDoControl->lgkVerbose];
 

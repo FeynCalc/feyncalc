@@ -82,6 +82,7 @@ Options[FCFeynmanPrepare] = {
 	"Euclidean"				-> False,
 	FCE						-> False,
 	FCI						-> False,
+	FCLoopGetEtaSigns		-> True,
 	FCVerbose				-> False,
 	Factoring 				-> {Factor2, 5000},
 	FinalSubstitutions		-> {},
@@ -204,7 +205,7 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 	Block[{	feynX, propProduct, tmp, symF, symU, ex, spd, qkspd, mtmp,
 			matrix, nDenoms, res, constraint, tmp0, powers, lmoms,
 			optFinalSubstitutions, optNames, aux1, aux2, nProps, fpJ, fpQ,
-			null1, null2, tensorPart, scalarPart, time, tcHideRule={}, sortBy, pref},
+			null1, null2, tensorPart, scalarPart, time, tcHideRule={}, sortBy, pref, etaSigns},
 
 		optNames				= OptionValue[Names];
 		optFinalSubstitutions	= OptionValue[FinalSubstitutions];
@@ -248,7 +249,6 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 			Abort[]
 
 		];
-
 
 		Which[
 			!FreeQ2[ex, {Momentum, LorentzIndex}] && FreeQ2[ex, {CartesianMomentum,CartesianIndex}],
@@ -314,6 +314,14 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 
 		FCPrint[3,"FCFeynmanPrepare: List of denominators: ", tmp, FCDoControl->fcszVerbose];
 
+		If[	OptionValue[FCLoopGetEtaSigns],
+			etaSigns = FCLoopGetEtaSigns[tmp[[4]]];
+			If[	!MatchQ[etaSigns,{1}|{-1}],
+				Message[FCFeynmanPrepare::failmsg, "The integral contains propagators with different EtaSign prescriptions. " <>
+				"Please use FCLoopSwitchEtaSign to have the same prescription in all propagators or set the option FCLoopGetEtaSigns to False."];
+				Abort[]
+			]
+		];
 
 		nDenoms = Length[tmp[[1]]];
 		feynX 	= Table[optNames[i],{i,1,nDenoms}];

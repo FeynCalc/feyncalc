@@ -87,19 +87,19 @@ FCLoopScalelessQ[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 				notList = True;
 				tmp =	FCFeynmanPrepare[ex, lmoms, FCI -> True, Names -> x, Check->False,
 				Collecting -> OptionValue[Collecting], TimeConstrained -> OptionValue[TimeConstrained],
-				Factoring -> OptionValue[Factoring], FinalSubstitutions-> optFinalSubstitutions];
+				Factoring -> OptionValue[Factoring], FinalSubstitutions -> optFinalSubstitutions, FCLoopGetEtaSigns -> False];
 				tmp = {tmp};
 				ex = {ex},
 			(*List of integrals *)
 			MatchQ[ex, {__GLI} | {__FCTopology}],
 				tmp = FCFeynmanPrepare[ex, lmoms, FCI -> True, Names -> x, Check->False,
 				Collecting -> OptionValue[Collecting], TimeConstrained -> OptionValue[TimeConstrained],
-				Factoring -> OptionValue[Factoring], FinalSubstitutions-> optFinalSubstitutions],
+				Factoring -> OptionValue[Factoring], FinalSubstitutions-> optFinalSubstitutions, FCLoopGetEtaSigns -> False],
 			(*List of integrals *)
 			MatchQ[ex, {_. _FeynAmpDenominator ..}],
 				tmp =	FCFeynmanPrepare[#, lmoms, FCI -> True, Names -> x, Check->False,
 				Collecting -> OptionValue[Collecting], TimeConstrained -> OptionValue[TimeConstrained],
-				Factoring -> OptionValue[Factoring], FinalSubstitutions-> optFinalSubstitutions]&/@ex,
+				Factoring -> OptionValue[Factoring], FinalSubstitutions-> optFinalSubstitutions, FCLoopGetEtaSigns -> False]&/@ex,
 			True,
 				Message[FCLoopScalelessQ::failmsg,"Failed to recognize the form of the input expression."];
 				Abort[]

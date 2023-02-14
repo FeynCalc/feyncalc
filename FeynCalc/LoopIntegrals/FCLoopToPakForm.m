@@ -111,19 +111,19 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 				notList = True;
 				tmp =	FCFeynmanPrepare[ex, lmoms, FCI -> True, FinalSubstitutions -> optFinalSubstitutions,
 				Names -> OptionValue[Names], Indexed -> OptionValue[Indexed], Check->OptionValue[Check],
-				Collecting -> OptionValue[Collecting]];
+				Collecting -> OptionValue[Collecting], FCLoopGetEtaSigns -> False];
 				tmp = {tmp};
 				ex = {ex},
 			(*List of integrals *)
 			MatchQ[ex, {(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..} | {__FCTopology}],
 				tmp =	FCFeynmanPrepare[ex, lmoms, FCI -> True, FinalSubstitutions -> optFinalSubstitutions,
 				Names -> OptionValue[Names], Indexed -> OptionValue[Indexed], Check->OptionValue[Check],
-				Collecting -> OptionValue[Collecting]],
+				Collecting -> OptionValue[Collecting], FCLoopGetEtaSigns -> False],
 			(*List of integrals *)
 			MatchQ[ex, {_. _FeynAmpDenominator ..}],
 				tmp =	FCFeynmanPrepare[#, lmoms, FCI -> True, FinalSubstitutions -> optFinalSubstitutions,
 				Names -> OptionValue[Names], Indexed -> OptionValue[Indexed], Check->OptionValue[Check],
-				Collecting -> OptionValue[Collecting]]&/@ex,
+				Collecting -> OptionValue[Collecting], FCLoopGetEtaSigns -> False]&/@ex,
 			True,
 				Message[FCLoopToPakForm::failmsg,"Failed to recognize the form of the input expression."];
 				Abort[]

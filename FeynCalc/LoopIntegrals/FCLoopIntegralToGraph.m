@@ -211,7 +211,7 @@ FCLoopIntegralToGraph[expr_/; FreeQ[{GLI,FCTopology},expr], lmomsRaw_List, Optio
 
 		time=AbsoluteTime[];
 		FCPrint[1,"FCLoopIntegralToGraph: Calling FCFeynmanPrepare.", FCDoControl->lbtgVerbose];
-		aux = FCFeynmanPrepare[ex, lmoms, FCI -> True, Check->False, Collecting -> False];
+		aux = FCFeynmanPrepare[ex, lmoms, FCI -> True, Check->False, Collecting -> False, FCLoopGetEtaSigns -> False];
 		FCPrint[1,"FCLoopIntegralToGraph: FCFeynmanPrepare done, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->lbtgVerbose];
 
 		FCPrint[3, "FCLoopIntegralToGraph: After FCFeynmanPrepare: ", aux, FCDoControl->lbtgVerbose];
