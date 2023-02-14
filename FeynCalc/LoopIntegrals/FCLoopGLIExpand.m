@@ -79,7 +79,7 @@ FCLoopGLIExpand[expr_/;Head[expr]=!=List, toposRaw_List, {invRaw_, val_, order_I
 		FCPrint[3,"FCLoopGLIExpand: inv: ", inv, FCDoControl->lgeVerbose];
 
 		If[	!FCLoopValidTopologyQ[topos],
-			Message[FCFeynmanPrepare::failmsg, "The supplied topology is incorrect."];
+			Message[FCLoopGLIExpand::failmsg, "The supplied topology is incorrect."];
 			Abort[]
 		];
 

@@ -98,7 +98,7 @@ FCLoopIntegralToGraph[glis:{__GLI}, toposRaw:{__FCTopology}, opts:OptionsPattern
 		relTopos=Map[First[Select[topos, Function[x, x[[1]] === #[[1]]]]] &, glis];
 
 		If[	!MatchQ[relTopos,{__FCTopology}],
-			Message[FCFeynmanPrepare::failmsg, "Something went wrong when extracting topologies relevant for the given GLIs."];
+			Message[FCLoopIntegralToGraph::failmsg, "Something went wrong when extracting topologies relevant for the given GLIs."];
 			Abort[]
 		];
 
@@ -126,7 +126,7 @@ FCLoopIntegralToGraph[topoRaw_FCTopology, opts:OptionsPattern[]] :=
 		];
 
 		If[	!FCLoopValidTopologyQ[topo],
-			Message[FCFeynmanPrepare::failmsg, "The supplied topology is incorrect."];
+			Message[FCLoopIntegralToGraph::failmsg, "The supplied topology is incorrect."];
 			Abort[]
 		];
 

@@ -429,7 +429,7 @@ FCLoopBasisIncompleteQ[topoRaw_FCTopology, opts:OptionsPattern[]] :=
 		];
 
 		If[	!FCLoopValidTopologyQ[topo],
-			Message[FCFeynmanPrepare::failmsg, "The supplied topology is incorrect."];
+			Message[FCLoopBasisIncompleteQ::failmsg, "The supplied topology is incorrect."];
 			Abort[]
 		];
 
@@ -508,7 +508,7 @@ FCLoopBasisOverdeterminedQ[topoRaw_FCTopology, opts:OptionsPattern[]] :=
 		];
 
 		If[	!FCLoopValidTopologyQ[topo],
-			Message[FCFeynmanPrepare::failmsg, "The supplied topology is incorrect."];
+			Message[FCLoopBasisOverdeterminedQ::failmsg, "The supplied topology is incorrect."];
 			Abort[]
 		];
 

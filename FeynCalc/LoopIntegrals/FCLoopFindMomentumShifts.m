@@ -72,12 +72,12 @@ FCLoopFindMomentumShifts[fromRaw:{__FCTopology}, toRaw_FCTopology/;!OptionQ[toRa
 		];
 
 		If[	!FCLoopValidTopologyQ[from],
-			Message[FCFeynmanPrepare::failmsg, "The list of source topologie is incorrect."];
+			Message[FCLoopFindMomentumShifts::failmsg, "The list of source topologie is incorrect."];
 			Abort[]
 		];
 
 		If[	!FCLoopValidTopologyQ[to],
-			Message[FCFeynmanPrepare::failmsg, "The target topology is incorrect."];
+			Message[FCLoopFindMomentumShifts::failmsg, "The target topology is incorrect."];
 			Abort[]
 		];
 

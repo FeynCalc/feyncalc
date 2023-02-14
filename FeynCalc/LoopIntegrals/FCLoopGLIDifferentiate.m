@@ -26,8 +26,8 @@ To calculate multiple derivatives, use the notation FCLoopGLIDifferentiate[exp
 , topos, {inv,n}] for scalars and
 FCLoopGLIDifferentiate[exp , topos, {vec1, vec2, ...}] for vectors.";
 
-FCLoopGLIDifferentiate::failmsg = "Error! FCLoopGLIDifferentiate has encountered a fatal problem and must abort the computation. \n
-The problem reads: `1`";
+FCLoopGLIDifferentiate::failmsg =
+"Error! FCLoopGLIDifferentiate has encountered a fatal problem and must abort the computation. The problem reads: `1`";
 
 
 Begin["`Package`"]
@@ -91,7 +91,7 @@ FCLoopGLIDifferentiate[expr_/;Head[expr]=!=List, toposRaw_List, invRaw_/;Head[in
 		FCPrint[3,"FCLoopGLIDifferentiate: Topologies: ", topos, FCDoControl->crtgVerbose];
 
 		If[	!FCLoopValidTopologyQ[topos],
-			Message[FCFeynmanPrepare::failmsg, "The supplied topology is incorrect."];
+			Message[FCLoopGLIDifferentiate::failmsg, "The supplied topology is incorrect."];
 			Abort[]
 		];
 

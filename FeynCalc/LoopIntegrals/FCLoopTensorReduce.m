@@ -98,7 +98,7 @@ FCLoopTensorReduce[expr_, toposRaw_List, OptionsPattern[]] :=
 		];
 
 		If[	!FCLoopValidTopologyQ[topos],
-			Message[FCFeynmanPrepare::failmsg, "The supplied topologies are incorrect."];
+			Message[FCLoopGLIExpand::failmsg, "The supplied topologies are incorrect."];
 			Abort[]
 		];
 

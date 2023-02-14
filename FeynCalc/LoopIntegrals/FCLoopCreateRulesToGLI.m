@@ -20,8 +20,8 @@ numerators from the given topology to GLI objects with inverse propagators.
 
 It is also possible to use FCLoopCreateRulesToGLI[{topo1, topo2, ...}].";
 
-FCLoopCreateRulesToGLI::failmsg = "Error! FCLoopCreateRulesToGLI has encountered a fatal problem and must abort the computation. \n
-The problem reads: `1`";
+FCLoopCreateRulesToGLI::failmsg =
+"Error! FCLoopCreateRulesToGLI has encountered a fatal problem and must abort the computation. The problem reads: `1`";
 
 
 Begin["`Package`"]
@@ -67,7 +67,7 @@ FCLoopCreateRulesToGLI[topoRaw_FCTopology, OptionsPattern[]] :=
 
 
 		If[	!FCLoopValidTopologyQ[topo],
-			Message[FCFeynmanPrepare::failmsg, "The supplied topology is incorrect."];
+			Message[FCLoopValidTopologyQ::failmsg, "The supplied topology is incorrect."];
 			Abort[]
 		];
 

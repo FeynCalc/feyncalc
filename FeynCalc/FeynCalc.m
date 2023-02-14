@@ -319,8 +319,6 @@ If[ $FeynCalcStartupMessages =!= False,
 	];
 
 
-Remove["FeynCalc`file"];
-
 (* 	Some addons might need to add new stuff to the $ContextPath. While inside the
 	FeynCalc` path they obviously cannot do this by themselves. However, via
 	FeynCalc`Private`AddToTheContextPath they can ask FeynCalc to do this for
@@ -341,6 +339,8 @@ EndPackage[];
 If[ FeynCalc`Private`AddToTheContextPath=!={} && ListQ[FeynCalc`Private`AddToTheContextPath],
 	$ContextPath = Join[FeynCalc`Private`AddToTheContextPath,$ContextPath]
 ]
+
+Remove["FeynCalc`file"];
 
 If[ $FCCheckContext,
 

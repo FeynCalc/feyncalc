@@ -55,7 +55,7 @@ FCLoopPropagatorsToTopology[topoRaw_FCTopology, opts:OptionsPattern[]] :=
 		];
 
 		If[	!FCLoopValidTopologyQ[topo],
-			Message[FCFeynmanPrepare::failmsg, "The supplied topology is incorrect."];
+			Message[FCLoopPropagatorsToTopology::failmsg, "The supplied topology is incorrect."];
 			Abort[]
 		];
 
