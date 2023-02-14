@@ -237,6 +237,19 @@ FCApart[expr_, extraPiece_, lmoms_List, OptionsPattern[]] :=
 
 		FCPrint[3,"FCApart: vectorSet: ",vectorSet, FCDoControl->fcaVerbose];
 
+		If[	!MatchQ[vectorSet[[3]], {__?NumberQ}],
+			FCPrint[3,"FCApart: Partial fractioning is not applicable to integrals with symbolic propagator powers.", FCDoControl->fcaVerbose];
+
+			If[	OptionValue[FCE],
+				ex = FCE[ex]
+			];
+
+			ex = ex*extraPiece;
+
+			Return[ex];
+		];
+
+
 
 		(* All the partial fractioning is done by pfrac *)
 		time=AbsoluteTime[];
