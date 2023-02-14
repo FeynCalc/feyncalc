@@ -67,5 +67,35 @@ Momentum[p3, D] - Momentum[q, D]), 0, 0, {1, -1}]],
 FeynAmpDenominator[StandardPropagatorDenominator[I*(Momentum[p1, D] +
 Momentum[p3, D]), 0, mb^2, {1, -1}]], FeynAmpDenominator[StandardPropagatorDenominator[(-I)*Momentum[p3, D],
 0, mb^2, {1, -1}]]}, {p1, p3}, {q},
-{Pair[Momentum[q, D], Momentum[q, D]] -> mb^2}, {}]}}"}
+{Pair[Momentum[q, D], Momentum[q, D]] -> mb^2}, {}]}}"},
+{"fcstFCLoopGLIExpand-ID7","FCLoopGLIExpand[
+x + GLI[fctopology1, {1, 1, 1, al}], {FCTopology[
+fctopology1, {FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[k, D], 0, -m^2, {1, 1}]],
+	FeynAmpDenominator[
+	GenericPropagatorDenominator[
+	la^2*Pair[Momentum[k, D], Momentum[k, D]] -
+	Q*Pair[Momentum[k, D],
+		Momentum[n, D]] + (la^2*
+		m^2*(Q - la^2*Pair[Momentum[k, D], Momentum[nb, D]]))/Q, {1,
+		1}]], FeynAmpDenominator[
+	StandardPropagatorDenominator[
+	Momentum[k,
+	D], -((m^2*Pair[Momentum[k, D], Momentum[n, D]])/Q) -
+	Q*Pair[Momentum[k, D], Momentum[nb, D]], m^2, {1, 1}]],
+	FeynAmpDenominator[
+	StandardPropagatorDenominator[0,
+	Pair[Momentum[k, D], Momentum[n, D]], 0, {1, 1}]]}, {k}, {n,
+	nb}, {Hold[Pair][Momentum[nb, D], Momentum[nb, D]] -> 0,
+	Hold[Pair][Momentum[n, D], Momentum[n, D]] -> 0,
+	Hold[Pair][Momentum[n, D], Momentum[nb, D]] -> 2}, {}]}, {la, 0,
+1}]","{x + GLI[fctopology1, {1, 1, 1, al}], {FCTopology[fctopology1,
+{FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k, D],
+0, -m^2, {1, 1}]], FeynAmpDenominator[GenericPropagatorDenominator[-(Q*Pair[Momentum[k, D],
+Momentum[n, D]]), {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k, D],
+-((m^2*Pair[Momentum[k, D], Momentum[n, D]])/Q) - Q*Pair[Momentum[k, D], Momentum[nb, D]],
+m^2, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[k, D],
+Momentum[n, D]], 0, {1, 1}]]}, {k}, {n, nb},
+{Hold[Pair][Momentum[nb, D], Momentum[nb, D]] -> 0, Hold[Pair][Momentum[n, D], Momentum[n,
+D]] -> 0, Hold[Pair][Momentum[n, D], Momentum[nb, D]] -> 2}, {}]}}"}
 });

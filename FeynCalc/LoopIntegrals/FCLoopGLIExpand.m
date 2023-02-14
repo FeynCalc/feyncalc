@@ -54,7 +54,7 @@ FCLoopGLIExpand[expr_/;Head[expr]=!=List, toposRaw_List, {invRaw_, val_, order_I
 	Block[{	res, ex, topos,  listGLI, inv, topoNamesSupplied, topoNamesGLI, rule,
 			pattern, GLIFourDivergenceRule, listGLIEval, ruleFinal, null1, null2, listFADs,
 			listSelect, diff, tmp, relevantGLIs, listDiff, listDiffEval, listTopos,
-			check1, check2, optCollecting, optFactoring, optTimeConstrained},
+			check1, check2, optCollecting, optFactoring, optTimeConstrained,rest},
 
 		If [OptionValue[FCVerbose]===False,
 				lgeVerbose=$VeryVerbose,
@@ -106,7 +106,7 @@ FCLoopGLIExpand[expr_/;Head[expr]=!=List, toposRaw_List, {invRaw_, val_, order_I
 		tmp = Collect2[ex,Join[relevantGLIs,{inv}], Factoring->optFactoring, TimeConstrained-> optTimeConstrained, Head->diff];
 
 		(*Every term that does not depend on inv is zero!*)
-		tmp = FCSplit[tmp, {diff}][[2]];
+		{rest,tmp} = FCSplit[tmp, {diff}];
 
 		listDiff = Cases2[tmp+null1+null2,diff];
 
@@ -161,7 +161,7 @@ FCLoopGLIExpand[expr_/;Head[expr]=!=List, toposRaw_List, {invRaw_, val_, order_I
 
 		FCPrint[3,"FCLoopGLIExpand: Final set of the replacement rules: ", ruleFinal, FCDoControl->lgeVerbose];
 
-		res = tmp /. Dispatch[ruleFinal] /. GLI[x__][val] :> GLI[x];
+		res = rest + (tmp /. Dispatch[ruleFinal] /. GLI[x__][val] :> GLI[x]);
 
 		If[	!FreeQ[res,holdDerivative],
 			Message[FCLoopGLIExpand::failmsg, "Failed to evaluate all derivatives."];
