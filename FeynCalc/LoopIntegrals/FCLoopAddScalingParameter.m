@@ -56,9 +56,9 @@ Options[FCLoopAddScalingParameter] = {
 FCLoopAddScalingParameter[topos: {__FCTopology}, scalingVar_, scalingRules_List, opts:OptionsPattern[]] :=
 	FCLoopAddScalingParameter[#, scalingVar, scalingRules, opts]&/@topos;
 
-FCLoopAddScalingParameter[topoRaw_FCTopology, scalingVar_, scalingRules_List, OptionsPattern[]] :=
+FCLoopAddScalingParameter[topoRaw_FCTopology, scalingVar_, scalingRulesRaw_List, OptionsPattern[]] :=
 Block[{	topo, props, tmp, propsFinal, simp, etaSigns, protectScaling, dummy, aux,
-		scalings, res, vars, varsRescaled, optFactoring, optNames, id},
+		scalings, res, vars, varsRescaled, optFactoring, optNames, id, scalingRules},
 
 	optFactoring 	= OptionValue[Factoring];
 	optNames 		= OptionValue[Names];
@@ -74,7 +74,7 @@ Block[{	topo, props, tmp, propsFinal, simp, etaSigns, protectScaling, dummy, aux
 	FCPrint[3,"FCLoopAddScalingParameter: Entering with: ", topo, FCDoControl->fclaspVerbose];
 
 	If[	!OptionValue[FCI],
-		topo = FCI[topoRaw],
+		{topo,scalingRules} = FCI[{topoRaw,scalingRulesRaw}],
 		topo = topoRaw
 	];
 
