@@ -52,7 +52,7 @@ p2+p3-Q,0},{0,1},1}]+cc5*GFAD[{{-SPD[p1,p2]+SPD[p1,Q]*SPD[p2,Q],1},1}]\
 *SFAD[{{p1,0},{0,1},1}]*SFAD[{{p2,0},{0,1},1}]*SFAD[{{p3,0},{0,1},1}]*\
 SFAD[{{p2-Q,0},{0,1},1}]*SFAD[{{p1+p3-Q,0},{0,1},1}]*SFAD[{{p2+p3-Q,0}\
 ,{0,1},1}]*SFAD[{{p1+p2+p3-Q,0},{0,1},1}],{p1,p2,p3},FCVerbose\[Rule]-\
-1,FCE->True]",
+1,FCE->True,\"NonstandardPropagators\"->True]",
 "{FCGV[\"GLIProduct\"][cc5, GLI[\"fctopology2\", {1, 1, 1, 1, 1, \
 1, 1, 1}]] + FCGV[\"GLIProduct\"][HoldForm[cc1], GLI[\"fctopology1\", \
 {1, 1, 1, 0, 2, 0, 1, 1, 1}]] + FCGV[\"GLIProduct\"][HoldForm[cc2], \
@@ -101,7 +101,7 @@ p2+p3-Q,0},{0,1},1}]+cc5*GFAD[{{-SPD[p1,p2]+SPD[p1,Q]*SPD[p2,Q],1},1}]\
 SFAD[{{p2-Q,0},{0,1},1}]*SFAD[{{p1+p3-Q,0},{0,1},1}]*SFAD[{{p2+p3-Q,0}\
 ,{0,1},1}]*SFAD[{{p1+p2+p3-Q,0},{0,1},1}],{p1,p2,p3},Ordering\[Rule]{{\
 SFAD[p1],SFAD[p2],SFAD[p3],SFAD[Q-p1-p2-p3]},{}},FCVerbose\[Rule]-1,\
-FCE->True]",
+FCE->True,\"NonstandardPropagators\"->True]",
 "{FCGV[\"GLIProduct\"][cc5, GLI[\"fctopology2\", {1, 1, 1, 1, 1, \
 1, 1, 1}]] + FCGV[\"GLIProduct\"][HoldForm[cc1], GLI[\"fctopology1\", \
 {1, 1, 1, 1, 0, 2, 1, 0, 1}]] + FCGV[\"GLIProduct\"][HoldForm[cc2], \
@@ -150,7 +150,7 @@ p2+p3-Q,0},{0,1},1}]+cc5*GFAD[{{-SPD[p1,p2]+SPD[p1,Q]*SPD[p2,Q],1},1}]\
 SFAD[{{p2-Q,0},{0,1},1}]*SFAD[{{p1+p3-Q,0},{0,1},1}]*SFAD[{{p2+p3-Q,0}\
 ,{0,1},1}]*SFAD[{{p1+p2+p3-Q,0},{0,1},1}],{p1,p2,p3},Ordering\[Rule]{{\
 SFAD[p1],SFAD[p2],SFAD[p3],SFAD[Q-p1-p2-p3],SFAD[p10]},{GFAD[-SPD[p1,\
-p2]+SPD[p1,Q] SPD[p2,Q]]}},FCVerbose\[Rule]-1,FCE->True]",
+p2]+SPD[p1,Q] SPD[p2,Q]]}},FCVerbose\[Rule]-1,FCE->True,\"NonstandardPropagators\"->True]",
 "{FCGV[\"GLIProduct\"][cc5, GLI[\"fctopology2\", {1, 1, 1, 1, 1, \
 1, 1, 1}]] + FCGV[\"GLIProduct\"][HoldForm[cc1], GLI[\"fctopology1\", \
 {1, 1, 1, 0, 2, 1, 0, 1, 1}]] + FCGV[\"GLIProduct\"][HoldForm[cc2], \
@@ -242,7 +242,7 @@ SFAD[{{-p1-p4+Q,0},{0,1},1}] SFAD[{{-p1-p2-p4+Q,0},{0,1},1}] \
 SPD[p1+p2,p1+p2],{p1,p2,p4},PreferredTopologies->{FCTopology[11112,{\
 SFAD[p1],SFAD[p2],SFAD[-p1-p2+Q],SFAD[-p1+Q],SFAD[-p2+Q],GFAD[-(Q2*\
 SPD[p1,p2])+(1-c)*SPD[p1,Q]*SPD[p2,Q]]},{p1,p2},{Q},{},{}]},FCVerbose->-\
-1,FCE->True]",
+1,FCE->True,\"NonstandardPropagators\"->True]",
 "{FCGV[\"GLIProduct\"][SPD[p1 + p2, p1 + p2], GLI[\"fctopology1\", \
 {1, 1, 1, 1, 1, 1, 1}]], {FCTopology[\"fctopology1\", {SFAD[{{p4, 0}, \
 {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], \

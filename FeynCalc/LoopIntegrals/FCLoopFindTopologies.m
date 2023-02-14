@@ -67,6 +67,7 @@ Options[FCLoopFindTopologies] = {
 	IsolateNames				-> False,
 	MomentumCombine				-> True,
 	Names						-> "fctopology",
+	"NonstandardPropagators"	-> False,
 	Ordering					-> {},
 	PreferredTopologies			-> {},
 	SetDimensions				-> {D}
@@ -87,7 +88,7 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 			denFreeTopoName, topoTempName, optFactoring, namesPreferredTopologies, preferredTopologiesAbsent, optFDS, allFADs,
 			allFADsSimp, ruleFADsSimp, exFinal, optOrdering, orderingFirst, orderingLast, topoName, optHead,
 			momenta, optFinalSubstitutions, optFCLoopIsolate, scalelessTopologies ,ruleScalelessTopologies, emoms,
-			spsFromDownValues, optSetDimensions},
+			spsFromDownValues, optSetDimensions, kinInvs},
 
 		optExtraPropagators 	= OptionValue[ExtraPropagators];
 		optOrdering 			= OptionValue[Ordering];
@@ -391,9 +392,9 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 			(*	Check that we have no topologies with overdetermined bases of propagators.	*)
 			If[	!OptionValue[FCLoopBasisOverdeterminedQ],
 
-				If[	!FreeQ[topoList,GenericPropagatorDenominator],
+				If[	TrueQ[OptionValue["NonstandardPropagators"]],
 
-					FCPrint[0, "Some topology candidates contain GFADs. To avoid false positives, those will not be checked with  FCLoopBasisOverdeterminedQ.", FCDoControl->fcfsopVerbose];
+					FCPrint[0, "Some topology candidates contain GFADs. To avoid false positives, those will not be checked with FCLoopBasisOverdeterminedQ.", FCDoControl->fcfsopVerbose];
 
 					overDetermined = Map[FCLoopBasisOverdeterminedQ[Times@@#,lmoms,FCI->True]&, SelectFree[(topoList/.topoHead->Identity),GenericPropagatorDenominator]],
 
@@ -417,7 +418,7 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 
 				momenta = Union[Cases[MomentumExpand[#1[[1]]],Momentum[m_,___]:>m,Infinity]];
 				emoms = SelectFree[momenta,lmoms];
-				spsFromDownValues = SelectFree[FCGetScalarProducts[emoms,SetDimensions->optSetDimensions],TemporalMomentum];
+				spsFromDownValues = SelectFree[FCGetScalarProducts[emoms,SetDimensions->optSetDimensions],{TemporalMomentum,Polarization}];
 
 				FCTopology[topoTempName <> ToString[First[#2]], #1[[1]], Intersection[momenta,lmoms], emoms, Join[optFinalSubstitutions,spsFromDownValues], {}]
 				)&,
@@ -629,6 +630,16 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 
 		res = {exFinal,finalTopologies}  /. topoName->Identity;
 
+		kinInvs = FCLoopGetKinematicInvariants[finalTopologies, FCFeynmanPrepare->!OptionValue["NonstandardPropagators"]];
+
+		If[	kinInvs=!={},
+			check = ToString /@ kinInvs;
+
+			If[!MatchQ[LowerCaseQ /@ StringReplace[check,"1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9"|"0"->""], {True...}],
+				FCPrint[0, Style["Your topologies depend on the follwing kinematic invariants that are not all entirely lowercase: ", {Darker[Yellow,0.55], Bold}], check, FCDoControl->fcfsopVerbose];
+				FCPrint[0, Style["This may lead to issues if these topologies are meant to be processed using tools such as FIRE, KIRA or Fermat.", {Darker[Yellow,0.55], Bold}], FCDoControl->fcfsopVerbose];
+			];
+		];
 
 		If[ OptionValue[FCE],
 			res = FCE[res]
