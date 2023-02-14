@@ -224,12 +224,10 @@ Spinor[-Momentum[p1], MNeu[1],
 Spinor[Momentum[p1], MNeu[1], 1].GA[nu, 7].Spinor[Momentum[k2], me,
 	1]*Spinor[Momentum[p2], me, 1].GA[nu, 6].Spinor[Momentum[k1],
 	MNeu[1], 1], FCE -> True]",
-"DiracTrace[(GS[k1] +
-	MNeu[1]).(-(x1 + x2 + x3) GA[6].GA[mu] - (x4 + x5 + x6) GA[7].GA[
-	mu]).(me - GS[k2]).GA[7].GA[
-nu].(GS[p1] -
-	MNeu[1]).((x1 + x2 + x3) GA[mu].GA[6] + (x4 + x5 + x6) GA[mu].GA[
-	7]).(me + GS[p2]).GA[nu].GA[6]]"}
+"-DiracTrace[(GS[k1] + MNeu[1]) . ((x1 + x2 + x3)*GA[6] . GA[mu] . (me -
+GS[k2]) . GA[7] . GA[nu] + (x4 + x5 + x6)*GA[7] . GA[mu] . (me -
+GS[k2]) . GA[7] . GA[nu]) . (GS[p1] - MNeu[1]) . ((x1 + x2 +
+x3)*GA[mu] . GA[6] + (x4 + x5 + x6)*GA[mu] . GA[7]) . (me + GS[p2]) . GA[nu] . GA[6]]"}
 });
 
 
