@@ -48,7 +48,7 @@ If[!DirectoryQ[outputDir],
 ];
 
 
-If[loadAddOns==="{}",
+If[loadAddOns==="{}" || inputNB===loadAddOns,
 	loadAddOns={},	
 	loadAddOns=ToString/@ToExpression[loadAddOns]
 ];
@@ -199,6 +199,4 @@ Print["Exporting the notebook to ", outputMD];
 MDExport[outputMD, nb,"CellStyleRules"-> <|
   "Title"->{"Text",fixTitle}|>];
 Print["Export done."];
-
-
 
