@@ -256,6 +256,16 @@ Mathematica.
 Use the rule FCGV[s_] :> ToExpression[s] if you want to convert the string x
 to a symbol with the name x.";
 
+FCIteratedIntegral::usage =
+"FCIteratedIntegral[f,x,a,b] is a special head indicating that the function $f$
+represents an iterated integral or a linear combination thereof and that it
+should be integrated in $x$ from $a$ to $b$. This notation is understood by
+the function FCIteratedIntegralEvaluate that does the actual integration.
+
+Notice that before applying FCIteratedIntegralEvaluate all rational functions
+of $x$ in $f$ should be converted to the FCPartialFractionFormrepresentation.";
+
+
 GA::usage =
 "GA[mu] can be used as input for a 4-dimensional $\\gamma^{\\mu }$ and is
 transformed into DiracGamma[LorentzIndex[mu]] by FeynCalcInternal (=FCI).
@@ -1690,6 +1700,9 @@ FAD[a___,{_,_,0},b:Except[_?OptionQ]..., opts:OptionsPattern[]]:=
 (* A propagator to the power 0 is unity *)
 FAD[{_,_,0}, OptionsPattern[]]:=
 	1;
+
+FCIteratedIntegral[0, ___]:=
+	0;
 
 GLIMultiply /:
 	Power[GLIMultiply[id_, indices_List], n_] :=
