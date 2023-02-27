@@ -26,11 +26,15 @@ FCLoopFindTopologyMappings.
 
 By default the function will attempt to rewrite all the occurring loop
 integrals as GLIs. If you just want to apply the mappings without touching the
-remaining scalar products, 
-set the option FCLoopCreateRulesToGLI to False. Even when all scalar products
-depending on loop momenta are rewritten as GLIs, you can still suppress the
-step of multiplying out products
-of GLIs by setting the option GLIMultiply to False.";
+remaining scalar products,  set the option FCLoopCreateRulesToGLI to False.
+Even when all scalar products depending on loop momenta are rewritten as GLIs,
+you can still suppress the step of multiplying out products
+of GLIs by setting the option GLIMultiply to False.
+
+If there are no mappings to apply and you merely want to have the output that
+only involves GLIs, you can call the function as
+FCLoopApplyTopologyMappings[expr, {{}, topos}] or just
+FCLoopApplyTopologyMappings[expr, topos].";
 
 FCLoopApplyTopologyMappings::failmsg =
 "Error! FCLoopApplyTopologyMappings has encountered a fatal problem and must abort the computation. \
@@ -61,6 +65,10 @@ Options[FCLoopApplyTopologyMappings] = {
 	PreferredTopologies			-> {},
 	TimeConstrained 			-> 3
 };
+
+
+FCLoopApplyTopologyMappings[expr_, toposRaw:{__FCTopology}, opts:OptionsPattern[]] :=
+	FCLoopApplyTopologyMappings[expr, {{}, toposRaw}, opts];
 
 FCLoopApplyTopologyMappings[expr_, {mappings_List, toposRaw_List}, OptionsPattern[]] :=
 	Block[{	ex, res, time, uniqueProductsList, tmp, repRule, optFCLoopCreateRulesToGLI,

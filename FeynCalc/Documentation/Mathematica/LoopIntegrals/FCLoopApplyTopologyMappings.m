@@ -16,9 +16,12 @@
 
 
 (* ::Text:: *)
-(*By default the function will attempt to rewrite all the occurring loop integrals as `GLI`s. If you just want to apply the mappings without touching the remaining scalar products, *)
-(*set the option `FCLoopCreateRulesToGLI` to `False`. Even when all scalar products depending on loop momenta are rewritten as `GLI`s, you can still suppress the step of multiplying out products*)
+(*By default the function will attempt to rewrite all the occurring loop integrals as `GLI`s. If you just want to apply the mappings without touching the remaining scalar products,  set the option `FCLoopCreateRulesToGLI` to `False`. Even when all scalar products depending on loop momenta are rewritten as `GLI`s, you can still suppress the step of multiplying out products*)
 (*of `GLI`s by setting the option `GLIMultiply` to `False`.*)
+
+
+(* ::Text:: *)
+(*If there are no mappings to apply and you merely want to have the output that only involves `GLI`s, you can call the function as `FCLoopApplyTopologyMappings[expr, {{}, topos}]` or just `FCLoopApplyTopologyMappings[expr, topos]`.*)
 
 
 (* ::Subsection:: *)
