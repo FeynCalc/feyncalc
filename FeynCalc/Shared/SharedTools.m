@@ -443,7 +443,7 @@ Coefficient2[ex_, form1_, form2_Integer, rest__/;!OptionQ[{rest}], opts:OptionsP
 	Coefficient2[Coefficient2[ex,{form1,form2},opts],rest, opts];
 
 Coefficient2[ex_, form1_, form2_, rest___, opts:OptionsPattern[]] :=
-	Coefficient2[Coefficient2[ex,{form1,1},opts],{form2,1},rest,opts]/;
+	Coefficient2[Coefficient2[ex,{form1,1},opts],form2,rest,opts]/;
 		Head[form2]=!=Integer && Head[form1]=!=List;
 
 Combine[x_, OptionsPattern[]] :=

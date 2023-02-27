@@ -507,7 +507,9 @@ z2+z3+x4 ep),{a4,2},ep,-2,Prefactor->True]", "(a4^2*z1)/ep^2"},
 z2+z3+x4 ep),{a4,2},ep,Prefactor->True]", "a4^2*ep*x4"},
 {"fcstCoefficient2-ID17",
 "Coefficient2[y0+ep y1+a4(1/ep x1+x2+x3 ep)+a4^2(1/ep^2z1+1/ep \
-z2+z3+x4 ep),{a4,1},{ep,0},Prefactor->True]", "a4*x2"}
+z2+z3+x4 ep),{a4,1},{ep,0},Prefactor->True]", "a4*x2"},
+{"fcstCoefficient2-ID18",
+"Coefficient2[F1 (x + y a4 + z a4^2) + F2T b, F1, {a4, 1}]", "y"}
 })
 
 Tests`Shared`fcstFactorList2 =
