@@ -35,6 +35,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [ExplicitSUNFIndex](../ExplicitSUNFIndex.md), [SUNFIndex](../SUNFIndex.md) - $SU(N)$ fundamental index
 - [FAD](../FAD.md), [SFAD](../SFAD.md), [CFAD](../CFAD.md), [GFAD](../GFAD.md), [FeynAmpDenominator](../FeynAmpDenominator.md) - denominators of Feynman amplitudes
 - [FCGV](../FCGV.md) - a global variable
+- [FCHPL](../FCHPL.md), [FCGPL](../FCGPL.md) - harmonic and Goncharov polylogarithms
 - [FCPartialFractionForm](../FCPartialFractionForm.md) - partial fractioned form of rational functions
 - [FCTensor](../FCTensor.md), [FCVariable](../FCVariable.md), [FreeIndex](../FreeIndex.md), [GrassmannParity](../GrassmannParity.md), [ImplicitDiracIndex](../ImplicitDiracIndex.md), [ImplicitPauliIndex](../ImplicitPauliIndex.md), [ImplicitSUNFIndex](../ImplicitSUNFIndex.md), [NegativeInteger](../NegativeInteger.md), [NonCommutative](../NonCommutative.md), [PositiveInteger](../PositiveInteger.md), [PositiveNumber](../PositiveNumber.md) - various datatypes
 - [FUNCTION](../FUNCTION.md) - declaration of functions for [Write2](../Write2.md)
