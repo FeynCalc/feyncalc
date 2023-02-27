@@ -245,6 +245,8 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 			Abort[]
 		];
 
+		ex = FCLoopPropagatorPowersCombine[ex,FCI->True];
+
 		If[	!MatchQ[ex,{__}|_. _FeynAmpDenominator],
 			Message[FCFeynmanPrepare::failmsg, "The input expression is not a proper integral or list of propagators"];
 			Abort[]
