@@ -1,0 +1,43 @@
+(* :Title: FromFCPartialFractionForm.test									*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2023 Rolf Mertig
+	Copyright (C) 1997-2023 Frederik Orellana
+	Copyright (C) 2014-2023 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FromFCPartialFractionForm *)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Shared`fcstFromFCPartialFractionForm =
+({
+{"fcstFromFCPartialFractionForm-ID1",
+"FromFCPartialFractionForm[0]", "0"},
+{"fcstFromFCPartialFractionForm-ID2",
+"FromFCPartialFractionForm[1]", "1"},
+{"fcstFromFCPartialFractionForm-ID3",
+"FromFCPartialFractionForm[FCPartialFractionForm[x,{},x]]", "x"},
+{"fcstFromFCPartialFractionForm-ID4",
+"FromFCPartialFractionForm[FCPartialFractionForm[0,{{{x-1,-2},1}},\
+x]]", "(-1 + x)^(-2)"},
+{"fcstFromFCPartialFractionForm-ID5",
+"FromFCPartialFractionForm[FCPartialFractionForm[0,{{{x+1,-1},1},{{\
+x-y,-2},c}},x]]", "(1 + x)^(-1) + c/(x - y)^2"},
+{"fcstFromFCPartialFractionForm-ID6",
+"FromFCPartialFractionForm[FCPartialFractionForm[0,{{{x+1,-1},1},{{\
+x-y,-2},c}},x],Factoring\[Rule]Together]",
+"(c + c*x + x^2 - 2*x*y + y^2)/((1 + x)*(x - y)^2)"},
+{"fcstFromFCPartialFractionForm-ID7",
+"FromFCPartialFractionForm[FCPartialFractionForm[0, {{{-(-1)^(1/3) \
++ z, -1}, -32/15}, {{-(-1)^(2/3) + z, -1}, 32/15}, {{(-1)^(1/3) + z, \
+-1}, 32/15}, {{(-1)^(2/3) + z, -1}, -32/15}}, z]]",
+"-32/(15*(-(-1)^(1/3) + z)) + 32/(15*((-1)^(1/3) + z)) + \
+32/(15*(-(-1)^(2/3) + z)) - 32/(15*((-1)^(2/3) + z))"},
+{"fcstFromFCPartialFractionForm-ID8",
+"FromFCPartialFractionForm[FCPartialFractionForm[0, {{{-(-1)^(1/3) \
++ z, -1}, -32/15}, {{-(-1)^(2/3) + z, -1}, 32/15}, {{(-1)^(1/3) + z, \
+-1}, 32/15}, {{(-1)^(2/3) + z, -1}, -32/15}}, \
+z],Factoring->Simplify]", "(-64*(-1 + z^2))/(15*(1 + z^2 + z^4))"}
+});

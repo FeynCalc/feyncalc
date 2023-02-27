@@ -209,6 +209,17 @@ DiracChain::usage =
 "DiracChain[x, i, j] denotes a chain of Dirac matrices x, where the Dirac
 indices i and j are explicit.";
 
+FCPartialFractionForm::usage =
+"FCPartialFractionForm[n, {{f1,x-r1,p1},{f2,x-r2,p2}, ...}, x] is a special way
+of representing sums of rational functions of x given by $n +
+\\frac{f_1}{[x-r_1]^p_1} + \\frac{f_2}{[x-r_2]^p_2} + \\ldots$
+
+It is inspired by the parfracform from Maple and its usage in E. Panzer's
+HyperInt for the integration of multiple polylogarithms.
+
+Use ToFCPartialFractionForm to convert the given expression to this notation
+and FromFCPartialFractionForm to return back to the usual representation.";
+
 FeynAmp::usage =
 "FeynAmp[q, amp] is the head of a Feynman amplitude, where amp denotes the
 analytical expression for the amplitude and q is the integration variable.
@@ -1661,6 +1672,10 @@ ExplicitSUNIndex/:
 
 ExplicitSUNFIndex/:
 	SUNFIndex[i_ExplicitSUNFIndex]:= ExplicitSUNFIndex[i];
+
+
+FCPartialFractionForm[0,{},_]:=
+	0;
 
 FAD[-p_, opts:OptionsPattern[]] :=
 	FAD[p,opts];

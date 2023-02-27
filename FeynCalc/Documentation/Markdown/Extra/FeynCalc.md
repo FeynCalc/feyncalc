@@ -35,6 +35,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [ExplicitSUNFIndex](../ExplicitSUNFIndex.md), [SUNFIndex](../SUNFIndex.md) - $SU(N)$ fundamental index
 - [FAD](../FAD.md), [SFAD](../SFAD.md), [CFAD](../CFAD.md), [GFAD](../GFAD.md), [FeynAmpDenominator](../FeynAmpDenominator.md) - denominators of Feynman amplitudes
 - [FCGV](../FCGV.md) - a global variable
+- [FCPartialFractionForm](../FCPartialFractionForm.md) - partial fractioned form of rational functions
 - [FCTensor](../FCTensor.md), [FCVariable](../FCVariable.md), [FreeIndex](../FreeIndex.md), [GrassmannParity](../GrassmannParity.md), [ImplicitDiracIndex](../ImplicitDiracIndex.md), [ImplicitPauliIndex](../ImplicitPauliIndex.md), [ImplicitSUNFIndex](../ImplicitSUNFIndex.md), [NegativeInteger](../NegativeInteger.md), [NonCommutative](../NonCommutative.md), [PositiveInteger](../PositiveInteger.md), [PositiveNumber](../PositiveNumber.md) - various datatypes
 - [FUNCTION](../FUNCTION.md) - declaration of functions for [Write2](../Write2.md)
 - [DCHN](../DCHN.md), [DiracChain](../DiracChain.md) - Dirac chain with explicit open Dirac indices
@@ -141,6 +142,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [Solve2](../Solve2.md), [Solve3](../Solve3.md) - alternatives to Mathematica's `Solve`
 - [SumP](../SumP.md), [SumS](../SumS.md), [SumT](../SumT.md) - different summations
 - [TimedIntegrate](../TimedIntegrate.md) - alternative to Mathematica's `Integrate`
+- [ToFCPartialFractionForm](../ToFCPartialFractionForm.md), [FromFCPartialFractionForm](../FromFCPartialFractionForm.md) - switching between the usual and partial fractioned form representations for rational functions
 - [TBox](../TBox.md) - helps implementing typesetting rules
 - [TypesettingExplicitLorentzIndex](../TypesettingExplicitLorentzIndex.md) - typesettings of explicit Lorentz indices 
 - [\$TypesettingDim4](../\$TypesettingDim4.md), [\$TypesettingDimD](../\$TypesettingDimD.md), [\$TypesettingDimE](../\$TypesettingDimE.md) - typesetting of tensors in $4$, $D$ and $D-4$ dimensions
