@@ -1,3 +1,7 @@
+```mathematica
+ 
+```
+
 ## Factor3
 
 `Factor3[exp]` factors a rational function `exp` over the field of complex numbers.
@@ -9,7 +13,7 @@ To avoid performance bottlenecks, in the case of rational functions only the den
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [FCIntegratePolyLogs](FCIntegratePolyLogs.md).
+[Overview](Extra/FeynCalc.md), [FCPartialFractionForm](FCPartialFractionForm.md).
 
 ### Examples
 

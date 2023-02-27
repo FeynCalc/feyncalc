@@ -18,7 +18,10 @@
 
 FCGPL::usage =
 "FCGPL[{inds_}, var] represents a Goncharov polylogarithm (GPL) with indices
-`inds` and argument `var`.";
+inds and argument var.
+
+As of know this symbol merely acts a placeholder and does not implement any
+mathematical properties of GPLs.";
 
 (* ------------------------------------------------------------------------ *)
 

@@ -18,7 +18,10 @@
 
 FCHPL::usage =
 "FCHPL[{inds_}, var] represents a harmonic polylogarithm (HPL) with indices
-`inds` and argument `var`.";
+inds and argument var.
+
+As of know this symbol merely acts a placeholder and does not implement any
+mathematical properties of HPLs.";
 
 (* ------------------------------------------------------------------------ *)
 

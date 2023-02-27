@@ -20,7 +20,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [FCHPL](FCGPL.md)*)
+(*[Overview](Extra/FeynCalc.md), [FCGPL](FCGPL.md)*)
 
 
 (* ::Subsection:: *)

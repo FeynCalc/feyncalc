@@ -25,7 +25,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [FCIntegratePolyLogs](FCIntegratePolyLogs.md).*)
+(*[Overview](Extra/FeynCalc.md), [FCPartialFractionForm](FCPartialFractionForm.md).*)
 
 
 (* ::Subsection:: *)

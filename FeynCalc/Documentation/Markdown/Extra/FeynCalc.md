@@ -35,6 +35,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [ExplicitSUNFIndex](../ExplicitSUNFIndex.md), [SUNFIndex](../SUNFIndex.md) - $SU(N)$ fundamental index
 - [FAD](../FAD.md), [SFAD](../SFAD.md), [CFAD](../CFAD.md), [GFAD](../GFAD.md), [FeynAmpDenominator](../FeynAmpDenominator.md) - denominators of Feynman amplitudes
 - [FCGV](../FCGV.md) - a global variable
+- [FCIteratedIntegral](../FCIteratedIntegral.md) - Chen's iterated integral
 - [FCHPL](../FCHPL.md), [FCGPL](../FCGPL.md) - harmonic and Goncharov polylogarithms
 - [FCPartialFractionForm](../FCPartialFractionForm.md) - partial fractioned form of rational functions
 - [FCTensor](../FCTensor.md), [FCVariable](../FCVariable.md), [FreeIndex](../FreeIndex.md), [GrassmannParity](../GrassmannParity.md), [ImplicitDiracIndex](../ImplicitDiracIndex.md), [ImplicitPauliIndex](../ImplicitPauliIndex.md), [ImplicitSUNFIndex](../ImplicitSUNFIndex.md), [NegativeInteger](../NegativeInteger.md), [NonCommutative](../NonCommutative.md), [PositiveInteger](../PositiveInteger.md), [PositiveNumber](../PositiveNumber.md) - various datatypes
@@ -286,6 +287,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCHideEpsilon](../FCHideEpsilon.md) - substitutes $\frac{1}{\varepsilon} - \Gamma_E + \log (4 \pi)$ with $\Delta$
 - [FCShowEpsilon](../FCShowEpsilon.md) - substitutes $\Delta$ with $\frac{1}{\varepsilon} - \Gamma_E + \log (4 \pi)$
 - [FCIntegral](../FCIntegral.md) - head of loop integrals
+- [FCIteratedIntegralEvaluate](../FCIteratedIntegralEvaluate.md), [FCIteratedIntegralSimplify](../FCIteratedIntegralSimplify.md) - manipulations of Chen's iterated integrals
 - [FCFeynmanFindDivergences](../FCFeynmanFindDivergences.md), [FCFeynmanRegularizeDivergence](../FCFeynmanRegularizeDivergence.md), [FCFeynmanParameterJoin](../FCFeynmanParameterJoin.md), [FCFeynmanParametrize](../FCFeynmanParametrize.md), [FCFeynmanPrepare](../FCFeynmanPrepare.md), [FCFeynmanProjectiveQ](../FCFeynmanProjectiveQ.md), [FCFeynmanProjectivize](../FCFeynmanProjectivize.md) - derivation and manipulation of Feynman parameter integrals
 - [FCLoopAddEdgeTags](../FCLoopAddEdgeTags.md), [FCLoopGraphPlot](../FCLoopGraphPlot.md), [FCLoopIntegralToGraph](../FCLoopIntegralToGraph.md), [FCLoopPropagatorsToLineMomenta](../FCLoopPropagatorsToLineMomenta.md) - create and plot graphs representing loop integrals
 - [FCLoopApplyTopologyMappings](../FCLoopApplyTopologyMappings.md), [FCLoopCreateRuleGLIToGLI](../FCLoopCreateRuleGLIToGLI.md), [FCLoopFindMomentumShifts](../FCLoopFindMomentumShifts.md), [FCLoopFindIntegralMappings](../FCLoopFindIntegralMappings.md), [FCLoopFindSubtopologies](../FCLoopFindSubtopologies.md), [FCLoopFindTopologies](../FCLoopFindTopologies.md), [FCLoopFindTopologyMappings](../FCLoopFindTopologyMappings.md), [FCLoopPakOrder](../FCLoopPakOrder.md), [FCLoopToPakForm](../FCLoopToPakForm.md) - loop integral topology identification and minimization
@@ -304,6 +306,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCLoopFindSectors](../FCLoopFindSectors.md) - returns sectors for the given [GLI](../GLI.md)s
 - [FCLoopFromGLI](../FCLoopFromGLI.md) - converts [GLI](../GLI.md)s into explicit integrals with [FeynAmpDenominator](../FeynAmpDenominator.md)s
 - [FCLoopGetEtaSigns](../FCLoopGetEtaSigns.md) - extracts the signs of $i \eta$ from all propagators
+- [FCLoopGetKinematicInvariants](../FCLoopGetKinematicInvariants.md) - kinematic invariants from the given topology.
 - [FCLoopGLIDifferentiate](../FCLoopGLIDifferentiate.md) - differentiates [GLI](../GLI.md)s with respect to a scalar variable.
 - [FCLoopAddScalingParameter](../FCLoopAddScalingParameter.md), [FCLoopGLIExpand](../FCLoopGLIExpand.md) - series expansion of expressions with [GLI](../GLI.md)s with respect to a scalar variable
 - [FCLoopIBPReducableQ](../FCLoopIBPReducableQ.md) - checks if the integral contains propagators raised to integer powers

@@ -4,15 +4,15 @@
 
 
 (* ::Section:: *)
-(*FCHPL*)
+(*FCGPL*)
 
 
 (* ::Text:: *)
-(*`FCHPL[{inds_}, var]` represents a harmonic polylogarithm (HPL) with indices `inds` and argument `var`.*)
+(*`FCGPL[{inds_}, var]` represents a Goncharov polylogarithm (GPL) with indices `inds` and argument `var`.*)
 
 
 (* ::Text:: *)
-(*As of know this symbol merely acts a placeholder and does not implement any mathematical properties of HPLs.*)
+(*As of know this symbol merely acts a placeholder and does not implement any mathematical properties of GPLs.*)
 
 
 (* ::Subsection:: *)
@@ -20,11 +20,11 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [FCHPL](FCGPL.md)*)
+(*[Overview](Extra/FeynCalc.md), [FCHPL](FCHPL.md)*)
 
 
 (* ::Subsection:: *)
 (*Examples*)
 
 
-FCHPL[{1},x]
+FCGPL[{1},x]
