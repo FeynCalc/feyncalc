@@ -235,7 +235,10 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmomsRaw_List /; ! Opti
 			propPowers = FCReplaceD[propPowers,First[optFCReplaceD]]
 		];
 
-		ppSymbols = Cases[propPowers, _Symbol, Infinity];
+		ppSymbols =	Variables2[Cases[propPowers, xx_ /; ! NumericQ[xx] && ! MemberQ[{Plus}, Head[xx]], Infinity]];
+
+		FCPrint[1,"FCFeynmanParametrize: ppSymbols: ", ppSymbols, FCDoControl->fcfpVerbose];
+
 		If[ppSymbols=!={},
 			ppSymbolsRule = Alternatives@@ppSymbols -> 0,
 			ppSymbolsRule = {}

@@ -339,5 +339,16 @@ FeynmanIntegralPrefactor -> \"Textbook\"]","{(x[1] + x[2] + x[3])^(-1 +
 {"fcstFCFeynmanParametrize-ID48",
 "FCFeynmanParametrize[FAD[q, q - p], {q}, Names -> x, EtaSign -> True]",
 "{(x[1] + x[2])^(2 - D)*((-I)*SMP[\"Eta\"] - Pair[Momentum[p, D],
-Momentum[p, D]]*x[1]*x[2])^(-2 + D/2), Gamma[2 - D/2], {x[1], x[2]}}"}
+Momentum[p, D]]*x[1]*x[2])^(-2 + D/2), Gamma[2 - D/2], {x[1], x[2]}}"},
+{"fcstFCFeynmanParametrize-ID49",
+"FCFeynmanParametrize[
+GFAD[{{SPD[p1, p1 - 2 q] + SPD[q, q], 1},
+	2 + z[1]}, {{SPD[p2, p2 - 2 q] + SPD[q, q], 1},
+	1 + z[2]}] SFAD[{{q, 0}, {0, 1}, 1}], {q}, Names -> x,
+FCE -> True]",
+"{x[2]^(1 + z[1])*x[3]^z[2]*(x[1] + x[2] + x[3])^(4 - D + z[1] +
+z[2])*(-(SPD[p1, p1]*x[1]*x[2]) - SPD[p2, p2]*x[1]*x[3] -
+SPD[p1, p1]*x[2]*x[3] + 2*SPD[p1, p2]*x[2]*x[3] - SPD[p2, p2]*x[2]*x[3])^
+(-4 + D/2 - z[1] - z[2]), ((-1)^(4 + z[1] + z[2])*Gamma[4 -
+D/2 + z[1] + z[2]])/(Gamma[2 + z[1]]*Gamma[1 + z[2]]), {x[1], x[2], x[3]}}"}
 });
