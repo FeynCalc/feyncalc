@@ -144,14 +144,16 @@ ToFCPartialFractionForm[expr_, var_, OptionsPattern[]] :=
 
 		];
 
-		res = FCPartialFractionForm[num,aux,var];
+		res = FCPartialFractionForm[num,aux,var] /. FCPartialFractionForm[a_FCPartialFractionForm,{},_]:>
+			a;
+
+		FCPrint[3, "ToFCPartialFractionForm: raw res: ", res, FCDoControl->tpffVerbose];
 
 		If[	OptionValue[Check],
-			check = FromFCPartialFractionForm[res];
 			vars = Variables2[{num,aux,var}];
 			varsNum	= Table[RandomPrime[optRandomPrime],{i,1,Length[vars]}];
 			repRule = Dispatch[Thread[Rule[vars,varsNum]]];
-			check = Chop[N[(expr-check) /. repRule]];
+			check = Chop[N[FromFCPartialFractionForm[(expr-res)] /. repRule]];
 			FCPrint[1,"ToFCPartialFractionForm: Check: ", check,  FCDoControl->tpffVerbose];
 			If[	check=!=0,
 				Message[ToFCPartialFractionForm::failmsg, "Something went wrong when calculating the partial fractioned form."];

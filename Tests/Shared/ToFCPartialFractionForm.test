@@ -60,5 +60,12 @@ z, -1}, 4}}, z]"},
 {"fcstToFCPartialFractionForm-ID14",
 "ToFCPartialFractionForm[1/(x^2 + 3), x]",
 "FCPartialFractionForm[0, {{{(-I)*Sqrt[3] + x, -1},
-(-1/2*I)/Sqrt[3]}, {{I*Sqrt[3] + x, -1}, (I/2)/Sqrt[3]}}, x]"}
+(-1/2*I)/Sqrt[3]}, {{I*Sqrt[3] + x, -1}, (I/2)/Sqrt[3]}}, x]"},
+{"fcstToFCPartialFractionForm-ID15",
+"ToFCPartialFractionForm[
+ToFCPartialFractionForm[{{-2/x, 0, 0}, {0, 0, 0}, {-x^(-1),
+	3/x, -2/x}}, x], x]",
+"{{FCPartialFractionForm[0, {{{x, -1}, -2}}, x], 0, 0}, {0, 0, 0}, {FCPartialFractionForm[0,
+{{{x, -1}, -1}}, x], FCPartialFractionForm[0, {{{x, -1}, 3}}, x],
+FCPartialFractionForm[0, {{{x, -1}, -2}}, x]}}"}
 })
