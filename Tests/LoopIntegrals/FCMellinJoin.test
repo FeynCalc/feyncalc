@@ -1,0 +1,99 @@
+
+
+(* :Title: FCMellinJoin.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2023 Rolf Mertig
+	Copyright (C) 1997-2023 Frederik Orellana
+	Copyright (C) 2014-2023 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCMellinJoin	*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCMellinJoin =
+({
+{"fcstFCMellinJoin-ID1",
+"FCMellinJoin[pr \
+FAD[q,{-p1+q,m},{-p1+q,m},{-p2+q,m}],{q},{SFAD[{q-p1,m^2}],SFAD[{q-p2,\
+m^2}]},Names->z,FCE->True]",
+"{-1/4*(pr*Gamma[-z[1]]*Gamma[2 + z[1]]*Gamma[-z[2]]*Gamma[1 + \
+z[2]])/Pi^2, GFAD[{{SPD[p1, p1 - 2*q] + SPD[q, q], 1}, 2 + z[1]}, \
+{{SPD[p2, p2 - 2*q] + SPD[q, q], 1}, 1 + z[2]}]*SFAD[{{q, 0}, {0, 1}, \
+1}]*(-m^2 + I*SMP[\"Eta\"])^(z[1] + z[2])}"},
+{"fcstFCMellinJoin-ID2",
+"FCMellinJoin[pr FVD[q,mu] \
+FAD[q,{-p1+q,m},{-p1+q,m},{-p2+q,m}],{q},{SFAD[{q-p1,m^2}],SFAD[{q-p2,\
+m^2}]},Names->z,FCE->True]",
+"{-1/4*(pr*Gamma[-z[1]]*Gamma[2 + z[1]]*Gamma[-z[2]]*Gamma[1 + \
+z[2]])/Pi^2, FVD[q, mu]*GFAD[{{SPD[p1, p1 - 2*q] + SPD[q, q], 1}, 2 + \
+z[1]}, {{SPD[p2, p2 - 2*q] + SPD[q, q], 1}, 1 + z[2]}]*SFAD[{{q, 0}, \
+{0, 1}, 1}]*(-m^2 + I*SMP[\"Eta\"])^(z[1] + z[2])}"},
+{"fcstFCMellinJoin-ID3",
+"FCMellinJoin[FAD[q,{-p1+q,m},{-p1+q,m},{-p2+q,m}],{q},{SFAD[{q-p1,\
+m^2}],SFAD[{q-p2,m^2}]},Names->z,FCE->True]",
+"{-1/4*(Gamma[-z[1]]*Gamma[2 + z[1]]*Gamma[-z[2]]*Gamma[1 + \
+z[2]])/Pi^2, GFAD[{{SPD[p1, p1 - 2*q] + SPD[q, q], 1}, 2 + z[1]}, \
+{{SPD[p2, p2 - 2*q] + SPD[q, q], 1}, 1 + z[2]}]*SFAD[{{q, 0}, {0, 1}, \
+1}]*(-m^2 + I*SMP[\"Eta\"])^(z[1] + z[2])}"},
+{"fcstFCMellinJoin-ID4",
+"FCMellinJoin[FAD[q,{-p1+q,m},{-p1+q,m},{-p2+q,m}],{q},{SFAD[{q-p1,\
+m^2}],SFAD[{q-p2,m^2}]},FCLoopGetEtaSigns->False,Names->z,FCE->True]",
+	"{-1/4*(Gamma[-z[1]]*Gamma[2 + z[1]]*Gamma[-z[2]]*Gamma[1 + \
+z[2]])/Pi^2, GFAD[{{SPD[p1, p1 - 2*q] + SPD[q, q], 1}, 2 + z[1]}, \
+{{SPD[p2, p2 - 2*q] + SPD[q, q], 1}, 1 + z[2]}]*SFAD[{{q, 0}, {0, 1}, \
+1}]*(-m^2 + I*SMP[\"Eta\"])^(z[1] + z[2])}"},
+{"fcstFCMellinJoin-ID5",
+"FCMellinJoin[FAD[q,{-p1+q,m},{-p1+q,m},{-p2+q,m}],{q},{SFAD[{q-p1,\
+m^2}],SFAD[{q-p2,m^2}]},FCLoopGetEtaSigns->False,Names->z,\
+Indexed->False,FCE->True]",
+"{-1/4*(Gamma[-z1]*Gamma[2 + z1]*Gamma[-z2]*Gamma[1 + z2])/Pi^2, \
+GFAD[{{SPD[p1, p1 - 2*q] + SPD[q, q], 1}, 2 + z1}, {{SPD[p2, p2 - \
+2*q] + SPD[q, q], 1}, 1 + z2}]*SFAD[{{q, 0}, {0, 1}, 1}]*(-m^2 + \
+I*SMP[\"Eta\"])^(z1 + z2)}"},
+{"fcstFCMellinJoin-ID6",
+"FCMellinJoin[FAD[q,{-p1+q,m},{-p1+q,m},{-p2+q,m}],{q},{SFAD[{q-p1,\
+m^2}],SFAD[{q-p2,m^2}]},Names->z,List->False,FCE->True]",
+"-1/4*(Gamma[-z[1]]*Gamma[2 + z[1]]*Gamma[-z[2]]*Gamma[1 + \
+z[2]]*GFAD[{{SPD[p1, p1 - 2*q] + SPD[q, q], 1}, 2 + z[1]}, {{SPD[p2, \
+p2 - 2*q] + SPD[q, q], 1}, 1 + z[2]}]*SFAD[{{q, 0}, {0, 1}, 1}]*(-m^2 \
++ I*SMP[\"Eta\"])^(z[1] + z[2]))/Pi^2"},
+{"fcstFCMellinJoin-ID7",
+"FCMellinJoin[FAD[q,{-p1+q,m},{-p1+q,m},{-p2+q,m}],{q},{SFAD[{q-p1,\
+m^2}],SFAD[{q-p2,m^2}]},Names->z,FCSplit->{{q,m,p1},{q,m,p2}},\
+FCE->True]",
+"{-1/64*(Gamma[-z[1][1]]*Gamma[-z[1][2]]*Gamma[-z[1][3]]*Gamma[2 + \
+z[1][1] + z[1][2] + \
+z[1][3]]*Gamma[-z[2][1]]*Gamma[-z[2][2]]*Gamma[-z[2][3]]*Gamma[1 + \
+z[2][1] + z[2][2] + z[2][3]])/Pi^6, GFAD[{{SPD[p1, p1], 1}, 2 + \
+z[1][1] + z[1][2] + z[1][3]}, {{SPD[p2, p2], 1}, 1 + z[2][1] + \
+z[2][2] + z[2][3]}]*SFAD[{{q, 0}, {0, 1}, 1}]*(-m^2 + \
+I*SMP[\"Eta\"])^(z[1][3] + z[2][3])*(I*SMP[\"Eta\"] - 2*SPD[p1, \
+q])^z[1][1]*(I*SMP[\"Eta\"] - 2*SPD[p2, q])^z[2][1]*(I*SMP[\"Eta\"] + \
+SPD[q, q])^(z[1][2] + z[2][2])}"},
+{"fcstFCMellinJoin-ID8",
+"FCMellinJoin[FAD[q,{-p1+q,m},{-p1+q,m},{-p2+q,m}],{q},{SFAD[{q-p1,\
+m^2}],SFAD[{q-p2,m^2}]},Names->z,FCSplit->{{q,m,p1},{q,m,p2}},\
+Indexed->False]",
+"{-1/64*(Gamma[-z1$1]*Gamma[-z1$2]*Gamma[-z1$3]*Gamma[2 + z1$1 + \
+z1$2 + z1$3]*Gamma[-z2$1]*Gamma[-z2$2]*Gamma[-z2$3]*Gamma[1 + z2$1 + \
+z2$2 + z2$3])/Pi^6, \
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q, D], 0, \
+0, {1, 1}], GenericPropagatorDenominator[Pair[Momentum[p1, D], \
+Momentum[p1, D]], {2 + z1$1 + z1$2 + z1$3, 1}], \
+GenericPropagatorDenominator[Pair[Momentum[p2, D], Momentum[p2, D]], \
+{1 + z2$1 + z2$2 + z2$3, 1}]]*(-m^2 + I*SMP[\"Eta\"])^(z1$3 + \
+z2$3)*(-2*Pair[Momentum[p1, D], Momentum[q, D]] + \
+I*SMP[\"Eta\"])^z1$1*(-2*Pair[Momentum[p2, D], Momentum[q, D]] + \
+I*SMP[\"Eta\"])^z2$1*(Pair[Momentum[q, D], Momentum[q, D]] + \
+I*SMP[\"Eta\"])^(z1$2 + z2$2)}"},
+{"fcstFCMellinJoin-ID9",
+"FCMellinJoin[SFAD[{k,m^2,nu1},{p-k,0,nu2}],{k},{SFAD[{k,m^2}]},\
+FCLoopSwitchEtaSign->-1,Names->z,FCE->True]",
+"{((-1/2*I)*(-1)^(-nu1 - nu2)*Gamma[-z[1]]*Gamma[nu1 + \
+z[1]])/(Pi*Gamma[nu1]), GFAD[{{-SPD[k, k], -1}, nu1 + \
+z[1]}]*SFAD[{{I*(-k + p), 0}, {0, -1}, 1}]^nu2*(m^2 - \
+I*SMP[\"Eta\"])^z[1]}"}
+});
