@@ -283,7 +283,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCClausen](../FCClausen.md) - Clausen's function
 - [FCGramMatrix](../FCGramMatrix.md) - generates the Gram matrix from the given momenta
 - [FCGramDeterminant](../FCGramDeterminant.md) - calculates the Gram determinant
-- [FCDiffEqChangeVariables](../FCDiffEqChangeVariables.md) - change of variables in a differential equation
+- [FCDiffEqChangeVariables](../FCDiffEqChangeVariables.md), [FCDiffEqSolve](../FCDiffEqSolve.md) - handling of differential equations
 - [FCHideEpsilon](../FCHideEpsilon.md) - substitutes $\frac{1}{\varepsilon} - \Gamma_E + \log (4 \pi)$ with $\Delta$
 - [FCShowEpsilon](../FCShowEpsilon.md) - substitutes $\Delta$ with $\frac{1}{\varepsilon} - \Gamma_E + \log (4 \pi)$
 - [FCIntegral](../FCIntegral.md) - head of loop integrals
