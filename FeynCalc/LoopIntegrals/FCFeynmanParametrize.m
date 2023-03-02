@@ -123,19 +123,20 @@ FCFeynmanParametrize[expr_, lmoms_List /; ! OptionQ[lmoms], opts:OptionsPattern[
 
 FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmomsRaw_List /; ! OptionQ[lmomsRaw], OptionsPattern[]] :=
 	Block[{	res, optFinalSubstitutions, dim, uPoly, fPoly, pows, mat, powsT, propPowers, lmoms,
-			propPowersHat, propPowersTilde, ppSymbols, ppSymbolsRule,
+			propPowersHat, propPowersTilde, ppSymbols, ppSymbolsRule, optIndexed,
 			denPowers, zeroPowerProps, numPowers, numVars, zeroDenVars,
-			nM,nLoops,fPow,pref, fpInt, fpPref, optFCReplaceD, vars, optVariavbles,
+			nM,nLoops,fPow,pref, fpInt, fpPref, optFCReplaceD, vars, optVariables,
 			aux, ex, Q, J, tensorPart, tensorRank, optMethod, extraPref, optFeynmanIntegralPrefactor,
 			optEuclidean, inverseMeasure, optNames, outputFCFeynmanPrepare, isCartesian, cartesianCheck},
 
 		optFinalSubstitutions		= OptionValue[FinalSubstitutions];
 		optFCReplaceD				= OptionValue[FCReplaceD];
-		optVariavbles				= OptionValue[Variables];
+		optVariables				= OptionValue[Variables];
 		optMethod					= OptionValue[Method];
 		optFeynmanIntegralPrefactor = OptionValue[FeynmanIntegralPrefactor];
 		optEuclidean				= OptionValue["Euclidean"];
 		optNames					= OptionValue[Names];
+		optIndexed					= OptionValue[Indexed];
 
 		If [OptionValue[FCVerbose]===False,
 			fcfpVerbose=$VeryVerbose,
@@ -165,6 +166,14 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmomsRaw_List /; ! Opti
 			(*Mixed integral*)
 			Message[FCFeynmanParametrize::failmsg,"Integrals that simultaneously depend on Lorentz and Cartesian vectors are not supported."];
 			Abort[]
+		];
+
+		If[	optVariables=!={},
+			If[	IntersectingQ[optVariables,Flatten[{FCMakeSymbols[optNames, Range[1, 10], List], Table[optNames[i], {i, 1, 10}]}]],
+				Message[FCFeynmanParametrize::failmsg,"Names of Feynman parameters to be introduced cannot be present"  <>
+					" in the list submitted via the Variables option."];
+				Abort[]
+			]
 		];
 
 		If[	!MemberQ[{True,False},isCartesian],
@@ -431,8 +440,8 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmomsRaw_List /; ! Opti
 		FCPrint[1,"FCFeynmanParametrize: final pref: ", pref, FCDoControl->fcfpVerbose];
 
 
-		If[ Length[optVariavbles]=!=0,
-			vars = Join[vars, optVariavbles]
+		If[ Length[optVariables]=!=0,
+			vars = Join[vars, optVariables]
 		];
 
 		aux		= FCProductSplit[extra,vars];

@@ -350,5 +350,13 @@ FCE -> True]",
 z[2])*(-(SPD[p1, p1]*x[1]*x[2]) - SPD[p2, p2]*x[1]*x[3] -
 SPD[p1, p1]*x[2]*x[3] + 2*SPD[p1, p2]*x[2]*x[3] - SPD[p2, p2]*x[2]*x[3])^
 (-4 + D/2 - z[1] - z[2]), ((-1)^(4 + z[1] + z[2])*Gamma[4 -
-D/2 + z[1] + z[2]])/(Gamma[2 + z[1]]*Gamma[1 + z[2]]), {x[1], x[2], x[3]}}"}
+D/2 + z[1] + z[2]])/(Gamma[2 + z[1]]*Gamma[1 + z[2]]), {x[1], x[2], x[3]}}"},
+{"fcstFCFeynmanParametrize-ID50",
+"Quiet[CheckAbort[
+FCFeynmanParametrize[
+GFAD[{{(SPD[l, l] x[1] + SPD[l, l] x[2] + 2 SPD[l, p2] x[2]) z[
+		1] + (-uy[2] + SPD[l, l] y[1] - 2 SPD[l, p1] y[1] +
+		SPD[l, l] y[2] + 2 SPD[l, p2 + p3] y[2]) z[2], 1}, 4}],
+6 z[1] z[2], {l}, FCReplaceD -> {D -> 4 - 2 ep},
+Variables -> intT[[3]], Names -> x], True]]","True"}
 });
