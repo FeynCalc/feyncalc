@@ -64,7 +64,6 @@ Options[DiracTrace] = {
 	LarinMVV			-> True,
 	Mandelstam			-> {},
 	PairCollect			-> False,
-	Schouten			-> 0,
 	Sort				-> True,
 	TraceOfOne			-> 4,
 	West				-> True
@@ -219,7 +218,7 @@ diracTraceEvaluate[expr_/;FreeQ[expr,DiracGamma], OptionsPattern[]] :=
 
 diracTraceEvaluate[expr_/;!FreeQ[expr,DiracGamma], opts:OptionsPattern[]] :=
 	Block[ { diractrres, tmp = expr, diractrfact,
-		diractrcoll, schoutenopt,
+		diractrcoll,
 		dtmp,dWrap,wrapRule,prepSpur,time,time2,contract,spurHeadList,spurHeadListChiral,spurHeadListNonChiral,
 		gammaFree,gammaPart,
 		traceListChiral,traceListNonChiral,repRule,null1,null2,dummyIndexFreeQ},
@@ -229,7 +228,6 @@ diracTraceEvaluate[expr_/;!FreeQ[expr,DiracGamma], opts:OptionsPattern[]] :=
 
 		diractrfact = OptionValue[DiracTrace,{opts},Factoring];
 		diractrcoll = OptionValue[DiracTrace,{opts},PairCollect];
-		schoutenopt = OptionValue[DiracTrace,{opts},Schouten];
 		contract  	= OptionValue[DiracTrace,{opts},Contract];
 		west		= OptionValue[DiracTrace,{opts},West];
 		larinMVV	= OptionValue[DiracTrace,{opts},LarinMVV];
@@ -503,8 +501,7 @@ diracTraceEvaluate[expr_/;!FreeQ[expr,DiracGamma], opts:OptionsPattern[]] :=
 			FCPrint[1,"DiracTrace: diracTraceEvaluate: Treating Eps tensors.", FCDoControl->diTrVerbose];
 			tmp = EpsEvaluate[tmp,FCI->True, EpsExpand->OptionValue[DiracTrace,{opts},EpsExpand]]//Expand;
 			If[ (contract===True || (NumberQ[contract] && LeafCount[tmp] < contract)),
-				tmp = Contract[ tmp, EpsContract -> OptionValue[DiracTrace,{opts},EpsContract],
-								Schouten->schoutenopt, Expanding -> False, FCI->True, EpsExpand->OptionValue[DiracTrace,{opts},EpsExpand]];
+				tmp = Contract[ tmp, EpsContract -> OptionValue[DiracTrace,{opts},EpsContract], Expanding -> False, FCI->True, EpsExpand->OptionValue[DiracTrace,{opts},EpsExpand]];
 			];
 		];
 
