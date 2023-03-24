@@ -417,6 +417,15 @@ For other than $4$ dimensions: LorentzIndex[mu, D] or LorentzIndex[mu] etc.
 
 LorentzIndex[mu, 4] simplifies to LorentzIndex[mu].";
 
+LightConePerpendicularComponent::usage =
+"LightConePerpendicularComponent[LorentzIndex[mu],Momentum[n],Momentum[nb]]
+denotes the perpendicular component of the Lorentz index mu with respect to
+the lightcone momenta n and nb.
+
+LightConePerpendicularComponent[Momentum[p],Momentum[n],Momentum[nb]] denotes
+the perpendicular component of the 4-momentum p with respect to the lightcone
+momenta n and nb.";
+
 Momentum::usage =
 "Momentum[p] is the head of a four momentum p.
 
@@ -1677,6 +1686,10 @@ ExplicitLorentzIndex[0, _Symbol]:=
 ExplicitLorentzIndex[0, _Symbol-4]:=
 	0;
 
+ExplicitLorentzIndex[LightConePerpendicularComponent[mu_,rest__]]:=
+	LightConePerpendicularComponent[ExplicitLorentzIndex[mu],rest];
+
+
 ExplicitSUNIndex/:
 	SUNIndex[i_ExplicitSUNIndex]:= ExplicitSUNIndex[i];
 
@@ -1945,6 +1958,15 @@ LorentzIndex[CartesianIndex[i_]] :=
 LorentzIndex[CartesianIndex[i_, dim_ - 1], dim_] :=
 	CartesianIndex[i, dim - 1]
 
+LorentzIndex[LightConePerpendicularComponent[mu_,rest__], dim___]:=
+	LightConePerpendicularComponent[LorentzIndex[mu, dim],rest];
+
+LightConePerpendicularComponent[0, __] :=
+	0;
+(* perp.+ = perp.- = 0*)
+LightConePerpendicularComponent[Momentum[n_,___], ___, Momentum[n_,___], ___] :=
+	0;
+
 Momentum[x_ GaugeXi[y_], dim_:4] :=
 	GaugeXi[y] Momentum[x,dim];
 
@@ -1972,6 +1994,11 @@ Momentum[Momentum[x_, dim1_:4], dim2_:4] :=
 		Momentum[x, dim1],
 		Momentum[x, {dim1,dim2}]
 	];
+
+
+Momentum[LightConePerpendicularComponent[p_,rest__], dim___]:=
+	LightConePerpendicularComponent[Momentum[p, dim],rest];
+
 
 OPE /:
 	OPE^_Integer?Positive := 0;
@@ -2112,6 +2139,14 @@ Pair[Momentum[q_, dim_Symbol], CartesianMomentum[p_, dim_Symbol-4]]:=
 (* {D,3} -> {3,3} *)
 Pair[Momentum[q_,_Symbol], CartesianMomentum[p_]]:=
 	CartesianPair[CartesianMomentum[q], CartesianMomentum[p]];
+
+(*g_{perp,+}^{mu nu} = g_{perp,-}^{mu nu} = 0*)
+
+
+Pair[LightConePerpendicularComponent[x_, Momentum[n_,dim___], Momentum[nb_,dim___]],
+	y_]/; Head[y]=!=LightConePerpendicularComponent :=
+	Pair[LightConePerpendicularComponent[x, Momentum[n,dim], Momentum[nb,dim]],
+		LightConePerpendicularComponent[y, Momentum[n,dim], Momentum[nb,dim]]];
 
 FCPartialD[(1)..] =
 	1;
@@ -2444,6 +2479,9 @@ CartesianIndex[_Integer, ___] :=
 	Abort[]
 	);
 
+CartesianIndex[LightConePerpendicularComponent[mu_,rest__], dim___]:=
+	LightConePerpendicularComponent[CartesianIndex[mu, dim],rest];
+
 CartesianMomentum[x_ n_?NumberQ, dim_ :3] :=
 	n CartesianMomentum[x, dim];
 
@@ -2468,6 +2506,10 @@ CartesianMomentum[CartesianMomentum[x_, dim1_:3], dim2_:3] :=
 		CartesianMomentum[x, dim1],
 		CartesianMomentum[x, {dim1,dim2}]
 	];
+
+CartesianMomentum[LightConePerpendicularComponent[mu_,rest__], dim___]:=
+	LightConePerpendicularComponent[CartesianMomentum[mu, dim],rest];
+
 
 (* ------------------------------------------------------------------------ *)
 

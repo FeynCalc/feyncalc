@@ -91,6 +91,10 @@ kroneckerRep[dim_] :=
 
 
 CartesianPair /:
+	MakeBoxes[CartesianPair[LightConePerpendicularComponent[a_,__], LightConePerpendicularComponent[b_,__]],TraditionalForm]:=
+		SubscriptBox[ToBoxes[CartesianPair[a,b],TraditionalForm],"\[Perpendicular]"];
+
+CartesianPair /:
 	MakeBoxes[CartesianPair[CartesianIndex[a_, dim1_:3], CartesianIndex[b_, dim2_:3] ], TraditionalForm]:=
 		SuperscriptBox[RowBox[{kroneckerRep[{dim1,dim2}]}], TBox[CartesianIndex[a,dim1], CartesianIndex[b,dim2]]];
 
@@ -393,6 +397,12 @@ gammaRep[dim1_,dim2_, sym_] :=
 		True,
 			SubscriptBox[sym, ToBoxes[dim1,TraditionalForm]]
 	];
+
+
+DiracGamma /:
+	MakeBoxes[DiracGamma[LightConePerpendicularComponent[a_,__], dim___],TraditionalForm]:=
+		SubscriptBox[ToBoxes[DiracGamma[a,dim],TraditionalForm],"\[Perpendicular]"];
+
 
 DiracGamma /:
 	MakeBoxes[ DiracGamma[(h:Momentum|TemporalMomentum)[x_,dim1_:4],dim2_:4], TraditionalForm ]:=
@@ -1238,11 +1248,17 @@ LeftRightNablaD2 /:
 	MakeBoxes[LeftRightNablaD2[x_], TraditionalForm]:=
 		ToBoxes[LeftRightNablaD[x],TraditionalForm];
 
-
-
 LorentzIndex /:
 	MakeBoxes[ LorentzIndex[p_, ___], TraditionalForm]:=
 		ToBoxes[p,TraditionalForm];
+
+LightConePerpendicularComponent /:
+	MakeBoxes[ LightConePerpendicularComponent[p_, ___], TraditionalForm]:=
+		SubscriptBox[ToBoxes[p,TraditionalForm], "\[Perpendicular]"];
+
+FVD /:
+	MakeBoxes[FVD[a_, b_], TraditionalForm]:=
+		ToBoxes[Pair[Momentum[a, D],LorentzIndex[b, D]], TraditionalForm];
 
 (*    Typesetting for momenta.    *)
 (* ------------------------------------------------------------------------ *)
@@ -1326,6 +1342,9 @@ metricRep[dim_] :=
 			SubscriptBox["g", ToBoxes[dim,TraditionalForm]]
 	];
 
+Pair /:
+	MakeBoxes[Pair[LightConePerpendicularComponent[a_,__], LightConePerpendicularComponent[b_,__]],TraditionalForm]:=
+		SubscriptBox[ToBoxes[Pair[a,b],TraditionalForm],"\[Perpendicular]"];
 
 Pair /:
 	MakeBoxes[Pair[CartesianIndex[i_], LorentzIndex[l_,dim2_:4]],TraditionalForm]:=
@@ -1479,6 +1498,10 @@ cSigmaRep[dim1_,dim2_,sym_] :=
 			SubscriptBox[TBox[Style[sym,Bold]], ToBoxes[dim1,TraditionalForm]]
 	];
 
+
+PauliSigma /:
+	MakeBoxes[PauliSigma[LightConePerpendicularComponent[a_,__], dim___],TraditionalForm]:=
+		SubscriptBox[ToBoxes[PauliSigma[a,dim],TraditionalForm],"\[Perpendicular]"];
 
 PauliSigma /:
 	MakeBoxes[ PauliSigma[ Momentum[x_,dim1_:4],dim2_:3], TraditionalForm ]:=

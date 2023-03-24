@@ -1045,7 +1045,10 @@ SUNTF[a_List, _, _] :> SUNT @@ a", "SUNT[SUNIndex[a1], SUNIndex[a2]]"},
 {"fcstSharedObjectsBehavior-ID220", "Conjugate[Zeta4]", "Zeta4"},
 {"fcstSharedObjectsBehavior-ID221", "Conjugate[Zeta6]", "Zeta6"},
 {"fcstSharedObjectsBehavior-ID222", "Conjugate[Zeta8]", "Zeta8"},
-{"fcstSharedObjectsBehavior-ID223", "Conjugate[Zeta10]", "Zeta10"}
+{"fcstSharedObjectsBehavior-ID223", "Conjugate[Zeta10]", "Zeta10"},
+{"fcstSharedObjectsBehavior-ID224", "LightConePerpendicularComponent[Momentum[n], Momentum[n], Momentum[nb]]", "0"},
+{"fcstSharedObjectsBehavior-ID225", "LightConePerpendicularComponent[Momentum[nb], Momentum[n],
+Momentum[nb]]", "0"}
 }
 
 Tests`Shared`fcstSharedObjectsDiracIndex =
