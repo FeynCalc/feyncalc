@@ -76,6 +76,8 @@ FCIteratedIntegralSimplify[expr_, OptionsPattern[]] :=
 				FCIteratedIntegral[Expand2[x, {var, FCIteratedIntegral, FCPartialFractionForm}], var, limits];
 			FCPrint[1, "FCIteratedIntegralSimplify: Done applying Expand2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fciisVerbose];
 
+		FCPrint[3, "FCIteratedIntegralSimplify: After Expand2:", intListEval, FCDoControl->fciisVerbose];
+
 
 		FCPrint[1, "FCIteratedIntegralSimplify: Simplifying iterated integrals.", FCDoControl->fciisVerbose];
 		time=AbsoluteTime[];
@@ -84,10 +86,17 @@ FCIteratedIntegralSimplify[expr_, OptionsPattern[]] :=
 
 		FCPrint[1, "FCIteratedIntegralSimplify: Done simplifying iterated integrals, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fciisVerbose];
 
+		FCPrint[3, "FCIteratedIntegralSimplify: Simplified iterated integrals:", intListEval, FCDoControl->fciisVerbose];
 
 		repRule = Thread[Rule[intList,intListEval]];
 
 		res = tmp /. Dispatch[repRule];
+
+		FCPrint[3, "FCIteratedIntegralSimplify: Preliminary result:", res, FCDoControl->fciisVerbose];
+
+		res = res/. FCIteratedIntegral -> simpFCIteratedIntegral /. simpFCIteratedIntegral -> FCIteratedIntegral;
+
+		FCPrint[3, "FCIteratedIntegralSimplify: After final set of simplifications:", res, FCDoControl->fciisVerbose];
 
 		FCPrint[1, "FCIteratedIntegralSimplify: Leaving.", FCDoControl->fciisVerbose];
 

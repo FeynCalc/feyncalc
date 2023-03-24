@@ -121,6 +121,9 @@ evalFCIteratedIntegral[x_, var_, from_, Variables]:=
 evalFCIteratedIntegral[pf_FCPartialFractionForm, var_, from_,to_]:=
 	evalFCIteratedIntegral[pf FCGPL[{},var], var, from,to];
 
+evalFCIteratedIntegral[c_ pf_FCPartialFractionForm, var_, from_, to_]:=
+	c evalFCIteratedIntegral[pf, var, from, to]/; FreeQ[c,var];
+
 evalFCIteratedIntegral[c_. pf_FCPartialFractionForm x_Plus, var_, from_, to_]:=
 	c evalFCIteratedIntegral[pf #, var, from, to]&/@x/; FreeQ[c,var];
 
