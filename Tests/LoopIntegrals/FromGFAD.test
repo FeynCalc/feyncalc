@@ -162,5 +162,14 @@ GenericPropagatorDenominator[-mb^2, {1, -1}]]]",
 "FromGFAD[FeynAmpDenominator[
 GenericPropagatorDenominator[-mb^2, {1, -1}]],
 FeynAmpDenominatorExplicit -> False, FCVerbose -> -1]",
-"FeynAmpDenominator[GenericPropagatorDenominator[-mb^2, {1, -1}]]"}
+"FeynAmpDenominator[GenericPropagatorDenominator[-mb^2, {1, -1}]]"},
+{"fcstFromGFAD-ID37",
+"FromGFAD[
+FeynAmpDenominator[
+GenericPropagatorDenominator[
+mb^2 - la^2 Pair[Momentum[p1, D], Momentum[p1, D]] +
+	2 la Pair[Momentum[p1, D], Momentum[p3, D]] -
+	Pair[Momentum[p3, D], Momentum[p3, D]], {1, 1}]],
+PowerExpand -> {la}, FCE -> True]",
+"SFAD[{{I*la*p1 - I*p3, 0}, {-mb^2, 1}, 1}]"}
 });

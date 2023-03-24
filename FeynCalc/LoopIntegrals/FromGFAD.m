@@ -152,8 +152,39 @@ fromGFAD[GenericPropagatorDenominator[pref1_. Pair[Momentum[a_,dim___],Momentum[
 + pref3_. Pair[Momentum[b_,dim___],Momentum[b_,dim___]]	 + c_:0,{n_,s_}]] :=
 	StandardPropagatorDenominator[powExp[Sqrt[pref1]  Momentum[a, dim] + Sqrt[pref3]  Momentum[b, dim]],0,c,{n, s}]/;
 	(ExpandAll[powExp[ExpandScalarProduct[Pair[Sqrt[pref1]  Momentum[a, dim] + Sqrt[pref3]  Momentum[b, dim], Sqrt[pref1]  Momentum[a, dim] + Sqrt[pref3]  Momentum[b, dim]] -
-	pref1 Pair[Momentum[a,dim],Momentum[a,dim]] - pref2 Pair[Momentum[a,dim],Momentum[b,dim]] - pref3 Pair[Momentum[b,dim],Momentum[b,dim]]]]]===0) &&
-	FreeQ2[c,{Pair,CartesianPair,TemporalPair,Momentum,CartesianMomentum,TemporalMomentum}];
+	pref1 Pair[Momentum[a,dim],Momentum[a,dim]] - pref2 Pair[Momentum[a,dim],Momentum[b,dim]] - pref3 Pair[Momentum[b,dim],Momentum[b,dim]]]]] ===0) &&
+	FreeQ2[c,{Pair,CartesianPair,TemporalPair,Momentum,CartesianMomentum,TemporalMomentum}] && !Internal`SyntacticNegativeQ[pref2] && !Internal`SyntacticNegativeQ[pref1] &&
+	!Internal`SyntacticNegativeQ[pref3];
+
+
+(* # -a.a + # a.b - # b.b -> (I #a- I #b)^2 *)
+fromGFAD[GenericPropagatorDenominator[pref1_. Pair[Momentum[a_,dim___],Momentum[a_,dim___]] + pref2_. Pair[Momentum[a_,dim___],Momentum[b_,dim___]]
++ pref3_. Pair[Momentum[b_,dim___],Momentum[b_,dim___]]	 + c_:0,{n_,s_}]] :=
+	StandardPropagatorDenominator[ powExp[I Sqrt[-pref1]  Momentum[a, dim] + I Sqrt[-pref3]  Momentum[b, dim]],0,c,{n, s}]/;
+	(ExpandAll[powExp[ExpandScalarProduct[Pair[I Sqrt[-pref1]  Momentum[a, dim] + I Sqrt[-pref3]  Momentum[b, dim], I Sqrt[-pref1]  Momentum[a, dim] + I Sqrt[-pref3]  Momentum[b, dim]] -
+	pref1 Pair[Momentum[a,dim],Momentum[a,dim]] - pref2 Pair[Momentum[a,dim],Momentum[b,dim]] - pref3 Pair[Momentum[b,dim],Momentum[b,dim]]]]] ===0) &&
+	FreeQ2[c,{Pair,CartesianPair,TemporalPair,Momentum,CartesianMomentum,TemporalMomentum}] &&  Internal`SyntacticNegativeQ[pref1] &&
+	Internal`SyntacticNegativeQ[pref3];
+
+(* # a.a - # a.b + # b.b -> (#a-#b)^2 *)
+fromGFAD[GenericPropagatorDenominator[pref1_. Pair[Momentum[a_,dim___],Momentum[a_,dim___]] + pref2_. Pair[Momentum[a_,dim___],Momentum[b_,dim___]]
++ pref3_. Pair[Momentum[b_,dim___],Momentum[b_,dim___]]	 + c_:0,{n_,s_}]] :=
+	StandardPropagatorDenominator[powExp[Sqrt[pref1]  Momentum[a, dim] - Sqrt[pref3]  Momentum[b, dim]],0,c,{n, s}]/;
+	(ExpandAll[powExp[ExpandScalarProduct[Pair[Sqrt[pref1]  Momentum[a, dim] - Sqrt[pref3]  Momentum[b, dim], Sqrt[pref1]  Momentum[a, dim] - Sqrt[pref3]  Momentum[b, dim]] -
+	pref1 Pair[Momentum[a,dim],Momentum[a,dim]] - pref2 Pair[Momentum[a,dim],Momentum[b,dim]] - pref3 Pair[Momentum[b,dim],Momentum[b,dim]]]]] ===0) &&
+	FreeQ2[c,{Pair,CartesianPair,TemporalPair,Momentum,CartesianMomentum,TemporalMomentum}] && Internal`SyntacticNegativeQ[pref2] && !Internal`SyntacticNegativeQ[pref1]  &&
+	!Internal`SyntacticNegativeQ[pref3];
+
+(* # -a.a - # a.b - # b.b -> (I #a+ I #b)^2 *)
+fromGFAD[GenericPropagatorDenominator[pref1_. Pair[Momentum[a_,dim___],Momentum[a_,dim___]] + pref2_. Pair[Momentum[a_,dim___],Momentum[b_,dim___]]
++ pref3_. Pair[Momentum[b_,dim___],Momentum[b_,dim___]]	 + c_:0,{n_,s_}]] :=
+	StandardPropagatorDenominator[ powExp[I Sqrt[-pref1]  Momentum[a, dim] - I Sqrt[-pref3]  Momentum[b, dim]],0,c,{n, s}]/;
+	(ExpandAll[powExp[ExpandScalarProduct[Pair[I Sqrt[-pref1]  Momentum[a, dim] - I Sqrt[-pref3]  Momentum[b, dim], I Sqrt[-pref1]  Momentum[a, dim] - I Sqrt[-pref3]  Momentum[b, dim]] -
+	pref1 Pair[Momentum[a,dim],Momentum[a,dim]] - pref2 Pair[Momentum[a,dim],Momentum[b,dim]] - pref3 Pair[Momentum[b,dim],Momentum[b,dim]]]]] ===0) &&
+	FreeQ2[c,{Pair,CartesianPair,TemporalPair,Momentum,CartesianMomentum,TemporalMomentum}]  && Internal`SyntacticNegativeQ[pref1] &&
+	Internal`SyntacticNegativeQ[pref3];
+
+
 
 (* # a.a + # a.b -> (#a)^2 + # a.b *)
 fromGFAD[GenericPropagatorDenominator[pref1_. Pair[Momentum[a1_,dim___],Momentum[a1_,dim___]] + pref2_. Pair[Momentum[a2_,dim___],Momentum[b2_,dim___]] + c_:0,{n_,s_}]] :=
