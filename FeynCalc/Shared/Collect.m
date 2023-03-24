@@ -240,7 +240,7 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 				Isolate[(Plus[x]/.holdPlus -> Plus), IsolateFast -> True, IsolateNames -> tempIso] /. holdPlus -> Plus;
 
 			tog[x_] := FRH[x/.holdForm->Identity, IsolateNames->{optIsolateNames,tempIso}],
-			FCPrint[1,"Collect2: Factoring with", factor, FCDoControl->cl2Verbose];
+			FCPrint[1,"Collect2: Factoring with ", factor, FCDoControl->cl2Verbose];
 			fr0[x__] :=
 				Plus[x] /; !FreeQ2[{x}, monomList];
 			tog[x_]  :=
