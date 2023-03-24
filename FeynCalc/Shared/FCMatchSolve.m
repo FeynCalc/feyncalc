@@ -48,19 +48,19 @@ Begin["`FCMatchSolve`Private`"];
 fcmsVerbose::usage="";
 
 Options[FCMatchSolve] = {
-	FCE			-> False,
-	FCI			-> False,
-	FCVerbose	-> False,
-	Method		-> Automatic,
-	MaxIterations -> Infinity,
-	Factoring	-> Factor2,
-	Reduce		-> True
+	Factoring		-> {Factor2,5000},
+	FCE				-> False,
+	FCI				-> False,
+	FCVerbose		-> False,
+	MaxIterations	-> Infinity,
+	Method			-> Automatic,
+	Reduce			-> True
 };
 
 
 FCMatchSolve[expr_, notvars_List/; (!OptionQ[notvars] || notvars==={}), OptionsPattern[]] :=
 	Block[{	ex, equals, eqSys, eqSol, vars, varsToRemove, nVarsToRemove,
-			nVarsAlreadyRemoved, optFactoring, allEqVars, trivialEqs, preSol},
+			nVarsAlreadyRemoved, optFactoring, allEqVars, trivialEqs, preSol, factor},
 
 		optFactoring = OptionValue[Factoring];
 		preSol = {};
@@ -98,6 +98,9 @@ FCMatchSolve[expr_, notvars_List/; (!OptionQ[notvars] || notvars==={}), OptionsP
 		eqSys = DeleteDuplicates[eqSys/.equals[a_,0]:>equals[Last[FCProductSplit[a,vars]],0]];
 
 		eqSys = SortBy[eqSys /. equals->Equal,LeafCount];
+
+		FCPrint[1, "FCMatchSolve: Complexity of the system of equations: ", LeafCount/@eqSys, FCDoControl->fcmsVerbose];
+
 		FCPrint[2, "FCMatchSolve: Final system of equations: ", eqSys, FCDoControl->fcmsVerbose];
 
 		If[	!FreeQ[eqSys,False],
@@ -161,10 +164,21 @@ FCMatchSolve[expr_, notvars_List/; (!OptionQ[notvars] || notvars==={}), OptionsP
 				FCPrint[0, Style["FCMatchSolve: Only a trivial solution exists.", {Darker[Yellow,0.55], Bold}] , FCDoControl->fcmsVerbose];
 		];
 
-		If[ optFactoring=!=False,
-			eqSol = optFactoring[eqSol]
+		Switch[optFactoring,
+			False,
+				factor = Identity,
+			{_,_Integer},
+				factor = Function[fuArg,
+					If[	TrueQ[LeafCount[fuArg]<optFactoring[[2]]],
+						(optFactoring[[1]])[fuArg],
+						fuArg
+					]
+				],
+			_,
+				factor = optFactoring
 		];
 
+		eqSol = factor[eqSol];
 
 		If[	OptionValue[FCE],
 			eqSol = FCE[eqSol]
