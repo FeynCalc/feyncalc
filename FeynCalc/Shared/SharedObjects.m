@@ -1363,6 +1363,8 @@ initialTemporalPairDownValues;
 initialSPDownValues;
 initialSPDDownValues;
 initialSPEDownValues;
+initialSPLRDownValues;
+initialSPLRDDownValues;
 initialCSPDownValues;
 initialCSPDDownValues;
 initialCSPEDownValues;
@@ -1373,8 +1375,8 @@ initialCartesianMomentumDownValues;
 initialTemporalMomentumDownValues;
 
 initialCommutatorDownValues;
-initialAntiCommutatorDownValues
-
+initialAntiCommutatorDownValues;
+initialLightConePerpendicularComponentDownValues;
 DiracHeadsList;
 SUNHeadsList;
 TensorArgsList;
@@ -2221,6 +2223,12 @@ LightConePerpendicularComponent[head_[x_,dim___]] :=
 
 LightConePerpendicularComponent[LightConePerpendicularComponent[x_,n_,nb_],n_,nb_] :=
 	LightConePerpendicularComponent[x,n,nb];
+
+LightConePerpendicularComponent[x_Momentum n_?NumberQ, rest__] :=
+	n LightConePerpendicularComponent[x,rest];
+
+LightConePerpendicularComponent[x_Momentum n_/;DataType[n,FCVariable], rest__] :=
+	n LightConePerpendicularComponent[x,rest];
 
 Momentum[x_ GaugeXi[y_], dim_:4] :=
 	GaugeXi[y] Momentum[x,dim];
@@ -3145,7 +3153,21 @@ SPLRD[_, 0, ___]:=
 SPLRD[x_, y_]:=
 	SPLRD[x,y,$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB];
 
+SPLR/:
+	Set[SPLR[a_, b_, n_, nb_] , c_]:=
+		(
+		ScalarProduct[
+			LightConePerpendicularComponent[Momentum[a],Momentum[n],Momentum[nb]],
+			LightConePerpendicularComponent[Momentum[b],Momentum[n],Momentum[nb]]]=c
+		);
 
+SPLRD/:
+	Set[SPLRD[a_, b_, n_, nb_] , c_]:=
+		(
+		ScalarProduct[
+			LightConePerpendicularComponent[Momentum[a,D],Momentum[n,D],Momentum[nb,D]],
+			LightConePerpendicularComponent[Momentum[b,D],Momentum[n,D],Momentum[nb,D]]]=c
+		);
 
 initialPairDownValues 				= DownValues[Pair];
 initialCartesianPairDownValues		= DownValues[CartesianPair];
@@ -3153,6 +3175,10 @@ initialTemporalPairDownValues		= DownValues[TemporalPair];
 
 initialSPDownValues					= DownValues[SP];
 initialSPDDownValues				= DownValues[SPD];
+
+initialSPLRDownValues				= DownValues[SPLR];
+initialSPLRDDownValues				= DownValues[SPLRD];
+
 initialSPEDownValues				= DownValues[SPE];
 
 initialCSPDownValues				= DownValues[CSP];
@@ -3164,6 +3190,9 @@ initialTCDownValues					= DownValues[TC];
 initialMomentumDownValues 			= DownValues[Momentum];
 initialCartesianMomentumDownValues	= DownValues[CartesianMomentum];
 initialTemporalMomentumDownValues	= DownValues[TemporalMomentum];
+
+initialLightConePerpendicularComponentDownValues = DownValues[LightConePerpendicularComponent];
+
 
 initialScalarProducts = $ScalarProducts;
 

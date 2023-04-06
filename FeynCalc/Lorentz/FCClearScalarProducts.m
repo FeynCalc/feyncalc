@@ -37,6 +37,8 @@ FCClearScalarProducts[OptionsPattern[]] :=
 		UpValues[CartesianScalarProduct] = FeynCalc`Package`initialCartesianScalarProductUpValues;
 		DownValues[SP] = FeynCalc`Package`initialSPDownValues;
 		DownValues[SPD] = FeynCalc`Package`initialSPDDownValues;
+		DownValues[SPLR] = FeynCalc`Package`initialSPLRDownValues;
+		DownValues[SPLRD] = FeynCalc`Package`initialSPLRDDownValues;
 		DownValues[SPE] = FeynCalc`Package`initialSPEDownValues;
 		DownValues[CSP] = FeynCalc`Package`initialCSPDownValues;
 		DownValues[CSPD] = FeynCalc`Package`initialCSPDDownValues;
@@ -45,6 +47,8 @@ FCClearScalarProducts[OptionsPattern[]] :=
 		DownValues[Momentum] = FeynCalc`Package`initialMomentumDownValues;
 		DownValues[TemporalMomentum] = FeynCalc`Package`initialTemporalMomentumDownValues;
 		DownValues[CartesianMomentum] = FeynCalc`Package`initialCartesianMomentumDownValues;
+		DownValues[LightConePerpendicularComponent] = FeynCalc`Package`initialLightConePerpendicularComponentDownValues;
+
 		$ScalarProducts = FeynCalc`Package`initialScalarProducts;
 	);
 
