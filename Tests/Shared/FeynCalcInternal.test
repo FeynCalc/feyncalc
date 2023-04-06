@@ -1967,7 +1967,11 @@ D]])/2"},
 D]])/2"},
 {"fcstFeynCalcInternal-ID532", "GSLRD[p,n,nb]//FCI",
 "DiracGamma[LightConePerpendicularComponent[Momentum[p, D], Momentum[n,D], \
-Momentum[nb,D]], D]"}
+Momentum[nb,D]], D]"},
+{"fcstFeynCalcInternal-ID533", "FCI[SP[p,
+LightConePerpendicularComponent[Momentum[a], Momentum[q],
+Momentum[p]]]]",
+"0"}
 };
 
 

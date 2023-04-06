@@ -2399,7 +2399,7 @@ Pair[Momentum[q_,_Symbol], CartesianMomentum[p_]]:=
 
 
 Pair[LightConePerpendicularComponent[x_, Momentum[n_,dim___], Momentum[nb_,dim___]],
-	y_]/; Head[y]=!=LightConePerpendicularComponent :=
+	y_]/; (Head[y]=!=LightConePerpendicularComponent && y=!=0) :=
 	Pair[LightConePerpendicularComponent[x, Momentum[n,dim], Momentum[nb,dim]],
 		LightConePerpendicularComponent[y, Momentum[n,dim], Momentum[nb,dim]]];
 
