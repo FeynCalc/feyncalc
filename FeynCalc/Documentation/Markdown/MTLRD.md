@@ -18,7 +18,7 @@ If one omits `n` and `nb`, the program will use default vectors specified via `$
 MTLRD[\[Mu], \[Nu], n, nb]
 ```
 
-$$g^{\mu \nu }{}_{\unicode{27c2}}$$
+$$g^{\mu \nu }{}_{\perp }$$
 
 ```mathematica
 MTLRD[\[Mu], \[Nu], n, nb] // FCI // StandardForm
@@ -30,7 +30,7 @@ MTLRD[\[Mu], \[Nu], n, nb] // FCI // StandardForm
 MTLRD[\[Mu], \[Nu], n, nb] FVD[p, \[Mu]] // Contract
 ```
 
-$$p^{\nu }{}_{\unicode{27c2}}$$
+$$p^{\nu }{}_{\perp }$$
 
 ```mathematica
 MTLRD[\[Mu], \[Nu], n, nb] FVLPD[q, \[Mu], n, nb] // Contract

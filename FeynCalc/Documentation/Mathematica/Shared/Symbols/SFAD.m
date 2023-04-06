@@ -12,7 +12,7 @@
 
 
 (* ::Text:: *)
-(*For brevity one can also use shorter forms such as `SFAD[{q1+ ...,  m^2}, ...]`, `SFAD[{q1+ ...,  m^2 , n}, ...]`, `SFAD[{q1+ ...,  {m^2, -1}}, ...]`, `SFAD[q1,...]`  etc.*)
+(*For brevity one can also use shorter forms such as `SFAD[{q1+ ...,  m^2}, ...]`, `SFAD[{q1+ ...,  m^2 , n}, ...]`, `SFAD[{q1+ ...,  {m^2, -1}}, ...]`, `SFAD[q1,...]` etc.*)
 
 
 (* ::Text:: *)

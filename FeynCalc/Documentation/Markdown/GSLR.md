@@ -4,7 +4,7 @@
 
 ## GSLR
 
-`GSLR[p,n,nb]` denotes the perpendicular component in the lightcone decomposition of the slashed Dirac matrix $(\gamma \cdot p)$  along the vectors `n` and `nb`. It corresponds to $(\gamma \cdot \p)_{\perp}$.
+`GSLR[p,n,nb]` denotes the perpendicular component in the lightcone decomposition of the slashed Dirac matrix $(\gamma \cdot p)$  along the vectors `n` and `nb`. It corresponds to $(\gamma \cdot p)_{\perp}$.
 
 If one omits `n` and `nb`, the program will use default vectors specified via `$FCDefaultLightconeVectorN` and `$FCDefaultLightconeVectorNB`.
 
@@ -18,7 +18,7 @@ If one omits `n` and `nb`, the program will use default vectors specified via `$
 GSLR[p, n, nb]
 ```
 
-$$\bar{\gamma }\cdot \overline{p}_{\unicode{27c2}}$$
+$$\bar{\gamma }\cdot \overline{p}_{\perp }$$
 
 ```mathematica
 StandardForm[GSLR[p, n, nb] // FCI]
@@ -32,7 +32,7 @@ Notice that the properties of `n` and `nb` vectors have to be set by hand before
 GSLR[p, n, nb] . GSLP[q, n, nb] // DiracSimplify
 ```
 
-$$-\frac{1}{4} \overline{n}^2 \left(\overline{\text{nb}}\cdot \overline{q}\right) \left(\bar{\gamma }\cdot \overline{\text{nb}}\right).\left(\bar{\gamma }\cdot \overline{p}_{\unicode{27c2}}\right)-\frac{1}{4} \left(\overline{n}\cdot \overline{\text{nb}}\right) \left(\overline{\text{nb}}\cdot \overline{q}\right) \left(\bar{\gamma }\cdot \overline{n}\right).\left(\bar{\gamma }\cdot \overline{p}_{\unicode{27c2}}\right)$$
+$$-\frac{1}{4} \overline{n}^2 \left(\overline{\text{nb}}\cdot \overline{q}\right) \left(\bar{\gamma }\cdot \overline{\text{nb}}\right).\left(\bar{\gamma }\cdot \overline{p}_{\perp }\right)-\frac{1}{4} \left(\overline{n}\cdot \overline{\text{nb}}\right) \left(\overline{\text{nb}}\cdot \overline{q}\right) \left(\bar{\gamma }\cdot \overline{n}\right).\left(\bar{\gamma }\cdot \overline{p}_{\perp }\right)$$
 
 ```mathematica
 FCClearScalarProducts[]
@@ -45,7 +45,7 @@ SP[n, nb] = 2;
 GSLR[p, n, nb] . GSLP[q, n, nb] // DiracSimplify
 ```
 
-$$-\frac{1}{2} \left(\overline{\text{nb}}\cdot \overline{q}\right) \left(\bar{\gamma }\cdot \overline{n}\right).\left(\bar{\gamma }\cdot \overline{p}_{\unicode{27c2}}\right)$$
+$$-\frac{1}{2} \left(\overline{\text{nb}}\cdot \overline{q}\right) \left(\bar{\gamma }\cdot \overline{n}\right).\left(\bar{\gamma }\cdot \overline{p}_{\perp }\right)$$
 
 ```mathematica
 FCClearScalarProducts[]

@@ -18,7 +18,7 @@ If one omits `n` and `nb`, the program will use default vectors specified via `$
 MTLR[\[Mu], \[Nu], n, nb]
 ```
 
-$$\bar{g}^{\mu \nu }{}_{\unicode{27c2}}$$
+$$\bar{g}^{\mu \nu }{}_{\perp }$$
 
 ```mathematica
 MTLR[\[Mu], \[Nu], n, nb] // FCI // StandardForm
@@ -30,7 +30,7 @@ MTLR[\[Mu], \[Nu], n, nb] // FCI // StandardForm
 MTLR[\[Mu], \[Nu], n, nb] FV[p, \[Mu]] // Contract
 ```
 
-$$\overline{p}^{\nu }{}_{\unicode{27c2}}$$
+$$\overline{p}^{\nu }{}_{\perp }$$
 
 ```mathematica
 MTLR[\[Mu], \[Nu], n, nb] FVLP[q, \[Mu], n, nb] // Contract

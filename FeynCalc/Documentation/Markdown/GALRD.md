@@ -18,7 +18,7 @@ If one omits `n` and `nb`, the program will use default vectors specified via `$
 GALRD[\[Mu], n, nb]
 ```
 
-$$\gamma ^{\mu }{}_{\unicode{27c2}}$$
+$$\gamma ^{\mu }{}_{\perp }$$
 
 ```mathematica
 StandardForm[GALRD[\[Mu], n, nb] // FCI]
@@ -32,7 +32,7 @@ Notice that the properties of `n` and `nb` vectors have to be set by hand before
 GALRD[\[Mu], n, nb] . GALPD[\[Nu], n, nb] // DiracSimplify
 ```
 
-$$-\frac{1}{4} \;\text{nb}^{\nu } (n\cdot \;\text{nb}) (\gamma \cdot n).\gamma ^{\mu }{}_{\unicode{27c2}}-\frac{1}{4} n^2 \;\text{nb}^{\nu } (\gamma \cdot \;\text{nb}).\gamma ^{\mu }{}_{\unicode{27c2}}$$
+$$-\frac{1}{4} \;\text{nb}^{\nu } (n\cdot \;\text{nb}) (\gamma \cdot n).\gamma ^{\mu }{}_{\perp }-\frac{1}{4} n^2 \;\text{nb}^{\nu } (\gamma \cdot \;\text{nb}).\gamma ^{\mu }{}_{\perp }$$
 
 ```mathematica
 FCClearScalarProducts[]
@@ -45,7 +45,7 @@ SPD[n, nb] = 2;
 GALRD[\[Mu], n, nb] . GALPD[\[Nu], n, nb] // DiracSimplify
 ```
 
-$$-\frac{1}{2} \;\text{nb}^{\nu } (\gamma \cdot n).\gamma ^{\mu }{}_{\unicode{27c2}}$$
+$$-\frac{1}{2} \;\text{nb}^{\nu } (\gamma \cdot n).\gamma ^{\mu }{}_{\perp }$$
 
 ```mathematica
 FCClearScalarProducts[]

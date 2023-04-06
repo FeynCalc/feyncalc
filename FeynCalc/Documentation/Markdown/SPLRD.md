@@ -18,7 +18,7 @@ If one omits `n` and `nb`, the program will use default vectors specified via `$
 SPLRD[p, q, n, nb]
 ```
 
-$$p\cdot q_{\unicode{27c2}}$$
+$$p\cdot q_{\perp }$$
 
 ```mathematica
 StandardForm[SPLRD[p, q, n, nb] // FCI]
@@ -32,10 +32,10 @@ Notice that the properties of `n` and `nb` vectors have to be set by hand before
 SPLRD[p1 + p2, q1 + q2, n, nb] // FCI // ExpandScalarProduct
 ```
 
-$$\text{p1}\cdot \;\text{q1}_{\unicode{27c2}}+\text{p1}\cdot \;\text{q2}_{\unicode{27c2}}+\text{p2}\cdot \;\text{q1}_{\unicode{27c2}}+\text{p2}\cdot \;\text{q2}_{\unicode{27c2}}$$
+$$\text{p1}\cdot \;\text{q1}_{\perp }+\text{p1}\cdot \;\text{q2}_{\perp }+\text{p2}\cdot \;\text{q1}_{\perp }+\text{p2}\cdot \;\text{q2}_{\perp }$$
 
 ```mathematica
 SPLRD[p1 + p2 + n, q, n, nb] // FCI // ExpandScalarProduct
 ```
 
-$$\text{p1}\cdot q_{\unicode{27c2}}+\text{p2}\cdot q_{\unicode{27c2}}$$
+$$\text{p1}\cdot q_{\perp }+\text{p2}\cdot q_{\perp }$$

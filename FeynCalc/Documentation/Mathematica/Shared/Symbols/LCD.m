@@ -12,7 +12,7 @@
 
 
 (* ::Text:: *)
-(*`LCD[m,...][p, ...]` evaluates to $D$-dimensional $\epsilon ^{m \ldots  \mu  \ldots}p_{\mu  \ldots}$ applying `FeynCalcInternal`.*)
+(*`LCD[m,...][p, ...]` evaluates to $D$-dimensional $\epsilon ^{m \ldots \mu \ldots}p_{\mu \ldots}$ applying `FeynCalcInternal`.*)
 
 
 (* ::Text:: *)

@@ -40,7 +40,7 @@ $D-1$ dimensions.
 
 For brevity one can also use shorter forms such as CFAD[{q1+ ...,  m^2}, ...],
 CFAD[{q1+ ...,  m^2 , n}, ...], CFAD[{q1+ ...,  {m^2, -1}}, ...], CFAD[q1,...]
- etc.
+etc.
 
 If s is not explicitly specified, its value is determined by the option
 EtaSign, which has the default value -1.
@@ -342,8 +342,8 @@ LC::usage =
 "LC[m, n, r, s] evaluates to 4-dimensional $\\varepsilon^{m n r s}$ by virtue of
 applying FeynCalcInternal.
 
-LC[m,...][p, ...] evaluates to 4-dimensional $\\epsilon ^{m \\ldots  \\mu 
-\\ldots}p_{\\mu  \\ldots}$ applying FeynCalcInternal.
+LC[m,...][p, ...] evaluates to 4-dimensional $\\epsilon ^{m \\ldots \\mu
+\\ldots}p_{\\mu \\ldots}$ applying FeynCalcInternal.
 
 When some indices of a Levi-Civita-tensor are contracted with 4-vectors,
 FeynCalc suppresses explicit dummy indices by putting those vectors into the
@@ -355,8 +355,8 @@ LCD::usage =
 "LCD[m, n, r, s] evaluates to $D$-dimensional $\\varepsilon^{m n r s}$ by virtue
 of applying FeynCalcInternal.
 
-LCD[m,...][p, ...] evaluates to $D$-dimensional $\\epsilon ^{m \\ldots  \\mu 
-\\ldots}p_{\\mu  \\ldots}$ applying FeynCalcInternal.
+LCD[m,...][p, ...] evaluates to $D$-dimensional $\\epsilon ^{m \\ldots \\mu
+\\ldots}p_{\\mu \\ldots}$ applying FeynCalcInternal.
 
 When some indices of a Levi-Civita-tensor are contracted with 4-vectors,
 FeynCalc suppresses explicit dummy indices by putting those vectors into the
@@ -579,7 +579,7 @@ $D-1$ dimensions.
 
 For brevity one can also use shorter forms such as SFAD[{q1+ ...,  m^2}, ...],
 SFAD[{q1+ ...,  m^2 , n}, ...], SFAD[{q1+ ...,  {m^2, -1}}, ...], SFAD[q1,...]
- etc.
+etc.
 
 If s is not explicitly specified, its value is determined by the option
 EtaSign, which has the default value +1.
@@ -648,7 +648,7 @@ SP[p] is the same as SP[p, p] $(=p^2)$.";
 SPD::usage =
 "SPD[a, b] denotes a $D$-dimensional scalar product.
 
- SPD[a, b] is transformed into ScalarProduct[a, b,Dimension->D] by
+SPD[a, b] is transformed into ScalarProduct[a, b,Dimension->D] by
 FeynCalcInternal.
 
 SPD[p] is the same as SPD[p,p] $(=p^2)$.";
@@ -674,7 +674,7 @@ chain.
 
 - Spinor[-Momentum[p], m] means $v$ if it stands at the end of the chain.
 
-Spinors of fermions of mass $m$ are normalized to have $\\bar{u} u=2 m$ and 
+Spinors of fermions of mass $m$ are normalized to have $\\bar{u} u=2 m$ and
 $\\bar{v} v=-2 m$.
 
 The optional argument o can be used for additional degrees of freedom. If no
@@ -1126,7 +1126,7 @@ $FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
 GSLR::usage =
 "GSLR[p,n,nb] denotes the perpendicular component in the lightcone
 decomposition of the slashed Dirac matrix $(\\gamma \\cdot p)$  along the
-vectors n and nb. It corresponds to $(\\gamma \\cdot \\p)_{\\perp}$.
+vectors n and nb. It corresponds to $(\\gamma \\cdot p)_{\\perp}$.
 
 If one omits n and nb, the program will use default vectors specified via
 $FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
@@ -1153,7 +1153,7 @@ GSLRD::usage =
 "GSLRD[p,n,nb] denotes the perpendicular component in the lightcone
 decomposition of the slashed Dirac matrix $(\\gamma \\cdot p)$  along the
 vectors n and nb  in $D$ dimensions. It corresponds to $(\\gamma \\cdot
-\\p)_{\\perp}$.
+p)_{\\perp}$.
 
 If one omits n and nb, the program will use default vectors specified via
 $FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";

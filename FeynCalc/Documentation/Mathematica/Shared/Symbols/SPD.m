@@ -12,7 +12,7 @@
 
 
 (* ::Text:: *)
-(* `SPD[a, b]` is transformed into `ScalarProduct[a, b,Dimension->D]` by `FeynCalcInternal`.*)
+(*`SPD[a, b]` is transformed into `ScalarProduct[a, b,Dimension->D]` by `FeynCalcInternal`.*)
 
 
 (* ::Text:: *)

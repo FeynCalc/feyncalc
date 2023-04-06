@@ -1,8 +1,12 @@
+```mathematica
+ 
+```
+
 ## SFAD
 
 `SFAD[{{q1 +..., p1 . q2 +...,} {m^2, s}, n}, ...]` denotes a Cartesian propagator given by $\frac{1}{[(q_1+\ldots)^2 + p_1 \cdot q_2 ... + m^2 + s i \eta]^n}$, where $q_1^2$ and $p_1 \cdot q_2$ are Cartesian scalar products in $D-1$ dimensions.
 
-For brevity one can also use shorter forms such as `SFAD[{q1+ ...,  m^2}, ...]`, `SFAD[{q1+ ...,  m^2 , n}, ...]`, `SFAD[{q1+ ...,  {m^2, -1}}, ...]`, `SFAD[q1,...]`  etc.
+For brevity one can also use shorter forms such as `SFAD[{q1+ ...,  m^2}, ...]`, `SFAD[{q1+ ...,  m^2 , n}, ...]`, `SFAD[{q1+ ...,  {m^2, -1}}, ...]`, `SFAD[q1,...]` etc.
 
 If `s` is not explicitly specified, its value is determined by the option `EtaSign`, which has the default value `+1`.
 

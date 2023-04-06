@@ -1,3 +1,7 @@
+```mathematica
+ 
+```
+
 ## Spinor
 
 `Spinor[p, m, o]` is the head of Dirac spinors. Which of the spinors $u$, $v$, $\bar{u}$ or $\bar{v}$ is understood, depends on the sign of the momentum argument `p` and the relative position of `Spinor` in the chain.
@@ -10,7 +14,7 @@
 
 - `Spinor[-Momentum[p], m]` means $v$ if it stands at the end of the chain.
 
-Spinors of fermions of mass $m$ are normalized to have $\bar{u} u=2 m$ and  $\bar{v} v=-2 m$.
+Spinors of fermions of mass $m$ are normalized to have $\bar{u} u=2 m$ and $\bar{v} v=-2 m$.
 
 The optional argument `o` can be used for additional degrees of freedom. If no optional argument `o` is supplied, a `1` is substituted in.
 

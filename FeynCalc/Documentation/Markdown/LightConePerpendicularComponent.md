@@ -21,7 +21,7 @@ Pair[LightConePerpendicularComponent[LorentzIndex[\[Mu]], Momentum[n],Momentum[n
   LightConePerpendicularComponent[Momentum[p], Momentum[n], Momentum[nb]]]
 ```
 
-$$\overline{p}^{\mu }{}_{\unicode{27c2}}$$
+$$\overline{p}^{\mu }{}_{\perp }$$
 
 Metric tensor
 
@@ -30,7 +30,7 @@ Pair[LightConePerpendicularComponent[LorentzIndex[\[Mu]], Momentum[n],Momentum[n
   LightConePerpendicularComponent[LorentzIndex[\[Nu]], Momentum[n], Momentum[nb]]]
 ```
 
-$$\bar{g}^{\mu \nu }{}_{\unicode{27c2}}$$
+$$\bar{g}^{\mu \nu }{}_{\perp }$$
 
 Dirac matrix
 
@@ -38,7 +38,7 @@ Dirac matrix
 DiracGamma[LightConePerpendicularComponent[LorentzIndex[\[Mu]], Momentum[n], Momentum[nb]]]
 ```
 
-$$\bar{\gamma }^{\mu }{}_{\unicode{27c2}}$$
+$$\bar{\gamma }^{\mu }{}_{\perp }$$
 
 Contractions
 
@@ -50,7 +50,7 @@ DiracGamma[LightConePerpendicularComponent[LorentzIndex[\[Mu]],
 
 ```
 
-$$\bar{\gamma }\cdot \overline{p}_{\unicode{27c2}}$$
+$$\bar{\gamma }\cdot \overline{p}_{\perp }$$
 
 ```
 (*DiracGamma[LightConePerpendicularComponent[Momentum[p], Momentum[n], Momentum[nb]]]*)

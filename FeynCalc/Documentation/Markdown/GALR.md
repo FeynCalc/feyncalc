@@ -18,7 +18,7 @@ If one omits `n` and `nb`, the program will use default vectors specified via `$
 GALR[\[Mu], n, nb]
 ```
 
-$$\bar{\gamma }^{\mu }{}_{\unicode{27c2}}$$
+$$\bar{\gamma }^{\mu }{}_{\perp }$$
 
 ```mathematica
 StandardForm[GALR[\[Mu], n, nb] // FCI]
@@ -32,7 +32,7 @@ Notice that the properties of `n` and `nb` vectors have to be set by hand before
 GALR[\[Mu], n, nb] . GALP[\[Nu], n, nb] // iracSimplify
 ```
 
-$$\text{iracSimplify}\left(\bar{\gamma }^{\mu }{}_{\unicode{27c2}}.\left(\frac{1}{2} \overline{\text{nb}}^{\nu } \bar{\gamma }\cdot \overline{n}\right)\right)$$
+$$\text{iracSimplify}\left(\bar{\gamma }^{\mu }{}_{\perp }.\left(\frac{1}{2} \overline{\text{nb}}^{\nu } \bar{\gamma }\cdot \overline{n}\right)\right)$$
 
 ```mathematica
 FCClearScalarProducts[]
@@ -45,7 +45,7 @@ SP[n, nb] = 2;
 GALR[\[Mu], n, nb] . GALP[\[Nu], n, nb] // DiracSimplify
 ```
 
-$$-\frac{1}{2} \overline{\text{nb}}^{\nu } \left(\bar{\gamma }\cdot \overline{n}\right).\bar{\gamma }^{\mu }{}_{\unicode{27c2}}$$
+$$-\frac{1}{2} \overline{\text{nb}}^{\nu } \left(\bar{\gamma }\cdot \overline{n}\right).\bar{\gamma }^{\mu }{}_{\perp }$$
 
 ```mathematica
 FCClearScalarProducts[]

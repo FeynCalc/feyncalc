@@ -30,6 +30,7 @@ if [[ -f $1 ]]; then
     sed -i -e "s|unicode{f4a1}|to |g" $1;
     sed -i -e "s|unicode{f3d4}|leftrightarrow |g" $1;
     sed -i -e "s|unicode{f3d4}|leftrightarrow |g" $1;
+    sed -i -e "s|unicode{27c2}|perp |g" $1;
     sed -i -e "s|\^2\^2|\^4|g" $1;
     sed -i -e "s|\^2\^3|\^6|g" $1;
     sed -i -e 's|g\^{\\mu \\nu }^2|(g\^{\\mu \\nu})^2|' $1;

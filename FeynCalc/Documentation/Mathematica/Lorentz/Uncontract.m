@@ -12,7 +12,7 @@
 
 
 (* ::Text:: *)
-(*`Uncontract[exp, q1, q2, Pair -> {p}]` uncontracts also $p \cdot q_1$ and $p \cdot q_2$; *)
+(*`Uncontract[exp, q1, q2, Pair -> {p}]` uncontracts also $p \cdot q_1$ and $p \cdot q_2$;*)
 
 
 (* ::Text:: *)

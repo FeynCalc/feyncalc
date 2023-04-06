@@ -12,7 +12,7 @@
 
 
 (* ::Text:: *)
-(*For brevity one can also use shorter forms such as `CFAD[{q1+ ...,  m^2}, ...]`, `CFAD[{q1+ ...,  m^2 , n}, ...]`, `CFAD[{q1+ ...,  {m^2, -1}}, ...]`, `CFAD[q1,...]`  etc.*)
+(*For brevity one can also use shorter forms such as `CFAD[{q1+ ...,  m^2}, ...]`, `CFAD[{q1+ ...,  m^2 , n}, ...]`, `CFAD[{q1+ ...,  {m^2, -1}}, ...]`, `CFAD[q1,...]` etc.*)
 
 
 (* ::Text:: *)

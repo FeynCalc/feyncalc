@@ -18,7 +18,7 @@ If one omits `n` and `nb`, the program will use default vectors specified via `$
 FVLR[p, \[Mu], n, nb]
 ```
 
-$$\overline{p}^{\mu }{}_{\unicode{27c2}}$$
+$$\overline{p}^{\mu }{}_{\perp }$$
 
 ```mathematica
 FVLR[p, \[Mu], n, nb] // FCI // StandardForm
@@ -30,7 +30,7 @@ FVLR[p, \[Mu], n, nb] // FCI // StandardForm
 FVLR[p, \[Mu], n, nb] FVLR[q, \[Mu], n, nb] // Contract
 ```
 
-$$\overline{p}\cdot \overline{q}_{\unicode{27c2}}$$
+$$\overline{p}\cdot \overline{q}_{\perp }$$
 
 ```mathematica
 FVLR[p, \[Mu], n, nb] . FVLP[q, \[Mu], n, nb] // Contract

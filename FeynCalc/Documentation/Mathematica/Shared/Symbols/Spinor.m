@@ -28,7 +28,7 @@
 
 
 (* ::Text:: *)
-(*Spinors of fermions of mass $m$ are normalized to have $\bar{u} u=2 m$ and  $\bar{v} v=-2 m$.*)
+(*Spinors of fermions of mass $m$ are normalized to have $\bar{u} u=2 m$ and $\bar{v} v=-2 m$.*)
 
 
 (* ::Text:: *)

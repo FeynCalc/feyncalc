@@ -12,7 +12,7 @@
 
 
 (* ::Text:: *)
-(*`LC[m,...][p, ...]` evaluates to 4-dimensional $\epsilon ^{m \ldots  \mu  \ldots}p_{\mu  \ldots}$ applying `FeynCalcInternal`.*)
+(*`LC[m,...][p, ...]` evaluates to 4-dimensional $\epsilon ^{m \ldots \mu \ldots}p_{\mu \ldots}$ applying `FeynCalcInternal`.*)
 
 
 (* ::Text:: *)

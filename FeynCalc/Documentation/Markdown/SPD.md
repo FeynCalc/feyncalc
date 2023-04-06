@@ -1,8 +1,12 @@
+```mathematica
+ 
+```
+
 ## SPD
 
 `SPD[a, b]` denotes a $D$-dimensional scalar product.
 
- `SPD[a, b]` is transformed into `ScalarProduct[a, b,Dimension->D]` by `FeynCalcInternal`.
+`SPD[a, b]` is transformed into `ScalarProduct[a, b,Dimension->D]` by `FeynCalcInternal`.
 
 `SPD[p]` is the same as `SPD[p,p]` $(=p^2)$.
 

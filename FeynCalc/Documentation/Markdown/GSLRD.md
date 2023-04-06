@@ -4,7 +4,7 @@
 
 ## GSLRD
 
-`GSLRD[p,n,nb]` denotes the perpendicular component in the lightcone decomposition of the slashed Dirac matrix $(\gamma \cdot p)$  along the vectors `n` and `nb`  in $D$ dimensions. It corresponds to $(\gamma \cdot \p)_{\perp}$.
+`GSLRD[p,n,nb]` denotes the perpendicular component in the lightcone decomposition of the slashed Dirac matrix $(\gamma \cdot p)$  along the vectors `n` and `nb`  in $D$ dimensions. It corresponds to $(\gamma \cdot p)_{\perp}$.
 
 If one omits `n` and `nb`, the program will use default vectors specified via `$FCDefaultLightconeVectorN` and `$FCDefaultLightconeVectorNB`.
 
@@ -18,7 +18,7 @@ If one omits `n` and `nb`, the program will use default vectors specified via `$
 GSLRD[p, n, nb]
 ```
 
-$$\gamma \cdot p_{\unicode{27c2}}$$
+$$\gamma \cdot p_{\perp }$$
 
 ```mathematica
 StandardForm[GSLRD[p, n, nb] // FCI]
@@ -32,7 +32,7 @@ Notice that the properties of `n` and `nb` vectors have to be set by hand before
 GSLRD[p, n, nb] . GSLPD[q, n, nb] // DiracSimplify
 ```
 
-$$-\frac{1}{4} n^2 (\text{nb}\cdot q) (\gamma \cdot \;\text{nb}).\left(\gamma \cdot p_{\unicode{27c2}}\right)-\frac{1}{4} (n\cdot \;\text{nb}) (\text{nb}\cdot q) (\gamma \cdot n).\left(\gamma \cdot p_{\unicode{27c2}}\right)$$
+$$-\frac{1}{4} n^2 (\text{nb}\cdot q) (\gamma \cdot \;\text{nb}).\left(\gamma \cdot p_{\perp }\right)-\frac{1}{4} (n\cdot \;\text{nb}) (\text{nb}\cdot q) (\gamma \cdot n).\left(\gamma \cdot p_{\perp }\right)$$
 
 ```mathematica
 FCClearScalarProducts[]
@@ -45,7 +45,7 @@ SPD[n, nb] = 2;
 GSLRD[p, n, nb] . GSLPD[q, n, nb] // DiracSimplify
 ```
 
-$$-\frac{1}{2} (\text{nb}\cdot q) (\gamma \cdot n).\left(\gamma \cdot p_{\unicode{27c2}}\right)$$
+$$-\frac{1}{2} (\text{nb}\cdot q) (\gamma \cdot n).\left(\gamma \cdot p_{\perp }\right)$$
 
 ```mathematica
 FCClearScalarProducts[]

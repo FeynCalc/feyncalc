@@ -18,7 +18,7 @@ If one omits `n` and `nb`, the program will use default vectors specified via `$
 SPLR[p, q, n, nb]
 ```
 
-$$\overline{p}\cdot \overline{q}_{\unicode{27c2}}$$
+$$\overline{p}\cdot \overline{q}_{\perp }$$
 
 ```mathematica
 StandardForm[SPLR[p, q, n, nb] // FCI]
@@ -32,10 +32,10 @@ Notice that the properties of `n` and `nb` vectors have to be set by hand before
 SPLR[p1 + p2, q1 + q2, n, nb] // FCI // ExpandScalarProduct
 ```
 
-$$\overline{\text{p1}}\cdot \overline{\text{q1}}_{\unicode{27c2}}+\overline{\text{p1}}\cdot \overline{\text{q2}}_{\unicode{27c2}}+\overline{\text{p2}}\cdot \overline{\text{q1}}_{\unicode{27c2}}+\overline{\text{p2}}\cdot \overline{\text{q2}}_{\unicode{27c2}}$$
+$$\overline{\text{p1}}\cdot \overline{\text{q1}}_{\perp }+\overline{\text{p1}}\cdot \overline{\text{q2}}_{\perp }+\overline{\text{p2}}\cdot \overline{\text{q1}}_{\perp }+\overline{\text{p2}}\cdot \overline{\text{q2}}_{\perp }$$
 
 ```mathematica
 SPLR[p1 + p2 + n, q, n, nb] // FCI // ExpandScalarProduct
 ```
 
-$$\overline{\text{p1}}\cdot \overline{q}_{\unicode{27c2}}+\overline{\text{p2}}\cdot \overline{q}_{\unicode{27c2}}$$
+$$\overline{\text{p1}}\cdot \overline{q}_{\perp }+\overline{\text{p2}}\cdot \overline{q}_{\perp }$$
