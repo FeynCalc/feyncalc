@@ -114,6 +114,10 @@ PairContract[0,_]:=
 PairContract[LorentzIndex[x_, dim1_:4], LorentzIndex[x_, dim2_:4] ] :=
 	dimEval[dim1,dim2]/; Head[dimEval[dim1,dim2]]=!=dimEval;
 
+
+PairContract[LightConePerpendicularComponent[LorentzIndex[x_, dim1_:4],n_,nb_], LightConePerpendicularComponent[LorentzIndex[x_, dim2_:4],n_, nb_] ] :=
+	(dimEval[dim1,dim2] - 2)/; Head[dimEval[dim1,dim2]]=!=dimEval;
+
 PairContract[CartesianIndex[x_, dim1_:3], CartesianIndex[x_, dim2_:3] ] :=
 	dimEval[dim1,dim2]* FeynCalc`Package`MetricS/; Head[dimEval[dim1,dim2]]=!=dimEval;
 
@@ -142,6 +146,10 @@ PairContract /:
 		PairContract[x,x];
 
 PairContract /:
+	PairContract[LightConePerpendicularComponent[_LorentzIndex,__],x_]^2 :=
+		PairContract[x,x];
+
+PairContract /:
 	PairContract[a_, b_LorentzIndex]^(n_ /; n > 2) :=
 		(
 		Message[PairContract::failmsg, "The expression " <> ToString[Pair[a, b]^n, InputForm] <> " violates Einstein summation."];
@@ -151,6 +159,11 @@ PairContract /:
 (*here f could be anything (Dirac matrix, tensor function etc.) carrying a Lorentz index*)
 PairContract/: PairContract[LorentzIndex[z_,dim___],(h:LorentzIndex|Momentum|ExplicitLorentzIndex)[x_,dim___]] f_[a__] :=
 	(f[a] /. LorentzIndex[z, ___]->h[x,dim]) /;(!FreeQ[f[a], LorentzIndex[z,___]]);
+
+PairContract/: PairContract[LightConePerpendicularComponent[LorentzIndex[z_,dim___],n_,nb_],
+	LightConePerpendicularComponent[(h:LorentzIndex|Momentum|ExplicitLorentzIndex)[x_,dim___],n_,nb_]] f_[a__] :=
+	(f[a] /. LorentzIndex[z, ___]->LightConePerpendicularComponent[h[x,dim],n,nb]) /;(!FreeQ[f[a], LorentzIndex[z,___]]);
+
 
 PairContract/: PairContract[LorentzIndex[z_,dimL_:4],(h:CartesianIndex|CartesianMomentum)[x_,dimC_:3]] f_[a__] :=
 	(f[a] /. LorentzIndex[z, ___]->h[x,dimC]) /;(!FreeQ[f[a], LorentzIndex[z,___]]) && MatchQ[{dimL,dimC},{4,3}|{_Symbol,_Symbol-1}|{_Symbol-4,_Symbol-4}];
@@ -184,21 +197,40 @@ PairContract2[0,_]:=
 PairContract2[LorentzIndex[x_], LorentzIndex[x_]] :=
 	4;
 
-PairContract2[LorentzIndex[x_, dim__], LorentzIndex[x_, dim__]] :=
+PairContract2[LorentzIndex[x_, dim_], LorentzIndex[x_, dim_]] :=
 	dim;
 
-PairContract2[LorentzIndex[x_, dim__], LorentzIndex[x_, dim__]] :=
-	dim;
+
+PairContract2[LightConePerpendicularComponent[LorentzIndex[x_],n_,nb_], LightConePerpendicularComponent[LorentzIndex[x_],n_, nb_] ] :=
+	2;
+
+PairContract2[LightConePerpendicularComponent[LorentzIndex[x_, dim_],n_,nb_], LightConePerpendicularComponent[LorentzIndex[x_, dim_],n_, nb_] ] :=
+	(dim - 2);
+
 
 PairContract2[Momentum[a__], Momentum[b__]] :=
 	Pair[Momentum[a], Momentum[b]];
+
+PairContract2[LightConePerpendicularComponent[a_Momentum,n_,nb_], LightConePerpendicularComponent[b_Momentum,n_,nb_]] :=
+	Pair[LightConePerpendicularComponent[a,n,nb], LightConePerpendicularComponent[b,n,nb]];
 
 PairContract2 /:
 	PairContract2[_LorentzIndex, x_]^2 :=
 		PairContract2[x,x];
 
+PairContract2 /:
+	PairContract2[LightConePerpendicularComponent[_LorentzIndex,__],x_]^2 :=
+		PairContract2[x,x];
+
 PairContract2/:
 	PairContract2[LorentzIndex[z__],x_] PairContract2[LorentzIndex[z__],y_] :=
+		If[ FreeQ[{x,y}, LorentzIndex],
+			Pair[x,y],
+			PairContract2[x,y]
+		];
+
+PairContract2/:
+	PairContract2[LigtConePerpendicularComponent[z_LorentzIndex,n_,nb_],x_] PairContract2[LigtConePerpendicularComponent[z_LorentzIndex,n_,nb_],y_] :=
 		If[ FreeQ[{x,y}, LorentzIndex],
 			Pair[x,y],
 			PairContract2[x,y]
@@ -225,6 +257,10 @@ PairContract3[0,_]:=
 
 PairContract3[LorentzIndex[x_, dim1_:4], LorentzIndex[x_, dim2_:4] ] :=
 	dimEval[dim1,dim2]/; Head[dimEval[dim1,dim2]]=!=dimEval;
+
+
+PairContract3[LightConePerpendicularComponent[LorentzIndex[x_, dim1_:4],n_,nb_], LightConePerpendicularComponent[LorentzIndex[x_, dim2_:4],n_, nb_] ] :=
+	(dimEval[dim1,dim2] - 2)/; Head[dimEval[dim1,dim2]]=!=dimEval;
 
 PairContract3[CartesianIndex[x_, dim1_:3], CartesianIndex[x_, dim2_:3] ] :=
 	dimEval[dim1,dim2]* FeynCalc`Package`MetricS/; Head[dimEval[dim1,dim2]]=!=dimEval;
@@ -255,6 +291,10 @@ PairContract3 /:
 		PairContract3[x,x];
 
 PairContract3 /:
+	PairContract3[LightConePerpendicularComponent[_LorentzIndex,__],x_]^2 :=
+		PairContract3[x,x];
+
+PairContract3 /:
 	PairContract3[a_, b_LorentzIndex]^(n_ /; n > 2) :=
 		(
 		Message[PairContract::failmsg, "The expression " <> ToString[Pair[a, b]^n, InputForm] <> " violates Lorentz covariance!"];
@@ -264,6 +304,18 @@ PairContract3 /:
 (*here f could be anything (Dirac matrix, tensor function etc.) carrying a Lorentz index*)
 PairContract3/: PairContract3[LorentzIndex[z_,dim___],(h:LorentzIndex|Momentum|ExplicitLorentzIndex)[x_,dim___]] f_[a__] :=
 	(f[a] /. LorentzIndex[z, ___]->h[x,dim]) /;(!FreeQ[f[a], LorentzIndex[z,___]]);
+
+
+PairContract3/: PairContract3[LightConePerpendicularComponent[LorentzIndex[z_,dim___],n_,nb_],
+	LightConePerpendicularComponent[(h:LorentzIndex|Momentum|ExplicitLorentzIndex)[x_,dim___],n_,nb_]] f_[a__] :=
+	(f[a] /. LorentzIndex[z, ___]->LightConePerpendicularComponent[h[x,dim],n,nb]) /;(!FreeQ[f[a], LorentzIndex[z,___]]);
+
+
+
+(*here f could be anything (Dirac matrix, tensor function etc.) carrying a Lorentz index*)
+PairContract/: PairContract[LorentzIndex[z_,dim___],(h:LorentzIndex|Momentum|ExplicitLorentzIndex)[x_,dim___]] f_[a__] :=
+	(f[a] /. LorentzIndex[z, ___]->h[x,dim]) /;(!FreeQ[f[a], LorentzIndex[z,___]]);
+
 
 PairContract3/: PairContract3[LorentzIndex[z_,dimL_:4],(h:CartesianIndex|CartesianMomentum)[x_,dimC_:3]] f_[a__] :=
 	(f[a] /. LorentzIndex[z, ___]->h[x,dimC]) /;(!FreeQ[f[a], LorentzIndex[z,___]]) && MatchQ[{dimL,dimC},{4,3}|{_Symbol,_Symbol-1}|{_Symbol-4,_Symbol-4}];

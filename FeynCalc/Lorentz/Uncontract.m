@@ -19,7 +19,7 @@ Uncontract::usage =
 "Uncontract[exp, q1, q2, ...] uncontracts Eps and DiracGamma.
 
 Uncontract[exp, q1, q2, Pair -> {p}] uncontracts also $p \\cdot q_1$ and $p
-\\cdot q_2$; 
+\\cdot q_2$;
 
 The option Pair -> All uncontracts all momenta except OPEDelta.";
 
@@ -150,16 +150,37 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 
 		If[	momAllow,
 
-			pairRules = Join[pairRules, {Pair[Momentum[g_,d_:4], Momentum[p_, e_:4]]/;!FreeQ[g,qMark] && FreeQ[p,qMark] :>
-			(	li = LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]];
-			Pair[Momentum[g, dimSelectLorentz[d]],li] Pair[li, Momentum[p,dimSelectLorentz[e]] ]),
+			pairRules = Join[pairRules, {
 
-			Pair[Momentum[g_,d_:4], Momentum[p_, d_:4]]/;!FreeQ[g,qMark] && !FreeQ[p,qMark] :>
-			(	li = LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]];
-				li2 = LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]];
-				Pair[li, li2] Pair[Momentum[g, dimSelectLorentz[d]],li] Pair[li2, Momentum[p,dimSelectLorentz[d]]])
+				Pair[Momentum[g_,d_:4], Momentum[p_, e_:4]]/;!FreeQ[g,qMark] && FreeQ[p,qMark] :>
+					(
+					li = LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]];
+					Pair[Momentum[g, dimSelectLorentz[d]],li] Pair[li, Momentum[p,dimSelectLorentz[e]] ]
+					),
 
-			}];
+
+				Pair[LightConePerpendicularComponent[Momentum[g_,d_:4],n_,nb_], LightConePerpendicularComponent[Momentum[p_, e_:4],n_,nb_]]/;!FreeQ[g,qMark] && FreeQ[p,qMark] :>
+					(
+					li = LightConePerpendicularComponent[LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]],n,nb];
+					Pair[LightConePerpendicularComponent[Momentum[g, dimSelectLorentz[d]],n, nb],li] Pair[li, LightConePerpendicularComponent[Momentum[p,dimSelectLorentz[e]],n,nb]]
+					),
+
+				Pair[Momentum[g_,d_:4], Momentum[p_, d_:4]]/;!FreeQ[g,qMark] && !FreeQ[p,qMark] :>
+					(
+					li = LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]];
+					li2 = LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]];
+					Pair[li, li2] Pair[Momentum[g, dimSelectLorentz[d]],li] Pair[li2, Momentum[p,dimSelectLorentz[d]]]
+					),
+
+				Pair[LightConePerpendicularComponent[Momentum[g_,d_:4],n_,nb_], LightConePerpendicularComponent[Momentum[p_, d_:4],n_,nb_]]/;!FreeQ[g,qMark] && !FreeQ[p,qMark] :>
+					(
+					li = LightConePerpendicularComponent[LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]],n,nb];
+					li2 = LightConePerpendicularComponent[LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]],n,nb];
+					Pair[li, li2] Pair[LightConePerpendicularComponent[Momentum[g, dimSelectLorentz[d]],n,nb],li]*
+					Pair[li2, Momentum[LightConePerpendicularComponent[p,n,nb],dimSelectLorentz[d]]]
+					)
+
+				}];
 
 			epsRules = Join[epsRules,
 				{Eps[a___, Momentum[g_,d_:4]  ,b___]/;!FreeQ[g,qMark] :>
