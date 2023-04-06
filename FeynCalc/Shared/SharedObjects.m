@@ -1105,6 +1105,255 @@ PauliChain::usage =
 "PauliChain[x, i, j] denotes a chain of Pauli matrices x, where the Pauli
 indices i and j are explicit.";
 
+(* Lightcone stuff *)
+
+GSLP::usage =
+"GSLP[p,n,nb] denotes the positive component in the lightcone decomposition of
+the slashed Dirac matrix $(\\gamma \\cdot p)$  along the vectors n and nb. It
+corresponds to $\\frac{1}{2} (\\bar{n} \\cdot p) (\\gamma \\cdot n)$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+GSLN::usage =
+"GSLN[p,n,nb] denotes the negative component in the lightcone decomposition of
+the slashed Dirac matrix $(\\gamma \\cdot p)$  along the vectors n and nb. It
+corresponds to $\\frac{1}{2} (n \\cdot p) (\\gamma \\cdot \\bar{n})$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+GSLR::usage =
+"GSLR[p,n,nb] denotes the perpendicular component in the lightcone
+decomposition of the slashed Dirac matrix $(\\gamma \\cdot p)$  along the
+vectors n and nb. It corresponds to $(\\gamma \\cdot \\p)_{\\perp}$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+GSLPD::usage =
+"GSLPD[p,n,nb] denotes the positive component in the lightcone decomposition of
+the slashed Dirac matrix $(\\gamma \\cdot p)$  along the vectors n and nb in $D$
+dimensions. It corresponds to $\\frac{1}{2} (\\bar{n} \\cdot p) (\\gamma \\cdot
+n)$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+GSLND::usage =
+"GSLND[p,n,nb] denotes the negative component in the lightcone decomposition of
+the slashed Dirac matrix $(\\gamma \\cdot p)$  along the vectors n and nb in $D$
+dimensions. It corresponds to $\\frac{1}{2} (n \\cdot p) (\\gamma \\cdot
+\\bar{n})$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+GSLRD::usage =
+"GSLRD[p,n,nb] denotes the perpendicular component in the lightcone
+decomposition of the slashed Dirac matrix $(\\gamma \\cdot p)$  along the
+vectors n and nb  in $D$ dimensions. It corresponds to $(\\gamma \\cdot
+\\p)_{\\perp}$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+GALP::usage =
+"GALP[mu,n,nb] denotes the positive component in the lightcone decomposition of
+the Dirac matrix $\\gamma^{\\mu }$  along the vectors n and nb. It corresponds
+to $\\frac{1}{2} \\bar{n}^{\\mu} (\\gamma \\cdot n)$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+GALN::usage =
+"GALN[mu,n,nb] denotes the negative component in the lightcone decomposition of
+the Dirac matrix $\\gamma^{\\mu }$  along the vectors n and nb. It corresponds
+to $\\frac{1}{2} n^{\\mu} (\\gamma \\cdot \\bar{n})$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+GALR::usage =
+"GALR[mu,n,nb] denotes the perpendicular component in the lightcone
+decomposition of the Dirac matrix $\\gamma^{\\mu }$  along the vectors n and nb.
+It corresponds to $\\gamma^{\\mu}_{\\perp}$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+GALPD::usage =
+"GALPD[mu,n,nb] denotes the positive component in the lightcone decomposition
+of the Dirac matrix $\\gamma^{\\mu }$  along the vectors n and nb  in
+$D$-dimensions. It corresponds to $\\frac{1}{2} \\bar{n}^{\\mu} (\\gamma \\cdot
+n)$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+GALND::usage =
+"GALND[mu,n,nb] denotes the negative component in the lightcone decomposition
+of the Dirac matrix $\\gamma^{\\mu }$  along the vectors n and nb  in
+$D$-dimensions. It corresponds to $\\frac{1}{2} n^{\\mu} (\\gamma \\cdot
+\\bar{n})$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+GALRD::usage =
+"GALRD[mu,n,nb] denotes the perpendicular component in the lightcone
+decomposition of the Dirac matrix $\\gamma^{\\mu }$  along the vectors n and nb
+in $D$ dimensions. It corresponds to $\\gamma^{\\mu}_{\\perp}$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+FVLP::usage =
+"FVLP[p,mu,n,nb] denotes the positive component in the lightcone decomposition
+of the Lorentz vector $p^{\\mu }$  along the vectors n and nb. It corresponds
+to $\\frac{1}{2} \\bar{n}^{\\mu} (p \\cdot n)$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+FVLN::usage =
+"FVLN[p,mu,n,nb] denotes the positive component in the lightcone decomposition
+of the Lorentz vector $p^{\\mu }$  along the vectors n and nb. It corresponds
+to $\\frac{1}{2} n^{\\mu} (p \\cdot \\bar{n})$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+FVLR::usage =
+"FVLR[p,mu,n,nb] denotes the perpendicular component in the lightcone
+decomposition of the Lorentz vector $p^{\\mu }$  along the vectors n and nb. It
+corresponds to $p^{\\mu }_{\\perp}$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+FVLPD::usage =
+"FVLPD[p,mu,n,nb] denotes the positive component in the lightcone decomposition
+of the Lorentz vector $p^{\\mu }$  along the vectors n and nb in $D$
+dimensions. It corresponds to $\\frac{1}{2} \\bar{n}^{\\mu} (p \\cdot n)$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+FVLND::usage =
+"FVLND[p,mu,n,nb] denotes the positive component in the lightcone decomposition
+of the Lorentz vector $p^{\\mu }$  along the vectors n and nb in $D$
+dimensions. It corresponds to $\\frac{1}{2} n^{\\mu} (p \\cdot \\bar{n})$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+FVLRD::usage =
+"FVLRD[p,mu,n,nb] denotes the perpendicular component in the lightcone
+decomposition of the Lorentz vector $p^{\\mu }$  along the vectors n and nb in
+$D$ dimensions. It corresponds to $p^{\\mu }_{\\perp}$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+
+MTLP::usage =
+"MTLP[mu,nu,n,nb] denotes the positive component in the lightcone decomposition
+of the metric tensor $g^{\\mu \\nu}$  along the vectors n and nb. It corresponds
+to $\\frac{1}{2} \\bar{n}^{\\mu}  n^\\nu$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+MTLN::usage =
+"MTLN[mu,nu,n,nb] denotes the positive component in the lightcone decomposition
+of the metric tensor $g^{\\mu \\nu}$  along the vectors n and nb. It corresponds
+to $\\frac{1}{2} n^{\\mu}  \\bar{n}^\\nu$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+MTLR::usage =
+"MTLR[p,mu,n,nb] denotes the perpendicular component in the lightcone
+decomposition of the metric tensor $g^{\\mu \\nu}$  along the vectors n and nb.
+It corresponds to $g^{\\mu \\nu}_{\\perp}$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+MTLPD::usage =
+"MTLPD[mu,nu,n,nb] denotes the positive component in the lightcone
+decomposition of the metric tensor $g^{\\mu \\nu}$  along the vectors n and nb.
+It corresponds to $\\frac{1}{2} \\bar{n}^{\\mu}  n^\\nu$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+MTLND::usage =
+"MTLND[mu,nu,n,nb] denotes the positive component in the lightcone
+decomposition of the metric tensor $g^{\\mu \\nu}$  along the vectors n and nbin
+$D$ dimensions. It corresponds to $\\frac{1}{2} n^{\\mu}  \\bar{n}^\\nu$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+MTLRD::usage =
+"MTLRD[p,mu,n,nb] denotes the perpendicular component in the lightcone
+decomposition of the metric tensor $g^{\\mu \\nu}$  along the vectors n and nb
+in $D$ dimensions. It corresponds to $g^{\\mu \\nu}_{\\perp}$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+
+SPLP::usage =
+"SPLP[p,q,n,nb] denotes the positive component in the lightcone decomposition
+of the scalar product $p \\cdot q$  along the vectors n and nb. It corresponds
+to $\\frac{1}{2} (p \\cdot n) (q \\cdot \\bar{n})$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+SPLN::usage =
+"SPLN[p,q,n,nb] denotes the negative component in the lightcone decomposition
+of the scalar product $p \\cdot q$  along the vectors n and nb. It corresponds
+to $\\frac{1}{2} (p \\cdot \\bar{n}) (q \\cdot n)$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+SPLR::usage =
+"SPLR[p,q,n,nb] denotes the perpendicular component in the lightcone
+decomposition of the scalar product $p \\cdot q$  along the vectors n and nb.
+It corresponds to $(p \\cdot q)_{\\perp}$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+SPLPD::usage =
+"SPLPD[p,q,n,nb] denotes the positive component in the lightcone decomposition
+of the scalar product $p \\cdot q$  along the vectors n and nb in
+$D$-dimensions. It corresponds to $\\frac{1}{2} (p \\cdot n) (q \\cdot \\bar{n})$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+SPLND::usage =
+"SPLND[p,q,n,nb] denotes the negative component in the lightcone decomposition
+of the scalar product $p \\cdot q$  along the vectors n and nb in
+$D$-dimensions. It corresponds to $\\frac{1}{2} (p \\cdot \\bar{n}) (q \\cdot n)$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
+SPLRD::usage =
+"SPLRD[p,q,n,nb] denotes the perpendicular component in the lightcone
+decomposition of the scalar product $p \\cdot q$  along the vectors n and nb.
+It corresponds to $(p \\cdot q)_{\\perp}$.
+
+If one omits n and nb, the program will use default vectors specified via
+$FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
+
 (* ------------------------------------------------------------------------ *)
 Begin["`Package`"];
 
@@ -1967,6 +2216,12 @@ LightConePerpendicularComponent[0, __] :=
 LightConePerpendicularComponent[Momentum[n_,___], ___, Momentum[n_,___], ___] :=
 	0;
 
+LightConePerpendicularComponent[head_[x_,dim___]] :=
+	LightConePerpendicularComponent[head[x,dim], Momentum[$FCDefaultLightconeVectorN,dim], Momentum[$FCDefaultLightconeVectorNB,dim]];
+
+LightConePerpendicularComponent[LightConePerpendicularComponent[x_,n_,nb_],n_,nb_] :=
+	LightConePerpendicularComponent[x,n,nb];
+
 Momentum[x_ GaugeXi[y_], dim_:4] :=
 	GaugeXi[y] Momentum[x,dim];
 
@@ -2674,6 +2929,223 @@ TemporalMomentum[0] :=
 TC/:
 	Set[TC[a_] , b_]:=
 		SetTemporalComponent[a,b];
+
+(* ------------------------------------------------------------------------ *)
+(*							New LC objects									*)
+(* ------------------------------------------------------------------------ *)
+
+
+(*GS*)
+
+GSLP[0, ___]:=
+	0;
+
+GSLP[x_]:=
+	GSLP[x,$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB]/; FCPatternFreeQ[{x}];
+
+GSLN[0, ___]:=
+	0;
+
+GSLN[x_]:=
+	GSLN[x,$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB]/; FCPatternFreeQ[{x}];
+
+GSLR[{x__}, y___] :=
+	DOT @@ Map[GSLR[#,y]&,{x}];
+
+GSLR[0, ___]:=
+	0;
+
+GSLR[x_]:=
+	GSLR[x,$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB]/; FCPatternFreeQ[{x}];
+
+GSLPD[0, ___]:=
+	0;
+
+GSLPD[x_]:=
+	GSLPD[x,$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB]/; FCPatternFreeQ[{x}];
+
+GSLND[0, ___]:=
+	0;
+
+GSLND[x_]:=
+	GSLND[x,$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB]/; FCPatternFreeQ[{x}];
+
+GSLRD[{x__}, y___] :=
+	DOT @@ Map[GSLRD[#,y]&,{x}];
+
+GSLRD[0, ___]:=
+	0;
+
+GSLRD[x_]:=
+	GSLRD[x,$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB]/; FCPatternFreeQ[{x}];
+
+
+(*GA*)
+
+GALP[x_]:=
+	GALP[x,$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB]/; FCPatternFreeQ[{x}];
+
+GALN[x_]:=
+	GALN[x,$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB]/; FCPatternFreeQ[{x}];
+
+GALR[{x__}, y___] :=
+	DOT @@ Map[GALR[#,y]&,{x}];
+
+GALR[x_]:=
+	GALR[x,$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB]/; FCPatternFreeQ[{x}];
+
+GALPD[x_]:=
+	GALPD[x,$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB]/; FCPatternFreeQ[{x}];
+
+GALND[x_]:=
+	GALND[x,$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB]/; FCPatternFreeQ[{x}];
+
+GALRD[{x__}, y___] :=
+	DOT @@ Map[GALRD[#,y]&,{x}];
+
+GALRD[x_]:=
+	GALRD[x,$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB]/; FCPatternFreeQ[{x}];
+
+(*FV*)
+
+FVLP[0, __]:=
+	0;
+
+FVLP[x_, y_]:=
+	FVLP[x, y, $FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB];
+
+FVLN[0, __]:=
+	0;
+
+FVLN[x_, y_]:=
+	FVLN[x, y, $FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB];
+
+FVLR[0, __]:=
+	0;
+
+FVLR[x_, y_]:=
+	FVLR[x, y, $FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB];
+
+FVLPD[0, __]:=
+	0;
+
+FVLPD[x_, y_]:=
+	FVLPD[x, y, $FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB];
+
+FVLND[0, __]:=
+	0;
+
+FVLND[x_, y_]:=
+	FVLND[x, y, $FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB];
+
+FVLRD[0, __]:=
+	0;
+
+FVLRD[x_, y_]:=
+	FVLRD[x, y, $FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB];
+
+(*MT*)
+
+(*
+	Careful, not symmetric!
+	MTLP -> g_{+-}^{mu nu}
+	MTLN -> g_{-+}^{mu nu}
+*)
+
+MTLP[x_, y_]:=
+	MTLP[x, y, $FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB];
+
+MTLN[x_, y_]:=
+	MTLN[x, y, $FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB];
+
+MTLR[x_, y_, r___] :=
+	MTLR[y, x, r] /; !OrderedQ[{x, y}];
+
+MTLR[x_, y_]:=
+	MTLR[x, y, $FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB];
+
+MTLPD[x_, y_]:=
+	MTLPD[x, y, $FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB];
+
+MTLND[x_, y_]:=
+	MTLND[x, y, $FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB];
+
+MTLRD[x_, y_]:=
+	MTLRD[x, y, $FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB];
+
+MTLRD[x_, y_, r___] :=
+	MTLRD[y, x, r] /; !OrderedQ[{x, y}];
+
+(*SP*)
+
+(*
+	Careful, not symmetric!
+	SPLP -> (p_+).(q_-)
+	SPLN -> (p_-).(q_+)
+*)
+
+SPLP[0, __]:=
+	0;
+
+SPLP[_, 0, ___]:=
+	0;
+
+SPLP[x_, y_]:=
+	SPLP[x, y, $FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB];
+
+SPLN[0, __]:=
+	0;
+
+SPLN[_, 0, ___]:=
+	0;
+
+SPLN[x_, y_]:=
+	SPLN[x, y, $FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB];
+
+
+SPLR[x_, y_, r___] :=
+	SPLR[y, x, r] /; !OrderedQ[{x, y}];
+
+SPLR[0, __]:=
+	0;
+
+SPLR[_, 0, ___]:=
+	0;
+
+SPLR[x_, y_]:=
+	SPLR[x,y,$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB];
+
+SPLPD[0, __]:=
+	0;
+
+SPLPD[_, 0, ___]:=
+	0;
+
+SPLPD[x_, y_]:=
+	SPLPD[x,y,$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB];
+
+SPLND[0, __]:=
+	0;
+
+SPLND[_, 0, ___]:=
+	0;
+
+SPLND[x_, y_]:=
+	SPLND[x,y,$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB];
+
+SPLRD[x_, y_, r___] :=
+	SPLRD[y, x, r] /; !OrderedQ[{x, y}];
+
+SPLRD[0, __]:=
+	0;
+
+SPLRD[_, 0, ___]:=
+	0;
+
+SPLRD[x_, y_]:=
+	SPLRD[x,y,$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB];
+
+
 
 initialPairDownValues 				= DownValues[Pair];
 initialCartesianPairDownValues		= DownValues[CartesianPair];

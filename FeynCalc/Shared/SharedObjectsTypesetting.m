@@ -1139,6 +1139,33 @@ MakeBoxes[Power[FVE[a_, b_], n_], TraditionalForm] :=
 (* ------------------------------------------------------------------------ *)
 
 
+FVLP /:
+	MakeBoxes[FVLP[a_, b_, n_, nb_], TraditionalForm]:=
+		ToBoxes[1/2 Pair[Momentum[nb],LorentzIndex[b]] Pair[Momentum[n],Momentum[a]], TraditionalForm];
+
+FVLN /:
+	MakeBoxes[FVLN[a_, b_, n_, nb_], TraditionalForm]:=
+		ToBoxes[1/2 Pair[Momentum[n],LorentzIndex[b]] Pair[Momentum[nb],Momentum[a]], TraditionalForm];
+
+FVLR /:
+	MakeBoxes[FVLR[a_, b_, n_, nb_], TraditionalForm]:=
+		ToBoxes[Pair[LightConePerpendicularComponent[Momentum[a],Momentum[n],Momentum[nb]],
+			LightConePerpendicularComponent[LorentzIndex[b],Momentum[n],Momentum[nb]]], TraditionalForm];
+
+FVLPD /:
+	MakeBoxes[FVLPD[a_, b_, n_, nb_], TraditionalForm]:=
+		ToBoxes[1/2 Pair[Momentum[nb,D],LorentzIndex[b,D]] Pair[Momentum[n,D],Momentum[a,D]], TraditionalForm];
+
+FVLND /:
+	MakeBoxes[FVLND[a_, b_, n_, nb_], TraditionalForm]:=
+		ToBoxes[1/2 Pair[Momentum[n,D],LorentzIndex[b,D]] Pair[Momentum[nb,D],Momentum[a,D]], TraditionalForm];
+
+FVLRD /:
+	MakeBoxes[FVLRD[a_, b_, n_, nb_], TraditionalForm]:=
+		ToBoxes[Pair[LightConePerpendicularComponent[Momentum[a,D],Momentum[n,D],Momentum[nb,D]],
+			LightConePerpendicularComponent[LorentzIndex[b,D],Momentum[n,D],Momentum[nb,D]]], TraditionalForm];
+
+
 (* TraditionalForm  of the Dirac matrices in the FCE notation *)
 (* ------------------------------------------------------------------------ *)
 
@@ -1157,6 +1184,27 @@ GAD /:
 GAE /:
 	MakeBoxes[GAE[x_], TraditionalForm ]:=
 		ToBoxes[DiracGamma[LorentzIndex[x, D-4], D-4], TraditionalForm];
+
+GALP /:
+	MakeBoxes[GALP[x_,n_,nb_], TraditionalForm ]:=
+		ToBoxes[1/2 Pair[Momentum[nb],LorentzIndex[x]] DiracGamma[Momentum[n]], TraditionalForm];
+GALN /:
+	MakeBoxes[GALN[x_,n_,nb_], TraditionalForm ]:=
+		ToBoxes[1/2 Pair[Momentum[n],LorentzIndex[x]] DiracGamma[Momentum[nb]], TraditionalForm];
+GALR /:
+	MakeBoxes[GALR[x_,n_,nb_], TraditionalForm ]:=
+		ToBoxes[DiracGamma[LightConePerpendicularComponent[LorentzIndex[x],Momentum[n],Momentum[nb]]], TraditionalForm];
+
+GALPD /:
+	MakeBoxes[GALPD[x_,n_,nb_], TraditionalForm ]:=
+		ToBoxes[1/2 Pair[Momentum[nb,D],LorentzIndex[x,D]] DiracGamma[Momentum[n,D],D], TraditionalForm];
+GALND /:
+	MakeBoxes[GALND[x_,n_,nb_], TraditionalForm ]:=
+		ToBoxes[1/2 Pair[Momentum[n,D],LorentzIndex[x,D]] DiracGamma[Momentum[nb,D],D], TraditionalForm];
+GALRD /:
+	MakeBoxes[GALRD[x_,n_,nb_], TraditionalForm ]:=
+		ToBoxes[DiracGamma[LightConePerpendicularComponent[LorentzIndex[x,D],Momentum[n,D],Momentum[nb,D]],D], TraditionalForm];
+
 
 (* ------------------------------------------------------------------------ *)
 
@@ -1190,6 +1238,28 @@ GSD/:
 GSE/:
 	MakeBoxes[GSE[a_], TraditionalForm ]:=
 		ToBoxes[DiracGamma[Momentum[a,D-4],D-4], TraditionalForm];
+
+
+GSLP /:
+	MakeBoxes[GSLP[x_,n_,nb_], TraditionalForm ]:=
+		ToBoxes[1/2 Pair[Momentum[nb],Momentum[x]] DiracGamma[Momentum[n]], TraditionalForm];
+GSLN /:
+	MakeBoxes[GSLN[x_,n_,nb_], TraditionalForm ]:=
+		ToBoxes[1/2 Pair[Momentum[n],Momentum[x]] DiracGamma[Momentum[nb]], TraditionalForm];
+GSLR /:
+	MakeBoxes[GSLR[x_,n_,nb_], TraditionalForm ]:=
+		ToBoxes[DiracGamma[LightConePerpendicularComponent[Momentum[x],Momentum[n],Momentum[nb]]], TraditionalForm];
+
+GSLPD /:
+	MakeBoxes[GSLPD[x_,n_,nb_], TraditionalForm ]:=
+		ToBoxes[1/2 Pair[Momentum[nb,D],Momentum[x,D]] DiracGamma[Momentum[n,D],D], TraditionalForm];
+GSLND /:
+	MakeBoxes[GSLND[x_,n_,nb_], TraditionalForm ]:=
+		ToBoxes[1/2 Pair[Momentum[n,D],Momentum[x,D]] DiracGamma[Momentum[nb,D],D], TraditionalForm];
+GSLRD /:
+	MakeBoxes[GSLRD[x_,n_,nb_], TraditionalForm ]:=
+		ToBoxes[DiracGamma[LightConePerpendicularComponent[Momentum[x,D],Momentum[n,D],Momentum[nb,D]],D], TraditionalForm];
+
 
 (* ------------------------------------------------------------------------ *)
 
@@ -1256,10 +1326,6 @@ LightConePerpendicularComponent /:
 	MakeBoxes[ LightConePerpendicularComponent[p_, ___], TraditionalForm]:=
 		SubscriptBox[ToBoxes[p,TraditionalForm], "\[Perpendicular]"];
 
-FVD /:
-	MakeBoxes[FVD[a_, b_], TraditionalForm]:=
-		ToBoxes[Pair[Momentum[a, D],LorentzIndex[b, D]], TraditionalForm];
-
 (*    Typesetting for momenta.    *)
 (* ------------------------------------------------------------------------ *)
 
@@ -1315,6 +1381,36 @@ MTE /:
 MTD /:
 	MakeBoxes[MTD[x_,y_], TraditionalForm ]:=
 		ToBoxes[Pair[LorentzIndex[x, D],LorentzIndex[y, D]], TraditionalForm];
+
+
+MTLP /:
+	MakeBoxes[MTLP[x_,y_, n_, nb_], TraditionalForm ]:=
+		ToBoxes[(Pair[LorentzIndex[x], Momentum[nb]]*Pair[LorentzIndex[y], Momentum[n]])/2, TraditionalForm];
+
+MTLN /:
+	MakeBoxes[MTLN[x_,y_, n_, nb_], TraditionalForm ]:=
+		ToBoxes[(Pair[LorentzIndex[x], Momentum[n]]*Pair[LorentzIndex[y], Momentum[nb]])/2, TraditionalForm];
+
+
+MTLR /:
+	MakeBoxes[MTLR[x_,y_, n_, nb_], TraditionalForm ]:=
+		ToBoxes[Pair[LightConePerpendicularComponent[LorentzIndex[x], Momentum[n], Momentum[nb]],
+			LightConePerpendicularComponent[LorentzIndex[y], Momentum[n], Momentum[nb]]], TraditionalForm];
+
+
+MTLPD /:
+	MakeBoxes[MTLPD[x_,y_, n_, nb_], TraditionalForm ]:=
+		ToBoxes[(Pair[LorentzIndex[x,D], Momentum[nb,D]]*Pair[LorentzIndex[y,D], Momentum[n,D]])/2, TraditionalForm];
+
+MTLND /:
+	MakeBoxes[MTLND[x_,y_, n_, nb_], TraditionalForm ]:=
+		ToBoxes[(Pair[LorentzIndex[x,D], Momentum[n,D]]*Pair[LorentzIndex[y,D], Momentum[nb,D]])/2, TraditionalForm];
+
+
+MTLRD /:
+	MakeBoxes[MTLRD[x_,y_, n_, nb_], TraditionalForm ]:=
+		ToBoxes[Pair[LightConePerpendicularComponent[LorentzIndex[x,D], Momentum[n,D], Momentum[nb,D]],
+			LightConePerpendicularComponent[LorentzIndex[y,D], Momentum[n,D], Momentum[nb,D]]], TraditionalForm];
 
 Nf /:
 	MakeBoxes[Nf, TraditionalForm]:=
@@ -1747,6 +1843,31 @@ SPE /:
 	MakeBoxes[SPE[a_, b_], TraditionalForm]:=
 		ToBoxes[Pair[Momentum[a,D-4],Momentum[b,D-4]], TraditionalForm];
 
+SPLP /:
+	MakeBoxes[SPLP[x_,y_, n_, nb_], TraditionalForm ]:=
+		ToBoxes[(Pair[Momentum[x], Momentum[n]]*Pair[Momentum[y], Momentum[nb]])/2, TraditionalForm];
+
+SPLN /:
+	MakeBoxes[SPLN[x_,y_, n_, nb_], TraditionalForm ]:=
+		ToBoxes[(Pair[Momentum[x], Momentum[nb]]*Pair[Momentum[y], Momentum[n]])/2, TraditionalForm];
+
+SPLR /:
+	MakeBoxes[SPLR[x_,y_, n_, nb_], TraditionalForm ]:=
+		ToBoxes[Pair[LightConePerpendicularComponent[Momentum[x], Momentum[n], Momentum[nb]],
+			LightConePerpendicularComponent[Momentum[y], Momentum[n], Momentum[nb]]], TraditionalForm];
+
+SPLPD /:
+	MakeBoxes[SPLPD[x_,y_, n_, nb_], TraditionalForm ]:=
+		ToBoxes[(Pair[Momentum[x,D], Momentum[n,D]]*Pair[Momentum[y,D], Momentum[nb,D]])/2, TraditionalForm];
+
+SPLND /:
+	MakeBoxes[SPLND[x_,y_, n_, nb_], TraditionalForm ]:=
+		ToBoxes[(Pair[Momentum[x,D], Momentum[nb,D]]*Pair[Momentum[y,D], Momentum[n,D]])/2, TraditionalForm];
+
+SPLRD /:
+	MakeBoxes[SPLRD[x_,y_, n_, nb_], TraditionalForm ]:=
+		ToBoxes[Pair[LightConePerpendicularComponent[Momentum[x,D], Momentum[n,D], Momentum[nb,D]],
+			LightConePerpendicularComponent[Momentum[y,D], Momentum[n,D], Momentum[nb,D]]], TraditionalForm];
 
 MakeBoxes[Power[SPD[a_, a_],n_Integer?Positive], TraditionalForm] :=
 	If[ Head[a]===Plus,

@@ -80,6 +80,17 @@ is not persistent and will not modify the global options of Mathematica.
 If unsure, it is recommended to set $FCTraditionalFormOutput to True, so that
 you can benefit from the nice FeynCalc typesetting for various QFT quantities.";
 
+
+$FCDefaultLightconeVectorN::usage=
+"$FCDefaultLightconeVectorN is  a global variable which is set to FCGV[\"n\"].
+It denotes the default name for the vector $n$ in the lightcone decomposition
+for Lorentz tensors.";
+
+$FCDefaultLightconeVectorNB::usage=
+"$FCDefaultLightconeVectorNB is  a global variable which is set to
+FCGV[\"nb\"]. It denotes the default name for the vector $\\bar{n}$ in the
+lightcone decomposition for Lorentz tensors.";
+
 $FeynCalcStartupMessages::usage=
 "$FeynCalcStartupMessages specifies whether some additional information about
 FeynCalc should be displayed when the package is loaded. Its value must be set
@@ -448,6 +459,9 @@ DOT = Dot;
 	In the context of the packages, $ContextPath is typically
 	{"System`", "FeynCalc`"}.
 	*)
+
+$FCDefaultLightconeVectorN = FeynCalc`FCGV["n"];
+$FCDefaultLightconeVectorNB = FeynCalc`FCGV["nb"];
 
 FeynCalcHowToCite[]:=
 	(

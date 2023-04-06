@@ -78,101 +78,148 @@ FeynCalcInternal[x_, opts___Rule] :=
 
 		ru =  Join[	{
 
-			SpinorU 	:> tospinor,
-			SpinorUBar	:> tospinor,
-			SpinorV		:> tospinorv,
-			SpinorVBar	:> tospinorv,
+			SpinorU 			:> tospinor,
+			SpinorUBar			:> tospinor,
+			SpinorV				:> tospinorv,
+			SpinorVBar			:> tospinorv,
 
-			SpinorUD 	:> tospinorD,
-			SpinorUBarD	:> tospinorD,
-			SpinorVD	:> tospinorvD,
-			SpinorVBarD	:> tospinorvD,
+			SpinorUD 			:> tospinorD,
+			SpinorUBarD			:> tospinorD,
+			SpinorVD			:> tospinorvD,
+			SpinorVBarD			:> tospinorvD,
 
-			SUNF :> tosunf,
-			MetricTensor :> metricT,
-			DiracMatrix  :> diracM,
-			DiracSlash :> diracS,
-			DIDelta :> didelta,
-			PIDelta :> pidelta,
-			FourVector :> fourV,
-			SD :> sdeltacont,
-			SDF :> sfdeltacont,
-			SUNDelta :> sdeltacont,
-			SUNFDelta :> sfdeltacont,
-			SUND :> tosund,
-			SUNDeltaContract :> sdeltacontr,
-			SUNFDeltaContract :> sfdeltacontr,
-			SUNT :> sunTint,
-			SUNTF :> sunTFint,
-			SFAD :> sfadint,
-			FAD :> fadint,
-			GFAD :> gfadint,
-			CFAD :> cfadint,
-			FVD :> fvd,
-			FVE :> fve,
-			FV :> fv,
-			DCHN :> dchn,
-			PCHN :> pchn,
-			LeviCivita :> levicivita,
-			LC :> lc,
-			LCD :> lcd,
-			MT :> mt,
-			MTD :> mtd,
-			MTE :> mte,
-			GA :> ga,
-			GAD :> gad,
-			GAE :> gae,
-			GS :> gs,
-			GSD :> gsd,
-			GSE :> gse,
-			SP :> sp,
-			SPD :> spd,
-			SPE :> spe,
-			SO :> so,
-			SOD :> sod,
+			SUNF 				:> tosunf,
+			MetricTensor 		:> metricT,
+			DiracMatrix		  	:> diracM,
+			DiracSlash			:> diracS,
+			DIDelta				:> didelta,
+			PIDelta				:> pidelta,
+			FourVector			:> fourV,
 
-			TC :> tc,
-			CV :> cv,
-			CVD :> cvd,
-			CVE :> cve,
+			SD					:> sdeltacont,
+			SDF					:> sfdeltacont,
+			SUNDelta			:> sdeltacont,
+			SUNFDelta			:> sfdeltacont,
+			SUND				:> tosund,
+			SUNDeltaContract	:> sdeltacontr,
+			SUNFDeltaContract	:> sfdeltacontr,
+			SUNT 				:> sunTint,
+			SUNTF 				:> sunTFint,
 
-			KD :> kd,
-			KDD :> kdd,
-			KDE :> kde,
+			SFAD 				:> sfadint,
+			FAD 				:> fadint,
+			GFAD 				:> gfadint,
+			CFAD 				:> cfadint,
 
-			CSP :> csp,
-			CSPD :> cspd,
-			CSPE :> cspe,
+			FVD 				:> fvd,
+			FVE 				:> fve,
+			FV 					:> fv,
 
-			CLC :> clc,
-			CLCD :> clcd,
+			DCHN 				:> dchn,
+			PCHN 				:> pchn,
 
-			TGA :> tga,
-			CGA :> cga,
-			CGAD :> cgad,
-			CGAE :> cgae,
+			LeviCivita 			:> levicivita,
+			LC 					:> lc,
+			LCD 				:> lcd,
 
-			CGS :> cgs,
-			CGSD :> cgsd,
-			CGSE :> cgse,
+			MT 					:> mt,
+			MTD 				:> mtd,
+			MTE 				:> mte,
 
-			SI :> si,
-			SID :> sid,
-			SIE :> sie,
+			GA 					:> ga,
+			GAD 				:> gad,
+			GAE 				:> gae,
+			GS 					:> gs,
+			GSD 				:> gsd,
+			GSE 				:> gse,
 
-			SIS :> sis,
-			SISD :> sisd,
-			SISE :> sise,
+			SP 					:> sp,
+			SPD 				:> spd,
+			SPE				 	:> spe,
 
-			CSI :> csi,
-			CSID :> csid,
-			CSIE :> csie,
+			SO 					:> so,
+			SOD 				:> sod,
 
-			CSIS :> csis,
-			CSISD :> csisd,
-			CSISE :> csise
+			TC 					:> tc,
+			CV 					:> cv,
+			CVD 				:> cvd,
+			CVE 				:> cve,
+
+			KD					:> kd,
+			KDD 				:> kdd,
+			KDE 				:> kde,
+
+			CSP 				:> csp,
+			CSPD 				:> cspd,
+			CSPE 				:> cspe,
+
+			CLC 				:> clc,
+			CLCD 				:> clcd,
+
+			TGA 				:> tga,
+			CGA 				:> cga,
+			CGAD 				:> cgad,
+			CGAE 				:> cgae,
+
+			CGS 				:> cgs,
+			CGSD 				:> cgsd,
+			CGSE 				:> cgse,
+
+			SI 					:> si,
+			SID 				:> sid,
+			SIE 				:> sie,
+
+			SIS 				:> sis,
+			SISD				:> sisd,
+			SISE 				:> sise,
+
+			CSI 				:> csi,
+			CSID 				:> csid,
+			CSIE 				:> csie,
+
+			CSIS 				:> csis,
+			CSISD 				:> csisd,
+			CSISE 				:> csise,
+
+			LCPP 				:> lcpp,
 
 
+			GSLP 				:> gslp,
+			GSLN 				:> gsln,
+			GSLR 				:> gslr,
+			GSLPD 				:> gslpd,
+			GSLND 				:> gslnd,
+			GSLRD 				:> gslrd,
+
+			GALP 				:> galp,
+			GALN 				:> galn,
+			GALR 				:> galr,
+			GALPD				:> galpd,
+			GALND 				:> galnd,
+			GALRD 				:> galrd,
+
+			FVLP 				:> fvlp,
+			FVLN 				:> fvln,
+			FVLR 				:> fvlr,
+			FVLPD 				:> fvlpd,
+			FVLND 				:> fvlnd,
+			FVLRD 				:> fvlrd,
+
+
+			MTLP 				:> mtlp,
+			MTLN 				:> mtln,
+			MTLR 				:> mtlr,
+			MTLPD 				:> mtlpd,
+			MTLND 				:> mtlnd,
+			MTLRD 				:> mtlrd,
+
+
+			SPLP 				:> splp,
+			SPLN 				:> spln,
+			SPLR 				:> splr,
+			SPLPD 				:> splpd,
+			SPLND			 	:> splnd,
+			SPLRD 				:> splrd
 			},
 			{ScalarProduct :> scalarP},
 			{Dot -> DOT},
@@ -223,6 +270,9 @@ pidelta[i_,j_]:=
 	PauliIndexDelta[PauliIndex[i],PauliIndex[j]];
 
 Options[diracM] = {Dimension -> 4, FCI -> True};
+
+lcpp[x_,n_,nb_]:=
+	LightConePerpendicularComponent[x,Momentum[n],Momentum[nb]];
 
 diracM[n_?NumberQ y:Except[_?OptionQ], opts:OptionsPattern[]] :=
 	n diracM[y,opts];
@@ -707,6 +757,104 @@ tospinorD[p_,m_:0,c_:1]:=
 
 tospinorvD[p_,m_:0,c_:1]:=
 	Spinor[-Momentum[p,D],m,c];
+
+
+gslp[a_,n_,nb_]:=
+		1/2 gs[n] sp[a,nb];
+
+gsln[a_,n_,nb_]:=
+		1/2 gs[nb] sp[a,n];
+
+gslr[a_,n_,nb_]:=
+	gs[LightConePerpendicularComponent[a, Momentum[n], Momentum[nb]]];
+
+gslpd[a_,n_,nb_]:=
+		1/2 gsd[n] spd[a,nb];
+
+gslnd[a_,n_,nb_]:=
+		1/2 gsd[nb] spd[a,n];
+
+gslrd[a_,n_,nb_]:=
+	gsd[LightConePerpendicularComponent[a, Momentum[n,D], Momentum[nb,D]]];
+
+
+
+galp[a_,n_,nb_]:=
+		1/2 gs[n] fv[nb,a];
+
+galn[a_,n_,nb_]:=
+		1/2 gs[nb] fv[n,a];
+
+galr[a_,n_,nb_]:=
+	ga[LightConePerpendicularComponent[a, Momentum[n], Momentum[nb]]];
+
+galpd[a_,n_,nb_]:=
+		1/2 gsd[n] fvd[nb,a];
+
+galnd[a_,n_,nb_]:=
+	1/2 gsd[nb] fvd[n, a];
+
+galrd[a_,n_,nb_]:=
+	gad[LightConePerpendicularComponent[a, Momentum[n,D], Momentum[nb,D]]];
+
+
+fvlp[a_,b_,n_,nb_]:=
+	1/2 sp[a,n] fv[nb,b];
+
+fvln[a_,b_,n_,nb_]:=
+	1/2 sp[a,nb] fv[n,b];
+
+fvlr[a_,b_,n_,nb_]:=
+	fv[LightConePerpendicularComponent[a, Momentum[n], Momentum[nb]], LightConePerpendicularComponent[b, Momentum[n], Momentum[nb]]];
+
+
+fvlpd[a_,b_,n_,nb_]:=
+	1/2 spd[a,n] fvd[nb,b];
+
+fvlnd[a_,b_,n_,nb_]:=
+	1/2 spd[a,nb] fvd[n,b];
+
+fvlrd[a_,b_,n_,nb_]:=
+	fvd[LightConePerpendicularComponent[a, Momentum[n,D], Momentum[nb,D]], LightConePerpendicularComponent[b, Momentum[n,D], Momentum[nb,D]]];
+
+mtlp[a_,b_,n_,nb_]:=
+	1/2 fv[nb,a] fv[n,b];
+
+mtln[a_,b_,n_,nb_]:=
+	1/2 fv[n,a] fv[nb,b];
+
+mtlr[a_,b_,n_,nb_]:=
+	mt[LightConePerpendicularComponent[a, Momentum[n], Momentum[nb]], LightConePerpendicularComponent[b, Momentum[n], Momentum[nb]]];
+
+
+mtlpd[a_,b_,n_,nb_]:=
+	1/2 fvd[nb,a] fvd[n,b];
+
+mtlnd[a_,b_,n_,nb_]:=
+	1/2 fvd[n,a] fvd[nb,b];
+
+mtlrd[a_,b_,n_,nb_]:=
+	mtd[LightConePerpendicularComponent[a, Momentum[n,D], Momentum[nb,D]], LightConePerpendicularComponent[b, Momentum[n,D], Momentum[nb,D]]];
+
+
+splp[a_,b_,n_,nb_]:=
+	1/2 sp[n,a] sp[nb,b];
+
+spln[a_,b_,n_,nb_]:=
+	1/2 sp[nb,a] sp[n,b];
+
+splr[a_,b_,n_,nb_]:=
+	sp[LightConePerpendicularComponent[a, Momentum[n], Momentum[nb]],LightConePerpendicularComponent[b, Momentum[n], Momentum[nb]]];
+
+
+splpd[a_,b_,n_,nb_]:=
+	1/2 spd[n,a] spd[nb,b];
+
+splnd[a_,b_,n_,nb_]:=
+	1/2 spd[nb,a] spd[n,b];
+
+splrd[a_,b_,n_,nb_]:=
+	spd[LightConePerpendicularComponent[a, Momentum[n,D], Momentum[nb,D]],LightConePerpendicularComponent[b, Momentum[n,D], Momentum[nb,D]]];
 
 FCPrint[1,"FeynCalcInternal.m loaded."];
 End[]
