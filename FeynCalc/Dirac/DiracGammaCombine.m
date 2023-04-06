@@ -60,6 +60,16 @@ DiracGammaCombine[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 			holdPlus[a___, n1_. DiracGamma[Momentum[x_,dim_:4],dim_:4], n2_. DiracGamma[Momentum[x_, dim_:4], dim_:4], b___]/;(NumberQ[n1] && NumberQ[n2]) :>
 				holdPlus[a, (n1+n2)DiracGamma[Momentum[x, dim], dim], b],
 
+
+			holdPlus[a___, n1_. DiracGamma[LightConePerpendicularComponent[Momentum[x_,dim_:4],n_,nb_],dim_:4],
+				n2_. DiracGamma[LightConePerpendicularComponent[Momentum[y_, dim_:4],n_,nb_],
+				dim_:4], b___]/;(NumberQ[n1] && NumberQ[n2]) :>
+				holdPlus[a, DiracGamma[LightConePerpendicularComponent[Momentum[n1 x + n2 y, dim],n,nb], dim], b],
+
+			holdPlus[a___, n1_. DiracGamma[LightConePerpendicularComponent[Momentum[x_,dim_:4],n_,nb_],dim_:4],
+				n2_. DiracGamma[LightConePerpendicularComponent[Momentum[x_, dim_:4],n_, nb_], dim_:4], b___]/;(NumberQ[n1] && NumberQ[n2]) :>
+				holdPlus[a, (n1+n2) DiracGamma[LightConePerpendicularComponent[Momentum[x, dim],n,nb], dim], b],
+
 			holdPlus[a___, n1_. DiracGamma[CartesianMomentum[x_,dim1_:3],dim2_:4], n2_. DiracGamma[CartesianMomentum[y_, dim1_:3], dim2_:4], b___]/;(NumberQ[n1] && NumberQ[n2]) :>
 				holdPlus[a, DiracGamma[CartesianMomentum[n1 x + n2 y, dim1], dim2], b],
 
