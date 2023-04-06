@@ -264,6 +264,8 @@ If[ Names["Tests`Dirac`fcstDiracTrick*"]=!={},
 		EquivalenceFunction -> fcCompare]&,
 		Join@@(ToExpression/@Names["Tests`Dirac`fcstDiracTrick*"])];
 	FCSetDiracGammaScheme["NDR"];
+	$FCDefaultLightconeVectorN=FCGV["n"];
+	$FCDefaultLightconeVectorNB=FCGV["nb"];
 	tmpTest = tmpTest /. testID->TestID /. test->Test
 ];
 
