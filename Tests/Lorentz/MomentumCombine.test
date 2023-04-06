@@ -263,5 +263,47 @@ FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
 FeynAmpDenominator[StandardPropagatorDenominator[0, \
 -2*Pair[Momentum[p1, D], Momentum[q, D]], 0, {1, 1}]], \
 FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
-D], 0, mg^2, {1, 1}]]}, {p1, p3}, {q}, {}, {}]"}
+D], 0, mg^2, {1, 1}]]}, {p1, p3}, {q}, {}, {}]"},
+{"fcstMomentumCombine-ID71",
+"MomentumCombine[LightConePerpendicularComponent[Momentum[p],\
+Momentum[n],Momentum[nb]]+LightConePerpendicularComponent[Momentum[q],\
+Momentum[n],Momentum[nb]]]",
+"LightConePerpendicularComponent[Momentum[p + q], Momentum[n], \
+Momentum[nb]]"},
+{"fcstMomentumCombine-ID72",
+"MomentumCombine[FVLR[p,mu]+FVLR[q,mu]]",
+"Pair[LightConePerpendicularComponent[LorentzIndex[mu], \
+Momentum[FCGV[\"n\"]], Momentum[FCGV[\"nb\"]]], \
+LightConePerpendicularComponent[Momentum[p + q], \
+Momentum[FCGV[\"n\"]], Momentum[FCGV[\"nb\"]]]]"},
+{"fcstMomentumCombine-ID73",
+"MomentumCombine[3FVLR[p,mu]+4FVLR[q,mu]]",
+"Pair[LightConePerpendicularComponent[LorentzIndex[mu], \
+Momentum[FCGV[\"n\"]], Momentum[FCGV[\"nb\"]]], \
+LightConePerpendicularComponent[Momentum[3*p + 4*q], \
+Momentum[FCGV[\"n\"]], Momentum[FCGV[\"nb\"]]]]"},
+{"fcstMomentumCombine-ID74",
+"MomentumCombine[SPLR[p,q1]+SPLR[p,q2]]",
+"Pair[LightConePerpendicularComponent[Momentum[p], \
+Momentum[FCGV[\"n\"]], Momentum[FCGV[\"nb\"]]], \
+LightConePerpendicularComponent[Momentum[q1 + q2], \
+Momentum[FCGV[\"n\"]], Momentum[FCGV[\"nb\"]]]]"},
+{"fcstMomentumCombine-ID75",
+"MomentumCombine[FVLRD[p,mu]+FVLRD[q,mu]]",
+"Pair[LightConePerpendicularComponent[LorentzIndex[mu, D], \
+Momentum[FCGV[\"n\"], D], Momentum[FCGV[\"nb\"], D]], \
+LightConePerpendicularComponent[Momentum[p + q, D], Momentum[FCGV[\"n\
+\"], D], Momentum[FCGV[\"nb\"], D]]]"},
+{"fcstMomentumCombine-ID76",
+"MomentumCombine[3FVLRD[p,mu]+4FVLRD[q,mu]]",
+"Pair[LightConePerpendicularComponent[LorentzIndex[mu, D], \
+Momentum[FCGV[\"n\"], D], Momentum[FCGV[\"nb\"], D]], \
+LightConePerpendicularComponent[Momentum[3*p + 4*q, D], \
+Momentum[FCGV[\"n\"], D], Momentum[FCGV[\"nb\"], D]]]"},
+{"fcstMomentumCombine-ID77",
+"MomentumCombine[SPLRD[p,q1]+SPLRD[p,q2]]",
+"Pair[LightConePerpendicularComponent[Momentum[p, D], \
+Momentum[FCGV[\"n\"], D], Momentum[FCGV[\"nb\"], D]], \
+LightConePerpendicularComponent[Momentum[q1 + q2, D], \
+Momentum[FCGV[\"n\"], D], Momentum[FCGV[\"nb\"], D]]]"}
 };

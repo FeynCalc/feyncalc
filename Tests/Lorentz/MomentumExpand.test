@@ -67,7 +67,31 @@ TemporalMomentum[y + z]]"},
 "CartesianMomentum[x] + CartesianMomentum[y + z]"},
 {"fcstMomentumExpand-ID21",
 "MomentumExpand[TemporalMomentum[x+y+z],Momentum\[Rule]{x}]",
-"TemporalMomentum[x] + TemporalMomentum[y + z]"}
+"TemporalMomentum[x] + TemporalMomentum[y + z]"},
+{"fcstMomentumExpand-ID22",
+"MomentumExpand[
+LightConePerpendicularComponent[Momentum[p + q], Momentum[n],
+Momentum[nb]]]",
+"LightConePerpendicularComponent[Momentum[p], Momentum[n],
+Momentum[nb]] +
+LightConePerpendicularComponent[Momentum[q], Momentum[n],
+Momentum[nb]]"},
+{"fcstMomentumExpand-ID23",
+"MomentumExpand[
+LightConePerpendicularComponent[Momentum[p], Momentum[n],
+Momentum[nb]]]",
+"LightConePerpendicularComponent[Momentum[p], Momentum[n],
+Momentum[nb]]"},
+{"fcstMomentumExpand-ID24",
+"MomentumExpand[
+LightConePerpendicularComponent[Momentum[p + 2 r + 3 q], Momentum[n],
+Momentum[nb]]]",
+"LightConePerpendicularComponent[Momentum[p], Momentum[n],
+Momentum[nb]] +
+3 LightConePerpendicularComponent[Momentum[q], Momentum[n],
+Momentum[nb]] +
+2 LightConePerpendicularComponent[Momentum[r], Momentum[n],
+Momentum[nb]]"}
 };
 
 Tests`Lorentz`fcstMomentumExpandNR =

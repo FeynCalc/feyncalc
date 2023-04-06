@@ -31,6 +31,9 @@ rulesMain = {
 	(n3_. Momentum[x_, dim_:4] + n4_. Momentum[y_, dim_:4]):>
 		(Momentum[ Expand[n3 x + n4 y],dim]/; (NumberQ[n3] && NumberQ[n4])),
 
+	(n3_. LightConePerpendicularComponent[Momentum[x_, dim_:4],n_,nb_] + n4_. LightConePerpendicularComponent[Momentum[y_, dim_:4],n_,nb_]):>
+		(LightConePerpendicularComponent[Momentum[ Expand[n3 x + n4 y],dim],n,nb]/; (NumberQ[n3] && NumberQ[n4])),
+
 	(n3_. TemporalMomentum[x_] + n4_. TemporalMomentum[y_]):>
 		(TemporalMomentum[ Expand[n3 x + n4 y]]/; (NumberQ[n3] && NumberQ[n4])),
 
@@ -47,6 +50,20 @@ rulesSP = {
 
 	(n3_. Pair[a_Momentum, Momentum[x_, dim_:4]] - n3_. Pair[a_Momentum, Momentum[y_, dim_:4]]):>
 		n3 Pair[a, Momentum[Expand[x - y],dim]],
+
+
+
+	(n3_. Pair[LightConePerpendicularComponent[a_Momentum,n_,nb_],
+		LightConePerpendicularComponent[Momentum[x_, dim_:4],n_,nb_]] + n4_. Pair[LightConePerpendicularComponent[a_Momentum,n_,nb_], LightConePerpendicularComponent[Momentum[y_, dim_:4],n_,nb_]]):>
+		Pair[LightConePerpendicularComponent[a,n,nb], LightConePerpendicularComponent[Momentum[Expand[n3 x + n4 y],dim],n,nb]]/;(NumberQ[n3] && NumberQ[n4] && n3=!=n4),
+
+	(n3_. Pair[LightConePerpendicularComponent[a_Momentum,n_,nb_], LightConePerpendicularComponent[Momentum[x_, dim_:4],n_,nb_]] +
+	n3_. Pair[LightConePerpendicularComponent[a_Momentum,n_,nb_], LightConePerpendicularComponent[Momentum[y_, dim_:4],n_,nb_]]):>
+		n3 Pair[LightConePerpendicularComponent[a,n,nb], LightConePerpendicularComponent[Momentum[Expand[x + y],dim],n,nb]],
+
+	(n3_. Pair[LightConePerpendicularComponent[a_Momentum,n_,nb_], LightConePerpendicularComponent[Momentum[x_, dim_:4],n_,nb_]] -
+	n3_. Pair[LightConePerpendicularComponent[a_Momentum,n_,nb_], LightConePerpendicularComponent[Momentum[y_, dim_:4],n_,nb_]]):>
+		n3 Pair[LightConePerpendicularComponent[a,n,nb], LightConePerpendicularComponent[Momentum[Expand[x - y],dim],n,nb]],
 
 	(n3_. CartesianPair[a_CartesianMomentum, CartesianMomentum[x_, dim_:3]] + n4_. CartesianPair[a_CartesianMomentum, CartesianMomentum[y_, dim_:3]]):>
 		CartesianPair[a, CartesianMomentum[Expand[n3 x + n4 y],dim]]/;(NumberQ[n3] && NumberQ[n4]  && n3=!=n4),
@@ -67,6 +84,19 @@ rulesFV = {
 
 	(n3_. Pair[a_LorentzIndex, Momentum[x_, dim_:4]] - n3_. Pair[a_LorentzIndex, Momentum[y_, dim_:4]]):>
 		n3 Pair[a, Momentum[Expand[x-y], dim]],
+
+
+	(n3_. Pair[LightConePerpendicularComponent[a_LorentzIndex,n_,nb_], LightConePerpendicularComponent[Momentum[x_, dim_:4],n_,nb_]]
+	+ n4_. Pair[LightConePerpendicularComponent[a_LorentzIndex,n_,nb_], LightConePerpendicularComponent[Momentum[y_, dim_:4],n_,nb_]]):>
+		Pair[LightConePerpendicularComponent[a,n,nb], LightConePerpendicularComponent[Momentum[ Expand[n3 x + n4 y],dim],n,nb]]/; (NumberQ[n3] && NumberQ[n4] && n3=!=n4),
+
+	(n3_. Pair[LightConePerpendicularComponent[a_LorentzIndex,n_,nb_], LightConePerpendicularComponent[Momentum[x_, dim_:4],n_,nb_]] +
+	n3_. Pair[LightConePerpendicularComponent[a_LorentzIndex,n_,nb_], LightConePerpendicularComponent[Momentum[y_, dim_:4],n_,nb_]]):>
+		n3 Pair[LightConePerpendicularComponent[a,n,nb], LightConePerpendicularComponent[Momentum[Expand[x+y], dim],n,nb]],
+
+	(n3_. Pair[LightConePerpendicularComponent[a_LorentzIndex,n_,nb_], LightConePerpendicularComponent[Momentum[x_, dim_:4],n_,nb_]] -
+	n3_. Pair[LightConePerpendicularComponent[a_LorentzIndex,n_,nb_], LightConePerpendicularComponent[Momentum[y_, dim_:4],n_,nb_]]):>
+		n3 Pair[LightConePerpendicularComponent[a,n,nb], LightConePerpendicularComponent[Momentum[Expand[x-y], dim],n,nb]],
 
 	(n3_. CartesianPair[a_CartesianIndex, CartesianMomentum[x_, dim_:3]] + n4_. CartesianPair[a_CartesianIndex, CartesianMomentum[y_, dim_:3]]):>
 		CartesianPair[a, CartesianMomentum[ Expand[n3 x + n4 y],dim]]/; (NumberQ[n3] && NumberQ[n4]  && n3=!=n4),

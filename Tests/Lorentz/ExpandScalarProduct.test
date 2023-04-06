@@ -97,5 +97,15 @@ Momentum[p1 + p2 + p3]]"},
 Momentum -> {p1}]",
 "Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3],
 Momentum[p1]] + Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3],
-Momentum[p2 + p3]]"}
+Momentum[p2 + p3]]"},
+{"fcstExpandScalarProduct-ID26",
+"ExpandScalarProduct[FVLR[p + q, mu], FCE -> True]",
+"FVLR[p, mu, FCGV[\"n\"], FCGV[\"nb\"]] +
+FVLR[q, mu, FCGV[\"n\"], FCGV[\"nb\"]]"},
+{"fcstExpandScalarProduct-ID27",
+"ExpandScalarProduct[SPLRD[p + q, q1 + q2], FCE -> True]",
+"SPLRD[p, q1, FCGV[\"n\"], FCGV[\"nb\"]] +
+SPLRD[p, q2, FCGV[\"n\"], FCGV[\"nb\"]] +
+SPLRD[q, q1, FCGV[\"n\"], FCGV[\"nb\"]] +
+SPLRD[q, q2, FCGV[\"n\"], FCGV[\"nb\"]]"}
 }

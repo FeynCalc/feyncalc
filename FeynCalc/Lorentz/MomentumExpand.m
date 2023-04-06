@@ -78,6 +78,14 @@ MomentumExpand[expr_/;!MemberQ[{Momentum,CartesianMomentum,TemporalMomentum,List
 			]
 		];
 
+		If[	!FreeQ[aux, LightConePerpendicularComponent],
+			aux = momExpand[aux,LightConePerpendicularComponent,All];
+			If[	!FreeQ2[aux,{expandVec,linearizeVec,noexpand}],
+				Message[MomentumExpand::failmsg, "Something went wrong during the expansion of 4-momenta."];
+				Abort[]
+			]
+		];
+
 		res = aux /. hold2 -> Identity /. hold1 -> Identity;
 
 		res
@@ -108,7 +116,7 @@ momSplit[head_, moms_List][a_,dim___]:=
 
 
 expandVec[head_][y_,dim___] :=	expandVec[head][y,dim] =
-	Distribute[linearizeVec[Expand[y, head], hold[dim]]] /. hold->Identity;
+	Distribute[linearizeVec[Expand[y, head], hold[dim]]] /. hold->Sequence;
 
 linearizeVec[n_?NumberQ z_, dim___] :=
 	n linearizeVec[z, dim];
