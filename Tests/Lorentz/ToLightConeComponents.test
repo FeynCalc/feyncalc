@@ -1,0 +1,83 @@
+
+
+(* :Title: ToLightConeComponents.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2023 Rolf Mertig
+	Copyright (C) 1997-2023 Frederik Orellana
+	Copyright (C) 2014-2023 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for ToLightConeComponents	*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Lorentz`fcstToLightConeComponents =
+({
+{"fcstToLightConeComponents-ID1",
+"ToLightConeComponents[SP[p,q],n,nb,FCE->True]",
+"(SP[n, q]*SP[nb, p])/2 + (SP[n, p]*SP[nb, q])/2 + SPLR[p, q, n, \
+nb]"},
+{"fcstToLightConeComponents-ID2",
+"ToLightConeComponents[SPD[p,q],n,nb,FCE->True]",
+"(SPD[n, q]*SPD[nb, p])/2 + (SPD[n, p]*SPD[nb, q])/2 + SPLRD[p, q, \
+n, nb]"},
+{"fcstToLightConeComponents-ID3",
+"ToLightConeComponents[FV[p,mu],n,nb,FCE->True]",
+"FVLR[p, mu, n, nb] + (FV[nb, mu]*SP[n, p])/2 + (FV[n, mu]*SP[nb, \
+p])/2"},
+{"fcstToLightConeComponents-ID4",
+"ToLightConeComponents[FVD[p,mu],n,nb,FCE->True]",
+"FVLRD[p, mu, n, nb] + (FVD[nb, mu]*SPD[n, p])/2 + (FVD[n, \
+mu]*SPD[nb, p])/2"},
+{"fcstToLightConeComponents-ID5",
+"ToLightConeComponents[GA[mu],n,nb,FCE->True]",
+"GALR[mu, n, nb] + (FV[nb, mu]*GS[n])/2 + (FV[n, mu]*GS[nb])/2"},
+{"fcstToLightConeComponents-ID6",
+"ToLightConeComponents[GAD[mu],n,nb,FCE->True]",
+"GALRD[mu, n, nb] + (FVD[nb, mu]*GSD[n])/2 + (FVD[n, \
+mu]*GSD[nb])/2"},
+{"fcstToLightConeComponents-ID7",
+"ToLightConeComponents[GS[p],n,nb,FCE->True]",
+"GSLR[p, n, nb] + (GS[nb]*SP[n, p])/2 + (GS[n]*SP[nb, p])/2"},
+{"fcstToLightConeComponents-ID8",
+"ToLightConeComponents[GSD[p],n,nb,FCE->True]",
+"GSLRD[p, n, nb] + (GSD[nb]*SPD[n, p])/2 + (GSD[n]*SPD[nb, \
+p])/2"},
+{"fcstToLightConeComponents-ID9",
+"ToLightConeComponents[SP[p,q],n,nb,FCE->True,NotMomentum->{p}]",
+"SP[p, q]"},
+{"fcstToLightConeComponents-ID10",
+"ToLightConeComponents[SP[a,b]SP[p,q],n,nb,FCE->True,NotMomentum->{\
+p}]", "SP[p, q]*((SP[a, nb]*SP[b, n])/2 + (SP[a, n]*SP[b, nb])/2 + \
+SPLR[a, b, n, nb])"},
+{"fcstToLightConeComponents-ID11",
+"ToLightConeComponents[MT[mu,nu],n,nb,FCE->True]",
+"(FV[n, nu]*FV[nb, mu])/2 + (FV[n, mu]*FV[nb, nu])/2 + MTLR[mu, \
+nu, n, nb]"},
+{"fcstToLightConeComponents-ID12",
+"ToLightConeComponents[MTD[mu,nu],n,nb,FCE->True]",
+"(FVD[n, nu]*FVD[nb, mu])/2 + (FVD[n, mu]*FVD[nb, nu])/2 + \
+MTLRD[mu, nu, n, nb]"}
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

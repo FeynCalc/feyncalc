@@ -1,0 +1,180 @@
+(* ::Package:: *)
+
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+
+(* :Title: ToLightConeComponents												*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2023 Rolf Mertig
+	Copyright (C) 1997-2023 Frederik Orellana
+	Copyright (C) 2014-2023 Vladyslav Shtabovenko
+*)
+
+(* :Summary: Converts selected Lorentz tensors into Cartesian tensors.		*)
+
+(* ------------------------------------------------------------------------ *)
+
+
+ToLightConeComponents::usage=
+"ToLightConeComponents[expr, n, nb] rewrites all Dirac matrices, scalar
+products, 4-vectors and metric tensors in terms of their component along the
+lightcone directions n and nb
+
+Using the option NotMomentum one can specify that quantities containing the
+listed 4-momenta should be left untouched.";
+
+ToLightConeComponents::fail=
+"Error! ToLightConeComponents has encountered a fatal problem and must abort the computation. \
+The problem reads: `1`";
+
+(* ------------------------------------------------------------------------ *)
+
+Begin["`Package`"]
+End[]
+
+Begin["`ToLightConeComponents`Private`"]
+
+vecN::usage="";
+vecNB::usage="";
+hold::usage="";
+
+Options[ToLightConeComponents] = {
+	DiracGammaExpand	-> True,
+	DotSimplify 		-> True,
+	ExpandScalarProduct -> True,
+	FCE 				-> False,
+	FCI 				-> False,
+	FV 					-> True,
+	GA 					-> True,
+	GS 					-> True,
+	MT					-> True,
+	NotMomentum			-> {},
+	Polarization		-> True,
+	SP					-> True
+};
+
+ToLightConeComponents[expr_, opts:OptionsPattern[]]:=
+	ToLightConeComponents[expr, $FCDefaultLightconeVectorN,
+		$FCDefaultLightconeVectorNB, opts];
+
+
+ToLightConeComponents[expr_, n_, nb_, OptionsPattern[]]:=
+	Block[{ex, heads, tmp, res, uniqList,null1,null2, uniqListEval,
+		repRule, optNotMomentum, selector, pattern},
+
+		heads = {};
+		optNotMomentum = OptionValue[NotMomentum];
+
+		vecN = n;
+		vecNB = nb;
+
+		If[	OptionValue[SP] || OptionValue[FV],
+			heads = Join[heads,{Pair}]
+		];
+
+		If[	OptionValue[GA] || OptionValue[GS],
+			heads = Join[heads,{DiracGamma}]
+		];
+
+		If[ !OptionValue[FCI],
+			ex = FCI[expr],
+			ex = expr
+		];
+
+		uniqList = Cases[ex+null1+null2,Alternatives@@(Blank/@heads),Infinity]//DeleteDuplicates//Sort;
+
+		If[	optNotMomentum=!={},
+			selector = (Momentum[#,pattern]&/@optNotMomentum) /. pattern->BlankNullSequence[];
+			uniqList = SelectFree[uniqList,selector]
+		];
+
+		uniqListEval = uniqList;
+
+
+		If[	OptionValue[ExpandScalarProduct],
+			uniqListEval = ExpandScalarProduct[#,FCI->True]&/@uniqListEval;
+		];
+
+		If[	OptionValue[DiracGammaExpand],
+			uniqListEval = DiracGammaExpand[#,FCI->True]&/@uniqListEval
+		];
+
+		If[	OptionValue[SP],
+			uniqListEval = uniqListEval /. Pair -> spToLC /. spToLC -> Pair
+		];
+
+		If[	OptionValue[FV],
+			uniqListEval = uniqListEval /. Pair -> fvToLC /. fvToLC -> Pair
+		];
+
+		If[	OptionValue[MT],
+			uniqListEval = uniqListEval /. Pair -> mtToLC /. mtToLC -> Pair
+		];
+
+		If[	OptionValue[GA],
+			uniqListEval = uniqListEval /. DiracGamma -> gaToLC /. gaToLC -> DiracGamma
+		];
+
+		If[	OptionValue[GS],
+			uniqListEval = uniqListEval /. DiracGamma -> gsToLC /. gsToLC -> DiracGamma
+		];
+
+		repRule = Thread[Rule[uniqList, uniqListEval]];
+
+		res = ex /. Dispatch[repRule] /. hold->Identity;
+
+		If[	OptionValue[DotSimplify],
+			res = DotSimplify[res,FCI->True]
+		];
+
+		If[	OptionValue[FCE],
+			res = FCE[res]
+		];
+
+		res
+	];
+
+mtToLC[LorentzIndex[l1_,dim_:4], LorentzIndex[l2_,dim_:4]]:=
+	(
+	1/2 hold[Pair][LorentzIndex[l1,dim],Momentum[vecN,dim]] hold[Pair][LorentzIndex[l2,dim],Momentum[vecNB,dim]] +
+	1/2 hold[Pair][LorentzIndex[l2,dim],Momentum[vecN,dim]] hold[Pair][LorentzIndex[l1,dim],Momentum[vecNB,dim]] +
+	Pair[LightConePerpendicularComponent[LorentzIndex[l1,dim],Momentum[vecN,dim],Momentum[vecNB,dim]],
+		LightConePerpendicularComponent[LorentzIndex[l2,dim],Momentum[vecN,dim],Momentum[vecNB,dim]]]
+	);
+
+spToLC[Momentum[a_,dim_:4], Momentum[b_,dim_:4]]:=
+	(
+	1/2 hold[Pair][Momentum[a,dim],Momentum[vecN,dim]] hold[Pair][Momentum[b,dim],Momentum[vecNB,dim]] +
+	1/2 hold[Pair][Momentum[a,dim],Momentum[vecNB,dim]] hold[Pair][Momentum[b,dim],Momentum[vecN,dim]] +
+	Pair[LightConePerpendicularComponent[Momentum[a,dim],Momentum[vecN,dim],Momentum[vecNB,dim]],
+		LightConePerpendicularComponent[Momentum[b,dim],Momentum[vecN,dim],Momentum[vecNB,dim]]]
+	);
+
+fvToLC[l_LorentzIndex, m_Momentum]:=
+	fvToLC[m,l];
+
+fvToLC[Momentum[a_,dim_:4], LorentzIndex[l_,dim_:4]]:=
+	(
+	1/2 hold[Pair][Momentum[a,dim],Momentum[vecN,dim]] hold[Pair][LorentzIndex[l,dim],Momentum[vecNB,dim]] +
+	1/2 hold[Pair][Momentum[a,dim],Momentum[vecNB,dim]] hold[Pair][LorentzIndex[l,dim],Momentum[vecN,dim]] +
+	Pair[LightConePerpendicularComponent[Momentum[a,dim],Momentum[vecN,dim],Momentum[vecNB,dim]],
+		LightConePerpendicularComponent[LorentzIndex[l,dim],Momentum[vecN,dim],Momentum[vecNB,dim]]]
+	);
+
+gaToLC[LorentzIndex[l_, dim_:4], dim_:4]:=
+	(
+	1/2 hold[DiracGamma][Momentum[vecN,  dim], dim] hold[Pair][LorentzIndex[l,dim],Momentum[vecNB,dim]] +
+	1/2 hold[DiracGamma][Momentum[vecNB, dim], dim] hold[Pair][LorentzIndex[l,dim],Momentum[vecN,dim]] +
+	DiracGamma[LightConePerpendicularComponent[LorentzIndex[l,dim],Momentum[vecN,dim],Momentum[vecNB,dim]],dim]
+	);
+
+gsToLC[Momentum[l_, dim_:4], dim_:4]:=
+	(
+	1/2 hold[DiracGamma][Momentum[vecN,  dim], dim] hold[Pair][Momentum[l,dim],Momentum[vecNB,dim]] +
+	1/2 hold[DiracGamma][Momentum[vecNB, dim], dim] hold[Pair][Momentum[l,dim],Momentum[vecN,dim]] +
+	DiracGamma[LightConePerpendicularComponent[Momentum[l,dim],Momentum[vecN,dim],Momentum[vecNB,dim]],dim]
+	);
+
+FCPrint[1,"ToLightConeComponents.m loaded."];
+End[]

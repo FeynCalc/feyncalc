@@ -197,6 +197,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [TensorFunction](../TensorFunction.md) - defines an unspecified Lorentz tensor
 - [ThreeDivergence](../ThreeDivergence.md) - calculates partial derivative with respect to a $3$-vector
 - [TrickMandelstam](../TrickMandelstam.md) - simplifies the expression by eliminating one of the Mandelstam variables
+- [ToLightConeComponents](../ToLightConeComponents.md) - rewrties Lorentz tensors in terms of their components along the lightcone
 - [Uncontract](../Uncontract.md) - uncontracts Lorentz indices of tensors and Dirac matrices
 - [UnDeclareFCTensor](../UnDeclareFCTensor.md) - undeclares the given head to be a tensor
 
