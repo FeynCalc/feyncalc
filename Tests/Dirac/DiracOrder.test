@@ -470,7 +470,31 @@ ms (2 Spinor[Momentum[p4, D], mb, 1].GA[7].Spinor[Momentum[p2, D],
 "-GA[al].GA[mu].GA[nu] + 2 GA[nu] MT[al, mu] - 2 GA[mu] MT[al, nu] + 2 GA[al] MT[mu, nu] == x"},
 {"fcstDiracOrder-ID60", "DiracOrder[{GA[nu, mu, al], GA[nu, rho, al]}, FCE -> True]",
 "{-GA[al].GA[mu].GA[nu] + 2 GA[nu] MT[al, mu] - 2 GA[mu] MT[al, nu] +
-2 GA[al] MT[mu, nu], GA[al].GA[nu].GA[rho] - 2 GA[rho] MT[al, nu] + 2 GA[nu] MT[al, rho]}"}
+2 GA[al] MT[mu, nu], GA[al].GA[nu].GA[rho] - 2 GA[rho] MT[al, nu] + 2 GA[nu] MT[al, rho]}"},
+{"fcstDiracOrder-ID61", "DiracOrder[
+1/8 CA CF Spinor[Momentum[k1], 0, 1] . GS[n] . GS[nb] .
+	GSLR[kg2, n, nb] . GSLR[kg1, n, nb] .
+	GSLR[Polarization[p, I], n, nb] .
+	Spinor[-Momentum[k2], 0, 1] Spinor[-Momentum[k2], 0, 1] . GS[n] .
+	GS[nb] . GSLR[kg1, n, nb] . GSLR[kg2, n, nb] .
+	GSLR[Polarization[p, -I], n, nb] . Spinor[Momentum[k1], 0, 1] -
+1/2 CA CF Spinor[Momentum[k1], 0, 1] . GSLR[kg1, n, nb] .
+	GSLR[kg2, n, nb] . GSLR[Polarization[p, I], n, nb] .
+	Spinor[-Momentum[k2], 0, 1] Spinor[-Momentum[k2], 0, 1] . GS[n] .
+	GS[nb] . GSLR[kg2, n, nb] . GSLR[kg1, n, nb] .
+	GSLR[Polarization[p, -I], n, nb] . Spinor[Momentum[k1], 0, 1] ,
+FCE -> True]",
+"-1/2*(CA*CF*(-(Spinor[Momentum[k1], 0, 1] . GSLR[kg1, n, nb] . GSLR[kg2, n, nb] . GSLR[Polarization[p, I],
+n, nb] . Spinor[-Momentum[k2], 0, 1]*Spinor[-Momentum[k2], 0, 1] . GS[n] . GS[nb] . GSLR[kg1,
+n, nb] . GSLR[kg2, n, nb] . GSLR[Polarization[p, -I], n, nb] . Spinor[Momentum[k1], 0, 1]) +
+2*Spinor[Momentum[k1], 0, 1] . GSLR[kg1, n, nb] . GSLR[kg2, n, nb] . GSLR[Polarization[p,
+I], n, nb] . Spinor[-Momentum[k2], 0, 1]*Spinor[-Momentum[k2], 0, 1] . GS[n] . GS[nb] . GSLR[Polarization[p,
+-I], n, nb] . Spinor[Momentum[k1], 0, 1]*SPLR[kg1, kg2, n, nb])) + (CA*CF*(-(Spinor[Momentum[k1], 0,
+1] . GS[n] . GS[nb] . GSLR[kg1, n, nb] . GSLR[kg2, n, nb] . GSLR[Polarization[p, I], n, nb] . Spinor[-Momentum[k2],
+0, 1]*Spinor[-Momentum[k2], 0, 1] . GS[n] . GS[nb] . GSLR[kg1, n, nb] . GSLR[kg2, n, nb] . GSLR[Polarization[p,
+-I], n, nb] . Spinor[Momentum[k1], 0, 1]) +	2*Spinor[Momentum[k1], 0, 1] . GS[n] . GS[nb] . GSLR[Polarization[p,
+I], n, nb] . Spinor[-Momentum[k2], 0, 1]*Spinor[-Momentum[k2], 0, 1] . GS[n] . GS[nb] . GSLR[kg1, n, nb] . GSLR[kg2,
+n, nb] . GSLR[Polarization[p, -I], n, nb] . Spinor[Momentum[k1], 0, 1]*SPLR[kg1, kg2, n, nb]))/8"}
 });
 
 

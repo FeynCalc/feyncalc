@@ -201,18 +201,19 @@ DiracOrder[expr_/; !MemberQ[{List,Equal},expr], orderList_List/; (!OptionQ[order
 
 diracOrderLex[x_, maxIterations_]:=
 	FixedPoint[(FeynCalc`Package`diracChainContract[#] /. {
-		holdDOT[a___,DiracGamma[(h1:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[ar1__], dim1_:4],DiracGamma[(h2:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[ar2__], dim2_:4],b___]/;
+		holdDOT[a___,DiracGamma[(h1:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum|LightConePerpendicularComponent)[ar1__], dim1_:4],
+			DiracGamma[(h2:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum|LightConePerpendicularComponent)[ar2__], dim2_:4],b___]/;
 			!OrderedQ[{h1[First[{ar1}],dim1],h2[First[{ar2}],dim2]}] && h1[First[{ar1}],dim1]=!=h2[First[{ar2}],dim2] :>
 			-holdDOT[a, DiracGamma[h2[ar2],dim2], DiracGamma[h1[ar1],dim1] ,b] +
 			2 PairContract[h1[ar1],h2[ar2]] holdDOT[a,b],
 
 		(* The g^0 matrices are moved to the very right *)
-		holdDOT[a___,DiracGamma[ExplicitLorentzIndex[0]],DiracGamma[(h2:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[ar2__], dim2_:4],b___] :>
+		holdDOT[a___,DiracGamma[ExplicitLorentzIndex[0]],DiracGamma[(h2:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum|LightConePerpendicularComponent)[ar2__], dim2_:4],b___] :>
 			-holdDOT[a, DiracGamma[h2[ar2],dim2], DiracGamma[ExplicitLorentzIndex[0]] ,b] +
 			2 PairContract[ExplicitLorentzIndex[0],h2[ar2]] holdDOT[a,b],
 
-		holdDOT[a___,DiracGamma[(h:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum|ExplicitLorentzIndex)[ar___], dim_:4],
-			DiracGamma[(h:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum|ExplicitLorentzIndex)[ar___], dim_:4],b___] :>
+		holdDOT[a___,DiracGamma[(h:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum|ExplicitLorentzIndex|LightConePerpendicularComponent)[ar___], dim_:4],
+			DiracGamma[(h:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum|ExplicitLorentzIndex|LightConePerpendicularComponent)[ar___], dim_:4],b___] :>
 			holdDOT[a,b] DiracTrick[DOT[DiracGamma[h[ar],dim].DiracGamma[h[ar],dim]],FCI->True,FCDiracIsolate->False]
 
 
@@ -220,25 +221,25 @@ diracOrderLex[x_, maxIterations_]:=
 
 customOrdering[x_, currentElement_]:=
 	FeynCalc`Package`diracChainContract[x] //. {
-		holdDOT[a___,DiracGamma[(h1:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[ar1__], dim1_:4],
-			DiracGamma[(h2:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[ar2__], dim2_:4],b___]/;
+		holdDOT[a___,DiracGamma[(h1:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum|LightConePerpendicularComponent)[ar1__], dim1_:4],
+			DiracGamma[(h2:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum|LightConePerpendicularComponent)[ar2__], dim2_:4],b___]/;
 			!FreeQ[h2[First[{ar2}],dim2],currentElement] && h1[First[{ar1}],dim1]=!=h2[First[{ar2}],dim2] :>
 			-holdDOT[a, DiracGamma[h2[ar2],dim2], DiracGamma[h1[ar1],dim1] ,b] +
 			2 PairContract[h1[ar1],h2[ar2]] holdDOT[a,b],
 
-		holdDOT[a___,DiracGamma[(h1:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[ar1__], dim1_:4],DiracGamma[ExplicitLorentzIndex[0]],b___]/;
+		holdDOT[a___,DiracGamma[(h1:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum|LightConePerpendicularComponent)[ar1__], dim1_:4],DiracGamma[ExplicitLorentzIndex[0]],b___]/;
 			!FreeQ[ExplicitLorentzIndex[0],currentElement] && h1[First[{ar1}],dim1]=!=ExplicitLorentzIndex[0] :>
 			-holdDOT[a, DiracGamma[ExplicitLorentzIndex[0]], DiracGamma[h1[ar1],dim1] ,b] +
 			2 PairContract[h1[ar1],ExplicitLorentzIndex[0]] holdDOT[a,b],
 
-		holdDOT[a___,DiracGamma[ExplicitLorentzIndex[0]],DiracGamma[(h2:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[ar2__], dim2_:4],b___]/;
+		holdDOT[a___,DiracGamma[ExplicitLorentzIndex[0]],DiracGamma[(h2:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum|LightConePerpendicularComponent)[ar2__], dim2_:4],b___]/;
 			!FreeQ[h2[First[{ar2}],dim2],currentElement] && ExplicitLorentzIndex[0]=!=h2[First[{ar2}],dim2] :>
 			-holdDOT[a, DiracGamma[h2[ar2],dim2], DiracGamma[ExplicitLorentzIndex[0]] ,b] +
 			2 PairContract[ExplicitLorentzIndex[0],h2[ar2]] holdDOT[a,b],
 
 
-		holdDOT[a___,DiracGamma[(h:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum|ExplicitLorentzIndex)[ar___], dim_:4],
-			DiracGamma[(h:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum|ExplicitLorentzIndex)[ar___], dim_:4],b___] :>
+		holdDOT[a___,DiracGamma[(h:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum|ExplicitLorentzIndex|LightConePerpendicularComponent)[ar___], dim_:4],
+			DiracGamma[(h:LorentzIndex|Momentum|CartesianIndex|CartesianMomentum|ExplicitLorentzIndex|LightConePerpendicularComponent)[ar___], dim_:4],b___] :>
 			holdDOT[a,b] DiracTrick[DOT[DiracGamma[h[ar],dim].DiracGamma[h[ar],dim]],FCI->True,FCDiracIsolate->False]
 };
 
