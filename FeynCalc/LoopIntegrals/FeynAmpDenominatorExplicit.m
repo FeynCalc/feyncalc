@@ -50,7 +50,8 @@ id[x_, ___]:=
 
 (*TODO: Memoization*)
 FeynAmpDenominatorExplicit[expr_, OptionsPattern[]] :=
-	Block[{ex, dim, res, head1, head2, mandel, ruleNormal, ruleMandelstam, fad, esp, mc},
+	Block[{	ex, dim, res, head1, head2, mandel, ruleNormal,
+			ruleMandelstam, fad, esp, mc, fadList, fadListEval},
 
 		If[ OptionValue[ExpandScalarProduct],
 			esp=ExpandScalarProduct,
@@ -71,7 +72,9 @@ FeynAmpDenominatorExplicit[expr_, OptionsPattern[]] :=
 			Return[ex]
 		];
 
-		ex = ex /. FeynAmpDenominator -> fad;
+		fadList = Cases2[ex,FeynAmpDenominator];
+
+		fadListEval = fadList /. FeynAmpDenominator -> fad;
 
 		dim = OptionValue[Dimension];
 		mandel = OptionValue[Mandelstam];
@@ -99,29 +102,31 @@ FeynAmpDenominatorExplicit[expr_, OptionsPattern[]] :=
 			(1/TrickMandelstam[esp[mc[pr],FCI->True],mandel])^n
 		};
 
-		If[	mandel==={},
-			res = ex //. ruleNormal,
-			res = ex //. ruleMandelstam
+		If[	TrueQ[mandel==={}],
+			fadListEval = fadListEval //. ruleNormal,
+			fadListEval = fadListEval //. ruleMandelstam
 		];
 
 		If[	OptionValue[SmallVariable],
-			res = res /. fad[c___]:> (fad[c]/.SmallVariable[_]:>0)
+			fadListEval = fadListEval /. fad[c___]:> (fad[c]/.SmallVariable[_]:>0)
 		];
 
 		If[	dim===False,
-			res = res /. fad[c___] :> head1[Times[c]],
-			res = res /. fad[c___] :> head1[ChangeDimension[Times[c],dim]]
+			fadListEval = fadListEval /. fad[c___] :> head1[Times[c]],
+			fadListEval = fadListEval /. fad[c___] :> head1[ChangeDimension[Times[c],dim]]
 		];
 
 		If[	TrueQ[OptionValue[Denominator]],
-			res = res /. head1[x_] /; Numerator[x] === 1 :> 1/head2[Denominator[x]];
-			If[ !FreeQ[res,head1],
+			fadListEval = fadListEval /. head1[x_] /; Numerator[x] === 1 :> 1/head2[Denominator[x]];
+			If[ !FreeQ[fadListEval,head1],
 				Message[FeynAmpDenominatorExplicit::failmsg, "The numerator is not unity!"];
 				Abort[]
 			];
-			res = res /. head2->OptionValue[Head],
-			res = res /. head1->OptionValue[Head]
+			fadListEval = fadListEval /. head2->OptionValue[Head],
+			fadListEval = fadListEval /. head1->OptionValue[Head]
 		];
+
+		res = ex /. Thread[Rule[fadList,fadListEval]];
 
 		If[	!FreeQ2[res,{fad,FeynAmpDenominator,head1,head2}],
 			Message[FeynAmpDenominatorExplicit::failmsg, "Something went wrong while writing out the denominators."];
