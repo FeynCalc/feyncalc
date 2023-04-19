@@ -101,7 +101,7 @@ DoPolarizationSums[expr_, bosonMomentum_, opts:OptionsPattern[]]:=
 DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
 	Block[ {polInd1, polInd2, res, ex, tmp, dim, polVectorsList, freePart,
 			polPart, optNumberOfPolarizations, nPolarizations,
-			optVirtualBoson, dummyInd1, dummyInd2},
+			optVirtualBoson, dummyInd1, dummyInd2, time},
 
 		If [OptionValue[FCVerbose]===False,
 			dpsVerbose=$VeryVerbose,
@@ -170,7 +170,7 @@ DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
 					Pair[slot,LorentzIndex[dummyInd1,di+1]])
 		};
 
-		FCPrint[1,"DoPolarizationSums: Intermediate expression: ", ex, FCDoControl->dpsVerbose];
+		FCPrint[3,"DoPolarizationSums: Intermediate expression: ", ex, FCDoControl->dpsVerbose];
 
 		polVectorsList = SelectNotFree[SelectNotFree[Sort[DeleteDuplicates[Cases[ex ,_Momentum | _CartesianMomentum | _TemporalMomentum,
 			Infinity]]],Polarization],bosonMomentum];
@@ -275,7 +275,10 @@ DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
 
 
 		If[ OptionValue[Contract],
-			polPart = Contract[polPart,FCI->True]
+			time=AbsoluteTime[];
+			FCPrint[1,"DoPolarizationSums: Applying Contract: ", FCDoControl->dpsVerbose];
+			polPart = Contract[polPart,FCI->True];
+			FCPrint[1,"DoPolarizationSums: Done applying Contract, timing; ", N[AbsoluteTime[] - time, 4], FCDoControl->dpsVerbose];
 		];
 
 		res = OptionValue[ExtraFactor] freePart + OptionValue[ExtraFactor] polPart;
@@ -283,6 +286,8 @@ DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
 		If[	OptionValue[FCE],
 			res = FCE[res]
 		];
+
+		FCPrint[1,"DoPolarizationSums: Leaving.", FCDoControl->dpsVerbose];
 
 		res
 
