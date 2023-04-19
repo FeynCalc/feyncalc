@@ -215,5 +215,9 @@ LorentzIndexNames -> {mu}, FCE -> True]", "FVLR[p, mu,
 FCGV[\"n\"], FCGV[\"nb\"]]*FVLR[q, mu, FCGV[\"n\"], FCGV[\"nb\"]]"},
 {"fcstUncontract-ID62", "FCCanonicalizeDummyIndices[Uncontract[SPLRD[q, p], q, p, Pair -> All],
 LorentzIndexNames -> {mu}, FCE -> True]", "FVLRD[p, mu,
-FCGV[\"n\"], FCGV[\"nb\"]]*FVLRD[q, mu, FCGV[\"n\"], FCGV[\"nb\"]]"}
+FCGV[\"n\"], FCGV[\"nb\"]]*FVLRD[q, mu, FCGV[\"n\"], FCGV[\"nb\"]]"},
+{"fcstUncontract-ID63", "FCCanonicalizeDummyIndices[Uncontract[GSLR[p1], p1, Pair -> All],
+LorentzIndexNames -> {mu}, FCE -> True]", "FVLR[p1, mu, FCGV[\"n\"], FCGV[\"nb\"]]*GALR[mu, FCGV[\"n\"], FCGV[\"nb\"]]"},
+{"fcstUncontract-ID64", "FCCanonicalizeDummyIndices[Uncontract[GSLRD[p1], p1, Pair -> All],
+LorentzIndexNames -> {mu}, FCE -> True]", "FVLRD[p1, mu, FCGV[\"n\"], FCGV[\"nb\"]]*GALRD[mu, FCGV[\"n\"], FCGV[\"nb\"]]"}
 });

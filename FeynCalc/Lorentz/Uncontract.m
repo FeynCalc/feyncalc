@@ -40,23 +40,23 @@ nPower::usage="";
 sPower::usage="";
 
 Options[Uncontract] = {
-	CartesianMomentum	-> True,
-	CartesianPair 		-> {},
-	Dimension			-> Automatic,
-	DiracChainExpand	-> True,
-	DiracGamma			-> True,
-	DotSimplify			-> True,
-	Eps 				-> True,
-	FCE 				-> False,
-	FCI 				-> False,
-	FCTensor 			-> All,
-	FCVerbose 			-> False,
-	Momentum 			-> True,
-	Pair 				-> {},
-	PauliChainExpand	-> True,
-	PauliSigma 			-> True,
-	Polarization 		-> True,
-	Square 				-> True
+	CartesianMomentum				-> True,
+	CartesianPair 					-> {},
+	Dimension						-> Automatic,
+	DiracChainExpand				-> True,
+	DiracGamma						-> True,
+	DotSimplify						-> True,
+	Eps 							-> True,
+	FCE 							-> False,
+	FCI 							-> False,
+	FCTensor 						-> All,
+	FCVerbose 						-> False,
+	Momentum 						-> True,
+	Pair 							-> {},
+	PauliChainExpand				-> True,
+	PauliSigma 						-> True,
+	Polarization 					-> True,
+	Square 							-> True
 };
 
 Uncontract[x_List, q__] :=
@@ -174,8 +174,12 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 
 				Pair[LightConePerpendicularComponent[Momentum[g_,d_:4],n_,nb_], LightConePerpendicularComponent[Momentum[p_, d_:4],n_,nb_]]/;!FreeQ[g,qMark] && !FreeQ[p,qMark] :>
 					(
+
 					li = LightConePerpendicularComponent[LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]],n,nb];
 					li2 = LightConePerpendicularComponent[LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]],n,nb];
+
+
+
 					Pair[li, li2] Pair[LightConePerpendicularComponent[Momentum[g, dimSelectLorentz[d]],n,nb],li]*
 					Pair[li2, Momentum[LightConePerpendicularComponent[p,n,nb],dimSelectLorentz[d]]]
 					)
@@ -189,9 +193,17 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 			}];
 
 			digaRules = Join[digaRules,
-				{DiracGamma[Momentum[g_,d_:4],d_:4]/;!FreeQ[g,qMark] :>
+				{
+				DiracGamma[Momentum[g_,d_:4],d_:4]/;!FreeQ[g,qMark] :>
 				(	li = LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]];
-				Pair[Momentum[g, dimSelectLorentz[d]],li] DiracGamma[li,dimSelectLorentz[d]])
+				Pair[Momentum[g, dimSelectLorentz[d]],li] DiracGamma[li,dimSelectLorentz[d]]),
+
+
+				DiracGamma[LightConePerpendicularComponent[Momentum[g_,d_:4],n_,nb_],d_:4]/;!FreeQ[g,qMark] :>
+				(	li = LightConePerpendicularComponent[LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]],n,nb];
+				Pair[LightConePerpendicularComponent[Momentum[g, dimSelectLorentz[d]],n,nb],li] DiracGamma[li,dimSelectLorentz[d]])
+
+
 			}];
 
 			sigmaRules = Join[sigmaRules,
