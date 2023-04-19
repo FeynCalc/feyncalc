@@ -196,5 +196,14 @@ SPD[p4,Q],1},1}]},{p1,p3,p4},{Q},{},{}]},FVD[p1,mu],FCE->True]",
 2, 1, 1}] - 2*(FVD[p1, mu] + FVD[p4, mu])*GLI[fctopology2, {1, -2, 1, \
 1, 2, 1, 1, 1}] + 4*(FVD[p1, mu] + FVD[p3, mu] + FVD[p4, mu] - FVD[Q, \
 mu])*GLI[fctopology2, {1, -1, 1, 1, 1, 1, 1, 1}] - 2*FVD[p1, \
-mu]*GLI[fctopology2, {2, -2, 1, 1, 1, 1, 1, 1}]"}
+mu]*GLI[fctopology2, {2, -2, 1, 1, 1, 1, 1, 1}]"},
+{"fcstFCLoopGLIDifferentiate-ID20",
+"FCLoopGLIDifferentiate[
+GLI[topo1, {1, 1, -1}], {FCTopology[
+topo1, {SFAD[{{l1, 0}, {0, 1}, 1}],
+	SFAD[{{k2 + l1, 0}, {0, 1}, 1}],
+	GFAD[{{-2*la^2*SPD[kg1, l1] + SPD[l1, l1], 1}, 1}]}, {l1}, {k2,
+	kg1}, {Hold[Pair][Momentum[kg1, D], Momentum[kg1, D]] -> 0,
+	Hold[Pair][Momentum[k2, D], Momentum[nb, D]] -> 0}, {}]}, {la, 2}]
+","-4 GLI[topo1, {1, 1, 0}] Pair[Momentum[kg1, D], Momentum[l1, D]]"}
 });

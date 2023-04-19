@@ -161,14 +161,14 @@ FCLoopGLIDifferentiate[expr_/;Head[expr]=!=List, toposRaw_List, invRaw_/;Head[in
 
 			listGLI = Cases[listDiffEval+null1+null2, z : holdDerivative[1][GLI[__]][inv] :> z, Infinity]//Union;
 
-			If[	!MatchQ[listGLI,{holdDerivative[1][GLI[__]][inv]..}],
+			If[	!FreeQ[listGLI,GLI] && !MatchQ[listGLI,{holdDerivative[1][GLI[__]][inv]..}],
 				Message[FCLoopGLIDifferentiate::failmsg, "The final list of GLIs that must be differentiated is incorrect."];
 				Abort[]
 			];
 
 			listTopos = Map[SelectNotFree[topos,#]&, listGLI /. (holdDerivative[1][GLI[id_,_List]][inv] -> id)];
 
-			If[	!MatchQ[listTopos,{{_FCTopology}..}],
+			If[	listTopos=!={} && !MatchQ[listTopos,{{_FCTopology}..}],
 				Message[FCLoopGLIDifferentiate::failmsg, "Failed to create a list of relevant topologies."];
 				Abort[]
 			];
