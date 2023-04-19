@@ -308,7 +308,7 @@ diracTrickEvalFast[DOT[DiracGamma[ExplicitLorentzIndex[(i: 1|2|3)]], DiracGamma[
 
 diracTrickEvalFast[DOT[x_DiracGamma,y__DiracGamma]]:=
 	DOT[x,y]/; FreeQ2[{x,y},{DiracGamma[5],DiracGamma[6],DiracGamma[7], ExplicitLorentzIndex[0], ExplicitLorentzIndex[1], ExplicitLorentzIndex[2], ExplicitLorentzIndex[3],
-		LightConePerpendicularComponent}] &&
+		LightConePerpendicularComponent, $FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB}] &&
 	(Sort[Cases[{x,y}, (LorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[a_, ___] :> a, Infinity]] ===
 	Union[Cases[{x,y}, (LorentzIndex | Momentum | CartesianIndex | CartesianMomentum)[a_, ___] :> a, Infinity]])/; !insideDiracTrace && !diracOrder;
 
@@ -646,14 +646,15 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 			MatchQ[dim,{4}],
 				FCPrint[2, "DiracTrick: diracTrickEval: Purely 4-dim.", FCDoControl->diTrVerbose];
 				FCPrint[2, "DiracTrick: diracTrickEval: Applying diracology4Dim.", FCDoControl->diTrVerbose];
-				res = res /. holdDOT -> diracology4Dim /. diracology4Dim -> diracology4DimFinalOrdering /. diracology4DimFinalOrdering -> holdDOT;
+				res = res /. holdDOT -> diracology4Dim;
+				res = res /. diracology4Dim  -> diracology4DimFinalOrdering /. diracology4DimFinalOrdering -> holdDOT;
 				FCPrint[3, "DiracTrick: diracTrickEval: After diracology4Dim: ", res, FCDoControl->diTrVerbose],
 			(* Purely D-dimensional *)
 			MatchQ[dim,{_Symbol}],
 				FCPrint[2, "DiracTrick: diracTrickEval: Purely D-dim.", FCDoControl->diTrVerbose];
 				res = res /. holdDOT -> diracologyDDim;
 				res = FixedPoint[(# /. diracologyDDim -> diracologyDDim2 /. diracologyDDim2 -> diracologyDDim)&,res];
-				res = res /. diracologyDDim -> holdDOT,
+				res = res /. diracologyDDim -> diracologyDDimFinalOrdering /. diracologyDDimFinalOrdering  -> holdDOT,
 			(* Purely D-4-dimensional and BMHV *)
 			MatchQ[dim,{_Symbol - 4}] && (FeynCalc`Package`DiracGammaScheme === "BMHV"),
 				FCPrint[2, "DiracTrick: diracTrickEval: Purely D-4-dim.", FCDoControl->diTrVerbose];
@@ -827,12 +828,13 @@ diracology4Dim[ b___,  DiracGamma[c_CartesianIndex],
 
 (*	Slash(p).Slash(p)	*)
 diracology4Dim[b___,DiracGamma[c_Momentum], DiracGamma[c_Momentum], d___ ] :=
-	FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] diracology4Dim[b,d];
+	FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] diracology4Dim[b,d]/; FreeQ2[c,{$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB}];
 
 (*	Slash(p) g^nu Slash(p)	*)
 diracology4Dim[b___ , DiracGamma[c_Momentum], DiracGamma[x: (_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _CartesianMomentum)],
 		DiracGamma[c_Momentum], d___] :=
-	- FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] diracology4Dim[b,DiracGamma[x], d] + 2 FCUseCache[FCFastContract,{Pair[c,x] diracology4Dim[b, DiracGamma[c], d]},{}];
+	- FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] diracology4Dim[b,DiracGamma[x], d] +
+	2 FCUseCache[FCFastContract,{Pair[c,x] diracology4Dim[b, DiracGamma[c], d]},{}]/; FreeQ2[c,{$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB}];
 
 (* Slash(p) g^nu_1 ... g^nu_n Slash(p), purely 4-dim; Eq 2.10 of R. Mertig, M. Boehm, A. Denner. Comp. Phys. Commun., 64 (1991) *)
 diracology4Dim[b___, DiracGamma[c_Momentum],ch:DiracGamma[(_LorentzIndex | _ExplicitLorentzIndex | _Momentum | _CartesianIndex | _CartesianMomentum)]..,
@@ -841,7 +843,7 @@ diracology4Dim[b___, DiracGamma[c_Momentum],ch:DiracGamma[(_LorentzIndex | _Expl
 		(-1)^len FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] diracology4Dim[b,ch,f]
 		+ 2 Sum[(-1)^(iVar+1)FCUseCache[FCFastContract,{Pair[c,{ch}[[iVar,1]]] diracology4Dim@@Join[{b},
 			Drop[{ch},{iVar, iVar}],{DiracGamma[c],f}]},{}],{iVar, 1,len}]
-	]/; (Length[{ch}]>0);
+	]/; (Length[{ch}]>0)/; FreeQ2[c,{$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB}];
 
 (*	g^i g^i p^i p^j *)
 diracology4Dim[b___,DiracGamma[c_CartesianMomentum], DiracGamma[c_CartesianMomentum], d___ ] :=
@@ -859,6 +861,29 @@ diracology4Dim[b___, DiracGamma[c_CartesianMomentum],ch:DiracGamma[(_LorentzInde
 
 (* Lightcone related stuff *)
 
+(* g.nb g.nb = g.n g.n = 0*)
+diracology4Dim[___,DiracGamma[Momentum[c_]], DiracGamma[Momentum[c_]], ___ ] :=
+	0/; MemberQ[{$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB},c];
+
+(* g.nb g.n g.nb = 4 g.nb,  g.n g.nb g.n = 4 g.n *)
+diracology4Dim[b___,DiracGamma[Momentum[c1_]], DiracGamma[Momentum[c2_]], DiracGamma[Momentum[c1_]], f___] :=
+	4 diracology4Dim[b,DiracGamma[Momentum[c1]],f]/; c1=!=c2 && MemberQ[{$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB},c1] &&
+	MemberQ[{$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB},c2];
+
+
+(*move all n/nb slashes past perps*)
+diracology4Dim[ b___,DiracGamma[(c1:n_|nb_)],
+	ch:DiracGamma[LightConePerpendicularComponent[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_], n_Momentum,nb_Momentum]]..,
+	DiracGamma[(c2:n_|nb_)],f___ ] :=
+	(-1)^Length[{ch}] diracology4Dim[b, DiracGamma[c1],DiracGamma[c2],ch,f] /; (Length[{ch}]>0) && c1=!=c2;
+
+
+diracology4Dim[___,DiracGamma[(c:n_|nb_)],
+	DiracGamma[LightConePerpendicularComponent[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_], n_Momentum,nb_Momentum]]..,
+	DiracGamma[(c:n_|nb_)], ___] :=
+	0;
+
+
 (*	LC: g^mu_perp g_mu,perp	*)
 diracology4Dim[b___,DiracGamma[LightConePerpendicularComponent[l_LorentzIndex,n_,nb_]],
 	DiracGamma[LightConePerpendicularComponent[l_LorentzIndex,n_,nb_]], d___] :=
@@ -871,13 +896,6 @@ diracology4Dim[b___,DiracGamma[LightConePerpendicularComponent[l_Momentum,n_,nb_
 	Pair[LightConePerpendicularComponent[l,n,nb],LightConePerpendicularComponent[l,n,nb]] diracology4Dim[ b,d ];
 
 
-(* Move each standalone g_perp to the left *)
-diracology4Dim[ b___,DiracGamma[LightConePerpendicularComponent[c_, n_Momentum, nb_Momentum]],
-	DiracGamma[ch:((LorentzIndex | ExplicitLorentzIndex | Momentum)[_])], f___ ] :=
-		(-1/2 Pair[nb,ch] diracology4Dim[ b, DiracGamma[n], DiracGamma[LightConePerpendicularComponent[c,n,nb]], f]
-		- 1/2 Pair[n,ch] diracology4Dim[ b, DiracGamma[nb], DiracGamma[LightConePerpendicularComponent[c,n,nb]], f]
-		+ diracology4Dim[ b, DiracGamma[LightConePerpendicularComponent[c,n,nb]], DiracGamma[LightConePerpendicularComponent[ch,n,nb]], f]
-		);
 
 (*	Simplification for g^mu_perp g^nu_1_perp ... g^nu_n_perp g_mu_perp where all matrices are in 4-dims;
 	Variety of Eq 2.9 of R. Mertig, M. Boehm, A. Denner. Comp. Phys. Commun., 64 (1991)	*)
@@ -900,8 +918,46 @@ diracology4Dim[b___, DiracGamma[LightConePerpendicularComponent[c_Momentum, n_Mo
 		+ 2 Sum[(-1)^(iVar+1) FCUseCache[FCFastContract,{Pair[LightConePerpendicularComponent[c,n,nb],{ch}[[iVar,1]]] diracology4Dim@@Join[{b},
 			Drop[{ch},{iVar, iVar}],{DiracGamma[LightConePerpendicularComponent[c,n,nb]],f}]},{}],
 			{iVar, 1,len}]]/; (Length[{ch}]>0);
+(*
+diracology4Dim[b___, DiracGamma[LightConePerpendicularComponent[c_Momentum, n_Momentum, nb_Momentum]],
+	DiracGamma[ar_Momentum], rest___,
+			DiracGamma[LightConePerpendicularComponent[c_Momentum, n_Momentum, nb_Momentum]],f___] :=
+	Block[ {iVar, len = Length[{ch}]},
+		(-1)^len FCUseCache[ExpandScalarProduct,{Pair[LightConePerpendicularComponent[c,n,nb],LightConePerpendicularComponent[c,n,nb]]},{}] diracology4Dim[b,ch,f]
+		+ 2 Sum[(-1)^(iVar+1) FCUseCache[FCFastContract,{Pair[LightConePerpendicularComponent[c,n,nb],{ch}[[iVar,1]]] diracology4Dim@@Join[{b},
+			Drop[{ch},{iVar, iVar}],{DiracGamma[LightConePerpendicularComponent[c,n,nb]],f}]},{}],
+			{iVar, 1,len}]]/; (Length[{ch}]>0);
+*)
 
 
+(* Slash(p)_perp g^mu ... Slash(p)_perp *)
+diracology4Dim[ b___,DiracGamma[LightConePerpendicularComponent[c_, n_Momentum, nb_Momentum]],
+	DiracGamma[ch:((LorentzIndex | ExplicitLorentzIndex | Momentum)[_])], f1___, DiracGamma[LightConePerpendicularComponent[c_, n_Momentum, nb_Momentum]], f2___ ] :=
+		(-1/2 Pair[nb,ch] diracology4Dim[ b, DiracGamma[n], DiracGamma[LightConePerpendicularComponent[c,n,nb]], f1, DiracGamma[LightConePerpendicularComponent[c,n,nb]], f2]
+		- 1/2 Pair[n,ch] diracology4Dim[ b, DiracGamma[nb], DiracGamma[LightConePerpendicularComponent[c,n,nb]], f1, DiracGamma[LightConePerpendicularComponent[c,n,nb]], f2]
+		+ diracology4Dim[ b, DiracGamma[LightConePerpendicularComponent[c,n,nb]], DiracGamma[LightConePerpendicularComponent[ch,n,nb]], f1, DiracGamma[LightConePerpendicularComponent[c,n,nb]], f2]
+		);
+
+
+diracology4DimFinalOrdering[___, 0, ___]:=
+	0;
+
+diracology4DimFinalOrdering[]:=
+	1;
+
+(* Move each standalone g_perp to the left *)
+diracology4DimFinalOrdering[ b___,DiracGamma[LightConePerpendicularComponent[c_, n_Momentum, nb_Momentum]],
+	DiracGamma[ch:((LorentzIndex | ExplicitLorentzIndex | Momentum)[_])], f___ ] :=
+		(-1/2 Pair[nb,ch] diracology4DimFinalOrdering[ b, DiracGamma[n], DiracGamma[LightConePerpendicularComponent[c,n,nb]], f]
+		- 1/2 Pair[n,ch] diracology4DimFinalOrdering[ b, DiracGamma[nb], DiracGamma[LightConePerpendicularComponent[c,n,nb]], f]
+		+ diracology4DimFinalOrdering[ b, DiracGamma[LightConePerpendicularComponent[c,n,nb]], DiracGamma[LightConePerpendicularComponent[ch,n,nb]], f]
+		);
+
+
+(* Define g.n g.nb as the standard ordering *)
+diracology4DimFinalOrdering[ b___,DiracGamma[Momentum[nb_]], DiracGamma[Momentum[n_]], f___ ] :=
+		(- diracology4DimFinalOrdering[ b,DiracGamma[Momentum[n]],DiracGamma[Momentum[nb]],  f]
+		+ 4 diracology4DimFinalOrdering[ b, f])/; nb=!=n && {n,nb}==={$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB};
 (* ------------------------------------------------------------------------ *)
 
 diracologyDDim[___, 0, ___]:=
@@ -968,7 +1024,7 @@ diracologyDDim2[ b___,DiracGamma[c_LorentzIndex,dim_],
 
 (*	Slash(p) Slash(p)	*)
 diracologyDDim[b___,DiracGamma[c_Momentum, dim_], DiracGamma[c_Momentum, dim_], d___] :=
-	FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] diracologyDDim[b,d];
+	FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] diracologyDDim[b,d]/; FreeQ2[c,{$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB}];
 
 (*	g^i g^i p^i p^j *)
 diracologyDDim[b___,DiracGamma[c_CartesianMomentum, dim_], DiracGamma[c_CartesianMomentum, dim_], d___ ] :=
@@ -979,7 +1035,7 @@ diracologyDDim[b___ , DiracGamma[c_Momentum, dim_],
 		DiracGamma[(x: LorentzIndex | ExplicitLorentzIndex | Momentum)[y_, dim_] ,dim_],
 		DiracGamma[c_Momentum, dim_], d___] :=
 	- FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] diracologyDDim[b,DiracGamma[x[y, dim], dim], d] +
-	2 FCUseCache[FCFastContract,{Pair[c,x[y,dim]] diracologyDDim[b, DiracGamma[c, dim], d]},{}];
+	2 FCUseCache[FCFastContract,{Pair[c,x[y,dim]] diracologyDDim[b, DiracGamma[c, dim], d]},{}]/; FreeQ2[c,{$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB}];
 
 
 (* Slash(p) g^nu_1 ... g^nu_n Slash(p), purely D-dim; Eq 2.10 of R. Mertig, M. Boehm, A. Denner. Comp. Phys. Commun., 64 (1991) *)
@@ -988,9 +1044,32 @@ diracologyDDim2[b___, DiracGamma[c_Momentum, dim_], ch:DiracGamma[(LorentzIndex 
 	Block[ {iVar, len = Length[{ch}]},
 		(-1)^len FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] diracologyDDim[b,ch,f]
 		+ 2 Sum[(-1)^(iVar+1) FCUseCache[FCFastContract,{Pair[c,{ch}[[iVar,1]]] diracologyDDim@@Join[{b},Drop[{ch},{iVar, iVar}],{DiracGamma[c,dim],f}]},{}],
-			{iVar, 1,len}]]/; (Length[{ch}]>0);
+			{iVar, 1,len}]]/; (Length[{ch}]>0)/; FreeQ2[c,{$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB}];
 
 (* Lightcone related stuff *)
+
+(* g.nb g.nb = g.n g.n = 0*)
+diracologyDDim[___,DiracGamma[Momentum[c_,dim_],dim_], DiracGamma[Momentum[c_,dim_],dim_], ___ ] :=
+	0/; MemberQ[{$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB},c];
+
+(* g.nb g.n g.nb = 4 g.nb,  g.n g.nb g.n = 4 g.n *)
+diracologyDDim[b___,DiracGamma[Momentum[c1_,dim_],dim_], DiracGamma[Momentum[c2_,dim_],dim_], DiracGamma[Momentum[c1_,dim_],dim_], f___] :=
+	4 diracologyDDim[b,DiracGamma[Momentum[c1,dim],dim],f]/; c1=!=c2 && MemberQ[{$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB},c1] &&
+	MemberQ[{$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB},c2];
+
+
+(*move all n/nb slashes past perps*)
+diracologyDDim[ b___,DiracGamma[(c1:n_|nb_),dim_],
+	ch:DiracGamma[LightConePerpendicularComponent[(LorentzIndex | ExplicitLorentzIndex | Momentum)[__], n_Momentum,nb_Momentum],dim_]..,
+	DiracGamma[(c2:n_|nb_),dim_],f___ ] :=
+	(-1)^Length[{ch}] diracologyDDim[b, DiracGamma[c1,dim],DiracGamma[c2,dim],ch,f] /; (Length[{ch}]>0) && c1=!=c2;
+
+
+diracologyDDim[___,DiracGamma[(c:n_|nb_), dim_],
+	DiracGamma[LightConePerpendicularComponent[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_], n_Momentum,nb_Momentum], dim_]..,
+	DiracGamma[(c:n_|nb_), dim_], ___] :=
+	0;
+
 
 (*	LC: g^mu_perp g_mu,perp	*)
 diracologyDDim[b___,DiracGamma[LightConePerpendicularComponent[l_LorentzIndex,n_,nb_],dim_],
@@ -1003,14 +1082,6 @@ diracologyDDim[b___,DiracGamma[LightConePerpendicularComponent[l_Momentum,n_,nb_
 	DiracGamma[LightConePerpendicularComponent[l_Momentum,n_,nb_], dim_], d___] :=
 	Pair[LightConePerpendicularComponent[l,n,nb],LightConePerpendicularComponent[l,n,nb]] diracologyDDim[ b,d ];
 
-
-(* Move each standalone g_perp to the left *)
-diracologyDDim[ b___,DiracGamma[LightConePerpendicularComponent[c_, n_Momentum, nb_Momentum], dim_],
-	DiracGamma[ch:((LorentzIndex | ExplicitLorentzIndex | Momentum)[_, dim_]), dim_], f___ ] :=
-		(-1/2 Pair[nb,ch] diracologyDDim[ b, DiracGamma[n, dim], DiracGamma[LightConePerpendicularComponent[c,n,nb], dim], f]
-		- 1/2 Pair[n,ch] diracologyDDim[ b, DiracGamma[nb, dim], DiracGamma[LightConePerpendicularComponent[c,n,nb], dim], f]
-		+ diracologyDDim[ b, DiracGamma[LightConePerpendicularComponent[c,n,nb], dim], DiracGamma[LightConePerpendicularComponent[ch,n,nb], dim], f]
-		);
 
 (*	Simplification for g^mu_perp g^nu_1_perp ... g^nu_n_perp g_mu_perp where all matrices are in D-dims;
 	Variety of Eq 2.9 of R. Mertig, M. Boehm, A. Denner. Comp. Phys. Commun., 64 (1991)	*)
@@ -1034,6 +1105,34 @@ diracologyDDim[b___, DiracGamma[LightConePerpendicularComponent[c_Momentum, n_Mo
 			{iVar, 1,len}]]/; (Length[{ch}]>0);
 
 
+(* Slash(p)_perp g^mu ... Slash(p)_perp *)
+diracologyDDim[ b___,DiracGamma[LightConePerpendicularComponent[c_, n_Momentum, nb_Momentum], dim_],
+	DiracGamma[ch:((LorentzIndex | ExplicitLorentzIndex | Momentum)[_, _]), dim_], f1___, DiracGamma[LightConePerpendicularComponent[c_, n_Momentum, nb_Momentum], dim_], f2___ ] :=
+		(-1/2 Pair[nb,ch] diracologyDDim[ b, DiracGamma[n, dim], DiracGamma[LightConePerpendicularComponent[c,n,nb], dim], f1, DiracGamma[LightConePerpendicularComponent[c,n,nb], dim], f2]
+		- 1/2 Pair[n,ch] diracologyDDim[ b, DiracGamma[nb, dim], DiracGamma[LightConePerpendicularComponent[c,n,nb], dim], f1, DiracGamma[LightConePerpendicularComponent[c,n,nb], dim], f2]
+		+ diracologyDDim[ b, DiracGamma[LightConePerpendicularComponent[c,n,nb], dim], DiracGamma[LightConePerpendicularComponent[ch,n,nb], dim], f1, DiracGamma[LightConePerpendicularComponent[c,n,nb], dim], f2]
+		);
+
+
+diracologyDDimFinalOrdering[___, 0, ___]:=
+	0;
+
+diracologyDDimFinalOrdering[]:=
+	1;
+
+(* Move each standalone g_perp to the left *)
+diracologyDDimFinalOrdering[ b___,DiracGamma[LightConePerpendicularComponent[c_, n_Momentum, nb_Momentum], dim_],
+	DiracGamma[ch:((LorentzIndex | ExplicitLorentzIndex | Momentum)[_, dim_]), dim_], f___ ] :=
+		(-1/2 Pair[nb,ch] diracologyDDimFinalOrdering[ b, DiracGamma[n, dim], DiracGamma[LightConePerpendicularComponent[c,n,nb], dim], f]
+		- 1/2 Pair[n,ch] diracologyDDimFinalOrdering[ b, DiracGamma[nb, dim], DiracGamma[LightConePerpendicularComponent[c,n,nb], dim], f]
+		+ diracologyDDimFinalOrdering[ b, DiracGamma[LightConePerpendicularComponent[c,n,nb], dim], DiracGamma[LightConePerpendicularComponent[ch,n,nb], dim], f]
+		);
+
+
+(* Define g.n g.nb as the standard ordering *)
+diracologyDDimFinalOrdering[ b___,DiracGamma[Momentum[nb_,dim_],dim_], DiracGamma[Momentum[n_,dim_],dim_], f___ ] :=
+		(- diracologyDDimFinalOrdering[ b,DiracGamma[Momentum[n,dim],dim],DiracGamma[Momentum[nb,dim],dim],  f]
+		+ 4 diracologyDDimFinalOrdering[ b, f])/; nb=!=n && {n,nb}==={$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB};
 
 (* ------------------------------------------------------------------------ *)
 
