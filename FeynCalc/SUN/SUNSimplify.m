@@ -210,7 +210,6 @@ SUNSimplify[expr_, OptionsPattern[]] :=
 		(*Remove isolations*)
 		temp = FRH[temp, IsolateNames->sunsiIso];
 
-
 		If[ optSUNFJacobi && !FreeQ[temp, SUNF],
 			time=AbsoluteTime[];
 			FCPrint[1, "SUNSimplify: Applying the Jacobi identity for SUNFs.", FCDoControl->sunSiVerbose];
@@ -260,11 +259,15 @@ SUNSimplify[expr_, OptionsPattern[]] :=
 
 		listColorFactor = Cases2[temp,colorFactor];
 
-
 		If[ optSUNNToCACF,
 
 			FCPrint[3, "SUNSimplify: Prefactors containing SUNN:", listColorFactor, FCDoControl->sunSiVerbose];
-			listColorFactorEval = Factor2/@(listColorFactor/. colorFactor->Identity/. {CA ->SUNN, CF -> (SUNN^2-1)/(2 SUNN)});
+
+			If[TrueQ[Head[optFactoring]=!=List],
+				listColorFactorEval = optFactoring/@(listColorFactor/. colorFactor->Identity/. {CA ->SUNN, CF -> (SUNN^2-1)/(2 SUNN)}),
+				listColorFactorEval = If[LeafCount[#]<=optFactoring[[2]],Factor2[#],#]&/@(listColorFactor/. colorFactor->Identity/. {CA ->SUNN, CF -> (SUNN^2-1)/(2 SUNN)})
+			];
+
 			listColorFactorEval = listColorFactorEval /. (1-SUNN^2) -> (-CF 2 CA) /. SUNN -> CA /. (-1 + CA^2)->(2 CA CF);
 			listColorFactorEval = listColorFactorEval /. (((2 - CA^2) CF )/CA ) ->(CF (CA - 4 CF));
 			listColorFactorEval = listColorFactorEval /. (1-CA^2) -> (-2 CA CF) /. (1/CA) -> (CA - 2 CF) /. ((1 - CA^2)*(CA - 2*CF)) -> (-2*CF) /. (CA (CA-2 CF)) -> 1,
@@ -281,6 +284,9 @@ SUNSimplify[expr_, OptionsPattern[]] :=
 		If[ !FreeQ[temp, CA],
 			temp = temp /. (CA*(CA -2*CF)) -> 1
 		];
+
+		(*Remove isolations*)
+		temp = FRH[temp, IsolateNames->sunsiIso];
 
 
 		res = temp;
