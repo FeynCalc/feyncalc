@@ -1763,7 +1763,7 @@ DiracGamma[a_Plus, dim_:4] :=
 DiracGamma[x_, 4] :=
 	DiracGamma[x];
 
-DiracGamma[x_ (h:TemporalMomentum|CartesianMomentum|Momentum)[p_, dim1___], dim2___] :=
+DiracGamma[x_ (h:TemporalMomentum|CartesianMomentum|Momentum|LightConePerpendicularComponent)[p_, dim1___], dim2___] :=
 	x DiracGamma[h[p, dim1], dim2];
 
 DiracGamma[(LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[_], _Symbol-4 ] :=
@@ -2224,10 +2224,13 @@ LightConePerpendicularComponent[head_[x_,dim___]] :=
 LightConePerpendicularComponent[LightConePerpendicularComponent[x_,n_,nb_],n_,nb_] :=
 	LightConePerpendicularComponent[x,n,nb];
 
-LightConePerpendicularComponent[x_Momentum n_?NumberQ, rest__] :=
+LightConePerpendicularComponent[x_ n_?NumberQ, rest__] :=
 	n LightConePerpendicularComponent[x,rest];
 
-LightConePerpendicularComponent[x_Momentum n_/;DataType[n,FCVariable], rest__] :=
+LightConePerpendicularComponent[x_ n_Power, rest__] :=
+	n LightConePerpendicularComponent[x,rest];
+
+LightConePerpendicularComponent[x_ n_/;DataType[n,FCVariable], rest__] :=
 	n LightConePerpendicularComponent[x,rest];
 
 Momentum[x_ GaugeXi[y_], dim_:4] :=
@@ -2235,6 +2238,9 @@ Momentum[x_ GaugeXi[y_], dim_:4] :=
 
 Momentum[x_ n_?NumberQ, dim_ :4] :=
 	n Momentum[x, dim];
+
+Momentum[x_ Power[a_/;DataType[a,FCVariable], n_], dim_ :4] :=
+	Power[a,n] Momentum[x, dim];
 
 Momentum[x_ n_/;DataType[n,FCVariable], dim_ :4] :=
 	n Momentum[x, dim];
@@ -2270,13 +2276,23 @@ Pair[0,_] :=
 	0;
 
 Pair[n_Integer x_,y_] :=
-	n Pair[x, y]/; !MemberQ[{LorentzIndex,ExplicitLorentzIndex},x]
+	n Pair[x, y]/; !MemberQ[{LorentzIndex,ExplicitLorentzIndex,CartesianIndex},Head[x]]
 
 Pair[n_Complex x_,y_] :=
-	n Pair[x, y]/; !MemberQ[{LorentzIndex,ExplicitLorentzIndex},x]
+	n Pair[x, y]/; !MemberQ[{LorentzIndex,ExplicitLorentzIndex,CartesianIndex},Head[x]]
+
+Pair[n_Power x_,y_] :=
+	n Pair[x, y]/; !MemberQ[{LorentzIndex,ExplicitLorentzIndex,CartesianIndex},Head[x]]
 
 Pair[n_ x_Momentum, y_] :=
 	n Pair[x, y];
+
+Pair[n_ x_LightConePerpendicularComponent, y_] :=
+	n Pair[x, y];
+(*
+Pair[x_ n_/;DataType[n,FCVariable],y_] :=
+	n Pair[x, y]/; !MemberQ[{LorentzIndex,ExplicitLorentzIndex,CartesianIndex},Head[x]]
+*)
 
 (*
 	Treatment of four vectors, scalar products and metric tensors,
@@ -2407,7 +2423,7 @@ Pair[Momentum[q_,_Symbol], CartesianMomentum[p_]]:=
 
 
 Pair[LightConePerpendicularComponent[x_, Momentum[n_,dim___], Momentum[nb_,dim___]],
-	y_]/; (Head[y]=!=LightConePerpendicularComponent && y=!=0) :=
+	y_]/; MemberQ[{LorentzIndex,Momentum,ExplicitLorentzIndex,CartesianIndex,CartesianMomentum},Head[y]] :=
 	Pair[LightConePerpendicularComponent[x, Momentum[n,dim], Momentum[nb,dim]],
 		LightConePerpendicularComponent[y, Momentum[n,dim], Momentum[nb,dim]]];
 
@@ -3111,6 +3127,12 @@ SPLN[x_, y_]:=
 	SPLN[x, y, $FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB];
 
 
+SPLR[a_] :=
+	SPLR[a,a];
+
+SPLR[a_,n_,nb_] :=
+	SPLR[a,a,n,nb];
+
 SPLR[x_, y_, r___] :=
 	SPLR[y, x, r] /; !OrderedQ[{x, y}];
 
@@ -3137,6 +3159,12 @@ SPLND[0, __]:=
 
 SPLND[_, 0, ___]:=
 	0;
+
+SPLRD[a_] :=
+	SPLRD[a,a];
+
+SPLRD[a_,n_,nb_] :=
+	SPLRD[a,a,n,nb];
 
 SPLND[x_, y_]:=
 	SPLND[x,y,$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB];

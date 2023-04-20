@@ -933,7 +933,7 @@ D].DiracGamma[LorentzIndex[rho, D], D]"},
 I (Momentum[p1, D] + 2 Momentum[q, D])]", "-Pair[Momentum[p1, D] + 2 Momentum[q, D],
 Momentum[p1, D] + 2 Momentum[q, D]]"},
 {"fcstSharedObjectsBehavior-ID158.0.2", "Pair[I LorentzIndex[a], I (Momentum[p1, D] + 2 Momentum[q, D])]",
-"-Pair[LorentzIndex[a], Momentum[p1, D] + 2 Momentum[q, D]]"},
+"I*Pair[I*LorentzIndex[a], Momentum[p1, D] + 2*Momentum[q, D]]"},
 {"fcstSharedObjectsBehavior-ID158.1", "CartesianPair[0, x]", "0"},
 {"fcstSharedObjectsBehavior-ID158.2", "CartesianPair[CartesianIndex[i], CartesianIndex[j, D - 1]]", "CartesianPair[CartesianIndex[i], CartesianIndex[j]]"},
 {"fcstSharedObjectsBehavior-ID158.3", "CartesianPair[CartesianIndex[i], CartesianMomentum[p, D - 1]]", "CartesianPair[CartesianIndex[i], CartesianMomentum[p]]"},
@@ -1048,7 +1048,11 @@ SUNTF[a_List, _, _] :> SUNT @@ a", "SUNT[SUNIndex[a1], SUNIndex[a2]]"},
 {"fcstSharedObjectsBehavior-ID223", "Conjugate[Zeta10]", "Zeta10"},
 {"fcstSharedObjectsBehavior-ID224", "LightConePerpendicularComponent[Momentum[n], Momentum[n], Momentum[nb]]", "0"},
 {"fcstSharedObjectsBehavior-ID225", "LightConePerpendicularComponent[Momentum[nb], Momentum[n],
-Momentum[nb]]", "0"}
+Momentum[nb]]", "0"},
+{"fcstSharedObjectsBehavior-ID226", "DataType[myVarFC,FCVariable]=True; LightConePerpendicularComponent[myVarFC Momentum[x], Momentum[n], Momentum[nb]]",
+"myVarFC LightConePerpendicularComponent[Momentum[x], Momentum[n], Momentum[nb]]"},
+{"fcstSharedObjectsBehavior-ID227", "DiracGamma[a LightConePerpendicularComponent[Momentum[x], Momentum[n], Momentum[nb]]]",
+"a DiracGamma[LightConePerpendicularComponent[Momentum[x], Momentum[n], Momentum[nb]]]"}
 }
 
 Tests`Shared`fcstSharedObjectsDiracIndex =
