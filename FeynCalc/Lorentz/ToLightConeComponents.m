@@ -38,6 +38,7 @@ Begin["`ToLightConeComponents`Private`"]
 vecN::usage="";
 vecNB::usage="";
 hold::usage="";
+tlcVerbose::usage="";
 
 Options[ToLightConeComponents] = {
 	DiracGammaExpand	-> True,
@@ -45,11 +46,13 @@ Options[ToLightConeComponents] = {
 	ExpandScalarProduct -> True,
 	FCE 				-> False,
 	FCI 				-> False,
+	FCVerbose			-> False,
 	FV 					-> True,
 	GA 					-> True,
 	GS 					-> True,
 	MT					-> True,
 	NotMomentum			-> {},
+	PairContract		-> True,
 	Polarization		-> True,
 	SP					-> True
 };
@@ -61,13 +64,17 @@ ToLightConeComponents[expr_, opts:OptionsPattern[]]:=
 
 ToLightConeComponents[expr_, n_, nb_, OptionsPattern[]]:=
 	Block[{ex, heads, tmp, res, uniqList,null1,null2, uniqListEval,
-		repRule, optNotMomentum, selector, pattern},
+		repRule, optNotMomentum, selector, pattern, time, holdDOT},
 
 		heads = {};
 		optNotMomentum = OptionValue[NotMomentum];
 
-		vecN = n;
-		vecNB = nb;
+		If [OptionValue[FCVerbose]===False,
+			tlcVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
+				tlcVerbose=OptionValue[FCVerbose]
+			];
+		];
 
 		If[	OptionValue[SP] || OptionValue[FV],
 			heads = Join[heads,{Pair}]
@@ -77,6 +84,14 @@ ToLightConeComponents[expr_, n_, nb_, OptionsPattern[]]:=
 			heads = Join[heads,{DiracGamma}]
 		];
 
+		vecN = n;
+		vecNB = nb;
+
+
+		FCPrint[1, "ToLightConeComponents: Entering.", FCDoControl->tlcVerbose];
+		FCPrint[3, "ToLightConeComponents: Entering with ", expr, FCDoControl->tlcVerbose];
+
+
 		If[ !OptionValue[FCI],
 			ex = FCI[expr],
 			ex = expr
@@ -84,12 +99,16 @@ ToLightConeComponents[expr_, n_, nb_, OptionsPattern[]]:=
 
 		uniqList = Cases[ex+null1+null2,Alternatives@@(Blank/@heads),Infinity]//DeleteDuplicates//Sort;
 
+		FCPrint[2, "ToLightConeComponents: Raw list of unique expressions ", uniqList, FCDoControl->tlcVerbose];
+
 		If[	optNotMomentum=!={},
-			selector = (Momentum[#,pattern]&/@optNotMomentum) /. pattern->BlankNullSequence[];
+			selector = Join[(Momentum[#,pattern]&/@optNotMomentum),(Momentum[Polarization[#,pattern],pattern]&/@optNotMomentum)] /. pattern->BlankNullSequence[];
 			uniqList = SelectFree[uniqList,selector]
 		];
 
 		uniqListEval = uniqList;
+
+		FCPrint[2, "ToLightConeComponents: Final list of unique expressions ", uniqListEval, FCDoControl->tlcVerbose];
 
 
 		If[	OptionValue[ExpandScalarProduct],
@@ -120,13 +139,44 @@ ToLightConeComponents[expr_, n_, nb_, OptionsPattern[]]:=
 			uniqListEval = uniqListEval /. DiracGamma -> gsToLC /. gsToLC -> DiracGamma
 		];
 
+		FCPrint[3, "ToLightConeComponents: List of expanded expressions ", uniqListEval, FCDoControl->tlcVerbose];
+
 		repRule = Thread[Rule[uniqList, uniqListEval]];
 
 		res = ex /. Dispatch[repRule] /. hold->Identity;
 
 		If[	OptionValue[DotSimplify],
-			res = DotSimplify[res,FCI->True]
+			time=AbsoluteTime[];
+			FCPrint[1, "ToLightConeComponents: Applying DotSimplify.", FCDoControl->tlcVerbose];
+			res = DotSimplify[res,FCI->True];
+			FCPrint[1,"ToLightConeComponents: Done applying DotSimplify, timing; ", N[AbsoluteTime[] - time, 4], FCDoControl->tlcVerbose];
+
+			time=AbsoluteTime[];
+			FCPrint[1, "ToLightConeComponents: Applying additional Dirac algebra-related simplifications.", FCDoControl->tlcVerbose];
+			res = res/. DOT->holdDOT /. Dispatch[ {
+				holdDOT[___, DiracGamma[Momentum[nb,dim___],dim___],	DiracGamma[Momentum[nb,dim___],dim___], ___] -> 0,
+				holdDOT[___, DiracGamma[Momentum[n,dim___],dim___], DiracGamma[Momentum[n,dim___],dim___], ___] -> 0,
+				Pair[Momentum[n,___], _LorentzIndex]^2 -> 0,
+				Pair[Momentum[nb,___], _LorentzIndex]^2 -> 0,
+				holdDOT[___,0,___] -> 0
+			}];
+			FCPrint[1,"ToLightConeComponents: Done applying additional simplifications, timing; ", N[AbsoluteTime[] - time, 4], FCDoControl->tlcVerbose];
+
+
+			If[	OptionValue[PairContract],
+				time=AbsoluteTime[];
+				FCPrint[1, "ToLightConeComponents: Applying PairContract.", FCDoControl->tlcVerbose];
+				res = res /. Pair->PairContract /. PairContract->Pair;
+				FCPrint[1, "ToLightConeComponents: Done applying PairContract, timing; ", N[AbsoluteTime[] - time, 4], FCDoControl->tlcVerbose];
+			];
+
+			res = res /. holdDOT[___,0,___] -> 0 /. holdDOT -> DOT;
+
+
 		];
+
+
+
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
