@@ -74,7 +74,7 @@ FCLoopTensorReduce[expr_, toposRaw_List, OptionsPattern[]] :=
 			optTimeConstrained,	loopNumeratorsList,loopNumeratorsListEval,
 			numerators, canoNums, tdecList, tdecListEval, auxRule,
 			uniqueProductsListEval, optUncontract, extraMomentaToUncontract,
-			allMoms},
+			allMoms, ltrHold},
 
 		If[	OptionValue[FCVerbose] === False,
 			fctrVerbose = $VeryVerbose,
@@ -174,7 +174,7 @@ FCLoopTensorReduce[expr_, toposRaw_List, OptionsPattern[]] :=
 
 		time=AbsoluteTime[];
 		FCPrint[1,"FCLoopTensorReduce: Uncontracting loop momenta.", FCDoControl->fctrVerbose];
-		tmp = MapThread[FeynCalc`Package`ucontractLoopMomenta[#1, #2,	OptionValue[Dimension], #3,
+		tmp = MapThread[FeynCalc`Package`uncontractLoopMomenta[#1, #2,	OptionValue[Dimension], #3,
 			optFactoring, optTimeConstrained, tidIsolate] &, {aux,loopMoms, extraMomentaToUncontract}];
 		FCPrint[1, "FCLoopTensorReduce: Done uncontracting loop momenta, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctrVerbose];
 
@@ -230,8 +230,13 @@ FCLoopTensorReduce[expr_, toposRaw_List, OptionsPattern[]] :=
 
 		If[	OptionValue[Contract],
 			time=AbsoluteTime[];
+			FCPrint[1,"FCLoopTensorReduce: Collecting terms before doing contractions.", FCDoControl->fctrVerbose];
+			res = Collect2[res, LorentzIndex, Factoring -> False, IsolateNames -> ltrHold, IsolateFast -> True];
+			FCPrint[1, "FCLoopTensorReduce: Collecting done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctrVerbose];
+
+			time=AbsoluteTime[];
 			FCPrint[1,"FCLoopTensorReduce: Applying Contract.", FCDoControl->fctrVerbose];
-			res = Contract[res,FCI->True];
+			res = Contract[res,FCI->True]//FRH[#,IsolateNames->ltrHold]&;
 			FCPrint[1, "FCLoopTensorReduce: Contract done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctrVerbose]
 		];
 

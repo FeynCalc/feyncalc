@@ -1044,5 +1044,11 @@ CFAD[{{k, 0}, {m2^2 - TC[k]^2, -1}, 1}, {{k - pH, 0}, {m2^2 - TC[k - pH]^2, -1},
 1}]*CGSD[pH]*TC[k]^2 + CFAD[{{k, 0}, {m2^2 - TC[k]^2, -1}, 1}, {{k - pH, 0},
 {m2^2 - TC[k - pH]^2, -1}, 1}]*CGSD[pH]*(TC[k] - TC[pH])^2 +
 2*CFAD[{{k, 0}, {m2^2 - TC[k]^2, -1}, 1}, {{k - pH, 0}, {m2^2 - TC[k - pH]^2,
--1}, 1}]*CSPD[pH, pH]*TC[k]*TGA[]))/(2*CSPD[pH, pH])"}
+-1}, 1}]*CSPD[pH, pH]*TC[k]*TGA[]))/(2*CSPD[pH, pH])"},
+{"fcstTID-ID64","TID[GSLRD[p, n, nb] FAD[p, p + q], p, FCE -> True]",
+"-1/2*(FAD[p, p - q]*GSLRD[q, n, nb])"},
+{"fcstTID-ID65","TID[SPLRD[p, p, n, nb] FAD[p, p + q], p, FCE -> True]",
+"-1/4*(FAD[p, p - q]*(2*SPD[q, q] - D*SPD[q, q] + D*SPLRD[q, q, n, nb]))/(1 - D)"},
+{"fcstTID-ID66","TID[SPLRD[p, r, n, nb] FAD[p, p + q], p, FCE -> True]",
+"-1/2*(FAD[p, p - q]*SPLRD[q, r, n, nb])"}
 };

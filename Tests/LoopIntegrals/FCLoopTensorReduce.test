@@ -128,5 +128,22 @@ FVD[p, nu]*MTD[mu, rho]*SPD[l1, p]^2*SPD[l2, p]*SPD[p, p] -
 FVD[p, mu]*MTD[nu, rho]*SPD[l1, p]^2*SPD[l2, p]*SPD[p, p] +
 FVD[p, nu]*MTD[mu, rho]*SPD[l1, l2]*SPD[l1, p]*SPD[p, p]^2 +
 FVD[p, mu]*MTD[nu, rho]*SPD[l1, l2]*SPD[l1, p]*SPD[p, p]^2 +
-FVD[p, rho]*MTD[mu, nu]*SPD[l1, l1]*SPD[l2, p]*SPD[p, p]^2))/((1 - D)*SPD[p, p]^3)), GLI[topo1, {1, 3, 1, 1}]]"}
+FVD[p, rho]*MTD[mu, nu]*SPD[l1, l1]*SPD[l2, p]*SPD[p, p]^2))/((1 - D)*SPD[p, p]^3)), GLI[topo1, {1, 3, 1, 1}]]"},
+{"fcstFCLoopTensorReduce-ID8",
+"FCLoopTensorReduce[gliProduct[GSLRD[q,FCGV[\"n\"],FCGV[\"nb\"]], GLI[fctopology4, {1, 1, 1}]],
+{FCTopology[fctopology4, {SFAD[{{q, 0}, {0, 1}, 1}], SFAD[{{k1 + q, 0},
+{0,1}, 1}], SFAD[{{k2 - q, 0}, {0, 1}, 1}]}, {q}, {k1, k2},
+{Hold[Pair][Momentum[k1, D], Momentum[k1, D]] -> 0,
+	Hold[Pair][Momentum[k1, D], Momentum[k2, D]]\
+	-> s/2, Hold[Pair][Momentum[k1, D], Momentum[p1, D]] -> -(t/2),
+	Hold[Pair][Momentum[k1, D], Momentum[p2, D]]\
+	-> -(u/2), Hold[Pair][Momentum[k2, D], Momentum[k2, D]] -> 0,
+	Hold[Pair][\
+		Momentum[k2, D], Momentum[p1, D]] -> -(u/2),
+	Hold[Pair][Momentum[k2, D], Momentum[p2, D]] -> -(t/2)}, {}]},
+Head -> gliProduct, FCE -> True]",
+"gliProduct[(GSLRD[k2, FCGV[\"n\"], FCGV[\"nb\"]]*SPD[k1, k2]*SPD[k1, q] -
+GSLRD[k1, FCGV[\"n\"], FCGV[\"nb\"]]*SPD[k1, q]*SPD[k2, k2] - GSLRD[k2, FCGV[\"n\"],
+FCGV[\"nb\"]]*SPD[k1, k1]*SPD[k2, q] + GSLRD[k1, FCGV[\"n\"], FCGV[\"nb\"]]*SPD[k1, k2]*SPD[k2, q])/
+(SPD[k1, k2]^2 - SPD[k1, k1]*SPD[k2, k2]), GLI[fctopology4, {1, 1, 1}]]"}
 });

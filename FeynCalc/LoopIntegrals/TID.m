@@ -296,7 +296,9 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 				Pair[Momentum[q, dim___], LorentzIndex[_, dim___]] :> Unique[],
 				CartesianPair[CartesianMomentum[q, dim___], CartesianIndex[_, dim___]] :> Unique[],
 				FeynAmpDenominator[___]:>Unique[],
-				TemporalMomentum[q]:> Unique
+				TemporalMomentum[q]:> Unique,
+				Pair[LightConePerpendicularComponent[Momentum[q, dim___],_,_],
+					LightConePerpendicularComponent[LorentzIndex[_, dim___],_,_]] :> Unique[]
 				}, q],
 			Message[TID::failmsg, "Uncontracting loop momenta in " <> ToString[t1,InputForm] <>
 				"failed."];
@@ -326,6 +328,17 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 			irrelevant = ToPaVe[irrelevant,q, FCI->True, PaVeAutoOrder-> paveao, PaVeAutoReduce-> pavear];
 			FCPrint[1, "TID: Done applying ToPaVe, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 			FCPrint[3, "TID: After ToPaVe: ", res , FCDoControl->tidVerbose]
+		];
+
+		If[	!FreeQ[t1,LightConePerpendicularComponent],
+			time=AbsoluteTime[];
+			FCPrint[1, "TID: Handling perpendicular light cone components.", FCDoControl->tidVerbose];
+			t1 = t1 //. {
+				Pair[LightConePerpendicularComponent[Momentum[q,n],vecN_,vecNB_],LightConePerpendicularComponent[LorentzIndex[i_,n],vecN_,vecNB_]]:>
+					(tmpli=Unique[];  Pair[Momentum[q,n],LorentzIndex[tmpli,n]] Pair[LightConePerpendicularComponent[LorentzIndex[tmpli,n],vecN,vecNB],
+						LightConePerpendicularComponent[LorentzIndex[i,n],vecN,vecNB]])
+			};
+			FCPrint[1, "TID: Done handling perpendicular light cone components, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 		];
 
 		(* 	Here comes the trick to handle uncontracted loop momenta in 4 or D-4 dimensions.

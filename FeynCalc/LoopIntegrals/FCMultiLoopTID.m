@@ -33,7 +33,7 @@ FCMultiLoopTID cannot handle such cases properly.";
 
 Begin["`Package`"]
 
-ucontractLoopMomenta::usage="";
+uncontractLoopMomenta::usage="";
 
 End[]
 
@@ -129,7 +129,7 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 			FCPrint[1, "FCMultiLoopTID: Done applying ApartFF, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose]
 		];
 
-		ex = ucontractLoopMomenta[ex, qs, n, optUncontract, optFactoring, optTimeConstrained, mltidIsolate];
+		ex = uncontractLoopMomenta[ex, qs, n, optUncontract, optFactoring, optTimeConstrained, mltidIsolate];
 
 		time=AbsoluteTime[];
 		FCPrint[1, "FCMultiLoopTID: Applying FCLoopExtract.", FCDoControl->mltidVerbose];
@@ -210,10 +210,10 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 	];
 
 
-ucontractLoopMomenta[exRaw_, qs_, n_, optUncontract_, optFactoring_, optTimeConstrained_, mltidIsolate_]:=
+uncontractLoopMomenta[exRaw_, qs_, n_, optUncontract_, optFactoring_, optTimeConstrained_, mltidIsolate_]:=
 	Block[{ex = exRaw,	time, nonDmoms, nonDcmoms, pairUncontract, cpairUncontract, stmpli, tmpli},
 
-		FCPrint[1, "FCMultiLoopTID: ucontractLoopMomenta: Entering. ", FCDoControl->mltidVerbose];
+		FCPrint[1, "FCMultiLoopTID: uncontractLoopMomenta: Entering. ", FCDoControl->mltidVerbose];
 
 		nonDmoms  = Join[(Momentum[#, n - 4] & /@ qs),(Momentum/@ qs)];
 		nonDcmoms = Join[(CartesianMomentum[#, n - 4] & /@ qs),(CartesianMomentum/@ qs)];
@@ -221,11 +221,11 @@ ucontractLoopMomenta[exRaw_, qs_, n_, optUncontract_, optFactoring_, optTimeCons
 		ex = Collect2[ex, qs, Factoring -> optFactoring, TimeConstrained -> optTimeConstrained, IsolateNames -> mltidIsolate];
 		ex = ex /. (h: CartesianPair|Pair|FeynAmpDenominator)[x__] /; !FreeQ[{x}, q_]/; MemberQ[qs,q] :> FRH[h[x], IsolateNames->mltidIsolate];
 
-		FCPrint[3, "FCMultiLoopTID: ucontractLoopMomenta: After Collect2: ", ex, FCDoControl->mltidVerbose];
+		FCPrint[3, "FCMultiLoopTID: uncontractLoopMomenta: After Collect2: ", ex, FCDoControl->mltidVerbose];
 
 		(* Single out relevant loop momenta *)
 		time=AbsoluteTime[];
-		FCPrint[1, "FCMultiLoopTID: ucontractLoopMomenta: Expanding w.r.t the relevant loop momenta.", FCDoControl->mltidVerbose];
+		FCPrint[1, "FCMultiLoopTID: uncontractLoopMomenta: Expanding w.r.t the relevant loop momenta.", FCDoControl->mltidVerbose];
 		ex = ex//DiracGammaExpand[#,Momentum->qs, FCI->True]&//ExpandScalarProduct[#,Momentum->qs,EpsEvaluate->True, FCI->True]&;
 
 		If[	!FreeQ[ex,DiracChain],
@@ -236,8 +236,8 @@ ucontractLoopMomenta[exRaw_, qs_, n_, optUncontract_, optFactoring_, optTimeCons
 			ex = PauliChainExpand[ex,FCI->True,Momentum->qs]
 		];
 
-		FCPrint[1, "FCMultiLoopTID: ucontractLoopMomenta: Done expanding w.r.t the relevant loop momenta, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
-		FCPrint[3, "FCMultiLoopTID: ucontractLoopMomenta: After the expansion: ", ex, FCDoControl->mltidVerbose];
+		FCPrint[1, "FCMultiLoopTID: uncontractLoopMomenta: Done expanding w.r.t the relevant loop momenta, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
+		FCPrint[3, "FCMultiLoopTID: uncontractLoopMomenta: After the expansion: ", ex, FCDoControl->mltidVerbose];
 
 		(*	The Dirac matrices and epsilon tensors could also be 4-dimensional. Then we need
 			to first uncontract and then convert the loop momenta to D dimensions	*)
@@ -248,17 +248,17 @@ ucontractLoopMomenta[exRaw_, qs_, n_, optUncontract_, optFactoring_, optTimeCons
 		pairUncontract  = Join[optUncontract, nonDmoms];
 		cpairUncontract = Join[optUncontract, nonDcmoms];
 
-		FCPrint[2, "FCMultiLoopTID: ucontractLoopMomenta: Lorentz vectors to be uncontracted: ", pairUncontract, FCDoControl->mltidVerbose];
-		FCPrint[2, "FCMultiLoopTID: ucontractLoopMomenta: Cartesian vectors to be uncontracted: ", cpairUncontract, FCDoControl->mltidVerbose];
+		FCPrint[2, "FCMultiLoopTID: uncontractLoopMomenta: Lorentz vectors to be uncontracted: ", pairUncontract, FCDoControl->mltidVerbose];
+		FCPrint[2, "FCMultiLoopTID: uncontractLoopMomenta: Cartesian vectors to be uncontracted: ", cpairUncontract, FCDoControl->mltidVerbose];
 
 		ex = Uncontract[ex, Sequence@@qs, Pair -> pairUncontract, CartesianPair-> cpairUncontract, FCI->True];
 
 		If[	!FreeQ[ex,DiracTrace],
-			FCPrint[1, "FCMultiLoopTID: ucontractLoopMomenta: Applying FCTraceExpand.", FCDoControl->mltidVerbose];
+			FCPrint[1, "FCMultiLoopTID: uncontractLoopMomenta: Applying FCTraceExpand.", FCDoControl->mltidVerbose];
 			time=AbsoluteTime[];
 			ex = ex /. DiracTrace[x__]/;!FreeQ2[x, qs] :> FCTraceExpand[DiracTrace[x],FCI->True];
-			FCPrint[1, "FCMultiLoopTID: ucontractLoopMomenta: Done applying FCTraceExpand timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
-			FCPrint[3, "FCMultiLoopTID: ucontractLoopMomenta: After FCTraceExpand: ", ex , FCDoControl->mltidVerbose];
+			FCPrint[1, "FCMultiLoopTID: uncontractLoopMomenta: Done applying FCTraceExpand timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
+			FCPrint[3, "FCMultiLoopTID: uncontractLoopMomenta: After FCTraceExpand: ", ex , FCDoControl->mltidVerbose];
 		];
 
 
@@ -270,8 +270,20 @@ ucontractLoopMomenta[exRaw_, qs_, n_, optUncontract_, optFactoring_, optTimeCons
 			ex = PauliChainFactor[ex,FCI->True]
 		];
 
-		FCPrint[1, "FCMultiLoopTID: ucontractLoopMomenta: Done uncontracting Lorentz indices, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
-		FCPrint[3, "FCMultiLoopTID: ucontractLoopMomenta: After Uncontract: ", ex, FCDoControl->mltidVerbose];
+		FCPrint[1, "FCMultiLoopTID: uncontractLoopMomenta: Done uncontracting Lorentz indices, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
+		FCPrint[3, "FCMultiLoopTID: uncontractLoopMomenta: After Uncontract: ", ex, FCDoControl->mltidVerbose];
+
+
+		If[	!FreeQ[ex,LightConePerpendicularComponent],
+			time=AbsoluteTime[];
+			FCPrint[1, "FCMultiLoopTID: Handling perpendicular light cone components.", FCDoControl->mltidVerbose];
+			ex = ex //. {
+				Pair[LightConePerpendicularComponent[Momentum[q_,n],vecN_,vecNB_],LightConePerpendicularComponent[LorentzIndex[i_,n],vecN_,vecNB_]]/; MemberQ[qs,q]:>
+					(tmpli=Unique[];  Pair[Momentum[q,n],LorentzIndex[tmpli,n]] Pair[LightConePerpendicularComponent[LorentzIndex[tmpli,n],vecN,vecNB],
+						LightConePerpendicularComponent[LorentzIndex[i,n],vecN,vecNB]])
+			};
+			FCPrint[1, "FCMultiLoopTID: Done handling perpendicular light cone components, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
+		];
 
 		If[ (FeynCalc`Package`DiracGammaScheme === "BMHV") && !FreeQ2[ex,{LorentzIndex,CartesianIndex}],
 			time=AbsoluteTime[];
@@ -293,8 +305,8 @@ ucontractLoopMomenta[exRaw_, qs_, n_, optUncontract_, optFactoring_, optTimeCons
 				Abort[]
 			];
 
-			FCPrint[2, "FCMultiLoopTID: ucontractLoopMomenta: Tensor parts after handling 4 and D-4 dimensional loop momenta: ", ex, FCDoControl->mltidVerbose];
-			FCPrint[1, "FCMultiLoopTID: ucontractLoopMomenta: Done handling 4 and D-4 dimensional loop momenta, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
+			FCPrint[2, "FCMultiLoopTID: uncontractLoopMomenta: Tensor parts after handling 4 and D-4 dimensional loop momenta: ", ex, FCDoControl->mltidVerbose];
+			FCPrint[1, "FCMultiLoopTID: uncontractLoopMomenta: Done handling 4 and D-4 dimensional loop momenta, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
 		];
 		ex
 
