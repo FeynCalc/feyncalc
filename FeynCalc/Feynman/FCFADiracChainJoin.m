@@ -194,11 +194,11 @@ diracChainEvalM[rest_. DiracIndexDelta[i_DiracIndex, j_DiracIndex]^2]:=
 
 (* u_i v_j A_ij -> ubar.A.v or vbar.A.u *)
 diracChainEvalS[rest_. DiracChain[S: Spinor[_. m1_Momentum, ___], a_DiracIndex] DiracChain[z_, a_DiracIndex, b_DiracIndex] DiracChain[Spinor[s_. m2_Momentum, r___], b_DiracIndex]]:=
-	diracChainEvalS[rest ordering[First[m1],First[m2]]] DOT[S, z, Spinor[-s m2, r]]/; optFirst==={} || MemberQ[optFirst, S];
+	diracChainEvalS[rest ordering[First[m1],First[m2]]] DOT[S, z, Spinor[-s m2, r]]/; optFirst==={} || MemberQ[optFirst, S] || FreeQ2[optFirst,{S,Spinor[s m2, r]}];
 
 (* u_i v_j A_ij -> ubar.A.v or vbar.A.u *)
 diracChainEvalS[rest_. DiracChain[S: Spinor[_. m1_Momentum, ___], a_DiracIndex] DiracChain[z_, a_DiracIndex, b_DiracIndex] DiracChain[Spinor[s_. m2_Momentum, r___], b_DiracIndex]]:=
-	diracChainEvalS[rest ordering[First[m1],First[m2]]] SpinorChainTranspose[DOT[S, z, Spinor[-s m2, r]], FCI->True]/; MemberQ[optFirst, Spinor[s m2, r]];
+	(diracChainEvalS[rest ordering[First[m1],First[m2]]] SpinorChainTranspose[DOT[S, z, Spinor[-s m2, r]], FCI->True])/; MemberQ[optFirst, Spinor[s m2, r]];
 
 diracChainEvalS[rest_. ordering[a__] ordering[b__]]:=
 	diracChainEvalS[rest ordering[a,b]];
