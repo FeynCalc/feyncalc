@@ -148,8 +148,8 @@ findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmomsRaw_List]
 			FeynAmpDenominator[StandardPropagatorDenominator[Complex[0,(1|-1)] Momentum[mom_, _], 0, _, {1, _}]] :> mom,
 			FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[mom_, _], 0, _, {1, _}]] :> mom,
 			FeynAmpDenominator[CartesianPropagatorDenominator[Complex[0,(1|-1)] CartesianMomentum[mom_, _], 0, _, {1, _}]] :> mom,
-			FeynAmpDenominator[StandardPropagatorDenominator[0, x_, _, {1, _}]]/; x=!=0 :> Unevaluated[Sequence[]],
-			FeynAmpDenominator[CartesianPropagatorDenominator[0, x_, _, {1, _}]]/; x=!=0 :> Unevaluated[Sequence[]]
+			FeynAmpDenominator[StandardPropagatorDenominator[_, x_, _, {1, _}]]/; x=!=0 :> Unevaluated[Sequence[]],
+			FeynAmpDenominator[CartesianPropagatorDenominator[_, x_, _, {1, _}]]/; x=!=0 :> Unevaluated[Sequence[]]
 
 		};
 
