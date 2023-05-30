@@ -115,13 +115,14 @@ fclbeVerbose::usage="";
 
 
 Options[FCLoopBasisExtract] = {
-	FCI 			-> False,
-	FCE 			-> False,
-	FCVerbose		-> False,
-	FCTopology		-> False,
-	Rest			-> None,
-	SetDimensions	-> {3, 4, D, D-1},
-	SortBy			-> Identity
+	FCI 				-> False,
+	FCE 				-> False,
+	FCVerbose			-> False,
+	FCTopology			-> False,
+	FinalSubstitutions	-> {},
+	Rest				-> None,
+	SetDimensions		-> {3, 4, D, D-1},
+	SortBy				-> Identity
 };
 
 Options[FCLoopBasisIncompleteQ] = {
@@ -217,7 +218,7 @@ FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 	Block[{	expr, coeffs, lmoms,allmoms, extmoms, basisElements,
 			availableDims, dims, res, useToSFAD, integralBasis, integralBasisT,
 			coeffsPair, coeffsCartesianPair, coeffsTemporalPair,
-			lorentzianDims, cartesianDims, null1, null2, aux, optSortBy},
+			lorentzianDims, cartesianDims, null1, null2, aux, optSortBy, optFinalSubstitutions},
 
 		If [OptionValue[FCVerbose]===False,
 				fclbeVerbose=$VeryVerbose,
@@ -226,8 +227,9 @@ FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 				];
 		];
 
-		dims		= OptionValue[SetDimensions];
-		optSortBy	= OptionValue[SortBy];
+		dims					= OptionValue[SetDimensions];
+		optSortBy				= OptionValue[SortBy];
+		optFinalSubstitutions	= OptionValue[FinalSubstitutions];
 
 		If[	dims==={},
 			Message[FCLoopBasisExtract::failmsg,"The list of dimensions cannot be empty."];
@@ -240,8 +242,8 @@ FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 		];
 
 		If[	!OptionValue[FCI],
-			expr = FCI[exp],
-			expr = exp
+			{expr,optFinalSubstitutions} = FCI[{exp,FRH[optFinalSubstitutions]}],
+			{expr,optFinalSubstitutions} = {exp,FRH[optFinalSubstitutions]}
 		];
 
 
@@ -298,6 +300,10 @@ FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 		];
 
 		basisElements = FCLoopPropagatorsToTopology[integralBasisT[[1]],FCI->True,ExpandScalarProduct->True, DeleteDuplicates->False];
+
+		If[	optFinalSubstitutions=!={},
+			basisElements = basisElements //. optFinalSubstitutions
+		];
 
 		FCPrint[3,"FCLoopBasisExtract: Basis elements from FCLoopPropagatorsToTopology: ", basisElements, FCDoControl->fclbeVerbose];
 
