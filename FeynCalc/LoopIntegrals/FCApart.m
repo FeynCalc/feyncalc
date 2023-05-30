@@ -64,6 +64,7 @@ Options[FCApart] = {
 	FCI 				-> False,
 	FCVerbose 			-> False,
 	FDS 				-> True,
+	FinalSubstitutions	-> {},
 	Factoring 			-> {Factor, 5000},
 	MaxIterations 		-> Infinity,
 	SetDimensions		-> {3,4,D, D-1},
@@ -76,13 +77,14 @@ FCApart[expr_, lmoms_List, opts:OptionsPattern[]] :=
 FCApart[expr_, extraPiece_, lmoms_List, OptionsPattern[]] :=
 	Block[{ex,vectorSet,res,check, scalarTerm, vectorTerm=1, pref=1, tmp,
 		scaleless1=0,scaleless2=0,time, optFactoring, optTimeConstrained,
-		rd, dt, extraTensors, optFDS, optDropScaleless},
+		rd, dt, extraTensors, optFDS, optDropScaleless, optFinalSubstitutions},
 
-		optFDS 				= OptionValue[FDS];
-		optDropScaleless	= OptionValue[DropScaleless];
-		counter 			= OptionValue[MaxIterations];
-		optFactoring 		= OptionValue[Factoring];
-		optTimeConstrained 	= OptionValue[TimeConstrained];
+		optFDS 					= OptionValue[FDS];
+		optDropScaleless		= OptionValue[DropScaleless];
+		counter 				= OptionValue[MaxIterations];
+		optFactoring 			= OptionValue[Factoring];
+		optTimeConstrained 		= OptionValue[TimeConstrained];
+		optFinalSubstitutions 	= OptionValue[FinalSubstitutions];
 
 		If [OptionValue[FCVerbose]===False,
 			fcaVerbose=$VeryVerbose,
@@ -91,9 +93,9 @@ FCApart[expr_, extraPiece_, lmoms_List, OptionsPattern[]] :=
 			];
 		];
 
-		If[	!OptionValue[FCI],
-			ex = FCI[expr],
-			ex = expr
+s		If[	!OptionValue[FCI],
+			{ex,optFinalSubstitutions} = FCI[{expr,FRH[optFinalSubstitutions]}],
+			{ex,optFinalSubstitutions} = {expr,FRH[optFinalSubstitutions]}
 		];
 
 
@@ -233,7 +235,7 @@ FCApart[expr_, extraPiece_, lmoms_List, OptionsPattern[]] :=
 
 		FCPrint[3,"FCApart: Final scalar term ", scalarTerm, FCDoControl->fcaVerbose];
 
-		vectorSet= FCLoopBasisExtract[scalarTerm, lmoms, SetDimensions->OptionValue[SetDimensions]];
+		vectorSet= FCLoopBasisExtract[scalarTerm, lmoms, FCI->True, SetDimensions->OptionValue[SetDimensions], FinalSubstitutions->optFinalSubstitutions];
 
 		FCPrint[3,"FCApart: vectorSet: ",vectorSet, FCDoControl->fcaVerbose];
 
@@ -290,8 +292,8 @@ FCApart[expr_, extraPiece_, lmoms_List, OptionsPattern[]] :=
 			is identical to the original integral *)
 		If [OptionValue[Check],
 			If[	check=
-					Together[FeynAmpDenominatorExplicit[ex*extraPiece] -
-					Together[FeynAmpDenominatorExplicit[res]]]//ExpandScalarProduct[#,FCI->True]&//Together;
+					Together[(FeynAmpDenominatorExplicit[ex*extraPiece]/.optFinalSubstitutions) -
+					Together[FeynAmpDenominatorExplicit[res]]]//ExpandScalarProduct[#,FCI->True]&//ReplaceAll[#,optFinalSubstitutions]&//Together;
 				check=!=0,
 				Message[FCApart::checkfail,ToString[ex,InputForm]];
 				FCPrint[0, StandardForm[check]];

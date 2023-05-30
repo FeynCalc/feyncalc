@@ -72,6 +72,7 @@ factFun::usage="";
 (*	FeynAmpDenominator is an internal option to make ApartFF behave like SPC,
 	i.e. block partial fractioning on loop integrals that don't contain scalar products *)
 Options[ApartFF] = {
+	Check						-> True,
 	Collecting 					-> True,
 	DropScaleless 				-> True,
 	ExpandScalarProduct 		-> True,
@@ -83,7 +84,9 @@ Options[ApartFF] = {
 	Factoring 					-> {Factor, 5000},
 	FeynAmpDenominator 			-> True,
 	FeynAmpDenominatorCombine	-> True,
+	FinalSubstitutions			-> {},
 	MaxIterations 				-> Infinity,
+	Head						-> {Identity, FCGV["GLIProduct"]},
 	Numerator 					-> True,
 	SetDimensions				-> {3, 4, D-1, D},
 	TemporalMomentum 			-> False,
@@ -156,6 +159,63 @@ feynampdenpartfrac[a___, gpd : GenericPropagatorDenominator[(c1_ :0) + (c2_. Sqr
 Apart3[expr_, x_] :=
 	Map2[Factor2, Collect2[Apart1[expr,x],x]];
 
+
+ApartFF[glis_List, topos_, opts:OptionsPattern[]] :=
+Map[ApartFF[#,topos,opts]&,glis];
+
+ApartFF[gli_GLI, topoRaw_, opts:OptionsPattern[]] :=
+	Block[{int, optFinalSubstitutions, tmp, res, topo},
+
+		If [OptionValue[FCVerbose]===False,
+			affVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				affVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		If[	OptionValue[FCI],
+			topo = topoRaw,
+			topo = FCI[topoRaw]
+		];
+
+		If[ Head[topo]===List,
+			topo = FCLoopSelectTopology[gli,topo]
+		];
+
+		If[	Head[topo]=!=FCTopology,
+			Message[ApartFF::failmsg,"Something went selecting the correct topology."];
+			Abort[]
+		];
+
+		int = FCLoopFromGLI[gli, topo, FCI->OptionValue[FCI], FeynAmpDenominatorExplicit->False];
+
+		optFinalSubstitutions = Join[OptionValue[FinalSubstitutions],topo[[5]]];
+
+		If[	!OptionValue[FCI],
+			optFinalSubstitutions = FCI[optFinalSubstitutions]
+		];
+
+		optFinalSubstitutions = FCI@FRH[optFinalSubstitutions];
+
+		tmp = ApartFF[int, topo[[3]], Join[{FCI->True,FCE->False,FinalSubstitutions->optFinalSubstitutions},
+			FilterRules[{opts}, Except[FCI|FCE|FinalSubstitutions]]]];
+
+		FCPrint[3, "ApartFF: After partial fractioning of the propagator representation: ", tmp, FCDoControl->affVerbose];
+
+		res = FCLoopFindTopologies[tmp, topo[[3]], PreferredTopologies->{topo}, Head->OptionValue[Head],Names->Unique["t"],FCVerbose->-1];
+
+		If[	Length[res[[2]]]=!=1 && res[[2]][[1]]=!=topo[[1]],
+			Message[ApartFF::failmsg,"Something went wrong during parital fraction decomposition of GLIs."];
+			Abort[]
+		];
+
+		res[[1]]
+
+	]/; MatchQ[topoRaw,_FCTopology|{__FCTopology}];
+
+
+
+
 ApartFF[int_, lmoms_List , opts:OptionsPattern[]]:=
 	ApartFF[int, 1, lmoms , opts];
 
@@ -164,12 +224,13 @@ ApartFF[int_, extraPiece_, lmoms_List , OptionsPattern[]]:=
 	Block[{	exp,tmp,loopHead,null1,null2,res,rest,
 			loopInts,intsUnique,solsList,repRule, time,
 			optCollecting, tcRepList, optFDS, optDropScaleless,
-			optTemporalMomentum	},
+			optTemporalMomentum, optFinalSubstitutions},
 
-		optCollecting 		= OptionValue[Collecting];
-		optFDS 				= OptionValue[FDS];
-		optDropScaleless	= OptionValue[DropScaleless];
-		optTemporalMomentum = OptionValue[TemporalMomentum];
+		optCollecting 		  = OptionValue[Collecting];
+		optFDS 				  = OptionValue[FDS];
+		optDropScaleless	  = OptionValue[DropScaleless];
+		optTemporalMomentum   = OptionValue[TemporalMomentum];
+		optFinalSubstitutions = OptionValue[FinalSubstitutions];
 
 		If [OptionValue[FCVerbose]===False,
 			affVerbose=$VeryVerbose,
@@ -253,7 +314,7 @@ ApartFF[int_, extraPiece_, lmoms_List , OptionsPattern[]]:=
 		solsList = MapIndexed[ (If[ OptionValue[FCProgressBar],
 									FCProgressBar["ApartFF: Processing integral ",First[#2],Length[intsUnique]]
 								];
-			FCApart[#1, extraPiece, lmoms, FCI->True, FDS->optFDS, DropScaleless->optDropScaleless,
+			FCApart[#1, extraPiece, lmoms, FCI->True, FDS->optFDS, Check->OptionValue[Check], DropScaleless->optDropScaleless, FinalSubstitutions->optFinalSubstitutions,
 			MaxIterations->OptionValue[MaxIterations],SetDimensions->OptionValue[SetDimensions]])&,(intsUnique/.loopHead->Identity)];
 
 		FCPrint[1, "ApartFF: Done applying FCApart, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->affVerbose];
