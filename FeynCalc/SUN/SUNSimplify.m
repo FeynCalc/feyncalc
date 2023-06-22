@@ -468,6 +468,11 @@ colorSimplifyGeneric[rest_. holdDOTColor[A___, SUNT[i_SUNIndex], SUNT[a_SUNIndex
 colorSimplifyGeneric[rest_. SUNTF[{A___,i_SUNIndex,a_SUNIndex,B__SUNIndex,i_SUNIndex,C___},j_,k_]] :=
 			1/2 colorSimplifyGeneric[rest SUNTF[{A,C}, j,k] sunTrace[holdDOTColor[SUNT[a],Sequence@@(SUNT/@{B})]]] - 1/(2 SUNN) colorSimplifyGeneric[rest SUNTF[{A,a,B,C},j,k]];
 
+
+(* ... Tr[... T^a T^a ... ] ... *)
+colorSimplifyGeneric[rest_. sunTrace[holdDOTColor[A___, SUNT[i_SUNIndex], SUNT[i_SUNIndex], B___]]] :=
+			(SUNN^2 -1)/(2 SUNN) colorSimplifyGeneric[rest sunTrace[holdDOTColor[A,B]]];
+
 (* ... Tr[... T^a T^b ... T^a ...] ... *)
 colorSimplifyGeneric[rest_. sunTrace[holdDOTColor[A___, SUNT[i_SUNIndex], SUNT[a_SUNIndex], B:SUNT[_SUNIndex].. , SUNT[i_SUNIndex], C___]]] :=
 			1/2 colorSimplifyGeneric[rest sunTrace[holdDOTColor[A,C]] sunTrace[holdDOTColor[SUNT[a],B]]] - 1/(2 SUNN) colorSimplifyGeneric[rest sunTrace[holdDOTColor[A,SUNT[a],B,C]]];

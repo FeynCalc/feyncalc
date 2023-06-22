@@ -225,6 +225,9 @@ SUNTrace[SUNT[a] . SUNT[b] . SUNT[c] - SUNT[c] . SUNT[b] . SUNT[a]]]",
 SUNTrace[SUNT[a] . SUNT[b] . SUNT[c] - SUNT[c] . SUNT[b] . SUNT[a]],
 SUNTraceEvaluate -> False]",
 "SUNTrace[SUNT[SUNIndex[a]] . SUNT[SUNIndex[b]] . SUNT[SUNIndex[c]]] -
-SUNTrace[SUNT[SUNIndex[a]] . SUNT[SUNIndex[c]] . SUNT[SUNIndex[b]]]"}
+SUNTrace[SUNT[SUNIndex[a]] . SUNT[SUNIndex[c]] . SUNT[SUNIndex[b]]]"},
+{"fcstSUNSimplify-ID66",
+"SUNSimplify[SUNTrace[SUNT[a, a, b, b]]]",
+"CA CF^2"}
 };
 
