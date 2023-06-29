@@ -153,7 +153,7 @@ removeVanishingSubtopos[{}, _] :=
 removeVanishingSubtopos[{zeroVars_List, poly_}, var_] :=
 Block[{allVars, aux, res, time},
 
-	FCPrint[4, "FCLoopFindSubtopologies: removeVanishingSubtopos: Entering with: ", zeroVarsRaw, FCDoControl->fclfsVerbose];
+	FCPrint[4, "FCLoopFindSubtopologies: removeVanishingSubtopos: Entering with: ", zeroVars, FCDoControl->fclfsVerbose];
 	FCPrint[4, "FCLoopFindSubtopologies: removeVanishingSubtopos: Polynomial: ", poly, FCDoControl->fclfsVerbose];
 	allVars = Cases2[poly, var];
 

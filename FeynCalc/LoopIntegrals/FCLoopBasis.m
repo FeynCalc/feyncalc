@@ -582,6 +582,8 @@ FCLoopBasisOverdeterminedQ[expr_, lmoms_List, OptionsPattern[]] :=
 		res
 	];
 
+FCLoopBasisFindCompletion[{}, OptionsPattern[]] :=
+	{};
 
 FCLoopBasisFindCompletion[topos:{__FCTopology}, opts:OptionsPattern[]] :=
 	FCLoopBasisFindCompletion[#, opts]&/@topos;

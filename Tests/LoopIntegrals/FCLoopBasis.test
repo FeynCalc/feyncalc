@@ -499,7 +499,9 @@ Method -> {FeynAmpDenominator[
 FeynAmpDenominator[StandardPropagatorDenominator[Momentum[l1, D], -(me*u0b*Pair[Momentum[l1, D], Momentum[nm, D]]) +
 2*gammakin*me*u0b*Pair[Momentum[l1, D], Momentum[np, D]], -2*gammakin*me^2*u0b^2, {1, 1}]],
 FeynAmpDenominator[StandardPropagatorDenominator[0, -(mb*Pair[Momentum[l1, D], Momentum[nm, D]]), 2*gammakin*mb*me, {1, 1}]]},
-{l1}, {np, nm}, {Hold[SPD][n, n] -> 0, Hold[SPD][nb, nb] -> 0, Hold[SPD][n, nb] -> 2}, {FCGV[\"BasisCompletion\"]}]"}
+{l1}, {np, nm}, {Hold[SPD][n, n] -> 0, Hold[SPD][nb, nb] -> 0, Hold[SPD][n, nb] -> 2}, {FCGV[\"BasisCompletion\"]}]"},
+{"fcstFCLoopBasisFindCompletion-ID26",
+"FCLoopBasisFindCompletion[{}]","{}"}
 });
 
 Tests`LoopIntegrals`fcstFCLoopBasisSplit =

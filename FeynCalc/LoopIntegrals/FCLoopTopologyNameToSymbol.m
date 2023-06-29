@@ -74,7 +74,7 @@ FCLoopTopologyNameToSymbol[expr_, OptionsPattern[]] :=
 
 		gliTopoListEval = gliTopoList/. {
 			GLI[id_String, rest___]:> GLI[ToExpression[id],rest],
-			FCTopology[id_String, rest___]:> GLI[ToExpression[id],rest]
+			FCTopology[id_String, rest___]:> FCTopology[ToExpression[id],rest]
 		};
 
 		repRule = Thread[Rule[gliTopoList,gliTopoListEval]];

@@ -176,7 +176,14 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 			relevantTopos = Select[allTopos,MemberQ[relevantTopoIDs,First[#]]&];
 		];
 
+		FCPrint[0, Style["Found ", {Darker[Green,0.55], Bold}], Length[res], Style[" mapping relations ", {Darker[Green,0.55], Bold}], FCDoControl->fclftpVerbose];
+		FCPrint[0, Style["Final number of independent topologies: ", {Darker[Green,0.55], Bold}], Length[relevantTopos], FCDoControl->fclftpVerbose];
+
 		res = {res,relevantTopos};
+
+		FCPrint[2, "FCLoopFindTopologyMappings: Found: ", relevantTopoIDs, FCDoControl -> fclftpVerbose];
+
+
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
@@ -233,6 +240,9 @@ findMappings[input_List, preferred_List, targetEl_:1] :=
 
 	FCPrint[3, "FCLoopFindTopologyMappings: findMappings: FCLoopFindMomentumShifts done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclftpVerbose];
 
+
+	FCPrint[3, "FCLoopFindTopologyMappings: findMappings: Shifts: ", shifts, FCDoControl->fclftpVerbose];
+
 	aux = MapThread[If[	FreeQ[#2,noShiftFound],
 									{First[#1], #2, FCReplaceMomenta[First[#1], #2]},
 									Unevaluated[Sequence[]]
@@ -244,6 +254,9 @@ findMappings[input_List, preferred_List, targetEl_:1] :=
 
 	sourceShifted = FDS[#,FCI->True]&/@sourceShifted;
 	target = FDS[target,FCI->True];
+
+	FCPrint[4, "FCLoopFindTopologyMappings: findMappings: sourceShifted: ", sourceShifted, FCDoControl->fclftpVerbose];
+	FCPrint[4, "FCLoopFindTopologyMappings: findMappings: target: ", First[target], FCDoControl->fclftpVerbose];
 
 	gliRules = FCLoopCreateRuleGLIToGLI[First[target], #]&/@sourceShifted;
 
