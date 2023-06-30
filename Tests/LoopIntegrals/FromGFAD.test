@@ -23,17 +23,17 @@ Pair[Momentum[p1,D],Momentum[q,D]],{1,1}]]]",
 Momentum[p1, D], 2*Pair[Momentum[p1, D], Momentum[q, D]], 0, {1, \
 1}]]"},
 {"fcstFromGFAD-ID2",
-"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[-\!\(\*\
-SuperscriptBox[\(mb\), \(2\)]\)-\!\(\*SuperscriptBox[\(la\), \(2\)]\) \
-Pair[Momentum[p1,D],Momentum[p1,D]]-2 la \
-Pair[Momentum[p1,D],Momentum[p3,D]]+2 la \
-Pair[Momentum[p1,D],Momentum[q,D]]-Pair[Momentum[p3,D],Momentum[p3,D]]\
-+2 Pair[Momentum[p3,D],Momentum[q,D]],{1,1}]],FCVerbose->-1]",
-"FeynAmpDenominator[GenericPropagatorDenominator[-mb^2 - \
-la^2*Pair[Momentum[p1, D], Momentum[p1, D]] - 2*la*Pair[Momentum[p1, \
-D], Momentum[p3, D]] + 2*la*Pair[Momentum[p1, D], Momentum[q, D]] - \
-Pair[Momentum[p3, D], Momentum[p3, D]] + 2*Pair[Momentum[p3, D], \
-Momentum[q, D]], {1, 1}]]"},
+"DataType[la,FCVariable]=True; FromGFAD[FeynAmpDenominator[
+GenericPropagatorDenominator[-mb^2 -
+la^2 Pair[Momentum[p1, D], Momentum[p1, D]] -
+2 la Pair[Momentum[p1, D], Momentum[p3, D]] +
+2 la Pair[Momentum[p1, D], Momentum[q, D]] -
+Pair[Momentum[p3, D], Momentum[p3, D]] +
+2 Pair[Momentum[p3, D], Momentum[q, D]], {1, 1}]],
+IntermediateSubstitutions -> {-ExpandScalarProduct[
+	SPD[p1 la + p3]] -> -SPD[p1 la + p3]}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[la*p1 + p3, D],
+Pair[Momentum[2*la*p1 + 2*p3, D], Momentum[q, D]], -mb^2, {1, 1}]]"},
 {"fcstFromGFAD-ID3",
 "FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[\!\(\*\
 SuperscriptBox[\(mb\), \(2\)]\)-\!\(\*SuperscriptBox[\(la\), \(2\)]\) \

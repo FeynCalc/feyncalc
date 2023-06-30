@@ -85,3 +85,21 @@ SFAD[{{I*(p1 + q), 0}, {-mb^2, 1}, 1}]*SFAD[{{I*(p3 + q), 0}, {-mb^2, 1}, 1}] -
 
 
 FromGFAD[ex]
+
+
+(* ::Text:: *)
+(*Using the option `InitialSubstitutions` one can perform certain replacement that might not be found automatically*)
+
+
+ex=GFAD[SPD[k1]+2SPD[k1,k2]+SPD[k2]+SPD[k1,n]]
+
+
+FromGFAD[ex,FCE->True]
+%//InputForm
+
+
+FromGFAD[ex,FCE->True,InitialSubstitutions->{ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]}]
+%//InputForm
+
+
+

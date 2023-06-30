@@ -1,3 +1,7 @@
+```mathematica
+ 
+```
+
 ## FromGFAD
 
 `FromGFAD[exp]` converts all suitable generic propagator denominators into standard and Cartesian propagator denominators.
@@ -52,12 +56,12 @@ ex = FromGFAD[%]
 
 $$\frac{1}{(m^2+\text{p1}^2+2 (\text{p1}\cdot \;\text{p2})-i \eta )^2}$$
 
-$$\frac{1}{(\text{p1}^2+2 (\text{p1}\cdot \;\text{p2})+m^2-i \eta )^2}$$
+$$\frac{1}{(\text{p1}\cdot (\text{p1}+2 \;\text{p2})+m^2-i \eta )^2}$$
 
 ```mathematica
 ex // StandardForm
 
-(*FeynAmpDenominator[CartesianPropagatorDenominator[CartesianMomentum[p1, -1 + D], 2 CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p2, -1 + D]], m^2, {2, -1}]]*)
+(*FeynAmpDenominator[CartesianPropagatorDenominator[0, CartesianPair[CartesianMomentum[p1, -1 + D], CartesianMomentum[p1 + 2 p2, -1 + D]], m^2, {2, -1}]]*)
 ```
 
 ```mathematica
@@ -112,3 +116,34 @@ FromGFAD[ex]
 ```
 
 $$\frac{1}{2} \left(-\frac{2 \;\text{mg}^2}{(-\text{p1}^2+i \eta )^2 (-\text{p3}^2+i \eta ) (-(\text{p1}+q)^2+\text{mb}^2+i \eta ) (-(\text{p3}+q)^2+\text{mb}^2+i \eta ) (-\text{p3}^2+\text{p1}\cdot (2 \;\text{p3}-\text{p1})+i \eta )}-\frac{2 \;\text{mg}^2}{(-\text{p1}^2+i \eta ) (-\text{p3}^2+i \eta )^2 (-(\text{p1}+q)^2+\text{mb}^2+i \eta ) (-(\text{p3}+q)^2+\text{mb}^2+i \eta ) (-\text{p3}^2+\text{p1}\cdot (2 \;\text{p3}-\text{p1})+i \eta )}-\frac{2 \;\text{mg}^2}{(-\text{p1}^2+i \eta ) (-\text{p3}^2+i \eta ) (-(\text{p1}+q)^2+\text{mb}^2+i \eta ) (-(\text{p3}+q)^2+\text{mb}^2+i \eta ) (-\text{p3}^2+\text{p1}\cdot (2 \;\text{p3}-\text{p1})+i \eta )^2}\right)+\frac{1}{(-\text{p1}^2+i \eta ) (-\text{p3}^2+i \eta ) (-(\text{p1}+q)^2+\text{mb}^2+i \eta ) (-(\text{p3}+q)^2+\text{mb}^2+i \eta ) (-\text{p3}^2+\text{p1}\cdot (2 \;\text{p3}-\text{p1})+i \eta )}$$
+
+Using the option `InitialSubstitutions` one can perform certain replacement that might not be found automatically
+
+```mathematica
+ex = GFAD[SPD[k1] + 2 SPD[k1, k2] + SPD[k2] + SPD[k1, n]]
+```
+
+$$\frac{1}{(\text{k1}^2+2 (\text{k1}\cdot \;\text{k2})+\text{k1}\cdot n+\text{k2}^2+i \eta )}$$
+
+```mathematica
+FromGFAD[ex, FCE -> True]
+% // InputForm
+```
+
+$$\frac{1}{(\text{k1}^2+\text{k1}\cdot (2 \;\text{k2}+n)+\text{k2}^2+i \eta )}$$
+
+```mathematica
+SFAD[{{k1, k1 . (2*k2 + n) + k2 . k2}, {0, 1}, 1}]
+```
+
+```mathematica
+FromGFAD[ex, FCE -> True, InitialSubstitutions -> {ExpandScalarProduct[SPD[k1 + k2]] -> SPD[k1 + k2]}]
+% // InputForm
+
+```
+
+$$\frac{1}{((\text{k1}+\text{k2})^2+\text{k1}\cdot n+i \eta )}$$
+
+```mathematica
+SFAD[{{k1 + k2, k1 . n}, {0, 1}, 1}]
+```
