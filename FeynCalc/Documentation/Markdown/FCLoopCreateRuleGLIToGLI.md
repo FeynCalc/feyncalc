@@ -1,3 +1,7 @@
+```mathematica
+ 
+```
+
 ## FCLoopCreateRuleGLIToGLI
 
 `FCLoopCreateRuleGLIToGLI[topology1, topology2]` creates a GLI replacement rule assuming that the `topology2` is a subtopology of `topology1`. Both topologies must be given as `FCTopology` objects.
@@ -65,11 +69,11 @@ FCLoopIntegralToGraph[FCTopology["tad2l", {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1
 
 $$\left\{\{1\to 2,1\to 2,1\to 2\},\left(
 \begin{array}{ccc}
- \;\text{p2} & 1 & -\text{m2}^2 \\
  \;\text{p1} & 1 & -\text{m1}^2 \\
+ \;\text{p2} & 1 & -\text{m2}^2 \\
  \;\text{p1}-\text{p2} & 1 & -\text{m3}^2 \\
 \end{array}
-\right),\left\{\frac{1}{(\text{p2}^2-\text{m2}^2+i \eta )},\frac{1}{(\text{p1}^2-\text{m1}^2+i \eta )},\frac{1}{((\text{p1}-\text{p2})^2-\text{m3}^2+i \eta )}\right\},1\right\}$$
+\right),\left\{\frac{1}{(\text{p1}^2-\text{m1}^2+i \eta )},\frac{1}{(\text{p2}^2-\text{m2}^2+i \eta )},\frac{1}{((\text{p1}-\text{p2})^2-\text{m3}^2+i \eta )}\right\},1\right\}$$
 
 ```mathematica
 FCLoopCreateRuleGLIToGLI[
@@ -90,3 +94,19 @@ FCLoopCreateRuleGLIToGLI[
 ```
 
 $$\left\{\left\{G^{\text{prop2lX1}}(\text{n2$\_$},\text{n3$\_$},\text{n4$\_$},\text{n5$\_$}):\to G^{\text{prop2l}}(0,\text{n2},\text{n3},\text{n4},\text{n5}),G^{\text{prop2lX5}}(\text{n1$\_$},\text{n2$\_$},\text{n3$\_$},\text{n4$\_$}):\to G^{\text{prop2l}}(\text{n1},\text{n2},\text{n3},\text{n4},0)\right\},\left\{G^{\text{tad2lX2}}(\text{n1$\_$},\text{n3$\_$}):\to G^{\text{tad2l}}(\text{n1},0,\text{n3}),G^{\text{tad2lX3}}(\text{n1$\_$},\text{n2$\_$}):\to G^{\text{tad2l}}(\text{n1},\text{n2},0)\right\}\right\}$$
+
+Using the option `Reverse` we can also generate inverse replacement rules
+
+```mathematica
+FCLoopCreateRuleGLIToGLI[FCTopology[topo1, {SFAD[p], SFAD[q]}], 
+  FCTopology[topo2, {SFAD[q], SFAD[p]}], Reverse -> True]
+```
+
+$$G^{\text{topo1}}(\text{n1$\_$},\text{n2$\_$}):\to G^{\text{topo2}}(\text{n2},\text{n1})$$
+
+```mathematica
+FCLoopCreateRuleGLIToGLI[FCTopology[topo1, {SFAD[p], SFAD[q]}], 
+  FCTopology[topo2, {SFAD[p]}]]
+```
+
+$$G^{\text{topo2}}(\text{n1$\_$}):\to G^{\text{topo1}}(\text{n1},0)$$

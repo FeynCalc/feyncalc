@@ -81,3 +81,15 @@ FCTopology["tad2lX2",{FAD[{p1,m1}],FAD[{p1-p2,m3}]},{p1,p2},{},{},{}],
 FCTopology["tad2lX3",{FAD[{p1,m1}],FAD[{p2,m2}]},{p1,p2},{},{},{}]
 }
 }]
+
+
+(* ::Text:: *)
+(*Using the option `Reverse` we can also generate inverse replacement rules*)
+
+
+FCLoopCreateRuleGLIToGLI[FCTopology[topo1,{SFAD[p],SFAD[q]}],
+FCTopology[topo2,{SFAD[q],SFAD[p]}],Reverse->True]
+
+
+FCLoopCreateRuleGLIToGLI[FCTopology[topo1,{SFAD[p],SFAD[q]}],
+FCTopology[topo2,{SFAD[p]}]]

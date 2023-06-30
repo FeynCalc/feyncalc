@@ -43,11 +43,18 @@ crgtgVerbose::usage="";
 
 
 Options[FCLoopCreateRuleGLIToGLI] = {
-	FCI				-> False,
-	FCVerbose		-> False,
-	MomentumExpand	-> True,
-	ToSFAD			-> True
+	Expanding			-> True,
+	ExpandScalarProduct	-> True,
+	FCI					-> False,
+	FCVerbose			-> False,
+	MomentumExpand		-> True,
+	Reverse				-> False,
+	ToSFAD				-> True
 };
+
+
+FCLoopCreateRuleGLIToGLI[{}, {}, OptionsPattern[]] :=
+	{};
 
 
 FCLoopCreateRuleGLIToGLI[mainTopos:{__FCTopology}, subTopos: {{__FCTopology}..}, opts:OptionsPattern[]] :=
@@ -59,7 +66,10 @@ FCLoopCreateRuleGLIToGLI[mainTopo_FCTopology, subTopos: {__FCTopology}, opts:Opt
 FCLoopCreateRuleGLIToGLI[mainTopo_FCTopology, subTopo_FCTopology, OptionsPattern[]] :=
 	Block[{	mainProps, subProps, mainName, subName, mainLen, subLen,
 			posList, pattern, lhs, rhs, rule, ruleDelayed, checkGLI,
-			checkNew, checkOld},
+			checkNew, checkOld, optReverse},
+
+
+		optReverse = OptionValue[Reverse];
 
 
 		If [OptionValue[FCVerbose]===False,
@@ -74,6 +84,7 @@ FCLoopCreateRuleGLIToGLI[mainTopo_FCTopology, subTopo_FCTopology, OptionsPattern
 		FCPrint[3,"FCLoopCreateRuleGLIToGLI: Entering with: Subtopology: ", subTopo, FCDoControl->crgtgVerbose];
 
 		{mainName, subName} 	= {mainTopo[[1]], subTopo[[1]]};
+
 		If[	!OptionValue[FCI],
 			{mainProps, subProps} 	= FCI[{mainTopo[[2]], subTopo[[2]]}],
 			{mainProps, subProps} 	= {mainTopo[[2]], subTopo[[2]]}
@@ -87,6 +98,14 @@ FCLoopCreateRuleGLIToGLI[mainTopo_FCTopology, subTopo_FCTopology, OptionsPattern
 			{mainProps, subProps} = MomentumExpand[{mainProps, subProps}]
 		];
 
+		(* SFADs, CFADs and GFADs may also contain explicit Pairs that are not expanded using MomentumExpand only *)
+		If[ OptionValue[ExpandScalarProduct],
+			{mainProps, subProps} = ExpandScalarProduct[{mainProps, subProps}, FCI->True]
+		];
+
+		If[ OptionValue[Expanding],
+			{mainProps, subProps} = ExpandAll[{mainProps, subProps}]
+		];
 
 		{mainLen, subLen} = Length/@{mainProps, subProps};
 
@@ -122,7 +141,7 @@ FCLoopCreateRuleGLIToGLI[mainTopo_FCTopology, subTopo_FCTopology, OptionsPattern
 
 		posList = Position[mainProps, #] & /@ subProps;
 
-		FCPrint[3,"FCLoopCreateRuleGLIToGLI: List of posiitons: ", posList, FCDoControl->crgtgVerbose];
+		FCPrint[3,"FCLoopCreateRuleGLIToGLI: List of positions: ", posList, FCDoControl->crgtgVerbose];
 
 
 		If[	!MatchQ[posList, {{{_Integer?Positive}} ..}] || Length[posList] =!= subLen,
@@ -132,8 +151,18 @@ FCLoopCreateRuleGLIToGLI[mainTopo_FCTopology, subTopo_FCTopology, OptionsPattern
 
 		posList = Flatten[posList];
 
-		lhs = GLI[subName, Map[pattern[ToExpression["n" <> ToString[#]], _] &, posList]] /. pattern -> Pattern;
-		rhs = GLI[mainName, Table[If[MemberQ[posList, i], ToExpression["n" <> ToString[i]], 0], {i, 1, mainLen}]];
+		If[	TrueQ[optReverse],
+			(*Reversed mode: topo -> subtopo *)
+			lhs = GLI[mainName, Table[If[MemberQ[posList, i], pattern[ToExpression["n" <> ToString[i]], _], 0], {i, 1, mainLen}]] /. pattern -> Pattern;
+			rhs = GLI[subName, Map[ToExpression["n" <> ToString[#]] &, posList]],
+
+			(*Normal mode: subtopo -> topo *)
+			lhs = GLI[subName, Map[pattern[ToExpression["n" <> ToString[#]], _] &, posList]] /. pattern -> Pattern;
+			rhs = GLI[mainName, Table[If[MemberQ[posList, i], ToExpression["n" <> ToString[i]], 0], {i, 1, mainLen}]]
+
+		];
+
+
 
 
 		rule = ruleDelayed[lhs, rhs] /. ruleDelayed -> RuleDelayed;
@@ -141,19 +170,44 @@ FCLoopCreateRuleGLIToGLI[mainTopo_FCTopology, subTopo_FCTopology, OptionsPattern
 		FCPrint[3,"FCLoopCreateRuleGLIToGLI: The obtained replacement rule: ", rule, FCDoControl->crgtgVerbose];
 
 		(*Check the rule*)
-		checkGLI = GLI[subName, Range[subLen]] /. rule;
+		If[	TrueQ[optReverse],
 
-		If[	checkGLI[[1]] =!= mainName,
-			Message[FCLoopCreateRuleGLIToGLI::failmsg,"The obtained replacement rule is not applicable."];
-			Abort[]
-		];
+			(*Reversed mode: topo -> subtopo *)
+			If[FreeQ[rule,0],
+				checkGLI = GLI[mainName, Range[mainLen]] /. rule,
+				checkGLI = GLI[mainName, ReplacePart[Range[mainLen],Map[Rule[First[#],0]&,Position[First[rule][[2]],0]]]] /. rule
+			];
 
-		checkNew = Times@@MapIndexed[Power[Extract[mainProps, #2], #1] &, checkGLI[[2]]];
-		checkOld = Times@@MapIndexed[Power[Extract[subProps, #2], #1] &, Range[subLen]];
+			If[	checkGLI[[1]] =!= subName,
+				Message[FCLoopCreateRuleGLIToGLI::failmsg,"The obtained replacement rule is not applicable."];
+				Abort[]
+			];
 
-		If[	Together[checkNew - checkOld] =!= 0,
-			Message[FCLoopCreateRuleGLIToGLI::failmsg,"The obtained replacement rule is incorrect."];
-			Abort[]
+			checkNew = Times@@MapIndexed[Power[Extract[subProps, #2], #1] &, checkGLI[[2]]];
+			If[FreeQ[rule,0],
+				checkOld = Times@@MapIndexed[Power[Extract[mainProps, #2], #1] &, Range[mainLen]],
+				checkOld = Times@@MapIndexed[Power[Extract[mainProps, #2], #1] &, ReplacePart[Range[mainLen],Map[Rule[First[#],0]&,Position[First[rule][[2]],0]]]]
+			];
+
+			If[	Together[checkNew - checkOld] =!= 0,
+				Message[FCLoopCreateRuleGLIToGLI::failmsg,"The obtained replacement rule is incorrect."];
+				Abort[]
+			],
+
+			(*Normal mode: subtopo -> topo *)
+			checkGLI = GLI[subName, Range[subLen]] /. rule;
+			If[	checkGLI[[1]] =!= mainName,
+				Message[FCLoopCreateRuleGLIToGLI::failmsg,"The obtained replacement rule is not applicable."];
+				Abort[]
+			];
+
+			checkNew = Times@@MapIndexed[Power[Extract[mainProps, #2], #1] &, checkGLI[[2]]];
+			checkOld = Times@@MapIndexed[Power[Extract[subProps, #2], #1] &, Range[subLen]];
+
+			If[	Together[checkNew - checkOld] =!= 0,
+				Message[FCLoopCreateRuleGLIToGLI::failmsg,"The obtained replacement rule is incorrect."];
+				Abort[]
+			];
 		];
 
 		FCPrint[1,"FCLoopCreateRuleGLIToGLI: Leaving.", FCDoControl->crgtgVerbose];
