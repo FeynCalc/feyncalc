@@ -202,7 +202,7 @@ ApartFF[gli_GLI, topoRaw_, opts:OptionsPattern[]] :=
 
 		FCPrint[3, "ApartFF: After partial fractioning of the propagator representation: ", tmp, FCDoControl->affVerbose];
 
-		res = FCLoopFindTopologies[tmp, topo[[3]], PreferredTopologies->{topo}, Head->OptionValue[Head],Names->Unique["t"],FCVerbose->-1];
+		res = FCLoopFindTopologies[tmp, topo[[3]], PreferredTopologies->{topo}, Head->OptionValue[Head],Names->Unique["t"],FCVerbose->-1,FCLoopScalelessQ->True];
 
 		If[	Length[res[[2]]]=!=1 && res[[2]][[1]]=!=topo[[1]],
 			Message[ApartFF::failmsg,"Something went wrong during parital fraction decomposition of GLIs."];
