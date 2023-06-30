@@ -305,5 +305,24 @@ Momentum[FCGV[\"n\"], D], Momentum[FCGV[\"nb\"], D]]]"},
 "Pair[LightConePerpendicularComponent[Momentum[p, D], \
 Momentum[FCGV[\"n\"], D], Momentum[FCGV[\"nb\"], D]], \
 LightConePerpendicularComponent[Momentum[q1 + q2, D], \
-Momentum[FCGV[\"n\"], D], Momentum[FCGV[\"nb\"], D]]]"}
+Momentum[FCGV[\"n\"], D], Momentum[FCGV[\"nb\"], D]]]"},
+{"fcstMomentumCombine-ID78",
+"MomentumCombine[SPD[a1 p,n]+SPD[a2 p,nb],NumberQ\[Rule]False]",
+"Pair[Momentum[a1*n + a2*nb, D], Momentum[p, D]]"},
+{"fcstMomentumCombine-ID79",
+"MomentumCombine[SPD[p]+SPD[a1 p,n]+SPD[a2 \
+p,nb],NumberQ\[Rule]False]",
+"Pair[Momentum[p, D], Momentum[a1*n + a2*nb + p, D]]"},
+{"fcstMomentumCombine-ID80",
+"MomentumCombine[SPD[p]+SPD[a1 p,n]+SPD[a2 \
+p,nb],NumberQ\[Rule]False,\"Quadratic\"\[Rule]False]",
+"Pair[Momentum[a1*n + a2*nb, D], Momentum[p, D]] + \
+Pair[Momentum[p, D], Momentum[p, D]]"},
+{"fcstMomentumCombine-ID81",
+"MomentumCombine[SPD[p]+SPD[a1 p,n]+SPD[a2 \
+p,nb]+SPD[p,l]+SPD[p,k],NumberQ\[Rule]False,\"Quadratic\"\[Rule]False,\
+Except\[Rule]{k,l}]",
+"Pair[Momentum[k, D], Momentum[p, D]] + Pair[Momentum[l, D], \
+Momentum[p, D]] + Pair[Momentum[a1*n + a2*nb, D], Momentum[p, D]] + \
+Pair[Momentum[p, D], Momentum[p, D]]"}
 };

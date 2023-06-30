@@ -27,6 +27,8 @@ If[	$OnlySubTest=!="",
 
 FCClearScalarProducts[];
 ClearAll[xsp1,xsp2,ysp,zsp,X,abval,abval2,abval3,a,b,a1,a2,b1,b2,p,q,xxx,tmp,i,li];
+DataType[a1,FCVariable]=True;
+DataType[a2,FCVariable]=True;
 
 $FCDefaultLightconeVectorN = FCGV["n"];
 $FCDefaultLightconeVectorNB = FCGV["nb"];
@@ -35,3 +37,5 @@ Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`Lorentz`*"])];
 
 FCClearScalarProducts[];
+DataType[a1,FCVariable]=False;
+DataType[a2,FCVariable]=False;
