@@ -349,11 +349,13 @@ Notice that not all loop integrals admit a graph representation."];
 		res = makeGraph[res];
 		FCPrint[1,"FCLoopIntegralToGraph: makeGraph done, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->lbtgVerbose];
 
+		FCPrint[3,"FCLoopIntegralToGraph: Output of makeGraph: ", res, FCDoControl->lbtgVerbose];
+
 		res = res /. {
 			(* internal edge *)
 			labeled[a_,i_Integer?Positive] :> labeled[a, {lineMomenta[[i]], dots[[i]], massTerms[[i]]}],
 			(* external edge *)
-			labeled[a_,i_Integer?Negative] :> labeled[a, Extract[Join[auxExtEdgesList,extEdgesList],{i}][[2]]]
+			labeled[a_,i_Integer?Negative] :> labeled[a, First[Cases[Join[auxExtEdgesList,extEdgesList],{i,_}]][[2]]]
 		};
 
 		(*Output format: Edge rules, simple labels (line momentum, multiplicity, mass), original propagators (0s for external edges), prefactor *)
