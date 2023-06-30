@@ -81,9 +81,11 @@ Options[FCFeynmanPrepare] = {
 	Collecting				-> True,
 	"Euclidean"				-> False,
 	EtaSign					-> False,
+	ExtraPropagators		-> {},
 	FCE						-> False,
 	FCI						-> False,
 	FCLoopGetEtaSigns		-> True,
+	FCReplaceMomenta		-> {},
 	FCVerbose				-> False,
 	Factoring 				-> {Factor2, 5000},
 	FinalSubstitutions		-> {},
@@ -109,9 +111,10 @@ FCFeynmanPrepare[gli_, topo_FCTopology, opts:OptionsPattern[]] :=
 
 		int = FCLoopFromGLI[gli, topo, FCI->OptionValue[FCI], LoopMomenta->optLoopMomenta, FeynAmpDenominatorExplicit->False];
 
-		If[	OptionValue[FCI],
-			optFinalSubstitutions = topo[[5]],
-			optFinalSubstitutions = FCI[topo[[5]]]
+		optFinalSubstitutions = Join[OptionValue[FinalSubstitutions],topo[[5]]];
+
+		If[	!OptionValue[FCI],
+			optFinalSubstitutions = FCI[optFinalSubstitutions]
 		];
 
 		optFinalSubstitutions = FCI@FRH[optFinalSubstitutions];
@@ -205,8 +208,8 @@ FCFeynmanPrepare[topoRaw_FCTopology, opts:OptionsPattern[]] :=
 FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 	Block[{	feynX, propProduct, tmp, symF, symU, ex, spd, qkspd, mtmp,
 			matrix, nDenoms, res, constraint, tmp0, powers, lmoms,
-			optFinalSubstitutions, optNames, aux1, aux2, nProps, fpJ, fpQ,
-			null1, null2, tensorPart, scalarPart, time, tcHideRule={}, sortBy, pref, etaSigns},
+			optFinalSubstitutions, optNames, aux1, aux2, nProps, fpJ, fpQ, optFCReplaceMomenta,
+			null1, null2, tensorPart, scalarPart, time, tcHideRule={}, sortBy, pref, etaSigns, optExtraPropagators},
 
 		optNames				= OptionValue[Names];
 		optFinalSubstitutions	= OptionValue[FinalSubstitutions];
@@ -214,6 +217,8 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 		ci						= OptionValue[CartesianIndexNames];
 		tensorRank 				= 0;
 		optEuclidean			= OptionValue["Euclidean"];
+		optExtraPropagators		= OptionValue[ExtraPropagators];
+		optFCReplaceMomenta		= OptionValue[FCReplaceMomenta];
 
 		If[	OptionValue[FCVerbose]===False,
 			fcszVerbose=$VeryVerbose,
@@ -245,7 +250,20 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 			Abort[]
 		];
 
+
+		If[optExtraPropagators=!={},
+			If[	Head[ex]===List,
+				ex = Join[optExtraPropagators,ex],
+				ex = Times@@optExtraPropagators ex
+			]
+		];
+
 		ex = FCLoopPropagatorPowersCombine[ex,FCI->True];
+
+
+		If[	optFCReplaceMomenta=!={},
+			ex = FCReplaceMomenta[ex,optFCReplaceMomenta,FCI->True]
+		];
 
 		If[	!MatchQ[ex,{__}|_. _FeynAmpDenominator],
 			Message[FCFeynmanPrepare::failmsg, "The input expression is not a proper integral or list of propagators"];

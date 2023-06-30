@@ -376,6 +376,52 @@ $$\frac{1}{\text{ep}^2 \;\text{pp}^2}+\frac{2 \log (\mu )-\log (\text{pp})+i \pi
 
 $$0$$
 
+Notice that one can also keep the $i \eta$-prescription explicit in the integrand by setting the option `EtaSign` to `True`. However, for integrating
+such representation using Mathematica's `Integrate` it is better to remove it
+
+```mathematica
+tmp = FCFeynmanParametrize[int, {q}, Names -> x, FCReplaceD -> {D -> 4 - 2 ep}, FeynmanIntegralPrefactor -> "LoopTools", EtaSign -> True]
+```
+
+$$\left\{(x(1)+x(2)+x(3))^{2 \;\text{ep}-1} (-x(2) x(3)-i \eta )^{-\text{ep}-1},-\frac{\Gamma (1-2 \;\text{ep})}{\Gamma (1-\text{ep})^2},\{x(1),x(2),x(3)\}\right\}$$
+
+```mathematica
+tmp /. SMP["Eta"] -> 0
+```
+
+$$\left\{(-x(2) x(3))^{-\text{ep}-1} (x(1)+x(2)+x(3))^{2 \;\text{ep}-1},-\frac{\Gamma (1-2 \;\text{ep})}{\Gamma (1-\text{ep})^2},\{x(1),x(2),x(3)\}\right\}$$
+
+```mathematica
+int = SFAD[{{k, -m^2/Q k . n - k . nb Q}, {-m^2, 1}}, {{k, -m^2/Q k . nb - k . n Q}, {-m^2, 1}}, {k, m^2}]
+```
+
+$$\frac{1}{(k^2+-\frac{(k\cdot n) m^2}{Q}-Q (k\cdot \;\text{nb})+m^2+i \eta ).(k^2+-\frac{(k\cdot \;\text{nb}) m^2}{Q}-Q (k\cdot n)+m^2+i \eta ).(k^2-m^2+i \eta )}$$
+
+Sometimes loop integrals may require additional regulators beyond dimensional regularization (e.g. in SCET). For
+such cases we may add extra propagators acting as regulators via the option `ExtraPropagators`
+
+```mathematica
+FCFeynmanParametrize[int, {k}, Names -> x, FCReplaceD -> {D -> 4 - 2 ep}, FinalSubstitutions -> {SPD[nb] -> 0, SPD[n] -> 0, SPD[nb, n] -> 2, Q -> 1}, 
+  ExtraPropagators -> {SFAD[{{0, n . k}, {0, +1}, al}]}]
+```
+
+$$\left\{x(4)^{\text{al}-1} (x(1)+x(2)+x(3))^{\text{al}+2 \;\text{ep}-1} \left(m^4 x(2) x(3)+m^2 x(1)^2-2 m^2 x(2) x(3)-m^2 x(2) x(4)+x(2) x(3)-x(3) x(4)\right)^{-\text{al}-\text{ep}-1},\frac{(-1)^{\text{al}+3} \Gamma (\text{al}+\text{ep}+1)}{\Gamma (\text{al})},\{x(1),x(2),x(3),x(4)\}\right\}$$
+
+The option `FCReplaceMomenta` is useful when we want to replace external momenta by linear combinations of other momenta. If the coefficients
+are symbolic, please keep in mind that you need to declare them as being of type `FCVariable`.
+
+```mathematica
+DataType[m, FCVariable] = True;
+DataType[Q, FCVariable] = True;
+```
+
+```mathematica
+FCFeynmanParametrize[SFAD[k - pb, k + p, {k, m^2}], {k}, Names -> x, FCReplaceD -> {D -> 4 - 2 ep}, FinalSubstitutions -> {SPD[nb] -> 0, SPD[n] -> 0, SPD[nb, n] -> 2, Q -> 1}, 
+  ExtraPropagators -> {SFAD[{{0, n . k}, {0, +1}, al}]}, FCReplaceMomenta -> {p -> (Q n/2 + m^2/Q nb/2), pb -> (Q nb/2 + m^2/Q n/2)}]
+```
+
+$$\left\{x(4)^{\text{al}-1} (x(1)+x(2)+x(3))^{\text{al}+2 \;\text{ep}-1} \left(m^4 (-x(2)) x(3)+m^2 x(1)^2-2 m^2 x(2) x(3)+m^2 x(2) x(4)-x(2) x(3)-x(3) x(4)\right)^{-\text{al}-\text{ep}-1},\frac{(-1)^{\text{al}+3} \Gamma (\text{al}+\text{ep}+1)}{\Gamma (\text{al})},\{x(1),x(2),x(3),x(4)\}\right\}$$
+
 #### Lee-Pomeransky representation
 
 1-loop tadpole

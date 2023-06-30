@@ -313,6 +313,42 @@ resLit=Series[ScaleMu^(2ep)/ep^2 1/pp^2 (-pp-I eta)^(-ep),{ep,0,0}]/.Log[-pp-I e
 (res-resLit)/.pp|ScaleMu->1
 
 
+(* ::Text:: *)
+(*Notice that one can also keep the $i \eta$-prescription explicit in the integrand by setting the option `EtaSign` to `True`. However, for integrating*)
+(*such representation using Mathematica's `Integrate` it is better to remove it*)
+
+
+tmp=FCFeynmanParametrize[int,{q},Names->x,FCReplaceD->{D->4-2ep},FeynmanIntegralPrefactor->"LoopTools",EtaSign->True]
+
+
+tmp/.SMP["Eta"]->0
+
+
+int=SFAD[{{k,-m^2/Q k . n-k . nb Q},{-m^2,1}},{{k,-m^2/Q k . nb-k . n Q},{-m^2,1}},{k,m^2}]
+
+
+(* ::Text:: *)
+(*Sometimes loop integrals may require additional regulators beyond dimensional regularization (e.g. in SCET). For*)
+(*such cases we may add extra propagators acting as regulators via the option `ExtraPropagators`*)
+
+
+FCFeynmanParametrize[int,{k},Names->x,FCReplaceD->{D->4-2ep},FinalSubstitutions->{SPD[nb]->0,SPD[n]->0, SPD[nb,n]->2,Q->1},
+ExtraPropagators->{SFAD[{{0,n . k},{0,+1},al}]}]
+
+
+(* ::Text:: *)
+(*The option `FCReplaceMomenta` is useful when we want to replace external momenta by linear combinations of other momenta. If the coefficients*)
+(*are symbolic, please keep in mind that you need to declare them as being of type `FCVariable`.*)
+
+
+DataType[m,FCVariable]=True;
+DataType[Q,FCVariable]=True;
+
+
+FCFeynmanParametrize[SFAD[k-pb,k+p,{k,m^2}],{k},Names->x,FCReplaceD->{D->4-2ep},FinalSubstitutions->{SPD[nb]->0,SPD[n]->0, SPD[nb,n]->2,Q->1},
+ExtraPropagators->{SFAD[{{0,n . k},{0,+1},al}]},FCReplaceMomenta->{p->(Q n/2+m^2/Q nb/2),pb->(Q nb/2+m^2/Q n/2)}]
+
+
 (* ::Subsubsection:: *)
 (*Lee-Pomeransky representation*)
 

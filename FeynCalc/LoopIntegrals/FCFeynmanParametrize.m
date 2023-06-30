@@ -100,10 +100,12 @@ Options[FCFeynmanParametrize] = {
 	DiracDelta					-> False,
 	EtaSign						-> False,
 	Expanding					-> True,
+	ExtraPropagators			-> {},
 	"Euclidean"					-> False,
 	FCE							-> False,
 	FCI							-> False,
 	FCReplaceD					-> {},
+	FCReplaceMomenta			-> {},
 	FCVerbose					-> False,
 	FeynmanIntegralPrefactor	-> "Multiloop1",
 	FinalSubstitutions			-> {},
@@ -124,8 +126,8 @@ FCFeynmanParametrize[expr_, lmoms_List /; ! OptionQ[lmoms], opts:OptionsPattern[
 FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmomsRaw_List /; ! OptionQ[lmomsRaw], OptionsPattern[]] :=
 	Block[{	res, optFinalSubstitutions, dim, uPoly, fPoly, pows, mat, powsT, propPowers, lmoms,
 			propPowersHat, propPowersTilde, ppSymbols, ppSymbolsRule, optIndexed,
-			denPowers, zeroPowerProps, numPowers, numVars, zeroDenVars,
-			nM,nLoops,fPow,pref, fpInt, fpPref, optFCReplaceD, vars, optVariables,
+			denPowers, zeroPowerProps, numPowers, numVars, zeroDenVars, optFCReplaceMomenta,
+			nM,nLoops,fPow,pref, fpInt, fpPref, optFCReplaceD, vars, optVariables, optExtraPropagators,
 			aux, ex, Q, J, tensorPart, tensorRank, optMethod, extraPref, optFeynmanIntegralPrefactor,
 			optEuclidean, inverseMeasure, optNames, outputFCFeynmanPrepare, isCartesian, cartesianCheck},
 
@@ -137,6 +139,8 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmomsRaw_List /; ! Opti
 		optEuclidean				= OptionValue["Euclidean"];
 		optNames					= OptionValue[Names];
 		optIndexed					= OptionValue[Indexed];
+		optExtraPropagators			= OptionValue[ExtraPropagators];
+		optFCReplaceMomenta			= OptionValue[FCReplaceMomenta];
 
 		If [OptionValue[FCVerbose]===False,
 			fcfpVerbose=$VeryVerbose,
@@ -206,7 +210,8 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmomsRaw_List /; ! Opti
 
 		{uPoly, fPoly, pows, mat, Q, J, tensorPart, tensorRank} = FCFeynmanPrepare[ex,lmoms, FCI->True,
 			FinalSubstitutions->optFinalSubstitutions, Names->optNames, Indexed->OptionValue[Indexed], Reduce->OptionValue[Reduce],
-			"Euclidean" -> optEuclidean, EtaSign -> OptionValue[EtaSign]];
+			"Euclidean" -> optEuclidean, EtaSign -> OptionValue[EtaSign],
+			ExtraPropagators -> optExtraPropagators, FCReplaceMomenta -> optFCReplaceMomenta];
 
 		outputFCFeynmanPrepare = {uPoly, fPoly, pows, mat, Q, J, tensorPart, tensorRank};
 
