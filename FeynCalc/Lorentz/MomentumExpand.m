@@ -116,7 +116,7 @@ momSplit[head_, moms_List][a_,dim___]:=
 
 
 expandVec[head_][y_,dim___] :=	expandVec[head][y,dim] =
-	Distribute[linearizeVec[Expand[y, head], hold[dim]]] /. hold->Sequence;
+	Distribute[linearizeVec[Expand[ExpandAll[y], head], hold[dim]]] /. hold->Sequence;
 
 linearizeVec[n_?NumberQ z_, dim___] :=
 	n linearizeVec[z, dim];

@@ -91,7 +91,14 @@ Momentum[nb]] +
 3 LightConePerpendicularComponent[Momentum[q], Momentum[n],
 Momentum[nb]] +
 2 LightConePerpendicularComponent[Momentum[r], Momentum[n],
-Momentum[nb]]"}
+Momentum[nb]]"},
+{"fcstMomentumExpand-ID25",
+"MomentumExpand[Momentum[(gkin n + nb/(4 gkin)) (1 - u0b), D]]",
+"Momentum[gkin*n, D] + Momentum[nb/gkin, D]/4 - Momentum[gkin*n*u0b, D] - Momentum[(nb*u0b)/gkin, D]/4"},
+{"fcstMomentumExpand-ID26",
+"MomentumExpand[
+Pair[Momentum[n, D], Momentum[(gkin n + nb/(4 gkin)) (1 - u0b), D]]]",
+"Pair[Momentum[n, D], Momentum[gkin*n, D] + Momentum[nb/gkin, D]/4 - Momentum[gkin*n*u0b, D] - Momentum[(nb*u0b)/gkin, D]/4]"}
 };
 
 Tests`Lorentz`fcstMomentumExpandNR =
