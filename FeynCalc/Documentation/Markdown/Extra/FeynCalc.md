@@ -278,7 +278,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 
 - [A0](../A0.md), [A00](../A00.md) - Passarino-Veltman 1-point integrals (tadpoles)
 - [Apart2](../Apart2.md) - partial fractions loop integrals (only very simple cases)
-- [ApartFF](../ApartFF.md) - performs partial fraction decomposition of arbitrary loop integrals
+- [ApartFF](../ApartFF.md), [FCLoopCreatePartialFractioningRules](../FCLoopCreatePartialFractioningRules.md) - performs partial fraction decomposition of arbitrary loop integrals
 - [B0](../B0.md), [B00](../B00.md), [B1](../B1.md), [B11](../B11.md) - Passarino-Veltman 2-point integrals (bubbles)
 - [C0](../C0.md) - Passarino-Veltman $3$-point integrals (triangles)
 - [CTdec](../CTdec.md), [Tdec](../Tdec.md) - calculates tensor decomposition formulas for loop integrals
@@ -325,6 +325,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCLoopPropagatorPowersCombine](../FCLoopPropagatorPowersCombine.md) - combines same propagators into one raised to the corresponding integer power
 - [FCLoopPropagatorPowersExpand](../FCLoopPropagatorPowersExpand.md) - rewrites propagators raised to integer powers as products of propagators
 - [FCLoopPropagatorsToTopology](../FCLoopPropagatorsToTopology.md) - auxiliary function that generates a list of propagators to describe a topology
+- [FCLoopRemovePropagator](../FCLoopRemovePropagator.md) - removes specific propagators from given `FCTopology`s or `GLI`s
 - [FCLoopSamePropagatorHeadsQ](../FCLoopSamePropagatorHeadsQ.md) - checks if the integral contains different types of propagators
 - [FCLoopRemoveNegativePropagatorPowers](../FCLoopRemoveNegativePropagatorPowers.md) - rewrites propagators rasied to negative integer powers as numerators
 - [FCLoopSelectTopology](../FCLoopSelectTopology.md) - selects topologies belonging for the given `GLI`s

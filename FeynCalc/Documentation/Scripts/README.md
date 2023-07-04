@@ -43,14 +43,13 @@ This directory contains Mathematica/Bash scripts that help to ensure the quality
     latexmk -cd /media/Data/Projects/VS/feyncalc-manual/FeynCalcManual.tex -pdf
     ```
 
-    Notice that when there are new figures (svg files), one would need to run something like
+    Notice that when there are new figures (svg files), one would need to run
 
     ```
-    export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; ./svgToPdf.sh $DOCU_SOURCE_DIR/Markdown/img/0gi2hdxwlvyo6.svg $DOCU_SOURCE_DIR/Markdown/img/
+    export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/AddOns/FeynHelpers/Documentation"; ./svgToPdf.sh /media/Data/Projects/VS/feyncalc-manual/img/
     cp -n $DOCU_SOURCE_DIR/Markdown/img/*.pdf /media/Data/Projects/VS/feyncalc-manual/img/
     ```
-
-    and then copy the new pdf files to `*-manual/img` without overwriting the existing ones.
+   
 
 * To check Markdown files using mdl (`gem install mdl`, cf. [GitHub repo](https://github.com/markdownlint/markdownlint))
 
