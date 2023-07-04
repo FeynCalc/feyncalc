@@ -1,0 +1,73 @@
+
+
+(* :Title: FCLoopCreatePartialFractioningRules.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2023 Rolf Mertig
+	Copyright (C) 1997-2023 Frederik Orellana
+	Copyright (C) 2014-2023 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopCreatePartialFractioningRules		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`FCLoopCreatePartialFractioningRules =
+({
+{"fcstFCLoopCreatePartialFractioningRules-ID1",
+"FCLoopCreatePartialFractioningRules[{},{}]", "{{}, {}}"},
+{"fcstFCLoopCreatePartialFractioningRules-ID2",
+"FCLoopCreatePartialFractioningRules[{
+GLI[preTopoDia2, {1, 1,0, 0, 1}],
+GLI[preTopoDia1, {1, 0, 0, 0, \
+1}]},{FCTopology[preTopoDia1,{SFAD[{{k1,0},{0,1},1}],SFAD[{{0,mqb*k1.\
+nb},{0,1},1}],SFAD[{{k1,2*gkin*meta*u0b*k1.n},{0,1},1}],SFAD[{{k1,2*\
+gkin*meta*k1.n-meta*u0b*k1.nb},{2*gkin*meta^2*u0b,1},1}],SFAD[{{k1,2*\
+gkin*meta*u0b*k1.n-meta*u0b*k1.nb},{2*gkin*meta^2*u0b^2,1},1}]},{k1},{\
+n,nb},{Hold[SPD][n]->0,Hold[SPD][nb]->0,Hold[SPD][n,nb]->2},{}],\
+FCTopology[preTopoDia2,{SFAD[{{k1,0},{0,1},1}],SFAD[{{0,-(mqb*k1.nb)},\
+{0,1},1}],SFAD[{{k1,meta*u0b*k1.nb},{0,1},1}],SFAD[{{k1,-2*gkin*meta*\
+k1.n+meta*u0b*k1.nb},{2*gkin*meta^2*u0b,1},1}],SFAD[{{k1,-2*gkin*meta*\
+u0b*k1.n+meta*u0b*k1.nb},{2*gkin*meta^2*u0b^2,1},1}]},{k1},{n,nb},{\
+Hold[SPD][n]->0,Hold[SPD][nb]->0,Hold[SPD][n,nb]->2},{}]},FCE->True]",
+	"{{}, {}}"},
+{"fcstFCLoopCreatePartialFractioningRules-ID3",
+"FCLoopCreatePartialFractioningRules[{
+GLI[preTopoDia2, {1, 1,0, 0, 1}],
+GLI[preTopoDia1, {1, 0, 1, 1, \
+1}]},{FCTopology[preTopoDia1,{SFAD[{{k1,0},{0,1},1}],SFAD[{{0,mqb*k1.\
+nb},{0,1},1}],SFAD[{{k1,2*gkin*meta*u0b*k1.n},{0,1},1}],SFAD[{{k1,2*\
+gkin*meta*k1.n-meta*u0b*k1.nb},{2*gkin*meta^2*u0b,1},1}],SFAD[{{k1,2*\
+gkin*meta*u0b*k1.n-meta*u0b*k1.nb},{2*gkin*meta^2*u0b^2,1},1}]},{k1},{\
+n,nb},{Hold[SPD][n]->0,Hold[SPD][nb]->0,Hold[SPD][n,nb]->2},{}],\
+FCTopology[preTopoDia2,{SFAD[{{k1,0},{0,1},1}],SFAD[{{0,-(mqb*k1.nb)},\
+{0,1},1}],SFAD[{{k1,meta*u0b*k1.nb},{0,1},1}],SFAD[{{k1,-2*gkin*meta*\
+k1.n+meta*u0b*k1.nb},{2*gkin*meta^2*u0b,1},1}],SFAD[{{k1,-2*gkin*meta*\
+u0b*k1.n+meta*u0b*k1.nb},{2*gkin*meta^2*u0b^2,1},1}]},{k1},{n,nb},{\
+Hold[SPD][n]->0,Hold[SPD][nb]->0,Hold[SPD][n,nb]->2},{}]},FCE->True]",
+	"{{GLI[preTopoDia1, {1, 0, 1, 1, 1}] -> \
+-1/2*GLI[\"preTopoDia1PFR12\", {1, 1, 1}]/(gkin*meta^2*u0b^2) + \
+GLI[\"preTopoDia1PFR23\", {1, 1, 1}]/(2*gkin*meta^2*u0b^2) + \
+GLI[\"preTopoDia1PFR24\", {1, 1, 1}]/(2*gkin*meta^2*(-1 + u0b)*u0b) - \
+GLI[\"preTopoDia1PFR25\", {1, 1, 1}]/(2*gkin*meta^2*(-1 + u0b)*u0b)}, \
+{FCTopology[\"preTopoDia1PFR12\", {SFAD[{{k1, 2*gkin*meta*u0b*k1 . \
+n}, {0, 1}, 1}], SFAD[{{k1, 2*gkin*meta*k1 . n - meta*u0b*k1 . nb}, \
+{2*gkin*meta^2*u0b, 1}, 1}], SFAD[{{k1, 2*gkin*meta*u0b*k1 . n - \
+meta*u0b*k1 . nb}, {2*gkin*meta^2*u0b^2, 1}, 1}]}, {k1}, {n, nb}, \
+{Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0, Hold[SPD][n, nb] -> 2}, {}], \
+FCTopology[\"preTopoDia1PFR23\", {SFAD[{{k1, 0}, {0, 1}, 1}], \
+SFAD[{{k1, 2*gkin*meta*k1 . n - meta*u0b*k1 . nb}, \
+{2*gkin*meta^2*u0b, 1}, 1}], SFAD[{{k1, 2*gkin*meta*u0b*k1 . n - \
+meta*u0b*k1 . nb}, {2*gkin*meta^2*u0b^2, 1}, 1}]}, {k1}, {n, nb}, \
+{Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0, Hold[SPD][n, nb] -> 2}, {}], \
+FCTopology[\"preTopoDia1PFR25\", {SFAD[{{k1, 0}, {0, 1}, 1}], \
+SFAD[{{k1, 2*gkin*meta*u0b*k1 . n}, {0, 1}, 1}], SFAD[{{k1, \
+2*gkin*meta*k1 . n - meta*u0b*k1 . nb}, {2*gkin*meta^2*u0b, 1}, 1}]}, \
+{k1}, {n, nb}, {Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0, Hold[SPD][n, \
+nb] -> 2}, {}], FCTopology[\"preTopoDia1PFR24\", {SFAD[{{k1, 0}, {0, \
+1}, 1}], SFAD[{{k1, 2*gkin*meta*u0b*k1 . n}, {0, 1}, 1}], SFAD[{{k1, \
+2*gkin*meta*u0b*k1 . n - meta*u0b*k1 . nb}, {2*gkin*meta^2*u0b^2, 1}, \
+1}]}, {k1}, {n, nb}, {Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0, \
+Hold[SPD][n, nb] -> 2}, {}]}}"}
+})
