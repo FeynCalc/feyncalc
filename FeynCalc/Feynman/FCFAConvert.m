@@ -52,6 +52,12 @@ FCFAConvert::sumOverWarn =
 This may lead to a loss of overall factors multiplying some of your diagrams. \
 Please make sure that this is really what you want.";
 
+FCFAConvert::noSpinors =
+"Error! You are using a model that contains 4-fermion vertices, but the \
+spinors were removed when calling CreateFeynAmp. Without spinors the function cannot \
+reconstruct the correct relative signs in the amplitude. Please rerun CreateFeynAmp with \
+the option Truncated set to False.";
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -222,6 +228,12 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[infos__][diags___], OptionsPatt
 		];
 
 		If[	!FreeQ[diagsConverted,DiracIndex] && OptionValue[FCFADiracChainJoin],
+
+			If[	FreeQ[diagsConverted, Spinor],
+				Message[FCFAConvert::noSpinors];
+				Abort[]
+			];
+
 			diagsConverted = FCFADiracChainJoin[diagsConverted,FCI->True]
 		];
 
