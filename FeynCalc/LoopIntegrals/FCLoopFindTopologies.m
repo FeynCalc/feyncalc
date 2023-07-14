@@ -486,10 +486,10 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 			FCPrint[3, "FCLoopFindTopologies: Final topologies: ", realTopologies, FCDoControl->fcfsopVerbose];
 
 
-			FCPrint[0, "Number of the initial candidate topologies: ", Length[topoList2], FCDoControl->fcfsopVerbose];
-			FCPrint[0, "Number of the identified unique topologies: ", Length[realTopologies], FCDoControl->fcfsopVerbose];
-			FCPrint[0, "Number of the preferred topologies among the unique topologies: ", Length[namesPreferredTopologies], FCDoControl->fcfsopVerbose];
-			FCPrint[0, "Number of the identified subtopologies: ", Length[matchedSubtopologies]-Length[namesPreferredTopologies], FCDoControl->fcfsopVerbose];
+			FCPrint[0, "FCLoopFindTopologies: Number of the initial candidate topologies: ", Length[topoList2], FCDoControl->fcfsopVerbose];
+			FCPrint[0, "FCLoopFindTopologies: Number of the identified unique topologies: ", Length[realTopologies], FCDoControl->fcfsopVerbose];
+			FCPrint[0, "FCLoopFindTopologies: Number of the preferred topologies among the unique topologies: ", Length[namesPreferredTopologies], FCDoControl->fcfsopVerbose];
+			FCPrint[0, "FCLoopFindTopologies: Number of the identified subtopologies: ", Length[matchedSubtopologies]-Length[namesPreferredTopologies], FCDoControl->fcfsopVerbose];
 
 
 			rulesMatchedSubtopologies = FCLoopCreateRuleGLIToGLI[Sequence @@ #, FCI -> True] & /@ matchedSubtopologies;
@@ -592,7 +592,7 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 
 			If[	!FreeQ[finalTopologies, GenericPropagatorDenominator],
 
-					FCPrint[0, "Some topology candidates contain GFADs. To avoid false positives, those will not be checked with FCLoopScalelessQ.", FCDoControl->fcfsopVerbose];
+					FCPrint[0, "FCLoopFindTopologies: Some topology candidates contain GFADs. To avoid false positives, those will not be checked with FCLoopScalelessQ.", FCDoControl->fcfsopVerbose];
 					scalelessTopologies = Thread[Rule[SelectFree[finalTopologies,GenericPropagatorDenominator], FCLoopScalelessQ[SelectFree[finalTopologies,GenericPropagatorDenominator]]]],
 
 					scalelessTopologies = Thread[Rule[finalTopologies, FCLoopScalelessQ[finalTopologies]]]
@@ -603,8 +603,8 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 			};
 
 			If[	scalelessTopologies=!={},
-				FCPrint[0, "Follwing identified topologies are scaleless and will be set to zero: ",
-					SelectNotFree[finalTopologies,scalelessTopologies], FCDoControl->fcfsopVerbose];
+				FCPrint[0, "FCLoopFindTopologies: Follwing identified topologies are scaleless and will be set to zero: ",
+					First/@SelectNotFree[finalTopologies,scalelessTopologies], FCDoControl->fcfsopVerbose];
 
 				finalTopologies = SelectFree[finalTopologies,scalelessTopologies];
 				ruleScalelessTopologies = Map[Rule[GLI[#,_],0]&,scalelessTopologies]
@@ -636,8 +636,8 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 			check = ToString /@ kinInvs;
 
 			If[!MatchQ[LowerCaseQ /@ StringReplace[check,"1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9"|"0"->""], {True...}],
-				FCPrint[0, Style["Your topologies depend on the follwing kinematic invariants that are not all entirely lowercase: ", {Darker[Yellow,0.55], Bold}], check, FCDoControl->fcfsopVerbose];
-				FCPrint[0, Style["This may lead to issues if these topologies are meant to be processed using tools such as FIRE, KIRA or Fermat.", {Darker[Yellow,0.55], Bold}], FCDoControl->fcfsopVerbose];
+				FCPrint[0, "FCLoopFindTopologies: ",FCStyle["Your topologies depend on the follwing kinematic invariants that are not all entirely lowercase: ", {Darker[Yellow,0.55], Bold}], check, FCDoControl->fcfsopVerbose];
+				FCPrint[0, "FCLoopFindTopologies: ",FCStyle["This may lead to issues if these topologies are meant to be processed using tools such as FIRE, KIRA or Fermat.", {Darker[Yellow,0.55], Bold}], FCDoControl->fcfsopVerbose];
 			];
 		];
 

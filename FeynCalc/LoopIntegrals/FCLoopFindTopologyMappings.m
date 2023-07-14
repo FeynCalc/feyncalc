@@ -176,8 +176,8 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 			relevantTopos = Select[allTopos,MemberQ[relevantTopoIDs,First[#]]&];
 		];
 
-		FCPrint[0, Style["Found ", {Darker[Green,0.55], Bold}], Length[res], Style[" mapping relations ", {Darker[Green,0.55], Bold}], FCDoControl->fclftpVerbose];
-		FCPrint[0, Style["Final number of independent topologies: ", {Darker[Green,0.55], Bold}], Length[relevantTopos], FCDoControl->fclftpVerbose];
+		FCPrint[0, "FCLoopFindTopologyMappings: ", FCStyle["Found ", {Darker[Green,0.55], Bold}], Length[res], FCStyle[" mapping relations ", {Darker[Green,0.55], Bold}], FCDoControl->fclftpVerbose];
+		FCPrint[0, "FCLoopFindTopologyMappings: ", FCStyle["Final number of independent topologies: ", {Darker[Green,0.55], Bold}], Length[relevantTopos], FCDoControl->fclftpVerbose];
 
 		res = {res,relevantTopos};
 

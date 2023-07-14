@@ -394,6 +394,8 @@ The problem reads: `1`";
 (* ------------------------------------------------------------------------ *)
 Begin["`Package`"];
 
+FCStyle;
+
 End[]
 
 Begin["`Private`"];
@@ -555,6 +557,11 @@ TBox[a_] :=
 TBox[a_,b__] :=
 	RowBox @ Map[(ToBoxes @@ {#, TraditionalForm})&, {a, b}];
 
+FCStyle[text_, style_]:=
+	If[	TrueQ[!$Notebooks],
+		text,
+		Style[text,style]
+	];
 
 FCPrint[1,"FCMain loaded."];
 End[]
