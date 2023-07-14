@@ -46,7 +46,7 @@ This directory contains Mathematica/Bash scripts that help to ensure the quality
     Notice that when there are new figures (svg files), one would need to run
 
     ```
-    export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/AddOns/FeynHelpers/Documentation"; ./svgToPdf.sh /media/Data/Projects/VS/feyncalc-manual/img/
+    export DOCU_SOURCE_DIR="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"; ./svgToPdf.sh /media/Data/Projects/VS/feyncalc-manual/img/
     cp -n $DOCU_SOURCE_DIR/Markdown/img/*.pdf /media/Data/Projects/VS/feyncalc-manual/img/
     ```
    
