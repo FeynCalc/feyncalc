@@ -67,7 +67,6 @@ FCLoopCreatePartialFractioningRules[glis_List, toposRaw:{__FCTopology}, OptionsP
 		FCPrint[3,"FCLoopCreatePartialFractioningRules: Entering with: GLIs: ", glis, FCDoControl->cpfVerbose];
 		FCPrint[3,"FCLoopCreatePartialFractioningRules: Entering with: Topologies:", topos, FCDoControl->cpfVerbose];
 
-
 		time=AbsoluteTime[];
 		FCPrint[1,"FCLoopCreatePartialFractioningRules: Applying ApartFF.", FCDoControl->cpfVerbose];
 		tmp = ApartFF[glis,topos,FDS -> False, DropScaleless -> False, Head -> {Identity, apartHead}];
@@ -87,7 +86,7 @@ FCLoopCreatePartialFractioningRules[glis_List, toposRaw:{__FCTopology}, OptionsP
 		lhs = Cases2[tmp, apartHead];
 		ids = #[[2]][[1]] & /@ lhs;
 		FCPrint[3, "FCLoopCreatePartialFractioningRules: Left hand side: ", lhs , FCDoControl->cpfVerbose];
-		FCPrint[1, "FCLoopCreatePartialFractioningRules: IDs of relevant topologies: ", ids, FCDoControl->cpfVerbose];
+		FCPrint[2, "FCLoopCreatePartialFractioningRules: IDs of relevant topologies: ", ids, FCDoControl->cpfVerbose];
 
 		relTopos = Map[First[Select[topos, Function[x, x[[1]] === #]]] &, ids];
 
@@ -113,9 +112,7 @@ FCLoopCreatePartialFractioningRules[glis_List, toposRaw:{__FCTopology}, OptionsP
 
 		FCPrint[3, "FCLoopCreatePartialFractioningRules: Replacement rule for partial fractioning: ", repRule, FCDoControl->cpfVerbose];
 
-		tmp = tmp /. Dispatch[repRule] /. apartHead->Times /. rule->Rule;
-
-		tmp /. Dispatch[repRule];
+		tmp = tmp /. Dispatch[repRule] /. apartHead->Times /. rule[0,0]:>Unevaluated[Sequence[]] /. rule->Rule;
 
 		res = {tmp, newTopos};
 
