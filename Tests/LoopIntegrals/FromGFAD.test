@@ -171,5 +171,11 @@ mb^2 - la^2 Pair[Momentum[p1, D], Momentum[p1, D]] +
 	2 la Pair[Momentum[p1, D], Momentum[p3, D]] -
 	Pair[Momentum[p3, D], Momentum[p3, D]], {1, 1}]],
 PowerExpand -> {la}, FCE -> True]",
-"SFAD[{{I*la*p1 - I*p3, 0}, {-mb^2, 1}, 1}]"}
+"SFAD[{{I*la*p1 - I*p3, 0}, {-mb^2, 1}, 1}]"},
+{"fcstFromGFAD-ID38",
+"DataType[gkin, FCVariable] = True; DataType[meta, FCVariable] = True; DataType[u0b, FCVariable] = True; \n
+FromGFAD[GFAD[SPD[k1, k1]]*GFAD[SPD[k1, k1] + 2*gkin*meta*SPD[k1, n] - 2*gkin*meta*u0b*SPD[k1, n]]*GFAD[-2*gkin*meta^2*u0b +
+SPD[k1, k1] + 2*gkin*meta*SPD[k1, n] - meta*u0b*SPD[k1, nb]],FCE->True]",
+"SFAD[{{k1, 0}, {0, 1}, 1}]*SFAD[{{k1, 2*gkin*meta*k1 . n - 2*gkin*meta*u0b*k1 . n},
+{0, 1}, 1}]*SFAD[{{k1, 2*gkin*meta*k1 . n - meta*u0b*k1 . nb}, {2*gkin*meta^2*u0b, 1}, 1}]"}
 });

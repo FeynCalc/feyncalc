@@ -47,6 +47,7 @@ sfadHold::usage="";
 
 Options[FromGFAD] = {
 		Check						-> 	True,
+		ExpandScalarProduct			-> 	True,
 		FCE							->	False,
 		FCI							->	False,
 		FCVerbose					-> 	False,
@@ -140,6 +141,9 @@ FromGFAD[expr_, OptionsPattern[]] :=
 			res = res //. FeynAmpDenominator[noFAD[r_]] :> r //. FeynAmpDenominator[x___,noFAD[r_],y___] :> r FeynAmpDenominator[x,y]
 		];
 
+		If[	OptionValue[ExpandScalarProduct],
+			res = ExpandScalarProduct[res, FCI->True]
+		];
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
