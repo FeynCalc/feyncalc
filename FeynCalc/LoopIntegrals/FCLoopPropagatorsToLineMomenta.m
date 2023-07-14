@@ -81,7 +81,7 @@ FCLoopPropagatorsToLineMomenta[expr_, OptionsPattern[]] :=
 		FCPrint[3, "FCLoopPropagatorsToLineMomenta: After MomentumCombine: ", ex,  FCDoControl->ptlmVerbose];
 
 		If[	OptionValue[FromGFAD],
-			ex = FromGFAD[ex,FCI->True]
+			ex = FromGFAD[ex,FCI->True,ExpandScalarProduct->False]
 		];
 
 		FCPrint[3, "FCLoopPropagatorsToLineMomenta: After FromGFAD: ", ex,  FCDoControl->ptlmVerbose];

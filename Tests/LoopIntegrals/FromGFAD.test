@@ -33,7 +33,7 @@ Pair[Momentum[p3, D], Momentum[p3, D]] +
 IntermediateSubstitutions -> {-ExpandScalarProduct[
 	SPD[p1 la + p3]] -> -SPD[p1 la + p3]}]",
 "FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[la*p1 + p3, D],
-Pair[Momentum[2*la*p1 + 2*p3, D], Momentum[q, D]], -mb^2, {1, 1}]]"},
+2*la*Pair[Momentum[p1, D], Momentum[q, D]] + 2*Pair[Momentum[p3, D], Momentum[q, D]], -mb^2, {1, 1}]]"},
 {"fcstFromGFAD-ID3",
 "FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[\!\(\*\
 SuperscriptBox[\(mb\), \(2\)]\)-\!\(\*SuperscriptBox[\(la\), \(2\)]\) \
