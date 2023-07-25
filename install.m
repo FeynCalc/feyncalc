@@ -195,24 +195,47 @@ InstallFeynArts[OptionsPattern[]]:=
 			WriteString["stdout", "Downloading FeynArts from ", fazip," ..."];
 			tmpzip=FCGetUrl[fazip];
 		];
-		unzipDir= tmpzip<>".dir";
-		WriteString["stdout", "done! \n"];
+
+		If[tmpzip===$Failed || !FileExistsQ[tmpzip],
+			WriteString["stdout", "\nFailed to download the FeynArts zip file. Please check your interent connection.\nInstallation aborted!"];
+			Abort[],
+
+			unzipDir= tmpzip<>".dir";
+			WriteString["stdout", "done! \n"];
+		];
+
+
+		Quiet@CreateDirectory[unzipDir];
 
 		(* Extract to the content	*)
 		WriteString["stdout", "FeynArts zip file was saved to ", tmpzip,".\n"];
 		WriteString["stdout", "Extracting FeynArts zip file to ", faDir, " ..."];
-		ExtractArchive[tmpzip, unzipDir];
+
+		If[$VersionNumber=!=13.3,
+
+			If[	ExtractArchive[tmpzip, unzipDir]===$Failed,
+				WriteString["stdout", "\nFailed to extract the FeynArts zip. The file might be corrupted.\nInstallation aborted!"];
+				Abort[],
+				WriteString["stdout", "done! \n"];
+				(* Delete the downloaded file	*)
+				If[ $PathToFAArc==="",
+					Quiet@DeleteFile[tmpzip];
+				];
+			],
+
+			Quiet[ExtractArchive[tmpzip, unzipDir]];
+			If[ $PathToFAArc==="",
+					Quiet@DeleteFile[tmpzip];
+			];
+
+		];
+
 		WriteString["stdout", "done! \n"];
 
 		(* Move the files to the final destination	*)
 		WriteString["stdout", "Copying FeynArts to ", faDir, " ..."];
 		CopyDirectory[FileNameJoin[{unzipDir,"feynarts-mirror-master"}],faDir];
 		WriteString["stdout", "done! \n"];
-
-		(* Delete the downloaded file	*)
-		If[ $PathToFAArc==="",
-			Quiet@DeleteFile[tmpzip];
-		];
 
 		(* Delete the extracted archive *)
 		Quiet@DeleteDirectory[unzipDir, DeleteContents -> True];
@@ -350,14 +373,23 @@ InstallFeynCalc[OptionsPattern[]]:=
 		WriteString["stdout", "FeynCalc zip file was saved to ", tmpzip,".\n"];
 		WriteString["stdout", "Extracting FeynCalc zip file to ", unzipDir, " ..."];
 
-		If[	ExtractArchive[tmpzip, unzipDir]===$Failed,
-			WriteString["stdout", "\nFailed to extract the FeynCalc zip. The file might be corrupted.\nInstallation aborted!"];
-			Abort[],
-			WriteString["stdout", "done! \n"];
-			(* Delete the downloaded file	*)
+		If[$VersionNumber=!=13.3,
+
+			If[	ExtractArchive[tmpzip, unzipDir]===$Failed,
+				WriteString["stdout", "\nFailed to extract the FeynCalc zip. The file might be corrupted.\nInstallation aborted!"];
+				Abort[],
+				WriteString["stdout", "done! \n"];
+				(* Delete the downloaded file	*)
+				If[ $PathToFCArc==="",
+					Quiet@DeleteFile[tmpzip];
+				]
+			],
+
+			Quiet[ExtractArchive[tmpzip, unzipDir]];
 			If[ $PathToFCArc==="",
-				Quiet@DeleteFile[tmpzip];
-			]
+					Quiet@DeleteFile[tmpzip];
+			];
+
 		];
 
 		WriteString["stdout", "Checking the directory structure..."];
