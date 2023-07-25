@@ -7,6 +7,11 @@ If[$FrontEnd===Null,
 ];
 
 
+(*docuDir="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation"
+indexFile="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation/Markdown/Extra/FeynCalc.md"
+outputDir="/media/Data/Projects/VS/feyncalc-manual/"*)
+
+
 If[!DirectoryQ[docuDir],
 	Print["ERROR! The file ", indexFile, " does not exist!" ];
 	QuitAbort[]
@@ -57,15 +62,17 @@ raw=Rest[StringSplit[in,"##"]];
 out=StringSplit[#,"\n",2]&/@raw;
 
 
-final=Join[{{StringTrim[out[[1]][[1]]],getTitlesFirst[out[[1]][[2]]]}},
-{StringTrim[#[[1]]],getTitles[StringTrim[#[[2]]]]}&/@out[[2;;]]];
+final=Join[
+(*Useful information*)
+{{StringTrim[out[[1]][[1]]],getTitlesFirst[out[[1]][[2]]]}},
+(*Tutorials*)
+{{StringTrim[out[[2]][[1]]],StringReplace[getTitlesFirst[out[[2]][[2]]],"../"->""]}},
+(*Rest*)
+{StringTrim[#[[1]]],getTitles[StringTrim[#[[2]]]]}&/@out[[3;;]]];
 
 
 finalStr=StringRiffle[Flatten[Map[{"\n\\chapter{"<>#[[1]]<>"}\n",Function[x,{"\\subfile{pages/"<>x<>".tex}"}]/@#[[2]]}&,final]],"\n"];
 finalStr=StringReplace[finalStr,{"/$"->"/Dollar"}];
-
-
-finalStr
 
 
 Print["Saving the output to ", FileNameJoin[{outputDir,"includes.tex"}]];

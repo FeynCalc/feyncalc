@@ -2,11 +2,27 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 
 ## Useful information
 
-- [Upper and lower indices](Indices.md)
+- [Installation](Install.md)
+- [Loading the package](Load.md)
+- [Upper and lower indices](UpperLowerIndices.md)
 - [Master integrals](MasterIntegrals.md)
 - [New FeynArts sign conventions](FeynArtsSigns.md)
 - [Custom FeynRules models](CustomModels.md)
-- [Dirac algebra](DiracAlgebra.md)
+- [Useful formulas for Dirac algebra](DiracAlgebraFormulas.md)
+
+## Tutorials
+
+- [Internal vs. external representations](../InternalExternal.md)
+- [Index contractions](../Contractions.md)
+- [Dimensions](../Dimensions.md)
+- [Kinematics](../Kinematics.md)
+- [Expanding and undoing expansions](../Expansions.md)
+- [Handling indices](../Indices.md)
+- [Dirac algebra](../DiracAlgebra.md)
+- [Color algebra](../ColorAlgebra.md)
+- [Loops](../Loops.md)
+- [Nonrelativistic calculations](../Nonrelativistic.md)
+- [Calculations with light-cone vectors](../LightCone.md)
 
 ## Basic objects
 

@@ -1,3 +1,7 @@
+```mathematica
+ 
+```
+
 ## ApartFF
 
 `ApartFF[amp, {q1, q2, ...}]` partial fractions loop integrals by decomposing them into simpler integrals that contain only linearly independent propagators. It uses `FCApart` as a backend and is equally suitable for 1-loop and  multi-loop integrals.
@@ -151,3 +155,50 @@ ApartFF[int FAD[k], SPD[k], {k}] // ApartFF[#, {k}] &
 $$\frac{k^2}{2 (k\cdot l+i \eta ).((p-k)^2+i \eta )}+\frac{p^2}{2 (k\cdot l+i \eta ).((k-p)^2+i \eta )}$$
 
 Here we need a second call to `ApartFF` since the first execution doesn't drop scaleless integrals or perform any shifts in the denominators.
+
+Other examples of doing partial fraction decomposition for eikonal integrals (e.g. in SCET) 
+
+```mathematica
+int1 = SFAD[{{0, nb . k2}}, {{0, nb . (k1 + k2)}}]
+```
+
+$$\frac{1}{(\text{k2}\cdot \;\text{nb}+i \eta ).((\text{k1}+\text{k2})\cdot \;\text{nb}+i \eta )}$$
+
+```mathematica
+ApartFF[int1, {k1, k2}]
+```
+
+$$\frac{1}{(\text{k2}\cdot \;\text{nb}+i \eta ).(\text{k1}\cdot \;\text{nb}+\text{k2}\cdot \;\text{nb}+i \eta )}$$
+
+```mathematica
+ApartFF[ApartFF[SFAD[{{0, nb . k1}}] int1, SPD[nb, k1], {k1, k2}], {k1, k2}]
+```
+
+$$\frac{1}{(\text{k1}\cdot \;\text{nb}+i \eta ).(\text{k2}\cdot \;\text{nb}+i \eta )}-\frac{1}{(\text{k1}\cdot \;\text{nb}+i \eta ).(\text{k1}\cdot \;\text{nb}+\text{k2}\cdot \;\text{nb}+i \eta )}$$
+
+```mathematica
+int2 = SPD[nb, k2] SFAD[{{0, nb . (k1 + k2)}}]
+```
+
+$$\frac{\text{k2}\cdot \;\text{nb}}{((\text{k1}+\text{k2})\cdot \;\text{nb}+i \eta )}$$
+
+```mathematica
+ApartFF[int2, {k1, k2}]
+```
+
+$$\frac{\text{k2}\cdot \;\text{nb}}{(\text{k1}\cdot \;\text{nb}+\text{k2}\cdot \;\text{nb}+i \eta )}$$
+
+```mathematica
+ApartFF[ApartFF[SFAD[{{0, nb . k1}}] int2, SPD[nb, k1], {k1, k2}], {k1, k2}]
+```
+
+$$-\frac{\text{k1}\cdot \;\text{nb}}{(\text{k1}\cdot \;\text{nb}+\text{k2}\cdot \;\text{nb}+i \eta )}$$
+
+If we are working with a subset of propagators from a full integral, one should better turn off loop momentum shifts and the dropping of scaleless integrals
+
+```mathematica
+ApartFF[ApartFF[SFAD[{{0, nb . k1}}] int2, SPD[nb, k1], {k1, k2}], {k1, k2}, FDS -> False, 
+  DropScaleless -> False]
+```
+
+$$1-\frac{\text{k1}\cdot \;\text{nb}}{(\text{k1}\cdot \;\text{nb}+\text{k2}\cdot \;\text{nb}+i \eta )}$$

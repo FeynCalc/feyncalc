@@ -23,18 +23,21 @@ $FrontEndSession=FS;
 (*
 force=True;
 $fcDEBUG=True;
-inputNB="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation/Mathematica/LoopIntegrals/FCLoopGraphPlot.m";
+inputNB="/media/Data/Projects/VS/FeynCalc/FeynCalc/Documentation/Mathematica/Tutorials/LightCone.m";
 outputDir=FileNameJoin[{$HomeDirectory,"Downloads","outputMD"}];
-
-
+loadAddOns={};
+*)
+(*
 inputNB="/media/Data/Projects/VS/FeynCalc/FeynCalc/AddOns/FeynHelpers/Documentation/Mathematica/FIRE/Functions/FIRECreateConfigFile.m";
 outputDir="/media/Data/Projects/VS/FeynCalc/FeynCalc/AddOns/FeynHelpers/Documentation/Markdown";
-loadAddOns="FeynHelpers";*)
+loadAddOns="FeynHelpers";
+*)
 
 
 outputMD=FileNameJoin[{outputDir,FileBaseName[inputNB]<>".md"}];
 
 
+Quiet[CreateDirectory[outputDir]];
 SetDirectory[outputDir];
 
 
@@ -199,4 +202,8 @@ Print["Exporting the notebook to ", outputMD];
 MDExport[outputMD, nb,"CellStyleRules"-> <|
   "Title"->{"Text",fixTitle}|>];
 Print["Export done."];
+
+
+
+
 

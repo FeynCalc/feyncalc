@@ -9,6 +9,10 @@ $FeynCalcStartupMessages=False;
 loadAddOns={"FeynHelpers"};
 docuDir=FileNameJoin[{$FeynCalcDirectory,"AddOns","FeynHelpers","Documentation"}];
 *)
+(*
+loadAddOns={};
+docuDir=FileNameJoin[{$FeynCalcDirectory,"Documentation"}];
+*)
 
 
 If[loadAddOns=!="{}",
@@ -99,7 +103,13 @@ Block[{path,pos,text,tmp,res,outFile},
 ];
 
 
-baseNames=FileBaseName/@FileNames["*.m",FileNameJoin[{docuDir,"Mathematica"}],Infinity];
+Select[FileNames["*.m",FileNameJoin[{docuDir,"Mathematica"}],Infinity],StringFreeQ[#,"Tutorials"]&]
+
+
+Select[FileNames["*.m",FileNameJoin[{docuDir,"Mathematica"}],Infinity],StringFreeQ[#,"Tutorials"]&]
+
+
+baseNames=FileBaseName/@Select[FileNames["*.m",FileNameJoin[{docuDir,"Mathematica"}],Infinity],StringFreeQ[#,"Tutorials"]&];
 Print["In total there are ", Length[baseNames], " FeynCalc symbols having usage information."]
 
 
@@ -112,11 +122,7 @@ If[First[#2]===1||Mod[First[#2],80]===0,
 WriteString["stdout","."];
 aux=docuToUsage[#1];(*Print[aux];*)updateUsage[#1,aux,True]
 )&,input
-]
-(*,ProgressIndicator[counter,{1,Length[input]}]]*)
-
-
-
+];
 
 
 
