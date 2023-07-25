@@ -623,11 +623,19 @@ PIDelta /:
 
 Eps /:
 	MakeBoxes[Eps[a__],TraditionalForm]:=
-		SuperscriptBox[OverscriptBox["\[Epsilon]",$TypesettingDimD], TBox[a]]/; Length[First[{a}]]===2;
+		SuperscriptBox[OverscriptBox["\[Epsilon]",$TypesettingDimD], TBox[a]]/; Length[First[{a}]]===2 && FreeQ[{a},LightConePerpendicularComponent];
+
+Eps /:
+	MakeBoxes[Eps[a___, b_LightConePerpendicularComponent,  c___],TraditionalForm]:=
+		SuperscriptBox[OverscriptBox["\[Epsilon]",$TypesettingDimD], TBox[a,b,c]]/; Length[First[b]]===2;
 
 Eps /:
 	MakeBoxes[Eps[a__],TraditionalForm]:=
-		SuperscriptBox[OverscriptBox["\[Epsilon]",$TypesettingDim4], TBox[a]]/; MatchQ[Length[First[{a}]],1|0];
+		SuperscriptBox[OverscriptBox["\[Epsilon]",$TypesettingDim4], TBox[a]]/; MatchQ[Length[First[{a}]],1|0] && FreeQ[{a},LightConePerpendicularComponent];
+
+Eps /:
+	MakeBoxes[Eps[a___, b_LightConePerpendicularComponent,  c___],TraditionalForm]:=
+		SuperscriptBox[OverscriptBox["\[Epsilon]",$TypesettingDim4], TBox[a,b,c]]/; MatchQ[Length[First[b]],1|0];
 
 Epsilon /:
 	MakeBoxes[Epsilon, TraditionalForm]:=
