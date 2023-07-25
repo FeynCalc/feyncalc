@@ -87,7 +87,8 @@ FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 		FCPrint[3, "FCLoopFindIntegralMappings: Entering with: ", exprRaw, FCDoControl -> fcfpmVerbose];
 		FCPrint[3, "FCLoopFindIntegralMappings: and: ", lmomsRaw, FCDoControl -> fcfpmVerbose];
 
-		If[	(optPreferredIntegrals=!={}) && !MatchQ[optPreferredIntegrals,{(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..}],
+		If[	(optPreferredIntegrals=!={}) && !MatchQ[optPreferredIntegrals,{(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..] |
+			_FeynAmpDenominator | Power[_FeynAmpDenominator, _] | HoldPattern[Times][(_FeynAmpDenominator | Power[_FeynAmpDenominator, _]) ..]) ..}],
 			Message[FCLoopFindIntegralMappings::failmsg,"Incorrect value of the PreferredIntegrals option."];
 			Abort[]
 		];
