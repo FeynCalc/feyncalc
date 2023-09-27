@@ -68,6 +68,7 @@ symmMT::usage="";
 Options[Tdec] =	{
 	BasisOnly 			-> False,
 	Dimension 			-> D,
+	DeleteFile			-> True,
 	FCE					-> True,
 	FCVerbose 			-> False,
 	Factoring 			-> {Factor2, Factor},
@@ -303,6 +304,7 @@ Tdec[exp_:1, li : {{_, _} ..}, extMomsRaw_List/;FreeQ[extMomsRaw,OptionQ], Optio
 
 			FCPrint[1, "Tdec: Solving the linear system using ", optSolve, FCDoControl->tdecVerbose];
 			time=AbsoluteTime[];
+
 			Which[
 				(*Solve3*)
 				optSolve===Solve3,
@@ -310,7 +312,8 @@ Tdec[exp_:1, li : {{_, _} ..}, extMomsRaw_List/;FreeQ[extMomsRaw,OptionQ], Optio
 
 				(*FerSolve*)
 				optSolve===FeynCalc`FerSolve,
-					sol = FerSolve[linearSystemAbbreviated, tensorCoeffs, Timing->False],
+					sol = FerSolve[linearSystemAbbreviated, tensorCoeffs, Timing->False, DeleteFile->OptionValue[DeleteFile],
+						"SetPivotStrategy"	-> 5, FCVerbose->tdecVerbose],
 
 				(*Custom solver, no options*)
 				MatchQ[optSolve,_Symbol],
