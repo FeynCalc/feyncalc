@@ -106,6 +106,15 @@ FCFeynmanPrepare[gli_, topos:{__FCTopology}, opts:OptionsPattern[]] :=
 FCFeynmanPrepare[gli_, topo_FCTopology, opts:OptionsPattern[]] :=
 	Block[{int,optFinalSubstitutions, lmomsHead, lmoms, optLoopMomenta},
 
+		If[	OptionValue[FCVerbose]===False,
+			fcszVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				fcszVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		FCPrint[1,"FCFeynmanPrepare: Entry point: single GLI and single topology ", FCDoControl->fcszVerbose];
+
 		optLoopMomenta = OptionValue[LoopMomenta];
 		lmomsHead = Head[optLoopMomenta[1,1]];
 
@@ -124,6 +133,8 @@ FCFeynmanPrepare[gli_, topo_FCTopology, opts:OptionsPattern[]] :=
 			lmoms = topo[[3]]
 		];
 
+
+
 		FCFeynmanPrepare[int, lmoms, Join[{FCI->True,FinalSubstitutions->optFinalSubstitutions},
 			FilterRules[{opts}, Except[FCI | FinalSubstitutions]]]]
 	]/; MatchQ[gli, (_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..])];
@@ -139,6 +150,8 @@ FCFeynmanPrepare[glis_, topos:{__FCTopology}, opts:OptionsPattern[]] :=
 				fcszVerbose=OptionValue[FCVerbose]
 			];
 		];
+
+		FCPrint[1,"FCFeynmanPrepare: Entry point: single GLI and multiple topologies.", FCDoControl->fcszVerbose];
 
 
 		optLoopMomenta = OptionValue[LoopMomenta];
@@ -185,7 +198,16 @@ FCFeynmanPrepare[toposRaw: {__FCTopology}, opts:OptionsPattern[]]:=
 FCFeynmanPrepare[topoRaw_FCTopology, opts:OptionsPattern[]] :=
 	Block[{topo,optFinalSubstitutions},
 
+		If[	OptionValue[FCVerbose]===False,
+			fcszVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				fcszVerbose=OptionValue[FCVerbose]
+			];
+		];
+
 		optFinalSubstitutions	= OptionValue[FinalSubstitutions];
+
+		FCPrint[1,"FCFeynmanPrepare: Entry point: single topology.", FCDoControl->fcszVerbose];
 
 		If[	OptionValue[FCI],
 			topo = topoRaw,

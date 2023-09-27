@@ -34,25 +34,56 @@ Begin["`FCLoopSelectTopology`Private`"]
 fclsVerbose::usage = "";
 
 Options[FCLoopSelectTopology] = {
-	FCE->False
+	FCE		-> False,
+	Check	-> True
 };
 
-FCLoopSelectTopology[glis_List,topos:{__FCTopology},opts:OptionsPattern[]]:=
-	Union[Flatten[FCLoopSelectTopology[#,topos,opts]&/@glis]]/;
-	MatchQ[glis,{(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..}];
+FCLoopSelectTopology[ex_/;Head[ex]=!=List, topos:{__FCTopology}, opts:OptionsPattern[]] :=
+	First[FCLoopSelectTopology[{ex}, topos, opts]];
 
+FCLoopSelectTopology[glisRaw_List, topos:{__FCTopology}, OptionsPattern[]] :=
+	Block[{res, glis, gliTopos,null},
 
-FCLoopSelectTopology[glis_, topos:{__FCTopology},opts:OptionsPattern[]]:=
-	Union[Flatten[FCLoopSelectTopology[#,topos,opts]&/@Cases2[glis,GLI]]]/;
-	!MatchQ[glis, _List | _GLI] &&
-	MatchQ[glis,(Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..])];
+		If[	OptionValue[Check],
+			If[	!FCLoopValidTopologyQ[topos],
+				Message[FCLoopSelectTopology::failmsg, "The supplied list of topologie is incorrect."];
+				Abort[]
+			];
+		];
 
+		If[	TrueQ[!MatchQ[glisRaw, {__GLI}]],
+			glis = Cases2[glisRaw+null,GLI],
+			glis = glisRaw
+		];
+
+		gliTopos=Union[First/@glis];
+
+		res = Sort[Select[topos,MemberQ[gliTopos,First[#]]&]];
+
+		If[	res==={},
+			Message[FCLoopSelectTopology::failmsg,"There are no topologies that appear in the given list of GLIs"];
+			Abort[]
+		];
+		(*
+		If[MatchQ[glisRaw, {_GLI}],
+			res=First[res]
+		];*)
+
+		If[	OptionValue[FCE],
+			res =FCE[res]
+		];
+
+		res
+	]
+(*
 FCLoopSelectTopology[GLI[id_,_List], topos:{__FCTopology}, OptionsPattern[]] :=
 	Block[{res},
 
-		If[	!FCLoopValidTopologyQ[topos],
-			Message[FCLoopSelectTopology::failmsg, "The supplied list of topologie is incorrect."];
-			Abort[]
+		If[	OptionValue[Check],
+			If[	!FCLoopValidTopologyQ[topos],
+				Message[FCLoopSelectTopology::failmsg, "The supplied list of topologie is incorrect."];
+				Abort[]
+			];
 		];
 
 		res = Select[topos,(#[[1]]===id)&];
@@ -69,6 +100,6 @@ FCLoopSelectTopology[GLI[id_,_List], topos:{__FCTopology}, OptionsPattern[]] :=
 
 		res
 	]
-
+*)
 FCPrint[1,"FCLoopSelectTopology.m loaded."];
 End[]
