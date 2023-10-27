@@ -1901,6 +1901,12 @@ Eps[x___, (h1:LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|Cartesia
 Eps[x___, (h1:LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[a_], y___, (h2:CartesianIndex|CartesianMomentum)[b_, _Symbol -1] ,z___]:=
 	Eps@@(Take[#,1]&/@{x,h1[a],y,h2[b],z})/; FCPatternFreeQ[{x,h1[a],y,h2[b],z}]  && h1[a]=!=ExplicitLorentzIndex[0] ;
 
+Eps[x___, (h1:LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[a_, _Symbol], y___, (h2:LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[b_] ,z___]:=
+	Eps@@(Take[#,1]&/@{x,h1[a],y,h2[b],z})/; FCPatternFreeQ[{x,h1[a],y,h2[b],z}] && h1[a]=!=ExplicitLorentzIndex[0];
+
+Eps[x___, (h1:LorentzIndex|ExplicitLorentzIndex|Momentum|CartesianIndex|CartesianMomentum)[a_, _Symbol -1], y___, (h2:CartesianIndex|CartesianMomentum)[b_] ,z___]:=
+	Eps@@(Take[#,1]&/@{x,h1[a],y,h2[b],z})/; FCPatternFreeQ[{x,h1[a],y,h2[b],z}]  && h1[a]=!=ExplicitLorentzIndex[0] ;
+
 Eps[x___, m_TemporalMomentum, y___]:=
 	TemporalPair[ExplicitLorentzIndex[0],m]Eps[x,ExplicitLorentzIndex[0],y];
 

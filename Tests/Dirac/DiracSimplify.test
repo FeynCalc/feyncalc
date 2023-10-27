@@ -320,7 +320,20 @@ n, nb].GALRD[mu, n, nb]*SPD[nb, p2])/2 - (SPD[n,  p1]*
 GSD[n] . GSD[nb])* SPD[nb, p2])/2))/2 + (SPD[n,
 p1]*(-((-4 + D)*GSD[nb] . GSLRD[p2, n, nb]) - ((-2 + D)*
 GSD[nb] . GSD[n]*SPD[nb, p2])/2))/2 - 4*SPLRD[p1, p2, n, nb]];
-res","Pair[Momentum[n, D], Momentum[p1, D]]*Pair[Momentum[nb, D], Momentum[p2, D]] - (D*Pair[Momentum[n, D], Momentum[p1, D]]*Pair[Momentum[nb, D], Momentum[p2, D]])/2"}
+res","Pair[Momentum[n, D], Momentum[p1, D]]*Pair[Momentum[nb, D], Momentum[p2, D]] - (D*Pair[Momentum[n, D], Momentum[p1, D]]*Pair[Momentum[nb, D], Momentum[p2, D]])/2"},
+{"fcstDiracSimplify-ID53",
+"FCSetDiracGammaScheme[\"BMHV\"];\n res=DiracSimplify[
+LC[mu, nu][p1, p2] LC[rho, si][p1, p2] DiracTrace[
+FVD[p3, si] GAD[mu, nu, rho] . GSD[p3]], FCE -> True]; \n FCSetDiracGammaScheme[\"NDR\"];\n res",
+"-8*SP[p1, p3]^2*SP[p2, p2] + 16*SP[p1, p2]*SP[p1, p3]*SP[p2, p3] -
+8*SP[p1, p1]*SP[p2, p3]^2 - 8*SP[p1, p2]^2*SP[p3, p3] + 8*SP[p1, p1]*SP[p2, p2]*SP[p3, p3]"},
+{"fcstDiracSimplify-ID54",
+"FCSetDiracGammaScheme[\"BMHV\"];\n res=DiracSimplify[
+Contract[
+LC[mu, nu][p1, p2] LC[rho, si][p1, p2] DiracTrace[
+	FVD[p3, si] GAD[mu, nu, rho] . GSD[p3]]], FCE -> True]; \n FCSetDiracGammaScheme[\"NDR\"];\n res",
+"-8*SP[p1, p3]^2*SP[p2, p2] + 16*SP[p1, p2]*SP[p1, p3]*SP[p2, p3] -
+8*SP[p1, p1]*SP[p2, p3]^2 - 8*SP[p1, p2]^2*SP[p3, p3] + 8*SP[p1, p1]*SP[p2, p2]*SP[p3, p3]"}
 };
 
 
