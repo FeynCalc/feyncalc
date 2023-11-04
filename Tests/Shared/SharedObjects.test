@@ -465,7 +465,12 @@ CartesianMomentum[p3, -1 + D]]"},
 {"fcstSharedObjectsBehaviorEps-ID21", "Eps[0, CartesianMomentum[x], CartesianMomentum[y]]", "0"},
 {"fcstSharedObjectsBehaviorEps-ID22", "Eps[CartesianIndex[i], CartesianIndex[j], CartesianIndex[k], CartesianIndex[l]]", "0"},
 {"fcstSharedObjectsBehaviorEps-ID23", "Eps[CartesianMomentum[p], CartesianIndex[j], CartesianMomentum[k],CartesianIndex[l]]", "0"},
-{"fcstSharedObjectsBehaviorEps-ID24", "Eps[CartesianIndex[c1], CartesianIndex[c2], ExplicitLorentzIndex[0]]", "0"}
+{"fcstSharedObjectsBehaviorEps-ID24", "Eps[CartesianIndex[c1], CartesianIndex[c2], ExplicitLorentzIndex[0]]", "0"},
+{"fcstSharedObjectsBehaviorEps-ID25", "Eps[LorentzIndex[nu, D], Momentum[p3, D], Momentum[p1],
+Momentum[p2]]", "Eps[LorentzIndex[nu], Momentum[p3], Momentum[p1], Momentum[p2]]"},
+{"fcstSharedObjectsBehaviorEps-ID26", "Eps[CartesianIndex[nu, D - 1], CartesianMomentum[p3, D - 1],
+CartesianMomentum[p1]]", "Eps[CartesianIndex[nu], CartesianMomentum[p3],
+CartesianMomentum[p1]]"}
 })
 
 Tests`Shared`fcstSharedObjectsBehaviorPauliSigma =

@@ -254,7 +254,14 @@ SUNT[colc] MTD[\[Mu], \[Nu]] SPD[x, x] SUNF[cola, colb, colc]"},
 2 GSE[b] . GSE[c] . GSE[q] SPE[a, q] -
 2 GSE[a] . GSE[c] . GSE[q] SPE[b, q] +
 2 GSE[a] . GSE[b] . GSE[q] SPE[c, q] -
-GSE[a] . GSE[b] . GSE[c] SPE[q, q]]; \n FCSetDiracGammaScheme[\"NDR\"];\n res","0"}
+GSE[a] . GSE[b] . GSE[c] SPE[q, q]]; \n FCSetDiracGammaScheme[\"NDR\"];\n res","0"},
+{"fcstDiracSimplify-ID54",
+"FCSetDiracGammaScheme[\"BMHV\"];\n res=DiracSimplify[
+Contract[
+LC[mu, nu][p1, p2] LC[rho, si][p1, p2] DiracTrace[
+	FVD[p3, si] GAD[mu, nu, rho] . GSD[p3]]], FCE -> True]; \n FCSetDiracGammaScheme[\"NDR\"];\n res",
+"-8*SP[p1, p3]^2*SP[p2, p2] + 16*SP[p1, p2]*SP[p1, p3]*SP[p2, p3] -
+8*SP[p1, p1]*SP[p2, p3]^2 - 8*SP[p1, p2]^2*SP[p3, p3] + 8*SP[p1, p1]*SP[p2, p2]*SP[p3, p3]"}
 };
 
 
