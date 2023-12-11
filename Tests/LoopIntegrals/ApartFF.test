@@ -282,5 +282,14 @@ Head -> {Identity, gg}]",
 "{gg[1/2, GLI[fctopology1, {2, 0, 1, 1}]] + gg[1/2, GLI[fctopology1, {2, 1, 0, 1}]],
 gg[1/2, GLI[fctopology2, {2, 0, 1, 1}]] + gg[1/2, GLI[fctopology2, {2, 1, 0, 1}]],
 gg[1, GLI[fctopology3, {1, 1, 1}]], gg[1, GLI[fctopology4, {1, 1, 1}]], gg[1,
-GLI[fctopology5, {1, 1}]], gg[1, GLI[fctopology6, {1, 1}]]}"}
+GLI[fctopology5, {1, 1}]], gg[1, GLI[fctopology6, {1, 1}]]}"},
+{"fcstApartFF-ID46",
+"ApartFF[GLI[
+tad3Lod, {1, 1, 1, 1, 1, 1}], {FCTopology[
+tad3Lod, {SFAD[{k2, mb}], SFAD[k3], SFAD[{k1, mc}],
+	SFAD[{k1 - k2, mc}], SFAD[{k2 - k3}], SFAD[{k1 + k2}]}, {k1, k2,
+	k3}, {}, {}, {}]}, Head -> {Identity, prod}]",
+"prod[-2/(2*mb + mc), GLI[tad3Lod, {0, 1, 1, 1, 1, 1}]] + prod[-2/(2*mb + mc),
+GLI[tad3Lod, {1, 1, 0, 1, 1, 1}]] + prod[(2*mb + mc)^(-1), GLI[tad3Lod, {1, 1, 1, 0, 1, 1}]] +
+prod[(2*mb + mc)^(-1), GLI[tad3Lod, {1, 1, 1, 1, 1, 0}]]"}
 })

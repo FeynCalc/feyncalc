@@ -197,8 +197,8 @@ ApartFF[gli_GLI, topoRaw_, opts:OptionsPattern[]] :=
 
 		optFinalSubstitutions = FCI@FRH[optFinalSubstitutions];
 
-		tmp = ApartFF[int, topo[[3]], Join[{FCI->True,FCE->False,FinalSubstitutions->optFinalSubstitutions},
-			FilterRules[{opts}, Except[FCI|FCE|FinalSubstitutions]]]];
+		tmp = ApartFF[int, topo[[3]], Join[{FCI->True,FCE->False,FinalSubstitutions->optFinalSubstitutions,FDS->False},
+			FilterRules[{opts}, Except[FCI|FCE|FinalSubstitutions|FDS]]]];
 
 		FCPrint[3, "ApartFF: After partial fractioning of the propagator representation: ", tmp, FCDoControl->affVerbose];
 
