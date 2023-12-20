@@ -652,10 +652,21 @@ FCMakeSymbols[name_, range_List, type_, OptionsPattern[]] :=
 	res
 	];
 
+FCFactorOut[a_ == b_, y__] :=
+	FCFactorOut[a,y] == FCFactorOut[b,y];
 
+FCFactorOut[(h:Rule|RuleDelayed)[a_,b_], y__] :=
+	With[{zz=FCFactorOut[b,y]}, h[a,zz]];
+
+FCFactorOut[x_List, y__] :=
+	FCFactorOut[#, y]& /@ x;
 
 FCFactorOut[expr_,pref_,OptionsPattern[]]:=
-	pref OptionValue[Head][OptionValue[Factoring][expr/pref]];
+	pref OptionValue[Head][OptionValue[Factoring][expr/pref]];/; !MemberQ[{Equal,Rule,RuleDelayed,List}, Head[expr]];
+
+
+
+
 
 FCGetNotebookDirectory[]:=
 	Block[{dir},
