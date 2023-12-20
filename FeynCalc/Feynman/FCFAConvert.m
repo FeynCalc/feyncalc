@@ -228,12 +228,11 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[infos__][diags___], OptionsPatt
 		];
 
 		If[	!FreeQ[diagsConverted,DiracIndex] && OptionValue[FCFADiracChainJoin],
-
+			(*
 			If[	FreeQ[diagsConverted, Spinor],
-				Message[FCFAConvert::noSpinors];
-				Abort[]
+				Message[FCFAConvert::noSpinors]
 			];
-
+			*)
 			diagsConverted = FCFADiracChainJoin[diagsConverted,FCI->True]
 		];
 

@@ -208,5 +208,8 @@ essentially reproduces the corresponding code in FormCalc. *)
 diracChainEvalSign[ordering[a__]]:=
 	optHead[Signature[{a}] (-1)^(Length[{a}]/2)];
 
+diracChainEvalSign[1]:=
+	optHead[1];
+
 FCPrint[1,"FCFADiracChainJoin.m loaded"];
 End[]
