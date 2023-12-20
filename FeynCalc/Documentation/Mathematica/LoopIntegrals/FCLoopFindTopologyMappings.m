@@ -193,3 +193,51 @@ mappings4[[1]]
 
 
 FCLoopFindTopologyMappings[topos4][[1]]
+
+
+(* ::Text:: *)
+(*Topologies containing eikonal or other nonstandard propagators may introduce additional challenges.*)
+(*Even though two such topologies can be recognized to be identical, the code still would not be able to*)
+(*work out the correct momentum shifts without some additional input.*)
+
+
+topoEik1=FCTopology[mytopo67,{SFAD[{{k2,0},{0,1},1}],SFAD[{{k1,0},{0,1},1}],
+SFAD[{{k1+k2,0},{0,1},1}],SFAD[{{0,-k1 . nb},{0,1},1}],
+SFAD[{{k2,-meta u0b k2 . nb},{0,1},1}],SFAD[{{k1+k2,-2 gkin meta u0b (k1+k2) . n},
+{0,1},1}],SFAD[{{k1,-2 gkin meta k1 . n+meta u0b k1 . nb},{2 gkin meta^2 u0b,1},1}]},
+{k1,k2},{n,nb},{Hold[SPD][n]->0,Hold[SPD][nb]->0,Hold[SPD][n,nb]->2},{}];
+
+
+topoEik2=FCTopology[mytopo79,{SFAD[{{k2,0},{0,1},1}],SFAD[{{k1,0},{0,1},1}],
+SFAD[{{0,k1 . nb},{0,1},1}],SFAD[{{k2,-meta u0b k2 . nb},{0,1},1}],
+SFAD[{{k1+k2,-meta u0b (k1+k2) . nb},{0,1},1}],SFAD[{{k1,
+2 gkin meta k1 . n-meta u0b k1 . nb},{2 gkin meta^2 u0b,1},1}],
+SFAD[{{k1+k2,2 gkin meta u0b (k1+k2) . n-meta u0b (k1+k2) . nb},
+{2 gkin meta^2 u0b^2,1},1}]},{k1,k2},{n,nb},{Hold[SPD][n]->0,
+Hold[SPD][nb]->0,Hold[SPD][n,nb]->2},{}];
+
+
+DataType[meta,FCVariable]=True;
+DataType[u0b,FCVariable]=True;
+
+
+(* ::Text:: *)
+(*At first sight these two topologies are independent from each other*)
+
+
+FCLoopFindTopologyMappings[{topoEik1,topoEik2}];
+
+
+(* ::Text:: *)
+(*However, if we tell the code how some eikonal propagators can be brought into a quadratic form,*)
+(*then an explicit mapping can be found*)
+
+
+eikRule={SFAD[{{k2,-meta u0b k2 . nb},{0,1},1}]->SFAD[k2-meta u0b/2 nb]}
+
+
+eikMappings=FCLoopFindTopologyMappings[{topoEik1,topoEik2},
+InitialSubstitutions->eikRule];
+
+
+eikMappings[[1]][[1]][[2;;]]

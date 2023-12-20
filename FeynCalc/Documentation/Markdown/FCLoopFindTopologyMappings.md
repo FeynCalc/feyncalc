@@ -1,3 +1,7 @@
+```mathematica
+ 
+```
+
 ## FCLoopFindTopologyMappings
 
 `FCLoopFindTopologyMappings[{topo1, topo2, ...}]` finds mappings between topologies (written as `FCTopology` objects) `topo1, topo2, ...`. For each source topology the function returns a list of loop momentum shifts and a `GLI` replacement rule needed to map it to the given target topology. If you need to map everything to a particular set of target topologies, you can specify them via the `PreferredTopologies` option.
@@ -50,6 +54,10 @@ topos1 = {
 ```mathematica
 mappings1 = FCLoopFindTopologyMappings[topos1];
 ```
+
+$$\text{FCLoopFindTopologyMappings: }\;\text{Found }3\text{ mapping relations }$$
+
+$$\text{FCLoopFindTopologyMappings: }\;\text{Final number of independent topologies: }2$$
 
 ```mathematica
 mappings1[[1]]
@@ -104,6 +112,10 @@ $$\left\{\text{FCTopology}\left(\text{prop2L},\left\{\frac{1}{(\text{q1}^2+i \et
 ```mathematica
 mappings2 = FCLoopFindTopologyMappings[topos2, PreferredTopologies -> preferredTopos2];
 ```
+
+$$\text{FCLoopFindTopologyMappings: }\;\text{Found }3\text{ mapping relations }$$
+
+$$\text{FCLoopFindTopologyMappings: }\;\text{Final number of independent topologies: }3$$
 
 ```mathematica
 mappings2[[1]]
@@ -163,6 +175,10 @@ Now we can match a smaller topology into a larger topology
 mappings3 = FCLoopFindTopologyMappings[topos3, PreferredTopologies -> subTopos3];
 ```
 
+$$\text{FCLoopFindTopologyMappings: }\;\text{Found }1\text{ mapping relations }$$
+
+$$\text{FCLoopFindTopologyMappings: }\;\text{Final number of independent topologies: }1$$
+
 ```mathematica
 mappings3[[1]]
 ```
@@ -203,6 +219,10 @@ $$\left\{\text{FCTopology}\left(\text{topo1},\left\{\frac{1}{((\text{l1}+\text{q
 mappings4 = FCLoopFindTopologyMappings[topos4, Momentum -> All];
 ```
 
+$$\text{FCLoopFindTopologyMappings: }\;\text{Found }1\text{ mapping relations }$$
+
+$$\text{FCLoopFindTopologyMappings: }\;\text{Final number of independent topologies: }1$$
+
 ```mathematica
 mappings4[[1]]
 ```
@@ -219,4 +239,69 @@ Otherwise no mappings exist
 FCLoopFindTopologyMappings[topos4][[1]]
 ```
 
+$$\text{FCLoopFindTopologyMappings: }\;\text{Found }0\text{ mapping relations }$$
+
+$$\text{FCLoopFindTopologyMappings: }\;\text{Final number of independent topologies: }2$$
+
 $$\{\}$$
+
+Topologies containing eikonal or other nonstandard propagators may introduce additional challenges.
+Even though two such topologies can be recognized to be identical, the code still would not be able to
+work out the correct momentum shifts without some additional input.
+
+```mathematica
+topoEik1 = FCTopology[mytopo67, {SFAD[{{k2, 0}, {0, 1}, 1}], SFAD[{{k1, 0}, {0, 1}, 1}], 
+     SFAD[{{k1 + k2, 0}, {0, 1}, 1}], SFAD[{{0, -k1 . nb}, {0, 1}, 1}], 
+     SFAD[{{k2, -meta u0b k2 . nb}, {0, 1}, 1}], SFAD[{{k1 + k2, -2 gkin meta u0b (k1 + k2) . n}, 
+       {0, 1}, 1}], SFAD[{{k1, -2 gkin meta k1 . n + meta u0b k1 . nb}, {2 gkin meta^2 u0b, 1}, 1}]}, 
+    {k1, k2}, {n, nb}, {Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0, Hold[SPD][n, nb] -> 2}, {}];
+```
+
+```mathematica
+topoEik2 = FCTopology[mytopo79, {SFAD[{{k2, 0}, {0, 1}, 1}], SFAD[{{k1, 0}, {0, 1}, 1}], 
+     SFAD[{{0, k1 . nb}, {0, 1}, 1}], SFAD[{{k2, -meta u0b k2 . nb}, {0, 1}, 1}], 
+     SFAD[{{k1 + k2, -meta u0b (k1 + k2) . nb}, {0, 1}, 1}], SFAD[{{k1, 
+        2 gkin meta k1 . n - meta u0b k1 . nb}, {2 gkin meta^2 u0b, 1}, 1}], 
+     SFAD[{{k1 + k2, 2 gkin meta u0b (k1 + k2) . n - meta u0b (k1 + k2) . nb}, 
+       {2 gkin meta^2 u0b^2, 1}, 1}]}, {k1, k2}, {n, nb}, {Hold[SPD][n] -> 0, 
+     Hold[SPD][nb] -> 0, Hold[SPD][n, nb] -> 2}, {}];
+```
+
+```mathematica
+DataType[meta, FCVariable] = True;
+DataType[u0b, FCVariable] = True;
+```
+
+At first sight these two topologies are independent from each other
+
+```mathematica
+FCLoopFindTopologyMappings[{topoEik1, topoEik2}];
+```
+
+$$\text{FCLoopFindTopologyMappings: }\;\text{Found }0\text{ mapping relations }$$
+
+$$\text{FCLoopFindTopologyMappings: }\;\text{Final number of independent topologies: }2$$
+
+However, if we tell the code how some eikonal propagators can be brought into a quadratic form,
+then an explicit mapping can be found
+
+```mathematica
+eikRule = {SFAD[{{k2, -meta u0b k2 . nb}, {0, 1}, 1}] -> SFAD[k2 - meta u0b/2 nb]}
+```
+
+$$\left\{\frac{1}{(\text{k2}^2-\text{meta} \;\text{u0b} (\text{k2}\cdot \;\text{nb})+i \eta )}\to \frac{1}{((\text{k2}-\frac{\text{meta} \;\text{u0b} \;\text{nb}}{2})^2+i \eta )}\right\}$$
+
+```mathematica
+eikMappings = FCLoopFindTopologyMappings[{topoEik1, topoEik2}, 
+    InitialSubstitutions -> eikRule];
+```
+
+$$\text{FCLoopFindTopologyMappings: }\;\text{Found }1\text{ mapping relations }$$
+
+$$\text{FCLoopFindTopologyMappings: }\;\text{Final number of independent topologies: }1$$
+
+```mathematica
+eikMappings[[1]][[1]][[2 ;;]]
+```
+
+$$\left\{\left\{\text{k1}\to -\text{k1},\text{k2}\to \frac{1}{2} (\text{meta} \;\text{nb} \;\text{u0b}-2 \;\text{k2})\right\},G^{\text{mytopo79}}(\text{n5$\_$},\text{n2$\_$},\text{n4$\_$},\text{n1$\_$},\text{n3$\_$},\text{n7$\_$},\text{n6$\_$}):\to G^{\text{mytopo67}}(\text{n1},\text{n2},\text{n3},\text{n4},\text{n5},\text{n6},\text{n7})\right\}$$

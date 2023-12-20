@@ -117,5 +117,19 @@ q2}, {SPD[q1, q1] -> 0, SPD[q2, q2] -> 0, SPD[q1, q2] -> s/2},
 "FCLoopFindMomentumShifts[{{SFAD[l1],
 SFAD[{{l1, l1 . np + l1 . nm}}]}}, {SFAD[l1],
 SFAD[{{l1, -l1 . np - l1 . nm}}]}, {l1}]",
-"{{l1 -> -l1}}"}
+"{{l1 -> -l1}}"},
+{"fcstFCLoopFindMomentumShifts-ID12",
+"DataType[meta, FCVariable] = True; \n DataType[u0b, FCVariable] = True; \n
+FCLoopFindMomentumShifts[{{SFAD[{{k1, 2*gkin*meta*k1 . n - meta*u0b*k1 . nb},
+{2*gkin*meta^2*u0b, 1}, 1}], SFAD[{{k1, 0}, {0, 1}, 1}], SFAD[{{k1 + k2,
+2*gkin*meta*u0b*(k1 + k2) . n - meta*u0b*(k1 + k2) . nb}, {2*gkin*meta^2*u0b^2, 1}, 1}],
+SFAD[{{k1 + k2, -(meta*u0b*(k1 + k2) . nb)}, {0, 1}, 1}], SFAD[{{k2, -(meta*u0b*k2 . nb)},
+{0, 1}, 1}], SFAD[{{k2, 0}, {0, 1}, 1}], SFAD[{{0, k1 . nb}, {0, 1}, 1}]}},
+{SFAD[{{k1, -2*gkin*meta*k1 . n + meta*u0b*k1 . nb}, {2*gkin*meta^2*u0b, 1}, 1}],
+SFAD[{{k1, 0}, {0, 1}, 1}], SFAD[{{k1 + k2, -2*gkin*meta*u0b*(k1 + k2) . n}, {0, 1}, 1}],
+SFAD[{{k1 + k2, 0}, {0, 1}, 1}], SFAD[{{k2, 0}, {0, 1}, 1}], SFAD[{{k2, -(meta*u0b*k2 . nb)},
+{0, 1}, 1}], SFAD[{{0, -k1 . nb}, {0, 1}, 1}]}, {k1, k2}, InitialSubstitutions -> {SFAD[{{k2,
+-(meta*u0b*k2 . nb)}, {0, 1}, 1}] -> SFAD[k2 - (meta*nb*u0b)/2]}, \"Kinematics\" ->
+{{{SPD[n, n] -> 0, SPD[nb, nb] -> 0, SPD[n, nb] -> 2}}, {SPD[n, n] -> 0, SPD[nb, nb] -> 0, SPD[n, nb] -> 2}}]",
+"{{k1 -> -k1, k2 -> (-2*k2 + meta*nb*u0b)/2}}"}
 });

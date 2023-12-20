@@ -432,10 +432,30 @@ PreferredTopologies -> {{FCTopology[
 	"{{{FCTopology[asyR1prop2Ltopo22012X01101NAux1, {SFAD[{{I*p1, 0}, {0, -1}, 1}],
 	SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}], SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}]},
 	{p1, p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] -> mb^2},
-	{}], {p1 -> p1, p3 -> p3},GLI[asyR1prop2Ltopo22012X01101NAux1, {n1_, n2_, n3_}] :>
+	{}], {p1 -> p1, p3 -> -p3},GLI[asyR1prop2Ltopo22012X01101NAux1, {n1_, n2_, n3_}] :>
 	GLI[asyR1prop2Ltopo22012X01101NAux1C, {n1, n2, n3, 0, 0}]}},
 	{FCTopology[asyR1prop2Ltopo22012X01101NAux1C, {SFAD[{{I*p1, 0}, {0, -1}, 1}],
 	SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}], SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}],
 	SFAD[{{0, p1 . p3}, {0, -1}, 1}], SFAD[{{0, p3 . q}, {0, -1}, 1}]}, {p1, p3},
-	{q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] -> mb^2}, {}]}}"}
-});
+	{q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] -> mb^2}, {}]}}"},
+
+
+	{"fcstFCLoopFindTopologyMappings-ID16","DataType[meta, FCVariable] = True; \n
+	DataType[u0b, FCVariable] = True; \n FCLoopFindTopologyMappings[{FCTopology[mytopo67, {SFAD[{{k2, 0}, {0, 1}, 1}], SFAD[{{k1, 0}, {0, 1}, 1}],
+	SFAD[{{k1 + k2, 0}, {0, 1}, 1}], SFAD[{{0, -k1 . nb}, {0, 1}, 1}],	SFAD[{{k2, -meta u0b k2 . nb}, {0, 1}, 1}],
+	SFAD[{{k1 + k2, -2 gkin meta u0b (k1 + k2) . n}, {0, 1}, 1}],	SFAD[{{k1, -2 gkin meta k1 . n +
+		meta u0b k1 . nb}, {2 gkin meta^2 u0b, 1}, 1}]}, {k1, k2}, {n,	nb}, {Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0,
+	Hold[SPD][n, nb] -> 2}, {}],FCTopology[mytopo79, {SFAD[{{k2, 0}, {0, 1}, 1}], SFAD[{{k1, 0}, {0, 1}, 1}],
+	SFAD[{{0, k1 . nb}, {0, 1}, 1}], SFAD[{{k2, -meta u0b k2 . nb}, {0, 1}, 1}],
+	SFAD[{{k1 + k2, -meta u0b (k1 + k2) . nb}, {0, 1}, 1}],	SFAD[{{k1, 2 gkin meta k1 . n -
+	meta u0b k1 . nb}, {2 gkin meta^2 u0b, 1},	1}], SFAD[{{k1 + k2, 2 gkin meta u0b (k1 + k2) . n -
+		meta u0b (k1 + k2) . nb}, {2 gkin meta^2 u0b^2, 1}, 1}]}, {k1,	k2}, {n, nb}, {Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0,
+	Hold[SPD][n, nb] -> 2}, {}] }, InitialSubstitutions -> {SFAD[{{k2, -meta u0b k2 . nb}, {0, 1},
+	1}] -> SFAD[k2 - meta u0b/2 nb]}, FCE -> True]",
+	"{{{FCTopology[mytopo79, {SFAD[{{k2, 0}, {0, 1}, 1}], SFAD[{{k1, 0}, {0, 1}, 1}], SFAD[{{0, k1 . nb}, {0, 1}, 1}], SFAD[{{k2, -(meta*u0b*k2 . nb)}, {0, 1}, 1}], SFAD[{{k1 + k2, -(meta*u0b*(k1 + k2) . nb)}, {0, 1}, 1}],
+	SFAD[{{k1, 2*gkin*meta*k1 . n - meta*u0b*k1 . nb}, {2*gkin*meta^2*u0b, 1}, 1}], SFAD[{{k1 + k2, 2*gkin*meta*u0b*(k1 + k2) . n - meta*u0b*(k1 + k2) . nb}, {2*gkin*meta^2*u0b^2, 1}, 1}]}, {k1, k2}, {n, nb},
+	{Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0, Hold[SPD][n, nb] -> 2}, {}], {k1 -> -k1, k2 -> (-2*k2 + meta*nb*u0b)/2}, GLI[mytopo79, {n5_, n2_, n4_, n1_, n3_, n7_, n6_}] :> GLI[mytopo67, {n1, n2, n3, n4, n5, n6, n7}]}},
+{FCTopology[mytopo67, {SFAD[{{k2, 0}, {0, 1}, 1}], SFAD[{{k1, 0}, {0, 1}, 1}], SFAD[{{k1 + k2, 0}, {0, 1}, 1}], SFAD[{{0, -k1 . nb}, {0, 1}, 1}], SFAD[{{k2, -(meta*u0b*k2 . nb)}, {0, 1}, 1}], SFAD[{{k1 + k2, -2*gkin*meta*u0b*(k1 + k2) . n}, {0, 1}, 1}],
+	SFAD[{{k1, -2*gkin*meta*k1 . n + meta*u0b*k1 . nb}, {2*gkin*meta^2*u0b, 1}, 1}]}, {k1, k2}, {n, nb}, {Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0, Hold[SPD][n, nb] -> 2}, {}]}}"}
+	}
+);

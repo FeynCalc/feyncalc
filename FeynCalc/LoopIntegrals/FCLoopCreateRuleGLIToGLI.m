@@ -43,13 +43,14 @@ crgtgVerbose::usage="";
 
 
 Options[FCLoopCreateRuleGLIToGLI] = {
-	Expanding			-> True,
-	ExpandScalarProduct	-> True,
-	FCI					-> False,
-	FCVerbose			-> False,
-	MomentumExpand		-> True,
-	Reverse				-> False,
-	ToSFAD				-> True
+	Expanding					-> True,
+	ExpandScalarProduct			-> True,
+	FeynAmpDenominatorExplicit 	-> False,
+	FCI							-> False,
+	FCVerbose					-> False,
+	MomentumExpand				-> True,
+	Reverse						-> False,
+	ToSFAD						-> True
 };
 
 
@@ -66,7 +67,7 @@ FCLoopCreateRuleGLIToGLI[mainTopo_FCTopology, subTopos: {__FCTopology}, opts:Opt
 FCLoopCreateRuleGLIToGLI[mainTopo_FCTopology, subTopo_FCTopology, OptionsPattern[]] :=
 	Block[{	mainProps, subProps, mainName, subName, mainLen, subLen,
 			posList, pattern, lhs, rhs, rule, ruleDelayed, checkGLI,
-			checkNew, checkOld, optReverse},
+			checkNew, checkOld, optReverse, mainKinematics, subKinematics},
 
 
 		optReverse = OptionValue[Reverse];
@@ -84,24 +85,35 @@ FCLoopCreateRuleGLIToGLI[mainTopo_FCTopology, subTopo_FCTopology, OptionsPattern
 		FCPrint[3,"FCLoopCreateRuleGLIToGLI: Entering with: Subtopology: ", subTopo, FCDoControl->crgtgVerbose];
 
 		{mainName, subName} 	= {mainTopo[[1]], subTopo[[1]]};
+		{mainKinematics, subKinematics} 	= {mainTopo[[5]], subTopo[[5]]};
 
 		If[	!OptionValue[FCI],
-			{mainProps, subProps} 	= FCI[{mainTopo[[2]], subTopo[[2]]}],
-			{mainProps, subProps} 	= {mainTopo[[2]], subTopo[[2]]}
+			{mainProps, subProps, mainKinematics, subKinematics} 	= FCI[{mainTopo[[2]], subTopo[[2]], FRH[mainKinematics], FRH[subKinematics]}],
+			{mainProps, subProps, mainKinematics, subKinematics} 	= {mainTopo[[2]], subTopo[[2]], FRH[mainKinematics], FRH[subKinematics]}
 		];
 
 		If[ OptionValue[ToSFAD],
 			{mainProps, subProps} = ToSFAD[{mainProps, subProps},FCI->True]
 		];
 
-		If[ OptionValue[MomentumExpand],
-			{mainProps, subProps} = MomentumExpand[{mainProps, subProps}]
+		If[ OptionValue[FeynAmpDenominatorExplicit],
+			{mainProps, subProps} = FeynAmpDenominatorExplicit[{mainProps, subProps}, FCI->True],
+
+
+			If[ OptionValue[MomentumExpand],
+				{mainProps, subProps} = MomentumExpand[{mainProps, subProps}]
+			];
+
+			(* SFADs, CFADs and GFADs may also contain explicit Pairs that are not expanded using MomentumExpand only *)
+			If[ OptionValue[ExpandScalarProduct],
+				{mainProps, subProps} = ExpandScalarProduct[{mainProps, subProps}, FCI->True]
+			];
 		];
 
-		(* SFADs, CFADs and GFADs may also contain explicit Pairs that are not expanded using MomentumExpand only *)
-		If[ OptionValue[ExpandScalarProduct],
-			{mainProps, subProps} = ExpandScalarProduct[{mainProps, subProps}, FCI->True]
-		];
+		{mainProps, subProps} = {mainProps/.mainKinematics, subProps/.subKinematics};
+
+		FCPrint[3,"FCLoopCreateRuleGLIToGLI: Main topology after all simplifications: ", mainProps, FCDoControl->crgtgVerbose];
+		FCPrint[3,"FCLoopCreateRuleGLIToGLI: Subtopology  after all simplifications: ", subProps, FCDoControl->crgtgVerbose];
 
 		If[ OptionValue[Expanding],
 			{mainProps, subProps} = ExpandAll[{mainProps, subProps}]
@@ -114,14 +126,18 @@ FCLoopCreateRuleGLIToGLI[mainTopo_FCTopology, subTopo_FCTopology, OptionsPattern
 			Abort[]
 		];
 
-		If[	mainLen===0 || subLen===0,
-			Message[FCLoopCreateRuleGLIToGLI::failmsg,"Empty topologies are not allowed."];
-			Abort[]
-		];
 
-		If[	Union[Head /@ mainProps] =!= {FeynAmpDenominator} || Union[Head /@ subProps] =!= {FeynAmpDenominator},
-			Message[FCLoopCreateRuleGLIToGLI::failmsg,"The FCTopology format is not correct."];
-			Abort[]
+		If[	mainLen===0 || subLen===0,
+				Message[FCLoopCreateRuleGLIToGLI::failmsg,"Empty topologies are not allowed."];
+				Abort[]
+			];
+
+
+		If[ !OptionValue[FeynAmpDenominatorExplicit],
+			If[	Union[Head /@ mainProps] =!= {FeynAmpDenominator} || Union[Head /@ subProps] =!= {FeynAmpDenominator},
+				Message[FCLoopCreateRuleGLIToGLI::failmsg,"The FCTopology format is not correct."];
+				Abort[]
+			]
 		];
 
 		If[	subLen > mainLen,
