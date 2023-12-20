@@ -63,7 +63,7 @@ FCLoopGLIDifferentiate[expr_/;Head[expr]=!=List, toposRaw_List, invRaw_/;Head[in
 			pattern, GLIFourDivergenceRule, listGLIEval, ruleFinal, null1, null2,
 			listFADs, listSelect, diff, tmp, relevantGLIs, listDiff, listDiffEval,
 			listTopos, vectorDiff, mu, vecHead,	optCollecting, optFactoring,
-			optTimeConstrained, mu0, inv0, invDim},
+			optTimeConstrained, mu0, inv0, invDim, time},
 
 
 		vectorDiff	= False;
@@ -131,7 +131,14 @@ FCLoopGLIDifferentiate[expr_/;Head[expr]=!=List, toposRaw_List, invRaw_/;Head[in
 		];
 		FCPrint[3,"FCLoopGLIDifferentiate: relevantGLIs: ", relevantGLIs, FCDoControl->crtgVerbose];
 
+
+		time=AbsoluteTime[];
+		FCPrint[1, "FCLoopGLIDifferentiate: Applying Collect2.", FCDoControl->crtgVerbose];
+
 		tmp = Collect2[ex,Join[relevantGLIs,{inv}],Factoring->optFactoring, TimeConstrained->optTimeConstrained, Head->diff];
+
+		FCPrint[1,"FCLoopGLIDifferentiate: Collect2 done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->crtgVerbose];
+
 
 		(*Every term that does not depend on inv is zero!*)
 		tmp = FCSplit[tmp, {diff}][[2]];
