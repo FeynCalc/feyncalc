@@ -113,12 +113,12 @@ FCLoopGLIToSymbol[expr_, OptionsPattern[]] :=
 		Switch[optHead,
 			FCTopology,
 			repRule = {
-				GLI[id_, inds_List] :> ToString[id]<>optCharacter<> StringJoin[ToString /@ inds]
+				GLI[id_, inds_List] :> ToString[id]<>optCharacter<> StringJoin[StringReplace[ToString /@ inds,{"-"->"m"}]]
 			},
 
 			GLI,
 			repRule = {
-				GLI[id_, inds_List] :> "GLI"<>optCharacter<>ToString[id]<>optCharacter<>StringJoin[ToString /@ inds]
+				GLI[id_, inds_List] :> "GLI"<>optCharacter<>ToString[id]<>optCharacter<>StringJoin[StringReplace[ToString /@ inds,{"-"->"m"}]]
 			},
 			_,
 			Message[ToSymbol::failmsg, "Unknown value of the Head option.."];
