@@ -1725,13 +1725,10 @@ MTD[mu, nu]*SPD[k1, k1]*(m^2 - m0^2 + SPD[k1, k1])^2))/(4*(1 - \
 D)*SPD[k1, k1]^2)"},
 {"fcitTIDFullRedCR2-ID39",
 "TID[FVD[p,mu]FVD[p,nu]FAD[{p,m0},{p+k1z,m},{p+k1z,m}],p]//FCE",
-"FAD[{p, m}, {p, m}, {-k1z + p, m0}]*FVD[k1z, mu]*FVD[k1z, nu] + \
-(2*I)*Pi^2*FVD[k1z, mu]*FVD[k1z, nu]*(-C0[0, 0, 0, m^2, m^2, m0^2] - \
-2*PaVe[1, {0, 0, 0}, {m^2, m^2, m0^2}, PaVeAutoOrder -> True, \
-PaVeAutoReduce -> True]) + I*Pi^2*MTD[mu, nu]*PaVe[0, 0, {0, 0, 0}, \
-{m^2, m^2, m0^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True] + \
-I*Pi^2*FVD[k1z, mu]*FVD[k1z, nu]*PaVe[2, 2, {0, 0, 0}, {m^2, m^2, \
-m0^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]"},
+"FAD[{p, m}, {p, m}, {-k1z + p, m0}]*FVD[k1z, mu]*FVD[k1z, nu] +
+(2*I)*Pi^2*FVD[k1z, mu]*FVD[k1z, nu]*PaVe[1, {0, 0, 0}, {m^2, m0^2, m^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True] +
+I*Pi^2*MTD[mu, nu]*PaVe[0, 0, {0, 0, 0}, {m^2, m^2, m0^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True] +
+I*Pi^2*FVD[k1z, mu]*FVD[k1z, nu]*PaVe[1, 1, {0, 0, 0}, {m^2, m0^2, m^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True]"},
 {"fcitTIDFullRedCR2-ID40",
 "TID[FVD[p,mu]FVD[p,nu]FAD[{p,m0},{p,m},{p+k2,m}],p]//FCE",
 "(FAD[{p, m}, {-k2 + p, m}]*(4*m^2*FVD[k2, mu]*FVD[k2, nu] - \
@@ -5064,12 +5061,12 @@ nu]*SPD[k1, k1] - MTD[mu, nu]*(m^2 - SPD[k1, k1])*SPD[k1, k1] - \
 2*MTD[mu, nu]*SPD[k1, k1]^2))/(2*(1 - D)*SPD[k1, k1]^2)"},
 {"fcitTIDFullRedCR2-ID138",
 "TID[FVD[p,mu]FVD[p,nu]FAD[{p,m},{p+k1z,0},{p+k1z,0}],p]//FCE",
-"FAD[p, p, {-k1z + p, m}]*FVD[k1z, mu]*FVD[k1z, nu] + \
-(2*I)*Pi^2*FVD[k1z, mu]*FVD[k1z, nu]*(-C0[0, 0, 0, 0, 0, m^2] - \
-2*PaVe[1, {0, 0, 0}, {0, 0, m^2}, PaVeAutoOrder -> True, \
-PaVeAutoReduce -> True]) + I*Pi^2*MTD[mu, nu]*PaVe[0, 0, {0, 0, 0}, \
-{0, 0, m^2}, PaVeAutoOrder -> True, PaVeAutoReduce -> True] + \
-I*Pi^2*FVD[k1z, mu]*FVD[k1z, nu]*PaVe[2, 2, {0, 0, 0}, {0, 0, m^2}, \
+"FAD[p, p, {-k1z + p, m}]*FVD[k1z, mu]*FVD[k1z, nu] +
+(2*I)*Pi^2*FVD[k1z, mu]*FVD[k1z, nu]*PaVe[1, {0, 0, 0}, {0, m^2, 0},
+PaVeAutoOrder -> True, PaVeAutoReduce -> True] +
+I*Pi^2*MTD[mu, nu]*PaVe[0, 0, {0, 0, 0}, {0, 0, m^2}, PaVeAutoOrder -> True,
+PaVeAutoReduce -> True] +
+I*Pi^2*FVD[k1z, mu]*FVD[k1z, nu]*PaVe[1, 1, {0, 0, 0}, {0, m^2, 0},
 PaVeAutoOrder -> True, PaVeAutoReduce -> True]"},
 {"fcitTIDFullRedCR2-ID139",
 "TID[FVD[p,mu]FVD[p,nu]FAD[{p,m},{p,0},{p+k2,0}],p]//FCE",
