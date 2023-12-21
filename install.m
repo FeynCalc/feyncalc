@@ -419,14 +419,6 @@ InstallFeynCalc[OptionsPattern[]]:=
 
 		WriteString["stdout", "done! \n"];
 
-		If[	!OptionValue[InstallFeynCalcDevelopmentVersion],
-			(* To have the documentation available immediately after installing FeynCalc (following the advice of Szabolcs Horv'at) *)
-			If[	$VersionNumber >= 12.1,
-				PacletDataRebuild[],
-				RebuildPacletData[]
-			];
-		];
-
 		(* Generate FCConfig.m	*)
 		WriteString["stdout", "Creating the configuration file ... "];
 		configFile = StringJoin[configFileProlog, "\n\n(* Activate TraditionalForm output for each FeynCalc session *) \n$FCTraditionalFormOutput="<>ToString[useTraditionalForm]<>";"];
@@ -449,9 +441,7 @@ InstallFeynCalc[OptionsPattern[]]:=
 		Global`$FAPatch=False;
 		Get["FeynCalc`"];
 		If[	faInstalled,
-			FeynCalc`FAPatch[Quiet->True]
-		];
-		If[	OptionValue[InstallFeynCalcDevelopmentVersion],
+			FeynCalc`FAPatch[Quiet->True];
 			FeynCalc`FCReloadAddOns[{"FeynArtsLoader"}]
 		];
 
