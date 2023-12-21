@@ -2,7 +2,7 @@
 
 [![license: GPLv3](https://img.shields.io/badge/license-GPLv3-brightgreen.svg)](https://github.com/FeynCalc/feyncalc/blob/master/LICENSE)
 [![latest release](https://img.shields.io/github/release/FeynCalc/feyncalc.svg)](https://github.com/FeynCalc/feyncalc/releases)
-![compatibility](https://img.shields.io/badge/Mathematica-8.x_9.x_10.x_11.x_12.x_13.x-brightgreen.svg)
+![compatibility](https://img.shields.io/badge/Mathematica-10.x_11.x_12.x_13.x-brightgreen.svg)
 
 
 [FeynCalc](http://www.feyncalc.org/) is a Mathematica package for symbolic evaluation of Feynman diagrams and
@@ -14,9 +14,7 @@ Visit our [wiki](https://github.com/FeynCalc/feyncalc/wiki) to learn more about 
 
 You can ask your questions about FeynCalc or participate in the related discussions in our [forum](https://github.com/FeynCalc/feyncalc/discussions) powered by GitHub Discussions
 
-# Manual
-
-FeynCalc manual is still work in progress but is already mature enough to be useful for normal users. 
+# Manual and tutorial
 
 The PDF version of the manual can be found [here](https://github.com/FeynCalc/feyncalc-manual/releases/tag/dev-manual). If you prefer the web version, please visit this [website](https://feyncalc.github.io/referenceDev). 
 
@@ -42,11 +40,11 @@ Comput. Phys. Commun., 64, 345--359, 1991.
 
 FeynCalc is covered by the GNU General Public License 3.
 
-Copyright (C) 1990-2023 Rolf Mertig
+Copyright (C) 1990-2024 Rolf Mertig
 
-Copyright (C) 1997-2023 Frederik Orellana
+Copyright (C) 1997-2024 Frederik Orellana
 
-Copyright (C) 2014-2023 Vladyslav Shtabovenko
+Copyright (C) 2014-2024 Vladyslav Shtabovenko
 
 FeynCalc is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as
