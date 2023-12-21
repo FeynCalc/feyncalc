@@ -40,6 +40,12 @@ else
   requestedAddOns="${MAKE_DOCU_LOAD_ADDONS}"
 fi
 
+if [[ -z "${MAKE_DO_NOT_LOAD_FEYNCALC}" ]]; then  
+  noFC="False"
+else
+  noFC="${MAKE_DO_NOT_LOAD_FEYNCALC}"
+fi
+
 scriptDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 MATH=$1
 OUTDIR=$2
@@ -48,7 +54,7 @@ if [[ $# -eq 3 ]] ; then
     $MATH -nopromt -script "$scriptDIR"/ExportToMD.m -run inputNB="\"$2\"" -run outputDir="\"$3\"" -run loadAddOns="\"$requestedAddOns\""
 else
 
-allFilesRaw=$(find $mainDir/Mathematica/ -type f -name '*.m' -print)
+allFilesRaw=$(find $mainDir/Mathematica/ -type f -name '*.m' ! -name 'ReductionTable-*' -print)
 allFilesRaw=($(printf "%s\n" "${allFilesRaw[@]}" | sort -V))
 
 declare -a allFiles
@@ -76,7 +82,7 @@ if [ -z ${allFiles} ]; then
     exit 0;
 fi
 
-parallel -j "$nThreads" -u --eta --bar "$MATH -nopromt -script $scriptDIR/ExportToMD.m  -run loadAddOns='\"$requestedAddOns\"' -run outputDir='\"$2\"'" -run inputNB='\"{}\"'  ::: ${allFiles[@]}
+parallel -j "$nThreads" -u --eta --bar "$MATH -nopromt -script $scriptDIR/ExportToMD.m  -run DoNotLoadFeynCalc='\"$noFC\"' -run loadAddOns='\"$requestedAddOns\"' -run outputDir='\"$2\"'" -run inputNB='\"{}\"'  ::: ${allFiles[@]}
 $scriptDIR/cleanUpMarkdown.sh $OUTDIR
 $scriptDIR/pdfToSvg.sh $OUTDIR/img/
 #-------------------------------------------------------------------------------

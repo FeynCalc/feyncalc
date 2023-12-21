@@ -3,112 +3,27 @@
 This directory contains examples of interesting calculations from textbooks and papers that can be reproduced using
 _FeynCalc_.
 
-# Available examples
+# Generating markdown
 
-## Phi^3
+```
+feynCalcDir="/media/Data/Projects/VS/FeynCalc"
+cd ${feynCalcDir}/FeynCalc/Documentation/Scripts
 
-### 1-loop level
+for exDir in 'QED/Tree' 'QED/OneLoop' 'QED/TwoLoops' 'QCD/Tree' 'QCD/OneLoop' 'QCD/TwoLoops' 'EW/Tree' 'EW/OneLoop' 'Phi3/OneLoop' 'Phi4/OneLoop' 'MSSM/Tree'
+do
+  echo
+  echo -e "* \c"
+  export MAKE_DO_NOT_LOAD_FEYNCALC="True" MAKE_DOCU_LOAD_ADDONS="{}"; export DOCU_SOURCE_DIR="${feynCalcDir}/FeynCalc/Examples/${exDir}"; ./exportToMD.sh math "$DOCU_SOURCE_DIR"/Markdown
+done
 
-* Renormalization
-
-## Phi^4
-
-### 1-loop level
-
-* Phi Phi -> Phi Phi
-* Renormalization
-
-### 1-loop level
-
-## QED
-
-### Tree level
-
-* El Ael -> El Ael
-* El Ael-> Ga Ga
-* El Ael-> Mu Amu
-* El El-> El El
-* El Ga-> El Ga
-* El Mu-> El Mu
-* Ga -> Mu Amu
+for exDir in 'QED/Tree' 'QED/OneLoop' 'QED/TwoLoops' 'QCD/Tree' 'QCD/OneLoop' 'QCD/TwoLoops' 'EW/Tree' 'EW/OneLoop' 'Phi3/OneLoop' 'Phi4/OneLoop' 'MSSM/Tree'
+do
+  echo
+  echo -e "* \c"
+  export MAKE_CHANGE_CSS_PATH="../../css/feyncalc.css" MAKE_CHANGE_KATEX_PATH="../../js/" DOCU_SOURCE_DIR="${feynCalcDir}c/FeynCalc/Examples/${exDir}"; ./generateHTML.sh /media/Data/Projects/VS/feyncalc.github.io/FeynCalcExamples/${exDir}
+done
 
 
-### 1-loop level
-
-* El -> El
-* El -> Ga El
-* Ga
-* Ga -> Ga
-* Ga -> Ga Ga
-* Ga -> Ga Ga Ga Ga
-* Pi -> GaGa
-* Renormalization in the MS and MSbar schemes
-
-## QCD
-
-### Tree level
-
-* El Ael -> Q Qbar
-* Ga Gl -> Q Qbar
-* Ga -> Q Qbar
-* Ga -> Q Qbar Gl
-* Gl Gl -> Gl Gl
-* Gl Gl -> Q Qbar
-* Mu Amu -> Q Qbar
-* Q Ga -> Gl Q
-* Q Gl -> Q Gl
-* Qi Qibar -> Qi Qibar
-* Qi Qibar -> Qj Qjbar
-* Qi Qi -> Qi Qi
-* Qi Qjbar -> Qi Qjbar
-* Qi Qj -> Qi Qj
-* Q Qbar -> El Ael
-* Q Qbar -> Ga Ga
-* Q Qbar -> Ga Gl
-* Q Qbar -> Gl Gl
-* Q Qbar -> Mu Amu
-
-
-### 1-loop level
-
-* Gh -> Gh
-* Gh Gl -> Gh
-* Gl -> Gl
-* Gl -> Gl in the background field gauge
-* Gl -> Gl Gl
-* Q -> Q
-* Renormalization
-* Renormalization Massless
-
-### 2-loop level
-
-* Gh -> Gh
-
-## EW
-
-### Tree level
-
-* Anel El -> Anmu Mu
-* Anel El -> Qubar Qd
-* Anel El -> W W
-* Anel El -> Z Z
-* El Nmu -> Mu Nel
-* H -> F Fbar
-* H -> W W
-* H -> Z Z
-* Mu -> El Anel Nmu
-* NleQdt -> Le Qut
-* QQbar -> Z Z
-* Qt -> Qb W
-* Qu Qdbar -> Ael Nel
-* Qutbar Qdt -> Nel Anel
-* W -> El Anel
-* W -> Qi Qjbar
-* Z -> F Fbar
-
-### 1-loop level
-
-* H -> Gl Gl
 
 # Directory structure
 

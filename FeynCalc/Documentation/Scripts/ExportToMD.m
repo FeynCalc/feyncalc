@@ -85,12 +85,14 @@ time=AbsoluteTime[];
 SetSelectedNotebook[nb];
 
 
+If[DoNotLoadFeynCalc=!="True",
 (*Insert the FeynCalc cell*)
 NotebookWrite[nb,"$FeynCalcStartupMessages=False; \n $LoadAddOns = "<>
 ToString[loadAddOns,InputForm]<>"; \n <<FeynCalc`"];
 SelectionMove[nb, Next, Cell];
 SelectionMove[nb, Previous, Cell];
 SelectionEvaluate[nb];
+];
 
 
 NotebookPauseForEvaluation[nb];
@@ -202,8 +204,6 @@ Print["Exporting the notebook to ", outputMD];
 MDExport[outputMD, nb,"CellStyleRules"-> <|
   "Title"->{"Text",fixTitle}|>];
 Print["Export done."];
-
-
 
 
 

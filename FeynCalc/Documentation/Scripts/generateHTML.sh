@@ -35,6 +35,18 @@ else
   nThreads="${MAKE_DOCU_NTHREADS}"
 fi
 
+if [[ -z "${MAKE_CHANGE_CSS_PATH}" ]]; then
+  cssPath="css/feyncalc.css"
+else
+  cssPath="${MAKE_CHANGE_CSS_PATH}"
+fi
+
+if [[ -z "${MAKE_CHANGE_KATEX_PATH}" ]]; then
+  katexPath="js/"
+else
+  katexPath="${MAKE_CHANGE_KATEX_PATH}"
+fi
+
 
 scriptDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 docuTitle=$(basename $(dirname "$mainDir"))
@@ -45,7 +57,7 @@ TEMPLATESDIR="templates"
 OUTDIR=$1
 
 if [[ $# -eq 2 ]] ; then    
-    pandoc "$1" -f markdown -t html5 --template="$TEMPLATESDIR"/feyncalc.html5 --katex=js/ -fmarkdown-implicit_figures --lua-filter="$FILTERSDIR"/md2html.lua -s --metadata title="$docuTitle manual (development version)" -c "css/feyncalc.css" --metadata=classoption:fleqn -o "$2"/$(basename -s .md "$1").html
+    pandoc "$1" -f markdown -t html5 --template="$TEMPLATESDIR"/feyncalc.html5 --katex=${katexPath} -fmarkdown-implicit_figures --lua-filter="$FILTERSDIR"/md2html.lua -s --metadata title="$docuTitle manual (development version)" -c ${cssPath} --metadata=classoption:fleqn -o "$2"/$(basename -s .md "$1").html
 else
  
 allFilesRaw=$(find $mainDir/Markdown/ -type f -name '*.md' -print)
@@ -77,16 +89,20 @@ if [ -z ${allFiles} ]; then
 fi
 
 parallel -j $nThreads -u --eta --bar "$scriptDIR/generateHTML.sh {} $OUTDIR" ::: ${allFiles[@]};
-mkdir $OUTDIR/Extra &> /dev/null;
 
-allFilesExtra=$(find $mainDir/Markdown/Extra -type f -name '*.md' -print)
-allFilesExtra=($(printf "%s\n" "${allFilesExtra[@]}" | sort -V))
-for i in "${allFilesExtra[@]}"; do
-  name=$(basename -s .md $i);
-  mv $OUTDIR/$name.html $OUTDIR/Extra/;
-  sed -i -e "s|css/feyncalc.css|../css/feyncalc.css|g" $OUTDIR/Extra/$name.html;
-  sed -i -e "s|js/|../js/|g" $OUTDIR/Extra/$name.html;
-done
+
+if [ -z ${mainDir}/Extra ]; then
+	mkdir $OUTDIR/Extra &> /dev/null;
+	allFilesExtra=$(find $mainDir/Markdown/Extra -type f -name '*.md' -print)
+	allFilesExtra=($(printf "%s\n" "${allFilesExtra[@]}" | sort -V))
+	for i in "${allFilesExtra[@]}"; do
+	  name=$(basename -s .md $i);
+	  mv $OUTDIR/$name.html $OUTDIR/Extra/;
+	  sed -i -e "s|css/feyncalc.css|../css/feyncalc.css|g" $OUTDIR/Extra/$name.html;
+	  sed -i -e "s|js/|../js/|g" $OUTDIR/Extra/$name.html;
+	done
+fi
+
 
 rm -rf $OUTDIR/img;
 mkdir -p $OUTDIR/img;
