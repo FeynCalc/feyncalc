@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for FCFADiracChainJoin 		*)
@@ -241,7 +241,7 @@ DiracIndex[Dir3], DiracIndex[Dir4]] DiracChain[
 DiracGamma[LorentzIndex[LCdummy2, D], D] . DiracGamma[6],
 DiracIndex[Dir2], DiracIndex[Dir6]],
 First -> {Spinor[-Momentum[p2, D], mqu, 1],
-Spinor[Momentum[k1, D], mle, 1]},FCE->True]",
+Spinor[Momentum[k1, D], mle, 1]}]",
 "-Spinor[Momentum[k1, D], mle, 1] . GAD[LCdummy1] . GA[6] .
 Spinor[-Momentum[k2, D], mle, 1] Spinor[-Momentum[p2, D], mqu,
 1] . GAD[LCdummy2] . GA[6] . (mqu - GSD[-k - k1 - k2 + l + p2]) .
@@ -268,7 +268,28 @@ Spinor[-Momentum[k2, D], mle, 1] Spinor[-Momentum[p2, D], mqu,
 DiracGamma[
 6] . (mqu - DiracGamma[Momentum[-k - k1 - k2 + l + p2, D], D]) .
 DiracGamma[LorentzIndex[Lor2, D], D] .
-Spinor[Momentum[p1, D], mqu, 1]"}
+Spinor[Momentum[p1, D], mqu, 1]"},
+{"fcstFCFADiracChainJoin-ID11","FCFADiracChainJoin[
+dcobj = DiracChain[Spinor[Momentum[k1, D], MLE, 1],
+	DiracIndex[Dir3]] DiracChain[Spinor[Momentum[k2, D], MLE, 1],
+	DiracIndex[Dir4]] DiracChain[Spinor[-Momentum[p1, D], MQU, 1],
+	DiracIndex[Dir1]] DiracChain[Spinor[-Momentum[p2, D], MQU, 1],
+	DiracIndex[Dir2]] DiracChain[DiracGamma[LorentzIndex[Lor1, D], D],
+	DiracIndex[Dir2], DiracIndex[Dir5]] DiracChain[
+	DiracGamma[LorentzIndex[Lor2, D], D], DiracIndex[Dir7],
+	DiracIndex[Dir4]] DiracChain[
+	MLE + DiracGamma[Momentum[k2 - l, D], D], DiracIndex[Dir7],
+	DiracIndex[Dir8]] DiracChain[
+	MQU + DiracGamma[Momentum[l - p2, D], D], DiracIndex[Dir5],
+	DiracIndex[Dir6]] DiracChain[
+	DiracGamma[LorentzIndex[Ind37202, D], D] . DiracGamma[6],
+	DiracIndex[Dir3], DiracIndex[Dir8]] DiracChain[
+	DiracGamma[LorentzIndex[Ind37202, D], D] . DiracGamma[6],
+	DiracIndex[Dir6], DiracIndex[Dir1]],
+First -> {Spinor[Momentum[k1, D], MLE, 1]}, FCE -> True]",
+"Spinor[Momentum[k2, D], MLE, 1] . (-GAD[Lor2]) . (MLE + GSD[k2 - l]) . (-GA[6] . GAD[Ind37202]) . Spinor[
+-Momentum[k1, D], MLE, 1]*Spinor[-Momentum[p2, D], MQU,
+1] . GAD[Lor1] . (MQU + GSD[l - p2]) . GAD[Ind37202] . GA[6] . Spinor[Momentum[p1, D], MQU, 1]"}
 };
 
 

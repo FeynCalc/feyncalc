@@ -2,9 +2,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for Explicit					*)
@@ -78,5 +78,16 @@ Pair[LorentzIndex[la, D],
 	"QuantumField[FCPartialD[LorentzIndex[mu, D]], GaugeField,
 	LorentzIndex[nu, D]] -
 	QuantumField[FCPartialD[LorentzIndex[nu, D]], GaugeField,
-	LorentzIndex[mu, D]]"}
+	LorentzIndex[mu, D]]"},
+{"fcstExplicit-ID18","Explicit[SUNF[a,b,c],SUNF->True]",
+	"2 I (-SUNTrace[
+	SUNT[SUNIndex[a]].SUNT[SUNIndex[b]].SUNT[SUNIndex[c]]] +
+SUNTrace[SUNT[SUNIndex[a]].SUNT[SUNIndex[c]].SUNT[SUNIndex[b]]])"},
+{"fcstExplicit-ID19","Explicit[SUNF[a,b,c]]",
+	"SUNF[SUNIndex[a], SUNIndex[b], SUNIndex[c]]"},
+{"fcstExplicit-ID20","Explicit[SUND[a,b,c]]",
+	"SUND[SUNIndex[a], SUNIndex[b], SUNIndex[c]]"},
+{"fcstExplicit-ID21","Explicit[SUND[a,b,c], SUND->True]",
+	"2 SUNTrace[SUNT[SUNIndex[a]].SUNT[SUNIndex[b]].SUNT[SUNIndex[c]]] +
+2 SUNTrace[SUNT[SUNIndex[b]].SUNT[SUNIndex[a]].SUNT[SUNIndex[c]]]"}
 };

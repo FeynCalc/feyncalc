@@ -13,10 +13,12 @@
 (* ------------------------------------------------------------------------ *)
 
 Twist2CounterOperator::usage =
-"Twist2CounterOperator[p,mu,nu,a,b,5];
-Twist2CounterOperator[p, 7] : (7);
-Twist2CounterOperator[p1,p2,{p3,mu,a}, 1] (p1: incoming quark momentum,
-p3: incoming gluon (count1)).";
+"Twist2CounterOperator[p, mu, nu, a, b, 5] is a special routine for particular
+QCD calculations.
+
+Also available: Twist2CounterOperator[p, 7],
+Twist2CounterOperator[p1,p2,{p3,mu,a}, 1] (p1: incoming quark momentum, p3:
+incoming gluon (count1)).";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -1508,8 +1510,7 @@ p1, p3, incoming
 
 (* Count47  p2 outgoing *)
 uc47[p1_, _, p3_, mu_, a_, (*coup*)_] :=
-	-
-	(2*(CA - 2*CF)*SMP["g_s"]^3*Sn*FV[OPEDelta, mu]*GS[OPEDelta]*
+	-(2*(CA - 2*CF)*SMP["g_s"]^3*Sn*FV[OPEDelta, mu]*GS[OPEDelta]*
 	((-1)^OPEm*SO[p1]^(1 + OPEm) - (-1)^OPEm*SO[p1]*(SO[p1] - SO[p3])^OPEm +
 	(-1)^OPEm*(SO[p1] - SO[p3])^OPEm*SO[p3] + SO[p1]*SO[p3]^OPEm -
 	(-1)^OPEm*SO[p1]*SO[p3]^OPEm - SO[p3]^(1 + OPEm))*SUNT[a])/

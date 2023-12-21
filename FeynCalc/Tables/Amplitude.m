@@ -9,13 +9,17 @@
 
 (* ------------------------------------------------------------------------ *)
 
-Amplitude::usage= "Amplitude is a database of Feynman amplitudes. \
-Amplitude[\"name\"] returns the amplitude corresponding to the string \"name\". \
-A list of all defined names is obtained with Amplitude[]. New amplitudes can \
-be added to the file \"Amplitude.m\". It is strongly recommended to use names \
-that reflect the process. The option Gauge -> 1 means `t Hooft Feynman \
-gauge; Polarization -> 0 gives unpolarized OPE-type amplitudes, \
-Polarization -> 1 the polarized ones..";
+Amplitude::usage=
+"Amplitude is a database of Feynman amplitudes. Amplitude[\"name\"] returns the
+amplitude corresponding to the string \"name\". A list of all defined names is
+obtained with Amplitude[]. New amplitudes can be added to the file
+\"Amplitude.m\". It is strongly recommended to use names that reflect the
+process.
+
+The option Gauge -> 1 means t Hooft Feynman gauge;
+
+Polarization -> 0 gives unpolarized OPE-type amplitudes, Polarization -> 1 the
+polarized ones.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -108,67 +112,15 @@ abbs = {
 	w 		:> FCGV["w"]
 };
 
-If[	$Notebooks === True,
-	nice = Join[abbs, {
-		p  :> FCGV["p"],
-		q  :> FCGV["q"],
-		k  :> FCGV["k"],
-		q1 :> FCGV["q1"],
-		q2 :> FCGV["q2"],
-		p1 :> FCGV["p1"],
-		p2 :> FCGV["p2"](*,
-		u5 :> Subscript["u",5],
-		li1:> Subscript[FCGV["\[Lambda]"], 1],
-		li2:> Subscript[FCGV["\[Lambda]"], 2],
-		li3:> Subscript[FCGV["\[Lambda]"], 3],
-		li4:> Subscript[FCGV["\[Lambda]"], 4],
-		li5:> Subscript[FCGV["\[Lambda]"], 5],
-		li6:> Subscript[FCGV["\[Lambda]"], 6],
-		li7:> Subscript[FCGV["\[Lambda]"], 7],
-		li8:> Subscript[FCGV["\[Lambda]"], 8],
-		li9:> Subscript[FCGV["\[Lambda]"], 9],
-		li10:> Subscript[FCGV["\[Lambda]"], 10],
-		li11:> Subscript[FCGV["\[Lambda]"], 11],
-		li12:> Subscript[FCGV["\[Lambda]"], 12],
-		li13:> Subscript[FCGV["\[Lambda]"], 13],
-		li14:> Subscript[FCGV["\[Lambda]"], 14],
-		li15:> Subscript[FCGV["\[Lambda]"], 15],
-		li16:> Subscript[FCGV["\[Lambda]"], 16],
-		li17:> Subscript[FCGV["\[Lambda]"], 17],
-		ci1:> Subscript["c", 1],
-		ci2:> Subscript["c", 2],
-		ci3:> Subscript["c", 3],
-		ci4:> Subscript["c", 4],
-		ci5:> Subscript["c", 5],
-		ci6:> Subscript["c", 6],
-		ci7:> Subscript["c", 7],
-		ci8:> Subscript["c", 8],
-		ci9:> Subscript["c", 9],
-		ci10:> Subscript["c", 10],
-		ci11:> Subscript["c", 11],
-		ci12:> Subscript["c", 12],
-		ci13:> Subscript["c", 13],
-		ci14:> Subscript["c", 14],
-		ci15:> Subscript["c", 15],
-		ci16:> Subscript["c", 16],
-		ci17:> Subscript["c", 17],
-		u1:> Subscript["u",1],
-		u2:> Subscript["u",2],
-		u3:> Subscript["u",3],
-		u4:> Subscript["u",4],
-		u5:> Subscript["u",5]*)
-	}]
-	,
-	nice = Join[abbs,
-					{p  :> FCGV["p"],
-					q  :> FCGV["q"],
-					k  :> FCGV["k"],
-					q1 :> FCGV["q1"],
-					q2 :> FCGV["q2"],
-					p1 :> FCGV["p1"],
-					p2 :> FCGV["p2"]
-					}   ]
-];
+nice = Join[abbs,
+	{p  :> FCGV["p"],
+	q  :> FCGV["q"],
+	k  :> FCGV["k"],
+	q1 :> FCGV["q1"],
+	q2 :> FCGV["q2"],
+	p1 :> FCGV["p1"],
+	p2 :> FCGV["p2"]
+	}   ];
 
 Amplitude[nam___, opt___Rule] :=
 	Block[{	qo, go, gv, qgv,gp,qp,qpm,qpmi,

@@ -10,13 +10,19 @@
 
 (* ------------------------------------------------------------------------ *)
 
-Lagrangian::usage= "Lagrangian[\"oqu\"] gives the unpolarized OPE quark
-operator.\n
-Lagrangian[\"oqp\"] gives the polarized quark OPE operator.\n
-Lagrangian[\"ogu\"] gives the unpolarized gluon OPE operator.\n
-Lagrangian[\"ogp\"] gives the polarized gluon OPE operator.\n
-Lagrangian[\"ogd\"] gives the sigma-term part of the QCD lagrangian.\n
-Lagrangian[\"QCD\"] gives the gluon self interaction part of the QCD lagrangian.";
+Lagrangian::usage=
+"Lagrangian[\"oqu\"] gives the unpolarized OPE quark operator.
+
+Lagrangian[\"oqp\"] gives the polarized quark OPE operator.
+
+Lagrangian[\"ogu\"] gives the unpolarized gluon OPE operator.
+
+Lagrangian[\"ogp\"] gives the polarized gluon OPE operator.
+
+ Lagrangian[\"ogd\"] gives the sigma-term part of the QCD Lagrangian.
+
+ Lagrangian[\"QCD\"] gives the gluon self interaction part of the QCD
+Lagrangian.";
 
 (* ------------------------------------------------------------------------ *)
 

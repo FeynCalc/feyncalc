@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Anti5 anticommutes g^5 to the right or the left			    *)
@@ -16,9 +16,9 @@
 (* ------------------------------------------------------------------------ *)
 
 Anti5::usage =
-"Anti5[exp] anticommutes all g^5 one time to the right. \
-Anti5[exp, n] anticommutes all g^5 n times to the right. \
-Anti5[exp, -n] anticommutes all g^5 n times to the left.";
+"Anti5[exp] anticommutes all $\\gamma^5$ in exp to the right. Anti5[exp, n]
+anticommutes all $\\gamma^5$ $n$-times to the right. Anti5[exp, -n]
+anticommutes all $\\gamma^5$ $n$-times to the left.";
 
 Anti5::failmsg =
 "Error! Anti5 has encountered a fatal problem and must abort the computation. \

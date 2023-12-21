@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Small helper tools extensively used in FeynCalc			    *)
@@ -16,262 +16,333 @@
 (* ------------------------------------------------------------------------ *)
 
 Cases2::usage=
-"Cases2[expr, f] is equivalent to \
-Cases[{expr}, HoldPattern[f[___]], Infinity]//Union. \
-Cases2[expr, f1, f2, ...] or \
-Cases2[expr, {f1, f2, ...}] is equivalent to \
-Cases[{expr}, f1[___] | f2[___] ..., Infinity]//Union.";
+"Cases2[expr, f] returns a list of all objects in expr with head f.
+
+Cases2[expr,f] is equivalent to Cases2[{expr},f[___],Infinity]//Union.
+
+Cases2[expr, f, g, ...] or Cases2[expr, {f,g, ...}] is equivalent to
+Cases[{expr},f[___] | g[___] ...].";
+
+
+Coefficient2::usage=
+"Coefficient2[exp, form1, form2, ...] is like Coefficient, but it also allows
+to extracts coefficients  of form1, form2, ... sequentially. To specify the
+power in formi, write it as {var,pow}.
+
+To keep the prefactor whose coefficient you extracted you need to set the
+option Prefactor to True.";
 
 Combine::usage=
-"Combine[expr] puts terms in a sum over a common denominator, and \
-cancels factors in the result. Combine is similar to Together, \
-but accepts the option Expanding and works usually \
-better than Together on polynomials involving rationals with \
-sums in the denominator.";
+"Combine[expr] puts terms in a sum over a common denominator and cancels
+factors in the result. Combine is similar to Together, but accepts the option
+Expanding and works usually better than Together for polynomials involving
+rationals with sums in the denominator.";
 
 Complement1::usage=
-"Complement1[l1, l2], where l1 and l2 are lists returns a list of \
-elements from l1 not in l2. Multiple occurences of an element in l1 are \
-kept and multiple occurences of an element in l2 are dropped multiply if \
-present in l1";
+"Complement1[l1, l2] where l1 and l2 are lists returns a list of elements from
+l1 not inl2. Multiple occurrences of an element in l1 are kept and multiple
+occurrences of an element in l2 are dropped if present in l1.";
 
 Expand2::usage=
-"Expand2[exp, x] expands all sums containing x. \
+"Expand2[exp, x] expands all sums containing x.
+
 Expand2[exp, {x1, x2, ...}]  expands all sums containing x1, x2, ....";
 
 ExpandAll2::usage=
 "ExpandAll2[exp] is similar to ExpandAll, but much faster on simple structures.";
 
+FactorList2::usage=
+"FactorList2[exp] is similar to FactorList except that it correctly handles
+symbolic exponents.";
+
 FCAntiSymmetrize::usage=
-"FCAntiSymmetrize[expr, {a1, a2, ...}] antisymmetrizes expr with respect \
-to the variables a1, a2, ... ";
+"FCAntiSymmetrize[expr, {a1, a2, ...}] antisymmetrizes expr with respect to the
+variables a1, a2, ....";
 
 FCAttachTypesettingRule::usage=
-"FCAttachTypesettingRules[expr, ...] attaches a specific TraditionalForm \
-typesetting rule to expr. It doesn't change any properties of expr apart \
-from adding a FormatValue with a MakeBoxes rule. Following choices are possible \n
-FCAttachTypesettingRule[expr_, str]
-FCAttachTypesettingRules[expr, {SubscriptBox, var, sub}]
-FCAttachTypesettingRules[expr, {SuperscriptBox, var, sup}]
-FCAttachTypesettingRules[expr, {SubsuperscriptBox, var, sub, sup}]\n
+"FCAttachTypesettingRule[expr, ...] attaches a specific TraditionalForm
+typesetting rule to expr. It doesn't change any properties of expr apart from
+adding a FormatValue with a MakeBoxes rule.
+
+Following choices are possible:
+
+- FCAttachTypesettingRule[expr_, str]
+
+- FCAttachTypesettingRules[expr, {SubscriptBox, var, sub}]
+
+- FCAttachTypesettingRules[expr, {SuperscriptBox, var, sup}]
+
+- FCAttachTypesettingRules[expr, {SubsuperscriptBox, var, sub, sup}]
+
 Use FCRemoveTypesettingRules to remove all typesetting rules attached to expr.";
 
 FCCheckVersion::usage=
-"FCCheckVersion[major,minor,build] checks if the current version of FeynCalc \
-is larger or equal than marjor.minor.build. For example, FCCheckVersion[9,3,0] \
-will generate a warning (when running with the frontend) or quit kernel (when \
-running without the frontend) if the loaded FeynCalc version is older than 9.3.0. \n
+"FCCheckVersion[major, minor, build] checks if the current version of FeynCalc
+is larger or equal than marjor.minor.build. For example, FCCheckVersion[9,3,0]
+will generate a warning (when running with the frontend) or quit kernel (when
+running without the frontend) if the loaded FeynCalc version is older than
+9.3.0.
+
 Notice that this function is available only since FeynCalc 9.3.";
 
-FCDuplicateFreeQ::usage=
-"FCDuplicateFreeQ[list] yields True if list contains no duplicates and False otherwise. \n
-FCDuplicateFreeQ[list,test] uses test to determine whether two objects should be considered \
-duplicates.\n
-FCDuplicateFreeQ returns the same results as the standard DuplicateFreeQ. \
-The only reason for introducing FCDuplicateFreeQ is that DuplicateFreeQ is not available \
-in Mathematica 8 and 9, which are still supported by FeynCalc.";
-
 FCGetNotebookDirectory::usage=
-"FCGetNotebookDirectory[] is a convenience function that returns the directory \
-in which the current notebook or .m file is located. It also works when the FrontEnd \
-is not available.";
+"FCGetNotebookDirectory[] is a convenience function that returns the directory
+in which the current notebook or .m file is located. It also works when the
+FrontEnd is not available.";
 
 FCFactorOut::usage=
-"FCFactorOut[exp, pref] factors out pref out of exp. This is often need to \
+"FCFactorOut[exp, pref] factors out pref out of exp. This is often needed to
 bring exp into a particular form that Mathematica refuses to give.";
 
+FCHighlight::usage=
+"FCHighlight[exp, {{symbol1, color1}, {symbol2, color2}, ...}] highlights the
+given set of symbols in the output using Style and the provided colors. This
+works only in the frontend and alters the input expression in such a way, that
+it cannot be processed further (because of the introduced Style heads).";
+
 FCMakeIndex::usage=
-"FCMakeIndex[str1, str2, head] generates an index with the given head out \
-of the string str1 and str2. For example, FCMakeIndex[\"Lor\",\"1\",LorentzIndex] \
-yields LorentzIndex[Lor1]. The second argument can also be an integer. FCMakeIndex \
-is useful for converting the output of different diagram generators such as \
-FeynArts or QGAF into the FeynCalc notation. It uses memoization to improve the \
-performance."
+"FCMakeIndex[str1, str2, head] generates an index with the given head out of
+the string str1 and str2. For example, FCMakeIndex[\"Lor\",\"1\",LorentzIndex]
+yields LorentzIndex[Lor1]. The second argument can also be an integer.
+FCMakeIndex is useful for converting the output of different diagram
+generators such as FeynArts or QGAF into the FeynCalc notation. It uses
+memoization to improve the performance.";
+
+FCMakeSymbols::usage=
+"FCMakeSymbols[name, range, type] generates a list or a sequence of symbols
+(depending on the value of type) by attaching elements of the list range to
+name.
+
+For example, FCMakeSymbols[mu, Range[1, 3], List] returns {mu1,mu2,mu3}.";
 
 FCPatternFreeQ::usage =
-"FCPatternFreeQ[{exp}] yields True if {exp} does not contain any \
-pattern objects, e.g. Pattern, Blank, BlankSequence and BlankNullSequence. \n
-FCPatternFreeQ[{exp},{h1,h2,...}] checks that in addition to the pattern \
+"FCPatternFreeQ[{exp}] yields True if {exp} does not contain any pattern
+objects, e.g. Pattern, Blank, BlankSequence and BlankNullSequence.
+
+FCPatternFreeQ[{exp},{h1,h2,...}] checks that in addition to the pattern
 objects, no heads h1, h2, ... are present.";
 
 FCProgressBar::usage =
-"FCProgressBar[text, i, total] is a simple auxiliary function that can \
-be used to display the progress of a certain evaluation, e.g. mapping a list \
-of integrals to some function. Here i is the number of the current step \
-while total denotes the overall number of steps. A simple usage example \
-is Table[FCProgressBar[\"Calculating integral \", i, 10], {i, 1, 10}].";
+"FCProgressBar[text, i, total]  is a simple auxiliary function that can be used
+to display the progress of a certain evaluation, e.g. mapping a list of
+integrals to some function. Here i is the number of the current step while
+total denotes the overall number of steps.";
 
 FCReloadFunctionFromFile::usage =
-"FCReloadFunctionFromFile[function, path] is an auxiliary function that \
-attempts to remove all the definitions of the given FeynCalc function and \
-then reload them from the specified file. It is intended to be a helper tool \
-for FeynCalc developers, which allows one to debug/improve internal functions \
-and test the results without restarting the kernel. Depending on the complexity \
-of the given function, there might also be unknown side effects. The function is \
-not meant to be invoked by the normal users. ";
+"FCReloadFunctionFromFile[function, path] is an auxiliary function that
+attempts to remove all the definitions of the given FeynCalc function and then
+reload them from the specified file.
+
+It is intended to be a helper tool for FeynCalc developers, which allows one
+to debug/improve internal functions and test the results without restarting
+the kernel. Depending on the complexity of the given function, there might
+also be unknown side effects.
+
+The function is not meant to be invoked by the normal users.";
+
+FCReloadAddOns::usage =
+"FCReloadAddOns[{addons}] is an auxiliary function that attempts to reload
+FeynCalc addons without restarting the kernel.
+
+It is intended to be a helper tool for FeynCalc developers, which allows one
+to debug/improve add-ons and test the results on the fly. Depending on the
+complexity of the given add-on, there might also be severe side effects.
+
+The function is not meant to be invoked by the normal users.";
 
 FCRemoveTypesettingRules::usage =
 "FCRemoveTypesettingRules[expr] removes all typesetting rules attached to expr.
 Effectively it sets the FormatValues of expr to an empty list.";
 
 FCReplaceAll::usage=
-"FCReplaceAll[exp, ru1, ...] is like ReplaceAll, but it also allows to apply multiple \
-replacement rules sequentially. Instead of doing exp /. ru1 /. ru2 /. ru3 one can just \
-write FCReplaceAll[exp, ru1, ru2, ru3].";
+"FCReplaceAll[exp, ru1, ...] is like ReplaceAll, but it also allows to apply
+multiple replacement rules sequentially. Instead of doing exp /. ru1 /. ru2 /.
+ru3 one can just write FCReplaceAll[exp, ru1, ru2, ru3].";
 
 FCReplaceRepeated::usage=
-"FCReplaceRepeated[exp, ru1, ...] is like ReplaceRepeated, but it also allows to apply multiple \
-replacement rules sequentially. Instead of doing exp //. ru1 //. ru2 //. ru3 one can just \
-write FCReplaceRepeated[exp, ru1, ru2, ru3].";
+"FCReplaceRepeated[exp, ru1, ...]  is like ReplaceRepeated, but it also allows
+to apply multiple replacement rules sequentially.
 
-FCSplit::usage = "FCSplit[exp,{v1, v2, ...}] splits expr into pieces \
-that are free of any occurence of v1, v2, ... and pieces that contain \
-those variables. This works both on sums and products. The output \
-is provided in the form of a two element list. One can recover the \
-original expression by applying Total to that list.";
+Instead of doing exp //. ru1 //. ru2 //. ru3 one can just write
+FCReplaceRepeated[exp, ru1, ru2, ru3].";
 
-FCProductSplit::usage = "FCProductSplit[exp,{v1, v2, ...}] splits exp \
-into two products, where the first one is free  of \
-v1, v2, ... and the second one contains those variables. \
-The output is provided in the form of a two element list. One can recover the \
-original expression by multiplying both elements with each other.";
+FCSplit::usage =
+"FCSplit[exp, {v1, v2, ...}] splits expr into pieces that are free of any
+occurrence of v1, v2, ... and pieces that contain those variables. This works
+both on sums and products. The output is provided in the form of a two element
+list. One can recover the original expression by applying Total to that list.";
 
-FCSubsetQ::usage=
-"FCSubsetQ[list1,list2] yields True if list2 is a subset of list1 and \
-False otherwise. It returns the same results as the standard SubsetQ. \
-The only reason for introducing FCSubsetQ is that SubsetQ is not available \
-in Mathematica 8 and 9, which are still supported by FeynCalc.";
+FCProductSplit::usage =
+"FCProductSplit[exp, {v1, v2, ...}] splits expr into pieces that are free of
+any occurrence of v1, v2, ... and pieces that contain those variables. This
+works both only for products. The output is provided in the form of a two
+element list. One can recover the original expression by applying Times to
+that list.";
 
 FCSymmetrize::usage=
-"FCSymmetrize[expr, {a1, a2, ...}] symmetrizes expr with respect \
-to the variables a1, a2, ... .";
+"FCSymmetrize[expr, {a1, a2, ...}] symmetrizes expr with respect to the
+variables a1,a2, ....";
 
 FreeQ2::usage =
-"FreeQ2[expr, {form1, form2, ...}] yields True if expr does not \
-contain any occurence of form1, form2, ... and False otherwise. \
+"FreeQ2[expr, {form1, form2, ...}] yields True if expr does not contain any
+occurrence of form1, form2, ... and False otherwise.
+
 FreeQ2[expr, form] is the same as FreeQ[expr, form].";
 
 FRH::usage =
-"FRH[exp_] := FixedPoint[ReleaseHold, exp], i.e., FRH removes all \
+"FRH[exp_] corresponds to FixedPoint[ReleaseHold, exp],  i.e. FRH removes all
 HoldForm and Hold in exp.";
 
-FunctionLimits::usage = "FunctionLimits is an option of ILimit, specifying which \
-functions should be checked for finiteness.";
+FunctionLimits::usage =
+"FunctionLimits is an option of ILimit, specifying which functions should be
+checked for finiteness.";
 
-ILimit::usage = "ILimit[exp, a -> b] checks functions specified by the option \
-FunctionLimits and takes the limit a->b of these functions only if it is finite.  \
-For the rest of the expression exp, the limit is taken.";
-
-Intersection1::usage=
-"Intersection1[l1, l2], where l1 and l2 are lists returns a list of \
-elements both in l1 and l2. Multiple occurences of an element are \
-kept the minimum number of times it occures in l1 or l2";
+ILimit::usage =
+"ILimit[exp, a -> b] checks functions specified by the option FunctionLimits
+and takes the limit a->b of these functions only if it is finite.  For the
+rest of the expression exp, the limit is taken.";
 
 Map2::usage=
-"Map2[f, exp] is equivalent to Map if NTerms[exp] > 1, \
-otherwise Map2[f, exp] gives f[exp].";
+"Map2[f, exp] is equivalent to Map if Nterms[exp] > 0, otherwise Map2[f, exp]
+gives f[exp].";
 
 MemSet::usage =
-"MemSet[f[x_], body] is like f[x_] := f[x] = body, \
-but dependend on the value of the setting of FCMemoryAvailable -> \
-memorycut (memorycut - MemoryInUse[]/10.^6) \
-MemSet[f[x_], body] may evaluate as f[x_] := body."
+"MemSet[f[x_], body] is like f[x_] := f[x] = body, but depending on the value
+of the setting of FCMemoryAvailable -> memorycut (memorycut -
+MemoryInUse[]/10^6)
+
+MemSet[f[x_], body] may evaluate as f[x_] := body.";
 
 FCMemoryAvailable::usage =
-"FCMemoryAvailable is an option of MemSet. It can be set to an integer n, \
-where n is the available amount of main memory in Mega Byte. \
-The default setting is $FCMemoryAvailable.";
+"FCMemoryAvailable is an option of MemSet. It can be set to an integer n, where
+n is the available amount of main memory in MiB. The default setting is
+$FCMemoryAvailable.";
 
 MLimit::usage=
-"MLimit[expr, {lims}] takes multiple limits of expr using the limits lims.";
+"MLimit[expr, lims] takes multiple limits of expr using the limits lims.";
 
 NTerms::usage=
-"NTerms[x] is equivalent to Length if x is a sum; otherwise \
-NTerms[x] returns 1, except NTerms[0] -> 0."
+"NTerms[x] is equivalent to Length if x is a sum; otherwise NTerms[x] returns
+1, except NTerms[0] -> 0.";
 
 NumericalFactor::usage =
 "NumericalFactor[expr] gives the overall numerical factor of expr.";
 
 NumericQ1::usage=
-"NumericQ1[x,{a,b,..}] is like NumericQ, but assumes that {a,b,..} are \
+"NumericQ1[x, {a, b, ..}] is like NumericQ, but assumes that {a,b,..} are
 numeric quantities.";
 
 PartitHead::usage=
-"PartitHead[expr, h] returns a list {ex1, h[ex2]} with ex1 free of \
-expressions with head h, and h[ex2] having head h.";
+"PartitHead[expr, h] returns a list {ex1, h[ex2]} with ex1 free of expressions
+with head h, and h[ex2] having head h.";
 
 Power2::usage=
-"Power2[x, y] represents x^y.  Sometimes Power2 is more useful than the \
-Mathematica Power. Power2[-a,b] simplifies to (-1)^b Power2[a,b] \
-(if no Epsilon is in b ...).";
+"Power2[x, y] represents x^y.  Sometimes Power2 is more useful than the
+Mathematica Power. Power2[-a,b] simplifies to (-1)^b Power2[a,b] (if no
+Epsilon is in b ...).";
 
 PowerFactor::usage=
 "PowerFactor[exp] replaces x^a y^a with (x y)^a.";
 
 PowerSimplify::usage=
-"PowerSimplify[exp]  simplifies (-x)^a to (-1)^a x^a and \
-(y-x)^n to (-1)^n (x-y)^n; thus assuming that the exponent is \
-an integer (even if it is symbolic). Furthermore \
-(-1)^(a+n) and I^(a+n) are expanded and (I)^(2 m) -> (-1)^m and \
-(-1)^(n_Integer?EvenQ m) -> 1 and \
-(-1)^(n_Integer?OddQ m) -> (-1)^m and \
-(-1)^(-n) -> (-1)^n and Exp[I m Pi] -> (-1)^m.";
+"PowerSimplify[exp] simplifies (-x)^a to (-1)^a x^a and (y-x)^n to (-1)^n
+(x-y)^n thus assuming that the exponent is an integer (even if it is
+symbolic).
+
+Furthermore, (-1)^(a+n) and I^(a+n) are expanded and (I)^(2 m) -> (-1)^m and
+(-1)^(n_Integer?EvenQ m) -> 1 and (-1)^(n_Integer?OddQ m) -> (-1)^m for n even
+and odd respectively and (-1)^(-n) -> (-1)^n and Exp[I m Pi] -> (-1)^m.";
 
 SelectFree2::usage=
-"SelectFree2[expr, a, b, ...] is like SelectFree but \
-it first expands the expression w.r.t to the arguments via \
-Expand2";
+"SelectFree2[expr, a, b, ...] is similar to SelectFree but it also differs from
+the latter in several respects.
+
+If expr is  a list, SelectFree2 behaves exactly the same way as SelectFree.
+
+If expr is not a list, SelectFree2 first expands the expression w.r.t. the
+arguments via Expand2.
+
+Furthermore, SelectFree2[a,b] returns a and SelectFree2[a,a] returns 0. This
+differs from the behavior of SelectFree but is consistent with the naive
+expectations when applying the function to a sum of terms.";
 
 SelectFree::usage=
-"SelectFree[expr, a, b, ...] is equivalent to \
-Select[expr, FreeQ2[#, {a,b, ...}]&], except the \
-special cases: SelectFree[a, b] returns a and \
-SelectFree[a,a] returns 1 (where a is not a product or \
-a sum).";
+"SelectFree[expr, a, b, ...] is equivalent to Select[expr, FreeQ2[#, {a,b,
+...}]&], except the special cases: SelectFree[a, b] returns a and
+SelectFree[a,a] returns 1 (where a is not a product or a sum).";
 
 SelectNotFree::usage=
-"SelectNotFree[expr, a, b, ...] is equivalent to \
-Select[expr, !FreeQ2[#, {a,b, ...}]&], except the \
-special cases: SelectNotFree[a, b] returns 1 and \
-SelectNotFree[a,a] returns a (where a is not a product or \
-a sum).";
+"SelectNotFree[expr, x] returns that part of expr which is not free of any
+occurrence of x.
+
+SelectNotFree[expr, a, b, ...] is equivalent to Select[expr, !FreeQ2[#, {a, b,
+...}]&], except the special cases:
+SelectNotFree[a, b] returns 1 and SelectNotFree[a, a] returns a (where a is
+not a product or a sum).";
 
 SelectNotFree2::usage=
-"SelectNotFree2[expr, a, b, ...] is like SelectNotFree but \
-it first expands the expression w.r.t to the arguments via \
-Expand2";
+"SelectNotFree2[expr, a, b, ...] is similar to SelectNotFree but it also
+differs from the latter in several respects.
+
+If expr is  a list, SelectNotFree2 behaves exactly the same way as
+SelectNotFree.
+
+If expr is not a list, SelectNotFree2 first expands the expression w.r.t. the
+arguments via Expand2.
+
+Furthermore, SelectNotFree2[a,b] returns 0. This differs from the behavior of
+SelectFree but is consistent with the naive expectations when applying the
+function to a sum of terms.";
 
 SelectSplit::usage=
-"SelectSplit[l, p] Construct list of mutually exclusive subsets from l in \
-which every element li satisfies a criterium pj[li] with pj from p and \
-appends the subset of remaining unmatched elements.";
+"SelectSplit[l, p] constructs list of mutually exclusive subsets from l in
+which every element li satisfies a criterion pj[li] with pj from p and appends
+the subset of remaining unmatched elements.";
+
+Variables2::usage=
+"Variables2[expr] is like Variables, but it also works on rules and equalities
+as well as lists thereof.
+
+Variables2 always applies Union to the output.";
 
 XYT::usage=
-"XYT[exp, x,y] transforms  (x y)^m away ..."
+"XYT[exp, x, y] transforms  (x y)^m away.";
 
-FCProductSplit::failmsg = "Error! FCProductSplit has encountered a fatal problem and must abort the computation. \n
+FactorList2::failmsg =
+"Error! FactorList2 has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`";
 
-FCSplit::failmsg = "Error! FCSplit has encountered a fatal problem and must abort the computation. \n
+FCProductSplit::failmsg =
+"Error! FCProductSplit has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`";
 
-FCReloadFunctionFromFile::failmsg = "Error! FCReloadFunctionFromFile has encountered a fatal problem and must abort the computation. \n
+FCSplit::failmsg =
+"Error! FCSplit has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`";
 
-FCDuplicateFreeQ::failmsg = "Error! FCDuplicateFreeQ has encountered a fatal problem and must abort the computation. \n
+FCReloadFunctionFromFile::failmsg =
+"Error! FCReloadFunctionFromFile has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`";
 
-Begin["`Package`"]
+FCMakeSymbols::failmsg =
+"Error! FCMakeSymbols has encountered a fatal problem and must abort the computation. \n
+The problem reads: `1`";
+
+Begin["`Package`"];
 End[]
 
 (* ------------------------------------------------------------------------ *)
 
-Begin["`SharedTools`Private`"]
+Begin["`SharedTools`Private`"];
 
 SetAttributes[MemSet, HoldFirst];
 
 Options[Cases2] = {
 	Heads -> False
+};
+
+Options[Coefficient2] = {
+	Prefactor -> False
 };
 
 Options[Combine] = {
@@ -280,6 +351,11 @@ Options[Combine] = {
 
 Options[SelectSplit] = {
 	Heads -> None
+};
+
+Options[FactorList2] = {
+	Check		-> True,
+	RandomPrime	-> 10^8
 };
 
 Options[FCFactorOut] = {
@@ -292,7 +368,7 @@ Options[ILimit] = {
 };
 
 Options[MemSet] = {
-	FCMemoryAvailable -> $FCMemoryAvailable
+	FCMemoryAvailable :> $FCMemoryAvailable
 };
 
 Options[MLimit] = {
@@ -301,6 +377,10 @@ Options[MLimit] = {
 
 Options[NTerms] = {
 	Expand -> True
+};
+
+Options[FCHighlight] = {
+	Style -> Function[x,Rule[x[[1]], Style[x[[1]], 14, x[[2]], Bold]]]
 };
 
 Options[FCSplit] = {
@@ -324,6 +404,9 @@ Options[Power2] = {
 	Assumptions	-> True
 };
 
+Options[Variables2] = {
+};
+
 Cases2[expr_, {f___}, opts:OptionsPattern[]] :=
 	Cases2 @@ Prepend[{f,opts}, expr];
 
@@ -334,6 +417,34 @@ Cases2[expr_, f_, g__, opts:OptionsPattern[]] :=
 	Union[Cases[{expr}, Alternatives@@(HoldPattern[#[___]]&/@{f,g}),
 	Infinity, FilterRules[{opts}, Options[Cases]]]];
 
+
+Coefficient2[ex_, {var_, pow_Integer}, OptionsPattern[]] :=
+	Block[{res},
+		res = Coefficient[ex, var, pow];
+
+		If[ OptionValue[Prefactor],
+			res = var^pow res
+		];
+
+		res
+	];
+
+Coefficient2[ex_, var_, pow_Integer, opts:OptionsPattern[]] :=
+	Coefficient2[ex, {var, pow}, opts];
+
+Coefficient2[ex_, form_, opts:OptionsPattern[]] :=
+	Coefficient2[ex, {form, 1}, opts]/; Head[form]=!=List;
+
+Coefficient2[ex_, form1_List, rest__/;!OptionQ[{rest}], opts:OptionsPattern[]] :=
+	Coefficient2[Coefficient2[ex,form1,opts],rest, opts];
+
+
+Coefficient2[ex_, form1_, form2_Integer, rest__/;!OptionQ[{rest}], opts:OptionsPattern[]] :=
+	Coefficient2[Coefficient2[ex,{form1,form2},opts],rest, opts];
+
+Coefficient2[ex_, form1_, form2_, rest___, opts:OptionsPattern[]] :=
+	Coefficient2[Coefficient2[ex,{form1,1},opts],form2,rest,opts]/;
+		Head[form2]=!=Integer && Head[form1]=!=List;
 
 Combine[x_, OptionsPattern[]] :=
 	Block[{combinet1, combinet2, expanding, num, le},
@@ -424,6 +535,44 @@ ExpandAll2[expr_] :=
 					#
 		] &, expr];
 
+FactorList2[poly_, OptionsPattern[]]:=
+	Block[{res,allVars,allVarsNum,holdPower,optRandomPrime,nRule,chk},
+
+		optRandomPrime= OptionValue[RandomPrime];
+
+		allVars = Variables2[Cases[poly /. Power -> holdPower, holdPower[x_, _] :> x, Infinity] /. holdPower -> Power];
+		allVars = SelectFree[allVars, Variables2[Cases[poly, Power[_, x_] :> x, Infinity]]];
+		allVarsNum 	= Table[RandomPrime[optRandomPrime],{i,1,Length[allVars]}];
+
+		nRule = Thread[Rule[allVars, allVarsNum]];
+
+		res = ReplaceRepeated[(FactorList[poly]), {
+			List[r1___, {Power[x_, y_], pow_}, r2___] :> List[r1, {x, pow y}, r2],
+			List[r1___, {a_, pow1_}, r2___, {a_, pow2_}, r3___] :> List[r1, {a, pow1 + pow2}, r2, r3],
+			List[r1___, {a_, pow1_}, r2___]/;Denominator[a]=!=1 :> List[r1, {Numerator[a], pow1}, {Denominator[a], -pow1}, r2]
+		}];
+
+		res = ReplaceRepeated[(Factor[res]), {
+			List[r1___, {Power[x_, y_], pow_}, r2___] :> List[r1, {x, pow y}, r2],
+			List[r1___, {a_, pow1_}, r2___, {a_, pow2_}, r3___] :> List[r1, {a, pow1 + pow2}, r2, r3],
+			List[r1___, {a_, pow1_}, r2___]/;Denominator[a]=!=1 :> List[r1, {Numerator[a], pow1}, {Denominator[a], -pow1}, r2]
+		}];
+
+		If[	OptionValue[Check],
+			chk = (poly/.Dispatch[nRule]) - ((Times @@ (Power @@@ res))/.Dispatch[nRule]);
+			If[	Simplify[PowerExpand[chk]]=!=0,
+				Print[Simplify[PowerExpand[chk]]];
+				Message[FactorList2::failmsg, "Something went wrong when factorizing the polynomial."];
+				Abort[]
+			];
+		];
+
+		res
+	];
+
+
+
+
 FCAttachTypesettingRule[expr_, {SubscriptBox, var_, sub_}] :=
 	expr /: MakeBoxes[expr, TraditionalForm] :=
 		SubscriptBox[ToString[var], ToString[sub]];
@@ -432,12 +581,19 @@ FCAttachTypesettingRule[expr_, {SuperscriptBox, var_, sup_}] :=
 	expr /: MakeBoxes[expr, TraditionalForm] :=
 		SuperscriptBox[ToString[var], ToString[sup]];
 
+FCAttachTypesettingRule[expr_, {OverscriptBox, var_, ovr_}] :=
+	expr /: MakeBoxes[expr, TraditionalForm] :=
+		OverscriptBox[ToString[var], ToString[ovr]];
+
 FCAttachTypesettingRule[expr_, {SubsuperscriptBox, var_, sub_, sup_}] :=
 	expr /: MakeBoxes[expr, TraditionalForm] :=
 		SubsuperscriptBox[ToString[var], ToString[sub], ToString[sup]];
 
 FCAttachTypesettingRule[expr_, obs_String] :=
 	expr /: MakeBoxes[expr, TraditionalForm] := obs;
+
+FCAttachTypesettingRule[expr_, fbox_FormBox] :=
+	expr /: MakeBoxes[expr, TraditionalForm] := fbox;
 
 FCAntiSymmetrize[x_,v_List] :=
 	Block[{su},
@@ -446,10 +602,12 @@ FCAntiSymmetrize[x_,v_List] :=
 	];
 
 FCCheckVersion[major_Integer?NonNegative, minor_Integer?NonNegative, build_Integer?NonNegative, OptionsPattern[]]:=
-	Block[{str},
+	Block[{str, a, b, c},
 		str = "Your FeynCalc version is too old. The following code requires at least FeynCalc "<>
 		ToString[major]<>"."<> ToString[minor]<>"."<> ToString[build]<>".";
-		If[	!MatchQ[ToExpression[StringSplit[$FeynCalcVersion, "."]],{a_/;a>=major,b_/;b>=minor,c_/; c>=build}],
+		{a, b, c} = ToExpression[StringSplit[$FeynCalcVersion, "."]];
+
+		If[	FromDigits[{a,b,c}] < FromDigits[{major,minor,build}],
 			If[	($FrontEnd === Null || $Notebooks===False),
 				Print[str];
 				Quit[],
@@ -457,40 +615,6 @@ FCCheckVersion[major_Integer?NonNegative, minor_Integer?NonNegative, build_Integ
 			]
 		]
 	];
-
-
-FCDuplicateFreeQ[ex_/; Head[ex] =!= List, ___] :=
-	(
-	Message[FCDuplicateFreeQ::failmsg, "The input expression is not a list."];
-	Abort[]
-	);
-
-FCDuplicateFreeQ[{}, ___] :=
-	True;
-
-FCDuplicateFreeQ[ex_List, test_ : FCGV[""]] :=
-	Block[{tmp, num},
-
-		If[	test === FCGV[""],
-			tmp = Last[SortBy[Tally[ex], Last]],
-			tmp = Check[Last[SortBy[Tally[ex, test], Last]], $Failed, Tally::smtst]
-		];
-
-		If[	Head[tmp] =!= List || tmp === {},
-			Message[FCDuplicateFreeQ::failmsg, "Failed to count the elements in the list."];
-			Abort[]
-		];
-
-		num = Last[tmp];
-
-		If[	!MatchQ[num, _Integer?NonNegative],
-			Message[FCDuplicateFreeQ::failmsg, "Failed to count the elements in the list."];
-			Abort[]
-		];
-
-		num < 2
-	];
-
 
 FCMakeIndex[x_String, y_List, head_: Identity] :=
 	MemSet[	FCMakeIndex[x, y, head],
@@ -512,8 +636,37 @@ FCMakeIndex[x_String, y_Integer, head_: Identity] :=
 			head[ToExpression[x <> "Minus" <> ToString[-y]]]
 	]/; y < 0;
 
+FCMakeSymbols[name_, range_List, type_, OptionsPattern[]] :=
+	Block[{res, body},
+		body = ToString[name];
+		res = Map[ToExpression[(body <> ToString[#])] &, range];
+		Switch[type,
+			List,
+				True,
+			Sequence,
+				res = Sequence @@ res,
+			_,
+				Message[FCMakeSymbols::failmsg, "Unknown type!"];
+				Abort[]
+		];
+	res
+	];
+
+FCFactorOut[a_ == b_, y__] :=
+	FCFactorOut[a,y] == FCFactorOut[b,y];
+
+FCFactorOut[(h:Rule|RuleDelayed)[a_,b_], y__] :=
+	With[{zz=FCFactorOut[b,y]}, h[a,zz]];
+
+FCFactorOut[x_List, y__] :=
+	FCFactorOut[#, y]& /@ x;
+
 FCFactorOut[expr_,pref_,OptionsPattern[]]:=
-	pref OptionValue[Head][OptionValue[Factoring][expr/pref]];
+	pref OptionValue[Head][OptionValue[Factoring][expr/pref]];/; !MemberQ[{Equal,Rule,RuleDelayed,List}, Head[expr]];
+
+
+
+
 
 FCGetNotebookDirectory[]:=
 	Block[{dir},
@@ -524,6 +677,11 @@ FCGetNotebookDirectory[]:=
 		dir
 	];
 
+
+FCHighlight[expr_, hlist_List/; !(OptionQ[hlist] || hlist==={}), OptionsPattern[]] :=
+	(expr /. Map[OptionValue[Style][#]&, hlist])/; MatchQ[hlist,{__List}];
+
+
 FCPatternFreeQ[expr_List]:=
 	FreeQ2[expr, {Pattern, Blank,BlankSequence,BlankNullSequence, Alternatives}];
 
@@ -533,9 +691,32 @@ FCPatternFreeQ[expr_List ,objs_List]:=
 FCProgressBar[text_String, i_Integer, tot_Integer] :=
 	FCPrint[0, text <> ToString[i] <> " / " <> ToString[tot] <> "\n", UseWriteString -> True];
 
+FCReloadFunctionFromFile[fun_] :=
+	FCReloadFunctionFromFile[fun,"AUTOMATIC"];
 
-FCReloadFunctionFromFile[fun_, file_String] :=
-	Block[{names, names1, names2, str1, str2},
+
+FCReloadAddOns[addons: {__String}]:=
+(
+BeginPackage["FeynCalc`"];
+FCDeclareHeader /@ Map[ToFileName[{$FeynCalcDirectory, "AddOns", #}, # <> ".m"] &, addons];
+Get /@ Map[ToFileName[{$FeynCalcDirectory, "AddOns", #}, # <> ".m"] &, addons];
+EndPackage[];
+);
+
+FCReloadFunctionFromFile[fun_, fileRaw_String] :=
+	Block[{names, names1, names2, str1, str2, file},
+
+	If[	fileRaw==="AUTOMATIC",
+		file = FileNames[ToString[fun]<>".m", FileNameJoin[{$FeynCalcDirectory, #}] & /@ {
+			"Dirac", "ExportImport", "Feynman", "LoopIntegrals", "Lorentz",
+			"NonCommAlgebra", "Pauli", "QCD", "Shared", "SUN", "Tables"}, Infinity];
+		If[	Length[file]=!=1,
+			Message[FCReloadFunctionFromFile::failmsg, "Failed to determine the file containing the code of this function."];
+			Abort[],
+			file = file[[1]]
+		],
+		file = fileRaw
+	];
 
 	If[! TrueQ[FileExistsQ[file]],
 			Message[FCReloadFunctionFromFile::failmsg, "The file " <> file <> " does not exist."];
@@ -680,13 +861,6 @@ FCSymmetrize[x_,v_List] :=
 		1 / Factorial[Length[v]] Plus@@Map[su[x, v, #]&, Permutations[v]]
 	];
 
-
-FCSubsetQ[l1_List, l2_List] :=
-(DeleteDuplicates[Sort[MemberQ[l1, #] & /@ l2]] === {True}) /; l2 =!= {};
-
-FCSubsetQ[_List, {}] :=
-	True;
-
 FreeQ2[_,{}] :=
 	True;
 
@@ -723,44 +897,6 @@ ILimit[exp_, lim_Rule, OptionsPattern[]] :=
 		Limit[Limit[res, SmallVariable[lim[[1]]] -> lim[[2]]], lim]
 	];
 
-(*
-
-Comment: Rolf Mertig, 17th March 2004
-
-Should the implementation of Intersection1 not be the same as
-MultiIntersection (from the "Further Examples" section of Intersection) ?
-
-The only difference is that MultiIntersection gives a sorted output.
-
-MultiIntersection[l1_List, l2_List] :=
-	Module[{nl, f}, f[x_] := {First[#], Length[#]} & /@ Split[Sort[x]];
-		nl = Sort[Join[Flatten[Map[f, {l1, l2}], 1]]];
-		nl = Split[nl, #[[1]] === #2[[1]] &];
-		Flatten[Cases[nl, {{x_, m_}, {x_, n_}} :> Table[x, {m}]], 1]]
-*)
-
-
-Intersection1[a_List, b_List] :=
-		Block[{len, len1, i, alt, p, drp, ii, go}, p = 0; i = 0; drp = {};
-			len = Length[a]; len1 = Length[b]; alt = b;
-			While[i < len && p < len1, ++i;
-				If[ii = 0; go = True;
-					While[ii < Length[alt] && go,
-						++ii;
-						If[MatchQ[a[[i]],
-								alt[[ii]]],
-								alt = Drop[alt, {ii}];
-								go = False
-						]
-					]; Not[go],
-					p = p + 1;
-					drp = Append[drp, i]
-				]
-			];
-			Part[a, drp]
-		];
-
-
 Map2[f_, exp_] :=
 	If[
 		NTerms[exp] > 1,
@@ -772,13 +908,13 @@ MemSet[x_,y_, OptionsPattern[]] :=
 	If[(OptionValue[FCMemoryAvailable] - MemoryInUse[]/1000000.) <1. || $DisableMemSet,
 		y,
 		Set[x, y]
-	]/; MatchQ[OptionValue[FCMemoryAvailable],_Integer?Positive];
+	]/; MatchQ[OptionValue[FCMemoryAvailable],_Integer?NonNegative];
 
 MemSet[_,_, OptionsPattern[]]:=
 	(
-	Message[FeynCalc::failmsg,"The value of FCMemoryAvailable is not a positive integer."];
+	Message[FeynCalc::failmsg,"The value of $FCMemoryAvailable must be a nonnegative integer."];
 	Abort[]
-	)/; !MatchQ[OptionValue[FCMemoryAvailable],_Integer?Positive];
+	)/; !MatchQ[OptionValue[FCMemoryAvailable],_Integer?NonNegative];
 
 MLimit[x_, l_List, OptionsPattern[]] :=
 	Fold[OptionValue[Limit][#1, Flatten[{##2}][[1]]]&, x, l];
@@ -918,7 +1054,7 @@ PowerSimplify[x_, OptionsPattern[]] :=
 		nx
 	];
 
-SelectFree[0,_] :=
+SelectFree[0,__] :=
 	0;
 
 SelectFree[a_, b__] :=
@@ -936,11 +1072,24 @@ SelectFree[a_, b__] :=
 		]
 	];
 
+SelectFree2[0,__]:=
+	0;
+
+SelectFree2[x_List,args__] :=
+	SelectFree[x,args];
 
 SelectFree2[x_,args__] :=
-	SelectFree[Expand2[x,Flatten[{args}]],args];
+	Block[{tmp, res, null1, null2},
+		tmp = Expand2[x,Flatten[{args}]];
 
-SelectNotFree[0,_] :=
+		If[	Head[tmp]===Plus,
+			res = SelectFree[tmp,args],
+			res = SelectFree[tmp+null1+null2,args] /. null1|null2->0
+		];
+		res
+	]/; Head[x]=!=List && x=!=0;
+
+SelectNotFree[0,__] :=
 	0;
 
 SelectNotFree[a_, b__] :=
@@ -957,8 +1106,22 @@ SelectNotFree[a_, b__] :=
 		]
 	];
 
+SelectNotFree2[0,__]:=
+	0;
+
+SelectNotFree2[x_List,args__] :=
+	SelectNotFree[x,args];
+
 SelectNotFree2[x_,args__] :=
-	SelectNotFree[Expand2[x,Flatten[{args}]],args];
+	Block[{tmp, res, null1, null2},
+		tmp = Expand2[x,Flatten[{args}]];
+
+		If[	Head[tmp]===Plus,
+			res = SelectNotFree[tmp,args],
+			res = SelectNotFree[tmp+null1+null2,args] /. null1|null2->0
+		];
+		res
+	]/; Head[x]=!=List && x=!=0;
 
 SelectSplit[ex_, p_List, opts___Rule] :=
 	Block[{ii, jj, aa, res, exp = List @@ ex, h = Head[ex],
@@ -976,6 +1139,21 @@ SelectSplit[ex_, p_List, opts___Rule] :=
 		]], #
 		] &[(h @@ #) & /@ Append[res, Complement[exp, Join @@ res]]]
 	];
+
+Variables2[expr_Plus, opts : OptionsPattern[]] :=
+	Union[Flatten[Variables2[#, opts] & /@ List@@expr]];
+
+Variables2[expr_List, opts : OptionsPattern[]] :=
+	Union[Flatten[Variables2[#, opts] & /@ expr]];
+
+Variables2[expr_, OptionsPattern[]] :=
+	Union[Variables[expr]] /; !MemberQ[{List, Equal, Rule, RuleDelayed, Re, Im}, Head[expr]];
+
+Variables2[(Equal | Rule | RuleDelayed)[a_, b_], OptionsPattern[]] :=
+	Union[Variables[a], Variables[b]];
+
+Variables2[(Re | Im)[a_], OptionsPattern[]] :=
+	Variables[a];
 
 (* integral transformation only valid if nonsingular in x, y = 0,1 *)
 XYT[exp_, x_, y_] :=

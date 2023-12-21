@@ -22,8 +22,8 @@ of rederiving the decompositions over and over and thus loosing time.
 
 
 
-TIDL::usage = "TIDL[{q,mu}, {p}]; TIDL[{{qi, mu}, {qj, nu}, ...}}, {p1, p2, ...}] \
-or TIDL[exp, {{qi, mu}, {qj, nu}, ...}}, {p1, p2, ...}].";
+TIDL::usage =
+"TIDL is a database of tensorial reduction formulas.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -112,7 +112,7 @@ finRu1 = z2 /. reru21 /. reru2;
 finRu2 = Map[Reverse, Join[reru21, reru2]];
 If[Collect2[
 	FCE[(finExp //. finRu1 //. finRu2)] -
-	 FCE[(ChangeDimension[exp2, 4] /. D -> n)], FV, MT] =!= 0,
+	FCE[(ChangeDimension[exp2, 4] /. D -> n)], FV, MT] =!= 0,
 Print["Formula incosistent!"];
 Abort[]
 ];

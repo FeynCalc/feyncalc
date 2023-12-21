@@ -15,12 +15,16 @@
 (* ------------------------------------------------------------------------ *)
 
 FunctionalD::usage =
-"FunctionalD[exp, {QuantumField[name, LorentzIndex[mu], ..., SUNIndex[a]][p], ...}] \
-calculates the functional derivative of exp with respect to the QuantumField list \
-(with incoming momenta p, etc.) and does the Fourier transform.\n
-FunctionalD[expr, {QuantumField[name, LorentzIndex[mu], ... \
-SUNIndex[a]], ...}] calculates the functional derivative and does \
-partial integration but omits the x-space delta functions.";
+"FunctionalD[exp, {QuantumField[name, LorentzIndex[mu], ..., SUNIndex[a]][p],
+...}] calculates the functional derivative of exp with respect to the
+QuantumField list (with incoming momenta $\\text{p}$, etc.) and does the
+Fourier transform.
+
+FunctionalD[expr, {QuantumField[name, LorentzIndex[mu], ... SUNIndex[a]],
+...}] calculates the functional derivative and does partial integration but
+omits the $\\text{x}$-space delta functions.
+
+FunctionalD is a low level function used in FeynRule.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -175,13 +179,13 @@ FunctionalD[y_, {QuantumField[nam_, lor___LorentzIndex, sun___SUNIndex|sun___Exp
 	(* operate from the left *)
 		If[ !FreeQ[r, ddelta],
 			If[ Head[r] =!= Plus,
-				r = ExpandPartialD[((SelectNotFree[r, ddelta] /. ddelta -> pard) .
-									SelectFree[r, ddelta])/.Times->DOT
+				r = ExpandPartialD[DOT[(SelectNotFree[r, ddelta] /. ddelta -> pard) ,
+									SelectFree[r, ddelta]]/. Times->DOT
 									],
-				r = Sum[ExpandPartialD[((SelectNotFree[r[[i]], ddelta] /.
-											ddelta -> pard) .
+				r = Sum[ExpandPartialD[DOT[(SelectNotFree[r[[i]], ddelta] /.
+											ddelta -> pard) ,
 										SelectFree[r[[i]], ddelta]
-											) /. Times -> DOT
+										] /. Times -> DOT
 											],
 						{i, Length[r]}]
 			]

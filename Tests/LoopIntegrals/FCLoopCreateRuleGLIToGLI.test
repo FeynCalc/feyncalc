@@ -1,0 +1,194 @@
+
+
+(* :Title: FCLoopCreateRuleGLIToGLI.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopCreateRuleGLIToGLI		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopCreateRuleGLIToGLI =
+({
+{"FCLoopCreateRuleGLIToGLI-ID1",
+"FCLoopCreateRuleGLIToGLI[FCTopology[1,{SFAD[p]}, {p}, {}, {}, {}],FCTopology[2,{SFAD[p]\
+}, {p}, {}, {}, {}]]", "GLI[2, {n1_}] :> GLI[1, {n1}]"},
+{"FCLoopCreateRuleGLIToGLI-ID2",
+"FCLoopCreateRuleGLIToGLI[FCTopology[1,{SFAD[p],SFAD[q]}, {p,q}, {}, {}, {}],FCTopology[2,\
+{SFAD[p]}, {p}, {q}, {}, {}]]", "GLI[2, {n1_}] :> GLI[1, {n1, 0}]"},
+{"FCLoopCreateRuleGLIToGLI-ID3",
+"FCLoopCreateRuleGLIToGLI[FCTopology[1,{SFAD[p],SFAD[q]}, {p,q}, {}, {}, {}],FCTopology[2,\
+{SFAD[q],SFAD[p]}, {p,q}, {}, {}, {}]]", "GLI[2, {n2_, n1_}] :> GLI[1, {n1, n2}]"},
+{"FCLoopCreateRuleGLIToGLI-ID4",
+"FCLoopCreateRuleGLIToGLI[FCTopology[1,{SFAD[r],SFAD[p],SFAD[q]}, {p,q,r}, {}, {}, {}],\
+FCTopology[2,{SFAD[p]}, {p,q,r}, {}, {}, {}]]", "GLI[2, {n2_}] :> GLI[1, {0, n2, 0}]"},
+{"FCLoopCreateRuleGLIToGLI-ID5",
+"FCLoopCreateRuleGLIToGLI[FCTopology[\"tmpTopo4\",{SFAD[{{0,(k1+k2).nb}\
+,{0,1},1}],SFAD[{{0,(k1-k3).n},{0,1},1}],SFAD[{{0,n.(-k1-k2+q)},{0,1},\
+1}],SFAD[{{0,nb.(-k1+k3+q)},{0,1},1}],SFAD[{{-k1,0},{0,1},1}],SFAD[{{\
+k2,0},{0,1},1}],SFAD[{{k1+k2,0},{0,1},1}],SFAD[{{-k3,0},{0,1},1}],\
+SFAD[{{-k1+k3,0},{0,1},1}],SFAD[{{k1-k3-q,0},{0,1},1}],SFAD[{{k1+k2-\
+k3-q,0},{0,1},1}],SFAD[{{-k1-k2+q,0},{0,1},1}]}, {k1,k2,k3}, {q,n,nb}, {}, {}],
+FCTopology[\"tmpTopo18\",{SFAD[{{0,(k1+k2).nb},{0,1},1}],SFAD[{{0,n.(-\
+k1-k2+q)},{0,1},1}],SFAD[{{0,nb.(-k1+k3+q)},{0,1},1}],SFAD[{{-k1,0},{\
+0,1},1}],SFAD[{{k2,0},{0,1},1}],SFAD[{{k1+k2,0},{0,1},1}],SFAD[{{-k3,\
+0},{0,1},1}],SFAD[{{-k1+k3,0},{0,1},1}],SFAD[{{k1-k3-q,0},{0,1},1}],\
+SFAD[{{k1+k2-k3-q,0},{0,1},1}],SFAD[{{-k1-k2+q,0},{0,1},1}]}, {k1,k2,k3}, {q,n,nb}, {}, {}]]",
+"GLI[\"tmpTopo18\", {n1_, n3_, n4_, n5_, n6_, n7_, n8_, n9_, n10_, \
+n11_, n12_}] :> GLI[\"tmpTopo4\", {n1, 0, n3, n4, n5, n6, n7, n8, n9, \
+n10, n11, n12}]"},
+{"FCLoopCreateRuleGLIToGLI-ID6",
+"FCLoopCreateRuleGLIToGLI[
+{FCTopology[
+prop2l, {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - q, m3}],
+FAD[{p1 - q, m4}], FAD[{p1 - p2, m5}]}, {p1, p2}, {q}, {}, {}],
+FCTopology[
+tad2l, {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - p2, m3}]}, {p1,
+p2}, {}, {}, {}]}, {{FCTopology[
+prop2lX1, {FAD[{p2, m2}], FAD[{p1 - q, m3}], FAD[{p1 - q, m4}],
+FAD[{p1 - p2, m5}]}, {p1, p2}, {q}, {}, {}],
+FCTopology[
+prop2lX5, {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - q, m3}],
+FAD[{p1 - q, m4}]}, {p1, p2}, {q}, {}, {}]
+}, {FCTopology[
+tad2lX2, {FAD[{p1, m1}], FAD[{p1 - p2, m3}]}, {p1,
+p2}, {}, {}, {}],
+FCTopology[
+tad2lX3, {FAD[{p1, m1}], FAD[{p2, m2}]}, {p1, p2}, {}, {}, {}]}}]",
+"{{GLI[prop2lX1, {n2_, n3_, n4_, n5_}] :> GLI[prop2l, {0, n2, n3, n4, n5}],
+GLI[prop2lX5, {n1_, n2_, n3_, n4_}] :> GLI[prop2l, {n1, n2, n3, n4, 0}]},
+{GLI[tad2lX2, {n1_, n3_}] :> GLI[tad2l, {n1, 0, n3}], GLI[tad2lX3, {n1_, n2_}] :> GLI[tad2l, {n1, n2, 0}]}}"},
+{"FCLoopCreateRuleGLIToGLI-ID7",
+"FCLoopCreateRuleGLIToGLI[
+FCTopology[
+\"fctopology1\", {FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[l1, D], 0, -mt^2, {1, 1}]],
+	FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[l1, D] + Momentum[q2, D],
+	0, -mt^2, {1, 1}]],
+FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[l1, D] - Momentum[q1, D],
+	0, -mt^2, {1, 1}]]}, {l1}, {q1, q2}, {}, {}],
+FCTopology[
+\"tri1l\", {FeynAmpDenominator[
+	PropagatorDenominator[Momentum[l1, D], mt]],
+FeynAmpDenominator[
+	PropagatorDenominator[Momentum[l1, D] - Momentum[q1, D], mt]],
+FeynAmpDenominator[
+	PropagatorDenominator[Momentum[l1, D] + Momentum[q2, D],
+	mt]]}, {-l1}, {q1, q2}, {}, {}]]",
+"GLI[\"tri1l\", {n1_, n3_, n2_}] :> GLI[\"fctopology1\", {n1, n2, n3}]"},
+{"FCLoopCreateRuleGLIToGLI-ID8",
+"FCLoopCreateRuleGLIToGLI[FCTopology[topo1,{SFAD[p],SFAD[q]}, {p,q}, {}, {}, {}],
+FCTopology[topo2,{SFAD[q],SFAD[p]}, {p,q}, {}, {}, {}],Reverse->True]",
+"GLI[topo1, {n1_, n2_}] :> GLI[topo2, {n2, n1}]"},
+{"FCLoopCreateRuleGLIToGLI-ID9",
+"FCLoopCreateRuleGLIToGLI[FCTopology[topo1,{SFAD[p],SFAD[q]}, {p,q}, {}, {}, {}],
+FCTopology[topo2,{SFAD[p]}, {p}, {}, {}, {}]]",
+"GLI[topo2, {n1_}] :> GLI[topo1, {n1, 0}]"},
+{"FCLoopCreateRuleGLIToGLI-ID10","FCLoopCreateRuleGLIToGLI[
+FCTopology[
+pfrTopo161, {FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[k2, D], 0, 0, {1, 1}]],
+FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[k1, D], 0, 0, {1, 1}]],
+FeynAmpDenominator[
+	StandardPropagatorDenominator[0,
+	mqb*Pair[Momentum[k1, D], Momentum[nb, D]], 0, {1, 1}]],
+FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[k1, D],
+	2*gkin*meta*u0b*Pair[Momentum[k1, D], Momentum[n, D]] -
+	meta*u0b*Pair[Momentum[k1, D], Momentum[nb, D]], -2*gkin*meta^2*
+	u0b^2, {1, 1}]],
+FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[k1, D] + Momentum[k2, D],
+	2*gkin*meta*u0b*
+	Pair[Momentum[k1, D] + Momentum[k2, D], Momentum[n, D]] -
+	meta*u0b*
+	Pair[Momentum[k1, D] + Momentum[k2, D], Momentum[nb, D]], -2*
+	gkin*meta^2*u0b^2, {1, 1}]]}, {k1, k2}, {n,
+nb}, {Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0,
+Hold[SPD][n, nb] -> 2}, {}], {FCTopology[
+pfrTopo165, {FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[k2, D], 0, 0, {1, 1}]],
+	FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[k1, D], 0, 0, {1, 1}]],
+	FeynAmpDenominator[
+	StandardPropagatorDenominator[0,
+	mqb*Pair[Momentum[k1, D], Momentum[nb, D]], 0, {1, 1}]],
+	FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[k1, D],
+	2*gkin*meta*u0b*Pair[Momentum[k1, D], Momentum[n, D]] -
+	meta*u0b*Pair[Momentum[k1, D], Momentum[nb, D]], -2*gkin*
+	meta^2*u0b^2, {1, 1}]],
+	FeynAmpDenominator[
+	StandardPropagatorDenominator[
+	Momentum[k1, D] +
+	Momentum[k2, D], -2*gkin*meta*u0b*
+		Pair[-Momentum[k1, D] - Momentum[k2, D], Momentum[n, D]] +
+	meta*u0b*
+		Pair[-Momentum[k1, D] - Momentum[k2, D], Momentum[nb, D]], -2*
+	gkin*meta^2*u0b^2, {1, 1}]]}, {k1, k2}, {n,
+	nb}, {Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0,
+	Hold[SPD][n, nb] -> 2}, {}]}]",
+"{GLI[pfrTopo165, {n1_, n2_, n3_, n4_, n5_}] :> GLI[pfrTopo161, {n1, n2, n3, n4, n5}]}"},
+
+
+{"FCLoopCreateRuleGLIToGLI-ID11","FCLoopCreateRuleGLIToGLI[
+FCTopology[mytopo67, {FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[k2, D], 0, 0, {1, 1}]],
+FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[k1, D], 0, 0, {1, 1}]],
+	FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[k1, D] + Momentum[k2, D],
+	0, 0, {1, 1}]],
+FeynAmpDenominator[	StandardPropagatorDenominator[
+	0, -Pair[Momentum[k1, D], Momentum[nb, D]], 0, {1, 1}]],
+	FeynAmpDenominator[
+	StandardPropagatorDenominator[
+	Momentum[k2,
+	D], -(meta*u0b*Pair[Momentum[k2, D], Momentum[nb, D]]),
+	0, {1, 1}]],
+	FeynAmpDenominator[
+	StandardPropagatorDenominator[
+	Momentum[k1, D] + Momentum[k2, D], -2*gkin*meta*u0b*
+	Pair[Momentum[k1, D] + Momentum[k2, D], Momentum[n, D]],
+	0, {1, 1}]],
+	FeynAmpDenominator[
+	StandardPropagatorDenominator[
+	Momentum[k1,
+	D], -2*gkin*meta*Pair[Momentum[k1, D], Momentum[n, D]] +
+	meta*u0b*Pair[Momentum[k1, D], Momentum[nb, D]], -2*gkin*meta^2*
+	u0b, {1, 1}]]}, {k1, k2}, {n, nb}, {Hold[SPD][n] -> 0,
+Hold[SPD][nb] -> 0, Hold[SPD][n, nb] -> 2},	{}],
+FCTopology[mytopo79, {FeynAmpDenominator[
+	StandardPropagatorDenominator[
+	Momentum[k2, D] - (meta*u0b*Momentum[nb, D])/2, 0, 0, {1, 1}]],
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D], 0, 0, {1, 1}]],
+	FeynAmpDenominator[StandardPropagatorDenominator[
+	0, -Pair[Momentum[k1, D], Momentum[nb, D]], 0, {1, 1}]],
+FeynAmpDenominator[	StandardPropagatorDenominator[
+	Momentum[k2, D] - (meta*u0b*Momentum[nb, D])/2, -1/2*(meta*u0b*Pair[Momentum[nb, D], -2*Momentum[k2, D] +
+meta*u0b*Momentum[nb, D]]), 0, {1, 1}]],FeynAmpDenominator[	StandardPropagatorDenominator[
+	Momentum[k1, D] + Momentum[k2, D] - (meta*u0b*Momentum[nb, D])/2,
+		-(meta*u0b*Pair[Momentum[nb, D], -Momentum[k1,D] +
+(-2*Momentum[k2, D] + meta*u0b*Momentum[nb, D])/2]), 0, {1, 1}]],
+FeynAmpDenominator[StandardPropagatorDenominator[
+	Momentum[k1, D], -2*gkin*meta*Pair[Momentum[k1, D], Momentum[n, D]] +
+	meta*u0b*Pair[Momentum[k1, D], Momentum[nb, D]], -2*gkin*meta^2*
+	u0b, {1, 1}]], FeynAmpDenominator[
+	StandardPropagatorDenominator[
+	Momentum[k1, D] + Momentum[k2, D] - (meta*u0b*Momentum[nb, D])/2,
+	2*gkin*meta*u0b*Pair[Momentum[n, D], -Momentum[k1,
+		D] + (-2*Momentum[k2, D] + meta*u0b*Momentum[nb, D])/2] -
+meta*u0b*Pair[Momentum[nb,  D], -Momentum[k1,D] +
+(-2*Momentum[k2, D] + meta*u0b*Momentum[nb, D])/ 2],
+-2*gkin*meta^2*u0b^2, {1, 1}]]}, {k1, k2}, {n,nb}, {Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0,
+Hold[SPD][n, nb] -> 2}, {}], FeynAmpDenominatorExplicit -> True]",
+"GLI[mytopo79, {n5_, n2_, n4_, n1_, n3_, n7_, n6_}] :> GLI[mytopo67, {n1, n2, n3, n4, n5, n6, n7}]"}
+});

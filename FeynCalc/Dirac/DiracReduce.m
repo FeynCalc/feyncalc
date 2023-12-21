@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  SPVAT decomposition of Dirac matrix chains					*)
@@ -17,16 +17,19 @@
 
 
 DiracReduce::usage =
-"DiracReduce[exp] reduces all four-dimensional Dirac matrices in exp \
-to the standard basis (S,P,V,A,T) using the Chisholm identity (see Chisholm). \
-In the result the basic Dirac structures are wrapped with a head \
-DiracBasis. I.e.: S corresponds to DiracBasis[1], \
-P : DiracBasis[GA[5]], \
-V : DiracBasis[GA[mu]], A: DiracBasis[GA[mu, 5]], \
-T: DiracBasis[DiracSigma[GA[mu, nu]]]. \
-By default DiracBasis is substituted to Identity. \n
-Notice that the result of DiracReduce is given in the FeynCalcExternal-way, \
-i.e., evtl. you may have to use FeynCalcInternal on result.";
+"DiracReduce[exp] reduces all $4$-dimensional Dirac matrices in exp to the
+standard basis $(S, P, V, A, T)$ using the Chisholm identity.
+
+In the result the basic Dirac structures can be wrapped with a head
+DiracBasis, that is
+
+- $S$: DiracBasis[1]
+- $P$: DiracBasis[GA[5]]
+- $V$: DiracBasis[GA[mu]]
+- $A$: DiracBasis[GA[mu, 5]]
+- $T$: DiracBasis[DiracSigma[GA[mu, nu]]]
+
+By default DiracBasis is substituted to Identity.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -38,16 +41,18 @@ Begin["`DiracReduce`Private`"]
 drVerbose::usage="";
 
 Options[DiracReduce] = {
-	Contract 			-> True,
-	DiracGammaCombine	-> True,
-	DiracSimplify		-> False,
-	DiracOrder			-> True,
-	DotSimplify			-> True,
-	FCE					-> False,
-	FCI					-> False,
-	FCVerbose			-> False,
-	Factoring			-> False,
-	FinalSubstitutions	-> {DiracBasis -> Identity}
+	Contract 					-> True,
+	DiracGammaCombine			-> True,
+	DiracSimplify				-> False,
+	DiracSpinorNormalization	-> "Relativistic",
+	DiracOrder					-> True,
+	DotSimplify					-> True,
+	FCE							-> False,
+	FCI							-> False,
+	FCVerbose					-> False,
+	Factoring					-> False,
+	FinalSubstitutions			-> {DiracBasis -> Identity},
+	SpinorChainEvaluate			-> True
 };
 
 DiracReduce[a_ == b_, opts:OptionsPattern[]] :=
@@ -100,7 +105,8 @@ DiracReduce[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 
 
 
-		tmp = Chisholm[tmp,FCI->True, DiracSimplify -> False];
+		tmp = Chisholm[tmp,FCI->True, DiracSimplify -> False, SpinorChainEvaluate -> OptionValue[SpinorChainEvaluate],
+			DiracSpinorNormalization -> OptionValue[DiracSpinorNormalization]];
 		FCPrint[3, "DiracReduce: After Chisholm: ", tmp, FCDoControl->drVerbose];
 
 
@@ -112,7 +118,8 @@ DiracReduce[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 		];
 
 		FCPrint[1, "DiracReduce: Applying Chisholm (mode 2).", FCDoControl->drVerbose];
-		tmp = Chisholm[tmp,FCI->True,DiracSimplify->False,Mode->2];
+		tmp = Chisholm[tmp,FCI->True,DiracSimplify->False,Mode->2, SpinorChainEvaluate -> OptionValue[SpinorChainEvaluate],
+			DiracSpinorNormalization -> OptionValue[DiracSpinorNormalization]];
 		FCPrint[3, "DiracReduce: After Chisholm: ", tmp, FCDoControl->drVerbose];
 
 		FCPrint[1, "DiracReduce: Introducing DiracSigma.", FCDoControl->drVerbose];
@@ -121,7 +128,8 @@ DiracReduce[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 
 		If[	diracSimplify,
 			FCPrint[1, "DiracReduce: Applying DiracSimplify.", FCDoControl->drVerbose];
-			tmp = DiracSimplify[tmp, DiracSigmaExplicit -> False, FCI->True, FCCanonicalizeDummyIndices->True];
+			tmp = DiracSimplify[tmp, DiracSigmaExplicit -> False, FCI->True, FCCanonicalizeDummyIndices->True, SpinorChainEvaluate -> OptionValue[SpinorChainEvaluate],
+			DiracSpinorNormalization -> OptionValue[DiracSpinorNormalization]];
 			FCPrint[3, "DiracReduce: After DiracSimplify: ", tmp, FCDoControl->drVerbose]
 		];
 

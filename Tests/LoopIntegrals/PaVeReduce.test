@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for PaVeReduce  		*)
@@ -679,11 +679,9 @@ m2^2, m3^2}])/(2*(2 - D))]"},
 0, 0}, {m1^2, m2^2, m3^2}])/(2*(1 - D))"},
 {"fcstPaVeReduceCFunctions-ID20",
 "PaVe[0,0,2,{0,0,0},{m1^2,m2^2,m3^2}]//PaVeReduce",
-"PaVe[0, {0}, {m3^2, m2^2}]/(2*(1 - D)) + PaVe[1, {0}, {m3^2, \
-m2^2}]/(2*(1 - D)) - (m1^2*PaVe[2, {0, 0, 0}, {m1^2, m2^2, m3^2}])/(1 \
-- D) - ((m1^2 - m2^2)*PaVe[1, 2, {0, 0, 0}, {m1^2, m2^2, \
-m3^2}])/(2*(1 - D)) - ((m1^2 - m3^2)*PaVe[2, 2, {0, 0, 0}, {m1^2, \
-m2^2, m3^2}])/(2*(1 - D))"},
+"-1/2*PaVe[1, {0}, {m2^2, m3^2}]/(1 - D) - (m1^2*PaVe[1, {0, 0, 0},
+{m1^2, m3^2, m2^2}])/(1 - D) - ((m1^2 - m3^2)*PaVe[1, 1, {0, 0, 0},
+{m1^2, m3^2, m2^2}])/(2*(1 - D)) - ((m1^2 - m2^2)*PaVe[1, 2, {0, 0, 0}, {m1^2, m2^2, m3^2}])/(2*(1 - D))"},
 {"fcstPaVeReduceCFunctions-ID21",
 "PaVe[0,0,0,0,{0,0,0},{m1^2,m2^2,m3^2}]//PaVeReduce",
 "ToPaVe2[-((m1^4*C0[0, 0, 0, m1^2, m2^2, m3^2])/((2 - D)*D)) - PaVe[0, {}, \
@@ -710,11 +708,9 @@ m2^2}]/(2*D) + (m1^2*PaVe[1, 2, {0, 0, 0}, {m1^2, m2^2, m3^2}])/D + \
 ((m1^2 - m3^2)*PaVe[1, 2, 2, {0, 0, 0}, {m1^2, m2^2, m3^2}])/(2*D)"},
 {"fcstPaVeReduceCFunctions-ID24",
 "PaVe[0,0,2,2,{0,0,0},{m1^2,m2^2,m3^2}]//PaVeReduce",
-"PaVe[0, {0}, {m3^2, m2^2}]/(2*D) + PaVe[1, {0}, {m3^2, m2^2}]/D + \
-PaVe[1, 1, {0}, {m3^2, m2^2}]/(2*D) + (m1^2*PaVe[2, 2, {0, 0, 0}, \
-{m1^2, m2^2, m3^2}])/D + ((m1^2 - m2^2)*PaVe[1, 2, 2, {0, 0, 0}, \
-{m1^2, m2^2, m3^2}])/(2*D) + ((m1^2 - m3^2)*PaVe[2, 2, 2, {0, 0, 0}, \
-{m1^2, m2^2, m3^2}])/(2*D)"}
+"PaVe[1, 1, {0}, {m2^2, m3^2}]/(2*D) + (m1^2*PaVe[1, 1,
+{0, 0, 0}, {m1^2, m3^2, m2^2}])/D + ((m1^2 - m3^2)*PaVe[1, 1, 1,
+{0, 0, 0}, {m1^2, m3^2, m2^2}])/(2*D) + ((m1^2 - m2^2)*PaVe[1, 1, 2, {0, 0, 0}, {m1^2, m3^2, m2^2}])/(2*D)"}
 });
 
 Tests`LoopIntegrals`fcstPaVeReduceDFunctions =
@@ -775,14 +771,11 @@ m4^2}])/(2*(2 - D)) - ((m1^2 - m3^2)*PaVe[2, 2, {0, 0, 0, 0, 0, 0}, \
 {0, 0, 0, 0, 0, 0}, {m1^2, m2^2, m3^2, m4^2}])/(2*(2 - D))"},
 {"fcstPaVeReduceDFunctions-ID14",
 "PaVe[0,0,3,{0,0,0,0,0,0},{m1^2,m2^2,m3^2,m4^2}]//PaVeReduce",
-"ToPaVe2[C0[0, 0, 0, m2^2, m3^2, m4^2]/(2*(2 - D)) + PaVe[1, {0, 0, 0}, \
-{m4^2, m2^2, m3^2}]/(2*(2 - D)) + PaVe[2, {0, 0, 0}, {m4^2, m2^2, \
-m3^2}]/(2*(2 - D)) - (m1^2*PaVe[3, {0, 0, 0, 0, 0, 0}, {m1^2, m2^2, \
-m3^2, m4^2}])/(2 - D) - ((m1^2 - m2^2)*PaVe[1, 3, {0, 0, 0, 0, 0, 0}, \
-{m1^2, m2^2, m3^2, m4^2}])/(2*(2 - D)) - ((m1^2 - m3^2)*PaVe[2, 3, \
-{0, 0, 0, 0, 0, 0}, {m1^2, m2^2, m3^2, m4^2}])/(2*(2 - D)) - ((m1^2 - \
-m4^2)*PaVe[3, 3, {0, 0, 0, 0, 0, 0}, {m1^2, m2^2, m3^2, m4^2}])/(2*(2 \
-- D))]"},
+"-1/2*PaVe[1, {0, 0, 0}, {m2^2, m4^2, m3^2}]/(2 - D) - (m1^2*PaVe[1, {0, 0, 0, 0, 0, 0},
+{m1^2, m4^2, m2^2, m3^2}])/(2 - D) - ((m1^2 - m4^2)*PaVe[1, 1, {0, 0, 0, 0, 0, 0},
+{m1^2, m4^2, m2^2, m3^2}])/(2*(2 - D)) - ((m1^2 - m2^2)*PaVe[1, 2, {0, 0, 0, 0, 0, 0},
+{m1^2, m2^2, m4^2, m3^2}])/(2*(2 - D)) - ((m1^2 - m3^2)*PaVe[1, 2,
+{0, 0, 0, 0, 0, 0}, {m1^2, m3^2, m4^2, m2^2}])/(2*(2 - D))"},
 {"fcstPaVeReduceDFunctions-ID15",
 "PaVe[0,0,0,0,{0,0,0,0,0,0},{m1^2,m2^2,m3^2,m4^2}]//PaVeReduce",
 "ToPaVe2[((m1^2 - D*m1^2 + 9*m4^2 - 3*D*m4^2)*C0[0, 0, 0, m2^2, m3^2, \
@@ -825,14 +818,11 @@ m4^2)*PaVe[1, 2, 3, {0, 0, 0, 0, 0, 0}, {m1^2, m2^2, m3^2, \
 m4^2}])/(2*(1 - D))"},
 {"fcstPaVeReduceDFunctions-ID18",
 "PaVe[0,0,1,3,{0,0,0,0,0,0},{m1^2,m2^2,m3^2,m4^2}]//PaVeReduce",
-"PaVe[1, {0, 0, 0}, {m4^2, m2^2, m3^2}]/(2*(1 - D)) + PaVe[1, 1, \
-{0, 0, 0}, {m4^2, m2^2, m3^2}]/(2*(1 - D)) + PaVe[1, 2, {0, 0, 0}, \
-{m4^2, m2^2, m3^2}]/(2*(1 - D)) - (m1^2*PaVe[1, 3, {0, 0, 0, 0, 0, \
-0}, {m1^2, m2^2, m3^2, m4^2}])/(1 - D) - ((m1^2 - m2^2)*PaVe[1, 1, 3, \
-{0, 0, 0, 0, 0, 0}, {m1^2, m2^2, m3^2, m4^2}])/(2*(1 - D)) - ((m1^2 - \
-m3^2)*PaVe[1, 2, 3, {0, 0, 0, 0, 0, 0}, {m1^2, m2^2, m3^2, \
-m4^2}])/(2*(1 - D)) - ((m1^2 - m4^2)*PaVe[1, 3, 3, {0, 0, 0, 0, 0, \
-0}, {m1^2, m2^2, m3^2, m4^2}])/(2*(1 - D))"},
+"-1/2*PaVe[1, 2, {0, 0, 0}, {m3^2, m2^2, m4^2}]/(1 - D) - (m1^2*PaVe[1, 2, {0, 0, 0, 0, 0, 0},
+{m1^2, m2^2, m4^2, m3^2}])/(1 - D) - ((m1^2 - m2^2)*PaVe[1, 1, 2, {0, 0, 0, 0, 0, 0},
+{m1^2, m2^2, m4^2, m3^2}])/(2*(1 - D)) - ((m1^2 - m4^2)*PaVe[1, 1, 2, {0, 0, 0, 0, 0, 0},
+{m1^2, m4^2, m2^2, m3^2}])/(2*(1 - D)) - ((m1^2 - m3^2)*PaVe[1, 2, 3, {0, 0, 0, 0, 0, 0},
+{m1^2, m2^2, m3^2, m4^2}])/(2*(1 - D))"},
 {"fcstPaVeReduceDFunctions-ID19",
 "PaVe[0,0,2,2,{0,0,0,0,0,0},{m1^2,m2^2,m3^2,m4^2}]//PaVeReduce",
 "-PaVe[2, 2, {0, 0, 0}, {m4^2, m2^2, m3^2}]/(2*(1 - D)) - \
@@ -844,26 +834,18 @@ m4^2)*PaVe[2, 2, 3, {0, 0, 0, 0, 0, 0}, {m1^2, m2^2, m3^2, \
 m4^2}])/(2*(1 - D))"},
 {"fcstPaVeReduceDFunctions-ID20",
 "PaVe[0,0,2,3,{0,0,0,0,0,0},{m1^2,m2^2,m3^2,m4^2}]//PaVeReduce",
-"PaVe[2, {0, 0, 0}, {m4^2, m2^2, m3^2}]/(2*(1 - D)) + PaVe[1, 2, \
-{0, 0, 0}, {m4^2, m2^2, m3^2}]/(2*(1 - D)) + PaVe[2, 2, {0, 0, 0}, \
-{m4^2, m2^2, m3^2}]/(2*(1 - D)) - (m1^2*PaVe[2, 3, {0, 0, 0, 0, 0, \
-0}, {m1^2, m2^2, m3^2, m4^2}])/(1 - D) - ((m1^2 - m2^2)*PaVe[1, 2, 3, \
-{0, 0, 0, 0, 0, 0}, {m1^2, m2^2, m3^2, m4^2}])/(2*(1 - D)) - ((m1^2 - \
-m3^2)*PaVe[2, 2, 3, {0, 0, 0, 0, 0, 0}, {m1^2, m2^2, m3^2, \
-m4^2}])/(2*(1 - D)) - ((m1^2 - m4^2)*PaVe[2, 3, 3, {0, 0, 0, 0, 0, \
-0}, {m1^2, m2^2, m3^2, m4^2}])/(2*(1 - D))"},
+"-1/2*PaVe[1, 2, {0, 0, 0}, {m2^2, m3^2, m4^2}]/(1 - D) - (m1^2*PaVe[1, 2, {0, 0, 0, 0, 0, 0},
+{m1^2, m3^2, m4^2, m2^2}])/(1 - D) - ((m1^2 - m3^2)*PaVe[1, 1, 2, {0, 0, 0, 0, 0, 0},
+{m1^2, m3^2, m4^2, m2^2}])/(2*(1 - D)) - ((m1^2 - m4^2)*PaVe[1, 1, 2, {0, 0, 0, 0, 0, 0},
+{m1^2, m4^2, m3^2, m2^2}])/(2*(1 - D)) - ((m1^2 - m2^2)*PaVe[1, 2, 3, {0, 0, 0, 0, 0, 0},
+{m1^2, m2^2, m3^2, m4^2}])/(2*(1 - D))"},
 {"fcstPaVeReduceDFunctions-ID21",
 "PaVe[0,0,3,3,{0,0,0,0,0,0},{m1^2,m2^2,m3^2,m4^2}]//PaVeReduce",
-"ToPaVe2[-C0[0, 0, 0, m2^2, m3^2, m4^2]/(2*(1 - D)) - PaVe[1, {0, 0, 0}, \
-{m4^2, m2^2, m3^2}]/(1 - D) - PaVe[2, {0, 0, 0}, {m4^2, m2^2, \
-m3^2}]/(1 - D) - PaVe[1, 1, {0, 0, 0}, {m4^2, m2^2, m3^2}]/(2*(1 - \
-D)) - PaVe[1, 2, {0, 0, 0}, {m4^2, m2^2, m3^2}]/(1 - D) - PaVe[2, 2, \
-{0, 0, 0}, {m4^2, m2^2, m3^2}]/(2*(1 - D)) - (m1^2*PaVe[3, 3, {0, 0, \
-0, 0, 0, 0}, {m1^2, m2^2, m3^2, m4^2}])/(1 - D) - ((m1^2 - \
-m2^2)*PaVe[1, 3, 3, {0, 0, 0, 0, 0, 0}, {m1^2, m2^2, m3^2, \
-m4^2}])/(2*(1 - D)) - ((m1^2 - m3^2)*PaVe[2, 3, 3, {0, 0, 0, 0, 0, \
-0}, {m1^2, m2^2, m3^2, m4^2}])/(2*(1 - D)) - ((m1^2 - m4^2)*PaVe[3, \
-3, 3, {0, 0, 0, 0, 0, 0}, {m1^2, m2^2, m3^2, m4^2}])/(2*(1 - D))]"},
+"-1/2*PaVe[1, 1, {0, 0, 0}, {m2^2, m4^2, m3^2}]/(1 - D) - (m1^2*PaVe[1, 1, {0, 0, 0, 0, 0, 0},
+{m1^2, m4^2, m2^2, m3^2}])/(1 - D) - ((m1^2 - m4^2)*PaVe[1, 1, 1, {0, 0, 0, 0, 0, 0},
+{m1^2, m4^2, m2^2, m3^2}])/(2*(1 - D)) - ((m1^2 - m2^2)*PaVe[1, 1, 2, {0, 0, 0, 0, 0, 0},
+{m1^2, m4^2, m2^2, m3^2}])/(2*(1 - D)) - ((m1^2 - m3^2)*PaVe[1, 1, 2, {0, 0, 0, 0, 0, 0},
+{m1^2, m4^2, m3^2, m2^2}])/(2*(1 - D))"},
 {"fcstPaVeReduceDFunctions-ID22",
 "PaVe[0,0,0,0,0,0,{0,0,0,0,0,0},{m1^2,m2^2,m3^2,m4^2}]\
 //PaVeReduce",
@@ -929,25 +911,33 @@ t)"},
 "$LimitTo4=True; \n$LimitTo4IRUnsafe=True; \n PaVeReduce[PaVe[1,2,2,{SmallVariable[ME2],MW2,MW2,SmallVariable[\
 ME2],S,T},{0,SmallVariable[ME2],0,SmallVariable[ME2]}],Mandelstam\
 \[Rule]{S,T,U,2 MW2}, PaVeAutoReduce -> True]",
-"-(MW2 + S)/(2*(4*MW2 - T)*(MW2^2 - S*U)) - ((4*MW2^5 - 5*MW2^4*S - 16*MW2^3*S^2 +
-4*MW2^2*S^3 + 4*MW2*S^4 - MW2^4*U - 4*MW2^2*S^2*U + 8*MW2*S^3*U + 4*MW2^2*S*U^2 +
-S^3*U^2 + S^2*U^3)*B0[MW2, 0, SmallVariable[ME2]])/(2*(MW2 - S)*(4*MW2 -
-T)^2*(MW2^2 - S*U)^2) + (S*(MW2^2 - 4*MW2*S + 2*S^2 + S*U)*B0[S, 0, 0])/(2*(MW2 -
-S)*(MW2^2 - S*U)^2) + ((MW2 + S)*(4*MW2^3 - 9*MW2^2*S + 2*S^3 - MW2^2*U -
-4*MW2*S*U + 5*S^2*U + 3*S*U^2)*B0[T, SmallVariable[ME2],
-SmallVariable[ME2]])/(2*(4*MW2 - T)^2*(MW2^2 - S*U)^2) -
-((MW2 + S)*(2*MW2^6 - 8*MW2^5*S + 12*MW2^4*S^2 - 8*MW2^3*S^3 +
-2*MW2^2*S^4 - 2*MW2^5*T + 20*MW2^4*S*T - 36*MW2^3*S^2*T +
-20*MW2^2*S^3*T - 2*MW2*S^4*T - 6*MW2^3*S*T^2 + 6*MW2^2*S^2*T^2 -
-6*MW2*S^3*T^2 + 4*MW2*S^2*T^3 - S^2*T^4)*C0[MW2, MW2, T,
-SmallVariable[ME2], 0, SmallVariable[ME2]])/(2*(4*MW2 -
-T)^2*(MW2^2 - S*U)^3) + ((MW2 - S)^2*S^2*T*C0[MW2, S,
-SmallVariable[ME2], SmallVariable[ME2], 0, 0])/(MW2^2 -
-S*U)^3 - ((MW2 - S)*S^2*T^2*C0[T, SmallVariable[ME2],
-SmallVariable[ME2], SmallVariable[ME2], SmallVariable[ME2],
-0])/(2*(MW2^2 - S*U)^3) + ((MW2 - S)*S^3*T^2*D0[SmallVariable[ME2],
-MW2, MW2, SmallVariable[ME2], S, T, 0, SmallVariable[ME2],
-0, SmallVariable[ME2]])/(2*(MW2^2 - S*U)^3)"},
+"-(MW2 + S)/(2*(4*MW2 - T)*(MW2^2 - S*U)) - ((4*MW2^5 - 5*MW2^4*S -
+	16*MW2^3*S^2 + 4*MW2^2*S^3 + 4*MW2*S^4 - MW2^4*U -
+	4*MW2^2*S^2*U + 8*MW2*S^3*U + 4*MW2^2*S*U^2 + S^3*U^2 +
+	S^2*U^3)*
+	B0[MW2, 0,
+	SmallVariable[ME2]])/(2*(MW2 -
+	S)*(4*MW2 - T)^2*(MW2^2 - S*U)^2) + (S*(MW2^2 - 4*MW2*S +
+	2*S^2 + S*U)*
+	B0[S, 0,
+	0])/(2*(MW2 - S)*(MW2^2 - S*U)^2) + ((MW2 + S)*(4*MW2^3 -
+	9*MW2^2*S + 2*S^3 - MW2^2*U - 4*MW2*S*U + 5*S^2*U + 3*S*U^2)*
+	B0[T, SmallVariable[ME2],
+	SmallVariable[ME2]])/(2*(4*MW2 - T)^2*(MW2^2 - S*U)^2) - ((MW2 +
+	S)*(2*MW2^6 - 8*MW2^5*S + 12*MW2^4*S^2 - 8*MW2^3*S^3 +
+	2*MW2^2*S^4 - 2*MW2^5*T + 20*MW2^4*S*T - 36*MW2^3*S^2*T +
+	20*MW2^2*S^3*T - 2*MW2*S^4*T - 6*MW2^3*S*T^2 +
+	6*MW2^2*S^2*T^2 - 6*MW2*S^3*T^2 + 4*MW2*S^2*T^3 - S^2*T^4)*
+	C0[MW2, MW2, T, SmallVariable[ME2], 0,
+	SmallVariable[
+	ME2]])/(2*(4*MW2 - T)^2*(MW2^2 - S*U)^3) + ((MW2 - S)^2*S^2*T*
+	C0[MW2, S, SmallVariable[ME2], SmallVariable[ME2], 0, 0])/(MW2^2 -
+	S*U)^3 - ((MW2 - S)*S^2*T^2*
+	C0[T, SmallVariable[ME2], SmallVariable[ME2], SmallVariable[ME2],
+	SmallVariable[ME2], 0])/(2*(MW2^2 - S*U)^3) + ((MW2 - S)*S^3*T^2*
+	D0[MW2, MW2, SmallVariable[ME2], SmallVariable[ME2], T, S,
+	SmallVariable[ME2], 0, SmallVariable[ME2],
+	0])/(2*(MW2^2 - S*U)^3)"},
 {"fcstPaVeReduce-ID3",
 "$LimitTo4IRUnsafe=True; \n PaVeReduce[PaVe[1,2,{s,m^2,m^2},{m^2,m^2,M^2}], PaVeAutoReduce -> True]",
 "1/(2*(4*m^2 - s)) + A0[m^2]/(2*m^2*(4*m^2 - s)) - A0[M^2]/(2*m^2*(4*m^2 - s)) - ((8*m^4 - 10*m^2*M^2 -
@@ -985,7 +975,14 @@ mm1 (mm1 - mm2 + pp) PaVe[0, {pp}, {mm1, mm2}])/(
 Collect2[Expand[Sum[a[i], {i, 1, 5}] B0[0, mm, mm]], B0,
 IsolateNames -> KK],
 BReduce -> True], -(((2 - D) HoldForm[_] PaVe[0, {}, {mm}])/(2 mm))]",
-"True"}
+"True"},
+{"fcstPaVeReduce-ID12", "(PaVeReduce[
+	TID[FVD[k, mu] FAD[{k, 0}, {p - k, m}, {l - k, m2}, {j - k, m3}],
+	k, UsePaVeBasis -> True]] -
+	ToPaVe2[TID[
+	FVD[k, mu] FAD[{k, 0}, {p - k, m}, {l - k, m2}, {j - k, m3}], k,
+	ToPaVe -> True]]) // FCE // Simplify",
+"0"}
 })
 
 

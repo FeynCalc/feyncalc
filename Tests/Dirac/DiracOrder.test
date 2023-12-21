@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for DiracOrder               *)
@@ -470,7 +470,38 @@ ms (2 Spinor[Momentum[p4, D], mb, 1].GA[7].Spinor[Momentum[p2, D],
 "-GA[al].GA[mu].GA[nu] + 2 GA[nu] MT[al, mu] - 2 GA[mu] MT[al, nu] + 2 GA[al] MT[mu, nu] == x"},
 {"fcstDiracOrder-ID60", "DiracOrder[{GA[nu, mu, al], GA[nu, rho, al]}, FCE -> True]",
 "{-GA[al].GA[mu].GA[nu] + 2 GA[nu] MT[al, mu] - 2 GA[mu] MT[al, nu] +
-2 GA[al] MT[mu, nu], GA[al].GA[nu].GA[rho] - 2 GA[rho] MT[al, nu] + 2 GA[nu] MT[al, rho]}"}
+2 GA[al] MT[mu, nu], GA[al].GA[nu].GA[rho] - 2 GA[rho] MT[al, nu] + 2 GA[nu] MT[al, rho]}"},
+{"fcstDiracOrder-ID61", "
+$FCDefaultLightconeVectorN=n; \n
+$FCDefaultLightconeVectorNB=nb;  \n
+FCClearScalarProducts[];  \n
+ScalarProduct[n]=0;  \n
+ScalarProduct[nb]=0;  \n
+ScalarProduct[n,nb]=2; \n
+res = DiracOrder[
+1/8 CA CF Spinor[Momentum[k1], 0, 1] . GS[n] . GS[nb] .
+	GSLR[kg2, n, nb] . GSLR[kg1, n, nb] .
+	GSLR[Polarization[p, I], n, nb] .
+	Spinor[-Momentum[k2], 0, 1] Spinor[-Momentum[k2], 0, 1] . GS[n] .
+	GS[nb] . GSLR[kg1, n, nb] . GSLR[kg2, n, nb] .
+	GSLR[Polarization[p, -I], n, nb] . Spinor[Momentum[k1], 0, 1] -
+1/2 CA CF Spinor[Momentum[k1], 0, 1] . GSLR[kg1, n, nb] .
+	GSLR[kg2, n, nb] . GSLR[Polarization[p, I], n, nb] .
+	Spinor[-Momentum[k2], 0, 1] Spinor[-Momentum[k2], 0, 1] . GS[n] .
+	GS[nb] . GSLR[kg2, n, nb] . GSLR[kg1, n, nb] .
+	GSLR[Polarization[p, -I], n, nb] . Spinor[Momentum[k1], 0, 1] ,
+FCE -> True]; FCClearScalarProducts[]; \n res",
+"-1/2*(CA*CF*(-(Spinor[Momentum[k1], 0, 1] . GSLR[kg1, n, nb] . GSLR[kg2, n, nb] . GSLR[Polarization[p, I],
+n, nb] . Spinor[-Momentum[k2], 0, 1]*Spinor[-Momentum[k2], 0, 1] . GS[n] . GS[nb] . GSLR[kg1,
+n, nb] . GSLR[kg2, n, nb] . GSLR[Polarization[p, -I], n, nb] . Spinor[Momentum[k1], 0, 1]) +
+2*Spinor[Momentum[k1], 0, 1] . GSLR[kg1, n, nb] . GSLR[kg2, n, nb] . GSLR[Polarization[p,
+I], n, nb] . Spinor[-Momentum[k2], 0, 1]*Spinor[-Momentum[k2], 0, 1] . GS[n] . GS[nb] . GSLR[Polarization[p,
+-I], n, nb] . Spinor[Momentum[k1], 0, 1]*SPLR[kg1, kg2, n, nb])) + (CA*CF*(-(Spinor[Momentum[k1], 0,
+1] . GS[n] . GS[nb] . GSLR[kg1, n, nb] . GSLR[kg2, n, nb] . GSLR[Polarization[p, I], n, nb] . Spinor[-Momentum[k2],
+0, 1]*Spinor[-Momentum[k2], 0, 1] . GS[n] . GS[nb] . GSLR[kg1, n, nb] . GSLR[kg2, n, nb] . GSLR[Polarization[p,
+-I], n, nb] . Spinor[Momentum[k1], 0, 1]) +	2*Spinor[Momentum[k1], 0, 1] . GS[n] . GS[nb] . GSLR[Polarization[p,
+I], n, nb] . Spinor[-Momentum[k2], 0, 1]*Spinor[-Momentum[k2], 0, 1] . GS[n] . GS[nb] . GSLR[kg1, n, nb] . GSLR[kg2,
+n, nb] . GSLR[Polarization[p, -I], n, nb] . Spinor[Momentum[k1], 0, 1]*SPLR[kg1, kg2, n, nb]))/8"}
 });
 
 

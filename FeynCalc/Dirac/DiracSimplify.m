@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary: 	Like DiracTrick, but including non-commutative expansions
@@ -17,12 +17,12 @@
 (* ------------------------------------------------------------------------ *)
 
 DiracSimplify::usage =
-"DiracSimplify[exp] simplifies products of Dirac matrices \
-and expands non-commutative products. \
-Double Lorentz indices and four vectors are contracted. \
-The Dirac equation is applied. \
-All DiracGamma[5], DiracGamma[6] and DiracGamma[7] are moved to \
-the right. The order of the Dirac matrices is not changed.";
+"DiracSimplify[exp] simplifies products of Dirac matrices in exp and expands
+noncommutative products. The simplifications are done by applying Contract,
+DiracEquation, DiracTrick, SpinorChainTrick and SirlinSimplify. All
+$\\gamma^5$, $\\gamma^6$ and $\\gamma^7$ are moved to the right. The order of the
+other Dirac matrices is not changed, unless the option DiracOrder is set to
+True.";
 
 DiracSimplify::failmsg =
 "Error! DiracSimplify encountered a fatal problem and must abort the computation. \
@@ -54,7 +54,9 @@ optFactoring::usage="";
 optEpsContract::usage="";
 optContract::usage="";
 optToDiracGamma67::usage="";
-
+optSpinorChainEvaluate::usage="";
+optDiracSpinorNormalization::usage="";
+optEpsExpand::usage="";
 
 Options[DiracSimplify] = {
 	CartesianIndexNames			-> {},
@@ -65,11 +67,13 @@ Options[DiracSimplify] = {
 	DiracGammaCombine			-> False,
 	DiracOrder					-> False,
 	DiracSigmaExplicit			-> True,
+	DiracSpinorNormalization	-> "Relativistic",
 	DiracSubstitute5			-> False,
 	DiracSubstitute67			-> False,
 	DiracTrace					-> True,
 	DiracTraceEvaluate			-> True,
 	EpsContract					-> True,
+	EpsExpand					-> True,
 	Expand2						-> True,
 	ExpandScalarProduct			-> True,
 	Expanding					-> True,
@@ -84,6 +88,7 @@ Options[DiracSimplify] = {
 	LorentzIndexNames			-> {},
 	SirlinSimplify				-> False,
 	SpinorChainTrick			-> True,
+	SpinorChainEvaluate			-> True,
 	ToDiracGamma67				-> True
 };
 
@@ -117,11 +122,14 @@ DiracSimplify[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 		optDiracSubstitute67			= OptionValue[DiracSubstitute67];
 		optDiracTraceEvaluate   		= OptionValue[DiracTraceEvaluate];
 		optEpsContract					= OptionValue[EpsContract];
+		optEpsExpand					= OptionValue[EpsExpand];
 		optExpandScalarProduct			= OptionValue[ExpandScalarProduct];
 		optExpanding  					= OptionValue[Expanding];
 		optInsideDiracTrace				= OptionValue[InsideDiracTrace];
 		optToDiracGamma67				= OptionValue[ToDiracGamma67];
 		optFCCanonicalizeDummyIndices	= OptionValue[FCCanonicalizeDummyIndices];
+		optSpinorChainEvaluate			= OptionValue[SpinorChainEvaluate];
+		optDiracSpinorNormalization		= OptionValue[DiracSpinorNormalization];
 
 		If[ OptionValue[LorentzIndexNames]=!={} || OptionValue[CartesianIndexNames]=!={},
 			optFCCanonicalizeDummyIndices = True
@@ -393,7 +401,7 @@ diracSimplifyEval[expr_]:=
 				time2=AbsoluteTime[];
 				FCPrint[2, "DiracSimplify: diracSimplifyEval: Applying EpsContract.", FCDoControl->dsVerbose];
 				If[	optEpsContract,
-					tmp = EpsContract[tmp,FCI->True]//EpsEvaluate[#,FCI->True]&
+					tmp = EpsContract[tmp,FCI->True]//EpsEvaluate[#,FCI->True, EpsExpand->optEpsExpand]&
 				];
 				FCPrint[2, "DiracSimplify: diracSimplifyEval: EpsContract done, timing: ", N[AbsoluteTime[] - time2, 4] , FCDoControl->dsVerbose];
 				FCPrint[3, "DiracSimplify: diracSimplifyEval: After EpsContract: ", tmp, FCDoControl->dsVerbose];
@@ -419,7 +427,7 @@ diracSimplifyEval[expr_]:=
 			time2=AbsoluteTime[];
 			FCPrint[2, "DiracSimplify: diracSimplifyEval: Applying EpsContract.", FCDoControl->dsVerbose];
 				If[	optEpsContract,
-					tmp = EpsContract[tmp,FCI->True]//EpsEvaluate[#,FCI->True]&
+					tmp = EpsContract[tmp,FCI->True]//EpsEvaluate[#,FCI->True, EpsExpand->optEpsExpand]&
 				];
 			FCPrint[2, "DiracSimplify: diracSimplifyEval: EpsContract done, timing: ", N[AbsoluteTime[] - time2, 4] , FCDoControl->dsVerbose];
 			FCPrint[3, "DiracSimplify: diracSimplifyEval: After EpsContract: ", tmp, FCDoControl->dsVerbose];
@@ -472,18 +480,13 @@ diracSimplifyEval[expr_]:=
 			FCPrint[3,"DiracSimplify: diracSimplifyEval: After DiracEquation: ", tmp, FCDoControl->dsVerbose];
 		];
 
-		(* 	Covariant normalization of ubar.u or vbar.v (as in Peskin and Schroeder).
-			The combinations ubar.v and vbar.u are orthogonal and hence vanish *)
-		If[	!FreeQ[tmp,Spinor],
+		(*	Spinor inner product	*)
+		If[	!FreeQ[tmp,Spinor] && optSpinorChainEvaluate,
 			time2=AbsoluteTime[];
-			FCPrint[2,"DiracSimplify: Applying spinor normalization on ", tmp, FCDoControl->dsVerbose];
-			FCPrint[2,"DiracSimplify: diracSimplifyEval: Spinor normalization done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose];
-			tmp = tmp/. DOT->holdDOT //.
-			{	holdDOT[Spinor[s_. Momentum[p__],m_, 1],Spinor[s_. Momentum[p__],m_, 1]] -> s 2 m,
-				holdDOT[Spinor[- Momentum[p__],m_, 1],Spinor[Momentum[p__],m_, 1]] -> 0,
-				holdDOT[Spinor[Momentum[p__],m_, 1],Spinor[- Momentum[p__],m_, 1]] -> 0} /.
-			holdDOT -> DOT;
-			FCPrint[3,"DiracSimplify: diracSimplifyEval: After spinor normalization: ", tmp, FCDoControl->dsVerbose];
+			FCPrint[2,"DiracSimplify: diracSimplifyEval: Applying SpinorChainEvaluate.", FCDoControl->dsVerbose];
+			tmp = SpinorChainEvaluate[tmp, FCI->True, DiracSpinorNormalization->optDiracSpinorNormalization];
+			FCPrint[2,"DiracSimplify: diracSimplifyEval: SpinorChainEvaluate done, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->dsVerbose];
+			FCPrint[3,"DiracSimplify: diracSimplifyEval: After SpinorChainEvaluate: ", tmp, FCDoControl->dsVerbose];
 		];
 
 		(* Factoring	*)

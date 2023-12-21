@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Contractions of two Eps tensors.								*)
@@ -17,9 +17,9 @@
 
 
 EpsContract::usage=
-"EpsContract[exp] handles contractions of two Levi-Civita \
-tensors. It is also an option of Contract and other functions that specifies \
-whether such contractions should be done or not.";
+"EpsContract[exp] handles contractions of two Levi-Civita tensors. It is also
+an option of Contract and other functions that specifies whether such
+contractions should be done or not.";
 
 EpsContract::failmsg=
 "Error! EpsContract has encountered a fatal problem and must abort the computation. \

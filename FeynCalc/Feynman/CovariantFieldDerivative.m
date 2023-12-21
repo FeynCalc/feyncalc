@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Gauge covariant field derivative								*)
@@ -16,14 +16,14 @@
 (* ------------------------------------------------------------------------ *)
 
 CovariantFieldDerivative::usage =
-"CovariantFieldDerivative[f[x],x,{li1,li2,...}] is a covariant \
-derivative of f[x] with respect to space-time variables x and with Lorentz \
-indices li1, li2,... CovariantFieldDerivative has only typesetting \
-definitions by default. The user is must supply his/her own \
-definition of the actual function.";
+"CovariantFieldDerivative[f[x], x, {li1, li2, ...}] is a covariant derivative
+of f[x] with respect to space-time variables x and with Lorentz indices li1,
+li2, .... CovariantFieldDerivative has only typesetting definitions by
+default. The user is must supply his/her own definition of the actual
+function.";
 
 CDr::usage =
-"CDr is the shorthand notation for CovariantFieldDerivative";
+"CDr is the shorthand notation for CovariantFieldDerivative.";
 
 Begin["`Package`"]
 End[]

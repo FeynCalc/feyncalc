@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for DiracTrace  			*)
@@ -80,7 +80,7 @@ Momentum[q2]])"},
 DiracTrace[GAD[i1, i2, i3, i4, i5, i6].GA[5],
 	DiracTraceEvaluate -> True, West -> False]) // Simplify", "0"},
 {"fcstDiracTrace-ID30",
-"FCSetDiracGammaScheme[\"NDR\"]; \n DeclareNonCommutative[ncA]; \n Tr[GA[i, j].ncA.GA[k, l], FCVerbose -> 0] // FCE",
+"FCSetDiracGammaScheme[\"NDR\"]; \n DeclareNonCommutative[ncA]; \n TR[GA[i, j].ncA.GA[k, l], FCVerbose -> 0] // FCE",
 "DiracTrace[GA[i].GA[j].ncA.GA[k].GA[l]]"},
 {"fcstDiracTrace-ID31",
 "DiracTrace[DiracTrace[GA[i, j]], DiracTraceEvaluate -> True] // FCE",
@@ -257,8 +257,210 @@ FCDiracIsolate -> False]", "4 Pair[LorentzIndex[mu], LorentzIndex[nu]]"},
 DiracTraceEvaluate -> True, FCDiracIsolate -> False]", "4 I (Pair[LorentzIndex[mu], LorentzIndex[si]] Pair[LorentzIndex[nu],
 	LorentzIndex[rho]] - Pair[LorentzIndex[mu], LorentzIndex[rho]] Pair[LorentzIndex[nu],
 	LorentzIndex[si]])"},
+{"fcstDiracTrace-ID54",
+"FCSetDiracGammaScheme[\"Larin\"]; \n DiracTrace[GAD[mu1,mu2,mu3,mu4,5],DiracTraceEvaluate->True,\
+FCE->True]", "(-4*I)*LCD[mu1, mu2, mu3, mu4]"},
+{"fcstDiracTrace-ID55",
+"DiracTrace[GAD[mu1,mu2,5,mu3,mu4],DiracTraceEvaluate->True,\
+FCE->True]", "(-4*I)*LCD[mu1, mu2, mu3, mu4]"},
+{"fcstDiracTrace-ID56",
+"DiracTrace[GAD[mu1,mu2,5,mu3,mu4,mu5,mu6],\
+DiracTraceEvaluate->True,FCE->True]",
+"(-4*I)*(LCD[mu2, mu4, mu5, mu6]*MTD[mu1, mu3] - LCD[mu2, mu3, \
+mu5, mu6]*MTD[mu1, mu4] + LCD[mu2, mu3, mu4, mu6]*MTD[mu1, mu5] - \
+LCD[mu2, mu3, mu4, mu5]*MTD[mu1, mu6] + LCD[mu1, mu2, mu5, \
+mu6]*MTD[mu3, mu4] - LCD[mu1, mu2, mu4, mu6]*MTD[mu3, mu5] + LCD[mu1, \
+mu2, mu4, mu5]*MTD[mu3, mu6] + LCD[mu1, mu2, mu3, mu6]*MTD[mu4, mu5] \
+- LCD[mu1, mu2, mu3, mu5]*MTD[mu4, mu6] + LCD[mu1, mu2, mu3, \
+mu4]*MTD[mu5, mu6])"},
+{"fcstDiracTrace-ID57",
+"DiracTrace[GAD[mu1,mu2,mu3,mu4,mu5,mu6,5],\
+DiracTraceEvaluate->True,FCE->True]",
+"(-4*I)*(LCD[mu3, mu4, mu5, mu6]*MTD[mu1, mu2] - LCD[mu2, mu4, \
+mu5, mu6]*MTD[mu1, mu3] + LCD[mu2, mu3, mu5, mu6]*MTD[mu1, mu4] - \
+LCD[mu2, mu3, mu4, mu6]*MTD[mu1, mu5] + LCD[mu1, mu4, mu5, \
+mu6]*MTD[mu2, mu3] - LCD[mu1, mu3, mu5, mu6]*MTD[mu2, mu4] + LCD[mu1, \
+mu3, mu4, mu6]*MTD[mu2, mu5] + LCD[mu1, mu2, mu5, mu6]*MTD[mu3, mu4] \
+- LCD[mu1, mu2, mu4, mu6]*MTD[mu3, mu5] + LCD[mu1, mu2, mu3, \
+mu6]*MTD[mu4, mu5])"},
+{"fcstDiracTrace-ID58",
+"DiracTrace[GAD[mu1,mu2,mu3,mu4,mu5,mu6,mu7,mu8,5],\
+DiracTraceEvaluate->True,FCE->True]",
+"(-4*I)*(LCD[mu5, mu6, mu7, mu8]*MTD[mu1, mu4]*MTD[mu2, mu3] - \
+LCD[mu4, mu6, mu7, mu8]*MTD[mu1, mu5]*MTD[mu2, mu3] + LCD[mu4, mu5, \
+mu7, mu8]*MTD[mu1, mu6]*MTD[mu2, mu3] - LCD[mu4, mu5, mu6, \
+mu8]*MTD[mu1, mu7]*MTD[mu2, mu3] - LCD[mu5, mu6, mu7, mu8]*MTD[mu1, \
+mu3]*MTD[mu2, mu4] + LCD[mu3, mu6, mu7, mu8]*MTD[mu1, mu5]*MTD[mu2, \
+mu4] - LCD[mu3, mu5, mu7, mu8]*MTD[mu1, mu6]*MTD[mu2, mu4] + LCD[mu3, \
+mu5, mu6, mu8]*MTD[mu1, mu7]*MTD[mu2, mu4] + LCD[mu4, mu6, mu7, \
+mu8]*MTD[mu1, mu3]*MTD[mu2, mu5] - LCD[mu3, mu6, mu7, mu8]*MTD[mu1, \
+mu4]*MTD[mu2, mu5] + LCD[mu3, mu4, mu7, mu8]*MTD[mu1, mu6]*MTD[mu2, \
+mu5] - LCD[mu3, mu4, mu6, mu8]*MTD[mu1, mu7]*MTD[mu2, mu5] - LCD[mu4, \
+mu5, mu7, mu8]*MTD[mu1, mu3]*MTD[mu2, mu6] + LCD[mu3, mu5, mu7, \
+mu8]*MTD[mu1, mu4]*MTD[mu2, mu6] - LCD[mu3, mu4, mu7, mu8]*MTD[mu1, \
+mu5]*MTD[mu2, mu6] + LCD[mu3, mu4, mu5, mu8]*MTD[mu1, mu7]*MTD[mu2, \
+mu6] + LCD[mu4, mu5, mu6, mu8]*MTD[mu1, mu3]*MTD[mu2, mu7] - LCD[mu3, \
+mu5, mu6, mu8]*MTD[mu1, mu4]*MTD[mu2, mu7] + LCD[mu3, mu4, mu6, \
+mu8]*MTD[mu1, mu5]*MTD[mu2, mu7] - LCD[mu3, mu4, mu5, mu8]*MTD[mu1, \
+mu6]*MTD[mu2, mu7] + LCD[mu5, mu6, mu7, mu8]*MTD[mu1, mu2]*MTD[mu3, \
+mu4] - LCD[mu2, mu6, mu7, mu8]*MTD[mu1, mu5]*MTD[mu3, mu4] + LCD[mu2, \
+mu5, mu7, mu8]*MTD[mu1, mu6]*MTD[mu3, mu4] - LCD[mu2, mu5, mu6, \
+mu8]*MTD[mu1, mu7]*MTD[mu3, mu4] + LCD[mu1, mu6, mu7, mu8]*MTD[mu2, \
+mu5]*MTD[mu3, mu4] - LCD[mu1, mu5, mu7, mu8]*MTD[mu2, mu6]*MTD[mu3, \
+mu4] + LCD[mu1, mu5, mu6, mu8]*MTD[mu2, mu7]*MTD[mu3, mu4] - LCD[mu4, \
+mu6, mu7, mu8]*MTD[mu1, mu2]*MTD[mu3, mu5] + LCD[mu2, mu6, mu7, \
+mu8]*MTD[mu1, mu4]*MTD[mu3, mu5] - LCD[mu2, mu4, mu7, mu8]*MTD[mu1, \
+mu6]*MTD[mu3, mu5] + LCD[mu2, mu4, mu6, mu8]*MTD[mu1, mu7]*MTD[mu3, \
+mu5] - LCD[mu1, mu6, mu7, mu8]*MTD[mu2, mu4]*MTD[mu3, mu5] + LCD[mu1, \
+mu4, mu7, mu8]*MTD[mu2, mu6]*MTD[mu3, mu5] - LCD[mu1, mu4, mu6, \
+mu8]*MTD[mu2, mu7]*MTD[mu3, mu5] + LCD[mu4, mu5, mu7, mu8]*MTD[mu1, \
+mu2]*MTD[mu3, mu6] - LCD[mu2, mu5, mu7, mu8]*MTD[mu1, mu4]*MTD[mu3, \
+mu6] + LCD[mu2, mu4, mu7, mu8]*MTD[mu1, mu5]*MTD[mu3, mu6] - LCD[mu2, \
+mu4, mu5, mu8]*MTD[mu1, mu7]*MTD[mu3, mu6] + LCD[mu1, mu5, mu7, \
+mu8]*MTD[mu2, mu4]*MTD[mu3, mu6] - LCD[mu1, mu4, mu7, mu8]*MTD[mu2, \
+mu5]*MTD[mu3, mu6] + LCD[mu1, mu4, mu5, mu8]*MTD[mu2, mu7]*MTD[mu3, \
+mu6] - LCD[mu4, mu5, mu6, mu8]*MTD[mu1, mu2]*MTD[mu3, mu7] + LCD[mu2, \
+mu5, mu6, mu8]*MTD[mu1, mu4]*MTD[mu3, mu7] - LCD[mu2, mu4, mu6, \
+mu8]*MTD[mu1, mu5]*MTD[mu3, mu7] + LCD[mu2, mu4, mu5, mu8]*MTD[mu1, \
+mu6]*MTD[mu3, mu7] - LCD[mu1, mu5, mu6, mu8]*MTD[mu2, mu4]*MTD[mu3, \
+mu7] + LCD[mu1, mu4, mu6, mu8]*MTD[mu2, mu5]*MTD[mu3, mu7] - LCD[mu1, \
+mu4, mu5, mu8]*MTD[mu2, mu6]*MTD[mu3, mu7] + LCD[mu3, mu6, mu7, \
+mu8]*MTD[mu1, mu2]*MTD[mu4, mu5] - LCD[mu2, mu6, mu7, mu8]*MTD[mu1, \
+mu3]*MTD[mu4, mu5] + LCD[mu2, mu3, mu7, mu8]*MTD[mu1, mu6]*MTD[mu4, \
+mu5] - LCD[mu2, mu3, mu6, mu8]*MTD[mu1, mu7]*MTD[mu4, mu5] + LCD[mu1, \
+mu6, mu7, mu8]*MTD[mu2, mu3]*MTD[mu4, mu5] - LCD[mu1, mu3, mu7, \
+mu8]*MTD[mu2, mu6]*MTD[mu4, mu5] + LCD[mu1, mu3, mu6, mu8]*MTD[mu2, \
+mu7]*MTD[mu4, mu5] + LCD[mu1, mu2, mu7, mu8]*MTD[mu3, mu6]*MTD[mu4, \
+mu5] - LCD[mu1, mu2, mu6, mu8]*MTD[mu3, mu7]*MTD[mu4, mu5] - LCD[mu3, \
+mu5, mu7, mu8]*MTD[mu1, mu2]*MTD[mu4, mu6] + LCD[mu2, mu5, mu7, \
+mu8]*MTD[mu1, mu3]*MTD[mu4, mu6] - LCD[mu2, mu3, mu7, mu8]*MTD[mu1, \
+mu5]*MTD[mu4, mu6] + LCD[mu2, mu3, mu5, mu8]*MTD[mu1, mu7]*MTD[mu4, \
+mu6] - LCD[mu1, mu5, mu7, mu8]*MTD[mu2, mu3]*MTD[mu4, mu6] + LCD[mu1, \
+mu3, mu7, mu8]*MTD[mu2, mu5]*MTD[mu4, mu6] - LCD[mu1, mu3, mu5, \
+mu8]*MTD[mu2, mu7]*MTD[mu4, mu6] - LCD[mu1, mu2, mu7, mu8]*MTD[mu3, \
+mu5]*MTD[mu4, mu6] + LCD[mu1, mu2, mu5, mu8]*MTD[mu3, mu7]*MTD[mu4, \
+mu6] + LCD[mu3, mu5, mu6, mu8]*MTD[mu1, mu2]*MTD[mu4, mu7] - LCD[mu2, \
+mu5, mu6, mu8]*MTD[mu1, mu3]*MTD[mu4, mu7] + LCD[mu2, mu3, mu6, \
+mu8]*MTD[mu1, mu5]*MTD[mu4, mu7] - LCD[mu2, mu3, mu5, mu8]*MTD[mu1, \
+mu6]*MTD[mu4, mu7] + LCD[mu1, mu5, mu6, mu8]*MTD[mu2, mu3]*MTD[mu4, \
+mu7] - LCD[mu1, mu3, mu6, mu8]*MTD[mu2, mu5]*MTD[mu4, mu7] + LCD[mu1, \
+mu3, mu5, mu8]*MTD[mu2, mu6]*MTD[mu4, mu7] + LCD[mu1, mu2, mu6, \
+mu8]*MTD[mu3, mu5]*MTD[mu4, mu7] - LCD[mu1, mu2, mu5, mu8]*MTD[mu3, \
+mu6]*MTD[mu4, mu7] + LCD[mu3, mu4, mu7, mu8]*MTD[mu1, mu2]*MTD[mu5, \
+mu6] - LCD[mu2, mu4, mu7, mu8]*MTD[mu1, mu3]*MTD[mu5, mu6] + LCD[mu2, \
+mu3, mu7, mu8]*MTD[mu1, mu4]*MTD[mu5, mu6] - LCD[mu2, mu3, mu4, \
+mu8]*MTD[mu1, mu7]*MTD[mu5, mu6] + LCD[mu1, mu4, mu7, mu8]*MTD[mu2, \
+mu3]*MTD[mu5, mu6] - LCD[mu1, mu3, mu7, mu8]*MTD[mu2, mu4]*MTD[mu5, \
+mu6] + LCD[mu1, mu3, mu4, mu8]*MTD[mu2, mu7]*MTD[mu5, mu6] + LCD[mu1, \
+mu2, mu7, mu8]*MTD[mu3, mu4]*MTD[mu5, mu6] - LCD[mu1, mu2, mu4, \
+mu8]*MTD[mu3, mu7]*MTD[mu5, mu6] + LCD[mu1, mu2, mu3, mu8]*MTD[mu4, \
+mu7]*MTD[mu5, mu6] - LCD[mu3, mu4, mu6, mu8]*MTD[mu1, mu2]*MTD[mu5, \
+mu7] + LCD[mu2, mu4, mu6, mu8]*MTD[mu1, mu3]*MTD[mu5, mu7] - LCD[mu2, \
+mu3, mu6, mu8]*MTD[mu1, mu4]*MTD[mu5, mu7] + LCD[mu2, mu3, mu4, \
+mu8]*MTD[mu1, mu6]*MTD[mu5, mu7] - LCD[mu1, mu4, mu6, mu8]*MTD[mu2, \
+mu3]*MTD[mu5, mu7] + LCD[mu1, mu3, mu6, mu8]*MTD[mu2, mu4]*MTD[mu5, \
+mu7] - LCD[mu1, mu3, mu4, mu8]*MTD[mu2, mu6]*MTD[mu5, mu7] - LCD[mu1, \
+mu2, mu6, mu8]*MTD[mu3, mu4]*MTD[mu5, mu7] + LCD[mu1, mu2, mu4, \
+mu8]*MTD[mu3, mu6]*MTD[mu5, mu7] - LCD[mu1, mu2, mu3, mu8]*MTD[mu4, \
+mu6]*MTD[mu5, mu7] + LCD[mu3, mu4, mu5, mu8]*MTD[mu1, mu2]*MTD[mu6, \
+mu7] - LCD[mu2, mu4, mu5, mu8]*MTD[mu1, mu3]*MTD[mu6, mu7] + LCD[mu2, \
+mu3, mu5, mu8]*MTD[mu1, mu4]*MTD[mu6, mu7] - LCD[mu2, mu3, mu4, \
+mu8]*MTD[mu1, mu5]*MTD[mu6, mu7] + LCD[mu1, mu4, mu5, mu8]*MTD[mu2, \
+mu3]*MTD[mu6, mu7] - LCD[mu1, mu3, mu5, mu8]*MTD[mu2, mu4]*MTD[mu6, \
+mu7] + LCD[mu1, mu3, mu4, mu8]*MTD[mu2, mu5]*MTD[mu6, mu7] + LCD[mu1, \
+mu2, mu5, mu8]*MTD[mu3, mu4]*MTD[mu6, mu7] - LCD[mu1, mu2, mu4, \
+mu8]*MTD[mu3, mu5]*MTD[mu6, mu7] + LCD[mu1, mu2, mu3, mu8]*MTD[mu4, \
+mu5]*MTD[mu6, mu7])"},
+{"fcstDiracTrace-ID59",
+"DiracTrace[GAD[mu1,mu2,mu3,mu4,mu5,5,mu6,mu7,mu8],\
+DiracTraceEvaluate->True,FCE->True]",
+"(4*I)*(LCD[mu5, mu6, mu7, mu8]*MTD[mu1, mu4]*MTD[mu2, mu3] - \
+LCD[mu4, mu5, mu7, mu8]*MTD[mu1, mu6]*MTD[mu2, mu3] + LCD[mu4, mu5, \
+mu6, mu8]*MTD[mu1, mu7]*MTD[mu2, mu3] - LCD[mu4, mu5, mu6, \
+mu7]*MTD[mu1, mu8]*MTD[mu2, mu3] - LCD[mu5, mu6, mu7, mu8]*MTD[mu1, \
+mu3]*MTD[mu2, mu4] + LCD[mu3, mu5, mu7, mu8]*MTD[mu1, mu6]*MTD[mu2, \
+mu4] - LCD[mu3, mu5, mu6, mu8]*MTD[mu1, mu7]*MTD[mu2, mu4] + LCD[mu3, \
+mu5, mu6, mu7]*MTD[mu1, mu8]*MTD[mu2, mu4] + LCD[mu4, mu5, mu7, \
+mu8]*MTD[mu1, mu3]*MTD[mu2, mu6] - LCD[mu3, mu5, mu7, mu8]*MTD[mu1, \
+mu4]*MTD[mu2, mu6] + LCD[mu3, mu4, mu5, mu8]*MTD[mu1, mu7]*MTD[mu2, \
+mu6] - LCD[mu3, mu4, mu5, mu7]*MTD[mu1, mu8]*MTD[mu2, mu6] - LCD[mu4, \
+mu5, mu6, mu8]*MTD[mu1, mu3]*MTD[mu2, mu7] + LCD[mu3, mu5, mu6, \
+mu8]*MTD[mu1, mu4]*MTD[mu2, mu7] - LCD[mu3, mu4, mu5, mu8]*MTD[mu1, \
+mu6]*MTD[mu2, mu7] + LCD[mu3, mu4, mu5, mu6]*MTD[mu1, mu8]*MTD[mu2, \
+mu7] + LCD[mu4, mu5, mu6, mu7]*MTD[mu1, mu3]*MTD[mu2, mu8] - LCD[mu3, \
+mu5, mu6, mu7]*MTD[mu1, mu4]*MTD[mu2, mu8] + LCD[mu3, mu4, mu5, \
+mu7]*MTD[mu1, mu6]*MTD[mu2, mu8] - LCD[mu3, mu4, mu5, mu6]*MTD[mu1, \
+mu7]*MTD[mu2, mu8] + LCD[mu5, mu6, mu7, mu8]*MTD[mu1, mu2]*MTD[mu3, \
+mu4] - LCD[mu2, mu5, mu7, mu8]*MTD[mu1, mu6]*MTD[mu3, mu4] + LCD[mu2, \
+mu5, mu6, mu8]*MTD[mu1, mu7]*MTD[mu3, mu4] - LCD[mu2, mu5, mu6, \
+mu7]*MTD[mu1, mu8]*MTD[mu3, mu4] + LCD[mu1, mu5, mu7, mu8]*MTD[mu2, \
+mu6]*MTD[mu3, mu4] - LCD[mu1, mu5, mu6, mu8]*MTD[mu2, mu7]*MTD[mu3, \
+mu4] + LCD[mu1, mu5, mu6, mu7]*MTD[mu2, mu8]*MTD[mu3, mu4] - LCD[mu4, \
+mu5, mu7, mu8]*MTD[mu1, mu2]*MTD[mu3, mu6] + LCD[mu2, mu5, mu7, \
+mu8]*MTD[mu1, mu4]*MTD[mu3, mu6] - LCD[mu2, mu4, mu5, mu8]*MTD[mu1, \
+mu7]*MTD[mu3, mu6] + LCD[mu2, mu4, mu5, mu7]*MTD[mu1, mu8]*MTD[mu3, \
+mu6] - LCD[mu1, mu5, mu7, mu8]*MTD[mu2, mu4]*MTD[mu3, mu6] + LCD[mu1, \
+mu4, mu5, mu8]*MTD[mu2, mu7]*MTD[mu3, mu6] - LCD[mu1, mu4, mu5, \
+mu7]*MTD[mu2, mu8]*MTD[mu3, mu6] + LCD[mu4, mu5, mu6, mu8]*MTD[mu1, \
+mu2]*MTD[mu3, mu7] - LCD[mu2, mu5, mu6, mu8]*MTD[mu1, mu4]*MTD[mu3, \
+mu7] + LCD[mu2, mu4, mu5, mu8]*MTD[mu1, mu6]*MTD[mu3, mu7] - LCD[mu2, \
+mu4, mu5, mu6]*MTD[mu1, mu8]*MTD[mu3, mu7] + LCD[mu1, mu5, mu6, \
+mu8]*MTD[mu2, mu4]*MTD[mu3, mu7] - LCD[mu1, mu4, mu5, mu8]*MTD[mu2, \
+mu6]*MTD[mu3, mu7] + LCD[mu1, mu4, mu5, mu6]*MTD[mu2, mu8]*MTD[mu3, \
+mu7] - LCD[mu4, mu5, mu6, mu7]*MTD[mu1, mu2]*MTD[mu3, mu8] + LCD[mu2, \
+mu5, mu6, mu7]*MTD[mu1, mu4]*MTD[mu3, mu8] - LCD[mu2, mu4, mu5, \
+mu7]*MTD[mu1, mu6]*MTD[mu3, mu8] + LCD[mu2, mu4, mu5, mu6]*MTD[mu1, \
+mu7]*MTD[mu3, mu8] - LCD[mu1, mu5, mu6, mu7]*MTD[mu2, mu4]*MTD[mu3, \
+mu8] + LCD[mu1, mu4, mu5, mu7]*MTD[mu2, mu6]*MTD[mu3, mu8] - LCD[mu1, \
+mu4, mu5, mu6]*MTD[mu2, mu7]*MTD[mu3, mu8] + LCD[mu3, mu5, mu7, \
+mu8]*MTD[mu1, mu2]*MTD[mu4, mu6] - LCD[mu2, mu5, mu7, mu8]*MTD[mu1, \
+mu3]*MTD[mu4, mu6] + LCD[mu2, mu3, mu5, mu8]*MTD[mu1, mu7]*MTD[mu4, \
+mu6] - LCD[mu2, mu3, mu5, mu7]*MTD[mu1, mu8]*MTD[mu4, mu6] + LCD[mu1, \
+mu5, mu7, mu8]*MTD[mu2, mu3]*MTD[mu4, mu6] - LCD[mu1, mu3, mu5, \
+mu8]*MTD[mu2, mu7]*MTD[mu4, mu6] + LCD[mu1, mu3, mu5, mu7]*MTD[mu2, \
+mu8]*MTD[mu4, mu6] + LCD[mu1, mu2, mu5, mu8]*MTD[mu3, mu7]*MTD[mu4, \
+mu6] - LCD[mu1, mu2, mu5, mu7]*MTD[mu3, mu8]*MTD[mu4, mu6] - LCD[mu3, \
+mu5, mu6, mu8]*MTD[mu1, mu2]*MTD[mu4, mu7] + LCD[mu2, mu5, mu6, \
+mu8]*MTD[mu1, mu3]*MTD[mu4, mu7] - LCD[mu2, mu3, mu5, mu8]*MTD[mu1, \
+mu6]*MTD[mu4, mu7] + LCD[mu2, mu3, mu5, mu6]*MTD[mu1, mu8]*MTD[mu4, \
+mu7] - LCD[mu1, mu5, mu6, mu8]*MTD[mu2, mu3]*MTD[mu4, mu7] + LCD[mu1, \
+mu3, mu5, mu8]*MTD[mu2, mu6]*MTD[mu4, mu7] - LCD[mu1, mu3, mu5, \
+mu6]*MTD[mu2, mu8]*MTD[mu4, mu7] - LCD[mu1, mu2, mu5, mu8]*MTD[mu3, \
+mu6]*MTD[mu4, mu7] + LCD[mu1, mu2, mu5, mu6]*MTD[mu3, mu8]*MTD[mu4, \
+mu7] + LCD[mu3, mu5, mu6, mu7]*MTD[mu1, mu2]*MTD[mu4, mu8] - LCD[mu2, \
+mu5, mu6, mu7]*MTD[mu1, mu3]*MTD[mu4, mu8] + LCD[mu2, mu3, mu5, \
+mu7]*MTD[mu1, mu6]*MTD[mu4, mu8] - LCD[mu2, mu3, mu5, mu6]*MTD[mu1, \
+mu7]*MTD[mu4, mu8] + LCD[mu1, mu5, mu6, mu7]*MTD[mu2, mu3]*MTD[mu4, \
+mu8] - LCD[mu1, mu3, mu5, mu7]*MTD[mu2, mu6]*MTD[mu4, mu8] + LCD[mu1, \
+mu3, mu5, mu6]*MTD[mu2, mu7]*MTD[mu4, mu8] + LCD[mu1, mu2, mu5, \
+mu7]*MTD[mu3, mu6]*MTD[mu4, mu8] - LCD[mu1, mu2, mu5, mu6]*MTD[mu3, \
+mu7]*MTD[mu4, mu8] + LCD[mu3, mu4, mu5, mu8]*MTD[mu1, mu2]*MTD[mu6, \
+mu7] - LCD[mu2, mu4, mu5, mu8]*MTD[mu1, mu3]*MTD[mu6, mu7] + LCD[mu2, \
+mu3, mu5, mu8]*MTD[mu1, mu4]*MTD[mu6, mu7] - LCD[mu2, mu3, mu4, \
+mu5]*MTD[mu1, mu8]*MTD[mu6, mu7] + LCD[mu1, mu4, mu5, mu8]*MTD[mu2, \
+mu3]*MTD[mu6, mu7] - LCD[mu1, mu3, mu5, mu8]*MTD[mu2, mu4]*MTD[mu6, \
+mu7] + LCD[mu1, mu3, mu4, mu5]*MTD[mu2, mu8]*MTD[mu6, mu7] + LCD[mu1, \
+mu2, mu5, mu8]*MTD[mu3, mu4]*MTD[mu6, mu7] - LCD[mu1, mu2, mu4, \
+mu5]*MTD[mu3, mu8]*MTD[mu6, mu7] + LCD[mu1, mu2, mu3, mu5]*MTD[mu4, \
+mu8]*MTD[mu6, mu7] - LCD[mu3, mu4, mu5, mu7]*MTD[mu1, mu2]*MTD[mu6, \
+mu8] + LCD[mu2, mu4, mu5, mu7]*MTD[mu1, mu3]*MTD[mu6, mu8] - LCD[mu2, \
+mu3, mu5, mu7]*MTD[mu1, mu4]*MTD[mu6, mu8] + LCD[mu2, mu3, mu4, \
+mu5]*MTD[mu1, mu7]*MTD[mu6, mu8] - LCD[mu1, mu4, mu5, mu7]*MTD[mu2, \
+mu3]*MTD[mu6, mu8] + LCD[mu1, mu3, mu5, mu7]*MTD[mu2, mu4]*MTD[mu6, \
+mu8] - LCD[mu1, mu3, mu4, mu5]*MTD[mu2, mu7]*MTD[mu6, mu8] - LCD[mu1, \
+mu2, mu5, mu7]*MTD[mu3, mu4]*MTD[mu6, mu8] + LCD[mu1, mu2, mu4, \
+mu5]*MTD[mu3, mu7]*MTD[mu6, mu8] - LCD[mu1, mu2, mu3, mu5]*MTD[mu4, \
+mu7]*MTD[mu6, mu8] + LCD[mu3, mu4, mu5, mu6]*MTD[mu1, mu2]*MTD[mu7, \
+mu8] - LCD[mu2, mu4, mu5, mu6]*MTD[mu1, mu3]*MTD[mu7, mu8] + LCD[mu2, \
+mu3, mu5, mu6]*MTD[mu1, mu4]*MTD[mu7, mu8] - LCD[mu2, mu3, mu4, \
+mu5]*MTD[mu1, mu6]*MTD[mu7, mu8] + LCD[mu1, mu4, mu5, mu6]*MTD[mu2, \
+mu3]*MTD[mu7, mu8] - LCD[mu1, mu3, mu5, mu6]*MTD[mu2, mu4]*MTD[mu7, \
+mu8] + LCD[mu1, mu3, mu4, mu5]*MTD[mu2, mu6]*MTD[mu7, mu8] + LCD[mu1, \
+mu2, mu5, mu6]*MTD[mu3, mu4]*MTD[mu7, mu8] - LCD[mu1, mu2, mu4, \
+mu5]*MTD[mu3, mu6]*MTD[mu7, mu8] + LCD[mu1, mu2, mu3, mu5]*MTD[mu4, \
+mu6]*MTD[mu7, mu8])"},
 {"fcstDiracTrace-ID60", "FCSetDiracGammaScheme[\"NDR\"];\n DiracTrace[GS[p1 + p2 + p3] . GA[i1, i2, i3] . GA[5],
-DiracTraceEvaluate -> True, FCE -> True]", "(4*I)*(LC[i1, i2, i3][p1] + LC[i1, i2, i3][p2] + LC[i1, i2, i3][p3])"},
+DiracTraceEvaluate -> True, EpsExpand -> False, FCE -> True]", "4 I LC[i1, i2, i3][p1 + p2 + p3]"},
 {"fcstDiracTrace-ID61", "FCSetDiracGammaScheme[\"BMHV\"];\n DiracTrace[(GA[5] . GAD[\[Mu]] . GAD[lor1] . GAD[lorb] . GAD[lor2] .
 	GAD[lorz] . GAD[lor3] . GAD[\[Sigma]] -
 	GAD[\[Sigma]] . GAD[lor1] . GAD[lorb] . GAD[lor2] . GAD[lorz] .

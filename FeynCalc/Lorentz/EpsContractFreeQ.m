@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Checks if the expression contains contractalbe epsilon tensors	*)
@@ -18,10 +18,9 @@
 
 
 EpsContractFreeQ::usage =
-"EpsContractFreeQ[exp] returns True if the expression \
-contains epsilon tensors that can be contracted with each other. \
-The function is optimized for large expressions, i.e. it is not so \
-good as a criterion in e.g. Select";
+"EpsContractFreeQ[exp] returns True if the expression contains epsilon tensors
+that can be contracted with each other. The function is optimized for large
+expressions, i.e. it is not so good as a criterion in e.g. Select.";
 
 (* ------------------------------------------------------------------------ *)
 

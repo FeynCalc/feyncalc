@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Generates all possible permutations of the given momenta		*)
@@ -18,8 +18,8 @@
 
 
 FCPermuteMomentaRules::usage =
-"FCPermuteMomentaRules[{p1, p2, ...}] returns a set of rules that contain
-all possible permutations of the momenta p1, p2, ... . This can be useful when
+"FCPermuteMomentaRules[{p1, p2, ...}] returns a set of rules that contain all
+possible permutations of the momenta p1, p2, ... . This can be useful when
 working with amplitudes that exhibit a symmetry in some or all of the final
 state momenta or when trying to find mappings between loop integrals from
 different topologies.";
@@ -50,7 +50,7 @@ FCPermuteMomentaRules[{_}] :=
 FCPermuteMomentaRules[lmoms_List] :=
 	Block[{	permutations, len, rule, res},
 
-		If[! FCDuplicateFreeQ[lmoms],
+		If[ !DuplicateFreeQ[lmoms],
 			Message[FCPermuteMomentaRules::failmsg, "The list of the momenta contains duplicates."];
 			Abort[]
 		];

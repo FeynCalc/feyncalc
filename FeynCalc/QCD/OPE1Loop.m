@@ -14,12 +14,11 @@
 (* ------------------------------------------------------------------------ *)
 
 OPE1Loop::usage =
-"OPE1Loop[q1, amp].  OPE1Loop[{q1,q2}, amp] does sub-loop
-decomposition.";
+"OPE1Loop[q1, amp] and OPE1Loop[{q1,q2}, amp] do sub-loop  decomposition.";
 
 SubLoop::usage =
-"SubLoop is an option for OPE1Loop. If set to True,
-sub 1-loop tensorintegral decomposition is performed."
+"SubLoop is an option for OPE1Loop. If set to True, sub 1-loop tensor integral
+decomposition is performed.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -165,7 +164,7 @@ OPE1Loop[(*grname*)_,k_ /; Head[k] =!= List, integ_ /; Head[integ] =!= Plus,opts
 			];
 			If[ subloop =!= True,
 				amp = ChangeDimension[integ//FeynCalcInternal, dim]//Trick;
-				amp = amp /. DiracTrace -> Tr2;
+				amp = amp /. DiracTrace[x__] :> DiracTrace[x,DiracTraceEvaluate->True];
 				amp = FeynAmpDenominatorCombine[amp];
 
 				If[ !FreeQ[amp,OPE],
@@ -178,7 +177,7 @@ OPE1Loop[(*grname*)_,k_ /; Head[k] =!= List, integ_ /; Head[integ] =!= Plus,opts
 													SUNNToCACF -> sunntocacf];
 				FCPrint[1,"contracting"];
 				If[ FreeQ[amp, Eps] && !FreeQ[amp, LorentzIndex],
-					amp = Contract3[amp] /. Contract3 -> contrac;
+					amp = Contract[amp] /. Contract -> contrac;
 				];
 				FCPrint[1,"contracting 2"];
 				amp = Contract[amp/.GluonVertex[aa__] :>

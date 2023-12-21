@@ -2,9 +2,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2017 Rolf Mertig
-	Copyright (C) 1997-2017 Frederik Orellana
-	Copyright (C) 2014-2017 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Unit tests for functions in the "Tables" directory			*)
@@ -25,26 +25,6 @@ If[	$OnlySubTest=!="",
 	Remove[testNames]
 ];
 
-If[ Names["Tests`Tables`fcstSimplifyPolyLog*"]=!={},
-	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
-	Join@@(ToExpression/@Names["Tests`Tables`fcstSimplifyPolyLog*"])];
-	tmpTest = tmpTest /. testID->TestID /. test -> Test;
-];
+Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
+	Join@@(ToExpression/@Names["Tests`Tables`*"])];
 
-If[ Names["Tests`Tables`fcstNielsen*"]=!={},
-	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
-	Join@@(ToExpression/@Names["Tests`Tables`fcstNielsen*"])];
-	tmpTest = tmpTest /. testID->TestID /. test -> Test;
-];
-
-If[ Names["Tests`Tables`fcstKummer*"]=!={},
-	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
-	Join@@(ToExpression/@Names["Tests`Tables`fcstKummer*"])];
-	tmpTest = tmpTest /. testID->TestID /. test -> Test;
-];
-
-If[ Names["Tests`Tables`fcstHill*"]=!={},
-	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
-	Join@@(ToExpression/@Names["Tests`Tables`fcstHill*"])];
-	tmpTest = tmpTest /. testID->TestID /. test -> Test;
-];

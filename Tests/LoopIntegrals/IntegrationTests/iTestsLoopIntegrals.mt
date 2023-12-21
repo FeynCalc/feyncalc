@@ -2,9 +2,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Unit tests for functions in the "LoopIntegrals" directory		*)
@@ -134,25 +134,28 @@ If[ Names["Tests`LoopIntegrals`fcitTIDFullRedCR2"]=!={},
 
 If[ Names["Tests`LoopIntegrals`fcitTIDSTests"]=!={},
 	$LimitTo4=True;
-	tmpTest = Map[test[ Simplify[ReplaceAll[ToPaVe[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]],kst],{B0[x__] :> B0[x, BReduce -> True],
-	PaVe[x__, PaVeAutoReduce -> False, y___] :> PaVe[x, PaVeAutoReduce -> True, y]}]],0,testID->#[[1]]]&,
+	tmpTest = Map[test[ DiracSimplify@PaVeReduce[Simplify[ReplaceAll[ToPaVe[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]],kst],{B0[x__] :> B0[x, BReduce -> True],
+	PaVe[x__, PaVeAutoReduce -> False, y___] :> PaVe[x, PaVeAutoReduce -> True, y]}]],BReduce->True] ,0,testID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcitTIDSTests"])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test;
 	$LimitTo4=False
 ];
 
 If[ Names["Tests`LoopIntegrals`fcitTIDMTests"]=!={},
-	tmpTest = Map[test[ DiracSimplify[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]]],0,testID->#[[1]]]&,
+	tmpTest = Map[test[ PaVeReduce[DiracSimplify[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]]],BReduce->True],0,testID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcitTIDMTests"])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test;
 
 ];
 
+
 If[ Names["Tests`LoopIntegrals`fcitTIDPTests"]=!={},
-	$LimitTo4=False;
-	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&, Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcitTIDPTests"])];
-	tmpTest = tmpTest /. testID->TestID /. test -> Test
+	tmpTest = Map[test[ ExpandScalarProduct@PaVeReduce[DiracSimplify[Simplify[ToExpression[(#[[2]])]-ToExpression[(#[[3]])]]],BReduce->True],0,testID->#[[1]]]&,
+	Join@@(ToExpression/@Names["Tests`LoopIntegrals`fcitTIDPTests"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+
 ];
+
 
 If[ Names["Tests`LoopIntegrals`fcitOneLoopMiscTests"]=!={},
 	$LimitTo4=False;

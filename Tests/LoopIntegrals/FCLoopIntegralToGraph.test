@@ -1,0 +1,297 @@
+
+
+(* :Title: FCLoopIntegralToGraph.test                                              	    *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopIntegralToGraph	  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopIntegralToGraph =
+({
+{"fcstFCLoopIntegralToGraph-ID1",
+"FCLoopIntegralToGraph[22 \
+SPD[q,x]SFAD[{{0,2v.q}},{q-p,m^2}],{q},AuxiliaryMomenta\[Rule]{v},FCE\
+\[Rule]True]",
+"{{-3 -> 2, -1 -> 1, 1 -> 2, 1 -> 2}, {-p, p, {q, 1, 0}, {-p + q, 1, -m^2}}, {0, 0, SFAD[{{0, 2*q . v}, {0, 1}, 1}], SFAD[{{-p + q, 0}, {m^2, 1}, 1}]}, 22*SPD[q, x]}"},
+{"fcstFCLoopIntegralToGraph-ID2",
+"FCLoopIntegralToGraph[CFAD[{p1,0,2},p2,q1+p1,p1-q2,q1+p1-p2,p1-p2-\
+q2,p1-p2+q1-q3],{p1,p2,p3},FCE\[Rule]True]",
+"{{-5 -> 4, -3 -> 1, -2 -> 2, -1 -> 3, 1 -> 4, 1 -> 5, 2 -> 3, 2 -> 6, 3 -> 5, 4 -> 6, 5 -> 6}, {q1 + q2 - q3, q3, q2, q1,
+{p1 - p2 + q1 - q3, 1, 0}, {p1 - p2 + q1, 1, 0}, {p1, 2, 0}, {p1 - q2, 1, 0}, {p1 + q1, 1, 0},
+{p1 - p2 - q2, 1, 0}, {p2, 1, 0}}, {0, 0, 0, 0, CFAD[{{p2, 0}, {0, -1}, 1}], CFAD[{{p1, 0},
+{0, -1}, 1}], CFAD[{{p1 + q1, 0}, {0, -1}, 1}], CFAD[{{p1 - q2, 0}, {0, -1}, 1}],
+CFAD[{{p1 - p2 + q1, 0}, {0, -1}, 1}], CFAD[{{p1 - p2 - q2, 0}, {0, -1}, 1}],
+CFAD[{{p1 - p2 + q1 - q3, 0}, {0, -1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID3",
+"FCLoopIntegralToGraph[FAD[{p1,0,2},p2,q1+p1,p1-q2,q1+p1-p2,p1-p2-\
+q2,p1-p2+q1-q3],{p1,p2},FCE\[Rule]True]",
+"{{-5 -> 4, -3 -> 1, -2 -> 2, -1 -> 3, 1 -> 4, 1 -> 5, 2 -> 3, 2 -> 6, 3 -> 5, 4 -> 6, 5 -> 6},
+{q1 + q2 - q3, q3, q2, q1, {p1 - p2 + q1 - q3, 1, 0}, {p1 - p2 + q1, 1, 0}, {p1, 2, 0}, {p1 - q2, 1, 0},
+{p1 + q1, 1, 0}, {p1 - p2 - q2, 1, 0}, {p2, 1, 0}}, {0, 0, 0, 0, SFAD[{{p2, 0}, {0, 1}, 1}],
+SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p1 + q1, 0}, {0, 1}, 1}], SFAD[{{p1 - q2, 0}, {0, 1}, 1}],
+SFAD[{{p1 - p2 + q1, 0}, {0, 1}, 1}], SFAD[{{p1 - p2 - q2, 0}, {0, 1}, 1}],
+SFAD[{{p1 - p2 + q1 - q3, 0}, {0, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID4",
+"FCLoopIntegralToGraph[SFAD[p1,Q-p1,p2,Q-p2],{p1,p2},FCE\[Rule]\
+True]", "{{-3 -> 2, -1 -> 1, 1 -> 3, 1 -> 3, 2 -> 3, 2 -> 3}, {-Q, Q, {p2, 1, 0},
+{-p2 + Q, 1, 0}, {p1, 1, 0}, {-p1 + Q, 1, 0}}, {0, 0, SFAD[{{p2, 0}, {0, 1}, 1}],
+SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{-p2 + Q, 0}, {0, 1}, 1}], SFAD[{{-p1 + Q, 0},
+{0, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID5",
+"FCLoopIntegralToGraph[FAD[p1] FAD[p2] FAD[p1-p2],{p1,p2},FCE\
+\[Rule]True]",
+"{{1 -> 2, 1 -> 2, 1 -> 2}, {{p2, 1, 0}, {p1, 1, 0}, {p1 - p2, 1, \
+0}}, {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], \
+SFAD[{{p1 - p2, 0}, {0, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID6",
+"FCLoopIntegralToGraph[FAD[p1] FAD[p4] FAD[p1+q1] FAD[p3+p4+q1] \
+FAD[p3] FAD[p1-p4],{p1,p3,p4},FCE\[Rule]True]",
+"{{-3 -> 2, -1 -> 1, 1 -> 3, 1 -> 4, 2 -> 3, 2 -> 4, 2 -> 4, 3 -> 4}, {-q1, q1, {p1, 1, 0}, {p1 + q1, 1, 0},
+{p4, 1, 0}, {p3, 1, 0}, {p3 + p4 + q1, 1, 0}, {p1 - p4, 1, 0}}, {0, 0,
+SFAD[{{p4, 0}, {0, 1}, 1}], SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p1, 0},
+{0, 1}, 1}], SFAD[{{p1 + q1, 0}, {0, 1}, 1}], SFAD[{{p3 + p4 + q1, 0},
+{0, 1}, 1}], SFAD[{{p1 - p4, 0}, {0, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID7",
+"FCLoopIntegralToGraph[SFAD[p1,p1-Q,p3-Q,p1-p3,p3],{p1,p3},FCE\
+\[Rule]True]",
+"{{-3 -> 2, -1 -> 1, 1 -> 3, 1 -> 4, 2 -> 3, 2 -> 4, 3 -> 4}, {-Q, Q, {p3, 1, 0},
+{p3 - Q, 1, 0}, {p1, 1, 0}, {p1 - Q, 1, 0},
+{p1 - p3, 1, 0}}, {0, 0, SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}],
+SFAD[{{p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}],
+SFAD[{{p1 - p3, 0}, {0, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID8",
+"FCLoopIntegralToGraph[SFAD[p1,p3,p1,Q-p1,p1-p3],{p1,p3},FCE\[Rule]\
+True]", "{{-3 -> 2, -1 -> 1, 1 -> 2, 1 -> 3, 2 -> 3, 2 -> 3}, {-Q, Q,
+{-p1 + Q, 1, 0}, {p1, 2, 0}, {p3, 1, 0}, {p1 - p3, 1, 0}}, {0, 0,
+SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}],
+SFAD[{{-p1 + Q, 0}, {0, 1}, 1}], SFAD[{{p1 - p3, 0}, {0, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID9",
+"FCLoopIntegralToGraph[SFAD[p1,Q-p1,p3,Q-p3],{p1,p3},FCE\[Rule]\
+True]", "{{-3 -> 2, -1 -> 1, 1 -> 3, 1 -> 3, 2 -> 3, 2 -> 3}, {-Q, Q,
+{p3, 1, 0}, {-p3 + Q, 1, 0}, {p1, 1, 0}, {-p1 + Q, 1, 0}},
+{0, 0, SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}],
+SFAD[{{-p3 + Q, 0}, {0, 1}, 1}], SFAD[{{-p1 + Q, 0}, {0, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID10",
+"FCLoopIntegralToGraph[FAD[{p1,0},{p2,0},{p3,0},{p1-p2},{p2+p3},{\
+p2+p3-p1}],{p1,p2,p3},FCE\[Rule]True]",
+"{{1 -> 2, 1 -> 3, 1 -> 4, 2 -> 3, 2 -> 4, 3 -> 4}, {{p3, 1, 0}, \
+{p2, 1, 0}, {p2 + p3, 1, 0}, {p1 - p2, 1, 0}, {-p1 + p2 + p3, 1, 0}, \
+{p1, 1, 0}}, {SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], \
+SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], \
+SFAD[{{p1 - p2, 0}, {0, 1}, 1}], SFAD[{{-p1 + p2 + p3, 0}, {0, 1}, \
+1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID11",
+"FCLoopIntegralToGraph[SFAD[p1,p2,q1+p1,p1-q2,q1+p1-p2,p1-p2-q2],{\
+p1,p2},FCE\[Rule]True]",
+"{{-3 -> 3, -2 -> 1, -1 -> 2, 1 -> 2, 1 -> 5, 2 -> 4, 3 -> 4, 3 -> 5,
+4 -> 5}, {q1 + q2, q2, q1, {p1, 1, 0}, {p1 - q2, 1, 0}, {p1 + q1, 1, 0},
+{p1 - p2 + q1, 1, 0}, {p1 - p2 - q2, 1, 0}, {p2, 1, 0}}, {0, 0, 0,
+SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p1 + q1,
+0}, {0, 1}, 1}], SFAD[{{p1 - q2, 0}, {0, 1}, 1}], SFAD[{{p1 - p2 + q1,
+0}, {0, 1}, 1}], SFAD[{{p1 - p2 - q2, 0}, {0, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID12",
+"FCLoopIntegralToGraph[FAD[p1,{Q+p1,m1},p2,Q+p1-p2,{Q+p1,m2}],{p1,\
+p2},FCE\[Rule]True]",
+"{{-3 -> 2, -1 -> 1, 1 -> 2, 1 -> 3, 2 -> 4, 3 -> 4, 3 -> 4}, {-Q, Q, {p1, 1, 0},
+{p1 + Q, 1, -m2^2}, {p1 + Q, 1, -m1^2}, {p2, 1, 0}, {p1 - p2 + Q, 1, 0}},
+{0, 0, SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}],
+SFAD[{{p1 - p2 + Q, 0}, {0, 1}, 1}], SFAD[{{p1 + Q, 0}, {m2^2, 1}, 1}],
+SFAD[{{p1 + Q, 0}, {m1^2, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID13",
+"FCLoopIntegralToGraph[FAD[{p1,m1}],{p1},FCE\[Rule]True]",
+"{{1 -> 1}, {{p1, 1, -m1^2}}, {SFAD[{{p1, 0}, {m1^2, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID14",
+"FCLoopIntegralToGraph[FAD[{p1,m1},{p2,m2},{p1+p2,0}],{p1,p2},FCE\
+\[Rule]True]",
+"{{1 -> 2, 1 -> 2, 1 -> 2}, {{p1 + p2, 1, 0}, {p2, 1, -m2^2}, {p1, \
+1, -m1^2}}, {SFAD[{{p1 + p2, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {m2^2, \
+1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID15",
+"FCLoopIntegralToGraph[FAD[p1] FAD[p1-p3-p4] FAD[p4] FAD[p3+p4+q1] \
+FAD[{p3,m1}] FAD[{p1-p4,m1}],{p1,p3,p4},FCE\[Rule]True]",
+"{{-3 -> 2, -1 -> 1, 1 -> 2, 1 -> 3, 1 -> 4, 2 -> 3, 2 -> 4, 3 -> 4}, {-q1, q1,
+{p3 + p4 + q1, 1, 0}, {p4, 1, 0}, {p3, 1, -m1^2}, {p1, 1, 0},
+{p1 - p3 - p4, 1, 0}, {p1 - p4, 1, -m1^2}}, {0, 0, SFAD[{{p4, 0},
+{0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p3 + p4 + q1, 0}, {0, 1}, 1}],
+SFAD[{{p3, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - p3 - p4, 0}, {0, 1}, 1}],
+SFAD[{{p1 - p4, 0}, {m1^2, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID16",
+"FCLoopIntegralToGraph[FAD[p1] FAD[p1-p3-p4] FAD[p4] FAD[p1+q1] \
+FAD[p3+q1] FAD[{p3,m1}] FAD[{p1-p4,m1}],{p1,p3,p4},FCE\[Rule]True]",
+"{{-3 -> 2, -1 -> 1, 1 -> 3, 1 -> 5, 2 -> 4, 2 -> 5, 3 -> 4, 3 -> 5, 4 -> 5},
+{-q1, q1, {p1, 1, 0}, {p1 + q1, 1, 0}, {p3, 1, -m1^2}, {p3 + q1, 1, 0},
+{p1 - p4, 1, -m1^2}, {p4, 1, 0}, {p1 - p3 - p4, 1, 0}}, {0, 0, SFAD[{{p4, 0},
+{0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p3 + q1, 0}, {0, 1}, 1}],
+SFAD[{{p1 + q1, 0}, {0, 1}, 1}], SFAD[{{p3, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - p3 - p4, 0},
+{0, 1}, 1}], SFAD[{{p1 - p4, 0}, {m1^2, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID17",
+"FCLoopIntegralToGraph[FAD[p1] FAD[p1-p3-p4] FAD[p4] FAD[p1+q1] \
+FAD[p3+q1] FAD[{p3,m1}] FAD[{p1-p4,m1}],{p1,p3,p4},FCE\[Rule]True]",
+"{{-3 -> 2, -1 -> 1, 1 -> 3, 1 -> 5, 2 -> 4, 2 -> 5, 3 -> 4, 3 -> 5, 4 -> 5},
+{-q1, q1, {p1, 1, 0}, {p1 + q1, 1, 0}, {p3, 1, -m1^2}, {p3 + q1, 1, 0},
+{p1 - p4, 1, -m1^2}, {p4, 1, 0}, {p1 - p3 - p4, 1, 0}}, {0, 0, SFAD[{{p4, 0},
+{0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p3 + q1, 0}, {0, 1}, 1}],
+SFAD[{{p1 + q1, 0}, {0, 1}, 1}], SFAD[{{p3, 0}, {m1^2, 1}, 1}],
+SFAD[{{p1 - p3 - p4, 0}, {0, 1}, 1}], SFAD[{{p1 - p4, 0}, {m1^2, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID18",
+"FCLoopIntegralToGraph[FAD[p1] FAD[p1-p3-p4] FAD[p3+q1] \
+FAD[p3+p4+q1] FAD[{p3,m1}] \
+FAD[{p1-p4,m1}],{p1,p3,p4},FCE\[Rule]True]",
+"{{-3 -> 2, -1 -> 1, 1 -> 3, 1 -> 4, 2 -> 3, 2 -> 4, 2 -> 4, 3 -> 4}, {-q1, q1, {p3, 1, -m1^2},
+{p3 + q1, 1, 0}, {p1 - p3 - p4, 1, 0}, {p1, 1, 0}, {p3 + p4 + q1, 1, 0}, {p1 - p4, 1, -m1^2}},
+{0, 0, SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p3 + q1, 0}, {0, 1}, 1}],
+SFAD[{{p3 + p4 + q1, 0}, {0, 1}, 1}], SFAD[{{p3, 0}, {m1^2, 1}, 1}],
+SFAD[{{p1 - p3 - p4, 0}, {0, 1}, 1}], SFAD[{{p1 - p4, 0}, {m1^2, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID19",
+"FCLoopIntegralToGraph[FAD[p1-p4] FAD[p1+q1] FAD[p3+q1] \
+FAD[p3+p4+q1] FAD[{p1,m1}] FAD[{p3,m1}],{p1,p3,p4},FCE\[Rule]True]",
+"{{-3 -> 2, -1 -> 1, 1 -> 3, 1 -> 4, 2 -> 3, 2 -> 4, 3 -> 4, 3 -> 4}, {-q1, q1, {p3 + q1, 1, 0},
+{p3, 1, -m1^2}, {p1, 1, -m1^2}, {p1 + q1, 1, 0}, {p3 + p4 + q1, 1, 0}, {p1 - p4, 1, 0}},
+{0, 0, SFAD[{{p3 + q1, 0}, {0, 1}, 1}], SFAD[{{p1 + q1, 0}, {0, 1}, 1}],
+SFAD[{{p3 + p4 + q1, 0}, {0, 1}, 1}], SFAD[{{p1 - p4, 0}, {0, 1}, 1}],
+SFAD[{{p3, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID20",
+"FCLoopIntegralToGraph[FAD[p3] FAD[p1-p3-p4] FAD[p4] FAD[p3+q1] \
+FAD[p3+p4+q1] FAD[{p1,m1}],{p1,p3,p4},FCE\[Rule]True]",
+"{{-3 -> 2, -1 -> 1, 1 -> 3, 1 -> 4, 2 -> 3, 2 -> 4, 2 -> 4, 3 -> 4}, {-q1, q1,
+{p3 + q1, 1, 0}, {p3, 1, 0}, {p3 + p4 + q1, 1, 0}, {p1, 1, -m1^2},
+{p1 - p3 - p4, 1, 0}, {p4, 1, 0}}, {0, 0, SFAD[{{p4, 0}, {0, 1}, 1}],
+SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p3 + q1, 0}, {0, 1}, 1}], SFAD[{{p3 + p4 + q1, 0},
+{0, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}],
+SFAD[{{p1 - p3 - p4, 0}, {0, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID21",
+"FCLoopIntegralToGraph[FAD[p1,p2,p3,p1+p2,p1+p2+p3],{p1,p2,p3},FCE\
+\[Rule]True]",
+"{{1 -> 2, 1 -> 3, 1 -> 3, 2 -> 3, 2 -> 3}, {{p1 + p2, 1, 0}, {p3, \
+1, 0}, {p1 + p2 + p3, 1, 0}, {p2, 1, 0}, {p1, 1, 0}}, {SFAD[{{p3, 0}, \
+{0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], \
+SFAD[{{p1 + p2, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3, 0}, {0, 1}, \
+1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID22",
+"FCLoopIntegralToGraph[ \
+FAD[{q-k1},{k1-k2},{k2,mg},{k3,mb},{k2-k3,mb}],{k1,k2,k3},FCE\[Rule]\
+True]", "{{-3 -> 2, -1 -> 1, 1 -> 2, 1 -> 2, 1 -> 3, 2 -> 3, 2 -> 3},
+{-q, q, {-k1 + q, 1, 0}, {k1 - k2, 1, 0}, {k2, 1, -mg^2}, {k3, 1, -mb^2},
+{k2 - k3, 1, -mb^2}}, {0, 0, SFAD[{{-k1 + q, 0}, {0, 1}, 1}],
+SFAD[{{k3, 0}, {mb^2, 1}, 1}], SFAD[{{k2, 0}, {mg^2, 1}, 1}],
+SFAD[{{k1 - k2, 0}, {0, 1}, 1}], SFAD[{{k2 - k3, 0}, {mb^2, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID23",
+"FCLoopIntegralToGraph[ \
+FAD[{q-k1},{k1-k2},{k2,mg},{k3,mb},{k2-k3,mb},{q-k2,mb}],{k1,k2,k3},\
+FCE\[Rule]True]",
+"{{-3 -> 2, -1 -> 1, 1 -> 3, 1 -> 4, 2 -> 3, 2 -> 3, 2 -> 4, 2 -> 4},
+{-q, q, {-k2 + q, 1, -mb^2}, {k2, 1, -mg^2}, {-k1 + q, 1, 0}, {k1 - k2, 1, 0},
+{k3, 1, -mb^2}, {k2 - k3, 1, -mb^2}}, {0, 0, SFAD[{{-k1 + q, 0}, {0, 1}, 1}],
+SFAD[{{k3, 0}, {mb^2, 1}, 1}], SFAD[{{k2, 0}, {mg^2, 1}, 1}],
+SFAD[{{k1 - k2, 0}, {0, 1}, 1}], SFAD[{{-k2 + q, 0}, {mb^2, 1}, 1}],
+SFAD[{{k2 - k3, 0}, {mb^2, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID24",
+"FCLoopIntegralToGraph[ \
+FAD[{q-k1},k1,{k2,mg},{k3,mb},{k2-k3,mb}],{k1,k2,k3},FCE\[Rule]True]",
+	"{{-3 -> 2, -1 -> 1, 1 -> 2, 1 -> 2, 2 -> 3, 2 -> 3, 2 -> 3},
+	{-q, q, {k1, 1, 0}, {-k1 + q, 1, 0}, {k3, 1, -mb^2}, {k2, 1, -mg^2},
+	{k2 - k3, 1, -mb^2}}, {0, 0, SFAD[{{k1, 0}, {0, 1}, 1}],
+	SFAD[{{-k1 + q, 0}, {0, 1}, 1}], SFAD[{{k3, 0}, {mb^2, 1}, 1}],
+	SFAD[{{k2, 0}, {mg^2, 1}, 1}], SFAD[{{k2 - k3, 0}, {mb^2, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID25",
+"FCLoopIntegralToGraph[ \
+FAD[{q-k1},k1,{k2,mg},{k3,mb},{k2-k3,mb},{q-k2,mb}],{k1,k2,k3},FCE\
+\[Rule]True]",
+"{{-3 -> 2, -1 -> 1, 1 -> 4, 1 -> 4, 2 -> 3, 2 -> 3, 2 -> 4, 3 -> 4},
+{-q, q, {k1, 1, 0}, {-k1 + q, 1, 0}, {k3, 1, -mb^2}, {k2 - k3, 1, -mb^2},
+{-k2 + q, 1, -mb^2}, {k2, 1, -mg^2}}, {0, 0, SFAD[{{k1, 0}, {0, 1}, 1}],
+SFAD[{{-k1 + q, 0}, {0, 1}, 1}], SFAD[{{k3, 0}, {mb^2, 1}, 1}],
+SFAD[{{k2, 0}, {mg^2, 1}, 1}], SFAD[{{-k2 + q, 0}, {mb^2, 1}, 1}],
+SFAD[{{k2 - k3, 0}, {mb^2, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID26",
+"FCLoopIntegralToGraph[ \
+FAD[{q-k1},k1,{k3,mb},{k2-k3,mb},{q-k2,mb}],{k1,k2,k3},FCE\[Rule]True]\
+", "{{-3 -> 2, -1 -> 1, 1 -> 3, 1 -> 3, 2 -> 3, 2 -> 3, 2 -> 3}, {-q, q, {k1, 1, 0},
+{-k1 + q, 1, 0}, {k3, 1, -mb^2}, {-k2 + q, 1, -mb^2}, {k2 - k3, 1, -mb^2}},
+{0, 0, SFAD[{{k1, 0}, {0, 1}, 1}], SFAD[{{-k1 + q, 0}, {0, 1}, 1}],
+SFAD[{{k3, 0}, {mb^2, 1}, 1}], SFAD[{{-k2 + q, 0}, {mb^2, 1}, 1}],
+SFAD[{{k2 - k3, 0}, {mb^2, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID27",
+"FCLoopIntegralToGraph[ \
+FAD[{q-k1},k1,k1-k2,{k3,mb},{k2-k3,mb},{q-k2,mb}],{k1,k2,k3},FCE\
+\[Rule]True]",
+"{{-3 -> 2, -1 -> 1, 1 -> 3, 1 -> 4, 2 -> 3, 2 -> 4, 2 -> 4, 3 -> 4},
+{-q, q, {-k1 + q, 1, 0}, {k1, 1, 0}, {-k2 + q, 1, -mb^2}, {k3, 1, -mb^2},
+{k2 - k3, 1, -mb^2}, {k1 - k2, 1, 0}}, {0, 0, SFAD[{{k1, 0}, {0, 1}, 1}],
+SFAD[{{-k1 + q, 0}, {0, 1}, 1}], SFAD[{{k3, 0}, {mb^2, 1}, 1}],
+SFAD[{{k1 - k2, 0}, {0, 1}, 1}], SFAD[{{-k2 + q, 0}, {mb^2, 1}, 1}],
+SFAD[{{k2 - k3, 0}, {mb^2, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID28",
+"FCLoopIntegralToGraph[ \
+FAD[{q-k1},k1,q-k2,k2,{k2-k3,mb},{k1-k3,mb}],{k1,k2,k3},FCE\[Rule]\
+True]", "{{-3 -> 2, -1 -> 1, 1 -> 3, 1 -> 4, 2 -> 3, 2 -> 4, 3 -> 4, 3 -> 4},
+{-q, q, {k2, 1, 0}, {-k2 + q, 1, 0}, {k1, 1, 0}, {-k1 + q, 1, 0},
+{k2 - k3, 1, -mb^2}, {k1 - k3, 1, -mb^2}}, {0, 0, SFAD[{{k2, 0},
+{0, 1}, 1}], SFAD[{{k1, 0}, {0, 1}, 1}], SFAD[{{-k2 + q, 0},
+{0, 1}, 1}], SFAD[{{-k1 + q, 0}, {0, 1}, 1}], SFAD[{{k2 - k3, 0},
+{mb^2, 1}, 1}], SFAD[{{k1 - k3, 0}, {mb^2, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID29",
+"FCLoopIntegralToGraph[SPD[k3] \
+FAD[{q-k1},k1,q-k2,k2,{k2-k3,mb},{k1-k3,mb}],{k1,k2,k3},FCE\[Rule]\
+True]", "{{-3 -> 2, -1 -> 1, 1 -> 3, 1 -> 4, 2 -> 3, 2 -> 4, 3 -> 4, 3 -> 4},
+{-q, q, {k2, 1, 0}, {-k2 + q, 1, 0}, {k1, 1, 0}, {-k1 + q, 1, 0}, {k2 - k3,
+1, -mb^2}, {k1 - k3, 1, -mb^2}}, {0, 0, SFAD[{{k2, 0}, {0, 1}, 1}],
+SFAD[{{k1, 0}, {0, 1}, 1}], SFAD[{{-k2 + q, 0}, {0, 1}, 1}],
+SFAD[{{-k1 + q, 0}, {0, 1}, 1}], SFAD[{{k2 - k3, 0}, {mb^2, 1}, 1}],
+SFAD[{{k1 - k3, 0}, {mb^2, 1}, 1}]}, SPD[k3, k3]}"},
+{"fcstFCLoopIntegralToGraph-ID30",
+"FCLoopIntegralToGraph[FAD[{k, m}, l + p, l - p, k + l], {k, l},
+Momentum -> {2 p, p}, FCE -> True]",
+"{{-4 -> 3, -2 -> 2, -1 -> 1, 1 -> 2, 1 -> 3, 2 -> 3, 2 -> 3}, {p, p, 2*p,
+{l + p, 1, 0}, {l - p, 1, 0}, {k + l, 1, 0}, {k, 1, -m^2}}, {0, 0, 0,
+SFAD[{{l + p, 0}, {0, 1}, 1}], SFAD[{{k + l, 0}, {0, 1}, 1}],
+SFAD[{{l - p, 0}, {0, 1}, 1}], SFAD[{{k, 0}, {m^2, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID31",
+"FCLoopIntegralToGraph[FCTopology[topo1,{FAD[q-k1],FAD[k1],FAD[q-\
+k2],FAD[k2],FAD[{k2-k3,mb}],FAD[{k1-k3,mb}]},{k1,k2,k3},{q},{},{}],\
+FCE->True]",
+"{{-3 -> 2, -1 -> 1, 1 -> 3, 1 -> 4, 2 -> 3, 2 -> 4, 3 -> 4, 3 -> 4}, {-q, q, {-k1 + q, 1, 0},
+{k1, 1, 0}, {-k2 + q, 1, 0}, {k2, 1, 0}, {k2 - k3, 1, -mb^2}, {k1 - k3, 1, -mb^2}},
+{0, 0, SFAD[{{-k1 + q, 0}, {0, 1}, 1}], SFAD[{{k1, 0}, {0, 1}, 1}], SFAD[{{-k2 + q, 0},
+{0, 1}, 1}], SFAD[{{k2, 0}, {0, 1}, 1}], SFAD[{{k2 - k3, 0}, {mb^2, 1}, 1}],
+SFAD[{{k1 - k3, 0}, {mb^2, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID32",
+"FCLoopIntegralToGraph[GLI[topo1,{1,1,1,1,1,1}],FCTopology[topo1,{\
+FAD[q-k1],FAD[k1],FAD[q-k2],FAD[k2],FAD[{k2-k3,mb}],FAD[{k1-k3,mb}]},{\
+k1,k2,k3},{q},{},{}],FCE->True]",
+"{{-3 -> 2, -1 -> 1, 1 -> 3, 1 -> 4, 2 -> 3, 2 -> 4, 3 -> 4, 3 -> 4}, {-q, q, {k2, 1, 0},
+{-k2 + q, 1, 0}, {k1, 1, 0}, {-k1 + q, 1, 0}, {k2 - k3, 1, -mb^2}, {k1 - k3, 1, -mb^2}},
+{0, 0, SFAD[{{k2, 0}, {0, 1}, 1}], SFAD[{{k1, 0}, {0, 1}, 1}], SFAD[{{-k2 + q, 0},
+{0, 1}, 1}], SFAD[{{-k1 + q, 0}, {0, 1}, 1}], SFAD[{{k2 - k3, 0}, {mb^2, 1}, 1}],
+SFAD[{{k1 - k3, 0}, {mb^2, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID33",
+"FCLoopIntegralToGraph[GLI[topo1,{1,1,1,0,0,0}],
+{FCTopology[topo1,{FAD[q-k1],FAD[k1],FAD[q-k2],FAD[k2],
+FAD[{k2-k3,mb}],FAD[{k1-k3,mb}]},{k1,k2,k3},{q},{},{}],
+FCTopology[topo2,{FAD[q-k1],FAD[k1],FAD[q-k2],FAD[k2],
+FAD[{k2-k3,mg}],FAD[{k1-k3,mg}]},{k1,k2,k3},{q},{},{}]}]",
+"{{-3 -> 2, -1 -> 1, 1 -> 2, 1 -> 2, 2 -> 2}, {-q, q, {k1, 1, 0},
+{-k1 + q, 1, 0}, {-k2 + q, 1, 0}}, {0, 0, SFAD[{{k1, 0}, {0, 1}, 1}],
+SFAD[{{-k2 + q, 0}, {0, 1}, 1}], SFAD[{{-k1 + q, 0}, {0, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID34",
+"FCLoopIntegralToGraph[FCTopology[topo1, {SFAD[{{l1 + l2, 0}, {0, 1}, 1}], SFAD[{{l2, 0}, {mt^2, 1}, 1}], SFAD[{{l1, 0}, {mt^2, 1}, 1}],
+SFAD[{{l1 + q1, 0}, {mt^2, 1}, 1}], SFAD[{{l2 - q1, 0}, {mt^2, 1}, 1}], SFAD[{{l2 - q1 - q2, 0}, {mt^2, 1}, 1}]}, {l1, l2}, {q1, q2}, {}, {}]]",
+"{{-3 -> 3, -2 -> 1, -1 -> 2, 1 -> 3, 1 -> 5, 2 -> 4, 2 -> 5, 3 -> 4, 4 -> 5}, {q1 + q2, q2, q1, {l2 - q1 - q2, 1, -mt^2},
+{l2 - q1, 1, -mt^2}, {l1, 1, -mt^2}, {l1 + q1, 1, -mt^2}, {l2, 1, -mt^2}, {l1 + l2, 1, 0}}, {0, 0, 0, SFAD[{{l1 + l2, 0},
+{0, 1}, 1}], SFAD[{{l2, 0}, {mt^2, 1}, 1}], SFAD[{{l1, 0}, {mt^2, 1}, 1}], SFAD[{{l1 + q1, 0}, {mt^2, 1}, 1}],
+SFAD[{{l2 - q1, 0}, {mt^2, 1}, 1}], SFAD[{{l2 - q1 - q2, 0}, {mt^2, 1}, 1}]}, 1}"},
+{"fcstFCLoopIntegralToGraph-ID35",
+"FCLoopIntegralToGraph[
+SFAD[{{-q1, 0}, {m^2, 1}, 1}]*SFAD[{{p1 - p2 + q1, 0}, {m^2, 1}, 1}]*
+SFAD[{{-p2 + q1 - q2, 0}, {m^2, 1}, 1}]*SFAD[{{-q2, 0}, {m^2, 1}, 1}], {q1, q2}]",
+"{{-4 -> 3, -2 -> 1, -1 -> 2, 1 -> 2, 1 -> 2, 1 -> 3, 2 -> 3}, {p1 - p2, p2, p1, {q2, 1, -m^2},
+{-p2 + q1 - q2, 1, -m^2}, {q1, 1, -m^2}, {p1 - p2 + q1, 1, -m^2}}, {0, 0, 0, SFAD[{{-q2, 0}, {m^2, 1}, 1}],
+SFAD[{{-q1, 0}, {m^2, 1}, 1}], SFAD[{{p1 - p2 + q1, 0}, {m^2, 1}, 1}], SFAD[{{-p2 + q1 - q2, 0}, {m^2, 1}, 1}]}, 1}"}
+});

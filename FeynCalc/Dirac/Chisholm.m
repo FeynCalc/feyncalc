@@ -7,9 +7,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Applies the Chisholm identity									*)
@@ -17,8 +17,8 @@
 (* ------------------------------------------------------------------------ *)
 
 Chisholm::usage =
-"Chisholm[exp] substitutes products of three Dirac matrices or \
-slashes by the Chisholm identity.";
+"Chisholm[exp] substitutes products of three Dirac matrices or slashes by the
+Chisholm identity.";
 
 Chisholm::failmsg =
 "Error! Chisholm has encountered a fatal problem and must abort the computation. \
@@ -34,19 +34,21 @@ Begin["`Chisholm`Private`"]
 chVerbose::usage="";
 
 Options[Chisholm] = {
-	Contract 			-> True,
-	DiracSigmaExplicit	-> False,
-	DiracSimplify		-> True,
-	DotSimplify			-> True,
-	FCDiracIsolate		-> True,
-	FCE					-> False,
-	FCI					-> False,
-	FCJoinDOTs			-> True,
-	FCVerbose			-> False,
-	InsideDiracTrace	-> False,
-	MaxIterations		-> Infinity,
-	Mode				-> 1,
-	NonCommutative 		-> True
+	Contract 					-> True,
+	DiracSigmaExplicit			-> False,
+	DiracSimplify				-> True,
+	DiracSpinorNormalization	-> "Relativistic",
+	DotSimplify					-> True,
+	FCDiracIsolate				-> True,
+	FCE							-> False,
+	FCI							-> False,
+	FCJoinDOTs					-> True,
+	FCVerbose					-> False,
+	InsideDiracTrace			-> False,
+	MaxIterations				-> Infinity,
+	Mode						-> 1,
+	NonCommutative 				-> True,
+	SpinorChainEvaluate			-> True
 };
 
 Chisholm[a_ == b_, opts:OptionsPattern[]] :=
@@ -261,7 +263,9 @@ Chisholm[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 		If[	OptionValue[DiracSimplify],
 				time=AbsoluteTime[];
 				FCPrint[1, "Chisholm: Applying DiracSimplify.", FCDoControl->chVerbose];
-				res = DiracSimplify[res, FCI->True, DiracSigmaExplicit->OptionValue[DiracSigmaExplicit]];
+				res = DiracSimplify[res, FCI->True, DiracSigmaExplicit->OptionValue[DiracSigmaExplicit],
+					SpinorChainEvaluate -> OptionValue[SpinorChainEvaluate],
+					DiracSpinorNormalization -> OptionValue[DiracSpinorNormalization]];
 				FCPrint[1, "Chisholm: Done applying DiracSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->chVerbose]
 		];
 

@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for GluonPropagator	  		*)
@@ -21,9 +21,9 @@ nu])*SD[a, b]"},
 {"fcstGluonPropagator-ID2",
 "GluonPropagator[p,mu,a,nu,b,Gauge\[Rule]{Momentum[n,D],1}]\
 //Explicit//FCE",
-"I*FAD[p]*SD[a, b]*(-MTD[mu, nu] + (FVD[n, nu]*FVD[p, mu] + FVD[n, \
-mu]*FVD[p, nu])/SPD[n, p] - (FVD[p, mu]*FVD[p, nu]*SPD[n, n] - FVD[n, \
-mu]*FVD[n, nu]*SPD[p, p])/SPD[n, p]^2)"},
+"I*FAD[p]*SD[a, b]*(-MTD[mu, nu] + (FVD[n, nu]*FVD[p, mu] +
+FVD[n, mu]*FVD[p, nu])*SFAD[{{0, n . p}, {0, 1}, 1}] -
+SFAD[{{0, n . p}, {0, 1}, 2}]*(FVD[p, mu]*FVD[p, nu]*SPD[n, n] - FVD[n, mu]*FVD[n, nu]*SPD[p, p]))"},
 {"fcstGluonPropagator-ID3",
 "GluonPropagator[p,mu,nu]//Explicit//FCE",
 "(-I)*FAD[p]*MTD[mu, nu]"},
@@ -55,13 +55,15 @@ b]*((-4*FVD[p, mu]*FVD[p, nu])/3 + (4*MTD[mu, nu]*SPD[p, \
 p])/3))/Epsilon"},
 {"fcstGluonPropagator-ID10",
 "GluonPropagator[p,mu,a,nu,b,Gauge\[Rule]{n,0},Explicit\[Rule]True]\
-//FCE", "I*FAD[p]*SD[a, b]*(-MTD[mu, nu] - (FVD[p, mu]*FVD[p, \
-nu]*SPD[n, n])/SPD[n, p]^2 + (FVD[n, nu]*FVD[p, mu] + FVD[n, \
-mu]*FVD[p, nu])/SPD[n, p])"},
+//FCE", "I*FAD[p]*SD[a, b]*(-MTD[mu, nu] + (FVD[n, nu]*FVD[p, mu] +
+FVD[n, mu]*FVD[p, nu])*SFAD[{{0, n . p}, {0, 1}, 1}] - FVD[p, mu]*FVD[p, nu]*SFAD[{{0, n . p}, {0, 1}, 2}]*SPD[n, n])"},
 {"fcstGluonPropagator-ID11",
 "GluonPropagator[p,mu,a,nu,b,Gauge\[Rule]{n,alpha},Explicit\[Rule]\
 True]//FCE",
-"I*FAD[p]*SD[a, b]*(-MTD[mu, nu] + (FVD[n, nu]*FVD[p, mu] + FVD[n, \
-mu]*FVD[p, nu])/SPD[n, p] - (FVD[p, mu]*FVD[p, nu]*SPD[n, n] - \
-alpha*FVD[n, mu]*FVD[n, nu]*SPD[p, p])/SPD[n, p]^2)"}
+"I*FAD[p]*SD[a, b]*(-MTD[mu, nu] + (FVD[n, nu]*FVD[p, mu] + FVD[n, mu]*FVD[p,
+nu])*SFAD[{{0, n . p}, {0, 1}, 1}] - SFAD[{{0, n . p}, {0, 1},
+2}]*(FVD[p, mu]*FVD[p, nu]*SPD[n, n] - alpha*FVD[n, mu]*FVD[n, nu]*SPD[p, p]))"},
+{"fcstGluonPropagator-ID12",
+"GP[p, li1, li2, {Gauge -> xi}]",
+"GluonPropagator[p, {li1}, {li2}, {Gauge -> xi}]"}
 });

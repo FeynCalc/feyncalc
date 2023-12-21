@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Isolates matrix objects										*)
@@ -16,8 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 FCMatrixIsolate::usage =
-"FCMatrixIsolate[exp] wraps the occurring Dirac, Pauli and color objects into heads \
-specified by the user.";
+"FCMatrixIsolate[exp] wraps the occurring Dirac, Pauli and color objects into
+heads specified by the user.";
 
 FCMatrixIsolate::failmsg =
 "Error! FCMatrixIsolate has encountered a fatal problem and must abort the computation. \
@@ -45,7 +45,7 @@ Options[FCMatrixIsolate] = {
 	FCDiracIsolate 	-> {FCGV["DiracObject"], {FCI->True, DiracChain->True, Expanding->False, FCJoinDOTs->False}},
 	FCE				-> False,
 	FCI				-> False,
-	FCPauliIsolate	-> {FCGV["PauliObject"], {FCI->True, Expanding->False, FCJoinDOTs->False}},
+	FCPauliIsolate	-> {FCGV["PauliObject"], {FCI->True, PauliChain->True, Expanding->False, FCJoinDOTs->False}},
 	FCVerbose 		-> False,
 	Factoring		-> Factor,
 	Head			-> Identity,
@@ -74,7 +74,7 @@ FCMatrixIsolate[expr_/;Head[expr]=!=List, OptionsPattern[]] :=
 			];
 		];
 
-		If[	!MatchQ[optOrdering,{__}] || !FCSubsetQ[{FCDiracIsolate,FCColorIsolate,FCPauliIsolate},Union[optOrdering]],
+		If[	!MatchQ[optOrdering,{__}] || !SubsetQ[{FCDiracIsolate,FCColorIsolate,FCPauliIsolate},Union[optOrdering]],
 			Message[FCMatrixIsolate::failmsg, "The value of the Ordering option is incorrect."];
 			Abort[]
 		];

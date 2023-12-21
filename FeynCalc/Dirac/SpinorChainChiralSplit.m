@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Simplification rules for products of spinor chains			*)
@@ -16,8 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 SpinorChainChiralSplit::usage =
-"SpinorChainChiralSplit[exp] introduces chirality projectors in spinor chains \
-that contain no GA[5].";
+"SpinorChainChiralSplit[exp] introduces chiral projectors in spinor chains that
+contain no $\\gamma^5$.";
 
 SpinorChainChiralSplit::failmsg =
 "Error! SpinorChainChiralSplit has encountered a fatal problem and must abort the computation. \

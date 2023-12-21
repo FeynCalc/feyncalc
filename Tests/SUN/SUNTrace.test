@@ -4,39 +4,96 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for SUNTrace                 *)
 
 (* ------------------------------------------------------------------------ *)
 
-Tests`SUN`fcstSUNTraceColorTraces = {
-{"fcstSUNTraceColorTraces-ID1","SUNTrace[1]",
+Tests`SUN`fcstSUNTrace = {
+{"fcstSUNTrace-ID1","SUNTrace[1,SUNTraceEvaluate->True]",
 	"SUNN"},
-{"fcstSUNTraceColorTraces-ID2","SUNTrace[SUNT[a]]",
+{"fcstSUNTrace-ID2","SUNTrace[SUNT[a],SUNTraceEvaluate->True]",
 	"0"},
-{"fcstSUNTraceColorTraces-ID3","SUNTrace[SUNT[a].SUNT[b]]",
+{"fcstSUNTrace-ID3","SUNTrace[SUNT[a].SUNT[b],SUNTraceEvaluate->True]",
 	"1/2 SUNDelta[SUNIndex[a], SUNIndex[b]]"},
-{"fcstSUNTraceColorTraces-ID4","SUNTrace[SUNT[b].SUNT[a]]",
+{"fcstSUNTrace-ID4","SUNTrace[SUNT[b].SUNT[a],SUNTraceEvaluate->True]",
 	"1/2 SUNDelta[SUNIndex[a], SUNIndex[b]]"},
-{"fcstSUNTraceColorTraces-ID5","SUNTrace[SUNT[a,b,a,b]]",
-	"1/(4*SUNN) - SUNN/4"},
-{"fcstSUNTraceColorTraces-ID6","SUNTrace[SUNT[a,b,c], Explicit -> True]",
+{"fcstSUNTrace-ID5","SUNTrace[SUNT[a,b,a,b],SUNTraceEvaluate->True]",
+	"-1/4*(-1 + SUNN^2)/SUNN"},
+{"fcstSUNTrace-ID6","SUNTrace[SUNT[a,b,c], SUNTraceEvaluate->True]",
 	"SUND[SUNIndex[a], SUNIndex[b], SUNIndex[c]]/4 + (I/4)*SUNF[SUNIndex[a], SUNIndex[b], SUNIndex[c]]"},
-{"fcstSUNTraceColorTraces-ID7","SUNTrace[SUNF[a, b, c] SUNT[a, b, c]] // SUNSimplify",
+{"fcstSUNTrace-ID7","SUNTrace[SUNF[a, b, c] SUNT[a, b, c], SUNTraceEvaluate -> True]",
 	"(I/2)*CA^2*CF"},
-{"fcstSUNTraceColorTraces-ID8","SUNTrace[SUNF[a, r, s] SUNF[b, r, s]] // SUNSimplify",
-	"CA^2*SUNDelta[SUNIndex[a], SUNIndex[b]]"},
-{"fcstSUNTraceColorTraces-ID9","SUNTrace[SUNT[a, b, c, a, b, c]]",
-	"-(1/(8 SUNN^2)) + SUNN^2/8"},
-{"fcstSUNTraceColorTraces-ID10","SUNTrace[GAD[\[Mu]] . GA[5] . SUNT[a] . SUNT[cola, colb] .
+{"fcstSUNTrace-ID8","SUNTrace[SUNF[a, r, s] SUNF[b, r, s], SUNTraceEvaluate -> True]",
+	"SUNN SUNF[SUNIndex[a], SUNIndex[r], SUNIndex[s]] SUNF[SUNIndex[b],SUNIndex[r], SUNIndex[s]]"},
+{"fcstSUNTrace-ID9","SUNTrace[SUNT[a, b, c, a, b, c], SUNTraceEvaluate -> True]",
+	"(-1 + SUNN^2)/8 + (-1 + SUNN^2)/(8*SUNN^2)"},
+{"fcstSUNTrace-ID10","SUNTrace[GAD[\[Mu]] . GA[5] . SUNT[a] . SUNT[cola, colb] .
 GAD[lorc] . GSD[x] . GAD[lord] . GAD[\[Nu]] .
 GA[5] . (SUNT[colc] . FVD[x, lore] . GAD[lorf] +
 	SUNT[colc] . GAD[lore] . GAD[lorf] . GSD[x]) MTD[lorc, lore] MTD[
-lord, lorf] SUNF[cola, colb, colc]]",
-	"0"}
+lord, lorf] SUNF[cola, colb, colc],SUNTraceEvaluate->True]","0"},
+{"fcstSUNTrace-ID11", "SUNTrace[0,SUNTraceEvaluate->True]", "0"},
+{"fcstSUNTrace-ID12", "SUNTrace[x,SUNTraceEvaluate->True]",
+"SUNN*x"},
+{"fcstSUNTrace-ID13", "SUNTrace[SUNT[a],SUNTraceEvaluate->True]",
+"0"},
+{"fcstSUNTrace-ID14", "SUNTrace[SUNT[a]+x,SUNTraceEvaluate->True]",
+"SUNN*x"},
+{"fcstSUNTrace-ID15",
+"SUNTrace[SUNT[a,b],SUNTraceEvaluate->True,FCE->True]",
+"SD[a, b]/2"},
+{"fcstSUNTrace-ID16",
+"SUNTrace[SUNT[a,b]+y,SUNTraceEvaluate->True,FCE->True]",
+"SUNN*y + SD[a, b]/2"},
+{"fcstSUNTrace-ID17",
+"SUNTrace[SUNT[a,b,c],SUNTraceEvaluate->True,FCE->True]",
+"SUND[a, b, c]/4 + (I/4)*SUNF[a, b, c]"},
+{"fcstSUNTrace-ID18",
+"SUNTrace[SUNT[a,b,c,d],SUNTraceEvaluate->True,SUNIndexNames->{i},\
+FCE->True]",
+"(SD[a, d]*SD[b, c])/(4*SUNN) - (SD[a, c]*SD[b, d])/(4*SUNN) + \
+(SD[a, b]*SD[c, d])/(4*SUNN) + (SUND[a, d, i]*SUND[b, c, i])/8 - \
+(SUND[a, c, i]*SUND[b, d, i])/8 + (SUND[a, b, i]*SUND[c, d, i])/8 - \
+(I/8)*SUND[b, c, i]*SUNF[a, d, i] + (I/8)*SUND[a, d, i]*SUNF[b, c, \
+i]"},
+{"fcstSUNTrace-ID19",
+"SUNTrace[SUNT[a,b,c]SUNTrace[SUNT[a,b]],SUNTraceEvaluate->True,\
+FCE->True]",
+"(SUND[a, b, c]/4 + (I/4)*SUNF[a, b, c])*SUNTrace[SUNT[a] . \
+SUNT[b]]"},
+{"fcstSUNTrace-ID20",
+"SUNTrace[SUNT[a,b,c,d,e],SUNTraceEvaluate->True,SUNIndexNames->{i,\
+j,k},FCE->True]",
+"(SD[d, e]*SUND[a, b, c])/(8*SUNN) - (SD[c, e]*SUND[a, b, \
+d])/(8*SUNN) + (SD[c, d]*SUND[a, b, e])/(8*SUNN) + (SD[a, b]*SUND[c, \
+d, e])/(8*SUNN) + (SUND[a, b, i]*SUND[c, i, j]*SUND[d, e, j])/16 - \
+(SUND[a, b, i]*SUND[c, e, j]*SUND[d, i, j])/16 + (SUND[a, b, \
+i]*SUND[c, d, j]*SUND[e, i, j])/16 + ((I/8)*SD[d, e]*SUNF[a, b, \
+c])/SUNN - ((I/8)*SD[c, e]*SUNF[a, b, d])/SUNN + ((I/8)*SD[c, \
+d]*SUNF[a, b, e])/SUNN + (I/16)*SUND[c, i, j]*SUND[d, e, j]*SUNF[a, \
+b, i] - (I/16)*SUND[c, e, i]*SUND[d, i, j]*SUNF[a, b, j] + \
+(I/16)*SUND[c, d, i]*SUND[e, i, j]*SUNF[a, b, j] + ((I/8)*SD[a, \
+b]*SUNF[c, d, e])/SUNN + (I/16)*SUND[a, b, i]*SUND[e, i, j]*SUNF[c, \
+d, j] - (SUND[e, i, j]*SUNF[a, b, i]*SUNF[c, d, j])/16 + \
+(I/16)*SUND[a, b, i]*SUND[c, d, j]*SUNF[e, i, j] + (SUND[c, d, \
+i]*SUNF[a, b, j]*SUNF[e, i, j])/16"},
+{"fcstSUNTrace-ID21",
+"SUNTrace[SUNT[i1,i2,i1,i2],SUNTraceEvaluate->True]",
+"-1/4*(-1 + SUNN^2)/SUNN"},
+{"fcstSUNTrace-ID22",
+"SUNTrace[SUNT[i1,i2,i3,i1,i2,i3],SUNTraceEvaluate->True]",
+"(-1 + SUNN^2)/8 + (-1 + SUNN^2)/(8*SUNN^2)"},
+{"fcstSUNTrace-ID23",
+"SUNTrace[SUNT[i1,i2,i3,i4,i1,i2,i3,i4],SUNTraceEvaluate->True]",
+"-1/16*(-1 + SUNN^2)/SUNN^3 - (3*(-1 + SUNN^2))/(16*SUNN)"},
+{"fcstSUNTrace-ID24",
+"SUNTrace[SUNT[a] . SUNT[b] . SUNT[c] - SUNT[c] . SUNT[b] . SUNT[a],
+SUNTraceEvaluate -> True]",
+"(I/2)*SUNF[SUNIndex[a], SUNIndex[b], SUNIndex[c]]"}
 };
 

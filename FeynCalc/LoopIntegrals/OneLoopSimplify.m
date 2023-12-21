@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Simplification of 1-loop integrals						    *)
@@ -16,11 +16,11 @@
 (* ------------------------------------------------------------------------ *)
 
 OneLoopSimplify::usage =
-"OneLoopSimplify[amp, q] simplifies the one-loop amplitude amp. \
-The second argument denotes the integration momentum. \
-If the first argument has head FeynAmp then \
-OneLoopSimplify[FeynAmp[name, k, expr], k] tranforms to \
-OneLoopSimplify[expr, k].";
+"OneLoopSimplify[amp, q] simplifies the one-loop amplitude amp. The second
+argument denotes the integration momentum.
+
+If the first argument has head FeynAmp then OneLoopSimplify[FeynAmp[name, k,
+expr], k] transforms to OneLoopSimplify[expr, k]";
 
 OneLoopSimplify::nivar =
 "The integration variable is not found in the integrand. \
@@ -44,21 +44,23 @@ Begin["`OneLoopSimplify`Private`"]
 olsVerbose::usage="";
 
 Options[OneLoopSimplify] = {
-	Collecting 			-> True,
-	Dimension 			-> D,
-	DiracSimplify 		-> True,
-	ExpandScalarProduct -> True,
-	FCE 				-> False,
-	FCI 				-> False,
-	FCVerbose 			-> False,
-	Factoring 			-> Automatic,
-	FinalSubstitutions	-> {},
-	OPE1Loop			-> False,
-	PowerSimplify		-> True,
-	SUNNToCACF			-> True,
-	SUNTrace			-> False,
-	ToPaVe				-> False,
-	UsePaVeBasis		-> False
+	Collecting 					-> True,
+	Dimension 					-> D,
+	DiracSimplify 				-> True,
+	DiracSpinorNormalization	-> "Relativistic",
+	ExpandScalarProduct 		-> True,
+	FCE 						-> False,
+	FCI 						-> False,
+	FCVerbose 					-> False,
+	Factoring 					-> Automatic,
+	FinalSubstitutions			-> {},
+	OPE1Loop					-> False,
+	PowerSimplify				-> True,
+	SpinorChainEvaluate 		-> True,
+	SUNNToCACF					-> True,
+	SUNTraceEvaluate			-> False,
+	ToPaVe						-> False,
+	UsePaVeBasis				-> False
 };
 
 (*Do we really need to support this syntax???*)
@@ -109,7 +111,7 @@ OneLoopSimplify[expr_, qu_, OptionsPattern[]] :=
 		dim					= OptionValue[Dimension];
 		optDiracSimplify	= OptionValue[DiracSimplify];
 		sunntocacf 			= OptionValue[SUNNToCACF];
-		suntrace 			= OptionValue[SUNTrace];
+		suntrace 			= OptionValue[SUNTraceEvaluate];
 		ope1loop 			= OptionValue[OPE1Loop];
 		substis 			= OptionValue[FinalSubstitutions];
 		optCollecting	 	= OptionValue[Collecting];
@@ -145,7 +147,7 @@ OneLoopSimplify[expr_, qu_, OptionsPattern[]] :=
 		If[ !FreeQ2[tmp, FeynCalc`Package`SUNHeadsList],
 			time=AbsoluteTime[];
 			FCPrint[1, "OneLoopSimplify: Applying SUNSimplify.", FCDoControl->olsVerbose];
-			tmp = SUNSimplify[tmp, SUNNToCACF -> sunntocacf, SUNTrace -> suntrace, Explicit -> False];
+			tmp = SUNSimplify[tmp, SUNNToCACF -> sunntocacf, SUNTraceEvaluate -> suntrace, Explicit -> False];
 			FCPrint[1, "OneLoopSimplify: SUNSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->olsVerbose];
 			FCPrint[3, "OneLoopSimplify: After SUNSimplify: ", tmp, FCDoControl->olsVerbose]
 		];
@@ -153,7 +155,8 @@ OneLoopSimplify[expr_, qu_, OptionsPattern[]] :=
 		If[	!FreeQ2[tmp, FeynCalc`Package`DiracHeadsList] && optDiracSimplify,
 			time=AbsoluteTime[];
 			FCPrint[1, "OneLoopSimplify: Applying DiracSimplify.", FCDoControl->olsVerbose];
-			tmp = DiracSimplify[tmp, FCI->True];
+			tmp = DiracSimplify[tmp, FCI->True, SpinorChainEvaluate -> OptionValue[SpinorChainEvaluate],
+				DiracSpinorNormalization -> OptionValue[DiracSpinorNormalization]];
 			FCPrint[1, "OneLoopSimplify: DiracSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->olsVerbose];
 			FCPrint[3, "OneLoopSimplify: After DiracSimplify: ", tmp, FCDoControl->olsVerbose]
 		];
@@ -177,7 +180,8 @@ OneLoopSimplify[expr_, qu_, OptionsPattern[]] :=
 
 		time=AbsoluteTime[];
 		FCPrint[1, "OneLoopSimplify: Applying TID.", FCDoControl->olsVerbose];
-		tmp =  TID[tmp,  q, Dimension -> dim, FCI->True, DiracSimplify -> optDiracSimplify, ToPaVe->OptionValue[ToPaVe], UsePaVeBasis->OptionValue[UsePaVeBasis]];
+		tmp =  TID[tmp,  q, Dimension -> dim, FCI->True, DiracSimplify -> optDiracSimplify, ToPaVe->OptionValue[ToPaVe], UsePaVeBasis->OptionValue[UsePaVeBasis],
+				SpinorChainEvaluate -> OptionValue[SpinorChainEvaluate], DiracSpinorNormalization -> OptionValue[DiracSpinorNormalization]];
 		FCPrint[1, "OneLoopSimplify: TID done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->olsVerbose];
 		FCPrint[3, "OneLoopSimplify: After TID: ", tmp, FCDoControl->olsVerbose];
 
@@ -189,7 +193,8 @@ OneLoopSimplify[expr_, qu_, OptionsPattern[]] :=
 		If[	!FreeQ2[tmp, FeynCalc`Package`DiracHeadsList] && optDiracSimplify,
 			time=AbsoluteTime[];
 			FCPrint[1, "OneLoopSimplify: Applying DiracSimplify.", FCDoControl->olsVerbose];
-			tmp = DiracSimplify[tmp, FCI->True];
+			tmp = DiracSimplify[tmp, FCI->True, SpinorChainEvaluate -> OptionValue[SpinorChainEvaluate],
+				DiracSpinorNormalization -> OptionValue[DiracSpinorNormalization]];
 			FCPrint[1, "OneLoopSimplify: DiracSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->olsVerbose];
 			FCPrint[3, "OneLoopSimplify: After DiracSimplify: ", tmp, FCDoControl->olsVerbose]
 		];

@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Applies Schouten identity in 4 dimensions multiple times		*)
@@ -17,13 +17,15 @@
 
 
 FCSchoutenBruteForce::usage =
-"FCSchoutenBruteForce[exp,{},{}] can be used to show that certain terms are zero \
-by repeatedly Schouten identity in a brute force way. The algorithm tries to \
-find replacements which follow from the Schouten identity and make the length \
-of the given expression shorter. It is not guaranteed to terminate and in \
-general can often get stucked. Still, with some luck it is often possible \
-to show that certain terms vanish by a sequence of transformations that would \
-be otherwise very difficult to find.";
+"FCSchoutenBruteForce[exp, {}, {}]  can be used to show that certain terms are
+zero by repeatedly applying, Schouten's identity in a brute force way.
+
+The algorithm tries to find replacements which follow from the Schouten's
+identity and make the length of the given expression shorter.
+
+It is not guaranteed to terminate and in general can often get stuck. Still,
+with some luck it is often possible to show that certain terms vanish by a
+sequence of transformations that would be otherwise very difficult to find.";
 
 Begin["`Package`"]
 End[]
@@ -44,7 +46,7 @@ Options[FCSchoutenBruteForce] = {
 	Schouten 					-> False,
 	SchoutenAllowNegativeGain	-> False,
 	SchoutenAllowZeroGain		-> False,
-	Take -> 1
+	Take 						-> 1
 };
 
 checkSchouten[x_, repRule_]:=
@@ -76,7 +78,7 @@ FCSchoutenBruteForce[expr_, epsvars_List, vars_List/;(!OptionQ[vars] || vars==={
 
 
 		FCPrint[1, "FCSchoutenBruteForce: Entering.", FCDoControl->fcsbVerbose];
-		FCPrint[3, "FCSchoutenBruteForce: Entering with ", ex, FCDoControl->fcsbVerbose];
+		FCPrint[3, "FCSchoutenBruteForce: Entering with ", expr, FCDoControl->fcsbVerbose];
 
 		If[	OptionValue[FCI],
 			ex = expr,
@@ -123,8 +125,8 @@ FCSchoutenBruteForce[expr_, epsvars_List, vars_List/;(!OptionQ[vars] || vars==={
 			moms = vars
 		];
 
-		FCPrint[1, "FCSchoutenBruteForce: There are ", Length[epsInds], " possible Eps arguments." FCDoControl->fcsbVerbose];
-		FCPrint[1, "FCSchoutenBruteForce: There are ", Length[moms], " possible scalar product arguments." FCDoControl->fcsbVerbose];
+		FCPrint[1, "FCSchoutenBruteForce: There are ", Length[epsInds], " possible Eps arguments.", FCDoControl->fcsbVerbose];
+		FCPrint[1, "FCSchoutenBruteForce: There are ", Length[moms], " possible scalar product arguments.", FCDoControl->fcsbVerbose];
 		FCPrint[3, "FCSchoutenBruteForce: moms: ", moms, FCDoControl->fcsbVerbose];
 		FCPrint[3, "FCSchoutenBruteForce: vars: ", vars, FCDoControl->fcsbVerbose];
 
@@ -138,7 +140,7 @@ FCSchoutenBruteForce[expr_, epsvars_List, vars_List/;(!OptionQ[vars] || vars==={
 
 		sublists = Flatten[join /@ sublists, 1];
 
-		FCPrint[1, "FCSchoutenBruteForce: There are ", Length[sublists], " possible replacements to check." FCDoControl->fcsbVerbose];
+		FCPrint[1, "FCSchoutenBruteForce: There are ", Length[sublists], " possible replacements to check.", FCDoControl->fcsbVerbose];
 
 		FCPrint[1, "FCSchoutenBruteForce: Preparing the list of possible  replacements.", FCDoControl->fcsbVerbose];
 		time = AbsoluteTime[];

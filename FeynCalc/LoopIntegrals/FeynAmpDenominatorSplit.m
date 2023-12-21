@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Splits FeynAmpDenominators into multiple parts					*)
@@ -16,11 +16,11 @@
 (* ------------------------------------------------------------------------ *)
 
 FeynAmpDenominatorSplit::usage =
-"FeynAmpDenominatorSplit[expr] splits all FeynAmpDenominator[a,b, ...] \
-into FeynAmpDenominator[a]*FeynAmpDenominator[b] ... . \n
-FeynAmpDenominatorSplit[expr, Momentum->{q1,q2,q3,...}] splits every FeynAmpDenominator \
-in expr into a product of two, one containing q1,q2,q3,... and other momenta, \
-the second without those momenta.";
+"FeynAmpDenominatorSplit[expr] splits all FeynAmpDenominator[a,b, ...] in expr
+into FeynAmpDenominator[a]*FeynAmpDenominator[b]*... .
+FeynAmpDenominatorSplit[expr,  Momentum ->q1] splits all FeynAmpDenominator in
+expr into two products, one containing q1 and other momenta, the second being
+free of q1.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -56,7 +56,7 @@ FeynAmpDenominatorSplit[expr_, OptionsPattern[]] :=
 
 
 		If[	OptionValue[MomentumExpand],
-			allFadsEval = MomentumExpand/@allFadsEval
+			allFadsEval = MomentumExpand[allFadsEval]
 		];
 
 		If[ momList=!=All && Head[momList]===List,

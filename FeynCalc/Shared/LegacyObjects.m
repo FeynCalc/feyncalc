@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Legacy symbols scheduled for removal somewhere in the future	*)
@@ -16,74 +16,134 @@
 (* ------------------------------------------------------------------------ *)
 
 ChiralityProjector::usage =
-"ChiralityProjector[+1] denotes DiracGamma[6] (=1/2(1 + DiracMatrix[5])). \
-ChiralityProjector[-1] denotes DiracGamma[7] (=1/2(1 - DiracMatrix[5])). \
-ChiralityProjector is a legacy symbol that might be removed in a future FeynCalc \
-version. For the user input shortcuts use GA[6] and GA[7] instead.";
+"ChiralityProjector[+1] denotes $1/2\\left(1+\\gamma^5\\right)$.
+
+ChiralityProjector[-1] denotes $1/2\\left(1+\\gamma ^5\\right)$.
+
+The shortcut ChiralityProjector is deprecated, please use GA[6] and GA[7]
+instead!";
 
 DiracSpinor::usage =
-"DiracSpinor is the same as Spinor. DiracSpinor is a legacy symbol that might be \
-removed in a future FeynCalc version..";
+"DiracSpinor is equivalent to Spinor.";
 
 DiracMatrix::usage =
-"DiracMatrix[m] denotes a Dirac gamma matrix with Lorentz index m. \
-DiracMatrix[m1, m2, ..] is a product of gamma matrices with Lorentz \
-indices m1, m2, etc. DiracMatrix[5] is g^5. \
-DiracMatrix is a legacy symbol that might be removed in a future FeynCalc \
-version. For the user input shortcuts use GA or GAD instead.";
+"DiracMatrix[mu] denotes a Dirac gamma matrix with Lorentz index $\\mu$.
+
+DiracMatrix[mu , nu , ...] is a product of $\\gamma$ matrices with Lorentz
+indices mu , nu , ...
+
+DiracMatrix[5] is $\\gamma ^5$.
+
+DiracMatrix[6] is $(1 + \\gamma^5)/2$.
+
+DiracMatrix[7] is $(1 - \\gamma^5)/2$.
+
+The shortcut DiracMatrix is deprecated, please use GA instead!";
 
 DiracSlash::usage =
-"DiracSlash[p] is the contraction FourVector[p, mu]*DiracSlash[mu]. \
-A product of those can be entered in the form DiracSlash[p1, p2, ..]. \
-DiracSlash is a legacy symbol that might be removed in a future FeynCalc \
-version. For the user input shortcuts use GS or GSD instead.";
+"DiracSlash[p] is the contraction $p^{\\mu } \\gamma _{\\mu }$ (FV[p, mu] GA[mu]).
+
+Products of those can be entered in the form GS[p1, p2, ...].
+
+The shortcut DiracSlash is deprecated, please use GS instead!";
 
 FourVector::usage =
-"FourVector[p, mu] is the four dimensional vector p with Lorentz index m. \
-A vector with space-time Dimension d is obtained by supplying the option \
-Dimension->d. FourVector is a legacy symbol that might be removed in a future FeynCalc \
-version. For the user input shortcuts use FV or FVD instead. "
+"FourVector[p, mu] is the $4$-dimensional vector p with Lorentz index mu.
 
-IFPD::usage = "IFPD[p, m] denotes (p^2 - m^2)."
+A vector with space-time Dimension $D$ is obtained by supplying the option
+Dimension -> D.
+
+The shortcut FourVector is deprecated, please use FV instead!";
 
 LeviCivita::usage =
-"LeviCivita[mu, nu, ro, si] is an input  function for the \
-totally antisymmetric Levi-Civita tensor. \
-It evaluates automatically \
-to the internal representation Eps[ LorentzIndex[mu],  LorentzIndex[nu], \
-LorentzIndex[ro], LorentzIndex[si] ] \
-(or with a second argument in LorentzIndex for the Dimension, \
-if the option Dimension of LeviCivita is changed).  \
-LeviCivita[mu, nu ...][ p, ...] evaluates to \
-Eps[LorentzIndex[mu], LorentzIndex[nu], ..., Momentum[p], ...]. \
-LeviCivita is a legacy symbol that might be removed in a future FeynCalc \
-version. For the user input shortcuts use LC or LCD instead.";
+"LeviCivita[mu, nu, rho, si] is an input function for the totally antisymmetric
+Levi-Civita tensor. It evaluates automatically to the internal representation
+Eps[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho], LorentzIndex[si]]
+(or with a second argument in LorentzIndex for the Dimension, if the option
+Dimension of LeviCivita is changed).
+
+LeviCivita[mu , nu, ...][p, ...] evaluates to Eps[LorentzIndex[mu],
+LorentzIndex[nu], ..., Momentum[p], ...].
+
+The shortcut LeviCivita is deprecated, please use LC instead!";
 
 MetricTensor::usage =
-"MetricTensor[mu, nu] is the metric tensor in 4 dimensions. \
-The metric tensor in d dimensions is obtained by supplying the
-option Dimension->d.\
-MetricTensor is a legacy symbol that might be removed in a future FeynCalc \
-version. For the user input shortcuts use MT or MTD instead.";
+"MetricTensor[mu, nu] is the metric tensor. The default dimension is $4$.
 
-MetricTensor::usage =
-"MetricTensor[mu, nu] is the metric tensor in 4 dimensions. \
-The metric tensor in d dimensions is obtained by supplying the
-option Dimension->d.\
-MetricTensor is a legacy symbol that might be removed in a future FeynCalc \
-version. For the user input shortcuts use MT or MTD instead.";
+The shortcut MetricTensor is deprecated, please use MT instead!";
 
 $BreitMaison::usage =
-"$BreitMaison is a legacy switch for the Breitenlohner-Maison-t'Hooft-Veltman \
-scheme.  The modern way is to use FCSetDiracGammaScheme to specify \
-a scheme for handling Dirac matrices in dimensional regularization and \
-FCGetDiracGammaScheme to check the current setting.";
+"$BreitMaison is a legacy switch for the Breitenlohner-Maison-t'Hooft-Veltman
+scheme.
+
+Use FCSetDiracGammaScheme to specify a scheme for handling Dirac matrices in
+dimensional regularization and FCGetDiracGammaScheme to check the current
+setting.";
 
 $Larin::usage =
-"$Larin is a legacy switch for the Larin-Gorishny-Atkyampo-DelBurgo \
-scheme. The modern way is to use FCSetDiracGammaScheme to specify \
-a scheme for handling Dirac matrices in dimensional regularization and \
+"$Larin  is a legacy switch for the Larin-Gorishny-Atkyampo-DelBurgo scheme.
+The modern way is to use FCSetDiracGammaScheme to specify a scheme for
+handling Dirac matrices in dimensional regularization and
 FCGetDiracGammaScheme to check the current setting.";
+
+$LoadPhi::usage =
+"$LoadPhi is a legacy switch for loading Phi. The modern way to achieve the
+same effect is to evaluate $LoadAddOns={\"Phi\"} before loading FeynCalc.";
+
+$LoadFeynArts::usage =
+"$LoadFeynArts is a legacy switch for loading FeynArts. The modern way to
+achieve the same effect is to evaluate $LoadAddOns={\"FeynArts\"} before
+loading FeynCalc.";
+
+$LoadTARCER::usage =
+"$LoadTARCER is a legacy switch for loading TARCER. The modern way to achieve
+the same effect is to evaluate $LoadAddOns={\"TARCER\"} before loading
+FeynCalc.";
+
+Gstrong::usage =
+"Gstrong  is a shortcut for SMP[\"g_s\"] which represents the strong coupling
+constant.
+
+The shortcut Gstrong is deprecated, please use SMP[\"g_s\"] instead!";
+
+AlphaStrong::usage =
+"AlphaStrong  is a shortcut for SMP[\"alpha_s\"] which represents the strong
+coupling constant.
+
+The shortcut AlphaStrong is deprecated, please use SMP[\"alpha_s\"] instead!";
+
+AlphaFS::usage =
+"AlphaFS  is a shortcut for SMP[\"alpha_fs\"] which represents the
+fine-structure constant.
+
+The shortcut AlphaFS is deprecated, please use SMP[\"alpha_fs\"] instead!";
+
+PropagatorDenominatorExplicit::usage=
+"PropagatorDenominatorExplicit is equivalent to FeynAmpDenominatorExplicit.
+
+The shortcut PropagatorDenominatorExplicit is deprecated, please use
+FeynAmpDenominatorExplicit instead!";
+
+PartialFourVector::usage=
+"PartialFourVector is equivalent to FourDivergence.
+
+The shortcut PartialFourVector is deprecated, please use FourDivergence
+instead!";
+
+ClearScalarProducts::usage =
+"ClearScalarProducts is equivalent to FCClearScalarProducts[].
+
+The shortcut ClearScalarProducts is deprecated, please use
+FCClearScalarProducts instead!";
+
+ScalarProductExpand::usage =
+"ScalarProductExpand is equivalent to ExpandScalarProduct.
+
+The shortcut ScalarProductExpand is deprecated, please use ExpandScalarProduct
+instead!";
+
+IFPD::usage =
+"IFPD[p, m] denotes (p^2 - m^2).";
 
 DiracMatrix::noint =
 "DiracMatrix[`1`] is forbidden in FeynCalc. For consistency reasons, the only allowed integer \
@@ -95,13 +155,11 @@ argument can be 0. Evaluation aborted!";
 
 
 (* ------------------------------------------------------------------------ *)
-Begin["`Package`"]
-
-
+Begin["`Package`"];
 
 End[]
 
-Begin["`LegacyObjects`Private`"]
+Begin["`LegacyObjects`Private`"];
 
 DeclareNonCommutative[ChiralityProjector];
 DeclareNonCommutative[DiracSpinor];
@@ -279,6 +337,26 @@ $Larin /: Set[$Larin, False] :=
 		False
 	);
 
+Gstrong:=
+	SMP["g_s"];
+
+AlphaStrong:=
+	SMP["alpha_s"];
+
+AlphaFS:=
+	SMP["alpha_fs"];
+
+PropagatorDenominatorExplicit =
+	FeynAmpDenominatorExplicit;
+
+PartialFourVector = FourDivergence;
+
+(* For compatibility with the old syntax	*)
+ClearScalarProducts:=
+	FCClearScalarProducts[];
+
+ScalarProductExpand =
+	ExpandScalarProduct;
 
 FCPrint[1,"LegacyObjects loaded."];
 End[]

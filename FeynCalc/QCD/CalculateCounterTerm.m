@@ -11,8 +11,9 @@
 (* ------------------------------------------------------------------------ *)
 
 CalculateCounterTerm::usage =
-"CalculateCounterTerm[exp, k] \
-calculates the residue of exp.";
+"CalculateCounterTerm[exp, k] calculates the residue of exp.This is a rather
+special function designed for some specific OPE calculations. Not a universal
+routine for daily use.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -267,33 +268,19 @@ CalculateCounterTerm[exp_, k_, saveit_:D, opt___Rule] :=
 				];
 			];
 			t8 = t8 /. PolyGamma[0, em_ +1] :> (1/em + PolyGamma[0, em]);
-			If[ FreeQ[t8, DOT],
-				t8 = t8,
+			If[ !FreeQ[t8, DOT],
 				If[ (!FreeQ[t8, Eps]) && (!FreeQ[t8, DiracGamma]),
 					t8 = Contract[Collect2[t8,{Eps,DiracGamma},Factoring->False
 											], Rename -> True
-									] /. {(DiracGamma[LorentzIndex[mu3_]] .
-										DiracGamma[LorentzIndex[mu1_]] .
-										DiracGamma[LorentzIndex[mu2_]] *
-										Eps[LorentzIndex[mu1_],
-											LorentzIndex[mu2_],
-											LorentzIndex[mu3_],
-											Momentum[OPEDelta]]
-										) :> FeynCalcInternal[
-											GA[mu1,mu2,mu3]*
-											LC[mu1,mu2,mu3][OPEDelta]
-															]
+									] /. {(DiracGamma[LorentzIndex[mu3_]].DiracGamma[LorentzIndex[mu1_]].DiracGamma[LorentzIndex[mu2_]] *
+										Eps[LorentzIndex[mu1_], LorentzIndex[mu2_], LorentzIndex[mu3_], Momentum[OPEDelta]]) :> FeynCalcInternal[
+											GA[mu1,mu2,mu3]*LC[mu1,mu2,mu3][OPEDelta]]
 										}
 				]
 			];
 			If[ LeafCount[t8]<220,
-				If[ $VersionNumber>2.2,
-					FCPrint[1,"FullSimplify at the end "];
-					t9  = FullSimplify[Factor2[Expand2[t8,OPEm]//PowerSimplify
-									]]//Factor2,
-					FCPrint[1,"Factor2 at the end "];
-					t9  = Factor2[Expand2[t8,OPEm]//PowerSimplify]
-				];
+				FCPrint[1,"FullSimplify at the end "];
+				t9  = FullSimplify[Factor2[Expand2[t8,OPEm]//PowerSimplify]]//Factor2;
 				If[ t9 =!= 0,
 					fa1 = SelectNotFree[t9, {(-1)^_, CA, CF}];
 					t9  = t9/fa1;

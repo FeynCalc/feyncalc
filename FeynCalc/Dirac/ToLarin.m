@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Rewrites chiral traces according to Larin's prescription	*)
@@ -16,7 +16,9 @@
 (* ------------------------------------------------------------------------ *)
 
 ToLarin::usage =
-"ToLarin[exp] substitutes GAD[mu].GA[5] with -I/6 LC[mu,nu,la,si] GAD[nu,la,si].";
+"ToLarin[exp]  substitutes $\\gamma^{\\mu} \\gamma^5$ with
+$-\\frac{I}{6}\\varepsilon^{\\mu \\nu \\lambda \\sigma } \\gamma^{\\nu }
+\\gamma^{\\lambda} \\gamma^{\\sigma }$.";
 
 (* ------------------------------------------------------------------------ *)
 

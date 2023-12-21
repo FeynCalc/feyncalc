@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Conversion of TARCER integrals to FeynCalc ones				*)
@@ -16,13 +16,17 @@
 (* ------------------------------------------------------------------------ *)
 
 TarcerToFC::usage =
-"TarcerToFC[expr, {q1, q2}] translates loop integrals \
-in Tarcer-notation to the FeynCalc notation. \
-See TFI for details on the convention. \
-As in case of ToTFI, the 1/Pi^D and 1/Pi^D/2 prefactors are implicit, i.e. \
-TarcerToFC doesn't add them. \n
-To recover momenta from scalar products use the option ScalarProduct e.g. as \
-in TarcerToFC[TBI[D, pp^2, {{1, 0}, {1, 0}}], {q1, q2}, ScalarProduct -> {{pp^2, p1}}]";
+"TarcerToFC[expr, {q1, q2}] translates loop integrals in the TARCER-notation to
+the FeynCalc notation.
+
+See TFI for details on the convention.
+
+As in the case of ToTFI, the $\\frac{1}{\\pi^D}$ and $\\frac{1}{\\pi^{D/2}}$
+prefactors are implicit, i.e. TarcerToFC doesn't add them.
+
+To recover momenta from scalar products use the option ScalarProduct e.g. as
+in TarcerToFC[TBI[D, pp^2, {{1, 0}, {1, 0}}], {q1, q2}, ScalarProduct ->
+{{pp^2, p1}}]";
 
 TarcerToFC::failmsg = "Error! TarcerToFC has encountered a fatal problem and \
 must abort the computation. The problem reads: `1`";
@@ -64,7 +68,7 @@ TarcerToFC[expr_/;Head[expr]=!=List, {q1_, q2_}, OptionsPattern[]] :=
 			momConvRules = Join[momConvRules,Map[Rule[momconv[#[[1]]], #[[2]]] &, optScalarProduct]]
 		];
 
-		If[	!FCDuplicateFreeQ[First/@momConvRules],
+		If[	!DuplicateFreeQ[First/@momConvRules],
 			Message[TarcerToFC::failmsg,"The rules given via the ScalarProduct option must be unambiguous."];
 			Abort[]
 		];

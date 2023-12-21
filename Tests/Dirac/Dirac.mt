@@ -2,9 +2,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Unit tests for functions in the "Dirac" directory				*)
@@ -25,7 +25,11 @@ If[	$OnlySubTest=!="",
 	Remove[testNames]
 ];
 
+fcCompare[a_/;Head[a]=!=List,b_/;Head[b]=!=List]:=
+	Together[a-b]===0;
 
+fcCompare[a_List,b_List]:=
+	a===b;
 
 stringCompare[a_,b_]:=If[ToString[a]===ToString[b],True,False];
 
@@ -83,7 +87,7 @@ If[ Names["Tests`Dirac`fcstSirlinSimplify*"]=!={},
 ];
 
 If[ Names["Tests`Dirac`fcstAbortSirlinSimplify"]=!={},
-	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],(#[[4]]),testID->#[[1]],
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],(#[[2]]),testID->#[[1]],
 		MessagesEquivalenceFunction->stringCompareIgnore]&,
 		Join@@(ToExpression/@Names["Tests`Dirac`fcstAbortSirlinSimplify"])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test
@@ -93,6 +97,13 @@ If[ Names["Tests`Dirac`fcstGordonSimplify*"]=!={},
 	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`Dirac`fcstGordonSimplify*"])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+];
+
+If[ Names["Tests`Dirac`fcstAbortGordonSimplify"]=!={},
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],(#[[2]]),testID->#[[1]],
+		MessagesEquivalenceFunction->stringCompareIgnore]&,
+		Join@@(ToExpression/@Names["Tests`Dirac`fcstAbortGordonSimplify"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test
 ];
 
 If[ Names["Tests`Dirac`fcstChisholm*"]=!={},
@@ -127,7 +138,7 @@ If[ Names["Tests`Dirac`fcstDiracChainJoin*"]=!={},
 ];
 
 If[ Names["Tests`Dirac`fcstAbortDiracChainJoin"]=!={},
-	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],(#[[4]]),testID->#[[1]],
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],(#[[2]]),testID->#[[1]],
 		MessagesEquivalenceFunction->stringCompareIgnore]&,
 		Join@@(ToExpression/@Names["Tests`Dirac`fcstAbortDiracChainJoin"])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test
@@ -147,10 +158,17 @@ If[ Names["Tests`Dirac`fcstDiracChainExpand*"]=!={},
 
 FCSetDiracGammaScheme["NDR"];
 
-If[ Names["Tests`Dirac`fcstDiracChainExplicit*"]=!={},
+If[ Names["Tests`Dirac`fcstSpinorChainEvaluate*"]=!={},
 	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
-	Join@@(ToExpression/@Names["Tests`Dirac`fcstDiracChainExplicit*"])];
+	Join@@(ToExpression/@Names["Tests`Dirac`fcstSpinorChainEvaluate*"])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test;
+];
+
+If[ Names["Tests`Dirac`fcstAbortSpinorChainEvaluate"]=!={},
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],(#[[2]]),testID->#[[1]],
+		MessagesEquivalenceFunction->stringCompareIgnore]&,
+		Join@@(ToExpression/@Names["Tests`Dirac`fcstAbortSpinorChainEvaluate"])];
+	tmpTest = tmpTest /. testID->TestID /. test -> Test
 ];
 
 If[ Names["Tests`Dirac`fcstDiracChainFactor*"]=!={},
@@ -197,7 +215,7 @@ If[ Names["Tests`Dirac`fcstDiracEquation*"]=!={},
 ];
 
 If[ Names["Tests`Dirac`fcstAbortDiracEquation"]=!={},
-	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],(#[[4]]),testID->#[[1]],
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],(#[[2]]),testID->#[[1]],
 		MessagesEquivalenceFunction->stringCompareIgnore]&,
 		Join@@(ToExpression/@Names["Tests`Dirac`fcstAbortDiracEquation"])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test
@@ -234,7 +252,7 @@ If[ Names["Tests`Dirac`fcstDiracSimplifySirlin"]=!={},
 ];
 
 If[ Names["Tests`Dirac`fcstAbortDiracSimplify"]=!={},
-	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],(#[[4]]),testID->#[[1]],
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],(#[[2]]),testID->#[[1]],
 		MessagesEquivalenceFunction->stringCompareIgnore]&,
 		Join@@(ToExpression/@Names["Tests`Dirac`fcstAbortDiracSimplify"])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test
@@ -242,10 +260,13 @@ If[ Names["Tests`Dirac`fcstAbortDiracSimplify"]=!={},
 
 If[ Names["Tests`Dirac`fcstDiracTrick*"]=!={},
 	FCSetDiracGammaScheme["NDR"];
-	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
+	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]],
+		EquivalenceFunction -> fcCompare]&,
 		Join@@(ToExpression/@Names["Tests`Dirac`fcstDiracTrick*"])];
 	FCSetDiracGammaScheme["NDR"];
-	tmpTest = tmpTest /. testID->TestID /. test -> Test
+	$FCDefaultLightconeVectorN=FCGV["n"];
+	$FCDefaultLightconeVectorNB=FCGV["nb"];
+	tmpTest = tmpTest /. testID->TestID /. test->Test
 ];
 
 If[ Names["Tests`Dirac`fcstTr"]=!={},

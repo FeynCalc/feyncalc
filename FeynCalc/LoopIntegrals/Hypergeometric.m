@@ -11,48 +11,41 @@
 (* ------------------------------------------------------------------------ *)
 
 HypergeometricAC::usage =
-"HypergeometricAC[n][exp] analytically continues \
-Hypergeometric2F1 functions in exp. \
-The second argument n refers to the equation number (n) in chapter 2.10 of
-\"Higher Transcendental Functions\" by Ergelyi, Magnus, \
-Oberhettinger, Tricomi.
-In case of eq. (6) (p.109) the last line is returned for \
-HypergeometricAC[6][exp], \
-while the first equality is given by HypergeometricAC[61][exp]. \
-((2.10.1) is identical to eq. (9.5.7) of \"Special Fucntions & their \
-Applications\" by N.N.Lebedev).";
+"HypergeometricAC[n][exp] analytically continues Hypergeometric2F1 functions in
+exp. The second argument n refers to the equation number ($n$) in chapter 2.10
+of \"Higher Transcendental Functions\" by Erdelyi, Magnus, Oberhettinger,
+Tricomi. In case of eq. (6) (p.109) the last line is returned for
+HypergeometricAC[6][exp], while the first equality is given by
+HypergeometricAC[61][exp].
+
+(2.10.1) is identical to eq. (9.5.7) of \"Special Functions & their
+Applications\" by N.N.Lebedev.";
 
 HypergeometricIR::usage =
-"HypergeometricIR[exp, t]  substitutes for all \
-Hypergeometric2F1[a,b,c,z] in exp the integral representation \
-Gamma[c]/(Gamma[b] Gamma[c-b]) Integratedx[t,0,1] \
-t^(b-1) (1-t)^(c-b-1) (1-t z)^(-a). \
-Integratedx[t,0,1] serves as a reminder that integration over t \
-from 0 to 1 is understood. \
-The factor Integratedx[t,0,1] can be omitted by setting the \
-option Integratedx -> False.";
+"HypergeometricIR[exp, t] substitutes for all Hypergeometric2F1[a,b,c,z] in exp
+by its Euler integral representation. The factor Integratedx[t, 0, 1] can be
+omitted by setting the option Integratedx -> False.";
 
 HypergeometricSE::usage =
-"HypergeometricSE[exp, nu] expresses Hypergeometric functions by \
-their series expansion in terms of a sum (the Sum is omitted and \
-nu, running from 0 to Infinity is the summation index).";
+"HypergeometricSE[exp, nu] expresses Hypergeometric functions by their series
+expansion in terms of a sum (the Sum is omitted and nu, running from $0$ to
+$\\infty$, is the summation index).";
 
 HypExplicit::usage =
-"HypExplicit[exp, nu] expresses Hypergeometric functions in exp \
-by their definition in terms of a sum (the Sum is omitted and \
-nu is the summation index).";
+"HypExplicit[exp, nu] expresses Hypergeometric functions in exp by their
+definition in terms of a sum (the Sum is omitted and nu is the summation
+index).";
 
 HypInt::usage =
-"HypInt[exp, t] substitutes for all \
-Hypergeometric2F1[a,b,c,z] in exp \
-Gamma[c]/(Gamma[b] Gamma[c-b]) Integratedx[t,0,1] \
-t^(b-1) (1-t)^(c-b-1) (1-t z)^(-a).";
+"HypInt[exp, t] substitutes all Hypergeometric2F1[a,b,c,z] in exp with
+Gamma[c]/(Gamma[b] Gamma[c-b]) Integratedx[t,0,1]  t^(b-1) (1-t)^(c-b-1) (1-t
+z)^(-a).";
 
 ToHypergeometric::usage =
-"ToHypergeometric[t^b (1-t)^c (u + t z)^a, t]  returns \
-u^a Gamma[b+1] Gamma[c+1]/Gamma[b+c+2] \
-Hypergeometric2F1[-a,b+1,b+c+2,-z/u]. Remember that \
-Re[b]>0 and Re[c-b]>0 should hold.";
+"ToHypergeometric[t^b (1 - t)^c (1+tz)^a,t] returns u^a Gamma[b+1]
+Gamma[c+1]/Gamma[b+c+2] Hypergeometric2F1[-a,b+1,b+c+2,-z/u]. Remember that
+$\\textrm{Re}(b) >0$ and $\\textrm{Re} (c-b) > 0$ should hold (need not be set
+in Mathematica).";
 
 (* ------------------------------------------------------------------------ *)
 

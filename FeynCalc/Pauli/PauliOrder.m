@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Lexicographic ordering of Pauli matrices						*)
@@ -16,13 +16,14 @@
 (* ------------------------------------------------------------------------ *)
 
 PauliOrder::usage =
-"PauliOrder[exp] orders the Pauli matrices in expr alphabetically. \
-PauliOrder[exp, orderlist] orders the Pauli matrices in expr according \
-to orderlist.";
+"PauliOrder[exp] orders the Pauli matrices in expr alphabetically.
+
+PauliOrder[exp, orderlist] orders the Pauli matrices in expr according to
+orderlist.";
 
 PauliOrder::failmsg =
 "Error! PauliOrder has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 

@@ -1,0 +1,33 @@
+
+
+(* :Title: FCIteratedIntegralEvaluate.test												*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCIteratedIntegralEvaluate	  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Tables`fcstFCIteratedIntegralEvaluate =
+(
+{
+{"fcstFCIteratedIntegralEvaluate-ID1", "FCIteratedIntegralEvaluate[
+FCIteratedIntegral[
+FCPartialFractionForm[
+0, {{{1 + x[2] + x[3], -2}, -(1 + a + x[3])^(-1)}}, x[2]],
+x[2], 0, Infinity]]",
+"-FCPartialFractionForm[0, {{{Infinity, -1}, -(1 + a + x[3])^(-1)}}, Infinity] + FCPartialFractionForm[0, {{{1 + x[3], -1}, -(1 + a + x[3])^(-1)}}, 0]"},
+{"fcstFCIteratedIntegralEvaluate-ID2", "FCIteratedIntegralEvaluate[
+FCIteratedIntegral[
+FCPartialFractionForm[0, {{{-a + x[2], -1}, (1 + a + x[3])^(-2)},
+	{{1 + x[2] + x[3], -2}, -(1 + a + x[3])^(-1)}, {{1 + x[2] +
+	x[3], -1}, -(1 + a + x[3])^(-2)}}, x[2]], x[2], 0, Infinity]]",
+"-FCPartialFractionForm[0, {{{Infinity, -1}, -(1 + a + x[3])^(-1)}}, Infinity] +
+FCPartialFractionForm[0, {{{1 + x[3], -1}, -(1 + a + x[3])^(-1)}}, 0] + FCGPL[{a}, Infinity]/(1 + a + x[3])^2 -
+FCGPL[{-1 - x[3]}, Infinity]/(1 + a + x[3])^2"}
+});

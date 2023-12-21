@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2022 Rolf Mertig
-	Copyright (C) 1997-2022 Frederik Orellana
-	Copyright (C) 2014-2022 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Contraction routines for Lorentz algebra					*)
@@ -53,15 +53,14 @@ FCFastContract[x_,OptionsPattern[]]:=
 
 Options[Contract] = {
 	EpsContract     	-> True,
+	EpsExpand    		-> True,
 	Expanding       	-> True,
 	ExpandScalarProduct -> True,
 	Factoring       	-> False,
 	FCE					-> False,
 	FCI					-> False,
 	FCVerbose			-> False,
-	MomentumCombine 	-> True,
-	Rename          	-> False,
-	Schouten        	-> 0
+	MomentumCombine 	-> True
 };
 
 (* Contract[{..., ...}] *)
@@ -76,13 +75,11 @@ Contract[Equal[a_, b_], opts:OptionsPattern[]] :=
 Contract[expr_, opts:OptionsPattern[]] :=
 	Block[{ex, tmp, rest1=0,rest2=0,rest3=0,noDummy=0,nodot,
 		null1,null2,freeIndList,freeHead,tmpFin,res,expandOpt,
-		epsContractOpt,renameOpt,schoutenOpt,times,tmpList,time,tmpCheck},
+		epsContractOpt, times,tmpList,time,tmpCheck, epsExpandOpt},
 
 		expandOpt 				= OptionValue[Expanding];
 		epsContractOpt 			= OptionValue[EpsContract];
-		
-		renameOpt 				= OptionValue[Rename];
-		schoutenOpt 			= OptionValue[Schouten];
+		epsExpandOpt 			= OptionValue[EpsExpand];
 		optExpandScalarProduct	= OptionValue[ExpandScalarProduct];
 
 		If [OptionValue[FCVerbose]===False,
@@ -240,6 +237,21 @@ Contract[expr_, opts:OptionsPattern[]] :=
 			]
 		];
 
+		If[ !DummyIndexFreeQ[tmp,{LorentzIndex,CartesianIndex}],
+
+			If[ MemberQ[{Plus, Times}, Head[tmp]] && !FreeQ2[tmp,{Pair,CartesianPair}],
+				time=AbsoluteTime[];
+				FCPrint[1, "Contract: mainContract: Applying prepareProductContractions.", FCDoControl->cnVerbose];
+				tmp = prepareProductContractions[tmp];
+				FCPrint[1,"Contract: mainContract: prepareProductContractions done. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
+				FCPrint[3,"Contract: mainContract: After prepareProductContractions: ", tmp , FCDoControl->cnVerbose];
+				If[	!FreeQ2[tmp,{prepareProductContractions,reduceSumsToProducts,contractWithProductOfPairs,contractWithSinglePair}],
+					Message[Contract::fail,"Something went wrong during prepareProductContractions."];
+					Abort[]
+				]
+			]
+		];
+
 		(*
 		(* optimization *)
 		If[ Head[tmp === Plus] && Length[tmp > 47],
@@ -298,21 +310,11 @@ Contract[expr_, opts:OptionsPattern[]] :=
 		];
 
 
-
 		If[	!FreeQ[tmpFin, Eps],
 			FCPrint[1,"Contract: Applying EpsEvaluate.", FCDoControl->cnVerbose];
-			tmpFin = EpsEvaluate[tmpFin,FCI->True];
+			tmpFin = EpsEvaluate[tmpFin,FCI->True, EpsExpand->epsExpandOpt];
 			FCPrint[3,"Contract: After EpsEvaluate: ", tmpFin, FCDoControl->cnVerbose];
 		];
-
-		If[	renameOpt && !FreeQ[tmpFin, Eps],
-			time=AbsoluteTime[];
-			FCPrint[1,"Contract: Renaming dummy indices in epsilon tensors.", FCDoControl->cnVerbose];
-			tmpFin = doubleindex[Expand2[ EpsEvaluate[tmpFin,FCI->True], Eps]];
-			FCPrint[1,"Contract: Renaming done: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
-		];
-
-
 
 		If[ epsContractOpt,
 			time=AbsoluteTime[];
@@ -383,11 +385,11 @@ Contract[expr_, opts:OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1,"Contract: Applying EpsEvaluate.", FCDoControl->cnVerbose];
 			If[	!FreeQ[tmpFin, Eps],
-				tmpFin = EpsEvaluate[tmpFin,FCI->True];
+				tmpFin = EpsEvaluate[tmpFin,FCI->True, EpsExpand->epsExpandOpt];
 				FCPrint[3,"Contract: After EpsEvaluate: ", tmpFin, FCDoControl->cnVerbose];
 			];
 			If[	!FreeQ[noDummy, Eps],
-				noDummy = EpsEvaluate[noDummy,FCI->True];
+				noDummy = EpsEvaluate[noDummy,FCI->True, EpsExpand->epsExpandOpt];
 				FCPrint[3,"Contract: After EpsEvaluate: ", noDummy, FCDoControl->cnVerbose];
 			];
 			FCPrint[1,"Contract: EpsEvaluate done: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
@@ -395,16 +397,6 @@ Contract[expr_, opts:OptionsPattern[]] :=
 
 		(*Here we can unite the two*)
 		tmpFin = tmpFin + noDummy;
-
-		If[ schoutenOpt =!= 0 && epsContractOpt && !FreeQ[tmpFin, Eps] && !FreeQ[tmpFin, Pair],
-			time=AbsoluteTime[];
-			FCPrint[1,"Contract: Applying Schouten's identity.", FCDoControl->cnVerbose];
-			tmpFin = Schouten[tmpFin, schoutenOpt];
-			If[ renameOpt,
-				tmpFin = doubleindex[tmpFin]
-			];
-			FCPrint[1,"Contract: Schouten done: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
-		];
 
 		FCPrint[3, "Contract: After additional manipulations: ", tmpFin, FCDoControl->cnVerbose];
 
@@ -446,22 +438,22 @@ cartesianContract[x : Except[_Plus], opts:OptionsPattern[]] :=
 
 			contractexpandopt = OptionValue[Contract,{opts},Expanding];
 
-			FCPrint[1, "Contract: cartesianContract: Entering", FCDoControl->cnVerbose];
-			FCPrint[3, "Contract: cartesianContract: Entering with ",x, FCDoControl->cnVerbose];
+			FCPrint[3, "Contract: cartesianContract: Entering", FCDoControl->cnVerbose];
+			FCPrint[4, "Contract: cartesianContract: Entering with ",x, FCDoControl->cnVerbose];
 
 			If[	contractexpandopt,
 				contractres = Expand2[contractres,CartesianIndex]
 			];
 
 			time=AbsoluteTime[];
-			FCPrint[1, "Contract: cartesianContract: Applying PairContract.", FCDoControl->cnVerbose];
+			FCPrint[3, "Contract: cartesianContract: Applying PairContract.", FCDoControl->cnVerbose];
 			contractres = contractres /. Pair -> PairContract /. CartesianPair -> CartesianPairContract /. PairContract->Pair /. CartesianPairContract->CartesianPair;
-			FCPrint[1,"Contract: cartesianContract: PairContract done. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
-			FCPrint[3,"Contract: cartesianContract: After PairContract: ", contractres , FCDoControl->cnVerbose];
+			FCPrint[3,"Contract: cartesianContract: PairContract done. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
+			FCPrint[4,"Contract: cartesianContract: After PairContract: ", contractres , FCDoControl->cnVerbose];
 
 
-			FCPrint[1,"Contract: cartesianContract: Leaving.", FCDoControl->cnVerbose];
-			FCPrint[3,"Contract: cartesianContract: Leaving with: ", contractres , FCDoControl->cnVerbose];
+			FCPrint[3,"Contract: cartesianContract: Leaving.", FCDoControl->cnVerbose];
+			FCPrint[4,"Contract: cartesianContract: Leaving with: ", contractres , FCDoControl->cnVerbose];
 
 			contractres
 		];
@@ -493,45 +485,45 @@ prepareProductContractions[ex_Plus] :=
 prepareProductContractions[expr_Times] :=
 	Block[{ex=expr, irrelevantPart, relevantPart, listOfProducts, time, res},
 
-		FCPrint[1,"Contract: prepareProductContractions: Entering.", FCDoControl->cnVerbose];
-		FCPrint[3,"Contract: prepareProductContractions: Entering with: ", expr, FCDoControl->cnVerbose];
+		FCPrint[3,"Contract: prepareProductContractions: Entering.", FCDoControl->cnVerbose];
+		FCPrint[4,"Contract: prepareProductContractions: Entering with: ", expr, FCDoControl->cnVerbose];
 
 		If[ !FreeQ2[ex, {DiracGamma, DiracChain, PauliSigma, PauliChain, Eps, Rule}],
-			FCPrint[1,"Contract: prepareProductContractions: Expression contains DiracGamma, PauliSigma or Eps. Passing to Contract.", FCDoControl->cnVerbose];
+			FCPrint[3,"Contract: prepareProductContractions: Expression contains DiracGamma, PauliSigma or Eps. Passing to Contract.", FCDoControl->cnVerbose];
 			Return[ex]
 		];
 
 		If[	DummyIndexFreeQ[ex, {LorentzIndex, CartesianIndex}],
-			FCPrint[1,"Contract: prepareProductContractions: Expression is free of Lorentz indices. Leaving.", FCDoControl->cnVerbose];
+			FCPrint[3,"Contract: prepareProductContractions: Expression is free of Lorentz indices. Leaving.", FCDoControl->cnVerbose];
 			Return[ex]
 		];
 
 		time=AbsoluteTime[];
-		FCPrint[1,"Contract: prepareProductContractions: Splitting into parts free and not free of Lorentz indices.", FCDoControl->cnVerbose];
+		FCPrint[3,"Contract: prepareProductContractions: Splitting into parts free and not free of Lorentz indices.", FCDoControl->cnVerbose];
 		{irrelevantPart,relevantPart} = FCProductSplit[ex,{LorentzIndex,CartesianIndex}];
-		FCPrint[1,"Contract: prepareProductContractions: Splitting done. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
+		FCPrint[3,"Contract: prepareProductContractions: Splitting done. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose];
 
-		FCPrint[3,"Contract: prepareProductContractions: Part free of Lorentz indices: ", irrelevantPart, FCDoControl->cnVerbose];
-		FCPrint[3,"Contract: prepareProductContractions: Part with Lorentz indices: ", relevantPart, FCDoControl->cnVerbose];
+		FCPrint[4,"Contract: prepareProductContractions: Part free of Lorentz indices: ", irrelevantPart, FCDoControl->cnVerbose];
+		FCPrint[4,"Contract: prepareProductContractions: Part with Lorentz indices: ", relevantPart, FCDoControl->cnVerbose];
 
 		Switch[Head[relevantPart],
 			Plus,
 				time=AbsoluteTime[];
-				FCPrint[1,"Contract: prepareProductContractions: The indexed part is a sum, applying prepareProductContractions again.", FCDoControl->cnVerbose];
+				FCPrint[3,"Contract: prepareProductContractions: The indexed part is a sum, applying prepareProductContractions again.", FCDoControl->cnVerbose];
 				relevantPart = prepareProductContractions[relevantPart];
-				FCPrint[1,"Contract: prepareProductContractions: Done applying prepareProductContractions. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose],
+				FCPrint[3,"Contract: prepareProductContractions: Done applying prepareProductContractions. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose],
 			Times,
 				time=AbsoluteTime[];
-				FCPrint[1,"Contract: prepareProductContractions: The indexed part is a product, applying reduceSumsToProducts.", FCDoControl->cnVerbose];
-				FCPrint[1,"Contract: prepareProductContractions: Applying reduceSumsToProducts.", FCDoControl->cnVerbose];
+				FCPrint[3,"Contract: prepareProductContractions: The indexed part is a product, applying reduceSumsToProducts.", FCDoControl->cnVerbose];
+				FCPrint[3,"Contract: prepareProductContractions: Applying reduceSumsToProducts.", FCDoControl->cnVerbose];
 				listOfProducts = List@@relevantPart;
 				relevantPart = Fold[reduceSumsToProducts[#1,#2]&,listOfProducts];
 				If[	optExpandScalarProduct,
 					res = ExpandScalarProduct[relevantPart,FCI->True];
 				];
-				FCPrint[1,"Contract: prepareProductContractions: Done applying reduceSumsToProducts. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose],
+				FCPrint[3,"Contract: prepareProductContractions: Done applying reduceSumsToProducts. Timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cnVerbose],
 			_,
-				FCPrint[1,"Contract: prepareProductContractions: The indexed part is a single term or something else.", FCDoControl->cnVerbose];
+				FCPrint[3,"Contract: prepareProductContractions: The indexed part is a single term or something else.", FCDoControl->cnVerbose];
 				True
 		];
 
@@ -543,8 +535,8 @@ prepareProductContractions[expr_Times] :=
 
 
 		res = relevantPart irrelevantPart;
-		FCPrint[1,"Contract: prepareProductContractions: Leaving.",  FCDoControl->cnVerbose];
-		FCPrint[3,"Contract: prepareProductContractions: Leaving with: ", res, FCDoControl->cnVerbose];
+		FCPrint[3,"Contract: prepareProductContractions: Leaving.",  FCDoControl->cnVerbose];
+		FCPrint[4,"Contract: prepareProductContractions: Leaving with: ", res, FCDoControl->cnVerbose];
 
 		res
 	];
@@ -560,12 +552,13 @@ reduceSumsToProducts[a_,b_]:=
 
 (*
 	Here b still may be a sum.
-	The function will recursively call itself until b is becomes a product of Pairs. *)
+	The function will recursively call itself until b is becomes a product of Pairs.
+*)
 reduceSumsToProducts[a_,b_]:=
 	Block[{res, bnew},
 
-		FCPrint[1, "Contract: reduceSumsToProducts: Entering.",  FCDoControl->cnVerbose];
-		FCPrint[3, "Contract: reduceSumsToProducts: Entering with: {a,b}: ", {a,b}, FCDoControl->cnVerbose];
+		FCPrint[3, "Contract: reduceSumsToProducts: Entering.",  FCDoControl->cnVerbose];
+		FCPrint[4, "Contract: reduceSumsToProducts: Entering with: {a,b}: ", {a,b}, FCDoControl->cnVerbose];
 
 		If[FreeQ2[b,{LorentzIndex,CartesianIndex}],
 			Return[a b]
@@ -586,20 +579,20 @@ reduceSumsToProducts[a_,b_]:=
 			bnew = Collect2[b, {LorentzIndex,CartesianIndex}];
 			If[ Head[bnew] === Plus,
 				(*If b does not factorize, use contractWithProductOfPairs*)
-				FCPrint[3, "Contract: reduceSumsToProducts: b does not factorize, calling reduceSumsToProducts", FCDoControl->cnVerbose];
+				FCPrint[4, "Contract: reduceSumsToProducts: b does not factorize, calling reduceSumsToProducts", FCDoControl->cnVerbose];
 				res = Map[reduceSumsToProducts[a,#]&,bnew],
 
 				(*
 					If b factorizes, use contractWithProductOfPairs
 					Think of sth like [aa ((D - 4) FV[p1, mu] + D FV[p1, mu])
 				*)
-				FCPrint[3, "Contract: reduceSumsToProducts: b factorizes, calling contractWithProductOfPairs.", FCDoControl->cnVerbose];
+				FCPrint[4, "Contract: reduceSumsToProducts: b factorizes, calling contractWithProductOfPairs.", FCDoControl->cnVerbose];
 				res = contractWithProductOfPairs[a, bnew]
 
 			]
 		];
 
-		FCPrint[3, "Contract: reduceSumsToProducts: result: ", res, FCDoControl->cnVerbose];
+		FCPrint[4, "Contract: reduceSumsToProducts: result: ", res, FCDoControl->cnVerbose];
 
 		If[	optExpandScalarProduct,
 			res = ExpandScalarProduct[res,FCI->True];
@@ -608,6 +601,8 @@ reduceSumsToProducts[a_,b_]:=
 		If[ !FreeQ2[res, {LorentzIndex,CartesianIndex}],
 			res = Expand2[res, {LorentzIndex,CartesianIndex}];
 		];
+
+		FCPrint[3, "Contract: reduceSumsToProducts: Leaving.", FCDoControl->cnVerbose];
 
 		res
 
@@ -620,6 +615,9 @@ contractWithProductOfPairs[a_, b_Pair] :=
 
 contractWithProductOfPairs[a_, b_CartesianPair] :=
 	contractWithSinglePair[a, b];
+
+contractWithProductOfPairs[a_, b_/;!MemberQ[{Pair,CartesianPair,Times},Head[b]]] :=
+	a b;
 
 contractWithProductOfPairs[a_, b_Times] :=
 	(Fold[contractWithSinglePair,a, List@@b]/. Pair -> PairContract /. PairContract -> Pair)/; FreeQ2[{a,b},{CartesianPair,CartesianMomentum,CartesianIndex}];
@@ -660,195 +658,6 @@ contractWithSinglePair[a_, Pair[CartesianIndex[ind_, dimL_:4], (h:CartesianIndex
 (*for things like contractWithProductOfPairs[FV[k - p, mu] SP[k, p], FV[p, mu] SP[k, p]] *)
 contractWithSinglePair[a_,b_]:=
 	Expand2[a b, {Pair,CartesianPair}]/; FreeQ2[{a},{LorentzIndex,CartesianIndex}] || FreeQ2[{b},{LorentzIndex,CartesianIndex}]
-
-(* #################################################################### *)
-
-ident3[a_,_] :=
-	a;
-
-(* decide whether the (first) appearance of inds in expr is ordered *)
-(*ordqdef*)
-ordq[expr_,inds_List] :=
-	Block[ {pos, min},
-		pos = Position[expr, #]& /@ inds;
-		pos = pos /. {} -> Sequence[];
-		If[ Length[pos]>0,
-			pos = Map[First,pos]
-		];
-		min = Min[Length/@pos];
-		pos = Map[Take[#,min]&, pos];
-		OrderedQ[pos]
-	];
-
-
-eps2rules = {Eps[LorentzIndex[_,dia___], b_Momentum, c_Momentum, d_Momentum]^2 :>
-				Eps[LorentzIndex[$MU[1], dia], b, c, d]^2,
-
-			Eps[LorentzIndex[a_,dia___], LorentzIndex[b_,dia___], c_Momentum, d_Momentum]^2/; a=!=b :>
-				Eps[LorentzIndex[$MU[1], dia], LorentzIndex[$MU[2],dia], c, d]^2,
-
-			Eps[LorentzIndex[a_,dia___], LorentzIndex[b_,dia___], LorentzIndex[c_,dia___], d_Momentum]^2/; a=!=b && b=!=c :>
-				Eps[LorentzIndex[$MU[1], dia], LorentzIndex[$MU[2],dia], LorentzIndex[$MU[3], dia], d]^2,
-
-			Eps[LorentzIndex[a_,dia___], LorentzIndex[b_,dia___], LorentzIndex[c_,dia___], LorentzIndex[d_,dia___]]^2/; a=!=b && b=!=c && c=!=d  :>
-			Eps[LorentzIndex[$MU[1], dia], LorentzIndex[$MU[2],dia], LorentzIndex[$MU[3], dia], LorentzIndex[$MU[4], dia]]^2
-};
-
-(*  doubleindexdef *)
-(* For canonizing dummy indices between Eps and other functions *)
-
-doubleindex[0] =
-	0;
-
-doubleindex[x_] :=
-	Block[ {xy = x, suli = {}, muUU},
-		For[i = 1, i < 7, i ++,
-			If[ EvenQ[Length[Position[x, $MU[i]]]] && !FreeQ[x, $MU[i]],
-				AppendTo[suli, RuleDelayed @@ {$MU[i], muUU[i]}]
-			];
-		];
-		If[ Length[suli] > 0,
-			FCPrint[1,"suli == ",suli];
-			xy = xy /. suli
-		];
-		xy = doubleindex0[x];
-
-		If[ xy === 0,
-			FCPrint[1,"doubleindexTROUBLE???????????? "];
-			Print["entering with", x];
-		];
-		xy
-	];
-
-doubleindex0[x_] :=
-	Block[ {double2, double3a},
-		If[ FreeQ[x, Eps],
-			x,
-			If[ Head[x] === Plus,
-				Map[doubleindex, x],
-				double2[y_] :=
-					double3a[y /. {Eps :> eepp} , 1] /. double3a -> double3;
-				double3a[y_, i_] :=
-					double3a[y, i+1] /; Length[Position[y, $MU[i]]] > 0;
-				double2[x] /.  eepp -> Eps /. double3 -> ident3/.  eepp -> Eps
-			]
-		] /. eps2rules
-	];
-
-double2[x_] :=
-	If[ Length[Position[x, $MU]] > 0,
-		double3a[x/.Eps->eepp/.$MU->FCGV[ToString[Unique["lI"]]], 1] /.
-		double3a-> double3,
-		double3a[x/.Eps->eepp, 1] /.  double3a-> double3
-	];
-
-double3a[x_, i_] :=
-	If[ FreeQ[x, $MU[i+1]],
-		double3a[x, i+1],
-		double3a[x, i+2]
-	] /; !FreeQ[x, $MU[i]];
-
-lorhipa[a_,___] :=
-	LorentzIndex[a,  BlankNullSequence[]];
-
-double3[ m_. eepp[a1___, LorentzIndex[be_, di___], a2___], j_ ] :=
-	(m/.be->$MU[j]) Eps[a1,LorentzIndex[$MU[j],di],a2]/; (!FreeQ[m, LorentzIndex[be, ___]]) && FreeQ2[m, Select[{a1,a2}, Head[#]===LorentzIndex&] /. LorentzIndex -> lorhipa];
-
-double3[ m_. eepp[a1___, LorentzIndex[mu1_, di1___], a2___,  LorentzIndex[mu2_, di2___],a3___], j_ ] :=
-	((m/.mu1->$MU[j]/.mu2->$MU[j+1]) Eps[a1,LorentzIndex[$MU[j],di1],a2, LorentzIndex[$MU[j+1],di2],a3])/;
-	(FreeQ2[{m,a1,a2,a3}, {$MU[j], $MU[j+1]}] && (!FreeQ[m, LorentzIndex[mu1, ___]]) && (!FreeQ[m, LorentzIndex[mu2, ___]]) &&
-		(FreeQ2[m, Select[{a1,a2,a3}, Head[#]===LorentzIndex&]/. LorentzIndex -> lorhipa]) && ordq[m, {mu1,mu2}]);
-
-double3[ m_. eepp[a1___, LorentzIndex[mu1_, di1___], a2___, LorentzIndex[mu2_, di2___],a3___], j_ ] :=
-	((m/.mu2->$MU[j]/.mu1->$MU[j+1]) Eps[a1,LorentzIndex[$MU[j+1],di1],a2, LorentzIndex[$MU[j],di2],a3])/;
-	(	FreeQ2[{m,a1,a2,a3}, {$MU[j], $MU[j+1]}] &&
-		(!FreeQ[m, LorentzIndex[mu1, ___]]) &&
-		(!FreeQ[m, LorentzIndex[mu2, ___]]) &&
-		(FreeQ2[m, Select[{a1,a2,a3}, Head[#]===LorentzIndex&]/. LorentzIndex -> lorhipa]) && ordq[m, {mu2,mu1}]);
-
-double3[ m_. eepp[a1___, LorentzIndex[mu1_, di1___], a2___, LorentzIndex[mu2_, di2___], a3___, LorentzIndex[mu3_, di3___], a4___ ], j_ ] :=
-	Block[ {dte,a,b,c},
-		dte = (  (m/.mu1->$MU[j]/.mu2->$MU[j+1]/.mu3->$MU[j+2]) Eps[a1,LorentzIndex[$MU[j],di1], a2, LorentzIndex[$MU[j+1],di2],a3, LorentzIndex[$MU[j+2],di3], a4]);
-		a = $MU[j];
-		b = $MU[j+1];
-		c = $MU[j+2];
-		Which[ordq[m, {mu1,mu2,mu3}],
-			dte,
-			ordq[m, {mu1,mu3,mu2}],
-			dte /.  {b :>c, c:>b},
-			ordq[m, {mu2,mu1,mu3}],
-			dte /.  {a:>b,b:>a},
-			ordq[m, {mu2,mu3,mu1}],
-			dte /.  {b:>a, c:>b, a:>c},
-			ordq[m, {mu3,mu1,mu2}],
-			dte /.  {c:>a, a:>b, b:>c},
-			ordq[m, {mu3,mu2,mu1}],
-			dte /.  {c:>a, a:>c}
-			]
-	]/; FreeQ2[{m,a1,a2,a3,a4}, {$MU[j], $MU[j+1], $MU[j+2]}] &&
-		(!FreeQ2[m, LorentzIndex[mu1,___]] &&
-		!FreeQ2[m, LorentzIndex[mu2,___]] &&
-		!FreeQ2[m, LorentzIndex[mu3,___]]
-		) && FreeQ2[m, Select[{a1,a2,a3,a4}, Head[#]===LorentzIndex&]/. LorentzIndex -> lorhipa];
-
-double3[ m_. eepp[LorentzIndex[mu1_,di1___],LorentzIndex[mu2_,di2___], LorentzIndex[mu3_,di3___],LorentzIndex[mu4_,di4___]], _ ] :=
-	Block[ {dte,a,b,c,d},
-		dte = (m/.mu1->$MU[1]/.mu2->$MU[2]/.mu3->$MU[3]/.mu4->$MU[4]) Eps[LorentzIndex[$MU[1],di1],  LorentzIndex[$MU[2],di2], LorentzIndex[$MU[3],di3], LorentzIndex[$MU[4],di4]];
-		a = $MU[1];
-		b = $MU[2];
-		c = $MU[3];
-		d = $MU[4];
-		Which[
-			ordq[m, {mu1, mu2, mu3, mu4}],
-				ReplaceAll[dte, {a -> a, b -> b, c -> c, d -> d}],
-			ordq[m, {mu1, mu2, mu4, mu3}],
-				ReplaceAll[dte, {a -> a, b -> b, c -> d, d -> c}],
-			ordq[m, {mu1, mu3, mu2, mu4}],
-				ReplaceAll[dte, {a -> a, b -> c, c -> b, d -> d}],
-			ordq[m, {mu1, mu3, mu4, mu2}],
-				ReplaceAll[dte, {a -> a, b -> c, c -> d, d -> b}],
-			ordq[m, {mu1, mu4, mu2, mu3}],
-				ReplaceAll[dte, {a -> a, b -> d, c -> b, d -> c}],
-			ordq[m, {mu1, mu4, mu3, mu2}],
-				ReplaceAll[dte, {a -> a, b -> d, c -> c, d -> b}],
-			ordq[m, {mu2, mu1, mu3, mu4}],
-				ReplaceAll[dte, {a -> b, b -> a, c -> c, d -> d}],
-			ordq[m, {mu2, mu1, mu4, mu3}],
-				ReplaceAll[dte, {a -> b, b -> a, c -> d, d -> c}],
-			ordq[m, {mu2, mu3, mu1, mu4}],
-				ReplaceAll[dte, {a -> b, b -> c, c -> a, d -> d}],
-			ordq[m, {mu2, mu3, mu4, mu1}],
-				ReplaceAll[dte, {a -> b, b -> c, c -> d, d -> a}],
-			ordq[m, {mu2, mu4, mu1, mu3}],
-				ReplaceAll[dte, {a -> b, b -> d, c -> a, d -> c}],
-			ordq[m, {mu2, mu4, mu3, mu1}],
-				ReplaceAll[dte, {a -> b, b -> d, c -> c, d -> a}],
-			ordq[m, {mu3, mu1, mu2, mu4}],
-				ReplaceAll[dte, {a -> c, b -> a, c -> b, d -> d}],
-			ordq[m, {mu3, mu1, mu4, mu2}],
-				ReplaceAll[dte, {a -> c, b -> a, c -> d, d -> b}],
-			ordq[m, {mu3, mu2, mu1, mu4}],
-				ReplaceAll[dte, {a -> c, b -> b, c -> a, d -> d}],
-			ordq[m, {mu3, mu2, mu4, mu1}],
-				ReplaceAll[dte, {a -> c, b -> b, c -> d, d -> a}],
-			ordq[m, {mu3, mu4, mu1, mu2}],
-				ReplaceAll[dte, {a -> c, b -> d, c -> a, d -> b}],
-			ordq[m, {mu3, mu4, mu2, mu1}],
-				ReplaceAll[dte, {a -> c, b -> d, c -> b, d -> a}],
-			ordq[m, {mu4, mu1, mu2, mu3}],
-				ReplaceAll[dte, {a -> d, b -> a, c -> b, d -> c}],
-			ordq[m, {mu4, mu1, mu3, mu2}],
-				ReplaceAll[dte, {a -> d, b -> a, c -> c, d -> b}],
-			ordq[m, {mu4, mu2, mu1, mu3}],
-				ReplaceAll[dte, {a -> d, b -> b, c -> a, d -> c}],
-			ordq[m, {mu4, mu2, mu3, mu1}],
-				ReplaceAll[dte, {a -> d, b -> b, c -> c, d -> a}],
-			ordq[m, {mu4, mu3, mu1, mu2}],
-				ReplaceAll[dte, {a -> d, b -> c, c -> a, d -> b}],
-			ordq[m, {mu4, mu3, mu2, mu1}],
-				ReplaceAll[dte, {a -> d, b -> c, c -> b, d -> a}]
-		]
-	] /; (!FreeQ2[m, LorentzIndex[mu1,___]] && !FreeQ2[m, LorentzIndex[mu2,___]] && !FreeQ2[m, LorentzIndex[mu3,___]] && !FreeQ2[m, LorentzIndex[mu4,___]]) && FreeQ2[m, {$MU[1], $MU[2], $MU[3], $MU[4]}];
 
 FCPrint[1,"Contract.m loaded."];
 End[]

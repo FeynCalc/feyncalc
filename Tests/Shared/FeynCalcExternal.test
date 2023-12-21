@@ -1648,8 +1648,117 @@ m1^2*x, {n, 1}]]//FCE", "SFAD[{{0, 0}, {m2^2 - m1^2*x, 1}, n}]"},
 -1}]]//FCE", "SFAD[{{0, 0}, {-2*m^2, -1}, n}]"},
 {"fcstFeynCalcExternal-ID415",
 "FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
-m1^2*x, {n, -1}]]//FCE", "SFAD[{{0, 0}, {m2^2 - m1^2*x, -1}, n}]"}
-
+m1^2*x, {n, -1}]]//FCE", "SFAD[{{0, 0}, {m2^2 - m1^2*x, -1}, n}]"},
+{"fcstFeynCalcExternal-ID416",
+"PauliIndexDelta[PauliIndex[i],0]//FCE", "PIDelta[0, i]"},
+{"fcstFeynCalcExternal-ID417",
+"PauliChain[PauliSigma[CartesianIndex[a]],PauliIndex[i],PauliIndex[\
+j]]//FCE", "PCHN[CSI[a], i, j]"},
+{"fcstFeynCalcExternal-ID418",
+"PauliChain[PauliSigma[CartesianIndex[a]],PauliIndex[1],PauliIndex[\
+j]]//FCE", "PCHN[CSI[a], 1, j]"},
+{"fcstFeynCalcExternal-ID419",
+"PauliChain[PauliSigma[CartesianIndex[a]],PauliIndex[3],PauliIndex[\
+1]]//FCE", "PCHN[CSI[a], 3, 1]"},
+{"fcstFeynCalcExternal-ID420",
+"PauliChain[PauliSigma[CartesianIndex[a]],PauliIndex[3],PauliIndex[\
+3]]//FCE", "PCHN[CSI[a], 3, 3]"},
+{"fcstFeynCalcExternal-ID421",
+"PauliChain[PauliSigma[CartesianIndex[a]],ExplicitPauliIndex[1],\
+ExplicitPauliIndex[2]]//FCE", "PCHN[CSI[a], 1, 2]"},
+{"fcstFeynCalcExternal-ID422",
+"PauliChain[PauliSigma[CartesianIndex[a]],ExplicitPauliIndex[3],\
+ExplicitPauliIndex[3]]//FCE", "PCHN[CSI[a], 3, 3]"},
+{"fcstFeynCalcExternal-ID423",
+"PauliChain[PauliSigma[CartesianIndex[a]],PauliIndex[i],PauliIndex[\
+i]]//FCE", "PCHN[CSI[a], i, i]"},
+{"fcstFeynCalcExternal-ID424",
+"PauliChain[PauliXi[-I],PauliIndex[i]]//FCE",
+"PCHN[PauliXi[-I], i]"},
+{"fcstFeynCalcExternal-ID425",
+"PauliChain[PauliSigma[CartesianIndex[a]].PauliSigma[\
+CartesianMomentum[p,D-1],D-1],PauliXi[-I],PauliIndex[j]]//FCE",
+"PCHN[CSI[a] . CSISD[p], PauliXi[-I], j]"},
+{"fcstFeynCalcExternal-ID426",
+"PauliChain[PauliSigma[CartesianIndex[a]].PauliSigma[\
+CartesianMomentum[p,D-1],D-1],PauliEta[-I],PauliXi[I]]//FCE",
+"PCHN[CSI[a] . CSISD[p], PauliEta[-I], PauliXi[I]]"},
+{"fcstFeynCalcExternal-ID427",
+"PauliChain[PauliSigma[CartesianIndex[a]].PauliSigma[\
+CartesianMomentum[p,D-1],D-1],PauliXi[-I],PauliEta[I]]//FCE",
+"PCHN[CSI[a] . CSISD[p], PauliXi[-I], PauliEta[I]]"},
+{"fcstFeynCalcExternal-ID428",
+"PauliChain[1,PauliXi[-I],PauliEta[I]]//FCE",
+"PCHN[PauliXi[-I], PauliEta[I]]"},
+{"fcstFeynCalcExternal-ID429",
+"Pair[LightConePerpendicularComponent[LorentzIndex[mu],Momentum[n],\
+Momentum[nb]],LightConePerpendicularComponent[Momentum[p],Momentum[n],\
+Momentum[nb]]]//FCE", "FVLR[p, mu, n, nb]"},
+{"fcstFeynCalcExternal-ID430",
+"Pair[LightConePerpendicularComponent[LorentzIndex[mu,D],Momentum[\
+n,D],Momentum[nb,D]],LightConePerpendicularComponent[Momentum[p,D],\
+Momentum[n,D],Momentum[nb,D]]]//FCE", "FVLRD[p, mu, n, nb]"},
+{"fcstFeynCalcExternal-ID431",
+"Pair[LightConePerpendicularComponent[Momentum[p],Momentum[n],\
+Momentum[nb]],LightConePerpendicularComponent[Momentum[q],Momentum[n],\
+Momentum[nb]]]//FCE", "SPLR[p, q, n, nb]"},
+{"fcstFeynCalcExternal-ID432",
+"Pair[LightConePerpendicularComponent[Momentum[p,D],Momentum[n,D],\
+Momentum[nb,D]],LightConePerpendicularComponent[Momentum[q,D],\
+Momentum[n,D],Momentum[nb,D]]]//FCE", "SPLRD[p, q, n, nb]"},
+{"fcstFeynCalcExternal-ID433",
+"Pair[LightConePerpendicularComponent[LorentzIndex[mu],Momentum[n],\
+Momentum[nb]],LightConePerpendicularComponent[LorentzIndex[nu],\
+Momentum[n],Momentum[nb]]]//FCE", "MTLR[mu, nu, n, nb]"},
+{"fcstFeynCalcExternal-ID434",
+"Pair[LightConePerpendicularComponent[LorentzIndex[mu,D],Momentum[\
+n,D],Momentum[nb,D]],LightConePerpendicularComponent[LorentzIndex[nu,\
+D],Momentum[n,D],Momentum[nb,D]]]//FCE", "MTLRD[mu, nu, n, nb]"},
+{"fcstFeynCalcExternal-ID435",
+"DiracGamma[LightConePerpendicularComponent[LorentzIndex[mu],\
+Momentum[n],Momentum[nb]]]//FCE", "GALR[mu, n, nb]"},
+{"fcstFeynCalcExternal-ID436",
+"DiracGamma[LightConePerpendicularComponent[LorentzIndex[mu,D],\
+Momentum[n,D],Momentum[nb,D]],D]//FCE", "GALRD[mu, n, nb]"},
+{"fcstFeynCalcExternal-ID437",
+"DiracGamma[LightConePerpendicularComponent[Momentum[p],Momentum[n]\
+,Momentum[nb]]]//FCE", "GSLR[p, n, nb]"},
+{"fcstFeynCalcExternal-ID438",
+"DiracGamma[LightConePerpendicularComponent[Momentum[p,D],Momentum[\
+n,D],Momentum[nb,D]],D]//FCE", "GSLRD[p, n, nb]"},
+{"fcstFeynCalcExternal-ID439",
+"Pair[LightConePerpendicularComponent[LorentzIndex[mu,d],Momentum[\
+n,d],Momentum[nb,d]],LightConePerpendicularComponent[Momentum[p,d],\
+Momentum[n,d],Momentum[nb,d]]]//FCE",
+"Pair[LightConePerpendicularComponent[LorentzIndex[mu, d], \
+Momentum[n, d], Momentum[nb, d]], \
+LightConePerpendicularComponent[Momentum[p, d], Momentum[n, d], \
+Momentum[nb, d]]]"},
+{"fcstFeynCalcExternal-ID440",
+"Pair[LightConePerpendicularComponent[Momentum[p,d],Momentum[n,d],\
+Momentum[nb,d]],LightConePerpendicularComponent[Momentum[q,d],\
+Momentum[n,d],Momentum[nb,d]]]//FCE",
+"Pair[LightConePerpendicularComponent[Momentum[p, d], Momentum[n, \
+d], Momentum[nb, d]], LightConePerpendicularComponent[Momentum[q, d], \
+Momentum[n, d], Momentum[nb, d]]]"},
+{"fcstFeynCalcExternal-ID441",
+"Pair[LightConePerpendicularComponent[LorentzIndex[mu,d],Momentum[\
+n,d],Momentum[nb,d]],LightConePerpendicularComponent[LorentzIndex[nu,\
+d],Momentum[n,d],Momentum[nb,d]]]//FCE",
+"Pair[LightConePerpendicularComponent[LorentzIndex[mu, d], \
+Momentum[n, d], Momentum[nb, d]], \
+LightConePerpendicularComponent[LorentzIndex[nu, d], Momentum[n, d], \
+Momentum[nb, d]]]"},
+{"fcstFeynCalcExternal-ID442",
+"DiracGamma[LightConePerpendicularComponent[LorentzIndex[mu,d],\
+Momentum[n,D],Momentum[nb,d]],d]//FCE",
+"DiracGamma[LightConePerpendicularComponent[LorentzIndex[mu, d], \
+Momentum[n, D], Momentum[nb, d]], d]"},
+{"fcstFeynCalcExternal-ID443",
+"DiracGamma[LightConePerpendicularComponent[Momentum[p,d],Momentum[\
+n,d],Momentum[nb,d]],d]//FCE",
+"DiracGamma[LightConePerpendicularComponent[Momentum[p, d], \
+Momentum[n, d], Momentum[nb, d]], d]"}
 };
 
 
@@ -3219,8 +3328,85 @@ m1^2*x, {n, 1}]]//FCE//FCE",
 -1}]]//FCE//FCE", "SFAD[{{0, 0}, {-2*m^2, -1}, n}]"},
 {"fcstFeynCalcExternalDouble-ID415",
 "FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
-m1^2*x, {n, -1}]]//FCE//FCE", "SFAD[{{0, 0}, {m2^2 - m1^2*x, -1}, n}]"}
-
+m1^2*x, {n, -1}]]//FCE//FCE", "SFAD[{{0, 0}, {m2^2 - m1^2*x, -1}, n}]"},
+{"fcstFeynCalcExternalDouble-ID416",
+"PauliIndexDelta[PauliIndex[i],0]//FCE//FCE", "PIDelta[0, i]"},
+{"fcstFeynCalcExternalDouble-ID417",
+"PauliChain[PauliSigma[CartesianIndex[a]],PauliIndex[i],PauliIndex[\
+j]]//FCE//FCE", "PCHN[CSI[a], i, j]"},
+{"fcstFeynCalcExternalDouble-ID418",
+"PauliChain[PauliSigma[CartesianIndex[a]],PauliIndex[1],PauliIndex[\
+j]]//FCE//FCE", "PCHN[CSI[a], 1, j]"},
+{"fcstFeynCalcExternalDouble-ID419",
+"PauliChain[PauliSigma[CartesianIndex[a]],PauliIndex[3],PauliIndex[\
+1]]//FCE//FCE", "PCHN[CSI[a], 3, 1]"},
+{"fcstFeynCalcExternalDouble-ID420",
+"PauliChain[PauliSigma[CartesianIndex[a]],PauliIndex[3],PauliIndex[\
+3]]//FCE//FCE", "PCHN[CSI[a], 3, 3]"},
+{"fcstFeynCalcExternalDouble-ID421",
+"PauliChain[PauliSigma[CartesianIndex[a]],ExplicitPauliIndex[1],\
+ExplicitPauliIndex[2]]//FCE//FCE", "PCHN[CSI[a], 1, 2]"},
+{"fcstFeynCalcExternalDouble-ID422",
+"PauliChain[PauliSigma[CartesianIndex[a]],ExplicitPauliIndex[3],\
+ExplicitPauliIndex[3]]//FCE//FCE", "PCHN[CSI[a], 3, 3]"},
+{"fcstFeynCalcExternalDouble-ID423",
+"PauliChain[PauliSigma[CartesianIndex[a]],PauliIndex[i],PauliIndex[\
+i]]//FCE//FCE", "PCHN[CSI[a], i, i]"},
+{"fcstFeynCalcExternalDouble-ID424",
+"PauliChain[PauliXi[-I],PauliIndex[i]]//FCE//FCE",
+"PCHN[PauliXi[-I], i]"},
+{"fcstFeynCalcExternalDouble-ID425",
+"PauliChain[PauliSigma[CartesianIndex[a]].PauliSigma[\
+CartesianMomentum[p,D-1],D-1],PauliXi[-I],PauliIndex[j]]//FCE//FCE",
+"PCHN[CSI[a] . CSISD[p], PauliXi[-I], j]"},
+{"fcstFeynCalcExternalDouble-ID426",
+"PauliChain[PauliSigma[CartesianIndex[a]].PauliSigma[\
+CartesianMomentum[p,D-1],D-1],PauliEta[-I],PauliXi[I]]//FCE//FCE",
+"PCHN[CSI[a] . CSISD[p], PauliEta[-I], PauliXi[I]]"},
+{"fcstFeynCalcExternalDouble-ID427",
+"PauliChain[PauliSigma[CartesianIndex[a]].PauliSigma[\
+CartesianMomentum[p,D-1],D-1],PauliXi[-I],PauliEta[I]]//FCE//FCE",
+"PCHN[CSI[a] . CSISD[p], PauliXi[-I], PauliEta[I]]"},
+{"fcstFeynCalcExternalDouble-ID428",
+"PauliChain[1,PauliXi[-I],PauliEta[I]]//FCE//FCE",
+"PCHN[PauliXi[-I], PauliEta[I]]"},
+{"fcstFeynCalcExternalDouble-ID429",
+"Pair[LightConePerpendicularComponent[LorentzIndex[mu],Momentum[n],\
+Momentum[nb]],LightConePerpendicularComponent[Momentum[p],Momentum[n],\
+Momentum[nb]]]//FCE//FCE", "FVLR[p, mu, n, nb]"},
+{"fcstFeynCalcExternalDouble-ID430",
+"Pair[LightConePerpendicularComponent[LorentzIndex[mu,D],Momentum[\
+n,D],Momentum[nb,D]],LightConePerpendicularComponent[Momentum[p,D],\
+Momentum[n,D],Momentum[nb,D]]]//FCE//FCE", "FVLRD[p, mu, n, nb]"},
+{"fcstFeynCalcExternalDouble-ID431",
+"Pair[LightConePerpendicularComponent[Momentum[p],Momentum[n],\
+Momentum[nb]],LightConePerpendicularComponent[Momentum[q],Momentum[n],\
+Momentum[nb]]]//FCE//FCE", "SPLR[p, q, n, nb]"},
+{"fcstFeynCalcExternalDouble-ID432",
+"Pair[LightConePerpendicularComponent[Momentum[p,D],Momentum[n,D],\
+Momentum[nb,D]],LightConePerpendicularComponent[Momentum[q,D],\
+Momentum[n,D],Momentum[nb,D]]]//FCE//FCE", "SPLRD[p, q, n, nb]"},
+{"fcstFeynCalcExternalDouble-ID433",
+"Pair[LightConePerpendicularComponent[LorentzIndex[mu],Momentum[n],\
+Momentum[nb]],LightConePerpendicularComponent[LorentzIndex[nu],\
+Momentum[n],Momentum[nb]]]//FCE//FCE", "MTLR[mu, nu, n, nb]"},
+{"fcstFeynCalcExternalDouble-ID434",
+"Pair[LightConePerpendicularComponent[LorentzIndex[mu,D],Momentum[\
+n,D],Momentum[nb,D]],LightConePerpendicularComponent[LorentzIndex[nu,\
+D],Momentum[n,D],Momentum[nb,D]]]//FCE//FCE",
+"MTLRD[mu, nu, n, nb]"},
+{"fcstFeynCalcExternalDouble-ID435",
+"DiracGamma[LightConePerpendicularComponent[LorentzIndex[mu],\
+Momentum[n],Momentum[nb]]]//FCE//FCE", "GALR[mu, n, nb]"},
+{"fcstFeynCalcExternalDouble-ID436",
+"DiracGamma[LightConePerpendicularComponent[LorentzIndex[mu,D],\
+Momentum[n,D],Momentum[nb,D]],D]//FCE//FCE", "GALRD[mu, n, nb]"},
+{"fcstFeynCalcExternalDouble-ID437",
+"DiracGamma[LightConePerpendicularComponent[Momentum[p],Momentum[n]\
+,Momentum[nb]]]//FCE//FCE", "GSLR[p, n, nb]"},
+{"fcstFeynCalcExternalDouble-ID438",
+"DiracGamma[LightConePerpendicularComponent[Momentum[p,D],Momentum[\
+n,D],Momentum[nb,D]],D]//FCE//FCE", "GSLRD[p, n, nb]"}
 };
 
 
@@ -4813,8 +4999,87 @@ m1^2*x, {n, 1}]]//FCE//FCI//FCE",
 {"fcstFeynCalcExternalTriple-ID415",
 "FeynAmpDenominator[StandardPropagatorDenominator[0, 0, -m2^2 + \
 m1^2*x, {n, -1}]]//FCE//FCI//FCE",
-"SFAD[{{0, 0}, {m2^2 - m1^2*x, -1}, n}]"}
-
+"SFAD[{{0, 0}, {m2^2 - m1^2*x, -1}, n}]"},
+{"fcstFeynCalcExternalDouble-ID416",
+"PauliIndexDelta[PauliIndex[i],0]//FCE//FCI//FCE", "PIDelta[0, i]"},
+{"fcstFeynCalcExternalDouble-ID417",
+"PauliChain[PauliSigma[CartesianIndex[a]],PauliIndex[i],PauliIndex[\
+j]]//FCE//FCI//FCE", "PCHN[CSI[a], i, j]"},
+{"fcstFeynCalcExternalDouble-ID418",
+"PauliChain[PauliSigma[CartesianIndex[a]],PauliIndex[1],PauliIndex[\
+j]]//FCE//FCI//FCE", "PCHN[CSI[a], 1, j]"},
+{"fcstFeynCalcExternalDouble-ID419",
+"PauliChain[PauliSigma[CartesianIndex[a]],PauliIndex[3],PauliIndex[\
+1]]//FCE//FCI//FCE", "PCHN[CSI[a], 3, 1]"},
+{"fcstFeynCalcExternalDouble-ID420",
+"PauliChain[PauliSigma[CartesianIndex[a]],PauliIndex[3],PauliIndex[\
+3]]//FCE//FCI//FCE", "PCHN[CSI[a], 3, 3]"},
+{"fcstFeynCalcExternalDouble-ID421",
+"PauliChain[PauliSigma[CartesianIndex[a]],ExplicitPauliIndex[1],\
+ExplicitPauliIndex[2]]//FCE//FCI//FCE", "PCHN[CSI[a], 1, 2]"},
+{"fcstFeynCalcExternalDouble-ID422",
+"PauliChain[PauliSigma[CartesianIndex[a]],ExplicitPauliIndex[3],\
+ExplicitPauliIndex[3]]//FCE//FCI//FCE", "PCHN[CSI[a], 3, 3]"},
+{"fcstFeynCalcExternalDouble-ID423",
+"PauliChain[PauliSigma[CartesianIndex[a]],PauliIndex[i],PauliIndex[\
+i]]//FCE//FCI//FCE", "PCHN[CSI[a], i, i]"},
+{"fcstFeynCalcExternalDouble-ID424",
+"PauliChain[PauliXi[-I],PauliIndex[i]]//FCE//FCI//FCE",
+"PCHN[PauliXi[-I], i]"},
+{"fcstFeynCalcExternalDouble-ID425",
+"PauliChain[PauliSigma[CartesianIndex[a]].PauliSigma[\
+CartesianMomentum[p,D-1],D-1],PauliXi[-I],PauliIndex[j]]\
+//FCE//FCI//FCE", "PCHN[CSI[a] . CSISD[p], PauliXi[-I], j]"},
+{"fcstFeynCalcExternalDouble-ID426",
+"PauliChain[PauliSigma[CartesianIndex[a]].PauliSigma[\
+CartesianMomentum[p,D-1],D-1],PauliEta[-I],PauliXi[I]]\
+//FCE//FCI//FCE", "PCHN[CSI[a] . CSISD[p], PauliEta[-I], PauliXi[I]]"},
+{"fcstFeynCalcExternalDouble-ID427",
+"PauliChain[PauliSigma[CartesianIndex[a]].PauliSigma[\
+CartesianMomentum[p,D-1],D-1],PauliXi[-I],PauliEta[I]]\
+//FCE//FCI//FCE", "PCHN[CSI[a] . CSISD[p], PauliXi[-I], PauliEta[I]]"},
+{"fcstFeynCalcExternalDouble-ID428",
+"PauliChain[1,PauliXi[-I],PauliEta[I]]//FCE//FCI//FCE",
+"PCHN[PauliXi[-I], PauliEta[I]]"},
+{"fcstFeynCalcExternalTriple-ID429",
+"Pair[LightConePerpendicularComponent[LorentzIndex[mu],Momentum[n],\
+Momentum[nb]],LightConePerpendicularComponent[Momentum[p],Momentum[n],\
+Momentum[nb]]]//FCE//FCI//FCE", "FVLR[p, mu, n, nb]"},
+{"fcstFeynCalcExternalTriple-ID430",
+"Pair[LightConePerpendicularComponent[LorentzIndex[mu,D],Momentum[\
+n,D],Momentum[nb,D]],LightConePerpendicularComponent[Momentum[p,D],\
+Momentum[n,D],Momentum[nb,D]]]//FCE//FCI//FCE", "FVLRD[p, mu, n, nb]"},
+{"fcstFeynCalcExternalTriple-ID431",
+"Pair[LightConePerpendicularComponent[Momentum[p],Momentum[n],\
+Momentum[nb]],LightConePerpendicularComponent[Momentum[q],Momentum[n],\
+Momentum[nb]]]//FCE//FCI//FCE", "SPLR[p, q, n, nb]"},
+{"fcstFeynCalcExternalTriple-ID432",
+"Pair[LightConePerpendicularComponent[Momentum[p,D],Momentum[n,D],\
+Momentum[nb,D]],LightConePerpendicularComponent[Momentum[q,D],\
+Momentum[n,D],Momentum[nb,D]]]//FCE//FCI//FCE",
+"SPLRD[p, q, n, nb]"},
+{"fcstFeynCalcExternalTriple-ID433",
+"Pair[LightConePerpendicularComponent[LorentzIndex[mu],Momentum[n],\
+Momentum[nb]],LightConePerpendicularComponent[LorentzIndex[nu],\
+Momentum[n],Momentum[nb]]]//FCE//FCI//FCE", "MTLR[mu, nu, n, nb]"},
+{"fcstFeynCalcExternalTriple-ID434",
+"Pair[LightConePerpendicularComponent[LorentzIndex[mu,D],Momentum[\
+n,D],Momentum[nb,D]],LightConePerpendicularComponent[LorentzIndex[nu,\
+D],Momentum[n,D],Momentum[nb,D]]]//FCE//FCI//FCE",
+"MTLRD[mu, nu, n, nb]"},
+{"fcstFeynCalcExternalTriple-ID435",
+"DiracGamma[LightConePerpendicularComponent[LorentzIndex[mu],\
+Momentum[n],Momentum[nb]]]//FCE//FCI//FCE", "GALR[mu, n, nb]"},
+{"fcstFeynCalcExternalTriple-ID436",
+"DiracGamma[LightConePerpendicularComponent[LorentzIndex[mu,D],\
+Momentum[n,D],Momentum[nb,D]],D]//FCE//FCI//FCE",
+"GALRD[mu, n, nb]"},
+{"fcstFeynCalcExternalTriple-ID437",
+"DiracGamma[LightConePerpendicularComponent[Momentum[p],Momentum[n]\
+,Momentum[nb]]]//FCE//FCI//FCE", "GSLR[p, n, nb]"},
+{"fcstFeynCalcExternalTriple-ID438",
+"DiracGamma[LightConePerpendicularComponent[Momentum[p,D],Momentum[\
+n,D],Momentum[nb,D]],D]//FCE//FCI//FCE", "GSLRD[p, n, nb]"}
 };
 
 Tests`Shared`fcstCartesianFeynCalcExternal =

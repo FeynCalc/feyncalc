@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Compute partial derivatives w.r.t to the given 4-vector(s)		*)
@@ -16,32 +16,32 @@
 (* ------------------------------------------------------------------------ *)
 
 FourDivergence::usage =
-"FourDivergence[exp, FV[p, mu]] calculates the partial derivative of exp w.r.t. p^mu. \
-FourDivergence[exp, FV[p, mu], FV[p,nu], ...] gives the multiple derivative.";
-
-PartialFourVector::usage=
-"PartialFourVector is equivalent to FourDivergence";
+"FourDivergence[exp, FV[p, mu]] calculates the partial derivative of exp w.r.t
+$p^{\\mu }$. FourDivergence[exp, FV[p, mu], FV[p,nu], ...] gives the multiple
+derivative.";
 
 FourDivergence::notvec=
-"`1` is not a Lorentz vector. Evaluation aborted!"
+"`1` is not a Lorentz vector. Evaluation aborted!";
 
 FourDivergence::extfail=
 "Failed to extract the name of the Lorentz vector from `1`. Evaluation aborted!"
 
 FourDivergence::toocompl=
 "The structure `1` w.r.t which you are trying to differentiate is too complicated \
-to ensure the correct result. Evaluation aborted!"
+to ensure the correct result. Evaluation aborted!";
 
 FourDivergence::failmsg =
 "Error! FourDivergence has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 FourDivergence::warn =
 "Warning! The input expression also depends on `1` in dimensions other than `2`. \
-The derivative of a vector in one dimension w.r.t the same vector in a different \
-dimension is zero by convention. Please check that this is indeed intended. You \
-can deactivate this message for the current session by evaluating \
-Off[FourDivergence::warn].";
+The derivative of a vector in one dimension (D, 4 or D-4) w.r.t. the same vector in a \
+different dimension (D, 4 or D-4) is meaningnful only when using the t'Hooft-Veltman \
+scheme. For every other scheme please recheck your input expressions and ensure that \
+all matrices, spinors and tensors are purely D-dimensional or 4-dimensional. You might \
+want to use FCGetDimensions[exp] to find the offending terms. If you explicitly \
+intend to use the t'Hooft-Veltman scheme, please activate it via FCSetDiracGammaScheme[\"BMHV\"].";
 
 FourDivergence::warnCartesian =
 "Warning! The input expression also depends on the 3-momentum `1`. The derivatives of \
@@ -52,13 +52,13 @@ evaluating  Off[ThreeDivergence::warnCartesian].";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
+fourVectorDiffEval;
 End[]
 
 Begin["`FourDivergence`Private`"]
 
 fdVerbose::usage="";
-
-PartialFourVector = FourDivergence;
+optEpsExpand::usage="";
 
 Options[FourDivergence] = {
 	Abort 				-> True,
@@ -66,6 +66,7 @@ Options[FourDivergence] = {
 	Collecting 			-> True,
 	Contract 			-> True,
 	EpsEvaluate 		-> True,
+	EpsExpand			-> True,
 	ExpandScalarProduct -> True,
 	FCE 				-> False,
 	FCI 				-> False,
@@ -74,7 +75,10 @@ Options[FourDivergence] = {
 };
 
 FourDivergence[expr_, fv:Except[_?OptionQ].., OptionsPattern[]] :=
-	Block[{ex, ve, tliflag = False, time, args, hold},
+	Block[{	ex, ve, time, args, hold, optEpsEvaluate, optEpsExpand},
+
+		optEpsEvaluate	= OptionValue[EpsEvaluate];
+		optEpsExpand	= OptionValue[EpsExpand];
 
 		If [OptionValue[FCVerbose]===False,
 			fdVerbose=$VeryVerbose,
@@ -95,12 +99,6 @@ FourDivergence[expr_, fv:Except[_?OptionQ].., OptionsPattern[]] :=
 
 		args = Cases[{ve}, z_Momentum :> First[z], Infinity] // Sort // DeleteDuplicates;
 
-		(* QCD-related stuff *)
-		If[ !FreeQ[ex, TLI],
-			ex = TLI2FC[ex];
-			tliflag = True
-		];
-
 		FCPrint[1, "FourDivergence: Applying fourDerivative ", FCDoControl->fdVerbose];
 		time=AbsoluteTime[];
 		ex = fourDerivative[ex,Sequence@@ve];
@@ -116,15 +114,10 @@ FourDivergence[expr_, fv:Except[_?OptionQ].., OptionsPattern[]] :=
 			FCPrint[3, "FourDivergence: After FeynAmpDenominatorCombine: ", ex, FCDoControl->fdVerbose]
 		];
 
-		(* QCD-related stuff *)
-		If[ tliflag && FreeQ[ex, LorentzIndex],
-			ex = FC2TLI[ex, (Momentum/.Options[TLI2FC])[[1]], (Momentum/.Options[TLI2FC])[[2]]]
-		];
-
 		If[	OptionValue[Contract],
 			FCPrint[1, "FourDivergence: Applying Contract.", FCDoControl->fdVerbose];
 			time=AbsoluteTime[];
-			ex = Contract[ex, FCI->True];
+			ex = Contract[ex, FCI->True, EpsExpand->optEpsExpand];
 			FCPrint[1, "FourDivergence: Contract done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fdVerbose];
 			FCPrint[3, "FourDivergence: After Contract: ", ex, FCDoControl->fdVerbose]
 		];
@@ -132,7 +125,7 @@ FourDivergence[expr_, fv:Except[_?OptionQ].., OptionsPattern[]] :=
 		If[	OptionValue[ExpandScalarProduct],
 			FCPrint[1, "FourDivergence: Applying ExpandScalarProduct.", FCDoControl->fdVerbose];
 			time=AbsoluteTime[];
-			ex = ExpandScalarProduct[ex, FCI->True, EpsEvaluate->OptionValue[EpsEvaluate]];
+			ex = ExpandScalarProduct[ex, FCI->True, EpsEvaluate->optEpsEvaluate, EpsExpand->optEpsExpand];
 			FCPrint[1, "FourDivergence: ExpandScalarProduct done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fdVerbose];
 			FCPrint[3, "FourDivergence: After ExpandScalarProduct: ", ex, FCDoControl->fdVerbose]
 		];
@@ -178,7 +171,7 @@ fourDerivative[x_, a_, b__] :=
 fourDerivative[x_, ve_]:=
 	Block[{	nx = x,p, p0, mu, dList, dListEval, repRuleFinal, deriv,
 			null1,null2,un, fadHead, fadList, fadListEval,
-			repRule1, repRule2={}, res},
+			repRule1, repRule2={}, res, mu0, momHead, pDim},
 
 		FCPrint[3, "FourDivergence: fourDerivative: Entering with: ", x, FCDoControl->fdVerbose];
 
@@ -188,9 +181,10 @@ fourDerivative[x_, ve_]:=
 			Abort[]
 		];
 
-		p 	= ve/.Pair[z_Momentum,_] :> z;
-		mu	= ve/.Pair[z_LorentzIndex,_] :> z;
+		{p, pDim, mu} = ve/.Pair[z:Momentum[_,dim_:4], l_LorentzIndex] :> {z, dim, l};
+
 		p0	= First[p];
+		mu0 = First[mu];
 
 		FCPrint[3, "FourDivergence: fourDerivative: p and mu: ", {p,mu}, FCDoControl->fdVerbose];
 
@@ -220,7 +214,7 @@ fourDerivative[x_, ve_]:=
 			(*	FeynAmpDenominatorSplit is necessary here. Without it, the results are still correct,
 				but they become too complicated.	*)
 			nx = FeynAmpDenominatorSplit[nx,FCI->True];
-			fadList = Cases[nx + null1 + null2, zzz_FeynAmpDenominator /; ! FreeQ[zzz, p], Infinity];
+			fadList = Cases[nx + null1 + null2, zzz_FeynAmpDenominator /; ! FreeQ[zzz, p0], Infinity];
 			fadListEval = FeynAmpDenominatorExplicit[#,FCI->True,Head->fadHead,Denominator->True]&/@fadList;
 			repRule1 = Thread[Rule[fadList,fadListEval]];
 			repRule2 = (Reverse /@ repRule1) /. Rule[a_, b_] :> Rule[1/a, 1/b];
@@ -234,26 +228,23 @@ fourDerivative[x_, ve_]:=
 
 		];
 
-		If[ Cases[(nx/. p-> Unique[]) + null1 + null2, Momentum[p0,___], Infinity]=!={},
-			Message[FourDivergence::warn,ToString[p0], ToString[p/.Momentum[_,dim_:4]:>dim]]
+		If[ Cases[(nx/. p-> Unique[]) + null1 + null2, Momentum[p0,___], Infinity]=!={} && (FeynCalc`Package`DiracGammaScheme =!= "BMHV"),
+			Message[FourDivergence::warn,ToString[p0], ToString[p/.Momentum[_,dim_:4]:>dim]];
+			Abort[]
 		];
 
 		(* This is the main part	*)
-		nx = D[nx, p] /. Derivative -> deriv;
+		nx = D[nx /. Momentum[p0,dim___] -> Momentum[momHead[p0],dim], momHead[p0]] /. Derivative -> deriv;
+		nx = nx /. {deriv[1][Momentum][momHead[p0]] -> 1, deriv[1,0][Momentum][momHead[p0],_] -> 1} /. momHead->Identity;
+
 		FCPrint[3, "FourDivergence: fourDerivative: After D: ", nx, FCDoControl->fdVerbose];
 
 		dList = Cases[nx+null1+null2,deriv[___][___][___],Infinity]//Sort//DeleteDuplicates;
 
-		dListEval = dList /. (deriv[__][fadHead][__]) :> 1 /. {
-			deriv[1, 0][Pair][p,  a_] :> Pair[a, mu] ,
-			deriv[0, 1][Pair][a_, p] :> Pair[a, mu] ,
-			deriv[1,0][DiracGamma][p,dim_] :> DiracGamma[mu,dim] ,
-			deriv[1][DiracGamma][p] :> DiracGamma[mu] ,
-			deriv[1,0,0,0][Eps][p,c__] :> Eps[mu,c] ,
-			deriv[0,1,0,0][Eps][a_,p,c__] :> Eps[a,mu,c] ,
-			deriv[0,0,1,0][Eps][a__,p,c_] :> Eps[a,mu,c] ,
-			deriv[0,0,0,1][Eps][c__,p] :> Eps[c,mu]
-		} /. deriv -> Derivative;
+		FCPrint[3, "FourDivergence: fourDerivative: dList: ", dList, FCDoControl->fdVerbose];
+
+
+		dListEval = fourVectorDiffEval[dList /. (deriv[__][fadHead][__]) -> 1,deriv,p0,mu0,pDim] /. deriv -> Derivative;
 
 		repRuleFinal = Thread[Rule[dList,dListEval]];
 		FCPrint[3, "FourDivergence: fourDerivative: Final replacement list: ", repRuleFinal, FCDoControl->fdVerbose];
@@ -269,6 +260,19 @@ fourDerivative[x_, ve_]:=
 
 		res
 	];
+
+fourVectorDiffEval[ex_,head_,pVar_,muVar_, pDim_]:=
+	ex /. {
+		head[1, 0][Pair][Momentum[pVar,___],  a_] 			:> Pair[a, LorentzIndex[muVar,pDim]],
+		head[0, 1][Pair][a_, Momentum[pVar,___]] 			:> Pair[a, LorentzIndex[muVar,pDim]],
+		head[1,0][DiracGamma][Momentum[pVar,___],dim2__]	:> DiracGamma[LorentzIndex[muVar,pDim],dim2],
+		head[1][DiracGamma][Momentum[pVar,___]]				:> DiracGamma[LorentzIndex[muVar,pDim]],
+		head[1,0,0,0][Eps][Momentum[pVar,___],c__]			:> Eps[LorentzIndex[muVar,pDim],c],
+		head[0,1,0,0][Eps][a_,Momentum[pVar,___],c__]		:> Eps[a,LorentzIndex[muVar,pDim],c],
+		head[0,0,1,0][Eps][a__,Momentum[pVar,___],c_]		:> Eps[a,LorentzIndex[muVar,pDim],c],
+		head[0,0,0,1][Eps][c__,Momentum[pVar,___]]			:> Eps[c,LorentzIndex[muVar,pDim]]
+	};
+
 
 FCPrint[1,"FourDivergence.m loaded."];
 End[]

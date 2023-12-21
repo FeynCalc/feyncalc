@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for PairContract              *)
@@ -54,12 +54,120 @@ Tests`Lorentz`fcstPairContract =
 "PairContract[-Momentum[q2],
 Momentum[Polarization[q1, I, Transversality -> True]]]",
 "-Pair[Momentum[q2],
-Momentum[Polarization[q1, I, Transversality -> True]]]"}
+Momentum[Polarization[q1, I, Transversality -> True]]]"},
+{"fcstPairContract-ID17",
+"PairContract[LightConePerpendicularComponent[LorentzIndex[mu],\
+Momentum[n],Momentum[nb]],LightConePerpendicularComponent[\
+LorentzIndex[mu],Momentum[n],Momentum[nb]]]", "2"},
+{"fcstPairContract-ID18",
+"PairContract[LightConePerpendicularComponent[LorentzIndex[mu],\
+Momentum[n],Momentum[nb]],LightConePerpendicularComponent[Momentum[p],\
+Momentum[n],Momentum[nb]]]^2",
+"Pair[LightConePerpendicularComponent[Momentum[p], Momentum[n], \
+Momentum[nb]], LightConePerpendicularComponent[Momentum[p], \
+Momentum[n], Momentum[nb]]]"},
+{"fcstPairContract-ID19",
+"PairContract[LightConePerpendicularComponent[LorentzIndex[mu,D],\
+Momentum[n,D],Momentum[nb,D]],LightConePerpendicularComponent[\
+LorentzIndex[mu,D],Momentum[n,D],Momentum[nb,D]]]", "-2 + D"},
+{"fcstPairContract-ID20",
+"PairContract[LightConePerpendicularComponent[LorentzIndex[mu,D],\
+Momentum[n,D],Momentum[nb,D]],LightConePerpendicularComponent[\
+Momentum[p,D],Momentum[n,D],Momentum[nb,D]]]^2",
+"Pair[LightConePerpendicularComponent[Momentum[p, D], Momentum[n, \
+D], Momentum[nb, D]], LightConePerpendicularComponent[Momentum[p, D], \
+Momentum[n, D], Momentum[nb, D]]]"}
 });
+
+Tests`Lorentz`fcstPairContract2 =
+({
+{"fcstPairContract2-ID1", "PairContract2[0,x]", "0"},
+{"fcstPairContract2-ID2",
+"PairContract2[LorentzIndex[i],LorentzIndex[i]]", "4"},
+{"fcstPairContract2-ID3",
+"PairContract2[LorentzIndex[i,D],LorentzIndex[i,D]]", "D"},
+{"fcstPairContract2-ID4",
+"PairContract2[LorentzIndex[i,D-4],LorentzIndex[i,D-4]]", "-4 + D"},
+{"fcstPairContract2-ID5",
+"PairContract2[LorentzIndex[i,D],LorentzIndex[i]]",
+"PairContract2[LorentzIndex[i], LorentzIndex[i, D]]"},
+{"fcstPairContract2-ID6",
+"PairContract2[LorentzIndex[i,D-4],LorentzIndex[i]]",
+"PairContract2[LorentzIndex[i], LorentzIndex[i, -4 + D]]"},
+{"fcstPairContract2-ID7",
+"PairContract2[LorentzIndex[i,D-4],LorentzIndex[i,D]]",
+"PairContract2[LorentzIndex[i, -4 + D], LorentzIndex[i, D]]"},
+{"fcstPairContract2-ID8",
+"PairContract2[LorentzIndex[i,D1],LorentzIndex[i,D2]]",
+"PairContract2[LorentzIndex[i, D1], LorentzIndex[i, D2]]"},
+{"fcstPairContract2-ID9", "PairContract2[Momentum[p],Momentum[p]]",
+"Pair[Momentum[p], Momentum[p]]"},
+{"fcstPairContract2-ID10",
+"PairContract2[Momentum[p,D],Momentum[p,D]]",
+"Pair[Momentum[p, D], Momentum[p, D]]"},
+{"fcstPairContract2-ID11",
+"PairContract2[Momentum[p,D-4],Momentum[p,D-4]]",
+"Pair[Momentum[p, -4 + D], Momentum[p, -4 + D]]"},
+{"fcstPairContract2-ID12",
+"PairContract2[Momentum[p,D],Momentum[p]]",
+"Pair[Momentum[p], Momentum[p]]"},
+{"fcstPairContract2-ID13",
+"PairContract2[Momentum[p,D-4],Momentum[p]]", "0"},
+{"fcstPairContract2-ID14",
+"PairContract2[Momentum[p,D-4],Momentum[p,D]]",
+"Pair[Momentum[p, -4 + D], Momentum[p, -4 + D]]"},
+{"fcstPairContract2-ID15",
+"PairContract2[Momentum[p,D1],Momentum[p,D2]]",
+"Pair[Momentum[p, D1], Momentum[p, D2]]"},
+{"fcstPairContract-ID16",
+"PairContract2[LightConePerpendicularComponent[LorentzIndex[mu],\
+Momentum[n],Momentum[nb]],LightConePerpendicularComponent[\
+LorentzIndex[mu],Momentum[n],Momentum[nb]]]", "2"},
+{"fcstPairContract-ID17",
+"PairContract2[LightConePerpendicularComponent[LorentzIndex[mu],\
+Momentum[n],Momentum[nb]],LightConePerpendicularComponent[Momentum[p],\
+Momentum[n],Momentum[nb]]]^2",
+"Pair[LightConePerpendicularComponent[Momentum[p], Momentum[n], \
+Momentum[nb]], LightConePerpendicularComponent[Momentum[p], \
+Momentum[n], Momentum[nb]]]"},
+{"fcstPairContract-ID18",
+"PairContract2[LightConePerpendicularComponent[LorentzIndex[mu,D],\
+Momentum[n,D],Momentum[nb,D]],LightConePerpendicularComponent[\
+LorentzIndex[mu,D],Momentum[n,D],Momentum[nb,D]]]", "-2 + D"},
+{"fcstPairContract-ID19",
+"PairContract2[LightConePerpendicularComponent[LorentzIndex[mu,D],\
+Momentum[n,D],Momentum[nb,D]],LightConePerpendicularComponent[\
+Momentum[p,D],Momentum[n,D],Momentum[nb,D]]]^2",
+"Pair[LightConePerpendicularComponent[Momentum[p, D], Momentum[n, \
+D], Momentum[nb, D]], LightConePerpendicularComponent[Momentum[p, D], \
+Momentum[n, D], Momentum[nb, D]]]"}
+})
 
 Tests`Lorentz`fcstPairContract3 = {
 {"fcstPairContract3-ID1","SP[p, p] = (a + b)^2; \n tmp = PairContract3[Momentum[p], Momentum[p]]; \n
-FCClearScalarProducts[]; \n tmp","(a + b)^2"}
+FCClearScalarProducts[]; \n tmp","(a + b)^2"},
+{"fcstPairContract-ID2",
+"PairContract3[LightConePerpendicularComponent[LorentzIndex[mu],\
+Momentum[n],Momentum[nb]],LightConePerpendicularComponent[\
+LorentzIndex[mu],Momentum[n],Momentum[nb]]]", "2"},
+{"fcstPairContract-ID3",
+"PairContract3[LightConePerpendicularComponent[LorentzIndex[mu],\
+Momentum[n],Momentum[nb]],LightConePerpendicularComponent[Momentum[p],\
+Momentum[n],Momentum[nb]]]^2",
+"Pair[LightConePerpendicularComponent[Momentum[p], Momentum[n], \
+Momentum[nb]], LightConePerpendicularComponent[Momentum[p], \
+Momentum[n], Momentum[nb]]]"},
+{"fcstPairContract-ID4",
+"PairContract3[LightConePerpendicularComponent[LorentzIndex[mu,D],\
+Momentum[n,D],Momentum[nb,D]],LightConePerpendicularComponent[\
+LorentzIndex[mu,D],Momentum[n,D],Momentum[nb,D]]]", "-2 + D"},
+{"fcstPairContract-ID5",
+"PairContract3[LightConePerpendicularComponent[LorentzIndex[mu,D],\
+Momentum[n,D],Momentum[nb,D]],LightConePerpendicularComponent[\
+Momentum[p,D],Momentum[n,D],Momentum[nb,D]]]^2",
+"Pair[LightConePerpendicularComponent[Momentum[p, D], Momentum[n, \
+D], Momentum[nb, D]], LightConePerpendicularComponent[Momentum[p, D], \
+Momentum[n, D], Momentum[nb, D]]]"}
 }
 
 Tests`Lorentz`fcstCartesianPairContract =

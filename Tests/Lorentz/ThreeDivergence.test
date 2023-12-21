@@ -3,9 +3,9 @@
 (* :Title: .test                                              *)
 
 (* This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for            *)
@@ -27,9 +27,6 @@ Tests`Lorentz`fcstThreeDivergence =
 {"fcstThreeDivergence-ID5",
 "ThreeDivergence[1/CSP[p,q]^2,CV[p,i],FCE->True]",
 "(-2*CV[q, i])/CSP[p, q]^3"},
-{"fcstThreeDivergence-ID6",
-"Off[ThreeDivergence::warn];tmp=ThreeDivergence[CFAD[p-k],CV[k,mu]]\
-;On[ThreeDivergence::warn];tmp", "0"},
 {"fcstThreeDivergence-ID7",
 "ThreeDivergence[CFAD[{p+q,m}],CVD[p,mu],FCE\[Rule]True]",
 "CFAD[{{p + q, 0}, {m, -1}, 1}, {{p + q, 0}, {m, -1}, \
@@ -70,5 +67,95 @@ i]"},
 "ThreeDivergence[CLC[][q,p,r],CV[p,i],FCE->True]", "-CLC[i][q, r]"},
 {"fcstThreeDivergence-ID17",
 "Off[ThreeDivergence::warnLorentz];tmp=ThreeDivergence[SP[p,q],CV[\
-p,i],FCE->True];On[ThreeDivergence::warn];tmp", "0"}
+p,i],FCE->True];On[ThreeDivergence::warn];tmp", "0"},
+{"fcstThreeDivergence-ID18",
+"ThreeDivergence[CLC[i1][q1 + q2, p1 + p2 + p3], CV[q1, mu]]",
+"Eps[CartesianIndex[i1], CartesianIndex[mu], CartesianMomentum[p1]] +
+Eps[CartesianIndex[i1], CartesianIndex[mu], CartesianMomentum[p2]] +
+Eps[CartesianIndex[i1], CartesianIndex[mu], CartesianMomentum[p3]]"},
+{"fcstThreeDivergence-ID19",
+"ThreeDivergence[CLC[i1][q1 + q2, p1 + p2 + p3], CV[q1, mu],
+EpsExpand -> False]",
+"Eps[CartesianIndex[i1], CartesianIndex[mu],
+CartesianMomentum[p1 + p2 + p3]]"},
+{"fcstThreeDivergence-ID20",
+"FCSetDiracGammaScheme[\"BMHV\"]; \n ThreeDivergence[CV[p,mu],CVD[p,nu],FCE->True]", "KD[mu, nu]"},
+{"fcstThreeDivergence-ID21",
+"ThreeDivergence[CV[p,mu],CVE[p,nu],FCE->True]", "0"},
+{"fcstThreeDivergence-ID22",
+"ThreeDivergence[CVD[p,mu],CV[p,nu],FCE->True]", "KD[mu, nu]"},
+{"fcstThreeDivergence-ID23",
+"ThreeDivergence[CVD[p,mu],CVE[p,nu],FCE->True]", "KDE[mu, nu]"},
+{"fcstThreeDivergence-ID24",
+"ThreeDivergence[CVE[p,mu],CV[p,nu],FCE->True]", "0"},
+{"fcstThreeDivergence-ID25",
+"ThreeDivergence[CVE[p,mu],CVD[p,nu],FCE->True]", "KDE[mu, nu]"},
+{"fcstThreeDivergence-ID26",
+"ThreeDivergence[CSP[p,q],CVD[p,nu],FCE->True]", "CV[q, nu]"},
+{"fcstThreeDivergence-ID27",
+"ThreeDivergence[CSP[p,q],CVE[p,nu],FCE->True]", "0"},
+{"fcstThreeDivergence-ID28",
+"ThreeDivergence[CSPD[p,q],CV[p,nu],FCE->True]", "CV[q, nu]"},
+{"fcstThreeDivergence-ID29",
+"ThreeDivergence[CSPD[p,q],CVE[p,nu],FCE->True]", "CVE[q, nu]"},
+{"fcstThreeDivergence-ID30",
+"ThreeDivergence[CSPE[p,q],CV[p,nu],FCE->True]", "0"},
+{"fcstThreeDivergence-ID31",
+"ThreeDivergence[CSPE[p,q],CVD[p,nu],FCE->True]", "CVE[q, nu]"},
+{"fcstThreeDivergence-ID32",
+"ThreeDivergence[CGS[p],CVD[p,nu],FCE->True]", "CGA[nu]"},
+{"fcstThreeDivergence-ID33",
+"ThreeDivergence[CGS[p],CVE[p,nu],FCE->True]", "0"},
+{"fcstThreeDivergence-ID34",
+"ThreeDivergence[CGSD[p],CV[p,nu],FCE->True]", "CGA[nu]"},
+{"fcstThreeDivergence-ID35",
+"ThreeDivergence[CGSD[p],CVE[p,nu],FCE->True]", "CGAE[nu]"},
+{"fcstThreeDivergence-ID36",
+"ThreeDivergence[CGSE[p],CV[p,nu],FCE->True]", "0"},
+{"fcstThreeDivergence-ID37",
+"ThreeDivergence[CGSE[p],CVD[p,nu],FCE->True]", "CGAE[nu]"},
+{"fcstThreeDivergence-ID38",
+"ThreeDivergence[CSIS[p],CVD[p,nu],FCE->True]", "CSI[nu]"},
+{"fcstThreeDivergence-ID39",
+"ThreeDivergence[CSIS[p],CVE[p,nu],FCE->True]", "0"},
+{"fcstThreeDivergence-ID40",
+"ThreeDivergence[CSISD[p],CV[p,nu],FCE->True]", "CSI[nu]"},
+{"fcstThreeDivergence-ID41",
+"ThreeDivergence[CSISD[p],CVE[p,nu],FCE->True]", "CSIE[nu]"},
+{"fcstThreeDivergence-ID42",
+"ThreeDivergence[CSISE[p],CV[p,nu],FCE->True]", "0"},
+{"fcstThreeDivergence-ID43",
+"ThreeDivergence[CSISE[p],CVD[p,nu],FCE->True]", "CSIE[nu]"},
+{"fcstThreeDivergence-ID44",
+"ThreeDivergence[CLC[al][p,q],CVD[p,nu],FCE->True]",
+"CLC[al, nu][q]"},
+{"fcstThreeDivergence-ID45",
+"ThreeDivergence[CLC[al][p,q],CVE[p,nu],FCE->True]", "0"},
+{"fcstThreeDivergence-ID46",
+"ThreeDivergence[CLCD[al][p,q],CV[p,nu],FCE->True]",
+"CLC[al, nu][q]"},
+{"fcstThreeDivergence-ID47",
+"ThreeDivergence[CLCD[al][p,q],CVE[p,nu],FCE->True]", "0"},
+{"fcstThreeDivergence-ID48",
+"ThreeDivergence[CFAD[{p,m^2},p-q],CV[p,mu],FCE->True]",
+"-2*CFAD[{{p, 0}, {m^2, -1}, 1}, {{p, 0}, {m^2, -1}, 1}, {{p - q, \
+0}, {0, -1}, 1}]*CV[p, mu] + CFAD[{{p, 0}, {m^2, -1}, 1}, {{p - q, \
+0}, {0, -1}, 1}, {{p - q, 0}, {0, -1}, 1}]*(-2*CV[p, mu] + 2*CV[q, \
+mu])"},
+{"fcstThreeDivergence-ID49",
+"ThreeDivergence[CFAD[{p,m^2},p-q],CVE[p,mu],FCE->True]",
+"-2*CFAD[{{p, 0}, {m^2, -1}, 1}, {{p, 0}, {m^2, -1}, 1}, {{p - q, \
+0}, {0, -1}, 1}]*CVE[p, mu] + CFAD[{{p, 0}, {m^2, -1}, 1}, {{p - q, \
+0}, {0, -1}, 1}, {{p - q, 0}, {0, -1}, 1}]*(-2*CVE[p, mu] + 2*CVE[q, \
+mu])"},
+{"fcstThreeDivergence-ID50",
+"ThreeDivergence[CFAD[{p,m^2},p-q,Dimension->3],CVD[p,mu],\
+FCE->True]",
+"-2*CFAD[{{p, 0}, {m^2, -1}, 1}, {{p, 0}, {m^2, -1}, 1}, {{p - q, \
+0}, {0, -1}, 1}, Dimension -> 3]*CV[p, mu] + CFAD[{{p, 0}, {m^2, -1}, \
+1}, {{p - q, 0}, {0, -1}, 1}, {{p - q, 0}, {0, -1}, 1}, Dimension -> \
+3]*(-2*CV[p, mu] + 2*CV[q, mu])"},
+{"fcstThreeDivergence-ID51",
+"ThreeDivergence[CFAD[{p,m^2},p-q,Dimension->3],CVE[p,mu],\
+FCE->True]", "0"}
 });

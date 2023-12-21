@@ -10,9 +10,9 @@
 
 (* ------------------------------------------------------------------------ *)
 
-GammaEpsilon::usage= "GammaEpsilon[exp] gives a series \
-expansion of Gamma[exp] in Epsilon up to order 6 (where \
-EulerGamma is neglected).";
+GammaEpsilon::usage=
+"GammaEpsilon[exp] gives a series expansion of Gamma[exp] in Epsilon up to
+order 6 (where EulerGamma is neglected).";
 
 (* ------------------------------------------------------------------------ *)
 

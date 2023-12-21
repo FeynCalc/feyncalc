@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Expands Feynman slashes										*)
@@ -16,8 +16,10 @@
 (* ------------------------------------------------------------------------ *)
 
 DiracGammaExpand::usage =
-"DiracGammaExpand[exp] expands all DiracGamma[Momentum[a+b+..]] in \
-exp into (DiracGamma[Momentum[a]] + DiracGamma[Momentum[b]] + ...).";
+"DiracGammaExpand[exp] expands Dirac matrices contracted to linear combinations
+of $4$-vectors. All DiracGamma[Momentum[a+b+ ...]] will be expanded to
+DiracGamma[Momentum[a]] + DiracGamma[Momentum[b]] + DiracGamma[Momentum[...]]
+.";
 
 DiracGammaExpand::fail =
 "Something went wrong while expanding momenta contracted with Dirac matrices.

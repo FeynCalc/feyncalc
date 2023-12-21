@@ -1,0 +1,333 @@
+
+
+(* :Title: SpinorChainEvaluate.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for SpinorChainEvaluate	*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Dirac`fcstSpinorChainEvaluate =
+({
+{"fcstSpinorChainEvaluate-ID1", "SpinorChainEvaluate[0]", "0"},
+{"fcstSpinorChainEvaluate-ID2", "SpinorChainEvaluate[x]", "x"},
+{"fcstSpinorChainEvaluate-ID3",
+"SpinorChainEvaluate[x+GA[mu].SpinorU[p,m]]",
+"x + DiracGamma[LorentzIndex[mu]] . Spinor[Momentum[p], m, 1]"},
+{"fcstSpinorChainEvaluate-ID4",
+"SpinorChainEvaluate[SpinorUBar[p].SpinorU[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID5",
+"SpinorChainEvaluate[SpinorVBar[p].SpinorV[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID6",
+"SpinorChainEvaluate[SpinorUBar[p].SpinorV[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID7",
+"SpinorChainEvaluate[SpinorVBar[p].SpinorU[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID8",
+"SpinorChainEvaluate[SpinorUBar[p,m].SpinorU[p,m]]", "2*m"},
+{"fcstSpinorChainEvaluate-ID9",
+"SpinorChainEvaluate[SpinorVBar[p,m].SpinorV[p,m]]", "-2*m"},
+{"fcstSpinorChainEvaluate-ID10",
+"SpinorChainEvaluate[SpinorUBar[p,m].SpinorV[p,m]]", "0"},
+{"fcstSpinorChainEvaluate-ID11",
+"SpinorChainEvaluate[SpinorVBar[p,m].SpinorU[p,m]]", "0"},
+{"fcstSpinorChainEvaluate-ID12",
+"SpinorChainEvaluate[SpinorUBar[p,m1].SpinorU[p,m2]]",
+"Spinor[Momentum[p], m1, 1] . Spinor[Momentum[p], m2, 1]"},
+{"fcstSpinorChainEvaluate-ID13",
+"SpinorChainEvaluate[SpinorVBar[p,m1].SpinorV[p,m2]]",
+"Spinor[-Momentum[p], m1, 1] . Spinor[-Momentum[p], m2, 1]"},
+{"fcstSpinorChainEvaluate-ID14",
+"SpinorChainEvaluate[SpinorUBar[p,m1].SpinorV[p,m2]]",
+"Spinor[Momentum[p], m1, 1] . Spinor[-Momentum[p], m2, 1]"},
+{"fcstSpinorChainEvaluate-ID15",
+"SpinorChainEvaluate[SpinorVBar[p,m1].SpinorU[p,m2]]",
+"Spinor[-Momentum[p], m1, 1] . Spinor[Momentum[p], m2, 1]"},
+{"fcstSpinorChainEvaluate-ID16",
+"SpinorChainEvaluate[SpinorUBarD[p].SpinorUD[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID17",
+"SpinorChainEvaluate[SpinorVBarD[p].SpinorVD[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID18",
+"SpinorChainEvaluate[SpinorUBarD[p].SpinorVD[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID19",
+"SpinorChainEvaluate[SpinorVBarD[p].SpinorUD[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID20",
+"SpinorChainEvaluate[SpinorUBarD[p,m].SpinorUD[p,m]]", "2*m"},
+{"fcstSpinorChainEvaluate-ID21",
+"SpinorChainEvaluate[SpinorVBarD[p,m].SpinorVD[p,m]]", "-2*m"},
+{"fcstSpinorChainEvaluate-ID22",
+"SpinorChainEvaluate[SpinorUBarD[p,m].SpinorVD[p,m]]", "0"},
+{"fcstSpinorChainEvaluate-ID23",
+"SpinorChainEvaluate[SpinorVBarD[p,m].SpinorUD[p,m]]", "0"},
+{"fcstSpinorChainEvaluate-ID24",
+"SpinorChainEvaluate[SpinorUBarD[p,m1].SpinorUD[p,m2]]",
+"Spinor[Momentum[p, D], m1, 1] . Spinor[Momentum[p, D], m2, 1]"},
+{"fcstSpinorChainEvaluate-ID25",
+"SpinorChainEvaluate[SpinorVBarD[p,m1].SpinorVD[p,m2]]",
+"Spinor[-Momentum[p, D], m1, 1] . Spinor[-Momentum[p, D], m2, \
+1]"},
+{"fcstSpinorChainEvaluate-ID26",
+"SpinorChainEvaluate[SpinorUBarD[p,m1].SpinorVD[p,m2]]",
+"Spinor[Momentum[p, D], m1, 1] . Spinor[-Momentum[p, D], m2, 1]"},
+{"fcstSpinorChainEvaluate-ID27",
+"SpinorChainEvaluate[SpinorVBarD[p,m1].SpinorUD[p,m2]]",
+"Spinor[-Momentum[p, D], m1, 1] . Spinor[Momentum[p, D], m2, 1]"},
+{"fcstSpinorChainEvaluate-ID28",
+"SpinorChainEvaluate[SpinorUBar[p].GA[5].SpinorU[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID29",
+"SpinorChainEvaluate[SpinorVBar[p].GA[5].SpinorV[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID30",
+"SpinorChainEvaluate[SpinorUBar[p].GA[5].SpinorV[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID31",
+"SpinorChainEvaluate[SpinorVBar[p].GA[5].SpinorU[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID32",
+"SpinorChainEvaluate[SpinorUBar[p,m].GA[5].SpinorU[p,m]]", "0"},
+{"fcstSpinorChainEvaluate-ID33",
+"SpinorChainEvaluate[SpinorVBar[p,m].GA[5].SpinorV[p,m]]", "0"},
+{"fcstSpinorChainEvaluate-ID34",
+"SpinorChainEvaluate[SpinorUBar[p,m].GA[5].SpinorV[p,m]]",
+"Spinor[Momentum[p], m, 1] . DiracGamma[5] . Spinor[-Momentum[p], \
+m, 1]"},
+{"fcstSpinorChainEvaluate-ID35",
+"SpinorChainEvaluate[SpinorVBar[p,m].GA[5].SpinorU[p,m]]",
+"Spinor[-Momentum[p], m, 1] . DiracGamma[5] . Spinor[Momentum[p], \
+m, 1]"},
+{"fcstSpinorChainEvaluate-ID36",
+"SpinorChainEvaluate[SpinorUBar[p,m1].GA[5].SpinorU[p,m2]]",
+"Spinor[Momentum[p], m1, 1] . DiracGamma[5] . Spinor[Momentum[p], \
+m2, 1]"},
+{"fcstSpinorChainEvaluate-ID37",
+"SpinorChainEvaluate[SpinorVBar[p,m1].GA[5].SpinorV[p,m2]]",
+"Spinor[-Momentum[p], m1, 1] . DiracGamma[5] . \
+Spinor[-Momentum[p], m2, 1]"},
+{"fcstSpinorChainEvaluate-ID38",
+"SpinorChainEvaluate[SpinorUBar[p,m1].GA[5].SpinorV[p,m2]]",
+"Spinor[Momentum[p], m1, 1] . DiracGamma[5] . Spinor[-Momentum[p], \
+m2, 1]"},
+{"fcstSpinorChainEvaluate-ID39",
+"SpinorChainEvaluate[SpinorVBar[p,m1].GA[5].SpinorU[p,m2]]",
+"Spinor[-Momentum[p], m1, 1] . DiracGamma[5] . Spinor[Momentum[p], \
+m2, 1]"},
+{"fcstSpinorChainEvaluate-ID40",
+"SpinorChainEvaluate[SpinorUBarD[p].GA[5].SpinorUD[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID41",
+"SpinorChainEvaluate[SpinorVBarD[p].GA[5].SpinorVD[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID42",
+"SpinorChainEvaluate[SpinorUBarD[p].GA[5].SpinorVD[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID43",
+"SpinorChainEvaluate[SpinorVBarD[p].GA[5].SpinorUD[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID44",
+"SpinorChainEvaluate[SpinorUBarD[p,m].GA[5].SpinorUD[p,m]]", "0"},
+{"fcstSpinorChainEvaluate-ID45",
+"SpinorChainEvaluate[SpinorVBarD[p,m].GA[5].SpinorVD[p,m]]", "0"},
+{"fcstSpinorChainEvaluate-ID46",
+"SpinorChainEvaluate[SpinorUBarD[p,m].GA[5].SpinorVD[p,m]]",
+"Spinor[Momentum[p, D], m, 1] . DiracGamma[5] . \
+Spinor[-Momentum[p, D], m, 1]"},
+{"fcstSpinorChainEvaluate-ID47",
+"SpinorChainEvaluate[SpinorVBarD[p,m].GA[5].SpinorUD[p,m]]",
+"Spinor[-Momentum[p, D], m, 1] . DiracGamma[5] . \
+Spinor[Momentum[p, D], m, 1]"},
+{"fcstSpinorChainEvaluate-ID48",
+"SpinorChainEvaluate[SpinorUBarD[p,m1].GA[5].SpinorUD[p,m2]]",
+"Spinor[Momentum[p, D], m1, 1] . DiracGamma[5] . \
+Spinor[Momentum[p, D], m2, 1]"},
+{"fcstSpinorChainEvaluate-ID49",
+"SpinorChainEvaluate[SpinorVBarD[p,m1].GA[5].SpinorVD[p,m2]]",
+"Spinor[-Momentum[p, D], m1, 1] . DiracGamma[5] . \
+Spinor[-Momentum[p, D], m2, 1]"},
+{"fcstSpinorChainEvaluate-ID50",
+"SpinorChainEvaluate[SpinorUBarD[p,m1].GA[5].SpinorVD[p,m2]]",
+"Spinor[Momentum[p, D], m1, 1] . DiracGamma[5] . \
+Spinor[-Momentum[p, D], m2, 1]"},
+{"fcstSpinorChainEvaluate-ID51",
+"SpinorChainEvaluate[SpinorVBarD[p,m1].GA[5].SpinorUD[p,m2]]",
+"Spinor[-Momentum[p, D], m1, 1] . DiracGamma[5] . \
+Spinor[Momentum[p, D], m2, 1]"},
+{"fcstSpinorChainEvaluate-ID52",
+"SpinorChainEvaluate[SpinorUBar[p].GA[6].SpinorU[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID53",
+"SpinorChainEvaluate[SpinorVBar[p].GA[6].SpinorV[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID54",
+"SpinorChainEvaluate[SpinorUBar[p].GA[6].SpinorV[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID55",
+"SpinorChainEvaluate[SpinorVBar[p].GA[6].SpinorU[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID56",
+"SpinorChainEvaluate[SpinorUBar[p,m].GA[6].SpinorU[p,m]]",
+"Spinor[Momentum[p], m, 1] . DiracGamma[6] . Spinor[Momentum[p], \
+m, 1]"},
+{"fcstSpinorChainEvaluate-ID57",
+"SpinorChainEvaluate[SpinorVBar[p,m].GA[6].SpinorV[p,m]]",
+"Spinor[-Momentum[p], m, 1] . DiracGamma[6] . Spinor[-Momentum[p], \
+m, 1]"},
+{"fcstSpinorChainEvaluate-ID58",
+"SpinorChainEvaluate[SpinorUBar[p,m].GA[6].SpinorV[p,m]]",
+"Spinor[Momentum[p], m, 1] . DiracGamma[6] . Spinor[-Momentum[p], \
+m, 1]"},
+{"fcstSpinorChainEvaluate-ID59",
+"SpinorChainEvaluate[SpinorVBar[p,m].GA[6].SpinorU[p,m]]",
+"Spinor[-Momentum[p], m, 1] . DiracGamma[6] . Spinor[Momentum[p], \
+m, 1]"},
+{"fcstSpinorChainEvaluate-ID60",
+"SpinorChainEvaluate[SpinorUBar[p,m1].GA[6].SpinorU[p,m2]]",
+"Spinor[Momentum[p], m1, 1] . DiracGamma[6] . Spinor[Momentum[p], \
+m2, 1]"},
+{"fcstSpinorChainEvaluate-ID61",
+"SpinorChainEvaluate[SpinorVBar[p,m1].GA[6].SpinorV[p,m2]]",
+"Spinor[-Momentum[p], m1, 1] . DiracGamma[6] . \
+Spinor[-Momentum[p], m2, 1]"},
+{"fcstSpinorChainEvaluate-ID62",
+"SpinorChainEvaluate[SpinorUBar[p,m1].GA[6].SpinorV[p,m2]]",
+"Spinor[Momentum[p], m1, 1] . DiracGamma[6] . Spinor[-Momentum[p], \
+m2, 1]"},
+{"fcstSpinorChainEvaluate-ID63",
+"SpinorChainEvaluate[SpinorVBar[p,m1].GA[6].SpinorU[p,m2]]",
+"Spinor[-Momentum[p], m1, 1] . DiracGamma[6] . Spinor[Momentum[p], \
+m2, 1]"},
+{"fcstSpinorChainEvaluate-ID64",
+"SpinorChainEvaluate[SpinorUBarD[p].GA[6].SpinorUD[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID65",
+"SpinorChainEvaluate[SpinorVBarD[p].GA[6].SpinorVD[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID66",
+"SpinorChainEvaluate[SpinorUBarD[p].GA[6].SpinorVD[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID67",
+"SpinorChainEvaluate[SpinorVBarD[p].GA[6].SpinorUD[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID68",
+"SpinorChainEvaluate[SpinorUBarD[p,m].GA[6].SpinorUD[p,m]]",
+"Spinor[Momentum[p, D], m, 1] . DiracGamma[6] . Spinor[Momentum[p, \
+D], m, 1]"},
+{"fcstSpinorChainEvaluate-ID69",
+"SpinorChainEvaluate[SpinorVBarD[p,m].GA[6].SpinorVD[p,m]]",
+"Spinor[-Momentum[p, D], m, 1] . DiracGamma[6] . \
+Spinor[-Momentum[p, D], m, 1]"},
+{"fcstSpinorChainEvaluate-ID70",
+"SpinorChainEvaluate[SpinorUBarD[p,m].GA[6].SpinorVD[p,m]]",
+"Spinor[Momentum[p, D], m, 1] . DiracGamma[6] . \
+Spinor[-Momentum[p, D], m, 1]"},
+{"fcstSpinorChainEvaluate-ID71",
+"SpinorChainEvaluate[SpinorVBarD[p,m].GA[6].SpinorUD[p,m]]",
+"Spinor[-Momentum[p, D], m, 1] . DiracGamma[6] . \
+Spinor[Momentum[p, D], m, 1]"},
+{"fcstSpinorChainEvaluate-ID72",
+"SpinorChainEvaluate[SpinorUBarD[p,m1].GA[6].SpinorUD[p,m2]]",
+"Spinor[Momentum[p, D], m1, 1] . DiracGamma[6] . \
+Spinor[Momentum[p, D], m2, 1]"},
+{"fcstSpinorChainEvaluate-ID73",
+"SpinorChainEvaluate[SpinorVBarD[p,m1].GA[6].SpinorVD[p,m2]]",
+"Spinor[-Momentum[p, D], m1, 1] . DiracGamma[6] . \
+Spinor[-Momentum[p, D], m2, 1]"},
+{"fcstSpinorChainEvaluate-ID74",
+"SpinorChainEvaluate[SpinorUBarD[p,m1].GA[6].SpinorVD[p,m2]]",
+"Spinor[Momentum[p, D], m1, 1] . DiracGamma[6] . \
+Spinor[-Momentum[p, D], m2, 1]"},
+{"fcstSpinorChainEvaluate-ID75",
+"SpinorChainEvaluate[SpinorVBarD[p,m1].GA[6].SpinorUD[p,m2]]",
+"Spinor[-Momentum[p, D], m1, 1] . DiracGamma[6] . \
+Spinor[Momentum[p, D], m2, 1]"},
+{"fcstSpinorChainEvaluate-ID76",
+"SpinorChainEvaluate[SpinorUBar[p].GA[7].SpinorU[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID77",
+"SpinorChainEvaluate[SpinorVBar[p].GA[7].SpinorV[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID78",
+"SpinorChainEvaluate[SpinorUBar[p].GA[7].SpinorV[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID79",
+"SpinorChainEvaluate[SpinorVBar[p].GA[7].SpinorU[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID80",
+"SpinorChainEvaluate[SpinorUBar[p,m].GA[7].SpinorU[p,m]]",
+"Spinor[Momentum[p], m, 1] . DiracGamma[7] . Spinor[Momentum[p], \
+m, 1]"},
+{"fcstSpinorChainEvaluate-ID81",
+"SpinorChainEvaluate[SpinorVBar[p,m].GA[7].SpinorV[p,m]]",
+"Spinor[-Momentum[p], m, 1] . DiracGamma[7] . Spinor[-Momentum[p], \
+m, 1]"},
+{"fcstSpinorChainEvaluate-ID82",
+"SpinorChainEvaluate[SpinorUBar[p,m].GA[7].SpinorV[p,m]]",
+"Spinor[Momentum[p], m, 1] . DiracGamma[7] . Spinor[-Momentum[p], \
+m, 1]"},
+{"fcstSpinorChainEvaluate-ID83",
+"SpinorChainEvaluate[SpinorVBar[p,m].GA[7].SpinorU[p,m]]",
+"Spinor[-Momentum[p], m, 1] . DiracGamma[7] . Spinor[Momentum[p], \
+m, 1]"},
+{"fcstSpinorChainEvaluate-ID84",
+"SpinorChainEvaluate[SpinorUBar[p,m1].GA[7].SpinorU[p,m2]]",
+"Spinor[Momentum[p], m1, 1] . DiracGamma[7] . Spinor[Momentum[p], \
+m2, 1]"},
+{"fcstSpinorChainEvaluate-ID85",
+"SpinorChainEvaluate[SpinorVBar[p,m1].GA[7].SpinorV[p,m2]]",
+"Spinor[-Momentum[p], m1, 1] . DiracGamma[7] . \
+Spinor[-Momentum[p], m2, 1]"},
+{"fcstSpinorChainEvaluate-ID86",
+"SpinorChainEvaluate[SpinorUBar[p,m1].GA[7].SpinorV[p,m2]]",
+"Spinor[Momentum[p], m1, 1] . DiracGamma[7] . Spinor[-Momentum[p], \
+m2, 1]"},
+{"fcstSpinorChainEvaluate-ID87",
+"SpinorChainEvaluate[SpinorVBar[p,m1].GA[7].SpinorU[p,m2]]",
+"Spinor[-Momentum[p], m1, 1] . DiracGamma[7] . Spinor[Momentum[p], \
+m2, 1]"},
+{"fcstSpinorChainEvaluate-ID88",
+"SpinorChainEvaluate[SpinorUBarD[p].GA[7].SpinorUD[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID89",
+"SpinorChainEvaluate[SpinorVBarD[p].GA[7].SpinorVD[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID90",
+"SpinorChainEvaluate[SpinorUBarD[p].GA[7].SpinorVD[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID91",
+"SpinorChainEvaluate[SpinorVBarD[p].GA[7].SpinorUD[p]]", "0"},
+{"fcstSpinorChainEvaluate-ID92",
+"SpinorChainEvaluate[SpinorUBarD[p,m].GA[7].SpinorUD[p,m]]",
+"Spinor[Momentum[p, D], m, 1] . DiracGamma[7] . Spinor[Momentum[p, \
+D], m, 1]"},
+{"fcstSpinorChainEvaluate-ID93",
+"SpinorChainEvaluate[SpinorVBarD[p,m].GA[7].SpinorVD[p,m]]",
+"Spinor[-Momentum[p, D], m, 1] . DiracGamma[7] . \
+Spinor[-Momentum[p, D], m, 1]"},
+{"fcstSpinorChainEvaluate-ID94",
+"SpinorChainEvaluate[SpinorUBarD[p,m].GA[7].SpinorVD[p,m]]",
+"Spinor[Momentum[p, D], m, 1] . DiracGamma[7] . \
+Spinor[-Momentum[p, D], m, 1]"},
+{"fcstSpinorChainEvaluate-ID95",
+"SpinorChainEvaluate[SpinorVBarD[p,m].GA[7].SpinorUD[p,m]]",
+"Spinor[-Momentum[p, D], m, 1] . DiracGamma[7] . \
+Spinor[Momentum[p, D], m, 1]"},
+{"fcstSpinorChainEvaluate-ID96",
+"SpinorChainEvaluate[SpinorUBarD[p,m1].GA[7].SpinorUD[p,m2]]",
+"Spinor[Momentum[p, D], m1, 1] . DiracGamma[7] . \
+Spinor[Momentum[p, D], m2, 1]"},
+{"fcstSpinorChainEvaluate-ID97",
+"SpinorChainEvaluate[SpinorVBarD[p,m1].GA[7].SpinorVD[p,m2]]",
+"Spinor[-Momentum[p, D], m1, 1] . DiracGamma[7] . \
+Spinor[-Momentum[p, D], m2, 1]"},
+{"fcstSpinorChainEvaluate-ID98",
+"SpinorChainEvaluate[SpinorUBarD[p,m1].GA[7].SpinorVD[p,m2]]",
+"Spinor[Momentum[p, D], m1, 1] . DiracGamma[7] . \
+Spinor[-Momentum[p, D], m2, 1]"},
+{"fcstSpinorChainEvaluate-ID99",
+"SpinorChainEvaluate[SpinorVBarD[p,m1].GA[7].SpinorUD[p,m2]]",
+"Spinor[-Momentum[p, D], m1, 1] . DiracGamma[7] . \
+Spinor[Momentum[p, D], m2, 1]"},
+{"fcstSpinorChainEvaluate-ID100",
+"SpinorChainEvaluate[SpinorUBar[p,m].SpinorU[p,m],\
+DiracSpinorNormalization\[Rule]\"Nonrelativistic\"]",
+"m/TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p]]"},
+{"fcstSpinorChainEvaluate-ID101",
+"SpinorChainEvaluate[SpinorUBar[p,m].SpinorU[p,m],\
+DiracSpinorNormalization\[Rule]\"Rest\"]", "1"},
+{"fcstSpinorChainEvaluate-ID102",
+"SpinorChainEvaluate[SpinorVBar[p,m].SpinorV[p,m],\
+DiracSpinorNormalization\[Rule]\"Nonrelativistic\"]",
+"-(m/TemporalPair[ExplicitLorentzIndex[0], \
+TemporalMomentum[p]])"},
+{"fcstSpinorChainEvaluate-ID103",
+"SpinorChainEvaluate[SpinorVBar[p,m].SpinorV[p,m],\
+DiracSpinorNormalization\[Rule]\"Rest\"]", "-1"},
+{"fcstSpinorChainEvaluate-ID104", Null, "Null"}
+});
+
+Tests`Dirac`fcstAbortSpinorChainEvaluate = {
+{"fcstAbortSpinorChainEvaluate-ID1","CheckAbort[SpinorChainEvaluate[SpinorUBar[p,m].SpinorU[p+p3,m]], True]",
+	"True"}
+}

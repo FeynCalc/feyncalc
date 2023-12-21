@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Rebuilds Dirac chains for 4-fermion operators					*)
@@ -16,22 +16,23 @@
 (* ------------------------------------------------------------------------ *)
 
 FCFADiracChainJoin::usage =
-"FCFADiracChainJoin[exp] processes the output of FeynArts (after FCFAConvert) \
-with explicit Dirac indices and joins matrices and spinors into closed chains. \
-This is necessary e.g. for models with 4-fermion operators, where FeynArts \
-cannot determine the correct relative signs. When two matrices have a common \
-index but the positions do not match, as in A_ij B_ik, it is assumed that \
-we can take the charge conjugate transposed of either matrix to obtain, e.g. \
-(C A^T C^-1)_ji B_ik or (C B^T C^-1)_ki A_ij.";
+"FCFADiracChainJoin[exp] processes the output of FeynArts (after FCFAConvert)
+with explicit Dirac indices and joins matrices and spinors into closed chains.
+This is necessary e. g. for models with 4-fermion operators, where FeynArts
+cannot determine the correct relative signs. When two matrices have a common
+index but the positions do not match, as in $A_{ij} B_{ik}$, it is assumed
+that we can take the charge conjugate transposed of either matrix to obtain,
+e.g. $\\left(C A^T C^{-1}\\right)_{ji} B_{ik}$ or $\\left(C B^TC^{-1}\\right)_{ki}
+A_{ij}$.";
 
 FCFADiracChainJoin::failmsg =
 "Error! FCFADiracChainJoin has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 FCFADiracChainJoin::indexsum =
 "Cannot process input expressions with unresolved FeynArts index sums. If this error appears when running FCFAConvert, \
 please set the option FCFADiracChainJoin to False and check the output with uncontracted Dirac indices to identify the \
-unresolved IndexSum objects."
+unresolved IndexSum objects.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -193,11 +194,11 @@ diracChainEvalM[rest_. DiracIndexDelta[i_DiracIndex, j_DiracIndex]^2]:=
 
 (* u_i v_j A_ij -> ubar.A.v or vbar.A.u *)
 diracChainEvalS[rest_. DiracChain[S: Spinor[_. m1_Momentum, ___], a_DiracIndex] DiracChain[z_, a_DiracIndex, b_DiracIndex] DiracChain[Spinor[s_. m2_Momentum, r___], b_DiracIndex]]:=
-	diracChainEvalS[rest ordering[First[m1],First[m2]]] DOT[S, z, Spinor[-s m2, r]]/; optFirst==={} || MemberQ[optFirst, S];
+	diracChainEvalS[rest ordering[First[m1],First[m2]]] DOT[S, z, Spinor[-s m2, r]]/; optFirst==={} || MemberQ[optFirst, S] || FreeQ2[optFirst,{S,Spinor[s m2, r]}];
 
 (* u_i v_j A_ij -> ubar.A.v or vbar.A.u *)
 diracChainEvalS[rest_. DiracChain[S: Spinor[_. m1_Momentum, ___], a_DiracIndex] DiracChain[z_, a_DiracIndex, b_DiracIndex] DiracChain[Spinor[s_. m2_Momentum, r___], b_DiracIndex]]:=
-	diracChainEvalS[rest ordering[First[m1],First[m2]]] SpinorChainTranspose[DOT[S, z, Spinor[-s m2, r]], FCI->True]/; MemberQ[optFirst, Spinor[s m2, r]];
+	(diracChainEvalS[rest ordering[First[m1],First[m2]]] SpinorChainTranspose[DOT[S, z, Spinor[-s m2, r]], FCI->True])/; MemberQ[optFirst, Spinor[s m2, r]];
 
 diracChainEvalS[rest_. ordering[a__] ordering[b__]]:=
 	diracChainEvalS[rest ordering[a,b]];
@@ -206,6 +207,9 @@ diracChainEvalS[rest_. ordering[a__] ordering[b__]]:=
 essentially reproduces the corresponding code in FormCalc. *)
 diracChainEvalSign[ordering[a__]]:=
 	optHead[Signature[{a}] (-1)^(Length[{a}]/2)];
+
+diracChainEvalSign[1]:=
+	optHead[1];
 
 FCPrint[1,"FCFADiracChainJoin.m loaded"];
 End[]

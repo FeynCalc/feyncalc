@@ -1,195 +1,289 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: PaVeOrder *)
+(* :Title: PaVeOrder                                                       	*)
 
-(* :Author: Rolf Mertig *)
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
 
-(* ------------------------------------------------------------------------ *)
-(* :History: File created on 22 June '97 at 23:00 *)
-(* ------------------------------------------------------------------------ *)
+(* :Summary:	Argument symmetries of PaVe functions						*)
 
-(* ------------------------------------------------------------------------ *)
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
 PaVeOrder::usage =
-"PaVeOrder[expr] orders the arguments of all D0 in expr in a standard way. \
-PaVeOrder[expr, PaVeOrderList -> { {..., s, u, ...}, \
-{... m1^2, m2^2, ...}, ...}] orders the arguments of all D0 in expr \
-according to the specified ordering lists. \
-The lists may contain only a subsequence of the D0-variables.";
+"PaVeOrder[expr] orders the arguments of PaVe functions in expr in a standard
+way.
 
+PaVeOrder[expr, PaVeOrderList -> { {..., s, u, ...}, {... m1^2, m2^2, ...},
+...}] orders the arguments of PaVe functions in expr according to the
+specified ordering lists. The lists may contain only a subsequence of the
+kinematic variables.
+
+PaVeOrder has knows about symmetries in the arguments of PaVe functions with
+up to 6 legs.
+
+Available symmetry relations are saved here
+
+FileBaseName/@FileNames[\"*.sym\",FileNameJoin[{$FeynCalcDirectory,
+\"Tables\", 
+\"PaVeSymmetries\"}]]
+
+For the time being, these tables contain relations for B-functions up to rank
+10, C-functions up to rank 9, D-functions up to rank 8,
+E-functions (5-point functions) up to rank 7 and F-functions (6-point
+functions) up to rank 4. If needed, relations for more legs
+and higher tensor ranks can be calculated using FeynCalc and saved to
+PaVeSymmetries using template codes provided inside *.sym files.";
+
+PaVeOrder::failmsg =
+"Error! PaVeOrder encountered a fatal problem and must abort the computation. \
+The problem reads: `1`"
 
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
+
+paveAutoOrder;
+paveHold;
+paveHold::usage="";
+
 End[]
 
 Begin["`PaVeOrder`Private`"]
 
+pvoVerbose::usage="";
+smallvarHold::usage="";
+paveReordered::usage="";
+optSum::usage="";
+argPerm::usage="";
+argPermTensor::usage="";
+
 Options[PaVeOrder] = {
-	PaVeOrderList -> {}
+	Collecting		-> True,
+	FCE				-> False,
+	FCI				-> False,
+	FCVerbose		-> False,
+	Factoring 		-> {Factor, 5000},
+	PaVeOrderList	-> {},
+	PaVeToABCD		-> False,
+	Sum				-> False,
+	TimeConstrained	-> 3
 };
 
-(* smallLL is intermediately introduced for SmallVariable *)
-(* PaVeOrderdef *)
-PaVeOrder[expr_,opt___Rule] :=
-	Block[ {new, dordering, opli, cordering,
-	be0, be1, aa0, be11, be00, dordering0,j,nulL },
+PaVeOrder[expr_, OptionsPattern[]] :=
+	Block[{	ex, paveHead, new, dordering, optPaVeOrderList,
+			rest, loops, paveInts, paveIntsEval, repRule, res,
+			time},
 
-		opli = PaVeOrderList/.{opt}/. Options[PaVeOrder];
-		If[ opli === False,
-			new = expr,
-			new = expr/.B0->be0/.B1->be1/.A0->aa0/.B00->be00/.B11->be11/.
-				SmallVariable->smallLL/. 0->nulL;
-			opli = opli /. 0 -> nulL /. SmallVariable->smallLL;
-			dordering0[ten__] :=
-				(D0@@(oldper[ten][[1]]));
-			If[ Length[opli]>0,
-				If[ Head[opli[[1]]]=!=List,
-					opli = {opli}
-				];
-				If[ expr=!=(D0@@opli[[1]]),
-					new = new /. D0 -> dordering0;
-					For[j = 1, j<=Length[opli], j++,
-						dordering[j][ten10__] :=
-							D0 @@ dord[ D0[ten10], opli[[j]]];
-						cordering[j][six06__] :=
-							C0 @@ cord[ C0[six06], opli[[j]]];
-						new = new/.D0->dordering[j]/.C0 -> cordering[j]
-					]
-				],
-				new = new /. D0 -> dordering0 /. C0 -> cord;
+		optPaVeOrderList = OptionValue[PaVeOrderList];
+		optSum			 = OptionValue[Sum];
+
+		If [OptionValue[FCVerbose]===False,
+			pvoVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				pvoVerbose=OptionValue[FCVerbose]
 			];
-			new = new(*/.C0->cord*) /. nulL -> 0 /. smallLL -> SmallVariable;
-			new = new/.be0->B0/.be1->B1/.aa0->A0/.be00->B00/.be11->B11;
 		];
-		new
+
+		FCPrint[1, "PaVeOrder: Entering.", FCDoControl->pvoVerbose];
+		FCPrint[3, "PaVeOrder: Entering with: ", expr, FCDoControl->pvoVerbose];
+
+
+		FCPrint[1, "PaVeOrder: Applying FCLoopExtract.", FCDoControl->pvoVerbose];
+		time=AbsoluteTime[];
+		{rest,loops,paveInts} = FCLoopExtract[expr, {}, paveHead, FCI-> OptionValue[FCI], FeynAmpDenominatorCombine->False,
+			FAD->False, GFAD->False, CFAD->False, SFAD->True, PaVe->True];
+
+		If[	!OptionValue[FCI],
+			optPaVeOrderList = FCI[optPaVeOrderList]
+		];
+
+		FCPrint[1, "PaVeOrder: Done applying FCLoopExtract, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->pvoVerbose];
+		FCPrint[3, "PaVeOrder: List of uniques PaVe functions: ", paveInts, FCDoControl->pvoVerbose];
+
+		FCPrint[1, "PaVeOrder: Applying ToPaVe2.", FCDoControl->pvoVerbose];
+		time=AbsoluteTime[];
+		paveIntsEval = ToPaVe2[paveInts]/. PaVe->paveHold /. SmallVariable->smallvarHold /. paveHead->Identity;
+		FCPrint[1, "PaVeOrder: Done applying ToPaVe2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->pvoVerbose];
+
+		FCPrint[3, "PaVeOrder: After ToPaVe2: ", paveIntsEval, FCDoControl->pvoVerbose];
+
+		If[	!MatchQ[Head/@paveIntsEval,{paveHold...}],
+			Message[PaVeOrder::failmsg,"Failed to convert the occurring functions to PaVe"];
+			Abort[]
+		];
+
+		FCPrint[1, "PaVeOrder: Applying paveAutoOrder.", FCDoControl->pvoVerbose];
+		time=AbsoluteTime[];
+		paveIntsEval = paveAutoOrder/@paveIntsEval;
+		FCPrint[1, "PaVeOrder: Done applying paveAutoOrder, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->pvoVerbose];
+		FCPrint[3, "PaVeOrder: After paveAutoOrder: ", paveIntsEval, FCDoControl->pvoVerbose];
+
+		If[	optPaVeOrderList=!={},
+			(*must be a list of lists*)
+			If[ Head[optPaVeOrderList[[1]]]=!=List,
+					optPaVeOrderList = {optPaVeOrderList}
+			];
+			FCPrint[1, "PaVeOrder: Applying paveOrder.", FCDoControl->pvoVerbose];
+			time=AbsoluteTime[];
+			optPaVeOrderList = optPaVeOrderList /. SmallVariable->smallvarHold;
+
+			(*paveIntsEval = paveIntsEval/. PaVe[ids__,invs__]/;MatchQ[{ids},{0..}] :> paveReordered[ids,invs];*)
+			paveIntsEval = Map[Fold[paveOrder,#,optPaVeOrderList]&,paveIntsEval];
+			FCPrint[1, "PaVeOrder: Done applying paveOrder, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->pvoVerbose];
+			FCPrint[3, "PaVeOrder: After paveOrder: ", paveIntsEval, FCDoControl->pvoVerbose];
+		];
+
+		paveIntsEval = paveIntsEval /. smallvarHold->SmallVariable /. paveReordered|paveHold->PaVe;
+
+		If[ OptionValue[PaVeToABCD],
+			paveIntsEval = PaVeToABCD[paveIntsEval];
+			FCPrint[3, "PaVeOrder: After PaVeToABCD: ", paveIntsEval, FCDoControl->pvoVerbose];
+		];
+
+		repRule = Thread[Rule[paveInts,paveIntsEval ]];
+		FCPrint[3,"PaVeOrder: Final replacement rule: ", repRule, FCDoControl->pvoVerbose];
+
+
+		res = rest + loops/. Dispatch[repRule];
+
+		FCPrint[1, "PaVeOrder: Applying Collect2.", FCDoControl->pvoVerbose];
+		res = Collect2[res,{PaVe,A0,A00,B0,B1,B00,B11,C0,D0}, Factoring->OptionValue[Factoring],TimeConstrained->OptionValue[TimeConstrained]];
+		FCPrint[1, "PaVeOrder: Collect2 done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->pvoVerbose];
+		FCPrint[3, "PaVeOrder: After Collect2: ", res, FCDoControl->pvoVerbose];
+
+
+		FCPrint[1, "PaVeOrder: Leaving.", FCDoControl->pvoVerbose];
+		FCPrint[3, "PaVeOrder: Leaving with: ", res, FCDoControl->pvoVerbose];
+
+		If[	OptionValue[FCE],
+			res = FCE[res]
+		];
+
+		res
+
 	];
 
-cord[a_,b_,c_, m1_,m2_,m3_] :=
-	C0@@( Sort[{ {a,b,c, m1,m2,m3}, {c,b,a, m1,m3,m2},
-					{a,c,b, m2,m1,m3}, {b,c,a, m2,m3,m1},
-					{c,a,b, m3,m1,m2}, {b,a,c, m3,m2,m1} } ][[1]] );
+paveOrder[x_paveReordered, _]:=
+	x;
 
-	cord[C0[six__],{}] :=
-		cord[six];
-	cord[C0[te__], argu_List ] :=
-		Block[ {int, puref, arg, smalist, six,
-			varg, sma, pw},
-			six =  {te}/. smallLL->sma;
-			If[ FreeQ[six, sma],
-				arg = argu,
-				smalist = Select[Variables[six/.Power->pw],
-								(!FreeQ[#, sma])&]/.pw->Power;
-				If[ !FreeQ[smalist, Power],
-					arg = (argu/.smallLL->Identity) /.
-							Map[(#[[1,1]] -> (#[[1]]) )&, smalist ],
-					arg = argu/.smallLL->sma
-				];
+paveAutoOrder[paveHold[ids__,invs1_List,invs2_List, opts:OptionsPattern[]]]:=
+	MemSet[paveAutoOrder[paveHold[ids,invs1,invs2, opts]],
+		Block[{	aux},
+			aux = First[argPerm@@Join[invs1,invs2]];
+			FCPrint[4,"PaVeOrder: paveAutoOrder: aux: ", aux, FCDoControl->pvoVerbose];
+			paveHold[ids, aux[[1;;Length[invs1]]], aux[[Length[invs1]+1;;]], opts]
+		]]/; Length[invs2]>=2 && Length[invs2]<=5 && MatchQ[{ids},{0..}];
+
+paveAutoOrder[paveHold[ids__,invs1_List,invs2_List, opts:OptionsPattern[]]]:=
+	MemSet[paveAutoOrder[paveHold[ids,invs1,invs2, opts]],
+		Block[{	aux},
+			aux = argPermTensor[{ids}, invs1, invs2];
+			If[	TrueQ[Head[aux]===argPermTensor],
+				aux = {{{1, {ids}}}, invs1,invs2},
+				aux = First[ argPermTensor[{ids}, invs1, invs2]]
 			];
-			varg = Variables[arg];
-			For[r = 1,r<=Length[varg],r++,
-				If[ (!FreeQ[six, varg[[r]]^2]) && FreeQ[arg,varg[[r]]^2],
-					arg = arg/.varg[[r]]->(varg[[r]]^2)
-				];
+			FCPrint[4,"PaVeOrder: paveAutoOrder: aux: ", aux, FCDoControl->pvoVerbose];
+			If[	Length[aux[[1]]] =!= 1 || aux[[1]][[1]][[1]] =!= 1,
+				Message[PaVeOrder::failmsg,"Something went wrong while determining tensor PaVe symmetries."];
+				Abort[]
 			];
-			puref = func[Apply[or,(stringmatchq[slot[1], #]& /@ tomatch[arg])
-							]]/.slot->Slot/.func->Function/.or->Or/.
-								stringmatchq->StringMatchQ;
-			int = Select[ tostring /@ (oldper@@six),
-						func[ stringmatchq[slot[1],tomatch[arg]]
-							]/.slot->Slot/.func->Function/.
-								stringmatchq->StringMatchQ
-								];
-			If[ Length[int] === 0,
-				int = six,
-				int = ToExpression[int[[1]]]
-			];
-			int/.sma->smallLL
-		] /; Length[{te}]===6 && Length[argu]>0;
+			paveHold[ Sequence@@aux[[1]][[1]][[2]], aux[[2]], aux[[3]], opts]
+		]]/; Length[invs2]>=2 && Length[invs2]<=5 && !MatchQ[{ids},{0..}];
+
+paveAutoOrder[paveHold[ids__,invs1_List,invs2_List, opts:OptionsPattern[]]]:=
+	paveHold[ids,invs1,invs2, opts]/; Length[invs2]===1 || Length[invs2]>=6;
+
+paveOrder[paveHold[ids__,invs1_List,invs2_List, opts:OptionsPattern[]],{}]:=
+	paveHold[ids,invs1,invs2,opts];
+
+paveOrder[paveHold[ids__,invs1_List,invs2_List, opts:OptionsPattern[]], _]:=
+	paveHold[ids,invs1,invs2,opts]/; Length[invs2]===1 || Length[invs2]>=6;
+
+paveOrder[paveHold[ids__,invs1_List,invs2_List, opts:OptionsPattern[]], orderingRaw_List]:=
+	Block[{	pow, aux, ordering, selection, res, invs, optsNew},
+
+		invs = Join[invs1,invs2];
+		aux = invs /. Power->pow;
 
 
-(* Make use of the nice new StringReplace *)
+		FCPrint[4,"PaVeOrder: paveOrder: ids: ", {ids}, FCDoControl->pvoVerbose];
+		FCPrint[4,"PaVeOrder: paveOrder: invs1: ", invs1,  FCDoControl->pvoVerbose];
+		FCPrint[4,"PaVeOrder: paveOrder: invs2: ", invs2,  FCDoControl->pvoVerbose];
+		FCPrint[4,"PaVeOrder: paveOrder: orderingRaw: ", orderingRaw,  FCDoControl->pvoVerbose];
 
-	tostring = ToString[InputForm[#], PageWidth -> 4711]&;
-	tomatch[{li:{__}..}] :=
-		tomatch /@ {li};
-	tomatch[{li__}] :=
-		StringReplace[tostring[{li}],{"{"->"*","}"->"*"}]/;
-					Head[{li}[[1]]]=!=List;
-	dord[D0[ten__],{}] :=
-		dord[D0[ten]];
-	dord[D0[te__], argu_List ] :=
-		Block[ {int, puref, arg, smalist, ten,
-			varg, sma, pw},
-			ten =  {te}/. smallLL->sma;
-			If[ FreeQ[ten, sma],
-				arg = argu,
-				smalist = Select[Variables[ten/.Power->pw],
-								(!FreeQ[#, sma])&]/.pw->Power;
-				If[ !FreeQ[smalist, Power],
-					arg = (argu/.smallLL->Identity) /.
-							Map[(#[[1,1]] -> (#[[1]]) )&, smalist ],
-					arg = argu/.smallLL->sma
-				];
-			];
-			varg = Variables[arg];
-			For[r = 1,r<=Length[varg],r++,
-				If[ (!FreeQ[ten, varg[[r]]^2]) && FreeQ[arg,varg[[r]]^2],
-					arg = arg/.varg[[r]]->(varg[[r]]^2)
-				];
-			];
-			puref = func[Apply[or,(stringmatchq[slot[1], #]& /@ tomatch[arg])
-							]]/.slot->Slot/.func->Function/.or->Or/.
-								stringmatchq->StringMatchQ;
-			int = Select[ tostring /@ (oldper@@ten),
-						func[ stringmatchq[slot[1],tomatch[arg]]
-							]/.slot->Slot/.func->Function/.
-								stringmatchq->StringMatchQ
-								];
-			If[ Length[int] === 0,
-				int = ten,
-				int = ToExpression[int[[1]]]
-			];
-			int/.sma->smallLL
-		] /; Length[{te}]===10 && Length[argu]>0;
+		(*
+			We want to allow for sloppy argument lists, where the user specifies
+			just variables instead of variables raised to some powers, e.g.
+			PaVeOrder[C0[qq0, qq2, qq1, SmallVariable[mm1^2], mm2^2, mm3],
+				PaVeOrderList -> {mm3, mm2, SmallVariable[mm1]}]
+		*)
+		ordering = Map[Last[Join[{#}, Cases[aux, pow[#, _]]]] &, orderingRaw] /. pow -> Power;
+		optsNew = Join[{PaVeAutoOrder->False},FilterRules[{opts}, Except[PaVeAutoOrder]]];
 
-(* If no ordering list is given, a standard representative is returned *)
-dord[D0[ten__]] :=
-	(oldper[ten][[1]])/;Length[{ten}]===10;
+		(*
+			Generate all possible reorderings and select those that contain
+			a sublist specified by ordering.
+		*)
+		Which[
+			(* 0, 00, 0000, ... *)
+			MatchQ[{ids},{0..}],
 
-oldper[a_,b_,c_, m1_,m2_,m3_] :=
-	Sort[{ {a,b,c, m1,m2,m3}, {c,b,a, m1,m3,m2},
-						{a,c,b, m2,m1,m3}, {b,c,a, m2,m3,m1},
-						{c,a,b, m3,m1,m2}, {b,a,c, m3,m2,m1} }
+			selection = argPerm@@invs;
+			selection = Map[{{{1, {ids}}}, #} &, selection],
+
+			(* everything else *)
+			True,
+
+			selection = argPermTensor[{ids}, invs1, invs2];
+			If[	TrueQ[FreeQ[selection,argPermTensor]],
+				selection =  Map[{#[[1]], Join[#[[2]], #[[3]]]} &, selection],
+				selection = {{{{1, {ids}}}, Join[invs1,invs2]}}
+			]
 		];
 
-(* This list has been calculated with FeynCalc! *)
-oldper[p10_,p12_,p23_,p30_,p20_,p13_,m0_,m1_,m2_,m3_] :=
-	Sort[{
-	{p10, p12, p23, p30, p20, p13, m0, m1, m2, m3},
-	{p10, p13, p23, p20, p30, p12, m0, m1, m3, m2},
-	{p20, p12, p13, p30, p10, p23, m0, m2, m1, m3},
-	{p20, p23, p13, p10, p30, p12, m0, m2, m3, m1},
-	{p30, p13, p12, p20, p10, p23, m0, m3, m1, m2},
-	{p30, p23, p12, p10, p20, p13, m0, m3, m2, m1},
-	{p10, p20, p23, p13, p12, p30, m1, m0, m2, m3},
-	{p10, p30, p23, p12, p13, p20, m1, m0, m3, m2},
-	{p12, p20, p30, p13, p10, p23, m1, m2, m0, m3},
-	{p12, p23, p30, p10, p13, p20, m1, m2, m3, m0},
-	{p13, p30, p20, p12, p10, p23, m1, m3, m0, m2},
-	{p13, p23, p20, p10, p12, p30, m1, m3, m2, m0},
-	{p20, p10, p13, p23, p12, p30, m2, m0, m1, m3},
-	{p20, p30, p13, p12, p23, p10, m2, m0, m3, m1},
-	{p12, p10, p30, p23, p20, p13, m2, m1, m0, m3},
-	{p12, p13, p30, p20, p23, p10, m2, m1, m3, m0},
-	{p23, p30, p10, p12, p20, p13, m2, m3, m0, m1},
-	{p23, p13, p10, p20, p12, p30, m2, m3, m1, m0},
-	{p30, p10, p12, p23, p13, p20, m3, m0, m1, m2},
-	{p30, p20, p12, p13, p23, p10, m3, m0, m2, m1},
-	{p13, p10, p20, p23, p30, p12, m3, m1, m0, m2},
-	{p13, p12, p20, p30, p23, p10, m3, m1, m2, m0},
-	{p23, p20, p10, p13, p30, p12, m3, m2, m0, m1},
-	{p23, p12, p10, p30, p13, p20, m3, m2, m1, m0}       }];
+		If[	!optSum,
+			(* Do not take linear combinations into account*)
+			selection = Select[selection, (Length[#[[1]]] === 1) &]
+		];
+
+		FCPrint[4,"PaVeOrder: paveOrder: raw selection: ", selection,  FCDoControl->pvoVerbose];
+
+		selection = Select[selection,MatchQ[#[[2]],{___,Sequence@@ordering,___}]&];
+		If[selection==={},
+			selection = {{{{1, {ids}}}, Join[invs1,invs2]}}
+		];
+
+		FCPrint[4,"PaVeOrder: paveOrder: ordering: ", ordering,  FCDoControl->pvoVerbose];
+		FCPrint[4,"PaVeOrder: paveOrder: selection: ", selection,  FCDoControl->pvoVerbose];
+
+		(*
+			Sort the reorderings such, that the one with the smallest distance
+			of the sequence from the beginning of the list comes first
+		*)
+		selection = SortBy[selection, Position[#[[2]], ordering[[1]]] &];
+
+		If[	TrueQ[Length[selection]>0],
+			selection = selection[[1]],
+			selection = invs
+		];
+
+		res = Sum[selection[[1]][[i]][[1]] paveReordered[Sequence @@ (selection[[1]][[i]][[2]]),
+			selection[[2]][[1;;Length[invs1]]], selection[[2]][[Length[invs1] + 1;;]], Sequence@@optsNew],
+				{i, 1, Length[selection[[1]]]}];
+		res
+
+	]/; orderingRaw=!={} && Length[invs2]>=2 && Length[invs2]<=5;
+
+
+(* 	Load precomputed tensor integral decompositions from FeynCalc/Tables/TIDL	*)
+symFiles = FileNames["*.sym",FileNameJoin[{$FeynCalcDirectory, "Tables", "PaVeSymmetries"}]];
+Get/@symFiles;
 
 FCPrint[1,"PaVeOrder.m loaded."];
 End[]

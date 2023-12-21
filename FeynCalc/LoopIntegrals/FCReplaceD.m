@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Replaces D by the given expression (e.g. 4-2*Epsilon)
@@ -18,9 +18,11 @@
 (* ------------------------------------------------------------------------ *)
 
 FCReplaceD::usage =
-"FCReplaceD[expr,rule] replaces D in expr accoding to the supplied replacement \
-rule." <> ToString[
-Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/FCReplaceD"], StandardForm];
+"FCReplaceD[expr, rule] replaces D in expr according to the supplied
+replacement rule (e.g. D -> 4 - 2*Epsilon) but doesn't touch D inside Pairs
+and DiracGammas, i.e the dimension of scalar products, metric tensors and
+Dirac matrices is unchanged. The latter can and should be done via
+ChangeDimension.";
 
 FCReplaceD::checkfail=
 "Error! Failed to save the dimensionality of Pair and DiracGamma objects. Evaluation aborted.";
@@ -46,9 +48,12 @@ Options[FCReplaceD] = {
 	FCVerbose	-> False
 };
 
+FCReplaceD[expr_, {ru_Rule}, opts:OptionsPattern[]] :=
+	FCReplaceD[expr, ru, opts];
+
 FCReplaceD[expr_, Rule[dim_Symbol, x_], OptionsPattern[]] :=
 	Block[{ex,vectorSet,res,check, scalarTerm, vectorTerm=1, pref=1, tmp,
-		scaleless1=0,scaleless2=0,ruleProtect,holddim,diga, pasi, dchn},
+		scaleless1=0,scaleless2=0,ruleProtect,holddim,diga, pasi, dchn, pchn},
 
 		FCPrint[1,"FCReplaceD: dim: " ,dim, FCDoControl->fcrdVerbose];
 
@@ -64,7 +69,7 @@ FCReplaceD[expr_, Rule[dim_Symbol, x_], OptionsPattern[]] :=
 			ex = expr
 		];
 
-		tmp = ex/. DiracChain->dchn /. DiracGamma -> diga /. PauliSigma -> pasi;
+		tmp = ex /. DiracChain->dchn /. PauliChain->pchn /. DiracGamma -> diga /. PauliSigma -> pasi;
 		tmp = tmp //. {	diga[a_,di_] :> diga[holddim[a,ToString[di,InputForm]]],
 						pasi[a_,di_] :> pasi[holddim[a,ToString[di,InputForm]]]};
 
@@ -97,7 +102,7 @@ FCReplaceD[expr_, Rule[dim_Symbol, x_], OptionsPattern[]] :=
 		res = res /. pasi[holddim[a_,str_String]] :> PauliSigma[a,ToExpression[str]];
 		res = res /. pasi[a_]/;Head[a]=!=holddim :> PauliSigma[a];
 
-		res = res /. dchn -> DiracChain;
+		res = res /. dchn -> DiracChain /. pchn -> PauliChain;
 
 		If[	!FreeQ2[res,{holddim,diga,pasi}],
 			Message[FCReplaceD::resfail];

@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Simplifies loop integrals by doing shifts and detects
@@ -17,13 +17,10 @@
 (* ------------------------------------------------------------------------ *)
 
 FeynAmpDenominatorSimplify::usage =
-"FeynAmpDenominatorSimplify[exp] simplifies each \
-PropagatorDenominator in a canonical way. \n
-FeynAmpDenominatorSimplify[exp, q1] simplifies \
-all FeynAmpDenominator's in exp in a canonical way, \
-including some translation of momenta. \n
-FeynAmpDenominatorSimplify[exp, q1, q2] additionally \
-removes 2-loop integrals with no mass scale.";
+"FeynAmpDenominatorSimplify[exp] tries to simplify each PropagatorDenominator
+in a canonical way. FeynAmpDenominatorSimplify[exp, q1] simplifies all
+FeynAmpDenominators in exp in a canonical way, including momentum shifts.
+Scaleless integrals are discarded.";
 
 FDS::usage =
 "FDS is shorthand for FeynAmpDenominatorSimplify.";
@@ -36,8 +33,9 @@ FDS::failmsg = "Error! FDS has encountered a fatal problem and must abort the co
 The problem reads: `1`";
 
 DetectLoopTopologies::usage=
-"DetectLoopTopologies is an option for FDS. If set to True, FDS will try to recognize some \n
-special multiloop topologies and apply appropriate simplifications";
+"DetectLoopTopologies is an option for FDS. If set to True, FDS will try to
+recognize some special multiloop topologies and apply appropriate
+simplifications";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -66,14 +64,14 @@ Options[FeynAmpDenominatorSimplify] = {
 	Collecting 					-> True,
 	DetectLoopTopologies		-> True,
 	ExpandScalarProduct			-> True,
-	FC2RHI						-> False,
 	FCE							-> False,
 	FCI							-> False,
 	FCVerbose					-> False,
 	Factoring					-> Factor,
 	FeynAmpDenominatorCombine	-> True,
-	IncludePair 				-> False,
 	IntegralTable 				-> {},
+	FCLoopPropagatorPowersExpand -> True,
+	FCLoopPropagatorPowersCombine -> True,
 	Rename 						-> True
 };
 
@@ -116,8 +114,15 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 
 		fadList = Cases2[ex+null1+null2,FeynAmpDenominator,power];
 
-		fadListEval = fadList /. {power[fadHold[a__],n_] /; n>1 :> FeynAmpDenominator[Sequence@@(Table[a,{i,1,n}])]} /.
+		fadListEval = fadList /. {power[fadHold[a__],n_] /; MatchQ[n,_Integer?Positive] :>
+			FeynAmpDenominator[Sequence @@ Flatten[ConstantArray[{a}, n]]] } /.
 			power -> Power /. fadHold -> FeynAmpDenominator;
+
+		FCPrint[3,"FDS: Original list of propagators with combined powers: ", fadListEval, FCDoControl->fdsVerbose];
+
+		If[OptionValue[FCLoopPropagatorPowersExpand],
+			fadListEval = FCLoopPropagatorPowersExpand[fadListEval,FCI->True]
+		];
 
 		If[	!FreeQ[fadListEval, PD],
 			fadListEval = fadListEval /. PD -> procan /. procan -> PD
@@ -137,7 +142,11 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 			FCPrint[1,"FDS: No loop momenta were given.", FCDoControl->fdsVerbose];
 			fadListEval = fadListEval /. FeynAmpDenominator -> feyncan;
 			repRule = Thread[Rule[fadList,fadListEval]];
-			Return[ex /.  Dispatch[repRule]]
+			res = ex /.  Dispatch[repRule];
+			If[	OptionValue[FCE],
+				res = FCE[res]
+			];
+			Return[res]
 		];
 
 		repRule = Thread[Rule[fadList,fadListEval]];
@@ -173,12 +182,16 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 		time=AbsoluteTime[];
 		solsList = intsUnique /. {
 			(loopHead|sLoopHead|cLoopHead)[z_,{l_}] :> fdsOneLoop[z,l],
-			mLoopHead[z_,{l_}] :> (ToSFAD[z] /. FeynAmpDenominator :> feynord[{l}]),
+			mLoopHead[z_,{l_}] :> (ToSFAD[z,FCI->True] /. FeynAmpDenominator :> feynord[{l}]),
 			loopHead[z_,{l1_,l2_}] :> multiLoopHead[oldFeynAmpDenominatorSimplify[z,l1,l2,opt]],
 			loopHead[z_,{l1_,l2_, l3__}] :> multiLoopHead[fdsMultiLoop[z,l1,l2,l3]],
 			sLoopHead[z_,{_,__}] :> z,
 			cLoopHead[z_,{_,__}] :> z
 		};
+
+		If[OptionValue[FCLoopPropagatorPowersCombine],
+			solsList = FCLoopPropagatorPowersCombine[solsList,FCI->True];
+		];
 
 		solsList = (FeynAmpDenominatorCombine[#]/. FeynAmpDenominator -> feynord[{qs}])&/@solsList;
 
@@ -270,6 +283,8 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 			FCPrint[3, "FDS: After ExpandScalarProduct: ", res, FCDoControl->fdsVerbose]
 		];
 
+
+
 		If[	optCollecting=!=False,
 			FCPrint[1,"FDS: Applying Collect2. ", FCDoControl->fdsVerbose];
 			time=AbsoluteTime[];
@@ -339,6 +354,9 @@ procanSFAD[a_, rest__] :=
 	Block[{tt, one, numfac},
 		tt = Factor2[one MomentumExpand[a]];
 		numfac = NumericalFactor[tt];
+		If[	!FreeQ[numfac,Complex],
+			Return[StandardPropagatorDenominator[Expand[tt /. one -> 1], rest]];
+		];
 		If[TrueQ[numfac < 0 && MatchQ[numfac, _Rational | _Integer]],
 			StandardPropagatorDenominator[Expand[-tt /. one -> 1], rest],
 			StandardPropagatorDenominator[Expand[tt /. one -> 1], rest]
@@ -349,6 +367,9 @@ procanCFAD[a_, rest__] :=
 	Block[{tt, one, numfac},
 		tt = Factor2[one MomentumExpand[a]];
 		numfac = NumericalFactor[tt];
+		If[	!FreeQ[numfac,Complex],
+			CartesianPropagatorDenominator[Expand[tt /. one -> 1], rest]
+		];
 		If[TrueQ[numfac < 0 && MatchQ[numfac, _Rational | _Integer]],
 			CartesianPropagatorDenominator[Expand[-tt /. one -> 1], rest],
 			CartesianPropagatorDenominator[Expand[tt /. one -> 1], rest]
@@ -1167,20 +1188,8 @@ oldFeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern
 		FCPrint[3,"FDS: oldFeynAmpDenominatorSimplify: Before fadall", exp, "", FCDoControl->fdsVerbose];
 
 		If[ Head[exp] =!= Plus,
-			If[	OptionValue[Options[FDS],{opt},FC2RHI],
-				(* This is OPE related stuff with FC2RHI *)
-				res = FC2RHI[FixedPoint[fadalll[#, q1, q2]&, Expand2[exp, q1], 7] /. pru, q1, q2, IncludePair -> (IncludePair /. {opt} /.	Options[FDS])],
-				(* This is the usual routine *)
-				res = FixedPoint[fadalll[#, q1, q2]&, Expand2[exp, q1], 7] /. pru
-			],
-			res = SelectFree[exp, {q1,q2}] +
-			If[ (FC2RHI /. {opt} /. Options[FDS]),
-				(* This is OPE related stuff with FC2RHI *)
-				FC2RHI[FixedPoint[fadalll[#, q1, q2]&, exp-SelectFree[exp,{q1,q2}], 7] /. pru, q1, q2,
-				IncludePair -> (IncludePair /. {opt} /.	Options[FDS])],
-				(* This is the usual routine *)
-				FixedPoint[fadalll[#, q1, q2]&,	exp-SelectFree[exp,{q1,q2}], 7] /. pru
-			]
+			res = FixedPoint[fadalll[#, q1, q2]&, Expand2[exp, q1], 7] /. pru,
+			res = SelectFree[exp, {q1,q2}] + (FixedPoint[fadalll[#, q1, q2]&,	exp-SelectFree[exp,{q1,q2}], 7] /. pru)
 		];
 
 		FCPrint[3,"FDS: oldFeynAmpDenominatorSimplify: Before ApartFF", res, "", FCDoControl->fdsVerbose];
@@ -1427,12 +1436,12 @@ fds2LoopsSE2[expr : (_. FeynAmpDenominator[props__]), q1_, q2_, p_] :=
 
 			(* Sometimes a simple sign change is more effective then a real shift, check if this is the case *)
 			If[ checkShift[q1 -> -q1] &&
-				(MemberQ[(needShift /. q1 -> -q1), q1 - q2] ||	MemberQ[(needShift /. q1 -> -q1), q1 - q2]),
+				MemberQ[(needShift /. q1 -> -q1), q1 - q2],
 				PrependTo[reps, q1 -> -q1]
 			];
 
 			If[ checkShift[q2 -> -q2] &&
-				(MemberQ[(needShift /. q2 -> -q2), q1 - q2] || MemberQ[(needShift /. q2 -> -q2), q1 - q2]),
+				MemberQ[(needShift /. q2 -> -q2), q1 - q2],
 				PrependTo[reps, q2 -> -q2]
 			];
 			If[ checkShift[{q1 -> -q1, q2 -> -q2}] &&
@@ -1696,17 +1705,6 @@ trachit[x_, q1_, q2_] :=
 								Momentum[pe, dim], m] PD[Momentum[q1, dim] -
 								Momentum[q2, dim], _] PD[Momentum[q1, dim] -
 								Momentum[pe, dim], _]])),
-							(* f43 *)
-							qqq[fa_. FeynAmpDenominator[aa___PD, PD[Momentum[q2, dim___] -
-							Momentum[pe_ /; pe =!= q1, dim___], m_], bb___PD]]:>
-								((tran[fa FeynAmpDenominator[aa, PD[Momentum[q2, dim] -
-								Momentum[pe, dim],m], bb], {q2, q1, q1, q2}])/;(MatchQ[(Times@@Union[{aa,
-								PD[Momentum[q2, dim] - Momentum[pe, dim],m],bb}]),
-								PD[Momentum[q2, dim], _] PD[Momentum[q2, dim] -	Momentum[pe, dim], m] *
-								PD[Momentum[q2, dim] - Momentum[q1, dim], _] PD[Momentum[q1, dim], _]] ||
-								MatchQ[(Times@@Union[{aa, PD[Momentum[q2, dim] - Momentum[pe, dim],m],bb}]),
-								PD[Momentum[q2, dim], _] PD[Momentum[q2, dim] - Momentum[pe, dim], m] *
-								PD[Momentum[q1, dim] - Momentum[q2, dim], 0] PD[Momentum[q1, dim], _]])),
 							(* f4331 *)
 							qqq[fa_. (as_ /; (Length[as] === 3 && Head[as]===Plus))^w_*
 							FeynAmpDenominator[aa___PD,	PD[Momentum[q2, dim___] -
@@ -1737,16 +1735,7 @@ trachit[x_, q1_, q2_] :=
 								PD[Momentum[q2, dim], 0] PD[Momentum[q1, dim], 0]*
 								PD[Momentum[q1, dim] - Momentum[pe, dim], 0] *
 								PD[Momentum[q2, dim] - Momentum[pe, dim], 0]])),
-							(* f30 *)
-							qqq[fa_. (as_ /; (Length[as] === 3 && Head[as]===Plus))^w_*
-							FeynAmpDenominator[aa___PD,	PD[Momentum[q2, dim___] -
-							Momentum[pe_ /; pe =!= q1, dim___], 0], bb___PD]]:>
-								((tran[fa as^w FeynAmpDenominator[aa, PD[Momentum[q2, dim] -
-								Momentum[pe, dim],0], bb], q2, -q2 + q1 + pe])/;
-								(MatchQ[(Times@@Union[{aa, PD[Momentum[q2, dim] -
-								Momentum[pe, dim],0], bb}]), PD[Momentum[q1, dim], 0]*
-								PD[Momentum[q2, dim] - Momentum[pe, dim], 0] *
-								PD[Momentum[q2, dim] - Momentum[q1, dim], 0]])),
+
 							(* f31 *)
 							qqq[fa_. q1pw[as_ /;Length[as] === 3,w_]*
 							FeynAmpDenominator[aa___PD, PD[Momentum[q2, dim___] -
@@ -1788,12 +1777,6 @@ trachit[x_, q1_, q2_] :=
 								(tran[fa FeynAmpDenominator[a, PD[np Momentum[pe, dimp] +
 								nq2 Momentum[q2, dim] + nq1 Momentum[q1, dim], m], b], q1 ,
 								(q1/nq1 -np pe/nq1)]) /;FreeQ[fa, q1pw],
-
-							qqq[(fa_.) FeynAmpDenominator[a___, PD[np_. Momentum[pe_,dimp___] +
-							nq2_. Momentum[q2, dim___] + nq1_. Momentum[q1, dim___], m_], b___]] :>
-								(tran[fa FeynAmpDenominator[a, PD[np Momentum[pe, dimp] + nq2 Momentum[q2, dim] +
-								nq1 Momentum[q1, dim], m], b], q2, (q2/nq2 -np pe/nq2)]) /;
-								FreeQ[fa, q2pw],
 
 							qqq[(fa_.) q1pw[Pair[Momentum[OPEDelta,di___], Momentum[q1, dim___]] -
 							Pair[Momentum[OPEDelta,di___], Momentum[q2, dim___]], pow_] FeynAmpDenominator[a___]] :>

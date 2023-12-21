@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Pauli trace calculation										*)
@@ -17,18 +17,17 @@
 
 
 PauliTrace::usage =
-"PauliTrace[exp] is the head of Pauli traces. \
-By default the trace is not evaluated. The evaluation occurs only when \
-the option PauliTraceEvaluate is set to True. It is recommended to use \
-PauliSimplify, which will automatically evaluate all Pauli traces in the \
-input expression.";
+"PauliTrace[exp] is the head of Pauli traces. By default the trace is not
+evaluated. The evaluation occurs only when the option PauliTraceEvaluate is
+set to True. It is recommended to use PauliSimplify, which will automatically
+evaluate all Pauli traces in the input expression.";
 
 PauliTrace::failmsg =
 "Error! PauliTrace has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 PauliTrace::mixmsg = "Expressions that mix D-, 4- and D-4-dimensional quantities are currently
-unsupported."
+unsupported.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -48,17 +47,17 @@ optSort::usage="";
 
 Options[PauliTrace] = {
 	Contract 			-> True,
-	PauliTraceEvaluate	-> False,
 	EpsContract			-> False,
+	EpsExpand			-> True,
 	Expand				-> True,
+	FCDiracIsolate		-> True,
 	FCPauliIsolate		-> True,
 	FCVerbose			-> False,
 	Factoring			-> Automatic,
-	FCDiracIsolate		-> True,
 	FeynCalcExternal	-> False,
 	FeynCalcInternal	-> False,
 	PairCollect			-> False,
-	PauliTraceEvaluate 	-> False,
+	PauliTraceEvaluate	-> False,
 	Sort				-> True,
 	TraceOfOne			-> 2
 };
@@ -446,10 +445,10 @@ pauliTraceEvaluate[expr_/;!FreeQ[expr,PauliSigma], opts:OptionsPattern[]] :=
 		If[ !FreeQ[tmp, Eps],
 			time=AbsoluteTime[];
 			FCPrint[1,"PauliTrace: pauliTraceEvaluate: Treating Eps tensors.", FCDoControl->paTrVerbose];
-			tmp = EpsEvaluate[tmp,FCI->True]//Expand;
+			tmp = EpsEvaluate[tmp,FCI->True, EpsExpand->OptionValue[PauliTrace,{opts},EpsExpand]]//Expand;
 			If[ (contract===True || (NumberQ[contract] && LeafCount[tmp] < contract)),
 				tmp = Contract[ tmp, EpsContract -> OptionValue[PauliTrace,{opts},EpsContract],
-								Expanding -> False, FCI->True];
+								Expanding -> False, FCI->True, EpsExpand->OptionValue[PauliTrace,{opts},EpsExpand]];
 			];
 		];
 
@@ -610,7 +609,6 @@ traceOdd[a_, b_, c_]:=
 traceEpsOdd[mu_, nu_, SI2__] :=
 	Block[{head, s = -1, res},
 		res = Plus @@ MapIndexed[((s = -s) Eps[mu, nu, #1] Drop[head[SI2], #2]) &, {SI2}];
-		res = res (*/. head -> traceEvenWrap*);
 		res
 	];
 

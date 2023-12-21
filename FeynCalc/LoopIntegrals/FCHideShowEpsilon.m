@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Substitutes 1/Epsilon - EulerGamma + Log[4Pi] with
@@ -17,12 +17,12 @@
 (* ------------------------------------------------------------------------ *)
 
 FCHideEpsilon::usage =
-"FCHideEpsilon[expr] substitutes 1/Epsilon - EulerGamma + Log[4Pi] with \
-SMP[\"Delta\"]";
+"FCHideEpsilon[expr] substitutes 1/Epsilon - EulerGamma + Log[4 Pi] with
+SMP[\"Delta\"].";
 
 FCShowEpsilon::usage =
-"FCShowEpsilon[expr] substitutes SMP[\"Delta\"] with 1/Epsilon - \
-EulerGamma + Log[4Pi]";
+"FCShowEpsilon[expr] substitutes SMP[\"Delta\"] with 1/Epsilon - EulerGamma +
+Log[4 Pi].";
 
 FCHideEpsilon::failmsg =
 "Error! FCHideEpsilon has encountered a fatal problem and must abort the computation. \

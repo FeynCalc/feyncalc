@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Gram matrix and Gram determinant		*)
@@ -16,13 +16,14 @@
 (* ------------------------------------------------------------------------ *)
 
 FCGramMatrix::usage =
-"FCGramMatrix[{p1,p2,...}] creates Gram matrix from the given list of momenta.";
+"FCGramMatrix[{p1, p2, ...}] creates a Gram matrix from the given list of
+momenta.";
 
 FCGramDeterminant::usage =
-"FCGramDeterminant[{p1,p2,...}] computes the determinant of the Gram matrix created \
-from the given list of momenta.";
+"FCGramDeterminant[{p1, p2, ...}] computes the determinant of the Gram matrix
+created from the given list of momenta.";
 
-FCGram::failmsg = "Error! FCGram has encountered a fatal problem and \
+FCGramMatrix::failmsg = "Error! FCGramMatrix has encountered a fatal problem and \
 must abort the computation. The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
@@ -59,7 +60,7 @@ FCGramMatrix[moms_List,OptionsPattern[]]:=
 		mat = Table[pairHead[momHead[moms[[i]],dim], momHead[moms[[j]],dim]], {i, 1, len}, {j, 1, len}];
 
 		If[	!MatrixQ[mat],
-			Message[FCGram::failmsg, "The created Gram matrix is incorrect."];
+			Message[FCGramMatrix::failmsg, "The created Gram matrix is incorrect."];
 			Abort[]
 		];
 

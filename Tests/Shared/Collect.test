@@ -2,9 +2,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for Collect2					*)
@@ -60,14 +60,12 @@ VAR^2 (Sum[xy[i], {i, 1, 10}] + Sum[xz[i], {i, 1, 10}])]",
 	"4 (1/4 a (x+1)+b (y+1))"},
 {"fcstCollect2-ID14","Collect2[a PolyLog[2, z] +
 s^2 PolyLog[2, z] + (1 - z) Log[2] + (2 + Pi^2) Log[1/(1 - z)] +
-f Log[1/(1 - z)], Log[1/(1 - z)], PolyLog[2, z]]",
-	"-(-1 + z) Log[2] + (2 + f + \[Pi]^2) Log[1/(
-1 - z)] + (a + s^2) PolyLog[2, z]"},
+f Log[1/(1 - z)], Log[1/(1 - z)], PolyLog[2, z],Factoring->hold]",
+	"hold[(1 - z)*Log[2]] + hold[2 + f + Pi^2]*Log[(1 - z)^(-1)] + hold[a + s^2]*PolyLog[2, z]"},
 {"fcstCollect2-ID15","Collect2[a PolyLog[2, z] +
 s^2 PolyLog[2, z] + (1 - z) Log[2] + (2 + Pi^2) Log[1/(1 - z)] +
-f Log[1/(1 - z)], Log[1/(1 - z)], PolyLog[2, z], Head -> {h1, h2}]",
-	"h2[2 + f + \[Pi]^2, h1[Log[1/(1 - z)]]] +
-h2[a + s^2, h1[PolyLog[2, z]]] + h2[-(-1 + z) Log[2], 1]"},
+f Log[1/(1 - z)], Log[1/(1 - z)], PolyLog[2, z], Head -> {h1, h2},Factoring->hold]",
+	"h2[hold[2 + f + Pi^2], h1[Log[(1 - z)^(-1)]]] + h2[hold[a + s^2], h1[PolyLog[2, z]]] + h2[hold[(1 - z)*Log[2]], 1]"},
 {"fcstCollect2-ID16","Collect2[(a - b)^2 - a^2 - b^2, a, b, InitialFunction -> fu]",
 	"fu[-a^2 + (a - b)^2 - b^2]"},
 {"fcstCollect2-ID17","Collect2[(a - b)^2 - a^2 - b^2, a, b,
@@ -157,5 +155,10 @@ b[41, c1 + c2, c3 + c4] + b[42, c1 + c2, c3 + c4] +
 b[43, c1 + c2, c3 + c4] + b[44, c1 + c2, c3 + c4] +
 b[45, c1 + c2, c3 + c4] + b[46, c1 + c2, c3 + c4] +
 b[47, c1 + c2, c3 + c4] + b[48, c1 + c2, c3 + c4] +
-b[49, c1 + c2, c3 + c4] + b[50, c1 + c2, c3 + c4])"}
+b[49, c1 + c2, c3 + c4] + b[50, c1 + c2, c3 + c4])"},
+{"fcstCollect2-ID27","Collect2[Expand[(a - b - c - d)^5], a, Head -> {Identity, h2}]",
+"h2[1, a^5] + h2[-5*(b + c + d), a^4] + h2[10*(b + c + d)^2, a^3] +
+h2[-10*(b + c + d)^3, a^2] + h2[5*(b + c + d)^4, a] + h2[-(b + c + d)^5, 1]"},
+{"fcstCollect2-ID28","Head[Collect2[a + b + c, d, IsolateNames -> KK]] === HoldForm",
+"True"}
 };

@@ -4,35 +4,43 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Canonicalizes dummy Lorentz indices *)
 
 (* ------------------------------------------------------------------------ *)
 
-FCCanonicalizeDummyIndices::usage = "
-FCCanonicalizeDummyIndices[expr] canonicalizes all dummy Lorentz indices \
-in the expression " <> ToString[
-Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/FCCanonicalizeDummyIndices"],
-StandardForm];
+FCCanonicalizeDummyIndices::usage =
+"FCCanonicalizeDummyIndices[expr] canonicalizes dummy indices in the
+expression.
+
+Following index types are supported: LorentzIndex, CartesianIndex, SUNIndex,
+SUNFIndex, DiracIndex, PauliIndex
+
+In the case of Lorentz indices the option Momentum provides a possibility to
+limit the canonicalization only to particular Momenta. The option
+LorentzIndexNames can be used to assign specific names to  the canonicalized
+indices, to have say $\\mu$, $\\nu$, $\\rho$ etc. instead of some random names.
+
+For other index types the corresponding options are called
+CartesianIndexNames, SUNIndexNames, SUNFIndexNames, DiracIndexNames and
+PauliIndexNames.";
 
 FCCanonicalizeDummyIndices::failmsg =
 "Error! FCCanonicalizeDummyIndices has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
-NotMomentum::usage = "
-NotMomentum is an option of FCCanonicalizeDummyIndices. It specifies a list of momenta for which
-no canonicalization should be done."
+NotMomentum::usage =
+"NotMomentum is an option of FCCanonicalizeDummyIndices. It specifies a list of
+momenta for which
+no canonicalization should be done.";
 
-CustomIndexNames::usage = "
-CustomIndexNames is an option of FCCanonicalizeDummyIndices. It allow to specify custom names \
-for canonicalized dummy indices of custom index heads, e.g.
-FCCanonicalizeDummyIndices[ T1[MyIndex2[a], MyIndex1[b]] v1[MyIndex1[b]] v2[MyIndex2[a]] + \
-T1[MyIndex2[c], MyIndex1[f]] v1[MyIndex1[f]] v2[MyIndex2[c]], Head -> {MyIndex1, MyIndex2}, \
-CustomIndexNames -> {{MyIndex1, {i1}}, {MyIndex2, {i2}}}]";
+CustomIndexNames::usage =
+"CustomIndexNames is an option of FCCanonicalizeDummyIndices. It allows to
+specify custom names for canonicalized dummy indices of custom index heads.";
 
 
 
@@ -55,12 +63,13 @@ Options[FCCanonicalizeDummyIndices] = {
 	FCI 				-> False,
 	FCTraceExpand 		-> True,
 	FCVerbose 			-> False,
-	FCVerbose			-> False,
 	Function			-> Function[{x, seed}, FCGV[(ToString[seed] <> ToString[Identity @@ x])]],
-	Head				-> {LorentzIndex,CartesianIndex,SUNIndex,SUNFIndex, DiracIndex},
+	Head				-> {LorentzIndex,CartesianIndex,SUNIndex,SUNFIndex, DiracIndex, PauliIndex},
 	LorentzIndexNames 	-> {},
 	Momentum			-> All,
 	NotMomentum			-> {},
+	PauliChainExpand	-> True,
+	PauliIndexNames		-> {},
 	SUNFIndexNames		-> {},
 	SUNIndexNames		-> {}
 };
@@ -89,7 +98,7 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 			rest0=0,lihead,cihead,seedLor,moms,notmoms,finalList,isoHead, uniqueExpressions,
 			repIndexListLor, canIndexList, finalRepList,repIndexListTotal,
 			res, sunhead,sunfhead,indhead,dihead,repIndexListsCustom={},fu,otherHeads,
-			renamingList,cList,indexExtract, seedCar, repIndexListCar, times, dimensions, rule},
+			renamingList,cList,indexExtract, seedCar, repIndexListCar, times, dimensions, rule, pihead},
 
 		If [OptionValue[FCVerbose]===False,
 			canodummyVerbose=$VeryVerbose,
@@ -142,6 +151,10 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 
 		If[ OptionValue[DiracChainExpand],
 			ex = DiracChainExpand[ex,FCI->True]
+		];
+
+		If[ OptionValue[PauliChainExpand],
+			ex = PauliChainExpand[ex,FCI->True]
 		];
 
 		tmp = Expand2[ex, indhead];
@@ -272,7 +285,7 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 
 		(* Rest *)
 
-		otherHeads = Complement[Union[indhead],{LorentzIndex,CartesianIndex,SUNIndex,SUNFIndex,DiracIndex}];
+		otherHeads = Complement[Union[indhead],{LorentzIndex,CartesianIndex,SUNIndex,SUNFIndex,DiracIndex,PauliIndex}];
 		FCPrint[1,"FCCanonicalizeDummyIndices: Custom index heads present: ", otherHeads, FCDoControl->canodummyVerbose];
 
 		If[otherHeads =!={},
@@ -285,7 +298,8 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 		repIndexListTotal = {repIndexListLor,repIndexListCar,
 			makeRepIndexList[SUNIndex,sunhead,Unique["sun"],fu,finalList,uniqueExpressions],
 			makeRepIndexList[SUNFIndex,sunfhead,Unique["sunf"],fu,finalList,uniqueExpressions],
-			makeRepIndexList[DiracIndex,dihead,Unique["di"],fu,finalList,uniqueExpressions]
+			makeRepIndexList[DiracIndex,dihead,Unique["di"],fu,finalList,uniqueExpressions],
+			makeRepIndexList[PauliIndex,pihead,Unique["pi"],fu,finalList,uniqueExpressions]
 		};
 
 
@@ -304,7 +318,9 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 			{OptionValue[CartesianIndexNames],cihead},
 			{OptionValue[SUNIndexNames],sunhead},
 			{OptionValue[SUNFIndexNames],sunfhead},
-			{OptionValue[DiracIndexNames],dihead}
+			{OptionValue[DiracIndexNames],dihead},
+			{OptionValue[PauliIndexNames],pihead}
+
 		};
 		If[ OptionValue[CustomIndexNames]=!={},
 			cList = Join[cList,Map[{Last[#], ToExpression[ToString[First[#]]<>"head"]}&,OptionValue[CustomIndexNames]]];
@@ -336,7 +352,7 @@ FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 
 		FCPrint[3,"FCCanonicalizeDummyIndices: canIndexList: ", finalRepList, FCDoControl->canodummyVerbose];
 
-		res = (rest0+tmp) /.finalRepList /. isoHead|lihead|cihead|sunhead|sunfhead|dihead->Identity /. times -> Times;
+		res = (rest0+tmp) /.finalRepList /. isoHead|lihead|cihead|sunhead|sunfhead|dihead|pihead->Identity /. times -> Times;
 
 		If[OptionValue[FCE],
 			res = FCE[res]

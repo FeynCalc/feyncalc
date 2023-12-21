@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Expands traces using linearity							    *)
@@ -16,9 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 FCTraceExpand::usage =
-"FCTraceExpand[expr] expands traces of Dirac and SU(N) matrices \
-using linearity of the trace. The traces themselves are not \
-evaluated.";
+"FCTraceExpand[exp] expands traces of Dirac and $SU(N)$ matrices using
+linearity of the trace. The traces themselves are not evaluated.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -77,6 +76,8 @@ FCTraceExpand[expr_, OptionsPattern[]] :=
 			FCPrint[1, "FCTraceExpand: Expanding SU(N) traces.", FCDoControl->fctreVerbose];
 			sunTraces = Cases2[ex, SUNTrace];
 			sunTraces2 = sunTraces;
+
+			FCPrint[3, "FCTraceExpand: Unique SU(N) traces:", sunTraces, FCDoControl->fctreVerbose];
 
 			If[	OptionValue[FCTraceFactor],
 				sunTraces2 = FCTraceFactor/@sunTraces2
@@ -183,10 +184,10 @@ expandPauli[x_] :=
 		Distribute[PauliTrace@(Expand[x])]
 	];
 
-expandColor[x_] :=
+expandColor[x_, OptionsPattern[]] :=
 	If [dotSimp,
-		Distribute[SUNTrace@(Expand[DotSimplify[x,PreservePropagatorStructures->propPres,FCI->True]])],
-		Distribute[SUNTrace@(Expand[x])]
+		Distribute[SUNTrace@(Expand2[DotSimplify[x,PreservePropagatorStructures->propPres,FCI->True],{SUNIndex,SUNFIndex}])],
+		Distribute[SUNTrace@(Expand2[x,{SUNIndex,SUNFIndex}])]
 	];
 
 FCPrint[1,"FCTraceExpand.m loaded."];

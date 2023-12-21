@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Field strength tensor											*)
@@ -16,15 +16,16 @@
 (* ------------------------------------------------------------------------ *)
 
 FieldStrength::usage =
-"FieldStrength[mu,nu,a] is the field strength tensor \
-F_{mu nu}^a = partial_mu A_nu^a - partial_nu A_mu^a + \
-g f^{abc} A_mu^b A_nu^c. \n
-FieldStrength[mu,nu] is the field strength tensor \
-F_{mu nu}^a = partial_mu A_nu^a - partial_nu A_mu. \n
-The name of the field (A) and the coupling constant (g) \
-can be set through the options or by additional arguments: \
-FieldStrength[mu,nu,a, A, g] or, specifying the dummy \
-color indices: FieldStrength[mu,nu,a, {A,b,c}, g].";
+"FieldStrength[mu, nu, a] is the field strength tensor $\\partial _{\\mu } A_{\\nu
+}^a - \\partial _{\\nu } A_{\\mu }^a + g_s A_{\\mu }^b A_{\\nu }^c f^{abc}$.
+
+FieldStrength[mu, nu] is the field strength tensor $(\\partial _{\\mu } A_{\\nu}-
+\\partial_{\\nu } A_{\\mu})$.
+
+The name of the field ($A$) and the coupling constant ($g$) can be set through
+the options or by additional arguments. The first two indices are interpreted
+as type LorentzIndex, except OPEDelta, which is converted to
+Momentum[OPEDelta].";
 
 IndexPosition::usage =
 "IndexPosition is an option for FieldStrength.";
@@ -71,8 +72,8 @@ FieldStrength[Momentum[OPEDelta], nu_, a_, {aA_, b_, c_}, g_ /; Head[g] =!= Rule
 
 
 FieldStrength[mu_, nu_, OptionsPattern[]] :=
-	(QuantumField[FCPartialD[mu], OptionValue[QuantumField],
-	LorentzIndex[nu]] -    QuantumField[FCPartialD[nu], OptionValue[QuantumField],
+	(QuantumField[FCPartialD[LorentzIndex[mu]], OptionValue[QuantumField],
+	LorentzIndex[nu]] -    QuantumField[FCPartialD[LorentzIndex[nu]], OptionValue[QuantumField],
 	LorentzIndex[mu]]) /; OptionValue[Explicit];
 
 FieldStrength[mu_, nu_, a_, opts:OptionsPattern[]] :=

@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for MomentumCombine          *)
@@ -180,5 +180,149 @@ p3]]"},
 {"fcstMomentumCombine-ID56",
 "MomentumCombine[-c1 CSP[p1,p2]-c1 CSP[p1,p3]]",
 "-(c1*CartesianPair[CartesianMomentum[p1], CartesianMomentum[p2 + \
-p3]])"}
+p3]])"},
+{"fcstMomentumCombine-ID57",
+"MomentumCombine[I CartesianMomentum[p]-I CartesianMomentum[q]]",
+"I*CartesianMomentum[p - q]"},
+{"fcstMomentumCombine-ID58",
+"MomentumCombine[I CartesianMomentum[p]-2I CartesianMomentum[q]]",
+"I*CartesianMomentum[p - 2*q]"},
+{"fcstMomentumCombine-ID59",
+"MomentumCombine[I CartesianMomentum[p]]",
+"I*CartesianMomentum[p]"},
+{"fcstMomentumCombine-ID60",
+"MomentumCombine[I CartesianMomentum[p,D-1]-I \
+CartesianMomentum[q,D-1]]", "I*CartesianMomentum[p - q, -1 + D]"},
+{"fcstMomentumCombine-ID61",
+"MomentumCombine[I CartesianMomentum[p,D-1]-2I \
+CartesianMomentum[q,D-1]]", "I*CartesianMomentum[p - 2*q, -1 + D]"},
+{"fcstMomentumCombine-ID62",
+"MomentumCombine[I CartesianMomentum[p,D-1]]",
+"I*CartesianMomentum[p, -1 + D]"},
+{"fcstMomentumCombine-ID63",
+"MomentumCombine[I Momentum[p]-I Momentum[q]]",
+"I*Momentum[p - q]"},
+{"fcstMomentumCombine-ID64",
+"MomentumCombine[I Momentum[p]-2I Momentum[q]]",
+"I*Momentum[p - 2*q]"},
+{"fcstMomentumCombine-ID65", "MomentumCombine[I Momentum[p]]",
+"I*Momentum[p]"},
+{"fcstMomentumCombine-ID66",
+"MomentumCombine[I Momentum[p,D]-I Momentum[q,D]]",
+"I*Momentum[p - q, D]"},
+{"fcstMomentumCombine-ID67",
+"MomentumCombine[I Momentum[p,D]-2I Momentum[q,D]]",
+"I*Momentum[p - 2*q, D]"},
+{"fcstMomentumCombine-ID68", "MomentumCombine[I Momentum[p,D]]",
+"I*Momentum[p, D]"},
+{"fcstMomentumCombine-ID69",
+"MomentumCombine[FCTopology[asyR2prop2Ltopo01013X11111N1,{\
+FeynAmpDenominator[StandardPropagatorDenominator[\[ImaginaryI] \
+Momentum[p3,D],0,0,{1,1}]],FeynAmpDenominator[\
+StandardPropagatorDenominator[\[ImaginaryI] \
+Momentum[p1,D],0,0,{1,1}]],FeynAmpDenominator[\
+StandardPropagatorDenominator[Momentum[\[ImaginaryI] p3+\[ImaginaryI] \
+q,D],0,\!\(\*SuperscriptBox[\(mb\), \
+\(2\)]\),{1,1}]],FeynAmpDenominator[StandardPropagatorDenominator[\
+Momentum[\[ImaginaryI] p1+\[ImaginaryI] \
+q,D],0,\!\(\*SuperscriptBox[\(mb\), \
+\(2\)]\),{1,1}]],FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[p1,D],Momentum[-p1+2 \
+p3,D]]-Pair[Momentum[p3,D],Momentum[p3,D]],{1,1}]]},{p1,p3},{q},{},{}]\
+]", "FCTopology[asyR2prop2Ltopo01013X11111N1, \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q, \
+D], 0, mb^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q, \
+D], 0, mb^2, {1, 1}]], \
+FeynAmpDenominator[GenericPropagatorDenominator[Pair[Momentum[p1, D], \
+Momentum[-p1 + 2*p3, D]] - Pair[Momentum[p3, D], Momentum[p3, D]], \
+{1, 1}]]}, {p1, p3}, {q}, {}, {}]"},
+{"fcstMomentumCombine-ID70",
+"MomentumCombine[FCTopology[asyR3prop2Ltopo01013X11111N1,{\
+FeynAmpDenominator[StandardPropagatorDenominator[\[ImaginaryI] \
+Momentum[p3,D],0,0,{1,1}]],FeynAmpDenominator[\
+StandardPropagatorDenominator[\[ImaginaryI] \
+Momentum[p1,D],0,0,{1,1}]],FeynAmpDenominator[\
+StandardPropagatorDenominator[0,-2 \
+Pair[Momentum[p3,D],Momentum[q,D]],0,{1,1}]],FeynAmpDenominator[\
+StandardPropagatorDenominator[0,-2 \
+Pair[Momentum[p1,D],Momentum[q,D]],0,{1,1}]],FeynAmpDenominator[\
+StandardPropagatorDenominator[Momentum[\[ImaginaryI] p1-\[ImaginaryI] \
+p3,D],0,\!\(\*SuperscriptBox[\(mg\), \
+\(2\)]\),{1,1}]]},{p1,p3},{q},{},{}]]",
+"FCTopology[asyR3prop2Ltopo01013X11111N1, \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-2*Pair[Momentum[p3, D], Momentum[q, D]], 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-2*Pair[Momentum[p1, D], Momentum[q, D]], 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, mg^2, {1, 1}]]}, {p1, p3}, {q}, {}, {}]"},
+{"fcstMomentumCombine-ID71",
+"MomentumCombine[LightConePerpendicularComponent[Momentum[p],\
+Momentum[n],Momentum[nb]]+LightConePerpendicularComponent[Momentum[q],\
+Momentum[n],Momentum[nb]]]",
+"LightConePerpendicularComponent[Momentum[p + q], Momentum[n], \
+Momentum[nb]]"},
+{"fcstMomentumCombine-ID72",
+"MomentumCombine[FVLR[p,mu]+FVLR[q,mu]]",
+"Pair[LightConePerpendicularComponent[LorentzIndex[mu], \
+Momentum[FCGV[\"n\"]], Momentum[FCGV[\"nb\"]]], \
+LightConePerpendicularComponent[Momentum[p + q], \
+Momentum[FCGV[\"n\"]], Momentum[FCGV[\"nb\"]]]]"},
+{"fcstMomentumCombine-ID73",
+"MomentumCombine[3FVLR[p,mu]+4FVLR[q,mu]]",
+"Pair[LightConePerpendicularComponent[LorentzIndex[mu], \
+Momentum[FCGV[\"n\"]], Momentum[FCGV[\"nb\"]]], \
+LightConePerpendicularComponent[Momentum[3*p + 4*q], \
+Momentum[FCGV[\"n\"]], Momentum[FCGV[\"nb\"]]]]"},
+{"fcstMomentumCombine-ID74",
+"MomentumCombine[SPLR[p,q1]+SPLR[p,q2]]",
+"Pair[LightConePerpendicularComponent[Momentum[p], \
+Momentum[FCGV[\"n\"]], Momentum[FCGV[\"nb\"]]], \
+LightConePerpendicularComponent[Momentum[q1 + q2], \
+Momentum[FCGV[\"n\"]], Momentum[FCGV[\"nb\"]]]]"},
+{"fcstMomentumCombine-ID75",
+"MomentumCombine[FVLRD[p,mu]+FVLRD[q,mu]]",
+"Pair[LightConePerpendicularComponent[LorentzIndex[mu, D], \
+Momentum[FCGV[\"n\"], D], Momentum[FCGV[\"nb\"], D]], \
+LightConePerpendicularComponent[Momentum[p + q, D], Momentum[FCGV[\"n\
+\"], D], Momentum[FCGV[\"nb\"], D]]]"},
+{"fcstMomentumCombine-ID76",
+"MomentumCombine[3FVLRD[p,mu]+4FVLRD[q,mu]]",
+"Pair[LightConePerpendicularComponent[LorentzIndex[mu, D], \
+Momentum[FCGV[\"n\"], D], Momentum[FCGV[\"nb\"], D]], \
+LightConePerpendicularComponent[Momentum[3*p + 4*q, D], \
+Momentum[FCGV[\"n\"], D], Momentum[FCGV[\"nb\"], D]]]"},
+{"fcstMomentumCombine-ID77",
+"MomentumCombine[SPLRD[p,q1]+SPLRD[p,q2]]",
+"Pair[LightConePerpendicularComponent[Momentum[p, D], \
+Momentum[FCGV[\"n\"], D], Momentum[FCGV[\"nb\"], D]], \
+LightConePerpendicularComponent[Momentum[q1 + q2, D], \
+Momentum[FCGV[\"n\"], D], Momentum[FCGV[\"nb\"], D]]]"},
+{"fcstMomentumCombine-ID78",
+"MomentumCombine[SPD[a1 p,n]+SPD[a2 p,nb],NumberQ\[Rule]False]",
+"Pair[Momentum[a1*n + a2*nb, D], Momentum[p, D]]"},
+{"fcstMomentumCombine-ID79",
+"MomentumCombine[SPD[p]+SPD[a1 p,n]+SPD[a2 \
+p,nb],NumberQ\[Rule]False]",
+"Pair[Momentum[p, D], Momentum[a1*n + a2*nb + p, D]]"},
+{"fcstMomentumCombine-ID80",
+"MomentumCombine[SPD[p]+SPD[a1 p,n]+SPD[a2 \
+p,nb],NumberQ\[Rule]False,\"Quadratic\"\[Rule]False]",
+"Pair[Momentum[a1*n + a2*nb, D], Momentum[p, D]] + \
+Pair[Momentum[p, D], Momentum[p, D]]"},
+{"fcstMomentumCombine-ID81",
+"MomentumCombine[SPD[p]+SPD[a1 p,n]+SPD[a2 \
+p,nb]+SPD[p,l]+SPD[p,k],NumberQ\[Rule]False,\"Quadratic\"\[Rule]False,\
+Except\[Rule]{k,l}]",
+"Pair[Momentum[k, D], Momentum[p, D]] + Pair[Momentum[l, D], \
+Momentum[p, D]] + Pair[Momentum[a1*n + a2*nb, D], Momentum[p, D]] + \
+Pair[Momentum[p, D], Momentum[p, D]]"}
 };

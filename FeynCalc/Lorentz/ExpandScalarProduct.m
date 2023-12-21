@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Expansion of scalar products and vectors						*)
@@ -16,13 +16,9 @@
 (* ------------------------------------------------------------------------ *)
 
 ExpandScalarProduct::usage =
-"ExpandScalarProduct[expr]  expands scalar products of sums of \
-momenta in expr. ExpandScalarProduct[x, y] expands ScalarProduct[x, y], \
-where x and y may contain sums. ExpandScalarProduct does not use Expand on \
-expr.";
+"ExpandScalarProduct[expr] expands scalar products of sums of momenta in expr.
 
-ScalarProductExpand::usage =
-"ScalarProductExpand is equivalent to ExpandScalarProduct.";
+ExpandScalarProduct does not use Expand on expr.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -31,12 +27,13 @@ End[]
 
 Begin["`ExpandScalarProduct`Private`"]
 
-ScalarProductExpand = ExpandScalarProduct;
 tmpHead::usage="";
 objects::usage="";
+optMomentum::usage="";
 
 Options[ExpandScalarProduct] = {
 	EpsEvaluate -> False,
+	EpsExpand	-> True,
 	FCE 		-> False,
 	FCI 		-> False,
 	Full 		-> True,
@@ -44,12 +41,12 @@ Options[ExpandScalarProduct] = {
 };
 
 ExpandScalarProduct[expr_, OptionsPattern[]] :=
-	Block[ {ex, pairList, pairListExpanded, moms, protect, momentum, relevant, null1, null2},
+	Block[ {ex, pairList, pairListExpanded, protect, momentum, relevant, null1, null2},
 
-		moms = OptionValue[Momentum];
+		optMomentum = OptionValue[Momentum];
 
-		If[ moms=!=All && Head[moms]=!=List,
-			moms = {moms}
+		If[ optMomentum=!=All && Head[optMomentum]=!=List,
+			optMomentum = {optMomentum}
 		];
 
 		objects = Join[$FCTensorList,{TemporalPair}];
@@ -78,14 +75,14 @@ ExpandScalarProduct[expr_, OptionsPattern[]] :=
 			relevant = relevant//Sort//DeleteDuplicates
 		];
 
-		If [moms===All,
+		If [optMomentum===All,
 			pairList = Select[Cases2[relevant, objects], !FreeQ2[#, TensorArgsList]&];
 			pairListExpanded = pairList,
-			pairList = Select[Cases2[relevant, objects], (!FreeQ2[#, TensorArgsList] && !FreeQ2[#, moms])&];
+			pairList = Select[Cases2[relevant, objects], (!FreeQ2[#, TensorArgsList] && !FreeQ2[#, optMomentum])&];
 			If[ TrueQ[!OptionValue[Full]],
 				pairListExpanded = pairList //. {
-					Momentum[c_. mom_ + rest_: 0, dim___] /; MemberQ[moms, mom] :> momentum[c mom + protect[rest], dim],
-					Momentum[rest_, dim___] /; FreeQ[rest, moms] :> momentum[protect[rest], dim]
+					Momentum[c_. mom_ + rest_: 0, dim___] /; MemberQ[optMomentum, mom] :> momentum[c mom + protect[rest], dim],
+					Momentum[rest_, dim___] /; FreeQ[rest, optMomentum] :> momentum[protect[rest], dim]
 				} /. momentum -> Momentum,
 				pairListExpanded = pairList
 			]
@@ -97,7 +94,7 @@ ExpandScalarProduct[expr_, OptionsPattern[]] :=
 		];
 
 		If[	OptionValue[EpsEvaluate] && !FreeQ[ex,Eps],
-			ex = EpsEvaluate[ex,FCI->True,Momentum->OptionValue[Momentum]]
+			ex = EpsEvaluate[ex,FCI->True,Momentum->OptionValue[Momentum],EpsExpand->OptionValue[EpsExpand]]
 		];
 
 		If[	OptionValue[FCE],
@@ -119,7 +116,7 @@ pairexpand[x_] :=
 
 
 scevdoit[head_,arg__] :=
-	Distribute[tmpHead@@(Expand[MomentumExpand/@{arg}])]/.tmpHead->head;
+	Distribute[tmpHead@@(Expand[MomentumExpand[{arg},Momentum->optMomentum]])]/.tmpHead->head;
 
 FCPrint[1,"ExpandScalarProduct.m loaded."];
 End[]

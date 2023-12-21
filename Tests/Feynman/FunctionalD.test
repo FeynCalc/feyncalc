@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for FunctionalD  		*)
@@ -38,8 +38,8 @@ SUNIndex[a]], QuantumField[GaugeField, {mu2}, {i2}],
 QuantumField[GaugeField, {mu1}, {i1}]]","-2 RightPartialD[LorentzIndex[b]].RightPartialD[LorentzIndex[b]] Pair[
 LorentzIndex[mu1], LorentzIndex[mu2]] SUNDelta[SUNIndex[i1],
 SUNIndex[i2]]"},
-{"fcstFunctionalD-ID4","FunctionalD[(QuantumField[FCPartialD[mu], phi].QuantumField[
-	FCPartialD[mu], phi] - m^2 QuantumField[phi].QuantumField[phi])/
+{"fcstFunctionalD-ID4","FunctionalD[(QuantumField[FCPartialD[LorentzIndex[mu]], phi].QuantumField[
+	FCPartialD[LorentzIndex[mu]], phi] - m^2 QuantumField[phi].QuantumField[phi])/
 2, QuantumField[phi]]","-m^2 QuantumField[phi] -
 QuantumField[FCPartialD[LorentzIndex[mu]],
 FCPartialD[LorentzIndex[mu]], phi]"},

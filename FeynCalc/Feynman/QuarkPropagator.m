@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Quark propagator												*)
@@ -16,13 +16,18 @@
 (* ------------------------------------------------------------------------ *)
 
 QP::usage =
-"QP is an alias for QuarkPropagator. \n
-QP[p] is the massless quark propagator. \n
+"QP is an alias for QuarkPropagator.
+
+QP[p] is the massless quark propagator.
+
 QP[{p,m}] gives the  quark propagator with mass m.";
 
 QuarkPropagator::usage =
-"QuarkPropagator[p] is the massless quark propagator. \n
-QuarkPropagator[{p,m}] gives the  quark propagator with mass m.";
+"QuarkPropagator[p] is the massless quark propagator.
+
+QuarkPropagator[{p, m}] gives the quark propagator with mass $m$.
+
+QP can be used as an abbreviation of QuarkPropagator.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -77,7 +82,7 @@ QuarkPropagator[{pi_, m_},  opt:OptionsPattern[]] :=
 			];
 			If[ !cou,
 				re = re + I (DiracGamma[Momentum[pi, dim], dim]+m) FeynAmpDenominator[
-				MomentumExpand[PropagatorDenominator[Momentum[pi,dim], m]]]
+				PropagatorDenominator[MomentumExpand[Momentum[pi,dim]], m]]
 			];
 			re
 		]

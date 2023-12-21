@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Isolates loop integrals										*)
@@ -16,17 +16,15 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopIsolate::usage =
-"FCLoopIsolate[expr,{q1,q2,...}] wraps loop integrals into heads specified \
-by the user " <> ToString[
-Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/FCLoopIsolate"],
-StandardForm];
+"FCLoopIsolate[expr, {q1, q2, ...}] wraps loop integrals into heads specified
+by the user. This is useful when you want to know which loop integrals appear
+in the given expression.";
 
 MultiLoop::usage =
-"MultiLoop is an option for FCLoopIsolate. When set to True, \
-FCLoopIsolate will isolate only such loop integrals, that \
-depend on all of the given loop momenta. Integrals \
-that depend only on some of the loop momenta will be treated \
-as non-loop terms and remain non-isolated."
+"MultiLoop is an option for FCLoopIsolate. When set to True, FCLoopIsolate will
+isolate only such loop integrals, that depend on all of the given loop
+momenta. Integrals that depend only on some of the loop momenta will be
+treated as non-loop terms and remain non-isolated.";
 
 FCLoopIsolate::fail =
 "FCLoopIsolate failed to isolate loop integrals in `1`!";
@@ -70,6 +68,17 @@ Options[FCLoopIsolate] = {
 
 fullDep[z_,lmoms_]:=
 	(Union[Cases[ExpandScalarProduct[z,FCI->True], (CartesianMomentum|Momentum)[x_, ___]/;!FreeQ2[x, lmoms] :> x, Infinity]] === Sort[lmoms]);
+
+
+FCLoopIsolate[a_ == b_, y__] :=
+	FCLoopIsolate[a,y] == FCLoopIsolate[b,y];
+
+FCLoopIsolate[(h:Rule|RuleDelayed)[a_,b_], y__] :=
+	With[{zz1=FCLoopIsolate[a,y],zz2=FCLoopIsolate[b,y]}, h[zz1,zz2]];
+
+FCLoopIsolate[x_List, y__] :=
+	FCLoopIsolate[#, y]& /@ x;
+
 
 FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
 	Block[{	res, null1, null2, ex,lmoms,tmp, loopIntHeads, time, optExceptHeads, optHead,

@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for FCLoopCanonicalize		  		*)
@@ -174,6 +174,84 @@ FCL[Pair[LorentzIndex[a_FCGV, D], Momentum[q, D]]],
 FCL[Pair[LorentzIndex[a_FCGV, D], Momentum[q, D]]]}, {FCL[
 	CartesianPair[CartesianIndex[a_FCGV, -1 + D],
 	CartesianMomentum[q, -1 + D]]],
-FCL[Pair[LorentzIndex[a_FCGV, D], Momentum[q, D]]]}}]","True"}
+FCL[Pair[LorentzIndex[a_FCGV, D], Momentum[q, D]]]}}]","True"},
+{"fcstFCLoopCanonicalize-ID17","MatchQ[FCLoopCanonicalize[
+loopInt[Pair[LorentzIndex[mu, D], Momentum[q1, D]] Pair[
+	LorentzIndex[nu, D], Momentum[q1, D]] Pair[LorentzIndex[rho, D],
+	Momentum[q2, D]] Pair[LorentzIndex[si, D],
+	Momentum[q3, D]]], {q1, q2, q3},
+loopInt], {{loopInt[
+	Pair[LorentzIndex[mu, D], Momentum[q1, D]]*
+	Pair[LorentzIndex[nu, D], Momentum[q1, D]]*
+	Pair[LorentzIndex[rho, D], Momentum[q2, D]]*
+	Pair[LorentzIndex[si, D], Momentum[q3, D]]]}, {{LorentzIndex[
+	FCGV[a_], D] -> LorentzIndex[mu, D],
+	LorentzIndex[FCGV[b_], D] -> LorentzIndex[nu, D],
+	LorentzIndex[FCGV[c_], D] -> LorentzIndex[rho, D],
+	LorentzIndex[FCGV[d_], D] -> LorentzIndex[si, D]}}, {loopInt[
+	Pair[LorentzIndex[FCGV[a_], D], Momentum[q1, D]]*
+	Pair[LorentzIndex[FCGV[b_], D], Momentum[q1, D]]*
+	Pair[LorentzIndex[FCGV[c_], D], Momentum[q2, D]]*
+	Pair[LorentzIndex[FCGV[d_], D], Momentum[q3, D]]]}, {loopInt[
+	Pair[LorentzIndex[FCGV[a_], D], Momentum[q1, D]]*
+	Pair[LorentzIndex[FCGV[b_], D], Momentum[q1, D]]*
+	Pair[LorentzIndex[FCGV[c_], D], Momentum[q2, D]]*
+	Pair[LorentzIndex[FCGV[d_], D], Momentum[q3, D]]]}}]","True"},
+{"fcstFCLoopCanonicalize-ID18","MatchQ[FCLoopCanonicalize[-(CartesianPair[
+	CartesianIndex[$AL[$39], -1 + D],
+	CartesianMomentum[p, -1 + D]] FMBra[n1] FMBra[p] FMKet[
+	n1] FMKet[p]*
+	loopIntegral[
+	CartesianPair[CartesianIndex[ciMinus2, -1 + D],
+		CartesianMomentum[q1, -1 + D]]*
+	CartesianPair[CartesianIndex[$AL[$39], -1 + D],
+		CartesianMomentum[q1, -1 + D]]*
+	FeynAmpDenominator[
+		CartesianPropagatorDenominator[CartesianMomentum[q1, -1 + D],
+		0, QGMassV^2 -
+		FeynCalcTIDPrivateholdTemporalPair[
+			holdExplicitLorentzIndex[0],
+			FeynCalcTIDPrivateholdTemporalMomentum[q0]]^2, {1, -1}]]]*
+	r[CartesianIndex[hold[ciMinus2], -1 + D]]), q1,
+loopIntegral], {{loopIntegral[
+	CartesianPair[CartesianIndex[ciMinus2, -1 + D],
+	CartesianMomentum[q1, -1 + D]]*
+	CartesianPair[CartesianIndex[$AL[$39], -1 + D],
+	CartesianMomentum[q1, -1 + D]]*
+	FeynAmpDenominator[
+	CartesianPropagatorDenominator[CartesianMomentum[q1, -1 + D],
+	0, QGMassV^2 -
+		FeynCalcTIDPrivateholdTemporalPair[
+		holdExplicitLorentzIndex[0],
+		FeynCalcTIDPrivateholdTemporalMomentum[
+		q0]]^2, {1, -1}]]]},
+{{CartesianIndex[FCGV[a_], -1 + D] ->
+	CartesianIndex[ciMinus2, -1 + D],
+	CartesianIndex[FCGV[b_], -1 + D] ->
+	CartesianIndex[$AL[$39], -1 + D]}},
+{loopIntegral[
+	CartesianPair[CartesianIndex[FCGV[a_], -1 + D],
+	CartesianMomentum[q1, -1 + D]]*
+	CartesianPair[CartesianIndex[FCGV[b_], -1 + D],
+	CartesianMomentum[q1, -1 + D]]*
+FeynAmpDenominator[
+	CartesianPropagatorDenominator[CartesianMomentum[q1, -1 + D],
+	0, QGMassV^2 -
+		FeynCalcTIDPrivateholdTemporalPair[
+		holdExplicitLorentzIndex[0],
+		FeynCalcTIDPrivateholdTemporalMomentum[
+		q0]]^2, {1, -1}]]]},
+{loopIntegral[
+	CartesianPair[CartesianIndex[FCGV[a_], -1 + D],
+	CartesianMomentum[q1, -1 + D]]*
+	CartesianPair[CartesianIndex[FCGV[b_], -1 + D],
+	CartesianMomentum[q1, -1 + D]]*
+
+	FeynAmpDenominator[
+	CartesianPropagatorDenominator[CartesianMomentum[q1, -1 + D],
+	0, QGMassV^2 -
+		FeynCalcTIDPrivateholdTemporalPair[
+		holdExplicitLorentzIndex[0],
+		FeynCalcTIDPrivateholdTemporalMomentum[q0]]^2, {1, -1}]]]}}]","True"}
 };
 

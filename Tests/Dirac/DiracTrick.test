@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2022 Rolf Mertig
-	Copyright (C) 1997-2022 Frederik Orellana
-	Copyright (C) 2014-2022 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for DiracTrick               *)
@@ -1107,11 +1107,23 @@ Momentum[p1, D], 0, 1] + Spinor[Momentum[p3, D], m, 1].GAD[Lor4].GSD[p3].GAD[Lor
 "FCClearScalarProducts[]; SP[p1, p2] = s2;
 SP[p1, p3] = s3; DiracTrick[
 DiracGamma[Momentum[p2 + p3]] . DiracGamma[Momentum[p1]] .
-DiracGamma[Momentum[p2 + p3]], FCE -> True]", "2*(s2 + s3)*GS[p2 + p3] - GS[p1]*(SP[p2, p2] + 2*SP[p2, p3] + SP[p3, p3])"},
+DiracGamma[Momentum[p2 + p3]], FCE -> True]", "2 (s2 + s3) GS[p2 + p3] +
+GS[p1] (-SP[p2, p2] - 2 SP[p2, p3] - SP[p3, p3])"},
 {"fcstDiracTrickCoreProperties-ID125",
 "FCClearScalarProducts[]; DiracTrick[
 DiracGamma[Momentum[p2 + p3]] . DiracGamma[Momentum[p1]] .
-DiracGamma[Momentum[p2 + p3]], FCE -> True]", "2*GS[p2 + p3]*SP[p1, p2 + p3] - GS[p1]*(SP[p2, p2] + 2*SP[p2, p3] + SP[p3, p3])"}
+DiracGamma[Momentum[p2 + p3]], FCE -> True]", "2 GS[p2 + p3] SP[p1, p2 + p3] +
+GS[p1] (-SP[p2, p2] - 2 SP[p2, p3] - SP[p3, p3])"},
+{"fcstDiracTrickCoreProperties-ID126",
+"FCSetDiracGammaScheme[\"BMHV\"];\n res=DiracTrick[GSD[q] . GSE[a, b, c] . GSD[q], FCE -> True];\n
+FCSetDiracGammaScheme[\"NDR\"];\n res",
+"-GSE[a] . GSE[b] . GSE[c] . GS[q] . GSE[q] -
+GSE[q] . GS[q] . GSE[a] . GSE[b] . GSE[c] -
+GSE[a] . GSE[b] . GSE[c] SP[q, q] +
+2 (GSE[b] . GSE[c] . GSE[q] SPE[a, q] -
+	GSE[a] . GSE[c] . GSE[q] SPE[b, q] +
+	GSE[a] . GSE[b] . GSE[q] SPE[c, q]) -
+GSE[a] . GSE[b] . GSE[c] SPE[q, q]"}
 });
 
 Tests`Dirac`fcstDiracTrick = {
@@ -2149,4 +2161,2264 @@ DCHN[2*GS[q]*SP[p, q] - GS[p]*SP[q, q], i, j]"},
 ,DiracChain\[Rule]False,FCE\[Rule]True]",
 "DCHN[GS[p] . GS[q] . GS[p], i, j] + DCHN[GS[q] . GS[p] . GS[q], \
 i, j]"}
+})
+
+Tests`Dirac`fcstDiracTrickExplicitLorentzIndex =
+({
+{"fcstDiracTrickExplicitLorentzIndex-ID1",
+"DiracTrick[GA[1,1],FCE->True]", "-1"},
+{"fcstDiracTrickExplicitLorentzIndex-ID2",
+"DiracTrick[GA[2,2],FCE->True]", "-1"},
+{"fcstDiracTrickExplicitLorentzIndex-ID3",
+"DiracTrick[GA[3,3],FCE->True]", "-1"},
+{"fcstDiracTrickExplicitLorentzIndex-ID4",
+"DiracTrick[GA[1,2],FCE->True]", "GA[1] . GA[2]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID5",
+"DiracTrick[GA[1,3],FCE->True]", "GA[1] . GA[3]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID6",
+"DiracTrick[GA[2,1],FCE->True]", "-GA[1] . GA[2]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID7",
+"DiracTrick[GA[2,3],FCE->True]", "GA[2] . GA[3]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID8",
+"DiracTrick[GA[3,1],FCE->True]", "-GA[1] . GA[3]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID9",
+"DiracTrick[GA[3,2],FCE->True]", "-GA[2] . GA[3]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID10",
+"DiracTrick[GA[0,1,0,1],FCE->True]", "1"},
+{"fcstDiracTrickExplicitLorentzIndex-ID11",
+"DiracTrick[GA[0,2,0,2],FCE->True]", "1"},
+{"fcstDiracTrickExplicitLorentzIndex-ID12",
+"DiracTrick[GA[0,3,0,3],FCE->True]", "1"},
+{"fcstDiracTrickExplicitLorentzIndex-ID13",
+"DiracTrick[GA[0,1,1,0],FCE->True]", "-1"},
+{"fcstDiracTrickExplicitLorentzIndex-ID14",
+"DiracTrick[GA[0,2,2,0],FCE->True]", "-1"},
+{"fcstDiracTrickExplicitLorentzIndex-ID15",
+"DiracTrick[GA[0,3,3,0],FCE->True]", "-1"},
+{"fcstDiracTrickExplicitLorentzIndex-ID16",
+"DiracTrick[GA[0,1,1,2],FCE->True]", "-TGA[] . GA[2]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID17",
+"DiracTrick[GA[0,2,2,3],FCE->True]", "-TGA[] . GA[3]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID18",
+"DiracTrick[GA[1,3,2,0,1,2],FCE->True]", "-TGA[] . GA[3]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID19",
+"DiracTrick[GA[1,3,2,0,3,1,2,1,2],FCE->True]",
+"TGA[] . GA[1] . GA[2]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID20",
+"DiracTrick[GA[1,mu,1],FCE->True]", "GA[mu] + 2*GA[1]*MT[1, mu]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID21",
+"DiracTrick[GA[1,mu,nu,1],FCE->True]",
+"-GA[mu] . GA[nu] + 2*GA[nu] . GA[1]*MT[1, mu] - 2*GA[mu] . \
+GA[1]*MT[1, nu]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID22",
+"DiracTrick[GA[1,mu,nu,rho,1],FCE->True]",
+"GA[mu] . GA[nu] . GA[rho] + 2*GA[nu] . GA[rho] . GA[1]*MT[1, mu] \
+- 2*GA[mu] . GA[rho] . GA[1]*MT[1, nu] + 2*GA[mu] . GA[nu] . \
+GA[1]*MT[1, rho]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID23",
+"DiracTrick[GA[1,mu,nu,5,rho,1],FCE->True]",
+"GA[mu] . GA[nu] . GA[rho] . GA[5] + 2*GA[nu] . GA[rho] . GA[1] . \
+GA[5]*MT[1, mu] - 2*GA[mu] . GA[rho] . GA[1] . GA[5]*MT[1, nu] + \
+2*GA[mu] . GA[nu] . GA[1] . GA[5]*MT[1, rho]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID24",
+"DiracTrick[GA[1,mu,nu,si,rho,1],FCE->True]",
+"-GA[mu] . GA[nu] . GA[si] . GA[rho] + 2*GA[nu] . GA[si] . GA[rho] \
+. GA[1]*MT[1, mu] - 2*GA[mu] . GA[si] . GA[rho] . GA[1]*MT[1, nu] - \
+2*GA[mu] . GA[nu] . GA[si] . GA[1]*MT[1, rho] + 2*GA[mu] . GA[nu] . \
+GA[rho] . GA[1]*MT[1, si]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID25",
+"DiracTrick[GA[1,mu,nu,si,rho,tau,1],FCE->True]",
+"GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[tau] + 2*GA[nu] . GA[si] \
+. GA[rho] . GA[tau] . GA[1]*MT[1, mu] - 2*GA[mu] . GA[si] . GA[rho] . \
+GA[tau] . GA[1]*MT[1, nu] - 2*GA[mu] . GA[nu] . GA[si] . GA[tau] . \
+GA[1]*MT[1, rho] + 2*GA[mu] . GA[nu] . GA[rho] . GA[tau] . \
+GA[1]*MT[1, si] + 2*GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[1]*MT[1, \
+tau]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID26",
+"DiracTrick[GA[1,mu,nu,si,rho,tau,ka,1],FCE->True]",
+"-GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[tau] . GA[ka] - 2*GA[mu] \
+. GA[nu] . GA[si] . GA[rho] . GA[tau] . GA[1]*MT[1, ka] + 2*GA[nu] . \
+GA[si] . GA[rho] . GA[tau] . GA[ka] . GA[1]*MT[1, mu] - 2*GA[mu] . \
+GA[si] . GA[rho] . GA[tau] . GA[ka] . GA[1]*MT[1, nu] - 2*GA[mu] . \
+GA[nu] . GA[si] . GA[tau] . GA[ka] . GA[1]*MT[1, rho] + 2*GA[mu] . \
+GA[nu] . GA[rho] . GA[tau] . GA[ka] . GA[1]*MT[1, si] + 2*GA[mu] . \
+GA[nu] . GA[si] . GA[rho] . GA[ka] . GA[1]*MT[1, tau]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID27",
+"DiracTrick[GA[3,mu,1],FCE->True]",
+"GA[mu] . GA[1] . GA[3] + 2*GA[1]*MT[3, mu]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID28",
+"DiracTrick[GA[3,mu,nu,1],FCE->True]",
+"-GA[mu] . GA[nu] . GA[1] . GA[3] + 2*GA[nu] . GA[1]*MT[3, mu] - \
+2*GA[mu] . GA[1]*MT[3, nu]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID29",
+"DiracTrick[GA[3,mu,nu,rho,1],FCE->True]",
+"GA[mu] . GA[nu] . GA[rho] . GA[1] . GA[3] + 2*GA[nu] . GA[rho] . \
+GA[1]*MT[3, mu] - 2*GA[mu] . GA[rho] . GA[1]*MT[3, nu] + 2*GA[mu] . \
+GA[nu] . GA[1]*MT[3, rho]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID30",
+"DiracTrick[GA[3,mu,nu,5,rho,1],FCE->True]",
+"GA[mu] . GA[nu] . GA[rho] . GA[1] . GA[3] . GA[5] + 2*GA[nu] . \
+GA[rho] . GA[1] . GA[5]*MT[3, mu] - 2*GA[mu] . GA[rho] . GA[1] . \
+GA[5]*MT[3, nu] + 2*GA[mu] . GA[nu] . GA[1] . GA[5]*MT[3, rho]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID31",
+"DiracTrick[GA[3,mu,nu,si,rho,1],FCE->True]",
+"-GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[1] . GA[3] + 2*GA[nu] . \
+GA[si] . GA[rho] . GA[1]*MT[3, mu] - 2*GA[mu] . GA[si] . GA[rho] . \
+GA[1]*MT[3, nu] - 2*GA[mu] . GA[nu] . GA[si] . GA[1]*MT[3, rho] + \
+2*GA[mu] . GA[nu] . GA[rho] . GA[1]*MT[3, si]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID32",
+"DiracTrick[GA[3,mu,nu,si,rho,tau,1],FCE->True]",
+"GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[tau] . GA[1] . GA[3] + \
+2*GA[nu] . GA[si] . GA[rho] . GA[tau] . GA[1]*MT[3, mu] - 2*GA[mu] . \
+GA[si] . GA[rho] . GA[tau] . GA[1]*MT[3, nu] - 2*GA[mu] . GA[nu] . \
+GA[si] . GA[tau] . GA[1]*MT[3, rho] + 2*GA[mu] . GA[nu] . GA[rho] . \
+GA[tau] . GA[1]*MT[3, si] + 2*GA[mu] . GA[nu] . GA[si] . GA[rho] . \
+GA[1]*MT[3, tau]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID33",
+"DiracTrick[GA[3,mu,nu,si,rho,tau,ka,1],FCE->True]",
+"-GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[tau] . GA[ka] . GA[1] . \
+GA[3] - 2*GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[tau] . GA[1]*MT[3, \
+ka] + 2*GA[nu] . GA[si] . GA[rho] . GA[tau] . GA[ka] . GA[1]*MT[3, \
+mu] - 2*GA[mu] . GA[si] . GA[rho] . GA[tau] . GA[ka] . GA[1]*MT[3, \
+nu] - 2*GA[mu] . GA[nu] . GA[si] . GA[tau] . GA[ka] . GA[1]*MT[3, \
+rho] + 2*GA[mu] . GA[nu] . GA[rho] . GA[tau] . GA[ka] . GA[1]*MT[3, \
+si] + 2*GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[ka] . GA[1]*MT[3, \
+tau]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID34",
+"DiracTrick[GA[2,mu,3],FCE->True]",
+"-GA[mu] . GA[2] . GA[3] + 2*GA[3]*MT[2, mu]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID35",
+"DiracTrick[GA[2,mu,nu,3],FCE->True]",
+"GA[mu] . GA[nu] . GA[2] . GA[3] + 2*GA[nu] . GA[3]*MT[2, mu] - \
+2*GA[mu] . GA[3]*MT[2, nu]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID36",
+"DiracTrick[GA[2,mu,nu,rho,3],FCE->True]",
+"-GA[mu] . GA[nu] . GA[rho] . GA[2] . GA[3] + 2*GA[nu] . GA[rho] . \
+GA[3]*MT[2, mu] - 2*GA[mu] . GA[rho] . GA[3]*MT[2, nu] + 2*GA[mu] . \
+GA[nu] . GA[3]*MT[2, rho]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID37",
+"DiracTrick[GA[2,mu,nu,5,rho,3],FCE->True]",
+"-GA[mu] . GA[nu] . GA[rho] . GA[2] . GA[3] . GA[5] + 2*GA[nu] . \
+GA[rho] . GA[3] . GA[5]*MT[2, mu] - 2*GA[mu] . GA[rho] . GA[3] . \
+GA[5]*MT[2, nu] + 2*GA[mu] . GA[nu] . GA[3] . GA[5]*MT[2, rho]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID38",
+"DiracTrick[GA[2,mu,nu,si,rho,3],FCE->True]",
+"GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[2] . GA[3] + 2*GA[nu] . \
+GA[si] . GA[rho] . GA[3]*MT[2, mu] - 2*GA[mu] . GA[si] . GA[rho] . \
+GA[3]*MT[2, nu] - 2*GA[mu] . GA[nu] . GA[si] . GA[3]*MT[2, rho] + \
+2*GA[mu] . GA[nu] . GA[rho] . GA[3]*MT[2, si]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID39",
+"DiracTrick[GA[2,mu,nu,si,rho,tau,3],FCE->True]",
+"-GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[tau] . GA[2] . GA[3] + \
+2*GA[nu] . GA[si] . GA[rho] . GA[tau] . GA[3]*MT[2, mu] - 2*GA[mu] . \
+GA[si] . GA[rho] . GA[tau] . GA[3]*MT[2, nu] - 2*GA[mu] . GA[nu] . \
+GA[si] . GA[tau] . GA[3]*MT[2, rho] + 2*GA[mu] . GA[nu] . GA[rho] . \
+GA[tau] . GA[3]*MT[2, si] + 2*GA[mu] . GA[nu] . GA[si] . GA[rho] . \
+GA[3]*MT[2, tau]"},
+{"fcstDiracTrickExplicitLorentzIndex-ID40",
+"DiracTrick[GA[2,mu,nu,si,rho,tau,ka,3],FCE->True]",
+"GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[tau] . GA[ka] . GA[2] . \
+GA[3] - 2*GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[tau] . GA[3]*MT[2, \
+ka] + 2*GA[nu] . GA[si] . GA[rho] . GA[tau] . GA[ka] . GA[3]*MT[2, \
+mu] - 2*GA[mu] . GA[si] . GA[rho] . GA[tau] . GA[ka] . GA[3]*MT[2, \
+nu] - 2*GA[mu] . GA[nu] . GA[si] . GA[tau] . GA[ka] . GA[3]*MT[2, \
+rho] + 2*GA[mu] . GA[nu] . GA[rho] . GA[tau] . GA[ka] . GA[3]*MT[2, \
+si] + 2*GA[mu] . GA[nu] . GA[si] . GA[rho] . GA[ka] . GA[3]*MT[2, \
+tau]"}
+});
+
+
+Tests`Dirac`fcstDiracTrickLightCone =
+({
+{"fcstDiracTrickLightCone-ID1", "FCSetDiracGammaScheme[\"NDR\"];
+$FCDefaultLightconeVectorN=n;
+$FCDefaultLightconeVectorNB=nb;
+FCClearScalarProducts[]
+ScalarProduct[n]=0;
+ScalarProduct[nb]=0;
+ScalarProduct[n,nb]=2;
+DiracTrick[GALR[mu].GA[nu1],FCE->True]",
+"GALR[mu, n, nb] . GALR[nu1, n, nb] - (GS[nb] . GALR[mu, n, \
+nb]*FV[n, nu1])/2 - (GS[n] . GALR[mu, n, nb]*FV[nb, nu1])/2"},
+{"fcstDiracTrickLightCone-ID2",
+"DiracTrick[GALR[mu].GA[nu1,mu2],FCE->True]",
+"GALR[mu, n, nb] . GALR[nu1, n, nb] . GALR[mu2, n, nb] + (GS[nb] . \
+GALR[mu, n, nb] . GALR[nu1, n, nb]*FV[n, mu2])/2 + (GS[n] . GALR[mu, \
+n, nb] . GALR[nu1, n, nb]*FV[nb, mu2])/2 - ((GS[n] . GALR[mu, n, nb] \
+. GALR[mu2, n, nb] - (GS[n] . GS[nb] . GALR[mu, n, nb]*FV[n, mu2])/2 \
+- (GS[n] . GS[n] . GALR[mu, n, nb]*FV[nb, mu2])/2)*FV[nb, nu1])/2 - \
+(FV[n, nu1]*(GS[nb] . GALR[mu, n, nb] . GALR[mu2, n, nb] - (GS[nb] . \
+GS[nb] . GALR[mu, n, nb]*FV[n, mu2])/2 - (FV[nb, mu2]*(-GS[n] . \
+GS[nb] . GALR[mu, n, nb] + 4*GALR[mu, n, nb]))/2))/2"},
+{"fcstDiracTrickLightCone-ID3",
+"DiracTrick[GSLR[p].GA[nu1],FCE->True]",
+"GSLR[p, n, nb] . GALR[nu1, n, nb] - (GS[nb] . GSLR[p, n, \
+nb]*FV[n, nu1])/2 - (GS[n] . GSLR[p, n, nb]*FV[nb, nu1])/2"},
+{"fcstDiracTrickLightCone-ID4",
+"DiracTrick[GSLR[p].GA[nu1,mu2],FCE->True]",
+"GSLR[p, n, nb] . GALR[nu1, n, nb] . GALR[mu2, n, nb] + (GS[nb] . \
+GSLR[p, n, nb] . GALR[nu1, n, nb]*FV[n, mu2])/2 + (GS[n] . GSLR[p, n, \
+nb] . GALR[nu1, n, nb]*FV[nb, mu2])/2 - ((GS[n] . GSLR[p, n, nb] . \
+GALR[mu2, n, nb] - (GS[n] . GS[nb] . GSLR[p, n, nb]*FV[n, mu2])/2 - \
+(GS[n] . GS[n] . GSLR[p, n, nb]*FV[nb, mu2])/2)*FV[nb, nu1])/2 - \
+(FV[n, nu1]*(GS[nb] . GSLR[p, n, nb] . GALR[mu2, n, nb] - (GS[nb] . \
+GS[nb] . GSLR[p, n, nb]*FV[n, mu2])/2 - (FV[nb, mu2]*(-GS[n] . GS[nb] \
+. GSLR[p, n, nb] + 4*GSLR[p, n, nb]))/2))/2"},
+{"fcstDiracTrickLightCone-ID5",
+"DiracTrick[GALR[mu].GS[q],FCE->True]",
+"GALR[mu, n, nb] . GSLR[q, n, nb] - (GS[nb] . GALR[mu, n, \
+nb]*SP[n, q])/2 - (GS[n] . GALR[mu, n, nb]*SP[nb, q])/2"},
+{"fcstDiracTrickLightCone-ID6",
+"DiracTrick[GALR[mu].GS[q1,q2],FCE->True]",
+"GALR[mu, n, nb] . GSLR[q1, n, nb] . GSLR[q2, n, nb] + (GS[nb] . \
+GALR[mu, n, nb] . GSLR[q1, n, nb]*SP[n, q2])/2 + (GS[n] . GALR[mu, n, \
+nb] . GSLR[q1, n, nb]*SP[nb, q2])/2 - (SP[nb, q1]*(GS[n] . GALR[mu, \
+n, nb] . GSLR[q2, n, nb] - (GS[n] . GS[nb] . GALR[mu, n, nb]*SP[n, \
+q2])/2 - (GS[n] . GS[n] . GALR[mu, n, nb]*SP[nb, q2])/2))/2 - (SP[n, \
+q1]*(GS[nb] . GALR[mu, n, nb] . GSLR[q2, n, nb] - (GS[nb] . GS[nb] . \
+GALR[mu, n, nb]*SP[n, q2])/2 - ((-GS[n] . GS[nb] . GALR[mu, n, nb] + \
+4*GALR[mu, n, nb])*SP[nb, q2])/2))/2"},
+{"fcstDiracTrickLightCone-ID7",
+"DiracTrick[GSLR[p].GS[q],FCE->True]",
+"GSLR[p, n, nb] . GSLR[q, n, nb] - (GS[nb] . GSLR[p, n, nb]*SP[n, \
+q])/2 - (GS[n] . GSLR[p, n, nb]*SP[nb, q])/2"},
+{"fcstDiracTrickLightCone-ID8",
+"DiracTrick[GSLR[p].GS[q1,q2],FCE->True]",
+"GSLR[p, n, nb] . GSLR[q1, n, nb] . GSLR[q2, n, nb] + (GS[nb] . \
+GSLR[p, n, nb] . GSLR[q1, n, nb]*SP[n, q2])/2 + (GS[n] . GSLR[p, n, \
+nb] . GSLR[q1, n, nb]*SP[nb, q2])/2 - (SP[nb, q1]*(GS[n] . GSLR[p, n, \
+nb] . GSLR[q2, n, nb] - (GS[n] . GS[nb] . GSLR[p, n, nb]*SP[n, q2])/2 \
+- (GS[n] . GS[n] . GSLR[p, n, nb]*SP[nb, q2])/2))/2 - (SP[n, \
+q1]*(GS[nb] . GSLR[p, n, nb] . GSLR[q2, n, nb] - (GS[nb] . GS[nb] . \
+GSLR[p, n, nb]*SP[n, q2])/2 - ((-GS[n] . GS[nb] . GSLR[p, n, nb] + \
+4*GSLR[p, n, nb])*SP[nb, q2])/2))/2"},
+{"fcstDiracTrickLightCone-ID9",
+"DiracTrick[GALRD[mu].GAD[nu1],FCE->True]",
+"GALRD[mu, n, nb] . GALRD[nu1, n, nb] - (GSD[nb] . GALRD[mu, n, \
+nb]*FVD[n, nu1])/2 - (GSD[n] . GALRD[mu, n, nb]*FVD[nb, nu1])/2"},
+{"fcstDiracTrickLightCone-ID10",
+"DiracTrick[GALRD[mu].GAD[nu1,mu2],FCE->True]",
+"GALRD[mu, n, nb] . GALRD[nu1, n, nb] . GALRD[mu2, n, nb] + \
+(GSD[nb] . GALRD[mu, n, nb] . GALRD[nu1, n, nb]*FVD[n, mu2])/2 + \
+(GSD[n] . GALRD[mu, n, nb] . GALRD[nu1, n, nb]*FVD[nb, mu2])/2 - \
+((GSD[n] . GALRD[mu, n, nb] . GALRD[mu2, n, nb] - (GSD[n] . GSD[nb] . \
+GALRD[mu, n, nb]*FVD[n, mu2])/2 - (GSD[n] . GSD[n] . GALRD[mu, n, \
+nb]*FVD[nb, mu2])/2)*FVD[nb, nu1])/2 - (FVD[n, nu1]*(GSD[nb] . \
+GALRD[mu, n, nb] . GALRD[mu2, n, nb] - (GSD[nb] . GSD[nb] . GALRD[mu, \
+n, nb]*FVD[n, mu2])/2 - (FVD[nb, mu2]*(-GSD[n] . GSD[nb] . GALRD[mu, \
+n, nb] + 4*GALRD[mu, n, nb]))/2))/2"},
+{"fcstDiracTrickLightCone-ID11",
+"DiracTrick[GSLRD[p].GAD[nu1],FCE->True]",
+"GSLRD[p, n, nb] . GALRD[nu1, n, nb] - (GSD[nb] . GSLRD[p, n, \
+nb]*FVD[n, nu1])/2 - (GSD[n] . GSLRD[p, n, nb]*FVD[nb, nu1])/2"},
+{"fcstDiracTrickLightCone-ID12",
+"DiracTrick[GSLRD[p].GAD[nu1,mu2],FCE->True]",
+"GSLRD[p, n, nb] . GALRD[nu1, n, nb] . GALRD[mu2, n, nb] + \
+(GSD[nb] . GSLRD[p, n, nb] . GALRD[nu1, n, nb]*FVD[n, mu2])/2 + \
+(GSD[n] . GSLRD[p, n, nb] . GALRD[nu1, n, nb]*FVD[nb, mu2])/2 - \
+((GSD[n] . GSLRD[p, n, nb] . GALRD[mu2, n, nb] - (GSD[n] . GSD[nb] . \
+GSLRD[p, n, nb]*FVD[n, mu2])/2 - (GSD[n] . GSD[n] . GSLRD[p, n, \
+nb]*FVD[nb, mu2])/2)*FVD[nb, nu1])/2 - (FVD[n, nu1]*(GSD[nb] . \
+GSLRD[p, n, nb] . GALRD[mu2, n, nb] - (GSD[nb] . GSD[nb] . GSLRD[p, \
+n, nb]*FVD[n, mu2])/2 - (FVD[nb, mu2]*(-GSD[n] . GSD[nb] . GSLRD[p, \
+n, nb] + 4*GSLRD[p, n, nb]))/2))/2"},
+{"fcstDiracTrickLightCone-ID13",
+"DiracTrick[GALRD[mu].GSD[q],FCE->True]",
+"GALRD[mu, n, nb] . GSLRD[q, n, nb] - (GSD[nb] . GALRD[mu, n, \
+nb]*SPD[n, q])/2 - (GSD[n] . GALRD[mu, n, nb]*SPD[nb, q])/2"},
+{"fcstDiracTrickLightCone-ID14",
+"DiracTrick[GALRD[mu].GSD[q1,q2],FCE->True]",
+"GALRD[mu, n, nb] . GSLRD[q1, n, nb] . GSLRD[q2, n, nb] + (GSD[nb] \
+. GALRD[mu, n, nb] . GSLRD[q1, n, nb]*SPD[n, q2])/2 + (GSD[n] . \
+GALRD[mu, n, nb] . GSLRD[q1, n, nb]*SPD[nb, q2])/2 - (SPD[nb, \
+q1]*(GSD[n] . GALRD[mu, n, nb] . GSLRD[q2, n, nb] - (GSD[n] . GSD[nb] \
+. GALRD[mu, n, nb]*SPD[n, q2])/2 - (GSD[n] . GSD[n] . GALRD[mu, n, \
+nb]*SPD[nb, q2])/2))/2 - (SPD[n, q1]*(GSD[nb] . GALRD[mu, n, nb] . \
+GSLRD[q2, n, nb] - (GSD[nb] . GSD[nb] . GALRD[mu, n, nb]*SPD[n, \
+q2])/2 - ((-GSD[n] . GSD[nb] . GALRD[mu, n, nb] + 4*GALRD[mu, n, \
+nb])*SPD[nb, q2])/2))/2"},
+{"fcstDiracTrickLightCone-ID15",
+"DiracTrick[GSLRD[p].GSD[q],FCE->True]",
+"GSLRD[p, n, nb] . GSLRD[q, n, nb] - (GSD[nb] . GSLRD[p, n, \
+nb]*SPD[n, q])/2 - (GSD[n] . GSLRD[p, n, nb]*SPD[nb, q])/2"},
+{"fcstDiracTrickLightCone-ID16",
+"DiracTrick[GSLRD[p].GSD[q1,q2],FCE->True]",
+"GSLRD[p, n, nb] . GSLRD[q1, n, nb] . GSLRD[q2, n, nb] + (GSD[nb] \
+. GSLRD[p, n, nb] . GSLRD[q1, n, nb]*SPD[n, q2])/2 + (GSD[n] . \
+GSLRD[p, n, nb] . GSLRD[q1, n, nb]*SPD[nb, q2])/2 - (SPD[nb, \
+q1]*(GSD[n] . GSLRD[p, n, nb] . GSLRD[q2, n, nb] - (GSD[n] . GSD[nb] \
+. GSLRD[p, n, nb]*SPD[n, q2])/2 - (GSD[n] . GSD[n] . GSLRD[p, n, \
+nb]*SPD[nb, q2])/2))/2 - (SPD[n, q1]*(GSD[nb] . GSLRD[p, n, nb] . \
+GSLRD[q2, n, nb] - (GSD[nb] . GSD[nb] . GSLRD[p, n, nb]*SPD[n, q2])/2 \
+- ((-GSD[n] . GSD[nb] . GSLRD[p, n, nb] + 4*GSLRD[p, n, nb])*SPD[nb, \
+q2])/2))/2"},
+{"fcstDiracTrickLightCone-ID17",
+"DiracTrick[GALR[mu].GA[5].GA[nu1],FCE->True]",
+"-GALR[mu, n, nb] . GALR[nu1, n, nb] . GA[5] + (GS[nb] . GALR[mu, \
+n, nb] . GA[5]*FV[n, nu1])/2 + (GS[n] . GALR[mu, n, nb] . \
+GA[5]*FV[nb, nu1])/2"},
+{"fcstDiracTrickLightCone-ID18",
+"DiracTrick[GALR[mu].GA[5].GA[nu1,mu2],FCE->True]",
+"GALR[mu, n, nb] . GALR[nu1, n, nb] . GALR[mu2, n, nb] . GA[5] + \
+(GS[nb] . GALR[mu, n, nb] . GALR[nu1, n, nb] . GA[5]*FV[n, mu2])/2 + \
+(GS[n] . GALR[mu, n, nb] . GALR[nu1, n, nb] . GA[5]*FV[nb, mu2])/2 - \
+(FV[n, nu1]*(GS[nb] . GALR[mu, n, nb] . GALR[mu2, n, nb] . GA[5] - \
+(GS[nb] . GS[nb] . GALR[mu, n, nb] . GA[5]*FV[n, mu2])/2 - \
+((4*GALR[mu, n, nb] . GA[5] - GS[n] . GS[nb] . GALR[mu, n, nb] . \
+GA[5])*FV[nb, mu2])/2))/2 - ((GS[n] . GALR[mu, n, nb] . GALR[mu2, n, \
+nb] . GA[5] - (GS[n] . GS[nb] . GALR[mu, n, nb] . GA[5]*FV[n, mu2])/2 \
+- (GS[n] . GS[n] . GALR[mu, n, nb] . GA[5]*FV[nb, mu2])/2)*FV[nb, \
+nu1])/2"},
+{"fcstDiracTrickLightCone-ID19",
+"DiracTrick[GSLR[p].GA[5].GA[nu1],FCE->True]",
+"-GSLR[p, n, nb] . GALR[nu1, n, nb] . GA[5] + (GS[nb] . GSLR[p, n, \
+nb] . GA[5]*FV[n, nu1])/2 + (GS[n] . GSLR[p, n, nb] . GA[5]*FV[nb, \
+nu1])/2"},
+{"fcstDiracTrickLightCone-ID20",
+"DiracTrick[GSLR[p].GA[5].GA[nu1,mu2],FCE->True]",
+"GSLR[p, n, nb] . GALR[nu1, n, nb] . GALR[mu2, n, nb] . GA[5] + \
+(GS[nb] . GSLR[p, n, nb] . GALR[nu1, n, nb] . GA[5]*FV[n, mu2])/2 + \
+(GS[n] . GSLR[p, n, nb] . GALR[nu1, n, nb] . GA[5]*FV[nb, mu2])/2 - \
+(FV[n, nu1]*(GS[nb] . GSLR[p, n, nb] . GALR[mu2, n, nb] . GA[5] - \
+(GS[nb] . GS[nb] . GSLR[p, n, nb] . GA[5]*FV[n, mu2])/2 - ((4*GSLR[p, \
+n, nb] . GA[5] - GS[n] . GS[nb] . GSLR[p, n, nb] . GA[5])*FV[nb, \
+mu2])/2))/2 - ((GS[n] . GSLR[p, n, nb] . GALR[mu2, n, nb] . GA[5] - \
+(GS[n] . GS[nb] . GSLR[p, n, nb] . GA[5]*FV[n, mu2])/2 - (GS[n] . \
+GS[n] . GSLR[p, n, nb] . GA[5]*FV[nb, mu2])/2)*FV[nb, nu1])/2"},
+{"fcstDiracTrickLightCone-ID21",
+"DiracTrick[GALR[mu].GA[5].GS[q],FCE->True]",
+"-GALR[mu, n, nb] . GSLR[q, n, nb] . GA[5] + (GS[nb] . GALR[mu, n, \
+nb] . GA[5]*SP[n, q])/2 + (GS[n] . GALR[mu, n, nb] . GA[5]*SP[nb, \
+q])/2"},
+{"fcstDiracTrickLightCone-ID22",
+"DiracTrick[GALR[mu].GA[5].GS[q1,q2],FCE->True]",
+"GALR[mu, n, nb] . GSLR[q1, n, nb] . GSLR[q2, n, nb] . GA[5] + \
+(GS[nb] . GALR[mu, n, nb] . GSLR[q1, n, nb] . GA[5]*SP[n, q2])/2 + \
+(GS[n] . GALR[mu, n, nb] . GSLR[q1, n, nb] . GA[5]*SP[nb, q2])/2 - \
+(SP[nb, q1]*(GS[n] . GALR[mu, n, nb] . GSLR[q2, n, nb] . GA[5] - \
+(GS[n] . GS[nb] . GALR[mu, n, nb] . GA[5]*SP[n, q2])/2 - (GS[n] . \
+GS[n] . GALR[mu, n, nb] . GA[5]*SP[nb, q2])/2))/2 - (SP[n, \
+q1]*(GS[nb] . GALR[mu, n, nb] . GSLR[q2, n, nb] . GA[5] - (GS[nb] . \
+GS[nb] . GALR[mu, n, nb] . GA[5]*SP[n, q2])/2 - ((4*GALR[mu, n, nb] . \
+GA[5] - GS[n] . GS[nb] . GALR[mu, n, nb] . GA[5])*SP[nb, \
+q2])/2))/2"},
+{"fcstDiracTrickLightCone-ID23",
+"DiracTrick[GSLR[p].GA[5].GS[q],FCE->True]",
+"-GSLR[p, n, nb] . GSLR[q, n, nb] . GA[5] + (GS[nb] . GSLR[p, n, \
+nb] . GA[5]*SP[n, q])/2 + (GS[n] . GSLR[p, n, nb] . GA[5]*SP[nb, \
+q])/2"},
+{"fcstDiracTrickLightCone-ID24",
+"DiracTrick[GSLR[p].GA[5].GS[q1,q2],FCE->True]",
+"GSLR[p, n, nb] . GSLR[q1, n, nb] . GSLR[q2, n, nb] . GA[5] + \
+(GS[nb] . GSLR[p, n, nb] . GSLR[q1, n, nb] . GA[5]*SP[n, q2])/2 + \
+(GS[n] . GSLR[p, n, nb] . GSLR[q1, n, nb] . GA[5]*SP[nb, q2])/2 - \
+(SP[nb, q1]*(GS[n] . GSLR[p, n, nb] . GSLR[q2, n, nb] . GA[5] - \
+(GS[n] . GS[nb] . GSLR[p, n, nb] . GA[5]*SP[n, q2])/2 - (GS[n] . \
+GS[n] . GSLR[p, n, nb] . GA[5]*SP[nb, q2])/2))/2 - (SP[n, q1]*(GS[nb] \
+. GSLR[p, n, nb] . GSLR[q2, n, nb] . GA[5] - (GS[nb] . GS[nb] . \
+GSLR[p, n, nb] . GA[5]*SP[n, q2])/2 - ((4*GSLR[p, n, nb] . GA[5] - \
+GS[n] . GS[nb] . GSLR[p, n, nb] . GA[5])*SP[nb, q2])/2))/2"},
+{"fcstDiracTrickLightCone-ID25",
+"DiracTrick[GALRD[mu].GA[5].GAD[nu1],FCE->True]",
+"-GALRD[mu, n, nb] . GALRD[nu1, n, nb] . GA[5] + (GSD[nb] . \
+GALRD[mu, n, nb] . GA[5]*FVD[n, nu1])/2 + (GSD[n] . GALRD[mu, n, nb] \
+. GA[5]*FVD[nb, nu1])/2"},
+{"fcstDiracTrickLightCone-ID26",
+"DiracTrick[GALRD[mu].GA[5].GAD[nu1,mu2],FCE->True]",
+"GALRD[mu, n, nb] . GALRD[nu1, n, nb] . GALRD[mu2, n, nb] . GA[5] \
++ (GSD[nb] . GALRD[mu, n, nb] . GALRD[nu1, n, nb] . GA[5]*FVD[n, \
+mu2])/2 + (GSD[n] . GALRD[mu, n, nb] . GALRD[nu1, n, nb] . \
+GA[5]*FVD[nb, mu2])/2 - (FVD[n, nu1]*(GSD[nb] . GALRD[mu, n, nb] . \
+GALRD[mu2, n, nb] . GA[5] - (GSD[nb] . GSD[nb] . GALRD[mu, n, nb] . \
+GA[5]*FVD[n, mu2])/2 - ((4*GALRD[mu, n, nb] . GA[5] - GSD[n] . \
+GSD[nb] . GALRD[mu, n, nb] . GA[5])*FVD[nb, mu2])/2))/2 - ((GSD[n] . \
+GALRD[mu, n, nb] . GALRD[mu2, n, nb] . GA[5] - (GSD[n] . GSD[nb] . \
+GALRD[mu, n, nb] . GA[5]*FVD[n, mu2])/2 - (GSD[n] . GSD[n] . \
+GALRD[mu, n, nb] . GA[5]*FVD[nb, mu2])/2)*FVD[nb, nu1])/2"},
+{"fcstDiracTrickLightCone-ID27",
+"DiracTrick[GSLRD[p].GA[5].GAD[nu1],FCE->True]",
+"-GSLRD[p, n, nb] . GALRD[nu1, n, nb] . GA[5] + (GSD[nb] . \
+GSLRD[p, n, nb] . GA[5]*FVD[n, nu1])/2 + (GSD[n] . GSLRD[p, n, nb] . \
+GA[5]*FVD[nb, nu1])/2"},
+{"fcstDiracTrickLightCone-ID28",
+"DiracTrick[GSLRD[p].GA[5].GAD[nu1,mu2],FCE->True]",
+"GSLRD[p, n, nb] . GALRD[nu1, n, nb] . GALRD[mu2, n, nb] . GA[5] + \
+(GSD[nb] . GSLRD[p, n, nb] . GALRD[nu1, n, nb] . GA[5]*FVD[n, mu2])/2 \
++ (GSD[n] . GSLRD[p, n, nb] . GALRD[nu1, n, nb] . GA[5]*FVD[nb, \
+mu2])/2 - (FVD[n, nu1]*(GSD[nb] . GSLRD[p, n, nb] . GALRD[mu2, n, nb] \
+. GA[5] - (GSD[nb] . GSD[nb] . GSLRD[p, n, nb] . GA[5]*FVD[n, mu2])/2 \
+- ((4*GSLRD[p, n, nb] . GA[5] - GSD[n] . GSD[nb] . GSLRD[p, n, nb] . \
+GA[5])*FVD[nb, mu2])/2))/2 - ((GSD[n] . GSLRD[p, n, nb] . GALRD[mu2, \
+n, nb] . GA[5] - (GSD[n] . GSD[nb] . GSLRD[p, n, nb] . GA[5]*FVD[n, \
+mu2])/2 - (GSD[n] . GSD[n] . GSLRD[p, n, nb] . GA[5]*FVD[nb, \
+mu2])/2)*FVD[nb, nu1])/2"},
+{"fcstDiracTrickLightCone-ID29",
+"DiracTrick[GALRD[mu].GA[5].GSD[q],FCE->True]",
+"-GALRD[mu, n, nb] . GSLRD[q, n, nb] . GA[5] + (GSD[nb] . \
+GALRD[mu, n, nb] . GA[5]*SPD[n, q])/2 + (GSD[n] . GALRD[mu, n, nb] . \
+GA[5]*SPD[nb, q])/2"},
+{"fcstDiracTrickLightCone-ID30",
+"DiracTrick[GALRD[mu].GA[5].GSD[q1,q2],FCE->True]",
+"GALRD[mu, n, nb] . GSLRD[q1, n, nb] . GSLRD[q2, n, nb] . GA[5] + \
+(GSD[nb] . GALRD[mu, n, nb] . GSLRD[q1, n, nb] . GA[5]*SPD[n, q2])/2 \
++ (GSD[n] . GALRD[mu, n, nb] . GSLRD[q1, n, nb] . GA[5]*SPD[nb, \
+q2])/2 - (SPD[nb, q1]*(GSD[n] . GALRD[mu, n, nb] . GSLRD[q2, n, nb] . \
+GA[5] - (GSD[n] . GSD[nb] . GALRD[mu, n, nb] . GA[5]*SPD[n, q2])/2 - \
+(GSD[n] . GSD[n] . GALRD[mu, n, nb] . GA[5]*SPD[nb, q2])/2))/2 - \
+(SPD[n, q1]*(GSD[nb] . GALRD[mu, n, nb] . GSLRD[q2, n, nb] . GA[5] - \
+(GSD[nb] . GSD[nb] . GALRD[mu, n, nb] . GA[5]*SPD[n, q2])/2 - \
+((4*GALRD[mu, n, nb] . GA[5] - GSD[n] . GSD[nb] . GALRD[mu, n, nb] . \
+GA[5])*SPD[nb, q2])/2))/2"},
+{"fcstDiracTrickLightCone-ID31",
+"DiracTrick[GSLRD[p].GA[5].GSD[q],FCE->True]",
+"-GSLRD[p, n, nb] . GSLRD[q, n, nb] . GA[5] + (GSD[nb] . GSLRD[p, \
+n, nb] . GA[5]*SPD[n, q])/2 + (GSD[n] . GSLRD[p, n, nb] . \
+GA[5]*SPD[nb, q])/2"},
+{"fcstDiracTrickLightCone-ID32",
+"DiracTrick[GSLRD[p].GA[5].GSD[q1,q2],FCE->True]",
+"GSLRD[p, n, nb] . GSLRD[q1, n, nb] . GSLRD[q2, n, nb] . GA[5] + \
+(GSD[nb] . GSLRD[p, n, nb] . GSLRD[q1, n, nb] . GA[5]*SPD[n, q2])/2 + \
+(GSD[n] . GSLRD[p, n, nb] . GSLRD[q1, n, nb] . GA[5]*SPD[nb, q2])/2 - \
+(SPD[nb, q1]*(GSD[n] . GSLRD[p, n, nb] . GSLRD[q2, n, nb] . GA[5] - \
+(GSD[n] . GSD[nb] . GSLRD[p, n, nb] . GA[5]*SPD[n, q2])/2 - (GSD[n] . \
+GSD[n] . GSLRD[p, n, nb] . GA[5]*SPD[nb, q2])/2))/2 - (SPD[n, \
+q1]*(GSD[nb] . GSLRD[p, n, nb] . GSLRD[q2, n, nb] . GA[5] - (GSD[nb] \
+. GSD[nb] . GSLRD[p, n, nb] . GA[5]*SPD[n, q2])/2 - ((4*GSLRD[p, n, \
+nb] . GA[5] - GSD[n] . GSD[nb] . GSLRD[p, n, nb] . GA[5])*SPD[nb, \
+q2])/2))/2"},
+{"fcstDiracTrickLightCone-ID33",
+"DiracTrick[GALR[mu].GALR[mu],FCE->True]", "2"},
+{"fcstDiracTrickLightCone-ID34",
+"DiracTrick[GALR[mu].GALR[{mu1}].GALR[mu],FCE->True]", "0"},
+{"fcstDiracTrickLightCone-ID35",
+"DiracTrick[GALR[mu].GALR[{mu1,mu2}].GALR[mu],FCE->True]",
+"-2*GALR[mu1, n, nb] . GALR[mu2, n, nb] + 4*MTLR[mu1, mu2, n, nb]"},
+{"fcstDiracTrickLightCone-ID36",
+"DiracTrick[GALR[mu].GALR[{mu1,mu2,mu3}].GALR[mu],FCE->True]",
+"4*GALR[mu1, n, nb] . GALR[mu2, n, nb] . GALR[mu3, n, nb] + \
+4*(-(GALR[mu3, n, nb]*MTLR[mu1, mu2, n, nb]) + GALR[mu2, n, \
+nb]*MTLR[mu1, mu3, n, nb] - GALR[mu1, n, nb]*MTLR[mu2, mu3, n, \
+nb])"},
+{"fcstDiracTrickLightCone-ID37",
+"DiracTrick[GALR[mu].GALR[{mu1,mu2,mu3,mu4}].GALR[mu],FCE->True]",
+"-6*GALR[mu1, n, nb] . GALR[mu2, n, nb] . GALR[mu3, n, nb] . \
+GALR[mu4, n, nb] - 4*(-(GALR[mu3, n, nb] . GALR[mu4, n, nb]*MTLR[mu1, \
+mu2, n, nb]) + GALR[mu2, n, nb] . GALR[mu4, n, nb]*MTLR[mu1, mu3, n, \
+nb] - GALR[mu2, n, nb] . GALR[mu3, n, nb]*MTLR[mu1, mu4, n, nb] - \
+GALR[mu1, n, nb] . GALR[mu4, n, nb]*MTLR[mu2, mu3, n, nb] + GALR[mu1, \
+n, nb] . GALR[mu3, n, nb]*MTLR[mu2, mu4, n, nb] - GALR[mu1, n, nb] . \
+GALR[mu2, n, nb]*MTLR[mu3, mu4, n, nb])"},
+{"fcstDiracTrickLightCone-ID38",
+"DiracTrick[GALR[mu].GALR[{mu1,mu2,mu3,mu4,mu5}].GALR[mu],\
+FCE->True]",
+"8*GALR[mu1, n, nb] . GALR[mu2, n, nb] . GALR[mu3, n, nb] . \
+GALR[mu4, n, nb] . GALR[mu5, n, nb] + 4*(-(GALR[mu3, n, nb] . \
+GALR[mu4, n, nb] . GALR[mu5, n, nb]*MTLR[mu1, mu2, n, nb]) + \
+GALR[mu2, n, nb] . GALR[mu4, n, nb] . GALR[mu5, n, nb]*MTLR[mu1, mu3, \
+n, nb] - GALR[mu2, n, nb] . GALR[mu3, n, nb] . GALR[mu5, n, \
+nb]*MTLR[mu1, mu4, n, nb] + GALR[mu2, n, nb] . GALR[mu3, n, nb] . \
+GALR[mu4, n, nb]*MTLR[mu1, mu5, n, nb] - GALR[mu1, n, nb] . GALR[mu4, \
+n, nb] . GALR[mu5, n, nb]*MTLR[mu2, mu3, n, nb] + GALR[mu1, n, nb] . \
+GALR[mu3, n, nb] . GALR[mu5, n, nb]*MTLR[mu2, mu4, n, nb] - GALR[mu1, \
+n, nb] . GALR[mu3, n, nb] . GALR[mu4, n, nb]*MTLR[mu2, mu5, n, nb] - \
+GALR[mu1, n, nb] . GALR[mu2, n, nb] . GALR[mu5, n, nb]*MTLR[mu3, mu4, \
+n, nb] + GALR[mu1, n, nb] . GALR[mu2, n, nb] . GALR[mu4, n, \
+nb]*MTLR[mu3, mu5, n, nb] - GALR[mu1, n, nb] . GALR[mu2, n, nb] . \
+GALR[mu3, n, nb]*MTLR[mu4, mu5, n, nb])"},
+{"fcstDiracTrickLightCone-ID39",
+"DiracTrick[GALR[mu].GA[mu1].GALR[mu],FCE->True]",
+"-(FV[nb, mu1]*GS[n]) - FV[n, mu1]*GS[nb]"},
+{"fcstDiracTrickLightCone-ID40",
+"DiracTrick[GALR[mu].GA[mu1,mu2,mu3].GALR[mu],FCE->True]",
+"GALR[mu, n, nb] . GALR[mu1, n, nb] . GALR[mu2, n, nb] . GALR[mu3, \
+n, nb] . GALR[mu, n, nb] - (GS[nb] . GALR[mu, n, nb] . GALR[mu1, n, \
+nb] . GALR[mu2, n, nb] . GALR[mu, n, nb]*FV[n, mu3])/2 - (GS[n] . \
+GALR[mu, n, nb] . GALR[mu1, n, nb] . GALR[mu2, n, nb] . GALR[mu, n, \
+nb]*FV[nb, mu3])/2 - (FV[nb, mu2]*(-GS[n] . GALR[mu, n, nb] . \
+GALR[mu1, n, nb] . GALR[mu3, n, nb] . GALR[mu, n, nb] - (GS[n] . \
+GS[nb] . GALR[mu, n, nb] . GALR[mu1, n, nb] . GALR[mu, n, nb]*FV[n, \
+mu3])/2 - (GS[n] . GS[n] . GALR[mu, n, nb] . GALR[mu1, n, nb] . \
+GALR[mu, n, nb]*FV[nb, mu3])/2))/2 - (FV[n, mu2]*(-GS[nb] . GALR[mu, \
+n, nb] . GALR[mu1, n, nb] . GALR[mu3, n, nb] . GALR[mu, n, nb] - \
+(GS[nb] . GS[nb] . GALR[mu, n, nb] . GALR[mu1, n, nb] . GALR[mu, n, \
+nb]*FV[n, mu3])/2 + ((-4*GALR[mu, n, nb] . GALR[mu1, n, nb] . \
+GALR[mu, n, nb] + GS[n] . GS[nb] . GALR[mu, n, nb] . GALR[mu1, n, nb] \
+. GALR[mu, n, nb])*FV[nb, mu3])/2))/2 - (FV[nb, mu1]*(GS[n] . \
+GALR[mu, n, nb] . GALR[mu2, n, nb] . GALR[mu3, n, nb] . GALR[mu, n, \
+nb] + (GS[n] . GS[nb] . GALR[mu, n, nb] . GALR[mu2, n, nb] . GALR[mu, \
+n, nb]*FV[n, mu3])/2 + (GS[n] . GS[n] . GALR[mu, n, nb] . GALR[mu2, \
+n, nb] . GALR[mu, n, nb]*FV[nb, mu3])/2 + 2*FV[n, mu2]*FV[nb, \
+mu3]*GS[n]))/2 - (FV[n, mu1]*(GS[nb] . GALR[mu, n, nb] . GALR[mu2, n, \
+nb] . GALR[mu3, n, nb] . GALR[mu, n, nb] + (GS[nb] . GS[nb] . \
+GALR[mu, n, nb] . GALR[mu2, n, nb] . GALR[mu, n, nb]*FV[n, mu3])/2 - \
+((-4*GALR[mu, n, nb] . GALR[mu2, n, nb] . GALR[mu, n, nb] + GS[n] . \
+GS[nb] . GALR[mu, n, nb] . GALR[mu2, n, nb] . GALR[mu, n, nb])*FV[nb, \
+mu3])/2 + 2*FV[n, mu3]*FV[nb, mu2]*GS[nb]))/2"},
+{"fcstDiracTrickLightCone-ID41",
+"DiracTrick[GALR[mu].GS[p1].GALR[mu],FCE->True]",
+"-(GS[nb]*SP[n, p1]) - GS[n]*SP[nb, p1]"},
+{"fcstDiracTrickLightCone-ID42",
+"DiracTrick[GALR[mu].GS[p1,p2].GALR[mu],FCE->True]",
+"GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . GALR[mu, n, \
+nb] + (GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] . GALR[mu, n, \
+nb]*SP[n, p2])/2 + (GS[n] . GS[nb]*SP[n, p2]*SP[nb, p1])/2 + (GS[n] . \
+GALR[mu, n, nb] . GSLR[p1, n, nb] . GALR[mu, n, nb]*SP[nb, p2])/2 + \
+((4 - GS[n] . GS[nb])*SP[n, p1]*SP[nb, p2])/2"},
+{"fcstDiracTrickLightCone-ID43",
+"DiracTrick[GALR[mu].GS[p1,p2,p3].GALR[mu],FCE->True]",
+"GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, \
+nb] . GALR[mu, n, nb] - (GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] . \
+GSLR[p2, n, nb] . GALR[mu, n, nb]*SP[n, p3])/2 - (GS[n] . GALR[mu, n, \
+nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . GALR[mu, n, nb]*SP[nb, \
+p3])/2 - (SP[nb, p2]*(-GS[n] . GALR[mu, n, nb] . GSLR[p1, n, nb] . \
+GSLR[p3, n, nb] . GALR[mu, n, nb] - (GS[n] . GS[nb] . GALR[mu, n, nb] \
+. GSLR[p1, n, nb] . GALR[mu, n, nb]*SP[n, p3])/2 - (GS[n] . GS[n] . \
+GALR[mu, n, nb] . GSLR[p1, n, nb] . GALR[mu, n, nb]*SP[nb, p3])/2))/2 \
+- (SP[n, p2]*(-GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p3, \
+n, nb] . GALR[mu, n, nb] - (GS[nb] . GS[nb] . GALR[mu, n, nb] . \
+GSLR[p1, n, nb] . GALR[mu, n, nb]*SP[n, p3])/2 + ((-4*GALR[mu, n, nb] \
+. GSLR[p1, n, nb] . GALR[mu, n, nb] + GS[n] . GS[nb] . GALR[mu, n, \
+nb] . GSLR[p1, n, nb] . GALR[mu, n, nb])*SP[nb, p3])/2))/2 - (SP[n, \
+p1]*(GS[nb] . GALR[mu, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, nb] . \
+GALR[mu, n, nb] + (GS[nb] . GS[nb] . GALR[mu, n, nb] . GSLR[p2, n, \
+nb] . GALR[mu, n, nb]*SP[n, p3])/2 + 2*GS[nb]*SP[n, p3]*SP[nb, p2] - \
+((-4*GALR[mu, n, nb] . GSLR[p2, n, nb] . GALR[mu, n, nb] + GS[n] . \
+GS[nb] . GALR[mu, n, nb] . GSLR[p2, n, nb] . GALR[mu, n, nb])*SP[nb, \
+p3])/2))/2 - (SP[nb, p1]*(GS[n] . GALR[mu, n, nb] . GSLR[p2, n, nb] . \
+GSLR[p3, n, nb] . GALR[mu, n, nb] + (GS[n] . GS[nb] . GALR[mu, n, nb] \
+. GSLR[p2, n, nb] . GALR[mu, n, nb]*SP[n, p3])/2 + (GS[n] . GS[n] . \
+GALR[mu, n, nb] . GSLR[p2, n, nb] . GALR[mu, n, nb]*SP[nb, p3])/2 + \
+2*GS[n]*SP[n, p2]*SP[nb, p3]))/2"},
+{"fcstDiracTrickLightCone-ID44",
+"DiracTrick[GALR[mu].GS[p1,p2,p3,p4].GALR[mu],FCE->True]",
+"GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, \
+nb] . GSLR[p4, n, nb] . GALR[mu, n, nb] + (GS[nb] . GALR[mu, n, nb] . \
+GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, nb] . GALR[mu, n, \
+nb]*SP[n, p4])/2 + (GS[n] . GALR[mu, n, nb] . GSLR[p1, n, nb] . \
+GSLR[p2, n, nb] . GSLR[p3, n, nb] . GALR[mu, n, nb]*SP[nb, p4])/2 - \
+(SP[nb, p3]*(GS[n] . GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, \
+nb] . GSLR[p4, n, nb] . GALR[mu, n, nb] - (GS[n] . GS[nb] . GALR[mu, \
+n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . GALR[mu, n, nb]*SP[n, \
+p4])/2 - (GS[n] . GS[n] . GALR[mu, n, nb] . GSLR[p1, n, nb] . \
+GSLR[p2, n, nb] . GALR[mu, n, nb]*SP[nb, p4])/2))/2 - (SP[n, \
+p3]*(GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . \
+GSLR[p4, n, nb] . GALR[mu, n, nb] - (GS[nb] . GS[nb] . GALR[mu, n, \
+nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . GALR[mu, n, nb]*SP[n, \
+p4])/2 - ((4*GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . \
+GALR[mu, n, nb] - GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] \
+. GSLR[p2, n, nb] . GALR[mu, n, nb])*SP[nb, p4])/2))/2 - (SP[nb, \
+p2]*(-GS[n] . GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p3, n, nb] . \
+GSLR[p4, n, nb] . GALR[mu, n, nb] + (GS[n] . GS[nb] . GALR[mu, n, nb] \
+. GSLR[p1, n, nb] . GSLR[p3, n, nb] . GALR[mu, n, nb]*SP[n, p4])/2 + \
+(GS[n] . GS[n] . GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p3, n, nb] \
+. GALR[mu, n, nb]*SP[nb, p4])/2 + (SP[nb, p3]*(-GS[n] . GS[n] . \
+GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p4, n, nb] . GALR[mu, n, nb] \
+- (GS[n] . GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] . \
+GALR[mu, n, nb]*SP[n, p4])/2 - (GS[n] . GS[n] . GS[n] . GALR[mu, n, \
+nb] . GSLR[p1, n, nb] . GALR[mu, n, nb]*SP[nb, p4])/2))/2 + (SP[n, \
+p3]*(-GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p4, \
+n, nb] . GALR[mu, n, nb] - (GS[n] . GS[nb] . GS[nb] . GALR[mu, n, nb] \
+. GSLR[p1, n, nb] . GALR[mu, n, nb]*SP[n, p4])/2 + ((-4*GS[n] . \
+GALR[mu, n, nb] . GSLR[p1, n, nb] . GALR[mu, n, nb] + GS[n] . GS[n] . \
+GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] . GALR[mu, n, nb])*SP[nb, \
+p4])/2))/2))/2 - (SP[nb, p1]*(GS[n] . GALR[mu, n, nb] . GSLR[p2, n, \
+nb] . GSLR[p3, n, nb] . GSLR[p4, n, nb] . GALR[mu, n, nb] - (GS[n] . \
+GS[nb] . GALR[mu, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, nb] . \
+GALR[mu, n, nb]*SP[n, p4])/2 - (GS[n] . GS[n] . GALR[mu, n, nb] . \
+GSLR[p2, n, nb] . GSLR[p3, n, nb] . GALR[mu, n, nb]*SP[nb, p4])/2 - \
+(SP[nb, p3]*(-GS[n] . GS[n] . GALR[mu, n, nb] . GSLR[p2, n, nb] . \
+GSLR[p4, n, nb] . GALR[mu, n, nb] - (GS[n] . GS[n] . GS[nb] . \
+GALR[mu, n, nb] . GSLR[p2, n, nb] . GALR[mu, n, nb]*SP[n, p4])/2 - \
+(GS[n] . GS[n] . GS[n] . GALR[mu, n, nb] . GSLR[p2, n, nb] . GALR[mu, \
+n, nb]*SP[nb, p4])/2))/2 - (SP[n, p3]*(-GS[n] . GS[nb] . GALR[mu, n, \
+nb] . GSLR[p2, n, nb] . GSLR[p4, n, nb] . GALR[mu, n, nb] - (GS[n] . \
+GS[nb] . GS[nb] . GALR[mu, n, nb] . GSLR[p2, n, nb] . GALR[mu, n, \
+nb]*SP[n, p4])/2 + ((-4*GS[n] . GALR[mu, n, nb] . GSLR[p2, n, nb] . \
+GALR[mu, n, nb] + GS[n] . GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p2, \
+n, nb] . GALR[mu, n, nb])*SP[nb, p4])/2))/2 - (SP[n, p2]*(GS[n] . \
+GS[nb] . GALR[mu, n, nb] . GSLR[p3, n, nb] . GSLR[p4, n, nb] . \
+GALR[mu, n, nb] + (GS[n] . GS[nb] . GS[nb] . GALR[mu, n, nb] . \
+GSLR[p3, n, nb] . GALR[mu, n, nb]*SP[n, p4])/2 + 2*GS[n] . \
+GS[nb]*SP[n, p4]*SP[nb, p3] - ((-4*GS[n] . GALR[mu, n, nb] . GSLR[p3, \
+n, nb] . GALR[mu, n, nb] + GS[n] . GS[n] . GS[nb] . GALR[mu, n, nb] . \
+GSLR[p3, n, nb] . GALR[mu, n, nb])*SP[nb, p4])/2))/2))/2 - (SP[n, \
+p2]*(-GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p3, n, nb] . \
+GSLR[p4, n, nb] . GALR[mu, n, nb] + (GS[nb] . GS[nb] . GALR[mu, n, \
+nb] . GSLR[p1, n, nb] . GSLR[p3, n, nb] . GALR[mu, n, nb]*SP[n, \
+p4])/2 + ((4*GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p3, n, nb] . \
+GALR[mu, n, nb] - GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] \
+. GSLR[p3, n, nb] . GALR[mu, n, nb])*SP[nb, p4])/2 + (SP[nb, \
+p3]*(-4*GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p4, n, nb] . \
+GALR[mu, n, nb] + GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] \
+. GSLR[p4, n, nb] . GALR[mu, n, nb] + ((-4*GS[nb] . GALR[mu, n, nb] . \
+GSLR[p1, n, nb] . GALR[mu, n, nb] + GS[n] . GS[nb] . GS[nb] . \
+GALR[mu, n, nb] . GSLR[p1, n, nb] . GALR[mu, n, nb])*SP[n, p4])/2 - \
+(GS[n] . GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] . \
+GALR[mu, n, nb]*SP[nb, p4])/2))/2 + (SP[n, p3]*(-GS[nb] . GS[nb] . \
+GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p4, n, nb] . GALR[mu, n, nb] \
+- (GS[nb] . GS[nb] . GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] . \
+GALR[mu, n, nb]*SP[n, p4])/2 - (GS[n] . GS[nb] . GS[nb] . GALR[mu, n, \
+nb] . GSLR[p1, n, nb] . GALR[mu, n, nb]*SP[nb, p4])/2))/2))/2 - \
+(SP[n, p1]*(GS[nb] . GALR[mu, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, \
+nb] . GSLR[p4, n, nb] . GALR[mu, n, nb] - (GS[nb] . GS[nb] . GALR[mu, \
+n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, nb] . GALR[mu, n, nb]*SP[n, \
+p4])/2 - ((4*GALR[mu, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, nb] . \
+GALR[mu, n, nb] - GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p2, n, nb] \
+. GSLR[p3, n, nb] . GALR[mu, n, nb])*SP[nb, p4])/2 - (SP[nb, \
+p3]*(-4*GALR[mu, n, nb] . GSLR[p2, n, nb] . GSLR[p4, n, nb] . \
+GALR[mu, n, nb] + GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p2, n, nb] \
+. GSLR[p4, n, nb] . GALR[mu, n, nb] + ((-4*GS[nb] . GALR[mu, n, nb] . \
+GSLR[p2, n, nb] . GALR[mu, n, nb] + GS[n] . GS[nb] . GS[nb] . \
+GALR[mu, n, nb] . GSLR[p2, n, nb] . GALR[mu, n, nb])*SP[n, p4])/2 - \
+(GS[n] . GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p2, n, nb] . \
+GALR[mu, n, nb]*SP[nb, p4])/2))/2 - (SP[n, p3]*(-GS[nb] . GS[nb] . \
+GALR[mu, n, nb] . GSLR[p2, n, nb] . GSLR[p4, n, nb] . GALR[mu, n, nb] \
+- (GS[nb] . GS[nb] . GS[nb] . GALR[mu, n, nb] . GSLR[p2, n, nb] . \
+GALR[mu, n, nb]*SP[n, p4])/2 - (GS[n] . GS[nb] . GS[nb] . GALR[mu, n, \
+nb] . GSLR[p2, n, nb] . GALR[mu, n, nb]*SP[nb, p4])/2))/2 - (SP[nb, \
+p2]*(4*GALR[mu, n, nb] . GSLR[p3, n, nb] . GSLR[p4, n, nb] . GALR[mu, \
+n, nb] - GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p3, n, nb] . \
+GSLR[p4, n, nb] . GALR[mu, n, nb] - ((-4*GS[nb] . GALR[mu, n, nb] . \
+GSLR[p3, n, nb] . GALR[mu, n, nb] + GS[n] . GS[nb] . GS[nb] . \
+GALR[mu, n, nb] . GSLR[p3, n, nb] . GALR[mu, n, nb])*SP[n, p4])/2 + \
+(GS[n] . GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p3, n, nb] . \
+GALR[mu, n, nb]*SP[nb, p4])/2 + 2*(4 - GS[n] . GS[nb])*SP[n, \
+p3]*SP[nb, p4]))/2))/2"},
+{"fcstDiracTrickLightCone-ID45",
+"DiracTrick[GALRD[mu].GALRD[mu],FCE->True]", "-2 + D"},
+{"fcstDiracTrickLightCone-ID46",
+"DiracTrick[GALRD[mu].GALRD[{mu1}].GALRD[mu],FCE->True]",
+"-((-4 + D)*GALRD[mu1, n, nb])"},
+{"fcstDiracTrickLightCone-ID47",
+"DiracTrick[GALRD[mu].GALRD[{mu1,mu2}].GALRD[mu],FCE->True]",
+"(-6 + D)*GALRD[mu1, n, nb] . GALRD[mu2, n, nb] + 4*MTLRD[mu1, \
+mu2, n, nb]"},
+{"fcstDiracTrickLightCone-ID48",
+"DiracTrick[GALRD[mu].GALRD[{mu1,mu2,mu3}].GALRD[mu],FCE->True]",
+"-((-8 + D)*GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GALRD[mu3, n, \
+nb]) + 4*(-(GALRD[mu3, n, nb]*MTLRD[mu1, mu2, n, nb]) + GALRD[mu2, n, \
+nb]*MTLRD[mu1, mu3, n, nb] - GALRD[mu1, n, nb]*MTLRD[mu2, mu3, n, \
+nb])"},
+{"fcstDiracTrickLightCone-ID49",
+"DiracTrick[GALRD[mu].GALRD[{mu1,mu2,mu3,mu4}].GALRD[mu],FCE->True]\
+", "(-10 + D)*GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GALRD[mu3, n, \
+nb] . GALRD[mu4, n, nb] - 4*(-(GALRD[mu3, n, nb] . GALRD[mu4, n, \
+nb]*MTLRD[mu1, mu2, n, nb]) + GALRD[mu2, n, nb] . GALRD[mu4, n, \
+nb]*MTLRD[mu1, mu3, n, nb] - GALRD[mu2, n, nb] . GALRD[mu3, n, \
+nb]*MTLRD[mu1, mu4, n, nb] - GALRD[mu1, n, nb] . GALRD[mu4, n, \
+nb]*MTLRD[mu2, mu3, n, nb] + GALRD[mu1, n, nb] . GALRD[mu3, n, \
+nb]*MTLRD[mu2, mu4, n, nb] - GALRD[mu1, n, nb] . GALRD[mu2, n, \
+nb]*MTLRD[mu3, mu4, n, nb])"},
+{"fcstDiracTrickLightCone-ID50",
+"DiracTrick[GALRD[mu].GALRD[{mu1,mu2,mu3,mu4,mu5}].GALRD[mu],\
+FCE->True]",
+"-((-12 + D)*GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GALRD[mu3, n, \
+nb] . GALRD[mu4, n, nb] . GALRD[mu5, n, nb]) + 4*(-(GALRD[mu3, n, nb] \
+. GALRD[mu4, n, nb] . GALRD[mu5, n, nb]*MTLRD[mu1, mu2, n, nb]) + \
+GALRD[mu2, n, nb] . GALRD[mu4, n, nb] . GALRD[mu5, n, nb]*MTLRD[mu1, \
+mu3, n, nb] - GALRD[mu2, n, nb] . GALRD[mu3, n, nb] . GALRD[mu5, n, \
+nb]*MTLRD[mu1, mu4, n, nb] + GALRD[mu2, n, nb] . GALRD[mu3, n, nb] . \
+GALRD[mu4, n, nb]*MTLRD[mu1, mu5, n, nb] - GALRD[mu1, n, nb] . \
+GALRD[mu4, n, nb] . GALRD[mu5, n, nb]*MTLRD[mu2, mu3, n, nb] + \
+GALRD[mu1, n, nb] . GALRD[mu3, n, nb] . GALRD[mu5, n, nb]*MTLRD[mu2, \
+mu4, n, nb] - GALRD[mu1, n, nb] . GALRD[mu3, n, nb] . GALRD[mu4, n, \
+nb]*MTLRD[mu2, mu5, n, nb] - GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . \
+GALRD[mu5, n, nb]*MTLRD[mu3, mu4, n, nb] + GALRD[mu1, n, nb] . \
+GALRD[mu2, n, nb] . GALRD[mu4, n, nb]*MTLRD[mu3, mu5, n, nb] - \
+GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GALRD[mu3, n, nb]*MTLRD[mu4, \
+mu5, n, nb])"},
+{"fcstDiracTrickLightCone-ID51",
+"DiracTrick[GALRD[mu].GAD[mu1].GALRD[mu],FCE->True]",
+"-((-4 + D)*GALRD[mu1, n, nb]) - ((-2 + D)*FVD[nb, mu1]*GSD[n])/2 \
+- ((-2 + D)*FVD[n, mu1]*GSD[nb])/2"},
+{"fcstDiracTrickLightCone-ID52",
+"DiracTrick[GALRD[mu].GAD[mu1,mu2,mu3].GALRD[mu],FCE->True]",
+"GALRD[mu, n, nb] . GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . \
+GALRD[mu3, n, nb] . GALRD[mu, n, nb] - (GSD[nb] . GALRD[mu, n, nb] . \
+GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GALRD[mu, n, nb]*FVD[n, \
+mu3])/2 - (GSD[n] . GALRD[mu, n, nb] . GALRD[mu1, n, nb] . GALRD[mu2, \
+n, nb] . GALRD[mu, n, nb]*FVD[nb, mu3])/2 - (FVD[nb, mu2]*(-GSD[n] . \
+GALRD[mu, n, nb] . GALRD[mu1, n, nb] . GALRD[mu3, n, nb] . GALRD[mu, \
+n, nb] - (GSD[n] . GSD[nb] . GALRD[mu, n, nb] . GALRD[mu1, n, nb] . \
+GALRD[mu, n, nb]*FVD[n, mu3])/2 - (GSD[n] . GSD[n] . GALRD[mu, n, nb] \
+. GALRD[mu1, n, nb] . GALRD[mu, n, nb]*FVD[nb, mu3])/2))/2 - (FVD[n, \
+mu2]*(-GSD[nb] . GALRD[mu, n, nb] . GALRD[mu1, n, nb] . GALRD[mu3, n, \
+nb] . GALRD[mu, n, nb] - (GSD[nb] . GSD[nb] . GALRD[mu, n, nb] . \
+GALRD[mu1, n, nb] . GALRD[mu, n, nb]*FVD[n, mu3])/2 + ((-4*GALRD[mu, \
+n, nb] . GALRD[mu1, n, nb] . GALRD[mu, n, nb] + GSD[n] . GSD[nb] . \
+GALRD[mu, n, nb] . GALRD[mu1, n, nb] . GALRD[mu, n, nb])*FVD[nb, \
+mu3])/2))/2 - (FVD[nb, mu1]*(GSD[n] . GALRD[mu, n, nb] . GALRD[mu2, \
+n, nb] . GALRD[mu3, n, nb] . GALRD[mu, n, nb] + (GSD[n] . GSD[nb] . \
+GALRD[mu, n, nb] . GALRD[mu2, n, nb] . GALRD[mu, n, nb]*FVD[n, \
+mu3])/2 + (GSD[n] . GSD[n] . GALRD[mu, n, nb] . GALRD[mu2, n, nb] . \
+GALRD[mu, n, nb]*FVD[nb, mu3])/2 - (FVD[n, mu2]*(-((-4 + D)*GSD[n] . \
+GSD[nb] . GALRD[mu3, n, nb]) - 2*(-2 + D)*FVD[nb, mu3]*GSD[n]))/2))/2 \
+- (FVD[n, mu1]*(GSD[nb] . GALRD[mu, n, nb] . GALRD[mu2, n, nb] . \
+GALRD[mu3, n, nb] . GALRD[mu, n, nb] + (GSD[nb] . GSD[nb] . GALRD[mu, \
+n, nb] . GALRD[mu2, n, nb] . GALRD[mu, n, nb]*FVD[n, mu3])/2 - \
+((-4*GALRD[mu, n, nb] . GALRD[mu2, n, nb] . GALRD[mu, n, nb] + GSD[n] \
+. GSD[nb] . GALRD[mu, n, nb] . GALRD[mu2, n, nb] . GALRD[mu, n, \
+nb])*FVD[nb, mu3])/2 - (FVD[nb, mu2]*(-((-4 + D)*(-GSD[n] . GSD[nb] . \
+GALRD[mu3, n, nb] + 4*GALRD[mu3, n, nb])) - 2*(-2 + D)*FVD[n, \
+mu3]*GSD[nb]))/2))/2"},
+{"fcstDiracTrickLightCone-ID53",
+"DiracTrick[GALRD[mu].GSD[p1].GALRD[mu],FCE->True]",
+"-((-4 + D)*GSLRD[p1, n, nb]) - ((-2 + D)*GSD[nb]*SPD[n, p1])/2 - \
+((-2 + D)*GSD[n]*SPD[nb, p1])/2"},
+{"fcstDiracTrickLightCone-ID54",
+"DiracTrick[GALRD[mu].GSD[p1,p2].GALRD[mu],FCE->True]",
+"GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . \
+GALRD[mu, n, nb] + (GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . \
+GALRD[mu, n, nb]*SPD[n, p2])/2 - ((-((-4 + D)*GSD[n] . GSLRD[p2, n, \
+nb]) - ((-2 + D)*GSD[n] . GSD[nb]*SPD[n, p2])/2)*SPD[nb, p1])/2 + \
+(GSD[n] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GALRD[mu, n, \
+nb]*SPD[nb, p2])/2 - (SPD[n, p1]*(-((-4 + D)*GSD[nb] . GSLRD[p2, n, \
+nb]) - ((-2 + D)*(4 - GSD[n] . GSD[nb])*SPD[nb, p2])/2))/2"},
+{"fcstDiracTrickLightCone-ID55",
+"DiracTrick[GALRD[mu].GSD[p1,p2,p3].GALRD[mu],FCE->True]",
+"GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . \
+GSLRD[p3, n, nb] . GALRD[mu, n, nb] - (GSD[nb] . GALRD[mu, n, nb] . \
+GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GALRD[mu, n, nb]*SPD[n, p3])/2 \
+- (GSD[n] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . \
+GALRD[mu, n, nb]*SPD[nb, p3])/2 - (SPD[nb, p2]*(-GSD[n] . GALRD[mu, \
+n, nb] . GSLRD[p1, n, nb] . GSLRD[p3, n, nb] . GALRD[mu, n, nb] - \
+(GSD[n] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GALRD[mu, \
+n, nb]*SPD[n, p3])/2 - (GSD[n] . GSD[n] . GALRD[mu, n, nb] . \
+GSLRD[p1, n, nb] . GALRD[mu, n, nb]*SPD[nb, p3])/2))/2 - (SPD[n, \
+p2]*(-GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p3, n, \
+nb] . GALRD[mu, n, nb] - (GSD[nb] . GSD[nb] . GALRD[mu, n, nb] . \
+GSLRD[p1, n, nb] . GALRD[mu, n, nb]*SPD[n, p3])/2 + ((-4*GALRD[mu, n, \
+nb] . GSLRD[p1, n, nb] . GALRD[mu, n, nb] + GSD[n] . GSD[nb] . \
+GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GALRD[mu, n, nb])*SPD[nb, \
+p3])/2))/2 - (SPD[n, p1]*(GSD[nb] . GALRD[mu, n, nb] . GSLRD[p2, n, \
+nb] . GSLRD[p3, n, nb] . GALRD[mu, n, nb] + (GSD[nb] . GSD[nb] . \
+GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GALRD[mu, n, nb]*SPD[n, p3])/2 \
+- ((-((-4 + D)*(-GSD[n] . GSD[nb] . GSLRD[p3, n, nb] + 4*GSLRD[p3, n, \
+nb])) - 2*(-2 + D)*GSD[nb]*SPD[n, p3])*SPD[nb, p2])/2 - \
+((-4*GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GALRD[mu, n, nb] + GSD[n] \
+. GSD[nb] . GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GALRD[mu, n, \
+nb])*SPD[nb, p3])/2))/2 - (SPD[nb, p1]*(GSD[n] . GALRD[mu, n, nb] . \
+GSLRD[p2, n, nb] . GSLRD[p3, n, nb] . GALRD[mu, n, nb] + (GSD[n] . \
+GSD[nb] . GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GALRD[mu, n, \
+nb]*SPD[n, p3])/2 + (GSD[n] . GSD[n] . GALRD[mu, n, nb] . GSLRD[p2, \
+n, nb] . GALRD[mu, n, nb]*SPD[nb, p3])/2 - (SPD[n, p2]*(-((-4 + \
+D)*GSD[n] . GSD[nb] . GSLRD[p3, n, nb]) - 2*(-2 + D)*GSD[n]*SPD[nb, \
+p3]))/2))/2"},
+{"fcstDiracTrickLightCone-ID56",
+"DiracTrick[GALRD[mu].GSD[p1,p2,p3,p4].GALRD[mu],FCE->True]",
+"GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . \
+GSLRD[p3, n, nb] . GSLRD[p4, n, nb] . GALRD[mu, n, nb] + (GSD[nb] . \
+GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, n, \
+nb] . GALRD[mu, n, nb]*SPD[n, p4])/2 + (GSD[n] . GALRD[mu, n, nb] . \
+GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, n, nb] . GALRD[mu, n, \
+nb]*SPD[nb, p4])/2 - (SPD[nb, p3]*(GSD[n] . GALRD[mu, n, nb] . \
+GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GSLRD[p4, n, nb] . GALRD[mu, n, \
+nb] - (GSD[n] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . \
+GSLRD[p2, n, nb] . GALRD[mu, n, nb]*SPD[n, p4])/2 - (GSD[n] . GSD[n] \
+. GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GALRD[mu, \
+n, nb]*SPD[nb, p4])/2))/2 - (SPD[n, p3]*(GSD[nb] . GALRD[mu, n, nb] . \
+GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GSLRD[p4, n, nb] . GALRD[mu, n, \
+nb] - (GSD[nb] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . \
+GSLRD[p2, n, nb] . GALRD[mu, n, nb]*SPD[n, p4])/2 - ((4*GALRD[mu, n, \
+nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GALRD[mu, n, nb] - GSD[n] \
+. GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . \
+GALRD[mu, n, nb])*SPD[nb, p4])/2))/2 - (SPD[nb, p2]*(-GSD[n] . \
+GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p3, n, nb] . GSLRD[p4, n, \
+nb] . GALRD[mu, n, nb] + (GSD[n] . GSD[nb] . GALRD[mu, n, nb] . \
+GSLRD[p1, n, nb] . GSLRD[p3, n, nb] . GALRD[mu, n, nb]*SPD[n, p4])/2 \
++ (GSD[n] . GSD[n] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p3, \
+n, nb] . GALRD[mu, n, nb]*SPD[nb, p4])/2 + (SPD[nb, p3]*(-GSD[n] . \
+GSD[n] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p4, n, nb] . \
+GALRD[mu, n, nb] - (GSD[n] . GSD[n] . GSD[nb] . GALRD[mu, n, nb] . \
+GSLRD[p1, n, nb] . GALRD[mu, n, nb]*SPD[n, p4])/2 - (GSD[n] . GSD[n] \
+. GSD[n] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GALRD[mu, n, \
+nb]*SPD[nb, p4])/2))/2 + (SPD[n, p3]*(-GSD[n] . GSD[nb] . GALRD[mu, \
+n, nb] . GSLRD[p1, n, nb] . GSLRD[p4, n, nb] . GALRD[mu, n, nb] - \
+(GSD[n] . GSD[nb] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . \
+GALRD[mu, n, nb]*SPD[n, p4])/2 + ((-4*GSD[n] . GALRD[mu, n, nb] . \
+GSLRD[p1, n, nb] . GALRD[mu, n, nb] + GSD[n] . GSD[n] . GSD[nb] . \
+GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GALRD[mu, n, nb])*SPD[nb, \
+p4])/2))/2))/2 - (SPD[nb, p1]*(GSD[n] . GALRD[mu, n, nb] . GSLRD[p2, \
+n, nb] . GSLRD[p3, n, nb] . GSLRD[p4, n, nb] . GALRD[mu, n, nb] - \
+(GSD[n] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, \
+n, nb] . GALRD[mu, n, nb]*SPD[n, p4])/2 - (GSD[n] . GSD[n] . \
+GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, n, nb] . GALRD[mu, n, \
+nb]*SPD[nb, p4])/2 - (SPD[nb, p3]*(-GSD[n] . GSD[n] . GALRD[mu, n, \
+nb] . GSLRD[p2, n, nb] . GSLRD[p4, n, nb] . GALRD[mu, n, nb] - \
+(GSD[n] . GSD[n] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p2, n, nb] . \
+GALRD[mu, n, nb]*SPD[n, p4])/2 - (GSD[n] . GSD[n] . GSD[n] . \
+GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GALRD[mu, n, nb]*SPD[nb, \
+p4])/2))/2 - (SPD[n, p3]*(-GSD[n] . GSD[nb] . GALRD[mu, n, nb] . \
+GSLRD[p2, n, nb] . GSLRD[p4, n, nb] . GALRD[mu, n, nb] - (GSD[n] . \
+GSD[nb] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GALRD[mu, \
+n, nb]*SPD[n, p4])/2 + ((-4*GSD[n] . GALRD[mu, n, nb] . GSLRD[p2, n, \
+nb] . GALRD[mu, n, nb] + GSD[n] . GSD[n] . GSD[nb] . GALRD[mu, n, nb] \
+. GSLRD[p2, n, nb] . GALRD[mu, n, nb])*SPD[nb, p4])/2))/2 - (SPD[n, \
+p2]*(GSD[n] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p3, n, nb] . \
+GSLRD[p4, n, nb] . GALRD[mu, n, nb] + (GSD[n] . GSD[nb] . GSD[nb] . \
+GALRD[mu, n, nb] . GSLRD[p3, n, nb] . GALRD[mu, n, nb]*SPD[n, p4])/2 \
+- 2*(-((-4 + D)*GSD[n] . GSLRD[p4, n, nb]) - ((-2 + D)*GSD[n] . \
+GSD[nb]*SPD[n, p4])/2)*SPD[nb, p3] - ((-4*GSD[n] . GALRD[mu, n, nb] . \
+GSLRD[p3, n, nb] . GALRD[mu, n, nb] + GSD[n] . GSD[n] . GSD[nb] . \
+GALRD[mu, n, nb] . GSLRD[p3, n, nb] . GALRD[mu, n, nb])*SPD[nb, \
+p4])/2))/2))/2 - (SPD[n, p2]*(-GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, \
+n, nb] . GSLRD[p3, n, nb] . GSLRD[p4, n, nb] . GALRD[mu, n, nb] + \
+(GSD[nb] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p3, \
+n, nb] . GALRD[mu, n, nb]*SPD[n, p4])/2 + ((4*GALRD[mu, n, nb] . \
+GSLRD[p1, n, nb] . GSLRD[p3, n, nb] . GALRD[mu, n, nb] - GSD[n] . \
+GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p3, n, nb] . \
+GALRD[mu, n, nb])*SPD[nb, p4])/2 + (SPD[nb, p3]*(-4*GALRD[mu, n, nb] \
+. GSLRD[p1, n, nb] . GSLRD[p4, n, nb] . GALRD[mu, n, nb] + GSD[n] . \
+GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p4, n, nb] . \
+GALRD[mu, n, nb] + ((-4*GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] \
+. GALRD[mu, n, nb] + GSD[n] . GSD[nb] . GSD[nb] . GALRD[mu, n, nb] . \
+GSLRD[p1, n, nb] . GALRD[mu, n, nb])*SPD[n, p4])/2 - (GSD[n] . GSD[n] \
+. GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GALRD[mu, n, \
+nb]*SPD[nb, p4])/2))/2 + (SPD[n, p3]*(-GSD[nb] . GSD[nb] . GALRD[mu, \
+n, nb] . GSLRD[p1, n, nb] . GSLRD[p4, n, nb] . GALRD[mu, n, nb] - \
+(GSD[nb] . GSD[nb] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . \
+GALRD[mu, n, nb]*SPD[n, p4])/2 - (GSD[n] . GSD[nb] . GSD[nb] . \
+GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GALRD[mu, n, nb]*SPD[nb, \
+p4])/2))/2))/2 - (SPD[n, p1]*(GSD[nb] . GALRD[mu, n, nb] . GSLRD[p2, \
+n, nb] . GSLRD[p3, n, nb] . GSLRD[p4, n, nb] . GALRD[mu, n, nb] - \
+(GSD[nb] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, \
+n, nb] . GALRD[mu, n, nb]*SPD[n, p4])/2 - ((4*GALRD[mu, n, nb] . \
+GSLRD[p2, n, nb] . GSLRD[p3, n, nb] . GALRD[mu, n, nb] - GSD[n] . \
+GSD[nb] . GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, n, nb] . \
+GALRD[mu, n, nb])*SPD[nb, p4])/2 - (SPD[nb, p3]*(-4*GALRD[mu, n, nb] \
+. GSLRD[p2, n, nb] . GSLRD[p4, n, nb] . GALRD[mu, n, nb] + GSD[n] . \
+GSD[nb] . GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GSLRD[p4, n, nb] . \
+GALRD[mu, n, nb] + ((-4*GSD[nb] . GALRD[mu, n, nb] . GSLRD[p2, n, nb] \
+. GALRD[mu, n, nb] + GSD[n] . GSD[nb] . GSD[nb] . GALRD[mu, n, nb] . \
+GSLRD[p2, n, nb] . GALRD[mu, n, nb])*SPD[n, p4])/2 - (GSD[n] . GSD[n] \
+. GSD[nb] . GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GALRD[mu, n, \
+nb]*SPD[nb, p4])/2))/2 - (SPD[n, p3]*(-GSD[nb] . GSD[nb] . GALRD[mu, \
+n, nb] . GSLRD[p2, n, nb] . GSLRD[p4, n, nb] . GALRD[mu, n, nb] - \
+(GSD[nb] . GSD[nb] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p2, n, nb] . \
+GALRD[mu, n, nb]*SPD[n, p4])/2 - (GSD[n] . GSD[nb] . GSD[nb] . \
+GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GALRD[mu, n, nb]*SPD[nb, \
+p4])/2))/2 - (SPD[nb, p2]*(4*GALRD[mu, n, nb] . GSLRD[p3, n, nb] . \
+GSLRD[p4, n, nb] . GALRD[mu, n, nb] - GSD[n] . GSD[nb] . GALRD[mu, n, \
+nb] . GSLRD[p3, n, nb] . GSLRD[p4, n, nb] . GALRD[mu, n, nb] - \
+((-4*GSD[nb] . GALRD[mu, n, nb] . GSLRD[p3, n, nb] . GALRD[mu, n, nb] \
++ GSD[n] . GSD[nb] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p3, n, nb] . \
+GALRD[mu, n, nb])*SPD[n, p4])/2 + (GSD[n] . GSD[n] . GSD[nb] . \
+GALRD[mu, n, nb] . GSLRD[p3, n, nb] . GALRD[mu, n, nb]*SPD[nb, p4])/2 \
+- 2*SPD[n, p3]*(-((-4 + D)*GSD[nb] . GSLRD[p4, n, nb]) - ((-2 + D)*(4 \
+- GSD[n] . GSD[nb])*SPD[nb, p4])/2)))/2))/2"},
+{"fcstDiracTrickLightCone-ID57",
+"DiracTrick[GALR[mu].GA[5].GALR[mu],FCE->True]", "-2*GA[5]"},
+{"fcstDiracTrickLightCone-ID58",
+"DiracTrick[GALR[mu].GA[5].GALR[{mu1}].GALR[mu],FCE->True]", "0"},
+{"fcstDiracTrickLightCone-ID59",
+"DiracTrick[GALR[mu].GA[5].GALR[{mu1,mu2}].GALR[mu],FCE->True]",
+"2*GALR[mu1, n, nb] . GALR[mu2, n, nb] . GA[5] - 4*GA[5]*MTLR[mu1, \
+mu2, n, nb]"},
+{"fcstDiracTrickLightCone-ID60",
+"DiracTrick[GALR[mu].GA[5].GALR[{mu1,mu2,mu3}].GALR[mu],FCE->True]\
+", "4*GALR[mu1, n, nb] . GALR[mu2, n, nb] . GALR[mu3, n, nb] . GA[5] \
++ 4*(-(GALR[mu3, n, nb] . GA[5]*MTLR[mu1, mu2, n, nb]) + GALR[mu2, n, \
+nb] . GA[5]*MTLR[mu1, mu3, n, nb] - GALR[mu1, n, nb] . \
+GA[5]*MTLR[mu2, mu3, n, nb])"},
+{"fcstDiracTrickLightCone-ID61",
+"DiracTrick[GALR[mu].GA[5].GALR[{mu1,mu2,mu3,mu4}].GALR[mu],\
+FCE->True]",
+"6*GALR[mu1, n, nb] . GALR[mu2, n, nb] . GALR[mu3, n, nb] . \
+GALR[mu4, n, nb] . GA[5] + 4*(-(GALR[mu3, n, nb] . GALR[mu4, n, nb] . \
+GA[5]*MTLR[mu1, mu2, n, nb]) + GALR[mu2, n, nb] . GALR[mu4, n, nb] . \
+GA[5]*MTLR[mu1, mu3, n, nb] - GALR[mu2, n, nb] . GALR[mu3, n, nb] . \
+GA[5]*MTLR[mu1, mu4, n, nb] - GALR[mu1, n, nb] . GALR[mu4, n, nb] . \
+GA[5]*MTLR[mu2, mu3, n, nb] + GALR[mu1, n, nb] . GALR[mu3, n, nb] . \
+GA[5]*MTLR[mu2, mu4, n, nb] - GALR[mu1, n, nb] . GALR[mu2, n, nb] . \
+GA[5]*MTLR[mu3, mu4, n, nb])"},
+{"fcstDiracTrickLightCone-ID62",
+"DiracTrick[GALR[mu].GA[5].GALR[{mu1,mu2,mu3,mu4,mu5}].GALR[mu],\
+FCE->True]",
+"8*GALR[mu1, n, nb] . GALR[mu2, n, nb] . GALR[mu3, n, nb] . \
+GALR[mu4, n, nb] . GALR[mu5, n, nb] . GA[5] + 4*(-(GALR[mu3, n, nb] . \
+GALR[mu4, n, nb] . GALR[mu5, n, nb] . GA[5]*MTLR[mu1, mu2, n, nb]) + \
+GALR[mu2, n, nb] . GALR[mu4, n, nb] . GALR[mu5, n, nb] . \
+GA[5]*MTLR[mu1, mu3, n, nb] - GALR[mu2, n, nb] . GALR[mu3, n, nb] . \
+GALR[mu5, n, nb] . GA[5]*MTLR[mu1, mu4, n, nb] + GALR[mu2, n, nb] . \
+GALR[mu3, n, nb] . GALR[mu4, n, nb] . GA[5]*MTLR[mu1, mu5, n, nb] - \
+GALR[mu1, n, nb] . GALR[mu4, n, nb] . GALR[mu5, n, nb] . \
+GA[5]*MTLR[mu2, mu3, n, nb] + GALR[mu1, n, nb] . GALR[mu3, n, nb] . \
+GALR[mu5, n, nb] . GA[5]*MTLR[mu2, mu4, n, nb] - GALR[mu1, n, nb] . \
+GALR[mu3, n, nb] . GALR[mu4, n, nb] . GA[5]*MTLR[mu2, mu5, n, nb] - \
+GALR[mu1, n, nb] . GALR[mu2, n, nb] . GALR[mu5, n, nb] . \
+GA[5]*MTLR[mu3, mu4, n, nb] + GALR[mu1, n, nb] . GALR[mu2, n, nb] . \
+GALR[mu4, n, nb] . GA[5]*MTLR[mu3, mu5, n, nb] - GALR[mu1, n, nb] . \
+GALR[mu2, n, nb] . GALR[mu3, n, nb] . GA[5]*MTLR[mu4, mu5, n, nb])"},
+{"fcstDiracTrickLightCone-ID63",
+"DiracTrick[GALR[mu].GA[5].GA[mu1].GALR[mu],FCE->True]",
+"-(GS[nb] . GA[5]*FV[n, mu1]) - GS[n] . GA[5]*FV[nb, mu1]"},
+{"fcstDiracTrickLightCone-ID64",
+"DiracTrick[GALR[mu].GA[5].GA[mu1,mu2,mu3].GALR[mu],FCE->True]",
+"GALR[mu, n, nb] . GALR[mu1, n, nb] . GALR[mu2, n, nb] . GALR[mu3, \
+n, nb] . GALR[mu, n, nb] . GA[5] - (GS[nb] . GALR[mu, n, nb] . \
+GALR[mu1, n, nb] . GALR[mu2, n, nb] . GALR[mu, n, nb] . GA[5]*FV[n, \
+mu3])/2 - (GS[n] . GALR[mu, n, nb] . GALR[mu1, n, nb] . GALR[mu2, n, \
+nb] . GALR[mu, n, nb] . GA[5]*FV[nb, mu3])/2 - (FV[nb, mu2]*(-GS[n] . \
+GALR[mu, n, nb] . GALR[mu1, n, nb] . GALR[mu3, n, nb] . GALR[mu, n, \
+nb] . GA[5] - (GS[n] . GS[nb] . GALR[mu, n, nb] . GALR[mu1, n, nb] . \
+GALR[mu, n, nb] . GA[5]*FV[n, mu3])/2 - (GS[n] . GS[n] . GALR[mu, n, \
+nb] . GALR[mu1, n, nb] . GALR[mu, n, nb] . GA[5]*FV[nb, mu3])/2))/2 - \
+(FV[n, mu2]*(-GS[nb] . GALR[mu, n, nb] . GALR[mu1, n, nb] . GALR[mu3, \
+n, nb] . GALR[mu, n, nb] . GA[5] - (GS[nb] . GS[nb] . GALR[mu, n, nb] \
+. GALR[mu1, n, nb] . GALR[mu, n, nb] . GA[5]*FV[n, mu3])/2 + \
+((-4*GALR[mu, n, nb] . GALR[mu1, n, nb] . GALR[mu, n, nb] . GA[5] + \
+GS[n] . GS[nb] . GALR[mu, n, nb] . GALR[mu1, n, nb] . GALR[mu, n, nb] \
+. GA[5])*FV[nb, mu3])/2))/2 - (FV[n, mu1]*(GS[nb] . GALR[mu, n, nb] . \
+GALR[mu2, n, nb] . GALR[mu3, n, nb] . GALR[mu, n, nb] . GA[5] + \
+(GS[nb] . GS[nb] . GALR[mu, n, nb] . GALR[mu2, n, nb] . GALR[mu, n, \
+nb] . GA[5]*FV[n, mu3])/2 + 2*GS[nb] . GA[5]*FV[n, mu3]*FV[nb, mu2] - \
+((-4*GALR[mu, n, nb] . GALR[mu2, n, nb] . GALR[mu, n, nb] . GA[5] + \
+GS[n] . GS[nb] . GALR[mu, n, nb] . GALR[mu2, n, nb] . GALR[mu, n, nb] \
+. GA[5])*FV[nb, mu3])/2))/2 - (FV[nb, mu1]*(GS[n] . GALR[mu, n, nb] . \
+GALR[mu2, n, nb] . GALR[mu3, n, nb] . GALR[mu, n, nb] . GA[5] + \
+(GS[n] . GS[nb] . GALR[mu, n, nb] . GALR[mu2, n, nb] . GALR[mu, n, \
+nb] . GA[5]*FV[n, mu3])/2 + (GS[n] . GS[n] . GALR[mu, n, nb] . \
+GALR[mu2, n, nb] . GALR[mu, n, nb] . GA[5]*FV[nb, mu3])/2 + 2*GS[n] . \
+GA[5]*FV[n, mu2]*FV[nb, mu3]))/2"},
+{"fcstDiracTrickLightCone-ID65",
+"DiracTrick[GALR[mu].GA[5].GS[p1].GALR[mu],FCE->True]",
+"-(GS[nb] . GA[5]*SP[n, p1]) - GS[n] . GA[5]*SP[nb, p1]"},
+{"fcstDiracTrickLightCone-ID66",
+"DiracTrick[GALR[mu].GA[5].GS[p1,p2].GALR[mu],FCE->True]",
+"-GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . GALR[mu, \
+n, nb] . GA[5] - (GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] . \
+GALR[mu, n, nb] . GA[5]*SP[n, p2])/2 - (GS[n] . GS[nb] . GA[5]*SP[n, \
+p2]*SP[nb, p1])/2 - (GS[n] . GALR[mu, n, nb] . GSLR[p1, n, nb] . \
+GALR[mu, n, nb] . GA[5]*SP[nb, p2])/2 - ((-GS[n] . GS[nb] . GA[5] + \
+4*GA[5])*SP[n, p1]*SP[nb, p2])/2"},
+{"fcstDiracTrickLightCone-ID67",
+"DiracTrick[GALR[mu].GA[5].GS[p1,p2,p3].GALR[mu],FCE->True]",
+"GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, \
+nb] . GALR[mu, n, nb] . GA[5] - (GS[nb] . GALR[mu, n, nb] . GSLR[p1, \
+n, nb] . GSLR[p2, n, nb] . GALR[mu, n, nb] . GA[5]*SP[n, p3])/2 - \
+(GS[n] . GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . \
+GALR[mu, n, nb] . GA[5]*SP[nb, p3])/2 - (SP[nb, p2]*(-GS[n] . \
+GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p3, n, nb] . GALR[mu, n, nb] \
+. GA[5] - (GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] . \
+GALR[mu, n, nb] . GA[5]*SP[n, p3])/2 - (GS[n] . GS[n] . GALR[mu, n, \
+nb] . GSLR[p1, n, nb] . GALR[mu, n, nb] . GA[5]*SP[nb, p3])/2))/2 - \
+(SP[n, p2]*(-GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p3, n, \
+nb] . GALR[mu, n, nb] . GA[5] - (GS[nb] . GS[nb] . GALR[mu, n, nb] . \
+GSLR[p1, n, nb] . GALR[mu, n, nb] . GA[5]*SP[n, p3])/2 + \
+((-4*GALR[mu, n, nb] . GSLR[p1, n, nb] . GALR[mu, n, nb] . GA[5] + \
+GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] . GALR[mu, n, nb] \
+. GA[5])*SP[nb, p3])/2))/2 - (SP[n, p1]*(GS[nb] . GALR[mu, n, nb] . \
+GSLR[p2, n, nb] . GSLR[p3, n, nb] . GALR[mu, n, nb] . GA[5] + (GS[nb] \
+. GS[nb] . GALR[mu, n, nb] . GSLR[p2, n, nb] . GALR[mu, n, nb] . \
+GA[5]*SP[n, p3])/2 + 2*GS[nb] . GA[5]*SP[n, p3]*SP[nb, p2] - \
+((-4*GALR[mu, n, nb] . GSLR[p2, n, nb] . GALR[mu, n, nb] . GA[5] + \
+GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p2, n, nb] . GALR[mu, n, nb] \
+. GA[5])*SP[nb, p3])/2))/2 - (SP[nb, p1]*(GS[n] . GALR[mu, n, nb] . \
+GSLR[p2, n, nb] . GSLR[p3, n, nb] . GALR[mu, n, nb] . GA[5] + (GS[n] \
+. GS[nb] . GALR[mu, n, nb] . GSLR[p2, n, nb] . GALR[mu, n, nb] . \
+GA[5]*SP[n, p3])/2 + (GS[n] . GS[n] . GALR[mu, n, nb] . GSLR[p2, n, \
+nb] . GALR[mu, n, nb] . GA[5]*SP[nb, p3])/2 + 2*GS[n] . GA[5]*SP[n, \
+p2]*SP[nb, p3]))/2"},
+{"fcstDiracTrickLightCone-ID68",
+"DiracTrick[GALR[mu].GA[5].GS[p1,p2,p3,p4].GALR[mu],FCE->True]",
+"-GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[p3, \
+n, nb] . GSLR[p4, n, nb] . GALR[mu, n, nb] . GA[5] - (GS[nb] . \
+GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, nb] \
+. GALR[mu, n, nb] . GA[5]*SP[n, p4])/2 - (GS[n] . GALR[mu, n, nb] . \
+GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, nb] . GALR[mu, n, nb] \
+. GA[5]*SP[nb, p4])/2 + (SP[nb, p3]*(GS[n] . GALR[mu, n, nb] . \
+GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[p4, n, nb] . GALR[mu, n, nb] \
+. GA[5] - (GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] . \
+GSLR[p2, n, nb] . GALR[mu, n, nb] . GA[5]*SP[n, p4])/2 - (GS[n] . \
+GS[n] . GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . \
+GALR[mu, n, nb] . GA[5]*SP[nb, p4])/2))/2 + (SP[n, p3]*(GS[nb] . \
+GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[p4, n, nb] \
+. GALR[mu, n, nb] . GA[5] - (GS[nb] . GS[nb] . GALR[mu, n, nb] . \
+GSLR[p1, n, nb] . GSLR[p2, n, nb] . GALR[mu, n, nb] . GA[5]*SP[n, \
+p4])/2 - ((4*GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . \
+GALR[mu, n, nb] . GA[5] - GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p1, \
+n, nb] . GSLR[p2, n, nb] . GALR[mu, n, nb] . GA[5])*SP[nb, p4])/2))/2 \
++ (SP[nb, p2]*(-GS[n] . GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p3, \
+n, nb] . GSLR[p4, n, nb] . GALR[mu, n, nb] . GA[5] + (GS[n] . GS[nb] \
+. GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p3, n, nb] . GALR[mu, n, \
+nb] . GA[5]*SP[n, p4])/2 + (GS[n] . GS[n] . GALR[mu, n, nb] . \
+GSLR[p1, n, nb] . GSLR[p3, n, nb] . GALR[mu, n, nb] . GA[5]*SP[nb, \
+p4])/2 + (SP[nb, p3]*(-GS[n] . GS[n] . GALR[mu, n, nb] . GSLR[p1, n, \
+nb] . GSLR[p4, n, nb] . GALR[mu, n, nb] . GA[5] - (GS[n] . GS[n] . \
+GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] . GALR[mu, n, nb] . \
+GA[5]*SP[n, p4])/2 - (GS[n] . GS[n] . GS[n] . GALR[mu, n, nb] . \
+GSLR[p1, n, nb] . GALR[mu, n, nb] . GA[5]*SP[nb, p4])/2))/2 + (SP[n, \
+p3]*(-GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p4, \
+n, nb] . GALR[mu, n, nb] . GA[5] - (GS[n] . GS[nb] . GS[nb] . \
+GALR[mu, n, nb] . GSLR[p1, n, nb] . GALR[mu, n, nb] . GA[5]*SP[n, \
+p4])/2 + ((-4*GS[n] . GALR[mu, n, nb] . GSLR[p1, n, nb] . GALR[mu, n, \
+nb] . GA[5] + GS[n] . GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, \
+nb] . GALR[mu, n, nb] . GA[5])*SP[nb, p4])/2))/2))/2 + (SP[nb, \
+p1]*(GS[n] . GALR[mu, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, nb] . \
+GSLR[p4, n, nb] . GALR[mu, n, nb] . GA[5] - (GS[n] . GS[nb] . \
+GALR[mu, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, nb] . GALR[mu, n, nb] \
+. GA[5]*SP[n, p4])/2 - (GS[n] . GS[n] . GALR[mu, n, nb] . GSLR[p2, n, \
+nb] . GSLR[p3, n, nb] . GALR[mu, n, nb] . GA[5]*SP[nb, p4])/2 - \
+(SP[nb, p3]*(-GS[n] . GS[n] . GALR[mu, n, nb] . GSLR[p2, n, nb] . \
+GSLR[p4, n, nb] . GALR[mu, n, nb] . GA[5] - (GS[n] . GS[n] . GS[nb] . \
+GALR[mu, n, nb] . GSLR[p2, n, nb] . GALR[mu, n, nb] . GA[5]*SP[n, \
+p4])/2 - (GS[n] . GS[n] . GS[n] . GALR[mu, n, nb] . GSLR[p2, n, nb] . \
+GALR[mu, n, nb] . GA[5]*SP[nb, p4])/2))/2 - (SP[n, p3]*(-GS[n] . \
+GS[nb] . GALR[mu, n, nb] . GSLR[p2, n, nb] . GSLR[p4, n, nb] . \
+GALR[mu, n, nb] . GA[5] - (GS[n] . GS[nb] . GS[nb] . GALR[mu, n, nb] \
+. GSLR[p2, n, nb] . GALR[mu, n, nb] . GA[5]*SP[n, p4])/2 + ((-4*GS[n] \
+. GALR[mu, n, nb] . GSLR[p2, n, nb] . GALR[mu, n, nb] . GA[5] + GS[n] \
+. GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p2, n, nb] . GALR[mu, n, \
+nb] . GA[5])*SP[nb, p4])/2))/2 - (SP[n, p2]*(GS[n] . GS[nb] . \
+GALR[mu, n, nb] . GSLR[p3, n, nb] . GSLR[p4, n, nb] . GALR[mu, n, nb] \
+. GA[5] + (GS[n] . GS[nb] . GS[nb] . GALR[mu, n, nb] . GSLR[p3, n, \
+nb] . GALR[mu, n, nb] . GA[5]*SP[n, p4])/2 + 2*GS[n] . GS[nb] . \
+GA[5]*SP[n, p4]*SP[nb, p3] - ((-4*GS[n] . GALR[mu, n, nb] . GSLR[p3, \
+n, nb] . GALR[mu, n, nb] . GA[5] + GS[n] . GS[n] . GS[nb] . GALR[mu, \
+n, nb] . GSLR[p3, n, nb] . GALR[mu, n, nb] . GA[5])*SP[nb, \
+p4])/2))/2))/2 + (SP[n, p2]*(-GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, \
+nb] . GSLR[p3, n, nb] . GSLR[p4, n, nb] . GALR[mu, n, nb] . GA[5] + \
+(GS[nb] . GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p3, n, \
+nb] . GALR[mu, n, nb] . GA[5]*SP[n, p4])/2 + ((4*GALR[mu, n, nb] . \
+GSLR[p1, n, nb] . GSLR[p3, n, nb] . GALR[mu, n, nb] . GA[5] - GS[n] . \
+GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p3, n, nb] . \
+GALR[mu, n, nb] . GA[5])*SP[nb, p4])/2 + (SP[nb, p3]*(-4*GALR[mu, n, \
+nb] . GSLR[p1, n, nb] . GSLR[p4, n, nb] . GALR[mu, n, nb] . GA[5] + \
+GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p4, n, nb] \
+. GALR[mu, n, nb] . GA[5] + ((-4*GS[nb] . GALR[mu, n, nb] . GSLR[p1, \
+n, nb] . GALR[mu, n, nb] . GA[5] + GS[n] . GS[nb] . GS[nb] . GALR[mu, \
+n, nb] . GSLR[p1, n, nb] . GALR[mu, n, nb] . GA[5])*SP[n, p4])/2 - \
+(GS[n] . GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] . \
+GALR[mu, n, nb] . GA[5]*SP[nb, p4])/2))/2 + (SP[n, p3]*(-GS[nb] . \
+GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] . GSLR[p4, n, nb] . \
+GALR[mu, n, nb] . GA[5] - (GS[nb] . GS[nb] . GS[nb] . GALR[mu, n, nb] \
+. GSLR[p1, n, nb] . GALR[mu, n, nb] . GA[5]*SP[n, p4])/2 - (GS[n] . \
+GS[nb] . GS[nb] . GALR[mu, n, nb] . GSLR[p1, n, nb] . GALR[mu, n, nb] \
+. GA[5]*SP[nb, p4])/2))/2))/2 + (SP[n, p1]*(GS[nb] . GALR[mu, n, nb] \
+. GSLR[p2, n, nb] . GSLR[p3, n, nb] . GSLR[p4, n, nb] . GALR[mu, n, \
+nb] . GA[5] - (GS[nb] . GS[nb] . GALR[mu, n, nb] . GSLR[p2, n, nb] . \
+GSLR[p3, n, nb] . GALR[mu, n, nb] . GA[5]*SP[n, p4])/2 - ((4*GALR[mu, \
+n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, nb] . GALR[mu, n, nb] . GA[5] \
+- GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, \
+nb] . GALR[mu, n, nb] . GA[5])*SP[nb, p4])/2 - (SP[nb, \
+p3]*(-4*GALR[mu, n, nb] . GSLR[p2, n, nb] . GSLR[p4, n, nb] . \
+GALR[mu, n, nb] . GA[5] + GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p2, \
+n, nb] . GSLR[p4, n, nb] . GALR[mu, n, nb] . GA[5] + ((-4*GS[nb] . \
+GALR[mu, n, nb] . GSLR[p2, n, nb] . GALR[mu, n, nb] . GA[5] + GS[n] . \
+GS[nb] . GS[nb] . GALR[mu, n, nb] . GSLR[p2, n, nb] . GALR[mu, n, nb] \
+. GA[5])*SP[n, p4])/2 - (GS[n] . GS[n] . GS[nb] . GALR[mu, n, nb] . \
+GSLR[p2, n, nb] . GALR[mu, n, nb] . GA[5]*SP[nb, p4])/2))/2 - (SP[n, \
+p3]*(-GS[nb] . GS[nb] . GALR[mu, n, nb] . GSLR[p2, n, nb] . GSLR[p4, \
+n, nb] . GALR[mu, n, nb] . GA[5] - (GS[nb] . GS[nb] . GS[nb] . \
+GALR[mu, n, nb] . GSLR[p2, n, nb] . GALR[mu, n, nb] . GA[5]*SP[n, \
+p4])/2 - (GS[n] . GS[nb] . GS[nb] . GALR[mu, n, nb] . GSLR[p2, n, nb] \
+. GALR[mu, n, nb] . GA[5]*SP[nb, p4])/2))/2 - (SP[nb, p2]*(4*GALR[mu, \
+n, nb] . GSLR[p3, n, nb] . GSLR[p4, n, nb] . GALR[mu, n, nb] . GA[5] \
+- GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p3, n, nb] . GSLR[p4, n, \
+nb] . GALR[mu, n, nb] . GA[5] - ((-4*GS[nb] . GALR[mu, n, nb] . \
+GSLR[p3, n, nb] . GALR[mu, n, nb] . GA[5] + GS[n] . GS[nb] . GS[nb] . \
+GALR[mu, n, nb] . GSLR[p3, n, nb] . GALR[mu, n, nb] . GA[5])*SP[n, \
+p4])/2 + (GS[n] . GS[n] . GS[nb] . GALR[mu, n, nb] . GSLR[p3, n, nb] \
+. GALR[mu, n, nb] . GA[5]*SP[nb, p4])/2 + 2*(-GS[n] . GS[nb] . GA[5] \
++ 4*GA[5])*SP[n, p3]*SP[nb, p4]))/2))/2"},
+{"fcstDiracTrickLightCone-ID69",
+"DiracTrick[GALRD[mu].GA[5].GALRD[mu],FCE->True]",
+"-((-2 + D)*GA[5])"},
+{"fcstDiracTrickLightCone-ID70",
+"DiracTrick[GALRD[mu].GA[5].GALRD[{mu1}].GALRD[mu],FCE->True]",
+"-((-4 + D)*GALRD[mu1, n, nb] . GA[5])"},
+{"fcstDiracTrickLightCone-ID71",
+"DiracTrick[GALRD[mu].GA[5].GALRD[{mu1,mu2}].GALRD[mu],FCE->True]",
+	"-((-6 + D)*GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GA[5]) - \
+4*GA[5]*MTLRD[mu1, mu2, n, nb]"},
+{"fcstDiracTrickLightCone-ID72",
+"DiracTrick[GALRD[mu].GA[5].GALRD[{mu1,mu2,mu3}].GALRD[mu],\
+FCE->True]",
+"-((-8 + D)*GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GALRD[mu3, n, \
+nb] . GA[5]) + 4*(-(GALRD[mu3, n, nb] . GA[5]*MTLRD[mu1, mu2, n, nb]) \
++ GALRD[mu2, n, nb] . GA[5]*MTLRD[mu1, mu3, n, nb] - GALRD[mu1, n, \
+nb] . GA[5]*MTLRD[mu2, mu3, n, nb])"},
+{"fcstDiracTrickLightCone-ID73",
+"DiracTrick[GALRD[mu].GA[5].GALRD[{mu1,mu2,mu3,mu4}].GALRD[mu],\
+FCE->True]",
+"-((-10 + D)*GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GALRD[mu3, n, \
+nb] . GALRD[mu4, n, nb] . GA[5]) + 4*(-(GALRD[mu3, n, nb] . \
+GALRD[mu4, n, nb] . GA[5]*MTLRD[mu1, mu2, n, nb]) + GALRD[mu2, n, nb] \
+. GALRD[mu4, n, nb] . GA[5]*MTLRD[mu1, mu3, n, nb] - GALRD[mu2, n, \
+nb] . GALRD[mu3, n, nb] . GA[5]*MTLRD[mu1, mu4, n, nb] - GALRD[mu1, \
+n, nb] . GALRD[mu4, n, nb] . GA[5]*MTLRD[mu2, mu3, n, nb] + \
+GALRD[mu1, n, nb] . GALRD[mu3, n, nb] . GA[5]*MTLRD[mu2, mu4, n, nb] \
+- GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GA[5]*MTLRD[mu3, mu4, n, \
+nb])"},
+{"fcstDiracTrickLightCone-ID74",
+"DiracTrick[GALRD[mu].GA[5].GALRD[{mu1,mu2,mu3,mu4,mu5}].GALRD[mu],\
+FCE->True]",
+"-((-12 + D)*GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GALRD[mu3, n, \
+nb] . GALRD[mu4, n, nb] . GALRD[mu5, n, nb] . GA[5]) + \
+4*(-(GALRD[mu3, n, nb] . GALRD[mu4, n, nb] . GALRD[mu5, n, nb] . \
+GA[5]*MTLRD[mu1, mu2, n, nb]) + GALRD[mu2, n, nb] . GALRD[mu4, n, nb] \
+. GALRD[mu5, n, nb] . GA[5]*MTLRD[mu1, mu3, n, nb] - GALRD[mu2, n, \
+nb] . GALRD[mu3, n, nb] . GALRD[mu5, n, nb] . GA[5]*MTLRD[mu1, mu4, \
+n, nb] + GALRD[mu2, n, nb] . GALRD[mu3, n, nb] . GALRD[mu4, n, nb] . \
+GA[5]*MTLRD[mu1, mu5, n, nb] - GALRD[mu1, n, nb] . GALRD[mu4, n, nb] \
+. GALRD[mu5, n, nb] . GA[5]*MTLRD[mu2, mu3, n, nb] + GALRD[mu1, n, \
+nb] . GALRD[mu3, n, nb] . GALRD[mu5, n, nb] . GA[5]*MTLRD[mu2, mu4, \
+n, nb] - GALRD[mu1, n, nb] . GALRD[mu3, n, nb] . GALRD[mu4, n, nb] . \
+GA[5]*MTLRD[mu2, mu5, n, nb] - GALRD[mu1, n, nb] . GALRD[mu2, n, nb] \
+. GALRD[mu5, n, nb] . GA[5]*MTLRD[mu3, mu4, n, nb] + GALRD[mu1, n, \
+nb] . GALRD[mu2, n, nb] . GALRD[mu4, n, nb] . GA[5]*MTLRD[mu3, mu5, \
+n, nb] - GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GALRD[mu3, n, nb] . \
+GA[5]*MTLRD[mu4, mu5, n, nb])"},
+{"fcstDiracTrickLightCone-ID75",
+"DiracTrick[GALRD[mu].GA[5].GAD[mu1].GALRD[mu],FCE->True]",
+"-((-4 + D)*GALRD[mu1, n, nb] . GA[5]) - ((-2 + D)*GSD[nb] . \
+GA[5]*FVD[n, mu1])/2 - ((-2 + D)*GSD[n] . GA[5]*FVD[nb, mu1])/2"},
+{"fcstDiracTrickLightCone-ID76",
+"DiracTrick[GALRD[mu].GA[5].GAD[mu1,mu2,mu3].GALRD[mu],FCE->True]",
+	"GALRD[mu, n, nb] . GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . \
+GALRD[mu3, n, nb] . GALRD[mu, n, nb] . GA[5] - (GSD[nb] . GALRD[mu, \
+n, nb] . GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GALRD[mu, n, nb] . \
+GA[5]*FVD[n, mu3])/2 - (GSD[n] . GALRD[mu, n, nb] . GALRD[mu1, n, nb] \
+. GALRD[mu2, n, nb] . GALRD[mu, n, nb] . GA[5]*FVD[nb, mu3])/2 - \
+(FVD[nb, mu2]*(-GSD[n] . GALRD[mu, n, nb] . GALRD[mu1, n, nb] . \
+GALRD[mu3, n, nb] . GALRD[mu, n, nb] . GA[5] - (GSD[n] . GSD[nb] . \
+GALRD[mu, n, nb] . GALRD[mu1, n, nb] . GALRD[mu, n, nb] . \
+GA[5]*FVD[n, mu3])/2 - (GSD[n] . GSD[n] . GALRD[mu, n, nb] . \
+GALRD[mu1, n, nb] . GALRD[mu, n, nb] . GA[5]*FVD[nb, mu3])/2))/2 - \
+(FVD[n, mu2]*(-GSD[nb] . GALRD[mu, n, nb] . GALRD[mu1, n, nb] . \
+GALRD[mu3, n, nb] . GALRD[mu, n, nb] . GA[5] - (GSD[nb] . GSD[nb] . \
+GALRD[mu, n, nb] . GALRD[mu1, n, nb] . GALRD[mu, n, nb] . \
+GA[5]*FVD[n, mu3])/2 + ((-4*GALRD[mu, n, nb] . GALRD[mu1, n, nb] . \
+GALRD[mu, n, nb] . GA[5] + GSD[n] . GSD[nb] . GALRD[mu, n, nb] . \
+GALRD[mu1, n, nb] . GALRD[mu, n, nb] . GA[5])*FVD[nb, mu3])/2))/2 - \
+(FVD[n, mu1]*(GSD[nb] . GALRD[mu, n, nb] . GALRD[mu2, n, nb] . \
+GALRD[mu3, n, nb] . GALRD[mu, n, nb] . GA[5] + (GSD[nb] . GSD[nb] . \
+GALRD[mu, n, nb] . GALRD[mu2, n, nb] . GALRD[mu, n, nb] . \
+GA[5]*FVD[n, mu3])/2 - ((-((-4 + D)*(4*GALRD[mu3, n, nb] . GA[5] - \
+GSD[n] . GSD[nb] . GALRD[mu3, n, nb] . GA[5])) - 2*(-2 + D)*GSD[nb] . \
+GA[5]*FVD[n, mu3])*FVD[nb, mu2])/2 - ((-4*GALRD[mu, n, nb] . \
+GALRD[mu2, n, nb] . GALRD[mu, n, nb] . GA[5] + GSD[n] . GSD[nb] . \
+GALRD[mu, n, nb] . GALRD[mu2, n, nb] . GALRD[mu, n, nb] . \
+GA[5])*FVD[nb, mu3])/2))/2 - (FVD[nb, mu1]*(GSD[n] . GALRD[mu, n, nb] \
+. GALRD[mu2, n, nb] . GALRD[mu3, n, nb] . GALRD[mu, n, nb] . GA[5] + \
+(GSD[n] . GSD[nb] . GALRD[mu, n, nb] . GALRD[mu2, n, nb] . GALRD[mu, \
+n, nb] . GA[5]*FVD[n, mu3])/2 + (GSD[n] . GSD[n] . GALRD[mu, n, nb] . \
+GALRD[mu2, n, nb] . GALRD[mu, n, nb] . GA[5]*FVD[nb, mu3])/2 - \
+(FVD[n, mu2]*(-((-4 + D)*GSD[n] . GSD[nb] . GALRD[mu3, n, nb] . \
+GA[5]) - 2*(-2 + D)*GSD[n] . GA[5]*FVD[nb, mu3]))/2))/2"},
+{"fcstDiracTrickLightCone-ID77",
+"DiracTrick[GALRD[mu].GA[5].GSD[p1].GALRD[mu],FCE->True]",
+"-((-4 + D)*GSLRD[p1, n, nb] . GA[5]) - ((-2 + D)*GSD[nb] . \
+GA[5]*SPD[n, p1])/2 - ((-2 + D)*GSD[n] . GA[5]*SPD[nb, p1])/2"},
+{"fcstDiracTrickLightCone-ID78",
+"DiracTrick[GALRD[mu].GA[5].GSD[p1,p2].GALRD[mu],FCE->True]",
+"-GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . \
+GALRD[mu, n, nb] . GA[5] - (GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, n, \
+nb] . GALRD[mu, n, nb] . GA[5]*SPD[n, p2])/2 + ((-((-4 + D)*GSD[n] . \
+GSLRD[p2, n, nb] . GA[5]) - ((-2 + D)*GSD[n] . GSD[nb] . GA[5]*SPD[n, \
+p2])/2)*SPD[nb, p1])/2 - (GSD[n] . GALRD[mu, n, nb] . GSLRD[p1, n, \
+nb] . GALRD[mu, n, nb] . GA[5]*SPD[nb, p2])/2 + (SPD[n, p1]*(-((-4 + \
+D)*GSD[nb] . GSLRD[p2, n, nb] . GA[5]) - ((-2 + D)*(-GSD[n] . GSD[nb] \
+. GA[5] + 4*GA[5])*SPD[nb, p2])/2))/2"},
+{"fcstDiracTrickLightCone-ID79",
+"DiracTrick[GALRD[mu].GA[5].GSD[p1,p2,p3].GALRD[mu],FCE->True]",
+"GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . \
+GSLRD[p3, n, nb] . GALRD[mu, n, nb] . GA[5] - (GSD[nb] . GALRD[mu, n, \
+nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GALRD[mu, n, nb] . \
+GA[5]*SPD[n, p3])/2 - (GSD[n] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . \
+GSLRD[p2, n, nb] . GALRD[mu, n, nb] . GA[5]*SPD[nb, p3])/2 - (SPD[nb, \
+p2]*(-GSD[n] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p3, n, nb] \
+. GALRD[mu, n, nb] . GA[5] - (GSD[n] . GSD[nb] . GALRD[mu, n, nb] . \
+GSLRD[p1, n, nb] . GALRD[mu, n, nb] . GA[5]*SPD[n, p3])/2 - (GSD[n] . \
+GSD[n] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GALRD[mu, n, nb] . \
+GA[5]*SPD[nb, p3])/2))/2 - (SPD[n, p2]*(-GSD[nb] . GALRD[mu, n, nb] . \
+GSLRD[p1, n, nb] . GSLRD[p3, n, nb] . GALRD[mu, n, nb] . GA[5] - \
+(GSD[nb] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GALRD[mu, \
+n, nb] . GA[5]*SPD[n, p3])/2 + ((-4*GALRD[mu, n, nb] . GSLRD[p1, n, \
+nb] . GALRD[mu, n, nb] . GA[5] + GSD[n] . GSD[nb] . GALRD[mu, n, nb] \
+. GSLRD[p1, n, nb] . GALRD[mu, n, nb] . GA[5])*SPD[nb, p3])/2))/2 - \
+(SPD[n, p1]*(GSD[nb] . GALRD[mu, n, nb] . GSLRD[p2, n, nb] . \
+GSLRD[p3, n, nb] . GALRD[mu, n, nb] . GA[5] + (GSD[nb] . GSD[nb] . \
+GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GALRD[mu, n, nb] . GA[5]*SPD[n, \
+p3])/2 - ((-((-4 + D)*(4*GSLRD[p3, n, nb] . GA[5] - GSD[n] . GSD[nb] \
+. GSLRD[p3, n, nb] . GA[5])) - 2*(-2 + D)*GSD[nb] . GA[5]*SPD[n, \
+p3])*SPD[nb, p2])/2 - ((-4*GALRD[mu, n, nb] . GSLRD[p2, n, nb] . \
+GALRD[mu, n, nb] . GA[5] + GSD[n] . GSD[nb] . GALRD[mu, n, nb] . \
+GSLRD[p2, n, nb] . GALRD[mu, n, nb] . GA[5])*SPD[nb, p3])/2))/2 - \
+(SPD[nb, p1]*(GSD[n] . GALRD[mu, n, nb] . GSLRD[p2, n, nb] . \
+GSLRD[p3, n, nb] . GALRD[mu, n, nb] . GA[5] + (GSD[n] . GSD[nb] . \
+GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GALRD[mu, n, nb] . GA[5]*SPD[n, \
+p3])/2 + (GSD[n] . GSD[n] . GALRD[mu, n, nb] . GSLRD[p2, n, nb] . \
+GALRD[mu, n, nb] . GA[5]*SPD[nb, p3])/2 - (SPD[n, p2]*(-((-4 + \
+D)*GSD[n] . GSD[nb] . GSLRD[p3, n, nb] . GA[5]) - 2*(-2 + D)*GSD[n] . \
+GA[5]*SPD[nb, p3]))/2))/2"},
+{"fcstDiracTrickLightCone-ID80",
+"DiracTrick[GALRD[mu].GA[5].GSD[p1,p2,p3,p4].GALRD[mu],FCE->True]",
+	"-GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . \
+GSLRD[p3, n, nb] . GSLRD[p4, n, nb] . GALRD[mu, n, nb] . GA[5] - \
+(GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . \
+GSLRD[p3, n, nb] . GALRD[mu, n, nb] . GA[5]*SPD[n, p4])/2 - (GSD[n] . \
+GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, n, \
+nb] . GALRD[mu, n, nb] . GA[5]*SPD[nb, p4])/2 + (SPD[nb, p3]*(GSD[n] \
+. GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GSLRD[p4, \
+n, nb] . GALRD[mu, n, nb] . GA[5] - (GSD[n] . GSD[nb] . GALRD[mu, n, \
+nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GALRD[mu, n, nb] . \
+GA[5]*SPD[n, p4])/2 - (GSD[n] . GSD[n] . GALRD[mu, n, nb] . GSLRD[p1, \
+n, nb] . GSLRD[p2, n, nb] . GALRD[mu, n, nb] . GA[5]*SPD[nb, \
+p4])/2))/2 + (SPD[n, p3]*(GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, n, \
+nb] . GSLRD[p2, n, nb] . GSLRD[p4, n, nb] . GALRD[mu, n, nb] . GA[5] \
+- (GSD[nb] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . \
+GSLRD[p2, n, nb] . GALRD[mu, n, nb] . GA[5]*SPD[n, p4])/2 - \
+((4*GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . \
+GALRD[mu, n, nb] . GA[5] - GSD[n] . GSD[nb] . GALRD[mu, n, nb] . \
+GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GALRD[mu, n, nb] . \
+GA[5])*SPD[nb, p4])/2))/2 + (SPD[nb, p2]*(-GSD[n] . GALRD[mu, n, nb] \
+. GSLRD[p1, n, nb] . GSLRD[p3, n, nb] . GSLRD[p4, n, nb] . GALRD[mu, \
+n, nb] . GA[5] + (GSD[n] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, n, \
+nb] . GSLRD[p3, n, nb] . GALRD[mu, n, nb] . GA[5]*SPD[n, p4])/2 + \
+(GSD[n] . GSD[n] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p3, n, \
+nb] . GALRD[mu, n, nb] . GA[5]*SPD[nb, p4])/2 + (SPD[nb, p3]*(-GSD[n] \
+. GSD[n] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p4, n, nb] . \
+GALRD[mu, n, nb] . GA[5] - (GSD[n] . GSD[n] . GSD[nb] . GALRD[mu, n, \
+nb] . GSLRD[p1, n, nb] . GALRD[mu, n, nb] . GA[5]*SPD[n, p4])/2 - \
+(GSD[n] . GSD[n] . GSD[n] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . \
+GALRD[mu, n, nb] . GA[5]*SPD[nb, p4])/2))/2 + (SPD[n, p3]*(-GSD[n] . \
+GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p4, n, nb] . \
+GALRD[mu, n, nb] . GA[5] - (GSD[n] . GSD[nb] . GSD[nb] . GALRD[mu, n, \
+nb] . GSLRD[p1, n, nb] . GALRD[mu, n, nb] . GA[5]*SPD[n, p4])/2 + \
+((-4*GSD[n] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GALRD[mu, n, nb] \
+. GA[5] + GSD[n] . GSD[n] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, n, \
+nb] . GALRD[mu, n, nb] . GA[5])*SPD[nb, p4])/2))/2))/2 + (SPD[nb, \
+p1]*(GSD[n] . GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, n, nb] \
+. GSLRD[p4, n, nb] . GALRD[mu, n, nb] . GA[5] - (GSD[n] . GSD[nb] . \
+GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, n, nb] . GALRD[mu, n, \
+nb] . GA[5]*SPD[n, p4])/2 - (GSD[n] . GSD[n] . GALRD[mu, n, nb] . \
+GSLRD[p2, n, nb] . GSLRD[p3, n, nb] . GALRD[mu, n, nb] . \
+GA[5]*SPD[nb, p4])/2 - (SPD[nb, p3]*(-GSD[n] . GSD[n] . GALRD[mu, n, \
+nb] . GSLRD[p2, n, nb] . GSLRD[p4, n, nb] . GALRD[mu, n, nb] . GA[5] \
+- (GSD[n] . GSD[n] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p2, n, nb] . \
+GALRD[mu, n, nb] . GA[5]*SPD[n, p4])/2 - (GSD[n] . GSD[n] . GSD[n] . \
+GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GALRD[mu, n, nb] . \
+GA[5]*SPD[nb, p4])/2))/2 - (SPD[n, p3]*(-GSD[n] . GSD[nb] . GALRD[mu, \
+n, nb] . GSLRD[p2, n, nb] . GSLRD[p4, n, nb] . GALRD[mu, n, nb] . \
+GA[5] - (GSD[n] . GSD[nb] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p2, n, \
+nb] . GALRD[mu, n, nb] . GA[5]*SPD[n, p4])/2 + ((-4*GSD[n] . \
+GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GALRD[mu, n, nb] . GA[5] + \
+GSD[n] . GSD[n] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p2, n, nb] . \
+GALRD[mu, n, nb] . GA[5])*SPD[nb, p4])/2))/2 - (SPD[n, p2]*(GSD[n] . \
+GSD[nb] . GALRD[mu, n, nb] . GSLRD[p3, n, nb] . GSLRD[p4, n, nb] . \
+GALRD[mu, n, nb] . GA[5] + (GSD[n] . GSD[nb] . GSD[nb] . GALRD[mu, n, \
+nb] . GSLRD[p3, n, nb] . GALRD[mu, n, nb] . GA[5]*SPD[n, p4])/2 - \
+2*(-((-4 + D)*GSD[n] . GSLRD[p4, n, nb] . GA[5]) - ((-2 + D)*GSD[n] . \
+GSD[nb] . GA[5]*SPD[n, p4])/2)*SPD[nb, p3] - ((-4*GSD[n] . GALRD[mu, \
+n, nb] . GSLRD[p3, n, nb] . GALRD[mu, n, nb] . GA[5] + GSD[n] . \
+GSD[n] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p3, n, nb] . GALRD[mu, n, \
+nb] . GA[5])*SPD[nb, p4])/2))/2))/2 + (SPD[n, p2]*(-GSD[nb] . \
+GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p3, n, nb] . GSLRD[p4, n, \
+nb] . GALRD[mu, n, nb] . GA[5] + (GSD[nb] . GSD[nb] . GALRD[mu, n, \
+nb] . GSLRD[p1, n, nb] . GSLRD[p3, n, nb] . GALRD[mu, n, nb] . \
+GA[5]*SPD[n, p4])/2 + ((4*GALRD[mu, n, nb] . GSLRD[p1, n, nb] . \
+GSLRD[p3, n, nb] . GALRD[mu, n, nb] . GA[5] - GSD[n] . GSD[nb] . \
+GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p3, n, nb] . GALRD[mu, n, \
+nb] . GA[5])*SPD[nb, p4])/2 + (SPD[nb, p3]*(-4*GALRD[mu, n, nb] . \
+GSLRD[p1, n, nb] . GSLRD[p4, n, nb] . GALRD[mu, n, nb] . GA[5] + \
+GSD[n] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GSLRD[p4, n, \
+nb] . GALRD[mu, n, nb] . GA[5] + ((-4*GSD[nb] . GALRD[mu, n, nb] . \
+GSLRD[p1, n, nb] . GALRD[mu, n, nb] . GA[5] + GSD[n] . GSD[nb] . \
+GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GALRD[mu, n, nb] . \
+GA[5])*SPD[n, p4])/2 - (GSD[n] . GSD[n] . GSD[nb] . GALRD[mu, n, nb] \
+. GSLRD[p1, n, nb] . GALRD[mu, n, nb] . GA[5]*SPD[nb, p4])/2))/2 + \
+(SPD[n, p3]*(-GSD[nb] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] \
+. GSLRD[p4, n, nb] . GALRD[mu, n, nb] . GA[5] - (GSD[nb] . GSD[nb] . \
+GSD[nb] . GALRD[mu, n, nb] . GSLRD[p1, n, nb] . GALRD[mu, n, nb] . \
+GA[5]*SPD[n, p4])/2 - (GSD[n] . GSD[nb] . GSD[nb] . GALRD[mu, n, nb] \
+. GSLRD[p1, n, nb] . GALRD[mu, n, nb] . GA[5]*SPD[nb, p4])/2))/2))/2 \
++ (SPD[n, p1]*(GSD[nb] . GALRD[mu, n, nb] . GSLRD[p2, n, nb] . \
+GSLRD[p3, n, nb] . GSLRD[p4, n, nb] . GALRD[mu, n, nb] . GA[5] - \
+(GSD[nb] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, \
+n, nb] . GALRD[mu, n, nb] . GA[5]*SPD[n, p4])/2 - ((4*GALRD[mu, n, \
+nb] . GSLRD[p2, n, nb] . GSLRD[p3, n, nb] . GALRD[mu, n, nb] . GA[5] \
+- GSD[n] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, \
+n, nb] . GALRD[mu, n, nb] . GA[5])*SPD[nb, p4])/2 - (SPD[nb, \
+p3]*(-4*GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GSLRD[p4, n, nb] . \
+GALRD[mu, n, nb] . GA[5] + GSD[n] . GSD[nb] . GALRD[mu, n, nb] . \
+GSLRD[p2, n, nb] . GSLRD[p4, n, nb] . GALRD[mu, n, nb] . GA[5] + \
+((-4*GSD[nb] . GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GALRD[mu, n, nb] \
+. GA[5] + GSD[n] . GSD[nb] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p2, \
+n, nb] . GALRD[mu, n, nb] . GA[5])*SPD[n, p4])/2 - (GSD[n] . GSD[n] . \
+GSD[nb] . GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GALRD[mu, n, nb] . \
+GA[5]*SPD[nb, p4])/2))/2 - (SPD[n, p3]*(-GSD[nb] . GSD[nb] . \
+GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GSLRD[p4, n, nb] . GALRD[mu, n, \
+nb] . GA[5] - (GSD[nb] . GSD[nb] . GSD[nb] . GALRD[mu, n, nb] . \
+GSLRD[p2, n, nb] . GALRD[mu, n, nb] . GA[5]*SPD[n, p4])/2 - (GSD[n] . \
+GSD[nb] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p2, n, nb] . GALRD[mu, \
+n, nb] . GA[5]*SPD[nb, p4])/2))/2 - (SPD[nb, p2]*(4*GALRD[mu, n, nb] \
+. GSLRD[p3, n, nb] . GSLRD[p4, n, nb] . GALRD[mu, n, nb] . GA[5] - \
+GSD[n] . GSD[nb] . GALRD[mu, n, nb] . GSLRD[p3, n, nb] . GSLRD[p4, n, \
+nb] . GALRD[mu, n, nb] . GA[5] - ((-4*GSD[nb] . GALRD[mu, n, nb] . \
+GSLRD[p3, n, nb] . GALRD[mu, n, nb] . GA[5] + GSD[n] . GSD[nb] . \
+GSD[nb] . GALRD[mu, n, nb] . GSLRD[p3, n, nb] . GALRD[mu, n, nb] . \
+GA[5])*SPD[n, p4])/2 + (GSD[n] . GSD[n] . GSD[nb] . GALRD[mu, n, nb] \
+. GSLRD[p3, n, nb] . GALRD[mu, n, nb] . GA[5]*SPD[nb, p4])/2 - \
+2*SPD[n, p3]*(-((-4 + D)*GSD[nb] . GSLRD[p4, n, nb] . GA[5]) - ((-2 + \
+D)*(-GSD[n] . GSD[nb] . GA[5] + 4*GA[5])*SPD[nb, p4])/2)))/2))/2"},
+{"fcstDiracTrickLightCone-ID81",
+"DiracTrick[GSLR[v].GSLR[v],FCE->True]", "SPLR[v, v, n, nb]"},
+{"fcstDiracTrickLightCone-ID82",
+"DiracTrick[GSLR[v].GALR[{mu1}].GSLR[v],FCE->True]",
+"2*FVLR[v, mu1, n, nb]*GSLR[v, n, nb] - GALR[mu1, n, nb]*SPLR[v, \
+v, n, nb]"},
+{"fcstDiracTrickLightCone-ID83",
+"DiracTrick[GSLR[v].GALR[{mu1,mu2}].GSLR[v],FCE->True]",
+"2*(GALR[mu2, n, nb] . GSLR[v, n, nb]*FVLR[v, mu1, n, nb] - \
+GALR[mu1, n, nb] . GSLR[v, n, nb]*FVLR[v, mu2, n, nb]) + GALR[mu1, n, \
+nb] . GALR[mu2, n, nb]*SPLR[v, v, n, nb]"},
+{"fcstDiracTrickLightCone-ID84",
+"DiracTrick[GSLR[v].GALR[{mu1,mu2,mu3}].GSLR[v],FCE->True]",
+"2*(GALR[mu2, n, nb] . GALR[mu3, n, nb] . GSLR[v, n, nb]*FVLR[v, \
+mu1, n, nb] - GALR[mu1, n, nb] . GALR[mu3, n, nb] . GSLR[v, n, \
+nb]*FVLR[v, mu2, n, nb] + GALR[mu1, n, nb] . GALR[mu2, n, nb] . \
+GSLR[v, n, nb]*FVLR[v, mu3, n, nb]) - GALR[mu1, n, nb] . GALR[mu2, n, \
+nb] . GALR[mu3, n, nb]*SPLR[v, v, n, nb]"},
+{"fcstDiracTrickLightCone-ID85",
+"DiracTrick[GSLR[v].GALR[{mu1,mu2,mu3,mu4}].GSLR[v],FCE->True]",
+"2*(GALR[mu2, n, nb] . GALR[mu3, n, nb] . GALR[mu4, n, nb] . \
+GSLR[v, n, nb]*FVLR[v, mu1, n, nb] - GALR[mu1, n, nb] . GALR[mu3, n, \
+nb] . GALR[mu4, n, nb] . GSLR[v, n, nb]*FVLR[v, mu2, n, nb] + \
+GALR[mu1, n, nb] . GALR[mu2, n, nb] . GALR[mu4, n, nb] . GSLR[v, n, \
+nb]*FVLR[v, mu3, n, nb] - GALR[mu1, n, nb] . GALR[mu2, n, nb] . \
+GALR[mu3, n, nb] . GSLR[v, n, nb]*FVLR[v, mu4, n, nb]) + GALR[mu1, n, \
+nb] . GALR[mu2, n, nb] . GALR[mu3, n, nb] . GALR[mu4, n, nb]*SPLR[v, \
+v, n, nb]"},
+{"fcstDiracTrickLightCone-ID86",
+"DiracTrick[GSLR[v].GALR[{mu1,mu2,mu3,mu4,mu5}].GSLR[v],FCE->True]\
+", "2*(GALR[mu2, n, nb] . GALR[mu3, n, nb] . GALR[mu4, n, nb] . \
+GALR[mu5, n, nb] . GSLR[v, n, nb]*FVLR[v, mu1, n, nb] - GALR[mu1, n, \
+nb] . GALR[mu3, n, nb] . GALR[mu4, n, nb] . GALR[mu5, n, nb] . \
+GSLR[v, n, nb]*FVLR[v, mu2, n, nb] + GALR[mu1, n, nb] . GALR[mu2, n, \
+nb] . GALR[mu4, n, nb] . GALR[mu5, n, nb] . GSLR[v, n, nb]*FVLR[v, \
+mu3, n, nb] - GALR[mu1, n, nb] . GALR[mu2, n, nb] . GALR[mu3, n, nb] \
+. GALR[mu5, n, nb] . GSLR[v, n, nb]*FVLR[v, mu4, n, nb] + GALR[mu1, \
+n, nb] . GALR[mu2, n, nb] . GALR[mu3, n, nb] . GALR[mu4, n, nb] . \
+GSLR[v, n, nb]*FVLR[v, mu5, n, nb]) - GALR[mu1, n, nb] . GALR[mu2, n, \
+nb] . GALR[mu3, n, nb] . GALR[mu4, n, nb] . GALR[mu5, n, nb]*SPLR[v, \
+v, n, nb]"},
+{"fcstDiracTrickLightCone-ID87",
+"DiracTrick[GSLR[v].GA[mu1].GSLR[v],FCE->True]",
+"2*FVLR[v, mu1, n, nb]*GSLR[v, n, nb] - GALR[mu1, n, nb]*SPLR[v, \
+v, n, nb] - (FV[nb, mu1]*GS[n]*SPLR[v, v, n, nb])/2 - (FV[n, \
+mu1]*GS[nb]*SPLR[v, v, n, nb])/2"},
+{"fcstDiracTrickLightCone-ID88",
+"DiracTrick[GSLR[v].GA[mu1,mu2,mu3].GSLR[v],FCE->True]",
+"GSLR[v, n, nb] . GALR[mu1, n, nb] . GALR[mu2, n, nb] . GALR[mu3, \
+n, nb] . GSLR[v, n, nb] - (GS[nb] . GSLR[v, n, nb] . GALR[mu1, n, nb] \
+. GALR[mu2, n, nb] . GSLR[v, n, nb]*FV[n, mu3])/2 - (GS[n] . GSLR[v, \
+n, nb] . GALR[mu1, n, nb] . GALR[mu2, n, nb] . GSLR[v, n, nb]*FV[nb, \
+mu3])/2 - (FV[nb, mu2]*(-GS[n] . GSLR[v, n, nb] . GALR[mu1, n, nb] . \
+GALR[mu3, n, nb] . GSLR[v, n, nb] - (GS[n] . GS[nb] . GSLR[v, n, nb] \
+. GALR[mu1, n, nb] . GSLR[v, n, nb]*FV[n, mu3])/2 - (GS[n] . GS[n] . \
+GSLR[v, n, nb] . GALR[mu1, n, nb] . GSLR[v, n, nb]*FV[nb, mu3])/2))/2 \
+- (FV[n, mu2]*(-GS[nb] . GSLR[v, n, nb] . GALR[mu1, n, nb] . \
+GALR[mu3, n, nb] . GSLR[v, n, nb] - (GS[nb] . GS[nb] . GSLR[v, n, nb] \
+. GALR[mu1, n, nb] . GSLR[v, n, nb]*FV[n, mu3])/2 + ((-4*GSLR[v, n, \
+nb] . GALR[mu1, n, nb] . GSLR[v, n, nb] + GS[n] . GS[nb] . GSLR[v, n, \
+nb] . GALR[mu1, n, nb] . GSLR[v, n, nb])*FV[nb, mu3])/2))/2 - (FV[nb, \
+mu1]*(GS[n] . GSLR[v, n, nb] . GALR[mu2, n, nb] . GALR[mu3, n, nb] . \
+GSLR[v, n, nb] + (GS[n] . GS[nb] . GSLR[v, n, nb] . GALR[mu2, n, nb] \
+. GSLR[v, n, nb]*FV[n, mu3])/2 + (GS[n] . GS[n] . GSLR[v, n, nb] . \
+GALR[mu2, n, nb] . GSLR[v, n, nb]*FV[nb, mu3])/2 - (FV[n, \
+mu2]*(2*GS[n] . GS[nb] . GSLR[v, n, nb]*FVLR[v, mu3, n, nb] - GS[n] . \
+GS[nb] . GALR[mu3, n, nb]*SPLR[v, v, n, nb] - 2*FV[nb, \
+mu3]*GS[n]*SPLR[v, v, n, nb]))/2))/2 - (FV[n, mu1]*(GS[nb] . GSLR[v, \
+n, nb] . GALR[mu2, n, nb] . GALR[mu3, n, nb] . GSLR[v, n, nb] + \
+(GS[nb] . GS[nb] . GSLR[v, n, nb] . GALR[mu2, n, nb] . GSLR[v, n, \
+nb]*FV[n, mu3])/2 - ((-4*GSLR[v, n, nb] . GALR[mu2, n, nb] . GSLR[v, \
+n, nb] + GS[n] . GS[nb] . GSLR[v, n, nb] . GALR[mu2, n, nb] . GSLR[v, \
+n, nb])*FV[nb, mu3])/2 - (FV[nb, mu2]*(2*FVLR[v, mu3, n, nb]*(-GS[n] \
+. GS[nb] . GSLR[v, n, nb] + 4*GSLR[v, n, nb]) - (-GS[n] . GS[nb] . \
+GALR[mu3, n, nb] + 4*GALR[mu3, n, nb])*SPLR[v, v, n, nb] - 2*FV[n, \
+mu3]*GS[nb]*SPLR[v, v, n, nb]))/2))/2"},
+{"fcstDiracTrickLightCone-ID89",
+"DiracTrick[GSLR[v].GS[p1].GSLR[v],FCE->True]",
+"2*GSLR[v, n, nb]*SPLR[p1, v, n, nb] - GSLR[p1, n, nb]*SPLR[v, v, \
+n, nb] - (GS[nb]*SP[n, p1]*SPLR[v, v, n, nb])/2 - (GS[n]*SP[nb, \
+p1]*SPLR[v, v, n, nb])/2"},
+{"fcstDiracTrickLightCone-ID90",
+"DiracTrick[GSLR[v].GS[p1,p2].GSLR[v],FCE->True]",
+"GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[v, n, \
+nb] + (GS[nb] . GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[v, n, \
+nb]*SP[n, p2])/2 + (GS[n] . GSLR[v, n, nb] . GSLR[p1, n, nb] . \
+GSLR[v, n, nb]*SP[nb, p2])/2 - (SP[nb, p1]*(2*GS[n] . GSLR[v, n, \
+nb]*SPLR[p2, v, n, nb] - GS[n] . GSLR[p2, n, nb]*SPLR[v, v, n, nb] - \
+(GS[n] . GS[nb]*SP[n, p2]*SPLR[v, v, n, nb])/2))/2 - (SP[n, \
+p1]*(2*GS[nb] . GSLR[v, n, nb]*SPLR[p2, v, n, nb] - GS[nb] . GSLR[p2, \
+n, nb]*SPLR[v, v, n, nb] - ((4 - GS[n] . GS[nb])*SP[nb, p2]*SPLR[v, \
+v, n, nb])/2))/2"},
+{"fcstDiracTrickLightCone-ID91",
+"DiracTrick[GSLR[v].GS[p1,p2,p3].GSLR[v],FCE->True]",
+"GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, \
+nb] . GSLR[v, n, nb] - (GS[nb] . GSLR[v, n, nb] . GSLR[p1, n, nb] . \
+GSLR[p2, n, nb] . GSLR[v, n, nb]*SP[n, p3])/2 - (GS[n] . GSLR[v, n, \
+nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[v, n, nb]*SP[nb, \
+p3])/2 - (SP[nb, p2]*(-GS[n] . GSLR[v, n, nb] . GSLR[p1, n, nb] . \
+GSLR[p3, n, nb] . GSLR[v, n, nb] - (GS[n] . GS[nb] . GSLR[v, n, nb] . \
+GSLR[p1, n, nb] . GSLR[v, n, nb]*SP[n, p3])/2 - (GS[n] . GS[n] . \
+GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[v, n, nb]*SP[nb, p3])/2))/2 - \
+(SP[n, p2]*(-GS[nb] . GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[p3, n, \
+nb] . GSLR[v, n, nb] - (GS[nb] . GS[nb] . GSLR[v, n, nb] . GSLR[p1, \
+n, nb] . GSLR[v, n, nb]*SP[n, p3])/2 + ((-4*GSLR[v, n, nb] . GSLR[p1, \
+n, nb] . GSLR[v, n, nb] + GS[n] . GS[nb] . GSLR[v, n, nb] . GSLR[p1, \
+n, nb] . GSLR[v, n, nb])*SP[nb, p3])/2))/2 - (SP[n, p1]*(GS[nb] . \
+GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, nb] . GSLR[v, n, nb] + \
+(GS[nb] . GS[nb] . GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[v, n, \
+nb]*SP[n, p3])/2 - ((-4*GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[v, n, \
+nb] + GS[n] . GS[nb] . GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[v, n, \
+nb])*SP[nb, p3])/2 - (SP[nb, p2]*(2*(-GS[n] . GS[nb] . GSLR[v, n, nb] \
++ 4*GSLR[v, n, nb])*SPLR[p3, v, n, nb] - (-GS[n] . GS[nb] . GSLR[p3, \
+n, nb] + 4*GSLR[p3, n, nb])*SPLR[v, v, n, nb] - 2*GS[nb]*SP[n, \
+p3]*SPLR[v, v, n, nb]))/2))/2 - (SP[nb, p1]*(GS[n] . GSLR[v, n, nb] . \
+GSLR[p2, n, nb] . GSLR[p3, n, nb] . GSLR[v, n, nb] + (GS[n] . GS[nb] \
+. GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[v, n, nb]*SP[n, p3])/2 + \
+(GS[n] . GS[n] . GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[v, n, \
+nb]*SP[nb, p3])/2 - (SP[n, p2]*(2*GS[n] . GS[nb] . GSLR[v, n, \
+nb]*SPLR[p3, v, n, nb] - GS[n] . GS[nb] . GSLR[p3, n, nb]*SPLR[v, v, \
+n, nb] - 2*GS[n]*SP[nb, p3]*SPLR[v, v, n, nb]))/2))/2"},
+{"fcstDiracTrickLightCone-ID92",
+"DiracTrick[GSLR[v].GS[p1,p2,p3,p4].GSLR[v],FCE->True]",
+"GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, \
+nb] . GSLR[p4, n, nb] . GSLR[v, n, nb] + (GS[nb] . GSLR[v, n, nb] . \
+GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, nb] . GSLR[v, n, \
+nb]*SP[n, p4])/2 + (GS[n] . GSLR[v, n, nb] . GSLR[p1, n, nb] . \
+GSLR[p2, n, nb] . GSLR[p3, n, nb] . GSLR[v, n, nb]*SP[nb, p4])/2 - \
+(SP[nb, p3]*(GS[n] . GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, \
+nb] . GSLR[p4, n, nb] . GSLR[v, n, nb] - (GS[n] . GS[nb] . GSLR[v, n, \
+nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[v, n, nb]*SP[n, p4])/2 \
+- (GS[n] . GS[n] . GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] \
+. GSLR[v, n, nb]*SP[nb, p4])/2))/2 - (SP[n, p3]*(GS[nb] . GSLR[v, n, \
+nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[p4, n, nb] . GSLR[v, \
+n, nb] - (GS[nb] . GS[nb] . GSLR[v, n, nb] . GSLR[p1, n, nb] . \
+GSLR[p2, n, nb] . GSLR[v, n, nb]*SP[n, p4])/2 - ((4*GSLR[v, n, nb] . \
+GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[v, n, nb] - GS[n] . GS[nb] . \
+GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[v, n, \
+nb])*SP[nb, p4])/2))/2 - (SP[nb, p2]*(-GS[n] . GSLR[v, n, nb] . \
+GSLR[p1, n, nb] . GSLR[p3, n, nb] . GSLR[p4, n, nb] . GSLR[v, n, nb] \
++ (GS[n] . GS[nb] . GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[p3, n, \
+nb] . GSLR[v, n, nb]*SP[n, p4])/2 + (GS[n] . GS[n] . GSLR[v, n, nb] . \
+GSLR[p1, n, nb] . GSLR[p3, n, nb] . GSLR[v, n, nb]*SP[nb, p4])/2 + \
+(SP[nb, p3]*(-GS[n] . GS[n] . GSLR[v, n, nb] . GSLR[p1, n, nb] . \
+GSLR[p4, n, nb] . GSLR[v, n, nb] - (GS[n] . GS[n] . GS[nb] . GSLR[v, \
+n, nb] . GSLR[p1, n, nb] . GSLR[v, n, nb]*SP[n, p4])/2 - (GS[n] . \
+GS[n] . GS[n] . GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[v, n, \
+nb]*SP[nb, p4])/2))/2 + (SP[n, p3]*(-GS[n] . GS[nb] . GSLR[v, n, nb] \
+. GSLR[p1, n, nb] . GSLR[p4, n, nb] . GSLR[v, n, nb] - (GS[n] . \
+GS[nb] . GS[nb] . GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[v, n, \
+nb]*SP[n, p4])/2 + ((-4*GS[n] . GSLR[v, n, nb] . GSLR[p1, n, nb] . \
+GSLR[v, n, nb] + GS[n] . GS[n] . GS[nb] . GSLR[v, n, nb] . GSLR[p1, \
+n, nb] . GSLR[v, n, nb])*SP[nb, p4])/2))/2))/2 - (SP[n, p2]*(-GS[nb] \
+. GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[p3, n, nb] . GSLR[p4, n, \
+nb] . GSLR[v, n, nb] + (GS[nb] . GS[nb] . GSLR[v, n, nb] . GSLR[p1, \
+n, nb] . GSLR[p3, n, nb] . GSLR[v, n, nb]*SP[n, p4])/2 + ((4*GSLR[v, \
+n, nb] . GSLR[p1, n, nb] . GSLR[p3, n, nb] . GSLR[v, n, nb] - GS[n] . \
+GS[nb] . GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[p3, n, nb] . GSLR[v, \
+n, nb])*SP[nb, p4])/2 + (SP[nb, p3]*(-4*GSLR[v, n, nb] . GSLR[p1, n, \
+nb] . GSLR[p4, n, nb] . GSLR[v, n, nb] + GS[n] . GS[nb] . GSLR[v, n, \
+nb] . GSLR[p1, n, nb] . GSLR[p4, n, nb] . GSLR[v, n, nb] + \
+((-4*GS[nb] . GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[v, n, nb] + \
+GS[n] . GS[nb] . GS[nb] . GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[v, \
+n, nb])*SP[n, p4])/2 - (GS[n] . GS[n] . GS[nb] . GSLR[v, n, nb] . \
+GSLR[p1, n, nb] . GSLR[v, n, nb]*SP[nb, p4])/2))/2 + (SP[n, \
+p3]*(-GS[nb] . GS[nb] . GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[p4, \
+n, nb] . GSLR[v, n, nb] - (GS[nb] . GS[nb] . GS[nb] . GSLR[v, n, nb] \
+. GSLR[p1, n, nb] . GSLR[v, n, nb]*SP[n, p4])/2 - (GS[n] . GS[nb] . \
+GS[nb] . GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[v, n, nb]*SP[nb, \
+p4])/2))/2))/2 - (SP[nb, p1]*(GS[n] . GSLR[v, n, nb] . GSLR[p2, n, \
+nb] . GSLR[p3, n, nb] . GSLR[p4, n, nb] . GSLR[v, n, nb] - (GS[n] . \
+GS[nb] . GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, nb] . GSLR[v, \
+n, nb]*SP[n, p4])/2 - (GS[n] . GS[n] . GSLR[v, n, nb] . GSLR[p2, n, \
+nb] . GSLR[p3, n, nb] . GSLR[v, n, nb]*SP[nb, p4])/2 - (SP[nb, \
+p3]*(-GS[n] . GS[n] . GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[p4, n, \
+nb] . GSLR[v, n, nb] - (GS[n] . GS[n] . GS[nb] . GSLR[v, n, nb] . \
+GSLR[p2, n, nb] . GSLR[v, n, nb]*SP[n, p4])/2 - (GS[n] . GS[n] . \
+GS[n] . GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[v, n, nb]*SP[nb, \
+p4])/2))/2 - (SP[n, p3]*(-GS[n] . GS[nb] . GSLR[v, n, nb] . GSLR[p2, \
+n, nb] . GSLR[p4, n, nb] . GSLR[v, n, nb] - (GS[n] . GS[nb] . GS[nb] \
+. GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[v, n, nb]*SP[n, p4])/2 + \
+((-4*GS[n] . GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[v, n, nb] + \
+GS[n] . GS[n] . GS[nb] . GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[v, \
+n, nb])*SP[nb, p4])/2))/2 - (SP[n, p2]*(GS[n] . GS[nb] . GSLR[v, n, \
+nb] . GSLR[p3, n, nb] . GSLR[p4, n, nb] . GSLR[v, n, nb] + (GS[n] . \
+GS[nb] . GS[nb] . GSLR[v, n, nb] . GSLR[p3, n, nb] . GSLR[v, n, \
+nb]*SP[n, p4])/2 - ((-4*GS[n] . GSLR[v, n, nb] . GSLR[p3, n, nb] . \
+GSLR[v, n, nb] + GS[n] . GS[n] . GS[nb] . GSLR[v, n, nb] . GSLR[p3, \
+n, nb] . GSLR[v, n, nb])*SP[nb, p4])/2 - 2*SP[nb, p3]*(2*GS[n] . \
+GSLR[v, n, nb]*SPLR[p4, v, n, nb] - GS[n] . GSLR[p4, n, nb]*SPLR[v, \
+v, n, nb] - (GS[n] . GS[nb]*SP[n, p4]*SPLR[v, v, n, nb])/2)))/2))/2 - \
+(SP[n, p1]*(GS[nb] . GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, \
+nb] . GSLR[p4, n, nb] . GSLR[v, n, nb] - (GS[nb] . GS[nb] . GSLR[v, \
+n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, nb] . GSLR[v, n, nb]*SP[n, \
+p4])/2 - ((4*GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, nb] . \
+GSLR[v, n, nb] - GS[n] . GS[nb] . GSLR[v, n, nb] . GSLR[p2, n, nb] . \
+GSLR[p3, n, nb] . GSLR[v, n, nb])*SP[nb, p4])/2 - (SP[nb, \
+p3]*(-4*GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[p4, n, nb] . GSLR[v, \
+n, nb] + GS[n] . GS[nb] . GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[p4, \
+n, nb] . GSLR[v, n, nb] + ((-4*GS[nb] . GSLR[v, n, nb] . GSLR[p2, n, \
+nb] . GSLR[v, n, nb] + GS[n] . GS[nb] . GS[nb] . GSLR[v, n, nb] . \
+GSLR[p2, n, nb] . GSLR[v, n, nb])*SP[n, p4])/2 - (GS[n] . GS[n] . \
+GS[nb] . GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[v, n, nb]*SP[nb, \
+p4])/2))/2 - (SP[n, p3]*(-GS[nb] . GS[nb] . GSLR[v, n, nb] . GSLR[p2, \
+n, nb] . GSLR[p4, n, nb] . GSLR[v, n, nb] - (GS[nb] . GS[nb] . GS[nb] \
+. GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[v, n, nb]*SP[n, p4])/2 - \
+(GS[n] . GS[nb] . GS[nb] . GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[v, \
+n, nb]*SP[nb, p4])/2))/2 - (SP[nb, p2]*(4*GSLR[v, n, nb] . GSLR[p3, \
+n, nb] . GSLR[p4, n, nb] . GSLR[v, n, nb] - GS[n] . GS[nb] . GSLR[v, \
+n, nb] . GSLR[p3, n, nb] . GSLR[p4, n, nb] . GSLR[v, n, nb] - \
+((-4*GS[nb] . GSLR[v, n, nb] . GSLR[p3, n, nb] . GSLR[v, n, nb] + \
+GS[n] . GS[nb] . GS[nb] . GSLR[v, n, nb] . GSLR[p3, n, nb] . GSLR[v, \
+n, nb])*SP[n, p4])/2 + (GS[n] . GS[n] . GS[nb] . GSLR[v, n, nb] . \
+GSLR[p3, n, nb] . GSLR[v, n, nb]*SP[nb, p4])/2 - 2*SP[n, \
+p3]*(2*GS[nb] . GSLR[v, n, nb]*SPLR[p4, v, n, nb] - GS[nb] . GSLR[p4, \
+n, nb]*SPLR[v, v, n, nb] - ((4 - GS[n] . GS[nb])*SP[nb, p4]*SPLR[v, \
+v, n, nb])/2)))/2))/2"},
+{"fcstDiracTrickLightCone-ID93",
+"DiracTrick[GSLRD[v].GSLRD[v],FCE->True]", "SPLRD[v, v, n, nb]"},
+{"fcstDiracTrickLightCone-ID94",
+"DiracTrick[GSLRD[v].GALRD[{mu1}].GSLRD[v],FCE->True]",
+"2*FVLRD[v, mu1, n, nb]*GSLRD[v, n, nb] - GALRD[mu1, n, nb]*SPD[v, \
+v]"},
+{"fcstDiracTrickLightCone-ID95",
+"DiracTrick[GSLRD[v].GALRD[{mu1,mu2}].GSLRD[v],FCE->True]",
+"2*(GALRD[mu2, n, nb] . GSLRD[v, n, nb]*FVLRD[v, mu1, n, nb] - \
+GALRD[mu1, n, nb] . GSLRD[v, n, nb]*FVLRD[v, mu2, n, nb]) + \
+GALRD[mu1, n, nb] . GALRD[mu2, n, nb]*SPD[v, v]"},
+{"fcstDiracTrickLightCone-ID96",
+"DiracTrick[GSLRD[v].GALRD[{mu1,mu2,mu3}].GSLRD[v],FCE->True]",
+"2*(GALRD[mu2, n, nb] . GALRD[mu3, n, nb] . GSLRD[v, n, \
+nb]*FVLRD[v, mu1, n, nb] - GALRD[mu1, n, nb] . GALRD[mu3, n, nb] . \
+GSLRD[v, n, nb]*FVLRD[v, mu2, n, nb] + GALRD[mu1, n, nb] . GALRD[mu2, \
+n, nb] . GSLRD[v, n, nb]*FVLRD[v, mu3, n, nb]) - GALRD[mu1, n, nb] . \
+GALRD[mu2, n, nb] . GALRD[mu3, n, nb]*SPD[v, v]"},
+{"fcstDiracTrickLightCone-ID97",
+"DiracTrick[GSLRD[v].GALRD[{mu1,mu2,mu3,mu4}].GSLRD[v],FCE->True]",
+	"2*(GALRD[mu2, n, nb] . GALRD[mu3, n, nb] . GALRD[mu4, n, nb] . \
+GSLRD[v, n, nb]*FVLRD[v, mu1, n, nb] - GALRD[mu1, n, nb] . GALRD[mu3, \
+n, nb] . GALRD[mu4, n, nb] . GSLRD[v, n, nb]*FVLRD[v, mu2, n, nb] + \
+GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GALRD[mu4, n, nb] . GSLRD[v, \
+n, nb]*FVLRD[v, mu3, n, nb] - GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . \
+GALRD[mu3, n, nb] . GSLRD[v, n, nb]*FVLRD[v, mu4, n, nb]) + \
+GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GALRD[mu3, n, nb] . \
+GALRD[mu4, n, nb]*SPD[v, v]"},
+{"fcstDiracTrickLightCone-ID98",
+"DiracTrick[GSLRD[v].GALRD[{mu1,mu2,mu3,mu4,mu5}].GSLRD[v],\
+FCE->True]",
+"2*(GALRD[mu2, n, nb] . GALRD[mu3, n, nb] . GALRD[mu4, n, nb] . \
+GALRD[mu5, n, nb] . GSLRD[v, n, nb]*FVLRD[v, mu1, n, nb] - GALRD[mu1, \
+n, nb] . GALRD[mu3, n, nb] . GALRD[mu4, n, nb] . GALRD[mu5, n, nb] . \
+GSLRD[v, n, nb]*FVLRD[v, mu2, n, nb] + GALRD[mu1, n, nb] . GALRD[mu2, \
+n, nb] . GALRD[mu4, n, nb] . GALRD[mu5, n, nb] . GSLRD[v, n, \
+nb]*FVLRD[v, mu3, n, nb] - GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . \
+GALRD[mu3, n, nb] . GALRD[mu5, n, nb] . GSLRD[v, n, nb]*FVLRD[v, mu4, \
+n, nb] + GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GALRD[mu3, n, nb] . \
+GALRD[mu4, n, nb] . GSLRD[v, n, nb]*FVLRD[v, mu5, n, nb]) - \
+GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GALRD[mu3, n, nb] . \
+GALRD[mu4, n, nb] . GALRD[mu5, n, nb]*SPD[v, v]"},
+{"fcstDiracTrickLightCone-ID99",
+"DiracTrick[GSLRD[v].GAD[mu1].GSLRD[v],FCE->True]",
+"2*FVLRD[v, mu1, n, nb]*GSLRD[v, n, nb] - GALRD[mu1, n, nb]*SPD[v, \
+v] - (FVD[nb, mu1]*GSD[n]*SPLRD[v, v, n, nb])/2 - (FVD[n, \
+mu1]*GSD[nb]*SPLRD[v, v, n, nb])/2"},
+{"fcstDiracTrickLightCone-ID100",
+"DiracTrick[GSLRD[v].GAD[mu1,mu2,mu3].GSLRD[v],FCE->True]",
+"GSLRD[v, n, nb] . GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . \
+GALRD[mu3, n, nb] . GSLRD[v, n, nb] - (GSD[nb] . GSLRD[v, n, nb] . \
+GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GSLRD[v, n, nb]*FVD[n, \
+mu3])/2 - (GSD[n] . GSLRD[v, n, nb] . GALRD[mu1, n, nb] . GALRD[mu2, \
+n, nb] . GSLRD[v, n, nb]*FVD[nb, mu3])/2 - (FVD[nb, mu2]*(-GSD[n] . \
+GSLRD[v, n, nb] . GALRD[mu1, n, nb] . GALRD[mu3, n, nb] . GSLRD[v, n, \
+nb] - (GSD[n] . GSD[nb] . GSLRD[v, n, nb] . GALRD[mu1, n, nb] . \
+GSLRD[v, n, nb]*FVD[n, mu3])/2 - (GSD[n] . GSD[n] . GSLRD[v, n, nb] . \
+GALRD[mu1, n, nb] . GSLRD[v, n, nb]*FVD[nb, mu3])/2))/2 - (FVD[n, \
+mu2]*(-GSD[nb] . GSLRD[v, n, nb] . GALRD[mu1, n, nb] . GALRD[mu3, n, \
+nb] . GSLRD[v, n, nb] - (GSD[nb] . GSD[nb] . GSLRD[v, n, nb] . \
+GALRD[mu1, n, nb] . GSLRD[v, n, nb]*FVD[n, mu3])/2 + ((-4*GSLRD[v, n, \
+nb] . GALRD[mu1, n, nb] . GSLRD[v, n, nb] + GSD[n] . GSD[nb] . \
+GSLRD[v, n, nb] . GALRD[mu1, n, nb] . GSLRD[v, n, nb])*FVD[nb, \
+mu3])/2))/2 - (FVD[nb, mu1]*(GSD[n] . GSLRD[v, n, nb] . GALRD[mu2, n, \
+nb] . GALRD[mu3, n, nb] . GSLRD[v, n, nb] + (GSD[n] . GSD[nb] . \
+GSLRD[v, n, nb] . GALRD[mu2, n, nb] . GSLRD[v, n, nb]*FVD[n, mu3])/2 \
++ (GSD[n] . GSD[n] . GSLRD[v, n, nb] . GALRD[mu2, n, nb] . GSLRD[v, \
+n, nb]*FVD[nb, mu3])/2 - (FVD[n, mu2]*(2*GSD[n] . GSD[nb] . GSLRD[v, \
+n, nb]*FVLRD[v, mu3, n, nb] - GSD[n] . GSD[nb] . GALRD[mu3, n, \
+nb]*SPD[v, v] - 2*FVD[nb, mu3]*GSD[n]*SPLRD[v, v, n, nb]))/2))/2 - \
+(FVD[n, mu1]*(GSD[nb] . GSLRD[v, n, nb] . GALRD[mu2, n, nb] . \
+GALRD[mu3, n, nb] . GSLRD[v, n, nb] + (GSD[nb] . GSD[nb] . GSLRD[v, \
+n, nb] . GALRD[mu2, n, nb] . GSLRD[v, n, nb]*FVD[n, mu3])/2 - \
+((-4*GSLRD[v, n, nb] . GALRD[mu2, n, nb] . GSLRD[v, n, nb] + GSD[n] . \
+GSD[nb] . GSLRD[v, n, nb] . GALRD[mu2, n, nb] . GSLRD[v, n, \
+nb])*FVD[nb, mu3])/2 - (FVD[nb, mu2]*(2*FVLRD[v, mu3, n, nb]*(-GSD[n] \
+. GSD[nb] . GSLRD[v, n, nb] + 4*GSLRD[v, n, nb]) - (-GSD[n] . GSD[nb] \
+. GALRD[mu3, n, nb] + 4*GALRD[mu3, n, nb])*SPD[v, v] - 2*FVD[n, \
+mu3]*GSD[nb]*SPLRD[v, v, n, nb]))/2))/2"},
+{"fcstDiracTrickLightCone-ID101",
+"DiracTrick[GSLRD[v].GSD[p1].GSLRD[v],FCE->True]",
+"-(GSLRD[p1, n, nb]*SPD[v, v]) + 2*GSLRD[v, n, nb]*SPLRD[p1, v, n, \
+nb] - (GSD[nb]*SPD[n, p1]*SPLRD[v, v, n, nb])/2 - (GSD[n]*SPD[nb, \
+p1]*SPLRD[v, v, n, nb])/2"},
+{"fcstDiracTrickLightCone-ID102",
+"DiracTrick[GSLRD[v].GSD[p1,p2].GSLRD[v],FCE->True]",
+"GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GSLRD[v, \
+n, nb] + (GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[v, n, \
+nb]*SPD[n, p2])/2 + (GSD[n] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . \
+GSLRD[v, n, nb]*SPD[nb, p2])/2 - (SPD[nb, p1]*(-(GSD[n] . GSLRD[p2, \
+n, nb]*SPD[v, v]) + 2*GSD[n] . GSLRD[v, n, nb]*SPLRD[p2, v, n, nb] - \
+(GSD[n] . GSD[nb]*SPD[n, p2]*SPLRD[v, v, n, nb])/2))/2 - (SPD[n, \
+p1]*(-(GSD[nb] . GSLRD[p2, n, nb]*SPD[v, v]) + 2*GSD[nb] . GSLRD[v, \
+n, nb]*SPLRD[p2, v, n, nb] - ((4 - GSD[n] . GSD[nb])*SPD[nb, \
+p2]*SPLRD[v, v, n, nb])/2))/2"},
+{"fcstDiracTrickLightCone-ID103",
+"DiracTrick[GSLRD[v].GSD[p1,p2,p3].GSLRD[v],FCE->True]",
+"GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, \
+n, nb] . GSLRD[v, n, nb] - (GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, \
+nb] . GSLRD[p2, n, nb] . GSLRD[v, n, nb]*SPD[n, p3])/2 - (GSD[n] . \
+GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GSLRD[v, n, \
+nb]*SPD[nb, p3])/2 - (SPD[nb, p2]*(-GSD[n] . GSLRD[v, n, nb] . \
+GSLRD[p1, n, nb] . GSLRD[p3, n, nb] . GSLRD[v, n, nb] - (GSD[n] . \
+GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[v, n, nb]*SPD[n, \
+p3])/2 - (GSD[n] . GSD[n] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . \
+GSLRD[v, n, nb]*SPD[nb, p3])/2))/2 - (SPD[n, p2]*(-GSD[nb] . GSLRD[v, \
+n, nb] . GSLRD[p1, n, nb] . GSLRD[p3, n, nb] . GSLRD[v, n, nb] - \
+(GSD[nb] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[v, n, \
+nb]*SPD[n, p3])/2 + ((-4*GSLRD[v, n, nb] . GSLRD[p1, n, nb] . \
+GSLRD[v, n, nb] + GSD[n] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, \
+nb] . GSLRD[v, n, nb])*SPD[nb, p3])/2))/2 - (SPD[n, p1]*(GSD[nb] . \
+GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, n, nb] . GSLRD[v, n, \
+nb] + (GSD[nb] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p2, n, nb] . \
+GSLRD[v, n, nb]*SPD[n, p3])/2 - ((-4*GSLRD[v, n, nb] . GSLRD[p2, n, \
+nb] . GSLRD[v, n, nb] + GSD[n] . GSD[nb] . GSLRD[v, n, nb] . \
+GSLRD[p2, n, nb] . GSLRD[v, n, nb])*SPD[nb, p3])/2 - (SPD[nb, \
+p2]*(-((-GSD[n] . GSD[nb] . GSLRD[p3, n, nb] + 4*GSLRD[p3, n, \
+nb])*SPD[v, v]) + 2*(-GSD[n] . GSD[nb] . GSLRD[v, n, nb] + 4*GSLRD[v, \
+n, nb])*SPLRD[p3, v, n, nb] - 2*GSD[nb]*SPD[n, p3]*SPLRD[v, v, n, \
+nb]))/2))/2 - (SPD[nb, p1]*(GSD[n] . GSLRD[v, n, nb] . GSLRD[p2, n, \
+nb] . GSLRD[p3, n, nb] . GSLRD[v, n, nb] + (GSD[n] . GSD[nb] . \
+GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[v, n, nb]*SPD[n, p3])/2 + \
+(GSD[n] . GSD[n] . GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[v, n, \
+nb]*SPD[nb, p3])/2 - (SPD[n, p2]*(-(GSD[n] . GSD[nb] . GSLRD[p3, n, \
+nb]*SPD[v, v]) + 2*GSD[n] . GSD[nb] . GSLRD[v, n, nb]*SPLRD[p3, v, n, \
+nb] - 2*GSD[n]*SPD[nb, p3]*SPLRD[v, v, n, nb]))/2))/2"},
+{"fcstDiracTrickLightCone-ID104",
+"DiracTrick[GSLRD[v].GSD[p1,p2,p3,p4].GSLRD[v],FCE->True]",
+"GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, \
+n, nb] . GSLRD[p4, n, nb] . GSLRD[v, n, nb] + (GSD[nb] . GSLRD[v, n, \
+nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, n, nb] . \
+GSLRD[v, n, nb]*SPD[n, p4])/2 + (GSD[n] . GSLRD[v, n, nb] . GSLRD[p1, \
+n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, n, nb] . GSLRD[v, n, \
+nb]*SPD[nb, p4])/2 - (SPD[nb, p3]*(GSD[n] . GSLRD[v, n, nb] . \
+GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GSLRD[p4, n, nb] . GSLRD[v, n, \
+nb] - (GSD[n] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . \
+GSLRD[p2, n, nb] . GSLRD[v, n, nb]*SPD[n, p4])/2 - (GSD[n] . GSD[n] . \
+GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GSLRD[v, n, \
+nb]*SPD[nb, p4])/2))/2 - (SPD[n, p3]*(GSD[nb] . GSLRD[v, n, nb] . \
+GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GSLRD[p4, n, nb] . GSLRD[v, n, \
+nb] - (GSD[nb] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . \
+GSLRD[p2, n, nb] . GSLRD[v, n, nb]*SPD[n, p4])/2 - ((4*GSLRD[v, n, \
+nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GSLRD[v, n, nb] - GSD[n] \
+. GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . \
+GSLRD[v, n, nb])*SPD[nb, p4])/2))/2 - (SPD[nb, p2]*(-GSD[n] . \
+GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p3, n, nb] . GSLRD[p4, n, \
+nb] . GSLRD[v, n, nb] + (GSD[n] . GSD[nb] . GSLRD[v, n, nb] . \
+GSLRD[p1, n, nb] . GSLRD[p3, n, nb] . GSLRD[v, n, nb]*SPD[n, p4])/2 + \
+(GSD[n] . GSD[n] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p3, n, \
+nb] . GSLRD[v, n, nb]*SPD[nb, p4])/2 + (SPD[nb, p3]*(-GSD[n] . GSD[n] \
+. GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p4, n, nb] . GSLRD[v, n, \
+nb] - (GSD[n] . GSD[n] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] \
+. GSLRD[v, n, nb]*SPD[n, p4])/2 - (GSD[n] . GSD[n] . GSD[n] . \
+GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[v, n, nb]*SPD[nb, \
+p4])/2))/2 + (SPD[n, p3]*(-GSD[n] . GSD[nb] . GSLRD[v, n, nb] . \
+GSLRD[p1, n, nb] . GSLRD[p4, n, nb] . GSLRD[v, n, nb] - (GSD[n] . \
+GSD[nb] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[v, n, \
+nb]*SPD[n, p4])/2 + ((-4*GSD[n] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] \
+. GSLRD[v, n, nb] + GSD[n] . GSD[n] . GSD[nb] . GSLRD[v, n, nb] . \
+GSLRD[p1, n, nb] . GSLRD[v, n, nb])*SPD[nb, p4])/2))/2))/2 - (SPD[n, \
+p2]*(-GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p3, n, nb] \
+. GSLRD[p4, n, nb] . GSLRD[v, n, nb] + (GSD[nb] . GSD[nb] . GSLRD[v, \
+n, nb] . GSLRD[p1, n, nb] . GSLRD[p3, n, nb] . GSLRD[v, n, nb]*SPD[n, \
+p4])/2 + ((4*GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p3, n, nb] . \
+GSLRD[v, n, nb] - GSD[n] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, \
+nb] . GSLRD[p3, n, nb] . GSLRD[v, n, nb])*SPD[nb, p4])/2 + (SPD[nb, \
+p3]*(-4*GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p4, n, nb] . \
+GSLRD[v, n, nb] + GSD[n] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, \
+nb] . GSLRD[p4, n, nb] . GSLRD[v, n, nb] + ((-4*GSD[nb] . GSLRD[v, n, \
+nb] . GSLRD[p1, n, nb] . GSLRD[v, n, nb] + GSD[n] . GSD[nb] . GSD[nb] \
+. GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[v, n, nb])*SPD[n, p4])/2 \
+- (GSD[n] . GSD[n] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . \
+GSLRD[v, n, nb]*SPD[nb, p4])/2))/2 + (SPD[n, p3]*(-GSD[nb] . GSD[nb] \
+. GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p4, n, nb] . GSLRD[v, n, \
+nb] - (GSD[nb] . GSD[nb] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, \
+nb] . GSLRD[v, n, nb]*SPD[n, p4])/2 - (GSD[n] . GSD[nb] . GSD[nb] . \
+GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[v, n, nb]*SPD[nb, \
+p4])/2))/2))/2 - (SPD[nb, p1]*(GSD[n] . GSLRD[v, n, nb] . GSLRD[p2, \
+n, nb] . GSLRD[p3, n, nb] . GSLRD[p4, n, nb] . GSLRD[v, n, nb] - \
+(GSD[n] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, n, \
+nb] . GSLRD[v, n, nb]*SPD[n, p4])/2 - (GSD[n] . GSD[n] . GSLRD[v, n, \
+nb] . GSLRD[p2, n, nb] . GSLRD[p3, n, nb] . GSLRD[v, n, nb]*SPD[nb, \
+p4])/2 - (SPD[nb, p3]*(-GSD[n] . GSD[n] . GSLRD[v, n, nb] . GSLRD[p2, \
+n, nb] . GSLRD[p4, n, nb] . GSLRD[v, n, nb] - (GSD[n] . GSD[n] . \
+GSD[nb] . GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[v, n, nb]*SPD[n, \
+p4])/2 - (GSD[n] . GSD[n] . GSD[n] . GSLRD[v, n, nb] . GSLRD[p2, n, \
+nb] . GSLRD[v, n, nb]*SPD[nb, p4])/2))/2 - (SPD[n, p3]*(-GSD[n] . \
+GSD[nb] . GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[p4, n, nb] . \
+GSLRD[v, n, nb] - (GSD[n] . GSD[nb] . GSD[nb] . GSLRD[v, n, nb] . \
+GSLRD[p2, n, nb] . GSLRD[v, n, nb]*SPD[n, p4])/2 + ((-4*GSD[n] . \
+GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[v, n, nb] + GSD[n] . \
+GSD[n] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[v, n, \
+nb])*SPD[nb, p4])/2))/2 - (SPD[n, p2]*(GSD[n] . GSD[nb] . GSLRD[v, n, \
+nb] . GSLRD[p3, n, nb] . GSLRD[p4, n, nb] . GSLRD[v, n, nb] + (GSD[n] \
+. GSD[nb] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p3, n, nb] . GSLRD[v, \
+n, nb]*SPD[n, p4])/2 - ((-4*GSD[n] . GSLRD[v, n, nb] . GSLRD[p3, n, \
+nb] . GSLRD[v, n, nb] + GSD[n] . GSD[n] . GSD[nb] . GSLRD[v, n, nb] . \
+GSLRD[p3, n, nb] . GSLRD[v, n, nb])*SPD[nb, p4])/2 - 2*SPD[nb, \
+p3]*(-(GSD[n] . GSLRD[p4, n, nb]*SPD[v, v]) + 2*GSD[n] . GSLRD[v, n, \
+nb]*SPLRD[p4, v, n, nb] - (GSD[n] . GSD[nb]*SPD[n, p4]*SPLRD[v, v, n, \
+nb])/2)))/2))/2 - (SPD[n, p1]*(GSD[nb] . GSLRD[v, n, nb] . GSLRD[p2, \
+n, nb] . GSLRD[p3, n, nb] . GSLRD[p4, n, nb] . GSLRD[v, n, nb] - \
+(GSD[nb] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, \
+n, nb] . GSLRD[v, n, nb]*SPD[n, p4])/2 - ((4*GSLRD[v, n, nb] . \
+GSLRD[p2, n, nb] . GSLRD[p3, n, nb] . GSLRD[v, n, nb] - GSD[n] . \
+GSD[nb] . GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, n, nb] . \
+GSLRD[v, n, nb])*SPD[nb, p4])/2 - (SPD[nb, p3]*(-4*GSLRD[v, n, nb] . \
+GSLRD[p2, n, nb] . GSLRD[p4, n, nb] . GSLRD[v, n, nb] + GSD[n] . \
+GSD[nb] . GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[p4, n, nb] . \
+GSLRD[v, n, nb] + ((-4*GSD[nb] . GSLRD[v, n, nb] . GSLRD[p2, n, nb] . \
+GSLRD[v, n, nb] + GSD[n] . GSD[nb] . GSD[nb] . GSLRD[v, n, nb] . \
+GSLRD[p2, n, nb] . GSLRD[v, n, nb])*SPD[n, p4])/2 - (GSD[n] . GSD[n] \
+. GSD[nb] . GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[v, n, \
+nb]*SPD[nb, p4])/2))/2 - (SPD[n, p3]*(-GSD[nb] . GSD[nb] . GSLRD[v, \
+n, nb] . GSLRD[p2, n, nb] . GSLRD[p4, n, nb] . GSLRD[v, n, nb] - \
+(GSD[nb] . GSD[nb] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p2, n, nb] . \
+GSLRD[v, n, nb]*SPD[n, p4])/2 - (GSD[n] . GSD[nb] . GSD[nb] . \
+GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[v, n, nb]*SPD[nb, \
+p4])/2))/2 - (SPD[nb, p2]*(4*GSLRD[v, n, nb] . GSLRD[p3, n, nb] . \
+GSLRD[p4, n, nb] . GSLRD[v, n, nb] - GSD[n] . GSD[nb] . GSLRD[v, n, \
+nb] . GSLRD[p3, n, nb] . GSLRD[p4, n, nb] . GSLRD[v, n, nb] - \
+((-4*GSD[nb] . GSLRD[v, n, nb] . GSLRD[p3, n, nb] . GSLRD[v, n, nb] + \
+GSD[n] . GSD[nb] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p3, n, nb] . \
+GSLRD[v, n, nb])*SPD[n, p4])/2 + (GSD[n] . GSD[n] . GSD[nb] . \
+GSLRD[v, n, nb] . GSLRD[p3, n, nb] . GSLRD[v, n, nb]*SPD[nb, p4])/2 - \
+2*SPD[n, p3]*(-(GSD[nb] . GSLRD[p4, n, nb]*SPD[v, v]) + 2*GSD[nb] . \
+GSLRD[v, n, nb]*SPLRD[p4, v, n, nb] - ((4 - GSD[n] . GSD[nb])*SPD[nb, \
+p4]*SPLRD[v, v, n, nb])/2)))/2))/2"},
+{"fcstDiracTrickLightCone-ID105",
+"DiracTrick[GSLR[v].GA[5].GSLR[v],FCE->True]",
+"-(GA[5]*SPLR[v, v, n, nb])"},
+{"fcstDiracTrickLightCone-ID106",
+"DiracTrick[GSLR[v].GA[5].GALR[{mu1}].GSLR[v],FCE->True]",
+"2*GSLR[v, n, nb] . GA[5]*FVLR[v, mu1, n, nb] - GALR[mu1, n, nb] . \
+GA[5]*SPLR[v, v, n, nb]"},
+{"fcstDiracTrickLightCone-ID107",
+"DiracTrick[GSLR[v].GA[5].GALR[{mu1,mu2}].GSLR[v],FCE->True]",
+"-2*(GALR[mu2, n, nb] . GSLR[v, n, nb] . GA[5]*FVLR[v, mu1, n, nb] \
+- GALR[mu1, n, nb] . GSLR[v, n, nb] . GA[5]*FVLR[v, mu2, n, nb]) - \
+GALR[mu1, n, nb] . GALR[mu2, n, nb] . GA[5]*SPLR[v, v, n, nb]"},
+{"fcstDiracTrickLightCone-ID108",
+"DiracTrick[GSLR[v].GA[5].GALR[{mu1,mu2,mu3}].GSLR[v],FCE->True]",
+"2*(GALR[mu2, n, nb] . GALR[mu3, n, nb] . GSLR[v, n, nb] . \
+GA[5]*FVLR[v, mu1, n, nb] - GALR[mu1, n, nb] . GALR[mu3, n, nb] . \
+GSLR[v, n, nb] . GA[5]*FVLR[v, mu2, n, nb] + GALR[mu1, n, nb] . \
+GALR[mu2, n, nb] . GSLR[v, n, nb] . GA[5]*FVLR[v, mu3, n, nb]) - \
+GALR[mu1, n, nb] . GALR[mu2, n, nb] . GALR[mu3, n, nb] . \
+GA[5]*SPLR[v, v, n, nb]"},
+{"fcstDiracTrickLightCone-ID109",
+"DiracTrick[GSLR[v].GA[5].GALR[{mu1,mu2,mu3,mu4}].GSLR[v],\
+FCE->True]",
+"-2*(GALR[mu2, n, nb] . GALR[mu3, n, nb] . GALR[mu4, n, nb] . \
+GSLR[v, n, nb] . GA[5]*FVLR[v, mu1, n, nb] - GALR[mu1, n, nb] . \
+GALR[mu3, n, nb] . GALR[mu4, n, nb] . GSLR[v, n, nb] . GA[5]*FVLR[v, \
+mu2, n, nb] + GALR[mu1, n, nb] . GALR[mu2, n, nb] . GALR[mu4, n, nb] \
+. GSLR[v, n, nb] . GA[5]*FVLR[v, mu3, n, nb] - GALR[mu1, n, nb] . \
+GALR[mu2, n, nb] . GALR[mu3, n, nb] . GSLR[v, n, nb] . GA[5]*FVLR[v, \
+mu4, n, nb]) - GALR[mu1, n, nb] . GALR[mu2, n, nb] . GALR[mu3, n, nb] \
+. GALR[mu4, n, nb] . GA[5]*SPLR[v, v, n, nb]"},
+{"fcstDiracTrickLightCone-ID110",
+"DiracTrick[GSLR[v].GA[5].GALR[{mu1,mu2,mu3,mu4,mu5}].GSLR[v],\
+FCE->True]",
+"2*(GALR[mu2, n, nb] . GALR[mu3, n, nb] . GALR[mu4, n, nb] . \
+GALR[mu5, n, nb] . GSLR[v, n, nb] . GA[5]*FVLR[v, mu1, n, nb] - \
+GALR[mu1, n, nb] . GALR[mu3, n, nb] . GALR[mu4, n, nb] . GALR[mu5, n, \
+nb] . GSLR[v, n, nb] . GA[5]*FVLR[v, mu2, n, nb] + GALR[mu1, n, nb] . \
+GALR[mu2, n, nb] . GALR[mu4, n, nb] . GALR[mu5, n, nb] . GSLR[v, n, \
+nb] . GA[5]*FVLR[v, mu3, n, nb] - GALR[mu1, n, nb] . GALR[mu2, n, nb] \
+. GALR[mu3, n, nb] . GALR[mu5, n, nb] . GSLR[v, n, nb] . \
+GA[5]*FVLR[v, mu4, n, nb] + GALR[mu1, n, nb] . GALR[mu2, n, nb] . \
+GALR[mu3, n, nb] . GALR[mu4, n, nb] . GSLR[v, n, nb] . GA[5]*FVLR[v, \
+mu5, n, nb]) - GALR[mu1, n, nb] . GALR[mu2, n, nb] . GALR[mu3, n, nb] \
+. GALR[mu4, n, nb] . GALR[mu5, n, nb] . GA[5]*SPLR[v, v, n, nb]"},
+{"fcstDiracTrickLightCone-ID111",
+"DiracTrick[GSLR[v].GA[5].GA[mu1].GSLR[v],FCE->True]",
+"2*GSLR[v, n, nb] . GA[5]*FVLR[v, mu1, n, nb] - GALR[mu1, n, nb] . \
+GA[5]*SPLR[v, v, n, nb] - (GS[nb] . GA[5]*FV[n, mu1]*SPLR[v, v, n, \
+nb])/2 - (GS[n] . GA[5]*FV[nb, mu1]*SPLR[v, v, n, nb])/2"},
+{"fcstDiracTrickLightCone-ID112",
+"DiracTrick[GSLR[v].GA[5].GA[mu1,mu2,mu3].GSLR[v],FCE->True]",
+"GSLR[v, n, nb] . GALR[mu1, n, nb] . GALR[mu2, n, nb] . GALR[mu3, \
+n, nb] . GSLR[v, n, nb] . GA[5] - (GS[nb] . GSLR[v, n, nb] . \
+GALR[mu1, n, nb] . GALR[mu2, n, nb] . GSLR[v, n, nb] . GA[5]*FV[n, \
+mu3])/2 - (GS[n] . GSLR[v, n, nb] . GALR[mu1, n, nb] . GALR[mu2, n, \
+nb] . GSLR[v, n, nb] . GA[5]*FV[nb, mu3])/2 - (FV[nb, mu2]*(-GS[n] . \
+GSLR[v, n, nb] . GALR[mu1, n, nb] . GALR[mu3, n, nb] . GSLR[v, n, nb] \
+. GA[5] - (GS[n] . GS[nb] . GSLR[v, n, nb] . GALR[mu1, n, nb] . \
+GSLR[v, n, nb] . GA[5]*FV[n, mu3])/2 - (GS[n] . GS[n] . GSLR[v, n, \
+nb] . GALR[mu1, n, nb] . GSLR[v, n, nb] . GA[5]*FV[nb, mu3])/2))/2 - \
+(FV[n, mu2]*(-GS[nb] . GSLR[v, n, nb] . GALR[mu1, n, nb] . GALR[mu3, \
+n, nb] . GSLR[v, n, nb] . GA[5] - (GS[nb] . GS[nb] . GSLR[v, n, nb] . \
+GALR[mu1, n, nb] . GSLR[v, n, nb] . GA[5]*FV[n, mu3])/2 + \
+((-4*GSLR[v, n, nb] . GALR[mu1, n, nb] . GSLR[v, n, nb] . GA[5] + \
+GS[n] . GS[nb] . GSLR[v, n, nb] . GALR[mu1, n, nb] . GSLR[v, n, nb] . \
+GA[5])*FV[nb, mu3])/2))/2 - (FV[n, mu1]*(GS[nb] . GSLR[v, n, nb] . \
+GALR[mu2, n, nb] . GALR[mu3, n, nb] . GSLR[v, n, nb] . GA[5] + \
+(GS[nb] . GS[nb] . GSLR[v, n, nb] . GALR[mu2, n, nb] . GSLR[v, n, nb] \
+. GA[5]*FV[n, mu3])/2 - ((-4*GSLR[v, n, nb] . GALR[mu2, n, nb] . \
+GSLR[v, n, nb] . GA[5] + GS[n] . GS[nb] . GSLR[v, n, nb] . GALR[mu2, \
+n, nb] . GSLR[v, n, nb] . GA[5])*FV[nb, mu3])/2 - (FV[nb, \
+mu2]*(2*(4*GSLR[v, n, nb] . GA[5] - GS[n] . GS[nb] . GSLR[v, n, nb] . \
+GA[5])*FVLR[v, mu3, n, nb] - (4*GALR[mu3, n, nb] . GA[5] - GS[n] . \
+GS[nb] . GALR[mu3, n, nb] . GA[5])*SPLR[v, v, n, nb] - 2*GS[nb] . \
+GA[5]*FV[n, mu3]*SPLR[v, v, n, nb]))/2))/2 - (FV[nb, mu1]*(GS[n] . \
+GSLR[v, n, nb] . GALR[mu2, n, nb] . GALR[mu3, n, nb] . GSLR[v, n, nb] \
+. GA[5] + (GS[n] . GS[nb] . GSLR[v, n, nb] . GALR[mu2, n, nb] . \
+GSLR[v, n, nb] . GA[5]*FV[n, mu3])/2 + (GS[n] . GS[n] . GSLR[v, n, \
+nb] . GALR[mu2, n, nb] . GSLR[v, n, nb] . GA[5]*FV[nb, mu3])/2 - \
+(FV[n, mu2]*(2*GS[n] . GS[nb] . GSLR[v, n, nb] . GA[5]*FVLR[v, mu3, \
+n, nb] - GS[n] . GS[nb] . GALR[mu3, n, nb] . GA[5]*SPLR[v, v, n, nb] \
+- 2*GS[n] . GA[5]*FV[nb, mu3]*SPLR[v, v, n, nb]))/2))/2"},
+{"fcstDiracTrickLightCone-ID113",
+"DiracTrick[GSLR[v].GA[5].GS[p1].GSLR[v],FCE->True]",
+"2*GSLR[v, n, nb] . GA[5]*SPLR[p1, v, n, nb] - GSLR[p1, n, nb] . \
+GA[5]*SPLR[v, v, n, nb] - (GS[nb] . GA[5]*SP[n, p1]*SPLR[v, v, n, \
+nb])/2 - (GS[n] . GA[5]*SP[nb, p1]*SPLR[v, v, n, nb])/2"},
+{"fcstDiracTrickLightCone-ID114",
+"DiracTrick[GSLR[v].GA[5].GS[p1,p2].GSLR[v],FCE->True]",
+"-GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[v, n, \
+nb] . GA[5] - (GS[nb] . GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[v, n, \
+nb] . GA[5]*SP[n, p2])/2 - (GS[n] . GSLR[v, n, nb] . GSLR[p1, n, nb] \
+. GSLR[v, n, nb] . GA[5]*SP[nb, p2])/2 + (SP[nb, p1]*(2*GS[n] . \
+GSLR[v, n, nb] . GA[5]*SPLR[p2, v, n, nb] - GS[n] . GSLR[p2, n, nb] . \
+GA[5]*SPLR[v, v, n, nb] - (GS[n] . GS[nb] . GA[5]*SP[n, p2]*SPLR[v, \
+v, n, nb])/2))/2 + (SP[n, p1]*(2*GS[nb] . GSLR[v, n, nb] . \
+GA[5]*SPLR[p2, v, n, nb] - GS[nb] . GSLR[p2, n, nb] . GA[5]*SPLR[v, \
+v, n, nb] - ((-GS[n] . GS[nb] . GA[5] + 4*GA[5])*SP[nb, p2]*SPLR[v, \
+v, n, nb])/2))/2"},
+{"fcstDiracTrickLightCone-ID115",
+"DiracTrick[GSLR[v].GA[5].GS[p1,p2,p3].GSLR[v],FCE->True]",
+"GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, \
+nb] . GSLR[v, n, nb] . GA[5] - (GS[nb] . GSLR[v, n, nb] . GSLR[p1, n, \
+nb] . GSLR[p2, n, nb] . GSLR[v, n, nb] . GA[5]*SP[n, p3])/2 - (GS[n] \
+. GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[v, n, nb] \
+. GA[5]*SP[nb, p3])/2 - (SP[nb, p2]*(-GS[n] . GSLR[v, n, nb] . \
+GSLR[p1, n, nb] . GSLR[p3, n, nb] . GSLR[v, n, nb] . GA[5] - (GS[n] . \
+GS[nb] . GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[v, n, nb] . \
+GA[5]*SP[n, p3])/2 - (GS[n] . GS[n] . GSLR[v, n, nb] . GSLR[p1, n, \
+nb] . GSLR[v, n, nb] . GA[5]*SP[nb, p3])/2))/2 - (SP[n, p2]*(-GS[nb] \
+. GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[p3, n, nb] . GSLR[v, n, nb] \
+. GA[5] - (GS[nb] . GS[nb] . GSLR[v, n, nb] . GSLR[p1, n, nb] . \
+GSLR[v, n, nb] . GA[5]*SP[n, p3])/2 + ((-4*GSLR[v, n, nb] . GSLR[p1, \
+n, nb] . GSLR[v, n, nb] . GA[5] + GS[n] . GS[nb] . GSLR[v, n, nb] . \
+GSLR[p1, n, nb] . GSLR[v, n, nb] . GA[5])*SP[nb, p3])/2))/2 - (SP[n, \
+p1]*(GS[nb] . GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, nb] . \
+GSLR[v, n, nb] . GA[5] + (GS[nb] . GS[nb] . GSLR[v, n, nb] . GSLR[p2, \
+n, nb] . GSLR[v, n, nb] . GA[5]*SP[n, p3])/2 - ((-4*GSLR[v, n, nb] . \
+GSLR[p2, n, nb] . GSLR[v, n, nb] . GA[5] + GS[n] . GS[nb] . GSLR[v, \
+n, nb] . GSLR[p2, n, nb] . GSLR[v, n, nb] . GA[5])*SP[nb, p3])/2 - \
+(SP[nb, p2]*(2*(4*GSLR[v, n, nb] . GA[5] - GS[n] . GS[nb] . GSLR[v, \
+n, nb] . GA[5])*SPLR[p3, v, n, nb] - (4*GSLR[p3, n, nb] . GA[5] - \
+GS[n] . GS[nb] . GSLR[p3, n, nb] . GA[5])*SPLR[v, v, n, nb] - \
+2*GS[nb] . GA[5]*SP[n, p3]*SPLR[v, v, n, nb]))/2))/2 - (SP[nb, \
+p1]*(GS[n] . GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, nb] . \
+GSLR[v, n, nb] . GA[5] + (GS[n] . GS[nb] . GSLR[v, n, nb] . GSLR[p2, \
+n, nb] . GSLR[v, n, nb] . GA[5]*SP[n, p3])/2 + (GS[n] . GS[n] . \
+GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[v, n, nb] . GA[5]*SP[nb, \
+p3])/2 - (SP[n, p2]*(2*GS[n] . GS[nb] . GSLR[v, n, nb] . \
+GA[5]*SPLR[p3, v, n, nb] - GS[n] . GS[nb] . GSLR[p3, n, nb] . \
+GA[5]*SPLR[v, v, n, nb] - 2*GS[n] . GA[5]*SP[nb, p3]*SPLR[v, v, n, \
+nb]))/2))/2"},
+{"fcstDiracTrickLightCone-ID116",
+"DiracTrick[GSLR[v].GA[5].GS[p1,p2,p3,p4].GSLR[v],FCE->True]",
+"-GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, \
+nb] . GSLR[p4, n, nb] . GSLR[v, n, nb] . GA[5] - (GS[nb] . GSLR[v, n, \
+nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, nb] . GSLR[v, \
+n, nb] . GA[5]*SP[n, p4])/2 - (GS[n] . GSLR[v, n, nb] . GSLR[p1, n, \
+nb] . GSLR[p2, n, nb] . GSLR[p3, n, nb] . GSLR[v, n, nb] . \
+GA[5]*SP[nb, p4])/2 + (SP[nb, p3]*(GS[n] . GSLR[v, n, nb] . GSLR[p1, \
+n, nb] . GSLR[p2, n, nb] . GSLR[p4, n, nb] . GSLR[v, n, nb] . GA[5] - \
+(GS[n] . GS[nb] . GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] \
+. GSLR[v, n, nb] . GA[5]*SP[n, p4])/2 - (GS[n] . GS[n] . GSLR[v, n, \
+nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[v, n, nb] . \
+GA[5]*SP[nb, p4])/2))/2 + (SP[n, p3]*(GS[nb] . GSLR[v, n, nb] . \
+GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[p4, n, nb] . GSLR[v, n, nb] \
+. GA[5] - (GS[nb] . GS[nb] . GSLR[v, n, nb] . GSLR[p1, n, nb] . \
+GSLR[p2, n, nb] . GSLR[v, n, nb] . GA[5]*SP[n, p4])/2 - ((4*GSLR[v, \
+n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[v, n, nb] . GA[5] - \
+GS[n] . GS[nb] . GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[p2, n, nb] . \
+GSLR[v, n, nb] . GA[5])*SP[nb, p4])/2))/2 + (SP[nb, p2]*(-GS[n] . \
+GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[p3, n, nb] . GSLR[p4, n, nb] \
+. GSLR[v, n, nb] . GA[5] + (GS[n] . GS[nb] . GSLR[v, n, nb] . \
+GSLR[p1, n, nb] . GSLR[p3, n, nb] . GSLR[v, n, nb] . GA[5]*SP[n, \
+p4])/2 + (GS[n] . GS[n] . GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[p3, \
+n, nb] . GSLR[v, n, nb] . GA[5]*SP[nb, p4])/2 + (SP[nb, p3]*(-GS[n] . \
+GS[n] . GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[p4, n, nb] . GSLR[v, \
+n, nb] . GA[5] - (GS[n] . GS[n] . GS[nb] . GSLR[v, n, nb] . GSLR[p1, \
+n, nb] . GSLR[v, n, nb] . GA[5]*SP[n, p4])/2 - (GS[n] . GS[n] . GS[n] \
+. GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[v, n, nb] . GA[5]*SP[nb, \
+p4])/2))/2 + (SP[n, p3]*(-GS[n] . GS[nb] . GSLR[v, n, nb] . GSLR[p1, \
+n, nb] . GSLR[p4, n, nb] . GSLR[v, n, nb] . GA[5] - (GS[n] . GS[nb] . \
+GS[nb] . GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[v, n, nb] . \
+GA[5]*SP[n, p4])/2 + ((-4*GS[n] . GSLR[v, n, nb] . GSLR[p1, n, nb] . \
+GSLR[v, n, nb] . GA[5] + GS[n] . GS[n] . GS[nb] . GSLR[v, n, nb] . \
+GSLR[p1, n, nb] . GSLR[v, n, nb] . GA[5])*SP[nb, p4])/2))/2))/2 + \
+(SP[n, p2]*(-GS[nb] . GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[p3, n, \
+nb] . GSLR[p4, n, nb] . GSLR[v, n, nb] . GA[5] + (GS[nb] . GS[nb] . \
+GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[p3, n, nb] . GSLR[v, n, nb] . \
+GA[5]*SP[n, p4])/2 + ((4*GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[p3, \
+n, nb] . GSLR[v, n, nb] . GA[5] - GS[n] . GS[nb] . GSLR[v, n, nb] . \
+GSLR[p1, n, nb] . GSLR[p3, n, nb] . GSLR[v, n, nb] . GA[5])*SP[nb, \
+p4])/2 + (SP[nb, p3]*(-4*GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[p4, \
+n, nb] . GSLR[v, n, nb] . GA[5] + GS[n] . GS[nb] . GSLR[v, n, nb] . \
+GSLR[p1, n, nb] . GSLR[p4, n, nb] . GSLR[v, n, nb] . GA[5] + \
+((-4*GS[nb] . GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[v, n, nb] . \
+GA[5] + GS[n] . GS[nb] . GS[nb] . GSLR[v, n, nb] . GSLR[p1, n, nb] . \
+GSLR[v, n, nb] . GA[5])*SP[n, p4])/2 - (GS[n] . GS[n] . GS[nb] . \
+GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[v, n, nb] . GA[5]*SP[nb, \
+p4])/2))/2 + (SP[n, p3]*(-GS[nb] . GS[nb] . GSLR[v, n, nb] . GSLR[p1, \
+n, nb] . GSLR[p4, n, nb] . GSLR[v, n, nb] . GA[5] - (GS[nb] . GS[nb] \
+. GS[nb] . GSLR[v, n, nb] . GSLR[p1, n, nb] . GSLR[v, n, nb] . \
+GA[5]*SP[n, p4])/2 - (GS[n] . GS[nb] . GS[nb] . GSLR[v, n, nb] . \
+GSLR[p1, n, nb] . GSLR[v, n, nb] . GA[5]*SP[nb, p4])/2))/2))/2 + \
+(SP[nb, p1]*(GS[n] . GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, \
+nb] . GSLR[p4, n, nb] . GSLR[v, n, nb] . GA[5] - (GS[n] . GS[nb] . \
+GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, nb] . GSLR[v, n, nb] . \
+GA[5]*SP[n, p4])/2 - (GS[n] . GS[n] . GSLR[v, n, nb] . GSLR[p2, n, \
+nb] . GSLR[p3, n, nb] . GSLR[v, n, nb] . GA[5]*SP[nb, p4])/2 - \
+(SP[nb, p3]*(-GS[n] . GS[n] . GSLR[v, n, nb] . GSLR[p2, n, nb] . \
+GSLR[p4, n, nb] . GSLR[v, n, nb] . GA[5] - (GS[n] . GS[n] . GS[nb] . \
+GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[v, n, nb] . GA[5]*SP[n, \
+p4])/2 - (GS[n] . GS[n] . GS[n] . GSLR[v, n, nb] . GSLR[p2, n, nb] . \
+GSLR[v, n, nb] . GA[5]*SP[nb, p4])/2))/2 - (SP[n, p3]*(-GS[n] . \
+GS[nb] . GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[p4, n, nb] . GSLR[v, \
+n, nb] . GA[5] - (GS[n] . GS[nb] . GS[nb] . GSLR[v, n, nb] . GSLR[p2, \
+n, nb] . GSLR[v, n, nb] . GA[5]*SP[n, p4])/2 + ((-4*GS[n] . GSLR[v, \
+n, nb] . GSLR[p2, n, nb] . GSLR[v, n, nb] . GA[5] + GS[n] . GS[n] . \
+GS[nb] . GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[v, n, nb] . \
+GA[5])*SP[nb, p4])/2))/2 - (SP[n, p2]*(GS[n] . GS[nb] . GSLR[v, n, \
+nb] . GSLR[p3, n, nb] . GSLR[p4, n, nb] . GSLR[v, n, nb] . GA[5] + \
+(GS[n] . GS[nb] . GS[nb] . GSLR[v, n, nb] . GSLR[p3, n, nb] . GSLR[v, \
+n, nb] . GA[5]*SP[n, p4])/2 - ((-4*GS[n] . GSLR[v, n, nb] . GSLR[p3, \
+n, nb] . GSLR[v, n, nb] . GA[5] + GS[n] . GS[n] . GS[nb] . GSLR[v, n, \
+nb] . GSLR[p3, n, nb] . GSLR[v, n, nb] . GA[5])*SP[nb, p4])/2 - \
+2*SP[nb, p3]*(2*GS[n] . GSLR[v, n, nb] . GA[5]*SPLR[p4, v, n, nb] - \
+GS[n] . GSLR[p4, n, nb] . GA[5]*SPLR[v, v, n, nb] - (GS[n] . GS[nb] . \
+GA[5]*SP[n, p4]*SPLR[v, v, n, nb])/2)))/2))/2 + (SP[n, p1]*(GS[nb] . \
+GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, nb] . GSLR[p4, n, nb] \
+. GSLR[v, n, nb] . GA[5] - (GS[nb] . GS[nb] . GSLR[v, n, nb] . \
+GSLR[p2, n, nb] . GSLR[p3, n, nb] . GSLR[v, n, nb] . GA[5]*SP[n, \
+p4])/2 - ((4*GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, nb] . \
+GSLR[v, n, nb] . GA[5] - GS[n] . GS[nb] . GSLR[v, n, nb] . GSLR[p2, \
+n, nb] . GSLR[p3, n, nb] . GSLR[v, n, nb] . GA[5])*SP[nb, p4])/2 - \
+(SP[nb, p3]*(-4*GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[p4, n, nb] . \
+GSLR[v, n, nb] . GA[5] + GS[n] . GS[nb] . GSLR[v, n, nb] . GSLR[p2, \
+n, nb] . GSLR[p4, n, nb] . GSLR[v, n, nb] . GA[5] + ((-4*GS[nb] . \
+GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[v, n, nb] . GA[5] + GS[n] . \
+GS[nb] . GS[nb] . GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[v, n, nb] . \
+GA[5])*SP[n, p4])/2 - (GS[n] . GS[n] . GS[nb] . GSLR[v, n, nb] . \
+GSLR[p2, n, nb] . GSLR[v, n, nb] . GA[5]*SP[nb, p4])/2))/2 - (SP[n, \
+p3]*(-GS[nb] . GS[nb] . GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[p4, \
+n, nb] . GSLR[v, n, nb] . GA[5] - (GS[nb] . GS[nb] . GS[nb] . GSLR[v, \
+n, nb] . GSLR[p2, n, nb] . GSLR[v, n, nb] . GA[5]*SP[n, p4])/2 - \
+(GS[n] . GS[nb] . GS[nb] . GSLR[v, n, nb] . GSLR[p2, n, nb] . GSLR[v, \
+n, nb] . GA[5]*SP[nb, p4])/2))/2 - (SP[nb, p2]*(4*GSLR[v, n, nb] . \
+GSLR[p3, n, nb] . GSLR[p4, n, nb] . GSLR[v, n, nb] . GA[5] - GS[n] . \
+GS[nb] . GSLR[v, n, nb] . GSLR[p3, n, nb] . GSLR[p4, n, nb] . GSLR[v, \
+n, nb] . GA[5] - ((-4*GS[nb] . GSLR[v, n, nb] . GSLR[p3, n, nb] . \
+GSLR[v, n, nb] . GA[5] + GS[n] . GS[nb] . GS[nb] . GSLR[v, n, nb] . \
+GSLR[p3, n, nb] . GSLR[v, n, nb] . GA[5])*SP[n, p4])/2 + (GS[n] . \
+GS[n] . GS[nb] . GSLR[v, n, nb] . GSLR[p3, n, nb] . GSLR[v, n, nb] . \
+GA[5]*SP[nb, p4])/2 - 2*SP[n, p3]*(2*GS[nb] . GSLR[v, n, nb] . \
+GA[5]*SPLR[p4, v, n, nb] - GS[nb] . GSLR[p4, n, nb] . GA[5]*SPLR[v, \
+v, n, nb] - ((-GS[n] . GS[nb] . GA[5] + 4*GA[5])*SP[nb, p4]*SPLR[v, \
+v, n, nb])/2)))/2))/2"},
+{"fcstDiracTrickLightCone-ID117",
+"DiracTrick[GSLRD[v].GA[5].GSLRD[v],FCE->True]",
+"-(GA[5]*SPLRD[v, v, n, nb])"},
+{"fcstDiracTrickLightCone-ID118",
+"DiracTrick[GSLRD[v].GA[5].GALRD[{mu1}].GSLRD[v],FCE->True]",
+"2*GSLRD[v, n, nb] . GA[5]*FVLRD[v, mu1, n, nb] - GALRD[mu1, n, \
+nb] . GA[5]*SPD[v, v]"},
+{"fcstDiracTrickLightCone-ID119",
+"DiracTrick[GSLRD[v].GA[5].GALRD[{mu1,mu2}].GSLRD[v],FCE->True]",
+"-2*(GALRD[mu2, n, nb] . GSLRD[v, n, nb] . GA[5]*FVLRD[v, mu1, n, \
+nb] - GALRD[mu1, n, nb] . GSLRD[v, n, nb] . GA[5]*FVLRD[v, mu2, n, \
+nb]) - GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GA[5]*SPD[v, v]"},
+{"fcstDiracTrickLightCone-ID120",
+"DiracTrick[GSLRD[v].GA[5].GALRD[{mu1,mu2,mu3}].GSLRD[v],FCE->True]\
+", "2*(GALRD[mu2, n, nb] . GALRD[mu3, n, nb] . GSLRD[v, n, nb] . \
+GA[5]*FVLRD[v, mu1, n, nb] - GALRD[mu1, n, nb] . GALRD[mu3, n, nb] . \
+GSLRD[v, n, nb] . GA[5]*FVLRD[v, mu2, n, nb] + GALRD[mu1, n, nb] . \
+GALRD[mu2, n, nb] . GSLRD[v, n, nb] . GA[5]*FVLRD[v, mu3, n, nb]) - \
+GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GALRD[mu3, n, nb] . \
+GA[5]*SPD[v, v]"},
+{"fcstDiracTrickLightCone-ID121",
+"DiracTrick[GSLRD[v].GA[5].GALRD[{mu1,mu2,mu3,mu4}].GSLRD[v],\
+FCE->True]",
+"-2*(GALRD[mu2, n, nb] . GALRD[mu3, n, nb] . GALRD[mu4, n, nb] . \
+GSLRD[v, n, nb] . GA[5]*FVLRD[v, mu1, n, nb] - GALRD[mu1, n, nb] . \
+GALRD[mu3, n, nb] . GALRD[mu4, n, nb] . GSLRD[v, n, nb] . \
+GA[5]*FVLRD[v, mu2, n, nb] + GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . \
+GALRD[mu4, n, nb] . GSLRD[v, n, nb] . GA[5]*FVLRD[v, mu3, n, nb] - \
+GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GALRD[mu3, n, nb] . GSLRD[v, \
+n, nb] . GA[5]*FVLRD[v, mu4, n, nb]) - GALRD[mu1, n, nb] . GALRD[mu2, \
+n, nb] . GALRD[mu3, n, nb] . GALRD[mu4, n, nb] . GA[5]*SPD[v, v]"},
+{"fcstDiracTrickLightCone-ID122",
+"DiracTrick[GSLRD[v].GA[5].GALRD[{mu1,mu2,mu3,mu4,mu5}].GSLRD[v],\
+FCE->True]",
+"2*(GALRD[mu2, n, nb] . GALRD[mu3, n, nb] . GALRD[mu4, n, nb] . \
+GALRD[mu5, n, nb] . GSLRD[v, n, nb] . GA[5]*FVLRD[v, mu1, n, nb] - \
+GALRD[mu1, n, nb] . GALRD[mu3, n, nb] . GALRD[mu4, n, nb] . \
+GALRD[mu5, n, nb] . GSLRD[v, n, nb] . GA[5]*FVLRD[v, mu2, n, nb] + \
+GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GALRD[mu4, n, nb] . \
+GALRD[mu5, n, nb] . GSLRD[v, n, nb] . GA[5]*FVLRD[v, mu3, n, nb] - \
+GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GALRD[mu3, n, nb] . \
+GALRD[mu5, n, nb] . GSLRD[v, n, nb] . GA[5]*FVLRD[v, mu4, n, nb] + \
+GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GALRD[mu3, n, nb] . \
+GALRD[mu4, n, nb] . GSLRD[v, n, nb] . GA[5]*FVLRD[v, mu5, n, nb]) - \
+GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GALRD[mu3, n, nb] . \
+GALRD[mu4, n, nb] . GALRD[mu5, n, nb] . GA[5]*SPD[v, v]"},
+{"fcstDiracTrickLightCone-ID123",
+"DiracTrick[GSLRD[v].GA[5].GAD[mu1].GSLRD[v],FCE->True]",
+"2*GSLRD[v, n, nb] . GA[5]*FVLRD[v, mu1, n, nb] - GALRD[mu1, n, \
+nb] . GA[5]*SPD[v, v] - (GSD[nb] . GA[5]*FVD[n, mu1]*SPLRD[v, v, n, \
+nb])/2 - (GSD[n] . GA[5]*FVD[nb, mu1]*SPLRD[v, v, n, nb])/2"},
+{"fcstDiracTrickLightCone-ID124",
+"DiracTrick[GSLRD[v].GA[5].GAD[mu1,mu2,mu3].GSLRD[v],FCE->True]",
+"GSLRD[v, n, nb] . GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . \
+GALRD[mu3, n, nb] . GSLRD[v, n, nb] . GA[5] - (GSD[nb] . GSLRD[v, n, \
+nb] . GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GSLRD[v, n, nb] . \
+GA[5]*FVD[n, mu3])/2 - (GSD[n] . GSLRD[v, n, nb] . GALRD[mu1, n, nb] \
+. GALRD[mu2, n, nb] . GSLRD[v, n, nb] . GA[5]*FVD[nb, mu3])/2 - \
+(FVD[nb, mu2]*(-GSD[n] . GSLRD[v, n, nb] . GALRD[mu1, n, nb] . \
+GALRD[mu3, n, nb] . GSLRD[v, n, nb] . GA[5] - (GSD[n] . GSD[nb] . \
+GSLRD[v, n, nb] . GALRD[mu1, n, nb] . GSLRD[v, n, nb] . GA[5]*FVD[n, \
+mu3])/2 - (GSD[n] . GSD[n] . GSLRD[v, n, nb] . GALRD[mu1, n, nb] . \
+GSLRD[v, n, nb] . GA[5]*FVD[nb, mu3])/2))/2 - (FVD[n, mu2]*(-GSD[nb] \
+. GSLRD[v, n, nb] . GALRD[mu1, n, nb] . GALRD[mu3, n, nb] . GSLRD[v, \
+n, nb] . GA[5] - (GSD[nb] . GSD[nb] . GSLRD[v, n, nb] . GALRD[mu1, n, \
+nb] . GSLRD[v, n, nb] . GA[5]*FVD[n, mu3])/2 + ((-4*GSLRD[v, n, nb] . \
+GALRD[mu1, n, nb] . GSLRD[v, n, nb] . GA[5] + GSD[n] . GSD[nb] . \
+GSLRD[v, n, nb] . GALRD[mu1, n, nb] . GSLRD[v, n, nb] . \
+GA[5])*FVD[nb, mu3])/2))/2 - (FVD[n, mu1]*(GSD[nb] . GSLRD[v, n, nb] \
+. GALRD[mu2, n, nb] . GALRD[mu3, n, nb] . GSLRD[v, n, nb] . GA[5] + \
+(GSD[nb] . GSD[nb] . GSLRD[v, n, nb] . GALRD[mu2, n, nb] . GSLRD[v, \
+n, nb] . GA[5]*FVD[n, mu3])/2 - ((-4*GSLRD[v, n, nb] . GALRD[mu2, n, \
+nb] . GSLRD[v, n, nb] . GA[5] + GSD[n] . GSD[nb] . GSLRD[v, n, nb] . \
+GALRD[mu2, n, nb] . GSLRD[v, n, nb] . GA[5])*FVD[nb, mu3])/2 - \
+(FVD[nb, mu2]*(2*(4*GSLRD[v, n, nb] . GA[5] - GSD[n] . GSD[nb] . \
+GSLRD[v, n, nb] . GA[5])*FVLRD[v, mu3, n, nb] - (4*GALRD[mu3, n, nb] \
+. GA[5] - GSD[n] . GSD[nb] . GALRD[mu3, n, nb] . GA[5])*SPD[v, v] - \
+2*GSD[nb] . GA[5]*FVD[n, mu3]*SPLRD[v, v, n, nb]))/2))/2 - (FVD[nb, \
+mu1]*(GSD[n] . GSLRD[v, n, nb] . GALRD[mu2, n, nb] . GALRD[mu3, n, \
+nb] . GSLRD[v, n, nb] . GA[5] + (GSD[n] . GSD[nb] . GSLRD[v, n, nb] . \
+GALRD[mu2, n, nb] . GSLRD[v, n, nb] . GA[5]*FVD[n, mu3])/2 + (GSD[n] \
+. GSD[n] . GSLRD[v, n, nb] . GALRD[mu2, n, nb] . GSLRD[v, n, nb] . \
+GA[5]*FVD[nb, mu3])/2 - (FVD[n, mu2]*(2*GSD[n] . GSD[nb] . GSLRD[v, \
+n, nb] . GA[5]*FVLRD[v, mu3, n, nb] - GSD[n] . GSD[nb] . GALRD[mu3, \
+n, nb] . GA[5]*SPD[v, v] - 2*GSD[n] . GA[5]*FVD[nb, mu3]*SPLRD[v, v, \
+n, nb]))/2))/2"},
+{"fcstDiracTrickLightCone-ID125",
+"DiracTrick[GSLRD[v].GA[5].GSD[p1].GSLRD[v],FCE->True]",
+"-(GSLRD[p1, n, nb] . GA[5]*SPD[v, v]) + 2*GSLRD[v, n, nb] . \
+GA[5]*SPLRD[p1, v, n, nb] - (GSD[nb] . GA[5]*SPD[n, p1]*SPLRD[v, v, \
+n, nb])/2 - (GSD[n] . GA[5]*SPD[nb, p1]*SPLRD[v, v, n, nb])/2"},
+{"fcstDiracTrickLightCone-ID126",
+"DiracTrick[GSLRD[v].GA[5].GSD[p1,p2].GSLRD[v],FCE->True]",
+"-GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GSLRD[v, \
+n, nb] . GA[5] - (GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . \
+GSLRD[v, n, nb] . GA[5]*SPD[n, p2])/2 - (GSD[n] . GSLRD[v, n, nb] . \
+GSLRD[p1, n, nb] . GSLRD[v, n, nb] . GA[5]*SPD[nb, p2])/2 + (SPD[nb, \
+p1]*(-(GSD[n] . GSLRD[p2, n, nb] . GA[5]*SPD[v, v]) + 2*GSD[n] . \
+GSLRD[v, n, nb] . GA[5]*SPLRD[p2, v, n, nb] - (GSD[n] . GSD[nb] . \
+GA[5]*SPD[n, p2]*SPLRD[v, v, n, nb])/2))/2 + (SPD[n, p1]*(-(GSD[nb] . \
+GSLRD[p2, n, nb] . GA[5]*SPD[v, v]) + 2*GSD[nb] . GSLRD[v, n, nb] . \
+GA[5]*SPLRD[p2, v, n, nb] - ((-GSD[n] . GSD[nb] . GA[5] + \
+4*GA[5])*SPD[nb, p2]*SPLRD[v, v, n, nb])/2))/2"},
+{"fcstDiracTrickLightCone-ID127",
+"DiracTrick[GSLRD[v].GA[5].GSD[p1,p2,p3].GSLRD[v],FCE->True]",
+"GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, \
+n, nb] . GSLRD[v, n, nb] . GA[5] - (GSD[nb] . GSLRD[v, n, nb] . \
+GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GSLRD[v, n, nb] . GA[5]*SPD[n, \
+p3])/2 - (GSD[n] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, \
+nb] . GSLRD[v, n, nb] . GA[5]*SPD[nb, p3])/2 - (SPD[nb, p2]*(-GSD[n] \
+. GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p3, n, nb] . GSLRD[v, n, \
+nb] . GA[5] - (GSD[n] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] \
+. GSLRD[v, n, nb] . GA[5]*SPD[n, p3])/2 - (GSD[n] . GSD[n] . GSLRD[v, \
+n, nb] . GSLRD[p1, n, nb] . GSLRD[v, n, nb] . GA[5]*SPD[nb, \
+p3])/2))/2 - (SPD[n, p2]*(-GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, \
+nb] . GSLRD[p3, n, nb] . GSLRD[v, n, nb] . GA[5] - (GSD[nb] . GSD[nb] \
+. GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[v, n, nb] . GA[5]*SPD[n, \
+p3])/2 + ((-4*GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[v, n, nb] . \
+GA[5] + GSD[n] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . \
+GSLRD[v, n, nb] . GA[5])*SPD[nb, p3])/2))/2 - (SPD[n, p1]*(GSD[nb] . \
+GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, n, nb] . GSLRD[v, n, \
+nb] . GA[5] + (GSD[nb] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p2, n, nb] \
+. GSLRD[v, n, nb] . GA[5]*SPD[n, p3])/2 - ((-4*GSLRD[v, n, nb] . \
+GSLRD[p2, n, nb] . GSLRD[v, n, nb] . GA[5] + GSD[n] . GSD[nb] . \
+GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[v, n, nb] . GA[5])*SPD[nb, \
+p3])/2 - (SPD[nb, p2]*(-((4*GSLRD[p3, n, nb] . GA[5] - GSD[n] . \
+GSD[nb] . GSLRD[p3, n, nb] . GA[5])*SPD[v, v]) + 2*(4*GSLRD[v, n, nb] \
+. GA[5] - GSD[n] . GSD[nb] . GSLRD[v, n, nb] . GA[5])*SPLRD[p3, v, n, \
+nb] - 2*GSD[nb] . GA[5]*SPD[n, p3]*SPLRD[v, v, n, nb]))/2))/2 - \
+(SPD[nb, p1]*(GSD[n] . GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, \
+n, nb] . GSLRD[v, n, nb] . GA[5] + (GSD[n] . GSD[nb] . GSLRD[v, n, \
+nb] . GSLRD[p2, n, nb] . GSLRD[v, n, nb] . GA[5]*SPD[n, p3])/2 + \
+(GSD[n] . GSD[n] . GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[v, n, \
+nb] . GA[5]*SPD[nb, p3])/2 - (SPD[n, p2]*(-(GSD[n] . GSD[nb] . \
+GSLRD[p3, n, nb] . GA[5]*SPD[v, v]) + 2*GSD[n] . GSD[nb] . GSLRD[v, \
+n, nb] . GA[5]*SPLRD[p3, v, n, nb] - 2*GSD[n] . GA[5]*SPD[nb, \
+p3]*SPLRD[v, v, n, nb]))/2))/2"},
+{"fcstDiracTrickLightCone-ID128",
+"DiracTrick[GSLRD[v].GA[5].GSD[p1,p2,p3,p4].GSLRD[v],FCE->True]",
+"-GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . \
+GSLRD[p3, n, nb] . GSLRD[p4, n, nb] . GSLRD[v, n, nb] . GA[5] - \
+(GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . \
+GSLRD[p3, n, nb] . GSLRD[v, n, nb] . GA[5]*SPD[n, p4])/2 - (GSD[n] . \
+GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, n, \
+nb] . GSLRD[v, n, nb] . GA[5]*SPD[nb, p4])/2 + (SPD[nb, p3]*(GSD[n] . \
+GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GSLRD[p4, n, \
+nb] . GSLRD[v, n, nb] . GA[5] - (GSD[n] . GSD[nb] . GSLRD[v, n, nb] . \
+GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GSLRD[v, n, nb] . GA[5]*SPD[n, \
+p4])/2 - (GSD[n] . GSD[n] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . \
+GSLRD[p2, n, nb] . GSLRD[v, n, nb] . GA[5]*SPD[nb, p4])/2))/2 + \
+(SPD[n, p3]*(GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, \
+n, nb] . GSLRD[p4, n, nb] . GSLRD[v, n, nb] . GA[5] - (GSD[nb] . \
+GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . \
+GSLRD[v, n, nb] . GA[5]*SPD[n, p4])/2 - ((4*GSLRD[v, n, nb] . \
+GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GSLRD[v, n, nb] . GA[5] - \
+GSD[n] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p2, n, \
+nb] . GSLRD[v, n, nb] . GA[5])*SPD[nb, p4])/2))/2 + (SPD[nb, \
+p2]*(-GSD[n] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p3, n, nb] \
+. GSLRD[p4, n, nb] . GSLRD[v, n, nb] . GA[5] + (GSD[n] . GSD[nb] . \
+GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p3, n, nb] . GSLRD[v, n, \
+nb] . GA[5]*SPD[n, p4])/2 + (GSD[n] . GSD[n] . GSLRD[v, n, nb] . \
+GSLRD[p1, n, nb] . GSLRD[p3, n, nb] . GSLRD[v, n, nb] . GA[5]*SPD[nb, \
+p4])/2 + (SPD[nb, p3]*(-GSD[n] . GSD[n] . GSLRD[v, n, nb] . GSLRD[p1, \
+n, nb] . GSLRD[p4, n, nb] . GSLRD[v, n, nb] . GA[5] - (GSD[n] . \
+GSD[n] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[v, n, \
+nb] . GA[5]*SPD[n, p4])/2 - (GSD[n] . GSD[n] . GSD[n] . GSLRD[v, n, \
+nb] . GSLRD[p1, n, nb] . GSLRD[v, n, nb] . GA[5]*SPD[nb, p4])/2))/2 + \
+(SPD[n, p3]*(-GSD[n] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . \
+GSLRD[p4, n, nb] . GSLRD[v, n, nb] . GA[5] - (GSD[n] . GSD[nb] . \
+GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[v, n, nb] . \
+GA[5]*SPD[n, p4])/2 + ((-4*GSD[n] . GSLRD[v, n, nb] . GSLRD[p1, n, \
+nb] . GSLRD[v, n, nb] . GA[5] + GSD[n] . GSD[n] . GSD[nb] . GSLRD[v, \
+n, nb] . GSLRD[p1, n, nb] . GSLRD[v, n, nb] . GA[5])*SPD[nb, \
+p4])/2))/2))/2 + (SPD[n, p2]*(-GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, \
+n, nb] . GSLRD[p3, n, nb] . GSLRD[p4, n, nb] . GSLRD[v, n, nb] . \
+GA[5] + (GSD[nb] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . \
+GSLRD[p3, n, nb] . GSLRD[v, n, nb] . GA[5]*SPD[n, p4])/2 + \
+((4*GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p3, n, nb] . GSLRD[v, \
+n, nb] . GA[5] - GSD[n] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, \
+nb] . GSLRD[p3, n, nb] . GSLRD[v, n, nb] . GA[5])*SPD[nb, p4])/2 + \
+(SPD[nb, p3]*(-4*GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[p4, n, \
+nb] . GSLRD[v, n, nb] . GA[5] + GSD[n] . GSD[nb] . GSLRD[v, n, nb] . \
+GSLRD[p1, n, nb] . GSLRD[p4, n, nb] . GSLRD[v, n, nb] . GA[5] + \
+((-4*GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[v, n, nb] . \
+GA[5] + GSD[n] . GSD[nb] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, \
+nb] . GSLRD[v, n, nb] . GA[5])*SPD[n, p4])/2 - (GSD[n] . GSD[n] . \
+GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[v, n, nb] . \
+GA[5]*SPD[nb, p4])/2))/2 + (SPD[n, p3]*(-GSD[nb] . GSD[nb] . GSLRD[v, \
+n, nb] . GSLRD[p1, n, nb] . GSLRD[p4, n, nb] . GSLRD[v, n, nb] . \
+GA[5] - (GSD[nb] . GSD[nb] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, \
+nb] . GSLRD[v, n, nb] . GA[5]*SPD[n, p4])/2 - (GSD[n] . GSD[nb] . \
+GSD[nb] . GSLRD[v, n, nb] . GSLRD[p1, n, nb] . GSLRD[v, n, nb] . \
+GA[5]*SPD[nb, p4])/2))/2))/2 + (SPD[nb, p1]*(GSD[n] . GSLRD[v, n, nb] \
+. GSLRD[p2, n, nb] . GSLRD[p3, n, nb] . GSLRD[p4, n, nb] . GSLRD[v, \
+n, nb] . GA[5] - (GSD[n] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p2, n, \
+nb] . GSLRD[p3, n, nb] . GSLRD[v, n, nb] . GA[5]*SPD[n, p4])/2 - \
+(GSD[n] . GSD[n] . GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, n, \
+nb] . GSLRD[v, n, nb] . GA[5]*SPD[nb, p4])/2 - (SPD[nb, p3]*(-GSD[n] \
+. GSD[n] . GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[p4, n, nb] . \
+GSLRD[v, n, nb] . GA[5] - (GSD[n] . GSD[n] . GSD[nb] . GSLRD[v, n, \
+nb] . GSLRD[p2, n, nb] . GSLRD[v, n, nb] . GA[5]*SPD[n, p4])/2 - \
+(GSD[n] . GSD[n] . GSD[n] . GSLRD[v, n, nb] . GSLRD[p2, n, nb] . \
+GSLRD[v, n, nb] . GA[5]*SPD[nb, p4])/2))/2 - (SPD[n, p3]*(-GSD[n] . \
+GSD[nb] . GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[p4, n, nb] . \
+GSLRD[v, n, nb] . GA[5] - (GSD[n] . GSD[nb] . GSD[nb] . GSLRD[v, n, \
+nb] . GSLRD[p2, n, nb] . GSLRD[v, n, nb] . GA[5]*SPD[n, p4])/2 + \
+((-4*GSD[n] . GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[v, n, nb] . \
+GA[5] + GSD[n] . GSD[n] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p2, n, \
+nb] . GSLRD[v, n, nb] . GA[5])*SPD[nb, p4])/2))/2 - (SPD[n, \
+p2]*(GSD[n] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p3, n, nb] . \
+GSLRD[p4, n, nb] . GSLRD[v, n, nb] . GA[5] + (GSD[n] . GSD[nb] . \
+GSD[nb] . GSLRD[v, n, nb] . GSLRD[p3, n, nb] . GSLRD[v, n, nb] . \
+GA[5]*SPD[n, p4])/2 - ((-4*GSD[n] . GSLRD[v, n, nb] . GSLRD[p3, n, \
+nb] . GSLRD[v, n, nb] . GA[5] + GSD[n] . GSD[n] . GSD[nb] . GSLRD[v, \
+n, nb] . GSLRD[p3, n, nb] . GSLRD[v, n, nb] . GA[5])*SPD[nb, p4])/2 - \
+2*SPD[nb, p3]*(-(GSD[n] . GSLRD[p4, n, nb] . GA[5]*SPD[v, v]) + \
+2*GSD[n] . GSLRD[v, n, nb] . GA[5]*SPLRD[p4, v, n, nb] - (GSD[n] . \
+GSD[nb] . GA[5]*SPD[n, p4]*SPLRD[v, v, n, nb])/2)))/2))/2 + (SPD[n, \
+p1]*(GSD[nb] . GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, n, nb] \
+. GSLRD[p4, n, nb] . GSLRD[v, n, nb] . GA[5] - (GSD[nb] . GSD[nb] . \
+GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, n, nb] . GSLRD[v, n, \
+nb] . GA[5]*SPD[n, p4])/2 - ((4*GSLRD[v, n, nb] . GSLRD[p2, n, nb] . \
+GSLRD[p3, n, nb] . GSLRD[v, n, nb] . GA[5] - GSD[n] . GSD[nb] . \
+GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, n, nb] . GSLRD[v, n, \
+nb] . GA[5])*SPD[nb, p4])/2 - (SPD[nb, p3]*(-4*GSLRD[v, n, nb] . \
+GSLRD[p2, n, nb] . GSLRD[p4, n, nb] . GSLRD[v, n, nb] . GA[5] + \
+GSD[n] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[p4, n, \
+nb] . GSLRD[v, n, nb] . GA[5] + ((-4*GSD[nb] . GSLRD[v, n, nb] . \
+GSLRD[p2, n, nb] . GSLRD[v, n, nb] . GA[5] + GSD[n] . GSD[nb] . \
+GSD[nb] . GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[v, n, nb] . \
+GA[5])*SPD[n, p4])/2 - (GSD[n] . GSD[n] . GSD[nb] . GSLRD[v, n, nb] . \
+GSLRD[p2, n, nb] . GSLRD[v, n, nb] . GA[5]*SPD[nb, p4])/2))/2 - \
+(SPD[n, p3]*(-GSD[nb] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p2, n, nb] \
+. GSLRD[p4, n, nb] . GSLRD[v, n, nb] . GA[5] - (GSD[nb] . GSD[nb] . \
+GSD[nb] . GSLRD[v, n, nb] . GSLRD[p2, n, nb] . GSLRD[v, n, nb] . \
+GA[5]*SPD[n, p4])/2 - (GSD[n] . GSD[nb] . GSD[nb] . GSLRD[v, n, nb] . \
+GSLRD[p2, n, nb] . GSLRD[v, n, nb] . GA[5]*SPD[nb, p4])/2))/2 - \
+(SPD[nb, p2]*(4*GSLRD[v, n, nb] . GSLRD[p3, n, nb] . GSLRD[p4, n, nb] \
+. GSLRD[v, n, nb] . GA[5] - GSD[n] . GSD[nb] . GSLRD[v, n, nb] . \
+GSLRD[p3, n, nb] . GSLRD[p4, n, nb] . GSLRD[v, n, nb] . GA[5] - \
+((-4*GSD[nb] . GSLRD[v, n, nb] . GSLRD[p3, n, nb] . GSLRD[v, n, nb] . \
+GA[5] + GSD[n] . GSD[nb] . GSD[nb] . GSLRD[v, n, nb] . GSLRD[p3, n, \
+nb] . GSLRD[v, n, nb] . GA[5])*SPD[n, p4])/2 + (GSD[n] . GSD[n] . \
+GSD[nb] . GSLRD[v, n, nb] . GSLRD[p3, n, nb] . GSLRD[v, n, nb] . \
+GA[5]*SPD[nb, p4])/2 - 2*SPD[n, p3]*(-(GSD[nb] . GSLRD[p4, n, nb] . \
+GA[5]*SPD[v, v]) + 2*GSD[nb] . GSLRD[v, n, nb] . GA[5]*SPLRD[p4, v, \
+n, nb] - ((-GSD[n] . GSD[nb] . GA[5] + 4*GA[5])*SPD[nb, p4]*SPLRD[v, \
+v, n, nb])/2)))/2))/2"},
+{"fcstDiracTrickLightCone-ID129", "DiracTrick[GSD[nb,n],FCE->True]",
+	"4 - GSD[n] . GSD[nb]"},
+{"fcstDiracTrickLightCone-ID130",
+"DiracTrick[GSD[nb].GSD[n].GALRD[Lor4,n,nb].GSLRD[l1,n,nb].GALRD[\
+Lor4,n,nb].GSD[nb].GSD[n],FCE->True]",
+"-4*(-4 + D)*(-GSD[n] . GSD[nb] . GSLRD[l1, n, nb] + 4*GSLRD[l1, \
+n, nb])"},
+{"fcstDiracTrickLightCone-ID131",
+"DiracTrick[GSD[nb].GSD[n].GSLRD[Polarization[p,\[ImaginaryI]],n,\
+nb].GSLRD[k2,n,nb].GALRD[Lor4,n,nb].GSLRD[l1,n,nb].GALRD[Lor4,n,nb].\
+GSD[nb].GSD[n],FCE->True]",
+"-4*(-4 + D)*(4*GSLRD[Polarization[p, I], n, nb] . GSLRD[k2, n, \
+nb] . GSLRD[l1, n, nb] - GSD[n] . GSD[nb] . GSLRD[Polarization[p, I], \
+n, nb] . GSLRD[k2, n, nb] . GSLRD[l1, n, nb])"},
+{"fcstDiracTrickLightCone-ID132",
+"DiracTrick[GSD[nb].GSD[n].GSD[nb].GSD[n],FCE->True]",
+"4*(4 - GSD[n] . GSD[nb])"},
+{"fcstDiracTrickLightCone-ID133", "DiracTrick[GS[nb,n],FCE->True]",
+"4 - GS[n] . GS[nb]"},
+{"fcstDiracTrickLightCone-ID134",
+"DiracTrick[GS[nb].GS[n].GALR[Lor4,n,nb].GSLR[l1,n,nb].GALR[Lor4,n,\
+nb].GS[nb].GS[n],FCE->True]", "0"},
+{"fcstDiracTrickLightCone-ID135",
+"DiracTrick[GS[nb].GS[n].GSLR[Polarization[p,\[ImaginaryI]],n,nb].\
+GSLR[k2,n,nb].GALR[Lor4,n,nb].GSLR[l1,n,nb].GALR[Lor4,n,nb].GS[nb].GS[\
+n],FCE->True]", "0"},
+{"fcstDiracTrickLightCone-ID136",
+"DiracTrick[GS[nb].GS[n].GS[nb].GS[n],FCE->True]",
+"4*(4 - GS[n] . GS[nb])"}
 })

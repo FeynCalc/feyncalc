@@ -5,9 +5,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Substitute DiracSigma in terms of DiracGamma's				*)
@@ -15,10 +15,9 @@
 (* ------------------------------------------------------------------------ *)
 
 DiracSigmaExplicit::usage =
-"DiracSigmaExplicit[exp] inserts in exp the definition of \
-DiracSigma. \n
-DiracSigmaExplict is also an option of various FeynCalc functions \
-that handle the Dirac algebra.";
+"DiracSigmaExplicit[exp] inserts in exp for all DiracSigma its definition.
+DiracSigmaExplict is also an option of DiracSimplify. DiracSigmaExplict is
+also an option of various FeynCalc functions that handle the Dirac algebra.";
 
 DiracSigmaExplicit::failmsg =
 "Error! DiracSigmaExplicit has encountered a fatal problem and must abort the computation. \

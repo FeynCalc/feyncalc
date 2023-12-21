@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  FCFAConvert converts a FeynArts amplitude to FeynCalc      *)
@@ -16,38 +16,47 @@
 (* ------------------------------------------------------------------------ *)
 
 FCFAConvert::usage =
-"FCFAConvert[exp] converts a FeynArts amplitude to FeynCalc.";
+"FCFAConvert[exp] converts a FeynArts amplitude to FeynCalc.
 
-UndoChiralSplittings::usage =
-"UndoChiralSplittings is an option of FCFAConvert. When set to True, it attempts
-to undo splittings of couplings into left and right handed pieces, e.g
-(a*GA[6].GA[mu] + a*GA[7].GA[mu]) will be converted back to a*GA[mu]";
+For examples on using FCFAConvert please examine the example calculations
+shipped with FeynCalc.";
 
 IncomingMomenta::usage =
-"IncomingMomenta is an option of FCFAConvert. It specifies how the incoming \
-momenta in the diagram should be named. The number and order of momenta in the \
+"IncomingMomenta is an option of FCFAConvert. It specifies how the incoming
+momenta in the diagram should be named. The number and order of momenta in the
 list of momenta should exactly match those in InsertFields of FeynArts.";
 
 OutgoingMomenta::usage =
-"OutgoingMomenta is an option of FCFAConvert. It specifies how the outgoing \
-momenta in the diagram should be named. The number and order of momenta in the \
+"OutgoingMomenta is an option of FCFAConvert. It specifies how the outgoing
+momenta in the diagram should be named. The number and order of momenta in the
 list of momenta should exactly match those in InsertFields of FeynArts.";
 
 LoopMomenta::usage =
-"LoopMomenta is an option of FCFAConvert. It specifies how the loop \
-momenta in the diagram should be named. The number and order of momenta in the \
-list of momenta should exactly match those in InsertFields of FeynArts.";
+"LoopMomenta is an option of FCFAConvert. It specifies how the loop momenta in
+the diagram should be named. The number and order of momenta in the list of
+momenta should exactly match those in InsertFields of FeynArts.";
 
 TransversePolarizationVectors::usage =
-"TransversePolarizationVectors is an option of FCFAConvert. It specifies which \
-polarization vectors should be defined as transverse. A particle is specified by
-its 4-momentum.";
+"TransversePolarizationVectors is an option of FCFAConvert. It specifies which
+polarization vectors should be defined as transverse. A particle is specified
+by its 4-momentum.";
 
 DropSumOver::usage =
-"DropSumOver is an option of FCFAConvert. When set to True, SumOver symbols \
-in the FeynArts diagrams will be dropped. Those symbols are usually not needed \
-in FeynCalc where Einstein summation always applies, but they might be kept \
-for other purposes.";
+"DropSumOver is an option of FCFAConvert. When set to True, SumOver symbols in
+the FeynArts diagrams will be dropped. Those symbols are usually not needed in
+FeynCalc where Einstein summation always applies, but they might be kept for
+other purposes.";
+
+FCFAConvert::sumOverWarn =
+"You are omitting SumOver objects that may represent a nontrivial summation. \
+This may lead to a loss of overall factors multiplying some of your diagrams. \
+Please make sure that this is really what you want.";
+
+FCFAConvert::noSpinors =
+"Error! You are using a model that contains 4-fermion vertices, but the \
+spinors were removed when calling CreateFeynAmp. Without spinors the function cannot \
+reconstruct the correct relative signs in the amplitude. Please rerun CreateFeynAmp with \
+the option Truncated set to False.";
 
 FCFAConvert::sumOverWarn =
 "You are omitting SumOver objects that may represent a nontrivial summation. \
@@ -109,7 +118,10 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[infos__][diags___], OptionsPatt
 		diagsConverted= Map[#[[3]]&,{diags}];
 
 		loopFAMoms = Cases[{diags},System`Integral[lm__] :> {lm}, Infinity]//Flatten//Union;
-		{inFAMoms,outFAMoms} = FeynArts`Process /. {infos} /. Rule[a_List,b_List]:>{Transpose[a][[2]],Transpose[b][[2]]};
+		{inFAMoms,outFAMoms} = FeynArts`Process /. {infos} /. Rule[a_List,b_List]:>
+			{
+			If[a=!={},Transpose[a][[2]],{}],If[b=!={},Transpose[b][[2]],{}]
+			};
 
 		diagsConverted = FCPrepareFAAmp[diagsConverted,UndoChiralSplittings->OptionValue[UndoChiralSplittings],SMP->OptionValue[SMP],
 			FeynAmpDenominatorCombine->OptionValue[FeynAmpDenominatorCombine]];
@@ -221,6 +233,11 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[infos__][diags___], OptionsPatt
 		];
 
 		If[	!FreeQ[diagsConverted,DiracIndex] && OptionValue[FCFADiracChainJoin],
+			(*
+			If[	FreeQ[diagsConverted, Spinor],
+				Message[FCFAConvert::noSpinors]
+			];
+			*)
 			diagsConverted = FCFADiracChainJoin[diagsConverted,FCI->True]
 		];
 

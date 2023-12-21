@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Expansion of the Mathematica Collect						*)
@@ -16,42 +16,45 @@
 (* ------------------------------------------------------------------------ *)
 
 Collect2::usage=
-"Collect2[expr, x] collects together terms which are not free of any  \
-occurrence of x. \
-Collect2[expr, {x1, x2, ...}]  (or also Collect2[expr, x1, x2,  ...]) \
-collects together terms which are not free of any occurrence of \
-x1, x2, ... . \
-The coefficients are put over a common denominator. \
-If expr is expanded before collecting depends on the option  Factoring, \
-which may be set to Factor, Factor2, or any other function, \
-which is applied to the coefficients. \
-If expr is already expanded with respect to x, the \
-option Expanding can be set to False.";
+"Collect2[expr, x] collects together terms which are not free of any occurrence
+of x.
+
+Collect2[expr, {x1, x2, ...}] (or also Collect2[expr, x1, x2, ...]) collects
+together terms which are not free of any occurrence of x1, x2, ....
+
+The coefficients are put over a common denominator. If expr is expanded before
+collecting depends on the option Factoring, which may be set to Factor,
+Factor2, or any other function, which is applied to the coefficients. If expr
+is already expanded with respect to x (x1, x2, ...), the option Expanding can
+be set to False.";
 
 Collect3::usage=
-"Collect3[expr, head] collects all monomials of the form head[..]*head[..]*.. \
-in expr. \n
-Collect3[expr, {x, y, ...}] collects terms involving the same powers \
-of monomials x[...]^n1*y[...]^n2 ... The option Factoring can be set to False, True or Factor2; \
-the latter two of these cause the coefficients to be factored. The option Head (default Plus) \
-specified the function applied to the list of monomials multiplied by their coefficients.";
+"Collect3[expr, {x, y, ...}] collects terms involving the same powers of
+monomials $x^{n_1}$, $y^{n_2}$, ...
 
-FactoringDenominator::usage = "FactoringDenominator is an option for Collect2. \
-It is taken into account only when the option numerator is set to True. \
-If FactoringDenominator is set to any function f, this function will be applied to \
-the denominator of the fraction. The default value is False, i.e. the denominator \
-will be left unchanged.";
+The option Factor can bet set to True or False, which factors the
+coefficients.
+
+The option Head (default Plus) determines the applied function to the list of
+monomials  multiplied by their coefficients.";
+
+FactoringDenominator::usage =
+"FactoringDenominator is an option for Collect2. It is taken into account only
+when the option Numerator is set to True. If FactoringDenominator is set to
+any function f, this function will be applied to the denominator of the
+fraction. The default value is False, i.e. the denominator will be left
+unchanged.";
 
 Collect2::failmsg =
 "Error! Collect2 has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 
-Begin["`Package`"]
+Begin["`Package`"];
 End[]
 
-Begin["`Collect`Private`"]
+Begin["`Collect`Private`"];
 
 cl2Verbose::usage="";
 
@@ -100,7 +103,7 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 		new = 0, unity,re,compCON,ccflag = False, factor,expanding, times,time,
 		null1,null2,coeffArray,tvm,coeffHead,optIsolateFast,tempIso,factorOut, monomRepRule={},
 		nonAtomicMonomials,optHead,firstHead,secondHead=Null,optInitialFunction,numerator,denominator,
-		optNumerator, optFactoringDenominator, optTimeConstrained},
+		optNumerator, optFactoringDenominator, optTimeConstrained, ident},
 
 		If [OptionValue[FCVerbose]===False,
 			cl2Verbose=$VeryVerbose,
@@ -123,9 +126,14 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 
 		If[	Head[optHead]===List,
 			firstHead 	= optHead[[1]];
-			secondHead	= optHead[[2]],
+			secondHead	= optHead[[2]];
+			If[	firstHead===Identity,
+				firstHead=ident
+			],
 			firstHead 	= optHead
 		];
+
+
 
 		factorOut = OptionValue[FCFactorOut];
 
@@ -159,8 +167,8 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 
 		nx = expr;
 
-		If[	!FreeQ[nx,SeriesData],
-			Message[Collect2::failmsg,"Collect2 cannot work on expressions that contain SeriesData!"];
+		If[	!FreeQ2[nx,{SeriesData,ConditionalExpression}],
+			Message[Collect2::failmsg,"Collect2 cannot work on expressions that contain SeriesData or ConditionalExpression!"];
 			Abort[]
 		];
 
@@ -206,7 +214,11 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 		If[Length[monomList] === 0,
 			FCPrint[1,"Collect2: The input expression contains no relevant monomials, leaving.", FCDoControl->cl2Verbose];
 			unity = 1;
-			Return[factorOut factor[nx]/denominator]
+			re = factorOut factor[nx]/denominator;
+			If[	optIsolateNames=!=False,
+				re  = Isolate[re,IsolateNames -> optIsolateNames, IsolateFast-> optIsolateFast]
+			];
+			Return[re]
 		];
 
 
@@ -228,7 +240,7 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 				Isolate[(Plus[x]/.holdPlus -> Plus), IsolateFast -> True, IsolateNames -> tempIso] /. holdPlus -> Plus;
 
 			tog[x_] := FRH[x/.holdForm->Identity, IsolateNames->{optIsolateNames,tempIso}],
-			FCPrint[1,"Collect2: Factoring with", factor, FCDoControl->cl2Verbose];
+			FCPrint[1,"Collect2: Factoring with ", factor, FCDoControl->cl2Verbose];
 			fr0[x__] :=
 				Plus[x] /; !FreeQ2[{x}, monomList];
 			tog[x_]  :=
@@ -341,7 +353,7 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1,"Collect2: Applying secondHead.", FCDoControl->cl2Verbose];
 			lin = secondHead[lin,1] /. secondHead[0,_] -> 0;
-			new = secondHead/@(new + null1 + null2) /. secondHead[null1|null2]->0 /. secondHead[a_firstHead b_]:> secondHead[b,a];
+			new = secondHead/@(new + null1 + null2) /. secondHead[null1|null2]->0 /. secondHead[a_firstHead b_]:> secondHead[b,a] /. ident->Identity;
 			FCPrint[1,"Collect2: Done applying secondHead, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
 		];
 
@@ -350,13 +362,14 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 		re = ((new + lin) /. lk[ka_][j_] -> holdForm[ka[j]] /.	frx->Plus);
 		FCPrint[1,"Collect2: Done putting re togehter, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
 
-		(*Just a small consistency check *)
+
+		(*	(*Just a small consistency check *)
 		If[	optIsolateNames =!= False,
 			If[	!FreeQ2[FRH[Cases[re,_HoldForm,Infinity]//Sort//DeleteDuplicates,IsolateNames->{optIsolateNames}], monomList],
 				Message[Collect2::failmsg,"Isolated prefactors contain monomials!"];
 				Abort[]
 			]
-		];
+		];*)
 
 
 		FCPrint[1,"Collect2: Done releasing tempIso, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];

@@ -2,9 +2,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for FCTraceExpand					*)
@@ -137,9 +137,9 @@ FCE->True]", "PauliTrace[CSIS[b + p]]"},
 {"fcstFCTraceExpand-ID24",
 "FCTraceExpand[PauliTrace[CSI[i, i] + CSI[j, j].PauliTrace[CSI[a] \
 + CSI[b]]]] // FCE",
-"PauliTrace[CSI[i] . CSI[i]] + PauliTrace[CSI[j] . CSI[j] . \
-PauliTrace[CSI[a]]] + PauliTrace[CSI[j] . CSI[j] . \
-PauliTrace[CSI[b]]]"},
+"PauliTrace[CSI[i] . CSI[i]] +
+PauliTrace[CSI[a]]*PauliTrace[CSI[j] . CSI[j]] +
+PauliTrace[CSI[b]]*PauliTrace[CSI[j] . CSI[j]]"},
 {"fcstFCTraceExpand-ID25",
 "FCTraceExpand[PauliTrace[CSI[i, i] + CSI[j, j] PauliTrace[CSI[a] \
 + CSI[b]]]] // FCE",
@@ -164,5 +164,22 @@ False,FCE->True]", "PauliTrace[CSIS[x] + CSIS[y]]"},
 "PauliTrace[CGSD[k+p].CSI[j].CGSD[l-p].CSID[nu].CGSD[l].CSID[la].\
 CGSD[k+l]]//FCTraceExpand//FCE",
 "PauliTrace[CSI[j] . CSID[nu] . CSID[la]*CGSD[k + p] . CGSD[l - p] \
-. CGSD[l] . CGSD[k + l]]"}
+. CGSD[l] . CGSD[k + l]]"},
+
+{"fcstFCTraceExpand-ID30",
+"FCTraceExpand[-SUNTrace[
+SUNF[SUNIndex[aa1], SUNIndex[aa2], SUNIndex[aa3]]*
+SUNF[SUNIndex[aa4], SUNIndex[aa5], SUNIndex[aa3]]*
+(I*(-1/2*SUNT[SUNIndex[aa1]] . SUNT[SUNIndex[aa5]] .
+SUNT[SUNIndex[aa2]] . SUNT[SUNIndex[aa4]]/SUNN +
+(SUNT[SUNIndex[aa1]] . SUNT[SUNIndex[aa5]]*
+SUNDelta[SUNIndex[aa2], SUNIndex[aa4]])/4) -
+I*(-1/2*SUNT[SUNIndex[aa1]] . SUNT[SUNIndex[aa5]] .
+SUNT[SUNIndex[aa2]] . SUNT[SUNIndex[aa4]]/SUNN +
+(SUNT[SUNIndex[aa1]]*SUNTrace[SUNT[SUNIndex[aa5]] . SUNT[SUNIndex[aa2]] .
+SUNT[SUNIndex[aa4]]])/2))]]", "-(SUNF[SUNIndex[aa1], SUNIndex[aa2], SUNIndex[aa3]]*
+SUNF[SUNIndex[aa3], SUNIndex[aa4],
+SUNIndex[aa5]]*((I/4)*SUNDelta[SUNIndex[aa2], SUNIndex[aa4]]*
+SUNTrace[SUNT[SUNIndex[aa1]] . SUNT[SUNIndex[aa5]]] - (I/2)*
+SUNTrace[SUNT[SUNIndex[aa5]] . SUNT[SUNIndex[aa2]] .SUNT[SUNIndex[aa4]]]*SUNTrace[SUNT[SUNIndex[aa1]]]))"}
 })

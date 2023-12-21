@@ -1,0 +1,75 @@
+
+
+(* :Title: FCLoopScalelessQ.test                                              	    *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopScalelessQ	  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopScalelessQ =
+({
+{"fcstFCLoopScalelessQ-ID1",
+"FCClearScalarProducts[];FCLoopScalelessQ[FAD[q,q-p],{q}]",
+"False"},
+{"fcstFCLoopScalelessQ-ID2",
+"FCClearScalarProducts[];SPD[p,p]=0;FCLoopScalelessQ[FAD[q,q-p],{q}\
+]", "True"},
+{"fcstFCLoopScalelessQ-ID3",
+"FCClearScalarProducts[];FCLoopScalelessQ[FAD[p1,p2,Q-p1-p2,Q-p1,Q-\
+p2],{p1,p2}]", "False"},
+{"fcstFCLoopScalelessQ-ID4",
+"FCClearScalarProducts[];SPD[Q]=0;FCLoopScalelessQ[FAD[p1,p2,Q-p1-\
+p2,Q-p1,Q-p2],{p1,p2}]", "True"},
+{"fcstFCLoopScalelessQ-ID5",
+"FCClearScalarProducts[];SPD[Q]=0;FCLoopScalelessQ[FAD[{p1,m},p2,Q-\
+p1-p2,Q-p1,Q-p2],{p1,p2}]", "False"},
+{"fcstFCLoopScalelessQ-ID6",
+"FCClearScalarProducts[];FCLoopScalelessQ[FAD[{k2,mb},{k3},{k1-q,\
+mc},{k1-k2,mc},{k2-k3}],{k1,k2,k3}]", "False"},
+{"fcstFCLoopScalelessQ-ID7",
+"FCClearScalarProducts[];FCLoopScalelessQ[FAD[{p1,1}],{p1}]",
+"False"},
+{"fcstFCLoopScalelessQ-ID8", "FCLoopScalelessQ[FAD[{p1,0}],{p1}]",
+"True"},
+{"fcstFCLoopScalelessQ-ID9",
+"FCLoopScalelessQ[FAD[{p1,1},p2],{p1,p2}]", "True"},
+{"fcstFCLoopScalelessQ-ID10",
+"FCLoopScalelessQ[FAD[{p1,1},{p2,1}],{p1,p2}]", "False"},
+{"fcstFCLoopScalelessQ-ID11",
+"FCLoopScalelessQ[FAD[{k2,mg},{k3,mc},{k1,q},{k1-k2},{k2-k3,mc}],{\
+k1,k2,k3}]", "False"},
+{"fcstFCLoopScalelessQ-ID12",
+"FCLoopScalelessQ[FAD[{k2,mg},{k3,mc},{k1-q},{k2-q,mb},{k1-k2},{k2-\
+k3,mc}],{k1,k2,k3}]", "False"},
+{"fcstFCLoopScalelessQ-ID13",
+"FCLoopScalelessQ[FAD[{k2+k4,mg},{k3-k4,mc},{k1-q},{k2+k4-q,mb},{\
+k1-k2-k4},{k2-k3+2 k4,mc},-k1+k4],{k1,k2,k3,k4}]", "True"},
+{"fcstFCLoopScalelessQ-ID14",
+"FCLoopScalelessQ[FAD[{k2,0,2},{k1-q},{k1-k3,mc},{k2-k3,mc}],{k1,\
+k2,k3}]", "False"},
+{"fcstFCLoopScalelessQ-ID15","FCLoopScalelessQ[
+FCTopology[
+T1, {FAD[p1], FAD[p1 - Q], FAD[p1 + p2]}, {p1, p2}, {Q}, {}, {}]]","True"},
+{"fcstFCLoopScalelessQ-ID16",
+"FCLoopScalelessQ[SFAD[{{0,2 p . q},0},p],{p}]", "True"},
+{"fcstFCLoopScalelessQ-ID17","FCLoopScalelessQ[FCTopology[prop2Lv1,{SFAD[{p1,m1^2}],
+SFAD[{p2,m2^2}],SFAD[p1-q],SFAD[p2-q],SFAD[{p1-p2,m3^2}]},{p1,p2},{Q},{},{}]]","False"},
+{"fcstFCLoopScalelessQ-ID18","FCLoopScalelessQ[{FCTopology[prop2Lv1,{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],SFAD[p1-q],SFAD[p2-q],SFAD[{p1-p2,m3^2}]},{p1,p2},{Q},{},{}],
+FCTopology[prop2Lv2,{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],SFAD[{p1-q,M^2}],SFAD[{p2-q,M^2}],SFAD[p1-p2]},{p1,p2},{Q},{},{}]}]","{False,False}"},
+{"fcstFCLoopScalelessQ-ID19","FCLoopScalelessQ[{GLI[prop2Lv1,{0,0,1,1,0}]},{FCTopology[prop2Lv1,
+{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],SFAD[p1-q],SFAD[p2-q],SFAD[{p1-p2,m3^2}]},{p1,p2},{Q},{},{}]}]","{True}"},
+{"fcstFCLoopScalelessQ-ID20","FCLoopScalelessQ[{FCTopology[
+asyR3prop2Ltopo01300X01102N1, {SFAD[{{I*p3, 0}, {0, -1}, 1}],
+	SFAD[{{0, -2*p1 . q}, {0, -1}, 1}],
+	SFAD[{{0, p1 . p1}, {0, -1}, 1}],
+	SFAD[{{0, p1 . p3}, {0, -1}, 1}],
+	SFAD[{{0, p3 . q}, {0, -1}, 1}]}, {p1, p3},
+	{q}, {SPD[q, q] -> mb^2}, {}]}]","{True}"}
+});

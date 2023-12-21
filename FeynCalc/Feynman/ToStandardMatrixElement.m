@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:			*)
@@ -16,12 +16,13 @@
 (* ------------------------------------------------------------------------ *)
 
 ToStandardMatrixElement::usage =
-"ToStandardMatrixElement[exp] wraps Dirac structures, color structures and \
-polarization vectors with the head StandardMatrixElement. \
-The idea of having standard matrix elements stems from A. Denner's \
-\"Techniques for the calculation of electroweak radiative corrections \
-at the one-loop level and results for W-physics at LEP200\", \
-cf. arXiv:0709.1075.";
+"ToStandardMatrixElement[exp] wraps Dirac structures, color structures and
+polarization vectors with the head StandardMatrixElement.
+
+The idea of having standard matrix elements stems from A. Denner's
+\"Techniques for the calculation of electroweak radiative corrections at the
+one-loop level and results for W-physics at LEP200\", cf.
+[arXiv:0709.1075](https://arxiv.org/abs/0709.1075).";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -33,29 +34,31 @@ Begin["`ToStandardMatrixElement`Private`"]
 tsmeVerbose::usage="";
 
 Options[ToStandardMatrixElement] = {
-	CartesianIndex			-> False,
-	CartesianIndexNames		-> {},
-	ChangeDimension 		-> False,
-	ClearHeads				-> {StandardMatrixElement},
-	DiracOrder 				-> True,
-	DiracSimplify			-> True,
-	DiracEquation			-> True,
-	DiracSubstitute5 		-> True,
-	DiracSubstitute67 		-> False,
-	ExceptHeads				-> {},
-	FCColorIsolate 			-> True,
-	FCDiracIsolate 			-> True,
-	FCE 					-> False,
-	FCI 					-> False,
-	FCVerbose 				-> False,
-	Factoring 				-> {Factor, 5000},
-	LorentzIndex			-> False,
-	LorentzIndexNames		-> {},
-	Polarization 			-> True,
-	SirlinSimplify 			-> False,
-	Spinor 					-> False,
-	SpinorChainChiralSplit	-> True,
-	TimeConstrained 		-> 3
+	CartesianIndex				-> False,
+	CartesianIndexNames			-> {},
+	ChangeDimension 			-> False,
+	ClearHeads					-> {StandardMatrixElement},
+	DiracOrder 					-> True,
+	DiracSimplify				-> True,
+	DiracSpinorNormalization	-> "Relativistic",
+	DiracEquation				-> True,
+	DiracSubstitute5 			-> True,
+	DiracSubstitute67 			-> False,
+	ExceptHeads					-> {},
+	FCColorIsolate 				-> True,
+	FCDiracIsolate 				-> True,
+	FCE 						-> False,
+	FCI 						-> False,
+	FCVerbose 					-> False,
+	Factoring 					-> {Factor, 5000},
+	LorentzIndex				-> False,
+	LorentzIndexNames			-> {},
+	Polarization 				-> True,
+	SirlinSimplify 				-> False,
+	Spinor 						-> False,
+	SpinorChainChiralSplit		-> True,
+	SpinorChainEvaluate			-> True,
+	TimeConstrained 			-> 3
 }
 
 standmat/:
@@ -66,7 +69,9 @@ ToStandardMatrixElement[expr_List, opts:OptionsPattern[]]:=
 	ToStandardMatrixElement[#, opts]&/@expr;
 
 ToStandardMatrixElement[expr_/;Head[expr]=!=List, OptionsPattern[]]:=
-	Block[{ex,res,time, chead, dhead, holdDOT, optTimeConstrained,optClearHeads},
+	Block[{	ex,res,time, chead, dhead, holdDOT, optTimeConstrained,
+			optClearHeads, unitMatrix, null1, null2, optDiracSubstitute5,
+			dheadList, dheadListEval},
 
 
 		If [OptionValue[FCVerbose]===False,
@@ -76,8 +81,9 @@ ToStandardMatrixElement[expr_/;Head[expr]=!=List, OptionsPattern[]]:=
 			];
 		];
 
-		optTimeConstrained = OptionValue[TimeConstrained];
-		optClearHeads = OptionValue[ClearHeads];
+		optTimeConstrained 	= OptionValue[TimeConstrained];
+		optClearHeads 		= OptionValue[ClearHeads];
+		optDiracSubstitute5 = OptionValue[DiracSubstitute5];
 
 		FCPrint[1,"ToStandardMatrixElement: Entering.", FCDoControl->tsmeVerbose];
 		FCPrint[3,"ToStandardMatrixElement: Entering with: ", expr, FCDoControl->tsmeVerbose];
@@ -98,7 +104,8 @@ ToStandardMatrixElement[expr_/;Head[expr]=!=List, OptionsPattern[]]:=
 			ex = DiracSimplify[ex, FCI->True, DiracOrder->OptionValue[DiracOrder], DiracSubstitute67->OptionValue[DiracSubstitute67],
 				DiracSubstitute5->OptionValue[DiracSubstitute5], SirlinSimplify->OptionValue[SirlinSimplify],
 				DiracEquation->OptionValue[DiracEquation], LorentzIndexNames-> OptionValue[LorentzIndexNames],
-				CartesianIndexNames-> OptionValue[CartesianIndexNames]];
+				CartesianIndexNames-> OptionValue[CartesianIndexNames], SpinorChainEvaluate -> OptionValue[SpinorChainEvaluate],
+				DiracSpinorNormalization -> OptionValue[DiracSpinorNormalization]];
 			FCPrint[1, "ToStandardMatrixElement: DiracSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tsmeVerbose];
 			FCPrint[3, "ToStandardMatrixElement: After DiracSimplify: ", ex, FCDoControl->tsmeVerbose]
 		];
@@ -123,6 +130,17 @@ ToStandardMatrixElement[expr_/;Head[expr]=!=List, OptionsPattern[]]:=
 			FCPrint[3, "ToStandardMatrixElement: After FCDiracIsolate: ", ex, FCDoControl->tsmeVerbose]
 		];
 
+		unitMatrix = SelectFree[ex+null1+null2,dhead] /. null1|null2->0;
+
+		If[	(unitMatrix=!=0) && !FreeQ[ex,dhead],
+			FCPrint[1, "ToStandardMatrixElement: Adding the decomposition of the unit matrix in Dirac space.", FCDoControl->tsmeVerbose];
+			If[	optDiracSubstitute5,
+				ex = ex - unitMatrix + unitMatrix*dhead[DiracGamma[6]] + unitMatrix*dhead[DiracGamma[7]],
+				ex = ex - unitMatrix + unitMatrix*dhead[1]
+			]
+		];
+
+
 		If[	OptionValue[Spinor],
 			ex = ex /. dhead[x_]/; FreeQ[x,Spinor] :> x
 		];
@@ -137,11 +155,26 @@ ToStandardMatrixElement[expr_/;Head[expr]=!=List, OptionsPattern[]]:=
 			FCPrint[3, "ToStandardMatrixElement: After FCColorIsolate: ", ex, FCDoControl->tsmeVerbose];
 		];
 
+
+		If[	optDiracSubstitute5,
+			dheadList =Cases2[ex,dhead];
+			dheadListEval = dheadList /. {
+				dhead[x_]/; (FreeQ2[x,{DiracGamma[6],DiracGamma[7]}] && FreeQ[x,Spinor]) :> dhead[x.DiracGamma[6]]+dhead[x.DiracGamma[7]](*,
+
+
+				dhead[c_. DOT[a_Spinor,x___, b_Spinor]]/; (FreeQ2[{x},{DiracGamma[6],DiracGamma[7]}] && FreeQ[{x},Spinor]) :>
+					dhead[c DOT[a,x,DiracGamma[6],b]]+dhead[c DOT[a,x,DiracGamma[7],b]]
+				*)
+			};
+			ex = ex /. Dispatch[Thread[Rule[dheadList,dheadListEval]]]
+		];
+
 		time=AbsoluteTime[];
 		FCPrint[1, "ToStandardMatrixElement: Applying Collect2.", FCDoControl->tsmeVerbose];
 		ex = Collect2[ex,dhead,chead, Factoring->OptionValue[Factoring],TimeConstrained->optTimeConstrained];
 		FCPrint[1, "ToStandardMatrixElement: Collect2 done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tsmeVerbose];
 		FCPrint[3, "ToStandardMatrixElement: After Collect2: ", ex, FCDoControl->tsmeVerbose];
+
 
 		ex = ex //. chead|dhead->standmat /. standmat -> StandardMatrixElement;
 

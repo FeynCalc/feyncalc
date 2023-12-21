@@ -1,0 +1,81 @@
+(* :Title: Factor2.test														*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCCompareNumbers				*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Shared`fcstFCCompareNumbers =
+({
+{"fcstFCCompareNumbers-ID1",
+"FCCompareNumbers[5.123542342+ 1.23I,5.123542324+ \
+1.22I,Unequal->uneq,Complex->myI,Head->commonDigits,FCVerbose->-1]",
+"myI*commonDigits[2.086359830674748]"},
+{"fcstFCCompareNumbers-ID2",
+"FCCompareNumbers[5,6,Unequal->uneq,Complex->myI,\
+Head->commonDigits,FCVerbose->-1]",
+"commonDigits[0.7781512503836435]"},
+{"fcstFCCompareNumbers-ID3",
+"FCCompareNumbers[5,0.,Unequal->uneq,Complex->myI,\
+Head->commonDigits,FCVerbose->-1]", "uneq[5]"},
+{"fcstFCCompareNumbers-ID4",
+"FCCompareNumbers[5.123542342,5.123542324,Unequal->uneq,\
+Complex->myI,Head->commonDigits,FCVerbose->-1]", "0"},
+{"fcstFCCompareNumbers-ID5",
+"FCCompareNumbers[coeffO^2*parX^2*((-0.16938453988490296 + \
+0.0003642725497036987*I) + (0.010073272311050437 + \
+0.00010055966010621489*I)*parY - (0.0001750088481340821 + \
+3.786995095115182*^-7*I)*parY^2 + 1.7544347991720256*^-6*parY^3 +
+(0.03229449710504008 + 0.000023832937536320572*I)*parZ),\
+\[IndentingNewLine](-0.1693845398849033+0.00036427254970370276*I)*\
+coeffO^2*parX^2+(0.00986064811119315+0.00010341222966127728*I)*coeffO^\
+2*parX^2*parY-(0.00017642791547131393+3.992314082096916*^-7*I)*coeffO^\
+2*parX^2*parY^2+1.72987170095673*^-6*coeffO^2*parX^2*parY^3+(0.\
+03229449710504005+0.000023832937536320826*I)*coeffO^2*parX^2*parZ,\
+Unequal->uneq,Complex->myI,Head->commonDigits,FCVerbose->-1]",
+"coeffO^2*myI*parX^2*parY^2*commonDigits[1.2887955878011237] + \
+coeffO^2*myI*parX^2*parY*commonDigits[1.559335659258218] + \
+coeffO^2*parX^2*parY*commonDigits[1.6662927684729982] + \
+coeffO^2*parX^2*parY^3*commonDigits[1.8477307493373727] + \
+coeffO^2*parX^2*parY^2*commonDigits[2.0945642989011826]"},
+{"fcstFCCompareNumbers-ID6",
+"FCCompareNumbers[(0.+0.*I)-(0.20132103165327941-0.\
+00043434443313399246*I)*coeffO^2*parX^2+(0.047227066764317975)*coeffO^\
+2*parX^2*parY-(0.00005403882927314103)*coeffO^2*parX^2*parY^2+(1.\
+4588597782189382*^-6-4.06569606476957*^-13*I)*coeffO^2*parX^2*parY^3+(\
+0.03841797609570242+0.000028403733516153446*I)*coeffO^2*parX^2*parZ,\
+\[IndentingNewLine](-0.20132103165327922+0.0004343444331339952*I)*\
+coeffO^2*parX^2+(0.0472270672349811)*coeffO^2*parX^2*parY-(0.\
+00005403887000187252)*coeffO^2*parX^2*parY^2+1.4588601127764193*^-6*\
+coeffO^2*parX^2*parY^3+(0.038417976095702376+0.000028403733516153537*\
+I)*coeffO^2*parX^2*parZ,FCVerbose->-1]", "0"},
+{"fcstFCCompareNumbers-ID7","FCCompareNumbers[5.,5.,FCVerbose->-1]","0"},
+{"fcstFCCompareNumbers-ID8","FCCompareNumbers[5,5,FCVerbose->-1]","0"},
+{"fcstFCCompareNumbers-ID9","FCCompareNumbers[
+1.031337 - 0.707368*mg - 0.240819*mg^2 - 0.339402*mg^3 +
+2.309994*mg*Log[mg] + 0.2705*mg^2*Log[mg] + 0.117082*mg^3*Log[mg] +
+0.135164*mg^2*Log[mg]^2,
+1.0313367362027421 - 0.7073687152595041*mg -
+0.24081553669118966*mg^2 - 0.3394048245090585*mg^3 +
+2.3099945982277887*mg*Log[mg] + 0.27049953511783786*mg^2*Log[mg] +
+0.11708585293244765*mg^3*Log[mg] +
+0.13516435986159167*mg^2*Log[mg]^2, DigitCount -> 4,
+FCVerbose -> -1]","0"},
+{"fcstFCCompareNumbers-ID10","FCCompareNumbers[44.4132197952625489,
+44.4132197952625489`17.64751225906935, FCVerbose -> -1]","0"},
+{"fcstFCCompareNumbers-ID11",
+"FCCompareNumbers[(0. +3.655896106264908*^-18*I)*(0.016900000000000002*gP^2 - 3.9831*gS^2)*Mx^2*
+StandardMatrixElement[Spinor[Momentum[p1, D], Mx, 1]], 0, FCVerbose -> -1]",
+"0"},
+{"fcstFCCompareNumbers-ID12","MatchQ[FCCompareNumbers[
+0. - 0.003472222222222222*
+	I, -1.680374472179841609037686548395`17.423825803269324*^-8 -
+0.00347226357312313376509328665258961945`17.739032412292975*I,FCVerbose->-4],
+FCGV[\"I\"] FCGV[\"CommonDigits\"][_Real] + FCGV[\"Unmatched\"][_Real]]","True"}
+});

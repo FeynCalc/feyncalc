@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for DiracGammaCombine			*)
@@ -47,5 +47,9 @@ FCE -> True]", "CGA[i].(m + 5 CGS[p]).CGA[j]"},
 {"fcstDiracGammaCombine-ID13", "DiracGammaCombine[GS[p] + GS[q] == x, FCE -> True]",
 "GS[p + q] == x"},
 {"fcstDiracGammaCombine-ID14", "DiracGammaCombine[{GS[p] + GS[q], GS[r] + GS[s]}, FCE -> True]",
-"{GS[p + q], GS[r + s]}"}
+"{GS[p + q], GS[r + s]}"},
+{"fcstDiracGammaCombine-ID15", "DiracGammaCombine[GSLR[p, n, nb] + GSLR[q, n, nb], FCE -> True]",
+"GSLR[p + q, n, nb]"},
+{"fcstDiracGammaCombine-ID16", "DiracGammaCombine[GSLRD[p, n, nb] + GSLRD[q, n, nb], FCE -> True]",
+"GSLRD[p + q, n, nb]"}
 });

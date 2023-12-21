@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Factors Dirac chains with explicit indices using linearity	*)
@@ -16,9 +16,9 @@
 (* ------------------------------------------------------------------------ *)
 
 DiracChainFactor::usage =
-"DiracChainFactor[expr] factors out all expressions inside a DiracChain to which the \
-chain doesn't apply. For example, all objects that are not Dirac matrices can be \
-safely factrored out from every Dirac chain.";
+"DiracChainFactor[exp] factors out all expressions inside a DiracChain to which
+the chain doesn't apply. For example, all objects that are not Dirac matrices
+can be safely factrored out from every Dirac chain.";
 
 (* ------------------------------------------------------------------------ *)
 

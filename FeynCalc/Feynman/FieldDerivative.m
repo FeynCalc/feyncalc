@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Field derivative												*)
@@ -16,17 +16,19 @@
 (* ------------------------------------------------------------------------ *)
 
 FieldDerivative::usage =
-"FieldDerivative[f[x],x,li1,li2,...] is the derivative of f[x] with \
-respect to space-time variables x and with Lorentz indices li1, li2, ...,  \
-where li1, li2, ... have head LorentzIndex.  \n
-FieldDerivative[f[x],x,li1,li2,...] can be given as  \
-FieldDerivative[f[x],x,{l1,l2,...}], where l1 is li1 without the head. \n
-NOTICE: FieldDerivative is defined only for objects with head QuantumField[...]. \
-If the space-time derivative of other objects is wanted, the corresponding \
-rule must be specified.";
+"FieldDerivative[f[x], x, li1, li2, ...] is the derivative of f[x] with respect
+to space-time variables x and with Lorentz indices li1, li2,  ...,  where li1,
+li2, ... have head LorentzIndex.
+
+FieldDerivative[f[x], x, li1, li2, ...] can be given as FieldDerivative[f[x],
+x, {l1, l2, ...}], where $l1$ is $li1$ without the head.
+
+FieldDerivative  is defined only for objects with head QuantumField. If the
+space-time derivative of other objects is wanted, the corresponding rule must
+be specified.";
 
 FDr::usage =
-"FDr is the shorthand notation for FieldDerivative";
+"FDr is the shorthand notation for FieldDerivative.";
 
 Begin["`Package`"]
 End[]

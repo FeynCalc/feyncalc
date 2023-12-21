@@ -1,0 +1,75 @@
+
+
+(* :Title: FCLoopPropagatorsToTopology.test									*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  	Framework independent unit tests for
+				FCLoopPropagatorsToTopology		  							*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopPropagatorsToTopology =
+({
+{"fcstFCLoopPropagatorsToTopology-ID1",
+"FCLoopPropagatorsToTopology[{SPD[q]},FCE\[Rule]True]",
+"{SPD[q, q]}"},
+{"fcstFCLoopPropagatorsToTopology-ID2",
+"FCLoopPropagatorsToTopology[{2SPD[q]},FCE\[Rule]True]",
+"{2*SPD[q, q]}"},
+{"fcstFCLoopPropagatorsToTopology-ID3",
+"FCLoopPropagatorsToTopology[{FAD[q]},FCE\[Rule]True]",
+"{SPD[q, q]}"},
+{"fcstFCLoopPropagatorsToTopology-ID4",
+"FCLoopPropagatorsToTopology[{FAD[{q,m}]},FCE\[Rule]True]",
+"{-m^2 + SPD[q, q]}"},
+{"fcstFCLoopPropagatorsToTopology-ID5",
+"FCLoopPropagatorsToTopology[{FAD[{q,m}],SPD[q,p]},FCE\[Rule]\
+True]", "{-m^2 + SPD[q, q], SPD[p, q]}"},
+{"fcstFCLoopPropagatorsToTopology-ID6",
+"FCLoopPropagatorsToTopology[{SFAD[{q,m}],SPD[q,p]},FCE\[Rule]\
+True]", "{-m + SPD[q, q], SPD[p, q]}"},
+{"fcstFCLoopPropagatorsToTopology-ID7",
+"FCLoopPropagatorsToTopology[{CFAD[{q,m}],SPD[q,p]},FCE\[Rule]\
+True]", "{m + CSPD[q, q], SPD[p, q]}"},
+{"fcstFCLoopPropagatorsToTopology-ID8",
+"FCLoopPropagatorsToTopology[
+FCTopology[
+auxTopo1, {FeynAmpDenominator[
+	StandardPropagatorDenominator[I*Momentum[p1, D], 0, 0, {1, 1}]],
+FeynAmpDenominator[
+	StandardPropagatorDenominator[(-I)*Momentum[p3, D], 0,
+	mb^2, {1, 1}]],
+FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[I*p1 + I*p3, D], 0,
+	mb^2, {1, 1}]],
+FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[I*p1 - I*q, D], 0,
+	mb^2, {1, 1}]],
+FeynAmpDenominator[
+	StandardPropagatorDenominator[0,
+	Pair[Momentum[p3, D], Momentum[q, D]], 0, {1, 1}]]}, {p1,
+p3}, {q}, {}, {}], ExpandScalarProduct -> True, FCE -> True]",
+"{-SPD[p1, p1], mb^2 - SPD[p3, p3], mb^2 - SPD[p1, p1] - 2*SPD[p1, p3] -
+SPD[p3, p3], mb^2 - SPD[p1, p1] + 2*SPD[p1, q] - SPD[q, q], SPD[p3, q]}"},
+{"fcstFCLoopPropagatorsToTopology-ID9",
+"FCLoopPropagatorsToTopology[{FCTopology[topo1, {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p3, 0},
+{mb^2, 1}, 1}], SFAD[{{p1 + p3, 0}, {mb^2, 1}, 1}], SFAD[{{p1 - q, 0}, {mb^2, 1}, 1}], SFAD[{{0, p3 . q}, {0, 1}, 1}]},
+{p1, p3}, {q}, {}, {}],FCTopology[topo1, {SFAD[{{p1, 0}, {mb^2, 1}, 1}], SFAD[{{p3, 0}, {mb^2, 1}, 1}],
+SFAD[{{p1 + p3, 0}, {mb^2, 1}, 1}], SFAD[{{p1 - q, 0}, {mb^2, 1}, 1}], SFAD[{{0, (p3+p1) . q}, {0, 1}, 1}]},
+{p1, p3}, {q}, {}, {}]},FCE->True]",
+"{{SPD[p1, p1], -mb^2 + SPD[p3, p3], -mb^2 + SPD[p1 + p3, p1 + p3], -mb^2 + SPD[p1 - q, p1 - q],
+SPD[p3, q]}, {-mb^2 + SPD[p1, p1], -mb^2 + SPD[p3, p3], -mb^2 + SPD[p1 + p3, p1 + p3],
+-mb^2 + SPD[p1 - q, p1 - q], SPD[p1 + p3, q]}}"},
+{"fcstFCLoopPropagatorsToTopology-ID10",
+"FCLoopPropagatorsToTopology[{SFAD[{ k, 0, -3/2}]}, FCE -> True]",
+"{SPD[k, k]}"},
+{"fcstFCLoopPropagatorsToTopology-ID11",
+"FCLoopPropagatorsToTopology[{SFAD[{ k, 0, -3/2}],
+SFAD[{ (k + p), 0, 1}]}, FCE -> True]","{SPD[k, k], SPD[k + p, k + p]}"}
+});

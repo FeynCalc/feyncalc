@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Clears definitions of scalar products						    *)
@@ -16,13 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 FCClearScalarProducts::usage =
-"FCClearScalarProducts[] removes all user-performed specific settings for \
+"FCClearScalarProducts[] removes all user-performed specific settings for
 ScalarProduct's.";
-
-ClearScalarProducts::usage =
-"ClearScalarProducts is a shortcut to FCClearScalarProducts[]. It is \
-needed mainly for compatibility reasons, so that old codes that use \
-ClearScalarProducts instead of FCClearScalarProducts[] still work.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -30,9 +25,6 @@ Begin["`Package`"]
 End[]
 
 Begin["`FCClearScalarProducts`Private`"]
-
-(* For compatibility with the old syntax	*)
-ClearScalarProducts:=FCClearScalarProducts[];
 
 FCClearScalarProducts[OptionsPattern[]] :=
 	(
@@ -45,6 +37,8 @@ FCClearScalarProducts[OptionsPattern[]] :=
 		UpValues[CartesianScalarProduct] = FeynCalc`Package`initialCartesianScalarProductUpValues;
 		DownValues[SP] = FeynCalc`Package`initialSPDownValues;
 		DownValues[SPD] = FeynCalc`Package`initialSPDDownValues;
+		DownValues[SPLR] = FeynCalc`Package`initialSPLRDownValues;
+		DownValues[SPLRD] = FeynCalc`Package`initialSPLRDDownValues;
 		DownValues[SPE] = FeynCalc`Package`initialSPEDownValues;
 		DownValues[CSP] = FeynCalc`Package`initialCSPDownValues;
 		DownValues[CSPD] = FeynCalc`Package`initialCSPDDownValues;
@@ -53,6 +47,8 @@ FCClearScalarProducts[OptionsPattern[]] :=
 		DownValues[Momentum] = FeynCalc`Package`initialMomentumDownValues;
 		DownValues[TemporalMomentum] = FeynCalc`Package`initialTemporalMomentumDownValues;
 		DownValues[CartesianMomentum] = FeynCalc`Package`initialCartesianMomentumDownValues;
+		DownValues[LightConePerpendicularComponent] = FeynCalc`Package`initialLightConePerpendicularComponentDownValues;
+
 		$ScalarProducts = FeynCalc`Package`initialScalarProducts;
 	);
 

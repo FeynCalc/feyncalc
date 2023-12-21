@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Checks if the expression contains dummy indices		*)
@@ -18,27 +18,28 @@
 
 
 FCCheckSyntax::usage =
-"FCCheckSyntax[exp] attempts to detect mistakes and inconsistencies \
-in the user input. The function returns the original expression but \
-will abort the evaluation if it thinks that the input is incorrect. \n
-Notice that false positives are possible and it is not guaranteed \
-that the input which passes FCCheckSyntax is indeed fully correct. \n
-FCCheckSyntax is also an option for several FeynCalc routines \
-If set to True, those functions will try to check the syntax of the input \
-expressions to detect possible inconsistencies. \
-However, on large expressions such checks may cost a lot of performance, \
-which is why this option is set to False by default.";
+"FCCheckSyntax[exp] attempts to detect mistakes and inconsistencies in the user
+input. The function returns the original expression but will abort the
+evaluation if it thinks that the input is incorrect. Notice that false
+positives are possible and it is not guaranteed that the input which passes
+FCCheckSyntax is indeed fully correct.
+
+FCCheckSyntax is also an option for several FeynCalc routines. If set to True,
+those functions will try to check the syntax of the input expressions to
+detect possible inconsistencies. However, on large expressions such checks may
+cost a lot of performance, which is why this option is set to False by
+default.";
 
 FCCheckSyntax::failmsg =
 "Error! FCCheckSyntax has found an inconsistency in your input expression \
-and must abort the evaluation. The problem reads: `1` `2`"
+and must abort the evaluation. The problem reads: `1` `2`";
 
 (* ------------------------------------------------------------------------ *)
 
-Begin["`Package`"]
+Begin["`Package`"];
 End[]
 
-Begin["`FCCheckSyntax`Private`"]
+Begin["`FCCheckSyntax`Private`"];
 
 indexHeads = {LorentzIndex, CartesianIndex, SUNIndex, SUNFIndex};
 nonCommHeads = {DiracGamma, PauliSigma, SUNT};

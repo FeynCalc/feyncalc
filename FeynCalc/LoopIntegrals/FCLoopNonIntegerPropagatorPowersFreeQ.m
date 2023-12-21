@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Returns True if the integral contains no noninteger
@@ -17,8 +17,8 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopNonIntegerPropagatorPowersFreeQ::usage =
-"FCLoopNonIntegerPropagatorPowersFreeQ[int] checks if the integral contains propagators raised to \
-noninteger (i.e. fractional or symbolic) powers.";
+"FCLoopNonIntegerPropagatorPowersFreeQ[int] checks if the integral contains
+propagators raised to noninteger (i.e. fractional or symbolic) powers.";
 
 Begin["`Package`"]
 End[]

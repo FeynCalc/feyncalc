@@ -10,8 +10,9 @@
 
 (* ------------------------------------------------------------------------ *)
 
-Gamma2::usage= "Gamma2[x,y] is a special product of Gamma functions \
-expanded up to order Epsilon^3 when positive integer arguments are given.";
+Gamma2::usage=
+"Gamma2[x, y] is a special product of Gamma functions expanded up to order
+Epsilon^3 when positive integer arguments are given.";
 
 (* ------------------------------------------------------------------------ *)
 

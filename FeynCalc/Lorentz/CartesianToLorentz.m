@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Converts selected Cartesian tensors into Lorentz tensors.		*)
@@ -17,9 +17,9 @@
 
 
 CartesianToLorentz::usage=
-"CartesianToLorentz[exp] rewrites Cartesian tensors in form of Lorentz tensors \
-(when possible). Using options one can specify which types of tensors \
-should be converted.";
+"CartesianToLorentz[exp] rewrites Cartesian tensors in form of Lorentz tensors
+(when possible). Using options one can specify which types of tensors should
+be converted.";
 
 CartesianToLorentz::fail=
 "Error! CartesianToLorentz has encountered a fatal problem and must abort the computation. \

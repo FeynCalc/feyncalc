@@ -1,0 +1,87 @@
+
+
+(* :Title: PauliChainExpand.test											*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for PauliChainExpand			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Dirac`fcstPauliChainExpand =
+({
+{"fcstPauliChainExpand-ID1",
+"PauliChainExpand[PCHN[1,i,j],FCE\[Rule]True, PauliChainFactor -> \
+False]", "PCHN[1, i, j]"},
+{"fcstPauliChainExpand-ID2",
+"PauliChainExpand[PCHN[CSIS[p]+m,i,j],FCE\[Rule]True, \
+PauliChainFactor -> False]",
+"m*PCHN[1, i, j] + PCHN[CSIS[p], i, j]"},
+{"fcstPauliChainExpand-ID3",
+"PauliChainExpand[PCHN[(CSIS[p]+m).CSI[mu],i,j],FCE\[Rule]True, \
+PauliChainFactor -> False]",
+"PCHN[m*CSI[mu], i, j] + PCHN[CSIS[p] . CSI[mu], i, j]"},
+{"fcstPauliChainExpand-ID4",
+"PauliChainExpand[PCHN[CSI[nu].(CSIS[p]+m).CSI[mu],i,j],FCE\[Rule]\
+True, PauliChainFactor -> False]",
+"PCHN[m*CSI[nu] . CSI[mu], i, j] + PCHN[CSI[nu] . CSIS[p] . \
+CSI[mu], i, j]"},
+{"fcstPauliChainExpand-ID5",
+"PauliChainExpand[PCHN[CSI[nu].(CSIS[p]+m).CSI[mu],PauliEta[-I],j],\
+FCE\[Rule]True, PauliChainFactor -> False]",
+"PCHN[m*CSI[nu] . CSI[mu], PauliEta[-I], j] + PCHN[CSI[nu] . \
+CSIS[p] . CSI[mu], PauliEta[-I], j]"},
+{"fcstPauliChainExpand-ID6",
+"PauliChainExpand[PCHN[CSI[nu].(CSIS[p]+m).CSI[mu],i,PauliXi[I]],\
+FCE\[Rule]True, PauliChainFactor -> False]",
+"PCHN[m*CSI[nu] . CSI[mu], i, PauliXi[I]] + PCHN[CSI[nu] . CSIS[p] \
+. CSI[mu], i, PauliXi[I]]"},
+{"fcstPauliChainExpand-ID7",
+"PauliChainExpand[PCHN[CSI[nu].(CSIS[p]+m).CSI[mu],PauliEta[-I],\
+PauliXi[I]],FCE\[Rule]True, PauliChainFactor -> False]",
+"PCHN[m*CSI[nu] . CSI[mu], PauliEta[-I], PauliXi[I]] + \
+PCHN[CSI[nu] . CSIS[p] . CSI[mu], PauliEta[-I], PauliXi[I]]"},
+{"fcstPauliChainExpand-ID8",
+"PauliChainExpand[PCHN[CSIS[p1]+m,i,j]PCHN[CSI[mu],j,k]PCHN[CSIS[\
+p2]+m,k,l],FCE\[Rule]True]",
+"PCHN[CSI[mu], j, k]*(m*PCHN[1, i, j] + PCHN[CSIS[p1], i, \
+j])*(m*PCHN[1, k, l] + PCHN[CSIS[p2], k, l])"},
+{"fcstPauliChainExpand-ID9",
+"PauliChainExpand[PCHN[CSIS[p1]+m,i,j]PCHN[CSI[mu],j,k]\
+\[IndentingNewLine]PCHN[CSIS[p2]+m,k,l],Momentum\[Rule]{p1},FCE\[Rule]\
+True]", "PCHN[CSI[mu], j, k]*(m*PCHN[1, i, j] + PCHN[CSIS[p1], i, \
+j])*PCHN[m + CSIS[p2], k, l]"},
+{"fcstPauliChainExpand-ID10",
+"PauliChainExpand[PCHN[(CSIS[p1+p2]+m).CSIS[p3+p4],i,j]PCHN[CSI[mu]\
+,j,k]PCHN[(CSIS[p2+p3]+m),k,l],Momentum\[Rule]{p1},FCE\[Rule]True, \
+PauliChainFactor -> False]",
+"PCHN[CSI[mu], j, k]*PCHN[m + CSIS[p2 + p3], k, l]*(PCHN[m*CSIS[p3 \
++ p4], i, j] + PCHN[CSIS[p1] . CSIS[p3 + p4], i, j] + PCHN[CSIS[p2] . \
+CSIS[p3 + p4], i, j])"},
+{"fcstPauliChainExpand-ID11",
+"PauliChainExpand[PCHN[PauliEta[-I], i] PCHN[PauliXi[I], j] \
+DIDelta[i, j],FCE -> True]",
+"DIDelta[i, j]*PCHN[PauliEta[-I], i]*PCHN[PauliXi[I], j]"},
+{"fcstPauliChainExpand-ID12",
+"PauliChainExpand[PCHN[-CVD[p, mu] CSI[mu] + m, Dir3, Dir4],FCE -> \
+True]", "m*PCHN[1, Dir3, Dir4] - CVD[p, mu]*PCHN[CSI[mu], Dir3, \
+Dir4]"},
+{"fcstPauliChainExpand-ID13",
+"PauliChainExpand[PCHN[-CVD[p, mu] CSI[mu] + m, Dir3, Dir4],FCE -> \
+True, PauliChainFactor -> False]",
+"m*PCHN[1, Dir3, Dir4] + PCHN[-(CSI[mu]*CVD[p, mu]), Dir3, \
+Dir4]"},
+{"fcstPauliChainExpand-ID14",
+"PauliChainExpand[PCHN[CSIS[p] + m, i, j] == x, FCE -> True]",
+"m*PCHN[1, i, j] + PCHN[CSIS[p], i, j] == x"},
+{"fcstPauliChainExpand-ID15",
+"PauliChainExpand[{PCHN[CSIS[p] + m, i, j], PCHN[CSIS[q] + m, i, \
+j]},FCE -> True]",
+"{m*PCHN[1, i, j] + PCHN[CSIS[p], i, j], m*PCHN[1, i, j] + \
+PCHN[CSIS[q], i, j]}"}
+})

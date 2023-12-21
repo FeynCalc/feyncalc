@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Extracts UV divergent parts of Passarino-Veltman
@@ -18,15 +18,12 @@
 
 
 PaVeUVPart::usage =
-"PaVeUVPart[expr] replaces all occuring Passarino-Veltman functions by \
-their explicit values, where only the UV divergent part is \
-preserved, while possible IR divergences and the finite part are \
-discarded. \n
-
-The function uses the algorithm from \"Sulyok, G., A closed \
-expression for the UV-divergent parts
-of one-loop tensor integrals in dimensional regularization, Phys. \
-Part. Nuclei Lett. (2017) 14:631,  arXiv:hep-ph/0609282\" ";
+"PaVeUVPart[expr] replaces all occurring Passarino-Veltman functions by their
+explicit values, where only the UV divergent part is preserved, while possible
+IR divergences and the finite part are discarded. The function uses the
+algorithm from [arXiv:hep-ph/0609282](https://arxiv.org/abs/hep-ph/0609282) by
+G. Sulyok. This allows to treat Passarino-Veltman of arbitrary rank and
+multiplicity";
 
 PaVeUVPart::failmsg =
 "Error! PaVeUVPart has encountered a fatal problem and must abort the computation. \
@@ -42,7 +39,7 @@ Begin["`PaVeUVPart`Private`"]
 MM::usage="";
 PP::usage="";
 pvuvVerbose::usage="";
-dim::usage="";
+dMinus4::usage="";
 factoring::usage="";
 uvp::usage="";
 prefactor::usage="";
@@ -60,7 +57,8 @@ Options[PaVeUVPart] = {
 };
 
 PaVeUVPart[expr_,  OptionsPattern[]] :=
-	Block[{ex,repList,res, dummy, rest,loopInts,intsUnique, intsUniqueEval, paVeInt, repRule},
+	Block[{	ex,repList,res, dummy, rest,loopInts,intsUnique, intsUniqueEval,
+			paVeInt, repRule, dMinus4, prodsUnique, prodsUniqueEval, dim},
 
 		dim 		= OptionValue[Dimension];
 		factoring	= OptionValue[Factoring];
@@ -98,8 +96,21 @@ PaVeUVPart[expr_,  OptionsPattern[]] :=
 		If[	OptionValue[FCLoopExtract],
 
 			(* Normal mode *)
+			(* Here we need to handle the case (D-4)*PaVe explicitly *)
 			FCPrint[1, "PaVeUVPart: Normal mode.", FCDoControl->pvuvVerbose];
-			{rest,loopInts,intsUnique} = FCLoopExtract[ex,{dummy},paVeInt,PaVe->True, FCI->True];
+
+			ex = ex /. dim -> dMinus4 + 4;
+
+			{rest,loopInts,prodsUnique} = FCLoopExtract[ex,{dummy},paVeInt,PaVe->True, FCI->True, PaVeIntegralHeads -> Join[FeynCalc`Package`PaVeHeadsList,{dMinus4}]];
+
+
+			(*Do not touch terms that are not multiplied by PaVe functions (e.g. counter-term contributions) *)
+			loopInts = loopInts /. paVeInt[x_]/; FreeQ2[x,FeynCalc`Package`PaVeHeadsList] :> x;
+			prodsUnique = SelectNotFree[prodsUnique,FeynCalc`Package`PaVeHeadsList];
+
+			FCPrint[3, "PaVeUVPart: List of the unique integrals multiplied by D: ",  prodsUnique, FCDoControl->pvuvVerbose];
+
+			intsUnique = Cases2[prodsUnique,FeynCalc`Package`PaVeHeadsList];
 			FCPrint[3, "PaVeUVPart: List of the unique integrals: ",  intsUnique, FCDoControl->pvuvVerbose];
 
 			If[	OptionValue[ToPaVe2],
@@ -112,12 +123,26 @@ PaVeUVPart[expr_,  OptionsPattern[]] :=
 			intsUniqueEval = intsUniqueEval  /. convRule /. uvp->uvpEval;
 			FCPrint[3, "PaVeUVPart: List of the evaluated PaVe functions ",  intsUniqueEval, FCDoControl->pvuvVerbose];
 
-			repRule = Thread[Rule[intsUnique,intsUniqueEval]];
+			prodsUniqueEval = prodsUnique /. Dispatch[Thread[Rule[intsUnique,intsUniqueEval]]] /. paVeInt->Identity;
+
+			FCPrint[3, "PaVeUVPart: List of the evaluated products: ",  prodsUniqueEval, FCDoControl->pvuvVerbose];
+
+			If[	!FreeQ2[prodsUniqueEval,FeynCalc`Package`PaVeHeadsList],
+				Message[PaVeUVPart::failmsg,"Something went wrong during the evaluation of the PaVe functions."];
+				Abort[]
+			];
+
+			prodsUniqueEval = Map[If[TrueQ[(Factor[Denominator[Together[#]]/.dMinus4->0])=!=0],0,#]&, prodsUniqueEval];
+
+			FCPrint[3, "PaVeUVPart: After sorting out (D-4)*PaVe cases: ",  intsUniqueEval, FCDoControl->pvuvVerbose];
+
+			repRule = Thread[Rule[prodsUnique,prodsUniqueEval]];
 			FCPrint[3, "PaVeUVPart: Replacement rule ",  repRule, FCDoControl->pvuvVerbose];
 
 			res = rest + (loopInts /. repRule),
 
 			(* Fast mode *)
+			(* Here we assume that the input is a single PaVe function, so that the case (D-4)*PaVe cannot occur *)
 			FCPrint[1, "PaVeUVPart: Fast mode.", FCDoControl->pvuvVerbose];
 
 			If[	OptionValue[ToPaVe2],
@@ -126,6 +151,8 @@ PaVeUVPart[expr_,  OptionsPattern[]] :=
 
 			res = ex /. convRule /. uvp->uvpEval
 		];
+
+		res = res /. dMinus4 -> dim - 4;
 
 		If[	OptionValue[Together],
 			res = Together[res]
@@ -150,7 +177,7 @@ convRule = {
 };
 
 uvpEval[exp_, ru1_, ru2_] :=
-	prefactor/(dim - 4) factoring[exp /. ru1 /. ru2]
+	prefactor/dMinus4 factoring[exp /. ru1 /. ru2]
 
 
 SetAttributes[PP, Orderless];
@@ -199,17 +226,17 @@ UVPartT[1][k___] :=
 		-(MM[0]^(1 + Quotient[Count[{k}, 0],2])/(2^(Quotient[Count[{k}, 0],2] - 1) (Quotient[Count[{k}, 0],2] + 1)!))
 	];
 
-UVPartT[N_Integer?Positive /; N >= 2][k___] :=
-	MemSet[UVPartT[N][k],
+UVPartT[nN_Integer?Positive /; nN >= 2][k___] :=
+	MemSet[UVPartT[nN][k],
 		Block[{indexanzahl, a, indexlist={}, ii, jj, nom, denom, res, range, tensIndCountNoZero, tensIndCountZero,
 			pref, indexNumber, llow, lup, ll, tmp},
 
-			indexNumber = N/2 (N + 1);
+			indexNumber = nN/2 (nN + 1);
 			tensIndCountNoZero = Count[{k}, Except[0]];
 			tensIndCountZero = Count[{k}, 0];
 
 			tmp = Table[ll[ii], {ii, 1, indexNumber - 1}];
-			llow = Join[{(Quotient[tensIndCountZero, 2] - N + 2)}, tmp];
+			llow = Join[{(Quotient[tensIndCountZero, 2] - nN + 2)}, tmp];
 			lup = Join[tmp, {0}];
 
 			With[{zzz = Sequence @@ Delete[{lup[[#]], 0, llow[[#]]} & /@ Range[indexNumber], {-1}]},
@@ -222,19 +249,19 @@ UVPartT[N_Integer?Positive /; N >= 2][k___] :=
 			range = Range[Length[indexlist]];
 
 			nom = (Product[
-				(Sum[indexlist[[#, (i/2) (2 N - 3 - i) + j]], {i, 1, j - 1}] +
-				Sum[indexlist[[#, (j/2) (2 N - 1 - j) + i]], {i, 1, N - 1 - j}] +
-				2 indexlist[[#, j]] + indexlist[[#, (N/2) (N - 1) + j]] + Count[{k}, j])!, {j, 1, N - 1}] &) /@ range;
+				(Sum[indexlist[[#, (i/2) (2 nN - 3 - i) + j]], {i, 1, j - 1}] +
+				Sum[indexlist[[#, (j/2) (2 nN - 1 - j) + i]], {i, 1, nN - 1 - j}] +
+				2 indexlist[[#, j]] + indexlist[[#, (nN/2) (nN - 1) + j]] + Count[{k}, j])!, {j, 1, nN - 1}] &) /@ range;
 
 			denom = (
-				(2 Sum[indexlist[[#, i]], {i, 1, (N/2) (N - 1)}] +
-				Sum[indexlist[[#, i]], {i, (N/2) (N - 1) + 1, (N/2) (N + 1) - 1}] +
-				(N - 1) + tensIndCountNoZero)! &
+				(2 Sum[indexlist[[#, i]], {i, 1, (nN/2) (nN - 1)}] +
+				Sum[indexlist[[#, i]], {i, (nN/2) (nN - 1) + 1, (nN/2) (nN + 1) - 1}] +
+				(nN - 1) + tensIndCountNoZero)! &
 			) /@ range;
 
-			pref = (-1)^(1 + tensIndCountNoZero)/(2^(Quotient[tensIndCountZero, 2] - 1) (Quotient[tensIndCountZero, 2] - N + 2)!);
+			pref = (-1)^(1 + tensIndCountNoZero)/(2^(Quotient[tensIndCountZero, 2] - 1) (Quotient[tensIndCountZero, 2] - nN + 2)!);
 
-			res = pref Plus @@ ((Multinomial[Sequence @@ indexlist[[#]]] & /@ range) ((Times @@ (a[N]^indexlist[[#]])) & /@ range) nom/denom);
+			res = pref Plus @@ ((Multinomial[Sequence @@ indexlist[[#]]] & /@ range) ((Times @@ (a[nN]^indexlist[[#]])) & /@ range) nom/denom);
 
 			res
 		]

@@ -13,7 +13,8 @@
 (* ------------------------------------------------------------------------ *)
 
 ConvoluteTable::usage=
-"ConvoluteTable[f, g, x] is a table for the convolution of f and g.";
+"ConvoluteTable[f, g, x] yields the convolution of f and g. ConvoluteTable is
+called by Convolute.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -418,11 +419,11 @@ cT[Log[1 - (x_)], Log[x_]*(x_), x_] :>
 	(-1 + x)*Log[1 - x] - x*Log[x] - x*Log[1 - x]*Log[x] + (x*Log[x]^2)/2 -
 	x*PolyLog[2, 1 - x]
 ,
-(* 95 *)
+(* 95 *)(*
 cT[Log[1 - (x_)], Log[1 - (x_)]*(x_), x_] :>
 	-Zeta2 + x*Zeta2 + (-1 + x)*Log[1 - x] + (1 - x)*Log[1 - x]^2 - x*Log[x] +
 	x*Log[1 - x]*Log[x] + PolyLog[2, 1 - x]
-,
+,*)
 (* 96 *)
 cT[Log[x_], x_ Log[1 - x_], x_] :> -2 + 2 x + (1 - x) Log[1 - x] -
 	Log[x] + Log[1 - x] Log[x] +   PolyLog[2, 1 - x]
@@ -499,12 +500,12 @@ cT[Log[x_], Log[x_]/(1 - (x_)), x_] :>
 cT[(Log[1 - (x_)]*Log[x_])/(1 - (x_)), 1, x_] :>
 Zeta2*Log[x] - Log[1 - x]*Log[x]^2 - Log[1 - x]*PolyLog[2, 1 - x] -
 	Log[x]*PolyLog[2, 1 - x] + PolyLog[3, 1 - x] - PolyLog[3, x] + Zeta[3]
-,
+,(*
 (* 116 *)
 cT[1, Log[x_]^2/(1-x_), x_] :>
 2*Zeta2*Log[x] - Log[1 - x]*Log[x]^2 - Log[x]^3/3 -
 	2*Log[x]*PolyLog[2, 1 - x] - 2*PolyLog[3, x] + 2*Zeta[3]
-,
+,*)
 (* 117 *)
 cT[Log[x_]^2, PlusDistribution[(1 - x_)^(-1)], x_] :>
 2*Zeta2*Log[x] - Log[1 - x]*Log[x]^2 - Log[x]^3/3 + Log[x]^2*Log[1 - x] -

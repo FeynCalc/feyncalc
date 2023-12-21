@@ -1,0 +1,27 @@
+(* :Title: FCGetScalarProducts.test											*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCGetScalarProducts  	*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Lorentz`fcstFCGetScalarProducts =
+({
+{"fcstFCGetScalarProducts-ID1", "FCClearScalarProducts[]; \n SP[p1]=m1^2; \n
+SP[p1]=m2^2; \n SP[p1,p2]=s; \n SPD[q1]=M1^2; \n SPD[q2]=M2^2; \n SPD[q1,q2]=t;
+FCGetScalarProducts[{p1,p2,q1,q2}]", "{Hold[Pair][Momentum[p1], Momentum[p1]] -> m2^2,
+Hold[Pair][Momentum[p1], Momentum[p2]] -> s, Hold[Pair][Momentum[q1, D], Momentum[q1, D]] -> M1^2,
+Hold[Pair][Momentum[q2, D], Momentum[q2, D]] -> M2^2, Hold[Pair][Momentum[q1, D], Momentum[q2, D]] -> t}
+"},
+{"fcstFCGetScalarProducts-ID2", "FCGetScalarProducts[{p1,p2,q1,q2},SetDimensions->{4}]",
+"{Hold[Pair][Momentum[p1], Momentum[p1]] -> m2^2, Hold[Pair][Momentum[p1], Momentum[p2]] -> s}"},
+{"fcstFCGetScalarProducts-ID3", "res=FCGetScalarProducts[{p1,p2,q1,q2},SetDimensions->{D}]; \n
+FCClearScalarProducts[] \n res", "{Hold[Pair][Momentum[q1, D],
+Momentum[q1, D]] -> M1^2, Hold[Pair][Momentum[q2, D], Momentum[q2, D]] -> M2^2, Hold[Pair][Momentum[q1, D], Momentum[q2, D]] -> t}"}
+});

@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Expands Pauli sigmas contracted with Cartesian vectors			*)
@@ -16,12 +16,12 @@
 (* ------------------------------------------------------------------------ *)
 
 PauliSigmaExpand::usage =
-"PauliSigmaExpand[exp] expands all PauliSigma[Momentum[a+b+..]] in \
-exp into (PauliSigma[Momentum[a]] + PauliSigma[Momentum[b]] + ...).";
+"PauliSigmaExpand[exp] expands all PauliSigma[Momentum[a+b+..]] in exp into
+(PauliSigma[Momentum[a]] + PauliSigma[Momentum[b]] + ...).";
 
 PauliSigmaExpand::fail =
 "Something went while expanding momenta contracted with Pauli matrices.
-Evaluation aborted! "
+Evaluation aborted!";
 
 (* ------------------------------------------------------------------------ *)
 

@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  	Creates subsitution lists of type Integral->
@@ -17,11 +17,10 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopSolutionList::usage =
-"FCLoopSolutionList[loopList, reversedRepIndexList,
-canIndexList, uniqueCanIndexList}, solsList] is an auxiliary \
-internal function that uses the output of FCLoopCanonicalize and the list of \
-simplified integrals solsList to create the substitution list of type \
-\"Integral\" -> \"simplified Integral\"."
+"FCLoopSolutionList[loopList, reversedRepIndexList, canIndexList,
+uniqueCanIndexList}, solsList] is an auxiliary internal function that uses the
+output of FCLoopCanonicalize and the list of simplified integrals solsList to
+create the substitution list of type \"Integral\" -> \"simplified Integral\".";
 
 FCLoopSolutionList::failmsg =
 "Error! FCLoopSolutionList has encountered a fatal problem and must abort the computation. \

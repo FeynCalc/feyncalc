@@ -1,0 +1,97 @@
+
+
+(* :Title: PauliChainJoin.test												*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for PauliChainJoin			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Dirac`fcstPauliChainJoin =
+({
+{"fcstPauliChainJoin-ID1", "PauliChainJoin[0]", "0"},
+{"fcstPauliChainJoin-ID2", "PauliChainJoin[CSI[i],FCE\[Rule]True]",
+"PauliSigma[CartesianIndex[i]]"},
+{"fcstPauliChainJoin-ID3",
+"PauliChainJoin[CSID[mu,mu],FCE\[Rule]True]",
+"PauliSigma[CartesianIndex[mu, -1 + D], -1 + D] . \
+PauliSigma[CartesianIndex[mu, -1 + D], -1 + D]"},
+{"fcstPauliChainJoin-ID4",
+"PauliChainJoin[PCHN[CSI[i],PauliEta[-I],PauliXi[I]],FCE\[Rule]\
+True]", "PauliEta[-I] . CSI[i] . PauliXi[I]"},
+{"fcstPauliChainJoin-ID5",
+"PauliChainJoin[PCHN[PauliEta[-I],i]PCHN[j,PauliXi[I]]PIDelta[i,j],\
+FCE\[Rule]True]", "PauliEta[-I] . PauliXi[I]"},
+{"fcstPauliChainJoin-ID6",
+"PauliChainJoin[PCHN[PauliEta[-I],i]PCHN[i,PauliXi[I]],FCE\[Rule]\
+True]", "PauliEta[-I] . PauliXi[I]"},
+{"fcstPauliChainJoin-ID7",
+"PauliChainJoin[PCHN[i,PauliEta[-I]]PCHN[CSIS[p]+m,PauliXi[I],j]\
+PIDelta[i,j],FCE\[Rule]True]",
+"PauliXi[I] . (m + CSIS[p]) . PauliEta[-I]"},
+{"fcstPauliChainJoin-ID8",
+"PauliChainJoin[PCHN[i,PauliEta[-I]]PCHN[CSIS[p]+m,PauliXi[I],i],\
+FCE\[Rule]True]", "PauliXi[I] . (m + CSIS[p]) . PauliEta[-I]"},
+{"fcstPauliChainJoin-ID9", "PauliChainJoin[PIDelta[i,i]]", "4"},
+{"fcstPauliChainJoin-ID10", "PauliChainJoin[PIDelta[i,j]^2]", "4"},
+{"fcstPauliChainJoin-ID11", "PauliChainJoin[PCHN[CSI[i],i,i]]",
+"PauliTrace[PauliSigma[CartesianIndex[i]]]"},
+{"fcstPauliChainJoin-ID12",
+"PauliChainJoin[PCHN[CSISD[-k1 + p1], Dir1, Dir2] \
+PCHN[CSISD[Polarization[k1, -I]], Dir2,PauliEta[I]] \
+PCHN[CSISD[Polarization[k2, -I]], PauliXi[-I],Dir1], FCE -> True]",
+"PauliXi[-I] . CSISD[Polarization[k2, -I]] . CSISD[-k1 + p1] . \
+CSISD[Polarization[k1, -I]] . PauliEta[I]"},
+{"fcstPauliChainJoin-ID13",
+"PauliChainJoin[PauliIndexDelta[PauliIndex[i], \
+PauliIndex[i]],TraceOfOne -> D]", "D"},
+{"fcstPauliChainJoin-ID14",
+"PauliChainJoin[PauliIndexDelta[PauliIndex[i], PauliIndex[j]] \
+PauliIndexDelta[PauliIndex[j], PauliIndex[k]], FCE -> True]",
+"PIDelta[i, k]"},
+{"fcstPauliChainJoin-ID15",
+"PauliChainJoin[PCHN[PauliXi[-I],i]PCHN[j,PauliEta[I]]PCHN[1,i,j],\
+FCE\[Rule]True]", "PauliXi[-I] . PauliEta[I]"},
+{"fcstPauliChainJoin-ID16",
+"PauliChainJoin[PCHN[PauliXi[-I],i]PCHN[j,Spinor[Momentum[p2],m2]]\
+PCHN[1,i,j],FCE\[Rule]True]",
+"PCHN[j, Spinor[Momentum[p2], m2, 1]]*PCHN[PauliXi[-I], j]"},
+{"fcstPauliChainJoin-ID17",
+"PauliChainJoin[PCHN[PauliXi[-I],i]PCHN[j,PauliEta[I]]PIDelta[i,j],\
+FCE\[Rule]True]", "PauliXi[-I] . PauliEta[I]"},
+{"fcstPauliChainJoin-ID18",
+"PauliChainJoin[PCHN[PauliXi[-I],i]PCHN[j,PauliEta[I]]PIDelta[i,j],\
+FCE\[Rule]True]", "PauliXi[-I] . PauliEta[I]"},
+{"fcstPauliChainJoin-ID19",
+"PauliChainJoin[PCHN[PauliXi[-I],i]PCHN[PauliEta[-I],j]PIDelta[i,j]\
+,FCE\[Rule]True]", "PCHN[PauliEta[-I], i]*PCHN[PauliXi[-I], i]"},
+{"fcstPauliChainJoin-ID20",
+"PauliChainJoin[PCHN[PauliXi[-I], j] PCHN[CSI[mu], i, j],FCE -> \
+True]", "PCHN[PauliXi[-I], j]*PCHN[CSI[mu], i, j]"},
+{"fcstPauliChainJoin-ID21",
+"PauliChainJoin[PCHN[PauliXi[-I], j] PCHN[PauliEta[-I], i],FCE -> \
+True]", "PCHN[PauliEta[-I], i]*PCHN[PauliXi[-I], j]"},
+{"fcstPauliChainJoin-ID22",
+"PauliChainJoin[PCHN[CSI[Lor2].CSI[a].(me + \
+CSIS[LoopMom1]).CSI[Lor1].CSI[a],PauliXi[-I], Dir1] \
+PCHN[Dir1,PauliEta[I]], FCE -> True]",
+"PauliXi[-I] . CSI[Lor2] . CSI[a] . (me + CSIS[LoopMom1]) . \
+CSI[Lor1] . CSI[a] . PauliEta[I]"},
+{"fcstPauliChainJoin-ID23",
+"PauliChainJoin[PCHN[CSI[nu], h, i] PCHN[CSIS[p] + m, i, j] \
+PCHN[CSI[mu], j, k],FCPauliIsolate -> False, FCE -> True]",
+"PCHN[CSI[nu] . (m + CSIS[p]) . CSI[mu], h, k]"},
+{"fcstPauliChainJoin-ID24",
+"PauliChainJoin[PCHN[ j,PauliXi[I]] PCHN[CSI[mu], i, j] == x,FCE -> \
+True]", "PCHN[CSI[mu], i, PauliXi[I]] == x"},
+{"fcstPauliChainJoin-ID25",
+"PauliChainJoin[{PCHN[ j,PauliXi[I]] PCHN[CSI[mu], i, \
+j],PCHN[j,PauliEta[-I]] PCHN[CSIS[p], i, j]}, FCE -> True]",
+"{PCHN[CSI[mu], i, PauliXi[I]], PCHN[CSIS[p], i, PauliEta[-I]]}"}
+});

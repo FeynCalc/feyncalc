@@ -2,9 +2,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Unit tests for functions in the "LoopIntegrals" directory		*)
@@ -19,6 +19,12 @@ ClearAll[tests];
 tests = FileNames["*.test",FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", "LoopIntegrals"}]];
 Get/@tests;
 
+fcCompare[a_/;Head[a]=!=List,b_/;Head[b]=!=List]:=
+	Together[a-b]===0;
+
+fcCompare[a_List,b_List]:=
+	a===b;
+
 If[	$OnlySubTest=!="",
 	testNames = "Tests`LoopIntegrals`*";
 	removeTests=Complement[Names[testNames],Flatten[StringCases[Names[testNames],Alternatives@@$OnlySubTest]]];
@@ -29,12 +35,11 @@ If[	$OnlySubTest=!="",
 
 FCClearScalarProducts[];
 
-SetOptions[Tdec,UseParallelization->False];
-SetOptions[CTdec,UseParallelization->False];
-Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]]]&,
+SetOptions[Tdec,Parallelize->False];
+SetOptions[CTdec,Parallelize->False];
+Map[Test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],TestID->#[[1]], EquivalenceFunction -> fcCompare]&,
 	Join@@(ToExpression/@Select[Names["Tests`LoopIntegrals`*"],
 	!StringMatchQ[#, "*fcstLogDivergentScaleless"] &])];
-
 
 
 $FCAdvice = True;

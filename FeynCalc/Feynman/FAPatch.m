@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2021 Rolf Mertig
-	Copyright (C) 1997-2021 Frederik Orellana
-	Copyright (C) 2014-2021 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Patch for FeynArts										    *)
@@ -17,7 +17,7 @@
 
 FAPatch::usage =
 "FAPatch[] is an auxiliary function that patches FeynArts to be compatible with
-FeynCalc.If an unpatched copy of FeynArts is present in $FeynArtsDirectory,
+FeynCalc. If an unpatched copy of FeynArts is present in $FeynArtsDirectory,
 evaluating FAPatch[] will start the patching process.";
 
 PatchModelsOnly::usage =
@@ -28,8 +28,8 @@ FeynRules.";
 
 FAModelsDirectory::usage =
 "FAModelsDirectory is an option of FAPatch. It points to the directory that
-contains FeynArts models. The default value is \"Models\"' inside
-$FeynArtsDirectory'.";
+contains FeynArts models. The default value is \"Models\" inside
+$FeynArtsDirectory.";
 
 FCFilePatch::usage =
 "FCFilePatch[input,output, rp] replaces the patterns given by rp in the file
@@ -194,45 +194,6 @@ FAPatch[OptionsPattern[]] :=
 		];
 		nmodels=0;
 	];
-
-
-
-
-		(* The following changes were done in old FAPatch.m. Currently they are not applied. *)
-		(*
-				in  Setup.m
-
-			"\nP$Generic = Flatten[P$Generic | Phi`Objects`$ParticleHeads];\n
-			If[ Phi`Objects`$FermionHeads=!=None,\n
-			P$NonCommuting=Flatten[P$NonCommuting | Phi`Objects`$FermionHeads]];"
-
-				in Analytic.m (small fixes?)
-
-		"SequenceForm[StringTake[ToString[type], 3]" ->
-		"SequenceForm[StringTake[ToString[type],Min[3,StringLength[ToString[type]]]]"
-
-		"Cases[p, PropagatorDenominator[__]]" ->
-		"Cases[p, HoldPattern[PropagatorDenominator[__]]]"
-
-				in Insert.m (allow one-vertices?)
-
-		"DeleteCases[Take[#, 2], Vertex[1, ___][_]]&/@ top," ->
-		"(DeleteCases[Take[#,2],Vertex[1][_]]&/@(top/.p:Propagator[Internal][___,Vertex[1,___][_],___]:>(p/.Vertex[1]->Vertex[vertexone])))/.vertexone -> 1,"
-
-		"MapIndexed[ Append[#1, Field@@ #2]&, top" ->
-		"MapIndexed[Append[#1,Field@@#2]&,Sort[Sort[Take[#,2]]&/@ top/. {Incoming->AAA,Outgoing->AAB}]/. {AAA->Incoming,AAB->Outgoing}"
-
-				in Utilities.m (allow one-vertices?)
-
-		"Union[ Cases[top, Vertex[n__][_] /; {n} =!= {1}, {2}] ]" ->
-		"Union[Join[Cases[Cases[top,Propagator[Internal][__]],Vertex[n__][_],Infinity],Cases[top,Vertex[n__][_]/;{n}=!={1},{2}]]]"
-
-				in Graphics.m (small fixes?)
-
-		"Orientation[ p1_, p2_ ] := N[ArcTan@@ (p2 - p1)]" ->
-		"Orientation[ p1_, p2_ ] := N[(If[{##}=={0,0},0,ArcTan[##]]&)@@ (p2 - p1)]"
-
-		*)
 
 FCPrint[1, "FAPatch.m loaded"];
 End[];

@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Computes tensor decompositions for Cartesian multiloop
@@ -16,14 +16,14 @@
 
 (* ------------------------------------------------------------------------ *)
 
-CTdec::usage = "CTdec[{{qi, a}, {qj, b}, ...}, {p1, p2, ...}] or \
-CTdec[exp, {{qi, a}, {qj, b}, ...}, {p1, p2, ...}] \
-calculates the tensorial decomposition formulas for Cartesian integrals. \
-The more common ones are saved in TIDL.";
+CTdec::usage =
+"CTdec[{{qi, a}, {qj, b}, ...}, {p1, p2, ...}] or CTdec[exp, {{qi, a}, {qj, b},
+...}, {p1, p2, ...}] calculates the tensorial decomposition formulas for
+Cartesian integrals. The more common ones are saved in TIDL.";
 
 CTdec::failmsg =
 "Error! TID has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -42,7 +42,7 @@ Options[CTdec] =	{
 	Factoring 			-> {Factor2, Factor},
 	FeynCalcExternal	-> True,
 	List 				-> True,
-	UseParallelization	-> True,
+	Parallelize	-> True,
 	UseTIDL				-> True
 };
 
@@ -101,7 +101,7 @@ CTdec[exp_:1, li : {{_, _} ..}, ppli_List/;FreeQ[ppli,OptionQ], OptionsPattern[]
 		time = AbsolutTime[];
 		FCPrint[1, "CTdec: Calling Tdec.", FCDoControl->ctdecVerbose];
 		resTdec = Tdec[exp,li,ppli, BasisOnly->optBasisOnly, Dimension->dimD, Factoring->OptionValue[Factoring],
-				List->True, FCE->False, UseParallelization->OptionValue[UseParallelization], UseTIDL-> OptionValue[UseTIDL],
+				List->True, FCE->False, Parallelize->OptionValue[Parallelize], UseTIDL-> OptionValue[UseTIDL],
 				Head -> momHead];
 		FCPrint[1, "CTdec: Done calling Tdec, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->ctdecVerbose];
 

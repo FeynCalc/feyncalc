@@ -11,9 +11,17 @@
 (* ------------------------------------------------------------------------ *)
 
 TR::usage=
-"TR[exp] calculates the Dirac trace of exp. Depending on the setting of \
-the option SUNTrace also a trace over SU(N) objects is performed. \
-TR is identical to DiracTrace, up to the default setting of DiracTraceEvaluate.";
+"TR[exp] calculates the Dirac trace of exp. Depending on the setting of the
+option SUNTrace also a trace over $SU(N)$ objects is performed.
+
+TR[list] finds the trace of the matrix or tensor list.
+
+TR[list, f] finds a generalized trace, combining terms with f instead of Plus.
+
+TR[list, f, n] goes down to level n in list.
+
+TR[expression] calculates the DiracTrace, i.e., TR[expression] if any of
+DiracGamma, GA, GAD, GS or GSD is present in expression.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -36,7 +44,7 @@ Options[TR] = {
 	Mandelstam			-> {},
 	PairCollect			-> False,
 	SUNNToCACF			-> False,
-	SUNTrace			-> False,
+	SUNTraceEvaluate			-> False,
 	Schouten			-> 0,
 	TraceOfOne			-> 4,
 	West				-> True
@@ -62,7 +70,7 @@ TR[expr_, rul:OptionsPattern[]] :=
 		sunntocacf		= OptionValue[SUNNToCACF];
 		trOpts 			= Flatten[Join[{rul}, FilterRules[Options[TR], Except[{rul}]]]];
 		diracTraceOpts	= Flatten[FilterRules[Options[trOpts], Options[DiracTrace]]];
-		sunTraceOpts	= Flatten[FilterRules[Options[trOpts], Options[SUNTrace]]];
+		sunTraceOpts	= Flatten[FilterRules[Options[trOpts], Options[SUNTraceEvaluate]]];
 
 		If[!FreeQ2[ex, {CF,CA}],
 			sunntocacf = True
@@ -72,23 +80,23 @@ TR[expr_, rul:OptionsPattern[]] :=
 			ex = Explicit[ex]
 		];
 
-		If[OptionValue[SUNTrace] && !FreeQ2[ex, {SUNIndex,ExplicitSUNIndex}],
+		If[OptionValue[SUNTraceEvaluate] && !FreeQ2[ex, {SUNIndex,ExplicitSUNIndex}],
 			FCPrint[1,"TR: Computing the SU(N) trace.", FCDoControl->trVerbose];
 			ex = DiracTrace[ex,diracTraceOpts];
-			ex = SUNSimplify[ex, SUNNToCACF -> sunntocacf, SUNTrace -> True, Explicit -> False];
+			ex = SUNSimplify[ex, SUNNToCACF -> sunntocacf, SUNTraceEvaluate -> True, Explicit -> False];
 			ex = ex /. (DiracTraceEvaluate -> False) :>	(DiracTraceEvaluate -> diractrev) //
-			SUNSimplify[#, SUNTrace -> False, SUNNToCACF -> sunntocacf, Explicit -> False]&,
+			SUNSimplify[#, SUNTraceEvaluate -> False, SUNNToCACF -> sunntocacf, Explicit -> False]&,
 
 			If[FreeQ[ex, SUNIndex|ExplicitSUNIndex],
 				ex = DiracTrace[ex, diracTraceOpts];
-				If[	OptionValue[SUNTrace],
-					ex = SUNSimplify[ex, SUNTrace -> True, SUNNToCACF -> sunntocacf, Explicit -> False]
+				If[	OptionValue[SUNTraceEvaluate],
+					ex = SUNSimplify[ex, SUNTraceEvaluate -> True, SUNNToCACF -> sunntocacf, Explicit -> False]
 				];
 						ex = ex /. (DiracTraceEvaluate -> False) :> (DiracTraceEvaluate -> diractrev) //
-						SUNSimplify[#, SUNTrace -> False, SUNNToCACF -> sunntocacf, Explicit -> False]&,
-						(*!FreeQ[ex, SUNIndex|ExplicitSUNIndex] -> !SUNTrace*)
+						SUNSimplify[#, SUNTraceEvaluate -> False, SUNNToCACF -> sunntocacf, Explicit -> False]&,
+						(*!FreeQ[ex, SUNIndex|ExplicitSUNIndex] -> !SUNTraceEvaluate*)
 						ex = DiracTrace[Trick[ex]// SUNSimplify[#, SUNNToCACF -> sunntocacf,
-						SUNTrace -> OptionValue[SUNTrace],	Explicit -> OptionValue[Explicit]]&, diracTraceOpts]
+						SUNTraceEvaluate -> OptionValue[SUNTraceEvaluate],	Explicit -> OptionValue[Explicit]]&, diracTraceOpts]
 			]
 		];
 

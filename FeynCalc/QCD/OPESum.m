@@ -12,8 +12,9 @@
 
 (* ------------------------------------------------------------------------ *)
 
-OPESum::usage = "OPESum[exp, {i, 0, m}] denotes a symbolic sum.
-The syntax is the same as for Sum.";
+OPESum::usage =
+"OPESum[exp, {i, 0, m}] denotes a symbolic sum. The syntax is the same as for
+Sum.";
 
 (* ------------------------------------------------------------------------ *)
 

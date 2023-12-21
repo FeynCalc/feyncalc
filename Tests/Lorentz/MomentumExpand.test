@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for MomentumExpand           *)
@@ -43,7 +43,62 @@ Tests`Lorentz`fcstMomentumExpand = {
 {"fcstMomentumExpand-ID14","Momentum[p + Momentum[3 q], D - 4]//MomentumExpand",
 	"Momentum[p, -4 + D] + 3*Momentum[q, {4, -4 + D}]"},
 {"fcstMomentumExpand-ID15","Pair[LorentzIndex[mu, D], Momentum[l - q, D]] // MomentumExpand",
-	"Pair[LorentzIndex[mu, D], Momentum[l, D] - Momentum[q, D]]"}
+	"Pair[LorentzIndex[mu, D], Momentum[l, D] - Momentum[q, D]]"},
+{"fcstMomentumExpand-ID16",
+"MomentumExpand[Pair[Momentum[x+y+z,D],Momentum[a+b+c,D]],Momentum\
+\[Rule]{x}]",
+"Pair[Momentum[a + b + c, D], Momentum[x, D] + Momentum[y + z, \
+D]]"},
+{"fcstMomentumExpand-ID17",
+"MomentumExpand[CartesianPair[CartesianMomentum[x+y+z],\
+CartesianMomentum[a+b+c]],Momentum\[Rule]{x}]",
+"CartesianPair[CartesianMomentum[a + b + c], CartesianMomentum[x] \
++ CartesianMomentum[y + z]]"},
+{"fcstMomentumExpand-ID18",
+"MomentumExpand[TemporalPair[ExplicitLorentzIndex[0],\
+TemporalMomentum[x+y+z]],Momentum\[Rule]{x}]",
+"TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[x] + \
+TemporalMomentum[y + z]]"},
+{"fcstMomentumExpand-ID19",
+"MomentumExpand[Momentum[x+y+z,D],Momentum\[Rule]{x}]",
+"Momentum[x, D] + Momentum[y + z, D]"},
+{"fcstMomentumExpand-ID20",
+"MomentumExpand[CartesianMomentum[x+y+z],Momentum\[Rule]{x}]",
+"CartesianMomentum[x] + CartesianMomentum[y + z]"},
+{"fcstMomentumExpand-ID21",
+"MomentumExpand[TemporalMomentum[x+y+z],Momentum\[Rule]{x}]",
+"TemporalMomentum[x] + TemporalMomentum[y + z]"},
+{"fcstMomentumExpand-ID22",
+"MomentumExpand[
+LightConePerpendicularComponent[Momentum[p + q], Momentum[n],
+Momentum[nb]]]",
+"LightConePerpendicularComponent[Momentum[p], Momentum[n],
+Momentum[nb]] +
+LightConePerpendicularComponent[Momentum[q], Momentum[n],
+Momentum[nb]]"},
+{"fcstMomentumExpand-ID23",
+"MomentumExpand[
+LightConePerpendicularComponent[Momentum[p], Momentum[n],
+Momentum[nb]]]",
+"LightConePerpendicularComponent[Momentum[p], Momentum[n],
+Momentum[nb]]"},
+{"fcstMomentumExpand-ID24",
+"MomentumExpand[
+LightConePerpendicularComponent[Momentum[p + 2 r + 3 q], Momentum[n],
+Momentum[nb]]]",
+"LightConePerpendicularComponent[Momentum[p], Momentum[n],
+Momentum[nb]] +
+3 LightConePerpendicularComponent[Momentum[q], Momentum[n],
+Momentum[nb]] +
+2 LightConePerpendicularComponent[Momentum[r], Momentum[n],
+Momentum[nb]]"},
+{"fcstMomentumExpand-ID25",
+"MomentumExpand[Momentum[(gkin n + nb/(4 gkin)) (1 - u0b), D]]",
+"Momentum[gkin*n, D] + Momentum[nb/gkin, D]/4 - Momentum[gkin*n*u0b, D] - Momentum[(nb*u0b)/gkin, D]/4"},
+{"fcstMomentumExpand-ID26",
+"MomentumExpand[
+Pair[Momentum[n, D], Momentum[(gkin n + nb/(4 gkin)) (1 - u0b), D]]]",
+"Pair[Momentum[n, D], Momentum[gkin*n, D] + Momentum[nb/gkin, D]/4 - Momentum[gkin*n*u0b, D] - Momentum[(nb*u0b)/gkin, D]/4]"}
 };
 
 Tests`Lorentz`fcstMomentumExpandNR =

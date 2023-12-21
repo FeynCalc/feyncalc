@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for CTdec	                *)
@@ -101,34 +101,27 @@ CartesianMomentum[p1]]^2)"},
 {"fcstCTdec-ID11",
 "CTdec[{{q1,$3050},{q1,$3489},{q2,$3047},{q2,$3488}},{k1},\
 Dimension\[Rule]D-1,List\[Rule]True,UseTIDL\[Rule]False,FCE\[Rule]\
-True]", "{{X1 -> -1 + D, X2 -> CSPD[q1, q1], X3 -> CSPD[q1, q2], X4 -> \
-CSPD[k1, q1], X5 -> CSPD[q2, q2], X6 -> CSPD[k1, q2], X7 -> CSPD[k1, \
-k1]}, -(((8*X4^2*X6^2 + 6*X1*X4^2*X6^2 + X1^2*X4^2*X6^2 - \
-2*X4^2*X5*X7 - X1*X4^2*X5*X7 - 8*X3*X4*X6*X7 - 4*X1*X3*X4*X6*X7 - \
-2*X2*X6^2*X7 - X1*X2*X6^2*X7 + 2*X3^2*X7^2 + X2*X5*X7^2)*CVD[k1, \
-$3047]*CVD[k1, $3050]*CVD[k1, $3488]*CVD[k1, $3489])/((1 - \
-X1^2)*X7^4)) + ((4*X4^2*X6^2 - X1^2*X4^2*X6^2 - 2*X4^2*X5*X7 + \
-X1^2*X4^2*X5*X7 - 4*X3*X4*X6*X7 + X1*X2*X6^2*X7 + 2*X3^2*X7^2 - \
-X1*X2*X5*X7^2)*CVD[k1, $3050]*CVD[k1, $3489]*KDD[$3047, $3488])/((2 - \
-X1)*(1 - X1^2)*X7^3) + ((4*X4^2*X6^2 - X1^2*X4^2*X6^2 - X4^2*X5*X7 - \
-4*X3*X4*X6*X7 + X1*X3*X4*X6*X7 + X1^2*X3*X4*X6*X7 - X2*X6^2*X7 + \
-X3^2*X7^2 - X1*X3^2*X7^2 + X2*X5*X7^2)*(CVD[k1, $3488]*CVD[k1, \
-$3489]*KDD[$3047, $3050] + CVD[k1, $3050]*CVD[k1, $3488]*KDD[$3047, \
-$3489]))/((2 - X1)*(1 - X1^2)*X7^3) + ((4*X4^2*X6^2 - X1^2*X4^2*X6^2 \
-+ X1*X4^2*X5*X7 - 4*X3*X4*X6*X7 - 2*X2*X6^2*X7 + X1^2*X2*X6^2*X7 + \
-2*X3^2*X7^2 - X1*X2*X5*X7^2)*CVD[k1, $3047]*CVD[k1, $3488]*KDD[$3050, \
-$3489])/((2 - X1)*(1 - X1^2)*X7^3) - ((2*X4^2*X6^2 - X1*X4^2*X6^2 + \
-X1*X4^2*X5*X7 - 4*X3*X4*X6*X7 + X1*X2*X6^2*X7 + 2*X3^2*X7^2 - \
-X1*X2*X5*X7^2)*KDD[$3047, $3488]*KDD[$3050, $3489])/((2 - X1)*(1 - \
-X1^2)*X7^2) + ((4*X4^2*X6^2 - X1^2*X4^2*X6^2 - X4^2*X5*X7 - \
-4*X3*X4*X6*X7 + X1*X3*X4*X6*X7 + X1^2*X3*X4*X6*X7 - X2*X6^2*X7 + \
-X3^2*X7^2 - X1*X3^2*X7^2 + X2*X5*X7^2)*(CVD[k1, $3047]*CVD[k1, \
-$3489]*KDD[$3050, $3488] + CVD[k1, $3047]*CVD[k1, $3050]*KDD[$3488, \
-$3489]))/((2 - X1)*(1 - X1^2)*X7^3) - ((2*X4^2*X6^2 - X1*X4^2*X6^2 - \
-X4^2*X5*X7 - 2*X3*X4*X6*X7 + 2*X1*X3*X4*X6*X7 - X2*X6^2*X7 + \
-X3^2*X7^2 - X1*X3^2*X7^2 + X2*X5*X7^2)*(KDD[$3047, $3489]*KDD[$3050, \
-$3488] + KDD[$3047, $3050]*KDD[$3488, $3489]))/((2 - X1)*(1 - \
-X1^2)*X7^2)}"},
+True]", "{{X1 -> -1 + D, X2 -> CSPD[q1, q1], X3 -> CSPD[q1, q2], X4 -> CSPD[k1, q1],
+X5 -> CSPD[q2, q2], X6 -> CSPD[k1, q2], X7 -> CSPD[k1, k1]}, -(((8*X4^2*X6^2 +
+6*X1*X4^2*X6^2 + X1^2*X4^2*X6^2 - 2*X4^2*X5*X7 - X1*X4^2*X5*X7 - 8*X3*X4*X6*X7 -
+4*X1*X3*X4*X6*X7 - 2*X2*X6^2*X7 - X1*X2*X6^2*X7 + 2*X3^2*X7^2 + X2*X5*X7^2)*CVD[k1,
+$3047]*CVD[k1, $3050]*CVD[k1, $3488]*CVD[k1, $3489])/((1 - X1^2)*X7^4)) +
+((4*X4^2*X6^2 - X1^2*X4^2*X6^2 - 2*X4^2*X5*X7 + X1^2*X4^2*X5*X7 -
+4*X3*X4*X6*X7 + X1*X2*X6^2*X7 + 2*X3^2*X7^2 - X1*X2*X5*X7^2)*CVD[k1,
+$3050]*CVD[k1, $3489]*KDD[$3047, $3488])/((2 - X1)*(1 - X1^2)*X7^3) +
+((4*X4^2*X6^2 - X1^2*X4^2*X6^2 + X1*X4^2*X5*X7 - 4*X3*X4*X6*X7 - 2*X2*X6^2*X7 +
+X1^2*X2*X6^2*X7 + 2*X3^2*X7^2 - X1*X2*X5*X7^2)*CVD[k1, $3047]*CVD[k1,
+$3488]*KDD[$3050, $3489])/((2 - X1)*(1 - X1^2)*X7^3) - ((2*X4^2*X6^2 -
+X1*X4^2*X6^2 + X1*X4^2*X5*X7 - 4*X3*X4*X6*X7 + X1*X2*X6^2*X7 + 2*X3^2*X7^2 -
+X1*X2*X5*X7^2)*KDD[$3047, $3488]*KDD[$3050, $3489])/((2 - X1)*(1 - X1^2)*X7^2) +
+((4*X4^2*X6^2 - X1^2*X4^2*X6^2 - X4^2*X5*X7 - 4*X3*X4*X6*X7 + X1*X3*X4*X6*X7 +
+X1^2*X3*X4*X6*X7 - X2*X6^2*X7 + X3^2*X7^2 - X1*X3^2*X7^2 + X2*X5*X7^2)*(CVD[k1,
+$3488]*CVD[k1, $3489]*KDD[$3047, $3050] + CVD[k1, $3050]*CVD[k1, $3488]*KDD[$3047,
+$3489] + CVD[k1, $3047]*CVD[k1, $3489]*KDD[$3050, $3488] + CVD[k1, $3047]*CVD[k1,
+$3050]*KDD[$3488, $3489]))/((2 - X1)*(1 - X1^2)*X7^3) - ((2*X4^2*X6^2 -
+X1*X4^2*X6^2 - X4^2*X5*X7 - 2*X3*X4*X6*X7 + 2*X1*X3*X4*X6*X7 - X2*X6^2*X7 +
+X3^2*X7^2 - X1*X3^2*X7^2 + X2*X5*X7^2)*(KDD[$3047, $3489]*KDD[$3050, $3488] +
+KDD[$3047, $3050]*KDD[$3488, $3489]))/((2 - X1)*(1 - X1^2)*X7^2)}"},
 {"fcstCTdec-ID12",
 "CTdec[{{l,i1},{l,i2},{l,i3}},{},UseTIDL\[Rule]False,List\[Rule]\
 False]", "0"},
@@ -141,7 +134,7 @@ False]", "0"},
 {"fcstCTdec-ID15",
 "CTdec[{{q2, mu1}, {q1, mu2}, {q1, mu3}, {q1, mu4}, {q1, mu5}}, \
 {k1},
-UseParallelization -> False, List -> False]",
+Parallelize -> False, List -> False]",
 "-(((24*CSPD[k1, q1]^4*CSPD[k1, q2] + 10*(-1 + D)*CSPD[k1, \
 q1]^4*CSPD[k1, q2] + (-1 + D)^2*CSPD[k1, q1]^4*CSPD[k1, q2] - \
 24*CSPD[k1, k1]*CSPD[k1, q1]^2*CSPD[k1, q2]*CSPD[q1, q1] - 6*(-1 + \
@@ -182,64 +175,75 @@ mu3]*KDD[mu4, mu5]))/((1 - (-1 + D)^2)*CSPD[k1, k1]^3)"},
 {"fcstCTdec-ID16",
 "CTdec[{{q1,$3050},{q1,$3489},{q2,$3047},{q2,$3488}},{k1},\
 Dimension\[Rule]D-1,List\[Rule]False,UseTIDL\[Rule]False,FCE\[Rule]\
-True]", "-(((8*CSPD[k1, q1]^2*CSPD[k1, q2]^2 + 6*(-1 + D)*CSPD[k1, \
-q1]^2*CSPD[k1, q2]^2 + (-1 + D)^2*CSPD[k1, q1]^2*CSPD[k1, q2]^2 - \
-2*CSPD[k1, k1]*CSPD[k1, q2]^2*CSPD[q1, q1] - (-1 + D)*CSPD[k1, \
-k1]*CSPD[k1, q2]^2*CSPD[q1, q1] - 8*CSPD[k1, k1]*CSPD[k1, \
-q1]*CSPD[k1, q2]*CSPD[q1, q2] - 4*(-1 + D)*CSPD[k1, k1]*CSPD[k1, \
-q1]*CSPD[k1, q2]*CSPD[q1, q2] + 2*CSPD[k1, k1]^2*CSPD[q1, q2]^2 - \
-2*CSPD[k1, k1]*CSPD[k1, q1]^2*CSPD[q2, q2] - (-1 + D)*CSPD[k1, \
-k1]*CSPD[k1, q1]^2*CSPD[q2, q2] + CSPD[k1, k1]^2*CSPD[q1, \
-q1]*CSPD[q2, q2])*CVD[k1, $3047]*CVD[k1, $3050]*CVD[k1, \
-$3488]*CVD[k1, $3489])/((1 - (-1 + D)^2)*CSPD[k1, k1]^4)) + \
-((4*CSPD[k1, q1]^2*CSPD[k1, q2]^2 - (-1 + D)^2*CSPD[k1, \
-q1]^2*CSPD[k1, q2]^2 + (-1 + D)*CSPD[k1, k1]*CSPD[k1, q2]^2*CSPD[q1, \
-q1] - 4*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, q2]*CSPD[q1, q2] + \
-2*CSPD[k1, k1]^2*CSPD[q1, q2]^2 - 2*CSPD[k1, k1]*CSPD[k1, \
-q1]^2*CSPD[q2, q2] + (-1 + D)^2*CSPD[k1, k1]*CSPD[k1, q1]^2*CSPD[q2, \
-q2] - (-1 + D)*CSPD[k1, k1]^2*CSPD[q1, q1]*CSPD[q2, q2])*CVD[k1, \
-$3050]*CVD[k1, $3489]*KDD[$3047, $3488])/((1 - (-1 + D)^2)*(3 - \
-D)*CSPD[k1, k1]^3) + ((4*CSPD[k1, q1]^2*CSPD[k1, q2]^2 - (-1 + \
-D)^2*CSPD[k1, q1]^2*CSPD[k1, q2]^2 - CSPD[k1, k1]*CSPD[k1, \
-q2]^2*CSPD[q1, q1] - 4*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, \
-q2]*CSPD[q1, q2] + (-1 + D)*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, \
-q2]*CSPD[q1, q2] + (-1 + D)^2*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, \
-q2]*CSPD[q1, q2] + CSPD[k1, k1]^2*CSPD[q1, q2]^2 - (-1 + D)*CSPD[k1, \
-k1]^2*CSPD[q1, q2]^2 - CSPD[k1, k1]*CSPD[k1, q1]^2*CSPD[q2, q2] + \
-CSPD[k1, k1]^2*CSPD[q1, q1]*CSPD[q2, q2])*(CVD[k1, $3488]*CVD[k1, \
-$3489]*KDD[$3047, $3050] + CVD[k1, $3050]*CVD[k1, $3488]*KDD[$3047, \
-$3489]))/((1 - (-1 + D)^2)*(3 - D)*CSPD[k1, k1]^3) + ((4*CSPD[k1, \
-q1]^2*CSPD[k1, q2]^2 - (-1 + D)^2*CSPD[k1, q1]^2*CSPD[k1, q2]^2 - \
-2*CSPD[k1, k1]*CSPD[k1, q2]^2*CSPD[q1, q1] + (-1 + D)^2*CSPD[k1, \
-k1]*CSPD[k1, q2]^2*CSPD[q1, q1] - 4*CSPD[k1, k1]*CSPD[k1, \
-q1]*CSPD[k1, q2]*CSPD[q1, q2] + 2*CSPD[k1, k1]^2*CSPD[q1, q2]^2 + (-1 \
-+ D)*CSPD[k1, k1]*CSPD[k1, q1]^2*CSPD[q2, q2] - (-1 + D)*CSPD[k1, \
-k1]^2*CSPD[q1, q1]*CSPD[q2, q2])*CVD[k1, $3047]*CVD[k1, \
-$3488]*KDD[$3050, $3489])/((1 - (-1 + D)^2)*(3 - D)*CSPD[k1, k1]^3) - \
-((2*CSPD[k1, q1]^2*CSPD[k1, q2]^2 - (-1 + D)*CSPD[k1, q1]^2*CSPD[k1, \
-q2]^2 + (-1 + D)*CSPD[k1, k1]*CSPD[k1, q2]^2*CSPD[q1, q1] - \
-4*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, q2]*CSPD[q1, q2] + 2*CSPD[k1, \
-k1]^2*CSPD[q1, q2]^2 + (-1 + D)*CSPD[k1, k1]*CSPD[k1, q1]^2*CSPD[q2, \
-q2] - (-1 + D)*CSPD[k1, k1]^2*CSPD[q1, q1]*CSPD[q2, q2])*KDD[$3047, \
-$3488]*KDD[$3050, $3489])/((1 - (-1 + D)^2)*(3 - D)*CSPD[k1, k1]^2) + \
-((4*CSPD[k1, q1]^2*CSPD[k1, q2]^2 - (-1 + D)^2*CSPD[k1, \
-q1]^2*CSPD[k1, q2]^2 - CSPD[k1, k1]*CSPD[k1, q2]^2*CSPD[q1, q1] - \
-4*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, q2]*CSPD[q1, q2] + (-1 + \
-D)*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, q2]*CSPD[q1, q2] + (-1 + \
-D)^2*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, q2]*CSPD[q1, q2] + CSPD[k1, \
-k1]^2*CSPD[q1, q2]^2 - (-1 + D)*CSPD[k1, k1]^2*CSPD[q1, q2]^2 - \
-CSPD[k1, k1]*CSPD[k1, q1]^2*CSPD[q2, q2] + CSPD[k1, k1]^2*CSPD[q1, \
-q1]*CSPD[q2, q2])*(CVD[k1, $3047]*CVD[k1, $3489]*KDD[$3050, $3488] + \
-CVD[k1, $3047]*CVD[k1, $3050]*KDD[$3488, $3489]))/((1 - (-1 + \
-D)^2)*(3 - D)*CSPD[k1, k1]^3) - ((2*CSPD[k1, q1]^2*CSPD[k1, q2]^2 - \
-(-1 + D)*CSPD[k1, q1]^2*CSPD[k1, q2]^2 - CSPD[k1, k1]*CSPD[k1, \
-q2]^2*CSPD[q1, q1] - 2*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, \
-q2]*CSPD[q1, q2] + 2*(-1 + D)*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, \
-q2]*CSPD[q1, q2] + CSPD[k1, k1]^2*CSPD[q1, q2]^2 - (-1 + D)*CSPD[k1, \
-k1]^2*CSPD[q1, q2]^2 - CSPD[k1, k1]*CSPD[k1, q1]^2*CSPD[q2, q2] + \
-CSPD[k1, k1]^2*CSPD[q1, q1]*CSPD[q2, q2])*(KDD[$3047, \
-$3489]*KDD[$3050, $3488] + KDD[$3047, $3050]*KDD[$3488, $3489]))/((1 \
-- (-1 + D)^2)*(3 - D)*CSPD[k1, k1]^2)"}
+True]", "-(((8*CSPD[k1, q1]^2*CSPD[k1, q2]^2 +
+		6*(-1 + D)*CSPD[k1, q1]^2*CSPD[k1, q2]^2 + (-1 + D)^2*
+		 CSPD[k1, q1]^2*CSPD[k1, q2]^2 -
+		2*CSPD[k1, k1]*CSPD[k1, q2]^2*CSPD[q1, q1] - (-1 + D)*
+		 CSPD[k1, k1]*CSPD[k1, q2]^2*CSPD[q1, q1] -
+		8*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, q2]*CSPD[q1, q2] -
+		4*(-1 + D)*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, q2]*
+		 CSPD[q1, q2] + 2*CSPD[k1, k1]^2*CSPD[q1, q2]^2 -
+		2*CSPD[k1, k1]*CSPD[k1, q1]^2*CSPD[q2, q2] - (-1 + D)*
+		 CSPD[k1, k1]*CSPD[k1, q1]^2*CSPD[q2, q2] +
+		CSPD[k1, k1]^2*CSPD[q1, q1]*CSPD[q2, q2])*CVD[k1, $3047]*
+	  CVD[k1, $3050]*CVD[k1, $3488]*CVD[k1, $3489])/((1 - (-1 + D)^2)*
+	  CSPD[k1, k1]^4)) + ((4*CSPD[k1, q1]^2*
+	   CSPD[k1, q2]^2 - (-1 + D)^2*CSPD[k1, q1]^2*
+	   CSPD[k1, q2]^2 + (-1 + D)*CSPD[k1, k1]*CSPD[k1, q2]^2*
+	   CSPD[q1, q1] -
+	  4*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, q2]*CSPD[q1, q2] +
+	  2*CSPD[k1, k1]^2*CSPD[q1, q2]^2 -
+	  2*CSPD[k1, k1]*CSPD[k1, q1]^2*CSPD[q2, q2] + (-1 + D)^2*
+	   CSPD[k1, k1]*CSPD[k1, q1]^2*CSPD[q2, q2] - (-1 + D)*
+	   CSPD[k1, k1]^2*CSPD[q1, q1]*CSPD[q2, q2])*CVD[k1, $3050]*
+	CVD[k1, $3489]*KDD[$3047, $3488])/((1 - (-1 + D)^2)*(3 - D)*
+	CSPD[k1,
+	  k1]^3) + ((4*CSPD[k1, q1]^2*CSPD[k1, q2]^2 - (-1 + D)^2*
+	   CSPD[k1, q1]^2*CSPD[k1, q2]^2 -
+	  2*CSPD[k1, k1]*CSPD[k1, q2]^2*CSPD[q1, q1] + (-1 + D)^2*
+	   CSPD[k1, k1]*CSPD[k1, q2]^2*CSPD[q1, q1] -
+	  4*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, q2]*CSPD[q1, q2] +
+	  2*CSPD[k1, k1]^2*CSPD[q1, q2]^2 + (-1 + D)*CSPD[k1, k1]*
+	   CSPD[k1, q1]^2*CSPD[q2, q2] - (-1 + D)*CSPD[k1, k1]^2*
+	   CSPD[q1, q1]*CSPD[q2, q2])*CVD[k1, $3047]*CVD[k1, $3488]*
+	KDD[$3050, $3489])/((1 - (-1 + D)^2)*(3 - D)*
+	CSPD[k1,
+	  k1]^3) - ((2*CSPD[k1, q1]^2*CSPD[k1, q2]^2 - (-1 + D)*
+	   CSPD[k1, q1]^2*CSPD[k1, q2]^2 + (-1 + D)*CSPD[k1, k1]*
+	   CSPD[k1, q2]^2*CSPD[q1, q1] -
+	  4*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, q2]*CSPD[q1, q2] +
+	  2*CSPD[k1, k1]^2*CSPD[q1, q2]^2 + (-1 + D)*CSPD[k1, k1]*
+	   CSPD[k1, q1]^2*CSPD[q2, q2] - (-1 + D)*CSPD[k1, k1]^2*
+	   CSPD[q1, q1]*CSPD[q2, q2])*KDD[$3047, $3488]*
+	KDD[$3050, $3489])/((1 - (-1 + D)^2)*(3 - D)*
+	CSPD[k1,
+	  k1]^2) + ((4*CSPD[k1, q1]^2*CSPD[k1, q2]^2 - (-1 + D)^2*
+	   CSPD[k1, q1]^2*CSPD[k1, q2]^2 -
+	  CSPD[k1, k1]*CSPD[k1, q2]^2*CSPD[q1, q1] -
+	  4*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, q2]*
+	   CSPD[q1, q2] + (-1 + D)*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, q2]*
+	   CSPD[q1, q2] + (-1 + D)^2*CSPD[k1, k1]*CSPD[k1, q1]*
+	   CSPD[k1, q2]*CSPD[q1, q2] +
+	  CSPD[k1, k1]^2*CSPD[q1, q2]^2 - (-1 + D)*CSPD[k1, k1]^2*
+	   CSPD[q1, q2]^2 - CSPD[k1, k1]*CSPD[k1, q1]^2*CSPD[q2, q2] +
+	  CSPD[k1, k1]^2*CSPD[q1, q1]*CSPD[q2, q2])*(CVD[k1, $3488]*
+	   CVD[k1, $3489]*KDD[$3047, $3050] +
+	  CVD[k1, $3050]*CVD[k1, $3488]*KDD[$3047, $3489] +
+	  CVD[k1, $3047]*CVD[k1, $3489]*KDD[$3050, $3488] +
+	  CVD[k1, $3047]*CVD[k1, $3050]*
+	   KDD[$3488, $3489]))/((1 - (-1 + D)^2)*(3 - D)*
+	CSPD[k1,
+	  k1]^3) - ((2*CSPD[k1, q1]^2*CSPD[k1, q2]^2 - (-1 + D)*
+	   CSPD[k1, q1]^2*CSPD[k1, q2]^2 -
+	  CSPD[k1, k1]*CSPD[k1, q2]^2*CSPD[q1, q1] -
+	  2*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, q2]*CSPD[q1, q2] +
+	  2*(-1 + D)*CSPD[k1, k1]*CSPD[k1, q1]*CSPD[k1, q2]*CSPD[q1, q2] +
+	   CSPD[k1, k1]^2*CSPD[q1, q2]^2 - (-1 + D)*CSPD[k1, k1]^2*
+	   CSPD[q1, q2]^2 - CSPD[k1, k1]*CSPD[k1, q1]^2*CSPD[q2, q2] +
+	  CSPD[k1, k1]^2*CSPD[q1, q1]*CSPD[q2, q2])*(KDD[$3047, $3489]*
+	   KDD[$3050, $3488] +
+	  KDD[$3047, $3050]*KDD[$3488, $3489]))/((1 - (-1 + D)^2)*(3 - D)*
+	CSPD[k1, k1]^2)"}
 });
 
 

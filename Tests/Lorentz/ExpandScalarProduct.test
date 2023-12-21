@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for ExpandScalarProduct      *)
@@ -20,7 +20,7 @@ Tests`Lorentz`fcstExpandScalarProduct = {
 "2 SP[a, c] + 2 SP[a, d] + SP[b, c] + SP[b, d] + SP[c, l] + SP[d, l]"},
 {"fcstExpandScalarProduct-ID3","ExpandScalarProduct[SP[a + b, c + d] + SP[a + l, c + d],
 Momentum -> {l}] // FCE",
-"SP[a, c] + SP[a, d] + SP[a + b, c + d] + SP[c, l] + SP[d, l]"},
+"SP[a, c + d] + SP[a + b, c + d] + SP[c + d, l]"},
 {"fcstExpandScalarProduct-ID4","ExpandScalarProduct[Pair[LorentzIndex[mu], Momentum[a] + 2 Momentum[b + 3 c]]]",
 "Pair[LorentzIndex[mu], Momentum[a]] +
 2 Pair[LorentzIndex[mu], Momentum[b]] +
@@ -69,18 +69,16 @@ CartesianPair[CartesianMomentum[p2], CartesianMomentum[q]]"},
 CartesianPair[CartesianMomentum[p1], CartesianMomentum[q2]] + CartesianPair[CartesianMomentum[p2], CartesianMomentum[q1]] + CartesianPair[CartesianMomentum[p2], CartesianMomentum[q2]]"},
 {"fcstExpandScalarProduct-ID16","ExpandScalarProduct[CartesianPair[CartesianMomentum[p1 + p2], CartesianIndex[i]]]","CartesianPair[CartesianIndex[i], CartesianMomentum[p1]] + CartesianPair[CartesianIndex[i], CartesianMomentum[p2]]"},
 {"fcstExpandScalarProduct-ID17","ExpandScalarProduct[CartesianPair[CartesianMomentum[p1 + p2], CartesianMomentum[q1 + q2]] + CartesianPair[CartesianMomentum[p3 + p4], CartesianMomentum[q1 + q2]], Momentum -> {p3}]",
-"CartesianPair[CartesianMomentum[p1 + p2], CartesianMomentum[q1 + q2]] +CartesianPair[CartesianMomentum[p3], CartesianMomentum[q1]] +CartesianPair[CartesianMomentum[p3], CartesianMomentum[q2]] +CartesianPair[CartesianMomentum[p4], CartesianMomentum[q1]] +CartesianPair[CartesianMomentum[p4], CartesianMomentum[q2]]"},
+"CartesianPair[CartesianMomentum[p1 + p2], CartesianMomentum[q1 + q2]] + CartesianPair[CartesianMomentum[p3], CartesianMomentum[q1 + q2]] + CartesianPair[CartesianMomentum[p4], CartesianMomentum[q1 + q2]]"},
 {"fcstExpandScalarProduct-ID18","ExpandScalarProduct[TemporalPair[TemporalMomentum[p1 + p2], ExplicitLorentzIndex[0]]]",
 "TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p1]] + TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[p2]]"},
 {"fcstExpandScalarProduct-ID19",
 "ExpandScalarProduct[FV[-l+p2+p3+p4,mu],Momentum->{l},Full->True,FCE->True]",
-"-FV[l, mu] + FV[p2, mu] + FV[p3, mu] + FV[p4, mu]"}, {"fcstExpandScalarProduct-ID20",
+"-FV[l, mu] + FV[p2 + p3 + p4, mu]"}, {"fcstExpandScalarProduct-ID20",
 "ExpandScalarProduct[FV[-l+p2+p3+p4,mu],Momentum->{l},Full->False,FCE->True]",
 "-FV[l, mu] + FV[p2 + p3 + p4, mu]"}, {"fcstExpandScalarProduct-ID21",
-"ExpandScalarProduct[SP[l+p1+p2+p3,q1+q2+q3+q4],Momentum->l,Full->True,FCE->True]", "SP[l, \
-q1] + SP[l, q2] + SP[l, q3] + SP[l, q4] + SP[p1, q1] + SP[p1, q2] + SP[p1, q3] + SP[p1, q4] + \
-SP[p2, q1] + SP[p2, q2] + SP[p2, q3] + SP[p2, q4] + SP[p3, q1] + SP[p3, q2] + SP[p3, q3] + \
-SP[p3, q4]"}, {"fcstExpandScalarProduct-ID22",
+"ExpandScalarProduct[SP[l+p1+p2+p3,q1+q2+q3+q4],Momentum->l,Full->True,FCE->True]", "SP[l, q1 + q2 + q3 + q4] +
+SP[p1 + p2 + p3, q1 + q2 + q3 + q4]"}, {"fcstExpandScalarProduct-ID22",
 "ExpandScalarProduct[SP[l+p1+p2+p3,q1+q2+q3+q4],Momentum->l,Full->False,FCE->True]",
 "SP[l, q1 + q2 + q3 + q4] + SP[p1 + p2 + p3, q1 + q2 + q3 + q4]"},
 {"fcstExpandScalarProduct-ID22",
@@ -90,5 +88,24 @@ Pair[Momentum[P], Momentum[Polarization[k + P, I]]]"},
 {"fcstExpandScalarProduct-ID23",
 "DeclareFCTensor[r]; tmp = r[-CartesianMomentum[k, -1 + D]] // ExpandScalarProduct; \n
 UnDeclareFCTensor[r]; tmp
-","-r[CartesianMomentum[k, -1 + D]]"}
+","-r[CartesianMomentum[k, -1 + D]]"},
+{"fcstExpandScalarProduct-ID24","ExpandScalarProduct[LC[i1, i2, i3][p1 + p2 + p3], EpsEvaluate -> True,
+EpsExpand -> False]",
+"Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3],
+Momentum[p1 + p2 + p3]]"},
+{"fcstExpandScalarProduct-ID25","ExpandScalarProduct[LC[i1, i2, i3][p1 + p2 + p3], EpsEvaluate -> True,
+Momentum -> {p1}]",
+"Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3],
+Momentum[p1]] + Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3],
+Momentum[p2 + p3]]"},
+{"fcstExpandScalarProduct-ID26",
+"ExpandScalarProduct[FVLR[p + q, mu], FCE -> True]",
+"FVLR[p, mu, FCGV[\"n\"], FCGV[\"nb\"]] +
+FVLR[q, mu, FCGV[\"n\"], FCGV[\"nb\"]]"},
+{"fcstExpandScalarProduct-ID27",
+"ExpandScalarProduct[SPLRD[p + q, q1 + q2], FCE -> True]",
+"SPLRD[p, q1, FCGV[\"n\"], FCGV[\"nb\"]] +
+SPLRD[p, q2, FCGV[\"n\"], FCGV[\"nb\"]] +
+SPLRD[q, q1, FCGV[\"n\"], FCGV[\"nb\"]] +
+SPLRD[q, q2, FCGV[\"n\"], FCGV[\"nb\"]]"}
 }

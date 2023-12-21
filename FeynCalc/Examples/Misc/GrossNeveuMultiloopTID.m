@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Computation of tensor decompositions for multi-loop integrals
@@ -38,7 +38,7 @@ $FAVerbose = 0;
 
 
 $FCAdvice=0;
-SetOptions[Tdec,UseParallelization->False];
+SetOptions[Tdec,Parallelize->False];
 
 
 (* ::Text:: *)

@@ -1,0 +1,653 @@
+
+
+(* :Title: FCLoopFindSubtopologies.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopFindSubtopologies		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopFindSubtopologies =
+({
+{"fcstFCLoopFindSubtopologies-ID1",
+"FCLoopFindSubtopologies[FCTopology[topo1,{SFAD[{{p3,0},{0,1},1}],\
+SFAD[{{p2,0},{0,1},1}],SFAD[{{p1,0},{0,1},1}],SFAD[{{p2+p3,0},{0,1},1}\
+],SFAD[{{p2-Q,0},{0,1},1}],SFAD[{{p1-Q,0},{0,1},1}],SFAD[{{p2+p3-Q,0},\
+{0,1},1}],SFAD[{{p1+p3-Q,0},{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,1},1}]},\
+{p1,p2,p3},{Q},{},{}],FCE->True]",
+"{FCTopology[topo1, {SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, \
+{0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, \
+1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], \
+SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, \
+1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, \
+{}, {}], FCTopology[\"topo1R1\", {SFAD[{{p2, 0}, {0, 1}, 1}], \
+SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], \
+SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], \
+SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, \
+1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, \
+{}, {FCGV[\"SubtopologyOf\"] -> topo1}], FCTopology[\"topo1R2\", \
+{SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + \
+p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, \
+0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 \
+- Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, \
+p2, p3}, {Q}, {}, {FCGV[\"SubtopologyOf\"] -> topo1}], \
+FCTopology[\"topo1R3\", {SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, \
+{0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, \
+1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, \
+1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - \
+Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, {FCGV[\"SubtopologyOf\"] -> \
+topo1}], FCTopology[\"topo1R4\", {SFAD[{{p3, 0}, {0, 1}, 1}], \
+SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 - \
+Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - \
+Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + \
+p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, \
+{FCGV[\"SubtopologyOf\"] -> topo1}], FCTopology[\"topo1R7\", \
+{SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, \
+0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, \
+{0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, \
+{0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, \
+{Q}, {}, {FCGV[\"SubtopologyOf\"] -> topo1}], FCTopology[\"topo1R8\", \
+{SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, \
+0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, \
+{0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, \
+{0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, \
+{Q}, {}, {FCGV[\"SubtopologyOf\"] -> topo1}], \
+FCTopology[\"topo1R12\", {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, \
+0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, \
+{0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, \
+0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, \
+p3}, {Q}, {}, {FCGV[\"SubtopologyOf\"] -> topo1}], \
+FCTopology[\"topo1R13\", {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, \
+0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, \
+{0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, \
+0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, \
+p3}, {Q}, {}, {FCGV[\"SubtopologyOf\"] -> topo1}], \
+FCTopology[\"topo1R15\", {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, \
+{0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, \
+1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, \
+{0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, \
+{Q}, {}, {FCGV[\"SubtopologyOf\"] -> topo1}], \
+FCTopology[\"topo1R16\", {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, \
+{0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, \
+1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, \
+{0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, \
+{Q}, {}, {FCGV[\"SubtopologyOf\"] -> topo1}], \
+FCTopology[\"topo1R18\", {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, \
+{0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, \
+1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, \
+1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, \
+{Q}, {}, {FCGV[\"SubtopologyOf\"] -> topo1}], \
+FCTopology[\"topo1R19\", {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, \
+{0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, \
+1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, \
+1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, \
+{FCGV[\"SubtopologyOf\"] -> topo1}], FCTopology[\"topo1R23\", \
+{SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], \
+SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], \
+SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, \
+1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, \
+{}, {FCGV[\"SubtopologyOf\"] -> topo1}], FCTopology[\"topo1R25\", \
+{SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + \
+p3, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - \
+Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + \
+p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, \
+{FCGV[\"SubtopologyOf\"] -> topo1}], FCTopology[\"topo1R26\", \
+{SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + \
+p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - \
+Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + \
+p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, \
+{FCGV[\"SubtopologyOf\"] -> topo1}], FCTopology[\"topo1R35\", \
+{SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p2 + \
+p3, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - \
+Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + \
+p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, \
+{FCGV[\"SubtopologyOf\"] -> topo1}], FCTopology[\"topo1R123\", \
+{SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], \
+SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], \
+SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, \
+1}, 1}]}, {p1, p2, p3}, {Q}, {}, {FCGV[\"SubtopologyOf\"] -> topo1}], \
+FCTopology[\"topo1R126\", {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + \
+p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - \
+Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + \
+p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, \
+{FCGV[\"SubtopologyOf\"] -> topo1}], FCTopology[\"topo1R129\", \
+{SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], \
+SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], \
+SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, \
+1}]}, {p1, p2, p3}, {Q}, {}, {FCGV[\"SubtopologyOf\"] -> topo1}], \
+FCTopology[\"topo1R135\", {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p2 + \
+p3, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - \
+Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + \
+p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, \
+{FCGV[\"SubtopologyOf\"] -> topo1}], FCTopology[\"topo1R136\", \
+{SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], \
+SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], \
+SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, \
+1}, 1}]}, {p1, p2, p3}, {Q}, {}, {FCGV[\"SubtopologyOf\"] -> topo1}], \
+FCTopology[\"topo1R139\", {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p2 + \
+p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, \
+0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 \
+- Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, \
+{FCGV[\"SubtopologyOf\"] -> topo1}], FCTopology[\"topo1R189\", \
+{SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + \
+p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, \
+0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, \
+{Q}, {}, {FCGV[\"SubtopologyOf\"] -> topo1}], \
+FCTopology[\"topo1R234\", {SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, \
+0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, \
+0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 \
++ p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, \
+{FCGV[\"SubtopologyOf\"] -> topo1}], FCTopology[\"topo1R238\", \
+{SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], \
+SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], \
+SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, \
+1}, 1}]}, {p1, p2, p3}, {Q}, {}, {FCGV[\"SubtopologyOf\"] -> topo1}], \
+FCTopology[\"topo1R257\", {SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, \
+{0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, \
+1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - \
+Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, {FCGV[\"SubtopologyOf\"] -> \
+topo1}], FCTopology[\"topo1R267\", {SFAD[{{p3, 0}, {0, 1}, 1}], \
+SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], \
+SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], \
+SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, \
+{FCGV[\"SubtopologyOf\"] -> topo1}], FCTopology[\"topo1R1234\", \
+{SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], \
+SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, \
+1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, \
+{}, {FCGV[\"SubtopologyOf\"] -> topo1}], FCTopology[\"topo1R1236\", \
+{SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], \
+SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, \
+1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, \
+{}, {FCGV[\"SubtopologyOf\"] -> topo1}], FCTopology[\"topo1R1237\", \
+{SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], \
+SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], \
+SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, \
+{FCGV[\"SubtopologyOf\"] -> topo1}], FCTopology[\"topo1R1239\", \
+{SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], \
+SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], \
+SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, \
+{FCGV[\"SubtopologyOf\"] -> topo1}], FCTopology[\"topo1R1267\", \
+{SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], \
+SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], \
+SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, \
+{FCGV[\"SubtopologyOf\"] -> topo1}], FCTopology[\"topo1R1269\", \
+{SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], \
+SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], \
+SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, \
+{FCGV[\"SubtopologyOf\"] -> topo1}], FCTopology[\"topo1R12379\", \
+{SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], \
+SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}]}, \
+{p1, p2, p3}, {Q}, {}, {FCGV[\"SubtopologyOf\"] -> topo1}], \
+FCTopology[\"topo1R12679\", {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + \
+p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - \
+Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, {FCGV[\"SubtopologyOf\"] -> \
+topo1}]}"},
+{"fcstFCLoopFindSubtopologies-ID2",
+"FCLoopFindSubtopologies[FCTopology[TRI,{SFAD[{{p1,0},{0,1},1}],\
+SFAD[{{p2,0},{0,1},1}],SFAD[{{p1+Q1,0},{0,1},1}],SFAD[{{p1+p2+Q1,0},{\
+0,1},1}],SFAD[{{-p1+Q2,0},{0,1},1}],SFAD[{{-p1-p2+Q2,0},{0,1},1}]},{\
+p1,p2},{Q1},{},{}],FCE->True]",
+"{FCTopology[TRI, {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, \
+1}, 1}], SFAD[{{p1 + Q1, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + Q1, 0}, \
+{0, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, \
+0}, {0, 1}, 1}]}, {p1, p2}, {Q1}, {}, {}], FCTopology[\"TRIR1\", \
+{SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1 + Q1, 0}, {0, 1}, 1}], \
+SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, \
+1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1}, {}, \
+{FCGV[\"SubtopologyOf\"] -> TRI}], FCTopology[\"TRIR2\", {SFAD[{{p1, \
+0}, {0, 1}, 1}], SFAD[{{p1 + Q1, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + \
+Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - \
+p2 + Q2, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1}, {}, \
+{FCGV[\"SubtopologyOf\"] -> TRI}], FCTopology[\"TRIR3\", {SFAD[{{p1, \
+0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + Q1, 0}, \
+{0, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, \
+0}, {0, 1}, 1}]}, {p1, p2}, {Q1}, {}, {FCGV[\"SubtopologyOf\"] -> \
+TRI}], FCTopology[\"TRIR4\", {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, \
+0}, {0, 1}, 1}], SFAD[{{p1 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 + Q2, \
+0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}]}, {p1, p2}, \
+{Q1}, {}, {FCGV[\"SubtopologyOf\"] -> TRI}], FCTopology[\"TRIR5\", \
+{SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1 + \
+Q1, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 \
+- p2 + Q2, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1}, {}, \
+{FCGV[\"SubtopologyOf\"] -> TRI}], FCTopology[\"TRIR6\", {SFAD[{{p1, \
+0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1 + Q1, 0}, {0, \
+1}, 1}], SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 + Q2, 0}, \
+{0, 1}, 1}]}, {p1, p2}, {Q1}, {}, {FCGV[\"SubtopologyOf\"] -> TRI}], \
+FCTopology[\"TRIR12\", {SFAD[{{p1 + Q1, 0}, {0, 1}, 1}], SFAD[{{p1 + \
+p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], \
+SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1}, {}, \
+{FCGV[\"SubtopologyOf\"] -> TRI}], FCTopology[\"TRIR13\", {SFAD[{{p2, \
+0}, {0, 1}, 1}], SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 + \
+Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}]}, {p1, \
+p2}, {Q1}, {}, {FCGV[\"SubtopologyOf\"] -> TRI}], FCTopology[\"TRIR23\
+\", {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, \
+1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, \
+1}, 1}]}, {p1, p2}, {Q1}, {}, {FCGV[\"SubtopologyOf\"] -> TRI}], \
+FCTopology[\"TRIR25\", {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p1 + Q1, \
+0}, {0, 1}, 1}], SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - \
+p2 + Q2, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1}, {}, \
+{FCGV[\"SubtopologyOf\"] -> TRI}], FCTopology[\"TRIR34\", {SFAD[{{p1, \
+0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, \
+1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}]}, {p1, p2}, {}, {}, \
+{FCGV[\"SubtopologyOf\"] -> TRI}], FCTopology[\"TRIR35\", {SFAD[{{p1, \
+0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + Q1, 0}, \
+{0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1}, \
+{}, {FCGV[\"SubtopologyOf\"] -> TRI}], FCTopology[\"TRIR36\", \
+{SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1 + \
+p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}]}, {p1, \
+p2}, {Q1}, {}, {FCGV[\"SubtopologyOf\"] -> TRI}], FCTopology[\"TRIR45\
+\", {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], \
+SFAD[{{p1 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, \
+1}]}, {p1, p2}, {Q1}, {}, {FCGV[\"SubtopologyOf\"] -> TRI}], \
+FCTopology[\"TRIR56\", {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, \
+{0, 1}, 1}], SFAD[{{p1 + Q1, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + Q1, \
+0}, {0, 1}, 1}]}, {p1, p2}, {Q1}, {}, {FCGV[\"SubtopologyOf\"] -> \
+TRI}], FCTopology[\"TRIR136\", {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1 \
++ p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}]}, {p1, \
+p2}, {Q1}, {}, {FCGV[\"SubtopologyOf\"] -> TRI}], \
+FCTopology[\"TRIR345\", {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, \
+{0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}]}, {p1, p2}, {}, \
+{}, {FCGV[\"SubtopologyOf\"] -> TRI}], FCTopology[\"TRIR356\", \
+{SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1 + \
+p2 + Q1, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1}, {}, \
+{FCGV[\"SubtopologyOf\"] -> TRI}]}"},
+{"fcstFCLoopFindSubtopologies-ID3",
+"FCLoopFindSubtopologies[FCTopology[T1,{FAD[p1],FAD[p2],FAD[p1-Q],\
+FAD[p1+p2+Q],FAD[p1+p2]},{p1,p2},{Q},{},{}],FCE->True]",
+"{FCTopology[T1, {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, \
+1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + Q, 0}, {0, \
+1}, 1}], SFAD[{{p1 + p2, 0}, {0, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], \
+FCTopology[\"T1R1\", {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, \
+{0, 1}, 1}], SFAD[{{p1 + p2 + Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2, 0}, \
+{0, 1}, 1}]}, {p1, p2}, {Q}, {}, {FCGV[\"SubtopologyOf\"] -> T1}], \
+FCTopology[\"T1R2\", {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, \
+{0, 1}, 1}], SFAD[{{p1 + p2 + Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2, 0}, \
+{0, 1}, 1}]}, {p1, p2}, {Q}, {}, {FCGV[\"SubtopologyOf\"] -> T1}], \
+FCTopology[\"T1R3\", {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, \
+1}, 1}], SFAD[{{p1 + p2 + Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2, 0}, {0, \
+1}, 1}]}, {p1, p2}, {Q}, {}, {FCGV[\"SubtopologyOf\"] -> T1}], \
+FCTopology[\"T1R14\", {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, \
+{0, 1}, 1}], SFAD[{{p1 + p2, 0}, {0, 1}, 1}]}, {p1, p2}, {Q}, {}, \
+{FCGV[\"SubtopologyOf\"] -> T1}], FCTopology[\"T1R15\", {SFAD[{{p2, \
+0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + Q, \
+0}, {0, 1}, 1}]}, {p1, p2}, {Q}, {}, {FCGV[\"SubtopologyOf\"] -> \
+T1}]}"},
+{"fcstFCLoopFindSubtopologies-ID4",
+"FCLoopFindSubtopologies[FCTopology[box,{FAD[{p1,m1}],FAD[{p2,m2}],\
+FAD[{p1+Q1,m3}],FAD[-p1+Q2],FAD[p1+p2+Q1],FAD[-p1-p2+Q2],FAD[-p1-p2+\
+Q2+Q3]},{p1,p2},{Q1,Q2,Q3},{},{}],FCE->True]",
+"{FCTopology[box, {SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, 0}, \
+{m2^2, 1}, 1}], SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], SFAD[{{-p1 + Q2, \
+0}, {0, 1}, 1}], SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - \
+p2 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, \
+1}]}, {p1, p2}, {Q1, Q2, Q3}, {}, {}], FCTopology[\"boxR1\", \
+{SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], \
+SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, \
+1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + \
+Q3, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1, Q2, Q3}, {}, \
+{FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR2\", {SFAD[{{p1, \
+0}, {m1^2, 1}, 1}], SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], SFAD[{{-p1 + \
+Q2, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 \
+- p2 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, \
+1}]}, {p1, p2}, {Q1, Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR3\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, 0}, \
+{m2^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + \
+Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}], \
+SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1, Q2, Q3}, \
+{}, {FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR4\", \
+{SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, 0}, {m2^2, 1}, 1}], \
+SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, \
+1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + \
+Q3, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1, Q2, Q3}, {}, \
+{FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR5\", {SFAD[{{p1, \
+0}, {m1^2, 1}, 1}], SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{p1 + Q1, \
+0}, {m3^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 \
++ Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, 1}]}, \
+{p1, p2}, {Q1, Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR6\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, 0}, \
+{m2^2, 1}, 1}], SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], SFAD[{{-p1 + Q2, \
+0}, {0, 1}, 1}], SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - \
+p2 + Q2 + Q3, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1, Q2, Q3}, {}, \
+{FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR7\", {SFAD[{{p1, \
+0}, {m1^2, 1}, 1}], SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{p1 + Q1, \
+0}, {m3^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 \
++ Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}]}, {p1, \
+p2}, {Q1, Q2}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR12\", {SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], \
+SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, \
+1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + \
+Q3, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1, Q2, Q3}, {}, \
+{FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR13\", {SFAD[{{p2, \
+0}, {m2^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 \
++ Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}], \
+SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1, Q2, Q3}, \
+{}, {FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR14\", \
+{SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], \
+SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, \
+1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1, \
+Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR15\", {SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{p1 + \
+Q1, 0}, {m3^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 \
+- p2 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, \
+1}]}, {p1, p2}, {Q1, Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR16\", {SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{p1 + \
+Q1, 0}, {m3^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{p1 + \
+p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, \
+1}]}, {p1, p2}, {Q1, Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR17\", {SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{p1 + \
+Q1, 0}, {m3^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{p1 + \
+p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}]}, \
+{p1, p2}, {Q1, Q2}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR23\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{-p1 + \
+Q2, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 \
+- p2 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, \
+1}]}, {p1, p2}, {Q1, Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR24\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + \
+Q1, 0}, {m3^2, 1}, 1}], SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], \
+SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, \
+{0, 1}, 1}]}, {p1, p2}, {Q1, Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> \
+box}], FCTopology[\"boxR25\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], \
+SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], \
+SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, \
+{0, 1}, 1}]}, {p1, p2}, {Q1, Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> \
+box}], FCTopology[\"boxR26\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], \
+SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], \
+SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, \
+{0, 1}, 1}]}, {p1, p2}, {Q1, Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> \
+box}], FCTopology[\"boxR27\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], \
+SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], \
+SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, \
+1}, 1}]}, {p1, p2}, {Q1, Q2}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR34\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, 0}, \
+{m2^2, 1}, 1}], SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 \
++ Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, 1}]}, \
+{p1, p2}, {Q1, Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR35\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, 0}, \
+{m2^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + \
+Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, 1}]}, \
+{p1, p2}, {Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR36\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, 0}, \
+{m2^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + \
+Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, 1}]}, \
+{p1, p2}, {Q1, Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR37\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, 0}, \
+{m2^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + \
+Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}]}, {p1, \
+p2}, {Q1, Q2}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR45\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, 0}, \
+{m2^2, 1}, 1}], SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], SFAD[{{-p1 - p2 + \
+Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, 1}]}, \
+{p1, p2}, {Q1, Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR46\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, 0}, \
+{m2^2, 1}, 1}], SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], SFAD[{{p1 + p2 + \
+Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, 1}]}, \
+{p1, p2}, {Q1, Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR47\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, 0}, \
+{m2^2, 1}, 1}], SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], SFAD[{{p1 + p2 + \
+Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}]}, {p1, \
+p2}, {Q1, Q2}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR56\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, 0}, \
+{m2^2, 1}, 1}], SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], SFAD[{{-p1 + Q2, \
+0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, 1}]}, {p1, \
+p2}, {Q1, Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\
+\"boxR57\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, 0}, {m2^2, 1}, \
+1}], SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, \
+1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1, Q2}, {}, \
+{FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR67\", {SFAD[{{p1, \
+0}, {m1^2, 1}, 1}], SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{p1 + Q1, \
+0}, {m3^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 \
++ Q1, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1, Q2}, {}, {FCGV[\"SubtopologyOf\
+\"] -> box}], FCTopology[\"boxR124\", {SFAD[{{p1 + Q1, 0}, {m3^2, 1}, \
+1}], SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, \
+{0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, 1}]}, {p1, p2}, \
+{Q1, Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR125\", {SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], \
+SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, \
+1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1, Q2, \
+Q3}, {}, {FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR126\", \
+{SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, \
+1}], SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, \
+0}, {0, 1}, 1}]}, {p1, p2}, {Q1, Q2, Q3}, {}, \
+{FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR127\", {SFAD[{{p1 \
++ Q1, 0}, {m3^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{p1 \
++ p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}]}, \
+{p1, p2}, {Q1, Q2}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR134\", {SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{p1 + \
+p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}], \
+SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1, Q2, Q3}, \
+{}, {FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR135\", \
+{SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], \
+SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, \
+{0, 1}, 1}]}, {p1, p2}, {Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> \
+box}], FCTopology[\"boxR136\", {SFAD[{{p2, 0}, {m2^2, 1}, 1}], \
+SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, \
+1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1, Q2, \
+Q3}, {}, {FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR137\", \
+{SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], \
+SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, \
+1}, 1}]}, {p1, p2}, {Q1, Q2}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR145\", {SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{p1 + \
+Q1, 0}, {m3^2, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}], \
+SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1, Q2, Q3}, \
+{}, {FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR146\", \
+{SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], \
+SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, \
+{0, 1}, 1}]}, {p1, p2}, {Q1, Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> \
+box}], FCTopology[\"boxR147\", {SFAD[{{p2, 0}, {m2^2, 1}, 1}], \
+SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, \
+1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1, Q2}, {}, \
+{FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR156\", \
+{SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], \
+SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, \
+1}, 1}]}, {p1, p2}, {Q1, Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> \
+box}], FCTopology[\"boxR157\", {SFAD[{{p2, 0}, {m2^2, 1}, 1}], \
+SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], \
+SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1, Q2}, {}, \
+{FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR167\", \
+{SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], \
+SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, \
+1}]}, {p1, p2}, {Q1, Q2}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR234\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + \
+p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}], \
+SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1, Q2, Q3}, \
+{}, {FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR235\", \
+{SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], \
+SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, \
+{0, 1}, 1}]}, {p1, p2}, {Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> \
+box}], FCTopology[\"boxR236\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], \
+SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, \
+1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1, Q2, \
+Q3}, {}, {FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR237\", \
+{SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], \
+SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, \
+1}, 1}]}, {p1, p2}, {Q1, Q2}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR245\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + \
+Q1, 0}, {m3^2, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}], \
+SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1, Q2, Q3}, \
+{}, {FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR246\", \
+{SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], \
+SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, \
+{0, 1}, 1}]}, {p1, p2}, {Q1, Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> \
+box}], FCTopology[\"boxR247\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], \
+SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, \
+1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1, Q2}, {}, \
+{FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR345\", \
+{SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, 0}, {m2^2, 1}, 1}], \
+SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, \
+{0, 1}, 1}]}, {p1, p2}, {Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> \
+box}], FCTopology[\"boxR346\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], \
+SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], \
+SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1, Q2, Q3}, \
+{}, {FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR347\", \
+{SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, 0}, {m2^2, 1}, 1}], \
+SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, \
+1}, 1}]}, {p1, p2}, {Q1, Q2}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR356\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, \
+0}, {m2^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 \
++ Q2 + Q3, 0}, {0, 1}, 1}]}, {p1, p2}, {Q2, Q3}, {}, \
+{FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR357\", \
+{SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, 0}, {m2^2, 1}, 1}], \
+SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, \
+1}]}, {p1, p2}, {Q2}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR367\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, \
+0}, {m2^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 \
++ Q1, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1, Q2}, {}, {FCGV[\"SubtopologyOf\
+\"] -> box}], FCTopology[\"boxR456\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], \
+SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], \
+SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1, Q2, Q3}, \
+{}, {FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR457\", \
+{SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, 0}, {m2^2, 1}, 1}], \
+SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, \
+1}]}, {p1, p2}, {Q1, Q2}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR467\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, \
+0}, {m2^2, 1}, 1}], SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], SFAD[{{p1 + \
+p2 + Q1, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1}, {}, \
+{FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR567\", \
+{SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, 0}, {m2^2, 1}, 1}], \
+SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, \
+1}]}, {p1, p2}, {Q1, Q2}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR1245\", {SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], \
+SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, \
+{0, 1}, 1}]}, {p1, p2}, {Q1, Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> \
+box}], FCTopology[\"boxR1246\", {SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], \
+SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, \
+{0, 1}, 1}]}, {p1, p2}, {Q1, Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> \
+box}], FCTopology[\"boxR1247\", {SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}], \
+SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, \
+1}, 1}]}, {p1, p2}, {Q1, Q2}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR1345\", {SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{-p1 - \
+p2 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, \
+1}]}, {p1, p2}, {Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR1346\", {SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{p1 + \
+p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, \
+1}]}, {p1, p2}, {Q1, Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR1347\", {SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{p1 + \
+p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}]}, \
+{p1, p2}, {Q1, Q2}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR1356\", {SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{-p1 + \
+Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, 1}]}, \
+{p1, p2}, {Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR1357\", {SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{-p1 + \
+Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}]}, {p1, \
+p2}, {Q2}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR1367\", {SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{-p1 + \
+Q2, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}]}, {p1, p2}, \
+{Q1, Q2}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR1456\", {SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{p1 + \
+Q1, 0}, {m3^2, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, 1}]}, \
+{p1, p2}, {Q1, Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR1457\", {SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{p1 + \
+Q1, 0}, {m3^2, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}]}, {p1, \
+p2}, {Q1, Q2}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR1467\", {SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{p1 + \
+Q1, 0}, {m3^2, 1}, 1}], SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}]}, {p1, \
+p2}, {Q1}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR1567\", {SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{p1 + \
+Q1, 0}, {m3^2, 1}, 1}], SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}]}, {p1, p2}, \
+{Q1, Q2}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR2345\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{-p1 - \
+p2 + Q2, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, \
+1}]}, {p1, p2}, {Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR2346\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + \
+p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, \
+1}]}, {p1, p2}, {Q1, Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR2347\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + \
+p2 + Q1, 0}, {0, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}]}, \
+{p1, p2}, {Q1, Q2}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR3456\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, \
+0}, {m2^2, 1}, 1}], SFAD[{{-p1 - p2 + Q2 + Q3, 0}, {0, 1}, 1}]}, {p1, \
+p2}, {Q2, Q3}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR3457\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, \
+0}, {m2^2, 1}, 1}], SFAD[{{-p1 - p2 + Q2, 0}, {0, 1}, 1}]}, {p1, p2}, \
+{Q2}, {}, {FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR3467\", \
+{SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, 0}, {m2^2, 1}, 1}], \
+SFAD[{{p1 + p2 + Q1, 0}, {0, 1}, 1}]}, {p1, p2}, {Q1}, {}, \
+{FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR3567\", \
+{SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, 0}, {m2^2, 1}, 1}], \
+SFAD[{{-p1 + Q2, 0}, {0, 1}, 1}]}, {p1, p2}, {Q2}, {}, \
+{FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR4567\", \
+{SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, 0}, {m2^2, 1}, 1}], \
+SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}]}, {p1, p2}, {Q1}, {}, \
+{FCGV[\"SubtopologyOf\"] -> box}], FCTopology[\"boxR14567\", \
+{SFAD[{{p2, 0}, {m2^2, 1}, 1}], SFAD[{{p1 + Q1, 0}, {m3^2, 1}, 1}]}, \
+{p1, p2}, {Q1}, {}, {FCGV[\"SubtopologyOf\"] -> box}], \
+FCTopology[\"boxR34567\", {SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2, \
+0}, {m2^2, 1}, 1}]}, {p1, p2}, {}, {}, {FCGV[\"SubtopologyOf\"] -> \
+box}]}"},
+{"fcstFCLoopFindSubtopologies-ID5",
+"FCLoopFindSubtopologies[FCTopology[prop2L,{FAD[q1],SFAD[q2],FAD[\
+q1-q2],SFAD[q1-p],FAD[q2-p]},{q1,q2},{p},{},{}],FCE->True]",
+"{FCTopology[prop2L, {SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{q2, 0}, \
+{0, 1}, 1}], SFAD[{{q1 - q2, 0}, {0, 1}, 1}], SFAD[{{-p + q1, 0}, {0, \
+1}, 1}], SFAD[{{-p + q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}], \
+FCTopology[\"prop2LR1\", {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1 - q2, \
+0}, {0, 1}, 1}], SFAD[{{-p + q1, 0}, {0, 1}, 1}], SFAD[{{-p + q2, 0}, \
+{0, 1}, 1}]}, {q1, q2}, {p}, {}, {FCGV[\"SubtopologyOf\"] -> \
+prop2L}], FCTopology[\"prop2LR3\", {SFAD[{{q1, 0}, {0, 1}, 1}], \
+SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{-p + q1, 0}, {0, 1}, 1}], \
+SFAD[{{-p + q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, \
+{FCGV[\"SubtopologyOf\"] -> prop2L}], FCTopology[\"prop2LR15\", \
+{SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1 - q2, 0}, {0, 1}, 1}], \
+SFAD[{{-p + q1, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, \
+{FCGV[\"SubtopologyOf\"] -> prop2L}]}"},
+{"fcstFCLoopFindSubtopologies-ID6",
+"FCLoopFindSubtopologies[FCTopology[prop2L,{FAD[q1],SFAD[q2],FAD[\
+q1-q2],SFAD[q1-p],FAD[q2-p]},{q1,q2},{p},{},{}],FCE->True,\
+SubtopologyMarker->False]",
+"{FCTopology[prop2L, {SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{q2, 0}, \
+{0, 1}, 1}], SFAD[{{q1 - q2, 0}, {0, 1}, 1}], SFAD[{{-p + q1, 0}, {0, \
+1}, 1}], SFAD[{{-p + q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}], \
+FCTopology[\"prop2LR1\", {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1 - q2, \
+0}, {0, 1}, 1}], SFAD[{{-p + q1, 0}, {0, 1}, 1}], SFAD[{{-p + q2, 0}, \
+{0, 1}, 1}]}, {q1, q2}, {p}, {}, {}], FCTopology[\"prop2LR3\", \
+{SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{-p + \
+q1, 0}, {0, 1}, 1}], SFAD[{{-p + q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, \
+{}, {}], FCTopology[\"prop2LR15\", {SFAD[{{q2, 0}, {0, 1}, 1}], \
+SFAD[{{q1 - q2, 0}, {0, 1}, 1}], SFAD[{{-p + q1, 0}, {0, 1}, 1}]}, \
+{q1, q2}, {p}, {}, {}]}"},
+{"fcstFCLoopFindSubtopologies-ID6",
+"FCLoopFindSubtopologies[{FCTopology[
+topo1, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}],
+	SFAD[{{q1 + q2, 0}, {0, 1}, 1}], SFAD[{{p + q1, 0}, {0, 1}, 1}],
+	SFAD[{{p - q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}],
+FCTopology[
+topo2, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}],
+	SFAD[{{p + q2, 0}, {0, 1}, 1}],
+	SFAD[{{p - q1, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}],
+FCTopology[
+topo3, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}],
+	SFAD[{{p - q1, 0}, {0, 1}, 1}],
+	SFAD[{{p - q1 + q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}]},
+FCE -> True]
+","
+{{FCTopology[topo1, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{q1 + q2, 0}, {0, 1}, 1}], SFAD[{{p + q1, 0}, {0, 1}, 1}], SFAD[{{p - q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}],
+FCTopology[\"topo1R1\", {SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{q1 + q2, 0}, {0, 1}, 1}], SFAD[{{p + q1, 0}, {0, 1}, 1}], SFAD[{{p - q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {FCGV[\"SubtopologyOf\"] -> topo1}],
+FCTopology[\"topo1R3\", {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{p + q1, 0}, {0, 1}, 1}], SFAD[{{p - q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {FCGV[\"SubtopologyOf\"] -> topo1}],
+FCTopology[\"topo1R14\", {SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{q1 + q2, 0}, {0, 1}, 1}], SFAD[{{p - q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {FCGV[\"SubtopologyOf\"] -> topo1}]},
+{FCTopology[topo2, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{p + q2, 0}, {0, 1}, 1}], SFAD[{{p - q1, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}]},
+{FCTopology[topo3, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{p - q1, 0}, {0, 1}, 1}], SFAD[{{p - q1 + q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {}],
+FCTopology[\"topo3R3\", {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{q1, 0}, {0, 1}, 1}], SFAD[{{p - q1 + q2, 0}, {0, 1}, 1}]}, {q1, q2}, {p}, {}, {FCGV[\"SubtopologyOf\"] -> topo3}]}}"},
+
+
+{"fcstFCLoopFindSubtopologies-ID7",
+"FCLoopFindSubtopologies[
+FCTopology[fctopo, {SFAD[{{I*p1, 0}, {0, -1}, 1}],
+	SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}],
+	SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}],
+	SFAD[{{0, p1 . p3}, {0, -1}, 1}],
+	SFAD[{{0, p3 . q}, {0, -1}, 1}]}, {p1,
+	p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] ->
+	mb^2}, {}], FCE -> True]",
+	"{FCTopology[fctopo, {SFAD[{{I*p1, 0}, {0, -1}, 1}], SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}], SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}], SFAD[{{0, p1 . p3}, {0, -1}, 1}], SFAD[{{0, p3 . q}, {0, -1}, 1}]}, {p1, p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] -> mb^2}, {}],
+FCTopology[\"fctopoR1\", {SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}], SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}], SFAD[{{0, p1 . p3}, {0, -1}, 1}], SFAD[{{0, p3 . q}, {0, -1}, 1}]}, {p1, p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] -> mb^2}, {FCGV[\"SubtopologyOf\"] -> fctopo}],
+FCTopology[\"fctopoR4\", {SFAD[{{I*p1, 0}, {0, -1}, 1}], SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}], SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}], SFAD[{{0, p3 . q}, {0, -1}, 1}]}, {p1, p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] -> mb^2}, {FCGV[\"SubtopologyOf\"] -> fctopo}],
+FCTopology[\"fctopoR5\", {SFAD[{{I*p1, 0}, {0, -1}, 1}], SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}], SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}], SFAD[{{0, p1 . p3}, {0, -1}, 1}]}, {p1, p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] -> mb^2}, {FCGV[\"SubtopologyOf\"] -> fctopo}],
+FCTopology[\"fctopoR15\", {SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}], SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}], SFAD[{{0, p1 . p3}, {0, -1}, 1}]}, {p1, p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] -> mb^2}, {FCGV[\"SubtopologyOf\"] -> fctopo}],
+FCTopology[\"fctopoR45\", {SFAD[{{I*p1, 0}, {0, -1}, 1}], SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}], SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}]}, {p1, p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] -> mb^2}, {FCGV[\"SubtopologyOf\"] -> fctopo}]}"}
+})

@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Tensor reduction of 1-loop integrals						*)
@@ -16,22 +16,24 @@
 (* ------------------------------------------------------------------------ *)
 
 TID::usage =
-"TID[amp, q] does a 1-loop tensor integral decomposition, transforming the \
-Lorentz indices away from the integration momentum q.";
+"TID[amp, q] performs  tensor decomposition of 1-loop integrals with loop
+momentum q.";
 
 TID::failmsg =
 "Error! TID has encountered a fatal problem and must abort the computation. \
 The problem reads: `1`"
 
 UsePaVeBasis::usage =
-"PaVeBasis is an option of TID. When set to True, tensor reduction will be \
-always performed in terms of the PaVe coefficient functions \
-(e.g. B1, B11, C001 etc.) even if those could be reduced to the basis integrals \
-A0, B0, C0, D0. By default this is done automatically only for tensor integrals \
-with vanishing Gram determinants. This option may be useful, if you are doing \
-computations where the general kinematics may later lead to vanishing Gram \
-determinants or if you plan to evaluate all the PaVe coefficient functions \
-numerically";
+"UsePaVeBasis is an option of TID. When set to True, tensor reduction is always
+performed in terms of the Passarino-Veltman coefficient functions (e.g. $B_1$,
+$B_{11}$, $C_{001}$ etc.) even if those can be reduced to the scalar functions
+$A_0$, $B_0$, $C_0$, $D_0$. By default this is done automatically only for
+tensor integrals with vanishing Gram determinants.
+
+This option may be useful, if you are doing computations where the kinematics
+may later lead to vanishing Gram determinants or if you plan to evaluate all
+the Passarino-Veltman coefficient functions numerically (e.g. with LoopTools
+or Collier)";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -50,6 +52,7 @@ pavear::usage="";
 ffdp::usage="";
 qQQ::usage="";
 optTimeConstrained::usage="";
+optUsePaVeBasis::usage="";
 
 procanonical[l_][y_,m_] :=
 	PropagatorDenominator[y /.
@@ -79,8 +82,10 @@ Options[TID] = {
 	Contract 								-> True,
 	Dimension 								-> D,
 	DiracSimplify 							-> True,
+	DiracSpinorNormalization				-> "Relativistic",
 	DiracTrace 								-> True,
 	EpsEvaluate								-> True,
+	EpsExpand								-> True,
 	ExpandScalarProduct						-> True,
 	FCE 									-> False,
 	FCI 									-> False,
@@ -94,9 +99,13 @@ Options[TID] = {
 	Isolate 								-> False,
 	PaVeAutoOrder 							-> True,
 	PaVeAutoReduce 							-> True,
+	PaVeLimitTo4 							-> False,
 	PauliSimplify 							-> True,
+	Prefactor								-> 1,
+	SpinorChainEvaluate						-> True,
 	TimeConstrained 						-> 3,
 	ToPaVe									-> False,
+	ToSFAD									-> True,
 	UsePaVeBasis 							-> False
 };
 
@@ -111,14 +120,19 @@ TID[am_List, q_/; Head[q]=!=List, opts:OptionsPattern[]]:=
 TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 	Block[ {n, t0, t1, t3, t4, t5, t6, null1, null2, qrule,
 		res,nres,irrelevant = 0, contractlabel, fds, iter,sp,tp,
-		loopIntegral, wrapped,loopList,repIndexList,canIndexList,uniqueCanIndexList,
-		solsList, repSolList, reversedRepIndexList,reducedLoopList,
-		finalRepList,isoContract,tmp,tempIsolate,loopListOrig, tmpli, time, time0, fclcOutput,
-		optExpandScalarProduct, noTID, fadCollect
+		loopIntegral, wrapped, loopList, repIndexList, canIndexList,
+		uniqueCanIndexList, solsList, repSolList, reversedRepIndexList,
+		reducedLoopList, finalRepList, isoContract, tmp, tempIsolate,
+		loopListOrig, tmpli, time, time0, fclcOutput,
+		optExpandScalarProduct, noTID, fadCollect, optEpsExpand,
+		optToPaVe
 	},
 
-		optExpandScalarProduct = OptionValue[ExpandScalarProduct];
-		optTimeConstrained = OptionValue[TimeConstrained];
+		optExpandScalarProduct	= OptionValue[ExpandScalarProduct];
+		optTimeConstrained 		= OptionValue[TimeConstrained];
+		optEpsExpand 			= OptionValue[EpsExpand];
+		optUsePaVeBasis			= OptionValue[UsePaVeBasis];
+		optToPaVe				= OptionValue[ToPaVe];
 
 		If [OptionValue[FCVerbose]===False,
 			tidVerbose=$VeryVerbose,
@@ -152,6 +166,8 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 		pavear 			= OptionValue[PaVeAutoReduce];
 		genpave 		= OptionValue[GenPaVe];
 
+		(* Multiply the input expression by the prefactor *)
+		t0 = OptionValue[Prefactor] t0;
 
 		If[ FreeQ[t0,q],
 			Return[t0]
@@ -161,7 +177,7 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 		If[	contractlabel && !FreeQ2[t0,{LorentzIndex,CartesianIndex}],
 			FCPrint[1, "TID: Applying Contract.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
-			t0 = Contract[t0, FCI->True, ExpandScalarProduct->optExpandScalarProduct];
+			t0 = Contract[t0, FCI->True, ExpandScalarProduct->optExpandScalarProduct, EpsExpand->optEpsExpand];
 			FCPrint[1, "TID: Done applying Contract, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 			FCPrint[3, "After Contract: ", t0 , FCDoControl->tidVerbose]
 		];
@@ -182,6 +198,10 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 		t0 = Isolate[t0,{q,FeynAmpDenominator,Dot}, IsolateNames->tempIsolate]/.Dot[x___]:>FRH[Dot[x],IsolateNames->tempIsolate];
 		FCPrint[1, "TID: Done applying Isolate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 		FCPrint[3, "TID: After Isolate: ", t0 , FCDoControl->tidVerbose];
+
+		If[OptionValue[ToSFAD] && !FreeQ2[t0,{StandardPropagatorDenominator}],
+			t0 = ToSFAD[t0]
+		];
 
 		If[	!FreeQ2[Union[FCGetDimensions[t0, FreeQ->{DiracGamma[5|6|7], TemporalPair[__]},	ChangeDimension->True]],{4,-4}] && (FeynCalc`Package`DiracGammaScheme =!= "BMHV"),
 			Message[TID::failmsg,"Your input contains a mixture of 4- and D-dimensional quantities. This is in general not allowed in dimensional regularization, unless you are using the Breitenlohner-Maison-t'Hooft-Veltman scheme."];
@@ -214,7 +234,8 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 		If[	OptionValue[DiracSimplify] && !FreeQ2[t0,{DiracGamma,DiracSigma,Spinor}],
 			FCPrint[1, "TID: Applying DiracSimplify.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
-			t0 = DiracSimplify[t0,FCI->True, DiracTraceEvaluate->OptionValue[DiracTrace], Expand2->False];
+			t0 = DiracSimplify[t0,FCI->True, DiracTraceEvaluate->OptionValue[DiracTrace], Expand2->False,
+				SpinorChainEvaluate -> OptionValue[SpinorChainEvaluate], DiracSpinorNormalization -> OptionValue[DiracSpinorNormalization]];
 			FCPrint[1, "TID: Done applying DiracSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 			FCPrint[3, "TID: After DiracSimplify: ", t0 , FCDoControl->tidVerbose]
 		];
@@ -231,9 +252,9 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 		If[ fds,
 			FCPrint[1, "TID: Applying FDS.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
-			t0 = FeynAmpDenominatorSimplify[t0, q, FCI->True, Collecting->False];
+			t0 = FeynAmpDenominatorSimplify[t0, q, FCI->True, Collecting->False, ExpandScalarProduct->optExpandScalarProduct];
 			(* The fact that we need to apply FDS twice here, tells a lot about the quality of FDS. *)
-			t0 = FeynAmpDenominatorSimplify[t0, q, FCI->True, Collecting->False];
+			t0 = FeynAmpDenominatorSimplify[t0, q, FCI->True, Collecting->False, ExpandScalarProduct->optExpandScalarProduct];
 			FCPrint[1, "TID: Done applying FDS, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 			FCPrint[3," TID: After FDS: ", t0 , FCDoControl->tidVerbose]
 		];
@@ -241,7 +262,7 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 		If[	OptionValue[ApartFF],
 			FCPrint[1, "TID: Applying ApartFF.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
-			t0 = ApartFF[t0,{q},FCI->True, Collecting->{q}, SetDimensions->{4,n,3,n-1}];
+			t0 = ApartFF[t0,{q},FCI->True, Collecting->{q}, SetDimensions->{4,n,3,n-1}, ExpandScalarProduct->optExpandScalarProduct];
 			FCPrint[1, "TID: Done applying ApartFF, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 			FCPrint[3, "TID: After ApartFF: ", t0 , FCDoControl->tidVerbose]
 		];
@@ -275,7 +296,9 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 				Pair[Momentum[q, dim___], LorentzIndex[_, dim___]] :> Unique[],
 				CartesianPair[CartesianMomentum[q, dim___], CartesianIndex[_, dim___]] :> Unique[],
 				FeynAmpDenominator[___]:>Unique[],
-				TemporalMomentum[q]:> Unique
+				TemporalMomentum[q]:> Unique,
+				Pair[LightConePerpendicularComponent[Momentum[q, dim___],_,_],
+					LightConePerpendicularComponent[LorentzIndex[_, dim___],_,_]] :> Unique[]
 				}, q],
 			Message[TID::failmsg, "Uncontracting loop momenta in " <> ToString[t1,InputForm] <>
 				"failed."];
@@ -299,12 +322,23 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 		FCPrint[3,"TID: Tensor parts of the original expression: ", t1, FCDoControl->tidVerbose];
 		FCPrint[3,"TID: Scalar and non-loop parts of the original expression: ", irrelevant, FCDoControl->tidVerbose];
 
-		If[	OptionValue[ToPaVe],
+		If[	optToPaVe===True || (optUsePaVeBasis===True && optToPaVe===Automatic),
 			FCPrint[1, "TID: Applying ToPaVe to the scalar part of the input expression.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
-			irrelevant = ToPaVe[irrelevant,q, FCI->True];
+			irrelevant = ToPaVe[irrelevant,q, FCI->True, PaVeAutoOrder-> paveao, PaVeAutoReduce-> pavear];
 			FCPrint[1, "TID: Done applying ToPaVe, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 			FCPrint[3, "TID: After ToPaVe: ", res , FCDoControl->tidVerbose]
+		];
+
+		If[	!FreeQ[t1,LightConePerpendicularComponent],
+			time=AbsoluteTime[];
+			FCPrint[1, "TID: Handling perpendicular light cone components.", FCDoControl->tidVerbose];
+			t1 = t1 //. {
+				Pair[LightConePerpendicularComponent[Momentum[q,n],vecN_,vecNB_],LightConePerpendicularComponent[LorentzIndex[i_,n],vecN_,vecNB_]]:>
+					(tmpli=Unique[];  Pair[Momentum[q,n],LorentzIndex[tmpli,n]] Pair[LightConePerpendicularComponent[LorentzIndex[tmpli,n],vecN,vecNB],
+						LightConePerpendicularComponent[LorentzIndex[i,n],vecN,vecNB]])
+			};
+			FCPrint[1, "TID: Done handling perpendicular light cone components, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 		];
 
 		(* 	Here comes the trick to handle uncontracted loop momenta in 4 or D-4 dimensions.
@@ -402,11 +436,11 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 					];
 				];
 
-				(* Here we reduce the unique tensor integrals to scalar integrals *)
+				(* Here we reduce our unique tensor integrals to scalar integrals *)
 
 				FCPrint[1,"TID: Reducing ", Length[uniqueCanIndexList], " unique 1-loop tensor integrals.", FCDoControl->tidVerbose];
 				time=AbsoluteTime[];
-				solsList= tidSingleIntegral[#, q , n, OptionValue[UsePaVeBasis]]&/@uniqueCanIndexList;
+				solsList= tidSingleIntegral[#, q , n, optUsePaVeBasis]&/@uniqueCanIndexList;
 
 				FCPrint[1, "TID: Done reducing unique 1-loop tensor integrals, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 				FCPrint[3, "TID: After the reduction: ", solsList , FCDoControl->tidVerbose];
@@ -428,10 +462,10 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 				];
 
 
-				If[	OptionValue[ToPaVe],
+				If[	optToPaVe===True || ((optUsePaVeBasis===True || !FreeQ2[solsList,FeynCalc`Package`PaVeHeadsList]) && optToPaVe===Automatic),
 					FCPrint[1, "TID: Applying ToPaVe to the list of the reduced integrals.", FCDoControl->tidVerbose];
 					time=AbsoluteTime[];
-					solsList = ToPaVe[(#/.tidPaVe->Identity),q, FCI->True]&/@solsList;
+					solsList = ToPaVe[(#/.tidPaVe->Identity),q, FCI->True, PaVeAutoOrder-> paveao, PaVeAutoReduce-> pavear]&/@solsList;
 					FCPrint[1, "TID: Done applying ToPaVe, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 					FCPrint[3, "TID: After ToPaVe: ", res , FCDoControl->tidVerbose]
 				];
@@ -467,8 +501,6 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 			(* 	We had to uncontract some Lorentz indices at the beginning, so we should better contract them
 				again at the end	*)
 
-
-
 			If[	contractlabel && !FreeQ2[res,{LorentzIndex,CartesianIndex}],
 
 					FCPrint[1, "TID: Applying Isolate.", FCDoControl->tidVerbose];
@@ -481,7 +513,7 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 
 					FCPrint[1, "TID: Applying Contract.", FCDoControl->tidVerbose];
 					time=AbsoluteTime[];
-					res = Contract[res,FCI->True, ExpandScalarProduct->optExpandScalarProduct]//
+					res = Contract[res,FCI->True, ExpandScalarProduct->optExpandScalarProduct, EpsExpand->optEpsExpand]//
 					ReplaceAll[#,Pair[z__]/;!FreeQ[{z},HoldForm]:>FRH[Pair[z]]]&//
 					ReplaceAll[#,CartesianPair[z__]/;!FreeQ[{z},HoldForm]:>FRH[CartesianPair[z]]]&;
 					FCPrint[1, "TID: Done applying Contract, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
@@ -569,6 +601,20 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 
 		res = res //. {holdExplicitLorentzIndex->ExplicitLorentzIndex, holdTemporalMomentum->TemporalMomentum,holdTemporalPair->TemporalPair, q0->q};
 
+		If[ OptionValue[PaVeLimitTo4],
+
+			time=AbsoluteTime[];
+			FCPrint[1, "TID: Applying PaVeLimitTo4.", FCDoControl->tidVerbose];
+
+			If[	!FreeQ[res,tidIsolate],
+				Message[TID::failmsg, "PaVeLimitTo4 cannot be applied to results with isolated prefactors."];
+				Abort[]
+			];
+			res = PaVeLimitTo4[res,FCI->True];
+			FCPrint[1, "TID: Done applying PaVeLimitTo4, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
+			FCPrint[3, "TID: After PaVeLimitTo4: ", res , FCDoControl->tidVerbose]
+		];
+
 
 		If[	optExpandScalarProduct,
 			FCPrint[1, "TID: Applying ExpandScalarProduct.", FCDoControl->tidVerbose];
@@ -582,7 +628,7 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 		If [OptionValue[EpsEvaluate] && !FreeQ[res,Eps],
 			FCPrint[1, "TID: Applying EpsEvaluate.", FCDoControl->tidVerbose];
 			time=AbsoluteTime[];
-			res = EpsEvaluate[res, FCI->True];
+			res = EpsEvaluate[res, FCI->True, EpsExpand->optEpsExpand];
 			FCPrint[1, "TID: Done applying EpsEvaluate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 			FCPrint[3, "TID: After EpsEvaluate: ", res , FCDoControl->tidVerbose]
 		];
@@ -1075,7 +1121,7 @@ pavePrepare[ex_,np_Integer?Positive,{moms___},{ms___}, dim_]:=
 		(
 		FCPrint[3, "TID: pavePrepare: entering with ", {ex, np, {moms},{ms}}, FCDoControl->tidVerbose];
 		ex/. FCGV["PaVe"][{n__}]:>
-			(I Pi^2)PaVe[n,ExpandScalarProduct[FeynCalc`Package`momentumRoutingDenner[{moms},ScalarProduct[#,#,Dimension->dim]&]],
+			(I Pi^2)PaVe[n,ExpandScalarProduct[FCUseCache[FeynCalc`Package`momentumRoutingDenner,{{moms},scalarProduct[#,#,Dimension->dim]&},{}]/.scalarProduct->ScalarProduct],
 			{ms}, PaVeAutoOrder->paveao, PaVeAutoReduce->pavear]
 		)/; (Length[{moms}]+1)===Length[{ms}] && Length[{ms}]===np && !genpave;
 

@@ -1,0 +1,269 @@
+
+
+(* :Title: PropagatorsToLineMomenta.test                         		    *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for
+				PropagatorsToLineMomenta									*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopPropagatorsToLineMomenta =
+({
+{"fcstFCLoopPropagatorsToLineMomenta-ID1",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{q,m^2}],SFAD[{p,-m^2}]},\
+FCE->True]",
+"{{q, p}, {-m^2, m^2}, {SFAD[{{q, 0}, {m^2, 1}, 1}], SFAD[{{p, 0}, \
+{-m^2, 1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID2",
+"FCLoopPropagatorsToLineMomenta[{FAD[{q,m}]},FCE->True]",
+"{{q}, {-m^2}, {FAD[{q, m}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID3",
+"FCLoopPropagatorsToLineMomenta[{FAD[{q+p,m}]},FCE->True]",
+"{{p + q}, {-m^2}, {FAD[{p + q, m}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID4",
+"FCLoopPropagatorsToLineMomenta[{FAD[{q-p,m}]},FCE->True]",
+"{{-p + q}, {-m^2}, {FAD[{-p + q, m}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID5",
+"FCLoopPropagatorsToLineMomenta[{FAD[{q+p,0}]},FCE->True]",
+"{{p + q}, {0}, {FAD[p + q]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID6",
+"FCLoopPropagatorsToLineMomenta[{FAD[{q-p,0}]},FCE->True]",
+"{{-p + q}, {0}, {FAD[-p + q]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID7",
+"FCLoopPropagatorsToLineMomenta[{FAD[{q,m,2}]},FCE->True]",
+"{{q}, {-m^2}, {FAD[{q, m}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID8",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{q,m}]},FCE->True]",
+"{{q}, {-m}, {SFAD[{{q, 0}, {m, 1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID9",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{q+p,m}]},FCE->True]",
+"{{p + q}, {-m}, {SFAD[{{p + q, 0}, {m, 1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID10",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{q-p,m}]},FCE->True]",
+"{{-p + q}, {-m}, {SFAD[{{-p + q, 0}, {m, 1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID11",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{q+p,0}]},FCE->True]",
+"{{p + q}, {0}, {SFAD[{{p + q, 0}, {0, 1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID12",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{q-p,0}]},FCE->True]",
+"{{-p + q}, {0}, {SFAD[{{-p + q, 0}, {0, 1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID13",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{q,m,2}]},FCE->True]",
+"{{q}, {-m}, {SFAD[{{q, 0}, {m, 1}, 2}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID14",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{q,m}]},FCE->True]",
+"{{q}, {m}, {CFAD[{{q, 0}, {m, -1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID15",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{q+p,m}]},FCE->True]",
+"{{p + q}, {m}, {CFAD[{{p + q, 0}, {m, -1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID16",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{q-p,m}]},FCE->True]",
+"{{-p + q}, {m}, {CFAD[{{-p + q, 0}, {m, -1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID17",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{q+p,0}]},FCE->True]",
+"{{p + q}, {0}, {CFAD[{{p + q, 0}, {0, -1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID18",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{q-p,0}]},FCE->True]",
+"{{-p + q}, {0}, {CFAD[{{-p + q, 0}, {0, -1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID19",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{q,m,2}]},FCE->True]",
+"{{q}, {m}, {CFAD[{{q, 0}, {m, -1}, 2}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID20",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{{0,2p.q}}]},FCE->True]",
+"{{p + q}, {0}, {SFAD[{{0, 2*p . q}, {0, 1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID21",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{{0,-2p.q}}]},FCE->True]",
+"{{p - q}, {0}, {SFAD[{{0, -2*p . q}, {0, 1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID22",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{{0,2(p+l).q}}]},FCE->True]",
+	"{{l + p + q}, {0}, {SFAD[{{0, 2*(l + p) . q}, {0, 1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID23",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{{0,-2(p+l).q}}]},FCE->True]\
+", "{{l + p - q}, {0}, {SFAD[{{0, -2*(l + p) . q}, {0, 1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID24",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{{0,5p.q}}]},FCE->True]",
+"{{p + q}, {0}, {SFAD[{{0, 5*p . q}, {0, 1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID25",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{{0,-5p.q}}]},FCE->True]",
+"{{p - q}, {0}, {SFAD[{{0, -5*p . q}, {0, 1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID26",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{{0,5(p+l).q}}]},FCE->True]",
+	"{{l + p + q}, {0}, {SFAD[{{0, 5*(l + p) . q}, {0, 1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID27",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{{0,-5(p+l).q}}]},FCE->True]\
+", "{{l + p - q}, {0}, {SFAD[{{0, -5*(l + p) . q}, {0, 1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID28",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{{p+l,2(p+l).q}}]},FCE->True]\
+", "{{l + p + q}, {0}, {SFAD[{{l + p, 2*(l + p) . q}, {0, 1}, \
+1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID29",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{{p+l,-2(p+l).q}}]},\
+FCE->True]",
+"{{l + p - q}, {0}, {SFAD[{{l + p, -2*(l + p) . q}, {0, 1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID30",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{{p+l,-3(p+l).q}}]},\
+FCE->True]",
+"{{l + p - (3*q)/2}, {0}, {SFAD[{{l + p, -3*(l + p) . q}, {0, 1}, \
+1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID31",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{{p+l,1/2(p+l).q}}]},\
+FCE->True]",
+"{{l + p + q/4}, {0}, {SFAD[{{l + p, (l + p) . q/2}, {0, 1}, \
+1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID32",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{{0,2p.q},m^2}]},FCE->True]",
+	"{{p + q}, {-m^2}, {SFAD[{{0, 2*p . q}, {m^2, 1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID33",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{{0,-2p.q},m^2}]},FCE->True]\
+", "{{p + q}, {-m^2}, {SFAD[{{0, -2*p . q}, {m^2, 1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID34",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{{0,5p.q},m^2}]},FCE->True]",
+	"{{p + (5*q)/2}, {-m^2}, {SFAD[{{0, 5*p . q}, {m^2, 1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID35",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{{0,-5p.q},m^2}]},FCE->True]\
+", "{{p + (5*q)/2}, {-m^2}, {SFAD[{{0, -5*p . q}, {m^2, 1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID36",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{{p+l,2(p+l).q},m^2}]},\
+FCE->True]",
+"{{l + p + q}, {-m^2}, {SFAD[{{l + p, 2*(l + p) . q}, {m^2, 1}, \
+1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID37",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{{p+l,-2(p+l).q},-m^2}]},\
+FCE->True]",
+"{{l + p - q}, {m^2}, {SFAD[{{l + p, -2*(l + p) . q}, {-m^2, 1}, \
+1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID38",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{{p+l,-3(p+l).q},m^2}]},\
+FCE->True]",
+"{{l + p - (3*q)/2}, {-m^2}, {SFAD[{{l + p, -3*(l + p) . q}, {m^2, \
+1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID39",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{{p+l,1/2(p+l).q},m^2}]},\
+FCE->True]",
+"{{l + p + q/4}, {-m^2}, {SFAD[{{l + p, (l + p) . q/2}, {m^2, 1}, \
+1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID40",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{{0,2p.q}}]},FCE->True]",
+"{{p + q}, {0}, {CFAD[{{0, 2*p . q}, {0, -1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID41",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{{0,-2p.q}}]},FCE->True]",
+"{{p - q}, {0}, {CFAD[{{0, -2*p . q}, {0, -1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID42",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{{0,2(p+l).q}}]},FCE->True]",
+	"{{l + p + q}, {0}, {CFAD[{{0, 2*(l + p) . q}, {0, -1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID43",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{{0,-2(p+l).q}}]},FCE->True]\
+", "{{l + p - q}, {0}, {CFAD[{{0, -2*(l + p) . q}, {0, -1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID44",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{{0,5p.q}}]},FCE->True]",
+"{{p + q}, {0}, {CFAD[{{0, 5*p . q}, {0, -1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID45",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{{0,-5p.q}}]},FCE->True]",
+"{{p - q}, {0}, {CFAD[{{0, -5*p . q}, {0, -1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID46",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{{0,5(p+l).q}}]},FCE->True]",
+	"{{l + p + q}, {0}, {CFAD[{{0, 5*(l + p) . q}, {0, -1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID47",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{{0,-5(p+l).q}}]},FCE->True]\
+", "{{l + p - q}, {0}, {CFAD[{{0, -5*(l + p) . q}, {0, -1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID48",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{{p+l,2(p+l).q}}]},FCE->True]\
+", "{{l + p + q}, {0}, {CFAD[{{l + p, 2*(l + p) . q}, {0, -1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID49",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{{p+l,-2(p+l).q}}]},\
+FCE->True]",
+"{{l + p - q}, {0}, {CFAD[{{l + p, -2*(l + p) . q}, {0, -1}, \
+1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID50",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{{p+l,-3(p+l).q}}]},\
+FCE->True]",
+"{{l + p - (3*q)/2}, {0}, {CFAD[{{l + p, -3*(l + p) . q}, {0, -1}, \
+1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID51",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{{p+l,1/2(p+l).q}}]},\
+FCE->True]",
+"{{l + p + q/4}, {0}, {CFAD[{{l + p, (l + p) . q/2}, {0, -1}, \
+1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID52",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{{0,2p.q},m^2}]},FCE->True]",
+	"{{p + q}, {m^2}, {CFAD[{{0, 2*p . q}, {m^2, -1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID53",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{{0,-2p.q},m^2}]},FCE->True]\
+", "{{p + q}, {m^2}, {CFAD[{{0, -2*p . q}, {m^2, -1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID54",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{{0,5p.q},m^2}]},FCE->True]",
+	"{{p + (5*q)/2}, {m^2}, {CFAD[{{0, 5*p . q}, {m^2, -1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID55",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{{0,-5p.q},m^2}]},FCE->True]\
+", "{{p + (5*q)/2}, {m^2}, {CFAD[{{0, -5*p . q}, {m^2, -1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID56",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{{p+l,2(p+l).q},m^2}]},\
+FCE->True]",
+"{{l + p + q}, {m^2}, {CFAD[{{l + p, 2*(l + p) . q}, {m^2, -1}, \
+1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID57",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{{p+l,-2(p+l).q},-m^2}]},\
+FCE->True]",
+"{{l + p - q}, {-m^2}, {CFAD[{{l + p, -2*(l + p) . q}, {-m^2, -1}, \
+1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID58",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{{p+l,-3(p+l).q},m^2}]},\
+FCE->True]",
+"{{l + p - (3*q)/2}, {m^2}, {CFAD[{{l + p, -3*(l + p) . q}, {m^2, \
+-1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID59",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{{p+l,1/2(p+l).q},m^2}]},\
+FCE->True]",
+"{{l + p + q/4}, {m^2}, {CFAD[{{l + p, (l + p) . q/2}, {m^2, -1}, \
+1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID60",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{{0,2v.q}}]},FCE->True,\
+AuxiliaryMomenta\[Rule]{v}]",
+"{{q}, {0}, {SFAD[{{0, 2*q . v}, {0, 1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID61",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{{0,2v.(q+r)}}]},FCE->True,\
+AuxiliaryMomenta\[Rule]{v}]",
+"{{q + r}, {0}, {SFAD[{{0, 2*(q + r) . v}, {0, 1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID62",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{{0,2v.(q+r)},m^2}]},\
+FCE->True,AuxiliaryMomenta\[Rule]{v}]",
+"{{q + r}, {-m^2}, {SFAD[{{0, 2*(q + r) . v}, {m^2, 1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID63",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{{0,2v.q}}]},FCE->True,\
+AuxiliaryMomenta\[Rule]{v}]",
+"{{q}, {0}, {CFAD[{{0, 2*q . v}, {0, -1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID64",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{{0,2v.(q+r)}}]},FCE->True,\
+AuxiliaryMomenta\[Rule]{v}]",
+"{{q + r}, {0}, {CFAD[{{0, 2*(q + r) . v}, {0, -1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID65",
+"FCLoopPropagatorsToLineMomenta[{CFAD[{{0,2v.(q+r)},m^2}]},\
+FCE->True,AuxiliaryMomenta\[Rule]{v}]",
+"{{q + r}, {m^2}, {CFAD[{{0, 2*(q + r) . v}, {m^2, -1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID66",
+"FCLoopPropagatorsToLineMomenta[{SFAD[{I(q+l),-m^2}],
+SFAD[{I p,-m^2}]},FCE->True]",
+"{{l + q, p}, {m^2, m^2}, {SFAD[{{I*(l + q), 0}, {-m^2, 1}, 1}],
+SFAD[{{I*p, 0}, {-m^2, 1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID67",
+"FCLoopPropagatorsToLineMomenta[{FeynAmpDenominator[
+StandardPropagatorDenominator[
+	I*Momentum[p1, D], -2*Pair[Momentum[p1, D], Momentum[q, D]],
+	0, {1, 1}]]},FCE->True]",
+"{{p1 + q}, {0}, {SFAD[{{I*p1, -2*p1 . q}, {0, 1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID68",
+"FCLoopPropagatorsToLineMomenta[{GFAD[{{SPD[2 p1 - 2 p3, q], -1}, 1}]},
+FCE -> True]",
+"{{2*p1 - 2*p3 + q}, {0}, {SFAD[{{0, (2*p1 - 2*p3) . q}, {0, -1}, 1}]}}"},
+{"fcstFCLoopPropagatorsToLineMomenta-ID69",
+"FCLoopPropagatorsToLineMomenta[{GFAD[{{SPD[2 p1 - 2 p3, q] - m^2, -1},
+1}]}, FCE -> True]",
+"{{2*p1 - 2*p3 + q/2}, {-m^2}, {SFAD[{{0, (2*p1 - 2*p3) . q}, {m^2, -1}, 1}]}}"}
+});

@@ -1,0 +1,149 @@
+
+
+(* :Title: FCLoopTensorReduce.test													*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopTensorReduce				*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopTensorReduce =
+({
+{"fcstFCLoopTensorReduce-ID1",
+"FCLoopTensorReduce[gliProduct[GSD[q], GLI[fctopology4, {1, 1, 1}]],
+	{FCTopology[fctopology4,{SFAD[{{q,0},{0,1},1}],SFAD[{{k1+q,0},{0,\
+1},1}],SFAD[{{k2-q,0},{0,1},1}]},{q},{k1,k2},{Hold[Pair][Momentum[k1,\
+D],Momentum[k1,D]]\[Rule]0,Hold[Pair][Momentum[k1,D],Momentum[k2,D]]\
+\[Rule]\!\(\*FractionBox[\(s\), \
+\(2\)]\),Hold[Pair][Momentum[k1,D],Momentum[p1,D]]\[Rule]-\!\(\*\
+FractionBox[\(t\), \(2\)]\),Hold[Pair][Momentum[k1,D],Momentum[p2,D]]\
+\[Rule]-\!\(\*FractionBox[\(u\), \
+\(2\)]\),Hold[Pair][Momentum[k2,D],Momentum[k2,D]]\[Rule]0,Hold[Pair][\
+Momentum[k2,D],Momentum[p1,D]]\[Rule]-\!\(\*FractionBox[\(u\), \(2\)]\
+\),Hold[Pair][Momentum[k2,D],Momentum[p2,D]]\[Rule]-\!\(\*FractionBox[\
+\(t\), \(2\)]\)},{}]},Head->gliProduct,FCE->True]",
+"gliProduct[(GSD[k2]*SPD[k1, k2]*SPD[k1, q] - GSD[k1]*SPD[k1, \
+q]*SPD[k2, k2] - GSD[k2]*SPD[k1, k1]*SPD[k2, q] + GSD[k1]*SPD[k1, \
+k2]*SPD[k2, q])/(SPD[k1, k2]^2 - SPD[k1, k1]*SPD[k2, k2]), \
+GLI[fctopology4, {1, 1, 1}]]"},
+{"fcstFCLoopTensorReduce-ID2",
+"FCLoopTensorReduce[gliProduct[1, GLI[fctopology4, {1, 1, 1}]],
+	{FCTopology[fctopology4,{SFAD[{{q,0},{0,1},1}],SFAD[{{k1+q,0},{0,\
+1},1}],SFAD[{{k2-q,0},{0,1},1}]},{q},{k1,k2},{Hold[Pair][Momentum[k1,\
+D],Momentum[k1,D]]\[Rule]0,Hold[Pair][Momentum[k1,D],Momentum[k2,D]]\
+\[Rule]\!\(\*FractionBox[\(s\), \
+\(2\)]\),Hold[Pair][Momentum[k1,D],Momentum[p1,D]]\[Rule]-\!\(\*\
+FractionBox[\(t\), \(2\)]\),Hold[Pair][Momentum[k1,D],Momentum[p2,D]]\
+\[Rule]-\!\(\*FractionBox[\(u\), \
+\(2\)]\),Hold[Pair][Momentum[k2,D],Momentum[k2,D]]\[Rule]0,Hold[Pair][\
+Momentum[k2,D],Momentum[p1,D]]\[Rule]-\!\(\*FractionBox[\(u\), \(2\)]\
+\),Hold[Pair][Momentum[k2,D],Momentum[p2,D]]\[Rule]-\!\(\*FractionBox[\
+\(t\), \(2\)]\)},{}]},Head->gliProduct,FCE->True]",
+"gliProduct[1, GLI[fctopology4, {1, 1, 1}]]"},
+{"fcstFCLoopTensorReduce-ID3",
+"FCLoopTensorReduce[gliProduct[SPD[q,k1]^2, GLI[fctopology4, {1, \
+1, 1}]],
+	{FCTopology[fctopology4,{SFAD[{{q,0},{0,1},1}],SFAD[{{k1+q,0},{0,\
+1},1}],SFAD[{{k2-q,0},{0,1},1}]},{q},{k1,k2},{Hold[Pair][Momentum[k1,\
+D],Momentum[k1,D]]\[Rule]0,Hold[Pair][Momentum[k1,D],Momentum[k2,D]]\
+\[Rule]\!\(\*FractionBox[\(s\), \
+\(2\)]\),Hold[Pair][Momentum[k1,D],Momentum[p1,D]]\[Rule]-\!\(\*\
+FractionBox[\(t\), \(2\)]\),Hold[Pair][Momentum[k1,D],Momentum[p2,D]]\
+\[Rule]-\!\(\*FractionBox[\(u\), \
+\(2\)]\),Hold[Pair][Momentum[k2,D],Momentum[k2,D]]\[Rule]0,Hold[Pair][\
+Momentum[k2,D],Momentum[p1,D]]\[Rule]-\!\(\*FractionBox[\(u\), \(2\)]\
+\),Hold[Pair][Momentum[k2,D],Momentum[p2,D]]\[Rule]-\!\(\*FractionBox[\
+\(t\), \(2\)]\)},{}]},Head->gliProduct,FCE->True]",
+"gliProduct[SPD[k1, q]^2, GLI[fctopology4, {1, 1, 1}]]"},
+{"fcstFCLoopTensorReduce-ID4",
+"FCLoopTensorReduce[FCGV[\"GLIProduct\"][GSD[q].GAD[mu].GSD[q], \
+GLI[tad1l,{1}]],{FCTopology[tad1l,{SFAD[{q,m^2}]},{q},{},{},{}]}]",
+"FCGV[\"GLIProduct\"][((2 - D)*DiracGamma[LorentzIndex[mu, D], \
+D]*Pair[Momentum[q, D], Momentum[q, D]])/D, GLI[tad1l, {1}]]"},
+{"fcstFCLoopTensorReduce-ID5",
+"FCLoopTensorReduce[gliProduct[GSD[q].GAD[mu].GSD[q], \
+GLI[prop1l,{1,2}]],\[IndentingNewLine]{FCTopology[prop1l,{SFAD[{q,m^2}\
+,{q-p,m^2}]},{q},{p},{},{}]}\[IndentingNewLine],FCE->True]",
+"gliProduct[GSD[q] . GAD[mu] . GSD[q], GLI[prop1l, {1, 2}]]"},
+{"fcstFCLoopTensorReduce-ID6",
+"FCLoopTensorReduce[gliProduct[SPD[q,x], GLI[prop1l,{1,2}]],\
+\[IndentingNewLine]{FCTopology[prop1l,{SFAD[{q,m^2},{q-p,m^2}]},{q},{\
+p},{},{}]},FCE->True,Uncontract->{x},Head->gliProduct]",
+"gliProduct[(SPD[p, q]*SPD[p, x])/SPD[p, p], GLI[prop1l, {1, 2}]]"},
+
+{"fcstFCLoopTensorReduce-ID7",
+"FCLoopTensorReduce[{gliProduct[
+	aa*FVD[l1, mu]*FVD[l1, nu]*FVD[l2, rho]*SPD[l1, p],
+	GLI[topo2, {1, 4, 1}]] +
+gliProduct[bb*FVD[l1, mu]*FVD[l1, nu]*FVD[l2, rho]*SPD[l1, p],
+	GLI[topo1, {1, 3, 1, 1}]], {FCTopology[
+	topo1, {SFAD[{{l2, 0}, {M^2, 1}, 1}],
+	SFAD[{{l1, 0}, {m^2, 1}, 1}], SFAD[{{l1 + p, 0}, {m^2, 1}, 1}],
+	SFAD[{{l1 - l2, 0}, {M^2, 1}, 1}]}, {l1, l2}, {p}, {}, {}],
+FCTopology[
+	topo2, {SFAD[{{l2, 0}, {M^2, 1}, 1}],
+	SFAD[{{l1, 0}, {M^2, 1}, 1}],
+	SFAD[{{l1 - l2, 0}, {M^2, 1}, 1}]}, {l1, l2}, {}, {}, {}]}},
+Head -> gliProduct, FCE -> True]",
+"gliProduct[(aa*(FVD[p, rho]*MTD[mu, nu] + FVD[p, nu]*MTD[mu, rho] +
+FVD[p, mu]*MTD[nu, rho])*SPD[l1, l1]*SPD[l1, l2])/(D*(2 + D)),
+GLI[topo2, {1, 4, 1}]] +
+gliProduct[-((bb*SPD[l1, p]*(2*FVD[p, mu]*FVD[p, nu]*FVD[p, rho]*SPD[l1, p]^2*SPD[l2, p] +
+D*FVD[p, mu]*FVD[p, nu]*FVD[p, rho]*SPD[l1, p]^2*SPD[l2, p] -
+2*FVD[p, mu]*FVD[p, nu]*FVD[p, rho]*SPD[l1, l2]*SPD[l1, p]*SPD[p, p] - FVD[p, mu]*FVD[p, nu]*FVD[p, rho]*SPD[l1, l1]*SPD[l2, p]*SPD[p, p] -
+FVD[p, rho]*MTD[mu, nu]*SPD[l1, p]^2*SPD[l2, p]*SPD[p, p] -
+FVD[p, nu]*MTD[mu, rho]*SPD[l1, p]^2*SPD[l2, p]*SPD[p, p] -
+FVD[p, mu]*MTD[nu, rho]*SPD[l1, p]^2*SPD[l2, p]*SPD[p, p] +
+FVD[p, nu]*MTD[mu, rho]*SPD[l1, l2]*SPD[l1, p]*SPD[p, p]^2 +
+FVD[p, mu]*MTD[nu, rho]*SPD[l1, l2]*SPD[l1, p]*SPD[p, p]^2 +
+FVD[p, rho]*MTD[mu, nu]*SPD[l1, l1]*SPD[l2, p]*SPD[p, p]^2))/((1 - D)*SPD[p, p]^3)), GLI[topo1, {1, 3, 1, 1}]]"},
+{"fcstFCLoopTensorReduce-ID7",
+"FCLoopTensorReduce[{gliProduct[
+	aa*FVD[l1, mu]*FVD[l1, nu]*FVD[l2, rho]*SPD[l1, p],
+	GLI[topo2, {1, 4, 1}]] +
+gliProduct[bb*FVD[l1, mu]*FVD[l1, nu]*FVD[l2, rho]*SPD[l1, p],
+	GLI[topo1, {1, 3, 1, 1}]], {FCTopology[
+	topo1, {SFAD[{{l2, 0}, {M^2, 1}, 1}],
+	SFAD[{{l1, 0}, {m^2, 1}, 1}], SFAD[{{l1 + p, 0}, {m^2, 1}, 1}],
+	SFAD[{{l1 - l2, 0}, {M^2, 1}, 1}]}, {l1, l2}, {p}, {}, {}],
+FCTopology[
+	topo2, {SFAD[{{l2, 0}, {M^2, 1}, 1}],
+	SFAD[{{l1, 0}, {M^2, 1}, 1}],
+	SFAD[{{l1 - l2, 0}, {M^2, 1}, 1}]}, {l1, l2}, {}, {}, {}]}},
+Head -> gliProduct, FCE -> True]",
+"gliProduct[(aa*(FVD[p, rho]*MTD[mu, nu] + FVD[p, nu]*MTD[mu, rho] +
+FVD[p, mu]*MTD[nu, rho])*SPD[l1, l1]*SPD[l1, l2])/(D*(2 + D)),
+GLI[topo2, {1, 4, 1}]] +
+gliProduct[-((bb*SPD[l1, p]*(2*FVD[p, mu]*FVD[p, nu]*FVD[p, rho]*SPD[l1, p]^2*SPD[l2, p] +
+D*FVD[p, mu]*FVD[p, nu]*FVD[p, rho]*SPD[l1, p]^2*SPD[l2, p] -
+2*FVD[p, mu]*FVD[p, nu]*FVD[p, rho]*SPD[l1, l2]*SPD[l1, p]*SPD[p, p] - FVD[p, mu]*FVD[p, nu]*FVD[p, rho]*SPD[l1, l1]*SPD[l2, p]*SPD[p, p] -
+FVD[p, rho]*MTD[mu, nu]*SPD[l1, p]^2*SPD[l2, p]*SPD[p, p] -
+FVD[p, nu]*MTD[mu, rho]*SPD[l1, p]^2*SPD[l2, p]*SPD[p, p] -
+FVD[p, mu]*MTD[nu, rho]*SPD[l1, p]^2*SPD[l2, p]*SPD[p, p] +
+FVD[p, nu]*MTD[mu, rho]*SPD[l1, l2]*SPD[l1, p]*SPD[p, p]^2 +
+FVD[p, mu]*MTD[nu, rho]*SPD[l1, l2]*SPD[l1, p]*SPD[p, p]^2 +
+FVD[p, rho]*MTD[mu, nu]*SPD[l1, l1]*SPD[l2, p]*SPD[p, p]^2))/((1 - D)*SPD[p, p]^3)), GLI[topo1, {1, 3, 1, 1}]]"},
+{"fcstFCLoopTensorReduce-ID8",
+"FCLoopTensorReduce[gliProduct[GSLRD[q,FCGV[\"n\"],FCGV[\"nb\"]], GLI[fctopology4, {1, 1, 1}]],
+{FCTopology[fctopology4, {SFAD[{{q, 0}, {0, 1}, 1}], SFAD[{{k1 + q, 0},
+{0,1}, 1}], SFAD[{{k2 - q, 0}, {0, 1}, 1}]}, {q}, {k1, k2},
+{Hold[Pair][Momentum[k1, D], Momentum[k1, D]] -> 0,
+	Hold[Pair][Momentum[k1, D], Momentum[k2, D]]\
+	-> s/2, Hold[Pair][Momentum[k1, D], Momentum[p1, D]] -> -(t/2),
+	Hold[Pair][Momentum[k1, D], Momentum[p2, D]]\
+	-> -(u/2), Hold[Pair][Momentum[k2, D], Momentum[k2, D]] -> 0,
+	Hold[Pair][\
+		Momentum[k2, D], Momentum[p1, D]] -> -(u/2),
+	Hold[Pair][Momentum[k2, D], Momentum[p2, D]] -> -(t/2)}, {}]},
+Head -> gliProduct, FCE -> True]",
+"gliProduct[(GSLRD[k2, FCGV[\"n\"], FCGV[\"nb\"]]*SPD[k1, k2]*SPD[k1, q] -
+GSLRD[k1, FCGV[\"n\"], FCGV[\"nb\"]]*SPD[k1, q]*SPD[k2, k2] - GSLRD[k2, FCGV[\"n\"],
+FCGV[\"nb\"]]*SPD[k1, k1]*SPD[k2, q] + GSLRD[k1, FCGV[\"n\"], FCGV[\"nb\"]]*SPD[k1, k2]*SPD[k2, q])/
+(SPD[k1, k2]^2 - SPD[k1, k1]*SPD[k2, k2]), GLI[fctopology4, {1, 1, 1}]]"}
+});

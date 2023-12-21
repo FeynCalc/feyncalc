@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Gluon ghost vertex												*)
@@ -20,12 +20,14 @@ GGV::usage =
 "GGV is equivalent to GluonGhostVertex.";
 
 GluonGhostVertex::usage =
-"GluonGhostVertex[{p,mu,a}, {q,nu,b}, {k,rho,c}] or \
-GluonGhostVertex[ p,mu,a , q,nu,b , k,rho,c ] yields the gluon-ghost-vertex. \
-The first argument represents the gluon and the third argument the outgoing \
-ghost field (but incoming 4-momentum). \n
-The dimension and the name of the coupling constant are determined by the \
-options Dimension and CouplingConstant."
+"GluonGhostVertex[{p, mu, a}, {q, nu, b}, {k, rho, c}] or GluonGhostVertex[ p,
+mu, a , q, nu, b , k, rho, c] yields the Gluon-Ghost vertex. The first
+argument represents the gluon and the third argument the outgoing ghost field
+(but incoming 4-momentum).
+
+GGV can be used as an abbreviation of GluonGhostVertex.The dimension and the
+name of the coupling constant are determined by the options Dimension and
+CouplingConstant.";
 
 (* ------------------------------------------------------------------------ *)
 

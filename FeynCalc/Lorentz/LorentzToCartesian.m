@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Converts selected Lorentz tensors into Cartesian tensors.		*)
@@ -17,9 +17,9 @@
 
 
 LorentzToCartesian::usage=
-"LorentzToCartesian[exp] rewrites Lorentz tensors in form of Cartesian tensors \
-(when possible). Using options one can specify which types of tensors \
-should be converted.";
+"LorentzToCartesian[exp]  rewrites Lorentz tensors in form of Cartesian tensors
+(when possible). Using options one can specify which types of tensors should
+be converted.";
 
 LorentzToCartesian::fail=
 "Error! LorentzToCartesian has encountered a fatal problem and must abort the computation. \
@@ -39,6 +39,7 @@ Options[LorentzToCartesian] = {
 	DiracGammaExpand	-> True,
 	DotSimplify 		-> True,
 	EpsEvaluate			-> True,
+	EpsExpand			-> True,
 	ExpandScalarProduct -> True,
 	FCE 				-> False,
 	FCI 				-> False,
@@ -96,7 +97,7 @@ LorentzToCartesian[expr_, OptionsPattern[]]:=
 		If[	OptionValue[LC],
 			uniqListEval = uniqListEval /. Eps -> ltensorToCTensor /. ltensorToCTensor -> Eps;
 			If[ OptionValue[EpsEvaluate],
-				uniqListEval = EpsEvaluate[uniqListEval,FCI->True]
+				uniqListEval = EpsEvaluate[uniqListEval,FCI->True, EpsExpand->OptionValue[EpsExpand]]
 			];
 		];
 

@@ -1,0 +1,48 @@
+
+
+(* :Title: FCFeynmanParameterJoin.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCFeynmanParameterJoin	*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCFeynmanParameterJoin =
+({
+{"fcstFCFeynmanParameterJoin-ID1",
+"FCFeynmanParameterJoin[{SFAD[{p1,mb^2}],SFAD[p1-p3],x},{p1},\
+DiracDelta\[Rule]True]",
+"{FeynAmpDenominator[GenericPropagatorDenominator[(-mb^2 + \
+Pair[Momentum[p1, D], Momentum[p1, D]])*x[1] + (Pair[Momentum[p1, D], \
+Momentum[p1, D]] - 2*Pair[Momentum[p1, D], Momentum[p3, D]] + \
+Pair[Momentum[p3, D], Momentum[p3, D]])*x[2], {2, 1}]], DiracDelta[-1 \
++ x[1] + x[2]], {x[1], x[2]}}"},
+{"fcstFCFeynmanParameterJoin-ID2",
+"FCFeynmanParameterJoin[{{SFAD[{p1,mb^2}],SFAD[p1-p3],x},SFAD[{p3,\
+mb^2}],y},{p1,p3}]",
+"{FeynAmpDenominator[GenericPropagatorDenominator[(-(mb^2*x[1]) + \
+Pair[Momentum[p1, D], Momentum[p1, D]]*x[1] + Pair[Momentum[p1, D], \
+Momentum[p1, D]]*x[2] - 2*Pair[Momentum[p1, D], Momentum[p3, D]]*x[2] \
++ Pair[Momentum[p3, D], Momentum[p3, D]]*x[2])*y[1] + (-mb^2 + \
+Pair[Momentum[p3, D], Momentum[p3, D]])*y[2], {3, 1}]], 2*y[1], \
+{x[1], x[2], y[1], y[2]}}"},
+{"fcstFCFeynmanParameterJoin-ID3",
+"FCFeynmanParameterJoin[{{{SFAD[{p1,mb^2}],SFAD[p1-p3],x},SFAD[{p3,\
+mb^2}],y},SFAD[{{0,p1.q}}],z},{p1,p3},Indexed\[Rule]False,DiracDelta\
+\[Rule]True]",
+"{FeynAmpDenominator[GenericPropagatorDenominator[z2*Pair[Momentum[\
+p1, D], Momentum[q, D]] + z1*(-(mb^2*x1*y1) - mb^2*y2 + \
+x1*y1*Pair[Momentum[p1, D], Momentum[p1, D]] + \
+x2*y1*Pair[Momentum[p1, D], Momentum[p1, D]] - \
+2*x2*y1*Pair[Momentum[p1, D], Momentum[p3, D]] + \
+x2*y1*Pair[Momentum[p3, D], Momentum[p3, D]] + y2*Pair[Momentum[p3, \
+D], Momentum[p3, D]]), {4, 1}]], 6*y1*z1^2*DiracDelta[-1 + x1 + \
+x2]*DiracDelta[-1 + y1 + y2]*DiracDelta[-1 + z1 + z2], {x1, x2, y1, \
+y2, z1, z2}}"}
+});

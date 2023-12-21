@@ -13,32 +13,63 @@
 (* ------------------------------------------------------------------------ *)
 
 Factor1::usage=
-"Factor1[poly] factorizes common terms  in the summands of poly. \
-It uses basically PolynomialGCD.";
+"Factor1[poly] factorizes common terms  in the summands of poly. It uses
+basically PolynomialGCD.";
 
 Factor2::usage =
-"Factor2[poly] factors a polynomial in a standard \
-way. Factor2 works (sometimes) better than Factor on polynomials \
-involving rationals with sums in the denominator. \
-Factor2 uses Factor internally and is in general slower than Factor. \
-There are four possible settings of the option Method (0,1,2,3).
-";
+"Factor2[poly] factors a polynomial in a standard way.
+
+Factor2 works sometimes better than Factor on polynomials involving rationals
+with sums in the denominator.
+
+Factor2 uses Factor internally and is in general slower than Factor. There are
+four possible settings of the option Method (0,1,2,3). In general, Factor will
+work faster than Factor2.";
+
+
+Factor3::usage=
+"Factor3[exp] factors a rational function exp over the field of complex
+numbers.
+
+Factor3 is primarily meant to be used on matrices from differential equations
+and Feynman parametric
+representations of loop integrals. Its main goal is to rewrite all
+denominators such, that they can be integrated in terms of HPLs or GPLs (when
+possible).
+
+To avoid performance bottlenecks, in the case of rational functions only the
+denominator will be factored by default. This can be changed by setting the
+option Numerator to True.";
 
 FactorFull::usage=
-"FactorFull is an option of Factor2 (default False). \
-If set to False, products like \
-(a-b) (a+b) will be replaced by (a^2-b^2).";
+"FactorFull is an option of Factor2 (default False). If set to False, products
+like (a-b) (a+b) will be replaced by a^2-b^2.";
+
+
+Factor3::failmsg = "Error! Factor3 has encountered a fatal problem and must \
+abort the computation. The problem reads: `1`";
+
+Factor3::nonfact = "Factor3 failed to factor `1`";
 
 (* ------------------------------------------------------------------------ *)
 
-Begin["`Package`"]
+Begin["`Package`"];
 End[]
 
-Begin["`Factor`Private`"]
+Begin["`Factor`Private`"];
 
 Options[Factor2] = {
 	FactorFull	-> False,
 	Method 		-> 3
+};
+
+
+Options[Factor3] = {
+	Check 		-> True,
+	FCVerbose 	-> False,
+	Numerator	-> False,
+	RandomPrime	-> 10^8,
+	Variables 	-> Automatic
 };
 
 Factor1[x_] :=
@@ -148,6 +179,121 @@ Factor2[ix_, r___Rule] :=
 		];
 		{yr, vb}
 	];
+
+Factor3[poly_/;Head[poly] =!= List, opts:OptionsPattern[]] :=
+	Factor3[Numerator[poly], opts]/Factor3[Denominator[poly], opts]/; Denominator[poly] =!= 1 && poly=!=0 && OptionValue[Numerator];
+
+Factor3[poly_/;Head[poly] =!= List, opts:OptionsPattern[]] :=
+	Numerator[poly]/Factor3[Denominator[poly], opts]/; Denominator[poly] =!= 1 && poly=!=0 && !OptionValue[Numerator];
+
+Factor3[ex_List, opts:OptionsPattern[]] :=
+	Factor3[#,opts]& /@ ex;
+
+Factor3[0, OptionsPattern[]]:=
+	0;
+
+Factor3[poly_/;Head[poly] =!= List, OptionsPattern[]] :=
+	Block[{	factors, vars, polyNew, termsList, pref, res, dummy,
+			optVariables, optRandomPrime, varsNum, repRule, allVars,
+			f3Verbose, test},
+
+		If [OptionValue[FCVerbose]===False,
+			f3Verbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				f3Verbose=OptionValue[FCVerbose]
+			];
+		];
+
+		optVariables = OptionValue[Variables];
+		optRandomPrime = OptionValue[RandomPrime];
+
+		If[	TrueQ[optVariables===Automatic],
+			vars = Variables[poly],
+			If[	Head[optVariables]===List,
+				vars = optVariables,
+				Message[Factor3::failmsg, "Incorrection value of the Variables option."];
+				Abort[]
+			]
+		];
+
+		FCPrint[1, "Factor3: Variables: ", vars, FCDoControl->f3Verbose];
+
+		If[	vars==={} || FreeQ2[poly,vars] || !PolynomialQ[poly,vars],
+			(*Nothing to do*)
+			FCPrint[1, "Factor3: Leaving.", FCDoControl->f3Verbose];
+			Return[poly]
+		];
+
+		allVars = Variables2[poly];
+
+		FCPrint[1, "Factor3: All variables: ", allVars, FCDoControl->f3Verbose];
+
+	(*
+		Using the idea from
+		https://mathematica.stackexchange.com/questions/256129/how-to-factor-real-polynomials-over-complex-field/
+	*)
+
+
+		Quiet[factors = Solve[poly == 0, #, Complexes]&/@vars, Solve::svars];
+
+		If[!FreeQ[factors,Root],
+			factors = ToRadicals[factors]
+		];
+
+		FCPrint[1, "Factor3: Factors: ", factors, FCDoControl->f3Verbose];
+
+		If[	factors==={},
+			Message[Factor3::nonfact,ToString[poly,InputForm]];
+			Return[poly](*,
+			factors = First[factors]*)
+		];
+
+		varsNum	= Table[RandomPrime[optRandomPrime],{i,1,Length[vars]}];
+		repRule = Thread[Rule[vars, varsNum]];
+
+		FCPrint[2, "Factor3: First numerical replacement rule: ", repRule, FCDoControl->f3Verbose];
+
+		(*For cases such as (4*(5-2*(4-2*eps))*x-2*eps+2) *)
+		If[	!FreeQ2[Last/@Flatten[factors],vars],
+			Return[poly]
+		];
+
+		res = (Times @@ Flatten[factors /. Rule -> Subtract]);
+
+		FCPrint[2, "Factor3: Raw result: ", res, FCDoControl->f3Verbose];
+
+		pref = (poly/res)/.repRule;
+
+		FCPrint[1, "Factor3: Intermediate prefactor: ", pref, FCDoControl->f3Verbose];
+
+		pref = Simplify[pref];
+
+		res = pref res;
+
+		FCPrint[1, "Factor3: Overall prefactor: ", pref, FCDoControl->f3Verbose];
+		FCPrint[3, "Factor3: Preliminary result: ", res, FCDoControl->f3Verbose];
+
+		varsNum	= Table[RandomPrime[optRandomPrime],{i,1,Length[allVars]}];
+		repRule = Thread[Rule[allVars, varsNum]];
+
+		FCPrint[2, "Factor3: Second numerical replacement rule: ", repRule, FCDoControl->f3Verbose];
+
+
+		If[	OptionValue[Check],
+			test = Simplify[(poly - res) /. repRule];
+			FCPrint[3, "Factor3: Check: ", test, FCDoControl->f3Verbose];
+			If[	test=!=0,
+				Message[Factor3::failmsg, "Something went wrong when factoring the input expression."];
+				Abort[]
+			];
+		];
+
+		res
+
+	]/; Denominator[poly] === 1 && poly=!=0;
+
+
+
 
 FCPrint[1,"Factor.m loaded."];
 End[]

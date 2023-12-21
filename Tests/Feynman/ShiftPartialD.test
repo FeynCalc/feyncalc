@@ -1,0 +1,79 @@
+
+
+(* :Title: ShiftPartialD.test                                                 *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for ShiftPartialD	  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Feynman`fcstShiftPartialD =
+
+({
+{"fcstShiftPartialD-ID1",
+"ShiftPartialD[QuantumField[QuarkFieldPsiDagger,PauliIndex[di1]].\
+RightPartialD[CartesianIndex[i]].QuantumField[phi].RightPartialD[\
+CartesianIndex[j]].QuantumField[QuarkFieldPsi,PauliIndex[di2]],{\
+FCPartialD[CartesianIndex[i]]},QuarkFieldPsi,FCVerbose->-1]",
+"-QuantumField[FCPartialD[CartesianIndex[i]], QuarkFieldPsiDagger, \
+PauliIndex[di1]] . QuantumField[phi] . \
+QuantumField[FCPartialD[CartesianIndex[j]], QuarkFieldPsi, \
+PauliIndex[di2]]"},
+{"fcstShiftPartialD-ID2",
+"ShiftPartialD[QuantumField[QuarkFieldPsiDagger,PauliIndex[di1]].\
+RightPartialD[CartesianIndex[i]].QuantumField[phi].RightPartialD[\
+CartesianIndex[j]].QuantumField[QuarkFieldPsi,PauliIndex[di2]],{\
+FCPartialD[CartesianIndex[i]]},phi,FCVerbose->-1]",
+"-QuantumField[FCPartialD[CartesianIndex[i]], QuarkFieldPsiDagger, \
+PauliIndex[di1]] . QuantumField[phi] . \
+QuantumField[FCPartialD[CartesianIndex[j]], QuarkFieldPsi, \
+PauliIndex[di2]]"},
+{"fcstShiftPartialD-ID3",
+"ShiftPartialD[QuantumField[QuarkFieldPsiDagger,PauliIndex[di1]].\
+RightPartialD[CartesianIndex[i]].QuantumField[phi].RightPartialD[\
+CartesianIndex[j]].QuantumField[QuarkFieldPsi,PauliIndex[di2]],{\
+FCPartialD[CartesianIndex[a]]},phi,FCVerbose->-1]",
+"QuantumField[QuarkFieldPsiDagger, PauliIndex[di1]] . \
+QuantumField[phi] . QuantumField[FCPartialD[CartesianIndex[i]], \
+FCPartialD[CartesianIndex[j]], QuarkFieldPsi, PauliIndex[di2]] + \
+QuantumField[QuarkFieldPsiDagger, PauliIndex[di1]] . \
+QuantumField[FCPartialD[CartesianIndex[i]], phi] . \
+QuantumField[FCPartialD[CartesianIndex[j]], QuarkFieldPsi, \
+PauliIndex[di2]]"},
+{"fcstShiftPartialD-ID4",
+"ShiftPartialD[QuantumField[QuarkFieldPsiDagger].RightPartialD[\
+CartesianIndex[i]].RightPartialD[CartesianIndex[j]].QuantumField[phi].\
+RightPartialD[CartesianIndex[i]].RightPartialD[CartesianIndex[j]].\
+QuantumField[QuarkFieldPsi],{FCPartialD[CartesianIndex[j]]},phi,\
+FCVerbose->-1]",
+"-QuantumField[FCPartialD[CartesianIndex[j]], QuarkFieldPsiDagger] \
+. QuantumField[phi] . QuantumField[FCPartialD[CartesianIndex[i]], \
+FCPartialD[CartesianIndex[i]], FCPartialD[CartesianIndex[j]], \
+QuarkFieldPsi] - QuantumField[FCPartialD[CartesianIndex[j]], \
+QuarkFieldPsiDagger] . QuantumField[FCPartialD[CartesianIndex[i]], \
+phi] . QuantumField[FCPartialD[CartesianIndex[i]], \
+FCPartialD[CartesianIndex[j]], QuarkFieldPsi]"},
+{"fcstShiftPartialD-ID5",
+"ShiftPartialD[
+QuantumField[GaugeField, LorentzIndex[nu]].QuantumField[
+	FCPartialD[LorentzIndex[mu]], FCPartialD[LorentzIndex[mu]],
+	FCPartialD[LorentzIndex[nu]], FCPartialD[LorentzIndex[rho]],
+	FCPartialD[LorentzIndex[rho]], FCPartialD[LorentzIndex[tau]],
+	GaugeField, LorentzIndex[tau]] +
+QuantumField[FCPartialD[LorentzIndex[mu]], GaugeField,
+	LorentzIndex[nu]].QuantumField[FCPartialD[LorentzIndex[mu]],
+	FCPartialD[LorentzIndex[nu]], FCPartialD[LorentzIndex[rho]],
+	FCPartialD[LorentzIndex[rho]], FCPartialD[LorentzIndex[tau]],
+	GaugeField, LorentzIndex[tau]], {FCPartialD[
+LorentzIndex[mu]]}, GaugeField,
+Select ->
+Function[x, FreeQ[x, QuantumField[GaugeField, LorentzIndex[nu]]]],
+FCVerbose -> -1]",
+"0"}
+})

@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2021 Rolf Mertig
-	Copyright (C) 1997-2021 Frederik Orellana
-	Copyright (C) 2014-2021 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary: 	Functions for managing memoization in FeynCalc				*)
@@ -54,22 +54,25 @@ Begin["`CacheManagement`Private`"];
 
 whiteListNames = {
 	ExpandScalarProduct,
+	FactorList2,
 	PairContract,
 	FCFastContract,
 	FeynCalc`NPointTo4Point`Private`getDet,
 	FeynCalc`SimplifyPolyLog`Private`simplifyArgument,
 	FeynCalc`FCApart`Private`pfracRaw,
-	FeynCalc`Package`momentumRoutingDenner
+	FeynCalc`Package`momentumRoutingDenner,
+	FeynCalc`FCLoopFindIntegralMappings`Private`makeMappingRules
 };
 
-standardSetAssociation = {};
+
+relevantDownValuesAssociation = {};
 
 If[	$VersionNumber >= 10. ,
-	standardSetAssociation = Association[{}];
+	relevantDownValuesAssociation = Association[{}];
 ];
 
 FCUseCache[fcFunc_, args_List, opts_List: {}] :=
-	Block[{fullOpts, cachedHead,depArgs, standardSet, savedStandardSet},
+	Block[{fullOpts, cachedHead, hashValue, standardDownValues, currentDownValues, hashedDownValues},
 		fullOpts = Sort[Flatten[Join[opts, FilterRules[Options[fcFunc], Except[opts]]]]];
 		cachedHead=ToExpression["cacheFunc"<>ToString[fcFunc]];
 
@@ -81,44 +84,41 @@ FCUseCache[fcFunc_, args_List, opts_List: {}] :=
 			Abort[]
 		];
 
-		standardSet = DownValues[#]&/@{
+		standardDownValues = DownValues[#]&/@{
 				Pair, CartesianPair, TemporalPair, ScalarProduct, CartesianScalarProduct,
 				Momentum, CartesianMomentum, TemporalMomentum, SP, SPD, SPE, CSP, CSPD, CSPE, TC
 		};
-		standardSet = Join[standardSet,{FeynCalc`Package`DiracGammaScheme, FeynCalc`Package`PauliSigmaScheme}];
+		standardDownValues = Join[standardDownValues,{FeynCalc`Package`DiracGammaScheme, FeynCalc`Package`PauliSigmaScheme}];
 
 		Which[
-			fcFunc === ExpandScalarProduct,
-				depArgs = Hash[standardSet],
-			fcFunc === PairContract,
-				depArgs = Hash[standardSet],
-			fcFunc === FCFastContract,
-				depArgs = Hash[standardSet],
-			fcFunc === FeynCalc`NPointTo4Point`Private`getDet,
-				depArgs = Hash[standardSet],
-			fcFunc === FeynCalc`SimplifyPolyLog`Private`simplifyArgument,
-				depArgs = Hash[standardSet],
-			fcFunc === FeynCalc`FCApart`Private`pfracRaw,
-				depArgs = Hash[standardSet],
-			fcFunc === FeynCalc`Package`momentumRoutingDenner,
-				depArgs = Hash[standardSet],
+			fcFunc === FactorList2,
+				currentDownValues = {},
+			MemberQ[{ExpandScalarProduct,PairContract,FCFastContract,
+				FeynCalc`NPointTo4Point`Private`getDet, FeynCalc`SimplifyPolyLog`Private`simplifyArgument,
+				FeynCalc`FCApart`Private`pfracRaw, FeynCalc`Package`momentumRoutingDenner,
+				FeynCalc`FCLoopFindIntegralMappings`Private`makeMappingRules},fcFunc],
+				currentDownValues = standardDownValues,
 			True,
 				Message[FCUseCache::blacklist,fcFunc];
 				Abort[]
 		];
 
+		hashValue = Hash[currentDownValues];
+
 		If[	$VersionNumber >= 10. ,
-			savedStandardSet = Key[depArgs][standardSetAssociation];
-			If[	MissingQ[savedStandardSet],
-				standardSetAssociation = Append[standardSetAssociation,{depArgs -> standardSet}],
-				If[	savedStandardSet=!=standardSet,
-					Message[FCUseCache::fail,"Hash collision detected."];
+			hashedDownValues = Key[hashValue][relevantDownValuesAssociation];
+
+			If[	MissingQ[hashedDownValues],
+				relevantDownValuesAssociation = Append[relevantDownValuesAssociation,{hashValue -> currentDownValues}],
+
+				If[	hashedDownValues=!=currentDownValues,
+					Message[FCUseCache::fail,"Detected a hash collision for " <> fcFunc];
 					Abort[]
 				];
 			];
 		];
 
-		cachedHead[args,depArgs,fullOpts]
+		cachedHead[args,hashValue,fullOpts]
 	];
 
 FCShowCache[fcFunc_] :=

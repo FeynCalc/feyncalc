@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for
@@ -108,9 +108,9 @@ FCE -> True]",
 FeynAmpDenominatorCombine -> False, FCE -> True]",
 "FAD[q1, -p + q1] FAD[q2, -p + q2]"},
 {"fcstFeynAmpDenominatorSimplify-ID18","FDS[CFAD[q, {q - p, 0, 2}], q, FCE -> True]",
-	"CFAD[{{q, 0}, {0, -1}, 1}, {{-p + q, 0}, {0, -1}, 2}]"},
+	"CFAD[{{q, 0}, {0, -1}, 2}, {{-p + q, 0}, {0, -1}, 1}]"},
 {"fcstFeynAmpDenominatorSimplify-ID19","FDS[SFAD[q, {q - p, 0, 2}], q, FCE -> True]",
-	"SFAD[{{q, 0}, {0, 1}, 1}, {{-p + q, 0}, {0, 1}, 2}]"},
+	"SFAD[{{q, 0}, {0, 1}, 2}, {{-p + q, 0}, {0, 1}, 1}]"},
 {"fcstFeynAmpDenominatorSimplify-ID20","FDS[SFAD[{{0, (k1 + k3).n}, {0, 1}, 1}], k1, k2, FCE->True]",
 	"0"},
 {"fcstFeynAmpDenominatorSimplify-ID21",
@@ -172,5 +172,19 @@ DetectLoopTopologies\[Rule]False,FCE\[Rule]True]",
 GSD[p] SPD[p, p2]))/(-SPD[p, p2]^2 +
 SPD[p, p] SPD[p2, p2]) - (FAD[{l, m1}, {l + p, m2}] SPD[l,
 p2]^2 (GSD[p2] SPD[p, p] - GSD[p] SPD[p, p2]))/(-SPD[p, p2]^2 +
-SPD[p, p] SPD[p2, p2]), l]", "0"}
+SPD[p, p] SPD[p2, p2]), l]", "0"},
+{"fcstFeynAmpDenominatorSimplify-ID41",
+"FDS[-(SFAD[{{I*p, 0}, {-m1^2, 1}, 1}]/((m1 - m2)*(m1 + m2))) +
+SFAD[{{I*p, 0}, {-m2^2, 1}, 1}]/((m1 - m2)*(m1 + m2)), p,
+FCE -> True]", "-(SFAD[{{I*p, 0}, {-m1^2, 1}, 1}]/((m1 - m2)*(m1 + m2))) +
+SFAD[{{I*p, 0}, {-m2^2, 1}, 1}]/((m1 - m2)*(m1 + m2))"},
+{"fcstFeynAmpDenominatorSimplify-ID42",
+"FeynAmpDenominatorCombine[FAD[q, q] FAD[q, q], FCE -> True]",
+"FAD[q, q, q, q]"},
+{"fcstFeynAmpDenominatorSimplify-ID42",
+"FDS[FAD[q, q] FAD[q, q], FCE -> True]",
+"FAD[q, q, q, q]"},
+{"fcstFeynAmpDenominatorSimplify-ID43",
+"FDS[FAD[p3] FAD[p1 + p2] FAD[q + p2] FAD[q, q + p1], q, FCE -> True]",
+"FAD[p3, p1 + p2] FAD[q, -p1 + q, -p2 + q]"}
 }

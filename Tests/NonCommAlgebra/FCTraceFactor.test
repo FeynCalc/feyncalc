@@ -2,9 +2,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for FCTraceFactor			*)
@@ -63,7 +63,7 @@ p2]+M).CSI[nu])]]//FCE",
 {"fcstFCTraceFactor-ID16",
 "FCTraceFactor[PauliTrace[(a+b).(a-b).PauliTrace[CSI[i].c.CSI[j]].(\
 a+b)]]//FCE",
-"(a - b)*(a + b)^2*c*PauliTrace[PauliTrace[CSI[i] . CSI[j]]]"},
+"(a - b)*(a + b)^2*c*PauliTrace[1]*PauliTrace[CSI[i] . CSI[j]]"},
 {"fcstFCTraceFactor-ID17",
 "PauliTrace[PauliTrace[CSI[i, j]] CSI[k, l]] // FCTraceFactor // \
 FCE", "PauliTrace[CSI[i] . CSI[j]]*PauliTrace[CSI[k] . CSI[l]]"},
@@ -71,5 +71,20 @@ FCE", "PauliTrace[CSI[i] . CSI[j]]*PauliTrace[CSI[k] . CSI[l]]"},
 "FCTraceFactor[PauliTrace[(x*(CGS[p1] + M)).CSI[mu].SI[xx].SUNT[
 	a].(y*(CGS[p2] + M).CSI[nu])], FCE -> True]",
 "x*y*PauliTrace[(M + CGS[p1]) . CSI[mu] . SI[xx] . SUNT[a] . (M + \
-CGS[p2]) . CSI[nu]]"}
+CGS[p2]) . CSI[nu]]"},
+{"fcstFCTraceFactor-ID19",
+"FCTraceFactor[SUNTrace[xx SUNT[a1,a2,a3]]]",
+"xx*SUNTrace[SUNT[SUNIndex[a1]] . SUNT[SUNIndex[a2]] . \
+SUNT[SUNIndex[a3]]]"},
+{"fcstFCTraceFactor-ID20",
+"FCTraceFactor[SUNTrace[SUNF[aa1,aa2,aa3]SUNF[aa3,aa4,aa5]SUNT[a1,\
+a2,a3]]]",
+"SUNF[SUNIndex[aa1], SUNIndex[aa2], \
+SUNIndex[aa3]]*SUNF[SUNIndex[aa3], SUNIndex[aa4], \
+SUNIndex[aa5]]*SUNTrace[SUNT[SUNIndex[a1]] . SUNT[SUNIndex[a2]] . \
+SUNT[SUNIndex[a3]]]"},
+{"fcstFCTraceFactor-ID21",
+"FCTraceFactor[SUNTrace[xx SUNT[a1,a2,a3]]]",
+"xx*SUNTrace[SUNT[SUNIndex[a1]] . SUNT[SUNIndex[a2]] . \
+SUNT[SUNIndex[a3]]]"}
 })

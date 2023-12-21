@@ -3,9 +3,9 @@
 (* :Title: SharedObjects.test 												*)
 
 (* This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for the properties of the    *)
@@ -63,6 +63,9 @@ Tests`Shared`fcstSharedObjectsOwnValues =  {
 {"fcstSharedObjectsOwnValues-ID37", "OwnValues[LeftRightPartialD]", "{}"},
 {"fcstSharedObjectsOwnValues-ID38", "OwnValues[LeftRightPartialD2]", "{}"},
 {"fcstSharedObjectsOwnValues-ID38.1", "OwnValues[LeviCivita]", "{}"},
+{"fcstSharedObjectsOwnValues-ID38.2", "OwnValues[LeftNablaD]", "{}"},
+{"fcstSharedObjectsOwnValues-ID38.3", "OwnValues[LeftRightNablaD]", "{}"},
+{"fcstSharedObjectsOwnValues-ID38.4", "OwnValues[LeftRightNablaD2]", "{}"},
 {"fcstSharedObjectsOwnValues-ID39", "OwnValues[LorentzIndex]", "{}"},
 {"fcstSharedObjectsOwnValues-ID41", "OwnValues[MetricTensor]", "{}"},
 {"fcstSharedObjectsOwnValues-ID42", "OwnValues[Momentum]", "{}"},
@@ -101,6 +104,7 @@ Tests`Shared`fcstSharedObjectsOwnValues =  {
 {"fcstSharedObjectsOwnValues-ID55", "OwnValues[QuantumField]", "{}"},
 {"fcstSharedObjectsOwnValues-ID56", "OwnValues[QuarkField]", "{}"},
 {"fcstSharedObjectsOwnValues-ID57", "OwnValues[RightPartialD]", "{}"},
+{"fcstSharedObjectsOwnValues-ID57.1", "OwnValues[RightNablaD]", "{}"},
 {"fcstSharedObjectsOwnValues-ID58", "OwnValues[ScaleMu]", "{}"},
 {"fcstSharedObjectsOwnValues-ID59", "OwnValues[OPE]", "{}"},
 {"fcstSharedObjectsOwnValues-ID60", "OwnValues[SD]", "{}"},
@@ -196,6 +200,9 @@ Tests`Shared`fcstSharedObjectsUpValues = {
 {"fcstSharedObjectsUpValues-ID36", "UpValues[LeftPartialD]", "{}"},
 {"fcstSharedObjectsUpValues-ID37", "UpValues[LeftRightPartialD]", "{}"},
 {"fcstSharedObjectsUpValues-ID38", "UpValues[LeftRightPartialD2]", "{}"},
+{"fcstSharedObjectsUpValues-ID38.1", "UpValues[LeftNablaD]", "{}"},
+{"fcstSharedObjectsUpValues-ID38.2", "UpValues[LeftRightNablaD]", "{}"},
+{"fcstSharedObjectsUpValues-ID38.3", "UpValues[LeftRightNablaD2]", "{}"},
 {"fcstSharedObjectsUpValues-ID38.1", "UpValues[LeviCivita]", "{}"},
 {"fcstSharedObjectsUpValues-ID39", "UpValues[LorentzIndex]", "{}"},
 {"fcstSharedObjectsUpValues-ID41", "UpValues[MetricTensor]", "{}"},
@@ -232,6 +239,7 @@ Tests`Shared`fcstSharedObjectsUpValues = {
 {"fcstSharedObjectsUpValues-ID55", "UpValues[QuantumField]", "{}"},
 {"fcstSharedObjectsUpValues-ID56", "UpValues[QuarkField]", "{}"},
 {"fcstSharedObjectsUpValues-ID57", "UpValues[RightPartialD]", "{}"},
+{"fcstSharedObjectsUpValues-ID57.1", "UpValues[RightNablaD]", "{}"},
 {"fcstSharedObjectsUpValues-ID58", "UpValues[ScaleMu]", "{}"},
 {"fcstSharedObjectsUpValues-ID59", "UpValues[OPE]", "{HoldPattern[OPE^_Integer?Positive] :> 0}"},
 {"fcstSharedObjectsUpValues-ID60", "UpValues[SD]", "{}"},
@@ -720,6 +728,10 @@ D].DiracGamma[LorentzIndex[rho, D], D]"},
 	" LeftPartialD[nu, mu, LorentzIndex[rho]]"},
 {"fcstSharedObjectsBehavior-ID115", "LeftPartialD[nu, mu, rho]",
 	" LeftPartialD[LorentzIndex[nu]].LeftPartialD[LorentzIndex[mu]].LeftPartialD[LorentzIndex[rho]]"},
+{"fcstSharedObjectsBehavior-ID115.1", "LeftNablaD[CartesianIndex[mu], CartesianIndex[nu], CartesianIndex[rho]]",
+	" LeftNablaD[CartesianIndex[mu]].LeftNablaD[CartesianIndex[nu]].LeftNablaD[CartesianIndex[rho]]"},
+{"fcstSharedObjectsBehavior-ID115.2", "LeftNablaD[nu, mu, rho]",
+	" LeftNablaD[CartesianIndex[nu]].LeftNablaD[CartesianIndex[mu]].LeftNablaD[CartesianIndex[rho]]"},
 {"fcstSharedObjectsBehavior-ID116", "LeftRightPartialD[(1)]", " 1"},
 {"fcstSharedObjectsBehavior-ID117", "LeftRightPartialD[(1), (1), (1)]", "1"},
 {"fcstSharedObjectsBehavior-ID118", "LeftRightPartialD[OPEDelta]", " LeftRightPartialD[Momentum[OPEDelta]]"},
@@ -731,6 +743,10 @@ D].DiracGamma[LorentzIndex[rho, D], D]"},
 	" LeftRightPartialD[nu, mu, LorentzIndex[rho]]"},
 {"fcstSharedObjectsBehavior-ID122", "LeftRightPartialD[nu, mu, rho]",
 	" LeftRightPartialD[LorentzIndex[nu]].LeftRightPartialD[LorentzIndex[mu]].LeftRightPartialD[LorentzIndex[rho]]"}, {"fcstSharedObjectsBehavior-ID123", "LeftRightPartialD2[(1)]", " 1"},
+{"fcstSharedObjectsBehavior-ID123.1", "LeftRightNablaD[CartesianIndex[mu], CartesianIndex[nu], CartesianIndex[rho]]",
+	" LeftRightNablaD[CartesianIndex[mu]].LeftRightNablaD[CartesianIndex[nu]].LeftRightNablaD[CartesianIndex[rho]]"},
+{"fcstSharedObjectsBehavior-ID123.2", "LeftRightNablaD[nu, mu, rho]",
+	" LeftRightNablaD[CartesianIndex[nu]].LeftRightNablaD[CartesianIndex[mu]].LeftRightNablaD[CartesianIndex[rho]]"},
 {"fcstSharedObjectsBehavior-ID124", "LeftRightPartialD2[(1), (1), (1)]", "1"},
 {"fcstSharedObjectsBehavior-ID125", "LeftRightPartialD2[OPEDelta]", " LeftRightPartialD2[Momentum[OPEDelta]]"},
 {"fcstSharedObjectsBehavior-ID126", "LeftRightPartialD2[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho]]",
@@ -740,6 +756,10 @@ D].DiracGamma[LorentzIndex[rho, D], D]"},
 	" LeftRightPartialD2[nu, mu, LorentzIndex[rho]]"},
 {"fcstSharedObjectsBehavior-ID129", "LeftRightPartialD2[nu, mu, rho]",
 	" LeftRightPartialD2[LorentzIndex[nu]].LeftRightPartialD2[LorentzIndex[mu]].LeftRightPartialD2[LorentzIndex[rho]]"},
+{"fcstSharedObjectsBehavior-ID129.1", "LeftRightNablaD2[CartesianIndex[mu], CartesianIndex[nu], CartesianIndex[rho]]",
+	" LeftRightNablaD2[CartesianIndex[mu]].LeftRightNablaD2[CartesianIndex[nu]].LeftRightNablaD2[CartesianIndex[rho]]"},
+{"fcstSharedObjectsBehavior-ID129.2", "LeftRightNablaD2[nu, mu, rho]",
+	" LeftRightNablaD2[CartesianIndex[nu]].LeftRightNablaD2[CartesianIndex[mu]].LeftRightNablaD2[CartesianIndex[rho]]"},
 {"fcstSharedObjectsBehavior-ID129.1", "LeviCivita[a, b, c, d]",
 	"Eps[LorentzIndex[a], LorentzIndex[b], LorentzIndex[c], LorentzIndex[d]]"},
 {"fcstSharedObjectsBehavior-ID129.2", "LeviCivita[a, b, c, d, Dimension->4]",
@@ -805,6 +825,15 @@ D].DiracGamma[LorentzIndex[rho, D], D]"},
 {"fcstSharedObjectsBehavior-ID146.1", "MT[b, a]", "MT[a, b]"},
 {"fcstSharedObjectsBehavior-ID146.2", "MTD[b, a]", "MTD[a, b]"},
 {"fcstSharedObjectsBehavior-ID146.3", "MTE[b, a]", "MTE[a, b]"},
+{"fcstSharedObjectsBehavior-ID146.4", "MT[0, 0]", "FeynCalc`Package`MetricT"},
+{"fcstSharedObjectsBehavior-ID146.5", "MT[1, 1]", "FeynCalc`Package`MetricS"},
+{"fcstSharedObjectsBehavior-ID146.6", "MT[2, 2]", "FeynCalc`Package`MetricS"},
+{"fcstSharedObjectsBehavior-ID146.7", "MT[3, 3]", "FeynCalc`Package`MetricS"},
+{"fcstSharedObjectsBehavior-ID146.8", "MT[0, 1]", "0"},
+{"fcstSharedObjectsBehavior-ID146.9", "MT[0, 2]", "0"},
+{"fcstSharedObjectsBehavior-ID146.10", "MT[0, 3]", "0"},
+{"fcstSharedObjectsBehavior-ID146.11", "MT[1, 2]", "0"},
+{"fcstSharedObjectsBehavior-ID146.12", "MT[3, 2]", "0"},
 {"fcstSharedObjectsBehavior-ID147", "OPE^4", " 0"},
 {"fcstSharedObjectsBehavior-ID148", "OPE^-4", " OPE^-4"},
 {"fcstSharedObjectsBehavior-ID149", "Pair[0, a]", "0"},
@@ -864,6 +893,15 @@ D].DiracGamma[LorentzIndex[rho, D], D]"},
 {"fcstSharedObjectsBehavior-ID156.0.6.2", "Pair[ExplicitLorentzIndex[0], CartesianMomentum[p,D-1]]", "0"},
 {"fcstSharedObjectsBehavior-ID156.0.6.3", "Pair[ExplicitLorentzIndex[0], CartesianIndex[i]]", "0"},
 {"fcstSharedObjectsBehavior-ID156.0.6.4", "Pair[ExplicitLorentzIndex[0], CartesianIndex[i,D-1]]", "0"},
+{"fcstSharedObjectsBehavior-ID156.0.6.5", "Pair[ExplicitLorentzIndex[0], ExplicitLorentzIndex[0]]", "FeynCalc`Package`MetricT"},
+{"fcstSharedObjectsBehavior-ID156.0.6.6", "Pair[ExplicitLorentzIndex[1], ExplicitLorentzIndex[1]]", "FeynCalc`Package`MetricS"},
+{"fcstSharedObjectsBehavior-ID156.0.6.7", "Pair[ExplicitLorentzIndex[2], ExplicitLorentzIndex[2]]", "FeynCalc`Package`MetricS"},
+{"fcstSharedObjectsBehavior-ID156.0.6.8", "Pair[ExplicitLorentzIndex[3], ExplicitLorentzIndex[3]]", "FeynCalc`Package`MetricS"},
+{"fcstSharedObjectsBehavior-ID156.0.6.9", "Pair[ExplicitLorentzIndex[0], ExplicitLorentzIndex[1]]", "0"},
+{"fcstSharedObjectsBehavior-ID156.0.6.10", "Pair[ExplicitLorentzIndex[0], ExplicitLorentzIndex[2]]", "0"},
+{"fcstSharedObjectsBehavior-ID156.0.6.11", "Pair[ExplicitLorentzIndex[0], ExplicitLorentzIndex[3]]", "0"},
+{"fcstSharedObjectsBehavior-ID156.0.6.12", "Pair[ExplicitLorentzIndex[1], ExplicitLorentzIndex[2]]", "0"},
+{"fcstSharedObjectsBehavior-ID156.0.6.13", "Pair[ExplicitLorentzIndex[3], ExplicitLorentzIndex[2]]", "0"},
 {"fcstSharedObjectsBehavior-ID156.0.7", "Pair[CartesianIndex[i, D - 1], ExplicitLorentzIndex[0]]", "Pair[CartesianIndex[i], ExplicitLorentzIndex[0]]"},
 {"fcstSharedObjectsBehavior-ID156.0.8", "Pair[CartesianIndex[i], CartesianIndex[j, D - 1]]", "-CartesianPair[CartesianIndex[i], CartesianIndex[j]]"},
 {"fcstSharedObjectsBehavior-ID156.0.9", "Pair[LorentzIndex[i], CartesianIndex[j, D - 1]]", "Pair[LorentzIndex[i], CartesianIndex[j]]"},
@@ -896,6 +934,11 @@ D].DiracGamma[LorentzIndex[rho, D], D]"},
 {"fcstSharedObjectsBehavior-ID157.2", "Pair[Momentum[p, D1], Momentum[Polarization[a + b + p, I, Transversality->False], D2]]",
 	"Pair[Momentum[p, D1], Momentum[Polarization[a + b + p, I, Transversality -> False], D2]]"},
 {"fcstSharedObjectsBehavior-ID158", "Pair[Momentum[Polarization[p, I], D1],  Momentum[Polarization[p, -I], D2]]", "Pair[Momentum[Polarization[p, I], D1],  Momentum[Polarization[p, -I], D2]]"},
+{"fcstSharedObjectsBehavior-ID158.0.1", "Pair[I (Momentum[p1, D] + 2 Momentum[q, D]),
+I (Momentum[p1, D] + 2 Momentum[q, D])]", "-Pair[Momentum[p1, D] + 2 Momentum[q, D],
+Momentum[p1, D] + 2 Momentum[q, D]]"},
+{"fcstSharedObjectsBehavior-ID158.0.2", "Pair[I LorentzIndex[a], I (Momentum[p1, D] + 2 Momentum[q, D])]",
+"I*Pair[I*LorentzIndex[a], Momentum[p1, D] + 2*Momentum[q, D]]"},
 {"fcstSharedObjectsBehavior-ID158.1", "CartesianPair[0, x]", "0"},
 {"fcstSharedObjectsBehavior-ID158.2", "CartesianPair[CartesianIndex[i], CartesianIndex[j, D - 1]]", "CartesianPair[CartesianIndex[i], CartesianIndex[j]]"},
 {"fcstSharedObjectsBehavior-ID158.3", "CartesianPair[CartesianIndex[i], CartesianMomentum[p, D - 1]]", "CartesianPair[CartesianIndex[i], CartesianMomentum[p]]"},
@@ -906,6 +949,13 @@ D].DiracGamma[LorentzIndex[rho, D], D]"},
 {"fcstSharedObjectsBehavior-ID158.8", "CartesianPair[CartesianMomentum[q], CartesianIndex[j, D - 4]]", "0"},
 {"fcstSharedObjectsBehavior-ID158.9", "CartesianPair[CartesianMomentum[q], CartesianMomentum[p, D - 4]]", "0"},
 {"fcstSharedObjectsBehavior-ID158.10", "CartesianPair[n CartesianMomentum[p], x]", "n CartesianPair[CartesianMomentum[p], x]"},
+{"fcstSharedObjectsBehavior-ID158.10.1", "CartesianPair[
+I (CartesianMomentum[p1, D - 1] + 2 CartesianMomentum[q, D - 1]),
+I (CartesianMomentum[p1, D - 1] + 2 CartesianMomentum[q, D - 1])]",
+"-CartesianPair[CartesianMomentum[p1, -1 + D] + 2*CartesianMomentum[q, -1 + D], CartesianMomentum[p1, -1 + D] + 2*CartesianMomentum[q, -1 + D]]"},
+{"fcstSharedObjectsBehavior-ID158.10.2", "CartesianPair[I CartesianIndex[a],
+I (CartesianMomentum[p1, D - 1] + 2 CartesianMomentum[q, D - 1])]",
+"-CartesianPair[CartesianIndex[a], CartesianMomentum[p1, -1 + D] + 2*CartesianMomentum[q, -1 + D]]"},
 {"fcstSharedObjectsBehavior-ID158.11", "TemporalPair[0, x]", "0"},
 {"fcstSharedObjectsBehavior-ID158.12", "TemporalPair[n TemporalMomentum[p], x]", "n TemporalPair[ TemporalMomentum[p], x]"},
 {"fcstSharedObjectsBehavior-ID159", "FCPartialD[(1)]", "1"},
@@ -914,17 +964,17 @@ D].DiracGamma[LorentzIndex[rho, D], D]"},
 {"fcstSharedObjectsBehavior-ID162", "FCPartialD[LorentzIndex[mu], LorentzIndex[nu], LorentzIndex[rho]]", "FCPartialD[LorentzIndex[mu]].FCPartialD[LorentzIndex[nu]].FCPartialD[LorentzIndex[rho]]"},
 {"fcstSharedObjectsBehavior-ID163", "FCPartialD[Momentum[p1], Momentum[p2], Momentum[p3]]", "FCPartialD[Momentum[p1]].FCPartialD[Momentum[p2]].FCPartialD[Momentum[p3]]"},
 {"fcstSharedObjectsBehavior-ID164", "FCPartialD[nu, mu, LorentzIndex[rho]]", " FCPartialD[nu, mu, LorentzIndex[rho]]"},
-{"fcstSharedObjectsBehavior-ID165", "FCPartialD[nu, mu, rho]", "FCPartialD[LorentzIndex[nu]].FCPartialD[LorentzIndex[mu]].FCPartialD[LorentzIndex[rho]]"},
+{"fcstSharedObjectsBehavior-ID165", "FCPartialD[LorentzIndex[nu], LorentzIndex[mu], LorentzIndex[rho]]", "FCPartialD[LorentzIndex[nu]].FCPartialD[LorentzIndex[mu]].FCPartialD[LorentzIndex[rho]]"},
 {"fcstSharedObjectsBehavior-ID170", "PlusDistribution[Log[z (1 - z)]/(1 - z)]", " Log[z]/(1 - z) + PlusDistribution[Log[1 - z]/(1 - z)]"},
-{"fcstSharedObjectsBehavior-ID171", "Polarization[p]", "Polarization[p, I]"},
-{"fcstSharedObjectsBehavior-ID171.1", "Polarization[p, Transversality->True]", "Polarization[p, I, Transversality->True]"},
-{"fcstSharedObjectsBehavior-ID171.2", "Polarization[p, Transversality->False]", "Polarization[p, I, Transversality->False]"},
-{"fcstSharedObjectsBehavior-ID172", "Polarization[-p, I]", " -Polarization[p, I]"},
-{"fcstSharedObjectsBehavior-ID172.1", "Polarization[-p, I,  Transversality->True]", " -Polarization[p, I, Transversality->True]"},
-{"fcstSharedObjectsBehavior-ID172.2", "Polarization[-p, I,  Transversality->False]", " -Polarization[p, I,  Transversality->False]"},
-{"fcstSharedObjectsBehavior-ID173", "Polarization[-p, -I]", "-Polarization[p, -I]"},
-{"fcstSharedObjectsBehavior-ID173.1", "Polarization[-p, -I,  Transversality->True]", "-Polarization[p, -I,  Transversality->True]"},
-{"fcstSharedObjectsBehavior-ID173.2", "Polarization[-p, -I,  Transversality->False]", "-Polarization[p, -I,  Transversality->False]"},
+{"fcstSharedObjectsBehavior-ID171", "Polarization[p]", "Polarization[p]"},
+{"fcstSharedObjectsBehavior-ID171.1", "Polarization[p, Transversality->True]", "Polarization[p, Transversality->True]"},
+{"fcstSharedObjectsBehavior-ID171.2", "Polarization[p, Transversality->False]", "Polarization[p, Transversality->False]"},
+{"fcstSharedObjectsBehavior-ID172", "Polarization[-p, I]", " Polarization[-p, I]"},
+{"fcstSharedObjectsBehavior-ID172.1", "Polarization[-p, I,  Transversality->True]", " Polarization[-p, I, Transversality->True]"},
+{"fcstSharedObjectsBehavior-ID172.2", "Polarization[-p, I,  Transversality->False]", " Polarization[-p, I,  Transversality->False]"},
+{"fcstSharedObjectsBehavior-ID173", "Polarization[-p, -I]", "Polarization[-p, -I]"},
+{"fcstSharedObjectsBehavior-ID173.1", "Polarization[-p, -I,  Transversality->True]", "Polarization[-p, -I,  Transversality->True]"},
+{"fcstSharedObjectsBehavior-ID173.2", "Polarization[-p, -I,  Transversality->False]", "Polarization[-p, -I,  Transversality->False]"},
 {"fcstSharedObjectsBehavior-ID174", "PolarizationVector[p, mu, c]", "Pair[LorentzIndex[mu], Momentum[Polarization[p, I, SUNIndex[c]]]]"},
 {"fcstSharedObjectsBehavior-ID174.1", "PolarizationVector[p, mu, c,  Transversality->True]", "Pair[LorentzIndex[mu], Momentum[Polarization[p, I, SUNIndex[c], Transversality -> True]]]"},
 {"fcstSharedObjectsBehavior-ID174.2", "PolarizationVector[p, mu, c,  Transversality->False]", "Pair[LorentzIndex[mu], Momentum[Polarization[p, I, SUNIndex[c], Transversality -> False]]]"},
@@ -943,6 +993,10 @@ D].DiracGamma[LorentzIndex[rho, D], D]"},
 {"fcstSharedObjectsBehavior-ID184", "RightPartialD[Momentum[p1], Momentum[p2], Momentum[p3]]", " RightPartialD[Momentum[p1]].RightPartialD[Momentum[p2]].RightPartialD[ Momentum[p3]]"},
 {"fcstSharedObjectsBehavior-ID185", "RightPartialD[nu, mu, LorentzIndex[rho]]", "RightPartialD[nu, mu, LorentzIndex[rho]]"},
 {"fcstSharedObjectsBehavior-ID186", "RightPartialD[nu, mu, rho]", "RightPartialD[LorentzIndex[nu]].RightPartialD[LorentzIndex[mu]].RightPartialD[LorentzIndex[rho]]"},
+{"fcstSharedObjectsBehavior-ID186.1", "RightNablaD[CartesianIndex[mu], CartesianIndex[nu], CartesianIndex[rho]]",
+	" RightNablaD[CartesianIndex[mu]].RightNablaD[CartesianIndex[nu]].RightNablaD[CartesianIndex[rho]]"},
+{"fcstSharedObjectsBehavior-ID186.2", "RightNablaD[nu, mu, rho]",
+	" RightNablaD[CartesianIndex[nu]].RightNablaD[CartesianIndex[mu]].RightNablaD[CartesianIndex[rho]]"},
 {"fcstSharedObjectsBehavior-ID187", "SmallVariable[0]", "0"},
 {"fcstSharedObjectsBehavior-ID188", "SmallVariable[a^b]", "SmallVariable[a]^b"},
 {"fcstSharedObjectsBehavior-ID189", "SP[a]", "SP[a,a]"},
@@ -996,7 +1050,14 @@ SUNTF[a_List, _, _] :> SUNT @@ a", "SUNT[SUNIndex[a1], SUNIndex[a2]]"},
 {"fcstSharedObjectsBehavior-ID220", "Conjugate[Zeta4]", "Zeta4"},
 {"fcstSharedObjectsBehavior-ID221", "Conjugate[Zeta6]", "Zeta6"},
 {"fcstSharedObjectsBehavior-ID222", "Conjugate[Zeta8]", "Zeta8"},
-{"fcstSharedObjectsBehavior-ID223", "Conjugate[Zeta10]", "Zeta10"}
+{"fcstSharedObjectsBehavior-ID223", "Conjugate[Zeta10]", "Zeta10"},
+{"fcstSharedObjectsBehavior-ID224", "LightConePerpendicularComponent[Momentum[n], Momentum[n], Momentum[nb]]", "0"},
+{"fcstSharedObjectsBehavior-ID225", "LightConePerpendicularComponent[Momentum[nb], Momentum[n],
+Momentum[nb]]", "0"},
+{"fcstSharedObjectsBehavior-ID226", "DataType[myVarFC,FCVariable]=True; LightConePerpendicularComponent[myVarFC Momentum[x], Momentum[n], Momentum[nb]]",
+"myVarFC LightConePerpendicularComponent[Momentum[x], Momentum[n], Momentum[nb]]"},
+{"fcstSharedObjectsBehavior-ID227", "DiracGamma[a LightConePerpendicularComponent[Momentum[x], Momentum[n], Momentum[nb]]]",
+"a DiracGamma[LightConePerpendicularComponent[Momentum[x], Momentum[n], Momentum[nb]]]"}
 }
 
 Tests`Shared`fcstSharedObjectsDiracIndex =
@@ -1246,3 +1307,348 @@ FCI // FCE",
 {"fcstSharedObjectsDiracIndex-ID67", "Head[DCHN[1,i,j]//FCI]",
 "DiracChain"}
 });
+
+
+Tests`Shared`fcstSharedObjectsPauliIndex =
+({
+{"fcstSharedObjectsPauliIndex-ID1", "PauliIndex[i]",
+"PauliIndex[i]"},
+{"fcstSharedObjectsPauliIndex-ID2", "PauliIndex[5]",
+"ExplicitPauliIndex[5]"},
+{"fcstSharedObjectsPauliIndex-ID3", "ExplicitPauliIndex[4]",
+"ExplicitPauliIndex[4]"},
+{"fcstSharedObjectsPauliIndex-ID4",
+"PauliIndexDelta[PauliIndex[i],PauliIndex[j]]",
+"PauliIndexDelta[PauliIndex[i], PauliIndex[j]]"},
+{"fcstSharedObjectsPauliIndex-ID5",
+"PauliIndexDelta[PauliIndex[1],PauliIndex[j]]",
+"PauliIndexDelta[ExplicitPauliIndex[1], PauliIndex[j]]"},
+{"fcstSharedObjectsPauliIndex-ID6",
+"PauliIndexDelta[PauliIndex[3],PauliIndex[1]]",
+"PauliIndexDelta[ExplicitPauliIndex[1], ExplicitPauliIndex[3]]"},
+{"fcstSharedObjectsPauliIndex-ID7",
+"PauliIndexDelta[PauliIndex[3],PauliIndex[3]]",
+"PauliIndexDelta[ExplicitPauliIndex[3], ExplicitPauliIndex[3]]"},
+{"fcstSharedObjectsPauliIndex-ID8",
+"PauliIndexDelta[ExplicitPauliIndex[1],ExplicitPauliIndex[2]]",
+"PauliIndexDelta[ExplicitPauliIndex[1], ExplicitPauliIndex[2]]"},
+{"fcstSharedObjectsPauliIndex-ID9",
+"PauliIndexDelta[ExplicitPauliIndex[3],ExplicitPauliIndex[3]]",
+"PauliIndexDelta[ExplicitPauliIndex[3], ExplicitPauliIndex[3]]"},
+{"fcstSharedObjectsPauliIndex-ID10",
+"PauliIndexDelta[PauliIndex[i],PauliIndex[i]]",
+"PauliIndexDelta[PauliIndex[i], PauliIndex[i]]"},
+{"fcstSharedObjectsPauliIndex-ID11",
+"PauliIndexDelta[PauliIndex[i],0]",
+"PauliIndexDelta[0, PauliIndex[i]]"},
+{"fcstSharedObjectsPauliIndex-ID12",
+"PauliChain[PauliSigma[CartesianIndex[mu]],PauliIndex[i],\
+PauliIndex[j]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]], PauliIndex[i], \
+PauliIndex[j]]"},
+{"fcstSharedObjectsPauliIndex-ID13",
+"PauliChain[PauliSigma[CartesianIndex[mu]],PauliIndex[1],\
+PauliIndex[j]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]], ExplicitPauliIndex[1], \
+PauliIndex[j]]"},
+{"fcstSharedObjectsPauliIndex-ID14",
+"PauliChain[PauliSigma[CartesianIndex[mu]],PauliIndex[3],\
+PauliIndex[1]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]], ExplicitPauliIndex[3], \
+ExplicitPauliIndex[1]]"},
+{"fcstSharedObjectsPauliIndex-ID15",
+"PauliChain[PauliSigma[CartesianIndex[mu]],PauliIndex[3],\
+PauliIndex[3]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]], ExplicitPauliIndex[3], \
+ExplicitPauliIndex[3]]"},
+{"fcstSharedObjectsPauliIndex-ID16",
+"PauliChain[PauliSigma[CartesianIndex[mu]],ExplicitPauliIndex[1],\
+ExplicitPauliIndex[2]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]], ExplicitPauliIndex[1], \
+ExplicitPauliIndex[2]]"},
+{"fcstSharedObjectsPauliIndex-ID17",
+"PauliChain[PauliSigma[CartesianIndex[mu]],ExplicitPauliIndex[3],\
+ExplicitPauliIndex[3]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]], ExplicitPauliIndex[3], \
+ExplicitPauliIndex[3]]"},
+{"fcstSharedObjectsPauliIndex-ID18",
+"PauliChain[PauliSigma[CartesianIndex[mu]],PauliIndex[i],\
+PauliIndex[i]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]], PauliIndex[i], \
+PauliIndex[i]]"},
+{"fcstSharedObjectsPauliIndex-ID19",
+"PauliChain[PauliSigma[CartesianIndex[mu]].PauliSigma[\
+CartesianMomentum[p,D],D],PauliIndex[i],PauliIndex[j]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D], D], PauliIndex[i], \
+PauliIndex[j]]"},
+{"fcstSharedObjectsPauliIndex-ID20",
+"PauliChain[PauliSigma[CartesianIndex[mu]].PauliSigma[\
+CartesianMomentum[p,D],D],PauliIndex[1],PauliIndex[j]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D], D], ExplicitPauliIndex[1], \
+PauliIndex[j]]"},
+{"fcstSharedObjectsPauliIndex-ID21",
+"PauliChain[PauliSigma[CartesianIndex[mu]].PauliSigma[\
+CartesianMomentum[p,D],D],PauliIndex[3],PauliIndex[1]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D], D], ExplicitPauliIndex[3], \
+ExplicitPauliIndex[1]]"},
+{"fcstSharedObjectsPauliIndex-ID22",
+"PauliChain[PauliSigma[CartesianIndex[mu]].PauliSigma[\
+CartesianMomentum[p,D],D],PauliIndex[3],PauliIndex[3]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D], D], ExplicitPauliIndex[3], \
+ExplicitPauliIndex[3]]"},
+{"fcstSharedObjectsPauliIndex-ID23",
+"PauliChain[PauliSigma[CartesianIndex[mu]].PauliSigma[\
+CartesianMomentum[p,D],D],ExplicitPauliIndex[1],ExplicitPauliIndex[2]]\
+", "PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D], D], ExplicitPauliIndex[1], \
+ExplicitPauliIndex[2]]"},
+{"fcstSharedObjectsPauliIndex-ID24",
+"PauliChain[PauliSigma[CartesianIndex[mu]].PauliSigma[\
+CartesianMomentum[p,D],D],ExplicitPauliIndex[3],ExplicitPauliIndex[3]]\
+", "PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D], D], ExplicitPauliIndex[3], \
+ExplicitPauliIndex[3]]"},
+{"fcstSharedObjectsPauliIndex-ID25",
+"PauliChain[PauliSigma[CartesianIndex[mu]].PauliSigma[\
+CartesianMomentum[p,D],D],PauliIndex[i],PauliIndex[i]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D], D], PauliIndex[i], \
+PauliIndex[i]]"},
+{"fcstSharedObjectsPauliIndex-ID26",
+"PauliChain[PauliSigma[CartesianIndex[mu]].(m+PauliSigma[\
+CartesianMomentum[p]]).PauliSigma[CartesianIndex[nu]],PauliIndex[1],\
+PauliIndex[j]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . (m + \
+PauliSigma[CartesianMomentum[p]]) . PauliSigma[CartesianIndex[nu]], \
+ExplicitPauliIndex[1], PauliIndex[j]]"},
+{"fcstSharedObjectsPauliIndex-ID27",
+"PauliChain[PauliSigma[CartesianIndex[mu]].(m+PauliSigma[\
+CartesianMomentum[p]]).PauliSigma[CartesianIndex[nu]],PauliIndex[3],\
+PauliIndex[1]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . (m + \
+PauliSigma[CartesianMomentum[p]]) . PauliSigma[CartesianIndex[nu]], \
+ExplicitPauliIndex[3], ExplicitPauliIndex[1]]"},
+{"fcstSharedObjectsPauliIndex-ID28",
+"PauliChain[PauliSigma[CartesianIndex[mu]].(m+PauliSigma[\
+CartesianMomentum[p]]).PauliSigma[CartesianIndex[nu]],PauliIndex[3],\
+PauliIndex[3]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . (m + \
+PauliSigma[CartesianMomentum[p]]) . PauliSigma[CartesianIndex[nu]], \
+ExplicitPauliIndex[3], ExplicitPauliIndex[3]]"},
+{"fcstSharedObjectsPauliIndex-ID29",
+"PauliChain[PauliSigma[CartesianIndex[mu]].(m+PauliSigma[\
+CartesianMomentum[p]]).PauliSigma[CartesianIndex[nu]],\
+ExplicitPauliIndex[1],ExplicitPauliIndex[2]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . (m + \
+PauliSigma[CartesianMomentum[p]]) . PauliSigma[CartesianIndex[nu]], \
+ExplicitPauliIndex[1], ExplicitPauliIndex[2]]"},
+{"fcstSharedObjectsPauliIndex-ID30",
+"PauliChain[PauliSigma[CartesianIndex[mu]].(m+PauliSigma[\
+CartesianMomentum[p]]).PauliSigma[CartesianIndex[nu]],\
+ExplicitPauliIndex[3],ExplicitPauliIndex[3]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . (m + \
+PauliSigma[CartesianMomentum[p]]) . PauliSigma[CartesianIndex[nu]], \
+ExplicitPauliIndex[3], ExplicitPauliIndex[3]]"},
+{"fcstSharedObjectsPauliIndex-ID31",
+"PauliChain[PauliSigma[CartesianIndex[mu]].(m+PauliSigma[\
+CartesianMomentum[p]]).PauliSigma[CartesianIndex[nu]],PauliIndex[i],\
+PauliIndex[i]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . (m + \
+PauliSigma[CartesianMomentum[p]]) . PauliSigma[CartesianIndex[nu]], \
+PauliIndex[i], PauliIndex[i]]"},
+{"fcstSharedObjectsPauliIndex-ID32",
+"PauliChain[PauliEta[-I],PauliIndex[i]]",
+"PauliChain[PauliEta[-I], PauliIndex[i]]"},
+{"fcstSharedObjectsPauliIndex-ID33",
+"PauliChain[PauliSigma[CartesianIndex[mu]].PauliSigma[\
+CartesianMomentum[p,D],D],PauliEta[-I],PauliIndex[j]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D], D], PauliEta[-I], PauliIndex[j]]"},
+{"fcstSharedObjectsPauliIndex-ID34",
+"PauliChain[PauliSigma[CartesianIndex[mu]].PauliSigma[\
+CartesianMomentum[p,D],D],PauliIndex[i],PauliXi[I]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D], D], PauliIndex[i], PauliXi[I]]"},
+{"fcstSharedObjectsPauliIndex-ID35",
+"PauliChain[PauliSigma[CartesianIndex[mu]].PauliSigma[\
+CartesianMomentum[p,D],D],PauliXi[-I],PauliEta[I]]",
+"PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D], D], PauliXi[-I], PauliEta[I]]"},
+{"fcstSharedObjectsPauliIndex-ID36",
+"PauliChain[1,PauliXi[-I],PauliEta[I]]",
+"PauliChain[PauliXi[-I], PauliEta[I]]"},
+{"fcstSharedObjectsPauliIndex-ID37", "PIDelta[i,j]",
+"PIDelta[i, j]"},
+{"fcstSharedObjectsPauliIndex-ID38", "PIDelta[i,2]",
+"PIDelta[2, i]"},
+{"fcstSharedObjectsPauliIndex-ID39", "PIDelta[1,2]",
+"PIDelta[1, 2]"},
+{"fcstSharedObjectsPauliIndex-ID40", "PIDelta[2,2]",
+"PIDelta[2, 2]"},
+{"fcstSharedObjectsPauliIndex-ID41", "PIDelta[i,i]",
+"PIDelta[i, i]"},
+{"fcstSharedObjectsPauliIndex-ID42", "PCHN[CSI[mu],i,j]",
+"PCHN[CSI[mu], i, j]"},
+{"fcstSharedObjectsPauliIndex-ID43", "PCHN[CSI[mu],1,j]",
+"PCHN[CSI[mu], 1, j]"},
+{"fcstSharedObjectsPauliIndex-ID44", "PCHN[CSI[mu],3,1]",
+"PCHN[CSI[mu], 3, 1]"},
+{"fcstSharedObjectsPauliIndex-ID45", "PCHN[CSI[mu],3,3]",
+"PCHN[CSI[mu], 3, 3]"},
+{"fcstSharedObjectsPauliIndex-ID46", "PCHN[CSI[mu],1,2]",
+"PCHN[CSI[mu], 1, 2]"},
+{"fcstSharedObjectsPauliIndex-ID47", "PCHN[CSI[mu],i,i]",
+"PCHN[CSI[mu], i, i]"},
+{"fcstSharedObjectsPauliIndex-ID48", "PCHN[CSI[mu].CSISD[p],i,j]",
+"PCHN[CSI[mu] . CSISD[p], i, j]"},
+{"fcstSharedObjectsPauliIndex-ID49", "PCHN[CSI[mu].CSISD[p],1,j]",
+"PCHN[CSI[mu] . CSISD[p], 1, j]"},
+{"fcstSharedObjectsPauliIndex-ID50", "PCHN[CSI[mu].CSISD[p],3,1]",
+"PCHN[CSI[mu] . CSISD[p], 3, 1]"},
+{"fcstSharedObjectsPauliIndex-ID51", "PCHN[CSI[mu].CSISD[p],3,3]",
+"PCHN[CSI[mu] . CSISD[p], 3, 3]"},
+{"fcstSharedObjectsPauliIndex-ID52", "PCHN[CSI[mu].CSISD[p],1,2]",
+"PCHN[CSI[mu] . CSISD[p], 1, 2]"},
+{"fcstSharedObjectsPauliIndex-ID53", "PCHN[CSI[mu].CSISD[p],i,i]",
+"PCHN[CSI[mu] . CSISD[p], i, i]"},
+{"fcstSharedObjectsPauliIndex-ID54",
+"PCHN[CSI[mu].(m+CSIS[p]).CSI[nu],1,j]",
+"PCHN[CSI[mu] . (m + CSIS[p]) . CSI[nu], 1, j]"},
+{"fcstSharedObjectsPauliIndex-ID55",
+"PCHN[CSI[mu].(m+CSIS[p]).CSI[nu],3,1]",
+"PCHN[CSI[mu] . (m + CSIS[p]) . CSI[nu], 3, 1]"},
+{"fcstSharedObjectsPauliIndex-ID56",
+"PCHN[CSI[mu].(m+CSIS[p]).CSI[nu],3,3]",
+"PCHN[CSI[mu] . (m + CSIS[p]) . CSI[nu], 3, 3]"},
+{"fcstSharedObjectsPauliIndex-ID57",
+"PCHN[CSI[mu].(m+CSIS[p]).CSI[nu],1,2]",
+"PCHN[CSI[mu] . (m + CSIS[p]) . CSI[nu], 1, 2]"},
+{"fcstSharedObjectsPauliIndex-ID58",
+"PCHN[CSI[mu].(m+CSIS[p]).CSI[nu],3,3]",
+"PCHN[CSI[mu] . (m + CSIS[p]) . CSI[nu], 3, 3]"},
+{"fcstSharedObjectsPauliIndex-ID59",
+"PCHN[CSI[mu].(m+CSIS[p]).CSI[nu],i,i]",
+"PCHN[CSI[mu] . (m + CSIS[p]) . CSI[nu], i, i]"},
+{"fcstSharedObjectsPauliIndex-ID60", "PCHN[PauliEta[-I],i]",
+"PCHN[PauliEta[-I], i]"},
+{"fcstSharedObjectsPauliIndex-ID61",
+"PCHN[CSI[mu].CSISD[p],PauliEta[-I],j]",
+"PCHN[CSI[mu] . CSISD[p], PauliEta[-I], j]"},
+{"fcstSharedObjectsPauliIndex-ID62",
+"PCHN[CSI[mu].CSISD[p],i,PauliXi[I]]",
+"PCHN[CSI[mu] . CSISD[p], i, PauliXi[I]]"},
+{"fcstSharedObjectsPauliIndex-ID63",
+"PCHN[CSI[mu].CSISD[p],PauliEta[-I],PauliXi[I]]",
+"PCHN[CSI[mu] . CSISD[p], PauliEta[-I], PauliXi[I]]"},
+{"fcstSharedObjectsPauliIndex-ID64",
+"PCHN[1,PauliEta[-I],PauliXi[I]]", "PCHN[PauliEta[-I], PauliXi[I]]"}
+})
+
+Tests`Shared`fcstShareObjectsLightCone =
+({
+{"fcstShareObjectsLightCone-ID1", "GALP[0]",
+"GALP[0, FCGV[\"n\"], FCGV[\"nb\"]]"},
+{"fcstShareObjectsLightCone-ID2", "GALN[0]",
+"GALN[0, FCGV[\"n\"], FCGV[\"nb\"]]"},
+{"fcstShareObjectsLightCone-ID3", "GALPD[0]",
+"GALPD[0, FCGV[\"n\"], FCGV[\"nb\"]]"},
+{"fcstShareObjectsLightCone-ID4", "GALND[0]",
+"GALND[0, FCGV[\"n\"], FCGV[\"nb\"]]"},
+{"fcstShareObjectsLightCone-ID5", "GALR[0]",
+"GALR[0, FCGV[\"n\"], FCGV[\"nb\"]]"},
+{"fcstShareObjectsLightCone-ID6", "GALRD[0]",
+"GALRD[0, FCGV[\"n\"], FCGV[\"nb\"]]"},
+{"fcstShareObjectsLightCone-ID7", "GSLP[0]", "0"},
+{"fcstShareObjectsLightCone-ID8", "GSLN[0]", "0"},
+{"fcstShareObjectsLightCone-ID9", "GSLPD[0]", "0"},
+{"fcstShareObjectsLightCone-ID10", "GSLND[0]", "0"},
+{"fcstShareObjectsLightCone-ID11", "GSLR[0]", "0"},
+{"fcstShareObjectsLightCone-ID12", "GSLRD[0]", "0"},
+{"fcstShareObjectsLightCone-ID13", "GALP[0,n,nb]", "GALP[0, n, nb]"},
+{"fcstShareObjectsLightCone-ID14", "GALN[0,n,nb]", "GALN[0, n, nb]"},
+{"fcstShareObjectsLightCone-ID15", "GALPD[0,n,nb]",
+"GALPD[0, n, nb]"},
+{"fcstShareObjectsLightCone-ID16", "GALND[0,n,nb]",
+"GALND[0, n, nb]"},
+{"fcstShareObjectsLightCone-ID17", "GALR[0,n,nb]", "GALR[0, n, nb]"},
+{"fcstShareObjectsLightCone-ID18", "GALRD[0,n,nb]",
+"GALRD[0, n, nb]"},
+{"fcstShareObjectsLightCone-ID19", "GSLP[0,n,nb]", "0"},
+{"fcstShareObjectsLightCone-ID20", "GSLN[0,n,nb]", "0"},
+{"fcstShareObjectsLightCone-ID21", "GSLPD[0,n,nb]", "0"},
+{"fcstShareObjectsLightCone-ID22", "GSLND[0,n,nb]", "0"},
+{"fcstShareObjectsLightCone-ID23", "GSLR[0,n,nb]", "0"},
+{"fcstShareObjectsLightCone-ID24", "GSLRD[0,n,nb]", "0"},
+{"fcstShareObjectsLightCone-ID25", "FVLP[0,mu,n,nb]", "0"},
+{"fcstShareObjectsLightCone-ID26", "FVLN[0,mu,n,nb]", "0"},
+{"fcstShareObjectsLightCone-ID27", "FVLR[0,mu,n,nb]", "0"},
+{"fcstShareObjectsLightCone-ID28", "FVLPD[0,mu,n,nb]", "0"},
+{"fcstShareObjectsLightCone-ID29", "FVLND[0,mu,n,nb]", "0"},
+{"fcstShareObjectsLightCone-ID30", "FVLRD[0,mu,n,nb]", "0"},
+{"fcstShareObjectsLightCone-ID31", "FVLP[0,mu]", "0"},
+{"fcstShareObjectsLightCone-ID32", "FVLN[0,mu]", "0"},
+{"fcstShareObjectsLightCone-ID33", "FVLR[0,mu]", "0"},
+{"fcstShareObjectsLightCone-ID34", "FVLPD[0,mu]", "0"},
+{"fcstShareObjectsLightCone-ID35", "FVLND[0,mu]", "0"},
+{"fcstShareObjectsLightCone-ID36", "FVLRD[0,mu]", "0"},
+{"fcstShareObjectsLightCone-ID37", "SPLP[0,mu,n,nb]", "0"},
+{"fcstShareObjectsLightCone-ID38", "SPLN[0,mu,n,nb]", "0"},
+{"fcstShareObjectsLightCone-ID39", "SPLR[0,mu,n,nb]", "0"},
+{"fcstShareObjectsLightCone-ID40", "SPLPD[0,mu,n,nb]", "0"},
+{"fcstShareObjectsLightCone-ID41", "SPLND[0,mu,n,nb]", "0"},
+{"fcstShareObjectsLightCone-ID42", "SPLRD[0,mu,n,nb]", "0"},
+{"fcstShareObjectsLightCone-ID43", "SPLP[0,mu]", "0"},
+{"fcstShareObjectsLightCone-ID44", "SPLN[0,mu]", "0"},
+{"fcstShareObjectsLightCone-ID45", "SPLR[0,mu]", "0"},
+{"fcstShareObjectsLightCone-ID46", "SPLPD[0,mu]", "0"},
+{"fcstShareObjectsLightCone-ID47", "SPLND[0,mu]", "0"},
+{"fcstShareObjectsLightCone-ID48", "SPLRD[0,mu]", "0"},
+{"fcstShareObjectsLightCone-ID49", "GALR[{mu1}]",
+"GALR[mu1, FCGV[\"n\"], FCGV[\"nb\"]]"},
+{"fcstShareObjectsLightCone-ID50", "GALR[{mu1,mu2,mu3}]",
+"GALR[mu1, FCGV[\"n\"], FCGV[\"nb\"]] . GALR[mu2, FCGV[\"n\"], \
+FCGV[\"nb\"]] . GALR[mu3, FCGV[\"n\"], FCGV[\"nb\"]]"},
+{"fcstShareObjectsLightCone-ID51", "GALR[{mu1},n,nb]",
+"GALR[mu1, n, nb]"},
+{"fcstShareObjectsLightCone-ID52", "GALR[{mu1,mu2,mu3},n,nb]",
+"GALR[mu1, n, nb] . GALR[mu2, n, nb] . GALR[mu3, n, nb]"},
+{"fcstShareObjectsLightCone-ID53", "GALRD[{mu1}]",
+"GALRD[mu1, FCGV[\"n\"], FCGV[\"nb\"]]"},
+{"fcstShareObjectsLightCone-ID54", "GALRD[{mu1,mu2,mu3}]",
+"GALRD[mu1, FCGV[\"n\"], FCGV[\"nb\"]] . GALRD[mu2, FCGV[\"n\"], \
+FCGV[\"nb\"]] . GALRD[mu3, FCGV[\"n\"], FCGV[\"nb\"]]"},
+{"fcstShareObjectsLightCone-ID55", "GALRD[{mu1},n,nb]",
+"GALRD[mu1, n, nb]"},
+{"fcstShareObjectsLightCone-ID56", "GALRD[{mu1,mu2,mu3},n,nb]",
+"GALRD[mu1, n, nb] . GALRD[mu2, n, nb] . GALRD[mu3, n, nb]"},
+{"fcstShareObjectsLightCone-ID57", "GSLR[{p1}]",
+"GSLR[p1, FCGV[\"n\"], FCGV[\"nb\"]]"},
+{"fcstShareObjectsLightCone-ID58", "GSLR[{p1,p2,p3}]",
+"GSLR[p1, FCGV[\"n\"], FCGV[\"nb\"]] . GSLR[p2, FCGV[\"n\"], FCGV[\
+\"nb\"]] . GSLR[p3, FCGV[\"n\"], FCGV[\"nb\"]]"},
+{"fcstShareObjectsLightCone-ID59", "GSLR[{p1},n,nb]",
+"GSLR[p1, n, nb]"},
+{"fcstShareObjectsLightCone-ID60", "GSLR[{p1,p2,p3},n,nb]",
+"GSLR[p1, n, nb] . GSLR[p2, n, nb] . GSLR[p3, n, nb]"},
+{"fcstShareObjectsLightCone-ID61", "GSLRD[{p1}]",
+"GSLRD[p1, FCGV[\"n\"], FCGV[\"nb\"]]"},
+{"fcstShareObjectsLightCone-ID62", "GSLRD[{p1,p2,p3}]",
+"GSLRD[p1, FCGV[\"n\"], FCGV[\"nb\"]] . GSLRD[p2, FCGV[\"n\"], \
+FCGV[\"nb\"]] . GSLRD[p3, FCGV[\"n\"], FCGV[\"nb\"]]"},
+{"fcstShareObjectsLightCone-ID63", "GSLRD[{p1},n,nb]",
+"GSLRD[p1, n, nb]"},
+{"fcstShareObjectsLightCone-ID64", "GSLRD[{p1,p2,p3},n,nb]",
+"GSLRD[p1, n, nb] . GSLRD[p2, n, nb] . GSLRD[p3, n, nb]"},
+{"fcstShareObjectsLightCone-ID65",
+"LightConePerpendicularComponent[Momentum[p,d]]",
+"LightConePerpendicularComponent[Momentum[p, d], Momentum[FCGV[\"n\
+\"], d], Momentum[FCGV[\"nb\"], d]]"},
+{"fcstShareObjectsLightCone-ID66",
+"LightConePerpendicularComponent[LightConePerpendicularComponent[\
+Momentum[p,d],n,nb],n,nb]",
+"LightConePerpendicularComponent[Momentum[p, d], n, nb]"}
+})

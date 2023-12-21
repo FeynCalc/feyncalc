@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Quark gluon vertex												*)
@@ -19,13 +19,12 @@ QGV::usage =
 "QGV is equivalent to QuarkGluonVertex.";
 
 QuarkGluonVertex::usage =
-"QuarkGluonVertex[mu, a] or QuarkGluonVertex[{_,mu,a},  {_,_,_} ,  {_,_,_}]  or \
-QuarkGluonVertex[{p,mu,a},  {k,___} ,  {q,___}]  or \
-QuarkGluonVertex[ p,mu,a ,   _,_,_,     _,_,_] gives the  quark-gluon vertex.
+"QuarkGluonVertex[mu, a] gives the Feynman rule for the quark-gluon vertex.
 
-The dimension  and the name of the coupling constant are determined by the \
-options Dimension and CouplingConstant. For explicit expressions use the \
-function Explicit or modify the option Explicit.";
+QGV can be used as an abbreviation of QuarkGluonVertex.
+
+The dimension and the name of the coupling constant are determined by the
+options Dimension and CouplingConstant.";
 
 Begin["`Package`"]
 End[]

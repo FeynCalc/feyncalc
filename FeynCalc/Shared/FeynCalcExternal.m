@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Changes certain objects ("Symbols") from the FeynCalc
@@ -17,24 +17,25 @@
 (* ------------------------------------------------------------------------ *)
 
 FCE::usage=
-"FCE is just an abbreviation of FeynCalcExternal.";
+"FCE[exp] translates exp from the internal FeynCalc representation to a short
+form.
+
+FCE is equivalent to FeynCalcExternal.";
 
 FeynCalcExternal::usage=
-"FeynCalcExternal[exp] translates exp from the internal FeynCalc \
-representation to the simpler external one \
-(i.e., FV, GA, GS, etc.). User defined rules can be given \
-by the option FinalSubstitutions. ";
+"FeynCalcExternal[exp] translates exp from the internal FeynCalc representation
+to a shorthand form.";
 
 FCE::feynamp=
 "Warning! FeynAmpDenominator `1` contains momenta with different dimensions and thus cannot be \
-converted to the FCE form."
+converted to the FCE form.";
 
 (* ------------------------------------------------------------------------ *)
 
-Begin["`Package`"]
+Begin["`Package`"];
 End[]
 
-Begin["`FeynCalcExternal`Private`"]
+Begin["`FeynCalcExternal`Private`"];
 
 FCE = FeynCalcExternal;
 dimS::usage="";
@@ -60,30 +61,34 @@ FeynCalcExternal[x_,opts___Rule] :=
 		uru = FinalSubstitutions /. {opts} /. Options[FeynCalcExternal];
 
 		ru = {
-			DiracIndexDelta :> diracdelta,
-			DiracChain :> diracchain,
-			PauliSigma :> sigmaback,
-			DiracGamma :> diracback,
-			DiracSigma :> dirsig,
-			Eps :> eps,
-			FeynAmpDenominator :> feynampback,
-			Pair :> pairback,
-			CartesianPair :> cpairback,
-			TemporalPair :> tpairback,
-			SUND :> sundback,
-			SUNDelta :> sundeltanoi,
-			SUNFDelta :> sunfdeltanoi,
-			SUNF :> SUNFback,
-			SUNT :> suntback,
-			SUNTF :> suntfback,
-			SUNDeltaContract :> sundeltanoi,
-			SUNFDeltaContract :> sunfdeltanoi,
-			ScalarProduct :> scalarmul,
+			DiracIndexDelta 	:> diracdelta,
+			DiracChain 			:> diracchain,
+			PauliIndexDelta 	:> paulidelta,
+			PauliChain 			:> paulichain,
+			PauliSigma 			:> sigmaback,
+			DiracGamma 			:> diracback,
+			DiracSigma 			:> dirsig,
+			Eps 				:> eps,
+			FeynAmpDenominator	:> feynampback,
+			Pair 				:> pairback,
+			CartesianPair 		:> cpairback,
+			TemporalPair 		:> tpairback,
+			SUND 				:> sundback,
+			SUNDelta 			:> sundeltanoi,
+			SUNFDelta 			:> sunfdeltanoi,
+			SUNF 				:> SUNFback,
+			SUNT 				:> suntback,
+			SUNTF 				:> suntfback,
+			SUNDeltaContract 	:> sundeltanoi,
+			SUNFDeltaContract 	:> sunfdeltanoi,
+			ScalarProduct 		:> scalarmul,
 			Power2 :> Power} /. LorentzIndex -> iDent /. SUNIndex -> iDent /. SUNFIndex -> iDent;
 		ru = Join[ru, Flatten[{uru}]];
 		vv = Cases2[x, {
 				DiracChain,
 				DiracIndexDelta,
+				PauliChain,
+				PauliIndexDelta,
 				CartesianPair,
 				DiracGamma,
 				DiracSigma,
@@ -122,6 +127,19 @@ diracchain[a_,b_,c_]:=
 	(DCHN@@fermtmp) /. (DiracIndex|ExplicitDiracIndex) -> iDent
 	)
 
+
+paulidelta[i_,j_]:=
+	PIDelta[i,j] /. (PauliIndex|ExplicitPauliIndex) -> iDent;
+
+paulichain[a_,b_]:=
+	PCHN[FCE[a],b] /. (PauliIndex|ExplicitPauliIndex) -> iDent;
+
+paulichain[a_,b_,c_]:=
+	(
+	fermtmp=FCE[{a,b,c}];
+	(PCHN@@fermtmp) /. (PauliIndex|ExplicitPauliIndex) -> iDent
+	)
+
 dirsig[a__] :=
 	DiracSigma[DOT[a]];
 
@@ -139,27 +157,49 @@ scalarmul[a_ b_,dim__] :=
 scalarmul[a_, b_,dim___] :=
 	ScalarProduct[a,b,dim];
 
-
 pairback[ExplicitLorentzIndex[a_?NumberQ], ExplicitLorentzIndex[b_?NumberQ]] :=
 	MT[a,b];
 pairback[ExplicitLorentzIndex[a_?NumberQ], LorentzIndex[b_]] :=
 	MT[a,b];
+
 pairback[LorentzIndex[a_], LorentzIndex[b_]] :=
 	MT[a,b];
+
+pairback[LightConePerpendicularComponent[LorentzIndex[a_],Momentum[n_],Momentum[nb_]],
+		LightConePerpendicularComponent[LorentzIndex[b_],Momentum[n_],Momentum[nb_]]] :=
+	MTLR[a,b,n,nb];
+
 pairback[LorentzIndex[a_,D], LorentzIndex[b_,D]] :=
 	MTD[a,b];
+
+pairback[LightConePerpendicularComponent[LorentzIndex[a_,D],Momentum[n_,D],Momentum[nb_,D]],
+		LightConePerpendicularComponent[LorentzIndex[b_,D],Momentum[n_,D],Momentum[nb_,D]]] :=
+	MTLRD[a,b,n,nb];
+
 pairback[LorentzIndex[a_,D-4], LorentzIndex[b_,D-4]] :=
 	MTE[a,b];
+
 pairback[LorentzIndex[a_,d_], LorentzIndex[b_,d_]] :=
 	Pair[LorentzIndex[a,d], LorentzIndex[b,d]] /;(d=!=D && d=!= D-4);
 
 
 pairback[ExplicitLorentzIndex[a_?NumberQ], Momentum[b_]] :=
 	FV[b,a];
+
 pairback[LorentzIndex[a_], Momentum[b_]] :=
 	FV[b,a];
+
+pairback[LightConePerpendicularComponent[LorentzIndex[a_],Momentum[n_],Momentum[nb_]],
+		LightConePerpendicularComponent[Momentum[b_],Momentum[n_],Momentum[nb_]]] :=
+	FVLR[b,a,n,nb];
+
 pairback[LorentzIndex[a_,D], Momentum[b_,D]] :=
 	FVD[b,a];
+
+pairback[LightConePerpendicularComponent[LorentzIndex[a_,D],Momentum[n_,D],Momentum[nb_,D]],
+		LightConePerpendicularComponent[Momentum[b_,D],Momentum[n_,D],Momentum[nb_,D]]] :=
+	FVLRD[b,a,n,nb];
+
 pairback[LorentzIndex[a_, D-4], Momentum[b_, D-4]] :=
 	FVE[b,a];
 pairback[LorentzIndex[a_,d_], Momentum[b_,d_]] :=
@@ -180,10 +220,21 @@ pairback[Momentum[b_, d_], Momentum[OPEDelta, d_]] /;d=!=D :=
 
 pairback[Momentum[a_], Momentum[b_]] :=
 	SP[a, b];
+
+pairback[LightConePerpendicularComponent[Momentum[a_],Momentum[n_],Momentum[nb_]],
+		LightConePerpendicularComponent[Momentum[b_],Momentum[n_],Momentum[nb_]]] :=
+	SPLR[b,a,n,nb];
+
 pairback[Momentum[a_, D], Momentum[b_, D]] :=
 	SPD[a, b];
+
+pairback[LightConePerpendicularComponent[Momentum[a_,D],Momentum[n_,D],Momentum[nb_,D]],
+		LightConePerpendicularComponent[Momentum[b_,D],Momentum[n_,D],Momentum[nb_,D]]] :=
+	SPLRD[b,a,n,nb];
+
 pairback[Momentum[a_, D-4], Momentum[b_, D-4]] :=
 	SPE[a, b];
+
 pairback[Momentum[a_, d_], Momentum[b_, d_]] :=
 	ScalarProduct[a, b, Dimension -> d]/;(d=!=D && d=!= D-4);
 
@@ -216,8 +267,18 @@ diracback[ExplicitLorentzIndex[0]]:=
 
 diracback[LorentzIndex[a_]] :=
 	GA[a];
+
+
+diracback[LightConePerpendicularComponent[LorentzIndex[a_],Momentum[n_],Momentum[nb_]]] :=
+	GALR[a,n,nb];
+
+
 diracback[LorentzIndex[a_,D],D] :=
 	GAD[a];
+
+diracback[LightConePerpendicularComponent[LorentzIndex[a_, D],Momentum[n_, D],Momentum[nb_, D]], D] :=
+	GALRD[a,n,nb];
+
 diracback[LorentzIndex[a_,D-4],D-4] :=
 	GAE[a];
 
@@ -234,8 +295,16 @@ diracback[lm_[a_,n_/;(n=!=D && n=!=D-4 && n=!=D-1)],en___] :=
 
 diracback[Momentum[a_]] :=
 	GS[a];
+
+diracback[LightConePerpendicularComponent[Momentum[a_],Momentum[n_],Momentum[nb_]]] :=
+	GSLR[a,n,nb];
+
 diracback[Momentum[a_, D], D] :=
 	GSD[a];
+
+diracback[LightConePerpendicularComponent[Momentum[a_, D],Momentum[n_, D],Momentum[nb_, D]], D] :=
+	GSLRD[a,n,nb];
+
 diracback[Momentum[a_, D-4], D-4] :=
 	GSE[a];
 

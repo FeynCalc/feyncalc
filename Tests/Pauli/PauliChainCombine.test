@@ -1,0 +1,58 @@
+
+
+(* :Title: PauliChainCombine.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for PauliChainCombine	*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Pauli`fcstPauliChainCombine =
+({
+{"fcstPauliChainCombine-ID1",
+"PauliChainCombine[PCHN[CSIS[p],i,j]+PCHN[CSIS[q],i,j],FCE\[Rule]\
+True]", "PCHN[CSIS[p] + CSIS[q], i, j]"},
+{"fcstPauliChainCombine-ID2",
+"PauliChainCombine[PCHN[CSIS[p],PauliEta[-I],j]+PCHN[CSIS[q],\
+PauliEta[-I],j],FCE\[Rule]True]",
+"PCHN[CSIS[p] + CSIS[q], PauliEta[-I], j]"},
+{"fcstPauliChainCombine-ID3",
+"PauliChainCombine[PCHN[CSIS[p],i,PauliXi[I]]+PCHN[CSIS[q],i,\
+PauliXi[I]],FCE\[Rule]True]",
+"PCHN[CSIS[p] + CSIS[q], i, PauliXi[I]]"},
+{"fcstPauliChainCombine-ID4",
+"PauliChainCombine[PCHN[CSIS[p],PauliEta[-I],PauliXi[I]]+PCHN[CSIS[\
+q],PauliEta[-I],PauliXi[I]],FCE\[Rule]True]",
+"PCHN[CSIS[p] + CSIS[q], PauliEta[-I], PauliXi[I]]"},
+{"fcstPauliChainCombine-ID5",
+"PauliChainCombine[PCHN[CSIS[p],i,j]+PCHN[CSIS[q],i,j],\
+PauliSigmaCombine\[Rule]True,FCE\[Rule]True]",
+"PCHN[CSIS[p + q], i, j]"},
+{"fcstPauliChainCombine-ID6",
+"PauliChainCombine[(PCHN[CSISD[q],Dir3,Dir4] FAD[{k,me}])/(2 \
+SPD[q,q])+1/(2 SPD[q,q]) FAD[k,{k-q,me}] (-2 PCHN[CSISD[q],Dir3,Dir4] \
+SPD[q,q]+2 PCHN[1,Dir3,Dir4] me SPD[q,q]+PCHN[CSISD[q],Dir3,Dir4] \
+(-me^2+SPD[q,q])),FCE\[Rule]True]",
+"(FAD[{k, me}]*PCHN[CSISD[q], Dir3, Dir4])/(2*SPD[q, q]) + (FAD[k, \
+{k - q, me}]*PCHN[2*me*SPD[q, q] - 2*CSISD[q]*SPD[q, q] + \
+CSISD[q]*(-me^2 + SPD[q, q]), Dir3, Dir4])/(2*SPD[q, q])"},
+{"fcstPauliChainCombine-ID7",
+"PauliChainCombine[PCHN[1,i,j] PCHN[1,k,l]+PCHN[1,k,l] \
+PCHN[CSI[a],i,j]+PCHN[1,i,j] PCHN[CSI[a],k,l]+PCHN[CSI[a],i,j] \
+PCHN[CSI[a],k,l],FCE\[Rule]True]",
+"PCHN[1 + CSI[a], i, j]*PCHN[1 + CSI[a], k, l]"},
+{"fcstPauliChainCombine-ID8",
+"PauliChainCombine[PCHN[CSIS[p],i,j]+PCHN[CSIS[q],i,j]\[Equal]x,\
+FCE\[Rule]True]", "PCHN[CSIS[p] + CSIS[q], i, j] == x"},
+{"fcstPauliChainCombine-ID9",
+"PauliChainCombine[{PCHN[CSIS[p],i,j]+PCHN[CSIS[q],i,j],PCHN[CSIS[\
+p1],i,j]+PCHN[CSIS[q1],i,j]},FCE\[Rule]True]",
+"{PCHN[CSIS[p] + CSIS[q], i, j], PCHN[CSIS[p1] + CSIS[q1], i, j]}"}
+
+})

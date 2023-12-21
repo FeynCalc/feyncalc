@@ -1,0 +1,75 @@
+
+
+(* :Title: FCLoopPakOrder.test													*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopPakOrder				*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopPakOrder =
+({
+{"fcstFCLoopPakOrder-ID1",
+"FCLoopPakOrder[(x[1]*x[2] + x[1]*x[3] + x[2]*x[3] + x[2]*x[4] + \
+x[3]*x[4] + x[1]*x[5] + x[2]*x[5] + x[4]*x[5])*(m1^2*x[1]^2*x[2] + \
+m3^2*x[1]*x[2]^2 + m1^2*x[1]^2*x[3] + m1^2*x[1]*x[2]*x[3] + \
+m2^2*x[1]*x[2]*x[3] + m3^2*x[1]*x[2]*x[3] +
+m3^2*x[2]^2*x[3] + m2^2*x[1]*x[3]^2 + m2^2*x[2]*x[3]^2 + \
+m1^2*x[1]*x[2]*x[4] - Pair[Momentum[q, D], Momentum[q, \
+D]]*x[1]*x[2]*x[4] + m3^2*x[2]^2*x[4] + m1^2*x[1]*x[3]*x[4] - \
+Pair[Momentum[q, D], Momentum[q, D]]*x[1]*x[3]*x[4] +
+m2^2*x[2]*x[3]*x[4] + m3^2*x[2]*x[3]*x[4] - Pair[Momentum[q, D], \
+Momentum[q, D]]*x[2]*x[3]*x[4] + m2^2*x[3]^2*x[4] + m1^2*x[1]^2*x[5] \
++ m1^2*x[1]*x[2]*x[5] + m3^2*x[1]*x[2]*x[5] - Pair[Momentum[q, D], \
+Momentum[q, D]]*x[1]*x[2]*x[5] +
+m3^2*x[2]^2*x[5] + m2^2*x[1]*x[3]*x[5] - Pair[Momentum[q, D], \
+Momentum[q, D]]*x[1]*x[3]*x[5] + m2^2*x[2]*x[3]*x[5] - \
+Pair[Momentum[q, D], Momentum[q, D]]*x[2]*x[3]*x[5] + \
+m1^2*x[1]*x[4]*x[5] -
+Pair[Momentum[q, D], Momentum[q, D]]*x[1]*x[4]*x[5] + \
+m3^2*x[2]*x[4]*x[5] + m2^2*x[3]*x[4]*x[5] - Pair[Momentum[q, D], \
+Momentum[q, D]]*x[3]*x[4]*x[5]), {x[1], x[2], x[3], x[4], x[5]}]",
+"{{1, 3, 2, 5, 4}}"},
+{"fcstFCLoopPakOrder-ID2", "FCLoopPakOrder[m1^2 x1^3,{x1}]", "{{1}}"},
+{"fcstFCLoopPakOrder-ID3",
+"FCLoopPakOrder[x[1]^2+2 x[1] x[2]+x[2]^2+x[3]^2,{x[1],x[2],x[3]}]",
+"{{1, 2, 3}, {2, 1, 3}}"},
+{"fcstFCLoopPakOrder-ID4",
+"FCLoopPakOrder[(m1^2*x[1]+m3^2*x[2]+m2^2*FCPowerMark[3]*x[3])*(x[1]*x[\
+2]+FCPowerMark[3]*x[1]*x[3]+FCPowerMark[3]*x[2]*x[3])^2,{x[1],x[2],x[\
+3]}]", "{{1, 2, 3}}"},
+{"fcstFCLoopPakOrder-ID5",
+"FCLoopPakOrder[
+x[1]*x[2] + x[1]*x[3] + x[2]*x[3] + x[2]*x[4] -
+SPD[Q, Q]*x[1]*x[2]*x[4] + x[3]*x[4] - SPD[Q, Q]*x[1]*x[3]*x[4] -
+SPD[Q, Q]*x[2]*x[3]*x[4] + x[1]*x[5] + x[2]*x[5] -
+SPD[Q, Q]*x[1]*x[2]*x[5] - SPD[Q, Q]*x[1]*x[3]*x[5] -
+SPD[Q, Q]*x[2]*x[3]*x[5] + x[4]*x[5] - SPD[Q, Q]*x[1]*x[4]*x[5] -
+4*SPD[Q, Q]*x[2]*x[4]*x[5] - SPD[Q, Q]*x[3]*x[4]*x[5], x]",
+"{{2, 4, 1, 5, 3}, {2, 5, 3, 4, 1}}"},
+{"fcstFCLoopPakOrder-ID6", "FCLoopPakOrder[-1/4*(x[2]^2*x[3]) - (x[1]^2*x[4])/4 - (x[1]^2*x[5])/
+	4 + (x[1]*x[2]*x[5])/2 - (x[2]^2*x[5])/4 + x[3]*x[4]*x[5], x,
+Rename -> True]",
+"-1/4*(x[1]^2*x[3]) + (x[1]*x[2]*x[3])/2 - (x[2]^2*x[3])/4 - (x[2]^2*x[4])/4 - (x[1]^2*x[5])/4 + x[3]*x[4]*x[5]"},
+{"fcstFCLoopPakOrder-ID7", "FCLoopPakOrder[x[3] x[4] x[5] - 1/4 (x[1] - x[2])^2 x[3] - 1/4 x[2]^2 x[4] -
+1/4 x[1]^2 x[5], x,
+Rename -> True]",
+"-1/4*(x[1]^2*x[3]) + (x[1]*x[2]*x[3])/2 - (x[2]^2*x[3])/4 - (x[2]^2*x[4])/4 - (x[1]^2*x[5])/4 + x[3]*x[4]*x[5]"},
+{"fcstFCLoopPakOrder-ID8",
+"FCLoopPakOrder[(x[1]*x[2]*x[3]*x[4]*x[5]*x[6]*x[7]*
+	x[8]*(x[9]*x[10] + x[9]*x[11] + x[10]*x[11]) -
+	x[1]*x[2]*x[3]*x[4]*x[5]*x[6]*x[7]*
+	x[8]*(m1^2*x[1] + m1^2*x[2] + m1^2*x[3] + m1^2*x[4] +
+	m1^2*x[5] + m1^2*x[6] + m1^2*x[7] + m1^2*x[8] + m1^2*x[9] +
+	m1^2*x[10] + m3^2*x[11])*
+	(x[9]*x[10] + x[9]*x[11] + x[10]*x[11])) /. {x[9] -> x[11],
+x[11] -> x[9]}, {x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8],
+x[9], x[10], x[11]}, LightPak -> True]",
+"{{1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 9}}"}
+});

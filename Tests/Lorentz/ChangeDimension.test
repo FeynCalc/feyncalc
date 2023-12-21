@@ -2,9 +2,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for ChangeDimension					*)
@@ -218,5 +218,10 @@ DiracIndex[QGIDirMinus2], DiracIndex[QGIDirMinus1]],4,FCE->True]", "DCHN[GA[Lor1
 "DiracGamma[CartesianIndex[i, -1 + a + b], a + b]"},
 {"fcstChangeDimension-ID75",
 "ChangeDimension[CGA[i],x-4,FCE\[Rule]True]",
-"DiracGamma[CartesianIndex[i, -4 + x], -4 + x]"}
+"DiracGamma[CartesianIndex[i, -4 + x], -4 + x]"},
+{"fcstChangeDimension-ID76",
+"ChangeDimension[
+PauliChain[PauliSigma[CartesianIndex[Car1, D - 1], D - 1],
+PauliIndex[QGIDirMinus2], PauliIndex[QGIDirMinus1]], 4, FCE -> True]",
+"PCHN[CSI[Car1], QGIDirMinus2, QGIDirMinus1]"}
 });

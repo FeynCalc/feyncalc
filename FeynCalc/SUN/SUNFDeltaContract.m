@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Kronecker delta for SU(N) in the fundamental representation   *)
@@ -16,12 +16,11 @@
 (* ------------------------------------------------------------------------ *)
 
 SUNFDeltaContract::usage=
-"SUNFDeltaContract[exp] substitues for all SUNFDelta in exp with \
-SUNFDeltaContract, contracts the fundamental SU(N) indices and resubstitutes \
-SUNFDelta. \n
-SUNFDeltaContract[i, j] is the Kronecker-delta for SU(N) in the fundamental \
-representation  with contraction properties. It wraps the head SUNFIndex \
-around its arguments.";
+"SUNFDeltaContract[exp] substitutes for all SUNFDelta in exp SUNFDeltaContract,
+contracts the fundamental $\\text{SU}(N)$ indices and resubstitutes
+SUNFDelta.SUNFDeltaContract[i, j] is the Kronecker-delta for $\\text{SU}(N)$ in
+the fundamental representation with contraction properties. It wraps the head
+SUNFIndex around its arguments.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -60,8 +59,9 @@ SUNFDeltaContract/:
 
 SUNFDeltaContract/:
 	SUNFDeltaContract[i_SUNFIndex, j_SUNFIndex ] y_[z__] :=
-		( y[z] /. i -> j ) /; FreeQ[y[z], _FeynArts`SumOver] &&
-				!FreeQ[y[z]//Hold, i] && FreeQ[y[z], SUNFDeltaContract[__]^n_Integer?Negative];
+		(
+		( y[z] /. {i -> j} )
+		)/; FreeQ[y[z], _FeynArts`SumOver] && !FreeQ[y[z]//Hold, i] && FreeQ[y[z], SUNFDeltaContract[__]^n_Integer?Negative];
 
 FCPrint[1,"SUNFDeltaContract.m loaded"];
 End[]

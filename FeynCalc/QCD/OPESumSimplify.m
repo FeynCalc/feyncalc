@@ -12,8 +12,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-OPESumSimplify::usage = "OPESumSimplify[exp]
-simplifies OPESum's in exp.";
+OPESumSimplify::usage =
+"OPESumSimplify[exp] simplifies OPESums in exp.";
 
 (* ------------------------------------------------------------------------ *)
 

@@ -9,7 +9,7 @@
 (* ------------------------------------------------------------------------ *)
 
 StringChomp::usage =
-"StringChomp[string] chops initial and final white space of string.";
+"StringChomp[str] chops initial and final white space of the string str.";
 
 Begin["`Package`"]
 End[]

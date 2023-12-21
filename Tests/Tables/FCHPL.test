@@ -1,0 +1,22 @@
+
+
+(* :Title: FCHPL.test														*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCHPL	  				*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Tables`fcstFCHPL =
+({
+{"fcstFCHPL-ID1", "FCHPL[{1, 1}, 0]", "0"},
+{"fcstFCHPL-ID2", "Head[FCHPL[{0, 0}, 0]]","FCHPL"}
+});
+
+

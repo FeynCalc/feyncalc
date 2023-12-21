@@ -13,16 +13,21 @@
 (* ------------------------------------------------------------------------ *)
 
 SplittingFunction::usage=
-"SplittingFunction[\"Pqq\", x], SplittingFunction[\"Pqg\", x], \
-SplittingFunction[\"Pgq\", x]  and \
-SplittingFunction[\"Pgg\", x] yield the lowest order splitting functions. \
-SplittingFunction[\"PQQS\",x], \
-SplittingFunction[\"PQQNS\",x], \
-and \
-SplittingFunction[\"PQG\",x] are the next to leading order \
-splitting functions. SplittingFunction has an option Polarization. \
-SplittingFunction[\"Pqq\", x, Polarization -> 0] returnes the unpolarized and \
-SplittingFunction[\"Pqq\", x, Polarization -> 1] the polarized splitting \
+"SplittingFunction[pxy] is a database of splitting functions in the
+$\\overline{\\textrm{MS}}$ scheme.
+
+SplittingFunction[\"Pqq\", x], SplittingFunction[\"Pqg\", x],
+SplittingFunction[\"Pgq\", x]  and SplittingFunction[\"Pgg\", x] yield the
+lowest order splitting functions.
+
+SplittingFunction[\"PQQS\",x], SplittingFunction[\"PQQNS\",x] and
+SplittingFunction[\"PQG\",x] are the next to leading order splitting
+functions.
+
+SplittingFunction has an option Polarization.
+
+SplittingFunction[\"Pqq\", x, Polarization -> 0] returns the unpolarized and
+SplittingFunction[\"Pqq\", x, Polarization -> 1] the polarized splitting
 functions.";
 
 (* ------------------------------------------------------------------------ *)

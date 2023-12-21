@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for FCPauliIsolate               *)
@@ -33,9 +33,8 @@ yy*FCGV[\"PauliChain\"][PauliSigma[LorentzIndex[i]]]"},
 "FCPauliIsolate[yy SI[i]+xx \
 PauliXi[-I].SIS[p].PauliEta[I].PauliEta[-I].SIS[p2].PauliXi[I],\
 PauliSigma\[Rule]False]",
-"xx*PauliEta[-I] . PauliSigma[Momentum[p2]] . \
-PauliXi[I]*PauliXi[-I] . PauliSigma[Momentum[p]] . PauliEta[I] + \
-yy*PauliSigma[LorentzIndex[i]]"},
+"yy*PauliSigma[LorentzIndex[i]] +
+xx*FCGV[\"PauliChain\"][PauliEta[-I] . PauliSigma[Momentum[p2]] . PauliXi[I]]*FCGV[\"PauliChain\"][PauliXi[-I] . PauliSigma[Momentum[p]] . PauliEta[I]]"},
 {"fcstFCPauiliIsolate-ID9",
 "FCPauliIsolate[yy SI[i]+xx \
 PauliXi[-I].SIS[p].PauliEta[I].PauliEta[-I].SIS[p2].PauliXi[I]]",
@@ -83,6 +82,13 @@ LorentzIndex -> False, Head -> {dch, re}, FCE -> True]",
 dch[SI[mu].SI[j].SI[k]] re[MT[mu, nu]]"},
 {"fcstFCPauiliIsolate-ID17", "FCPauliIsolate[x,Head->{pa,re}]", "re[x]"},
 {"fcstFCPauiliIsolate-ID18", "FCPauliIsolate[{SI[i], SI[j]}, Head -> pau, FCE -> True]",
-"{pau[SI[i]], pau[SI[j]]}"}
+"{pau[SI[i]], pau[SI[j]]}"},
+{"fcstFCPauiliIsolate-ID19", "FCPauliIsolate[
+PauliChain[PauliSigma[CartesianIndex[a]], PauliIndex[i],
+PauliIndex[j]], FCE -> True]", "PCHN[CSI[a], i, j]"},
+{"fcstFCPauiliIsolate-ID20", "FCPauliIsolate[
+PauliChain[PauliSigma[CartesianIndex[a]], PauliIndex[i],
+PauliIndex[j]], PauliChain -> True, Head -> pauli, FCE -> True]",
+"pauli[PCHN[CSI[a], i, j]]"}
 });
 

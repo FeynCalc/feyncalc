@@ -13,7 +13,7 @@
 (* ------------------------------------------------------------------------ *)
 
 Integrate5::usage=
-"Integrate5 is like Integrate2.";
+"Integrate5 is an alternative implementation along the lines of Integrate2.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -32,20 +32,8 @@ logsimp = { a_. Log[1-x_] - a_. Log[x_] :> (a Log[(1-x)/x])};
 *)
 
 
-Integrate5[a_, b_, c___] := (
-														If[FreeQ[a, Plus], integrateD[a, b, c],
-(*
-															If[Head[b] =!= List,
-*)
-																integrateD[a, b, c],Null
-(*
-																integrateD[Collect2[a, b], b, c],
-																integrateD[Collect2[a,b[[1]]], b, c]
-																]
-*)
-															] ) /. Pi^2 :> (6 Zeta2)(* /.
-															Integrate -> Integrate3 /. Integrate3 ->
-															Integrate *);
+Integrate5[a_, b_, c___] :=
+	integrateD[a, b, c]  /. Pi^2 :> (6 Zeta2);
 
 integrateD[a_, b_, c___] :=
 	Block[{	i3, tt, nop, n1, n2,pd},

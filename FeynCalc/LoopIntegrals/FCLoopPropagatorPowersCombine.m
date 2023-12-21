@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Combines propagator powers . 								*)
@@ -16,7 +16,7 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopPropagatorPowersCombine::usage =
-"FCLoopPropagatorPowersCombine[exp] combines the same propagators in a \
+"FCLoopPropagatorPowersCombine[exp] combines the same propagators in a
 FeynAmpDenominator to one propagator raised to an integer power.";
 
 FCLoopPropagatorPowersCombine::failmsg =
@@ -31,8 +31,9 @@ End[]
 Begin["`FCLoopPropagatorPowersCombine`Private`"]
 
 Options[FCLoopPropagatorPowersCombine] = {
-	FCE -> False,
-	FCI -> False
+	FeynAmpDenominatorCombine	-> True,
+	FCE 						-> False,
+	FCI							-> False
 };
 
 FCLoopPropagatorPowersCombine[expr_, OptionsPattern[]] :=
@@ -47,9 +48,14 @@ FCLoopPropagatorPowersCombine[expr_, OptionsPattern[]] :=
 			Return[ex]
 		];
 
+
+		If[	OptionValue[FeynAmpDenominatorCombine],
+			ex= FeynAmpDenominatorCombine[ex,FCI->True]
+		];
+
 		fadsList = Cases2[ex, FeynAmpDenominator];
 
-		fadsListEval = fadsList /. FeynAmpDenominator -> FeynCalc`Package`fdsor /. FeynAmpDenominator -> fad /. {
+		fadsListEval = fadsList /. FeynAmpDenominator -> FeynCalc`Package`fdsor /. FeynAmpDenominator -> fad //. {
 			fad[a___,
 				(h:StandardPropagatorDenominator|CartesianPropagatorDenominator|GenericPropagatorDenominator)[x__, {n1_Integer,s_}],
 				(h:StandardPropagatorDenominator|CartesianPropagatorDenominator|GenericPropagatorDenominator)[x__, {n2_Integer,s_}],
@@ -70,10 +76,6 @@ FCLoopPropagatorPowersCombine[expr_, OptionsPattern[]] :=
 
 
 	];
-
-
-
-
 
 
 FCPrint[1,"FCLoopPropagatorPowersCombine.m loaded."];

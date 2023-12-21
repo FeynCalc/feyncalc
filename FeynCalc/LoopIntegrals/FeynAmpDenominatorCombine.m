@@ -13,9 +13,9 @@
 (* ------------------------------------------------------------------------ *)
 
 FeynAmpDenominatorCombine::usage =
-"FeynAmpDenominatorCombine[expr] expands expr w.r.t. to \
-FeynAmpDenominator and  combines products of FeynAmpDenominator \
-in expr into one FeynAmpDenominator.";
+"FeynAmpDenominatorCombine[expr] expands expr with respect to
+FeynAmpDenominator and combines products of FeynAmpDenominator in expr into
+one FeynAmpDenominator.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -89,7 +89,7 @@ FeynAmpDenominatorCombine[expr_, OptionsPattern[]] :=
 
 
 		If[ optMomentum=!=All && Head[optMomentum]===List,
-			res = res /. FeynAmpDenominator[x__]/;!FreeQ2[{x},OptMomentum] :> feyncomb[x] /. feyncomb -> fdsor,
+			res = res /. FeynAmpDenominator[x__]/;!FreeQ2[{x},optMomentum] :> feyncomb[x] /. feyncomb -> fdsor,
 			res = res /. FeynAmpDenominator -> feyncomb /. feyncomb -> fdsor
 		];
 

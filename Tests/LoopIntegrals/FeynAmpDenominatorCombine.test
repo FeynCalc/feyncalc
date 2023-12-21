@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for
@@ -63,5 +63,5 @@ FCE -> True]",
 	"FeynAmpDenominatorCombine[
 FAD[p3] FAD[p1 + p2] FAD[q + p2] FAD[q, q + p1], Momentum -> {q},
 FCE -> True]",
-"FAD[p1 + p2] FAD[p3] FAD[p2 + q] FAD[q, p1 + q]"}
+"FAD[p1 + p2]*FAD[p3]*FAD[q, p1 + q, p2 + q]"}
 }

@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  	Splits the expression into pieces with different
@@ -17,14 +17,17 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopSplit::usage =
-"FCLoopSplit[exp,{q1,q2,...}] separates exp \
-into following four pieces: \n
-1) terms that are free of loop integrals \n
-2) terms with scalar loop integrals \n
-3) terms with tensor loop integrals, where all loop momenta \
-are contracted \n
-4) terms with tensor loop integrals, where at least some \
-loop momenta have free indices \n
+"FCLoopSplit[exp, {q1, q2, ...}] separates exp into the following four pieces: 
+
+1) terms that are free of loop integrals
+
+2) terms with scalar loop integrals
+
+3) terms with tensor loop integrals, where all loop momenta are contracted
+
+4) terms with tensor loop integrals, where at least some loop momenta have
+free indices
+
 The result is returned as a list with the 4 above elements.";
 
 FCLoopSplit::failmsg =
@@ -43,21 +46,24 @@ Options[FCLoopSplit] = {
 	Factoring 			-> {Factor2, 5000},
 	FCE 				-> False,
 	FCI 				-> False,
-	Factoring 			-> Factor2,
 	PaVeIntegralHeads	-> FeynCalc`Package`PaVeHeadsList,
 	TimeConstrained		-> 3
 };
 
-FCLoopSplit[expr_, lmoms_List /; FreeQ[lmoms, OptionQ], OptionsPattern[]] :=
+FCLoopSplit[expr_, lmomsRaw_List /; FreeQ[lmomsRaw, OptionQ], OptionsPattern[]] :=
 	Block[{	null1, null2, ex, loopFree, loopScalar,
 			loopTensorQP, loopTensorFreeInd,oldLoopFree,oldLoopScalar,
-			addToLoopScalar,tmp,loopIntHeads, res},
+			addToLoopScalar,tmp,loopIntHeads, res, dummyMom, lmoms},
 
 		loopIntHeads = OptionValue[PaVeIntegralHeads];
 
-		If[	MatchQ[lmoms,{{___}}],
+		If[	MatchQ[lmomsRaw,{{___}}],
 			Message[FCLoopSplit::failmsg, ex];
 			Abort[]
+		];
+		If[	TrueQ[lmomsRaw==={}],
+			lmoms = {dummyMom},
+			lmoms = lmomsRaw
 		];
 
 		If[OptionValue[FCI],

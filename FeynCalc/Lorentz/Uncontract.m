@@ -6,23 +6,26 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Uncontracts Lorentz and Cartesian tensors						*)
 
 (* ------------------------------------------------------------------------ *)
 
-Uncontract::usage = "Uncontract[exp,q1,q2, ...] uncontracts Eps \
-and DiracGamma. Uncontract[exp,q1,q2, Pair->{p}] uncontracts \
-also p.q1 and p.q2; Pair -> All uncontracts all except \
-OPEDelta. Dimension -> Automatic leaves dimensions unchanged.";
+Uncontract::usage =
+"Uncontract[exp, q1, q2, ...] uncontracts Eps and DiracGamma.
+
+Uncontract[exp, q1, q2, Pair -> {p}] uncontracts also $p \\cdot q_1$ and $p
+\\cdot q_2$;
+
+The option Pair -> All uncontracts all momenta except OPEDelta.";
 
 Uncontract::failmsg =
 "Error! Uncontract has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -37,22 +40,23 @@ nPower::usage="";
 sPower::usage="";
 
 Options[Uncontract] = {
-	CartesianMomentum	-> True,
-	CartesianPair 		-> {},
-	Dimension			-> Automatic,
-	DiracChainExpand	-> True,
-	DiracGamma			-> True,
-	DotSimplify			-> True,
-	Eps 				-> True,
-	FCE 				-> False,
-	FCI 				-> False,
-	FCTensor 			-> All,
-	FCVerbose 			-> False,
-	Momentum 			-> True,
-	Pair 				-> {},
-	PauliSigma 			-> True,
-	Polarization 		-> True,
-	Square 				-> True
+	CartesianMomentum				-> True,
+	CartesianPair 					-> {},
+	Dimension						-> Automatic,
+	DiracChainExpand				-> True,
+	DiracGamma						-> True,
+	DotSimplify						-> True,
+	Eps 							-> True,
+	FCE 							-> False,
+	FCI 							-> False,
+	FCTensor 						-> All,
+	FCVerbose 						-> False,
+	Momentum 						-> True,
+	Pair 							-> {},
+	PauliChainExpand				-> True,
+	PauliSigma 						-> True,
+	Polarization 					-> True,
+	Square 							-> True
 };
 
 Uncontract[x_List, q__] :=
@@ -146,16 +150,41 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 
 		If[	momAllow,
 
-			pairRules = Join[pairRules, {Pair[Momentum[g_,d_:4], Momentum[p_, e_:4]]/;!FreeQ[g,qMark] && FreeQ[p,qMark] :>
-			(	li = LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]];
-			Pair[Momentum[g, dimSelectLorentz[d]],li] Pair[li, Momentum[p,dimSelectLorentz[e]] ]),
+			pairRules = Join[pairRules, {
 
-			Pair[Momentum[g_,d_:4], Momentum[p_, d_:4]]/;!FreeQ[g,qMark] && !FreeQ[p,qMark] :>
-			(	li = LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]];
-				li2 = LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]];
-				Pair[li, li2] Pair[Momentum[g, dimSelectLorentz[d]],li] Pair[li2, Momentum[p,dimSelectLorentz[d]]])
+				Pair[Momentum[g_,d_:4], Momentum[p_, e_:4]]/;!FreeQ[g,qMark] && FreeQ[p,qMark] :>
+					(
+					li = LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]];
+					Pair[Momentum[g, dimSelectLorentz[d]],li] Pair[li, Momentum[p,dimSelectLorentz[e]] ]
+					),
 
-			}];
+
+				Pair[LightConePerpendicularComponent[Momentum[g_,d_:4],n_,nb_], LightConePerpendicularComponent[Momentum[p_, e_:4],n_,nb_]]/;!FreeQ[g,qMark] && FreeQ[p,qMark] :>
+					(
+					li = LightConePerpendicularComponent[LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]],n,nb];
+					Pair[LightConePerpendicularComponent[Momentum[g, dimSelectLorentz[d]],n, nb],li] Pair[li, LightConePerpendicularComponent[Momentum[p,dimSelectLorentz[e]],n,nb]]
+					),
+
+				Pair[Momentum[g_,d_:4], Momentum[p_, d_:4]]/;!FreeQ[g,qMark] && !FreeQ[p,qMark] :>
+					(
+					li = LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]];
+					li2 = LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]];
+					Pair[li, li2] Pair[Momentum[g, dimSelectLorentz[d]],li] Pair[li2, Momentum[p,dimSelectLorentz[d]]]
+					),
+
+				Pair[LightConePerpendicularComponent[Momentum[g_,d_:4],n_,nb_], LightConePerpendicularComponent[Momentum[p_, d_:4],n_,nb_]]/;!FreeQ[g,qMark] && !FreeQ[p,qMark] :>
+					(
+
+					li = LightConePerpendicularComponent[LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]],n,nb];
+					li2 = LightConePerpendicularComponent[LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]],n,nb];
+
+
+
+					Pair[li, li2] Pair[LightConePerpendicularComponent[Momentum[g, dimSelectLorentz[d]],n,nb],li]*
+					Pair[li2, Momentum[LightConePerpendicularComponent[p,n,nb],dimSelectLorentz[d]]]
+					)
+
+				}];
 
 			epsRules = Join[epsRules,
 				{Eps[a___, Momentum[g_,d_:4]  ,b___]/;!FreeQ[g,qMark] :>
@@ -164,9 +193,17 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 			}];
 
 			digaRules = Join[digaRules,
-				{DiracGamma[Momentum[g_,d_:4],d_:4]/;!FreeQ[g,qMark] :>
+				{
+				DiracGamma[Momentum[g_,d_:4],d_:4]/;!FreeQ[g,qMark] :>
 				(	li = LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]];
-				Pair[Momentum[g, dimSelectLorentz[d]],li] DiracGamma[li,dimSelectLorentz[d]])
+				Pair[Momentum[g, dimSelectLorentz[d]],li] DiracGamma[li,dimSelectLorentz[d]]),
+
+
+				DiracGamma[LightConePerpendicularComponent[Momentum[g_,d_:4],n_,nb_],d_:4]/;!FreeQ[g,qMark] :>
+				(	li = LightConePerpendicularComponent[LorentzIndex[$AL[Unique[]],dimSelectLorentz[d]],n,nb];
+				Pair[LightConePerpendicularComponent[Momentum[g, dimSelectLorentz[d]],n,nb],li] DiracGamma[li,dimSelectLorentz[d]])
+
+
 			}];
 
 			sigmaRules = Join[sigmaRules,
@@ -355,9 +392,13 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 				Message[Uncontract::failmsg,"Cannot uncontract negative or symbolic powers of expressions."];
 				Abort[]
 			];
+			tmp = (exp + null1 + null2) /. _FeynAmpDenominator :> Unique[];
+			allObjects = Cases[tmp /. _PauliChain :> Unique[], _PauliSigma, Infinity]//DeleteDuplicates//Sort;
 
-			allObjects = Cases[(exp + null1 + null2)/. _FeynAmpDenominator :> Unique[], _PauliSigma, Infinity]//DeleteDuplicates//Sort;
-			selectedObjects = SelectNotFree[allObjects, q];
+			If[	!FreeQ[exp,PauliChain],
+				allObjects = Join[allObjects, Cases[tmp, PauliChain[_,_,_], Infinity]//DeleteDuplicates//Sort];
+			];
+
 			If[ !OptionValue[Polarization],
 				selectedObjects = SelectFree[selectedObjects, Polarization];
 			];
@@ -423,6 +464,10 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 
 		If[	OptionValue[DiracChainExpand] && !FreeQ[res,DiracChain],
 			res = DiracChainExpand[res,FCI->True,Momentum->{q}]
+		];
+
+		If[	OptionValue[PauliChainExpand] && !FreeQ[res,PauliChain],
+			res = PauliChainExpand[res,FCI->True,Momentum->{q}]
 		];
 
 		FCPrint[1, "Uncontract: Intermediate result: " ,res, FCDoControl->ucVerbose];

@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for Calc	                *)
@@ -15,6 +15,5 @@
 
 Tests`NonCommAlgebra`fcstCalc = {
 {"fcstCalc-ID1","Calc[Sqrt[a - 1]] // Simplify[#, Assumptions -> {a > 1}]& ","Sqrt[a - 1]"},
-{"fcstCalc-ID2","Calc[FV[p + r, mu MT[mu, nu] FV[q - p, nu]]] // FCE","FV[p, -mu FV[p - q, mu]] + FV[r, -mu FV[p - q, mu]]"},
 {"fcstCalc-ID3","Calc[CV[p + r, i] KD[i, j] CV[q - p, j]] // FCE","-CSP[p, p] + CSP[p, q] - CSP[p, r] + CSP[q, r]"}
 };

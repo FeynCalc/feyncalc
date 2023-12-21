@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for ExplicitPartialD  		*)
@@ -30,5 +30,38 @@ RightPartialD[Momentum[OPEDelta]])/2"},
 {"fcstExplicitPartialD-ID4",
 "ExplicitPartialD[16 LeftRightPartialD[OPEDelta]^4]//FCE",
 "(-LeftPartialD[Momentum[OPEDelta]] + \
-RightPartialD[Momentum[OPEDelta]])^4"}
+RightPartialD[Momentum[OPEDelta]])^4"},
+{"fcstExplicitPartialD-ID5",
+"FCE[ExplicitPartialD[LeftRightPartialD[CartesianIndex[i]]]]",
+"(-LeftPartialD[CartesianIndex[i]] + RightPartialD[CartesianIndex[i]])/2"},
+{"fcstExplicitPartialD-ID6", "ExplicitPartialD[RightNablaD[i]]",
+"-RightPartialD[CartesianIndex[i]]"},
+{"fcstExplicitPartialD-ID7", "ExplicitPartialD[LeftNablaD[i]]",
+"-LeftPartialD[CartesianIndex[i]]"},
+{"fcstExplicitPartialD-ID8", "ExplicitPartialD[LeftRightNablaD[i]]",
+	"(LeftPartialD[CartesianIndex[i]] - \
+RightPartialD[CartesianIndex[i]])/2"},
+{"fcstExplicitPartialD-ID9",
+"ExplicitPartialD[LeftRightNablaD2[i]]",
+"-LeftPartialD[CartesianIndex[i]] - \
+RightPartialD[CartesianIndex[i]]"},
+{"fcstExplicitPartialD-ID10",
+"ExplicitPartialD[QuantumField[X].RightNablaD[i].QuantumField[Y]]",
+	"QuantumField[X] . (-RightPartialD[CartesianIndex[i]]) . \
+QuantumField[Y]"},
+{"fcstExplicitPartialD-ID11",
+"ExplicitPartialD[QuantumField[X].LeftNablaD[i].QuantumField[Y]]",
+"QuantumField[X] . (-LeftPartialD[CartesianIndex[i]]) . \
+QuantumField[Y]"},
+{"fcstExplicitPartialD-ID12",
+"ExplicitPartialD[QuantumField[X].LeftRightNablaD[i].QuantumField[\
+Y]]", "QuantumField[X] . ((LeftPartialD[CartesianIndex[i]] - \
+RightPartialD[CartesianIndex[i]])/2) . QuantumField[Y]"},
+{"fcstExplicitPartialD-ID13",
+"ExplicitPartialD[QuantumField[X].LeftRightNablaD2[i].QuantumField[\
+Y]]", "QuantumField[X] . (-LeftPartialD[CartesianIndex[i]] - \
+RightPartialD[CartesianIndex[i]]) . QuantumField[Y]"},
+{"fcstExplicitPartialD-ID14",
+"ExplicitPartialD[RightNablaD[{CartesianIndex[i], x}] . QuantumField[Phi, x]]",
+"(-RightPartialD[{CartesianIndex[i], x}]) . QuantumField[Phi, x]"}
 });

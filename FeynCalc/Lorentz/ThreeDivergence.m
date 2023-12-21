@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Compute partial derivatives w.r.t to the given 3-vector(s)		*)
@@ -16,29 +16,37 @@
 (* ------------------------------------------------------------------------ *)
 
 ThreeDivergence::usage =
-"ThreeDivergence[exp, CV[p, i]] calculates the partial derivative of exp w.r.t. p^i. \
-ThreeDivergence[exp, CV[p, i], CV[p,i], ...] gives the multiple derivative.";
+"ThreeDivergence[exp, CV[p, i]]  calculates the partial derivative of exp
+w.r.t. $p^i$.
+
+ ThreeDivergence[exp, CV[p, i], CV[p,i], ...] gives the multiple derivative.
+
+Owing to the fact that in FeynCalc dummy Cartesian index are always understood
+to be upper indices, applying ThreeDivergence to an expression is equivalent
+to the action of $\\nabla^i = \\frac{\\partial}{\\partial p^i}$.";
 
 ThreeDivergence::notvec=
-"`1` is not a Lorentz vector. Evaluation aborted!"
+"`1` is not a Lorentz vector. Evaluation aborted!";
 
 ThreeDivergence::extfail=
-"Failed to extract the name of the Lorentz vector from `1`. Evaluation aborted!"
+"Failed to extract the name of the Lorentz vector from `1`. Evaluation aborted!";
 
 ThreeDivergence::toocompl=
 "The structure `1` w.r.t which you are trying to differentiate is too complicated \
-to ensure the correct result. Evaluation aborted!"
+to ensure the correct result. Evaluation aborted!";
 
 ThreeDivergence::failmsg =
 "Error! ThreeDivergence has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 ThreeDivergence::warn =
 "Warning! The input expression also depends on `1` in dimensions other than `2`. \
-The derivative of a vector in one dimension w.r.t the same vector in a different \
-dimension is zero by convention. Please check that this is indeed intended. You \
-can deactivate this message for the current session by evaluating \
-Off[ThreeDivergence::warn].";
+The derivative of a vector in one dimension (D-1, 3 or D-4) w.r.t. the same vector in a \
+different dimension (D-1, 3 or D-4) is meaningnful only when using the t'Hooft-Veltman \
+scheme. For every other scheme please recheck your input expressions and ensure that \
+all matrices, spinors and tensors are purely D-1-dimensional or 3-dimensional. You might \
+want to use FCGetDimensions[exp] to find the offending terms. If you explicitly \
+intend to use the t'Hooft-Veltman scheme, please activate it via FCSetDiracGammaScheme[\"BMHV\"].";
 
 ThreeDivergence::warnLorentz =
 "Warning! The input expression also depends on the 4-momentum `1`. The derivatives of \
@@ -54,6 +62,7 @@ End[]
 Begin["`ThreeDivergence`Private`"]
 
 fdVerbose::usage="";
+optEpsExpand::usage="";
 
 Options[ThreeDivergence] = {
 	Abort 				-> True,
@@ -61,6 +70,7 @@ Options[ThreeDivergence] = {
 	Collecting			-> True,
 	Contract 			-> True,
 	EpsEvaluate 		-> True,
+	EpsExpand			-> True,
 	ExpandScalarProduct -> True,
 	FCE 				-> False,
 	FCI 				-> False,
@@ -69,7 +79,11 @@ Options[ThreeDivergence] = {
 };
 
 ThreeDivergence[expr_, cv:Except[_?OptionQ].., OptionsPattern[]] :=
-	Block[{ex, ve, tliflag = False, time, args, hold},
+	Block[{	ex, ve, tliflag = False, time, args, hold, optEpsEvaluate,
+			optEpsExpand},
+
+		optEpsEvaluate	= OptionValue[EpsEvaluate];
+		optEpsExpand	= OptionValue[EpsExpand];
 
 		If [OptionValue[FCVerbose]===False,
 			fdVerbose=$VeryVerbose,
@@ -108,7 +122,7 @@ ThreeDivergence[expr_, cv:Except[_?OptionQ].., OptionsPattern[]] :=
 		If[	OptionValue[Contract],
 			FCPrint[1, "ThreeDivergence: Applying Contract.", FCDoControl->fdVerbose];
 			time=AbsoluteTime[];
-			ex = Contract[ex, FCI->True];
+			ex = Contract[ex, FCI->True, EpsExpand->optEpsExpand];
 			FCPrint[1, "ThreeDivergence: Contract done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fdVerbose];
 			FCPrint[3, "ThreeDivergence: After Contract: ", ex, FCDoControl->fdVerbose]
 		];
@@ -116,7 +130,7 @@ ThreeDivergence[expr_, cv:Except[_?OptionQ].., OptionsPattern[]] :=
 		If[	OptionValue[ExpandScalarProduct],
 			FCPrint[1, "ThreeDivergence: Applying ExpandScalarProduct.", FCDoControl->fdVerbose];
 			time=AbsoluteTime[];
-			ex = ExpandScalarProduct[ex, FCI->True, EpsEvaluate->OptionValue[EpsEvaluate]];
+			ex = ExpandScalarProduct[ex, FCI->True, EpsEvaluate->optEpsEvaluate, EpsExpand->optEpsExpand];
 			FCPrint[1, "ThreeDivergence: ExpandScalarProduct done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fdVerbose];
 			FCPrint[3, "ThreeDivergence: After ExpandScalarProduct: ", ex, FCDoControl->fdVerbose]
 		];
@@ -162,7 +176,7 @@ threeDerivative[x_, a_, b__] :=
 threeDerivative[x_, ve_]:=
 	Block[{	nx = x,p, p0, mu, dList, dListEval, repRuleFinal, deriv,
 			null1,null2,un, fadHead, fadList, fadListEval,
-			repRule1, repRule2={}, res},
+			repRule1, repRule2={}, res, mu0, momHead, pDim},
 
 		FCPrint[3, "ThreeDivergence: threeDerivative: Entering with: ", x, FCDoControl->fdVerbose];
 
@@ -172,9 +186,10 @@ threeDerivative[x_, ve_]:=
 			Abort[]
 		];
 
-		p 	= ve/.CartesianPair[z_CartesianMomentum,_] :> z;
-		mu	= ve/.CartesianPair[z_CartesianIndex,_] :> z;
+		{p, pDim, mu} = ve/.CartesianPair[z:CartesianMomentum[_,dim_:3], l_CartesianIndex] :> {z, dim, l};
+
 		p0	= First[p];
+		mu0 = First[mu];
 
 		FCPrint[3, "ThreeDivergence: threeDerivative: p and mu: ", {p,mu}, FCDoControl->fdVerbose];
 
@@ -205,7 +220,7 @@ threeDerivative[x_, ve_]:=
 			(*	FeynAmpDenominatorSplit is necessary here. Without it, the results are still correct,
 				but they become too complicated.	*)
 			nx = FeynAmpDenominatorSplit[nx,FCI->True];
-			fadList = Cases[nx + null1 + null2, zzz_FeynAmpDenominator /; ! FreeQ[zzz, p], Infinity];
+			fadList = Cases[nx + null1 + null2, zzz_FeynAmpDenominator /; ! FreeQ[zzz, p0], Infinity];
 			fadListEval = FeynAmpDenominatorExplicit[#,FCI->True,Head->fadHead,Denominator->True]&/@fadList;
 			repRule1 = Thread[Rule[fadList,fadListEval]];
 			repRule2 = (Reverse /@ repRule1) /. Rule[a_, b_] :> Rule[1/a, 1/b];
@@ -219,29 +234,22 @@ threeDerivative[x_, ve_]:=
 
 		];
 
-		If[ Cases[(nx/. p-> Unique[]) + null1 + null2, CartesianMomentum[p0,___], Infinity]=!={},
-			Message[ThreeDivergence::warn,ToString[p0], ToString[p/.CartesianMomentum[_,dim_:3]:>dim]]
+		If[ Cases[(nx/. p-> Unique[]) + null1 + null2, CartesianMomentum[p0,___], Infinity]=!={} && (FeynCalc`Package`DiracGammaScheme =!= "BMHV"),
+			Message[ThreeDivergence::warn,ToString[p0], ToString[p/.CartesianMomentum[_,dim_:3]:>dim]];
+			Abort[]
 		];
 
 		(* This is the main part	*)
-		nx = D[nx, p] /. Derivative -> deriv;
+		nx = D[nx /. CartesianMomentum[p0,dim___] -> CartesianMomentum[momHead[p0],dim], momHead[p0]] /. Derivative -> deriv;
+		nx = nx /. {deriv[1][CartesianMomentum][momHead[p0]] -> 1, deriv[1,0][CartesianMomentum][momHead[p0],_] -> 1} /. momHead->Identity;
+
 		FCPrint[3, "ThreeDivergence: threeDerivative: After D: ", nx, FCDoControl->fdVerbose];
 
 		dList = Cases[nx+null1+null2,deriv[___][___][___],Infinity]//Sort//DeleteDuplicates;
 
-		dListEval = dList /. (deriv[__][fadHead][__]) :> 1 /. {
-			deriv[1, 0][CartesianPair][p,  a_] :> CartesianPair[a, mu] ,
-			deriv[0, 1][CartesianPair][a_, p] :> CartesianPair[a, mu] ,
-			deriv[1,0][DiracGamma][p,dim_] :> DiracGamma[mu,dim] ,
-			deriv[1][DiracGamma][p] :> DiracGamma[mu] ,
-			deriv[1,0,0,0][Eps][p,c__] :> Eps[mu,c] ,
-			deriv[0,1,0,0][Eps][a_,p,c__] :> Eps[a,mu,c] ,
-			deriv[0,0,1,0][Eps][a__,p,c_] :> Eps[a,mu,c] ,
-			deriv[0,0,0,1][Eps][c__,p] :> Eps[c,mu],
-			deriv[1,0,0][Eps][p,c__] :> Eps[mu,c] ,
-			deriv[0,1,0][Eps][a_,p,c__] :> Eps[a,mu,c] ,
-			deriv[0,0,1][Eps][a__,p,c_] :> Eps[a,mu,c]
-		} /. deriv -> Derivative;
+		FCPrint[3, "ThreeDivergence: threeDerivative: dList: ", dList, FCDoControl->fdVerbose];
+
+		dListEval = threeVectorDiffEval[dList /. (deriv[__][fadHead][__]) -> 1,deriv,p0,mu0,pDim] /. deriv -> Derivative;
 
 		repRuleFinal = Thread[Rule[dList,dListEval]];
 		FCPrint[3, "ThreeDivergence: threeDerivative: Final replacement list: ", repRuleFinal, FCDoControl->fdVerbose];
@@ -257,6 +265,23 @@ threeDerivative[x_, ve_]:=
 
 		res
 	];
+
+threeVectorDiffEval[ex_,head_,pVar_,muVar_, pDim_]:=
+	ex /. {
+		head[1, 0][CartesianPair][CartesianMomentum[pVar,___],  a_] :> CartesianPair[a, CartesianIndex[muVar,pDim]],
+		head[0, 1][CartesianPair][a_, CartesianMomentum[pVar,___]]	:> CartesianPair[a, CartesianIndex[muVar,pDim]],
+		head[1,0][DiracGamma][CartesianMomentum[pVar,___],dim_]		:> DiracGamma[CartesianIndex[muVar,pDim],dim],
+		head[1][DiracGamma][CartesianMomentum[pVar,___]]			:> DiracGamma[CartesianIndex[muVar,pDim]],
+		head[1,0][PauliSigma][CartesianMomentum[pVar,___],dim_]		:> PauliSigma[CartesianIndex[muVar,pDim],dim],
+		head[1][PauliSigma][CartesianMomentum[pVar,___]]			:> PauliSigma[CartesianIndex[muVar,pDim]],
+		head[1,0,0,0][Eps][CartesianMomentum[pVar,___],c__]			:> Eps[CartesianIndex[muVar,pDim],c],
+		head[0,1,0,0][Eps][a_,CartesianMomentum[pVar,___],c__]		:> Eps[a, CartesianIndex[muVar,pDim],c],
+		head[0,0,1,0][Eps][a__,CartesianMomentum[pVar,___],c_]		:> Eps[a, CartesianIndex[muVar,pDim],c],
+		head[0,0,0,1][Eps][c__,CartesianMomentum[pVar,___]]			:> Eps[c, CartesianIndex[muVar,pDim]],
+		head[1,0,0][Eps][CartesianMomentum[pVar,___],c__]			:> Eps[CartesianIndex[muVar,pDim],c],
+		head[0,1,0][Eps][a_,CartesianMomentum[pVar,___],c_]			:> Eps[a, CartesianIndex[muVar,pDim],c],
+		head[0,0,1][Eps][a__,CartesianMomentum[pVar,___]]			:> Eps[a, CartesianIndex[muVar,pDim]]
+	};
 
 FCPrint[1,"ThreeDivergence.m loaded."];
 End[]

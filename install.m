@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Installs FeynCalc and FeynArts *)
@@ -25,7 +25,7 @@ If[	!FreeQ[$ContextPath,"WolframLanguageForJupyter`"],
 BeginPackage["FeynCalcInstaller`"];
 
 InstallFeynCalc::notcomp =
-"Your Mathematica version is too old. FeynCalc requires at least Mathematica 8. Installation aborted!";
+"Your Mathematica version is too old. FeynCalc requires at least Mathematica 10. Installation aborted!";
 
 InstallFeynCalc::failed =
 "Download of `1` failed. Installation aborted!";
@@ -92,24 +92,16 @@ If[ !ValueQ[$PathToFAArc],
 	$PathToFAArc = ""
 ];
 
-If[	$VersionNumber < 8,
+If[	$VersionNumber < 10,
 	Message[InstallFeynCalc::notcomp];
 	Abort[]
 ];
 
 
-If[	8.0 <=$VersionNumber < 9.0,
-	(*To use FetchURL in MMA8 we need to load URLTools first *)
-	Needs["Utilities`URLTools`"];
-];
 
 Which[
-	(*Mma 8*)
-	8.0 <=$VersionNumber < 9.0,
-		(*To use FetchURL we need to load URLTools first *)
-		FCGetUrl[x_]:= Utilities`URLTools`FetchURL[x],
-	(*Mma 9 or 10 *)
-	9.0 <=$VersionNumber < 11.0,
+	(*Mma 10 *)
+	$VersionNumber < 11.0,
 		FCGetUrl[x_]:= URLSave[x,CreateTemporary[]],
 	(*Mma 11 and above *)
 	$VersionNumber >= 11.0,
@@ -124,7 +116,7 @@ If[ $PathToFCArc==="",
 			"It seems that your Mathematica version is unable to ",
 			"connect to the FeynCalc repository on GitHub.\n",
 			"This might be a network connectivity problem or an issue with Mathematica.\n",
-			"Especially some older versions of Mathematica (8, 9 or 10) and known to cause such problems\n",
+			"Especially some older versions of Mathematica 10 and known to cause such problems\n",
 			"on recent versions of Linux, MacOS and Windows when accessing SSL-encrypted urls.\n\n",
 			"Please check the wiki <https://github.com/FeynCalc/feyncalc/wiki/Installation> for ",
 			"possible workarounds.\n",
@@ -195,24 +187,47 @@ InstallFeynArts[OptionsPattern[]]:=
 			WriteString["stdout", "Downloading FeynArts from ", fazip," ..."];
 			tmpzip=FCGetUrl[fazip];
 		];
-		unzipDir= tmpzip<>".dir";
-		WriteString["stdout", "done! \n"];
+
+		If[tmpzip===$Failed || !FileExistsQ[tmpzip],
+			WriteString["stdout", "\nFailed to download the FeynArts zip file. Please check your interent connection.\nInstallation aborted!"];
+			Abort[],
+
+			unzipDir= tmpzip<>".dir";
+			WriteString["stdout", "done! \n"];
+		];
+
+
+		Quiet@CreateDirectory[unzipDir];
 
 		(* Extract to the content	*)
 		WriteString["stdout", "FeynArts zip file was saved to ", tmpzip,".\n"];
 		WriteString["stdout", "Extracting FeynArts zip file to ", faDir, " ..."];
-		ExtractArchive[tmpzip, unzipDir];
+
+		If[$VersionNumber=!=13.3,
+
+			If[	ExtractArchive[tmpzip, unzipDir]===$Failed,
+				WriteString["stdout", "\nFailed to extract the FeynArts zip. The file might be corrupted.\nInstallation aborted!"];
+				Abort[],
+				WriteString["stdout", "done! \n"];
+				(* Delete the downloaded file	*)
+				If[ $PathToFAArc==="",
+					Quiet@DeleteFile[tmpzip];
+				];
+			],
+
+			Quiet[ExtractArchive[tmpzip, unzipDir]];
+			If[ $PathToFAArc==="",
+					Quiet@DeleteFile[tmpzip];
+			];
+
+		];
+
 		WriteString["stdout", "done! \n"];
 
 		(* Move the files to the final destination	*)
 		WriteString["stdout", "Copying FeynArts to ", faDir, " ..."];
 		CopyDirectory[FileNameJoin[{unzipDir,"feynarts-mirror-master"}],faDir];
 		WriteString["stdout", "done! \n"];
-
-		(* Delete the downloaded file	*)
-		If[ $PathToFAArc==="",
-			Quiet@DeleteFile[tmpzip];
-		];
 
 		(* Delete the extracted archive *)
 		Quiet@DeleteDirectory[unzipDir, DeleteContents -> True];
@@ -231,7 +246,7 @@ InstallFeynCalc[OptionsPattern[]]:=
 	Module[	{unzipDir, tmpzip, gitzip, packageName, packageDir, fullPath,
 			strFeynArts, configFileProlog, strOverwriteFC,
 			strDisableWarning, strEnableTraditionalForm, faInstalled, zipDir,
-			useTraditionalForm, configFile},
+			useTraditionalForm, configFile, deleteStatus},
 
 		If[	OptionValue[InstallFeynCalcDevelopmentVersion],
 			gitzip = OptionValue[FeynCalcDevelopmentVersionLink],
@@ -310,15 +325,24 @@ InstallFeynCalc[OptionsPattern[]]:=
 
 			If[ OptionValue[AutoOverwriteFeynCalcDirectory],
 
-				Quiet@DeleteDirectory[packageDir, DeleteContents -> True],
+				Quiet[deleteStatus=DeleteDirectory[packageDir, DeleteContents -> True];],
 
 				Null,
 				If[ choiceDialog2[fancyText[strOverwriteFC],{"Yes, overwrite the " <> packageName <>" directory"->True,
 					"No, I need to do a backup first. Abort installation."->False}, WindowFloating->True, WindowTitle->"Existing FeynCalc installation detected"],
-					Quiet@DeleteDirectory[packageDir, DeleteContents -> True],
+					Quiet[deleteStatus=DeleteDirectory[packageDir, DeleteContents -> True];],
 					Abort[]
 				]
 			]
+		];
+
+		If[	deleteStatus===$Failed,
+			WriteString["stdout", "=========================================================================\n"];
+			WriteString["stdout", "For some reason the automatic installer failed to delete the directory\n"];
+			WriteString["stdout", packageDir<>"\n"];
+			WriteString["stdout", "Please delete this directory by hand and restart the installer.\n"];
+			WriteString["stdout", "=========================================================================\n"];
+			Abort[]
 		];
 
 		(* Download FeynCalc zip file	*)
@@ -341,23 +365,33 @@ InstallFeynCalc[OptionsPattern[]]:=
 		WriteString["stdout", "FeynCalc zip file was saved to ", tmpzip,".\n"];
 		WriteString["stdout", "Extracting FeynCalc zip file to ", unzipDir, " ..."];
 
-		If[	ExtractArchive[tmpzip, unzipDir]===$Failed,
-			WriteString["stdout", "\nFailed to extract the FeynCalc zip. The file might be corrupted.\nInstallation aborted!"];
-			Abort[],
-			WriteString["stdout", "done! \n"];
-			(* Delete the downloaded file	*)
+		If[$VersionNumber=!=13.3,
+
+			If[	ExtractArchive[tmpzip, unzipDir]===$Failed,
+				WriteString["stdout", "\nFailed to extract the FeynCalc zip. The file might be corrupted.\nInstallation aborted!"];
+				Abort[],
+				WriteString["stdout", "done! \n"];
+				(* Delete the downloaded file	*)
+				If[ $PathToFCArc==="",
+					Quiet@DeleteFile[tmpzip];
+				]
+			],
+
+			Quiet[ExtractArchive[tmpzip, unzipDir]];
 			If[ $PathToFCArc==="",
-				Quiet@DeleteFile[tmpzip];
-			]
+					Quiet@DeleteFile[tmpzip];
+			];
+
 		];
 
 		WriteString["stdout", "Checking the directory structure..."];
-		zipDir = FileNames["FeynCalc.m", unzipDir, Infinity];
+		zipDir = Select[FileNames["FeynCalc.m", unzipDir, Infinity],StringFreeQ[#,"DocumentationFiles"]&];
 		If[ Length[zipDir]===1,
 			fullPath = DirectoryName[zipDir[[1]]];
 			zipDir = Last[FileNameSplit[DirectoryName[zipDir[[1]]]]];
 			WriteString["stdout", "done! \n"],
 			WriteString["stdout", "\nFailed to recognize the directory structure of the downloaded zip file. \nInstallation aborted!"];
+			WriteString["stdout", "\nzipDir is ", zipDir];
 			Abort[]
 		];
 
@@ -372,19 +406,22 @@ InstallFeynCalc[OptionsPattern[]]:=
 			Quiet@DeleteDirectory[unzipDir, DeleteContents -> True];
 		];
 
-		(* Activate the documentation	*)
-		WriteString["stdout", "Setting up the help system ... "];
-		RenameDirectory[FileNameJoin[{packageDir,"DocOutput"}],FileNameJoin[{packageDir,"Documentation"}]];
-		Quiet@DeleteDirectory[FileNameJoin[{packageDir,"DocSource"}], DeleteContents -> True];
 
-		(* Disable InsufficientVersionWarning?*)
-		If[ OptionValue[AutoDisableInsufficientVersionWarning] && $Notebooks,
+		If[	!OptionValue[InstallFeynCalcDevelopmentVersion],
+			(* Activate the documentation	*)
+			WriteString["stdout", "Setting up the help system ... "];
+			RenameDirectory[FileNameJoin[{packageDir,"DocOutput"}],FileNameJoin[{packageDir,"Documentation"}]];
+			Quiet@DeleteDirectory[FileNameJoin[{packageDir,"DocSource"}], DeleteContents -> True];
 
-			SetOptions[$FrontEnd, MessageOptions -> {"InsufficientVersionWarning" -> False}],
+			(* Disable InsufficientVersionWarning?*)
+			If[ OptionValue[AutoDisableInsufficientVersionWarning] && $Notebooks,
 
-			Null,
-			If[ choiceDialog2[fancyText[strDisableWarning], WindowFloating->True, WindowTitle->"Documentation system"] && $Notebooks,
-				SetOptions[$FrontEnd, MessageOptions -> {"InsufficientVersionWarning" -> False}]
+				SetOptions[$FrontEnd, MessageOptions -> {"InsufficientVersionWarning" -> False}],
+
+				Null,
+				If[ choiceDialog2[fancyText[strDisableWarning], WindowFloating->True, WindowTitle->"Documentation system"] && $Notebooks,
+					SetOptions[$FrontEnd, MessageOptions -> {"InsufficientVersionWarning" -> False}]
+				]
 			]
 		];
 
@@ -401,10 +438,12 @@ InstallFeynCalc[OptionsPattern[]]:=
 
 		WriteString["stdout", "done! \n"];
 
-		(* To have the documentation available immediately after installing FeynCalc (following the advice of Szabolcs Horv'at) *)
-		If[	$VersionNumber >= 12.1,
-			PacletDataRebuild[],
-			RebuildPacletData[]
+		If[	!OptionValue[InstallFeynCalcDevelopmentVersion],
+			(* To have the documentation available immediately after installing FeynCalc (following the advice of Szabolcs Horv'at) *)
+			If[	$VersionNumber >= 12.1,
+				PacletDataRebuild[],
+				RebuildPacletData[]
+			];
 		];
 
 		(* Generate FCConfig.m	*)
@@ -426,10 +465,14 @@ InstallFeynCalc[OptionsPattern[]]:=
 
 		WriteString["stdout", "\nInstallation complete! Loading FeynCalc ... \n"];
 
-		If[	faInstalled,
-			Global`$LoadAddOns={"FeynArts"}
-		];
+		Global`$FAPatch=False;
 		Get["FeynCalc`"];
+		If[	faInstalled,
+			FeynCalc`FAPatch[Quiet->True]
+		];
+		If[	OptionValue[InstallFeynCalcDevelopmentVersion],
+			FeynCalc`FCReloadAddOns[{"FeynArtsLoader"}]
+		];
 
 ];
 

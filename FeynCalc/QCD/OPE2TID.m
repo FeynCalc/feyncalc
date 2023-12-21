@@ -12,10 +12,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-OPE2TID::usage = "OPE2TID[exp, k1, k2, p] does a tensor integral decomposition of exp.
-The setting of the option
-EpsContract determines the dimension in which the Levi-Civita tensors
-are contracted.";
+OPE2TID::usage =
+"OPE2TID[exp, k1, k2, p] does a special tensor integral decomposition of exp.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -54,12 +52,6 @@ OPE2TID[exp_, k1_, k2_, p_, opt___Rule] :=
 			];
 			temp = ApartFF[OPE1Loop[{k1,k2}, temp], {k1,k2}];
 
-			If[ FreeQ2[temp,{k1,k2}] && !FreeQ[temp,LorentzIndex] && !FreeQ[temp, RHI],
-				temp = Collect2[temp, LorentzIndex];
-				If[ Head[temp] === Plus,
-					temp = Map[(SelectFree[#, RHI] Collect2[SelectNotFree[#, RHI], RHI])&, temp]
-				]
-			];
 			temp
 		]
 	];
@@ -214,7 +206,7 @@ ope2TID[exp_, k1_, k2_, p_, opt___Rule] :=
 				If[ k12shift =!= {},
 					FCPrint[2,"shifting ",k12shift[[1]]];
 					temp = Collect2[ApartFF[EpsEvaluate[ExpandScalarProduct[
-									(temp /. k12shift)/.DiracTrace->Tr2]//diracsimp],{k1,k2}
+									(temp /. k12shift)/. DiracTrace[x__] :> DiracTrace[x,DiracTraceEvaluate->True]]//diracsimp],{k1,k2}
 																	],{k1,k2}
 													],
 					If[ !FreeQ[temp,DiracGamma],
@@ -2292,7 +2284,7 @@ ope2TID[exp_, k1_, k2_, p_, opt___Rule] :=
 										FCPrint[1,"collecting DiracTrace"];
 										temp = Collect2[temp, DiracTrace,
 																					Factoring -> False
-																	]/. DiracTrace -> Tr2
+																	]/. DiracTrace[x__] :> DiracTrace[x,DiracTraceEvaluate->True]
 									];
 									If[ contractlabel === True,
 										temp = Expand2[temp, LorentzIndex];
@@ -2586,9 +2578,7 @@ ope2TID[exp_, k1_, k2_, p_, opt___Rule] :=
 								If[ !FreeQ2[Cases2[temp,Pair], {k1,k2}],
 									temp = ApartFF[OPE1Loop[{k1,k2},temp],{k1,k2}];
 								];
-								temp = Collect2[FeynAmpDenominatorSimplify[temp,k1,k2,FC2RHI->True,
-																IncludePair -> True
-											],{k1,k2}]
+								temp = Collect2[FeynAmpDenominatorSimplify[temp,k1,k2],{k1,k2}]
 							];
 						(* freeq delfactor k1 k2*)
 ];

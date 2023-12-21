@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Do the trace-formation (i.e. fermionic spin-sums) *)
@@ -18,8 +18,8 @@
 
 FermionSpinSum::usage =
 "FermionSpinSum[exp] converts products of closed spinor chains in exp into
-Dirac traces. Both Dirac and Majorana particles are supported. It is understood,
-that exp represents a squared amplitude.";
+Dirac traces. Both Dirac and Majorana particles are supported. It is
+understood, that exp represents a squared amplitude.";
 
 FermionSpinSum::spinorsleft =
 "Error! After applying FermionSpinSum to all spinor chains the output \
@@ -31,7 +31,7 @@ Those must necessarily be simplified before the computation of Dirac traces.";
 
 FermionSpinSum::failmsg =
 "Error! FermionSpinSum encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 

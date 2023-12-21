@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Replaces the given momenta with other momenta				*)
@@ -16,16 +16,16 @@
 (* ------------------------------------------------------------------------ *)
 
 FCReplaceMomenta::usage =
-"FCReplaceMomenta[exp,rule] replaces the given momentum according to the \
-specified replacement rules. Various options can be used to customize the replacement \
-procedure.";
+"FCReplaceMomenta[exp, rule]  replaces the given momentum according to the
+specified replacement rules. Various options can be used to customize the
+replacement procedure.";
 
 FCReplaceMomenta::repfail=
 "Error! Failed to replace all occurences of `1` with `2`. Evaluation aborted.";
 
 FCReplaceMomenta::failmsg =
 "Error! FCReplaceMomenta has encountered a fatal problem and must abort \
-the computation. The problem reads: `1`"
+the computation. The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -39,6 +39,7 @@ fcrmVerbose::usage="";
 Options[FCReplaceMomenta] = {
 	Dimensions			-> All,
 	EpsEvaluate 		-> False,
+	EpsExpand 			-> True,
 	ExpandScalarProduct -> False,
 	FCE 				-> False,
 	FCI 				-> False,
@@ -56,7 +57,7 @@ Options[FCReplaceMomenta] = {
 	Variables 			-> {}
 };
 
-FCReplaceMomenta[expr_, replacementRules_List/;replacementRules=!={},  OptionsPattern[]] :=
+FCReplaceMomenta[expr_, replacementRules_List,  OptionsPattern[]] :=
 	Block[{	ex,res, relevantMomenta,relevantObjects,sel, relevantMomentumHeads,
 			objectHeads, momentumHeads,dims, rule, pat, finalRepRule, intermediateRepRule,
 			relevantObjectsEval, variableRule, vars, null1, null2, selectFree, tmp, maskedObjects,
@@ -90,10 +91,15 @@ FCReplaceMomenta[expr_, replacementRules_List/;replacementRules=!={},  OptionsPa
 
 		(*we also want something like p1->x*p2 to work!*)
 
-		If[	!MathcQ[replacementRules,{Rule___}],
+		If[	!MathcQ[replacementRules,{___Rule}],
 			Message[FCReplaceMomenta::failmsg, "The momentum replacement rules are incorrect."];
 			Abort[]
 
+		];
+
+		If[	replacementRules==={},
+			FCPrint[1,"FCReplaceMomenta: Nothing to do.", FCDoControl->fcrmVerbose];
+			Return[ex]
 		];
 
 		relevantMomenta = First/@replacementRules;
@@ -125,8 +131,10 @@ FCReplaceMomenta[expr_, replacementRules_List/;replacementRules=!={},  OptionsPa
 
 		];
 
+		FCPrint[3,"FCReplaceMomenta: Relevant objects: ", relevantObjects, FCDoControl->fcrmVerbose];
+
 		If[ OptionValue[MomentumExpand],
-			relevantObjectsEval = MomentumExpand/@relevantObjects,
+			relevantObjectsEval = MomentumExpand[relevantObjects, Momentum->relevantMomenta],
 			relevantObjectsEval = relevantObjects
 		];
 
@@ -155,7 +163,7 @@ FCReplaceMomenta[expr_, replacementRules_List/;replacementRules=!={},  OptionsPa
 		relevantObjectsEval = relevantObjectsEval /. Dispatch[intermediateRepRule];
 
 
-		relevantObjectsEval = (MomentumExpand/@relevantObjectsEval) //. (h:sel)[x_ y_, dm___]/; MemberQ[vars,x] :>  x h[y, dm] ;
+		relevantObjectsEval = MomentumExpand[relevantObjectsEval, Momentum->relevantMomenta] //. (h:sel)[x_ y_, dm___]/; MemberQ[vars,x] :>  x h[y, dm] ;
 
 		finalRepRule = Thread[Rule[relevantObjects,relevantObjectsEval]];
 
@@ -170,7 +178,7 @@ FCReplaceMomenta[expr_, replacementRules_List/;replacementRules=!={},  OptionsPa
 		];
 
 		If [OptionValue[EpsEvaluate],
-			res = EpsEvaluate[res,FCI->True]
+			res = EpsEvaluate[res,FCI->True, EpsExpand->OptionValue[EpsExpand]]
 		];
 
 		If [OptionValue[ExpandScalarProduct],

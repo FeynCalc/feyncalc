@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Simplification of epsilon tensors								*)
@@ -16,8 +16,8 @@
 (* ------------------------------------------------------------------------ *)
 
 EpsEvaluate::usage =
-"EpsEvaluate[expr] applies total antisymmetry and \
-linearity (w.r.t. Momentum's) to all Levi-Civita tensors (Eps's) in expr .";
+"EpsEvaluate[expr] applies total antisymmetry and linearity (w.r.t. momenta) to
+all Levi-Civita tensors (Eps) in expr.";
 
 EpsEvaluate::failmsg =
 "Error! EpsEvaluate has encountered a fatal problem and must abort the computation. \
@@ -30,16 +30,19 @@ End[]
 
 Begin["`EpsEvaluate`Private`"]
 
+optMomentum::usage="";
+
 Options[EpsEvaluate] = {
+	EpsExpand	-> True,
 	FCE			-> False,
 	FCI 		-> False,
 	Momentum	-> All
 };
 
 EpsEvaluate[expr_, OptionsPattern[]]:=
-	Block[{ex, momList, uniqList, rud, repRule, null1, null2, res},
+	Block[{ex, uniqList, rud, repRule, null1, null2, res, epsEval},
 
-		momList = OptionValue[Momentum];
+		optMomentum = OptionValue[Momentum];
 
 		If[ !OptionValue[FCI],
 			ex = FCI[expr],
@@ -57,17 +60,21 @@ EpsEvaluate[expr_, OptionsPattern[]]:=
 
 		(*	If the user specified to perform expansion only for some
 			special momenta, let's do it	*)
-		If[ momList=!=All && Head[momList]===List,
-			uniqList = Select[uniqList, !FreeQ2[#, momList]&]
+		If[ optMomentum=!=All && Head[optMomentum]===List,
+			uniqList = Select[uniqList, !FreeQ2[#, optMomentum]&]
 		];
 
 		(* List of the expanded epsilons	*)
+		If[	OptionValue[EpsExpand],
+			epsEval = epsEvalMomExpand,
+			epsEval = epsEvalMomCombine
+		];
 
 		repRule = Thread[rud[uniqList, uniqList/.Eps->epsEval]];
 		repRule = repRule /. rud[a_, a_] :> Unevaluated@Sequence[] /. rud->RuleDelayed;
 
 		(* Simple cross check	*)
-		If[ !FreeQ2[repRule,{epsEval,epsEvalLinearity,epsEvalAntiSymm}],
+		If[ !FreeQ2[repRule,{epsEvalMomExpand,epsEvalMomCombine,epsEvalLinearity,epsEvalAntiSymm}],
 			Message[EpsEvaluate::failmsg, "Some expressions could not be evaluated."];
 			Abort[]
 		];
@@ -82,8 +89,12 @@ EpsEvaluate[expr_, OptionsPattern[]]:=
 
 	];
 
-epsEval[a_,b_,c__] :=
-	(Expand/@(Distribute[DOT[a,b,c]//MomentumExpand]))/.
+epsEvalMomExpand[a_,b_,c__] :=
+	(Expand/@( Distribute[MomentumExpand[DOT[a,b,c], Momentum->optMomentum]](**) ))/.
+	DOT->epsEvalLinearity/.epsEvalLinearity->epsEvalAntiSymm/.epsEvalAntiSymm -> epsEvalAntiSymm2 /. epsEvalAntiSymm2 -> Eps
+
+epsEvalMomCombine[a_,b_,c__] :=
+	(Expand/@( Distribute[MomentumCombine[DOT[a,b,c]]] ))/.
 	DOT->epsEvalLinearity/.epsEvalLinearity->epsEvalAntiSymm/.epsEvalAntiSymm -> epsEvalAntiSymm2 /. epsEvalAntiSymm2 -> Eps
 
 

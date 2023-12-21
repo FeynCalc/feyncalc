@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Switch u and v spinors in a spinor chain						*)
@@ -16,11 +16,11 @@
 (* ------------------------------------------------------------------------ *)
 
 SpinorChainTranspose::usage =
-"SpinorChainTranspose[exp] tranposes particular spinor chains in exp, \
-which effectively switches the u and v spinors and reverses the order of \
-the Dirac matrices using charge conjugation operator. This operation is \
-often required in calculations that involve Majorana particles. By default, \
-the function will tranpose all chains of the form vbar.x.u and vbar.x.v. \
+"SpinorChainTranspose[exp] transposes particular spinor chains in exp, which
+effectively switches the $u$ and $v$ spinors and reverses the order of the
+Dirac matrices using charge conjugation operator. This operation is often
+required in calculations that involve Majorana particles. By default, the
+function will tranpose all chains of the form $\\bar{v}.x.u$ and $\\bar{v}.x.v$.
 A different or more fine grained choice can be obtained via the option Select.";
 
 SpinorChainTranspose::failmsg =

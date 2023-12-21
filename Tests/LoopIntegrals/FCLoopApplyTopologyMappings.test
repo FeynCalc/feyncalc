@@ -1,0 +1,460 @@
+
+
+(* :Title: FCLoopApplyTopologyMappings.test									*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for
+		FCLoopApplyTopologyMappings											*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopApplyTopologyMappings =
+({
+{"fcstFCLoopApplyTopologyMappings-ID1",
+"FCLoopApplyTopologyMappings[gliProduct[cc6*SPD[p1,p1],GLI[\
+fctopology1,{1,1,2,1,1,1,1,1,1}]]+gliProduct[cc2*SPD[p1,p2],GLI[\
+fctopology2,{1,1,1,1,1,1,1,1,1}]]+gliProduct[cc4*SPD[p1,p2],GLI[\
+fctopology4,{1,1,1,1,1,1,1,1,1}]]+gliProduct[cc1*SPD[p1,Q],GLI[\
+fctopology1,{1,1,1,1,1,1,1,1,1}]]+gliProduct[cc3*SPD[p2,p2],GLI[\
+fctopology3,{1,1,1,1,1,1,1,1,1}]]+gliProduct[cc5*SPD[p2,Q],GLI[\
+fctopology5,{1,1,1,1,1,1,1,1,1}]],{{{FCTopology[fctopology3,{SFAD[{{\
+p3,0},{0,1},1}],SFAD[{{p2,0},{0,1},1}],SFAD[{{p1,0},{0,1},1}],SFAD[{{\
+p2+p3,0},{0,1},1}],SFAD[{{p1+p3,0},{0,1},1}],SFAD[{{p2-Q,0},{0,1},1}],\
+SFAD[{{p2+p3-Q,0},{0,1},1}],SFAD[{{p1+p3-Q,0},{0,1},1}],SFAD[{{p1+p2+\
+p3-Q,0},{0,1},1}]}],{p1->-p1-p3+Q,p2->-p2-p3+Q,p3->p3},GLI[\
+fctopology3,{n1_,n7_,n8_,n5_,n6_,n4_,n2_,n3_,n9_}]:>GLI[fctopology1,{\
+n1,n2,n3,n4,n5,n6,n7,n8,n9}]},{FCTopology[fctopology4,{SFAD[{{p3,0},{\
+0,1},1}],SFAD[{{p2,0},{0,1},1}],SFAD[{{p1,0},{0,1},1}],SFAD[{{p2+p3,0}\
+,{0,1},1}],SFAD[{{p1+p3,0},{0,1},1}],SFAD[{{p2-Q,0},{0,1},1}],SFAD[{{\
+p1-Q,0},{0,1},1}],SFAD[{{p1+p3-Q,0},{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,\
+1},1}]}],{p1->-p2+Q,p2->-p1+Q,p3->-p3},GLI[fctopology4,{n1_,n6_,n5_,\
+n8_,n7_,n3_,n2_,n4_,n9_}]:>GLI[fctopology1,{n1,n2,n3,n4,n5,n6,n7,n8,\
+n9}]},{FCTopology[fctopology5,{SFAD[{{p3,0},{0,1},1}],SFAD[{{p2,0},{0,\
+1},1}],SFAD[{{p1,0},{0,1},1}],SFAD[{{p1+p3,0},{0,1},1}],SFAD[{{p2-Q,0}\
+,{0,1},1}],SFAD[{{p1-Q,0},{0,1},1}],SFAD[{{p1+p3-Q,0},{0,1},1}],SFAD[{\
+{p1+p2-Q,0},{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,1},1}]}],{p1->p2,p2->p1,\
+p3->p3},GLI[fctopology5,{n1_,n3_,n2_,n4_,n6_,n5_,n7_,n8_,n9_}]:>GLI[\
+fctopology2,{n1,n2,n3,n4,n5,n6,n7,n8,n9}]}},{
+FCTopology[fctopology1,{SFAD[{{p3,0},{0,1},1}],SFAD[{{p2,0},{0,1},1}],\
+SFAD[{{p1,0},{0,1},1}],SFAD[{{p2+p3,0},{0,1},1}],SFAD[{{p2-Q,0},{0,1},\
+1}],
+SFAD[{{p1-Q,0},{0,1},1}],SFAD[{{p2+p3-Q,0},{0,1},1}],SFAD[{{p1+p3-Q,0}\
+,{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,1},1}]},{p1,p2,p3},{Q},{},{}],
+FCTopology[fctopology2,{SFAD[{{p3,0},{0,1},1}],SFAD[{{p2,0},{0,1},1}],\
+SFAD[{{p1,0},{0,1},1}],SFAD[{{p2+p3,0},{0,1},1}],SFAD[{{p2-Q,0},{0,1},\
+1}],
+SFAD[{{p1-Q,0},{0,1},1}],SFAD[{{p2+p3-Q,0},{0,1},1}],SFAD[{{p1+p2-Q,0}\
+,{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,1},1}]},{p1,p2,p3},{Q},{},{}]}},\
+Head->gliProduct]",
+"(cc4*GLI[fctopology1, {0, 1, 1, 1, 1, 1, 1, 1, 1}])/2 + ((cc1 - \
+cc4)*GLI[fctopology1, {1, 1, 0, 1, 1, 1, 1, 1, 1}])/2 - \
+(cc4*GLI[fctopology1, {1, 1, 1, 0, 1, 1, 1, 1, 1}])/2 - ((cc1 - \
+cc4)*GLI[fctopology1, {1, 1, 1, 1, 1, 0, 1, 1, 1}])/2 + \
+cc3*GLI[fctopology1, {1, 1, 1, 1, 1, 1, 0, 1, 1}] - \
+(cc4*GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 0, 1}])/2 + \
+(cc4*GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 1, 0}])/2 + \
+(cc5*GLI[fctopology2, {1, 1, 0, 1, 1, 1, 1, 1, 1}])/2 - \
+(cc2*GLI[fctopology2, {1, 1, 1, 1, 0, 1, 1, 1, 1}])/2 - ((cc2 + \
+cc5)*GLI[fctopology2, {1, 1, 1, 1, 1, 0, 1, 1, 1}])/2 + \
+(cc2*GLI[fctopology2, {1, 1, 1, 1, 1, 1, 1, 0, 1}])/2 + ((cc2 + \
+cc5)*GLI[fctopology2, {1, 1, 1, 1, 1, 1, 1, 1, 1}]*Pair[Momentum[Q, \
+D], Momentum[Q, D]])/2 + (GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 1, \
+1}]*(2*cc6 + cc1*Pair[Momentum[Q, D], Momentum[Q, D]] + \
+cc4*Pair[Momentum[Q, D], Momentum[Q, D]]))/2"},
+{"fcstFCLoopApplyTopologyMappings-ID2",
+"FCLoopApplyTopologyMappings[gliProduct[cc6*SPD[p1,p1],GLI[\
+fctopology1,{1,1,2,1,1,1,1,1,1}]]+gliProduct[cc2*SPD[p1,p2],GLI[\
+fctopology2,{1,1,1,1,1,1,1,1,1}]]+gliProduct[cc4*SPD[p1,p2],GLI[\
+fctopology4,{1,1,1,1,1,1,1,1,1}]]+gliProduct[cc1*SPD[p1,Q],GLI[\
+fctopology1,{1,1,1,1,1,1,1,1,1}]]+gliProduct[cc3*SPD[p2,p2],GLI[\
+fctopology3,{1,1,1,1,1,1,1,1,1}]]+gliProduct[cc5*SPD[p2,Q],GLI[\
+fctopology5,{1,1,1,1,1,1,1,1,1}]],{{{FCTopology[fctopology3,{SFAD[{{\
+p3,0},{0,1},1}],SFAD[{{p2,0},{0,1},1}],SFAD[{{p1,0},{0,1},1}],SFAD[{{\
+p2+p3,0},{0,1},1}],SFAD[{{p1+p3,0},{0,1},1}],SFAD[{{p2-Q,0},{0,1},1}],\
+SFAD[{{p2+p3-Q,0},{0,1},1}],SFAD[{{p1+p3-Q,0},{0,1},1}],SFAD[{{p1+p2+\
+p3-Q,0},{0,1},1}]}],{p1->-p1-p3+Q,p2->-p2-p3+Q,p3->p3},GLI[\
+fctopology3,{n1_,n7_,n8_,n5_,n6_,n4_,n2_,n3_,n9_}]:>GLI[fctopology1,{\
+n1,n2,n3,n4,n5,n6,n7,n8,n9}]},{FCTopology[fctopology4,{SFAD[{{p3,0},{\
+0,1},1}],SFAD[{{p2,0},{0,1},1}],SFAD[{{p1,0},{0,1},1}],SFAD[{{p2+p3,0}\
+,{0,1},1}],SFAD[{{p1+p3,0},{0,1},1}],SFAD[{{p2-Q,0},{0,1},1}],SFAD[{{\
+p1-Q,0},{0,1},1}],SFAD[{{p1+p3-Q,0},{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,\
+1},1}]}],{p1->-p2+Q,p2->-p1+Q,p3->-p3},GLI[fctopology4,{n1_,n6_,n5_,\
+n8_,n7_,n3_,n2_,n4_,n9_}]:>GLI[fctopology1,{n1,n2,n3,n4,n5,n6,n7,n8,\
+n9}]},{FCTopology[fctopology5,{SFAD[{{p3,0},{0,1},1}],SFAD[{{p2,0},{0,\
+1},1}],SFAD[{{p1,0},{0,1},1}],SFAD[{{p1+p3,0},{0,1},1}],SFAD[{{p2-Q,0}\
+,{0,1},1}],SFAD[{{p1-Q,0},{0,1},1}],SFAD[{{p1+p3-Q,0},{0,1},1}],SFAD[{\
+{p1+p2-Q,0},{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,1},1}]}],{p1->p2,p2->p1,\
+p3->p3},GLI[fctopology5,{n1_,n3_,n2_,n4_,n6_,n5_,n7_,n8_,n9_}]:>GLI[\
+fctopology2,{n1,n2,n3,n4,n5,n6,n7,n8,n9}]}},{
+FCTopology[fctopology1,{SFAD[{{p3,0},{0,1},1}],SFAD[{{p2,0},{0,1},1}],\
+SFAD[{{p1,0},{0,1},1}],SFAD[{{p2+p3,0},{0,1},1}],SFAD[{{p2-Q,0},{0,1},\
+1}],
+SFAD[{{p1-Q,0},{0,1},1}],SFAD[{{p2+p3-Q,0},{0,1},1}],SFAD[{{p1+p3-Q,0}\
+,{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,1},1}]},{p1,p2,p3},{Q},{},{}],
+FCTopology[fctopology2,{SFAD[{{p3,0},{0,1},1}],SFAD[{{p2,0},{0,1},1}],\
+SFAD[{{p1,0},{0,1},1}],SFAD[{{p2+p3,0},{0,1},1}],SFAD[{{p2-Q,0},{0,1},\
+1}],
+SFAD[{{p1-Q,0},{0,1},1}],SFAD[{{p2+p3-Q,0},{0,1},1}],SFAD[{{p1+p2-Q,0}\
+,{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,1},1}]},{p1,p2,p3},{Q},{},{}]}},\
+Head->gliProduct,FCLoopCreateRulesToGLI->False]",
+"gliProduct[cc6*Pair[Momentum[p1, D], Momentum[p1, D]], \
+GLI[fctopology1, {1, 1, 2, 1, 1, 1, 1, 1, 1}]] + \
+gliProduct[cc2*Pair[Momentum[p1, D], Momentum[p2, D]], \
+GLI[fctopology2, {1, 1, 1, 1, 1, 1, 1, 1, 1}]] + \
+gliProduct[cc1*Pair[Momentum[p1, D], Momentum[Q, D]], \
+GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 1, 1}]] + \
+gliProduct[cc5*Pair[Momentum[p1, D], Momentum[Q, D]], \
+GLI[fctopology2, {1, 1, 1, 1, 1, 1, 1, 1, 1}]] + \
+gliProduct[cc4*Pair[Momentum[-p1 + Q, D], Momentum[-p2 + Q, D]], \
+GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 1, 1}]] + \
+gliProduct[cc3*Pair[Momentum[-p2 - p3 + Q, D], Momentum[-p2 - p3 + Q, \
+D]], GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 1, 1}]]"},
+{"fcstFCLoopApplyTopologyMappings-ID3",
+"FCLoopApplyTopologyMappings[gliProduct[cc6*SPD[p1,p1],GLI[\
+fctopology1,{1,1,2,1,1,1,1,1,1}]]+gliProduct[cc2*SPD[p1,p2],GLI[\
+fctopology2,{1,1,1,1,1,1,1,1,1}]]+gliProduct[cc4*SPD[p1,p2],GLI[\
+fctopology4,{1,1,1,1,1,1,1,1,1}]]+gliProduct[cc1*SPD[p1,Q],GLI[\
+fctopology1,{1,1,1,1,1,1,1,1,1}]]+gliProduct[cc3*SPD[p2,p2],GLI[\
+fctopology3,{1,1,1,1,1,1,1,1,1}]]+gliProduct[cc5*SPD[p2,Q],GLI[\
+fctopology5,{1,1,1,1,1,1,1,1,1}]],{{{FCTopology[fctopology3,{SFAD[{{\
+p3,0},{0,1},1}],SFAD[{{p2,0},{0,1},1}],SFAD[{{p1,0},{0,1},1}],SFAD[{{\
+p2+p3,0},{0,1},1}],SFAD[{{p1+p3,0},{0,1},1}],SFAD[{{p2-Q,0},{0,1},1}],\
+SFAD[{{p2+p3-Q,0},{0,1},1}],SFAD[{{p1+p3-Q,0},{0,1},1}],SFAD[{{p1+p2+\
+p3-Q,0},{0,1},1}]}],{p1->-p1-p3+Q,p2->-p2-p3+Q,p3->p3},GLI[\
+fctopology3,{n1_,n7_,n8_,n5_,n6_,n4_,n2_,n3_,n9_}]:>GLI[fctopology1,{\
+n1,n2,n3,n4,n5,n6,n7,n8,n9}]},{FCTopology[fctopology4,{SFAD[{{p3,0},{\
+0,1},1}],SFAD[{{p2,0},{0,1},1}],SFAD[{{p1,0},{0,1},1}],SFAD[{{p2+p3,0}\
+,{0,1},1}],SFAD[{{p1+p3,0},{0,1},1}],SFAD[{{p2-Q,0},{0,1},1}],SFAD[{{\
+p1-Q,0},{0,1},1}],SFAD[{{p1+p3-Q,0},{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,\
+1},1}]}],{p1->-p2+Q,p2->-p1+Q,p3->-p3},GLI[fctopology4,{n1_,n6_,n5_,\
+n8_,n7_,n3_,n2_,n4_,n9_}]:>GLI[fctopology1,{n1,n2,n3,n4,n5,n6,n7,n8,\
+n9}]},{FCTopology[fctopology5,{SFAD[{{p3,0},{0,1},1}],SFAD[{{p2,0},{0,\
+1},1}],SFAD[{{p1,0},{0,1},1}],SFAD[{{p1+p3,0},{0,1},1}],SFAD[{{p2-Q,0}\
+,{0,1},1}],SFAD[{{p1-Q,0},{0,1},1}],SFAD[{{p1+p3-Q,0},{0,1},1}],SFAD[{\
+{p1+p2-Q,0},{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,1},1}]}],{p1->p2,p2->p1,\
+p3->p3},GLI[fctopology5,{n1_,n3_,n2_,n4_,n6_,n5_,n7_,n8_,n9_}]:>GLI[\
+fctopology2,{n1,n2,n3,n4,n5,n6,n7,n8,n9}]}},{
+FCTopology[fctopology1,{SFAD[{{p3,0},{0,1},1}],SFAD[{{p2,0},{0,1},1}],\
+SFAD[{{p1,0},{0,1},1}],SFAD[{{p2+p3,0},{0,1},1}],SFAD[{{p2-Q,0},{0,1},\
+1}],
+SFAD[{{p1-Q,0},{0,1},1}],SFAD[{{p2+p3-Q,0},{0,1},1}],SFAD[{{p1+p3-Q,0}\
+,{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,1},1}]},{p1,p2,p3},{Q},{},{}],
+FCTopology[fctopology2,{SFAD[{{p3,0},{0,1},1}],SFAD[{{p2,0},{0,1},1}],\
+SFAD[{{p1,0},{0,1},1}],SFAD[{{p2+p3,0},{0,1},1}],SFAD[{{p2-Q,0},{0,1},\
+1}],
+SFAD[{{p1-Q,0},{0,1},1}],SFAD[{{p2+p3-Q,0},{0,1},1}],SFAD[{{p1+p2-Q,0}\
+,{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,1},1}]},{p1,p2,p3},{Q},{},{}]}},\
+Head->gliProduct,GLIMultiply->False]",
+"gliProduct[cc6*GLI[fctopology1, {0, 0, -1, 0, 0, 0, 0, 0, 0}], \
+GLI[fctopology1, {1, 1, 2, 1, 1, 1, 1, 1, 1}]] + \
+gliProduct[cc3*GLI[fctopology1, {0, 0, 0, 0, 0, 0, -1, 0, 0}], \
+GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 1, 1}]] + \
+gliProduct[(cc1*(GLI[fctopology1, {0, 0, -1, 0, 0, 0, 0, 0, 0}] - \
+GLI[fctopology1, {0, 0, 0, 0, 0, -1, 0, 0, 0}] + Pair[Momentum[Q, D], \
+Momentum[Q, D]]))/2, GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 1, 1}]] + \
+gliProduct[(cc5*(GLI[fctopology2, {0, 0, -1, 0, 0, 0, 0, 0, 0}] - \
+GLI[fctopology2, {0, 0, 0, 0, 0, -1, 0, 0, 0}] + Pair[Momentum[Q, D], \
+Momentum[Q, D]]))/2, GLI[fctopology2, {1, 1, 1, 1, 1, 1, 1, 1, 1}]] + \
+gliProduct[(cc2*(-GLI[fctopology2, {0, 0, 0, 0, -1, 0, 0, 0, 0}] - \
+GLI[fctopology2, {0, 0, 0, 0, 0, -1, 0, 0, 0}] + GLI[fctopology2, {0, \
+0, 0, 0, 0, 0, 0, -1, 0}] + Pair[Momentum[Q, D], Momentum[Q, D]]))/2, \
+GLI[fctopology2, {1, 1, 1, 1, 1, 1, 1, 1, 1}]] + \
+gliProduct[cc4*((-GLI[fctopology1, {0, -1, 0, 0, 0, 0, 0, 0, 0}] + \
+GLI[fctopology1, {0, 0, 0, 0, -1, 0, 0, 0, 0}] - Pair[Momentum[Q, D], \
+Momentum[Q, D]])/2 + (-GLI[fctopology1, {0, 0, -1, 0, 0, 0, 0, 0, 0}] \
++ GLI[fctopology1, {0, 0, 0, 0, 0, -1, 0, 0, 0}] - Pair[Momentum[Q, \
+D], Momentum[Q, D]])/2 + Pair[Momentum[Q, D], Momentum[Q, D]] + \
+(GLI[fctopology1, {-1, 0, 0, 0, 0, 0, 0, 0, 0}] + GLI[fctopology1, \
+{0, -1, 0, 0, 0, 0, 0, 0, 0}] - GLI[fctopology1, {0, 0, 0, -1, 0, 0, \
+0, 0, 0}] - GLI[fctopology1, {0, 0, 0, 0, -1, 0, 0, 0, 0}] - \
+GLI[fctopology1, {0, 0, 0, 0, 0, 0, 0, -1, 0}] + GLI[fctopology1, {0, \
+0, 0, 0, 0, 0, 0, 0, -1}] + Pair[Momentum[Q, D], Momentum[Q, D]])/2), \
+GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 1, 1}]]"},
+
+
+{"fcstFCLoopApplyTopologyMappings-ID4","FCLoopApplyTopologyMappings[
+gliProduct[cc6*SPD[p1, p1],
+GLI[fctopology1, {1, 1, 2, 1, 1, 1, 1, 1, 1}]] +
+gliProduct[cc1*SPD[p1, Q],
+GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 1, 1}]], {{}, {FCTopology[
+	fctopology1, {SFAD[{{p3, 0}, {0, 1}, 1}],
+	SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2,
+	p3}, {Q}, {}, {}]}}, FCE -> True]",
+	"gliProduct[cc6 SPD[p1, p1],
+GLI[fctopology1, {1, 1, 2, 1, 1, 1, 1, 1, 1}]] +
+gliProduct[cc1 SPD[p1, Q],
+GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 1, 1}]]"},
+{"fcstFCLoopApplyTopologyMappings-ID5",
+"FCLoopApplyTopologyMappings[
+gliProduct[cc6*SPD[p1, p1],
+GLI[fctopology1, {1, 1, 2, 1, 1, 1, 1, 1, 1}]] +
+gliProduct[cc1*SPD[p1, Q],
+GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 1, 1}]], {{}, {FCTopology[
+	fctopology1, {SFAD[{{p3, 0}, {0, 1}, 1}],
+	SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2,
+	p3}, {Q}, {}, {}]}}, Head -> gliProduct, FCE -> True]",
+	"1/2 cc1 GLI[fctopology1, {1, 1, 0, 1, 1, 1, 1, 1, 1}] -
+1/2 cc1 GLI[fctopology1, {1, 1, 1, 1, 1, 0, 1, 1, 1}] +
+1/2 GLI[fctopology1, {1, 1, 1, 1, 1, 1, 1, 1, 1}] (2 cc6 +
+	cc1 SPD[Q, Q])"},
+{"fcstFCLoopApplyTopologyMappings-ID6",
+"FCLoopApplyTopologyMappings[FCGV[\"GLIProduct\"][-(FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*Pair[Momentum[p, D], Momentum[q1, D]]*Pair[Momentum[p, D], Momentum[q2, D]]*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*
+	SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]]), GLI[\"fctopology2\", {1, 1, 1, 1}]] +
+FCGV[\"GLIProduct\"][FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*(GaugeXi*Pair[Momentum[p, D], Momentum[p, D]]*Pair[Momentum[p, D], Momentum[q1, D]]*Pair[Momentum[p, D], Momentum[q2, D]]*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*
+	SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]] - GaugeXi*Pair[Momentum[p, D], Momentum[q1, D]]^2*Pair[Momentum[p, D], Momentum[q2, D]]*SMP[\"g_s\"]^4*
+	SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]] -
+	GaugeXi*Pair[Momentum[p, D], Momentum[p, D]]*Pair[Momentum[p, D], Momentum[q2, D]]*Pair[Momentum[q1, D], Momentum[q1, D]]*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*
+	SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]] + GaugeXi*Pair[Momentum[p, D], Momentum[q1, D]]*Pair[Momentum[p, D], Momentum[q2, D]]*Pair[Momentum[q1, D], Momentum[q1, D]]*SMP[\"g_s\"]^4*
+	SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]]), GLI[\"fctopology2\", {1, 1, 1, 2}]],
+	{{{FCTopology[\"fctopology3\", {FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q2, D], 0, 0, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q1, D], 0, 0, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p - q1, D], 0, 0, {1, 1}]],
+	FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p - q1 + q2, D], 0, 0, {1, 1}]]}, {q1, q2}, {p}, {}, {}], {q1 -> -q1, q2 -> -q1 - q2}, GLI[\"fctopology3\", {n2_, n1_, n3_, n4_}] :> GLI[\"fctopology1\", {0, n1, n2, n3, n4}]},
+{FCTopology[\"fctopology2\", {FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q2, D], 0, 0, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q1, D], 0, 0, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p + q2, D], 0, 0, {1, 1}]],
+	FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p - q1, D], 0, 0, {1, 1}]]}, {q1, q2}, {p}, {}, {}], {q1 -> -q1, q2 -> -q2}, GLI[\"fctopology2\", {n1_, n2_, n4_, n3_}] :> GLI[\"fctopology1\", {n1, n2, 0, n3, n4}]}},
+{FCTopology[\"fctopology1\", {FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q2, D], 0, 0, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q1, D], 0, 0, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q1 + q2, D], 0, 0, {1, 1}]],
+	FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p + q1, D], 0, 0, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[Momentum[p - q2, D], 0, 0, {1, 1}]]}, {q1, q2}, {p}, {}, {}]}}
+	]",
+	"-1/8*(GaugeXi*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {0, -1, 0, 2, 1}]*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*
+SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]]) + (FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {0, 0, 0, 1, 1}]*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*
+SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/4 -
+((2 - GaugeXi)*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {0, 1, 0, 0, 1}]*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*
+SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/8 + (GaugeXi*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {1, -1, 0, 2, 0}]*SMP[\"g_s\"]^4*
+SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/8 -
+(FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {1, 0, 0, 1, 0}]*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*
+SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/4 + ((2 - GaugeXi)*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {1, 1, 0, 0, 0}]*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*
+SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/8 +
+(GaugeXi*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {0, 0, 0, 2, 1}]*Pair[Momentum[p, D], Momentum[p, D]]*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*
+SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/4 + (FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {0, 1, 0, 1, 1}]*Pair[Momentum[p, D], Momentum[p, D]]*SMP[\"g_s\"]^4*
+SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/4 -
+(GaugeXi*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {1, -1, 0, 2, 1}]*Pair[Momentum[p, D], Momentum[p, D]]*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*
+SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/8 + (FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {1, 0, 0, 1, 1}]*Pair[Momentum[p, D], Momentum[p, D]]*SMP[\"g_s\"]^4*
+SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/4 -
+(GaugeXi*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {1, 0, 0, 2, 0}]*Pair[Momentum[p, D], Momentum[p, D]]*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*
+SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/4 - ((2 - GaugeXi)*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {1, 1, 0, 0, 1}]*Pair[Momentum[p, D], Momentum[p, D]]*SMP[\"g_s\"]^4*
+SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/8 -
+(FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {1, 1, 0, 1, 0}]*Pair[Momentum[p, D], Momentum[p, D]]*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*
+SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/4 - (GaugeXi*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {0, 1, 0, 2, 1}]*Pair[Momentum[p, D], Momentum[p, D]]^2*SMP[\"g_s\"]^4*
+SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/8 +
+(GaugeXi*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {1, 0, 0, 2, 1}]*Pair[Momentum[p, D], Momentum[p, D]]^2*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*
+SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/4 + (FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {1, 1, 0, 1, 1}]*Pair[Momentum[p, D], Momentum[p, D]]^2*SMP[\"g_s\"]^4*
+SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/4 +
+(GaugeXi*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {1, 1, 0, 2, 0}]*Pair[Momentum[p, D], Momentum[p, D]]^2*SMP[\"g_s\"]^4*SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*
+SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/8 - (GaugeXi*FeynAmpDenominator[PropagatorDenominator[Momentum[p, D], 0]]*GLI[\"fctopology1\", {1, 1, 0, 2, 1}]*Pair[Momentum[p, D], Momentum[p, D]]^3*SMP[\"g_s\"]^4*
+SUNF[SUNIndex[Glu1], SUNIndex[Glu6], SUNIndex[Glu7]]*SUNF[SUNIndex[Glu2], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu4], SUNIndex[Glu5]]*SUNF[SUNIndex[Glu3], SUNIndex[Glu6], SUNIndex[Glu7]])/8"},
+{"fcstFCLoopApplyTopologyMappings-ID7",
+"FCLoopApplyTopologyMappings[FCGV[\"GLIProduct\"][((16*I)*Sqrt[2]*\
+alphafs*alphas*Sqrt[CA]*CF*eQ^2*Pi^2*FAD[{k1 - P/2, mq}]*LC[][k1, P, \
+Polarization[k1, -I, Transversality -> True], Polarization[k2, -I, \
+Transversality -> True]])/mq, GLI[\"fctopology3\", {1, 1, 0}]] +
+FCGV[\"GLIProduct\"][((-8*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*CF*(6 - \
+D)*eQ^2*Pi^2*FAD[{k1 - P/2, mq}]*LC[][k1, P, Polarization[k1, -I, \
+Transversality -> True], Polarization[k2, -I, Transversality -> \
+True]])/mq, GLI[\"fctopology3\", {1, 0, 1}]] +
+FCGV[\"GLIProduct\"][((8*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*CF*eQ^2*\
+Pi^2*(4*mq^4*FAD[{k1 - P/2, mq}]*LC[][k1, P, Polarization[k1, -I, \
+Transversality -> True], Polarization[k2, -I, Transversality -> \
+True]] -
+	12*mq^2*FAD[{k1 - P/2, mq}]*SPD[k1, l]*LC[][k1, P, \
+Polarization[k1, -I, Transversality -> True], Polarization[k2, -I, \
+Transversality -> True]] + 2*D*mq^2*FAD[{k1 - P/2, mq}]*SPD[k1, \
+l]*LC[][k1, P, Polarization[k1, -I, Transversality -> True], \
+Polarization[k2, -I, Transversality -> True]] -
+	2*FAD[{k1 - P/2, mq}]*SPD[k1, l]^2*LC[][k1, P, Polarization[k1, \
+-I, Transversality -> True], Polarization[k2, -I, Transversality -> \
+True]] - 2*mq^2*FAD[{k1 - P/2, mq}]*SPD[l, l]*LC[][k1, P, \
+Polarization[k1, -I, Transversality -> True], Polarization[k2, -I, \
+Transversality -> True]] +
+	6*mq^2*FAD[{k1 - P/2, mq}]*SPD[l, P]*LC[][k1, P, \
+Polarization[k1, -I, Transversality -> True], Polarization[k2, -I, \
+Transversality -> True]] - D*mq^2*FAD[{k1 - P/2, mq}]*SPD[l, \
+P]*LC[][k1, P, Polarization[k1, -I, Transversality -> True], \
+Polarization[k2, -I, Transversality -> True]] +
+	2*FAD[{k1 - P/2, mq}]*SPD[k1, l]*SPD[l, P]*LC[][k1, P, \
+Polarization[k1, -I, Transversality -> True], Polarization[k2, -I, \
+Transversality -> True]]))/mq^3, GLI[\"fctopology3\", {1, 1, 1}]] +
+FCGV[\"repRuleGLIProduct\"][((16*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*\
+CF*eQ^2*Pi^2*FAD[{k1 - P/2, mq}]*LC[][k1, P, Polarization[k1, -I, \
+Transversality -> True], Polarization[k2, -I, Transversality -> \
+True]])/mq, GLI[\"fctopology3\", {0, 1, \
+1}]],{{{FCTopology[\"fctopology10\",{SFAD[{{l,0},{mq^2,1},1}],SFAD[{{\
+k1-l-P/2,0},{0,1},1}]},{l},{k1,P},{Hold[Pair][Momentum[k1,D],Momentum[\
+k1,D]]->0,Hold[Pair][Momentum[P,D],Momentum[q,D]]->0,Hold[Pair][\
+Momentum[P,D],Momentum[P,D]]->4*mq^2,Hold[Pair][Momentum[k1,D],\
+Momentum[P,D]]->2*mq^2,Hold[Pair][Momentum[k2,D],Momentum[P,D]]->2*mq^\
+2,Hold[Pair][Momentum[k1,D],Momentum[k2,D]]->2*mq^2,Hold[Pair][\
+Momentum[P,D],Momentum[Polarization[k2,-I,Transversality->True],D]]\
+->0,Hold[Pair][Momentum[P,D],Momentum[Polarization[k1,-I,\
+Transversality->True],D]]->0},{}],{l->l},GLI[\"fctopology10\",{n1_,n2_\
+}]:>GLI[\"fctopology10C\",{n1,n2,0}]},{FCTopology[\"fctopology9\",{\
+SFAD[{{l,0},{mq^2,1},1}],SFAD[{{k1+l-P/2,0},{0,1},1}]},{l},{k1,P},{\
+Hold[Pair][Momentum[k1,D],Momentum[k1,D]]->0,Hold[Pair][Momentum[P,D],\
+Momentum[q,D]]->0,Hold[Pair][Momentum[P,D],Momentum[P,D]]->4*mq^2,\
+Hold[Pair][Momentum[k1,D],Momentum[P,D]]->2*mq^2,Hold[Pair][Momentum[\
+k2,D],Momentum[P,D]]->2*mq^2,Hold[Pair][Momentum[k1,D],Momentum[k2,D]]\
+->2*mq^2,Hold[Pair][Momentum[P,D],Momentum[Polarization[k2,-I,\
+Transversality->True],D]]->0,Hold[Pair][Momentum[P,D],Momentum[\
+Polarization[k1,-I,Transversality->True],D]]->0},{}],{l->-l},GLI[\"\
+fctopology9\",{n1_,n2_}]:>GLI[\"fctopology10C\",{n1,n2,0}]},{\
+FCTopology[\"fctopology5\",{SFAD[{{l,0},{0,1},1}],SFAD[{{l+P/2,0},{mq^\
+2,1},1}],SFAD[{{k1+l-P/2,0},{mq^2,1},1}]},{l},{k1,P},{Hold[Pair][\
+Momentum[k1,D],Momentum[k1,D]]->0,Hold[Pair][Momentum[P,D],Momentum[q,\
+D]]->0,Hold[Pair][Momentum[P,D],Momentum[P,D]]->4*mq^2,Hold[Pair][\
+Momentum[k1,D],Momentum[P,D]]->2*mq^2,Hold[Pair][Momentum[k2,D],\
+Momentum[P,D]]->2*mq^2,Hold[Pair][Momentum[k1,D],Momentum[k2,D]]->2*\
+mq^2,Hold[Pair][Momentum[P,D],Momentum[Polarization[k2,-I,\
+Transversality->True],D]]->0,Hold[Pair][Momentum[P,D],Momentum[\
+Polarization[k1,-I,Transversality->True],D]]->0},{}],{l->(2*l-P)/2},\
+GLI[\"fctopology5\",{n2_,n1_,n3_}]:>GLI[\"fctopology3\",{n1,n2,n3}]},{\
+FCTopology[\"fctopology8\",{SFAD[{{l,0},{0,1},1}],SFAD[{{l-P/2,0},{mq^\
+2,1},1}],SFAD[{{k1-l-P/2,0},{mq^2,1},1}]},{l},{k1,P},{Hold[Pair][\
+Momentum[k1,D],Momentum[k1,D]]->0,Hold[Pair][Momentum[P,D],Momentum[q,\
+D]]->0,Hold[Pair][Momentum[P,D],Momentum[P,D]]->4*mq^2,Hold[Pair][\
+Momentum[k1,D],Momentum[P,D]]->2*mq^2,Hold[Pair][Momentum[k2,D],\
+Momentum[P,D]]->2*mq^2,Hold[Pair][Momentum[k1,D],Momentum[k2,D]]->2*\
+mq^2,Hold[Pair][Momentum[P,D],Momentum[Polarization[k2,-I,\
+Transversality->True],D]]->0,Hold[Pair][Momentum[P,D],Momentum[\
+Polarization[k1,-I,Transversality->True],D]]->0},{}],{l->(-2*l+P)/2},\
+GLI[\"fctopology8\",{n2_,n1_,n3_}]:>GLI[\"fctopology3\",{n1,n2,n3}]},{\
+FCTopology[\"fctopology6\",{SFAD[{{l,0},{0,1},1}],SFAD[{{l+P/2,0},{mq^\
+2,1},1}],SFAD[{{k1-l-P/2,0},{mq^2,1},1}]},{l},{k1,P},{Hold[Pair][\
+Momentum[k1,D],Momentum[k1,D]]->0,Hold[Pair][Momentum[P,D],Momentum[q,\
+D]]->0,Hold[Pair][Momentum[P,D],Momentum[P,D]]->4*mq^2,Hold[Pair][\
+Momentum[k1,D],Momentum[P,D]]->2*mq^2,Hold[Pair][Momentum[k2,D],\
+Momentum[P,D]]->2*mq^2,Hold[Pair][Momentum[k1,D],Momentum[k2,D]]->2*\
+mq^2,Hold[Pair][Momentum[P,D],Momentum[Polarization[k2,-I,\
+Transversality->True],D]]->0,Hold[Pair][Momentum[P,D],Momentum[\
+Polarization[k1,-I,Transversality->True],D]]->0},{}],{l->(2*l-P)/2},\
+GLI[\"fctopology6\",{n2_,n1_,n3_}]:>GLI[\"fctopology4\",{n1,n2,n3}]},{\
+FCTopology[\"fctopology7\",{SFAD[{{l,0},{0,1},1}],SFAD[{{l-P/2,0},{mq^\
+2,1},1}],SFAD[{{k1+l-P/2,0},{mq^2,1},1}]},{l},{k1,P},{Hold[Pair][\
+Momentum[k1,D],Momentum[k1,D]]->0,Hold[Pair][Momentum[P,D],Momentum[q,\
+D]]->0,Hold[Pair][Momentum[P,D],Momentum[P,D]]->4*mq^2,Hold[Pair][\
+Momentum[k1,D],Momentum[P,D]]->2*mq^2,Hold[Pair][Momentum[k2,D],\
+Momentum[P,D]]->2*mq^2,Hold[Pair][Momentum[k1,D],Momentum[k2,D]]->2*\
+mq^2,Hold[Pair][Momentum[P,D],Momentum[Polarization[k2,-I,\
+Transversality->True],D]]->0,Hold[Pair][Momentum[P,D],Momentum[\
+Polarization[k1,-I,Transversality->True],D]]->0},{}],{l->(-2*l+P)/2},\
+GLI[\"fctopology7\",{n2_,n1_,n3_}]:>GLI[\"fctopology4\",{n1,n2,n3}]}},\
+{FCTopology[\"fctopology1\",{SFAD[{{l+P/2,0},{mq^2,1},1}],SFAD[{{l-P/\
+2,0},{mq^2,1},1}],SFAD[{{k1+l-P/2,0},{mq^2,1},1}]},{l},{k1,P},{Hold[\
+Pair][Momentum[k1,D],Momentum[k1,D]]->0,Hold[Pair][Momentum[P,D],\
+Momentum[q,D]]->0,Hold[Pair][Momentum[P,D],Momentum[P,D]]->4*mq^2,\
+Hold[Pair][Momentum[k1,D],Momentum[P,D]]->2*mq^2,Hold[Pair][Momentum[\
+k2,D],Momentum[P,D]]->2*mq^2,Hold[Pair][Momentum[k1,D],Momentum[k2,D]]\
+->2*mq^2,Hold[Pair][Momentum[P,D],Momentum[Polarization[k2,-I,\
+Transversality->True],D]]->0,Hold[Pair][Momentum[P,D],Momentum[\
+Polarization[k1,-I,Transversality->True],D]]->0},{}],FCTopology[\"\
+fctopology10C\",{SFAD[{{l,0},{mq^2,1},1}],SFAD[{{k1-l-P/2,0},{0,1},1}]\
+,SFAD[{{0,k1.l},{0,1},1}]},{l},{k1,P},{Hold[Pair][Momentum[k1,D],\
+Momentum[k1,D]]->0,Hold[Pair][Momentum[P,D],Momentum[q,D]]->0,Hold[\
+Pair][Momentum[P,D],Momentum[P,D]]->4*mq^2,Hold[Pair][Momentum[k1,D],\
+Momentum[P,D]]->2*mq^2,Hold[Pair][Momentum[k2,D],Momentum[P,D]]->2*mq^\
+2,Hold[Pair][Momentum[k1,D],Momentum[k2,D]]->2*mq^2,Hold[Pair][\
+Momentum[P,D],Momentum[Polarization[k2,-I,Transversality->True],D]]\
+->0,Hold[Pair][Momentum[P,D],Momentum[Polarization[k1,-I,\
+Transversality->True],D]]->0},{}],FCTopology[\"fctopology2\",{SFAD[{{\
+l+P/2,0},{mq^2,1},1}],SFAD[{{l-P/2,0},{mq^2,1},1}],SFAD[{{k1-l-P/2,0},\
+{mq^2,1},1}]},{l},{k1,P},{Hold[Pair][Momentum[k1,D],Momentum[k1,D]]\
+->0,Hold[Pair][Momentum[P,D],Momentum[q,D]]->0,Hold[Pair][Momentum[P,\
+D],Momentum[P,D]]->4*mq^2,Hold[Pair][Momentum[k1,D],Momentum[P,D]]->2*\
+mq^2,Hold[Pair][Momentum[k2,D],Momentum[P,D]]->2*mq^2,Hold[Pair][\
+Momentum[k1,D],Momentum[k2,D]]->2*mq^2,Hold[Pair][Momentum[P,D],\
+Momentum[Polarization[k2,-I,Transversality->True],D]]->0,Hold[Pair][\
+Momentum[P,D],Momentum[Polarization[k1,-I,Transversality->True],D]]\
+->0},{}],FCTopology[\"fctopology3\",{SFAD[{{l,0},{mq^2,1},1}],SFAD[{{\
+l-P/2,0},{0,1},1}],SFAD[{{k1+l-P,0},{mq^2,1},1}]},{l},{k1,P},{Hold[\
+Pair][Momentum[k1,D],Momentum[k1,D]]->0,Hold[Pair][Momentum[P,D],\
+Momentum[q,D]]->0,Hold[Pair][Momentum[P,D],Momentum[P,D]]->4*mq^2,\
+Hold[Pair][Momentum[k1,D],Momentum[P,D]]->2*mq^2,Hold[Pair][Momentum[\
+k2,D],Momentum[P,D]]->2*mq^2,Hold[Pair][Momentum[k1,D],Momentum[k2,D]]\
+->2*mq^2,Hold[Pair][Momentum[P,D],Momentum[Polarization[k2,-I,\
+Transversality->True],D]]->0,Hold[Pair][Momentum[P,D],Momentum[\
+Polarization[k1,-I,Transversality->True],D]]->0},{}],FCTopology[\"\
+fctopology4\",{SFAD[{{l,0},{mq^2,1},1}],SFAD[{{l-P/2,0},{0,1},1}],\
+SFAD[{{k1-l,0},{mq^2,1},1}]},{l},{k1,P},{Hold[Pair][Momentum[k1,D],\
+Momentum[k1,D]]->0,Hold[Pair][Momentum[P,D],Momentum[q,D]]->0,Hold[\
+Pair][Momentum[P,D],Momentum[P,D]]->4*mq^2,Hold[Pair][Momentum[k1,D],\
+Momentum[P,D]]->2*mq^2,Hold[Pair][Momentum[k2,D],Momentum[P,D]]->2*mq^\
+2,Hold[Pair][Momentum[k1,D],Momentum[k2,D]]->2*mq^2,Hold[Pair][\
+Momentum[P,D],Momentum[Polarization[k2,-I,Transversality->True],D]]\
+->0,Hold[Pair][Momentum[P,D],Momentum[Polarization[k1,-I,\
+Transversality->True],D]]->0},{}]}}]",
+"((4*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*CF*eQ^2*Pi^2*Eps[Momentum[\
+k1], Momentum[P], Momentum[Polarization[k1, -I, Transversality -> \
+True]], Momentum[Polarization[k2, -I, Transversality -> \
+True]]]*FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] - \
+Momentum[P, D]/2, mq]]*GLI[\"fctopology3\", {-1, 1, 1}])/mq^3 - \
+((8*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*CF*eQ^2*Pi^2*Eps[Momentum[k1], \
+Momentum[P], Momentum[Polarization[k1, -I, Transversality -> True]], \
+Momentum[Polarization[k2, -I, Transversality -> \
+True]]]*FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] - \
+Momentum[P, D]/2, mq]]*GLI[\"fctopology3\", {0, 0, 1}])/mq^3 + \
+((8*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*CF*eQ^2*Pi^2*Eps[Momentum[k1], \
+Momentum[P], Momentum[Polarization[k1, -I, Transversality -> True]], \
+Momentum[Polarization[k2, -I, Transversality -> \
+True]]]*FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] - \
+Momentum[P, D]/2, mq]]*GLI[\"fctopology3\", {1, 0, 0}])/mq^3 - \
+((4*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*CF*eQ^2*Pi^2*Eps[Momentum[k1], \
+Momentum[P], Momentum[Polarization[k1, -I, Transversality -> True]], \
+Momentum[Polarization[k2, -I, Transversality -> \
+True]]]*FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] - \
+Momentum[P, D]/2, mq]]*GLI[\"fctopology3\", {1, 1, -1}])/mq^3 - \
+((2*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*CF*eQ^2*Pi^2*Eps[Momentum[k1], \
+Momentum[P], Momentum[Polarization[k1, -I, Transversality -> True]], \
+Momentum[Polarization[k2, -I, Transversality -> \
+True]]]*FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] - \
+Momentum[P, D]/2, mq]]*GLI[\"fctopology3\", {1, 1, 0}]*(20*mq^2 - \
+4*D*mq^2 - 4*Pair[Momentum[k1, D], Momentum[k1, D]] + \
+8*Pair[Momentum[k1, D], Momentum[P, D]] - 3*Pair[Momentum[P, D], \
+Momentum[P, D]]))/mq^3 - \
+((2*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*CF*eQ^2*Pi^2*Eps[Momentum[k1], \
+Momentum[P], Momentum[Polarization[k1, -I, Transversality -> True]], \
+Momentum[Polarization[k2, -I, Transversality -> \
+True]]]*FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] - \
+Momentum[P, D]/2, mq]]*GLI[\"fctopology3\", {0, 1, 1}]*(4*mq^2 - \
+Pair[Momentum[P, D], Momentum[P, D]]))/mq^3 - \
+((8*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*CF*eQ^2*Pi^2*Eps[Momentum[k1], \
+Momentum[P], Momentum[Polarization[k1, -I, Transversality -> True]], \
+Momentum[Polarization[k2, -I, Transversality -> \
+True]]]*FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] - \
+Momentum[P, D]/2, mq]]*GLI[\"fctopology3\", {1, 0, \
+1}]*(Pair[Momentum[k1, D], Momentum[k1, D]] - 2*Pair[Momentum[k1, D], \
+Momentum[P, D]] + Pair[Momentum[P, D], Momentum[P, D]]))/mq^3 - \
+((2*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*CF*eQ^2*Pi^2*Eps[Momentum[k1], \
+Momentum[P], Momentum[Polarization[k1, -I, Transversality -> True]], \
+Momentum[Polarization[k2, -I, Transversality -> \
+True]]]*FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] - \
+Momentum[P, D]/2, mq]]*GLI[\"fctopology3\", {1, 1, 1}]*(16*mq^4 - \
+4*D*mq^4 - 28*mq^2*Pair[Momentum[k1, D], Momentum[k1, D]] + \
+4*D*mq^2*Pair[Momentum[k1, D], Momentum[k1, D]] + 2*Pair[Momentum[k1, \
+D], Momentum[k1, D]]^2 + 56*mq^2*Pair[Momentum[k1, D], Momentum[P, \
+D]] - 8*D*mq^2*Pair[Momentum[k1, D], Momentum[P, D]] - \
+8*Pair[Momentum[k1, D], Momentum[k1, D]]*Pair[Momentum[k1, D], \
+Momentum[P, D]] + 8*Pair[Momentum[k1, D], Momentum[P, D]]^2 - \
+22*mq^2*Pair[Momentum[P, D], Momentum[P, D]] + \
+3*D*mq^2*Pair[Momentum[P, D], Momentum[P, D]] + 3*Pair[Momentum[k1, \
+D], Momentum[k1, D]]*Pair[Momentum[P, D], Momentum[P, D]] - \
+6*Pair[Momentum[k1, D], Momentum[P, D]]*Pair[Momentum[P, D], \
+Momentum[P, D]] + Pair[Momentum[P, D], Momentum[P, D]]^2))/mq^3 + \
+FCGV[\"repRuleGLIProduct\"][((16*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*\
+CF*eQ^2*Pi^2*Eps[Momentum[k1], Momentum[P], Momentum[Polarization[k1, \
+-I, Transversality -> True]], Momentum[Polarization[k2, -I, \
+Transversality -> \
+True]]]*FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] - \
+Momentum[P, D]/2, mq]])/mq, GLI[\"fctopology3\", {0, 1, 1}]]"}
+});

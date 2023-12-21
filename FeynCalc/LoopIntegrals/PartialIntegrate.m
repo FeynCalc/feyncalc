@@ -10,10 +10,10 @@
 
 (* ------------------------------------------------------------------------ *)
 
-PartialIntegrate::usage = "
-PartialIntegrate[exp, ap, t] does a partial integration of the definite \
-integral Integrate[exp,{t,0,1}], with ap the factor that is to be \
-integrated and exp/ap the factor that is to be differentiated.";
+PartialIntegrate::usage =
+"PartialIntegrate[exp, ap, t] does a partial integration of the definite
+integral Integrate[exp,{t,0,1}], with ap the factor that is to be integrated
+and exp/ap the factor that is to be differentiated.";
 
 (* ------------------------------------------------------------------------ *)
 

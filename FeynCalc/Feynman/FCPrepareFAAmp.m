@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  FCPrepareFAAmp converts a FeynArts amplitude to FeynCalc      *)
@@ -16,13 +16,13 @@
 (* ------------------------------------------------------------------------ *)
 
 FCPrepareFAAmp::usage =
-"FCPrepareFAAmp[exp] is an auxiliary function for a partial conversion of a \
+"FCPrepareFAAmp[exp]  is an auxiliary function for a partial conversion of a
 FeynArts amplitude to FeynCalc.";
 
 UndoChiralSplittings::usage =
-"UndoChiralSplittings is an option of FCPrepareFAAmp. When set to True, it attempts \
-to undo splittings of couplings into left and right handed pieces, e.g \
-(a*GA[6].GA[mu] + a*GA[7].GA[mu]) will be converted back to a*GA[mu]";
+"UndoChiralSplittings is an option of FCPrepareFAAmp. When set to True, it
+attempts to undo splittings of couplings into left and right handed pieces,
+e.g. $a P_L \\gamma^\\mu + a P_R \\gamma^\\mu$ will be replaced by $a \\gamma^\\mu$.";
 
 (* ------------------------------------------------------------------------ *)
 

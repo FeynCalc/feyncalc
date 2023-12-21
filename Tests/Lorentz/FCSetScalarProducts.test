@@ -1,0 +1,76 @@
+
+
+(* :Title: FCSetScalarProducts.test       									*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCSetScalarProducts		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`Lorentz`fcstFCSetScalarProducts =
+({
+{"fcstFCClearScalarProducts-ID1",
+"FCClearScalarProducts[];FCSetScalarProducts[{SPD[p1],SPD[p2],SPD[\
+p3,p4]},{0,xx1,xx2}];{SPD[p1],SPD[p2],SPD[p3,p4]}", "{0, xx1, xx2}"},
+{"fcstFCClearScalarProducts-ID2",
+"FCClearScalarProducts[];FCSetScalarProducts[{SPD[p1],SPD[p2],SPD[\
+p3,p4]},{0,xx1,xx2}];FCSetScalarProducts[{SPD[p1],SPD[p2],SPD[p3,p4]},\
+{0,yy1,y2}];{SPD[p1],SPD[p2],SPD[p3,p4]}", "{0, yy1, y2}"},
+{"fcstFCClearScalarProducts-ID3",
+"FCClearScalarProducts[];FCSetScalarProducts[{SP[p1],SP[p2],SP[p3,\
+p4]},{0,xx1,xx2}];{SP[p1],SP[p2],SP[p3,p4]}", "{0, xx1, xx2}"},
+{"fcstFCClearScalarProducts-ID4",
+"FCClearScalarProducts[];FCSetScalarProducts[{SP[p1],SP[p2],SP[p3,\
+p4]},{0,xx1,xx2}];FCSetScalarProducts[{SP[p1],SP[p2],SP[p3,p4]},{0,\
+yy1,y2}];{SP[p1],SP[p2],SP[p3,p4]}", "{0, yy1, y2}"},
+{"fcstFCClearScalarProducts-ID5",
+"FCClearScalarProducts[];FCSetScalarProducts[{CSPD[p1],CSPD[p2],\
+CSPD[p3,p4]},{0,xx1,xx2}];{CSPD[p1],CSPD[p2],CSPD[p3,p4]}",
+"{0, xx1, xx2}"},
+{"fcstFCClearScalarProducts-ID6",
+"FCClearScalarProducts[];FCSetScalarProducts[{CSPD[p1],CSPD[p2],\
+CSPD[p3,p4]},{0,xx1,xx2}];FCSetScalarProducts[{CSPD[p1],CSPD[p2],CSPD[\
+p3,p4]},{0,yy1,y2}];{CSPD[p1],CSPD[p2],CSPD[p3,p4]}",
+"{0, yy1, y2}"},
+{"fcstFCClearScalarProducts-ID7",
+"FCClearScalarProducts[];FCSetScalarProducts[{CSP[p1],CSP[p2],CSP[\
+p3,p4]},{0,xx1,xx2}];{CSP[p1],CSP[p2],CSP[p3,p4]}", "{0, xx1, xx2}"},
+{"fcstFCClearScalarProducts-ID8",
+"FCClearScalarProducts[];FCSetScalarProducts[{CSP[p1],CSP[p2],CSP[\
+p3,p4]},{0,xx1,xx2}];FCSetScalarProducts[{CSP[p1],CSP[p2],CSP[p3,p4]},\
+{0,yy1,y2}];{CSP[p1],CSP[p2],CSP[p3,p4]}", "{0, yy1, y2}"},
+{"fcstFCClearScalarProducts-ID9",
+"FCClearScalarProducts[];FCSetScalarProducts[{Momentum[p1],\
+Momentum[p2,D],Momentum[p3,D-4]},{0,xx1,xx2}];{Momentum[p1],Momentum[\
+p2,D],Momentum[p3,D-4]}", "{0, xx1, xx2}"},
+{"fcstFCClearScalarProducts-ID10",
+"FCClearScalarProducts[];FCSetScalarProducts[{Momentum[p1],\
+Momentum[p2,D],Momentum[p3,D-4]},{0,xx1,xx2}];FCSetScalarProducts[{\
+Momentum[p1],Momentum[p2,D],Momentum[p3,D-4]},{0,yy1,y2}];{Momentum[\
+p1],Momentum[p2,D],Momentum[p3,D-4]}", "{0, yy1, y2}"},
+{"fcstFCClearScalarProducts-ID11",
+"FCClearScalarProducts[];FCSetScalarProducts[{CartesianMomentum[p1]\
+,CartesianMomentum[p2,D-1],CartesianMomentum[p3,D-4]},{0,xx1,xx2}];{\
+CartesianMomentum[p1],CartesianMomentum[p2,D-1],CartesianMomentum[p3,\
+D-4]}", "{0, xx1, xx2}"},
+{"fcstFCClearScalarProducts-ID12",
+"FCClearScalarProducts[];FCSetScalarProducts[{CartesianMomentum[p1]\
+,CartesianMomentum[p2,D],CartesianMomentum[p3,D-4]},{0,xx1,xx2}];\
+FCSetScalarProducts[{CartesianMomentum[p1],CartesianMomentum[p2,D-1],\
+CartesianMomentum[p3,D-4]},{0,yy1,y2}];{CartesianMomentum[p1],\
+CartesianMomentum[p2,D-1],CartesianMomentum[p3,D-4]}", "{0, yy1, y2}"},
+{"fcstFCClearScalarProducts-ID13",
+"FCClearScalarProducts[];FCSetScalarProducts[{spd[p1]},{xx3},\
+InitialSubstitutions\[Rule]{spd\[Rule]SPD}];SPD[p1]", "xx3"},
+{"fcstFCClearScalarProducts-ID14",
+"FCClearScalarProducts[];FCSetScalarProducts[{spd[p1]},{xx3},\
+InitialSubstitutions\[Rule]{spd\[Rule]SPD}];FCSetScalarProducts[{spd[\
+p1]},{xx3},InitialSubstitutions\[Rule]{spd\[Rule]SPD}];SPD[p1]", "xx3"}
+})
+

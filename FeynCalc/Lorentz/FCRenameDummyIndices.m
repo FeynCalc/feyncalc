@@ -4,24 +4,29 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Rename dummy Lorentz, Cartesian, SU(N) and Dirac indices 		*)
 
 (* ------------------------------------------------------------------------ *)
 
-FCRenameDummyIndices::usage = "
-FCRenameDummyIndices[expr] identifies all dummy indices with heads given in \
-the value of the option Head and changes their names pairwise to random symbols. \
-This is particularly important when squaring amplitudes, since otherwise the result
-will be inconsistent.";
+FCRenameDummyIndices::usage =
+"FCRenameDummyIndices[expr] identifies dummy indices and changes their names
+pairwise to random symbols. This can be useful if you have an expression that
+contains dummy indices and want to compute the square of it. For example, the
+square of GA[a, l, a] equals $16$. However, if you forget to rename the dummy
+indices and compute GA[a, l, a, a, l, a] instead of GA[a, l, a, b, l, b], you
+will get $64$.
+
+Notice that this routine does not perform any canonicalization. Use
+FCCanonicalizeDummyIndices for  that.";
 
 FCRenameDummyIndices::failmsg =
 "Error! FCRenameDummyIndices has encountered a fatal problem and must abort the computation. \
-The problem reads: `1`"
+The problem reads: `1`";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -41,6 +46,7 @@ Options[FCRenameDummyIndices] = {
 		CartesianIndex,
 		SUNIndex,
 		SUNFIndex,
+		PauliIndex,
 		DiracIndex
 	},
 	FCVerbose	-> False

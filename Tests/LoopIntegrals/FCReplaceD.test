@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for FCReplaceD			*)
@@ -61,5 +61,13 @@ D DiracGamma[LorentzIndex[mu1, D], D].DiracGamma[7], DiracIndex[i],
 	DiracIndex[j]] DiracChain[
 DiracGamma[LorentzIndex[mu1, D], D].DiracGamma[7], DiracIndex[k],
 DiracIndex[l]], D -> 4 - 2 Epsilon, FCE -> True]", "(2 - 2 Epsilon) DCHN[GAD[mu1].GA[7], k,
-l] DCHN[(4 - 2 Epsilon) GAD[mu1].GA[7], i, j]"}
+l] DCHN[(4 - 2 Epsilon) GAD[mu1].GA[7], i, j]"},
+{"fcstFCReplaceD-ID20",
+"FCReplaceD[(D - 2) PauliChain[
+D PauliSigma[CartesianIndex[a, D - 1], D - 1], PauliIndex[i],
+PauliIndex[j]] PauliChain[
+PauliSigma[CartesianIndex[a, D - 1], D - 1], PauliIndex[k],
+PauliIndex[l]], D -> 4 - 2 Epsilon, FCE -> True]",
+"(2 - 2*Epsilon)*PCHN[CSID[a], k, l]*PCHN[(4 - 2*Epsilon)*CSID[a], i, j]"},
+{"fcstFCReplaceD-ID20","FCReplaceD[D, D -> 4]","4"}
 }

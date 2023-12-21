@@ -11,10 +11,12 @@
 
 (* ------------------------------------------------------------------------ *)
 
-ToTFI::usage = "ToTFI[expr, q1, q2, p] translates  FeynCalc 2-loop \
-self energy type integrals into the TFI notatation, which can be used as \
-input for the function TarcerRecurse from the TARCER package. \
-See TFI for details on the conventions.";
+ToTFI::usage =
+"ToTFI[expr, q1, q2, p] translates FeynCalc 2-loop self energy type integrals
+into the TFI notation, which can be used as input for the function
+TarcerRecurse from the TARCER package.
+
+See the TARCER documentation on TFI for details on the conventions.";
 
 ToTFI::failmsg = "Error! ToTFI has encountered a fatal problem and \
 must abort the computation. The problem reads: `1`";
@@ -255,7 +257,7 @@ saveToTFI[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts:OptionsPattern[]] :=
 		met = Method /. {opts} /. Options[ToTFI];
 		pp  = FeynCalcExternal[Pair[Momentum[p,dim],Momentum[p,dim]]];
 		deltap = FeynCalcExternal[Pair[Momentum[p,dim],Momentum[OPEDelta,dim]]];
-		t0 = If[ FreeQ2[z, {TLI,FeynAmpDenominator,FAD}],
+		t0 = If[ FreeQ2[z, {FeynAmpDenominator,FAD}],
 				result = z,
 				If[ met =!= Automatic,
 					t0 = FeynCalcInternal[z],
@@ -269,9 +271,6 @@ saveToTFI[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts:OptionsPattern[]] :=
 							t0 = FeynAmpDenominatorCombine[t0],
 							t0
 						]
-					];
-					If[ !FreeQ[t0, TLI],
-						t0 = FeynAmpDenominatorSimplify[TLI2FC[t0],FC2RHI->False]
 					];
 
 					pairs = Cases2[t0, Pair];

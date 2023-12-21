@@ -1,11 +1,10 @@
-s
 
 (* :Title: SharedObjectsTypesetting.test 									*)
 
 (* This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for the typesetting of the	*)
@@ -1599,78 +1598,46 @@ RowBox[{FormBox[FormBox[\"mu\", TraditionalForm], TraditionalForm], \
 FormBox[OverscriptBox[FormBox[\"p\", TraditionalForm], \"_\"], \
 TraditionalForm]}], FormBox[FormBox[\"a\", TraditionalForm], \
 TraditionalForm]], \"(\", FormBox[\"q\", TraditionalForm], \")\"}]"},
-{"fcstSharedObjectsTypesetting-ID264",
-"MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], f, \
-LorentzIndex[mu], SUNIndex[a]][q], TraditionalForm]",
-"RowBox[{RowBox[{\"(\", RowBox[{SubscriptBox[\"(\[PartialD]\", \
-FormBox[FormBox[\"f\", TraditionalForm], TraditionalForm]], \
-SubsuperscriptBox[FormBox[\"f\", TraditionalForm], \
-FormBox[FormBox[\"mu\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"a\", TraditionalForm], TraditionalForm]], \")\"}], \
-\")\"}], \"\[InvisibleApplication]\", RowBox[{\"(\", \"q\", \
-\")\"}]}]"},
 {"fcstSharedObjectsTypesetting-ID265",
-"MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], f, \
-ExplicitLorentzIndex[2], SUNIndex[a]][q], TraditionalForm]",
-"RowBox[{RowBox[{\"(\", RowBox[{SubscriptBox[\"(\[PartialD]\", \
-FormBox[FormBox[\"f\", TraditionalForm], TraditionalForm]], \
-SubsuperscriptBox[FormBox[\"f\", TraditionalForm], \
-FormBox[FormBox[\"2\", TraditionalForm], TraditionalForm], \
-FormBox[FormBox[\"a\", TraditionalForm], TraditionalForm]], \")\"}], \
-\")\"}], \"\[InvisibleApplication]\", RowBox[{\"(\", \"q\", \
-\")\"}]}]"},
+"MakeBoxes[\"QuantumField[FCPartialD[LorentzIndex[f]],f,\
+LorentzIndex[mu],SUNIndex[a]][q]\", TraditionalForm]",
+"\"\\\"QuantumField[FCPartialD[LorentzIndex[f]],f,LorentzIndex[mu],\
+SUNIndex[a]][q]\\\"\""},
 {"fcstSharedObjectsTypesetting-ID266",
-"MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], f, \
-LorentzIndex[mu]][q], TraditionalForm]",
-"RowBox[{RowBox[{\"(\", RowBox[{SubscriptBox[\"(\[PartialD]\", \
-FormBox[FormBox[\"f\", TraditionalForm], TraditionalForm]], \
-SubscriptBox[FormBox[\"f\", TraditionalForm], FormBox[FormBox[\"mu\", \
-TraditionalForm], TraditionalForm]], \")\"}], \")\"}], \"\
-\[InvisibleApplication]\", RowBox[{\"(\", \"q\", \")\"}]}]"},
+"MakeBoxes[\"QuantumField[FCPartialD[LorentzIndex[f]],f,\
+ExplicitLorentzIndex[2],SUNIndex[a]][q]\", TraditionalForm]",
+"\"\\\"QuantumField[FCPartialD[LorentzIndex[f]],f,\
+ExplicitLorentzIndex[2],SUNIndex[a]][q]\\\"\""},
 {"fcstSharedObjectsTypesetting-ID267",
-"MakeBoxes[2*QuantumField[FCPartialD[LorentzIndex[f]], f, \
-LorentzIndex[mu], SUNIndex[a]][q], TraditionalForm]",
-"RowBox[{\"2\", \" \", RowBox[{RowBox[{\"(\", \
-RowBox[{SubscriptBox[\"(\[PartialD]\", FormBox[FormBox[\"f\", \
-TraditionalForm], TraditionalForm]], SubsuperscriptBox[FormBox[\"f\", \
-TraditionalForm], FormBox[FormBox[\"mu\", TraditionalForm], \
-TraditionalForm], FormBox[FormBox[\"a\", TraditionalForm], \
-TraditionalForm]], \")\"}], \")\"}], \"\[InvisibleApplication]\", \
-RowBox[{\"(\", \"q\", \")\"}]}]}]"},
+"MakeBoxes[\"QuantumField[FCPartialD[LorentzIndex[f]],f,\
+LorentzIndex[mu]][q]\", TraditionalForm]",
+"\"\\\"QuantumField[FCPartialD[LorentzIndex[f]],f,LorentzIndex[mu]]\
+[q]\\\"\""},
 {"fcstSharedObjectsTypesetting-ID268",
-"MakeBoxes[2*QuantumField[FCPartialD[LorentzIndex[f]], f, \
-ExplicitLorentzIndex[2], SUNIndex[a]][q], TraditionalForm]",
-"RowBox[{\"2\", \" \", RowBox[{RowBox[{\"(\", \
-RowBox[{SubscriptBox[\"(\[PartialD]\", FormBox[FormBox[\"f\", \
-TraditionalForm], TraditionalForm]], SubsuperscriptBox[FormBox[\"f\", \
-TraditionalForm], FormBox[FormBox[\"2\", TraditionalForm], \
-TraditionalForm], FormBox[FormBox[\"a\", TraditionalForm], \
-TraditionalForm]], \")\"}], \")\"}], \"\[InvisibleApplication]\", \
-RowBox[{\"(\", \"q\", \")\"}]}]}]"},
+"MakeBoxes[\"2*QuantumField[FCPartialD[LorentzIndex[f]],f,\
+LorentzIndex[mu],SUNIndex[a]][q]\", TraditionalForm]",
+"\"\\\"2*QuantumField[FCPartialD[LorentzIndex[f]],f,LorentzIndex[\
+mu],SUNIndex[a]][q]\\\"\""},
 {"fcstSharedObjectsTypesetting-ID269",
-"MakeBoxes[2*QuantumField[FCPartialD[LorentzIndex[f]], f, \
-LorentzIndex[mu]][q], TraditionalForm]",
-"RowBox[{\"2\", \" \", RowBox[{RowBox[{\"(\", \
-RowBox[{SubscriptBox[\"(\[PartialD]\", FormBox[FormBox[\"f\", \
-TraditionalForm], TraditionalForm]], SubscriptBox[FormBox[\"f\", \
-TraditionalForm], FormBox[FormBox[\"mu\", TraditionalForm], \
-TraditionalForm]], \")\"}], \")\"}], \"\[InvisibleApplication]\", \
-RowBox[{\"(\", \"q\", \")\"}]}]}]"},
+"MakeBoxes[\"2*QuantumField[FCPartialD[LorentzIndex[f]],f,\
+ExplicitLorentzIndex[2],SUNIndex[a]][q]\", TraditionalForm]",
+"\"\\\"2*QuantumField[FCPartialD[LorentzIndex[f]],f,\
+ExplicitLorentzIndex[2],SUNIndex[a]][q]\\\"\""},
 {"fcstSharedObjectsTypesetting-ID270",
-"MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], f, \
-Momentum[p], SUNIndex[a]], TraditionalForm]",
-"RowBox[{SubscriptBox[\"(\[PartialD]\", FormBox[FormBox[\"f\", \
-TraditionalForm], TraditionalForm]], SubsuperscriptBox[FormBox[\"f\", \
-TraditionalForm], FormBox[OverscriptBox[FormBox[\"p\", \
-TraditionalForm], \"_\"], TraditionalForm], FormBox[FormBox[\"a\", \
-TraditionalForm], TraditionalForm]], \")\"}]"},
+"MakeBoxes[\"2*QuantumField[FCPartialD[LorentzIndex[f]],f,\
+LorentzIndex[mu]][q]\", TraditionalForm]",
+"\"\\\"2*QuantumField[FCPartialD[LorentzIndex[f]],f,LorentzIndex[\
+mu]][q]\\\"\""},
 {"fcstSharedObjectsTypesetting-ID271",
-"MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], f, \
-Momentum[p]], TraditionalForm]",
-"RowBox[{SubscriptBox[\"(\[PartialD]\", FormBox[FormBox[\"f\", \
-TraditionalForm], TraditionalForm]], SubscriptBox[FormBox[\"f\", \
-TraditionalForm], FormBox[OverscriptBox[FormBox[\"p\", \
-TraditionalForm], \"_\"], TraditionalForm]], \")\"}]"},
+"MakeBoxes[\"QuantumField[FCPartialD[LorentzIndex[f]],f,Momentum[p]\
+,SUNIndex[a]]\", TraditionalForm]",
+"\"\\\"QuantumField[FCPartialD[LorentzIndex[f]],f,Momentum[p],\
+SUNIndex[a]]\\\"\""},
+{"fcstSharedObjectsTypesetting-ID272",
+"MakeBoxes[\"QuantumField[FCPartialD[LorentzIndex[f]],f,Momentum[p]\
+]\", TraditionalForm]",
+"\"\\\"QuantumField[FCPartialD[LorentzIndex[f]],f,Momentum[p]]\\\"\
+\""},
 {"fcstSharedObjectsTypesetting-ID272",
 "MakeBoxes[QuantumField[FCPartialD[LorentzIndex[f]], \
 FCPartialD[LorentzIndex[g]], f, Momentum[p], SUNIndex[a]], \
@@ -1775,6 +1742,110 @@ TraditionalForm], \"^\"], TraditionalForm], \
 FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
 FormBox[OverscriptBox[FormBox[\"b\", TraditionalForm], \"^\"], \
 TraditionalForm]}], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID291.1",
+"MakeBoxes[SP[a, a], TraditionalForm]",
+"FormBox[SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", \
+TraditionalForm], \"_\"], TraditionalForm], 2], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID292.1",
+"MakeBoxes[SP[a, a]^2, TraditionalForm]",
+"SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", \
+TraditionalForm], \"_\"], TraditionalForm], 4]"},
+{"fcstSharedObjectsTypesetting-ID293.1",
+"MakeBoxes[SP[a, a]^3, TraditionalForm]",
+"SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", \
+TraditionalForm], \"_\"], TraditionalForm], 6]"},
+{"fcstSharedObjectsTypesetting-ID294.1",
+"MakeBoxes[SP[a, a]^4, TraditionalForm]",
+"SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", \
+TraditionalForm], \"_\"], TraditionalForm], 8]"},
+{"fcstSharedObjectsTypesetting-ID295.1",
+"MakeBoxes[SP[a, a]^(-1), TraditionalForm]",
+"FractionBox[\"1\", \
+FormBox[SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", \
+TraditionalForm], \"_\"], TraditionalForm], 2], TraditionalForm]]"},
+{"fcstSharedObjectsTypesetting-ID296.1",
+"MakeBoxes[SP[a, a]^(-2), TraditionalForm]",
+"FractionBox[\"1\", \
+SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", TraditionalForm], \
+\"_\"], TraditionalForm], 4]]"},
+{"fcstSharedObjectsTypesetting-ID297.1",
+"MakeBoxes[SP[a, a]^(-3), TraditionalForm]",
+"FractionBox[\"1\", \
+SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", TraditionalForm], \
+\"_\"], TraditionalForm], 6]]"},
+{"fcstSharedObjectsTypesetting-ID298.1",
+"MakeBoxes[SP[a, a]^(-4), TraditionalForm]",
+"FractionBox[\"1\", \
+SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", TraditionalForm], \
+\"_\"], TraditionalForm], 8]]"},
+{"fcstSharedObjectsTypesetting-ID299.1",
+"MakeBoxes[SPD[a, a], TraditionalForm]",
+"FormBox[SuperscriptBox[FormBox[FormBox[\"a\", TraditionalForm], \
+TraditionalForm], 2], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID300.1",
+"MakeBoxes[SPD[a, a]^2, TraditionalForm]",
+"SuperscriptBox[FormBox[FormBox[\"a\", TraditionalForm], \
+TraditionalForm], 4]"},
+{"fcstSharedObjectsTypesetting-ID301.1",
+"MakeBoxes[SPD[a, a]^3, TraditionalForm]",
+"SuperscriptBox[FormBox[FormBox[\"a\", TraditionalForm], \
+TraditionalForm], 6]"},
+{"fcstSharedObjectsTypesetting-ID302.1",
+"MakeBoxes[SPD[a, a]^4, TraditionalForm]",
+"SuperscriptBox[FormBox[FormBox[\"a\", TraditionalForm], \
+TraditionalForm], 8]"},
+{"fcstSharedObjectsTypesetting-ID303.1",
+"MakeBoxes[SPD[a, a]^(-1), TraditionalForm]",
+"FractionBox[\"1\", FormBox[SuperscriptBox[FormBox[FormBox[\"a\", \
+TraditionalForm], TraditionalForm], 2], TraditionalForm]]"},
+{"fcstSharedObjectsTypesetting-ID304.1",
+"MakeBoxes[SPD[a, a]^(-2), TraditionalForm]",
+"FractionBox[\"1\", SuperscriptBox[FormBox[FormBox[\"a\", \
+TraditionalForm], TraditionalForm], 4]]"},
+{"fcstSharedObjectsTypesetting-ID305.1",
+"MakeBoxes[SPD[a, a]^(-3), TraditionalForm]",
+"FractionBox[\"1\", SuperscriptBox[FormBox[FormBox[\"a\", \
+TraditionalForm], TraditionalForm], 6]]"},
+{"fcstSharedObjectsTypesetting-ID306.1",
+"MakeBoxes[SPD[a, a]^(-4), TraditionalForm]",
+"FractionBox[\"1\", SuperscriptBox[FormBox[FormBox[\"a\", \
+TraditionalForm], TraditionalForm], 8]]"},
+{"fcstSharedObjectsTypesetting-ID307.1",
+"MakeBoxes[SPE[a, a], TraditionalForm]",
+"FormBox[SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", \
+TraditionalForm], \"^\"], TraditionalForm], 2], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID308.1",
+"MakeBoxes[SPE[a, a]^2, TraditionalForm]",
+"SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", \
+TraditionalForm], \"^\"], TraditionalForm], 4]"},
+{"fcstSharedObjectsTypesetting-ID309.1",
+"MakeBoxes[SPE[a, a]^3, TraditionalForm]",
+"SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", \
+TraditionalForm], \"^\"], TraditionalForm], 6]"},
+{"fcstSharedObjectsTypesetting-ID310.1",
+"MakeBoxes[SPE[a, a]^4, TraditionalForm]",
+"SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", \
+TraditionalForm], \"^\"], TraditionalForm], 8]"},
+{"fcstSharedObjectsTypesetting-ID311.1",
+"MakeBoxes[SPE[a, a]^(-1), TraditionalForm]",
+"FractionBox[\"1\", \
+FormBox[SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", \
+TraditionalForm], \"^\"], TraditionalForm], 2], TraditionalForm]]"},
+{"fcstSharedObjectsTypesetting-ID312.1",
+"MakeBoxes[SPE[a, a]^(-2), TraditionalForm]",
+"FractionBox[\"1\", \
+SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", TraditionalForm], \
+\"^\"], TraditionalForm], 4]]"},
+{"fcstSharedObjectsTypesetting-ID313.1",
+"MakeBoxes[SPE[a, a]^(-3), TraditionalForm]",
+"FractionBox[\"1\", \
+SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", TraditionalForm], \
+\"^\"], TraditionalForm], 6]]"},
+{"fcstSharedObjectsTypesetting-ID314.1",
+"MakeBoxes[SPE[a, a]^(-4), TraditionalForm]",
+"FractionBox[\"1\", \
+SuperscriptBox[FormBox[OverscriptBox[FormBox[\"a\", TraditionalForm], \
+\"^\"], TraditionalForm], 8]]"},
 {"fcstSharedObjectsTypesetting-ID291",
 "MakeBoxes[Spinor[Momentum[p], 0, 1], TraditionalForm]",
 "RowBox[{FormBox[\"\\\"\[CurlyPhi]\\\"\", TraditionalForm], \
@@ -6170,7 +6241,1145 @@ RowBox[{FormBox[FormBox[\"p1\", TraditionalForm], TraditionalForm], \
 FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
 FormBox[FormBox[\"p2\", TraditionalForm], TraditionalForm]}], \"\\\"+\
 \\\"\", RowBox[{\"\[ImaginaryI]\", \" \", \"\\\"\[Eta]\\\"\"}], \
-\"\\\")\\\"\"}, \"RowDefault\"]], TraditionalForm]"}
+\"\\\")\\\"\"}, \"RowDefault\"]], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID707.1",
+"MakeBoxes[\"FeynAmpDenominator[StandardPropagatorDenominator[\
+Momentum[q2,D],0,-((1-GaugeXi) \
+SMP[\\\"m_Z\\\"\\!\\(\\*SuperscriptBox[\\(]\\), \
+\\(2\\)]\\)),{1,1}]]\"*\"SFAD[{{q2,0},{(1-GaugeXi) \
+SMP[\\\"m_Z\\\"\\!\\(\\*SuperscriptBox[\\(]\\), \\(2\\)]\\),1},1}]\", \
+TraditionalForm]",
+"RowBox[{\"\\\"FeynAmpDenominator[StandardPropagatorDenominator[\
+Momentum[q2,D],0,-((1-GaugeXi) \
+SMP[\\\\\\\"m_Z\\\\\\\"\\\\!\\\\(\\\\*SuperscriptBox[\\\\(]\\\\), \
+\\\\(2\\\\)]\\\\)),{1,1}]]\\\"\", \" \", \
+\"\\\"SFAD[{{q2,0},{(1-GaugeXi) \
+SMP[\\\\\\\"m_Z\\\\\\\"\\\\!\\\\(\\\\*SuperscriptBox[\\\\(]\\\\), \
+\\\\(2\\\\)]\\\\),1},1}]\\\"\"}]"},
+{"fcstSharedObjectsTypesetting-ID708",
+"MakeBoxes[PauliIndex[i], TraditionalForm]",
+"FormBox[\"i\", TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID709",
+"MakeBoxes[ExplicitPauliIndex[5], TraditionalForm]",
+"FormBox[\"5\", TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID710",
+"MakeBoxes[ExplicitPauliIndex[4], TraditionalForm]",
+"FormBox[\"4\", TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID711",
+"MakeBoxes[PauliIndexDelta[PauliIndex[i], PauliIndex[j]], \
+TraditionalForm]",
+"SubscriptBox[\"\[Delta]\", RowBox[{FormBox[FormBox[\"i\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"j\", \
+TraditionalForm], TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID712",
+"MakeBoxes[PauliIndexDelta[PauliIndex[j], ExplicitPauliIndex[1]], \
+TraditionalForm]",
+"SubscriptBox[\"\[Delta]\", RowBox[{FormBox[FormBox[\"j\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"1\", \
+TraditionalForm], TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID713",
+"MakeBoxes[PauliIndexDelta[ExplicitPauliIndex[1], \
+ExplicitPauliIndex[3]], TraditionalForm]",
+"SubscriptBox[\"\[Delta]\", RowBox[{FormBox[FormBox[\"1\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"3\", \
+TraditionalForm], TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID714",
+"MakeBoxes[PauliIndexDelta[ExplicitPauliIndex[3], \
+ExplicitPauliIndex[3]], TraditionalForm]",
+"SubscriptBox[\"\[Delta]\", RowBox[{FormBox[FormBox[\"3\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"3\", \
+TraditionalForm], TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID715",
+"MakeBoxes[PauliIndexDelta[ExplicitPauliIndex[1], \
+ExplicitPauliIndex[2]], TraditionalForm]",
+"SubscriptBox[\"\[Delta]\", RowBox[{FormBox[FormBox[\"1\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"2\", \
+TraditionalForm], TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID716",
+"MakeBoxes[PauliIndexDelta[ExplicitPauliIndex[3], \
+ExplicitPauliIndex[3]], TraditionalForm]",
+"SubscriptBox[\"\[Delta]\", RowBox[{FormBox[FormBox[\"3\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"3\", \
+TraditionalForm], TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID717",
+"MakeBoxes[PauliIndexDelta[PauliIndex[i], PauliIndex[i]], \
+TraditionalForm]",
+"SubscriptBox[\"\[Delta]\", RowBox[{FormBox[FormBox[\"i\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"i\", \
+TraditionalForm], TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID718",
+"MakeBoxes[PauliIndexDelta[0, PauliIndex[i]], TraditionalForm]",
+"RowBox[{\"PauliIndexDelta\", \"(\", RowBox[{\"0\", \",\", \
+FormBox[\"i\", TraditionalForm]}], \")\"}]"},
+{"fcstSharedObjectsTypesetting-ID719",
+"MakeBoxes[PauliChain[PauliSigma[CartesianIndex[mu]], \
+PauliIndex[i], PauliIndex[j]], TraditionalForm]",
+"SubscriptBox[RowBox[{\"(\", \
+FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\
+\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], TraditionalForm], \
+\")\"}], RowBox[{FormBox[FormBox[\"i\", TraditionalForm], \
+TraditionalForm], FormBox[FormBox[\"j\", TraditionalForm], \
+TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID720",
+"MakeBoxes[PauliChain[PauliSigma[CartesianIndex[mu]], \
+ExplicitPauliIndex[1], PauliIndex[j]], TraditionalForm]",
+"SubscriptBox[RowBox[{\"(\", \
+FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\
+\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], TraditionalForm], \
+\")\"}], RowBox[{FormBox[FormBox[\"1\", TraditionalForm], \
+TraditionalForm], FormBox[FormBox[\"j\", TraditionalForm], \
+TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID721",
+"MakeBoxes[PauliChain[PauliSigma[CartesianIndex[mu]], \
+ExplicitPauliIndex[3], ExplicitPauliIndex[1]], TraditionalForm]",
+"SubscriptBox[RowBox[{\"(\", \
+FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\
+\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], TraditionalForm], \
+\")\"}], RowBox[{FormBox[FormBox[\"3\", TraditionalForm], \
+TraditionalForm], FormBox[FormBox[\"1\", TraditionalForm], \
+TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID722",
+"MakeBoxes[PauliChain[PauliSigma[CartesianIndex[mu]], \
+ExplicitPauliIndex[3], ExplicitPauliIndex[3]], TraditionalForm]",
+"SubscriptBox[RowBox[{\"(\", \
+FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\
+\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], TraditionalForm], \
+\")\"}], RowBox[{FormBox[FormBox[\"3\", TraditionalForm], \
+TraditionalForm], FormBox[FormBox[\"3\", TraditionalForm], \
+TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID723",
+"MakeBoxes[PauliChain[PauliSigma[CartesianIndex[mu]], \
+ExplicitPauliIndex[1], ExplicitPauliIndex[2]], TraditionalForm]",
+"SubscriptBox[RowBox[{\"(\", \
+FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\
+\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], TraditionalForm], \
+\")\"}], RowBox[{FormBox[FormBox[\"1\", TraditionalForm], \
+TraditionalForm], FormBox[FormBox[\"2\", TraditionalForm], \
+TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID724",
+"MakeBoxes[PauliChain[PauliSigma[CartesianIndex[mu]], \
+ExplicitPauliIndex[3], ExplicitPauliIndex[3]], TraditionalForm]",
+"SubscriptBox[RowBox[{\"(\", \
+FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\
+\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], TraditionalForm], \
+\")\"}], RowBox[{FormBox[FormBox[\"3\", TraditionalForm], \
+TraditionalForm], FormBox[FormBox[\"3\", TraditionalForm], \
+TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID725",
+"MakeBoxes[PauliChain[PauliSigma[CartesianIndex[mu]], \
+PauliIndex[i], PauliIndex[i]], TraditionalForm]",
+"SubscriptBox[RowBox[{\"(\", \
+FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\
+\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], TraditionalForm], \
+\")\"}], RowBox[{FormBox[FormBox[\"i\", TraditionalForm], \
+TraditionalForm], FormBox[FormBox[\"i\", TraditionalForm], \
+TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID726",
+"MakeBoxes[PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D-1], D-1], PauliIndex[i], \
+PauliIndex[j]], TraditionalForm]",
+"SubscriptBox[RowBox[{\"(\", \
+FormBox[RowBox[{SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\
+\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], \".\", RowBox[{\"(\", \
+RowBox[{FormBox[StyleBox[\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> \
+False], TraditionalForm], \"\[CenterDot]\", FormBox[FormBox[StyleBox[\
+\"p\", Bold, StripOnInput -> False], TraditionalForm], \
+TraditionalForm]}], \")\"}]}], TraditionalForm], \")\"}], \
+RowBox[{FormBox[FormBox[\"i\", TraditionalForm], TraditionalForm], \
+FormBox[FormBox[\"j\", TraditionalForm], TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID727",
+"MakeBoxes[PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D-1], D-1], ExplicitPauliIndex[1], \
+PauliIndex[j]], TraditionalForm]",
+"SubscriptBox[RowBox[{\"(\", \
+FormBox[RowBox[{SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\
+\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], \".\", RowBox[{\"(\", \
+RowBox[{FormBox[StyleBox[\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> \
+False], TraditionalForm], \"\[CenterDot]\", FormBox[FormBox[StyleBox[\
+\"p\", Bold, StripOnInput -> False], TraditionalForm], \
+TraditionalForm]}], \")\"}]}], TraditionalForm], \")\"}], \
+RowBox[{FormBox[FormBox[\"1\", TraditionalForm], TraditionalForm], \
+FormBox[FormBox[\"j\", TraditionalForm], TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID728",
+"MakeBoxes[PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D-1], D-1], ExplicitPauliIndex[3], \
+ExplicitPauliIndex[1]], TraditionalForm]",
+"SubscriptBox[RowBox[{\"(\", \
+FormBox[RowBox[{SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\
+\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], \".\", RowBox[{\"(\", \
+RowBox[{FormBox[StyleBox[\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> \
+False], TraditionalForm], \"\[CenterDot]\", FormBox[FormBox[StyleBox[\
+\"p\", Bold, StripOnInput -> False], TraditionalForm], \
+TraditionalForm]}], \")\"}]}], TraditionalForm], \")\"}], \
+RowBox[{FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm], \
+FormBox[FormBox[\"1\", TraditionalForm], TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID729",
+"MakeBoxes[PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D-1], D-1], ExplicitPauliIndex[3], \
+ExplicitPauliIndex[3]], TraditionalForm]",
+"SubscriptBox[RowBox[{\"(\", \
+FormBox[RowBox[{SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\
+\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], \".\", RowBox[{\"(\", \
+RowBox[{FormBox[StyleBox[\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> \
+False], TraditionalForm], \"\[CenterDot]\", FormBox[FormBox[StyleBox[\
+\"p\", Bold, StripOnInput -> False], TraditionalForm], \
+TraditionalForm]}], \")\"}]}], TraditionalForm], \")\"}], \
+RowBox[{FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm], \
+FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID730",
+"MakeBoxes[PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D-1], D-1], ExplicitPauliIndex[1], \
+ExplicitPauliIndex[2]], TraditionalForm]",
+"SubscriptBox[RowBox[{\"(\", \
+FormBox[RowBox[{SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\
+\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], \".\", RowBox[{\"(\", \
+RowBox[{FormBox[StyleBox[\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> \
+False], TraditionalForm], \"\[CenterDot]\", FormBox[FormBox[StyleBox[\
+\"p\", Bold, StripOnInput -> False], TraditionalForm], \
+TraditionalForm]}], \")\"}]}], TraditionalForm], \")\"}], \
+RowBox[{FormBox[FormBox[\"1\", TraditionalForm], TraditionalForm], \
+FormBox[FormBox[\"2\", TraditionalForm], TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID731",
+"MakeBoxes[PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D-1], D-1], ExplicitPauliIndex[3], \
+ExplicitPauliIndex[3]], TraditionalForm]",
+"SubscriptBox[RowBox[{\"(\", \
+FormBox[RowBox[{SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\
+\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], \".\", RowBox[{\"(\", \
+RowBox[{FormBox[StyleBox[\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> \
+False], TraditionalForm], \"\[CenterDot]\", FormBox[FormBox[StyleBox[\
+\"p\", Bold, StripOnInput -> False], TraditionalForm], \
+TraditionalForm]}], \")\"}]}], TraditionalForm], \")\"}], \
+RowBox[{FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm], \
+FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID732",
+"MakeBoxes[PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D-1], D-1], PauliIndex[i], \
+PauliIndex[i]], TraditionalForm]",
+"SubscriptBox[RowBox[{\"(\", \
+FormBox[RowBox[{SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\
+\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], \".\", RowBox[{\"(\", \
+RowBox[{FormBox[StyleBox[\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> \
+False], TraditionalForm], \"\[CenterDot]\", FormBox[FormBox[StyleBox[\
+\"p\", Bold, StripOnInput -> False], TraditionalForm], \
+TraditionalForm]}], \")\"}]}], TraditionalForm], \")\"}], \
+RowBox[{FormBox[FormBox[\"i\", TraditionalForm], TraditionalForm], \
+FormBox[FormBox[\"i\", TraditionalForm], TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID733",
+"MakeBoxes[PauliChain[PauliSigma[CartesianIndex[mu]] . (m + \
+PauliSigma[CartesianMomentum[p]]) . PauliSigma[CartesianIndex[nu]], \
+ExplicitPauliIndex[1], PauliIndex[j]], TraditionalForm]",
+"SubscriptBox[RowBox[{\"(\", \
+FormBox[RowBox[{SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\
+\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], \".\", RowBox[{\"(\", \
+RowBox[{RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\[Sigma]\\\"\", \
+Bold, StripOnInput -> False], TraditionalForm], \"_\"], \
+\"\[CenterDot]\", FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, \
+StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm]}], \
+\"+\", \"m\"}], \")\"}], \".\", \
+SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\[Sigma]\\\
+\"\", Bold, StripOnInput -> False], TraditionalForm], \"_\"]}], \
+FormBox[FormBox[StyleBox[\"nu\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]]}], TraditionalForm], \")\"}], \
+RowBox[{FormBox[FormBox[\"1\", TraditionalForm], TraditionalForm], \
+FormBox[FormBox[\"j\", TraditionalForm], TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID734",
+"MakeBoxes[PauliChain[PauliSigma[CartesianIndex[mu]] . (m + \
+PauliSigma[CartesianMomentum[p]]) . PauliSigma[CartesianIndex[nu]], \
+ExplicitPauliIndex[3], ExplicitPauliIndex[1]], TraditionalForm]",
+"SubscriptBox[RowBox[{\"(\", \
+FormBox[RowBox[{SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\
+\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], \".\", RowBox[{\"(\", \
+RowBox[{RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\[Sigma]\\\"\", \
+Bold, StripOnInput -> False], TraditionalForm], \"_\"], \
+\"\[CenterDot]\", FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, \
+StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm]}], \
+\"+\", \"m\"}], \")\"}], \".\", \
+SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\[Sigma]\\\
+\"\", Bold, StripOnInput -> False], TraditionalForm], \"_\"]}], \
+FormBox[FormBox[StyleBox[\"nu\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]]}], TraditionalForm], \")\"}], \
+RowBox[{FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm], \
+FormBox[FormBox[\"1\", TraditionalForm], TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID735",
+"MakeBoxes[PauliChain[PauliSigma[CartesianIndex[mu]] . (m + \
+PauliSigma[CartesianMomentum[p]]) . PauliSigma[CartesianIndex[nu]], \
+ExplicitPauliIndex[3], ExplicitPauliIndex[3]], TraditionalForm]",
+"SubscriptBox[RowBox[{\"(\", \
+FormBox[RowBox[{SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\
+\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], \".\", RowBox[{\"(\", \
+RowBox[{RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\[Sigma]\\\"\", \
+Bold, StripOnInput -> False], TraditionalForm], \"_\"], \
+\"\[CenterDot]\", FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, \
+StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm]}], \
+\"+\", \"m\"}], \")\"}], \".\", \
+SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\[Sigma]\\\
+\"\", Bold, StripOnInput -> False], TraditionalForm], \"_\"]}], \
+FormBox[FormBox[StyleBox[\"nu\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]]}], TraditionalForm], \")\"}], \
+RowBox[{FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm], \
+FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID736",
+"MakeBoxes[PauliChain[PauliSigma[CartesianIndex[mu]] . (m + \
+PauliSigma[CartesianMomentum[p]]) . PauliSigma[CartesianIndex[nu]], \
+ExplicitPauliIndex[1], ExplicitPauliIndex[2]], TraditionalForm]",
+"SubscriptBox[RowBox[{\"(\", \
+FormBox[RowBox[{SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\
+\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], \".\", RowBox[{\"(\", \
+RowBox[{RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\[Sigma]\\\"\", \
+Bold, StripOnInput -> False], TraditionalForm], \"_\"], \
+\"\[CenterDot]\", FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, \
+StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm]}], \
+\"+\", \"m\"}], \")\"}], \".\", \
+SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\[Sigma]\\\
+\"\", Bold, StripOnInput -> False], TraditionalForm], \"_\"]}], \
+FormBox[FormBox[StyleBox[\"nu\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]]}], TraditionalForm], \")\"}], \
+RowBox[{FormBox[FormBox[\"1\", TraditionalForm], TraditionalForm], \
+FormBox[FormBox[\"2\", TraditionalForm], TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID737",
+"MakeBoxes[PauliChain[PauliSigma[CartesianIndex[mu]] . (m + \
+PauliSigma[CartesianMomentum[p]]) . PauliSigma[CartesianIndex[nu]], \
+ExplicitPauliIndex[3], ExplicitPauliIndex[3]], TraditionalForm]",
+"SubscriptBox[RowBox[{\"(\", \
+FormBox[RowBox[{SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\
+\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], \".\", RowBox[{\"(\", \
+RowBox[{RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\[Sigma]\\\"\", \
+Bold, StripOnInput -> False], TraditionalForm], \"_\"], \
+\"\[CenterDot]\", FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, \
+StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm]}], \
+\"+\", \"m\"}], \")\"}], \".\", \
+SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\[Sigma]\\\
+\"\", Bold, StripOnInput -> False], TraditionalForm], \"_\"]}], \
+FormBox[FormBox[StyleBox[\"nu\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]]}], TraditionalForm], \")\"}], \
+RowBox[{FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm], \
+FormBox[FormBox[\"3\", TraditionalForm], TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID738",
+"MakeBoxes[PauliChain[PauliSigma[CartesianIndex[mu]] . (m + \
+PauliSigma[CartesianMomentum[p]]) . PauliSigma[CartesianIndex[nu]], \
+PauliIndex[i], PauliIndex[i]], TraditionalForm]",
+"SubscriptBox[RowBox[{\"(\", \
+FormBox[RowBox[{SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\
+\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], \".\", RowBox[{\"(\", \
+RowBox[{RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\[Sigma]\\\"\", \
+Bold, StripOnInput -> False], TraditionalForm], \"_\"], \
+\"\[CenterDot]\", FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, \
+StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm]}], \
+\"+\", \"m\"}], \")\"}], \".\", \
+SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\[Sigma]\\\
+\"\", Bold, StripOnInput -> False], TraditionalForm], \"_\"]}], \
+FormBox[FormBox[StyleBox[\"nu\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]]}], TraditionalForm], \")\"}], \
+RowBox[{FormBox[FormBox[\"i\", TraditionalForm], TraditionalForm], \
+FormBox[FormBox[\"i\", TraditionalForm], TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID739",
+"MakeBoxes[PauliChain[PauliEta[-I], PauliIndex[i]], \
+TraditionalForm]",
+"RowBox[{\"PauliChain\", \"(\", RowBox[{RowBox[{\"PauliEta\", \
+\"(\", RowBox[{\"-\", \"\[ImaginaryI]\"}], \")\"}], \",\", \
+FormBox[\"i\", TraditionalForm]}], \")\"}]"},
+{"fcstSharedObjectsTypesetting-ID740",
+"MakeBoxes[PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D-1], D-1], PauliEta[-I], \
+PauliIndex[j]], TraditionalForm]",
+"RowBox[{\"PauliChain\", \"(\", \
+RowBox[{RowBox[{SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\
+\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], \".\", RowBox[{\"(\", \
+RowBox[{FormBox[StyleBox[\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> \
+False], TraditionalForm], \"\[CenterDot]\", FormBox[FormBox[StyleBox[\
+\"p\", Bold, StripOnInput -> False], TraditionalForm], \
+TraditionalForm]}], \")\"}]}], \",\", RowBox[{\"PauliEta\", \"(\", \
+RowBox[{\"-\", \"\[ImaginaryI]\"}], \")\"}], \",\", FormBox[\"j\", \
+TraditionalForm]}], \")\"}]"},
+{"fcstSharedObjectsTypesetting-ID741",
+"MakeBoxes[PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D-1], D-1], PauliIndex[i], \
+PauliXi[I]], TraditionalForm]",
+"RowBox[{\"PauliChain\", \"(\", \
+RowBox[{RowBox[{SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\
+\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], \".\", RowBox[{\"(\", \
+RowBox[{FormBox[StyleBox[\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> \
+False], TraditionalForm], \"\[CenterDot]\", FormBox[FormBox[StyleBox[\
+\"p\", Bold, StripOnInput -> False], TraditionalForm], \
+TraditionalForm]}], \")\"}]}], \",\", FormBox[\"i\", \
+TraditionalForm], \",\", RowBox[{\"PauliXi\", \"(\", \
+\"\[ImaginaryI]\", \")\"}]}], \")\"}]"},
+{"fcstSharedObjectsTypesetting-ID742",
+"MakeBoxes[PauliChain[PauliSigma[CartesianIndex[mu]] . \
+PauliSigma[CartesianMomentum[p, D-1], D-1], PauliEta[-I], \
+PauliXi[I]], TraditionalForm]",
+"RowBox[{\"PauliChain\", \"(\", \
+RowBox[{RowBox[{SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\
+\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], \".\", RowBox[{\"(\", \
+RowBox[{FormBox[StyleBox[\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> \
+False], TraditionalForm], \"\[CenterDot]\", FormBox[FormBox[StyleBox[\
+\"p\", Bold, StripOnInput -> False], TraditionalForm], \
+TraditionalForm]}], \")\"}]}], \",\", RowBox[{\"PauliEta\", \"(\", \
+RowBox[{\"-\", \"\[ImaginaryI]\"}], \")\"}], \",\", RowBox[{\"PauliXi\
+\", \"(\", \"\[ImaginaryI]\", \")\"}]}], \")\"}]"},
+{"fcstSharedObjectsTypesetting-ID743",
+"MakeBoxes[PauliChain[PauliEta[-I], PauliXi[I]], TraditionalForm]",
+	"RowBox[{\"(\", FormBox[SuperscriptBox[\"\[Eta]\", \
+\"\[Dagger]\"], TraditionalForm], \".\", FormBox[\"\[Xi]\", \
+TraditionalForm], \")\"}]"},
+{"fcstSharedObjectsTypesetting-ID744",
+"MakeBoxes[PIDelta[i, j], TraditionalForm]",
+"SubscriptBox[\"\[Delta]\", RowBox[{FormBox[\"i\", \
+TraditionalForm], FormBox[\"j\", TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID745",
+"MakeBoxes[PIDelta[2, i], TraditionalForm]",
+"SubscriptBox[\"\[Delta]\", RowBox[{FormBox[\"2\", \
+TraditionalForm], FormBox[\"i\", TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID746",
+"MakeBoxes[PIDelta[1, 2], TraditionalForm]",
+"SubscriptBox[\"\[Delta]\", RowBox[{FormBox[\"1\", \
+TraditionalForm], FormBox[\"2\", TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID747",
+"MakeBoxes[PIDelta[2, 2], TraditionalForm]",
+"SubscriptBox[\"\[Delta]\", RowBox[{FormBox[\"2\", \
+TraditionalForm], FormBox[\"2\", TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID748",
+"MakeBoxes[PIDelta[i, i], TraditionalForm]",
+"SubscriptBox[\"\[Delta]\", RowBox[{FormBox[\"i\", \
+TraditionalForm], FormBox[\"i\", TraditionalForm]}]]"},
+{"fcstSharedObjectsTypesetting-ID749",
+"MakeBoxes[PCHN[CSI[mu], i, j], TraditionalForm]",
+"FormBox[SubscriptBox[RowBox[{\"(\", \
+FormBox[FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\
+\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], TraditionalForm], \
+TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"i\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"j\", \
+TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID750",
+"MakeBoxes[PCHN[CSI[mu], 1, j], TraditionalForm]",
+"FormBox[SubscriptBox[RowBox[{\"(\", \
+FormBox[FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\
+\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], TraditionalForm], \
+TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"1\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"j\", \
+TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID751",
+"MakeBoxes[PCHN[CSI[mu], 3, 1], TraditionalForm]",
+"FormBox[SubscriptBox[RowBox[{\"(\", \
+FormBox[FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\
+\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], TraditionalForm], \
+TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"3\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"1\", \
+TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID752",
+"MakeBoxes[PCHN[CSI[mu], 3, 3], TraditionalForm]",
+"FormBox[SubscriptBox[RowBox[{\"(\", \
+FormBox[FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\
+\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], TraditionalForm], \
+TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"3\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"3\", \
+TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID753",
+"MakeBoxes[PCHN[CSI[mu], 1, 2], TraditionalForm]",
+"FormBox[SubscriptBox[RowBox[{\"(\", \
+FormBox[FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\
+\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], TraditionalForm], \
+TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"1\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"2\", \
+TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID754",
+"MakeBoxes[PCHN[CSI[mu], i, i], TraditionalForm]",
+"FormBox[SubscriptBox[RowBox[{\"(\", \
+FormBox[FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\
+\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], TraditionalForm], \
+TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"i\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"i\", \
+TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID755",
+"MakeBoxes[PCHN[CSI[mu] . CSISD[p], i, j], TraditionalForm]",
+"FormBox[SubscriptBox[RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[\
+StyleBox[\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], \
+TraditionalForm], \"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, \
+StripOnInput -> False], TraditionalForm], TraditionalForm]], \
+TraditionalForm], \".\", RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[StyleBox[\"\\\"\[Sigma]\\\"\", Bold, \
+StripOnInput -> False], TraditionalForm], \"\[CenterDot]\", \
+FormBox[FormBox[StyleBox[\"p\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]}], TraditionalForm], \")\"}]}], \
+TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"i\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"j\", \
+TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID756",
+"MakeBoxes[PCHN[CSI[mu] . CSISD[p], 1, j], TraditionalForm]",
+"FormBox[SubscriptBox[RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[\
+StyleBox[\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], \
+TraditionalForm], \"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, \
+StripOnInput -> False], TraditionalForm], TraditionalForm]], \
+TraditionalForm], \".\", RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[StyleBox[\"\\\"\[Sigma]\\\"\", Bold, \
+StripOnInput -> False], TraditionalForm], \"\[CenterDot]\", \
+FormBox[FormBox[StyleBox[\"p\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]}], TraditionalForm], \")\"}]}], \
+TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"1\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"j\", \
+TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID757",
+"MakeBoxes[PCHN[CSI[mu] . CSISD[p], 3, 1], TraditionalForm]",
+"FormBox[SubscriptBox[RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[\
+StyleBox[\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], \
+TraditionalForm], \"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, \
+StripOnInput -> False], TraditionalForm], TraditionalForm]], \
+TraditionalForm], \".\", RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[StyleBox[\"\\\"\[Sigma]\\\"\", Bold, \
+StripOnInput -> False], TraditionalForm], \"\[CenterDot]\", \
+FormBox[FormBox[StyleBox[\"p\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]}], TraditionalForm], \")\"}]}], \
+TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"3\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"1\", \
+TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID758",
+"MakeBoxes[PCHN[CSI[mu] . CSISD[p], 3, 3], TraditionalForm]",
+"FormBox[SubscriptBox[RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[\
+StyleBox[\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], \
+TraditionalForm], \"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, \
+StripOnInput -> False], TraditionalForm], TraditionalForm]], \
+TraditionalForm], \".\", RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[StyleBox[\"\\\"\[Sigma]\\\"\", Bold, \
+StripOnInput -> False], TraditionalForm], \"\[CenterDot]\", \
+FormBox[FormBox[StyleBox[\"p\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]}], TraditionalForm], \")\"}]}], \
+TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"3\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"3\", \
+TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID759",
+"MakeBoxes[PCHN[CSI[mu] . CSISD[p], 1, 2], TraditionalForm]",
+"FormBox[SubscriptBox[RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[\
+StyleBox[\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], \
+TraditionalForm], \"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, \
+StripOnInput -> False], TraditionalForm], TraditionalForm]], \
+TraditionalForm], \".\", RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[StyleBox[\"\\\"\[Sigma]\\\"\", Bold, \
+StripOnInput -> False], TraditionalForm], \"\[CenterDot]\", \
+FormBox[FormBox[StyleBox[\"p\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]}], TraditionalForm], \")\"}]}], \
+TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"1\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"2\", \
+TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID760",
+"MakeBoxes[PCHN[CSI[mu] . CSISD[p], i, i], TraditionalForm]",
+"FormBox[SubscriptBox[RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[\
+StyleBox[\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], \
+TraditionalForm], \"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, \
+StripOnInput -> False], TraditionalForm], TraditionalForm]], \
+TraditionalForm], \".\", RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[StyleBox[\"\\\"\[Sigma]\\\"\", Bold, \
+StripOnInput -> False], TraditionalForm], \"\[CenterDot]\", \
+FormBox[FormBox[StyleBox[\"p\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]}], TraditionalForm], \")\"}]}], \
+TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"i\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"i\", \
+TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID761",
+"MakeBoxes[PCHN[CSI[mu] . (m + CSIS[p]) . CSI[nu], 1, j], \
+TraditionalForm]",
+"FormBox[SubscriptBox[RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[\
+StyleBox[\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], \
+TraditionalForm], \"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, \
+StripOnInput -> False], TraditionalForm], TraditionalForm]], \
+TraditionalForm], \".\", RowBox[{\"(\", \
+RowBox[{FormBox[RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\[Sigma]\
+\\\"\", Bold, StripOnInput -> False], TraditionalForm], \"_\"], \"\
+\[CenterDot]\", FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, \
+StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm]}], \
+TraditionalForm], \"+\", \"m\"}], \")\"}], \".\", \
+FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\
+\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"nu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], TraditionalForm]}], \
+TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"1\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"j\", \
+TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID762",
+"MakeBoxes[PCHN[CSI[mu] . (m + CSIS[p]) . CSI[nu], 3, 1], \
+TraditionalForm]",
+"FormBox[SubscriptBox[RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[\
+StyleBox[\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], \
+TraditionalForm], \"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, \
+StripOnInput -> False], TraditionalForm], TraditionalForm]], \
+TraditionalForm], \".\", RowBox[{\"(\", \
+RowBox[{FormBox[RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\[Sigma]\
+\\\"\", Bold, StripOnInput -> False], TraditionalForm], \"_\"], \"\
+\[CenterDot]\", FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, \
+StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm]}], \
+TraditionalForm], \"+\", \"m\"}], \")\"}], \".\", \
+FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\
+\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"nu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], TraditionalForm]}], \
+TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"3\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"1\", \
+TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID763",
+"MakeBoxes[PCHN[CSI[mu] . (m + CSIS[p]) . CSI[nu], 3, 3], \
+TraditionalForm]",
+"FormBox[SubscriptBox[RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[\
+StyleBox[\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], \
+TraditionalForm], \"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, \
+StripOnInput -> False], TraditionalForm], TraditionalForm]], \
+TraditionalForm], \".\", RowBox[{\"(\", \
+RowBox[{FormBox[RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\[Sigma]\
+\\\"\", Bold, StripOnInput -> False], TraditionalForm], \"_\"], \"\
+\[CenterDot]\", FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, \
+StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm]}], \
+TraditionalForm], \"+\", \"m\"}], \")\"}], \".\", \
+FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\
+\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"nu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], TraditionalForm]}], \
+TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"3\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"3\", \
+TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID764",
+"MakeBoxes[PCHN[CSI[mu] . (m + CSIS[p]) . CSI[nu], 1, 2], \
+TraditionalForm]",
+"FormBox[SubscriptBox[RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[\
+StyleBox[\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], \
+TraditionalForm], \"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, \
+StripOnInput -> False], TraditionalForm], TraditionalForm]], \
+TraditionalForm], \".\", RowBox[{\"(\", \
+RowBox[{FormBox[RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\[Sigma]\
+\\\"\", Bold, StripOnInput -> False], TraditionalForm], \"_\"], \"\
+\[CenterDot]\", FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, \
+StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm]}], \
+TraditionalForm], \"+\", \"m\"}], \")\"}], \".\", \
+FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\
+\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"nu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], TraditionalForm]}], \
+TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"1\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"2\", \
+TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID765",
+"MakeBoxes[PCHN[CSI[mu] . (m + CSIS[p]) . CSI[nu], 3, 3], \
+TraditionalForm]",
+"FormBox[SubscriptBox[RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[\
+StyleBox[\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], \
+TraditionalForm], \"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, \
+StripOnInput -> False], TraditionalForm], TraditionalForm]], \
+TraditionalForm], \".\", RowBox[{\"(\", \
+RowBox[{FormBox[RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\[Sigma]\
+\\\"\", Bold, StripOnInput -> False], TraditionalForm], \"_\"], \"\
+\[CenterDot]\", FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, \
+StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm]}], \
+TraditionalForm], \"+\", \"m\"}], \")\"}], \".\", \
+FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\
+\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"nu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], TraditionalForm]}], \
+TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"3\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"3\", \
+TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID766",
+"MakeBoxes[PCHN[CSI[mu] . (m + CSIS[p]) . CSI[nu], i, i], \
+TraditionalForm]",
+"FormBox[SubscriptBox[RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[\
+StyleBox[\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], \
+TraditionalForm], \"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, \
+StripOnInput -> False], TraditionalForm], TraditionalForm]], \
+TraditionalForm], \".\", RowBox[{\"(\", \
+RowBox[{FormBox[RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\[Sigma]\
+\\\"\", Bold, StripOnInput -> False], TraditionalForm], \"_\"], \"\
+\[CenterDot]\", FormBox[OverscriptBox[FormBox[StyleBox[\"p\", Bold, \
+StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm]}], \
+TraditionalForm], \"+\", \"m\"}], \")\"}], \".\", \
+FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[StyleBox[\"\\\"\
+\[Sigma]\\\"\", Bold, StripOnInput -> False], TraditionalForm], \
+\"_\"]}], FormBox[FormBox[StyleBox[\"nu\", Bold, StripOnInput -> \
+False], TraditionalForm], TraditionalForm]], TraditionalForm]}], \
+TraditionalForm], \")\"}], RowBox[{FormBox[FormBox[\"i\", \
+TraditionalForm], TraditionalForm], FormBox[FormBox[\"i\", \
+TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID767",
+"MakeBoxes[PCHN[PauliEta[-I], i], TraditionalForm]",
+"RowBox[{\"PCHN\", \"(\", RowBox[{RowBox[{\"PauliEta\", \"(\", \
+RowBox[{\"-\", \"\[ImaginaryI]\"}], \")\"}], \",\", \"i\"}], \")\"}]"},
+{"fcstSharedObjectsTypesetting-ID768",
+"MakeBoxes[PCHN[CSI[mu] . CSISD[p], PauliEta[-I], j], \
+TraditionalForm]",
+"RowBox[{\"PCHN\", \"(\", \
+RowBox[{RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[\
+StyleBox[\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], \
+TraditionalForm], \"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, \
+StripOnInput -> False], TraditionalForm], TraditionalForm]], \
+TraditionalForm], \".\", RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[StyleBox[\"\\\"\[Sigma]\\\"\", Bold, \
+StripOnInput -> False], TraditionalForm], \"\[CenterDot]\", \
+FormBox[FormBox[StyleBox[\"p\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]}], TraditionalForm], \")\"}]}], \
+\",\", RowBox[{\"PauliEta\", \"(\", RowBox[{\"-\", \
+\"\[ImaginaryI]\"}], \")\"}], \",\", \"j\"}], \")\"}]"},
+{"fcstSharedObjectsTypesetting-ID769",
+"MakeBoxes[PCHN[CSI[mu] . CSISD[p], i, PauliEta[I]], \
+TraditionalForm]",
+"RowBox[{\"PCHN\", \"(\", \
+RowBox[{RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[\
+StyleBox[\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], \
+TraditionalForm], \"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, \
+StripOnInput -> False], TraditionalForm], TraditionalForm]], \
+TraditionalForm], \".\", RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[StyleBox[\"\\\"\[Sigma]\\\"\", Bold, \
+StripOnInput -> False], TraditionalForm], \"\[CenterDot]\", \
+FormBox[FormBox[StyleBox[\"p\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]}], TraditionalForm], \")\"}]}], \
+\",\", \"i\", \",\", RowBox[{\"PauliEta\", \"(\", \"\[ImaginaryI]\", \
+\")\"}]}], \")\"}]"},
+{"fcstSharedObjectsTypesetting-ID770",
+"MakeBoxes[PCHN[CSI[mu] . CSISD[p], PauliEta[-I], PauliXi[I]], \
+TraditionalForm]",
+"RowBox[{\"PCHN\", \"(\", \
+RowBox[{RowBox[{FormBox[SuperscriptBox[RowBox[{OverscriptBox[FormBox[\
+StyleBox[\"\\\"\[Sigma]\\\"\", Bold, StripOnInput -> False], \
+TraditionalForm], \"_\"]}], FormBox[FormBox[StyleBox[\"mu\", Bold, \
+StripOnInput -> False], TraditionalForm], TraditionalForm]], \
+TraditionalForm], \".\", RowBox[{\"(\", \
+FormBox[RowBox[{FormBox[StyleBox[\"\\\"\[Sigma]\\\"\", Bold, \
+StripOnInput -> False], TraditionalForm], \"\[CenterDot]\", \
+FormBox[FormBox[StyleBox[\"p\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]}], TraditionalForm], \")\"}]}], \
+\",\", RowBox[{\"PauliEta\", \"(\", RowBox[{\"-\", \
+\"\[ImaginaryI]\"}], \")\"}], \",\", RowBox[{\"PauliXi\", \"(\", \"\
+\[ImaginaryI]\", \")\"}]}], \")\"}]"},
+{"fcstSharedObjectsTypesetting-ID771",
+"MakeBoxes[PCHN[ PauliEta[-I], PauliXi[I]], TraditionalForm]",
+"FormBox[RowBox[{\"(\", FormBox[SuperscriptBox[\"\[Eta]\", \"\
+\[Dagger]\"], TraditionalForm], \".\", FormBox[\"\[Xi]\", \
+TraditionalForm], \")\"}], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID772",
+"MakeBoxes[\"RightNablaD[i]\", TraditionalForm]",
+"\"\\\"RightNablaD[i]\\\"\""},
+{"fcstSharedObjectsTypesetting-ID773",
+"MakeBoxes[\"RightNablaD[CartesianIndex[i]]\", TraditionalForm]",
+"\"\\\"RightNablaD[CartesianIndex[i]]\\\"\""},
+{"fcstSharedObjectsTypesetting-ID774",
+"MakeBoxes[\"LeftNablaD[i]\", TraditionalForm]",
+"\"\\\"LeftNablaD[i]\\\"\""},
+{"fcstSharedObjectsTypesetting-ID775",
+"MakeBoxes[\"LeftNablaD[CartesianIndex[i]]\", TraditionalForm]",
+"\"\\\"LeftNablaD[CartesianIndex[i]]\\\"\""},
+{"fcstSharedObjectsTypesetting-ID776",
+"MakeBoxes[\"LeftRightNablaD[i]\", TraditionalForm]",
+"\"\\\"LeftRightNablaD[i]\\\"\""},
+{"fcstSharedObjectsTypesetting-ID777",
+"MakeBoxes[\"LeftRightNablaD[CartesianIndex[i]]\", \
+TraditionalForm]", "\"\\\"LeftRightNablaD[CartesianIndex[i]]\\\"\""},
+{"fcstSharedObjectsTypesetting-ID778",
+"MakeBoxes[\"LeftRightNablaD2[i]\", TraditionalForm]",
+"\"\\\"LeftRightNablaD2[i]\\\"\""},
+{"fcstSharedObjectsTypesetting-ID779",
+"MakeBoxes[\"LeftRightNablaD2[CartesianIndex[i]]\", \
+TraditionalForm]", "\"\\\"LeftRightNablaD2[CartesianIndex[i]]\\\"\""},
+{"fcstSharedObjectsTypesetting-ID780",
+"MakeBoxes[GALP[mu, n, nb], TraditionalForm]",
+"FormBox[RowBox[{FractionBox[\"1\", \"2\"], \" \", \
+SuperscriptBox[RowBox[{FormBox[OverscriptBox[FormBox[\"nb\", \
+TraditionalForm], \"_\"], TraditionalForm]}], FormBox[FormBox[\"mu\", \
+TraditionalForm], TraditionalForm]], \" \", RowBox[{OverscriptBox[\"\
+\[Gamma]\", \"_\"], \"\[CenterDot]\", \
+FormBox[OverscriptBox[FormBox[\"n\", TraditionalForm], \"_\"], \
+TraditionalForm]}]}], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID781",
+"MakeBoxes[GALN[mu, n, nb], TraditionalForm]",
+"FormBox[RowBox[{FractionBox[\"1\", \"2\"], \" \", \
+SuperscriptBox[RowBox[{FormBox[OverscriptBox[FormBox[\"n\", \
+TraditionalForm], \"_\"], TraditionalForm]}], FormBox[FormBox[\"mu\", \
+TraditionalForm], TraditionalForm]], \" \", RowBox[{OverscriptBox[\"\
+\[Gamma]\", \"_\"], \"\[CenterDot]\", \
+FormBox[OverscriptBox[FormBox[\"nb\", TraditionalForm], \"_\"], \
+TraditionalForm]}]}], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID782",
+"MakeBoxes[GALR[mu, n, nb], TraditionalForm]",
+"FormBox[SubscriptBox[FormBox[SuperscriptBox[RowBox[{OverscriptBox[\
+\"\[Gamma]\", \"_\"]}], FormBox[FormBox[\"mu\", TraditionalForm], \
+TraditionalForm]], TraditionalForm], \"\[Perpendicular]\"], \
+TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID783",
+"MakeBoxes[GALPD[mu, n, nb], TraditionalForm]",
+"FormBox[RowBox[{FractionBox[\"1\", \"2\"], \" \", \
+SuperscriptBox[RowBox[{FormBox[FormBox[\"nb\", TraditionalForm], \
+TraditionalForm]}], FormBox[FormBox[\"mu\", TraditionalForm], \
+TraditionalForm]], \" \", RowBox[{\"\[Gamma]\", \"\[CenterDot]\", \
+FormBox[FormBox[\"n\", TraditionalForm], TraditionalForm]}]}], \
+TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID784",
+"MakeBoxes[GALND[mu, n, nb], TraditionalForm]",
+"FormBox[RowBox[{FractionBox[\"1\", \"2\"], \" \", \
+SuperscriptBox[RowBox[{FormBox[FormBox[\"n\", TraditionalForm], \
+TraditionalForm]}], FormBox[FormBox[\"mu\", TraditionalForm], \
+TraditionalForm]], \" \", RowBox[{\"\[Gamma]\", \"\[CenterDot]\", \
+FormBox[FormBox[\"nb\", TraditionalForm], TraditionalForm]}]}], \
+TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID785",
+"MakeBoxes[GALRD[mu, n, nb], TraditionalForm]",
+"FormBox[SubscriptBox[FormBox[SuperscriptBox[RowBox[{\"\[Gamma]\"}]\
+, FormBox[FormBox[\"mu\", TraditionalForm], TraditionalForm]], \
+TraditionalForm], \"\[Perpendicular]\"], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID786",
+"MakeBoxes[DiracGamma[LightConePerpendicularComponent[LorentzIndex[\
+mu], Momentum[n], Momentum[nb]]], TraditionalForm]",
+"SubscriptBox[FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\
+\[Gamma]\", \"_\"]}], FormBox[FormBox[\"mu\", TraditionalForm], \
+TraditionalForm]], TraditionalForm], \"\[Perpendicular]\"]"},
+{"fcstSharedObjectsTypesetting-ID787",
+"MakeBoxes[DiracGamma[LightConePerpendicularComponent[LorentzIndex[\
+mu, D], Momentum[n, D], Momentum[nb, D]], D], TraditionalForm]",
+"SubscriptBox[FormBox[SuperscriptBox[RowBox[{\"\[Gamma]\"}], \
+FormBox[FormBox[\"mu\", TraditionalForm], TraditionalForm]], \
+TraditionalForm], \"\[Perpendicular]\"]"},
+{"fcstSharedObjectsTypesetting-ID788",
+"MakeBoxes[GSLP[p, n, nb], TraditionalForm]",
+"FormBox[RowBox[{FractionBox[\"1\", \"2\"], \" \", \
+RowBox[{OverscriptBox[\"\[Gamma]\", \"_\"], \"\[CenterDot]\", \
+FormBox[OverscriptBox[FormBox[\"n\", TraditionalForm], \"_\"], \
+TraditionalForm]}], \" \", RowBox[{\"(\", \
+RowBox[{FormBox[OverscriptBox[FormBox[\"nb\", TraditionalForm], \
+\"_\"], TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", \
+TraditionalForm], FormBox[OverscriptBox[FormBox[\"p\", \
+TraditionalForm], \"_\"], TraditionalForm]}], \")\"}]}], \
+TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID789",
+"MakeBoxes[GSLN[p, n, nb], TraditionalForm]",
+"FormBox[RowBox[{FractionBox[\"1\", \"2\"], \" \", RowBox[{\"(\", \
+RowBox[{FormBox[OverscriptBox[FormBox[\"n\", TraditionalForm], \
+\"_\"], TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", \
+TraditionalForm], FormBox[OverscriptBox[FormBox[\"p\", \
+TraditionalForm], \"_\"], TraditionalForm]}], \")\"}], \" \", \
+RowBox[{OverscriptBox[\"\[Gamma]\", \"_\"], \"\[CenterDot]\", \
+FormBox[OverscriptBox[FormBox[\"nb\", TraditionalForm], \"_\"], \
+TraditionalForm]}]}], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID790",
+"MakeBoxes[GSLR[p, n, nb], TraditionalForm]",
+"FormBox[SubscriptBox[FormBox[RowBox[{OverscriptBox[\"\[Gamma]\", \
+\"_\"], \"\[CenterDot]\", FormBox[OverscriptBox[FormBox[\"p\", \
+TraditionalForm], \"_\"], TraditionalForm]}], TraditionalForm], \"\
+\[Perpendicular]\"], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID791",
+"MakeBoxes[GSLPD[p, n, nb], TraditionalForm]",
+"FormBox[RowBox[{FractionBox[\"1\", \"2\"], \" \", RowBox[{\"\
+\[Gamma]\", \"\[CenterDot]\", FormBox[FormBox[\"n\", \
+TraditionalForm], TraditionalForm]}], \" \", RowBox[{\"(\", \
+RowBox[{FormBox[FormBox[\"nb\", TraditionalForm], TraditionalForm], \
+FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[FormBox[\"p\", TraditionalForm], TraditionalForm]}], \
+\")\"}]}], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID792",
+"MakeBoxes[GSLND[p, n, nb], TraditionalForm]",
+"FormBox[RowBox[{FractionBox[\"1\", \"2\"], \" \", RowBox[{\"(\", \
+RowBox[{FormBox[FormBox[\"n\", TraditionalForm], TraditionalForm], \
+FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[FormBox[\"p\", TraditionalForm], TraditionalForm]}], \")\"}], \
+\" \", RowBox[{\"\[Gamma]\", \"\[CenterDot]\", \
+FormBox[FormBox[\"nb\", TraditionalForm], TraditionalForm]}]}], \
+TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID793",
+"MakeBoxes[GSLRD[p, n, nb], TraditionalForm]",
+"FormBox[SubscriptBox[FormBox[RowBox[{\"\[Gamma]\", \"\[CenterDot]\
+\", FormBox[FormBox[\"p\", TraditionalForm], TraditionalForm]}], \
+TraditionalForm], \"\[Perpendicular]\"], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID794",
+"MakeBoxes[DiracGamma[LightConePerpendicularComponent[Momentum[p], \
+Momentum[n], Momentum[nb]]], TraditionalForm]",
+"SubscriptBox[FormBox[RowBox[{OverscriptBox[\"\[Gamma]\", \"_\"], \
+\"\[CenterDot]\", FormBox[OverscriptBox[FormBox[\"p\", \
+TraditionalForm], \"_\"], TraditionalForm]}], TraditionalForm], \"\
+\[Perpendicular]\"]"},
+{"fcstSharedObjectsTypesetting-ID795",
+"MakeBoxes[DiracGamma[LightConePerpendicularComponent[Momentum[p, \
+D], Momentum[n, D], Momentum[nb, D]], D], TraditionalForm]",
+"SubscriptBox[FormBox[RowBox[{\"\[Gamma]\", \"\[CenterDot]\", \
+FormBox[FormBox[\"p\", TraditionalForm], TraditionalForm]}], \
+TraditionalForm], \"\[Perpendicular]\"]"},
+{"fcstSharedObjectsTypesetting-ID796",
+"MakeBoxes[FVLP[p, mu, n, nb], TraditionalForm]",
+"FormBox[RowBox[{FractionBox[\"1\", \"2\"], \" \", \
+SuperscriptBox[RowBox[{FormBox[OverscriptBox[FormBox[\"nb\", \
+TraditionalForm], \"_\"], TraditionalForm]}], FormBox[FormBox[\"mu\", \
+TraditionalForm], TraditionalForm]], \" \", RowBox[{\"(\", \
+RowBox[{FormBox[OverscriptBox[FormBox[\"n\", TraditionalForm], \
+\"_\"], TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", \
+TraditionalForm], FormBox[OverscriptBox[FormBox[\"p\", \
+TraditionalForm], \"_\"], TraditionalForm]}], \")\"}]}], \
+TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID797",
+"MakeBoxes[FVLN[p, mu, n, nb], TraditionalForm]",
+"FormBox[RowBox[{FractionBox[\"1\", \"2\"], \" \", \
+SuperscriptBox[RowBox[{FormBox[OverscriptBox[FormBox[\"n\", \
+TraditionalForm], \"_\"], TraditionalForm]}], FormBox[FormBox[\"mu\", \
+TraditionalForm], TraditionalForm]], \" \", RowBox[{\"(\", \
+RowBox[{FormBox[OverscriptBox[FormBox[\"nb\", TraditionalForm], \
+\"_\"], TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", \
+TraditionalForm], FormBox[OverscriptBox[FormBox[\"p\", \
+TraditionalForm], \"_\"], TraditionalForm]}], \")\"}]}], \
+TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID798",
+"MakeBoxes[FVLR[p, mu, n, nb], TraditionalForm]",
+"FormBox[SubscriptBox[FormBox[SuperscriptBox[RowBox[{FormBox[\
+OverscriptBox[FormBox[\"p\", TraditionalForm], \"_\"], \
+TraditionalForm]}], FormBox[FormBox[\"mu\", TraditionalForm], \
+TraditionalForm]], TraditionalForm], \"\[Perpendicular]\"], \
+TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID799",
+"MakeBoxes[FVLPD[p, mu, n, nb], TraditionalForm]",
+"FormBox[RowBox[{FractionBox[\"1\", \"2\"], \" \", \
+SuperscriptBox[RowBox[{FormBox[FormBox[\"nb\", TraditionalForm], \
+TraditionalForm]}], FormBox[FormBox[\"mu\", TraditionalForm], \
+TraditionalForm]], \" \", RowBox[{\"(\", \
+RowBox[{FormBox[FormBox[\"n\", TraditionalForm], TraditionalForm], \
+FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[FormBox[\"p\", TraditionalForm], TraditionalForm]}], \
+\")\"}]}], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID800",
+"MakeBoxes[FVLND[p, mu, n, nb], TraditionalForm]",
+"FormBox[RowBox[{FractionBox[\"1\", \"2\"], \" \", \
+SuperscriptBox[RowBox[{FormBox[FormBox[\"n\", TraditionalForm], \
+TraditionalForm]}], FormBox[FormBox[\"mu\", TraditionalForm], \
+TraditionalForm]], \" \", RowBox[{\"(\", RowBox[{FormBox[FormBox[\"nb\
+\", TraditionalForm], TraditionalForm], \
+FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[FormBox[\"p\", TraditionalForm], TraditionalForm]}], \
+\")\"}]}], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID801",
+"MakeBoxes[FVLRD[p, mu, n, nb], TraditionalForm]",
+"FormBox[SubscriptBox[FormBox[SuperscriptBox[RowBox[{FormBox[\
+FormBox[\"p\", TraditionalForm], TraditionalForm]}], FormBox[FormBox[\
+\"mu\", TraditionalForm], TraditionalForm]], TraditionalForm], \"\
+\[Perpendicular]\"], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID802",
+"MakeBoxes[Pair[LightConePerpendicularComponent[LorentzIndex[mu], \
+Momentum[n], Momentum[nb]], \
+LightConePerpendicularComponent[Momentum[p], Momentum[n], \
+Momentum[nb]]], TraditionalForm]",
+"SubscriptBox[FormBox[SuperscriptBox[RowBox[{FormBox[OverscriptBox[\
+FormBox[\"p\", TraditionalForm], \"_\"], TraditionalForm]}], \
+FormBox[FormBox[\"mu\", TraditionalForm], TraditionalForm]], \
+TraditionalForm], \"\[Perpendicular]\"]"},
+{"fcstSharedObjectsTypesetting-ID803",
+"MakeBoxes[Pair[LightConePerpendicularComponent[LorentzIndex[mu, \
+D], Momentum[n, D], Momentum[nb, D]], \
+LightConePerpendicularComponent[Momentum[p, D], Momentum[n, D], \
+Momentum[nb, D]]], TraditionalForm]",
+"SubscriptBox[FormBox[SuperscriptBox[RowBox[{FormBox[FormBox[\"p\",\
+TraditionalForm], TraditionalForm]}], FormBox[FormBox[\"mu\", \
+TraditionalForm], TraditionalForm]], TraditionalForm], \"\
+\[Perpendicular]\"]"},
+{"fcstSharedObjectsTypesetting-ID804",
+"MakeBoxes[MTLP[nu, mu, n, nb], TraditionalForm]",
+"FormBox[RowBox[{FractionBox[\"1\", \"2\"], \" \", \
+SuperscriptBox[RowBox[{FormBox[OverscriptBox[FormBox[\"n\", \
+TraditionalForm], \"_\"], TraditionalForm]}], FormBox[FormBox[\"mu\", \
+TraditionalForm], TraditionalForm]], \" \", \
+SuperscriptBox[RowBox[{FormBox[OverscriptBox[FormBox[\"nb\", \
+TraditionalForm], \"_\"], TraditionalForm]}], FormBox[FormBox[\"nu\", \
+TraditionalForm], TraditionalForm]]}], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID805",
+"MakeBoxes[MTLN[nu, mu, n, nb], TraditionalForm]",
+"FormBox[RowBox[{FractionBox[\"1\", \"2\"], \" \", \
+SuperscriptBox[RowBox[{FormBox[OverscriptBox[FormBox[\"nb\", \
+TraditionalForm], \"_\"], TraditionalForm]}], FormBox[FormBox[\"mu\", \
+TraditionalForm], TraditionalForm]], \" \", \
+SuperscriptBox[RowBox[{FormBox[OverscriptBox[FormBox[\"n\", \
+TraditionalForm], \"_\"], TraditionalForm]}], FormBox[FormBox[\"nu\", \
+TraditionalForm], TraditionalForm]]}], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID806",
+"MakeBoxes[MTLR[mu, nu, n, nb], TraditionalForm]",
+"FormBox[SubscriptBox[FormBox[SuperscriptBox[RowBox[{OverscriptBox[\
+\"g\", \"_\"]}], RowBox[{FormBox[FormBox[\"mu\", TraditionalForm], \
+TraditionalForm], FormBox[FormBox[\"nu\", TraditionalForm], \
+TraditionalForm]}]], TraditionalForm], \"\[Perpendicular]\"], \
+TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID807",
+"MakeBoxes[MTLPD[nu, mu, n, nb], TraditionalForm]",
+"FormBox[FractionBox[RowBox[{SuperscriptBox[RowBox[{FormBox[\
+FormBox[\"n\", TraditionalForm], TraditionalForm]}], FormBox[FormBox[\
+\"mu\", TraditionalForm], TraditionalForm]], \" \", \
+SuperscriptBox[RowBox[{FormBox[FormBox[\"nb\", TraditionalForm], \
+TraditionalForm]}], FormBox[FormBox[\"nu\", TraditionalForm], \
+TraditionalForm]]}], \"2\"], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID808",
+"MakeBoxes[MTLND[nu, mu, n, nb], TraditionalForm]",
+"FormBox[FractionBox[RowBox[{SuperscriptBox[RowBox[{FormBox[\
+FormBox[\"nb\", TraditionalForm], TraditionalForm]}], \
+FormBox[FormBox[\"mu\", TraditionalForm], TraditionalForm]], \" \", \
+SuperscriptBox[RowBox[{FormBox[FormBox[\"n\", TraditionalForm], \
+TraditionalForm]}], FormBox[FormBox[\"nu\", TraditionalForm], \
+TraditionalForm]]}], \"2\"], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID809",
+"MakeBoxes[MTLRD[mu, nu, n, nb], TraditionalForm]",
+"FormBox[SubscriptBox[FormBox[SuperscriptBox[RowBox[{\"g\"}], \
+RowBox[{FormBox[FormBox[\"mu\", TraditionalForm], TraditionalForm], \
+FormBox[FormBox[\"nu\", TraditionalForm], TraditionalForm]}]], \
+TraditionalForm], \"\[Perpendicular]\"], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID810",
+"MakeBoxes[Pair[LightConePerpendicularComponent[LorentzIndex[mu], \
+Momentum[n], Momentum[nb]], \
+LightConePerpendicularComponent[LorentzIndex[nu], Momentum[n], \
+Momentum[nb]]], TraditionalForm]",
+"SubscriptBox[FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"g\", \
+\"_\"]}], RowBox[{FormBox[FormBox[\"mu\", TraditionalForm], \
+TraditionalForm], FormBox[FormBox[\"nu\", TraditionalForm], \
+TraditionalForm]}]], TraditionalForm], \"\[Perpendicular]\"]"},
+{"fcstSharedObjectsTypesetting-ID811",
+"MakeBoxes[Pair[LightConePerpendicularComponent[LorentzIndex[mu, \
+D], Momentum[n, D], Momentum[nb, D]], \
+LightConePerpendicularComponent[LorentzIndex[nu, D], Momentum[n, D], \
+Momentum[nb, D]]], TraditionalForm]",
+"SubscriptBox[FormBox[SuperscriptBox[RowBox[{\"g\"}], \
+RowBox[{FormBox[FormBox[\"mu\", TraditionalForm], TraditionalForm], \
+FormBox[FormBox[\"nu\", TraditionalForm], TraditionalForm]}]], \
+TraditionalForm], \"\[Perpendicular]\"]"},
+{"fcstSharedObjectsTypesetting-ID812",
+"MakeBoxes[SPLP[p, q, n, nb], TraditionalForm]",
+"FormBox[RowBox[{FractionBox[\"1\", \"2\"], \" \", RowBox[{\"(\", \
+RowBox[{FormBox[OverscriptBox[FormBox[\"n\", TraditionalForm], \
+\"_\"], TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", \
+TraditionalForm], FormBox[OverscriptBox[FormBox[\"p\", \
+TraditionalForm], \"_\"], TraditionalForm]}], \")\"}], \" \", \
+RowBox[{\"(\", RowBox[{FormBox[OverscriptBox[FormBox[\"nb\", \
+TraditionalForm], \"_\"], TraditionalForm], \
+FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[OverscriptBox[FormBox[\"q\", TraditionalForm], \"_\"], \
+TraditionalForm]}], \")\"}]}], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID813",
+"MakeBoxes[SPLN[p, q, n, nb], TraditionalForm]",
+"FormBox[RowBox[{FractionBox[\"1\", \"2\"], \" \", RowBox[{\"(\", \
+RowBox[{FormBox[OverscriptBox[FormBox[\"n\", TraditionalForm], \
+\"_\"], TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", \
+TraditionalForm], FormBox[OverscriptBox[FormBox[\"q\", \
+TraditionalForm], \"_\"], TraditionalForm]}], \")\"}], \" \", \
+RowBox[{\"(\", RowBox[{FormBox[OverscriptBox[FormBox[\"nb\", \
+TraditionalForm], \"_\"], TraditionalForm], \
+FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[OverscriptBox[FormBox[\"p\", TraditionalForm], \"_\"], \
+TraditionalForm]}], \")\"}]}], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID814",
+"MakeBoxes[SPLR[p, q, n, nb], TraditionalForm]",
+"FormBox[SubscriptBox[FormBox[RowBox[{FormBox[OverscriptBox[\
+FormBox[\"p\", TraditionalForm], \"_\"], TraditionalForm], FormBox[\"\
+\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[OverscriptBox[FormBox[\"q\", TraditionalForm], \"_\"], \
+TraditionalForm]}], TraditionalForm], \"\[Perpendicular]\"], \
+TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID815",
+"MakeBoxes[SPLPD[p, q, n, nb], TraditionalForm]",
+"FormBox[RowBox[{FractionBox[\"1\", \"2\"], \" \", RowBox[{\"(\", \
+RowBox[{FormBox[FormBox[\"n\", TraditionalForm], TraditionalForm], \
+FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[FormBox[\"p\", TraditionalForm], TraditionalForm]}], \")\"}], \
+\" \", RowBox[{\"(\", RowBox[{FormBox[FormBox[\"nb\", \
+TraditionalForm], TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", \
+TraditionalForm], FormBox[FormBox[\"q\", TraditionalForm], \
+TraditionalForm]}], \")\"}]}], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID816",
+"MakeBoxes[SPLND[p, q, n, nb], TraditionalForm]",
+"FormBox[RowBox[{FractionBox[\"1\", \"2\"], \" \", RowBox[{\"(\", \
+RowBox[{FormBox[FormBox[\"n\", TraditionalForm], TraditionalForm], \
+FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[FormBox[\"q\", TraditionalForm], TraditionalForm]}], \")\"}], \
+\" \", RowBox[{\"(\", RowBox[{FormBox[FormBox[\"nb\", \
+TraditionalForm], TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", \
+TraditionalForm], FormBox[FormBox[\"p\", TraditionalForm], \
+TraditionalForm]}], \")\"}]}], TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID817",
+"MakeBoxes[SPLRD[p, q, n, nb], TraditionalForm]",
+"FormBox[SubscriptBox[FormBox[RowBox[{FormBox[FormBox[\"p\", \
+TraditionalForm], TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", \
+TraditionalForm], FormBox[FormBox[\"q\", TraditionalForm], \
+TraditionalForm]}], TraditionalForm], \"\[Perpendicular]\"], \
+TraditionalForm]"},
+{"fcstSharedObjectsTypesetting-ID818",
+"MakeBoxes[Pair[LightConePerpendicularComponent[Momentum[p], \
+Momentum[n], Momentum[nb]], \
+LightConePerpendicularComponent[Momentum[q], Momentum[n], \
+Momentum[nb]]], TraditionalForm]",
+"SubscriptBox[FormBox[RowBox[{FormBox[OverscriptBox[FormBox[\"p\", \
+TraditionalForm], \"_\"], TraditionalForm], \
+FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], \
+FormBox[OverscriptBox[FormBox[\"q\", TraditionalForm], \"_\"], \
+TraditionalForm]}], TraditionalForm], \"\[Perpendicular]\"]"},
+{"fcstSharedObjectsTypesetting-ID819",
+"MakeBoxes[Pair[LightConePerpendicularComponent[Momentum[p, D], \
+Momentum[n, D], Momentum[nb, D]], \
+LightConePerpendicularComponent[Momentum[q, D], Momentum[n, D], \
+Momentum[nb, D]]], TraditionalForm]",
+"SubscriptBox[FormBox[RowBox[{FormBox[FormBox[\"p\", \
+TraditionalForm], TraditionalForm], FormBox[\"\\\"\[CenterDot]\\\"\", \
+TraditionalForm], FormBox[FormBox[\"q\", TraditionalForm], \
+TraditionalForm]}], TraditionalForm], \"\[Perpendicular]\"]"}
 });
 
 Tests`Shared`fcstSharedObjectsTypesettingNr =
@@ -11128,4 +12337,81 @@ Tests`Shared`fcstSharedObjectsTypesettingCustomRules =
 "MakeBoxes[m12,TraditionalForm]",
 "SubsuperscriptBox[\"m\", \"1\", \"2\"]"}
 }
+
+
+Tests`Shared`fcstSharedObjectsTypesettingFCTripleProduct =
+({
+{"fcstSharedObjectsTypesettingFCTripleProduct-ID1",
+"MakeBoxes[FCTripleProduct[a, b, c], TraditionalForm]",
+"RowBox[{FormBox[OverscriptBox[FormBox[StyleBox[\"a\", Bold, \
+StripOnInput -> False], TraditionalForm], \"_\"], TraditionalForm], \
+\"\[CenterDot]\", \"(\", \
+FormBox[OverscriptBox[FormBox[StyleBox[\"b\", Bold, StripOnInput -> \
+False], TraditionalForm], \"_\"], TraditionalForm], \"\[Cross]\", \
+FormBox[OverscriptBox[FormBox[StyleBox[\"c\", Bold, StripOnInput -> \
+False], TraditionalForm], \"_\"], TraditionalForm], \")\"}]"},
+{"fcstSharedObjectsTypesettingFCTripleProduct-ID2",
+"MakeBoxes[FCTripleProduct[CartesianIndex[a], b, c], \
+TraditionalForm]",
+"SuperscriptBox[RowBox[{\"(\", \
+FormBox[OverscriptBox[FormBox[StyleBox[\"b\", Bold, StripOnInput -> \
+False], TraditionalForm], \"_\"], TraditionalForm], \"\[Cross]\", \
+FormBox[OverscriptBox[FormBox[StyleBox[\"c\", Bold, StripOnInput -> \
+False], TraditionalForm], \"_\"], TraditionalForm], \")\"}], \
+FormBox[FormBox[StyleBox[\"a\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]]"},
+{"fcstSharedObjectsTypesettingFCTripleProduct-ID3",
+"MakeBoxes[FCTripleProduct[a, CartesianIndex[b], c], \
+TraditionalForm]",
+"SuperscriptBox[RowBox[{\"-(\", \
+FormBox[OverscriptBox[FormBox[StyleBox[\"a\", Bold, StripOnInput -> \
+False], TraditionalForm], \"_\"], TraditionalForm], \"\[Cross]\", \
+FormBox[OverscriptBox[FormBox[StyleBox[\"c\", Bold, StripOnInput -> \
+False], TraditionalForm], \"_\"], TraditionalForm], \")\"}], \
+FormBox[FormBox[StyleBox[\"b\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]]"},
+{"fcstSharedObjectsTypesettingFCTripleProduct-ID4",
+"MakeBoxes[FCTripleProduct[a, b, CartesianIndex[c]], \
+TraditionalForm]",
+"SuperscriptBox[RowBox[{\"(\", \
+FormBox[OverscriptBox[FormBox[StyleBox[\"a\", Bold, StripOnInput -> \
+False], TraditionalForm], \"_\"], TraditionalForm], \"\[Cross]\", \
+FormBox[OverscriptBox[FormBox[StyleBox[\"b\", Bold, StripOnInput -> \
+False], TraditionalForm], \"_\"], TraditionalForm], \")\"}], \
+FormBox[FormBox[StyleBox[\"c\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]]"},
+{"fcstSharedObjectsTypesettingFCTripleProduct-ID5",
+"MakeBoxes[FCTripleProduct[CartesianIndex[a], CartesianIndex[b], \
+c], TraditionalForm]",
+"FormBox[SuperscriptBox[OverscriptBox[\"\[Epsilon]\", \"_\"], \
+RowBox[{FormBox[FormBox[StyleBox[\"a\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm], FormBox[FormBox[StyleBox[\"b\", \
+Bold, StripOnInput -> False], TraditionalForm], TraditionalForm], \
+FormBox[\"c\", TraditionalForm]}]], TraditionalForm]"},
+{"fcstSharedObjectsTypesettingFCTripleProduct-ID6",
+"MakeBoxes[FCTripleProduct[CartesianIndex[a], b, \
+CartesianIndex[c]], TraditionalForm]",
+"FormBox[SuperscriptBox[OverscriptBox[\"\[Epsilon]\", \"_\"], \
+RowBox[{FormBox[FormBox[StyleBox[\"a\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm], FormBox[\"b\", TraditionalForm], \
+FormBox[FormBox[StyleBox[\"c\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+{"fcstSharedObjectsTypesettingFCTripleProduct-ID7",
+"MakeBoxes[FCTripleProduct[a, CartesianIndex[b], \
+CartesianIndex[c]], TraditionalForm]",
+"FormBox[SuperscriptBox[OverscriptBox[\"\[Epsilon]\", \"_\"], \
+RowBox[{FormBox[\"a\", TraditionalForm], FormBox[FormBox[StyleBox[\"b\
+\", Bold, StripOnInput -> False], TraditionalForm], TraditionalForm], \
+FormBox[FormBox[StyleBox[\"c\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]}]], TraditionalForm]"},
+{"fcstSharedObjectsTypesettingFCTripleProduct-ID8",
+"MakeBoxes[FCTripleProduct[CartesianIndex[a], CartesianIndex[b], \
+CartesianIndex[c]], TraditionalForm]",
+"FormBox[SuperscriptBox[OverscriptBox[\"\[Epsilon]\", \"_\"], \
+RowBox[{FormBox[FormBox[StyleBox[\"a\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm], FormBox[FormBox[StyleBox[\"b\", \
+Bold, StripOnInput -> False], TraditionalForm], TraditionalForm], \
+FormBox[FormBox[StyleBox[\"c\", Bold, StripOnInput -> False], \
+TraditionalForm], TraditionalForm]}]], TraditionalForm]"}
+})
 

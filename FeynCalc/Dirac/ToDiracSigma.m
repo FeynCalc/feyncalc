@@ -5,9 +5,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Introduces DiracSigma											*)
@@ -15,8 +15,8 @@
 (* ------------------------------------------------------------------------ *)
 
 ToDiracSigma::usage =
-"ToDiracSigma[exp,x,y] substitutes the neighboring Dirac matrices x and y by \
-DiracSigma and the metric tensor.";
+"ToDiracSigma[exp, x, y] substitutes the neighboring Dirac matrices $x$ and $y$
+by DiracSigma and the metric tensor.";
 
 ToDiracSigma::failmsg =
 "Error! ToDiracSigma has encountered a fatal problem and must abort the computation. \

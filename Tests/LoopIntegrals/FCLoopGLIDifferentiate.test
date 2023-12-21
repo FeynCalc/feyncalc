@@ -1,0 +1,209 @@
+(* :Title: FCLoopGLIDifferentiate.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopGLIDifferentiate	*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopGLIDifferentiate =
+({
+{"fcstFCLoopGlIDifferentiate-ID1",
+"FCLoopGLIDifferentiate[GLI[topo1,{1,1,-1}],{FCTopology[topo1,{\
+SFAD[q],SFAD[q-p],GFAD[SPD[p,p]SPD[p,q]-x]},{q,p},{},{},{}]},SPD[p,p]]\
+", "-GLI[topo1, {1, 2, -1}] + GLI[topo1, {1, 1, 0}]*Pair[Momentum[p, \
+D], Momentum[q, D]]"},
+{"fcstFCLoopGlIDifferentiate-ID2",
+"FCLoopGLIDifferentiate[GLI[1,{1,1,1}],{FCTopology[1,{SFAD[q],SFAD[\
+q-p],GFAD[SPD[p,p]SPD[p,q]-x]},{q,p},{},{},{}]},SPD[p,p]]",
+"-GLI[1, {1, 2, 1}] - GLI[1, {1, 1, 2}]*Pair[Momentum[p, D], \
+Momentum[q, D]]"},
+{"fcstFCLoopGlIDifferentiate-ID3",
+"FCLoopGLIDifferentiate[{GLI[11112,{1,1,0,1,1,1}],GLI[11112,{1,1,1,\
+-1,0,1}],GLI[11112,{1,1,1,0,0,1}]},{FCTopology[11112,{SFAD[p1],SFAD[\
+p2],SFAD[-p1-p2+Q],SFAD[-p1+Q],SFAD[-p2+Q],GFAD[-Q2 SPD[p1,p2]+(1-c) \
+SPD[p1,Q] SPD[p2,Q]]},{p1,p2},{Q},{},{}]},c]",
+"{GLI[11112, {1, 1, 0, 1, 1, 2}]*Pair[Momentum[p1, D], Momentum[Q, \
+D]]*Pair[Momentum[p2, D], Momentum[Q, D]], GLI[11112, {1, 1, 1, -1, \
+0, 2}]*Pair[Momentum[p1, D], Momentum[Q, D]]*Pair[Momentum[p2, D], \
+Momentum[Q, D]], GLI[11112, {1, 1, 1, 0, 0, 2}]*Pair[Momentum[p1, D], \
+Momentum[Q, D]]*Pair[Momentum[p2, D], Momentum[Q, D]]}"},
+{"fcstFCLoopGlIDifferentiate-ID4",
+"FCLoopGLIDifferentiate[{GLI[22324,{1,1,1,1,-1,0,0,0,0,1}],GLI[\
+22324,{1,1,1,1,-1,0,0,1,0,1}],GLI[22324,{1,1,1,1,-1,0,1,1,0,1}],GLI[\
+22324,{1,1,1,1,0,-1,0,1,1,1}],GLI[22324,{1,1,1,1,0,0,0,0,0,1}],GLI[\
+22324,{1,1,1,1,0,0,0,1,0,1}],GLI[22324,{1,1,1,1,0,0,0,1,1,1}],GLI[\
+22324,{1,1,1,1,0,0,1,1,0,1}]},{FCTopology[22324,{SFAD[p1],SFAD[p2],\
+SFAD[-p1-p2-p4+Q],SFAD[p4],SFAD[p2+p4],SFAD[-p1-p2+Q],SFAD[-p2+Q],\
+SFAD[-p1+Q],SFAD[-p2-p4+Q],GFAD[-Q2 SPD[p2,p4]+(1-c) SPD[p2,Q] \
+SPD[p4,Q]]},{p1,p2,p3,p4},{Q},{},{}]},c]",
+"{GLI[22324, {1, 1, 1, 1, -1, 0, 0, 0, 0, 2}]*Pair[Momentum[p2, \
+D], Momentum[Q, D]]*Pair[Momentum[p4, D], Momentum[Q, D]], GLI[22324, \
+{1, 1, 1, 1, -1, 0, 0, 1, 0, 2}]*Pair[Momentum[p2, D], Momentum[Q, \
+D]]*Pair[Momentum[p4, D], Momentum[Q, D]], GLI[22324, {1, 1, 1, 1, \
+-1, 0, 1, 1, 0, 2}]*Pair[Momentum[p2, D], Momentum[Q, \
+D]]*Pair[Momentum[p4, D], Momentum[Q, D]], GLI[22324, {1, 1, 1, 1, 0, \
+-1, 0, 1, 1, 2}]*Pair[Momentum[p2, D], Momentum[Q, \
+D]]*Pair[Momentum[p4, D], Momentum[Q, D]], GLI[22324, {1, 1, 1, 1, 0, \
+0, 0, 0, 0, 2}]*Pair[Momentum[p2, D], Momentum[Q, \
+D]]*Pair[Momentum[p4, D], Momentum[Q, D]], GLI[22324, {1, 1, 1, 1, 0, \
+0, 0, 1, 0, 2}]*Pair[Momentum[p2, D], Momentum[Q, \
+D]]*Pair[Momentum[p4, D], Momentum[Q, D]], GLI[22324, {1, 1, 1, 1, 0, \
+0, 0, 1, 1, 2}]*Pair[Momentum[p2, D], Momentum[Q, \
+D]]*Pair[Momentum[p4, D], Momentum[Q, D]], GLI[22324, {1, 1, 1, 1, 0, \
+0, 1, 1, 0, 2}]*Pair[Momentum[p2, D], Momentum[Q, \
+D]]*Pair[Momentum[p4, D], Momentum[Q, D]]}"},
+{"fcstFCLoopGlIDifferentiate-ID5",
+"FCLoopGLIDifferentiate[x GLI[tad2l,{1,1,1}],
+{FCTopology[tad2l, {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - p2, \
+m3}]}, {p1, p2}, {}, {}, {}]},m1]", "2*m1*x*GLI[tad2l, {2, 1, 1}]"},
+{"fcstFCLoopGlIDifferentiate-ID6",
+"FCLoopGLIDifferentiate[x GLI[tad2l,{1,1,1}],
+{FCTopology[tad2l, {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - p2, \
+m3}]}, {p1, p2}, {}, {}, {}]},{m1,5}]",
+"144*m1*x*GLI[tad2l, {4, 1, 1}] + 288*x*(2*m1*GLI[tad2l, {4, 1, \
+1}] + 8*m1^3*GLI[tad2l, {5, 1, 1}]) + 384*x*(4*m1^3*GLI[tad2l, {5, 1, \
+1}] + 10*m1^5*GLI[tad2l, {6, 1, 1}])"},
+{"fcstFCLoopGlIDifferentiate-ID7",
+"FCLoopGLIDifferentiate[m2^2 GLI[tad2l,{1,1,1}],
+{FCTopology[tad2l, {FAD[{p1, m1}], FAD[{p2, m2}], FAD[{p1 - p2, \
+m3}]}, {p1, p2}, {}, {}, {}]},m2]",
+"2*m2*GLI[tad2l, {1, 1, 1}] + 2*m2^3*GLI[tad2l, {1, 2, 1}]"},
+{"fcstFCLoopGlIDifferentiate-ID8",
+"FCLoopGLIDifferentiate[ GLI[prop1l,{1,1}]+SPD[q] GLI[prop1l,{1,0}],
+{FCTopology[prop1l, {FAD[{p1, m1}], FAD[{p1+q, m2}]}, {p1}, {q}, {}, \
+{}]},SPD[q]]", "GLI[prop1l, {1, 0}] - GLI[prop1l, {1, 2}]"},
+{"fcstFCLoopGLIDifferentiate-ID9",
+"FCLoopGLIDifferentiate[GLI[topo1,{1}],{FCTopology[topo1,{SFAD[{p1,\
+m1^2}]},{p1},{},{},{}]},xxx,FCE->True]", "0"},
+{"fcstFCLoopGLIDifferentiate-ID10",
+"FCLoopGLIDifferentiate[GLI[topo1,{1}],{FCTopology[topo1,{SFAD[{p1,\
+m1^2}]},{p1},{},{},{}]},FVD[p2,mu],FCE->True]", "0"},
+{"fcstFCLoopGLIDifferentiate-ID11",
+"FCLoopGLIDifferentiate[GLI[topo1,{1}],{FCTopology[topo1,{SFAD[{p1,\
+m1^2}]},{p1},{},{},{}]},FVD[p1,mu],FCE->True]",
+"-2*FVD[p1, mu]*GLI[topo1, {2}]"},
+{"fcstFCLoopGLIDifferentiate-ID12",
+"FCLoopGLIDifferentiate[SPD[p1,p2]GLI[topo1,{1,1,1}],{FCTopology[\
+topo1,{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],SFAD[p1-p2]},{p1,p2},{},{},{}]}\
+,FVD[p1,mu],FCE->True]",
+"FVD[p2, mu]*GLI[topo1, {1, 1, 1}] - 2*(FVD[p1, mu] - FVD[p2, \
+mu])*GLI[topo1, {1, 1, 2}]*SPD[p1, p2] - 2*FVD[p1, mu]*GLI[topo1, {2, \
+1, 1}]*SPD[p1, p2]"},
+{"fcstFCLoopGLIDifferentiate-ID13",
+"FCLoopGLIDifferentiate[a+SPD[p1,p2]GLI[topo1,{1,1,1}],{FCTopology[\
+topo1,{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],SFAD[p1-p2]},{p1,p2},{},{},{}]}\
+,FVD[p1,mu],FCE->True]",
+"FVD[p2, mu]*GLI[topo1, {1, 1, 1}] - 2*(FVD[p1, mu] - FVD[p2, \
+mu])*GLI[topo1, {1, 1, 2}]*SPD[p1, p2] - 2*FVD[p1, mu]*GLI[topo1, {2, \
+1, 1}]*SPD[p1, p2]"},
+{"fcstFCLoopGLIDifferentiate-ID14",
+"FCLoopGLIDifferentiate[SPD[p1,p2]GLI[topo1,{1,1,1}],{FCTopology[\
+topo1,{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],SFAD[p1-p2]},{p1,p2},{},{},{}]}\
+,{FVD[p1,mu]},FCE->True]",
+"FVD[p2, mu]*GLI[topo1, {1, 1, 1}] - 2*(FVD[p1, mu] - FVD[p2, \
+mu])*GLI[topo1, {1, 1, 2}]*SPD[p1, p2] - 2*FVD[p1, mu]*GLI[topo1, {2, \
+1, 1}]*SPD[p1, p2]"},
+{"fcstFCLoopGLIDifferentiate-ID15",
+"FCLoopGLIDifferentiate[SPD[p1,p2]GLI[topo1,{1,1,1}],{FCTopology[\
+topo1,{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],SFAD[p1-p2]},{p1,p2},{},{},{}]}\
+,{FVD[p1,mu],FVD[p2,nu]},FCE->True]",
+"-2*FVD[p2, mu]*FVD[p2, nu]*GLI[topo1, {1, 2, 1}] - 2*FVD[p1, \
+mu]*FVD[p1, nu]*GLI[topo1, {2, 1, 1}] + GLI[topo1, {1, 1, 1}]*MTD[mu, \
+nu] - 8*(FVD[p1, mu] - FVD[p2, mu])*(FVD[p1, nu] - FVD[p2, \
+nu])*GLI[topo1, {1, 1, 3}]*SPD[p1, p2] + 4*(FVD[p1, mu] - FVD[p2, \
+mu])*FVD[p2, nu]*GLI[topo1, {1, 2, 2}]*SPD[p1, p2] - 4*FVD[p1, \
+mu]*(FVD[p1, nu] - FVD[p2, nu])*GLI[topo1, {2, 1, 2}]*SPD[p1, p2] + \
+4*FVD[p1, mu]*FVD[p2, nu]*GLI[topo1, {2, 2, 1}]*SPD[p1, p2] - \
+2*GLI[topo1, {1, 1, 2}]*(FVD[p1, mu]*FVD[p1, nu] - 2*FVD[p1, \
+nu]*FVD[p2, mu] + FVD[p2, mu]*FVD[p2, nu] - MTD[mu, nu]*SPD[p1, p2])"},
+{"fcstFCLoopGLIDifferentiate-ID16",
+"FCLoopGLIDifferentiate[SPD[p1,p2]GLI[topo1,{1,1,1}],{FCTopology[\
+topo1,{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],SFAD[p1-p2]},{p1,p2},{},{},{}]}\
+,{FVD[p1,mu],FVD[p2,nu],FVD[p2,rho]},FCE->True]",
+"8*FVD[p2, mu]*FVD[p2, nu]*FVD[p2, rho]*GLI[topo1, {1, 3, 1}] - \
+2*GLI[topo1, {1, 2, 1}]*(FVD[p2, rho]*MTD[mu, nu] + FVD[p2, \
+nu]*MTD[mu, rho] + FVD[p2, mu]*MTD[nu, rho]) - 2*GLI[topo1, {1, 1, \
+2}]*(-2*FVD[p1, rho]*MTD[mu, nu] + FVD[p2, rho]*MTD[mu, nu] - \
+2*FVD[p1, nu]*MTD[mu, rho] + FVD[p2, nu]*MTD[mu, rho] + FVD[p2, \
+mu]*MTD[nu, rho]) - 48*(FVD[p1, mu] - FVD[p2, mu])*(FVD[p1, nu] - \
+FVD[p2, nu])*(FVD[p1, rho] - FVD[p2, rho])*GLI[topo1, {1, 1, \
+4}]*SPD[p1, p2] + 16*(FVD[p1, mu] - FVD[p2, mu])*(FVD[p1, \
+rho]*FVD[p2, nu] + FVD[p1, nu]*FVD[p2, rho] - 2*FVD[p2, nu]*FVD[p2, \
+rho])*GLI[topo1, {1, 2, 3}]*SPD[p1, p2] - 16*(FVD[p1, mu] - FVD[p2, \
+mu])*FVD[p2, nu]*FVD[p2, rho]*GLI[topo1, {1, 3, 2}]*SPD[p1, p2] - \
+16*FVD[p1, mu]*(FVD[p1, nu] - FVD[p2, nu])*(FVD[p1, rho] - FVD[p2, \
+rho])*GLI[topo1, {2, 1, 3}]*SPD[p1, p2] + 8*FVD[p1, mu]*(FVD[p1, \
+rho]*FVD[p2, nu] + FVD[p1, nu]*FVD[p2, rho] - 2*FVD[p2, nu]*FVD[p2, \
+rho])*GLI[topo1, {2, 2, 2}]*SPD[p1, p2] - 16*FVD[p1, mu]*FVD[p2, \
+nu]*FVD[p2, rho]*GLI[topo1, {2, 3, 1}]*SPD[p1, p2] - 4*FVD[p1, \
+mu]*GLI[topo1, {2, 1, 2}]*(2*FVD[p1, nu]*FVD[p1, rho] - FVD[p1, \
+rho]*FVD[p2, nu] - FVD[p1, nu]*FVD[p2, rho] - MTD[nu, rho]*SPD[p1, \
+p2]) + 4*FVD[p1, mu]*GLI[topo1, {2, 2, 1}]*(FVD[p1, rho]*FVD[p2, nu] \
++ FVD[p1, nu]*FVD[p2, rho] + MTD[nu, rho]*SPD[p1, p2]) + 4*GLI[topo1, \
+{1, 2, 2}]*(FVD[p1, mu]*FVD[p1, rho]*FVD[p2, nu] - 2*FVD[p1, \
+rho]*FVD[p2, mu]*FVD[p2, nu] + FVD[p1, mu]*FVD[p1, nu]*FVD[p2, rho] - \
+2*FVD[p1, nu]*FVD[p2, mu]*FVD[p2, rho] + 2*FVD[p2, mu]*FVD[p2, \
+nu]*FVD[p2, rho] - FVD[p2, rho]*MTD[mu, nu]*SPD[p1, p2] - FVD[p2, \
+nu]*MTD[mu, rho]*SPD[p1, p2] + FVD[p1, mu]*MTD[nu, rho]*SPD[p1, p2] - \
+FVD[p2, mu]*MTD[nu, rho]*SPD[p1, p2]) - 8*GLI[topo1, {1, 1, \
+3}]*(2*FVD[p1, mu]*FVD[p1, nu]*FVD[p1, rho] - 3*FVD[p1, nu]*FVD[p1, \
+rho]*FVD[p2, mu] - FVD[p1, mu]*FVD[p1, rho]*FVD[p2, nu] + 2*FVD[p1, \
+rho]*FVD[p2, mu]*FVD[p2, nu] - FVD[p1, mu]*FVD[p1, nu]*FVD[p2, rho] + \
+2*FVD[p1, nu]*FVD[p2, mu]*FVD[p2, rho] - FVD[p2, mu]*FVD[p2, \
+nu]*FVD[p2, rho] - FVD[p1, rho]*MTD[mu, nu]*SPD[p1, p2] + FVD[p2, \
+rho]*MTD[mu, nu]*SPD[p1, p2] - FVD[p1, nu]*MTD[mu, rho]*SPD[p1, p2] + \
+FVD[p2, nu]*MTD[mu, rho]*SPD[p1, p2] - FVD[p1, mu]*MTD[nu, \
+rho]*SPD[p1, p2] + FVD[p2, mu]*MTD[nu, rho]*SPD[p1, p2])"},
+{"fcstFCLoopGLIDifferentiate-ID17",
+"FCLoopGLIDifferentiate[a+b \
+GLI[topo1,{1,1,1}],{FCTopology[topo1,{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],\
+SFAD[p1-p2]},{p1,p2},{},{},{}]},FVD[p1,mu],FCE->True]",
+"-2*b*(FVD[p1, mu] - FVD[p2, mu])*GLI[topo1, {1, 1, 2}] - \
+2*b*FVD[p1, mu]*GLI[topo1, {2, 1, 1}]"},
+{"fcstFCLoopGLIDifferentiate-ID18",
+"FCLoopGLIDifferentiate[a+b \
+GLI[topo1,{1,2,2}],{FCTopology[topo1,{SFAD[{p1,m1^2}],SFAD[{p2,m2^2}],\
+SFAD[p1-p2]},{p1,p2},{},{},{}]},FVD[p1,mu],FCE->True]",
+"-4*b*(FVD[p1, mu] - FVD[p2, mu])*GLI[topo1, {1, 2, 3}] - \
+2*b*FVD[p1, mu]*GLI[topo1, {2, 2, 2}]"},
+{"fcstFCLoopGLIDifferentiate-ID19",
+"FCLoopGLIDifferentiate[GLI[fctopology2,{1,-2,1,1,1,1,1,1}],{\
+FCTopology[fctopology1,{SFAD[{{p1,0},{0,1},1}],SFAD[{{p1+p3+p4-Q,0},{\
+0,1},1}],SFAD[{{p3,0},{0,1},1}],SFAD[{{p4,0},{0,1},1}],SFAD[{{p1+p4,0}\
+,{0,1},1}],SFAD[{{p1-Q,0},{0,1},1}],SFAD[{{p3-Q,0},{0,1},1}],GFAD[{{-\
+SPD[p3,p4]+2 z \
+SPD[p3,Q]*SPD[p4,Q],1},1}]},{p1,p3,p4},{Q},{},{}],FCTopology[\
+fctopology2,{SFAD[{{p1,0},{0,1},1}],SFAD[{{p1+p3+p4-Q,0},{0,1},1}],\
+SFAD[{{p3,0},{0,1},1}],SFAD[{{p4,0},{0,1},1}],SFAD[{{p1+p4,0},{0,1},1}\
+],SFAD[{{p1-Q,0},{0,1},1}],SFAD[{{0,-1+2 z \
+p3.Q},{0,1},1}],GFAD[{{-SPD[p3,p4]+2 z SPD[p3,Q] \
+SPD[p4,Q],1},1}]},{p1,p3,p4},{Q},{},{}],FCTopology[fctopology3,{SFAD[{\
+{p1,0},{0,1},1}],SFAD[{{p1+p3+p4-Q,0},{0,1},1}],SFAD[{{p3,0},{0,1},1}]\
+,SFAD[{{p4,0},{0,1},1}],SFAD[{{p1-Q,0},{0,1},1}],SFAD[{{0,2 \
+p3.Q},{0,1},1}],GFAD[{{-SPD[p3,p4]+2 z SPD[p3,Q] \
+SPD[p4,Q],1},1}]},{p1,p3,p4},{Q},{},{}],FCTopology[fctopology4,{SFAD[{\
+{p1,0},{0,1},1}],SFAD[{{p1+p3+p4-Q,0},{0,1},1}],SFAD[{{p3,0},{0,1},1}]\
+,SFAD[{{p4,0},{0,1},1}],SFAD[{{p1-Q,0},{0,1},1}],GFAD[{{1-4 z \
+SPD[p3,Q]+4 z SPD[p3,Q]^2,1},1}],GFAD[{{-SPD[p3,p4]+2 z SPD[p3,Q] \
+SPD[p4,Q],1},1}]},{p1,p3,p4},{Q},{},{}]},FVD[p1,mu],FCE->True]",
+"-2*(FVD[p1, mu] - FVD[Q, mu])*GLI[fctopology2, {1, -2, 1, 1, 1, \
+2, 1, 1}] - 2*(FVD[p1, mu] + FVD[p4, mu])*GLI[fctopology2, {1, -2, 1, \
+1, 2, 1, 1, 1}] + 4*(FVD[p1, mu] + FVD[p3, mu] + FVD[p4, mu] - FVD[Q, \
+mu])*GLI[fctopology2, {1, -1, 1, 1, 1, 1, 1, 1}] - 2*FVD[p1, \
+mu]*GLI[fctopology2, {2, -2, 1, 1, 1, 1, 1, 1}]"},
+{"fcstFCLoopGLIDifferentiate-ID20",
+"FCLoopGLIDifferentiate[
+GLI[topo1, {1, 1, -1}], {FCTopology[
+topo1, {SFAD[{{l1, 0}, {0, 1}, 1}],
+	SFAD[{{k2 + l1, 0}, {0, 1}, 1}],
+	GFAD[{{-2*la^2*SPD[kg1, l1] + SPD[l1, l1], 1}, 1}]}, {l1}, {k2,
+	kg1}, {Hold[Pair][Momentum[kg1, D], Momentum[kg1, D]] -> 0,
+	Hold[Pair][Momentum[k2, D], Momentum[nb, D]] -> 0}, {}]}, {la, 2}]
+","-4 GLI[topo1, {1, 1, 0}] Pair[Momentum[kg1, D], Momentum[l1, D]]"}
+});

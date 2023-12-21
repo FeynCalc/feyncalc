@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Scalar gluon vertex											*)
@@ -16,11 +16,13 @@
 (* ------------------------------------------------------------------------ *)
 
 ScalarGluonVertex::usage =
-"ScalarGluonVertex[{p}, {q}, {mu,a}] or ScalarGluonVertex[ p,  q,  mu, a ] yields \
-the scalar-scalar-gluon vertex, where p and q are incoming momenta. \n
-ScalarGluonVertex[{mu,a}, {nu,b}] yields the scalar-scalar-gluon-gluon vertex, \
-where p and q are incoming momenta.\n
-The dimension  and the name of the coupling constant are determined by the \
+"ScalarGluonVertex[{p}, {q}, {mu, a}] or ScalarGluonVertex[p,  q,  mu, a]
+yields the scalar-scalar-gluon vertex, where p and q are incoming momenta.
+
+ScalarGluonVertex[{mu, a}, {nu, b}] yields the scalar-scalar-gluon-gluon
+vertex, where p and q are incoming momenta.
+
+The dimension and the name of the coupling constant are determined by the
 options Dimension and CouplingConstant.";
 
 (* ------------------------------------------------------------------------ *)

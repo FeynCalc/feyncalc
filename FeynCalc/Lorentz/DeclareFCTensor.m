@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Specify that given heads should be treated as tensor objects	*)
@@ -18,19 +18,19 @@
 
 
 DeclareFCTensor::usage =
-"DeclareFCTensor[a, b, ...] declares a,b, ... to be \
-tensor heads, i.e., DataType[a,b, ...,  FCTensor] is set to True.";
+"DeclareFCTensor[a, b, ...] declares a,b, ... to be tensor heads, i.e.,
+DataType[a,b, ...,  FCTensor] is set to True.";
 
 UnDeclareFCTensor::usage =
-"UnDeclareFCTensor[a, b, ...] undeclares a,b, ... to be \
-tensor heads, i.e., DataType[a,b, ...,  FCTensor] is set to False.";
+"UnDeclareFCTensor[a, b, ...] undeclares a,b, ... to be tensor heads, i.e.,
+DataType[a,b, ...,  FCTensor] is set to False.";
 
 (* ------------------------------------------------------------------------ *)
 
-Begin["`Package`"]
+Begin["`Package`"];
 End[]
 
-Begin["`DeclareFCTensor`Private`"]
+Begin["`DeclareFCTensor`Private`"];
 
 DeclareFCTensor[] :=
 	(Message[DeclareFCTensor::argrx, DeclareFCTensor, 0, "1 or more"];

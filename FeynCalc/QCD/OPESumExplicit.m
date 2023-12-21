@@ -12,7 +12,8 @@
 
 (* ------------------------------------------------------------------------ *)
 
-OPESumExplicit::usage = "OPESumExplicit[exp] calculates OPESum's.";
+OPESumExplicit::usage =
+"OPESumExplicit[exp] calculates OPESums.";
 
 (* ------------------------------------------------------------------------ *)
 

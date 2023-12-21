@@ -10,23 +10,26 @@
 
 (* ------------------------------------------------------------------------ *)
 
-TimedIntegrate::usage= "
-TimedIntegrate[exp, vars] is like Integrate, but stops after the number of \
-seconds specified by the option Timing. Options of Integrate can be given \
-and are passed on.";
+TimedIntegrate::usage=
+"TimedIntegrate[exp, vars] is like Integrate, but stops after the number of
+seconds specified by the option Timing. Options of Integrate can be given and
+are passed on.";
 
+
+TimedIntegrate::"time" =
+"Time constraint `1` exceeded.";
+
+TimedIntegrate::"abort" =
+"Manual abort";
 
 (* ------------------------------------------------------------------------ *)
 
-Begin["`Package`"]
+Begin["`Package`"];
+
 End[]
 
-Begin["`TimedIntegrate`Private`"]
+Begin["`TimedIntegrate`Private`"];
 
-TimedIntegrate::"time" =
-		"Time constraint `1` exceeded.";
-TimedIntegrate::"abort" =
-		"Manual abort";
 
 Options[TimedIntegrate] = {
 	Assumptions -> Epsilon > 0,

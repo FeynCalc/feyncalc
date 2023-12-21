@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Partial fractioning for loop integrals with linearly
@@ -24,8 +24,17 @@
 (* ------------------------------------------------------------------------ *)
 
 FCApart::usage =
-"FCApart[expr,{q1,q2,...}] is an internal function that partial fractions loop integrals "  <> ToString[
-Hyperlink[Style["\[RightSkeleton]", "SR"], "paclet:FeynCalc/ref/FCApart"], StandardForm];
+"FCApart[expr, {q1, q2, ...}] is an internal function that partial fractions a
+loop integral (that depends on q1,q2, ...) into integrals that contain only
+linearly independent propagators. The algorithm is largely based on
+[arXiv:1204.2314](https://arxiv.org/abs/1204.2314) by F.Feng. FCApart is meant
+to be applied to single loop integrals only. If you need to perform partial
+fractioning on an expression that contains multiple loop integrals, use
+ApartFF.
+
+There is actually no reason, why one would want to apply FCApart instead of
+ApartFF, except for cases, where FCApart is called from a different package
+that interacts with FeynCalc.";
 
 FCApart::checkfail="
 Error! Partial fractioning of the loop integral `1` by FCApart has produced an inconsistent result. \
@@ -55,6 +64,7 @@ Options[FCApart] = {
 	FCI 				-> False,
 	FCVerbose 			-> False,
 	FDS 				-> True,
+	FinalSubstitutions	-> {},
 	Factoring 			-> {Factor, 5000},
 	MaxIterations 		-> Infinity,
 	SetDimensions		-> {3,4,D, D-1},
@@ -67,13 +77,14 @@ FCApart[expr_, lmoms_List, opts:OptionsPattern[]] :=
 FCApart[expr_, extraPiece_, lmoms_List, OptionsPattern[]] :=
 	Block[{ex,vectorSet,res,check, scalarTerm, vectorTerm=1, pref=1, tmp,
 		scaleless1=0,scaleless2=0,time, optFactoring, optTimeConstrained,
-		rd, dt, extraTensors, optFDS, optDropScaleless},
+		rd, dt, extraTensors, optFDS, optDropScaleless, optFinalSubstitutions},
 
-		optFDS 				= OptionValue[FDS];
-		optDropScaleless	= OptionValue[DropScaleless];
-		counter 			= OptionValue[MaxIterations];
-		optFactoring 		= OptionValue[Factoring];
-		optTimeConstrained 	= OptionValue[TimeConstrained];
+		optFDS 					= OptionValue[FDS];
+		optDropScaleless		= OptionValue[DropScaleless];
+		counter 				= OptionValue[MaxIterations];
+		optFactoring 			= OptionValue[Factoring];
+		optTimeConstrained 		= OptionValue[TimeConstrained];
+		optFinalSubstitutions 	= OptionValue[FinalSubstitutions];
 
 		If [OptionValue[FCVerbose]===False,
 			fcaVerbose=$VeryVerbose,
@@ -82,9 +93,9 @@ FCApart[expr_, extraPiece_, lmoms_List, OptionsPattern[]] :=
 			];
 		];
 
-		If[	!OptionValue[FCI],
-			ex = FCI[expr],
-			ex = expr
+s		If[	!OptionValue[FCI],
+			{ex,optFinalSubstitutions} = FCI[{expr,FRH[optFinalSubstitutions]}],
+			{ex,optFinalSubstitutions} = {expr,FRH[optFinalSubstitutions]}
 		];
 
 
@@ -224,9 +235,22 @@ FCApart[expr_, extraPiece_, lmoms_List, OptionsPattern[]] :=
 
 		FCPrint[3,"FCApart: Final scalar term ", scalarTerm, FCDoControl->fcaVerbose];
 
-		vectorSet= FCLoopBasisExtract[scalarTerm, lmoms, SetDimensions->OptionValue[SetDimensions]];
+		vectorSet= FCLoopBasisExtract[scalarTerm, lmoms, FCI->True, SetDimensions->OptionValue[SetDimensions], FinalSubstitutions->optFinalSubstitutions];
 
 		FCPrint[3,"FCApart: vectorSet: ",vectorSet, FCDoControl->fcaVerbose];
+
+		If[	!MatchQ[vectorSet[[3]], {__?NumberQ}],
+			FCPrint[3,"FCApart: Partial fractioning is not applicable to integrals with symbolic propagator powers.", FCDoControl->fcaVerbose];
+
+			If[	OptionValue[FCE],
+				ex = FCE[ex]
+			];
+
+			ex = ex*extraPiece;
+
+			Return[ex];
+		];
+
 
 
 		(* All the partial fractioning is done by pfrac *)
@@ -250,9 +274,11 @@ FCApart[expr_, extraPiece_, lmoms_List, OptionsPattern[]] :=
 		(* The output is converted back into the standard FeynCalc notation *)
 		res = res/. pfracOut[{_,_,x_,y_}]:> FeynAmpDenominatorCombine[Times@@MapIndexed[Power[y[[First[#2]]],Abs[#1]]&,x]];
 
-		res = FCLoopRemoveNegativePropagatorPowers[res,FCI->True,FCLoopPropagatorPowersCombine -> False];
+		FCPrint[3,"FCApart: Preliminary result after an intermediate conversion: ", res, FCDoControl->fcaVerbose];
 
+		res = FCLoopRemoveNegativePropagatorPowers[res,FCI->True,FCLoopPropagatorPowersCombine -> True];
 
+		FCPrint[3,"FCApart: After FCLoopRemoveNegativePropagatorPowers: ", res, FCDoControl->fcaVerbose];
 
 
 		If [OptionValue[Collecting],
@@ -266,8 +292,8 @@ FCApart[expr_, extraPiece_, lmoms_List, OptionsPattern[]] :=
 			is identical to the original integral *)
 		If [OptionValue[Check],
 			If[	check=
-					Together[FeynAmpDenominatorExplicit[ex*extraPiece] -
-					Together[FeynAmpDenominatorExplicit[res]]]//ExpandScalarProduct[#,FCI->True]&//Together;
+					Together[(FeynAmpDenominatorExplicit[ex*extraPiece]/.optFinalSubstitutions) -
+					Together[FeynAmpDenominatorExplicit[res]]]//ExpandScalarProduct[#,FCI->True]&//ReplaceAll[#,optFinalSubstitutions]&//Together;
 				check=!=0,
 				Message[FCApart::checkfail,ToString[ex,InputForm]];
 				FCPrint[0, StandardForm[check]];

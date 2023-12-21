@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for EpsEvaluate              *)
@@ -37,8 +37,7 @@ Tests`Lorentz`fcstEpsEvaluate = {
 {"fcstEpsEvaluate-ID7","Eps[LorentzIndex[mu], x LorentzIndex[nu], Momentum[p1],
 0] // EpsEvaluate","0"},
 {"fcstEpsEvaluate-ID8","EpsEvaluate[LC[a, b][p1 + p2, p3 + p4] + LC[a, b][q1 + q2, q3 + q4],
-Momentum -> {p1}] // FCE","LC[a, b][p1, p3] + LC[a, b][p1, p4] + LC[a, b][p2, p3] +
-LC[a, b][p2, p4] + LC[a, b][q1 + q2, q3 + q4]"},
+Momentum -> {p1}] // FCE","LC[a, b][p1, p3 + p4] + LC[a, b][p2, p3 + p4] + LC[a, b][q1 + q2, q3 + q4]"},
 {"fcstEpsEvaluate-ID9","EpsEvaluate[
 Eps[CartesianIndex[i], CartesianMomentum[p1], CartesianMomentum[p2] + CartesianMomentum[p3]]]","Eps[CartesianIndex[i], CartesianMomentum[p1], CartesianMomentum[p2]] +
 Eps[CartesianIndex[i], CartesianMomentum[p1], CartesianMomentum[p3]]"},
@@ -58,7 +57,15 @@ Momentum[p3, D]] // EpsEvaluate",
 "-Eps[CartesianMomentum[p1, -1 + D], CartesianMomentum[p2, -1 + D],
 CartesianMomentum[p3, -1 + D]]"},
 {"fcstEpsEvaluate-ID17","Eps[ExplicitLorentzIndex[0], Momentum[p1], Momentum[p2], Momentum[p3]] // EpsEvaluate",
-"-Eps[CartesianMomentum[p1], CartesianMomentum[p2], CartesianMomentum[p3]]"}
+"-Eps[CartesianMomentum[p1], CartesianMomentum[p2], CartesianMomentum[p3]]"},
+{"fcstEpsEvaluate-ID18","EpsEvaluate[LC[i1, i2, i3][p1 + p2 + p3], EpsExpand -> False]",
+"Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3],
+Momentum[p1 + p2 + p3]]"},
+{"fcstEpsEvaluate-ID19","EpsEvaluate[LC[i1, i2, i3][p1 + p2 + p3], Momentum -> {p1}]",
+"Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3],
+Momentum[p1]] +
+Eps[LorentzIndex[i1], LorentzIndex[i2], LorentzIndex[i3],
+Momentum[p2 + p3]]"}
 }
 
 

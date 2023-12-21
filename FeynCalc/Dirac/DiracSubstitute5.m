@@ -5,9 +5,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Substitutes DiracGamma[6] and DiracGamma[7] in terms of
@@ -16,10 +16,9 @@
 (* ------------------------------------------------------------------------ *)
 
 DiracSubstitute5::usage =
-"DiracSubstitute5[exp] rewrites DiracGamma[5] in exp in terms of \
-the chirality projectors DiracGamma[6] and DiracGamma[7]. \
-DiracSubstitute5 is also an option of various FeynCalc functions \
-that handle Dirac algebra.";
+"DiracSubstitute5[exp] rewrites $\\gamma^5$ in terms of the chirality projectors
+$\\gamma^6$ and $\\gamma^7$. DiracSubstitute5 is also an option of various
+FeynCalc functions that handle Dirac algebra.";
 
 DiracSubstitute5::failmsg =
 "Error! DiracSubstitute5 has encountered a fatal problem and must abort the computation. \

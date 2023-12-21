@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for ScalarProduct		*)
@@ -44,6 +44,9 @@ Tests`Lorentz`fcstScalarProduct = {
 
 
 Tests`Lorentz`fcstScalarProductSet = ({
+{"fcstScalarProductSet-ID1.1", "FCClearScalarProducts[]; \n
+	ScalarProduct[aaa]=aaaval; \n
+	ScalarProduct[aaa]", "aaaval"},
 {"fcstScalarProductSet-ID1", "FCClearScalarProducts[]; \n
 	ScalarProduct[a,b]=abval; \n
 	ScalarProduct[a,b]", "abval"},
@@ -687,7 +690,27 @@ Tests`Lorentz`fcstScalarProductSet = ({
 {"fcstScalarProductSet-ID305", "SPE[-a1-a2,b1+b2]",
 "SPE[-a1 - a2, b1 + b2]"},
 {"fcstScalarProductSet-ID306", "SPE[-a1-a2,-b1-b2]",
-"SPE[-a1 - a2, -b1 - b2]"}
+"SPE[-a1 - a2, -b1 - b2]"},
+{"fcstScalarProductSet-ID307",
+"FCClearScalarProducts[]; \n SP[p] = s; \n SP[P] = SP[p]; \n tmp=(SP[P] - SP[p]); \n
+FCClearScalarProducts[]; tmp",
+"0"},
+{"fcstScalarProductSet-ID308","FCClearScalarProducts[]; \n
+ScalarProduct[LightConePerpendicularComponent[Momentum[a],Momentum[n],Momentum[nb]],
+LightConePerpendicularComponent[Momentum[b],Momentum[n],Momentum[nb]]]=23; \n tmp=SPLR[a,b,n,nb]; \n
+FCClearScalarProducts[]; \n tmp", "23"},
+{"fcstScalarProductSet-ID309","FCClearScalarProducts[]; \n
+ScalarProduct[LightConePerpendicularComponent[Momentum[a,D],Momentum[n,D],Momentum[nb,D]],
+LightConePerpendicularComponent[Momentum[b,D],Momentum[n,D],Momentum[nb,D]]]=23; \n tmp=SPLRD[a,b,n,nb]; \n
+FCClearScalarProducts[]; \n tmp", "23"},
+{"fcstScalarProductSet-ID310","FCClearScalarProducts[]; \n
+SPLR[a,b,n,nb]=23; \n tmp=ScalarProduct[LightConePerpendicularComponent[Momentum[a],Momentum[n],Momentum[nb]],
+LightConePerpendicularComponent[Momentum[b],Momentum[n],Momentum[nb]]]; \n
+FCClearScalarProducts[]; \n tmp", "23"},
+{"fcstScalarProductSet-ID311","FCClearScalarProducts[]; \n
+SPLRD[a,b,n,nb]=23; \n tmp= ScalarProduct[LightConePerpendicularComponent[Momentum[a,D],Momentum[n,D],Momentum[nb,D]],
+LightConePerpendicularComponent[Momentum[b,D],Momentum[n,D],Momentum[nb,D]]]; \n
+FCClearScalarProducts[]; \n tmp", "23"}
 });
 
 Tests`Lorentz`fsctSPSet = ({
@@ -1004,6 +1027,9 @@ Tests`Lorentz`fsctCSPSet = ({
 
 
 Tests`Lorentz`fcstCartesianScalarProductSet = ({
+{"fcstCartesianScalarProductSet-ID1.1", "FCClearScalarProducts[]; \n
+	CartesianScalarProduct[aaa]=aaaval; \n
+	CartesianScalarProduct[aaa]", "aaaval"},
 {"fcstCartesianScalarProductSet-ID1", "FCClearScalarProducts[]; \n
 	CartesianScalarProduct[a,b]=abval; \n
 	CartesianScalarProduct[a,b]", "abval"},
@@ -1677,7 +1703,11 @@ D]}"},
 {"fcstCartesianScalarProductSet-ID313",
 "FCClearScalarProducts[];CartesianMomentum[p,D-4]=ab;CSPE[p,p]=0; \
 tmp = {CartesianMomentum[p],CartesianMomentum[p,D-1],CartesianMomentum[p,D-\
-4]}; \n FCClearScalarProducts[]; \n tmp", "{CartesianMomentum[p], CartesianMomentum[p, -1 + D], 0}"}
+4]}; \n FCClearScalarProducts[]; \n tmp", "{CartesianMomentum[p], CartesianMomentum[p, -1 + D], 0}"},
+{"fcstScalarProductSet-ID312",
+"FCClearScalarProducts[]; \n CSP[p] = s; \n CSP[P] = CSP[p]; \n tmp=(CSP[P] - CSP[p]); \n
+FCClearScalarProducts[]; tmp",
+"0"}
 });
 
 Tests`Lorentz`fcstSetTemporalComponent = {

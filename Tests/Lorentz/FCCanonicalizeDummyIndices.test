@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2020 Rolf Mertig
-	Copyright (C) 1997-2020 Frederik Orellana
-	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for
@@ -186,5 +186,24 @@ Spinor[Momentum[p2], m2, 1], $AL[$43]] DCHN[
 GA[5].GA[nu].GA[mu], $AL[$42], $AL[$43]],
 DiracIndexNames -> {i, j}, FCE -> True]",
 "DCHN[Spinor[-Momentum[p1], m1, 1], i] DCHN[
-Spinor[Momentum[p2], m2, 1], j] DCHN[GA[5].GA[nu].GA[mu], i, j]"}
+Spinor[Momentum[p2], m2, 1], j] DCHN[GA[5].GA[nu].GA[mu], i, j]"},
+{"fcstFCCanonicalizeDummyIndices-ID28",
+"FCCanonicalizeDummyIndices[
+PauliChain[PauliSigma[CartesianIndex[a]] . (m +
+	PauliSigma[CartesianIndex[j]] Pair[CartesianIndex[j],
+	Momentum[p]]) . PauliSigma[CartesianIndex[b]], PauliIndex[i],
+PauliIndex[j]], CartesianIndexNames -> {al}, FCE -> True]",
+"m*PCHN[CSI[a] . CSI[b], i, j] + CV[p, al]*PCHN[CSI[a] . CSI[al] . CSI[b], i, j]"},
+{"fcstFCCanonicalizeDummyIndices-ID29",
+"FCCanonicalizeDummyIndices[-((alpha^2*
+	QuantumField[SPhiDagger, PauliIndex[dk1], PauliIndex[dk2], R,
+r] . QuantumField[FCPartialD[{CartesianIndex[i], r}],
+		FCPartialD[{CartesianIndex[i], r}], SPhi, PauliIndex[dk2],
+		PauliIndex[dk1], R, r])/M), CartesianIndexNames -> {i1},Head->{CartesianIndex}]",
+		"-((alpha^2*QuantumField[SPhiDagger, PauliIndex[dk1], PauliIndex[dk2], R, r] . QuantumField[FCPartialD[{CartesianIndex[i1],
+r}], FCPartialD[{CartesianIndex[i1], r}], SPhi, PauliIndex[dk2], PauliIndex[dk1], R, r])/M)"},
+{"fcstFCCanonicalizeDummyIndices-ID30",
+"FCCanonicalizeDummyIndices[PCHN[CSI[a], i, j] PCHN[CSI[b], j, k],
+FCE -> True, PauliIndexNames -> {n}]",
+"PCHN[CSI[a], i, n] PCHN[CSI[b], n, k]"}
 });
