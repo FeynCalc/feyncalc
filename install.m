@@ -25,7 +25,7 @@ If[	!FreeQ[$ContextPath,"WolframLanguageForJupyter`"],
 BeginPackage["FeynCalcInstaller`"];
 
 InstallFeynCalc::notcomp =
-"Your Mathematica version is too old. FeynCalc requires at least Mathematica 8. Installation aborted!";
+"Your Mathematica version is too old. FeynCalc requires at least Mathematica 10. Installation aborted!";
 
 InstallFeynCalc::failed =
 "Download of `1` failed. Installation aborted!";
@@ -92,24 +92,16 @@ If[ !ValueQ[$PathToFAArc],
 	$PathToFAArc = ""
 ];
 
-If[	$VersionNumber < 8,
+If[	$VersionNumber < 10,
 	Message[InstallFeynCalc::notcomp];
 	Abort[]
 ];
 
 
-If[	8.0 <=$VersionNumber < 9.0,
-	(*To use FetchURL in MMA8 we need to load URLTools first *)
-	Needs["Utilities`URLTools`"];
-];
 
 Which[
-	(*Mma 8*)
-	8.0 <=$VersionNumber < 9.0,
-		(*To use FetchURL we need to load URLTools first *)
-		FCGetUrl[x_]:= Utilities`URLTools`FetchURL[x],
-	(*Mma 9 or 10 *)
-	9.0 <=$VersionNumber < 11.0,
+	(*Mma 10 *)
+	$VersionNumber < 11.0,
 		FCGetUrl[x_]:= URLSave[x,CreateTemporary[]],
 	(*Mma 11 and above *)
 	$VersionNumber >= 11.0,
@@ -124,7 +116,7 @@ If[ $PathToFCArc==="",
 			"It seems that your Mathematica version is unable to ",
 			"connect to the FeynCalc repository on GitHub.\n",
 			"This might be a network connectivity problem or an issue with Mathematica.\n",
-			"Especially some older versions of Mathematica (8, 9 or 10) and known to cause such problems\n",
+			"Especially some older versions of Mathematica 10 and known to cause such problems\n",
 			"on recent versions of Linux, MacOS and Windows when accessing SSL-encrypted urls.\n\n",
 			"Please check the wiki <https://github.com/FeynCalc/feyncalc/wiki/Installation> for ",
 			"possible workarounds.\n",
