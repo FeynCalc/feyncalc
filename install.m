@@ -406,25 +406,6 @@ InstallFeynCalc[OptionsPattern[]]:=
 			Quiet@DeleteDirectory[unzipDir, DeleteContents -> True];
 		];
 
-
-		If[	!OptionValue[InstallFeynCalcDevelopmentVersion],
-			(* Activate the documentation	*)
-			WriteString["stdout", "Setting up the help system ... "];
-			RenameDirectory[FileNameJoin[{packageDir,"DocOutput"}],FileNameJoin[{packageDir,"Documentation"}]];
-			Quiet@DeleteDirectory[FileNameJoin[{packageDir,"DocSource"}], DeleteContents -> True];
-
-			(* Disable InsufficientVersionWarning?*)
-			If[ OptionValue[AutoDisableInsufficientVersionWarning] && $Notebooks,
-
-				SetOptions[$FrontEnd, MessageOptions -> {"InsufficientVersionWarning" -> False}],
-
-				Null,
-				If[ choiceDialog2[fancyText[strDisableWarning], WindowFloating->True, WindowTitle->"Documentation system"] && $Notebooks,
-					SetOptions[$FrontEnd, MessageOptions -> {"InsufficientVersionWarning" -> False}]
-				]
-			]
-		];
-
 		(* Activate TraditionalForm? *)
 		WriteString["stdout", "Setting up the format type of new output cells ... "];
 		If[ OptionValue[AutoEnableTraditionalForm],
