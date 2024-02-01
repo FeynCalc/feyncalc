@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## ApartFF
 
 `ApartFF[amp, {q1, q2, ...}]` partial fractions loop integrals by decomposing them into simpler integrals that contain only linearly independent propagators. It uses `FCApart` as a backend and is equally suitable for 1-loop and  multi-loop integrals.

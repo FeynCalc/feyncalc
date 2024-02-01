@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## ToLightConeComponents
 
 `ToLightConeComponents[expr, n, nb]` rewrites all Dirac matrices, scalar products, 4-vectors and metric tensors in terms of their component along the lightcone directions `n` and `nb`

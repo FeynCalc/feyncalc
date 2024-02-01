@@ -11,10 +11,7 @@
 ```mathematica
 x^a y^a 
  
-PowerFactor[%] 
-  
- 
-
+PowerFactor[%]
 ```
 
 $$x^a y^a$$

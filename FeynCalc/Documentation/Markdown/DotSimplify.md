@@ -68,7 +68,6 @@ $$-a.a.b-z a.c.a+a.c$$
 AntiCommutator[b, a] =. 
  
 DotSimplify[a . (b - z c) . a, DotSimplifyRelations -> {a . c -> 1/z}]
-
 ```
 
 $$a.b.a-a$$

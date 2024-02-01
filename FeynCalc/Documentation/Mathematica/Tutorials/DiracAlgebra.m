@@ -16,7 +16,7 @@
 
 
 (* ::Subsection:: *)
-(*Simplifications*)
+(*Simplifications of Dirac matrix chains*)
 
 
 (* ::Text:: *)

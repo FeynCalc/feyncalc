@@ -33,10 +33,7 @@ $$\frac{1}{2} \left(\overleftarrow{\partial }_i.A_{\nu }-\left(\partial _iA_{\nu
 ```mathematica
 QuantumField[A, LorentzIndex[\[Mu]]] . LeftRightNablaD[i] . QuantumField[A, LorentzIndex[\[Rho]]] 
  
-ExpandPartialD[%] 
-  
- 
-
+ExpandPartialD[%]
 ```
 
 $$A_{\mu }.\overleftrightarrow{\nabla }_i.A_{\rho }$$

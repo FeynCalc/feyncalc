@@ -78,6 +78,3 @@ isolatedTopos=FCLoopIsolate[topos[[44;;48]],{k1,k2},  Collecting-> False, Factor
 
 
 res=FCLoopFindTopologies[isolatedTopos,{k1,k2},FCLoopIsolate->loopDen,Head->ampDen,Collecting->False];
-
-
-

@@ -100,6 +100,3 @@ FromGFAD[ex,FCE->True]
 
 FromGFAD[ex,FCE->True,InitialSubstitutions->{ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]}]
 %//InputForm
-
-
-

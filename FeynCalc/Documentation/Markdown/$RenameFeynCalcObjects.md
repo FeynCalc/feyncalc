@@ -4,7 +4,7 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [$LoadAddOns]($LoadAddOns.md).
+[Overview](Extra/FeynCalc.md), [\$LoadAddOns](\$LoadAddOns.md).
 
 ### Examples
 

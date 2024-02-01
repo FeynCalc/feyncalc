@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## FCIteratedIntegralEvaluate
 
 `FCIteratedIntegralEvaluate[ex]` evaluates iterated integrals in ex in terms of multiple polylogarithms.

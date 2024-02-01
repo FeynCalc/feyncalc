@@ -16,7 +16,7 @@
 
 
 (* ::Subsection:: *)
-(*Simplifications*)
+(*Simplifications of tensorial expressions*)
 
 
 (* ::Text:: *)

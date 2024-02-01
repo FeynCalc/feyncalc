@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## FVLN
 
 `FVLN[p,mu,n,nb]` denotes the positive component in the lightcone decomposition of the Lorentz vector $p^{\mu }$  along the vectors `n` and `nb`. It corresponds to $\frac{1}{2} n^{\mu} (p \cdot \bar{n})$.

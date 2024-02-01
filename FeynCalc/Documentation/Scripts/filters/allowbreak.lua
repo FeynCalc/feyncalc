@@ -1,6 +1,9 @@
 return {
   {
     Inline = function (elem)
+--%    print (elem.content)
+--%    print (elem.tag)
+--%    print ('---------')
       if elem.tag == "Code" then
         local new = elem.text
       new = string.gsub(new, '%{', '\\{\\allowbreakXXXXXX')

@@ -4,7 +4,7 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [$NonComm]($NonComm.md), [NonCommFreeQ](NonCommFreeQ.md), [DiracTrace](DiracTrace.md), [SUNTrace](SUNTrace.md).
+[Overview](Extra/FeynCalc.md), [\$NonComm](\$NonComm.md), [NonCommFreeQ](NonCommFreeQ.md), [DiracTrace](DiracTrace.md), [SUNTrace](SUNTrace.md).
 
 ### Examples
 

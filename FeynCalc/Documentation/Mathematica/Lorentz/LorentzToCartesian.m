@@ -36,6 +36,3 @@ LC[\[Mu],\[Nu]][p,q]
 GAD[\[Mu]]
 
 %//LorentzToCartesian
-
-
-

@@ -12,7 +12,7 @@
 DeclareNonCommutative[x]
 ```
 
-As a side-effect of DeclareNonCommutative x is declared to be of DataType NonCommutative.
+As a side-effect of `DeclareNonCommutative` `x` is declared to be of `DataType` `NonCommutative`.
 
 ```mathematica
 DataType[x, NonCommutative]
@@ -20,7 +20,7 @@ DataType[x, NonCommutative]
 
 $$\text{True}$$
 
-The inverse operation is UnDeclareNonCommutative.
+The inverse operation is `UnDeclareNonCommutative`.
 
 ```mathematica
 UnDeclareNonCommutative[x] 
@@ -35,7 +35,7 @@ DeclareNonCommutative[y, z]
  
 DataType[y, z, NonCommutative]
 
-```
+```mathematica
 
 $$\{\text{True},\text{True}\}$$
 

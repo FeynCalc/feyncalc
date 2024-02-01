@@ -40,6 +40,3 @@ Pair[LorentzIndex[\[Mu]],Momentum[p]]Pair[LorentzIndex[\[Nu]],Momentum[q]]Pair[L
 Pair[LorentzIndex[\[Mu]],Momentum[p+q]]Pair[LorentzIndex[\[Mu]],Momentum[r+s]]
 
 %/.Pair->PairContract3
-
-
-

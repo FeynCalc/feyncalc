@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## FCLoopRemovePropagator
 
 `FCLoopRemovePropagator[input,{pos1,pos2,...}]` returns a new `FCTopology` or `GLI` obtained from input by removing propagators at positions listed in `{pos1,pos2,...}`.

@@ -1,14 +1,10 @@
-```mathematica
- 
-```
-
 ## Dimensions
 
 ### See also
 
 [Overview](Extra/FeynCalc.md).
 
-### Notation
+### Notation for tensors living in different dimensions
 
 You might have wondered why 4-vectors, scalar products and Dirac matrices all have a bar, like
 $\bar{p}^\mu$ or $\bar{p} \cdot \bar{q}$. The bar is there to specify that they are 4-dimensional objects. Objects that live in $D$ dimensions do not have a bar, cf.
@@ -20,7 +16,7 @@ FVD[p, \[Mu]]
 
 $$p^{\mu }$$
 
-```
+```mathematica
 (*Pair[LorentzIndex[\[Mu], D], Momentum[p, D]]*)
 ```
 
@@ -31,7 +27,7 @@ MTD[\[Mu], \[Nu]]
 
 $$g^{\mu \nu }$$
 
-```
+```mathematica
 (*Pair[LorentzIndex[\[Mu], D], LorentzIndex[\[Nu], D]]*)
 ```
 
@@ -44,7 +40,7 @@ FVE[p, \[Mu]]
 
 $$\hat{p}^{\mu }$$
 
-```
+```mathematica
 (*Pair[LorentzIndex[\[Mu], -4 + D], Momentum[p, -4 + D]]*)
 ```
 
@@ -55,7 +51,7 @@ MTE[p, q]
 
 $$\hat{g}^{pq}$$
 
-```
+```mathematica
 (*Pair[LorentzIndex[p, -4 + D], LorentzIndex[q, -4 + D]]*)
 ```
 

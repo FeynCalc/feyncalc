@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## LCD
 
 `LCD[m, n, r, s]` evaluates to $D$-dimensional $\varepsilon^{m n r s}$ by virtue of applying `FeynCalcInternal`.
@@ -50,7 +46,6 @@ $$(1-D) (2-D) (3-D) (p\cdot q)$$
 LCD[\[Mu], \[Nu], \[Rho], \[Sigma]] FVD[Subscript[p, 1], \[Mu]] FVD[Subscript[p, 2], \[Nu]] FVD[Subscript[p, 3], \[Rho]] FVD[Subscript[p, 4], \[Sigma]] 
  
 Contract[%]
-
 ```
 
 $$p_1{}^{\mu } p_2{}^{\nu } p_3{}^{\rho } p_4{}^{\sigma } \overset{\text{}}{\epsilon }^{\mu \nu \rho \sigma }$$

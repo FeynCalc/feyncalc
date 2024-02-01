@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## FCDiffEqSolve
 
 `FCDiffEqSolve[mat, var, eps, n]` constructs a solution for a single-variable differential equation $G' = \varepsilon \mathcal{B} G$ in the canonical form, where `mat` is $B$, `var` is the variable w.r.t. which $G$ was differentiated and `n` is the required order in `eps`.

@@ -16,7 +16,7 @@
 
 
 (* ::Subsection:: *)
-(*FeynCalcInternal*)
+(*Internal representation*)
 
 
 (* ::Text:: *)
@@ -84,7 +84,7 @@ diff//Contract
 
 
 (* ::Subsection:: *)
-(*FeynCalcExternal*)
+(*External representation*)
 
 
 (* ::Text:: *)

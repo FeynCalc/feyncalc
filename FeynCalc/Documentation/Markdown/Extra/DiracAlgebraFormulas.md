@@ -1,4 +1,4 @@
-## Dirac algebra
+## Useful formulas for Dirac algebra
 
 ### See also
 

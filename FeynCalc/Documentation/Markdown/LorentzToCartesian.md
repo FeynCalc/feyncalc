@@ -31,10 +31,7 @@ $$\bar{g}^{0\mu } \bar{g}^{\text{\$MU}(\text{\$20})\nu } \left(-\bar{\epsilon }^
 ```mathematica
 GAD[\[Mu]] 
  
-% // LorentzToCartesian 
-  
- 
-
+% // LorentzToCartesian
 ```
 
 $$\gamma ^{\mu }$$

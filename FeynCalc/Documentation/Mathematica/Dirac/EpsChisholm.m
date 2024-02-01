@@ -50,6 +50,3 @@ LC[\[Alpha],\[Nu],\[Gamma],\[Rho]]FV[Subscript[p, 3],\[Gamma]]SpinorUBar[Subscri
 LC[\[Beta],\[Gamma],\[Mu],\[Nu]]FV[Subscript[p, 2],\[Gamma]]SpinorUBar[Subscript[p, 3],SMP["m_s"]] . GA[\[Beta],7] . SpinorV[Subscript[p, 4],SMP["m_d"]]
 
 %//EpsChisholm//DiracSimplify//Contract
-
-
-

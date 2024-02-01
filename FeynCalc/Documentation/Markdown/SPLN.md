@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## SPLN
 
 `SPLN[p,q,n,nb]` denotes the negative component in the lightcone decomposition of the scalar product $p \cdot q$  along the vectors `n` and `nb`. It corresponds to $\frac{1}{2} (p \cdot \bar{n}) (q \cdot n)$.

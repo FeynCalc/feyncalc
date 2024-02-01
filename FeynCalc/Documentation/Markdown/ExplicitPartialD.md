@@ -4,7 +4,7 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [ExpandPartialD](ExpandPartialD.md), [LeftRightPartialD](LeftRightPartialD.md), [LeftRightPartialD2](LeftRightPartialD2.md), [LeftRightNablaD](LeftRightNablalD.md), [LeftRightNablaD2](LeftRightNablalD2.md), [LeftNablaD](LeftNablalD.md), [RightNablaD](RightNablalD.md).
+[Overview](Extra/FeynCalc.md), [ExpandPartialD](ExpandPartialD.md), [LeftRightPartialD](LeftRightPartialD.md), [LeftRightPartialD2](LeftRightPartialD2.md), [LeftRightNablaD](LeftRightNablaD.md), [LeftRightNablaD2](LeftRightNablaD2.md), [LeftNablaD](LeftNablaD.md), [RightNablaD](RightNablaD.md).
 
 ### Examples
 
@@ -83,10 +83,7 @@ $$\frac{1}{2} \overleftarrow{\partial }_i-\vec{\partial }_i$$
 ```mathematica
 LeftRightNablaD2[\[Mu]] 
  
-ExplicitPartialD[%] 
-  
- 
-
+ExplicitPartialD[%]
 ```
 
 $$\overleftrightarrow{\nabla }_{\mu }$$

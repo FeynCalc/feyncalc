@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## LC
 
 `LC[m, n, r, s]` evaluates to 4-dimensional $\varepsilon^{m n r s}$ by virtue of applying `FeynCalcInternal`.
@@ -50,7 +46,6 @@ $$-6 \left(\overline{p}\cdot \overline{q}\right)$$
 LC[\[Mu], \[Nu], \[Rho], \[Sigma]] FV[Subscript[p, 1], \[Mu]] FV[Subscript[p, 2], \[Nu]] FV[Subscript[p, 3], \[Rho]] FV[Subscript[p, 4], \[Sigma]] 
  
 Contract[%]
-
 ```
 
 $$\overline{p}_1{}^{\mu } \overline{p}_2{}^{\nu } \overline{p}_3{}^{\rho } \overline{p}_4{}^{\sigma } \bar{\epsilon }^{\mu \nu \rho \sigma }$$

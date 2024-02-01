@@ -1,23 +1,27 @@
-```mathematica
- 
-```
-
 ## Light-cone formalism
 
 ### See also
 
 [Overview](Extra/FeynCalc.md).
 
-### Notation
+### Notation for light-cone components
 
-FeynCalc is equipped with special symbols that facilitate calculations involving light-cone vectors. The default $n$ and $\bar{n}$ vectors are defined via the global variables `$FCDefaultLightconeVectorN` and `$FCDefaultLightconeVectorNB`
+FeynCalc is equipped with special symbols that facilitate calculations involving light-cone vectors. The default $n$ and $\bar{n}$ vectors are defined via the global variables `$FCDefaultLightconeVectorN` and `$FCDefaultLightconeVectorNB`. By default those are set to `FCGV["n"]` and `FCGV["nb"]` to avoid possible conflicts with user-defined variables
+
+```mathematica
+{$FCDefaultLightconeVectorN, $FCDefaultLightconeVectorNB}
+```
+
+$$\{\text{FCGV}(\text{n}),\text{FCGV}(\text{nb})\}$$
+
+These names can be of course changed. A particularly convenient choice is to use `n` and `nb`. Notice that these commands must be evaluated at the beginning of every FeynCalc session
 
 ```mathematica
 $FCDefaultLightconeVectorN = n;
 $FCDefaultLightconeVectorNB = nb;
 ```
 
-Notice that apart from this you must also explicitly define the values of the scalar products $n^2$, $\bar{n}^2$ and $n \cdot \bar{n}$
+Apart from this you must also explicitly define the values of the scalar products $n^2$, $\bar{n}^2$ and $n \cdot \bar{n}$
 
 ```mathematica
 FCClearScalarProducts[]
@@ -26,7 +30,7 @@ ScalarProduct[nb] = 0;
 ScalarProduct[n, nb] = 2;
 ```
 
-The Plus, Minus and peRpendicular components of 4-vectors are called FVLP, FVLN and FVLR respectively. The plus and minus components are immediately rewritten into forms involving $n$ and $\bar{n}$. The perpendicular component is a separate entity that cannot be simplified further.
+The Plus, Minus and peRpendicular components of 4-vectors are called `FVLP`, `FVLN` and `FVLR` respectively. The plus and minus components are immediately rewritten into forms involving $n$ and $\bar{n}$. The perpendicular component is a separate entity that cannot be simplified further.
 
 ```mathematica
 {FVLP[p, \[Mu]], FVLN[p, \[Mu]], FVLR[p, \[Mu]]}
@@ -49,17 +53,17 @@ FVLR[p, mu, myN, myNB]
 
 $$\overline{p}^{\text{mu}}{}_{\perp }$$
 
-```
+```mathematica
 (*Pair[LightConePerpendicularComponent[LorentzIndex[mu], Momentum[myN], Momentum[myNB]], LightConePerpendicularComponent[Momentum[p], Momentum[myN], Momentum[myNB]]]*)
 ```
 
-Internally, the perpendicular component is implemented as an extra head wrapped around such internal symbols as LorentzIndex or Momentum. This head is called `LightConePerpendicularComponent` and has 3 arguments. The last two arguments specify the light-cone vectors.
+Internally, the perpendicular component is implemented as an extra head wrapped around such internal symbols as `LorentzIndex` or `Momentum`. This head is called `LightConePerpendicularComponent` and has 3 arguments. The last two arguments specify the light-cone vectors.
 
 ```mathematica
 ?LightConePerpendicularComponent
 ```
 
-![0fojluz3gvvqo](img/0fojluz3gvvqo.svg)
+![0h6kq1ltbsocf](img/0h6kq1ltbsocf.svg)
 
 The pattern introduced for 4-vectors can be also found when working scalar products, metric tensors or Dirac matrices
 
@@ -124,9 +128,9 @@ $$g^{\mu \nu } g^{\mu \nu }{}_{\perp }$$
 
 $$D-2$$
 
-### Dirac algebra
+### Dirac matrices with light-cone components 
 
-Dirac algebra is with matrices contracted to light-cone momenta or having particular light-cone components is fully supported. The general strategy followed by `DiracSimplify` is to move all perpendicular components to the very right of the chain.
+Dirac algebra involving matrices contracted to light-cone momenta or having particular light-cone components is fully supported. The general strategy followed by `DiracSimplify` is to move all perpendicular components to the very right of the chain.
 
 ```mathematica
 ex1 = GALR[p] . GA[\[Mu], \[Nu]]
@@ -161,7 +165,7 @@ GALR[mu1, myN, myNB]
 
 $$\bar{\gamma }^{\text{mu1}}{}_{\perp }$$
 
-```
+```mathematica
 (*DiracGamma[LightConePerpendicularComponent[LorentzIndex[mu1], Momentum[myN], Momentum[myNB]]]*)
 ```
 
@@ -209,7 +213,66 @@ ex5 // DiracSimplify
 
 $$2 i \overline{n}^{\rho } \bar{\epsilon }^{\mu _{\perp }\nu _{\perp }\sigma _{\perp }\;\overline{\text{nb}}}+2 i \overline{\text{nb}}^{\rho } \bar{\epsilon }^{\mu _{\perp }\nu _{\perp }\sigma _{\perp }\overline{n}}-2 i \overline{n}^{\sigma } \bar{\epsilon }^{\mu _{\perp }\nu _{\perp }\rho _{\perp }\;\overline{\text{nb}}}-i \overline{n}^{\sigma } \overline{\text{nb}}^{\rho } \bar{\epsilon }^{\mu _{\perp }\nu _{\perp }\overline{n}\;\overline{\text{nb}}}-2 i \overline{\text{nb}}^{\sigma } \bar{\epsilon }^{\mu _{\perp }\nu _{\perp }\rho _{\perp }\overline{n}}+i \overline{n}^{\rho } \overline{\text{nb}}^{\sigma } \bar{\epsilon }^{\mu _{\perp }\nu _{\perp }\overline{n}\;\overline{\text{nb}}}-4 i \bar{\epsilon }^{\mu _{\perp }\nu _{\perp }\rho _{\perp }\sigma _{\perp }}$$
 
-### Tensor reductions
+### Introducing light-cone components by hand
+
+In some calculations one might end up with a mixture of explicit light-cone components and generic Lorentz tensors. If those tensors admit a particularly simple representation in terms of light-cone components, it can be enforced using the function `ToLightConeComponents`
+
+For example, the following expression cannot be simplified any further
+
+```mathematica
+ex6 = GS[nb, vp]
+```
+
+$$\left(\bar{\gamma }\cdot \overline{\text{nb}}\right).\left(\bar{\gamma }\cdot \overline{\text{vp}}\right)$$
+
+Now let us suppose that $(v')^{\mu}$ can be actually written as $\alpha n^\mu + \bar{n}^{\mu}/(4 \alpha)$. We can implement this as  follows
+
+```mathematica
+SP[vp, nb] = 2*alpha;
+SP[vp, n] = 2*1/(4 alpha);
+LightConePerpendicularComponent[Momentum[vp], Momentum[n], Momentum[nb]] = 0;
+```
+
+```mathematica
+FV[vp, mu]
+% // ToLightConeComponents
+```
+
+$$\overline{\text{vp}}^{\text{mu}}$$
+
+$$\text{alpha} \overline{n}^{\text{mu}}+\frac{\overline{\text{nb}}^{\text{mu}}}{4 \;\text{alpha}}$$
+
+However, this will not make FeynCalc automatically simplify the Dirac chain
+
+```mathematica
+ex6 // DiracSimplify
+```
+
+$$\left(\bar{\gamma }\cdot \overline{\text{nb}}\right).\left(\bar{\gamma }\cdot \overline{\text{vp}}\right)$$
+
+Using `ToLightConeComponents` we can explicitly rewrite `vp` in the chain in terms of the light-cone components and hence enforce the desired simplification. In fact, the function will also automatically simplify some common expressions such $\gamma \cdot \bar{n} \gamma \cdot \bar{n} = \gamma \cdot n \gamma \cdot n = 0$
+
+```mathematica
+ex6 // ToLightConeComponents
+% // DiracSimplify
+```
+
+$$\text{alpha} \left(\bar{\gamma }\cdot \overline{\text{nb}}\right).\left(\bar{\gamma }\cdot \overline{n}\right)$$
+
+$$4 \;\text{alpha}-\text{alpha} \left(\bar{\gamma }\cdot \overline{n}\right).\left(\bar{\gamma }\cdot \overline{\text{nb}}\right)$$
+
+Such simplifications inside `ToLightConeComponents` can be disabled using the option `DotSimplify`
+
+```mathematica
+ex6 // ToLightConeComponents[#, DotSimplify -> False] &
+% // DiracSimplify
+```
+
+$$\left(\bar{\gamma }\cdot \overline{\text{nb}}\right).\left(\text{alpha} \bar{\gamma }\cdot \overline{n}+\frac{\bar{\gamma }\cdot \overline{\text{nb}}}{4 \;\text{alpha}}\right)$$
+
+$$4 \;\text{alpha}-\text{alpha} \left(\bar{\gamma }\cdot \overline{n}\right).\left(\bar{\gamma }\cdot \overline{\text{nb}}\right)$$
+
+### Reductions of loop integrals with numerators involving light-cone components
 
 ```mathematica
 int = FVLRD[p, \[Mu]] SFAD[p, p - q]

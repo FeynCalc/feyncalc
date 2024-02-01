@@ -23,10 +23,7 @@ $$\xi ^{\dagger }$$
 ```mathematica
 PauliXi[-I] . SIS[p] . PauliEta[I] 
  
-% // ComplexConjugate 
-  
- 
-
+% // ComplexConjugate
 ```
 
 $$\xi ^{\dagger }.\left(\bar{\sigma }\cdot \overline{p}\right).\eta$$

@@ -1,14 +1,10 @@
-```mathematica
- 
-```
-
 ## Kinematics
 
 ### See also
 
 [Overview](Extra/FeynCalc.md).
 
-### Manipulations
+### Manipulations of scalar products
 
 FeynCalc allows you to specify the values of scalar products before doing the calculation.
 

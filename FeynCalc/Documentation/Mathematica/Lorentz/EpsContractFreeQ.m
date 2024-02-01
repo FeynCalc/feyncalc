@@ -31,6 +31,3 @@ EpsContractFreeQ[%]
 FCI[LC[p1,p2,p3,mu] LC[q1,q2,q3,q4]]
 
 EpsContractFreeQ[%]
-
-
-

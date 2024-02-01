@@ -16,7 +16,7 @@
 
 
 (* ::Subsection:: *)
-(*Notation*)
+(*Notation for colored objects*)
 
 
 (* ::Text:: *)

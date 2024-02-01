@@ -45,10 +45,7 @@ $$\{\}$$
 ```mathematica
 FCI[SUNT[a, a]] 
  
-FCGetDummyIndices[%, {SUNIndex}] 
-  
- 
-
+FCGetDummyIndices[%, {SUNIndex}]
 ```
 
 $$T^a.T^a$$

@@ -23,10 +23,7 @@ $$-2 s \left(u-m_W^2\right)$$
 ```mathematica
 M^2 s - s^2 + M^2 t - s t + M^2 u - s u 
  
-TrickMandelstam[%, {s, t, u, 2 M^2}] 
-  
- 
-
+TrickMandelstam[%, {s, t, u, 2 M^2}]
 ```
 
 $$M^2 s+M^2 t+M^2 u-s^2-s t-s u$$

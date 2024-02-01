@@ -31,6 +31,3 @@ f[p1,p2]/.%
 FCPermuteMomentaRules[{p1,p2,p3}]
 
 f[p1,p2,p3]/.%
-
-
-

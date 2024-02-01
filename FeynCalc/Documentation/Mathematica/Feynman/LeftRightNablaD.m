@@ -40,6 +40,3 @@ ExpandPartialD[%]
 QuantumField[A,LorentzIndex[\[Mu]]] . LeftRightNablaD[i] . QuantumField[A,LorentzIndex[\[Rho]]]
 
 ExpandPartialD[%]
-
-
-

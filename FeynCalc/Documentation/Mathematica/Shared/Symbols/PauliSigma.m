@@ -51,6 +51,3 @@ PauliSigma[Momentum[q]] . PauliSigma[Momentum[p-q]]
 PauliSigma[CartesianMomentum[q]] . PauliSigma[CartesianMomentum[p-q]]
 
 %//PauliSigmaExpand
-
-
-

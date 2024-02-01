@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## MomentumCombine
 
 `MomentumCombine[expr]` is the inverse operation to `MomentumExpand` and `ExpandScalarProduct`. `MomentumCombine` combines also `Pair`s.

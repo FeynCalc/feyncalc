@@ -21,10 +21,7 @@ $$\sum _{i=0}^{-3+m} A^{\text{iB}^{-3-i+m}}$$
 ```mathematica
 OPESum[a^ib^(j - i) c^(m - j - 4), {i, 0, j}, {j, 0, m - 4}] 
  
-OPESumExplicit[%] 
-  
- 
-
+OPESumExplicit[%]
 ```
 
 $$\sum _{j=0}^{-4+m} \;\text{}\;\text{} (j+1)c^{-j+m-4} a^{\text{ib}^{j-i}}$$

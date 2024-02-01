@@ -45,10 +45,7 @@ $$\bar{\delta }^{jl} \bar{\delta }^{km}-\bar{\delta }^{jm} \bar{\delta }^{kl}$$
 ```mathematica
 CLC[i, j, k] CV[Subscript[p, 1], i] CV[Subscript[p, 2], j] CV[Subscript[p, 3], k] 
  
-Contract[%] 
-  
- 
-
+Contract[%]
 ```
 
 $$\overline{p}_1{}^i \overline{p}_2{}^j \overline{p}_3{}^k \bar{\epsilon }^{ijk}$$

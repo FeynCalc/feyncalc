@@ -280,7 +280,7 @@ mappings1[[2]]
 
 
 (* ::Subsection:: *)
-(*Tensor reductions*)
+(*Tensor reductions with GLIs*)
 
 
 (* ::Text:: *)

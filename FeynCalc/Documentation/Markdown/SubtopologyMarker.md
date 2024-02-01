@@ -1,3 +1,5 @@
+## SubtopologyMarker
+
 `SubtopologyMarker` is an option for `FCLoopFindTopologies`, `FCLoopFindTopologyMappings` and other topology related functions. It denotes the symbol that is used to specify that the given topology is a subtopology of another topology and has
 been obtained by removing some of the original propagators (i.e. there are no momenta shifts involved)
 
@@ -8,6 +10,6 @@ Setting `SubtopologyMarker` to `False` means that the information about subtopol
 ### See also
 
 [Overview](Extra/FeynCalc.md), [FCLoopFindTopologies](FCLoopFindTopologies.md), [FCLoopFindTopologyMappings](FCLoopFindTopologyMappings.md),
-[FCLoopFindTopologyMappings](FCLoopFindSubtopologies.md).
+[FCLoopFindSubtopologies](FCLoopFindSubtopologies.md).
 
 ### Examples

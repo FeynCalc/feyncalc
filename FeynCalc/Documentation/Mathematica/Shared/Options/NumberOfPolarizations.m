@@ -59,6 +59,3 @@ DoPolarizationSums[xyz,p,n]
 
 
 DoPolarizationSums[xyz,p,n,NumberOfPolarizations->2]
-
-
-

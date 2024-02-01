@@ -1,11 +1,3 @@
-```mathematica
- 
-```
-
-```mathematica
- 
-```
-
 ## DiracTrace
 
 `DiracTrace[exp]` is the head of Dirac traces. By default the trace is not evaluated. The evaluation occurs only when the option `DiracTraceEvaluate` is set to `True`. It is recommended to use `DiracSimplify`, which will automatically evaluate all Dirac traces in the input expression.
@@ -148,7 +140,7 @@ DiracSimplify[%]
 
 $$\text{tr}\left(\left(m_e-\gamma \cdot q\right).\bar{\gamma }^{\nu }.\left(\bar{\gamma }\cdot \overline{p}+m_e-\gamma \cdot q\right).\bar{\gamma }^{\mu }\right)$$
 
-![1nywe2zsmni95](img/1nywe2zsmni95.svg)
+![04o1hrqxpf60s](img/04o1hrqxpf60s.svg)
 
 $$\text{\$Aborted}$$
 
@@ -182,14 +174,14 @@ FCSetDiracGammaScheme["BMHV"];
 AbsoluteTiming[r1 = DiracSimplify[DiracTrace[GAD[\[Mu], \[Nu], \[Rho]] . GA[5] . GAD[\[Sigma], \[Delta], \[Tau]] . GA[7]]];]
 ```
 
-$$\{0.252561,\text{Null}\}$$
+$$\{0.251861,\text{Null}\}$$
 
 ```mathematica
 AbsoluteTiming[r2 = DiracSimplify[DiracTrace[GAD[\[Mu], \[Nu], \[Rho]] . GA[5] . GAD[\[Sigma], \[Delta], \[Tau]] . GA[7], 
       West -> False]];]
 ```
 
-$$\{2.20889,\text{Null}\}$$
+$$\{2.23117,\text{Null}\}$$
 
 ```mathematica
 r1 === r2

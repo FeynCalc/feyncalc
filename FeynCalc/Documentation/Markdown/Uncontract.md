@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## Uncontract
 
 `Uncontract[exp, q1, q2, ...]` uncontracts `Eps` and `DiracGamma`.

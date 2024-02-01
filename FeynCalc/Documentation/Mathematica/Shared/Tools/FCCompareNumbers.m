@@ -19,7 +19,6 @@
 (*[Overview](Extra/FeynCalc.md)*)
 
 
-
 (* ::Subsection:: *)
 (*Examples*)
 
@@ -63,6 +62,3 @@ FCCompareNumbers[lhs,rhs]
 
 
 FCCompareNumbers[lhs,rhs,Chop->False]
-
-
-

@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## GSLR
 
 `GSLR[p,n,nb]` denotes the perpendicular component in the lightcone decomposition of the slashed Dirac matrix $(\gamma \cdot p)$  along the vectors `n` and `nb`. It corresponds to $(\gamma \cdot p)_{\perp}$.

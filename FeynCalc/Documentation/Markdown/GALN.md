@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## GALN
 
 `GALN[mu,n,nb]` denotes the negative component in the lightcone decomposition of the Dirac matrix $\gamma^{\mu }$  along the vectors `n` and `nb`. It corresponds to $\frac{1}{2} n^{\mu} (\gamma \cdot \bar{n})$.

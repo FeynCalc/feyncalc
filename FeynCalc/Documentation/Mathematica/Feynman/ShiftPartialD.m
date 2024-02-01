@@ -64,4 +64,3 @@ ShiftPartialD[exp2,{FCPartialD[LorentzIndex[mu]]},GaugeField]
 
 ShiftPartialD[exp2,{FCPartialD[LorentzIndex[mu]]},GaugeField,Select -> 
   Function[x, FreeQ[x, QuantumField[GaugeField, LorentzIndex[nu]]]]]
-

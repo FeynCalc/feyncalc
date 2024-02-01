@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## FCLoopCreateRuleGLIToGLI
 
 `FCLoopCreateRuleGLIToGLI[topology1, topology2]` creates a GLI replacement rule assuming that the `topology2` is a subtopology of `topology1`. Both topologies must be given as `FCTopology` objects.

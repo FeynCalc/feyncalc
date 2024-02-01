@@ -1,14 +1,10 @@
-```mathematica
- 
-```
-
 ## Handling indices
 
 ### See also
 
 [Overview](Extra/FeynCalc.md).
 
-### Manipulations
+### Manipulations of tensorial quantities
 
 When you square an expression with dummy indices, you must rename them first. People often do this by hand, e.g. as in
 

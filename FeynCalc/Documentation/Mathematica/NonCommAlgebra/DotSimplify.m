@@ -60,7 +60,6 @@ AntiCommutator[b,a]=.
 DotSimplify[a . (b-z c) . a,DotSimplifyRelations->{a . c->1/z}]
 
 
-
 UnDeclareNonCommutative[a,b,c]
 
 DeclareNonCommutative[x]

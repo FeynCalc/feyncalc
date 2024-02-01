@@ -115,6 +115,3 @@ R,r] . QuantumField[FCPartialD[{CartesianIndex[i], r}],
 FCPartialD[{CartesianIndex[i], r}], \[Phi], PauliIndex[k2],PauliIndex[k1], R, r])
 
 FCCanonicalizeDummyIndices[%, CartesianIndexNames -> {j},Head->{CartesianIndex}]
-
-
-

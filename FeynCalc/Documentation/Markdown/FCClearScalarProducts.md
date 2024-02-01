@@ -21,10 +21,7 @@ FCClearScalarProducts[]
  
 Pair[Momentum[p], Momentum[p]] 
  
-SP[p, p] 
-  
- 
-
+SP[p, p]
 ```
 
 $$\overline{p}^2$$

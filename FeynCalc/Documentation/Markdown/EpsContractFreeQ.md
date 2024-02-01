@@ -21,10 +21,7 @@ $$\text{True}$$
 ```mathematica
 FCI[LC[p1, p2, p3, mu] LC[q1, q2, q3, q4]] 
  
-EpsContractFreeQ[%] 
-  
- 
-
+EpsContractFreeQ[%]
 ```
 
 $$\bar{\epsilon }^{\text{p1}\;\text{p2}\;\text{p3}\;\text{mu}} \bar{\epsilon }^{\text{q1}\;\text{q2}\;\text{q3}\;\text{q4}}$$

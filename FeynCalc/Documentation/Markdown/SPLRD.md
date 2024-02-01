@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## SPLRD
 
 `SPLRD[p,q,n,nb]` denotes the perpendicular component in the lightcone decomposition of the scalar product $p \cdot q$  along the vectors `n` and `nb`. It corresponds to $(p \cdot q)_{\perp}$.

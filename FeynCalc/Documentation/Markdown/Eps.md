@@ -82,10 +82,7 @@ $$-\frac{1}{24} i \overset{\text{}}{\epsilon }^{\mu '\nu '\rho '\alpha '}.\gamma
 ```mathematica
 DiracSimplify[ex1 . ex2] // Factor2 
  
-% /. D -> 4 
-  
- 
-
+% /. D -> 4
 ```
 
 $$-\frac{1}{24} (1-D) (2-D) (3-D) D$$

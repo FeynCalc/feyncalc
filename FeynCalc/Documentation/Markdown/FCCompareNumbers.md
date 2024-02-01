@@ -79,10 +79,7 @@ $$0$$
 The application of `Chop` can be of course disabled
 
 ```mathematica
-FCCompareNumbers[lhs, rhs, Chop -> False] 
-  
- 
-
+FCCompareNumbers[lhs, rhs, Chop -> False]
 ```
 
 $$\text{FCCompareNumbers: Minimal number of significant digits to agree in: }6$$

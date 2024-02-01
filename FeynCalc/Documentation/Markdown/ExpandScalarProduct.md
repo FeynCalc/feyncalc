@@ -130,14 +130,11 @@ DataType[b, FCVariable] = True;
 ```mathematica
 ExpandScalarProduct[SP[P, Q] /. P -> a P1 + b P2] 
  
-StandardForm[%] 
-  
- 
-
+StandardForm[%]
 ```
 
 $$a \left(\overline{\text{P1}}\cdot \overline{Q}\right)+b \left(\overline{\text{P2}}\cdot \overline{Q}\right)$$
 
-```
+```mathematica
 (*a Pair[Momentum[P1], Momentum[Q]] + b Pair[Momentum[P2], Momentum[Q]]*)
 ```

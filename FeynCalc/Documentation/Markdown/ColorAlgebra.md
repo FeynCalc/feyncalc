@@ -1,14 +1,10 @@
-```mathematica
- 
-```
-
 ## Color algebra
 
 ### See also
 
 [Overview](Extra/FeynCalc.md).
 
-### Notation
+### Notation for colored objects
 
 FeynCalc objects relevant for the color algebra are
 

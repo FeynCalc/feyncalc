@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## GSLP
 
 `GSLP[p,n,nb]` denotes the positive component in the lightcone decomposition of the slashed Dirac matrix $(\gamma \cdot p)$  along the vectors `n` and `nb`. It corresponds to $\frac{1}{2} (\bar{n} \cdot p) (\gamma \cdot n)$.

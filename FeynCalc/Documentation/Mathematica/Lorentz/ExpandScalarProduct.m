@@ -108,6 +108,3 @@ DataType[b, FCVariable] = True;
 ExpandScalarProduct[SP[P,Q]/.P->a P1 +b P2]
 
 StandardForm[%]
-
-
-

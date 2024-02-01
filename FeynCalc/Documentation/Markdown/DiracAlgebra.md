@@ -1,14 +1,10 @@
-```mathematica
- 
-```
-
 ## Dirac algebra
 
 ### See also
 
 [Overview](Extra/FeynCalc.md).
 
-### Simplifications
+### Simplifications of Dirac matrix chains
 
 The two most relevant functions for the manipulations of Dirac matrices are `DiracSimplify` and `DiracTrace`.
 

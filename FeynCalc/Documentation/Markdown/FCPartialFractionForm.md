@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## FCPartialFractionForm
 
 `FCPartialFractionForm[n, {{f1,x-r1,p1},{f2,x-r2,p2}, ...}, x]` is a special way of representing sums of rational functions of `x` given by $n + \frac{f_1}{[x-r_1]^p_1} + \frac{f_2}{[x-r_2]^p_2} + \ldots$

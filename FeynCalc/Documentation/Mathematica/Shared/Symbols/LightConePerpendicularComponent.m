@@ -58,6 +58,3 @@ DiracGamma[LightConePerpendicularComponent[LorentzIndex[\[Mu]],
 Momentum[n],Momentum[nb]]]FV[p,\[Mu]]//Contract
 
 %//StandardForm
-
-
-

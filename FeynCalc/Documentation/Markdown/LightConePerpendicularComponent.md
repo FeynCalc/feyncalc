@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## LightConePerpendicularComponent
 
 `LightConePerpendicularComponent[LorentzIndex[mu],Momentum[n],Momentum[nb]]` denotes the perpendicular component of the Lorentz index `mu` with respect to the lightcone momenta `n` and `nb`.
@@ -47,11 +43,10 @@ DiracGamma[LightConePerpendicularComponent[LorentzIndex[\[Mu]],
       Momentum[n], Momentum[nb]]] FV[p, \[Mu]] // Contract 
  
 % // StandardForm
-
 ```
 
 $$\bar{\gamma }\cdot \overline{p}_{\perp }$$
 
-```
+```mathematica
 (*DiracGamma[LightConePerpendicularComponent[Momentum[p], Momentum[n], Momentum[nb]]]*)
 ```

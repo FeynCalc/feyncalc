@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## FCMellinJoin
 
 `FCMellinJoin[int, {q1, q2, ...}, {prop1, prop2, ...}]` applies the standard formula for splitting propagators `prop1, prop2, ...` into summands by introducing integrations along a contour in the complex space.

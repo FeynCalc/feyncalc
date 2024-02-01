@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## FVLND
 
 `FVLND[p,mu,n,nb]` denotes the positive component in the lightcone decomposition of the Lorentz vector $p^{\mu }$  along the vectors `n` and `nb` in $D$ dimensions. It corresponds to $\frac{1}{2} n^{\mu} (p \cdot \bar{n})$.

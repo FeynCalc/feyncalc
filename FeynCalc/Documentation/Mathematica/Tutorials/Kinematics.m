@@ -16,7 +16,7 @@
 
 
 (* ::Subsection:: *)
-(*Manipulations*)
+(*Manipulations of scalar products*)
 
 
 (* ::Text:: *)

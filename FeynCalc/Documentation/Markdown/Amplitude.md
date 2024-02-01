@@ -23,10 +23,7 @@ This is the amplitude of a gluon self-energy diagram:
 ```mathematica
 Amplitude["se1g1"] 
  
-Explicit[%] 
-  
- 
-
+Explicit[%]
 ```
 
 $$\text{SUNDeltaContract}\left(f^{\text{FCGV}(\text{a})\text{FCGV}(\text{c})\text{FCGV}(\text{e})} f^{\text{FCGV}(\text{b})\text{FCGV}(\text{d})\text{FCGV}(\text{f})} \Pi _{\text{FCGV}(\text{e})\text{FCGV}(\text{f})}^{\text{FCGV}(\beta )\text{FCGV}(\sigma )}(\text{FCGV}(\text{q})) V^{\text{FCGV}(\mu )\text{FCGV}(\alpha )\text{FCGV}(\beta )}(\text{FCGV}(\text{p})\text{, }\;\text{FCGV}(\text{q})-\text{FCGV}(\text{p})\text{, }-\text{FCGV}(\text{q})) V^{\text{FCGV}(\nu )\text{FCGV}(\rho )\text{FCGV}(\sigma )}(-\text{FCGV}(\text{p})\text{, }\;\text{FCGV}(\text{p})-\text{FCGV}(\text{q})\text{, }\;\text{FCGV}(\text{q})) \Pi _{\text{FCGV}(\text{c})\text{FCGV}(\text{d})}^{\text{FCGV}(\alpha )\text{FCGV}(\rho )}(\text{FCGV}(\text{p})-\text{FCGV}(\text{q}))\right)$$
