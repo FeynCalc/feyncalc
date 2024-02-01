@@ -50,7 +50,7 @@ FCLoopFromGLI[expr_, topo_FCTopology, opts:OptionsPattern[]] :=
 	FCLoopFromGLI[expr,{topo}, opts];
 
 FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
-	Block[{	res, topos, listGLI, rule, optLoopMomenta,
+	Block[{	res, topos, listGLI, rule, optLoopMomenta, gliHead,
 			pattern, fromGliRule, listGLIEval, ruleFinal, relevantTopos, optList},
 
 		optFeynAmpDenominatorExplicit	= OptionValue[FeynAmpDenominatorExplicit];
@@ -107,12 +107,15 @@ FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
 		*)
 		Which[
 			MatchQ[expr, (_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..])],
-				listGLI = {expr},
+				listGLI = {expr};
+				res = gliHead[expr],
 			MatchQ[expr, {(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..])..}],
-				listGLI = expr,
+				listGLI = expr;
+				res = gliHead/@listGLI,
 			(*amplitude*)
 			True,
-				listGLI = Cases2[expr, GLI]
+				listGLI = Cases2[expr, GLI];
+				res = expr /. a_GLI :> gliHead[a]
 		];
 
 		relevantTopos = Union[FCLoopSelectTopology[listGLI,topos]];
@@ -155,12 +158,14 @@ FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
 			listGLIEval = FeynAmpDenominatorCombine[#,FCI->True]&/@listGLIEval
 		];
 
-		ruleFinal = Thread[Rule[listGLI,listGLIEval]];
+		ruleFinal = Thread[Rule[gliHead/@listGLI,listGLIEval]];
 
 		FCPrint[3,"FCLoopFromGLI: Final set of the replacement rules: ", ruleFinal, FCDoControl->fgliVerbose];
 
 
-		res = expr /. Dispatch[ruleFinal];
+		res = res /. Dispatch[ruleFinal];
+
+		FCPrint[3,"FCLoopFromGLI: Raw result: ", res, FCDoControl->fgliVerbose];
 
 		If[	!FreeQ[res,GLI],
 			Message[FCLoopFromGLI::failmsg, "The input expression still contains GLIs."];
