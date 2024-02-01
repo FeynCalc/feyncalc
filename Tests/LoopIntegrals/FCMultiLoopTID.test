@@ -245,10 +245,7 @@ FAD[q1, q1 - k1, q1 - k1, q1 - k1, q2] SPD[k1 - q1, k1 + q1] SPD[
 q1 - k1, q1 + k1], {q1, q2}]","0"},
 {"fcstFCMultiLoopTID-ID21", "FCMultiLoopTID[
 FAD[q1, q1 - k1, q2, q1 + q2] SPD[2 k1 - q1, q1 + 2 q2], {q1, q2},
-FCE -> True]","2 FAD[q2, q1, q1 + q2, -k1 + q1] SPD[k1, q1] +
-4 FAD[q2, q1, q1 + q2, -k1 + q1] SPD[k1, q2] -
-FAD[q2, q1, q1 + q2, -k1 + q1] SPD[q1, q1] -
-2 FAD[q2, q1, q1 + q2, -k1 + q1] SPD[q1, q2]"},
+FCE -> True]","2*FAD[q1, q2, -k1 + q1, q1 + q2]*SPD[k1, q1] + 4*FAD[q1, q2, -k1 + q1, q1 + q2]*SPD[k1, q2] - FAD[q1, q2, -k1 + q1, q1 + q2]*SPD[q1, q1] - 2*FAD[q1, q2, -k1 + q1, q1 + q2]*SPD[q1, q2]"},
 {"fcstFCMultiLoopTID-ID22", "FCMultiLoopTID[FVD[q, i] FVD[q, j] SFAD[{{0, p.q}, x}], {q},
 FCE -> True]","0"},
 {"fcstFCMultiLoopTID-ID23", "FCMultiLoopTID[FVD[q, i] FVD[q, j] SFAD[{{0, p.q}, x}, q + p], {q},
