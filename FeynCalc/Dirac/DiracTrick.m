@@ -958,11 +958,11 @@ diracology4DimFinalOrdering[ b___,DiracGamma[LightConePerpendicularComponent[c_,
 diracology4DimFinalOrdering[ b___,DiracGamma[Momentum[nb_]], DiracGamma[Momentum[n_]], f___ ] :=
 		(- diracology4DimFinalOrdering[ b,DiracGamma[Momentum[n]],DiracGamma[Momentum[nb]],  f]
 		+ 4 diracology4DimFinalOrdering[ b, f])/; nb=!=n && {n,nb}==={$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB};
-(*
+
 (* g.nb g.nb = g.n g.n = 0*)
 diracology4DimFinalOrdering[___,DiracGamma[Momentum[c_]], DiracGamma[Momentum[c_]], ___ ] :=
 	0/; MemberQ[{$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB},c];
-*)
+
 
 (* ------------------------------------------------------------------------ *)
 
@@ -1139,11 +1139,11 @@ diracologyDDimFinalOrdering[ b___,DiracGamma[LightConePerpendicularComponent[c_,
 diracologyDDimFinalOrdering[ b___,DiracGamma[Momentum[nb_,dim_],dim_], DiracGamma[Momentum[n_,dim_],dim_], f___ ] :=
 		(- diracologyDDimFinalOrdering[ b,DiracGamma[Momentum[n,dim],dim],DiracGamma[Momentum[nb,dim],dim],  f]
 		+ 4 diracologyDDimFinalOrdering[ b, f])/; nb=!=n && {n,nb}==={$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB};
-(*
+
 (* g.nb g.nb = g.n g.n = 0*)
 diracologyDDimFinalOrdering[___,DiracGamma[Momentum[c_,dim_],dim_], DiracGamma[Momentum[c_,dim_],dim_], ___ ] :=
 	0/; MemberQ[{$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB},c];
-*)
+
 
 (* ------------------------------------------------------------------------ *)
 
