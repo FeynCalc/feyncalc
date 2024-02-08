@@ -290,19 +290,17 @@ res=DiracSimplify[GSD[nb].GSD[n].GSLRD[\
 Polarization[p,\[ImaginaryI]],n,nb].GSLRD[k2,n,nb].GALRD[Lor4,n,nb].\
 GSLRD[l1,n,nb].GSLRD[Polarization[kg1,-\[ImaginaryI]],n,nb].GSLRD[l1,\
 n,nb].GALRD[Lor4,n,nb].GSD[nb].GSD[n],FCE->True]; \n res",
-"-128*GSLRD[Polarization[p, I], n, nb] . GSLRD[k2, n, nb] . GSLRD[Polarization[kg1, -I], n,
-nb]*SPD[l1, l1] + 16*D*GSLRD[Polarization[p, I], n, nb] . GSLRD[k2, n, nb] . GSLRD[Polarization[kg1,
--I], n, nb]*SPD[l1, l1] + 32*GSD[n] . GSD[nb] . GSLRD[Polarization[p, I], n, nb] . GSLRD[k2, n,
-nb] . GSLRD[Polarization[kg1, -I], n, nb]*SPD[l1, l1] - 4*D*GSD[n] . GSD[nb] . GSLRD[Polarization[p,
-I], n, nb] . GSLRD[k2, n, nb] . GSLRD[Polarization[kg1, -I], n, nb]*SPD[l1, l1] +
-64*GSLRD[Polarization[p, I], n, nb] . GSLRD[k2, n, nb] . GSLRD[Polarization[kg1, -I],
-n, nb]*SPLRD[l1, l1, n, nb] - 16*GSD[n] . GSD[nb] . GSLRD[Polarization[p, I], n, nb] . GSLRD[k2, n,
-nb] . GSLRD[Polarization[kg1, -I], n, nb]*SPLRD[l1, l1, n, nb] + 128*GSLRD[Polarization[p,
-I], n, nb] . GSLRD[k2, n, nb] . GSLRD[l1, n, nb]*SPLRD[l1, Polarization[kg1, -I], n, nb] - 32*D*GSLRD[Polarization[p, I],
-n, nb] . GSLRD[k2, n, nb] . GSLRD[l1, n, nb]*SPLRD[l1, Polarization[kg1, -I], n, nb] - 32*GSD[n] . GSD[nb] . GSLRD[Polarization[p,
-I], n, nb] . GSLRD[k2, n, nb] . GSLRD[l1, n, nb]*SPLRD[l1, Polarization[kg1, -I], n,
-nb] + 8*D*GSD[n] . GSD[nb] . GSLRD[Polarization[p, I], n, nb] . GSLRD[k2, n, nb] . GSLRD[l1, n, nb]*SPLRD[l1,
-Polarization[kg1, -I], n, nb]"},
+"-64*GSLRD[Polarization[p, I], n, nb] . GSLRD[k2, n, nb] . GSLRD[Polarization[kg1, -I], n, nb]*SPLRD[l1, l1, n, nb] +
+16*D*GSLRD[Polarization[p, I], n, nb] . GSLRD[k2, n, nb] . GSLRD[Polarization[kg1, -I], n, nb]*
+SPLRD[l1, l1, n, nb] + 16*GSD[n] . GSD[nb] . GSLRD[Polarization[p, I], n, nb] . GSLRD[k2, n, nb] .
+GSLRD[Polarization[kg1, -I], n, nb]*SPLRD[l1, l1, n, nb] -
+4*D*GSD[n] . GSD[nb] . GSLRD[Polarization[p, I], n, nb] . GSLRD[k2, n, nb] . GSLRD[Polarization[kg1, -I], n, nb]*
+SPLRD[l1, l1, n, nb] + 128*GSLRD[Polarization[p, I], n, nb] . GSLRD[k2, n, nb] . GSLRD[l1, n, nb]*
+SPLRD[l1, Polarization[kg1, -I], n, nb] - 32*D*GSLRD[Polarization[p, I], n, nb] . GSLRD[k2, n, nb] .
+GSLRD[l1, n, nb]*SPLRD[l1, Polarization[kg1, -I], n, nb] -
+32*GSD[n] . GSD[nb] . GSLRD[Polarization[p, I], n, nb] . GSLRD[k2, n, nb] . GSLRD[l1, n, nb]*
+SPLRD[l1, Polarization[kg1, -I], n, nb] + 8*D*GSD[n] . GSD[nb] . GSLRD[Polarization[p, I], n, nb] .
+GSLRD[k2, n, nb] . GSLRD[l1, n, nb]*SPLRD[l1, Polarization[kg1, -I], n, nb]"},
 {"fcstDiracSimplify-ID52", "$FCDefaultLightconeVectorN=n; \n
 $FCDefaultLightconeVectorNB=nb;  \n
 FCClearScalarProducts[];  \n

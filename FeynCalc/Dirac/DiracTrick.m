@@ -958,6 +958,12 @@ diracology4DimFinalOrdering[ b___,DiracGamma[LightConePerpendicularComponent[c_,
 diracology4DimFinalOrdering[ b___,DiracGamma[Momentum[nb_]], DiracGamma[Momentum[n_]], f___ ] :=
 		(- diracology4DimFinalOrdering[ b,DiracGamma[Momentum[n]],DiracGamma[Momentum[nb]],  f]
 		+ 4 diracology4DimFinalOrdering[ b, f])/; nb=!=n && {n,nb}==={$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB};
+(*
+(* g.nb g.nb = g.n g.n = 0*)
+diracology4DimFinalOrdering[___,DiracGamma[Momentum[c_]], DiracGamma[Momentum[c_]], ___ ] :=
+	0/; MemberQ[{$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB},c];
+*)
+
 (* ------------------------------------------------------------------------ *)
 
 diracologyDDim[___, 0, ___]:=
@@ -1100,10 +1106,10 @@ diracologyDDim[b___, DiracGamma[LightConePerpendicularComponent[c_Momentum, n_Mo
 	ch:DiracGamma[LightConePerpendicularComponent[(LorentzIndex | ExplicitLorentzIndex | Momentum)[_, _], n_Momentum, nb_Momentum], dim_]..,
 			DiracGamma[LightConePerpendicularComponent[c_Momentum, n_Momentum, nb_Momentum], dim_],f___] :=
 	Block[ {iVar, len = Length[{ch}]},
-		(-1)^len FCUseCache[ExpandScalarProduct,{Pair[c,c]},{}] diracologyDDim[b,ch,f]
-		+ 2 Sum[(-1)^(iVar+1) FCUseCache[FCFastContract,{Pair[c,{ch}[[iVar,1]]] diracologyDDim@@Join[{b},Drop[{ch},{iVar, iVar}],{DiracGamma[LightConePerpendicularComponent[c,n,nb],dim],f}]},{}],
+		(-1)^len FCUseCache[ExpandScalarProduct,{Pair[LightConePerpendicularComponent[c,n,nb],LightConePerpendicularComponent[c,n,nb]]},{}] diracologyDDim[b,ch,f]
+		+ 2 Sum[(-1)^(iVar+1) FCUseCache[FCFastContract,{Pair[LightConePerpendicularComponent[c,n,nb],{ch}[[iVar,1]]] diracologyDDim@@Join[{b},Drop[{ch},{iVar, iVar}],
+			{DiracGamma[LightConePerpendicularComponent[c,n,nb],dim],f}]},{}],
 			{iVar, 1,len}]]/; (Length[{ch}]>0);
-
 
 (* Slash(p)_perp g^mu ... Slash(p)_perp *)
 diracologyDDim[ b___,DiracGamma[LightConePerpendicularComponent[c_, n_Momentum, nb_Momentum], dim_],
@@ -1133,6 +1139,11 @@ diracologyDDimFinalOrdering[ b___,DiracGamma[LightConePerpendicularComponent[c_,
 diracologyDDimFinalOrdering[ b___,DiracGamma[Momentum[nb_,dim_],dim_], DiracGamma[Momentum[n_,dim_],dim_], f___ ] :=
 		(- diracologyDDimFinalOrdering[ b,DiracGamma[Momentum[n,dim],dim],DiracGamma[Momentum[nb,dim],dim],  f]
 		+ 4 diracologyDDimFinalOrdering[ b, f])/; nb=!=n && {n,nb}==={$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB};
+(*
+(* g.nb g.nb = g.n g.n = 0*)
+diracologyDDimFinalOrdering[___,DiracGamma[Momentum[c_,dim_],dim_], DiracGamma[Momentum[c_,dim_],dim_], ___ ] :=
+	0/; MemberQ[{$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB},c];
+*)
 
 (* ------------------------------------------------------------------------ *)
 
