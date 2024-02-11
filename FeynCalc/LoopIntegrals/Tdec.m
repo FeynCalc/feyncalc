@@ -72,6 +72,7 @@ Options[Tdec] =	{
 	FCE					-> True,
 	FCVerbose 			-> False,
 	Factoring 			-> {Factor2, Factor},
+	FinalSubstitutions	-> {},
 	Head				-> Identity,
 	List 				-> True,
 	Parallelize			-> True,
@@ -101,16 +102,17 @@ Tdec[exp_:1, li : {{_, _} ..}, extMomsRaw_List/;FreeQ[extMomsRaw,OptionQ], Optio
 			tensorCoeffAbbreviationsBack, nttt, optList, optFCE, time, time1,
 			symbolicVars, variableAbbreviations, tensorCoeffAbbreviations,
 			sol,ii,ce,xy, optHead, tmp,	extMom, basisonly, multiLoop=False,
-			lorInds, loopMoms, basis,multiLoopSyms={},
+			lorInds, loopMoms, basis,multiLoopSyms={}, optFinalSubstitutions,
 			dummyHead1, dummyHead2, symRules, optSolve},
 
-		dim         	= OptionValue[Dimension];
-		optList			= OptionValue[List];
-		optFCE			= OptionValue[FCE];
-		optFactoring	= OptionValue[Factoring];
-		basisonly		= OptionValue[BasisOnly];
-		optHead 		= OptionValue[Head];
-		optSolve		= OptionValue[Solve];
+		dim         			= OptionValue[Dimension];
+		optList					= OptionValue[List];
+		optFCE					= OptionValue[FCE];
+		optFactoring			= OptionValue[Factoring];
+		basisonly				= OptionValue[BasisOnly];
+		optHead 				= OptionValue[Head];
+		optSolve				= OptionValue[Solve];
+		optFinalSubstitutions	= OptionValue[FinalSubstitutions];
 
 		If [OptionValue[FCVerbose]===False,
 			tdecVerbose=$VeryVerbose,
@@ -217,6 +219,8 @@ Tdec[exp_:1, li : {{_, _} ..}, extMomsRaw_List/;FreeQ[extMomsRaw,OptionQ], Optio
 			basis = basis /. CC[x__] :> CC[Transpose[{x}]]
 		];
 
+
+
 		(* if we were requested to provide only the symmetrized tensor basis, we stop here *)
 		If[	basisonly,
 			If[multiLoop,
@@ -264,6 +268,12 @@ Tdec[exp_:1, li : {{_, _} ..}, extMomsRaw_List/;FreeQ[extMomsRaw,OptionQ], Optio
 		If[	!FreeQ2[linearSystem,{PairContract2}],
 			linearSystem = linearSystem /. PairContract2 -> Pair
 		];
+
+		If[	optFinalSubstitutions=!={},
+				optFinalSubstitutions = FCI[optFinalSubstitutions] /. Thread[Rule[extMomsRaw,extMoms]];
+				linearSystem = linearSystem /. optFinalSubstitutions
+		];
+
 		FCPrint[1, "Tdec: Done building a system of scalar equations, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tdecVerbose];
 
 		FCPrint[1, "Tdec: Need to solve ", Length[linearSystem], " equations for ", Length[tensorCoeffs] , " variables", FCDoControl->tdecVerbose];
@@ -289,6 +299,9 @@ Tdec[exp_:1, li : {{_, _} ..}, extMomsRaw_List/;FreeQ[extMomsRaw,OptionQ], Optio
 			FCPrint[1, "This decomposition formula is available in TIDL, skipping calculation.", FCDoControl->tdecVerbose];
 			tensorEq = TIDL[li,extMoms,Dimension->dim];
 			FCPrint[3, "Result from TIDL: ", tensorEq, FCDoControl->tdecVerbose];
+			If[	optFinalSubstitutions=!={},
+				tensorEq = tensorEq /. optFinalSubstitutions
+			];
 
 			If[ optList,
 				tensorEq = FeynCalcInternal[FCE[tensorEq] /. Dispatch[FCE[variableAbbreviations]]];
