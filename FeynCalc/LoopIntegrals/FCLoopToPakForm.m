@@ -106,21 +106,24 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 		];
 
 		Which[
+			(*List of integrals, the first condition avoids the "Recursion limit exceeded; positive match might be missed" error *)
+			MatchQ[ex, {__GLI}] || MatchQ[ex, {(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..} | {__FCTopology}],
+				FCPrint[1, "FCLoopToPakForm: We are dealing with a list of GLIs.", FCDoControl -> fctpfVerbose];
+				tmp =	FCFeynmanPrepare[ex, lmoms, FCI -> True, FinalSubstitutions -> optFinalSubstitutions,
+				Names -> OptionValue[Names], Indexed -> OptionValue[Indexed], Check->OptionValue[Check],
+				Collecting -> OptionValue[Collecting], FCLoopGetEtaSigns -> False],
 			(*Single integral *)
 			MatchQ[ex,_. _FeynAmpDenominator] || MatchQ[ex, (_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) | _FCTopology],
 				notList = True;
+				FCPrint[1, "FCLoopToPakForm: We are dealing with a single integral.", FCDoControl -> fctpfVerbose];
 				tmp =	FCFeynmanPrepare[ex, lmoms, FCI -> True, FinalSubstitutions -> optFinalSubstitutions,
 				Names -> OptionValue[Names], Indexed -> OptionValue[Indexed], Check->OptionValue[Check],
 				Collecting -> OptionValue[Collecting], FCLoopGetEtaSigns -> False];
 				tmp = {tmp};
 				ex = {ex},
 			(*List of integrals *)
-			MatchQ[ex, {(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..} | {__FCTopology}],
-				tmp =	FCFeynmanPrepare[ex, lmoms, FCI -> True, FinalSubstitutions -> optFinalSubstitutions,
-				Names -> OptionValue[Names], Indexed -> OptionValue[Indexed], Check->OptionValue[Check],
-				Collecting -> OptionValue[Collecting], FCLoopGetEtaSigns -> False],
-			(*List of integrals *)
 			MatchQ[ex, {_. _FeynAmpDenominator ..}],
+				FCPrint[1, "FCLoopToPakForm: We are dealing with a list of integrals.", FCDoControl -> fctpfVerbose];
 				tmp =	FCFeynmanPrepare[#, lmoms, FCI -> True, FinalSubstitutions -> optFinalSubstitutions,
 				Names -> OptionValue[Names], Indexed -> OptionValue[Indexed], Check->OptionValue[Check],
 				Collecting -> OptionValue[Collecting], FCLoopGetEtaSigns -> False]&/@ex,
@@ -133,11 +136,20 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 
 		FCPrint[3, "FCLoopToPakForm: Output of FCFeynmanPrepare: ", tmp, FCDoControl->fctpfVerbose];
 
+
 		time=AbsoluteTime[];
-		FCPrint[1, "FCLoopToPakForm: Calling pakProcess.", FCDoControl -> fctpfVerbose];
 
-		tmp = pakProcess[#,{optFactoring,optPowerMark,optCharacteristicPolynomial, optFCLoopPakOrder}]&/@tmp;
 
+		If[	$ParallelizeFeynCalc,
+
+			FCPrint[1, "FCLoopToPakForm: Calling pakProcess in parallel.", FCDoControl -> fctpfVerbose];
+			With[{xxx = {optFactoring,optPowerMark,optCharacteristicPolynomial, optFCLoopPakOrder}},
+				ParallelEvaluate[FCParallelContext`FCLoopToPakForm`pakProcessOptions = xxx;, DistributedContexts -> None]];
+			res = ParallelMap[pakProcess[#,FCParallelContext`FCLoopToPakForm`pakProcessOptions]&,tmp, DistributedContexts -> None, Method -> "CoarsestGrained"],
+
+			FCPrint[1, "FCLoopToPakForm: Calling pakProcess.", FCDoControl -> fctpfVerbose];
+			tmp = pakProcess[#,{optFactoring,optPowerMark,optCharacteristicPolynomial, optFCLoopPakOrder}]&/@tmp
+		];
 		FCPrint[1, "FCLoopToPakForm: pakProcess done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctpfVerbose];
 
 		If[	!FreeQ[tmp,pakProcess],
@@ -145,8 +157,26 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 			Abort[]
 		];
 
-		(* Function[{U, F, charPoly, pows, head, int, sigma}, {int, head[ExpandAll[charPoly], Transpose[pows]]}]*)
-		res = MapThread[OptionValue[Function][Sequence@@(#1[[1;;4]]), OptionValue[Head], #2, #1[[5]]]&,{tmp,ex}];
+
+		time=AbsoluteTime[];
+
+		If[	$ParallelizeFeynCalc,
+
+			FCPrint[1, "FCLoopToPakForm: Building up the final result in parallel.", FCDoControl -> fctpfVerbose];
+			With[{xxx = OptionValue[Function], yyy= OptionValue[Head]},
+				ParallelEvaluate[(	FCParallelContext`FCLoopToPakForm`optValFunction = xxx;
+									FCParallelContext`FCLoopToPakForm`optValHead = yyy;), DistributedContexts -> None]];
+
+			res = ParallelMap[FCParallelContext`FCLoopToPakForm`optValFunction[Sequence@@(#[[1]][[1;;4]]), FCParallelContext`FCLoopToPakForm`optValHead,
+				#[[2]], #[[1]][[5]]]&,Transpose[{tmp,ex}],
+				DistributedContexts -> None, Method -> "CoarsestGrained"],
+
+			FCPrint[1, "FCLoopToPakForm: Building up the final result.", FCDoControl -> fctpfVerbose];
+			(* Function[{U, F, charPoly, pows, head, int, sigma}, {int, head[ExpandAll[charPoly], Transpose[pows]]}]*)
+			res = MapThread[OptionValue[Function][Sequence@@(#1[[1;;4]]), OptionValue[Head], #2, #1[[5]]]&,{tmp,ex}];
+		];
+
+		FCPrint[1, "FCLoopToPakForm: Done building up the final result, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctpfVerbose];
 
 		If[	notList,
 			res = First[res]

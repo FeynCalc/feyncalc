@@ -34,15 +34,16 @@ Begin["`FCLoopSelectTopology`Private`"]
 fclsVerbose::usage = "";
 
 Options[FCLoopSelectTopology] = {
-	FCE		-> False,
-	Check	-> True
+	FCE							-> False,
+	Check						-> True,
+	"OneToOneCorrespondence"	-> False
 };
 
 FCLoopSelectTopology[ex_/;Head[ex]=!=List, topos:{__FCTopology}, opts:OptionsPattern[]] :=
 	First[FCLoopSelectTopology[{ex}, topos, opts]];
 
 FCLoopSelectTopology[glisRaw_List, topos:{__FCTopology}, OptionsPattern[]] :=
-	Block[{res, glis, gliTopos,null},
+	Block[{res, glis, gliTopos, null, optOneToOne, aux},
 
 		If[	OptionValue[Check],
 			If[	!FCLoopValidTopologyQ[topos],
@@ -51,55 +52,45 @@ FCLoopSelectTopology[glisRaw_List, topos:{__FCTopology}, OptionsPattern[]] :=
 			];
 		];
 
+		optOneToOne = OptionValue["OneToOneCorrespondence"];
+
 		If[	TrueQ[!MatchQ[glisRaw, {__GLI}]],
-			glis = Cases2[glisRaw+null,GLI],
-			glis = glisRaw
+
+			If[	TrueQ[MatchQ[glisRaw,{(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..}]],
+				(*List of GLIs involving products*)
+				glis = Cases2[#+null,GLI]&/@glisRaw;
+				gliTopos=glis /. GLI[id_,__] :> id,
+
+				(*Amplitude*)
+				glis = Cases2[glisRaw+null,GLI];
+				gliTopos=List/@First/@glis
+			],
+			(*List of GLIs without any products*)
+			glis = glisRaw;
+			gliTopos=List/@First/@glis;
 		];
 
-		gliTopos=Union[First/@glis];
+		If[	!optOneToOne,
+			gliTopos = Union[Flatten[gliTopos]]
+		];
 
-		res = Sort[Select[topos,MemberQ[gliTopos,First[#]]&]];
+		If[	!optOneToOne,
+			res = Sort[Select[topos,MemberQ[gliTopos,First[#]]&]],
+			aux = Map[Rule[#[[1]], #] &, topos];
+			res = gliTopos /. Dispatch[aux]
+		];
 
 		If[	res==={},
 			Message[FCLoopSelectTopology::failmsg,"There are no topologies that appear in the given list of GLIs"];
 			Abort[]
 		];
-		(*
-		If[MatchQ[glisRaw, {_GLI}],
-			res=First[res]
-		];*)
 
 		If[	OptionValue[FCE],
 			res =FCE[res]
 		];
 
 		res
-	]
-(*
-FCLoopSelectTopology[GLI[id_,_List], topos:{__FCTopology}, OptionsPattern[]] :=
-	Block[{res},
+	];
 
-		If[	OptionValue[Check],
-			If[	!FCLoopValidTopologyQ[topos],
-				Message[FCLoopSelectTopology::failmsg, "The supplied list of topologie is incorrect."];
-				Abort[]
-			];
-		];
-
-		res = Select[topos,(#[[1]]===id)&];
-		If[	res==={},
-			Message[FCLoopSelectTopology::failmsg,"There are no topologies with the id " <> ToString[id]];
-			Abort[]
-		];
-
-		res = First[res];
-
-		If[	OptionValue[FCE],
-			res =FCE[res]
-		];
-
-		res
-	]
-*)
 FCPrint[1,"FCLoopSelectTopology.m loaded."];
 End[]

@@ -100,8 +100,7 @@ Options[FCFeynmanPrepare] = {
 
 
 FCFeynmanPrepare[gli_, topos:{__FCTopology}, opts:OptionsPattern[]] :=
-	FCFeynmanPrepare[gli,FCLoopSelectTopology[gli,topos],opts]/;
-		MatchQ[gli, (_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..])];
+	FCFeynmanPrepare[gli,FCLoopSelectTopology[gli,topos],opts]/; MatchQ[gli, (_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..])];
 
 FCFeynmanPrepare[gli_, topo_FCTopology, opts:OptionsPattern[]] :=
 	Block[{int,optFinalSubstitutions, lmomsHead, lmoms, optLoopMomenta},
@@ -133,16 +132,13 @@ FCFeynmanPrepare[gli_, topo_FCTopology, opts:OptionsPattern[]] :=
 			lmoms = topo[[3]]
 		];
 
-
-
 		FCFeynmanPrepare[int, lmoms, Join[{FCI->True,FinalSubstitutions->optFinalSubstitutions},
 			FilterRules[{opts}, Except[FCI | FinalSubstitutions]]]]
-	]/; MatchQ[gli, (_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..])];
-
+	]/; MatchQ[gli, {__GLI}] || MatchQ[gli, (_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..])];
 
 FCFeynmanPrepare[glis_, topos:{__FCTopology}, opts:OptionsPattern[]] :=
 	Block[{	ints, finalSubstitutions, relTopos, lmomsList, optLoopMomenta,
-			lmomsHead},
+			lmomsHead, time, res, time1},
 
 		If[	OptionValue[FCVerbose]===False,
 			fcszVerbose=$VeryVerbose,
@@ -151,25 +147,33 @@ FCFeynmanPrepare[glis_, topos:{__FCTopology}, opts:OptionsPattern[]] :=
 			];
 		];
 
-		FCPrint[1,"FCFeynmanPrepare: Entry point: single GLI and multiple topologies.", FCDoControl->fcszVerbose];
-
+		FCPrint[1,"FCFeynmanPrepare: Entry point: multiple GLIs and multiple topologies.", FCDoControl->fcszVerbose];
 
 		optLoopMomenta = OptionValue[LoopMomenta];
 		lmomsHead = Head[optLoopMomenta[1,1]];
 
+		time=AbsoluteTime[];
+		FCPrint[1, "FCFeynmanPrepare: Applying FCLoopFromGLI.", FCDoControl -> fcszVerbose];
 		ints = FCLoopFromGLI[glis, topos, FCI->OptionValue[FCI], LoopMomenta->optLoopMomenta, FeynAmpDenominatorExplicit->False];
+		FCPrint[1, "FCFeynmanPrepare: Done applying FCLoopFromGLI, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose];
 
-		(*relTopos is a list of lists*)
-		relTopos= FCLoopSelectTopology[{#},topos]&/@glis;
+
+		time=AbsoluteTime[];
+		FCPrint[1, "FCFeynmanPrepare: Applying FCLoopSelectTopology.", FCDoControl -> fcszVerbose];
+		(*relTopos is a list of lists, this is needed to cover the cases with products of GLIs!*)
+		relTopos = FCLoopSelectTopology[glis,topos,Check->False,"OneToOneCorrespondence"->True];
+		FCPrint[1, "FCFeynmanPrepare: Done applying FCLoopSelectTopology, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose];
+
+		time=AbsoluteTime[];
+		FCPrint[1, "FCFeynmanPrepare: Doing some intermediate steps.", FCDoControl -> fcszVerbose];
 
 		If[	!MatchQ[relTopos,{{__FCTopology}..}],
 			Message[FCFeynmanPrepare::failmsg, "Something went wrong when extracting topologies relevant for the given GLIs."];
 			Abort[]
 		];
 
-		finalSubstitutions = Flatten /@ Map[Function[x, Map[#[[5]] &, x]], relTopos];
-
 		(*TODO: Tricky, if different topologies define different substitutions w.r.t. the same scalar products ...*)
+		finalSubstitutions = Flatten /@ Map[Function[x, Map[#[[5]] &, x]], relTopos];
 
 		lmomsList = Union[Flatten[#[[3]]&/@Flatten[relTopos]]];
 
@@ -186,14 +190,33 @@ FCFeynmanPrepare[glis_, topos:{__FCTopology}, opts:OptionsPattern[]] :=
 
 		finalSubstitutions = FCI@FRH[finalSubstitutions];
 
-		MapThread[FCFeynmanPrepare[#1, lmomsList, Join[{FCI->True,FinalSubstitutions->#2},
-			FilterRules[{opts}, Except[FCI | FinalSubstitutions]]]]&,{ints,finalSubstitutions}]
+		FCPrint[1, "FCFeynmanPrepare: Intermediate steps done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose];
 
+		time=AbsoluteTime[];
 
-	]/; MatchQ[glis,{(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..}];
+		If[	$ParallelizeFeynCalc,
+			FCPrint[1,"FCFeynmanPrepare: Applying FCFeynmanPrepare in parallel.", FCDoControl->fcszVerbose];
+			With[{xxx = lmomsList}, ParallelEvaluate[FCContext`FCFeynmanPrepare`lmomsList = xxx;, DistributedContexts -> None]];
+			res = ParallelMap[FCFeynmanPrepare[#[[1]], FCContext`FCFeynmanPrepare`lmomsList, Join[{FCI->True,FinalSubstitutions->#[[2]]},
+			FilterRules[{opts}, Except[FCI | FinalSubstitutions | FCVerbose]]]]&,Transpose[{ints,finalSubstitutions}],
+			DistributedContexts -> None, Method -> "CoarsestGrained"];
+			FCPrint[1, "FCFeynmanPrepare: Done applying FCFeynmanPrepare in parallel, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose],
+
+			FCPrint[1,"FCFeynmanPrepare: Applying FCFeynmanPrepare.", FCDoControl->fcszVerbose];
+			res = MapThread[FCFeynmanPrepare[#1, lmomsList, Join[{FCI->True,FinalSubstitutions->#2},
+			FilterRules[{opts}, Except[FCI | FinalSubstitutions| FCVerbose]]]]&,{ints,finalSubstitutions}];
+			FCPrint[1, "FCFeynmanPrepare: Done applying FCFeynmanPrepare, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose]
+		];
+
+		res
+
+	]/; MatchQ[glis, {__GLI}] || MatchQ[glis,{(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..}];
 
 FCFeynmanPrepare[toposRaw: {__FCTopology}, opts:OptionsPattern[]]:=
-	FCFeynmanPrepare[#, opts]&/@toposRaw;
+	If[	$ParallelizeFeynCalc,
+		ParallelMap[FCFeynmanPrepare[#, opts]&,toposRaw, DistributedContexts->None, Method -> "CoarsestGrained"],
+		Map[FCFeynmanPrepare[#, opts]&,toposRaw]
+	];
 
 FCFeynmanPrepare[topoRaw_FCTopology, opts:OptionsPattern[]] :=
 	Block[{topo,optFinalSubstitutions},

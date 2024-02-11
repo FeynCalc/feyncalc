@@ -50,7 +50,7 @@ FCLoopFromGLI[expr_, topo_FCTopology, opts:OptionsPattern[]] :=
 	FCLoopFromGLI[expr,{topo}, opts];
 
 FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
-	Block[{	res, topos, listGLI, rule, optLoopMomenta, gliHead,
+	Block[{	res, topos, listGLI, rule, optLoopMomenta, gliHead, time, time1,
 			pattern, fromGliRule, listGLIEval, ruleFinal, relevantTopos, optList},
 
 		optFeynAmpDenominatorExplicit	= OptionValue[FeynAmpDenominatorExplicit];
@@ -79,15 +79,23 @@ FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
 			FCI is applied only to the propagators in the topologies, not to the full expression.
 			This is fine, since a GLI havs no FCE representation
 		*)
+
+		time=AbsoluteTime[];
+		FCPrint[1,"FCLoopFromGLI: Applying FCI." , FCDoControl->fgliVerbose];
 		If[ !OptionValue[FCI],
 			topos = FCI[toposRaw],
 			topos = toposRaw
 		];
+		FCPrint[1,"FCLoopFromGLI: Done applying FCI, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fgliVerbose];
 
+
+		time=AbsoluteTime[];
+		FCPrint[1,"FCLoopFromGLI: Applying FCLoopValidTopologyQ." , FCDoControl->fgliVerbose];
 		If[	!FCLoopValidTopologyQ[topos],
 			Message[FCLoopFromGLI::failmsg, "The list of the supplied topologies is incorrect."];
 			Abort[]
 		];
+		FCPrint[1,"FCLoopFromGLI: Done applying FCLoopValidTopologyQ, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fgliVerbose];
 
 		If[	FreeQ[expr,GLI],
 			FCPrint[1,"FCLoopFromGLI: Nothing to do.", FCDoControl->fgliVerbose];
@@ -106,6 +114,10 @@ FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
 			For the time being we simply assume that an amplitude contains no products of GLIs.
 		*)
 		Which[
+			(*This is to catch big lists of GLIs and avoid max recursion exceeded error messages*)
+			MatchQ[expr, {__GLI}],
+				listGLI = expr;
+				res = gliHead/@listGLI,
 			MatchQ[expr, (_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..])],
 				listGLI = {expr};
 				res = gliHead[expr],
@@ -118,23 +130,57 @@ FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
 				res = expr /. a_GLI :> gliHead[a]
 		];
 
+		time=AbsoluteTime[];
+		FCPrint[1,"FCLoopFromGLI: Selecting relevant topologies." , FCDoControl->fgliVerbose];
 		relevantTopos = Union[FCLoopSelectTopology[listGLI,topos]];
+		FCPrint[1,"FCLoopFromGLI: Done selecting relevant topologies, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fgliVerbose];
 
 		FCPrint[3,"FCLoopFromGLI: Relevant topologies: ", relevantTopos, FCDoControl->fgliVerbose];
 
-		fromGliRule = Map[rule[GLI[#[[1]],
-			Table[pattern[ToExpression["n"<>ToString[i]],_],{i,1,Length[#[[2]]]}]], powFu[#[[2]]]]&,relevantTopos]/.pattern->Pattern/.rule->RuleDelayed;
+		time=AbsoluteTime[];
+		FCPrint[1,"FCLoopFromGLI: Creating conversion rules." , FCDoControl->fgliVerbose];
+		If[	$ParallelizeFeynCalc,
 
+				fromGliRule = ParallelMap[(rule[GLI[#[[1]], Table[pattern[ToExpression["n"<>ToString[i]],_],{i,1,Length[#[[2]]]}]],
+					powFu[#[[2]]]] /.pattern->Pattern/.rule->RuleDelayed)&,relevantTopos, DistributedContexts->None,Method->"CoarsestGrained"],
 
+				fromGliRule = Map[rule[GLI[#[[1]], Table[pattern[ToExpression["n"<>ToString[i]],_],{i,1,Length[#[[2]]]}]],
+					powFu[#[[2]]]]&,relevantTopos]/.pattern->Pattern/.rule->RuleDelayed;
+		];
+		FCPrint[1,"FCLoopFromGLI: Done creating conversion rules, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fgliVerbose];
 		FCPrint[3,"FCLoopFromGLI: Conversion rules: ", fromGliRule, FCDoControl->fgliVerbose];
 
+
+		FCPrint[1,"FCLoopFromGLI: Applying conversion rules." , FCDoControl->fgliVerbose];
 		If[	!MatchQ[listGLI,{__GLI}],
-			listGLIEval = (gliToFAD[#,fromGliRule, relevantTopos, optLoopMomenta]&/@listGLI) /. powerHold->power,
-			listGLIEval = listGLI /. Dispatch[fromGliRule] /. powerHold->power
+
+			If[	$ParallelizeFeynCalc,
+
+				listGLIEval = (ParallelMap[gliToFAD[#,fromGliRule, relevantTopos, optLoopMomenta]&,listGLI, DistributedContexts->None(*, Method -> "CoarsestGrained"*)]) /. powerHold->power,
+				listGLIEval = (Map[gliToFAD[#,fromGliRule, relevantTopos, optLoopMomenta]&,listGLI]) /. powerHold->power
+			],
+
+			If[	$ParallelizeFeynCalc,
+
+				time1=AbsoluteTime[];
+				FCPrint[1,"FCLoopFromGLI: Distributing conversion rules among the parallel kernels", FCDoControl->fgliVerbose];
+				With[{xxx = Compress[fromGliRule]}, ParallelEvaluate[FCContextFCLoopFromGLI`fromGliRule = xxx;, DistributedContexts -> None]];
+				ParallelEvaluate[FCContextFCLoopFromGLI`fromGliRule = Dispatch[Uncompress[FCContextFCLoopFromGLI`fromGliRule]];, DistributedContexts -> None];
+				FCPrint[1,"FCLoopFromGLI: Done distributing conversion rules among the parallel kernels, timing: ", N[AbsoluteTime[] - time1, 4] , FCDoControl->fgliVerbose];
+
+				time1=AbsoluteTime[];
+				FCPrint[1,"FCLoopFromGLI: Applying conversion rules on parallel kernels", FCDoControl->fgliVerbose];
+				listGLIEval = ParallelMap[(#/. FCContextFCLoopFromGLI`fromGliRule /. powerHold->power)&,Partition[listGLI, UpTo[Ceiling[Length[listGLI]/Length[Kernels[]]]]],
+					DistributedContexts->None, Method -> "CoarsestGrained"];
+				listGLIEval = Flatten[listGLIEval];
+				FCPrint[1,"FCLoopFromGLI: Done applying conversion rules on parallel, timing: ", N[AbsoluteTime[] - time1, 4] , FCDoControl->fgliVerbose];,
+
+				listGLIEval = listGLI /. Dispatch[fromGliRule] /. powerHold->power
+			]
 		];
+		FCPrint[1,"FCLoopFromGLI: Done applying conversion rules, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fgliVerbose];
 
 		FCPrint[3,"FCLoopFromGLI: Converted GLIs: ", listGLIEval, FCDoControl->fgliVerbose];
-
 
 		Switch[optList,
 			True,
@@ -153,17 +199,24 @@ FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
 			Abort[]
 		];
 
-
 		If[	OptionValue[FeynAmpDenominatorCombine],
-			listGLIEval = FeynAmpDenominatorCombine[#,FCI->True]&/@listGLIEval
+			time=AbsoluteTime[];
+			FCPrint[1,"FCLoopFromGLI: Applying FeynAmpDenominatorCombine." , FCDoControl->fgliVerbose];
+			listGLIEval = FeynAmpDenominatorCombine[#,FCI->True]&/@listGLIEval;
+			FCPrint[1,"FCLoopFromGLI: Done applying FeynAmpDenominatorCombine, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fgliVerbose];
 		];
 
+		time=AbsoluteTime[];
+		FCPrint[1,"FCLoopFromGLI: Creating the final replacement rule." , FCDoControl->fgliVerbose];
 		ruleFinal = Thread[Rule[gliHead/@listGLI,listGLIEval]];
+		FCPrint[1,"FCLoopFromGLI: Done creating the final replacement rule, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fgliVerbose];
 
 		FCPrint[3,"FCLoopFromGLI: Final set of the replacement rules: ", ruleFinal, FCDoControl->fgliVerbose];
 
-
+		time=AbsoluteTime[];
+		FCPrint[1,"FCLoopFromGLI: Applying the final replacement rule." , FCDoControl->fgliVerbose];
 		res = res /. Dispatch[ruleFinal];
+		FCPrint[1,"FCLoopFromGLI: Done applying the final replacement rule, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fgliVerbose];
 
 		FCPrint[3,"FCLoopFromGLI: Raw result: ", res, FCDoControl->fgliVerbose];
 
@@ -208,8 +261,6 @@ gliToFadRenameMomenta[z_GLI, rule_List, topo_FCTopology, lmomFun_, i_Integer?Pos
 		];
 		res
 	];
-
-
 
 
 power[_. _FeynAmpDenominator, 0]:=

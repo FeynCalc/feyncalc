@@ -105,6 +105,13 @@ $FeynCalcLastCommitDateHash::usage =
 the last commit in the branch from which the current FeynCalc version
 originates.";
 
+$ParallelizeFeynCalc::usage =
+"$ParallelizeFeynCalc is a global switch that enables FeynCalc to evaluate some
+subroutines on using parallel kernels. It should be explicitly activated by
+setting $ParallelizeFeynCalc to True. However, before that one should evaluate
+LaunchKernels[n] with n being the number of parallel kernels to launch. The
+default value is False.";
+
 $FCTensorList::usage =
 "$FCTensorList contains a list of all tensor heads present.";
 
@@ -367,7 +374,7 @@ dimensions. Following schemes are supported:
 - \"None\" - This is the default value. The anticommutator relation is not
 applied to $D-1$ dimensional Pauli matrices.
 
-- \"Naive\" - Naively apply the commutator relation in $D-1$-dimensions, i.e.
+- \"Naive\" - Naively apply the commutator relation in $D-1$-dimensions, i.e. 
 $\{\\sigma^i, \\sigma^j \} = 2 i \\varepsilon^{ijk} \\sigma^k$. The Levi-Civita
 tensor lives in $D-1$-dimensions, so that a contraction of two such tensors
 which have all indices in common yields $(D-3) (D-2) (D-1)$.";
@@ -416,6 +423,7 @@ $Abbreviations = {
 	"\r" -> ""
 };
 
+$ParallelizeFeynCalc				= False;
 $Containers							= {};
 $DisableMemSet 						= False;
 $DistributiveFunctions				= {Conjugate, Transpose};
@@ -427,6 +435,17 @@ $LimitTo4IRUnsafe					= False;
 $FCMemoryAvailable					= Floor[$SystemMemory/10^6/4];
 $Multiplications					= {Times, DOT};
 $OPEWard							= False;
+
+
+$ParallelizeFeynCalc/:
+	Set[$ParallelizeFeynCalc, True]:=
+		(
+		With[{str = FileNameJoin[{$FeynCalcDirectory, "fc.m"}]},
+			ParallelEvaluate[Get[str],Kernels[]]
+		];
+		OwnValues[$ParallelizeFeynCalc] = {HoldPattern[$ParallelizeFeynCalc] :> True};
+		True
+		)
 
 (*	Mathematica versions 8 and 9 do not have the $SystemMemory variable,
 	so for them we set the available memory for memoization to 4 GiB*)
