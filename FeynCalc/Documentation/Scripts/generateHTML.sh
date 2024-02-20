@@ -91,12 +91,14 @@ fi
 parallel -j $nThreads -u --eta --bar "$scriptDIR/generateHTML.sh {} $OUTDIR" ::: ${allFiles[@]};
 
 
-if [ -z ${mainDir}/Extra ]; then
-	mkdir $OUTDIR/Extra &> /dev/null;
+if [ -d ${mainDir}/Markdown/Extra ]; then
+	mkdir $OUTDIR/Extra &> /dev/null;	
 	allFilesExtra=$(find $mainDir/Markdown/Extra -type f -name '*.md' -print)
 	allFilesExtra=($(printf "%s\n" "${allFilesExtra[@]}" | sort -V))
 	for i in "${allFilesExtra[@]}"; do
 	  name=$(basename -s .md $i);
+	  echo $OUTDIR/$name.html to $OUTDIR/Extra/
+	  
 	  mv $OUTDIR/$name.html $OUTDIR/Extra/;
 	  sed -i -e "s|css/feyncalc.css|../css/feyncalc.css|g" $OUTDIR/Extra/$name.html;
 	  sed -i -e "s|js/|../js/|g" $OUTDIR/Extra/$name.html;
