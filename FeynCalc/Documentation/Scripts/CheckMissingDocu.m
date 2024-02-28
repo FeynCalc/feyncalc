@@ -56,7 +56,7 @@ Switch[FileBaseName[indexFile],
 	"FeynCalc",
 		Print[StringRiffle[Complement[SelectFree[fcSymbols,{"FerSolve","FeynCalc","SharedObjects","FCLoopBasis","ToSymbol"}],docFiles],"\n"]],
 	"FeynHelpers",
-		Print[StringRiffle[Complement[SelectFree[fcSymbols,{"FerSolve","FerShared","LTools","QGShared"}],docFiles],"\n"]]
+		Print[StringRiffle[Complement[SelectFree[fcSymbols,{"FerSolve","FerShared","LTools","QGShared","file"}],docFiles],"\n"]]
 	];
 
 
@@ -92,7 +92,7 @@ Switch[FileBaseName[indexFile],
 	"FeynCalc",
 		Print[StringRiffle[Complement[SelectFree[fcSymbols,{"FerSolve","FeynCalc","SharedObjects","FCLoopBasis","ToSymbol"}],overviewSymbols],"\n"]];,
 	"FeynHelpers",
-		Print[StringRiffle[Complement[SelectFree[fcSymbols,{"FerShared","LTools","QGShared"}],overviewSymbols],"\n"]]
+		Print[StringRiffle[Complement[SelectFree[fcSymbols,{"FerShared","LTools","QGShared","file"}],overviewSymbols],"\n"]]
 	];
 
 
@@ -104,6 +104,4 @@ Switch[FileBaseName[indexFile],
 	"FeynHelpers",
 		StringRiffle[SelectFree[Complement[overviewSymbols,fcSymbols],"FerSolve"],"\n"]
 	];
-
-
 
