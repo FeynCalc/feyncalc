@@ -3,7 +3,7 @@ TARCER is a Mathematica program for the reduction of two-loop propagator integra
 
 # Requirements
 
-The latest versions of TARCER are designed as an addon for FeynCalc. To use TARCER you need FeynCalc and Mathematica (at least version 8).
+The latest versions of TARCER are designed as an addon for FeynCalc. To use TARCER you need FeynCalc and Mathematica (at least version 10).
 
 # Installation
 
