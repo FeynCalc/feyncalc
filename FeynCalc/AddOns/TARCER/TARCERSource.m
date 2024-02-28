@@ -2867,12 +2867,12 @@ Subscript[f, 914] =
 
 Subscript[e, 92] =
 	2*Subscript[m, 2]*Subscript[m,3]*(Subscript[m, 2] + Subscript[m, 3])*(d - 2*Subscript[\[Nu], 1] - 2*Subscript[\[Nu], 2] -
-	2*Subscript[\[Nu], 3] - 1)*Schiebe[1, "+"] TKI[d, {Subscript[\[Nu], 1], Subscript[\[Nu], 2], Subscript[\[Nu], 3]}] ==
+	2*Subscript[\[Nu], 3] - 1)*Schiebe[1, "+"] TKI[d+2, {Subscript[\[Nu], 1], Subscript[\[Nu], 2], Subscript[\[Nu], 3]}] ==
 	(Subscript[m, 2]*((d - Subscript[\[Nu], 1] - Subscript[\[Nu], 2] - 2*Subscript[\[Nu], 3] - 1)*(Schiebe[1, "+"]*Schiebe[2, "-"] -1) +
 	(Subscript[\[Nu], 1] - Subscript[\[Nu], 2] + 1)*Schiebe[1, "+"]*Schiebe[3, "-"]) +
 	Subscript[m, 3]*((d - Subscript[\[Nu], 1] - 2*Subscript[\[Nu], 2] - Subscript[\[Nu], 3] - 1)*(Schiebe[1, "+"]*Schiebe[3, "-"] - 1) +
 	(Subscript[\[Nu], 1] - Subscript[\[Nu], 3] + 1)*Schiebe[1, "+"]*Schiebe[2, "-"]))*
-	TKI[d, {Subscript[\[Nu], 1], Subscript[\[Nu], 2], Subscript[\[Nu], 3]}];
+	TKI[d+2, {Subscript[\[Nu], 1], Subscript[\[Nu], 2], Subscript[\[Nu], 3]}];
 
 Subscript[s, 92] =
 	OperatorApplyK[Subscript[e, 92]];
