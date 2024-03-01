@@ -154,13 +154,13 @@ FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
 		FCPrint[1,"FCLoopFromGLI: Applying conversion rules." , FCDoControl->fgliVerbose];
 		If[	!MatchQ[listGLI,{__GLI}],
 
-			If[	$ParallelizeFeynCalc,
+			If[	$ParallelizeFeynCalc && Length[topos]=!=1,
 
 				listGLIEval = (ParallelMap[gliToFAD[#,fromGliRule, relevantTopos, optLoopMomenta]&,listGLI, DistributedContexts->None(*, Method -> "CoarsestGrained"*)]) /. powerHold->power,
 				listGLIEval = (Map[gliToFAD[#,fromGliRule, relevantTopos, optLoopMomenta]&,listGLI]) /. powerHold->power
 			],
 
-			If[	$ParallelizeFeynCalc,
+			If[	$ParallelizeFeynCalc && Length[topos]=!=1,
 
 				time1=AbsoluteTime[];
 				FCPrint[1,"FCLoopFromGLI: Distributing conversion rules among the parallel kernels", FCDoControl->fgliVerbose];
