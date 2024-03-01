@@ -300,16 +300,11 @@ If[ $FeynCalcStartupMessages =!= False,
 				Style[$FeynCalcVersion <> " (stable version" <>
 					If[FeynCalc`$FeynCalcLastCommitDateHash=!="",", ", ""] <> FeynCalc`$FeynCalcLastCommitDateHash <>"). For help, use the ", "Text"]
 			],
-			Style[DisplayForm@ButtonBox["online documentation", ButtonData :> {URL["https://feyncalc.github.io/referenceDev"], None},BaseStyle -> "Hyperlink",
+			Style[DisplayForm@ButtonBox["online documentation,", ButtonData :> {URL["https://feyncalc.github.io/referenceDev"], None},BaseStyle -> "Hyperlink",
 				ButtonNote -> "https://feyncalc.github.io/referenceDev"], "Text"],
-			Style[", check out the ", "Text"],
-			Style[DisplayForm@ButtonBox["wiki", ButtonData :> {URL["https://github.com/FeynCalc/feyncalc/wiki"], None},BaseStyle -> "Hyperlink",
-				ButtonNote -> "https://github.com/FeynCalc/feyncalc/wiki"],"Text"],
-			Style[" or visit the ", "Text"],
-			Style[DisplayForm@ButtonBox["forum.", ButtonData :> {URL["https://github.com/FeynCalc/feyncalc/discussions"], None},BaseStyle -> "Hyperlink",
-				ButtonNote -> "https://github.com/FeynCalc/feyncalc/discussions/"],"Text"]];
-	Print[Style["Please check our ","Text"], Style[DisplayForm@ButtonBox["FAQ",ButtonData :> {URL["https://github.com/FeynCalc/feyncalc/wiki/FAQ"], None},BaseStyle -> "Hyperlink",
-				ButtonNote -> "https://github.com/FeynCalc/feyncalc/wiki"],"Text"] , Style[" for answers to some common FeynCalc questions and have a look at the supplied ","Text"],
+			Style[" visit the ", "Text"],
+			Style[DisplayForm@ButtonBox["forum", ButtonData :> {URL["https://github.com/FeynCalc/feyncalc/discussions"], None},BaseStyle -> "Hyperlink",
+				ButtonNote -> "https://github.com/FeynCalc/feyncalc/discussions/"],"Text"], Style[" and have a look at the supplied ","Text"],
 				Style[DisplayForm@ButtonBox["examples.", BaseStyle -> "Hyperlink",	ButtonFunction :>
 							SystemOpen[FileNameJoin[{$FeynCalcDirectory, "Examples"}]],
 							Evaluator -> Automatic, Method -> "Preemptive"], "Text"]];
