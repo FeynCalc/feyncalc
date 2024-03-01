@@ -10,7 +10,7 @@ The installation of FeynCalc can be done either automatically using the provided
 
 #### Stable version
 
-The stable version is the latest official release of FeynCalc. We don't have fixed development cycles so that the stable version is released just when it's ready. The code of the stable version is located in the [hotfix-stable](https://github.com/FeynCalc/feyncalc/tree/hotfix-stable) branch of our main repository. Since FeynCalc 9, all the bugs that are discovered in the latest stable version will be fixed in that branch. When you install FeynCalc using the automatic installer you will automatically receive all the current fixes. Note that the stable branch will not contain any new features until the next stable release. 
+The stable version is the latest official release of FeynCalc. We don't have fixed development cycles so that the stable version is released just when it's ready. The code of the stable version is located in the [hotfix-stable](https://github.com/FeynCalc/feyncalc/tree/hotfix-stable) branch of our main repository. Bugs that are discovered in the latest stable version will be fixed in that branch. When you install FeynCalc using the automatic installer you will automatically receive all the current fixes. Note that the stable branch will not contain any new features until the next stable release.
 
 To install the stable version run the following instruction in a Kernel or Notebook session of Mathematica.
 
@@ -32,14 +32,14 @@ InstallFeynCalc[InstallFeynCalcDevelopmentVersion -> True]
 
 #### Troubleshooting
 
-On Linux (possibly also Windows 10 and macOS) the above code might fail when run with Mathematica 8, 9, 10 or 11. The error messages will look like `URLSave::invhttp: SSL connect error` or `URLSave::invhttp`. This is most likely caused by some library incompatibilities. A workaround for versions 10 and 11 is available [here](https://mathematica.stackexchange.com/questions/212453/urlsave-in-mathematica-10-and-11-on-linux). For versions 9 and 8 see [here](https://mathematica.stackexchange.com/questions/212455/ssl-errors-when-using-urlfetch-or-urlsave-in-versions-8-or-9). If nothing helps, you can still download the necessary files by yourself and run the automatic installer offline.
+On Linux (possibly also Windows and macOS) the above code might fail when run with Mathematica 10 or 11. The error messages will look like `URLSave::invhttp: SSL connect error` or `URLSave::invhttp`. This is most likely caused by some library incompatibilities. A workaround for versions 10 and 11 is available [here](https://mathematica.stackexchange.com/questions/212453/urlsave-in-mathematica-10-and-11-on-linux). If nothing helps, you can still download the necessary files by yourself and run the automatic installer offline.
 
 ### Manual installation
 
 Manual installation is also possible, but is slightly less convenient as compared to using the automatic installer.
 
 * Download [this](https://github.com/FeynCalc/feyncalc/archive/hotfix-stable.zip) (for the stable version) or [this](https://github.com/FeynCalc/feyncalc/archive/master.zip) (for the development version) zip file.
-* Copy the *FeynCalc* directory from the extracted archive to the *Applications* directory inside ```$UserBaseDirectory```  (evaluate ``FileNameJoin[{$UserBaseDirectory, "Applications"}]``` in Mathematica).
+* Copy the *FeynCalc* directory from the extracted archive to the *Applications* directory inside ```$UserBaseDirectory```  (evaluate ```FileNameJoin[{$UserBaseDirectory, "Applications"}]``` in Mathematica).
 * If you want to allow `FeynCalc` to activate `TraditionalForm` typesetting when it is loaded, create "FCConfig.m" inside  *FeynCalc* directory and add there the following line
 
     ```Mathematica
