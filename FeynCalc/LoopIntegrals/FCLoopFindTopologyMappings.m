@@ -154,11 +154,8 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 
 			subTopos = SelectNotFree[relevantTopos, optSubtopologyMarker];
 			bigTopos = Complement[allTopos,subTopos];
-(*
-			bigTopos = SelectFree[relevantTopos, optSubtopologyMarker];
-			subTopos = Complement[relevantTopos, bigTopos];*)
-			tmp = Map[Select[bigTopos, Function[{xx}, First[xx] === (optSubtopologyMarker /. #[[6]])]] &, subTopos];
 
+			tmp = Map[Select[bigTopos, Function[{xx}, First[xx] === (optSubtopologyMarker /. SelectNotFree[#[[6]],optSubtopologyMarker] )]] &, subTopos];
 			rulesSubtopoToTopo = MapThread[	If[	Length[#1] === 1,
 												FCLoopCreateRuleGLIToGLI[First[#1], #2,FCI->True],
 												Unevaluated[Sequence[]]
