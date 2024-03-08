@@ -12,6 +12,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [New FeynArts sign conventions](FeynArtsSigns.md)
 - [Custom FeynRules models](CustomModels.md)
 - [Useful formulas for Dirac algebra](DiracAlgebraFormulas.md)
+- [Renormalization](Renormalization.md)
 - [Development](Development.md)
 
 ## Tutorials

@@ -62,14 +62,8 @@ FeynCalc can handle objects in `4` and `D` dimensions, where `D` is understood i
 rather inconvenient and verbose when used by the user for _working_ with FeynCalc. To address this issue FeynCalc also supports a different notation, called `FeynCalcExternal` or `FCE` which is much shorter and easier to use than `FCI`. For example, a `D`-dimensional momentum vector in the FCI notation reads  ```Pair[LorentzIndex[mu, D], Momentum[p, D]]``` while in the `FCE`-notation it is just ```FVD[p,mu]```. FeynCalc provides the functions ```FeynCalcInternal``` or ```FCI```  and ```FeynCalcExternal``` or ```FCE``` to convert between the two notations. The user input can use any of the two notations or even mix them.
 For example,
 
-```Contract[FV[p,mu] MT[mu,nu]]```,
-
-```Contract[Pair[LorentzIndex[mu], LorentzIndex[nu]]*Pair[LorentzIndex[mu], Momentum[p]]]``` and
-
-```Contract[Pair[LorentzIndex[mu], Momentum[p] MT[mu,nu]]]```
-
-are all valid FeynCalc expressions. This is because all FeynCalc functions first convert the
-user input to the FCI notation. Some commonly used FCE functions are
+`Contract[FV[p,mu] MT[mu,nu]]`, `Contract[Pair[LorentzIndex[mu], LorentzIndex[nu]]*Pair[LorentzIndex[mu], Momentum[p]]]` and
+`Contract[Pair[LorentzIndex[mu], Momentum[p] MT[mu,nu]]]` are all valid FeynCalc expressions. This is because all FeynCalc functions first convert the user input to the `FCI` notation. Some commonly used FCE functions are
 
  -  ```GA[mu]``` (Dirac matrix in `4` dimensions) for ```DiracGamma[LorentzIndex[mu]]```
  - ```GS[p]``` (Dirac slash in `4` dimensions) for ```DiracGamma[Momentum[p]]```
@@ -135,40 +129,42 @@ FeynCalc (and FeynArts) figure out the type of the spinor depending on its posit
 
 
 ### In FeynCalc the Lorentz indices of the epsilon tensor are sometimes replaced by 4-momenta. What does this mean?
-It is just a convention (also used e.g. in FORM) to denote contractions between 4-vectors and the epsilon tensor. So, `LC[mu, nu, rho][p]` is the same as `Contract[LC[mu, nu, rho, si] FV[p, si]]`. There is also a technical reason for using this notation. Writing conctractions without explicitly introducing dummy indices avoids the necessity to canonicalize the indices, e.g. to ensure that say `LC[mu, nu, rho, si] FV[p, si] - LC[mu, nu, rho, tau] FV[p, tau]` is indeed zero.
+It is just a convention (also used e.g. in FORM) to denote contractions between 4-vectors and the epsilon tensor. So, `LC[mu, nu, rho][p]` is the same as `Contract[LC[mu, nu, rho, si] FV[p, si]]`. There is also a technical reason for using this notation. Writing contractions without explicitly introducing dummy indices avoids the necessity to canonicalize the indices, e.g. to ensure that say `LC[mu, nu, rho, si] FV[p, si] - LC[mu, nu, rho, tau] FV[p, tau]` is indeed zero.
 
 ### How are the loop integrals in FeynCalc normalized?
 FeynCalc contains several objects that represent loop integrals: `FAD` (and its varieties such as `SFAD`, `CFAD` and `GFAD`), `PaVe` and `GLI`. `FAD`is the denominator of a general loop integral and does not imply any normalization factors. E.g.
 `FAD[{p,m}]` stands for $\int d^D p \frac{1}{p^2-m^2}$. `PaVe` stands (depending on its arguments) for a Passarino-Veltman coefficient or scalar function. In FeynCalc they are normalized differently as compared to the literature,
-such that `PaVe[0, {}, {m}]` (1-point scalar function) denotes `\frac{1}{i Pi^2} \int d^D p \frac{1}{p^2-m^2}`.
+such that `PaVe[0, {}, {m}]` (1-point scalar function) denotes $\frac{1}{i Pi^2} \int d^D p \frac{1}{p^2-m^2}$.
 The same normalization holds also for all the other PaVe functions. This normalization is used also e.g. in the OneLoop package.
 
 To sum it up, if we denote $\int \frac{d^D p}{(2 \pi)^4} \frac{1}{p^2-m^2}$ (1-loop tadpole integral with the standard
 normalization) as $I_0$ and $-i (16 \pi^2) I_0$ (1-point PaVe scalar function with the standard
 normalization) as $A_0$, then we have
 
-$$
-\texttt{FAD}[\{p,m\}] = (2\pi)^D I_0 = I \pi^2 (2 \pi)^{D-4} A_0 = i \pi^2 \, \texttt{PaVe}[0, \{\}, \{m\}]
-$$
+\begin{align*}
+\mathtt{FAD}[\{p,m\}] = (2\pi)^D I_0 = I \pi^2 (2 \pi)^{D-4} A_0 = i \pi^2 \, \mathtt{PaVe}[0, \{\}, \{m\}]
+\end{align*}
 
 This is consistent with the well-known relation
 
-$$
+\begin{align*}
 I_0 = \frac{i}{16 \pi^2} A_0
-$$
+\end{align*}
 
 Note, than when you convert `FAD`-type loop integrals to `PaVe`, FeynCalc automatically introduces the prefactor $\frac{1}{\pi^2}$, to account for the fact that
 
-$$
-\texttt{PaVe}[0, \{\}, \{m\}] \to \frac{1}{i \pi^2} \texttt{FAD}[\{p,m\}]
-$$
+\begin{align*}
+\mathtt{PaVe}[0, \{\}, \{m\}] \to \frac{1}{i \pi^2} \mathtt{FAD}[\{p,m\}]
+\end{align*}
 
 If the prefactor $\frac{1}{(\pi^2)^D}$ in front of each 1-loop integral from `FAD` or `PaVe` is taken to be implicit (i.e. it understood but not written down explicitly), then one can conveniently work with the following replacements
 
- - `FAD[{p,m}]` $\to I_0$
- - `FAD[{p,m}]` $\to \frac{i}{16 \pi^2} A_0$
- - `PaVe[0, {}, {m}]` $\to \frac{1}{i \pi^2} I_0$
- - `PaVe[0, {}, {m}]` $\to \frac{1}{(2 \pi)^4} A_0$
+\begin{align*}
+\mathtt{FAD}[\{p,m\}] &\to I_0, \\
+\mathtt{FAD}[\{p,m\}] &\to \frac{i}{16 \pi^2} A_0, \\
+\mathtt{PaVe}[0, \{\}, \{m\}] &\to \frac{1}{i \pi^2} I_0, \\
+\mathtt{PaVe}[0, \{\}, \{m\}] &\to \frac{1}{(2 \pi)^4} A_0.
+\end{align*}
 
 For practical purposes, this approach is indeed the most convenient one. If you are generating your amplitudes with FeynArts, you need to use the option `Prefactor` of `CreateFeynAmp` to prevent FeynArts from adding explicit `1/(2Pi)^D` prefactors. For example, `CreateFeynAmp[myDiagrams, PreFactor -> 1]` will generate you the amplitude (I*M) without those prefactors.
 
