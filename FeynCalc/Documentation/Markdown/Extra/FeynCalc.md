@@ -4,15 +4,16 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 
 - [Installation](Install.md)
 - [Loading the package](Load.md)
-- [FrequentlyAskedQuestions](FrequentlyAskedQuestions.md)
-- [FeynArts](FeynArts.md)
+- [Frequently Asked Questions about FeynCalc](FrequentlyAskedQuestions.md)
+- [Frequently Asked Questions about FeynArts](FeynArts.md)
+- [FeynArts sign conventions](FeynArtsSigns.md)
 - [Parallelization](Parallelization.md)
 - [Upper and lower indices](UpperLowerIndices.md)
-- [Master integrals](MasterIntegrals.md)
-- [New FeynArts sign conventions](FeynArtsSigns.md)
 - [Custom FeynRules models](CustomModels.md)
+- [Treatment of gamma5 in D dimensions](Gamma5.md)
 - [Useful formulas for Dirac algebra](DiracAlgebraFormulas.md)
 - [Renormalization](Renormalization.md)
+- [Master integrals](MasterIntegrals.md)
 - [Development](Development.md)
 
 ## Tutorials
