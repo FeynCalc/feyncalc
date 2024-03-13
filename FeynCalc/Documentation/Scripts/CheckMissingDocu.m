@@ -62,11 +62,16 @@ Switch[FileBaseName[indexFile],
 
 Print[""]; Print[""];
 Print["Documentation pages for nonexisting symbols:"];
-Print[StringRiffle[SelectFree[Complement[docFiles,fcSymbols],{"Vectors","FerSolve"}],"\n"]];
+Print[StringRiffle[SelectFree[Complement[docFiles,fcSymbols],{"Vectors","FerSolve","ColorAlgebra","Contractions",
+"Dimensions","DiracAlgebra","Expansions","Indices","InternalExternal",
+"Kinematics","LightCone","Loops","Nonrelativistic","ColorAlgebra"
+}],"\n"]];
 
 Switch[FileBaseName[indexFile],
 	"FeynCalc",
-		Print[StringRiffle[SelectFree[Complement[docFiles,fcSymbols],{"Vectors"}],"\n"]],
+		Print[StringRiffle[SelectFree[Complement[docFiles,fcSymbols],{"Vectors","ColorAlgebra","Contractions",
+"Dimensions","DiracAlgebra","Expansions","Indices","InternalExternal",
+"Kinematics","LightCone","Loops","Nonrelativistic","ColorAlgebra"}],"\n"]],
 	"FeynHelpers",
 		Print[StringRiffle[SelectFree[Complement[docFiles,fcSymbols],{"FerSolve"}],"\n"]]
 	];
