@@ -146,7 +146,7 @@ LPhi4CT =  1/2 FR$CT (Zphi-1) del[phi, mu] del[phi, mu] - 1/2 Mphi^2 FR$CT (Zm Z
 
 Furthermore, before saving the FeynArts model via `WriteFeynArtsOutput` we need to set the global variable `FR$Loop` to `True`. For example,
 
-```
+```mathematica
 FR$Loop=True;
 SetDirectory[FileNameJoin[{$UserBaseDirectory,"Applications","FeynCalc","FeynArts","Models"}]];
 WriteFeynArtsOutput[LPhi4,Output->"Phi4",CouplingRename->False];
@@ -241,13 +241,13 @@ The bare 2-point function for the massless vector field is defined as
 and the renormalized one reads
 
 \begin{equation}
-	\Gamma_R^{\mu \nu} (q) = \Gamma^{\mu \nu} (q) + \text{CT}.
+	\Gamma_R^{\mu \nu} (q) = \Gamma^{\mu \nu} (q) + \;\text{CT}.
 \end{equation}
 
 For convenience we also introduce
 
 \begin{equation}
-	\tilde{\Gamma}^{\mu \nu}_R(q) = - \Pi^{\mu \nu} (q) + \text{CT}
+	\tilde{\Gamma}^{\mu \nu}_R(q) = - \Pi^{\mu \nu} (q) + \;\text{CT}
 \end{equation}
 
 which corresponds to what one actually calculates when considering the sum of a bare amplitude and the corresponding counter-term.
@@ -340,13 +340,13 @@ The bare 2-point function for the massive vector field is defined as
 and the renormalized one reads
 
 \begin{equation}
-	\Gamma_R^{\mu \nu} (q) = \Gamma^{\mu \nu} (q) + \text{CT}
+	\Gamma_R^{\mu \nu} (q) = \Gamma^{\mu \nu} (q) + \;\text{CT}
 \end{equation}
 
 For convenience we also introduce
 
 \begin{equation}
-	\tilde{\Gamma}^{\mu \nu}_R(q) = - \Pi^{\mu \nu} (q) + \text{CT}
+	\tilde{\Gamma}^{\mu \nu}_R(q) = - \Pi^{\mu \nu} (q) + \;\text{CT}
 \end{equation}
 
 which corresponds to what one actually calculates when considering the sum of a bare amplitude and the corresponding counter-term.

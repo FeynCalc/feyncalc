@@ -172,7 +172,7 @@ For practical purposes, this approach is indeed the most convenient one. If you 
 ### How can I define a complex four vector?
 The simplest way is to write something like `FV[{a,I},mu]`. The presence of an explicit `I` will make this vector change under `ComplexConjugate`, such that 
 
-```
+```mathematica
 ComplexConjugate[FV[{a,I},mu]]//FCE
 ```
 

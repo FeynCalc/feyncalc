@@ -1,3 +1,4 @@
+
 FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Theory and semi-automatic evaluation of Feynman Diagrams.
 
 ## Useful information
@@ -336,6 +337,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCLoopGetEtaSigns](../FCLoopGetEtaSigns.md) - extracts the signs of $i \eta$ from all propagators
 - [FCLoopGetKinematicInvariants](../FCLoopGetKinematicInvariants.md) - kinematic invariants from the given topology.
 - [FCLoopGLIDifferentiate](../FCLoopGLIDifferentiate.md) - differentiates [GLI](../GLI.md)s with respect to a scalar variable.
+- [FCLoopGLILowerDimension](../FCLoopGLILowerDimension.md), [FCLoopGLIRaiseDimension](../FCLoopGLIRaiseDimension.md) - shifts dimensions of [GLI](../GLI.md)s to $D-2$ or $D+2$.
 - [FCLoopAddScalingParameter](../FCLoopAddScalingParameter.md), [FCLoopGLIExpand](../FCLoopGLIExpand.md) - series expansion of expressions with [GLI](../GLI.md)s with respect to a scalar variable
 - [FCLoopIBPReducableQ](../FCLoopIBPReducableQ.md) - checks if the integral contains propagators raised to integer powers
 - [FCLoopIntegralToPropagators](../FCLoopIntegralToPropagators.md) - auxiliary function that converts a loop integral into a list of propagators

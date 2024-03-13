@@ -32,7 +32,7 @@ The add-ons are placed in the directory `AddOns` inside `$FeynCalcDirectory`. Th
 
 A toy add-on [FVProjection](https://github.com/FeynCalc/feyncalc/tree/master/FeynCalc/AddOns/FVProjection) that represents a minimal working example is shipped together with FeynCalc. You can use its source code as a template for writing your own addons. The general structure of the main .m file (e.g. `MyAddon.m`) for an add-on looks like
 
-```Mathematica
+```mathematica
 
 Foo::usage=
 "Description of Foo";
@@ -66,14 +66,13 @@ If[ Global`$FeynCalcStartupMessages =!= False,
 
 
 End[]
-
 ```
 
 ### Packages that use FeynCalc
 
 Starting with FeynCalc 9.0 one can easily write something like
 
-```Mathematica
+```mathematica
 BeginPackage["MyPackage`",{"FeynCalc`"}]
 
 MySP::usage=
