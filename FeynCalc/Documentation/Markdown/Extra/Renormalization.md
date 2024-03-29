@@ -18,10 +18,10 @@ The renormalization constants $Z_x$ establish a connection between bare and reno
 appearing in the Lagrangian. For some generic  masses, coupling constants and fields we can write
 
 \begin{align*}
-g_{\textrm{bare}} &=  \mu^{n \varepsilon} Z_g g_{\textrm{ren}} \\
-m_{\textrm{bare}} &=  Z_m m_{\textrm{ren}} \\
-\psi_{\textrm{bare}} &=  \sqrt{Z_m} \psi_{\textrm{ren}} \\
-A^\mu_{\textrm{bare}} &=  \sqrt{Z_A} A^\mu_{\textrm{ren}} \\
+g_{\textrm{bare}} &=  \mu^{n \varepsilon} Z_g g_{\textrm{ren}}, \\
+m_{\textrm{bare}} &=  Z_m m_{\textrm{ren}}, \\
+\psi_{\textrm{bare}} &=  \sqrt{Z_m} \psi_{\textrm{ren}}, \\
+A^\mu_{\textrm{bare}} &=  \sqrt{Z_A} A^\mu_{\textrm{ren}}. \\
 \end{align*}
 
 The renormalization scale $\mu$ is needed to account for the fact, that when going from $4$ to $D$ dimensions, dimensionless coupling constants suddenly become dimensionful.
@@ -69,7 +69,7 @@ Each of the renormalization constants can be written as
 Z_x = 1 + \delta Z_x,
 \end{equation}
 
-where $\delta Z_x$ contains poles in $\varepsilon$ and possibly also finite pieces (depending on the chosen renormalization scheme). Parametrically, $Z_x$ is of order of the small coupling constant so that we can "expand" in it as if $Z_x \ll 1$.
+where $\delta Z_x$ contains poles in $\varepsilon$ and possibly also finite pieces (depending on the chosen renormalization scheme). Parametrically, $\delta Z_x$ is of order of the small coupling constant so that we can "expand" in it as if $\delta Z_x \ll 1$.
 
 ### Examples of renormalized and counter-term Lagrangians
 
@@ -135,7 +135,7 @@ This way we only need to determine $Z_A$, $Z_\psi$ and $Z_m$, which can be done 
 
 Having clarified the situation with the Lagrangian, let us discuss the derivation of the Feynman rules. The main difference as compared to the usual calculations is that here we also need to derive additional Feynman rules for the counter terms.
 
-Although those can be always derived by hand, doing so automatically is more convenient and allows to avoid many stupid mistakes. To this aim it useful to employ [FeynRules](https://feynrules.irmp.ucl.ac.be/) for generating the corresponding FeynArts model. When writing down the Lagrangian of our model we need to multiply every term in the counter term Lagragnian by `FR$CT`, for example
+Although those can be always derived by hand, doing so automatically is more convenient and allows to avoid many stupid mistakes. To this aim it is useful to employ [FeynRules](https://feynrules.irmp.ucl.ac.be/) for generating the corresponding FeynArts model. When writing down the Lagrangian of our model we need to multiply every term in the counter term Lagragnian by `FR$CT`, for example
 
 ```mathematica
 LPhi4 = LPhi4R + LPhi4CT;
