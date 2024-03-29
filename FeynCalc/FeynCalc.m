@@ -307,7 +307,11 @@ If[ $FeynCalcStartupMessages =!= False,
 				ButtonNote -> "https://github.com/FeynCalc/feyncalc/discussions/"],"Text"], Style[" and have a look at the supplied ","Text"],
 				Style[DisplayForm@ButtonBox["examples.", BaseStyle -> "Hyperlink",	ButtonFunction :>
 							SystemOpen[FileNameJoin[{$FeynCalcDirectory, "Examples"}]],
-							Evaluator -> Automatic, Method -> "Preemptive"], "Text"]];
+							Evaluator -> Automatic, Method -> "Preemptive"], "Text"],
+			Style["The PDF-version of the manual can be downloaded ", "Text"],
+			Style[DisplayForm@ButtonBox["here.", ButtonData :> {URL["https://github.com/FeynCalc/feyncalc-manual/releases/download/dev-manual/FeynCalcManual.pdf"],
+				None},BaseStyle -> "Hyperlink",	ButtonNote -> "https://github.com/FeynCalc/feyncalc-manual/releases/download/dev-manual/FeynCalcManual.pdf"], "Text"]
+							];
 	Print[Style["If you use FeynCalc in your research, please evaluate FeynCalcHowToCite[] to learn how to cite this software.","Text"]];
 	Print[Style["Please keep in mind that the proper academic attribution of our work is crucial to ensure the future development of this package!", {"Text", Italic}]];
 
