@@ -2659,7 +2659,7 @@ HoldPattern[SUNF[a___, x_, b___, x_, c___, OptionsPattern[]]] :=
 	Length[{a,x,b,x,c}] == 3;
 
 HoldPattern[SUNF[a___, x_, y_, b___, OptionsPattern[]]] :=
-	-SUNF[a, y, x, b] /; FreeQ[{a,x,y,b}, Pattern] && Length[{a,x,y,b}] === 3 && (!OrderedQ[{x, y}]) &&
+	-SUNF[a, y, x, b] /; FeynCalc`FCPatternFreeQ[{a,x,y,b}] && Length[{a,x,y,b}] === 3 && (!OrderedQ[{x, y}]) &&
 	Head[x] === SUNIndex && Head[y] === SUNIndex;
 
 
