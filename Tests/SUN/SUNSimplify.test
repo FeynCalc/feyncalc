@@ -228,6 +228,26 @@ SUNTraceEvaluate -> False]",
 SUNTrace[SUNT[SUNIndex[a]] . SUNT[SUNIndex[c]] . SUNT[SUNIndex[b]]]"},
 {"fcstSUNSimplify-ID66",
 "SUNSimplify[SUNTrace[SUNT[a, a, b, b]]]",
-"CA CF^2"}
+"CA CF^2"},
+{"fcstSUNSimplify-ID67",
+"SUNSimplify[-(SUNF[Glu1, h1, h2]*
+	SUNF[Glu2, h2,
+	h3]*(I*SUNN*SUNTF[{Glu1}, $AL[$20], Col3]*
+	SUNTF[{Glu2}, Col4, $AL[$20]] -
+	I*SUNN*SUNTF[{Glu1}, Col4, $AL[$20]]*
+	SUNTF[{Glu2}, $AL[$20], Col3] +
+	SUNN*SUNF[Glu1, Glu2, $AL[$19]]*SUNTF[{$AL[$19]}, Col4, Col3])*
+	SUNTF[{h1, h3}, Col3, Col4])]",
+"(I/2)*CA^4*CF"},
+{"fcstSUNSimplify-ID68",
+"SUNSimplify[-(SUNF[a1, a2, Glu1]*
+	SUNF[a2, a3,
+	Glu2]*(I*SUNN*SUNTF[{Glu1}, $AL[$20], Col3]*
+	SUNTF[{Glu2}, Col4, $AL[$20]] -
+	I*SUNN*SUNTF[{Glu1}, Col4, $AL[$20]]*
+	SUNTF[{Glu2}, $AL[$20], Col3] +
+	SUNN*SUNF[Glu1, Glu2, $AL[$19]]*SUNTF[{$AL[$19]}, Col4, Col3])*
+	SUNTF[{a1, a3}, Col3, Col4])]",
+"(I/2)*CA^4*CF"}
 };
 

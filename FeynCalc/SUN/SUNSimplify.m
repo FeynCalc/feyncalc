@@ -128,6 +128,7 @@ SUNSimplify[expr_, OptionsPattern[]] :=
 		FCPrint[3, "SUNSimplify: After renaming, ", temp, FCDoControl->sunSiVerbose];
 
 		ex = temp;
+
 		listColoredObjects = Cases2[temp, sunObj];
 
 
@@ -452,6 +453,7 @@ colorSimplifyGeneric[rest_. SUNTF[{xx___,a_SUNIndex,a_SUNIndex,yy___},i_,j_]]:=
 (* ... T^a T^b T^a ... *)
 colorSimplifyGeneric[rest_. holdDOTColor[xx___, SUNT[a_SUNIndex], SUNT[b_SUNIndex], SUNT[a_SUNIndex], yy___]] :=
 		(-1)/(2 SUNN) colorSimplifyGeneric[rest holdDOTColor[xx, SUNT[b], yy]];
+
 (* [... T^a T^b T^a ...]_ij *)
 colorSimplifyGeneric[rest_. SUNTF[{xx___,a_SUNIndex,b_SUNIndex,a_SUNIndex,yy___},i_,j_]] :=
 		(-1)/(2 SUNN) colorSimplifyGeneric[rest SUNTF[{xx,b,yy}, i,j]];
@@ -534,6 +536,7 @@ colorSimplifyGeneric[rest_. sund[r1___,a_SUNIndex,r2___,b_SUNIndex,r3___] sund[s
 			Since we intend to catch all such SUNF*SUND products here, there is no need to consider them
 			later when dealing with SUND2/SUNF2 symbols
 *)
+
 colorSimplifyGeneric[_. sunf[___,a_SUNIndex,___,b_SUNIndex,___] sund[___,a_SUNIndex,___,b_SUNIndex,___]]:=
 		0;
 
@@ -596,6 +599,7 @@ colorSimplifyGeneric[rest_. sund[r1___,a_SUNIndex, r2___] sunTrace[holdDOTColor[
 (* ---------------------------------------------------------------------- *)
 
 (* SUNTFs *)
+
 colorSimplifyGeneric[rest_. SUNTF[{x__}, i_, j_SUNFIndex] SUNTF[{y__}, j_SUNFIndex, k_]] :=
 	colorSimplifyGeneric[rest SUNTF[{x,y}, i, k]];
 
@@ -656,6 +660,7 @@ colorSimplifyGeneric[rest_. sunf2[b_, a_SUNIndex, d_, c_SUNIndex] sunf[r1___,a_S
 colorSimplifyGeneric[rest_. sunf2[b_, c_SUNIndex, d_, a_SUNIndex] sunf[r1___,a_SUNIndex,r2___,c_SUNIndex,r3___]] :=
 	SUNN/2 (-1)^(Length[{r2}]+1) colorSimplifyGeneric[rest sunf[b,d,r2,r3,r1]];
 
+
 (*
 	Instead of trying to work out all possible products of two sunf2 symbols, it is easier
 	to convert one of them into a product of two sunf symbols.
@@ -693,6 +698,7 @@ colorSimplifyGeneric[rest_. sund2[b1___, a_SUNIndex, b2___, c1___, i_SUNIndex, c
 	Can be derived using SUNSimplify[SUND[i, a, b] SUND[j, b, c] SUND[k, c, a],
 		Explicit -> True, SUNNToCACF -> False, SUNTrace -> True]
 *)
+
 colorSimplifyGeneric[rest_. sund2[l1___,a_SUNIndex,l2_,b_SUNIndex,l3___] sund[r1___,a_SUNIndex,r2___,b_SUNIndex,r3___]] :=
 	(SUNN/2 - 6/SUNN) colorSimplifyGeneric[rest sund[l1,l2,l3,r1,r2,r3]] /; Length[{l1,l2,l3}]===2;
 
@@ -757,7 +763,7 @@ sunf2[a_,b_,c_, d_]:=
 	-sunf2[a,b,d,c]/; !OrderedQ[{c,d}] && FCPatternFreeQ[{a,b,c,d}];
 
 sunf2[a_,b_,c_,d_]:=
-	-sunf2[c,d,a,b]/; !OrderedQ[{{a,b},{c,d}}] && FCPatternFreeQ[{a,b,c,d}];
+	sunf2[c,d,a,b]/; !OrderedQ[{{a,b},{c,d}}] && FCPatternFreeQ[{a,b,c,d}];
 
 sunf2[a_SUNIndex,b_,a_SUNIndex,c_]:=
 	SUNN SUNDelta[b,c];
