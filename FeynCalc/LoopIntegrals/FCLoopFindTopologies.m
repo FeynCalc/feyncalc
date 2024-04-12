@@ -51,26 +51,27 @@ preferredTopologiesPresent::usage="";
 optPreferredTopologies::usage="";
 
 Options[FCLoopFindTopologies] = {
-	Collecting					-> True,
-	ExtraPropagators			-> {},
-	FCE							-> False,
-	FCI 						-> False,
-	FCLoopBasisOverdeterminedQ	-> False,
-	FCLoopIsolate				-> True,
-	FCLoopScalelessQ			-> False,
-	FCVerbose					-> False,
-	FDS							-> True,
-	Factoring					-> False,
-	FinalSubstitutions			-> {},
-	Head						-> {Identity, FCGV["GLIProduct"]},
-	IsolateFast					-> False,
-	IsolateNames				-> False,
-	MomentumCombine				-> True,
-	Names						-> "fctopology",
-	"NonstandardPropagators"	-> False,
-	Ordering					-> {},
-	PreferredTopologies			-> {},
-	SetDimensions				-> {D}
+	Collecting					 -> True,
+	ExtraPropagators			 -> {},
+	FCE							 -> False,
+	FCI 						 -> False,
+	FCLoopBasisOverdeterminedQ	 -> False,
+	FCLoopGetKinematicInvariants -> True,
+	FCLoopIsolate				 -> True,
+	FCLoopScalelessQ			 -> False,
+	FCVerbose					 -> False,
+	FDS							 -> True,
+	Factoring					 -> False,
+	FinalSubstitutions			 -> {},
+	Head						 -> {Identity, FCGV["GLIProduct"]},
+	IsolateFast					 -> False,
+	IsolateNames				 -> False,
+	MomentumCombine				 -> True,
+	Names						 -> "fctopology",
+	"NonstandardPropagators"	 -> False,
+	Ordering					 -> {},
+	PreferredTopologies			 -> {},
+	SetDimensions				 -> {D}
 };
 
 sortingFu[x_, y_] :=
@@ -629,15 +630,16 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 		];
 
 		res = {exFinal,finalTopologies}  /. topoName->Identity;
+		If[	OptionValue[FCLoopGetKinematicInvariants],
+			kinInvs = FCLoopGetKinematicInvariants[finalTopologies, FCFeynmanPrepare->!OptionValue["NonstandardPropagators"]];
 
-		kinInvs = FCLoopGetKinematicInvariants[finalTopologies, FCFeynmanPrepare->!OptionValue["NonstandardPropagators"]];
+			If[	kinInvs=!={},
+				check = ToString /@ kinInvs;
 
-		If[	kinInvs=!={},
-			check = ToString /@ kinInvs;
-
-			If[!MatchQ[LowerCaseQ /@ StringReplace[check,"1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9"|"0"->""], {True...}],
-				FCPrint[0, "FCLoopFindTopologies: ",FCStyle["Your topologies depend on the follwing kinematic invariants that are not all entirely lowercase: ", {Darker[Yellow,0.55], Bold}], check, FCDoControl->fcfsopVerbose];
-				FCPrint[0, "FCLoopFindTopologies: ",FCStyle["This may lead to issues if these topologies are meant to be processed using tools such as FIRE, KIRA or Fermat.", {Darker[Yellow,0.55], Bold}], FCDoControl->fcfsopVerbose];
+				If[!MatchQ[LowerCaseQ /@ StringReplace[check,"1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9"|"0"->""], {True...}],
+					FCPrint[0, "FCLoopFindTopologies: ",FCStyle["Your topologies depend on the follwing kinematic invariants that are not all entirely lowercase: ", {Darker[Yellow,0.55], Bold}], check, FCDoControl->fcfsopVerbose];
+					FCPrint[0, "FCLoopFindTopologies: ",FCStyle["This may lead to issues if these topologies are meant to be processed using tools such as FIRE, KIRA or Fermat.", {Darker[Yellow,0.55], Bold}], FCDoControl->fcfsopVerbose];
+				];
 			];
 		];
 
