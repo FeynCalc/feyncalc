@@ -308,7 +308,7 @@ If[ $FeynCalcStartupMessages =!= False,
 				Style[DisplayForm@ButtonBox["examples.", BaseStyle -> "Hyperlink",	ButtonFunction :>
 							SystemOpen[FileNameJoin[{$FeynCalcDirectory, "Examples"}]],
 							Evaluator -> Automatic, Method -> "Preemptive"], "Text"],
-			Style["The PDF-version of the manual can be downloaded ", "Text"],
+			Style[" The PDF-version of the manual can be downloaded ", "Text"],
 			Style[DisplayForm@ButtonBox["here.", ButtonData :> {URL["https://github.com/FeynCalc/feyncalc-manual/releases/download/dev-manual/FeynCalcManual.pdf"],
 				None},BaseStyle -> "Hyperlink",	ButtonNote -> "https://github.com/FeynCalc/feyncalc-manual/releases/download/dev-manual/FeynCalcManual.pdf"], "Text"]
 							];
