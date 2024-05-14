@@ -39,6 +39,9 @@ Options[FCLoopSelectTopology] = {
 	"OneToOneCorrespondence"	-> False
 };
 
+FCLoopSelectTopology[glisRaw_, topo_FCTopology, opts:OptionsPattern[]] :=
+	FCLoopSelectTopology[glisRaw, {topo}, opts];
+
 FCLoopSelectTopology[ex_/;Head[ex]=!=List, topos:{__FCTopology}, opts:OptionsPattern[]] :=
 	First[FCLoopSelectTopology[{ex}, topos, opts]];
 
