@@ -403,18 +403,14 @@ FCApart[SFAD[{{0, c1 + p1.Q}}] SFAD[{{0, c2 + p1.Q}}] SFAD[{{p1,
 	FDS -> False]][[1]] < 1.5) || $VersionNumber < 10.",
 "True"},
 {"fcstFCApart-ID54",
-"FCApart[CFAD[{{k, 0}, {0, -1}, 1}, {{k - P, 0}, {0, -1}, 1}] CSPD[k,
-P]^2 GFAD[{{EN - V0 + Sqrt[CSPD[k, k]], 1}, 1}], {k}, FCE -> True]",
-"-(1/2) CFAD[{{k, 0}, {0, -1}, 1}] CSPD[k,
-P] GFAD[{{EN - V0 + Sqrt[CSPD[k, k]], 1}, 1}] +
-1/2 CFAD[{{k - P, 0}, {0, -1}, 1}] CSPD[k,
-P] GFAD[{{EN - V0 + Sqrt[CSPD[k, k]], 1}, 1}] -
-1/4 CFAD[{{k, 0}, {0, -1}, 1}] CSPD[P,
-P] GFAD[{{EN - V0 + Sqrt[CSPD[k, k]], 1}, 1}] +
-1/4 CFAD[{{k - P, 0}, {0, -1}, 1}] CSPD[P,
-P] GFAD[{{EN - V0 + Sqrt[CSPD[k, k]], 1}, 1}] +
-1/4 CFAD[{{k, 0}, {0, -1}, 1}, {{k - P, 0}, {0, -1}, 1}] CSPD[P,
-P]^2 GFAD[{{EN - V0 + Sqrt[CSPD[k, k]], 1}, 1}]"},
+"FCApart[CFAD[{{k, 0}, {0, -1}, 1}, {{k - P, 0}, {0, -1}, 1}]  CSPD[k,
+P]^2  GFAD[{{-EN + V0 - Sqrt[CSPD[k, k]], -1}, 1}], {k}, FCE -> True]",
+"-1/2*(CFAD[{{k, 0}, {0, -1}, 1}]*CSPD[k, P]*GFAD[{{-EN + V0 - Sqrt[CSPD[k, k]], -1}, 1}]) +
+(CFAD[{{k - P, 0}, {0, -1}, 1}]*CSPD[k, P]*GFAD[{{-EN + V0 - Sqrt[CSPD[k, k]], -1}, 1}])/2 -
+(CFAD[{{k, 0}, {0, -1}, 1}]*CSPD[P, P]*GFAD[{{-EN + V0 - Sqrt[CSPD[k, k]], -1}, 1}])/4 +
+(CFAD[{{k - P, 0}, {0, -1}, 1}]*CSPD[P, P]*GFAD[{{-EN + V0 - Sqrt[CSPD[k, k]], -1}, 1}])/4 +
+(CFAD[{{k, 0}, {0, -1}, 1}, {{k - P, 0}, {0, -1}, 1}]*CSPD[P, P]^2*GFAD[{{-EN + V0 -
+Sqrt[CSPD[k, k]], -1}, 1}])/4"},
 {"fcstFCApart-ID55",
 "DeclareFCTensor[myR1]; \n DeclareNonCommutative[myR1]; \n
 tmp = FCApart[myR1[CartesianMomentum[P]] CFAD[P - k, {P, c^2}], {P},FCE->True]; \n
@@ -432,13 +428,13 @@ UnDeclareFCTensor[myR1]; \n UnDeclareNonCommutative[myR1]; tmp",
 1/2 CFAD[{{P, 0}, {0, -1}, 1}, {{k + P, 0}, {c^2, -1}, 1}] (c^2 -
 	CSPD[k, k]) myR1[CartesianMomentum[P]]"},
 {"fcstFCApart-ID57",
-"FCApart[CFAD[{{k-p,0},{0,-1},1}] CSPD[k,p]  GFAD[{{\!\(\*SqrtBox[\
-\(CSPD[k, k]\)]\),1},1}]CFAD[k],CSPD[k],{k},FCE\[Rule]True]",
-"-(CFAD[{{k, 0}, {0, -1}, 1}]*CSPD[k, k]*GFAD[{{Sqrt[CSPD[k, k]], \
-1}, 1}])/2 + (CFAD[{{k - p, 0}, {0, -1}, 1}]*CSPD[k, \
-k]*GFAD[{{Sqrt[CSPD[k, k]], 1}, 1}])/2 + (CFAD[{{k, 0}, {0, -1}, 1}, \
-{{k - p, 0}, {0, -1}, 1}]*CSPD[k, k]*CSPD[p, p]*GFAD[{{Sqrt[CSPD[k, \
-k]], 1}, 1}])/2"},
+"FCApart[CFAD[{{k - p, 0}, {0, -1}, 1}]  CSPD[k,
+p]   GFAD[{{-Sqrt[CSPD[k, k]], -1}, 1}] CFAD[k], CSPD[k], {k},
+FCE -> True]",
+"-1/2*(CFAD[{{k, 0}, {0, -1}, 1}]*CSPD[k, k]*GFAD[{{-Sqrt[CSPD[k, k]], -1}, 1}]) +
+(CFAD[{{k - p, 0}, {0, -1}, 1}]*CSPD[k, k]*GFAD[{{-Sqrt[CSPD[k, k]], -1}, 1}])/2 +
+(CFAD[{{k, 0}, {0, -1}, 1}, {{k - p, 0}, {0, -1}, 1}]*CSPD[k, k]*CSPD[p,
+p]*GFAD[{{-Sqrt[CSPD[k, k]], -1}, 1}])/2"},
 {"fcstFCApart-ID58",
 "FCApart[SPD[k]^2SFAD[{{0,k.k}}],{k},DropScaleless\[Rule]False]",
 "Pair[Momentum[k, D], Momentum[k, D]]"},
@@ -503,8 +499,8 @@ FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q1, D],0, -QGMassV^2, 
 "-(FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q1, D],0,
 -QGMassV^2, {1, 1}]]*TemporalPair[ExplicitLorentzIndex[0], TemporalMomentum[q1]]^2)"},
 {"fcstFCApart-ID67",
-"FCApart[SFAD[{{0, n . k}, {0, -1}, al}, {{k, -m^2/Q k . n - k . nb Q}, {-m^2,1}},
+"FCApart[SFAD[{{0, n . k}, {0, 1}, al}, {{k, -m^2/Q k . n - k . nb Q}, {-m^2,1}},
 {{k, -m^2/Q k . nb - k . n Q}, {-m^2, 1}}, {k, m^2}], {k},FCE -> True]",
-"SFAD[{{0, k . n}, {0, -1}, al}, {{k, -((m^2*k . n)/Q) - Q*k . nb}, {-m^2, 1}, 1},
+"SFAD[{{0, k . n}, {0, 1}, al}, {{k, -((m^2*k . n)/Q) - Q*k . nb}, {-m^2, 1}, 1},
 {{k, -(Q*k . n) - (m^2*k . nb)/Q}, {-m^2, 1}, 1}, {{k, 0}, {m^2, 1}, 1}]"}
 })

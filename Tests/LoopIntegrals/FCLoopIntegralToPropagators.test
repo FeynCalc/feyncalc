@@ -337,12 +337,12 @@ Sqrt[CSPD[k]] GFAD[Sqrt[CSPD[k]] - x], {k}, FCE -> True]",
 "{GFAD[{{-x + Sqrt[CSPD[k, k]], 1}, 1}],
 GFAD[{{Sqrt[CSPD[k, k]], 1}, -1}]}"},
 {"fcstFCLoopIntegralToPropagators-ID61",
-"FCLoopBasisExtract[
+"FCLoopIntegralToPropagators[
 GFAD[{{CSPD[k, k] x[1] + (CSPD[k, k - 2 p] + CSPD[p, p]) x[2], 1},
 	1 + s}] CFAD[{k, -c^2}], {k}, FCE -> True]",
-"{{CSPD[k, k]*x[1] + CSPD[k, k]*x[2] - 2*CSPD[k, p]*x[2] +
-CSPD[p, p]*x[2], -c^2 + CSPD[k, k]}, {CSPD[k, k], CSPD[k, p]}, {1 + s, 1},
-{GFAD[{{CSPD[k, k]*x[1] + (CSPD[k, k - 2*p] + CSPD[p, p])*x[2], 1}, 1}], CFAD[{{k, 0}, {-c^2, -1}, 1}]}}"},
+"{CFAD[{{k, 0}, {-c^2, -1}, 1}],
+GFAD[{{CSPD[k, k] x[1] + (CSPD[k, k - 2 p] + CSPD[p, p]) x[2], 1},
+Sign[1 + s]}]}"},
 {"fcstFCLoopIntegralToPropagators-ID62",
 "FCLoopIntegralToPropagators[
 FCI[CFAD[{{k, 0}, {0, -1}, 1}, {{k, 0}, {0, -1},
