@@ -36,11 +36,14 @@ Begin["`FCLoopGetEtaSigns`Private`"]
 
 Options[FCLoopGetEtaSigns] = {
 	ToSFAD		-> True,
-	FCI			-> False
+	FCI			-> False,
+	CFAD		-> True,
+	GFAD		-> True,
+	SFAD		-> True
 };
 
-FCLoopGetEtaSigns[expr_,OptionsPattern[]] :=
-	Block[{	ex, res, signs},
+FCLoopGetEtaSigns[expr_, OptionsPattern[]] :=
+	Block[{	ex, res, signs, propTypes={}},
 
 		If[ OptionValue[FCI],
 			ex = expr,
@@ -51,7 +54,21 @@ FCLoopGetEtaSigns[expr_,OptionsPattern[]] :=
 			ex = ToSFAD[ex,FCI->True]
 		];
 
-		signs = Cases[ex, (StandardPropagatorDenominator|CartesianPropagatorDenominator|GenericPropagatorDenominator)[__,{_,s_}]:>s, Infinity];
+		If[	OptionValue[SFAD],
+			propTypes = Join[propTypes,{StandardPropagatorDenominator}]
+		];
+
+		If[	OptionValue[CFAD],
+			propTypes = Join[propTypes,{CartesianPropagatorDenominator}]
+		];
+
+		If[	OptionValue[GFAD],
+			propTypes = Join[propTypes,{GenericPropagatorDenominator}]
+		];
+
+		propTypes = Alternatives@@propTypes;
+
+		signs = Cases[ex, propTypes[__,{_,s_}]:>s, Infinity];
 		res = Union[Flatten[signs]];
 
 		res
