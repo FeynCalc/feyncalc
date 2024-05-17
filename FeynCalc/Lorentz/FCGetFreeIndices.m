@@ -39,11 +39,14 @@ Begin["`FCGetFreeIndices`Private`"]
 fcgfiVerbose::usage="";
 
 Options[FCGetFreeIndices] = {
-	DotSimplify	-> True,
-	Expanding	-> True,
-	First 		-> False,
-	FCVerbose	-> False,
-	Inverse		-> False
+	DiracChainExpand	-> True,
+	DotSimplify			-> True,
+	Expanding			-> True,
+	FCTraceExpand 		-> True,
+	FCVerbose			-> False,
+	First 				-> False,
+	Inverse				-> False,
+	PauliChainExpand	-> True
 };
 
 FCGetFreeIndices[_, {}, OptionsPattern[]] :=
@@ -75,21 +78,48 @@ FCGetFreeIndices[expr_, heads_List/;(heads =!= {} && !OptionQ[heads]), OptionsPa
 			ex = expr
 		];
 
-		ex = ExpandAll2[ex];
 
-		If[Head[ex]===Plus && optFirst && !optInverse,
-			ex=First[ex]
+
+
+		If[ OptionValue[FCTraceExpand],
+			time=AbsoluteTime[];
+			FCPrint[1, "FCGetFreeIndices: Applying FCTraceExpand.", FCDoControl->fcgfiVerbose];
+			ex = FCTraceExpand[ex,FCI->True];
+			FCPrint[1, "FCGetFreeIndices: FCTraceExpand done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcgfiVerbose];
+			FCPrint[3, "FCGetFreeIndices: After FCTraceExpand: ", ex, FCDoControl->fcgfiVerbose];
 		];
-
 
 		If[ OptionValue[DotSimplify],
 			time=AbsoluteTime[];
 			FCPrint[1, "FCGetFreeIndices: Applying DotSimplify.", FCDoControl->fcgfiVerbose];
 			ex = DotSimplify[ex, FCI->True, Expanding->optExpanding];
 			FCPrint[1, "FCGetFreeIndices: DotSimplify done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcgfiVerbose];
-			FCPrint[3, "FCGetFreeIndices: After FCColorIsolate: ", ex, FCDoControl->fcgfiVerbose];
+			FCPrint[3, "FCGetFreeIndices: After DotSimplify: ", ex, FCDoControl->fcgfiVerbose];
 
 		];
+
+		If[ OptionValue[DiracChainExpand] && !FreeQ[ex,DiracChain],
+			time=AbsoluteTime[];
+			FCPrint[1, "FCGetFreeIndices: Applying DiracChainExpand.", FCDoControl->fcgfiVerbose];
+			ex = DiracChainExpand[ex,FCI->True];
+			FCPrint[1, "FCGetFreeIndices: DiracChainExpand done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcgfiVerbose];
+			FCPrint[3, "FCGetFreeIndices: After DiracChainExpand: ", ex, FCDoControl->fcgfiVerbose];
+		];
+
+		If[ OptionValue[PauliChainExpand] && !FreeQ[ex,PauliChain],
+			time=AbsoluteTime[];
+			FCPrint[1, "FCGetFreeIndices: Applying PauliChainExpand.", FCDoControl->fcgfiVerbose];
+			ex = PauliChainExpand[ex,FCI->True];
+			FCPrint[1, "FCGetFreeIndices: PauliChainExpand done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcgfiVerbose];
+			FCPrint[3, "FCGetFreeIndices: After PauliChainExpand: ", ex, FCDoControl->fcgfiVerbose];
+		];
+
+		ex = ExpandAll2[ex];
+
+		If[Head[ex]===Plus && optFirst && !optInverse,
+			ex=First[ex]
+		];
+
 
 		If[	!FreeQ[ex, Power],
 			ex = ex /. Power[a_, b_Integer?Positive] /; !FreeQ2[a, heads] :>

@@ -44,5 +44,22 @@ FCI[GA[la] . (c1 FV[p, mu] + c2 FV[q, mu]) . GA[la]], {LorentzIndex},
 DotSimplify -> False]", "{}"},
 {"fcstFCGetFreeIndices-ID11",
 "FCGetFreeIndices[
-FCI[GA[la] . (c1 FV[p, mu] + c2 FV[q, mu]) . GA[la]], {LorentzIndex}]", "{mu}"}
+FCI[GA[la] . (c1 FV[p, mu] + c2 FV[q, mu]) . GA[la]], {LorentzIndex}]", "{mu}"},
+{"fcstFCGetFreeIndices-ID12",
+"FCGetFreeIndices[
+FCI[DiracTrace[
+Dot[Plus[DiracGamma[Momentum[Plus[p3, q1], D], D], MQU[3]],
+	Times[Complex[0, Rational[2, 3]],
+	DiracGamma[LorentzIndex[Lor3, D], D], r],
+	Plus[DiracGamma[Momentum[Plus[Times[-1, p4], q1], D], D], MQU[3]],
+	Times[Complex[0, Rational[2, 3]],
+	DiracGamma[LorentzIndex[Lor1, D], D], r],
+	Plus[DiracGamma[Momentum[q1, D], D], MQU[3]],
+	Times[Complex[0, Rational[-1, 2]], sa, sb, Power[sb2, -1],
+	Power[SW2, -1], MQU[3], e, Power[mW, -1],
+	sinW]]]], {LorentzIndex}]", "{Lor1,Lor3}"},
+{"fcstFCGetFreeIndices-ID13",
+"FCGetFreeIndices[
+FCI[DiracTrace[
+Dot[GSD[p3 + p4] + m, GAD[mu], GAD[nu]]]], {LorentzIndex}]", "{mu,nu}"}
 })
