@@ -145,7 +145,7 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 			FCPrint[1, "FCLoopToPakForm: Calling pakProcess in parallel.", FCDoControl -> fctpfVerbose];
 			With[{xxx = {optFactoring,optPowerMark,optCharacteristicPolynomial, optFCLoopPakOrder}},
 				ParallelEvaluate[FCParallelContext`FCLoopToPakForm`pakProcessOptions = xxx;, DistributedContexts -> None]];
-			res = ParallelMap[pakProcess[#,FCParallelContext`FCLoopToPakForm`pakProcessOptions]&,tmp, DistributedContexts -> None, Method -> "CoarsestGrained"],
+			tmp = ParallelMap[pakProcess[#,FCParallelContext`FCLoopToPakForm`pakProcessOptions]&,tmp, DistributedContexts -> None, Method -> "CoarsestGrained"],
 
 			FCPrint[1, "FCLoopToPakForm: Calling pakProcess.", FCDoControl -> fctpfVerbose];
 			tmp = pakProcess[#,{optFactoring,optPowerMark,optCharacteristicPolynomial, optFCLoopPakOrder}]&/@tmp

@@ -140,16 +140,19 @@ FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1,"FCLoopFromGLI: Creating conversion rules." , FCDoControl->fgliVerbose];
 		If[	$ParallelizeFeynCalc,
+				FCPrint[1,"FCLoopFromGLI: Running in parallel." , FCDoControl->fgliVerbose];
+				With[{xxx = powFu},
+				ParallelEvaluate[FCParallelContext`FCLoopFromGLI`powFu = xxx;, DistributedContexts -> None]];
 
 				fromGliRule = ParallelMap[(rule[GLI[#[[1]], Table[pattern[ToExpression["n"<>ToString[i]],_],{i,1,Length[#[[2]]]}]],
-					powFu[#[[2]]]] /.pattern->Pattern/.rule->RuleDelayed)&,relevantTopos, DistributedContexts->None,Method->"CoarsestGrained"],
+					FCParallelContext`FCLoopFromGLI`powFu[#[[2]]]]/.pattern->Pattern)&,relevantTopos, DistributedContexts->None,Method->"CoarsestGrained"];
+				fromGliRule = fromGliRule/.rule->RuleDelayed,
 
 				fromGliRule = Map[rule[GLI[#[[1]], Table[pattern[ToExpression["n"<>ToString[i]],_],{i,1,Length[#[[2]]]}]],
 					powFu[#[[2]]]]&,relevantTopos]/.pattern->Pattern/.rule->RuleDelayed;
 		];
 		FCPrint[1,"FCLoopFromGLI: Done creating conversion rules, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->fgliVerbose];
 		FCPrint[3,"FCLoopFromGLI: Conversion rules: ", fromGliRule, FCDoControl->fgliVerbose];
-
 
 		FCPrint[1,"FCLoopFromGLI: Applying conversion rules." , FCDoControl->fgliVerbose];
 		If[	!MatchQ[listGLI,{__GLI}],
@@ -282,7 +285,7 @@ power[c_. FeynAmpDenominator[(h:StandardPropagatorDenominator|CartesianPropagato
 	c^i FeynAmpDenominator[h[a,{i, s}]];
 
 
-powFu[x_]:=
+powFu[x_List]:=
 	list@@MapIndexed[powerHold[#1,ToExpression["n"<>ToString[First[#2]]]]&,x];
 
 list[a___,1,b___]:=
