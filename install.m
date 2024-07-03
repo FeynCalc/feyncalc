@@ -203,7 +203,7 @@ InstallFeynArts[OptionsPattern[]]:=
 		WriteString["stdout", "FeynArts zip file was saved to ", tmpzip,".\n"];
 		WriteString["stdout", "Extracting FeynArts zip file to ", faDir, " ..."];
 
-		If[$VersionNumber=!=13.3,
+		If[$VersionNumber<13.3,
 
 			If[	ExtractArchive[tmpzip, unzipDir]===$Failed,
 				WriteString["stdout", "\nFailed to extract the FeynArts zip. The file might be corrupted.\nInstallation aborted!"];
