@@ -1,0 +1,49 @@
+
+
+(* :Title: FCLoopAddMissingHigherOrdersWarning.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopAddMissingHigherOrdersWarning		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopAddMissingHigherOrdersWarning =
+({
+{"fcstFCLoopAddMissingHigherOrdersWarning-ID1",
+"FCLoopAddMissingHigherOrdersWarning[1/ep^2cc,ep,epHelp]",
+"cc/ep^2 + ((1 + I)*epHelp)/ep"},
+{"fcstFCLoopAddMissingHigherOrdersWarning-ID2",
+"FCLoopAddMissingHigherOrdersWarning[1/ep^2cc1+1/ep \
+cc2,ep,epHelp]", "cc1/ep^2 + cc2/ep + (1 + I)*epHelp"},
+{"fcstFCLoopAddMissingHigherOrdersWarning-ID3",
+"FCLoopAddMissingHigherOrdersWarning[cc1,ep,epHelp]",
+"cc1 + (1 + I)*ep*epHelp"},
+{"fcstFCLoopAddMissingHigherOrdersWarning-ID4",
+"FCLoopAddMissingHigherOrdersWarning[cc1,ep,epHelp,Complex->False]\
+", "cc1 + ep*epHelp"},
+{"fcstFCLoopAddMissingHigherOrdersWarning-ID5",
+"FCLoopAddMissingHigherOrdersWarning[cc1,ep,epHelp,Names->False]",
+"cc1 + (1 + I)*ep*epHelp"},
+{"fcstFCLoopAddMissingHigherOrdersWarning-ID6",
+"FCLoopAddMissingHigherOrdersWarning[GLI[topo1,{1,1,1,1,1}]->cc1/\
+ep^2+cc2/ep+cc3 ,ep,epHelp,Names->False]",
+"GLI[topo1, {1, 1, 1, 1, 1}] -> cc3 + cc1/ep^2 + cc2/ep + (1 + \
+I)*ep*epHelp"},
+{"fcstFCLoopAddMissingHigherOrdersWarning-ID7",
+"FCLoopAddMissingHigherOrdersWarning[GLI[topo1,{1,1,1,1,1}]->cc1/\
+ep^2+cc2/ep+cc3 ,ep,epHelp]",
+"GLI[topo1, {1, 1, 1, 1, 1}] -> cc3 + cc1/ep^2 + cc2/ep + (1 + \
+I)*ep*epHelp[topo1X11111]"},
+{"fcstFCLoopAddMissingHigherOrdersWarning-ID8",
+"FCLoopAddMissingHigherOrdersWarning[{GLI[topo1,{1,1,1,1,1}]->cc1/\
+ep^2+cc2/ep+cc3} ,ep,epHelp]",
+"{GLI[topo1, {1, 1, 1, 1, 1}] -> cc3 + cc1/ep^2 + cc2/ep + (1 + \
+I)*ep*epHelp[topo1X11111]}"}
+})
+
