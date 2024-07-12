@@ -128,7 +128,7 @@ $$g^{\mu \nu } g^{\mu \nu }{}_{\perp }$$
 
 $$D-2$$
 
-### Dirac matrices with light-cone components 
+### Dirac matrices with light-cone components
 
 Dirac algebra involving matrices contracted to light-cone momenta or having particular light-cone components is fully supported. The general strategy followed by `DiracSimplify` is to move all perpendicular components to the very right of the chain.
 

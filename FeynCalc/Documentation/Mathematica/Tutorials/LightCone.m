@@ -109,7 +109,7 @@ MTD[\[Mu],\[Nu]]MTLRD[\[Mu],\[Nu]]
 
 
 (* ::Subsection:: *)
-(*Dirac matrices with light-cone components *)
+(*Dirac matrices with light-cone components*)
 
 
 (* ::Text:: *)

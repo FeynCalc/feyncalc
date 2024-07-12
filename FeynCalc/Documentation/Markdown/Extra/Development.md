@@ -85,7 +85,7 @@ MySP[a_,b_]:= FCI[SP[a,b]];
 End[]
 EndPackage[]
 
-```
+```mathematica
 
 ### Package or add-on?
 

@@ -21,7 +21,7 @@
 
 
 topos={
-FCTopology["topoBox1L",{FAD[{q,m0}],FAD[{q+p1,m1}],FAD[{q+p2,m2}],FAD[{q+p2,m3}]},
+FCTopology["topoBox1L",{FAD[{q,m0}],FAD[{q+p1,m1}],FAD[{q+p2,m2}],FAD[{q+p3,m3}]},
 {q},{p1,p2,p3},{},{}],
 FCTopology["topoTad2L",{FAD[{q1,m1}],FAD[{q2,m2}],FAD[{q1-q2,0}]},{q1,q2},{},{},{}]}
 
