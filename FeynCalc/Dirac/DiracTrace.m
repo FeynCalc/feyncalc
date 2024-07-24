@@ -292,7 +292,6 @@ diracTraceEvaluate[expr_/;!FreeQ[expr,DiracGamma], opts:OptionsPattern[]] :=
 			tmp = tmp/. spurHead[x__]/; !NonCommFreeQ[{x}/.DiracGamma->null1] :> noSpur[x];
 			FCPrint[3,"DiracTrace: diracTraceEvaluate: Trace contains unknown non-commutative objects: ", !FreeQ[tmp, noSpur], FCDoControl->diTrVerbose];
 
-
 			(* Split chiral projectors here *)
 			tmp = tmp /. {spurHead[x___,DiracGamma[6]] :> 1/2 spurHead[x] + 1/2 spurHead[x,DiracGamma[5]],
 			spurHead[x___,DiracGamma[7]] :> 1/2 spurHead[x] - 1/2 spurHead[x,DiracGamma[5]]} /. spurHead[] -> 1;

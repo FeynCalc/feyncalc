@@ -349,11 +349,16 @@ diracTrickEvalFast[DiracGamma[5]]:=
 diracTrickEvalFast[DiracGamma[6|7]]:=
 	1/2/; insideDiracTrace;
 
+(* Reordering of Dirac matrices using cyclicity of the trace *)
+
 diracTrickEvalFast[DOT[DiracGamma[(a:6|7)],b___,DiracGamma[(a:6|7)]]] :=
 	diracTrickEvalFast[DOT[b,DiracGamma[a]]]/; insideDiracTrace;
 
 diracTrickEvalFast[DOT[DiracGamma[(h1:5|6|7)],b___,DiracGamma[(h2:5|6|7)]]] :=
 	ga67MatSign[h1,h2] diracTrickEvalFast[DOT[b,ga67Mat[h1,h2]]]/; h1=!=h2 && insideDiracTrace;
+
+diracTrickEvalFast[DOT[DiracGamma[(h:5|6|7)],b__]] :=
+	diracTrickEvalFast[DOT[b,DiracGamma[h]]]/; insideDiracTrace;
 
 (*	Generic simplifications	*)
 
@@ -375,6 +380,8 @@ diracTrickEvalFast[DOT[b___,DiracGamma[c_Momentum, dim_], DiracGamma[c_Momentum,
 diracTrickEvalFast[DOT[b___,DiracGamma[l_LorentzIndex, dim_:4], DiracGamma[c_Momentum, dim_:4], DiracGamma[l_LorentzIndex, dim_:4], d___]] :=
 	(2 - dim) diracTrickEvalFast[DOT[ b, DiracGamma[c,  dim], d ]];
 
+(* Neighboring g^5 and chiral projectors *)
+
 diracTrickEvalFast[DOT[b___,DiracGamma[5], DiracGamma[5], d___]] :=
 	diracTrickEvalFast[DOT[ b,d ]];
 
@@ -387,6 +394,7 @@ diracTrickEvalFast[DOT[b___, DiracGamma[(hh:6|7)], DiracGamma[5], c___]] :=
 diracTrickEvalFast[DOT[b___, DiracGamma[(hh1:6|7)],DiracGamma[(hh2:6|7)], c___]] :=
 	ga67Val2[hh1,hh2] diracTrickEvalFast[DOT[b, DiracGamma[hh2], c]];
 
+(* D-dimensional formulas for anticommuting g^5 (NDR only) *)
 
 diracTrickEvalFast[DOT[b___,DiracGamma[5], c:DiracGamma[_[_,__],_].. , d___]] :=
 	(-1)^Length[{c}] diracTrickEvalFast[DOT[ b,c,DiracGamma[5],d]]/; MemberQ[{"NDR","NDR-Discard"},FeynCalc`Package`DiracGammaScheme] &&
@@ -424,7 +432,7 @@ diracTrickEvalFast[DOT[b___, DiracGamma[(h:6|7)],(dg:DiracGamma[_[_,__],_]), xy:
 	diracTrickEvalFast[DOT[b, dg, xy, DiracGamma[h], c]]/; OddQ[Length[{xy}]]  && MemberQ[{"NDR","NDR-Discard"},FeynCalc`Package`DiracGammaScheme]  &&
 		MatchQ[FCGetDimensions[{dg,xy}],{_Symbol}];
 
-
+(* 4-dimensional formulas for anticommuting g^5 *)
 diracTrickEvalFast[DOT[b___,DiracGamma[5], c:DiracGamma[_[__]].. , d___]] :=
 	(-1)^Length[{c}] diracTrickEvalFast[DOT[ b,c,DiracGamma[5],d]];
 
