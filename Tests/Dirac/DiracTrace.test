@@ -494,8 +494,11 @@ MTE[lor2, mu] MTE[lora, nu] SPD[x, x] +
 MTE[lor2, lora] MTE[mu, nu] SPD[x, x])"},
 {"fcstDiracTrace-ID63", "FCSetDiracGammaScheme[\"Larin\"];\n DiracTrace[
 GSD[p1] . (1 - GA[5]) . (1 - GSD[v]) . (1 - GSD[v]) . GA[5],
-DiracTraceEvaluate -> True, EpsContract -> True, FCE -> True]", "(4*(-3 + D)*(-2 + D)*(-1 + D)*SPD[p1, v])/3"},
+DiracTraceEvaluate -> True, EpsContract -> True, FCE -> True]", "(-4*(-3 + D)*(-2 + D)*(-1 + D)*SPD[p1, v])/3"},
 {"fcstDiracTrace-ID64", "FCSetDiracGammaScheme[\"Larin\"];\n DiracTrace[
 GA[5] . GSD[p1] . (1 - GA[5]) . (1 - GSD[v]) . (1 - GSD[v]),
-DiracTraceEvaluate -> True, EpsContract -> True, FCE->True]", "(4*(-3 + D)*(-2 + D)*(-1 + D)*SPD[p1, v])/3"}
+DiracTraceEvaluate -> True, EpsContract -> True, FCE->True]", "(-4*(-3 + D)*(-2 + D)*(-1 + D)*SPD[p1, v])/3"},
+{"fcstDiracTrace-ID65", "FCSetDiracGammaScheme[\"Larin\"];\n DiracTrace[
+GSD[p1] . (1 - GA[5]) . (1 - GSD[v]) . (1 - GSD[v]) . GA[5],
+DiracTraceEvaluate -> True, EpsContract -> True]", "(-4*(-3 + D)*(-2 + D)*(-1 + D)*Pair[Momentum[p1, D], Momentum[v, D]])/3"}
 });

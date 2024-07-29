@@ -1566,7 +1566,7 @@ chiralTrickLarin[b___,((dg:DiracGamma[_[_,_], dim_]) + mass_:0),DiracGamma[7],d_
 Block[{li1,li2,li3},
 	{li1,li2,li3} = LorentzIndex[#,dim]& /@ Unique[{"dtlarLia","dtlarLib","dtlarLic"}];
 		mass chiralTrickLarin[b,DiracGamma[7],d] +
-		1/2 chiralTrickLarin[b,dg,d] +
+		1/2 chiralTrickLarin[b,dg,d] -
 		I/12 $LeviCivitaSign Eps[dg[[1]], li1, li2, li3] chiralTrickLarin[b,DiracGamma[li1,dim],DiracGamma[li2,dim],DiracGamma[li3,dim],d]
 	]/; !FreeQ2[{d},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && NonCommFreeQ[mass];
 
