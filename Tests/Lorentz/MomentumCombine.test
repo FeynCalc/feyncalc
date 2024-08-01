@@ -324,5 +324,56 @@ p,nb]+SPD[p,l]+SPD[p,k],NumberQ\[Rule]False,\"Quadratic\"\[Rule]False,\
 Except\[Rule]{k,l}]",
 "Pair[Momentum[k, D], Momentum[p, D]] + Pair[Momentum[l, D], \
 Momentum[p, D]] + Pair[Momentum[a1*n + a2*nb, D], Momentum[p, D]] + \
-Pair[Momentum[p, D], Momentum[p, D]]"}
+Pair[Momentum[p, D], Momentum[p, D]]"},
+{"fcstMomentumCombine-ID82",
+"(DataType[#, FCVariable] = True) & /@ {gkin, meta, u0b};
+MomentumCombine[
+SPD[k1] + 2 SPD[k1, k2] +
+meta  Pair[Momentum[k1, D],
+	Momentum[2  gkin  n - 2  gkin  n  u0b - nb  u0b, D]] +
+Pair[Momentum[k2, D], Momentum[k2, D]] -
+meta  Pair[Momentum[k2, D],
+	Momentum[2  gkin  n - 2  gkin  n  u0b - nb  u0b, D]]]",
+"Pair[Momentum[k1, D], Momentum[k1 + 2*k2, D]] + meta*Pair[Momentum[k1 - k2, D],
+Momentum[2*gkin*n - 2*gkin*n*u0b - nb*u0b, D]] + Pair[Momentum[k2, D], Momentum[k2, D]]"},
+{"fcstMomentumCombine-ID83",
+"(DataType[#, FCVariable] = True) & /@ {gkin, meta, u0b};
+MomentumCombine[
+SPD[k1] + 2 SPD[k1, k2] +
+meta  Pair[Momentum[k1, D],
+	Momentum[2  gkin  n - 2  gkin  n  u0b - nb  u0b, D]] +
+Pair[Momentum[k2, D], Momentum[k2, D]] -
+meta  Pair[Momentum[k2, D],
+	Momentum[2  gkin  n - 2  gkin  n  u0b - nb  u0b, D]],
+NumberQ -> False]",
+"Pair[Momentum[k1, D], Momentum[k1 + 2*k2 + 2*gkin*meta*n - 2*gkin*meta*n*u0b - meta*nb*u0b, D]] +
+Pair[Momentum[k2, D], Momentum[k2 - 2*gkin*meta*n + 2*gkin*meta*n*u0b + meta*nb*u0b, D]]"},
+{"fcstMomentumCombine-ID84",
+"(DataType[#, FCVariable] = True) & /@ {gkin, meta, u0b};
+MomentumCombine[
+SPD[k1] - 2 SPD[k1, k2] +
+meta  Pair[Momentum[k1, D],
+	Momentum[2  gkin  n - 2  gkin  n  u0b - nb  u0b, D]] +
+Pair[Momentum[k2, D], Momentum[k2, D]] -
+meta  Pair[Momentum[k2, D],
+	Momentum[2  gkin  n - 2  gkin  n  u0b - nb  u0b, D]],
+NumberQ -> False, \"ExcludeScalarProducts\" -> {k1, k2},
+Factoring -> Factor2]",
+"Pair[Momentum[k1, D], Momentum[k1, D]] - 2*Pair[Momentum[k1, D], Momentum[k2, D]] +
+meta*Pair[Momentum[k1 - k2, D], Momentum[2*gkin*n - 2*gkin*n*u0b - nb*u0b, D]] + Pair[Momentum[k2, D], Momentum[k2, D]]"},
+{"fcstMomentumCombine-ID85",
+"MomentumCombine[SPD[k1] + 2 SPD[k1, k2]]","Pair[Momentum[k1, D], Momentum[k1 + 2*k2, D]]"},
+{"fcstMomentumCombine-ID86",
+"MomentumCombine[SPD[k1] + 2 SPD[k1, k2], \"Quadratic\" -> False]",
+"Pair[Momentum[k1, D], Momentum[k1, D]] + 2*Pair[Momentum[k1, D], Momentum[k2, D]]"},
+{"fcstMomentumCombine-ID87",
+"MomentumCombine[
+SPD[k1, k1] - 2  SPD[k1, k2] + 2  gkin  meta  SPD[k1, n] -
+2  gkin  meta  u0b  SPD[k1, n] - meta  u0b  SPD[k1, nb] +
+SPD[k2, k2] - 2  gkin  meta  SPD[k2, n] +
+2  gkin  meta  u0b  SPD[k2, n] + meta  u0b  SPD[k2, nb],
+Select -> {k1, k2}, \"Quadratic\" -> False,
+\"ExcludeScalarProducts\" -> {k1, k2}, NumberQ -> False,
+Factoring -> Factor2, FCE -> True]",
+"SPD[k1, k1] - 2*SPD[k1, k2] + meta*SPD[k1 - k2, 2*gkin*n - 2*gkin*n*u0b - nb*u0b] + SPD[k2, k2]"}
 };
