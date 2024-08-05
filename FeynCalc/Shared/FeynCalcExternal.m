@@ -109,11 +109,18 @@ FeynCalcExternal[x_,opts___Rule] :=
 				TemporalPair,
 				Power2
 			} /. sequence -> Sequence];
-		rv = Map[(# ->  ((MomentumCombine[#])/.ru ) )&, vv]//Dispatch;
+
+		rv = Map[(# ->  ((momentumCombine[#])/.ru ) )&, vv]//Dispatch;
 		revru = Map[Reverse, SelectFree[ru,Power]];
 
 		x /. rv /. Dispatch[revru]
 	];
+
+momentumCombine[x_]:=
+	x /; !FreeQ[x,GenericPropagatorDenominator];
+
+momentumCombine[x_]:=
+	MomentumCombine[x] /; FreeQ[x,GenericPropagatorDenominator];
 
 diracdelta[i_,j_]:=
 	DIDelta[i,j] /. (DiracIndex|ExplicitDiracIndex) -> iDent;

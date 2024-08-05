@@ -1758,7 +1758,17 @@ Momentum[n, D], Momentum[nb, d]], d]"},
 "DiracGamma[LightConePerpendicularComponent[Momentum[p,d],Momentum[\
 n,d],Momentum[nb,d]],d]//FCE",
 "DiracGamma[LightConePerpendicularComponent[Momentum[p, d], \
-Momentum[n, d], Momentum[nb, d]], d]"}
+Momentum[n, d], Momentum[nb, d]], d]"},
+{"fcstFeynCalcExternal-ID444",
+"FCE[FeynAmpDenominator[
+GenericPropagatorDenominator[
+Pair[Momentum[k1, D], Momentum[k1, D]] +
+	2  Pair[Momentum[k1, D], Momentum[k2, D]] +
+	Pair[Momentum[k2, D], Momentum[k2, D]] +
+	2  gkin  meta  (Pair[Momentum[k1, D], Momentum[n, D]] +
+	Pair[Momentum[k2, D], Momentum[n, D]]), {1, 1}]]]",
+"GFAD[{{SPD[k1, k1] + 2 SPD[k1, k2] + SPD[k2, k2] +
+	2 gkin meta (SPD[k1, n] + SPD[k2, n]), 1}, 1}]"}
 };
 
 
