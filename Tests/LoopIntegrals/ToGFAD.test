@@ -85,5 +85,14 @@ D]], {1, -1}]]"},
 "FeynAmpDenominator[GenericPropagatorDenominator[m^2 + \
 CartesianPair[CartesianMomentum[p, -1 + D], CartesianMomentum[p, -1 + \
 D]] + CartesianPair[CartesianMomentum[p, -1 + D], \
-CartesianMomentum[q, -1 + D]], {1, -1}]]"}
+CartesianMomentum[q, -1 + D]], {1, -1}]]"},
+{"fcstToGFAD-ID18", "ToGFAD[SFAD[{{k2, 0}, {0, 1}, 1}],
+\"OnlyMixedQuadraticEikonalPropagators\" -> True, FCE -> True]",
+"SFAD[{{k2, 0}, {0, 1}, 1}]"},
+{"fcstToGFAD-ID19", "ToGFAD[SFAD[{{k1,
+2  gkin  meta  k1 . n - 2  gkin  meta  u0b  k1 . n -
+meta  u0b  k1 . nb}, {2  gkin  meta^2  u0b -
+2  gkin  meta^2  u0b^2, 1}, 1}], \"OnlyMixedQuadraticEikonalPropagators\" -> True, FCE -> True]",
+"GFAD[{{-2*gkin*meta^2*u0b + 2*gkin*meta^2*u0b^2 + SPD[k1, k1] +
+2*gkin*meta*SPD[k1, n] - 2*gkin*meta*u0b*SPD[k1, n] - meta*u0b*SPD[k1, nb], 1}, 1}]"}
 });

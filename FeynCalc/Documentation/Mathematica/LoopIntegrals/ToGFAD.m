@@ -12,7 +12,11 @@
 
 
 (* ::Text:: *)
-(*ToGFAD is the inverse operation to FromGFAD.*)
+(*`ToGFAD` is the inverse operation to `FromGFAD`.*)
+
+
+(* ::Text:: *)
+(*Using the option "OnlyMixedQuadraticEikonalPropagators" one can limit the conversion to a particular type of standard and Cartesian propagator denominators that contain both quadratic and eikonal pieces. Those are the ones that usually cause issues when doing topology minimization*)
 
 
 (* ::Subsection:: *)
@@ -43,3 +47,20 @@ ToGFAD[SFAD[{p+q,m^2}],FinalSubstitutions->{SPD[q]->0}]
 
 
 ToGFAD[SFAD[{p+q,m^2}],FinalSubstitutions->{SPD[q]->0}]//StandardForm
+
+
+(* ::Text:: *)
+(*This is not a mixed quadratic-eikonal propagator so it remains unchanged*)
+
+
+ToGFAD[SFAD[{{k2,0},{0,1},1}],"OnlyMixedQuadraticEikonalPropagators"->True,
+FCE->True]//StandardForm
+
+
+(* ::Text:: *)
+(*This is a mixed  propagator that will be converted to a `GFAD`*)
+
+
+ToGFAD[SFAD[{{k1,2 gkin meta k1 . n-2 gkin meta u0b k1 . n-meta u0b k1 . nb},
+{2 gkin meta^2 u0b-2 gkin meta^2 u0b^2,1},1}],
+"OnlyMixedQuadraticEikonalPropagators"->True,FCE->True]//StandardForm
