@@ -61,6 +61,7 @@ Options[FCLoopFindMomentumShifts] = {
 	FCI 						-> False,
 	FCVerbose 					-> False,
 	"Kinematics"				-> {},
+	"TopologyNames"				-> {},
 	InitialSubstitutions		-> {},
 	Momentum					-> {}
 };
@@ -92,12 +93,14 @@ FCLoopFindMomentumShifts[fromRaw:{__FCTopology}, toRaw_FCTopology/;!OptionQ[toRa
 			optMomentum = to[[4]]
 		];
 
-		FCLoopFindMomentumShifts[#[[2]]&/@from, to[[2]], to[[3]], Join[{FCI->True,Momentum->optMomentum,"Kinematics"->optKinematics}, FilterRules[{opts}, Except[FCI|Momentum|"Kinematics"]]]]
+
+		FCLoopFindMomentumShifts[#[[2]]&/@from, to[[2]], to[[3]], Join[{FCI->True,Momentum->optMomentum,"Kinematics"->optKinematics,
+			"TopologyNames"->{#[[1]]&/@from,to[[1]]}}, FilterRules[{opts}, Except[FCI|Momentum|"Kinematics"|"TopologyNames"]]]]
 	];
 
 
 FCLoopFindMomentumShifts[fromRaw_List/;FreeQ[fromRaw,FCTopology], toRaw_/;FreeQ[toRaw,FCTopology], lmoms_List, OptionsPattern[]] :=
-	Block[{from, to, res, time, shifts, optInitialSubstitutions,optKinematics},
+	Block[	{from, to, res, time, shifts, optInitialSubstitutions, optKinematics, optTopologyNames},
 
 		If[	OptionValue[FCVerbose] === False,
 			fcflsVerbose = $VeryVerbose,
@@ -105,11 +108,18 @@ FCLoopFindMomentumShifts[fromRaw_List/;FreeQ[fromRaw,FCTopology], toRaw_/;FreeQ[
 			fcflsVerbose = OptionValue[FCVerbose]];
 		];
 
+		optInitialSubstitutions = OptionValue[InitialSubstitutions];
+		optKinematics 			= OptionValue["Kinematics"];
+		optTopologyNames		= OptionValue["TopologyNames"];
+
 		FCPrint[1, "FCLoopFindMomentumShifts: Entering.", FCDoControl -> fcflsVerbose];
 		FCPrint[2, "FCLoopFindMomentumShifts: Kinematics:", optKinematics, " ", FCDoControl -> fcflsVerbose];
 
-		optInitialSubstitutions = OptionValue[InitialSubstitutions];
-		optKinematics = OptionValue["Kinematics"];
+
+
+		If[	optTopologyNames==={},
+			optTopologyNames = {ConstantArray["unnamedSourceTopo",Length[fromRaw]],"unnamedTargetTopo"}
+		];
 
 		If[optKinematics==={},
 			optKinematics = {ConstantArray[{},Length[fromRaw]], {}}
@@ -121,6 +131,12 @@ FCLoopFindMomentumShifts[fromRaw_List/;FreeQ[fromRaw,FCTopology], toRaw_/;FreeQ[
 		];
 
 		optMomentum = OptionValue[Momentum];
+
+		If[	optMomentum===All,
+			Message[FCLoopFindMomentumShifts::failmsg,"The option Momentum can be set to All only when using FCTopology objects as input."];
+			Abort[]
+		];
+
 		optAbort 	= OptionValue[Abort];
 
 
@@ -128,8 +144,10 @@ FCLoopFindMomentumShifts[fromRaw_List/;FreeQ[fromRaw,FCTopology], toRaw_/;FreeQ[
 		FCPrint[3, "FCLoopFindMomentumShifts: Target topology: ", to, FCDoControl -> fcflsVerbose];
 		FCPrint[2, "FCLoopFindMomentumShifts: Allowing kinematic shifts for the following external momenta: ", optMomentum, FCDoControl -> fcflsVerbose];
 
-		from = from /. optInitialSubstitutions;
-		to = to /. optInitialSubstitutions;
+
+		{from, to, optInitialSubstitutions} = MomentumCombine[{from, to, optInitialSubstitutions},FCI->True, NumberQ -> False];
+
+		{from, to} = {from, to} /. optInitialSubstitutions;
 
 		FCPrint[3, "FCLoopFindMomentumShifts: Source topologies after InitialSubstitutions: ", from, FCDoControl -> fcflsVerbose];
 		FCPrint[3, "FCLoopFindMomentumShifts: Target topology  after InitialSubstitutions: ", to, FCDoControl -> fcflsVerbose];
@@ -146,7 +164,7 @@ FCLoopFindMomentumShifts[fromRaw_List/;FreeQ[fromRaw,FCTopology], toRaw_/;FreeQ[
 
 		time=AbsoluteTime[];
 		FCPrint[1, "FCLoopFindMomentumShifts: Finding loop momentum shifts.", FCDoControl -> fcflsVerbose];
-		shifts = MapThread[findShifts[#1,to,lmoms,#2,optKinematics[[2]]]&,{from, optKinematics[[1]] }];
+		shifts = MapThread[findShifts[#1,to,lmoms,#2,optKinematics[[2]],#3,optTopologyNames[[2]]]&,{from, optKinematics[[1]], optTopologyNames[[1]]}];
 		FCPrint[1, "FCLoopFindMomentumShifts: Done finding loop momentum shifts, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcflsVerbose];
 
 
@@ -157,13 +175,10 @@ FCLoopFindMomentumShifts[fromRaw_List/;FreeQ[fromRaw,FCTopology], toRaw_/;FreeQ[
 	];
 
 
-findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmomsRaw_List, fromKininematis_List, toKinematics_List]:=
-	Block[{lhs, rhs, eq, mark, vars, sol, res, lmoms, allmoms, extmoms, tmp, auxFrom, auxTo},
+findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmomsRaw_List, fromKininematis_List, toKinematics_List, topoNamesFrom_, topoNamesTo_]:=
+	Block[{lhs, rhs, eq, mark, vars, sol, res, lmoms, allmoms, extmoms, tmp, auxFrom, auxTo, mixedProps, rule},
 
-		lhs = MomentumCombine[from,FCI->True, NumberQ -> False];
-		rhs = MomentumCombine[to,FCI->True, NumberQ -> False];
-
-		{lhs, rhs} = {lhs, rhs} /. {
+		{lhs, rhs} = {from, to} /. {
 			FeynAmpDenominator[PropagatorDenominator[Momentum[mom_, _], _]] :> mom,
 			FeynAmpDenominator[PropagatorDenominator[Complex[0,(1|-1)] Momentum[mom_, _], _]] :> mom,
 			FeynAmpDenominator[StandardPropagatorDenominator[Momentum[mom_, _], 0, _, {1, _}]] :> mom,
@@ -178,10 +193,30 @@ findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmomsRaw_List,
 		FCPrint[3, "FCLoopFindMomentumShifts: Kinematics lhs: ", fromKininematis, ".", FCDoControl -> fcflsVerbose];
 		FCPrint[3, "FCLoopFindMomentumShifts: Kinematics rhs: ", toKinematics, ".", FCDoControl -> fcflsVerbose];
 
-
 		tmp = Transpose[{lhs, rhs}];
+		mixedProps = Union[Cases[tmp, FeynAmpDenominator[(StandardPropagatorDenominator|CartesianPropagatorDenominator)[a_ /; a =!= 0, b_ /; b =!= 0, ___]], Infinity]];
 
+		(* Remove all propagators where we failed to extract the momentum flow *)
 		tmp = SelectFree[tmp,FeynAmpDenominator];
+
+		If[	mixedProps=!={},
+			FCPrint[0, "FCLoopFindMomentumShifts: ", FCStyle["The topologies contain following mixed quadratic-eikonal propagators that complicate the determination of the shifts: " , {Darker[Yellow,0.55], Bold}],
+					mixedProps,  FCDoControl -> fcflsVerbose];
+			FCPrint[0, "FCLoopFindMomentumShifts: ", FCStyle["You can try to trade them for purely quadratic propagators using FCLoopReplaceQuadraticEikonalPropagators." , {Darker[Yellow,0.55], Bold}],
+					FCDoControl -> fcflsVerbose];
+		];
+
+		If[	tmp==={},
+			Message[FCLoopFindMomentumShifts::shifts];
+			FCPrint[0, "FCLoopFindMomentumShifts: ", FCStyle["Failed to derive the momentum shifts between topologies " <>
+					ToString[topoNamesFrom] <> " and " <> ToString[topoNamesTo] <> " due to the presence of nonquadratic propagators.", {Darker[Yellow,0.55], Bold}],
+					FCDoControl -> fcflsVerbose];
+
+			If[optAbort,
+				Abort[],
+				Return[{}]
+			]
+		];
 
 		{lhs, rhs} = Transpose[tmp];
 
@@ -204,13 +239,20 @@ findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmomsRaw_List,
 		FCPrint[3, "FCLoopFindMomentumShifts: Final rhs: ", rhs, FCDoControl -> fcflsVerbose];
 		FCPrint[3, "FCLoopFindMomentumShifts: Variables to solve for: ", vars, FCDoControl -> fcflsVerbose];
 
+
+
 		eq = Thread[Equal[lhs^2,rhs^2]];
+
 		sol = Solve[eq,vars];
 
 		FCPrint[3, "FCLoopFindMomentumShifts: Possible shifts: ", sol, FCDoControl -> fcflsVerbose];
 
 		If[	sol==={},
 			Message[FCLoopFindMomentumShifts::shifts];
+			FCPrint[0, "FCLoopFindMomentumShifts: ", FCStyle["Failed to derive the momentum shifts between topologies " <>
+					ToString[topoNamesFrom] <> " and " <> ToString[topoNamesTo] <>
+					". This can be due to the presence of nonquadratic propagators or because shifts in external momenta are also necessary.", {Darker[Yellow,0.55], Bold}],
+					FCDoControl -> fcflsVerbose];
 			If[optAbort,
 				Abort[],
 				Return[{}]
@@ -218,12 +260,16 @@ findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmomsRaw_List,
 		];
 
 		(*We need to pick a solution that doesn't mix external momenta into loop momenta*)
+
+
+
 		If[	optMomentum=!={},
-			sol = Map[	If[FreeQ2[(mark/@extmoms)/.#,lmoms],
+			sol = Map[	If[FreeQ2[(mark/@extmoms)/.#, lmoms],
 					#,
 					Unevaluated[Sequence[]]
-					]&, sol
+					]&,	sol
 			];
+		FCPrint[3, "FCLoopFindMomentumShifts: Remaining shifts: ", sol, FCDoControl -> fcflsVerbose],
 
 			If[	sol==={},
 				Message[FCLoopFindMomentumShifts::shifts];
@@ -234,6 +280,8 @@ findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmomsRaw_List,
 			];
 
 		];
+
+
 
 		(*
 			In the case of multiple solutions we should select the correct one. For example, in the case of
@@ -250,15 +298,22 @@ findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmomsRaw_List,
 
 		FCPrint[3, "FCLoopFindMomentumShifts: Valid shifts: ", sol, FCDoControl -> fcflsVerbose];
 
+		(*Remove trivial rules of the type k1->k1*)
+		sol = sol /. Rule->rule/. rule[a_,a_]:> Unevaluated[Sequence[]]/.rule->Rule;
+
 		If[	sol==={},
 			Message[FCLoopFindMomentumShifts::shifts];
+			FCPrint[0, "FCLoopFindMomentumShifts: ", FCStyle["Failed to derive the momentum shifts between topologies " <>
+					ToString[topoNamesFrom] <> " and " <> ToString[topoNamesTo] <>
+					". This can be due to the presence of nonquadratic propagators or because shifts in external momenta are also necessary.", {Darker[Yellow,0.55], Bold}],
+					FCDoControl -> fcflsVerbose];
 			If[optAbort,
 				Abort[],
 				Return[{}]
 			]
 		];
 
-		res = First[sol];
+		res = First[SortBy[sol, {Length, LeafCount}]];
 
 		res
 
@@ -267,13 +322,6 @@ findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmomsRaw_List,
 
 findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, _List]:=
 	{}/; Length[from]=!=Length[to];
-
-
-
-
-
-
-
 
 FCPrint[1,"FCLoopFindMomentumShifts.m loaded."];
 End[]
