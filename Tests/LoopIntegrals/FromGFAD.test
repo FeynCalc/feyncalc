@@ -30,10 +30,9 @@ la^2 Pair[Momentum[p1, D], Momentum[p1, D]] -
 2 la Pair[Momentum[p1, D], Momentum[q, D]] -
 Pair[Momentum[p3, D], Momentum[p3, D]] +
 2 Pair[Momentum[p3, D], Momentum[q, D]], {1, 1}]],
-IntermediateSubstitutions -> {-ExpandScalarProduct[
-	SPD[p1 la + p3]] -> -SPD[p1 la + p3]}]",
-"FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[la*p1 + p3, D],
-2*la*Pair[Momentum[p1, D], Momentum[q, D]] + 2*Pair[Momentum[p3, D], Momentum[q, D]], -mb^2, {1, 1}]]"},
+InitialSubstitutions -> {-ExpandScalarProduct[
+	SPD[p1 la + p3]] -> -SPD[p1 la + p3]}, LoopMomenta -> {p1, p3}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[la*p1 + p3, D] - I*Momentum[q, D], 0, -mb^2 + Pair[Momentum[q, D], Momentum[q, D]], {1, 1}]]"},
 {"fcstFromGFAD-ID3",
 "FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[\!\(\*\
 SuperscriptBox[\(mb\), \(2\)]\)-\!\(\*SuperscriptBox[\(la\), \(2\)]\) \
@@ -176,6 +175,609 @@ PowerExpand -> {la}, FCE -> True]",
 "DataType[gkin, FCVariable] = True; DataType[meta, FCVariable] = True; DataType[u0b, FCVariable] = True; \n
 FromGFAD[GFAD[SPD[k1, k1]]*GFAD[SPD[k1, k1] + 2*gkin*meta*SPD[k1, n] - 2*gkin*meta*u0b*SPD[k1, n]]*GFAD[-2*gkin*meta^2*u0b +
 SPD[k1, k1] + 2*gkin*meta*SPD[k1, n] - meta*u0b*SPD[k1, nb]],FCE->True]",
-"SFAD[{{k1, 0}, {0, 1}, 1}]*SFAD[{{k1, 2*gkin*meta*k1 . n - 2*gkin*meta*u0b*k1 . n},
-{0, 1}, 1}]*SFAD[{{k1, 2*gkin*meta*k1 . n - meta*u0b*k1 . nb}, {2*gkin*meta^2*u0b, 1}, 1}]"}
+"SFAD[{{k1, 0}, {0, 1}, 1}]*SFAD[{{k1, 2*gkin*meta*(k1 . n - u0b*k1 . n)}, {0, 1}, 1}]*SFAD[{{k1, meta*(2*gkin*k1 . n - u0b*k1 . nb)}, {2*gkin*meta^2*u0b, 1}, 1}]"},
+{"fcstFromGFAD-ID39",
+"DataType[gkin, FCVariable] = True; DataType[meta, FCVariable] = True; DataType[u0b, FCVariable] = True; \n
+FromGFAD[GFAD[{{SPD[k1, k1] - 2*gkin*meta*u0b*SPD[k1, n], 1}, 1}],FCE->True,InitialSubstitutions->{ExpandScalarProduct[SPD[k1-gkin meta u0b n]]->SPD[k1-gkin meta u0b n]},
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->2}]",
+"SFAD[{{k1 - gkin*meta*n*u0b, 0}, {0, 1}, 1}]"},
+{"fcstFromGFAD-ID39",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k1, D], Momentum[k1, D]] - 2*gkin*meta*Pair[Momentum[k1, D], \
+Momentum[n, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] \
+- gkin*meta*Momentum[n, D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID40",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k1, D], Momentum[k1, D]] + 2*gkin*meta*Pair[Momentum[k1, D], \
+Momentum[n, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] \
++ gkin*meta*Momentum[n, D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID41",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k1, D], Momentum[k1, D]] - 2*gkin*meta*u0b*Pair[Momentum[k1, \
+D], Momentum[n, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] \
+- gkin*meta*u0b*Momentum[n, D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID42",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k1, D], Momentum[k1, D]] + 2*gkin*meta*u0b*Pair[Momentum[k1, \
+D], Momentum[n, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] \
++ gkin*meta*u0b*Momentum[n, D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID43",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k1, D], Momentum[k1, D]] + 2*gkin*meta*Pair[Momentum[k1, D], \
+Momentum[n, D]] - 2*gkin*meta*u0b*Pair[Momentum[k1, D], Momentum[n, \
+D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] \
++ gkin*meta*Momentum[n*(1 - u0b), D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID44",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k1, D], Momentum[k1, D]] - 2*gkin*meta*Pair[Momentum[k1, D], \
+Momentum[n, D]] + 2*gkin*meta*u0b*Pair[Momentum[k1, D], Momentum[n, \
+D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] \
+- gkin*meta*Momentum[n*(1 - u0b), D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID45",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k1, D], Momentum[k1, D]] - meta*u0b*Pair[Momentum[k1, D], \
+Momentum[nb, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] \
+- (meta*u0b*Momentum[nb, D])/2, 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID46",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k1, D], Momentum[k1, D]] + meta*u0b*Pair[Momentum[k1, D], \
+Momentum[nb, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] \
++ (meta*u0b*Momentum[nb, D])/2, 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID47",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[-2*gkin*\
+meta^2*u0b + Pair[Momentum[k1, D], Momentum[k1, D]] + \
+2*gkin*meta*Pair[Momentum[k1, D], Momentum[n, D]] - \
+meta*u0b*Pair[Momentum[k1, D], Momentum[nb, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] \
++ (meta*Momentum[2*gkin*n - nb*u0b, D])/2, 0, -2*gkin*meta^2*u0b, {1, \
+1}]]"},
+{"fcstFromGFAD-ID48",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[-2*gkin*\
+meta^2*u0b + 2*gkin*meta^2*u0b^2 + Pair[Momentum[k1, D], Momentum[k1, \
+D]] + 2*gkin*meta*Pair[Momentum[k1, D], Momentum[n, D]] - \
+2*gkin*meta*u0b*Pair[Momentum[k1, D], Momentum[n, D]] - \
+meta*u0b*Pair[Momentum[k1, D], Momentum[nb, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] \
++ (meta*Momentum[2*gkin*n - 2*gkin*n*u0b - nb*u0b, D])/2, 0, \
+-2*gkin*meta^2*u0b + 2*gkin*meta^2*u0b^2, {1, 1}]]"},
+{"fcstFromGFAD-ID49",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[-2*gkin*\
+meta^2*u0b^2 + Pair[Momentum[k1, D], Momentum[k1, D]] + \
+2*gkin*meta*u0b*Pair[Momentum[k1, D], Momentum[n, D]] - \
+meta*u0b*Pair[Momentum[k1, D], Momentum[nb, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] \
++ (meta*u0b*Momentum[2*gkin*n - nb, D])/2, 0, -2*gkin*meta^2*u0b^2, \
+{1, 1}]]"},
+{"fcstFromGFAD-ID50",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[-2*gkin*\
+meta^2*u0b + Pair[Momentum[k1, D], Momentum[k1, D]] - \
+2*gkin*meta*Pair[Momentum[k1, D], Momentum[n, D]] + \
+meta*u0b*Pair[Momentum[k1, D], Momentum[nb, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] \
+- (meta*Momentum[2*gkin*n - nb*u0b, D])/2, 0, -2*gkin*meta^2*u0b, {1, \
+1}]]"},
+{"fcstFromGFAD-ID51",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[-2*gkin*\
+meta^2*u0b^2 + Pair[Momentum[k1, D], Momentum[k1, D]] - \
+2*gkin*meta*u0b*Pair[Momentum[k1, D], Momentum[n, D]] + \
+meta*u0b*Pair[Momentum[k1, D], Momentum[nb, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] \
+- (meta*u0b*Momentum[2*gkin*n - nb, D])/2, 0, -2*gkin*meta^2*u0b^2, \
+{1, 1}]]"},
+{"fcstFromGFAD-ID52",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[-2*gkin*\
+meta^2*u0b + 2*gkin*meta^2*u0b^2 + Pair[Momentum[k1, D], Momentum[k1, \
+D]] - 2*gkin*meta*Pair[Momentum[k1, D], Momentum[n, D]] + \
+2*gkin*meta*u0b*Pair[Momentum[k1, D], Momentum[n, D]] + \
+meta*u0b*Pair[Momentum[k1, D], Momentum[nb, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] \
+- (meta*Momentum[2*gkin*n - 2*gkin*n*u0b - nb*u0b, D])/2, 0, \
+-2*gkin*meta^2*u0b + 2*gkin*meta^2*u0b^2, {1, 1}]]"},
+{"fcstFromGFAD-ID53",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k1, D], Momentum[k1, D]] - 2*Pair[Momentum[k1, D], \
+Momentum[k2, D]] + meta*u0b*Pair[Momentum[k1, D], Momentum[nb, D]] + \
+Pair[Momentum[k2, D], Momentum[k2, D]] - meta*u0b*Pair[Momentum[k2, \
+D], Momentum[nb, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 - \
+k2, D] + (meta*u0b*Momentum[nb, D])/2, 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID54",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k1, D], Momentum[k1, D]] - 2*Pair[Momentum[k1, D], \
+Momentum[k2, D]] + 2*gkin*meta*Pair[Momentum[k1, D], Momentum[n, D]] \
++ Pair[Momentum[k2, D], Momentum[k2, D]] - \
+2*gkin*meta*Pair[Momentum[k2, D], Momentum[n, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 - \
+k2, D] + gkin*meta*Momentum[n, D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID55",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k1, D], Momentum[k1, D]] - 2*Pair[Momentum[k1, D], \
+Momentum[k2, D]] - 2*gkin*meta*Pair[Momentum[k1, D], Momentum[n, D]] \
++ Pair[Momentum[k2, D], Momentum[k2, D]] + \
+2*gkin*meta*Pair[Momentum[k2, D], Momentum[n, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 - \
+k2, D] - gkin*meta*Momentum[n, D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID56",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[-2*gkin*\
+meta^2*u0b + Pair[Momentum[k1, D], Momentum[k1, D]] - \
+2*Pair[Momentum[k1, D], Momentum[k2, D]] - \
+2*gkin*meta*Pair[Momentum[k1, D], Momentum[n, D]] + \
+meta*u0b*Pair[Momentum[k1, D], Momentum[nb, D]] + Pair[Momentum[k2, \
+D], Momentum[k2, D]] + 2*gkin*meta*Pair[Momentum[k2, D], Momentum[n, \
+D]] - meta*u0b*Pair[Momentum[k2, D], Momentum[nb, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 - \
+k2, D] - (meta*Momentum[2*gkin*n - nb*u0b, D])/2, 0, \
+-2*gkin*meta^2*u0b, {1, 1}]]"},
+{"fcstFromGFAD-ID57",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k1, D], Momentum[k1, D]] - 2*Pair[Momentum[k1, D], \
+Momentum[k2, D]] + 2*gkin*meta*u0b*Pair[Momentum[k1, D], Momentum[n, \
+D]] + Pair[Momentum[k2, D], Momentum[k2, D]] - \
+2*gkin*meta*u0b*Pair[Momentum[k2, D], Momentum[n, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 - \
+k2, D] + gkin*meta*u0b*Momentum[n, D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID58",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k1, D], Momentum[k1, D]] - 2*Pair[Momentum[k1, D], \
+Momentum[k2, D]] - 2*gkin*meta*Pair[Momentum[k1, D], Momentum[n, D]] \
++ 2*gkin*meta*u0b*Pair[Momentum[k1, D], Momentum[n, D]] + \
+Pair[Momentum[k2, D], Momentum[k2, D]] + \
+2*gkin*meta*Pair[Momentum[k2, D], Momentum[n, D]] - \
+2*gkin*meta*u0b*Pair[Momentum[k2, D], Momentum[n, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 - \
+k2, D] - gkin*meta*Momentum[n*(1 - u0b), D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID59",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k1, D], Momentum[k1, D]] - 2*Pair[Momentum[k1, D], \
+Momentum[k2, D]] - 2*gkin*meta*u0b*Pair[Momentum[k1, D], Momentum[n, \
+D]] + Pair[Momentum[k2, D], Momentum[k2, D]] + \
+2*gkin*meta*u0b*Pair[Momentum[k2, D], Momentum[n, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 - \
+k2, D] - gkin*meta*u0b*Momentum[n, D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID60",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[-2*gkin*\
+meta^2*u0b^2 + Pair[Momentum[k1, D], Momentum[k1, D]] - \
+2*Pair[Momentum[k1, D], Momentum[k2, D]] - \
+2*gkin*meta*u0b*Pair[Momentum[k1, D], Momentum[n, D]] + \
+meta*u0b*Pair[Momentum[k1, D], Momentum[nb, D]] + Pair[Momentum[k2, \
+D], Momentum[k2, D]] + 2*gkin*meta*u0b*Pair[Momentum[k2, D], \
+Momentum[n, D]] - meta*u0b*Pair[Momentum[k2, D], Momentum[nb, D]], \
+{1, 1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{\
+ExpandScalarProduct[SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[\
+k1+k2]]->SPD[k1+k2]},IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,\
+SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 - \
+k2, D] - (meta*u0b*Momentum[2*gkin*n - nb, D])/2, 0, \
+-2*gkin*meta^2*u0b^2, {1, 1}]]"},
+{"fcstFromGFAD-ID61",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k1, D], Momentum[k1, D]] - 2*Pair[Momentum[k1, D], \
+Momentum[k2, D]] + 2*gkin*meta*Pair[Momentum[k1, D], Momentum[n, D]] \
+- 2*gkin*meta*u0b*Pair[Momentum[k1, D], Momentum[n, D]] + \
+Pair[Momentum[k2, D], Momentum[k2, D]] - \
+2*gkin*meta*Pair[Momentum[k2, D], Momentum[n, D]] + \
+2*gkin*meta*u0b*Pair[Momentum[k2, D], Momentum[n, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 - \
+k2, D] + gkin*meta*Momentum[n*(1 - u0b), D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID62",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k1, D], Momentum[k1, D]] - 2*Pair[Momentum[k1, D], \
+Momentum[k2, D]] - meta*u0b*Pair[Momentum[k1, D], Momentum[nb, D]] + \
+Pair[Momentum[k2, D], Momentum[k2, D]] + meta*u0b*Pair[Momentum[k2, \
+D], Momentum[nb, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 - \
+k2, D] - (meta*u0b*Momentum[nb, D])/2, 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID63",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[-2*gkin*\
+meta^2*u0b + Pair[Momentum[k1, D], Momentum[k1, D]] - \
+2*Pair[Momentum[k1, D], Momentum[k2, D]] + \
+2*gkin*meta*Pair[Momentum[k1, D], Momentum[n, D]] - \
+meta*u0b*Pair[Momentum[k1, D], Momentum[nb, D]] + Pair[Momentum[k2, \
+D], Momentum[k2, D]] - 2*gkin*meta*Pair[Momentum[k2, D], Momentum[n, \
+D]] + meta*u0b*Pair[Momentum[k2, D], Momentum[nb, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 - \
+k2, D] + (meta*Momentum[2*gkin*n - nb*u0b, D])/2, 0, \
+-2*gkin*meta^2*u0b, {1, 1}]]"},
+{"fcstFromGFAD-ID64",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[-2*gkin*\
+meta^2*u0b^2 + Pair[Momentum[k1, D], Momentum[k1, D]] - \
+2*Pair[Momentum[k1, D], Momentum[k2, D]] + \
+2*gkin*meta*u0b*Pair[Momentum[k1, D], Momentum[n, D]] - \
+meta*u0b*Pair[Momentum[k1, D], Momentum[nb, D]] + Pair[Momentum[k2, \
+D], Momentum[k2, D]] - 2*gkin*meta*u0b*Pair[Momentum[k2, D], \
+Momentum[n, D]] + meta*u0b*Pair[Momentum[k2, D], Momentum[nb, D]], \
+{1, 1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{\
+ExpandScalarProduct[SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[\
+k1+k2]]->SPD[k1+k2]},IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,\
+SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 - \
+k2, D] + (meta*u0b*Momentum[2*gkin*n - nb, D])/2, 0, \
+-2*gkin*meta^2*u0b^2, {1, 1}]]"},
+{"fcstFromGFAD-ID65",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[-2*gkin*\
+meta^2*u0b + 2*gkin*meta^2*u0b^2 + Pair[Momentum[k1, D], Momentum[k1, \
+D]] - 2*Pair[Momentum[k1, D], Momentum[k2, D]] + \
+2*gkin*meta*Pair[Momentum[k1, D], Momentum[n, D]] - \
+2*gkin*meta*u0b*Pair[Momentum[k1, D], Momentum[n, D]] - \
+meta*u0b*Pair[Momentum[k1, D], Momentum[nb, D]] + Pair[Momentum[k2, \
+D], Momentum[k2, D]] - 2*gkin*meta*Pair[Momentum[k2, D], Momentum[n, \
+D]] + 2*gkin*meta*u0b*Pair[Momentum[k2, D], Momentum[n, D]] + \
+meta*u0b*Pair[Momentum[k2, D], Momentum[nb, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 - \
+k2, D] + (meta*Momentum[2*gkin*n - 2*gkin*n*u0b - nb*u0b, D])/2, 0, \
+-2*gkin*meta^2*u0b + 2*gkin*meta^2*u0b^2, {1, 1}]]"},
+{"fcstFromGFAD-ID66",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k2, D], Momentum[k2, D]] - 2*gkin*meta*u0b*Pair[Momentum[k2, \
+D], Momentum[n, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k2, D] \
+- gkin*meta*u0b*Momentum[n, D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID67",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k2, D], Momentum[k2, D]] + 2*gkin*meta*u0b*Pair[Momentum[k2, \
+D], Momentum[n, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k2, D] \
++ gkin*meta*u0b*Momentum[n, D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID68",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k2, D], Momentum[k2, D]] + 2*gkin*meta*Pair[Momentum[k2, D], \
+Momentum[n, D]] - 2*gkin*meta*u0b*Pair[Momentum[k2, D], Momentum[n, \
+D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k2, D] \
++ gkin*meta*Momentum[n*(1 - u0b), D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID69",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k2, D], Momentum[k2, D]] - 2*gkin*meta*Pair[Momentum[k2, D], \
+Momentum[n, D]] + 2*gkin*meta*u0b*Pair[Momentum[k2, D], Momentum[n, \
+D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k2, D] \
+- gkin*meta*Momentum[n*(1 - u0b), D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID70",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k2, D], Momentum[k2, D]] - meta*u0b*Pair[Momentum[k2, D], \
+Momentum[nb, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k2, D] \
+- (meta*u0b*Momentum[nb, D])/2, 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID71",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k2, D], Momentum[k2, D]] + meta*u0b*Pair[Momentum[k2, D], \
+Momentum[nb, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k2, D] \
++ (meta*u0b*Momentum[nb, D])/2, 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID72",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[-2*gkin*\
+meta^2*u0b + Pair[Momentum[k2, D], Momentum[k2, D]] + \
+2*gkin*meta*Pair[Momentum[k2, D], Momentum[n, D]] - \
+meta*u0b*Pair[Momentum[k2, D], Momentum[nb, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k2, D] \
++ (meta*Momentum[2*gkin*n - nb*u0b, D])/2, 0, -2*gkin*meta^2*u0b, {1, \
+1}]]"},
+{"fcstFromGFAD-ID73",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[-2*gkin*\
+meta^2*u0b^2 + Pair[Momentum[k2, D], Momentum[k2, D]] + \
+2*gkin*meta*u0b*Pair[Momentum[k2, D], Momentum[n, D]] - \
+meta*u0b*Pair[Momentum[k2, D], Momentum[nb, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k2, D] \
++ (meta*u0b*Momentum[2*gkin*n - nb, D])/2, 0, -2*gkin*meta^2*u0b^2, \
+{1, 1}]]"},
+{"fcstFromGFAD-ID74",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[-2*gkin*\
+meta^2*u0b + Pair[Momentum[k2, D], Momentum[k2, D]] - \
+2*gkin*meta*Pair[Momentum[k2, D], Momentum[n, D]] + \
+meta*u0b*Pair[Momentum[k2, D], Momentum[nb, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k2, D] \
+- (meta*Momentum[2*gkin*n - nb*u0b, D])/2, 0, -2*gkin*meta^2*u0b, {1, \
+1}]]"},
+{"fcstFromGFAD-ID75",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[-2*gkin*\
+meta^2*u0b^2 + Pair[Momentum[k2, D], Momentum[k2, D]] - \
+2*gkin*meta*u0b*Pair[Momentum[k2, D], Momentum[n, D]] + \
+meta*u0b*Pair[Momentum[k2, D], Momentum[nb, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k2, D] \
+- (meta*u0b*Momentum[2*gkin*n - nb, D])/2, 0, -2*gkin*meta^2*u0b^2, \
+{1, 1}]]"},
+{"fcstFromGFAD-ID76",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k1, D], Momentum[k1, D]] + 2*Pair[Momentum[k1, D], \
+Momentum[k2, D]] - 2*gkin*meta*Pair[Momentum[k1, D], Momentum[n, D]] \
++ Pair[Momentum[k2, D], Momentum[k2, D]] - \
+2*gkin*meta*Pair[Momentum[k2, D], Momentum[n, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 + \
+k2, D] - gkin*meta*Momentum[n, D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID77",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k1, D], Momentum[k1, D]] + 2*Pair[Momentum[k1, D], \
+Momentum[k2, D]] + 2*gkin*meta*Pair[Momentum[k1, D], Momentum[n, D]] \
++ Pair[Momentum[k2, D], Momentum[k2, D]] + \
+2*gkin*meta*Pair[Momentum[k2, D], Momentum[n, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 + \
+k2, D] + gkin*meta*Momentum[n, D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID78",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k1, D], Momentum[k1, D]] + 2*Pair[Momentum[k1, D], \
+Momentum[k2, D]] - 2*gkin*meta*u0b*Pair[Momentum[k1, D], Momentum[n, \
+D]] + Pair[Momentum[k2, D], Momentum[k2, D]] - \
+2*gkin*meta*u0b*Pair[Momentum[k2, D], Momentum[n, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 + \
+k2, D] - gkin*meta*u0b*Momentum[n, D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID79",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k1, D], Momentum[k1, D]] + 2*Pair[Momentum[k1, D], \
+Momentum[k2, D]] + 2*gkin*meta*u0b*Pair[Momentum[k1, D], Momentum[n, \
+D]] + Pair[Momentum[k2, D], Momentum[k2, D]] + \
+2*gkin*meta*u0b*Pair[Momentum[k2, D], Momentum[n, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 + \
+k2, D] + gkin*meta*u0b*Momentum[n, D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID80",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k1, D], Momentum[k1, D]] + 2*Pair[Momentum[k1, D], \
+Momentum[k2, D]] + 2*gkin*meta*Pair[Momentum[k1, D], Momentum[n, D]] \
+- 2*gkin*meta*u0b*Pair[Momentum[k1, D], Momentum[n, D]] + \
+Pair[Momentum[k2, D], Momentum[k2, D]] + \
+2*gkin*meta*Pair[Momentum[k2, D], Momentum[n, D]] - \
+2*gkin*meta*u0b*Pair[Momentum[k2, D], Momentum[n, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 + \
+k2, D] + gkin*meta*Momentum[n*(1 - u0b), D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID81",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k1, D], Momentum[k1, D]] + 2*Pair[Momentum[k1, D], \
+Momentum[k2, D]] - 2*gkin*meta*Pair[Momentum[k1, D], Momentum[n, D]] \
++ 2*gkin*meta*u0b*Pair[Momentum[k1, D], Momentum[n, D]] + \
+Pair[Momentum[k2, D], Momentum[k2, D]] - \
+2*gkin*meta*Pair[Momentum[k2, D], Momentum[n, D]] + \
+2*gkin*meta*u0b*Pair[Momentum[k2, D], Momentum[n, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 + \
+k2, D] - gkin*meta*Momentum[n*(1 - u0b), D], 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID82",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k1, D], Momentum[k1, D]] + 2*Pair[Momentum[k1, D], \
+Momentum[k2, D]] - meta*u0b*Pair[Momentum[k1, D], Momentum[nb, D]] + \
+Pair[Momentum[k2, D], Momentum[k2, D]] - meta*u0b*Pair[Momentum[k2, \
+D], Momentum[nb, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 + \
+k2, D] - (meta*u0b*Momentum[nb, D])/2, 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID83",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[Pair[\
+Momentum[k1, D], Momentum[k1, D]] + 2*Pair[Momentum[k1, D], \
+Momentum[k2, D]] + meta*u0b*Pair[Momentum[k1, D], Momentum[nb, D]] + \
+Pair[Momentum[k2, D], Momentum[k2, D]] + meta*u0b*Pair[Momentum[k2, \
+D], Momentum[nb, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 + \
+k2, D] + (meta*u0b*Momentum[nb, D])/2, 0, 0, {1, 1}]]"},
+{"fcstFromGFAD-ID84",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[-2*gkin*\
+meta^2*u0b + Pair[Momentum[k1, D], Momentum[k1, D]] + \
+2*Pair[Momentum[k1, D], Momentum[k2, D]] + \
+2*gkin*meta*Pair[Momentum[k1, D], Momentum[n, D]] - \
+meta*u0b*Pair[Momentum[k1, D], Momentum[nb, D]] + Pair[Momentum[k2, \
+D], Momentum[k2, D]] + 2*gkin*meta*Pair[Momentum[k2, D], Momentum[n, \
+D]] - meta*u0b*Pair[Momentum[k2, D], Momentum[nb, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 + \
+k2, D] + (meta*Momentum[2*gkin*n - nb*u0b, D])/2, 0, \
+-2*gkin*meta^2*u0b, {1, 1}]]"},
+{"fcstFromGFAD-ID85",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[-2*gkin*\
+meta^2*u0b + 2*gkin*meta^2*u0b^2 + Pair[Momentum[k1, D], Momentum[k1, \
+D]] + 2*Pair[Momentum[k1, D], Momentum[k2, D]] + \
+2*gkin*meta*Pair[Momentum[k1, D], Momentum[n, D]] - \
+2*gkin*meta*u0b*Pair[Momentum[k1, D], Momentum[n, D]] - \
+meta*u0b*Pair[Momentum[k1, D], Momentum[nb, D]] + Pair[Momentum[k2, \
+D], Momentum[k2, D]] + 2*gkin*meta*Pair[Momentum[k2, D], Momentum[n, \
+D]] - 2*gkin*meta*u0b*Pair[Momentum[k2, D], Momentum[n, D]] - \
+meta*u0b*Pair[Momentum[k2, D], Momentum[nb, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 + \
+k2, D] + (meta*Momentum[2*gkin*n - 2*gkin*n*u0b - nb*u0b, D])/2, 0, \
+-2*gkin*meta^2*u0b + 2*gkin*meta^2*u0b^2, {1, 1}]]"},
+{"fcstFromGFAD-ID86",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[-2*gkin*\
+meta^2*u0b^2 + Pair[Momentum[k1, D], Momentum[k1, D]] + \
+2*Pair[Momentum[k1, D], Momentum[k2, D]] + \
+2*gkin*meta*u0b*Pair[Momentum[k1, D], Momentum[n, D]] - \
+meta*u0b*Pair[Momentum[k1, D], Momentum[nb, D]] + Pair[Momentum[k2, \
+D], Momentum[k2, D]] + 2*gkin*meta*u0b*Pair[Momentum[k2, D], \
+Momentum[n, D]] - meta*u0b*Pair[Momentum[k2, D], Momentum[nb, D]], \
+{1, 1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{\
+ExpandScalarProduct[SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[\
+k1+k2]]->SPD[k1+k2]},IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,\
+SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 + \
+k2, D] + (meta*u0b*Momentum[2*gkin*n - nb, D])/2, 0, \
+-2*gkin*meta^2*u0b^2, {1, 1}]]"},
+{"fcstFromGFAD-ID87",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[-2*gkin*\
+meta^2*u0b + Pair[Momentum[k1, D], Momentum[k1, D]] + \
+2*Pair[Momentum[k1, D], Momentum[k2, D]] - \
+2*gkin*meta*Pair[Momentum[k1, D], Momentum[n, D]] + \
+meta*u0b*Pair[Momentum[k1, D], Momentum[nb, D]] + Pair[Momentum[k2, \
+D], Momentum[k2, D]] - 2*gkin*meta*Pair[Momentum[k2, D], Momentum[n, \
+D]] + meta*u0b*Pair[Momentum[k2, D], Momentum[nb, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 + \
+k2, D] - (meta*Momentum[2*gkin*n - nb*u0b, D])/2, 0, \
+-2*gkin*meta^2*u0b, {1, 1}]]"},
+{"fcstFromGFAD-ID88",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[-2*gkin*\
+meta^2*u0b^2 + Pair[Momentum[k1, D], Momentum[k1, D]] + \
+2*Pair[Momentum[k1, D], Momentum[k2, D]] - \
+2*gkin*meta*u0b*Pair[Momentum[k1, D], Momentum[n, D]] + \
+meta*u0b*Pair[Momentum[k1, D], Momentum[nb, D]] + Pair[Momentum[k2, \
+D], Momentum[k2, D]] - 2*gkin*meta*u0b*Pair[Momentum[k2, D], \
+Momentum[n, D]] + meta*u0b*Pair[Momentum[k2, D], Momentum[nb, D]], \
+{1, 1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{\
+ExpandScalarProduct[SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[\
+k1+k2]]->SPD[k1+k2]},IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,\
+SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 + \
+k2, D] - (meta*u0b*Momentum[2*gkin*n - nb, D])/2, 0, \
+-2*gkin*meta^2*u0b^2, {1, 1}]]"},
+{"fcstFromGFAD-ID89",
+"FromGFAD[FeynAmpDenominator[GenericPropagatorDenominator[-2*gkin*\
+meta^2*u0b + 2*gkin*meta^2*u0b^2 + Pair[Momentum[k1, D], Momentum[k1, \
+D]] + 2*Pair[Momentum[k1, D], Momentum[k2, D]] - \
+2*gkin*meta*Pair[Momentum[k1, D], Momentum[n, D]] + \
+2*gkin*meta*u0b*Pair[Momentum[k1, D], Momentum[n, D]] + \
+meta*u0b*Pair[Momentum[k1, D], Momentum[nb, D]] + Pair[Momentum[k2, \
+D], Momentum[k2, D]] - 2*gkin*meta*Pair[Momentum[k2, D], Momentum[n, \
+D]] + 2*gkin*meta*u0b*Pair[Momentum[k2, D], Momentum[n, D]] + \
+meta*u0b*Pair[Momentum[k2, D], Momentum[nb, D]], {1, \
+1}]],LoopMomenta->{k1,k2},InitialSubstitutions->{ExpandScalarProduct[\
+SPD[k1-k2]]->SPD[k1-k2],ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 + \
+k2, D] - (meta*Momentum[2*gkin*n - 2*gkin*n*u0b - nb*u0b, D])/2, 0, \
+-2*gkin*meta^2*u0b + 2*gkin*meta^2*u0b^2, {1, 1}]]"},
+{"fcstFromGFAD-ID90",
+"FromGFAD[
+FeynAmpDenominator[
+GenericPropagatorDenominator[-(la*
+	Pair[Momentum[p1, D], Momentum[p1, D]]) +
+	2*Pair[Momentum[p1, D], Momentum[q, D]], {1, 1}]],
+PowerExpand -> {la}, LoopMomenta -> {p1}]",
+"FeynAmpDenominator[StandardPropagatorDenominator[I*Sqrt[la]*Momentum[p1,
+D] - (I*Momentum[q, D])/Sqrt[la], 0, Pair[Momentum[q, D], Momentum[q, D]]/la, {1, 1}]]"}
 });

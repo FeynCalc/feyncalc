@@ -44,10 +44,14 @@ optPowerExpand::usage="";
 optFeynAmpDenominatorExplicit="";
 noFAD::usage="";
 sfadHold::usage="";
+optIntermediateSubstitutions::usage="";
+optLoopMomenta::usage="";
 
 Options[FromGFAD] = {
 		Check						-> 	True,
 		ExpandScalarProduct			-> 	True,
+		Except						->  {},
+		Factoring					->  Factor2,
 		FCE							->	False,
 		FCI							->	False,
 		FCVerbose					-> 	False,
@@ -60,8 +64,8 @@ Options[FromGFAD] = {
 };
 
 FromGFAD[expr_, OptionsPattern[]] :=
-	Block[{	res, ex, pds, pdsConverted,rulePds, check, optLoopMomenta,
-			optInitialSubstitutions, optIntermediateSubstitutions},
+	Block[{	res, ex, pds, pdsConverted,rulePds, check,
+			optInitialSubstitutions,  mixedEikProps, null1, null2},
 
 		optInitialSubstitutions 		= OptionValue[InitialSubstitutions];
 		optIntermediateSubstitutions	= OptionValue[IntermediateSubstitutions];
@@ -84,11 +88,18 @@ FromGFAD[expr_, OptionsPattern[]] :=
 		FCPrint[1, "FromGFAD: Entering.", FCDoControl->fgfVerbose];
 		FCPrint[3, "FromGFAD: Entering with: ", expr, FCDoControl->fgfVerbose];
 
+		{optInitialSubstitutions,optIntermediateSubstitutions} = FRH[{optInitialSubstitutions,optIntermediateSubstitutions}];
+
 		If[	!OptionValue[FCI],
 			{ex, optInitialSubstitutions, optIntermediateSubstitutions} =
 				FCI[{expr,optInitialSubstitutions, optIntermediateSubstitutions}],
 			ex = expr
 		];
+
+		optInitialSubstitutions = optInitialSubstitutions /. optIntermediateSubstitutions;
+
+		FCPrint[3, "FromGFAD: Replacement rules for the propagators: ", optInitialSubstitutions, FCDoControl->fgfVerbose];
+
 
 		If[	FreeQ2[ex, {GenericPropagatorDenominator}],
 			(*	Nothing to do.	*)
@@ -104,17 +115,18 @@ FromGFAD[expr_, OptionsPattern[]] :=
 
 		FCPrint[3, "FromGFAD: After initial and intermediate substitutions: ", pdsConverted, FCDoControl->fgfVerbose];
 
-		If[OptionValue[MomentumCombine],
-			pdsConverted = MomentumCombine[pdsConverted,FCI->True, NumberQ->False, "Quadratic" -> False, Except -> optLoopMomenta]
+		If[	OptionValue[MomentumCombine],
+			pdsConverted = MomentumCombine[pdsConverted,FCI->True, NumberQ->False, "Quadratic" -> False,
+				Select->optLoopMomenta, "ExcludeScalarProducts" -> optLoopMomenta, NumberQ -> False, Factoring -> OptionValue[Factoring]]
 		];
 
-		FCPrint[3, "FromGFAD: After applying substitution rules: ", pdsConverted, FCDoControl->fgfVerbose];
+		FCPrint[3, "FromGFAD: After MomentumCombine: ", pdsConverted, FCDoControl->fgfVerbose];
 
 		pdsConverted = (fromGFAD/@pdsConverted) /. fromGFAD->fromGFAD2 /. fromGFAD2->fromGFAD;
 
 		FCPrint[3, "FromGFAD: After fromGFAD: ", pdsConverted, FCDoControl->fgfVerbose];
 
-		pdsConverted = pdsConverted /. fromGFAD->Identity;
+		pdsConverted = pdsConverted /. fromGFAD->Identity /. optIntermediateSubstitutions;
 
 		If[	!FreeQ[pdsConverted,GenericPropagatorDenominator],
 			FCPrint[0, "FromGFAD: Following GFADs could not be eliminated: ", FeynAmpDenominator/@SelectNotFree[pdsConverted,GenericPropagatorDenominator,sfadHold], FCDoControl->fgfVerbose];
@@ -125,7 +137,8 @@ FromGFAD[expr_, OptionsPattern[]] :=
 					1/FeynAmpDenominatorExplicit[FeynAmpDenominator/@pds])/. optInitialSubstitutions /. optIntermediateSubstitutions])/. noFAD->Identity];
 			If[	!MatchQ[check,{0..}],
 				FCPrint[3, "FromGFAD: Check: ", check, FCDoControl->fgfVerbose];
-				Message[FromGFAD::failmsg,"Something went wrong when elmiinating GenericPropagatorDenominators."];
+				Message[FromGFAD::failmsg,"Something went wrong when eliminating GenericPropagatorDenominators."<>
+					" If you have symbolic variables in your propagators, did you properly declare them as FCVariable?"];
 				Abort[]
 			];
 		];
@@ -133,7 +146,6 @@ FromGFAD[expr_, OptionsPattern[]] :=
 		rulePds = Thread[Rule[pds,pdsConverted]];
 
 		FCPrint[3, "FromGFAD: Final replacement rule: ", rulePds, FCDoControl->fgfVerbose];
-
 
 		res = ex /. Dispatch[rulePds];
 
@@ -144,6 +156,20 @@ FromGFAD[expr_, OptionsPattern[]] :=
 		If[	OptionValue[ExpandScalarProduct],
 			res = ExpandScalarProduct[res, FCI->True]
 		];
+
+
+		mixedEikProps = Cases[res+null1+null2, FeynAmpDenominator[(StandardPropagatorDenominator|CartesianPropagatorDenominator)[a_ /; a =!= 0,
+			b_ /; b =!= 0, ___]], Infinity] // Union;
+
+		If[	mixedEikProps=!={},
+			FCPrint[0, "FromGFAD: ", FCStyle["Some of the converted propagators are not strictly quadratic or eikonal.", {Darker[Yellow,0.55], Bold}],
+					FCDoControl -> fgfVerbose];
+			FCPrint[0, "FromGFAD: ", mixedEikProps, FCDoControl -> fgfVerbose];
+
+			FCPrint[0, "FromGFAD: ", FCStyle["These propagators may later cause issues with topology minimization routines.", {Darker[Yellow,0.55], Bold}],
+					FCDoControl -> fgfVerbose];
+		];
+
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
@@ -182,6 +208,20 @@ fromGFAD[GenericPropagatorDenominator[pref1_. Pair[Momentum[a_,dim___],Momentum[
 	FreeQ2[c,{Pair,CartesianPair,TemporalPair,Momentum,CartesianMomentum,TemporalMomentum}] &&  Internal`SyntacticNegativeQ[pref1] &&
 	Internal`SyntacticNegativeQ[pref3];
 
+
+(* # a.a + # a.b -> (#a+#b)^2 - #b^2 *)
+fromGFAD[GenericPropagatorDenominator[pref1_. Pair[Momentum[a_,dim___],Momentum[a_,dim___]] + pref2_. Pair[Momentum[a_,dim___],Momentum[b_,dim___]]
++ c_:0,{n_,s_}]] :=
+	StandardPropagatorDenominator[powExp[Sqrt[pref1]  Momentum[a, dim] + pref2/Sqrt[pref1]/2  Momentum[b, dim]],0,ExpandScalarProduct[c- pref2^2/Sqrt[pref1]/4 Pair[Momentum[b, dim],Momentum[b, dim]],FCI->True],
+		{n, s}]/; FreeQ2[c,optLoopMomenta] && !Internal`SyntacticNegativeQ[pref1] && optLoopMomenta=!={};
+
+
+(* # -a.a + # a.b -> (I #a- I #b)^2 + #b^2 *)
+fromGFAD[GenericPropagatorDenominator[pref1_. Pair[Momentum[a_,dim___],Momentum[a_,dim___]] + pref2_. Pair[Momentum[a_,dim___],Momentum[b_,dim___]]
++ c_:0,{n_,s_}]] :=
+	StandardPropagatorDenominator[ powExp[I Sqrt[-pref1]  Momentum[a, dim] - I pref2/Sqrt[-pref1]/2  Momentum[b, dim]],0,c+ pref2^2/(-pref1)/4 Pair[Momentum[b, dim],Momentum[b, dim]],{n, s}]/;
+	FreeQ2[c,optLoopMomenta] &&  Internal`SyntacticNegativeQ[pref1] && optLoopMomenta=!={};
+
 (* # a.a - # a.b + # b.b -> (#a-#b)^2 *)
 fromGFAD[GenericPropagatorDenominator[pref1_. Pair[Momentum[a_,dim___],Momentum[a_,dim___]] + pref2_. Pair[Momentum[a_,dim___],Momentum[b_,dim___]]
 + pref3_. Pair[Momentum[b_,dim___],Momentum[b_,dim___]]	 + c_:0,{n_,s_}]] :=
@@ -206,7 +246,7 @@ fromGFAD[GenericPropagatorDenominator[pref1_. Pair[Momentum[a_,dim___],Momentum[
 (* # a.a + # b.c -> (#a)^2 + # b.c *)
 fromGFAD[GenericPropagatorDenominator[pref1_. Pair[Momentum[a1_,dim___],Momentum[a1_,dim___]] + pref2_. Pair[Momentum[a2_,dim___],Momentum[b2_,dim___]] + c_:0,{n_,s_}]] :=
 	StandardPropagatorDenominator[powExp[Sqrt[pref1]] Momentum[a1,dim], pref2 Pair[Momentum[a2,dim],Momentum[b2,dim]],c,{n, s}]/;
-		FreeQ2[c,{Pair,CartesianPair,TemporalPair,Momentum,CartesianMomentum,TemporalMomentum}];
+		FreeQ2[c,{Pair,CartesianPair,TemporalPair,Momentum,CartesianMomentum,TemporalMomentum}]/; !MemberQ[optLoopMomenta,a1] && !MemberQ[optLoopMomenta,a2];
 
 
 fromGFAD[GenericPropagatorDenominator[pref1_. Pair[Momentum[a1_,dim___],Momentum[a1_,dim___]] + pref2_. Pair[Momentum[a2_,dim___],Momentum[b2_,dim___]] + c_:0,{n_,s_}]] :=
