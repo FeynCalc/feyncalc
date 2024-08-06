@@ -19,17 +19,17 @@ Tests`LoopIntegrals`fcstFCLoopFindMomentumShifts =
 "FCLoopFindMomentumShifts[{{FAD[p4],FAD[p1],FAD[p1-p3-p4],FAD[{p1-\
 p4,m1}],FAD[{p3,m1}],FAD[p3+q1],FAD[p1+q1]}},{FAD[p4],FAD[p1+p4+q1],\
 FAD[p1-p3+q1],FAD[{p1+q1,m1}],FAD[{p3,m1}],FAD[p3+q1],FAD[p1+p4+2 \
-q1]},{p1,p3,p4}]", "{{p1 -> p1 + p4 + q1, p3 -> p3, p4 -> p4}}"},
+q1]},{p1,p3,p4}]", "{{p1 -> p1 + p4 + q1}}"},
 {"fcstfcstFCLoopFindMomentumShifts-ID2",
 "FCLoopFindMomentumShifts[{{FAD[r4],FAD[p1],FAD[p1-p3-r4],FAD[{p1-\
 r4,m1}],FAD[{p3,m1}],FAD[p3+q1],FAD[p1+q1]}},{FAD[p4],FAD[p1+p4+q1],\
 FAD[p1-p3+q1],FAD[{p1+q1,m1}],FAD[{p3,m1}],FAD[p3+q1],FAD[p1+p4+2 \
-q1]},{p1,p3,p4,r4}]", "{{p1 -> p1 + p4 + q1, p3 -> p3, r4 -> p4}}"},
+q1]},{p1,p3,p4,r4}]", "{{p1 -> p1 + p4 + q1, r4 -> p4}}"},
 {"fcstfcstFCLoopFindMomentumShifts-ID3",
 "FCLoopFindMomentumShifts[{{FAD[r4],FAD[r1],FAD[r1-p3-r4],FAD[{r1-\
 r4,m1}],FAD[{p3,m1}],FAD[p3+q1],FAD[r1+q1]}},{FAD[p4],FAD[p1+p4+q1],\
 FAD[p1-p3+q1],FAD[{p1+q1,m1}],FAD[{p3,m1}],FAD[p3+q1],FAD[p1+p4+2 \
-q1]},{p1,p3,p4,r4,r1}]", "{{p3 -> p3, r4 -> p4, r1 -> p1 + p4 + q1}}"},
+q1]},{p1,p3,p4,r4,r1}]", "{{r4 -> p4, r1 -> p1 + p4 + q1}}"},
 {"fcstfcstFCLoopFindMomentumShifts-ID4",
 "FCLoopFindMomentumShifts[{FCTopology[fctopology3,{SFAD[{{p1,0},{0,\
 1},1}],SFAD[{{p3,0},{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,1},1}],SFAD[{{\
@@ -44,8 +44,8 @@ p3-Q,0},{0,1},1}],SFAD[{{p3,0},{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,1},1}\
 ],SFAD[{{p2-Q,0},{0,1},1}],SFAD[{{p2,0},{0,1},1}],SFAD[{{p1,0},{0,1},\
 1}],SFAD[{{p1-Q,0},{0,1},1}],SFAD[{{p2+p3,0},{0,1},1}],SFAD[{{p2+p3-Q,\
 0},{0,1},1}]},{p1,p2,p3},{Q},{},{}]]",
-"{{p1 -> -p1 - p3 + Q, p2 -> -p2 - p3 + Q, p3 -> p3}, {p1 -> -p2 + \
-Q, p2 -> -p1 + Q, p3 -> -p3}}"},
+"{{p1 -> -p1 - p3 + Q, p2 -> -p2 - p3 + Q},
+{p1 -> -p2 + Q, p2 -> -p1 + Q, p3 -> -p3}}"},
 {"fcstfcstFCLoopFindMomentumShifts-ID5",
 "FCLoopFindMomentumShifts[{FCTopology[fctopology2,{SFAD[{{p3,0},{0,\
 1},1}],SFAD[{{p1+p2-Q,0},{0,1},1}],SFAD[{{p1+p2+p3-Q,0},{0,1},1}],\
@@ -56,7 +56,7 @@ SFAD[{{p2,0},{0,1},1}],SFAD[{{p2-Q,0},{0,1},1}],SFAD[{{p2+p3,0},{0,1},\
 SFAD[{{p1,0},{0,1},1}],SFAD[{{p1-Q,0},{0,1},1}],SFAD[{{p1+p3,0},{0,1},\
 1}],SFAD[{{p1+p3-Q,0},{0,1},1}],SFAD[{{p2-Q,0},{0,1},1}],SFAD[{{p2,0},\
 {0,1},1}]},{p1,p2,p3},{Q},{},{}]]",
-"{{p1 -> p2, p2 -> p1, p3 -> p3}}"},
+"{{p1 -> p2, p2 -> p1}}"},
 {"fcstfcstFCLoopFindMomentumShifts-ID6",
 "FCLoopFindMomentumShifts[{FCTopology[fctopology1,{SFAD[{{q1+q2,0},\
 {0,1},1}],SFAD[{{q2,0},{0,1},1}],SFAD[{{p-q2,0},{0,1},1}],SFAD[{{q1,0}\
@@ -87,7 +87,7 @@ FeynAmpDenominator[
 l2,0},{0,1},1}],SFAD[{{l1,0},{m^2,1},1}],SFAD[{{0,l1.q2},{0,1},1}]},{\
 l1,l2},{q2},{},{}]},FCTopology[fctopology4newR1456,{SFAD[{{l2+q2,0},{\
 0,1},1}],SFAD[{{l1,0},{m^2,1},1}],SFAD[{{0,l1.q2},{0,1},1}]},{l1,l2},{\
-q2},{},{}]]", "{{l1 -> l1, l2 -> -l2 - q2}}"},
+q2},{},{}]]", "{{l2 -> l2 + q2}}"},
 {"fcstFCLoopFindMomentumShifts-ID9",
 "FCLoopFindMomentumShifts[{FCTopology[topo1, {SFAD[{{l1 + q1, 0}, \
 {m^2, 1}, 1}], SFAD[{{l1 - l2, 0}, {0, 1}, 1}], SFAD[{{l2 + q1, 0}, \
@@ -100,7 +100,7 @@ q2, 0}, {0, 1}, 1}], SFAD[{{l2 - q2, 0}, {m^2, 1}, 1}], SFAD[{{l2 + \
 q1, 0}, {m^2, 1}, 1}], SFAD[{{l2, 0}, {0, 1}, 1}]}, {l1, l2}, {q1, \
 q2}, {SPD[q1, q1] -> 0, SPD[q2, q2] -> 0, SPD[q1, q2] -> s/2},
 {}],Momentum->All]",
-"{{l1 -> l1 - l2 - q2, l2 -> -l2, q1 -> q2, q2 -> q1}}"},
+"{{l1 -> -l1 + l2 + q2, q1 -> -q2, q2 -> -q1}}"},
 {"fcstFCLoopFindMomentumShifts-ID10",
 "Quiet[FCLoopFindMomentumShifts[{FCTopology[topo1, {SFAD[{{l1 + \
 q1, 0}, {m^2, 1}, 1}], SFAD[{{l1 - l2, 0}, {0, 1}, 1}], SFAD[{{l2 + \
@@ -119,7 +119,7 @@ SFAD[{{l1, l1 . np + l1 . nm}}]}}, {SFAD[l1],
 SFAD[{{l1, -l1 . np - l1 . nm}}]}, {l1}]",
 "{{l1 -> -l1}}"},
 {"fcstFCLoopFindMomentumShifts-ID12",
-"DataType[meta, FCVariable] = True; \n DataType[u0b, FCVariable] = True; \n
+"DataType[gkin, FCVariable] = True; \n DataType[meta, FCVariable] = True; \n DataType[u0b, FCVariable] = True; \n
 FCLoopFindMomentumShifts[{{SFAD[{{k1, 2*gkin*meta*k1 . n - meta*u0b*k1 . nb},
 {2*gkin*meta^2*u0b, 1}, 1}], SFAD[{{k1, 0}, {0, 1}, 1}], SFAD[{{k1 + k2,
 2*gkin*meta*u0b*(k1 + k2) . n - meta*u0b*(k1 + k2) . nb}, {2*gkin*meta^2*u0b^2, 1}, 1}],

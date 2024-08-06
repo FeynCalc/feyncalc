@@ -41,17 +41,19 @@ Begin["`FCLoopFindTopologyMappings`Private`"]
 fclftpVerbose::usage = "";
 optMomentum::usage = "";
 optInitialSubstitutions::usage = "";
+optFCVerboseFCLoopFindMomentumShifts::usage = "";
 
 Options[FCLoopFindTopologyMappings] = {
-	FCE 						-> False,
-	FCI 						-> False,
-	FCVerbose 					-> False,
-	FinalSubstitutions			-> {},
-	InitialSubstitutions		-> {},
-	LightPak					-> False,
-	Momentum					-> {},
-	PreferredTopologies			-> {},
-	SubtopologyMarker			-> FCGV["SubtopologyOf"]
+	FCE 								-> False,
+	FCI 								-> False,
+	FCVerbose 							-> False,
+	"FCVerboseFCLoopFindMomentumShifts"	-> False,
+	FinalSubstitutions					-> {},
+	InitialSubstitutions				-> {},
+	LightPak							-> False,
+	Momentum							-> {},
+	PreferredTopologies					-> {},
+	SubtopologyMarker					-> FCGV["SubtopologyOf"]
 };
 
 FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
@@ -66,11 +68,12 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 			fclftpVerbose = OptionValue[FCVerbose]];
 		];
 
-		optPreferredTopologies 	= OptionValue[PreferredTopologies];
-		optFinalSubstitutions 	= OptionValue[FinalSubstitutions];
-		optSubtopologyMarker 	= OptionValue[SubtopologyMarker];
-		optInitialSubstitutions = OptionValue[InitialSubstitutions];
-		optMomentum				= OptionValue[Momentum];
+		optPreferredTopologies 					= OptionValue[PreferredTopologies];
+		optFinalSubstitutions 					= OptionValue[FinalSubstitutions];
+		optSubtopologyMarker 					= OptionValue[SubtopologyMarker];
+		optInitialSubstitutions					= OptionValue[InitialSubstitutions];
+		optMomentum								= OptionValue[Momentum];
+		optFCVerboseFCLoopFindMomentumShifts	= OptionValue["FCVerboseFCLoopFindMomentumShifts"];
 
 		FCPrint[1, "FCLoopFindTopologyMappings: Entering.", FCDoControl -> fclftpVerbose];
 		FCPrint[3, "FCLoopFindTopologyMappings: Entering with: ", toposRaw, FCDoControl -> fclftpVerbose];
@@ -228,7 +231,7 @@ findMappings[input_List, preferred_List, targetEl_:1] :=
 	(*Some shifts cannot be found unless shifts of external momenta are explicitly allowed!*)
 
 	shifts = Quiet[FCLoopFindMomentumShifts[Last/@source, Last[target], {Momentum->optMomentum,Abort->False, InitialSubstitutions->
-		optInitialSubstitutions}],{FCLoopFindMomentumShifts::shifts,Solve::svars}];
+		optInitialSubstitutions}, FCVerbose->optFCVerboseFCLoopFindMomentumShifts],{FCLoopFindMomentumShifts::shifts,Solve::svars}];
 	(*TODO Redo if shitfs were found only between the preferred topologies*)
 
 	If[	MatchQ[shifts,{{}..}],

@@ -17,13 +17,11 @@
 
 
 (* ::Text:: *)
-(*For topologies involving kinematic constraints some mappings may require shifts not only in the loop but also in the external*)
-(*momenta. Such shifts are disabled by default but can be activated by setting the option `Momentum` to `All`.*)
+(*For topologies involving kinematic constraints some mappings may require shifts not only in the loop but also in the external momenta. Such shifts are disabled by default but can be activated by setting the option `Momentum` to `All`. This option can be dangerous, because the amplitude does not necessarily have to be symmetric under shifts of external momenta!*)
 
 
 (* ::Text:: *)
-(*Normally, `FCLoopFindMomentumShifts` will abort the evaluation if it fails to find any suitable shifts. Setting the option*)
-(*`Abort` to `False` will force the function to merely return an empty list in such situations.*)
+(*Normally, `FCLoopFindMomentumShifts` will abort the evaluation if it fails to find any suitable shifts. Setting the option `Abort` to `False` will force the function to merely return an empty list in such situations.*)
 
 
 (* ::Subsection:: *)
