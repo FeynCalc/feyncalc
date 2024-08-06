@@ -1,0 +1,160 @@
+
+
+(* :Title: FCLoopReplaceQuadraticEikonalPropagators.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopReplaceQuadraticEikonalPropagators	*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`FCLoopReplaceQuadraticEikonalPropagators =
+({
+{"fcstFCLoopReplaceQuadraticEikonalPropagators-ID1",
+"FCLoopReplaceQuadraticEikonalPropagators[FCTopology[pfrTopo226, \
+{SFAD[{{k2, 0}, {0, 1}, 1}], SFAD[{{k1, 0}, {0, 1}, 1}], SFAD[{{k1 - \
+(meta*nb*u0b)/2, 0}, {0, 1}, 1}], SFAD[{{k2 + gkin*meta*n*u0b, 0}, \
+{0, 1}, 1}], SFAD[{{k1 - k2 - (meta*nb*u0b)/2, 0}, {0, 1}, 1}], \
+SFAD[{{k1 + (meta*(2*gkin*n - nb)*u0b)/2, 0}, {2*gkin*meta^2*u0b^2, \
+1}, 1}]},
+{k1, k2}, {n, nb}, {Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0, \
+Hold[SPD][n, nb] -> 2}, {}]]",
+"{FCTopology[
+pfrTopo226, {FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[k2, D], 0, 0, {1, 1}]],
+FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[k1, D], 0, 0, {1, 1}]],
+FeynAmpDenominator[
+	StandardPropagatorDenominator[
+	 Momentum[k1, D] - Momentum[meta*nb*u0b, D]/2, 0, 0, {1, 1}]],
+FeynAmpDenominator[
+	StandardPropagatorDenominator[
+	 Momentum[k2, D] + Momentum[gkin*meta*n*u0b, D], 0, 0, {1, 1}]],
+FeynAmpDenominator[
+	StandardPropagatorDenominator[
+	 Momentum[k1, D] - Momentum[k2, D] - Momentum[meta*nb*u0b, D]/2,
+	 0, 0, {1, 1}]],
+FeynAmpDenominator[
+	StandardPropagatorDenominator[
+	 Momentum[k1, D] + Momentum[gkin*meta*n*u0b, D] -
+	  Momentum[meta*nb*u0b, D]/2,
+	 0, -2*gkin*meta^2*u0b^2, {1, 1}]]}, {k1, k2}, {n,
+nb}, {Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0,
+Hold[SPD][n, nb] -> 2}, {}]}"},
+{"fcstFCLoopReplaceQuadraticEikonalPropagators-ID2",
+"FCLoopReplaceQuadraticEikonalPropagators[{FCTopology[pfrTopo226, \
+{SFAD[{{k2, 0}, {0, 1}, 1}], SFAD[{{k1, 0}, {0, 1}, 1}], SFAD[{{k1 - \
+(meta*nb*u0b)/2, 0}, {0, 1}, 1}], SFAD[{{k2 + gkin*meta*n*u0b, 0}, \
+{0, 1}, 1}], SFAD[{{k1 - k2 - (meta*nb*u0b)/2, 0}, {0, 1}, 1}], \
+SFAD[{{k1 + (meta*(2*gkin*n - nb)*u0b)/2, 0}, {2*gkin*meta^2*u0b^2, \
+1}, 1}]},
+{k1, k2}, {n, nb}, {Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0, \
+Hold[SPD][n, nb] -> 2}, {}],FCTopology[pfrTopo212, {SFAD[{{k2, 0}, \
+{0, 1}, 1}], SFAD[{{k1, 0}, {0, 1}, 1}], SFAD[{{k2 - (meta*nb*u0b)/2, \
+0}, {0, 1}, 1}], SFAD[{{k1 + gkin*meta*n*u0b, 0}, {0, 1}, 1}], \
+SFAD[{{k1 - k2 + gkin*meta*n*u0b, 0}, {0, 1}, 1}], SFAD[{{k1 + \
+(meta*(2*gkin*n - nb)*u0b)/2, 0}, {2*gkin*meta^2*u0b^2, 1}, 1}]},
+{k1, k2}, {n, nb}, {Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0, \
+Hold[SPD][n, nb] -> 2}, \
+{}]}]\[IndentingNewLine](DataType[#,FCVariable]=True)&/@\!\(\*FormBox[\
+\({gkin, meta, u0b}\),
+	TraditionalForm]\);FCLoopReplaceQuadraticEikonalPropagators[{\
+FCTopology[preTopoDia1,{SFAD[{{k2,0},{0,1},1}],SFAD[{{k1,0},{0,1},1}],\
+SFAD[{{k1+k2,0},{0,1},1}],SFAD[{{0,-k1.nb},{0,1},1}],SFAD[{{k2,-(meta*\
+u0b*k2.nb)},{0,1},1}],SFAD[{{k1+k2,-2*gkin*meta*u0b*(k1+k2).n},{0,1},\
+1}],SFAD[{{k1,-2*gkin*meta*k1.n+meta*u0b*k1.nb},{2*gkin*meta^2*u0b,1},\
+1}],SFAD[{{k1,-2*gkin*meta*u0b*k1.n+meta*u0b*k1.nb},{2*gkin*meta^2*\
+u0b^2,1},1}]},{k1,k2},{n,nb},{Hold[SPD][n]->0,Hold[SPD][nb]->0,Hold[\
+SPD][n,nb]->2},{}]},\[IndentingNewLine]LoopMomenta->{k1,k2},\
+InitialSubstitutions->{ExpandScalarProduct[SPD[k1-k2]]->SPD[k1-k2],
+ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"{FCTopology[preTopoDia1, \
+{FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k2, D], 0, \
+0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D], 0, \
+0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] + \
+Momentum[k2, D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[0, \
+-Pair[Momentum[k1, D], Momentum[nb, D]], 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k2, D] - \
+(meta*u0b*Momentum[nb, D])/2, 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 + k2, D] \
+- gkin*meta*u0b*Momentum[n, D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] - \
+(meta*Momentum[2*gkin*n - nb*u0b, D])/2, 0, -2*gkin*meta^2*u0b, {1, \
+1}]], FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, \
+D] - (meta*u0b*Momentum[2*gkin*n - nb, D])/2, 0, \
+-2*gkin*meta^2*u0b^2, {1, 1}]]}, {k1, k2}, {n, nb}, {Hold[SPD][n] -> \
+0, Hold[SPD][nb] -> 0, Hold[SPD][n, nb] -> 2}, {}]}"},
+{"fcstFCLoopReplaceQuadraticEikonalPropagators-ID3",
+"FCLoopReplaceQuadraticEikonalPropagators[{FCTopology[preTopoDia2,{\
+SFAD[{{k2,0},{0,1},1}],SFAD[{{k1,0},{0,1},1}],SFAD[{{0,k2.nb},{2*gkin*\
+meta,1},1}],SFAD[{{0,(k1+k2).nb},{2*gkin*meta,1},1}],SFAD[{{k1,-(meta*\
+u0b*k1.nb)},{0,1},1}],SFAD[{{k1,-2*gkin*meta*u0b*k1.n},{0,1},1}],SFAD[\
+{{k1+k2,-2*gkin*meta*(k1+k2).n},{0,1},1}],SFAD[{{k2,-2*gkin*meta*k2.n+\
+2*gkin*meta*u0b*k2.n},{0,1},1}]},{k1,k2},{n,nb},{Hold[SPD][n]->0,Hold[\
+SPD][nb]->0,Hold[SPD][n,nb]->2},{}]},\[IndentingNewLine]LoopMomenta->{\
+k1,k2},InitialSubstitutions->{ExpandScalarProduct[SPD[k1-k2]]->SPD[k1-\
+k2],
+ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"{FCTopology[preTopoDia2, \
+{FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k2, D], 0, \
+0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D], 0, \
+0, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[k2, D], Momentum[nb, D]], -2*gkin*meta, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[k1, \
+D] + Momentum[k2, D], Momentum[nb, D]], -2*gkin*meta, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] - \
+(meta*u0b*Momentum[nb, D])/2, 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] - \
+gkin*meta*u0b*Momentum[n, D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 + k2, D] \
+- gkin*meta*Momentum[n, D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k2, D] - \
+gkin*meta*Momentum[n*(1 - u0b), D], 0, 0, {1, 1}]]}, {k1, k2}, {n, \
+nb}, {Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0, Hold[SPD][n, nb] -> 2}, \
+{}]}"},
+{"fcstFCLoopReplaceQuadraticEikonalPropagators-ID4",
+"FCLoopReplaceQuadraticEikonalPropagators[{FCTopology[preTopoDia3,{\
+SFAD[{{k2,0},{0,1},1}],SFAD[{{k1,0},{0,1},1}],SFAD[{{0,k2.nb},{2*gkin*\
+meta,1},1}],SFAD[{{0,k1.nb},{2*gkin*meta*u0b,1},1}],SFAD[{{k1,-(meta*\
+u0b*k1.nb)},{0,1},1}],SFAD[{{k1,-2*gkin*meta*u0b*k1.n},{0,1},1}],SFAD[\
+{{k1,2*gkin*meta*k1.n-2*gkin*meta*u0b*k1.n-meta*u0b*k1.nb},{2*gkin*\
+meta^2*u0b-2*gkin*meta^2*u0b^2,1},1}],SFAD[{{k1-k2,2*gkin*meta*k1.n-2*\
+gkin*meta*u0b*k1.n-2*gkin*meta*k2.n+2*gkin*meta*u0b*k2.n+meta*u0b*(-\
+k1+k2).nb},{2*gkin*meta^2*u0b-2*gkin*meta^2*u0b^2,1},1}]},{k1,k2},{n,\
+nb},{Hold[SPD][n]->0,Hold[SPD][nb]->0,Hold[SPD][n,nb]->2},{}]},\
+\[IndentingNewLine]LoopMomenta->{k1,k2},InitialSubstitutions->{\
+ExpandScalarProduct[SPD[k1-k2]]->SPD[k1-k2],
+ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},\
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->0}]",
+"{FCTopology[preTopoDia3, \
+{FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k2, D], 0, \
+0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D], 0, \
+0, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[0, \
+Pair[Momentum[k2, D], Momentum[nb, D]], -2*gkin*meta, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[k1, \
+D], Momentum[nb, D]], -2*gkin*meta*u0b, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] - \
+(meta*u0b*Momentum[nb, D])/2, 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] - \
+gkin*meta*u0b*Momentum[n, D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] + \
+(meta*Momentum[2*gkin*n - 2*gkin*n*u0b - nb*u0b, D])/2, 0, \
+-2*gkin*meta^2*u0b + 2*gkin*meta^2*u0b^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1 - k2, D] \
++ (meta*Momentum[2*gkin*n - 2*gkin*n*u0b - nb*u0b, D])/2, 0, \
+-2*gkin*meta^2*u0b + 2*gkin*meta^2*u0b^2, {1, 1}]]}, {k1, k2}, {n, \
+nb}, {Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0, Hold[SPD][n, nb] -> 2}, \
+{}]}"}
+})

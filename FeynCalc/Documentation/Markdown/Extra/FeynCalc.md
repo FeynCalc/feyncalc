@@ -351,6 +351,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCLoopPropagatorPowersExpand](../FCLoopPropagatorPowersExpand.md) - rewrites propagators raised to integer powers as products of propagators
 - [FCLoopPropagatorsToTopology](../FCLoopPropagatorsToTopology.md) - auxiliary function that generates a list of propagators to describe a topology
 - [FCLoopRemovePropagator](../FCLoopRemovePropagator.md) - removes specific propagators from given `FCTopology`s or `GLI`s
+- [FCLoopReplaceQuadraticEikonalPropagators](../FCLoopReplaceQuadraticEikonalPropagators.md) - tries to eliminate quadratic-eikonal propagators by completing the square
 - [FCLoopSamePropagatorHeadsQ](../FCLoopSamePropagatorHeadsQ.md) - checks if the integral contains different types of propagators
 - [FCLoopRemoveNegativePropagatorPowers](../FCLoopRemoveNegativePropagatorPowers.md) - rewrites propagators rasied to negative integer powers as numerators
 - [FCLoopSelectTopology](../FCLoopSelectTopology.md) - selects topologies belonging for the given `GLI`s
