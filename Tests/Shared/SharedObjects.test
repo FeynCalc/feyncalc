@@ -1056,8 +1056,14 @@ SUNTF[a_List, _, _] :> SUNT @@ a", "SUNT[SUNIndex[a1], SUNIndex[a2]]"},
 Momentum[nb]]", "0"},
 {"fcstSharedObjectsBehavior-ID226", "DataType[myVarFC,FCVariable]=True; LightConePerpendicularComponent[myVarFC Momentum[x], Momentum[n], Momentum[nb]]",
 "myVarFC LightConePerpendicularComponent[Momentum[x], Momentum[n], Momentum[nb]]"},
-{"fcstSharedObjectsBehavior-ID227", "DiracGamma[a LightConePerpendicularComponent[Momentum[x], Momentum[n], Momentum[nb]]]",
-"a DiracGamma[LightConePerpendicularComponent[Momentum[x], Momentum[n], Momentum[nb]]]"}
+{"fcstSharedObjectsBehavior-ID227", "Momentum[nb/(1 + 2 myVarFC)]",
+"Momentum[nb]/(1 + 2 myVarFC)"},
+{"fcstSharedObjectsBehavior-ID228", "Momentum[nb/(a + 2 myVarFC^2)]",
+"Momentum[nb]/(a + 2 myVarFC^2)"},
+{"fcstSharedObjectsBehavior-ID229", "CartesianMomentum[nb/(1 + 2 myVarFC)]",
+"CartesianMomentum[nb]/(1 + 2 myVarFC)"},
+{"fcstSharedObjectsBehavior-ID230", "CartesianMomentum[nb/(a + 2 myVarFC^2)]",
+"CartesianMomentum[nb]/(a + 2 myVarFC^2)"}
 }
 
 Tests`Shared`fcstSharedObjectsDiracIndex =

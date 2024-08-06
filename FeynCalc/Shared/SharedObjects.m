@@ -2252,6 +2252,9 @@ Momentum[x_ n_?NumberQ, dim_ :4] :=
 Momentum[x_ Power[a_/;DataType[a,FCVariable], n_], dim_ :4] :=
 	Power[a,n] Momentum[x, dim];
 
+Momentum[x_ Power[c_. a_^m_. + b_/;DataType[a,FCVariable], n_], dim_ :4] :=
+	Power[c a^m + b,n] Momentum[x, dim];
+
 Momentum[x_ n_/;DataType[n,FCVariable], dim_ :4] :=
 	n Momentum[x, dim];
 
@@ -2773,6 +2776,13 @@ CartesianIndex[LightConePerpendicularComponent[mu_,rest__], dim___]:=
 
 CartesianMomentum[x_ n_?NumberQ, dim_ :3] :=
 	n CartesianMomentum[x, dim];
+
+
+CartesianMomentum[x_ Power[a_/;DataType[a,FCVariable], n_], dim_ :3] :=
+	Power[a,n] CartesianMomentum[x, dim];
+
+CartesianMomentum[x_ Power[c_. a_^m_. + b_/;DataType[a,FCVariable], n_], dim_ :3] :=
+	Power[c a^m + b,n] CartesianMomentum[x, dim];
 
 CartesianMomentum[x_ n_/;DataType[n,FCVariable], dim_ :3] :=
 	n CartesianMomentum[x, dim];
