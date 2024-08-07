@@ -93,7 +93,7 @@ SFAD[{{I*(p1 + q), 0}, {-mb^2, 1}, 1}]*SFAD[{{I*(p3 + q), 0}, {-mb^2, 1}, 1}] -
 
 (* ::Text:: *)
 (*Notice that `FromGFAD` does not expand scalar products in the propagators before trying to convert*)
-(*them to `SFAD`s or `CFAD`s. If this is needed, the user should better apply ExpandScalarProduct to the expression by hand.*)
+(*them to `SFAD`s or `CFAD`s. If this is needed, the user should better apply `ExpandScalarProduct` to the expression by hand.*)
 
 
 FromGFAD[ex]

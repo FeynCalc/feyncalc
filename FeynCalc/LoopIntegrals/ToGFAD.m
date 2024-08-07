@@ -22,7 +22,12 @@ GFADs. This is mainly useful when doing expansions in kinematic invariants,
 where e.g. scalar products may not be appear explicitly when using FAD- or
 SFAD-notation.
 
-ToGFAD is the inverse operation to FromGFAD.";
+ToGFAD is the inverse operation to FromGFAD.
+
+Using the option \"OnlyMixedQuadraticEikonalPropagators\" one can limit the
+conversion to a particular type of standard and Cartesian propagator
+denominators that contain both quadratic and eikonal pieces. Those are the
+ones that usually cause issues when doing topology minimization";
 
 ToGFAD::failmsg =
 "Error! ToGFAD has encountered a fatal problem and must abort the computation. \

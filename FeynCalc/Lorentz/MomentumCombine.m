@@ -17,7 +17,31 @@
 
 MomentumCombine::usage =
 "MomentumCombine[expr] is the inverse operation to MomentumExpand and
-ExpandScalarProduct. MomentumCombine combines also Pairs.";
+ExpandScalarProduct. MomentumCombine combines also Pairs.
+Notice, that MomentumCombine cannot complete squares. It can, however, bring
+expressions containing scalar products to a suitable form that allows for a
+square completion using other means.
+
+This function offers multiple options.
+
+The option NumberQ (default is True) specifies whether one should only merge
+quantities with numerical prefactors or not. Setting it to False allows for
+symbolic prefactors.
+
+Setting the option \"Quadratic\" to False (default is True) effectively means
+that momenta squared will not be combined with anything else.
+
+With the option \"ExcludeScalarProducts\" we can ensure that scalar products
+containing any of the momenta listed are not merged with anything else. So a.x
++ a.y can be merged either if a contains no such momenta, or if both x and y
+are free of them.
+
+The option Except forbids merging the listed momenta with anything else. It is
+much more restrictive than \"ExcludeScalarProducts\" that allows for merging
+terms linear in the listed momenta.
+
+The option Select allows for gathering all terms linear in the given momenta
+before applying any other combining rules.";
 
 (* ------------------------------------------------------------------------ *)
 

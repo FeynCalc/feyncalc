@@ -17,13 +17,23 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopReplaceQuadraticEikonalPropagators::usage =
-"FCLoopReplaceQuadraticEikonalPropagators[exp] checks if the integral is free of eikonal
-propagators $\\frac{1}{p \\cdot q+x}$. If the option First is set to False,
-propagators that have both a quadratic and linear piece, e.g. $\\frac{1}{p^2 +
-p \\cdot q+x}$ will also count as eikonal propagators. The option Momentum can
-be used to check for the presence of eikonal propagators only with respect to
-particular momenta. The check is performed only for
-StandardPropagatorDenominator and CartesianPropagatorDenominator.";
+"FCLoopReplaceQuadraticEikonalPropagators[topologies] identifies SFADs and
+CFADs in topologies that represent mixed quadratic-eikonal propagators, e.g.
+$[p^2 - 2 p \\cdot q]$. Using the information on loop momenta provided by the
+user the routine will try to rewrite those denominators by completing the
+square, e.g. as in $[(p-q)^2 - q^2]$.
+
+This procedure is useful because one cannot easily determine the momentum flow
+from looking at quadratic-eikonal propagators as it is possible in the case of
+purely quadratic ones.
+
+For this to work it is crucial to specify the loop momenta via the LoopMomenta
+option as well as the kinematics (IntermediateSubstitutions) and the rules for
+completing the square (InitialSubstitutions) on the purely loop-momentum
+dependent piece of the propagator (e.g. $p_1^2 - 2 p_1 \\cdot p_2 + p_2^2$ goes
+to $(p_1+p_2)^2$.
+
+Internally this routine uses ToGFAD and FromGFAD.";
 
 FCLoopReplaceQuadraticEikonalPropagators::failmsg =
 "FCLoopReplaceQuadraticEikonalPropagators has encountered a fatal problem and must abort the computation. \

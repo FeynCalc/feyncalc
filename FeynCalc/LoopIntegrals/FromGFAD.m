@@ -21,11 +21,18 @@ FromGFAD::usage =
 standard and Cartesian propagator denominators.
 
 The options InitialSubstitutions and IntermediateSubstitutions can be used to
-help the function handle nontrivial propagators.
+help the function handle nontrivial propagators. In particular, 
+InitialSubstitutions can define rules for completing the square in the loop
+momenta of the propagator, while IntermediateSubstitutions contains relations
+for scalar products appearing in those rules.
+
+Another useful option is LoopMomenta which is particularly helpful when
+converting mixed quadratic-eikonal propagators to quadratic ones.
 
 For propagators containing symbolic variables it might be necessary to tell
 the function that those are larger than zero (if applicable), so that
-expressions such as $\\sqrt{\\lambda^2}$ can be simplified accordingly.";
+expressions such as $\\sqrt{\\lambda^2}$ can be simplified accordingly. To that
+aim one should use the option PowerExpand.";
 
 FromGFAD::failmsg =
 "Error! FromGFAD has encountered a fatal problem and must abort the computation. \

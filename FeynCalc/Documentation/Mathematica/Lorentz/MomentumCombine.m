@@ -140,7 +140,7 @@ MomentumCombine[ex]
 
 (* ::Text:: *)
 (*Here we actually want to gather terms linear in `k1` and `k2`first before trying to combine them together. To that aim we can use the option `Select`.*)
-(*Employing the options `"Quadratic"` and `"ExcludeScalarProducts"` we can prevent `k1` and `k2` from getting combined with anything containing *)
+(*Employing the options `"Quadratic"` and `"ExcludeScalarProducts"` we can prevent `k1` and `k2` from getting combined with anything containing*)
 (*those momenta. Furthermore, we enable symbolical prefactor by setting `NumberQ` to false*)
 
 
