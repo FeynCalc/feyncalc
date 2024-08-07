@@ -74,17 +74,17 @@ FCLoopPropagatorsToLineMomenta[expr_, OptionsPattern[]] :=
 		FCPrint[1, "FCLoopPropagatorsToLineMomenta: Entering.", FCDoControl->ptlmVerbose];
 		FCPrint[3, "FCLoopPropagatorsToLineMomenta: Entering with: ", ex,  FCDoControl->ptlmVerbose];
 
+		If[	OptionValue[FromGFAD],
+			ex = FromGFAD[ex,FCI->True]
+		];
+
+		FCPrint[3, "FCLoopPropagatorsToLineMomenta: After FromGFAD: ", ex,  FCDoControl->ptlmVerbose];
+
 		If[	OptionValue[MomentumCombine],
 			ex = MomentumCombine[ex,FCI->True]
 		];
 
 		FCPrint[3, "FCLoopPropagatorsToLineMomenta: After MomentumCombine: ", ex,  FCDoControl->ptlmVerbose];
-
-		If[	OptionValue[FromGFAD],
-			ex = FromGFAD[ex,FCI->True,ExpandScalarProduct->False]
-		];
-
-		FCPrint[3, "FCLoopPropagatorsToLineMomenta: After FromGFAD: ", ex,  FCDoControl->ptlmVerbose];
 
 		If[	!MatchQ[ex, {FeynAmpDenominator__}],
 			Message[FCLoopPropagatorsToLineMomenta::failmsg, "The input expression is not a valid list of propagators"];
