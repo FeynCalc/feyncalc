@@ -67,9 +67,8 @@ FCLoopCreateRuleGLIToGLI[mainTopo_FCTopology, subTopos: {__FCTopology}, opts:Opt
 FCLoopCreateRuleGLIToGLI[mainTopo_FCTopology, subTopo_FCTopology, OptionsPattern[]] :=
 	Block[{	mainProps, subProps, mainName, subName, mainLen, subLen,
 			posList, pattern, lhs, rhs, rule, ruleDelayed, checkGLI,
-			checkNew, checkOld, optReverse, mainKinematics, subKinematics},
-
-
+			checkNew, checkOld, optReverse, mainKinematics, subKinematics,
+			mainTopoName, subTopoName},
 		optReverse = OptionValue[Reverse];
 
 
@@ -79,6 +78,9 @@ FCLoopCreateRuleGLIToGLI[mainTopo_FCTopology, subTopo_FCTopology, OptionsPattern
 					crgtgVerbose=OptionValue[FCVerbose]
 				];
 		];
+
+		mainTopoName = mainTopo[[1]];
+		subTopoName = subTopo[[1]];
 
 		FCPrint[1,"FCLoopCreateRuleGLIToGLI: Entering.", FCDoControl->crgtgVerbose];
 		FCPrint[3,"FCLoopCreateRuleGLIToGLI: Entering with: Main topology: ", mainTopo, FCDoControl->crgtgVerbose];
@@ -141,17 +143,17 @@ FCLoopCreateRuleGLIToGLI[mainTopo_FCTopology, subTopo_FCTopology, OptionsPattern
 		];
 
 		If[	subLen > mainLen,
-			Message[FCLoopCreateRuleGLIToGLI::failmsg,"The subtopology may not be larger than the main topology."];
+			Message[FCLoopCreateRuleGLIToGLI::failmsg,"The subtopology " <>ToString[subTopoName] <> " may not be larger than the main topology " <> ToString[mainTopoName]];
 			Abort[]
 		];
 
 		If[	Union[subProps] =!= Sort[subProps],
-			Message[FCLoopCreateRuleGLIToGLI::failmsg,"The subtopology may not contain duplicate entries."];
+			Message[FCLoopCreateRuleGLIToGLI::failmsg,"The subtopology " <>ToString[subTopoName] <> " may not contain duplicate entries."];
 			Abort[]
 		];
 
 		If[	Union[mainProps] =!= Sort[mainProps],
-			Message[FCLoopCreateRuleGLIToGLI::failmsg,"The main topology may not contain duplicate entries."];
+			Message[FCLoopCreateRuleGLIToGLI::failmsg,"The main topology " <>ToString[mainTopoName]<> " may not contain duplicate entries."];
 			Abort[]
 		];
 
@@ -161,7 +163,7 @@ FCLoopCreateRuleGLIToGLI[mainTopo_FCTopology, subTopo_FCTopology, OptionsPattern
 
 
 		If[	!MatchQ[posList, {{{_Integer?Positive}} ..}] || Length[posList] =!= subLen,
-			Message[FCLoopCreateRuleGLIToGLI::failmsg,"The subtopology does not fit into the given main topology."];
+			Message[FCLoopCreateRuleGLIToGLI::failmsg,"The subtopology " <>ToString[subTopoName] <> " does not fit into the main topology "  <> ToString[mainTopoName]];
 			Abort[]
 		];
 
