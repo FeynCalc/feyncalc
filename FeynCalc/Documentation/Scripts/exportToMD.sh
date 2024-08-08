@@ -46,6 +46,12 @@ else
   noFC="${MAKE_DO_NOT_LOAD_FEYNCALC}"
 fi
 
+if [[ -z "${FILES_TO_SKIP}" ]]; then  
+  skipFiles="XXXXXXXXXXXXXXXXXXXXXX"
+else
+  skipFiles="${FILES_TO_SKIP}"
+fi
+
 scriptDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 MATH=$1
 OUTDIR=$2
@@ -60,10 +66,12 @@ allFilesRaw=($(printf "%s\n" "${allFilesRaw[@]}" | sort -V))
 declare -a allFiles
 for i in "${allFilesRaw[@]}"; do  
   name=$(basename -s .m $i)
-  fullPath=$OUTDIR/$name".md"
+  fullPath=$OUTDIR/$name".md"  
   if [ -f $fullPath ]; then
     true
     #echo "Skipping $name - file already exists."
+  elif [[ "$name" =~ ${skipFiles} ]]; then
+    true  
   else
     #echo "Adding $name";
     allFiles+=($i) 

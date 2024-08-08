@@ -1,0 +1,43 @@
+M$ModelName = "Yukawa";
+
+M$Information = {
+  Authors      -> {"Vladyslav Shtabovenko"},
+  Institutions -> {"FeynCalc project"},
+  Emails       -> {""},
+  Date         -> "08.08.2024"
+};
+
+M$Parameters = {
+ la == {ParameterType -> Internal},
+ ga == {ParameterType -> Internal}
+}
+
+M$ClassesDescription = {
+
+F[10] == {
+	ClassName        -> x,
+	ClassMembers     -> {X},
+	SelfConjugate    -> False,
+	Mass             -> Mx,
+	PropagatorLabel  -> {"X"},
+	PropagatorType   -> Straight,
+	PropagatorArrow  -> Forward
+},
+
+S[1] == {
+      ClassName	-> phi,
+      ParticleName	-> "\[Phi]",
+      PropagatorLabel	-> "\[Phi]",
+      SelfConjugate	-> True,
+      Mass		-> Mphi 	
+  }
+};
+
+
+LY = LYR + LYCT;
+
+LYR =( I xbar.Ga[imu].del[x, imu]  - Mx xbar.x + 1/2 del[phi, mu] del[phi, mu] -1/2 phi^2 Mphi^2 +  - 1/(4!)*la*phi^4 - g xbar.x phi);
+	
+LYCT = FR$CT*( (Zx - 1) * I xbar.Ga[imu].del[x, imu] - (Zmx Zx - 1) Mx xbar.x + 
+	1/2 (Zphi - 1) del[phi, mu] del[phi, mu] -1/2 (Zphi Zmphi -1) phi^2 Mphi^2 - (Zla Zphi^2 - 1) 1/(4!)*la*phi^4 - 
+	(Zg Zx Sqrt[Zphi] - 1) g xbar.x phi);

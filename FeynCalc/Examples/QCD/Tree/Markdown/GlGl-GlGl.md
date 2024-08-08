@@ -180,7 +180,7 @@ FCCompareResults[{ampSquaredMasslessSUNN3[0]}, {knownResults},
    Function[x, Simplify[TrickMandelstam[x, {s, t, u, 0}]]]]
 Print["\tCPU Time used: ", Round[N[TimeUsed[], 3], 0.001], " s."];
 
-```
+```mathematica
 
 $$\text{$\backslash $tCompare to Ellis, Stirling and Weber, QCD and Collider Physics, Table 7.1:} \;\text{CORRECT.}$$
 

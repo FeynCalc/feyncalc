@@ -1,0 +1,40 @@
+M$ModelName = "Euler-Heisenberg Effective Field Theory";
+
+$FeymanGauge=True;
+
+M$Information = {
+  Authors      -> {"Vladyslav Shtabovenko"},
+  Institutions -> {"FeynCalc project"},
+  Emails       -> {""},
+  Date         -> "08.08.2024"
+};
+
+M$Parameters = {
+  EL == {ParameterType -> Internal},
+  ME == {ParameterType -> External},
+  c1 == {ParameterType -> External},
+  c2 == {ParameterType -> External}
+};
+
+M$GaugeGroups = {
+  U1 == {
+    Abelian           -> True,
+    CouplingConstant  -> EL,
+    GaugeBoson        -> A,
+    Charge            -> Q
+  }
+};
+
+M$ClassesDescription = {
+
+  V[1] == {
+    ClassName        -> A,
+    SelfConjugate    -> True,
+    Mass             -> 0,
+    PropagatorLabel  -> "\\gamma",
+    PropagatorType   -> W,
+    PropagatorArrow  -> None
+  }
+};
+
+LEH = -1/4 FS[A, imu, inu] FS[A, imu, inu] + (c1/ME^4) (FS[A, imu1, inu1] FS[A, imu1, inu1] FS[A, imu2, inu2] FS[A, imu2, inu2]) + (c2/ME^4) FS[A, imu, inu] FS[A, inu, isi] FS[A, isi, irho] FS[A, irho, imu];

@@ -1,0 +1,137 @@
+M$ModelName = "QCD";
+
+FeynmanGauge=False;
+
+M$Information = {
+  Authors      -> {"Vladyslav Shtabovenko"},
+  Institutions -> {"FeynCalc project"},
+  Emails       -> {""},
+  Date         -> "08.08.2024"
+};
+
+IndexRange[Index[Gluon     ]] = NoUnfold[Range[8]];
+IndexRange[Index[Colour    ]] = NoUnfold[Range[3]];
+IndexRange[Index[Generation]] = Range[3];
+
+IndexStyle[Gluon,      a];
+IndexStyle[Colour,     m];
+IndexStyle[Generation, f];
+
+GaugeXi[V[5]] = GaugeXi["G"];
+GaugeXi[U[5]] = GaugeXi["G"];
+
+M$Parameters =
+Join[{gs == {ParameterType ->
+    Internal}}, (# == {ParameterType -> External}) & /@ {Zm, ZA,
+  Zpsi, Zxi, Zg, Zu}]
+
+M$GaugeGroups = {
+SU3C == {
+  Abelian           -> False,
+  CouplingConstant  -> gs,
+  GaugeBoson        -> G,
+  StructureConstant -> f,
+  Representations   -> {T,Colour},
+  SymmetricTensor   -> dSUN
+}
+
+};
+
+
+
+M$ClassesDescription = {
+(*
+F[2] == {
+  ClassName        -> l,
+  ClassMembers     -> {ele, mu, ta},
+  SelfConjugate    -> False,
+  Indices          -> {Index[Generation]},
+  FlavorIndex      -> Generation,
+  Mass             -> {Mlep, {ME,5.11*^-4}, {MM,0.10566}, {ML,1.777}},
+  Width            -> 0,
+  QuantumNumbers   -> {Q -> 1, LeptonNumber -> 1},
+  PropagatorLabel  -> {"l", "e", "mu", "ta"},
+  PropagatorType   -> Straight,
+  PropagatorArrow  -> Forward
+},
+*)
+V[5] == {
+  ClassName        -> G,
+  SelfConjugate    -> True,
+  Indices          -> {Index[Gluon]},
+  Mass             -> 0,
+  PropagatorLabel  -> "g",
+  PropagatorType   -> C,
+  PropagatorArrow  -> None
+},
+
+U[5] == {
+  ClassName       -> ghG,
+  SelfConjugate   -> False,
+  Indices         -> {Index[Gluon]},
+  Ghost           -> G,
+  QuantumNumbers  ->{GhostNumber -> 1},
+  Mass            -> 0,
+  PropagatorLabel -> "uG",
+  PropagatorType  -> GhostDash,
+  PropagatorArrow -> Forward
+},
+
+F[3] == {
+  ClassName        -> uq,
+  ClassMembers     -> {u, c, t},
+  Indices          -> {Index[Generation], Index[Colour]},
+  FlavorIndex      -> Generation,
+  SelfConjugate    -> False,
+  Mass             -> {Mu, {MU, 2.55*^-3}, {MC,1.27}, {MT,172}},
+  Width            -> 0,
+  PropagatorLabel  -> {"uq", "u", "c", "t"},
+  PropagatorType   -> Straight,
+  PropagatorArrow  -> Forward
+},
+F[4] == {
+  ClassName        -> dq,
+  ClassMembers     -> {d, s, b},
+  Indices          -> {Index[Generation], Index[Colour]},
+  FlavorIndex      -> Generation,
+  SelfConjugate    -> False,
+  Mass             -> {Md, {MD,5.04*^-3}, {MS,0.101}, {MB,4.7}},
+  Width            -> 0,
+  PropagatorLabel  -> {"dq", "d", "s", "b"},
+  PropagatorType   -> Straight,
+  PropagatorArrow  -> Forward
+}
+};
+
+LQCD = LQCDR + LQCDCT;
+
+LQCDR = (
+(*  Pure gauge part of LQCD; Signs of gs adjusted to match the FeynArts' convention;
+    Actually, here the sign should be opposite, but then for some reason FeynRules
+    would generate a wrong 3-gluon vertex *)
+- 1/4 (del[G[mu,aa],nu] - del[G[nu,aa],mu] +gs f[aa,bb,cc] G[mu,bb] G[nu,cc])*
+    (del[G[mu,aa],nu] - del[G[nu,aa],mu] +gs f[aa,dd,ee] G[mu,dd] G[nu,ee])
+(* Fermionic part of LQCD; Signs of gs adjusted to match FeynArts' convention *)
+  + uqbar.Ga[mu].(I del[uq,mu] - gs T[aa].G[mu,aa].uq)
+  + dqbar.Ga[mu].(I del[dq,mu] - gs T[aa].G[mu,aa].dq)
+  - Mu[fi] uqbar[s,fi,nn].uq[s,fi,nn] - Md[fi] dqbar[s,fi,nn].dq[s,fi,nn]
+(* Ghost part of LQCD; Signs of gs adjusted to match the FeynArts' convention *)
+  - ghGbar[ii].del[del[ghG[ii],mu],mu]
+  - gs f[aa,cc,bb] G[mu,cc] del[ghGbar[aa],mu].ghG[bb]
+);
+
+
+LQCDCT = FR$CT (
+      + (Zpsi-1) I (uqbar.Ga[imu].del[uq,imu] + dqbar.Ga[imu].del[dq,imu])
+      - (Zpsi Zm -1) (Mu[fi] uqbar[s,fi,nn].uq[s,fi,nn] + Md[fi] dqbar[s,fi,nn].dq[s,fi,nn])
+      (* Sign of gs adjusted to match the FeynArts' convention *)
+      + (Zpsi Sqrt[ZA] Zg - 1) (-gs) (uqbar.T[aa].Ga[imu].uq + dqbar.T[aa].Ga[imu].dq) G[imu,aa]
+      -1/4 (ZA-1) (del[G[mu,aa],nu] - del[G[nu,aa],mu])(del[G[mu,aa],nu] - del[G[nu,aa],mu])
+      -1/(2 GaugeXi[V[5]])(ZA/Zxi-1) del[G[imu,aa],imu] del[G[inu,aa],inu]
+      (* Sign of gs adjusted to match the FeynArts' convention *)
+      - (Zg ZA^(3/2) -1) (-gs) del[G[nu,aa],mu] f[aa,bb,cc] G[mu,bb] G[nu,cc]
+      -1/4 (Zg^2 ZA^2 - 1) gs^2 f[aa,bb,cc] G[mu,bb] G[nu,cc] f[aa,dd,ee] G[mu,dd] G[nu,ee]
+      - (Zu-1) ghGbar[ii].del[del[ghG[ii],mu],mu]
+      (* Sign of gs adjusted to match the FeynArts' convention *)
+      - (Zg Sqrt[ZA] Zu -1) (-gs) f[aa,bb,cc] del[ghGbar[aa],mu].ghG[bb] G[mu,cc]
+      );
