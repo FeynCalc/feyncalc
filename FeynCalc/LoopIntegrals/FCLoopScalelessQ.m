@@ -64,6 +64,11 @@ FCLoopScalelessQ[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 			fclsVerbose = OptionValue[FCVerbose]];
 		];
 
+		If[	Head[lmomsRaw]=!=List,
+			Message[FCLoopScalelessQ::failmsg,"The second argument must be a list of loop momenta"];
+			Abort[]
+		];
+
 		optFinalSubstitutions = OptionValue[FinalSubstitutions];
 
 		FCPrint[1, "FCLoopScalelessQ: Entering.", FCDoControl -> fclsVerbose];
@@ -87,19 +92,19 @@ FCLoopScalelessQ[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 				notList = True;
 				tmp =	FCFeynmanPrepare[ex, lmoms, FCI -> True, Names -> x, Check->False,
 				Collecting -> OptionValue[Collecting], TimeConstrained -> OptionValue[TimeConstrained],
-				Factoring -> OptionValue[Factoring], FinalSubstitutions -> optFinalSubstitutions, FCLoopGetEtaSigns -> False];
+				Factoring -> OptionValue[Factoring], FinalSubstitutions -> optFinalSubstitutions, FCLoopGetEtaSigns -> False, "IgnoreNumerator" -> True];
 				tmp = {tmp};
 				ex = {ex},
 			(*List of integrals *)
 			MatchQ[ex, {__GLI} | {__FCTopology}],
 				tmp = FCFeynmanPrepare[ex, lmoms, FCI -> True, Names -> x, Check->False,
 				Collecting -> OptionValue[Collecting], TimeConstrained -> OptionValue[TimeConstrained],
-				Factoring -> OptionValue[Factoring], FinalSubstitutions-> optFinalSubstitutions, FCLoopGetEtaSigns -> False],
+				Factoring -> OptionValue[Factoring], FinalSubstitutions-> optFinalSubstitutions, FCLoopGetEtaSigns -> False, "IgnoreNumerator" -> True],
 			(*List of integrals *)
 			MatchQ[ex, {_. _FeynAmpDenominator ..}],
 				tmp =	FCFeynmanPrepare[#, lmoms, FCI -> True, Names -> x, Check->False,
 				Collecting -> OptionValue[Collecting], TimeConstrained -> OptionValue[TimeConstrained],
-				Factoring -> OptionValue[Factoring], FinalSubstitutions-> optFinalSubstitutions, FCLoopGetEtaSigns -> False]&/@ex,
+				Factoring -> OptionValue[Factoring], FinalSubstitutions-> optFinalSubstitutions, FCLoopGetEtaSigns -> False, "IgnoreNumerator" -> True]&/@ex,
 			True,
 				Message[FCLoopScalelessQ::failmsg,"Failed to recognize the form of the input expression."];
 				Abort[]
