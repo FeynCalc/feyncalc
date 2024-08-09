@@ -90,6 +90,7 @@ Options[FCFeynmanPrepare] = {
 	Factoring 				-> {Factor2, 5000},
 	FinalSubstitutions		-> {},
 	Indexed					-> True,
+	"IgnoreNumerator"		-> False,
 	LoopMomenta				-> Function[{x,y},FCGV["lmom"][x,y]],
 	LorentzIndexNames		-> FCGV["mu"],
 	Names					-> FCGV["x"],
@@ -375,6 +376,13 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 		FCPrint[1, "FCFeynmanPrepare: Calling FCLoopBasisExtract.", FCDoControl -> fcszVerbose];
 
 		tmp = FCLoopBasisExtract[scalarPart, lmoms, SetDimensions->{dim}, SortBy -> sortBy];
+		(* We don't need this list of scalar products here and removing it makes the output a transposable matrix *)
+		tmp[[2]] = ConstantArray[0,Length[tmp[[1]]]];
+
+		If[	OptionValue["IgnoreNumerator"],
+			FCPrint[1, "FCFeynmanPrepare: Ignoring the numerator of the loop integral.", FCDoControl -> fcszVerbose];
+			tmp = Transpose[Transpose[tmp] /. {_,_,n_/;n<0,_} :> Unevaluated[Sequence[]]]
+		];
 
 		FCPrint[1, "FCFeynmanPrepare: FCLoopBasisExtract done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose];
 
