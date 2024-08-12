@@ -2449,9 +2449,6 @@ FCPartialD[c:OPEDelta..] :=
 FCPartialD[x_, y__]/; MatchQ[{x,y},{(__LorentzIndex | __ExplicitLorentzIndex | __CartesianIndex | __Momentum | __CartesianMomentum)}] :=
 	DOT @@ Map[FCPartialD, {x, y}];
 
-PlusDistribution[Log[x_ (1-x_)]/(1-x_)] :=
-	Log[x] /(1-x) + PlusDistribution[Log[1-x]/(1-x)];
-
 PolarizationVector[x_,{y_,z_}] :=
 	PolarizationVector[x, y, z];
 
