@@ -6,7 +6,7 @@ Notice that this function is available only since FeynCalc 9.3.
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [$FeynCalcVersion]($FeynCalcVersion.md).
+[Overview](Extra/FeynCalc.md), [\$FeynCalcVersion](\$FeynCalcVersion.md).
 
 ### Examples
 

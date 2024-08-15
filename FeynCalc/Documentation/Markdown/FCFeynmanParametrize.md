@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## FCFeynmanParametrize
 
 `FCFeynmanParametrize[int, {q1, q2, ...}]` introduces Feynman parameters for the multi-loop integral int.

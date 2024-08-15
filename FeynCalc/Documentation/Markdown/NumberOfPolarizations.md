@@ -46,17 +46,14 @@ Here it is not
 DoPolarizationSums[xyz, p, n]
 ```
 
-![0emyzef54vvcu](img/0emyzef54vvcu.svg)
+![0ctuipjuoiffd](img/0ctuipjuoiffd.svg)
 
 $$\text{\$Aborted}$$
 
 Setting the number of polarizations by hand fixes the issue
 
 ```mathematica
-DoPolarizationSums[xyz, p, n, NumberOfPolarizations -> 2] 
-  
- 
-
+DoPolarizationSums[xyz, p, n, NumberOfPolarizations -> 2]
 ```
 
 $$\text{DoPolarizationSums: The input expression contains terms free of polarization vectors. Those will be multiplied with the number of polarizations given by }2.$$

@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## GALP
 
 `GALP[mu,n,nb]` denotes the positive component in the lightcone decomposition of the Dirac matrix $\gamma^{\mu }$  along the vectors `n` and `nb`. It corresponds to $\frac{1}{2} \bar{n}^{\mu} (\gamma \cdot n)$.

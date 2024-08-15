@@ -23,10 +23,7 @@ $$2 \left(\bar{\delta }^{il} \bar{\delta }^{jk}-\bar{\delta }^{ik} \bar{\delta }
 ```mathematica
 PauliTrace[CSI[i, j, k, l]] 
  
-% // PauliSimplify 
-  
- 
-
+% // PauliSimplify
 ```
 
 $$\text{tr}\left(\overline{\sigma }^i.\overline{\sigma }^j.\overline{\sigma }^k.\overline{\sigma }^l\right)$$

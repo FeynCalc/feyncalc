@@ -33,6 +33,3 @@ FCClearScalarProducts[]
 Pair[Momentum[p],Momentum[p]]
 
 SP[p,p]
-
-
-

@@ -74,7 +74,7 @@ amp[0] = FCFAConvert[CreateFeynAmp[diags, Truncated -> True, PreFactor -> 1],
   	ChangeDimension -> D, List -> False, SMP -> True, 
   	Contract -> True]
 
-```
+```mathematica
 
 $$\frac{\text{tr}\left(\left(m_e-\gamma \cdot q\right).\left(i \;\text{e} \gamma ^{\nu }\right).\left(m_e+\gamma \cdot (p-q)\right).\left(i \;\text{e} \gamma ^{\mu }\right)\right)}{\left(q^2-m_e^2\right).\left((q-p)^2-m_e^2\right)}$$
 

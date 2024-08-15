@@ -4,6 +4,6 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [MemSet](MemSet.md), [$FCMemoryAvailable]($FCMemoryAvailable.md).
+[Overview](Extra/FeynCalc.md), [MemSet](MemSet.md), [\$FCMemoryAvailable](\$FCMemoryAvailable.md).
 
 ### Examples

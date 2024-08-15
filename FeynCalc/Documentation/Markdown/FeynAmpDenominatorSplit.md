@@ -12,7 +12,6 @@
 FAD[q1, q1 - p, q1 - q2, q2, q2 - p] 
  
 ex = FeynAmpDenominatorSplit[%]
-
 ```
 
 $$\frac{1}{\text{q1}^2.(\text{q1}-p)^2.(\text{q1}-\text{q2})^2.\text{q2}^2.(\text{q2}-p)^2}$$
@@ -40,5 +39,5 @@ ex // FCE // StandardForm
 ```mathematica
 FeynAmpDenominatorCombine[ex] // FCE // StandardForm
 
-(*FAD[q1, q2, q1 - q2, -p + q1, -p + q2]*)
+(*FAD[q1, q2, -p + q1, q1 - q2, -p + q2]*)
 ```

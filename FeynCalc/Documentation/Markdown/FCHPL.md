@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## FCHPL
 
 `FCHPL[{inds_}, var]` represents a harmonic polylogarithm (HPL) with indices `inds` and argument `var`.

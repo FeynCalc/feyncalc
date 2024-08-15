@@ -72,6 +72,3 @@ FeynmanIntegralPrefactor->"Multiloop2"]
 Times@@Most[%]
 
 Series[%,{Epsilon,0,1}]//Normal//FunctionExpand
-
-
-

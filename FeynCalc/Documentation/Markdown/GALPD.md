@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## GALPD
 
 `GALPD[mu,n,nb]` denotes the positive component in the lightcone decomposition of the Dirac matrix $\gamma^{\mu }$  along the vectors `n` and `nb`  in $D$-dimensions. It corresponds to $\frac{1}{2} \bar{n}^{\mu} (\gamma \cdot n)$.

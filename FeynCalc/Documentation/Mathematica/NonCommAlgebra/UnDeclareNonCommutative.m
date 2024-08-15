@@ -27,14 +27,14 @@ DeclareNonCommutative[x]
 
 
 (* ::Text:: *)
-(*As a side-effect of DeclareNonCommutative x is declared to be of DataType NonCommutative.*)
+(*As a side-effect of `DeclareNonCommutative` `x` is declared to be of `DataType` `NonCommutative`.*)
 
 
 DataType[x,NonCommutative]
 
 
 (* ::Text:: *)
-(*The inverse operation is UnDeclareNonCommutative.*)
+(*The inverse operation is `UnDeclareNonCommutative`.*)
 
 
 UnDeclareNonCommutative[x]

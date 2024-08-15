@@ -22,7 +22,12 @@ GFADs. This is mainly useful when doing expansions in kinematic invariants,
 where e.g. scalar products may not be appear explicitly when using FAD- or
 SFAD-notation.
 
-ToGFAD is the inverse operation to FromGFAD.";
+ToGFAD is the inverse operation to FromGFAD.
+
+Using the option \"OnlyMixedQuadraticEikonalPropagators\" one can limit the
+conversion to a particular type of standard and Cartesian propagator
+denominators that contain both quadratic and eikonal pieces. Those are the
+ones that usually cause issues when doing topology minimization";
 
 ToGFAD::failmsg =
 "Error! ToGFAD has encountered a fatal problem and must abort the computation. \
@@ -36,21 +41,22 @@ End[]
 Begin["`ToGFAD`Private`"]
 
 tgfVerbose::usage="";
-dummy::usage="";
-optPowerExpand::usage="";
+optOnlyMixedQuadraticEikonalPropagators::usage="";
 
 Options[ToGFAD] = {
-		FCE							->	False,
-		FCI							->	False,
-		FCVerbose					-> 	False,
-		FinalSubstitutions			->	{}
+		"OnlyMixedQuadraticEikonalPropagators"	-> False,
+		FCE										-> False,
+		FCI										-> False,
+		FCVerbose								-> False,
+		FinalSubstitutions						-> {}
 };
 
 ToGFAD[expr_, OptionsPattern[]] :=
 	Block[{	res, ex, pds,pdsConverted,rulePds, check,
 			optFinalSubstitutions},
 
-		optFinalSubstitutions = OptionValue[FinalSubstitutions];
+		optFinalSubstitutions 					= OptionValue[FinalSubstitutions];
+		optOnlyMixedQuadraticEikonalPropagators = OptionValue["OnlyMixedQuadraticEikonalPropagators"];
 
 
 		If [OptionValue[FCVerbose]===False,
@@ -78,11 +84,13 @@ ToGFAD[expr_, OptionsPattern[]] :=
 
 		FCPrint[3, "ToGFAD: Unique PropagatorDenominators: ", pds, FCDoControl->tgfVerbose];
 
-		pdsConverted = (toGFAD/@pds);
+		pdsConverted = (toGFAD/@pds) /. toGFAD -> Identity;
 
 		FCPrint[3, "ToGFAD: After ToGFAD: ", pdsConverted, FCDoControl->tgfVerbose];
 
-		If[	!FreeQ2[pdsConverted,{toGFAD,PropagatorDenominator,StandardPropagatorDenominator,CartesianPropagatorDenominator}],
+		pdsConverted = pdsConverted /. toGFAD -> Identity;
+
+		If[	!FreeQ2[pdsConverted,{toGFAD,PropagatorDenominator,StandardPropagatorDenominator,CartesianPropagatorDenominator}] && !optOnlyMixedQuadraticEikonalPropagators,
 			Message[ToGFAD::failmsg, "Failed to convert all propagators to GFADs"];
 			Abort[]
 		];
@@ -91,11 +99,9 @@ ToGFAD[expr_, OptionsPattern[]] :=
 
 		FCPrint[3, "ToGFAD: After applying substitution rules: ", pdsConverted, FCDoControl->tgfVerbose];
 
-
 		rulePds = Thread[Rule[pds,pdsConverted]];
 
 		FCPrint[3, "ToGFAD: Final replacement rule: ", rulePds, FCDoControl->tgfVerbose];
-
 
 		res = ex /. Dispatch[rulePds];
 
@@ -110,8 +116,11 @@ ToGFAD[expr_, OptionsPattern[]] :=
 	];
 
 
-toGFAD[(h:StandardPropagatorDenominator|CartesianPropagatorDenominator)[args__,{n_,s_}]] :=
-	GenericPropagatorDenominator[1/FeynAmpDenominatorExplicit[FeynAmpDenominator[h[args,{1,s}]],FCI->True,ExpandScalarProduct->True],{n,s}];
+toGFAD[(h:StandardPropagatorDenominator|CartesianPropagatorDenominator)[args__, {n_,s_}]] :=
+	GenericPropagatorDenominator[1/FeynAmpDenominatorExplicit[FeynAmpDenominator[h[args,{1,s}]],FCI->True,ExpandScalarProduct->True],{n,s}] /; !optOnlyMixedQuadraticEikonalPropagators;
+
+toGFAD[(h:StandardPropagatorDenominator|CartesianPropagatorDenominator)[a_/;a=!=0,b_/;b=!=0, c_, {n_,s_}]] :=
+	GenericPropagatorDenominator[1/FeynAmpDenominatorExplicit[FeynAmpDenominator[h[a,b,c,{1,s}]],FCI->True,ExpandScalarProduct->True],{n,s}] /; optOnlyMixedQuadraticEikonalPropagators;
 
 toGFAD[PropagatorDenominator[args__]] :=
 	GenericPropagatorDenominator[1/FeynAmpDenominatorExplicit[FeynAmpDenominator[PropagatorDenominator[args]],FCI->True,ExpandScalarProduct->True],{1,1}];

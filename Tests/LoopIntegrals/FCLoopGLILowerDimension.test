@@ -1,0 +1,39 @@
+
+
+(* :Title: fcstFCLoopGLILowerDimension.test									*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for
+				fcstFCLoopGLILowerDimension									*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopGLILowerDimension =
+({
+{"fcstFCLoopGLILowerDimension-ID1",
+"FCLoopGLILowerDimension[GLI[topo1, {0, 1, 1, 1, 1, 1, 0, 0, 0}],
+FCTopology[
+topo1, {FAD[p3], FAD[p1 - p3 - p4] , FAD[p4], FAD[p1 + q1],
+FAD[{p1 - p4, 1}], FAD[p1], FAD[p1 + p3], FAD[q1 + p3],
+FAD[q1 + p4]}, {p1, p3, p4}, {q1}, {Hold[SPD][q1] -> 1}, {}]]",
+"GLI[topo1, {0, 2, 1, 1, 2, 2, 0, 0, 0}] + GLI[topo1, {0, 2, 1, 2, 2, 1, 0, 0, 0}] + GLI[topo1, {0, 2, 2, 1, 1, 2, 0, 0, 0}] +
+GLI[topo1, {0, 2, 2, 1, 2, 1, 0, 0, 0}] + GLI[topo1, {0, 2, 2, 2, 1, 1, 0, 0, 0}]"},
+{"fcstFCLoopGLILowerDimension-ID2",
+"FCLoopGLILowerDimension[GLI[topo1, {1, 1, 1, 1, 1}],
+FCTopology[
+topo1, {SFAD[p1], SFAD[p2], SFAD[Q - p1 - p2], SFAD[Q - p2],
+SFAD[Q - p1]}, {p1, p2}, {Q}, {Hold[SPD[Q]] -> qq}, {}]]",
+"GLI[topo1, {1, 1, 1, 2, 2}] + GLI[topo1, {1, 1, 2, 1, 2}] + GLI[topo1, {1, 1, 2, 2, 1}] +
+GLI[topo1, {1, 2, 1, 1, 2}] + GLI[topo1, {1, 2, 2, 1, 1}] +
+GLI[topo1, {2, 1, 1, 2, 1}] + GLI[topo1, {2, 1, 2, 1, 1}] + GLI[topo1, {2, 2, 1, 1, 1}]"},
+{"fcstFCLoopGLILowerDimension-ID3",
+"FCLoopGLILowerDimension[GLI[topo1, {1}],
+FCTopology[tad1L, {SFAD[{p, m^2}]}, {p}, {}, {}, {}]]",
+"GLI[topo1, {2}]"}
+});

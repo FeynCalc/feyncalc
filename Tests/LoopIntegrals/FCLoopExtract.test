@@ -73,14 +73,13 @@ m0}], {q1}]}}"},
 {"fcstFCLoopExtract-ID14",
 "FCLoopExtract[FAD[{q1,0},{q2,0},{q1-p,0},{q1-q2}],{q1,q2},loopInt,\
 FCLoopBasisSplit\[Rule]True,FCE\[Rule]True]",
-"{0, loopInt[FAD[q2, q1, q1 - q2, -p + q1], {q1, q2}], \
-{loopInt[FAD[q2, q1, q1 - q2, -p + q1], {q1, q2}]}}"},
+"{0, loopInt[FAD[q1, q2, -p + q1, q1 - q2], {q1, q2}],
+{loopInt[FAD[q1, q2, -p + q1, q1 - q2], {q1, q2}]}}"},
 {"fcstFCLoopExtract-ID15",
 "FCLoopExtract[FAD[{q3,0},{q1,0},{q2,0},{q1-p,0},{q1-q2}],{q1,q2,\
 q3},loopInt,FCLoopBasisSplit\[Rule]True,FCE\[Rule]True]",
-"{0, loopInt[FAD[q3], {q3}]*loopInt[FAD[q2, q1, q1 - q2, -p + q1], \
-{q1, q2}], {loopInt[FAD[q3], {q3}], loopInt[FAD[q2, q1, q1 - q2, -p + \
-q1], {q1, q2}]}}"},
+"{0, loopInt[FAD[q3], {q3}]*loopInt[FAD[q1, q2, -p + q1, q1 - q2],
+{q1, q2}], {loopInt[FAD[q3], {q3}], loopInt[FAD[q1, q2, -p + q1, q1 - q2], {q1, q2}]}}"},
 {"fcstFCLoopExtract-ID16",
 "FCLoopExtract[GFAD[{SPD[q1,p]SPD[q2,p],n}],{q1,q2},loopInt]\
 //FCE", "{0, loopInt[

@@ -965,7 +965,6 @@ I (CartesianMomentum[p1, D - 1] + 2 CartesianMomentum[q, D - 1])]",
 {"fcstSharedObjectsBehavior-ID163", "FCPartialD[Momentum[p1], Momentum[p2], Momentum[p3]]", "FCPartialD[Momentum[p1]].FCPartialD[Momentum[p2]].FCPartialD[Momentum[p3]]"},
 {"fcstSharedObjectsBehavior-ID164", "FCPartialD[nu, mu, LorentzIndex[rho]]", " FCPartialD[nu, mu, LorentzIndex[rho]]"},
 {"fcstSharedObjectsBehavior-ID165", "FCPartialD[LorentzIndex[nu], LorentzIndex[mu], LorentzIndex[rho]]", "FCPartialD[LorentzIndex[nu]].FCPartialD[LorentzIndex[mu]].FCPartialD[LorentzIndex[rho]]"},
-{"fcstSharedObjectsBehavior-ID170", "PlusDistribution[Log[z (1 - z)]/(1 - z)]", " Log[z]/(1 - z) + PlusDistribution[Log[1 - z]/(1 - z)]"},
 {"fcstSharedObjectsBehavior-ID171", "Polarization[p]", "Polarization[p]"},
 {"fcstSharedObjectsBehavior-ID171.1", "Polarization[p, Transversality->True]", "Polarization[p, Transversality->True]"},
 {"fcstSharedObjectsBehavior-ID171.2", "Polarization[p, Transversality->False]", "Polarization[p, Transversality->False]"},
@@ -1056,8 +1055,14 @@ SUNTF[a_List, _, _] :> SUNT @@ a", "SUNT[SUNIndex[a1], SUNIndex[a2]]"},
 Momentum[nb]]", "0"},
 {"fcstSharedObjectsBehavior-ID226", "DataType[myVarFC,FCVariable]=True; LightConePerpendicularComponent[myVarFC Momentum[x], Momentum[n], Momentum[nb]]",
 "myVarFC LightConePerpendicularComponent[Momentum[x], Momentum[n], Momentum[nb]]"},
-{"fcstSharedObjectsBehavior-ID227", "DiracGamma[a LightConePerpendicularComponent[Momentum[x], Momentum[n], Momentum[nb]]]",
-"a DiracGamma[LightConePerpendicularComponent[Momentum[x], Momentum[n], Momentum[nb]]]"}
+{"fcstSharedObjectsBehavior-ID227", "Momentum[nb/(1 + 2 myVarFC)]",
+"Momentum[nb]/(1 + 2 myVarFC)"},
+{"fcstSharedObjectsBehavior-ID228", "Momentum[nb/(a + 2 myVarFC^2)]",
+"Momentum[nb]/(a + 2 myVarFC^2)"},
+{"fcstSharedObjectsBehavior-ID229", "CartesianMomentum[nb/(1 + 2 myVarFC)]",
+"CartesianMomentum[nb]/(1 + 2 myVarFC)"},
+{"fcstSharedObjectsBehavior-ID230", "CartesianMomentum[nb/(a + 2 myVarFC^2)]",
+"CartesianMomentum[nb]/(a + 2 myVarFC^2)"}
 }
 
 Tests`Shared`fcstSharedObjectsDiracIndex =

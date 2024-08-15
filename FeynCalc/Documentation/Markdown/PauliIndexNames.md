@@ -21,10 +21,7 @@ $$\left(\overline{\sigma }^a\right){}_{i\text{FCGV}(\text{pi251})} \left(\overli
 ```mathematica
 PCHN[CSI[a], i, j] PCHN[CSI[b], j, k] 
  
-FCCanonicalizeDummyIndices[%, PauliIndexNames -> {l}] 
-  
- 
-
+FCCanonicalizeDummyIndices[%, PauliIndexNames -> {l}]
 ```
 
 $$\left(\overline{\sigma }^a\right){}_{ij} \left(\overline{\sigma }^b\right){}_{jk}$$

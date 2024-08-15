@@ -33,10 +33,7 @@ $$\overline{p}\cdot \overline{q}$$
 ```mathematica
 Pair[LorentzIndex[\[Mu]], Momentum[p + q]] Pair[LorentzIndex[\[Mu]], Momentum[r + s]] 
  
-% /. Pair -> PairContract3 
-  
- 
-
+% /. Pair -> PairContract3
 ```
 
 $$\left(\overline{p}+\overline{q}\right)^{\mu } \left(\overline{r}+\overline{s}\right)^{\mu }$$

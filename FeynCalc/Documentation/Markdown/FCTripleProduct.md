@@ -22,7 +22,7 @@ FCTP[a, b, c]
 
 $$\overline{a}\cdot \left(\overline{b}\times \overline{c}\right)$$
 
-```
+```mathematica
 (*FCTripleProduct[a, b, c]*)
 ```
 
@@ -34,7 +34,7 @@ FCTP[a, b, c, Explicit -> True]
 
 $$\bar{\epsilon }^{\overline{a}\overline{b}\overline{c}}$$
 
-```
+```mathematica
 (*Eps[CartesianMomentum[a], CartesianMomentum[b], CartesianMomentum[c]]*)
 ```
 

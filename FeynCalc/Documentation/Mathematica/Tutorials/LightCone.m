@@ -16,11 +16,18 @@
 
 
 (* ::Subsection:: *)
-(*Notation*)
+(*Notation for light-cone components*)
 
 
 (* ::Text:: *)
-(*FeynCalc is equipped with special symbols that facilitate calculations involving light-cone vectors. The default $n$ and $\bar{n}$ vectors are defined via the global variables `$FCDefaultLightconeVectorN` and `$FCDefaultLightconeVectorNB`*)
+(*FeynCalc is equipped with special symbols that facilitate calculations involving light-cone vectors. The default $n$ and $\bar{n}$ vectors are defined via the global variables `$FCDefaultLightconeVectorN` and `$FCDefaultLightconeVectorNB`. By default those are set to `FCGV["n"]` and `FCGV["nb"]` to avoid possible conflicts with user-defined variables*)
+
+
+{$FCDefaultLightconeVectorN,$FCDefaultLightconeVectorNB}
+
+
+(* ::Text:: *)
+(*These names can be of course changed. A particularly convenient choice is to use `n` and `nb`. Notice that these commands must be evaluated at the beginning of every FeynCalc session*)
 
 
 $FCDefaultLightconeVectorN=n;
@@ -28,7 +35,7 @@ $FCDefaultLightconeVectorNB=nb;
 
 
 (* ::Text:: *)
-(*Notice that apart from this you must also explicitly define the values of the scalar products $n^2$, $\bar{n}^2$ and $n \cdot \bar{n}$*)
+(*Apart from this you must also explicitly define the values of the scalar products $n^2$, $\bar{n}^2$ and $n \cdot \bar{n}$*)
 
 
 FCClearScalarProducts[]
@@ -38,7 +45,7 @@ ScalarProduct[n,nb]=2;
 
 
 (* ::Text:: *)
-(*The Plus, Minus and peRpendicular components of 4-vectors are called FVLP, FVLN and FVLR respectively. The plus and minus components are immediately rewritten into forms involving $n$ and $\bar{n}$. The perpendicular component is a separate entity that cannot be simplified further.*)
+(*The Plus, Minus and peRpendicular components of 4-vectors are called `FVLP`, `FVLN` and `FVLR` respectively. The plus and minus components are immediately rewritten into forms involving $n$ and $\bar{n}$. The perpendicular component is a separate entity that cannot be simplified further.*)
 
 
 {FVLP[p,\[Mu]],FVLN[p,\[Mu]],FVLR[p,\[Mu]]}
@@ -56,7 +63,7 @@ FVLR[p,mu,myN,myNB]
 
 
 (* ::Text:: *)
-(*Internally, the perpendicular component is implemented as an extra head wrapped around such internal symbols as LorentzIndex or Momentum. This head is called `LightConePerpendicularComponent` and has 3 arguments. The last two arguments specify the light-cone vectors.*)
+(*Internally, the perpendicular component is implemented as an extra head wrapped around such internal symbols as `LorentzIndex` or `Momentum`. This head is called `LightConePerpendicularComponent` and has 3 arguments. The last two arguments specify the light-cone vectors.*)
 
 
 ?LightConePerpendicularComponent
@@ -102,11 +109,11 @@ MTD[\[Mu],\[Nu]]MTLRD[\[Mu],\[Nu]]
 
 
 (* ::Subsection:: *)
-(*Dirac algebra*)
+(*Dirac matrices with light-cone components*)
 
 
 (* ::Text:: *)
-(*Dirac algebra is with matrices contracted to light-cone momenta or having particular light-cone components is fully supported. The general strategy followed by `DiracSimplify` is to move all perpendicular components to the very right of the chain.*)
+(*Dirac algebra involving matrices contracted to light-cone momenta or having particular light-cone components is fully supported. The general strategy followed by `DiracSimplify` is to move all perpendicular components to the very right of the chain.*)
 
 
 ex1=GALR[p] . GA[\[Mu],\[Nu]]
@@ -155,7 +162,58 @@ ex5//DiracSimplify
 
 
 (* ::Subsection:: *)
-(*Tensor reductions*)
+(*Introducing light-cone components by hand*)
+
+
+(* ::Text:: *)
+(*In some calculations one might end up with a mixture of explicit light-cone components and generic Lorentz tensors. If those tensors admit a particularly simple representation in terms of light-cone components, it can be enforced using the function `ToLightConeComponents`*)
+
+
+(* ::Text:: *)
+(*For example, the following expression cannot be simplified any further*)
+
+
+ex6=GS[nb,vp]
+
+
+(* ::Text:: *)
+(*Now let us suppose that $(v')^{\mu}$ can be actually written as $\alpha n^\mu + \bar{n}^{\mu}/(4 \alpha)$. We can implement this as  follows*)
+
+
+SP[vp,nb]= 2*alpha;
+SP[vp,n]= 2*1/(4alpha);
+LightConePerpendicularComponent[Momentum[vp],Momentum[n],Momentum[nb]]=0;
+
+
+FV[vp,mu]
+%//ToLightConeComponents
+
+
+(* ::Text:: *)
+(*However, this will not make FeynCalc automatically simplify the Dirac chain*)
+
+
+ex6//DiracSimplify
+
+
+(* ::Text:: *)
+(*Using `ToLightConeComponents` we can explicitly rewrite `vp` in the chain in terms of the light-cone components and hence enforce the desired simplification. In fact, the function will also automatically simplify some common expressions such $\gamma \cdot \bar{n} \gamma \cdot \bar{n} = \gamma \cdot n \gamma \cdot n = 0$*)
+
+
+ex6//ToLightConeComponents
+%//DiracSimplify
+
+
+(* ::Text:: *)
+(*Such simplifications inside `ToLightConeComponents` can be disabled using the option `DotSimplify`*)
+
+
+ex6//ToLightConeComponents[#,DotSimplify->False]&
+%//DiracSimplify
+
+
+(* ::Subsection:: *)
+(*Reductions of loop integrals with numerators involving light-cone components*)
 
 
 int=FVLRD[p,\[Mu]]SFAD[p,p-q]

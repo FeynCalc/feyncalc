@@ -45,10 +45,7 @@ $$(2-D) (3-D) (p\cdot q)$$
 ```mathematica
 CLCD[i, j, k] CVD[Subscript[p, 1], i] CVD[Subscript[p, 2], j] CVD[Subscript[p, 3], k] 
  
-Contract[%] 
-  
- 
-
+Contract[%]
 ```
 
 $$p_1{}^i p_2{}^j p_3{}^k \overset{\text{}}{\epsilon }^{ijk}$$

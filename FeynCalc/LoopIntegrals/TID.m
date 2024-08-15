@@ -199,7 +199,7 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 		FCPrint[1, "TID: Done applying Isolate, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tidVerbose];
 		FCPrint[3, "TID: After Isolate: ", t0 , FCDoControl->tidVerbose];
 
-		If[OptionValue[ToSFAD] && !FreeQ2[t0,{StandardPropagatorDenominator}],
+		If[OptionValue[ToSFAD] && !FreeQ2[t0,{StandardPropagatorDenominator,CartesianPropagatorDenominator,GenericPropagatorDenominator}],
 			t0 = ToSFAD[t0]
 		];
 

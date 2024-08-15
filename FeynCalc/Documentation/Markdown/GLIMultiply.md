@@ -11,10 +11,7 @@
 ```mathematica
 GLI["topo1", {1, 0, 0, 1, 1}] GLI["topo1", {0, -1, -1, 0, 0}] 
  
-% /. GLI -> GLIMultiply /. GLIMultiply -> GLI 
-  
- 
-
+% /. GLI -> GLIMultiply /. GLIMultiply -> GLI
 ```
 
 $$G^{\text{topo1}}(0,-1,-1,0,0) G^{\text{topo1}}(1,0,0,1,1)$$

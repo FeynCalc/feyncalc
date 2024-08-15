@@ -16,7 +16,7 @@
 
 
 (* ::Subsection:: *)
-(*Notation*)
+(*Notation for tensors living in different dimensions*)
 
 
 (* ::Text:: *)

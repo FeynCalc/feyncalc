@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## FCLoopTensorReduce
 
 `FCLoopTensorReduce[exp, topos]` performs tensor reduction for the numerators of multi-loop integrals present in `exp`. Notice that `exp` is expected to be the output of `FCLoopFindTopologies` where all loop integrals have been written as `fun[num, GLI[...]]` with `num` being the numerator to be acted upon.

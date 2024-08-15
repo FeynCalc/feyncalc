@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## MTLND
 
 `MTLND[mu,nu,n,nb]` denotes the positive component in the lightcone decomposition of the metric tensor $g^{\mu \nu}$  along the vectors `n` and `nb`in $D$ dimensions. It corresponds to $\frac{1}{2} n^{\mu}  \bar{n}^\nu$.

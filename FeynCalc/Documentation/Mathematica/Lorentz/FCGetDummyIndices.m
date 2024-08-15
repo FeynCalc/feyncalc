@@ -47,6 +47,3 @@ FCGetDummyIndices[%,{SUNIndex}]
 FCI[SUNT[a,a]]
 
 FCGetDummyIndices[%,{SUNIndex}]
-
-
-

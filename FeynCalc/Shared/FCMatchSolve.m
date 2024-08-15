@@ -60,7 +60,7 @@ Options[FCMatchSolve] = {
 
 FCMatchSolve[expr_, notvars_List/; (!OptionQ[notvars] || notvars==={}), OptionsPattern[]] :=
 	Block[{	ex, equals, eqSys, eqSol, vars, varsToRemove, nVarsToRemove,
-			nVarsAlreadyRemoved, optFactoring, allEqVars, trivialEqs, preSol, factor},
+			nVarsAlreadyRemoved, optFactoring, allEqVars, trivialEqs, preSol, factor, time},
 
 		optFactoring = OptionValue[Factoring];
 		preSol = {};
@@ -110,7 +110,8 @@ FCMatchSolve[expr_, notvars_List/; (!OptionQ[notvars] || notvars==={}), OptionsP
 		];
 
 		(*Presolve the system by removing trivial equations*)
-		FCPrint[3, "FCMatchSolve: Removing trivial equation.", FCDoControl->fcmsVerbose];
+		FCPrint[1, "FCMatchSolve: Removing trivial equations.", FCDoControl->fcmsVerbose];
+		time=AbsoluteTime[];
 		{eqSys,vars,preSol} = Most[FixedPoint[preSolve@@#&,{eqSys,vars,{},notvars}, OptionValue[MaxIterations]]];
 
 		If[	!FreeQ[eqSys,False],
@@ -118,6 +119,7 @@ FCMatchSolve[expr_, notvars_List/; (!OptionQ[notvars] || notvars==={}), OptionsP
 				{Darker[Red,0.55], Bold}], FCDoControl->fcmsVerbose];
 			Return[{}]
 		];
+		FCPrint[1, "FCMatchSolve: Done removing trivial equations, timing:", N[AbsoluteTime[] - time, 4] , FCDoControl->fcmsVerbose];
 
 		If[	preSol=!={},
 			FCPrint[0, "FCMatchSolve: Following coefficients trivially vanish: ", preSol, FCDoControl->fcmsVerbose];

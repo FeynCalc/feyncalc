@@ -81,10 +81,7 @@ FCFeynmanParametrize[FAD[{p, m}], {p}, Names -> x, FCReplaceD -> {D -> 4 - 2 Eps
  
 Times @@ Most[%] 
  
-Series[%, {Epsilon, 0, 1}] // Normal // FunctionExpand 
-  
- 
-
+Series[%, {Epsilon, 0, 1}] // Normal // FunctionExpand
 ```
 
 $$\left\{1,-e^{\gamma  \varepsilon } \Gamma (\varepsilon -1) \left(m^2\right)^{1-\varepsilon },\{\}\right\}$$

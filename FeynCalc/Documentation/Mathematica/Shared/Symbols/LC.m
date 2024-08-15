@@ -49,6 +49,3 @@ Contract[LC[\[Mu],\[Nu],\[Rho]][p] LC[\[Mu],\[Nu],\[Rho]][q]]
 LC[\[Mu],\[Nu],\[Rho],\[Sigma]]FV[Subscript[p, 1],\[Mu]]FV[Subscript[p, 2],\[Nu]]FV[Subscript[p, 3],\[Rho]]FV[Subscript[p, 4],\[Sigma]]
 
 Contract[%]
-
-
-

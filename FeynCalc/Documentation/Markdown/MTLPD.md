@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## MTLPD
 
 `MTLPD[mu,nu,n,nb]` denotes the positive component in the lightcone decomposition of the metric tensor $g^{\mu \nu}$  along the vectors `n` and `nb`. It corresponds to $\frac{1}{2} \bar{n}^{\mu}  n^\nu$.

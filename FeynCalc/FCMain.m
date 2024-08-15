@@ -105,6 +105,13 @@ $FeynCalcLastCommitDateHash::usage =
 the last commit in the branch from which the current FeynCalc version
 originates.";
 
+$ParallelizeFeynCalc::usage =
+"$ParallelizeFeynCalc is a global switch that enables FeynCalc to evaluate some
+subroutines on using parallel kernels. It should be explicitly activated by
+setting $ParallelizeFeynCalc to True. However, before that one should evaluate
+LaunchKernels[n] with n being the number of parallel kernels to launch. The
+default value is False.";
+
 $FCTensorList::usage =
 "$FCTensorList contains a list of all tensor heads present.";
 
@@ -416,6 +423,7 @@ $Abbreviations = {
 	"\r" -> ""
 };
 
+$ParallelizeFeynCalc				= False;
 $Containers							= {};
 $DisableMemSet 						= False;
 $DistributiveFunctions				= {Conjugate, Transpose};
@@ -427,6 +435,17 @@ $LimitTo4IRUnsafe					= False;
 $FCMemoryAvailable					= Floor[$SystemMemory/10^6/4];
 $Multiplications					= {Times, DOT};
 $OPEWard							= False;
+
+
+$ParallelizeFeynCalc/:
+	Set[$ParallelizeFeynCalc, True]:=
+		(
+		With[{str = FileNameJoin[{$FeynCalcDirectory, "fc.m"}]},
+			ParallelEvaluate[Get[str],Kernels[]]
+		];
+		OwnValues[$ParallelizeFeynCalc] = {HoldPattern[$ParallelizeFeynCalc] :> True};
+		True
+		)
 
 (*	Mathematica versions 8 and 9 do not have the $SystemMemory variable,
 	so for them we set the available memory for memoization to 4 GiB*)
@@ -467,6 +486,7 @@ $FCDefaultLightconeVectorNB = FeynCalc`FCGV["nb"];
 
 FeynCalcHowToCite[]:=
 	(
+	Print [Style[" \[Bullet] V. Shtabovenko, R. Mertig and F. Orellana, arXiv:2312.14089.","Text"]];
 	Print [Style[" \[Bullet] V. Shtabovenko, R. Mertig and F. Orellana, Comput.Phys.Commun. 256 (2020) 107478, arXiv:2001.04407.","Text"]];
 	Print [Style[" \[Bullet] V. Shtabovenko, R. Mertig and F. Orellana, Comput.Phys.Commun. 207 (2016) 432-444, arXiv:1601.01167.","Text"]];
 	Print [Style[" \[Bullet] R. Mertig, M. B\[ODoubleDot]hm, and A. Denner, Comput. Phys. Commun. 64 (1991) 345-359.","Text"]];

@@ -71,5 +71,7 @@ asyR3prop2Ltopo01300X01102N1, {SFAD[{{I*p3, 0}, {0, -1}, 1}],
 	SFAD[{{0, p1 . p1}, {0, -1}, 1}],
 	SFAD[{{0, p1 . p3}, {0, -1}, 1}],
 	SFAD[{{0, p3 . q}, {0, -1}, 1}]}, {p1, p3},
-	{q}, {SPD[q, q] -> mb^2}, {}]}]","{True}"}
+	{q}, {SPD[q, q] -> mb^2}, {}]}]","{True}"},
+{"fcstFCLoopScalelessQ-ID21",
+"FCLoopScalelessQ[SPD[p, q] FAD[p - q, p - q], {p}]", "True"}
 });

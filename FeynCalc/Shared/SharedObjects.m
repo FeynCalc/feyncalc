@@ -572,21 +572,25 @@ ScaleMu::usage =
 integrals.";
 
 SFAD::usage =
-"SFAD[{{q1 +..., p1 . q2 +...,} {m^2, s}, n}, ...] denotes a Cartesian
-propagator given by $\\frac{1}{[(q_1+\\ldots)^2 + p_1 \\cdot q_2 ... + m^2 + s i
-\\eta]^n}$, where $q_1^2$ and $p_1 \\cdot q_2$ are Cartesian scalar products in
-$D-1$ dimensions.
+"SFAD[{{q1 +..., p1 . q2 +...,} {m^2, s}, n}, ...] denotes a standard
+Lorentzian  propagator given by $\\frac{1}{[(q_1+\\ldots)^2 + p_1 \\cdot q_2 ...
++ m^2 + s i \\eta]^n}$, where $q_1^2$ and $p_1 \\cdot q_2$ are Lorentzian scalar
+products in $D$ dimensions.
 
 For brevity one can also use shorter forms such as SFAD[{q1+ ...,  m^2}, ...],
 SFAD[{q1+ ...,  m^2 , n}, ...], SFAD[{q1+ ...,  {m^2, -1}}, ...], SFAD[q1,...]
 etc.
 
 If s is not explicitly specified, its value is determined by the option
-EtaSign, which has the default value +1.
+EtaSign, which has the default value +1 and corresponds to $+ i \\eta$
 
 If n is not explicitly specified, then the default value 1 is assumed.
-Translation into FeynCalcI internal form is performed by FeynCalcInternal,
-where a SFAD is encoded using the special head CartesianPropagatorDenominator.";
+Translation into the FeynCalc internal form is performed by FeynCalcInternal,
+where an SFAD is encoded using the special head StandardPropagatorDenominator.
+
+SFAD can represent more versatile propagators as compared to the old FAD. In
+particular, FAD does not allow one to enter eikonal propagators, track the
+sign of the $i \\eta$ or change the sign and the form of the mass term.";
 
 StandardPropagatorDenominator::usage =
 "StandardPropagatorDenominator[propSq + ..., propEik +..., m^2, {n, s}] encodes
@@ -2248,6 +2252,9 @@ Momentum[x_ n_?NumberQ, dim_ :4] :=
 Momentum[x_ Power[a_/;DataType[a,FCVariable], n_], dim_ :4] :=
 	Power[a,n] Momentum[x, dim];
 
+Momentum[x_ Power[c_. a_^m_. + b_/;DataType[a,FCVariable], n_], dim_ :4] :=
+	Power[c a^m + b,n] Momentum[x, dim];
+
 Momentum[x_ n_/;DataType[n,FCVariable], dim_ :4] :=
 	n Momentum[x, dim];
 
@@ -2441,9 +2448,6 @@ FCPartialD[c:OPEDelta..] :=
 
 FCPartialD[x_, y__]/; MatchQ[{x,y},{(__LorentzIndex | __ExplicitLorentzIndex | __CartesianIndex | __Momentum | __CartesianMomentum)}] :=
 	DOT @@ Map[FCPartialD, {x, y}];
-
-PlusDistribution[Log[x_ (1-x_)]/(1-x_)] :=
-	Log[x] /(1-x) + PlusDistribution[Log[1-x]/(1-x)];
 
 PolarizationVector[x_,{y_,z_}] :=
 	PolarizationVector[x, y, z];
@@ -2769,6 +2773,13 @@ CartesianIndex[LightConePerpendicularComponent[mu_,rest__], dim___]:=
 
 CartesianMomentum[x_ n_?NumberQ, dim_ :3] :=
 	n CartesianMomentum[x, dim];
+
+
+CartesianMomentum[x_ Power[a_/;DataType[a,FCVariable], n_], dim_ :3] :=
+	Power[a,n] CartesianMomentum[x, dim];
+
+CartesianMomentum[x_ Power[c_. a_^m_. + b_/;DataType[a,FCVariable], n_], dim_ :3] :=
+	Power[c a^m + b,n] CartesianMomentum[x, dim];
 
 CartesianMomentum[x_ n_/;DataType[n,FCVariable], dim_ :3] :=
 	n CartesianMomentum[x, dim];

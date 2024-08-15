@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## FCIteratedIntegralSimplify
 
 `FCIteratedIntegralSimplify[ex]` uses linearity to simplify nested products and linear combinations of `FCIteratedIntegral`s.

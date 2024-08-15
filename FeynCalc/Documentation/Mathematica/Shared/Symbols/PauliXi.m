@@ -32,6 +32,3 @@ PauliXi[-I]
 PauliXi[-I] . SIS[p] . PauliEta[I]
 
 %//ComplexConjugate
-
-
-

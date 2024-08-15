@@ -72,5 +72,30 @@ p1,0},{-m1^2,-1},1}],SFAD[{{I*(p1+q1),0},{-m3^2,-1},1}],SFAD[{{I*p3,0}\
 "{FCTopology[prop2Ltopo13311, {SFAD[{{I*p1, 0}, {-m1^2, -1}, 1}],
 SFAD[{{I*(p1 + q1), 0}, {-m3^2, -1}, 1}], SFAD[{{I*p3, 0}, {-m3^2, -1}, 1}],
 SFAD[{{I*(p3 + q1), 0}, {-m1^2, -1}, 1}], SFAD[{{I*(p1 - p3), 0}, {-m1^2, -1}, 1}]},
-{p1, p3}, {q1}, {SPD[q1, q1] -> m1^2}, {}]}"}
+{p1, p3}, {q1}, {SPD[q1, q1] -> m1^2}, {}]}"},
+
+{"fcstFCLoopSelectTopology-ID8",
+"FCLoopSelectTopology[{GLI[
+asyR2prop2Ltopo13011X11011N1, {1, 1, 1, 0, 0}],
+GLI[asyR2prop2Ltopo13011X11011N1, {0, 1, 1, 0, 0}]  GLI[
+	tad1Ltopo1, {1}]}, {FCTopology[
+asyR2prop2Ltopo13011X11011N1, {SFAD[{{
+	-I  p3, 0}, {-m1^2, -1}, 1}],
+	SFAD[{{I  p1, 0}, {-m3^2, -1}, 1}],
+	SFAD[{{0, 2  p1 . q}, {0, -1}, 1}],
+	SFAD[{{0, p1 . p3}, {0, -1}, 1}],
+	SFAD[{{0, p3 . q}, {0, -1}, 1}]}, {p1,
+	p3}, {q}, {SPD[q, q] -> m1^2}, {}],
+FCTopology[
+tad1Ltopo1, {SFAD[{{I  p1, 0}, {-m1^2, -1}, 1}]}, {p1}, {}, {SPD[
+	q1, q1] -> m1^2}, {}]}, \"OneToOneCorrespondence\" -> True,
+FCE -> True]",
+"{{FCTopology[asyR2prop2Ltopo13011X11011N1, {SFAD[{{(-I)*p3, 0}, {-m1^2, -1}, 1}],
+SFAD[{{I*p1, 0}, {-m3^2, -1}, 1}], SFAD[{{0, 2*p1 . q}, {0, -1}, 1}], SFAD[{{0, p1 . p3},
+{0, -1}, 1}], SFAD[{{0, p3 . q}, {0, -1}, 1}]},
+{p1, p3}, {q}, {SPD[q, q] -> m1^2}, {}]}, {FCTopology[asyR2prop2Ltopo13011X11011N1,
+{SFAD[{{(-I)*p3, 0}, {-m1^2, -1}, 1}], SFAD[{{I*p1, 0}, {-m3^2, -1}, 1}], SFAD[{{0, 2*p1 . q},
+{0, -1}, 1}],	SFAD[{{0, p1 . p3}, {0, -1}, 1}], SFAD[{{0, p3 . q}, {0, -1}, 1}]}, {p1, p3},
+{q}, {SPD[q, q] -> m1^2}, {}], FCTopology[tad1Ltopo1, {SFAD[{{I*p1, 0}, {-m1^2, -1}, 1}]},
+{p1}, {}, {SPD[q1, q1] -> m1^2}, {}]}}"}
 });

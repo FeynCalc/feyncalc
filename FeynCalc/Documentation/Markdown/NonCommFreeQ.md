@@ -4,6 +4,6 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [$NonComm]($NonComm.md), [NonCommQ](NonCommQ.md), [DiracTrace](DiracTrace.md), [SUNTrace](SUNTrace.md).
+[Overview](Extra/FeynCalc.md), [\$NonComm](\$NonComm.md), [NonCommQ](NonCommQ.md), [DiracTrace](DiracTrace.md), [SUNTrace](SUNTrace.md).
 
 ### Examples

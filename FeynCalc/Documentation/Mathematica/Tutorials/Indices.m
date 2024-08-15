@@ -16,7 +16,7 @@
 
 
 (* ::Subsection:: *)
-(*Manipulations*)
+(*Manipulations of tensorial quantities*)
 
 
 (* ::Text:: *)

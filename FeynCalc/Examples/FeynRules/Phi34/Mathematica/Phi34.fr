@@ -1,0 +1,27 @@
+M$ModelName = "Phi^3 + Phi^4 theories";
+
+M$Information = {
+  Authors      -> {"Vladyslav Shtabovenko"},
+  Institutions -> {"FeynCalc project"},
+  Emails       -> {""},
+  Date         -> "08.08.2024"
+};
+
+M$Parameters =
+Join[{g3 == {ParameterType ->
+    Internal}}, {g4 == {ParameterType ->
+    Internal}}]
+
+M$ClassesDescription = {
+
+  S[1] == {
+      ClassName     -> phi,
+      ParticleName    -> "\[Phi]",
+      PropagatorLabel -> "\[Phi]",
+      SelfConjugate -> True,
+      Mass -> Mphi
+  }
+
+};
+
+LPhi34 = 1/2 del[phi, mu] del[phi, mu] - 1/2 Mphi^2*phi^2  - 1/(3!) g3*phi^3 - 1/(4!) g4*phi^4;

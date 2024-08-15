@@ -53,10 +53,7 @@ $$i m_s \bar{g}^{\alpha \rho } \left(\varphi (\overline{p}_3,m_s)\right).\bar{\g
 ```mathematica
 LC[\[Beta], \[Gamma], \[Mu], \[Nu]] FV[Subscript[p, 2], \[Gamma]] SpinorUBar[Subscript[p, 3], SMP["m_s"]] . GA[\[Beta], 7] . SpinorV[Subscript[p, 4], SMP["m_d"]] 
  
-% // EpsChisholm // DiracSimplify // Contract 
-  
- 
-
+% // EpsChisholm // DiracSimplify // Contract
 ```
 
 $$\overline{p}_2{}^{\gamma } \bar{\epsilon }^{\beta \gamma \mu \nu } \bar{u}\left(p_3,m_s\right).\bar{\gamma }^{\beta }.\bar{\gamma }^7.v\left(p_4,m_d\right)$$

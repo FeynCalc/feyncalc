@@ -21,10 +21,7 @@ $$\{f(\text{p1},\text{p2}),f(\text{p2},\text{p1})\}$$
 ```mathematica
 FCPermuteMomentaRules[{p1, p2, p3}] 
  
-f[p1, p2, p3] /. % 
-  
- 
-
+f[p1, p2, p3] /. %
 ```
 
 $$\{\{\},\{\text{p1}\to \;\text{p2},\text{p2}\to \;\text{p1}\},\{\text{p1}\to \;\text{p3},\text{p3}\to \;\text{p1}\},\{\text{p2}\to \;\text{p3},\text{p3}\to \;\text{p2}\},\{\text{p1}\to \;\text{p2},\text{p2}\to \;\text{p3},\text{p3}\to \;\text{p1}\},\{\text{p1}\to \;\text{p3},\text{p2}\to \;\text{p1},\text{p3}\to \;\text{p2}\}\}$$

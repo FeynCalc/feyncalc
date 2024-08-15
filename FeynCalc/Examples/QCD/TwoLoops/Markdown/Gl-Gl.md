@@ -231,7 +231,7 @@ FCCompareResults[resLit, resEp,
 Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], 
        " s."];
 
-```
+```mathematica
 
 $$\text{$\backslash $tCompare to Davydychev, Osland and Tarasov,     hep-ph/9801380, Eqs. 6.10-6.11:} \;\text{CORRECT.}$$
 

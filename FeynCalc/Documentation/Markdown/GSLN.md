@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## GSLN
 
 `GSLN[p,n,nb]` denotes the negative component in the lightcone decomposition of the slashed Dirac matrix $(\gamma \cdot p)$  along the vectors `n` and `nb`. It corresponds to $\frac{1}{2} (n \cdot p) (\gamma \cdot \bar{n})$.

@@ -4,7 +4,7 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [$FeynCalcDirectory]($FeynCalcDirectory.md).
+[Overview](Extra/FeynCalc.md), [\$FeynCalcDirectory](\$FeynCalcDirectory.md).
 
 ### Examples
 

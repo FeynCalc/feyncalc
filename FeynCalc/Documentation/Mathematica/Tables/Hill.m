@@ -31,6 +31,3 @@ Hill[a,b]
 Hill[x,x y]//PowerExpand//SimplifyPolyLog//Expand
 
 % /. x:> .34/. y-> .6//N//Chop
-
-
-

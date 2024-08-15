@@ -17,7 +17,31 @@
 
 MomentumCombine::usage =
 "MomentumCombine[expr] is the inverse operation to MomentumExpand and
-ExpandScalarProduct. MomentumCombine combines also Pairs.";
+ExpandScalarProduct. MomentumCombine combines also Pairs.
+Notice, that MomentumCombine cannot complete squares. It can, however, bring
+expressions containing scalar products to a suitable form that allows for a
+square completion using other means.
+
+This function offers multiple options.
+
+The option NumberQ (default is True) specifies whether one should only merge
+quantities with numerical prefactors or not. Setting it to False allows for
+symbolic prefactors.
+
+Setting the option \"Quadratic\" to False (default is True) effectively means
+that momenta squared will not be combined with anything else.
+
+With the option \"ExcludeScalarProducts\" we can ensure that scalar products
+containing any of the momenta listed are not merged with anything else. So a.x
++ a.y can be merged either if a contains no such momenta, or if both x and y
+are free of them.
+
+The option Except forbids merging the listed momenta with anything else. It is
+much more restrictive than \"ExcludeScalarProducts\" that allows for merging
+terms linear in the listed momenta.
+
+The option Select allows for gathering all terms linear in the given momenta
+before applying any other combining rules.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -30,31 +54,40 @@ im::usage="";
 optNumberQ::usage="";
 optQuadratic::usage="";
 optExcept::usage="";
+optExcludeScalarProducts::usage="";
 
 Options[MomentumCombine] = {
-	Complex		-> True,
-	FCE 		-> False,
-	FCI 		-> False,
-	FV 			-> True,
-	LC 			-> True,
-	LeafCount	-> 1,
-	Except		-> {},
-	NumberQ 	-> True,
-	"Quadratic"	-> True,
-	SP 			-> True
+	"ExcludeScalarProducts"	-> {},
+	"Quadratic"				-> True,
+	Complex					-> True,
+	Except					-> {},
+	FCE 					-> False,
+	FCI 					-> False,
+	FV 						-> True,
+	Factoring				-> False,
+	LC 						-> True,
+	LeafCount				-> 1,
+	NumberQ 				-> True,
+	Select					-> {},
+	SP 						-> True
 };
 
 MomentumCombine[expr_, OptionsPattern[]] :=
-	Block[{ex,res,rules=rulesMain},
+	Block[{	ex, res, rules, optFactoring, moms, momsFac, optSelect},
 
-		optNumberQ 		= OptionValue[NumberQ];
-		optQuadratic	= OptionValue["Quadratic"];
-		optExcept		= OptionValue[Except];
+		optNumberQ 					= OptionValue[NumberQ];
+		optQuadratic				= OptionValue["Quadratic"];
+		optExcludeScalarProducts	= OptionValue["ExcludeScalarProducts"];
+		optExcept					= OptionValue[Except];
+		optFactoring				= OptionValue[Factoring];
+		optSelect					= OptionValue[Select];
 
 		If[	!OptionValue[FCI],
 			ex = FCI[expr],
 			ex = expr
 		];
+
+		rules=rulesMain;
 
 		If[	OptionValue[FV],
 			rules = Join[rules,rulesFV]
@@ -72,14 +105,31 @@ MomentumCombine[expr_, OptionsPattern[]] :=
 			Return[ex]
 		];
 
-		res = ex //. Dispatch[rules];
+		If[	optSelect=!={},
+			ex = Fold[(#1 //. rulesSpecificSP[#2])&, ex,optSelect];
 
+			If[	optFactoring=!=False,
+
+				moms = Cases2[ex,Momentum];
+				momsFac = moms /. Momentum[a_, dim___] :> Momentum[optFactoring[a], dim];
+				ex = ex /. Dispatch[Thread[Rule[moms,momsFac]]]
+			];
+		];
+
+		res = ex //. Dispatch[rules];
 
 		If[	OptionValue[Complex] && !FreeQ[res,Complex],
 			res = res /. {
 				(h: Momentum|CartesianMomentum|TemporalMomentum)[a_, dim___]/; !FreeQ[a, Complex] :>
 					factorIm[h[a, dim]]
 			}
+		];
+
+		If[optFactoring=!=False,
+
+			moms = Cases2[res,Momentum];
+			momsFac = moms /. Momentum[a_, dim___] :> Momentum[optFactoring[a], dim];
+			res = res /. Dispatch[Thread[Rule[moms,momsFac]]]
 		];
 
 		If[	OptionValue[FCE],
@@ -94,7 +144,7 @@ factorIm[(h: Momentum|CartesianMomentum|TemporalMomentum)[a_, dim___]] :=
 
 complex[a_, b_] := a + im b;
 
-
+(* Joining single momenta inside pairs or Cartesian pairs *)
 rulesMain = {
 	(n3_. Momentum[x_, dim_:4] + n4_. Momentum[y_, dim_:4]):>
 		(Momentum[ Expand[n3 x + n4 y],dim]/; (NumberQ[n3] && NumberQ[n4])),
@@ -121,35 +171,137 @@ rulesMain = {
 		(CartesianMomentum[ Expand[n3 x + n4 y],dim]/; !optNumberQ && FreeQ2[{n3,n4},{Pair,CartesianPair,TemporalPair,FeynAmpDenominator,DOT}])
 };
 
+rulesSpecificSP[chosenMom_] := {
 
-(*"Quadratic"->False effectively means that k^2 will not be combined with anything else*)
+	(* Quadratic on, numeric on: 2 k1.n + 3 k2.n = (2*k1+3*k2).n or 2 k1.k1 + 3 k1.n = (2*k1+3*n).k1   *)
+	(n3_. Pair[Momentum[chosenMom,dim_:4], Momentum[x_, dim_:4]] + n4_. Pair[Momentum[chosenMom,dim_:4], Momentum[y_, dim_:4]]):>
+		Pair[Momentum[chosenMom,dim], Momentum[Expand[n3 x + n4 y],dim]]/; optQuadratic &&
+		(NumberQ[n3] && NumberQ[n4]) &&
+		(FreeQ2[{x,y},optExcludeScalarProducts]) &&
+		!IntersectingQ[{x,y},optExcept],
+
+	(* Quadratic on, numeric off: x k1.n + y k2.n = (x*k1+y*k2).n or x k1.k1 + y k1.n = (x*k1+y*n).k1   *)
+	(n3_. Pair[Momentum[chosenMom,dim_:4], Momentum[x_, dim_:4]] + n4_. Pair[Momentum[chosenMom,dim_:4], Momentum[y_, dim_:4]]):>
+		Pair[Momentum[chosenMom,dim], Momentum[Expand[n3 x + n4 y],dim]]/; optQuadratic &&
+		!optNumberQ && FreeQ2[{n3,n4},{Pair,CartesianPair,TemporalPair,FeynAmpDenominator,DOT}] &&
+		(FreeQ2[{x,y},optExcludeScalarProducts]) &&
+		!IntersectingQ[{x,y},optExcept],
+
+	(* Quadratic off, numeric on: 2 k1.n + 3 k2.n = (2*k1+3*k2).n only   *)
+	(n3_. Pair[Momentum[chosenMom,dim_:4], Momentum[x_, dim_:4]] + n4_. Pair[Momentum[chosenMom,dim_:4], Momentum[y_, dim_:4]]):>
+		Pair[Momentum[chosenMom,dim], Momentum[Expand[n3 x + n4 y],dim]]/; !optQuadratic && (chosenMom=!=x && chosenMom=!=y) &&
+		(NumberQ[n3] && NumberQ[n4]) &&
+		(FreeQ2[{x,y},optExcludeScalarProducts]) &&
+		!IntersectingQ[{x,y},optExcept],
+
+	(* Quadratic off, numeric off: x k1.n + y k2.n = (x*k1+y*k2).n only   *)
+	(n3_. Pair[Momentum[chosenMom,dim_:4], Momentum[x_, dim_:4]] + n4_. Pair[Momentum[chosenMom,dim_:4], Momentum[y_, dim_:4]]):>
+		Pair[Momentum[chosenMom,dim], Momentum[Expand[n3 x + n4 y],dim]]/; !optQuadratic && chosenMom=!=x && chosenMom=!=y &&
+		!optNumberQ && FreeQ2[{n3,n4},{Pair,CartesianPair,TemporalPair,FeynAmpDenominator,DOT}] &&
+		(FreeQ2[{x,y},optExcludeScalarProducts]) &&
+		!IntersectingQ[{x,y},optExcept]
+
+};
+
+(* Joining scalar products *)
 rulesSP = {
+
+(*
+	"Quadratic"->False effectively means that momenta squared will not be combined with anything else
+
+	With the "ExcludeScalarProducts" option we can ensure that scalar products containing any of the
+	momenta listed are not merged with anything else. So "a.x + a.y" can be merged either if "a" contains
+	no such momenta, or if both "x" and "y" are free of them.
+
+	The "Except" option completely prohibits joining scalar products containing listed momenta with anything
+	else.
+*)
+
+	(* Quadratic on, numeric on: 2 k1.n + 3 k2.n = (2*k1+3*k2).n or 2 k1.k1 + 3 k1.n = (2*k1+3*n).k1   *)
 	(n3_. Pair[a_Momentum, Momentum[x_, dim_:4]] + n4_. Pair[a_Momentum, Momentum[y_, dim_:4]]):>
-		Pair[a, Momentum[Expand[n3 x + n4 y],dim]]/; optQuadratic && (NumberQ[n3] && NumberQ[n4] && n3=!=n4) && !MemberQ[optExcept,x] && !MemberQ[optExcept,y],
+		Pair[a, Momentum[Expand[n3 x + n4 y],dim]]/; optQuadratic &&
+		(NumberQ[n3] && NumberQ[n4] && n3=!=n4) &&
+		(FreeQ2[{x,y},optExcludeScalarProducts] || FreeQ2[{a},optExcludeScalarProducts]) &&
+		!IntersectingQ[{a,x,y},optExcept],
 
+	(* Quadratic on, numeric off: x k1.n + y k2.n = (x*k1+y*k2).n or x k1.k1 + y k1.n = (x*k1+y*n).k1   *)
 	(n3_. Pair[a_Momentum, Momentum[x_, dim_:4]] + n4_. Pair[a_Momentum, Momentum[y_, dim_:4]]):>
-		Pair[a, Momentum[Expand[n3 x + n4 y],dim]]/; !optQuadratic && (a[[1]]=!=x && a[[1]]=!=y && NumberQ[n3] && NumberQ[n4]) && !MemberQ[optExcept,x] && !MemberQ[optExcept,y],
+		Pair[a, Momentum[Expand[n3 x + n4 y],dim]]/; optQuadratic &&
+		!optNumberQ && FreeQ2[{n3,n4},{Pair,CartesianPair,TemporalPair,FeynAmpDenominator,DOT}] &&
+		(FreeQ2[{x,y},optExcludeScalarProducts] || FreeQ2[a[[1]],optExcludeScalarProducts]) &&
+		!IntersectingQ[{a,x,y},optExcept],
 
+	(* Quadratic off, numeric on: 2 k1.n + 3 k2.n = (2*k1+3*k2).n only   *)
 	(n3_. Pair[a_Momentum, Momentum[x_, dim_:4]] + n4_. Pair[a_Momentum, Momentum[y_, dim_:4]]):>
-		Pair[a, Momentum[Expand[n3 x + n4 y],dim]]/; !optNumberQ && a[[1]]=!=x && a[[1]]=!=y && FreeQ2[{n3,n4},{Pair,CartesianPair,TemporalPair,FeynAmpDenominator,DOT}] && !MemberQ[optExcept,x] && !MemberQ[optExcept,y],
+		Pair[a, Momentum[Expand[n3 x + n4 y],dim]]/; !optQuadratic && (a[[1]]=!=x && a[[1]]=!=y) &&
+		(NumberQ[n3] && NumberQ[n4] && n3=!=n4) &&
+		(FreeQ2[{x,y},optExcludeScalarProducts] || FreeQ2[a[[1]],optExcludeScalarProducts]) &&
+		!IntersectingQ[{a,x,y},optExcept],
 
-	(n3_. Pair[a_Momentum, Momentum[x_, dim_:4]] + n3_. Pair[a_Momentum, Momentum[y_, dim_:4]]):>
-		n3 Pair[a, Momentum[Expand[x + y],dim]]/; optQuadratic && !MemberQ[optExcept,x] && !MemberQ[optExcept,y],
+	(* Quadratic off, numeric off: x k1.n + y k2.n = (x*k1+y*k2).n only   *)
+	(n3_. Pair[a_Momentum, Momentum[x_, dim_:4]] + n4_. Pair[a_Momentum, Momentum[y_, dim_:4]]):>
+		Pair[a, Momentum[Expand[n3 x + n4 y],dim]]/; !optQuadratic && a[[1]]=!=x && a[[1]]=!=y &&
+		!optNumberQ && FreeQ2[{n3,n4},{Pair,CartesianPair,TemporalPair,FeynAmpDenominator,DOT}] &&
+		(FreeQ2[{x,y},optExcludeScalarProducts] || FreeQ2[a[[1]],optExcludeScalarProducts]) &&
+		!IntersectingQ[{a,x,y},optExcept],
 
-	(n3_. Pair[a_Momentum, Momentum[x_, dim_:4]] - n3_. Pair[a_Momentum, Momentum[y_, dim_:4]]):>
-		n3 Pair[a, Momentum[Expand[x - y],dim]]/; optQuadratic && !MemberQ[optExcept,x] && !MemberQ[optExcept,y],
+	(* These rules apply both for numerical and symbolical prefactors *)
+
+	(* Quadratic on, + *)
+	(n_. Pair[a_Momentum, Momentum[x_, dim_:4]] + n_. Pair[a_Momentum, Momentum[y_, dim_:4]]):>
+		n Pair[a, Momentum[Expand[x + y],dim]]/; optQuadratic &&
+		FreeQ2[n,{Pair,CartesianPair,TemporalPair,FeynAmpDenominator,DOT}] &&
+		(FreeQ2[{x,y},optExcludeScalarProducts] || FreeQ2[a[[1]],optExcludeScalarProducts]) &&
+		!IntersectingQ[{a,x,y},optExcept],
+
+	(* Quadratic off, + *)
+	(n_. Pair[a_Momentum, Momentum[x_, dim_:4]] + n_. Pair[a_Momentum, Momentum[y_, dim_:4]]):>
+		n Pair[a, Momentum[Expand[x + y],dim]]/; !optQuadratic && !optNumberQ && a[[1]]=!=x && a[[1]]=!=y &&
+		FreeQ2[n,{Pair,CartesianPair,TemporalPair,FeynAmpDenominator,DOT}] &&
+		(FreeQ2[{x,y},optExcludeScalarProducts] || FreeQ2[a[[1]],optExcludeScalarProducts]) &&
+		!IntersectingQ[{a,x,y},optExcept],
+
+	(* Quadratic on, - *)
+	(n_. Pair[a_Momentum, Momentum[x_, dim_:4]] - n_. Pair[a_Momentum, Momentum[y_, dim_:4]]):>
+		n Pair[a, Momentum[Expand[x - y],dim]]/; optQuadratic &&
+		FreeQ2[n,{Pair,CartesianPair,TemporalPair,FeynAmpDenominator,DOT}] &&
+		(FreeQ2[{x,y},optExcludeScalarProducts] || FreeQ2[a[[1]],optExcludeScalarProducts]) &&
+		!IntersectingQ[{a,x,y},optExcept],
+
+	(* Quadratic off, - *)
+	(n_. Pair[a_Momentum, Momentum[x_, dim_:4]] - n_. Pair[a_Momentum, Momentum[y_, dim_:4]]):>
+		n Pair[a, Momentum[Expand[x - y],dim]]/; !optQuadratic && !optNumberQ && a[[1]]=!=x && a[[1]]=!=y &&
+		FreeQ2[n,{Pair,CartesianPair,TemporalPair,FeynAmpDenominator,DOT}] &&
+		(FreeQ2[{x,y},optExcludeScalarProducts] || FreeQ2[a[[1]],optExcludeScalarProducts]) &&
+		!IntersectingQ[{a,x,y},optExcept],
+
+	(*TODO add all the above options here *)
+
 
 	(n3_. Pair[LightConePerpendicularComponent[a_Momentum,n_,nb_],
 		LightConePerpendicularComponent[Momentum[x_, dim_:4],n_,nb_]] + n4_. Pair[LightConePerpendicularComponent[a_Momentum,n_,nb_], LightConePerpendicularComponent[Momentum[y_, dim_:4],n_,nb_]]):>
-		Pair[LightConePerpendicularComponent[a,n,nb], LightConePerpendicularComponent[Momentum[Expand[n3 x + n4 y],dim],n,nb]]/;(NumberQ[n3] && NumberQ[n4] && n3=!=n4) && !MemberQ[optExcept,x] && !MemberQ[optExcept,y],
+		Pair[LightConePerpendicularComponent[a,n,nb], LightConePerpendicularComponent[Momentum[Expand[n3 x + n4 y],dim],n,nb]]/;
+		(NumberQ[n3] && NumberQ[n4] && n3=!=n4) &&
+		(FreeQ2[{x,y},optExcludeScalarProducts] || FreeQ2[a[[1]],optExcludeScalarProducts]) &&
+		!IntersectingQ[{a,x,y},optExcept],
 
-	(n3_. Pair[LightConePerpendicularComponent[a_Momentum,n_,nb_], LightConePerpendicularComponent[Momentum[x_, dim_:4],n_,nb_]] +
-	n3_. Pair[LightConePerpendicularComponent[a_Momentum,n_,nb_], LightConePerpendicularComponent[Momentum[y_, dim_:4],n_,nb_]]):>
-		n3 Pair[LightConePerpendicularComponent[a,n,nb], LightConePerpendicularComponent[Momentum[Expand[x + y],dim],n,nb]] && !MemberQ[optExcept,x] && !MemberQ[optExcept,y],
 
-	(n3_. Pair[LightConePerpendicularComponent[a_Momentum,n_,nb_], LightConePerpendicularComponent[Momentum[x_, dim_:4],n_,nb_]] -
-	n3_. Pair[LightConePerpendicularComponent[a_Momentum,n_,nb_], LightConePerpendicularComponent[Momentum[y_, dim_:4],n_,nb_]]):>
-		n3 Pair[LightConePerpendicularComponent[a,n,nb], LightConePerpendicularComponent[Momentum[Expand[x - y],dim],n,nb]] && !MemberQ[optExcept,x] && !MemberQ[optExcept,y],
+	(* These rules apply both for numerical and symbolical prefactors *)
+
+	(n1_. Pair[LightConePerpendicularComponent[a_Momentum,n_,nb_], LightConePerpendicularComponent[Momentum[x_, dim_:4],n_,nb_]] +
+	n1_. Pair[LightConePerpendicularComponent[a_Momentum,n_,nb_], LightConePerpendicularComponent[Momentum[y_, dim_:4],n_,nb_]]):>
+		n1 Pair[LightConePerpendicularComponent[a,n,nb], LightConePerpendicularComponent[Momentum[Expand[x + y],dim],n,nb]]/;
+		FreeQ2[n,{Pair,CartesianPair,TemporalPair,FeynAmpDenominator,DOT}] &&
+		(FreeQ2[{x,y},optExcludeScalarProducts] || FreeQ2[a[[1]],optExcludeScalarProducts]) &&
+		!IntersectingQ[{a,x,y},optExcept],
+
+	(n1_. Pair[LightConePerpendicularComponent[a_Momentum,n_,nb_], LightConePerpendicularComponent[Momentum[x_, dim_:4],n_,nb_]] -
+	n1_. Pair[LightConePerpendicularComponent[a_Momentum,n_,nb_], LightConePerpendicularComponent[Momentum[y_, dim_:4],n_,nb_]]):>
+		n1 Pair[LightConePerpendicularComponent[a,n,nb], LightConePerpendicularComponent[Momentum[Expand[x - y],dim],n,nb]]/;
+		FreeQ2[n,{Pair,CartesianPair,TemporalPair,FeynAmpDenominator,DOT}] &&
+		(FreeQ2[{x,y},optExcludeScalarProducts] || FreeQ2[a[[1]],optExcludeScalarProducts]) &&
+		!IntersectingQ[{a,x,y},optExcept],
+
 
 	(n3_. CartesianPair[a_CartesianMomentum, CartesianMomentum[x_, dim_:3]] + n4_. CartesianPair[a_CartesianMomentum, CartesianMomentum[y_, dim_:3]]):>
 		CartesianPair[a, CartesianMomentum[Expand[n3 x + n4 y],dim]]/;(NumberQ[n3] && NumberQ[n4]  && n3=!=n4) && !MemberQ[optExcept,x] && !MemberQ[optExcept,y],

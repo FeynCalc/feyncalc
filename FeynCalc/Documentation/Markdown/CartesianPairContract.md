@@ -43,10 +43,7 @@ CartesianPair[CartesianIndex[i], CartesianMomentum[p + q]] CartesianPair[Cartesi
  
 % /. CartesianPair -> CartesianPairContract 
  
-% /. CartesianPairContract -> CartesianPair 
-  
- 
-
+% /. CartesianPairContract -> CartesianPair
 ```
 
 $$\left(\overline{p}+\overline{q}\right)^i \left(\overline{r}+\overline{s}\right)^i$$

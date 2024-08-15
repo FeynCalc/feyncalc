@@ -4,6 +4,6 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [$RenameFeynCalcObjects]($RenameFeynCalcObjects.md).
+[Overview](Extra/FeynCalc.md), [\$RenameFeynCalcObjects](\$RenameFeynCalcObjects.md).
 
 ### Examples

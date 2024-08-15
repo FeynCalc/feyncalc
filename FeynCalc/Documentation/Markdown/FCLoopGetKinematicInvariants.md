@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## FCLoopGetKinematicInvariants
 
 `FCLoopGetKinematicInvariants[topo]` returns the list of kinematic invariants (masses and scalar products) present in the given topology `topo`.

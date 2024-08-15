@@ -49,6 +49,3 @@ Factor2[Contract[LCD[\[Mu],\[Nu],\[Rho]][p] LCD[\[Mu],\[Nu],\[Rho]][q]]]
 LCD[\[Mu],\[Nu],\[Rho],\[Sigma]]FVD[Subscript[p, 1],\[Mu]]FVD[Subscript[p, 2],\[Nu]]FVD[Subscript[p, 3],\[Rho]]FVD[Subscript[p, 4],\[Sigma]]
 
 Contract[%]
-
-
-

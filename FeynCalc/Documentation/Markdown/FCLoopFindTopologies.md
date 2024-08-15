@@ -23,13 +23,17 @@ amp = Get[FileNameJoin[{$FeynCalcDirectory, "Documentation", "Examples",
 res = FCLoopFindTopologies[amp, {q1, q2}];
 ```
 
-$$\text{Number of the initial candidate topologies: }3$$
+$$\text{FCLoopFindTopologies: Number of the initial candidate topologies: }3$$
 
-$$\text{Number of the identified unique topologies: }3$$
+$$\text{FCLoopFindTopologies: Number of the identified unique topologies: }3$$
 
-$$\text{Number of the preferred topologies among the unique topologies: }0$$
+$$\text{FCLoopFindTopologies: Number of the preferred topologies among the unique topologies: }0$$
 
-$$\text{Number of the identified subtopologies: }0$$
+$$\text{FCLoopFindTopologies: Number of the identified subtopologies: }0$$
+
+$$\text{FCLoopFindTopologies: }\;\text{Your topologies depend on the follwing kinematic invariants that are not all entirely lowercase: }\{\text{Pair[Momentum[p, D], Momentum[p, D]]}\}$$
+
+$$\text{FCLoopFindTopologies: }\;\text{This may lead to issues if these topologies are meant to be processed using tools such as FIRE, KIRA or Fermat.}$$
 
 ```mathematica
 res // Last
@@ -54,13 +58,17 @@ $$544$$
 res = FCLoopFindTopologies[topos, {k1, k2}];
 ```
 
-$$\text{Number of the initial candidate topologies: }18$$
+$$\text{FCLoopFindTopologies: Number of the initial candidate topologies: }18$$
 
-$$\text{Number of the identified unique topologies: }18$$
+$$\text{FCLoopFindTopologies: Number of the identified unique topologies: }18$$
 
-$$\text{Number of the preferred topologies among the unique topologies: }0$$
+$$\text{FCLoopFindTopologies: Number of the preferred topologies among the unique topologies: }0$$
 
-$$\text{Number of the identified subtopologies: }0$$
+$$\text{FCLoopFindTopologies: Number of the identified subtopologies: }0$$
+
+$$\text{FCLoopFindTopologies: }\;\text{Your topologies depend on the follwing kinematic invariants that are not all entirely lowercase: }\{\text{mb},\text{mc},\text{Pair[Momentum[p1, D], Momentum[p1, D]]}\}$$
+
+$$\text{FCLoopFindTopologies: }\;\text{This may lead to issues if these topologies are meant to be processed using tools such as FIRE, KIRA or Fermat.}$$
 
 Show the first two topologies
 
@@ -79,16 +87,17 @@ isolatedTopos = FCLoopIsolate[topos[[44 ;; 48]], {k1, k2},  Collecting -> False,
 ```
 
 ```mathematica
-res = FCLoopFindTopologies[isolatedTopos, {k1, k2}, FCLoopIsolate -> loopDen, Head -> ampDen, Collecting -> False]; 
-  
- 
-
+res = FCLoopFindTopologies[isolatedTopos, {k1, k2}, FCLoopIsolate -> loopDen, Head -> ampDen, Collecting -> False];
 ```
 
-$$\text{Number of the initial candidate topologies: }2$$
+$$\text{FCLoopFindTopologies: Number of the initial candidate topologies: }2$$
 
-$$\text{Number of the identified unique topologies: }2$$
+$$\text{FCLoopFindTopologies: Number of the identified unique topologies: }2$$
 
-$$\text{Number of the preferred topologies among the unique topologies: }0$$
+$$\text{FCLoopFindTopologies: Number of the preferred topologies among the unique topologies: }0$$
 
-$$\text{Number of the identified subtopologies: }0$$
+$$\text{FCLoopFindTopologies: Number of the identified subtopologies: }0$$
+
+$$\text{FCLoopFindTopologies: }\;\text{Your topologies depend on the follwing kinematic invariants that are not all entirely lowercase: }\{\text{mb},\text{mc},\text{Pair[Momentum[p1, D], Momentum[p1, D]]}\}$$
+
+$$\text{FCLoopFindTopologies: }\;\text{This may lead to issues if these topologies are meant to be processed using tools such as FIRE, KIRA or Fermat.}$$

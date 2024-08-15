@@ -192,15 +192,19 @@ SFAD[{{I*FCGV[\"lmom\"][3, 1], 0}, {-m1^2, -1}, 1}], \
 SFAD[{{I*(FCGV[\"lmom\"][3, 1] - FCGV[\"lmom\"][3, 2]), 0}, {-m1^2, \
 -1}, 1}]}, {1, 1, 1, 1}}]}"},
 {"fcstFCLoopToPakForm-ID17",
-"FCLoopToPakForm[{GLI[prop2Ltopo13311,{1,0,0,0,0}]^2,GLI[\
-prop2Ltopo13311,{1,0,0,0,0}]^2GLI[prop2Ltopo13311,{1,0,0,0,1}],\
-\[IndentingNewLine]GLI[prop2Ltopo13311,{1,0,0,0,0}]^2GLI[\
-prop2Ltopo13311,{1,0,0,0,1}]GLI[prop2Ltopo13311,{1,0,1,0,1}]\
-\[IndentingNewLine]\[IndentingNewLine]},{FCTopology[prop2Ltopo13311,{\
-SFAD[{{I*p1,0},{-m1^2,-1},1}],SFAD[{{I*(p1+q1),0},{-m3^2,-1},1}],SFAD[\
-{{I*p3,0},{-m3^2,-1},1}],SFAD[{{I*(p3+q1),0},{-m1^2,-1},1}],SFAD[{{I*(\
-p1-p3),0},{-m1^2,-1},1}]},{p1,p3},{q1},{SPD[q1,q1]->m1^2},{}]},\
-Names->x,FCE->True,Head->ph]",
+"FCLoopToPakForm[{GLI[prop2Ltopo13311, {1, 0, 0, 0, 0}]^2,
+GLI[prop2Ltopo13311, {1, 0, 0, 0, 0}]^2 GLI[
+	prop2Ltopo13311, {1, 0, 0, 0, 1}],
+GLI[prop2Ltopo13311, {1, 0, 0, 0, 0}]^2 GLI[
+	prop2Ltopo13311, {1, 0, 0, 0, 1}] GLI[
+	prop2Ltopo13311, {1, 0, 1, 0, 1}]}, {FCTopology[
+prop2Ltopo13311, {SFAD[{{I*p1, 0}, {-m1^2, -1}, 1}],
+	SFAD[{{I*(p1 + q1), 0}, {-m3^2, -1}, 1}],
+	SFAD[{{I*p3, 0}, {-m3^2, -1}, 1}],
+	SFAD[{{I*(p3 + q1), 0}, {-m1^2, -1}, 1}],
+	SFAD[{{I*(p1 - p3), 0}, {-m1^2, -1}, 1}]}, {p1,
+	p3}, {q1}, {SPD[q1, q1] -> m1^2}, {}]}, Names -> x, FCE -> True,
+Head -> ph]",
 "{{GLI[prop2Ltopo13311, {1, 0, 0, 0, 0}]^2, ph[x[1]*x[2] - \
 m1^2*x[1]^2*x[2] - m1^2*x[1]*x[2]^2, {{x[1], x[2]}, \
 {SFAD[{{I*FCGV[\"lmom\"][1, 1], 0}, {-m1^2, -1}, 1}], \

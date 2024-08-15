@@ -66,6 +66,3 @@ ex2=-(I/24) LCD[\[Mu]',\[Nu]',\[Rho]',\[Alpha]'] . GAD[\[Mu]',\[Nu]',\[Rho]',\[A
 DiracSimplify[ex1 . ex2]//Factor2
 
 %/.D->4
-
-
-

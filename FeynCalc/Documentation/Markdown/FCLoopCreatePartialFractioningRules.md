@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## FCLoopCreatePartialFractioningRules
 
 `FCLoopCreatePartialFractioningRules[glis, topos] applies partial fraction decomposition to the given GLIs provided that the corresponding topologies contain linearly dependent propagators. The output is given as a list containing replacement rules and new topologies generated in the course of the decomposition.

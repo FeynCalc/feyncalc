@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## FromFCPartialFractionForm
 
 `FromFCPartialFractionForm[exp]` converts all `FCPartialFractionForm` symbols present in `exp` back into the standard representation.

@@ -17,10 +17,7 @@ $$\frac{t^{b-1} \Gamma (c) (1-t z)^{-a} (1-t)^{-b+c-1}}{\Gamma (b) \Gamma (c-b)}
 ```mathematica
 ToHypergeometric[t^b (1 - t)^c (1 + t z)^a, t] 
  
-HypergeometricIR[%, t] 
-  
- 
-
+HypergeometricIR[%, t]
 ```
 
 $$\frac{\Gamma (b+1) \Gamma (c+1) \, _2F_1(-a,b+1;b+c+2;-z)}{\Gamma (b+c+2)}$$

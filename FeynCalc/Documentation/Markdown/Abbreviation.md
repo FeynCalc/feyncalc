@@ -4,7 +4,7 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [$Abbreviations]($Abbreviations.md), [OneLoop](OneLoop.md), [PaVeReduce](PaVeReduce.md), [WriteOut](WriteOut.md), [WriteOutPaVe](WriteOutPaVe.md), [GluonPropagator](GluonPropagator.md), [GluonVertex](GluonVertex.md), [QuarkPropagator](QuarkPropagator.md).
+[Overview](Extra/FeynCalc.md), [\$Abbreviations](\$Abbreviations.md), [OneLoop](OneLoop.md), [PaVeReduce](PaVeReduce.md), [WriteOut](WriteOut.md), [WriteOutPaVe](WriteOutPaVe.md), [GluonPropagator](GluonPropagator.md), [GluonVertex](GluonVertex.md), [QuarkPropagator](QuarkPropagator.md).
 
 ### Examples
 

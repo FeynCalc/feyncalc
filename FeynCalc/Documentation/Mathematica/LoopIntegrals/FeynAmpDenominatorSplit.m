@@ -28,7 +28,6 @@ FAD[q1,q1-p,q1-q2,q2,q2-p]
 ex=FeynAmpDenominatorSplit[%]
 
 
-
 ex//FCE//StandardForm
 
 

@@ -132,10 +132,7 @@ while the rest will be ignored.
      R, r] . QuantumField[FCPartialD[{CartesianIndex[i], r}], 
      FCPartialD[{CartesianIndex[i], r}], \[Phi], PauliIndex[k2], PauliIndex[k1], R, r]) 
  
-FCCanonicalizeDummyIndices[%, CartesianIndexNames -> {j}, Head -> {CartesianIndex}] 
-  
- 
-
+FCCanonicalizeDummyIndices[%, CartesianIndexNames -> {j}, Head -> {CartesianIndex}]
 ```
 
 $$\phi ^{+\text{k1}\;\text{k2}Rr}.\left(\partial _{\{i,r\}}\partial _{\{i,r\}}\phi ^{\text{k2}\;\text{k1}Rr}\right)$$

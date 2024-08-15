@@ -55,6 +55,7 @@ Options[DiracTrace] = {
 	DiracTraceEvaluate	-> False,
 	EpsContract			-> False,
 	EpsExpand			-> True,
+	EpsEvaluate			-> True,
 	Expand				-> True,
 	FCVerbose			-> False,
 	Factoring			-> Automatic,
@@ -217,11 +218,10 @@ diracTraceEvaluate[expr_/;FreeQ[expr,DiracGamma], OptionsPattern[]] :=
 	unitMatrixTrace expr;
 
 diracTraceEvaluate[expr_/;!FreeQ[expr,DiracGamma], opts:OptionsPattern[]] :=
-	Block[ { diractrres, tmp = expr, diractrfact,
-		diractrcoll,
-		dtmp,dWrap,wrapRule,prepSpur,time,time2,contract,spurHeadList,spurHeadListChiral,spurHeadListNonChiral,
-		gammaFree,gammaPart,
-		traceListChiral,traceListNonChiral,repRule,null1,null2,dummyIndexFreeQ},
+	Block[{ diractrres, tmp = expr, diractrfact, diractrcoll,
+			dtmp,dWrap,wrapRule,prepSpur,time,time2,contract,spurHeadList,
+			spurHeadListChiral,spurHeadListNonChiral,gammaFree,gammaPart,
+		traceListChiral,traceListNonChiral,repRule,null1,null2,dummyIndexFreeQ, epsEvaluate},
 
 		wrapRule = {dWrap[5]->0, dWrap[6]->1/2, dWrap[7]->1/2, dWrap[LorentzIndex[_,_:4],___]->0,
 					dWrap[_. Momentum[_,_:4]+_:0,___]->0};
@@ -229,6 +229,7 @@ diracTraceEvaluate[expr_/;!FreeQ[expr,DiracGamma], opts:OptionsPattern[]] :=
 		diractrfact = OptionValue[DiracTrace,{opts},Factoring];
 		diractrcoll = OptionValue[DiracTrace,{opts},PairCollect];
 		contract  	= OptionValue[DiracTrace,{opts},Contract];
+		epsEvaluate	= OptionValue[DiracTrace,{opts},EpsEvaluate];
 		west		= OptionValue[DiracTrace,{opts},West];
 		larinMVV	= OptionValue[DiracTrace,{opts},LarinMVV];
 
@@ -291,7 +292,6 @@ diracTraceEvaluate[expr_/;!FreeQ[expr,DiracGamma], opts:OptionsPattern[]] :=
 			(*	Unknown non-commutative objects inside the trace prevent trace from being computed *)
 			tmp = tmp/. spurHead[x__]/; !NonCommFreeQ[{x}/.DiracGamma->null1] :> noSpur[x];
 			FCPrint[3,"DiracTrace: diracTraceEvaluate: Trace contains unknown non-commutative objects: ", !FreeQ[tmp, noSpur], FCDoControl->diTrVerbose];
-
 
 			(* Split chiral projectors here *)
 			tmp = tmp /. {spurHead[x___,DiracGamma[6]] :> 1/2 spurHead[x] + 1/2 spurHead[x,DiracGamma[5]],
@@ -371,7 +371,7 @@ diracTraceEvaluate[expr_/;!FreeQ[expr,DiracGamma], opts:OptionsPattern[]] :=
 
 			(* Evaluate the traces *)
 			time2=AbsoluteTime[];
-			FCPrint[1,"DiracTrace: diracTraceEvaluate: Calculating non-chiral traces.", FCDoControl->diTrVerbose];
+			FCPrint[1,"DiracTrace: diracTraceEvaluate: Calculating ", Length[spurHeadListChiral], " nonchiral traces.", FCDoControl->diTrVerbose];
 
 			traceListNonChiral = spurHeadListNonChiral/. spurHead-> spurNo5;
 			FCPrint[1,"DiracTrace: diracTraceEvaluate: Done calculating non-chiral traces, timing: ", N[AbsoluteTime[] - time2, 4], FCDoControl->diTrVerbose];
@@ -384,7 +384,7 @@ diracTraceEvaluate[expr_/;!FreeQ[expr,DiracGamma], opts:OptionsPattern[]] :=
 			];
 
 			time2=AbsoluteTime[];
-			FCPrint[1,"DiracTrace: diracTraceEvaluate: Calculating chiral traces.", FCDoControl->diTrVerbose];
+			FCPrint[1,"DiracTrace: diracTraceEvaluate: Calculating ",Length[spurHeadListChiral]," chiral traces.", FCDoControl->diTrVerbose];
 			(* 	Purely 4 dimensional traces are always computed in the same way, regardless of the chosen scheme:
 				Eq 2.18 of R. Mertig, M. Boehm, A. Denner. Comp. Phys. Commun., 64 (1991)) *)
 			traceListChiral = spurHeadListChiral/. spurHead[x__]/;(FCGetDimensions[{x},ChangeDimension->True]==={4}) :> spur5In4Dim[x];
@@ -395,22 +395,25 @@ diracTraceEvaluate[expr_/;!FreeQ[expr,DiracGamma], opts:OptionsPattern[]] :=
 
 					(*	NDR	*)
 					"NDR",
-						FCPrint[3,"DiracTrace: diracTraceEvaluate: Chiral traces will be left untouched (NDR scheme).", FCDoControl->diTrVerbose];
+						FCPrint[2,"DiracTrace: diracTraceEvaluate: Chiral traces will be left untouched (NDR scheme).", FCDoControl->diTrVerbose];
 						traceListChiral = traceListChiral/. spurHead -> noSpur,
 
 					(*	NDR-Discard	*)
 					"NDR-Discard",
-						FCPrint[3,"DiracTrace: diracTraceEvaluate: Chiral traces are set to zero (NDR-Discard scheme).", FCDoControl->diTrVerbose];
+						FCPrint[2,"DiracTrace: diracTraceEvaluate: Chiral traces are set to zero (NDR-Discard scheme).", FCDoControl->diTrVerbose];
 						traceListChiral = ConstantArray[0, Length[traceListChiral]],
 
 					(*	Larin	*)
 					"Larin",
-						FCPrint[3,"DiracTrace: diracTraceEvaluate: Chiral traces will be computed using Larin scheme", FCDoControl->diTrVerbose];
+						FCPrint[2,"DiracTrace: diracTraceEvaluate: Chiral traces will be computed using Larin scheme.", FCDoControl->diTrVerbose];
 
 						If[	larinMVV,
-							(* Larin, MVV trace formula *)
+							FCPrint[2,"DiracTrace: diracTraceEvaluate: Using the MVV trace formula.", FCDoControl->diTrVerbose];
+
 							traceListChiral = traceListChiral/. spurHead -> spur5LarinMVV,
-							(* Laring, standard (slow!) trace formula *)
+
+							FCPrint[2,"DiracTrace: diracTraceEvaluate: Using the standard slow trace formula.", FCDoControl->diTrVerbose];
+
 							traceListChiral = traceListChiral/. spurHead -> spur5Larin
 						],
 
@@ -496,7 +499,7 @@ diracTraceEvaluate[expr_/;!FreeQ[expr,DiracGamma], opts:OptionsPattern[]] :=
 		];
 
 		(* Special expansion for expressions that contain Levi-Civita tensors*)
-		If[ !FreeQ[tmp, Eps],
+		If[ !FreeQ[tmp, Eps] && epsEvaluate,
 			time=AbsoluteTime[];
 			FCPrint[1,"DiracTrace: diracTraceEvaluate: Treating Eps tensors.", FCDoControl->diTrVerbose];
 			tmp = EpsEvaluate[tmp,FCI->True, EpsExpand->OptionValue[DiracTrace,{opts},EpsExpand]]//Expand;

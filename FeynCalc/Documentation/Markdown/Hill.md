@@ -21,10 +21,7 @@ $$0$$
 ```mathematica
 Hill[x, x y] // PowerExpand // SimplifyPolyLog // Expand 
  
-% /. x :> .34 /. y -> .6 // N // Chop 
-  
- 
-
+% /. x :> .34 /. y -> .6 // N // Chop
 ```
 
 $$\zeta (2)-\text{Li}_2(x y)+\text{Li}_2\left(\frac{1-x}{1-x y}\right)-\text{Li}_2\left(\frac{(1-x) y}{1-x y}\right)-\text{Li}_2(1-x)-\text{Li}_2(1-y)-\log (x) \log (1-x y)-\log (1-y) \log (y)$$

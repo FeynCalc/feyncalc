@@ -26,6 +26,3 @@
 x^a y^a
 
 PowerFactor[%]
-
-
-

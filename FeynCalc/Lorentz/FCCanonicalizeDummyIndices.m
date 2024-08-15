@@ -93,6 +93,12 @@ renameDummies[dummyNames_,wrapHead_, totalRepLis_]:=
 		renamingRule
 	];
 
+FCCanonicalizeDummyIndices[a_ == b_, opts:OptionsPattern[]] :=
+	FCCanonicalizeDummyIndices[a,opts] == FCCanonicalizeDummyIndices[b,opts];
+
+FCCanonicalizeDummyIndices[expr_List, opts:OptionsPattern[]]:=
+	FCCanonicalizeDummyIndices[#, opts]&/@expr;
+
 FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
 	Block[ {indexList = {}, ex,exUnexpanded,tmp,null1,null2, renamingRule,
 			rest0=0,lihead,cihead,seedLor,moms,notmoms,finalList,isoHead, uniqueExpressions,

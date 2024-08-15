@@ -4,7 +4,7 @@ The string value of `$TypesettingDimD` determines which symbols will be displaye
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [$TypesettingDim4]($TypesettingDim4.md), [$TypesettingDimE]($TypesettingDimE.md).
+[Overview](Extra/FeynCalc.md), [\$TypesettingDim4](\$TypesettingDim4.md), [\$TypesettingDimE](\$TypesettingDimE.md).
 
 ### Examples
 

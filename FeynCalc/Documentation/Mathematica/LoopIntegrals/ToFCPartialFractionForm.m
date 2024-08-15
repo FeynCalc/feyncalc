@@ -40,6 +40,3 @@ ToFCPartialFractionForm[%,x]
 (-64*(-1+z^2))/(15*(1+z^2+z^4))
 
 ToFCPartialFractionForm[%,z]
-
-
-

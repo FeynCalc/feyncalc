@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## GALRD
 
 `GALRD[mu,n,nb]` denotes the perpendicular component in the lightcone decomposition of the Dirac matrix $\gamma^{\mu }$  along the vectors `n` and `nb` in $D$ dimensions. It corresponds to $\gamma^{\mu}_{\perp}$.

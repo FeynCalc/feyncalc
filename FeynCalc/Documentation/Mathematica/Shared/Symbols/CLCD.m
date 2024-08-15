@@ -49,6 +49,3 @@ CLCD[i,j][p]CLCD[i,j][q]//Contract//Factor2
 CLCD[i,j,k]CVD[Subscript[p, 1],i]CVD[Subscript[p, 2],j]CVD[Subscript[p, 3],k]
 
 Contract[%]
-
-
-

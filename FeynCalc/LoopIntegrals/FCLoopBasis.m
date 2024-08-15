@@ -218,7 +218,9 @@ FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 	Block[{	expr, coeffs, lmoms,allmoms, extmoms, basisElements,
 			availableDims, dims, res, useToSFAD, integralBasis, integralBasisT,
 			coeffsPair, coeffsCartesianPair, coeffsTemporalPair,
-			lorentzianDims, cartesianDims, null1, null2, aux, optSortBy, optFinalSubstitutions},
+			lorentzianDims, cartesianDims, null1, null2, aux, optSortBy,
+			optFinalSubstitutions, etaSigns, etaSignsLorentzian,
+			etaSignsCartesian, etaSignsGeneric},
 
 		If [OptionValue[FCVerbose]===False,
 				fclbeVerbose=$VeryVerbose,
@@ -251,14 +253,48 @@ FCLoopBasisExtract[exp_, loopmoms_List, OptionsPattern[]]:=
 		FCPrint[3,"FCLoopBasisExtract: Entering with: ", expr, FCDoControl->fclbeVerbose];
 		FCPrint[3,"FCLoopBasisExtract: Loop momenta: ", loopmoms, FCDoControl->fclbeVerbose];
 
-		(*If[	!FCLoopNonIntegerPropagatorPowersFreeQ[expr],
-			Message[FCLoopBasisExtract::failmsg, "Integrals with noninteger propagator powers are not supported."];
-			Abort[]
-		];*)
-
 		useToSFAD = !FreeQ[expr, StandardPropagatorDenominator];
 
-		integralBasis = FCLoopIntegralToPropagators[expr, loopmoms, FCI->True, Rest->OptionValue[Rest], Negative->True, Tally->True,
+
+		etaSignsLorentzian	= FCLoopGetEtaSigns[expr, SFAD->True,  GFAD->False, CFAD->False];
+		etaSignsCartesian	= FCLoopGetEtaSigns[expr, SFAD->False, GFAD->False, CFAD->True];
+		etaSignsGeneric		= FCLoopGetEtaSigns[expr, SFAD->False, GFAD->True,  CFAD->False];
+
+
+		(*{} accounts for input like {SPD[q1] - m1^2} *)
+		If[	etaSignsLorentzian==={},
+			etaSignsLorentzian={1}
+		];
+
+		If[	etaSignsCartesian==={},
+			etaSignsCartesian={-1}
+		];
+
+		If[	etaSignsGeneric==={},
+			etaSignsGeneric={1}
+		];
+
+
+		If[	!MatchQ[etaSignsLorentzian,{1}|{-1}],
+				Message[FCLoopBasisExtract::failmsg, "The integral contains Lorentzian propagators with different EtaSign prescriptions. " <>
+				"Please use FCLoopSwitchEtaSign to have the same prescription in all propagators."];
+				Abort[]
+		];
+
+		If[	!MatchQ[etaSignsCartesian,{1}|{-1}],
+				Message[FCLoopBasisExtract::failmsg, "The integral contains Cartesian propagators with different EtaSign prescriptions. " <>
+				"Please use FCLoopSwitchEtaSign to have the same prescription in all propagators."];
+				Abort[]
+		];
+
+		If[	!MatchQ[etaSignsGeneric,{1}|{-1}],
+				Message[FCLoopBasisExtract::failmsg, "The integral contains generic propagators with different EtaSign prescriptions. " <>
+				"Please use FCLoopSwitchEtaSign to have the same prescription in all propagators."];
+				Abort[]
+		];
+
+		integralBasis = FCLoopIntegralToPropagators[expr, loopmoms, FCI->True, EtaSign->{etaSignsLorentzian[[1]],etaSignsCartesian[[1]],etaSignsGeneric[[1]]},
+			Rest->OptionValue[Rest], Negative->True, Tally->True,
 			Pair->True,CartesianPair->True, ToSFAD->useToSFAD, MomentumCombine -> True, ExpandScalarProduct->True,
 			Sort->False
 		];

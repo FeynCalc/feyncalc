@@ -170,14 +170,11 @@ FVD[q1, mu] FVD[q2, nu] LCD[mu, nu][a,
 FAD[p1, {p2, m}, {p3, m}, p1, p1,
 p1, {-p1 + p2, m}, {-p1 + p3, m}] FVD[p1, Lor1] FVD[p1, Lor2] (SPD[p1, p1] -
 	2 (SPD[p1, p2] + SPD[p1, p3] - 2 SPD[p2, p3]))^2, {p1, p2, p3},FCE -> True]",
-	"(2*FAD[p1, p1, p1, {p1 - p2, m}, {p1 - p3, m}]*MTD[Lor1, Lor2])/D -
-	(4*FAD[p1, p1, p1, {p2, m}, {p1 - p3, m}]*MTD[Lor1, Lor2])/D + (2*FAD[p1, p1, {p2, m}, {p1 - p2, m},
-	{p1 - p3, m}]*MTD[Lor1, Lor2])/D - (2*FAD[p1, p1, {p2, m}, {p3, m}, {p1 - p2, m}]*MTD[Lor1, Lor2])/D +
-	(FAD[p1, {p2, m}, {p3, m}, {p1 - p2, m}, {p1 - p3, m}]*MTD[Lor1, Lor2])/D +
-	(4*FAD[p1, p1, p1, {p3, m}, {p1 - p2, m}, {p1 - p3, m}]*MTD[Lor1, Lor2]*SPD[p1, p2])/D -
-	(16*FAD[{p1, m}, p3, p3, p3, {p1 - p3, m}, {p2 - p3, m}]*MTD[Lor1, Lor2]*SPD[p1, p2])/D -
-	(8*FAD[{p1, m}, {p2, m}, p3, p3, {p1 - p3, m}, {p2 - p3, m}]*MTD[Lor1, Lor2]*SPD[p1, p2])/D +
-	(16*FAD[{p1, m}, {p2, m}, p3, p3, p3, {p1 - p3, m}, {p2 - p3, m}]*MTD[Lor1, Lor2]*SPD[p1, p2]^2)/D"},
+	"(2*FAD[p1, p1, {p2, m}, {p1 - p2, m}, {p1 - p3, m}]*MTD[Lor1, Lor2])/D - (2*FAD[p1, p1, {p2, m}, {p3, m}, {p1 - p2, m}]*MTD[Lor1, Lor2])/D +
+	(FAD[p1, {p2, m}, {p3, m}, {p1 - p2, m}, {p1 - p3, m}]*MTD[Lor1, Lor2])/D + (4*FAD[p1, p1, p1, {p3, m}, {p1 - p2, m}, {p1 - p3,
+	m}]*MTD[Lor1, Lor2]*SPD[p1, p2])/D - (16*FAD[{p1, m}, p3, p3, p3, {p1 - p3, m}, {p2 - p3, m}]*MTD[Lor1, Lor2]*SPD[p1,
+	p2])/D - (8*FAD[{p1, m}, {p2, m}, p3, p3, {p1 - p3, m}, {p2 - p3, m}]*MTD[Lor1, Lor2]*SPD[p1, p2])/D + (16*FAD[{p1,
+	m}, {p2, m}, p3, p3, p3, {p1 - p3, m}, {p2 - p3, m}]*MTD[Lor1, Lor2]*SPD[p1, p2]^2)/D"},
 {"fcstFCMultiLoopTID-ID16", "FCMultiLoopTID[(GSD[l] + m) SPD[l, p2] FAD[{l, m1}, {l + p, m2}], {l},
 FCE -> True]",
 "m*FAD[{l, m1}, {l + p, m2}]*SPD[l, p2] - (FAD[{l, m1}, {l - p, m2}]*SPD[l, p2]^2*(GSD[p2]*SPD[p, p] -
@@ -245,10 +242,7 @@ FAD[q1, q1 - k1, q1 - k1, q1 - k1, q2] SPD[k1 - q1, k1 + q1] SPD[
 q1 - k1, q1 + k1], {q1, q2}]","0"},
 {"fcstFCMultiLoopTID-ID21", "FCMultiLoopTID[
 FAD[q1, q1 - k1, q2, q1 + q2] SPD[2 k1 - q1, q1 + 2 q2], {q1, q2},
-FCE -> True]","2 FAD[q2, q1, q1 + q2, -k1 + q1] SPD[k1, q1] +
-4 FAD[q2, q1, q1 + q2, -k1 + q1] SPD[k1, q2] -
-FAD[q2, q1, q1 + q2, -k1 + q1] SPD[q1, q1] -
-2 FAD[q2, q1, q1 + q2, -k1 + q1] SPD[q1, q2]"},
+FCE -> True]","2*FAD[q1, q2, -k1 + q1, q1 + q2]*SPD[k1, q1] + 4*FAD[q1, q2, -k1 + q1, q1 + q2]*SPD[k1, q2] - FAD[q1, q2, -k1 + q1, q1 + q2]*SPD[q1, q1] - 2*FAD[q1, q2, -k1 + q1, q1 + q2]*SPD[q1, q2]"},
 {"fcstFCMultiLoopTID-ID22", "FCMultiLoopTID[FVD[q, i] FVD[q, j] SFAD[{{0, p.q}, x}], {q},
 FCE -> True]","0"},
 {"fcstFCMultiLoopTID-ID23", "FCMultiLoopTID[FVD[q, i] FVD[q, j] SFAD[{{0, p.q}, x}, q + p], {q},
@@ -318,5 +312,17 @@ k1] (-SPD[k1, k1] +
 	D) SPD[k1, k1]) + (FAD[q1, q1 - q2, -k1 + q2] FVE[
 	k1, \[Mu]] SPD[k1, q1] SPD[k1, q2] SPE[k1,
 	k1] (-3 SPD[k1, k1] + 2 SPE[k1, k1] + D SPE[k1, k1]))/(2 (1 -
-	D) SPD[k1, k1]^3))"}
-})
+	D) SPD[k1, k1]^3))"},
+{"fcstFCMultiLoopTID-ID33",
+"FCMultiLoopTID[ FAD[k, -k - p + q, k + p,
+p] FVD[-k - p + q, \[Alpha]] FVD[-k - p + q, \[Rho]] SPD[
+k, -k - p + q], {p, k}, FCE -> True]",
+"-(FAD[k, p, k + p, k + p - q]*FVD[q, \[Alpha]]*FVD[q, \[Rho]]*SPD[k, k]) - FAD[k, p, k + p, k + p - q]*FVD[q, \[Alpha]]*FVD[q, \[Rho]]*SPD[k, p] + FAD[k, p, k + p, k + p - q]*FVD[q, \[Alpha]]*FVD[q, \[Rho]]*SPD[k, q] +
+(FAD[k, k - p, p - q]*FVD[q, \[Alpha]]*FVD[q, \[Rho]]*SPD[k, q])/SPD[q, q] + (FAD[k, k - p, p - q]*SPD[k, p]*(FVD[q, \[Alpha]]*FVD[q, \[Rho]] - MTD[\[Alpha], \[Rho]]*SPD[q, q]))/((1 - D)*SPD[q, q]) -
+(FAD[k, p, k - p, p - q]*SPD[k, q]*(2*FVD[q, \[Alpha]]*FVD[q, \[Rho]] - D*FVD[q, \[Alpha]]*FVD[q, \[Rho]] - MTD[\[Alpha], \[Rho]]*SPD[q, q]))/(2*(1 - D)) + (FAD[k, k - p, p - q]*(D*FVD[q, \[Alpha]]*FVD[q, \[Rho]] - MTD[\[Alpha], \[Rho]]*SPD[q, q]))/(2*(1 - D)) +
+(FAD[k, k - p, p - q]*SPD[k, q]^2*(D*FVD[q, \[Alpha]]*FVD[q, \[Rho]] - MTD[\[Alpha], \[Rho]]*SPD[q, q]))/(2*(1 - D)*SPD[q, q]^2) + (FAD[p, k - p, k - q]*SPD[k, q]^2*(D*FVD[q, \[Alpha]]*FVD[q, \[Rho]] - MTD[\[Alpha], \[Rho]]*SPD[q, q]))/
+((1 - D)*SPD[q, q]^2) - (2*FAD[k, p, k - p, p - q]*SPD[k, q]^3*(D*FVD[q, \[Alpha]]*FVD[q, \[Rho]] - MTD[\[Alpha], \[Rho]]*SPD[q, q]))/((1 - D)*SPD[q, q]^2) -
+(3*FAD[p, k - p, k - q]*SPD[k, q]*(D*FVD[q, \[Alpha]]*FVD[q, \[Rho]] - MTD[\[Alpha], \[Rho]]*SPD[q, q]))/(2*(1 - D)*SPD[q, q]) + (3*FAD[k, p, k - p, p - q]*SPD[k, q]^2*(D*FVD[q, \[Alpha]]*FVD[q, \[Rho]] - MTD[\[Alpha], \[Rho]]*SPD[q, q]))/
+(2*(1 - D)*SPD[q, q])"}
+}
+)

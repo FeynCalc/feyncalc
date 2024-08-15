@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## FCLoopFindTopologyMappings
 
 `FCLoopFindTopologyMappings[{topo1, topo2, ...}]` finds mappings between topologies (written as `FCTopology` objects) `topo1, topo2, ...`. For each source topology the function returns a list of loop momentum shifts and a `GLI` replacement rule needed to map it to the given target topology. If you need to map everything to a particular set of target topologies, you can specify them via the `PreferredTopologies` option.
@@ -65,9 +61,9 @@ mappings1[[1]]
 
 $$\left(
 \begin{array}{ccc}
- \;\text{FCTopology}\left(\text{fctopology3},\left\{\frac{1}{(\text{p3}^2+i \eta )},\frac{1}{(\text{p2}^2+i \eta )},\frac{1}{(\text{p1}^2+i \eta )},\frac{1}{((\text{p2}+\text{p3})^2+i \eta )},\frac{1}{((\text{p1}+\text{p3})^2+i \eta )},\frac{1}{((\text{p2}-Q)^2+i \eta )},\frac{1}{((\text{p2}+\text{p3}-Q)^2+i \eta )},\frac{1}{((\text{p1}+\text{p3}-Q)^2+i \eta )},\frac{1}{((\text{p1}+\text{p2}+\text{p3}-Q)^2+i \eta )}\right\},\{\text{p1},\text{p2},\text{p3}\},\{Q\},\{\},\{\}\right) & \{\text{p1}\to -\text{p1}-\text{p3}+Q,\text{p2}\to -\text{p2}-\text{p3}+Q,\text{p3}\to \;\text{p3}\} & G^{\text{fctopology3}}(\text{n1$\_$},\text{n7$\_$},\text{n8$\_$},\text{n5$\_$},\text{n6$\_$},\text{n4$\_$},\text{n2$\_$},\text{n3$\_$},\text{n9$\_$}):\to G^{\text{fctopology1}}(\text{n1},\text{n2},\text{n3},\text{n4},\text{n5},\text{n6},\text{n7},\text{n8},\text{n9}) \\
+ \;\text{FCTopology}\left(\text{fctopology3},\left\{\frac{1}{(\text{p3}^2+i \eta )},\frac{1}{(\text{p2}^2+i \eta )},\frac{1}{(\text{p1}^2+i \eta )},\frac{1}{((\text{p2}+\text{p3})^2+i \eta )},\frac{1}{((\text{p1}+\text{p3})^2+i \eta )},\frac{1}{((\text{p2}-Q)^2+i \eta )},\frac{1}{((\text{p2}+\text{p3}-Q)^2+i \eta )},\frac{1}{((\text{p1}+\text{p3}-Q)^2+i \eta )},\frac{1}{((\text{p1}+\text{p2}+\text{p3}-Q)^2+i \eta )}\right\},\{\text{p1},\text{p2},\text{p3}\},\{Q\},\{\},\{\}\right) & \{\text{p1}\to -\text{p1}-\text{p3}+Q,\text{p2}\to -\text{p2}-\text{p3}+Q\} & G^{\text{fctopology3}}(\text{n1$\_$},\text{n7$\_$},\text{n8$\_$},\text{n5$\_$},\text{n6$\_$},\text{n4$\_$},\text{n2$\_$},\text{n3$\_$},\text{n9$\_$}):\to G^{\text{fctopology1}}(\text{n1},\text{n2},\text{n3},\text{n4},\text{n5},\text{n6},\text{n7},\text{n8},\text{n9}) \\
  \;\text{FCTopology}\left(\text{fctopology4},\left\{\frac{1}{(\text{p3}^2+i \eta )},\frac{1}{(\text{p2}^2+i \eta )},\frac{1}{(\text{p1}^2+i \eta )},\frac{1}{((\text{p2}+\text{p3})^2+i \eta )},\frac{1}{((\text{p1}+\text{p3})^2+i \eta )},\frac{1}{((\text{p2}-Q)^2+i \eta )},\frac{1}{((\text{p1}-Q)^2+i \eta )},\frac{1}{((\text{p1}+\text{p3}-Q)^2+i \eta )},\frac{1}{((\text{p1}+\text{p2}+\text{p3}-Q)^2+i \eta )}\right\},\{\text{p1},\text{p2},\text{p3}\},\{Q\},\{\},\{\}\right) & \{\text{p1}\to Q-\text{p2},\text{p2}\to Q-\text{p1},\text{p3}\to -\text{p3}\} & G^{\text{fctopology4}}(\text{n1$\_$},\text{n6$\_$},\text{n5$\_$},\text{n8$\_$},\text{n7$\_$},\text{n3$\_$},\text{n2$\_$},\text{n4$\_$},\text{n9$\_$}):\to G^{\text{fctopology1}}(\text{n1},\text{n2},\text{n3},\text{n4},\text{n5},\text{n6},\text{n7},\text{n8},\text{n9}) \\
- \;\text{FCTopology}\left(\text{fctopology5},\left\{\frac{1}{(\text{p3}^2+i \eta )},\frac{1}{(\text{p2}^2+i \eta )},\frac{1}{(\text{p1}^2+i \eta )},\frac{1}{((\text{p1}+\text{p3})^2+i \eta )},\frac{1}{((\text{p2}-Q)^2+i \eta )},\frac{1}{((\text{p1}-Q)^2+i \eta )},\frac{1}{((\text{p1}+\text{p3}-Q)^2+i \eta )},\frac{1}{((\text{p1}+\text{p2}-Q)^2+i \eta )},\frac{1}{((\text{p1}+\text{p2}+\text{p3}-Q)^2+i \eta )}\right\},\{\text{p1},\text{p2},\text{p3}\},\{Q\},\{\},\{\}\right) & \{\text{p1}\to \;\text{p2},\text{p2}\to \;\text{p1},\text{p3}\to \;\text{p3}\} & G^{\text{fctopology5}}(\text{n1$\_$},\text{n3$\_$},\text{n2$\_$},\text{n4$\_$},\text{n6$\_$},\text{n5$\_$},\text{n7$\_$},\text{n8$\_$},\text{n9$\_$}):\to G^{\text{fctopology2}}(\text{n1},\text{n2},\text{n3},\text{n4},\text{n5},\text{n6},\text{n7},\text{n8},\text{n9}) \\
+ \;\text{FCTopology}\left(\text{fctopology5},\left\{\frac{1}{(\text{p3}^2+i \eta )},\frac{1}{(\text{p2}^2+i \eta )},\frac{1}{(\text{p1}^2+i \eta )},\frac{1}{((\text{p1}+\text{p3})^2+i \eta )},\frac{1}{((\text{p2}-Q)^2+i \eta )},\frac{1}{((\text{p1}-Q)^2+i \eta )},\frac{1}{((\text{p1}+\text{p3}-Q)^2+i \eta )},\frac{1}{((\text{p1}+\text{p2}-Q)^2+i \eta )},\frac{1}{((\text{p1}+\text{p2}+\text{p3}-Q)^2+i \eta )}\right\},\{\text{p1},\text{p2},\text{p3}\},\{Q\},\{\},\{\}\right) & \{\text{p1}\to \;\text{p2},\text{p2}\to \;\text{p1}\} & G^{\text{fctopology5}}(\text{n1$\_$},\text{n3$\_$},\text{n2$\_$},\text{n4$\_$},\text{n6$\_$},\text{n5$\_$},\text{n7$\_$},\text{n8$\_$},\text{n9$\_$}):\to G^{\text{fctopology2}}(\text{n1},\text{n2},\text{n3},\text{n4},\text{n5},\text{n6},\text{n7},\text{n8},\text{n9}) \\
 \end{array}
 \right)$$
 
@@ -229,7 +225,7 @@ mappings4[[1]]
 
 $$\left(
 \begin{array}{ccc}
- \;\text{FCTopology}\left(\text{topo2},\left\{\frac{1}{((\text{l1}-\text{l2})^2-m^2+i \eta )},\frac{1}{((\text{l1}-\text{q2})^2+i \eta )},\frac{1}{((\text{l2}-\text{q2})^2-m^2+i \eta )},\frac{1}{((\text{l2}+\text{q1})^2-m^2+i \eta )},\frac{1}{(\text{l2}^2+i \eta )}\right\},\{\text{l1},\text{l2}\},\{\text{q1},\text{q2}\},\left\{\text{q1}^2\to 0,\text{q2}^2\to 0,\text{q1}\cdot \;\text{q2}\to \frac{s}{2}\right\},\{\}\right) & \{\text{l1}\to -\text{l1}+\text{l2}-\text{q1},\text{l2}\to \;\text{l2},\text{q1}\to -\text{q2},\text{q2}\to -\text{q1}\} & G^{\text{topo2}}(\text{n1$\_$},\text{n2$\_$},\text{n3$\_$},\text{n4$\_$},\text{n5$\_$}):\to G^{\text{topo1}}(\text{n1},\text{n2},\text{n3},\text{n4},\text{n5}) \\
+ \;\text{FCTopology}\left(\text{topo2},\left\{\frac{1}{((\text{l1}-\text{l2})^2-m^2+i \eta )},\frac{1}{((\text{l1}-\text{q2})^2+i \eta )},\frac{1}{((\text{l2}-\text{q2})^2-m^2+i \eta )},\frac{1}{((\text{l2}+\text{q1})^2-m^2+i \eta )},\frac{1}{(\text{l2}^2+i \eta )}\right\},\{\text{l1},\text{l2}\},\{\text{q1},\text{q2}\},\left\{\text{q1}^2\to 0,\text{q2}^2\to 0,\text{q1}\cdot \;\text{q2}\to \frac{s}{2}\right\},\{\}\right) & \{\text{l1}\to -\text{l1}+\text{l2}-\text{q1},\text{q1}\to -\text{q2},\text{q2}\to -\text{q1}\} & G^{\text{topo2}}(\text{n1$\_$},\text{n2$\_$},\text{n3$\_$},\text{n4$\_$},\text{n5$\_$}):\to G^{\text{topo1}}(\text{n1},\text{n2},\text{n3},\text{n4},\text{n5}) \\
 \end{array}
 \right)$$
 
@@ -238,6 +234,8 @@ Otherwise no mappings exist
 ```mathematica
 FCLoopFindTopologyMappings[topos4][[1]]
 ```
+
+$$\text{FCLoopFindMomentumShifts: }\;\text{Failed to derive the momentum shifts between topologies topo2 and topo1. This can be due to the presence of nonquadratic propagators or because shifts in external momenta are also necessary.}$$
 
 $$\text{FCLoopFindTopologyMappings: }\;\text{Found }0\text{ mapping relations }$$
 
@@ -268,6 +266,7 @@ topoEik2 = FCTopology[mytopo79, {SFAD[{{k2, 0}, {0, 1}, 1}], SFAD[{{k1, 0}, {0, 
 ```
 
 ```mathematica
+DataType[gkin, FCVariable] = True;
 DataType[meta, FCVariable] = True;
 DataType[u0b, FCVariable] = True;
 ```
@@ -278,6 +277,12 @@ At first sight these two topologies are independent from each other
 FCLoopFindTopologyMappings[{topoEik1, topoEik2}];
 ```
 
+$$\text{FCLoopFindMomentumShifts: }\;\text{The topologies contain following mixed quadratic-eikonal propagators that complicate the determination of the shifts: }\left\{\frac{1}{(\text{k1}^2+\text{k1}\cdot (2 \;\text{gkin} \;\text{meta} n-\text{meta} \;\text{u0b} \;\text{nb})-2 \;\text{gkin} \;\text{meta}^2 \;\text{u0b}+i \eta )},\frac{1}{(\text{k1}^2+\text{k1}\cdot (\text{meta} \;\text{u0b} \;\text{nb}-2 \;\text{gkin} \;\text{meta} n)-2 \;\text{gkin} \;\text{meta}^2 \;\text{u0b}+i \eta )},\frac{1}{(\text{k2}^2-\text{meta} \;\text{u0b} (\text{k2}\cdot \;\text{nb})+i \eta )},\frac{1}{((\text{k1}+\text{k2})^2-2 \;\text{gkin} \;\text{meta} \;\text{u0b} ((\text{k1}+\text{k2})\cdot n)+i \eta )},\frac{1}{((\text{k1}+\text{k2})^2-\text{meta} \;\text{u0b} ((\text{k1}+\text{k2})\cdot \;\text{nb})+i \eta )},\frac{1}{((\text{k1}+\text{k2})^2+(\text{k1}+\text{k2})\cdot (2 \;\text{gkin} \;\text{meta} \;\text{u0b} n-\text{meta} \;\text{u0b} \;\text{nb})-2 \;\text{gkin} \;\text{meta}^2 \;\text{u0b}^2+i \eta )}\right\}$$
+
+$$\text{FCLoopFindMomentumShifts: }\;\text{You can try to trade them for purely quadratic propagators using FCLoopReplaceQuadraticEikonalPropagators.}$$
+
+$$\text{FCLoopFindMomentumShifts: }\;\text{Failed to derive the momentum shifts between topologies mytopo79 and mytopo67. This can be due to the presence of nonquadratic propagators or because shifts in external momenta are also necessary.}$$
+
 $$\text{FCLoopFindTopologyMappings: }\;\text{Found }0\text{ mapping relations }$$
 
 $$\text{FCLoopFindTopologyMappings: }\;\text{Final number of independent topologies: }2$$
@@ -286,22 +291,19 @@ However, if we tell the code how some eikonal propagators can be brought into a 
 then an explicit mapping can be found
 
 ```mathematica
-eikRule = {SFAD[{{k2, -meta u0b k2 . nb}, {0, 1}, 1}] -> SFAD[k2 - meta u0b/2 nb]}
+toposNew = FCLoopReplaceQuadraticEikonalPropagators[{topoEik1, topoEik2}, 
+    LoopMomenta -> {k1, k2}, 
+    InitialSubstitutions -> {
+      ExpandScalarProduct[SPD[k1 - k2]] -> SPD[k1 - k2], 
+      ExpandScalarProduct[SPD[k1 + k2]] -> SPD[k1 + k2]}, 
+    IntermediateSubstitutions -> {SPD[n] -> 0, SPD[nb] -> 0, SPD[n, nb] -> 2}];
 ```
-
-$$\left\{\frac{1}{(\text{k2}^2-\text{meta} \;\text{u0b} (\text{k2}\cdot \;\text{nb})+i \eta )}\to \frac{1}{((\text{k2}-\frac{\text{meta} \;\text{u0b} \;\text{nb}}{2})^2+i \eta )}\right\}$$
 
 ```mathematica
-eikMappings = FCLoopFindTopologyMappings[{topoEik1, topoEik2}, 
-    InitialSubstitutions -> eikRule];
-```
+eikMappings = FCLoopFindTopologyMappings[toposNew];
+
+```mathematica
 
 $$\text{FCLoopFindTopologyMappings: }\;\text{Found }1\text{ mapping relations }$$
 
 $$\text{FCLoopFindTopologyMappings: }\;\text{Final number of independent topologies: }1$$
-
-```mathematica
-eikMappings[[1]][[1]][[2 ;;]]
-```
-
-$$\left\{\left\{\text{k1}\to -\text{k1},\text{k2}\to \frac{1}{2} (\text{meta} \;\text{nb} \;\text{u0b}-2 \;\text{k2})\right\},G^{\text{mytopo79}}(\text{n5$\_$},\text{n2$\_$},\text{n4$\_$},\text{n1$\_$},\text{n3$\_$},\text{n7$\_$},\text{n6$\_$}):\to G^{\text{mytopo67}}(\text{n1},\text{n2},\text{n3},\text{n4},\text{n5},\text{n6},\text{n7})\right\}$$

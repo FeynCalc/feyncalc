@@ -43,3 +43,11 @@ Tdec[{q,\[Mu]},{p}]
 Tdec[{{Subscript[q, 1],\[Mu]},{Subscript[q, 2],\[Nu]},{Subscript[q, 3],\[Rho]}},{p},List->False]
 
 Contract[% FVD[p,\[Mu]]FVD[p,\[Nu]] FVD[p,\[Rho]]]//Factor
+
+
+(* ::Text:: *)
+(*To calculate a tensor decomposition with specific kinematic constraints, use the option `FinalSubstitutions`. Notice that kinematic configurations involving zero Gram determinants are not supported.*)
+
+
+Tdec[{{l, \[Mu]}, {l, \[Nu]}}, {p1, p2},
+FinalSubstitutions -> {SPD[p1] -> 0, SPD[p2] -> 0}, FCE -> True,List->False]

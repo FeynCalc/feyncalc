@@ -81,99 +81,30 @@ fctopology28,{SFAD[{{p2,0},{0,1},1}],SFAD[{{p1,0},{0,1},1}],SFAD[{{p1-\
 Q,0},{m1^2,1},1}]},{p1,p2},{Q},{},{}],FCTopology[fctopology29,{SFAD[{{\
 p1,0},{0,1},1}],SFAD[{{p2,0},{m1^2,1},1}],SFAD[{{p1,0},{m1^2,1},1}]},{\
 p1,p2},{Q},{},{}]},FCE->True]",
-"{{{FCTopology[fctopology4, {SFAD[{{p2, 0}, {m1^2, 1}, 1}], \
-SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], \
-SFAD[{{p1 + Q, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + p2, 0}, {m1^2, 1}, \
-1}]}, {p1, p2}, {Q}, {}, {}], {p1 -> -p2, p2 -> -p1}, \
-GLI[fctopology4, {n3_, n2_, n1_, n5_, n4_}] :> GLI[fctopology1, {n1, \
-n2, n3, n4, n5}]}, {FCTopology[fctopology14, {SFAD[{{p2, 0}, {m1^2, \
-1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - p2 - Q, 0}, {0, \
-1}, 1}], SFAD[{{p1 - Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], \
-{p1 -> -p1 + Q, p2 -> p2}, GLI[fctopology14, {n2_, n4_, n1_, n3_}] :> \
-GLI[fctopology10, {n1, n2, n3, n4}]}, {FCTopology[fctopology19, \
-{SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1 \
-- p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {m1^2, 1}, 1}]}, {p1, \
-p2}, {Q}, {}, {}], {p1 -> -p1 + Q, p2 -> p2}, GLI[fctopology19, {n4_, \
-n2_, n1_, n3_}] :> GLI[fctopology11, {n1, n2, n3, n4}]}, \
-{FCTopology[fctopology9, {SFAD[{{p1 + Q, 0}, {0, 1}, 1}], SFAD[{{p1 + \
-p2, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, \
-{m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], {p1 -> -p1, p2 -> -p2}, \
-GLI[fctopology9, {n4_, n1_, n2_, n3_}] :> GLI[fctopology11, {n1, n2, \
-n3, n4}]}, {FCTopology[fctopology7, {SFAD[{{p2 + Q, 0}, {0, 1}, 1}], \
-SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], \
-SFAD[{{p1 - Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], {p1 -> \
--p2, p2 -> -p1}, GLI[fctopology7, {n3_, n2_, n1_, n4_}] :> \
-GLI[fctopology15, {n1, n2, n3, n4}]}, {FCTopology[fctopology20, \
-{SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1 \
-- Q, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - p2 - Q, 0}, {m1^2, 1}, 1}]}, \
-{p1, p2}, {Q}, {}, {}], {p1 -> -p1 + Q, p2 -> p2}, GLI[fctopology20, \
-{n3_, n1_, n2_, n4_}] :> GLI[fctopology16, {n1, n2, n3, n4}]}, \
-{FCTopology[fctopology21, {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, \
-{m1^2, 1}, 1}], SFAD[{{p1 + p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - Q, \
-0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], {p1 -> -p1, p2 -> -p2}, \
-GLI[fctopology21, {n1_, n2_, n4_, n3_}] :> GLI[fctopology18, {n1, n2, \
-n3, n4}]}, {FCTopology[fctopology26, {SFAD[{{p2, 0}, {0, 1}, 1}], \
-SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - Q, 0}, {m1^2, 1}, 1}]}, \
-{p1, p2}, {Q}, {}, {}], {p1 -> -p1, p2 -> -p2}, GLI[fctopology26, \
-{n1_, n2_, n3_}] :> GLI[fctopology25, {n1, n2, n3}]}, \
-{FCTopology[fctopology28, {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, \
-{0, 1}, 1}], SFAD[{{p1 - Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, \
-{}], {p1 -> -p1 + Q, p2 -> -p2}, GLI[fctopology28, {n1_, n3_, n2_}] :> \
-GLI[fctopology27, {n1, n2, n3}]}}, {FCTopology[fctopology1, \
-{SFAD[{{p1 + Q, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {m1^2, 1}, 1}], \
-SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + p2, 0}, {m1^2, 1}, 1}], \
-SFAD[{{p2 - Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], \
-FCTopology[fctopology10, {SFAD[{{p1 + p2, 0}, {0, 1}, 1}], SFAD[{{p2, \
-0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - Q, 0}, \
-{m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], FCTopology[fctopology11, \
-{SFAD[{{p1 + p2, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {m1^2, 1}, 1}], \
-SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}]}, {p1, \
-p2}, {Q}, {}, {}], FCTopology[fctopology12, {SFAD[{{p1 + p2, 0}, {0, \
-1}, 1}], SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, \
-1}], SFAD[{{p1 + p2, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], \
-FCTopology[fctopology13, {SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, \
-0}, {m1^2, 1}, 1}], SFAD[{{p2 + Q, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - Q, \
-0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], FCTopology[fctopology15, \
-{SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], \
-SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + Q, 0}, {m1^2, 1}, 1}]}, \
-{p1, p2}, {Q}, {}, {}], FCTopology[fctopology16, {SFAD[{{p2, 0}, \
-{m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, \
-1}, 1}], SFAD[{{p1 + p2, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], \
-FCTopology[fctopology17, {SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, \
-0}, {m1^2, 1}, 1}], SFAD[{{p1 + p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - \
-Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], \
-FCTopology[fctopology18, {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, \
-{m1^2, 1}, 1}], SFAD[{{p1 + Q, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + p2, \
-0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], FCTopology[fctopology2, \
-{SFAD[{{p1 + p2, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {m1^2, 1}, 1}], \
-SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + Q, 0}, {m1^2, 1}, 1}], \
-SFAD[{{p2 - Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], \
-FCTopology[fctopology22, {SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, \
-0}, {m1^2, 1}, 1}], SFAD[{{p1 + p2 + Q, 0}, {m1^2, 1}, 1}]}, {p1, \
-p2}, {Q}, {}, {}], FCTopology[fctopology23, {SFAD[{{p2, 0}, {m1^2, \
-1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + p2 + Q, 0}, {0, \
-1}, 1}]}, {p1, p2}, {Q}, {}, {}], FCTopology[fctopology24, \
-{SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 \
-+ p2 + Q, 0}, {0, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], \
-FCTopology[fctopology25, {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, \
-{m1^2, 1}, 1}], SFAD[{{p1 + Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, \
-{}, {}], FCTopology[fctopology27, {SFAD[{{p2, 0}, {0, 1}, 1}], \
-SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}]}, {p1, \
-p2}, {Q}, {}, {}], FCTopology[fctopology29, {SFAD[{{p1, 0}, {0, 1}, \
-1}], SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}]}, \
-{p1, p2}, {Q}, {}, {}], FCTopology[fctopology3, {SFAD[{{p2, 0}, \
-{m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + Q, 0}, \
-{m1^2, 1}, 1}], SFAD[{{p1 + p2, 0}, {m1^2, 1}, 1}], SFAD[{{p2 - Q, \
-0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], FCTopology[fctopology5, \
-{SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], \
-SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {m1^2, 1}, 1}], \
-SFAD[{{p1 - p2 - Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], \
-FCTopology[fctopology6, {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1 + Q, \
-0}, {0, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + p2, 0}, \
-{m1^2, 1}, 1}], SFAD[{{p2 - Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, \
-{}, {}], FCTopology[fctopology8, {SFAD[{{p2 + Q, 0}, {0, 1}, 1}], \
-SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], \
-SFAD[{{p1 - Q, 0}, {0, 1}, 1}]}, {p1, p2}, {Q}, {}, {}]}}"},
+"{{{FCTopology[fctopology4, {SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + Q, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + p2, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], {p1 -> -p2, p2 -> -p1}, GLI[fctopology4, {n3_, n2_, n1_, n5_, n4_}] :> GLI[fctopology1, {n1, n2, n3, n4, n5}]},
+{FCTopology[fctopology14, {SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], {p1 -> -p1 + Q}, GLI[fctopology14, {n2_, n4_, n1_, n3_}] :> GLI[fctopology10, {n1, n2, n3, n4}]},
+{FCTopology[fctopology19, {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], {p1 -> -p1 + Q}, GLI[fctopology19, {n4_, n2_, n1_, n3_}] :> GLI[fctopology11, {n1, n2, n3, n4}]},
+{FCTopology[fctopology9, {SFAD[{{p1 + Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], {p1 -> -p1, p2 -> -p2}, GLI[fctopology9, {n4_, n1_, n2_, n3_}] :> GLI[fctopology11, {n1, n2, n3, n4}]},
+{FCTopology[fctopology7, {SFAD[{{p2 + Q, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], {p1 -> -p2, p2 -> -p1}, GLI[fctopology7, {n3_, n2_, n1_, n4_}] :> GLI[fctopology15, {n1, n2, n3, n4}]},
+{FCTopology[fctopology20, {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - Q, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - p2 - Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], {p1 -> -p1 + Q}, GLI[fctopology20, {n3_, n1_, n2_, n4_}] :> GLI[fctopology16, {n1, n2, n3, n4}]},
+{FCTopology[fctopology21, {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], {p1 -> -p1, p2 -> -p2}, GLI[fctopology21, {n1_, n2_, n4_, n3_}] :> GLI[fctopology18, {n1, n2, n3, n4}]},
+{FCTopology[fctopology26, {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], {p1 -> -p1}, GLI[fctopology26, {n1_, n2_, n3_}] :> GLI[fctopology25, {n1, n2, n3}]},
+{FCTopology[fctopology28, {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], {p1 -> -p1 + Q}, GLI[fctopology28, {n1_, n3_, n2_}] :> GLI[fctopology27, {n1, n2, n3}]}},
+{FCTopology[fctopology1, {SFAD[{{p1 + Q, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + p2, 0}, {m1^2, 1}, 1}], SFAD[{{p2 - Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}],
+FCTopology[fctopology10, {SFAD[{{p1 + p2, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], FCTopology[fctopology11, {SFAD[{{p1 + p2, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}]},
+{p1, p2}, {Q}, {}, {}], FCTopology[fctopology12, {SFAD[{{p1 + p2, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + p2, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}],
+FCTopology[fctopology13, {SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p2 + Q, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}],
+FCTopology[fctopology15, {SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], FCTopology[fctopology16, {SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2, 0}, {m1^2, 1}, 1}]},
+{p1, p2}, {Q}, {}, {}], FCTopology[fctopology17, {SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}],
+FCTopology[fctopology18, {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + Q, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + p2, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}],
+FCTopology[fctopology2, {SFAD[{{p1 + p2, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + Q, 0}, {m1^2, 1}, 1}], SFAD[{{p2 - Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}],
+FCTopology[fctopology22, {SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + p2 + Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], FCTopology[fctopology23, {SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + p2 + Q, 0}, {0, 1}, 1}]}, {p1, p2}, {Q}, {}, {}],
+FCTopology[fctopology24, {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + p2 + Q, 0}, {0, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], FCTopology[fctopology25, {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}],
+FCTopology[fctopology27, {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}]}, {p1, p2}, {Q}, {}, {}], FCTopology[fctopology29, {SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}],
+FCTopology[fctopology3, {SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + Q, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + p2, 0}, {m1^2, 1}, 1}], SFAD[{{p2 - Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}],
+FCTopology[fctopology5, {SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - p2 - Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}],
+FCTopology[fctopology6, {SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1 + Q, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 + p2, 0}, {m1^2, 1}, 1}], SFAD[{{p2 - Q, 0}, {m1^2, 1}, 1}]}, {p1, p2}, {Q}, {}, {}],
+FCTopology[fctopology8, {SFAD[{{p2 + Q, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {m1^2, 1}, 1}], SFAD[{{p1, 0}, {m1^2, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}]}, {p1, p2}, {Q}, {}, {}]}}"},
 {"fcstFCLoopFindTopologyMappings-ID9",
 "FCLoopFindTopologyMappings[{FCTopology[fctopology1,{SFAD[{{q1,0},{\
 0,1},1}],SFAD[{{q2,0},{0,1},1}],SFAD[{{p+q1,0},{0,1},1}],SFAD[{{p-q2,\
@@ -214,40 +145,16 @@ p2+p3-Q,0},{0,1},1}],SFAD[{{p1+p2-Q,0},{0,1},1}],SFAD[{{p1+p2+p3-Q,0},\
 ,{0,1},1}],SFAD[{{p2-Q,0},{0,1},1}],SFAD[{{p1-Q,0},{0,1},1}],SFAD[{{\
 p1+p3-Q,0},{0,1},1}],SFAD[{{p1+p2-Q,0},{0,1},1}],SFAD[{{p1+p2+p3-Q,0},\
 {0,1},1}]},{p1,p2,p3},{Q},{},{}]},FCE->True]",
-"{{{FCTopology[fctopology3, {SFAD[{{p3, 0}, {0, 1}, 1}], \
-SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + \
-p3, 0}, {0, 1}, 1}], SFAD[{{p1 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, \
-0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 \
-- Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, \
-p2, p3}, {Q}, {}, {}], {p1 -> -p1 - p3 + Q, p2 -> -p2 - p3 + Q, p3 -> \
-p3}, GLI[fctopology3, {n1_, n7_, n8_, n5_, n6_, n4_, n2_, n3_, n9_}] :> \
-GLI[fctopology1, {n1, n2, n3, n4, n5, n6, n7, n8, n9}]}, \
-{FCTopology[fctopology4, {SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, \
-{0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, \
-1}], SFAD[{{p1 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], \
-SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], \
-SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, \
-{}], {p1 -> -p2 + Q, p2 -> -p1 + Q, p3 -> -p3}, GLI[fctopology4, \
-{n1_, n6_, n5_, n8_, n7_, n3_, n2_, n4_, n9_}] :> GLI[fctopology1, \
-{n1, n2, n3, n4, n5, n6, n7, n8, n9}]}, {FCTopology[fctopology5, \
-{SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, \
-0}, {0, 1}, 1}], SFAD[{{p1 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, \
-{0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, \
-{0, 1}, 1}], SFAD[{{p1 + p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 \
-- Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, {}], {p1 -> p2, p2 -> \
-p1, p3 -> p3}, GLI[fctopology5, {n1_, n3_, n2_, n4_, n6_, n5_, n7_, \
-n8_, n9_}] :> GLI[fctopology2, {n1, n2, n3, n4, n5, n6, n7, n8, \
-n9}]}}, {FCTopology[fctopology1, {SFAD[{{p3, 0}, {0, 1}, 1}], \
-SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + \
-p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, \
-0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 \
-- Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, \
-p2, p3}, {Q}, {}, {}], FCTopology[fctopology2, {SFAD[{{p3, 0}, {0, \
-1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], \
-SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], \
-SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], \
-SFAD[{{p1 + p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, \
-1}, 1}]}, {p1, p2, p3}, {Q}, {}, {}]}}"},
+"{{{FCTopology[fctopology3, {SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p1 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, {}], {p1 -> -p1 - p3 + Q, p2 -> -p2 - p3 + Q}, GLI[fctopology3, {n1_, n7_, n8_, n5_, n6_, n4_, n2_, n3_, n9_}] :>
+	GLI[fctopology1, {n1, n2, n3, n4, n5, n6, n7, n8, n9}]}, {FCTopology[fctopology4, {SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p1 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, {}], {p1 -> -p2 + Q, p2 -> -p1 + Q, p3 -> -p3},
+GLI[fctopology4, {n1_, n6_, n5_, n8_, n7_, n3_, n2_, n4_, n9_}] :> GLI[fctopology1, {n1, n2, n3, n4, n5, n6, n7, n8, n9}]},
+{FCTopology[fctopology5, {SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p1 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, {}], {p1 -> p2, p2 -> p1}, GLI[fctopology5, {n1_, n3_, n2_, n4_, n6_, n5_, n7_, n8_, n9_}] :> GLI[fctopology2, {n1, n2, n3, n4, n5, n6, n7, n8, n9}]}},
+{FCTopology[fctopology1, {SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}], SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}],
+	SFAD[{{p1 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, {}], FCTopology[fctopology2, {SFAD[{{p3, 0}, {0, 1}, 1}], SFAD[{{p2, 0}, {0, 1}, 1}], SFAD[{{p1, 0}, {0, 1}, 1}], SFAD[{{p2 + p3, 0}, {0, 1}, 1}],
+	SFAD[{{p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 - Q, 0}, {0, 1}, 1}], SFAD[{{p2 + p3 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 - Q, 0}, {0, 1}, 1}], SFAD[{{p1 + p2 + p3 - Q, 0}, {0, 1}, 1}]}, {p1, p2, p3}, {Q}, {}, {}]}}"},
 {"fcstFCLoopFindTopologyMappings-ID11",
 "FCLoopFindTopologyMappings[{FCTopology[fctopology1,{SFAD[{{q2,0},{\
 0,1},1}],SFAD[{{q1,0},{0,1},1}],SFAD[{{q1+q2,0},{0,1},1}],SFAD[{{p+q1,\
@@ -312,17 +219,13 @@ SPD[q2, q2] -> 0, SPD[q1, q2] -> s/2},
 1}, 1}]}, {l1, l2}, {q1, q2}, {SPD[q1, q1] -> 0, SPD[q2, q2] -> 0, \
 SPD[q1, q2] -> s/2},
 {}]},Momentum->All,FCE->True]",
-"{{{FCTopology[topo2, {SFAD[{{l1 - l2, 0}, {m^2, 1}, 1}], \
-SFAD[{{l1 - q2, 0}, {0, 1}, 1}], SFAD[{{l2 - q2, 0}, {m^2, 1}, 1}], \
-SFAD[{{l2 + q1, 0}, {m^2, 1}, 1}], SFAD[{{l2, 0}, {0, 1}, 1}]}, {l1, \
-l2}, {q1, q2}, {SPD[q1, q1] -> 0, SPD[q2, q2] -> 0, SPD[q1, q2] -> \
-s/2}, {}], {l1 -> -l1 + l2 - q1, l2 -> l2, q1 -> -q2, q2 -> -q1}, \
-GLI[topo2, {n1_, n2_, n3_, n4_, n5_}] :> GLI[topo1, {n1, n2, n3, n4, \
-n5}]}}, {FCTopology[topo1, {SFAD[{{l1 + q1, 0}, {m^2, 1}, 1}], \
-SFAD[{{l1 - l2, 0}, {0, 1}, 1}], SFAD[{{l2 + q1, 0}, {m^2, 1}, 1}], \
-SFAD[{{l2 - q2, 0}, {m^2, 1}, 1}], SFAD[{{l2, 0}, {0, 1}, 1}]}, {l1, \
-l2}, {q1, q2}, {SPD[q1, q1] -> 0, SPD[q2, q2] -> 0, SPD[q1, q2] -> \
-s/2}, {}]}}"},
+"{{{FCTopology[topo2, {SFAD[{{l1 - l2, 0}, {m^2, 1}, 1}], SFAD[{{l1 - q2, 0}, {0, 1}, 1}],
+SFAD[{{l2 - q2, 0}, {m^2, 1}, 1}], SFAD[{{l2 + q1, 0}, {m^2, 1}, 1}], SFAD[{{l2, 0}, {0, 1}, 1}]},
+{l1, l2}, {q1, q2}, {SPD[q1, q1] -> 0, SPD[q2, q2] -> 0, SPD[q1, q2] -> s/2}, {}],
+{l1 -> -l1 + l2 - q1, q1 -> -q2, q2 -> -q1}, GLI[topo2, {n1_, n2_, n3_, n4_, n5_}] :> GLI[topo1, {n1, n2, n3, n4, n5}]}},
+{FCTopology[topo1, {SFAD[{{l1 + q1, 0}, {m^2, 1}, 1}], SFAD[{{l1 - l2, 0}, {0, 1}, 1}],
+SFAD[{{l2 + q1, 0}, {m^2, 1}, 1}], SFAD[{{l2 - q2, 0}, {m^2, 1}, 1}], SFAD[{{l2, 0}, {0, 1}, 1}]},
+{l1, l2}, {q1, q2}, {SPD[q1, q1] -> 0, SPD[q2, q2] -> 0, SPD[q1, q2] -> s/2}, {}]}}"},
 
 {"fcstFCLoopFindTopologyMappings-ID14","FCLoopFindTopologyMappings[{FCTopology[
 fctopology3, {SFAD[{{l, 0}, {mQ^2, 1}, 1}],
@@ -429,16 +332,12 @@ PreferredTopologies -> {{FCTopology[
 	p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] ->
 	mb^2}, {FCGV[\"SubtopologyOf\"] ->
 	asyR1prop2Ltopo22012X01101NAux1C}]}}, FCE -> True]",
-	"{{{FCTopology[asyR1prop2Ltopo22012X01101NAux1, {SFAD[{{I*p1, 0}, {0, -1}, 1}],
-	SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}], SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}]},
-	{p1, p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] -> mb^2},
-	{}], {p1 -> p1, p3 -> -p3},GLI[asyR1prop2Ltopo22012X01101NAux1, {n1_, n2_, n3_}] :>
-	GLI[asyR1prop2Ltopo22012X01101NAux1C, {n1, n2, n3, 0, 0}]}},
-	{FCTopology[asyR1prop2Ltopo22012X01101NAux1C, {SFAD[{{I*p1, 0}, {0, -1}, 1}],
-	SFAD[{{(-I)*p3, 0}, {-mc^2, -1}, 1}], SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}],
-	SFAD[{{0, p1 . p3}, {0, -1}, 1}], SFAD[{{0, p3 . q}, {0, -1}, 1}]}, {p1, p3},
-	{q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] -> mb^2}, {}]}}"},
-
+	"{{{FCTopology[asyR1prop2Ltopo22012X01101NAux1, {SFAD[{{I*p1, 0}, {0, -1}, 1}], SFAD[{{(-I)*p3, 0},
+	{-mc^2, -1}, 1}], SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}]}, {p1, p3}, {q}, {Hold[Pair][Momentum[q, D], Momentum[q, D]] -> mb^2}, {}], {p3 -> -p3},
+GLI[asyR1prop2Ltopo22012X01101NAux1, {n1_, n2_, n3_}] :> GLI[asyR1prop2Ltopo22012X01101NAux1C, {n1, n2, n3, 0, 0}]}},
+{FCTopology[asyR1prop2Ltopo22012X01101NAux1C, {SFAD[{{I*p1, 0}, {0, -1}, 1}], SFAD[{{(-I)*p3, 0},
+{-mc^2, -1}, 1}], SFAD[{{I*(p1 - q), 0}, {0, -1}, 1}], SFAD[{{0, p1 . p3}, {0, -1}, 1}], SFAD[{{0, p3 . q}, {0, -1}, 1}]}, {p1, p3}, {q},
+{Hold[Pair][Momentum[q, D], Momentum[q, D]] -> mb^2}, {}]}}"},
 
 	{"fcstFCLoopFindTopologyMappings-ID16","DataType[meta, FCVariable] = True; \n
 	DataType[u0b, FCVariable] = True; \n FCLoopFindTopologyMappings[{FCTopology[mytopo67, {SFAD[{{k2, 0}, {0, 1}, 1}], SFAD[{{k1, 0}, {0, 1}, 1}],
@@ -456,6 +355,47 @@ PreferredTopologies -> {{FCTopology[
 	SFAD[{{k1, 2*gkin*meta*k1 . n - meta*u0b*k1 . nb}, {2*gkin*meta^2*u0b, 1}, 1}], SFAD[{{k1 + k2, 2*gkin*meta*u0b*(k1 + k2) . n - meta*u0b*(k1 + k2) . nb}, {2*gkin*meta^2*u0b^2, 1}, 1}]}, {k1, k2}, {n, nb},
 	{Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0, Hold[SPD][n, nb] -> 2}, {}], {k1 -> -k1, k2 -> (-2*k2 + meta*nb*u0b)/2}, GLI[mytopo79, {n5_, n2_, n4_, n1_, n3_, n7_, n6_}] :> GLI[mytopo67, {n1, n2, n3, n4, n5, n6, n7}]}},
 {FCTopology[mytopo67, {SFAD[{{k2, 0}, {0, 1}, 1}], SFAD[{{k1, 0}, {0, 1}, 1}], SFAD[{{k1 + k2, 0}, {0, 1}, 1}], SFAD[{{0, -k1 . nb}, {0, 1}, 1}], SFAD[{{k2, -(meta*u0b*k2 . nb)}, {0, 1}, 1}], SFAD[{{k1 + k2, -2*gkin*meta*u0b*(k1 + k2) . n}, {0, 1}, 1}],
-	SFAD[{{k1, -2*gkin*meta*k1 . n + meta*u0b*k1 . nb}, {2*gkin*meta^2*u0b, 1}, 1}]}, {k1, k2}, {n, nb}, {Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0, Hold[SPD][n, nb] -> 2}, {}]}}"}
-	}
+	SFAD[{{k1, -2*gkin*meta*k1 . n + meta*u0b*k1 . nb}, {2*gkin*meta^2*u0b, 1}, 1}]}, {k1, k2}, {n, nb}, {Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0, Hold[SPD][n, nb] -> 2}, {}]}}"},
+
+
+	{"fcstFCLoopFindTopologyMappings-ID17",
+"DataType[gkin, FCVariable] = True; DataType[meta, FCVariable] = True;
+DataType[u0b,
+FCVariable] = True; FCLoopFindTopologyMappings[{FCTopology[
+pfrTopo1, {SFAD[{{k2, 0}, {0, 1}, 1}],
+	SFAD[{{0, -k1 . nb}, {2 gkin meta, 1}, 1}],
+	SFAD[{{k1 + gkin meta n (1 - u0b), 0}, {0, 1}, 1}],
+	SFAD[{{k1 + 1/2 meta (2 gkin n - nb u0b), 0}, {2 gkin meta^2 u0b,
+	1}, 1}],
+	SFAD[{{k1 - k2 + 1/2 meta (2 gkin n - nb u0b),
+	0}, {2 gkin meta^2 u0b, 1}, 1}]}, {k1, k2}, {n,
+	nb}, {Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0,
+	Hold[SPD][n, nb] -> 2}, {}],
+FCTopology[
+pfrTopo100, {SFAD[{{k2, 0}, {0, 1}, 1}],
+	SFAD[{{0, k1 . nb}, {2 gkin meta, 1}, 1}],
+	SFAD[{{k1 - gkin meta n (1 - u0b), 0}, {0, 1}, 1}],
+	SFAD[{{k1 - 1/2 meta (2 gkin n - nb u0b), 0}, {2 gkin meta^2 u0b,
+	1}, 1}],
+	SFAD[{{k1 + k2 - 1/2 meta (2 gkin n - nb u0b),
+	0}, {2 gkin meta^2 u0b, 1}, 1}]},
+{k1, k2}, {n, nb}, {Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0,
+	Hold[SPD][n, nb] -> 2}, {}]}, Momentum -> All]",
+	"{{{FCTopology[pfrTopo100, {FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k2, D], 0, 0, {1, 1}]],
+	FeynAmpDenominator[StandardPropagatorDenominator[0, Pair[Momentum[k1, D], Momentum[nb, D]], -2*gkin*meta, {1, 1}]],
+	FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] - gkin*meta*Momentum[n, D] + gkin*meta*u0b*Momentum[n, D],
+	0, 0, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] - gkin*meta*Momentum[n,
+	D] + (meta*u0b*Momentum[nb, D])/2, 0, -2*gkin*meta^2*u0b, {1, 1}]],
+	FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] + Momentum[k2, D] - gkin*meta*Momentum[n,
+	D] + (meta*u0b*Momentum[nb, D])/2, 0, -2*gkin*meta^2*u0b, {1, 1}]]}, {k1, k2}, {n, nb}, {Hold[SPD][n] -> 0,
+	Hold[SPD][nb] -> 0, Hold[SPD][n, nb] -> 2}, {}], {k1 -> -k1},
+GLI[pfrTopo100, {n1_, n2_, n3_, n4_, n5_}] :> GLI[pfrTopo1, {n1, n2, n3, n4, n5}]}}, {FCTopology[pfrTopo1,
+{FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k2, D], 0, 0, {1, 1}]],
+FeynAmpDenominator[StandardPropagatorDenominator[0, -Pair[Momentum[k1, D], Momentum[nb, D]], -2*gkin*meta, {1, 1}]],
+	FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] + gkin*meta*Momentum[n, D] - gkin*meta*u0b*Momentum[n,
+	D], 0, 0, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] + gkin*meta*Momentum[n,
+	D] - (meta*u0b*Momentum[nb, D])/2, 0, -2*gkin*meta^2*u0b, {1, 1}]],
+	FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] - Momentum[k2, D] + gkin*meta*Momentum[n,
+	D] - (meta*u0b*Momentum[nb, D])/2, 0, -2*gkin*meta^2*u0b, {1, 1}]]}, {k1, k2}, {n, nb}, {Hold[SPD][n] -> 0,
+	Hold[SPD][nb] -> 0, Hold[SPD][n, nb] -> 2}, {}]}}"}}
 );

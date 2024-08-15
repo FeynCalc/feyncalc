@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## MTLR
 
 `MTLR[p,mu,n,nb]` denotes the perpendicular component in the lightcone decomposition of the metric tensor $g^{\mu \nu}$  along the vectors `n` and `nb`. It corresponds to $g^{\mu \nu}_{\perp}$.

@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## FCLoopGraphPlot
 
 `FCLoopGraphPlot[{edges, labels}]` visualizes the graph of the given loop integral using the provided list of edges, styles and labels using the built-in function `Graph`. The Option `Graph` can be used to pass options to the `Graph` objects.

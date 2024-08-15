@@ -98,11 +98,16 @@ FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 			lmoms=Flatten[lmomsRaw]
 		];
 
-		If[	MatchQ[exprRaw,{(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..}],
+
+		If[	(MatchQ[exprRaw,{__GLI}] || MatchQ[exprRaw,{(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..}]),
+			time=AbsoluteTime[];
+			FCPrint[1, "FCLoopFindIntegralMappings: Calling FCLoopSelectTopology.", FCDoControl -> fcfpmVerbose];
 			expr = Union[Join[exprRaw,optPreferredIntegrals]];
 			(*Make sure that we have all the topologies needed *)
-			lmoms = FCLoopSelectTopology[expr,lmoms],
+			lmoms = FCLoopSelectTopology[expr,lmoms];
+			FCPrint[1, "FCLoopFindIntegralMappings: FCLoopSelectTopology done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfpmVerbose],
 			expr = exprRaw
+
 		];
 
 		time=AbsoluteTime[];

@@ -20,7 +20,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [ExplicitPartialD](ExplicitPartialD.md), [LeftPartialD](LeftPartialD.md), [LeftRightPartialD](LeftRightPartialD.md), [PartialDRelations](PartialDRelations.md), [RightPartialD](RightPartialD.md), [LeftRightNablaD](LeftRightNablalD.md), [LeftRightNablaD2](LeftRightNablalD2.md), [LeftNablaD](LeftNablalD.md), [RightNablaD](RightNablalD.md).*)
+(*[Overview](Extra/FeynCalc.md), [ExplicitPartialD](ExplicitPartialD.md), [LeftPartialD](LeftPartialD.md), [LeftRightPartialD](LeftRightPartialD.md), [PartialDRelations](PartialDRelations.md), [RightPartialD](RightPartialD.md), [LeftRightNablaD](LeftRightNablaD.md), [LeftRightNablaD2](LeftRightNablaD2.md), [LeftNablaD](LeftNablaD.md), [RightNablaD](RightNablaD.md).*)
 
 
 (* ::Subsection:: *)

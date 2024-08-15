@@ -32,6 +32,3 @@ PauliTrace[CSI[i,j,k,l],PauliTraceEvaluate->True]
 PauliTrace[CSI[i,j,k,l]]
 
 %//PauliSimplify
-
-
-

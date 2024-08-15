@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## SPD
 
 `SPD[a, b]` denotes a $D$-dimensional scalar product.

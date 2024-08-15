@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## Factor3
 
 `Factor3[exp]` factors a rational function `exp` over the field of complex numbers.

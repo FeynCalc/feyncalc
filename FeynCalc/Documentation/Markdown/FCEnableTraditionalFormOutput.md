@@ -4,7 +4,7 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [$FCTraditionalFormOutput]($FCTraditionalFormOutput.md), [FCDisableTraditionalFormOutput](FCDisableTraditionalFormOutput.md).
+[Overview](Extra/FeynCalc.md), [\$FCTraditionalFormOutput](\$FCTraditionalFormOutput.md), [FCDisableTraditionalFormOutput](FCDisableTraditionalFormOutput.md).
 
 ### Examples
 

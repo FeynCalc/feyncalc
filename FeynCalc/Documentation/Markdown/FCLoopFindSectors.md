@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## FCLoopFindSectors
 
 `FCLoopFindSectors[{GLI[...], ...}]` analyzes the indices of the GLI integrals in the given list and identifies sectors to which they belong. Notice that only `GLI`s with integer indices are supported.

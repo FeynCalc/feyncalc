@@ -1,11 +1,12 @@
-```mathematica
- 
-```
-
 ## Nonrelativistic calculations
 
-Since version 9.3 FeynCalc can also deal with manifestly noncovariant expressions, such as 3-vectors,
-Kronecker deltas and Pauli matrices
+### See also
+
+[Overview](Extra/FeynCalc.md).
+
+### Manipulations of Cartesian tensors
+
+Since version 9.3 FeynCalc can also deal with manifestly noncovariant expressions, such as 3-vectors, Kronecker deltas and Pauli matrices
 
 ```mathematica
 CV[p, i]
@@ -54,7 +55,6 @@ The function `LorentzToCartesian` is used to break the manifest Lorentz covarian
 ```mathematica
 SP[p, q]
 % // LorentzToCartesian
-
 ```
 
 $$\overline{p}\cdot \overline{q}$$

@@ -880,8 +880,7 @@ GenPaVe[{0, 0}, {{0, m0}, {-p1, m1}, {-p2, m2}}]*MTD[mu, nu]"},
 "(FVD[p, mu]*SFAD[{{q, 0}, {0, 1}, 2}, {{-p + q, 0}, {0, 1}, 1}])/
 2 - (FVD[p, mu]*SFAD[{{q, 0}, {0, 1}, 1}, {{-p + q, 0}, {0, 1}, 1}])/(2*SPD[p, p])"},
 {"fcstTID-ID41", "TID[FVD[q,mu]SFAD[q,q-p,{{0,q.k}}],q,FCE->True]",
-"FVD[q, mu]*SFAD[{{0, k . q}, {0, 1}, 1}, {{q, 0}, {0, 1}, 1}, {{p \
-- q, 0}, {0, 1}, 1}]"},
+"FVD[q, mu]*SFAD[{{q, 0}, {0, 1}, 1}, {{0, k . q}, {0, 1}, 1}, {{p - q, 0}, {0, 1}, 1}]"},
 {"fcstTID-ID42",
 "TID[FCI[CVD[q,i]CVD[q,j]SFAD[{q,m^2,2}]],q,FCE->True]",
 "(CFAD[{{q, 0}, {m^2 - TC[q]^2, -1}, 1}]*KDD[i, j])/(-1 + D) - (m^2*
@@ -897,14 +896,14 @@ GA[5].(GAD[nu].GSD[v]-FVD[v,nu]))FVD[k,nu],k,FCE->True]",
 {-M^2, 1}, 1}, {{0, (-k + r) . v}, {0, 1}, 1}]*(SPD[r, v]^2 + \
 M^2*SPD[v, v]))/4"},
 {"fcstTID-ID44",
-"TID[TC[q]^2SFAD[q]CVD[q,i]CVD[q,j],q,FCE\[Rule]True]",
-"-((CFAD[{{q, 0}, {-TC[q]^2, -1}, 1}]*KDD[i, j]*TC[q]^4)/(-1 + \
-D))"},
+"TID[TC[q]^2 SFAD[{q, m}] CVD[q, i] CVD[q, j], q, FCE -> True]",
+"(m*CFAD[{{q, 0}, {m - TC[q]^2, -1}, 1}]*KDD[i, j]*TC[q]^2)/(-1 + D) - (CFAD[{{q, 0}, {m - TC[q]^2, -1}, 1}]*KDD[i, j]*TC[q]^4)/(-1 + D)"},
 {"fcstTID-ID45",
-"TID[SFAD[q]CVD[q,i]CVD[q,j]CVD[q,k]CVD[q,l],q,FCE\[Rule]True]",
-"-((CFAD[{{q, 0}, {-TC[q]^2, -1}, 1}]*(KDD[i, l]*KDD[j, k] + \
-KDD[i, k]*KDD[j, l] + KDD[i, j]*KDD[k, l])*TC[q]^4)/((-1 + D)*(1 + \
-D)))"},
+"TID[SFAD[{q, m}] CVD[q, i] CVD[q, j] CVD[q, k] CVD[q, l], q,
+FCE -> True]",
+"-((m^2*CFAD[{{q, 0}, {m - TC[q]^2, -1}, 1}]*(KDD[i, l]*KDD[j, k] + KDD[i, k]*KDD[j, l] + KDD[i, j]*KDD[k, l]))/((-1 + D)*(1 + D))) +
+(2*m*CFAD[{{q, 0}, {m - TC[q]^2, -1}, 1}]*(KDD[i, l]*KDD[j, k] + KDD[i, k]*KDD[j, l] + KDD[i, j]*KDD[k, l])*TC[q]^2)/((-1 + D)*(1 + D)) -
+(CFAD[{{q, 0}, {m - TC[q]^2, -1}, 1}]*(KDD[i, l]*KDD[j, k] + KDD[i, k]*KDD[j, l] + KDD[i, j]*KDD[k, l])*TC[q]^4)/((-1 + D)*(1 + D))"},
 {"fcstTID-ID46", "TID[TC[q]^2*SFAD[q]CVD[q,i],q]", "0"},
 {"fcstTID-ID47", "TID[CVD[k, i] CVD[k, j] SFAD[k, k - q], k, FCE -> True]",
 "(CFAD[{{k, 0}, {-TC[k - q]^2, -1}, 1}]*(4*CVD[q, i]*CVD[q, j] - 3*(-1 + D)*CVD[q, i]*CVD[q, j] -
@@ -1050,5 +1049,12 @@ CFAD[{{k, 0}, {m2^2 - TC[k]^2, -1}, 1}, {{k - pH, 0}, {m2^2 - TC[k - pH]^2, -1},
 {"fcstTID-ID65","TID[SPLRD[p, p, n, nb] FAD[p, p + q], p, FCE -> True]",
 "-1/4*(FAD[p, p - q]*(2*SPD[q, q] - D*SPD[q, q] + D*SPLRD[q, q, n, nb]))/(1 - D)"},
 {"fcstTID-ID66","TID[SPLRD[p, r, n, nb] FAD[p, p + q], p, FCE -> True]",
-"-1/2*(FAD[p, p - q]*SPLRD[q, r, n, nb])"}
+"-1/2*(FAD[p, p - q]*SPLRD[q, r, n, nb])"},
+{"fcstTID-ID67","TID[FAD[l1] GFAD[{{TC[l1 - p], 1}, 1}] GFAD[{{TC[l1 - p], 1},
+	1}] CFAD[{{l1 - p + q, 0}, {0, -1}, 1}] CSPD[l1, l1], l1,
+FCE -> True]",
+"-1/2*(CFAD[{{l1, 0}, {-TC[l1]^2, -1}, 1}, {{l1 - p + q, 0}, {0, -1}, 1}]*(3*CSPD[p, p] - 2*D*CSPD[p,
+p] - 6*CSPD[p, q] + 4*D*CSPD[p, q] + 3*CSPD[q, q] - 2*D*CSPD[q, q] - (-1 + D)*(CSPD[p, p] - 2*CSPD[p,
+q] + CSPD[q, q]) + D*(CSPD[p, p] - 2*CSPD[p, q] + CSPD[q, q]))*GFAD[{{TC[l1] - TC[p], 1}, 1},
+{{TC[l1] - TC[p], 1}, 1}]*TC[l1]^2)/((2 - D)*(CSPD[p, p] - 2*CSPD[p, q] + CSPD[q, q]))"}
 };

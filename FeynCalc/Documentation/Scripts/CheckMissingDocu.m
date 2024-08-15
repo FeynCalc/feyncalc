@@ -56,17 +56,22 @@ Switch[FileBaseName[indexFile],
 	"FeynCalc",
 		Print[StringRiffle[Complement[SelectFree[fcSymbols,{"FerSolve","FeynCalc","SharedObjects","FCLoopBasis","ToSymbol"}],docFiles],"\n"]],
 	"FeynHelpers",
-		Print[StringRiffle[Complement[SelectFree[fcSymbols,{"FerSolve","FerShared","LTools","QGShared"}],docFiles],"\n"]]
+		Print[StringRiffle[Complement[SelectFree[fcSymbols,{"FerSolve","FerShared","LTools","QGShared","file"}],docFiles],"\n"]]
 	];
 
 
 Print[""]; Print[""];
 Print["Documentation pages for nonexisting symbols:"];
-Print[StringRiffle[SelectFree[Complement[docFiles,fcSymbols],{"Vectors","FerSolve"}],"\n"]];
+Print[StringRiffle[SelectFree[Complement[docFiles,fcSymbols],{"Vectors","FerSolve","ColorAlgebra","Contractions",
+"Dimensions","DiracAlgebra","Expansions","Indices","InternalExternal",
+"Kinematics","LightCone","Loops","Nonrelativistic","ColorAlgebra"
+}],"\n"]];
 
 Switch[FileBaseName[indexFile],
 	"FeynCalc",
-		Print[StringRiffle[SelectFree[Complement[docFiles,fcSymbols],{"Vectors"}],"\n"]],
+		Print[StringRiffle[SelectFree[Complement[docFiles,fcSymbols],{"Vectors","ColorAlgebra","Contractions",
+"Dimensions","DiracAlgebra","Expansions","Indices","InternalExternal",
+"Kinematics","LightCone","Loops","Nonrelativistic","ColorAlgebra"}],"\n"]],
 	"FeynHelpers",
 		Print[StringRiffle[SelectFree[Complement[docFiles,fcSymbols],{"FerSolve"}],"\n"]]
 	];
@@ -92,7 +97,7 @@ Switch[FileBaseName[indexFile],
 	"FeynCalc",
 		Print[StringRiffle[Complement[SelectFree[fcSymbols,{"FerSolve","FeynCalc","SharedObjects","FCLoopBasis","ToSymbol"}],overviewSymbols],"\n"]];,
 	"FeynHelpers",
-		Print[StringRiffle[Complement[SelectFree[fcSymbols,{"FerShared","LTools","QGShared"}],overviewSymbols],"\n"]]
+		Print[StringRiffle[Complement[SelectFree[fcSymbols,{"FerShared","LTools","QGShared","file"}],overviewSymbols],"\n"]]
 	];
 
 
@@ -104,6 +109,4 @@ Switch[FileBaseName[indexFile],
 	"FeynHelpers",
 		StringRiffle[SelectFree[Complement[overviewSymbols,fcSymbols],"FerSolve"],"\n"]
 	];
-
-
 

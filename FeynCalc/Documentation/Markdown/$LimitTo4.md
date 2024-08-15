@@ -17,7 +17,7 @@ The modern and more flexible way to simplify amplitudes involving IR-finite `PaV
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [PaVe](PaVe.md), [PaVeReduce](PaVeReduce.md), [OneLoop](OneLoop.md), [$LimitTo4IRUnsafe]($LimitTo4IRUnsafe.md), [PaVeLimitTo4](PaVeLimitTo4.md).
+[Overview](Extra/FeynCalc.md), [PaVe](PaVe.md), [PaVeReduce](PaVeReduce.md), [OneLoop](OneLoop.md), [\$LimitTo4IRUnsafe](\$LimitTo4IRUnsafe.md), [PaVeLimitTo4](PaVeLimitTo4.md).
 
 ### Examples
 

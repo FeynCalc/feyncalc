@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## Loops
 
 ### See also
@@ -52,7 +48,7 @@ $$\frac{1}{(\text{k1}-\text{k2})^2.\left((\text{k1}-\text{p2})^2-m^2\right).\lef
 
 $$\frac{1}{(\text{k1}-\text{k2})^2 \left((\text{k1}-\text{p2})^2-m^2\right) \left((\text{k2}+\text{p2})^2-m^2\right)}$$
 
-```
+```mathematica
 (*FAD[k1 - k2] FAD[{k1 - p2, m}] FAD[{k2 + p2, m}]*)
 ```
 
@@ -63,10 +59,10 @@ FeynAmpDenominatorCombine[FAD[k1 - k2] FAD[{k1 - p2, m}] FAD[{k2 + p2, m}]]
 % // FCE // StandardForm
 ```
 
-$$\frac{1}{\left((\text{k2}+\text{p2})^2-m^2\right).(\text{k1}-\text{k2})^2.\left((\text{k1}-\text{p2})^2-m^2\right)}$$
+$$\frac{1}{(\text{k1}-\text{k2})^2.\left((\text{k1}-\text{p2})^2-m^2\right).\left((\text{k2}+\text{p2})^2-m^2\right)}$$
 
-```
-(*FAD[{k2 + p2, m}, k1 - k2, {k1 - p2, m}]*)
+```mathematica
+(*FAD[k1 - k2, {k1 - p2, m}, {k2 + p2, m}]*)
 ```
 
 At the tree-level we often do not need the `FeynAmpDenominators` but rather want to express everything in terms of explicit scalar products, in order to exploit kinematic simplifications. This is handled by `FeynAmpDenominatorExplicit`
@@ -154,7 +150,7 @@ Of course we collect with respect to `FAD` and isolate the prefactors, but the f
 Collect2[res, FeynAmpDenominator, IsolateNames -> KK]
 ```
 
-$$-\frac{\text{KK}(864)}{4 q^2.(-\text{p1}+\text{p2}+q)^2}+\frac{\text{KK}(868)}{4 q^2.(q-\text{p2})^2.(q-\text{p1})^2}-\frac{\text{KK}(866)}{4 q^2.(q-\text{p1})^2}+-\frac{\text{KK}(861)}{4 q^2.(q-\text{p2})^2}$$
+$$-\frac{\text{KK}(864)}{4 q^2.(-\text{p1}+\text{p2}+q)^2}+\frac{\text{KK}(868)}{4 q^2.(q-\text{p1})^2.(q-\text{p2})^2}-\frac{\text{KK}(866)}{4 q^2.(q-\text{p1})^2}+-\frac{\text{KK}(861)}{4 q^2.(q-\text{p2})^2}$$
 
 In such cases, we can get a much more compact results , if we stick to coefficient functions and do not demand the full reduction to scalars. To do so, use the option `UsePaVeBasis`
 
@@ -324,7 +320,7 @@ mappings1[[2]]
 
 $$\left\{\text{FCTopology}\left(\text{fctopology1},\left\{\frac{1}{(\text{p3}^2+i \eta )},\frac{1}{(\text{p2}^2+i \eta )},\frac{1}{(\text{p1}^2+i \eta )},\frac{1}{((\text{p2}+\text{p3})^2+i \eta )},\frac{1}{((\text{p2}-Q)^2+i \eta )},\frac{1}{((\text{p1}-Q)^2+i \eta )},\frac{1}{((\text{p2}+\text{p3}-Q)^2+i \eta )},\frac{1}{((\text{p1}+\text{p3}-Q)^2+i \eta )},\frac{1}{((\text{p1}+\text{p2}+\text{p3}-Q)^2+i \eta )}\right\},\{\text{p1},\text{p2},\text{p3}\},\{Q\},\{\},\{\}\right),\text{FCTopology}\left(\text{fctopology2},\left\{\frac{1}{(\text{p3}^2+i \eta )},\frac{1}{(\text{p2}^2+i \eta )},\frac{1}{(\text{p1}^2+i \eta )},\frac{1}{((\text{p2}+\text{p3})^2+i \eta )},\frac{1}{((\text{p2}-Q)^2+i \eta )},\frac{1}{((\text{p1}-Q)^2+i \eta )},\frac{1}{((\text{p2}+\text{p3}-Q)^2+i \eta )},\frac{1}{((\text{p1}+\text{p2}-Q)^2+i \eta )},\frac{1}{((\text{p1}+\text{p2}+\text{p3}-Q)^2+i \eta )}\right\},\{\text{p1},\text{p2},\text{p3}\},\{Q\},\{\},\{\}\right)\right\}$$
 
-### Tensor reductions
+### Tensor reductions with GLIs
 
 Tensor reduction for topologies that have already been processed with `FCLoopFindTopologies` can be done using `FCLoopTensorReduce`
 

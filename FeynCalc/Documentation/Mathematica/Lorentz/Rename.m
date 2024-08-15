@@ -26,6 +26,3 @@
 LC[\[Mu],\[Nu],\[Rho],\[Sigma]]LC[\[Alpha],\[Nu],\[Rho],\[Sigma]]
 
 Contract[%,EpsContract->False,Rename->True]
-
-
-

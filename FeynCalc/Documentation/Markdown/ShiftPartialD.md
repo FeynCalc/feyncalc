@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## ShiftPartialD
 
 `ShiftPartialD[exp, {FCPartialD[i1], FCPartialD[i2], ...}, field]` uses integration-by-parts identities to shift the derivatives of `QuantumField`s such, that a term containing derivatives with indices `i1, i2, ...` acting on `field` is eliminated from the final expression.
@@ -63,7 +59,6 @@ Using a suitable filter function we can readily achieve the desired result
 ```mathematica
 ShiftPartialD[exp2, {FCPartialD[LorentzIndex[mu]]}, GaugeField, Select -> 
     Function[x, FreeQ[x, QuantumField[GaugeField, LorentzIndex[nu]]]]]
-
 ```
 
 $$\text{Applying the following IBP relation: }\left\{\left(\partial _{\text{mu}}A_{\text{nu}}\right).\left(\partial _{\text{rho}}\partial _{\text{rho}}\partial _{\text{mu}}\partial _{\text{nu}}\partial _{\text{tau}}A_{\text{tau}}\right)\to -A_{\text{nu}}.\left(\partial _{\text{mu}}\partial _{\text{mu}}\partial _{\text{rho}}\partial _{\text{rho}}\partial _{\text{nu}}\partial _{\text{tau}}A_{\text{tau}}\right)\right\}$$

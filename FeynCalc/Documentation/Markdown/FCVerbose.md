@@ -10,7 +10,7 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [$VeryVerbose]($VeryVerbose.md).
+[Overview](Extra/FeynCalc.md), [\$VeryVerbose](\$VeryVerbose.md).
 
 ### Examples
 

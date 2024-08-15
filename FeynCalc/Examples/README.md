@@ -6,23 +6,41 @@ _FeynCalc_.
 # Generating markdown
 
 ```
+
+bash
+
 feynCalcDir="/media/Data/Projects/VS/FeynCalc"
+cd ${feynCalcDir}/FeynCalc/Examples
+readarray -d '' array < <(find . -mindepth 2 -maxdepth 2 -type d -not -path "./WIP/*" -not -path "./MasterIntegrals/*" -print0)
+
+readarray -d '' array1 < <(find . -mindepth 2 -maxdepth 2 -type d -not -path "./WIP/*" -not -path "./MasterIntegrals/*" -not -path "./FeynRules/*" -print0)
+readarray -d '' array2 < <(find . -mindepth 2 -maxdepth 2 -type d -not -path "./WIP/*" -not -path "./MasterIntegrals/*" -not -path "./QED/*" -not -path "./QCD/*" -not -path "./EW/*" -not -path "./Phi3/*" -not -path "./Phi4/*" -not -path "./MSSM/*" -not -path "./Yukawa/*" -not -path "./TopologyIdentification/*" -print0)
+
 cd ${feynCalcDir}/FeynCalc/Documentation/Scripts
 
-for exDir in 'QED/Tree' 'QED/OneLoop' 'QED/TwoLoops' 'QCD/Tree' 'QCD/OneLoop' 'QCD/TwoLoops' 'EW/Tree' 'EW/OneLoop' 'Phi3/OneLoop' 'Phi4/OneLoop' 'MSSM/Tree'
+for exDir in "${array[@]}"
 do
   echo
   echo -e "* \c"
-  export MAKE_DO_NOT_LOAD_FEYNCALC="True" MAKE_DOCU_LOAD_ADDONS="{}"; export DOCU_SOURCE_DIR="${feynCalcDir}/FeynCalc/Examples/${exDir}"; ./exportToMD.sh math "$DOCU_SOURCE_DIR"/Markdown
+  export MAKE_DO_NOT_LOAD_FEYNCALC="True" MAKE_DOCU_LOAD_ADDONS="{}"; export DOCU_SOURCE_DIR="${feynCalcDir}/FeynCalc/Examples/${exDir}"; export FILES_TO_SKIP="Validate|Raw"; ./exportToMD.sh math "$DOCU_SOURCE_DIR"/Markdown
 done
 
-for exDir in 'QED/Tree' 'QED/OneLoop' 'QED/TwoLoops' 'QCD/Tree' 'QCD/OneLoop' 'QCD/TwoLoops' 'EW/Tree' 'EW/OneLoop' 'Phi3/OneLoop' 'Phi4/OneLoop' 'MSSM/Tree'
+
+
+
+for exDir in "${array1[@]}"
 do
   echo
   echo -e "* \c"
-  export MAKE_CHANGE_CSS_PATH="../../css/feyncalc.css" MAKE_CHANGE_KATEX_PATH="../../js/" DOCU_SOURCE_DIR="${feynCalcDir}c/FeynCalc/Examples/${exDir}"; ./generateHTML.sh /media/Data/Projects/VS/feyncalc.github.io/FeynCalcExamples/${exDir}
+  export MAKE_CHANGE_CSS_PATH="../../../FeynCalcBookDev/css/feyncalc.css" MAKE_CHANGE_KATEX_PATH="../../../FeynCalcBookDev/js/" DOCU_SOURCE_DIR="${feynCalcDir}/FeynCalc/Examples/${exDir}"; ./generateHTML.sh /media/Data/Projects/VS/feyncalc.github.io/FeynCalcExamples/${exDir}
 done
 
+for exDir in "${array2[@]}"
+do
+  echo
+  echo -e "* \c"
+  export MAKE_CHANGE_CSS_PATH="../../../FeynCalcBookDev/css/feyncalc.css" MAKE_CHANGE_KATEX_PATH="../../../FeynCalcBookDev/js/" DOCU_SOURCE_DIR="${feynCalcDir}/FeynCalc/Examples/${exDir}"; ./generateHTML.sh /media/Data/Projects/VS/feyncalc.github.io/FeynCalcExamples/${exDir}
+done
 
 
 # Directory structure

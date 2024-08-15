@@ -217,6 +217,7 @@ SFAD[{{k1+k2,2 gkin meta u0b (k1+k2) . n-meta u0b (k1+k2) . nb},
 Hold[SPD][nb]->0,Hold[SPD][n,nb]->2},{}];
 
 
+DataType[gkin,FCVariable]=True;
 DataType[meta,FCVariable]=True;
 DataType[u0b,FCVariable]=True;
 
@@ -233,11 +234,15 @@ FCLoopFindTopologyMappings[{topoEik1,topoEik2}];
 (*then an explicit mapping can be found*)
 
 
-eikRule={SFAD[{{k2,-meta u0b k2 . nb},{0,1},1}]->SFAD[k2-meta u0b/2 nb]}
+toposNew=FCLoopReplaceQuadraticEikonalPropagators[{topoEik1,topoEik2},
+LoopMomenta->{k1,k2},
+InitialSubstitutions->{
+ExpandScalarProduct[SPD[k1-k2]]->SPD[k1-k2],
+ExpandScalarProduct[SPD[k1+k2]]->SPD[k1+k2]},
+IntermediateSubstitutions->{SPD[n]->0,SPD[nb]->0,SPD[n,nb]->2}];
 
 
-eikMappings=FCLoopFindTopologyMappings[{topoEik1,topoEik2},
-InitialSubstitutions->eikRule];
+eikMappings=FCLoopFindTopologyMappings[toposNew];
 
 
-eikMappings[[1]][[1]][[2;;]]
+

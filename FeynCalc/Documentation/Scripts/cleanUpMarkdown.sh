@@ -38,6 +38,10 @@ if [[ -f $1 ]]; then
     sed -i -e 's|\$\$\(!\[.*\)\$\$|\1|' $1;
     sed -i -e 's|\^{\\dagger }\^{|\^{\\dagger |g' $1;
     sed -i -e 's|\^{\\dagger }\^{|\^{\\dagger |g' $1;
+    sed -i -e "s|, \[\\$|, [\\\\$|g" $1;
+    sed -i -e "s|\](\\$|](\\\\$|g" $1;
+    sed -z -i -e 's|```mathematica\n \n```\n\n||g' $1;
+    sed -z -i -e 's|\n\n```\n|\n\n```mathematica\n|g' $1;    
 elif [[ -d $1 ]]; then
  
 allFilesRaw=$(find $1 -type f -name '*.md' -print)

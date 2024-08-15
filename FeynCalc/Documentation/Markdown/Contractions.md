@@ -1,14 +1,10 @@
-```mathematica
- 
-```
-
 ## Contractions
 
 ### See also
 
 [Overview](Extra/FeynCalc.md).
 
-### Simplifications
+### Simplifications of tensorial expressions
 
 Now that we have some basic understanding of FeynCalc objects, let us do something with them. Contractions of Lorentz indices are one of the most essential operations in symbolic QFT calculations. In FeynCalc the corresponding function is called `Contract`
 

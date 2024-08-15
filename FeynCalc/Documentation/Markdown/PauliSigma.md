@@ -49,10 +49,7 @@ $$\left(\bar{\sigma }\cdot \overline{q}\right).\left(\bar{\sigma }\cdot \overlin
 ```mathematica
 PauliSigma[CartesianMomentum[q]] . PauliSigma[CartesianMomentum[p - q]] 
  
-% // PauliSigmaExpand 
-  
- 
-
+% // PauliSigmaExpand
 ```
 
 $$\left(\overline{\sigma }\cdot \overline{q}\right).\left(\overline{\sigma }\cdot \left(\overline{p}-\overline{q}\right)\right)$$

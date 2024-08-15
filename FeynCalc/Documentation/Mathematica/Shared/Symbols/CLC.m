@@ -49,6 +49,3 @@ Contract[CLC[i,j,k]CLC[i,l,m]]
 CLC[i,j,k]CV[Subscript[p, 1],i]CV[Subscript[p, 2],j]CV[Subscript[p, 3],k]
 
 Contract[%]
-
-
-

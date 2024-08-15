@@ -41,6 +41,3 @@ Amplitude[]//Length
 Amplitude["se1g1"]
 
 Explicit[%]
-
-
-

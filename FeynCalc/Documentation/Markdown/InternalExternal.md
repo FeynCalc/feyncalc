@@ -1,14 +1,10 @@
-```mathematica
- 
-```
-
 ## Internal vs. External Representations
 
 ### See also
 
 [Overview](Extra/FeynCalc.md).
 
-### FeynCalcInternal
+### Internal representation
 
 The internal representation (`FeynCalcIntenral` or `FCI`) is how FeynCalc internally "sees" the objects.  For example, a $4$-dimensional $4$-vector is represented by
 
@@ -83,7 +79,7 @@ $$0$$
 
 is zero.
 
-### FeynCalcExternal
+### External representation
 
 The internal representation is useful for the internal programming FeynCalc, but obviously too cumbersome for the user input. This is why FeynCalc also has an external representation (`FeynCalcExternal` or `FCE`), that is concise and convenient.
 

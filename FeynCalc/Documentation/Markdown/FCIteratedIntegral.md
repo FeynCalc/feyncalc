@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## FCIteratedIntegral
 
 `FCIteratedIntegral[f,x,a,b]` is a special head indicating that the function $f$ represents an iterated integral or a linear combination thereof and that it should be integrated in $x$ from $a$ to $b$. This notation is understood by the function `FCIteratedIntegralEvaluate` that does the actual integration.

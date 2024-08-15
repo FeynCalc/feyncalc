@@ -56,23 +56,25 @@ sLoopHead::usage="";
 mLoopHead::usage="";
 null1::usage="";
 null2::usage="";
+optFCLoopScalelessQ::usage="";
 
 FDS = FeynAmpDenominatorSimplify;
 
 Options[FeynAmpDenominatorSimplify] = {
-	ApartFF 					-> False,
-	Collecting 					-> True,
-	DetectLoopTopologies		-> True,
-	ExpandScalarProduct			-> True,
-	FCE							-> False,
-	FCI							-> False,
-	FCVerbose					-> False,
-	Factoring					-> Factor,
-	FeynAmpDenominatorCombine	-> True,
-	IntegralTable 				-> {},
-	FCLoopPropagatorPowersExpand -> True,
-	FCLoopPropagatorPowersCombine -> True,
-	Rename 						-> True
+	ApartFF 						-> False,
+	Collecting 						-> True,
+	DetectLoopTopologies			-> True,
+	ExpandScalarProduct				-> True,
+	FCE								-> False,
+	FCI								-> False,
+	FCVerbose						-> False,
+	Factoring						-> Factor,
+	FeynAmpDenominatorCombine		-> True,
+	IntegralTable 					-> {},
+	FCLoopPropagatorPowersExpand	-> True,
+	FCLoopPropagatorPowersCombine	-> True,
+	FCLoopScalelessQ				-> True,
+	Rename 							-> True
 };
 
 SetAttributes[FeynAmpDenominatorSimplify, Listable];
@@ -80,7 +82,7 @@ SetAttributes[FeynAmpDenominatorSimplify, Listable];
 FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPattern[]] :=
 	Block[ {ex,rest,loopInts,intsUnique, solsList,res,repRule,time, topoCheckUnique,
 		topoCheck, multiLoopHead, solsList2, intsTops, intsTops2, optCollecting, power, fadList,
-		fadListEval, fadHold, intsUniqueClassified},
+		fadListEval, fadHold, intsUniqueClassified, optFCLoopScalelessQ, fdsHold1L, fdsHold2L, fdsHoldXL},
 
 		If [OptionValue[FCVerbose]===False,
 			fdsVerbose=$VeryVerbose,
@@ -96,6 +98,7 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 
 
 		optCollecting = OptionValue[Collecting];
+		optFCLoopScalelessQ = OptionValue[FCLoopScalelessQ];
 
 		If[ !OptionValue[FCI],
 			ex = FeynCalcInternal[expr],
@@ -181,12 +184,23 @@ FeynAmpDenominatorSimplify[expr_, qs___/;FreeQ[{qs},Momentum], opt:OptionsPatter
 		FCPrint[1,"FDS: Simplifying the unique integrals. ", FCDoControl->fdsVerbose];
 		time=AbsoluteTime[];
 		solsList = intsUnique /. {
-			(loopHead|sLoopHead|cLoopHead)[z_,{l_}] :> fdsOneLoop[z,l],
+			(loopHead|sLoopHead|cLoopHead)[z_,{l_}] :> fdsHold1L[z,{l}],
 			mLoopHead[z_,{l_}] :> (ToSFAD[z,FCI->True] /. FeynAmpDenominator :> feynord[{l}]),
-			loopHead[z_,{l1_,l2_}] :> multiLoopHead[oldFeynAmpDenominatorSimplify[z,l1,l2,opt]],
-			loopHead[z_,{l1_,l2_, l3__}] :> multiLoopHead[fdsMultiLoop[z,l1,l2,l3]],
+			loopHead[z_,{l1_,l2_}] :>	fdsHold2L[z,{l1,l2}],
+			loopHead[z_,{l1_,l2_, l3__}] :> fdsHoldXL[z,{l1,l2,l3}],
 			sLoopHead[z_,{_,__}] :> z,
 			cLoopHead[z_,{_,__}] :> z
+		};
+
+		If[	TrueQ[optFCLoopScalelessQ] && !$KeepLogDivergentScalelessIntegrals,
+			solsList = solsList/. (h:fdsHold1L|fdsHold2L|fdsHoldXL)[z_,l_List] :> h[FCProductSplit[z,{FeynAmpDenominator}],l] /.
+				(h:fdsHold1L|fdsHold2L|fdsHoldXL)[{num_,den_},l_List] :> If[TrueQ[FCLoopScalelessQ[den,l]],0,h[num den, l]]
+		];
+
+		solsList = solsList /. {
+			fdsHold1L[z_,{l_}] :> fdsOneLoop[z,l],
+			fdsHold2L[z_,{l1_,l2_}] :> multiLoopHead[oldFeynAmpDenominatorSimplify[z,l1,l2,opt]],
+			fdsHoldXL[z_,{l1_,l2_,l3__}] :> multiLoopHead[fdsMultiLoop[z,l1,l2,l3]]
 		};
 
 		If[OptionValue[FCLoopPropagatorPowersCombine],

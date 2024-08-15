@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## Expanding and undoing expansions
 
 ### See also

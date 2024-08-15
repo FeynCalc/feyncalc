@@ -1,7 +1,3 @@
-```mathematica
- 
-```
-
 ## TraceOfOne
 
 `TraceOfOne` is an option for `TR` and `DiracTrace`. Its setting determines the value of the unit trace.

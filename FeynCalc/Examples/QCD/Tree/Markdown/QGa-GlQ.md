@@ -114,7 +114,7 @@ FCCompareResults[{ampSquaredMasslessSUNN3[0]}, {knownResults},
      "CORRECT.", "WRONG!"}, Interrupt -> {Hold[Quit[1]], Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[], 3], 0.001], " s."];
 
-```
+```mathematica
 
 $$\text{$\backslash $tCheck with R. Field, Applications of Perturbative QCD, Eq 4.3.10:} \;\text{CORRECT.}$$
 

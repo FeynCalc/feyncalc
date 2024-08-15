@@ -16,7 +16,7 @@
 
 
 (* ::Subsection:: *)
-(*Manipulations*)
+(*Manipulations of Cartesian tensors*)
 
 
 (* ::Text:: *)
@@ -48,6 +48,3 @@ PauliTrace[CSI[i,j,i,j]]
 
 SP[p,q]
 %//LorentzToCartesian
-
-
-
