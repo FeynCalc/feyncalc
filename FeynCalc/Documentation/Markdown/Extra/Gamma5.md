@@ -113,3 +113,23 @@ FeynCalc implement the so-called Moch-Vermaseren-Vogt MVV formula from [Moch:201
 ```mathematica
 FCSetDiracGammaScheme["Larin"]
 ```
+
+The usage of this scheme implies that all axial-vector matrices from the Feynman rules $ \gamma^\mu \gamma^5$ should be entered as
+\begin{equation}
+\gamma^\mu \gamma^5 \to \frac{1}{2} \left ( \gamma^\mu \gamma^5 -  \gamma^5 \gamma^\mu \right )
+\end{equation}
+
+If the trace contains more than one $\gamma^5$, the code will insert
+\begin{equation}
+\gamma^\mu \gamma^5 = \frac{i}{6} \, \texttt{\$LeviCivitaSign} \, \varepsilon^{\mu \nu \rho \sigma} \gamma_\nu \gamma_\rho \gamma_\sigma
+\end{equation}
+for all but the right-most $\gamma^5$. Then the resulting trace will be evaluated according to Eq.(11) from [Moch:2015usa](https://arxiv.org/pdf/1506.04517.pdf)
+ \begin{equation}
+\mathrm{Tr}(\gamma^{\mu_1} \ldots \gamma^{\mu_{2m}} \gamma^5) =  4 i \, \texttt{\$LeviCivitaSign} \, g^{\mu_1 \mu_2} \ldots g^{\mu_{2m-5} \mu_{2m-4}} \varepsilon^{\mu_{2m-3} \mu_{2m-2} \mu_{2m-1} \mu_{2m}} + \textrm{permutations of} \quad \mu_{1} \ldots {\mu_{2m}}
+\end{equation}
+
+Notice that according to [Moch:2015usa](https://arxiv.org/pdf/1506.04517.pdf) one should distinguish between Levi-Civita tensors appearing in the calculating from traces over axial-vector matrices and those introduced e.g. via projectors. The "axial-vector" Levi-Civitas should be contracted first to avoid incorrect results.
+
+Since FeynCalc has no way to know the origin of $\varepsilon$-tensors in the input expression, it is advised to rename the unrelated Levi-Civitas to something else while doing the trace calculations and reintroduce them after the traces have been succesfully evaluated.
+
+
