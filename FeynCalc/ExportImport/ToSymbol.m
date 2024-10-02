@@ -56,6 +56,8 @@ End[]
 
 Begin["`ToSymbol`Private`"]
 
+tsVerbose::usage="";
+
 Options[SMPToSymbol] = {
 	Conjugate 		-> "CC",
 	StringReplace	-> {"_"->"", "^"->""}
@@ -67,9 +69,10 @@ Options[FCGVToSymbol] = {
 
 Options[FCLoopGLIToSymbol] =
 {
-	Character	-> "X",
-	Head 		-> FCTopology,
-	StringReplace-> {}
+	Character		-> "X",
+	FCVerbose		-> False,
+	Head 			-> FCTopology,
+	StringReplace	-> {"+"->"p","-"->"m"," " ->""}
 }
 
 SMPToSymbol[expr_, OptionsPattern[]] :=
@@ -105,25 +108,35 @@ FCGVToSymbol[expr_, OptionsPattern[]] :=
 
 
 FCLoopGLIToSymbol[expr_, OptionsPattern[]] :=
-	Block[{res, optHead, optCharacter, repRule},
+	Block[{res, optHead, optCharacter, repRule, optStringReplace},
 
-		optHead 	 = OptionValue[Head];
-		optCharacter = OptionValue[Character];
+		optHead 		 	= OptionValue[Head];
+		optCharacter 		= OptionValue[Character];
+		optStringReplace	= OptionValue[StringReplace];
+
+		If[	OptionValue[FCVerbose]===False,
+			tsVerbose=$VeryVerbose,
+			If[	MatchQ[OptionValue[FCVerbose], _Integer],
+				tsVerbose=OptionValue[FCVerbose]
+			];
+		];
 
 		Switch[optHead,
 			FCTopology,
 			repRule = {
-				GLI[id_, inds_List] :> ToString[id]<>optCharacter<> StringJoin[StringReplace[ToString /@ inds,{"-"->"m"}]]
+				GLI[id_, inds_List] :> ToString[id]<>optCharacter<> StringJoin[StringReplace[ToString /@ inds, optStringReplace]]
 			},
 
 			GLI,
 			repRule = {
-				GLI[id_, inds_List] :> "GLI"<>optCharacter<>ToString[id]<>optCharacter<>StringJoin[StringReplace[ToString /@ inds,{"-"->"m"}]]
+				GLI[id_, inds_List] :> "GLI"<>optCharacter<>ToString[id]<>optCharacter<>StringJoin[StringReplace[ToString /@ inds, optStringReplace]]
 			},
 			_,
 			Message[ToSymbol::failmsg, "Unknown value of the Head option.."];
 			Abort[]
 		];
+
+		FCPrint[1,"FCLoopGLIToSymbol: Replacement rules: ", repRule, FCDoControl->tsVerbose];
 
 		res = toSymbol[expr, GLI, repRule, OptionValue[StringReplace]];
 
@@ -139,7 +152,11 @@ toSymbol[expr_, head_, repRule_List, optStringReplace_] :=
 			Return[expr]
 		];
 
+		FCPrint[2,"toSymbol: All symbols: ", allSymbols, FCDoControl->tsVerbose];
+
 		symbols = allSymbols /. repRule;
+
+		FCPrint[2,"toSymbol: Symbols after the replacement rule: ", symbols, FCDoControl->tsVerbose];
 
 		If[	!MatchQ[symbols,{_String..}],
 			Message[ToSymbol::failmsg, "Failed to extract strings out of all "<>ToString[head]<>" symbols."];
@@ -154,7 +171,6 @@ toSymbol[expr_, head_, repRule_List, optStringReplace_] :=
 		];
 
 		symbols = ToExpression/@symbols;
-
 
 		If[	!MatchQ[Head/@symbols,{Symbol..}],
 			Message[ToSymbol::failmsg, "The resulting expressions are not simple symbols."];
