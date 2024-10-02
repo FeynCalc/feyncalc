@@ -68,10 +68,33 @@ FCLoopCreatePartialFractioningRules[glis_List, toposRaw:{__FCTopology}, OptionsP
 		FCPrint[3,"FCLoopCreatePartialFractioningRules: Entering with: Topologies:", topos, FCDoControl->cpfVerbose];
 
 		time=AbsoluteTime[];
+
+		If[	$ParallelizeFeynCalc,
+
+			FCPrint[1, "FCLoopCreatePartialFractioningRules: Applying ApartFF in parallel.", FCDoControl -> cpfVerbose];
+			With[{xxx= topos},
+				ParallelEvaluate[( FCParallelContext`FCLoopToPakForm`topos =xxx;), DistributedContexts -> None]];
+
+			tmp = ParallelMap[ApartFF[#,FCParallelContext`FCLoopToPakForm`topos,
+				FDS -> False, DropScaleless -> False, Head -> {Identity, apartHead}]&, Partition[glis, UpTo[Ceiling[Length[glis]/Length[Kernels[]]]]],
+				DistributedContexts -> None
+				,
+				Method -> "CoarsestGrained"];
+				tmp = Flatten[tmp];
+				,
+
+			FCPrint[1,"FCLoopCreatePartialFractioningRules: Applying ApartFF.", FCDoControl->cpfVerbose];
+			tmp = ApartFF[glis,topos,FDS -> False, DropScaleless -> False, Head -> {Identity, apartHead}];
+		];
+
+		FCPrint[1, "FCLoopCreatePartialFractioningRules: Done applying ApartFF, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cpfVerbose];
+
+
+(*
 		FCPrint[1,"FCLoopCreatePartialFractioningRules: Applying ApartFF.", FCDoControl->cpfVerbose];
 		tmp = ApartFF[glis,topos,FDS -> False, DropScaleless -> False, Head -> {Identity, apartHead}];
 		FCPrint[1, "FCLoopCreatePartialFractioningRules: Done applying ApartFF, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cpfVerbose];
-
+*)
 		FCPrint[3, "FCLoopCreatePartialFractioningRules: After ApartFF: ", tmp , FCDoControl->cpfVerbose];
 
 		tmp = Thread[rule[glis, tmp]] /. rule[a_, apartHead[1, a_]] :> Unevaluated[Sequence[]];
