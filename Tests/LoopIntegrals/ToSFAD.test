@@ -95,5 +95,12 @@ CartesianMomentum[q1, -1 + D], 0,- \
 QGMassV^2+TemporalPair[ExplicitLorentzIndex[0], \
 TemporalMomentum[q1]]^2, {n, -1}]]]",
 "FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q1, D], \
-0, -QGMassV^2, {n, -1}]]"}
+0, -QGMassV^2, {n, -1}]]"},
+{"fcstToSFAD-ID23",
+"ToSFAD[FeynAmpDenominator[PropagatorDenominator[-Momentum[k1, D] + gkin*meta*Momentum[n,
+D] - (meta*u0b*Momentum[n, D])/2 + (meta*Momentum[nb, D])/(4*gkin) - (meta*u0b*Momentum[nb,
+D])/2, meta - meta*u0b]]]",
+"FeynAmpDenominator[StandardPropagatorDenominator[-Momentum[k1, D] + gkin*meta*Momentum[n,
+D] - (meta*u0b*Momentum[n, D])/2 + (meta*Momentum[nb, D])/(4*gkin) - (meta*u0b*Momentum[nb,
+D])/2, 0, -(meta - meta*u0b)^2, {1, 1}]]"}
 });
