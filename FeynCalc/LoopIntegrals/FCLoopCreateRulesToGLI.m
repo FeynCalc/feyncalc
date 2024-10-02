@@ -37,7 +37,8 @@ Options[FCLoopCreateRulesToGLI] = {
 	FCE			-> False,
 	FCI			-> False,
 	FCPrint		-> True,
-	FCVerbose	-> False
+	FCVerbose	-> False,
+	FinalSubstitutions -> {}
 };
 
 
@@ -47,7 +48,7 @@ FCLoopCreateRulesToGLI[toposRaw:{__FCTopology}, rest___]:=
 FCLoopCreateRulesToGLI[topoRaw_FCTopology, OptionsPattern[]] :=
 	Block[{	props, topo, allMoms,extMoms,dims,spList,nProps,
 			array, id, eqSystem, inverseProps, res, topoCheck,
-			gfad, lmoms},
+			gfad, lmoms, optFinalSubstitutions},
 
 		If [OptionValue[FCVerbose]===False,
 			crtgVerbose=$VeryVerbose,
@@ -56,8 +57,10 @@ FCLoopCreateRulesToGLI[topoRaw_FCTopology, OptionsPattern[]] :=
 			];
 		];
 
+		optFinalSubstitutions = FRH[Join[OptionValue[FinalSubstitutions],topoRaw[[5]]]];
+
 		If[ !OptionValue[FCI],
-			topo = FCI[topoRaw],
+			{topo, optFinalSubstitutions} = FCI[{topoRaw, optFinalSubstitutions}],
 			topo = topoRaw
 		];
 
@@ -85,7 +88,6 @@ FCLoopCreateRulesToGLI[topoRaw_FCTopology, OptionsPattern[]] :=
 			];
 
 		];
-
 
 		id = topo[[1]];
 		props = topo[[2]];
@@ -116,7 +118,7 @@ FCLoopCreateRulesToGLI[topoRaw_FCTopology, OptionsPattern[]] :=
 
 		(*props = props /. FeynAmpDenominator[g_GenericPropagatorDenominator] :> gfad[FeynAmpDenominator[g]];*)
 
-		inverseProps = FCLoopPropagatorsToTopology[props,FCI->True,ExpandScalarProduct->True];
+		inverseProps = FCLoopPropagatorsToTopology[props,FCI->True,ExpandScalarProduct->True]/.Dispatch[optFinalSubstitutions];
 
 		FCPrint[3,"FCLoopCreateRulesToGLI: List of the inverse propagators: ", inverseProps, FCDoControl->crtgVerbose];
 
