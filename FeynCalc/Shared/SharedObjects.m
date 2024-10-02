@@ -2094,6 +2094,18 @@ LC[x___]/; (Length[{x}] > 4) && (FCPatternFreeQ[{x}]) :=
 LCD[x___]/; (Length[{x}] > 4) && (FCPatternFreeQ[{x}]) :=
 	Message[LCD::argrx, "LCD["<>ToString[{x}]<>"]", Length[{x}], 4];
 
+LC[___,mu_,___,mu_,___][___]:=
+	0;
+
+LC[___][___,p_,___,p_,___]:=
+	0;
+
+LCD[___,mu_,___,mu_,___][___]:=
+	0;
+
+LCD[___][___,p_,___,p_,___]:=
+	0;
+
 LeftNablaD[x__] :=
 	LeftNablaD @@ (CartesianIndex /@ {x}) /;FreeQ2[{x},
 	{LorentzIndex, ExplicitLorentzIndex, CartesianIndex, Momentum, CartesianMomentum, OPEDelta, RowBox,
