@@ -1062,7 +1062,15 @@ Momentum[nb]]", "0"},
 {"fcstSharedObjectsBehavior-ID229", "CartesianMomentum[nb/(1 + 2 myVarFC)]",
 "CartesianMomentum[nb]/(1 + 2 myVarFC)"},
 {"fcstSharedObjectsBehavior-ID230", "CartesianMomentum[nb/(a + 2 myVarFC^2)]",
-"CartesianMomentum[nb]/(a + 2 myVarFC^2)"}
+"CartesianMomentum[nb]/(a + 2 myVarFC^2)"},
+{"fcstSharedObjectsBehavior-ID231", "LC[mu,mu][p1,p2]",
+"0"},
+{"fcstSharedObjectsBehavior-ID232", "LC[mu,nu][p2,p2]",
+"0"},
+{"fcstSharedObjectsBehavior-ID233", "LCD[mu,mu][p1,p2]",
+"0"},
+{"fcstSharedObjectsBehavior-ID234", "LCD[mu,nu][p2,p2]",
+"0"}
 }
 
 Tests`Shared`fcstSharedObjectsDiracIndex =
