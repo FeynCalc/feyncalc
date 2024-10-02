@@ -34,16 +34,27 @@ End[]
 Begin["`ToSFAD`Private`"]
 
 optEtaSign::usage="";
+sfadVerbose::usage="";
 
 Options[ToSFAD] = {
-	EtaSign -> Automatic,
-	FCI		-> False,
-	FCE		-> False
+	EtaSign 	-> Automatic,
+	FCI			-> False,
+	FCE			-> False,
+	FCVerbose	-> False
 };
 
 ToSFAD[expr_, OptionsPattern[]] :=
 	Block[{ex,res,fads,pds,pdsEval,fadsConverted,pdsConverted,rulePds,ruleFads,ruleFinal},
 
+		If[	OptionValue[FCVerbose]===False,
+			sfadVerbose=$VeryVerbose,
+			If[	MatchQ[OptionValue[FCVerbose], _Integer],
+				sfadVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		FCPrint[1, "ToSFAD: Entering.", FCDoControl->sfadVerbose];
+		FCPrint[3, "ToSFAD: Entering with: ", expr, FCDoControl->sfadVerbose];
 
 		If[ OptionValue[FCI],
 			ex = expr,
@@ -59,9 +70,13 @@ ToSFAD[expr_, OptionsPattern[]] :=
 
 		pds = Cases2[ex, {PropagatorDenominator, CartesianPropagatorDenominator}];
 
+		FCPrint[3, "ToSFAD: Relevant propagator denominators: ", pds, FCDoControl->sfadVerbose];
+
 		pdsEval = toSFAD[MomentumCombine[#,FCI->True]]&/@pds;
 
 		pdsEval = pdsEval /. toSFAD[x_CartesianPropagatorDenominator] :> x;
+
+		FCPrint[3, "ToSFAD: After toSFAD: ", pdsEval, FCDoControl->sfadVerbose];
 
 		If[ !FreeQ[pdsEval,toSFAD],
 			Message[ToSFAD::failmsg,"Failed to convert all PropagatorDenominators to StandardPropagatorDenominators."];
@@ -79,6 +94,8 @@ ToSFAD[expr_, OptionsPattern[]] :=
 		If[	OptionValue[FCE],
 			res = FCE[res]
 		];
+
+		FCPrint[1, "ToSFAD: Leaving.", FCDoControl->sfadVerbose];
 
 		res
 
@@ -100,6 +117,8 @@ toSFAD[PropagatorDenominator[Complex[0,1] c_. Momentum[q_,dim___],b_]]:=
 toSFAD[PropagatorDenominator[a_,b_]]:=
 	StandardPropagatorDenominator[a, 0, -b^2,{1, optEtaSign}]/; optEtaSign=!=Automatic;
 
+toSFAD[PropagatorDenominator[a_,b_]]:=
+	StandardPropagatorDenominator[a, 0, -b^2,{1, 1}]/; FreeQ[a,Complex] && optEtaSign===Automatic;
 
 
 FCPrint[1,"ToSFAD.m loaded."];
