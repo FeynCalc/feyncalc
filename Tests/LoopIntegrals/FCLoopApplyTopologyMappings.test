@@ -394,67 +394,21 @@ Momentum[P,D]]->2*mq^2,Hold[Pair][Momentum[k2,D],Momentum[P,D]]->2*mq^\
 Momentum[P,D],Momentum[Polarization[k2,-I,Transversality->True],D]]\
 ->0,Hold[Pair][Momentum[P,D],Momentum[Polarization[k1,-I,\
 Transversality->True],D]]->0},{}]}}]",
-"((4*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*CF*eQ^2*Pi^2*Eps[Momentum[\
-k1], Momentum[P], Momentum[Polarization[k1, -I, Transversality -> \
-True]], Momentum[Polarization[k2, -I, Transversality -> \
-True]]]*FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] - \
-Momentum[P, D]/2, mq]]*GLI[\"fctopology3\", {-1, 1, 1}])/mq^3 - \
-((8*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*CF*eQ^2*Pi^2*Eps[Momentum[k1], \
-Momentum[P], Momentum[Polarization[k1, -I, Transversality -> True]], \
-Momentum[Polarization[k2, -I, Transversality -> \
-True]]]*FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] - \
-Momentum[P, D]/2, mq]]*GLI[\"fctopology3\", {0, 0, 1}])/mq^3 + \
-((8*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*CF*eQ^2*Pi^2*Eps[Momentum[k1], \
-Momentum[P], Momentum[Polarization[k1, -I, Transversality -> True]], \
-Momentum[Polarization[k2, -I, Transversality -> \
-True]]]*FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] - \
-Momentum[P, D]/2, mq]]*GLI[\"fctopology3\", {1, 0, 0}])/mq^3 - \
-((4*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*CF*eQ^2*Pi^2*Eps[Momentum[k1], \
-Momentum[P], Momentum[Polarization[k1, -I, Transversality -> True]], \
-Momentum[Polarization[k2, -I, Transversality -> \
-True]]]*FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] - \
-Momentum[P, D]/2, mq]]*GLI[\"fctopology3\", {1, 1, -1}])/mq^3 - \
-((2*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*CF*eQ^2*Pi^2*Eps[Momentum[k1], \
-Momentum[P], Momentum[Polarization[k1, -I, Transversality -> True]], \
-Momentum[Polarization[k2, -I, Transversality -> \
-True]]]*FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] - \
-Momentum[P, D]/2, mq]]*GLI[\"fctopology3\", {1, 1, 0}]*(20*mq^2 - \
-4*D*mq^2 - 4*Pair[Momentum[k1, D], Momentum[k1, D]] + \
-8*Pair[Momentum[k1, D], Momentum[P, D]] - 3*Pair[Momentum[P, D], \
-Momentum[P, D]]))/mq^3 - \
-((2*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*CF*eQ^2*Pi^2*Eps[Momentum[k1], \
-Momentum[P], Momentum[Polarization[k1, -I, Transversality -> True]], \
-Momentum[Polarization[k2, -I, Transversality -> \
-True]]]*FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] - \
-Momentum[P, D]/2, mq]]*GLI[\"fctopology3\", {0, 1, 1}]*(4*mq^2 - \
-Pair[Momentum[P, D], Momentum[P, D]]))/mq^3 - \
-((8*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*CF*eQ^2*Pi^2*Eps[Momentum[k1], \
-Momentum[P], Momentum[Polarization[k1, -I, Transversality -> True]], \
-Momentum[Polarization[k2, -I, Transversality -> \
-True]]]*FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] - \
-Momentum[P, D]/2, mq]]*GLI[\"fctopology3\", {1, 0, \
-1}]*(Pair[Momentum[k1, D], Momentum[k1, D]] - 2*Pair[Momentum[k1, D], \
-Momentum[P, D]] + Pair[Momentum[P, D], Momentum[P, D]]))/mq^3 - \
-((2*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*CF*eQ^2*Pi^2*Eps[Momentum[k1], \
-Momentum[P], Momentum[Polarization[k1, -I, Transversality -> True]], \
-Momentum[Polarization[k2, -I, Transversality -> \
-True]]]*FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] - \
-Momentum[P, D]/2, mq]]*GLI[\"fctopology3\", {1, 1, 1}]*(16*mq^4 - \
-4*D*mq^4 - 28*mq^2*Pair[Momentum[k1, D], Momentum[k1, D]] + \
-4*D*mq^2*Pair[Momentum[k1, D], Momentum[k1, D]] + 2*Pair[Momentum[k1, \
-D], Momentum[k1, D]]^2 + 56*mq^2*Pair[Momentum[k1, D], Momentum[P, \
-D]] - 8*D*mq^2*Pair[Momentum[k1, D], Momentum[P, D]] - \
-8*Pair[Momentum[k1, D], Momentum[k1, D]]*Pair[Momentum[k1, D], \
-Momentum[P, D]] + 8*Pair[Momentum[k1, D], Momentum[P, D]]^2 - \
-22*mq^2*Pair[Momentum[P, D], Momentum[P, D]] + \
-3*D*mq^2*Pair[Momentum[P, D], Momentum[P, D]] + 3*Pair[Momentum[k1, \
-D], Momentum[k1, D]]*Pair[Momentum[P, D], Momentum[P, D]] - \
-6*Pair[Momentum[k1, D], Momentum[P, D]]*Pair[Momentum[P, D], \
-Momentum[P, D]] + Pair[Momentum[P, D], Momentum[P, D]]^2))/mq^3 + \
-FCGV[\"repRuleGLIProduct\"][((16*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*\
-CF*eQ^2*Pi^2*Eps[Momentum[k1], Momentum[P], Momentum[Polarization[k1, \
--I, Transversality -> True]], Momentum[Polarization[k2, -I, \
-Transversality -> \
-True]]]*FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] - \
-Momentum[P, D]/2, mq]])/mq, GLI[\"fctopology3\", {0, 1, 1}]]"}
+"((4*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*CF*eQ^2*Pi^2*Eps[Momentum[k1], Momentum[P], Momentum[Polarization[k1, -I, Transversality -> True]],
+Momentum[Polarization[k2, -I, Transversality -> True]]]*FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] -
+Momentum[P, D]/2, mq]]*GLI[\"fctopology3\", {-1, 1, 1}])/mq^3 - ((8*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*CF*eQ^2*Pi^2*Eps[Momentum[k1],
+Momentum[P], Momentum[Polarization[k1, -I, Transversality -> True]], Momentum[Polarization[k2, -I,
+Transversality -> True]]]*FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] - Momentum[P, D]/2, mq]]*GLI[\"fctopology3\",
+{0, 0, 1}])/mq^3 + ((8*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*CF*eQ^2*Pi^2*Eps[Momentum[k1], Momentum[P], Momentum[Polarization[k1,
+-I, Transversality -> True]], Momentum[Polarization[k2, -I, Transversality -> True]]]*FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] -
+Momentum[P, D]/2, mq]]*GLI[\"fctopology3\", {1, 0, 0}])/mq^3 - ((4*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*CF*eQ^2*Pi^2*Eps[Momentum[k1], Momentum[P],
+Momentum[Polarization[k1, -I, Transversality -> True]], Momentum[Polarization[k2, -I,
+Transversality -> True]]]*FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] - Momentum[P, D]/2, mq]]*GLI[\"fctopology3\",
+{1, 1, -1}])/mq^3 - ((8*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*CF*(6 - D)*eQ^2*Pi^2*Eps[Momentum[k1], Momentum[P], Momentum[Polarization[k1, -I,
+Transversality -> True]], Momentum[Polarization[k2, -I, Transversality -> True]]]*FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] - Momentum[P, D]/2,
+mq]]*GLI[\"fctopology3\", {1, 1, 0}])/mq - (16*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*CF*(5 - D)*eQ^2*mq*Pi^2*Eps[Momentum[k1], Momentum[P], Momentum[Polarization[k1,
+-I, Transversality -> True]], Momentum[Polarization[k2, -I, Transversality -> True]]]*FeynAmpDenominator[PropagatorDenominator[Momentum[k1, D] - Momentum[P,
+D]/2, mq]]*GLI[\"fctopology3\", {1, 1, 1}] + FCGV[\"repRuleGLIProduct\"][((16*I)*Sqrt[2]*alphafs*alphas*Sqrt[CA]*CF*eQ^2*Pi^2*Eps[Momentum[k1], Momentum[P],
+Momentum[Polarization[k1, -I, Transversality -> True]], Momentum[Polarization[k2, -I, Transversality -> True]]]*FeynAmpDenominator[PropagatorDenominator[Momentum[k1,
+D] - Momentum[P, D]/2, mq]])/mq, GLI[\"fctopology3\", {0, 1, 1}]]"}
 });

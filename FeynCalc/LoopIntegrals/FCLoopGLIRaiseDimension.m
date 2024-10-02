@@ -41,6 +41,7 @@ Options[FCLoopGLIRaiseDimension] = {
 	FCI				-> 	False,
 	FCVerbose		->	False,
 	Factoring		->	{Factor2,5000},
+	FinalSubstitutions -> {},
 	TimeConstrained	->	3
 };
 
@@ -54,11 +55,12 @@ FCLoopGLIRaiseDimension[gli_GLI, topoRaw_FCTopology, OptionsPattern[]] :=
 	Block[{	res, ex,  topo, nProps, lMoms, nLoops, extMoms,
 			invProps, dim,  coeffs, dot, null1, null2, tmp,
 			optCollecting, optFactoring, optTimeConstrained,
-			gramDet, nExtMoms, numRules},
+			gramDet, nExtMoms, numRules, optFinalSubstitutions},
 
 		optCollecting		= OptionValue[Collecting];
 		optFactoring		= OptionValue[Factoring];
 		optTimeConstrained	= OptionValue[TimeConstrained];
+		optFinalSubstitutions = FRH[Join[OptionValue[FinalSubstitutions],topoRaw[[5]]]];
 
 		If [OptionValue[FCVerbose]===False,
 				rgdVerbose=$VeryVerbose,
@@ -68,8 +70,8 @@ FCLoopGLIRaiseDimension[gli_GLI, topoRaw_FCTopology, OptionsPattern[]] :=
 		];
 
 		If[ !OptionValue[FCI],
-			topo = FCI[topoRaw],
-			topo= topoRaw
+			{topo, optFinalSubstitutions} = FCI[{topoRaw, optFinalSubstitutions}],
+			topo = topoRaw
 		];
 
 		FCPrint[1,"FCLoopGLIRaiseDimension: Entering.", FCDoControl->rgdVerbose];
@@ -95,12 +97,12 @@ FCLoopGLIRaiseDimension[gli_GLI, topoRaw_FCTopology, OptionsPattern[]] :=
 		];
 		dim = First[dim];
 
-		gramDet = FCGramDeterminant[extMoms, Prefactor -> 1];
+		gramDet = FCGramDeterminant[extMoms, Prefactor -> 1] /.Dispatch[optFinalSubstitutions];
 
 		tmp = 2^nLoops/gramDet/Pochhammer[((dim + 1) - nLoops) - nExtMoms, nLoops];
 
 
-		gramDet = FCGramDeterminant[Join[lMoms,extMoms], Prefactor -> 1];
+		gramDet = FCGramDeterminant[Join[lMoms,extMoms], Prefactor -> 1]/.Dispatch[optFinalSubstitutions];
 
 		numRules = FCLoopCreateRulesToGLI[topo]//Flatten;
 

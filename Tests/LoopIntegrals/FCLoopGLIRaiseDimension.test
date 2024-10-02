@@ -17,34 +17,57 @@
 Tests`LoopIntegrals`fcstFCLoopGLIRaiseDimension =
 ({
 {"fcstFCLoopGLIRaiseDimension-ID1",
-"FCLoopGLIRaiseDimension[GLI[topo1, {1, 1, 1, 1, 1}], FCTopology[
+"FCClearScalarProducts[]; \n FCLoopGLIRaiseDimension[GLI[topo1, {1, 1, 1, 1, 1}], FCTopology[
 topo1, {SFAD[p1], SFAD[p2], SFAD[Q - p1 - p2], SFAD[Q - p2],
 	SFAD[Q - p1]}, {p1, p2}, {Q}, {Hold[SPD[Q]] -> qq}, {}],
 FCE -> True]",
-"GLI[topo1, {0, 0, 1, 1, 1}]/((1 - D)*(2 - D)) + GLI[topo1, {0, 1, 0, 1, 1}]/((1 - D)*(2 - D)) - GLI[topo1, {0, 1, 1, 1, 0}]/((1 - D)*(2 - D)) +
-GLI[topo1, {1, 0, 0, 1, 1}]/((1 - D)*(2 - D)) - GLI[topo1, {1, 0, 1, 0, 1}]/((1 - D)*(2 - D)) - GLI[topo1, {1, 1, -1, 1, 1}]/((1 - D)*(2 - D)) +
-GLI[topo1, {1, 1, 0, 0, 1}]/((1 - D)*(2 - D)) + GLI[topo1, {1, 1, 0, 1, 0}]/((1 - D)*(2 - D)) + GLI[topo1, {1, 1, 1, 0, 0}]/((1 - D)*(2 - D)) -
-GLI[topo1, {-1, 0, 1, 1, 1}]/((1 - D)*(2 - D)*SPD[Q, Q]) - GLI[topo1, {0, -1, 1, 1, 1}]/((1 - D)*(2 - D)*SPD[Q, Q]) +
-GLI[topo1, {0, 0, 0, 1, 1}]/((1 - D)*(2 - D)*SPD[Q, Q]) + GLI[topo1, {0, 0, 1, 0, 1}]/((1 - D)*(2 - D)*SPD[Q, Q]) +
-GLI[topo1, {0, 0, 1, 1, 0}]/((1 - D)*(2 - D)*SPD[Q, Q]) - GLI[topo1, {0, 1, 0, 0, 1}]/((1 - D)*(2 - D)*SPD[Q, Q]) +
-GLI[topo1, {0, 1, 1, 0, 0}]/((1 - D)*(2 - D)*SPD[Q, Q]) - GLI[topo1, {1, 0, 0, 1, 0}]/((1 - D)*(2 - D)*SPD[Q, Q]) +
-GLI[topo1, {1, 0, 1, 0, 0}]/((1 - D)*(2 - D)*SPD[Q, Q]) + GLI[topo1, {1, 1, 0, 0, 0}]/((1 - D)*(2 - D)*SPD[Q, Q]) -
-GLI[topo1, {1, 1, 1, -1, 0}]/((1 - D)*(2 - D)*SPD[Q, Q]) - GLI[topo1, {1, 1, 1, 0, -1}]/((1 - D)*(2 - D)*SPD[Q, Q]) -
-(GLI[topo1, {1, 1, 0, 1, 1}]*SPD[Q, Q])/((1 - D)*(2 - D))"},
+"-(GLI[topo1, {-1, 0, 1, 1, 1}]/((1 - D)*(2 - D)*qq)) -
+GLI[topo1, {0, -1, 1, 1, 1}]/((1 - D)*(2 - D)*qq) +
+GLI[topo1, {0, 0, 0, 1, 1}]/((1 - D)*(2 - D)*qq) +
+GLI[topo1, {0, 0, 1, 0, 1}]/((1 - D)*(2 - D)*qq) +
+GLI[topo1, {0, 0, 1, 1, 0}]/((1 - D)*(2 - D)*qq) +
+GLI[topo1, {0, 0, 1, 1, 1}]/((1 - D)*(2 - D)) -
+GLI[topo1, {0, 1, 0, 0, 1}]/((1 - D)*(2 - D)*qq) +
+GLI[topo1, {0, 1, 0, 1, 1}]/((1 - D)*(2 - D)) +
+GLI[topo1, {0, 1, 1, 0, 0}]/((1 - D)*(2 - D)*qq) -
+GLI[topo1, {0, 1, 1, 1, 0}]/((1 - D)*(2 - D)) -
+GLI[topo1, {1, 0, 0, 1, 0}]/((1 - D)*(2 - D)*qq) +
+GLI[topo1, {1, 0, 0, 1, 1}]/((1 - D)*(2 - D)) +
+GLI[topo1, {1, 0, 1, 0, 0}]/((1 - D)*(2 - D)*qq) -
+GLI[topo1, {1, 0, 1, 0, 1}]/((1 - D)*(2 - D)) -
+GLI[topo1, {1, 1, -1, 1, 1}]/((1 - D)*(2 - D)) +
+GLI[topo1, {1, 1, 0, 0, 0}]/((1 - D)*(2 - D)*qq) +
+GLI[topo1, {1, 1, 0, 0, 1}]/((1 - D)*(2 - D)) +
+GLI[topo1, {1, 1, 0, 1, 0}]/((1 - D)*(2 - D)) - (qq*
+	GLI[topo1, {1, 1, 0, 1, 1}])/((1 - D)*(2 - D)) -
+GLI[topo1, {1, 1, 1, -1, 0}]/((1 - D)*(2 - D)*qq) -
+GLI[topo1, {1, 1, 1, 0, -1}]/((1 - D)*(2 - D)*qq) +
+GLI[topo1, {1, 1, 1, 0, 0}]/((1 - D)*(2 - D))"},
 {"fcstFCLoopGLIRaiseDimension-ID2",
 "FCLoopGLIRaiseDimension[GLI[topo1, {n1, n2, n3, 1, 1}], FCTopology[
 topo1, {SFAD[p1], SFAD[p2], SFAD[Q - p1 - p2], SFAD[Q - p2],
 SFAD[Q - p1]}, {p1, p2}, {Q}, {Hold[SPD[Q]] -> qq}, {}],
 FCE -> True]",
-"GLI[topo1, {-1 + n1, -1 + n2, n3, 1, 1}]/((1 - D)*(2 - D)) + GLI[topo1, {-1 + n1, n2, -1 + n3, 1, 1}]/((1 - D)*(2 - D)) -
-GLI[topo1, {-1 + n1, n2, n3, 1, 0}]/((1 - D)*(2 - D)) + GLI[topo1, {n1, -1 + n2, -1 + n3, 1, 1}]/((1 - D)*(2 - D)) -
-GLI[topo1, {n1, -1 + n2, n3, 0, 1}]/((1 - D)*(2 - D)) - GLI[topo1, {n1, n2, -2 + n3, 1, 1}]/((1 - D)*(2 - D)) +
-GLI[topo1, {n1, n2, -1 + n3, 0, 1}]/((1 - D)*(2 - D)) + GLI[topo1, {n1, n2, -1 + n3, 1, 0}]/((1 - D)*(2 - D)) +
-GLI[topo1, {n1, n2, n3, 0, 0}]/((1 - D)*(2 - D)) - GLI[topo1, {-2 + n1, -1 + n2, n3, 1, 1}]/((1 - D)*(2 - D)*SPD[Q, Q]) -
-GLI[topo1, {-1 + n1, -2 + n2, n3, 1, 1}]/((1 - D)*(2 - D)*SPD[Q, Q]) + GLI[topo1, {-1 + n1, -1 + n2, -1 + n3, 1, 1}]/((1 - D)*(2 - D)*SPD[Q, Q]) +
-GLI[topo1, {-1 + n1, -1 + n2, n3, 0, 1}]/((1 - D)*(2 - D)*SPD[Q, Q]) + GLI[topo1, {-1 + n1, -1 + n2, n3, 1, 0}]/((1 - D)*(2 - D)*SPD[Q, Q]) -
-GLI[topo1, {-1 + n1, n2, -1 + n3, 0, 1}]/((1 - D)*(2 - D)*SPD[Q, Q]) + GLI[topo1, {-1 + n1, n2, n3, 0, 0}]/((1 - D)*(2 - D)*SPD[Q, Q]) -
-GLI[topo1, {n1, -1 + n2, -1 + n3, 1, 0}]/((1 - D)*(2 - D)*SPD[Q, Q]) + GLI[topo1, {n1, -1 + n2, n3, 0, 0}]/((1 - D)*(2 - D)*SPD[Q, Q]) +
-GLI[topo1, {n1, n2, -1 + n3, 0, 0}]/((1 - D)*(2 - D)*SPD[Q, Q]) - GLI[topo1, {n1, n2, n3, -1, 0}]/((1 - D)*(2 - D)*SPD[Q, Q]) -
-GLI[topo1, {n1, n2, n3, 0, -1}]/((1 - D)*(2 - D)*SPD[Q, Q]) - (GLI[topo1, {n1, n2, -1 + n3, 1, 1}]*SPD[Q, Q])/((1 - D)*(2 - D))"}
+"-(GLI[topo1, {-2 + n1, -1 + n2, n3, 1, 1}]/((1 - D)*(2 - D)*qq)) -
+GLI[topo1, {-1 + n1, -2 + n2, n3, 1, 1}]/((1 - D)*(2 - D)*qq) +
+GLI[topo1, {-1 + n1, -1 + n2, -1 + n3, 1, 1}]/((1 - D)*(2 - D)*qq) +
+GLI[topo1, {-1 + n1, -1 + n2, n3, 0, 1}]/((1 - D)*(2 - D)*qq) +
+GLI[topo1, {-1 + n1, -1 + n2, n3, 1, 0}]/((1 - D)*(2 - D)*qq) +
+GLI[topo1, {-1 + n1, -1 + n2, n3, 1, 1}]/((1 - D)*(2 - D)) -
+GLI[topo1, {-1 + n1, n2, -1 + n3, 0, 1}]/((1 - D)*(2 - D)*qq) +
+GLI[topo1, {-1 + n1, n2, -1 + n3, 1, 1}]/((1 - D)*(2 - D)) +
+GLI[topo1, {-1 + n1, n2, n3, 0, 0}]/((1 - D)*(2 - D)*qq) -
+GLI[topo1, {-1 + n1, n2, n3, 1, 0}]/((1 - D)*(2 - D)) -
+GLI[topo1, {n1, -1 + n2, -1 + n3, 1, 0}]/((1 - D)*(2 - D)*qq) +
+GLI[topo1, {n1, -1 + n2, -1 + n3, 1, 1}]/((1 - D)*(2 - D)) +
+GLI[topo1, {n1, -1 + n2, n3, 0, 0}]/((1 - D)*(2 - D)*qq) -
+GLI[topo1, {n1, -1 + n2, n3, 0, 1}]/((1 - D)*(2 - D)) -
+GLI[topo1, {n1, n2, -2 + n3, 1, 1}]/((1 - D)*(2 - D)) +
+GLI[topo1, {n1, n2, -1 + n3, 0, 0}]/((1 - D)*(2 - D)*qq) +
+GLI[topo1, {n1, n2, -1 + n3, 0, 1}]/((1 - D)*(2 - D)) +
+GLI[topo1, {n1, n2, -1 + n3, 1, 0}]/((1 - D)*(2 - D)) - (qq*
+	GLI[topo1, {n1, n2, -1 + n3, 1, 1}])/((1 - D)*(2 - D)) -
+GLI[topo1, {n1, n2, n3, -1, 0}]/((1 - D)*(2 - D)*qq) -
+GLI[topo1, {n1, n2, n3, 0, -1}]/((1 - D)*(2 - D)*qq) +
+GLI[topo1, {n1, n2, n3, 0, 0}]/((1 - D)*(2 - D))"}
 });
