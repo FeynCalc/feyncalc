@@ -703,8 +703,8 @@ spur5Larin[x__DiracGamma, y:DiracGamma[_[_,dim_],dim_], DiracGamma[5]]:=
 	]/; EvenQ[Length[{x,y}]];
 
 
-
-spur5LarinMVV[x__DiracGamma, y:DiracGamma[_[_,dim_],dim_], DiracGamma[5]]:=
+(*Implements Eq.10 from 1506.04517 *)
+spur5LarinMVVold[x__DiracGamma, y:DiracGamma[_[_,dim_],dim_], DiracGamma[5]]:=
 	Block[{inds, epsInds, gInds, indPartitions, res, signs},
 		inds = First/@{x};
 		epsInds = Subsets[inds, {3}];
@@ -717,6 +717,22 @@ spur5LarinMVV[x__DiracGamma, y:DiracGamma[_[_,dim_],dim_], DiracGamma[5]]:=
 			Apply[Eps, #1[[-4 ;;]]] &, {indPartitions, signs}]];
 		fastExpand[res]
 	]/; EvenQ[Length[{x,y}]] && Length[{x,y}]>=4;
+
+(*Implements Eq.11 from 1506.04517 *)
+spur5LarinMVV[x__DiracGamma, y : DiracGamma[_[_, dim_], dim_], DiracGamma[5]] :=
+Block[{inds, epsInds, gInds, indPartitions, res, signs},
+	inds = First /@ {x, y};
+	epsInds = Subsets[inds, {4}];
+	gInds = SelectFree[inds, #] & /@ epsInds;
+	indPartitions = MapThread[Join[#1, #2] &, {gInds, epsInds}];
+	signs = Signature /@ (indPartitions /.	Thread[Rule[inds, Range[Length[inds]]]]);
+
+	res =
+	Total[MapThread[$LeviCivitaSign*
+		I*#2*((traceNo5Wrap @@ #1[[;; -5]]))*
+		Apply[Eps, #1[[-4 ;;]]] &, {indPartitions, signs}]];
+	fastExpand[res]
+	] /; EvenQ[Length[{x, y}]] && Length[{x, y}] >= 4;
 
 spur5BMHVWest[x__DiracGamma, DiracGamma[5]]:=
 	Block[{spx = {x,DiracGamma[5]},spt,res},
