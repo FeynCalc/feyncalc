@@ -143,7 +143,6 @@ DiracTrick[expr_,OptionsPattern[]] :=
 		optFCDiracIsolate	= OptionValue[FCDiracIsolate];
 		insideDiracTrace	= OptionValue[InsideDiracTrace];
 
-
 		FCPrint[1, "DiracTrick. Entering.", FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrick: Entering with ", expr, FCDoControl->diTrVerbose];
 
@@ -626,7 +625,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 					MatchQ[dim,{_Symbol}] && (FeynCalc`Package`DiracGammaScheme === "BMHV"),
 						FCPrint[2, "DiracTrick: diracTrickEval: Purely D-dim and BMHV.", FCDoControl->diTrVerbose];
 						Null,
-					(* Purely D-dimensional and Larin use the substitution rule to eliminate g^5 that are not on the left of the trace *)
+					(* Purely D-dimensional and Larin -> use the substitution rule to eliminate g^5 that are not on the left of the trace *)
 					MatchQ[dim,{_Symbol}] && (FeynCalc`Package`DiracGammaScheme === "Larin"),
 						FCPrint[2, "DiracTrick: diracTrickEval: Purely D-dim and Larin.", FCDoControl->diTrVerbose];
 						res = res /. holdDOT -> chiralTrickLarin /. chiralTrickLarin -> holdDOT,
@@ -1548,26 +1547,46 @@ chiralTrickAnticommutingDDimLeft[b___,(dg:DiracGamma[_[_,__],_]) + mass_:0, Dira
 (* ------------------------------------------------------------------------ *)
 
 chiralTrickLarin[b___,((dg:DiracGamma[_[_,_], dim_]) + mass_:0),DiracGamma[5],d__] :=
-Block[{li1,li2,li3},
-	{li1,li2,li3} = LorentzIndex[#,dim]& /@ Unique[{"dtlarLia","dtlarLib","dtlarLic"}];
-		I/6 $LeviCivitaSign Eps[dg[[1]], li1, li2, li3] chiralTrickLarin[b,DiracGamma[li1,dim],
-			DiracGamma[li2,dim],DiracGamma[li3,dim],d] + mass chiralTrickLarin[b,DiracGamma[5],d]
+	Block[{li1,li2,li3,eps},
+
+		If[	TrueQ[Count[{b,d}, DiracGamma[5] | DiracGamma[6] | DiracGamma[7], Infinity]>1],
+			Message[DiracTrace::larinmultiple];
+			eps = Hold[Eps],
+			eps = Eps
+		];
+
+		{li1,li2,li3} = LorentzIndex[#,dim]& /@ Unique[{"dtlarLia","dtlarLib","dtlarLic"}];
+		(I/6 $LeviCivitaSign eps[dg[[1]], li1, li2, li3] chiralTrickLarin[b,DiracGamma[li1,dim],
+			DiracGamma[li2,dim],DiracGamma[li3,dim],d] + mass chiralTrickLarin[b,DiracGamma[5],d])
 	]/; !FreeQ2[{d},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && NonCommFreeQ[mass];
 
 chiralTrickLarin[b___,((dg:DiracGamma[_[_,_], dim_]) + mass_:0),DiracGamma[6],d__] :=
-Block[{li1,li2,li3},
-	{li1,li2,li3} = LorentzIndex[#,dim]& /@ Unique[{"dtlarLia","dtlarLib","dtlarLic"}];
-		mass chiralTrickLarin[b,DiracGamma[6],d] +
-		1/2 chiralTrickLarin[b,dg,d] +
-		I/12 $LeviCivitaSign Eps[dg[[1]], li1, li2, li3] chiralTrickLarin[b,DiracGamma[li1,dim],DiracGamma[li2,dim],DiracGamma[li3,dim],d]
+	Block[{li1,li2,li3,eps},
+
+		If[	TrueQ[Count[{b,d}, DiracGamma[5] | DiracGamma[6] | DiracGamma[7], Infinity]>1],
+			Message[DiracTrace::larinmultiple];
+			eps = Hold[Eps],
+			eps = Eps
+		];
+
+		{li1,li2,li3} = LorentzIndex[#,dim]& /@ Unique[{"dtlarLia","dtlarLib","dtlarLic"}];
+		(mass chiralTrickLarin[b,DiracGamma[6],d] +	1/2 chiralTrickLarin[b,dg,d] +
+		I/12 $LeviCivitaSign eps[dg[[1]], li1, li2, li3] chiralTrickLarin[b,DiracGamma[li1,dim],DiracGamma[li2,dim],DiracGamma[li3,dim],d])
 	]/; !FreeQ2[{d},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && NonCommFreeQ[mass];
 
 chiralTrickLarin[b___,((dg:DiracGamma[_[_,_], dim_]) + mass_:0),DiracGamma[7],d__] :=
-Block[{li1,li2,li3},
-	{li1,li2,li3} = LorentzIndex[#,dim]& /@ Unique[{"dtlarLia","dtlarLib","dtlarLic"}];
+Block[{li1,li2,li3,eps},
+
+		If[	TrueQ[Count[{b,d}, DiracGamma[5] | DiracGamma[6] | DiracGamma[7], Infinity]>1],
+			Message[DiracTrace::larinmultiple];
+			eps = Hold[Eps],
+			eps = Eps
+		];
+
+		{li1,li2,li3} = LorentzIndex[#,dim]& /@ Unique[{"dtlarLia","dtlarLib","dtlarLic"}];
 		mass chiralTrickLarin[b,DiracGamma[7],d] +
 		1/2 chiralTrickLarin[b,dg,d] -
-		I/12 $LeviCivitaSign Eps[dg[[1]], li1, li2, li3] chiralTrickLarin[b,DiracGamma[li1,dim],DiracGamma[li2,dim],DiracGamma[li3,dim],d]
+		I/12 $LeviCivitaSign eps[dg[[1]], li1, li2, li3] chiralTrickLarin[b,DiracGamma[li1,dim],DiracGamma[li2,dim],DiracGamma[li3,dim],d]
 	]/; !FreeQ2[{d},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] && NonCommFreeQ[mass];
 
 (* ------------------------------------------------------------------------ *)
