@@ -33,6 +33,12 @@ D-dimensional. You might want to use FCGetDimensions[exp] to find the offending 
 by hand or employ ChangeDimension[exp,D] to convert the whole expression to D-dimensions. If you explicitly \
 intend to use the t'Hooft-Veltman scheme, please activate it via FCSetDiracGammaScheme[\"BMHV\"]."
 
+DiracTrace::larinmultiple = "Detected string of Dirac matrices containing more than two g^5 matrices in the \
+Larin scheme. Since the pairing of the resulting Eps-tensors depends on their physical origin, FeynCalc will \
+disable all such contractions in this calculation by wrapping their heads with Hold. The correct order of \
+contractions cannot be determined automatically and must be specified by the user. The Hold head can be removed \
+using FRH."
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -49,6 +55,7 @@ noSpur::usage="";
 leviCivitaSign::usage="";
 optSort::usage="";
 larinMVV::usage="";
+holdEpsQ::usage="";
 
 Options[DiracTrace] = {
 	Contract 			-> True,
@@ -221,7 +228,8 @@ diracTraceEvaluate[expr_/;!FreeQ[expr,DiracGamma], opts:OptionsPattern[]] :=
 	Block[{ diractrres, tmp = expr, diractrfact, diractrcoll,
 			dtmp,dWrap,wrapRule,prepSpur,time,time2,contract,spurHeadList,
 			spurHeadListChiral,spurHeadListNonChiral,gammaFree,gammaPart,
-		traceListChiral,traceListNonChiral,repRule,null1,null2,dummyIndexFreeQ, epsEvaluate},
+			traceListChiral,traceListNonChiral,repRule,null1,null2,dummyIndexFreeQ,
+			epsEvaluate, numGamma5},
 
 		wrapRule = {dWrap[5]->0, dWrap[6]->1/2, dWrap[7]->1/2, dWrap[LorentzIndex[_,_:4],___]->0,
 					dWrap[_. Momentum[_,_:4]+_:0,___]->0};
@@ -256,6 +264,19 @@ diracTraceEvaluate[expr_/;!FreeQ[expr,DiracGamma], opts:OptionsPattern[]] :=
 
 		time=AbsoluteTime[];
 		FCPrint[1,"DiracTrace: diracTraceEvaluate: Applying DiracTrick.", FCDoControl->diTrVerbose];
+
+		If[	TrueQ[(FeynCalc`Package`DiracGammaScheme === "Larin") && !FreeQ2[tmp,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}]],
+			numGamma5 = Count[tmp, DiracGamma[5] | DiracGamma[6] | DiracGamma[7], Infinity];
+			If[	!MatchQ[numGamma5,_Integer?NonNegative],
+				Message[DiracTrace::failmsg,"Failed to determine the number of g^5 in the trace."];
+				Abort[]
+			];
+			If[	numGamma5>2,
+				Message[DiracTrace::larinmultiple];
+				holdEpsQ=True
+			],
+			holdEpsQ=False
+		];
 
 		(* 	If there are no nested DOTs, then FCDiracIsolate is not needed, otherwise one should use it *)
 			tmp = DiracTrick[tmp, FCI -> True, InsideDiracTrace->True, FCDiracIsolate->FeynCalc`Package`containsNestedDOTsQ[tmp]];
@@ -703,35 +724,26 @@ spur5Larin[x__DiracGamma, y:DiracGamma[_[_,dim_],dim_], DiracGamma[5]]:=
 	]/; EvenQ[Length[{x,y}]];
 
 
-(*Implements Eq.10 from 1506.04517 *)
-spur5LarinMVVold[x__DiracGamma, y:DiracGamma[_[_,dim_],dim_], DiracGamma[5]]:=
-	Block[{inds, epsInds, gInds, indPartitions, res, signs},
-		inds = First/@{x};
-		epsInds = Subsets[inds, {3}];
-		gInds = SelectFree[inds, #] & /@ epsInds;
-		indPartitions = MapThread[Join[#1, #2] &, {gInds, epsInds}];
-		signs = Signature /@ (indPartitions /. Thread[Rule[inds, Range[Length[inds]]]]);
-		indPartitions = Join[#, {First[y]}] & /@ indPartitions;
-
-		res = Total[MapThread[$LeviCivitaSign*I*#2*((traceNo5Wrap @@ #1[[;; -5]])) *
-			Apply[Eps, #1[[-4 ;;]]] &, {indPartitions, signs}]];
-		fastExpand[res]
-	]/; EvenQ[Length[{x,y}]] && Length[{x,y}]>=4;
-
 (*Implements Eq.11 from 1506.04517 *)
 spur5LarinMVV[x__DiracGamma, y : DiracGamma[_[_, dim_], dim_], DiracGamma[5]] :=
-Block[{inds, epsInds, gInds, indPartitions, res, signs},
-	inds = First /@ {x, y};
-	epsInds = Subsets[inds, {4}];
-	gInds = SelectFree[inds, #] & /@ epsInds;
-	indPartitions = MapThread[Join[#1, #2] &, {gInds, epsInds}];
-	signs = Signature /@ (indPartitions /.	Thread[Rule[inds, Range[Length[inds]]]]);
+	Block[{	inds, epsInds, gInds, indPartitions, res, signs, eps},
 
-	res =
-	Total[MapThread[$LeviCivitaSign*
-		I*#2*((traceNo5Wrap @@ #1[[;; -5]]))*
-		Apply[Eps, #1[[-4 ;;]]] &, {indPartitions, signs}]];
-	fastExpand[res]
+		If[TrueQ[holdEpsQ],
+			eps=Hold[Eps],
+			eps=Eps
+		];
+
+		inds = First /@ {x, y};
+		epsInds = Subsets[inds, {4}];
+		gInds = SelectFree[inds, #] & /@ epsInds;
+		indPartitions = MapThread[Join[#1, #2] &, {gInds, epsInds}];
+		signs = Signature /@ (indPartitions /.	Thread[Rule[inds, Range[Length[inds]]]]);
+
+		res =
+		Total[MapThread[$LeviCivitaSign*
+			I*#2*((traceNo5Wrap @@ #1[[;; -5]]))*
+			Apply[eps, #1[[-4 ;;]]] &, {indPartitions, signs}]];
+		fastExpand[res]
 	] /; EvenQ[Length[{x, y}]] && Length[{x, y}] >= 4;
 
 spur5BMHVWest[x__DiracGamma, DiracGamma[5]]:=
