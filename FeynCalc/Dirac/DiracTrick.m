@@ -356,8 +356,8 @@ diracTrickEvalFast[DOT[DiracGamma[(a:6|7)],b___,DiracGamma[(a:6|7)]]] :=
 diracTrickEvalFast[DOT[DiracGamma[(h1:5|6|7)],b___,DiracGamma[(h2:5|6|7)]]] :=
 	ga67MatSign[h1,h2] diracTrickEvalFast[DOT[b,ga67Mat[h1,h2]]]/; h1=!=h2 && insideDiracTrace;
 
-diracTrickEvalFast[DOT[DiracGamma[(h:5|6|7)],b__]] :=
-	diracTrickEvalFast[DOT[b,DiracGamma[h]]]/; insideDiracTrace;
+diracTrickEvalFast[DOT[DiracGamma[(h:5|6|7)],b_, c___]] :=
+	diracTrickEvalFast[DOT[b,c,DiracGamma[h]]]/; !MatchQ[b,DiracGamma[5|6|7]] && insideDiracTrace;
 
 (*	Generic simplifications	*)
 
