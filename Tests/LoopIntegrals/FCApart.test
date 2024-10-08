@@ -502,5 +502,99 @@ FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q1, D],0, -QGMassV^2, 
 "FCApart[SFAD[{{0, n . k}, {0, 1}, al}, {{k, -m^2/Q k . n - k . nb Q}, {-m^2,1}},
 {{k, -m^2/Q k . nb - k . n Q}, {-m^2, 1}}, {k, m^2}], {k},FCE -> True]",
 "SFAD[{{0, k . n}, {0, 1}, al}, {{k, -((m^2*k . n)/Q) - Q*k . nb}, {-m^2, 1}, 1},
-{{k, -(Q*k . n) - (m^2*k . nb)/Q}, {-m^2, 1}, 1}, {{k, 0}, {m^2, 1}, 1}]"}
+{{k, -(Q*k . n) - (m^2*k . nb)/Q}, {-m^2, 1}, 1}, {{k, 0}, {m^2, 1}, 1}]"},
+
+{"fcstFCApart-ID68",
+"(DataType[#, FCVariable] = True) & /@ {gkin, meta, u0b, mqb}; \n
+out = FCApart[
+FeynAmpDenominator[
+	StandardPropagatorDenominator[Momentum[k1, D], 0, 0, {1, 1}],
+	StandardPropagatorDenominator[
+	0, -Pair[Momentum[k1, D], Momentum[n, D]],
+		meta*u0b - (meta*u0b)/(2*gkin), {1, 1}],
+	StandardPropagatorDenominator[
+	Momentum[k1, D] + (mqb*Momentum[n, D])/2 + (mqb*Momentum[nb, D])/
+	2, 0, -mqb^2, {1, 1}],
+	StandardPropagatorDenominator[
+	Momentum[k1, D] +
+	gkin*meta*u0b*
+	Momentum[n, D] + (meta*u0b*Momentum[nb, D])/(4*gkin),
+	0, -(meta^2*u0b^2), {1, 1}],
+	StandardPropagatorDenominator[
+	Momentum[k1, D] +
+	gkin*meta*Momentum[n, D] - (meta*u0b*Momentum[n, D])/
+	2 + (meta*Momentum[nb, D])/(4*gkin) - (meta*u0b*
+		Momentum[nb, D])/2, 0,
+		2*meta^2*u0b - (meta^2*u0b)/(2*gkin) -
+	2*gkin*meta^2*
+	u0b - (meta^2*(16*gkin^2 - 8*gkin*u0b - 32*gkin^3*u0b +
+		16*gkin^2*u0b^2))/(16*gkin^2), {1, 1}],
+	StandardPropagatorDenominator[
+	Momentum[k1, D] - (meta*u0b*Momentum[n, D])/2 +
+	gkin*meta*u0b*Momentum[n, D] - (meta*u0b*Momentum[nb, D])/
+	2 + (meta*u0b*Momentum[nb, D])/(4*gkin), 0,
+		2*meta^2*u0b^2 - (meta^2*u0b^2)/(2*gkin) -
+	2*gkin*meta^2*
+	u0b^2 - ((-8*gkin + 32*gkin^2 - 32*gkin^3)*meta^2*u0b^2)/(16*
+		gkin^2), {1, 1}]], 1, {k1}, FeynCalcInternal -> True,
+	FeynAmpDenominatorSimplify -> False, Check -> True,
+DropScaleless -> True,
+FinalSubstitutions -> {Pair[Momentum[n, D], Momentum[n, D]] -> 0,
+	Pair[Momentum[nb, D], Momentum[nb, D]] -> 0,
+		Pair[Momentum[n, D], Momentum[nb, D]] -> 2},
+MaxIterations -> Infinity, SetDimensions -> {3, 4, -1 + D, D},
+FCE -> True]",
+"(-8*gkin^3*(-meta + 2*gkin*mqb + 2*gkin*meta*u0b)^3*SFAD[{{0, -k1 . n}, {-(meta*u0b) + (meta*u0b)/(2*gkin), 1}, 1}, {{k1 + (mqb*n)/2 + (mqb*nb)/2, 0}, {mqb^2, 1}, 1}, {{k1 + gkin*meta*n + (meta*nb)/(4*gkin) - (meta*n*u0b)/2 - (meta*nb*u0b)/2, 0},
+	{-2*meta^2*u0b + (meta^2*u0b)/(2*gkin) + 2*gkin*meta^2*u0b + (meta^2*(16*gkin^2 - 8*gkin*u0b - 32*gkin^3*u0b + 16*gkin^2*u0b^2))/(16*gkin^2), 1}, 1}])/((-1 + 2*gkin)^6*meta^6*mqb*(-1 + u0b)*u0b^3*(-1 + u0b + 2*gkin*u0b)*(mqb + meta*u0b)^2) -
+(4*gkin^2*(2*gkin*mqb - meta*u0b)^3*SFAD[{{0, -k1 . n}, {-(meta*u0b) + (meta*u0b)/(2*gkin), 1}, 1}, {{k1 + (mqb*n)/2 + (mqb*nb)/2, 0}, {mqb^2, 1}, 1}, {{k1 + gkin*meta*n*u0b + (meta*nb*u0b)/(4*gkin), 0}, {meta^2*u0b^2, 1}, 1}])/
+((-1 + 2*gkin)^6*(1 + 2*gkin)*meta^6*mqb*u0b^5*(-1 + u0b + 2*gkin*u0b)*(mqb + meta*u0b)^2) +
+(4*gkin^2*(2*gkin*mqb - meta*u0b + 2*gkin*meta*u0b)^3*SFAD[{{0, -k1 . n}, {-(meta*u0b) + (meta*u0b)/(2*gkin), 1}, 1}, {{k1 + (mqb*n)/2 + (mqb*nb)/2, 0}, {mqb^2, 1}, 1}, {{k1 - (meta*n*u0b)/2 + gkin*meta*n*u0b - (meta*nb*u0b)/2 + (meta*nb*u0b)/(4*gkin), 0},
+	{-2*meta^2*u0b^2 + (meta^2*u0b^2)/(2*gkin) + 2*gkin*meta^2*u0b^2 + ((-8*gkin + 32*gkin^2 - 32*gkin^3)*meta^2*u0b^2)/(16*gkin^2), 1}, 1}])/((-1 + 2*gkin)^6*meta^6*mqb*(-1 + u0b)*u0b^5*(mqb + meta*u0b)^2) +
+(8*gkin^3*(-mqb - 2*meta*u0b + 4*gkin*mqb*u0b + 4*gkin*meta*u0b^2)*SFAD[{{0, -k1 . n}, {-(meta*u0b) + (meta*u0b)/(2*gkin), 1}, 1}, {{k1 + gkin*meta*n + (meta*nb)/(4*gkin) - (meta*n*u0b)/2 - (meta*nb*u0b)/2, 0},
+	{-2*meta^2*u0b + (meta^2*u0b)/(2*gkin) + 2*gkin*meta^2*u0b + (meta^2*(16*gkin^2 - 8*gkin*u0b - 32*gkin^3*u0b + 16*gkin^2*u0b^2))/(16*gkin^2), 1}, 1}, {{k1 - (meta*n*u0b)/2 + gkin*meta*n*u0b - (meta*nb*u0b)/2 + (meta*nb*u0b)/(4*gkin), 0},
+	{-2*meta^2*u0b^2 + (meta^2*u0b^2)/(2*gkin) + 2*gkin*meta^2*u0b^2 + ((-8*gkin + 32*gkin^2 - 32*gkin^3)*meta^2*u0b^2)/(16*gkin^2), 1}, 1}])/((-1 + 2*gkin)^6*meta^5*u0b^5*(-1 + u0b + 2*gkin*u0b)*(mqb + meta*u0b)^2) -
+(8*gkin^3*(-mqb + 2*gkin*mqb - 2*meta*u0b)*SFAD[{{0, -k1 . n}, {-(meta*u0b) + (meta*u0b)/(2*gkin), 1}, 1}, {{k1 + gkin*meta*n*u0b + (meta*nb*u0b)/(4*gkin), 0}, {meta^2*u0b^2, 1}, 1},
+	{{k1 - (meta*n*u0b)/2 + gkin*meta*n*u0b - (meta*nb*u0b)/2 + (meta*nb*u0b)/(4*gkin), 0}, {-2*meta^2*u0b^2 + (meta^2*u0b^2)/(2*gkin) + 2*gkin*meta^2*u0b^2 + ((-8*gkin + 32*gkin^2 - 32*gkin^3)*meta^2*u0b^2)/(16*gkin^2), 1}, 1}])/
+((-1 + 2*gkin)^6*meta^5*u0b^4*(-1 + u0b + 2*gkin*u0b)*(mqb + meta*u0b)^2) +
+(4*gkin^2*SFAD[{{0, -k1 . n}, {-(meta*u0b) + (meta*u0b)/(2*gkin), 1}, 2}, {{k1 + gkin*meta*n + (meta*nb)/(4*gkin) - (meta*n*u0b)/2 - (meta*nb*u0b)/2, 0},
+	{-2*meta^2*u0b + (meta^2*u0b)/(2*gkin) + 2*gkin*meta^2*u0b + (meta^2*(16*gkin^2 - 8*gkin*u0b - 32*gkin^3*u0b + 16*gkin^2*u0b^2))/(16*gkin^2), 1}, 1}, {{k1 - (meta*n*u0b)/2 + gkin*meta*n*u0b - (meta*nb*u0b)/2 + (meta*nb*u0b)/(4*gkin), 0},
+	{-2*meta^2*u0b^2 + (meta^2*u0b^2)/(2*gkin) + 2*gkin*meta^2*u0b^2 + ((-8*gkin + 32*gkin^2 - 32*gkin^3)*meta^2*u0b^2)/(16*gkin^2), 1}, 1}])/((-1 + 2*gkin)^5*(1 + 2*gkin)*meta^4*u0b^4*(mqb + meta*u0b)) -
+(4*gkin^2*(-1 + u0b + 2*gkin*u0b)*SFAD[{{0, -k1 . n}, {-(meta*u0b) + (meta*u0b)/(2*gkin), 1}, 2}, {{k1 + gkin*meta*n*u0b + (meta*nb*u0b)/(4*gkin), 0}, {meta^2*u0b^2, 1}, 1},
+	{{k1 + gkin*meta*n + (meta*nb)/(4*gkin) - (meta*n*u0b)/2 - (meta*nb*u0b)/2, 0}, {-2*meta^2*u0b + (meta^2*u0b)/(2*gkin) + 2*gkin*meta^2*u0b + (meta^2*(16*gkin^2 - 8*gkin*u0b - 32*gkin^3*u0b + 16*gkin^2*u0b^2))/(16*gkin^2), 1}, 1}])/
+((-1 + 2*gkin)^5*(1 + 2*gkin)*meta^4*(-1 + u0b)*u0b^4*(mqb + meta*u0b)) + (8*gkin^3*SFAD[{{0, -k1 . n}, {-(meta*u0b) + (meta*u0b)/(2*gkin), 1}, 2}, {{k1 + gkin*meta*n*u0b + (meta*nb*u0b)/(4*gkin), 0}, {meta^2*u0b^2, 1}, 1},
+	{{k1 - (meta*n*u0b)/2 + gkin*meta*n*u0b - (meta*nb*u0b)/2 + (meta*nb*u0b)/(4*gkin), 0}, {-2*meta^2*u0b^2 + (meta^2*u0b^2)/(2*gkin) + 2*gkin*meta^2*u0b^2 + ((-8*gkin + 32*gkin^2 - 32*gkin^3)*meta^2*u0b^2)/(16*gkin^2), 1}, 1}])/
+((-1 + 2*gkin)^5*(1 + 2*gkin)*meta^4*(-1 + u0b)*u0b^3*(mqb + meta*u0b)) + (64*gkin^6*SFAD[{{k1, 0}, {0, 1}, 1}, {{0, -k1 . n}, {-(meta*u0b) + (meta*u0b)/(2*gkin), 1}, 1}, {{k1 + (mqb*n)/2 + (mqb*nb)/2, 0}, {mqb^2, 1}, 1}])/
+((-1 + 2*gkin)^6*(1 + 2*gkin)*meta^6*u0b^5) + (8*gkin^3*(-1 + 2*gkin*u0b)^3*SFAD[{{k1, 0}, {0, 1}, 1}, {{0, -k1 . n}, {-(meta*u0b) + (meta*u0b)/(2*gkin), 1}, 1}, {{k1 + gkin*meta*n + (meta*nb)/(4*gkin) - (meta*n*u0b)/2 - (meta*nb*u0b)/2, 0},
+	{-2*meta^2*u0b + (meta^2*u0b)/(2*gkin) + 2*gkin*meta^2*u0b + (meta^2*(16*gkin^2 - 8*gkin*u0b - 32*gkin^3*u0b + 16*gkin^2*u0b^2))/(16*gkin^2), 1}, 1}])/((-1 + 2*gkin)^6*meta^5*mqb*(-1 + u0b)*u0b^5*(-1 + u0b + 2*gkin*u0b)) -
+(4*gkin^2*SFAD[{{k1, 0}, {0, 1}, 1}, {{0, -k1 . n}, {-(meta*u0b) + (meta*u0b)/(2*gkin), 1}, 1}, {{k1 + gkin*meta*n*u0b + (meta*nb*u0b)/(4*gkin), 0}, {meta^2*u0b^2, 1}, 1}])/((-1 + 2*gkin)^6*(1 + 2*gkin)*meta^5*mqb*u0b^4*(-1 + u0b + 2*gkin*u0b)) -
+(4*gkin^2*SFAD[{{k1, 0}, {0, 1}, 1}, {{0, -k1 . n}, {-(meta*u0b) + (meta*u0b)/(2*gkin), 1}, 1}, {{k1 - (meta*n*u0b)/2 + gkin*meta*n*u0b - (meta*nb*u0b)/2 + (meta*nb*u0b)/(4*gkin), 0},
+	{-2*meta^2*u0b^2 + (meta^2*u0b^2)/(2*gkin) + 2*gkin*meta^2*u0b^2 + ((-8*gkin + 32*gkin^2 - 32*gkin^3)*meta^2*u0b^2)/(16*gkin^2), 1}, 1}])/((-1 + 2*gkin)^3*meta^5*mqb*(-1 + u0b)*u0b^4) +
+(8*gkin^3*SFAD[{{k1, 0}, {0, 1}, 1}, {{k1 + (mqb*n)/2 + (mqb*nb)/2, 0}, {mqb^2, 1}, 1}, {{k1 + gkin*meta*n*u0b + (meta*nb*u0b)/(4*gkin), 0}, {meta^2*u0b^2, 1}, 1}])/((-1 + 2*gkin)^5*meta^5*u0b^4) +
+(8*gkin^3*(1 + 2*gkin)*SFAD[{{k1, 0}, {0, 1}, 1}, {{k1 + (mqb*n)/2 + (mqb*nb)/2, 0}, {mqb^2, 1}, 1}, {{k1 - (meta*n*u0b)/2 + gkin*meta*n*u0b - (meta*nb*u0b)/2 + (meta*nb*u0b)/(4*gkin), 0},
+	{-2*meta^2*u0b^2 + (meta^2*u0b^2)/(2*gkin) + 2*gkin*meta^2*u0b^2 + ((-8*gkin + 32*gkin^2 - 32*gkin^3)*meta^2*u0b^2)/(16*gkin^2), 1}, 1}])/((-1 + 2*gkin)^4*meta^5*u0b^4) +
+(8*gkin^3*(1 + 2*gkin)*(-1 - u0b + 2*gkin*u0b)*SFAD[{{k1, 0}, {0, 1}, 1}, {{k1 + gkin*meta*n + (meta*nb)/(4*gkin) - (meta*n*u0b)/2 - (meta*nb*u0b)/2, 0},
+	{-2*meta^2*u0b + (meta^2*u0b)/(2*gkin) + 2*gkin*meta^2*u0b + (meta^2*(16*gkin^2 - 8*gkin*u0b - 32*gkin^3*u0b + 16*gkin^2*u0b^2))/(16*gkin^2), 1}, 1}, {{k1 - (meta*n*u0b)/2 + gkin*meta*n*u0b - (meta*nb*u0b)/2 + (meta*nb*u0b)/(4*gkin), 0},
+	{-2*meta^2*u0b^2 + (meta^2*u0b^2)/(2*gkin) + 2*gkin*meta^2*u0b^2 + ((-8*gkin + 32*gkin^2 - 32*gkin^3)*meta^2*u0b^2)/(16*gkin^2), 1}, 1}])/((-1 + 2*gkin)^5*meta^4*mqb*u0b^4) +
+(8*gkin^3*(1 + 2*gkin)*SFAD[{{k1, 0}, {0, 1}, 1}, {{k1 + gkin*meta*n*u0b + (meta*nb*u0b)/(4*gkin), 0}, {meta^2*u0b^2, 1}, 1}, {{k1 + gkin*meta*n + (meta*nb)/(4*gkin) - (meta*n*u0b)/2 - (meta*nb*u0b)/2, 0},
+	{-2*meta^2*u0b + (meta^2*u0b)/(2*gkin) + 2*gkin*meta^2*u0b + (meta^2*(16*gkin^2 - 8*gkin*u0b - 32*gkin^3*u0b + 16*gkin^2*u0b^2))/(16*gkin^2), 1}, 1}])/((-1 + 2*gkin)^5*meta^4*mqb*(-1 + u0b)*u0b*(-1 + u0b + 2*gkin*u0b)) -
+(4*gkin^2*(1 + 2*gkin)*SFAD[{{k1, 0}, {0, 1}, 1}, {{k1 + gkin*meta*n*u0b + (meta*nb*u0b)/(4*gkin), 0}, {meta^2*u0b^2, 1}, 1}, {{k1 - (meta*n*u0b)/2 + gkin*meta*n*u0b - (meta*nb*u0b)/2 + (meta*nb*u0b)/(4*gkin), 0},
+	{-2*meta^2*u0b^2 + (meta^2*u0b^2)/(2*gkin) + 2*gkin*meta^2*u0b^2 + ((-8*gkin + 32*gkin^2 - 32*gkin^3)*meta^2*u0b^2)/(16*gkin^2), 1}, 1}])/((-1 + 2*gkin)^5*meta^4*mqb*(-1 + u0b)*u0b^3) -
+(4*gkin^2*(1 + 2*gkin)*mqb*SFAD[{{k1, 0}, {0, 1}, 2}, {{k1 + (mqb*n)/2 + (mqb*nb)/2, 0}, {mqb^2, 1}, 1}, {{k1 + gkin*meta*n + (meta*nb)/(4*gkin) - (meta*n*u0b)/2 - (meta*nb*u0b)/2, 0},
+	{-2*meta^2*u0b + (meta^2*u0b)/(2*gkin) + 2*gkin*meta^2*u0b + (meta^2*(16*gkin^2 - 8*gkin*u0b - 32*gkin^3*u0b + 16*gkin^2*u0b^2))/(16*gkin^2), 1}, 1}])/((-1 + 2*gkin)^3*meta^3*(-1 + u0b)*u0b^3*(mqb + meta*u0b)) +
+(4*gkin^2*(1 + 2*gkin)*mqb*SFAD[{{k1, 0}, {0, 1}, 2}, {{k1 + (mqb*n)/2 + (mqb*nb)/2, 0}, {mqb^2, 1}, 1}, {{k1 - (meta*n*u0b)/2 + gkin*meta*n*u0b - (meta*nb*u0b)/2 + (meta*nb*u0b)/(4*gkin), 0},
+	{-2*meta^2*u0b^2 + (meta^2*u0b^2)/(2*gkin) + 2*gkin*meta^2*u0b^2 + ((-8*gkin + 32*gkin^2 - 32*gkin^3)*meta^2*u0b^2)/(16*gkin^2), 1}, 1}])/((-1 + 2*gkin)^3*meta^3*(-1 + u0b)*u0b^2*(mqb + meta*u0b)) +
+(4*gkin^2*(1 + 2*gkin)*SFAD[{{k1, 0}, {0, 1}, 2}, {{k1 + gkin*meta*n + (meta*nb)/(4*gkin) - (meta*n*u0b)/2 - (meta*nb*u0b)/2, 0},
+	{-2*meta^2*u0b + (meta^2*u0b)/(2*gkin) + 2*gkin*meta^2*u0b + (meta^2*(16*gkin^2 - 8*gkin*u0b - 32*gkin^3*u0b + 16*gkin^2*u0b^2))/(16*gkin^2), 1}, 1}, {{k1 - (meta*n*u0b)/2 + gkin*meta*n*u0b - (meta*nb*u0b)/2 + (meta*nb*u0b)/(4*gkin), 0},
+	{-2*meta^2*u0b^2 + (meta^2*u0b^2)/(2*gkin) + 2*gkin*meta^2*u0b^2 + ((-8*gkin + 32*gkin^2 - 32*gkin^3)*meta^2*u0b^2)/(16*gkin^2), 1}, 1}])/((-1 + 2*gkin)^3*meta^2*u0b^2*(mqb + meta*u0b)) -
+(8*gkin^3*(1 + 2*gkin)*(mqb - meta*u0b - mqb*u0b + 2*gkin*mqb*u0b - meta*u0b^2 + 2*gkin*meta*u0b^2)*SFAD[{{k1 + (mqb*n)/2 + (mqb*nb)/2, 0}, {mqb^2, 1}, 1}, {{k1 + gkin*meta*n + (meta*nb)/(4*gkin) - (meta*n*u0b)/2 - (meta*nb*u0b)/2, 0},
+	{-2*meta^2*u0b + (meta^2*u0b)/(2*gkin) + 2*gkin*meta^2*u0b + (meta^2*(16*gkin^2 - 8*gkin*u0b - 32*gkin^3*u0b + 16*gkin^2*u0b^2))/(16*gkin^2), 1}, 1}, {{k1 - (meta*n*u0b)/2 + gkin*meta*n*u0b - (meta*nb*u0b)/2 + (meta*nb*u0b)/(4*gkin), 0},
+	{-2*meta^2*u0b^2 + (meta^2*u0b^2)/(2*gkin) + 2*gkin*meta^2*u0b^2 + ((-8*gkin + 32*gkin^2 - 32*gkin^3)*meta^2*u0b^2)/(16*gkin^2), 1}, 1}])/((-1 + 2*gkin)^5*meta^5*mqb*u0b^5) -
+(8*gkin^3*(1 + 2*gkin)*(-mqb + mqb*u0b + meta*u0b^2)^3*SFAD[{{k1 + (mqb*n)/2 + (mqb*nb)/2, 0}, {mqb^2, 1}, 1}, {{k1 + gkin*meta*n*u0b + (meta*nb*u0b)/(4*gkin), 0}, {meta^2*u0b^2, 1}, 1},
+	{{k1 + gkin*meta*n + (meta*nb)/(4*gkin) - (meta*n*u0b)/2 - (meta*nb*u0b)/2, 0}, {-2*meta^2*u0b + (meta^2*u0b)/(2*gkin) + 2*gkin*meta^2*u0b + (meta^2*(16*gkin^2 - 8*gkin*u0b - 32*gkin^3*u0b + 16*gkin^2*u0b^2))/(16*gkin^2), 1}, 1}])/
+((-1 + 2*gkin)^5*meta^5*mqb*(-1 + u0b)*u0b^5*(-1 + u0b + 2*gkin*u0b)*(mqb + meta*u0b)^2) +
+(4*gkin^2*(1 + 2*gkin)*SFAD[{{k1 + (mqb*n)/2 + (mqb*nb)/2, 0}, {mqb^2, 1}, 1}, {{k1 + gkin*meta*n*u0b + (meta*nb*u0b)/(4*gkin), 0}, {meta^2*u0b^2, 1}, 1}, {{k1 - (meta*n*u0b)/2 + gkin*meta*n*u0b - (meta*nb*u0b)/2 + (meta*nb*u0b)/(4*gkin), 0},
+	{-2*meta^2*u0b^2 + (meta^2*u0b^2)/(2*gkin) + 2*gkin*meta^2*u0b^2 + ((-8*gkin + 32*gkin^2 - 32*gkin^3)*meta^2*u0b^2)/(16*gkin^2), 1}, 1}])/((-1 + 2*gkin)^5*meta^2*mqb*(-1 + u0b)*u0b*(mqb + meta*u0b)^2) +
+(8*gkin^3*(1 + 2*gkin)*(-mqb + 2*mqb*u0b + 2*meta*u0b^2)*SFAD[{{k1 + gkin*meta*n*u0b + (meta*nb*u0b)/(4*gkin), 0}, {meta^2*u0b^2, 1}, 1}, {{k1 + gkin*meta*n + (meta*nb)/(4*gkin) - (meta*n*u0b)/2 - (meta*nb*u0b)/2, 0},
+	{-2*meta^2*u0b + (meta^2*u0b)/(2*gkin) + 2*gkin*meta^2*u0b + (meta^2*(16*gkin^2 - 8*gkin*u0b - 32*gkin^3*u0b + 16*gkin^2*u0b^2))/(16*gkin^2), 1}, 1}, {{k1 - (meta*n*u0b)/2 + gkin*meta*n*u0b - (meta*nb*u0b)/2 + (meta*nb*u0b)/(4*gkin), 0},
+	{-2*meta^2*u0b^2 + (meta^2*u0b^2)/(2*gkin) + 2*gkin*meta^2*u0b^2 + ((-8*gkin + 32*gkin^2 - 32*gkin^3)*meta^2*u0b^2)/(16*gkin^2), 1}, 1}])/((-1 + 2*gkin)^5*meta^4*u0b^4*(-1 + u0b + 2*gkin*u0b)*(mqb + meta*u0b)^2)"}
 })

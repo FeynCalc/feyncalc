@@ -67,6 +67,7 @@ Options[FCApart] = {
 	FinalSubstitutions	-> {},
 	Factoring 			-> {Factor, 5000},
 	MaxIterations 		-> Infinity,
+	RandomPrime			-> 10^8,
 	SetDimensions		-> {3,4,D, D-1},
 	TimeConstrained 	-> 3
 };
@@ -75,9 +76,11 @@ FCApart[expr_, lmoms_List, opts:OptionsPattern[]] :=
 	FCApart[expr, 1, lmoms, opts];
 
 FCApart[expr_, extraPiece_, lmoms_List, OptionsPattern[]] :=
-	Block[{ex,vectorSet,res,check, scalarTerm, vectorTerm=1, pref=1, tmp,
-		scaleless1=0,scaleless2=0,time, optFactoring, optTimeConstrained,
-		rd, dt, extraTensors, optFDS, optDropScaleless, optFinalSubstitutions},
+	Block[{	ex,vectorSet,res,check, scalarTerm, vectorTerm=1, pref=1, tmp,
+			scaleless1=0,scaleless2=0,time, optFactoring, optTimeConstrained,
+			rd, dt, extraTensors, optFDS, optDropScaleless, optFinalSubstitutions,
+			optRandomPrime, lhs, rhs, vars, varsNum, repRule, optCollecting},
+
 
 		optFDS 					= OptionValue[FDS];
 		optDropScaleless		= OptionValue[DropScaleless];
@@ -85,6 +88,8 @@ FCApart[expr_, extraPiece_, lmoms_List, OptionsPattern[]] :=
 		optFactoring 			= OptionValue[Factoring];
 		optTimeConstrained 		= OptionValue[TimeConstrained];
 		optFinalSubstitutions 	= OptionValue[FinalSubstitutions];
+		optRandomPrime			= OptionValue[RandomPrime];
+		optCollecting			= OptionValue[Collecting];
 
 		If [OptionValue[FCVerbose]===False,
 			fcaVerbose=$VeryVerbose,
@@ -93,11 +98,10 @@ FCApart[expr_, extraPiece_, lmoms_List, OptionsPattern[]] :=
 			];
 		];
 
-s		If[	!OptionValue[FCI],
+		If[	!OptionValue[FCI],
 			{ex,optFinalSubstitutions} = FCI[{expr,FRH[optFinalSubstitutions]}],
 			{ex,optFinalSubstitutions} = {expr,FRH[optFinalSubstitutions]}
 		];
-
 
 		FCPrint[3,"FCApart: Entering with: ", ex, FCDoControl->fcaVerbose];
 		FCPrint[3,"FCApart: Extra piece: ", extraPiece, FCDoControl->fcaVerbose];
@@ -123,10 +127,6 @@ s		If[	!OptionValue[FCI],
 		If[	OptionValue[ExpandScalarProduct],
 			ex = ExpandScalarProduct[ex, FCI->True]
 		];
-
-
-
-
 
 		(*
 			We need to cancel things like p.q/(p.q+i Eta) before invoking FCLoopBasis functions!
@@ -251,8 +251,6 @@ s		If[	!OptionValue[FCI],
 			Return[ex];
 		];
 
-
-
 		(* All the partial fractioning is done by pfrac *)
 		time=AbsoluteTime[];
 		FCPrint[1,"FCApart: Doing the actual partial fractioning via pfrac", FCDoControl->fcaVerbose];
@@ -265,24 +263,35 @@ s		If[	!OptionValue[FCI],
 		(*	propagators with zero exponents are unity	*)
 		res = res /. pfracOut[{_, _, {}, _}]->1 /. pfracOut[{_, _, {0..}, _}]->1;
 
-		If [OptionValue[Collecting],
-			res = Collect2[res,pfracOut, Factoring->optFactoring, TimeConstrained->optTimeConstrained]
+		If[	optCollecting,
+			time=AbsoluteTime[];
+			FCPrint[1,"FCApart: Applying Collect2.", FCDoControl->fcaVerbose];
+			res = Collect2[res,pfracOut, Factoring->optFactoring, TimeConstrained->optTimeConstrained];
+			FCPrint[1, "FCApart: Done applying Collect2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcaVerbose];
 		];
 
 		FCPrint[3,"FCApart: Preliminary result ", res, FCDoControl->fcaVerbose];
 
-		(* The output is converted back into the standard FeynCalc notation *)
+		time=AbsoluteTime[];
+		FCPrint[1,"FCApart: Converting the output back into the standard FeynCalc notation.", FCDoControl->fcaVerbose];
 		res = res/. pfracOut[{_,_,x_,y_}]:> FeynAmpDenominatorCombine[Times@@MapIndexed[Power[y[[First[#2]]],Abs[#1]]&,x]];
+		FCPrint[1, "FCApart: Done converting the output, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcaVerbose];
 
 		FCPrint[3,"FCApart: Preliminary result after an intermediate conversion: ", res, FCDoControl->fcaVerbose];
 
+		time=AbsoluteTime[];
+		FCPrint[1,"FCApart: Applying FCLoopRemoveNegativePropagatorPowers.", FCDoControl->fcaVerbose];
 		res = FCLoopRemoveNegativePropagatorPowers[res,FCI->True,FCLoopPropagatorPowersCombine -> True];
+		FCPrint[1, "FCApart: Done applying FCLoopRemoveNegativePropagatorPowers, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcaVerbose];
 
 		FCPrint[3,"FCApart: After FCLoopRemoveNegativePropagatorPowers: ", res, FCDoControl->fcaVerbose];
 
 
-		If [OptionValue[Collecting],
-			res = Collect2[res, Join[{FeynAmpDenominator},lmoms], Factoring->optFactoring, TimeConstrained->optTimeConstrained]
+		If[	optCollecting,
+			time=AbsoluteTime[];
+			FCPrint[1,"FCApart: Applying Collect2 (again).", FCDoControl->fcaVerbose];
+			res = Collect2[res, Join[{FeynAmpDenominator},lmoms], Factoring->optFactoring, TimeConstrained->optTimeConstrained];
+			FCPrint[1, "FCApart: Done applying Collect2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcaVerbose];
 		];
 
 		FCPrint[3,"FCApart: Preliminary result converted back to FeynCalc notation ", res, FCDoControl->fcaVerbose];
@@ -290,28 +299,41 @@ s		If[	!OptionValue[FCI],
 
 		(* 	Check that the sum of the resulting integrals brought to the common denominator
 			is identical to the original integral *)
-		If [OptionValue[Check],
-			If[	check=
-					Together[(FeynAmpDenominatorExplicit[ex*extraPiece]/.optFinalSubstitutions) -
-					Together[FeynAmpDenominatorExplicit[res]]]//ExpandScalarProduct[#,FCI->True]&//ReplaceAll[#,optFinalSubstitutions]&//Together;
-				check=!=0,
+
+		If[	OptionValue[Check],
+
+			time=AbsoluteTime[];
+			FCPrint[1,"FCApart: Checking the result.", FCDoControl->fcaVerbose];
+			lhs = (FeynAmpDenominatorExplicit[ex*extraPiece]/.optFinalSubstitutions);
+			rhs = (FeynAmpDenominatorExplicit[res]/.optFinalSubstitutions);
+			vars = Variables2[lhs];
+			varsNum 	= Table[RandomPrime[optRandomPrime],{i,1,Length[vars]}];
+			repRule = Thread[Rule[vars, varsNum]];
+			check = (lhs/.Dispatch[repRule]) - (rhs/.Dispatch[repRule]);
+
+			If[	check=!=0,
 				Message[FCApart::checkfail,ToString[ex,InputForm]];
 				FCPrint[0, StandardForm[check]];
 				Abort[]
-			]
+			];
+			FCPrint[1, "FCApart: Done checking the result, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcaVerbose];
 		];
 
+
 		If[	optFDS,
+			time=AbsoluteTime[];
+			FCPrint[1,"FCApart: Applying FDS.", FCDoControl->fcaVerbose];
 			res = FDS[res, Sequence@@lmoms];
-			If [OptionValue[Collecting],
+			If[	optCollecting,
 				res = Collect2[res, Join[{FeynAmpDenominator},lmoms], Factoring->optFactoring, TimeConstrained->optTimeConstrained]
-			]
+			];
+			FCPrint[1, "FCApart: Done applying FDS, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcaVerbose];
 		];
 
 		FCPrint[3,"FCApart: Preliminary result after FDS ", res, FCDoControl->fcaVerbose];
 
 		If[	optDropScaleless,
-			FCPrint[1,"FCApart: Dropping integrals that are scaleless in DR", res, FCDoControl->fcaVerbose];
+			FCPrint[1,"FCApart: Dropping integrals that are scaleless in DR", FCDoControl->fcaVerbose];
 			tmp = res;
 			{scaleless1,res} = FCSplit[res,lmoms];
 			{scaleless2,res} = FCSplit[res,{FeynAmpDenominator}];
@@ -319,12 +341,16 @@ s		If[	!OptionValue[FCI],
 				Message[FCApart::checkfail,ToString[ex,InputForm]];
 				Abort[]
 			];
-			FCPrint[1,"FCApart: The following parts of the integral vanish in DR", scaleless1+scaleless2, FCDoControl->fcaVerbose];
-			FCPrint[1,"FCApart: The non-vanishing part is ", res, FCDoControl->fcaVerbose]
+			FCPrint[1,"FCApart: Done dropping scaleless integrals, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcaVerbose];
+			FCPrint[3,"FCApart: The following parts of the integral vanish in DR: ", scaleless1+scaleless2, FCDoControl->fcaVerbose];
+			FCPrint[3,"FCApart: The non-vanishing part is ", res, FCDoControl->fcaVerbose]
 		];
 
-		If [OptionValue[Collecting],
-				res = Collect2[res, Join[{FeynAmpDenominator},lmoms], Factoring->optFactoring, TimeConstrained->optTimeConstrained]
+		If[	optCollecting,
+				time=AbsoluteTime[];
+				FCPrint[1,"FCApart: Applying Collect2 (last time).", FCDoControl->fcaVerbose];
+				res = Collect2[res, Join[{FeynAmpDenominator},lmoms], Factoring->optFactoring, TimeConstrained->optTimeConstrained];
+				FCPrint[1, "FCApart: Done applying Collect2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcaVerbose]
 		];
 
 		FCPrint[3,"FCApart: Leaving with ", res,FCDoControl->fcaVerbose];
@@ -388,8 +414,12 @@ pfracRaw[inputVectorSet_List, OptionsPattern[]]:=
 		vectorSet12 = {vectorSet[[1]] //. hRule, Join[Complement[vectorSet[[2]],nlCoeffs],Last/@hRule]};
 
 		ca = Normal[CoefficientArrays@@(vectorSet12)];
+
+
 		M = Transpose[ca[[2]]];
+
 		tmpNS = Sort[NullSpace[M]];
+
 
 		If[	tmpNS === {},
 			(*Dimensions[M][[2]] <= Length[inputVectorSet[[2]]],*)
@@ -425,6 +455,7 @@ pfracRaw[inputVectorSet_List, OptionsPattern[]]:=
 					],
 					tmpNS[[1]]
 				];
+
 			f = Together[ExpandAll[Dot[vectorSet[[1]],v]]];
 
 			(* Now we need to check the value of the coefficient fi (spfCoeff) of that scalar product *)
@@ -469,9 +500,12 @@ pfracRaw[inputVectorSet_List, OptionsPattern[]]:=
 				FCPrint[3,"FCApart: pfrac: Output after treating the non-vanishing coefficient f_i", res,FCDoControl->fcaVerbose];
 				Return[res]
 			],
+
 			(* If there are no scalar products to cancel, we just pick the first basis vector *)
+
 			v = First[tmpNS];
-			f = Together[ExpandAll[Dot[vectorSet[[1]],v]]]
+			f = Together[ExpandAll[Dot[vectorSet[[1]],v]]];
+
 		];
 
 		(*	If we are here, this means that the integral does not contain any scalar produts, only propagators
@@ -479,11 +513,14 @@ pfracRaw[inputVectorSet_List, OptionsPattern[]]:=
 		FCPrint[3,"FCApart: pfrac: ", vectorSet," doesn't contain any scalar products",FCDoControl->fcaVerbose];
 
 		If[	f=!=0,
+
 			(*For f=!=0, we use Eq. 15 from arXiv:1204.2314 *)
 			FCPrint[3,"FCApart: pfrac: f is not zero",FCDoControl->fcaVerbose];
 			res= Sum[dummy = vectorSet[[3]];
 					dummy[[i]] = dummy[[i]]-1;
 				(v[[i]]/f) * pfrac[{vectorSet[[1]],vectorSet[[2]],dummy,vectorSet[[4]]}],{i,1,Length[v]}],
+
+
 			(*If the value of f is zero, we use Eq. 17 from arXiv:1204.2314; We pick up the first propagator use it as e_1 *)
 			FCPrint[3,"FCApart: pfrac: f is zero",FCDoControl->fcaVerbose];
 			FCPrint[3,"FCApart: pfrac: f_i: ", v," ", FCDoControl->fcaVerbose];
