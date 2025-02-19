@@ -1059,7 +1059,7 @@ SelectFree[a_, b__] :=
 			Select[x, FreeQ2[#, y]&];
 		select[x_, y_, z__]  :=
 			Select[x, FreeQ2[#, Flatten[{y, z}]]&];
-		If[(Head[a] === Plus) || (Head[a] === Times),
+		If[(Head[a] === Plus) || (Head[a] === Times) || (Head[a] === List),
 			select[a,b],
 			(* need two dummy-vars in case "a" is an integer *)
 			select[a dum1 dum2, b] /. {dum1 :> 1, dum2 :> 1}
