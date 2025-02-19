@@ -952,7 +952,7 @@ diracology4DimFinalOrdering[___, 0, ___]:=
 diracology4DimFinalOrdering[]:=
 	1;
 
-(* Move each standalone g_perp to the left *)
+(* Move each standalone g_perp to the right *)
 diracology4DimFinalOrdering[ b___,DiracGamma[LightConePerpendicularComponent[c_, n_Momentum, nb_Momentum]],
 	DiracGamma[ch:((LorentzIndex | ExplicitLorentzIndex | Momentum)[_])], f___ ] :=
 		(-1/2 Pair[nb,ch] diracology4DimFinalOrdering[ b, DiracGamma[n], DiracGamma[LightConePerpendicularComponent[c,n,nb]], f]
