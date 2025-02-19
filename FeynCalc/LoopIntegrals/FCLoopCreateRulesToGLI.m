@@ -33,12 +33,17 @@ crtgVerbose::usage="";
 
 
 Options[FCLoopCreateRulesToGLI] = {
-	Check		-> True,
-	FCE			-> False,
-	FCI			-> False,
-	FCPrint		-> True,
-	FCVerbose	-> False,
-	FinalSubstitutions -> {}
+	Check				-> True,
+	Collecting			-> True,
+	Denominator			-> Identity,
+	FCE					-> False,
+	FCI					-> False,
+	FCPrint				-> True,
+	FCVerbose			-> False,
+	Factoring			-> {Factor2,5000},
+	FinalSubstitutions	-> {},
+	Numerator			-> Identity,
+	TimeConstrained		-> 3
 };
 
 
@@ -48,7 +53,7 @@ FCLoopCreateRulesToGLI[toposRaw:{__FCTopology}, rest___]:=
 FCLoopCreateRulesToGLI[topoRaw_FCTopology, OptionsPattern[]] :=
 	Block[{	props, topo, allMoms,extMoms,dims,spList,nProps,
 			array, id, eqSystem, inverseProps, res, topoCheck,
-			gfad, lmoms, optFinalSubstitutions},
+			gfad, lmoms, optFinalSubstitutions,optNumerator,optDenominator},
 
 		If [OptionValue[FCVerbose]===False,
 			crtgVerbose=$VeryVerbose,
@@ -58,6 +63,8 @@ FCLoopCreateRulesToGLI[topoRaw_FCTopology, OptionsPattern[]] :=
 		];
 
 		optFinalSubstitutions = FRH[Join[OptionValue[FinalSubstitutions],topoRaw[[5]]]];
+		optNumerator = OptionValue[Numerator];
+		optDenominator = OptionValue[Denominator];
 
 		If[ !OptionValue[FCI],
 			{topo, optFinalSubstitutions} = FCI[{topoRaw, optFinalSubstitutions}],
@@ -141,6 +148,15 @@ FCLoopCreateRulesToGLI[topoRaw_FCTopology, OptionsPattern[]] :=
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
+		];
+
+		If[	OptionValue[Collecting],
+			res = Collect2[res,GLI,Factoring->{Factor2,5000},Head->{Identity,times}];
+		];
+
+		If[	TrueQ[optNumerator===Identity && optDenominator===Identity],
+			res = res/.times->Times,
+			res = res/. times[pref_,gli_]:> optNumerator[Numerator[pref]]*optDenominator[Denominator[pref]]*gli
 		];
 
 		FCPrint[3,"FCLoopCreateRulesToGLI: Final set of rules: ", res, FCDoControl->crtgVerbose];

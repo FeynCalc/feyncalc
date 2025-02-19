@@ -21,54 +21,43 @@ FCE\[Rule]True]", "{SPD[p1, p1] -> GLI[topo1, {-1}]}"},
 {"fcstFCLoopCreateRulesToGLI-ID2",
 "FCLoopCreateRulesToGLI[FCTopology[topo1,{SFAD[p1],SFAD[p2],SFAD[\
 p1-p2]},{p1,p2},{},{},{}],FCE\[Rule]True]",
-"{SPD[p1, p1] -> GLI[topo1, {-1, 0, 0}], SPD[p2, p2] -> GLI[topo1, \
-{0, -1, 0}], SPD[p1, p2] -> (GLI[topo1, {-1, 0, 0}] + GLI[topo1, {0, \
--1, 0}] - GLI[topo1, {0, 0, -1}])/2}"},
+"{SPD[p1, p1] -> GLI[topo1, {-1, 0, 0}], SPD[p2, p2] -> GLI[topo1, {0, -1, 0}], SPD[p1, p2] -> GLI[topo1, {-1, 0, 0}]/2 + GLI[topo1, {0, -1, 0}]/2 - GLI[topo1, {0, 0, -1}]/2}"},
 {"fcstFCLoopCreateRulesToGLI-ID3",
 "FCLoopCreateRulesToGLI[FCTopology[test1,{SFAD[{{p1,0},{0,1},1}],\
 SFAD[{{p2,0},{0,1},1}],SFAD[{{p3,0},{0,1},1}],SFAD[{{Q-p1-p2-p3,0},{0,\
 1},1}],SFAD[{{p2+p3,0},{0,1},1}],SFAD[{{p1+p2+p3,0},{0,1},1}],SFAD[{{\
 Q-p2-p3,0},{0,1},1}],SFAD[{{Q-p3,0},{0,1},1}],SFAD[{{p1+p2,0},{0,1},1}\
 ]},{p1,p2,p3},{Q},{},{}],FCE->True]",
-"{SPD[p1, p1] -> GLI[test1, {-1, 0, 0, 0, 0, 0, 0, 0, 0}], SPD[p2, \
-p2] -> GLI[test1, {0, -1, 0, 0, 0, 0, 0, 0, 0}], SPD[p3, p3] -> \
-GLI[test1, {0, 0, -1, 0, 0, 0, 0, 0, 0}], SPD[p1, p2] -> (-GLI[test1, \
-{-1, 0, 0, 0, 0, 0, 0, 0, 0}] - GLI[test1, {0, -1, 0, 0, 0, 0, 0, 0, \
-0}] + GLI[test1, {0, 0, 0, 0, 0, 0, 0, 0, -1}])/2, SPD[p1, p3] -> \
-(GLI[test1, {0, -1, 0, 0, 0, 0, 0, 0, 0}] - GLI[test1, {0, 0, 0, 0, \
--1, 0, 0, 0, 0}] + GLI[test1, {0, 0, 0, 0, 0, -1, 0, 0, 0}] - \
-GLI[test1, {0, 0, 0, 0, 0, 0, 0, 0, -1}])/2, SPD[p2, p3] -> \
-(-GLI[test1, {0, -1, 0, 0, 0, 0, 0, 0, 0}] - GLI[test1, {0, 0, -1, 0, \
-0, 0, 0, 0, 0}] + GLI[test1, {0, 0, 0, 0, -1, 0, 0, 0, 0}])/2, \
-SPD[p1, Q] -> (-GLI[test1, {0, 0, 0, -1, 0, 0, 0, 0, 0}] - GLI[test1, \
-{0, 0, 0, 0, -1, 0, 0, 0, 0}] + GLI[test1, {0, 0, 0, 0, 0, -1, 0, 0, \
-0}] + GLI[test1, {0, 0, 0, 0, 0, 0, -1, 0, 0}])/2, SPD[p2, Q] -> \
-(-GLI[test1, {0, 0, -1, 0, 0, 0, 0, 0, 0}] + GLI[test1, {0, 0, 0, 0, \
--1, 0, 0, 0, 0}] - GLI[test1, {0, 0, 0, 0, 0, 0, -1, 0, 0}] + \
-GLI[test1, {0, 0, 0, 0, 0, 0, 0, -1, 0}])/2, SPD[p3, Q] -> \
-(GLI[test1, {0, 0, -1, 0, 0, 0, 0, 0, 0}] - GLI[test1, {0, 0, 0, 0, \
-0, 0, 0, -1, 0}] + SPD[Q, Q])/2}"},
+"{SPD[p1, p1] -> GLI[test1, {-1, 0, 0, 0, 0, 0, 0, 0, 0}], SPD[p2, p2] -> GLI[test1, {0, -1, 0, 0, 0, 0, 0, 0, 0}],
+SPD[p3, p3] -> GLI[test1, {0, 0, -1, 0, 0, 0, 0, 0, 0}], SPD[p1, p2] -> -1/2*GLI[test1, {-1, 0, 0, 0, 0, 0, 0, 0,
+0}] - GLI[test1, {0, -1, 0, 0, 0, 0, 0, 0, 0}]/2 + GLI[test1, {0, 0, 0, 0, 0, 0, 0, 0, -1}]/2, SPD[p1, p3] ->
+GLI[test1, {0, -1, 0, 0, 0, 0, 0, 0, 0}]/2 - GLI[test1, {0, 0, 0, 0, -1, 0, 0, 0, 0}]/2 + GLI[test1,
+{0, 0, 0, 0, 0, -1, 0, 0, 0}]/2 - GLI[test1, {0, 0, 0, 0, 0, 0, 0, 0, -1}]/2, SPD[p2, p3] ->
+-1/2*GLI[test1, {0, -1, 0, 0, 0, 0, 0, 0, 0}] - GLI[test1, {0, 0, -1, 0, 0, 0, 0, 0, 0}]/2 +
+GLI[test1, {0, 0, 0, 0, -1, 0, 0, 0, 0}]/2, SPD[p1, Q] -> -1/2*GLI[test1, {0, 0, 0, -1, 0, 0,
+0, 0, 0}] - GLI[test1, {0, 0, 0, 0, -1, 0, 0, 0, 0}]/2 + GLI[test1, {0, 0, 0, 0, 0, -1, 0, 0,
+0}]/2 + GLI[test1, {0, 0, 0, 0, 0, 0, -1, 0, 0}]/2, SPD[p2, Q] -> -1/2*GLI[test1, {0, 0, -1,
+0, 0, 0, 0, 0, 0}] + GLI[test1, {0, 0, 0, 0, -1, 0, 0, 0, 0}]/2 - GLI[test1, {0, 0, 0, 0, 0,
+0, -1, 0, 0}]/2 + GLI[test1, {0, 0, 0, 0, 0, 0, 0, -1, 0}]/2, SPD[p3, Q] -> GLI[test1, {0, 0,
+-1, 0, 0, 0, 0, 0, 0}]/2 - GLI[test1, {0, 0, 0, 0, 0, 0, 0, -1, 0}]/2 + SPD[Q, Q]/2}"},
 {"fcstFCLoopCreateRulesToGLI-ID4",
 "FCLoopCreateRulesToGLI[FCTopology[topo1,{SFAD[{p1,m^2}]},{p1},{},{\
 },{}],FCE\[Rule]True]", "{SPD[p1, p1] -> m^2 + GLI[topo1, {-1}]}"},
 {"fcstFCLoopCreateRulesToGLI-ID5",
 "FCLoopCreateRulesToGLI[FCTopology[topo1,{SFAD[{p1,m1^2}],SFAD[{p2,\
 m2^2}],SFAD[{p1-p2,m3^2}]},{p1,p2},{},{},{}],FCE\[Rule]True]",
-"{SPD[p1, p1] -> m1^2 + GLI[topo1, {-1, 0, 0}], SPD[p2, p2] -> \
-m2^2 + GLI[topo1, {0, -1, 0}], SPD[p1, p2] -> (m1^2 + m2^2 - m3^2 + \
-GLI[topo1, {-1, 0, 0}] + GLI[topo1, {0, -1, 0}] - GLI[topo1, {0, 0, \
--1}])/2}"},
+"{SPD[p1, p1] -> m1^2 + GLI[topo1, {-1, 0, 0}], SPD[p2, p2] -> m2^2 + GLI[topo1, {0, -1, 0}],
+SPD[p1, p2] -> (m1^2 + m2^2 - m3^2)/2 + GLI[topo1, {-1, 0, 0}]/2 +
+GLI[topo1, {0, -1, 0}]/2 - GLI[topo1, {0, 0, -1}]/2}"},
 {"fcstFCLoopCreateRulesToGLI-ID6",
 "FCLoopCreateRulesToGLI[FCTopology[prop2Lv1,
 {SFAD[{p1, m1^2}], SFAD[{p2, m2^2}], SFAD[p1 - q], SFAD[p2 - q], \
 SFAD[{p1 - p2, m3^2}]}, {p1, p2}, {Q}, {}, {}],FCE->True]",
-"{SPD[p1, p1] -> m1^2 + GLI[prop2Lv1, {-1, 0, 0, 0, 0}], SPD[p2, \
-p2] -> m2^2 + GLI[prop2Lv1, {0, -1, 0, 0, 0}], SPD[p1, p2] -> (m1^2 + \
-m2^2 - m3^2 + GLI[prop2Lv1, {-1, 0, 0, 0, 0}] + GLI[prop2Lv1, {0, -1, \
-0, 0, 0}] - GLI[prop2Lv1, {0, 0, 0, 0, -1}])/2, SPD[p1, q] -> (m1^2 + \
-GLI[prop2Lv1, {-1, 0, 0, 0, 0}] - GLI[prop2Lv1, {0, 0, -1, 0, 0}] + \
-SPD[q, q])/2, SPD[p2, q] -> (m2^2 + GLI[prop2Lv1, {0, -1, 0, 0, 0}] - \
-GLI[prop2Lv1, {0, 0, 0, -1, 0}] + SPD[q, q])/2}"},
+"{SPD[p1, p1] -> m1^2 + GLI[prop2Lv1, {-1, 0, 0, 0, 0}], SPD[p2, p2] -> m2^2 + GLI[prop2Lv1, {0, -1, 0, 0, 0}],
+SPD[p1, p2] -> (m1^2 + m2^2 - m3^2)/2 + GLI[prop2Lv1, {-1, 0, 0, 0, 0}]/2 + GLI[prop2Lv1,
+{0, -1, 0, 0, 0}]/2 - GLI[prop2Lv1, {0, 0, 0, 0, -1}]/2, SPD[p1, q] -> GLI[prop2Lv1,
+{-1, 0, 0, 0, 0}]/2 - GLI[prop2Lv1, {0, 0, -1, 0, 0}]/2 + (m1^2 + SPD[q, q])/2, SPD[p2, q] ->
+GLI[prop2Lv1, {0, -1, 0, 0, 0}]/2 - GLI[prop2Lv1, {0, 0, 0, -1, 0}]/2 + (m2^2 + SPD[q, q])/2}"},
 {"fcstFCLoopCreateRulesToGLI-ID7", "FCLoopCreateRulesToGLI[
 FCTopology[prop3Lv1,{SFAD[p1],SFAD[p2],SFAD[p3],SFAD[p1-p2],SFAD[p2-\
 p3],SFAD[p1+q1],
@@ -100,16 +89,11 @@ SFAD[{{k1 + n + nb/4 - (n*u0b)/2 - (nb*u0b)/2,
 	0}, {u0b/2 + (16 - 40*u0b + 16*u0b^2)/16, 1}, 1}]}, {k1}, {n,
 nb}, {Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0,
 Hold[SPD][n, nb] -> 2}, {}], FCE -> True]",
-"{SPD[k1, k1] -> -1/2*(mqb*u0b - mqb*u0b^2 + 2*u0b*GLI[topology1,
-{-1, 0, 0}] - 2*u0b^2*GLI[topology1, {-1, 0, 0}] - 2*mqb*GLI[topology1, {0, -1, 0}] +
-	2*mqb*GLI[topology1, {0, 0, -1}] - 2*mqb*u0b*GLI[topology1,
-	{0, 0, -1}])/(u0b*(-1 + mqb + u0b)),
-SPD[k1, n] -> -1/6*(u0b - 2*mqb*u0b - u0b^2 - 2*u0b*GLI[topology1,
-{-1, 0, 0}] - 2*GLI[topology1, {0, -1, 0}] + 4*mqb*GLI[topology1, {0, -1, 0}] +
-	4*u0b*GLI[topology1, {0, -1, 0}] + 2*GLI[topology1,
-	{0, 0, -1}] - 4*mqb*GLI[topology1, {0, 0, -1}] - 2*u0b*GLI[topology1, {0, 0, -1}])/(u0b*(-1 + mqb + u0b)),
-SPD[k1, nb] -> -1/3*(-2*u0b + mqb*u0b + 2*u0b^2 - 2*u0b*GLI[topology1,
-{-1, 0, 0}] + 4*GLI[topology1, {0, -1, 0}] - 2*mqb*GLI[topology1, {0, -1, 0}] -
-	2*u0b*GLI[topology1, {0, -1, 0}] - 4*GLI[topology1, {0, 0, -1}] +
-	2*mqb*GLI[topology1, {0, 0, -1}] + 4*u0b*GLI[topology1, {0, 0, -1}])/(u0b*(-1 + mqb + u0b))}"}
+"{SPD[k1, k1] -> (mqb*(1 - u0b))/(2*(1 - mqb - u0b)) + ((1 - u0b)*GLI[topology1, {-1, 0, 0}])/(1 - mqb - u0b) -
+(mqb*GLI[topology1, {0, -1, 0}])/((1 - mqb - u0b)*u0b) + (mqb*(1 - u0b)*GLI[topology1,
+{0, 0, -1}])/((1 - mqb - u0b)*u0b), SPD[k1, n] -> (1 - 2*mqb - u0b)/(6*(1 - mqb - u0b)) - GLI[topology1, {-1, 0, 0}]/(3*(1 - mqb - u0b)) -
+((1 - 2*mqb - 2*u0b)*GLI[topology1, {0, -1, 0}])/(3*(1 - mqb - u0b)*u0b) + ((1 - 2*mqb - u0b)*GLI[topology1,
+{0, 0, -1}])/(3*(1 - mqb - u0b)*u0b), SPD[k1, nb] -> -1/3*(2 - mqb - 2*u0b)/(1 - mqb - u0b) - (2*GLI[topology1,
+{-1, 0, 0}])/(3*(1 - mqb - u0b)) + (2*(2 - mqb - u0b)*GLI[topology1, {0, -1, 0}])/(3*(1 - mqb - u0b)*u0b) - (2*(2 - mqb - 2*u0b)*GLI[topology1,
+{0, 0, -1}])/(3*(1 - mqb - u0b)*u0b)}"}
 });
