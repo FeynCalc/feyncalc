@@ -44,6 +44,9 @@ I)*ep*epHelp[topo1X11111]"},
 "FCLoopAddMissingHigherOrdersWarning[{GLI[topo1,{1,1,1,1,1}]->cc1/\
 ep^2+cc2/ep+cc3} ,ep,epHelp]",
 "{GLI[topo1, {1, 1, 1, 1, 1}] -> cc3 + cc1/ep^2 + cc2/ep + (1 + \
-I)*ep*epHelp[topo1X11111]}"}
+I)*ep*epHelp[topo1X11111]}"},
+{"fcstFCLoopAddMissingHigherOrdersWarning-ID9",
+"FCLoopAddMissingHigherOrdersWarning[0, ep, epHelp]",
+"(1 + I)*ep*epHelp"}
 })
 

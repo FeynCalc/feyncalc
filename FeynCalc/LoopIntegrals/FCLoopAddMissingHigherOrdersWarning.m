@@ -90,7 +90,10 @@ Block[{	epPower, res , optNames, pref, epHelpName, optLHS},
 	FCPrint[1,"FCLoopAddMissingHigherOrdersWarning: Entering.", FCDoControl->fclamhoVerbose];
 	FCPrint[3,"FCLoopAddMissingHigherOrdersWarning: Entering with: ", expr, FCDoControl->fclamhoVerbose];
 
-	epPower = Exponent[expr,ep];
+	If[TrueQ[expr=!=0],
+		epPower = Exponent[expr,ep],
+		epPower = 0
+	];
 
 	If[	!IntegerQ[epPower],
 		Message[FCLoopAddMissingHigherOrdersWarning::failmsg, "Failed to extract the highest power of " <> ToString[ep]];
