@@ -186,5 +186,33 @@ SFAD[{{I*p, 0}, {-m2^2, 1}, 1}]/((m1 - m2)*(m1 + m2))"},
 "FAD[q, q, q, q]"},
 {"fcstFeynAmpDenominatorSimplify-ID43",
 "FDS[FAD[p3] FAD[p1 + p2] FAD[q + p2] FAD[q, q + p1], q, FCE -> True]",
-"FAD[p3, p1 + p2] FAD[q, -p1 + q, -p2 + q]"}
+"FAD[p3, p1 + p2] FAD[q, -p1 + q, -p2 + q]"},
+
+{"fcstFeynAmpDenominatorSimplify-ID44",
+"FDS[FeynAmpDenominator[
+StandardPropagatorDenominator[
+Momentum[k1, D] + gkin*meta*Momentum[n, D] -
+	gkin*meta*u0b*
+	Momentum[n,
+	D] + (meta*Momentum[nb, D])/(4*gkin) - (meta*u0b*
+	Momentum[nb, D])/(4*gkin),
+0, -1/16*(meta^2*(16*gkin^2 - 32*gkin^2*u0b + 16*gkin^2*u0b^2))/
+	gkin^2, {1, 1}],
+StandardPropagatorDenominator[
+Momentum[k1, D] + (mqb*Momentum[n, D])/
+	2 + (meta*u0b*Momentum[n, D])/2 -
+	gkin*meta*u0b*Momentum[n, D] + (mqb*Momentum[nb, D])/
+	2 + (meta*u0b*Momentum[nb, D])/
+	2 - (meta*u0b*Momentum[nb, D])/(4*gkin), 0,
+2*meta*mqb*u0b - (meta*mqb*u0b)/(2*gkin) - 2*gkin*meta*mqb*u0b +
+	2*meta^2*u0b^2 - (meta^2*u0b^2)/(2*gkin) -
+	2*gkin*meta^2*
+	u0b^2 - (16*gkin^2*mqb^2 - 8*gkin*meta*mqb*u0b +
+	32*gkin^2*meta*mqb*u0b - 32*gkin^3*meta*mqb*u0b -
+	8*gkin*meta^2*u0b^2 + 32*gkin^2*meta^2*u0b^2 -
+	32*gkin^3*meta^2*u0b^2)/(16*gkin^2), {1, 1}]], k1]",
+"FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D], 0, -1/16*(meta^2*(16*gkin^2 - 32*gkin^2*u0b + 16*gkin^2*u0b^2))/gkin^2, {1, 1}],
+StandardPropagatorDenominator[Momentum[k1, D] - gkin*meta*Momentum[n, D] + (mqb*Momentum[n, D])/2 + (meta*u0b*Momentum[n, D])/2 - (meta*Momentum[nb, D])/(4*gkin) + (mqb*Momentum[nb, D])/2 +
+(meta*u0b*Momentum[nb, D])/2, 0, 2*meta*mqb*u0b - (meta*mqb*u0b)/(2*gkin) - 2*gkin*meta*mqb*u0b + 2*meta^2*u0b^2 - (meta^2*u0b^2)/(2*gkin) - 2*gkin*meta^2*u0b^2 -
+(16*gkin^2*mqb^2 - 8*gkin*meta*mqb*u0b + 32*gkin^2*meta*mqb*u0b - 32*gkin^3*meta*mqb*u0b - 8*gkin*meta^2*u0b^2 + 32*gkin^2*meta^2*u0b^2 - 32*gkin^3*meta^2*u0b^2)/(16*gkin^2), {1, 1}]]"}
 }
