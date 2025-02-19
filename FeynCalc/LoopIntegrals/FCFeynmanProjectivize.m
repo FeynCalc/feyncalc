@@ -66,7 +66,7 @@ FCFeynmanProjectivize[ex_, var_, OptionsPattern[]] :=
 			Head[var]===List,
 				xVars = var,
 			True,
-				Message[FCFeynmanProjectivize::failmsg, "Unknowns format of the second argument"];
+				Message[FCFeynmanProjectivize::failmsg, "Unknown format of the second argument"];
 				Abort[]
 		];
 
