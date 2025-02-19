@@ -87,7 +87,7 @@ FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 		FCPrint[3, "FCLoopFindIntegralMappings: Entering with: ", exprRaw, FCDoControl -> fcfpmVerbose];
 		FCPrint[3, "FCLoopFindIntegralMappings: and: ", lmomsRaw, FCDoControl -> fcfpmVerbose];
 
-		If[	(optPreferredIntegrals=!={}) && !MatchQ[optPreferredIntegrals,{(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..] |
+		If[	(optPreferredIntegrals=!={}) && !MatchQ[optPreferredIntegrals,{__GLI}] && !MatchQ[optPreferredIntegrals,{(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..] |
 			_FeynAmpDenominator | Power[_FeynAmpDenominator, _] | HoldPattern[Times][(_FeynAmpDenominator | Power[_FeynAmpDenominator, _]) ..]) ..}],
 			Message[FCLoopFindIntegralMappings::failmsg,"Incorrect value of the PreferredIntegrals option."];
 			Abort[]
@@ -192,7 +192,8 @@ makeMappingRules[ints_List, {}, {}]:=
 
 makeMappingRules[ints_List, preferredIntegrals_List/; preferredIntegrals=!={}, {}]:=
 	(
-	lhs = First[SelectNotFree[ints,preferredIntegrals]];
+	(*Select one of the preferred integrals among all mappings *)
+	lhs = First[Intersection[ints,preferredIntegrals]];
 	Rule[#,lhs]&/@ (SelectFree[ints,lhs])
 	)/; Length[ints]>1 && !FreeQ2[ints,preferredIntegrals];
 
