@@ -46,10 +46,15 @@ Begin["`ToPaVe`Private`"]
 
 optPaVeOrder::usage="";
 genpave::usage="";
+tpvVerbose::usage="";
+optFactoring::usage="";
 
 Options[ToPaVe] = {
+	Factoring			-> Factor,
 	FCE					-> False,
 	FCI					-> False,
+	FCVerbose			-> False,
+	FinalSubstitutions	-> {},
 	GenPaVe				-> False,
 	OtherLoopMomenta	-> {},
 	PaVeAutoOrder		-> True,
@@ -58,22 +63,40 @@ Options[ToPaVe] = {
 	PaVeToABCD			-> True
 };
 
-ToPaVe[expr_, q_, OptionsPattern[]] :=
+ToPaVe[a_ == b_, rest___] :=
+	ToPaVe[a,rest] == ToPaVe[b,rest];
+
+ToPaVe[expr_List, rest___]:=
+	ToPaVe[#, rest]&/@expr;
+
+ToPaVe[expr_/; !MemberQ[{List,Equal},expr], q_, OptionsPattern[]] :=
 	Block[{	ex, loopInt, irrel, rel, repList, res, loopList,
-			optOtherLoopMomenta, loopListEval},
+			optOtherLoopMomenta, loopListEval, optFinalSubstitutions, optFactoring},
 
 		If [!FreeQ[$ScalarProducts, q],
 			Message[ToPaVe::failmsg, "The loop momentum " <> ToString[q,InputForm] <> " has scalar product rules attached to it."];
 			Abort[]
 		];
 
-		genpave 			= OptionValue[GenPaVe];
-		optPaVeOrder 		= OptionValue[PaVeOrder];
-		optOtherLoopMomenta = OptionValue[OtherLoopMomenta];
+		If [OptionValue[FCVerbose]===False,
+			tpvVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				tpvVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		FCPrint[1, "ToPaVe: Entering.", FCDoControl->tpvVerbose];
+		FCPrint[3, "ToPaVe: Entering with: ", expr, FCDoControl->tpvVerbose];
+
+		genpave 				= OptionValue[GenPaVe];
+		optPaVeOrder 			= OptionValue[PaVeOrder];
+		optOtherLoopMomenta 	= OptionValue[OtherLoopMomenta];
+		optFinalSubstitutions	= OptionValue[FinalSubstitutions];
+		optFactoring			= OptionValue[Factoring];
 
 		If[ OptionValue[FCI],
 			ex = expr,
-			ex = FCI[expr]
+			{ex, optFinalSubstitutions} = FCI[{expr,FRH[optFinalSubstitutions]}]
 		];
 
 		ex = FCLoopSplit[ex,{q}, FCI->True];
@@ -82,6 +105,8 @@ ToPaVe[expr_, q_, OptionsPattern[]] :=
 		rel = FCLoopIsolate[rel,{q},Head->loopInt, FCI->True, GFAD->False, CFAD->False, SFAD->True, PaVe->False];
 
 		loopList = Cases2[rel,loopInt];
+
+		FCPrint[3, "ToPaVe: List of loop integrals: ", loopList, FCDoControl->tpvVerbose];
 
 		loopListEval = FCLoopPropagatorPowersExpand[#,FCI->True]&/@(loopList/.loopInt->Identity);
 
@@ -93,6 +118,12 @@ ToPaVe[expr_, q_, OptionsPattern[]] :=
 
 		(* Not all SFADs can be converted to PaVe functions! *)
 		loopListEval = loopListEval /. toPaVe[z_,_,_,_]/;!FreeQ[z,StandardPropagatorDenominator] :> z;
+
+		If[	optFinalSubstitutions=!={},
+			loopListEval = loopListEval /. Dispatch[optFinalSubstitutions]
+		];
+
+		FCPrint[3, "ToPaVe: List of converted loop integrals: ", loopListEval, FCDoControl->tpvVerbose];
 
 		If[ OptionValue[PaVeToABCD],
 			loopListEval = PaVeToABCD[loopListEval]
@@ -110,6 +141,8 @@ ToPaVe[expr_, q_, OptionsPattern[]] :=
 		If[	OptionValue[FCE],
 			res = FCE[res]
 		];
+
+		FCPrint[1, "ToPaVe: Leaving.", FCDoControl->tpvVerbose];
 
 		res
 
@@ -165,6 +198,11 @@ toPaVe[FeynAmpDenominator[PD[Momentum[q_, dim_], m1_], re:PD[Momentum[q_, dim_] 
 			res = PaVeOrder[res]
 		];
 
+		If[ optFactoring=!=False,
+			res = res /. PaVe[0,a__] :> PaVe[0,Sequence@@(optFactoring/@{a})]
+		];
+
+
 		res
 	]/;!genpave;
 
@@ -184,6 +222,10 @@ toPaVe[FeynAmpDenominator[StandardPropagatorDenominator[Momentum[q_, dim_], 0, m
 
 		If[ optPaVeOrder,
 			res = PaVeOrder[res]
+		];
+
+		If[ optFactoring=!=False,
+			res = res /. PaVe[0,a__] :> PaVe[0,Sequence@@(optFactoring/@{a})]
 		];
 
 		res
