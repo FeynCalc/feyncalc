@@ -729,7 +729,7 @@ checkOneLoopProp[x_, canonicalProps_]:=
 		MatchQ[x, Alternatives @@ canonicalProps];
 
 (*
-	Generate some posssible canonical propagators out of the given
+	Generate some possible canonical propagators out of the given
 	list of all momenta and their prefactors. This is of course
 	pure heuristics, since a priori we don't know how the momenta
 	realy flow through the diagram...
@@ -747,7 +747,8 @@ createOneLoopCanonicalPropsList[prs_,q_,ext_]:=
 				extra=Map[{q-#,q+#}&,extra]//Flatten,
 				extra = {}
 			];
-			moms = Map[(Thread[List[CoefficientArrays[#]//Normal//Rest//Total,Variables[#]]]) &, Rest[prs/.q->0]];
+			Quiet[moms = Check[Map[(Thread[List[CoefficientArrays[#]//Normal//Rest//Total,Variables[#]]]) &, Rest[prs/.q->0]],{},
+				{General::poly}],{General::poly,General::argt}];
 			res = Map[fu[#]&, moms]//Flatten;
 			res = Join[{q},Union[Join[extra,res]]]
 		];
