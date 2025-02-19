@@ -140,6 +140,11 @@ Notice that although the default value of FCJoinDOTs is True, the
 corresponding transformations will occur only if the option Expanding is set
 to False (default: True)";
 
+FCParallelize::usage =
+"FCParallelize is an option for various FeynCalc functions that support
+parallelization. When set to True the function will try to parallelize its
+work, while False disables any parallelization.";
+
 FCVerbose::usage =
 "FCVerbose is an option for numerous functions that allows to specify a local
 value of $VeryVerbose inside those functions. When set to a positive integer,
