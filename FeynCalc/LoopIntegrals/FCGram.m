@@ -75,6 +75,9 @@ FCGramMatrix[moms_List,OptionsPattern[]]:=
 
 	]/; moms=!={};
 
+FCGramDeterminant[{},OptionsPattern[]]:=
+	1;
+
 FCGramDeterminant[moms_List,OptionsPattern[]]:=
 	Block[{mat,det},
 		mat = FCGramMatrix[moms,Dimension->OptionValue[Dimension],Prefactor->OptionValue[Prefactor], Head->OptionValue[Head]];
@@ -89,7 +92,7 @@ FCGramDeterminant[moms_List,OptionsPattern[]]:=
 		];
 
 		det
-	];
+	]/; moms=!={};
 
 FCPrint[1,"FCGram.m loaded."];
 End[]
