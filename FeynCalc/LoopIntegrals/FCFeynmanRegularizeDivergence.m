@@ -59,7 +59,7 @@ FCFeynmanRegularizeDivergence[ex_, divs:{{{_List, _List}, divDeg_/;Head[divDeg]=
 	Fold[FCFeynmanRegularizeDivergence[#1, #2, opts] &, ex, divs]
 
 FCFeynmanRegularizeDivergence[ex_, {{zeroVars_List, infVars_List}, divDeg_/;Head[divDeg]=!=List}, OptionsPattern[]] :=
-	Block[{	res, tmp, scalingVar},
+	Block[{	res, tmp, scalingVar, auxRule1, auxRule2, pref},
 
 
 		If [OptionValue[FCVerbose]===False,
@@ -68,6 +68,10 @@ FCFeynmanRegularizeDivergence[ex_, {{zeroVars_List, infVars_List}, divDeg_/;Head
 				fcffdVerbose=OptionValue[FCVerbose]
 			];
 		];
+
+		FCPrint[1,"FCFeynmanRegularizeDivergence: Entering.", FCDoControl->fcffdVerbose];
+
+		FCPrint[1,"FCFeynmanRegularizeDivergence: Entering with: ", ex, FCDoControl->fcffdVerbose];
 
 		(*
 			Eq 5.5 in 1401.4361
@@ -86,10 +90,26 @@ FCFeynmanRegularizeDivergence[ex_, {{zeroVars_List, infVars_List}, divDeg_/;Head
 			Hence, we only need to add the prefactor (1/divReg) and correct the sign (a minus) to get the final
 			result.
 		*)
-		tmp = ex /. Dispatch[Join[Thread[Rule[zeroVars, scalingVar zeroVars]],Thread[Rule[infVars, 1/scalingVar infVars]]]];
+
+		auxRule1  = Thread[Rule[zeroVars, scalingVar zeroVars]];
+		auxRule2  = Thread[Rule[infVars, 1/scalingVar infVars]];
+
+		FCPrint[3,"FCFeynmanRegularizeDivergence: auxRule1: ", auxRule1, FCDoControl->fcffdVerbose];
+		FCPrint[3,"FCFeynmanRegularizeDivergence: auxRule2 ", auxRule2, FCDoControl->fcffdVerbose];
+
+		tmp = ex /. Dispatch[Join[auxRule1,auxRule2]];
+
+		FCPrint[3,"FCFeynmanRegularizeDivergence: Intermediate result before differentiating: ", tmp, FCDoControl->fcffdVerbose];
+
 		tmp = D[tmp,scalingVar]/.scalingVar->1;
 
-		res = ex*(divDeg-Length[zeroVars]+Length[infVars])/divDeg - tmp/divDeg;
+		FCPrint[3,"FCFeynmanRegularizeDivergence: Intermediate result after differentiating: ", tmp, FCDoControl->fcffdVerbose];
+
+		pref = (divDeg-Length[zeroVars]+Length[infVars]);
+
+		FCPrint[3,"FCFeynmanRegularizeDivergence: pref: ", pref, FCDoControl->fcffdVerbose];
+
+		res = ex*pref/divDeg - tmp/divDeg;
 
 		If[	OptionValue[FactorList2],
 			res = FCUseCache[FactorList2,{res},{}];
