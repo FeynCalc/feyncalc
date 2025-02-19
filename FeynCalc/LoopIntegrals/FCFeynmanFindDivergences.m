@@ -56,11 +56,12 @@ fcffdVerbose::usage="";
 scalingVar::usage="";
 
 Options[FCFeynmanFindDivergences] = {
-	FCVerbose 			-> False,
-	FinalSubstitutions	-> {},
-	Length				-> Automatic,
-	RandomPrime			-> 10^8,
-	Select				-> Function[{x},x<=0 (*sdd*)]
+	"OnlyFirstDivergence"	-> False,
+	FCVerbose 				-> False,
+	FinalSubstitutions		-> {},
+	Length					-> Automatic,
+	RandomPrime				-> 10^8,
+	Select					-> Function[{x},x<=0 (*sdd*)]
 };
 
 
@@ -79,10 +80,28 @@ MemSet[fpDivergenceDegree[{poly, pow}, {zeroVars, infVars}],
 	pow Exponent[poly /. Dispatch[Join[Thread[Rule[zeroVars, scalingVar zeroVars]],Thread[Rule[infVars, 1/scalingVar infVars]]]], scalingVar, Min]
 ];
 
+
+totalDivergenceDegree[x_, polyFactorized_]:=
+	Block[{tmp, res},
+		tmp = fpDivergenceDegree[#, x] & /@ polyFactorized;
+		res = {x,(Length[x[[1]]] - Length[x[[2]]]) + ExpandAll[Total[tmp]]};
+		res
+	];
+
+totalDivergenceDegreeThrow[x_, polyFactorized_, optSelect_, repRule_]:=
+	Block[{tmp, res, div},
+		tmp = fpDivergenceDegree[#, x] & /@ polyFactorized;
+		div = (Length[x[[1]]] - Length[x[[2]]]) + ExpandAll[Total[tmp]];
+		If[optSelect[div/.repRule],
+			Throw[{x,div}]
+		];
+		{x,div}
+	];
+
 FCFeynmanFindDivergences[ex_, var_, OptionsPattern[]] :=
 	Block[{	xVars, ru, la, res, allVars, pow, kinVars, expVars, aux, factors, varSubsets1, varSubsets2,
 			varSubsetsFinal, polyFactorized, list, varSubsets, tmp,repRule, optFinalSubstitutions, optSelect,
-			isProjective=False, optLength, time},
+			isProjective=False, optLength, time, catchTmp},
 
 		If [OptionValue[FCVerbose]===False,
 			fcffdVerbose=$VeryVerbose,
@@ -188,6 +207,18 @@ FCFeynmanFindDivergences[ex_, var_, OptionsPattern[]] :=
 		];
 		FCPrint[1, "FCFeynmanFindDivergences: Done generating subsets of Feynman parameters, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcffdVerbose];
 
+
+		(*
+			The variables listed in expVars regulate the divergences of the integral.
+			Expanding them around zero reveals the ultimate degree of divergence.
+		*)
+		aux = SelectFree[expVars,First/@optFinalSubstitutions];
+		repRule = Thread[Rule[aux, ConstantArray[0, Length[aux]]]];
+		repRule = Join[repRule,SelectNotFree[optFinalSubstitutions,expVars]];
+
+		FCPrint[1, "FCFeynmanFindDivergences: Rule for removing the regulators: ", repRule, FCDoControl->fcffdVerbose];
+
+
 		FCPrint[4, "FCFeynmanFindDivergences: Variable limits to check: ", varSubsetsFinal, FCDoControl->fcffdVerbose];
 		FCPrint[1, "FCFeynmanFindDivergences: Number of variable limits to check: ", Length[varSubsetsFinal], FCDoControl->fcffdVerbose];
 
@@ -200,21 +231,23 @@ FCFeynmanFindDivergences[ex_, var_, OptionsPattern[]] :=
 			Then, tmp essentially calculates the total degree of divergence omega^K_J(F) from
 			Eq. 5.2 in 1401.4361 for each combination J and K sets
 		*)
-		tmp = Map[Function[{x}, {x, (Length[x[[1]]] - Length[x[[2]]]) +
+		(*tmp = Map[Function[{x}, {x, (Length[x[[1]]] - Length[x[[2]]]) +
 			ExpandAll[Total[fpDivergenceDegree[#, x] & /@ polyFactorized]]}], varSubsetsFinal];
+		*)
+
+		If[	TrueQ[OptionValue["OnlyFirstDivergence"]],
+			FCPrint[1, "FCFeynmanFindDivergences: The search will be stopped once the first divergence is found: ", repRule, FCDoControl->fcffdVerbose];
+			catchTmp = {Catch[tmp = totalDivergenceDegreeThrow[#,polyFactorized,optSelect,repRule]&/@varSubsetsFinal;]};
+			If[	catchTmp=!={Null},
+				tmp = catchTmp
+			],
+			tmp = totalDivergenceDegree[#,polyFactorized]&/@varSubsetsFinal;
+		];
+
 		FCPrint[1, "FCFeynmanFindDivergences: Done determining the divegence degree, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcffdVerbose];
 
 		FCPrint[4, "FCFeynmanFindDivergences: Divergence degrees: ", tmp, FCDoControl->fcffdVerbose];
 
-		(*
-			The variables listed in expVars regulate the divergences of the integral.
-			Expanding them around zero reveals the ultimate degree of divergence.
-		*)
-		aux = SelectFree[expVars,First/@optFinalSubstitutions];
-		repRule = Thread[Rule[aux, ConstantArray[0, Length[aux]]]];
-		repRule = Join[repRule,SelectNotFree[optFinalSubstitutions,expVars]];
-
-		FCPrint[1, "FCFeynmanFindDivergences: Rule for removing the regulators: ", repRule, FCDoControl->fcffdVerbose];
 
 		aux = MapIndexed[
 			If[	optSelect[#1[[2]]],
