@@ -131,8 +131,8 @@ propReverse[(h:StandardPropagatorDenominator|CartesianPropagatorDenominator|Gene
 	h[x, {n,s}];
 
 (* SFAD, +/- (p1+...)^2 +/- (p1.p2 + ...) +/- m^2*)
-propReverse[StandardPropagatorDenominator[c_. Momentum[p_, dim___], sp_, msq_,{n_, s1:(1|-1)}], s2:(1|-1)]:=
-	overallSign[1/(-1)^n] StandardPropagatorDenominator[Complex[0,1] c Momentum[p, dim], -sp ,-msq, {n, s2}]/; (s1+s2 === 0);
+propReverse[StandardPropagatorDenominator[c_. Momentum[p_, dim___] + d_:0, sp_, msq_,{n_, s1:(1|-1)}], s2:(1|-1)]:=
+	overallSign[1/(-1)^n] StandardPropagatorDenominator[Complex[0,1] (c Momentum[p, dim] + d), -sp ,-msq, {n, s2}]/; (s1+s2 === 0);
 
 (* SFAD, +/- (p1.p2 + ...) +/- m^2*)
 propReverse[StandardPropagatorDenominator[0, sp_, msq_,{n_, s1:(1|-1)}], s2:(1|-1)]:=
