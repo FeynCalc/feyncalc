@@ -98,18 +98,21 @@ fcfpVerbose::usage="";
 Options[FCFeynmanParametrize] = {
 	Assumptions					-> {},
 	DiracDelta					-> False,
+	Check						-> True,
 	EtaSign						-> False,
 	Expanding					-> True,
 	ExtraPropagators			-> {},
 	"Euclidean"					-> False,
 	FCE							-> False,
 	FCI							-> False,
+	FCLoopPakScalelessQ			-> True,
 	FCReplaceD					-> {},
 	FCReplaceMomenta			-> {},
 	FCVerbose					-> False,
 	FeynmanIntegralPrefactor	-> "Multiloop1",
 	FinalSubstitutions			-> {},
 	Indexed						-> True,
+	Head						-> {Identity,Identity},
 	FCFeynmanPrepare			-> False,
 	Method						-> "Feynman",
 	Names						-> FCGV["x"],
@@ -129,7 +132,8 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmomsRaw_List /; ! Opti
 			denPowers, zeroPowerProps, numPowers, numVars, zeroDenVars, optFCReplaceMomenta,
 			nM,nLoops,fPow,pref, fpInt, fpPref, optFCReplaceD, vars, optVariables, optExtraPropagators,
 			aux, ex, Q, J, tensorPart, tensorRank, optMethod, extraPref, optFeynmanIntegralPrefactor,
-			optEuclidean, inverseMeasure, optNames, outputFCFeynmanPrepare, isCartesian, cartesianCheck},
+			optEuclidean, inverseMeasure, optNames, outputFCFeynmanPrepare, isCartesian, cartesianCheck,
+			optHead, fPolyHead, uPolyHead},
 
 		optFinalSubstitutions		= OptionValue[FinalSubstitutions];
 		optFCReplaceD				= OptionValue[FCReplaceD];
@@ -141,6 +145,10 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmomsRaw_List /; ! Opti
 		optIndexed					= OptionValue[Indexed];
 		optExtraPropagators			= OptionValue[ExtraPropagators];
 		optFCReplaceMomenta			= OptionValue[FCReplaceMomenta];
+		optHead						= OptionValue[Head];
+
+
+		{uPolyHead, fPolyHead} = optHead;
 
 		If [OptionValue[FCVerbose]===False,
 			fcfpVerbose=$VeryVerbose,
@@ -173,7 +181,7 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmomsRaw_List /; ! Opti
 		];
 
 		If[	optVariables=!={},
-			If[	IntersectingQ[optVariables,Flatten[{FCMakeSymbols[optNames, Range[1, 10], List], Table[optNames[i], {i, 1, 10}]}]],
+			If[	IntersectingQ[optVariables,Flatten[{FCMakeSymbols[optNames, Range[1, 20], List], Table[optNames[i], {i, 1, 20}]}]],
 				Message[FCFeynmanParametrize::failmsg,"Names of Feynman parameters to be introduced cannot be present"  <>
 					" in the list submitted via the Variables option."];
 				Abort[]
@@ -211,7 +219,10 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmomsRaw_List /; ! Opti
 		{uPoly, fPoly, pows, mat, Q, J, tensorPart, tensorRank} = FCFeynmanPrepare[ex,lmoms, FCI->True,
 			FinalSubstitutions->optFinalSubstitutions, Names->optNames, Indexed->OptionValue[Indexed], Reduce->OptionValue[Reduce],
 			"Euclidean" -> optEuclidean, EtaSign -> OptionValue[EtaSign],
-			ExtraPropagators -> optExtraPropagators, FCReplaceMomenta -> optFCReplaceMomenta];
+			ExtraPropagators -> optExtraPropagators, FCReplaceMomenta -> optFCReplaceMomenta, Check-> OptionValue[Check]];
+
+		uPoly = uPolyHead[uPoly];
+		fPoly = fPolyHead[fPoly];
 
 		outputFCFeynmanPrepare = {uPoly, fPoly, pows, mat, Q, J, tensorPart, tensorRank};
 
@@ -363,7 +374,7 @@ FCFeynmanParametrize[expr_, extra_/; Head[extra]=!=List, lmomsRaw_List /; ! Opti
 
 					fpInt = fpInt fpPref;
 					(* Check the scalefullness *)
-					If[	FCLoopPakScalelessQ[uPoly*fPoly /. SMP["Eta"]->0,vars],
+					If[	OptionValue[FCLoopPakScalelessQ] && FCLoopPakScalelessQ[uPoly*fPoly /. SMP["Eta"]->0/. uPolyHead|fPolyHead->Identity,vars],
 						FCPrint[1,"FCFeynmanParametrize: According to FCLoopPakScalelessQ this integral is scaleless.", FCDoControl->fcfpVerbose];
 						fpInt = 0
 					];
