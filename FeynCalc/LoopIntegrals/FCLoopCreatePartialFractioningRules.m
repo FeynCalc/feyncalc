@@ -36,6 +36,8 @@ cpfVerbose::usage="";
 
 
 Options[FCLoopCreatePartialFractioningRules] = {
+	Numerator		-> Identity,
+	Denominator		-> Identity,
 	FCI				-> False,
 	FCVerbose		-> False,
 	FCE				-> False
@@ -49,7 +51,8 @@ FCLoopCreatePartialFractioningRules[glis_List, topos_, opts:OptionsPattern[]] :=
 
 FCLoopCreatePartialFractioningRules[glis_List, toposRaw:{__FCTopology}, OptionsPattern[]] :=
 	Block[{	int, optFinalSubstitutions, tmp, res, topos,apartHead,rule, rhs, ids,
-			relTopos,idRepRule,newTopos,lhs,aux,repRule, zeroPos,time},
+			relTopos,idRepRule,newTopos,lhs,aux,repRule, zeroPos,time,
+			optNumerator, optDenominator},
 
 		If [OptionValue[FCVerbose]===False,
 			cpfVerbose=$VeryVerbose,
@@ -57,6 +60,9 @@ FCLoopCreatePartialFractioningRules[glis_List, toposRaw:{__FCTopology}, OptionsP
 				cpfVerbose=OptionValue[FCVerbose]
 			];
 		];
+
+		optNumerator 	= OptionValue[Numerator];
+		optDenominator 	= OptionValue[Denominator];
 
 		If[	OptionValue[FCI],
 			topos = toposRaw,
@@ -88,7 +94,6 @@ FCLoopCreatePartialFractioningRules[glis_List, toposRaw:{__FCTopology}, OptionsP
 		];
 
 		FCPrint[1, "FCLoopCreatePartialFractioningRules: Done applying ApartFF, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cpfVerbose];
-
 
 (*
 		FCPrint[1,"FCLoopCreatePartialFractioningRules: Applying ApartFF.", FCDoControl->cpfVerbose];
@@ -131,11 +136,16 @@ FCLoopCreatePartialFractioningRules[glis_List, toposRaw:{__FCTopology}, OptionsP
 
 		rhs =  rhs /. Dispatch[idRepRule];
 
+		If[	TrueQ[optNumerator===Identity && optDenominator===Identity],
+			rhs = rhs/.apartHead->Times,
+			rhs = rhs/.apartHead[pref_,gli_]:> optNumerator[Numerator[pref]]*optDenominator[Denominator[pref]]*gli
+		];
+
 		repRule = Thread[Rule[lhs,rhs]];
 
 		FCPrint[3, "FCLoopCreatePartialFractioningRules: Replacement rule for partial fractioning: ", repRule, FCDoControl->cpfVerbose];
 
-		tmp = tmp /. Dispatch[repRule] /. apartHead->Times /. rule[0,0]:>Unevaluated[Sequence[]] /. rule->Rule;
+		tmp = tmp /. Dispatch[repRule] /. rule[0,0]:>Unevaluated[Sequence[]] /. rule->Rule;
 
 		res = {tmp, newTopos};
 
