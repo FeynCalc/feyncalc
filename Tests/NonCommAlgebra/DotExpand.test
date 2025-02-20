@@ -559,4 +559,9 @@ GA[n]"}, {"fcstDotExpandOnePlusOnlyNonComm-ID117",
 gB*GA[l]*SUNT[e, f]) . (gS*GA[m] . GA[n])]",
 	"gA*gE*gS*GA[i] . GA[j] . SUNT[a, b] . GA[k] . SUNT[c, d] . GA[m] . \
 GA[n] + gA*gB*gS*GA[i] . GA[j] . SUNT[a, b] . GA[l] . SUNT[e, f] . \
-GA[m] . GA[n]"}};
+GA[m] . GA[n]"},
+{"fcstDotExpandOnePlusOnlyNonComm-ID118",
+	"DotExpand[(gA*GA[i] . GA[j]*SUNT[a, b]) . (gE*GA[k]*SUNT[c, d] + \
+gB*GA[l]*SUNT[e, f]) . (gS*GA[m] . GA[n])]",
+	"GALRD[mu, n, nb] . GA[5] + GALRD[mu, n, nb]"}
+};
