@@ -1228,7 +1228,7 @@ FCSetDiracGammaScheme[\"NDR\"]; \n tmp", "1/2 GAD[mu].GAD[nu].GAD[rho].GAD[si]"}
 tmp = DiracTrick[GAD[mu, nu, rho, si, 6], InsideDiracTrace -> True,
 Evaluate -> False, FCE -> True]; \n
 FCSetDiracGammaScheme[\"NDR\"]; \n tmp", "1/2 GAD[mu].GAD[nu].GAD[rho].GAD[si]"},
-{"fcstDiracTrick-ID31","DiracTrick[(mN +
+{"fcstDiracTrick-ID32","DiracTrick[(mN +
 	DiracGamma[
 	Momentum[p1]]) . (-DiracGamma[LorentzIndex[nu]] .
 	DiracGamma[Momentum[kA]] +
@@ -1236,8 +1236,10 @@ FCSetDiracGammaScheme[\"NDR\"]; \n tmp", "1/2 GAD[mu].GAD[nu].GAD[rho].GAD[si]"}
 DiracGamma[5] . (mN + DiracGamma[Momentum[p3]]) . DiracGamma[5] .
 	(-DiracGamma[Momentum[kA]] . DiracGamma[LorentzIndex[mu]] +
 	2*Pair[LorentzIndex[mu], Momentum[p1]]), InsideDiracTrace -> True,
-FCE -> True]","mA^2*GS[p1] . GA[nu] . GS[p3] . GA[mu] + 2*GS[p1] . GA[nu] . GS[kA] . GS[p3]*FV[p1, mu] - 2*mN^2*FV[kA, nu]*FV[p1, mu] +
-2*GS[p1] . GS[p3] . GS[kA] . GA[mu]*FV[p1, nu] - 2*mN^2*FV[kA, mu]*FV[p1, nu] + 4*mN^2*FV[p1, mu]*FV[p1, nu] + mA^2*mN^2*MT[mu, nu] -
+FCE -> True]","2*GS[p1] . GA[nu] . GS[kA] . GS[p3]*FV[p1, mu] - 2*mN^2*FV[kA,
+nu]*FV[p1, mu] + 2*GS[p1] . GS[p3] . GS[kA] . GA[mu]*FV[p1, nu] - 2*mN^2*FV[kA,
+mu]*FV[p1, nu] + 4*mN^2*FV[p1, mu]*FV[p1, nu] +
+GS[p1] . GA[nu] . GS[p3] . GA[mu]*SP[kA, kA] + mN^2*MT[mu, nu]*SP[kA, kA] -
 2*GS[p1] . GA[nu] . GS[kA] . GA[mu]*SP[kA, p3] - 4*FV[p1, mu]*FV[p1, nu]*SP[p1, p3]"}
 };
 
