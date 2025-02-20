@@ -114,7 +114,7 @@ FeynCalc implement the so-called Moch-Vermaseren-Vogt MVV formula from [Moch:201
 FCSetDiracGammaScheme["Larin"]
 ```
 
-The usage of this scheme implies that all axial-vector matrices from the Feynman rules $ \gamma^\mu \gamma^5$ should be entered as
+The usage of this scheme implies that all axial-vector matrices from the Feynman rules $\gamma^\mu \gamma^5$ should be entered as
 \begin{equation}
 \gamma^\mu \gamma^5 \to \frac{1}{2} \left ( \gamma^\mu \gamma^5 -  \gamma^5 \gamma^\mu \right )
 \end{equation}
