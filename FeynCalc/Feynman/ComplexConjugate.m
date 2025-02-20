@@ -60,10 +60,6 @@ ComplexConjugate[a_ == b_, opts:OptionsPattern[]] :=
 ComplexConjugate[(h:Rule|RuleDelayed)[a_,b_], opts:OptionsPattern[]] :=
 	hold[ComplexConjugate[a,opts],ComplexConjugate[b,opts]] /. hold -> h;
 
-
-Collect2[x_List, y__] :=
-	Collect2[#, y]& /@ x;
-
 ComplexConjugate[expr_/;!MemberQ[{List,Equal,Rule,RuleDelayed},Head[expr]], OptionsPattern[]]:=
 	Block[{	ex,res,optConjugate, ruleConjugate, ru, time,
 			prefList, diracList, sunList, pauliList,

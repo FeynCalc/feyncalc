@@ -119,7 +119,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [Coefficient2](../Coefficient2.md) - alternative to Mathematica's `Coefficient`
 - [Combine](../Combine.md) - alternative to Mathematica's `Together`
 - [Complement1](../Complement1.md) - alternative to Mathematica's `Complement`
-- [Collect2](../Collect2.md), [Collect3](../Collect3.md) - alternatives to Mathematica's `Collect`
+- [Collect2](../Collect2.md) - alternative to Mathematica's `Collect`
 - [DataType](../DataType.md) - defines data types
 - [Expand2](../Expand2.md) - alternative to Mathematica's `Expand`
 - [ExpandAll2](../ExpandAll2.md) - alternative to Mathematica's `ExpandAll`

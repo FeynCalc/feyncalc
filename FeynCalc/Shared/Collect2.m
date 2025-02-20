@@ -2,7 +2,7 @@
 
 
 
-(* :Title: Collect															*)
+(* :Title: Collect2															*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -11,7 +11,7 @@
 	Copyright (C) 2014-2024 Vladyslav Shtabovenko
 *)
 
-(* :Summary:	Expansion of the Mathematica Collect						*)
+(* :Summary:	Extension of the Mathematica Collect						*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -27,16 +27,6 @@ collecting depends on the option Factoring, which may be set to Factor,
 Factor2, or any other function, which is applied to the coefficients. If expr
 is already expanded with respect to x (x1, x2, ...), the option Expanding can
 be set to False.";
-
-Collect3::usage=
-"Collect3[expr, {x, y, ...}] collects terms involving the same powers of
-monomials $x^{n_1}$, $y^{n_2}$, ...
-
-The option Factor can bet set to True or False, which factors the
-coefficients.
-
-The option Head (default Plus) determines the applied function to the list of
-monomials  multiplied by their coefficients.";
 
 FactoringDenominator::usage =
 "FactoringDenominator is an option for Collect2. It is taken into account only
@@ -54,7 +44,7 @@ The problem reads: `1`";
 Begin["`Package`"];
 End[]
 
-Begin["`Collect`Private`"];
+Begin["`Collect2`Private`"];
 
 cl2Verbose::usage="";
 
@@ -66,6 +56,7 @@ Options[Collect2] = {
 	FCFactorOut 				-> 1,
 	FCVerbose 					-> False,
 	Factoring 					-> Factor,
+	FCParallelize				-> False,
 	FactoringDenominator 		-> False,
 	Head						-> Identity,
 	InitialFunction 			-> Identity,
@@ -76,21 +67,61 @@ Options[Collect2] = {
 	TimeConstrained 			-> Infinity
 };
 
-Options[Collect3] = {
-	Factoring -> False,
-	Head -> Plus
-};
-(*
-SetAttributes[holdForm,HoldAll];
-*)
 Collect2[a_ == b_, y__] :=
 	Collect2[a,y] == Collect2[b,y];
 
 Collect2[(h:Rule|RuleDelayed)[a_,b_], y__] :=
 	With[{zz=Collect2[b,y]}, h[a,zz]];
 
-Collect2[x_List, y__] :=
-	Collect2[#, y]& /@ x;
+(*
+Collect2[x_List, y__,  opts:OptionsPattern[]] :=
+	Block[{res,time},
+
+		If[OptionValue[FCVerbose]===False,
+				cl2Verbose=$VeryVerbose,
+				If[MatchQ[OptionValue[FCVerbose], _Integer],
+					cl2Verbose=OptionValue[FCVerbose]
+				];
+			];
+
+		If[	$ParallelizeFeynCalc && OptionValue[FCParallelize],
+				FCPrint[1,"Collect2: Applying Collect2 to a list in parallel." , FCDoControl->cl2Verbose];
+				If[	OptionValue[IsolateNames]=!=False,
+					Message[Collect2::failmsg,"Collect2 cannot be parallelized when using the option IsolateNames."];
+					Abort[]
+				];
+
+				time=AbsoluteTime[];
+
+
+				xPartitioned = Partition[x, UpTo[Ceiling[Length[ParallelKernels[]]/8]]];
+				xPartitioned = Compress/@xPartitioned;
+
+				With[{xxx = {y}, ooo = {opts}, input=xPartitioned},
+					ParallelEvaluate[FCParallelContext`Collect`pArgs = xxx; FCParallelContext`Collect`pOpts = FilterRules[ooo, Except[FCParallelize|FCVerbose]];, DistributedContexts -> None]
+				];
+				FCPrint[1,"Collect2: Preparations done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
+				res = ParallelMap[(Collect2[Uncompress[#],FCParallelContext`Collect`pArgs,FCParallelContext`Collect`pOpts, FCParallelize->False])&,xPartitioned, DistributedContexts->None,
+					Method->"CoarsestGrained"(*,
+					ProgressReporting->True*)
+					(*Split the input into smaller chunks. We take the total number of expressions and divide it by the number of the kernels. This
+					number is then broken into 10 chunks*)
+					(*Method->"ItemsPerEvaluation" -> Ceiling[N[Length[x]/Length[ParallelKernels[]]]/10]*)
+					];
+				Print["parallel map done"];
+					,
+				Print["no paral"];
+				FCPrint[1,"FCFeynmanPrepare: Applying Collect2 to a list.", FCDoControl->cl2Verbose];
+				res = (Collect2[#, y, FilterRules[{opts}, Except[FCParallelize|FCVerbose]]]& /@ x)
+
+		];
+		FCPrint[1,"Collect2: Collecing done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
+		res
+	];
+*)
+
+Collect2[x_List, y__,  opts:OptionsPattern[]] :=
+	(Collect2[#, y, opts]& /@ x)
 
 Collect2[x_, y_, opts:OptionsPattern[]] :=
 	Collect2[x, {y}, opts] /; (Head[y]=!=List && !OptionQ[y] && Head[x]=!=List && !OptionQ[x]);
@@ -98,7 +129,7 @@ Collect2[x_, y_, opts:OptionsPattern[]] :=
 Collect2[x_, z__, y_, opts:OptionsPattern[]] :=
 	Collect2[x, {z,y}, opts] /; (Head[y]=!=List && !OptionQ[y] && Head[x]=!=List && !OptionQ[x]);
 
-Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
+Collect2[expr_/; !MemberQ[{List,Equal},Head[expr]], vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 	Block[{monomList,ru,nx,lk,factoring,optIsolateNames,tog,fr0,frx,lin,tv={},mp,monomialHead,cd,co,dde,
 		new = 0, unity,re,compCON,ccflag = False, factor,expanding, times,time,
 		null1,null2,coeffArray,tvm,coeffHead,optIsolateFast,tempIso,factorOut, monomRepRule={},
@@ -388,26 +419,5 @@ Collect2[expr_, vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
 		re
 	];
 
-Collect3[a_,b_,c_Symbol, opts___?OptionQ]:=
-	Collect3[a, b, Factoring -> c, opts];
-
-Collect3[expr_, vars_/;Head[vars]=!=List, opts___Rule] :=
-	Collect3[expr, {vars}, opts];
-
-Collect3[expr_, vars_List, opts___?OptionQ] :=
-	Block[{fac, hva, mli},
-		fac = Factoring/.{opts}/.Options[Collect3];
-		If[	fac === True,
-			fac = Factor
-		];
-		hva = (Hold[HoldPattern][#[___]]& /@ ( Hold/@vars ) ) /. Hold[a_] :> a;
-		hva = Alternatives @@ hva;
-		mli = MonomialList[expr, Union@Cases[expr,hva,-1]];
-		If[fac =!= False,
-			mli = Map[fac, mli]
-		];
-		Apply[Head/.{opts}/.Options[Collect3], mli]
-	];
-
-FCPrint[1,"Collect loaded"];
+FCPrint[1,"Collect2 loaded"];
 End[]
