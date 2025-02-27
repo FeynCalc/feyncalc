@@ -159,7 +159,7 @@ ex2=Pair[Momentum[p],LorentzIndex[\[Mu]]]
 
 
 (* ::Text:: *)
-(*However, we can always use StandardForm to see the difference*)
+(*However, we can always use `StandardForm` to see the difference*)
 
 
 ex1//StandardForm

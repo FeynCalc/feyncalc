@@ -45,7 +45,7 @@ CF
 
 
 (* ::Text:: *)
-(*There are two main functions to deal with colored objects: `SUNSimplify` and `SUNTrace`*)
+(*There are two main functions to deal with colored objects: `SUNSimplify` and `SUNTrace`. In general, `SUNSimplify` will also simplify color traces when possible*)
 
 
 SUNT[a,a]
@@ -57,6 +57,22 @@ SUNSimplify[%]
 
 
 SUNT[b,d,a,b,d]
+SUNSimplify[%]
+
+
+SUNF[a, r, s] SUNF[b, r, s]
+SUNSimplify[%]
+
+
+SUNF[a, b, c]  SUNF[a, b, c]
+SUNSimplify[%]
+
+
+SUNF[a, b, c] SUND[d, b, c] 
+SUNSimplify[%]
+
+
+SUND[a, b, c] SUND[a, b, c] 
 SUNSimplify[%]
 
 
@@ -94,8 +110,15 @@ SUNTF[{a,b,c},i,j]SUNTrace[SUNT[b,a]]
 %//SUNSimplify
 
 
+SUNDelta[a, b] SUNTF[{a, b}, i, j] SUNTF[{c, d}, j, i]
+SUNSimplify[%]
+
+
 (* ::Text:: *)
-(*Color traces with more than 3 matrices are not evaluated by default (assuming that no other simplifications are possible). The evaluation can be forced using the option `SUNTraceEvaluate` set to `True`*)
+(*Color traces with more than 3 distinct matrices are not evaluated by default (assuming that no other simplifications are possible). The evaluation can be forced using the option `SUNTraceEvaluate` set to `True`*)
+
+
+SUNTrace[SUNT[a,b,c,d]]//SUNSimplify
 
 
 SUNTrace[SUNT[a,b,c,d]]//SUNSimplify[#,SUNTraceEvaluate->True]&

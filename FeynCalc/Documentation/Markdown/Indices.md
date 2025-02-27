@@ -23,7 +23,7 @@ $$\overline{r}^{\mu } \left(\overline{r}^{\nu }\right)^2 \overline{r}^{\rho } \l
 
 $$\overline{r}^2 \left(\overline{p}\cdot \overline{r}+\overline{q}\cdot \overline{r}\right)^2$$
 
-However, since FeynCalc 9 there is a function for that
+However, FeynCalc offers a function for that
 
 ```mathematica
 FCRenameDummyIndices[ex1]
@@ -51,7 +51,7 @@ $$\overline{p}^{\nu } \overline{q}^{\nu }-\overline{p}^{\mu } \overline{q}^{\mu 
 
 $$\overline{p}^{\text{\$AL}(\text{\$22})} \overline{q}^{\text{\$AL}(\text{\$22})}-\overline{p}^{\text{\$AL}(\text{\$21})} \overline{q}^{\text{\$AL}(\text{\$21})}$$
 
-But since FeynCalc 9.1 there is a function for that too
+There is a function for that too
 
 ```mathematica
 FV[p, \[Nu]] FV[q, \[Nu]] - FV[p, \[Mu]] FV[q, \[Mu]]
@@ -62,7 +62,7 @@ $$\overline{p}^{\nu } \overline{q}^{\nu }-\overline{p}^{\mu } \overline{q}^{\mu 
 
 $$0$$
 
-Finally, often we also need to uncontract already contracted indices. This is done by `Uncontract`. By default, it handles only contractions with Dirac matrices and Levi-Civita tensors
+Often we also need to uncontract already contracted indices. This is done by `Uncontract`. By default, it handles only contractions with Dirac matrices and Levi-Civita tensors
 
 ```mathematica
 LC[][p, q, r, s]
@@ -92,3 +92,55 @@ Uncontract[%, p, Pair -> All]
 ```
 
 $$\overline{p}^{\text{\$AL}(\text{\$34})} \overline{q}^{\text{\$AL}(\text{\$34})}$$
+
+Sometimes one might want to define custom symbolic tensors that are not specified in terms of the 4-vectors, metric tensors and Levi-Civitas. This is possible in FeynCalc, but the handling of such objects is not as good as that of the built-in quantities
+
+```mathematica
+DeclareFCTensor[myTensor];
+```
+
+```mathematica
+myTensor[LorentzIndex[\[Mu]], LorentzIndex[\[Nu]]] FV[p, \[Nu]] FV[q, \[Mu]]
+ex = Contract[%]
+```
+
+$$\overline{p}^{\nu } \overline{q}^{\mu } \;\text{myTensor}(\mu ,\nu )$$
+
+$$\text{myTensor}\left(\overline{q},\overline{p}\right)$$
+
+```mathematica
+Uncontract[ex, p, q, Pair -> All]
+```
+
+$$\overline{p}^{\text{\$AL}(\text{\$36})} \overline{q}^{\text{\$AL}(\text{\$35})} \;\text{myTensor}(\text{\$AL}(\text{\$35}),\text{\$AL}(\text{\$36}))$$
+
+```mathematica
+(myTensor[LorentzIndex[\[Mu]], LorentzIndex[\[Nu]]] MT[LorentzIndex[\[Mu]], LorentzIndex[\[Nu]]] + 
+   myTensor[LorentzIndex[\[Alpha]], LorentzIndex[\[Beta]]] MT[LorentzIndex[\[Alpha]], LorentzIndex[\[Beta]]])
+FCCanonicalizeDummyIndices[%, LorentzIndexNames -> {i1, i2}]
+```
+
+$$\bar{g}^{\alpha \beta } \;\text{myTensor}(\alpha ,\beta )+\bar{g}^{\mu \nu } \;\text{myTensor}(\mu ,\nu )$$
+
+$$2 \bar{g}^{\text{i1}\;\text{i2}} \;\text{myTensor}(\text{i1},\text{i2})$$
+
+To extract the list of free or dummy indices present in the expression, one can use `FCGetFreeIndices` and `FCGetDummyIndices` respectively
+
+```mathematica
+FCI[FV[p, \[Mu]] FV[q, \[Nu]]] 
+FCGetFreeIndices[%, {LorentzIndex}]
+```
+
+$$\overline{p}^{\mu } \overline{q}^{\nu }$$
+
+$$\{\mu ,\nu \}$$
+
+```mathematica
+FCI[FV[p, \[Mu]] FV[q, \[Mu]]] 
+FCGetDummyIndices[%, {LorentzIndex}]
+
+```mathematica
+
+$$\overline{p}^{\mu } \overline{q}^{\mu }$$
+
+$$\{\mu \}$$

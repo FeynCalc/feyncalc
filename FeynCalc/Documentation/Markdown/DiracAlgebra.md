@@ -46,6 +46,12 @@ $$4 \bar{g}^{\mu \nu }$$
 
 or use `DiracSimplify` instead.
 
+```mathematica
+DiracTrace[GA[\[Mu], \[Nu]]] // DiracSimplify
+```
+
+$$4 \bar{g}^{\mu \nu }$$
+
 By default FeynCalc refuses to compute a $D$-dimensional trace that contains $\gamma^5$
 
 ```mathematica
@@ -108,3 +114,27 @@ GordonSimplify[%]
 $$\bar{u}(\text{p1},\text{m1}).\bar{\gamma }^{\mu }.u(\text{p2},\text{m2})$$
 
 $$\frac{\left(\overline{\text{p1}}+\overline{\text{p2}}\right)^{\mu } \left(\varphi (\overline{\text{p1}},\text{m1})\right).\left(\varphi (\overline{\text{p2}},\text{m2})\right)}{\text{m1}+\text{m2}}+\frac{i \left(\varphi (\overline{\text{p1}},\text{m1})\right).\sigma ^{\mu \overline{\text{p1}}-\overline{\text{p2}}}.\left(\varphi (\overline{\text{p2}},\text{m2})\right)}{\text{m1}+\text{m2}}$$
+
+It is possible to reorder the free indices in a chain of Dirac matrices, which can sometimes help to simplify the expressions
+
+```mathematica
+DiracOrder[GA[\[Mu], \[Nu], \[Rho]], {\[Nu], \[Mu]}]
+```
+
+$$2 \bar{\gamma }^{\rho } \bar{g}^{\mu \nu }-\bar{\gamma }^{\nu }.\bar{\gamma }^{\mu }.\bar{\gamma }^{\rho }$$
+
+However, since this procedure is computationally expensive, `DiracSimplify` will not apply it by default
+
+```mathematica
+DiracSimplify[GAD[\[Mu], \[Nu]] + GAD[\[Nu], \[Mu]]]
+```
+
+$$\gamma ^{\mu }.\gamma ^{\nu }+\gamma ^{\nu }.\gamma ^{\mu }$$
+
+It can be activated via the option `DiracOrder`
+
+```mathematica
+DiracSimplify[GAD[\[Mu], \[Nu]] + GAD[\[Nu], \[Mu]], DiracOrder -> True]
+```
+
+$$2 g^{\mu \nu }$$

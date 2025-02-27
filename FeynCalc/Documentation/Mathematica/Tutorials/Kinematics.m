@@ -29,6 +29,10 @@ SP[p,q]=s;
 SP[p,q]
 
 
+FV[q,\[Mu]]FV[q,\[Nu]](FV[p,\[Mu]]FV[p,\[Nu]]-MT[\[Mu],\[Nu]]/SP[p,p])
+%//Contract
+
+
 (* ::Text:: *)
 (*To clear the previously set values, use*)
 
@@ -37,6 +41,10 @@ FCClearScalarProducts[]
 
 
 SP[p,q]
+
+
+FV[q,\[Mu]]FV[q,\[Nu]](FV[p,\[Mu]]FV[p,\[Nu]]-MT[\[Mu],\[Nu]]/SP[p,p])
+%//Contract
 
 
 (* ::Text:: *)

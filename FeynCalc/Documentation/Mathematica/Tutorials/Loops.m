@@ -20,7 +20,11 @@
 
 
 (* ::Text:: *)
-(*Propagators (and products thereof) are represented via `FeynAmpDenominator`*)
+(*All propagators (and products thereof) appearing in loop diagrams and integrals are represented via `FeynAmpDenominator`*)
+
+
+(* ::Text:: *)
+(*This container is capable of representing different propagator types, where the familiar quadratic propagators of the form $1/(q^2 - m^2 + i \eta)$ are described using `PropagatorDenominator`*)
 
 
 FeynAmpDenominator[PropagatorDenominator[Momentum[q,D],m]]
@@ -34,6 +38,22 @@ FAD[{q,m}]
 
 
 FAD[{q,m0},{q+p1,m1},{q+p2,m1}]
+
+
+(* ::Text:: *)
+(*There is also a more versatile symbol called `StandardFeynAmpDenominator` or `SFAD` that allows entering eikonal propagators as well*)
+
+
+SFAD[{{p, 0}, m^2}]
+
+
+SFAD[{{p, 0}, {-m^2, -1}}]
+
+
+SFAD[{{0, p . q}, m^2}]
+
+
+SFAD[{{p, p . q}, m^2}]
 
 
 (* ::Text:: *)

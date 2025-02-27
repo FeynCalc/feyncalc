@@ -18,6 +18,15 @@ SP[p, q]
 
 $$s$$
 
+```mathematica
+FV[q, \[Mu]] FV[q, \[Nu]] (FV[p, \[Mu]] FV[p, \[Nu]] - MT[\[Mu], \[Nu]]/SP[p, p])
+% // Contract
+```
+
+$$\overline{q}^{\mu } \overline{q}^{\nu } \left(\overline{p}^{\mu } \overline{p}^{\nu }-\frac{\bar{g}^{\mu \nu }}{\overline{p}^2}\right)$$
+
+$$s^2-\frac{\overline{q}^2}{\overline{p}^2}$$
+
 To clear the previously set values, use
 
 ```mathematica
@@ -29,6 +38,15 @@ SP[p, q]
 ```
 
 $$\overline{p}\cdot \overline{q}$$
+
+```mathematica
+FV[q, \[Mu]] FV[q, \[Nu]] (FV[p, \[Mu]] FV[p, \[Nu]] - MT[\[Mu], \[Nu]]/SP[p, p])
+% // Contract
+```
+
+$$\overline{q}^{\mu } \overline{q}^{\nu } \left(\overline{p}^{\mu } \overline{p}^{\nu }-\frac{\bar{g}^{\mu \nu }}{\overline{p}^2}\right)$$
+
+$$(\overline{p}\cdot \overline{q})^2-\frac{\overline{q}^2}{\overline{p}^2}$$
 
 A good habit is to always apply `FCClearScalarProducts[]` before setting the values, like in
 
