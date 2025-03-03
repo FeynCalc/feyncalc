@@ -106,3 +106,25 @@ SUNSimplify[SUND[a,b,c] SUND[d,b,c]]
 
 
 SUNSimplify[SUNTrace[SUNT[i1,i2,i1,i2]],FCE->True]
+
+
+(* ::Text:: *)
+(*`SUNSimplify` can also deal with chains of color matrices containing explicit fundamental indices (entered as `SUNTF`)*)
+
+
+SUNTF[{a},i,j]SUNTF[{a},k,l]
+
+SUNSimplify[%]
+
+
+SUNTF[{b,a,c},i,j]SUNTF[{d,a,e},k,l]
+
+SUNSimplify[%]
+
+
+SUNTF[{a},i,j]SUNTrace[SUNT[b,a,c]]
+
+SUNSimplify[%]
+
+
+

@@ -260,6 +260,9 @@ SUNSimplify[expr_, OptionsPattern[]] :=
 
 		listColorFactor = Cases2[temp,colorFactor];
 
+		(*
+
+		*)
 		If[ optSUNNToCACF,
 
 			FCPrint[3, "SUNSimplify: Prefactors containing SUNN:", listColorFactor, FCDoControl->sunSiVerbose];
@@ -268,11 +271,24 @@ SUNSimplify[expr_, OptionsPattern[]] :=
 				listColorFactorEval = optFactoring/@(listColorFactor/. colorFactor->Identity/. {CA ->SUNN, CF -> (SUNN^2-1)/(2 SUNN)}),
 				listColorFactorEval = If[LeafCount[#]<=optFactoring[[2]],Factor2[#],#]&/@(listColorFactor/. colorFactor->Identity/. {CA ->SUNN, CF -> (SUNN^2-1)/(2 SUNN)})
 			];
+			(*
+				The following code attempts to reconstruct the CA and CF constants from SUNN-polynomials.
+				This is highly heuristic and doesn't work satisfactory in many cases.
+
+				We use that
+				SUNN^2 - 1 = CA^2 - 1 -> 2 CA CF
+				(((2 - CA^2) CF )/CA ) ->(CF (CA - 4 CF))
+				1/SUNN = 1/CA^2 -> (CA - 2 CF)
+				((1 - CA^2)*(CA - 2*CF)) -> (-2*CF)
+				(CA (CA-2 CF)) -> 1
+
+			*)
 
 			listColorFactorEval = listColorFactorEval /. (1-SUNN^2) -> (-CF 2 CA) /. SUNN -> CA /. (-1 + CA^2)->(2 CA CF);
 			listColorFactorEval = listColorFactorEval /. (((2 - CA^2) CF )/CA ) ->(CF (CA - 4 CF));
 			listColorFactorEval = listColorFactorEval /. (1-CA^2) -> (-2 CA CF) /. (1/CA) -> (CA - 2 CF) /. ((1 - CA^2)*(CA - 2*CF)) -> (-2*CF) /. (CA (CA-2 CF)) -> 1,
-			listColorFactorEval = (listColorFactor/. colorFactor->Identity) /. CA -> SUNN /. CF -> ((SUNN^2-1)/(2 SUNN));
+
+			listColorFactorEval = (listColorFactor/. colorFactor->Identity) /. {CA -> SUNN, CF -> ((SUNN^2-1)/(2 SUNN))};
 		];
 
 		FCPrint[1, "SUNSimplify: Done introducing SU(N) structure constants, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->sunSiVerbose];
@@ -502,6 +518,11 @@ colorSimplifyGeneric[rest_. sunTrace[holdDOTColor[xa___, SUNT[a_SUNIndex], xb___
 
 colorSimplifyGeneric[rest_. sunTrace[holdDOTColor[xa___, SUNT[_SUNIndex], xb___]]^2] :=
 		1/2 colorSimplifyGeneric[rest sunTrace[holdDOTColor[xa,xb,xa,xb]]] - 1/(2 SUNN) colorSimplifyGeneric[rest sunTrace[holdDOTColor[xa,xb]]^2];
+
+(* (... T^a ...) (... T^a ... ) *)
+colorSimplifyGeneric[rest_. SUNTF[{x1___, aa_SUNIndex, x2___},a_,b_] SUNTF[{y1___, aa_SUNIndex, y2___},c_,d_]] :=
+		(1/2 colorSimplifyGeneric[rest SUNTF[Flatten[{x1,y2}],a,d] SUNTF[Flatten[{y1,x2}],c,b]]
+		- 1/(2 SUNN) colorSimplifyGeneric[rest SUNTF[{x1,x2},a,b] SUNTF[{y1,y2},c,d] ]);
 
 
 (* ---------------------------------------------------------------------- *)

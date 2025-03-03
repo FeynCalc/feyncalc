@@ -2717,6 +2717,9 @@ SUNTF[a_,b_,c_] :=
 SUNTF[{_},i_SUNFIndex,i_SUNFIndex]:=
 	0;
 
+SUNTF[{},i_,j_]:=
+	SUNFDelta[i,j]/; FCPatternFreeQ[{i,j}];
+
 SUNIndex[SUNFIndex[___]]:=
 	(Message[SharedObjects::failmsg,"SUNFIndex is not allowed inside SUNIndex"];
 	Abort[]);

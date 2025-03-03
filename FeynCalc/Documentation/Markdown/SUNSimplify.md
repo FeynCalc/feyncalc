@@ -171,3 +171,36 @@ SUNSimplify[SUNTrace[SUNT[i1, i2, i1, i2]], FCE -> True]
 ```
 
 $$-\frac{C_F}{2}$$
+
+`SUNSimplify` can also deal with chains of color matrices containing explicit fundamental indices (entered as `SUNTF`)
+
+```mathematica
+SUNTF[{a}, i, j] SUNTF[{a}, k, l] 
+ 
+SUNSimplify[%]
+```
+
+$$T_{ij}^a T_{kl}^a$$
+
+$$\frac{1}{2} \delta _{il} \delta _{jk}-\frac{1}{2} \left(C_A-2 C_F\right) \delta _{ij} \delta _{kl}$$
+
+```mathematica
+SUNTF[{b, a, c}, i, j] SUNTF[{d, a, e}, k, l] 
+ 
+SUNSimplify[%]
+```
+
+$$\left(T^bT^aT^c\right){}_{ij} \left(T^dT^aT^e\right){}_{kl}$$
+
+$$\frac{1}{2} \left(T^bT^e\right){}_{il} \left(T^dT^c\right){}_{kj}-\frac{1}{2} \left(C_A-2 C_F\right) \left(T^bT^c\right){}_{ij} \left(T^dT^e\right){}_{kl}$$
+
+```mathematica
+SUNTF[{a}, i, j] SUNTrace[SUNT[b, a, c]] 
+ 
+SUNSimplify[%]
+
+```mathematica
+
+$$T_{ij}^a \;\text{tr}\left(T^b.T^a.T^c\right)$$
+
+$$\frac{1}{2} \left(T^cT^b\right){}_{ij}-\frac{1}{4} \left(C_A-2 C_F\right) \delta ^{bc} \delta _{ij}$$
