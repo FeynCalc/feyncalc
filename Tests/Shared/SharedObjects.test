@@ -1044,6 +1044,7 @@ I (CartesianMomentum[p1, D - 1] + 2 CartesianMomentum[q, D - 1])]",
 {"fcstSharedObjectsBehavior-ID217", "SUNTF[a,b,c]", "SUNTF[{a},b,c]"},
 {"fcstSharedObjectsBehavior-ID217.1", "SUNTF[{SUNIndex[a1], SUNIndex[a2]}, SUNFIndex[b], SUNFIndex[c]] /.
 SUNTF[a_List, _, _] :> SUNT @@ a", "SUNT[SUNIndex[a1], SUNIndex[a2]]"},
+{"fcstSharedObjectsBehavior-ID217.2", "SUNTF[{},b,c]", "SUNFDelta[b,c]"},
 {"fcstSharedObjectsBehavior-ID218", "FCI[SUNTF[a,x,x]]", "0"},
 {"fcstSharedObjectsBehavior-ID219", "Conjugate[Zeta2]", "Zeta2"},
 {"fcstSharedObjectsBehavior-ID220", "Conjugate[Zeta4]", "Zeta4"},

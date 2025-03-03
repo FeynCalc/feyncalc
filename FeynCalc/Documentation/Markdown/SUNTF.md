@@ -53,3 +53,11 @@ SUNTF[{a, b}, i, j] // FCI // StandardForm
 
 (*SUNTF[{SUNIndex[a], SUNIndex[b]}, SUNFIndex[i], SUNFIndex[j]]*)
 ```
+
+If there are no adjoint indices, the symbol automatically evaluates to a Kronecker delta
+
+```mathematica
+SUNTF[{}, i, j]
+```
+
+$$\delta _{ij}$$
