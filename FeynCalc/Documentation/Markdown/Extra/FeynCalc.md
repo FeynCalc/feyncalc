@@ -294,6 +294,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [CalcColorFactor](../CalcColorFactor.md) - calculates the color factor
 - [SUNDeltaContract](../SUNDeltaContract.md) - contracts Kronecker deltas with adjoint color indices
 - [SUNFDeltaContract](../SUNFDeltaContract.md) - contracts Kronecker deltas with fundamental color indices
+- [SUNFierz](../SUNFierz.md) - applies color Fierz identity
 - [SUNSimplify](../SUNSimplify.md) - simplifies expressions that contain $SU(N)$ matrices
 - [SUNTrace](../SUNTrace.md) - computes traces over $SU(N)$ matrices
 

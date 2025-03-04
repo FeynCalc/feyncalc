@@ -1,0 +1,29 @@
+
+
+(* :Title: SUNFierz.test                                                 *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for SUNFierz.              *)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`SUN`fcstSUNFierz = {{"fcstSUNFierz-ID1",
+"SUNFierz[1,{i,j,k,l},FCVerbose->0,SUNIndexNames->{a}]",
+"1"}, {"fcstSUNFierz-ID2",
+"SUNFierz[SUNFDelta[i,j],{i,j,k,l},SUNIndexNames->{a}]",
+"SUNFDelta[SUNFIndex[i], SUNFIndex[j]]"}, {"fcstSUNFierz-ID3",
+"SUNFierz[SUNFDelta[i,j]SUNFDelta[k,l],{i,j,k,l},SUNIndexNames->{a}]\
+", "(SUNFDelta[SUNFIndex[i], SUNFIndex[l]]*SUNFDelta[SUNFIndex[j], \
+SUNFIndex[k]])/SUNN + 2*SUNTF[{SUNIndex[a]}, SUNFIndex[i], \
+SUNFIndex[l]]*SUNTF[{SUNIndex[a]}, SUNFIndex[k], SUNFIndex[j]]"}, \
+{"fcstSUNFierz-ID4",
+"SUNFierz[SUNFDelta[i,k]SUNFDelta[k,l],{i,j,k,l},SUNIndexNames->{a}]\
+", "SUNFDelta[SUNFIndex[i], SUNFIndex[k]]*SUNFDelta[SUNFIndex[k], \
+SUNFIndex[l]]"}};
+
