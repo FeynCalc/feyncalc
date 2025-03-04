@@ -452,7 +452,7 @@ fctopology4, {SFAD[{{l, 0}, {mq^2, 1}, 1}],
 
 
 {"fcstFCLoopFindIntegralMappings-ID14",
-"$ParallelizeFeynCalc = True;
+"LaunchKernels[2]; $ParallelizeFeynCalc = True;
 tmp = FCLoopFindIntegralMappings[{GLI[
 	topology10, {1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0}],
 	GLI[topology10, {1, 1, 1, 1, 1, 0, 0, 2, 0, 0, 0,

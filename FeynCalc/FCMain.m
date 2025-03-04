@@ -374,7 +374,7 @@ dimensions. Following schemes are supported:
 - \"None\" - This is the default value. The anticommutator relation is not
 applied to $D-1$ dimensional Pauli matrices.
 
-- \"Naive\" - Naively apply the commutator relation in $D-1$-dimensions, i.e. 
+- \"Naive\" - Naively apply the commutator relation in $D-1$-dimensions, i.e.
 $\{\\sigma^i, \\sigma^j \} = 2 i \\varepsilon^{ijk} \\sigma^k$. The Levi-Civita
 tensor lives in $D-1$-dimensions, so that a contraction of two such tensors
 which have all indices in common yields $(D-3) (D-2) (D-1)$.";
@@ -440,6 +440,16 @@ $OPEWard							= False;
 $ParallelizeFeynCalc/:
 	Set[$ParallelizeFeynCalc, True]:=
 		(
+		(*
+			If there are no parallel kernels available, FeynCalc will not be loaded on any of them and all
+			instances of ParallelMap in the code will run in the single kernel mode without issuing any
+			complaints. This is because the sequential evaluation is chosen by default when the required
+			function is not available on parallel kernels.
+		*)
+		If[	Kernels[]==={},
+			Message[FeynCalc::failmsg,"No parallel kernels found. Please evaluate LaunchKernels[] first."];
+			Abort[]
+		];
 		With[{str = FileNameJoin[{$FeynCalcDirectory, "fc.m"}]},
 			ParallelEvaluate[Get[str],Kernels[]]
 		];
