@@ -39,8 +39,6 @@ End[]
 Begin["`FCLoopFindTopologyMappings`Private`"]
 
 fclftpVerbose::usage = "";
-optMomentum::usage = "";
-optInitialSubstitutions::usage = "";
 optFCVerboseFCLoopFindMomentumShifts::usage = "";
 
 Options[FCLoopFindTopologyMappings] = {
@@ -60,7 +58,7 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 	Block[{	topos, pakFormInts, res, time, x, pakMappings, optPreferredTopologies,
 			preferredIDs, finalMappings, list, topoIDs, mappedTopoIDs, unmappedTopoIDs,
 			relevantTopoIDs, optFinalSubstitutions, allTopos, relevantTopos, optSubtopologyMarker,
-			bigTopos, subTopos, tmp, rulesSubtopoToTopo},
+			bigTopos, subTopos, tmp, rulesSubtopoToTopo, optInitialSubstitutions, optMomentum},
 
 		If[	OptionValue[FCVerbose] === False,
 			fclftpVerbose = $VeryVerbose,
@@ -119,16 +117,32 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 		FCPrint[1, "FCLoopFindTopologyMappings: FCLoopFindIntegralMappings done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclftpVerbose];
 		FCPrint[3, "FCLoopFindTopologyMappings: After FCLoopFindIntegralMappings: ", pakMappings, FCDoControl->fclftpVerbose];
 
-		time=AbsoluteTime[];
-		FCPrint[1, "FCLoopFindTopologyMappings: Calling findMappings.", FCDoControl -> fclftpVerbose];
 
-		res = findMappings[#,preferredIDs]&/@ pakMappings;
-		FCPrint[1, "FCLoopFindTopologyMappings: findMappings done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclftpVerbose];
+		time=AbsoluteTime[];
+		If[	$ParallelizeFeynCalc,
+			FCPrint[1,"FCLoopFindTopologyMappings: Calling findMappings in parallel.", FCDoControl->fclftpVerbose];
+			With[{xxx = optInitialSubstitutions, yyy = optMomentum, zzz = preferredIDs },
+				ParallelEvaluate[FCContext`FCLoopFindTopologyMappings`initialSubsts = xxx;
+								FCContext`FCLoopFindTopologyMappings`optMom = yyy;
+								FCContext`FCLoopFindTopologyMappings`prefIDs = zzz;,
+								DistributedContexts -> None]];
+
+			res = ParallelMap[findMappings[#,FCContext`FCLoopFindTopologyMappings`prefIDs ,FCContext`FCLoopFindTopologyMappings`initialSubsts,
+				FCContext`FCLoopFindTopologyMappings`optMom]&, pakMappings,
+				DistributedContexts -> None, Method -> "CoarsestGrained"],
+
+			FCPrint[1,"FCLoopFindTopologyMappings: Calling findMappings.", FCDoControl->fclftpVerbose];
+			res = findMappings[#,preferredIDs,optInitialSubstitutions,optMomentum]&/@ pakMappings;
+
+		];
 
 		res = Flatten[res /. {a_FCTopology, rest___} :> list[a, rest]] /. list -> List;
 
+		FCPrint[1, "FCLoopFindTopologyMappings: findMappings done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclftpVerbose];
+
 		time=AbsoluteTime[];
 		FCPrint[1, "FCLoopFindTopologyMappings: Removing irrelevant topologies.", FCDoControl -> fclftpVerbose];
+
 		res = Select[res, MemberQ[topoIDs, First[First[#]]] &];
 
 
@@ -199,9 +213,8 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 		res
 	];
 
-
-findMappings[input_List, preferred_List, targetEl_:1] :=
-	Block[{target, source, shifts, gliRules, sourceShifted, time,aux, sourceFirst,noShiftFound, res},
+findMappings[input_List, preferred_List, optInitialSubstitutions_, optMomentum_, targetEl_:1] :=
+	Block[{target, source, shifts, gliRules, sourceShifted, time,aux, sourceFirst, noShiftFound, res},
 
 	If[	preferred === {},
 		target = input[[targetEl]],
@@ -232,13 +245,19 @@ findMappings[input_List, preferred_List, targetEl_:1] :=
 
 	shifts = Quiet[FCLoopFindMomentumShifts[Last/@source, Last[target], {Momentum->optMomentum,Abort->False, InitialSubstitutions->
 		optInitialSubstitutions}, FCVerbose->optFCVerboseFCLoopFindMomentumShifts],{FCLoopFindMomentumShifts::shifts,Solve::svars}];
-	(*TODO Redo if shitfs were found only between the preferred topologies*)
+
+	If[	!FreeQ2[shifts,{FCLoopFindMomentumShifts,FeynCalc`FCLoopFindMomentumShifts`Private`findShifts}],
+		Message[FCLoopFindTopologyMappings::failmsg, "Something went wrong when applying FCLoopFindMomentumShifts."];
+		Abort[]
+	];
+
+	(*TODO Redo if shifts were found only between the preferred topologies*)
 
 	If[	MatchQ[shifts,{{}..}],
 		(*TODO Warning that some shifts were not found!*)
 		If[	Length[input]>2 && targetEl<Length[input],
 			FCPrint[3, "FCLoopFindTopologyMappings: findMappings: Trying to map to another topology.", FCDoControl -> fclftpVerbose];
-			Return[findMappings[input, preferred,targetEl+1]],
+			Return[findMappings[input, preferred,optInitialSubstitutions,optMomentum,targetEl+1]],
 			Return[{}]
 		]
 	];
@@ -249,10 +268,12 @@ findMappings[input_List, preferred_List, targetEl_:1] :=
 
 	FCPrint[3, "FCLoopFindTopologyMappings: findMappings: Shifts: ", shifts, FCDoControl->fclftpVerbose];
 
+
 	aux = MapThread[If[	FreeQ[#2,noShiftFound],
 									{First[#1], #2, FCReplaceMomenta[First[#1], #2]},
 									Unevaluated[Sequence[]]
 									]&, {source, shifts}];
+
 	If[	aux==={},
 		Return[{}],
 		{sourceFirst,shifts,sourceShifted} = Transpose[aux]
@@ -267,6 +288,11 @@ findMappings[input_List, preferred_List, targetEl_:1] :=
 
 	gliRules = FCLoopCreateRuleGLIToGLI[First[target], #, FeynAmpDenominatorExplicit->True]&/@sourceShifted;
 
+	If[	!FreeQ[gliRules,FCLoopCreateRuleGLIToGLI],
+		Message[FCLoopFindTopologyMappings::failmsg, "Something went wrong when applying FCLoopCreateRuleGLIToGLI."];
+		Abort[]
+	];
+
 	res = Transpose[{sourceFirst,shifts,gliRules}];
 
 	FCPrint[3, "FCLoopFindTopologyMappings: findMappings: Leaving with: ", res, FCDoControl->fclftpVerbose];
@@ -279,9 +305,6 @@ findMappings[input_List, preferred_List, targetEl_:1] :=
 
 findMappings[{{_FCTopology, _FCTopology}}, __] :=
 	{}
-
-
-
 
 
 FCPrint[1,"FCLoopFindTopologyMappings.m loaded."];

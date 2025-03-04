@@ -23,4 +23,5 @@ $ParallelizeFeynCalc = True
  - `FCFeynmanPrepare`
  - `FCLoopToPakForm`
  - `FCLoopFindIntegralMappings`
+ - `FCLoopFindTopologyMappings`
 
