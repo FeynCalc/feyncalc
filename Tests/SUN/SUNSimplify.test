@@ -87,7 +87,7 @@ Explicit -> True]",
 {"fcstSUNSimplify-ID28","SUNSimplify[SUND[a, b, c]^2]",
 	"-2 (4 - CA^2) CF"},
 {"fcstSUNSimplify-ID27","SUNSimplify[SUNF[a, b, c]^2, SUNNToCACF -> False]",
-	"SUNN (-1 + SUNN^2)"},
+	"-SUNN (1 - SUNN^2)"},
 {"fcstSUNSimplify-ID28","SUNSimplify[SUND[a, b, c]^2, SUNNToCACF -> False, Factoring->False]",
 	"-(((4 - SUNN^2) (-1 + SUNN^2))/SUNN)"},
 {"fcstSUNSimplify-ID29","SUNSimplify[SUNF[a, b, c] SUNT[b]]",
@@ -172,27 +172,19 @@ j]/2"},
 {"fcstSUNSimplify-ID57",
 "SUNSimplify[SUND[a,b,i]SUND[i,c,j]SUND[j,d,k]SUND[k,e,a],\
 SUNNToCACF->False,SUNIndexNames->{l},FCE->True]",
-"((-2 + SUNN)*(2 + SUNN)*SD[b, e]*SD[c, d])/SUNN^2 + ((-2 + \
-SUNN)*(2 + SUNN)*SD[b, c]*SD[d, e])/SUNN^2 + ((-4 + SUNN)*(4 + \
-SUNN)*SUND[b, e, l]*SUND[c, d, l])/(4*SUNN) - (SUNN*SUND[b, d, \
-l]*SUND[c, e, l])/4 + ((-4 + SUNN)*(4 + SUNN)*SUND[b, c, l]*SUND[d, \
-e, l])/(4*SUNN)"},
+"-(((4 - SUNN^2)*SD[b, e]*SD[c, d])/SUNN^2) - ((4 - SUNN^2)*SD[b, c]*SD[d, e])/SUNN^2 -
+((16 - SUNN^2)*SUND[b, e, l]*SUND[c, d, l])/(4*SUNN) - (SUNN*SUND[b, d, l]*SUND[c, e, l])/4 -
+((16 - SUNN^2)*SUND[b, c, l]*SUND[d, e, l])/(4*SUNN)"},
 {"fcstSUNSimplify-ID58",
 "SUNSimplify[SUND[b, j1, j2]*SUND[c, j2, j4]*SUND[d, j1, \
 j3]*SUND[e, j3, j4],SUNNToCACF->False,SUNIndexNames->{l},FCE->True]",
-"((-2 + SUNN)*(2 + SUNN)*SD[b, d]*SD[c, e])/SUNN^2 + ((-2 + \
-SUNN)*(2 + SUNN)*SD[b, c]*SD[d, e])/SUNN^2 - (SUNN*SUND[b, e, \
-l]*SUND[c, d, l])/4 + ((-4 + SUNN)*(4 + SUNN)*SUND[b, d, l]*SUND[c, \
-e, l])/(4*SUNN) + ((-4 + SUNN)*(4 + SUNN)*SUND[b, c, l]*SUND[d, e, \
-l])/(4*SUNN)"},
+"-(((4 - SUNN^2)*SD[b, d]*SD[c, e])/SUNN^2) - ((4 - SUNN^2)*SD[b, c]*SD[d, e])/SUNN^2 - (SUNN*SUND[b, e, l]*SUND[c, d,
+l])/4 - ((16 - SUNN^2)*SUND[b, d, l]*SUND[c, e, l])/(4*SUNN) - ((16 - SUNN^2)*SUND[b, c, l]*SUND[d, e, l])/(4*SUNN)"},
 {"fcstSUNSimplify-ID59",
 "SUNSimplify[SUND[b,j1,j2]*SUND[c,j2,j4]*SUND[d,j3,j4]*SUND[e,j1,\
 j3],SUNNToCACF->False,SUNIndexNames->{l},FCE->True]",
-"((-2 + SUNN)*(2 + SUNN)*SD[b, e]*SD[c, d])/SUNN^2 + ((-2 + \
-SUNN)*(2 + SUNN)*SD[b, c]*SD[d, e])/SUNN^2 + ((-4 + SUNN)*(4 + \
-SUNN)*SUND[b, e, l]*SUND[c, d, l])/(4*SUNN) - (SUNN*SUND[b, d, \
-l]*SUND[c, e, l])/4 + ((-4 + SUNN)*(4 + SUNN)*SUND[b, c, l]*SUND[d, \
-e, l])/(4*SUNN)"},
+"-(((4 - SUNN^2)*SD[b, e]*SD[c, d])/SUNN^2) - ((4 - SUNN^2)*SD[b, c]*SD[d, e])/SUNN^2 - ((16 - SUNN^2)*SUND[b, e,
+l]*SUND[c, d, l])/(4*SUNN) - (SUNN*SUND[b, d, l]*SUND[c, e, l])/4 - ((16 - SUNN^2)*SUND[b, c, l]*SUND[d, e, l])/(4*SUNN)"},
 {"fcstSUNSimplify-ID60",
 "SUNSimplify[SUNF[i, j, k] SUNF[i, l, m] SUNF[j, m, n] SUNF[k, l, n]]",
 "-(CA^3*CF)"
