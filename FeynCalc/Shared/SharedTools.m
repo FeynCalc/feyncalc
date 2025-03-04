@@ -1052,7 +1052,7 @@ SelectFree[0,__] :=
 	0;
 
 SelectFree[a_, b__] :=
-	Block[{dum1,dum2, select},
+	Block[{dum1,dum2, select, $IterationLimit=Infinity},
 		select[x_, y_ /; Head[y] =!= List] :=
 			Select[x, FreeQ[#, y]&];
 		select[x_, y_List ] :=
@@ -1073,7 +1073,7 @@ SelectFree2[x_List,args__] :=
 	SelectFree[x,args];
 
 SelectFree2[x_,args__] :=
-	Block[{tmp, res, null1, null2},
+	Block[{tmp, res, null1, null2, $IterationLimit=Infinity},
 		tmp = Expand2[x,Flatten[{args}]];
 
 		If[	Head[tmp]===Plus,
@@ -1087,7 +1087,7 @@ SelectNotFree[0,__] :=
 	0;
 
 SelectNotFree[a_, b__] :=
-	Block[{dum1,dum2, select},
+	Block[{dum1,dum2, select, $IterationLimit=Infinity},
 		select[x_, y_ /; Head[y] =!= List]  :=
 			Select[x, !FreeQ[#, y]&];
 		select[x_, y_List ]  :=
@@ -1107,7 +1107,7 @@ SelectNotFree2[x_List,args__] :=
 	SelectNotFree[x,args];
 
 SelectNotFree2[x_,args__] :=
-	Block[{tmp, res, null1, null2},
+	Block[{tmp, res, null1, null2, $IterationLimit=Infinity},
 		tmp = Expand2[x,Flatten[{args}]];
 
 		If[	Head[tmp]===Plus,
