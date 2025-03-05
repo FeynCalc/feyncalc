@@ -70,7 +70,7 @@ FCLoopFindSubtopologies[topos:{__FCTopology},  opts:OptionsPattern[]] :=
 					(*Method->"CoarsestGrained"*)
 					(*Split the input into smaller chunks. We take the total number of expressions and divide it by the number of the kernels. This
 					number is then broken into 10 chunks*)
-					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[topos]/Length[ParallelKernels[]]]/10]
+					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[topos]/$KernelCount]/10]
 					],
 				FCPrint[1,"FCLoopFindSubtopologies: Applying FCLoopFindSubtopologies to a list.", FCDoControl->fclfsVerbose];
 				res = (FCLoopFindSubtopologies[#, FilterRules[{opts}, Except[FCParallelize|FCVerbose]]]& /@ topos)

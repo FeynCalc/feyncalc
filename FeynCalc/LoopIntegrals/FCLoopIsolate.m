@@ -103,7 +103,7 @@ FCLoopIsolate[x_List, lmoms0_List /; FreeQ[lmoms0, OptionQ],  opts:OptionsPatter
 					(*Method->"CoarsestGrained"*)
 					(*Split the input into smaller chunks. We take the total number of expressions and divide it by the number of the kernels. This
 					number is then broken into 10 chunks*)
-					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[x]/Length[ParallelKernels[]]]/10]
+					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[x]/$KernelCount]/10]
 					],
 				FCPrint[1,"FCLoopIsolate: Applying FCLoopIsolate to a list.", FCDoControl->fcliVerbose];
 				res = (FCLoopIsolate[#, lmoms0, FilterRules[{opts}, Except[FCParallelize|FCVerbose]]]& /@ x)

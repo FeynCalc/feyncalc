@@ -223,7 +223,7 @@ FCLoopTensorReduce[expr_, toposRaw_List, OptionsPattern[]] :=
 					(*Method->"CoarsestGrained"*)
 					(*Split the input into smaller chunks. We take the total number of expressions and divide it by the number of the kernels. This
 					number is then broken into 10 chunks*)
-					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[tdecList]/Length[ParallelKernels[]]]/10]
+					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[tdecList]/$KernelCount]/10]
 					],
 				FCPrint[1,"FCLoopTensorReduce: Applying Tdec to a list." , FCDoControl->fctrVerbose];
 				tdecListEval = tdecList /. loopNumerator -> loopNumeratorEval;

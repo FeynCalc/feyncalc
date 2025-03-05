@@ -87,13 +87,13 @@ Collect2[x_List, y__,  opts:OptionsPattern[]] :=
 		If[	$ParallelizeFeynCalc && OptionValue[FCParallelize],
 				FCPrint[1,"Collect2: Applying Collect2 to a list in parallel." , FCDoControl->cl2Verbose];
 				If[	optIsolateNames=!=False,
-					If[TrueQ[!(Head[optIsolateNames] === List && Length[optIsolateNames]===Length[ParallelKernels[]])],
+					If[TrueQ[!(Head[optIsolateNames] === List && Length[optIsolateNames]===$KernelCount)],
 					Message[Collect2::failmsg,"In the parallel mode, the option IsolateNames should be set to a list with the length being equal to the number of parallel kernels."];
 					Abort[]
 					];
 
 					Table[With[{oin = optIsolateNames, ii = i},
-					ParallelEvaluate[SetOptions[Collect2, IsolateNames -> oin[[ii]]];, DistributedContexts -> None]],{i,1,Length[ParallelKernels[]]}];
+					ParallelEvaluate[SetOptions[Collect2, IsolateNames -> oin[[ii]]];, DistributedContexts -> None]],{i,1,$KernelCount}];
 
 
 				];
@@ -103,10 +103,10 @@ Collect2[x_List, y__,  opts:OptionsPattern[]] :=
 				];
 
 				res = ParallelMap[(Collect2[#,FCParallelContext`Collect`pArgs,FCParallelContext`Collect`pOpts, FCParallelize->False])&,x, DistributedContexts->None,
-					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[x]/Length[ParallelKernels[]]]/10]];
+					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[x]/$KernelCount]/10]];
 
 				If[	optIsolateNames=!=False,
-					Table[ParallelEvaluate[SetOptions[Collect2, IsolateNames -> False];, DistributedContexts -> None],{i,1,Length[ParallelKernels[]]}];
+					Table[ParallelEvaluate[SetOptions[Collect2, IsolateNames -> False];, DistributedContexts -> None],{i,1,$KernelCount}];
 				],
 				FCPrint[1,"FCFeynmanPrepare: Applying Collect2 to a list.", FCDoControl->cl2Verbose];
 				res = (Collect2[#, y, FilterRules[{opts}, Except[FCParallelize|FCVerbose]]]& /@ x)

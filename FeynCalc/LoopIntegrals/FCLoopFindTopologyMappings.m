@@ -133,7 +133,7 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 			res = ParallelMap[findMappings[#,FCContext`FCLoopFindTopologyMappings`prefIDs ,FCContext`FCLoopFindTopologyMappings`initialSubsts,
 				FCContext`FCLoopFindTopologyMappings`optMom]&, pakMappings,
 				DistributedContexts -> None,
-				Method->"ItemsPerEvaluation" -> Ceiling[N[Length[pakMappings]/Length[ParallelKernels[]]]/10]
+				Method->"ItemsPerEvaluation" -> Ceiling[N[Length[pakMappings]/$KernelCount]/10]
 				(*Method -> "CoarsestGrained"*)],
 
 			FCPrint[1,"FCLoopFindTopologyMappings: Calling findMappings.", FCDoControl->fclftpVerbose];

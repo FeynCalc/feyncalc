@@ -446,7 +446,7 @@ $ParallelizeFeynCalc/:
 			complaints. This is because the sequential evaluation is chosen by default when the required
 			function is not available on parallel kernels.
 		*)
-		If[	Kernels[]==={},
+		If[	$KernelCount===0,
 			Message[FeynCalc::failmsg,"No parallel kernels found. Please evaluate LaunchKernels[] first."];
 			Abort[]
 		];

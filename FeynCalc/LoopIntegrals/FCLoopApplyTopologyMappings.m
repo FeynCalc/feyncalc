@@ -198,7 +198,7 @@ FCLoopApplyTopologyMappings[expr_, {mappings_List, toposRaw_List}, OptionsPatter
 
 				repRule = ParallelMap[Rule[First[#],Expand2[Last[#]/. FCParallelContext`FCLoopApplyTopologyMappings`optHead->Times,GLI]/.GLI->GLIMultiply/.GLIMultiply->GLI]&,repRule,
 					DistributedContexts -> None,
-					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[repRule]/Length[ParallelKernels[]]]/10]
+					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[repRule]/$KernelCount]/10]
 					],
 
 				repRule = Map[Rule[First[#],Expand2[Last[#]/. optHead->Times,GLI]/.GLI->GLIMultiply/.GLIMultiply->GLI]&,repRule];
