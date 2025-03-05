@@ -84,6 +84,7 @@ Options[FCFeynmanPrepare] = {
 	ExtraPropagators		-> {},
 	FCE						-> False,
 	FCI						-> False,
+	FCParallelize			-> False,
 	FCLoopGetEtaSigns		-> True,
 	FCReplaceMomenta		-> {},
 	FCVerbose				-> False,
@@ -115,10 +116,10 @@ FCFeynmanPrepare[gli_, topo_FCTopology, opts:OptionsPattern[]] :=
 
 		FCPrint[1,"FCFeynmanPrepare: Entry point: single GLI and single topology ", FCDoControl->fcszVerbose];
 
-		optLoopMomenta = OptionValue[LoopMomenta];
-		lmomsHead = Head[optLoopMomenta[1,1]];
+		optLoopMomenta 		= OptionValue[LoopMomenta];
+		lmomsHead 			= Head[optLoopMomenta[1,1]];
 
-		int = FCLoopFromGLI[gli, topo, FCI->OptionValue[FCI], LoopMomenta->optLoopMomenta, FeynAmpDenominatorExplicit->False];
+		int = FCLoopFromGLI[gli, topo, FCI->OptionValue[FCI], LoopMomenta->optLoopMomenta, FeynAmpDenominatorExplicit->False, FCParallelize->OptionValue[FCParallelize]];
 
 		optFinalSubstitutions = Join[OptionValue[FinalSubstitutions],topo[[5]]];
 
@@ -139,7 +140,7 @@ FCFeynmanPrepare[gli_, topo_FCTopology, opts:OptionsPattern[]] :=
 
 FCFeynmanPrepare[glis_, topos:{__FCTopology}, opts:OptionsPattern[]] :=
 	Block[{	ints, finalSubstitutions, relTopos, lmomsList, optLoopMomenta,
-			lmomsHead, time, res, time1},
+			lmomsHead, time, res, time1, optFCParallelize},
 
 		If[	OptionValue[FCVerbose]===False,
 			fcszVerbose=$VeryVerbose,
@@ -150,12 +151,14 @@ FCFeynmanPrepare[glis_, topos:{__FCTopology}, opts:OptionsPattern[]] :=
 
 		FCPrint[1,"FCFeynmanPrepare: Entry point: multiple GLIs and multiple topologies.", FCDoControl->fcszVerbose];
 
-		optLoopMomenta = OptionValue[LoopMomenta];
+		optLoopMomenta		= OptionValue[LoopMomenta];
+		optFCParallelize	= OptionValue[FCParallelize];
+
 		lmomsHead = Head[optLoopMomenta[1,1]];
 
 		time=AbsoluteTime[];
 		FCPrint[1, "FCFeynmanPrepare: Applying FCLoopFromGLI.", FCDoControl -> fcszVerbose];
-		ints = FCLoopFromGLI[glis, topos, FCI->OptionValue[FCI], LoopMomenta->optLoopMomenta, FeynAmpDenominatorExplicit->False];
+		ints = FCLoopFromGLI[glis, topos, FCI->OptionValue[FCI], LoopMomenta->optLoopMomenta, FeynAmpDenominatorExplicit->False, FCParallelize->optFCParallelize];
 		FCPrint[1, "FCFeynmanPrepare: Done applying FCLoopFromGLI, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose];
 
 
@@ -195,7 +198,7 @@ FCFeynmanPrepare[glis_, topos:{__FCTopology}, opts:OptionsPattern[]] :=
 
 		time=AbsoluteTime[];
 
-		If[	$ParallelizeFeynCalc,
+		If[	$ParallelizeFeynCalc && optFCParallelize,
 			FCPrint[1,"FCFeynmanPrepare: Applying FCFeynmanPrepare in parallel.", FCDoControl->fcszVerbose];
 			With[{xxx = lmomsList}, ParallelEvaluate[FCContext`FCFeynmanPrepare`lmomsList = xxx;, DistributedContexts -> None]];
 			res = ParallelMap[FCFeynmanPrepare[#[[1]], FCContext`FCFeynmanPrepare`lmomsList, Join[{FCI->True,FinalSubstitutions->#[[2]]},
@@ -214,8 +217,8 @@ FCFeynmanPrepare[glis_, topos:{__FCTopology}, opts:OptionsPattern[]] :=
 	]/; MatchQ[glis, {__GLI}] || MatchQ[glis,{(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..}];
 
 FCFeynmanPrepare[toposRaw: {__FCTopology}, opts:OptionsPattern[]]:=
-	If[	$ParallelizeFeynCalc,
-		ParallelMap[FCFeynmanPrepare[#, opts]&,toposRaw, DistributedContexts->None, Method -> "CoarsestGrained"],
+	If[	$ParallelizeFeynCalc && OptionValue[FCParallelize],
+		ParallelMap[FCFeynmanPrepare[#, FilterRules[{opts}, Except[FCParallelize]]]&,toposRaw, DistributedContexts->None, Method -> "CoarsestGrained"],
 		Map[FCFeynmanPrepare[#, opts]&,toposRaw]
 	];
 

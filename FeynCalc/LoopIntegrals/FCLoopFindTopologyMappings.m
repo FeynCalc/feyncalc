@@ -44,6 +44,7 @@ optFCVerboseFCLoopFindMomentumShifts::usage = "";
 Options[FCLoopFindTopologyMappings] = {
 	FCE 								-> False,
 	FCI 								-> False,
+	FCParallelize						-> False,
 	FCVerbose 							-> False,
 	"FCVerboseFCLoopFindMomentumShifts"	-> False,
 	FinalSubstitutions					-> {},
@@ -58,7 +59,8 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 	Block[{	topos, pakFormInts, res, time, x, pakMappings, optPreferredTopologies,
 			preferredIDs, finalMappings, list, topoIDs, mappedTopoIDs, unmappedTopoIDs,
 			relevantTopoIDs, optFinalSubstitutions, allTopos, relevantTopos, optSubtopologyMarker,
-			bigTopos, subTopos, tmp, rulesSubtopoToTopo, optInitialSubstitutions, optMomentum},
+			bigTopos, subTopos, tmp, rulesSubtopoToTopo, optInitialSubstitutions, optMomentum,
+			optFCParallelize},
 
 		If[	OptionValue[FCVerbose] === False,
 			fclftpVerbose = $VeryVerbose,
@@ -71,6 +73,7 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 		optSubtopologyMarker 					= OptionValue[SubtopologyMarker];
 		optInitialSubstitutions					= OptionValue[InitialSubstitutions];
 		optMomentum								= OptionValue[Momentum];
+		optFCParallelize						= OptionValue[FCParallelize];
 		optFCVerboseFCLoopFindMomentumShifts	= OptionValue["FCVerboseFCLoopFindMomentumShifts"];
 
 		FCPrint[1, "FCLoopFindTopologyMappings: Entering.", FCDoControl -> fclftpVerbose];
@@ -113,13 +116,13 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1, "FCLoopFindTopologyMappings: Calling FCLoopFindIntegralMappings.", FCDoControl -> fclftpVerbose];
 		pakMappings = FCLoopFindIntegralMappings[allTopos, FCI->True, FinalSubstitutions->optFinalSubstitutions,
-			List->True, LightPak -> OptionValue[LightPak]];
+			List->True, LightPak -> OptionValue[LightPak], FCParallelize->optFCParallelize];
 		FCPrint[1, "FCLoopFindTopologyMappings: FCLoopFindIntegralMappings done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclftpVerbose];
 		FCPrint[3, "FCLoopFindTopologyMappings: After FCLoopFindIntegralMappings: ", pakMappings, FCDoControl->fclftpVerbose];
 
 
 		time=AbsoluteTime[];
-		If[	$ParallelizeFeynCalc,
+		If[	$ParallelizeFeynCalc && optFCParallelize,
 			FCPrint[1,"FCLoopFindTopologyMappings: Calling findMappings in parallel.", FCDoControl->fclftpVerbose];
 			With[{xxx = optInitialSubstitutions, yyy = optMomentum, zzz = preferredIDs },
 				ParallelEvaluate[FCContext`FCLoopFindTopologyMappings`initialSubsts = xxx;
@@ -129,7 +132,9 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 
 			res = ParallelMap[findMappings[#,FCContext`FCLoopFindTopologyMappings`prefIDs ,FCContext`FCLoopFindTopologyMappings`initialSubsts,
 				FCContext`FCLoopFindTopologyMappings`optMom]&, pakMappings,
-				DistributedContexts -> None, Method -> "CoarsestGrained"],
+				DistributedContexts -> None,
+				Method->"ItemsPerEvaluation" -> Ceiling[N[Length[pakMappings]/Length[ParallelKernels[]]]/10]
+				(*Method -> "CoarsestGrained"*)],
 
 			FCPrint[1,"FCLoopFindTopologyMappings: Calling findMappings.", FCDoControl->fclftpVerbose];
 			res = findMappings[#,preferredIDs,optInitialSubstitutions,optMomentum]&/@ pakMappings;
@@ -243,6 +248,7 @@ findMappings[input_List, preferred_List, optInitialSubstitutions_, optMomentum_,
 	FCPrint[3, "FCLoopFindTopologyMappings: findMappings: Calling FCLoopFindMomentumShifts.", FCDoControl -> fclftpVerbose];
 	(*Some shifts cannot be found unless shifts of external momenta are explicitly allowed!*)
 
+	(*TODO Output about failed topology mappings when running parallel kernels. *)
 	shifts = Quiet[FCLoopFindMomentumShifts[Last/@source, Last[target], {Momentum->optMomentum,Abort->False, InitialSubstitutions->
 		optInitialSubstitutions}, FCVerbose->optFCVerboseFCLoopFindMomentumShifts],{FCLoopFindMomentumShifts::shifts,Solve::svars}];
 

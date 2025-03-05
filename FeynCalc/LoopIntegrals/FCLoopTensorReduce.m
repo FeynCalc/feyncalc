@@ -46,7 +46,6 @@ End[]
 
 Begin["`FCLoopTensorReduce`Private`"]
 
-fctrVerbose::usage = "";
 loopMomsList::usage = "";
 extMomsList::usage = "";
 loopNumerator::usage = "";
@@ -58,6 +57,7 @@ Options[FCLoopTensorReduce] = {
 	DiracSimplify				-> True,
 	FCE 						-> False,
 	FCI 						-> False,
+	FCParallelize				-> True,
 	FCVerbose 					-> False,
 	Factoring 					-> {Factor2, 5000},
 	Head						-> FCGV["GLIProduct"],
@@ -68,13 +68,16 @@ Options[FCLoopTensorReduce] = {
 FCLoopTensorReduce[{expr_, toposRaw:{__FCTopology}}, opts: OptionsPattern[]] :=
 	FCLoopTensorReduce[expr, toposRaw,opts];
 
+(*TODO More parallelization*)
+
 FCLoopTensorReduce[expr_, toposRaw_List, OptionsPattern[]] :=
 	Block[{	ex, res, time, uniqueProductsList, tmp,	topos, optHead,
 			loopMoms, extMoms, aux, tidIsolate,	gliList, optFactoring,
 			optTimeConstrained,	loopNumeratorsList,loopNumeratorsListEval,
 			numerators, canoNums, tdecList, tdecListEval, auxRule,
 			uniqueProductsListEval, optUncontract, extraMomentaToUncontract,
-			allMoms, ltrHold},
+			allMoms, ltrHold, fctrVerbose, optFCParallelize, ruRHS, ruLHS, ruAbb,
+			ruRev, ltrHoldAbb},
 
 		If[	OptionValue[FCVerbose] === False,
 			fctrVerbose = $VeryVerbose,
@@ -86,6 +89,7 @@ FCLoopTensorReduce[expr_, toposRaw_List, OptionsPattern[]] :=
 		optFactoring 				= OptionValue[Factoring];
 		optTimeConstrained 			= OptionValue[TimeConstrained];
 		optUncontract				= OptionValue[Uncontract];
+		optFCParallelize			= OptionValue[FCParallelize];
 
 
 		If[	!OptionValue[FCI],
@@ -107,7 +111,7 @@ FCLoopTensorReduce[expr_, toposRaw_List, OptionsPattern[]] :=
 
 			time=AbsoluteTime[];
 			FCPrint[1,"FCLoopTensorReduce: Applying Collect2.", FCDoControl->fctrVerbose];
-			ex = Collect2[ex, GLI, Factoring->optFactoring, TimeConstrained->optTimeConstrained];
+			ex = Collect2[ex, GLI, Factoring->optFactoring, TimeConstrained->optTimeConstrained, FCParallelize->optFCParallelize];
 			uniqueProductsList = Cases2[ex,optHead];
 			FCPrint[1, "FCLoopTensorReduce: Collect2 done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctrVerbose]
 		];
@@ -209,8 +213,21 @@ FCLoopTensorReduce[expr_, toposRaw_List, OptionsPattern[]] :=
 		FCPrint[1, "FCLoopTensorReduce: List of numerators to reduce: ", tdecList, FCDoControl->fctrVerbose];
 
 		time=AbsoluteTime[];
-		FCPrint[1,"FCLoopTensorReduce: Applying Tdec.", FCDoControl->fctrVerbose];
-		tdecListEval = tdecList /. loopNumerator -> loopNumeratorEval;
+
+
+		If[	$ParallelizeFeynCalc && OptionValue[FCParallelize],
+				FCPrint[1,"FCLoopTensorReduce: Applying Tdec to a list in parallel." , FCDoControl->fctrVerbose];
+
+
+				tdecListEval = ParallelMap[(#/. loopNumerator -> loopNumeratorEval)&,tdecList, DistributedContexts->None,
+					(*Method->"CoarsestGrained"*)
+					(*Split the input into smaller chunks. We take the total number of expressions and divide it by the number of the kernels. This
+					number is then broken into 10 chunks*)
+					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[tdecList]/Length[ParallelKernels[]]]/10]
+					],
+				FCPrint[1,"FCLoopTensorReduce: Applying Tdec to a list." , FCDoControl->fctrVerbose];
+				tdecListEval = tdecList /. loopNumerator -> loopNumeratorEval;
+		];
 		FCPrint[1, "FCLoopTensorReduce: Done applying Tdec, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctrVerbose];
 
 		If[	!FreeQ[tdecListEval,loopNumeratorEval],
@@ -231,19 +248,33 @@ FCLoopTensorReduce[expr_, toposRaw_List, OptionsPattern[]] :=
 		If[	OptionValue[Contract],
 			time=AbsoluteTime[];
 			FCPrint[1,"FCLoopTensorReduce: Collecting terms before doing contractions.", FCDoControl->fctrVerbose];
-			res = Collect2[res, LorentzIndex, Factoring -> False, IsolateNames -> ltrHold, IsolateFast -> True];
+			If[	$ParallelizeFeynCalc && optFCParallelize,
+				res = Collect2[res, LorentzIndex, Factoring -> ltrHold, FCParallelize->optFCParallelize];
+				ruLHS = Cases2[res, ltrHold];
+				ruRHS = Table[ltrHoldAbb[i], {i, 1, Length[ruLHS]}];
+				ruAbb = Thread[Rule[ruLHS, ruRHS]];
+				ruRev =	(Reverse/@ruAbb) /. ltrHold -> Identity;
+				res = res /. Dispatch[ruAbb],
+				res = Collect2[res, LorentzIndex, Factoring -> False, IsolateNames -> ltrHold, IsolateFast -> True]
+			];
 			FCPrint[1, "FCLoopTensorReduce: Collecting done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctrVerbose];
 
 			time=AbsoluteTime[];
 			FCPrint[1,"FCLoopTensorReduce: Applying Contract.", FCDoControl->fctrVerbose];
-			res = Contract[res,FCI->True]//FRH[#,IsolateNames->ltrHold]&;
+			res = Contract[res,FCI->True];
+
+			If[	$ParallelizeFeynCalc && optFCParallelize,
+				res = res /. Dispatch[ruRev],
+				res = FRH[res,IsolateNames->ltrHold]
+			];
+
 			FCPrint[1, "FCLoopTensorReduce: Contract done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctrVerbose]
 		];
 
 		If[	OptionValue[Collecting],
 			time=AbsoluteTime[];
 			FCPrint[1,"FCLoopTensorReduce: Applying Collect2.", FCDoControl->fctrVerbose];
-			res = Collect2[res,loopMoms,Factoring->OptionValue[Factoring],TimeConstrained->OptionValue[TimeConstrained]];
+			res = Collect2[res,loopMoms,Factoring->OptionValue[Factoring],TimeConstrained->OptionValue[TimeConstrained], FCParallelize->optFCParallelize];
 			FCPrint[1, "FCLoopTensorReduce: Collect2 done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctrVerbose]
 		];
 

@@ -33,11 +33,10 @@ End[]
 
 Begin["`FCLoopFindSubtopologies`Private`"]
 
-fclfsVerbose::usage = "";
-
 Options[FCLoopFindSubtopologies] = {
 	FCE 						-> False,
 	FCI 						-> False,
+	FCParallelize				-> False,
 	FCVerbose 					-> False,
 	FinalSubstitutions			-> {},
 	LightPak					-> False,
@@ -47,12 +46,43 @@ Options[FCLoopFindSubtopologies] = {
 	ToSFAD						-> True
 };
 
-FCLoopFindSubtopologies[topos:{__FCTopology}, opts:OptionsPattern[]] :=
-	FCLoopFindSubtopologies[#, opts]&/@topos;
+
+FCLoopFindSubtopologies[topos:{__FCTopology},  opts:OptionsPattern[]] :=
+	Block[{	res, time, fclfsVerbose},
+
+		If [OptionValue[FCVerbose]===False,
+				fclfsVerbose=$VeryVerbose,
+				If[MatchQ[OptionValue[FCVerbose], _Integer],
+					fclfsVerbose=OptionValue[FCVerbose]
+				];
+		];
+
+		time=AbsoluteTime[];
+
+		If[	$ParallelizeFeynCalc && OptionValue[FCParallelize],
+				FCPrint[1,"FCLoopFindSubtopologies: Applying FCLoopFindSubtopologies to a list in parallel." , FCDoControl->fclfsVerbose];
+
+				With[{ooo = {opts}},
+					ParallelEvaluate[FCParallelContext`FCLoopFindSubtopologies`pOpts = FilterRules[ooo, Except[FCParallelize|FCVerbose]];, DistributedContexts -> None]
+				];
+
+				res = ParallelMap[(FCLoopFindSubtopologies[#, FCParallelContext`FCLoopFindSubtopologies`pOpts, FCParallelize->False])&,topos, DistributedContexts->None,
+					(*Method->"CoarsestGrained"*)
+					(*Split the input into smaller chunks. We take the total number of expressions and divide it by the number of the kernels. This
+					number is then broken into 10 chunks*)
+					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[topos]/Length[ParallelKernels[]]]/10]
+					],
+				FCPrint[1,"FCLoopFindSubtopologies: Applying FCLoopFindSubtopologies to a list.", FCDoControl->fclfsVerbose];
+				res = (FCLoopFindSubtopologies[#, FilterRules[{opts}, Except[FCParallelize|FCVerbose]]]& /@ topos)
+		];
+
+		FCPrint[1,"FCLoopFindSubtopologies: Function done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclfsVerbose];
+		res
+	];
 
 FCLoopFindSubtopologies[topoRaw_FCTopology, OptionsPattern[]] :=
 	Block[{	topo, pakPoly, pakForm, res, time, x, tmp, counter=0, optNames,
-			optFinalSubstitutions, optSubtopologyMarker},
+			optFinalSubstitutions, optSubtopologyMarker, fclfsVerbose},
 
 		If[	OptionValue[FCVerbose] === False,
 			fclfsVerbose = $VeryVerbose,
@@ -98,7 +128,7 @@ FCLoopFindSubtopologies[topoRaw_FCTopology, OptionsPattern[]] :=
 
 		time=AbsoluteTime[];
 		FCPrint[1, "FCLoopFindSubtopologies: Searching for unique subtopologies.", FCDoControl -> fclfsVerbose];
-		tmp = NestWhileList[(counter++; removeDuplicateSubtopos[removeVanishingSubtopos[#, x], x]) &, {{},	pakPoly}, (# =!= {}) && (counter< OptionValue[MaxIterations]) &];
+		tmp = NestWhileList[(counter++; removeDuplicateSubtopos[removeVanishingSubtopos[#, x, fclfsVerbose], x, fclfsVerbose]) &, {{},	pakPoly}, (# =!= {}) && (counter< OptionValue[MaxIterations]) &];
 		FCPrint[1, "FCLoopFindSubtopologies: Done searching for unique subtopologies, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclfsVerbose];
 
 		tmp = Rest[tmp] /. x -> List;
@@ -144,13 +174,13 @@ FCLoopFindSubtopologies[topoRaw_FCTopology, OptionsPattern[]] :=
 		res
 	];
 
-removeVanishingSubtopos[ex : {{_List, _} ..}, var_] :=
-	Flatten[removeVanishingSubtopos[#, var] & /@ ex, 1];
+removeVanishingSubtopos[ex : {{_List, _} ..}, var_, fclfsVerbose_] :=
+	Flatten[removeVanishingSubtopos[#, var, fclfsVerbose] & /@ ex, 1];
 
-removeVanishingSubtopos[{}, _] :=
+removeVanishingSubtopos[{}, _, _] :=
 	{};
 
-removeVanishingSubtopos[{zeroVars_List, poly_}, var_] :=
+removeVanishingSubtopos[{zeroVars_List, poly_}, var_, fclfsVerbose_] :=
 Block[{allVars, aux, res, time},
 
 	FCPrint[4, "FCLoopFindSubtopologies: removeVanishingSubtopos: Entering with: ", zeroVars, FCDoControl->fclfsVerbose];
@@ -177,9 +207,9 @@ Block[{allVars, aux, res, time},
 	res
 ];
 
-removeDuplicateSubtopos[{}, _] := {};
+removeDuplicateSubtopos[{}, _, _] := {};
 
-removeDuplicateSubtopos[subtopos_List, var_] :=
+removeDuplicateSubtopos[subtopos_List, var_, fclfsVerbose_] :=
 	Block[{tmp, myPoly, myVarsRaw, myVars, y, newVarsRule, sigma, pVarsRepRule, keep, time},
 
 		FCPrint[4, "FCLoopFindSubtopologies: removeDuplicateSubtopos: Entering.", FCDoControl->fclfsVerbose];

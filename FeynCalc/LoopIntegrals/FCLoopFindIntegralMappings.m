@@ -53,13 +53,13 @@ End[]
 
 Begin["`FCLoopFindIntegralMappings`Private`"]
 
-fcfpmVerbose::usage = "";
 lhs::usage ="";
 
 Options[FCLoopFindIntegralMappings] = {
 	CharacteristicPolynomial	-> Function[{U,F}, U+F],
 	FCE 						-> False,
 	FCI 						-> False,
+	FCParallelize				-> False,
 	FCVerbose 					-> False,
 	FinalSubstitutions			-> {},
 	Function					-> Function[{U, F, charPoly, pows, head, int, sigma}, {head[int, Transpose[pows]], head[ExpandAll[U], ExpandAll[F]]}],
@@ -73,7 +73,8 @@ FCLoopFindIntegralMappings[expr: {__FCTopology}, opts:OptionsPattern[]] :=
 
 FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 	Block[{	expr, pakFormInts, lmoms, res, time, x, pakHead, powerMark,
-			topoidMode, optPreferredIntegrals, finalMasters},
+			topoidMode, optPreferredIntegrals, finalMasters, fcfpmVerbose,
+			optFCParallelize},
 
 		If[	OptionValue[FCVerbose] === False,
 			fcfpmVerbose = $VeryVerbose,
@@ -81,7 +82,8 @@ FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 			fcfpmVerbose = OptionValue[FCVerbose]];
 		];
 
-		optPreferredIntegrals = OptionValue[PreferredIntegrals];
+		optPreferredIntegrals	= OptionValue[PreferredIntegrals];
+		optFCParallelize		= OptionValue[FCParallelize];
 
 		FCPrint[1, "FCLoopFindIntegralMappings: Entering.", FCDoControl -> fcfpmVerbose];
 		FCPrint[3, "FCLoopFindIntegralMappings: Entering with: ", exprRaw, FCDoControl -> fcfpmVerbose];
@@ -115,7 +117,7 @@ FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 
 		pakFormInts = FCLoopToPakForm[expr, lmoms, FCI->OptionValue[FCI], FinalSubstitutions->OptionValue[FinalSubstitutions],
 			Check->False, Collecting->False, Names->x, CharacteristicPolynomial->OptionValue[CharacteristicPolynomial],
-			Function->OptionValue[Function], Head->pakHead, Power->powerMark, LightPak->OptionValue[LightPak]];
+			Function->OptionValue[Function], Head->pakHead, Power->powerMark, LightPak->OptionValue[LightPak], FCParallelize->optFCParallelize];
 		FCPrint[1, "FCLoopFindIntegralMappings: FCLoopToPakForm done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfpmVerbose];
 
 		FCPrint[3, "FCLoopFindIntegralMappings: Output of FCLoopToPakForm: ", pakFormInts, FCDoControl->fcfpmVerbose];

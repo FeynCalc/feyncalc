@@ -46,9 +46,6 @@ End[]
 
 Begin["`Collect2`Private`"];
 
-cl2Verbose::usage="";
-
-
 Options[Collect2] = {
 	Denominator 				-> False,
 	Dot 						-> False,
@@ -73,9 +70,9 @@ Collect2[a_ == b_, y__] :=
 Collect2[(h:Rule|RuleDelayed)[a_,b_], y__] :=
 	With[{zz=Collect2[b,y]}, h[a,zz]];
 
-(*
+
 Collect2[x_List, y__,  opts:OptionsPattern[]] :=
-	Block[{res,time},
+	Block[{res,time,cl2Verbose,optIsolateNames},
 
 		If[OptionValue[FCVerbose]===False,
 				cl2Verbose=$VeryVerbose,
@@ -84,44 +81,40 @@ Collect2[x_List, y__,  opts:OptionsPattern[]] :=
 				];
 			];
 
+		time=AbsoluteTime[];
+		optIsolateNames = OptionValue[IsolateNames];
+
 		If[	$ParallelizeFeynCalc && OptionValue[FCParallelize],
 				FCPrint[1,"Collect2: Applying Collect2 to a list in parallel." , FCDoControl->cl2Verbose];
-				If[	OptionValue[IsolateNames]=!=False,
-					Message[Collect2::failmsg,"Collect2 cannot be parallelized when using the option IsolateNames."];
+				If[	optIsolateNames=!=False,
+					If[TrueQ[!(Head[optIsolateNames] === List && Length[optIsolateNames]===Length[ParallelKernels[]])],
+					Message[Collect2::failmsg,"In the parallel mode, the option IsolateNames should be set to a list with the length being equal to the number of parallel kernels."];
 					Abort[]
-				];
-
-				time=AbsoluteTime[];
-
-
-				xPartitioned = Partition[x, UpTo[Ceiling[Length[ParallelKernels[]]/8]]];
-				xPartitioned = Compress/@xPartitioned;
-
-				With[{xxx = {y}, ooo = {opts}, input=xPartitioned},
-					ParallelEvaluate[FCParallelContext`Collect`pArgs = xxx; FCParallelContext`Collect`pOpts = FilterRules[ooo, Except[FCParallelize|FCVerbose]];, DistributedContexts -> None]
-				];
-				FCPrint[1,"Collect2: Preparations done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
-				res = ParallelMap[(Collect2[Uncompress[#],FCParallelContext`Collect`pArgs,FCParallelContext`Collect`pOpts, FCParallelize->False])&,xPartitioned, DistributedContexts->None,
-					Method->"CoarsestGrained"(*,
-					ProgressReporting->True*)
-					(*Split the input into smaller chunks. We take the total number of expressions and divide it by the number of the kernels. This
-					number is then broken into 10 chunks*)
-					(*Method->"ItemsPerEvaluation" -> Ceiling[N[Length[x]/Length[ParallelKernels[]]]/10]*)
 					];
-				Print["parallel map done"];
-					,
-				Print["no paral"];
+
+					Table[With[{oin = optIsolateNames, ii = i},
+					ParallelEvaluate[SetOptions[Collect2, IsolateNames -> oin[[ii]]];, DistributedContexts -> None]],{i,1,Length[ParallelKernels[]]}];
+
+
+				];
+
+				With[{xxx = {y}, ooo = {opts}},
+					ParallelEvaluate[FCParallelContext`Collect`pArgs = xxx; FCParallelContext`Collect`pOpts = FilterRules[ooo, Except[FCParallelize|FCVerbose|IsolateNames]];, DistributedContexts -> None]
+				];
+
+				res = ParallelMap[(Collect2[#,FCParallelContext`Collect`pArgs,FCParallelContext`Collect`pOpts, FCParallelize->False])&,x, DistributedContexts->None,
+					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[x]/Length[ParallelKernels[]]]/10]];
+
+				If[	optIsolateNames=!=False,
+					Table[ParallelEvaluate[SetOptions[Collect2, IsolateNames -> False];, DistributedContexts -> None],{i,1,Length[ParallelKernels[]]}];
+				],
 				FCPrint[1,"FCFeynmanPrepare: Applying Collect2 to a list.", FCDoControl->cl2Verbose];
 				res = (Collect2[#, y, FilterRules[{opts}, Except[FCParallelize|FCVerbose]]]& /@ x)
-
 		];
+
 		FCPrint[1,"Collect2: Collecing done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
 		res
 	];
-*)
-
-Collect2[x_List, y__,  opts:OptionsPattern[]] :=
-	(Collect2[#, y, opts]& /@ x)
 
 Collect2[x_, y_, opts:OptionsPattern[]] :=
 	Collect2[x, {y}, opts] /; (Head[y]=!=List && !OptionQ[y] && Head[x]=!=List && !OptionQ[x]);
@@ -134,7 +127,7 @@ Collect2[expr_/; !MemberQ[{List,Equal},Head[expr]], vv_List/; (!OptionQ[vv] || v
 		new = 0, unity,re,compCON,ccflag = False, factor,expanding, times,time,
 		null1,null2,coeffArray,tvm,coeffHead,optIsolateFast,tempIso,factorOut, monomRepRule={},
 		nonAtomicMonomials,optHead,firstHead,secondHead=Null,optInitialFunction,numerator,denominator,
-		optNumerator, optFactoringDenominator, optTimeConstrained, ident},
+		optNumerator, optFactoringDenominator, optTimeConstrained, ident, cl2Verbose},
 
 		If [OptionValue[FCVerbose]===False,
 			cl2Verbose=$VeryVerbose,

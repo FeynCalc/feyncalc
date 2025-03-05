@@ -29,7 +29,6 @@ End[]
 
 Begin["`FCLoopFromGLI`Private`"];
 
-fgliVerbose::usage="";
 optFeynAmpDenominatorExplicit::usage="";
 optExpandScalarProduct::usage="";
 powerHold::usage="";
@@ -38,6 +37,7 @@ Options[FCLoopFromGLI] = {
 	ExpandScalarProduct 		->	True,
 	FCE 						->	False,
 	FCI							->	False,
+	FCParallelize				-> 	False,
 	FCVerbose					->	False,
 	FeynAmpDenominatorCombine	->	False,
 	FeynAmpDenominatorExplicit	->	True,
@@ -51,12 +51,14 @@ FCLoopFromGLI[expr_, topo_FCTopology, opts:OptionsPattern[]] :=
 
 FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
 	Block[{	res, topos, listGLI, rule, optLoopMomenta, gliHead, time, time1,
-			pattern, fromGliRule, listGLIEval, ruleFinal, relevantTopos, optList},
+			pattern, fromGliRule, listGLIEval, ruleFinal, relevantTopos, optList,
+			optFCParallelize, fgliVerbose},
 
 		optFeynAmpDenominatorExplicit	= OptionValue[FeynAmpDenominatorExplicit];
 		optExpandScalarProduct 			= OptionValue[ExpandScalarProduct];
 		optLoopMomenta					= OptionValue[LoopMomenta];
 		optList							= OptionValue[List];
+		optFCParallelize				= OptionValue[FCParallelize];
 
 		If [OptionValue[FCVerbose]===False,
 				fgliVerbose=$VeryVerbose,
@@ -77,7 +79,7 @@ FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
 
 		(*
 			FCI is applied only to the propagators in the topologies, not to the full expression.
-			This is fine, since a GLI havs no FCE representation
+			This is fine, since a GLI has no FCE representation
 		*)
 
 		time=AbsoluteTime[];
@@ -107,7 +109,7 @@ FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
 			This is tricky. If we are given a single product of GLIs or a list thereof, then everything is
 			simple (up to the introduction of auxiliary loop momenta. However, if we have an amplitude that
 			contains GLIs, using Cases2 can mess things up, since we would miss products of GLIs. So one should
-			perhaps use this function for well defined input types only, while another version thereof
+			perhaps use this function for well defined input types only, while anotoptFCParallelizeher version thereof
 			(say FCLoopFromGLI2) will take care of amplitudes in case that someone wants to convert an amplitude
 			into explicit FADs.
 
@@ -139,7 +141,7 @@ FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
 
 		time=AbsoluteTime[];
 		FCPrint[1,"FCLoopFromGLI: Creating conversion rules." , FCDoControl->fgliVerbose];
-		If[	$ParallelizeFeynCalc,
+		If[	$ParallelizeFeynCalc && optFCParallelize,
 				FCPrint[1,"FCLoopFromGLI: Running in parallel." , FCDoControl->fgliVerbose];
 				With[{xxx = powFu},
 				ParallelEvaluate[FCParallelContext`FCLoopFromGLI`powFu = xxx;, DistributedContexts -> None]];
@@ -157,13 +159,13 @@ FCLoopFromGLI[expr_, toposRaw_List, OptionsPattern[]] :=
 		FCPrint[1,"FCLoopFromGLI: Applying conversion rules." , FCDoControl->fgliVerbose];
 		If[	!MatchQ[listGLI,{__GLI}],
 
-			If[	$ParallelizeFeynCalc && Length[topos]=!=1,
+			If[	$ParallelizeFeynCalc && Length[topos]=!=1 && optFCParallelize,
 
 				listGLIEval = (ParallelMap[gliToFAD[#,fromGliRule, relevantTopos, optLoopMomenta]&,listGLI, DistributedContexts->None(*, Method -> "CoarsestGrained"*)]) /. powerHold->power,
 				listGLIEval = (Map[gliToFAD[#,fromGliRule, relevantTopos, optLoopMomenta]&,listGLI]) /. powerHold->power
 			],
 
-			If[	$ParallelizeFeynCalc && Length[topos]=!=1,
+			If[	$ParallelizeFeynCalc && Length[topos]=!=1 && optFCParallelize,
 
 				time1=AbsoluteTime[];
 				FCPrint[1,"FCLoopFromGLI: Distributing conversion rules among the parallel kernels", FCDoControl->fgliVerbose];

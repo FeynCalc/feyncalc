@@ -50,6 +50,7 @@ Options[FCLoopToPakForm] = {
 	Collecting					-> True,
 	FCE							-> False,
 	FCI							-> False,
+	FCParallelize				-> False,
 	FCLoopPakOrder				-> True,
 	FCVerbose 					-> False,
 	Factoring					-> Factor,
@@ -72,7 +73,7 @@ FCLoopToPakForm[expr_FCTopology, opts:OptionsPattern[]] :=
 FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 	Block[{	lmoms, res, time, optFinalSubstitutions, ex, tmp,
 			optFactoring,optPowerMark, optCharacteristicPolynomial,
-			optFCLoopPakOrder, notList=False},
+			optFCLoopPakOrder, notList=False, optFCParallelize},
 
 		If[	OptionValue[FCVerbose] === False,
 			fctpfVerbose = $VeryVerbose,
@@ -86,6 +87,7 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 		optFinalSubstitutions 		= OptionValue[FinalSubstitutions];
 		optFCLoopPakOrder 			= OptionValue[FCLoopPakOrder];
 		optLightPak 				= OptionValue[LightPak];
+		optFCParallelize			= OptionValue[FCParallelize];
 
 		FCPrint[1, "FCLoopToPakForm: Entering.", FCDoControl -> fctpfVerbose];
 		FCPrint[3, "FCLoopToPakForm: Entering with: ", expr, FCDoControl -> fctpfVerbose];
@@ -111,14 +113,14 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 				FCPrint[1, "FCLoopToPakForm: We are dealing with a list of GLIs.", FCDoControl -> fctpfVerbose];
 				tmp =	FCFeynmanPrepare[ex, lmoms, FCI -> True, FinalSubstitutions -> optFinalSubstitutions,
 				Names -> OptionValue[Names], Indexed -> OptionValue[Indexed], Check->OptionValue[Check],
-				Collecting -> OptionValue[Collecting], FCLoopGetEtaSigns -> False],
+				Collecting -> OptionValue[Collecting], FCLoopGetEtaSigns -> False, FCParallelize -> optFCParallelize],
 			(*Single integral *)
 			MatchQ[ex,_. _FeynAmpDenominator] || MatchQ[ex, (_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) | _FCTopology],
 				notList = True;
 				FCPrint[1, "FCLoopToPakForm: We are dealing with a single integral.", FCDoControl -> fctpfVerbose];
 				tmp =	FCFeynmanPrepare[ex, lmoms, FCI -> True, FinalSubstitutions -> optFinalSubstitutions,
 				Names -> OptionValue[Names], Indexed -> OptionValue[Indexed], Check->OptionValue[Check],
-				Collecting -> OptionValue[Collecting], FCLoopGetEtaSigns -> False];
+				Collecting -> OptionValue[Collecting], FCLoopGetEtaSigns -> False, FCParallelize -> optFCParallelize];
 				tmp = {tmp};
 				ex = {ex},
 			(*List of integrals *)
@@ -126,7 +128,7 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 				FCPrint[1, "FCLoopToPakForm: We are dealing with a list of integrals.", FCDoControl -> fctpfVerbose];
 				tmp =	FCFeynmanPrepare[#, lmoms, FCI -> True, FinalSubstitutions -> optFinalSubstitutions,
 				Names -> OptionValue[Names], Indexed -> OptionValue[Indexed], Check->OptionValue[Check],
-				Collecting -> OptionValue[Collecting], FCLoopGetEtaSigns -> False]&/@ex,
+				Collecting -> OptionValue[Collecting], FCLoopGetEtaSigns -> False, FCParallelize -> optFCParallelize]&/@ex,
 			True,
 				Message[FCLoopToPakForm::failmsg,"Failed to recognize the form of the input expression."];
 				Abort[]
@@ -140,7 +142,7 @@ FCLoopToPakForm[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 		time=AbsoluteTime[];
 
 
-		If[	$ParallelizeFeynCalc,
+		If[	$ParallelizeFeynCalc && optFCParallelize,
 
 			FCPrint[1, "FCLoopToPakForm: Calling pakProcess in parallel.", FCDoControl -> fctpfVerbose];
 			With[{xxx = {optFactoring,optPowerMark,optCharacteristicPolynomial, optFCLoopPakOrder}},

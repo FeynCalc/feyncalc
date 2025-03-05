@@ -50,6 +50,7 @@ Options[FCLoopIsolate] = {
 	FCE 					-> False,
 	FCI 					-> False,
 	FCLoopIBPReducableQ 	-> False,
+	FCParallelize			-> False,
 	FCVerbose 				-> False,
 	Factoring 				-> {Factor2, 5000},
 	FeynAmpDenominatorSplit -> True,
@@ -69,24 +70,58 @@ Options[FCLoopIsolate] = {
 fullDep[z_,lmoms_]:=
 	(Union[Cases[ExpandScalarProduct[z,FCI->True], (CartesianMomentum|Momentum)[x_, ___]/;!FreeQ2[x, lmoms] :> x, Infinity]] === Sort[lmoms]);
 
-
 FCLoopIsolate[a_ == b_, y__] :=
 	FCLoopIsolate[a,y] == FCLoopIsolate[b,y];
 
 FCLoopIsolate[(h:Rule|RuleDelayed)[a_,b_], y__] :=
 	With[{zz1=FCLoopIsolate[a,y],zz2=FCLoopIsolate[b,y]}, h[zz1,zz2]];
 
-FCLoopIsolate[x_List, y__] :=
-	FCLoopIsolate[#, y]& /@ x;
+FCLoopIsolate[x_List, lmoms0_List /; FreeQ[lmoms0, OptionQ],  opts:OptionsPattern[]] :=
+	Block[{	res, time, fcliVerbose},
+
+		If [OptionValue[FCVerbose]===False,
+				fcliVerbose=$VeryVerbose,
+				If[MatchQ[OptionValue[FCVerbose], _Integer],
+					fcliVerbose=OptionValue[FCVerbose]
+				];
+		];
+
+		time=AbsoluteTime[];
+
+		If[	$ParallelizeFeynCalc && OptionValue[FCParallelize],
+				FCPrint[1,"FCLoopIsolate: Applying FCLoopIsolate to a list in parallel." , FCDoControl->fcliVerbose];
+				If[	OptionValue[Isolate],
+					Message[FCLoopIsolate::failmsg,"FCLoopIsolate cannot be parallelized when using the option IsolateNames."];
+					Abort[]
+				];
+
+				With[{xxx = lmoms0, ooo = {opts}},
+					ParallelEvaluate[FCParallelContext`FCLoopIsolate`lmoms = xxx; FCParallelContext`FCLoopIsolate`pOpts = FilterRules[ooo, Except[FCParallelize|FCVerbose]];, DistributedContexts -> None]
+				];
+
+				res = ParallelMap[(FCLoopIsolate[#, FCParallelContext`FCLoopIsolate`lmoms,FCParallelContext`FCLoopIsolate`pOpts, FCParallelize->False])&,x, DistributedContexts->None,
+					(*Method->"CoarsestGrained"*)
+					(*Split the input into smaller chunks. We take the total number of expressions and divide it by the number of the kernels. This
+					number is then broken into 10 chunks*)
+					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[x]/Length[ParallelKernels[]]]/10]
+					],
+				FCPrint[1,"FCLoopIsolate: Applying FCLoopIsolate to a list.", FCDoControl->fcliVerbose];
+				res = (FCLoopIsolate[#, lmoms0, FilterRules[{opts}, Except[FCParallelize|FCVerbose]]]& /@ x)
+		];
+
+		FCPrint[1,"FCLoopIsolate: Function done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcliVerbose];
+		res
+	];
 
 
-FCLoopIsolate[expr_, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
-	Block[{	res, null1, null2, ex,lmoms,tmp, loopIntHeads, time, optExceptHeads, optHead,
-			dummy1, dummy2},
+FCLoopIsolate[expr_/;Head[expr]=!=List, lmoms0_List /; FreeQ[lmoms0, OptionQ], OptionsPattern[]] :=
+	Block[{	res, null1, null2, ex,lmoms,tmp, loopIntHeads, time,
+			optExceptHeads, optHead, dummy1, dummy2, fcliVerbose},
 
-		loopIntHeads = OptionValue[PaVeIntegralHeads];
-		optExceptHeads = OptionValue[ExceptHeads];
-		optHead = OptionValue[Head];
+		loopIntHeads 	= OptionValue[PaVeIntegralHeads];
+		optExceptHeads 	= OptionValue[ExceptHeads];
+		optHead 		= OptionValue[Head];
+
 
 		If [OptionValue[FCVerbose]===False,
 				fcliVerbose=$VeryVerbose,

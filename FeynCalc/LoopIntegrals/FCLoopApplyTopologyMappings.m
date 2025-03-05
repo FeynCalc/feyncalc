@@ -57,6 +57,7 @@ Options[FCLoopApplyTopologyMappings] = {
 	FCE 						-> False,
 	FCI 						-> False,
 	FCLoopCreateRulesToGLI		-> True,
+	FCParallelize				-> False,
 	FCVerbose 					-> False,
 	Factoring 					-> {Factor2, 5000},
 	GLIMultiply					-> True,
@@ -73,7 +74,7 @@ FCLoopApplyTopologyMappings[expr_, toposRaw:{__FCTopology}, opts:OptionsPattern[
 FCLoopApplyTopologyMappings[expr_, {mappings_List, toposRaw_List}, OptionsPattern[]] :=
 	Block[{	ex, res, time, uniqueProductsList, tmp, repRule, optFCLoopCreateRulesToGLI,
 			topos, optHead, rulesToGLI, topoIDs, rulesToGLIFinal, sps, spsEval, ruleSP,
-			lmoms, repRuleExtra, aux},
+			lmoms, repRuleExtra, aux, optFCParallelize},
 
 		If[	OptionValue[FCVerbose] === False,
 			fclamVerbose = $VeryVerbose,
@@ -83,6 +84,7 @@ FCLoopApplyTopologyMappings[expr_, {mappings_List, toposRaw_List}, OptionsPatter
 
 		optHead 					= OptionValue[Head];
 		optFCLoopCreateRulesToGLI	= OptionValue[FCLoopCreateRulesToGLI];
+		optFCParallelize			= OptionValue[FCParallelize];
 
 
 		If[	!OptionValue[FCI],
@@ -100,7 +102,7 @@ FCLoopApplyTopologyMappings[expr_, {mappings_List, toposRaw_List}, OptionsPatter
 
 			time=AbsoluteTime[];
 			FCPrint[1,"FCLoopApplyTopologyMappings: Applying Collect2.", FCDoControl->fclamVerbose];
-			tmp = Collect2[ex,GLI,Factoring->OptionValue[Factoring],TimeConstrained->OptionValue[TimeConstrained]];
+			tmp = Collect2[ex,GLI,Factoring->OptionValue[Factoring],TimeConstrained->OptionValue[TimeConstrained], FCParallelize->optFCParallelize];
 			uniqueProductsList = Cases2[tmp,optHead];
 			FCPrint[1, "FCLoopApplyTopologyMappings: Collect2 done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclamVerbose]
 		];
@@ -188,7 +190,20 @@ FCLoopApplyTopologyMappings[expr_, {mappings_List, toposRaw_List}, OptionsPatter
 			If[	OptionValue[GLIMultiply],
 				time=AbsoluteTime[];
 				FCPrint[1,"FCLoopApplyTopologyMappings: Rewriting remaining products of GLIs.", FCDoControl->fclamVerbose];
+				If[	$ParallelizeFeynCalc && optFCParallelize,
+
+				With[{xxx = optHead},
+					ParallelEvaluate[FCParallelContext`FCLoopApplyTopologyMappings`optHead = xxx;, DistributedContexts -> None]
+				];
+
+				repRule = ParallelMap[Rule[First[#],Expand2[Last[#]/. FCParallelContext`FCLoopApplyTopologyMappings`optHead->Times,GLI]/.GLI->GLIMultiply/.GLIMultiply->GLI]&,repRule,
+					DistributedContexts -> None,
+					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[repRule]/Length[ParallelKernels[]]]/10]
+					],
+
 				repRule = Map[Rule[First[#],Expand2[Last[#]/. optHead->Times,GLI]/.GLI->GLIMultiply/.GLIMultiply->GLI]&,repRule];
+
+				];
 				FCPrint[1, "FCLoopApplyTopologyMappings: Done rewriting products of GLIs, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclamVerbose]
 			];
 
@@ -214,7 +229,8 @@ FCLoopApplyTopologyMappings[expr_, {mappings_List, toposRaw_List}, OptionsPatter
 		If[	OptionValue[Collecting],
 			FCPrint[1,"FCLoopApplyTopologyMappings: Collecting w.r.t. GLIs.", FCDoControl->fclamVerbose];
 			time = AbsoluteTime[];
-			res = Collect2[res,GLI,Factoring->OptionValue[Factoring],TimeConstrained->OptionValue[TimeConstrained],IsolateNames->OptionValue[IsolateNames]];
+			res = Collect2[res,GLI,Factoring->OptionValue[Factoring],TimeConstrained->OptionValue[TimeConstrained],IsolateNames->OptionValue[IsolateNames],
+				FCParallelize->optFCParallelize];
 			FCPrint[1, "FCLoopApplyTopologyMappings: Done collecting w.r.t. GLIs, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclamVerbose]
 		];
 

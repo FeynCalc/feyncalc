@@ -55,6 +55,7 @@ Options[FCLoopFindTopologies] = {
 	ExtraPropagators			 -> {},
 	FCE							 -> False,
 	FCI 						 -> False,
+	FCParallelize				 -> True,
 	FCLoopBasisOverdeterminedQ	 -> False,
 	FCLoopGetKinematicInvariants -> True,
 	FCLoopIsolate				 -> True,
@@ -278,7 +279,8 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 		FCPrint[1,"FCLoopFindTopologies: Extracting unique denominators.", FCDoControl->fcfsopVerbose];
 		Which[
 				optFCLoopIsolate===True,
-					tmp = FCLoopIsolate[ex, lmoms, FCI->True, Collecting-> optCollecting, Factoring -> False, Numerator -> False, Head -> loopDen],
+					tmp = FCLoopIsolate[ex, lmoms, FCI->True, Collecting-> optCollecting, Factoring -> False, Numerator -> False, Head -> loopDen,
+						FCParallelize->OptionValue[FCParallelize]],
 				MatchQ[optFCLoopIsolate,_Symbol] && optFCLoopIsolate=!=False,
 					(*If the input is already isolated, we may skip the FCLoopIsolate step.*)
 					loopDen = optFCLoopIsolate;
