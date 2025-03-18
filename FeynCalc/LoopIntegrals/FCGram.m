@@ -36,28 +36,37 @@ Begin["`FCGram`Private`"]
 nptfpVerbose=Null;
 
 Options[FCGramMatrix]  = {
-	Dimension 	-> D,
-	FCE			-> False,
-	Head		-> {Pair, Momentum},
-	Prefactor	-> 2
+	Dimension 			-> D,
+	FCE					-> False,
+	FCI					-> False,
+	FinalSubstitutions	-> {},
+	Head				-> {Pair, Momentum},
+	Prefactor			-> 2
 };
 
 Options[FCGramDeterminant]  = {
 	Dimension			-> D,
 	ExpandScalarProduct	-> True,
+	FinalSubstitutions	-> {},
 	FCE					-> False,
 	Head				-> {Pair, Momentum},
 	Prefactor			-> 2
 };
 
 FCGramMatrix[moms_List,OptionsPattern[]]:=
-	Block[{mat,len, dim, res, pairHead,momHead},
-		len = Length[moms];
-		dim = OptionValue[Dimension];
-		pairHead = OptionValue[Head][[1]];
-		momHead = OptionValue[Head][[2]];
+	Block[{	mat, len, dim, res, pairHead, momHead, optKinematics},
 
-		mat = Table[pairHead[momHead[moms[[i]],dim], momHead[moms[[j]],dim]], {i, 1, len}, {j, 1, len}];
+		len				= Length[moms];
+		dim				= OptionValue[Dimension];
+		pairHead		= OptionValue[Head][[1]];
+		momHead			= OptionValue[Head][[2]];
+		optKinematics	= OptionValue[FinalSubstitutions];
+
+		If[	optKinematics=!={} && !OptionValue[FCI],
+			optKinematics = FCI[optKinematics]
+		];
+
+		mat = Table[pairHead[momHead[moms[[i]],dim], momHead[moms[[j]],dim]], {i, 1, len}, {j, 1, len}]/. optKinematics;
 
 		If[	!MatrixQ[mat],
 			Message[FCGramMatrix::failmsg, "The created Gram matrix is incorrect."];
@@ -80,11 +89,13 @@ FCGramDeterminant[{},OptionsPattern[]]:=
 
 FCGramDeterminant[moms_List,OptionsPattern[]]:=
 	Block[{mat,det},
-		mat = FCGramMatrix[moms,Dimension->OptionValue[Dimension],Prefactor->OptionValue[Prefactor], Head->OptionValue[Head]];
+		mat = FCGramMatrix[moms,Dimension->OptionValue[Dimension],Prefactor->OptionValue[Prefactor], Head->OptionValue[Head],
+			FinalSubstitutions-> OptionValue[FinalSubstitutions]];
+
 		det = Det[mat];
 
 		If[OptionValue[ExpandScalarProduct],
-			det = ExpandScalarProduct[det]
+			det = ExpandScalarProduct[det, FCI->True]
 		];
 
 		If[	OptionValue[FCE],
