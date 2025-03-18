@@ -205,6 +205,8 @@ ApartFF[gli_GLI, topoRaw_, opts:OptionsPattern[]] :=
 		res = FCLoopFindTopologies[tmp, topo[[3]], PreferredTopologies->{topo}, Head->OptionValue[Head],Names->Unique["t"],FCVerbose->-1,FCLoopScalelessQ->True,
 			FCParallelize->False];
 
+		FCPrint[3, "ApartFF: After FCLoopFindTopologies: ", res, FCDoControl->affVerbose];
+
 		If[	Length[res[[2]]]=!=1 && res[[2]][[1]]=!=topo[[1]],
 			Message[ApartFF::failmsg,"Something went wrong during parital fraction decomposition of GLIs."];
 			Abort[]
