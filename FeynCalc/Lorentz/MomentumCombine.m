@@ -51,10 +51,6 @@ End[]
 Begin["`MomentumCombine`Private`"];
 
 im::usage="";
-optNumberQ::usage="";
-optQuadratic::usage="";
-optExcept::usage="";
-optExcludeScalarProducts::usage="";
 
 Options[MomentumCombine] = {
 	"ExcludeScalarProducts"	-> {},
@@ -63,8 +59,10 @@ Options[MomentumCombine] = {
 	Except					-> {},
 	FCE 					-> False,
 	FCI 					-> False,
+	FCVerbose				-> False,
 	FV 						-> True,
 	Factoring				-> False,
+	FCParallelize			-> False,
 	LC 						-> True,
 	LeafCount				-> 1,
 	NumberQ 				-> True,
@@ -73,7 +71,8 @@ Options[MomentumCombine] = {
 };
 
 MomentumCombine[expr_, OptionsPattern[]] :=
-	Block[{	ex, res, rules, optFactoring, moms, momsFac, optSelect},
+	Block[{	ex, res, rules, optFactoring, moms, momsFac, optSelect, mcVerbose, time,
+			optExcept, optExcludeScalarProducts, optQuadratic, optNumberQ},
 
 		optNumberQ 					= OptionValue[NumberQ];
 		optQuadratic				= OptionValue["Quadratic"];
@@ -82,31 +81,59 @@ MomentumCombine[expr_, OptionsPattern[]] :=
 		optFactoring				= OptionValue[Factoring];
 		optSelect					= OptionValue[Select];
 
-		If[	!OptionValue[FCI],
-			ex = FCI[expr],
-			ex = expr
+		If [OptionValue[FCVerbose]===False,
+			mcVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				mcVerbose=OptionValue[FCVerbose]
+			];
 		];
 
-		rules=rulesMain;
+		FCPrint[1,"MomentumCombine: Entering.", FCDoControl->mcVerbose];
+		FCPrint[3,"MomentumCombine: Entering with ", expr, FCDoControl->mcVerbose];
+
+		time=AbsoluteTime[];
+		FCPrint[1,"MomentumCombine: Applying FCI." , FCDoControl->mcVerbose];
+		If[ OptionValue[FCI],
+			ex = expr,
+			ex = FCI[expr]
+		];
+		FCPrint[1,"MomentumCombine: Done applying FCI, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mcVerbose];
+
+		If[ Head[expr]=!=List,
+			ex = {ex}
+		];
+
+		If[ LeafCount[ex] < OptionValue[LeafCount],
+			FCPrint[1,"MomentumCombine: Leaving due to the LeafCount being too small.", FCDoControl->mcVerbose];
+			If[ Head[expr]=!=List,
+				Return[First[ex]],
+				Return[ex]
+			];
+		];
+
+		time=AbsoluteTime[];
+		FCPrint[1,"MomentumCombine: Building up the ruleset." , FCDoControl->mcVerbose];
+		rules=rulesMain[optNumberQ];
 
 		If[	OptionValue[FV],
-			rules = Join[rules,rulesFV]
+			rules = Join[rules,rulesFV[optExcept]]
 		];
 
 		If[	OptionValue[SP],
-			rules = Join[rules,rulesSP]
+			rules = Join[rules,rulesSP[optQuadratic, optExcept, optExcludeScalarProducts,optNumberQ]]
 		];
 
 		If[	OptionValue[LC],
 			rules = Join[rules,rulesLC]
 		];
 
-		If[ LeafCount[ex] < OptionValue[LeafCount],
-			Return[ex]
-		];
+		FCPrint[1,"MomentumCombine: Done building up the ruleset, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mcVerbose];
+
 
 		If[	optSelect=!={},
-			ex = Fold[(#1 //. rulesSpecificSP[#2])&, ex,optSelect];
+			time=AbsoluteTime[];
+			FCPrint[1,"MomentumCombine: Evaluating the Select option." , FCDoControl->mcVerbose];
+			ex = Fold[(#1 //. rulesSpecificSP[#2,optQuadratic, optExcept, optExcludeScalarProducts,optNumberQ])&, ex,optSelect];
 
 			If[	optFactoring=!=False,
 
@@ -114,28 +141,55 @@ MomentumCombine[expr_, OptionsPattern[]] :=
 				momsFac = moms /. Momentum[a_, dim___] :> Momentum[optFactoring[a], dim];
 				ex = ex /. Dispatch[Thread[Rule[moms,momsFac]]]
 			];
+			FCPrint[1,"MomentumCombine: Done evaluating the select option, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mcVerbose];
 		];
 
-		res = ex //. Dispatch[rules];
+		time=AbsoluteTime[];
+		If[	$ParallelizeFeynCalc && OptionValue[FCParallelize] && Length[ex]>1,
+
+			FCPrint[1,"MomentumCombine: Applying the ruleset to the input expression in parallel." , FCDoControl->mcVerbose];
+				With[{xxx = rules},
+					ParallelEvaluate[FCParallelContext`MomentumCombine`rules = Dispatch[xxx]; , DistributedContexts -> None]
+				];
+
+			res = ParallelMap[(#//. FCParallelContext`MomentumCombine`rules )&,ex, DistributedContexts -> None,
+				Method->"ItemsPerEvaluation" -> Ceiling[N[Length[ex]/$KernelCount]/10]],
+
+			FCPrint[1,"MomentumCombine: Applying the ruleset to the input expression." , FCDoControl->mcVerbose];
+			res = ex //. Dispatch[rules]
+		];
+		FCPrint[1,"MomentumCombine: Done applying the ruleset to the input expression, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mcVerbose];
+
 
 		If[	OptionValue[Complex] && !FreeQ[res,Complex],
+			time=AbsoluteTime[];
+			FCPrint[1,"MomentumCombine: Handling complex momenta." , FCDoControl->mcVerbose];
 			res = res /. {
 				(h: Momentum|CartesianMomentum|TemporalMomentum)[a_, dim___]/; !FreeQ[a, Complex] :>
 					factorIm[h[a, dim]]
-			}
+			};
+			FCPrint[1,"MomentumCombine: Done handling complex momenta, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mcVerbose];
 		];
 
-		If[optFactoring=!=False,
-
+		If[	optFactoring=!=False,
+			time=AbsoluteTime[];
+			FCPrint[1,"MomentumCombine: Factoring the arguments." , FCDoControl->mcVerbose];
 			moms = Cases2[res,Momentum];
 			momsFac = moms /. Momentum[a_, dim___] :> Momentum[optFactoring[a], dim];
-			res = res /. Dispatch[Thread[Rule[moms,momsFac]]]
+			res = res /. Dispatch[Thread[Rule[moms,momsFac]]];
+			FCPrint[1,"MomentumCombine: Done factoring the arguments, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mcVerbose];
 		];
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
 		];
 
+		If[ Head[expr]=!=List,
+			res = First[res]
+		];
+
+		FCPrint[1,"MomentumCombine: Leaving.", FCDoControl->mcVerbose];
+		FCPrint[3,"MomentumCombine: Leaving with ", expr, FCDoControl->mcVerbose];
 		res
 	];
 
@@ -145,7 +199,7 @@ factorIm[(h: Momentum|CartesianMomentum|TemporalMomentum)[a_, dim___]] :=
 complex[a_, b_] := a + im b;
 
 (* Joining single momenta inside pairs or Cartesian pairs *)
-rulesMain = {
+rulesMain[optNumberQ_] := {
 	(n3_. Momentum[x_, dim_:4] + n4_. Momentum[y_, dim_:4]):>
 		(Momentum[ Expand[n3 x + n4 y],dim]/; (NumberQ[n3] && NumberQ[n4])),
 
@@ -171,7 +225,7 @@ rulesMain = {
 		(CartesianMomentum[ Expand[n3 x + n4 y],dim]/; !optNumberQ && FreeQ2[{n3,n4},{Pair,CartesianPair,TemporalPair,FeynAmpDenominator,DOT}])
 };
 
-rulesSpecificSP[chosenMom_] := {
+rulesSpecificSP[chosenMom_, optQuadratic_, optExcept_, optExcludeScalarProducts_, optNumberQ_] := {
 
 	(* Quadratic on, numeric on: 2 k1.n + 3 k2.n = (2*k1+3*k2).n or 2 k1.k1 + 3 k1.n = (2*k1+3*n).k1   *)
 	(n3_. Pair[Momentum[chosenMom,dim_:4], Momentum[x_, dim_:4]] + n4_. Pair[Momentum[chosenMom,dim_:4], Momentum[y_, dim_:4]]):>
@@ -204,7 +258,7 @@ rulesSpecificSP[chosenMom_] := {
 };
 
 (* Joining scalar products *)
-rulesSP = {
+rulesSP[optQuadratic_, optExcept_, optExcludeScalarProducts_,optNumberQ_] := {
 
 (*
 	"Quadratic"->False effectively means that momenta squared will not be combined with anything else
@@ -276,8 +330,6 @@ rulesSP = {
 		!IntersectingQ[{a,x,y},optExcept],
 
 	(*TODO add all the above options here *)
-
-
 	(n3_. Pair[LightConePerpendicularComponent[a_Momentum,n_,nb_],
 		LightConePerpendicularComponent[Momentum[x_, dim_:4],n_,nb_]] + n4_. Pair[LightConePerpendicularComponent[a_Momentum,n_,nb_], LightConePerpendicularComponent[Momentum[y_, dim_:4],n_,nb_]]):>
 		Pair[LightConePerpendicularComponent[a,n,nb], LightConePerpendicularComponent[Momentum[Expand[n3 x + n4 y],dim],n,nb]]/;
@@ -316,7 +368,7 @@ rulesSP = {
 		n3 CartesianPair[a, CartesianMomentum[Expand[x - y],dim]] && !MemberQ[optExcept,x] && !MemberQ[optExcept,y]
 }
 
-rulesFV = {
+rulesFV[optExcept_] := {
 	(n3_. Pair[a_LorentzIndex, Momentum[x_, dim_:4]] + n4_. Pair[a_LorentzIndex, Momentum[y_, dim_:4]]):>
 		Pair[a, Momentum[ Expand[n3 x + n4 y],dim]]/; (NumberQ[n3] && NumberQ[n4] && n3=!=n4) && !MemberQ[optExcept,x] && !MemberQ[optExcept,y],
 
