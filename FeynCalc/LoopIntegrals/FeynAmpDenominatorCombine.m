@@ -1,14 +1,17 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FeynAmpDenominatorCombine *)
+(* :Title: FeynAmpDenominatorCombine										*)
 
-(* :Author: Rolf Mertig *)
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
 
-(* ------------------------------------------------------------------------ *)
-(* :History: File created on 22 June '97 at 22:58 *)
-(* ------------------------------------------------------------------------ *)
-
-(* :Summary: combines products of FeynAmpDenominatos *)
+(* :Summary: Combines products of FeynAmpDenominators.						*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -20,8 +23,6 @@ one FeynAmpDenominator.";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
-
-fdsor;
 
 End[]
 
@@ -39,39 +40,88 @@ feyncomb /:
 		feyncomb @@ Flatten[Table[{a}, {n}]];
 
 fdsor[a__] :=
-	Apply[FeynAmpDenominator, Sort[MomentumExpand[{a}], FeynCalc`Package`lenso]];
+	Apply[FeynAmpDenominator, Sort[{a}, FeynCalc`Package`lenso]];
 
 Options[FeynAmpDenominatorCombine] = {
-	FCE 		-> False,
-	FCI 		-> False,
-	Momentum	-> All
+	FCE 			-> False,
+	FCI 			-> False,
+	FCVerbose		-> False,
+	Momentum		-> All
 };
 
 FeynAmpDenominatorCombine[expr_, OptionsPattern[]] :=
-	Block[{ex,res, optMomentum},
+	Block[{	ex, res, optMomentum, fadcVerbose, time,
+			momsList, momsListExpanded, repRule, feyncombList, feyncombListEval},
 
+		If[	OptionValue[FCVerbose]===False,
+			fadcVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				fadcVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		time=AbsoluteTime[];
+
+		FCPrint[1,"FeynAmpDenominatorCombine: Applying FCI.", FCDoControl->fadcVerbose];
 		If[ OptionValue[FCI],
 			ex = expr,
 			ex = FCI[expr]
 		];
+		FCPrint[1, "FeynAmpDenominatorCombine: Done applying FCI, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fadcVerbose];
 
-		optMomentum = OptionValue[Momentum];
+		optMomentum 		= OptionValue[Momentum];
 
 		If[FreeQ[ex,FeynAmpDenominator],
 			Return[ex]
 		];
 
-		res = Expand2[ex, FeynAmpDenominator];
-
-
-		If[ optMomentum=!=All && Head[optMomentum]===List,
-			res = res /. FeynAmpDenominator[x__]/;!FreeQ2[{x},optMomentum] :> feyncomb[x] /. feyncomb -> fdsor,
-			res = res /. FeynAmpDenominator -> feyncomb /. feyncomb -> fdsor
+		If[Head[expr]=!=List,
+			ex = {ex}
 		];
+
+
+
+		time=AbsoluteTime[];
+		FCPrint[1,"FeynAmpDenominatorCombine: Applying Expand2.", FCDoControl->fadcVerbose];
+		res = Expand2[ex,FeynAmpDenominator];
+		FCPrint[1, "FeynAmpDenominatorCombine: Done applying Expand2, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fadcVerbose];
+
+
+		time=AbsoluteTime[];
+		FCPrint[1,"FeynAmpDenominatorCombine: Precombining FeynAmpDenominators.", FCDoControl->fadcVerbose];
+		If[ optMomentum=!=All && Head[optMomentum]===List,
+			res = res /. FeynAmpDenominator[x__]/;!FreeQ2[{x},optMomentum] :> feyncomb[x],
+			res = res /. FeynAmpDenominator -> feyncomb
+		];
+		FCPrint[1, "FeynAmpDenominatorCombine: Done precombining FeynAmpDenominators, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fadcVerbose];
+
+		time=AbsoluteTime[];
+		FCPrint[1,"FeynAmpDenominatorCombine: Creating replacement rules.", FCDoControl->fadcVerbose];
+		feyncombList = Cases2[res,feyncomb];
+		momsList 	= Cases2[feyncombList, {Momentum, CartesianMomentum, TemporalMomentum}];
+		momsListExpanded = MomentumExpand[momsList];
+		repRule = Thread[Rule[momsList,momsListExpanded]];
+		feyncombListEval = feyncombList /. Dispatch[repRule] /. feyncomb -> fdsor;
+		repRule = Dispatch[Thread[Rule[feyncombList,feyncombListEval]]];
+		FCPrint[1, "FeynAmpDenominatorCombine: Done creating replacement rules, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fadcVerbose];
+
+
+		time=AbsoluteTime[];
+		FCPrint[1,"FeynAmpDenominatorCombine: Applying replacement rules .", FCDoControl->fadcVerbose];
+		res = res /. Dispatch[repRule];
+
+		FCPrint[1, "FeynAmpDenominatorCombine: Done applying replacement rules, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fadcVerbose];
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
 		];
+
+		If[Head[expr]=!=List,
+			res = First[res]
+		];
+
+		FCPrint[1,"FeynAmpDenominatorCombine: Leaving.", FCDoControl->fadcVerbose];
+		FCPrint[3,"FeynAmpDenominatorCombine: Leaving with: ", res, FCDoControl->fadcVerbose];
 
 		res
 

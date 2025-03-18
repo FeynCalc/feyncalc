@@ -30,53 +30,99 @@ End[]
 
 Begin["`FCLoopPropagatorPowersCombine`Private`"]
 
+fdsor[a__] :=
+	Apply[FeynAmpDenominator, Sort[{a}, FeynCalc`Package`lenso]];
+
 Options[FCLoopPropagatorPowersCombine] = {
 	FeynAmpDenominatorCombine	-> True,
 	FCE 						-> False,
-	FCI							-> False
+	FCI							-> False,
+	FCVerbose					-> False
 };
 
-FCLoopPropagatorPowersCombine[expr_, OptionsPattern[]] :=
-	Block[{ex, res, fadsList, fadsListEval, repRule, fad},
+FCLoopPropagatorPowersCombine[exprRaw_/; FreeQ[exprRaw, OptionQ], OptionsPattern[]] :=
+	Block[{	res, time, ppcVerbose, expr, ex, fadsList, momsList, momsListExpanded, repRule,
+			fadsListEval},
 
+		If [OptionValue[FCVerbose]===False,
+				ppcVerbose=$VeryVerbose,
+				If[MatchQ[OptionValue[FCVerbose], _Integer],
+					ppcVerbose=OptionValue[FCVerbose]
+				];
+		];
+
+		If[	TrueQ[Head[exprRaw]=!=List],
+			expr = {exprRaw},
+			expr = exprRaw
+		];
+
+		FCPrint[1,"FCLoopPropagatorPowersCombine: Entering." , FCDoControl->ppcVerbose];
+		FCPrint[3,"FCLoopPropagatorPowersCombine: Entering with: ", expr, FCDoControl->ppcVerbose];
+
+
+		time=AbsoluteTime[];
+		FCPrint[1,"FCLoopPropagatorPowersCombine: Applying FCI." , FCDoControl->ppcVerbose];
 		If[ OptionValue[FCI],
 			ex = expr,
 			ex = FCI[expr]
 		];
+		FCPrint[1,"FCLoopPropagatorPowersCombine: Done applying FCI, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->ppcVerbose];
 
-		If[FreeQ2[ex, {StandardPropagatorDenominator, CartesianPropagatorDenominator, GenericPropagatorDenominator}],
-			Return[ex]
+		If[	FreeQ2[ex, {StandardPropagatorDenominator, CartesianPropagatorDenominator, GenericPropagatorDenominator}],
+			If[	TrueQ[Head[exprRaw]=!=List],
+				Return[First[ex]],
+				Return[ex]
+			];
 		];
 
 
+		(* FeynAmpDenominatorCombine is already efficient enough without parallelization *)
 		If[	OptionValue[FeynAmpDenominatorCombine],
-			ex= FeynAmpDenominatorCombine[ex,FCI->True]
+			time=AbsoluteTime[];
+			FCPrint[1,"FCLoopPropagatorPowersCombine: Applying FeynAmpDenominatorCombine." , FCDoControl->ppcVerbose];
+			ex= FeynAmpDenominatorCombine[ex, FCI->True];
+			FCPrint[1,"FCLoopPropagatorPowersCombine: Done applying FeynAmpDenominatorCombine, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->ppcVerbose];
+			FCPrint[3,"FCLoopPropagatorPowersCombine: After FeynAmpDenominatorCombine:: ", ex, FCDoControl->ppcVerbose];
 		];
+
+		time=AbsoluteTime[];
+		FCPrint[1,"FCLoopPropagatorPowersCombine: Creating replacement rules.", FCDoControl->ppcVerbose];
 
 		fadsList = Cases2[ex, FeynAmpDenominator];
+		momsList 	= Cases2[fadsList, {Momentum, CartesianMomentum, TemporalMomentum}];
+		momsListExpanded = MomentumExpand[momsList];
+		repRule = Thread[Rule[momsList,momsListExpanded]];
+		fadsListEval = fadsList /. Dispatch[repRule] /. FeynAmpDenominator -> fdsor;
 
-		fadsListEval = fadsList /. FeynAmpDenominator -> FeynCalc`Package`fdsor /. FeynAmpDenominator -> fad //. {
+		fadsListEval = fadsListEval /. FeynAmpDenominator -> fad //. {
 			fad[a___,
-				(h:StandardPropagatorDenominator|CartesianPropagatorDenominator|GenericPropagatorDenominator)[x__, {n1_Integer,s_}],
-				(h:StandardPropagatorDenominator|CartesianPropagatorDenominator|GenericPropagatorDenominator)[x__, {n2_Integer,s_}],
-			b___] :>
-			fad[a,h[x,{n1+n2,s}],b]
+				(h:StandardPropagatorDenominator|CartesianPropagatorDenominator|GenericPropagatorDenominator)[x__, {n_Integer,s_}],
+				(h:StandardPropagatorDenominator|CartesianPropagatorDenominator|GenericPropagatorDenominator)[x__, {m_Integer,s_}],
+			b___] :> fad[a,h[x,{n+m,s}],b]
 		} /. (StandardPropagatorDenominator|CartesianPropagatorDenominator|GenericPropagatorDenominator)[__, {0,_}] :> Unevaluated[Sequence[]] /.
 		fad[] -> 1 /. fad -> FeynAmpDenominator;
 
-		repRule = Thread[Rule[fadsList,fadsListEval]];
+		repRule = Dispatch[Thread[Rule[fadsList,fadsListEval]]];
+		FCPrint[1, "FCLoopPropagatorPowersCombine: Done creating replacement rules, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->ppcVerbose];
 
+		time=AbsoluteTime[];
+		FCPrint[1,"FCLoopPropagatorPowersCombine: Applying replacement rules.", FCDoControl->ppcVerbose];
 		res = ex /. Dispatch[repRule];
+		FCPrint[1, "FCLoopPropagatorPowersCombine: Done applying replacement rules, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->ppcVerbose];
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
 		];
 
+		If[	TrueQ[Head[exprRaw]=!=List],
+			res = First[res]
+		];
+
+		FCPrint[1,"FCLoopPropagatorPowersCombine: Leaving.", FCDoControl->ppcVerbose];
+		FCPrint[3,"FCLoopPropagatorPowersCombine with: ", res, FCDoControl->ppcVerbose];
+
 		res
-
-
 	];
-
 
 FCPrint[1,"FCLoopPropagatorPowersCombine.m loaded."];
 End[]
