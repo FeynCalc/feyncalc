@@ -41,7 +41,7 @@ Options[FCLoopIntegralToPropagators] = {
 	ExpandScalarProduct -> False,
 	FCE 				-> False,
 	FCI 				-> False,
-	FCParallelize		-> True,
+	(*FCParallelize		-> True,*)
 	FCVerbose 			-> False,
 	MomentumCombine 	-> True,
 	Negative 			-> False,
@@ -52,10 +52,15 @@ Options[FCLoopIntegralToPropagators] = {
 	TemporalPair 		-> False,
 	ToSFAD 				-> True
 }
+(*
+	Direct parallelization is does not seem to be useful here, as the function cannot
+	deal with lists of integrals. A list is understood to be a list of propagators of a single
+	integral. Hence, it is better to parallelize FCLoopIntegralToPropagators via ParallelMap inside
+	the caller function.
+*)
 
 FCLoopIntegralToPropagators[expr_, lmoms_List/; FreeQ[lmoms, OptionQ], OptionsPattern[]]:=
-	Block[{	exp, tmp, res, dummy, expAsList, rest, listHead, itpVerbose, time,
-			optFCParallelize},
+	Block[{	exp, tmp, res, dummy, expAsList, rest, listHead, itpVerbose, time},
 
 		If [OptionValue[FCVerbose]===False,
 			itpVerbose=$VeryVerbose,
@@ -64,7 +69,7 @@ FCLoopIntegralToPropagators[expr_, lmoms_List/; FreeQ[lmoms, OptionQ], OptionsPa
 			];
 		];
 
-		optFCParallelize = OptionValue[FCParallelize];
+		(*optFCParallelize = OptionValue[FCParallelize];*)
 
 		If[	Length[lmoms]<1,
 			Message[FCLoopIntegralToPropagators::failmsg,"The list of the loop momenta cannot be empty."];
@@ -106,9 +111,6 @@ FCLoopIntegralToPropagators[expr_, lmoms_List/; FreeQ[lmoms, OptionQ], OptionsPa
 
 		optEtaSign = OptionValue[EtaSign];
 
-		(*-------------------------------------------------------------------------------------------*)
-
-		(*Careful, the input can be a list of integrals that needs to be processed here one by one*)
 		If[	Head[exp]===List,
 			expAsList = exp,
 			expAsList = List@@(dummy*exp)
@@ -133,7 +135,7 @@ FCLoopIntegralToPropagators[expr_, lmoms_List/; FreeQ[lmoms, OptionQ], OptionsPa
 		If[	OptionValue[MomentumCombine],
 			time=AbsoluteTime[];
 			FCPrint[1,"FCLoopIntegralToPropagators: Applying MomentumCombine.", FCDoControl->itpVerbose];
-			expAsList = MomentumCombine[expAsList,FCI->True,FCParallelize->optFCParallelize];
+			expAsList = MomentumCombine[expAsList,FCI->True(*,FCParallelize->optFCParallelize*)];
 			FCPrint[1, "FCLoopIntegralToPropagators: MomentumCombine done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->itpVerbose]
 		];
 
@@ -173,8 +175,8 @@ FCLoopIntegralToPropagators[expr_, lmoms_List/; FreeQ[lmoms, OptionQ], OptionsPa
 		FCPrint[1, "FCLoopIntegralToPropagators: Done preparing the expression for auxIntegralToPropagators, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->itpVerbose];
 
 		time=AbsoluteTime[];
-	Global`VVV = tmp;
 
+		(*
 		If[	$ParallelizeFeynCalc && optFCParallelize,
 
 			FCPrint[1, "FCLoopIntegralToPropagators: Calling auxIntegralToPropagators in parallel.", FCDoControl -> itpVerbose];
@@ -187,9 +189,11 @@ FCLoopIntegralToPropagators[expr_, lmoms_List/; FreeQ[lmoms, OptionQ], OptionsPa
 
 			FCPrint[1, "FCLoopIntegralToPropagators: Calling auxIntegralToPropagators.", FCDoControl -> itpVerbose];
 			tmp = auxIntegralToPropagators[#,lmoms]&/@tmp
-		];
+		];*)
+
+		tmp = auxIntegralToPropagators[#,lmoms]&/@tmp;
+
 		FCPrint[1, "FCLoopToPakForm: auxIntegralToPropagators done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->itpVerbose];
-		Global`ZZZ = tmp;
 		FCPrint[3,"FCLoopIntegralToPropagators: After auxIntegralToPropagators: ", tmp, FCDoControl->itpVerbose];
 
 		(*
@@ -327,10 +331,7 @@ FCLoopIntegralToPropagators[expr_, lmoms_List/; FreeQ[lmoms, OptionQ], OptionsPa
 	];
 
 
-processSingleIntegral[exp_,lmoms_]:=
-Block[{},
 
-];
 
 (* FADs *)
 
