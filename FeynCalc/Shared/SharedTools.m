@@ -865,9 +865,11 @@ FreeQ2[x_, {y_}] :=
 	FreeQ[x, y];
 
 FreeQ2[x_, {y_, z__}] :=
-	If[FreeQ[x, y],
-		FreeQ2[x, {z}],
-		False
+	Block[{$IterationLimit=Infinity},
+		If[FreeQ[x, y],
+			FreeQ2[x, {z}],
+			False
+		]
 	];
 
 (* this is eventually slower ...
