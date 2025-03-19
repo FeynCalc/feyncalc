@@ -159,9 +159,12 @@ feynampdenpartfrac[a___, gpd : GenericPropagatorDenominator[(c1_ :0) + (c2_. Sqr
 Apart3[expr_, x_] :=
 	Map2[Factor2, Collect2[Apart1[expr,x],x]];
 
+ApartFF[0, ___] :=
+	0;
 
 ApartFF[glis_List, topos_, opts:OptionsPattern[]] :=
-Map[ApartFF[#,topos,opts]&,glis];
+	Map[ApartFF[#,topos,opts]&,glis];
+
 
 ApartFF[gli_GLI, topoRaw_, opts:OptionsPattern[]] :=
 	Block[{int, optFinalSubstitutions, tmp, res, topo},
@@ -179,7 +182,7 @@ ApartFF[gli_GLI, topoRaw_, opts:OptionsPattern[]] :=
 		];
 
 		If[ Head[topo]===List,
-			topo = FCLoopSelectTopology[gli,topo]
+			topo = FCLoopSelectTopology[gli,topo,Check->False]
 		];
 
 		If[	Head[topo]=!=FCTopology,
@@ -219,11 +222,11 @@ ApartFF[gli_GLI, topoRaw_, opts:OptionsPattern[]] :=
 
 
 
-ApartFF[int_, lmoms_List , opts:OptionsPattern[]]:=
+ApartFF[int_/; int=!=0, lmoms_List , opts:OptionsPattern[]]:=
 	ApartFF[int, 1, lmoms , opts];
 
 
-ApartFF[int_, extraPiece_, lmoms_List , OptionsPattern[]]:=
+ApartFF[int_/; int=!=0, extraPiece_, lmoms_List , OptionsPattern[]]:=
 	Block[{	exp,tmp,loopHead,null1,null2,res,rest,
 			loopInts,intsUnique,solsList,repRule, time,
 			optCollecting, tcRepList, optFDS, optDropScaleless,
