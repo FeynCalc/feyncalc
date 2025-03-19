@@ -31,7 +31,10 @@ Begin["`FCLoopGetKinematicInvariants`Private`"]
 lgkVerbose::usage="";
 
 Options[FCLoopGetKinematicInvariants] = {
+	Check				-> True,
+	FCVerbose			-> False,
 	FCFeynmanPrepare	-> True,
+	FCParallelize		-> False,
 	FCI					-> False,
 	Union 				-> True
 };
@@ -39,54 +42,74 @@ Options[FCLoopGetKinematicInvariants] = {
 FCLoopGetKinematicInvariants[{}, OptionsPattern[]]:=
 	{};
 
-FCLoopGetKinematicInvariants[topos:{__FCTopology}, opts:OptionsPattern[]]:=
-	Block[{res},
-		res = FCLoopGetKinematicInvariants[#, opts]&/@topos;
+FCLoopGetKinematicInvariants[topoRaw_FCTopology, opts:OptionsPattern[]]:=
+	First[FCLoopGetKinematicInvariants[{topoRaw}, opts]];
 
-		If[	OptionValue[Union],
-			res = Union[Flatten[res]]
-		];
+FCLoopGetKinematicInvariants[toposRaw:{__FCTopology}, OptionsPattern[]]:=
+		Block[{topos, spRules, aux, invariants, x, invsTopo, optFCParallelize, lgkVerbose, check, time},
 
-		res
-	];
-
-FCLoopGetKinematicInvariants[topoRaw_FCTopology, OptionsPattern[]]:=
-		Block[{topo, spRules, aux, time, invariants, x, invsTopo},
+			If [ OptionValue[FCVerbose]===False,
+				lgkVerbose=$VeryVerbose,
+				If[MatchQ[OptionValue[FCVerbose], _Integer],
+					lgkVerbose=OptionValue[FCVerbose]
+				];
+			];
 
 			If[ !OptionValue[FCI],
-				topo = FCI[topoRaw],
-				topo = topoRaw
+				topos = FCI[toposRaw],
+				topos = toposRaw
 			];
 
-			If[	!FCLoopValidTopologyQ[topo],
-				Message[FCLoopFromGLI::failmsg, "The supplied topology is incorrect."];
-				Abort[]
+			optFCParallelize = OptionValue[FCParallelize];
+
+			If[	OptionValue[Check],
+				time=AbsoluteTime[];
+				If[	$ParallelizeFeynCalc && optFCParallelize && Length[topos]>1,
+					FCPrint[1, "FCLoopGetKinematicInvariants: Applying FCLoopValidTopologyQ in parallel.", FCDoControl -> lgkVerbose];
+
+					check = ParallelMap[FCLoopValidTopologyQ[#]&,topos, DistributedContexts -> None,
+						Method->"ItemsPerEvaluation" -> Ceiling[N[Length[topos]/$KernelCount]/10]],
+
+					FCPrint[1, "FCLoopGetKinematicInvariants: Applying FCLoopValidTopologyQ.", FCDoControl -> lgkVerbose];
+					check = (FCLoopValidTopologyQ/@topos);
+				];
+
+				FCPrint[1, "FCLoopGetKinematicInvariants: Done applying FCLoopValidTopologyQ, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->lgkVerbose];
+
+				If[	Union[check]=!={True},
+					Message[FCLoopGetKinematicInvariants::failmsg, "The supplied topologies are incorrect."];
+					Abort[]
+				];
 			];
 
-			spRules = topo[[5]];
+			spRules = Map[#[[5]]&,topos];
+			invsTopo = Map[(Last/@#)&,spRules];
 
-			If[	spRules=!={},
-				invsTopo = Last/@spRules,
-				invsTopo = {}
-			];
 			FCPrint[3, "FCLoopGetKinematicInvariants: Invariants from the kinematic rules of the topology: ", invsTopo, FCDoControl->lgkVerbose];
-
 
 			If[	TrueQ[OptionValue[FCFeynmanPrepare]],
 				time=AbsoluteTime[];
 				FCPrint[1,"FCLoopGetKinematicInvariants: Calling FCFeynmanPrepare.", FCDoControl->lgkVerbose];
-				aux = FCFeynmanPrepare[topo, Names->x, FCI -> True, Check->False, Collecting -> False, FCLoopGetEtaSigns -> False];
-				FCPrint[1,"FCLoopGetKinematicInvariants: FCFeynmanPrepare done, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->lgkVerbose];
+				aux = FCFeynmanPrepare[topos, Names->x, FCI -> True, Check->False, Collecting -> False, FCLoopGetEtaSigns -> False, FCParallelize->optFCParallelize];
+				FCPrint[1,"FCLoopGetKinematicInvariants: FCFeynmanPrepare done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->lgkVerbose];
 				FCPrint[3, "FCLoopGetKinematicInvariants: After FCFeynmanPrepare: ", aux, FCDoControl->lgkVerbose];
 
-				invariants = SelectFree[Variables2[ExpandScalarProduct[aux[[2]],FCI->True]],x];
+				invariants = Map[SelectFree[Variables2[ExpandScalarProduct[#[[2]],FCI->True]],x]&,aux];
 				FCPrint[3, "FCLoopGetKinematicInvariants: Invariants from FCFeynmanPrepare: ", invariants, FCDoControl->lgkVerbose],
 
-				invariants = {}
+				invariants = ConstantArray[{},Length[topos]]
 			];
+
+			invariants = MapThread[Variables2[Union[Join[#1,#2]]]&,{invariants,invsTopo}];
+(*
 			invariants = Union[Join[invariants,invsTopo]];
 
 			invariants = Variables2[invariants];
+*)
+			If[	OptionValue[Union] && Length[invariants]>1,
+				invariants = Union[Flatten[invariants]]
+			];
+
 
 			invariants
 		];
