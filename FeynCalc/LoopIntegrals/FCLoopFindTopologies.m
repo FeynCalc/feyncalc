@@ -684,7 +684,7 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 			];
 
 			If[	scalelessTopologies=!={},
-				FCPrint[0, "FCLoopFindTopologies: Follwing identified topologies are scaleless and will be set to zero: ",
+				FCPrint[2, "FCLoopFindTopologies: Follwing identified topologies are scaleless and will be set to zero: ",
 					First/@SelectNotFree[finalTopologies,scalelessTopologies], FCDoControl->fcfsopVerbose];
 
 				finalTopologies = SelectFree[finalTopologies,scalelessTopologies];
