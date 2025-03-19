@@ -47,10 +47,19 @@ the FeynArts diagrams will be dropped. Those symbols are usually not needed in
 FeynCalc where Einstein summation always applies, but they might be kept for
 other purposes.";
 
+DropIndexSum::usage =
+"DropSumOver is an option of FCFAConvert. When set to True, IndexSum symbols in
+the FeynArts diagrams will be dropped. This option is set to True by default.";
+
 FCFAConvert::sumOverWarn =
 "You are omitting SumOver objects that may represent a nontrivial summation. \
 This may lead to a loss of overall factors multiplying some of your diagrams. \
 Please make sure that this is really what you want.";
+
+FCFAConvert::indexSumWarn =
+"The diagrams contain some explicit summations denoted with IndexSum that \
+might become obscured during the convertion. The removal of IndexSum symbols \
+can be disabled by setting the option DropIndexSum to False.";
 
 FCFAConvert::noSpinors =
 "Error! You are using a model that contains 4-fermion vertices, but the \
@@ -70,6 +79,7 @@ Options[FCFAConvert] = {
 	ChangeDimension 				-> False,
 	Contract 						-> False,
 	DropSumOver 					-> False,
+	DropIndexSum					-> True,
 	FCFADiracChainJoin				-> True,
 	FeynAmpDenominatorCombine		-> True,
 	FinalSubstitutions				-> {},
@@ -104,6 +114,7 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[infos__][diags___], OptionsPatt
 		dim			= OptionValue[ChangeDimension];
 		prefactor	= OptionValue[Prefactor];
 
+
 		repRuleMomenta = {};
 		repRuleLorentzIndices={};
 		repRuleSUNIndices={};
@@ -118,8 +129,15 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[infos__][diags___], OptionsPatt
 			If[a=!={},Transpose[a][[2]],{}],If[b=!={},Transpose[b][[2]],{}]
 			};
 
+
+		If[	OptionValue[DropIndexSum],
+			If[	!FreeQ[diagsConverted,FeynArts`IndexSum],
+				Message[FCFAConvert::indexSumWarn]
+			]
+		];
+
 		diagsConverted = FCPrepareFAAmp[diagsConverted,UndoChiralSplittings->OptionValue[UndoChiralSplittings],SMP->OptionValue[SMP],
-			FeynAmpDenominatorCombine->OptionValue[FeynAmpDenominatorCombine]];
+			FeynAmpDenominatorCombine->OptionValue[FeynAmpDenominatorCombine], DropIndexSum->OptionValue[DropIndexSum]];
 
 		diagsConverted = prefactor diagsConverted;
 
@@ -141,6 +159,8 @@ FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[infos__][diags___], OptionsPatt
 			];
 			diagsConverted = diagsConverted/.FeynArts`SumOver[___]:> 1
 		];
+
+
 
 		lorentzIndices	= Cases[diagsConverted, LorentzIndex[in_,___] :> in]//Union;
 		sunIndices 		= Cases[diagsConverted, SUNIndex[in_,___] :> in]//Union;

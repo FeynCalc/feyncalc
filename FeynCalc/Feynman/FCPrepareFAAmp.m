@@ -35,6 +35,7 @@ Begin["`FCPrepareFAAmp`Private`"]
 tmp::usage="";
 
 Options[FCPrepareFAAmp] = {
+	DropIndexSum				-> True,
 	FeynAmpDenominatorCombine	-> True,
 	SMP 						-> False,
 	UndoChiralSplittings 		-> False
@@ -77,9 +78,9 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 
 		replist0 = {
 			NonCommutative[x__] :> FeynArts`FANonCommutative[x],
-			FeynArts`IndexSum[x_, {ind_, _, _}, moreinds__] /; Length[Cases[x, ind, Infinity, Heads -> True]] == 2 && FreeQ[x, FeynArts`IndexSum] :>
+			FeynArts`IndexSum[x_, {ind_, _, _}, moreinds__] /; OptionValue[DropIndexSum] && Length[Cases[x, ind, Infinity, Heads -> True]] == 2 && FreeQ[x, FeynArts`IndexSum] :>
 				(tmp = Unique["Ind"]; FeynArts`IndexSum[x /. ind -> tmp, moreinds]),
-			FeynArts`IndexSum[x_, {ind_, _, _}] /; Length[Cases[x, ind, Infinity, Heads -> True]] == 2 && FreeQ[x,FeynArts`IndexSum] :>
+			FeynArts`IndexSum[x_, {ind_, _, _}] /; OptionValue[DropIndexSum] && Length[Cases[x, ind, Infinity, Heads -> True]] == 2 && FreeQ[x,FeynArts`IndexSum] :>
 				(tmp = Unique["Ind"] ; x /. ind -> tmp)
 		};
 
