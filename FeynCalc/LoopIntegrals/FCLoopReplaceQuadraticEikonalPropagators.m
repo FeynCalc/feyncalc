@@ -63,7 +63,7 @@ Options[FCLoopReplaceQuadraticEikonalPropagators] = {
 FCLoopReplaceQuadraticEikonalPropagators[topo_FCTopology, opts:OptionsPattern[]]:=
 	FCLoopReplaceQuadraticEikonalPropagators[{topo}, opts];
 
-FCLoopReplaceQuadraticEikonalPropagators[toposRaw:{__FCTopology}, OptionsPattern[]]:=
+FCLoopReplaceQuadraticEikonalPropagators[toposRaw_List, OptionsPattern[]]:=
 	Block[{	topos, optInitialSubstitutions, optIntermediateSubstitutions,
 			optPowerExpand, optFeynAmpDenominatorExplicit, optLoopMomenta,
 			props, propsConverted, repRule},
