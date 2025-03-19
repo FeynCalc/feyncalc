@@ -33,7 +33,7 @@ for exFile in 'MnelEl-MnelEl.m'
 do
   echo
   echo -e "* \c"
-  $MATH -nopromt -script ../FeynCalc/Examples/MSSM/Tree/$exFile
+  $MATH -nopromt -script ../FeynCalc/Examples/MSSM/Tree/Mathematica/$exFile
 done
 
 #Phi3 Examples
@@ -43,7 +43,7 @@ for exFile in 'Renormalization.m'
 do
   echo
   echo -e "* \c"
-  $MATH -nopromt -script ../FeynCalc/Examples/Phi3/OneLoop/$exFile
+  $MATH -nopromt -script ../FeynCalc/Examples/Phi3/OneLoop/Mathematica/$exFile
 done
 
 
@@ -54,7 +54,7 @@ for exFile in 'PhiPhi-PhiPhi.m' 'Renormalization.m'
 do
   echo
   echo -e "* \c"
-  $MATH -nopromt -script ../FeynCalc/Examples/Phi4/OneLoop/$exFile
+  $MATH -nopromt -script ../FeynCalc/Examples/Phi4/OneLoop/Mathematica/$exFile
 done
 #-------------------------------------------------------------------------------
 
@@ -67,7 +67,7 @@ for exFile in 'ElAel-ElAel.m' 'ElAel-GaGa.m' 'ElAel-MuAmu.m' 'ElEl-ElEl.m' \
 do
   echo
   echo -e "* \c"
-  $MATH -nopromt -script ../FeynCalc/Examples/QED/Tree/$exFile
+  $MATH -nopromt -script ../FeynCalc/Examples/QED/Tree/Mathematica/$exFile
 done
 
 for exFile in 'El-El.m' 'El-GaEl.m' 'Ga.m' 'Ga-Ga.m' 'Ga-GaGa.m' 'Ga-GaGaGaGa.m' \
@@ -76,7 +76,7 @@ for exFile in 'El-El.m' 'El-GaEl.m' 'Ga.m' 'Ga-Ga.m' 'Ga-GaGa.m' 'Ga-GaGaGaGa.m'
 do
   echo
   echo -e "* \c"
-  $MATH -nopromt -script ../FeynCalc/Examples/QED/OneLoop/$exFile
+  $MATH -nopromt -script ../FeynCalc/Examples/QED/OneLoop/Mathematica/$exFile
 done
 #-------------------------------------------------------------------------------
 
@@ -92,7 +92,7 @@ for exFile in 'ElAel-QQbar.m' 'GaGl-QQbar.m' 'Ga-QQbar.m' 'Ga-QQbarGl.m' \
 do
   echo
   echo -e "* \c"
-  $MATH -nopromt -script ../FeynCalc/Examples/QCD/Tree/$exFile
+  $MATH -nopromt -script ../FeynCalc/Examples/QCD/Tree/Mathematica/$exFile
 done
 
 for exFile in 'Gh-Gh.m' 'GhGl-Gh.m' 'Gl-Gl.m' 'Gl-Gl-BackgroundFieldGauge.m' \
@@ -101,7 +101,7 @@ for exFile in 'Gh-Gh.m' 'GhGl-Gh.m' 'Gl-Gl.m' 'Gl-Gl-BackgroundFieldGauge.m' \
 do
   echo
   echo -e "* \c"
-  $MATH -nopromt -script ../FeynCalc/Examples/QCD/OneLoop/$exFile
+  $MATH -nopromt -script ../FeynCalc/Examples/QCD/OneLoop/Mathematica/$exFile
 done
 
 for exFile in 'Gh-Gh.m'
@@ -109,7 +109,7 @@ for exFile in 'Gh-Gh.m'
 do
   echo
   echo -e "* \c"
-  $MATH -nopromt -script ../FeynCalc/Examples/QCD/TwoLoops/$exFile
+  $MATH -nopromt -script ../FeynCalc/Examples/QCD/TwoLoops/Mathematica/$exFile
 done
 #-------------------------------------------------------------------------------
 
@@ -124,7 +124,7 @@ for exFile in 'AnelEl-AnmuMu.m' 'AnelEl-QubarQd.m' 'AnelEl-WW.m' 'AnelEl-ZZ.m' \
 do
   echo
   echo -e "* \c"
-  $MATH -nopromt -script ../FeynCalc/Examples/EW/Tree/$exFile
+  $MATH -nopromt -script ../FeynCalc/Examples/EW/Tree/Mathematica/$exFile
 done
 
 for exFile in 'H-GG.m'
@@ -132,7 +132,7 @@ for exFile in 'H-GG.m'
 do
   echo
   echo -e "* \c"
-  $MATH -nopromt -script ../FeynCalc/Examples/EW/OneLoop/$exFile
+  $MATH -nopromt -script ../FeynCalc/Examples/EW/OneLoop/Mathematica/$exFile
 done
 #-------------------------------------------------------------------------------
 

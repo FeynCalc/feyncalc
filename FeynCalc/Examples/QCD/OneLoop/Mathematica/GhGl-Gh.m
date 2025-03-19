@@ -187,8 +187,11 @@ the counter-term :",
 knownResult =
 	-I(-I SMP["g_s"] FVD[p3,mu]SUNF[a,b,c]( SMP["g_s"]^2/(4Pi)^2 CA*
 		GaugeXi["G"]/2 SMP["Delta"]));
-FCCompareResults[amp1Div[1],knownResult,
+FCCompareResults[PowerExpand[amp1Div[1]],knownResult,
 Text->{"\tCompare to Muta, Foundations of QCD, \
 Eq. 2.5.142:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
+
+
+
