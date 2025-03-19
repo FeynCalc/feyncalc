@@ -59,7 +59,7 @@ FCLoopSelectTopology[glisRaw_List, topos:{__FCTopology}, OptionsPattern[]] :=
 
 		If[	TrueQ[!MatchQ[glisRaw, {__GLI}]],
 
-			If[	TrueQ[MatchQ[glisRaw,{(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..}]],
+			If[	TrueQ[MatchQ[glisRaw,{(_GLI | Power[_GLI, _] | 0 | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..}]],
 				(*List of GLIs involving products*)
 				glis = Cases2[#+null,GLI]&/@glisRaw;
 				gliTopos=glis /. GLI[id_,__] :> id,
