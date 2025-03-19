@@ -865,7 +865,7 @@ FreeQ2[x_, {y_}] :=
 	FreeQ[x, y];
 
 FreeQ2[x_, {y_, z__}] :=
-	Block[{$IterationLimit=Infinity},
+	Block[{$IterationLimit=Infinity, $RecursionLimit=Infinity},
 		If[FreeQ[x, y],
 			FreeQ2[x, {z}],
 			False
@@ -1054,7 +1054,7 @@ SelectFree[0,__] :=
 	0;
 
 SelectFree[a_, b__] :=
-	Block[{dum1,dum2, select, $IterationLimit=Infinity},
+	Block[{dum1,dum2, select, $IterationLimit=Infinity, $RecursionLimit=Infinity},
 		select[x_, y_ /; Head[y] =!= List] :=
 			Select[x, FreeQ[#, y]&];
 		select[x_, y_List ] :=
@@ -1075,7 +1075,7 @@ SelectFree2[x_List,args__] :=
 	SelectFree[x,args];
 
 SelectFree2[x_,args__] :=
-	Block[{tmp, res, null1, null2, $IterationLimit=Infinity},
+	Block[{tmp, res, null1, null2, $IterationLimit=Infinity, $RecursionLimit=Infinity},
 		tmp = Expand2[x,Flatten[{args}]];
 
 		If[	Head[tmp]===Plus,
@@ -1089,7 +1089,7 @@ SelectNotFree[0,__] :=
 	0;
 
 SelectNotFree[a_, b__] :=
-	Block[{dum1,dum2, select, $IterationLimit=Infinity},
+	Block[{dum1,dum2, select, $IterationLimit=Infinity, $RecursionLimit=Infinity},
 		select[x_, y_ /; Head[y] =!= List]  :=
 			Select[x, !FreeQ[#, y]&];
 		select[x_, y_List ]  :=
@@ -1109,7 +1109,7 @@ SelectNotFree2[x_List,args__] :=
 	SelectNotFree[x,args];
 
 SelectNotFree2[x_,args__] :=
-	Block[{tmp, res, null1, null2, $IterationLimit=Infinity},
+	Block[{tmp, res, null1, null2, $IterationLimit=Infinity, $RecursionLimit=Infinity},
 		tmp = Expand2[x,Flatten[{args}]];
 
 		If[	Head[tmp]===Plus,
