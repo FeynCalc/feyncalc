@@ -203,7 +203,7 @@ FCFeynmanPrepare[glis_, topos:{__FCTopology}, opts:OptionsPattern[]] :=
 			With[{xxx = lmomsList}, ParallelEvaluate[FCContext`FCFeynmanPrepare`lmomsList = xxx;, DistributedContexts -> None]];
 			res = ParallelMap[FCFeynmanPrepare[#[[1]], FCContext`FCFeynmanPrepare`lmomsList, Join[{FCI->True,FinalSubstitutions->#[[2]]},
 			FilterRules[{opts}, Except[FCI | FinalSubstitutions | FCVerbose]]]]&,Transpose[{ints,finalSubstitutions}],
-			DistributedContexts -> None, Method -> "CoarsestGrained"];
+			DistributedContexts -> None, Method->"ItemsPerEvaluation" -> Ceiling[N[Length[ints]/$KernelCount]/10]];
 			FCPrint[1, "FCFeynmanPrepare: Done applying FCFeynmanPrepare in parallel, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose],
 
 			FCPrint[1,"FCFeynmanPrepare: Applying FCFeynmanPrepare.", FCDoControl->fcszVerbose];
@@ -218,7 +218,8 @@ FCFeynmanPrepare[glis_, topos:{__FCTopology}, opts:OptionsPattern[]] :=
 
 FCFeynmanPrepare[toposRaw: {__FCTopology}, opts:OptionsPattern[]]:=
 	If[	$ParallelizeFeynCalc && OptionValue[FCParallelize],
-		ParallelMap[FCFeynmanPrepare[#, FilterRules[{opts}, Except[FCParallelize]]]&,toposRaw, DistributedContexts->None, Method -> "CoarsestGrained"],
+		ParallelMap[FCFeynmanPrepare[#, FilterRules[{opts}, Except[FCParallelize]]]&,toposRaw, DistributedContexts->None,
+			Method->"ItemsPerEvaluation" -> Ceiling[N[Length[toposRaw]/$KernelCount]/10]],
 		Map[FCFeynmanPrepare[#, opts]&,toposRaw]
 	];
 
