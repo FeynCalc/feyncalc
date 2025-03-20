@@ -108,7 +108,31 @@ Larin's scheme [Larin:1993tq](https://arxiv.org/pdf/hep-ph/9302240.pdf) is a var
 
 and then calculate the resulting trace. Then, all $\varepsilon^{\mu \nu \rho \sigma}$-tensors occurring in the amplitude should be evaluated in $D$ dimensions. Together with the correct counterterm, this prescription is known to give the same result as when using the full BMHV scheme.
 
-FeynCalc implement the so-called Moch-Vermaseren-Vogt MVV formula from [Moch:2015usa](https://arxiv.org/pdf/1506.04517.pdf) for calculating $\gamma^5$-traces in this scheme. The scheme itself is activated by setting
+FeynCalc implement the so-called Moch-Vermaseren-Vogt MVV formula from [Moch:2015usa](https://arxiv.org/pdf/1506.04517.pdf) for calculating $\gamma^5$-traces in this scheme. This implementation has been developed for very particular types of calculations (DIS in QCD) and is not automatically applicable to any other process. In particular, there might be ambiguities that were not present in the calculation that the authors of [Moch:2015usa](https://arxiv.org/pdf/1506.04517.pdf) had in mind. For example, traces of the form
+
+\begin{equation}
+\mathrm{Tr}(\ldots \gamma^5 \gamma^{\mu_1} \ldots \gamma^{\mu_j} \gamma^5 \ldots )
+\end{equation}
+
+where the chain $ \gamma^{\mu_1} \ldots \gamma^{\mu_j}$ can be simplified to something like
+
+\begin{equation}
+\gamma^{\mu_1} \ldots \gamma^{\mu_j} = 1 + \ldots
+\end{equation}
+
+are not well defined in this scheme. Depending on whether one applies the above simplification before or after calculating the $\gamma^5$-trace, the results will differ. 
+
+The problem may arise already for traces like
+
+\begin{equation}
+\mathrm{Tr}(\gamma^\nu \gamma^\mu \gamma^5 (\gamma \cdot p) (\gamma \cdot q) \gamma^{5})
+\end{equation}
+
+where we may want to set $p=q$ before or after calculating the trace.
+
+
+
+The scheme itself is activated by setting
 
 ```mathematica
 FCSetDiracGammaScheme["Larin"]
@@ -130,6 +154,6 @@ for all but the right-most $\gamma^5$. Then the resulting trace will be evaluate
 
 Notice that according to [Moch:2015usa](https://arxiv.org/pdf/1506.04517.pdf) one should distinguish between Levi-Civita tensors appearing in the calculating from traces over axial-vector matrices and those introduced e.g. via projectors. The "axial-vector" Levi-Civitas should be contracted first to avoid incorrect results.
 
-Since FeynCalc has no way to know the origin of $\varepsilon$-tensors in the input expression, it is advised to rename the unrelated Levi-Civitas to something else while doing the trace calculations and reintroduce them after the traces have been succesfully evaluated.
+Since FeynCalc has no way to know the origin of $\varepsilon$-tensors in the input expression, it is advised to rename the unrelated Levi-Civitas to something else while doing the trace calculations and reintroduce them after the traces have been successfully evaluated.
 
 
