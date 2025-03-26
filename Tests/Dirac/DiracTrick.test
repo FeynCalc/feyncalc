@@ -1123,7 +1123,9 @@ GSE[a] . GSE[b] . GSE[c] SP[q, q] +
 2 (GSE[b] . GSE[c] . GSE[q] SPE[a, q] -
 	GSE[a] . GSE[c] . GSE[q] SPE[b, q] +
 	GSE[a] . GSE[b] . GSE[q] SPE[c, q]) -
-GSE[a] . GSE[b] . GSE[c] SPE[q, q]"}
+GSE[a] . GSE[b] . GSE[c] SPE[q, q]"},
+{"fcstDiracTrickCoreProperties-ID127",
+"DiracTrick[GA[5, 5, 5], InsideDiracTrace -> True]", "0"}
 });
 
 Tests`Dirac`fcstDiracTrick = {
