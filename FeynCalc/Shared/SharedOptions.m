@@ -15,6 +15,17 @@
 
 (* ------------------------------------------------------------------------ *)
 
+
+AugmentedTopologyMarker::usage =
+"AugmentedTopologyMarker is an option for FCLoopTensorReduce,
+FCLoopAugmentTopology and other functions. It marks topologies (written as
+GLIs denoting denominators only) that need to be augmented with propagators
+containing the given external momenta. This case usually occurs when doing a
+tensor reduction with zero Gram determinant
+and light-like external momenta, so that an auxiliary vector must be added to
+the
+basis.";
+
 CartesianIndexNames::usage =
 "CartesianIndexNames is an option for FCFAConvert, FCCanonicalizeDummyIndices
 and other functions. It renames the generic dummy Cartesian indices to the
@@ -374,6 +385,11 @@ SUNNToCACF::usage=
 "SUNNToCACF is an option of SUNSimplify and CalcColorFactor. If set to True,
 the Casimir operator eigenvalues CA ($=n_c$) and CF ($=(n_c^2-1)/(2 n_c)$) are
 introduced.";
+
+TensorReductionBasisChange::usage =
+"TensorReductionBasisChange is an option for FCLoopTensorReduce and other
+functions. It specifies how the given set of linearly dependent external
+momenta should be replaced by a set of linearly independent ones.";
 
 TraceOfOne::usage =
 "TraceOfOne is an option for TR and DiracTrace. Its setting determines the

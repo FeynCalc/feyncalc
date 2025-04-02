@@ -51,6 +51,8 @@ extMomsList::usage = "";
 loopNumerator::usage = "";
 
 Options[FCLoopTensorReduce] = {
+	AugmentedTopologyMarker		-> FCGV["AddPropagators"],
+	AuxiliaryMomenta			-> {},
 	Collecting					-> True,
 	Contract					-> True,
 	Dimension					-> D,
@@ -60,7 +62,9 @@ Options[FCLoopTensorReduce] = {
 	FCParallelize				-> True,
 	FCVerbose 					-> False,
 	Factoring 					-> {Factor2, 5000},
+	FinalSubstitutions			-> {},
 	Head						-> FCGV["GLIProduct"],
+	TensorReductionBasisChange	-> {},
 	TimeConstrained 			-> 3,
 	Uncontract					-> {Polarization}
 };
@@ -77,7 +81,8 @@ FCLoopTensorReduce[expr_, toposRaw_List, OptionsPattern[]] :=
 			numerators, canoNums, tdecList, tdecListEval, auxRule,
 			uniqueProductsListEval, optUncontract, extraMomentaToUncontract,
 			allMoms, ltrHold, fctrVerbose, optFCParallelize, ruRHS, ruLHS, ruAbb,
-			ruRev, ltrHoldAbb},
+			ruRev, ltrHoldAbb, gramCheckList, gramDetValues, optTensorReductionBasisChange,
+			optAuxiliaryMomenta, optAugmentedTopologyMarker, optFinalSubstitutions},
 
 		If[	OptionValue[FCVerbose] === False,
 			fctrVerbose = $VeryVerbose,
@@ -85,20 +90,24 @@ FCLoopTensorReduce[expr_, toposRaw_List, OptionsPattern[]] :=
 			fctrVerbose = OptionValue[FCVerbose]];
 		];
 
-		optHead 					= OptionValue[Head];
-		optFactoring 				= OptionValue[Factoring];
-		optTimeConstrained 			= OptionValue[TimeConstrained];
-		optUncontract				= OptionValue[Uncontract];
-		optFCParallelize			= OptionValue[FCParallelize];
+		optHead 						= OptionValue[Head];
+		optFactoring 					= OptionValue[Factoring];
+		optTimeConstrained 				= OptionValue[TimeConstrained];
+		optUncontract					= OptionValue[Uncontract];
+		optFCParallelize				= OptionValue[FCParallelize];
+		optTensorReductionBasisChange	= OptionValue[TensorReductionBasisChange];
+		optAuxiliaryMomenta				= OptionValue[AuxiliaryMomenta];
+		optAugmentedTopologyMarker		= OptionValue[AugmentedTopologyMarker];
+		optFinalSubstitutions			= OptionValue[FinalSubstitutions];
 
 
 		If[	!OptionValue[FCI],
 			(*	For large expressions FCI might require a considerable amount of time! *)
 			time=AbsoluteTime[];
 			FCPrint[1,"FCLoopTensorReduce: Applying FCI.", FCDoControl->fctrVerbose];
-			{ex, topos} = FCI[{expr, toposRaw}];
+			{ex, topos, optFinalSubstitutions} = FCI[{expr, toposRaw, optFinalSubstitutions}];
 			FCPrint[1, "FCLoopTensorReduce: Done applying FCI, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctrVerbose],
-			{ex, topos} = {expr, toposRaw}
+			{ex, topos, optFinalSubstitutions} = {expr, toposRaw, optFinalSubstitutions}
 		];
 
 		If[	!FCLoopValidTopologyQ[topos],
@@ -214,21 +223,44 @@ FCLoopTensorReduce[expr_, toposRaw_List, OptionsPattern[]] :=
 
 		time=AbsoluteTime[];
 
+		If[ TrueQ[optTensorReductionBasisChange=!={}],
+			FCPrint[1, "FCLoopTensorReduce: Switching to a different basis of external momenta.", FCDoControl->fctrVerbose];
+			optTensorReductionBasisChange = optTensorReductionBasisChange /. Rule[a_List,b_List] :> Rule[extMomsList[a],extMomsList[b]];
+			tdecListEval = tdecList /. Dispatch[optTensorReductionBasisChange],
+			tdecListEval  = tdecList
+		];
+
+		gramCheckList = tdecListEval /. loopNumerator[_ extMomsList[p_List] ] :> p;
+		gramDetValues = Map[FCGramDeterminant[#]&,gramCheckList];
+		gramCheckList = Extract[gramCheckList,Position[gramDetValues,0]];
+
+		If[	gramCheckList=!={},
+			Message[FCLoopTensorReduce::failmsg,"Following sets of external momenta are linearly dependent: " <> ToString[gramCheckList,InputForm] <>
+				". Please find a set of linearly independent momenta using FCLoopFindTensorBasis and supply it to the function via the option FCReplaceTensorBasis."];
+			Abort[];
+		];
+
 
 		If[	$ParallelizeFeynCalc && OptionValue[FCParallelize],
 				FCPrint[1,"FCLoopTensorReduce: Applying Tdec to a list in parallel." , FCDoControl->fctrVerbose];
 
 
-				tdecListEval = ParallelMap[(#/. loopNumerator -> loopNumeratorEval)&,tdecList, DistributedContexts->None,
+				tdecListEval = ParallelMap[(#/. loopNumerator -> loopNumeratorEval)&,tdecListEval, DistributedContexts->None,
 					(*Method->"CoarsestGrained"*)
 					(*Split the input into smaller chunks. We take the total number of expressions and divide it by the number of the kernels. This
 					number is then broken into 10 chunks*)
-					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[tdecList]/$KernelCount]/10]
+					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[tdecListEval]/$KernelCount]/10]
 					],
 				FCPrint[1,"FCLoopTensorReduce: Applying Tdec to a list." , FCDoControl->fctrVerbose];
-				tdecListEval = tdecList /. loopNumerator -> loopNumeratorEval;
+				tdecListEval = tdecListEval /. loopNumerator -> loopNumeratorEval;
 		];
 		FCPrint[1, "FCLoopTensorReduce: Done applying Tdec, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctrVerbose];
+
+		If[	optFinalSubstitutions=!={},
+			tdecListEval = tdecListEval/. optFinalSubstitutions
+		];
+
+		FCPrint[3,"FCLoopTensorReduce: After Tdec:" , tdecListEval, FCDoControl->fctrVerbose];
 
 		If[	!FreeQ[tdecListEval,loopNumeratorEval],
 			Message[FCLoopTensorReduce::failmsg,"Tensor reduction failed."];
@@ -241,6 +273,7 @@ FCLoopTensorReduce[expr_, toposRaw_List, OptionsPattern[]] :=
 		auxRule = Map[(Last[#] /. auxRule) &, canoNums];
 		auxRule = MapThread[FCLoopSolutionList[#1, #2] &, {canoNums, auxRule}];
 		auxRule = Flatten[Normal /@ auxRule];
+
 		FCPrint[3,"FCLoopTensorReduce: Replacement rule: ", auxRule, FCDoControl->fctrVerbose];
 		res = FRH[tmp /. Dispatch[auxRule], IsolateNames-> tidIsolate];
 		FCPrint[1,"FCLoopTensorReduce: Done inserting the results, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctrVerbose];
@@ -271,6 +304,10 @@ FCLoopTensorReduce[expr_, toposRaw_List, OptionsPattern[]] :=
 			FCPrint[1, "FCLoopTensorReduce: Contract done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctrVerbose]
 		];
 
+		If[	optFinalSubstitutions=!={},
+			res = res/. optFinalSubstitutions
+		];
+
 		If[	OptionValue[Collecting],
 			time=AbsoluteTime[];
 			FCPrint[1,"FCLoopTensorReduce: Applying Collect2.", FCDoControl->fctrVerbose];
@@ -280,8 +317,14 @@ FCLoopTensorReduce[expr_, toposRaw_List, OptionsPattern[]] :=
 
 		time=AbsoluteTime[];
 		FCPrint[1,"FCLoopTensorReduce: Creating the final result.", FCDoControl->fctrVerbose];
-		uniqueProductsListEval = MapThread[optHead[#1, #2] &, {res, gliList}] /. optHead[0,_] -> 0;
+		If[	TrueQ[optAuxiliaryMomenta=!={} && !FreeQ2[res,optAuxiliaryMomenta]],
+			uniqueProductsListEval = MapThread[If[FreeQ2[#1,optAuxiliaryMomenta],optHead[#1, #2],optHead[#1, optAugmentedTopologyMarker[optAuxiliaryMomenta] #2]] &, {res, gliList}] /. optHead[0,_] -> 0,
+			uniqueProductsListEval = MapThread[optHead[#1, #2] &, {res, gliList}] /. optHead[0,_] -> 0;
+		];
+
+		(* This is the final rule of the form FCGV["GLIProduct"][num, GLI[....]] -> FCGV["GLIProduct"][numReduced, GLI[....]] *)
 		auxRule = Thread[Rule[uniqueProductsList,uniqueProductsListEval]];
+
 		res = ex /. Dispatch[auxRule];
 		FCPrint[1,"FCLoopTensorReduce: Done creating the final result, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctrVerbose];
 

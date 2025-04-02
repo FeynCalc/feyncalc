@@ -1,0 +1,180 @@
+
+
+(* :Title: FCLoopFindTensorBasis.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopFindTensorBasis		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopFindTensorBasis =
+({
+{"fcstFCLoopFindTensorBasis-ID1",
+"FCLoopFindTensorBasis[{k1},{SPD[k1]->0},n,Head->pref,FCE->True]",
+"{{k1, n}, {}, {}}"},
+{"fcstFCLoopFindTensorBasis-ID2",
+"FCLoopFindTensorBasis[{k1},{SPD[k1]->0},n,Head->pref,All->True,\
+FCE->True]", "{{{k1, n}, {}, {}}}"},
+{"fcstFCLoopFindTensorBasis-ID3",
+"FCLoopFindTensorBasis[{k1,k2},{SPD[k1]->0,SPD[k2]->0,SPD[k1,k2]\
+->0},n,Head->pref,FCE->True]",
+"{{k1, n}, {k2}, {k2 -> k1*pref[SPD[k2, n]/SPD[k1, n]]}}"},
+{"fcstFCLoopFindTensorBasis-ID4",
+"FCLoopFindTensorBasis[{k1,k2},{SPD[k1]->0,SPD[k2]->0,SPD[k1,k2]\
+->0},n,All->True,Head->pref,FCE->True]",
+"{{{k1, n}, {k2}, {k2 -> k1*pref[SPD[k2, n]/SPD[k1, n]]}}, {{k2, \
+n}, {k1}, {k1 -> k2*pref[SPD[k1, n]/SPD[k2, n]]}}}"},
+{"fcstFCLoopFindTensorBasis-ID5",
+"FCLoopFindTensorBasis[{k1,k2},{SPD[k1]->c^2,SPD[k2]->d^2,SPD[k1,\
+k2]-> c d },n,FCE->True]",
+"{{k1}, {k2}, {k2 -> k1*FCGV[\"Prefactor\"][d/c]}}"},
+{"fcstFCLoopFindTensorBasis-ID6",
+"FCLoopFindTensorBasis[{k1,k2},{SPD[k1]->c^2,SPD[k2]->d^2,SPD[k1,\
+k2]-> c d },n,All->True,FCE->True]",
+"{{{k1}, {k2}, {k2 -> k1*FCGV[\"Prefactor\"][d/c]}}, {{k2}, {k1}, \
+{k1 -> k2*FCGV[\"Prefactor\"][c/d]}}}"},
+{"fcstFCLoopFindTensorBasis-ID7",
+"FCLoopFindTensorBasis[{k1,k2,k3},{SPD[k1]->0,SPD[k3]->0,SPD[k1,k3]\
+->0,SPD[k2,k2]->0,SPD[k1,k2]->0,SPD[k2,k3]->0},n,FCE->True]",
+"{{k1, n}, {k2, k3}, {k2 -> k1*FCGV[\"Prefactor\"][SPD[k2, \
+n]/SPD[k1, n]], k3 -> k1*FCGV[\"Prefactor\"][SPD[k3, n]/SPD[k1, \
+n]]}}"},
+{"fcstFCLoopFindTensorBasis-ID8",
+"FCLoopFindTensorBasis[{k1,k2,k3},{SPD[k1]->0,SPD[k3]->0,SPD[k1,k3]\
+->0,SPD[k2,k2]->0,SPD[k1,k2]->0,SPD[k2,k3]->0},n,All->True,FCE->True]\
+", "{{{k1, n}, {k2, k3}, {k2 -> k1*FCGV[\"Prefactor\"][SPD[k2, \
+n]/SPD[k1, n]], k3 -> k1*FCGV[\"Prefactor\"][SPD[k3, n]/SPD[k1, \
+n]]}}, {{k2, n}, {k1, k3}, {k1 -> k2*FCGV[\"Prefactor\"][SPD[k1, \
+n]/SPD[k2, n]], k3 -> k2*FCGV[\"Prefactor\"][SPD[k3, n]/SPD[k2, \
+n]]}}, {{k3, n}, {k1, k2}, {k1 -> k3*FCGV[\"Prefactor\"][SPD[k1, \
+n]/SPD[k3, n]], k2 -> k3*FCGV[\"Prefactor\"][SPD[k2, n]/SPD[k3, \
+n]]}}}"},
+{"fcstFCLoopFindTensorBasis-ID9",
+"FCLoopFindTensorBasis[{k1,k2,k3},{SPD[k1]->0,SPD[k2]->0,SPD[k3]\
+->0,SPD[k1,k3]->0,SPD[k1,k2]->c,SPD[k2,k3]->0},n,\[IndentingNewLine]\"\
+NoZeroVectors\"->False,FCE->True]",
+"{{k1}, {k2, k3}, {k2 -> 0, k3 -> 0}}"},
+{"fcstFCLoopFindTensorBasis-ID10",
+"FCLoopFindTensorBasis[{k1,k2,k3},{SPD[k1]->0,SPD[k2]->0,SPD[k3]\
+->0,SPD[k1,k3]->0,SPD[k1,k2]->c,SPD[k2,k3]->0},n,\[IndentingNewLine]\"\
+NoZeroVectors\"->False,All->True,FCE->True]",
+"{{{k1}, {k2, k3}, {k2 -> 0, k3 -> 0}}, {{k2}, {k1, k3}, {k1 -> 0, \
+k3 -> 0}}, {{k3, n}, {k1, k2}, {k1 -> k3*FCGV[\"Prefactor\"][SPD[k1, \
+n]/SPD[k3, n]], k2 -> k3*FCGV[\"Prefactor\"][SPD[k2, n]/SPD[k3, \
+n]]}}}"},
+{"fcstFCLoopFindTensorBasis-ID11",
+"FCLoopFindTensorBasis[{k1,k2,k3},{SPD[k1]->0,SPD[k2]->0,SPD[k3]\
+->0,SPD[k1,k3]->0,SPD[k1,k2]->c,SPD[k2,k3]->0},n,\[IndentingNewLine]\"\
+NoZeroVectors\"->True,FCE->True]",
+"{{k1, n}, {k2, k3}, {k2 -> k3*FCGV[\"Prefactor\"][SPD[k2, \
+n]/SPD[k3, n]], k3 -> k1*FCGV[\"Prefactor\"][SPD[k3, n]/SPD[k1, \
+n]]}}"},
+{"fcstFCLoopFindTensorBasis-ID12",
+"FCLoopFindTensorBasis[{k1,k2,k3},{SPD[k1]->0,SPD[k2]->0,SPD[k3]\
+->0,SPD[k1,k3]->0,SPD[k1,k2]->c,SPD[k2,k3]->0},n,\[IndentingNewLine]\"\
+NoZeroVectors\"->True,All->True,FCE->True]",
+"{{{k1, n}, {k2, k3}, {k2 -> k3*FCGV[\"Prefactor\"][SPD[k2, \
+n]/SPD[k3, n]], k3 -> k1*FCGV[\"Prefactor\"][SPD[k3, n]/SPD[k1, \
+n]]}}, {{k2, n}, {k1, k3}, {k1 -> k3*FCGV[\"Prefactor\"][SPD[k1, \
+n]/SPD[k3, n]], k3 -> k2*FCGV[\"Prefactor\"][SPD[k3, n]/SPD[k2, \
+n]]}}, {{k3, n}, {k1, k2}, {k1 -> k3*FCGV[\"Prefactor\"][SPD[k1, \
+n]/SPD[k3, n]], k2 -> k3*FCGV[\"Prefactor\"][SPD[k2, n]/SPD[k3, \
+n]]}}}"},
+{"fcstFCLoopFindTensorBasis-ID13",
+"FCLoopFindTensorBasis[{k1,k2,k3},{SPD[k1]->0,SPD[k2]->0,SPD[k3]\
+->0,SPD[k1,k3]->c,SPD[k1,k2]->0,SPD[k2,k3]->0},n,\[IndentingNewLine]\"\
+NoZeroVectors\"->False,FCE->True]",
+"{{k1}, {k2, k3}, {k2 -> 0, k3 -> 0}}"},
+{"fcstFCLoopFindTensorBasis-ID14",
+"FCLoopFindTensorBasis[{k1,k2,k3},{SPD[k1]->0,SPD[k2]->0,SPD[k3]\
+->0,SPD[k1,k3]->c,SPD[k1,k2]->0,SPD[k2,k3]->0},n,\[IndentingNewLine]\"\
+NoZeroVectors\"->False,All->True,FCE->True]",
+"{{{k1}, {k2, k3}, {k2 -> 0, k3 -> 0}}, {{k2, n}, {k1, k3}, {k1 -> \
+k2*FCGV[\"Prefactor\"][SPD[k1, n]/SPD[k2, n]], k3 -> \
+k2*FCGV[\"Prefactor\"][SPD[k3, n]/SPD[k2, n]]}}, {{k3}, {k1, k2}, {k1 \
+-> 0, k2 -> 0}}}"},
+{"fcstFCLoopFindTensorBasis-ID15",
+"FCLoopFindTensorBasis[{k1,k2,k3},{SPD[k1]->0,SPD[k2]->0,SPD[k3]\
+->0,SPD[k1,k3]->c,SPD[k1,k2]->0,SPD[k2,k3]->0},n,\[IndentingNewLine]\"\
+NoZeroVectors\"->True,FCE->True]",
+"{{k1, n}, {k2, k3}, {k2 -> k1*FCGV[\"Prefactor\"][SPD[k2, \
+n]/SPD[k1, n]], k3 -> k2*FCGV[\"Prefactor\"][SPD[k3, n]/SPD[k2, \
+n]]}}"},
+{"fcstFCLoopFindTensorBasis-ID16",
+"FCLoopFindTensorBasis[{k1,k2,k3},{SPD[k1]->0,SPD[k2]->0,SPD[k3]\
+->0,SPD[k1,k3]->c,SPD[k1,k2]->0,SPD[k2,k3]->0},n,\[IndentingNewLine]\"\
+NoZeroVectors\"->True,All->True,FCE->True]",
+"{{{k1, n}, {k2, k3}, {k2 -> k1*FCGV[\"Prefactor\"][SPD[k2, \
+n]/SPD[k1, n]], k3 -> k2*FCGV[\"Prefactor\"][SPD[k3, n]/SPD[k2, \
+n]]}}, {{k2, n}, {k1, k3}, {k1 -> k2*FCGV[\"Prefactor\"][SPD[k1, \
+n]/SPD[k2, n]], k3 -> k2*FCGV[\"Prefactor\"][SPD[k3, n]/SPD[k2, \
+n]]}}, {{k3, n}, {k1, k2}, {k1 -> k2*FCGV[\"Prefactor\"][SPD[k1, \
+n]/SPD[k2, n]], k2 -> k3*FCGV[\"Prefactor\"][SPD[k2, n]/SPD[k3, \
+n]]}}}"},
+{"fcstFCLoopFindTensorBasis-ID17",
+"FCLoopFindTensorBasis[{k1,k2,k3},{SPD[k1]->0,SPD[k2]->0,SPD[k3]\
+->0,SPD[k1,k3]->0,SPD[k1,k2]->0,SPD[k2,k3]->c},n,\[IndentingNewLine]\"\
+NoZeroVectors\"->False,FCE->True]",
+"{{k2}, {k1, k3}, {k1 -> 0, k3 -> 0}}"},
+{"fcstFCLoopFindTensorBasis-ID18",
+"FCLoopFindTensorBasis[{k1,k2,k3},{SPD[k1]->0,SPD[k2]->0,SPD[k3]\
+->0,SPD[k1,k3]->0,SPD[k1,k2]->0,SPD[k2,k3]->c},n,\[IndentingNewLine]\"\
+NoZeroVectors\"->False,All->True,FCE->True]",
+"{{{k1, n}, {k2, k3}, {k2 -> k1*FCGV[\"Prefactor\"][SPD[k2, \
+n]/SPD[k1, n]], k3 -> k1*FCGV[\"Prefactor\"][SPD[k3, n]/SPD[k1, \
+n]]}}, {{k2}, {k1, k3}, {k1 -> 0, k3 -> 0}}, {{k3}, {k1, k2}, {k1 -> \
+0, k2 -> 0}}}"},
+{"fcstFCLoopFindTensorBasis-ID19",
+"FCLoopFindTensorBasis[{k1,k2,k3},{SPD[k1]->0,SPD[k2]->0,SPD[k3]\
+->0,SPD[k1,k3]->0,SPD[k1,k2]->0,SPD[k2,k3]->c},n,\[IndentingNewLine]\"\
+NoZeroVectors\"->True,FCE->True]",
+"{{k1, n}, {k2, k3}, {k2 -> k1*FCGV[\"Prefactor\"][SPD[k2, \
+n]/SPD[k1, n]], k3 -> k1*FCGV[\"Prefactor\"][SPD[k3, n]/SPD[k1, \
+n]]}}"},
+{"fcstFCLoopFindTensorBasis-ID20",
+"FCLoopFindTensorBasis[{k1,k2,k3},{SPD[k1]->0,SPD[k2]->0,SPD[k3]\
+->0,SPD[k1,k3]->0,SPD[k1,k2]->0,SPD[k2,k3]->c},n,\[IndentingNewLine]\"\
+NoZeroVectors\"->True,All->True,FCE->True]",
+"{{{k1, n}, {k2, k3}, {k2 -> k1*FCGV[\"Prefactor\"][SPD[k2, \
+n]/SPD[k1, n]], k3 -> k1*FCGV[\"Prefactor\"][SPD[k3, n]/SPD[k1, \
+n]]}}, {{k2, n}, {k1, k3}, {k1 -> k2*FCGV[\"Prefactor\"][SPD[k1, \
+n]/SPD[k2, n]], k3 -> k1*FCGV[\"Prefactor\"][SPD[k3, n]/SPD[k1, \
+n]]}}, {{k3, n}, {k1, k2}, {k1 -> k3*FCGV[\"Prefactor\"][SPD[k1, \
+n]/SPD[k3, n]], k2 -> k1*FCGV[\"Prefactor\"][SPD[k2, n]/SPD[k1, \
+n]]}}}"},
+{"fcstFCLoopFindTensorBasis-ID21",
+"FCLoopFindTensorBasis[{k1,k2,k3},{SPD[k1]->0,SPD[k3]->0,SPD[k1,k3]\
+->c,SPD[k2,k2]->d,SPD[k1,k2]->c/2,SPD[k2,k3]->d},n,FCE->True]",
+"{{k1, k3}, {k2}, {k2 -> k3*FCGV[\"Prefactor\"][1/2] + \
+k1*FCGV[\"Prefactor\"][d/c]}}"},
+{"fcstFCLoopFindTensorBasis-ID22",
+"FCLoopFindTensorBasis[{k1,k2,k3},{SPD[k1]->0,SPD[k3]->0,SPD[k1,k3]\
+->c,SPD[k2,k2]->d,SPD[k1,k2]->c/2,SPD[k2,k3]->d},n,All->True,\
+FCE->True]",
+"{{{k1, k3}, {k2}, {k2 -> k3*FCGV[\"Prefactor\"][1/2] + \
+k1*FCGV[\"Prefactor\"][d/c]}}, {{k2, k3}, {k1}, {k1 -> \
+k3*FCGV[\"Prefactor\"][-1/2*c/d] + k2*FCGV[\"Prefactor\"][c/d]}}, \
+{{k2, k3}, {k1}, {k1 -> k3*FCGV[\"Prefactor\"][-1/2*c/d] + \
+k2*FCGV[\"Prefactor\"][c/d]}}}"},
+{"fcstFCLoopFindTensorBasis-ID23",
+"FCLoopFindTensorBasis[{k1,k2,k3},{SPD[k1]->0,SPD[k3]->0,SPD[k1,k3]\
+->c,SPD[k2,k2]->0,SPD[k1,k2]->c/2,SPD[k2,k3]->0},n,FCE->True]",
+"{{k1, k3}, {k2}, {k2 -> k3*FCGV[\"Prefactor\"][1/2]}}"},
+{"fcstFCLoopFindTensorBasis-ID24",
+"FCLoopFindTensorBasis[{k1,k2,k3},{SPD[k1]->0,SPD[k3]->0,SPD[k1,k3]\
+->c,SPD[k2,k2]->0,SPD[k1,k2]->c/2,SPD[k2,k3]->0},n,All->True,\
+FCE->True]",
+"{{{k1, k3}, {k2}, {k2 -> k3*FCGV[\"Prefactor\"][1/2]}}, {{k2, n}, \
+{k1, k3}, {k1 -> k3*FCGV[\"Prefactor\"][-(SPD[k1, n]/(2*SPD[k2, n] - \
+SPD[k3, n]))] + k2*FCGV[\"Prefactor\"][(2*SPD[k1, n])/(2*SPD[k2, n] - \
+SPD[k3, n])], k3 -> k2*FCGV[\"Prefactor\"][2]}}, {{k3, n}, {k1, k2}, \
+{k1 -> k3*FCGV[\"Prefactor\"][-(SPD[k1, n]/(2*SPD[k2, n] - SPD[k3, \
+n]))] + k2*FCGV[\"Prefactor\"][(2*SPD[k1, n])/(2*SPD[k2, n] - SPD[k3, \
+n])], k2 -> k3*FCGV[\"Prefactor\"][1/2]}}}"}
+});

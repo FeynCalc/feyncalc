@@ -1,0 +1,32 @@
+
+
+(* :Title: FCLoopAugmentTopology.test										*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopAugmentTopology		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopAugmentTopology =
+({
+{"fcstFCLoopAugmentTopology-ID1",
+"FCLoopAugmentTopology[
+FCTopology[\"topol1\", {SFAD[{q1, m^2}], SFAD[{q1 + p1}],
+	SFAD[{q1 + p2}]}, {q1}, {p1, p2}, {Hold[SPD][p1] -> 0,
+Hold[SPD][p2] -> 0,
+	Hold[SPD][p1, p2] -> 0}, {}], {SFAD[{{0, q1 . n}}]},
+FinalSubstitutions -> {Hold[SPD][n] -> 0, Hold[SPD][n, p1] -> np1,
+Hold[SPD][n, p2] -> np2}, AugmentedTopologyMarker -> augt,
+FCE -> True]",
+"{FCTopology[\"topol1A\", {SFAD[{{q1, 0}, {m^2, 1}, 1}], SFAD[{{p1 + q1, 0}, {0, 1}, 1}],
+SFAD[{{p2 + q1, 0}, {0, 1}, 1}], SFAD[{{0, n . q1}, {0, 1}, 1}]}, {q1}, {p1, p2, n},
+{Hold[SPD][p1] -> 0, Hold[SPD][p2] -> 0, Hold[SPD][p1, p2] -> 0, Hold[SPD][n] -> 0,
+Hold[SPD][n, p1] -> np1,Hold[SPD][n, p2] -> np2}, {}],
+augt[{n}]*GLI[\"topol1\", {n1_, n2_, n3_}] :> GLI[\"topol1A\", {n1, n2, n3, 0}]}"}
+});

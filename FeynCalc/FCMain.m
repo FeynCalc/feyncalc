@@ -374,7 +374,7 @@ dimensions. Following schemes are supported:
 - \"None\" - This is the default value. The anticommutator relation is not
 applied to $D-1$ dimensional Pauli matrices.
 
-- \"Naive\" - Naively apply the commutator relation in $D-1$-dimensions, i.e.
+- \"Naive\" - Naively apply the commutator relation in $D-1$-dimensions, i.e. 
 $\{\\sigma^i, \\sigma^j \} = 2 i \\varepsilon^{ijk} \\sigma^k$. The Levi-Civita
 tensor lives in $D-1$-dimensions, so that a contraction of two such tensors
 which have all indices in common yields $(D-3) (D-2) (D-1)$.";
