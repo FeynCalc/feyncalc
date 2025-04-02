@@ -232,11 +232,11 @@ FCLoopTensorReduce[expr_, toposRaw_List, OptionsPattern[]] :=
 
 		gramCheckList = tdecListEval /. loopNumerator[_ extMomsList[p_List] ] :> p;
 		gramDetValues = Map[FCGramDeterminant[#]&,gramCheckList];
-		gramCheckList = Extract[gramCheckList,Position[gramDetValues,0]];
+		gramCheckList = Union[Extract[gramCheckList,Position[gramDetValues,0]]];
 
 		If[	gramCheckList=!={},
 			Message[FCLoopTensorReduce::failmsg,"Following sets of external momenta are linearly dependent: " <> ToString[gramCheckList,InputForm] <>
-				". Please find a set of linearly independent momenta using FCLoopFindTensorBasis and supply it to the function via the option FCReplaceTensorBasis."];
+				". Please find a set of linearly independent momenta using FCLoopFindTensorBasis and supply it to the function via the option TensorReductionBasisChange."];
 			Abort[];
 		];
 
