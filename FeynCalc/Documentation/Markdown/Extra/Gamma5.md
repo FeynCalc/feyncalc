@@ -114,10 +114,10 @@ FeynCalc implement the so-called Moch-Vermaseren-Vogt MVV formula from [Moch:201
 \mathrm{Tr}(\ldots \gamma^5 \gamma^{\mu_1} \ldots \gamma^{\mu_j} \gamma^5 \ldots )
 \end{equation}
 
-where the chain $ \gamma^{\mu_1} \ldots \gamma^{\mu_j}$ can be simplified to something like
+where the chain $\gamma^{\mu_{1}} \ldots \gamma^{\mu_{j}}$ can be simplified to something like
 
 \begin{equation}
-\gamma^{\mu_1} \ldots \gamma^{\mu_j} = 1 + \ldots
+\gamma^{\mu_{1}} \ldots \gamma^{\mu_{j}} = 1 + \ldots
 \end{equation}
 
 are not well defined in this scheme. Depending on whether one applies the above simplification before or after calculating the $\gamma^5$-trace, the results will differ. 

@@ -48,8 +48,9 @@ FeynCalc where Einstein summation always applies, but they might be kept for
 other purposes.";
 
 DropIndexSum::usage =
-"DropSumOver is an option of FCFAConvert. When set to True, IndexSum symbols in
-the FeynArts diagrams will be dropped. This option is set to True by default.";
+"DropIndexSum is an option of FCFAConvert and FCPrepareFAAmp. When set to True,
+IndexSum symbols in the FeynArts diagrams will be dropped. This option is set
+to True by default.";
 
 FCFAConvert::sumOverWarn =
 "You are omitting SumOver objects that may represent a nontrivial summation. \

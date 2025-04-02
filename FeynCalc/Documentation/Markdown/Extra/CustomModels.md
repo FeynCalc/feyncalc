@@ -12,7 +12,7 @@ FileNameJoin[{$UserBaseDirectory, "Applications", "FeynCalc", "Examples", "FeynR
 ```
 The `XYZ.fr`-file is a FeynRules model, while the `GenerateModelXYZ.m` script creates a FeynArts model out of it. The script expects FeynRules to be located in
 
-```
+```mathematica
    FileNameJoin[{$UserBaseDirectory,"Applications","FeynRules"}]
 ```
 
@@ -27,7 +27,7 @@ The script `GenerateModelXYZ.m` must be evaluated on a fresh Mathematica kernel.
 
 The new FeynArts model should be now located inside
 
-```
+```mathematica
 FileNameJoin[{$UserBaseDirectory,"Applications","FeynCalc","FeynArts","Models"}]
 ```
 
