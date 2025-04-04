@@ -39,12 +39,6 @@ End[]
 
 Begin["`FCMultiLoopTID`Private`"]
 
-(*	This is just for the Workbench to know
-	that these internal functions are not typos *)
-mltidVerbose::usage="";
-
-
-
 Options[FCMultiLoopTID] = {
 	ApartFF						-> True,
 	Collecting					-> True,
@@ -58,7 +52,9 @@ Options[FCMultiLoopTID] = {
 	FCI							-> False,
 	FCVerbose					-> False,
 	FDS							-> True,
+	FinalSubstitutions			-> {},
 	SpinorChainEvaluate			-> True,
+	TensorReductionBasisChange	-> {},
 	TimeConstrained				-> 3,
 	Uncontract					-> {Polarization}
 };
@@ -69,12 +65,15 @@ FCMultiLoopTID[expr_List, qs_List/; FreeQ[qs, OptionQ], opts:OptionsPattern[]] :
 FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPattern[]] :=
 	Block[{	n, ex, rest, loopInts, intsUnique, repRule, solsList,
 			null1, null2, res, time, mltidIsolate, optFactoring,
-			optTimeConstrained, optUncontract},
+			optTimeConstrained, optUncontract, mltidVerbose, optTensorReductionBasisChange,
+			optFinalSubstitutions},
 
-		optFactoring 		= OptionValue[Factoring];
-		optTimeConstrained	= OptionValue[TimeConstrained];
-		optUncontract 		= OptionValue[Uncontract];
-		n 					= OptionValue[Dimension];
+		optFactoring 					= OptionValue[Factoring];
+		optTimeConstrained				= OptionValue[TimeConstrained];
+		optUncontract 					= OptionValue[Uncontract];
+		n 								= OptionValue[Dimension];
+		optTensorReductionBasisChange	= OptionValue[TensorReductionBasisChange];
+		optFinalSubstitutions			= OptionValue[FinalSubstitutions];
 
 		If [OptionValue[FCVerbose]===False,
 			mltidVerbose=$VeryVerbose,
@@ -90,7 +89,7 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 
 		If[	OptionValue[FCI],
 			ex = expr,
-			ex = FCI[expr]
+			{ex,optFinalSubstitutions} = FCI[{expr,optFinalSubstitutions}]
 		];
 
 		FCPrint[1,"FCMultiLoopTID: Entering. ", FCDoControl->mltidVerbose];
@@ -129,7 +128,7 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 			FCPrint[1, "FCMultiLoopTID: Done applying ApartFF, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose]
 		];
 
-		ex = uncontractLoopMomenta[ex, qs, n, optUncontract, optFactoring, optTimeConstrained, mltidIsolate];
+		ex = uncontractLoopMomenta[ex, qs, n, optUncontract, optFactoring, optTimeConstrained, mltidIsolate, mltidVerbose];
 
 		time=AbsoluteTime[];
 		FCPrint[1, "FCMultiLoopTID: Applying FCLoopExtract.", FCDoControl->mltidVerbose];
@@ -142,7 +141,7 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 		(*	Apply tidSingleIntegral to each of the unique loop integrals	*)
 		time=AbsoluteTime[];
 		FCPrint[1, "FCMultiLoopTID: Applying tidSingleIntegral.", FCDoControl->mltidVerbose];
-		solsList = Map[tidSingleIntegral[#,qs,n]&,(intsUnique/.loopHead->Identity)];
+		solsList = Map[tidSingleIntegral[#,qs,n,mltidVerbose,optTensorReductionBasisChange]&,(intsUnique/.loopHead->Identity)];
 		FCPrint[1, "FCMultiLoopTID: Done applying tidSingleIntegral, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->mltidVerbose];
 		FCPrint[3, "FCMultiLoopTID: List of the simplified integrals: ", solsList, FCDoControl->mltidVerbose];
 
@@ -151,6 +150,8 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 				"FCMultiLoopTID: tidSingleIntegral couldn't be applied to some of the unique integrals."];
 			Abort[]
 		];
+
+
 
 		If[	OptionValue[ApartFF]===True || OptionValue[ApartFF]===Last,
 			time=AbsoluteTime[];
@@ -170,6 +171,10 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 
 		repRule = Thread[Rule[intsUnique,solsList]];
 		FCPrint[3,"FCMultiLoopTID: Replacement rule: ", repRule, FCDoControl->mltidVerbose];
+
+		If[	optFinalSubstitutions=!={},
+			repRule = repRule/.Dispatch[optFinalSubstitutions]
+		];
 
 		res = rest + (loopInts/. Dispatch[repRule]);
 
@@ -210,7 +215,7 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 	];
 
 
-uncontractLoopMomenta[exRaw_, qs_, n_, optUncontract_, optFactoring_, optTimeConstrained_, mltidIsolate_]:=
+uncontractLoopMomenta[exRaw_, qs_, n_, optUncontract_, optFactoring_, optTimeConstrained_, mltidIsolate_, mltidVerbose_]:=
 	Block[{ex = exRaw,	time, nonDmoms, nonDcmoms, pairUncontract, cpairUncontract, stmpli, tmpli},
 
 		FCPrint[1, "FCMultiLoopTID: uncontractLoopMomenta: Entering. ", FCDoControl->mltidVerbose];
@@ -313,18 +318,17 @@ uncontractLoopMomenta[exRaw_, qs_, n_, optUncontract_, optFactoring_, optTimeCon
 ];
 
 
-tidSingleIntegral[int_, qs_List , n_] :=
+tidSingleIntegral[int_, qs_List , n_, mltidVerbose_, optTensorReductionBasisChange_] :=
 	Block[{num,den,tmp},
 		{num, den} = FCProductSplit[int, {FeynAmpDenominator}];
 		tmp= FCProductSplit[num, {ExplicitLorentzIndex[0]}];
-		tmp[[2]] tidSingleIntegral[tmp[[1]] den,qs,n]
+		tmp[[2]] tidSingleIntegral[tmp[[1]] den,qs,n, mltidVerbose, optTensorReductionBasisChange]
 	]/; !FreeQ[int /. _FeynAmpDenominator -> Unique[],ExplicitLorentzIndex[0]];
 
 
-tidSingleIntegral[int_, qs_List , n_] :=
-	Block[{ ex=int,res,allmoms,extmoms,lmoms,lis,rest,umoms,gramZero=False,
-			null1,null2, cis, umomsHead, tdecHead, tdecDim
-			},
+tidSingleIntegral[int_, qs_List , n_, mltidVerbose_, optTensorReductionBasisChange_] :=
+	Block[{ ex=int, res, allmoms, extmoms, lmoms, lis, rest, umoms, null1, null2,
+			cis, umomsHead, tdecHead, tdecDim},
 
 		FCPrint[2,"FCMultiLoopTID: tidSingleIntegral: Entering with ", ex, FCDoControl->mltidVerbose];
 
@@ -344,6 +348,11 @@ tidSingleIntegral[int_, qs_List , n_] :=
 
 		FCPrint[3,"FCMultiLoopTID: tidSingleIntegral: Loop momenta: ", lmoms, FCDoControl->mltidVerbose];
 		FCPrint[3,"FCMultiLoopTID: tidSingleIntegral: External momenta: ", extmoms, FCDoControl->mltidVerbose];
+
+		If[	optTensorReductionBasisChange=!={},
+			extmoms = extmoms/.optTensorReductionBasisChange;
+			FCPrint[3,"FCMultiLoopTID: tidSingleIntegral: External momenta upon doing a basis change: ", extmoms, FCDoControl->mltidVerbose];
+		];
 
 		lis = SelectNotFree[int*null1*null2, LorentzIndex]/.null1|null2->1;
 		cis = SelectNotFree[int*null1*null2, CartesianIndex]/.null1|null2->1;
@@ -369,9 +378,10 @@ tidSingleIntegral[int_, qs_List , n_] :=
 				(* Check the Gram determinant	*)
 				If[ extmoms=!={},
 					FCPrint[2, "FCMultiLoopTID: tidSingleIntegral: Checking Gram determinant...", FCDoControl->mltidVerbose];
-					If[	FCGramDeterminant[extmoms, Head -> {Pair, Momentum}, Dimension -> D]===0,
-						FCPrint[1, "FCMultiLoopTID: tidSingleIntegral: Zero Gram determinant detected!", FCDoControl->mltidVerbose];
-						gramZero=True
+					If[	FCGramDeterminant[extmoms, Head -> {Pair, Momentum}, Dimension -> tdecDim]===0,
+						Message[FCMultiLoopTID::failmsg,"Following sets of external momenta are linearly dependent: " <> ToString[extmoms,InputForm] <>
+						". Please find a set of linearly independent momenta using FCLoopFindTensorBasis and supply it to the function via the option TensorReductionBasisChange."];
+						Abort[]
 					]
 				],
 			lis===1 && cis=!=1,
@@ -381,11 +391,6 @@ tidSingleIntegral[int_, qs_List , n_] :=
 				(* Some cross-checks	*)
 				If[cis rest=!=int  || !MatchQ[cis,HoldPattern[Times[CartesianPair[CartesianMomentum[_, ___], CartesianIndex[_, ___]] ..]] | CartesianPair[CartesianMomentum[_,  ___],
 						CartesianIndex[_, ___]] ],
-					(*Print[{lis,rest,int}];
-					Print[!MatchQ[lis,HoldPattern[Times[Pair[Momentum[_, _ : 4], LorentzIndex[_, _ : 4]] ..]] | Pair[Momentum[_, _ : 4], LorentzIndex[_, _ : 4]] ]];
-					Print[Union[Cases[lis,Momentum[q_,_:4]:>q,Infinity]]];
-					Print[lmoms];
-					Print[Union[Cases[lis,Momentum[q_,_:4]:>q,Infinity]]=!=lmoms];*)
 					Message[FCMultiLoopTID::failmsg,"tidSingleIntegral failed to extract the loop momenta with free Lorentz indices"];
 					Abort[];
 				];
@@ -395,9 +400,10 @@ tidSingleIntegral[int_, qs_List , n_] :=
 				(* Check the Gram determinant	*)
 				If[ extmoms=!={},
 					FCPrint[2, "FCMultiLoopTID: tidSingleIntegral: Checking Gram determinant...", FCDoControl->mltidVerbose];
-					If[	FCGramDeterminant[extmoms, Head -> {CartesianPair, CartesianMomentum}, Dimension -> D - 1]===0,
-						FCPrint[1, "FCMultiLoopTID: tidSingleIntegral: Zero Gram determinant detected!", FCDoControl->mltidVerbose];
-						gramZero=True
+					If[	FCGramDeterminant[extmoms, Head -> {CartesianPair, CartesianMomentum}, Dimension -> tdecDim]===0,
+						Message[FCMultiLoopTID::failmsg,"Following sets of external momenta are linearly dependent: " <> ToString[extmoms,InputForm] <>
+						". Please find a set of linearly independent momenta using FCLoopFindTensorBasis and supply it to the function via the option TensorReductionBasisChange."];
+						Abort[]
 					]
 				],
 
@@ -413,18 +419,7 @@ tidSingleIntegral[int_, qs_List , n_] :=
 
 
 		FCPrint[3,"FCMultiLoopTID: tidSingleIntegral: Input for Tdec: ", {umoms,extmoms}, " ", FCDoControl->mltidVerbose];
-		(* 	If the Gram deterimnant vanishes, all we can do here is to rewrite the integral in terms of
-			some coefficient functions. From these GCF ("generalized coefficient functions") the user
-			can in principle reconstruct the original integral and thus compute them outside of	FeynCalc	*)
-		If[	gramZero,
-			If[	Length[qs]===1,
-				res = TID[int,First[qs],FCI->True],
-				Message[FCMultiLoopTID::gramzero];
-				res = tdecHead[umoms,extmoms,List->False,FeynCalc`Package`BasisOnly -> True,Dimension->tdecDim]/.
-					FCGV["GCF"][x__,i_,p_]:>FCGV["GCF"][x,Map[{ToString[#[[1]]],#[[2]]}&,i],p,ToString[FCE@int,InputForm]]
-			],
-			res = tdecHead[umoms,extmoms,List->False,Dimension->tdecDim]*rest;
-		];
+		res = tdecHead[umoms,extmoms,List->False,Dimension->tdecDim]*rest;
 
 		(*TODO For large expression Isolate would be useful here *)
 
