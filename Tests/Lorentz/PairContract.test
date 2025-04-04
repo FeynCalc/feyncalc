@@ -363,5 +363,7 @@ CartesianPair/.PairContract\[Rule]Pair",
 "PairContract[CartesianIndex[mu], CartesianMomentum[p]]","PairContract[CartesianIndex[mu], CartesianMomentum[p]]"},
 {"fcstCartesianPairContract-ID52","CartesianPairContract[CartesianIndex[i], CartesianIndex[i,D-1]]","3"},
 {"fcstCartesianPairContract-ID53","CartesianPairContract[CartesianIndex[i], CartesianIndex[i,D-4]]","0"},
-{"fcstCartesianPairContract-ID54","CartesianPairContract[CartesianIndex[i,D-1], CartesianIndex[i,D-4]]","D-4"}
+{"fcstCartesianPairContract-ID55","CartesianPairContract[CartesianIndex[i,D-1], CartesianIndex[i,D-4]]","D-4"},
+{"fcstCartesianPairContract-ID56","CartesianPairContract[CartesianMomentum[p2, -1 + D],CartesianMomentum[p2, -1 + D]]",
+"CartesianPair[CartesianMomentum[p2, -1 + D],CartesianMomentum[p2, -1 + D]]"}
 });

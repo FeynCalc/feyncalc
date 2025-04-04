@@ -16,18 +16,18 @@
 Tests`LoopIntegrals`fcstFCLoopFindTensorBasis =
 ({
 {"fcstFCLoopFindTensorBasis-ID1",
-"FCLoopFindTensorBasis[{k1},{SPD[k1]->0},n,Head->pref,FCE->True]",
+"FCLoopFindTensorBasis[{k1},{SPD[k1]->0},n,Prefactor->pref,FCE->True]",
 "{{k1, n}, {}, {}}"},
 {"fcstFCLoopFindTensorBasis-ID2",
-"FCLoopFindTensorBasis[{k1},{SPD[k1]->0},n,Head->pref,All->True,\
+"FCLoopFindTensorBasis[{k1},{SPD[k1]->0},n,Prefactor->pref,All->True,\
 FCE->True]", "{{{k1, n}, {}, {}}}"},
 {"fcstFCLoopFindTensorBasis-ID3",
 "FCLoopFindTensorBasis[{k1,k2},{SPD[k1]->0,SPD[k2]->0,SPD[k1,k2]\
-->0},n,Head->pref,FCE->True]",
+->0},n,Prefactor->pref,FCE->True]",
 "{{k1, n}, {k2}, {k2 -> k1*pref[SPD[k2, n]/SPD[k1, n]]}}"},
 {"fcstFCLoopFindTensorBasis-ID4",
 "FCLoopFindTensorBasis[{k1,k2},{SPD[k1]->0,SPD[k2]->0,SPD[k1,k2]\
-->0},n,All->True,Head->pref,FCE->True]",
+->0},n,All->True,Prefactor->pref,FCE->True]",
 "{{{k1, n}, {k2}, {k2 -> k1*pref[SPD[k2, n]/SPD[k1, n]]}}, {{k2, \
 n}, {k1}, {k1 -> k2*pref[SPD[k1, n]/SPD[k2, n]]}}}"},
 {"fcstFCLoopFindTensorBasis-ID5",
@@ -176,5 +176,14 @@ SPD[k3, n]))] + k2*FCGV[\"Prefactor\"][(2*SPD[k1, n])/(2*SPD[k2, n] - \
 SPD[k3, n])], k3 -> k2*FCGV[\"Prefactor\"][2]}}, {{k3, n}, {k1, k2}, \
 {k1 -> k3*FCGV[\"Prefactor\"][-(SPD[k1, n]/(2*SPD[k2, n] - SPD[k3, \
 n]))] + k2*FCGV[\"Prefactor\"][(2*SPD[k1, n])/(2*SPD[k2, n] - SPD[k3, \
-n])], k2 -> k3*FCGV[\"Prefactor\"][1/2]}}}"}
+n])], k2 -> k3*FCGV[\"Prefactor\"][1/2]}}}"},
+{"fcstFCLoopFindTensorBasis-ID25",
+"FCLoopFindTensorBasis[{-p1, -p2}, {SPD[p1, p2] -> m2,
+SPD[p2, p2] -> m2, SPD[p1, p1] -> m2}, n, Prefactor -> pref]",
+"{{-p1}, {-p2}, {-p2 -> -(p1*pref[1])}}"},
+{"fcstFCLoopFindTensorBasis-ID26",
+"FCLoopFindTensorBasis[{p1, p2}, {CSPD[p1, p2] -> m2,
+CSPD[p2, p2] -> m2, CSPD[p1, p1] -> m2}, n, Prefactor -> pref,
+Head -> {CartesianPair, CartesianMomentum}]",
+"{{p1}, {p2}, {p2 -> (p1*pref[1])}}"}
 });

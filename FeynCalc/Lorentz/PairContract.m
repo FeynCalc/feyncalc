@@ -104,6 +104,15 @@ CartesianPairContract /:
 CartesianPairContract/: CartesianPairContract[CartesianIndex[z_,dim___],(h:CartesianIndex|CartesianMomentum)[x_,dim___]] f_[a__] :=
 	(f[a] /. CartesianIndex[z, ___]->h[x,dim]) /;(!FreeQ[f[a], CartesianIndex[z,___]]);
 
+
+CartesianPairContract[a_, b_]:=
+	Block[{pairExpanded = FCUseCache[ExpandScalarProduct,{CartesianPair[a,b]},{FCI->True}]},
+		If[	FreeQ2[pairExpanded,{Pair,CartesianPair}] || Head[pairExpanded]=!=Plus,
+			pairExpanded,
+			CartesianPair[a,b]
+		]
+	]/;FreeQ2[{a,b},{LorentzIndex,CartesianIndex}]
+
 (* #################################################################### *)
 
 SetAttributes[PairContract,Orderless];
