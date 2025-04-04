@@ -188,7 +188,7 @@ FCLoopTensorReduce[expr_, toposRaw_List, OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1,"FCLoopTensorReduce: Uncontracting loop momenta.", FCDoControl->fctrVerbose];
 		tmp = MapThread[FeynCalc`Package`uncontractLoopMomenta[#1, #2,	OptionValue[Dimension], #3,
-			optFactoring, optTimeConstrained, tidIsolate] &, {aux,loopMoms, extraMomentaToUncontract}];
+			optFactoring, optTimeConstrained, tidIsolate,fctrVerbose] &, {aux,loopMoms, extraMomentaToUncontract}];
 		FCPrint[1, "FCLoopTensorReduce: Done uncontracting loop momenta, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctrVerbose];
 
 		time=AbsoluteTime[];
@@ -340,7 +340,7 @@ FCLoopTensorReduce[expr_, toposRaw_List, OptionsPattern[]] :=
 	];
 
 (*Todo: Cartesian???*)
-(*Todo: Zero GRAm determinant?*)
+
 
 loopNumeratorEval[loopMomsList[_] extMomsList[p_List] (a : (Pair | CartesianPair)[__])] :=
 	Tdec[(a /. Pair[Momentum[q_, _], LorentzIndex[in_, _]] :> {q, in}),	p, List -> False, FCE -> False];
