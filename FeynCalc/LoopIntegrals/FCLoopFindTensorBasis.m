@@ -52,6 +52,7 @@ Begin["`Package`"]
 End[]
 
 Begin["`FCLoopFindTensorBasis`Private`"]
+extMom::usage="";
 
 Options[FCLoopFindTensorBasis] = {
 	Abort						-> True,
@@ -60,7 +61,8 @@ Options[FCLoopFindTensorBasis] = {
 	Dimension 					-> D,
 	FCVerbose					-> False,
 	All							-> False,
-	Head						-> FCGV["Prefactor"],
+	Prefactor					-> FCGV["Prefactor"],
+	Head						-> {Pair, Momentum},
 	"NoZeroVectors"				-> False
 };
 
@@ -90,12 +92,12 @@ Options[FCLoopFindTensorBasis] = {
 FCLoopFindTensorBasis[{}, __, OptionsPattern[]] :=
 	{{},{},{}}
 
-FCLoopFindTensorBasis[extmoms_List/;extmoms=!={}, kinRulesRaw_List, auxVec_, OptionsPattern[]] :=
+FCLoopFindTensorBasis[extmomsRaw_List/;extmomsRaw=!={}, kinRulesRaw_List, auxVec_, OptionsPattern[]] :=
 	Block[{	gramDet,  kinRules, optDimension, newBasis, res, optAll,
-			linDepRules, optHead, candidates, remVectors, linDepSets,
+			linDepRules, optPrefactor, candidates, remVectors, linDepSets,
 			linIndepSets, linDepVecs, linIndepVecs, candidatesAll, time, fclftbVerbose,
 			linDepTwoVecs, tmp, eliminatedVecs, decompositions, extMomSquares,
-			nonZeroSquares, firstBasisVector, optNoZeroVectors, check},
+			nonZeroSquares, firstBasisVector, optNoZeroVectors, check, extmoms, optHead},
 
 		If[	OptionValue[FCVerbose] === False,
 			fclftbVerbose = $VeryVerbose,
@@ -104,32 +106,46 @@ FCLoopFindTensorBasis[extmoms_List/;extmoms=!={}, kinRulesRaw_List, auxVec_, Opt
 		];
 
 		optDimension 		= OptionValue[Dimension];
-		optHead				= OptionValue[Head];
+		optPrefactor		= OptionValue[Prefactor];
 		optNoZeroVectors	= OptionValue["NoZeroVectors"];
 		optAll				= OptionValue[All];
+		optHead				= OptionValue[Head];
 
 		If[	OptionValue[FCI],
 			kinRules = kinRulesRaw,
 			kinRules = FCI[kinRulesRaw]
 		];
 
+		(* Encode the given external momenta *)
+		extmoms = extMom/@extmomsRaw;
+
 		FCPrint[1, "FCLoopFindTensorBasis: Entering.", FCDoControl -> fclftbVerbose];
 		FCPrint[2, "FCLoopFindTensorBasis: Set of external momenta: ", extmoms,  FCDoControl -> fclftbVerbose];
 
-		gramDet = Together[FCGramDeterminant[extmoms, Dimension -> optDimension, FinalSubstitutions->kinRules]];
+		Which[	optHead === {Pair, Momentum},
+				FCPrint[1, "FCLoopFindTensorBasis: Lorentz vectors.", FCDoControl -> fclftbVerbose],
+				optHead === {CartesianPair, CartesianMomentum},
+				FCPrint[1, "FCLoopFindTensorBasis: Cartesian vectors.", FCDoControl -> fclftbVerbose];
+				optDimension = optDimension - 1,
+				True,
+				Message[FCLoopFindTensorBasis::failmsg,"Unknown value of the option Head"];
+				Abort[]
+		];
+
+		gramDet = Together[FCGramDeterminant[extmoms/.extMom->Identity, Dimension -> optDimension, FinalSubstitutions->kinRules,Head->optHead]];
 
 		FCPrint[2, "FCLoopFindTensorBasis: Gram determinant: ", gramDet,  FCDoControl -> fclftbVerbose];
 
 		If[	TrueQ[gramDet=!=0],
 			FCPrint[1, "FCLoopFindTensorBasis: The Gram determinant is not zero, leaving.", FCDoControl -> fclftbVerbose];
-			Return[{extmoms,{},{}}]
+			Return[{extmoms/.extMom->Identity,{},{}}]
 		];
 
 		If[	TrueQ[Length[extmoms]===1],
 
 			(* Only one external momentum *)
 			(* {linIndepVecs, linDepVecs, decompositions} *)
-			res = {Join[extmoms,{auxVec}],{},{}};
+			res = {Join[extmoms,{auxVec}],{},{}}/. extMom->Identity;
 			If[	optAll,
 				res = {res}
 			],
@@ -138,11 +154,14 @@ FCLoopFindTensorBasis[extmoms_List/;extmoms=!={}, kinRulesRaw_List, auxVec_, Opt
 
 			(* Building subsets of external momenta and calculating their Gram determinants *)
 			candidates	= Subsets[extmoms,{2,Length[extmoms]}];
-			tmp 		= (Together[FCGramDeterminant[#, Dimension -> optDimension, FinalSubstitutions->kinRules]])&/@candidates;
+			tmp 		= (Together[FCGramDeterminant[#/.extMom->Identity, Dimension -> optDimension, FinalSubstitutions->kinRules,Head->optHead]])&/@candidates;
 			candidates	= Transpose[{candidates, tmp}];
 
+			If[	TrueQ[optHead[[1]]===Pair],
+				extMomSquares = (Pair[Momentum[#,optDimension],Momentum[#,optDimension]]&/@extmoms) /.extMom->Identity /. kinRules,
+				extMomSquares = (CartesianPair[CartesianMomentum[#,optDimension],CartesianMomentum[#,optDimension]]&/@extmoms) /.extMom->Identity /. kinRules
+			];
 
-			extMomSquares = (Pair[Momentum[#,optDimension],Momentum[#,optDimension]]&/@extmoms) /. kinRules;
 			extMomSquares = Transpose[{extmoms,extMomSquares}];
 			nonZeroSquares = Select[extMomSquares,(#[[2]]=!=0)&];
 
@@ -177,14 +196,18 @@ FCLoopFindTensorBasis[extmoms_List/;extmoms=!={}, kinRulesRaw_List, auxVec_, Opt
 			FCPrint[2, "FCLoopFindTensorBasis: Sets of linearly independent vectors: ", linIndepSets,  FCDoControl -> fclftbVerbose];
 			FCPrint[2, "FCLoopFindTensorBasis: Sets of linearly dependent vectors: ", linDepSets,  FCDoControl -> fclftbVerbose];
 
-			tmp = findNewBasis[#, extmoms, linIndepSets, linDepSets, optDimension, kinRules, optHead, optNoZeroVectors,
-				auxVec, fclftbVerbose]&/@ extmoms;
+			tmp = findNewBasis[#, extmoms, linIndepSets, linDepSets, optDimension, kinRules, optPrefactor, optNoZeroVectors,
+				auxVec, fclftbVerbose, optHead]&/@ extmoms;
+
+			tmp = tmp /. extMom->Identity;
+
+			tmp = Map[{Sort[#[[1]]],Sort[#[[2]]],#[[3]]}&, tmp];
 
 			FCPrint[2, "FCLoopFindTensorBasis: Possible new  bases: ", tmp,  FCDoControl -> fclftbVerbose];
 
 			If[	TrueQ[!optAll],
 				(*It's better to have a basis that introduces the smallest number of additional invariants *)
-				tmp = SortBy[tmp, Count[#, optHead] &];
+				tmp = SortBy[tmp, Count[#, optPrefactor] &];
 
 				(*If possible, we want to have a basis without an auxiliary vector *)
 				check = SelectFree[tmp,auxVec];
@@ -198,8 +221,6 @@ FCLoopFindTensorBasis[extmoms_List/;extmoms=!={}, kinRulesRaw_List, auxVec_, Opt
 			]
 		];
 
-
-
 		If[	OptionValue[FCE],
 			res = FCE[res]
 		];
@@ -211,7 +232,7 @@ FCLoopFindTensorBasis[extmoms_List/;extmoms=!={}, kinRulesRaw_List, auxVec_, Opt
 	];
 
 
-findNewBasis[firstBasisVector_, extmoms_List, linIndepSets_List, linDepSets_List,  dim_, kinRules_List, head_, noZeroVecs_, auxVec_, fclftbVerbose_] :=
+findNewBasis[firstBasisVector_, extmoms_List, linIndepSets_List, linDepSets_List,  dim_, kinRules_List, prefactor_, noZeroVecs_, auxVec_, fclftbVerbose_, optHead_] :=
 		Block[{time, linIndepVecs, linDepVecs, tmp, decompositions, eliminatedVecs },
 
 			FCPrint[4, "FCLoopFindTensorBasis: findNewBasis: Entering with ", firstBasisVector, " as first basis vector.",FCDoControl -> fclftbVerbose];
@@ -242,7 +263,7 @@ findNewBasis[firstBasisVector_, extmoms_List, linIndepSets_List, linDepSets_List
 			time=AbsoluteTime[];
 			FCPrint[4, "FCLoopFindTensorBasis: findNewBasis: Eliminating linearly dependent momenta.", FCDoControl -> fclftbVerbose];
 			(* The ordering of linDepSets can decide whether zero vectors can be identified or not! *)
-			tmp = eliminateLinearlyDependentMomenta[linDepSets, linIndepVecs, linDepVecs, {}, {}, dim, kinRules, head, noZeroVecs, auxVec, fclftbVerbose];
+			tmp = eliminateLinearlyDependentMomenta[linDepSets, linIndepVecs, linDepVecs, {}, {}, dim, kinRules, prefactor, noZeroVecs, auxVec, fclftbVerbose, optHead];
 			FCPrint[4, "FCLoopFindTensorBasis: findNewBasis: Done eliminating linearly dependent momenta, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl -> fclftbVerbose];
 
 
@@ -270,7 +291,7 @@ findNewBasis[firstBasisVector_, extmoms_List, linIndepSets_List, linDepSets_List
 	We work through each set of linearly dependent vectors by picking one of such vectors
 	and expressing it through the other ones.
 *)
-eliminateLinearlyDependentMomenta[linDepSets_List, linIndepVecs_List, linDepVecs_List, eliminatedVecs_List, decompositions_List, dim_, kinRules_List, head_, noZeroVecs_, auxVec_, fclftbVerbose_] :=
+eliminateLinearlyDependentMomenta[linDepSets_List, linIndepVecs_List, linDepVecs_List, eliminatedVecs_List, decompositions_List, dim_, kinRules_List, prefactor_, noZeroVecs_, auxVec_, fclftbVerbose_, optHead_] :=
 	Block[{	tmp, check, eq, CC, linDepVecInThisSet, res, eqRaw, vars, zeroVecs},
 
 		FCPrint[4, "FCLoopFindTensorBasis: eliminateLinearlyDependentMomenta: Entering with: ", {linDepSets,linIndepVecs,linDepVecs,eliminatedVecs,decompositions}, FCDoControl -> fclftbVerbose];
@@ -287,7 +308,7 @@ eliminateLinearlyDependentMomenta[linDepSets_List, linIndepVecs_List, linDepVecs
 		If[(check === {}) || Length[linDepVecInThisSet] =!= 1,
 			(*The relation doesn't contain any new linearly dependent vectors or their number is more than one*)
 			FCPrint[4, "FCLoopFindTensorBasis: eliminateLinearlyDependentMomenta: There are no new linearly dependent vectors to be extracted from this relation.", FCDoControl -> fclftbVerbose];
-			Return[eliminateLinearlyDependentMomenta[linDepSets[[2 ;;]], linIndepVecs, linDepVecs, eliminatedVecs, decompositions, dim, kinRules, head,  noZeroVecs, auxVec, fclftbVerbose]]
+			Return[eliminateLinearlyDependentMomenta[linDepSets[[2 ;;]], linIndepVecs, linDepVecs, eliminatedVecs, decompositions, dim, kinRules, prefactor,  noZeroVecs, auxVec, fclftbVerbose, optHead]]
 		];
 
 		(* Consider the first new linearly dependent vector *)
@@ -307,10 +328,11 @@ eliminateLinearlyDependentMomenta[linDepSets_List, linIndepVecs_List, linDepVecs
 
 
 
-		res = solveEqSys[{eqRaw, vars}, linDepVecInThisSet, linIndepVecs, linDepVecs, dim, kinRules, head, noZeroVecs, auxVec, fclftbVerbose];
+		res = solveEqSys[{eqRaw, vars}, linDepVecInThisSet, linIndepVecs, linDepVecs, dim, kinRules, prefactor, noZeroVecs, auxVec, fclftbVerbose, optHead];
 		FCPrint[4, "FCLoopFindTensorBasis: eliminateLinearlyDependentMomenta: Solution: ", res, FCDoControl -> fclftbVerbose];
 
-		eliminateLinearlyDependentMomenta[linDepSets[[2 ;;]], linIndepVecs, linDepVecs,	Join[eliminatedVecs, {linDepVecInThisSet}], Join[decompositions, {res}], dim, kinRules, head,  noZeroVecs, auxVec, fclftbVerbose]
+		eliminateLinearlyDependentMomenta[linDepSets[[2 ;;]], linIndepVecs, linDepVecs,	Join[eliminatedVecs, {linDepVecInThisSet}], Join[decompositions, {res}], dim, kinRules,
+			prefactor,  noZeroVecs, auxVec, fclftbVerbose, optHead]
 
 	] /; Length[linDepSets] > 0;
 
@@ -324,10 +346,7 @@ generateEquation[linDepSet_List, linDepVec_, propConst_] :=
 	];
 
 
-
-
-
-solveEqSys[{eqRaw_Equal, vars_List}, linDepVec_, linIndepMoms_List, linDepVecs_List, dim_, kinRules_List, head_, noZeroVecs_, auxVec_, fclftbVerbose_] :=
+solveEqSys[{eqRaw_Equal, vars_List}, linDepVec_, linIndepMoms_List, linDepVecs_List, dim_, kinRules_List, prefactor_, noZeroVecs_, auxVec_, fclftbVerbose_, optHead_] :=
 	Block[{	len, trialVecs, candidates, dummyInd, allMoms,
 			pairs, pairRule, eq, eqSys, sols, finalSol, trialsols},
 
@@ -338,7 +357,13 @@ solveEqSys[{eqRaw_Equal, vars_List}, linDepVec_, linIndepMoms_List, linDepVecs_L
 		allMoms = Join[linIndepMoms, linDepVecs, {linDepVec}, {auxVec}];
 
 
-		pairs =	Pair[Momentum[#, dim], LorentzIndex[dummyInd, dim]] & /@ allMoms;
+		If[	TrueQ[optHead[[1]]===Pair],
+				pairs =	Pair[Momentum[#, dim], LorentzIndex[dummyInd, dim]] & /@ allMoms,
+				pairs =	CartesianPair[CartesianMomentum[#, dim], CartesianIndex[dummyInd, dim]] & /@ allMoms
+		];
+
+
+
 		pairRule = Thread[Rule[allMoms, pairs]];
 
 		{eq, candidates} = {eqRaw, Subsets[Join[linIndepMoms,linDepVecs,{auxVec}], {len}]} /. Dispatch[pairRule];
@@ -351,7 +376,9 @@ solveEqSys[{eqRaw_Equal, vars_List}, linDepVec_, linIndepMoms_List, linDepVecs_L
 			momenta, including the auxiliary one.
 		*)
 
-		eqSys =	Map[Function[x, Map[eq # &, x]], candidates] /.	Pair -> PairContract /. Dispatch[kinRules];
+		eqSys =	Map[Function[x, Map[(eq )# &, x]], candidates];
+		FCPrint[4, "FCLoopFindTensorBasis: solveEqSys: Raw equation systems: ", eqSys, FCDoControl -> fclftbVerbose];
+		eqSys =  ExpandScalarProduct[eqSys /. {Pair -> PairContract, CartesianPair->CartesianPairContract} /. extMom->Identity,FCI->True] /. Dispatch[kinRules];
 		FCPrint[4, "FCLoopFindTensorBasis: solveEqSys: Equation systems to solve: ", eqSys, FCDoControl -> fclftbVerbose];
 
 		Quiet[sols = Solve[#, vars] & /@ eqSys;];
@@ -377,7 +404,7 @@ solveEqSys[{eqRaw_Equal, vars_List}, linDepVec_, linIndepMoms_List, linDepVecs_L
 			Abort[]
 		];
 
-		finalSol = sols[[1]] /. Rule[a_, b_] :> Rule[a, head[b]]/. head[0] -> 0;
+		finalSol = sols[[1]] /. Rule[a_, b_] :> Rule[a, prefactor[b]]/. prefactor[0] -> 0;
 		FCPrint[4, "FCLoopFindTensorBasis: solveEqSys: Final solution: ", finalSol, FCDoControl -> fclftbVerbose];
 		eqRaw /. Dispatch[finalSol] /. Equal -> Rule
 	];
