@@ -247,7 +247,7 @@ ApartFF[int_/; int=!=0, extraPiece_, lmoms_List , OptionsPattern[]]:=
 
 		If[	OptionValue[FCI],
 			exp = int,
-			exp = FCI[int]
+			{exp,optFinalSubstitutions} = FCI[{int,optFinalSubstitutions}]
 		];
 
 		If[	OptionValue[FeynAmpDenominatorCombine],
