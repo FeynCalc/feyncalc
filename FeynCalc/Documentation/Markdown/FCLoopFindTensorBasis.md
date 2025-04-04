@@ -6,7 +6,7 @@ A vanishing Gram determinant signals a linear dependence between those momenta. 
 
 To circumvent this issue the function will suggest an alternative set of external vectors with respect to which the tensor reduction should be done. If some of the old vectors can be expressed in terms of the new ones, the corresponding rules will be provided as well.
 
-If some of the external momenta are light-like (i.e. their scalar products vanish), then an auxiliary vector `n` must be added to the basis. The scalar products of this vector with the existing momenta will form new kinematic invariants appearing in the result of the tensor reduction. The values of these invariants can be arbitrary, except that they must be nonvanishing. Upon doing the tensor reduction in this way, one will still need to perform an IBP reduction of the resulting scalar integrals. These integrals will depend on the new kinematic invariants but as the invariants should cancel in the final result for the reduced tensor integral. To see this cancellation explicitly one might need to use the linear relations between the external momenta uncovered by `FCLoopFindTensorBasis<<Feyn`
+If some of the external momenta are light-like (i.e. their scalar products vanish), then an auxiliary vector `n` must be added to the basis. The scalar products of this vector with the existing momenta will form new kinematic invariants appearing in the result of the tensor reduction. The values of these invariants can be arbitrary, except that they must be nonvanishing. Upon doing the tensor reduction in this way, one will still need to perform an IBP reduction of the resulting scalar integrals. These integrals will depend on the new kinematic invariants but as the invariants should cancel in the final result for the reduced tensor integral. To see this cancellation explicitly one might need to use the linear relations between the external momenta uncovered by `FCLoopFindTensorBasis`
 
 Using the option `All` one can get all possible sets of new basis vectors. This can be useful if one needs to select one of them for the tensor reduction.
 
@@ -19,7 +19,7 @@ Using the option `All` one can get all possible sets of new basis vectors. This 
 One light-like momentum. Here we need to add an auxiliary vector to our basis. There are no linearly dependent vectors
 
 ```mathematica
-FCLoopFindTensorBasis[{k1}, {SPD[k1] -> 0}, n, Head -> pref]
+FCLoopFindTensorBasis[{k1}, {SPD[k1] -> 0}, n, Prefactor -> pref]
 ```
 
 $$\{\{\text{k1},n\},\{\},\{\}\}$$
@@ -28,7 +28,7 @@ Two light-like momenta. Apart from constructing a new basis that contains an aux
 
 ```mathematica
 FCLoopFindTensorBasis[{k1, k2}, 
-  {SPD[k1] -> 0, SPD[k2] -> 0, SPD[k1, k2] -> 0}, n, Head -> pref]
+  {SPD[k1] -> 0, SPD[k2] -> 0, SPD[k1, k2] -> 0}, n, Prefactor -> pref]
 ```
 
 $$\left\{\{\text{k1},n\},\{\text{k2}\},\left\{\text{k2}\to \;\text{k1} \;\text{pref}\left(\frac{\text{k2}\cdot n}{\text{k1}\cdot n}\right)\right\}\right\}$$
@@ -37,7 +37,7 @@ Of course `{k1,n}` is not the only possible choice
 
 ```mathematica
 FCLoopFindTensorBasis[{k1, k2}, 
-  {SPD[k1] -> 0, SPD[k2] -> 0, SPD[k1, k2] -> 0}, n, Head -> pref, All -> True]
+  {SPD[k1] -> 0, SPD[k2] -> 0, SPD[k1, k2] -> 0}, n, Prefactor -> pref, All -> True]
 ```
 
 $$\left(
@@ -88,5 +88,32 @@ $$\left(
  \;\text{k1} \\
  \;\text{k2} \\
  \;\text{k2}\to \;\text{k1} \;\text{FCGV}(\text{Prefactor})\left(\frac{d}{c}\right) \\
+\end{array}
+\right)$$
+
+```mathematica
+FCLoopFindTensorBasis[{k1, k2}, {SPD[k1] -> m2, SPD[k2] -> m2, SPD[k1, k2] -> m2 }, n]
+```
+
+$$\left(
+\begin{array}{c}
+ \;\text{k1} \\
+ \;\text{k2} \\
+ \;\text{k2}\to \;\text{k1} \;\text{FCGV}(\text{Prefactor})(1) \\
+\end{array}
+\right)$$
+
+Cartesian momenta also supported too
+
+```mathematica
+FCLoopFindTensorBasis[{k1, k2}, {CSPD[k1] -> m2, CSPD[k2] -> m2, CSPD[k1, k2] -> m2 }, n, 
+  Head -> {CartesianPair, CartesianMomentum}]
+```
+
+$$\left(
+\begin{array}{c}
+ \;\text{k1} \\
+ \;\text{k2} \\
+ \;\text{k2}\to \;\text{k1} \;\text{FCGV}(\text{Prefactor})(1) \\
 \end{array}
 \right)$$

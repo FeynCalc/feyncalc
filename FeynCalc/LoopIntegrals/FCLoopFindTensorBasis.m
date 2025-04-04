@@ -39,7 +39,7 @@ reduction of the resulting scalar integrals. These integrals will depend on
 the new kinematic invariants but as the invariants should cancel in the final
 result for the reduced tensor integral. To see this cancellation explicitly
 one might need to use the linear relations between the external momenta
-uncovered by FCLoopFindTensorBasis<<Feyn
+uncovered by FCLoopFindTensorBasis
 
 Using the option All one can get all possible sets of new basis vectors. This
 can be useful if one needs to select one of them for the tensor reduction.";

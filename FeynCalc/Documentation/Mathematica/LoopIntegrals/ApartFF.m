@@ -24,7 +24,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [FCApart](FCApart.md), [FeynAmpDenominatorSimplify](FeynAmpDenominatorSimplify.md).*)
+(*[Overview](Extra/FeynCalc.md), [FCApart](FCApart.md), [FeynAmpDenominatorSimplify](FeynAmpDenominatorSimplify.md), [FCLoopFindTensorBasis](FCLoopFindTensorBasis.md).*)
 
 
 (* ::Subsection:: *)
@@ -151,3 +151,36 @@ ApartFF[ApartFF[SFAD[{{0,nb . k1}}]int2,SPD[nb,k1],{k1,k2}],{k1,k2}]
 
 ApartFF[ApartFF[SFAD[{{0,nb . k1}}]int2,SPD[nb,k1],{k1,k2}],{k1,k2},FDS->False,
 DropScaleless->False]
+
+
+(* ::Text:: *)
+(*When we need to deal with linearly dependent external momenta, there might be some relations between scalar products involving those momenta and loop momenta. Since the routine cannot determine those relations automatically, we need to supply them by hand via the option `FinalSubstitutions`*)
+
+
+FCClearScalarProducts[];
+int3 = SPD[p1,q]FAD[{q,m},{q-p1-p2}]
+
+
+(* ::Text:: *)
+(*Supplying the kinematics alone doesn't work*)
+
+
+kinRules = {SPD[p1]->M^2,SPD[p2]->M^2,SPD[p1,p2]->M^2}
+
+
+ApartFF[SPD[p1,q]FAD[{q,m},{q-p1-p2}],{q},FinalSubstitutions->kinRules]
+
+
+(* ::Text:: *)
+(*Using `FCLoopFindTensorBasis` we see that `p2` is proportional to `p1`. Hence, we have an equality between `p1.q` and `p2.q`*)
+
+
+FCLoopFindTensorBasis[{p1,p2},kinRules,n]
+
+
+(* ::Text:: *)
+(*Supplying this information to `ApartFF` we can finally achieve the desired simplification*)
+
+
+ApartFF[SPD[p1,q]FAD[{q,m},{q-p1-p2}],{q},FinalSubstitutions->Join[kinRules,
+{SPD[q,p2]->SPD[q,p1]}]]

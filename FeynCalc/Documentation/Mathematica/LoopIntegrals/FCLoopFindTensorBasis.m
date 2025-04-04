@@ -20,7 +20,7 @@
 
 
 (* ::Text:: *)
-(*If some of the external momenta are light-like (i.e. their scalar products vanish), then an auxiliary vector `n` must be added to the basis. The scalar products of this vector with the existing momenta will form new kinematic invariants appearing in the result of the tensor reduction. The values of these invariants can be arbitrary, except that they must be nonvanishing. Upon doing the tensor reduction in this way, one will still need to perform an IBP reduction of the resulting scalar integrals. These integrals will depend on the new kinematic invariants but as the invariants should cancel in the final result for the reduced tensor integral. To see this cancellation explicitly one might need to use the linear relations between the external momenta uncovered by `FCLoopFindTensorBasis<<Feyn`*)
+(*If some of the external momenta are light-like (i.e. their scalar products vanish), then an auxiliary vector `n` must be added to the basis. The scalar products of this vector with the existing momenta will form new kinematic invariants appearing in the result of the tensor reduction. The values of these invariants can be arbitrary, except that they must be nonvanishing. Upon doing the tensor reduction in this way, one will still need to perform an IBP reduction of the resulting scalar integrals. These integrals will depend on the new kinematic invariants but as the invariants should cancel in the final result for the reduced tensor integral. To see this cancellation explicitly one might need to use the linear relations between the external momenta uncovered by `FCLoopFindTensorBasis`*)
 
 
 (* ::Text:: *)
@@ -43,7 +43,7 @@
 (*One light-like momentum. Here we need to add an auxiliary vector to our basis. There are no linearly dependent vectors*)
 
 
-FCLoopFindTensorBasis[{k1},{SPD[k1]->0},n,Head->pref]
+FCLoopFindTensorBasis[{k1},{SPD[k1]->0},n,Prefactor->pref]
 
 
 (* ::Text:: *)
@@ -51,7 +51,7 @@ FCLoopFindTensorBasis[{k1},{SPD[k1]->0},n,Head->pref]
 
 
 FCLoopFindTensorBasis[{k1,k2},
-{SPD[k1]->0,SPD[k2]->0,SPD[k1,k2]->0},n,Head->pref]
+{SPD[k1]->0,SPD[k2]->0,SPD[k1,k2]->0},n,Prefactor->pref]
 
 
 (* ::Text:: *)
@@ -59,7 +59,7 @@ FCLoopFindTensorBasis[{k1,k2},
 
 
 FCLoopFindTensorBasis[{k1,k2},
-{SPD[k1]->0,SPD[k2]->0,SPD[k1,k2]->0},n,Head->pref,All->True]
+{SPD[k1]->0,SPD[k2]->0,SPD[k1,k2]->0},n,Prefactor->pref,All->True]
 
 
 (* ::Text:: *)
@@ -83,3 +83,14 @@ SPD[k1,k3]->0,SPD[k1,k2]->c,SPD[k2,k3]->0},n,All->True,"NoZeroVectors"->True]
 
 
 FCLoopFindTensorBasis[{k1,k2},{SPD[k1]->c^2,SPD[k2]->d^2,SPD[k1,k2]-> c d },n]
+
+
+FCLoopFindTensorBasis[{k1,k2},{SPD[k1]->m2,SPD[k2]->m2,SPD[k1,k2]-> m2 },n]
+
+
+(* ::Text:: *)
+(*Cartesian momenta also supported too*)
+
+
+FCLoopFindTensorBasis[{k1,k2},{CSPD[k1]->m2,CSPD[k2]->m2,CSPD[k1,k2]-> m2 },n,
+Head->{CartesianPair,CartesianMomentum}]
