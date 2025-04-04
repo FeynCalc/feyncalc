@@ -712,7 +712,7 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 
 		res = {exFinal,finalTopologies}  /. topoName->Identity;
 		If[	OptionValue[FCLoopGetKinematicInvariants],
-			kinInvs = FCLoopGetKinematicInvariants[finalTopologies, FCFeynmanPrepare->!OptionValue["NonstandardPropagators"]];
+			kinInvs = Union[Flatten[FCLoopGetKinematicInvariants[finalTopologies, FCFeynmanPrepare->!OptionValue["NonstandardPropagators"]]]];
 
 			If[	kinInvs=!={},
 				check = ToString /@ kinInvs;

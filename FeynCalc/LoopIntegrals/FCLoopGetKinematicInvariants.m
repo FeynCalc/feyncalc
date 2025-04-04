@@ -106,10 +106,10 @@ FCLoopGetKinematicInvariants[toposRaw:{__FCTopology}, OptionsPattern[]]:=
 
 			invariants = Variables2[invariants];
 *)
-			If[	OptionValue[Union] && Length[invariants]>0,
+
+			If[	OptionValue[Union] && Length[invariants]>1,
 				invariants = Union[Flatten[invariants]]
 			];
-
 
 			invariants
 		];
