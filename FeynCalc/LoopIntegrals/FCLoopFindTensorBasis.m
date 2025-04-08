@@ -145,7 +145,7 @@ FCLoopFindTensorBasis[extmomsRaw_List/;extmomsRaw=!={}, kinRulesRaw_List, auxVec
 
 			(* Only one external momentum *)
 			(* {linIndepVecs, linDepVecs, decompositions} *)
-			res = {Join[extmoms,{auxVec}],{},{}}/. extMom->Identity;
+			res = {Sort[Join[extmoms/. extMom->Identity,{auxVec}]],{},{}};
 			If[	optAll,
 				res = {res}
 			],
