@@ -49,19 +49,18 @@ optFirst::usage="";
 
 
 Options[FCFADiracChainJoin] = {
-	FCE 			-> False,
-	FCI 			-> False,
-	FCVerbose		-> False,
-	First			-> {},
-	Head			-> Identity
+	FCE 						-> False,
+	FCI 						-> False,
+	FCVerbose					-> False,
+	First						-> {},
+	Head						-> Identity
 };
 
 FCFADiracChainJoin[expr_, OptionsPattern[]] :=
-	Block[{	ex, tmp,  res, diracObjects, diracObjectsEval, null1, null2,
-			dsHead, time, repRule},
+	Block[{	ex, tmp,  res, diracObjects, diracObjectsEval, null1, null2, dsHead, time, repRule},
 
-		optHead = OptionValue[Head];
-		optFirst = FCI[OptionValue[First]];
+		optHead 	= OptionValue[Head];
+		optFirst	= FCI[OptionValue[First]];
 
 		If[	Head[optFirst]=!=List,
 			Message[FCFADiracChainJoin::failmsg,"The value of the option First must be a list."];
@@ -173,16 +172,18 @@ diracChainEvalM[rest_. DiracChain[chain1_,a_DiracIndex,i_DiracIndex] DiracChain[
 diracChainEvalM[rest_. DiracChain[chain1_,i_DiracIndex,a_DiracIndex] DiracChain[chain2_,i_DiracIndex,b_DiracIndex]]:=
 	diracChainEvalM[rest DiracChain[DOT[FCCCT[chain1, Explicit->True, FCDiracIsolate->True, FCI->True],chain2],a,b]]/; a=!=i && b=!=i;
 
+(*	Whenever there is a Dirac trace, we multiply by (-1), since	FeynArts will not generate when having explicit Dirac indices *)
+
 (* A_ii -> Tr(A) *)
 diracChainEvalM[rest_. DiracChain[chain_/;chain=!=1,i_DiracIndex,i_DiracIndex]]:=
-	DiracTrace[chain] diracChainEvalM[rest];
+	(-1)*DiracTrace[chain] diracChainEvalM[rest];
 
 diracChainEvalM[rest_. DiracChain[1,i_DiracIndex,i_DiracIndex]]:=
-	DiracTrace[1] diracChainEvalM[rest];
+	(-1)*DiracTrace[1] diracChainEvalM[rest];
 
 (* d_ii -> Tr(1) *)
 diracChainEvalM[rest_. DiracIndexDelta[i_DiracIndex,i_DiracIndex]]:=
-	DiracTrace[1] diracChainEvalM[rest];
+	(-1)*DiracTrace[1] diracChainEvalM[rest];
 
 (* d_ij d_jk -> d_ik *)
 diracChainEvalM[rest_. DiracIndexDelta[i_DiracIndex,j_DiracIndex] DiracIndexDelta[j_DiracIndex,k_DiracIndex]]:=
@@ -190,7 +191,7 @@ diracChainEvalM[rest_. DiracIndexDelta[i_DiracIndex,j_DiracIndex] DiracIndexDelt
 
 (* d_ij^2 -> Tr(1) *)
 diracChainEvalM[rest_. DiracIndexDelta[i_DiracIndex, j_DiracIndex]^2]:=
-	DiracTrace[1] diracChainEvalM[rest]/; i=!=j;
+	(-1)*DiracTrace[1] diracChainEvalM[rest]/; i=!=j;
 
 (* u_i v_j A_ij -> ubar.A.v or vbar.A.u *)
 diracChainEvalS[rest_. DiracChain[S: Spinor[_. m1_Momentum, ___], a_DiracIndex] DiracChain[z_, a_DiracIndex, b_DiracIndex] DiracChain[Spinor[s_. m2_Momentum, r___], b_DiracIndex]]:=
