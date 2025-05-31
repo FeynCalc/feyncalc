@@ -52,7 +52,7 @@ iDent[a_,___] :=
 
 
 FeynCalcExternal[x_,opts___Rule] :=
-	Block[{ru, ti, r, vv, rv, uru, revru},
+	Block[{ru, ti, r, vv, rv, uru, revru, x2},
 		sundeltanoi[y__] :=
 			SD@@({y} /. SUNIndex -> Identity);
 		sunfdeltanoi[y__] :=
@@ -84,7 +84,7 @@ FeynCalcExternal[x_,opts___Rule] :=
 			ScalarProduct 		:> scalarmul,
 			Power2 :> Power} /. LorentzIndex -> iDent /. SUNIndex -> iDent /. SUNFIndex -> iDent;
 		ru = Join[ru, Flatten[{uru}]];
-		vv = Cases2[x, {
+		vv[x2_] := Cases2[x2, {
 				DiracChain,
 				DiracIndexDelta,
 				PauliChain,
@@ -110,10 +110,10 @@ FeynCalcExternal[x_,opts___Rule] :=
 				Power2
 			} /. sequence -> Sequence];
 
-		rv = Map[(# ->  ((momentumCombine[#])/.ru ) )&, vv]//Dispatch;
+		rv[x2_] := x2 /. Dispatch@Map[(# ->  ((momentumCombine[#])/.ru ) )&, vv[x2]];
 		revru = Map[Reverse, SelectFree[ru,Power]];
 
-		x /. rv /. Dispatch[revru]
+		rv[x] /. Dispatch[revru]
 	];
 
 momentumCombine[x_]:=
