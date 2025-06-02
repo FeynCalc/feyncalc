@@ -51,14 +51,10 @@ iDent[a_,___] :=
 	a;
 
 
-FeynCalcExternal[x_,opts___Rule] :=
-	Block[{ru, ti, r, vv, rv, uru, revru, x2},
-		sundeltanoi[y__] :=
-			SD@@({y} /. SUNIndex -> Identity);
-		sunfdeltanoi[y__] :=
-			SDF@@({y} /. SUNFIndex -> Identity);
+FeynCalcExternal[x_, OptionsPattern[]] :=
+	Block[{ru, ti, r, vv, rv, optFinalSubstitutions, revru},
 
-		uru = FinalSubstitutions /. {opts} /. Options[FeynCalcExternal];
+		optFinalSubstitutions = OptionValue[FinalSubstitutions];
 
 		ru = {
 			DiracIndexDelta 	:> diracdelta,
@@ -83,7 +79,11 @@ FeynCalcExternal[x_,opts___Rule] :=
 			SUNFDeltaContract 	:> sunfdeltanoi,
 			ScalarProduct 		:> scalarmul,
 			Power2 :> Power} /. LorentzIndex -> iDent /. SUNIndex -> iDent /. SUNFIndex -> iDent;
-		ru = Join[ru, Flatten[{uru}]];
+
+		If[	optFinalSubstitutions=!={},
+			ru = Join[ru, Flatten[optFinalSubstitutions]];
+		];
+
 		vv[x2_] := Cases2[x2, {
 				DiracChain,
 				DiracIndexDelta,
@@ -111,10 +111,19 @@ FeynCalcExternal[x_,opts___Rule] :=
 			} /. sequence -> Sequence];
 
 		rv[x2_] := x2 /. Dispatch@Map[(# ->  ((momentumCombine[#])/.ru ) )&, vv[x2]];
+
 		revru = Map[Reverse, SelectFree[ru,Power]];
 
 		rv[x] /. Dispatch[revru]
 	];
+
+
+sundeltanoi[y__] :=
+	SD@@({y} /. SUNIndex -> Identity);
+
+sunfdeltanoi[y__] :=
+	SDF@@({y} /. SUNFIndex -> Identity);
+
 
 momentumCombine[x_]:=
 	x /; !FreeQ[x,GenericPropagatorDenominator];
