@@ -54,5 +54,4 @@ FCE\[Rule]True]", "PCHN[CSIS[p] + CSIS[q], i, j] == x"},
 "PauliChainCombine[{PCHN[CSIS[p],i,j]+PCHN[CSIS[q],i,j],PCHN[CSIS[\
 p1],i,j]+PCHN[CSIS[q1],i,j]},FCE\[Rule]True]",
 "{PCHN[CSIS[p] + CSIS[q], i, j], PCHN[CSIS[p1] + CSIS[q1], i, j]}"}
-
 })

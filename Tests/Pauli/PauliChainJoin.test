@@ -13,7 +13,7 @@
 
 (* ------------------------------------------------------------------------ *)
 
-Tests`Dirac`fcstPauliChainJoin =
+Tests`Pauli`fcstPauliChainJoin =
 ({
 {"fcstPauliChainJoin-ID1", "PauliChainJoin[0]", "0"},
 {"fcstPauliChainJoin-ID2", "PauliChainJoin[CSI[i],FCE\[Rule]True]",
@@ -38,8 +38,8 @@ PIDelta[i,j],FCE\[Rule]True]",
 {"fcstPauliChainJoin-ID8",
 "PauliChainJoin[PCHN[i,PauliEta[-I]]PCHN[CSIS[p]+m,PauliXi[I],i],\
 FCE\[Rule]True]", "PauliXi[I] . (m + CSIS[p]) . PauliEta[-I]"},
-{"fcstPauliChainJoin-ID9", "PauliChainJoin[PIDelta[i,i]]", "4"},
-{"fcstPauliChainJoin-ID10", "PauliChainJoin[PIDelta[i,j]^2]", "4"},
+{"fcstPauliChainJoin-ID9", "PauliChainJoin[PIDelta[i,i]]", "2"},
+{"fcstPauliChainJoin-ID10", "PauliChainJoin[PIDelta[i,j]^2]", "2"},
 {"fcstPauliChainJoin-ID11", "PauliChainJoin[PCHN[CSI[i],i,i]]",
 "PauliTrace[PauliSigma[CartesianIndex[i]]]"},
 {"fcstPauliChainJoin-ID12",
