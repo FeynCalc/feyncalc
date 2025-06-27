@@ -48,7 +48,7 @@ Options[PauliChainJoin] = {
 	FCI 			-> False,
 	FCVerbose		-> False,
 	Factoring		-> {Factor2, 5000},
-	TraceOfOne		-> 4
+	TraceOfOne		-> 2
 };
 
 PauliChainJoin[a_ == b_, opts:OptionsPattern[]] :=
