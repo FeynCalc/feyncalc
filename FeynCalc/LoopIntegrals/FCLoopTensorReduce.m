@@ -59,7 +59,7 @@ Options[FCLoopTensorReduce] = {
 	DiracSimplify				-> True,
 	FCE 						-> False,
 	FCI 						-> False,
-	FCParallelize				-> True,
+	FCParallelize				-> False,
 	FCVerbose 					-> False,
 	Factoring 					-> {Factor2, 5000},
 	FinalSubstitutions			-> {},
