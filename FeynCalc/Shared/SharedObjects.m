@@ -1361,6 +1361,7 @@ $FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
 (* ------------------------------------------------------------------------ *)
 Begin["`Package`"];
 
+initialDataTypeDownValues;
 initialPairDownValues;
 initialCartesianPairDownValues;
 initialTemporalPairDownValues;
@@ -3242,6 +3243,8 @@ SPLRD/:
 			LightConePerpendicularComponent[Momentum[a,D],Momentum[n,D],Momentum[nb,D]],
 			LightConePerpendicularComponent[Momentum[b,D],Momentum[n,D],Momentum[nb,D]]]=c
 		);
+
+initialDataTypeDownValues			= DownValues[DataType];
 
 initialPairDownValues 				= DownValues[Pair];
 initialCartesianPairDownValues		= DownValues[CartesianPair];
