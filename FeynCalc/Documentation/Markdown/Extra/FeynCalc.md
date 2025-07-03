@@ -130,6 +130,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FC](../FC.md) - changes the output format to [FeynCalcForm](../FeynCalcForm.md)
 - [FCAbbreviate](../FCAbbreviate.md) - introduces abbreviations
 - [FCAntiSymmetrize](../FCAntiSymmetrize.md) - antisymmetrizes with respect to the given variables
+- [FCClearDataTypes](../FCClearDataTypes.md) - removes all user-defined data types
 - [FCDeclareHeader](../FCDeclareHeader.md), [FCPrint](../FCPrint.md), [FCReloadAddOns](../FCReloadAddOns.md), [FCReloadFunctionFromFile](../FCReloadFunctionFromFile.md) - for writing or debugging new FeynCalc functions or add-ons
 - [FCClearCache](../FCClearCache.md), [FCMemoryAvailable](../FCMemoryAvailable.md), [FCShowCache](../FCShowCache.md), [FCUseCache](../FCUseCache.md) - cache management
 - [FCCheckSyntax](../FCCheckSyntax.md) - checks for syntax errors in the input expressions
@@ -155,6 +156,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCShowReferenceCard](../FCShowReferenceCard.md) - FeynArts cheatsheet
 - [FCSplit](../FCSplit.md), [FCProductSplit](../FCProductSplit.md), [PartitHead](../PartitHead.md), [SelectFree](../SelectFree.md), [SelectNotFree](../SelectNotFree.md), [SelectFree2](../SelectFree2.md), [SelectNotFree2](../SelectNotFree2.md), [SelectSplit](../SelectSplit.md) - alternatives to Mathematica's `Select`
 - [FCSymmetrize](../FCSymmetrize.md) - symmetrizes with respect to the given variables
+- [FCValuesSynchronizedQ](../FCValuesSynchronizedQ.md) - checks consistency of specified definitions in the parallel mode
 - [FeynCalcHowToCite](../FeynCalcHowToCite.md) - lists relevant FeynCalc publications
 - [FI](../FI.md) - changes the output format to `InputForm`
 - [FreeQ2](../FreeQ2.md) - alternative to Mathematica's `FreeQ`
@@ -205,6 +207,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCReplaceMomenta](../FCReplaceMomenta.md) - replaces momenta in the expression
 - [FCReplaceD](../FCReplaceD.md) - replaces $D$ with e.g. $4-2 \varepsilon$
 - [FCRerouteMomenta](../FCRerouteMomenta.md) - improves routing of the external momenta using momentum conservation
+- [FCScalarProductsSynchronizedQ](../FCScalarProductsSynchronizedQ.md) - checks consistency of kinematic definitions in the parallel mode
 - [FCSchoutenBruteForce](../FCSchoutenBruteForce.md) - brute force application of the [Schouten](../Schouten.md) identity to minimize the number of terms
 - [FCSetScalarProducts](../FCSetScalarProducts.md), [ScalarProduct](../ScalarProduct.md) - defines scalar products of $4$-vectors
 - [FCSetMetricSignature](../FCSetMetricSignature.md), [FCGetMetricSignature](../FCGetMetricSignature.md) - changes the signature of the flat-space metric
