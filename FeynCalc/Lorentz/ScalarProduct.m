@@ -66,7 +66,14 @@ specify at least one dimension via the option SetDimensions->{dims...}! Evaluati
 aborted.";
 
 ScalarProduct::fail =
-"Something went wrong while setting scalar products! Evaluation aborted."
+"Something went wrong while setting scalar products! Evaluation aborted.";
+
+ScalarProduct::notsync =
+"You are using FeynCalc in the parallel mode, but the scalar product values \
+are not synchronized between the master kernel and subkernels. \
+This usually happens if such definitions have been set before activating the \
+parallel mode. Please clear the existing definitions with FCClearScalarProducts[] \
+and redefine your scalar products.";
 
 CartesianScalarProduct::emptydim =
 "If you want to set scalar products via CartesianScalarProduct[a, b] = m^2, you must \
@@ -92,6 +99,7 @@ Begin["`ScalarProduct`Private`"]
 Options[ScalarProduct] = {
 	Dimension		-> 4,
 	FCI 			-> True,
+	FCParallelize	-> True,
 	FCVerbose		-> False,
 	SetDimensions	-> {4,D}
 };
@@ -99,9 +107,16 @@ Options[ScalarProduct] = {
 Options[CartesianScalarProduct] = {
 	Dimension		-> 3,
 	FCI 			-> True,
+	FCParallelize	-> True,
 	FCVerbose		-> False,
 	SetDimensions	-> {3,D-1}
 };
+
+Options[SetTemporalComponent] = {
+	FCParallelize	-> True,
+	FCVerbose		-> False
+};
+
 
 ScalarProduct /:
 	MakeBoxes[ScalarProduct[a_, b_, opts:OptionsPattern[]], TraditionalForm]:=
@@ -139,21 +154,39 @@ ScalarProduct/:
 		Set[ScalarProduct[araw, araw, c] , z];
 
 ScalarProduct/:
-	Set[ScalarProduct[araw_,braw_,c:OptionsPattern[]] , z_]:=
-	Block[ {downv, pair,  ruleClearSP,ruleClearPair, a,b,
+	Set[ScalarProduct[araw_,braw_, c:OptionsPattern[]], z_]:=
+		Block[ {dims, setval, spVerbose},
+
+			dims = OptionValue[ScalarProduct,{c},SetDimensions];
+
+			If [OptionValue[ScalarProduct,{c},FCVerbose]===False,
+				spVerbose=$VeryVerbose,
+				If[MatchQ[OptionValue[ScalarProduct,{c},FCVerbose], _Integer],
+					spVerbose=OptionValue[ScalarProduct,{c},FCVerbose]
+				];
+			];
+
+			If[	$ParallelizeFeynCalc && OptionValue[ScalarProduct,{c},FCParallelize],
+				FCPrint[1,"ScalarProduct: Setting scalar product value on subkernels. ", FCDoControl->spVerbose];
+				With[{xxx=dims,yyy=z},
+					ParallelEvaluate[setScalarProduct[araw,braw, yyy, xxx, spVerbose];,DistributedContexts -> None]];
+				FCPrint[1,"ScalarProduct: Done setting scalar product value on subkernels. ", FCDoControl->spVerbose]
+			];
+
+			FCPrint[1,"ScalarProduct: Setting scalar product value on the main kernel. ", FCDoControl->spVerbose];
+			setval = setScalarProduct[araw,braw,z, dims, spVerbose];
+			FCPrint[1,"ScalarProduct: Done setting scalar product value on the main kernel. ", FCDoControl->spVerbose];
+
+			setval
+		]/; araw=!=0 && braw=!=0 && FCPatternFreeQ[{araw,braw}];
+
+
+setScalarProduct[araw_,braw_,z_, dims_, spVerbose_]:=
+	Block[ {downv, pair,  ruleClearSP,ruleClearPair, a, b,
 			ruleClearFCESP,ruleClearFCESPD,ruleClearFCESPE,
 			spList, pairList, fceList, valsListOrig, valsList,
-			slot,dims,setval,dummy, tuples, hp, pr, sp, entry, spVerbose,
+			slot,setval,dummy, tuples, hp, pr, sp, entry,
 			ruleClearFCESPLR, ruleClearFCESPLRD},
-
-		dims = OptionValue[ScalarProduct,{c},SetDimensions];
-
-		If [OptionValue[ScalarProduct,{c},FCVerbose]===False,
-			spVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[ScalarProduct,{c},FCVerbose], _Integer],
-				spVerbose=OptionValue[ScalarProduct,{c},FCVerbose]
-			];
-		];
 
 		{a,b} = Sort[{araw,braw}];
 		tuples = {	{(a/NumericalFactor[a]), Expand[(a/NumericalFactor[a])], Expand[-(a/NumericalFactor[a])]},
@@ -231,7 +264,7 @@ ScalarProduct/:
 			treated as different by Mathematica, so that we need to account for these cases	*)
 		If[	(spList/.HoldPattern->Identity/.Pair->pair) =!= pairList/.HoldPattern->Identity,
 
-			FCPrint[1,"ScalarProduct: Removing old values for ", ScalarProduct[a,b,c], " and it variations ", FCDoControl->spVerbose];
+			FCPrint[1,"ScalarProduct: Removing old values for scalar product of ", {a,b}, " and it variations ", FCDoControl->spVerbose];
 			(*	 for ScalarProduct	*)
 			downv = DownValues[ScalarProduct];
 			downv = Complement[downv,ruleClearSP];
@@ -331,8 +364,15 @@ ScalarProduct/:
 			AppendTo[$ScalarProducts,entry]
 		];
 
+		(* If we are in the parallel mode and on the master kernel, need to check whether these values have already been set on subkernels*)
+		If[$ParallelizeFeynCalc && ($KernelID===0),
+			If[!FCScalarProductsSynchronizedQ[],
+				Message[ScalarProduct::notsync]
+			]
+		];
+
 		setval
-	]/; araw=!=0 && braw=!=0 && FCPatternFreeQ[{araw,braw}];
+	];
 
 
 CartesianScalarProduct/:
@@ -340,21 +380,38 @@ CartesianScalarProduct/:
 		Set[CartesianScalarProduct[araw, araw, c] , z];
 
 CartesianScalarProduct/:
-	Set[CartesianScalarProduct[araw_,braw_,c:OptionsPattern[]] , z_]:=
-	Block[ {downv, cpair,  ruleClearCSP,ruleClearCartesianPair, a,b,
+	Set[CartesianScalarProduct[araw_,braw_, c:OptionsPattern[]], z_]:=
+		Block[ {dims, setval, cspVerbose},
+
+			dims = OptionValue[CartesianScalarProduct,{c},SetDimensions];
+
+			If [OptionValue[CartesianScalarProduct,{c},FCVerbose]===False,
+				cspVerbose=$VeryVerbose,
+				If[MatchQ[OptionValue[CartesianScalarProduct,{c},FCVerbose], _Integer],
+					cspVerbose=OptionValue[CartesianScalarProduct,{c},FCVerbose]
+				];
+			];
+
+			If[	$ParallelizeFeynCalc && OptionValue[CartesianScalarProduct,{c},FCParallelize],
+				FCPrint[1,"CartesianScalarProduct: Setting Cartesian scalar product value on subkernels. ", FCDoControl->cspVerbose];
+				With[{xxx=dims,yyy=z},
+					ParallelEvaluate[setCartesianScalarProduct[araw,braw, yyy, xxx, cspVerbose];,DistributedContexts -> None]];
+				FCPrint[1,"CartesianScalarProduct: Done setting Cartesian scalar product value on subkernels. ", FCDoControl->cspVerbose]
+			];
+
+			FCPrint[1,"CartesianScalarProduct: Setting Cartesian scalar product value on the main kernel. ", FCDoControl->cspVerbose];
+			setval = setCartesianScalarProduct[araw,braw,z, dims, cspVerbose];
+			FCPrint[1,"CartesianScalarProduct: Done setting Cartesian scalar product value on the main kernel. ", FCDoControl->cspVerbose];
+
+			setval
+		]/; araw=!=0 && braw=!=0 && FCPatternFreeQ[{araw,braw}];
+
+setCartesianScalarProduct[araw_,braw_,z_, dims_, cspVerbose_]:=
+	Block[{downv, cpair,  ruleClearCSP,ruleClearCartesianPair, a,b,
 			ruleClearFCECSP,ruleClearFCECSPD,ruleClearFCECSPE,
 			cspList, cpairList, fceList, valsListOrig, valsList,
-			slot,dims,setval,dummy, tuples, hp, cpr, csp, entry,
-			ruleClearCartesianMomentum, cmomList, cspVerbose},
-
-		dims = OptionValue[CartesianScalarProduct,{c},SetDimensions];
-
-		If [OptionValue[CartesianScalarProduct,{c},FCVerbose]===False,
-			cspVerbose=$VeryVerbose,
-			If[MatchQ[OptionValue[CartesianScalarProduct,{c},FCVerbose], _Integer],
-				cspVerbose=OptionValue[CartesianScalarProduct,{c},FCVerbose]
-			];
-		];
+			slot, setval,dummy, tuples, hp, cpr, csp, entry,
+			ruleClearCartesianMomentum, cmomList},
 
 		{a,b} = Sort[{araw,braw}];
 		tuples = {	{(a/NumericalFactor[a]), Expand[(a/NumericalFactor[a])], Expand[-(a/NumericalFactor[a])]},
@@ -378,8 +435,6 @@ CartesianScalarProduct/:
 
 		cmomList = DeleteDuplicates[Flatten[Map[Map[dummy[hp[cm[#, slot]], 0] &, tuples[[1]]] /. slot -> Slot[1] &, dims]]] /.
 			cm[x_,3]:> cm[x] /. hp->HoldPattern;
-
-
 
 		valsList = Flatten[Table[valsListOrig, {i, 1,Length[dims]}]];
 
@@ -422,7 +477,7 @@ CartesianScalarProduct/:
 			treated as different by Mathematica, so that we need to account for these cases	*)
 		If[	(cspList/.HoldPattern->Identity/.CartesianPair->cpair) =!= cpairList/.HoldPattern->Identity,
 
-			FCPrint[1,"CartesianScalarProduct: Removing old values for ", CartesianScalarProduct[a,b,c], " and it variations ", FCDoControl->cspVerbose];
+			FCPrint[1,"CartesianScalarProduct: Removing old values for Cartesian scalar product of ", {a,b}, " and it variations ", FCDoControl->cspVerbose];
 			(*	 for CartesianScalarProduct	*)
 			downv = DownValues[CartesianScalarProduct];
 			downv = Complement[downv,ruleClearCSP];
@@ -504,14 +559,45 @@ CartesianScalarProduct/:
 			AppendTo[$ScalarProducts,entry]
 		];
 
-		setval
-	]/; araw=!=0 && braw=!=0 && FCPatternFreeQ[{araw,braw}];
+		(* If we are in the parallel mode and on the master kernel, need to check whether these values have already been set on subkernels*)
+		If[$ParallelizeFeynCalc && ($KernelID===0),
+			If[!FCScalarProductsSynchronizedQ[],
+				Message[ScalarProduct::notsync]
+			]
+		];
 
+		setval
+	];
 
 SetTemporalComponent[araw_, z_, OptionsPattern[]]:=
+	Block[ {stcVerbose},
+
+		If[	OptionValue[FCVerbose]===False,
+				stcVerbose=$VeryVerbose,
+				If[MatchQ[OptionValue[FCVerbose], _Integer],
+					stcVerbose=OptionValue[FCVerbose]
+				];
+		];
+
+		If[	$ParallelizeFeynCalc && OptionValue[FCParallelize],
+				FCPrint[1,"SetTemporalComponent: Setting temporal component value on subkernels. ", FCDoControl->stcVerbose];
+				With[{yyy=z},
+					ParallelEvaluate[auxSetTemporalComponent[araw, yyy, stcVerbose];,DistributedContexts -> None]];
+				FCPrint[1,"SetTemporalComponent: Done setting temporal component value value on subkernels. ", FCDoControl->stcVerbose]
+		];
+
+		FCPrint[1,"SetTemporalComponent: Setting temporal component value on the main kernel. ", FCDoControl->stcVerbose];
+		auxSetTemporalComponent[araw,z, stcVerbose];
+		FCPrint[1,"SetTemporalComponent: Done setting temporal component value on the main kernel. ", FCDoControl->stcVerbose];
+
+
+	]/; araw=!=0 && FCPatternFreeQ[{araw}];
+
+
+auxSetTemporalComponent[araw_, z_, stcVerbose_]:=
 	Block[ {downv, a, ruleClearTV, ruleClearTemporalPair,
 			tPairList, fceList, valsListOrig, valsList,
-			setval,dummy, tuples},
+			setval, dummy, tuples},
 
 		a = araw;
 		tuples = {	(a/NumericalFactor[a]), Expand[(a/NumericalFactor[a])], Expand[-(a/NumericalFactor[a])] };
@@ -543,23 +629,31 @@ SetTemporalComponent[araw_, z_, OptionsPattern[]]:=
 			downv = Complement[downv,ruleClearTV];
 			DownValues[TC] = downv;
 
-			FCPrint[3,"SetTemporalComponent: Downvalues for TemporalPair after removal ", DownValues[TemporalPair]];
-			FCPrint[3,"SetTemporalComponent: Downvalues for TC after removal ", DownValues[TC]];
+			FCPrint[3,"SetTemporalComponent: Downvalues for TemporalPair after removal ", DownValues[TemporalPair], FCDoControl->stcVerbose];
+			FCPrint[3,"SetTemporalComponent: Downvalues for TC after removal ", DownValues[TC], FCDoControl->stcVerbose];
 		];
 
-		FCPrint[1,"SetTemporalComponent: Setting DownValues for TemporalPair"];
+		FCPrint[1,"SetTemporalComponent: Setting DownValues for TemporalPair", FCDoControl->stcVerbose];
 		DownValues[TemporalPair] = Join[Thread[dummy[tPairList, valsList]]/.dummy->RuleDelayed,DownValues[TemporalPair]];
 
-		FCPrint[1,"SetTemporalComponent: Setting DownValues for TC"];
+		FCPrint[1,"SetTemporalComponent: Setting DownValues for TC", FCDoControl->stcVerbose];
 		DownValues[TC] = Join[Thread[dummy[fceList, valsList]]/.dummy->RuleDelayed,DownValues[TC]];
 
 		(* Last but not least, add the set scalar product to our list*)
-		FCPrint[1,"SetTemporalComponent: Adding TemporalMomentum to the list of set scalar products"];
+		FCPrint[1,"SetTemporalComponent: Adding TemporalMomentum to the list of set scalar products", FCDoControl->stcVerbose];
 
 		If[	!MemberQ[$ScalarProducts,{TemporalMomentum[a]}],
 			AppendTo[$ScalarProducts,{TemporalMomentum[a]}]
 		];
-	]/; araw=!=0 && FCPatternFreeQ[{araw}];
+
+		(* If we are in the parallel mode and on the master kernel, need to check whether these values have already been set on subkernels*)
+		If[$ParallelizeFeynCalc && ($KernelID===0),
+			If[!FCScalarProductsSynchronizedQ[],
+				Message[ScalarProduct::notsync]
+			]
+		];
+
+	];
 
 splr[c1_. LightConePerpendicularComponent[Momentum[a_], Momentum[n_],
 Momentum[nb_]],	c2_. LightConePerpendicularComponent[Momentum[b_], Momentum[n_], Momentum[nb_]]]:=

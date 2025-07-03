@@ -75,6 +75,13 @@ UnDeclareAllCommutators::usage =
 UnDeclareAllAntiCommutators::usage =
 "UnDeclareAllAntiCommutators[] undeclares all user-defined anticommutators.";
 
+Commutator::notsync =
+"You are using FeynCalc in the parallel mode, but the Commutator or AntiCommutator values \
+are not synchronized between the master kernel and subkernels. \
+This usually happens if such definitions have been set before activating the \
+parallel mode. Please clear the existing definitions and redefine your symbols.";
+
+
 (* ------------------------------------------------------------------------ *)
 Begin["`Package`"];
 End[]
@@ -83,13 +90,17 @@ Begin["`NonCommutative`Private`"];
 
 AntiCommutator /:
 	Set[AntiCommutator[a_, b_] , c_] :=
-	Block[ {nd, acom},
-		nd = (RuleDelayed @@ {HoldPattern @@ {acom[a, b]},c}) /. acom -> AntiCommutator;
-		If[FreeQ2[DownValues[AntiCommutator], {nd,Verbatim[nd]}],
-				PrependTo[DownValues[AntiCommutator], nd]
-		];
-		c
-	];
+		Block[ {},
+
+				If[	$ParallelizeFeynCalc,
+					With[{xxx=a,yyy=b,zzz=c},
+								ParallelEvaluate[setCommAcomm[xxx, yyy, zzz,AntiCommutator];,DistributedContexts -> None]
+							];
+				];
+				setCommAcomm[a, b, c, AntiCommutator];
+
+				c
+			];
 
 AntiCommutator /:
 	MakeBoxes[ AntiCommutator[a_, b_], TraditionalForm] :=
@@ -97,16 +108,41 @@ AntiCommutator /:
 
 Commutator /:
 	Set[Commutator[a_, b_] , c_] :=
-		Block[ {nd, com},
-			nd = (RuleDelayed @@ {HoldPattern @@ {com[a, b]}, c}) /. com -> Commutator;
-			If[ FreeQ2[DownValues[Commutator], {nd,Verbatim[nd]}],
-				PrependTo[DownValues[Commutator], nd]
+		Block[ {},
+
+			If[	$ParallelizeFeynCalc,
+				With[{xxx=a,yyy=b,zzz=c},
+							ParallelEvaluate[setCommAcomm[xxx, yyy, zzz, Commutator];,DistributedContexts -> None]
+						];
 			];
+			setCommAcomm[a, b, c, Commutator];
+
 			c
 		];
 
 Commutator/: MakeBoxes[Commutator[a_, b_], TraditionalForm] :=
 	RowBox[ {"[","\[NoBreak]", TBox[a] ,"\[NoBreak]", ",", TBox[b], "\[NoBreak]", "]"}];
+
+setCommAcomm[a_,b_,c_,(type:Commutator|AntiCommutator)]:=
+	Block[{nd, hold},
+		nd = (RuleDelayed @@ {HoldPattern @@ {hold[a, b]}, c}) /. hold -> type;
+		If[ FreeQ2[DownValues[type], {nd,Verbatim[nd]}],
+			PrependTo[DownValues[type], nd]
+		];
+
+		(* If we are in the parallel mode and on the master kernel, need to check whether these values have already been set on subkernels*)
+		If[$ParallelizeFeynCalc && ($KernelID===0),
+			If[!FCValuesSynchronizedQ[{type}, DownValues],
+				Message[Commutator::notsync]
+			]
+		];
+
+
+
+
+		c
+	];
+
 
 CommutatorExplicit[exp_] :=
 	exp /. {
