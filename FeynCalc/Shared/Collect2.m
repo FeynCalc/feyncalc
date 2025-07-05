@@ -108,7 +108,7 @@ Collect2[x_List, y__,  opts:OptionsPattern[]] :=
 				If[	optIsolateNames=!=False,
 					Table[ParallelEvaluate[SetOptions[Collect2, IsolateNames -> False];, DistributedContexts -> None],{i,1,$KernelCount}];
 				],
-				FCPrint[1, "FCFeynmanPrepare: Applying Collect2 to a list.", FCDoControl->cl2Verbose];
+				FCPrint[1, "Collect2: Applying Collect2 to a list.", FCDoControl->cl2Verbose];
 				res = (Collect2[#, y, FilterRules[{opts}, Except[FCParallelize|FCVerbose]]]& /@ x)
 		];
 

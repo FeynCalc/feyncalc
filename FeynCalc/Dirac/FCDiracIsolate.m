@@ -98,7 +98,7 @@ FCDiracIsolate[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 
 		optTimeConstrained = OptionValue[TimeConstrained];
 		optSplit = OptionValue[Split];
-		headsOrig =  Complement[DiracHeadsList,OptionValue[ExceptHeads]];
+		headsOrig =  Complement[FeynCalc`Package`DiracHeadsList,OptionValue[ExceptHeads]];
 		headsList = headsOrig;
 		collectList = headsList;
 

@@ -84,7 +84,7 @@ DiracReduce[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 		FCPrint[1, "DiracReduce. Entering.", FCDoControl->drVerbose];
 		FCPrint[3, "DiracReduce: Entering with ", ex, FCDoControl->drVerbose];
 
-		If[ FreeQ2[ex,DiracHeadsList],
+		If[ FreeQ2[ex,FeynCalc`Package`DiracHeadsList],
 			Return[ex]
 		];
 

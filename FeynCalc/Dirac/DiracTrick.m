@@ -153,7 +153,7 @@ DiracTrick[expr_,OptionsPattern[]] :=
 
 
 
-		If[ FreeQ2[ex,DiracHeadsList],
+		If[ FreeQ2[ex,FeynCalc`Package`DiracHeadsList],
 			Return[ex]
 		];
 
@@ -568,7 +568,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 			FCPrint[3, "DiracTrick: diracTrickEval: after applying simplifications related to g^5: ", res, FCDoControl->diTrVerbose];
 		];
 
-		If[ FreeQ2[res,DiracHeadsList],
+		If[ FreeQ2[res,FeynCalc`Package`DiracHeadsList],
 			Return[res]
 		];
 
@@ -591,7 +591,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 		];
 
 
-		If[ FreeQ2[res,DiracHeadsList],
+		If[ FreeQ2[res,FeynCalc`Package`DiracHeadsList],
 			Return[res]
 		];
 
@@ -691,7 +691,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 		FCPrint[2, "DiracTrick: diracTrickEval: Done with simplifications unrelated to g^5.", FCDoControl->diTrVerbose];
 		FCPrint[3, "DiracTrick: diracTrickEval: After simplifications unrelated to g^5: ", res , FCDoControl->diTrVerbose];
 
-		If[ FreeQ2[res,DiracHeadsList],
+		If[ FreeQ2[res,FeynCalc`Package`DiracHeadsList],
 			Return[res/. holdDOT -> DOT]
 		];
 
@@ -709,7 +709,7 @@ diracTrickEvalInternal[ex_/;Head[ex]=!=DiracGamma]:=
 			FCPrint[3, "DiracTrick: diracTrickEval: After special simplifications for the BMHV scheme: ", res , FCDoControl->diTrVerbose];
 		];
 
-		If[ FreeQ2[res,DiracHeadsList],
+		If[ FreeQ2[res,FeynCalc`Package`DiracHeadsList],
 			Return[res/. holdDOT -> DOT]
 		];
 

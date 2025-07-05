@@ -82,6 +82,7 @@ Options[DiracSimplify] = {
 	FCDiracIsolate				-> True,
 	FCE							-> False,
 	FCI    						-> False,
+	FCParallelize				-> False,
 	FCVerbose					-> False,
 	Factoring					-> False,
 	InsideDiracTrace    		-> False,
@@ -95,11 +96,44 @@ Options[DiracSimplify] = {
 
 DiracSimplify[a_ == b_, opts:OptionsPattern[]] :=
 	DiracSimplify[a,opts] == DiracSimplify[b,opts];
-
+(*
 DiracSimplify[expr_List, opts:OptionsPattern[]] :=
-	DiracSimplify[#, opts]&/@expr;
+	DiracSimplify[#, opts]&/@expr;*)
 
-DiracSimplify[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
+(*	Given a list of expressions/amplitudes, DiracSimplify can distribute
+	the evaluation over subkernels *)
+DiracSimplify[expr_List, opts:OptionsPattern[]] :=
+	Block[{dsVerbose, time, res},
+		If [OptionValue[FCVerbose]===False,
+			dsVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				dsVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		time=AbsoluteTime[];
+
+		If[	$ParallelizeFeynCalc && OptionValue[FCParallelize],
+				FCPrint[1, "DiracSimplify: Applying DiracSimplify to a list in parallel." , FCDoControl->dsVerbose];
+
+				With[{ooo = {opts}},
+					ParallelEvaluate[
+						FCParallelContext`DiracSimplify`pOpts = FilterRules[ooo, Except[FCParallelize|FCVerbose]];, DistributedContexts -> None]
+				];
+
+				res = ParallelMap[(DiracSimplify[#,FCParallelContext`DiracSimplify`pOpts, FCParallelize->False])&,expr, DistributedContexts->None,
+					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[expr]/$KernelCount]/10]],
+
+				FCPrint[1, "DiracSimplify: Applying DiracSimplify to a list.", FCDoControl->dsVerbose];
+				res = (DiracSimplify[#, FilterRules[{opts}, Except[FCParallelize|FCVerbose]]]& /@ expr)
+		];
+
+		FCPrint[1, "DiracSimplify: Done applying DiracSimplify to a list, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose];
+		res
+
+	];
+
+DiracSimplify[expr_/; !MemberQ[{List,Equal},Head[expr]], OptionsPattern[]] :=
 	Block[{ex,res, time, null1, null2, holdDOT, freePart=0, dsPart, diracObjects,
 			diracObjectsEval, repRule, tmp, tmpHead, dsHead, dsHeadAll, diracObjectsAll,
 			diracObjectsAllEval, optFCCanonicalizeDummyIndices, timeTotal},
@@ -161,7 +195,7 @@ DiracSimplify[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 			FCPrint[1,"DiracSimplify: Done checking the syntax, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->dsVerbose]
 		];
 
-		If[ FreeQ2[ex,DiracHeadsList],
+		If[ FreeQ2[ex,FeynCalc`Package`DiracHeadsList],
 			Return[ex]
 		];
 
@@ -258,7 +292,7 @@ DiracSimplify[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 				res = res /. tmpHead[zzz_]/;!FreeQ[{zzz}, DiracGamma[5]] :> tmpHead[ToDiracGamma67[zzz,FCI->True]]
 			];
 
-			If[ !FreeQ2[tmp,{DiracHeadsList,tmpHead}],
+			If[ !FreeQ2[tmp,{FeynCalc`Package`DiracHeadsList,tmpHead}],
 				tmp = tmp /. tmpHead -> diracSimplifyEval
 			];
 

@@ -70,7 +70,7 @@ DiracOrder[expr_/; !MemberQ[{List,Equal},expr], orderList_List/; (!OptionQ[order
 			ex = FCI[expr]
 		];
 
-		If[ FreeQ2[ex,DiracHeadsList],
+		If[ FreeQ2[ex,FeynCalc`Package`DiracHeadsList],
 			Return[ex]
 		];
 
