@@ -54,15 +54,16 @@ Begin["`SUNSimplify`Private`"]
 sunSiVerbose::usage="";
 dummyInd::usage="";
 optSUNTraceEvaluate::usage="";
-
+(*
 SetAttributes[SUNSimplify, Listable];
-
+*)
 Options[SUNSimplify] = {
 	Check				-> True,
 	Collecting			-> True,
 	Explicit			-> False,
 	FCI 				-> False,
 	FCE 				-> False,
+	FCParallelize		-> False,
 	FCVerbose 			-> False,
 	Factoring 			-> {Factor2, 5000},
 	SUNFIndexNames		-> {},
@@ -73,7 +74,44 @@ Options[SUNSimplify] = {
 	TimeConstrained		-> 3
 };
 
-SUNSimplify[expr_, OptionsPattern[]] :=
+SUNSimplify[a_ == b_, opts:OptionsPattern[]] :=
+	SUNSimplify[a,opts] == SUNSimplify[b,opts];
+
+(*	Given a list of expressions/amplitudes, SUNSimplify can distribute
+	the evaluation over subkernels *)
+SUNSimplify[expr_List, opts:OptionsPattern[]] :=
+	Block[{sunSiVerbose, time, res},
+
+		If [OptionValue[FCVerbose]===False,
+			sunSiVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				sunSiVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		time=AbsoluteTime[];
+
+		If[	$ParallelizeFeynCalc && OptionValue[FCParallelize],
+				FCPrint[1, "SUNSimplify: Applying SUNSimplify to a list in parallel." , FCDoControl->sunSiVerbose];
+
+				With[{ooo = {opts}},
+					ParallelEvaluate[
+						FCParallelContext`SUNSimplify`pOpts = FilterRules[ooo, Except[FCParallelize|FCVerbose]];, DistributedContexts -> None]
+				];
+
+				res = ParallelMap[(SUNSimplify[#,FCParallelContext`SUNSimplify`pOpts, FCParallelize->False])&,expr, DistributedContexts->None,
+					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[expr]/$KernelCount]/10]],
+
+				FCPrint[1, "SUNSimplify: Applying SUNSimplify to a list.", FCDoControl->sunSiVerbose];
+				res = (SUNSimplify[#, FilterRules[{opts}, Except[FCParallelize|FCVerbose]]]& /@ expr)
+		];
+
+		FCPrint[1, "SUNSimplify: Done applying SUNSimplify to a list, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->sunSiVerbose];
+		res
+
+	];
+
+SUNSimplify[expr_/; !MemberQ[{List,Equal},Head[expr]], OptionsPattern[]] :=
 	Block[{	ex, temp, optSUNNToCACF, optExplicit, optFactoring, time, sunsiIso, listColoredObjects,
 			listColoredObjectsEval, finalRepRule, optSUNFJacobi, optCollecting, res, optTimeConstrained,
 			listColorFactor, listColorFactorEval, check, mark, hash},
