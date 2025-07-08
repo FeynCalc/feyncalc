@@ -16,19 +16,19 @@
 Tests`Feynman`fcstCovariantD = {
 
 {"fcstCovariantD-ID1","MatchQ[CovariantD[mu, Explicit -> True]//FCE,
--I Gstrong SUNT[SUNIndex[x_]].QuantumField[GaugeField,LorentzIndex[mu], SUNIndex[x_]] +
+-I Gstrong SUNT[x_].QuantumField[GaugeField,LorentzIndex[mu], SUNIndex[x_]] +
 RightPartialD[LorentzIndex[mu]]]","True"},
 {"fcstCovariantD-ID2","MatchQ[CovariantD[OPEDelta, a, b, Explicit -> True] // FCE,
 RightPartialD[Momentum[OPEDelta]] SD[a, b] -
 Gstrong QuantumField[GaugeField, Momentum[OPEDelta],
 	SUNIndex[x_]] SUNF[a, b, x_]]","True"},
 {"fcstCovariantD-ID3","MatchQ[CovariantD[OPEDelta, a, b, {2}] //
-FCE, (RightPartialD[Momentum[OPEDelta]] SUNDelta[a, x_] -
+FCE, (RightPartialD[Momentum[OPEDelta]] SD[a, x_] -
 	Gstrong QuantumField[GaugeField, Momentum[OPEDelta],
-	SUNIndex[z_]] SUNF[a, x_, z_]).(RightPartialD[
-	Momentum[OPEDelta]] SUNDelta[b, x_] -
+	  SUNIndex[z_]] SUNF[a, x_, z_]) . (RightPartialD[
+	  Momentum[OPEDelta]] SD[b, x_] +
 	Gstrong QuantumField[GaugeField, Momentum[OPEDelta],
-	SUNIndex[y_]] SUNF[x_, b, y_])]","True"},
+	  SUNIndex[y_]] SUNF[b, x_, y_])]","True"},
 {"fcstCovariantD-ID4","MatchQ[CovariantD[i, SUNFIndex[a], SUNFIndex[b], Explicit -> True],
 RightPartialD[LorentzIndex[i]] SUNFDelta[SUNFIndex[a],
 	SUNFIndex[b]] -

@@ -26,10 +26,9 @@ All],LorentzIndexNames\[Rule]{mu,nu,rho,si}]//FCE",
 "FV[p, mu]*FV[p, nu]*FV[p, rho]*FV[p, si]*FV[q, mu]*FV[q, \
 nu]*FV[q, rho]*FV[q, si]"},
 {"fcstFCCanonicalizeDummyIndices-ID3",
-"MatchQ[FCCanonicalizeDummyIndices[FV[p1,mu](FV[p2,nu]FV[p3,nu]+FV[\
-p2,rho]FV[p3,rho])]//FCE,2 FV[p1,mu] \
-Pair[LorentzIndex[a_],Momentum[p2]] \
-Pair[LorentzIndex[a_],Momentum[p3]]]", "True"},
+"MatchQ[FCCanonicalizeDummyIndices[
+FV[p1, mu] (FV[p2, nu] FV[p3, nu] + FV[p2, rho] FV[p3, rho])] //
+FCE, 2 FV[p1, mu] FV[p2, a_]*FV[p3, a_]]", "True"},
 {"fcstFCCanonicalizeDummyIndices-ID4",
 "MatchQ[FV[p1,mu](FV[p2,nu]FV[p3,nu]+FV[p2,rho]FV[p3,rho])\
 //FCCanonicalizeDummyIndices[#,LorentzIndexNames\[Rule]{al}]&//FCE,2 \

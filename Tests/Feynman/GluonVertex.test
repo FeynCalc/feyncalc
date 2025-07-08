@@ -11,20 +11,20 @@
 
 (* ------------------------------------------------------------------------ *)
 
-Tests`QCD`fcstGluonVertex = {
+Tests`Feynman`fcstGluonVertex = {
 
 {"fcstGluonVertex-ID1","MatchQ[GluonVertex[{p, mu, a}, {q, nu, b}, {r, rho, c}, {s, si, d},
 Explicit -> True] //
 FCE, -I Gstrong^2 ((-MTD[mu, rho] MTD[nu, si] +
-	MTD[mu, nu] MTD[rho, si]) SUNF[SUNIndex[a], SUNIndex[d],
-	SUNIndex[FCGV[x_String]]] SUNF[SUNIndex[b], SUNIndex[c],
-	SUNIndex[FCGV[x_String]]] + (-MTD[mu, si] MTD[nu, rho] +
-	MTD[mu, nu] MTD[rho, si]) SUNF[SUNIndex[a], SUNIndex[c],
-	SUNIndex[FCGV[x_String]]] SUNF[SUNIndex[b], SUNIndex[d],
-	SUNIndex[FCGV[x_String]]] + (-MTD[mu, si] MTD[nu, rho] +
-	MTD[mu, rho] MTD[nu, si]) SUNF[SUNIndex[a], SUNIndex[b],
-	SUNIndex[FCGV[x_String]]] SUNF[SUNIndex[c], SUNIndex[d],
-	SUNIndex[FCGV[x_String]]])]","True"},
+		   MTD[mu, nu] MTD[rho, si]) SUNF[a, d,
+		  FCGV[x_String]] SUNF[b, c,
+		  FCGV[x_String]] + (-MTD[mu, si] MTD[nu, rho] +
+		   MTD[mu, nu] MTD[rho, si]) SUNF[a, c,
+		  FCGV[x_String]] SUNF[b, d,
+		  FCGV[x_String]] + (-MTD[mu, si] MTD[nu, rho] +
+		   MTD[mu, rho] MTD[nu, si]) SUNF[a, b,
+		  FCGV[x_String]] SUNF[c, d,
+		  FCGV[x_String]])]","True"},
 {"fcstGluonVertex-ID2","GluonVertex[{p, mu, a}, {q, nu, b}, {r, rho, c},
 Explicit -> True] // FCE","Gstrong (FVD[p - q, rho] MTD[mu, nu] + FVD[-p + r, nu] MTD[mu, rho] +
 FVD[q - r, mu] MTD[nu, rho]) SUNF[a, b, c]"},

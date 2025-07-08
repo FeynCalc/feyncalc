@@ -11,14 +11,12 @@
 
 (* ------------------------------------------------------------------------ *)
 
-Tests`Feynman`fcstGluonVertex = {
+Tests`QCD`fcstTwist2GluonOperator = {
 
 {"fcstTwist2GluonOperator-ID1","Twist2GluonOperator[p, {mu, a}, {nu, b}]",
 "1/2 (1 + Power2[-1, OPEm]) SUNDelta[SUNIndex[a],SUNIndex[b]] Twist2GluonOperator[
 Momentum[p, D], {LorentzIndex[mu, D]}, {LorentzIndex[nu, D]}]"},
 {"fcstTwist2GluonOperator-ID2","Twist2GluonOperator[p, {mu, a}, {nu, b}, Explicit -> True]// FCE",
-"1/2 (1 + (-1)^OPEm) SD[a, b] SOD[p]^(-2 +
-OPEm) (-(FVD[OPEDelta, nu] FVD[p, mu] +
-	FVD[OPEDelta, mu] FVD[p, nu]) SOD[p] + MTD[mu, nu] SOD[p]^2 +
-FVD[OPEDelta, mu] FVD[OPEDelta, nu] SPD[p, p])"}
+"((1 + (-1)^OPEm)*SD[a, b]*SOD[p]^(-2 + OPEm)*(-((FVD[OPEDelta, nu]*FVD[p, mu] + FVD[OPEDelta, mu]*FVD[p, nu])*SOD[p]) +
+MTD[mu, nu]*SOD[p]^2 + FVD[OPEDelta, mu]*FVD[OPEDelta, nu]*SPD[p, p]))/2"}
 };
