@@ -83,7 +83,7 @@ done
 
 #QCD Examples
 #-------------------------------------------------------------------------------
-for exFile in 'ElAel-QQbar.m' 'GaGl-QQbar.m' 'Ga-QQbar.m' 'Ga-QQbarGl.m' \
+for exFile in 'ElAel-QQbar.m' 'GaGl-QQbar.m' 'QGl-GaQ.m' 'Ga-QQbar.m' 'Ga-QQbarGl.m' \
 'GlGl-GlGl.m' 'GlGl-QQbar.m' 'MuAmu-QQbar.m' 'QGa-GlQ.m' 'QGl-QGl.m' 'QGl-QGl-2.m' \
 'QiQibar-QiQibar.m' 'QiQibar-QjQjbar.m' 'QiQi-QiQi.m' 'QiQjbar-QiQjbar.m' \
 'QiQj-QiQj.m' 'QQbar-ElAel.m' 'QQbar-GaGa.m' 'QQbar-GaGl.m' 'QQbar-GlGl.m' 'QQbar-GlGl-2.m' \
