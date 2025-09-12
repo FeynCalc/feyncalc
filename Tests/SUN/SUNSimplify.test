@@ -273,6 +273,9 @@ SUNFIndex[j]])/2"}, {"fcstSUNSimplify-ID74",
 SUNFIndex[l]]*SUNTF[{SUNIndex[c], SUNIndex[bb]}, SUNFIndex[k], \
 SUNFIndex[j]])/2 - ((CA - 2*CF)*SUNTF[{SUNIndex[b], SUNIndex[bb]}, \
 SUNFIndex[i], SUNFIndex[j]]*SUNTF[{SUNIndex[c], SUNIndex[dd]}, \
-SUNFIndex[k], SUNFIndex[l]])/2"}
+SUNFIndex[k], SUNFIndex[l]])/2"},
+{"fcstSUNSimplify-ID74",
+"SUNSimplify[SUNF[a, b, c] SUNTrace[SUNT[a, b, c]]]",
+"(I/2)*CA^2*CF"}
 };
 
