@@ -618,7 +618,7 @@ colorSimplifyGeneric[_. sunf[___,a_SUNIndex,___,b_SUNIndex,___] sund[___,b_SUNIn
 (* Products of a single SUNF/SUND with a SUNT 							  *)
 (* ---------------------------------------------------------------------- *)
 
-(* f^abc T^a *)
+(* f^abc T^a = i [T^b, T^c] *)
 colorSimplifyGeneric[rest_. sunf[r1___,a_SUNIndex, r2___] SUNT[a_SUNIndex]]:=
 	(
 	I colorSimplifyGeneric[rest holdDOTColor[SUNT[Last[{r2,r1}]], SUNT[First[{r2,r1}]]]] -
@@ -639,7 +639,7 @@ colorSimplifyGeneric[rest_. sunf[r1___,a_SUNIndex, r2___] sunTrace[holdDOTColor[
 	I colorSimplifyGeneric[rest sunTrace[holdDOTColor[r3,SUNT[First[{r2,r1}]], SUNT[Last[{r2,r1}]],r4]]]
 	)/; Length[{r2,r1}]===2;
 
-(* d^abc T^a *)
+(* d^abc T^a = {T^b,T^c} - 1/N d^bc *)
 colorSimplifyGeneric[rest_. sund[r1___,a_SUNIndex, r2___] SUNT[a_SUNIndex]] :=
 	(
 	colorSimplifyGeneric[rest holdDOTColor[SUNT[Last[{r2,r1}]], SUNT[First[{r2,r1}]]]] +
