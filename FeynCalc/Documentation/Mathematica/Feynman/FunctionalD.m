@@ -147,7 +147,7 @@ r1=FunctionalD[S[A],Ag]
 (*With a general replacement rule only valid for commuting fields the color indices can be canonicalized a bit more. The idea is to use the commutative properties of the vector fields, and canonicalize the color indices by a trick.*)
 
 
-Commutator[QuantumField[aaa___FCPartialD,A,bbb__],QuantumField[ccc___FCPartialD,A,
+FCCommutator[QuantumField[aaa___FCPartialD,A,bbb__],QuantumField[ccc___FCPartialD,A,
 ddd__]]=0;
 
 r2=r1//DotSimplify//FCCanonicalizeDummyIndices[#,SUNIndexNames->{a1,b1,c1,d1},

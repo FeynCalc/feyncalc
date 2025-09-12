@@ -1,10 +1,10 @@
-## AntiCommutator
+## FCAntiCommutator
 
-`AntiCommutator[x, y] = c` defines the anti-commutator of the non commuting objects `x` and `y`.
+`FCAntiCommutator[x, y] = c` defines the anti-commutator of the non commuting objects `x` and `y`.
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [Commutator](Commutator.md), [CommutatorExplicit](CommutatorExplicit.md), [DeclareNonCommutative](DeclareNonCommutative.md), [DotSimplify](DotSimplify.md).
+[Overview](Extra/FeynCalc.md), [FCCommutator](FCCommutator.md), [CommutatorExplicit](CommutatorExplicit.md), [DeclareNonCommutative](DeclareNonCommutative.md), [DotSimplify](DotSimplify.md).
 
 ### Examples
 
@@ -13,7 +13,7 @@ This declares `a` and `b` as noncommutative variables.
 ```mathematica
 DeclareNonCommutative[a, b] 
  
-AntiCommutator[a, b] 
+FCAntiCommutator[a, b] 
  
 CommutatorExplicit[%]
 ```
@@ -23,13 +23,13 @@ $$\{a,\medspace b\}$$
 $$a.b+b.a$$
 
 ```mathematica
-CommutatorExplicit[AntiCommutator[a + b, a - 2 b ]]
+CommutatorExplicit[FCAntiCommutator[a + b, a - 2 b ]]
 ```
 
 $$(a-2 b).(a+b)+(a+b).(a-2 b)$$
 
 ```mathematica
-DotSimplify[AntiCommutator[a + b, a - 2 b ]]
+DotSimplify[FCAntiCommutator[a + b, a - 2 b ]]
 ```
 
 $$-a.b-b.a+2 a.a-4 b.b$$
@@ -41,7 +41,7 @@ DeclareNonCommutative[c, d, ct, dt]
 Defining `{c,d} = z` results in replacements of `c.d` by `z-d.c.`
 
 ```mathematica
-AntiCommutator[c, d] = z 
+FCAntiCommutator[c, d] = z 
  
 DotSimplify[ d . c . d ]
 ```
@@ -51,7 +51,7 @@ $$z$$
 $$d z-d.d.c$$
 
 ```mathematica
-AntiCommutator[dt, ct] = zt
+FCAntiCommutator[dt, ct] = zt
 ```
 
 $$\text{zt}$$

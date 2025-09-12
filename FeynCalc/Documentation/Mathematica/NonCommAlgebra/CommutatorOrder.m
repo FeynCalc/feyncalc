@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`CommutatorOrder[exp]` orders any `Commutator` and `AntiCommutator` lexicographically.*)
+(*`CommutatorOrder[exp]` orders any `FCCommutator` and `FCAntiCommutator` lexicographically.*)
 
 
 (* ::Subsection:: *)
@@ -16,13 +16,13 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [Commutator](Commutator.md), [AntiCommutator](AntiCommutator.md).*)
+(*[Overview](Extra/FeynCalc.md), [FCCommutator](FCCommutator.md), [FCAntiCommutator](FCAntiCommutator.md).*)
 
 
 (* ::Subsection:: *)
 (*Examples*)
 
 
-Commutator[a, b] + Commutator[b, a]
+FCCommutator[a, b] + FCCommutator[b, a]
 
 CommutatorOrder[%]

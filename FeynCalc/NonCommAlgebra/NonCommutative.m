@@ -13,20 +13,20 @@
 
 (* ------------------------------------------------------------------------ *)
 
-AntiCommutator::usage =
-"AntiCommutator[x, y] = c defines the anti-commutator of the non commuting
+FCAntiCommutator::usage =
+"FCAntiCommutator[x, y] = c defines the anti-commutator of the non commuting
 objects x and y.";
 
-Commutator::usage =
-"Commutator[x, y] = c defines the commutator between the (non-commuting)
+FCCommutator::usage =
+"FCCommutator[x, y] = c defines the commutator between the (non-commuting)
 objects x and y.";
 
 CommutatorExplicit::usage=
-"CommutatorExplicit[exp] substitutes any Commutator and AntiCommutator in exp
-by their definitions.";
+"CommutatorExplicit[exp] substitutes any FCCommutator and FCAntiCommutator in
+exp by their definitions.";
 
 CommutatorOrder::usage=
-"CommutatorOrder[exp] orders any Commutator and AntiCommutator
+"CommutatorOrder[exp] orders any FCCommutator and FCAntiCommutator
 lexicographically.";
 
 DeclareNonCommutative::usage =
@@ -63,7 +63,7 @@ i.e., DataType[a,b, ..., NonCommutative] is set to False.";
 
 UnDeclareAntiCommutator::usage =
 "UnDeclareAntiCommutator[a, b] undeclares the value assigned to the
-anticommutator of a and b.";
+anti-commutator of a and b.";
 
 UnDeclareCommutator::usage =
 "UnDeclareCommutator[a, b] undeclares the value assigned to the commutator of a
@@ -73,10 +73,10 @@ UnDeclareAllCommutators::usage =
 "UnDeclareAllCommutators[] undeclares all user-defined commutators.";
 
 UnDeclareAllAntiCommutators::usage =
-"UnDeclareAllAntiCommutators[] undeclares all user-defined anticommutators.";
+"UnDeclareAllAntiCommutators[] undeclares all user-defined anti-commutators.";
 
-Commutator::notsync =
-"You are using FeynCalc in the parallel mode, but the Commutator or AntiCommutator values \
+FCCommutator::notsync =
+"You are using FeynCalc in the parallel mode, but the FCCommutator or FCAntiCommutator values \
 are not synchronized between the master kernel and subkernels. \
 This usually happens if such definitions have been set before activating the \
 parallel mode. Please clear the existing definitions and redefine your symbols.";
@@ -88,42 +88,42 @@ End[]
 
 Begin["`NonCommutative`Private`"];
 
-AntiCommutator /:
-	Set[AntiCommutator[a_, b_] , c_] :=
+FCAntiCommutator /:
+	Set[FCAntiCommutator[a_, b_] , c_] :=
 		Block[ {},
 
 				If[	$ParallelizeFeynCalc,
 					With[{xxx=a,yyy=b,zzz=c},
-								ParallelEvaluate[setCommAcomm[xxx, yyy, zzz,AntiCommutator];,DistributedContexts -> None]
+								ParallelEvaluate[setCommAcomm[xxx, yyy, zzz,FCAntiCommutator];,DistributedContexts -> None]
 							];
 				];
-				setCommAcomm[a, b, c, AntiCommutator];
+				setCommAcomm[a, b, c, FCAntiCommutator];
 
 				c
 			];
 
-AntiCommutator /:
-	MakeBoxes[ AntiCommutator[a_, b_], TraditionalForm] :=
+FCAntiCommutator /:
+	MakeBoxes[ FCAntiCommutator[a_, b_], TraditionalForm] :=
 		TBox["{", a, ",", "\[MediumSpace]", b, "}"];
 
-Commutator /:
-	Set[Commutator[a_, b_] , c_] :=
+FCCommutator /:
+	Set[FCCommutator[a_, b_] , c_] :=
 		Block[ {},
 
 			If[	$ParallelizeFeynCalc,
 				With[{xxx=a,yyy=b,zzz=c},
-							ParallelEvaluate[setCommAcomm[xxx, yyy, zzz, Commutator];,DistributedContexts -> None]
+							ParallelEvaluate[setCommAcomm[xxx, yyy, zzz, FCCommutator];,DistributedContexts -> None]
 						];
 			];
-			setCommAcomm[a, b, c, Commutator];
+			setCommAcomm[a, b, c, FCCommutator];
 
 			c
 		];
 
-Commutator/: MakeBoxes[Commutator[a_, b_], TraditionalForm] :=
+FCCommutator/: MakeBoxes[FCCommutator[a_, b_], TraditionalForm] :=
 	RowBox[ {"[","\[NoBreak]", TBox[a] ,"\[NoBreak]", ",", TBox[b], "\[NoBreak]", "]"}];
 
-setCommAcomm[a_,b_,c_,(type:Commutator|AntiCommutator)]:=
+setCommAcomm[a_,b_,c_,(type:FCCommutator|FCAntiCommutator)]:=
 	Block[{nd, hold},
 		nd = (RuleDelayed @@ {HoldPattern @@ {hold[a, b]}, c}) /. hold -> type;
 		If[ FreeQ2[DownValues[type], {nd,Verbatim[nd]}],
@@ -133,7 +133,7 @@ setCommAcomm[a_,b_,c_,(type:Commutator|AntiCommutator)]:=
 		(* If we are in the parallel mode and on the master kernel, need to check whether these values have already been set on subkernels*)
 		If[$ParallelizeFeynCalc && ($KernelID===0),
 			If[!FCValuesSynchronizedQ[{type}, DownValues],
-				Message[Commutator::notsync]
+				Message[FCCommutator::notsync]
 			]
 		];
 
@@ -146,14 +146,14 @@ setCommAcomm[a_,b_,c_,(type:Commutator|AntiCommutator)]:=
 
 CommutatorExplicit[exp_] :=
 	exp /. {
-		Commutator :> ((DOT[#1, #2] - DOT[#2, #1])&),
-		AntiCommutator :> ((DOT[#1, #2] + DOT[#2, #1])&)
+		FCCommutator :> ((DOT[#1, #2] - DOT[#2, #1])&),
+		FCAntiCommutator :> ((DOT[#1, #2] + DOT[#2, #1])&)
 	};
 
 CommutatorOrder[exp_] :=
 	exp /. {
-		Commutator[a_,b_]/; !OrderedQ[{a,b}] :> - Commutator[b,a],
-		AntiCommutator[a_,b_]/; !OrderedQ[{a,b}] :> AntiCommutator[b,a]
+		FCCommutator[a_,b_]/; !OrderedQ[{a,b}] :> - FCCommutator[b,a],
+		FCAntiCommutator[a_,b_]/; !OrderedQ[{a,b}] :> FCAntiCommutator[b,a]
 	};
 
 
@@ -173,16 +173,16 @@ UnDeclareNonCommutative[b__] :=
 
 UnDeclareCommutator[a_, b_] :=
 	Block[{exp, comm, dw},
-		exp = HoldPattern[comm[a, b]] /. comm -> Commutator;
-		dw = SelectFree[DownValues[Commutator], exp];
-		DownValues[Commutator] = dw;
+		exp = HoldPattern[comm[a, b]] /. comm -> FCCommutator;
+		dw = SelectFree[DownValues[FCCommutator], exp];
+		DownValues[FCCommutator] = dw;
 	];
 
 UnDeclareAntiCommutator[a_, b_] :=
 	Block[{exp, acomm, dw},
-		exp = HoldPattern[acomm[a, b]] /. acomm -> AntiCommutator;
-		dw = SelectFree[DownValues[AntiCommutator], exp];
-		DownValues[AntiCommutator] = dw;
+		exp = HoldPattern[acomm[a, b]] /. acomm -> FCAntiCommutator;
+		dw = SelectFree[DownValues[FCAntiCommutator], exp];
+		DownValues[FCAntiCommutator] = dw;
 	];
 
 excludeTraces = {_DiracTrace :> Unique["DiracTrace"],
@@ -215,12 +215,12 @@ NonCommHeadQ[x_] :=
 
 UnDeclareAllAntiCommutators[OptionsPattern[]] :=
 	(
-		DownValues[AntiCommutator] = FeynCalc`Package`initialAntiCommutatorDownValues;
+		DownValues[FCAntiCommutator] = FeynCalc`Package`initialAntiCommutatorDownValues;
 	);
 
 UnDeclareAllCommutators[OptionsPattern[]] :=
 	(
-		DownValues[Commutator] = FeynCalc`Package`initialCommutatorDownValues;
+		DownValues[FCCommutator] = FeynCalc`Package`initialCommutatorDownValues;
 	);
 
 FCMatrixProduct[x_] :=

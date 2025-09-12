@@ -4,12 +4,12 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [Commutator](Commutator.md), [CommutatorExplicit](CommutatorExplicit.md), [DeclareNonCommutative](DeclareNonCommutative.md), [DotSimplify](DotSimplify.md).
+[Overview](Extra/FeynCalc.md), [FCCommutator](FCCommutator.md), [CommutatorExplicit](CommutatorExplicit.md), [DeclareNonCommutative](DeclareNonCommutative.md), [DotSimplify](DotSimplify.md).
 
 ### Examples
 
 ```mathematica
-Commutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A], QuantumField[A]] = 0;
+FCCommutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A], QuantumField[A]] = 0;
 ```
 
 ```mathematica
@@ -20,7 +20,7 @@ ExpandPartialD[%]
 
 $$A.A.\overleftarrow{\partial }_{\nu }.A.A.\overleftarrow{\partial }_{\nu }$$
 
-$$6 A.A.\left(\left.(\partial _{\nu }A\right)\right).\left(\left.(\partial _{\nu }A\right)\right)+A.\left(\partial _{\nu }\partial _{\nu }A\right).A.A+\left(\partial _{\nu }\partial _{\nu }A\right).A.A.A$$
+$$6 A.A.\left(\partial _{\nu }A\right).\left(\partial _{\nu }A\right)+A.\left(\partial _{\nu }\partial _{\nu }A\right).A.A+\left(\partial _{\nu }\partial _{\nu }A\right).A.A.A$$
 
 ```mathematica
 UnDeclareCommutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A], QuantumField[A]];
@@ -34,4 +34,4 @@ ExpandPartialD[%]
 
 $$A.A.\overleftarrow{\partial }_{\nu }.A.A.\overleftarrow{\partial }_{\nu }$$
 
-$$A.\left(\left.(\partial _{\nu }A\right)\right).A.\left(\left.(\partial _{\nu }A\right)\right)+A.\left(\left.(\partial _{\nu }A\right)\right).\left(\left.(\partial _{\nu }A\right)\right).A+\left(\left.(\partial _{\nu }A\right)\right).A.A.\left(\left.(\partial _{\nu }A\right)\right)+\left(\left.(\partial _{\nu }A\right)\right).A.\left(\left.(\partial _{\nu }A\right)\right).A+2 \left(\left.(\partial _{\nu }A\right)\right).\left(\left.(\partial _{\nu }A\right)\right).A.A+A.\left(\partial _{\nu }\partial _{\nu }A\right).A.A+\left(\partial _{\nu }\partial _{\nu }A\right).A.A.A$$
+$$A.\left(\partial _{\nu }A\right).A.\left(\partial _{\nu }A\right)+A.\left(\partial _{\nu }A\right).\left(\partial _{\nu }A\right).A+A.\left(\partial _{\nu }\partial _{\nu }A\right).A.A+\left(\partial _{\nu }A\right).A.A.\left(\partial _{\nu }A\right)+\left(\partial _{\nu }A\right).A.\left(\partial _{\nu }A\right).A+2 \left(\partial _{\nu }A\right).\left(\partial _{\nu }A\right).A.A+\left(\partial _{\nu }\partial _{\nu }A\right).A.A.A$$

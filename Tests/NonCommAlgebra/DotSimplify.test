@@ -20,7 +20,7 @@ Expanding -> True]","a*DiracGamma[LorentzIndex[mu]] . DiracGamma[Momentum[p]] . 
 b*DiracGamma[LorentzIndex[mu]] . DiracGamma[Momentum[q]] . DiracGamma[Momentum[q]] . DiracGamma[LorentzIndex[nu]]"},
 {"fcstDotSimplify-ID3","DotSimplify[xxx.xxx, DotPower -> True]","xxx^2"},
 
-{"fcstDotSimplify-ID4","DeclareNonCommutative[anc, bnc, cnc]\nCommutator[anc, cnc] = 1;\nDotSimplify[anc.anc, DotPower -> True]","anc^2"},
+{"fcstDotSimplify-ID4","DeclareNonCommutative[anc, bnc, cnc]\nFCCommutator[anc, cnc] = 1;\nDotSimplify[anc.anc, DotPower -> True]","anc^2"},
 {"fcstDotSimplify-ID5","DotSimplify[anc.(bnc - z cnc).anc]","anc . bnc . anc - z*(anc + cnc . anc . anc)"},
 {"fcstDotSimplify-ID6","DotSimplify[QuantumField[A, LorentzIndex[mu]] .
 ((-LeftPartialD[Momentum[OPEDelta]] + RightPartialD[Momentum[OPEDelta]])^2/4) . QuantumField[A, LorentzIndex[rho]]]",
@@ -116,9 +116,9 @@ SUNT[SUNIndex[b]].SUNT[SUNIndex[a]] DiracGamma[
 	Momentum[q]].DiracGamma[LorentzIndex[mu]].DiracGamma[
 	6].DiracGamma[Momentum[q]].DiracGamma[
 	LorentzIndex[mu]].DiracGamma[7]"},
-{"fcstDotSimplify-ID23","Commutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A1], QuantumField[A1]] = 0;
+{"fcstDotSimplify-ID23","FCCommutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A1], QuantumField[A1]] = 0;
 DotSimplify[ExpandPartialD[QuantumField[A1].QuantumField[A1].LeftPartialD[nu]]]","2 QuantumField[A1].QuantumField[FCPartialD[LorentzIndex[nu]], A1]"},
-{"fcstDotSimplify-ID24","AntiCommutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A2], QuantumField[A2]] = 0;
+{"fcstDotSimplify-ID24","FCAntiCommutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A2], QuantumField[A2]] = 0;
 DotSimplify[ExpandPartialD[QuantumField[A2].QuantumField[A2].LeftPartialD[nu]]]","0"},
 {"fcstDotSimplify-ID25","DotSimplify[DCHN[GA[mu].(x GS[p]).GA[nu], i, j], FCE -> True]",
 "x DCHN[GA[mu].GS[p].GA[nu], i, j]"},

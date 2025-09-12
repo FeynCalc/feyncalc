@@ -21,10 +21,9 @@ Notice that as of now only a small subset of FeynCalc routines supports parallel
 
 ### Synchronizing definitions between multiple kernels
 
-All definitions made via `DataType[x,y]=True`, `ScalarProduct[a,b] = c`, `SPD[a,b] = c` as well as `Commutator` or `AntiCommutator` *before* activating the parallel mode must be repeated. This is necessary to ensure that they are synchronized between the master kernel and the subkernels. To this
-aim it is recommended to remove all definitions via
+All definitions made via `DataType[x,y]=True`, `ScalarProduct[a,b] = c`, `SPD[a,b] = c` as well as `FCCommutator` or `FCAntiCommutator` *before* activating the parallel mode must be repeated. This is necessary to ensure that they are synchronized between the master kernel and the subkernels. To this aim it is recommended to remove all definitions via
 
-```
+```mathematica
 FCClearScalarProducts[]
 FCClearDataTypes[]
 UnDeclareAllCommutators[]
@@ -33,7 +32,7 @@ UnDeclareAllAntiCommutators[]
 
 and then introduce them again.
 
-Alternatively, you can *first* activate the parallel mode without making any definitions and *then* define everything as you like. `DataType`, `ScalarProduct`, `Commutator` and `AntiCommutator` will automatically distribute the definitions among all subkernels if they detect the parallel mode.
+Alternatively, you can *first* activate the parallel mode without making any definitions and *then* define everything as you like. `DataType`, `ScalarProduct`, `FCCommutator` and `FCAntiCommutator` will automatically distribute the definitions among all subkernels if they detect the parallel mode.
 
 
 ### Functions that support automatic execution on parallel kernels

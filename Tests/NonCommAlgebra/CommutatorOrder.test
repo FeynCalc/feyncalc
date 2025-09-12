@@ -13,9 +13,9 @@
 
 Tests`NonCommAlgebra`fcstCommutatorOrder = {
 {"CommutatorOrder-ID1",
-	"CommutatorOrder[Commutator[a, b] + Commutator[b, a]]",
+	"CommutatorOrder[FCCommutator[a, b] + FCCommutator[b, a]]",
 	"0"},
 {"CommutatorOrder-ID2",
-	"CommutatorOrder[AntiCommutator[a, b] - AntiCommutator[b, a]]",
+	"CommutatorOrder[FCAntiCommutator[a, b] - FCAntiCommutator[b, a]]",
 	"0"}
 };

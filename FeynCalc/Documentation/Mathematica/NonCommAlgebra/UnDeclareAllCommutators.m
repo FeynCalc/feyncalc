@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [Commutator](Commutator.md), [CommutatorExplicit](CommutatorExplicit.md), [DeclareNonCommutative](DeclareNonCommutative.md), [DotSimplify](DotSimplify.md).*)
+(*[Overview](Extra/FeynCalc.md), [FCCommutator](FCCommutator.md), [CommutatorExplicit](CommutatorExplicit.md), [DeclareNonCommutative](DeclareNonCommutative.md), [DotSimplify](DotSimplify.md).*)
 
 
 (* ::Subsection:: *)
@@ -25,9 +25,9 @@
 
 DeclareNonCommutative[a,b,c,d]
 
-Commutator[a,b]=x1;
+FCCommutator[a,b]=x1;
 
-Commutator[c,d]=x2;
+FCCommutator[c,d]=x2;
 
 DotSimplify[a . b . c . d]
 

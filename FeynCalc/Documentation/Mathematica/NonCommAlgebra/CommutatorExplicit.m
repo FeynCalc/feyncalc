@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`CommutatorExplicit[exp]` substitutes any `Commutator` and `AntiCommutator` in `exp` by their definitions.*)
+(*`CommutatorExplicit[exp]` substitutes any `FCCommutator` and `FCAntiCommutator` in `exp` by their definitions.*)
 
 
 (* ::Subsection:: *)
@@ -26,17 +26,17 @@
 DeclareNonCommutative[a,b,c,d]
 
 
-Commutator[a,b]
+FCCommutator[a,b]
 
 CommutatorExplicit[%]
 
 
-AntiCommutator[a-c,b-d]
+FCAntiCommutator[a-c,b-d]
 
 CommutatorExplicit[%]
 
 
-CommutatorExplicit[AntiCommutator[a-c,b-d]]//DotSimplify
+CommutatorExplicit[FCAntiCommutator[a-c,b-d]]//DotSimplify
 
 
 UnDeclareNonCommutative[a,b,c,d]

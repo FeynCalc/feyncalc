@@ -1,6 +1,6 @@
 ## CommutatorExplicit
 
-`CommutatorExplicit[exp]` substitutes any `Commutator` and `AntiCommutator` in `exp` by their definitions.
+`CommutatorExplicit[exp]` substitutes any `FCCommutator` and `FCAntiCommutator` in `exp` by their definitions.
 
 ### See also
 
@@ -13,7 +13,7 @@ DeclareNonCommutative[a, b, c, d]
 ```
 
 ```mathematica
-Commutator[a, b] 
+FCCommutator[a, b] 
  
 CommutatorExplicit[%]
 ```
@@ -23,7 +23,7 @@ $$[a,b]$$
 $$a.b-b.a$$
 
 ```mathematica
-AntiCommutator[a - c, b - d] 
+FCAntiCommutator[a - c, b - d] 
  
 CommutatorExplicit[%]
 ```
@@ -33,7 +33,7 @@ $$\{a-c,\medspace b-d\}$$
 $$(a-c).(b-d)+(b-d).(a-c)$$
 
 ```mathematica
-CommutatorExplicit[AntiCommutator[a - c, b - d]] // DotSimplify
+CommutatorExplicit[FCAntiCommutator[a - c, b - d]] // DotSimplify
 ```
 
 $$a.b+b.a-a.d-d.a-b.c-c.b+c.d+d.c$$

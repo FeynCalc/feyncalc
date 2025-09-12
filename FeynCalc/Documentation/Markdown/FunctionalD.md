@@ -41,7 +41,7 @@ $$-\vec{\partial }_{\mu }$$
 FunctionalD[%, QuantumField[\[Phi]]]
 ```
 
-$$\frac{1}{2} \left(\left(\left.(\partial _{\mu }\phi \right)\right).\left(\left.(\partial _{\mu }\phi \right)\right)-m^2 \phi .\phi \right)$$
+$$\frac{1}{2} \left(\left(\partial _{\mu }\phi \right).\left(\partial _{\mu }\phi \right)-m^2 \phi .\phi \right)$$
 
 $$m^2 (-\phi )-\left(\partial _{\mu }\partial _{\mu }\phi \right)$$
 
@@ -57,11 +57,11 @@ F2 = FieldStrength[\[Mu], \[Nu], a, {A, d, e}, 1, Explicit -> True]
 S[A] = -1/4 F1 . F2
 ```
 
-$$f^{abc} A_{\mu }^b.A_{\nu }^c+\left.(\partial _{\mu }A_{\nu }^a\right)-\left.(\partial _{\nu }A_{\mu }^a\right)$$
+$$f^{abc} A_{\mu }^b.A_{\nu }^c+\left(\partial _{\mu }A_{\nu }^a\right)-\left(\partial _{\nu }A_{\mu }^a\right)$$
 
-$$f^{ade} A_{\mu }^d.A_{\nu }^e+\left.(\partial _{\mu }A_{\nu }^a\right)-\left.(\partial _{\nu }A_{\mu }^a\right)$$
+$$f^{ade} A_{\mu }^d.A_{\nu }^e+\left(\partial _{\mu }A_{\nu }^a\right)-\left(\partial _{\nu }A_{\mu }^a\right)$$
 
-$$-\frac{1}{4} \left(f^{abc} A_{\mu }^b.A_{\nu }^c+\left.(\partial _{\mu }A_{\nu }^a\right)-\left.(\partial _{\nu }A_{\mu }^a\right)\right).\left(f^{ade} A_{\mu }^d.A_{\nu }^e+\left.(\partial _{\mu }A_{\nu }^a\right)-\left.(\partial _{\nu }A_{\mu }^a\right)\right)$$
+$$-\frac{1}{4} \left(f^{abc} A_{\mu }^b.A_{\nu }^c+\left(\partial _{\mu }A_{\nu }^a\right)-\left(\partial _{\nu }A_{\mu }^a\right)\right).\left(f^{ade} A_{\mu }^d.A_{\nu }^e+\left(\partial _{\mu }A_{\nu }^a\right)-\left(\partial _{\nu }A_{\mu }^a\right)\right)$$
 
 In order to derive the equation of motion, the functional derivative of $S$ with respect to $A_{\sigma }^g$ has to be set to zero. Bearing in mind that for FeynCalc we have to be precise as to where which operators (coming from the substitution of the derivative of the delta function) act.
 
@@ -112,20 +112,20 @@ t2 = Contract[ExpandPartialD[-1/2 t1 . QuantumField[F, LorentzIndex[\[Mu]], Lore
         SUNIndex[a]]]] /. Dot -> Times
 ```
 
-$$-\frac{1}{2} A_{\mu }^c f^{acg} F_{\mu \sigma }^a-\frac{1}{2} A_{\nu }^c f^{acg} F_{\nu \sigma }^a+\frac{1}{2} \left(\left.(\partial _{\mu }F_{\mu \sigma }^g\right)\right)+\frac{1}{2} \left(\left.(\partial _{\nu }F_{\nu \sigma }^g\right)\right)$$
+$$-\frac{1}{2} A_{\mu }^c f^{acg} F_{\mu \sigma }^a-\frac{1}{2} A_{\nu }^c f^{acg} F_{\nu \sigma }^a+\frac{1}{2} \left(\partial _{\mu }F_{\mu \sigma }^g\right)+\frac{1}{2} \left(\partial _{\nu }F_{\nu \sigma }^g\right)$$
 
 ```mathematica
 t3 = FCCanonicalizeDummyIndices[t2, LorentzIndexNames -> {mu}, SUNIndexNames -> {aa, 
       cc}] /. {mu -> \[Mu], aa -> a, cc -> c}
 ```
 
-$$A_{\mu }^a f^{acg} F_{\mu \sigma }^c+\left.(\partial _{\mu }F_{\mu \sigma }^g\right)$$
+$$A_{\mu }^a f^{acg} F_{\mu \sigma }^c+\left(\partial _{\mu }F_{\mu \sigma }^g\right)$$
 
 ```mathematica
 t4 = FCE[t3] /. SUNF[a, c, g] -> -SUNF[g, c, a]
 ```
 
-$$\left.(\partial _{\mu }F_{\mu \sigma }^g\right)-A_{\mu }^a f^{gca} F_{\mu \sigma }^c$$
+$$\left(\partial _{\mu }F_{\mu \sigma }^g\right)-A_{\mu }^a f^{gca} F_{\mu \sigma }^c$$
 
 Since the variational derivative vanishes `t4` implies that $0= D_{\mu} F_g^{\mu \sigma }$
 
@@ -137,20 +137,20 @@ It is of course also possible to do the functional derivative on the $S[A]$ with
 S[A]
 ```
 
-$$-\frac{1}{4} \left(f^{abc} A_{\mu }^b.A_{\nu }^c+\left.(\partial _{\mu }A_{\nu }^a\right)-\left.(\partial _{\nu }A_{\mu }^a\right)\right).\left(f^{ade} A_{\mu }^d.A_{\nu }^e+\left.(\partial _{\mu }A_{\nu }^a\right)-\left.(\partial _{\nu }A_{\mu }^a\right)\right)$$
+$$-\frac{1}{4} \left(f^{abc} A_{\mu }^b.A_{\nu }^c+\left(\partial _{\mu }A_{\nu }^a\right)-\left(\partial _{\nu }A_{\mu }^a\right)\right).\left(f^{ade} A_{\mu }^d.A_{\nu }^e+\left(\partial _{\mu }A_{\nu }^a\right)-\left(\partial _{\nu }A_{\mu }^a\right)\right)$$
 
 ```mathematica
 r1 = FunctionalD[S[A], Ag]
 ```
 
-$$-\frac{1}{4} f^{abc} f^{adg} A_{\mu }^b.A_{\sigma }^c.A_{\mu }^d+\frac{1}{4} f^{abc} f^{aeg} A_{\sigma }^b.A_{\nu }^c.A_{\nu }^e-\frac{1}{4} f^{abg} f^{ade} A_{\mu }^b.A_{\mu }^d.A_{\sigma }^e-\frac{1}{4} f^{abg} A_{\mu }^b.\left(\left.(\partial _{\mu }A_{\sigma }^a\right)\right)+\frac{1}{4} f^{abg} A_{\mu }^b.\left(\left.(\partial _{\sigma }A_{\mu }^a\right)\right)+\frac{1}{4} f^{acg} f^{ade} A_{\nu }^c.A_{\sigma }^d.A_{\nu }^e-\frac{1}{4} f^{acg} A_{\nu }^c.\left(\left.(\partial _{\nu }A_{\sigma }^a\right)\right)+\frac{1}{4} f^{acg} A_{\nu }^c.\left(\left.(\partial _{\sigma }A_{\nu }^a\right)\right)-\frac{1}{4} f^{adg} \left(\left.(\partial _{\mu }A_{\sigma }^a\right)\right).A_{\mu }^d+\frac{1}{4} f^{adg} \left(\left.(\partial _{\sigma }A_{\mu }^a\right)\right).A_{\mu }^d-\frac{1}{4} f^{aeg} \left(\left.(\partial _{\nu }A_{\sigma }^a\right)\right).A_{\nu }^e+\frac{1}{4} f^{aeg} \left(\left.(\partial _{\sigma }A_{\nu }^a\right)\right).A_{\nu }^e+\frac{1}{4} f^{bcg} A_{\mu }^b.\left(\left.(\partial _{\mu }A_{\sigma }^c\right)\right)+\frac{1}{4} f^{bcg} \left(\left.(\partial _{\mu }A_{\mu }^b\right)\right).A_{\sigma }^c-\frac{1}{4} f^{bcg} A_{\sigma }^b.\left(\left.(\partial _{\nu }A_{\nu }^c\right)\right)-\frac{1}{4} f^{bcg} \left(\left.(\partial _{\nu }A_{\sigma }^b\right)\right).A_{\nu }^c+\frac{1}{4} f^{deg} A_{\mu }^d.\left(\left.(\partial _{\mu }A_{\sigma }^e\right)\right)+\frac{1}{4} f^{deg} \left(\left.(\partial _{\mu }A_{\mu }^d\right)\right).A_{\sigma }^e-\frac{1}{4} f^{deg} A_{\sigma }^d.\left(\left.(\partial _{\nu }A_{\nu }^e\right)\right)-\frac{1}{4} f^{deg} \left(\left.(\partial _{\nu }A_{\sigma }^d\right)\right).A_{\nu }^e+\frac{1}{2} \left(\partial _{\mu }\partial _{\mu }A_{\sigma }^g\right)-\frac{1}{2} \left(\partial _{\mu }\partial _{\sigma }A_{\mu }^g\right)+\frac{1}{2} \left(\partial _{\nu }\partial _{\nu }A_{\sigma }^g\right)-\frac{1}{2} \left(\partial _{\nu }\partial _{\sigma }A_{\nu }^g\right)$$
+$$-\frac{1}{4} f^{abc} f^{adg} A_{\mu }^b.A_{\sigma }^c.A_{\mu }^d+\frac{1}{4} f^{abc} f^{aeg} A_{\sigma }^b.A_{\nu }^c.A_{\nu }^e-\frac{1}{4} f^{abg} f^{ade} A_{\mu }^b.A_{\mu }^d.A_{\sigma }^e-\frac{1}{4} f^{abg} A_{\mu }^b.\left(\partial _{\mu }A_{\sigma }^a\right)+\frac{1}{4} f^{abg} A_{\mu }^b.\left(\partial _{\sigma }A_{\mu }^a\right)+\frac{1}{4} f^{acg} f^{ade} A_{\nu }^c.A_{\sigma }^d.A_{\nu }^e-\frac{1}{4} f^{acg} A_{\nu }^c.\left(\partial _{\nu }A_{\sigma }^a\right)+\frac{1}{4} f^{acg} A_{\nu }^c.\left(\partial _{\sigma }A_{\nu }^a\right)-\frac{1}{4} f^{adg} \left(\partial _{\mu }A_{\sigma }^a\right).A_{\mu }^d+\frac{1}{4} f^{adg} \left(\partial _{\sigma }A_{\mu }^a\right).A_{\mu }^d-\frac{1}{4} f^{aeg} \left(\partial _{\nu }A_{\sigma }^a\right).A_{\nu }^e+\frac{1}{4} f^{aeg} \left(\partial _{\sigma }A_{\nu }^a\right).A_{\nu }^e+\frac{1}{4} f^{bcg} A_{\mu }^b.\left(\partial _{\mu }A_{\sigma }^c\right)+\frac{1}{4} f^{bcg} \left(\partial _{\mu }A_{\mu }^b\right).A_{\sigma }^c-\frac{1}{4} f^{bcg} A_{\sigma }^b.\left(\partial _{\nu }A_{\nu }^c\right)-\frac{1}{4} f^{bcg} \left(\partial _{\nu }A_{\sigma }^b\right).A_{\nu }^c+\frac{1}{4} f^{deg} A_{\mu }^d.\left(\partial _{\mu }A_{\sigma }^e\right)+\frac{1}{4} f^{deg} \left(\partial _{\mu }A_{\mu }^d\right).A_{\sigma }^e-\frac{1}{4} f^{deg} A_{\sigma }^d.\left(\partial _{\nu }A_{\nu }^e\right)-\frac{1}{4} f^{deg} \left(\partial _{\nu }A_{\sigma }^d\right).A_{\nu }^e+\frac{1}{2} \left(\partial _{\mu }\partial _{\mu }A_{\sigma }^g\right)-\frac{1}{2} \left(\partial _{\mu }\partial _{\sigma }A_{\mu }^g\right)+\frac{1}{2} \left(\partial _{\nu }\partial _{\nu }A_{\sigma }^g\right)-\frac{1}{2} \left(\partial _{\nu }\partial _{\sigma }A_{\nu }^g\right)$$
 
 This is just functional derivation and partial integration and simple contraction of indices. At first no attempt is made to rename dummy indices (since this is difficult in general).
 
 With a general replacement rule only valid for commuting fields the color indices can be canonicalized a bit more. The idea is to use the commutative properties of the vector fields, and canonicalize the color indices by a trick.
 
 ```mathematica
-Commutator[QuantumField[aaa___FCPartialD, A, bbb__], QuantumField[ccc___FCPartialD, A, 
+FCCommutator[QuantumField[aaa___FCPartialD, A, bbb__], QuantumField[ccc___FCPartialD, A, 
       ddd__]] = 0; 
  
 r2 = r1 // DotSimplify // FCCanonicalizeDummyIndices[#, SUNIndexNames -> {a1, b1, c1, d1}, 
@@ -158,7 +158,7 @@ r2 = r1 // DotSimplify // FCCanonicalizeDummyIndices[#, SUNIndexNames -> {a1, b1
        d1 -> d, mu -> \[Mu], nu -> \[Nu], rho -> \[Rho]}] & // Collect2[#, SUNF] &
 ```
 
-$$\frac{1}{2} f^{adg} f^{bcd} A_{\mu }^a.A_{\mu }^b.A_{\sigma }^c+\frac{1}{2} f^{acd} f^{bdg} A_{\mu }^a.A_{\mu }^b.A_{\sigma }^c+f^{abg} \left(2 A_{\mu }^a.\left(\left.(\partial _{\mu }A_{\sigma }^b\right)\right)-A_{\mu }^a.\left(\left.(\partial _{\sigma }A_{\mu }^b\right)\right)-A_{\sigma }^a.\left(\left.(\partial _{\mu }A_{\mu }^b\right)\right)\right)+\left(\partial _{\mu }\partial _{\mu }A_{\sigma }^g\right)-\left(\partial _{\mu }\partial _{\sigma }A_{\mu }^g\right)$$
+$$\frac{1}{2} f^{adg} f^{bcd} A_{\mu }^a.A_{\mu }^b.A_{\sigma }^c+\frac{1}{2} f^{acd} f^{bdg} A_{\mu }^a.A_{\mu }^b.A_{\sigma }^c+f^{abg} \left(2 A_{\mu }^a.\left(\partial _{\mu }A_{\sigma }^b\right)-A_{\mu }^a.\left(\partial _{\sigma }A_{\mu }^b\right)-A_{\sigma }^a.\left(\partial _{\mu }A_{\mu }^b\right)\right)+\left(\partial _{\mu }\partial _{\mu }A_{\sigma }^g\right)-\left(\partial _{\mu }\partial _{\sigma }A_{\mu }^g\right)$$
 
 Inspection reveals that still terms are the same. Gather the terms with two `f`'s:
 
@@ -178,7 +178,7 @@ $$f^{acd} f^{bdg} A_{\mu }^a.A_{\mu }^b.A_{\sigma }^c$$
 r3 = r2 - twof + twofnew
 ```
 
-$$f^{acd} f^{bdg} A_{\mu }^a.A_{\mu }^b.A_{\sigma }^c+f^{abg} \left(2 A_{\mu }^a.\left(\left.(\partial _{\mu }A_{\sigma }^b\right)\right)-A_{\mu }^a.\left(\left.(\partial _{\sigma }A_{\mu }^b\right)\right)-A_{\sigma }^a.\left(\left.(\partial _{\mu }A_{\mu }^b\right)\right)\right)+\left(\partial _{\mu }\partial _{\mu }A_{\sigma }^g\right)-\left(\partial _{\mu }\partial _{\sigma }A_{\mu }^g\right)$$
+$$f^{acd} f^{bdg} A_{\mu }^a.A_{\mu }^b.A_{\sigma }^c+f^{abg} \left(2 A_{\mu }^a.\left(\partial _{\mu }A_{\sigma }^b\right)-A_{\mu }^a.\left(\partial _{\sigma }A_{\mu }^b\right)-A_{\sigma }^a.\left(\partial _{\mu }A_{\mu }^b\right)\right)+\left(\partial _{\mu }\partial _{\mu }A_{\sigma }^g\right)-\left(\partial _{\mu }\partial _{\sigma }A_{\mu }^g\right)$$
 
 Check that this is now indeed the same as the `t4` result from the first attempt.
 
@@ -186,7 +186,7 @@ Check that this is now indeed the same as the `t4` result from the first attempt
 t4
 ```
 
-$$\left.(\partial _{\mu }F_{\mu \sigma }^g\right)-A_{\mu }^a f^{gca} F_{\mu \sigma }^c$$
+$$\left(\partial _{\mu }F_{\mu \sigma }^g\right)-A_{\mu }^a f^{gca} F_{\mu \sigma }^c$$
 
 ```mathematica
 w0 = RightPartialD[\[Mu]] . FieldStrength[\[Mu], \[Sigma], g, {A, a, b}, 1] + 
@@ -200,19 +200,19 @@ $$f^{gca} A_{\mu }^c.F_{\mu \sigma }^{a\{A,b,d\}1}+\vec{\partial }_{\mu }.F_{\mu
 w1 = Explicit[w0]
 ```
 
-$$f^{gca} A_{\mu }^c.\left(f^{abd} A_{\mu }^b.A_{\sigma }^d+\left.(\partial _{\mu }A_{\sigma }^a\right)-\left.(\partial _{\sigma }A_{\mu }^a\right)\right)+\vec{\partial }_{\mu }.\left(f^{gab} A_{\mu }^a.A_{\sigma }^b+\left.(\partial _{\mu }A_{\sigma }^g\right)-\left.(\partial _{\sigma }A_{\mu }^g\right)\right)$$
+$$\vec{\partial }_{\mu }.\left(f^{abg} A_{\mu }^a.A_{\sigma }^b+\left(\partial _{\mu }A_{\sigma }^g\right)-\left(\partial _{\sigma }A_{\mu }^g\right)\right)-f^{acg} A_{\mu }^c.\left(f^{abd} A_{\mu }^b.A_{\sigma }^d+\left(\partial _{\mu }A_{\sigma }^a\right)-\left(\partial _{\sigma }A_{\mu }^a\right)\right)$$
 
 ```mathematica
 w2 = ExpandPartialD[w1] // DotSimplify
 ```
 
-$$-f^{abd} f^{acg} A_{\mu }^b.A_{\mu }^c.A_{\sigma }^d+f^{abg} A_{\mu }^a.\left(\left.(\partial _{\mu }A_{\sigma }^b\right)\right)+f^{abg} A_{\sigma }^b.\left(\left.(\partial _{\mu }A_{\mu }^a\right)\right)-f^{acg} A_{\mu }^c.\left(\left.(\partial _{\mu }A_{\sigma }^a\right)\right)+f^{acg} A_{\mu }^c.\left(\left.(\partial _{\sigma }A_{\mu }^a\right)\right)+\left(\partial _{\mu }\partial _{\mu }A_{\sigma }^g\right)-\left(\partial _{\mu }\partial _{\sigma }A_{\mu }^g\right)$$
+$$-f^{abd} f^{acg} A_{\mu }^b.A_{\mu }^c.A_{\sigma }^d+f^{abg} A_{\mu }^a.\left(\partial _{\mu }A_{\sigma }^b\right)+f^{abg} A_{\sigma }^b.\left(\partial _{\mu }A_{\mu }^a\right)-f^{acg} A_{\mu }^c.\left(\partial _{\mu }A_{\sigma }^a\right)+f^{acg} A_{\mu }^c.\left(\partial _{\sigma }A_{\mu }^a\right)+\left(\partial _{\mu }\partial _{\mu }A_{\sigma }^g\right)-\left(\partial _{\mu }\partial _{\sigma }A_{\mu }^g\right)$$
 
 ```mathematica
 dif1 = w2 - r3
 ```
 
-$$-f^{abd} f^{acg} A_{\mu }^b.A_{\mu }^c.A_{\sigma }^d-f^{acd} f^{bdg} A_{\mu }^a.A_{\mu }^b.A_{\sigma }^c+f^{abg} A_{\mu }^a.\left(\left.(\partial _{\mu }A_{\sigma }^b\right)\right)-f^{abg} \left(2 A_{\mu }^a.\left(\left.(\partial _{\mu }A_{\sigma }^b\right)\right)-A_{\mu }^a.\left(\left.(\partial _{\sigma }A_{\mu }^b\right)\right)-A_{\sigma }^a.\left(\left.(\partial _{\mu }A_{\mu }^b\right)\right)\right)+f^{abg} A_{\sigma }^b.\left(\left.(\partial _{\mu }A_{\mu }^a\right)\right)-f^{acg} A_{\mu }^c.\left(\left.(\partial _{\mu }A_{\sigma }^a\right)\right)+f^{acg} A_{\mu }^c.\left(\left.(\partial _{\sigma }A_{\mu }^a\right)\right)$$
+$$-f^{abd} f^{acg} A_{\mu }^b.A_{\mu }^c.A_{\sigma }^d-f^{acd} f^{bdg} A_{\mu }^a.A_{\mu }^b.A_{\sigma }^c+f^{abg} A_{\mu }^a.\left(\partial _{\mu }A_{\sigma }^b\right)-f^{abg} \left(2 A_{\mu }^a.\left(\partial _{\mu }A_{\sigma }^b\right)-A_{\mu }^a.\left(\partial _{\sigma }A_{\mu }^b\right)-A_{\sigma }^a.\left(\partial _{\mu }A_{\mu }^b\right)\right)+f^{abg} A_{\sigma }^b.\left(\partial _{\mu }A_{\mu }^a\right)-f^{acg} A_{\mu }^c.\left(\partial _{\mu }A_{\sigma }^a\right)+f^{acg} A_{\mu }^c.\left(\partial _{\sigma }A_{\mu }^a\right)$$
 
 As expected:
 

@@ -4,11 +4,11 @@
 
 
 (* ::Section:: *)
-(*AntiCommutator*)
+(*FCAntiCommutator*)
 
 
 (* ::Text:: *)
-(*`AntiCommutator[x, y] = c` defines the anti-commutator of the non commuting objects `x` and `y`.*)
+(*`FCAntiCommutator[x, y] = c` defines the anti-commutator of the non commuting objects `x` and `y`.*)
 
 
 (* ::Subsection:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [Commutator](Commutator.md), [CommutatorExplicit](CommutatorExplicit.md), [DeclareNonCommutative](DeclareNonCommutative.md), [DotSimplify](DotSimplify.md).*)
+(*[Overview](Extra/FeynCalc.md), [FCCommutator](FCCommutator.md), [CommutatorExplicit](CommutatorExplicit.md), [DeclareNonCommutative](DeclareNonCommutative.md), [DotSimplify](DotSimplify.md).*)
 
 
 (* ::Subsection:: *)
@@ -29,15 +29,15 @@
 
 DeclareNonCommutative[a,b]
 
-AntiCommutator[a,b]
+FCAntiCommutator[a,b]
 
 CommutatorExplicit[%]
 
 
-CommutatorExplicit[AntiCommutator[a+b,a-2b ]]
+CommutatorExplicit[FCAntiCommutator[a+b,a-2b ]]
 
 
-DotSimplify[AntiCommutator[a+b,a-2b ]]
+DotSimplify[FCAntiCommutator[a+b,a-2b ]]
 
 
 DeclareNonCommutative[c,d,ct,dt]
@@ -47,12 +47,12 @@ DeclareNonCommutative[c,d,ct,dt]
 (*Defining `{c,d} = z` results in replacements of `c.d` by `z-d.c.`*)
 
 
-AntiCommutator[c,d] = z
+FCAntiCommutator[c,d] = z
 
 DotSimplify[ d . c . d ]
 
 
-AntiCommutator[dt,ct] = zt
+FCAntiCommutator[dt,ct] = zt
 
 
 DotSimplify[dt . ct . dt]

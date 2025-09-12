@@ -12,6 +12,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [Upper and lower indices](UpperLowerIndices.md)
 - [Custom FeynRules models](CustomModels.md)
 - [Treatment of gamma5 in D dimensions](Gamma5.md)
+- [Dirac traces in 4 dimensions and Schouten identity](DiracTracesSchouten.md)
 - [Tensor reduction of loop integrals](TensorReduction.md)
 - [Useful formulas for Dirac algebra](DiracAlgebraFormulas.md)
 - [Renormalization](Renormalization.md)
@@ -274,14 +275,14 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 
 ## Algebra of noncommutative objects
 
-- [AntiCommutator](../AntiCommutator.md) - defines an anti-commutator
 - [Calc](../Calc.md), [Trick](../Trick.md) - multiple simplifications for Dirac and $SU(N)$ algebra
-- [Commutator](../Commutator.md) - defines a commutator
 - [CommutatorExplicit](../CommutatorExplicit.md) - substitutes explicit definitions of commutators and anticommutators
 - [CommutatorOrder](../CommutatorOrder.md) - canonical ordering of (anti)commutator arguments
 - [DeclareNonCommutative](../DeclareNonCommutative.md) - declares noncommutative objects
 - [DotExpand](../DotExpand.md) - expands dot products
 - [DotSimplify](../DotSimplify.md) - expands and reorders noncommutative terms
+- [FCAntiCommutator](../FCAntiCommutator.md) - defines an anti-commutator
+- [FCCommutator](../FCCommutator.md) - defines a commutator
 - [FCMatrixIsolate](../FCMatrixIsolate.md) - wraps Dirac, Pauli and $SU(N)$ objects into specified heads
 - [FCMatrixProduct](../FCMatrixProduct.md) - multiplies matrices with noncommutative entries
 - [FCTraceExpand](../FCTraceExpand.md) - expands traces using linearity wihtout calculating them
