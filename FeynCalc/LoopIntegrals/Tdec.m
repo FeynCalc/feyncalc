@@ -66,6 +66,8 @@ tdecVerbose::usage="";
 symmMT::usage="";
 
 Options[Tdec] =	{
+	"TensorHead"		-> False,
+	"ExtraSolverOptions" -> {},
 	BasisOnly 			-> False,
 	Dimension 			-> D,
 	DeleteFile			-> True,
@@ -104,7 +106,8 @@ Tdec[exp_:1, li : {{_, _} ..}, extMomsRaw_List/;FreeQ[extMomsRaw,OptionQ], Optio
 			symbolicVars, variableAbbreviations, tensorCoeffAbbreviations,
 			sol,ii,ce,xy, optHead, tmp,	extMom, basisonly, multiLoop=False,
 			lorInds, loopMoms, basis,multiLoopSyms={}, optFinalSubstitutions,
-			dummyHead1, dummyHead2, symRules, optSolve, optFCParallelize},
+			dummyHead1, dummyHead2, symRules, optSolve, optFCParallelize,
+			optExtraSolverOptions, ferSolveOpts},
 
 		dim         			= OptionValue[Dimension];
 		optList					= OptionValue[List];
@@ -115,6 +118,7 @@ Tdec[exp_:1, li : {{_, _} ..}, extMomsRaw_List/;FreeQ[extMomsRaw,OptionQ], Optio
 		optSolve				= OptionValue[Solve];
 		optFinalSubstitutions	= OptionValue[FinalSubstitutions];
 		optFCParallelize		= OptionValue[FCParallelize];
+		optExtraSolverOptions	= OptionValue["ExtraSolverOptions"];
 
 		If [OptionValue[FCVerbose]===False,
 			tdecVerbose=$VeryVerbose,
@@ -288,9 +292,12 @@ Tdec[exp_:1, li : {{_, _} ..}, extMomsRaw_List/;FreeQ[extMomsRaw,OptionQ], Optio
 
 		FCPrint[1, "Tdec: tensorContract done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tdecVerbose];
 
-
 		If[	!FreeQ2[linearSystem,{PairContract2}],
 			linearSystem = linearSystem /. PairContract2 -> Pair
+		];
+
+		If[	OptionValue["TensorHead"]=!=False,
+			tensorEq[[2]] = Collect2[tensorEq[[2]], CC, Factoring -> OptionValue["TensorHead"]]
 		];
 
 		If[	optFinalSubstitutions=!={},
@@ -317,7 +324,6 @@ Tdec[exp_:1, li : {{_, _} ..}, extMomsRaw_List/;FreeQ[extMomsRaw,OptionQ], Optio
 		linearSystemAbbreviated 	= Map[Replace[#,Equal[a_, b_] :> Equal[a, Collect[b, tensorCoeffs]]] &, linearSystemAbbreviated];
 		FCPrint[3, "linearSystemAbbreviated = ", TableForm[linearSystemAbbreviated], FCDoControl->tdecVerbose];
 		(*Before computing the decomposition formula, check if the result is already available in the TIDL database *)
-
 		If[ OptionValue[UseTIDL] && TIDL[li,extMoms,Dimension->dim]=!=Apply[Times, Map[Pair[Momentum[#[[1]],dim],LorentzIndex[#[[2]],dim]]&,li]],
 			(*Yes*)
 			FCPrint[1, "This decomposition formula is available in TIDL, skipping calculation.", FCDoControl->tdecVerbose];
@@ -349,8 +355,13 @@ Tdec[exp_:1, li : {{_, _} ..}, extMomsRaw_List/;FreeQ[extMomsRaw,OptionQ], Optio
 
 				(*FerSolve*)
 				optSolve===FeynCalc`FerSolve,
-					sol = FerSolve[linearSystemAbbreviated, tensorCoeffs, Timing->False, DeleteFile->OptionValue[DeleteFile],
-						"SetPivotStrategy"	-> 5, FCVerbose->tdecVerbose],
+				ferSolveOpts = {Timing->False, DeleteFile->OptionValue[DeleteFile],
+						"SetPivotStrategy"	-> 5, FCVerbose->tdecVerbose};
+				If[optExtraSolverOptions=!={},
+				ferSolveOpts = Join[optExtraSolverOptions,FilterRules[ferSolveOpts, Except[Alternatives@@(First/@optExtraSolverOptions)]]]
+				];
+					Print[ferSolveOpts];
+					sol = FerSolve[linearSystemAbbreviated, tensorCoeffs, ferSolveOpts],
 
 				(*Custom solver, no options*)
 				MatchQ[optSolve,_Symbol],
