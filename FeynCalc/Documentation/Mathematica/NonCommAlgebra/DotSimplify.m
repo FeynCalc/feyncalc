@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`DotSimplify[exp]` expands and reorders noncommutative terms in exp. Simplifying relations may be specified by the option `DotSimplifyRelations` or by `Commutator` and `AntiCommutator` definitions. Whether exp is expanded noncommutatively depends on the option `Expanding`.*)
+(*`DotSimplify[exp]` expands and reorders noncommutative terms in exp. Simplifying relations may be specified by the option `DotSimplifyRelations` or by `FCCommutator` and `FCAntiCommutator` definitions. Whether exp is expanded noncommutatively depends on the option `Expanding`.*)
 
 
 (* ::Subsection:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [AntiCommutator](AntiCommutator.md), [Commutator](Commutator.md), [Calc](Calc.md).*)
+(*[Overview](Extra/FeynCalc.md), [FCAntiCommutator](FCAntiCommutator.md), [FCCommutator](FCCommutator.md), [Calc](Calc.md).*)
 
 
 (* ::Subsection:: *)
@@ -40,22 +40,22 @@ a . (b-z c) . a
 DotSimplify[%]
 
 
-Commutator[a,c]=1
+FCCommutator[a,c]=1
 
 DotSimplify[a . (b-z c) . a]
 
 
-Commutator[a,c]=.
+FCCommutator[a,c]=.
 
 DotSimplify[a . (b-z c) . a]
 
 
-AntiCommutator[b,a]=c
+FCAntiCommutator[b,a]=c
 
 DotSimplify[a . (b-z c) . a]
 
 
-AntiCommutator[b,a]=.
+FCAntiCommutator[b,a]=.
 
 DotSimplify[a . (b-z c) . a,DotSimplifyRelations->{a . c->1/z}]
 
@@ -79,16 +79,16 @@ UnDeclareNonCommutative[x]
 DeclareNonCommutative[Q,P]
 
 
-lhs=(Q . Commutator[Q,P]+Commutator[Q,P] . Q)/2
+lhs=(Q . FCCommutator[Q,P]+FCCommutator[Q,P] . Q)/2
 
-rhs=Commutator[Q,Q . P+P . Q]/2
+rhs=FCCommutator[Q,Q . P+P . Q]/2
 
 DotSimplify[lhs-rhs]
 
 %//ExpandAll
 
 
-Commutator[Q,P]=I;
+FCCommutator[Q,P]=I;
 
 
 (* ::Text:: *)
@@ -98,7 +98,7 @@ Commutator[Q,P]=I;
 DOp=(Q . P+P . Q)/2;
 
 
-Commutator[Q,DOp]
+FCCommutator[Q,DOp]
 
 %//DotSimplify//ExpandAll
 

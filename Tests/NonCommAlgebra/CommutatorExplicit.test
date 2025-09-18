@@ -13,9 +13,9 @@
 
 Tests`NonCommAlgebra`fcstCommutatorExplicit = {
 {"CommutatorExplicit-ID1",
-	"CommutatorExplicit[Commutator[a-c,b-d]]",
+	"CommutatorExplicit[FCCommutator[a-c,b-d]]",
 	"(a - c) . (b - d) - (b - d) . (a - c)"},
 {"CommutatorExplicit-ID2",
-	"CommutatorExplicit[AntiCommutator[a-c,b-d]]",
+	"CommutatorExplicit[FCAntiCommutator[a-c,b-d]]",
 	"(a - c) . (b - d) + (b - d) . (a - c)"}
 };

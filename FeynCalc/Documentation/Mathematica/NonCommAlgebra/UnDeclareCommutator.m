@@ -16,14 +16,14 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [Commutator](Commutator.md), [CommutatorExplicit](CommutatorExplicit.md), [DeclareNonCommutative](DeclareNonCommutative.md), [DotSimplify](DotSimplify.md).*)
+(*[Overview](Extra/FeynCalc.md), [FCCommutator](FCCommutator.md), [CommutatorExplicit](CommutatorExplicit.md), [DeclareNonCommutative](DeclareNonCommutative.md), [DotSimplify](DotSimplify.md).*)
 
 
 (* ::Subsection:: *)
 (*Examples*)
 
 
-Commutator[QuantumField[FCPartialD[LorentzIndex[xxx_]],A],QuantumField[A]]=0;
+FCCommutator[QuantumField[FCPartialD[LorentzIndex[xxx_]],A],QuantumField[A]]=0;
 
 
 QuantumField[A] . QuantumField[A] . LeftPartialD[\[Nu]] . QuantumField[A] . QuantumField[A] . LeftPartialD[\[Nu]]

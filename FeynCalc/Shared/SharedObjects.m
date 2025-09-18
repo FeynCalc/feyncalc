@@ -2143,7 +2143,7 @@ LeftPartialD[r__, {i_, x_}]:=
 (* 	Here one must use named blanks, since otherwise DotSimplify
 	is not able to convert this into rules. But I also don't want
 	WWB to complain about unused variables here. So... *)
-ToExpression["Commutator[RightPartialD[x_], LeftPartialD[y_]] = 0;"];
+ToExpression["FCCommutator[RightPartialD[x_], LeftPartialD[y_]] = 0;"];
 
 LeftRightNablaD[xx__] :=
 	LeftRightNablaD@@ (CartesianIndex /@ {xx}) /;
@@ -3253,8 +3253,8 @@ initialLightConePerpendicularComponentDownValues = DownValues[LightConePerpendic
 
 initialScalarProducts = $ScalarProducts;
 
-initialCommutatorDownValues 		= DownValues[Commutator];
-initialAntiCommutatorDownValues 	= DownValues[AntiCommutator];
+initialCommutatorDownValues 		= DownValues[FCCommutator];
+initialAntiCommutatorDownValues 	= DownValues[FCAntiCommutator];
 
 FCPrint[1,"SharedObjects loaded."];
 End[]

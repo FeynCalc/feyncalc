@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`UnDeclareAllAntiCommutators[]` undeclares all user-defined anticommutators.*)
+(*`UnDeclareAllAntiCommutators[]` undeclares all user-defined anti-commutators.*)
 
 
 (* ::Subsection:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [AntiCommutator](AntiCommutator.md), [CommutatorExplicit](CommutatorExplicit.md), [DeclareNonCommutative](DeclareNonCommutative.md), [DotSimplify](DotSimplify.md).*)
+(*[Overview](Extra/FeynCalc.md), [FCAntiCommutator](FCAntiCommutator.md), [CommutatorExplicit](CommutatorExplicit.md), [DeclareNonCommutative](DeclareNonCommutative.md), [DotSimplify](DotSimplify.md).*)
 
 
 (* ::Subsection:: *)
@@ -25,9 +25,9 @@
 
 DeclareNonCommutative[a,b,c,d]
 
-AntiCommutator[a,b]=x1;
+FCAntiCommutator[a,b]=x1;
 
-AntiCommutator[c,d]=x2;
+FCAntiCommutator[c,d]=x2;
 
 DotSimplify[a . b . c . d]
 

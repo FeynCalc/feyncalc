@@ -25,7 +25,7 @@ If[	$OnlySubTest=!="",
 	Remove[testNames]
 ];
 
-If[ Names["Tests`NonCommAlgebra`fcstAntiCommutator*"]=!={},
+If[ Names["Tests`NonCommAlgebra`fcstFCAntiCommutator*"]=!={},
 	DeclareNonCommutative[a,b];
 	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`NonCommAlgebra`fcstAntiCommutator*"])];
@@ -34,7 +34,7 @@ If[ Names["Tests`NonCommAlgebra`fcstAntiCommutator*"]=!={},
 
 ];
 
-If[ Names["Tests`NonCommAlgebra`fcstCommutator*"]=!={},
+If[ Names["Tests`NonCommAlgebra`fcstFCCommutator*"]=!={},
 	DeclareNonCommutative[a,b,c,d];
 	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
 	Join@@(ToExpression/@Names["Tests`NonCommAlgebra`fcstCommutator*"])];
@@ -43,8 +43,8 @@ If[ Names["Tests`NonCommAlgebra`fcstCommutator*"]=!={},
 ];
 
 If[ Names["Tests`NonCommAlgebra`*"]=!={} &&
-	Select[Names["Tests`NonCommAlgebra`*"], !StringMatchQ[#, "*fcstCommutator" | "*fcstAntiCommutator" | "*fcstCommutatorExplicit" ] &]=!={},
+	Select[Names["Tests`NonCommAlgebra`*"], !StringMatchQ[#, "*fcstFCCommutator" | "*fcstFCAntiCommutator" | "*fcstCommutatorExplicit" ] &]=!={},
 	tmpTest = Map[test[ToExpression[(#[[2]])],ToExpression[(#[[3]])],testID->#[[1]]]&,
-	Join@@(ToExpression/@Select[Names["Tests`NonCommAlgebra`*"], !StringMatchQ[#, "*fcstCommutator" | "*fcstAntiCommutator" | "*fcstCommutatorExplicit" ] &])];
+	Join@@(ToExpression/@Select[Names["Tests`NonCommAlgebra`*"], !StringMatchQ[#, "*fcstFCCommutator" | "*fcstFCAntiCommutator" | "*fcstCommutatorExplicit" ] &])];
 	tmpTest = tmpTest /. testID->TestID /. test -> Test
 ];

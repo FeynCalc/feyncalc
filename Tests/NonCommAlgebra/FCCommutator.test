@@ -1,0 +1,32 @@
+(* :Title: FCCommutator.test												*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2024 Rolf Mertig
+	Copyright (C) 1997-2024 Frederik Orellana
+	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCCommutator				*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`NonCommAlgebra`fcstFCCommutator = {
+{"FCCommutator-ID1", "CommutatorExplicit[FCCommutator[a,b]]", "a . b - b . a"},
+{"FCCommutator-ID2", "CommutatorExplicit[FCCommutator[a+b,a-2b]]",
+"-(a - 2*b) . (a + b) + (a + b) . (a - 2*b)"},
+{"FCCommutator-ID3", "Do[FCCommutator[a, b] = 1, {i, 1, 5}] \n DownValues[FCCommutator]",
+"{HoldPattern[FCCommutator[a, b]] :> 1,
+HoldPattern[FCCommutator[RightPartialD[FeynCalc`SharedObjects`Private`x_], LeftPartialD[FeynCalc`SharedObjects`Private`y_]]] :> 0}"},
+{"FCCommutator-ID4", "FCCommutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A1],
+QuantumField[A1]] = 0; DotSimplify[
+ExpandPartialD[QuantumField[A1].QuantumField[A1].LeftPartialD[nu]]];
+UnDeclareCommutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A1],
+QuantumField[A1]]; DotSimplify[
+ExpandPartialD[QuantumField[A1].QuantumField[A1].LeftPartialD[nu]]]",
+"QuantumField[A1].QuantumField[FCPartialD[LorentzIndex[nu]], A1] +
+QuantumField[FCPartialD[LorentzIndex[nu]], A1].QuantumField[A1]"},
+{"FCCommutator-ID5","FCCommutator[a, b] = x1;
+FCCommutator[c, d] = x2; UnDeclareAllCommutators[]; Head[
+FCCommutator[a, b]]","FCCommutator"}
+};

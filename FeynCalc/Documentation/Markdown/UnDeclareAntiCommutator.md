@@ -1,15 +1,15 @@
 ## UnDeclareAntiCommutator
 
-`UnDeclareAntiCommutator[a, b]` undeclares the value assigned to the anticommutator of `a` and `b`.
+`UnDeclareAntiCommutator[a, b]` undeclares the value assigned to the anti-commutator of `a` and `b`.
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [Commutator](Commutator.md), [CommutatorExplicit](CommutatorExplicit.md), [DeclareNonCommutative](DeclareNonCommutative.md), [DotSimplify](DotSimplify.md).
+[Overview](Extra/FeynCalc.md), [FCCommutator](FCCommutator.md), [CommutatorExplicit](CommutatorExplicit.md), [DeclareNonCommutative](DeclareNonCommutative.md), [DotSimplify](DotSimplify.md).
 
 ### Examples
 
 ```mathematica
-AntiCommutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A], QuantumField[A]] = 0;
+FCAntiCommutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A], QuantumField[A]] = 0;
 ```
 
 ```mathematica
@@ -30,4 +30,4 @@ UnDeclareAntiCommutator[QuantumField[FCPartialD[LorentzIndex[xxx_]], A], Quantum
 ExpandPartialD[QuantumField[A] . QuantumField[A] . LeftPartialD[\[Nu]]]
 ```
 
-$$A.\left(\left.(\partial _{\nu }A\right)\right)+\left(\left.(\partial _{\nu }A\right)\right).A$$
+$$A.\left(\partial _{\nu }A\right)+\left(\partial _{\nu }A\right).A$$

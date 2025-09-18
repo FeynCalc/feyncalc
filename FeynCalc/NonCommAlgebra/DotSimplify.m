@@ -17,9 +17,9 @@
 
 DotSimplify::usage =
 "DotSimplify[exp] expands and reorders noncommutative terms in exp. Simplifying
-relations may be specified by the option DotSimplifyRelations or by Commutator
-and AntiCommutator definitions. Whether exp is expanded noncommutatively
-depends on the option Expanding.";
+relations may be specified by the option DotSimplifyRelations or by
+FCCommutator and FCAntiCommutator definitions. Whether exp is expanded
+noncommutatively depends on the option Expanding.";
 
 DotSimplifyRelations::usage =
 "DotSimplifyRelations is an option for DotSimplify. Its setting may be a list
@@ -169,7 +169,7 @@ DotSimplify[expr_, OptionsPattern[]] :=
 			time=AbsoluteTime[];
 			FCPrint[1, "DotSimplify: Writing out commutators and anticommutators.", FCDoControl->dsVerbose];
 			(*If the expression contains commutators or anticommutators, write them out explicitly, i.e. [a,b] -> ab-ba etc.*)
-			If[ (!FreeQ[ex, Commutator]) || (!FreeQ[ex, AntiCommutator]),
+			If[ (!FreeQ[ex, FCCommutator]) || (!FreeQ[ex, FCAntiCommutator]),
 				x = CommutatorExplicit[ex],
 				x = ex
 			];
@@ -197,7 +197,7 @@ DotSimplify[expr_, OptionsPattern[]] :=
 			If[ optDotSimplifyRelations === {},
 				vars = Union[Variables[Cases[Cases2[ex,DOT] //. DOT[a___, n_?NumberQ o1_. + o2_:0, b___] :> DOT[a, o1 nvar[n]+o2, b], _, Infinity] ]];
 				If[ Union[Map[DataType[#, NonCommutative]&, vars]] === {True},
-					If[ FreeQ2[{DownValues[Commutator], DownValues[AntiCommutator]},vars],
+					If[ FreeQ2[{DownValues[FCCommutator], DownValues[FCAntiCommutator]},vars],
 						(* that means : just expansion, no acomms, comms *)
 						x = Distribute[x /. DOT -> doot] //. doot[a___, n_?NumberQ b_, c___] :> (n doot[a, b, c]);
 						Throw[x /. doot -> dootpow]
@@ -219,7 +219,7 @@ DotSimplify[expr_, OptionsPattern[]] :=
 
 			];
 
-			(* This is for converting DownValues of Commutator and AntiCommutator to rules *)
+			(* This is for converting DownValues of FCCommutator and FCAntiCommutator to rules *)
 			{commSortBy, acommSortBy} = optSortBy;
 
 			(* a.b = [a,b] + b.a *)
@@ -262,25 +262,25 @@ DotSimplify[expr_, OptionsPattern[]] :=
 				(
 				(*cotorules[a] =*)
 					Select[Map[ruleCommutator,	a /. (h:FCPartialD|LeftPartialD|RightPartialD|LeftRightPartialD|LeftRightPartialD2|LeftNablaD|RightNablaD|LeftRightNablaD|LeftRightNablaD2) -> hold[h]
-						/. Commutator -> commm /. HoldPattern :> Identity /. RuleDelayed -> List], FreeQ[#, ruleCommutator]&]
+						/. FCCommutator -> commm /. HoldPattern :> Identity /. RuleDelayed -> List], FreeQ[#, ruleCommutator]&]
 				)/; a=!={};
 
 			actorules[{}] = {};
 			actorules[a__List] :=
 				(
 				(*actorules[a] = *)Select[Map[ruleAntiCommutator,	a /. (h:FCPartialD|LeftPartialD|RightPartialD|LeftRightPartialD|LeftRightPartialD2|LeftNablaD|RightNablaD|LeftRightNablaD|LeftRightNablaD2) -> hold[h]
-					/. AntiCommutator -> acommm /. HoldPattern :> Identity /. RuleDelayed -> List], FreeQ[#, ruleAntiCommutator]&]
+					/. FCAntiCommutator -> acommm /. HoldPattern :> Identity /. RuleDelayed -> List], FreeQ[#, ruleAntiCommutator]&]
 				)/; a=!={};
 
 			Off[Rule::rhs];
 
 			(*	There might be either explicit commutators or anticommutators to be inserted.	*)
-			commutatorEvaluationRules = (Flatten[cotorules[DownValues@@{Commutator}]] //. hold[h_]:> h);
-			antiCommutatorEvaluationRules = (Flatten[actorules[DownValues@@{AntiCommutator}]] //. hold[h_]:> h);
+			commutatorEvaluationRules = (Flatten[cotorules[DownValues@@{FCCommutator}]] //. hold[h_]:> h);
+			antiCommutatorEvaluationRules = (Flatten[actorules[DownValues@@{FCAntiCommutator}]] //. hold[h_]:> h);
 
 
-			FCPrint[3, "DotSimplify: Commutator rules: ", commutatorEvaluationRules, FCDoControl->dsVerbose];
-			FCPrint[3, "DotSimplify: AntiCommutator rules: ", antiCommutatorEvaluationRules, FCDoControl->dsVerbose];
+			FCPrint[3, "DotSimplify: FCCommutator rules: ", commutatorEvaluationRules, FCDoControl->dsVerbose];
+			FCPrint[3, "DotSimplify: FCAntiCommutator rules: ", antiCommutatorEvaluationRules, FCDoControl->dsVerbose];
 
 			If[	OptionValue[FCJoinDOTs] && !optExpanding,
 				time=AbsoluteTime[];
