@@ -519,5 +519,22 @@ tmp = FCLoopFindIntegralMappings[{GLI[
 	Hold[SPD][nb] -> 0, Hold[SPD][n, nb] -> 2}, {}]}];
 $ParallelizeFeynCalc = False; tmp",
 "{{}, {GLI[topology10, {1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0}],
-GLI[topology10, {1, 1, 1, 1, 1, 0, 0, 2, 0, 0, 0, 0}]}}"}
+GLI[topology10, {1, 1, 1, 1, 1, 0, 0, 2, 0, 0, 0, 0}]}}"},
+
+{"fcstFCLoopFindIntegralMappings-ID15",
+"FCLoopFindIntegralMappings[{GLI[
+fctopology10C, {1, 0, 1, 1, 1, 0, -1}],
+GLI[fctopology10C, {1, 0, 1, 1, 1, 0, 0}]},
+{FCTopology[
+	fctopology10C, {SFAD[{{k1, 0}, {0, 1}, 1}],
+	SFAD[{{k1 + q1, 0}, {0, 1}, 1}], SFAD[{{k2, 0}, {mt^2, 1}, 1}],
+	SFAD[{{k2 + q2, 0}, {mt^2, 1}, 1}],
+	SFAD[{{k1 + k2, 0}, {mt^2, 1}, 1}],
+	SFAD[{{k1 + k2 + q1 + q2, 0}, {mt^2, 1}, 1}],
+	SFAD[{{0, k1 . q2}, {0, 1}, 1}]}, {k1, k2}, {q1,
+	q2}, {Hold[Pair][Momentum[q1, D], Momentum[q1, D]] -> 0,
+	Hold[Pair][Momentum[q2, D], Momentum[q2, D]] -> 0,
+	Hold[Pair][Momentum[q1, D], Momentum[q2, D]] -> s/2}, {}]}]",
+	"{{}, {GLI[fctopology10C, {1, 0, 1, 1, 1, 0, -1}], GLI[fctopology10C, {1, 0, 1, 1, 1, 0, 0}]}}"
+}
 });

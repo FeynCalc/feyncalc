@@ -56,13 +56,22 @@ Begin["`FCLoopFindIntegralMappings`Private`"]
 fcfpmVerbose::usage = "";
 lhs::usage ="";
 
+(*
+	Here it is crucial to compare not only U and F but also the reordered propagator powers.
+	Otherwise, there might be cases, where the Feynman parameter related to e.g. a scalar product
+	in the numerator cancels out from U and F so that one would match different integrals to each
+	other
+*)
+
 Options[FCLoopFindIntegralMappings] = {
 	CharacteristicPolynomial	-> Function[{U,F}, U+F],
 	FCE 						-> False,
 	FCI 						-> False,
 	FCVerbose 					-> False,
 	FinalSubstitutions			-> {},
-	Function					-> Function[{U, F, charPoly, pows, head, int, sigma}, {head[int, Transpose[pows]], head[ExpandAll[U], ExpandAll[F]]}],
+
+	Function					-> Function[{U, F, charPoly, pows, head, int, sigma},
+										{head[int, Transpose[pows]], head[ExpandAll[U], ExpandAll[F],Transpose[pows][[3]]]}],
 	List						-> False,
 	LightPak					-> False,
 	PreferredIntegrals			-> {}
@@ -124,6 +133,7 @@ FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1, "FCLoopFindIntegralMappings: Extracting the mappings.", FCDoControl -> fcfpmVerbose];
 		(* 2nd element are the grouped mappings *)
+
 		res = Reap[(Sow[Sequence @@ #] & /@ pakFormInts), _][[2]];
 
 		If[	!FreeQ[expr,FCTopology],
