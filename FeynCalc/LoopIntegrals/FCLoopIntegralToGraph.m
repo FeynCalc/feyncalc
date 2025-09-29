@@ -141,7 +141,7 @@ FCLoopIntegralToGraph[expr_/; FreeQ[{GLI,FCTopology},expr], lmomsRaw_List, Optio
 			extEdgesList, numExtMoms,	numEdges, optFactoring,	auxExtEdgesList,
 			numIntVertices, numExtVertices, auxExternalMoms, numVertices,
 			res, aux, dots, optAuxiliaryMomenta, time, pref=1, massTerms, optMomentum,
-			timeLimit, optInitialSubstitutions},
+			timeLimit, optInitialSubstitutions, hold},
 
 		If [OptionValue[FCVerbose]===False,
 			lbtgVerbose=$VeryVerbose,
@@ -150,11 +150,11 @@ FCLoopIntegralToGraph[expr_/; FreeQ[{GLI,FCTopology},expr], lmomsRaw_List, Optio
 			];
 		];
 
-		maxVertexDegree 	= OptionValue[VertexDegree];
-		optFactoring 		= OptionValue[Factoring];
-		optSelect 			= OptionValue[Select];
-		optAuxiliaryMomenta = OptionValue[AuxiliaryMomenta];
-		optMomentum			= OptionValue[Momentum];
+		maxVertexDegree 		= OptionValue[VertexDegree];
+		optFactoring 			= OptionValue[Factoring];
+		optSelect 				= OptionValue[Select];
+		optAuxiliaryMomenta 	= OptionValue[AuxiliaryMomenta];
+		optMomentum				= OptionValue[Momentum];
 		optInitialSubstitutions = OptionValue[InitialSubstitutions];
 
 		If[OptionValue[FCI],
@@ -175,9 +175,6 @@ FCLoopIntegralToGraph[expr_/; FreeQ[{GLI,FCTopology},expr], lmomsRaw_List, Optio
 			Message[FCLoopIntegralToGraph::failmsg, "The input expression is not a proper integral or list of propagators"];
 			Abort[]
 		];
-
-
-
 
 		(*
 			Normally, when graphing an integral we care only about the denominators. Hence, the numerator should
@@ -201,6 +198,8 @@ FCLoopIntegralToGraph[expr_/; FreeQ[{GLI,FCTopology},expr], lmomsRaw_List, Optio
 		*)
 		lmoms = Intersection[allmoms,lmomsRaw];
 
+
+
 		If[	optMomentum === Automatic,
 			(*	All momenta that are not listed as loop or auxiliary momenta will be treated as external momenta.*)
 			extmoms = SelectFree[Complement[allmoms, lmoms], optAuxiliaryMomenta],
@@ -211,6 +210,11 @@ FCLoopIntegralToGraph[expr_/; FreeQ[{GLI,FCTopology},expr], lmomsRaw_List, Optio
 
 		time=AbsoluteTime[];
 		FCPrint[1,"FCLoopIntegralToGraph: Calling FCFeynmanPrepare.", FCDoControl->lbtgVerbose];
+		(*
+			Without this trick, all momenta set to something via ScalarProduct[x,y]=z; will vanish
+			and so the intigral will be falsely identified as a tadpole
+		*)
+		ex = ex /. Thread[Rule[extmoms, hold /@ extmoms]];
 		aux = FCFeynmanPrepare[ex, lmoms, FCI -> True, Check->False, Collecting -> False, FCLoopGetEtaSigns -> False];
 		FCPrint[1,"FCLoopIntegralToGraph: FCFeynmanPrepare done, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->lbtgVerbose];
 
@@ -233,7 +237,7 @@ FCLoopIntegralToGraph[expr_/; FreeQ[{GLI,FCTopology},expr], lmomsRaw_List, Optio
 		FCPrint[1,"FCLoopIntegralToGraph: Calling FCLoopIntegralToPropagators.", FCDoControl->lbtgVerbose];
 
 		(*	Preserve the original ordering of propagators if the input is a list! *)
-		props = FCLoopIntegralToPropagators[ex, lmoms, FCI->True, Tally->True, Sort->(Head[ex]=!=List)];
+		props = FCLoopIntegralToPropagators[ex/.hold->Identity, lmoms, FCI->True, Tally->True, Sort->(Head[ex]=!=List)];
 		FCPrint[1,"FCLoopIntegralToGraph: FCLoopIntegralToPropagators done, timing:", N[AbsoluteTime[] - time, 4], FCDoControl->lbtgVerbose];
 		FCPrint[3, "FCLoopIntegralToGraph: After FCLoopIntegralToPropagators: ", props, FCDoControl->lbtgVerbose];
 
