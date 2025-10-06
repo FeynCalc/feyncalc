@@ -229,7 +229,7 @@ diracTraceEvaluate[expr_/;!FreeQ[expr,DiracGamma], opts:OptionsPattern[]] :=
 			dtmp,dWrap,wrapRule,prepSpur,time,time2,contract,spurHeadList,
 			spurHeadListChiral,spurHeadListNonChiral,gammaFree,gammaPart,
 			traceListChiral,traceListNonChiral,repRule,null1,null2,dummyIndexFreeQ,
-			epsEvaluate, numGamma5},
+			epsEvaluate, numGamma5=0},
 
 		wrapRule = {dWrap[5]->0, dWrap[6]->1/2, dWrap[7]->1/2, dWrap[LorentzIndex[_,_:4],___]->0,
 					dWrap[_. Momentum[_,_:4]+_:0,___]->0};
@@ -265,8 +265,10 @@ diracTraceEvaluate[expr_/;!FreeQ[expr,DiracGamma], opts:OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1,"DiracTrace: diracTraceEvaluate: Applying DiracTrick.", FCDoControl->diTrVerbose];
 
+		holdEpsQ=False;
 		If[	TrueQ[(FeynCalc`Package`DiracGammaScheme === "Larin") && !FreeQ2[tmp,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}]],
 			numGamma5 = Count[tmp, DiracGamma[5] | DiracGamma[6] | DiracGamma[7], Infinity];
+			FCPrint[1,"DiracTrace: numGamma5: ", numGamma5, FCDoControl->diTrVerbose];
 			If[	!MatchQ[numGamma5,_Integer?NonNegative],
 				Message[DiracTrace::failmsg,"Failed to determine the number of g^5 in the trace."];
 				Abort[]
@@ -359,7 +361,7 @@ diracTraceEvaluate[expr_/;!FreeQ[expr,DiracGamma], opts:OptionsPattern[]] :=
 			(*	Now it is guaranteed that gammaPart is of the form a*spurHead[x]+b*spurHead[y]+c*spurHead[z]+...
 				So it is safe to extract all the spurHead objects and handle them separately	*)
 			spurHeadList = Cases[gammaPart+null1+null2, spurHead[__], Infinity]//Union;
-			FCPrint[3,"DiracTrace: diracTraceEvaluate: spurHeadList", spurHeadList, FCDoControl->diTrVerbose];
+			FCPrint[3,"DiracTrace: diracTraceEvaluate: spurHeadList: ", spurHeadList, FCDoControl->diTrVerbose];
 
 			(*	Separate chiral and non-chiral traces *)
 			spurHeadListChiral = Select[spurHeadList,!FreeQ[#,DiracGamma[5]]&];

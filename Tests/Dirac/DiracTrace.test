@@ -549,13 +549,9 @@ LorentzIndexNames -> {i1, i2, i3, i4, i5}, FCE -> True] &",
 (I/3)*Hold[Eps][LorentzIndex[Lor1, D], LorentzIndex[i3, D], LorentzIndex[i1, D], LorentzIndex[i2, D]]*Hold[Eps][Momentum[p1, D], LorentzIndex[i4, D], LorentzIndex[i3, D], LorentzIndex[i4, D]]*LCD[bb, i1, i2][p2] +
 (I/3)*Hold[Eps][LorentzIndex[Lor1, D], LorentzIndex[i3, D], LorentzIndex[i1, D], LorentzIndex[i2, D]]*Hold[Eps][Momentum[p1, D], LorentzIndex[i4, D], LorentzIndex[i4, D], LorentzIndex[i3, D]]*LCD[bb, i1, i2][p2] +
 (I/3)*Hold[Eps][LorentzIndex[i3, D], LorentzIndex[i4, D], LorentzIndex[i1, D], LorentzIndex[i2, D]]*Hold[Eps][Momentum[p1, D], LorentzIndex[Lor1, D], LorentzIndex[i3, D], LorentzIndex[i4, D]]*LCD[bb, i1, i2][p2] +
-((2*I)/3)*Hold[Eps][LorentzIndex[i2, D], LorentzIndex[i3, D], LorentzIndex[i4, D], LorentzIndex[i1, D]]*Hold[Eps][Momentum[p1, D], LorentzIndex[i2, D], LorentzIndex[i3, D], LorentzIndex[i4, D]]*LCD[bb, i1, Lor1][p2]"}
-
-
-
-
-
-
-
-
+((2*I)/3)*Hold[Eps][LorentzIndex[i2, D], LorentzIndex[i3, D], LorentzIndex[i4, D], LorentzIndex[i1, D]]*Hold[Eps][Momentum[p1, D], LorentzIndex[i2, D], LorentzIndex[i3, D], LorentzIndex[i4, D]]*LCD[bb, i1, Lor1][p2]"},
+{"fcstDiracTrace-ID71", "FCSetDiracGammaScheme[\"Larin\"];\n
+Simplify[Contract[DiracTrace[GSD[v] . (GSD[k] + mb GSD[k]) . GAD[5, mu, 5] . (GSD[k] + mb GSD[v]),
+DiracTraceEvaluate -> True]]]//FCE",
+"(-2*(6 - 5*D + D^2)*(1 + mb)*((-7 + D)*FVD[v, mu]*SPD[k, k] + FVD[k, mu]*(6*SPD[k, v] + (-1 + D)*mb*SPD[v, v])))/3"}
 });

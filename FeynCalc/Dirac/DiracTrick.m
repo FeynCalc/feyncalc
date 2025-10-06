@@ -1209,7 +1209,7 @@ ga67MatSign[7,6]=
 
 diracTraceSimplify[b___,di_,c__] :=
 	diracTraceSimplify[c,b, di]/; !FreeQ2[{di},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] &&
-	FreeQ2[{b,c},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
+	FreeQ2[{c},{DiracGamma[5],DiracGamma[6],DiracGamma[7]}];
 
 diracTraceSimplify[DiracGamma[5],b___,DiracGamma[5]] :=
 	diracTraceSimplify[b];
