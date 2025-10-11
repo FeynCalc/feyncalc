@@ -43,6 +43,7 @@ Options[FCLoopFindSubtopologies] = {
 	LightPak					-> False,
 	MaxIterations				-> Infinity,
 	Names						-> "R",
+	"Separator"					-> "x",
 	SubtopologyMarker			-> FCGV["SubtopologyOf"],
 	ToSFAD						-> True
 };
@@ -52,7 +53,7 @@ FCLoopFindSubtopologies[topos:{__FCTopology}, opts:OptionsPattern[]] :=
 
 FCLoopFindSubtopologies[topoRaw_FCTopology, OptionsPattern[]] :=
 	Block[{	topo, pakPoly, pakForm, res, time, x, tmp, counter=0, optNames,
-			optFinalSubstitutions, optSubtopologyMarker},
+			optFinalSubstitutions, optSubtopologyMarker, optSeparator},
 
 		If[	OptionValue[FCVerbose] === False,
 			fclfsVerbose = $VeryVerbose,
@@ -61,6 +62,7 @@ FCLoopFindSubtopologies[topoRaw_FCTopology, OptionsPattern[]] :=
 		];
 
 		optNames 				= OptionValue[Names];
+		optSeparator			= OptionValue[Separator];
 		optFinalSubstitutions	= OptionValue[FinalSubstitutions];
 		optSubtopologyMarker 	= OptionValue[SubtopologyMarker];
 
@@ -111,9 +113,9 @@ FCLoopFindSubtopologies[topoRaw_FCTopology, OptionsPattern[]] :=
 		Switch[
 			optNames,
 			_String,
-				res = Map[FCTopology[ToString[topo[[1]]] <> ToString[optNames] <> StringJoin[ToString /@ (Flatten[#])],Delete[topo[[2]], #]] &, tmp],
+				res = Map[FCTopology[ToString[topo[[1]]] <> ToString[optNames] <> optSeparator <> StringRiffle[ToString /@ (Flatten[#]), optSeparator],Delete[topo[[2]], #]] &, tmp],
 			_Symbol,
-				res = Map[FCTopology[ToExpression[ToString[topo[[1]]] <> ToString[optNames] <> StringJoin[ToString /@ (Flatten[#])]],Delete[topo[[2]], #]] &, tmp],
+				res = Map[FCTopology[ToExpression[ToString[topo[[1]]] <> ToString[optNames] <> optSeparator <> StringRiffle[ToString /@ (Flatten[#])], optSeparator],Delete[topo[[2]], #]] &, tmp],
 			_Function,
 				res = Map[FCTopology[optNames[topo[[1]],#], Delete[topo[[2]], #]] &, tmp],
 			_,
