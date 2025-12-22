@@ -14,26 +14,34 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False, 
   	$FeynCalcStartupMessages = False 
   ];
-$LoadAddOns = {"FeynArts"};
+LaunchKernels[4];
+$LoadAddOns = {"FeynArts", "FeynHelpers"};
 << FeynCalc`
-$FAVerbose = 0; 
+$FAVerbose = 0;
+$ParallelizeFeynCalc = True; 
  
-FCCheckVersion[9, 3, 1];
+FCCheckVersion[10, 2, 0];
+If[ToExpression[StringSplit[$FeynHelpersVersion, "."]][[1]] < 2, 
+ 	Print["You need at least FeynHelpers 2.0 to run this example."]; 
+ 	Abort[]; 
+ ]
 ```
 
-$$\text{FeynCalc }\;\text{10.0.0 (dev version, 2023-12-20 22:40:59 +01:00, dff3b835). For help, use the }\underline{\text{online} \;\text{documentation}}\;\text{, check out the }\underline{\text{wiki}}\;\text{ or visit the }\underline{\text{forum}.}$$
-
-$$\text{Please check our }\underline{\text{FAQ}}\;\text{ for answers to some common FeynCalc questions and have a look at the supplied }\underline{\text{examples}.}$$
+$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2025-12-22 21:09:03 +01:00, fcd53f9b). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{If you use FeynCalc in your research, please evaluate FeynCalcHowToCite[] to learn how to cite this software.}$$
 
 $$\text{Please keep in mind that the proper academic attribution of our work is crucial to ensure the future development of this package!}$$
 
-$$\text{FeynArts }\;\text{3.11 (3 Aug 2020) patched for use with FeynCalc, for documentation see the }\underline{\text{manual}}\;\text{ or visit }\underline{\text{www}.\text{feynarts}.\text{de}.}$$
+$$\text{FeynArts }\;\text{3.12 (27 Mar 2025) patched for use with FeynCalc, for documentation see the }\underline{\text{manual}}\;\text{ or visit }\underline{\text{www}.\text{feynarts}.\text{de}.}$$
 
 $$\text{If you use FeynArts in your research, please cite}$$
 
 $$\text{ $\bullet $ T. Hahn, Comput. Phys. Commun., 140, 418-431, 2001, arXiv:hep-ph/0012260}$$
+
+$$\text{FeynHelpers }\;\text{2.0.0 (2025-12-22 19:07:44 +01:00, c92fb9f5). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
+
+$$\text{ If you use FeynHelpers in your research, please evaluate FeynHelpersHowToCite[] to learn how to cite this work.}$$
 
 ## Configure some options
 
@@ -53,7 +61,7 @@ Paint[diags, ColumnsXRows -> {1, 1}, Numbering -> Simple,
   	SheetHeader -> None, ImageSize -> {256, 256}];
 ```
 
-![1123tdcz6igxy](img/1123tdcz6igxy.svg)
+![1nffgfkxw4o1s](img/1nffgfkxw4o1s.svg)
 
 ## Obtain the amplitude
 
@@ -62,16 +70,17 @@ The 1/(2Pi)^D prefactor is implicit.
 ```mathematica
 amp[0] = FCFAConvert[CreateFeynAmp[diags, Truncated -> True, GaugeRules -> {}, 
    	PreFactor -> 1], IncomingMomenta -> {p}, OutgoingMomenta -> {p}, LoopMomenta -> {q}, 
-  	UndoChiralSplittings -> True, ChangeDimension -> D, List -> False, SMP -> True, 
-  	DropSumOver -> True, Contract -> True]
+  	UndoChiralSplittings -> True, ChangeDimension -> D, SMP -> True, 
+  	DropSumOver -> True]
 ```
 
-$$-\left(g_s^2 f^{\text{Glu1}\;\text{Glu3}\;\text{Glu4}} f^{\text{Glu2}\;\text{Glu3}\;\text{Glu4}} \left(\frac{\left(1-\xi _g\right) \left(p^2-p\cdot q\right) \left(q^2-p\cdot q\right)}{q^2.(q-p)^4}+\frac{p\cdot q}{q^2.(q-p)^2}\right)\right)$$
+$$\left\{g_s^2 \left(-q^{\text{Lor1}}\right) p^{\text{Lor2}} f^{\text{Glu1}\;\text{Glu3}\;\text{Glu4}} f^{\text{Glu2}\;\text{Glu3}\;\text{Glu4}} \left(\frac{\left(1-\xi _g\right) (q-p)^{\text{Lor1}} (p-q)^{\text{Lor2}}}{q^2.(q-p)^4}+\frac{g^{\text{Lor1}\;\text{Lor2}}}{q^2.(q-p)^2}\right)\right\}$$
 
 ## Calculate the amplitude
 
 ```mathematica
-amp[1] = amp[0] // SUNSimplify // TID[#, q, ToPaVe -> True] &
+amp[1] = amp[0] // SUNSimplify[#, FCParallelize -> True] & // 
+    TID[#, q, ToPaVe -> True, FCParallelize -> True] & // Total
 ```
 
 $$-\frac{1}{4} i \pi ^2 p^2 C_A \left(1-\xi _g\right) g_s^2 \;\text{B}_0(0,0,0) \delta ^{\text{Glu1}\;\text{Glu2}}-\frac{1}{2} i \pi ^2 p^2 C_A g_s^2 \delta ^{\text{Glu1}\;\text{Glu2}} \;\text{B}_0\left(p^2,0,0\right)+\frac{1}{4} i \pi ^2 p^4 C_A \left(1-\xi _g\right) g_s^2 \delta ^{\text{Glu1}\;\text{Glu2}} \;\text{C}_0\left(0,p^2,p^2,0,0,0\right)$$
@@ -91,7 +100,8 @@ $$\frac{i p^2 C_A \left(\xi _g-3\right) g_s^2 \delta ^{\text{Glu1}\;\text{Glu2}}
 The self-energy amplitude is usually defined as  (p^2 delta^ab  Pi(p^2)
 
 ```mathematica
-pi[0] = FCI[ampDiv[0]/(I SUNDelta[SUNIndex[Glu1], SUNIndex[Glu2]]*SPD[p, p])] //Cancel
+pi[0] = FCI[ampDiv[0]/(I SUNDelta[SUNIndex[Glu1], 
+        SUNIndex[Glu2]]*SPD[p, p])] // Cancel
 ```
 
 $$\frac{C_A \left(\xi _g-3\right) g_s^2}{64 \pi ^2 \varepsilon }$$
@@ -104,8 +114,9 @@ FCCompareResults[pi[0], knownResult,
    Text -> {"\tCompare to Muta, Foundations of QCD, Eq. 2.5.136:", 
      "CORRECT.", "WRONG!"}, Interrupt -> {Hold[Quit[1]], Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
-```
+
+```mathematica
 
 $$\text{$\backslash $tCompare to Muta, Foundations of QCD, Eq. 2.5.136:} \;\text{CORRECT.}$$
 
-$$\text{$\backslash $tCPU Time used: }17.793\text{ s.}$$
+$$\text{$\backslash $tCPU Time used: }34.508\text{ s.}$$

@@ -14,26 +14,34 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False, 
   	$FeynCalcStartupMessages = False 
   ];
-$LoadAddOns = {"FeynArts"};
+LaunchKernels[4];
+$LoadAddOns = {"FeynArts", "FeynHelpers"};
 << FeynCalc`
-$FAVerbose = 0; 
+$FAVerbose = 0;
+$ParallelizeFeynCalc = True; 
  
-FCCheckVersion[10, 0, 0];
+FCCheckVersion[10, 2, 0];
+If[ToExpression[StringSplit[$FeynHelpersVersion, "."]][[1]] < 2, 
+ 	Print["You need at least FeynHelpers 2.0 to run this example."]; 
+ 	Abort[]; 
+ ]
 ```
 
-$$\text{FeynCalc }\;\text{10.0.0 (dev version, 2023-12-20 22:40:59 +01:00, dff3b835). For help, use the }\underline{\text{online} \;\text{documentation}}\;\text{, check out the }\underline{\text{wiki}}\;\text{ or visit the }\underline{\text{forum}.}$$
-
-$$\text{Please check our }\underline{\text{FAQ}}\;\text{ for answers to some common FeynCalc questions and have a look at the supplied }\underline{\text{examples}.}$$
+$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2025-12-22 21:09:03 +01:00, fcd53f9b). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{If you use FeynCalc in your research, please evaluate FeynCalcHowToCite[] to learn how to cite this software.}$$
 
 $$\text{Please keep in mind that the proper academic attribution of our work is crucial to ensure the future development of this package!}$$
 
-$$\text{FeynArts }\;\text{3.11 (3 Aug 2020) patched for use with FeynCalc, for documentation see the }\underline{\text{manual}}\;\text{ or visit }\underline{\text{www}.\text{feynarts}.\text{de}.}$$
+$$\text{FeynArts }\;\text{3.12 (27 Mar 2025) patched for use with FeynCalc, for documentation see the }\underline{\text{manual}}\;\text{ or visit }\underline{\text{www}.\text{feynarts}.\text{de}.}$$
 
 $$\text{If you use FeynArts in your research, please cite}$$
 
 $$\text{ $\bullet $ T. Hahn, Comput. Phys. Commun., 140, 418-431, 2001, arXiv:hep-ph/0012260}$$
+
+$$\text{FeynHelpers }\;\text{2.0.0 (2025-12-22 19:07:44 +01:00, c92fb9f5). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
+
+$$\text{ If you use FeynHelpers in your research, please evaluate FeynHelpersHowToCite[] to learn how to cite this work.}$$
 
 ## Generate Feynman diagrams
 
@@ -49,22 +57,23 @@ Paint[DiagramExtract[diags, {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
    Numbering -> True, ImageSize -> {1024, 256}];
 ```
 
-![1izbjdmo028st](img/1izbjdmo028st.svg)
+![05az40ah4s8zn](img/05az40ah4s8zn.svg)
 
-![1gwtdibzvkwav](img/1gwtdibzvkwav.svg)
+![1vjsk3vgxy6ft](img/1vjsk3vgxy6ft.svg)
 
-![0zks7qpbolljd](img/0zks7qpbolljd.svg)
+![0paycvetg4g5v](img/0paycvetg4g5v.svg)
 
-![04pp8487m5zpn](img/04pp8487m5zpn.svg)
+![0d21qlhp67e0h](img/0d21qlhp67e0h.svg)
 
-![1bzq5z1x0b8rv](img/1bzq5z1x0b8rv.svg)
+![10mu1xoisu2zl](img/10mu1xoisu2zl.svg)
 
 ## Obtain the amplitude
 
 ```mathematica
 ampRaw = FCFAConvert[CreateFeynAmp[DiagramExtract[diags, {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 20, 39}], Truncated -> True, 
-     	PreFactor -> 1], IncomingMomenta -> {p}, OutgoingMomenta -> {p},LoopMomenta -> {q1, q2}, 
-    	UndoChiralSplittings -> True, ChangeDimension -> D, List -> True, SMP -> True, 
+     	PreFactor -> 1], IncomingMomenta -> {p}, OutgoingMomenta -> {p},
+    	LoopMomenta -> {q1, q2}, 
+    	UndoChiralSplittings -> True, ChangeDimension -> D, SMP -> True, 
     	DropSumOver -> True] // SMPToSymbol;
 ```
 
@@ -84,15 +93,16 @@ projector = MTD[Lor1, Lor2] 1/((D - 1) SPD[p]) 1/(2 CA CF) SUNDelta[Glu1, Glu2]
 $$\frac{g^{\text{Lor1}\;\text{Lor2}} \delta ^{\text{Glu1}\;\text{Glu2}}}{2 (D-1) \;\text{pp} C_A C_F}$$
 
 ```mathematica
-AbsoluteTiming[ampSimp = (projector ampRaw /. mu -> 0) // Contract // DiracSimplify // SUNSimplify;]
+AbsoluteTiming[ampSimp = (projector ampRaw /. mu -> 0) // Contract[#, FCParallelize -> True] & // 
+      DiracSimplify[#, FCParallelize -> True] & // SUNSimplify[#, FCParallelize -> True] &;]
 ```
 
-$$\{2.15491,\text{Null}\}$$
+$$\{1.59411,\text{Null}\}$$
 
 ## Identify and minimize the topologies
 
 ```mathematica
-{amp, topos} = FCLoopFindTopologies[ampSimp, {q1, q2}];
+{amp, topos} = FCLoopFindTopologies[ampSimp, {q1, q2}, FCParallelize -> True];
 ```
 
 $$\text{FCLoopFindTopologies: Number of the initial candidate topologies: }6$$
@@ -104,11 +114,12 @@ $$\text{FCLoopFindTopologies: Number of the preferred topologies among the uniqu
 $$\text{FCLoopFindTopologies: Number of the identified subtopologies: }1$$
 
 ```mathematica
-subtopos = FCLoopFindSubtopologies[topos];
+subtopos = FCLoopFindSubtopologies[topos, FCParallelize -> True];
 ```
 
 ```mathematica
-mappings = FCLoopFindTopologyMappings[topos, PreferredTopologies -> subtopos];
+mappings = FCLoopFindTopologyMappings[topos, PreferredTopologies -> subtopos, 
+    FCParallelize -> True];
 ```
 
 $$\text{FCLoopFindTopologyMappings: }\;\text{Found }4\text{ mapping relations }$$
@@ -118,49 +129,73 @@ $$\text{FCLoopFindTopologyMappings: }\;\text{Final number of independent topolog
 ## Rewrite the amplitude in terms of GLIs
 
 ```mathematica
-AbsoluteTiming[ampReduced = FCLoopTensorReduce[amp, topos];]
+AbsoluteTiming[ampReduced = FCLoopTensorReduce[amp, topos, FCParallelize -> True];]
 ```
 
-$$\{0.348365,\text{Null}\}$$
+$$\{0.504867,\text{Null}\}$$
 
 ```mathematica
-AbsoluteTiming[ampPreFinal = FCLoopApplyTopologyMappings[ampReduced, mappings];]
+AbsoluteTiming[ampPreFinal = FCLoopApplyTopologyMappings[ampReduced, 
+     mappings, FCParallelize -> True];]
 ```
 
-$$\{0.245714,\text{Null}\}$$
+$$\{0.373921,\text{Null}\}$$
 
 ```mathematica
-AbsoluteTiming[ampFinal = ampPreFinal // DiracSimplify // SUNSimplify;]
+AbsoluteTiming[ampFinal = ampPreFinal // 
+      DiracSimplify[#, FCParallelize -> True] & // SUNSimplify[#, FCParallelize -> True] &;]
 ```
 
-$$\{0.17423,\text{Null}\}$$
+$$\{0.177813,\text{Null}\}$$
 
 ```mathematica
-(*FCReloadAddOns[{"FeynHelpers"}];
-FIREPrepareStartFile[mappings[[2]],FCGetNotebookDirectory[]]
-FIRECreateStartFile[FCGetNotebookDirectory[],mappings[[2]]]
-FIRECreateConfigFile[mappings[[2]],FCGetNotebookDirectory[]]
-FIRECreateIntegralFile[Cases2[ampPreFinal,GLI],mappings[[2]],FCGetNotebookDirectory[]]
-FIRERunReduction[FCGetNotebookDirectory[],mappings[[2]]]
-tables=FIREImportResults[mappings[[2]],FCGetNotebookDirectory[]]//Flatten;
-Put[tables,FileNameJoin[{FCGetNotebookDirectory[],"ReductionTable-Gl-Gl.m"}]];*)
+dir = FileNameJoin[{$TemporaryDirectory, "Reduction-GlToGl-2L"}];
+Quiet[CreateDirectory[dir]];
 ```
 
 ```mathematica
-reductionTable = Get[FileNameJoin[{FCGetNotebookDirectory[], "ReductionTable-Gl-Gl.m"}]];
+FIREPrepareStartFile[mappings[[2]], dir];
 ```
 
 ```mathematica
-resPreFinal = Collect2[Total[ampFinal /. reductionTable], GLI]
+FIRECreateLiteRedFiles[dir, mappings[[2]]];
 ```
 
-$$\frac{i \;\text{gs}^4 G^{\text{fctopology1}}(1,1,0,1,1) \left(D^3 \left(-C_A\right)+D^2 C_A^2+7 D^2 C_A-4 D C_A^2-18 D C_A-2 C_A^2+16 C_A+2 D^3 C_F-18 D^2 C_F+60 D C_F-64 C_F\right)}{2 (D-4) (D-1)}+\frac{1}{4 (D-4)^2 (D-1) \;\text{pp}}i \;\text{gs}^4 G^{\text{fctopology1}}(1,0,1,1,0) \left(2 D^4 C_A+23 D^3 C_A^2-8 D^3 C_A-200 D^2 C_A^2+528 D C_A^2+16 D C_A-368 C_A^2-4 D^4 C_F+32 D^3 C_F-128 D^2 C_F+288 D C_F-256 C_F\right)-\frac{1}{4 (D-6) (D-4)^2 (D-1) \;\text{pp}}i \;\text{gs}^4 G^{\text{fctopology1}}(0,1,1,0,1) \left(6 D^5 C_A^2-2 D^5 C_A-95 D^4 C_A^2+8 D^4 C_A+414 D^3 C_A^2+232 D^3 C_A-440 D^2 C_A^2-1888 D^2 C_A-240 D C_A^2+4928 D C_A-288 C_A^2-4224 C_A+12 D^5 C_F-184 D^4 C_F+1088 D^3 C_F-3232 D^2 C_F+4928 D C_F-3072 C_F\right)$$
+```mathematica
+FIRECreateStartFile[dir, mappings[[2]]];
+```
+
+```mathematica
+FIRECreateIntegralFile[Cases2[ampPreFinal, GLI], mappings[[2]], dir];
+```
+
+$$\text{FIRECreateIntegralFile: }\;\text{fctopology1}\;\text{, number of loop integrals: }36$$
+
+```mathematica
+FIRECreateConfigFile[mappings[[2]], dir];
+```
+
+$$\text{FIRECreateConfigFile: Created .config file fctopology1.config for }\;\text{fctopology1}$$
+
+```mathematica
+FIRERunReduction[dir, mappings[[2]]];
+```
+
+```mathematica
+reductionTable = FIREImportResults[mappings[[2]], dir] // Flatten;
+```
+
+```mathematica
+resPreFinal = Collect2[Total[ampFinal /. reductionTable] // FeynAmpDenominatorExplicit, GLI]
+```
+
+$$\frac{i \;\text{gs}^4 G^{\text{fctopology1}}(1,1,0,1,1) \left(D^3 \left(-C_A\right)+D^2 C_A^2+7 D^2 C_A-4 D C_A^2-18 D C_A-2 C_A^2+16 C_A+2 D^3 C_F-18 D^2 C_F+60 D C_F-64 C_F\right)}{2 (D-4) (D-1)}-\frac{1}{2 (D-6) (D-4)^2 (D-1) \;\text{pp}}i \;\text{gs}^4 G^{\text{fctopology1}}(0,1,1,0,1) \left(3 D^5 C_A^2-2 D^5 C_A-59 D^4 C_A^2+14 D^4 C_A+376 D^3 C_A^2+92 D^3 C_A-1084 D^2 C_A^2-952 D^2 C_A+1648 D C_A^2+2512 D C_A-1248 C_A^2-2112 C_A+8 D^5 C_F-120 D^4 C_F+704 D^3 C_F-2144 D^2 C_F+3456 D C_F-2304 C_F\right)$$
 
 ```mathematica
 integralMappings = FCLoopFindIntegralMappings[Cases2[resPreFinal, GLI], mappings[[2]]]
 ```
 
-$$\left\{\left\{G^{\text{fctopology1}}(1,0,1,1,0)\to G^{\text{fctopology1}}(0,1,1,0,1)\right\},\left\{G^{\text{fctopology1}}(0,1,1,0,1),G^{\text{fctopology1}}(1,1,0,1,1)\right\}\right\}$$
+$$\left\{\{\},\left\{G^{\text{fctopology1}}(0,1,1,0,1),G^{\text{fctopology1}}(1,1,0,1,1)\right\}\right\}$$
 
 ```mathematica
 resFinal = Collect2[resPreFinal /. integralMappings[[1]], GLI]
@@ -235,4 +270,4 @@ Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001],
 
 $$\text{$\backslash $tCompare to Davydychev, Osland and Tarasov,     hep-ph/9801380, Eqs. 6.10-6.11:} \;\text{CORRECT.}$$
 
-$$\text{$\backslash $tCPU Time used: }25.412\text{ s.}$$
+$$\text{$\backslash $tCPU Time used: }28.477\text{ s.}$$

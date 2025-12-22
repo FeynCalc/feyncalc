@@ -14,35 +14,43 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False, 
   	$FeynCalcStartupMessages = False 
   ];
-$LoadAddOns = {"FeynArts"};
+LaunchKernels[4];
+$LoadAddOns = {"FeynArts", "FeynHelpers"};
 << FeynCalc`
-$FAVerbose = 0; 
+$FAVerbose = 0;
+$ParallelizeFeynCalc = True; 
  
-FCCheckVersion[9, 3, 1];
+FCCheckVersion[10, 2, 0];
+If[ToExpression[StringSplit[$FeynHelpersVersion, "."]][[1]] < 2, 
+ 	Print["You need at least FeynHelpers 2.0 to run this example."]; 
+ 	Abort[]; 
+ ]
 ```
 
-$$\text{FeynCalc }\;\text{10.0.0 (dev version, 2023-12-20 22:40:59 +01:00, dff3b835). For help, use the }\underline{\text{online} \;\text{documentation}}\;\text{, check out the }\underline{\text{wiki}}\;\text{ or visit the }\underline{\text{forum}.}$$
-
-$$\text{Please check our }\underline{\text{FAQ}}\;\text{ for answers to some common FeynCalc questions and have a look at the supplied }\underline{\text{examples}.}$$
+$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2025-12-22 21:09:03 +01:00, fcd53f9b). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{If you use FeynCalc in your research, please evaluate FeynCalcHowToCite[] to learn how to cite this software.}$$
 
 $$\text{Please keep in mind that the proper academic attribution of our work is crucial to ensure the future development of this package!}$$
 
-$$\text{FeynArts }\;\text{3.11 (3 Aug 2020) patched for use with FeynCalc, for documentation see the }\underline{\text{manual}}\;\text{ or visit }\underline{\text{www}.\text{feynarts}.\text{de}.}$$
+$$\text{FeynArts }\;\text{3.12 (27 Mar 2025) patched for use with FeynCalc, for documentation see the }\underline{\text{manual}}\;\text{ or visit }\underline{\text{www}.\text{feynarts}.\text{de}.}$$
 
 $$\text{If you use FeynArts in your research, please cite}$$
 
 $$\text{ $\bullet $ T. Hahn, Comput. Phys. Commun., 140, 418-431, 2001, arXiv:hep-ph/0012260}$$
+
+$$\text{FeynHelpers }\;\text{2.0.0 (2025-12-22 19:07:44 +01:00, c92fb9f5). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
+
+$$\text{ If you use FeynHelpers in your research, please evaluate FeynHelpersHowToCite[] to learn how to cite this work.}$$
 
 ## Generate Feynman diagrams
 
 Nicer typesetting
 
 ```mathematica
-MakeBoxes[mu, TraditionalForm] := "\[Mu]";
-MakeBoxes[p1, TraditionalForm] := "\!\(\*SubscriptBox[\(p\), \(1\)]\)";
-MakeBoxes[p2, TraditionalForm] := "\!\(\*SubscriptBox[\(p\), \(2\)]\)";
+FCAttachTypesettingRule[mu, "\[Mu]"]
+FCAttachTypesettingRule[p1, {SubscriptBox, "p", "1"}]
+FCAttachTypesettingRule[p2, {SubscriptBox, "p", "2"}]
 ```
 
 ```mathematica
@@ -55,7 +63,7 @@ Paint[diags, ColumnsXRows -> {1, 1}, Numbering -> Simple,
   	SheetHeader -> None, ImageSize -> {256, 256}];
 ```
 
-![1egyqolokmcnv](img/1egyqolokmcnv.svg)
+![0tl9ycckvwwb8](img/0tl9ycckvwwb8.svg)
 
 ## Obtain the amplitude
 
@@ -67,25 +75,24 @@ amp[0] = FCFAConvert[CreateFeynAmp[diags, PreFactor -> 1],
     	IncomingMomenta -> {p1}, OutgoingMomenta -> {k, p2}, 
     	LorentzIndexNames -> {mu}, 
     	LoopMomenta -> {q}, UndoChiralSplittings -> True, 
-    	ChangeDimension -> D, List -> False, SMP -> True, 
-    	FinalSubstitutions -> {SMP["e"] -> -SMP["e"]}] /. 
+    	ChangeDimension -> D, SMP -> True, 
+    	FinalSubstitutions -> {SMP["e"] -> -SMP["e"], SMP["m_e"] -> me}] /. 
    	k -> p1 - p2 /. q -> q + p1
 ```
 
-$$\frac{i g^{\text{Lor2}\;\text{Lor3}} \varepsilon ^{*\mu }\left(p_1-p_2\right) \left(\varphi (p_2,m_e)\right).\left(-i \;\text{e} \gamma ^{\text{Lor3}}\right).\left(m_e+\gamma \cdot \left(q+p_2\right)\right).\left(-i \;\text{e} \gamma ^{\mu }\right).\left(m_e+\gamma \cdot \left(q+p_1\right)\right).\left(-i \;\text{e} \gamma ^{\text{Lor2}}\right).\left(\varphi (p_1,m_e)\right)}{\left((p_1+q){}^2-m_e^2\right).\left((p_2+q){}^2-m_e^2\right).q^2}$$
+$$\left\{\frac{i g^{\text{Lor2}\;\text{Lor3}} \varepsilon ^{*\mu }\left(p_1-p_2\right) \left(\varphi (p_2,\text{me})\right).\left(-i \;\text{e} \gamma ^{\text{Lor3}}\right).\left(\text{me}+\gamma \cdot \left(p_2+q\right)\right).\left(-i \;\text{e} \gamma ^{\mu }\right).\left(\text{me}+\gamma \cdot \left(p_1+q\right)\right).\left(-i \;\text{e} \gamma ^{\text{Lor2}}\right).\left(\varphi (p_1,\text{me})\right)}{\left((p_1+q){}^2-\text{me}^2\right).\left((p_2+q){}^2-\text{me}^2\right).q^2}\right\}$$
 
 ## Fix the kinematics
 
 ```mathematica
 FCClearScalarProducts[];
-ME = SMP["m_e"];
-ScalarProduct[p1, p1] = ME^2;
-ScalarProduct[p2, p2] = ME^2;
+ScalarProduct[p1, p1] = me^2;
+ScalarProduct[p2, p2] = me^2;
 ScalarProduct[k, k] = 0;
-ScalarProduct[p1, p2] = ME^2;
+ScalarProduct[p1, p2] = me^2;
 ```
 
-## Calculate the amplitude
+## Evaluate the amplitudes
 
 Amputate the polarization vector.
 
@@ -95,53 +102,152 @@ amp[1] = amp[0] // ReplaceAll[#,
    	Contract // ReplaceAll[#, SMP["e"]^3 -> 4 Pi SMP["e"] SMP["alpha_fs"]] &
 ```
 
-$$-\frac{4 \pi  \alpha  \;\text{e} \left(\varphi (p_2,m_e)\right).\gamma ^{\text{Lor3}}.\left(m_e+\gamma \cdot \left(q+p_2\right)\right).\gamma ^{\mu }.\left(m_e+\gamma \cdot \left(q+p_1\right)\right).\gamma ^{\text{Lor3}}.\left(\varphi (p_1,m_e)\right)}{\left((p_1+q){}^2-m_e^2\right).\left((p_2+q){}^2-m_e^2\right).q^2}$$
+$$\left\{-\frac{4 \pi  \alpha  \;\text{e} \left(\varphi (p_2,\text{me})\right).\gamma ^{\text{Lor3}}.\left(\text{me}+\gamma \cdot \left(p_2+q\right)\right).\gamma ^{\mu }.\left(\text{me}+\gamma \cdot \left(p_1+q\right)\right).\gamma ^{\text{Lor3}}.\left(\varphi (p_1,\text{me})\right)}{\left((p_1+q){}^2-\text{me}^2\right).\left((p_2+q){}^2-\text{me}^2\right).q^2}\right\}$$
 
 ```mathematica
-amp[2] = TID[amp[1], q, ToPaVe -> True] // DiracSimplify // 
-  	Collect2[#, Spinor] &
+amp[2] = DiracSimplify[amp[1], FCParallelize -> True];
 ```
 
-$$8 i \pi ^3 \alpha  \;\text{e} m_e \left(p_1{}^{\mu }+p_2{}^{\mu }\right) \left(2 \;\text{C}_1\left(0,m_e^2,m_e^2,m_e^2,m_e^2,0\right)+D \;\text{C}_{11}\left(0,m_e^2,m_e^2,m_e^2,m_e^2,0\right)-2 \;\text{C}_{11}\left(0,m_e^2,m_e^2,m_e^2,m_e^2,0\right)+D \;\text{C}_{12}\left(m_e^2,0,m_e^2,0,m_e^2,m_e^2\right)-2 \;\text{C}_{12}\left(m_e^2,0,m_e^2,0,m_e^2,m_e^2\right)\right) \left(\varphi (p_2,m_e)\right).\left(\varphi (p_1,m_e)\right)-4 i \pi ^3 \alpha  \;\text{e} \left(D \;\text{B}_0\left(0,m_e^2,m_e^2\right)-6 \;\text{B}_0\left(0,m_e^2,m_e^2\right)+4 \;\text{B}_0\left(m_e^2,0,m_e^2\right)+4 m_e^2 \;\text{C}_0\left(0,m_e^2,m_e^2,m_e^2,m_e^2,0\right)-2 D \;\text{C}_{00}\left(0,m_e^2,m_e^2,m_e^2,m_e^2,0\right)+4 \;\text{C}_{00}\left(0,m_e^2,m_e^2,m_e^2,m_e^2,0\right)\right) \left(\varphi (p_2,m_e)\right).\gamma ^{\mu }.\left(\varphi (p_1,m_e)\right)$$
+## Identify and minimize the topologies
+
+```mathematica
+{amp[3], topos} = FCLoopFindTopologies[amp[2], {q}, FCParallelize -> True];
+```
+
+$$\text{FCLoopFindTopologies: Number of the initial candidate topologies: }1$$
+
+$$\text{FCLoopFindTopologies: Number of the identified unique topologies: }1$$
+
+$$\text{FCLoopFindTopologies: Number of the preferred topologies among the unique topologies: }0$$
+
+$$\text{FCLoopFindTopologies: Number of the identified subtopologies: }0$$
+
+```mathematica
+mappings = FCLoopFindTopologyMappings[topos, FCParallelize -> True];
+```
+
+$$\text{FCLoopFindTopologyMappings: }\;\text{Found }0\text{ mapping relations }$$
+
+$$\text{FCLoopFindTopologyMappings: }\;\text{Final number of independent topologies: }1$$
+
+## Rewrite the amplitude in terms of GLIs
+
+```mathematica
+FCLoopFindTensorBasis[{p1, p2}, {}, n, Prefactor -> Identity]
+```
+
+$$\left(
+\begin{array}{c}
+ p_1 \\
+ p_2 \\
+ p_2\to p_1 \\
+\end{array}
+\right)$$
+
+```mathematica
+AbsoluteTiming[ampReduced = FCLoopTensorReduce[amp[3], topos, FCParallelize -> True, 
+     TensorReductionBasisChange -> {{p1, p2} -> {p1}}];]
+```
+
+$$\{0.317605,\text{Null}\}$$
+
+```mathematica
+AbsoluteTiming[ampPreFinal = FCLoopApplyTopologyMappings[ampReduced, mappings, FCParallelize -> True];]
+```
+
+$$\{0.131764,\text{Null}\}$$
+
+```mathematica
+ampFinal = ampPreFinal // DiracSimplify[#, FCParallelize -> True] & // Collect2[#, Dirac, FCParallelize -> True] &;
+```
+
+```mathematica
+ints = Cases2[ampFinal, GLI]
+```
+
+$$\left\{G^{\text{fctopology1}}(-1,1,1),G^{\text{fctopology1}}(0,1,0),G^{\text{fctopology1}}(0,1,1),G^{\text{fctopology1}}(1,0,1),G^{\text{fctopology1}}(1,1,-1),G^{\text{fctopology1}}(1,1,0),G^{\text{fctopology1}}(1,1,1)\right\}$$
+
+```mathematica
+dir = FileNameJoin[{$TemporaryDirectory, "Reduction-ElToGaEl"}];
+Quiet[CreateDirectory[dir]];
+```
+
+```mathematica
+KiraCreateJobFile[topos, ints, dir];
+```
+
+```mathematica
+KiraCreateIntegralFile[ints, topos, dir];
+```
+
+$$\text{KiraCreateIntegralFile: Number of loop integrals: }7$$
+
+```mathematica
+KiraCreateConfigFiles[topos, ints, dir, KiraMassDimensions -> {me -> 1}];
+```
+
+```mathematica
+KiraRunReduction[dir, topos, 
+  KiraBinaryPath -> FileNameJoin[{$HomeDirectory, "bin", "kira"}], 
+  KiraFermatPath -> FileNameJoin[{$HomeDirectory, "bin", "ferl64", "fer64"}]]
+```
+
+$$\{\text{True}\}$$
+
+```mathematica
+reductionTable = KiraImportResults[topos, dir]
+```
+
+$$\left\{\left\{G^{\text{fctopology1}}(-1,1,1)\to (D-1) G^{\text{fctopology1}}(0,1,0),G^{\text{fctopology1}}(0,1,1)\to \frac{(D-2) G^{\text{fctopology1}}(0,1,0)}{2 \;\text{me}^2},G^{\text{fctopology1}}(1,0,1)\to \frac{(D-2) G^{\text{fctopology1}}(0,1,0)}{(2 D-6) \;\text{me}^2},G^{\text{fctopology1}}(1,1,-1)\to 0,G^{\text{fctopology1}}(1,1,0)\to \frac{(D-2) G^{\text{fctopology1}}(0,1,0)}{(2 D-6) \;\text{me}^2},G^{\text{fctopology1}}(1,1,1)\to \frac{(D-2) G^{\text{fctopology1}}(0,1,0)}{4 \;\text{me}^4}\right\}\right\}$$
+
+```mathematica
+resPreFinal = Collect2[Total[ampFinal /. Dispatch[reductionTable]], GLI, FCParallelize -> True];
+```
+
+```mathematica
+integralMappings = FCLoopFindIntegralMappings[Cases2[resPreFinal, GLI], mappings[[2]], FCParallelize -> True]
+```
+
+$$\left\{\{\},\left\{G^{\text{fctopology1}}(0,1,0)\right\}\right\}$$
+
+```mathematica
+resFinal = Collect2[(resPreFinal /. Dispatch[integralMappings[[1]]]), GLI, FCParallelize -> True]
+```
+
+$$\left\{-\frac{1}{(D-3) \;\text{me}^3}2 \pi  \alpha  (D-2) \;\text{e} G^{\text{fctopology1}}(0,1,0) \left(D^2 \;\text{me} \left(\varphi (p_2,\text{me})\right).\gamma ^{\mu }.\left(\varphi (p_1,\text{me})\right)-D^2 p_1{}^{\mu } \left(\varphi (p_2,\text{me})\right).\left(\varphi (p_1,\text{me})\right)-8 D \;\text{me} \left(\varphi (p_2,\text{me})\right).\gamma ^{\mu }.\left(\varphi (p_1,\text{me})\right)+7 D p_1{}^{\mu } \left(\varphi (p_2,\text{me})\right).\left(\varphi (p_1,\text{me})\right)+2 D p_2{}^{\mu } \left(\varphi (p_2,\text{me})\right).\left(\varphi (p_1,\text{me})\right)+19 \;\text{me} \left(\varphi (p_2,\text{me})\right).\gamma ^{\mu }.\left(\varphi (p_1,\text{me})\right)-12 p_1{}^{\mu } \left(\varphi (p_2,\text{me})\right).\left(\varphi (p_1,\text{me})\right)-8 p_2{}^{\mu } \left(\varphi (p_2,\text{me})\right).\left(\varphi (p_1,\text{me})\right)\right)\right\}$$
 
 To extract F2 (0) we need to look only at the piece proportional to (p1+p2)^mu. Thus we can drop the g^mu -piece
 
 ```mathematica
-amp[3] = amp[2] // ReplaceAll[#, FCI[GAD[mu]] :> 0] & // DotSimplify
+resGm2[0] = resFinal // Total // ReplaceAll[#, FCI[GAD[mu]] :> 0] & // FCReplaceMomenta[#, {p2 -> p1}] & // DotSimplify
 ```
 
-$$8 i \pi ^3 \alpha  \;\text{e} m_e \left(p_1{}^{\mu }+p_2{}^{\mu }\right) \left(2 \;\text{C}_1\left(0,m_e^2,m_e^2,m_e^2,m_e^2,0\right)+D \;\text{C}_{11}\left(0,m_e^2,m_e^2,m_e^2,m_e^2,0\right)-2 \;\text{C}_{11}\left(0,m_e^2,m_e^2,m_e^2,m_e^2,0\right)+D \;\text{C}_{12}\left(m_e^2,0,m_e^2,0,m_e^2,m_e^2\right)-2 \;\text{C}_{12}\left(m_e^2,0,m_e^2,0,m_e^2,m_e^2\right)\right) \left(\varphi (p_2,m_e)\right).\left(\varphi (p_1,m_e)\right)$$
+$$-\frac{2 \pi  \alpha  (D-2) \;\text{e} G^{\text{fctopology1}}(0,1,0) \left(D^2 p_1{}^{\mu } \left(-\left(\varphi (p_2,\text{me})\right).\left(\varphi (p_1,\text{me})\right)\right)+9 D p_1{}^{\mu } \left(\varphi (p_2,\text{me})\right).\left(\varphi (p_1,\text{me})\right)-20 p_1{}^{\mu } \left(\varphi (p_2,\text{me})\right).\left(\varphi (p_1,\text{me})\right)\right)}{(D-3) \;\text{me}^3}$$
 
-The explicit values for the PaVe functions C1, C11 and C12 can be obtained e.g. from H. Patel's Package-X. Here we just insert the known results.
+The master integral is just a tadpole
 
 ```mathematica
-amp[4] = amp[3] /. {
-   	PaVe[1, {0, SMP["m_e"]^2, SMP["m_e"]^2}, {SMP["m_e"]^2, SMP["m_e"]^2, 0}, OptionsPattern[]] -> 
-    		1/(32 Pi^4 ME^2), 
-   	PaVe[1, 1, {0, SMP["m_e"]^2, SMP["m_e"]^2}, {SMP["m_e"]^2, SMP["m_e"]^2, 0}, OptionsPattern[]] -> 
-    		-(1/(96 Pi^4 ME^2)), 
-   	PaVe[1, 2, {SMP["m_e"]^2, 0, SMP["m_e"]^2}, {0, SMP["m_e"]^2, SMP["m_e"]^2}, OptionsPattern[]] -> 
-    		-(1/(192 Pi^4 ME^2)) 
-   }
+resGm2[1] = resGm2[0] // ReplaceAll[#, {GLI["fctopology1", {0, 1, 0}] -> ((-I)*(me^2)^(-1 + D/2)*Pi^(D/2)*
+             Gamma[1 - D/2])/(2*Pi)^D}] & // FCReplaceD[#, D -> 4 - 2 ep] & // Series[#, {ep, 0, 0}] & // Normal
 ```
 
-$$8 i \pi ^3 \alpha  \;\text{e} m_e \left(\frac{3}{32 \pi ^4 m_e^2}-\frac{D}{64 \pi ^4 m_e^2}\right) \left(p_1{}^{\mu }+p_2{}^{\mu }\right) \left(\varphi (p_2,m_e)\right).\left(\varphi (p_1,m_e)\right)$$
+$$\frac{i \alpha  \;\text{e} p_1{}^{\mu } \left(\varphi (p_2,\text{me})\right).\left(\varphi (p_1,\text{me})\right)}{2 \pi  \;\text{me}}$$
 
-As expected, F2 (0) is free of any divergences. So we can safely do the limit D ->4
+As expected, F2(0) is free of any divergences. So we can safely do the limit D ->4
 
 ```mathematica
-amp[5] = amp[4] // ChangeDimension[#, 4] & // ReplaceAll[#, D -> 4] &
+resGm2[2] = resGm2[1] // ChangeDimension[#, 4] & // ReplaceAll[#, D -> 4] &
 ```
 
-$$\frac{i \alpha  \;\text{e} \left(\overline{p_1}{}^{\mu }+\overline{p_2}{}^{\mu }\right) \left(\varphi (\overline{p_2},m_e)\right).\left(\varphi (\overline{p_1},m_e)\right)}{4 \pi  m_e}$$
+$$\frac{i \alpha  \;\text{e} \overline{p_1}{}^{\mu } \left(\varphi (\overline{p_2},\text{me})\right).\left(\varphi (\overline{p_1},\text{me})\right)}{2 \pi  \;\text{me}}$$
 
 We obtained $\frac{i e}{2 m_e} (p_1+p_2)^\mu F_2 (0) \bar{u}(p_2) u(p_1)$.
 Dividing by the numerical prefactor and substituting $e^2 = 4\pi^2 \alpha$ yields F2(0)
 
 ```mathematica
-f2[0] = (amp[5]/((I SMP["e"])/(2 ME))) // 
+f2[0] = (resGm2[2]/((I SMP["e"])/(2 me))) // 
   	ReplaceAll [#, {Spinor[__] . Spinor[__] :> 1, 
-     	FCI[FV[p1, _] + FV[p2, _]] :> 1}] &
+     	FCI[FV[p1, _]] :> 1/2}] &
 ```
 
 $$\frac{\alpha }{2 \pi }$$
@@ -159,4 +265,4 @@ Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
 
 $$\text{$\backslash $tCompare to J. Schwinger, Phys. Rev. 73, 416-417, 1948:} \;\text{CORRECT.}$$
 
-$$\text{$\backslash $tCPU Time used: }25.367\text{ s.}$$
+$$\text{$\backslash $tCPU Time used: }34.061\text{ s.}$$

@@ -14,22 +14,22 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False, 
   	$FeynCalcStartupMessages = False 
   ];
+LaunchKernels[4];
 $LoadAddOns = {"FeynArts"};
 << FeynCalc`
-$FAVerbose = 0; 
+$FAVerbose = 0;
+$ParallelizeFeynCalc = True; 
  
-FCCheckVersion[9, 3, 1];
+FCCheckVersion[10, 2, 0];
 ```
 
-$$\text{FeynCalc }\;\text{10.0.0 (dev version, 2023-12-20 22:40:59 +01:00, dff3b835). For help, use the }\underline{\text{online} \;\text{documentation}}\;\text{, check out the }\underline{\text{wiki}}\;\text{ or visit the }\underline{\text{forum}.}$$
-
-$$\text{Please check our }\underline{\text{FAQ}}\;\text{ for answers to some common FeynCalc questions and have a look at the supplied }\underline{\text{examples}.}$$
+$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2025-12-22 21:09:03 +01:00, fcd53f9b). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{If you use FeynCalc in your research, please evaluate FeynCalcHowToCite[] to learn how to cite this software.}$$
 
 $$\text{Please keep in mind that the proper academic attribution of our work is crucial to ensure the future development of this package!}$$
 
-$$\text{FeynArts }\;\text{3.11 (3 Aug 2020) patched for use with FeynCalc, for documentation see the }\underline{\text{manual}}\;\text{ or visit }\underline{\text{www}.\text{feynarts}.\text{de}.}$$
+$$\text{FeynArts }\;\text{3.12 (27 Mar 2025) patched for use with FeynCalc, for documentation see the }\underline{\text{manual}}\;\text{ or visit }\underline{\text{www}.\text{feynarts}.\text{de}.}$$
 
 $$\text{If you use FeynArts in your research, please cite}$$
 
@@ -55,7 +55,7 @@ Paint[diags, ColumnsXRows -> {1, 1}, Numbering -> Simple,
   	SheetHeader -> None, ImageSize -> {256, 256}];
 ```
 
-![1v49gnh8hxl8s](img/1v49gnh8hxl8s.svg)
+![0lmcve0rn7thz](img/0lmcve0rn7thz.svg)
 
 ## Obtain the amplitude
 
@@ -64,16 +64,17 @@ The 1/(2Pi)^D prefactor is implicit. We keep the full gauge dependence.
 ```mathematica
 amp[0] = FCFAConvert[CreateFeynAmp[diags, Truncated -> True, 
    	PreFactor -> 1, GaugeRules -> {}], IncomingMomenta -> {p}, 
-  	OutgoingMomenta -> {p}, LoopMomenta -> {q}, UndoChiralSplittings -> True, 
-  	ChangeDimension -> D, List -> False, SMP -> True, Contract -> True]
+  	OutgoingMomenta -> {p}, LoopMomenta -> {q}, 
+  	UndoChiralSplittings -> True, 
+  	ChangeDimension -> D, SMP -> True]
 ```
 
-$$-\frac{\text{e}^2 \gamma ^{\text{Lor2}}.\left(m_e+\gamma \cdot q\right).\gamma ^{\text{Lor2}}}{\left(q^2-m_e^2\right).(q-p)^2}-\frac{\text{e}^2 \left(1-\xi _A\right) (\gamma \cdot (p-q)).\left(m_e+\gamma \cdot q\right).(\gamma \cdot (q-p))}{\left(q^2-m_e^2\right).(q-p)^4}$$
+$$\left\{\left(i \;\text{e} \gamma ^{\text{Lor2}}\right).\left(m_e+\gamma \cdot q\right).\left(i \;\text{e} \gamma ^{\text{Lor1}}\right) \left(\frac{\left(1-\xi _A\right) (q-p)^{\text{Lor1}} (p-q)^{\text{Lor2}}}{\left(q^2-m_e^2\right).(q-p)^4}+\frac{g^{\text{Lor1}\;\text{Lor2}}}{\left(q^2-m_e^2\right).(q-p)^2}\right)\right\}$$
 
 ## Calculate the amplitude
 
 ```mathematica
-amp[1] = TID[amp[0], q, ToPaVe -> True]
+amp[1] = TID[amp[0], q, ToPaVe -> True, FCParallelize -> True] // Total
 ```
 
 $$\frac{1}{2 p^2}i \pi ^2 \;\text{e}^2 \;\text{B}_0\left(p^2,0,m_e^2\right) \left(\xi _A m_e^2 \gamma \cdot p-2 \xi _A m_e (\gamma \cdot p).(\gamma \cdot p)+p^2 \xi _A \gamma \cdot p-D \left(p^2-m_e^2\right) \gamma \cdot p-2 D p^2 m_e+2 D p^2 \gamma \cdot p+m_e^2 (-(\gamma \cdot p))+2 m_e (\gamma \cdot p).(\gamma \cdot p)+2 \left(p^2-m_e^2\right) \gamma \cdot p-5 p^2 \gamma \cdot p\right)-\frac{i \pi ^2 \;\text{e}^2 \left(1-\xi _A\right) \;\text{B}_0(0,0,0) \left(m_e^2 (-(\gamma \cdot p))+2 m_e (\gamma \cdot p).(\gamma \cdot p)-2 p^2 m_e+p^2 \gamma \cdot p\right)}{2 p^2}+\frac{i \pi ^2 \;\text{e}^2 \left(1-\xi _A\right) \left(-m_e^2 \left(p^2-m_e^2\right) \gamma \cdot p-4 p^2 m_e (\gamma \cdot p).(\gamma \cdot p)+2 m_e \left(p^2-m_e^2\right) (\gamma \cdot p).(\gamma \cdot p)+p^2 \left(p^2-m_e^2\right) \gamma \cdot p+2 p^2 m_e^3+2 p^4 m_e\right) \;\text{C}_0\left(0,p^2,p^2,0,0,m_e^2\right)}{2 p^2}+\frac{i \pi ^2 (2-D) \;\text{e}^2 \gamma \cdot p \;\text{A}_0\left(m_e^2\right)}{2 p^2}$$
@@ -120,8 +121,9 @@ FCCompareResults[sigmaFeynmanGauge[0], knownResult,
    Text -> {"\tCompare to Peskin and Schroeder, An Introduction to QFT, Eq 10.41:", 
      "CORRECT.", "WRONG!"}, Interrupt -> {Hold[Quit[1]], Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
-```
+
+```mathematica
 
 $$\text{$\backslash $tCompare to Peskin and Schroeder, An Introduction to QFT, Eq 10.41:} \;\text{CORRECT.}$$
 
-$$\text{$\backslash $tCPU Time used: }15.789\text{ s.}$$
+$$\text{$\backslash $tCPU Time used: }35.071\text{ s.}$$

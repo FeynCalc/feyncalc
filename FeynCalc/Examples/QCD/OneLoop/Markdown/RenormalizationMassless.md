@@ -17,26 +17,34 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False, 
   	$FeynCalcStartupMessages = False 
   ];
-$LoadAddOns = {"FeynArts"};
+LaunchKernels[4];
+$LoadAddOns = {"FeynArts", "FeynHelpers"};
 << FeynCalc`
-$FAVerbose = 0; 
+$FAVerbose = 0;
+$ParallelizeFeynCalc = True; 
  
-FCCheckVersion[9, 3, 1];
+FCCheckVersion[10, 2, 0];
+If[ToExpression[StringSplit[$FeynHelpersVersion, "."]][[1]] < 2, 
+ 	Print["You need at least FeynHelpers 2.0 to run this example."]; 
+ 	Abort[]; 
+ ]
 ```
 
-$$\text{FeynCalc }\;\text{10.0.0 (dev version, 2023-12-20 22:40:59 +01:00, dff3b835). For help, use the }\underline{\text{online} \;\text{documentation}}\;\text{, check out the }\underline{\text{wiki}}\;\text{ or visit the }\underline{\text{forum}.}$$
-
-$$\text{Please check our }\underline{\text{FAQ}}\;\text{ for answers to some common FeynCalc questions and have a look at the supplied }\underline{\text{examples}.}$$
+$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2025-12-22 21:09:03 +01:00, fcd53f9b). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{If you use FeynCalc in your research, please evaluate FeynCalcHowToCite[] to learn how to cite this software.}$$
 
 $$\text{Please keep in mind that the proper academic attribution of our work is crucial to ensure the future development of this package!}$$
 
-$$\text{FeynArts }\;\text{3.11 (3 Aug 2020) patched for use with FeynCalc, for documentation see the }\underline{\text{manual}}\;\text{ or visit }\underline{\text{www}.\text{feynarts}.\text{de}.}$$
+$$\text{FeynArts }\;\text{3.12 (27 Mar 2025) patched for use with FeynCalc, for documentation see the }\underline{\text{manual}}\;\text{ or visit }\underline{\text{www}.\text{feynarts}.\text{de}.}$$
 
 $$\text{If you use FeynArts in your research, please cite}$$
 
 $$\text{ $\bullet $ T. Hahn, Comput. Phys. Commun., 140, 418-431, 2001, arXiv:hep-ph/0012260}$$
+
+$$\text{FeynHelpers }\;\text{2.0.0 (2025-12-22 19:07:44 +01:00, c92fb9f5). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
+
+$$\text{ If you use FeynHelpers in your research, please evaluate FeynHelpersHowToCite[] to learn how to cite this work.}$$
 
 ## Configure some options
 
@@ -57,10 +65,10 @@ FAPatch[PatchModelsOnly -> True];
 Nicer typesetting
 
 ```mathematica
-MakeBoxes[mu, TraditionalForm] := "\[Mu]";
-MakeBoxes[nu, TraditionalForm] := "\[Nu]";
-MakeBoxes[rho, TraditionalForm] := "\[Rho]";
-MakeBoxes[si, TraditionalForm] := "\[Sigma]";
+FCAttachTypesettingRule[mu, "\[Mu]"];
+FCAttachTypesettingRule[nu, "\[Nu]"];
+FCAttachTypesettingRule[rho, "\[Rho]"];
+FCAttachTypesettingRule[si, "\[Sigma]"];
 ```
 
 ```mathematica
@@ -105,30 +113,30 @@ Paint[diag1[0], ColumnsXRows -> {2, 1}, SheetHeader -> None,
    Numbering -> Simple, ImageSize -> {512, 256}];
 ```
 
-![0qo7e2z805c6c](img/0qo7e2z805c6c.svg)
+![1rnpgzey54urq](img/1rnpgzey54urq.svg)
 
 ```mathematica
 Paint[diag2[0], ColumnsXRows -> {4, 1}, SheetHeader -> None, 
    Numbering -> Simple, ImageSize -> {512, 128}];
 ```
 
-![1m7b27sd00d0v](img/1m7b27sd00d0v.svg)
+![0o654jrk6fahd](img/0o654jrk6fahd.svg)
 
-![0yw7gz095v7pi](img/0yw7gz095v7pi.svg)
+![02u6eq4qf9sd8](img/02u6eq4qf9sd8.svg)
 
 ```mathematica
 Paint[diag3[0], ColumnsXRows -> {2, 1}, SheetHeader -> None, 
    Numbering -> Simple, ImageSize -> {512, 256}];
 ```
 
-![1m1jhfclhy7cu](img/1m1jhfclhy7cu.svg)
+![12o5nqeg9tzzy](img/12o5nqeg9tzzy.svg)
 
 ```mathematica
 Paint[diag4[0], ColumnsXRows -> {3, 1}, SheetHeader -> None, 
    Numbering -> Simple, ImageSize -> {512, 256}];
 ```
 
-![1hioq5saix3mh](img/1hioq5saix3mh.svg)
+![1qu97dxgcn6p0](img/1qu97dxgcn6p0.svg)
 
 ## Obtain the amplitudes
 
@@ -138,60 +146,52 @@ Quark self-energy including the counter-term
 
 ```mathematica
 ampQuarkSE[0] = FCFAConvert[CreateFeynAmp[diag1[0], Truncated -> True, 
-   	GaugeRules -> {}, PreFactor -> 1], 
-  	IncomingMomenta -> {p}, OutgoingMomenta -> {p}, 
-  	LorentzIndexNames -> {mu, nu}, DropSumOver -> True, 
-  	LoopMomenta -> {l}, UndoChiralSplittings -> True, 
-  	ChangeDimension -> D, List -> False, SMP -> True, 
-  	FinalSubstitutions -> {Zm -> SMP["Z_m"], Zpsi -> SMP["Z_psi"], 
-    	SMP["m_u"] -> 0}]
+    	GaugeRules -> {}, PreFactor -> 1], 
+   	IncomingMomenta -> {p}, OutgoingMomenta -> {p}, 
+   	LorentzIndexNames -> {mu, nu}, DropSumOver -> True, 
+   	LoopMomenta -> {l}, UndoChiralSplittings -> True, 
+   	ChangeDimension -> D, SMP -> True, 
+   	FinalSubstitutions -> {Zm -> SMP["Z_m"], Zpsi -> SMP["Z_psi"], 
+     	SMP["m_u"] -> 0}];
 ```
-
-$$\left(\frac{\left(1-\xi _{\text{G}}\right) (l-p)^{\mu } (p-l)^{\nu }}{l^2.(l-p)^4}+\frac{g^{\mu \nu }}{l^2.(l-p)^2}\right) \left(-i \gamma ^{\nu } g_s T_{\text{Col2}\;\text{Col3}}^{\text{Glu3}}\right).(\gamma \cdot l).\left(-i \gamma ^{\mu } g_s T_{\text{Col3}\;\text{Col1}}^{\text{Glu3}}\right)+i \left(Z_{\psi }-1\right) \delta _{\text{Col1}\;\text{Col2}} \gamma \cdot p$$
 
 Gluon self-energy including the counter-term
 
 ```mathematica
 ampGluonSE[0] = FCFAConvert[CreateFeynAmp[diag2[0], Truncated -> True, 
-   	GaugeRules -> {}, PreFactor -> 1], 
-  	IncomingMomenta -> {p}, OutgoingMomenta -> {p}, 
-  	LorentzIndexNames -> {mu, nu, rho, si}, DropSumOver -> True, 
-  	LoopMomenta -> {l}, UndoChiralSplittings -> True, 
-  	ChangeDimension -> D, List -> True, SMP -> True, 
-  	FinalSubstitutions -> {ZA -> SMP["Z_A"], Zxi -> SMP["Z_xi"], 
-    	SMP["m_u"] -> 0}]
+    	GaugeRules -> {}, PreFactor -> 1], 
+   	IncomingMomenta -> {p}, OutgoingMomenta -> {p}, 
+   	LorentzIndexNames -> {mu, nu, rho, si}, DropSumOver -> True, 
+   	LoopMomenta -> {l}, UndoChiralSplittings -> True, 
+   	ChangeDimension -> D, SMP -> True, 
+   	FinalSubstitutions -> {ZA -> SMP["Z_A"], Zxi -> SMP["Z_xi"], 
+     	SMP["m_u"] -> 0}];
 ```
-
-$$\left\{-\frac{1}{2} i \left(\frac{g^{\rho \sigma }}{l^2}-\frac{\left(1-\xi _{\text{G}}\right) l^{\rho } l^{\sigma }}{\left(l^2\right)^2}\right) \left(i g^{\mu \rho } g^{\nu \sigma } f^{\text{Glu1}\;\text{Glu3}\;\text{\$AL\$14442}} f^{\text{Glu2}\;\text{Glu3}\;\text{\$AL\$14442}} g_s^2-2 i g^{\mu \nu } g^{\rho \sigma } f^{\text{Glu1}\;\text{Glu3}\;\text{\$AL\$14443}} f^{\text{Glu2}\;\text{Glu3}\;\text{\$AL\$14443}} g_s^2+i g^{\mu \sigma } g^{\nu \rho } f^{\text{Glu1}\;\text{Glu3}\;\text{\$AL\$14445}} f^{\text{Glu2}\;\text{Glu3}\;\text{\$AL\$14445}} g_s^2\right),\frac{\text{tr}\left((-(\gamma \cdot l)).\left(-i \gamma ^{\nu } g_s T_{\text{Col3}\;\text{Col4}}^{\text{Glu2}}\right).(\gamma \cdot (p-l)).\left(-i \gamma ^{\mu } g_s T_{\text{Col4}\;\text{Col3}}^{\text{Glu1}}\right)\right)}{l^2.(l-p)^2},-\frac{(l-p)^{\mu } l^{\nu } g_s^2 f^{\text{Glu1}\;\text{Glu3}\;\text{Glu4}} f^{\text{Glu2}\;\text{Glu3}\;\text{Glu4}}}{l^2.(l-p)^2},-\frac{1}{2} \left(-\frac{\left(1-\xi _{\text{G}}\right){}^2 (l-p)^{\text{Lor5}} (p-l)^{\text{Lor6}} l^{\rho } l^{\sigma }}{\left(l^2\right)^2.(l-p)^4}+\frac{\left(1-\xi _{\text{G}}\right) (l-p)^{\text{Lor5}} (p-l)^{\text{Lor6}} g^{\rho \sigma }}{l^2.(l-p)^4}-\frac{\left(1-\xi _{\text{G}}\right) g^{\text{Lor5}\;\text{Lor6}} l^{\rho } l^{\sigma }}{\left(l^2\right)^2.(l-p)^2}+\frac{g^{\text{Lor5}\;\text{Lor6}} g^{\rho \sigma }}{l^2.(l-p)^2}\right) \left(-l^{\text{Lor5}} g^{\mu \rho } g_s f^{\text{Glu1}\;\text{Glu3}\;\text{Glu4}}-p^{\text{Lor5}} g^{\mu \rho } g_s f^{\text{Glu1}\;\text{Glu3}\;\text{Glu4}}+g^{\text{Lor5}\rho } l^{\mu } g_s f^{\text{Glu1}\;\text{Glu3}\;\text{Glu4}}+g^{\text{Lor5}\rho } (l-p)^{\mu } g_s f^{\text{Glu1}\;\text{Glu3}\;\text{Glu4}}+g^{\text{Lor5}\mu } p^{\rho } g_s f^{\text{Glu1}\;\text{Glu3}\;\text{Glu4}}+g^{\text{Lor5}\mu } (p-l)^{\rho } g_s f^{\text{Glu1}\;\text{Glu3}\;\text{Glu4}}\right) \left(l^{\text{Lor6}} g^{\nu \sigma } g_s f^{\text{Glu2}\;\text{Glu3}\;\text{Glu4}}+p^{\text{Lor6}} g^{\nu \sigma } g_s f^{\text{Glu2}\;\text{Glu3}\;\text{Glu4}}-g^{\text{Lor6}\sigma } l^{\nu } g_s f^{\text{Glu2}\;\text{Glu3}\;\text{Glu4}}+g^{\text{Lor6}\sigma } (p-l)^{\nu } g_s f^{\text{Glu2}\;\text{Glu3}\;\text{Glu4}}+g^{\text{Lor6}\nu } (l-p)^{\sigma } g_s f^{\text{Glu2}\;\text{Glu3}\;\text{Glu4}}-g^{\text{Lor6}\nu } p^{\sigma } g_s f^{\text{Glu2}\;\text{Glu3}\;\text{Glu4}}\right),i p^{\mu } p^{\nu } \left(Z_A-1\right) \delta ^{\text{Glu1}\;\text{Glu2}}-i g^{\mu \nu } p^2 \left(Z_A-1\right) \delta ^{\text{Glu1}\;\text{Glu2}}-\frac{i p^{\mu } p^{\nu } \left(Z_A-Z_{\xi }\right) \delta ^{\text{Glu1}\;\text{Glu2}}}{\xi _{\text{G}} Z_{\xi }}\right\}$$
 
 Ghost self-energy including the counter-term
 
 ```mathematica
 ampGhostSE[0] = FCFAConvert[CreateFeynAmp[diag3[0], Truncated -> True, 
-   	GaugeRules -> {}, PreFactor -> 1], 
-  	IncomingMomenta -> {p}, OutgoingMomenta -> {p}, 
-  	LorentzIndexNames -> {mu, nu}, DropSumOver -> True, 
-  	LoopMomenta -> {l}, UndoChiralSplittings -> True, 
-  	ChangeDimension -> D, List -> False, SMP -> True, 
-  	FinalSubstitutions -> {Zu -> SMP["Z_u"]}]
+    	GaugeRules -> {}, PreFactor -> 1], 
+   	IncomingMomenta -> {p}, OutgoingMomenta -> {p}, 
+   	LorentzIndexNames -> {mu, nu}, DropSumOver -> True, 
+   	LoopMomenta -> {l}, UndoChiralSplittings -> True, 
+   	ChangeDimension -> D, SMP -> True, 
+   	FinalSubstitutions -> {Zu -> SMP["Z_u"]}];
 ```
-
-$$-g_s^2 l^{\mu } p^{\nu } f^{\text{Glu1}\;\text{Glu3}\;\text{Glu4}} f^{\text{Glu2}\;\text{Glu3}\;\text{Glu4}} \left(\frac{\left(1-\xi _{\text{G}}\right) (l-p)^{\mu } (p-l)^{\nu }}{l^2.(l-p)^4}+\frac{g^{\mu \nu }}{l^2.(l-p)^2}\right)+i p^2 \left(Z_u-1\right) \delta ^{\text{Glu1}\;\text{Glu2}}$$
 
 Quark-gluon vertex including the counter-term
 
 ```mathematica
 ampQGlVertex[0] = FCFAConvert[CreateFeynAmp[diag4[0], Truncated -> True, 
-   	GaugeRules -> {}, PreFactor -> 1], 
-  	IncomingMomenta -> {p1, k}, OutgoingMomenta -> {p2}, 
-  	LorentzIndexNames -> {mu, nu, rho}, DropSumOver -> True, LoopMomenta -> {l}, 
-  	UndoChiralSplittings -> True, ChangeDimension -> D, 
-  	List -> False, SMP -> True, FinalSubstitutions -> 
-   	{ZA -> SMP["Z_A"], Zg -> SMP["Z_g"], Zpsi -> SMP["Z_psi"], 
-    	SMP["m_u"] -> 0}]
+    	GaugeRules -> {}, PreFactor -> 1], 
+   	IncomingMomenta -> {p1, k}, OutgoingMomenta -> {p2}, 
+   	LorentzIndexNames -> {mu, nu, rho}, DropSumOver -> True, LoopMomenta -> {l}, 
+   	UndoChiralSplittings -> True, ChangeDimension -> D, 
+   	SMP -> True, FinalSubstitutions -> 
+    	{ZA -> SMP["Z_A"], Zg -> SMP["Z_g"], Zpsi -> SMP["Z_psi"], 
+     	SMP["m_u"] -> 0}];
 ```
-
-$$i \left(\frac{\left(1-\xi _{\text{G}}\right) (k+l-\text{p2})^{\nu } (-k-l+\text{p2})^{\rho }}{l^2.(k+l)^2.(k+l-\text{p2})^4}+\frac{g^{\nu \rho }}{l^2.(k+l)^2.(k+l-\text{p2})^2}\right) \left(-i \gamma ^{\rho } g_s T_{\text{Col3}\;\text{Col5}}^{\text{Glu4}}\right).(\gamma \cdot (k+l)).\left(-i \gamma ^{\mu } g_s T_{\text{Col5}\;\text{Col4}}^{\text{Glu2}}\right).(\gamma \cdot l).\left(-i \gamma ^{\nu } g_s T_{\text{Col4}\;\text{Col1}}^{\text{Glu4}}\right)-i \left(g_s g^{\text{Lor4}\rho } (-k-l)^{\mu } f^{\text{Glu2}\;\text{Glu4}\;\text{Glu5}}+g_s g^{\text{Lor4}\mu } (k+l)^{\rho } f^{\text{Glu2}\;\text{Glu4}\;\text{Glu5}}+g_s \left(-k^{\text{Lor4}}\right) g^{\mu \rho } f^{\text{Glu2}\;\text{Glu4}\;\text{Glu5}}+g_s k^{\rho } g^{\text{Lor4}\mu } f^{\text{Glu2}\;\text{Glu4}\;\text{Glu5}}+g_s l^{\text{Lor4}} g^{\mu \rho } f^{\text{Glu2}\;\text{Glu4}\;\text{Glu5}}-g_s l^{\mu } g^{\text{Lor4}\rho } f^{\text{Glu2}\;\text{Glu4}\;\text{Glu5}}\right) \left(\frac{\left(1-\xi _{\text{G}}\right) g^{\nu \rho } (-k-l)^{\text{Lor4}} (k+l)^{\text{Lor5}}}{l^2.(k+l)^4.(k+l-\text{p2})^2}-\frac{\left(1-\xi _{\text{G}}\right) l^{\nu } l^{\rho } g^{\text{Lor4}\;\text{Lor5}}}{\left(l^2\right)^2.(k+l)^2.(k+l-\text{p2})^2}+-\frac{\left(1-\xi _{\text{G}}\right){}^2 l^{\nu } l^{\rho } (-k-l)^{\text{Lor4}} (k+l)^{\text{Lor5}}}{\left(l^2\right)^2.(k+l)^4.(k+l-\text{p2})^2}+\frac{g^{\text{Lor4}\;\text{Lor5}} g^{\nu \rho }}{l^2.(k+l)^2.(k+l-\text{p2})^2}\right) \left(-i g_s \gamma ^{\text{Lor5}} T_{\text{Col3}\;\text{Col4}}^{\text{Glu5}}\right).(\gamma \cdot (-k-l+\text{p2})).\left(-i \gamma ^{\nu } g_s T_{\text{Col4}\;\text{Col1}}^{\text{Glu4}}\right)-i \gamma ^{\mu } g_s \left(\sqrt{Z_A} Z_g Z_{\psi }-1\right) T_{\text{Col3}\;\text{Col1}}^{\text{Glu2}}$$
 
 ## Calculate the amplitudes
 
@@ -200,8 +200,9 @@ $$i \left(\frac{\left(1-\xi _{\text{G}}\right) (k+l-\text{p2})^{\nu } (-k-l+\tex
 Tensor reduction allows us to express the quark self-energy in tems of the Passarino-Veltman coefficient functions.
 
 ```mathematica
-ampQuarkSE[1] = ampQuarkSE[0] // SUNSimplify // DiracSimplify // 
-   	TID[#, l, UsePaVeBasis -> True, ToPaVe -> True] &;
+ampQuarkSE[1] = ampQuarkSE[0] // SUNSimplify[#, FCParallelize -> True] & // 
+      DiracSimplify[#, FCParallelize -> True] & // TID[#, l, UsePaVeBasis -> True, 
+       ToPaVe -> True, FCParallelize -> True] & // Total;
 ```
 
 Discard all the finite pieces of the 1-loop amplitude.
@@ -215,7 +216,7 @@ ampQuarkSEDiv[1] = FCReplaceD[ampQuarkSEDiv[0], D -> 4 - 2 Epsilon] //
      	Series[#, {Epsilon, 0, 0}] & // Normal // FCHideEpsilon // Simplify
 ```
 
-$$\frac{i \left(C_A-2 C_F\right) \delta _{\text{Col1}\;\text{Col2}} \gamma \cdot p \left(\left(C_A^2-1\right) (\Delta +\gamma +\log (\pi )) \xi _{\text{G}} g_s^2+32 \pi ^2 C_A \left(Z_{\psi }-1\right)\right)}{32 \pi ^2}$$
+$$\frac{i \delta _{\text{Col1}\;\text{Col2}} \gamma \cdot p \left(C_F (\Delta +\gamma +\log (\pi )) \xi _{\text{G}} g_s^2+16 \pi ^2 \left(Z_{\psi }-1\right)\right)}{16 \pi ^2}$$
 
 ```mathematica
 ampQuarkSEDiv[2] = ampQuarkSEDiv[1] // ReplaceRepeated[#, {
@@ -225,7 +226,7 @@ ampQuarkSEDiv[2] = ampQuarkSEDiv[1] // ReplaceRepeated[#, {
     	SMP["d_psi"]] &
 ```
 
-$$\frac{i \Delta  \left(C_A^2-1\right) \xi _{\text{G}} g_s^2 \left(C_A-2 C_F\right) \delta _{\text{Col1}\;\text{Col2}} \gamma \cdot p}{32 \pi ^2}+i C_A \delta _{\psi } \left(C_A-2 C_F\right) \delta _{\text{Col1}\;\text{Col2}} \gamma \cdot p$$
+$$\frac{i \Delta  C_F \xi _{\text{G}} g_s^2 \delta _{\text{Col1}\;\text{Col2}} \gamma \cdot p}{16 \pi ^2}+i \delta _{\psi } \delta _{\text{Col1}\;\text{Col2}} \gamma \cdot p$$
 
 ```mathematica
 ampQuarkSEDiv[3] = ampQuarkSEDiv[2] // SUNSimplify // 
@@ -256,21 +257,20 @@ $$\left\{\delta _{\psi }^{\overset{---}{\text{MS}}}\to -\frac{\Delta  C_F \xi _{
 Tensor reduction allows us to express the gluon self-energy in tems of the Passarino-Veltman coefficient functions.
 
 ```mathematica
-ampGluonSE[1] = (ampGluonSE[0][[1]] + Nf ampGluonSE[0][[2]] + 
-      	Total[ampGluonSE[0][[3 ;;]]]) // SUNSimplify // DiracSimplify;
+ampGluonSE[1] = ({ampGluonSE[0][[1]], Nf ampGluonSE[0][[2]], 
+       Sequence @@ ampGluonSE[0][[3 ;;]]}) // SUNSimplify[#, FCParallelize -> True] & // 
+    DiracSimplify[#, FCParallelize -> True] &;
 ```
 
 ```mathematica
-ampGluonSE[2] = TID[ampGluonSE[1], l, UsePaVeBasis -> True, ToPaVe -> True];
+ampGluonSE[2] = TID[ampGluonSE[1], l, UsePaVeBasis -> True, ToPaVe -> True, FCParallelize -> True];
 ```
 
 Discard all the finite pieces of the 1-loop amplitude
 
 ```mathematica
-ampGluonSEDiv[0] = ampGluonSE[2] // PaVeUVPart[#, Prefactor -> 1/(2 Pi)^D] &
+ampGluonSEDiv[0] = ampGluonSE[2] // Total // PaVeUVPart[#, Prefactor -> 1/(2 Pi)^D] &;
 ```
-
-$$\frac{1}{(D-4) (D-1) \xi _{\text{G}} Z_{\xi }}i 2^{-D-1} \pi ^{-D} \left(4 C_A \pi ^2 p^{\mu } p^{\nu } g_s^2 Z_{\xi } \xi _{\text{G}}^3-C_A D \pi ^2 p^{\mu } p^{\nu } g_s^2 Z_{\xi } \xi _{\text{G}}^3-14 C_A \pi ^2 p^{\mu } p^{\nu } g_s^2 Z_{\xi } \xi _{\text{G}}^2+2 C_A D \pi ^2 p^{\mu } p^{\nu } g_s^2 Z_{\xi } \xi _{\text{G}}^2-2 C_A \pi ^2 g^{\mu \nu } p^2 g_s^2 Z_{\xi } \xi _{\text{G}}^2+2 C_A D \pi ^2 g^{\mu \nu } p^2 g_s^2 Z_{\xi } \xi _{\text{G}}^2+30 C_A \pi ^2 p^{\mu } p^{\nu } g_s^2 Z_{\xi } \xi _{\text{G}}-C_A D \pi ^2 p^{\mu } p^{\nu } g_s^2 Z_{\xi } \xi _{\text{G}}-8 N_f \pi ^2 p^{\mu } p^{\nu } g_s^2 Z_{\xi } \xi _{\text{G}}-18 C_A \pi ^2 g^{\mu \nu } p^2 g_s^2 Z_{\xi } \xi _{\text{G}}-2 C_A D \pi ^2 g^{\mu \nu } p^2 g_s^2 Z_{\xi } \xi _{\text{G}}+8 N_f \pi ^2 g^{\mu \nu } p^2 g_s^2 Z_{\xi } \xi _{\text{G}}-2^{D+3} \pi ^D p^{\mu } p^{\nu } Z_{\xi } \xi _{\text{G}}-2^{D+1} D^2 \pi ^D p^{\mu } p^{\nu } Z_{\xi } \xi _{\text{G}}+5\ 2^{D+1} D \pi ^D p^{\mu } p^{\nu } Z_{\xi } \xi _{\text{G}}+2^{D+3} \pi ^D g^{\mu \nu } p^2 Z_{\xi } \xi _{\text{G}}+2^{D+1} D^2 \pi ^D g^{\mu \nu } p^2 Z_{\xi } \xi _{\text{G}}-5\ 2^{D+1} D \pi ^D g^{\mu \nu } p^2 Z_{\xi } \xi _{\text{G}}+2^{D+3} \pi ^D p^{\mu } p^{\nu } Z_A Z_{\xi } \xi _{\text{G}}+2^{D+1} D^2 \pi ^D p^{\mu } p^{\nu } Z_A Z_{\xi } \xi _{\text{G}}-5\ 2^{D+1} D \pi ^D p^{\mu } p^{\nu } Z_A Z_{\xi } \xi _{\text{G}}-2^{D+3} \pi ^D g^{\mu \nu } p^2 Z_A Z_{\xi } \xi _{\text{G}}-2^{D+1} D^2 \pi ^D g^{\mu \nu } p^2 Z_A Z_{\xi } \xi _{\text{G}}+5\ 2^{D+1} D \pi ^D g^{\mu \nu } p^2 Z_A Z_{\xi } \xi _{\text{G}}-2^{D+3} \pi ^D p^{\mu } p^{\nu } Z_A-2^{D+1} D^2 \pi ^D p^{\mu } p^{\nu } Z_A+5\ 2^{D+1} D \pi ^D p^{\mu } p^{\nu } Z_A+2^{D+3} \pi ^D p^{\mu } p^{\nu } Z_{\xi }+2^{D+1} D^2 \pi ^D p^{\mu } p^{\nu } Z_{\xi }-5\ 2^{D+1} D \pi ^D p^{\mu } p^{\nu } Z_{\xi }\right) \delta ^{\text{Glu1}\;\text{Glu2}}$$
 
 ```mathematica
 ampGluonSEDiv[1] = FCReplaceD[ampGluonSEDiv[0], D -> 4 - 2 Epsilon] // 
@@ -306,17 +306,18 @@ $$\left\{\delta _A^{\overset{---}{\text{MS}}}\to -\frac{\Delta  \alpha _s \left(
 Tensor reduction allows us to express the ghost self-energy in tems of the Passarino-Veltman coefficient functions.
 
 ```mathematica
-ampGhostSE[1] = ampGhostSE[0] // SUNSimplify // DiracSimplify;
+ampGhostSE[1] = ampGhostSE[0] // SUNSimplify[#, FCParallelize -> True] & // 
+    DiracSimplify[#, FCParallelize -> True] &;
 ```
 
 ```mathematica
-ampGhostSE[2] = TID[ampGhostSE[1], l, UsePaVeBasis -> True, ToPaVe -> True];
+ampGhostSE[2] = TID[ampGhostSE[1], l, UsePaVeBasis -> True, ToPaVe -> True, FCParallelize -> True];
 ```
 
 Discard all the finite pieces of the 1-loop amplitude
 
 ```mathematica
-ampGhostSEDiv[0] = ampGhostSE[2] // PaVeUVPart[#, Prefactor -> 1/(2 Pi)^D] &
+ampGhostSEDiv[0] = ampGhostSE[2] // Total // PaVeUVPart[#, Prefactor -> 1/(2 Pi)^D] &
 ```
 
 $$\frac{i 2^{-D-1} \pi ^{-D} p^2 \delta ^{\text{Glu1}\;\text{Glu2}} \left(\pi ^2 \left(-C_A\right) \xi _{\text{G}} g_s^2+3 \pi ^2 C_A g_s^2-2^{D+3} \pi ^D Z_u+2^{D+1} D \pi ^D Z_u+2^{D+3} \pi ^D-2^{D+1} D \pi ^D\right)}{D-4}$$
@@ -356,20 +357,19 @@ $$\left\{\delta _u^{\overset{---}{\text{MS}}}\to -\frac{\Delta  C_A \left(\xi _{
 Tensor reduction allows us to express the quark-gluon vertex in tems of the Passarino-Veltman coefficient functions.
 
 ```mathematica
-ampQGlVertex[1] = ampQGlVertex[0] // SUNSimplify // DiracSimplify;
+ampQGlVertex[1] = ampQGlVertex[0] // SUNSimplify[#, FCParallelize -> True] & // 
+    DiracSimplify[#, FCParallelize -> True] &;
 ```
 
 ```mathematica
-ampQGlVertex[2] = TID[ampQGlVertex[1], l, UsePaVeBasis -> True, ToPaVe -> True];
+ampQGlVertex[2] = TID[ampQGlVertex[1], l, UsePaVeBasis -> True, ToPaVe -> True, FCParallelize -> True];
 ```
 
 Discard all the finite pieces of the 1-loop amplitude
 
 ```mathematica
-ampQGlVertexDiv[0] = ampQGlVertex[2] // PaVeUVPart[#, Prefactor -> 1/(2 Pi)^D] &
+ampQGlVertexDiv[0] = ampQGlVertex[2] // Total // PaVeUVPart[#, Prefactor -> 1/(2 Pi)^D] &;
 ```
-
-$$-\frac{1}{D-4}i (2 \pi )^{-D} \left(-2^{D+3} \pi ^D C_A \gamma ^{\mu } C_F g_s T_{\text{Col3}\;\text{Col1}}^{\text{Glu2}}+2^{D+1} D \pi ^D C_A \gamma ^{\mu } C_F g_s T_{\text{Col3}\;\text{Col1}}^{\text{Glu2}}+2^{D+3} \pi ^D C_A \sqrt{Z_A} \gamma ^{\mu } C_F g_s Z_g Z_{\psi } T_{\text{Col3}\;\text{Col1}}^{\text{Glu2}}-2^{D+1} D \pi ^D C_A \sqrt{Z_A} \gamma ^{\mu } C_F g_s Z_g Z_{\psi } T_{\text{Col3}\;\text{Col1}}^{\text{Glu2}}+2^{D+2} \pi ^D C_A^2 \gamma ^{\mu } g_s T_{\text{Col3}\;\text{Col1}}^{\text{Glu2}}-D (2 \pi )^D C_A^2 \gamma ^{\mu } g_s T_{\text{Col3}\;\text{Col1}}^{\text{Glu2}}-2^{D+2} \pi ^D C_A^2 \sqrt{Z_A} \gamma ^{\mu } g_s Z_g Z_{\psi } T_{\text{Col3}\;\text{Col1}}^{\text{Glu2}}+D (2 \pi )^D C_A^2 \sqrt{Z_A} \gamma ^{\mu } g_s Z_g Z_{\psi } T_{\text{Col3}\;\text{Col1}}^{\text{Glu2}}+\pi ^2 C_A \gamma ^{\mu } \xi _{\text{G}} g_s^3 T_{\text{Col3}\;\text{Col1}}^{\text{Glu2}}-2 \pi ^2 \gamma ^{\mu } C_F \xi _{\text{G}} g_s^3 T_{\text{Col3}\;\text{Col1}}^{\text{Glu2}}-3 i \pi ^2 \gamma ^{\mu } \xi _{\text{G}} g_s^3 f^{\text{Glu2}\;\text{FCGV}(\text{sun12181})\text{FCGV}(\text{sun12182})} \left(T^{\text{FCGV}(\text{sun12182})}T^{\text{FCGV}(\text{sun12181})}\right){}_{\text{Col3}\;\text{Col1}}-3 i \pi ^2 \gamma ^{\mu } g_s^3 f^{\text{Glu2}\;\text{FCGV}(\text{sun12181})\text{FCGV}(\text{sun12182})} \left(T^{\text{FCGV}(\text{sun12182})}T^{\text{FCGV}(\text{sun12181})}\right){}_{\text{Col3}\;\text{Col1}}\right)$$
 
 ```mathematica
 ampQGlVertexDiv[1] = FCReplaceD[ampQGlVertexDiv[0], D -> 4 - 2 Epsilon] // 
@@ -387,28 +387,16 @@ ampQGlVertexDiv[2] = ampQGlVertexDiv[1] // ReplaceRepeated[#, {
    	SelectNotFree2[#, SMP["Delta"], SMP["d_g"], SMP["d_A"], SMP["d_psi"]] & // Simplify
 ```
 
-$$-\frac{1}{32 \pi ^2}i \gamma ^{\mu } g_s \left(32 \pi ^2 C_A \delta _g \left(C_A-2 C_F\right) T_{\text{Col3}\;\text{Col1}}^{\text{Glu2}}-64 \pi ^2 C_A C_F \delta _{\psi } T_{\text{Col3}\;\text{Col1}}^{\text{Glu2}}+16 \pi ^2 C_A \delta _A \left(C_A-2 C_F\right) T_{\text{Col3}\;\text{Col1}}^{\text{Glu2}}-\Delta  C_A \xi _{\text{G}} g_s^2 T_{\text{Col3}\;\text{Col1}}^{\text{Glu2}}+32 \pi ^2 C_A^2 \delta _{\psi } T_{\text{Col3}\;\text{Col1}}^{\text{Glu2}}+2 \Delta  C_F \xi _{\text{G}} g_s^2 T_{\text{Col3}\;\text{Col1}}^{\text{Glu2}}+3 i \Delta  \xi _{\text{G}} g_s^2 f^{\text{Glu2}\;\text{FCGV}(\text{sun59231})\text{FCGV}(\text{sun59232})} \left(T^{\text{FCGV}(\text{sun59232})}T^{\text{FCGV}(\text{sun59231})}\right){}_{\text{Col3}\;\text{Col1}}+3 i \Delta  g_s^2 f^{\text{Glu2}\;\text{FCGV}(\text{sun59231})\text{FCGV}(\text{sun59232})} \left(T^{\text{FCGV}(\text{sun59232})}T^{\text{FCGV}(\text{sun59231})}\right){}_{\text{Col3}\;\text{Col1}}\right)$$
+$$-\frac{i \gamma ^{\mu } g_s \left(C_A-2 C_F\right) T_{\text{Col3}\;\text{Col1}}^{\text{Glu2}} \left(64 \pi ^2 C_A \delta _{\psi }+32 \pi ^2 C_A \delta _A+3 \Delta  C_A^2 \xi _{\text{G}} g_s^2+64 \pi ^2 C_A \delta _g+3 \Delta  C_A^2 g_s^2-2 \Delta  \xi _{\text{G}} g_s^2\right)}{64 \pi ^2}$$
 
 ```mathematica
-ampQGlVertexDiv[3] = ampQGlVertexDiv[2] // SUNSimplify[#, Explicit -> True] & // 
-   	ReplaceAll[#, SUNTrace[x__] :> SUNTrace[x, Explicit -> True]] & //
-  	Collect2[#, Epsilon, SUNIndex] &
+ampQGlVertexDiv[3] = ampQGlVertexDiv[2] // Collect2[#, SMP] &
 ```
 
-$$\frac{3 \Delta  \gamma ^{\mu } \left(\xi _{\text{G}}+1\right) g_s^3 f^{\text{Glu2}\;\text{FCGV}(\text{sun59411})\text{FCGV}(\text{sun59412})} \left(T^{\text{FCGV}(\text{sun59412})}T^{\text{FCGV}(\text{sun59411})}\right){}_{\text{Col3}\;\text{Col1}}}{32 \pi ^2}-\frac{i \gamma ^{\mu } g_s \left(C_A-2 C_F\right) T_{\text{Col3}\;\text{Col1}}^{\text{Glu2}} \left(32 \pi ^2 C_A \delta _{\psi }+16 \pi ^2 C_A \delta _A+32 \pi ^2 C_A \delta _g+\Delta  \left(-\xi _{\text{G}}\right) g_s^2\right)}{32 \pi ^2}$$
+$$-\frac{i \Delta  \gamma ^{\mu } g_s^3 \left(C_A-2 C_F\right) \left(3 C_A^2 \xi _{\text{G}}+3 C_A^2-2 \xi _{\text{G}}\right) T_{\text{Col3}\;\text{Col1}}^{\text{Glu2}}}{64 \pi ^2}-i C_A \gamma ^{\mu } \delta _{\psi } g_s \left(C_A-2 C_F\right) T_{\text{Col3}\;\text{Col1}}^{\text{Glu2}}-\frac{1}{2} i C_A \delta _A \gamma ^{\mu } g_s \left(C_A-2 C_F\right) T_{\text{Col3}\;\text{Col1}}^{\text{Glu2}}-i C_A \gamma ^{\mu } \delta _g g_s \left(C_A-2 C_F\right) T_{\text{Col3}\;\text{Col1}}^{\text{Glu2}}$$
 
 ```mathematica
-ampQGlVertexDiv[4] = ampQGlVertexDiv[3] // 
-      	ReplaceAll[#, suntf[xx_, _SUNFIndex, _SUNFIndex] :> SUNT @@ xx] & // 
-     	ReplaceAll[#, SUNTF -> suntf] & // ReplaceAll[#, 
-      	suntf[xx_, _SUNFIndex, _SUNFIndex] :> SUNT @@ xx] & // 
-   	SUNSimplify // Collect2[#, SMP] &
-```
-
-$$-\frac{i \Delta  \gamma ^{\mu } g_s^3 T^{\text{Glu2}} \left(C_A-2 C_F\right) \left(3 C_A^2 \xi _{\text{G}}+3 C_A^2-2 \xi _{\text{G}}\right)}{64 \pi ^2}-i C_A \gamma ^{\mu } \delta _{\psi } g_s T^{\text{Glu2}} \left(C_A-2 C_F\right)-\frac{1}{2} i C_A \delta _A \gamma ^{\mu } g_s T^{\text{Glu2}} \left(C_A-2 C_F\right)-i C_A \gamma ^{\mu } \delta _g g_s T^{\text{Glu2}} \left(C_A-2 C_F\right)$$
-
-```mathematica
-ampQGlVertexDiv[5] = (ampQGlVertexDiv[4] /. {
+ampQGlVertexDiv[4] = (ampQGlVertexDiv[3] /. {
          	SMP["d_A"] -> SMP["d_A^MS"], 
          	SMP["d_psi"] -> SMP["d_psi^MS"], 
          	SMP["d_g"] -> SMP["d_g"], 
@@ -417,10 +405,10 @@ ampQGlVertexDiv[5] = (ampQGlVertexDiv[4] /. {
     Collect2[#, Epsilon] & // SUNSimplify
 ```
 
-$$\frac{i \gamma ^{\mu } g_s T^{\text{Glu2}} \left(-11 C_A \alpha _s+2 N_f \alpha _s-24 \pi  \varepsilon  \delta _g\right)}{24 \pi  \varepsilon }$$
+$$\frac{i \gamma ^{\mu } g_s T_{\text{Col3}\;\text{Col1}}^{\text{Glu2}} \left(-11 C_A \alpha _s+2 N_f \alpha _s-24 \pi  \varepsilon  \delta _g\right)}{24 \pi  \varepsilon }$$
 
 ```mathematica
-sol[5] = Solve[ampQGlVertexDiv[5] == 0, SMP["d_g"]] // Flatten // Simplify
+sol[5] = Solve[ampQGlVertexDiv[4] == 0, SMP["d_g"]] // Flatten // Simplify
 solMS4 = sol[5] /. {SMP["d_g"] -> SMP["d_g^MS"]}
 solMSbar4 = sol[5] /. {SMP["d_g"] -> SMP["d_g^MSbar"], 1/Epsilon -> SMP["Delta"]}
 ```
@@ -448,10 +436,11 @@ FCCompareResults[Join[solMS1, solMSbar1, solMS2, solMSbar2, solMS3, solMSbar3, s
   Text -> {"\tCompare to Muta, Foundations of QCD, Eqs 2.5.131-2.5.147:", 
     "CORRECT.", "WRONG!"}, Interrupt -> {Hold[Quit[1]], Automatic}]
 Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
-```
+
+```mathematica
 
 $$\text{$\backslash $tCompare to Muta, Foundations of QCD, Eqs 2.5.131-2.5.147:} \;\text{CORRECT.}$$
 
 $$\text{True}$$
 
-$$\text{$\backslash $tCPU Time used: }41.781\text{ s.}$$
+$$\text{$\backslash $tCPU Time used: }28.323\text{ s.}$$

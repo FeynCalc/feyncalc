@@ -14,22 +14,21 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False, 
   	$FeynCalcStartupMessages = False 
   ];
+LaunchKernels[4];
 $LoadAddOns = {"FeynArts"};
 << FeynCalc`
-$FAVerbose = 0; 
- 
-FCCheckVersion[9, 3, 1];
+$FAVerbose = 0;
+$ParallelizeFeynCalc = True;
+FCCheckVersion[10, 2, 0];
 ```
 
-$$\text{FeynCalc }\;\text{10.0.0 (dev version, 2023-12-20 22:40:59 +01:00, dff3b835). For help, use the }\underline{\text{online} \;\text{documentation}}\;\text{, check out the }\underline{\text{wiki}}\;\text{ or visit the }\underline{\text{forum}.}$$
-
-$$\text{Please check our }\underline{\text{FAQ}}\;\text{ for answers to some common FeynCalc questions and have a look at the supplied }\underline{\text{examples}.}$$
+$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2025-12-22 21:09:03 +01:00, fcd53f9b). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{If you use FeynCalc in your research, please evaluate FeynCalcHowToCite[] to learn how to cite this software.}$$
 
 $$\text{Please keep in mind that the proper academic attribution of our work is crucial to ensure the future development of this package!}$$
 
-$$\text{FeynArts }\;\text{3.11 (3 Aug 2020) patched for use with FeynCalc, for documentation see the }\underline{\text{manual}}\;\text{ or visit }\underline{\text{www}.\text{feynarts}.\text{de}.}$$
+$$\text{FeynArts }\;\text{3.12 (27 Mar 2025) patched for use with FeynCalc, for documentation see the }\underline{\text{manual}}\;\text{ or visit }\underline{\text{www}.\text{feynarts}.\text{de}.}$$
 
 $$\text{If you use FeynArts in your research, please cite}$$
 
@@ -40,7 +39,7 @@ $$\text{ $\bullet $ T. Hahn, Comput. Phys. Commun., 140, 418-431, 2001, arXiv:he
 Nicer typesetting
 
 ```mathematica
-MakeBoxes[mu, TraditionalForm] := "\[Mu]";
+FCAttachTypesettingRule[mu, "\[Mu]"]
 ```
 
 ```mathematica
@@ -52,7 +51,7 @@ Paint[diags, ColumnsXRows -> {1, 1}, Numbering -> Simple,
   	SheetHeader -> None, ImageSize -> {256, 256}];
 ```
 
-![0a1m2kqb65f42](img/0a1m2kqb65f42.svg)
+![1ge1adt8fibyj](img/1ge1adt8fibyj.svg)
 
 ## Obtain the amplitude
 
@@ -63,39 +62,70 @@ amp[0] = FCFAConvert[CreateFeynAmp[diags, PreFactor -> 1,
    	Truncated -> True], IncomingMomenta -> {k}, 
   	LorentzIndexNames -> {mu}, LoopMomenta -> {q}, 
   	UndoChiralSplittings -> True, ChangeDimension -> D, 
-  	List -> False, SMP -> True]
+  	SMP -> True, FinalSubstitutions -> {SMP["m_e"] -> me}]
 ```
 
-$$-\frac{i \;\text{tr}\left(\left(m_e-\gamma \cdot q\right).\left(-i \;\text{e} \gamma ^{\mu }\right)\right)}{q^2-m_e^2}$$
+$$\left\{-\frac{i \;\text{tr}\left((\text{me}-\gamma \cdot q).\left(-i \;\text{e} \gamma ^{\mu }\right)\right)}{q^2-\text{me}^2}\right\}$$
 
-## Calculate the amplitude
+## Evaluate the amplitudes
 
 Having performed the Dirac algebra we clearly see that this diagram must 
 vanish because the loop integral is antisymmetric under q^mu -> - q^mu.
 
 ```mathematica
-amp[1] = DiracSimplify[amp[0]]
+amp[1] = DiracSimplify[amp[0], FCParallelize -> True]
 ```
 
-$$\frac{4 \;\text{e} q^{\mu }}{q^2-m_e^2}$$
+$$\left\{\frac{4 \;\text{e} q^{\mu }}{q^2-\text{me}^2}\right\}$$
 
-TID can recognize this and we obtain zero
+## Identify and minimize the topologies
 
 ```mathematica
-amp[2] = TID[amp[1], q]
+{amp[2], topos} = FCLoopFindTopologies[amp[1], {q}, FCParallelize -> True];
 ```
 
-$$0$$
+$$\text{FCLoopFindTopologies: Number of the initial candidate topologies: }1$$
+
+$$\text{FCLoopFindTopologies: Number of the identified unique topologies: }1$$
+
+$$\text{FCLoopFindTopologies: Number of the preferred topologies among the unique topologies: }0$$
+
+$$\text{FCLoopFindTopologies: Number of the identified subtopologies: }0$$
+
+```mathematica
+mappings = FCLoopFindTopologyMappings[topos, FCParallelize -> True];
+```
+
+$$\text{FCLoopFindTopologyMappings: }\;\text{Found }0\text{ mapping relations }$$
+
+$$\text{FCLoopFindTopologyMappings: }\;\text{Final number of independent topologies: }1$$
+
+## Rewrite the amplitude in terms of GLIs
+
+```mathematica
+AbsoluteTiming[ampReduced = FCLoopTensorReduce[amp[2], topos, FCParallelize -> True];]
+```
+
+$$\{0.092708,\text{Null}\}$$
+
+The amplitude vanishes after the tensor reduction
+
+```mathematica
+ampReduced
+```
+
+$$\{0\}$$
 
 ## Check the final results
 
 ```mathematica
-FCCompareResults[amp[2], 0, 
+FCCompareResults[Total[ampReduced], 0, 
    Text -> {"\tVerify Furry's theorem for 1-photon at 1-loop:", 
      "CORRECT.", "WRONG!"}, Interrupt -> {Hold[Quit[1]], Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
-```
+
+```mathematica
 
 $$\text{$\backslash $tVerify Furry's theorem for 1-photon at 1-loop:} \;\text{CORRECT.}$$
 
-$$\text{$\backslash $tCPU Time used: }19.702\text{ s.}$$
+$$\text{$\backslash $tCPU Time used: }23.119\text{ s.}$$

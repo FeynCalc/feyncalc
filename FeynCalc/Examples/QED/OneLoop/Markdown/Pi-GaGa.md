@@ -14,34 +14,51 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False, 
   	$FeynCalcStartupMessages = False 
   ];
+LaunchKernels[4];
+$LoadAddOns = {"FeynArts", "FeynHelpers"};
 << FeynCalc`
-$FAVerbose = 0; 
+$FAVerbose = 0;
+$ParallelizeFeynCalc = True; 
  
-FCCheckVersion[9, 3, 1];
+FCCheckVersion[10, 2, 0];
+If[ToExpression[StringSplit[$FeynHelpersVersion, "."]][[1]] < 2, 
+ 	Print["You need at least FeynHelpers 2.0 to run this example."]; 
+ 	Abort[]; 
+ ]
 ```
 
-$$\text{FeynCalc }\;\text{10.0.0 (dev version, 2024-08-07 16:25:42 +02:00, 2b43b48d). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
+$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2025-12-22 21:09:03 +01:00, fcd53f9b). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{If you use FeynCalc in your research, please evaluate FeynCalcHowToCite[] to learn how to cite this software.}$$
 
 $$\text{Please keep in mind that the proper academic attribution of our work is crucial to ensure the future development of this package!}$$
+
+$$\text{FeynArts }\;\text{3.12 (27 Mar 2025) patched for use with FeynCalc, for documentation see the }\underline{\text{manual}}\;\text{ or visit }\underline{\text{www}.\text{feynarts}.\text{de}.}$$
+
+$$\text{If you use FeynArts in your research, please cite}$$
+
+$$\text{ $\bullet $ T. Hahn, Comput. Phys. Commun., 140, 418-431, 2001, arXiv:hep-ph/0012260}$$
+
+$$\text{FeynHelpers }\;\text{2.0.0 (2025-12-22 19:07:44 +01:00, c92fb9f5). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
+
+$$\text{ If you use FeynHelpers in your research, please evaluate FeynHelpersHowToCite[] to learn how to cite this work.}$$
 
 ## Obtain the amplitude
 
 Nicer typesetting
 
 ```mathematica
-MakeBoxes[mu, TraditionalForm] := "\[Mu]";
-MakeBoxes[nu, TraditionalForm] := "\[Nu]";
-MakeBoxes[la, TraditionalForm] := "\[Lambda]";
+FCAttachTypesettingRule[mu, "\[Mu]"];
+FCAttachTypesettingRule[nu, "\[Nu]"];
+FCAttachTypesettingRule[la, "\[Lambda]"];
 ```
 
 According to Peskin and Schroeder (Ch 19.2), the amplitude for the first triangle diagram reads
 
 ```mathematica
 amp1[0] = ((-1) (-I SMP["e"])^2 DiracTrace[GAD[mu] . GA[5] . 
-      	QuarkPropagator[l - k] . GAD[la] . QuarkPropagator[l] . 
-      	GAD[nu] . QuarkPropagator[l + p]]) // Explicit
+       	QuarkPropagator[l - k] . GAD[la] . QuarkPropagator[l] . 
+       	GAD[nu] . QuarkPropagator[l + p]]) // ChangeDimension[#, D] & // Explicit
 ```
 
 $$\text{e}^2 \;\text{tr}\left(\gamma ^{\mu }.\bar{\gamma }^5.\frac{i \gamma \cdot (l-k)}{(l-k)^2}.\gamma ^{\lambda }.\frac{i \gamma \cdot l}{l^2}.\gamma ^{\nu }.\frac{i \gamma \cdot (l+p)}{(l+p)^2}\right)$$
@@ -54,69 +71,161 @@ amp2[0] = amp1[0] /. {k -> p, p -> k, la -> nu, nu -> la}
 
 $$\text{e}^2 \;\text{tr}\left(\gamma ^{\mu }.\bar{\gamma }^5.\frac{i \gamma \cdot (l-p)}{(l-p)^2}.\gamma ^{\nu }.\frac{i \gamma \cdot l}{l^2}.\gamma ^{\lambda }.\frac{i \gamma \cdot (k+l)}{(k+l)^2}\right)$$
 
-## Calculate the amplitude
+```mathematica
+amps[0] = {amp1[0], amp2[0]};
+```
+
+## Evaluate the amplitudes
 
 Contracting both amplitudes with I*(k+p)^mu we can check the non-conservation of the axial current.
 
 ```mathematica
-amp[0] = Contract[I*FVD[k + p, mu] (amp1[0] + amp2[0])]
+amps[1] = Contract[I*FVD[k + p, mu] (amps[0]), FCParallelize -> True] // FCTraceFactor[#, FCParallelize -> True] &
 ```
 
-$$i \;\text{e}^2 \;\text{tr}\left(-\frac{i (\gamma \cdot (k+p)).\bar{\gamma }^5.(\gamma \cdot (l-p)).\gamma ^{\nu }.(\gamma \cdot l).\gamma ^{\lambda }.(\gamma \cdot (k+l))}{l^2 (k+l)^2 (l-p)^2}\right)+i \;\text{e}^2 \;\text{tr}\left(-\frac{i (\gamma \cdot (k+p)).\bar{\gamma }^5.(\gamma \cdot (l-k)).\gamma ^{\lambda }.(\gamma \cdot l).\gamma ^{\nu }.(\gamma \cdot (l+p))}{l^2 (l-k)^2 (l+p)^2}\right)$$
+$$\left\{\frac{\text{e}^2 \;\text{tr}\left((\gamma \cdot (k+p)).\bar{\gamma }^5.(\gamma \cdot (l-k)).\gamma ^{\lambda }.(\gamma \cdot l).\gamma ^{\nu }.(\gamma \cdot (l+p))\right)}{l^2 (l-k)^2 (l+p)^2},\frac{\text{e}^2 \;\text{tr}\left((\gamma \cdot (k+p)).\bar{\gamma }^5.(\gamma \cdot (l-p)).\gamma ^{\nu }.(\gamma \cdot l).\gamma ^{\lambda }.(\gamma \cdot (k+l))\right)}{l^2 (k+l)^2 (l-p)^2}\right\}$$
 
 For this calculation it is crucial to use a correct scheme for gamma^5. As in the book, we use the 
 Breitenlohner-Maison-t'Hooft-Veltman prescription.
 
 ```mathematica
-FCSetDiracGammaScheme["BMHV"];
-amp[1] = TID[amp[0] , l, ToPaVe -> True]
-```
-
-$$\frac{4 \pi ^2 \;\text{B}_0\left(k^2,0,0\right) \bar{\epsilon }^{\lambda \nu \overline{k}\overline{p}} \left(-\left((2-D) (k\cdot p)^2\right)-(2-D) k^2 (k\cdot p)-4 k^2 (k\cdot p)+2 k^2 \left(k\cdot p-p^2\right)+(2-D) \left((k\cdot p)^2-k^2 p^2\right)\right) \;\text{e}^2}{(2-D) \left((k\cdot p)^2-k^2 p^2\right)}+\frac{4 \pi ^2 \;\text{B}_0\left(p^2,0,0\right) \bar{\epsilon }^{\lambda \nu \overline{k}\overline{p}} \left(-\left((2-D) (k\cdot p)^2\right)-(2-D) p^2 (k\cdot p)-4 p^2 (k\cdot p)-2 \left(k^2-k\cdot p\right) p^2+(2-D) \left((k\cdot p)^2-k^2 p^2\right)\right) \;\text{e}^2}{(2-D) \left((k\cdot p)^2-k^2 p^2\right)}-\frac{1}{(2-D) \left((k\cdot p)^2-k^2 p^2\right)}4 \pi ^2 \;\text{C}_0\left(k^2,p^2,k^2+2 (k\cdot p)+p^2,0,0,0\right) \bar{\epsilon }^{\lambda \nu \overline{k}\overline{p}} \left(-2 p^2 k^4-(2-D) (k\cdot p)^2 k^2-2 p^4 k^2-2 (2-D) (k\cdot p) p^2 k^2-4 (k\cdot p) p^2 k^2+(2-D) \left((k\cdot p)^2-k^2 p^2\right) k^2-(2-D) (k\cdot p)^2 p^2+(2-D) p^2 \left((k\cdot p)^2-k^2 p^2\right)\right) \;\text{e}^2+\left(4 \pi ^2 \;\text{B}_0\left(k^2+2 (k\cdot p)+p^2,0,0\right) \bar{\epsilon }^{\lambda \nu \overline{k}\overline{p}} \left(4 (2-D) (k\cdot p)^3+4 (2-D) k^2 (k\cdot p)^2+4 (2-D) p^2 (k\cdot p)^2+(2-D) k^4 (k\cdot p)+(2-D) p^4 (k\cdot p)+2 (2-D) k^2 p^2 (k\cdot p)+16 \left((k\cdot p)^2-k^2 p^2\right) (k\cdot p)+4 \left(k^2 \left(-(k\cdot p)-p^2\right)+2 (k\cdot p) \left(-(k\cdot p)-p^2\right)+p^2 \left(-(k\cdot p)-p^2\right)+\left(k^2+2 (k\cdot p)+p^2\right) \left(k^2+2 p^2\right)\right) (k\cdot p)+8 k^2 \left((k\cdot p)^2-k^2 p^2\right)+8 p^2 \left((k\cdot p)^2-k^2 p^2\right)+2 p^2 \left(-k^2 \left(-k^2-k\cdot p\right)-2 (k\cdot p) \left(-k^2-k\cdot p\right)-p^2 \left(-k^2-k\cdot p\right)+\left(k^2-2 (k\cdot p)\right) \left(k^2+2 (k\cdot p)+p^2\right)\right)+2 k^2 \left(k^2 \left(-(k\cdot p)-p^2\right)+2 (k\cdot p) \left(-(k\cdot p)-p^2\right)+p^2 \left(-(k\cdot p)-p^2\right)+3 p^2 \left(k^2+2 (k\cdot p)+p^2\right)\right)\right) \;\text{e}^2\right)/\left((2-D) \left(k^2+2 (k\cdot p)+p^2\right) \left((k\cdot p)^2-k^2 p^2\right)\right)$$
-
-```mathematica
 FCClearScalarProducts[];
-Momentum[k, D | D - 4] = Momentum[k];
-Momentum[p, D | D - 4] = Momentum[p];
+ScalarProduct[k, k] = 0;
+ScalarProduct[p, p] = 0;
+ScalarProduct[k, p] = kp;
+FCSetDiracGammaScheme["BMHV"];
 ```
 
-The explicit values for the PaVe functions B0 and C0 can be obtained e.g. from H. Patel's Package-X. 
-Here we just insert the known results. The C0 function is finite here, so because of the prefactor (D-4) it 
-gives no contribution in the D->4 limit.
-
 ```mathematica
-amp[2] = Collect2[amp[1], {B0, C0}] //. {
-   	B0[FCI@SP[p_, p_], 0, 0] :> 
-    		1/(16 Epsilon \[Pi]^4) - (-2 + EulerGamma)/(16 \[Pi]^4) + 
-     		Log[-((4 \[Pi] ScaleMu^2)/Pair[Momentum[p], Momentum[p]])]/(16 \[Pi]^4), 
-   	B0[FCI[SP[p, p] + 2 SP[p, k] + SP[k, k]], 0, 0] :> 
-    		B0[FCI[SP[k + p, k + p]], 0, 0], 
-   	(D - 4) ExpandScalarProduct[C0[SP[k], SP[p], SP[k + p], 0, 0, 0]] -> 0 
-   }
+amps[2] = amps[1] // DiracSimplify[#, FCParallelize -> True] &;
 ```
 
-$$-\frac{4 \pi ^2 (D-4) \;\text{e}^2 \overline{p}^2 \left(\overline{k}\cdot \overline{p}+\overline{k}^2\right) \left(\frac{\log \left(-\frac{4 \pi  \mu ^2}{\overline{p}^2}\right)}{16 \pi ^4}+\frac{1}{16 \pi ^4 \varepsilon }-\frac{\gamma -2}{16 \pi ^4}\right) \bar{\epsilon }^{\lambda \nu \overline{k}\overline{p}}}{(D-2) \left((\overline{k}\cdot \overline{p})^2-\overline{k}^2 \overline{p}^2\right)}-\frac{4 \pi ^2 (D-4) \;\text{e}^2 \overline{k}^2 \left(\overline{k}\cdot \overline{p}+\overline{p}^2\right) \left(\frac{\log \left(-\frac{4 \pi  \mu ^2}{\overline{k}^2}\right)}{16 \pi ^4}+\frac{1}{16 \pi ^4 \varepsilon }-\frac{\gamma -2}{16 \pi ^4}\right) \bar{\epsilon }^{\lambda \nu \overline{k}\overline{p}}}{(D-2) \left((\overline{k}\cdot \overline{p})^2-\overline{k}^2 \overline{p}^2\right)}-\frac{4 \pi ^2 (D-4) \;\text{e}^2 \left(\overline{k}\cdot \overline{p}\right) \left(2 \left(\overline{k}\cdot \overline{p}\right)+\overline{k}^2+\overline{p}^2\right) \bar{\epsilon }^{\lambda \nu \overline{k}\overline{p}} \left(\frac{\log \left(-\frac{4 \pi  \mu ^2}{(\overline{k}+\overline{p})^2}\right)}{16 \pi ^4}+\frac{1}{16 \pi ^4 \varepsilon }-\frac{\gamma -2}{16 \pi ^4}\right)}{(D-2) \left(\overline{k}^2 \overline{p}^2-(\overline{k}\cdot \overline{p})^2\right)}$$
-
-Now we insert the explicit values, convert the external momenta to 4 dimensions and expand in Epsilon
+## Identify and minimize the topologies
 
 ```mathematica
-amp[3] = amp[2] // FCReplaceD[#, D -> 4 - 2 Epsilon] & // Series[#, {Epsilon, 0, 0}] & // Normal
+{amps[3], topos} = FCLoopFindTopologies[amps[2], {l}, FCParallelize -> True];
+```
+
+$$\text{FCLoopFindTopologies: Number of the initial candidate topologies: }2$$
+
+$$\text{FCLoopFindTopologies: Number of the identified unique topologies: }2$$
+
+$$\text{FCLoopFindTopologies: Number of the preferred topologies among the unique topologies: }0$$
+
+$$\text{FCLoopFindTopologies: Number of the identified subtopologies: }0$$
+
+```mathematica
+subtopos = FCLoopFindSubtopologies[topos, FCParallelize -> True];
+```
+
+```mathematica
+mappings = FCLoopFindTopologyMappings[topos, PreferredTopologies -> subtopos, FCParallelize -> True];
+```
+
+$$\text{FCLoopFindTopologyMappings: }\;\text{Found }0\text{ mapping relations }$$
+
+$$\text{FCLoopFindTopologyMappings: }\;\text{Final number of independent topologies: }2$$
+
+```mathematica
+toposFinal = mappings[[2]];
+```
+
+## Rewrite the amplitude in terms of GLIs
+
+```mathematica
+AbsoluteTiming[ampReduced = FCLoopTensorReduce[amps[3], topos, FCParallelize -> True];]
+```
+
+$$\{0.243342,\text{Null}\}$$
+
+```mathematica
+AbsoluteTiming[ampPreFinal = FCLoopApplyTopologyMappings[ampReduced, mappings, FCParallelize -> True];]
+```
+
+$$\{0.139798,\text{Null}\}$$
+
+```mathematica
+AbsoluteTiming[ampFinal = ampPreFinal // DiracSimplify[#, FCParallelize -> True] & // 
+      FeynAmpDenominatorExplicit // Collect2[#, DOT, FCParallelize -> True] &;]
+```
+
+$$\{0.037262,\text{Null}\}$$
+
+```mathematica
+ints = Cases2[ampFinal, GLI]
+```
+
+$$\left\{G^{\text{fctopology1}}(-1,1,1),G^{\text{fctopology1}}(0,0,1),G^{\text{fctopology1}}(0,1,0),G^{\text{fctopology1}}(0,1,1),G^{\text{fctopology1}}(1,0,0),G^{\text{fctopology2}}(-1,1,1),G^{\text{fctopology2}}(0,0,1),G^{\text{fctopology2}}(0,1,0),G^{\text{fctopology2}}(0,1,1),G^{\text{fctopology2}}(1,0,0)\right\}$$
+
+```mathematica
+dir = FileNameJoin[{$TemporaryDirectory, "Reduction-PiGaGa"}];
+Quiet[CreateDirectory[dir]];
+```
+
+```mathematica
+KiraCreateJobFile[toposFinal, ints, dir];
+```
+
+```mathematica
+KiraCreateIntegralFile[ints, toposFinal, dir];
+```
+
+$$\text{KiraCreateIntegralFile: Number of loop integrals: }5$$
+
+$$\text{KiraCreateIntegralFile: Number of loop integrals: }5$$
+
+```mathematica
+KiraCreateConfigFiles[toposFinal, ints, dir, KiraMassDimensions -> {kp -> 2}];
+```
+
+```mathematica
+KiraRunReduction[dir, toposFinal, 
+  KiraBinaryPath -> FileNameJoin[{$HomeDirectory, "bin", "kira"}], 
+  KiraFermatPath -> FileNameJoin[{$HomeDirectory, "bin", "ferl64", "fer64"}]]
+```
+
+$$\{\text{True},\text{True}\}$$
+
+```mathematica
+reductionTable = KiraImportResults[toposFinal, dir] // Flatten
+```
+
+$$\left\{G^{\text{fctopology1}}(0,0,1)\to 0,G^{\text{fctopology1}}(0,1,0)\to 0,G^{\text{fctopology1}}(1,0,0)\to 0,G^{\text{fctopology1}}(-1,1,1)\to -\text{kp} G^{\text{fctopology1}}(0,1,1),G^{\text{fctopology2}}(0,0,1)\to 0,G^{\text{fctopology2}}(0,1,0)\to 0,G^{\text{fctopology2}}(1,0,0)\to 0,G^{\text{fctopology2}}(-1,1,1)\to -\text{kp} G^{\text{fctopology2}}(0,1,1)\right\}$$
+
+```mathematica
+resPreFinal = Collect2[Total[ampFinal /. Dispatch[reductionTable]], GLI, FCParallelize -> True];
+```
+
+```mathematica
+integralMappings = FCLoopFindIntegralMappings[Cases2[resPreFinal, GLI], mappings[[2]], FCParallelize -> True];
+```
+
+```mathematica
+resFinal = Collect2[(resPreFinal /. Dispatch[integralMappings[[1]]]), GLI, FCParallelize -> True]
+```
+
+$$-\frac{8 i (D-4) \;\text{e}^2 G^{\text{fctopology1}}(0,1,1) \bar{\epsilon }^{\lambda \nu \overline{k}\overline{p}}}{D-2}$$
+
+We only need the pole of the master integral, since the result is proportional to D-4. The result should be twice Eq. 19.59 in Peskin and Schroeder
+
+```mathematica
+res = resFinal // ReplaceAll[#, {GLI["fctopology1", {0, 1, 1}] -> I/(16 Pi^2 ep) + epHelp}] & // 
+     FCReplaceD[#, {D -> 4 - 2 ep}] & // Series[#, {ep, 0, 0}] & // Normal
 ```
 
 $$-\frac{\text{e}^2 \bar{\epsilon }^{\lambda \nu \overline{k}\overline{p}}}{2 \pi ^2}$$
-
-The result should be twice Eq. 19.59 in Peskin and Schroeder
 
 ## Check the final results
 
 ```mathematica
 knownResult = 2 (SMP["e"]^2/(4 Pi^2) LC[al, la, be, nu] FV[k, al] FV[p, be]) // Contract;
-FCCompareResults[amp[3], knownResult, 
+FCCompareResults[res, knownResult, 
    Text -> {"\tCompare to Peskin and Schroeder, An Introduction to QFT, Eq 19.59:", 
      "CORRECT.", "WRONG!"}, Interrupt -> {Hold[Quit[1]], Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
-```
+
+```mathematica
 
 $$\text{$\backslash $tCompare to Peskin and Schroeder, An Introduction to QFT, Eq 19.59:} \;\text{CORRECT.}$$
 
-$$\text{$\backslash $tCPU Time used: }24.243\text{ s.}$$
+$$\text{$\backslash $tCPU Time used: }19.967\text{ s.}$$

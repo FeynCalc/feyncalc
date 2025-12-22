@@ -14,26 +14,34 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False, 
   	$FeynCalcStartupMessages = False 
   ];
-$LoadAddOns = {"FeynArts"};
+LaunchKernels[4];
+$LoadAddOns = {"FeynArts", "FeynHelpers"};
 << FeynCalc`
-$FAVerbose = 0; 
+$FAVerbose = 0;
+$ParallelizeFeynCalc = True; 
  
-FCCheckVersion[9, 3, 1];
+FCCheckVersion[10, 2, 0];
+If[ToExpression[StringSplit[$FeynHelpersVersion, "."]][[1]] < 2, 
+ 	Print["You need at least FeynHelpers 2.0 to run this example."]; 
+ 	Abort[]; 
+ ]
 ```
 
-$$\text{FeynCalc }\;\text{10.0.0 (dev version, 2023-12-20 22:40:59 +01:00, dff3b835). For help, use the }\underline{\text{online} \;\text{documentation}}\;\text{, check out the }\underline{\text{wiki}}\;\text{ or visit the }\underline{\text{forum}.}$$
-
-$$\text{Please check our }\underline{\text{FAQ}}\;\text{ for answers to some common FeynCalc questions and have a look at the supplied }\underline{\text{examples}.}$$
+$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2025-12-22 21:09:03 +01:00, fcd53f9b). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{If you use FeynCalc in your research, please evaluate FeynCalcHowToCite[] to learn how to cite this software.}$$
 
 $$\text{Please keep in mind that the proper academic attribution of our work is crucial to ensure the future development of this package!}$$
 
-$$\text{FeynArts }\;\text{3.11 (3 Aug 2020) patched for use with FeynCalc, for documentation see the }\underline{\text{manual}}\;\text{ or visit }\underline{\text{www}.\text{feynarts}.\text{de}.}$$
+$$\text{FeynArts }\;\text{3.12 (27 Mar 2025) patched for use with FeynCalc, for documentation see the }\underline{\text{manual}}\;\text{ or visit }\underline{\text{www}.\text{feynarts}.\text{de}.}$$
 
 $$\text{If you use FeynArts in your research, please cite}$$
 
 $$\text{ $\bullet $ T. Hahn, Comput. Phys. Commun., 140, 418-431, 2001, arXiv:hep-ph/0012260}$$
+
+$$\text{FeynHelpers }\;\text{2.0.0 (2025-12-22 19:07:44 +01:00, c92fb9f5). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
+
+$$\text{ If you use FeynHelpers in your research, please evaluate FeynHelpersHowToCite[] to learn how to cite this work.}$$
 
 ## Configure some options
 
@@ -55,7 +63,7 @@ Paint[diags, ColumnsXRows -> {1, 1}, Numbering -> Simple,
   	SheetHeader -> None, ImageSize -> {256, 256}];
 ```
 
-![03qa7794cnavj](img/03qa7794cnavj.svg)
+![0oy82inwo4mrl](img/0oy82inwo4mrl.svg)
 
 ## Obtain the amplitude
 
@@ -64,17 +72,19 @@ The 1/(2Pi)^D prefactor is implicit. We keep the full gauge dependence.
 ```mathematica
 amp[0] = FCFAConvert[CreateFeynAmp[diags, Truncated -> True, 
    	PreFactor -> 1, GaugeRules -> {}], IncomingMomenta -> {p}, 
-  	OutgoingMomenta -> {p}, LoopMomenta -> {q}, UndoChiralSplittings -> True, 
-  	ChangeDimension -> D, List -> False, SMP -> True, DropSumOver -> True, 
+  	OutgoingMomenta -> {p}, LoopMomenta -> {q}, 
+  	UndoChiralSplittings -> True, 
+  	ChangeDimension -> D, SMP -> True, DropSumOver -> True, 
   	Contract -> True, FinalSubstitutions -> {SMP["m_u"] -> SMP["m_q"]}]
 ```
 
-$$-\frac{g_s^2 T_{\text{Col3}\;\text{Col1}}^{\text{Glu3}} T_{\text{Col2}\;\text{Col3}}^{\text{Glu3}} \gamma ^{\text{Lor2}}.\left(m_q+\gamma \cdot q\right).\gamma ^{\text{Lor2}}}{\left(q^2-m_q^2\right).(q-p)^2}-\frac{\left(1-\xi _g\right) g_s^2 T_{\text{Col3}\;\text{Col1}}^{\text{Glu3}} T_{\text{Col2}\;\text{Col3}}^{\text{Glu3}} (\gamma \cdot (p-q)).\left(m_q+\gamma \cdot q\right).(\gamma \cdot (q-p))}{\left(q^2-m_q^2\right).(q-p)^4}$$
+$$\left\{-\frac{g_s^2 T_{\text{Col3}\;\text{Col1}}^{\text{Glu3}} T_{\text{Col2}\;\text{Col3}}^{\text{Glu3}} \gamma ^{\text{Lor2}}.\left(m_q+\gamma \cdot q\right).\gamma ^{\text{Lor2}}}{\left(q^2-m_q^2\right).(q-p)^2}-\frac{\left(1-\xi _g\right) g_s^2 T_{\text{Col3}\;\text{Col1}}^{\text{Glu3}} T_{\text{Col2}\;\text{Col3}}^{\text{Glu3}} (\gamma \cdot (p-q)).\left(m_q+\gamma \cdot q\right).(\gamma \cdot (q-p))}{\left(q^2-m_q^2\right).(q-p)^4}\right\}$$
 
 ## Calculate the amplitude
 
 ```mathematica
-amp[1] = amp[0] // SUNSimplify // TID[#, q, ToPaVe -> True] &
+amp[1] = amp[0] // SUNSimplify[#, FCParallelize -> True] & // 
+    TID[#, q, ToPaVe -> True, FCParallelize -> True] & // Total
 ```
 
 $$\frac{1}{2 p^2}i \pi ^2 C_F g_s^2 \delta _{\text{Col1}\;\text{Col2}} \;\text{B}_0\left(p^2,0,m_q^2\right) \left(-D \left(p^2-m_q^2\right) \gamma \cdot p-2 D p^2 m_q+2 D p^2 \gamma \cdot p+\xi _g m_q^2 \gamma \cdot p-2 \xi _g m_q (\gamma \cdot p).(\gamma \cdot p)+p^2 \xi _g \gamma \cdot p+m_q^2 (-(\gamma \cdot p))+2 m_q (\gamma \cdot p).(\gamma \cdot p)+2 \left(p^2-m_q^2\right) \gamma \cdot p-5 p^2 \gamma \cdot p\right)-\frac{i \pi ^2 C_F \left(1-\xi _g\right) g_s^2 \;\text{B}_0(0,0,0) \delta _{\text{Col1}\;\text{Col2}} \left(m_q^2 (-(\gamma \cdot p))+2 m_q (\gamma \cdot p).(\gamma \cdot p)-2 p^2 m_q+p^2 \gamma \cdot p\right)}{2 p^2}+\frac{i \pi ^2 C_F \left(1-\xi _g\right) g_s^2 \delta _{\text{Col1}\;\text{Col2}} \left(-m_q^2 \left(p^2-m_q^2\right) \gamma \cdot p-4 p^2 m_q (\gamma \cdot p).(\gamma \cdot p)+2 m_q \left(p^2-m_q^2\right) (\gamma \cdot p).(\gamma \cdot p)+p^2 \left(p^2-m_q^2\right) \gamma \cdot p+2 p^2 m_q^3+2 p^4 m_q\right) \;\text{C}_0\left(0,p^2,p^2,0,0,m_q^2\right)}{2 p^2}+\frac{i \pi ^2 (2-D) C_F g_s^2 \delta _{\text{Col1}\;\text{Col2}} \gamma \cdot p \;\text{A}_0\left(m_q^2\right)}{2 p^2}$$
@@ -116,10 +126,11 @@ FCCompareResults[sigma[0], knownResult,
   Text -> {"\tCompare to Muto, Foundations of QCD, Eq 10.41:", 
     "CORRECT.", "WRONG!"}, Interrupt -> {Hold[Quit[1]], Automatic}]
 Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
-```
+
+```mathematica
 
 $$\text{$\backslash $tCompare to Muto, Foundations of QCD, Eq 10.41:} \;\text{CORRECT.}$$
 
 $$\text{True}$$
 
-$$\text{$\backslash $tCPU Time used: }23.468\text{ s.}$$
+$$\text{$\backslash $tCPU Time used: }18.781\text{ s.}$$

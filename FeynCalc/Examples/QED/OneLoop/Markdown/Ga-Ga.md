@@ -14,22 +14,20 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False, 
   	$FeynCalcStartupMessages = False 
   ];
+LaunchKernels[4];
 $LoadAddOns = {"FeynArts"};
 << FeynCalc`
-$FAVerbose = 0; 
- 
-FCCheckVersion[9, 3, 1];
+$FAVerbose = 0;
+$ParallelizeFeynCalc = True;
 ```
 
-$$\text{FeynCalc }\;\text{10.0.0 (dev version, 2023-12-20 22:40:59 +01:00, dff3b835). For help, use the }\underline{\text{online} \;\text{documentation}}\;\text{, check out the }\underline{\text{wiki}}\;\text{ or visit the }\underline{\text{forum}.}$$
-
-$$\text{Please check our }\underline{\text{FAQ}}\;\text{ for answers to some common FeynCalc questions and have a look at the supplied }\underline{\text{examples}.}$$
+$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2025-12-22 21:09:03 +01:00, fcd53f9b). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{If you use FeynCalc in your research, please evaluate FeynCalcHowToCite[] to learn how to cite this software.}$$
 
 $$\text{Please keep in mind that the proper academic attribution of our work is crucial to ensure the future development of this package!}$$
 
-$$\text{FeynArts }\;\text{3.11 (3 Aug 2020) patched for use with FeynCalc, for documentation see the }\underline{\text{manual}}\;\text{ or visit }\underline{\text{www}.\text{feynarts}.\text{de}.}$$
+$$\text{FeynArts }\;\text{3.12 (27 Mar 2025) patched for use with FeynCalc, for documentation see the }\underline{\text{manual}}\;\text{ or visit }\underline{\text{www}.\text{feynarts}.\text{de}.}$$
 
 $$\text{If you use FeynArts in your research, please cite}$$
 
@@ -48,8 +46,8 @@ $KeepLogDivergentScalelessIntegrals = True;
 Nicer typesetting
 
 ```mathematica
-MakeBoxes[mu, TraditionalForm] := "\[Mu]";
-MakeBoxes[nu, TraditionalForm] := "\[Nu]";
+FCAttachTypesettingRule[mu, "\[Mu]"];
+FCAttachTypesettingRule[nu, "\[Nu]"];
 ```
 
 ```mathematica
@@ -61,7 +59,7 @@ Paint[diags, ColumnsXRows -> {1, 1}, Numbering -> Simple,
   	SheetHeader -> None, ImageSize -> {256, 256}];
 ```
 
-![0133bojpmpiil](img/0133bojpmpiil.svg)
+![0ixwl7tc2ym2y](img/0ixwl7tc2ym2y.svg)
 
 ## Obtain the amplitude
 
@@ -71,17 +69,15 @@ The 1/(2Pi)^D prefactor is implicit.
 amp[0] = FCFAConvert[CreateFeynAmp[diags, Truncated -> True, PreFactor -> 1], 
   	IncomingMomenta -> {p}, OutgoingMomenta -> {p}, LoopMomenta -> {q},
   	LorentzIndexNames -> {mu, nu}, UndoChiralSplittings -> True, 
-  	ChangeDimension -> D, List -> False, SMP -> True, 
-  	Contract -> True]
+  	ChangeDimension -> D, SMP -> True, Contract -> True]
+```
 
-```mathematica
-
-$$\frac{\text{tr}\left(\left(m_e-\gamma \cdot q\right).\left(i \;\text{e} \gamma ^{\nu }\right).\left(m_e+\gamma \cdot (p-q)\right).\left(i \;\text{e} \gamma ^{\mu }\right)\right)}{\left(q^2-m_e^2\right).\left((q-p)^2-m_e^2\right)}$$
+$$\left\{\frac{\text{tr}\left(\left(m_e-\gamma \cdot q\right).\left(i \;\text{e} \gamma ^{\nu }\right).\left(m_e+\gamma \cdot (p-q)\right).\left(i \;\text{e} \gamma ^{\mu }\right)\right)}{\left(q^2-m_e^2\right).\left((q-p)^2-m_e^2\right)}\right\}$$
 
 ## Calculate the amplitude
 
 ```mathematica
-amp[1] = TID[amp[0], q, ToPaVe -> True]
+amp[1] = TID[amp[0], q, ToPaVe -> True, FCParallelize -> True] // Total
 ```
 
 $$\frac{2 i \pi ^2 \;\text{e}^2 \;\text{B}_0\left(p^2,m_e^2,m_e^2\right) \left(-\left((1-D) p^4 g^{\mu \nu }\right)+2 (1-D) p^2 p^{\mu } p^{\nu }+D p^2 p^{\mu } p^{\nu }+4 p^2 m_e^2 g^{\mu \nu }-4 m_e^2 p^{\mu } p^{\nu }-p^4 g^{\mu \nu }\right)}{(1-D) p^2}-\frac{4 i \pi ^2 \;\text{e}^2 \;\text{A}_0\left(m_e^2\right) \left(-(1-D) p^2 g^{\mu \nu }-D p^{\mu } p^{\nu }-p^2 g^{\mu \nu }+2 p^{\mu } p^{\nu }\right)}{(1-D) p^2}$$
@@ -134,8 +130,9 @@ FCCompareResults[pi[0], knownResult,
    Text -> {"\tCompare to Peskin and Schroeder, An Introduction to QFT, Eq 10.44:", 
      "CORRECT.", "WRONG!"}, Interrupt -> {Hold[Quit[1]], Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
-```
+
+```mathematica
 
 $$\text{$\backslash $tCompare to Peskin and Schroeder, An Introduction to QFT, Eq 10.44:} \;\text{CORRECT.}$$
 
-$$\text{$\backslash $tCPU Time used: }19.064\text{ s.}$$
+$$\text{$\backslash $tCPU Time used: }23.132\text{ s.}$$
