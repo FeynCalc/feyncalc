@@ -6,7 +6,7 @@
 
 ### Notation for light-cone components
 
-FeynCalc is equipped with special symbols that facilitate calculations involving light-cone vectors. The default $n$ and $\bar{n}$ vectors are defined via the global variables `$FCDefaultLightconeVectorN` and `$FCDefaultLightconeVectorNB`. By default those are set to `FCGV["n"]` and `FCGV["nb"]` to avoid possible conflicts with user-defined variables
+FeynCalc is equipped with special symbols that facilitate calculations involving light-cone vectors. The default $n$ and $$\bar{n}$$ vectors are defined via the global variables `$FCDefaultLightconeVectorN` and `$FCDefaultLightconeVectorNB`. By default those are set to `FCGV["n"]` and `FCGV["nb"]` to avoid possible conflicts with user-defined variables
 
 ```mathematica
 {$FCDefaultLightconeVectorN, $FCDefaultLightconeVectorNB}
@@ -212,6 +212,8 @@ ex5 // DiracSimplify
 ```
 
 $$2 i \overline{n}^{\rho } \bar{\epsilon }^{\mu _{\perp }\nu _{\perp }\sigma _{\perp }\;\overline{\text{nb}}}+2 i \overline{\text{nb}}^{\rho } \bar{\epsilon }^{\mu _{\perp }\nu _{\perp }\sigma _{\perp }\overline{n}}-2 i \overline{n}^{\sigma } \bar{\epsilon }^{\mu _{\perp }\nu _{\perp }\rho _{\perp }\;\overline{\text{nb}}}-i \overline{n}^{\sigma } \overline{\text{nb}}^{\rho } \bar{\epsilon }^{\mu _{\perp }\nu _{\perp }\overline{n}\;\overline{\text{nb}}}-2 i \overline{\text{nb}}^{\sigma } \bar{\epsilon }^{\mu _{\perp }\nu _{\perp }\rho _{\perp }\overline{n}}+i \overline{n}^{\rho } \overline{\text{nb}}^{\sigma } \bar{\epsilon }^{\mu _{\perp }\nu _{\perp }\overline{n}\;\overline{\text{nb}}}-4 i \bar{\epsilon }^{\mu _{\perp }\nu _{\perp }\rho _{\perp }\sigma _{\perp }}$$
+
+In order to handle Dirac matrices involving light-cone components effectively, one needs to define some ordering. The current (hard-coded) choice is that the perpendicular component always get anticommuted to the very right of each Dirac chain, while every remaining occurence of $(\gamma \cdot \bar{n}) (\gamma \cdot n)$ is changed to $(\gamma \cdot n) (\gamma \cdot \bar{n})$.
 
 ### Introducing light-cone components by hand
 

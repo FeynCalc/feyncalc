@@ -56,6 +56,10 @@ FV[p,\[Mu]]FVE[q,\[Mu]]
 Contract[%]
 
 
+(FVD[p,\[Mu]]+FVE[p,\[Mu]])(FVD[q,\[Mu]]+FVE[q,\[Mu]])
+Contract[%]
+
+
 (* ::Text:: *)
 (*Sometimes we need to switch from one dimension to another, e.g. to convert a 4-dimensional object to a $D$-dimensional one or vice versa. This is done via*)
 
@@ -70,3 +74,30 @@ ChangeDimension[%,4]
 
 FVD[p,\[Mu]]
 ChangeDimension[%,D-4]
+
+
+SP[p,q]
+ChangeDimension[%,D]
+
+
+(* ::Text:: *)
+(*To check the dimension of the given expression one can use `FCGetDimensions`*)
+
+
+FVD[p,\[Mu]]FV[q,\[Mu]]
+FCGetDimensions[%,{}]
+
+
+(* ::Text:: *)
+(*If one needs to replace the dimensional symbols `D` in the prefactors of the Lorentz tensors, it is better to use `FCReplaceD` instead of a replacement rule. Otherwise, the dimensions of the tensors will get messed up*)
+
+
+FCI[(D+2) MTD[\[Mu], \[Nu]]] 
+% /. D -> 4 - 2 Epsilon
+
+
+(D+2) MTD[\[Mu], \[Nu]]
+FCReplaceD[%, D -> 4 - 2 Epsilon] 
+
+
+

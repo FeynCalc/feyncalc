@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for
@@ -452,7 +452,7 @@ fctopology4, {SFAD[{{l, 0}, {mq^2, 1}, 1}],
 
 
 {"fcstFCLoopFindIntegralMappings-ID14",
-"$ParallelizeFeynCalc = True;
+"LaunchKernels[2]; $ParallelizeFeynCalc = True;
 tmp = FCLoopFindIntegralMappings[{GLI[
 	topology10, {1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0}],
 	GLI[topology10, {1, 1, 1, 1, 1, 0, 0, 2, 0, 0, 0,
@@ -520,12 +520,10 @@ tmp = FCLoopFindIntegralMappings[{GLI[
 $ParallelizeFeynCalc = False; tmp",
 "{{}, {GLI[topology10, {1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0}],
 GLI[topology10, {1, 1, 1, 1, 1, 0, 0, 2, 0, 0, 0, 0}]}}"},
-
 {"fcstFCLoopFindIntegralMappings-ID15",
 "FCLoopFindIntegralMappings[{GLI[
 fctopology10C, {1, 0, 1, 1, 1, 0, -1}],
-GLI[fctopology10C, {1, 0, 1, 1, 1, 0, 0}]},
-{FCTopology[
+GLI[fctopology10C, {1, 0, 1, 1, 1, 0, 0}]}, {FCTopology[
 	fctopology10C, {SFAD[{{k1, 0}, {0, 1}, 1}],
 	SFAD[{{k1 + q1, 0}, {0, 1}, 1}], SFAD[{{k2, 0}, {mt^2, 1}, 1}],
 	SFAD[{{k2 + q2, 0}, {mt^2, 1}, 1}],

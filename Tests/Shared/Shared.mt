@@ -2,9 +2,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Unit tests for functions in the "Shared" directory			*)
@@ -13,7 +13,7 @@
 
 Needs["FeynCalc`"];
 
-(*TODO Need tests for Collect3, Factor1, FeynCalcForm, ILimit, Series3,  MemSet, XYT, TimedIntegrate*)
+(*TODO Need tests for Factor1, FeynCalcForm, ILimit, Series3,  MemSet, XYT, TimedIntegrate*)
 
 ClearAll[tests];
 tests = FileNames["*.test",FileNameJoin[{ParentDirectory@$FeynCalcDirectory, "Tests", "Shared"}]]

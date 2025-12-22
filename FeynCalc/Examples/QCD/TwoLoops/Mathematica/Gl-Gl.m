@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Gl -> Gl, massless QCD, 2-loops								*)
@@ -30,11 +30,17 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False,
 	$FeynCalcStartupMessages = False
 ];
-$LoadAddOns={"FeynArts"};
+LaunchKernels[4];
+$LoadAddOns={"FeynArts","FeynHelpers"};
 <<FeynCalc`
 $FAVerbose = 0;
+$ParallelizeFeynCalc=True;
 
-FCCheckVersion[10,0,0];
+FCCheckVersion[10,2,0];
+If[ToExpression[StringSplit[$FeynHelpersVersion,"."]][[1]]<2,
+	Print["You need at least FeynHelpers 2.0 to run this example."];
+	Abort[];
+]
 
 
 (* ::Section:: *)
@@ -58,8 +64,9 @@ Numbering -> True,ImageSize->{1024,256}];
 
 
 ampRaw = FCFAConvert[CreateFeynAmp[DiagramExtract[diags,{2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,20,39}], Truncated -> True,
-	PreFactor->1], IncomingMomenta->{p}, OutgoingMomenta->{p},LoopMomenta->{q1,q2},
-	UndoChiralSplittings->True, ChangeDimension->D, List->True, SMP->True,
+	PreFactor->1], IncomingMomenta->{p}, OutgoingMomenta->{p},
+	LoopMomenta->{q1,q2},
+	UndoChiralSplittings->True, ChangeDimension->D, SMP->True,
 	DropSumOver->True]//SMPToSymbol;
 
 
@@ -78,49 +85,65 @@ ScalarProduct[p,p]=pp;
 projector=MTD[Lor1,Lor2]1/((D-1)SPD[p])1/(2CA CF)SUNDelta[Glu1,Glu2]
 
 
-AbsoluteTiming[ampSimp=(projector ampRaw/.mu->0)//Contract//DiracSimplify//SUNSimplify;]
+AbsoluteTiming[ampSimp=(projector ampRaw/.mu->0)//Contract[#,FCParallelize->True]&//
+DiracSimplify[#,FCParallelize->True]&//SUNSimplify[#,FCParallelize->True]&;]
 
 
 (* ::Section:: *)
 (*Identify and minimize the topologies*)
 
 
-{amp,topos}=FCLoopFindTopologies[ampSimp,{q1,q2}];
+{amp,topos}=FCLoopFindTopologies[ampSimp,{q1,q2},FCParallelize->True];
 
 
-subtopos=FCLoopFindSubtopologies[topos];
+subtopos=FCLoopFindSubtopologies[topos,FCParallelize->True];
 
 
-mappings=FCLoopFindTopologyMappings[topos,PreferredTopologies->subtopos];
+mappings=FCLoopFindTopologyMappings[topos,PreferredTopologies->subtopos,
+FCParallelize->True];
 
 
 (* ::Section:: *)
 (*Rewrite the amplitude in terms of GLIs*)
 
 
-AbsoluteTiming[ampReduced=FCLoopTensorReduce[amp,topos];]
+AbsoluteTiming[ampReduced=FCLoopTensorReduce[amp,topos,FCParallelize->True];]
 
 
-AbsoluteTiming[ampPreFinal=FCLoopApplyTopologyMappings[ampReduced,mappings];]
+AbsoluteTiming[ampPreFinal=FCLoopApplyTopologyMappings[ampReduced,
+mappings,FCParallelize->True];]
 
 
-AbsoluteTiming[ampFinal=ampPreFinal//DiracSimplify//SUNSimplify;]
+AbsoluteTiming[ampFinal=ampPreFinal//
+DiracSimplify[#,FCParallelize->True]&//SUNSimplify[#,FCParallelize->True]&;]
 
 
-(*FCReloadAddOns[{"FeynHelpers"}];
-FIREPrepareStartFile[mappings[[2]],FCGetNotebookDirectory[]]
-FIRECreateStartFile[FCGetNotebookDirectory[],mappings[[2]]]
-FIRECreateConfigFile[mappings[[2]],FCGetNotebookDirectory[]]
-FIRECreateIntegralFile[Cases2[ampPreFinal,GLI],mappings[[2]],FCGetNotebookDirectory[]]
-FIRERunReduction[FCGetNotebookDirectory[],mappings[[2]]]
-tables=FIREImportResults[mappings[[2]],FCGetNotebookDirectory[]]//Flatten;
-Put[tables,FileNameJoin[{FCGetNotebookDirectory[],"ReductionTable-Gl-Gl.m"}]];*)
+dir=FileNameJoin[{$TemporaryDirectory,"Reduction-GlToGl-2L"}];
+Quiet[CreateDirectory[dir]];
 
 
-reductionTable=Get[FileNameJoin[{FCGetNotebookDirectory[],"ReductionTable-Gl-Gl.m"}]];
+FIREPrepareStartFile[mappings[[2]],dir];
 
 
-resPreFinal=Collect2[Total[ampFinal/.reductionTable],GLI]
+FIRECreateLiteRedFiles[dir,mappings[[2]]];
+
+
+FIRECreateStartFile[dir,mappings[[2]]];
+
+
+FIRECreateIntegralFile[Cases2[ampPreFinal,GLI],mappings[[2]],dir];
+
+
+FIRECreateConfigFile[mappings[[2]],dir];
+
+
+FIRERunReduction[dir,mappings[[2]]];
+
+
+reductionTable=FIREImportResults[mappings[[2]],dir]//Flatten;
+
+
+resPreFinal=Collect2[Total[ampFinal/.reductionTable]//FeynAmpDenominatorExplicit,GLI]
 
 
 integralMappings=FCLoopFindIntegralMappings[Cases2[resPreFinal,GLI],mappings[[2]]]

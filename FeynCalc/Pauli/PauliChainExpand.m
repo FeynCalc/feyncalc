@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary: Expands Pauli chains with explicit indices						*)
@@ -112,7 +112,7 @@ chLinExp[null1|null2,__]:=0;
 chLin[xx_, i_]:=
 	chLinExp[xx, i];
 
-chLin[xx_, i : (_PauliIndex | _ExplicitPauliIndex | _PauliXi | _PauliEta), j : (_PauliIndex | _ExplicitPauliIndex | _PauliXi | _PauliEta)] :=
+chLin[xx_, i : (_PauliIndex | _ExplicitPauliIndex | _PauliXi | _PauliEta| _PauliEtaC), j : (_PauliIndex | _ExplicitPauliIndex | _PauliXi | _PauliEta| _PauliEtaC)] :=
 	Map[chLinExp[#,i,j]&,expandFu[xx]+null1+null2];
 
 expandFu[xx_]:=

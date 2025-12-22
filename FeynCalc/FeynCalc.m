@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	FeynCalc is a Mathematica package for symbolic evaluation
@@ -30,7 +30,7 @@ If[ ($VersionNumber < 10.0) && StringFreeQ[$Version, "Mathics"],
 ];
 
 (*    Set the version number    *)
-FeynCalc`$FeynCalcVersion = "10.1.0";
+FeynCalc`$FeynCalcVersion = "10.2.0";
 
 fcGlobalToFeynCalc[varG_String, defaultVal_]:=
 	fcGlobalToFeynCalc[varG, varG, defaultVal];
@@ -273,9 +273,9 @@ Remove["FeynCalc`repList"];
 
 
 (* If necessary, swtich the output format of the current frontend to TraditionalForm *)
-If[	$FCTraditionalFormOutput,
+Quiet[If[	$FCTraditionalFormOutput,
 	CurrentValue[$FrontEndSession, {CommonDefaultFormatTypes, "Output"}] = TraditionalForm
-];
+];,FrontEndObject::notavail];
 
 If[ !$Notebooks && $FeynCalcStartupMessages,
 	$PrePrint = FeynCalcForm;

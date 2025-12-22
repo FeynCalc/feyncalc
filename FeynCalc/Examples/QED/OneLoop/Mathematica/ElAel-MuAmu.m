@@ -1,18 +1,17 @@
 (* ::Package:: *)
 
-(* :Title: ElAel-MuAmu														*)
+(* :Title: ElAel-MuAmu2													*)
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  El Ael -> Mu Amu, QED, Born-virtual, 1-loop				*)
 
 (* ------------------------------------------------------------------------ *)
-
 
 
 (* ::Title:: *)
@@ -23,7 +22,7 @@
 (*Load FeynCalc and the necessary add-ons or other packages*)
 
 
-description="El Ael -> Mu Amu, QED, Born-virtual, 1-loop";
+description="El Ael -> El Ael, QED, Born-virtual, 1-loop";
 If[ $FrontEnd === Null,
 	$FeynCalcStartupMessages = False;
 	Print[description];
@@ -31,11 +30,17 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False,
 	$FeynCalcStartupMessages = False
 ];
-$LoadAddOns={"FeynArts"};
+LaunchKernels[4];
+$LoadAddOns={"FeynArts","FeynHelpers"};
 <<FeynCalc`
 $FAVerbose = 0;
+$ParallelizeFeynCalc=True;
 
-FCCheckVersion[9,3,1];
+FCCheckVersion[10,2,0];
+If[ToExpression[StringSplit[$FeynHelpersVersion,"."]][[1]]<2,
+	Print["You need at least FeynHelpers 2.0 to run this example."];
+	Abort[];
+]
 
 
 (* ::Section:: *)
@@ -46,10 +51,10 @@ FCCheckVersion[9,3,1];
 (*Nicer typesetting*)
 
 
-MakeBoxes[p1,TraditionalForm]:="\!\(\*SubscriptBox[\(p\), \(1\)]\)";
-MakeBoxes[p2,TraditionalForm]:="\!\(\*SubscriptBox[\(p\), \(2\)]\)";
-MakeBoxes[k1,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(1\)]\)";
-MakeBoxes[k2,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(2\)]\)";
+FCAttachTypesettingRule[p1,{SubscriptBox,"p","1"}]
+FCAttachTypesettingRule[p2,{SubscriptBox,"p","2"}]
+FCAttachTypesettingRule[k1,{SubscriptBox,"k","1"}]
+FCAttachTypesettingRule[k2,{SubscriptBox,"k","2"}]
 
 
 diagsTree=InsertFields[CreateTopologies[0, 2 -> 2,
@@ -104,88 +109,173 @@ ampTree[0]=FCFAConvert[CreateFeynAmp[diagsTree,Truncated -> False,PreFactor->1],
 
 
 FCClearScalarProducts[];
-SetMandelstam[s, t, u, p1, p2, -k1, -k2, 0, 0, 0, 0];
+SetMandelstam[-t-u(*s*), t, u, p1, p2, -k1, -k2, 0, 0, 0, 0]
 
 
 (* ::Section:: *)
 (*Evaluate the amplitudes*)
 
 
-$KeepLogDivergentScalelessIntegrals=True;
+ampTree[1]=ampTree[0]//DotSimplify[#,Expanding->False]&;
 
 
-ampLoop[1]=
-	(FCTraceFactor/@DotSimplify[#,Expanding->False]&/@Join[ampLoop[0][[1;;4]],Nf ampLoop[0][[5;;5]]]);
+ampTree[2]=ampTree[1]//Contract[#,FCParallelize->True]&//DiracSimplify[#,FCParallelize->True]&//
+FeynAmpDenominatorExplicit//FCCanonicalizeDummyIndices[#,LorentzIndexNames->{mu},FCParallelize->True]&//Total
 
 
-ampTree[1]=
-	(FCTraceFactor/@DotSimplify[#,Expanding->False]&/@ampTree[0]);
+ampLoopCT[1]=ampLoopCT[0]//DotSimplify[#,Expanding->False]&;
 
 
-ampLoopCT[1]=
-	(FCTraceFactor/@DotSimplify[#,Expanding->False]&/@ampLoopCT[0]);
+amlLoop[0]=Join[ampLoop[0][[1;;4]],Nf ampLoop[0][[5;;5]]];
 
 
-evalFuSimple[ex_]:=ex//Contract//DiracSimplify//TID[#,q,ToPaVe->True]&//
-	DiracSimplify//Contract//ReplaceAll[#,(h:A0|B0|C0|D0)[x__]:>
-	TrickMandelstam[h[x],{s,t,u,0}]]&//
-	FeynAmpDenominatorExplicit//Collect2[#,{A0,B0,C0,D0},
-	Factoring->Function[x,Factor2[TrickMandelstam[x,{s,t,u,0}]]]]&;
+AbsoluteTiming[amlLoop[1]=amlLoop[0]//Contract[#,FCParallelize->True]&//DiracSimplify[#,FCParallelize->True]&;]
 
 
-(*about 50 seconds*)
-AbsoluteTiming[ampLoop[2]=evalFuSimple/@ampLoop[1];]
+(* ::Section:: *)
+(*Identify and minimize the topologies*)
 
 
-ampTree[2]=(Total[ampTree[1]]//Contract//DiracSimplify)//FeynAmpDenominatorExplicit//
-	FCCanonicalizeDummyIndices[#,LorentzIndexNames->{mu}]&
+{amlLoop[2],topos}=FCLoopFindTopologies[amlLoop[1],{q},FCParallelize->True];
+
+
+subtopos=FCLoopFindSubtopologies[topos,FCParallelize->True];
+
+
+mappings=FCLoopFindTopologyMappings[topos,PreferredTopologies->subtopos,FCParallelize->True];
+
+
+(* ::Section:: *)
+(*Rewrite the amplitude in terms of GLIs*)
+
+
+AbsoluteTiming[ampReduced=FCLoopTensorReduce[amlLoop[2],topos,FCParallelize->True];]
+
+
+AbsoluteTiming[ampPreFinal=FCLoopApplyTopologyMappings[ampReduced,mappings,FCParallelize->True];]
+
+
+AbsoluteTiming[ampFinal=ampPreFinal//DiracSimplify[#,FCParallelize->True]&//
+FCCanonicalizeDummyIndices[#,LorentzIndexNames->{mu,nu,rho},FCParallelize->True]&//
+FeynAmpDenominatorExplicit//Collect2[#,DOT,FCParallelize->True]&;]
+
+
+dir=FileNameJoin[{$TemporaryDirectory,"Reduction-ElAelToMuAmu2"}];
+Quiet[CreateDirectory[dir]];
+
+
+FIREPrepareStartFile[mappings[[2]],dir];
+
+
+FIRECreateLiteRedFiles[dir,mappings[[2]]];
+
+
+FIRECreateStartFile[dir,mappings[[2]]];
+
+
+FIRECreateIntegralFile[Cases2[ampPreFinal,GLI],mappings[[2]],dir];
+
+
+FIRECreateConfigFile[mappings[[2]],dir];
+
+
+FIRERunReduction[dir,mappings[[2]]];
+
+
+reductionTable=FIREImportResults[mappings[[2]],dir]//Flatten;
+
+
+resPreFinal=Collect2[Total[ampFinal/.Dispatch[reductionTable]],GLI,FCParallelize->True];
+
+
+integralMappings=FCLoopFindIntegralMappings[Cases2[resPreFinal,GLI],mappings[[2]],FCParallelize->True]
+
+
+resFinal=Collect2[(resPreFinal/.Dispatch[integralMappings[[1]]]),GLI,FCParallelize->True];
 
 
 (* ::Text:: *)
 (*Obtain the Born-virtual interference term*)
 
 
-(*about 3 seconds*)
+(*about 10 seconds*)
 AbsoluteTiming[bornVirtualUnrenormalized[0]=
-	Collect2[Total[ampLoop[2]],Spinor,LorentzIndex,IsolateNames->KK] *
+	Collect2[resFinal,Spinor,LorentzIndex,IsolateNames->KK] *
 	ComplexConjugate[ampTree[2]]//
 	FermionSpinSum[#,ExtraFactor->1/2^2]&//DiracSimplify//
-	FRH//TrickMandelstam[#,{s,t,u,0}]&//Collect2[#,B0,C0,D0]&;]
+	FRH//Collect2[#,GLI]&;]
+
+
+(* ::Text:: *)
+(*Master integrals using the standard textbook normalization*)
+
+
+ruleMasters={GLI["fctopology1", {0, 1, 0, 1}] -> (I/16)/(ep*Pi^2) + (2*I - I*EulerGamma + Pi)/(16*Pi^2) + 
+(ep*(48*I - (24*I)*EulerGamma + (6*I)*EulerGamma^2 + 24*Pi - 12*EulerGamma*Pi - (7*I)*Pi^2))/
+    (192*Pi^2) + ((I/8)*Log[2])/Pi^2 + (ep*(2*I - I*EulerGamma + Pi)*Log[2])/(8*Pi^2) + ((I/8)*ep*Log[2]^2)/Pi^2 + 
+    ((I/16)*Log[Pi])/Pi^2 + (ep*(2*I - I*EulerGamma + Pi)*Log[Pi])/(16*Pi^2) + 
+   ((I/8)*ep*Log[2]*Log[Pi])/Pi^2 + ((I/32)*ep*Log[Pi]^2)/Pi^2 - ((I/16)*Log[-t - u])/Pi^2 - 
+   (ep*(2*I - I*EulerGamma + Pi)*Log[-t - u])/(16*Pi^2) - ((I/8)*ep*Log[2]*Log[-t - u])/Pi^2 - 
+   ((I/16)*ep*Log[Pi]*Log[-t - u])/Pi^2 + ((I/32)*ep*Log[-t - u]^2)/Pi^2, 
+   GLI["fctopology1", {1, 0, 1, 0}] -> (I/16)/(ep*Pi^2) - ((I/16)*(-2 + EulerGamma))/Pi^2 - 
+   ((I/192)*ep*(-48 + 24*EulerGamma - 6*EulerGamma^2 + Pi^2))/Pi^2 + ((I/8)*Log[2])/Pi^2 - 
+   ((I/8)*ep*(-2 + EulerGamma)*Log[2])/Pi^2 + ((I/8)*ep*Log[2]^2)/Pi^2 + ((I/16)*Log[Pi])/Pi^2 - 
+   ((I/16)*ep*(-2 + EulerGamma)*Log[Pi])/Pi^2 + ((I/8)*ep*Log[2]*Log[Pi])/Pi^2 + ((I/32)*ep*Log[Pi]^2)/Pi^2 - 
+   ((I/16)*Log[-t])/Pi^2 + ((I/16)*ep*(-2 + EulerGamma)*Log[-t])/Pi^2 - 
+   ((I/8)*ep*Log[2]*Log[-t])/Pi^2 - ((I/16)*ep*Log[Pi]*Log[-t])/Pi^2 + ((I/32)*ep*Log[-t]^2)/Pi^2, 
+ GLI["fctopology2", {1, 0, 1, 0}] -> (I/16)/(ep*Pi^2) - ((I/16)*(-2 + EulerGamma))/Pi^2 - 
+ ((I/192)*ep*(-48 + 24*EulerGamma - 6*EulerGamma^2 + Pi^2))/Pi^2 + ((I/8)*Log[2])/Pi^2 - 
+   ((I/8)*ep*(-2 + EulerGamma)*Log[2])/Pi^2 + ((I/8)*ep*Log[2]^2)/Pi^2 + ((I/16)*Log[Pi])/Pi^2 - 
+   ((I/16)*ep*(-2 + EulerGamma)*Log[Pi])/Pi^2 + ((I/8)*ep*Log[2]*Log[Pi])/Pi^2 + 
+   ((I/32)*ep*Log[Pi]^2)/Pi^2 - ((I/16)*Log[-u])/Pi^2 + ((I/16)*ep*(-2 + EulerGamma)*Log[-u])/Pi^2 - 
+   ((I/8)*ep*Log[2]*Log[-u])/Pi^2 - ((I/16)*ep*Log[Pi]*Log[-u])/Pi^2 + 
+   ((I/32)*ep*Log[-u]^2)/Pi^2, GLI["fctopology1", {1, 1, 1, 1}] -> (-1/4*I)/(ep^2*Pi^2*t*(t + u)) + 
+   ((I/8)*(2*EulerGamma + I*Pi))/(ep*Pi^2*t*(t + u)) + 
+   ((-3*I)*EulerGamma^2 + 3*EulerGamma*Pi + (2*I)*Pi^2)/(24*Pi^2*t*(t + u)) - ((I/2)*Log[2])/(ep*Pi^2*t*(t + u)) + 
+   ((I/4)*(2*EulerGamma + I*Pi)*Log[2])/(Pi^2*t*(t + u)) - 
+   ((I/2)*Log[2]^2)/(Pi^2*t*(t + u)) - ((I/4)*Log[Pi])/(ep*Pi^2*t*(t + u)) + 
+   ((I/8)*(2*EulerGamma + I*Pi)*Log[Pi])/(Pi^2*t*(t + u)) - ((I/2)*Log[2]*Log[Pi])/(Pi^2*t*(t + u)) - 
+   ((I/8)*Log[Pi]^2)/(Pi^2*t*(t + u)) + ((I/8)*Log[-t])/(ep*Pi^2*t*(t + u)) + 
+   (((-I)*EulerGamma + Pi)*Log[-t])/(8*Pi^2*t*(t + u)) + ((I/4)*Log[2]*Log[-t])/(Pi^2*t*(t + u)) + 
+   ((I/8)*Log[Pi]*Log[-t])/(Pi^2*t*(t + u)) + ((I/8)*Log[-t - u])/(ep*Pi^2*t*(t + u)) - 
+   ((I/8)*EulerGamma*Log[-t - u])/(Pi^2*t*(t + u)) + ((I/4)*Log[2]*Log[-t - u])/(Pi^2*t*(t + u)) + 
+   ((I/8)*Log[Pi]*Log[-t - u])/(Pi^2*t*(t + u)) - ((I/8)*Log[-t]*Log[-t - u])/(Pi^2*t*(t + u)), 
+ GLI["fctopology2", {1, 1, 1, 1}] -> (-1/4*I)/(ep^2*Pi^2*u*(t + u)) + ((I/8)*(2*EulerGamma + I*Pi))/(ep*Pi^2*u*(t + u)) + 
+   ((-3*I)*EulerGamma^2 + 3*EulerGamma*Pi + (2*I)*Pi^2)/(24*Pi^2*u*(t + u)) - 
+   ((I/2)*Log[2])/(ep*Pi^2*u*(t + u)) + ((I/4)*(2*EulerGamma + I*Pi)*Log[2])/(Pi^2*u*(t + u)) - 
+   ((I/2)*Log[2]^2)/(Pi^2*u*(t + u)) - ((I/4)*Log[Pi])/(ep*Pi^2*u*(t + u)) + 
+   ((I/8)*(2*EulerGamma + I*Pi)*Log[Pi])/(Pi^2*u*(t + u)) - ((I/2)*Log[2]*Log[Pi])/(Pi^2*u*(t + u)) - 
+   ((I/8)*Log[Pi]^2)/(Pi^2*u*(t + u)) + ((I/8)*Log[-t - u])/(ep*Pi^2*u*(t + u)) - 
+   ((I/8)*EulerGamma*Log[-t - u])/(Pi^2*u*(t + u)) + ((I/4)*Log[2]*Log[-t - u])/(Pi^2*u*(t + u)) + 
+   ((I/8)*Log[Pi]*Log[-t - u])/(Pi^2*u*(t + u)) + ((I/8)*Log[-u])/(ep*Pi^2*u*(t + u)) + 
+   (((-I)*EulerGamma + Pi)*Log[-u])/(8*Pi^2*u*(t + u)) + ((I/4)*Log[2]*Log[-u])/(Pi^2*u*(t + u)) + 
+   ((I/8)*Log[Pi]*Log[-u])/(Pi^2*u*(t + u)) - ((I/8)*Log[-t - u]*Log[-u])/(Pi^2*u*(t + u)), 
+ GLI["fctopology3", {1, 1, 1, 1}] -> (I/4)/(ep^2*Pi^2*t*u) - ((I/4)*EulerGamma)/(ep*Pi^2*t*u) + 
+ ((I/24)*(3*EulerGamma^2 - 2*Pi^2))/(Pi^2*t*u) + ((I/2)*Log[2])/(ep*Pi^2*t*u) - 
+   ((I/2)*EulerGamma*Log[2])/(Pi^2*t*u) + ((I/2)*Log[2]^2)/(Pi^2*t*u) + ((I/4)*Log[Pi])/(ep*Pi^2*t*u) - 
+   ((I/4)*EulerGamma*Log[Pi])/(Pi^2*t*u) + ((I/2)*Log[2]*Log[Pi])/(Pi^2*t*u) + 
+   ((I/8)*Log[Pi]^2)/(Pi^2*t*u) - ((I/8)*Log[-t])/(ep*Pi^2*t*u) + ((I/8)*EulerGamma*Log[-t])/(Pi^2*t*u) - 
+   ((I/4)*Log[2]*Log[-t])/(Pi^2*t*u) - ((I/8)*Log[Pi]*Log[-t])/(Pi^2*t*u) - 
+   ((I/8)*Log[-u])/(ep*Pi^2*t*u) + ((I/8)*EulerGamma*Log[-u])/(Pi^2*t*u) - 
+   ((I/4)*Log[2]*Log[-u])/(Pi^2*t*u) - ((I/8)*Log[Pi]*Log[-u])/(Pi^2*t*u) + ((I/8)*Log[-t]*Log[-u])/(Pi^2*t*u)};
+
+
+bornVirtualUnrenormalized[1]=Collect2[FCReplaceD[(bornVirtualUnrenormalized[0]/.ruleMasters),D->4-2ep],ep,
+IsolateNames->KK]//Series[#,{ep,0,0}]&//Normal//FRH//Collect2[#,ep]&;
 
 
 (* ::Text:: *)
 (*The explicit expressions for the PaVe functions can be obtained e.g. using Package-X / PaXEvaluate*)
 
 
-PaVeEvalRules={
-B0[0, 0, 0] -> -1/(16*EpsilonIR*Pi^4) + 1/(16*EpsilonUV*Pi^4),
-B0[s_, 0, 0]:> 1/(16*EpsilonUV*Pi^4) - (-2 + EulerGamma - Log[4*Pi] - Log[-(ScaleMu^2/s)])/
-   (16*Pi^4),
-C0[0, s_, 0, 0, 0, 0] :> C0[0, 0, s, 0, 0, 0],
-C0[0, 0, s_, 0, 0, 0] :> 1/(16*EpsilonIR^2*Pi^4*s) - 
-  (EulerGamma - Log[4*Pi] - Log[-(ScaleMu^2/s)])/(16*EpsilonIR*Pi^4*s) - 
-  (-6*EulerGamma^2 + Pi^2 + 12*EulerGamma*Log[4*Pi] - 6*Log[4*Pi]^2 + 
-    12*EulerGamma*Log[-(ScaleMu^2/s)] - 12*Log[4*Pi]*Log[-(ScaleMu^2/s)] - 
-    6*Log[-(ScaleMu^2/s)]^2)/(192*Pi^4*s),
-D0[0, 0, 0, 0, s_, t_, 0, 0, 0, 0] :> 1/(4*EpsilonIR^2*Pi^4*s*t) - 
-  (2*EulerGamma - 2*Log[4*Pi] - Log[-(ScaleMu^2/s)] - Log[-(ScaleMu^2/t)])/
-   (8*EpsilonIR*Pi^4*s*t) - (-3*EulerGamma^2 + 2*Pi^2 + 6*EulerGamma*Log[4*Pi] - 
-    3*Log[4*Pi]^2 + 3*EulerGamma*Log[-(ScaleMu^2/s)] - 3*Log[4*Pi]*Log[-(ScaleMu^2/s)] + 
-    3*EulerGamma*Log[-(ScaleMu^2/t)] - 3*Log[4*Pi]*Log[-(ScaleMu^2/t)] - 
-    3*Log[-(ScaleMu^2/s)]*Log[-(ScaleMu^2/t)])/(24*Pi^4*s*t)    
-};
-
-
-bornVirtualUnrenormalized[1]=bornVirtualUnrenormalized[0]//.PaVeEvalRules;
-
-
 (* ::Text:: *)
-(*Put together the counter-term contribution and the residue pole contribution*)
+(*Put together the counter-term contribution. The wave-function renormalization must be done in the OS scheme, *)
+(*which gives no contribution due to massless electrons and muons.*)
 
 
 MSbarRC={
-	SMP["dZ_psi"]->- SMP["e"]^2/(16Pi^2) 1/EpsilonUV,
-	SMP["dZ_A"]-> - Nf SMP["e"]^2/(12Pi^2) 1/EpsilonUV
+	SMP["dZ_psi"]->0,
+	SMP["dZ_A"]-> - Nf SMP["e"]^2/(12Pi^2) (1/ep-EulerGamma+Log[4Pi])
 };
 
 
@@ -196,61 +286,35 @@ RuleRS={
 };
 
 
-legResidueContrib= 1 + SMP["e"]^2/(4 Pi)*1/(4 Pi) 1/EpsilonIR;
-
-
-aux0=(Total[ampLoopCT[1]]/.RuleRS/.MSbarRC)//FeynAmpDenominatorExplicit//Contract//
-	DiracSimplify//FCCanonicalizeDummyIndices[#,LorentzIndexNames->{mu}]&;
-
-
-ctContrib=(aux0/ampTree[2])//Simplify;
-
-
-fullCTAndResidue[0]=(ctContrib+(4*1/2)(legResidueContrib-1))ampTree[2]
+fullCTAndResidue[0]=(ampLoopCT[1]/.RuleRS/.MSbarRC)//FeynAmpDenominatorExplicit//Contract[#,FCParallelize->True]&//
+	DiracSimplify[#,FCParallelize->True]&//FCCanonicalizeDummyIndices[#,LorentzIndexNames->{mu},FCParallelize->True]&//Total;
 
 
 (* ::Text:: *)
-(*Now get the interference of the counter term and residue contribution with the Born amplitude*)
+(*Get the interference of the counter term and residue contribution with the Born amplitude*)
 
 
-bornCTAndResidue[0]= fullCTAndResidue[0] ComplexConjugate[ampTree[2]]//
-FermionSpinSum[#,ExtraFactor->1/2^2]&//DiracSimplify//Simplify//
-	TrickMandelstam[#,{s,t,u,0}]&
-
-
-(* ::Text:: *)
-(*For convenience, let us pull out an overall prefactor to get rid of ScaleMu, EulerGamma and some Pi's*)
-
-
-aux1=FCSplit[bornCTAndResidue[0],{EpsilonUV}]//
-	ReplaceAll[#,{EpsilonIR->1/SMP["Delta_IR"],EpsilonUV->1/SMP["Delta_UV"]}]&;
-bornCTAndResidue[1]=(FCReplaceD[1/Exp[EpsilonIR(Log[4Pi]-EulerGamma)] aux1[[1]],D->4-2EpsilonIR]+
-	FCReplaceD[1/Exp[EpsilonUV(Log[4Pi]-EulerGamma)] aux1[[2]],D->4-2EpsilonUV])//
-	FCShowEpsilon//Series[#,{EpsilonUV,0,0}]&//
-	Normal//Series[#,{EpsilonIR,0,0}]&//Normal//Collect2[#,EpsilonUV,EpsilonIR]&
-
-
-aux2=FCSplit[bornVirtualUnrenormalized[1],{EpsilonUV}];
-bornVirtualUnrenormalized[2]=FCReplaceD[1/ScaleMu^(2EpsilonIR)*
-	1/Exp[EpsilonIR(Log[4Pi]-EulerGamma)] aux2[[1]],
-	D->4-2EpsilonIR]+FCReplaceD[1/ScaleMu^(2EpsilonUV)*
-	1/Exp[EpsilonUV(Log[4Pi]-EulerGamma)] aux2[[2]],D->4-2EpsilonUV]//
-	Collect2[#,EpsilonUV,EpsilonIR]&//Normal//Series[#,{EpsilonUV,0,0}]&//
-	Normal//Series[#,{EpsilonIR,0,0}]&//Normal//
-	ReplaceAll[#,Log[-ScaleMu^2/(h:s|t|u)]:>2 Log[ScaleMu]-Log[-h]]&//
-	TrickMandelstam[#,{s,t,u,0}]&//Collect2[#,EpsilonUV,EpsilonIR]&;
+bornCTAndResidue[0]= fullCTAndResidue[0] ComplexConjugate[ampTree[2]]//FermionSpinSum[#,ExtraFactor->1/2^2]&//
+DiracSimplify//Simplify//FCReplaceD[#,D->4-2ep]&//Series[#,{ep,0,0}]&//Normal
 
 
 (* ::Text:: *)
 (*Finally, we obtain the UV-finite but IR-divergent Born-virtual interference term*)
 
 
-bornVirtualRenormalized[0]=(bornVirtualUnrenormalized[2]+bornCTAndResidue[1])//
-	TrickMandelstam[#,{s,t,u,0}]&//Collect2[#,EpsilonUV,EpsilonIR]&
+bornVirtualRenormalized[0]=(bornVirtualUnrenormalized[1]+bornCTAndResidue[0])//Collect2[#,ep]&;
 
 
 (* ::Text:: *)
-(*We can compare our O(eps^0) result to Eq. 2.22 in arXiv:hep-ph/0010075*)
+(*Introduce the prefactor from the literature that removes $\Gamma_E$ and logs of $\pi$*)
+
+
+bornVirtualRenormalized[1]=Series[FCReplaceD[1/Exp[ep(Log[4Pi]-EulerGamma)] bornVirtualRenormalized[0],D->4-2ep],{ep,0,0}]//Normal//
+ReplaceAll[#,Log[4Pi]->2Log[2]+Log[Pi]]&//Collect2[#,ep]&
+
+
+(* ::Text:: *)
+(*We can compare our O(eps^0) result to Eq. 2.32 in arXiv:hep-ph/0010075*)
 
 
 ClearAll[LitA,LitATilde,auxBox6,Box6Eval,TriEval];
@@ -259,30 +323,30 @@ ruleLit={LitV->Log[-s/u],LitW->Log[-t/u],v->s/u,w->t/u};
 
 
 LitA= (
-4*GaugeXi*(1-2 Epsilon)*u/s^2((2-3*Epsilon)u^2-6*Epsilon*t*u+3(2-Epsilon)t^2)*Box6[s,t]
+4*GaugeXi*(1-2 ep)*u/s^2((2-3*ep)u^2-6*ep*t*u+3(2-ep)t^2)*Box6[s,t]
 
--4 GaugeXi/(1-2 Epsilon)*t/s^2*((4-12*Epsilon+7*Epsilon^2)t^2-
-6*Epsilon*(1-2*Epsilon)*t*u+(4-10*Epsilon+5*Epsilon^2)*u^2)*Tri[t]
+-4 GaugeXi/(1-2 ep)*t/s^2*((4-12*ep+7*ep^2)t^2-
+6*ep*(1-2*ep)*t*u+(4-10*ep+5*ep^2)*u^2)*Tri[t]
 
--8/((1-2*Epsilon)(3-2*Epsilon))*1/s*(2Epsilon(1-Epsilon)*t*((1-Epsilon)*t-Epsilon*u)*Nf-
-Epsilon(3-2*Epsilon)*(2-Epsilon+2*Epsilon^2)*t*u+
-(1-Epsilon)(3-2*Epsilon)(2-(1-GaugeXi)*Epsilon+2 Epsilon^2)t^2)*Tri[s]);
+-8/((1-2*ep)(3-2*ep))*1/s*(2ep(1-ep)*t*((1-ep)*t-ep*u)*Nf-
+ep(3-2*ep)*(2-ep+2*ep^2)*t*u+
+(1-ep)(3-2*ep)(2-(1-GaugeXi)*ep+2 ep^2)t^2)*Tri[s]);
 
 
-auxBox6=(1/2((LitV-LitW)^2+Pi^2)+2*Epsilon*(Li3[-v]-LitV Li2[-v]-1/3 LitV^3-Pi^2/2 LitV)
--2 Epsilon^2 (Li4[-v]+LitW Li3[-v]-1/2 LitV^2 Li2[-v]-1/8 LitV^4-
+auxBox6=(1/2((LitV-LitW)^2+Pi^2)+2*ep*(Li3[-v]-LitV Li2[-v]-1/3 LitV^3-Pi^2/2 LitV)
+-2 ep^2 (Li4[-v]+LitW Li3[-v]-1/2 LitV^2 Li2[-v]-1/8 LitV^4-
 1/6 LitV^3 LitW + 1/4*LitV^2*LitW^2- Pi^2/4 LitV^2-Pi^2/3 LitV LitW - 2 Zeta4));
 
-Box6Eval[s,t]=u^(-1-Epsilon)/(2(1-2*Epsilon))(1- Pi^2/12 Epsilon^2)(
+Box6Eval[s,t]=u^(-1-ep)/(2(1-2*ep))(1- Pi^2/12 ep^2)(
 auxBox6 + (auxBox6/.{LitW->LitV,LitV->LitW,v->w,w->v}));
 
 Box6Eval[s,u]=Box6Eval[s,t]/.ruleLit/.{t->u,u->t};
 
-TriEval[s_]:=-(-s)^(-1-Epsilon)/Epsilon^2 (1-Pi^2/12 Epsilon^2-
-	7/3 Zeta[3] Epsilon^3-47/16 Zeta4 Epsilon^4)
+TriEval[s_]:=-(-s)^(-1-ep)/ep^2 (1-Pi^2/12 ep^2-
+	7/3 Zeta[3] ep^3-47/16 Zeta4 ep^4)
 
 
-knownResult=(( 2/3 Nf/Epsilon*8((t^2+u^2)/s^2-Epsilon)
+knownResult=(( 2/3 Nf/ep*8((t^2+u^2)/s^2-ep)
 
 +((LitA/.{Tri->TriEval,Box6->Box6Eval}/.ruleLit)+
  (LitA/.{Tri->TriEval,Box6->Box6Eval}/.
@@ -296,9 +360,11 @@ knownResult=(( 2/3 Nf/Epsilon*8((t^2+u^2)/s^2-Epsilon)
 prefLit=32 Pi^2/SMP["e"]^6;
 
 
-diff=Series[knownResult-
-prefLit(bornVirtualRenormalized[0]/.EpsilonIR->Epsilon),{Epsilon,0,0}]//Normal//
-TrickMandelstam[#,{s,t,u,0}]&//PowerExpand//SimplifyPolyLog//TrickMandelstam[#,{s,t,u,0}]&
+knownResultExpanded=Series[FCReplaceD[knownResult,D->4-2ep],{ep,0,0}]//Normal;
+
+
+diff=((prefLit bornVirtualRenormalized[1]-knownResultExpanded)/.s->-t-u)//PowerExpand//
+ReplaceRepeated[#,Log[-t-u]->Log[t+u]- I Pi]&//Simplify
 
 
 (* ::Section:: *)
@@ -309,3 +375,6 @@ FCCompareResults[0,diff,
 Text->{"\tCompare to arXiv:hep-ph/0010075:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
+
+
+

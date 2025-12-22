@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Gl -> Gl, YM+BGF, only UV divergences, 1-loop					*)
@@ -31,11 +31,31 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False,
 	$FeynCalcStartupMessages = False
 ];
-$LoadAddOns={"FeynArts"};
+LaunchKernels[4];
+$LoadAddOns={"FeynArts","FeynHelpers"};
 <<FeynCalc`
 $FAVerbose = 0;
+$ParallelizeFeynCalc=True;
 
-FCCheckVersion[9,3,1];
+FCCheckVersion[10,2,0];
+If[ToExpression[StringSplit[$FeynHelpersVersion,"."]][[1]]<2,
+	Print["You need at least FeynHelpers 2.0 to run this example."];
+	Abort[];
+]
+
+
+(* ::Section:: *)
+(*Configure some options*)
+
+
+(* ::Text:: *)
+(*We keep scaleless B0 functions, since otherwise the UV part would not come out right.*)
+
+
+$KeepLogDivergentScalelessIntegrals=True;
+
+
+FAPatch[PatchModelsOnly->True];
 
 
 (* ::Section:: *)
@@ -46,8 +66,8 @@ FCCheckVersion[9,3,1];
 (*Nicer typesetting*)
 
 
-MakeBoxes[mu,TraditionalForm]:="\[Mu]";
-MakeBoxes[nu,TraditionalForm]:="\[Nu]";
+FCAttachTypesettingRule[mu,"\[Mu]"];
+FCAttachTypesettingRule[nu,"\[Nu]"];
 
 
 diags=InsertFields[CreateTopologies[1, 1 -> 1,ExcludeTopologies -> {Tadpoles}],
@@ -76,10 +96,11 @@ amp[0] = FCFAConvert[CreateFeynAmp[diags, Truncated -> True, GaugeRules->{},
 	GaugeXi[V[5, {_}]]:>GaugeXi[G]}];
 
 
-amp[1]=DiracSimplify/@amp[0];
+amp[1]=DiracSimplify[#,FCParallelize->True]&/@amp[0];
 
 
-amp[2]=SUNSimplify[TID[#,l,ToPaVe->True]]&/@amp[1];
+amp[2]=amp[1]//SUNSimplify[#,FCParallelize->True]&//
+TID[#,l,ToPaVe->True,FCParallelize->True]&;
 
 
 (* ::Text:: *)
@@ -110,3 +131,6 @@ Text->{"\tCompare to Abbott, \
 Nucl. Phys. B 185 (1981) 189-203, Eqs 5.11-5.12:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
+
+
+

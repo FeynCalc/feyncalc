@@ -6,12 +6,16 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:	Contraction routines for Lorentz algebra					*)
+(*
+	:Summary:	Contraction routines for Lorentz algebra
+
+				Supports parallel evaluation [X]
+*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -57,22 +61,51 @@ Options[Contract] = {
 	Expanding       	-> True,
 	ExpandScalarProduct -> True,
 	Factoring       	-> False,
+	FCParallelize		-> False,
 	FCE					-> False,
 	FCI					-> False,
 	FCVerbose			-> False,
 	MomentumCombine 	-> True
 };
 
-(* Contract[{..., ...}] *)
 Contract[expr_List, opts:OptionsPattern[]] :=
-	Contract[#,opts]&/@expr;
+	Block[{cnVerbose, res, time},
+
+		If [OptionValue[FCVerbose]===False,
+			cnVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				cnVerbose=OptionValue[FCVerbose]
+			];
+		];
+		time = AbsoluteTime[];
+
+		FCPrint[1, "Contract: Entering.", FCDoControl->cnVerbose];
+
+		If[	$ParallelizeFeynCalc && OptionValue[FCParallelize],
+			FCPrint[1,"Contract: Applying Contract in parallel.", FCDoControl->cnVerbose];
+
+			res = ParallelMap[Contract[#, FilterRules[{opts}, Except[FCParallelize | FCVerbose]]]&,expr,
+			DistributedContexts -> None, Method->"ItemsPerEvaluation" -> Ceiling[N[Length[expr]/$KernelCount]/10]];
+			FCPrint[1, "Contract: Done applying Contract in parallel, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cnVerbose],
+
+			FCPrint[1,"Contract: Applying Contract.", FCDoControl->cnVerbose];
+			res = Map[Contract[#,FilterRules[{opts}, Except[FCParallelize | FCVerbose]]]&,expr];
+			FCPrint[1, "Contract: Done applying Contract, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cnVerbose]
+		];
+
+		FCPrint[1, "Contract: Leaving.", FCDoControl->cnVerbose];
+
+		res
+	];
+
+
 
 (* Contract[... == ...] *)
 Contract[Equal[a_, b_], opts:OptionsPattern[]] :=
 	Contract[a, opts] == Contract[b, opts];
 
 
-Contract[expr_, opts:OptionsPattern[]] :=
+Contract[expr_/; Head[expr]=!=List, opts:OptionsPattern[]] :=
 	Block[{ex, tmp, rest1=0,rest2=0,rest3=0,noDummy=0,nodot,
 		null1,null2,freeIndList,freeHead,tmpFin,res,expandOpt,
 		epsContractOpt, times,tmpList,time,tmpCheck, epsExpandOpt},
@@ -420,7 +453,7 @@ Contract[expr_, opts:OptionsPattern[]] :=
 		FCPrint[1, "Contract: Leaving. ", FCDoControl->cnVerbose];
 		FCPrint[3, "Contract: Leaving with : ", res, FCDoControl->cnVerbose];
 		res
-	]/; Head[expr]=!=List;
+	];
 
 (* #################################################################### *)
 

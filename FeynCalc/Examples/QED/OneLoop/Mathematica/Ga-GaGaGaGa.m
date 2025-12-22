@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Ga -> Ga Ga Ga Ga, QED, amplitude, 1-loop						*)
@@ -31,11 +31,12 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False,
 	$FeynCalcStartupMessages = False
 ];
+LaunchKernels[4];
 $LoadAddOns={"FeynArts"};
 <<FeynCalc`
 $FAVerbose = 0;
-
-FCCheckVersion[9,3,1];
+$ParallelizeFeynCalc=True;
+FCCheckVersion[10,2,0];
 
 
 (* ::Section:: *)
@@ -46,14 +47,16 @@ FCCheckVersion[9,3,1];
 (*Nicer typesetting*)
 
 
-MakeBoxes[mu,TraditionalForm]:="\[Mu]";
-MakeBoxes[nu,TraditionalForm]:="\[Nu]";
-MakeBoxes[rho,TraditionalForm]:="\[Rho]";
-MakeBoxes[k1,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(1\)]\)";
-MakeBoxes[k2,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(2\)]\)";
-MakeBoxes[k3,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(3\)]\)";
-MakeBoxes[k4,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(4\)]\)";
-MakeBoxes[k5,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(5\)]\)";
+FCAttachTypesettingRule[mu,"\[Mu]"];
+FCAttachTypesettingRule[nu,"\[Nu]"];
+FCAttachTypesettingRule[rho,"\[Rho]"];
+FCAttachTypesettingRule[si,"\[Sigma]"];
+FCAttachTypesettingRule[tau,"\[Tau]"];
+FCAttachTypesettingRule[k1,{SubscriptBox,"k","1"}];
+FCAttachTypesettingRule[k2,{SubscriptBox,"k","2"}];
+FCAttachTypesettingRule[k3,{SubscriptBox,"k","3"}];
+FCAttachTypesettingRule[k4,{SubscriptBox,"k","4"}];
+FCAttachTypesettingRule[k5,{SubscriptBox,"k","5"}];
 
 
 diags = InsertFields[CreateTopologies[1, 1 -> 4],
@@ -76,31 +79,31 @@ amp[0] = FCFAConvert[CreateFeynAmp[diags,PreFactor->1,
 	Truncated->True], IncomingMomenta->{k1},
 	OutgoingMomenta->{k2, k3, k4, k5}, LoopMomenta->{q},
 	LorentzIndexNames->{mu,nu,rho}, UndoChiralSplittings->True,
-	ChangeDimension->D, List->True, SMP->True]
+	ChangeDimension->D, SMP->True];
 
 
 (* ::Section:: *)
-(*Calculate the amplitude*)
+(*Evaluate the amplitudes*)
 
 
 (* ::Text:: *)
 (*We obtain 24 diagrams. The sum vanishes because the contribution of each odd diagram is exactly cancelled by the contribution of the next even diagram, i.e. A1+A2=0, A3+A4=0 and so on*)
 
 
-amp[1] = amp[0]//FCTraceFactor;
+amp[1] = FCTraceFactor[amp[0],FCParallelize->True];
 
 
-amp[2]=Total/@Partition[amp[1],2,2,1,{}]
-
-
-amp[3]=Total[amp[2]]
+res=amp[1]//Total
 
 
 (* ::Section:: *)
 (*Check the final results*)
 
 
-FCCompareResults[amp[3],0,
+FCCompareResults[res,0,
 Text->{"\tVerify Furry's theorem for 5-photons at 1-loop:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
+
+
+

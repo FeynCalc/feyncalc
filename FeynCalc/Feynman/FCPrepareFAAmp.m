@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  FCPrepareFAAmp converts a FeynArts amplitude to FeynCalc      *)
@@ -35,6 +35,7 @@ Begin["`FCPrepareFAAmp`Private`"]
 tmp::usage="";
 
 Options[FCPrepareFAAmp] = {
+	DropIndexSum				-> True,
 	FeynAmpDenominatorCombine	-> True,
 	SMP 						-> False,
 	UndoChiralSplittings 		-> False
@@ -77,9 +78,9 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 
 		replist0 = {
 			NonCommutative[x__] :> FeynArts`FANonCommutative[x],
-			FeynArts`IndexSum[x_, {ind_, _, _}, moreinds__] /; Length[Cases[x, ind, Infinity, Heads -> True]] == 2 && FreeQ[x, FeynArts`IndexSum] :>
+			FeynArts`IndexSum[x_, {ind_, _, _}, moreinds__] /; OptionValue[DropIndexSum] && Length[Cases[x, ind, Infinity, Heads -> True]] == 2 && FreeQ[x, FeynArts`IndexSum] :>
 				(tmp = Unique["Ind"]; FeynArts`IndexSum[x /. ind -> tmp, moreinds]),
-			FeynArts`IndexSum[x_, {ind_, _, _}] /; Length[Cases[x, ind, Infinity, Heads -> True]] == 2 && FreeQ[x,FeynArts`IndexSum] :>
+			FeynArts`IndexSum[x_, {ind_, _, _}] /; OptionValue[DropIndexSum] && Length[Cases[x, ind, Infinity, Heads -> True]] == 2 && FreeQ[x,FeynArts`IndexSum] :>
 				(tmp = Unique["Ind"] ; x /. ind -> tmp)
 		};
 
@@ -143,9 +144,17 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 		];
 
 		If[ OptionValue[UndoChiralSplittings],
+
 			temp = temp//.{
 
 				(*Single chains*)
+
+				(* P_R + R_L -> g^5 *)
+				(a1__ DiracGamma[6] a2__ - a1__ DiracGamma[7] a2__) :>
+					a1 DiracGamma[5] a2,
+
+				(a1__ DiracGamma[7] a2__ + b1__ DiracGamma[6] b2__)/;(PossibleZeroQ[a1*a2+b1*b2]) :>
+					a1 (-DiracGamma[5]) a2,
 
 				(* g^mu P_R + g^mu R_L -> g^mu *)
 				(a1__ DiracGamma[x_].DiracGamma[6] a2__ + a1__ DiracGamma[x_].DiracGamma[7] a2__) :>

@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Partial fractioning for loop integrals with linearly
@@ -205,7 +205,7 @@ FCApart[expr_, extraPiece_, lmoms_List, OptionsPattern[]] :=
 		];
 
 		(* If the integral can't be partial fractioned any further, then we have nothing to do here *)
-		If[	!FCLoopBasisOverdeterminedQ[scalarTerm,lmoms, SetDimensions->OptionValue[SetDimensions], FCI->True],
+		If[	!FCLoopBasisOverdeterminedQ[scalarTerm,lmoms, SetDimensions->OptionValue[SetDimensions], FCI->True, InitialSubstitutions->optFinalSubstitutions],
 			FCPrint[3,"FCApart: No furher partial fractioning is possible in ", ex, FCDoControl->fcaVerbose];
 
 			If[	OptionValue[FCE],

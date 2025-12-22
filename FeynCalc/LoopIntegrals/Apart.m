@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Collection of different partial fractioning routines		*)
@@ -159,9 +159,12 @@ feynampdenpartfrac[a___, gpd : GenericPropagatorDenominator[(c1_ :0) + (c2_. Sqr
 Apart3[expr_, x_] :=
 	Map2[Factor2, Collect2[Apart1[expr,x],x]];
 
+ApartFF[0, ___] :=
+	0;
 
 ApartFF[glis_List, topos_, opts:OptionsPattern[]] :=
-Map[ApartFF[#,topos,opts]&,glis];
+	Map[ApartFF[#,topos,opts]&,glis];
+
 
 ApartFF[gli_GLI, topoRaw_, opts:OptionsPattern[]] :=
 	Block[{int, optFinalSubstitutions, tmp, res, topo},
@@ -179,7 +182,7 @@ ApartFF[gli_GLI, topoRaw_, opts:OptionsPattern[]] :=
 		];
 
 		If[ Head[topo]===List,
-			topo = FCLoopSelectTopology[gli,topo]
+			topo = FCLoopSelectTopology[gli,topo,Check->False]
 		];
 
 		If[	Head[topo]=!=FCTopology,
@@ -202,7 +205,10 @@ ApartFF[gli_GLI, topoRaw_, opts:OptionsPattern[]] :=
 
 		FCPrint[3, "ApartFF: After partial fractioning of the propagator representation: ", tmp, FCDoControl->affVerbose];
 
-		res = FCLoopFindTopologies[tmp, topo[[3]], PreferredTopologies->{topo}, Head->OptionValue[Head],Names->Unique["t"],FCVerbose->-1,FCLoopScalelessQ->True];
+		res = FCLoopFindTopologies[tmp, topo[[3]], PreferredTopologies->{topo}, Head->OptionValue[Head],Names->Unique["t"],FCVerbose->-1,FCLoopScalelessQ->True,
+			FCParallelize->False];
+
+		FCPrint[3, "ApartFF: After FCLoopFindTopologies: ", res, FCDoControl->affVerbose];
 
 		If[	Length[res[[2]]]=!=1 && res[[2]][[1]]=!=topo[[1]],
 			Message[ApartFF::failmsg,"Something went wrong during parital fraction decomposition of GLIs."];
@@ -216,11 +222,11 @@ ApartFF[gli_GLI, topoRaw_, opts:OptionsPattern[]] :=
 
 
 
-ApartFF[int_, lmoms_List , opts:OptionsPattern[]]:=
+ApartFF[int_/; int=!=0, lmoms_List , opts:OptionsPattern[]]:=
 	ApartFF[int, 1, lmoms , opts];
 
 
-ApartFF[int_, extraPiece_, lmoms_List , OptionsPattern[]]:=
+ApartFF[int_/; int=!=0, extraPiece_, lmoms_List , OptionsPattern[]]:=
 	Block[{	exp,tmp,loopHead,null1,null2,res,rest,
 			loopInts,intsUnique,solsList,repRule, time,
 			optCollecting, tcRepList, optFDS, optDropScaleless,
@@ -241,7 +247,7 @@ ApartFF[int_, extraPiece_, lmoms_List , OptionsPattern[]]:=
 
 		If[	OptionValue[FCI],
 			exp = int,
-			exp = FCI[int]
+			{exp,optFinalSubstitutions} = FCI[{int,optFinalSubstitutions}]
 		];
 
 		If[	OptionValue[FeynAmpDenominatorCombine],

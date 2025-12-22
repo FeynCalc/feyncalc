@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Validates FCTopology objects. 								*)
@@ -52,7 +52,7 @@ FCLoopValidTopologyQ[topos_List]:=
 
 FCLoopValidTopologyQ[topoRaw_FCTopology]:=
 	MemSet[FCLoopValidTopologyQ[topoRaw],
-		Block[{topo},
+		Block[{topo,allmoms},
 
 			topo = FCI[topoRaw];
 
@@ -64,9 +64,18 @@ FCLoopValidTopologyQ[topoRaw_FCTopology]:=
 			*)
 
 			If[	!MatchQ[topo/.{c_. x_FeynAmpDenominator/; FreeQ[c,FeynAmpDenominator] :> x},FCTopology[_,{__FeynAmpDenominator}, {__Symbol}, _List, _List, _List, ___]],
-				Message[FCLoopValidTopologyQ::inv, ToString[topo,InputForm] <> " is not a proper topology."];
+				Message[FCLoopValidTopologyQ::inv, "The topology "<>ToString[topo[[1]],InputForm] <> " does not have the correct form."];
 				Return[False]
 			];
+
+			allmoms = Cases[MomentumExpand[topo[[2]]],	(Momentum | CartesianMomentum | TemporalMomentum)[x_, ___] :> x, Infinity] //
+			Sort // DeleteDuplicates;
+
+			If[ !SubsetQ[Join[topo[[3]],topo[[4]]],allmoms],
+				Message[FCLoopValidTopologyQ::inv, "The topology "<>ToString[topo[[1]],InputForm] <> " contains undeclared momenta."];
+				Return[False]
+			];
+
 
 			True
 		]

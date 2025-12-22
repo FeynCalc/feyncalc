@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Renormalization, QCD, MS and MSbar, 1-loop					*)
@@ -36,11 +36,17 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False,
 	$FeynCalcStartupMessages = False
 ];
-$LoadAddOns={"FeynArts"};
+LaunchKernels[4];
+$LoadAddOns={"FeynArts","FeynHelpers"};
 <<FeynCalc`
 $FAVerbose = 0;
+$ParallelizeFeynCalc=True;
 
-FCCheckVersion[9,3,1];
+FCCheckVersion[10,2,0];
+If[ToExpression[StringSplit[$FeynHelpersVersion,"."]][[1]]<2,
+	Print["You need at least FeynHelpers 2.0 to run this example."];
+	Abort[];
+]
 
 
 (* ::Section:: *)
@@ -65,10 +71,10 @@ FAPatch[PatchModelsOnly->True];
 (*Nicer typesetting*)
 
 
-MakeBoxes[mu,TraditionalForm]:="\[Mu]";
-MakeBoxes[nu,TraditionalForm]:="\[Nu]";
-MakeBoxes[rho,TraditionalForm]:="\[Rho]";
-MakeBoxes[si,TraditionalForm]:="\[Sigma]";
+FCAttachTypesettingRule[mu,"\[Mu]"];
+FCAttachTypesettingRule[nu,"\[Nu]"];
+FCAttachTypesettingRule[rho,"\[Rho]"];
+FCAttachTypesettingRule[si,"\[Sigma]"];
 
 
 params={InsertionLevel->{Particles},Model -> FileNameJoin[{"QCD","QCD"}],
@@ -139,7 +145,7 @@ ampQuarkSE[0] = FCFAConvert[CreateFeynAmp[diag1[0],Truncated->True,
 	IncomingMomenta->{p}, OutgoingMomenta->{p},
 	LorentzIndexNames->{mu,nu}, DropSumOver->True,
 	LoopMomenta->{l}, UndoChiralSplittings->True,
-	ChangeDimension->D, List->False, SMP->True,
+	ChangeDimension->D, SMP->True,
 	FinalSubstitutions->{Zm->SMP["Z_m"], Zpsi->SMP["Z_psi"],
 	SMP["m_u"]->SMP["m_q"]}]
 
@@ -153,7 +159,7 @@ ampGluonSE[0] = FCFAConvert[CreateFeynAmp[diag2[0],Truncated->True,
 	IncomingMomenta->{p}, OutgoingMomenta->{p},
 	LorentzIndexNames->{mu,nu,rho,si}, DropSumOver->True,
 	LoopMomenta->{l}, UndoChiralSplittings->True,
-	ChangeDimension->D, List->True, SMP->True,
+	ChangeDimension->D, SMP->True,
 	FinalSubstitutions->{ZA->SMP["Z_A"], Zxi->SMP["Z_xi"],
 	SMP["m_u"]->SMP["m_q"]}]
 
@@ -167,7 +173,7 @@ ampGhostSE[0] = FCFAConvert[CreateFeynAmp[diag3[0],Truncated->True,
 	IncomingMomenta->{p}, OutgoingMomenta->{p},
 	LorentzIndexNames->{mu,nu}, DropSumOver->True,
 	LoopMomenta->{l}, UndoChiralSplittings->True,
-	ChangeDimension->D, List->False, SMP->True,
+	ChangeDimension->D, SMP->True,
 	FinalSubstitutions->{Zu->SMP["Z_u"]}]
 
 
@@ -180,7 +186,7 @@ ampQGlVertex[0] = FCFAConvert[CreateFeynAmp[diag4[0],Truncated->True,
 	IncomingMomenta->{p1,k}, OutgoingMomenta->{p2},
 	LorentzIndexNames->{mu,nu,rho}, DropSumOver->True, LoopMomenta->{l},
 	UndoChiralSplittings->True, ChangeDimension->D,
-	List->False, SMP->True, FinalSubstitutions->
+	SMP->True, FinalSubstitutions->
 	{ZA->SMP["Z_A"], Zg->SMP["Z_g"], Zpsi->SMP["Z_psi"],
 	SMP["m_u"]->SMP["m_q"]}]
 
@@ -197,8 +203,9 @@ ampQGlVertex[0] = FCFAConvert[CreateFeynAmp[diag4[0],Truncated->True,
 (*Tensor reduction allows us to express the quark self-energy in tems of the Passarino-Veltman coefficient functions.*)
 
 
-ampQuarkSE[1]=ampQuarkSE[0]//SUNSimplify//DiracSimplify//
-	TID[#,l,UsePaVeBasis->True,ToPaVe->True]&;
+ampQuarkSE[1]=ampQuarkSE[0]//SUNSimplify[#,FCParallelize->True]&//
+DiracSimplify[#,FCParallelize->True]&//TID[#,l,UsePaVeBasis->True,
+ToPaVe->True,FCParallelize->True]&//Total;
 
 
 (* ::Text:: *)
@@ -249,18 +256,19 @@ solMSbar1=Join[sol[1],sol[2]]/.{
 (*Tensor reduction allows us to express the gluon self-energy in tems of the Passarino-Veltman coefficient functions.*)
 
 
-ampGluonSE[1]=(ampGluonSE[0][[1]]+Nf ampGluonSE[0][[2]]+
-	Total[ampGluonSE[0][[3;;]]])//SUNSimplify//DiracSimplify;
+ampGluonSE[1]=({ampGluonSE[0][[1]],Nf ampGluonSE[0][[2]],
+Sequence@@ampGluonSE[0][[3;;]]})//SUNSimplify[#,FCParallelize->True]&//
+DiracSimplify[#,FCParallelize->True]&;
 
 
-ampGluonSE[2]=TID[ampGluonSE[1],l,UsePaVeBasis->True,ToPaVe->True];
+ampGluonSE[2]=TID[ampGluonSE[1],l,UsePaVeBasis->True,ToPaVe->True,FCParallelize->True];
 
 
 (* ::Text:: *)
 (*Discard all the finite pieces of the 1-loop amplitude*)
 
 
-ampGluonSEDiv[0]=ampGluonSE[2]//PaVeUVPart[#,Prefactor->1/(2Pi)^D]&
+ampGluonSEDiv[0]=ampGluonSE[2]//Total//PaVeUVPart[#,Prefactor->1/(2Pi)^D]&;
 
 
 ampGluonSEDiv[1]=FCReplaceD[ampGluonSEDiv[0],D->4-2Epsilon]//
@@ -289,17 +297,18 @@ solMSbar2=sol[3]/.{SMP["d_A"]->SMP["d_A^MSbar"]}
 (*Tensor reduction allows us to express the ghost self-energy in tems of the Passarino-Veltman coefficient functions.*)
 
 
-ampGhostSE[1]=ampGhostSE[0]//SUNSimplify//DiracSimplify;
+ampGhostSE[1]=ampGhostSE[0]//SUNSimplify[#,FCParallelize->True]&//
+DiracSimplify[#,FCParallelize->True]&;
 
 
-ampGhostSE[2]=TID[ampGhostSE[1],l,UsePaVeBasis->True,ToPaVe->True];
+ampGhostSE[2]=TID[ampGhostSE[1],l,UsePaVeBasis->True,ToPaVe->True,FCParallelize->True];
 
 
 (* ::Text:: *)
 (*Discard all the finite pieces of the 1-loop amplitude*)
 
 
-ampGhostSEDiv[0]=ampGhostSE[2]//PaVeUVPart[#,Prefactor->1/(2Pi)^D]&
+ampGhostSEDiv[0]=ampGhostSE[2]//Total//PaVeUVPart[#,Prefactor->1/(2Pi)^D]&
 
 
 ampGhostSEDiv[1]=FCReplaceD[ampGhostSEDiv[0],D->4-2Epsilon]//
@@ -327,17 +336,18 @@ solMSbar3=sol[4]/.{SMP["d_u"]->SMP["d_u^MSbar"]}
 (*Tensor reduction allows us to express the quark-gluon vertex in tems of the Passarino-Veltman coefficient functions.*)
 
 
-ampQGlVertex[1]=ampQGlVertex[0]//SUNSimplify//DiracSimplify;
+ampQGlVertex[1]=ampQGlVertex[0]//SUNSimplify[#,FCParallelize->True]&//
+DiracSimplify[#,FCParallelize->True]&;
 
 
-ampQGlVertex[2]=TID[ampQGlVertex[1],l,UsePaVeBasis->True,ToPaVe->True];
+ampQGlVertex[2]=TID[ampQGlVertex[1],l,UsePaVeBasis->True,ToPaVe->True,FCParallelize->True];
 
 
 (* ::Text:: *)
 (*Discard all the finite pieces of the 1-loop amplitude*)
 
 
-ampQGlVertexDiv[0]=ampQGlVertex[2]//PaVeUVPart[#,Prefactor->1/(2Pi)^D]&
+ampQGlVertexDiv[0]=ampQGlVertex[2]//Total//PaVeUVPart[#,Prefactor->1/(2Pi)^D]&;
 
 
 ampQGlVertexDiv[1]=FCReplaceD[ampQGlVertexDiv[0],D->4-2Epsilon]//
@@ -354,19 +364,10 @@ ampQGlVertexDiv[2]=ampQGlVertexDiv[1]//ReplaceRepeated[#,{
 	SelectNotFree2[#,SMP["Delta"],SMP["d_g"],SMP["d_A"],SMP["d_psi"]]&//Simplify
 
 
-ampQGlVertexDiv[3]=ampQGlVertexDiv[2]//SUNSimplify[#,Explicit->True]&//
-	ReplaceAll[#,SUNTrace[x__]:>SUNTrace[x,Explicit->True]]&//
-	Collect2[#,Epsilon,SUNIndex]&
+ampQGlVertexDiv[3]=ampQGlVertexDiv[2]//Collect2[#,SMP]&
 
 
-ampQGlVertexDiv[4]=ampQGlVertexDiv[3]//
-	ReplaceAll[#,suntf[xx_,_SUNFIndex,_SUNFIndex]:>SUNT@@xx]&//
-	ReplaceAll[#,SUNTF->suntf]&//ReplaceAll[#,
-	suntf[xx_,_SUNFIndex,_SUNFIndex]:>SUNT@@xx]&//
-	SUNSimplify//Collect2[#,SMP]&
-
-
-ampQGlVertexDiv[5]=(ampQGlVertexDiv[4]/.{
+ampQGlVertexDiv[4]=(ampQGlVertexDiv[3]/.{
 	SMP["d_A"]->SMP["d_A^MS"],
 	SMP["d_psi"]->SMP["d_psi^MS"],
 	SMP["d_g"]->SMP["d_g"],
@@ -375,7 +376,7 @@ ampQGlVertexDiv[5]=(ampQGlVertexDiv[4]/.{
 Collect2[#,Epsilon]&//SUNSimplify
 
 
-sol[5]=Solve[ampQGlVertexDiv[5]==0,SMP["d_g"]]//Flatten//Simplify
+sol[5]=Solve[ampQGlVertexDiv[4]==0,SMP["d_g"]]//Flatten//Simplify
 solMS4=sol[5]/.{SMP["d_g"]->SMP["d_g^MS"]}
 solMSbar4=sol[5]/.{SMP["d_g"]->SMP["d_g^MSbar"],1/Epsilon->SMP["Delta"]}
 
@@ -401,3 +402,6 @@ Text->{"\tCompare to Muta, Foundations of QCD, \
 Eqs 2.5.131-2.5.147:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
+
+
+

@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Typesetting for basic FeynCalc objects						*)
@@ -530,31 +530,31 @@ DIDelta /:
 
 (* (UBar.X)_i or (VBar.X)_j *)
 PauliChain /:
-	MakeBoxes[ PauliChain[a_, b : (PauliXi[Complex[0, -1]] | PauliEta[Complex[0, -1]]), ind : (_PauliIndex | _ExplicitPauliIndex)], TraditionalForm ]:=
+	MakeBoxes[ PauliChain[a_, b : (PauliXi[Complex[0, -1]] | PauliEta[Complex[0, -1]]| PauliEtaC[Complex[0, -1]]), ind : (_PauliIndex | _ExplicitPauliIndex)], TraditionalForm ]:=
 		SubscriptBox[RowBox[{"(",ToBoxes[b,TraditionalForm],".",ToBoxes[a,TraditionalForm],")"}],TBox[ind]];
 
 PCHN /:
-	MakeBoxes[ PCHN[a_, b : (PauliXi[Complex[0, -1]] | PauliEta[Complex[0, -1]]),
-		ind_/; !MemberQ[{PauliXi,PauliEta},Head[ind]]], TraditionalForm ]:=
+	MakeBoxes[ PCHN[a_, b : (PauliXi[Complex[0, -1]] | PauliEta[Complex[0, -1]] | PauliEtaC[Complex[0, -1]]),
+		ind_/; !MemberQ[{PauliXi,PauliEta,PauliEtaC},Head[ind]]], TraditionalForm ]:=
 		ToBoxes[PauliChain[a,b,PauliIndex[ind]], TraditionalForm];
 
 (* (X.U)_i or (X.V)_j *)
 PauliChain /:
-	MakeBoxes[ PauliChain[a_, ind : (_PauliIndex | _ExplicitPauliIndex), b : (PauliXi[Complex[0, 1]] | PauliEta[Complex[0, 1]])], TraditionalForm ]:=
+	MakeBoxes[ PauliChain[a_, ind : (_PauliIndex | _ExplicitPauliIndex), b : (PauliXi[Complex[0, 1]] | PauliEta[Complex[0, 1]]| PauliEtaC[Complex[0, 1]])], TraditionalForm ]:=
 		SubscriptBox[RowBox[{"(",ToBoxes[a,TraditionalForm],".",ToBoxes[b,TraditionalForm],")"}],TBox[ind]];
 
 PCHN /:
-	MakeBoxes[ PCHN[a_, ind_/; !MemberQ[{PauliXi,PauliEta},Head[ind]],
-		b : (PauliXi[Complex[0, 1]] | PauliEta[Complex[0, 1]])], TraditionalForm ]:=
+	MakeBoxes[ PCHN[a_, ind_/; !MemberQ[{PauliXi,PauliEta,PauliEtaC},Head[ind]],
+		b : (PauliXi[Complex[0, 1]] | PauliEta[Complex[0, 1]]| PauliEtaC[Complex[0, 1]])], TraditionalForm ]:=
 		ToBoxes[PauliChain[a,PauliIndex[ind],b], TraditionalForm];
 
 (* UBar.X.U, UBar.X.V, VBar.X.U or VBar.X.V  *)
 PauliChain /:
-	MakeBoxes[ PauliChain[a_,b : (PauliXi[Complex[0, -1]] | PauliEta[Complex[0, -1]]), c : (PauliXi[Complex[0, 1]] | PauliEta[Complex[0, 1]])], TraditionalForm ]:=
+	MakeBoxes[ PauliChain[a_,b : (PauliXi[Complex[0, -1]] | PauliEta[Complex[0, -1]] | PauliEtaC[Complex[0, -1]]), c : (PauliXi[Complex[0, 1]] | PauliEta[Complex[0, 1]]| PauliEtaC[Complex[0, 1]])], TraditionalForm ]:=
 		RowBox[{"(",ToBoxes[b,TraditionalForm],".",ToBoxes[a,TraditionalForm],".",ToBoxes[c,TraditionalForm],")"}];
 
 PCHN /:
-	MakeBoxes[ PCHN[a_, b : (PauliXi[Complex[0, -1]] | PauliEta[Complex[0, -1]]), c : (PauliXi[Complex[0, 1]] | PauliEta[Complex[0, 1]])], TraditionalForm ]:=
+	MakeBoxes[ PCHN[a_, b : (PauliXi[Complex[0, -1]] | PauliEta[Complex[0, -1]]| PauliEtaC[Complex[0, -1]]), c : (PauliXi[Complex[0, 1]] | PauliEta[Complex[0, 1]]| PauliEtaC[Complex[0, 1]])], TraditionalForm ]:=
 		ToBoxes[PauliChain[a,b,c], TraditionalForm];
 
 (* X_ij  *)
@@ -564,33 +564,33 @@ PauliChain /:
 
 PCHN /:
 	MakeBoxes[ PCHN[a_,
-		ind1_/; !MemberQ[{PauliXi,PauliEta},Head[ind1]],
-		ind2_/; !MemberQ[{PauliXi,PauliEta},Head[ind2]]], TraditionalForm ]:=
+		ind1_/; !MemberQ[{PauliXi,PauliEta,PauliEtaC},Head[ind1]],
+		ind2_/; !MemberQ[{PauliXi,PauliEta,PauliEtaC},Head[ind2]]], TraditionalForm ]:=
 		ToBoxes[PauliChain[a,PauliIndex[ind1],PauliIndex[ind2]], TraditionalForm];
 
 (* Fermionic chains with 2 arguments *)
 
 (* UBar_i or VBar_i *)
 PauliChain /:
-	MakeBoxes[ PauliChain[a : (PauliXi[Complex[0, -1]] | PauliEta[Complex[0, -1]]), ind : (_PauliIndex | _ExplicitPauliIndex)], TraditionalForm ]:=
+	MakeBoxes[ PauliChain[a : (PauliXi[Complex[0, -1]] | PauliEta[Complex[0, -1]] | PauliEtaC[Complex[0, -1]]), ind : (_PauliIndex | _ExplicitPauliIndex)], TraditionalForm ]:=
 		SubscriptBox[RowBox[{"(",ToBoxes[a,TraditionalForm],")"}],TBox[ind]];
 PCHN /:
-	MakeBoxes[ PCHN[a : (PauliXi[Complex[0, -1]] | PauliEta[Complex[0, -1]]),b_/;
+	MakeBoxes[ PCHN[a : (PauliXi[Complex[0, -1]] | PauliEta[Complex[0, -1]] | PauliEtaC[Complex[0, -1]]),b_/;
 		!MemberQ[{PauliXi,PauliEta},Head[b]]], TraditionalForm ]:=
 		ToBoxes[PauliChain[a,PauliIndex[b]], TraditionalForm];
 
 (* U_i or V_i *)
 PauliChain /:
-	MakeBoxes[ PauliChain[ind : (_PauliIndex | _ExplicitPauliIndex), a : (PauliXi[Complex[0, 1]] | PauliEta[Complex[0, 1]])], TraditionalForm ]:=
+	MakeBoxes[ PauliChain[ind : (_PauliIndex | _ExplicitPauliIndex), a : (PauliXi[Complex[0, 1]] | PauliEta[Complex[0, 1]]| PauliEtaC[Complex[0, 1]])], TraditionalForm ]:=
 		SubscriptBox[RowBox[{"(",ToBoxes[a,TraditionalForm],")"}],TBox[ind]];
 
 PCHN /:
-	MakeBoxes[ PCHN[a_/; !MemberQ[{PauliXi,PauliEta},Head[a]], b_], TraditionalForm ]:=
+	MakeBoxes[ PCHN[a_/; !MemberQ[{PauliXi,PauliEta,PauliEtaC},Head[a]], b_], TraditionalForm ]:=
 		ToBoxes[PauliChain[PauliIndex[a],b], TraditionalForm];
 
 (* UBar.U, UBar.V, VBar.U or VBar.V  *)
 PauliChain /:
-	MakeBoxes[ PauliChain[a :  (_PauliXi | _PauliEta),b:  (_PauliXi | _PauliEta)], TraditionalForm ]:=
+	MakeBoxes[ PauliChain[a :  (_PauliXi | _PauliEta | _PauliEtaC),b:  (_PauliXi | _PauliEta| _PauliEtaC)], TraditionalForm ]:=
 		RowBox[{"(",ToBoxes[a,TraditionalForm],".",ToBoxes[b,TraditionalForm],")"}];
 
 
@@ -606,7 +606,7 @@ PauliChain /:
 
 
 PCHN /:
-	MakeBoxes[ PCHN[a : (_PauliXi | _PauliEta), b : (_PauliXi | _PauliEta)], TraditionalForm ]:=
+	MakeBoxes[ PCHN[a : (_PauliXi | _PauliEta| _PauliEtaC), b : (_PauliXi | _PauliEta | _PauliEtaC)], TraditionalForm ]:=
 		ToBoxes[PauliChain[a,b], TraditionalForm];
 
 PauliIndex /:
@@ -1644,6 +1644,15 @@ PauliEta/:
 PauliEta/:
 	MakeBoxes[PauliEta[Complex[0, -1]], TraditionalForm] :=
 		SuperscriptBox["\[Eta]", "\[Dagger]"];
+
+
+PauliEtaC/:
+	MakeBoxes[PauliEtaC[Complex[0, 1]], TraditionalForm] :=
+		SubscriptBox["\[Eta]","c"];
+
+PauliEtaC/:
+	MakeBoxes[PauliEtaC[Complex[0, -1]], TraditionalForm] :=
+		SubsuperscriptBox["\[Eta]", "c", "\[Dagger]"];
 
 (* ------------------------------------------------------------------------ *)
 

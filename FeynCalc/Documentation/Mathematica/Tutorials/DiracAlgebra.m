@@ -53,6 +53,9 @@ DiracTrace[GA[\[Mu],\[Nu]],DiracTraceEvaluate->True]
 (*or use `DiracSimplify` instead.*)
 
 
+DiracTrace[GA[\[Mu],\[Nu]]]//DiracSimplify
+
+
 (* ::Text:: *)
 (*By default FeynCalc refuses to compute a $D$-dimensional trace that contains $\gamma^5$*)
 
@@ -107,3 +110,24 @@ DiracReduce[%]
 
 SpinorUBar[p1,m1] . GA[\[Mu]] . SpinorU[p2,m2]
 GordonSimplify[%]
+
+
+(* ::Text:: *)
+(*It is possible to reorder the free indices in a chain of Dirac matrices, which can sometimes help to simplify the expressions*)
+
+
+DiracOrder[GA[\[Mu],\[Nu],\[Rho]],{\[Nu],\[Mu]}]
+
+
+(* ::Text:: *)
+(*However, since this procedure is computationally expensive, `DiracSimplify` will not apply it by default*)
+
+
+DiracSimplify[GAD[\[Mu], \[Nu]] + GAD[\[Nu], \[Mu]]]
+
+
+(* ::Text:: *)
+(*It can be activated via the option `DiracOrder`*)
+
+
+DiracSimplify[GAD[\[Mu], \[Nu]] + GAD[\[Nu], \[Mu]], DiracOrder -> True]

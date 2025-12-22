@@ -6,13 +6,16 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  	Calculates building blocks needed for a Feynman
-				parametrization of a multi-loop integral					*)
+				parametrization of a multi-loop integral
+
+				Supports parallel evaluation [X]
+*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -84,6 +87,7 @@ Options[FCFeynmanPrepare] = {
 	ExtraPropagators		-> {},
 	FCE						-> False,
 	FCI						-> False,
+	FCParallelize			-> False,
 	FCLoopGetEtaSigns		-> True,
 	FCReplaceMomenta		-> {},
 	FCVerbose				-> False,
@@ -91,6 +95,7 @@ Options[FCFeynmanPrepare] = {
 	FinalSubstitutions		-> {},
 	Indexed					-> True,
 	"IgnoreNumerator"		-> False,
+	"MarkNonUnitNumerators"	-> False,
 	LoopMomenta				-> Function[{x,y},FCGV["lmom"][x,y]],
 	LorentzIndexNames		-> FCGV["mu"],
 	Names					-> FCGV["x"],
@@ -115,10 +120,10 @@ FCFeynmanPrepare[gli_, topo_FCTopology, opts:OptionsPattern[]] :=
 
 		FCPrint[1,"FCFeynmanPrepare: Entry point: single GLI and single topology ", FCDoControl->fcszVerbose];
 
-		optLoopMomenta = OptionValue[LoopMomenta];
-		lmomsHead = Head[optLoopMomenta[1,1]];
+		optLoopMomenta 		= OptionValue[LoopMomenta];
+		lmomsHead 			= Head[optLoopMomenta[1,1]];
 
-		int = FCLoopFromGLI[gli, topo, FCI->OptionValue[FCI], LoopMomenta->optLoopMomenta, FeynAmpDenominatorExplicit->False];
+		int = FCLoopFromGLI[gli, topo, FCI->OptionValue[FCI], LoopMomenta->optLoopMomenta, FeynAmpDenominatorExplicit->False, FCParallelize->OptionValue[FCParallelize]];
 
 		optFinalSubstitutions = Join[OptionValue[FinalSubstitutions],topo[[5]]];
 
@@ -139,7 +144,7 @@ FCFeynmanPrepare[gli_, topo_FCTopology, opts:OptionsPattern[]] :=
 
 FCFeynmanPrepare[glis_, topos:{__FCTopology}, opts:OptionsPattern[]] :=
 	Block[{	ints, finalSubstitutions, relTopos, lmomsList, optLoopMomenta,
-			lmomsHead, time, res, time1},
+			lmomsHead, time, res, time1, optFCParallelize},
 
 		If[	OptionValue[FCVerbose]===False,
 			fcszVerbose=$VeryVerbose,
@@ -150,12 +155,14 @@ FCFeynmanPrepare[glis_, topos:{__FCTopology}, opts:OptionsPattern[]] :=
 
 		FCPrint[1,"FCFeynmanPrepare: Entry point: multiple GLIs and multiple topologies.", FCDoControl->fcszVerbose];
 
-		optLoopMomenta = OptionValue[LoopMomenta];
+		optLoopMomenta		= OptionValue[LoopMomenta];
+		optFCParallelize	= OptionValue[FCParallelize];
+
 		lmomsHead = Head[optLoopMomenta[1,1]];
 
 		time=AbsoluteTime[];
 		FCPrint[1, "FCFeynmanPrepare: Applying FCLoopFromGLI.", FCDoControl -> fcszVerbose];
-		ints = FCLoopFromGLI[glis, topos, FCI->OptionValue[FCI], LoopMomenta->optLoopMomenta, FeynAmpDenominatorExplicit->False];
+		ints = FCLoopFromGLI[glis, topos, FCI->OptionValue[FCI], LoopMomenta->optLoopMomenta, FeynAmpDenominatorExplicit->False, FCParallelize->optFCParallelize];
 		FCPrint[1, "FCFeynmanPrepare: Done applying FCLoopFromGLI, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose];
 
 
@@ -195,12 +202,12 @@ FCFeynmanPrepare[glis_, topos:{__FCTopology}, opts:OptionsPattern[]] :=
 
 		time=AbsoluteTime[];
 
-		If[	$ParallelizeFeynCalc,
+		If[	$ParallelizeFeynCalc && optFCParallelize,
 			FCPrint[1,"FCFeynmanPrepare: Applying FCFeynmanPrepare in parallel.", FCDoControl->fcszVerbose];
 			With[{xxx = lmomsList}, ParallelEvaluate[FCContext`FCFeynmanPrepare`lmomsList = xxx;, DistributedContexts -> None]];
 			res = ParallelMap[FCFeynmanPrepare[#[[1]], FCContext`FCFeynmanPrepare`lmomsList, Join[{FCI->True,FinalSubstitutions->#[[2]]},
 			FilterRules[{opts}, Except[FCI | FinalSubstitutions | FCVerbose]]]]&,Transpose[{ints,finalSubstitutions}],
-			DistributedContexts -> None, Method -> "CoarsestGrained"];
+			DistributedContexts -> None, Method->"ItemsPerEvaluation" -> Ceiling[N[Length[ints]/$KernelCount]/10]];
 			FCPrint[1, "FCFeynmanPrepare: Done applying FCFeynmanPrepare in parallel, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose],
 
 			FCPrint[1,"FCFeynmanPrepare: Applying FCFeynmanPrepare.", FCDoControl->fcszVerbose];
@@ -214,8 +221,9 @@ FCFeynmanPrepare[glis_, topos:{__FCTopology}, opts:OptionsPattern[]] :=
 	]/; MatchQ[glis, {__GLI}] || MatchQ[glis,{(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..}];
 
 FCFeynmanPrepare[toposRaw: {__FCTopology}, opts:OptionsPattern[]]:=
-	If[	$ParallelizeFeynCalc,
-		ParallelMap[FCFeynmanPrepare[#, opts]&,toposRaw, DistributedContexts->None, Method -> "CoarsestGrained"],
+	If[	$ParallelizeFeynCalc && OptionValue[FCParallelize],
+		ParallelMap[FCFeynmanPrepare[#, FilterRules[{opts}, Except[FCParallelize]]]&,toposRaw, DistributedContexts->None,
+			Method->"ItemsPerEvaluation" -> Ceiling[N[Length[toposRaw]/$KernelCount]/10]],
 		Map[FCFeynmanPrepare[#, opts]&,toposRaw]
 	];
 
@@ -254,8 +262,10 @@ FCFeynmanPrepare[topoRaw_FCTopology, opts:OptionsPattern[]] :=
 FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 	Block[{	feynX, propProduct, tmp, symF, symU, ex, spd, qkspd, mtmp,
 			matrix, nDenoms, res, constraint, tmp0, powers, lmoms,
-			optFinalSubstitutions, optNames, aux1, aux2, nProps, fpJ, fpQ, optFCReplaceMomenta,
-			null1, null2, tensorPart, scalarPart, time, tcHideRule={}, sortBy, pref, etaSigns, optExtraPropagators},
+			optFinalSubstitutions, optNames, aux1, aux2, nProps, fpJ,
+			fpQ, optFCReplaceMomenta, null1, null2, tensorPart, scalarPart,
+			time, tcHideRule={}, sortBy, pref, etaSigns, optExtraPropagators,
+			nonUnitNum = False},
 
 		optNames				= OptionValue[Names];
 		optFinalSubstitutions	= OptionValue[FinalSubstitutions];
@@ -379,6 +389,12 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 		(* We don't need this list of scalar products here and removing it makes the output a transposable matrix *)
 		tmp[[2]] = ConstantArray[0,Length[tmp[[1]]]];
 
+		If[	OptionValue["MarkNonUnitNumerators"],
+			If[	MatchQ[tmp[[3]], {___, _?Negative, ___}],
+				nonUnitNum=True
+			]
+		];
+
 		If[	OptionValue["IgnoreNumerator"],
 			FCPrint[1, "FCFeynmanPrepare: Ignoring the numerator of the loop integral.", FCDoControl -> fcszVerbose];
 			tmp = Transpose[Transpose[tmp] /. {_,_,n_/;n<0,_} :> Unevaluated[Sequence[]]]
@@ -475,6 +491,7 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 		FCPrint[1, "FCFeynmanPrepare: Constructing U and F.", FCDoControl -> fcszVerbose];
 
 		tmp = ExpandScalarProduct[tmp, Momentum -> lmoms, FCI -> True];
+		FCPrint[3,"FCFeynmanPrepare: tmp for buildF: ", tmp, FCDoControl->fcszVerbose];
 		{symU, symF} = Fold[buildF, {1, tmp}, lmoms];
 
 		FCPrint[1, "FCFeynmanPrepare: U and F ready, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose];
@@ -555,6 +572,11 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
+		];
+
+		(*This is needed only for FCLoopScalelessQ, so breaking the convention is not an issue.*)
+		If[	OptionValue["MarkNonUnitNumerators"],
+			res = Join[res,{nonUnitNum}]
 		];
 
 		FCPrint[1,"FCFeynmanPrepare: Leaving.", FCDoControl->fcszVerbose];

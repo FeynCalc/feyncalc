@@ -8,7 +8,7 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [FCApart](FCApart.md), [FeynAmpDenominatorSimplify](FeynAmpDenominatorSimplify.md).
+[Overview](Extra/FeynCalc.md), [FCApart](FCApart.md), [FeynAmpDenominatorSimplify](FeynAmpDenominatorSimplify.md), [FCLoopFindTensorBasis](FCLoopFindTensorBasis.md).
 
 ### Examples
 
@@ -34,7 +34,7 @@ ApartFF[%, {q}]
 
 $$\frac{(p\cdot q) (q\cdot r)}{q^2.(q-p)^2.(q-r)^2}$$
 
-$$\frac{p^2 r^2}{4 q^2.(q-r)^2.(q-p)^2}+\frac{p^2+2 (q\cdot r)+2 r^2}{4 q^2.(-p+q+r)^2}+-\frac{p^2}{4 q^2.(q-p)^2}-\frac{r^2}{4 q^2.(q-r)^2}$$
+$$\frac{p^2 r^2}{4 q^2.(q-p)^2.(q-r)^2}+\frac{p^2+2 (q\cdot r)+2 r^2}{4 q^2.(-p+q+r)^2}+-\frac{p^2}{4 q^2.(q-p)^2}-\frac{r^2}{4 q^2.(q-r)^2}$$
 
 ```mathematica
 FAD[{q}, {q - p}, {q + p}] 
@@ -54,7 +54,7 @@ ApartFF[%, {q1, q2}]
 
 $$\frac{(p\cdot \;\text{q1}) (p\cdot \;\text{q2})^2}{\left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right).(\text{q1}-p)^2.(\text{q2}-p)^2.(\text{q1}-\text{q2})^2}$$
 
-$$\frac{\left(m^2+p^2\right)^3}{8 \left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right).(\text{q2}-p)^2.(\text{q1}-\text{q2})^2.(\text{q1}-p)^2}-\frac{\left(m^2+p^2\right)^2}{4 \left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right).(\text{q1}-\text{q2})^2.(\text{q1}-p)^2}+\frac{\left(m^2+p^2\right) \left(m^2+2 p^2\right)}{4 \;\text{q2}^2.\text{q1}^2.\left((\text{q1}-p)^2-m^2\right).(\text{q1}-\text{q2})^2}-\frac{\left(m^2+p^2\right) (p\cdot \;\text{q1})}{4 \left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right).(\text{q2}-p)^2.(\text{q1}-\text{q2})^2}-\frac{\left(m^2+p^2\right) (p\cdot \;\text{q1})}{4 \;\text{q2}^2.\text{q1}^2.(\text{q1}-\text{q2})^2.\left((\text{q2}-p)^2-m^2\right)}-\frac{p\cdot \;\text{q1}}{4 \left(\text{q2}^2-m^2\right).(\text{q1}-\text{q2})^2.(\text{q1}-p)^2}-\frac{m^2+p\cdot \;\text{q1}+p^2}{4 \left(\text{q1}^2-m^2\right).(\text{q2}-p)^2.(\text{q1}-\text{q2})^2}+\frac{m^2+2 (p\cdot \;\text{q1})+p^2}{8 \left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right).(\text{q1}-\text{q2})^2}$$
+$$\frac{\left(m^2+p^2\right)^3}{8 \left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right).(\text{q1}-p)^2.(\text{q1}-\text{q2})^2.(\text{q2}-p)^2}-\frac{\left(m^2+p^2\right)^2}{4 \left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right).(\text{q1}-p)^2.(\text{q1}-\text{q2})^2}+\frac{\left(m^2+p^2\right) \left(m^2+2 p^2\right)}{4 \;\text{q1}^2.\text{q2}^2.\left((\text{q1}-p)^2-m^2\right).(\text{q1}-\text{q2})^2}-\frac{\left(m^2+p^2\right) (p\cdot \;\text{q1})}{4 \;\text{q1}^2.\text{q2}^2.(\text{q1}-\text{q2})^2.\left((\text{q2}-p)^2-m^2\right)}-\frac{\left(m^2+p^2\right) (p\cdot \;\text{q1})}{4 \left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right).(\text{q1}-\text{q2})^2.(\text{q2}-p)^2}-\frac{p\cdot \;\text{q1}}{4 \left(\text{q2}^2-m^2\right).(\text{q1}-p)^2.(\text{q1}-\text{q2})^2}-\frac{m^2+p\cdot \;\text{q1}+p^2}{4 \left(\text{q1}^2-m^2\right).(\text{q1}-\text{q2})^2.(\text{q2}-p)^2}+\frac{m^2+2 (p\cdot \;\text{q1})+p^2}{8 \left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right).(\text{q1}-\text{q2})^2}$$
 
 ```mathematica
 SPD[q, p] FAD[{q, m}, {q - p, 0}] 
@@ -78,13 +78,13 @@ $$\frac{(p\cdot \;\text{q1}) (p\cdot \;\text{q2})}{\left(\text{q1}^2-m^2\right).
 ApartFF[int, {q1, q2}]
 ```
 
-$$\frac{\left(m^2+p^2\right)^2}{4 \left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right).(\text{q2}-p)^2.(\text{q1}-\text{q2})^2.(\text{q1}-p)^2}-\frac{m^2+p^2}{2 \left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right).(\text{q1}-\text{q2})^2.(\text{q1}-p)^2}+\frac{m^2+p^2}{2 \;\text{q2}^2.\text{q1}^2.\left((\text{q1}-p)^2-m^2\right).(\text{q1}-\text{q2})^2}-\frac{1}{2 \left(\text{q1}^2-m^2\right).(\text{q2}-p)^2.(\text{q1}-\text{q2})^2}+\frac{1}{4 \left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right).(\text{q1}-\text{q2})^2}$$
+$$\frac{\left(m^2+p^2\right)^2}{4 \left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right).(\text{q1}-p)^2.(\text{q1}-\text{q2})^2.(\text{q2}-p)^2}+\frac{m^2+p^2}{2 \;\text{q1}^2.\text{q2}^2.\left((\text{q1}-p)^2-m^2\right).(\text{q1}-\text{q2})^2}-\frac{m^2+p^2}{2 \left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right).(\text{q1}-p)^2.(\text{q1}-\text{q2})^2}-\frac{1}{2 \left(\text{q1}^2-m^2\right).(\text{q1}-\text{q2})^2.(\text{q2}-p)^2}+\frac{1}{4 \left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right).(\text{q1}-\text{q2})^2}$$
 
 ```mathematica
 ApartFF[int, {q1, q2}, FDS -> False]
 ```
 
-$$\frac{\left(m^2+p^2\right)^2}{4 \left(\text{q2}^2-m^2\right).(\text{q2}-p)^2.(\text{q2}-\text{q1})^2.\left(\text{q1}^2-m^2\right).(\text{q1}-p)^2}-\frac{m^2+p^2}{4 \left(\text{q1}^2-m^2\right).(\text{q1}-p)^2.\left(\text{q2}^2-m^2\right).(\text{q2}-\text{q1})^2}+\frac{m^2+p^2}{4 \left(\text{q1}^2-m^2\right).(\text{q1}-p)^2.(\text{q2}-p)^2.(\text{q2}-\text{q1})^2}-\frac{m^2+p^2}{4 \left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right).(\text{q2}-p)^2.(\text{q2}-\text{q1})^2}+\frac{m^2+p^2}{4 (\text{q1}-p)^2.\left(\text{q2}^2-m^2\right).(\text{q2}-p)^2.(\text{q2}-\text{q1})^2}-\frac{1}{4 (\text{q2}-\text{q1})^2.\left(\text{q1}^2-m^2\right).(\text{q2}-p)^2}-\frac{1}{4 (\text{q2}-\text{q1})^2.(\text{q1}-p)^2.\left(\text{q2}^2-m^2\right)}+\frac{1}{4 (\text{q2}-\text{q1})^2.\left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right)}+\frac{1}{4 (\text{q2}-\text{q1})^2.(\text{q1}-p)^2.(\text{q2}-p)^2}$$
+$$\frac{\left(m^2+p^2\right)^2}{4 \left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right).(\text{q1}-p)^2.(\text{q2}-p)^2.(\text{q2}-\text{q1})^2}+\frac{m^2+p^2}{4 \left(\text{q1}^2-m^2\right).(\text{q1}-p)^2.(\text{q2}-p)^2.(\text{q2}-\text{q1})^2}-\frac{m^2+p^2}{4 \left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right).(\text{q1}-p)^2.(\text{q2}-\text{q1})^2}-\frac{m^2+p^2}{4 \left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right).(\text{q2}-p)^2.(\text{q2}-\text{q1})^2}+\frac{m^2+p^2}{4 \left(\text{q2}^2-m^2\right).(\text{q1}-p)^2.(\text{q2}-p)^2.(\text{q2}-\text{q1})^2}-\frac{1}{4 \left(\text{q1}^2-m^2\right).(\text{q2}-p)^2.(\text{q2}-\text{q1})^2}-\frac{1}{4 \left(\text{q2}^2-m^2\right).(\text{q1}-p)^2.(\text{q2}-\text{q1})^2}+\frac{1}{4 \left(\text{q1}^2-m^2\right).\left(\text{q2}^2-m^2\right).(\text{q2}-\text{q1})^2}+\frac{1}{4 (\text{q1}-p)^2.(\text{q2}-p)^2.(\text{q2}-\text{q1})^2}$$
 
 If the partial fractioning should be performed only w. r. t. the denominators but not numerators, use the option `Numerator->False`
 
@@ -124,7 +124,7 @@ $$\frac{m^2+p^2+2 q^2}{2 m^2 k^2.\left((k-p)^2-m^2\right)}+-\frac{1}{2 m^2 \left
 ApartFF[int, {k}, FeynAmpDenominator -> False]
 ```
 
-$$\frac{q^2}{k^2.(p-k)^2.\left(k^2-m^2\right)}+\frac{m^2+p^2}{2 m^2 k^2.\left((k-p)^2-m^2\right)}+-\frac{1}{2 m^2 \left(k^2-m^2\right)}-\frac{p^2}{2 m^2 k^2.(k-p)^2}$$
+$$\frac{q^2}{k^2.\left(k^2-m^2\right).(p-k)^2}+\frac{m^2+p^2}{2 m^2 k^2.\left((k-p)^2-m^2\right)}+-\frac{1}{2 m^2 \left(k^2-m^2\right)}-\frac{p^2}{2 m^2 k^2.(k-p)^2}$$
 
 The `extraPiece`-trick is useful for cases where a direct partial fractioning is not possible
 
@@ -198,3 +198,49 @@ ApartFF[ApartFF[SFAD[{{0, nb . k1}}] int2, SPD[nb, k1], {k1, k2}], {k1, k2}, FDS
 ```
 
 $$1-\frac{\text{k1}\cdot \;\text{nb}}{(\text{k1}\cdot \;\text{nb}+\text{k2}\cdot \;\text{nb}+i \eta )}$$
+
+When we need to deal with linearly dependent external momenta, there might be some relations between scalar products involving those momenta and loop momenta. Since the routine cannot determine those relations automatically, we need to supply them by hand via the option `FinalSubstitutions`
+
+```mathematica
+FCClearScalarProducts[];
+int3 = SPD[p1, q] FAD[{q, m}, {q - p1 - p2}]
+```
+
+$$\frac{\text{p1}\cdot q}{\left(q^2-m^2\right).(-\text{p1}-\text{p2}+q)^2}$$
+
+Supplying the kinematics alone doesn't work
+
+```mathematica
+kinRules = {SPD[p1] -> M^2, SPD[p2] -> M^2, SPD[p1, p2] -> M^2}
+```
+
+$$\left\{\text{p1}^2\to M^2,\text{p2}^2\to M^2,\text{p1}\cdot \;\text{p2}\to M^2\right\}$$
+
+```mathematica
+ApartFF[SPD[p1, q] FAD[{q, m}, {q - p1 - p2}], {q}, FinalSubstitutions -> kinRules]
+```
+
+$$\frac{\text{p1}\cdot q}{\left(q^2-m^2\right).(-\text{p1}-\text{p2}+q)^2}$$
+
+Using `FCLoopFindTensorBasis` we see that `p2` is proportional to `p1`. Hence, we have an equality between `p1.q` and `p2.q`
+
+```mathematica
+FCLoopFindTensorBasis[{p1, p2}, kinRules, n]
+```
+
+$$\left(
+\begin{array}{c}
+ \;\text{p1} \\
+ \;\text{p2} \\
+ \;\text{p2}\to \;\text{p1} \;\text{FCGV}(\text{Prefactor})(1) \\
+\end{array}
+\right)$$
+
+Supplying this information to `ApartFF` we can finally achieve the desired simplification
+
+```mathematica
+ApartFF[SPD[p1, q] FAD[{q, m}, {q - p1 - p2}], {q}, FinalSubstitutions -> Join[kinRules, 
+    {SPD[q, p2] -> SPD[q, p1]}]]
+```
+
+$$\frac{m^2+4 M^2}{4 \left(q^2-m^2\right).(-\text{p1}-\text{p2}+q)^2}-\frac{1}{4 \left(q^2-m^2\right)}$$

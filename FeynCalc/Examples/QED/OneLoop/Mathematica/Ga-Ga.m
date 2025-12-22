@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Ga -> Ga, QED, only UV divergences, 1-loop					*)
@@ -31,11 +31,17 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False,
 	$FeynCalcStartupMessages = False
 ];
+LaunchKernels[4];
 $LoadAddOns={"FeynArts"};
 <<FeynCalc`
 $FAVerbose = 0;
+$ParallelizeFeynCalc=True;
 
-FCCheckVersion[9,3,1];
+
+(* ::Print:: *)
+(*\!\(\**)
+(*StyleBox["\<\"If you use FeynCalc in your research, please evaluate FeynCalcHowToCite[] to learn how to cite this software.\"\>", "Text",*)
+(*StripOnInput->False]\)*)
 
 
 (* ::Section:: *)
@@ -57,8 +63,8 @@ $KeepLogDivergentScalelessIntegrals=True;
 (*Nicer typesetting*)
 
 
-MakeBoxes[mu,TraditionalForm]:="\[Mu]";
-MakeBoxes[nu,TraditionalForm]:="\[Nu]";
+FCAttachTypesettingRule[mu,"\[Mu]"];
+FCAttachTypesettingRule[nu,"\[Nu]"];
 
 
 diags = InsertFields[CreateTopologies[1, 1 -> 1], {V[1]} ->
@@ -80,16 +86,14 @@ Paint[diags, ColumnsXRows -> {1, 1}, Numbering -> Simple,
 amp[0] = FCFAConvert[CreateFeynAmp[diags, Truncated -> True, PreFactor->1],
 	IncomingMomenta->{p}, OutgoingMomenta->{p},LoopMomenta->{q},
 	LorentzIndexNames->{mu,nu}, UndoChiralSplittings->True,
-	ChangeDimension->D, List->False, SMP->True,
-	Contract->True]
-
+	ChangeDimension->D, SMP->True,Contract->True]
 
 
 (* ::Section:: *)
 (*Calculate the amplitude*)
 
 
-amp[1] = TID[amp[0], q, ToPaVe->True]
+amp[1] = TID[amp[0], q, ToPaVe->True,FCParallelize->True]//Total
 
 
 (* ::Text:: *)
@@ -139,3 +143,6 @@ Text->{"\tCompare to Peskin and Schroeder, An Introduction to QFT, \
 Eq 10.44:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
+
+
+

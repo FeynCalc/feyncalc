@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  El -> El, QED, only UV divergences, 1-loop					*)
@@ -31,11 +31,13 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False,
 	$FeynCalcStartupMessages = False
 ];
+LaunchKernels[4];
 $LoadAddOns={"FeynArts"};
 <<FeynCalc`
 $FAVerbose = 0;
+$ParallelizeFeynCalc=True;
 
-FCCheckVersion[9,3,1];
+FCCheckVersion[10,2,0];
 
 
 (* ::Section:: *)
@@ -72,15 +74,16 @@ Paint[diags, ColumnsXRows -> {1, 1}, Numbering -> Simple,
 
 amp[0] = FCFAConvert[CreateFeynAmp[diags, Truncated -> True,
 	PreFactor->1, GaugeRules->{}], IncomingMomenta->{p},
-	OutgoingMomenta->{p},LoopMomenta->{q}, UndoChiralSplittings->True,
-	ChangeDimension->D, List->False, SMP->True, Contract->True]
+	OutgoingMomenta->{p},LoopMomenta->{q}, 
+	UndoChiralSplittings->True,
+	ChangeDimension->D, SMP->True]
 
 
 (* ::Section:: *)
 (*Calculate the amplitude*)
 
 
-amp[1] = TID[amp[0], q, ToPaVe->True]
+amp[1] = TID[amp[0], q, ToPaVe->True,FCParallelize->True]//Total
 
 
 (* ::Text:: *)
@@ -124,3 +127,6 @@ Text->{"\tCompare to Peskin and Schroeder, An Introduction to QFT, \
 Eq 10.41:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
+
+
+

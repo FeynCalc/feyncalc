@@ -75,6 +75,15 @@ $$\hat{q}^{\mu } \overline{p}^{\mu }$$
 
 $$0$$
 
+```mathematica
+(FVD[p, \[Mu]] + FVE[p, \[Mu]]) (FVD[q, \[Mu]] + FVE[q, \[Mu]])
+Contract[%]
+```
+
+$$\left(p^{\mu }+\hat{p}^{\mu }\right) \left(q^{\mu }+\hat{q}^{\mu }\right)$$
+
+$$3 \left(\hat{p}\cdot \hat{q}\right)+p\cdot q$$
+
 Sometimes we need to switch from one dimension to another, e.g. to convert a 4-dimensional object to a $D$-dimensional one or vice versa. This is done via
 
 ```mathematica
@@ -96,3 +105,44 @@ ChangeDimension[%, D - 4]
 $$p^{\mu }$$
 
 $$\hat{p}^{\mu }$$
+
+```mathematica
+SP[p, q]
+ChangeDimension[%, D]
+```
+
+$$\overline{p}\cdot \overline{q}$$
+
+$$p\cdot q$$
+
+To check the dimension of the given expression one can use `FCGetDimensions`
+
+```mathematica
+FVD[p, \[Mu]] FV[q, \[Mu]]
+FCGetDimensions[%, {}]
+```
+
+$$p^{\mu } \overline{q}^{\mu }$$
+
+$$\{4,D\}$$
+
+If one needs to replace the dimensional symbols `D` in the prefactors of the Lorentz tensors, it is better to use `FCReplaceD` instead of a replacement rule. Otherwise, the dimensions of the tensors will get messed up
+
+```mathematica
+FCI[(D + 2) MTD[\[Mu], \[Nu]]] 
+% /. D -> 4 - 2 Epsilon
+```
+
+$$(D+2) g^{\mu \nu }$$
+
+$$(6-2 \varepsilon ) g_{\{4-2 \varepsilon ,4-2 \varepsilon \}}{}^{\mu \nu }$$
+
+```mathematica
+(D + 2) MTD[\[Mu], \[Nu]]
+FCReplaceD[%, D -> 4 - 2 Epsilon] 
+
+```mathematica
+
+$$(D+2) g^{\mu \nu }$$
+
+$$(6-2 \varepsilon ) g^{\mu \nu }$$

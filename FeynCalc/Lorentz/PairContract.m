@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Local contraction rules										*)
@@ -107,6 +107,15 @@ CartesianPairContract /:
 (*here f could be anything (Dirac matrix, tensor function etc.) carrying a Cartesian index*)
 CartesianPairContract/: CartesianPairContract[CartesianIndex[z_,dim___],(h:CartesianIndex|CartesianMomentum)[x_,dim___]] f_[a__] :=
 	(f[a] /. CartesianIndex[z, ___]->h[x,dim]) /;(!FreeQ[f[a], CartesianIndex[z,___]]);
+
+
+CartesianPairContract[a_, b_]:=
+	Block[{pairExpanded = FCUseCache[ExpandScalarProduct,{CartesianPair[a,b]},{FCI->True}]},
+		If[	FreeQ2[pairExpanded,{Pair,CartesianPair}] || Head[pairExpanded]=!=Plus,
+			pairExpanded,
+			CartesianPair[a,b]
+		]
+	]/;FreeQ2[{a,b},{LorentzIndex,CartesianIndex}]
 
 (* #################################################################### *)
 

@@ -31,7 +31,7 @@ Contract[%]
 
 
 (* ::Text:: *)
-(*However, since FeynCalc 9 there is a function for that*)
+(*However, FeynCalc offers a function for that*)
 
 
 FCRenameDummyIndices[ex1]
@@ -50,7 +50,7 @@ FCRenameDummyIndices[%]
 
 
 (* ::Text:: *)
-(*But since FeynCalc 9.1 there is a function for that too*)
+(*There is a function for that too*)
 
 
 FV[p,\[Nu]]FV[q,\[Nu]]-FV[p,\[Mu]]FV[q,\[Mu]]
@@ -58,7 +58,7 @@ FCCanonicalizeDummyIndices[%]
 
 
 (* ::Text:: *)
-(*Finally, often we also need to uncontract already contracted indices. This is done by `Uncontract`. By default, it handles only contractions with Dirac matrices and Levi-Civita tensors*)
+(*Often we also need to uncontract already contracted indices. This is done by `Uncontract`. By default, it handles only contractions with Dirac matrices and Levi-Civita tensors*)
 
 
 LC[][p,q,r,s]
@@ -75,3 +75,37 @@ Uncontract[%,p]
 
 
 Uncontract[%,p,Pair->All]
+
+
+(* ::Text:: *)
+(*Sometimes one might want to define custom symbolic tensors that are not specified in terms of the 4-vectors, metric tensors and Levi-Civitas. This is possible in FeynCalc, but the handling of such objects is not as good as that of the built-in quantities*)
+
+
+DeclareFCTensor[myTensor];
+
+
+myTensor[LorentzIndex[\[Mu]],LorentzIndex[\[Nu]]]FV[p,\[Nu]]FV[q,\[Mu]]
+ex=Contract[%]
+
+
+Uncontract[ex,p,q,Pair->All]
+
+
+(myTensor[LorentzIndex[\[Mu]],LorentzIndex[\[Nu]]]MT[LorentzIndex[\[Mu]],LorentzIndex[\[Nu]]]+
+myTensor[LorentzIndex[\[Alpha]],LorentzIndex[\[Beta]]]MT[LorentzIndex[\[Alpha]],LorentzIndex[\[Beta]]])
+FCCanonicalizeDummyIndices[%,LorentzIndexNames->{i1,i2}]
+
+
+(* ::Text:: *)
+(*To extract the list of free or dummy indices present in the expression, one can use `FCGetFreeIndices` and `FCGetDummyIndices` respectively*)
+
+
+FCI[FV[p, \[Mu]] FV[q, \[Nu]]] 
+FCGetFreeIndices[%, {LorentzIndex}]
+
+
+FCI[FV[p, \[Mu]] FV[q, \[Mu]]] 
+FCGetDummyIndices[%, {LorentzIndex}]
+
+
+

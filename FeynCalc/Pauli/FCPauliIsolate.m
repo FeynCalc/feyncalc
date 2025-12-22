@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Isolates chains of Pauli matrices								*)
@@ -49,6 +49,7 @@ Options[FCPauliIsolate] = {
 	LorentzIndex 		-> False,
 	PauliChain			-> False,
 	PauliEta 			-> True,
+	PauliEtaC 			-> True,
 	PauliSigma 			-> True,
 	PauliSigmaCombine	-> True,
 	PauliTrace			-> True,
@@ -231,7 +232,7 @@ FCPauliIsolate[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 
 		If[	!OptionValue[PauliSigma] && !FreeQ[allHeadsEval/. _PauliChain :> Unique["pch"], PauliSigma],
 			allHeadsEval = allHeadsEval //. head[x_PauliSigma y_.] :> x head[y] //.
-			head[holdDOT[x__] y_.]/; FreeQ2[{x},{PauliXi,PauliEta}] && !FreeQ[{x},PauliSigma] :> holdDOT[x] head[y]
+			head[holdDOT[x__] y_.]/; FreeQ2[{x},{PauliXi,PauliEta,PauliEtaC}] && !FreeQ[{x},PauliSigma] :> holdDOT[x] head[y]
 		];
 
 		If[	OptionValue[PauliXi]===False && !FreeQ[allHeadsEval,PauliXi],
@@ -240,6 +241,10 @@ FCPauliIsolate[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 
 		If[	OptionValue[PauliEta]===False && !FreeQ[allHeadsEval,PauliEta],
 			allHeadsEval = allHeadsEval //. head[holdDOT[x__] y_.]/; !FreeQ[{x},PauliEta] :> holdDOT[x] head[y]
+		];
+
+		If[	OptionValue[PauliEtaC]===False && !FreeQ[allHeadsEval,PauliEtaC],
+			allHeadsEval = allHeadsEval //. head[holdDOT[x__] y_.]/; !FreeQ[{x},PauliEtaC] :> holdDOT[x] head[y]
 		];
 
 
@@ -290,9 +295,9 @@ FCPauliIsolate[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 chainSplit[ex_, head_]:=
 	(
 		tmp  = ex //. head[a_holdDOT b_]/; !FreeQ[b, holdDOT] :> head[a] head[b];
-		If[	!FreeQ2[tmp,{PauliEta,PauliXi}],
+		If[	!FreeQ2[tmp,{PauliEta,PauliEtaC,PauliXi}],
 			tmp  = tmp /. {
-				head[holdDOT[r1___,(a: _PauliEta | _PauliXi),b___, (c: _PauliEta | _PauliXi), (d: _PauliEta | _PauliXi), e___, (f: _PauliEta | _PauliXi), r2___]]/;FreeQ2[{r1,b,e,r2}, {PauliEta,PauliXi}] :>
+				head[holdDOT[r1___,(a: _PauliEta | _PauliEtaC | _PauliXi),b___, (c: _PauliEta | _PauliEtaC | _PauliXi), (d: _PauliEta | _PauliEtaC | _PauliXi), e___, (f: _PauliEta | _PauliEtaC | _PauliXi), r2___]]/;FreeQ2[{r1,b,e,r2}, {PauliEta,PauliEtaC,PauliXi}] :>
 					head[holdDOT[a,b,c]] head[holdDOT[d,e,f]] head[holdDOT[r1,r2]]}
 		];
 		tmp

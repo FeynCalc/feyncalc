@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Renormalization, Yukawa, MS and MSbar, 1-loop					*)
@@ -36,11 +36,11 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False,
 	$FeynCalcStartupMessages = False
 ];
+LaunchKernels[4];
 $LoadAddOns={"FeynArts"};
 <<FeynCalc`
 $FAVerbose = 0;
-
-FCCheckVersion[10,0,0];
+$ParallelizeFeynCalc=True;
 
 
 (* ::Section:: *)
@@ -116,7 +116,7 @@ amp1[0] = FCFAConvert[CreateFeynAmp[diag1[0],Truncated->True,
 	GaugeRules->{},PreFactor->1],
 	IncomingMomenta->{p}, OutgoingMomenta->{p},	
 	LoopMomenta->{l}, UndoChiralSplittings->True,
-	ChangeDimension->D, List->False, SMP->True,
+	ChangeDimension->D, SMP->True,
 	FinalSubstitutions->{},Contract->True]
 
 
@@ -128,7 +128,7 @@ amp2[0] = FCFAConvert[CreateFeynAmp[diag2[0],Truncated->True,
 	GaugeRules->{}, PreFactor->1],
 	IncomingMomenta->{p}, OutgoingMomenta->{p},	
 	LoopMomenta->{l}, UndoChiralSplittings->True,
-	ChangeDimension->D, List->False, SMP->True, Contract->True]
+	ChangeDimension->D, SMP->True, Contract->True]
 
 
 (* ::Text:: *)
@@ -138,8 +138,9 @@ amp2[0] = FCFAConvert[CreateFeynAmp[diag2[0],Truncated->True,
 amp3[0] = FCFAConvert[CreateFeynAmp[diag3[0],Truncated->True,
 	GaugeRules->{}, PreFactor->1],
 	IncomingMomenta->{p1,k}, OutgoingMomenta->{p2},
-	LoopMomenta->{l}, UndoChiralSplittings->True, ChangeDimension->D,
-	List->False, SMP->True, Contract->True]
+	LoopMomenta->{l}, UndoChiralSplittings->True, 
+	ChangeDimension->D,
+	SMP->True]
 
 
 (* ::Text:: *)
@@ -149,8 +150,9 @@ amp3[0] = FCFAConvert[CreateFeynAmp[diag3[0],Truncated->True,
 amp4[0] = FCFAConvert[CreateFeynAmp[diag4[0],Truncated->True,
 	GaugeRules->{}, PreFactor->1],
 	IncomingMomenta->{p1,p2}, OutgoingMomenta->{p3,p4},
-	LoopMomenta->{l}, UndoChiralSplittings->True, ChangeDimension->D,
-	List->False, SMP->True, Contract->True]
+	LoopMomenta->{l}, UndoChiralSplittings->True, 
+	ChangeDimension->D,
+	SMP->True]
 
 
 (* ::Section:: *)
@@ -170,7 +172,7 @@ Normal//ReplaceAll[#,alpha->1]&
 (*Tensor reduction allows us to express the electron self-energy in tems of the Passarino-Veltman coefficient functions.*)
 
 
-amp1[2]=TID[amp1[1],l,ToPaVe->True]
+amp1[2]=TID[amp1[1],l,ToPaVe->True,FCParallelize->True]//Total
 
 
 (* ::Text:: *)
@@ -208,7 +210,7 @@ Normal//ReplaceAll[#,alpha->1]&
 (*Tensor reduction allows us to express the scalar self-energy in tems of the Passarino-Veltman coefficient functions.*)
 
 
-amp2[2]=TID[amp2[1],l,ToPaVe->True]
+amp2[2]=TID[amp2[1],l,ToPaVe->True,FCParallelize->True]//Total
 
 
 (* ::Text:: *)
@@ -242,7 +244,8 @@ Series[#,{alpha,0,1}]&//Normal//ReplaceAll[#,alpha->1]&
 (*The result of the tensor reduction is quite large, since we keep the full gauge dependence and do not specify the kinematics*)
 
 
-amp3[2]=TID[amp3[1],l,ToPaVe->True,UsePaVeBasis->True]
+amp3[2]=TID[amp3[1],l,ToPaVe->True,UsePaVeBasis->True,
+FCParallelize->True]//Total
 
 
 (* ::Text:: *)
@@ -276,7 +279,8 @@ Series[#,{alpha,0,1}]&//Normal//ReplaceAll[#,alpha->1]&
 (*The result of the tensor reduction is quite large, since we keep the full gauge dependence and do not specify the kinematics*)
 
 
-amp4[2]=TID[amp4[1],l,ToPaVe->True,UsePaVeBasis->True]
+amp4[2]=TID[amp4[1],l,ToPaVe->True,UsePaVeBasis->True,
+FCParallelize->True]//Total
 
 
 (* ::Text:: *)

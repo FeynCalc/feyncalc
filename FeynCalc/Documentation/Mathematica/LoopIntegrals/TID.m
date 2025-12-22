@@ -81,15 +81,64 @@ TID[SPD[p,q]FAD[q,{q-p,m}]FVD[q,mu],q,UsePaVeBasis->True,ToPaVe->Automatic]
 
 FCClearScalarProducts[];
 
-SPD[Subscript[p, 1],Subscript[p, 1]]=0;
+SPD[Subscript[p, 1],Subscript[p, 1]]=M^2;
 
-SPD[Subscript[p, 2],Subscript[p, 2]]=0;
+SPD[Subscript[p, 2],Subscript[p, 2]]=M^2;
 
-SPD[Subscript[p, 1],Subscript[p, 2]]=0;
+SPD[Subscript[p, 1],Subscript[p, 2]]=M^2;
 
-TID[FAD[{k,m}, k - Subscript[p, 1], k - Subscript[p, 2]]FVD[k,\[Mu]]//FCI,k]
+TID[FAD[{k,m}, k - Subscript[p, 1], k - Subscript[p, 2]]FVD[k,\[Mu]],k]
+
+
+(* ::Text:: *)
+(*A vanishing Gram determinant signals that the external momenta are linearly dependent on each other. This redundancy can be resolved by switching to a different basis. To that aim we need to run `FCLoopFindTensorBasis` to analyze the set of external momenta causing troubles*)
+
+
+FCLoopFindTensorBasis[{-Subscript[p, 1], -Subscript[p, 2]},{},n]
+
+
+(* ::Text:: *)
+(*We see that $p_1$ and $p_2$ are proportional to each other, so that only one of these vectors is linearly independent. This also means that the scalar products involving loop momentum $p_1 \cdot k$ and $p_2 \cdot k$ are identical. Supplying this information to `TID` we can now achieve the desired reduction to scalars.*)
+
+
+TID[FAD[{k,m}, k - Subscript[p, 1], k - Subscript[p, 2]]FVD[k,\[Mu]],k,
+TensorReductionBasisChange->{{-Subscript[p, 1], -Subscript[p, 2]}->{-Subscript[p, 1]}},
+FinalSubstitutions->{SPD[k,Subscript[p, 2]]->SPD[k,Subscript[p, 1]]}]
+
+
+(* ::Text:: *)
+(*Notice that the result contains a propagator squared. This can be reduced further using IBPs (e.g. by employing FIRE or KIRA via the FeynHelpers interface).*)
+
+
+(* ::Text:: *)
+(*For cases involving light-like external momenta we often need to introduce an auxiliary vector, since the available vector are not sufficient to form a basis*)
+
 
 FCClearScalarProducts[];
+
+SPD[p]=0;
+
+TID[FAD[{k,m}, k - p]FVD[k,\[Mu]],k]
+
+
+(* ::Text:: *)
+(*Running `FCLoopFindTensorBasis` we get a suggestion to introduce an auxiliary vector $n$ to the basis. The scalar products of this vector with other external momenta must be nonvanishing, but we are free to make the vector itself light-like (for simplicity)*)
+
+
+FCLoopFindTensorBasis[{-p},{},n]
+
+
+SPD[n]=0;
+
+TID[FAD[{k,m}, k - p]FVD[k,\[Mu]],k,TensorReductionBasisChange->{{-p}->{-p,n}},AuxiliaryMomenta->{n}]
+
+
+(* ::Text:: *)
+(*Unfortunately, in this case `TID` alone cannot eliminate the scalar products of $n$ with the loop momentum in the numerator. For that we need to use IBPs. Still, it manages to reduce the tensor integral to scalars, even though at this stage not all of them can be mapped to scalar PaVe functions. *)
+
+
+(* ::Text:: *)
+(*The dependence on the auxiliary vector $n$ must cancel in the final result for this integral, as the auxiliary vector is unphysical and the original integral does not depend on it. To arrive at these cancellations for more complicated tensor integral it might be necessary to exploit the relations between the physical vectors as given by `FCLoopFindTensorBasis` and contract those with $n$.*)
 
 
 (* ::Text:: *)
@@ -135,3 +184,6 @@ DataType[b, FCVariable] = True;
 ExpandScalarProduct[SP[P,Q]/.P->a P1 +b P2]
 
 StandardForm[%]
+
+
+

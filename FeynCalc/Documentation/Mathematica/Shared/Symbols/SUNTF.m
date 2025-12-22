@@ -50,3 +50,10 @@ SUNDelta[a,b]SUNTF[{a,b},i,j]SUNTF[{c,d},j,i]//SUNSimplify
 
 
 SUNTF[{a,b},i,j]//FCI//StandardForm
+
+
+(* ::Text:: *)
+(*If there are no adjoint indices, the symbol automatically evaluates to a Kronecker delta*)
+
+
+SUNTF[{},i,j]

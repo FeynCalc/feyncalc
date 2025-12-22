@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Simplifies non-commututative products							*)
@@ -353,7 +353,7 @@ DotSimplify[expr_, OptionsPattern[]] :=
 		];
 
 		(* Dirac, Pauli and SU(N) matrices commute with each other, so they need to be properly separated*)
-		If[ !FreeQ2[x, {SUNT,PauliSigma,PauliEta,PauliXi}] && FreeQ[x,QuantumField],
+		If[ !FreeQ2[x, {SUNT,PauliSigma,PauliEta,PauliEtaC,PauliXi}] && FreeQ[x,QuantumField],
 			time=AbsoluteTime[];
 			x  = x /. DOT->holdDOT;
 			(*
@@ -382,8 +382,8 @@ DotSimplify[expr_, OptionsPattern[]] :=
 			FCPrint[3, "DotSimplify: After pulling out Dirac matrices: ", x, FCDoControl->dsVerbose];
 
 			FCPrint[1, "DotSimplify: Pulling out Pauli matrices", FCDoControl->dsVerbose];
-			x = x //. holdDOTRest2[zzz__] :> (holdDOTPauli@@Select[{zzz}, !FreeQ2[{#},{PauliSigma,PauliEta,PauliXi}]& ])*
-			(holdDOTRest3@@Select[{zzz}, FreeQ2[{#},{PauliSigma,PauliEta,PauliXi}]&]);
+			x = x //. holdDOTRest2[zzz__] :> (holdDOTPauli@@Select[{zzz}, !FreeQ2[{#},{PauliSigma,PauliEta,PauliEtaC,PauliXi}]& ])*
+			(holdDOTRest3@@Select[{zzz}, FreeQ2[{#},{PauliSigma,PauliEta,PauliEtaC,PauliXi}]&]);
 			FCPrint[3, "DotSimplify: After pulling out Pauli matrices: ", x, FCDoControl->dsVerbose];
 
 			(* SUNT's and PauliSigma's in a DiracTrace are pulled out but NOT summed over *)

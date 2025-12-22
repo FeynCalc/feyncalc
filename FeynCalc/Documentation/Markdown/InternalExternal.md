@@ -164,7 +164,7 @@ $$\overline{p}^{\mu }$$
 
 $$\overline{p}^{\mu }$$
 
-However, we can always use StandardForm to see the difference
+However, we can always use `StandardForm` to see the difference
 
 ```mathematica
 ex1 // StandardForm

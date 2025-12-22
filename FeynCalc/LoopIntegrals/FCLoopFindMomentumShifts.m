@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  	Finds loop momentum shifts									*)
@@ -163,6 +163,11 @@ FCLoopFindMomentumShifts[fromRaw_List/;FreeQ[fromRaw,FCTopology], toRaw_/;FreeQ[
 				{from, optKinematics[[1]], optTopologyNames[[1]]}];
 		FCPrint[1, "FCLoopFindMomentumShifts: Done finding loop momentum shifts, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcflsVerbose];
 
+		If[	!FreeQ2[shifts,{findShiftsBranching,findShifts}],
+			Message[FCLoopFindMomentumShifts::failmsg,"Something went wrong when applying findShifts."];
+			Abort[]
+		];
+
 
 		FCPrint[1, "FCLoopFindMomentumShifts: Leaving.", FCDoControl -> fcflsVerbose];
 		FCPrint[3, "FCLoopFindMomentumShifts: Leaving with: ", shifts, FCDoControl -> fcflsVerbose];
@@ -308,12 +313,14 @@ findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmomsRaw_List,
 
 		FCPrint[3, "FCLoopFindMomentumShifts: Valid shifts: ", sol, FCDoControl -> fcflsVerbose];
 
-		If[	sol==={} && !suppressFailures,
+		If[	sol==={},
+			If[!suppressFailures,
 			Message[FCLoopFindMomentumShifts::shifts];
 			FCPrint[0, "FCLoopFindMomentumShifts: ", FCStyle["Failed to derive the momentum shifts between topologies " <>
 					ToString[topoNamesFrom] <> " and " <> ToString[topoNamesTo] <>
 					". This can be due to the presence of nonquadratic propagators or because shifts in external momenta are also necessary.", {Darker[Yellow,0.55], Bold}],
 					FCDoControl -> fcflsVerbose];
+			];
 			If[abortOpt,
 				Abort[],
 				Return[{}]
@@ -336,7 +343,7 @@ findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, lmomsRaw_List,
 	]/; Length[from]===Length[to];
 
 
-findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, _List]:=
+findShifts[from:{__FeynAmpDenominator},to:{__FeynAmpDenominator}, __]:=
 	{}/; Length[from]=!=Length[to];
 
 FCPrint[1,"FCLoopFindMomentumShifts.m loaded."];

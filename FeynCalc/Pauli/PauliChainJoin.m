@@ -96,7 +96,7 @@ PauliChainJoin[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 		If[	OptionValue[FCPauliIsolate],
 
 			tmp = FCPauliIsolate[ex,FCI->True,Head->psHead, DotSimplify->False, PauliSigmaCombine->False, FCJoinDOTs-> False,
-				LorentzIndex->False, PauliXi->False, PauliEta->False, PauliSigma->False, PauliChain->True,
+				LorentzIndex->False, PauliXi->False, PauliEta->False, PauliEtaC->False, PauliSigma->False, PauliChain->True,
 				Factoring -> OptionValue[Factoring]];
 			PauliObjects = Cases[tmp+null1+null2, psHead[_], Infinity]//Sort//DeleteDuplicates;
 			FCPrint[1, "PauliChainJoin: Done isolating spinor chains, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->pchjVerbose];
@@ -165,19 +165,19 @@ PauliChainJoin[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 ];
 
 (* sbar_i A_ij*)
-PauliChainEval[rest_. PauliChain[spinor : (_PauliXi | _PauliEta), i_PauliIndex] PauliChain[chain_, i_PauliIndex, j_]]:=
+PauliChainEval[rest_. PauliChain[spinor : (_PauliXi | _PauliEta| _PauliEtaC), i_PauliIndex] PauliChain[chain_, i_PauliIndex, j_]]:=
 	PauliChainEval[rest PauliChain[chain,spinor,j]];
 
 (* ... A_ij s_j *)
-PauliChainEval[rest_. PauliChain[chain_, i:(_PauliIndex|_ExplicitPauliIndex|_PauliXi | _PauliEta), j_PauliIndex] PauliChain[j_PauliIndex, spinor : (_PauliXi | _PauliEta)]]:=
+PauliChainEval[rest_. PauliChain[chain_, i:(_PauliIndex|_ExplicitPauliIndex|_PauliXi | _PauliEta | _PauliEtaC), j_PauliIndex] PauliChain[j_PauliIndex, spinor : (_PauliXi | _PauliEta| _PauliEtaC)]]:=
 	PauliChainEval[rest PauliChain[chain,i,spinor]];
 
 (* sbar_i A_ij s'_j *)
-PauliChainEval[rest_. PauliChain[chain_, spinor1 : (_PauliXi | _PauliEta), spinor2 : (_PauliXi | _PauliEta)]]:=
+PauliChainEval[rest_. PauliChain[chain_, spinor1 : (_PauliXi | _PauliEta| _PauliEtaC), spinor2 : (_PauliXi | _PauliEta| _PauliEtaC)]]:=
 	holdDOT[spinor1,chain,spinor2] PauliChainEval[rest];
 
 (* (sbar.A)_i (B.s')_i -> sbar.A.B.s' *)
-PauliChainEval[rest_. PauliChain[spinor1 : (_PauliXi | _PauliEta), i_PauliIndex] PauliChain[i_PauliIndex, spinor2 : (_PauliXi | _PauliEta)]]:=
+PauliChainEval[rest_. PauliChain[spinor1 : (_PauliXi | _PauliEta| _PauliEtaC), i_PauliIndex] PauliChain[i_PauliIndex, spinor2 : (_PauliXi | _PauliEta| _PauliEtaC)]]:=
 	holdDOT[spinor1,spinor2] PauliChainEval[rest];
 
 (* A_ii -> Tr(A) *)
@@ -192,8 +192,8 @@ PauliChainEval[rest_. PauliChain[a__,i_PauliIndex,b___] PauliIndexDelta[i_PauliI
 	PauliChainEval[rest PauliChain[a,j,b]];
 
 (* A_ij B_jk -> (A.B)_ik *)
-PauliChainEval[rest_. PauliChain[chain1_,a:(_PauliIndex|_ExplicitPauliIndex|_PauliXi | _PauliEta),i_PauliIndex] *
-		PauliChain[chain2_,i_PauliIndex,b: (_PauliIndex|_ExplicitPauliIndex|_PauliXi | _PauliEta)]]:=
+PauliChainEval[rest_. PauliChain[chain1_,a:(_PauliIndex|_ExplicitPauliIndex|_PauliXi | _PauliEta| _PauliEtaC),i_PauliIndex] *
+		PauliChain[chain2_,i_PauliIndex,b: (_PauliIndex|_ExplicitPauliIndex|_PauliXi | _PauliEta| _PauliEtaC)]]:=
 	PauliChainEval[rest PauliChain[holdDOT[chain1,chain2],a,b]]/; a=!=i && b=!=i;
 
 (* d_ii -> Tr(1) *)

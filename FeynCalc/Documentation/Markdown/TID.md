@@ -78,18 +78,78 @@ The basis of Passarino-Veltman coefficient functions is used automatically if th
 ```mathematica
 FCClearScalarProducts[]; 
  
-SPD[Subscript[p, 1], Subscript[p, 1]] = 0; 
+SPD[Subscript[p, 1], Subscript[p, 1]] = M^2; 
  
-SPD[Subscript[p, 2], Subscript[p, 2]] = 0; 
+SPD[Subscript[p, 2], Subscript[p, 2]] = M^2; 
  
-SPD[Subscript[p, 1], Subscript[p, 2]] = 0; 
+SPD[Subscript[p, 1], Subscript[p, 2]] = M^2; 
  
-TID[FAD[{k, m}, k - Subscript[p, 1], k - Subscript[p, 2]] FVD[k, \[Mu]] // FCI, k] 
- 
-FCClearScalarProducts[];
+TID[FAD[{k, m}, k - Subscript[p, 1], k - Subscript[p, 2]] FVD[k, \[Mu]], k]
 ```
 
-$$-i \pi ^2 \left(p_1{}^{\mu }+p_2{}^{\mu }\right) \;\text{C}_1\left(0,0,0,0,0,m^2\right)$$
+![1d92pz2yqj2pc](img/1d92pz2yqj2pc.svg)
+
+$$-i \pi ^2 \left(p_1{}^{\mu }+p_2{}^{\mu }\right) \;\text{C}_1\left(0,M^2,M^2,0,0,m^2\right)$$
+
+A vanishing Gram determinant signals that the external momenta are linearly dependent on each other. This redundancy can be resolved by switching to a different basis. To that aim we need to run `FCLoopFindTensorBasis` to analyze the set of external momenta causing troubles
+
+```mathematica
+FCLoopFindTensorBasis[{-Subscript[p, 1], -Subscript[p, 2]}, {}, n]
+```
+
+$$\left(
+\begin{array}{c}
+ -p_1 \\
+ -p_2 \\
+ -p_2\to -p_1 \;\text{FCGV}(\text{Prefactor})(1) \\
+\end{array}
+\right)$$
+
+We see that $p_1$ and $p_2$ are proportional to each other, so that only one of these vectors is linearly independent. This also means that the scalar products involving loop momentum $p_1 \cdot k$ and $p_2 \cdot k$ are identical. Supplying this information to `TID` we can now achieve the desired reduction to scalars.
+
+```mathematica
+TID[FAD[{k, m}, k - Subscript[p, 1], k - Subscript[p, 2]] FVD[k, \[Mu]], k, 
+  TensorReductionBasisChange -> {{-Subscript[p, 1], -Subscript[p, 2]} -> {-Subscript[p, 1]}}, 
+  FinalSubstitutions -> {SPD[k, Subscript[p, 2]] -> SPD[k, Subscript[p, 1]]}]
+```
+
+$$\frac{\left((m-M) (m+M)+2 M^2\right) p_1{}^{\mu }}{2 M^2 \left(k^2\right)^2.\left((k+p_1){}^2-m^2\right)}-\frac{p_1{}^{\mu }}{2 M^2 k^2.\left((k+p_1){}^2-m^2\right)}$$
+
+Notice that the result contains a propagator squared. This can be reduced further using IBPs (e.g. by employing FIRE or KIRA via the FeynHelpers interface).
+
+For cases involving light-like external momenta we often need to introduce an auxiliary vector, since the available vector are not sufficient to form a basis
+
+```mathematica
+FCClearScalarProducts[]; 
+ 
+SPD[p] = 0; 
+ 
+TID[FAD[{k, m}, k - p] FVD[k, \[Mu]], k]
+```
+
+![0kz04gd9tjslc](img/0kz04gd9tjslc.svg)
+
+$$\frac{p^{\mu }}{k^2.\left((k-p)^2-m^2\right)}+i \pi ^2 p^{\mu } \;\text{B}_1\left(0,0,m^2\right)$$
+
+Running `FCLoopFindTensorBasis` we get a suggestion to introduce an auxiliary vector $n$ to the basis. The scalar products of this vector with other external momenta must be nonvanishing, but we are free to make the vector itself light-like (for simplicity)
+
+```mathematica
+FCLoopFindTensorBasis[{-p}, {}, n]
+```
+
+$$\{\{-p,n\},\{\},\{\}\}$$
+
+```mathematica
+SPD[n] = 0; 
+ 
+TID[FAD[{k, m}, k - p] FVD[k, \[Mu]], k, TensorReductionBasisChange -> {{-p} -> {-p, n}}, AuxiliaryMomenta -> {n}]
+```
+
+$$\frac{-2 p^{\mu } (k\cdot n)+m^2 n^{\mu }+2 p^{\mu } (n\cdot p)}{2 (n\cdot p) k^2.\left((k-p)^2-m^2\right)}-\frac{n^{\mu }}{2 (n\cdot p) \left(k^2-m^2\right)}$$
+
+Unfortunately, in this case `TID` alone cannot eliminate the scalar products of $n$ with the loop momentum in the numerator. For that we need to use IBPs. Still, it manages to reduce the tensor integral to scalars, even though at this stage not all of them can be mapped to scalar PaVe functions. 
+
+The dependence on the auxiliary vector $n$ must cancel in the final result for this integral, as the auxiliary vector is unphysical and the original integral does not depend on it. To arrive at these cancellations for more complicated tensor integral it might be necessary to exploit the relations between the physical vectors as given by `FCLoopFindTensorBasis` and contract those with $n$.
 
 In FeynCalc, Passarino-Veltman coefficient functions are defined in the same way as in LoopTools. If one wants to use a different definition, it is useful to activate the option GenPaVe
 
@@ -106,6 +166,8 @@ TID[FAD[{k, m}, k - Subscript[p, 1], k - Subscript[p, 2]] FVD[k, \[Mu]] // FCI, 
  
 FCClearScalarProducts[];
 ```
+
+![1mx6pq1c6qsv5](img/1mx6pq1c6qsv5.svg)
 
 $$-i \pi ^2 p_1{}^{\mu } \;\text{GenPaVe}\left(\{1\},\left(
 \begin{array}{cc}
@@ -154,7 +216,8 @@ DataType[b, FCVariable] = True;
 ExpandScalarProduct[SP[P, Q] /. P -> a P1 + b P2] 
  
 StandardForm[%]
-```
+
+```mathematica
 
 $$a \left(\overline{\text{P1}}\cdot \overline{Q}\right)+b \left(\overline{\text{P2}}\cdot \overline{Q}\right)$$
 

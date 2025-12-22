@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  SPVAT decomposition of Dirac matrix chains					*)
@@ -84,7 +84,7 @@ DiracReduce[expr_/; !MemberQ[{List,Equal},expr], OptionsPattern[]] :=
 		FCPrint[1, "DiracReduce. Entering.", FCDoControl->drVerbose];
 		FCPrint[3, "DiracReduce: Entering with ", ex, FCDoControl->drVerbose];
 
-		If[ FreeQ2[ex,DiracHeadsList],
+		If[ FreeQ2[ex,FeynCalc`Package`DiracHeadsList],
 			Return[ex]
 		];
 

@@ -323,6 +323,23 @@ k, -k - p + q], {p, k}, FCE -> True]",
 (FAD[k, k - p, p - q]*SPD[k, q]^2*(D*FVD[q, \[Alpha]]*FVD[q, \[Rho]] - MTD[\[Alpha], \[Rho]]*SPD[q, q]))/(2*(1 - D)*SPD[q, q]^2) + (FAD[p, k - p, k - q]*SPD[k, q]^2*(D*FVD[q, \[Alpha]]*FVD[q, \[Rho]] - MTD[\[Alpha], \[Rho]]*SPD[q, q]))/
 ((1 - D)*SPD[q, q]^2) - (2*FAD[k, p, k - p, p - q]*SPD[k, q]^3*(D*FVD[q, \[Alpha]]*FVD[q, \[Rho]] - MTD[\[Alpha], \[Rho]]*SPD[q, q]))/((1 - D)*SPD[q, q]^2) -
 (3*FAD[p, k - p, k - q]*SPD[k, q]*(D*FVD[q, \[Alpha]]*FVD[q, \[Rho]] - MTD[\[Alpha], \[Rho]]*SPD[q, q]))/(2*(1 - D)*SPD[q, q]) + (3*FAD[k, p, k - p, p - q]*SPD[k, q]^2*(D*FVD[q, \[Alpha]]*FVD[q, \[Rho]] - MTD[\[Alpha], \[Rho]]*SPD[q, q]))/
-(2*(1 - D)*SPD[q, q])"}
+(2*(1 - D)*SPD[q, q])"},
+{"fcstFCMultiLoopTID-ID34",
+"FCClearScalarProducts[];
+SPD[p1] = 0;
+SPD[n] = 0;
+tmp = FCMultiLoopTID[FVD[q1, mu] FAD[{q1, m}, {q1 + p1}], {q1},
+TensorReductionBasisChange -> {{p1} -> {p1, n}},
+FinalSubstitutions -> {SPD[n] -> 0}, FCE -> True]; FCClearScalarProducts[]; tmp",
+"(FAD[{q1, m}]*FVD[n, mu])/(2*SPD[n, p1]) - (FAD[q1, {-p1 + q1, m}]*(m^2*FVD[n, mu] + 2*FVD[p1, mu]*SPD[n, p1]))/(2*SPD[n, p1]) + (FAD[q1, {-p1 + q1, m}]*FVD[p1, mu]*SPD[n, q1])/SPD[n, p1]"},
+{"fcstFCMultiLoopTID-ID35",
+"FCClearScalarProducts[]
+SPD[p1] = m2;
+SPD[p2] = m2;
+SPD[p1, p2] = m2;
+tmp = FCMultiLoopTID[FVD[q1, mu] FAD[{q1, m}, {q1 + p1}, {q1 + p2}], {q1},
+TensorReductionBasisChange -> {{p1, p2} -> {p1}},
+FinalSubstitutions -> {SPD[n] -> 0}, FCE -> True]; FCClearScalarProducts[]; tmp",
+"(FAD[q1, {-p2 + q1, m}]*FVD[p1, mu])/(2*m2) - ((m^2 + m2)*FAD[{q1, m}, -p1 + q1, -p2 + q1]*FVD[p1, mu])/(2*m2)"}
 }
 )

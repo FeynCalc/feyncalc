@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  	Detects scaleless loop integrals 							*)
@@ -38,12 +38,13 @@ Begin["`FCLoopScalelessQ`Private`"]
 fclsVerbose::usage = "";
 
 Options[FCLoopScalelessQ] = {
-	Collecting			-> True,
-	FCI					-> False,
-	FCVerbose 			-> False,
-	Factoring 			-> {Factor2, 5000},
-	FinalSubstitutions	-> {},
-	TimeConstrained 	-> 3
+	Collecting				-> True,
+	FCI						-> False,
+	FCVerbose 				-> False,
+	Factoring 				-> {Factor2, 5000},
+	FCFeynmanParametrize	-> True,
+	FinalSubstitutions		-> {},
+	TimeConstrained 		-> 3
 };
 
 
@@ -56,7 +57,8 @@ FCLoopScalelessQ[expr_FCTopology, opts:OptionsPattern[]] :=
 FCLoopScalelessQ[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 	Block[{	uPoly, fPoly, pows, mat, Q, J, tensorPart,
 			tensorRank, res, time, x, lmoms, optFinalSubstitutions,
-			ex, notList = False, tmp},
+			ex, notList = False, tmp, intsWithNegativePows,
+			extraRules},
 
 		If[	OptionValue[FCVerbose] === False,
 			fclsVerbose = $VeryVerbose,
@@ -92,37 +94,65 @@ FCLoopScalelessQ[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 				notList = True;
 				tmp =	FCFeynmanPrepare[ex, lmoms, FCI -> True, Names -> x, Check->False,
 				Collecting -> OptionValue[Collecting], TimeConstrained -> OptionValue[TimeConstrained],
-				Factoring -> OptionValue[Factoring], FinalSubstitutions -> optFinalSubstitutions, FCLoopGetEtaSigns -> False, "IgnoreNumerator" -> True];
+				Factoring -> OptionValue[Factoring], FinalSubstitutions -> optFinalSubstitutions, FCLoopGetEtaSigns -> False,
+					"IgnoreNumerator" -> True, "MarkNonUnitNumerators"->True];
 				tmp = {tmp};
 				ex = {ex},
 			(*List of integrals *)
 			MatchQ[ex, {__GLI} | {__FCTopology}],
 				tmp = FCFeynmanPrepare[ex, lmoms, FCI -> True, Names -> x, Check->False,
 				Collecting -> OptionValue[Collecting], TimeConstrained -> OptionValue[TimeConstrained],
-				Factoring -> OptionValue[Factoring], FinalSubstitutions-> optFinalSubstitutions, FCLoopGetEtaSigns -> False, "IgnoreNumerator" -> True],
+				Factoring -> OptionValue[Factoring], FinalSubstitutions-> optFinalSubstitutions, FCLoopGetEtaSigns -> False,
+					"IgnoreNumerator" -> True, "MarkNonUnitNumerators"->True],
 			(*List of integrals *)
 			MatchQ[ex, {_. _FeynAmpDenominator ..}],
 				tmp =	FCFeynmanPrepare[#, lmoms, FCI -> True, Names -> x, Check->False,
 				Collecting -> OptionValue[Collecting], TimeConstrained -> OptionValue[TimeConstrained],
-				Factoring -> OptionValue[Factoring], FinalSubstitutions-> optFinalSubstitutions, FCLoopGetEtaSigns -> False, "IgnoreNumerator" -> True]&/@ex,
+				Factoring -> OptionValue[Factoring], FinalSubstitutions-> optFinalSubstitutions, FCLoopGetEtaSigns -> False,
+				"IgnoreNumerator" -> True, "MarkNonUnitNumerators"->True]&/@ex,
 			True,
 				Message[FCLoopScalelessQ::failmsg,"Failed to recognize the form of the input expression."];
 				Abort[]
 		];
 
 		FCPrint[1, "FCLoopScalelessQ: FCFeynmanPrepare done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclsVerbose];
-
-		{uPoly, fPoly} = Transpose[tmp][[1;;2]];
+		tmp = Transpose[tmp];
+		{uPoly, fPoly} = tmp[[1;;2]];
+		intsWithNegativePows = Position[Last[tmp],True];
 
 
 		FCPrint[3, "FCLoopScalelessQ: U: ", uPoly, FCDoControl -> fclsVerbose];
 		FCPrint[3, "FCLoopScalelessQ: F: ", fPoly, FCDoControl -> fclsVerbose];
+		FCPrint[3, "FCLoopScalelessQ: Negative propagator powers: ", intsWithNegativePows, FCDoControl -> fclsVerbose];
 
 		time=AbsoluteTime[];
 		FCPrint[1, "FCLoopScalelessQ: Calling FCPakScalelessQ.", FCDoControl -> fclsVerbose];
 		(*TODO Caching*)
 		res = MapThread[FCLoopPakScalelessQ[#1*#2,x]&,{uPoly, fPoly}];
 		FCPrint[1, "FCLoopScalelessQ: FCPakScalelessQ done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclsVerbose];
+
+		(*
+			If the integral also contains numerators, it might vanish despite of not being scaleless
+			according to the Pak criterion.
+		*)
+		If[	intsWithNegativePows=!={},
+			If[	OptionValue[FCFeynmanParametrize],
+				time=AbsoluteTime[];
+				FCPrint[1, "FCLoopScalelessQ: Calling FCFeynmanParametrize.", FCDoControl -> fclsVerbose];
+				extraRules=MapThread[checkIntsWithNumerators[#1,lmoms,#2]&,{Extract[ex,intsWithNegativePows],Extract[res,intsWithNegativePows]}];
+				FCPrint[1, "FCLoopScalelessQ: FCFeynmanParametrize done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclsVerbose];
+				extraRules=Thread[Rule[intsWithNegativePows,extraRules]]/. Rule[_,False]->Unevaluated[Sequence[]];
+				FCPrint[3, "FCLoopScalelessQ: extraRules: ", extraRules, FCDoControl -> fclsVerbose];
+				If[!MatchQ[extraRules, {Rule[_, True]...}],
+					Message[FCLoopScalelessQ::failmsg,"Something went wrong when determining extra vanishing integrals."];
+					Abort[]
+				];
+				If[	extraRules=!={},
+					extraRules=First/@extraRules;
+					res = ReplaceAt[res,_->True,extraRules]
+				]
+			]
+		];
 
 		If[	notList,
 			res = First[res]
@@ -133,6 +163,12 @@ FCLoopScalelessQ[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 
 		res
 	];
+
+checkIntsWithNumerators[_,_,True]:=
+	True;
+
+checkIntsWithNumerators[int_,lmoms_,False]:=
+	TrueQ[FCFeynmanParametrize[int,lmoms][[2]]===0];
 
 FCPrint[1,"FCLoopScalelessQ.m loaded."];
 End[]

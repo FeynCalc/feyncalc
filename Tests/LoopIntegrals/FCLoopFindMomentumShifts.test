@@ -131,5 +131,48 @@ SFAD[{{k1 + k2, 0}, {0, 1}, 1}], SFAD[{{k2, 0}, {0, 1}, 1}], SFAD[{{k2, -(meta*u
 {0, 1}, 1}], SFAD[{{0, -k1 . nb}, {0, 1}, 1}]}, {k1, k2}, InitialSubstitutions -> {SFAD[{{k2,
 -(meta*u0b*k2 . nb)}, {0, 1}, 1}] -> SFAD[k2 - (meta*nb*u0b)/2]}, \"Kinematics\" ->
 {{{SPD[n, n] -> 0, SPD[nb, nb] -> 0, SPD[n, nb] -> 2}}, {SPD[n, n] -> 0, SPD[nb, nb] -> 0, SPD[n, nb] -> 2}}]",
-"{{k1 -> -k1, k2 -> (-2*k2 + meta*nb*u0b)/2}}"}
+"{{k1 -> -k1, k2 -> (-2*k2 + meta*nb*u0b)/2}}"},
+{"fcstFCLoopFindMomentumShifts-ID13",
+"Quiet[FCLoopFindMomentumShifts[{FCTopology[
+	fctopology31CR1457, {SFAD[{{0, l1 . l2}, {0, 1}, 1}],
+	SFAD[{{l2, 0}, {mt^2, 1}, 1}],
+	SFAD[{{l1, 0}, {mt^2, 1}, 1}]}, {l1, l2}, {},
+	{Hold[Pair][Momentum[p1, D], Momentum[p1, D]] -> mt^2,
+	Hold[Pair][Momentum[p2, D], Momentum[p2, D]] -> 0,
+	Hold[Pair][Momentum[p1, D], Momentum[p2, D]] -> (mt^2 - s)/2},
+	{}],
+FCTopology[
+	fctopology7CR1246, {SFAD[{{0, l1 . l2}, {0, 1}, 1}],
+	SFAD[{{l1, 0}, {mt^2, 1}, 1}],
+		SFAD[{{l2 - p2, 0}, {mt^2, 1}, 1}]}, {l1,
+	l2}, {p2}, {Hold[Pair][Momentum[p1, D], Momentum[p1, D]] ->
+	mt^2, Hold[Pair][Momentum[p2, D], Momentum[p2, D]] -> 0,
+		Hold[Pair][Momentum[p1, D], Momentum[p2, D]] -> (mt^2 - s)/
+	2}, {}]},
+FCTopology[
+fctopology6CR1356, {SFAD[{{0, l1 . l2}, {0, 1}, 1}],
+	SFAD[{{l2, 0}, {mt^2, 1}, 1}],
+	SFAD[{{l1 - p2, 0}, {mt^2, 1}, 1}]}, {l1, l2}, {p2},
+	{Hold[Pair][Momentum[p1, D], Momentum[p1, D]] -> mt^2,
+	Hold[Pair][Momentum[p2, D], Momentum[p2, D]] -> 0,
+	Hold[Pair][Momentum[p1, D], Momentum[p2, D]] -> (mt^2 - s)/
+	2}, {}], {Momentum -> All, Abort -> False,
+InitialSubstitutions -> {}},
+FCVerbose -> -1], {FCLoopFindMomentumShifts::shifts, Solve::svars}]",
+"{{}, {l1 -> l2, l2 -> l1}}"},
+{"fcstFCLoopFindMomentumShifts-ID14",
+"FCLoopFindMomentumShifts[{FCTopology[
+fctopology32CR2346, {SFAD[{{l2, 0}, {mt^2, 1}, 1}],
+	SFAD[{{l1 - p1 - p2, 0}, {mw^2, 1}, 1}],
+	SFAD[{{0, l2 . p2}, {0, 1}, 1}]}, {l1, l2}, {p1, p2},
+	{Hold[Pair][Momentum[p1, D], Momentum[p1, D]] -> mt^2,
+	Hold[Pair][Momentum[p2, D], Momentum[p2, D]] -> 0,
+	Hold[Pair][Momentum[p1, D], Momentum[p2, D]] -> (mt^2 - s)/2},
+	{}]},
+FCTopology[
+fctopology31CR12467, {SFAD[{{l1, 0}, {mt^2, 1}, 1}],
+SFAD[{{l1 - l2 - p1 - p2, 0}, {mw^2, 1}, 1}]}, {l1, l2}, {p1,
+p2}, {Hold[Pair][Momentum[p1, D], Momentum[p1, D]] -> mt^2,
+Hold[Pair][Momentum[p2, D], Momentum[p2, D]] -> 0,
+Hold[Pair][Momentum[p1, D], Momentum[p2, D]] -> (mt^2 - s)/2}, {}]]","{{}}"}
 });

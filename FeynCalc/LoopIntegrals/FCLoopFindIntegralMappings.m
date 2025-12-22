@@ -6,12 +6,16 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  	Finds equivalent loop integrals								*)
+(*
+	:Summary:  	Finds equivalent loop integrals
+
+				Supports parallel evaluation [X]
+*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -53,7 +57,6 @@ End[]
 
 Begin["`FCLoopFindIntegralMappings`Private`"]
 
-fcfpmVerbose::usage = "";
 lhs::usage ="";
 
 (*
@@ -67,6 +70,7 @@ Options[FCLoopFindIntegralMappings] = {
 	CharacteristicPolynomial	-> Function[{U,F}, U+F],
 	FCE 						-> False,
 	FCI 						-> False,
+	FCParallelize				-> False,
 	FCVerbose 					-> False,
 	FinalSubstitutions			-> {},
 
@@ -82,7 +86,8 @@ FCLoopFindIntegralMappings[expr: {__FCTopology}, opts:OptionsPattern[]] :=
 
 FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 	Block[{	expr, pakFormInts, lmoms, res, time, x, pakHead, powerMark,
-			topoidMode, optPreferredIntegrals, finalMasters},
+			topoidMode, optPreferredIntegrals, finalMasters, fcfpmVerbose,
+			optFCParallelize},
 
 		If[	OptionValue[FCVerbose] === False,
 			fcfpmVerbose = $VeryVerbose,
@@ -90,13 +95,14 @@ FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 			fcfpmVerbose = OptionValue[FCVerbose]];
 		];
 
-		optPreferredIntegrals = OptionValue[PreferredIntegrals];
+		optPreferredIntegrals	= OptionValue[PreferredIntegrals];
+		optFCParallelize		= OptionValue[FCParallelize];
 
 		FCPrint[1, "FCLoopFindIntegralMappings: Entering.", FCDoControl -> fcfpmVerbose];
 		FCPrint[3, "FCLoopFindIntegralMappings: Entering with: ", exprRaw, FCDoControl -> fcfpmVerbose];
 		FCPrint[3, "FCLoopFindIntegralMappings: and: ", lmomsRaw, FCDoControl -> fcfpmVerbose];
 
-		If[	(optPreferredIntegrals=!={}) && !MatchQ[optPreferredIntegrals,{(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..] |
+		If[	(optPreferredIntegrals=!={}) && !MatchQ[optPreferredIntegrals,{__GLI}] && !MatchQ[optPreferredIntegrals,{(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..] |
 			_FeynAmpDenominator | Power[_FeynAmpDenominator, _] | HoldPattern[Times][(_FeynAmpDenominator | Power[_FeynAmpDenominator, _]) ..]) ..}],
 			Message[FCLoopFindIntegralMappings::failmsg,"Incorrect value of the PreferredIntegrals option."];
 			Abort[]
@@ -124,7 +130,7 @@ FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 
 		pakFormInts = FCLoopToPakForm[expr, lmoms, FCI->OptionValue[FCI], FinalSubstitutions->OptionValue[FinalSubstitutions],
 			Check->False, Collecting->False, Names->x, CharacteristicPolynomial->OptionValue[CharacteristicPolynomial],
-			Function->OptionValue[Function], Head->pakHead, Power->powerMark, LightPak->OptionValue[LightPak]];
+			Function->OptionValue[Function], Head->pakHead, Power->powerMark, LightPak->OptionValue[LightPak], FCParallelize->optFCParallelize];
 		FCPrint[1, "FCLoopFindIntegralMappings: FCLoopToPakForm done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfpmVerbose];
 
 		FCPrint[3, "FCLoopFindIntegralMappings: Output of FCLoopToPakForm: ", pakFormInts, FCDoControl->fcfpmVerbose];
@@ -202,7 +208,8 @@ makeMappingRules[ints_List, {}, {}]:=
 
 makeMappingRules[ints_List, preferredIntegrals_List/; preferredIntegrals=!={}, {}]:=
 	(
-	lhs = First[SelectNotFree[ints,preferredIntegrals]];
+	(*Select one of the preferred integrals among all mappings *)
+	lhs = First[Intersection[ints,preferredIntegrals]];
 	Rule[#,lhs]&/@ (SelectFree[ints,lhs])
 	)/; Length[ints]>1 && !FreeQ2[ints,preferredIntegrals];
 

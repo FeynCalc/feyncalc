@@ -6,12 +6,16 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Factors traces using linearity							    *)
+(*
+	:Summary:	Factors traces using linearity
+
+				Supports parallel evaluation [X]
+*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -28,13 +32,28 @@ End[]
 Begin["`FCTraceFactor`Private`"]
 
 Options[FCTraceFactor] = {
-	FCI -> False,
-	FCE -> False
+	FCI 			-> False,
+	FCE 			-> False,
+	FCParallelize	-> False,
+	FCVerbose		-> False
 };
 
 FCTraceFactor[expr_, OptionsPattern[]] :=
 	Block[ {ex, moms,res, diracTraces, pauliTraces, colorTraces,
-			ruleDirac, rulePauli, ruleColor},
+			ruleDirac, rulePauli, ruleColor, diracTracesEval,
+			pauliTracesEval, colorTracesEval, fctfVerbose, time,
+			optFCParallelize},
+
+		If [OptionValue[FCVerbose]===False,
+			fctfVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				fctfVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		optFCParallelize = OptionValue[FCParallelize];
+
+		FCPrint[1, "FCTraceFactor: Entering.", FCDoControl->fctfVerbose];
 
 		If[ OptionValue[FCI],
 			ex = expr,
@@ -49,9 +68,50 @@ FCTraceFactor[expr_, OptionsPattern[]] :=
 		pauliTraces = Cases2[ex, PauliTrace];
 		colorTraces = Cases2[ex, SUNTrace];
 
-		ruleDirac = Thread[diracTraces -> diracTracefactor[diracTraces]];
-		rulePauli = Thread[pauliTraces -> pauliTracefactor[pauliTraces]];
-		ruleColor = Thread[colorTraces -> colorTracefactor[colorTraces]];
+		time = AbsoluteTime[];
+		If[ diracTraces =!= {},
+			If[	$ParallelizeFeynCalc && optFCParallelize,
+				FCPrint[1, "FCTraceFactor: Applying diracTracefactor in parallel.", FCDoControl->fctfVerbose];
+				diracTracesEval = ParallelMap[diracTracefactor[#]&,diracTraces,
+					DistributedContexts -> None, Method->"ItemsPerEvaluation" -> Ceiling[N[Length[expr]/$KernelCount]/10]];
+				FCPrint[1, "FCTraceFactor: Done applying diracTracefactor in parallel, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctfVerbose];
+				ruleDirac = Thread[diracTraces -> diracTracesEval],
+
+				FCPrint[1, "FCTraceFactor: Applying diracTracefactor.", FCDoControl->fctfVerbose];
+				ruleDirac = Thread[diracTraces -> diracTracefactor[diracTraces]],
+				FCPrint[1, "FCTraceFactor: Done applying diracTracefactor, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctfVerbose]
+			]
+		];
+
+		time = AbsoluteTime[];
+		If[ pauliTraces =!= {},
+			If[	$ParallelizeFeynCalc && optFCParallelize,
+				FCPrint[1, "FCTraceFactor: Applying pauliTracefactor in parallel.", FCDoControl->fctfVerbose];
+				pauliTracesEval = ParallelMap[pauliTracefactor[#]&,pauliTraces,
+					DistributedContexts -> None, Method->"ItemsPerEvaluation" -> Ceiling[N[Length[expr]/$KernelCount]/10]];
+				FCPrint[1, "FCTraceFactor: Done applying pauliTracefactor in parallel, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctfVerbose];
+				rulePauli = Thread[pauliTraces -> pauliTracesEval],
+
+				FCPrint[1, "FCTraceFactor: Applying pauliTracefactor.", FCDoControl->fctfVerbose];
+				rulePauli = Thread[pauliTraces -> pauliTracefactor[pauliTraces]];
+				FCPrint[1, "FCTraceFactor: Done applying pauliTracefactor, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctfVerbose]
+			]
+		];
+
+		time = AbsoluteTime[];
+		If[ colorTraces =!= {},
+			If[	$ParallelizeFeynCalc && optFCParallelize,
+				FCPrint[1, "FCTraceFactor: Applying colorTracefactor.", FCDoControl->fctfVerbose];
+				colorTracesEval = ParallelMap[colorTracefactor[#]&,colorTraces,
+					DistributedContexts -> None, Method->"ItemsPerEvaluation" -> Ceiling[N[Length[expr]/$KernelCount]/10]];
+				FCPrint[1, "FCTraceFactor: Done applying colorTracefactor in parallel, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctfVerbose];
+				ruleColor = Thread[colorTraces -> colorTracesEval],
+
+				FCPrint[1, "FCTraceFactor: Applying colorTracefactor in parallel.", FCDoControl->fctfVerbose];
+				ruleColor = Thread[colorTraces -> colorTracefactor[colorTraces]];
+				FCPrint[1, "FCTraceFactor: Done applying colorTracefactor, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctfVerbose]
+			]
+		];
 
 		res = ex;
 
@@ -70,6 +130,8 @@ FCTraceFactor[expr_, OptionsPattern[]] :=
 		If[	OptionValue[FCE],
 			res = FCE[res]
 		];
+
+		FCPrint[1, "FCTraceFactor: Leaving.", FCDoControl->fctfVerbose];
 
 		res
 	];

@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Construct the complex conjugate amplitude						*)
@@ -45,7 +45,8 @@ Options[ComplexConjugate] = {
 	FCE						-> False,
 	FCI						-> False,
 	FCRenameDummyIndices	-> True,
-	FCVerbose				-> False
+	FCVerbose				-> False,
+	"ExtraIndices"			-> {}
 };
 
 (*TODO Check denominators using FCExtractDenominatorFactors*)
@@ -59,10 +60,6 @@ ComplexConjugate[a_ == b_, opts:OptionsPattern[]] :=
 
 ComplexConjugate[(h:Rule|RuleDelayed)[a_,b_], opts:OptionsPattern[]] :=
 	hold[ComplexConjugate[a,opts],ComplexConjugate[b,opts]] /. hold -> h;
-
-
-Collect2[x_List, y__] :=
-	Collect2[#, y]& /@ x;
 
 ComplexConjugate[expr_/;!MemberQ[{List,Equal,Rule,RuleDelayed},Head[expr]], OptionsPattern[]]:=
 	Block[{	ex,res,optConjugate, ruleConjugate, ru, time,
@@ -200,7 +197,7 @@ ComplexConjugate[expr_/;!MemberQ[{List,Equal,Rule,RuleDelayed},Head[expr]], Opti
 		If[	OptionValue[FCRenameDummyIndices],
 			time = AbsoluteTime[];
 			FCPrint[1,"ComplexConjugate: Renaming dummy indices in the final result.", FCDoControl->ccjVerbose];
-			res = FCRenameDummyIndices[res, FCI->True];
+			res = FCRenameDummyIndices[res, FCI->True, Head->Join[OptionValue[FCRenameDummyIndices, Head], OptionValue["ExtraIndices"]]];
 			FCPrint[1,"ComplexConjugate: Done renaming dummy indices in the final result, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->ccjVerbose];
 			FCPrint[3,"ComplexConjugate: After FCRenameDummyIndices: ", res, FCDoControl->ccjVerbose]
 		];
@@ -332,6 +329,9 @@ pauliChainCC[PauliXi[Complex[0,arg_]]]:=
 
 pauliChainCC[PauliEta[Complex[0,arg_]]]:=
 	PauliEta[Complex[0,-arg]];
+
+pauliChainCC[PauliEtaC[Complex[0,arg_]]]:=
+	PauliEtaC[Complex[0,-arg]];
 
 pauliChainCC[ex_holdDOT]:=
 	Block[{	res=ex, pauliSigmaHold},

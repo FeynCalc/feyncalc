@@ -6,13 +6,17 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:	Computes tensor decompositions for multiloop integrals
-				using projection methods			 						*)
+(*
+	:Summary:	Computes tensor decompositions for multiloop integrals
+				using projection methods
+
+				Supports parallel evaluation [X]
+*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -66,10 +70,13 @@ tdecVerbose::usage="";
 symmMT::usage="";
 
 Options[Tdec] =	{
+	"TensorHead"		-> False,
+	"ExtraSolverOptions" -> {},
 	BasisOnly 			-> False,
 	Dimension 			-> D,
 	DeleteFile			-> True,
 	FCE					-> True,
+	FCParallelize		-> False,
 	FCVerbose 			-> False,
 	Factoring 			-> {Factor2, Factor},
 	FinalSubstitutions	-> {},
@@ -103,7 +110,8 @@ Tdec[exp_:1, li : {{_, _} ..}, extMomsRaw_List/;FreeQ[extMomsRaw,OptionQ], Optio
 			symbolicVars, variableAbbreviations, tensorCoeffAbbreviations,
 			sol,ii,ce,xy, optHead, tmp,	extMom, basisonly, multiLoop=False,
 			lorInds, loopMoms, basis,multiLoopSyms={}, optFinalSubstitutions,
-			dummyHead1, dummyHead2, symRules, optSolve},
+			dummyHead1, dummyHead2, symRules, optSolve, optFCParallelize,
+			optExtraSolverOptions, ferSolveOpts},
 
 		dim         			= OptionValue[Dimension];
 		optList					= OptionValue[List];
@@ -113,6 +121,8 @@ Tdec[exp_:1, li : {{_, _} ..}, extMomsRaw_List/;FreeQ[extMomsRaw,OptionQ], Optio
 		optHead 				= OptionValue[Head];
 		optSolve				= OptionValue[Solve];
 		optFinalSubstitutions	= OptionValue[FinalSubstitutions];
+		optFCParallelize		= OptionValue[FCParallelize];
+		optExtraSolverOptions	= OptionValue["ExtraSolverOptions"];
 
 		If [OptionValue[FCVerbose]===False,
 			tdecVerbose=$VeryVerbose,
@@ -261,12 +271,37 @@ Tdec[exp_:1, li : {{_, _} ..}, extMomsRaw_List/;FreeQ[extMomsRaw,OptionQ], Optio
 			" projectors to obtain a linear system. ", FCDoControl->tdecVerbose];
 
 		time=AbsoluteTime[];
+		If[	$ParallelizeFeynCalc && optFCParallelize,
+			FCPrint[1,"Tdec: Calling tensorContract in parallel.", FCDoControl->tdecVerbose];
+				time1=AbsoluteTime[];
+			FCPrint[1,"Tdec: Distributing definitions.", FCDoControl->tdecVerbose];
 
-		linearSystem = 	Table[FCPrint[2, "Tdec: Evaluating contraction ", ii, " / ", Length[projectors], FCDoControl->tdecVerbose];
+			With[{xxx = tensorEq[[1]], yyy = Compress[tensorEq[[2]]]},
+				ParallelEvaluate[FCContext`Tdec`tensorEq1 = xxx;
+								FCContext`Tdec`tensorEq2 = Uncompress[yyy];,
+								DistributedContexts -> None]];
+			FCPrint[1, "Tdec: Done distributing definitions, timing: ", N[AbsoluteTime[] - time1, 4], FCDoControl->tdecVerbose];
+
+			linearSystem = ParallelMap[Equal[tensorContractRhs[FCContext`Tdec`tensorEq1*#], tensorContract[FCContext`Tdec`tensorEq2 , #]]&, projectors,
+				DistributedContexts -> None,
+				Method->"ItemsPerEvaluation" -> Ceiling[N[Length[projectors]/$KernelCount]/10]
+				(*Method -> "CoarsestGrained"*)],
+
+			FCPrint[1,"Tdec: Calling fitensorContract", FCDoControl->tdecVerbose];
+			linearSystem = 	Table[FCPrint[2, "Tdec: Evaluating contraction ", ii, " / ", Length[projectors], FCDoControl->tdecVerbose];
 				Equal[(tensorEq[[1]] projectors[[ii]])/.Pair->PairContract2,tensorContract[tensorEq[[2]] , projectors[[ii]]] ],
 					{ii, Length[projectors]}];
+
+		];
+
+		FCPrint[1, "Tdec: tensorContract done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->tdecVerbose];
+
 		If[	!FreeQ2[linearSystem,{PairContract2}],
 			linearSystem = linearSystem /. PairContract2 -> Pair
+		];
+
+		If[	OptionValue["TensorHead"]=!=False,
+			tensorEq[[2]] = Collect2[tensorEq[[2]], CC, Factoring -> OptionValue["TensorHead"]]
 		];
 
 		If[	optFinalSubstitutions=!={},
@@ -293,7 +328,6 @@ Tdec[exp_:1, li : {{_, _} ..}, extMomsRaw_List/;FreeQ[extMomsRaw,OptionQ], Optio
 		linearSystemAbbreviated 	= Map[Replace[#,Equal[a_, b_] :> Equal[a, Collect[b, tensorCoeffs]]] &, linearSystemAbbreviated];
 		FCPrint[3, "linearSystemAbbreviated = ", TableForm[linearSystemAbbreviated], FCDoControl->tdecVerbose];
 		(*Before computing the decomposition formula, check if the result is already available in the TIDL database *)
-
 		If[ OptionValue[UseTIDL] && TIDL[li,extMoms,Dimension->dim]=!=Apply[Times, Map[Pair[Momentum[#[[1]],dim],LorentzIndex[#[[2]],dim]]&,li]],
 			(*Yes*)
 			FCPrint[1, "This decomposition formula is available in TIDL, skipping calculation.", FCDoControl->tdecVerbose];
@@ -325,8 +359,13 @@ Tdec[exp_:1, li : {{_, _} ..}, extMomsRaw_List/;FreeQ[extMomsRaw,OptionQ], Optio
 
 				(*FerSolve*)
 				optSolve===FeynCalc`FerSolve,
-					sol = FerSolve[linearSystemAbbreviated, tensorCoeffs, Timing->False, DeleteFile->OptionValue[DeleteFile],
-						"SetPivotStrategy"	-> 5, FCVerbose->tdecVerbose],
+				ferSolveOpts = {Timing->False, DeleteFile->OptionValue[DeleteFile],
+						"SetPivotStrategy"	-> 5, FCVerbose->tdecVerbose};
+				If[optExtraSolverOptions=!={},
+				ferSolveOpts = Join[optExtraSolverOptions,FilterRules[ferSolveOpts, Except[Alternatives@@(First/@optExtraSolverOptions)]]]
+				];
+					Print[ferSolveOpts];
+					sol = FerSolve[linearSystemAbbreviated, tensorCoeffs, ferSolveOpts],
 
 				(*Custom solver, no options*)
 				MatchQ[optSolve,_Symbol],
@@ -379,6 +418,10 @@ Tdec[exp_:1, li : {{_, _} ..}, extMomsRaw_List/;FreeQ[extMomsRaw,OptionQ], Optio
 			tensorEq
 		]
 	];
+
+
+tensorContractRhs[exp_]:=
+	exp/.Pair->PairContract2;
 
 (* 	contraction function specifically tailored for tensors occurring in the
 	derivation of the linear system. *)

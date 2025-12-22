@@ -4,12 +4,16 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Canonicalizes dummy Lorentz indices *)
+(*
+	:Summary:	Canonicalizes dummy Lorentz indices
+
+				Supports parallel evaluation [X]
+*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -51,8 +55,6 @@ End[]
 
 Begin["`FCCanonicalizeDummyIndices`Private`"]
 
-canodummyVerbose::usage="";
-
 Options[FCCanonicalizeDummyIndices] = {
 	CartesianIndexNames -> {},
 	CustomIndexNames 	-> {},
@@ -62,6 +64,7 @@ Options[FCCanonicalizeDummyIndices] = {
 	FCE 				-> False,
 	FCI 				-> False,
 	FCTraceExpand 		-> True,
+	FCParallelize		-> False,
 	FCVerbose 			-> False,
 	Function			-> Function[{x, seed}, FCGV[(ToString[seed] <> ToString[Identity @@ x])]],
 	Head				-> {LorentzIndex,CartesianIndex,SUNIndex,SUNFIndex, DiracIndex, PauliIndex},
@@ -96,15 +99,46 @@ renameDummies[dummyNames_,wrapHead_, totalRepLis_]:=
 FCCanonicalizeDummyIndices[a_ == b_, opts:OptionsPattern[]] :=
 	FCCanonicalizeDummyIndices[a,opts] == FCCanonicalizeDummyIndices[b,opts];
 
-FCCanonicalizeDummyIndices[expr_List, opts:OptionsPattern[]]:=
-	FCCanonicalizeDummyIndices[#, opts]&/@expr;
+FCCanonicalizeDummyIndices[expr_List, opts:OptionsPattern[]] :=
+	Block[{canodummyVerbose, res, time},
 
-FCCanonicalizeDummyIndices[expr_, OptionsPattern[]] :=
+		If [OptionValue[FCVerbose]===False,
+			canodummyVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				canodummyVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		FCPrint[1, "FCCanonicalizeDummyIndices: Entering.", FCDoControl->canodummyVerbose];
+
+		time = AbsoluteTime[];
+
+		If[	$ParallelizeFeynCalc && OptionValue[FCParallelize],
+			FCPrint[1,"FCCanonicalizeDummyIndices: Applying FCCanonicalizeDummyIndices in parallel.", FCDoControl->canodummyVerbose];
+
+			res = ParallelMap[FCCanonicalizeDummyIndices[#, FilterRules[{opts}, Except[FCParallelize | FCVerbose]]]&,expr,
+			DistributedContexts -> None, Method->"ItemsPerEvaluation" -> Ceiling[N[Length[expr]/$KernelCount]/10]];
+			FCPrint[1, "FCCanonicalizeDummyIndices: Done applying FCCanonicalizeDummyIndices in parallel, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->canodummyVerbose],
+
+			FCPrint[1,"FCCanonicalizeDummyIndices: Applying FCCanonicalizeDummyIndices.", FCDoControl->canodummyVerbose];
+			res = Map[FCCanonicalizeDummyIndices[#,FilterRules[{opts}, Except[FCParallelize | FCVerbose]]]&,expr];
+			FCPrint[1, "FCCanonicalizeDummyIndices: Done applying FCCanonicalizeDummyIndices, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->canodummyVerbose]
+		];
+
+		FCPrint[1, "FCCanonicalizeDummyIndices: Leaving.", FCDoControl->canodummyVerbose];
+
+		res
+	];
+
+
+
+FCCanonicalizeDummyIndices[expr_/;Head[expr]=!=List, OptionsPattern[]] :=
 	Block[ {indexList = {}, ex,exUnexpanded,tmp,null1,null2, renamingRule,
 			rest0=0,lihead,cihead,seedLor,moms,notmoms,finalList,isoHead, uniqueExpressions,
 			repIndexListLor, canIndexList, finalRepList,repIndexListTotal,
 			res, sunhead,sunfhead,indhead,dihead,repIndexListsCustom={},fu,otherHeads,
-			renamingList,cList,indexExtract, seedCar, repIndexListCar, times, dimensions, rule, pihead},
+			renamingList,cList,indexExtract, seedCar, repIndexListCar, times, dimensions, rule, pihead,
+			canodummyVerbose},
 
 		If [OptionValue[FCVerbose]===False,
 			canodummyVerbose=$VeryVerbose,

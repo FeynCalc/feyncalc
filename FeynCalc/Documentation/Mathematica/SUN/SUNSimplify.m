@@ -15,12 +15,16 @@
 (*If the option `Explicit` is set to `True` (default is `False`), the structure constants will be rewritten in terms of traces. However, since traces with 2 or 3 color matrices are by default converted back into structure constants, you must also set the option `SUNTraceEvaluate` to `False` (default is `Automatic`) in order to have unevaluated color traces in the output.*)
 
 
+(* ::Text:: *)
+(*Many of the relations used in this routine (including derivations) can be found in [arXiv:1912.13302](https://arxiv.org/abs/1912.13302)*)
+
+
 (* ::Subsection:: *)
 (*See also*)
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [SUNTrace](SUNTrace.md), [SUNT](SUNT.md), [SUNTF](SUNTF.md), [SUNF](SUNF.md), [SUND](SUND.md), [SUNTraceEvaluate](SUNTraceEvaluate.md).*)
+(*[Overview](Extra/FeynCalc.md), [SUNTrace](SUNTrace.md), [SUNFierz](SUNFierz.md), [SUNT](SUNT.md), [SUNTF](SUNTF.md), [SUNF](SUNF.md), [SUND](SUND.md), [SUNTraceEvaluate](SUNTraceEvaluate.md).*)
 
 
 (* ::Subsection:: *)
@@ -106,3 +110,25 @@ SUNSimplify[SUND[a,b,c] SUND[d,b,c]]
 
 
 SUNSimplify[SUNTrace[SUNT[i1,i2,i1,i2]],FCE->True]
+
+
+(* ::Text:: *)
+(*`SUNSimplify` can also deal with chains of color matrices containing explicit fundamental indices (entered as `SUNTF`)*)
+
+
+SUNTF[{a},i,j]SUNTF[{a},k,l]
+
+SUNSimplify[%]
+
+
+SUNTF[{b,a,c},i,j]SUNTF[{d,a,e},k,l]
+
+SUNSimplify[%]
+
+
+SUNTF[{a},i,j]SUNTrace[SUNT[b,a,c]]
+
+SUNSimplify[%]
+
+
+

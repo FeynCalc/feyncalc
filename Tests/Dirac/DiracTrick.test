@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for DiracTrick               *)
@@ -1123,7 +1123,9 @@ GSE[a] . GSE[b] . GSE[c] SP[q, q] +
 2 (GSE[b] . GSE[c] . GSE[q] SPE[a, q] -
 	GSE[a] . GSE[c] . GSE[q] SPE[b, q] +
 	GSE[a] . GSE[b] . GSE[q] SPE[c, q]) -
-GSE[a] . GSE[b] . GSE[c] SPE[q, q]"}
+GSE[a] . GSE[b] . GSE[c] SPE[q, q]"},
+{"fcstDiracTrickCoreProperties-ID127",
+"DiracTrick[GA[5, 5, 5], InsideDiracTrace -> True]", "0"}
 });
 
 Tests`Dirac`fcstDiracTrick = {

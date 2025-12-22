@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  H -> Gl Gl, EW, total decay rate, 1-loop              			*)
@@ -31,11 +31,17 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False,
 	$FeynCalcStartupMessages = False
 ];
-$LoadAddOns={"FeynArts"};
+LaunchKernels[4];
+$LoadAddOns={"FeynArts","FeynHelpers"};
 <<FeynCalc`
 $FAVerbose = 0;
+$ParallelizeFeynCalc=True;
 
-FCCheckVersion[9,3,1];
+FCCheckVersion[10,2,0];
+If[ToExpression[StringSplit[$FeynHelpersVersion,"."]][[1]]<2,
+	Print["You need at least FeynHelpers 2.0 to run this example."];
+	Abort[];
+]
 
 
 (* ::Section:: *)
@@ -59,12 +65,13 @@ Paint[diags, ColumnsXRows -> {2, 1}, Numbering -> Simple,
 
 
 amp[0]=FCFAConvert[CreateFeynAmp[diags,PreFactor->-1],IncomingMomenta->{pH},
-	OutgoingMomenta->{k1,k2},LoopMomenta->{q},List->False,Contract->True,
+	OutgoingMomenta->{k1,k2},LoopMomenta->{q},
 	TransversePolarizationVectors->{k1,k2}, ChangeDimension->D,
 	DropSumOver->True,SMP->True,UndoChiralSplittings->True];
 
 
-amp[1]=amp[0]//FCTraceFactor//SUNSimplify
+amp[1]=amp[0]//FCTraceFactor//Contract[#,FCParallelize->True]&//
+SUNSimplify[#,FCParallelize->True]&
 
 
 (* ::Section:: *)
@@ -86,7 +93,8 @@ ScalarProduct[k1,k2]=(SMP["m_H"]^2)/2;
 (*Dirac trace and tensor decomposition*)
 
 
-amp[2]=amp[1]//DiracSimplify//TID[#,q,ToPaVe->True]&
+amp[2]=amp[1]//DiracSimplify[#,FCParallelize->True]&//
+TID[#,q,ToPaVe->True,FCParallelize->True]&//Total;
 
 
 (* ::Text:: *)
@@ -109,9 +117,9 @@ loopInts={
 };
 
 
-$Assumptions={SMP["m_H"]>0,SMP["m_t"]>0};
 amp[3]=(amp[2]/.loopInts)//FCReplaceD[#,D->4-2Epsilon]&//
-	Series[#,{Epsilon,0,0}]&//Normal
+	Series[#,{Epsilon,0,0},Assumptions->{SMP["m_H"]>0,
+	SMP["m_t"]>0}]&//Normal
 
 
 (* ::Text:: *)
@@ -151,8 +159,12 @@ ISq=totalDecayRate/( SMP["alpha_s"]^2/(9 Pi^2) SMP["m_H"]^2/SMP["m_W"]^2 *
 (*ISq corresponds to I(m_H^2/m_q^2) from Peskin and Schroeder, Final Project 3, part (c). It should go to 1 for m_q -> Infinity and to 0 for m_q -> 0*)
 
 
-limit1=Limit[ISq,SMP["m_t"]->Infinity]/.SUNN->3
-limit2=Limit[ISq,SMP["m_t"]->0]
+limit1=Limit[ISq,SMP["m_t"]->Infinity,
+	Assumptions->{SMP["m_H"]>0}]/.SUNN->3
+
+
+limit2=Limit[ISq,SMP["m_t"]->0,
+	Assumptions->{SMP["m_H"]>0}]
 
 
 (* ::Section:: *)

@@ -36,6 +36,18 @@ ExpandScalarProduct[ex2]
 
 $$\overline{p}^{\mu }+\overline{q}^{\mu }+\overline{r}^{\mu }$$
 
+Notice that `ExpandScalarProduct` can also do expansions only for the given momentum, while
+leaving the rest of the expression untouched, e.g.
+
+```mathematica
+x SP[p1 + p2, q1 + q2] + y SP[p3 + p4, q3 + q4] + z SP[p5 + p6, q5 + q6]
+ExpandScalarProduct[%, Momentum -> {p1}]
+```
+
+$$x \left((\overline{\text{p1}}+\overline{\text{p2}})\cdot (\overline{\text{q1}}+\overline{\text{q2}})\right)+y \left((\overline{\text{p3}}+\overline{\text{p4}})\cdot (\overline{\text{q3}}+\overline{\text{q4}})\right)+z \left((\overline{\text{p5}}+\overline{\text{p6}})\cdot (\overline{\text{q5}}+\overline{\text{q6}})\right)$$
+
+$$x \left(\overline{\text{p1}}\cdot (\overline{\text{q1}}+\overline{\text{q2}})+\overline{\text{p2}}\cdot (\overline{\text{q1}}+\overline{\text{q2}})\right)+y \left((\overline{\text{p3}}+\overline{\text{p4}})\cdot (\overline{\text{q3}}+\overline{\text{q4}})\right)+z \left((\overline{\text{p5}}+\overline{\text{p6}})\cdot (\overline{\text{q5}}+\overline{\text{q6}})\right)$$
+
 For the expansion of `Eps` tensors, we use
 
 ```mathematica
@@ -47,7 +59,7 @@ $$\bar{\epsilon }^{\overline{\text{p1}}+\overline{\text{p2}}\overline{q}\overlin
 
 $$\bar{\epsilon }^{\overline{\text{p1}}\overline{q}\overline{r}\overline{s}}+\bar{\epsilon }^{\overline{\text{p2}}\overline{q}\overline{r}\overline{s}}$$
 
-EpsEvaluate also reorders the arguments of Eps according to its antisymmetric properties
+`EpsEvaluate` also reorders the arguments of `Eps` according to its antisymmetric properties
 
 ```mathematica
 LC[\[Mu], \[Sigma], \[Rho], \[Nu]]
@@ -68,6 +80,32 @@ MomentumCombine[%]
 $$3 \overline{p}^{\mu }+4 \overline{q}^{\mu }$$
 
 $$\left(3 \overline{p}+4 \overline{q}\right)^{\mu }$$
+
+This also works for scalar products, but the results may not be always optimal
+
+```mathematica
+SP[p + q + t, r + s]
+ExpandScalarProduct[%]
+MomentumCombine[%]
+```
+
+$$(\overline{r}+\overline{s})\cdot (\overline{p}+\overline{q}+\overline{t})$$
+
+$$\overline{p}\cdot \overline{r}+\overline{p}\cdot \overline{s}+\overline{q}\cdot \overline{r}+\overline{q}\cdot \overline{s}+\overline{r}\cdot \overline{t}+\overline{s}\cdot \overline{t}$$
+
+$$(\overline{r}+\overline{s})\cdot (\overline{p}+\overline{q}+\overline{t})$$
+
+```mathematica
+SP[p + q + t, r + s] + SP[r, s]
+ExpandScalarProduct[%]
+MomentumCombine[%]
+```
+
+$$(\overline{r}+\overline{s})\cdot (\overline{p}+\overline{q}+\overline{t})+\overline{r}\cdot \overline{s}$$
+
+$$\overline{p}\cdot \overline{r}+\overline{p}\cdot \overline{s}+\overline{q}\cdot \overline{r}+\overline{q}\cdot \overline{s}+\overline{r}\cdot \overline{s}+\overline{r}\cdot \overline{t}+\overline{s}\cdot \overline{t}$$
+
+$$(\overline{p}+\overline{q})\cdot (\overline{r}+\overline{s})+\overline{r}\cdot (\overline{s}+\overline{t})+\overline{s}\cdot \overline{t}$$
 
 For Dirac matrices the corresponding functions are `DiracGammaExpand` and `DiracGammaCombine`
 

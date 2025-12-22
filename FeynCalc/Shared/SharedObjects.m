@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Basic FeynCalc objects									    *)
@@ -182,6 +182,10 @@ FAD[q, q-p, ...] is $\\frac{1}{q^2 (q-p)^2 \\ldots}$.
 FAD[{q1,m}, {q1-p,m}, q2, ...] is $\\frac{1}{[q1^2 - m^2][(q1-p)^2 - m^2]
 q2^2}$. Translation into FeynCalc internal form is performed by
 FeynCalcInternal.";
+
+FCIndexDelta::usage =
+"FCIndexDelta[indHead[a,dim], indHead[b,dim]] is a generic Kronecker-delta for
+some indices a and b with the dimensions dim.";
 
 FCTopology::usage=
 "FCTopology[id, {prop1, prop2, ...}, {l1, l2, ...}, {p1, p2, ...}, {kRule1,
@@ -1068,6 +1072,10 @@ PauliEta::usage =
 "PauliEta[I] represents a two-component Pauli spinor $\\eta$, while PauliEta[-I]
 stands for $\\eta^{\\dagger }$.";
 
+PauliEtaC::usage =
+"PauliEta[I] represents a two-component Pauli spinor $\\eta_C$, while
+PauliEtaC[-I] stands for $\\eta_C^{\\dagger }$.";
+
 TemporalMomentum::usage =
 "TemporalMomentum[p]  is the head of the temporal component of a $4$-momentum
 $p^0$. The internal representation of the temporal component $p^0$ is
@@ -1361,6 +1369,7 @@ $FCDefaultLightconeVectorN and $FCDefaultLightconeVectorNB.";
 (* ------------------------------------------------------------------------ *)
 Begin["`Package`"];
 
+initialDataTypeDownValues;
 initialPairDownValues;
 initialCartesianPairDownValues;
 initialTemporalPairDownValues;
@@ -1400,6 +1409,20 @@ DeclareNonCommutative[GAE];
 DeclareNonCommutative[GS];
 DeclareNonCommutative[GSD];
 DeclareNonCommutative[GSE];
+
+DeclareNonCommutative[GSLP];
+DeclareNonCommutative[GSLN];
+DeclareNonCommutative[GSLR];
+DeclareNonCommutative[GSLPD];
+DeclareNonCommutative[GSLND];
+DeclareNonCommutative[GSLRD];
+DeclareNonCommutative[GALP];
+DeclareNonCommutative[GALN];
+DeclareNonCommutative[GALR];
+DeclareNonCommutative[GALPD];
+DeclareNonCommutative[GALND];
+DeclareNonCommutative[GALRD];
+
 DeclareNonCommutative[LeftPartialD];
 DeclareNonCommutative[LeftRightPartialD];
 DeclareNonCommutative[LeftRightPartialD2];
@@ -1423,6 +1446,7 @@ DeclareNonCommutative[SUNT];
 DeclareNonCommutative[PauliSigma];
 DeclareNonCommutative[PauliXi];
 DeclareNonCommutative[PauliEta];
+DeclareNonCommutative[PauliEtaC];
 DeclareNonCommutative[TGA];
 DeclareNonCommutative[CGA];
 DeclareNonCommutative[CGAD];
@@ -1464,6 +1488,7 @@ Conjugate[x_Pair] :=
 	Polarization[k, Conjugate[a], o]} ) /;!FreeQ[x, Polarization];
 Protect[Conjugate];
 
+SetAttributes[FCIndexDelta,Orderless];
 SetAttributes[DIDelta, Orderless];
 SetAttributes[DiracIndexDelta, Orderless];
 SetAttributes[PIDelta, Orderless];
@@ -1514,7 +1539,7 @@ Options[Polarization] = {Transversality -> False};
 	Instead we should use a syntax checker function that will be applied to the given expression *)
 DiracHeadsList = {DiracGamma,Spinor,DiracSigma,DiracChain, DiracIndexDelta, DiracTrace};
 
-PauliHeadsList = {PauliSigma,PauliXi,PauliEta, PauliChain, PauliIndexDelta, PauliTrace};
+PauliHeadsList = {PauliSigma,PauliXi,PauliEta, PauliEtaC, PauliChain, PauliIndexDelta, PauliTrace};
 
 SUNHeadsList = {SUNT,SUNTF,SUNF,SUNIndex,SUNFIndex,SUNDelta,SUNN,CA,CF};
 
@@ -2703,6 +2728,9 @@ SUNTF[a_,b_,c_] :=
 SUNTF[{_},i_SUNFIndex,i_SUNFIndex]:=
 	0;
 
+SUNTF[{},i_,j_]:=
+	SUNFDelta[i,j]/; FCPatternFreeQ[{i,j}];
+
 SUNIndex[SUNFIndex[___]]:=
 	(Message[SharedObjects::failmsg,"SUNFIndex is not allowed inside SUNIndex"];
 	Abort[]);
@@ -2921,13 +2949,13 @@ PauliChain[0,__]:=
 PauliChain[_,0]:=
 	0;
 
-PauliChain[1, (i:(_PauliEta|_PauliXi)), j : (_PauliIndex | _ExplicitPauliIndex)]:=
+PauliChain[1, (i:(_PauliEta|_PauliEtaC|_PauliXi)), j : (_PauliIndex | _ExplicitPauliIndex)]:=
 	PauliChain[i,j];
 
 PauliChain[x_/;x=!=1, i_,j_]/; FreeQ2[{FCI[x]},PauliHeadsList] && FCPatternFreeQ[{x,i,j}]:=
 	x PauliChain[1, i,j];
 
-PauliChain[1, a:(_PauliEta|_PauliXi), b:(_PauliEta|_PauliXi)]:=
+PauliChain[1, a:(_PauliEta|_PauliEtaC|_PauliXi), b:(_PauliEta|_PauliEtaC|_PauliXi)]:=
 	PauliChain[a,b];
 
 PauliChain[a_?NumberQ b_DOT, i_, j_]:=
@@ -2939,7 +2967,7 @@ PCHN[0,__]:=
 PCHN[_,0]:=
 	0;
 
-PCHN[1,a:(_PauliEta|_PauliXi),b:(_PauliEta|_PauliXi)]:=
+PCHN[1,a:(_PauliEta|_PauliEtaC|_PauliXi),b:(_PauliEta|_PauliEtaC|_PauliXi)]:=
 	PCHN[a,b];
 
 
@@ -3225,6 +3253,8 @@ SPLRD/:
 			LightConePerpendicularComponent[Momentum[a,D],Momentum[n,D],Momentum[nb,D]],
 			LightConePerpendicularComponent[Momentum[b,D],Momentum[n,D],Momentum[nb,D]]]=c
 		);
+
+initialDataTypeDownValues			= DownValues[DataType];
 
 initialPairDownValues 				= DownValues[Pair];
 initialCartesianPairDownValues		= DownValues[CartesianPair];

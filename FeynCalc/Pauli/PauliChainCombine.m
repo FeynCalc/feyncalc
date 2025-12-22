@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  PauliChainCombine												*)
@@ -29,19 +29,19 @@ optPauliSigmaCombine::usage="";
 mark::usage="";
 
 rulesMain = {
-	(n1_. PauliChain[x_, i1: (_PauliIndex| _ExplicitPauliIndex| _PauliXi | _PauliEta), i2: (_PauliIndex| _ExplicitPauliIndex| _PauliXi | _PauliEta)] +
-		n2_. PauliChain[y_, i1: (_PauliIndex| _ExplicitPauliIndex| _PauliXi | _PauliEta), i2: (_PauliIndex| _ExplicitPauliIndex| _PauliXi | _PauliEta)])/;
+	(n1_. PauliChain[x_, i1: (_PauliIndex| _ExplicitPauliIndex| _PauliXi | _PauliEta| _PauliEtaC), i2: (_PauliIndex| _ExplicitPauliIndex| _PauliXi | _PauliEta| _PauliEtaC)] +
+		n2_. PauliChain[y_, i1: (_PauliIndex| _ExplicitPauliIndex| _PauliXi | _PauliEta| _PauliEtaC), i2: (_PauliIndex| _ExplicitPauliIndex| _PauliXi | _PauliEta| _PauliEtaC)])/;
 		Denominator[n1]===1 && Denominator[n2]===1 && NonCommFreeQ[{n1,n2}] && FreeQ[{n1,n2}, PauliChain] :>
 			PauliChain[mark (n1 x + n2 y), i1, i2],
 
-	(n_. PauliChain[x_, i1: (PauliIndex|ExplicitPauliIndex|PauliXi|PauliEta)[__], i2: (PauliIndex|ExplicitPauliIndex|PauliXi|PauliEta)[__]] +
-		n_. PauliChain[y_, i1: (PauliIndex|ExplicitPauliIndex|PauliXi|PauliEta)[__], i2: (PauliIndex|ExplicitPauliIndex|PauliXi|PauliEta)[__]])/;
+	(n_. PauliChain[x_, i1: (PauliIndex|ExplicitPauliIndex|PauliXi|PauliEta|PauliEtaC)[__], i2: (PauliIndex|ExplicitPauliIndex|PauliXi|PauliEta| _PauliEtaC)[__]] +
+		n_. PauliChain[y_, i1: (PauliIndex|ExplicitPauliIndex|PauliXi|PauliEta|PauliEtaC)[__], i2: (PauliIndex|ExplicitPauliIndex|PauliXi|PauliEta| _PauliEtaC)[__]])/;
 		!(Denominator[n]===1 && NonCommFreeQ[n] && FreeQ[n, PauliChain]) :>
 			n PauliChain[mark (x + y), i1, i2],
 
 	(* Works also for Expand[PauliChainExpand[PCHN[1 + CSI[i], i, j] DCHN[1 + CSI[i], k, l]]]*)
-	(n1_. PauliChain[x_, i1: (PauliIndex|ExplicitPauliIndex|PauliXi|PauliEta)[__], i2: (PauliIndex|ExplicitPauliIndex|PauliXi|PauliEta)[__]] +
-		n2_. PauliChain[y_, i1: (PauliIndex|ExplicitPauliIndex|PauliXi|PauliEta)[__], i2: (PauliIndex|ExplicitPauliIndex|PauliXi|PauliEta)[__]])/;
+	(n1_. PauliChain[x_, i1: (PauliIndex|ExplicitPauliIndex|PauliXi|PauliEta|PauliEtaC)[__], i2: (PauliIndex|ExplicitPauliIndex|PauliXi|PauliEta|PauliEtaC)[__]] +
+		n2_. PauliChain[y_, i1: (PauliIndex|ExplicitPauliIndex|PauliXi|PauliEta|PauliEtaC)[__], i2: (PauliIndex|ExplicitPauliIndex|PauliXi|PauliEta|PauliEtaC)[__]])/;
 		!(Denominator[n1]===1 && Denominator[n2]===1 && NonCommFreeQ[{n1,n2}] && FreeQ[{n1,n2}, PauliChain]) && Expand[(n1-n2)]==0 :>
 			n1 PauliChain[mark (x - y), i1, i2]
 };

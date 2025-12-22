@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:	Changes certain objects ("Symbols") into the FeynCalc
@@ -375,26 +375,26 @@ dchn[a_,b_,c_]:=
 	);
 
 
-paIndex[a: (_PauliXi | _PauliEta)]:=
+paIndex[a: (_PauliXi | _PauliEta | _PauliEtaC)]:=
 	a;
 
 paIndex[a_]:=
 	PauliIndex[a/.PauliIndex->Identity]/;!MemberQ[Head[a],{PauliXi,PauliEta}]
 
-pchn[a: (_PauliXi | _PauliEta),b_]:=
+pchn[a: (_PauliXi | _PauliEta | _PauliEtaC),b_]:=
 	(
 	pchntmp=FCI[{a,b}];
 	PauliChain[pchntmp[[1]],paIndex[pchntmp[[2]]]]
-	)/; !MemberQ[{PauliXi,PauliEta},Head[b]];
+	)/; !MemberQ[{PauliXi,PauliEta,PauliEtaC},Head[b]];
 
 
-pchn[a_,b : (_PauliXi | _PauliEta)]:=
+pchn[a_,b : (_PauliXi | _PauliEta | _PauliEtaC)]:=
 	(
 	pchntmp=FCI[{a,b}];
 	PauliChain[paIndex[pchntmp[[1]]],pchntmp[[2]]]
-	)/; !MemberQ[{PauliXi,PauliEta},Head[a]];
+	)/; !MemberQ[{PauliXi,PauliEta,PauliEtaC},Head[a]];
 
-pchn[a : (_PauliXi | _PauliEta), b : (_PauliXi | _PauliEta)]:=
+pchn[a : (_PauliXi | _PauliEta | _PauliEtaC), b : (_PauliXi | _PauliEta | _PauliEtaC)]:=
 	(
 	pchntmp=FCI[{a,b}];
 	PauliChain[pchntmp[[1]],pchntmp[[2]]]

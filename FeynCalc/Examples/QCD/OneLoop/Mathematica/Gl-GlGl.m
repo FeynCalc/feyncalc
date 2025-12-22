@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Gl - Gl Gl, QCD, only UV divergences, 1-loop					*)
@@ -36,11 +36,17 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False,
 	$FeynCalcStartupMessages = False
 ];
-$LoadAddOns={"FeynArts"};
+LaunchKernels[4];
+$LoadAddOns={"FeynArts","FeynHelpers"};
 <<FeynCalc`
 $FAVerbose = 0;
+$ParallelizeFeynCalc=True;
 
-FCCheckVersion[9,3,1];
+FCCheckVersion[10,2,0];
+If[ToExpression[StringSplit[$FeynHelpersVersion,"."]][[1]]<2,
+	Print["You need at least FeynHelpers 2.0 to run this example."];
+	Abort[];
+]
 
 
 (* ::Section:: *)
@@ -65,9 +71,9 @@ FAPatch[PatchModelsOnly->True];
 (*Nicer typesetting*)
 
 
-MakeBoxes[mu,TraditionalForm]:="\[Mu]";
-MakeBoxes[nu,TraditionalForm]:="\[Nu]";
-MakeBoxes[rho,TraditionalForm]:="\[Rho]";
+FCAttachTypesettingRule[mu,"\[Mu]"];
+FCAttachTypesettingRule[nu,"\[Nu]"];
+FCAttachTypesettingRule[rho,"\[Rho]"];
 
 
 template = insertFields[createTopologies[1, 1 -> 2,
@@ -98,21 +104,20 @@ Numbering -> Simple, ImageSize->{512,256}];
 
 
 (* ::Text:: *)
-(*The 1/(2Pi)^D prefactor is implicit. We keep the full gauge dependence. To simplify comparisons*)
-(*to the literature, we make all momenta incoming.*)
+(*The 1/(2Pi)^D prefactor is implicit. We keep the full gauge dependence. To simplify comparisons to the literature, we make all momenta incoming.*)
 
 
 (* ::Text:: *)
-(*Quark contribution. Notice that we multiply the amplitude by Nf to account for the number*)
-(*of quark flavours in the loop.*)
+(*Quark contribution. Notice that we multiply the amplitude by Nf to account for the number of quark flavours in the loop.*)
 
 
 amp1[0] = FCFAConvert[CreateFeynAmp[DiagramExtract[diags,{1,2}],
 	Truncated->True, GaugeRules->{},PreFactor->1],
 	IncomingMomenta->{p1}, OutgoingMomenta->{p2,p3},
 	LorentzIndexNames->{mu,nu,rho}, DropSumOver->True,
-	SUNIndexNames->{a,b,c}, LoopMomenta->{l}, UndoChiralSplittings->True,
-	ChangeDimension->D, List->False, SMP->True,Prefactor->Nf,
+	SUNIndexNames->{a,b,c}, LoopMomenta->{l}, 
+	UndoChiralSplittings->True,
+	ChangeDimension->D, SMP->True,Prefactor->Nf,
 	FinalSubstitutions->{SMP["m_u"]->SMP["m_q"],p2->-p2,p3->-p3}]
 
 
@@ -124,8 +129,9 @@ amp2[0] = FCFAConvert[CreateFeynAmp[DiagramExtract[diags,{3,4}],
 	Truncated->True, GaugeRules->{},PreFactor->1],
 	IncomingMomenta->{p1}, OutgoingMomenta->{p2,p3},
 	LorentzIndexNames->{mu,nu,rho}, SUNIndexNames->{a,b,c},
-	DropSumOver->True, LoopMomenta->{l}, UndoChiralSplittings->True,
-	ChangeDimension->D, List->False, SMP->True,
+	DropSumOver->True, LoopMomenta->{l}, 
+	UndoChiralSplittings->True,
+	ChangeDimension->D, SMP->True,
 	FinalSubstitutions->{SMP["m_u"]->SMP["m_q"],p2->-p2,p3->-p3}]
 
 
@@ -137,8 +143,9 @@ amp3[0] = FCFAConvert[CreateFeynAmp[DiagramExtract[diags,{5,6,7,8}],
 	Truncated->True, GaugeRules->{},PreFactor->1],
 	IncomingMomenta->{p1}, OutgoingMomenta->{p2,p3},
 	LorentzIndexNames->{mu,nu,rho}, SUNIndexNames->{a,b,c},
-	DropSumOver->True, LoopMomenta->{l}, UndoChiralSplittings->True,
-	ChangeDimension->D, List->False, SMP->True,
+	DropSumOver->True, LoopMomenta->{l}, 
+	UndoChiralSplittings->True,
+	ChangeDimension->D, SMP->True,
 	FinalSubstitutions->{SMP["m_u"]->SMP["m_q"],p2->-p2,p3->-p3}];
 
 
@@ -150,8 +157,9 @@ amp4[0] = FCFAConvert[CreateFeynAmp[diagsCT,
 	Truncated->True, GaugeRules->{},PreFactor->1],
 	IncomingMomenta->{p1}, OutgoingMomenta->{p2,p3},
 	LorentzIndexNames->{mu,nu,rho}, SUNIndexNames->{a,b,c},
-	DropSumOver->True, LoopMomenta->{l}, UndoChiralSplittings->True,
-	ChangeDimension->D, List->False, SMP->True,
+	DropSumOver->True, LoopMomenta->{l}, 
+	UndoChiralSplittings->True,
+	ChangeDimension->D, SMP->True,
 	FinalSubstitutions->{SMP["m_u"]->SMP["m_q"],p2->-p2,p3->-p3,
 	ZA->SMP["Z_A"],Zg->SMP["Z_g"]}]
 
@@ -164,15 +172,14 @@ amp4[0] = FCFAConvert[CreateFeynAmp[diagsCT,
 (*Quark contribution*)
 
 
-AbsoluteTiming[amp1[1]=TID[FCE[amp1[0]]/.{p2+p3->-p1,-p2-p3->p1},l,
-	UsePaVeBasis->True,ToPaVe->True];]
+AbsoluteTiming[amp1[1]=(FCE[amp1[0]]/.{p2+p3->-p1,-p2-p3->p1})//
+TID[#,l,UsePaVeBasis->True,ToPaVe->True,FCParallelize->True]&;]
 
 
 amp1Div[0]=amp1[1]//PaVeUVPart[#,Prefactor->1/(2Pi)^D,FCLoopExtract->False]&;
 
 
-amp1Div[1]=amp1Div[0]//SUNSimplify[#,Explicit->True]&//ReplaceAll[#,
-	SUNTrace[x__]:>SUNTrace[x,Explicit->True]]&//
+amp1Div[1]=amp1Div[0]//SUNSimplify[#,FCParallelize->True]&//Total//
 	FCReplaceD[#,D->4-2 Epsilon]&//Series[#,{Epsilon,0,0}]&//
 	Normal//FCHideEpsilon//SelectNotFree2[#,SMP["Delta"]]&//FCE//
 	Collect2[#,MTD,Factoring->Function[x,MomentumCombine[Factor[x]]]]&
@@ -190,15 +197,14 @@ amp1Div[2]=amp1Div[1]/. {2p1+p2->p1-p3,p1+2p2->p2-p3}
 (*Ghost contribution*)
 
 
-AbsoluteTiming[amp2[1]=TID[FCE[amp2[0]]/.{p2+p3->-p1,-p2-p3->p1},l,
-	UsePaVeBasis->True,ToPaVe->True];]
+AbsoluteTiming[amp2[1]=(FCE[amp2[0]]/.{p2+p3->-p1,-p2-p3->p1})//
+TID[#,l,UsePaVeBasis->True,ToPaVe->True,FCParallelize->True]&;]
 
 
 amp2Div[0]=amp2[1]//PaVeUVPart[#,Prefactor->1/(2Pi)^D,FCLoopExtract->False]&;
 
 
-amp2Div[1]=amp2Div[0]//SUNSimplify[#,Explicit->True]&//ReplaceAll[#,
-	SUNTrace[x__]:>SUNTrace[x,Explicit->True]]&//
+amp2Div[1]=amp2Div[0]//SUNSimplify[#,FCParallelize->True]&//Total//
 	FCReplaceD[#,D->4-2 Epsilon]&//Series[#,{Epsilon,0,0}]&//
 	Normal//FCHideEpsilon//SelectNotFree2[#,SMP["Delta"]]&//FCE//
 	Collect2[#,MTD,Factoring->Function[x,MomentumCombine[Factor[x]]]]&
@@ -217,19 +223,19 @@ amp2Div[2]=amp2Div[1]/. {2p1+p2->p1-p3,p1+2p2->p2-p3}
 
 
 (* ::Text:: *)
-(*This calculation requires about 70 seconds on a modern laptop*)
+(*This calculation requires about 50 seconds on a modern laptop*)
 
 
-AbsoluteTiming[amp3[1]=TID[FCE[amp3[0]]/.{p2+p3->-p1,-p2-p3->p1},l,
-	UsePaVeBasis->True,ExpandScalarProduct->False,ToPaVe->True];]
+AbsoluteTiming[amp3[1]=(FCE[amp3[0]]/.{p2+p3->-p1,-p2-p3->p1})//
+TID[#,l,UsePaVeBasis->True,ToPaVe->True,FCParallelize->True]&;]
 
 
 amp3Div[0]=amp3[1]//PaVeUVPart[#,Prefactor->1/(2Pi)^D,FCLoopExtract->False]&;
 
 
-amp3Div[1]=amp3Div[0]//SUNSimplify//FCReplaceD[#,D->4-2 Epsilon]&//
-	Series[#,{Epsilon,0,0}]&//Normal//FCHideEpsilon//
-	SelectNotFree2[#,SMP["Delta"]]&//FCE//
+amp3Div[1]=amp3Div[0]//SUNSimplify[#,FCParallelize->True]&//Total//
+	FCReplaceD[#,D->4-2 Epsilon]&//Series[#,{Epsilon,0,0}]&//
+	Normal//FCHideEpsilon//SelectNotFree2[#,SMP["Delta"]]&//FCE//
 	Collect2[#,MTD,Factoring->Function[x,MomentumCombine[Factor[x]]]]&
 
 
@@ -300,3 +306,6 @@ FCCompareResults[{amp1Div[2],amp2Div[2],amp3Div[2]}, knownResult,
 for the Practitioner, Eq III.46:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
+
+
+

@@ -6,14 +6,25 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Options shared by various FeynCalc objects and functions	    *)
 
 (* ------------------------------------------------------------------------ *)
+
+
+AugmentedTopologyMarker::usage =
+"AugmentedTopologyMarker is an option for FCLoopTensorReduce,
+FCLoopAugmentTopology and other functions. It marks topologies (written as
+GLIs denoting denominators only) that need to be augmented with propagators
+containing the given external momenta. This case usually occurs when doing a
+tensor reduction with zero Gram determinant
+and light-like external momenta, so that an auxiliary vector must be added to
+the
+basis.";
 
 CartesianIndexNames::usage =
 "CartesianIndexNames is an option for FCFAConvert, FCCanonicalizeDummyIndices
@@ -139,6 +150,11 @@ expressions like A.X.B + A.Y.B as A.(X+Y).B.
 Notice that although the default value of FCJoinDOTs is True, the
 corresponding transformations will occur only if the option Expanding is set
 to False (default: True)";
+
+FCParallelize::usage =
+"FCParallelize is an option for various FeynCalc functions that support
+parallelization. When set to True the function will try to parallelize its
+work, while False disables any parallelization.";
 
 FCVerbose::usage =
 "FCVerbose is an option for numerous functions that allows to specify a local
@@ -369,6 +385,11 @@ SUNNToCACF::usage=
 "SUNNToCACF is an option of SUNSimplify and CalcColorFactor. If set to True,
 the Casimir operator eigenvalues CA ($=n_c$) and CF ($=(n_c^2-1)/(2 n_c)$) are
 introduced.";
+
+TensorReductionBasisChange::usage =
+"TensorReductionBasisChange is an option for FCLoopTensorReduce and other
+functions. It specifies how the given set of linearly dependent external
+momenta should be replaced by a set of linearly independent ones.";
 
 TraceOfOne::usage =
 "TraceOfOne is an option for TR and DiracTrace. Its setting determines the

@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  GhGl - Gh, QCD, only UV divergences, 1-loop					*)
@@ -36,11 +36,17 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False,
 	$FeynCalcStartupMessages = False
 ];
-$LoadAddOns={"FeynArts"};
+LaunchKernels[4];
+$LoadAddOns={"FeynArts","FeynHelpers"};
 <<FeynCalc`
 $FAVerbose = 0;
+$ParallelizeFeynCalc=True;
 
-FCCheckVersion[9,3,1];
+FCCheckVersion[10,2,0];
+If[ToExpression[StringSplit[$FeynHelpersVersion,"."]][[1]]<2,
+	Print["You need at least FeynHelpers 2.0 to run this example."];
+	Abort[];
+]
 
 
 (* ::Section:: *)
@@ -65,9 +71,9 @@ FAPatch[PatchModelsOnly->True];
 (*Nicer typesetting*)
 
 
-MakeBoxes[mu,TraditionalForm]:="\[Mu]";
-MakeBoxes[nu,TraditionalForm]:="\[Nu]";
-MakeBoxes[rho,TraditionalForm]:="\[Rho]";
+FCAttachTypesettingRule[mu,"\[Mu]"];
+FCAttachTypesettingRule[nu,"\[Nu]"];
+FCAttachTypesettingRule[rho,"\[Rho]"];
 
 
 template = insertFields[createTopologies[1, 1 -> 2,
@@ -105,7 +111,7 @@ amp1[0] = FCFAConvert[CreateFeynAmp[DiagramExtract[diags,{1,2}],
 	IncomingMomenta->{p1}, OutgoingMomenta->{p2,p3},
 	LorentzIndexNames->{mu,nu,rho}, DropSumOver->True,
 	SUNIndexNames->{a,b,c}, LoopMomenta->{l}, UndoChiralSplittings->True,
-	ChangeDimension->D, List->False, SMP->True,
+	ChangeDimension->D,  SMP->True,
 	FinalSubstitutions->{SMP["m_u"]->SMP["m_q"]}]
 
 
@@ -118,7 +124,7 @@ amp2[0] = FCFAConvert[CreateFeynAmp[diagsCT,
 	IncomingMomenta->{p1}, OutgoingMomenta->{p2,p3},
 	LorentzIndexNames->{mu,nu,rho}, SUNIndexNames->{a,b,c},
 	DropSumOver->True, LoopMomenta->{l}, UndoChiralSplittings->True,
-	ChangeDimension->D, List->False, SMP->True,
+	ChangeDimension->D, SMP->True,
 	FinalSubstitutions->{SMP["m_u"]->SMP["m_q"],
 	ZA->SMP["Z_A"],Zg->SMP["Z_g"],Zu->SMP["Z_u"]}]
 
@@ -131,11 +137,14 @@ amp2[0] = FCFAConvert[CreateFeynAmp[diagsCT,
 (*Ghost-gluon vertex*)
 
 
+?Quiet
+
+
 AbsoluteTiming[amp1[1]=TID[(FCE[amp1[0]]/.{-p2-p3->-p1}),l,
-	UsePaVeBasis->True,ToPaVe->True];]
+	UsePaVeBasis->True,ToPaVe->True,FCParallelize->True];]
 
 
-amp1Div[0]=amp1[1]//PaVeUVPart[#,Prefactor->1/(2Pi)^D]&;
+amp1Div[0]=amp1[1]//Total//PaVeUVPart[#,Prefactor->1/(2Pi)^D]&;
 
 
 amp1Div[1]=amp1Div[0]//SUNSimplify[#,Explicit->True]&//ReplaceAll[#,
@@ -157,8 +166,7 @@ amp2[1]=amp2[0]//ReplaceAll[#,{SMP["Z_A"]->1+alpha SMP["d_A"],
 
 
 (* ::Text:: *)
-(*Check the cancellation of the UV divergences in the MSbar scheme. The renormalization constants*)
-(*are obtained from another example calculation, "Renormalization.m"*)
+(*Check the cancellation of the UV divergences in the MSbar scheme. The renormalization constants are obtained from another example calculation, "Renormalization.m"*)
 
 
 renormalizationConstants = {
@@ -187,8 +195,11 @@ the counter-term :",
 knownResult =
 	-I(-I SMP["g_s"] FVD[p3,mu]SUNF[a,b,c]( SMP["g_s"]^2/(4Pi)^2 CA*
 		GaugeXi["G"]/2 SMP["Delta"]));
-FCCompareResults[amp1Div[1],knownResult,
+FCCompareResults[PowerExpand[amp1Div[1]],knownResult,
 Text->{"\tCompare to Muta, Foundations of QCD, \
 Eq. 2.5.142:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
+
+
+

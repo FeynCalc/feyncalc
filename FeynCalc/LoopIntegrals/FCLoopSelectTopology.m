@@ -6,9 +6,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  	Selects the topology for the given GLI						*)
@@ -48,18 +48,11 @@ FCLoopSelectTopology[ex_/;Head[ex]=!=List, topos:{__FCTopology}, opts:OptionsPat
 FCLoopSelectTopology[glisRaw_List, topos:{__FCTopology}, OptionsPattern[]] :=
 	Block[{res, glis, gliTopos, null, optOneToOne, aux},
 
-		If[	OptionValue[Check],
-			If[	!FCLoopValidTopologyQ[topos],
-				Message[FCLoopSelectTopology::failmsg, "The supplied list of topologie is incorrect."];
-				Abort[]
-			];
-		];
-
 		optOneToOne = OptionValue["OneToOneCorrespondence"];
 
 		If[	TrueQ[!MatchQ[glisRaw, {__GLI}]],
 
-			If[	TrueQ[MatchQ[glisRaw,{(_GLI | Power[_GLI, _] | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..}]],
+			If[	TrueQ[MatchQ[glisRaw,{(_GLI | Power[_GLI, _] | 0 | HoldPattern[Times][(_GLI | Power[_GLI, _]) ..]) ..}]],
 				(*List of GLIs involving products*)
 				glis = Cases2[#+null,GLI]&/@glisRaw;
 				gliTopos=glis /. GLI[id_,__] :> id,
@@ -86,6 +79,13 @@ FCLoopSelectTopology[glisRaw_List, topos:{__FCTopology}, OptionsPattern[]] :=
 		If[	res==={},
 			Message[FCLoopSelectTopology::failmsg,"There are no topologies that appear in the given list of GLIs"];
 			Abort[]
+		];
+
+		If[	OptionValue[Check],
+			If[	!FCLoopValidTopologyQ[DeleteDuplicates[Flatten[res]]],
+				Message[FCLoopSelectTopology::failmsg, "The supplied list of topologie is incorrect."];
+				Abort[]
+			];
 		];
 
 		If[	OptionValue[FCE],

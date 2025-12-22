@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Renormalization, QED, MS and MSbar, 1-loop					*)
@@ -36,11 +36,11 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False,
 	$FeynCalcStartupMessages = False
 ];
+LaunchKernels[4];
 $LoadAddOns={"FeynArts"};
 <<FeynCalc`
 $FAVerbose = 0;
-
-FCCheckVersion[9,3,1];
+$ParallelizeFeynCalc=True;
 
 
 (* ::Section:: *)
@@ -65,8 +65,10 @@ FAPatch[PatchModelsOnly->True];
 (*Nicer typesetting*)
 
 
-MakeBoxes[mu,TraditionalForm]:="\[Mu]";
-MakeBoxes[nu,TraditionalForm]:="\[Nu]";
+FCAttachTypesettingRule[mu,"\[Mu]"];
+FCAttachTypesettingRule[nu,"\[Nu]"];
+FCAttachTypesettingRule[rho,"\[Rho]"];
+FCAttachTypesettingRule[si,"\[Sigma]"];
 
 
 params={InsertionLevel->{Particles},Model -> FileNameJoin[{"QED","QED"}],
@@ -119,7 +121,7 @@ amp1[0] = FCFAConvert[CreateFeynAmp[diag1[0],Truncated->True,
 	IncomingMomenta->{p}, OutgoingMomenta->{p},
 	LorentzIndexNames->{mu},
 	LoopMomenta->{l}, UndoChiralSplittings->True,
-	ChangeDimension->D, List->False, SMP->True,
+	ChangeDimension->D, SMP->True,
 	FinalSubstitutions->{Zm->SMP["Z_m"], Zpsi->SMP["Z_psi"],
 	SMP["e"]->Sqrt[4Pi SMP["alpha_fs"]],GaugeXi[V[1]]->GaugeXi},
 	Contract->True]
@@ -134,7 +136,7 @@ amp2[0] = FCFAConvert[CreateFeynAmp[diag2[0],Truncated->True,
 	IncomingMomenta->{p}, OutgoingMomenta->{p},
 	LorentzIndexNames->{mu,nu},
 	LoopMomenta->{l}, UndoChiralSplittings->True,
-	ChangeDimension->D, List->False, SMP->True,
+	ChangeDimension->D, SMP->True,
 	FinalSubstitutions->{ZA->SMP["Z_A"], Zxi->SMP["Z_xi"],
 	SMP["e"]->Sqrt[4Pi SMP["alpha_fs"]],GaugeXi[V[1]]->GaugeXi},
 	Contract->True]//FCTraceFactor
@@ -149,7 +151,7 @@ amp3[0] = FCFAConvert[CreateFeynAmp[diag3[0],Truncated->True,
 	IncomingMomenta->{p1,k}, OutgoingMomenta->{p2},
 	LorentzIndexNames->{mu}, LoopMomenta->{l},
 	UndoChiralSplittings->True, ChangeDimension->D,
-	List->False, SMP->True, FinalSubstitutions->
+	SMP->True, FinalSubstitutions->
 	{ZA->SMP["Z_A"], Ze->SMP["Z_e"], Zpsi->SMP["Z_psi"],
 	SMP["e"]^3->4Pi SMP["alpha_fs"] SMP["e"],GaugeXi[V[1]]->GaugeXi},
 	Contract->True]/.SMP["e"]->-SMP["e"]
@@ -172,7 +174,7 @@ Normal//ReplaceAll[#,alpha->1]&
 (*Tensor reduction allows us to express the electron self-energy in tems of the Passarino-Veltman coefficient functions.*)
 
 
-amp1[2]=TID[amp1[1],l,ToPaVe->True]
+amp1[2]=TID[amp1[1],l,ToPaVe->True,FCParallelize->True]//Total
 
 
 (* ::Text:: *)
@@ -217,7 +219,7 @@ Normal//ReplaceAll[#,alpha->1]&
 (*Tensor reduction allows us to express the electron self-energy in tems of the Passarino-Veltman coefficient functions.*)
 
 
-amp2[2]=TID[amp2[1],l,ToPaVe->True]
+amp2[2]=TID[amp2[1],l,ToPaVe->True,FCParallelize->True]//Total
 
 
 (* ::Text:: *)
@@ -251,7 +253,7 @@ Series[#,{alpha,0,1}]&//Normal//ReplaceAll[#,alpha->1]&
 (*The result of the tensor reduction is quite large, since we keep the full gauge dependence and do not specify the kinematics*)
 
 
-amp3[2]=TID[amp3[1],l,ToPaVe->True,UsePaVeBasis->True]
+amp3[2]=TID[amp3[1],l,ToPaVe->True,UsePaVeBasis->True,FCParallelize->True]//Total
 
 
 (* ::Text:: *)

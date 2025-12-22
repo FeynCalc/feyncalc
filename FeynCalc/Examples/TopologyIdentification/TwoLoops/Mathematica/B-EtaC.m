@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  B -> EtaC, QCD, topology minimization, 2-loops  			  *)
@@ -30,9 +30,11 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False,
 	$FeynCalcStartupMessages = False
 ];
+LaunchKernels[8];
 <<FeynCalc`
+$ParallelizeFeynCalc=True;
 
-FCCheckVersion[10,0,0];
+FCCheckVersion[10,2,0];
 
 
 (* ::Section:: *)
@@ -49,7 +51,7 @@ rawTopologies0=Get["RawTopologies-B-Etac.m"];
 (*Run the naive topology identification*)
 
 
-fcVariables=\!\(TraditionalForm\`{gkin, meta, u0b}\);
+fcVariables={gkin, meta, u0b};
 
 
 (DataType[#,FCVariable]=True)&/@fcVariables;
@@ -58,12 +60,13 @@ fcVariables=\!\(TraditionalForm\`{gkin, meta, u0b}\);
 rawTopologies=loopHead/@(rawTopologies0);
 
 
-kinematics=\!\(TraditionalForm\`{\(Hold[SPD]\)[n] -> 0, \(Hold[SPD]\)[nb] -> 0, \(Hold[SPD]\)[n, nb] -> 2}\);
+kinematics={Hold[SPD][n] -> 0, Hold[SPD][nb] -> 0, Hold[SPD][n, nb] -> 2};
 
 
 aux1=FCLoopFindTopologies[rawTopologies,{k1,k2},FCLoopIsolate->loopHead,
 FCLoopBasisOverdeterminedQ->True,FinalSubstitutions->kinematics,
-Names->"preTopoDia",Head->Identity,FCLoopGetKinematicInvariants->False,FCLoopScalelessQ->False];
+Names->"preTopoDia",Head->Identity,FCLoopGetKinematicInvariants->False,
+FCLoopScalelessQ->False,FCParallelize->True];
 
 
 (* ::Text:: *)
@@ -97,7 +100,8 @@ overdeterminedToposPre//Length
 (*Generate partial fractioning rules to be applied to the original sets of denominators*)
 
 
-AbsoluteTiming[pfrRules=FCLoopCreatePartialFractioningRules[aux1[[1]],topoPre];]
+AbsoluteTiming[pfrRules=FCLoopCreatePartialFractioningRules[aux1[[1]],topoPre,
+FCParallelize->True];]
 
 
 (* ::Text:: *)
@@ -200,14 +204,15 @@ If[Union[FCLoopBasisOverdeterminedQ/@finalPreTopos]=!={False},
 (*Finally use `FCLoopFindTopologyMappings` to find mappings between topologies*)
 
 
-AbsoluteTiming[mappedTopos=FCLoopFindTopologyMappings[finalPreTopos];]
+AbsoluteTiming[mappedTopos=FCLoopFindTopologyMappings[finalPreTopos,FCParallelize->True];]
 
 
 (* ::Text:: *)
 (*Allowing for shifts of external momenta would give us even more mapping relations but this is not safe unless we explicitly know that the amplitude is symmetric under such shifts*)
 
 
-AbsoluteTiming[mappedToposTest=FCLoopFindTopologyMappings[finalPreTopos,Momentum->All];]
+AbsoluteTiming[mappedToposTest=FCLoopFindTopologyMappings[finalPreTopos,Momentum->All,
+FCParallelize->True];]
 
 
 (* ::Text:: *)
@@ -239,7 +244,8 @@ completedTopos=FCLoopBasisFindCompletion[incompleteTopos,Method->allProps];
 (*Generate basis completion rules*)
 
 
-basisCompletionRules=FCLoopCreateRuleGLIToGLI[completedTopos,List/@incompleteTopos]//Flatten;
+basisCompletionRules=FCLoopCreateRuleGLIToGLI[completedTopos,
+List/@incompleteTopos]//Flatten;
 
 
 (* ::Text:: *)
@@ -265,3 +271,6 @@ ruGLI=Map[{#[[1]],FCLoopCreateRulesToGLI[#]}&,fcTopologies//FCLoopTopologyNameTo
 
 
 sortedTopologyNames=First/@fcTopologies;
+
+
+Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];

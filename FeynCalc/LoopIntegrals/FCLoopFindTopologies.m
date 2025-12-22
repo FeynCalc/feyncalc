@@ -6,13 +6,18 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:	Extracts sets of propagtors for the topology
-				identification												*)
+(*
+	:Summary:	Extracts sets of propagtors for the topology
+				identification
+
+				Supports parallel evaluation [X]
+
+*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -45,16 +50,12 @@ End[]
 
 Begin["`FCLoopFindTopologies`Private`"];
 
-fcfsopVerbose::usage="";
-realTopologies::usage="";
-preferredTopologiesPresent::usage="";
-optPreferredTopologies::usage="";
-
 Options[FCLoopFindTopologies] = {
 	Collecting					 -> True,
 	ExtraPropagators			 -> {},
 	FCE							 -> False,
 	FCI 						 -> False,
+	FCParallelize				 -> True,
 	FCLoopBasisOverdeterminedQ	 -> False,
 	FCLoopGetKinematicInvariants -> True,
 	FCLoopIsolate				 -> True,
@@ -89,7 +90,9 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 			denFreeTopoName, topoTempName, optFactoring, namesPreferredTopologies, preferredTopologiesAbsent, optFDS, allFADs,
 			allFADsSimp, ruleFADsSimp, exFinal, optOrdering, orderingFirst, orderingLast, topoName, optHead,
 			momenta, optFinalSubstitutions, optFCLoopIsolate, scalelessTopologies ,ruleScalelessTopologies, emoms,
-			spsFromDownValues, optSetDimensions, kinInvs},
+			spsFromDownValues, optSetDimensions, kinInvs, optFCParallelize, time0, optPreferredTopologies,
+			finalTopologiesCheckRhs, finalTopologiesCheckLhs, relatedSubtopologies, rule, realTopologies,
+			preferredTopologiesPresent, fcfsopVerbose, allToposToCheck},
 
 		optExtraPropagators 	= OptionValue[ExtraPropagators];
 		optOrdering 			= OptionValue[Ordering];
@@ -102,6 +105,7 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 		optFinalSubstitutions   = OptionValue[FinalSubstitutions];
 		optFCLoopIsolate 		= OptionValue[FCLoopIsolate];
 		optSetDimensions		= OptionValue[SetDimensions];
+		optFCParallelize		= OptionValue[FCParallelize];
 
 		optPreferredTopologies = optPreferredTopologies /. FCTopology[id_,re_]:> FCTopology[topoName[id],re];
 
@@ -122,9 +126,6 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 
 		(*	Internal temporary name for the identified topologies.	*)
 		topoTempName="dummyTmpTp";
-
-		(*	List of the topologies that are not subtopologies.	*)
-		realTopologies = {};
 
 		FCPrint[1,"FCLoopFindTopologies: Entering.", FCDoControl->fcfsopVerbose];
 		FCPrint[3,"FCLoopFindTopologies: Entering with: ", expr, FCDoControl->fcfsopVerbose];
@@ -154,7 +155,6 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 			(*	There are extra propagators to add.	*)
 			optExtraPropagators = FCI[optExtraPropagators];
 
-
 			If[	optFDS,
 				time=AbsoluteTime[];
 				FCPrint[1,"FCLoopFindTopologies: The extra propagators will be processed with FDS.", FCDoControl->fcfsopVerbose];
@@ -165,9 +165,6 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 				FCPrint[3,"FCLoopFindTopologies: Final replacement rule for the propagators: ", ruleFADsSimp, FCDoControl->fcfsopVerbose];
 				optExtraPropagators = optExtraPropagators /. Dispatch[ruleFADsSimp]
 			];
-
-
-
 
 			Which[
 				(*	Add some propagators to the beginning and some to the end of each topology	*)
@@ -188,9 +185,6 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 			extraPropagatorsFirst = {};
 			extraPropagatorsLast = {}
 		];
-
-
-
 
 		If[	TrueQ[optOrdering =!= {}],
 
@@ -264,13 +258,11 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 				optPreferredTopologies = optPreferredTopologies /. Dispatch[ruleFADsSimp]
 			];
 
-			realTopologies = optPreferredTopologies;
-			namesPreferredTopologies = First/@realTopologies,
+			(*realTopologies = optPreferredTopologies;*)
+			namesPreferredTopologies = First/@optPreferredTopologies,
 
 			namesPreferredTopologies ={};
 		];
-
-		preferredTopologiesPresent = {};
 
 
 		(*	The input expression is rewritten as a linear combination of sets of denominators.	*)
@@ -278,7 +270,8 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 		FCPrint[1,"FCLoopFindTopologies: Extracting unique denominators.", FCDoControl->fcfsopVerbose];
 		Which[
 				optFCLoopIsolate===True,
-					tmp = FCLoopIsolate[ex, lmoms, FCI->True, Collecting-> optCollecting, Factoring -> False, Numerator -> False, Head -> loopDen],
+					tmp = FCLoopIsolate[ex, lmoms, FCI->True, Collecting-> optCollecting, Factoring -> False, Numerator -> False, Head -> loopDen,
+						FCParallelize->optFCParallelize],
 				MatchQ[optFCLoopIsolate,_Symbol] && optFCLoopIsolate=!=False,
 					(*If the input is already isolated, we may skip the FCLoopIsolate step.*)
 					loopDen = optFCLoopIsolate;
@@ -317,18 +310,41 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 				Abort[]
 			];
 
-			time=AbsoluteTime[];
-			FCPrint[1, "FCLoopFindTopologies: Applying FCLoopIntegralToPropagators.", FCDoControl->fcfsopVerbose];
-			If[	optFDS,
-				denListEval = FCLoopIntegralToPropagators[FDS[#,FCI->True, Rename->False, ApartFF -> False, DetectLoopTopologies->False],
-					lmoms, FCI -> True, Tally -> True] & /@ (denList/.loopDen->Identity),
 
-				denListEval = FCLoopIntegralToPropagators[#, lmoms, FCI -> True, Tally -> True] & /@ (denList/.loopDen->Identity);
+
+			If[	optFDS,
+				time=AbsoluteTime[];
+				If[	$ParallelizeFeynCalc && optFCParallelize,
+					FCPrint[1, "FCLoopFindTopologies: Calling FDS in parallel.", FCDoControl -> fcfsopVerbose];
+
+					denListEval = ParallelMap[FDS[#,FCI->True, Rename->False, ApartFF -> False, DetectLoopTopologies->False]&,(denList/.loopDen->Identity),
+						DistributedContexts -> None, Method->"ItemsPerEvaluation" -> Ceiling[N[Length[denList]/$KernelCount]/10]],
+
+					FCPrint[1, "FCLoopFindTopologies: Calling FDS.", FCDoControl -> fcfsopVerbose];
+					denListEval = FDS[#,FCI->True, Rename->False, ApartFF -> False, DetectLoopTopologies->False]&/@ (denList/.loopDen->Identity)
+				];
+
+				FCPrint[1, "FCLoopFindTopologies: Done calling FDS, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfsopVerbose],
+				denListEval = (denList/.loopDen->Identity)
+			];
+
+
+			time=AbsoluteTime[];
+			If[	$ParallelizeFeynCalc && optFCParallelize,
+					FCPrint[1, "FCLoopFindTopologies: Calling FCLoopIntegralToPropagators in parallel.", FCDoControl -> fcfsopVerbose];
+					With[{xxx = lmoms},
+						ParallelEvaluate[FCParallelContext`FCLoopFindTopologies`lmoms = xxx; , DistributedContexts -> None]
+					];
+
+				denListEval = ParallelMap[FCLoopIntegralToPropagators[#,FCParallelContext`FCLoopFindTopologies`lmoms, FCI -> True, Tally -> True]&,denListEval, DistributedContexts -> None,
+					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[denListEval]/$KernelCount]/10]],
+
+				FCPrint[1, "FCLoopFindTopologies: Calling FCLoopIntegralToPropagators.", FCDoControl -> fcfsopVerbose];
+				denListEval = FCLoopIntegralToPropagators[#, lmoms, FCI -> True, Tally -> True]&/@denListEval;
 			];
 			FCPrint[1, "FCLoopFindTopologies: Done applying FCLoopIntegralToPropagators, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfsopVerbose];
+
 			FCPrint[3, "FCLoopFindTopologies: List of the unique denominators after FCLoopIntegralToPropagators: ", denListEval, FCDoControl->fcfsopVerbose];
-
-
 
 			(*	Here we change the ordering of the propagators according to the opting Ordering	*)
 			If[	orderingFirst=!={} || orderingLast=!={},
@@ -441,15 +457,67 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 			time=AbsoluteTime[];
 
 			FCPrint[1,"FCLoopFindTopologies: Identifying the subtopologies.", FCDoControl->fcfsopVerbose];
-			matchedSubtopologies = (checkSubtopology /@ topoList2) /.  Null -> Unevaluated[Sequence[]];
+			time0=AbsoluteTime[];
+
+			(* By putting the preferred topologies first, we are prioritizing them in the selection procedure *)
+			allToposToCheck = Join[optPreferredTopologies,topoList2];
+			If[	$ParallelizeFeynCalc && optFCParallelize,
+				FCPrint[1, "FCLoopFindTopologies: Applying findSubtopologies in parallel.", FCDoControl -> fcfsopVerbose];
+				With[{xxx = allToposToCheck},
+						ParallelEvaluate[FCParallelContext`FCLoopFindTopologies`allToposToCheck = xxx; , DistributedContexts -> None]
+					];
+				relatedSubtopologies = ParallelMap[findSubtopologies[#,FCParallelContext`FCLoopFindTopologies`allToposToCheck]&,topoList2, DistributedContexts -> None,
+					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[topoList2]/$KernelCount]/10]],
+
+				FCPrint[1, "FCLoopFindTopologies: Applying findSubtopologies.", FCDoControl -> fcfsopVerbose];
+				relatedSubtopologies = Map[findSubtopologies[#,allToposToCheck]&,topoList2]
+			];
+			FCPrint[1, "FCLoopFindTopologies: Done applying findSubtopologies, timing: ", N[AbsoluteTime[] - time0, 4], FCDoControl->fcfsopVerbose];
+
+			relatedSubtopologies = Thread[rule[topoList2,relatedSubtopologies]];
+			matchedSubtopologies = relatedSubtopologies /. rule[_, {_}] :> Unevaluated[Sequence[]];
+
+			(*	List of the topologies that are not subtopologies.	*)
+			realTopologies = Sort[Complement[relatedSubtopologies, matchedSubtopologies] /. rule[a_, {a_}] :> a];
+
+			(*Using First might note be the best choice when it comes to minimizing the total number of topologies *)
+			matchedSubtopologies = Map[{First[SelectFree[#[[2]], #[[1]]]], #[[1]]} &, matchedSubtopologies[[1 ;;]]];
+
+			preferredTopologiesPresent = Union[Join[Intersection[optPreferredTopologies, realTopologies],Intersection[optPreferredTopologies,First/@matchedSubtopologies]]];
+
+			(* Add present preferred topologies to the list of the occurring topologies *)
+			realTopologies = Union[realTopologies,preferredTopologiesPresent];
+
+			(* Only the names are needed here *)
+
+			preferredTopologiesPresent = First/@preferredTopologiesPresent;
+			FCPrint[3, "FCLoopFindTopologies: realTopologies: ", realTopologies, FCDoControl->fcfsopVerbose];
+
+			FCPrint[3,"FCLoopFindTopologies: preferredTopologiesPresent: ", preferredTopologiesPresent, FCDoControl->fcfsopVerbose];
 
 			FCPrint[3,"FCLoopFindTopologies: Identified subtopologies: ", matchedSubtopologies, FCDoControl->fcfsopVerbose];
 
+
+
 			If[	matchedSubtopologies=!={},
-				If[	!FCLoopValidTopologyQ/@matchedSubtopologies,
-				Message[FCLoopFindTopologies::failmsg,"The list of the identified subtopologies is incorrect."];
-				Abort[]
-			]
+
+				time0=AbsoluteTime[];
+
+				If[	$ParallelizeFeynCalc && optFCParallelize,
+				FCPrint[1, "FCLoopFindTopologies: Applying FCLoopValidTopologyQ in parallel.", FCDoControl -> fcfsopVerbose];
+
+				check = ParallelMap[FCLoopValidTopologyQ[#]&,matchedSubtopologies, DistributedContexts -> None,
+					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[matchedSubtopologies]/$KernelCount]/10]],
+
+				FCPrint[1, "FCLoopFindTopologies: Applying FCLoopValidTopologyQ.", FCDoControl -> fcfsopVerbose];
+				check = (FCLoopValidTopologyQ/@matchedSubtopologies);
+				];
+				FCPrint[1, "FCLoopFindTopologies: Done applying FCLoopValidTopologyQ, timing: ", N[AbsoluteTime[] - time0, 4], FCDoControl->fcfsopVerbose];
+
+				If[	Union[check]=!={True},
+					Message[FCLoopFindTopologies::failmsg,"The list of the identified subtopologies is incorrect."];
+					Abort[]
+				]
 			];
 
 			FCPrint[1, "FCLoopFindTopologies: Done identifying the subtopologies, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfsopVerbose];
@@ -546,7 +614,7 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 
 
 		time=AbsoluteTime[];
-		FCPrint[1,"FCLoopFindTopologies: Intorducing the final names for the identified topologies.", FCDoControl->fcfsopVerbose];
+		FCPrint[1,"FCLoopFindTopologies: Intorducing final names for the identified topologies.", FCDoControl->fcfsopVerbose];
 		(*	This is the final renaming of the topologies according to the prescription given in the option Names.	*)
 
 		Switch[
@@ -572,7 +640,7 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 		ruleNames=Thread[Rule[oldNames,newNames]];
 		finalTopologies = realTopologies /. Dispatch[ruleNames];
 
-		If[	!FreeQ2[finalTopologies,oldNames],
+		If[	Intersection[First/@finalTopologies,oldNames]=!={},
 			Message[FCLoopFindTopologies::failmsg, "The final list of the topologies still contains temporary names."];
 			Abort[]
 		];
@@ -583,33 +651,51 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 		If[	OptionValue[MomentumCombine],
 			time=AbsoluteTime[];
 			FCPrint[1,"FCLoopFindTopologies: Applying MomentumCombine.", FCDoControl->fcfsopVerbose];
-			finalTopologies = MomentumCombine[finalTopologies,FCI->True,FV->False,LC->False];
+			finalTopologies = MomentumCombine[finalTopologies,FCI->True,FV->False,LC->False,FCParallelize-> optFCParallelize];
 			FCPrint[1, "FCLoopFindTopologies: Done applying MomentumCombine, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfsopVerbose];
 		];
 
 		FCPrint[3, "FCLoopFindTopologies: Final list of the identified topologies: ", finalTopologies, FCDoControl->fcfsopVerbose];
 
 		If[	!OptionValue[FCLoopScalelessQ],
+			time=AbsoluteTime[];
+			FCPrint[1, "FCLoopFindTopologies: Identifying scaleless topologies.", FCDoControl->fcfsopVerbose];
 
 			If[	!FreeQ[finalTopologies, GenericPropagatorDenominator],
-
-					FCPrint[0, "FCLoopFindTopologies: Some topology candidates contain GFADs. To avoid false positives, those will not be checked with FCLoopScalelessQ.", FCDoControl->fcfsopVerbose];
-					scalelessTopologies = Thread[Rule[SelectFree[finalTopologies,GenericPropagatorDenominator], FCLoopScalelessQ[SelectFree[finalTopologies,GenericPropagatorDenominator]]]],
-
-					scalelessTopologies = Thread[Rule[finalTopologies, FCLoopScalelessQ[finalTopologies]]]
+				FCPrint[0, "FCLoopFindTopologies: Some topology candidates contain GFADs. To avoid false positives, those will not be checked with FCLoopScalelessQ.", FCDoControl->fcfsopVerbose];
+				finalTopologiesCheckLhs = SelectFree[finalTopologies,GenericPropagatorDenominator],
+				finalTopologiesCheckLhs = finalTopologies
 			];
-			scalelessTopologies = scalelessTopologies /. {
-						Rule[_FCTopology, False] :> Unevaluated[Sequence[]],
-						Rule[a_FCTopology, True] :> First[a]
-			};
+
+			If[finalTopologiesCheckLhs=!={},
+
+				time0=AbsoluteTime[];
+				If[	$ParallelizeFeynCalc && optFCParallelize,
+					FCPrint[1, "FCLoopFindTopologies: Applying FCLoopScalelessQ in parallel.", FCDoControl -> fcfsopVerbose];
+
+					finalTopologiesCheckRhs = ParallelMap[FCLoopScalelessQ[#]&,finalTopologiesCheckLhs, DistributedContexts -> None,
+						Method->"ItemsPerEvaluation" -> Ceiling[N[Length[finalTopologiesCheckLhs]/$KernelCount]/10]],
+
+					FCPrint[1, "FCLoopFindTopologies: Applying FCLoopScalelessQ.", FCDoControl -> fcfsopVerbose];
+					finalTopologiesCheckRhs = FCLoopScalelessQ/@finalTopologiesCheckLhs
+				];
+				FCPrint[1, "FCLoopFindTopologies: Done applying FCLoopScalelessQ, timing: ", N[AbsoluteTime[] - time0, 4], FCDoControl->fcfsopVerbose];
+
+				scalelessTopologies = Thread[Rule[finalTopologiesCheckLhs,finalTopologiesCheckRhs]]  /. {
+							Rule[_FCTopology, False] :> Unevaluated[Sequence[]],
+							Rule[a_FCTopology, True] :> First[a]},
+
+				scalelessTopologies={}
+			];
 
 			If[	scalelessTopologies=!={},
-				FCPrint[0, "FCLoopFindTopologies: Follwing identified topologies are scaleless and will be set to zero: ",
+				FCPrint[2, "FCLoopFindTopologies: Follwing identified topologies are scaleless and will be set to zero: ",
 					First/@SelectNotFree[finalTopologies,scalelessTopologies], FCDoControl->fcfsopVerbose];
 
 				finalTopologies = SelectFree[finalTopologies,scalelessTopologies];
 				ruleScalelessTopologies = Map[Rule[GLI[#,_],0]&,scalelessTopologies]
-			]
+			];
+			FCPrint[1, "FCLoopFindTopologies: Done identifying scaleless topologies, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcfsopVerbose];
 		];
 
 		time=AbsoluteTime[];
@@ -631,7 +717,7 @@ FCLoopFindTopologies[expr_, lmoms_List, OptionsPattern[]] :=
 
 		res = {exFinal,finalTopologies}  /. topoName->Identity;
 		If[	OptionValue[FCLoopGetKinematicInvariants],
-			kinInvs = FCLoopGetKinematicInvariants[finalTopologies, FCFeynmanPrepare->!OptionValue["NonstandardPropagators"]];
+			kinInvs = Union[Flatten[FCLoopGetKinematicInvariants[finalTopologies, FCFeynmanPrepare->!OptionValue["NonstandardPropagators"]]]];
 
 			If[	kinInvs=!={},
 				check = ToString /@ kinInvs;
@@ -663,33 +749,12 @@ orderedSelectNotFree[props_List, names_List]:=
 selectMembers[small_List,large_List]:=
 	Select[small, MemberQ[large, #] &];
 
-checkSubtopology[currentTopo_] :=
-	Block[{check, res},
-		res =
-			Catch[
-					Map[(check = SubsetQ[#[[2]], currentTopo[[2]]];
-						If[	check === True,
-							Throw[#]
-						];
-						) &, realTopologies];
-						Null;
-			];
-
-		If[	res === Null,
-			(*	The current topology is not a subtopology of any of the already collected topologies.	*)
-			realTopologies = Append[realTopologies, currentTopo];
-			Return[Null],
-
-			(* The current topology is a subtopology of one of the already collected topologies.	*)
 
 
-			If[	MemberQ[optPreferredTopologies,res],
-				(* Here we mark those of the preferred topologies that are indeed present in the expression *)
-				preferredTopologiesPresent = Append[preferredTopologiesPresent, res[[1]]]
-			];
-
-			Return[{res, currentTopo}]
-		];
-	];
+findSubtopologies[currTopo_, list_] :=
+	Map[If[SubsetQ[#[[2]], currTopo[[2]]] === True,
+			#,
+			Unevaluated[Sequence[]]
+		]&, list];
 
 End[]

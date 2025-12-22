@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Pi -> Ga Ga, QED, axial current, 1-loop						*)
@@ -31,10 +31,17 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False,
 	$FeynCalcStartupMessages = False
 ];
+LaunchKernels[4];
+$LoadAddOns={"FeynArts","FeynHelpers"};
 <<FeynCalc`
 $FAVerbose = 0;
+$ParallelizeFeynCalc=True;
 
-FCCheckVersion[9,3,1];
+FCCheckVersion[10,2,0];
+If[ToExpression[StringSplit[$FeynHelpersVersion,"."]][[1]]<2,
+	Print["You need at least FeynHelpers 2.0 to run this example."];
+	Abort[];
+]
 
 
 (* ::Section:: *)
@@ -45,18 +52,18 @@ FCCheckVersion[9,3,1];
 (*Nicer typesetting*)
 
 
-MakeBoxes[mu,TraditionalForm]:="\[Mu]";
-MakeBoxes[nu,TraditionalForm]:="\[Nu]";
-MakeBoxes[la,TraditionalForm]:="\[Lambda]";
+FCAttachTypesettingRule[mu,"\[Mu]"];
+FCAttachTypesettingRule[nu,"\[Nu]"];
+FCAttachTypesettingRule[la,"\[Lambda]"];
 
 
 (* ::Text:: *)
 (*According to Peskin and Schroeder (Ch 19.2), the amplitude for the first triangle diagram reads*)
 
 
-amp1[0] = ((-1)(-I SMP["e"])^2 DiracTrace[GAD[mu].GA[5].
-	QuarkPropagator[l-k].GAD[la].QuarkPropagator[l].
-	GAD[nu].QuarkPropagator[l+p]])//Explicit
+amp1[0] = ((-1)(-I SMP["e"])^2 DiracTrace[GAD[mu] . GA[5] .
+	QuarkPropagator[l-k] . GAD[la] . QuarkPropagator[l] .
+	GAD[nu] . QuarkPropagator[l+p]])//ChangeDimension[#,D]&//Explicit
 
 
 (* ::Text:: *)
@@ -66,15 +73,18 @@ amp1[0] = ((-1)(-I SMP["e"])^2 DiracTrace[GAD[mu].GA[5].
 amp2[0] = amp1[0]/.{k->p,p->k,la->nu,nu->la}
 
 
+amps[0]={amp1[0],amp2[0]};
+
+
 (* ::Section:: *)
-(*Calculate the amplitude*)
+(*Evaluate the amplitudes*)
 
 
 (* ::Text:: *)
 (*Contracting both amplitudes with I*(k+p)^mu we can check the non-conservation of the axial current.*)
 
 
-amp[0] = Contract[I*FVD[k+p,mu](amp1[0]+amp2[0])]
+amps[1] = Contract[I*FVD[k+p,mu](amps[0]),FCParallelize->True]//FCTraceFactor[#,FCParallelize->True]&
 
 
 (* ::Text:: *)
@@ -82,40 +92,85 @@ amp[0] = Contract[I*FVD[k+p,mu](amp1[0]+amp2[0])]
 (*Breitenlohner-Maison-t'Hooft-Veltman prescription.*)
 
 
-FCSetDiracGammaScheme["BMHV"];
-amp[1] = TID[amp[0] ,l, ToPaVe->True]
-
-
 FCClearScalarProducts[];
-Momentum[k,D|D-4]=Momentum[k];
-Momentum[p,D|D-4]=Momentum[p];
+ScalarProduct[k,k]=0;
+ScalarProduct[p,p]=0;
+ScalarProduct[k,p]=kp;
+FCSetDiracGammaScheme["BMHV"];
+
+
+amps[2]=amps[1]//DiracSimplify[#,FCParallelize->True]&;
+
+
+(* ::Section:: *)
+(*Identify and minimize the topologies*)
+
+
+{amps[3],topos}=FCLoopFindTopologies[amps[2],{l},FCParallelize->True];
+
+
+subtopos=FCLoopFindSubtopologies[topos,FCParallelize->True];
+
+
+mappings=FCLoopFindTopologyMappings[topos,PreferredTopologies->subtopos,FCParallelize->True];
+
+
+toposFinal=mappings[[2]];
+
+
+(* ::Section:: *)
+(*Rewrite the amplitude in terms of GLIs*)
+
+
+AbsoluteTiming[ampReduced=FCLoopTensorReduce[amps[3],topos,FCParallelize->True];]
+
+
+AbsoluteTiming[ampPreFinal=FCLoopApplyTopologyMappings[ampReduced,mappings,FCParallelize->True];]
+
+
+AbsoluteTiming[ampFinal=ampPreFinal//DiracSimplify[#,FCParallelize->True]&//
+FeynAmpDenominatorExplicit//Collect2[#,DOT,FCParallelize->True]&;]
+
+
+ints=Cases2[ampFinal,GLI]
+
+
+dir=FileNameJoin[{$TemporaryDirectory,"Reduction-PiGaGa"}];
+Quiet[CreateDirectory[dir]];
+
+
+KiraCreateJobFile[toposFinal,ints,dir];
+
+
+KiraCreateIntegralFile[ints, toposFinal, dir];
+
+
+KiraCreateConfigFiles[toposFinal, ints, dir, KiraMassDimensions -> {kp -> 2}];
+
+
+KiraRunReduction[dir, toposFinal, 
+ KiraBinaryPath -> FileNameJoin[{$HomeDirectory, "bin", "kira"}],
+ KiraFermatPath -> FileNameJoin[{$HomeDirectory, "bin", "ferl64", "fer64"}]]
+
+
+reductionTable=KiraImportResults[toposFinal, dir]//Flatten
+
+
+resPreFinal=Collect2[Total[ampFinal/.Dispatch[reductionTable]],GLI,FCParallelize->True];
+
+
+integralMappings=FCLoopFindIntegralMappings[Cases2[resPreFinal,GLI],mappings[[2]],FCParallelize->True];
+
+
+resFinal=Collect2[(resPreFinal/.Dispatch[integralMappings[[1]]]),GLI,FCParallelize->True]
 
 
 (* ::Text:: *)
-(*The explicit values for the PaVe functions B0 and C0 can be obtained e.g. from H. Patel's Package-X. *)
-(*Here we just insert the known results. The C0 function is finite here, so because of the prefactor (D-4) it *)
-(*gives no contribution in the D->4 limit.*)
+(*We only need the pole of the master integral, since the result is proportional to D-4. The result should be twice Eq. 19.59 in Peskin and Schroeder*)
 
 
-amp[2]=Collect2[amp[1],{B0,C0}]//. {
-	B0[FCI@SP[p_,p_],0,0]:>
-		1/(16 Epsilon \[Pi]^4)-(-2+EulerGamma)/(16 \[Pi]^4)+
-		Log[-((4 \[Pi] ScaleMu^2)/Pair[Momentum[p],Momentum[p]])]/(16 \[Pi]^4),
-	B0[FCI[SP[p,p]+2SP[p,k]+SP[k,k]],0,0]:>
-		B0[FCI[SP[k+p,k+p]],0,0],
-	(D-4)ExpandScalarProduct[C0[SP[k],SP[p],SP[k+p],0,0,0]]->0
-}
-
-
-(* ::Text:: *)
-(*Now we insert the explicit values, convert the external momenta to 4 dimensions and expand in Epsilon*)
-
-
-amp[3] = amp[2]//FCReplaceD[#,D->4-2Epsilon]&//Series[#,{Epsilon,0,0}]&//Normal
-
-
-(* ::Text:: *)
-(*The result should be twice Eq. 19.59 in Peskin and Schroeder*)
+res=resFinal//ReplaceAll[#,{GLI["fctopology1", {0, 1, 1}]->I/(16 Pi^2 ep)+epHelp}]&//
+FCReplaceD[#,{D->4-2ep}]&//Series[#,{ep,0,0}]&//Normal
 
 
 (* ::Section:: *)
@@ -123,8 +178,11 @@ amp[3] = amp[2]//FCReplaceD[#,D->4-2Epsilon]&//Series[#,{Epsilon,0,0}]&//Normal
 
 
 knownResult = 2(SMP["e"]^2/(4 Pi^2)LC[al,la,be,nu]FV[k,al]FV[p,be])//Contract;
-FCCompareResults[amp[3],knownResult,
+FCCompareResults[res,knownResult,
 Text->{"\tCompare to Peskin and Schroeder, An Introduction to QFT, \
 Eq 19.59:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
+
+
+

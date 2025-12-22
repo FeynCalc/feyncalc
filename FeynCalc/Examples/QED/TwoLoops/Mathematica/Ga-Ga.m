@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Ga -> Ga, massless QED, 2-loops								*)
@@ -30,11 +30,17 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False,
 	$FeynCalcStartupMessages = False
 ];
-$LoadAddOns={"FeynArts"};
+LaunchKernels[4];
+$LoadAddOns={"FeynArts","FeynHelpers"};
 <<FeynCalc`
 $FAVerbose = 0;
+$ParallelizeFeynCalc=True;
 
-FCCheckVersion[10,0,0];
+FCCheckVersion[10,2,0];
+If[ToExpression[StringSplit[$FeynHelpersVersion,"."]][[1]]<2,
+	Print["You need at least FeynHelpers 2.0 to run this example."];
+	Abort[];
+]
 
 
 (* ::Section:: *)
@@ -75,20 +81,21 @@ ScalarProduct[p,p]=pp;
 (*Calculate the amplitude*)
 
 
-AbsoluteTiming[ampSimp=DiracSimplify[ampRaw/.me->0];]
+AbsoluteTiming[ampSimp=DiracSimplify[ampRaw/.me->0,
+FCParallelize->True];]
 
 
 (* ::Section:: *)
 (*Identify and minimize the topologies*)
 
 
-{amp,topos}=FCLoopFindTopologies[ampSimp,{q1,q2}];
+{amp,topos}=FCLoopFindTopologies[ampSimp,{q1,q2},FCParallelize->True];
 
 
-subtopos=FCLoopFindSubtopologies[topos];
+subtopos=FCLoopFindSubtopologies[topos,FCParallelize->True];
 
 
-mappings=FCLoopFindTopologyMappings[topos,PreferredTopologies->subtopos];
+mappings=FCLoopFindTopologyMappings[topos,PreferredTopologies->subtopos,FCParallelize->True];
 
 
 (* ::Section:: *)
@@ -101,20 +108,32 @@ AbsoluteTiming[ampReduced=FCLoopTensorReduce[amp,topos];]
 AbsoluteTiming[ampPreFinal=FCLoopApplyTopologyMappings[ampReduced,mappings];]
 
 
-AbsoluteTiming[ampFinal=ampPreFinal//DiracSimplify;]
+AbsoluteTiming[ampFinal=ampPreFinal//DiracSimplify[#,FCParallelize->True]&;]
 
 
-(*FCReloadAddOns[{"FeynHelpers"}];
-FIREPrepareStartFile[mappings[[2]],FCGetNotebookDirectory[]]
-FIRECreateStartFile[FCGetNotebookDirectory[],mappings[[2]]]
-FIRECreateConfigFile[mappings[[2]],FCGetNotebookDirectory[]]
-FIRECreateIntegralFile[Cases2[ampPreFinal,GLI],mappings[[2]],FCGetNotebookDirectory[]]
-FIRERunReduction[FCGetNotebookDirectory[],mappings[[2]]]
-tables=FIREImportResults[mappings[[2]],FCGetNotebookDirectory[]]//Flatten;
-Put[tables,FileNameJoin[{FCGetNotebookDirectory[],"ReductionTable-Ga-Ga.m"}]];*)
+dir=FileNameJoin[{$TemporaryDirectory,"Reduction-GaToGa-2L"}];
+Quiet[CreateDirectory[dir]];
 
 
-reductionTable=Get[FileNameJoin[{FCGetNotebookDirectory[],"ReductionTable-Ga-Ga.m"}]];
+FIREPrepareStartFile[mappings[[2]],dir];
+
+
+FIRECreateLiteRedFiles[dir,mappings[[2]]];
+
+
+FIRECreateStartFile[dir,mappings[[2]]];
+
+
+FIRECreateIntegralFile[Cases2[ampPreFinal,GLI],mappings[[2]],dir];
+
+
+FIRECreateConfigFile[mappings[[2]],dir];
+
+
+FIRERunReduction[dir,mappings[[2]]];
+
+
+reductionTable=FIREImportResults[mappings[[2]],dir]//Flatten;
 
 
 resPreFinal=Collect2[Total[ampFinal/.reductionTable],GLI]
@@ -137,3 +156,6 @@ FCCompareResults[resFinal,resGrozinVacuumPol,
 Text->{"\tCompare to Grozin's Lectures on QED and QCD, hep-ph/0508242, Eq. 5.18:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic},Factoring->Simplify];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
+
+
+

@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Framework independent unit tests for FCLoopFindTopologies		*)
@@ -16,7 +16,7 @@
 Tests`LoopIntegrals`fcstFCLoopFindTopologies =
 ({
 {"fcstFCLoopFindTopologies-ID1",
-"FCLoopFindTopologies[a, {p1, p2, p3, p4},
+"FCClearScalarProducts[]; \n FCLoopFindTopologies[a, {p1, p2, p3, p4},
 ExtraPropagators -> {{SFAD[{p1, mm}],
 	SFAD[{p2, mm}]}, {SFAD[{p3, mm}], SFAD[{p4, mm}]}}, FCE -> True,
 FCVerbose -> -1, Names -> topo, Head -> gliProd]",

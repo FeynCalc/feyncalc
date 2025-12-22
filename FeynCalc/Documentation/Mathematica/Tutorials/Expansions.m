@@ -44,6 +44,15 @@ ExpandScalarProduct[ex2]
 
 
 (* ::Text:: *)
+(*Notice that `ExpandScalarProduct` can also do expansions only for the given momentum, while*)
+(*leaving the rest of the expression untouched, e.g.*)
+
+
+x SP[p1+p2,q1+q2]+y SP[p3+p4,q3+q4]+z SP[p5+p6,q5+q6]
+ExpandScalarProduct[%,Momentum->{p1}]
+
+
+(* ::Text:: *)
 (*For the expansion of `Eps` tensors, we use*)
 
 
@@ -52,7 +61,7 @@ EpsEvaluate[%]
 
 
 (* ::Text:: *)
-(*EpsEvaluate also reorders the arguments of Eps according to its antisymmetric properties*)
+(*`EpsEvaluate` also reorders the arguments of `Eps` according to its antisymmetric properties*)
 
 
 LC[\[Mu],\[Sigma],\[Rho],\[Nu]]
@@ -64,6 +73,20 @@ EpsEvaluate[%]
 
 
 3FV[p,\[Mu]]+4FV[q,\[Mu]]
+MomentumCombine[%]
+
+
+(* ::Text:: *)
+(*This also works for scalar products, but the results may not be always optimal*)
+
+
+SP[p+q+t,r+s]
+ExpandScalarProduct[%]
+MomentumCombine[%]
+
+
+SP[p+q+t,r+s]+SP[r,s]
+ExpandScalarProduct[%]
 MomentumCombine[%]
 
 

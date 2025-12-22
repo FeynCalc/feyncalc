@@ -43,3 +43,23 @@ LC[][p1,p2,p3,p5] SP[p4,p6]
 
 
 FCSchoutenBruteForce[exp,{},{}]
+
+
+(* ::Text:: *)
+(*Here is a more involved example, where the identity must be applied multiple times*)
+
+
+exp = SP[q1, q2] (MT[b, k] LC[a, j][q1, q2] - MT[b, j] LC[a, k][q1, q2] - 
+   MT[a, k] LC[b, j][q1, q2] + MT[a, j] LC[b, k][q1, q2] + 
+   FV[q2, b] LC[a, j, k][q1] - FV[q1, b] LC[a, j, k][q2] - 
+   FV[q2, a] LC[b, j, k][q1] + FV[q1, a] LC[b, j, k][q2])
+
+
+res1 = FCSchoutenBruteForce[exp, {}, {}, 
+  SchoutenAllowNegativeGain -> True, SchoutenAllowZeroGain -> True]
+
+
+FixedPoint[FCSchoutenBruteForce[#, {}, {}] &, res1]
+
+
+

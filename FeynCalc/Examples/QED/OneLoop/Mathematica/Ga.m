@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  Ga, QED, amplitude, 1-loop									*)
@@ -31,11 +31,12 @@ If[ $FrontEnd === Null,
 If[ $Notebooks === False,
 	$FeynCalcStartupMessages = False
 ];
+LaunchKernels[4];
 $LoadAddOns={"FeynArts"};
 <<FeynCalc`
 $FAVerbose = 0;
-
-FCCheckVersion[9,3,1];
+$ParallelizeFeynCalc=True;
+FCCheckVersion[10,2,0];
 
 
 (* ::Section:: *)
@@ -46,7 +47,7 @@ FCCheckVersion[9,3,1];
 (*Nicer typesetting*)
 
 
-MakeBoxes[mu,TraditionalForm]:="\[Mu]";
+FCAttachTypesettingRule[mu,"\[Mu]"]
 
 
 diags = InsertFields[CreateTopologies[1, 1 -> 0],
@@ -69,11 +70,11 @@ amp[0] = FCFAConvert[CreateFeynAmp[diags,PreFactor->1,
 	Truncated->True], IncomingMomenta->{k},
 	LorentzIndexNames->{mu}, LoopMomenta->{q},
 	UndoChiralSplittings->True, ChangeDimension->D,
-	List->False, SMP->True]
+	SMP->True,FinalSubstitutions->{SMP["m_e"]->me}]
 
 
 (* ::Section:: *)
-(*Calculate the amplitude*)
+(*Evaluate the amplitudes*)
 
 
 (* ::Text:: *)
@@ -81,21 +82,41 @@ amp[0] = FCFAConvert[CreateFeynAmp[diags,PreFactor->1,
 (*vanish because the loop integral is antisymmetric under q^mu -> - q^mu.*)
 
 
-amp[1] = DiracSimplify[amp[0]]
+amp[1] = DiracSimplify[amp[0],FCParallelize->True]
+
+
+(* ::Section:: *)
+(*Identify and minimize the topologies*)
+
+
+{amp[2],topos}=FCLoopFindTopologies[amp[1],{q},FCParallelize->True];
+
+
+mappings=FCLoopFindTopologyMappings[topos,FCParallelize->True];
+
+
+(* ::Section:: *)
+(*Rewrite the amplitude in terms of GLIs*)
+
+
+AbsoluteTiming[ampReduced=FCLoopTensorReduce[amp[2],topos,FCParallelize->True];]
 
 
 (* ::Text:: *)
-(*TID can recognize this and we obtain zero*)
+(*The amplitude vanishes after the tensor reduction*)
 
 
-amp[2] = TID[amp[1], q]
+ampReduced
 
 
 (* ::Section:: *)
 (*Check the final results*)
 
 
-FCCompareResults[amp[2],0,
+FCCompareResults[Total[ampReduced],0,
 Text->{"\tVerify Furry's theorem for 1-photon at 1-loop:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
+
+
+

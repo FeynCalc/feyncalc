@@ -4,9 +4,9 @@
 
 (*
 	This software is covered by the GNU General Public License 3.
-	Copyright (C) 1990-2024 Rolf Mertig
-	Copyright (C) 1997-2024 Frederik Orellana
-	Copyright (C) 2014-2024 Vladyslav Shtabovenko
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
 (* :Summary:  El Ael -> Ga Ga, QED, matrix element squared, tree			*)
@@ -90,6 +90,13 @@ ampSquared[0] = (amp[0] (ComplexConjugate[amp[0]]))//
 	TrickMandelstam[#,{s,t,u,2SMP["m_e"]^2}]&//Simplify
 
 
+(* ::Text:: *)
+(*Massless limit*)
+
+
+ampSquared[0]/.SMP["m_e"]->0
+
+
 (* ::Section:: *)
 (*Check the final results*)
 
@@ -102,3 +109,4 @@ Text->{"\tCompare to Peskin and Schroeder, An Introduction to QFT, \
 Eq 5.105:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
+
