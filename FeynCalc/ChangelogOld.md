@@ -1,3 +1,84 @@
+# Version 10.1.0 (August 2024)
+
+## Removed or renamed functions, options and objects
+
+* None
+
+## New functionality
+* Added FCLoopAddMissingHigherOrdersWarning (5d510ade)
+* Added FCLoopGLILowerDimension and FCLoopGLIRaiseDimension for doing dimension shifts on GLIs. (6622e334)
+* First steps towards making FeynCalc parallelizable. (c1a9ff9a)
+* Added new function FCLoopReplaceQuadraticEikonalPropagators for rewriting mixed quadratic-eikonal propagators in terms purely quadratic ones. (8990853d)
+
+## Improvements and refactoring
+
+* Removed a confusing relation for PlusDistribution (issue #280). (3c03f1be)
+* Improved FDS to apply FCLoopScalelessQ to all loop integrals in the input. This fixes issue #273 (1e4effa3)
+* Added new option "IgnoreNumerator" to FCFeynmanPrepare. This tells the function to ignore any positive indices when deriving the U and F polynomials. This feature is useful when applying Pak's scalefullness check to loop integrals with numerators. (e41343c4)
+* Updated example gallery. (a34e1a85)
+* Improved debugging output in FCLoopCreateRuleGLIToGLI. (2b43b48d)
+* Some improvement in FCLoopPropagatorsToLineMomenta. (0061f44a)
+* Improved the algorithm for topology mappings to avoid some common issues with the determination of momentum shifts. (bb65294b)
+* Extended the definitions of Momentum and CartesianMomentum to handle cases where the momentum is multiplied by a polynomial in FCVariables. (c0e61926)
+* Improved FCLoopFindMomentumShifts to flag the problematic quadratic-eikonal propagators and advice the user on how to get rid of them. Also improved the handling of cases where we obtain multiple solution for possible shifts. (46152f56)
+* Modified the behavior of FCE not to apply MomentumCombine to GFADs. (7baa0767)
+* Improved the conversion of mixed quadratic-eikonal propagators to purely quadratic ones using FromGFAD. (4b30ada2)
+* Added new option "OnlyMixedQuadraticEikonalPropagators" to ToGFAD. (3ef9d655)
+* Vastly improved MomentumCombine to have more control over the way expressions get combined. (61cf2ab5)
+* Added new option EpsEvaluate to DiracTrace that allows to disable the application of EpsEvaluate to the intermediate results. (a5219a8b)
+* Reworked the two-loop Gh-Gh example to benefit from the new multiloop functionality. (1f3aa370)
+* Added two reworked 1-loop examples using the new multiloop functionality. (c28ee69a)
+* Added new options to FCLoopGetEtaSign. (2d2b7e51)
+* Added an option to disable the extraction of the kinematic invariants from the topologies in FCLoopFindTopologies. (7b531cef)
+* Added few results for master integrals. (65615f64)
+* Added a Yukawa example. (75d75fb6)
+* Updated the greeting message. (d2e1757f)
+* Updated .gitignore. (9e8f29b9)
+* Added an example for calculating the LO SCET Soft function using the new light-cone tools. (4620aa43)
+* Added new option FinalSubstitutions to Tdec to allow for tensor decompositions with special kinematic constraints (thanks to J. Mueller). (85900808)
+* Updated meta informations. (48906b2a)
+* Improved debugging output in FCMatchSolve. (a1852159)
+* Improved FCCanonicalizeDummyIndices to work with lists. (6bf0434c)
+* Some cleanups in the example files. (271bf6c4)
+
+## Documentation
+
+* Updated documentation. (2f62a22c)
+* Small manual updates. (030d4ecc)
+* Added some useful information on gamma5 to the manual. (a3d26394)
+* Added some useful information on renormalization. (5523da89)
+* Removed references to the defunct wiki. (c9882c8b)
+* Infos from the wiki translated to the main docu. (14c77a8d)
+* Minor adjustment in the documentation scripts. (cab39a3f)
+* Documentation scripts updated. (3303697f)
+
+
+## Bug fixes
+* Fixed a bug in FCLoopScalelessQ where the function would not recognize scaleless integrals whenenver they had some numerators. (2a24a209)
+* Fixed a bug in the Larin scheme when dealing with left handed projectors inside the matrix chain (thanks to M. Lang). (b16e8800)
+* Fixed a bug where Dirac trace with a g^5 at the beginning of the chain couldn't be evaluated in the Larin scheme (thanks to M. Lang) (cbf955f9)
+* Fixed some mistakes in the documentation. (f72a2408)
+* Fixed a bug in the automatic installer when using Mma 14. (6c897a39)
+* Fixed some bugs in FCLoopFindIntegralMappings when running in the parallelized settings. (51733ec3)
+* Fixed a bug in FCLoopBasisExtract where integrals containing propagators with different i*eta presriptions were not treated consistently. (ad9fc8fe)
+* Fixed a unit test for FourDivergence. (309bcc06)
+* Fixed a bug in FCGetFreeIndices (Issue #269) (486edca3)
+* Fixed a small bug in FCLoopSelectTopology. (7be87abb)
+* Fixed a typo in the FeynCalc greeter. (9b19bcea)
+* Fixed a bug in SUNSimplify related to a wrong symmetry relation for sunf2 (issue #259). (4618e9fb)
+* Fixed docu script. (b139bc48)
+* Fixed a bug in FCLoopFindTopologyMappings where the function could not deal with extra objects in the last slot of FCTopology. (66fd1a3e)
+* Fixed an issue in parallelizing FCLoopFromGLI. (0048c8be)
+* Fixed a bug in TARCER due to a missprint in Eq.92 of hep-ph/9703319, cf. also Eq. 2.4 in 2210.10593. Thanks to Y. Schroeder! (f4600dc5)
+* Fixed a bug in the docu script for generating HTML files. (11913479)
+* Fixed an omission in LC Dirac algebra where n.n and nb.nb terms wouldn't be simplified upon reordering the chain. (a8ef6bfc)
+* Fixed a bug in D-dim LC Dirac algebra (issue #245, thanks to maxferre). (1ce359d1)
+* Fixed a bug in FCLoopFromGLI. (064d134d)
+* Fixed a weird ordering of propagators in FeynAmpDenominatorCombine. (6771e3fb)
+* Fixed multiple typos and shortcoming in the docu and improved the section on light-cone calculations (thanks to @dehorstmann). (3231cfca)
+* Fixed a bug in the TID where ToSFAD was not being applied when necessary. (a67a4670)
+* More fixes for the automatic installer. (c75feef9) 
+
 # Version 10.0.0 (December 2023)
 
 

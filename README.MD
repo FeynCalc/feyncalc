@@ -33,11 +33,11 @@ Comput. Phys. Commun., 64, 345--359, 1991.
 
 FeynCalc is covered by the GNU General Public License 3.
 
-Copyright (C) 1990-2025 Rolf Mertig
+Copyright (C) 1990-2026 Rolf Mertig
 
-Copyright (C) 1997-2025 Frederik Orellana
+Copyright (C) 1997-2026 Frederik Orellana
 
-Copyright (C) 2014-2025 Vladyslav Shtabovenko
+Copyright (C) 2014-2026 Vladyslav Shtabovenko
 
 FeynCalc is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as
