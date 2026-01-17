@@ -1,0 +1,50 @@
+
+
+(* :Title: FourSeries.test                                              *)
+
+(* This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FourSeries           *)
+
+(* ------------------------------------------------------------------------ *)
+
+
+Tests`Lorentz`fcstFourSeries = {
+{"fcstFourSeries-ID1", "FourSeries[a,{p,p0,2},FCE->True]",
+"a"}, {"fcstFourSeries-ID2", "FourSeries[a,{p,p0,2},FCE->True]",
+"a"}, {"fcstFourSeries-ID3",
+"FourSeries[FVD[p,mu],{p,p0,0},FCE->True]",
+"FVD[p0, mu]"}, {"fcstFourSeries-ID4",
+"FourSeries[FVD[p,mu],{p,p0,1},FCE->True]",
+"FVD[p, mu]"}, {"fcstFourSeries-ID5",
+"FourSeries[FVD[p,mu],{p,p0,2},FCE->True]",
+"FVD[p, mu]"}, {"fcstFourSeries-ID6",
+"FourSeries[1/(SPD[p,q]-m^2),{p,p0,2},FCE->True]",
+"-(SPD[p, q]^2/(m^2 - SPD[p0, q])^3) - (SPD[p, q]*(-m^2 + 3*SPD[p0, \
+q]))/(-m^2 + SPD[p0, q])^3 + (m^4 - 3*m^2*SPD[p0, q] + 3*SPD[p0, \
+q]^2)/(-m^2 + SPD[p0, q])^3"}, {"fcstFourSeries-ID7",
+"FourSeries[1/(SPD[p,p]-m^2),{p,p0,2},FCE->True]",
+"(-4*SPD[p, p0]^2)/(m^2 - SPD[p0, p0])^3 - SPD[p, p]/(m^2 - SPD[p0, \
+p0])^2 - (8*SPD[p, p0]*SPD[p0, p0])/(-m^2 + SPD[p0, p0])^3 + (m^4 - \
+3*m^2*SPD[p0, p0] + 6*SPD[p0, p0]^2)/(-m^2 + SPD[p0, p0])^3"}, \
+{"fcstFourSeries-ID8", "FourSeries[1/(SPD[p,p]-m^2),{p,0,4},FCE->True]",
+	"-m^(-2) - SPD[p, p]/m^4 - SPD[p, p]^2/m^6"}, \
+{"fcstFourSeries-ID9", "FourSeries[1/(SPD[p,q]),{p,0,2},FCE->True]",
+"Pair[Momentum[p, D], Momentum[q, D]]^(-1)"}, \
+{"fcstFourSeries-ID10", "FourSeries[FAD[{k+p,m}],{p,0,2},FCE->True]",
+"FAD[{k, m}] - 2*FAD[{k, m}, {k, m}]*SPD[k, p] + 4*FAD[{k, m}, {k, \
+m}, {k, m}]*SPD[k, p]^2 - FAD[{k, m}, {k, m}]*SPD[p, p]"}, \
+{"fcstFourSeries-ID11", "FourSeries[SFAD[{k+p,m}],{p,0,2},FCE->True]",
+	"SFAD[{{k, 0}, {m, 1}, 1}] - 2*SFAD[{{k, 0}, {m, 1}, 1}, {{k, 0}, \
+{m, 1}, 1}]*SPD[k, p] + 4*SFAD[{{k, 0}, {m, 1}, 1}, {{k, 0}, {m, 1}, \
+1}, {{k, 0}, {m, 1}, 1}]*SPD[k, p]^2 - SFAD[{{k, 0}, {m, 1}, 1}, {{k, \
+0}, {m, 1}, 1}]*SPD[p, p]"}, {"fcstFourSeries-ID12",
+"FourSeries[SPD[k,q]SFAD[{k+p,m}],{p,0,2},FCE->True]",
+"SFAD[{{k, 0}, {m, 1}, 1}]*SPD[k, q] - 2*SFAD[{{k, 0}, {m, 1}, 1}, \
+{{k, 0}, {m, 1}, 1}]*SPD[k, p]*SPD[k, q] + 4*SFAD[{{k, 0}, {m, 1}, 1}, \
+{{k, 0}, {m, 1}, 1}, {{k, 0}, {m, 1}, 1}]*SPD[k, p]^2*SPD[k, q] - \
+SFAD[{{k, 0}, {m, 1}, 1}, {{k, 0}, {m, 1}, 1}]*SPD[k, q]*SPD[p, p]"}};

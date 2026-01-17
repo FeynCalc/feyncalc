@@ -52,6 +52,7 @@ evaluating  Off[ThreeDivergence::warnCartesian].";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
+fourVectorDiffEval;
 End[]
 
 Begin["`FourDivergence`Private`"]

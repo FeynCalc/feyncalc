@@ -213,6 +213,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCSchoutenBruteForce](../FCSchoutenBruteForce.md) - brute force application of the [Schouten](../Schouten.md) identity to minimize the number of terms
 - [FCSetScalarProducts](../FCSetScalarProducts.md), [ScalarProduct](../ScalarProduct.md) - defines scalar products of $4$-vectors
 - [FCSetMetricSignature](../FCSetMetricSignature.md), [FCGetMetricSignature](../FCGetMetricSignature.md) - changes the signature of the flat-space metric
+- [FourSeries](../FourSeries.md) - calculates Taylor expansion with respect to a $4$-vector
 - [FourDivergence](../FourDivergence.md) - calculates partial derivative with respect to a $4$-vector
 - [FourLaplacian](../FourLaplacian.md) - calculates the Laplacian
 - [FreeIndexFreeQ](../FreeIndexFreeQ.md) - checks if the expression contains free indices

@@ -34,7 +34,8 @@ pair::usage="";
 noexpand::usage="";
 
 Options[MomentumExpand] = {
-	Momentum -> All
+	FCVerbose	-> False,
+	Momentum 	-> All
 };
 
 (*Fast mode*)
@@ -47,19 +48,32 @@ MomentumExpand[expr_List, opts:OptionsPattern[]] :=
 
 (*Normal mode*)
 MomentumExpand[expr_/;!MemberQ[{Momentum,CartesianMomentum,TemporalMomentum,List},Head[expr]], OptionsPattern[]] :=
-	Block[{aux,res,hold1,hold2,listOrig,listEval,repRule,optMomentum},
+	Block[{aux,res,hold1,hold2,listOrig,listEval,repRule,optMomentum,optVerbose},
 
 		optMomentum = OptionValue[Momentum];
 
+		If [OptionValue[FCVerbose]===False,
+			optVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				optVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		FCPrint[1, "MomentumExpand: Entering.", FCDoControl->optVerbose];
+		FCPrint[3, "MomentumExpand: Entering with: ", expr, FCDoControl->optVerbose];
+
 		aux = expr /. hd:(Spinor|FeynAmpDenominator|PropagatorDenominator) :> hold1[hd] /.
 			hd:(Pair|CartesianPair|TemporalPair) :> hold2[hd];
+
+		FCPrint[3, "MomentumExpand: After applying holds: ", aux, FCDoControl->optVerbose];
 
 		If[	!FreeQ[aux, Momentum],
 			aux = momExpand[aux,Momentum,optMomentum];
 			If[	!FreeQ2[aux,{expandVec,linearizeVec,noexpand}],
 				Message[MomentumExpand::failmsg, "Something went wrong during the expansion of 4-momenta."];
 				Abort[]
-			]
+			];
+			FCPrint[3, "MomentumExpand: After momExpand for Momentum: ", aux, FCDoControl->optVerbose];
 		];
 
 		If[	!FreeQ[aux, CartesianMomentum],
@@ -87,6 +101,11 @@ MomentumExpand[expr_/;!MemberQ[{Momentum,CartesianMomentum,TemporalMomentum,List
 		];
 
 		res = aux /. hold2 -> Identity /. hold1 -> Identity;
+
+
+		FCPrint[1, "MomentumExpand: Leaving.", FCDoControl->optVerbose];
+		FCPrint[3, "MomentumExpand Leaving with: ", res, FCDoControl->optVerbose];
+
 
 		res
 

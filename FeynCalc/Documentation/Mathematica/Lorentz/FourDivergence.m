@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [ThreeDivergence](ThreeDivergence.md).*)
+(*[Overview](Extra/FeynCalc.md), [FourSeries](FourSeries.md), [ThreeDivergence](ThreeDivergence.md).*)
 
 
 (* ::Subsection:: *)
