@@ -1,0 +1,38 @@
+
+
+(* :Title: FCLoopRewriteOverdeterminedTopologies.test													*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopRewriteOverdeterminedTopologies				*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopRewriteOverdeterminedTopologies =
+({{"fcstFCLoopRewriteOverdeterminedTopologies-ID1",
+"FCLoopRewriteOverdeterminedTopologies[gliHead[SPD[k1,p],GLI[topo1,{1\
+,1,1}]],\[IndentingNewLine]\
+{FCTopology[topo1,{SFAD[k1],SFAD[k1+p],SFAD[k1-p]},{k1},{p},{},{}]},He\
+ad->gliHead,FCE->True,FCVerbose->-1]",
+"{gliHead[-(SPD[k1, p]/SPD[p, p]), GLI[\"fcPFRTopology1\", {1, 1}]] \
++ gliHead[SPD[k1, p]/(2*SPD[p, p]), GLI[\"fcPFRTopology2\", {1, 1}]] + \
+gliHead[SPD[k1, p]/(2*SPD[p, p]), GLI[\"fcPFRTopology3\", {1, 1}]], \
+{FCTopology[\"fcPFRTopology1\", {SFAD[{{k1 + p, 0}, {0, 1}, 1}], \
+SFAD[{{k1 - p, 0}, {0, 1}, 1}]}, {k1}, {p}, {}, {}], \
+FCTopology[\"fcPFRTopology2\", {SFAD[{{k1, 0}, {0, 1}, 1}], SFAD[{{k1 \
+- p, 0}, {0, 1}, 1}]}, {k1}, {p}, {}, {}], \
+FCTopology[\"fcPFRTopology3\", {SFAD[{{k1, 0}, {0, 1}, 1}], SFAD[{{k1 \
++ p, 0}, {0, 1}, 1}]}, {k1}, {p}, {}, {}]}}"}, \
+{"fcstFCLoopRewriteOverdeterminedTopologies-ID2",
+"FCLoopRewriteOverdeterminedTopologies[gliHead[SPD[k1,p],GLI[topo1,{1\
+,1}]],\[IndentingNewLine]\
+{FCTopology[topo1,{SFAD[k1],SFAD[k1+p]},{k1},{p},{},{}]},Head->gliHead\
+,FCE->True,FCVerbose->-1]",
+"{gliHead[SPD[k1, p], GLI[topo1, {1, 1}]], {FCTopology[topo1, \
+{SFAD[{{k1, 0}, {0, 1}, 1}], SFAD[{{k1 + p, 0}, {0, 1}, 1}]}, {k1}, \
+{p}, {}, {}]}}"}});

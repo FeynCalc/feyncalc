@@ -343,7 +343,9 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCLoopEikonalPropagatorFreeQ](../FCLoopEikonalPropagatorFreeQ.md) - checks if the integral contains eikonal propagators
 - [FCLoopExtract](../FCLoopExtract.md) - extracts loop integrals
 - [FCLoopFindSectors](../FCLoopFindSectors.md) - returns sectors for the given [GLI](../GLI.md)s
-- [FCLoopFindTensorBasis](../FCLoopFindTensorBasis.md) - find a linearly independent set of external momenta
+- [FCLoopFindTensorBasis](../FCLoopFindTensorBasis.md) - finds a linearly independent set of external momenta
+- [FCLoopFindOverdeterminedTopologies](../FCLoopFindOverdeterminedTopologies.md) - finds all overdetermined topologies in the list
+- [FCLoopFindScalelessTopologies](../FCLoopFindScalelessTopologies.md) - finds all scaleless topologies in the list
 - [FCLoopFromGLI](../FCLoopFromGLI.md) - converts [GLI](../GLI.md)s into explicit integrals with [FeynAmpDenominator](../FeynAmpDenominator.md)s
 - [FCLoopGetEtaSigns](../FCLoopGetEtaSigns.md) - extracts the signs of $i \eta$ from all propagators
 - [FCLoopGetKinematicInvariants](../FCLoopGetKinematicInvariants.md) - kinematic invariants from the given topology.
@@ -362,6 +364,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCLoopPropagatorsToTopology](../FCLoopPropagatorsToTopology.md) - auxiliary function that generates a list of propagators to describe a topology
 - [FCLoopRemovePropagator](../FCLoopRemovePropagator.md) - removes specific propagators from given `FCTopology`s or `GLI`s
 - [FCLoopReplaceQuadraticEikonalPropagators](../FCLoopReplaceQuadraticEikonalPropagators.md) - tries to eliminate quadratic-eikonal propagators by completing the square
+- [FCLoopRewriteOverdeterminedTopologies](../FCLoopRewriteOverdeterminedTopologies.md) - handles overdetermined topologies in the expression using partial fraction decompositions
 - [FCLoopSamePropagatorHeadsQ](../FCLoopSamePropagatorHeadsQ.md) - checks if the integral contains different types of propagators
 - [FCLoopRemoveNegativePropagatorPowers](../FCLoopRemoveNegativePropagatorPowers.md) - rewrites propagators rasied to negative integer powers as numerators
 - [FCLoopSelectTopology](../FCLoopSelectTopology.md) - selects topologies belonging for the given `GLI`s

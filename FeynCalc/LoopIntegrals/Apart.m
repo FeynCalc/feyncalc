@@ -176,6 +176,9 @@ ApartFF[gli_GLI, topoRaw_, opts:OptionsPattern[]] :=
 			];
 		];
 
+		FCPrint[1, "ApartFF for GLIs: Entering.", FCDoControl->affVerbose];
+		FCPrint[1, "ApartFF for GLIs: Entering with: ", gli, FCDoControl->affVerbose];
+
 		If[	OptionValue[FCI],
 			topo = topoRaw,
 			topo = FCI[topoRaw]
@@ -200,8 +203,14 @@ ApartFF[gli_GLI, topoRaw_, opts:OptionsPattern[]] :=
 
 		optFinalSubstitutions = FCI@FRH[optFinalSubstitutions];
 
+
+
 		tmp = ApartFF[int, topo[[3]], Join[{FCI->True,FCE->False,FinalSubstitutions->optFinalSubstitutions,FDS->False},
 			FilterRules[{opts}, Except[FCI|FCE|FinalSubstitutions|FDS]]]];
+
+		If[tmp===0,
+			Return[0]
+		];
 
 		FCPrint[3, "ApartFF: After partial fractioning of the propagator representation: ", tmp, FCDoControl->affVerbose];
 
@@ -222,11 +231,11 @@ ApartFF[gli_GLI, topoRaw_, opts:OptionsPattern[]] :=
 
 
 
-ApartFF[int_/; int=!=0, lmoms_List , opts:OptionsPattern[]]:=
+ApartFF[int_/; int=!=0 && FreeQ[int,GLI], lmoms_List/; FreeQ[lmoms,FCTopology] , opts:OptionsPattern[]]:=
 	ApartFF[int, 1, lmoms , opts];
 
 
-ApartFF[int_/; int=!=0, extraPiece_, lmoms_List , OptionsPattern[]]:=
+ApartFF[int_/; int=!=0 && FreeQ[int,GLI], extraPiece_/;Head[extraPiece]=!=List, lmoms_List/; FreeQ[lmoms,FCTopology] , OptionsPattern[]]:=
 	Block[{	exp,tmp,loopHead,null1,null2,res,rest,
 			loopInts,intsUnique,solsList,repRule, time,
 			optCollecting, tcRepList, optFDS, optDropScaleless,
@@ -255,7 +264,8 @@ ApartFF[int_/; int=!=0, extraPiece_, lmoms_List , OptionsPattern[]]:=
 		];
 
 		FCPrint[1, "ApartFF: Entering.", FCDoControl->affVerbose];
-		FCPrint[3, "ApartFF: Entering with ", exp, FCDoControl->affVerbose];
+		FCPrint[3, "ApartFF: Entering with: ", exp, FCDoControl->affVerbose];
+		FCPrint[3, "ApartFF: Extra piece: ", extraPiece, FCDoControl->affVerbose];
 		FCPrint[3, "ApartFF: Loop momenta are ", lmoms, FCDoControl->affVerbose];
 
 
