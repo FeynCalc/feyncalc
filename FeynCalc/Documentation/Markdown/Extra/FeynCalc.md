@@ -348,6 +348,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCLoopFindScalelessTopologies](../FCLoopFindScalelessTopologies.md) - finds all scaleless topologies in the list
 - [FCLoopFromGLI](../FCLoopFromGLI.md) - converts [GLI](../GLI.md)s into explicit integrals with [FeynAmpDenominator](../FeynAmpDenominator.md)s
 - [FCLoopGetEtaSigns](../FCLoopGetEtaSigns.md) - extracts the signs of $i \eta$ from all propagators
+- [FCLoopGetFeynAmpDenominators](../FCLoopGetFeynAmpDenominators.md) - extracts all propagator denominators in the expression
 - [FCLoopGetKinematicInvariants](../FCLoopGetKinematicInvariants.md) - kinematic invariants from the given topology.
 - [FCLoopGLIDifferentiate](../FCLoopGLIDifferentiate.md) - differentiates [GLI](../GLI.md)s with respect to a scalar variable.
 - [FCLoopGLILowerDimension](../FCLoopGLILowerDimension.md), [FCLoopGLIRaiseDimension](../FCLoopGLIRaiseDimension.md) - shifts dimensions of [GLI](../GLI.md)s to $D-2$ or $D+2$.
