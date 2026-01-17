@@ -1,0 +1,28 @@
+
+
+(* :Title: FCLoopFindScalelessTopologies.test													*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopFindScalelessTopologies				*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopFindScalelessTopologies =
+({{"fcstFCLoopFindScalelessTopologies-ID1",
+"FCLoopFindScalelessTopologies[{}]",
+"{{}, {}}"}, {"fcstFCLoopFindScalelessTopologies-ID2",
+"FCLoopFindScalelessTopologies[{FCTopology[fcPFRTopology1,{SFAD[{{l\
+,0},{auxm^2,1},1}]},{l},{},{SPD[p,p]->pp},{}],FCTopology[fcPFRTopology\
+2,{SFAD[{{l,0},{0,1},1}]},{l},{},{SPD[p,p]->pp},{}],FCTopology[fcPFRTo\
+pology3,{SFAD[{{l,0},{auxm^2,1},1}]},{l},{},{SPD[p,p]->pp},{}]},FCE->T\
+rue]", "{{FCTopology[fcPFRTopology2, {SFAD[{{l, 0}, {0, 1}, 1}]}, {l}, \
+{}, {SPD[p, p] -> pp}, {}]}, {FCTopology[fcPFRTopology1, {SFAD[{{l, 0}, \
+{auxm^2, 1}, 1}]}, {l}, {}, {SPD[p, p] -> pp}, {}], \
+FCTopology[fcPFRTopology3, {SFAD[{{l, 0}, {auxm^2, 1}, 1}]}, {l}, {}, \
+{SPD[p, p] -> pp}, {}]}}"}});
