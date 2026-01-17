@@ -48,6 +48,10 @@ FCLoopSelectTopology[ex_/;Head[ex]=!=List, topos:{__FCTopology}, opts:OptionsPat
 FCLoopSelectTopology[glisRaw_List, topos:{__FCTopology}, OptionsPattern[]] :=
 	Block[{res, glis, gliTopos, null, optOneToOne, aux},
 
+		If[	glisRaw==={},
+			Return[{}]
+		];
+
 		optOneToOne = OptionValue["OneToOneCorrespondence"];
 
 		If[	TrueQ[!MatchQ[glisRaw, {__GLI}]],
