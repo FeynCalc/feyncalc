@@ -42,11 +42,11 @@ LoadModel[frModelPath];
 
 
 FR$Loop=True;
-SetDirectory[FileNameJoin[{$UserBaseDirectory,"Applications","FeynCalc","FeynArts","Models"}]];
+SetDirectory[FileNameJoin[{$UserBaseDirectory,"Applications","FeynCalc","Examples","Models"}]];
 WriteFeynArtsOutput[LQCD,Output->"QCD",CouplingRename->False];
 
 
-input=FileNameJoin[{$UserBaseDirectory,"Applications","FeynCalc","FeynArts","Models","QCD","QCD.gen"}];
+input=FileNameJoin[{$UserBaseDirectory,"Applications","FeynCalc","Examples","Models","QCD","QCD.gen"}];
 tmp = Import[input, "Text"] <> "\n";
 res=StringJoin[{tmp,"GaugeXi[V[5,___]]=GaugeXi[\"G\"]; \n GaugeXi[U[5,___]]=GaugeXi[\"G\"]; \n"}];
 Export[input, res, "Text"];
