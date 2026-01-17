@@ -142,6 +142,10 @@ FCLoopFindIntegralMappings[exprRaw_List, lmomsRaw_List, OptionsPattern[]] :=
 
 		res = Reap[(Sow[Sequence @@ #] & /@ pakFormInts), _][[2]];
 
+		(*
+			Every FCTopology is converted to a two-elements list, where the first element is the original topology,
+			while the second element is the reordered Pak-reordered topology
+		*)
 		If[	!FreeQ[expr,FCTopology],
 			res = res /. pakHead[FCTopology[id_, props_List, rest__], {_List, propsReordered_List, _List}] :>
 				List[FCTopology[id, props, rest], FCTopology[id, propsReordered, rest]],

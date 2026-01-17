@@ -153,6 +153,8 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 
 		res = Select[res, MemberQ[topoIDs, First[First[#]]] &];
 
+		FCPrint[3, "FCLoopFindTopologyMappings: After removing irrelevant topologies: ", res, FCDoControl -> fclftpVerbose];
+
 
 		mappedTopoIDs = First[#[[1]]] & /@ res;
 		unmappedTopoIDs = Complement[topoIDs,mappedTopoIDs];
@@ -227,7 +229,13 @@ findMappings[input_List, preferred_List, optInitialSubstitutions_, optMomentum_,
 	If[	preferred === {},
 		target = input[[targetEl]],
 
-		target = SelectNotFree[input, preferred];
+		(*
+			We cannot use SelectNotFree here, as a subtopology will contain FCGV["SubtopologyOf"]->fullTopo
+			and we want to have mappings of the form subtopo->topo instead of topo->subtopo. The latter will
+			be removed at a latter stage so that we might end up without any mappings at all.
+		*)
+		target = Select[input, MemberQ[preferred,#[[1]][[1]]]&];
+
 
 		If[	target === {},
 			target = input[[targetEl]],
@@ -244,8 +252,8 @@ findMappings[input_List, preferred_List, optInitialSubstitutions_, optMomentum_,
 
 	(*TODO More checks and debugging output *)
 
-	FCPrint[3, "FCLoopFindTopologyMappings: findMappings: source topologies:", Last/@source, FCDoControl -> fclftpVerbose];
-	FCPrint[3, "FCLoopFindTopologyMappings: findMappings: target topology:", Last[target], FCDoControl -> fclftpVerbose];
+	FCPrint[3, "FCLoopFindTopologyMappings: findMappings: source topologies: ", Last/@source, FCDoControl -> fclftpVerbose];
+	FCPrint[3, "FCLoopFindTopologyMappings: findMappings: target topology: ", Last[target], FCDoControl -> fclftpVerbose];
 
 	time=AbsoluteTime[];
 	FCPrint[3, "FCLoopFindTopologyMappings: findMappings: Calling FCLoopFindMomentumShifts.", FCDoControl -> fclftpVerbose];
