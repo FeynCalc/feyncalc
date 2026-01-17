@@ -52,13 +52,13 @@ evaluating  Off[ThreeDivergence::warnCartesian].";
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
-fourVectorDiffEval;
 End[]
 
 Begin["`FourDivergence`Private`"]
 
 fdVerbose::usage="";
 optEpsExpand::usage="";
+holdDOT::usage="";
 
 Options[FourDivergence] = {
 	Abort 				-> True,
@@ -171,7 +171,8 @@ fourDerivative[x_, a_, b__] :=
 fourDerivative[x_, ve_]:=
 	Block[{	nx = x,p, p0, mu, dList, dListEval, repRuleFinal, deriv,
 			null1,null2,un, fadHead, fadList, fadListEval,
-			repRule1, repRule2={}, res, mu0, momHead, pDim},
+			repRule1, repRule2={}, res, mu0, momHead, pDim, holdDOT,
+			dtList, dtListEval, diracTrace},
 
 		FCPrint[3, "FourDivergence: fourDerivative: Entering with: ", x, FCDoControl->fdVerbose];
 
@@ -234,8 +235,19 @@ fourDerivative[x_, ve_]:=
 		];
 
 		(* This is the main part	*)
-		nx = D[nx /. Momentum[p0,dim___] -> Momentum[momHead[p0],dim], momHead[p0]] /. Derivative -> deriv;
-		nx = nx /. {deriv[1][Momentum][momHead[p0]] -> 1, deriv[1,0][Momentum][momHead[p0],_] -> 1} /. momHead->Identity;
+
+		nx = nx /. Momentum[p0,dim___] -> Momentum[momHead[p0],dim];
+
+		If[	!FreeQ[nx,DiracTrace],
+			dtList = Cases[nx + null1 + null2, zzz_DiracTrace /; ! FreeQ[zzz, p0], Infinity];
+			dtListEval =  (dtList//FCTraceExpand[#,FCI->True]&//FCTraceFactor[#,FCI->True]&)/. {DOT->holdDOT, DiracTrace->diracTrace} /. diracTrace[holdDOT[zz__]]:> diracTrace[zz] //.
+				diracTrace[r1___,DiracGamma[Momentum[momHead[p0],d1_:4],d2_:4], r2___] :>diracTrace[r1,Momentum[momHead[p0],d1,d2],r2];
+			nx = nx/. Dispatch[Thread[Rule[dtList,dtListEval]]];
+
+		];
+
+		nx = D[nx, momHead[p0]] /. Derivative -> deriv;
+		nx = nx /. {deriv[1][Momentum][momHead[p0]] -> 1, deriv[1,0][Momentum][momHead[p0],_] -> 1, deriv[__][Momentum][momHead[p0], _, _] ->1} /. momHead->Identity;
 
 		FCPrint[3, "FourDivergence: fourDerivative: After D: ", nx, FCDoControl->fdVerbose];
 
@@ -243,15 +255,16 @@ fourDerivative[x_, ve_]:=
 
 		FCPrint[3, "FourDivergence: fourDerivative: dList: ", dList, FCDoControl->fdVerbose];
 
-
-		dListEval = fourVectorDiffEval[dList /. (deriv[__][fadHead][__]) -> 1,deriv,p0,mu0,pDim] /. deriv -> Derivative;
+		dListEval =	fourVectorDiffEval[dList /. (deriv[__][fadHead][__]) -> 1 /. DOT->holdDOT,deriv,p0,mu0, pDim, diracTrace]/. deriv -> Derivative;
 
 		repRuleFinal = Thread[Rule[dList,dListEval]];
 		FCPrint[3, "FourDivergence: fourDerivative: Final replacement list: ", repRuleFinal, FCDoControl->fdVerbose];
 
-		res = nx /. Dispatch[repRuleFinal] /. Dispatch[repRule2];
+		res = nx /. Dispatch[repRuleFinal] /. Dispatch[repRule2] //.
+			diracTrace[ar1___,Momentum[pp_,d1_,d2_],ar2___]:>
+			diracTrace[ar1,DiracGamma[Momentum[pp,d1],d2],ar2]/. diracTrace[ar__DiracGamma] :> DiracTrace[DOT[ar]];
 
-		If[	!FreeQ2[res,{Derivative,deriv,fadHead}],
+		If[	!FreeQ2[res,{Derivative,deriv,fadHead,diracTrace}],
 			Message[FourDivergence::failmsg, "The output contains unevaluated derivatives."];
 			If[	TrueQ[OptionValue[Abort]],
 				Abort[]
@@ -261,7 +274,8 @@ fourDerivative[x_, ve_]:=
 		res
 	];
 
-fourVectorDiffEval[ex_,head_,pVar_,muVar_, pDim_]:=
+
+fourVectorDiffEval[ex_,head_,pVar_,muVar_, pDim_, diracTrace_]:=
 	ex /. {
 		head[1, 0][Pair][Momentum[pVar,___],  a_] 			:> Pair[a, LorentzIndex[muVar,pDim]],
 		head[0, 1][Pair][a_, Momentum[pVar,___]] 			:> Pair[a, LorentzIndex[muVar,pDim]],
@@ -270,7 +284,10 @@ fourVectorDiffEval[ex_,head_,pVar_,muVar_, pDim_]:=
 		head[1,0,0,0][Eps][Momentum[pVar,___],c__]			:> Eps[LorentzIndex[muVar,pDim],c],
 		head[0,1,0,0][Eps][a_,Momentum[pVar,___],c__]		:> Eps[a,LorentzIndex[muVar,pDim],c],
 		head[0,0,1,0][Eps][a__,Momentum[pVar,___],c_]		:> Eps[a,LorentzIndex[muVar,pDim],c],
-		head[0,0,0,1][Eps][c__,Momentum[pVar,___]]			:> Eps[c,LorentzIndex[muVar,pDim]]
+		head[0,0,0,1][Eps][c__,Momentum[pVar,___]]			:> Eps[c,LorentzIndex[muVar,pDim]],
+		head[r1___,1,r2___][diracTrace][ar1___,Momentum[pVar,_,d2_],ar2___]/; Length[{r1}]===Length[{ar1}] && Length[{r2}]===Length[{ar2}] :>
+				DiracTrace[DOT[ar1,DiracGamma[LorentzIndex[muVar,pDim],d2],ar2]],
+			diracTrace[___,Momentum[0,__],___] -> 0
 	};
 
 

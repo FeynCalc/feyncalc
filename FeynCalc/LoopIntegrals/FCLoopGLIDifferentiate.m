@@ -157,7 +157,7 @@ FCLoopGLIDifferentiate[expr_/;Head[expr]=!=List, toposRaw_List, invRaw_/;Head[in
 			FCPrint[3,"FCLoopGLIDifferentiate: Intermediate listDiffEval: ", listDiffEval, FCDoControl->crtgVerbose];
 
 			If[	vectorDiff,
-				listDiffEval = FeynCalc`Package`fourVectorDiffEval[listDiffEval,holdDerivative,inv0,mu0,invDim];
+				listDiffEval = fourVectorDiffEval[listDiffEval,holdDerivative,inv0,mu0,invDim];
 				FCPrint[3,"FCLoopGLIDifferentiate: listDiffEval after fourVectorDiffEval", listDiffEval, FCDoControl->crtgVerbose];
 			];
 

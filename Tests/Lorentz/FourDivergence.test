@@ -144,6 +144,46 @@ mu])*SFAD[{{p, 0}, {m^2, 1}, 1}, {{p - q, 0}, {0, 1}, 1}, {{p - q, \
 0}, {0, 1}, 1}, Dimension -> 4]"},
 {"fcstFourDivergence-ID51",
 "FourDivergence[SFAD[{p,m^2},p-q,Dimension->4],FVE[p,mu],FCE->True]\
-", "0"}
+", "0"},
+{"fcstFourDivergence-ID52",
+"FourDivergence[DiracTrace[GSD[p]+m],FVD[p,mu],FCE->True]",
+"DiracTrace[GAD[mu]]"}, {"fcstFourDivergence-ID53",
+"FourDivergence[DiracTrace[cc \
+GAD[al].(GSD[p]+m)],FVD[p,mu],FCE->True]",
+"cc*DiracTrace[GAD[al] . GAD[mu]]"}, {"fcstFourDivergence-ID54",
+"FourDivergence[DiracTrace[cc \
+GAD[al].(GSD[p+q]+m)],FVD[p,mu],FCE->True]",
+"cc*DiracTrace[GAD[al] . GAD[mu]]"}, {"fcstFourDivergence-ID55",
+"FourDivergence[DiracTrace[cc \
+GAD[al].(GSD[p+q]+m).GAD[nu]],FVD[p,mu],FCE->True]",
+"cc*DiracTrace[GAD[al] . GAD[mu] . GAD[nu]]"}, \
+{"fcstFourDivergence-ID56",
+"FourDivergence[DiracTrace[cc \
+GAD[al].(GSD[p+q]+m).GAD[nu].GSD[p]],FVD[p,mu],FCE->True]",
+"cc*DiracTrace[GAD[al] . GAD[mu] . GAD[nu] . Momentum[p, D, D]] + \
+cc*(m*DiracTrace[GAD[al] . GAD[nu] . GAD[mu]] + DiracTrace[GAD[al] . \
+GSD[q] . GAD[nu] . GAD[mu]]) + cc*DiracTrace[GAD[al] . Momentum[p, D, \
+D] . GAD[nu] . GAD[mu]]"}, {"fcstFourDivergence-ID57",
+"FourDivergence[FAD[{p+q,m}]DiracTrace[cc \
+GAD[al].(GSD[p+q]+m).GAD[nu].GSD[p]],FVD[p,mu],FCE->True]",
+"(cc*DiracTrace[GAD[al] . GAD[mu] . GAD[nu] . Momentum[p, D, D]] + \
+cc*(m*DiracTrace[GAD[al] . GAD[nu] . GAD[mu]] + DiracTrace[GAD[al] . \
+GSD[q] . GAD[nu] . GAD[mu]]) + cc*DiracTrace[GAD[al] . Momentum[p, D, \
+D] . GAD[nu] . GAD[mu]])*FAD[{p + q, m}] + FAD[{p + q, m}, {p + q, \
+m}]*(-2*cc*m*FeynCalc`FourDivergence`Private`diracTrace[GAD[al], \
+GAD[nu], Momentum[p, D, D]]*FVD[p, mu] - \
+2*cc*FeynCalc`FourDivergence`Private`diracTrace[GAD[al], GSD[q], \
+GAD[nu], Momentum[p, D, D]]*FVD[p, mu] - \
+2*cc*FeynCalc`FourDivergence`Private`diracTrace[GAD[al], Momentum[p, \
+D, D], GAD[nu], Momentum[p, D, D]]*FVD[p, mu] - \
+2*cc*m*FeynCalc`FourDivergence`Private`diracTrace[GAD[al], GAD[nu], \
+Momentum[p, D, D]]*FVD[q, mu] - \
+2*cc*FeynCalc`FourDivergence`Private`diracTrace[GAD[al], GSD[q], \
+GAD[nu], Momentum[p, D, D]]*FVD[q, mu] - \
+2*cc*FeynCalc`FourDivergence`Private`diracTrace[GAD[al], Momentum[p, \
+D, D], GAD[nu], Momentum[p, D, D]]*FVD[q, mu])"}, \
+{"fcstFourDivergence-ID58",
+"FourDivergence[DiracTrace[GAD[mu].(GSD[p]+m)],FV[p,mu],FCE->True]",
+	"DiracTrace[GAD[mu] . GA[mu]]"}
 };
 
