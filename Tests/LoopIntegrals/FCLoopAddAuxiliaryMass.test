@@ -1,0 +1,42 @@
+(* :Title: FCLoopAddAuxiliaryMass.test								*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopAddAuxiliaryMass			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopAddAuxiliaryMass =
+({{"fcstFCLoopAddAuxiliaryMass-ID1",
+"FCLoopAddAuxiliaryMass[{FAD[k+p]},{k},-M^2,2,FCE->True]",
+"{FAD[k + p] -> SFAD[{{k + p, 0}, {M^2, 1}, 1}] - M^2*SFAD[{{k + p, \
+0}, {M^2, 1}, 1}, {{k + p, 0}, {M^2, 1}, 1}] + M^4*SFAD[{{k + p, 0}, \
+{0, 1}, 1}, {{k + p, 0}, {M^2, 1}, 1}, {{k + p, 0}, {M^2, 1}, 1}]}"}, \
+{"fcstFCLoopAddAuxiliaryMass-ID2",
+"FCLoopAddAuxiliaryMass[{denHead[FAD[k+p]]},{k},-M^2,2,Head->denHea\
+d,FCE->True]",
+"{denHead[FAD[k + p]] -> SFAD[{{k + p, 0}, {M^2, 1}, 1}] - \
+M^2*SFAD[{{k + p, 0}, {M^2, 1}, 1}, {{k + p, 0}, {M^2, 1}, 1}] + \
+M^4*SFAD[{{k + p, 0}, {0, 1}, 1}, {{k + p, 0}, {M^2, 1}, 1}, {{k + p, \
+0}, {M^2, 1}, 1}]}"}, {"fcstFCLoopAddAuxiliaryMass-ID3",
+"FCLoopAddAuxiliaryMass[{denHead[FAD[k+p]]},{k},-M^2,2,Head->denHea\
+d,\"MassHead\"->auxM,FCE->True]",
+"{denHead[FAD[k + p]] -> SFAD[{{k + p, 0}, {M^2, 1}, 1}] + \
+auxM[-M^2]*SFAD[{{k + p, 0}, {M^2, 1}, 1}, {{k + p, 0}, {M^2, 1}, 1}] \
++ auxM[-M^2]^2*SFAD[{{k + p, 0}, {0, 1}, 1}, {{k + p, 0}, {M^2, 1}, 1}, \
+{{k + p, 0}, {M^2, 1}, 1}]}"}, {"fcstFCLoopAddAuxiliaryMass-ID4",
+"FCLoopAddAuxiliaryMass[{denHead[FAD[k+p]]},{k},-M^2,3,Head->denHea\
+d,\"MassHead\"->auxM,Last->flag,FCE->True]",
+"{denHead[FAD[k + p]] -> SFAD[{{k + p, 0}, {M^2, 1}, 1}] + \
+auxM[-M^2]*SFAD[{{k + p, 0}, {M^2, 1}, 1}, {{k + p, 0}, {M^2, 1}, 1}] \
++ auxM[-M^2]^2*SFAD[{{k + p, 0}, {M^2, 1}, 1}, {{k + p, 0}, {M^2, 1}, \
+1}, {{k + p, 0}, {M^2, 1}, 1}] + flag*auxM[-M^2]^3*SFAD[{{k + p, 0}, \
+{0, 1}, 1}, {{k + p, 0}, {M^2, 1}, 1}, {{k + p, 0}, {M^2, 1}, 1}, {{k \
++ p, 0}, {M^2, 1}, 1}]}"}, {"fcstFCLoopAddAuxiliaryMass-ID5",
+"FCLoopAddAuxiliaryMass[{denHead[FAD[{k+p,M}]]},{k},-M^2,0,Head->de\
+nHead,FCE->True]", "{denHead[FAD[{k + p, M}]] -> FAD[{k + p, M}]}"}});
