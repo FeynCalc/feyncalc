@@ -51,7 +51,7 @@ GA[\[Delta]] GA[\[Beta]]GA[\[Alpha]]
 
 
 (* ::Text:: *)
-(*It might be surprising that FeynCalc does not seem to distinguish between upper and lower Lorentz indices. *)
+(*It might be surprising that FeynCalc does not seem to distinguish between upper and lower Lorentz indices.*)
 
 
 (* ::Text:: *)
@@ -67,7 +67,7 @@ FV[p,\[Mu]]==c FV[q,\[Mu]]
 
 
 (* ::Text:: *)
-(*could equally stand for $p^{\mu} = c q^{\mu}$ or $p_{\mu} = c q_{\mu}$. *)
+(*could equally stand for $p^{\mu} = c q^{\mu}$ or $p_{\mu} = c q_{\mu}$.*)
 
 
 (* ::Text:: *)

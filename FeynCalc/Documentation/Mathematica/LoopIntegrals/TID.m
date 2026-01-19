@@ -134,7 +134,7 @@ TID[FAD[{k,m}, k - p]FVD[k,\[Mu]],k,TensorReductionBasisChange->{{-p}->{-p,n}},A
 
 
 (* ::Text:: *)
-(*Unfortunately, in this case `TID` alone cannot eliminate the scalar products of $n$ with the loop momentum in the numerator. For that we need to use IBPs. Still, it manages to reduce the tensor integral to scalars, even though at this stage not all of them can be mapped to scalar PaVe functions. *)
+(*Unfortunately, in this case `TID` alone cannot eliminate the scalar products of $n$ with the loop momentum in the numerator. For that we need to use IBPs. Still, it manages to reduce the tensor integral to scalars, even though at this stage not all of them can be mapped to scalar PaVe functions.*)
 
 
 (* ::Text:: *)

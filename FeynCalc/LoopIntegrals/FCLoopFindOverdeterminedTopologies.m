@@ -21,10 +21,10 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopFindOverdeterminedTopologies::usage =
-"FCLoopFindOverdeterminedTopologies[topos] finds all topologies in topos that
-have an overdetermined set of propagators. The function returns a list with
-two entries, where the first one contains all overdetermined topologies and the
-second one the rest.";
+"FCLoopFindOverdeterminedTopologies[topos] finds topologies with overdetermined
+propagator bases in the given list of topologies. The function returns a list
+of two lists, where the first list contains all overdetermined topologies and
+the second one the rest.";
 
 FCLoopFindOverdeterminedTopologies::failmsg =
 "Error! FCLoopFindOverdeterminedTopologies has encountered a fatal problem and must abort the computation. \

@@ -21,10 +21,9 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopFindScalelessTopologies::usage =
-"FCLoopFindScalelessTopologies[topos] finds all topologies in topos that
-are scaleless. The function returns a list with
-two entries, where the first one contains all scaleless topologies and the
-second one the rest.";
+"FCLoopFindScalelessTopologies[topos] finds scaleless topologies with in the
+given list of topologies. The function returns a list of two lists, where the
+first list contains all scaleless topologies and the second one the rest.";
 
 FCLoopFindScalelessTopologies::failmsg =
 "Error! FCLoopFindScalelessTopologies has encountered a fatal problem and must abort the computation. \

@@ -20,23 +20,23 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopRewriteOverdeterminedTopologies::usage =
-"FCLoopRewriteOverdeterminedTopologies[exp, topos] performs tensor reduction for the numerators of
-multi-loop integrals present in exp. Notice that exp is expected to be the
-output of FCLoopFindTopologies where all loop integrals have been written as
-fun[num, GLI[...]] with num being the numerator to be acted upon.
+"FCLoopRewriteOverdeterminedTopologies[expr , topos] handles topologies with
+overdetermined propagator bases in the given expression. The routine will
+automatically perform partial fraction decomposition on the affected
+topologies, introduce new names for the resulting topologies and return back
+the expression depending on those new topologies together with a list of the
+corresponding topologies.
 
-The reduction is done only for loop momenta contracted with Dirac matrices,
-polarization vectors or Levi-Civita tensors. Scalar products with external
-momenta are left untouched. The goal is to rewrite everything in terms of
-scalar products involving only loop momenta and external momenta appearing in
-the given topology. These quantities can be then rewritten in terms of inverse
-propagators (GLIs with negative indices), so that the complete dependence on
-loop momenta will go into the GLIs.
+The input expression is expected to be of the form returned by
+FCLoopFindTopologies, e.g. with numerators separated from the denominators
+where the latter are written as GLIs.
 
-Unlike FCMultiLoopTID, this function does not perform any partial fractioning
-or shifts in the loop momenta.
+The names of the automatically generated topology can be controlled using the
+Names option.
 
-The default value for fun is  FCGV[\"GLIProduct\"] set by the option Head";
+Notice that the returned topologies can be related to each other, while some
+of them may even have identical sets of propagators. This is expected, because
+the output of this function usually gets passed to FCLoopFindTopologyMappings.";
 
 FCLoopRewriteOverdeterminedTopologies::failmsg =
 "Error! FCLoopRewriteOverdeterminedTopologies has encountered a fatal problem and must abort the computation. \

@@ -16,10 +16,19 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopGetFeynAmpDenominators::usage =
-"FCLoopGetFeynAmpDenominators[expr, lmoms, head] returns propagator denominators
-present in the
+"FCLoopGetFeynAmpDenominators[expr, {k1,k2,...}, head] extracts all single
+propagator denominators present in the expression that depend on the loop
+momenta k1, k2, ....
 
-The propagators in expr should be in the FAD, SFAD or GFAD format.";
+The function returns a list of two elements.  The first one contains the
+original expression with selected denominators wrapped with head. The second
+one is the list of relevant denominators
+
+Setting the option \"Massless\" to Truewill select only massless denominators.
+
+The option Momentum specifies the dependency on external momenta. When set to
+a list of momenta, relevant propagators will be selected irrespective of being
+massless or massive.";
 
 FCLoopGetFeynAmpDenominators::failmsg =
 "FCLoopGetFeynAmpDenominators has encountered a fatal problem and must abort the computation. \

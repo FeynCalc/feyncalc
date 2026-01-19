@@ -16,10 +16,15 @@
 (* ------------------------------------------------------------------------ *)
 
 FCLoopAddAuxiliaryMass::usage =
-"FCLoopAddAuxiliaryMass[expr, lmoms, mass ,head] adds an auxiliary
-to all massless propagators containing loop momenta lmoms.
+"FCLoopAddAuxiliaryMass[expr, {k1, k2, ...},-m^2,n] adds auxiliary mass term
+$m^2$ to the propagators in the list that depend on loop momenta k1, k2, ....
+For $n=0$ the mass is added directly.
 
-The propagators in expr should be in the FAD, SFAD or GFAD format.";
+For $n>0$ the function applies the exact identity from
+[arXiv:hep-ph/9711266](https://arxiv.org/abs/hep-ph/9711266), known as 
+infrared rearrangement, $n$ times. The option Last allows to add a flag to the
+last term in the expression as a check that it does not contribute to the
+physical results.";
 
 FCLoopAddAuxiliaryMass::failmsg =
 "FCLoopAddAuxiliaryMass has encountered a fatal problem and must abort the computation. \

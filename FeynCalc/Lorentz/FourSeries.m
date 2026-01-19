@@ -20,9 +20,9 @@
 (* ------------------------------------------------------------------------ *)
 
 FourSeries::usage =
-"FourSeries[exp, {p_, p0_, n_}] expands the exp in 4-vector p around the value
-p0 up to nth order. If setting p to p0 leads to a singularity, the expansion
-is aborted.";
+"FourSeries[exp, {p,p0,n}] calculates Taylor series of exp w.r.t the $4$-vector
+$p$ to $n$th order.
+If the expression diverges at $p = p_0$, it will be returned unevaluated.";
 
 FourSeries::failmsg =
 "Error! FourSeries has encountered a fatal problem and must abort the computation. \

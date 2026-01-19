@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`FourSeries[exp, {p,p0,n}]` calculates Taylor series of `exp` w.r.t the $4$-vector $p$ to $n$th order. *)
+(*`FourSeries[exp, {p,p0,n}]` calculates Taylor series of `exp` w.r.t the $4$-vector $p$ to $n$th order.*)
 (*If the expression diverges at $p = p_0$, it will be returned unevaluated.*)
 
 
