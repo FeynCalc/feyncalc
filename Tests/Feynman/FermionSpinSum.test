@@ -229,7 +229,10 @@ Spinor[Momentum[p1], MNeu[1], 1].GA[nu, 7].Spinor[Momentum[k2], me,
 	mu]).(me - GS[k2]).GA[7].GA[
 nu].(GS[p1] -
 	MNeu[1]).((x1 + x2 + x3) GA[mu].GA[6] + (x4 + x5 + x6) GA[mu].GA[
-	7]).(me + GS[p2]).GA[nu].GA[6]]"}
+	7]).(me + GS[p2]).GA[nu].GA[6]]"},
+{"fcstFermionSpinSum-ID34",
+"FermionSpinSum[ComplexConjugate[Spinor[p,m].Spinor[p,m]]]//FCE",
+"DiracTrace[m + GS[p]]"}
 });
 
 
