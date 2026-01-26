@@ -68,7 +68,7 @@ FCLoopRewriteOverdeterminedTopologies[{expr_, toposRaw:{__FCTopology}}, opts: Op
 
 FCLoopRewriteOverdeterminedTopologies[expr_, toposRaw_List, OptionsPattern[]] :=
 	Block[{	ex, res, time, uniqueProductsList, topos, optHead, optFactoring,
-			optTimeConstrained, uniqueProductsListEval, fctrVerbose,
+			optTimeConstrained, uniqueProductsListEval, optVerbose,
 			optFCParallelize, glis, overdeterminedToposPre,remainingTopos,
 			pfrRules, overdeterminedTopos, removalList,newNoPfrGLIs, newNoPfrTopos,
 			tempNameSuffix, optNames, pfrTopoIds, ruleNames, newNames,
@@ -76,9 +76,9 @@ FCLoopRewriteOverdeterminedTopologies[expr_, toposRaw_List, OptionsPattern[]] :=
 			scalelessPreTopos, finalTopos,allTopos,presentTopoIds,finalPreTopos},
 
 		If[	OptionValue[FCVerbose] === False,
-			fctrVerbose = $VeryVerbose,
+			optVerbose = $VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer],
-			fctrVerbose = OptionValue[FCVerbose]];
+			optVerbose = OptionValue[FCVerbose]];
 		];
 
 		optNames						= OptionValue[Names];
@@ -90,9 +90,9 @@ FCLoopRewriteOverdeterminedTopologies[expr_, toposRaw_List, OptionsPattern[]] :=
 		If[	!OptionValue[FCI],
 			(*	For large expressions FCI might require a considerable amount of time! *)
 			time=AbsoluteTime[];
-			FCPrint[1,"FCLoopRewriteOverdeterminedTopologies: Applying FCI.", FCDoControl->fctrVerbose];
+			FCPrint[1,"FCLoopRewriteOverdeterminedTopologies: Applying FCI.", FCDoControl->optVerbose];
 			{ex, topos} = FCI[{expr, toposRaw}];
-			FCPrint[1, "FCLoopRewriteOverdeterminedTopologies: Done applying FCI, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctrVerbose],
+			FCPrint[1, "FCLoopRewriteOverdeterminedTopologies: Done applying FCI, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose],
 			{ex, topos} = {expr, toposRaw}
 		];
 
@@ -105,45 +105,45 @@ FCLoopRewriteOverdeterminedTopologies[expr_, toposRaw_List, OptionsPattern[]] :=
 			uniqueProductsList = Cases2[ex,optHead],
 
 			time=AbsoluteTime[];
-			FCPrint[1,"FCLoopRewriteOverdeterminedTopologies: Applying Collect2.", FCDoControl->fctrVerbose];
+			FCPrint[1,"FCLoopRewriteOverdeterminedTopologies: Applying Collect2.", FCDoControl->optVerbose];
 			ex = Collect2[ex, GLI, Factoring->optFactoring, TimeConstrained->optTimeConstrained, FCParallelize->optFCParallelize];
 			uniqueProductsList = Cases2[ex,optHead];
-			FCPrint[1, "FCLoopRewriteOverdeterminedTopologies: Collect2 done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctrVerbose]
+			FCPrint[1, "FCLoopRewriteOverdeterminedTopologies: Collect2 done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose]
 		];
 
 		(*We need a list of all GLIs in the expression*)
 		glis = Cases2[uniqueProductsList,GLI];
 
 		If[glis==={},
-			FCPrint[1,"FCLoopRewriteOverdeterminedTopologies: The input expression contains no GLIs.", FCDoControl->fctrVerbose];
+			FCPrint[1,"FCLoopRewriteOverdeterminedTopologies: The input expression contains no GLIs.", FCDoControl->optVerbose];
 			(* Nothing to do *)
-			{ex,topos}
+			Return[{ex,topos}]
 		];
 
 		time=AbsoluteTime[];
-		FCPrint[1,"FCLoopRewriteOverdeterminedTopologies: Applying FCLoopFindOverdeterminedTopologies.", FCDoControl->fctrVerbose];
+		FCPrint[1,"FCLoopRewriteOverdeterminedTopologies: Applying FCLoopFindOverdeterminedTopologies.", FCDoControl->optVerbose];
 		{overdeterminedToposPre,remainingTopos} = FCLoopFindOverdeterminedTopologies[topos,FCI->True,FCParallelize->optFCParallelize];
-		FCPrint[1, "FCLoopRewriteOverdeterminedTopologies: Done applying FCLoopFindOverdeterminedTopologies, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctrVerbose];
+		FCPrint[1, "FCLoopRewriteOverdeterminedTopologies: Done applying FCLoopFindOverdeterminedTopologies, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 
 		If[overdeterminedToposPre==={},
-			FCPrint[1,"FCLoopRewriteOverdeterminedTopologies: There are no overdetermined topologies.", FCDoControl->fctrVerbose];
+			FCPrint[0, "FCLoopRewriteIncompleteTopologies: ", FeynCalc`Package`FCStyle["No overdetermined topologies detected.", {Darker[Green,0.55], Bold}], FCDoControl->optVerbose];
 			(* Nothing to do *)
-			{ex,topos}
+			Return[{ex,topos}]
 		];
 
-		FCPrint[0, "FCLoopFindTopologyMappings: ", FeynCalc`Package`FCStyle["Found ", {Darker[Green,0.55], Bold}], Length[overdeterminedToposPre], FeynCalc`Package`FCStyle[" overdetermined topologies.", {Darker[Green,0.55], Bold}], FCDoControl->fctrVerbose];
+		FCPrint[0, "FCLoopRewriteOverdeterminedTopologies: ", FeynCalc`Package`FCStyle["Found ", {Darker[Green,0.55], Bold}], Length[overdeterminedToposPre], FeynCalc`Package`FCStyle[" overdetermined topologies.", {Darker[Green,0.55], Bold}], FCDoControl->optVerbose];
 
 		(* Partial fractioning rules for the relevant GLIs *)
 		time=AbsoluteTime[];
-		FCPrint[1,"FCLoopRewriteOverdeterminedTopologies: Applying FCLoopCreatePartialFractioningRules.", FCDoControl->fctrVerbose];
+		FCPrint[1,"FCLoopRewriteOverdeterminedTopologies: Applying FCLoopCreatePartialFractioningRules.", FCDoControl->optVerbose];
 
 		glis = Select[glis,MemberQ[First/@overdeterminedToposPre,#[[1]]]&];
 
 
 		pfrRules=FCLoopCreatePartialFractioningRules[glis,overdeterminedToposPre,FCParallelize->optFCParallelize,"KeepApartHead"->True];
-		FCPrint[1, "FCLoopRewriteOverdeterminedTopologies: Done applying FFCLoopCreatePartialFractioningRules, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctrVerbose];
+		FCPrint[1, "FCLoopRewriteOverdeterminedTopologies: Done applying FCLoopCreatePartialFractioningRules, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 
-		FCPrint[0, "FCLoopFindTopologyMappings: ", FeynCalc`Package`FCStyle["Generated ", {Darker[Green,0.55], Bold}], Length[pfrRules[[2]]], FeynCalc`Package`FCStyle[" new topologies through partial fractioning.", {Darker[Green,0.55], Bold}], FCDoControl->fctrVerbose];
+		FCPrint[0, "FCLoopRewriteOverdeterminedTopologies: ", FeynCalc`Package`FCStyle["Generated ", {Darker[Green,0.55], Bold}], Length[pfrRules[[2]]], FeynCalc`Package`FCStyle[" new topologies through partial fractioning.", {Darker[Green,0.55], Bold}], FCDoControl->optVerbose];
 
 		(*
 			Subset of original GLIs from overdetermined topologies that are still present in the expression.
@@ -151,7 +151,7 @@ FCLoopRewriteOverdeterminedTopologies[expr_, toposRaw_List, OptionsPattern[]] :=
 		*)
 		remainingGLIs=Complement[glis,First/@pfrRules[[1]]];
 
-		FCPrint[3,"FCLoopRewriteOverdeterminedTopologies: Still present overdetermined topologies: ",overdeterminedToposPre, FCDoControl->fctrVerbose];
+		FCPrint[3,"FCLoopRewriteOverdeterminedTopologies: Still present overdetermined topologies: ",overdeterminedToposPre, FCDoControl->optVerbose];
 
 		(* Subset of overdetermined topologies that are still present in the expression *)
 
@@ -171,14 +171,14 @@ FCLoopRewriteOverdeterminedTopologies[expr_, toposRaw_List, OptionsPattern[]] :=
 		tempNameSuffix = ToString[Unique[]]<>"PFR";
 
 		time=AbsoluteTime[];
-		FCPrint[1,"FCLoopRewriteOverdeterminedTopologies: Applying FCLoopRemovePropagator.", FCDoControl->fctrVerbose];
+		FCPrint[1,"FCLoopRewriteOverdeterminedTopologies: Applying FCLoopRemovePropagator.", FCDoControl->optVerbose];
 		(*	New GLIs with zero propagator powers removed *)
 		newNoPfrGLIs=(FCLoopRemovePropagator[#[[1]],#[[3]],Names->tempNameSuffix]&/@removalList);
 
 		(*	New topologies created out of original overdetermined topologies *)
 		newNoPfrTopos=(FCLoopRemovePropagator[#[[2]],#[[3]],Names->tempNameSuffix]&/@removalList);
 
-		FCPrint[1, "FCLoopRewriteOverdeterminedTopologies: Done applying FCLoopRemovePropagator, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctrVerbose];
+		FCPrint[1, "FCLoopRewriteOverdeterminedTopologies: Done applying FCLoopRemovePropagator, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 
 		(* GLI-Rule for converting old GLIs with overdetermined topology IDs to new GLIs with no zero powers *)
 		gliRulePfr=Thread[Rule[remainingGLIs,newNoPfrGLIs]];
@@ -188,7 +188,7 @@ FCLoopRewriteOverdeterminedTopologies[expr_, toposRaw_List, OptionsPattern[]] :=
 			overdetermined topologies.
 		*)
 
-		FCPrint[3,"FCLoopRewriteOverdeterminedTopologies: pfrRules: ",pfrRules, FCDoControl->fctrVerbose];
+		FCPrint[3,"FCLoopRewriteOverdeterminedTopologies: pfrRules: ",pfrRules, FCDoControl->optVerbose];
 
 		uniqueProductsListEval = uniqueProductsList /. Dispatch[pfrRules[[1]]] /. Dispatch[gliRulePfr] /. optHead[a_,b_] ->
 		gliProductExpand[hold[a],b] /. gliProductExpand -> gliProductRemultiply /. gliProductRemultiply -> optHead /. hold->Identity;
@@ -230,9 +230,9 @@ FCLoopRewriteOverdeterminedTopologies[expr_, toposRaw_List, OptionsPattern[]] :=
 		*)
 
 		time=AbsoluteTime[];
-		FCPrint[1,"FCLoopRewriteOverdeterminedTopologies: Applying FCLoopFindScalelessTopologies.", FCDoControl->fctrVerbose];
+		FCPrint[1,"FCLoopRewriteOverdeterminedTopologies: Applying FCLoopFindScalelessTopologies.", FCDoControl->optVerbose];
 		{scalelessPreTopos, finalTopos} = FCLoopFindScalelessTopologies[finalPreTopos,FCI->True,FCParallelize->optFCParallelize];
-		FCPrint[1, "FCLoopRewriteOverdeterminedTopologies: Done applying FCLoopFindScalelessTopologies, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctrVerbose];
+		FCPrint[1, "FCLoopRewriteOverdeterminedTopologies: Done applying FCLoopFindScalelessTopologies, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 
 
 		(*TODO: Option to output scaleless pretopos separately *)
@@ -241,19 +241,20 @@ FCLoopRewriteOverdeterminedTopologies[expr_, toposRaw_List, OptionsPattern[]] :=
 		];
 
 		time=AbsoluteTime[];
-		FCPrint[1,"FCLoopRewriteOverdeterminedTopologies: Creating the final result.", FCDoControl->fctrVerbose];
+		FCPrint[1,"FCLoopRewriteOverdeterminedTopologies: Creating the final result.", FCDoControl->optVerbose];
 
 		repRule = Thread[Rule[uniqueProductsList,uniqueProductsListEval]];
 		res = ex /.Dispatch[repRule];
-		FCPrint[1,"FCLoopRewriteOverdeterminedTopologies: Done creating the final result, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fctrVerbose];
+		FCPrint[1,"FCLoopRewriteOverdeterminedTopologies: Done creating the final result, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 
 		(*TODO More checks, timings, debugging infos*)
+		FCPrint[0, "FCLoopRewriteOverdeterminedTopologies: ", FeynCalc`Package`FCStyle["Final number of topologies: ", {Darker[Green,0.55], Bold}], Length[finalTopos], FCDoControl->optVerbose];
 
 		If[	OptionValue[FCE],
 			{res,finalTopos} = {FCE[res],FCE[finalTopos]}
 		];
 
-		FCPrint[1, "FCLoopRewriteOverdeterminedTopologies: Leaving.", FCDoControl->fctrVerbose];
+		FCPrint[1, "FCLoopRewriteOverdeterminedTopologies: Leaving.", FCDoControl->optVerbose];
 
 		{res,finalTopos}
 

@@ -33,6 +33,6 @@ FCTopology[\"fcPFRTopology3\", {SFAD[{{k1, 0}, {0, 1}, 1}], SFAD[{{k1 \
 ,1}]],\[IndentingNewLine]\
 {FCTopology[topo1,{SFAD[k1],SFAD[k1+p]},{k1},{p},{},{}]},Head->gliHead\
 ,FCE->True,FCVerbose->-1]",
-"{gliHead[SPD[k1, p], GLI[topo1, {1, 1}]], {FCTopology[topo1, \
-{SFAD[{{k1, 0}, {0, 1}, 1}], SFAD[{{k1 + p, 0}, {0, 1}, 1}]}, {k1}, \
-{p}, {}, {}]}}"}});
+"{gliHead[Pair[Momentum[k1, D], Momentum[p, D]], GLI[topo1, {1, 1}]],
+{FCTopology[topo1, {FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D], 0,
+0, {1, 1}]], FeynAmpDenominator[StandardPropagatorDenominator[Momentum[k1, D] + Momentum[p, D], 0, 0, {1, 1}]]}, {k1}, {p}, {}, {}]}}"}});
