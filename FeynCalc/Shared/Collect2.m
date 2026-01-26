@@ -65,6 +65,7 @@ Options[Collect2] = {
 	IsolateFast 				-> False,
 	IsolateNames 				-> False,
 	Numerator					-> False,
+	ParallelKernels				-> False,
 	TimeConstrained 			-> Infinity
 };
 
@@ -95,11 +96,8 @@ Collect2[x_List, y__,  opts:OptionsPattern[]] :=
 						Message[Collect2::failmsg,"In the parallel mode, the option IsolateNames should be set to a list with the length being equal to the number of parallel kernels."];
 						Abort[]
 					];
-
-					Table[With[{oin = optIsolateNames, ii = i},
-					ParallelEvaluate[SetOptions[Collect2, IsolateNames -> oin[[ii]]];, DistributedContexts -> None]],{i,1,$KernelCount}];
-
-
+					Table[With[{oin = optIsolateNames[[i]]},
+					ParallelEvaluate[SetOptions[Collect2, IsolateNames -> oin];, i, DistributedContexts -> None]],{i,1,$KernelCount}];
 				];
 
 				With[{xxx = {y}, ooo = {opts}},
@@ -133,12 +131,19 @@ Collect2[expr_/; !MemberQ[{List,Equal},Head[expr]], vv_List/; (!OptionQ[vv] || v
 		nonAtomicMonomials,optHead,firstHead,secondHead=Null,optInitialFunction,numerator,denominator,
 		optNumerator, optFactoringDenominator, optTimeConstrained, ident, cl2Verbose,optFCParallelize, frh},
 
+		If[	OptionValue[ParallelKernels] && $KernelID===0,
+			Message[Collect2::failmsg,"Tasks for parallel kernels are being executed on the main kernel."];
+			Abort[]
+		];
+
 		If [OptionValue[FCVerbose]===False,
 			cl2Verbose=$VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				cl2Verbose=OptionValue[FCVerbose]
 			];
 		];
+
+
 
 		{factoring, optIsolateNames, expanding, dde, optIsolateFast} =
 			{OptionValue[Factoring], OptionValue[IsolateNames],
