@@ -215,6 +215,23 @@ FCMultiLoopTID[expr_/;Head[expr]=!=List, qs_List/; FreeQ[qs, OptionQ], OptionsPa
 	];
 
 
+uncontractLoopMomenta[exRaw_, qs_, n_, optUncontract_, optFactoring_, optTimeConstrained_, mltidIsolate_List, mltidVerbose_, kernelIDs_List]:=
+	Block[{name},
+
+		If[	$ParallelizeFeynCalc && ($KernelID===0),
+			Message[FCMultiLoopTID::failmsg,"Called uncontractLoopMomenta in parallel mode when there are no parallel kernels."];
+			Abort[]
+		];
+
+		name = First[Extract[mltidIsolate,Position[kernelIDs,$KernelID]]];
+
+		If[	!MatchQ[name,_Symbol],
+			Message[FCMultiLoopTID::failmsg,"uncontractLoopMomenta: Something went wrong extracting the abbreviation name for this kernel."];
+			Abort[]
+		];
+		FeynCalc`Package`uncontractLoopMomenta[exRaw, qs, n, optUncontract, optFactoring, optTimeConstrained, name, mltidVerbose]
+	];
+
 uncontractLoopMomenta[exRaw_, qs_, n_, optUncontract_, optFactoring_, optTimeConstrained_, mltidIsolate_, mltidVerbose_]:=
 	Block[{ex = exRaw,	time, nonDmoms, nonDcmoms, pairUncontract, cpairUncontract, stmpli, tmpli},
 
