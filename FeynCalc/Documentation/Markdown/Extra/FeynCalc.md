@@ -162,7 +162,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FeynCalcHowToCite](../FeynCalcHowToCite.md) - lists relevant FeynCalc publications
 - [FI](../FI.md) - changes the output format to `InputForm`
 - [FreeQ2](../FreeQ2.md) - alternative to Mathematica's `FreeQ`
-- [FRH](../FRH.md) - alternative to Mathematica's `ReleaseHold`
+- [FRH](../FRH.md), [FRH2](../FRH2.md) - alternative to Mathematica's `ReleaseHold`
 - [ILimit](../ILimit.md), [MLimit](../MLimit.md) - alternatives to Mathematica's `Limit`
 - [Isolate](../Isolate.md), [KK](../KK.md) - replaces expressions by abbreviations
 - [Map2](../Map2.md) - alternative to Mathematica's `Map`
@@ -345,6 +345,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCLoopExtract](../FCLoopExtract.md) - extracts loop integrals
 - [FCLoopFindSectors](../FCLoopFindSectors.md) - returns sectors for the given [GLI](../GLI.md)s
 - [FCLoopFindTensorBasis](../FCLoopFindTensorBasis.md) - finds a linearly independent set of external momenta
+- [FCLoopFindIncompleteTopologies](../FCLoopFindIncompleteTopologies.md) - finds all incomplete topologies in the list
 - [FCLoopFindOverdeterminedTopologies](../FCLoopFindOverdeterminedTopologies.md) - finds all overdetermined topologies in the list
 - [FCLoopFindScalelessTopologies](../FCLoopFindScalelessTopologies.md) - finds all scaleless topologies in the list
 - [FCLoopFromGLI](../FCLoopFromGLI.md) - converts [GLI](../GLI.md)s into explicit integrals with [FeynAmpDenominator](../FeynAmpDenominator.md)s
@@ -366,6 +367,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCLoopPropagatorsToTopology](../FCLoopPropagatorsToTopology.md) - auxiliary function that generates a list of propagators to describe a topology
 - [FCLoopRemovePropagator](../FCLoopRemovePropagator.md) - removes specific propagators from given `FCTopology`s or `GLI`s
 - [FCLoopReplaceQuadraticEikonalPropagators](../FCLoopReplaceQuadraticEikonalPropagators.md) - tries to eliminate quadratic-eikonal propagators by completing the square
+- [FCLoopRewriteIncompleteTopologies](../FCLoopRewriteIncompleteTopologies.md) - handles incomplete topologies in the expression
 - [FCLoopRewriteOverdeterminedTopologies](../FCLoopRewriteOverdeterminedTopologies.md) - handles overdetermined topologies in the expression using partial fraction decompositions
 - [FCLoopSamePropagatorHeadsQ](../FCLoopSamePropagatorHeadsQ.md) - checks if the integral contains different types of propagators
 - [FCLoopRemoveNegativePropagatorPowers](../FCLoopRemoveNegativePropagatorPowers.md) - rewrites propagators rasied to negative integer powers as numerators
