@@ -24,13 +24,14 @@ Tests`Lorentz`fcstFourSeries = {
 "FourSeries[FVD[p,mu],{p,p0,2},FCE->True]",
 "FVD[p, mu]"}, {"fcstFourSeries-ID6",
 "FourSeries[1/(SPD[p,q]-m^2),{p,p0,2},FCE->True]",
-"-(SPD[p, q]^2/(m^2 - SPD[p0, q])^3) - (SPD[p, q]*(-m^2 + 3*SPD[p0, \
-q]))/(-m^2 + SPD[p0, q])^3 + (m^4 - 3*m^2*SPD[p0, q] + 3*SPD[p0, \
-q]^2)/(-m^2 + SPD[p0, q])^3"}, {"fcstFourSeries-ID7",
+"-(SPD[p, q]^2/(m^2 - SPD[p0, q])^3) - (SPD[p,
+	 q]*(m^2 - 3*SPD[p0, q]))/(m^2 - SPD[p0, q])^3 - (m^4 -
+	3*m^2*SPD[p0, q] + 3*SPD[p0, q]^2)/(m^2 - SPD[p0, q])^3"}, {"fcstFourSeries-ID7",
 "FourSeries[1/(SPD[p,p]-m^2),{p,p0,2},FCE->True]",
-"(-4*SPD[p, p0]^2)/(m^2 - SPD[p0, p0])^3 - SPD[p, p]/(m^2 - SPD[p0, \
-p0])^2 - (8*SPD[p, p0]*SPD[p0, p0])/(-m^2 + SPD[p0, p0])^3 + (m^4 - \
-3*m^2*SPD[p0, p0] + 6*SPD[p0, p0]^2)/(-m^2 + SPD[p0, p0])^3"}, \
+"(-4*SPD[p, p0]^2)/(m^2 - SPD[p0, p0])^3 -
+SPD[p, p]/(m^2 - SPD[p0, p0])^2 + (8*SPD[p, p0]*
+	SPD[p0, p0])/(m^2 - SPD[p0, p0])^3 - (m^4 - 3*m^2*SPD[p0, p0] +
+	6*SPD[p0, p0]^2)/(m^2 - SPD[p0, p0])^3"}, \
 {"fcstFourSeries-ID8", "FourSeries[1/(SPD[p,p]-m^2),{p,0,4},FCE->True]",
 	"-m^(-2) - SPD[p, p]/m^4 - SPD[p, p]^2/m^6"}, \
 {"fcstFourSeries-ID9", "FourSeries[1/(SPD[p,q]),{p,0,2},FCE->True]",

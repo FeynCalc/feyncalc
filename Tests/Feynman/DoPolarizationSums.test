@@ -282,13 +282,16 @@ DoPolarizationSums[#, p, Contract -> False, FCE -> True] &,
 	0] &, -(DiracGamma[LorentzIndex[a_]].DiracGamma[LorentzIndex[a_]]*
 	Pair[Momentum[p], Momentum[p]]) - Pair[Momentum[k1], Momentum[k2]]^2*
 	Pair[Momentum[p], Momentum[p]]]","True"},
-{"fcstDoPolarizationSums-ID31","FCClearScalarProducts[]; ScalarProduct[p,p]= M; \n MatchQ[SP[k1, k2] Pair[LorentzIndex[mu],
-	Momentum[Polarization[p, I]]] FV[k1, mu] FV[k2, nu] Pair[
-	LorentzIndex[nu], Momentum[Polarization[p, -I]]] //
-	DoPolarizationSums[#, p] &, Pair[Momentum[k1],
-	Momentum[k2]] (-Pair[Momentum[k1], Momentum[k2]] + (
-	Pair[Momentum[k1], Momentum[p]] Pair[Momentum[k2], Momentum[p]])/
-	Pair[Momentum[p], Momentum[p]])]", "True"},
+{"fcstDoPolarizationSums-ID31","FCClearScalarProducts[];
+ScalarProduct[p, p] = M; MatchQ[
+SP[k1, k2] Pair[LorentzIndex[mu], Momentum[Polarization[p, I]]] FV[
+	k1, mu] FV[k2, nu] Pair[LorentzIndex[nu],
+	Momentum[Polarization[p, -I]]] //
+DoPolarizationSums[#,
+	p] &, -((Pair[Momentum[k1],
+	   Momentum[k2]]*(M*Pair[Momentum[k1], Momentum[k2]] -
+		Pair[Momentum[k1], Momentum[p]]*Pair[Momentum[k2], Momentum[p]]))/
+	M)]", "True"},
 {"fcstDoPolarizationSums-ID32","MatchQ[SP[p,p] (SP[k1, k2] Pair[LorentzIndex[mu],
 	Momentum[Polarization[p, I]]] FV[k1, mu] FV[k2, nu] Pair[
 	LorentzIndex[nu], Momentum[Polarization[p, -I]]] +
@@ -310,12 +313,14 @@ GS[p].GS[p] - M SP[k1, k2]^2 + SP[k1, k2] SP[k1, p] SP[k2, p]]","True"},
 	Momentum[Polarization[p, I, Transversality -> True]]] FV[k1,
 	mu] FV[k2, nu] Pair[LorentzIndex[nu],
 	Momentum[Polarization[p, -I, Transversality -> True]]] +
-	DiracGamma[Momentum[Polarization[p, I, Transversality -> True]]].DiracGamma[
+	DiracGamma[
+	Momentum[Polarization[p, I, Transversality -> True]]] .
+	DiracGamma[
 	Momentum[Polarization[p, -I, Transversality -> True]]]) //
-	DoPolarizationSums[#, p, FCE -> True] &,
-	-GA[a_].GA[a_] SP[p1, p2] + (GS[p].GS[p] SP[p1, p2])/M -
-	SP[k1, k2]^2 SP[p1, p2] + (
-	SP[k1, k2] SP[k1, p] SP[k2, p] SP[p1, p2])/M]","True"},
+DoPolarizationSums[#, p,
+	FCE -> True] &, -(((M*GA[$MU[a_]] . GA[$MU[a_]] - GS[p] . GS[p] +
+		M*SP[k1, k2]^2 - SP[k1, k2]*SP[k1, p]*SP[k2, p])*SP[p1, p2])/
+	M)]","True"},
 {"fcstDoPolarizationSums-ID35",
 	"DoPolarizationSums[Pair[Momentum[p1],Momentum[Polarization[x1,I]]]Pair[Momentum[p2],
 	Momentum[Polarization[x1,-I]]]+1,x1,0,NumberOfPolarizations->4,VirtualBoson->True,FCVerbose->-1]//FCE",
