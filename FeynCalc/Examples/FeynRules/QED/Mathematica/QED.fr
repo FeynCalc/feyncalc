@@ -6,7 +6,7 @@ M$Information = {
   Authors      -> {"Vladyslav Shtabovenko"},
   Institutions -> {"FeynCalc project"},
   Emails       -> {""},
-  Date         -> "08.08.2024"
+  Date         -> "27.01.2026"
 };
 
 IndexRange[Index[Generation]] = Range[3];
@@ -14,7 +14,7 @@ IndexStyle[Generation, f];
 
 M$Parameters =
 Join[{EL == {ParameterType ->
-	Internal}}, (# == {ParameterType -> External}) & /@ {Zm, ZA,
+	Internal}}, (# == {ParameterType -> External}) & /@ {Zmxt,mxt, Zm, ZA,
 	Zpsi, Zxi, Zg}]
 
 M$GaugeGroups = {
@@ -52,9 +52,15 @@ V[1] == {
 }
 };
 
+
 LQED = LQEDR + LQEDCT;
 LQEDR = -1/4 FS[A, imu, inu] FS[A, imu, inu] + I lbar.Ga[imu].DC[l, imu]- Mlep[fi] lbar[s,fi].l[s,fi];
 LQEDCT = FR$CT (-(ZA -1) 1/4 FS[A, imu, inu] FS[A, imu, inu]
 		-1/(2GaugeXi[V[1]])(ZA/Zxi-1) del[A[imu],imu] del[A[inu],inu]
 		+ (Zpsi-1) I lbar.Ga[imu].del[l,imu] - (Zpsi Zm -1) Mlep[fi] lbar[s,fi].l[s,fi]
-		+ (Zpsi Sqrt[ZA] Ze - 1) EL lbar.Ga[imu].l A[imu]);
+		+ (Zpsi Sqrt[ZA] Ze - 1) EL lbar.Ga[imu].l A[imu]
+		(*
+      	Counter-terms for the tadpole expansion.       	
+      	*)      	
+      	+(ZAmxt^2-1)*mxt^2/2*A[mu]^2
+      	);

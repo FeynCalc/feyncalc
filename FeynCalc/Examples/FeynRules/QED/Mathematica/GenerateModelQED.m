@@ -46,5 +46,8 @@ LoadModel[frModelPath];
 
 
 FR$Loop=True;
-SetDirectory[FileNameJoin[{$UserBaseDirectory,"Applications","FeynCalc","FeynArts","Models"}]];
+SetDirectory[FileNameJoin[{$UserBaseDirectory,"Applications","FeynCalc","Examples","Models"}]]
 WriteFeynArtsOutput[LQED,Output->"QED",CouplingRename->False];
+
+
+
