@@ -537,7 +537,7 @@ FeynRule[lag_, fii_List, ru___Rule] :=
 
 			FCPrint[1, "FeynRule: After ExpandPartialD: ", nlag, FCDoControl->frVerbose];
 
-			temp1 = frex[nlag];
+			temp1 = Expand2[frex[nlag],QuantumField];
 
 			FCPrint[1, "FeynRule: After frex: ", temp1, FCDoControl->frVerbose];
 
@@ -629,7 +629,7 @@ FeynRule[lag_, fii_List, ru___Rule] :=
 
 				If[ Union[Cases[result, LorentzIndex[__], Infinity]] =!= Sort[lfili],
 					If[ (Contract /. Options[FeynRule]) === True,
-						result = result// Contract;
+						result = result// Contract//ExpandAll;
 						FCPrint[1, "FeynRule: After another contraction ", result, FCDoControl->frVerbose];
 					]
 				];
