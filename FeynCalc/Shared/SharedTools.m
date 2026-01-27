@@ -191,7 +191,21 @@ FreeQ2[expr, form] is the same as FreeQ[expr, form].";
 
 FRH::usage =
 "FRH[exp_] corresponds to FixedPoint[ReleaseHold, exp],  i.e. FRH removes all
-HoldForm and Hold in exp.";
+HoldForm and Hold in exp.
+
+Notice that FRH will not be able to reinsert abbreviations if they were
+introduced by Collect2 running in parallel mode. For that you need to use FRH2";
+
+FRH2::usage =
+"FRH2[exp_, isoNames_] is similar FRH but is specifically designed to reinsert
+abbreviations introduced by Collect2 running in parallel mode.
+
+In such cases the user needs to set the IsolateNames option to a list
+containing  as many elements as there are parallel kernels. Then, each
+parallel kernel introduces its own set of abbreviations that are not known to
+other kernels. FRH2 takes the value of the IsolateNames option as its second
+arguments, fetches abbreviation definitions from each parallel kernel and
+finally substitutes them back into exp.";
 
 FunctionLimits::usage =
 "FunctionLimits is an option of ILimit, specifying which functions should be
@@ -328,6 +342,10 @@ FCMakeSymbols::failmsg =
 "Error! FCMakeSymbols has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`";
 
+FRH2::failmsg =
+"Error! FRH2 has encountered a fatal problem and must abort the computation. \n
+The problem reads: `1`";
+
 Begin["`Package`"];
 End[]
 
@@ -389,6 +407,10 @@ Options[FCSplit] = {
 
 Options[FCProductSplit] = {
 	Abort -> False
+};
+
+Options[FRH2] = {
+	IsolateNames -> All
 };
 
 Options[FRH] = {
@@ -882,6 +904,27 @@ FRH[x_, OptionsPattern[]] :=
 
 FRH[x_, OptionsPattern[]] :=
 	FixedPoint[ReplaceRepeated[x, HoldForm[y_[z___]] /; ! FreeQ2[HoldForm[y], Flatten[{OptionValue[IsolateNames]}]] :> y[z]] &, x]/; OptionValue[IsolateNames]=!=All;
+
+FRH2[ex_, isoSymbols_List/;!OptionQ[isoSymbols], OptionsPattern[]]:=
+Block[{allHolds,holdsSorted,repRules,res},
+
+	If[!$ParallelizeFeynCalc,
+		Message[FRH2::failmsg,"FRH2 only works in parallel mode."];
+		Abort[]
+	];
+
+	If[	Length[isoSymbols]=!=$KernelCount,
+		Message[FRH2::failmsg,"The number of abbreviation symbols must match the number of parallel kernels."];
+		Abort[]
+
+	];
+
+	allHolds=SelectNotFree[Cases2[ex,HoldForm],isoSymbols];
+	holdsSorted=Map[SelectNotFree[allHolds,#]&,isoSymbols];
+	repRules=Table[With[{exp=holdsSorted[[i]],isoName=isoSymbols[[i]]},ParallelEvaluate[Thread[Rule[exp,FRH[exp,IsolateNames->isoName]]],i,DistributedContexts->None]],{i,1,$KernelCount}];
+	res = ex/.Dispatch[Flatten[repRules]];
+	res
+];
 
 ILimit[exp_, lim_Rule, OptionsPattern[]] :=
 	Block[{limruls, m, ff, fff, out,res},

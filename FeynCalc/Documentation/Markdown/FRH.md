@@ -2,9 +2,11 @@
 
 `FRH[exp_]` corresponds to `FixedPoint[ReleaseHold, exp]`,  i.e. `FRH` removes all `HoldForm` and `Hold` in `exp`.
 
+Notice that `FRH` will not be able to reinsert abbreviations if they were introduced by `Collect2` running in parallel mode. For that you need to use `FRH2`
+
 ### See also
 
-[Overview](Extra/FeynCalc.md), [Isolate](Isolate.md).
+[Overview](Extra/FeynCalc.md), [Collect2](Collect2.md), [FRH2](FRH2.md),  [Isolate](Isolate.md).
 
 ### Examples
 
