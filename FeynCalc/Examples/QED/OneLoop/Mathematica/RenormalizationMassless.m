@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-(* :Title: Renormalization													*)
+(* :Title: RenormalizationMasssless													*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -9,7 +9,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Renormalization, QED, MSbar, 1-loop							*)
+(* :Summary:  Renormalization, QED, MSbar, massless, 1-loop							*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -27,7 +27,7 @@
 (*This example uses a custom QED model created with FeynRules.*)
 
 
-description="Renormalization, QED, MSbar, 1-loop";
+description="Renormalization, QED, MSbar, massless,1-loop";
 If[ $FrontEnd === Null,
 	$FeynCalcStartupMessages = False;
 	Print[description];
@@ -62,7 +62,7 @@ FAPatch[PatchModelsOnly->True,FAModelsDirectory->modelDir];
 (*Here we define all Z-factors for renormalization constants present in the Lagrangian*)
 
 
-renConstants=Zm|Zpsi|ZA|ZAmxt|Ze|Zxi
+renConstants=Zpsi|ZA|ZAmxt|Ze|Zxi
 
 
 (* ::Section:: *)
@@ -172,7 +172,7 @@ FCFAConvert[CreateFeynAmp[#,Truncated->True,
 	LorentzIndexNames->{mu,nu}, DropSumOver->True,
 	LoopMomenta->{k}, UndoChiralSplittings->True,
 	ChangeDimension->D, SMP->True,
-	FinalSubstitutions->{SMP["m_e"]->ml,SMP["e"]->4 Pi Sqrt[a4]}]&/@{
+	FinalSubstitutions->{SMP["m_e"]->0,SMP["e"]->4 Pi Sqrt[a4]}]&/@{
 	diagLeptonSE,diagPhotonSE,diagLeptonSECT,diagPhotonSECT};
 
 
@@ -183,7 +183,7 @@ FCFAConvert[CreateFeynAmp[#,Truncated->True,
 	LorentzIndexNames->{mu,nu}, DropSumOver->True,
 	LoopMomenta->{k}, UndoChiralSplittings->True,
 	ChangeDimension->D, SMP->True,
-	FinalSubstitutions->{SMP["m_e"]->ml,SMP["e"]->4 Pi Sqrt[a4]}]&/@{
+	FinalSubstitutions->{SMP["m_e"]->0,SMP["e"]->4 Pi Sqrt[a4]}]&/@{
 	diagLeptonPhotonVTX,diagLeptonPhotonVTXCT
 	};
 
@@ -256,7 +256,7 @@ leptonSE$AmpGLI=FCLoopApplyTopologyMappings[leptonSE$Amp6,{leptonSE$TopoMappings
 leptonSE$GLIs=Cases2[leptonSE$AmpGLI,GLI];
 
 
-leptonSE$dir=FileNameJoin[{$TemporaryDirectory,"Reduction-"<>leptonSE$StrName<>"-1L"}];
+leptonSE$dir=FileNameJoin[{$TemporaryDirectory,"Reduction-"<>leptonSE$StrName<>"-1L-massless"}];
 Quiet[CreateDirectory[leptonSE$dir]];
 
 
@@ -365,7 +365,7 @@ photonSE$AmpGLI=FCLoopApplyTopologyMappings[photonSE$Amp6,{photonSE$TopoMappings
 photonSE$GLIs=Cases2[photonSE$AmpGLI,GLI];
 
 
-photonSE$dir=FileNameJoin[{$TemporaryDirectory,"Reduction-"<>photonSE$StrName<>"-1L"}];
+photonSE$dir=FileNameJoin[{$TemporaryDirectory,"Reduction-"<>photonSE$StrName<>"-1L-massless"}];
 Quiet[CreateDirectory[photonSE$dir]];
 
 
@@ -386,7 +386,7 @@ photonSE$ReductionTables=KiraImportResults[photonSE$FinalTopos, photonSE$dir]//F
 
 
 photonSE$resPreFinal=Collect2[Total[photonSE$AmpGLI/.Dispatch[photonSE$ReductionTables]]//FeynAmpDenominatorExplicit,GLI,
-GaugeXi,flagCheck,D,DiracGamma,FCParallelize->True];
+GaugeXi,D,DiracGamma,FCParallelize->True];
 
 
 photonSE$masters=Cases2[photonSE$resPreFinal,GLI];
@@ -469,7 +469,7 @@ leptonPhotonVTX$AmpGLI=FCLoopApplyTopologyMappings[leptonPhotonVTX$Amp6,{leptonP
 leptonPhotonVTX$GLIs=Cases2[leptonPhotonVTX$AmpGLI,GLI];
 
 
-leptonPhotonVTX$dir=FileNameJoin[{$TemporaryDirectory,"Reduction-"<>leptonPhotonVTX$StrName<>"-1L"}];
+leptonPhotonVTX$dir=FileNameJoin[{$TemporaryDirectory,"Reduction-"<>leptonPhotonVTX$StrName<>"-1L-massless"}];
 Quiet[CreateDirectory[leptonPhotonVTX$dir]];
 
 
@@ -490,7 +490,7 @@ leptonPhotonVTX$ReductionTables=KiraImportResults[leptonPhotonVTX$FinalTopos, le
 
 
 leptonPhotonVTX$resPreFinal=Collect2[Total[leptonPhotonVTX$AmpGLI/.Dispatch[leptonPhotonVTX$ReductionTables]]//FeynAmpDenominatorExplicit,GLI,
-GaugeXi,flagCheck,D,DiracGamma,FCParallelize->True];
+GaugeXi,D,DiracGamma,FCParallelize->True];
 
 
 leptonPhotonVTX$masters=Cases2[leptonPhotonVTX$resPreFinal,GLI];
@@ -534,9 +534,9 @@ leptonPhotonVTX$RenConstants]]&]]
 
 
 knownResult = {
-rc[delZAmxt, 1] -> 0, 
 rc[delZA, 1] -> (-4*Nf)/(3*ep), 
-rc[delZxi, 1] -> (-4*Nf)/(3*ep), rc[delZm, 1] -> -3/ep, 
+rc[delZAmxt, 1] -> -2 Nf/ep, 
+rc[delZxi, 1] -> (-4*Nf)/(3*ep), 
  rc[delZpsi, 1] -> -(GaugeXi[V[1]]/ep), 
  rc[delZe, 1] -> (2*Nf)/(3*ep)};
 

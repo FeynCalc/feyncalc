@@ -9,7 +9,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Renormalization, QCD, MS and MSbar, 1-loop					*)
+(* :Summary:  Renormalization, QCD, MSbar, 1-loop							*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -24,11 +24,10 @@
 
 
 (* ::Text:: *)
-(*This example uses a custom QCD model created with FeynRules. Please evaluate the file*)
-(*FeynCalc/Examples/FeynRules/QCD/GenerateModelQCD.m before running it for the first time.*)
+(*This example uses a custom QCD model created with FeynRules.*)
 
 
-description="Renormalization, QCD, MS and MSbar, 1-loop";
+description="Renormalization, QCD, MSbar, 1-loop";
 If[ $FrontEnd === Null,
 	$FeynCalcStartupMessages = False;
 	Print[description];
@@ -53,14 +52,17 @@ If[ToExpression[StringSplit[$FeynHelpersVersion,"."]][[1]]<2,
 (*Configure some options*)
 
 
+modelDir=FileNameJoin[{$UserBaseDirectory,"Applications","FeynCalc","Examples","Models","QCD"}];
+
+
+FAPatch[PatchModelsOnly->True,FAModelsDirectory->modelDir];
+
+
 (* ::Text:: *)
-(*We keep scaleless B0 functions, since otherwise the UV part would not come out right.*)
+(*Here we define all Z-factors for renormalization constants present in the Lagrangian*)
 
 
-$KeepLogDivergentScalelessIntegrals=True;
-
-
-FAPatch[PatchModelsOnly->True];
+renConstants=Zm|Zpsi|ZA|ZAmxt|Zu|Zumxt|Zg|Zxi
 
 
 (* ::Section:: *)
@@ -77,122 +79,137 @@ FCAttachTypesettingRule[rho,"\[Rho]"];
 FCAttachTypesettingRule[si,"\[Sigma]"];
 
 
-params={InsertionLevel->{Particles},Model -> FileNameJoin[{"QCD","QCD"}],
-GenericModel -> FileNameJoin[{"QCD","QCD"}],ExcludeParticles->{F[3|4,{2|3}],F[4,{1}]}};
-top[i_,j_]:=CreateTopologies[1, i -> j,
-	ExcludeTopologies -> {Tadpoles,WFCorrections,WFCorrectionCTs}];
-topTriangle[i_,j_]:=CreateTopologies[1, i -> j,
-	ExcludeTopologies -> {Tadpoles,WFCorrections,WFCorrectionCTs,SelfEnergies}];
-
-topCT[i_,j_]:=CreateCTTopologies[1, i ->j,
-	ExcludeTopologies ->{Tadpoles,WFCorrections,WFCorrectionCTs}];
-topTriangleCT[i_,j_]:=CreateCTTopologies[1, i -> j,
-	ExcludeTopologies -> {Tadpoles,WFCorrections,WFCorrectionCTs,SelfEnergyCTs}];
-
-{diagQuarkSE,diagQuarkSECT} = InsertFields[#, {F[3,{1}]} -> {F[3,{1}]},
-	Sequence@@params]&/@{top[1,1],topCT[1,1]};
-
-{diagGluonSE,diagGluonSECT} = InsertFields[#, {V[5]} -> {V[5]},
-	Sequence@@params]&/@{top[1,1],topCT[1,1]};
-
-{diagGhostSE,diagGhostSECT} = InsertFields[#, {U[5]} -> {U[5]},
-	Sequence@@params]&/@{top[1,1],topCT[1,1]};
-
-{diagQuarkGluonVertex,diagQuarkGluonVertexCT} = InsertFields[#,
-	{F[3,{1}],V[5]}->{F[3,{1}]}, Sequence@@params]&/@{topTriangle[2,1],topTriangleCT[2,1]};
+diagQuarkSE=InsertFields[CreateTopologies[1, 1 -> 1,
+ExcludeTopologies -> {Tadpoles,WFCorrections,WFCorrectionCTs}], {F[3,{1}]} -> {F[3,{1}]},
+InsertionLevel->{Particles},Model -> FileNameJoin[{modelDir,"QCD"}],
+GenericModel -> FileNameJoin[{modelDir,"QCD"}],ExcludeParticles->{F[3|4,{2|3}],F[4,{1}]}];
 
 
-diag1[0]=diagQuarkSE[[0]][Sequence@@diagQuarkSE,
-	Sequence@@diagQuarkSECT];
-diag2[0]=diagGluonSE[[0]][Sequence@@diagGluonSE,
-	Sequence@@diagGluonSECT];
-diag3[0]=diagGhostSE[[0]][Sequence@@diagGhostSE,
-	Sequence@@diagGhostSECT];
-diag4[0]=diagQuarkGluonVertex[[0]][Sequence@@diagQuarkGluonVertex,
-	Sequence@@diagQuarkGluonVertexCT];
+diagGluonSE=InsertFields[CreateTopologies[1, 1 -> 1,
+ExcludeTopologies -> {Tadpoles,WFCorrections,WFCorrectionCTs}], {V[5]} -> {V[5]},
+InsertionLevel->{Particles},Model -> FileNameJoin[{modelDir,"QCD"}],
+GenericModel -> FileNameJoin[{modelDir,"QCD"}],ExcludeParticles->{F[3|4,{2|3}],F[4,{1}]}];
 
 
-Paint[diag1[0], ColumnsXRows -> {2, 1},SheetHeader->None,
-Numbering -> Simple, ImageSize->{512,256}];
+diagGhostSE=InsertFields[CreateTopologies[1, 1 -> 1,
+ExcludeTopologies -> {Tadpoles,WFCorrections,WFCorrectionCTs}], {U[5]} -> {U[5]},
+InsertionLevel->{Particles},Model -> FileNameJoin[{modelDir,"QCD"}],
+GenericModel -> FileNameJoin[{modelDir,"QCD"}],ExcludeParticles->{F[3|4,{2|3}],F[4,{1}]}];
 
 
-Paint[diag2[0], ColumnsXRows -> {4, 1},SheetHeader->None,
-Numbering -> Simple, ImageSize->{512,128}];
+diagquarkGluonVTX=InsertFields[CreateTopologies[1, 2 -> 1,
+ExcludeTopologies -> {Tadpoles,WFCorrections,WFCorrectionCTs}], {F[3,{1}],V[5]}->{F[3,{1}]},
+InsertionLevel->{Particles},Model -> FileNameJoin[{modelDir,"QCD"}],
+GenericModel -> FileNameJoin[{modelDir,"QCD"}],ExcludeParticles->{F[3|4,{2|3}],F[4,{1}]}];
 
 
-Paint[diag3[0], ColumnsXRows -> {2, 1},SheetHeader->None,
-Numbering -> Simple, ImageSize->{512,256}];
+diagQuarkSECT=InsertFields[CreateCTTopologies[1, 1 -> 1,
+ExcludeTopologies -> {Tadpoles,WFCorrections,WFCorrectionCTs}], {F[3,{1}]} -> {F[3,{1}]},
+InsertionLevel->{Particles},Model -> FileNameJoin[{modelDir,"QCD"}],
+GenericModel -> FileNameJoin[{modelDir,"QCD"}],ExcludeParticles->{F[3|4,{2|3}],F[4,{1}]}];
 
 
-Paint[diag4[0], ColumnsXRows -> {3, 1},SheetHeader->None,
-Numbering -> Simple, ImageSize->{512,256}];
+diagGluonSECT=InsertFields[CreateCTTopologies[1, 1 -> 1,
+ExcludeTopologies -> {Tadpoles,WFCorrections,WFCorrectionCTs}], {V[5]} -> {V[5]},
+InsertionLevel->{Particles},Model -> FileNameJoin[{modelDir,"QCD"}],
+GenericModel -> FileNameJoin[{modelDir,"QCD"}],ExcludeParticles->{F[3|4,{2|3}],F[4,{1}]}];
+
+
+diagGhostSECT=InsertFields[CreateCTTopologies[1, 1 -> 1,
+ExcludeTopologies -> {Tadpoles,WFCorrections,WFCorrectionCTs}], {U[5]} -> {U[5]},
+InsertionLevel->{Particles},Model -> FileNameJoin[{modelDir,"QCD"}],
+GenericModel -> FileNameJoin[{modelDir,"QCD"}],ExcludeParticles->{F[3|4,{2|3}],F[4,{1}]}];
+
+
+diagquarkGluonVTXCT=InsertFields[CreateCTTopologies[1, 2 -> 1,
+ExcludeTopologies -> {Tadpoles,WFCorrections,WFCorrectionCTs}], {F[3,{1}],V[5]}->{F[3,{1}]},
+InsertionLevel->{Particles},Model -> FileNameJoin[{modelDir,"QCD"}],
+GenericModel -> FileNameJoin[{modelDir,"QCD"}],ExcludeParticles->{F[3|4,{2|3}],F[4,{1}]}];
+
+
+(* ::Text:: *)
+(*Self-energy and vertex diagrams*)
+
+
+Paint[diagQuarkSE, ColumnsXRows -> {2, 1},SheetHeader->None,
+Numbering -> Simple, ImageSize->128{2, 1}];
+Paint[diagGluonSE, ColumnsXRows -> {4, 1},SheetHeader->None,
+Numbering -> Simple, ImageSize->128{4, 1}];
+Paint[diagGhostSE, ColumnsXRows -> {4, 1},SheetHeader->None,
+Numbering -> Simple, ImageSize->128{4, 1}];
+Paint[diagquarkGluonVTX, ColumnsXRows -> {4, 1},SheetHeader->None,
+Numbering -> Simple, ImageSize->128{4, 1}];
+
+
+(* ::Text:: *)
+(*Counter-term diagrams*)
+
+
+Paint[diagQuarkSECT, ColumnsXRows -> {2, 1},SheetHeader->None,
+Numbering -> Simple, ImageSize->128{2, 1}];
+Paint[diagGluonSECT, ColumnsXRows -> {4, 1},SheetHeader->None,
+Numbering -> Simple, ImageSize->128{4, 1}];
+Paint[diagGhostSECT, ColumnsXRows -> {4, 1},SheetHeader->None,
+Numbering -> Simple, ImageSize->128{4, 1}];
+Paint[diagquarkGluonVTXCT, ColumnsXRows -> {4, 1},SheetHeader->None,
+Numbering -> Simple, ImageSize->128{4, 1}];
+
+
+(* ::Section:: *)
+(*Master integrals*)
+
+
+(* ::Text:: *)
+(*The only required masters are 1-loop tadpoles*)
+(**)
+
+
+tadpoleMaster=Get[FileNameJoin[{$FeynCalcDirectory,"Examples","MasterIntegrals","Tadpoles","tad1LxFx1x1xxEp999x.m"}]];
+
+
+tadpoleMaster1=tadpoleMaster/.m1->mq/.tad1LxFx1x1xxEp999x->"tad1Lv1";
+tadpoleMaster2=tadpoleMaster/.m1->mxt/.tad1LxFx1x1xxEp999x->"tad1Lv2";
+
+
+tadpoleMaster1
+
+
+tadpoleMaster2
 
 
 (* ::Section:: *)
 (*Obtain the amplitudes*)
 
 
-(* ::Text:: *)
-(*The 1/(2Pi)^D prefactor is implicit.*)
-
-
-(* ::Text:: *)
-(*Quark self-energy including the counter-term*)
-
-
-ampQuarkSE[0] = FCFAConvert[CreateFeynAmp[diag1[0],Truncated->True,
+{quarkSE$RawAmp,gluonSE$RawAmp,ghostSE$RawAmp,quarkSECT$RawAmp,gluonSECT$RawAmp,ghostSECT$RawAmp} = 
+FCFAConvert[CreateFeynAmp[#,Truncated->True,
 	GaugeRules->{},PreFactor->1],
 	IncomingMomenta->{p}, OutgoingMomenta->{p},
 	LorentzIndexNames->{mu,nu}, DropSumOver->True,
-	LoopMomenta->{l}, UndoChiralSplittings->True,
+	LoopMomenta->{k}, UndoChiralSplittings->True,
 	ChangeDimension->D, SMP->True,
-	FinalSubstitutions->{Zm->SMP["Z_m"], Zpsi->SMP["Z_psi"],
-	SMP["m_u"]->SMP["m_q"]}]
+	FinalSubstitutions->{SMP["m_u"]->mq,SMP["g_s"]->4 Pi Sqrt[as4]}]&/@{
+	diagQuarkSE,diagGluonSE,diagGhostSE,diagQuarkSECT,diagGluonSECT,diagGhostSECT};
 
 
-(* ::Text:: *)
-(*Gluon self-energy including the counter-term*)
-
-
-ampGluonSE[0] = FCFAConvert[CreateFeynAmp[diag2[0],Truncated->True,
-	GaugeRules->{}, PreFactor->1],
-	IncomingMomenta->{p}, OutgoingMomenta->{p},
-	LorentzIndexNames->{mu,nu,rho,si}, DropSumOver->True,
-	LoopMomenta->{l}, UndoChiralSplittings->True,
-	ChangeDimension->D, SMP->True,
-	FinalSubstitutions->{ZA->SMP["Z_A"], Zxi->SMP["Z_xi"],
-	SMP["m_u"]->SMP["m_q"]}]
-
-
-(* ::Text:: *)
-(*Ghost self-energy including the counter-term*)
-
-
-ampGhostSE[0] = FCFAConvert[CreateFeynAmp[diag3[0],Truncated->True,
-	GaugeRules->{}, PreFactor->1],
-	IncomingMomenta->{p}, OutgoingMomenta->{p},
+{quarkGluonVTX$RawAmp,quarkGluonVTXCT$RawAmp} = 
+FCFAConvert[CreateFeynAmp[#,Truncated->True,
+	GaugeRules->{},PreFactor->1],
+	IncomingMomenta->{p1,p2}, OutgoingMomenta->{q},
 	LorentzIndexNames->{mu,nu}, DropSumOver->True,
-	LoopMomenta->{l}, UndoChiralSplittings->True,
+	LoopMomenta->{k}, UndoChiralSplittings->True,
 	ChangeDimension->D, SMP->True,
-	FinalSubstitutions->{Zu->SMP["Z_u"]}]
-
-
-(* ::Text:: *)
-(*Quark-gluon vertex including the counter-term*)
-
-
-ampQGlVertex[0] = FCFAConvert[CreateFeynAmp[diag4[0],Truncated->True,
-	GaugeRules->{}, PreFactor->1],
-	IncomingMomenta->{p1,k}, OutgoingMomenta->{p2},
-	LorentzIndexNames->{mu,nu,rho}, DropSumOver->True, LoopMomenta->{l},
-	UndoChiralSplittings->True, ChangeDimension->D,
-	SMP->True, FinalSubstitutions->
-	{ZA->SMP["Z_A"], Zg->SMP["Z_g"], Zpsi->SMP["Z_psi"],
-	SMP["m_u"]->SMP["m_q"]}]
+	FinalSubstitutions->{SMP["m_u"]->mq,SMP["g_s"]->4 Pi Sqrt[as4]}]&/@{
+	diagquarkGluonVTX,diagquarkGluonVTXCT
+	};
 
 
 (* ::Section:: *)
 (*Calculate the amplitudes*)
+
+
+(* ::Text:: *)
+(*Infrared rearrangement works both for massive and massless quarks. However, in both cases we get different renormalization constants for the "gluon mass". This is why both calculations are needed if we want to reuse these results at higher loops orders.*)
 
 
 (* ::Subsection:: *)
@@ -200,52 +217,107 @@ ampQGlVertex[0] = FCFAConvert[CreateFeynAmp[diag4[0],Truncated->True,
 
 
 (* ::Text:: *)
-(*Tensor reduction allows us to express the quark self-energy in tems of the Passarino-Veltman coefficient functions.*)
+(*The 1-loop quark self-energy has superficial degree of divergence equal to 1*)
 
 
-ampQuarkSE[1]=ampQuarkSE[0]//SUNSimplify[#,FCParallelize->True]&//
-DiracSimplify[#,FCParallelize->True]&//TID[#,l,UsePaVeBasis->True,
-ToPaVe->True,FCParallelize->True]&//Total;
+FCClearScalarProducts[];
+divDegree=1;
+aux1=FCLoopGetFeynAmpDenominators[quarkSE$RawAmp,{k},denHead,Momentum->{p},"Massless"->True];
+aux2=FCLoopAddAuxiliaryMass[aux1[[2]],{k},-mxt^2,0,Head->denHead]
+
+
+quarkSE$StrName=StringReplace[ToString[Hold[quarkSE$Amp]],{"Hold["->"","]"->""}]
+
+
+AbsoluteTiming[quarkSE$Amp=(aux1[[1]]/.aux2)//Contract[#,FCParallelize->True]&//
+SUNSimplify[#,FCParallelize->True]&//DiracSimplify[#,FCParallelize->True]&;]
 
 
 (* ::Text:: *)
-(*Discard all the finite pieces of the 1-loop amplitude.*)
+(*flagCheck is a safety flag to ensure that higher order terms in p (higher than the divergence degree) do not  contribute to the poles*)
 
 
-ampQuarkSEDiv[0]=ampQuarkSE[1]//PaVeUVPart[#,Prefactor->1/(2Pi)^D]&;
+AbsoluteTiming[quarkSE$Amp1=Collect2[quarkSE$Amp,p,IsolateNames->KK];]
+AbsoluteTiming[quarkSE$Amp2=FourSeries[quarkSE$Amp1,{p,0,divDegree},FCParallelize->True];]
+AbsoluteTiming[quarkSE$Amp3=Collect2[FRH[quarkSE$Amp2],FeynAmpDenominator,FCParallelize->True];]
 
 
-ampQuarkSEDiv[1]=FCReplaceD[ampQuarkSEDiv[0],D->4-2Epsilon]//
-	Series[#,{Epsilon,0,0}]&//Normal//FCHideEpsilon//Simplify
+(* ::Text:: *)
+(*The rest of the calculation follows the standard multiloop template*)
 
 
-ampQuarkSEDiv[2]=ampQuarkSEDiv[1]//ReplaceRepeated[#,{
-	SMP["Z_m"]->1+alpha SMP["d_m"],
-	SMP["Z_psi"]->1+alpha SMP["d_psi"]}]&//Series[#,{alpha,0,1}]&//
-	Normal//ReplaceAll[#,alpha->1]&//SelectNotFree2[#,SMP["Delta"],SMP["d_m"],
-	SMP["d_psi"]]&
+FCClearScalarProducts[];
+SPD[p]=pp;
 
 
-ampQuarkSEDiv[3]=ampQuarkSEDiv[2]//SUNSimplify//
-	Collect2[#,DiracGamma,Factoring->Simplify]&
+{quarkSE$Amp4,quarkSE$Topos}=FCLoopFindTopologies[quarkSE$Amp3,{k},FCParallelize->True,
+FCLoopBasisOverdeterminedQ->True,FinalSubstitutions->{Hold[SPD][p]->pp},Names->quarkSEtopo];
 
 
-sol[1]=Solve[SelectNotFree2[ampQuarkSEDiv[3], DiracGamma]==0,SMP["d_psi"]]//
-	Flatten//ReplaceAll[#,Rule[a_,b_]:>Rule[a,SUNSimplify[b]]]&//
-	ReplaceAll[#,SMP["g_s"]^2->4Pi SMP["alpha_s"]]&;
+AbsoluteTiming[quarkSE$Amp5=FCLoopTensorReduce[quarkSE$Amp4,quarkSE$Topos,FCParallelize->True];]
 
-sol[2]=Solve[(SelectFree2[ampQuarkSEDiv[3], DiracGamma]==0)/.sol[1],SMP["d_m"]]//
-	Flatten//ReplaceAll[#,Rule[a_,b_]:>Rule[a,SUNSimplify[b]]]&//
-	ReplaceAll[#,SMP["g_s"]^2->4Pi SMP["alpha_s"]]&;
 
-solMS1=Join[sol[1],sol[2]]/.{
-	SMP["d_psi"]->SMP["d_psi^MS"],
-	SMP["d_m"]->SMP["d_m^MS"],SMP["Delta"]->1/Epsilon
-}
-solMSbar1=Join[sol[1],sol[2]]/.{
-	SMP["d_psi"]->SMP["d_psi^MSbar"],
-	SMP["d_m"]->SMP["d_m^MSbar"]
-}
+{quarkSE$Amp6,quarkSE$Topos2}=FCLoopRewriteOverdeterminedTopologies[quarkSE$Amp5,quarkSE$Topos];
+
+
+quarkSE$SubTopos=FCLoopFindSubtopologies[quarkSE$Topos2,Flatten->True,Remove->True]
+
+
+{quarkSE$TopoMappings,quarkSE$FinalTopos}=FCLoopFindTopologyMappings[quarkSE$Topos2,PreferredTopologies->quarkSE$SubTopos];
+
+
+quarkSE$AmpGLI=FCLoopApplyTopologyMappings[quarkSE$Amp6,{quarkSE$TopoMappings,quarkSE$FinalTopos},FCParallelize->True];
+
+
+quarkSE$GLIs=Cases2[quarkSE$AmpGLI,GLI];
+
+
+quarkSE$dir=FileNameJoin[{$TemporaryDirectory,"Reduction-"<>quarkSE$StrName<>"-1L"}];
+Quiet[CreateDirectory[quarkSE$dir]];
+
+
+KiraCreateJobFile[quarkSE$FinalTopos, quarkSE$GLIs, quarkSE$dir]
+
+
+KiraCreateIntegralFile[quarkSE$GLIs, quarkSE$FinalTopos, quarkSE$dir]
+KiraCreateConfigFiles[quarkSE$FinalTopos, quarkSE$GLIs, quarkSE$dir, 
+ KiraMassDimensions -> {pp -> 2,mq->1,mxt->1}]
+
+
+KiraRunReduction[quarkSE$dir, quarkSE$FinalTopos, 
+ KiraBinaryPath -> FileNameJoin[{$HomeDirectory, ".local", "bin", "kira"}],
+ KiraFermatPath -> FileNameJoin[{$HomeDirectory, "bin", "ferl64", "fer64"}]]
+
+
+quarkSE$ReductionTables=KiraImportResults[quarkSE$FinalTopos, quarkSE$dir]//Flatten;
+
+
+quarkSE$resPreFinal=Collect2[Total[quarkSE$AmpGLI/.Dispatch[quarkSE$ReductionTables]]//FeynAmpDenominatorExplicit,GLI,
+GaugeXi,flagCheck,D,DiracGamma,FCParallelize->True];
+
+
+quarkSE$masters=Cases2[quarkSE$resPreFinal,GLI];
+
+
+quarkSE$MIMappings=FCLoopFindIntegralMappings[quarkSE$masters,Join[tadpoleMaster1[[2]],tadpoleMaster2[[2]],
+quarkSE$FinalTopos],PreferredIntegrals->{tadpoleMaster1[[1]][[1]],tadpoleMaster2[[1]][[1]]}]
+
+
+(* ::Text:: *)
+(*Our master integrals are calculated using the standard multiloop normalization. To convert it back to the textbook normalization*)
+(*we need to multiply by I*(4 Pi)^(ep-2)*)
+
+
+quarkSE$resFinal=Collect2[quarkSE$resPreFinal,D,GLI,IsolateNames->KK]//FCReplaceD[#,D->4-2ep]&//
+ReplaceAll[#,quarkSE$MIMappings[[1]]]&//ReplaceAll[#,{tadpoleMaster1[[1]],tadpoleMaster2[[1]]}]&//
+Collect2[#,ep,IsolateNames->KK2]&//Series[(I*(4*Pi)^(-2 + ep)) #,{ep,0,-1}]&//Normal//FRH//Collect2[#,DiracGamma]&
+
+
+quarkSE$RenConstants=(quarkSE$resFinal+Total[quarkSECT$RawAmp])//ReplaceRepeated[#,{
+	(h:renConstants):>1+alpha as4 rc[ToExpression["del"<>ToString[h]],1]}]&//
+	Series[#,{alpha,0,1}]&//Normal//
+	ReplaceAll[#,alpha->1]&//Collect2[#,DiracGamma]&//
+	FCMatchSolve[#,{ep,CF,DiracGamma,mq,mxt,SUNDelta,SUNFDelta,GaugeXi,as4}]&
 
 
 (* ::Subsection:: *)
@@ -253,40 +325,108 @@ solMSbar1=Join[sol[1],sol[2]]/.{
 
 
 (* ::Text:: *)
-(*Tensor reduction allows us to express the gluon self-energy in tems of the Passarino-Veltman coefficient functions.*)
+(*The 1-loop gluon self-energy has superficial degree of divergence equal to 2. We also add the number of flavors by hand by multiplying the corresponding diagrams with Nf.*)
 
 
-ampGluonSE[1]=({ampGluonSE[0][[1]],Nf ampGluonSE[0][[2]],
-Sequence@@ampGluonSE[0][[3;;]]})//SUNSimplify[#,FCParallelize->True]&//
-DiracSimplify[#,FCParallelize->True]&;
+FCClearScalarProducts[];
+gluonSE$RawAmp2={gluonSE$RawAmp[[1]],Nf gluonSE$RawAmp[[2]],gluonSE$RawAmp[[3]],gluonSE$RawAmp[[4]]};
+divDegree=2;
+aux1=FCLoopGetFeynAmpDenominators[gluonSE$RawAmp2,{k},denHead,Momentum->{p},"Massless"->True];
+aux2=FCLoopAddAuxiliaryMass[aux1[[2]],{k},-mxt^2,0,Head->denHead]
 
 
-ampGluonSE[2]=TID[ampGluonSE[1],l,UsePaVeBasis->True,ToPaVe->True,FCParallelize->True];
+gluonSE$StrName=StringReplace[ToString[Hold[gluonSE$Amp]],{"Hold["->"","]"->""}]
+
+
+AbsoluteTiming[gluonSE$Amp=(aux1[[1]]/.aux2)//Contract[#,FCParallelize->True]&//
+SUNSimplify[#,FCParallelize->True]&//DiracSimplify[#,FCParallelize->True]&;]
 
 
 (* ::Text:: *)
-(*Discard all the finite pieces of the 1-loop amplitude*)
+(*flagCheck is a safety flag to ensure that higher order terms in p (higher than the divergence degree) do not  contribute to the poles*)
 
 
-ampGluonSEDiv[0]=ampGluonSE[2]//Total//PaVeUVPart[#,Prefactor->1/(2Pi)^D]&;
+AbsoluteTiming[gluonSE$Amp1=Collect2[gluonSE$Amp,p,IsolateNames->KK];]
+AbsoluteTiming[gluonSE$Amp2=FourSeries[gluonSE$Amp1,{p,0,divDegree},FCParallelize->True];]
+AbsoluteTiming[gluonSE$Amp3=Collect2[FRH[gluonSE$Amp2],FeynAmpDenominator,FCParallelize->True];]
 
 
-ampGluonSEDiv[1]=FCReplaceD[ampGluonSEDiv[0],D->4-2Epsilon]//
-	Series[#,{Epsilon,0,0}]&//
-	Normal//FCHideEpsilon//SUNSimplify;
+(* ::Text:: *)
+(*The rest of the calculation follows the standard multiloop template*)
 
 
-ampGluonSEDiv[2]=ampGluonSEDiv[1]//ReplaceRepeated[#,{
-	SMP["Z_A"]->1+alpha SMP["d_A"],
-	SMP["Z_xi"]->1+alpha SMP["d_A"]}]&//Series[#,{alpha,0,1}]&//
-	Normal//ReplaceAll[#,alpha->1]&//SelectNotFree2[#,SMP["Delta"],SMP["d_A"],
-	SMP["d_xi"]]&
+FCClearScalarProducts[];
+SPD[p]=pp;
 
 
-sol[3]=Solve[ampGluonSEDiv[2]==0,SMP["d_A"]]//Flatten//
-	ReplaceAll[#,SMP["g_s"]^2->4Pi SMP["alpha_s"]]&//Simplify
-solMS2=sol[3]/.{SMP["d_A"]->SMP["d_A^MS"],SMP["Delta"]->1/Epsilon}
-solMSbar2=sol[3]/.{SMP["d_A"]->SMP["d_A^MSbar"]}
+{gluonSE$Amp4,gluonSE$Topos}=FCLoopFindTopologies[gluonSE$Amp3,{k},FCParallelize->True,
+FCLoopBasisOverdeterminedQ->True,FinalSubstitutions->{Hold[SPD][p]->pp},Names->gluonSEtopo];
+
+
+AbsoluteTiming[gluonSE$Amp5=FCLoopTensorReduce[gluonSE$Amp4,gluonSE$Topos,FCParallelize->True];]
+
+
+{gluonSE$Amp6,gluonSE$Topos2}=FCLoopRewriteOverdeterminedTopologies[gluonSE$Amp5,gluonSE$Topos];
+
+
+gluonSE$SubTopos=FCLoopFindSubtopologies[gluonSE$Topos2,Flatten->True,Remove->True]
+
+
+{gluonSE$TopoMappings,gluonSE$FinalTopos}=FCLoopFindTopologyMappings[gluonSE$Topos2,PreferredTopologies->gluonSE$SubTopos];
+
+
+gluonSE$AmpGLI=FCLoopApplyTopologyMappings[gluonSE$Amp6,{gluonSE$TopoMappings,gluonSE$FinalTopos},FCParallelize->True];
+
+
+gluonSE$GLIs=Cases2[gluonSE$AmpGLI,GLI];
+
+
+gluonSE$dir=FileNameJoin[{$TemporaryDirectory,"Reduction-"<>gluonSE$StrName<>"-1L"}];
+Quiet[CreateDirectory[gluonSE$dir]];
+
+
+KiraCreateJobFile[gluonSE$FinalTopos, gluonSE$GLIs, gluonSE$dir]
+
+
+KiraCreateIntegralFile[gluonSE$GLIs, gluonSE$FinalTopos, gluonSE$dir]
+KiraCreateConfigFiles[gluonSE$FinalTopos, gluonSE$GLIs, gluonSE$dir, 
+ KiraMassDimensions -> {pp -> 2,mq->1,mxt->1}]
+
+
+KiraRunReduction[gluonSE$dir, gluonSE$FinalTopos, 
+ KiraBinaryPath -> FileNameJoin[{$HomeDirectory, ".local", "bin", "kira"}],
+ KiraFermatPath -> FileNameJoin[{$HomeDirectory, "bin", "ferl64", "fer64"}]]
+
+
+gluonSE$ReductionTables=KiraImportResults[gluonSE$FinalTopos, gluonSE$dir]//Flatten;
+
+
+gluonSE$resPreFinal=Collect2[Total[gluonSE$AmpGLI/.Dispatch[gluonSE$ReductionTables]]//FeynAmpDenominatorExplicit,GLI,
+GaugeXi,flagCheck,D,DiracGamma,FCParallelize->True];
+
+
+gluonSE$masters=Cases2[gluonSE$resPreFinal,GLI];
+
+
+gluonSE$MIMappings=FCLoopFindIntegralMappings[gluonSE$masters,Join[tadpoleMaster1[[2]],tadpoleMaster2[[2]],
+gluonSE$FinalTopos],PreferredIntegrals->{tadpoleMaster1[[1]][[1]],tadpoleMaster2[[1]][[1]]}]
+
+
+(* ::Text:: *)
+(*Our master integrals are calculated using the standard multiloop normalization. To convert it back to the textbook normalization*)
+(*we need to multiply by I*(4 Pi)^(ep-2)*)
+
+
+gluonSE$resFinal=Collect2[gluonSE$resPreFinal,D,GLI,IsolateNames->KK]//FCReplaceD[#,D->4-2ep]&//
+ReplaceAll[#,gluonSE$MIMappings[[1]]]&//ReplaceAll[#,{tadpoleMaster1[[1]],tadpoleMaster2[[1]]}]&//
+Collect2[#,ep,IsolateNames->KK2]&//Series[(I*(4*Pi)^(-2 + ep)) #,{ep,0,-1}]&//Normal//FRH//Collect2[#,DiracGamma]&
+
+
+gluonSE$RenConstants=(gluonSE$resFinal+Total[gluonSECT$RawAmp])//ReplaceRepeated[#,{
+	(h:renConstants):>1+alpha as4 rc[ToExpression["del"<>ToString[h]],1]}]&//
+	Series[#,{alpha,0,1}]&//Normal//
+	ReplaceAll[#,alpha->1]&//Collect2[#,DiracGamma,pp,Pair,mxt]&//
+	FCMatchSolve[#,{ep,CF,DiracGamma,mq,mxt,SUNDelta,SUNFDelta,CA,GaugeXi,as4,Pair,pp,Nf}]&
 
 
 (* ::Subsection:: *)
@@ -294,38 +434,107 @@ solMSbar2=sol[3]/.{SMP["d_A"]->SMP["d_A^MSbar"]}
 
 
 (* ::Text:: *)
-(*Tensor reduction allows us to express the ghost self-energy in tems of the Passarino-Veltman coefficient functions.*)
+(*The 1-loop ghost self-energy has superficial degree of divergence equal to 2*)
 
 
-ampGhostSE[1]=ampGhostSE[0]//SUNSimplify[#,FCParallelize->True]&//
-DiracSimplify[#,FCParallelize->True]&;
+FCClearScalarProducts[];
+divDegree=2;
+aux1=FCLoopGetFeynAmpDenominators[ghostSE$RawAmp,{k},denHead,Momentum->{p},"Massless"->True];
+aux2=FCLoopAddAuxiliaryMass[aux1[[2]],{k},-mxt^2,0,Head->denHead]
 
 
-ampGhostSE[2]=TID[ampGhostSE[1],l,UsePaVeBasis->True,ToPaVe->True,FCParallelize->True];
+ghostSE$StrName=StringReplace[ToString[Hold[ghostSE$Amp]],{"Hold["->"","]"->""}]
+
+
+AbsoluteTiming[ghostSE$Amp=(aux1[[1]]/.aux2)//Contract[#,FCParallelize->True]&//
+SUNSimplify[#,FCParallelize->True]&//DiracSimplify[#,FCParallelize->True]&;]
+
+
+AbsoluteTiming[ghostSE$Amp1=Collect2[ghostSE$Amp,p,IsolateNames->KK];]
+AbsoluteTiming[ghostSE$Amp2=FourSeries[ghostSE$Amp1,{p,0,divDegree},FCParallelize->True];]
+AbsoluteTiming[ghostSE$Amp3=Collect2[FRH[ghostSE$Amp2],FeynAmpDenominator,FCParallelize->True];]
 
 
 (* ::Text:: *)
-(*Discard all the finite pieces of the 1-loop amplitude*)
+(*The rest of the calculation follows the standard multiloop template*)
 
 
-ampGhostSEDiv[0]=ampGhostSE[2]//Total//PaVeUVPart[#,Prefactor->1/(2Pi)^D]&
+FCClearScalarProducts[];
+SPD[p]=pp;
 
 
-ampGhostSEDiv[1]=FCReplaceD[ampGhostSEDiv[0],D->4-2Epsilon]//
-	Series[#,{Epsilon,0,0}]&//
-	Normal//FCHideEpsilon//SUNSimplify
+{ghostSE$Amp4,ghostSE$Topos}=FCLoopFindTopologies[ghostSE$Amp3,{k},FCParallelize->True,
+FCLoopBasisOverdeterminedQ->True,FinalSubstitutions->{Hold[SPD][p]->pp},Names->ghostSEtopo];
 
 
-ampGhostSEDiv[2]=ampGhostSEDiv[1]//ReplaceRepeated[#,{
-	SMP["Z_u"]->1+alpha SMP["d_u"]}]&//Series[#,{alpha,0,1}]&//
-	Normal//ReplaceAll[#,alpha->1]&//
-	SelectNotFree2[#,SMP["Delta"],SMP["d_u"]]&//Simplify
+AbsoluteTiming[ghostSE$Amp5=FCLoopTensorReduce[ghostSE$Amp4,ghostSE$Topos,FCParallelize->True];]
 
 
-sol[4]=Solve[ampGhostSEDiv[2]==0,SMP["d_u"]]//Flatten//
-	ReplaceAll[#,SMP["g_s"]^2->4Pi SMP["alpha_s"]]&//Simplify
-solMS3=sol[4]/.{SMP["d_u"]->SMP["d_u^MS"],SMP["Delta"]->1/Epsilon}
-solMSbar3=sol[4]/.{SMP["d_u"]->SMP["d_u^MSbar"]}
+{ghostSE$Amp6,ghostSE$Topos2}=FCLoopRewriteOverdeterminedTopologies[ghostSE$Amp5,ghostSE$Topos];
+
+
+ghostSE$SubTopos=FCLoopFindSubtopologies[ghostSE$Topos2,Flatten->True,Remove->True]
+
+
+{ghostSE$TopoMappings,ghostSE$FinalTopos}=FCLoopFindTopologyMappings[ghostSE$Topos2,PreferredTopologies->ghostSE$SubTopos];
+
+
+ghostSE$AmpGLI=FCLoopApplyTopologyMappings[ghostSE$Amp6,{ghostSE$TopoMappings,ghostSE$FinalTopos},FCParallelize->True];
+
+
+ghostSE$GLIs=Cases2[ghostSE$AmpGLI,GLI];
+
+
+ghostSE$dir=FileNameJoin[{$TemporaryDirectory,"Reduction-"<>ghostSE$StrName<>"-1L"}];
+Quiet[CreateDirectory[ghostSE$dir]];
+
+
+KiraCreateJobFile[ghostSE$FinalTopos, ghostSE$GLIs, ghostSE$dir]
+
+
+KiraCreateIntegralFile[ghostSE$GLIs, ghostSE$FinalTopos, ghostSE$dir]
+KiraCreateConfigFiles[ghostSE$FinalTopos, ghostSE$GLIs, ghostSE$dir, 
+ KiraMassDimensions -> {pp -> 2,mq->1,mxt->1}]
+
+
+KiraRunReduction[ghostSE$dir, ghostSE$FinalTopos, 
+ KiraBinaryPath -> FileNameJoin[{$HomeDirectory, ".local", "bin", "kira"}],
+ KiraFermatPath -> FileNameJoin[{$HomeDirectory, "bin", "ferl64", "fer64"}]]
+
+
+ghostSE$ReductionTables=KiraImportResults[ghostSE$FinalTopos, ghostSE$dir]//Flatten;
+
+
+ghostSE$resPreFinal=Collect2[Total[ghostSE$AmpGLI/.Dispatch[ghostSE$ReductionTables]]//FeynAmpDenominatorExplicit,GLI,
+GaugeXi,flagCheck,D,DiracGamma,FCParallelize->True];
+
+
+ghostSE$masters=Cases2[ghostSE$resPreFinal,GLI];
+
+
+ghostSE$MIMappings=FCLoopFindIntegralMappings[ghostSE$masters,Join[tadpoleMaster1[[2]],tadpoleMaster2[[2]],
+ghostSE$FinalTopos],PreferredIntegrals->{tadpoleMaster1[[1]][[1]],tadpoleMaster2[[1]][[1]]}]
+
+
+(* ::Text:: *)
+(*Our master integrals are calculated using the standard multiloop normalization. To convert it back to the textbook normalization*)
+(*we need to multiply by I*(4 Pi)^(ep-2)*)
+
+
+ghostSE$resFinal=Collect2[ghostSE$resPreFinal,D,GLI,IsolateNames->KK]//FCReplaceD[#,D->4-2ep]&//
+ReplaceAll[#,ghostSE$MIMappings[[1]]]&//ReplaceAll[#,{tadpoleMaster1[[1]],tadpoleMaster2[[1]]}]&//
+Collect2[#,ep,IsolateNames->KK2]&//Series[(I*(4*Pi)^(-2 + ep)) #,{ep,0,-1}]&//Normal//FRH//Collect2[#,DiracGamma]&
+
+
+(* ::Text:: *)
+(*It is not surprising that the ghost mass renormalization constant is zero, as the tree-level counter-term is not proportional to p^2*)
+
+
+ghostSE$RenConstants=(ghostSE$resFinal+Total[ghostSECT$RawAmp])//ReplaceRepeated[#,{
+	(h:renConstants):>1+alpha as4 rc[ToExpression["del"<>ToString[h]],1]}]&//
+	Series[#,{alpha,0,1}]&//Normal//
+	ReplaceAll[#,alpha->1]&//Collect2[#,DiracGamma,pp,Pair,mxt]&//
+	FCMatchSolve[#,{ep,CF,DiracGamma,mq,mxt,SUNDelta,SUNFDelta,CA,GaugeXi,as4,Pair,pp,Nf}]&
 
 
 (* ::Subsection:: *)
@@ -333,75 +542,135 @@ solMSbar3=sol[4]/.{SMP["d_u"]->SMP["d_u^MSbar"]}
 
 
 (* ::Text:: *)
-(*Tensor reduction allows us to express the quark-gluon vertex in tems of the Passarino-Veltman coefficient functions.*)
+(*The 1-loop quark-gluon-vertex has superficial degree of divergence equal to 0. We set q=0, so that p+p2=q yields p=-p2*)
 
 
-ampQGlVertex[1]=ampQGlVertex[0]//SUNSimplify[#,FCParallelize->True]&//
-DiracSimplify[#,FCParallelize->True]&;
+FCClearScalarProducts[];
+divDegree=0;
+aux1=FCLoopGetFeynAmpDenominators[quarkGluonVTX$RawAmp/.q->0/.p2->-p,{k},denHead,Momentum->{p},"Massless"->True];
+aux2=FCLoopAddAuxiliaryMass[aux1[[2]],{k},-mxt^2,0,Head->denHead]
 
 
-ampQGlVertex[2]=TID[ampQGlVertex[1],l,UsePaVeBasis->True,ToPaVe->True,FCParallelize->True];
+quarkGluonVTX$StrName=StringReplace[ToString[Hold[quarkGluonVTX$Amp]],{"Hold["->"","]"->""}]
+
+
+AbsoluteTiming[quarkGluonVTX$Amp=(aux1[[1]]/.aux2)//Contract[#,FCParallelize->True]&//
+SUNSimplify[#,FCParallelize->True]&//DiracSimplify[#,FCParallelize->True]&;]
+
+
+AbsoluteTiming[quarkGluonVTX$Amp1=Collect2[quarkGluonVTX$Amp,p,IsolateNames->KK];]
+AbsoluteTiming[quarkGluonVTX$Amp2=FourSeries[quarkGluonVTX$Amp1,{p,0,divDegree},FCParallelize->True];]
+AbsoluteTiming[quarkGluonVTX$Amp3=Collect2[FRH[quarkGluonVTX$Amp2],FeynAmpDenominator,FCParallelize->True];]
 
 
 (* ::Text:: *)
-(*Discard all the finite pieces of the 1-loop amplitude*)
+(*The rest of the calculation follows the standard multiloop template*)
 
 
-ampQGlVertexDiv[0]=ampQGlVertex[2]//Total//PaVeUVPart[#,Prefactor->1/(2Pi)^D]&;
+FCClearScalarProducts[];
+SPD[p]=pp;
 
 
-ampQGlVertexDiv[1]=FCReplaceD[ampQGlVertexDiv[0],D->4-2Epsilon]//
-	Series[#,{Epsilon,0,0}]&//
-	Normal//FCHideEpsilon//SUNSimplify;
+{quarkGluonVTX$Amp4,quarkGluonVTX$Topos}=FCLoopFindTopologies[quarkGluonVTX$Amp3,{k},FCParallelize->True,
+FCLoopBasisOverdeterminedQ->True,FinalSubstitutions->{Hold[SPD][p]->pp},Names->quarkGluonVTXtopo];
 
 
-ampQGlVertexDiv[2]=ampQGlVertexDiv[1]//ReplaceRepeated[#,{
-	SMP["Z_g"]->1+alpha SMP["d_g"],
-	SMP["Z_A"]->1+alpha SMP["d_A"],
-	SMP["Z_psi"]->1+alpha SMP["d_psi"]
-	}]&//Series[#,{alpha,0,1}]&//
-	Normal//ReplaceAll[#,alpha->1]&//
-	SelectNotFree2[#,SMP["Delta"],SMP["d_g"],SMP["d_A"],SMP["d_psi"]]&//Simplify
+AbsoluteTiming[quarkGluonVTX$Amp5=FCLoopTensorReduce[quarkGluonVTX$Amp4,quarkGluonVTX$Topos,FCParallelize->True];]
 
 
-ampQGlVertexDiv[3]=ampQGlVertexDiv[2]//Collect2[#,SMP]&
+{quarkGluonVTX$Amp6,quarkGluonVTX$Topos2}=FCLoopRewriteOverdeterminedTopologies[quarkGluonVTX$Amp5,quarkGluonVTX$Topos];
 
 
-ampQGlVertexDiv[4]=(ampQGlVertexDiv[3]/.{
-	SMP["d_A"]->SMP["d_A^MS"],
-	SMP["d_psi"]->SMP["d_psi^MS"],
-	SMP["d_g"]->SMP["d_g"],
-	SMP["Delta"]->1/Epsilon
-}/.solMS1/.solMS2)//ReplaceAll[#,SMP["g_s"]^3->4Pi SMP["alpha_s"]SMP["g_s"]]&//
-Collect2[#,Epsilon]&//SUNSimplify
+quarkGluonVTX$SubTopos=FCLoopFindSubtopologies[quarkGluonVTX$Topos2,Flatten->True,Remove->True]
 
 
-sol[5]=Solve[ampQGlVertexDiv[4]==0,SMP["d_g"]]//Flatten//Simplify
-solMS4=sol[5]/.{SMP["d_g"]->SMP["d_g^MS"]}
-solMSbar4=sol[5]/.{SMP["d_g"]->SMP["d_g^MSbar"],1/Epsilon->SMP["Delta"]}
+{quarkGluonVTX$TopoMappings,quarkGluonVTX$FinalTopos}=FCLoopFindTopologyMappings[quarkGluonVTX$Topos2,PreferredTopologies->quarkGluonVTX$SubTopos];
+
+
+quarkGluonVTX$AmpGLI=FCLoopApplyTopologyMappings[quarkGluonVTX$Amp6,{quarkGluonVTX$TopoMappings,quarkGluonVTX$FinalTopos},FCParallelize->True];
+
+
+quarkGluonVTX$GLIs=Cases2[quarkGluonVTX$AmpGLI,GLI];
+
+
+quarkGluonVTX$dir=FileNameJoin[{$TemporaryDirectory,"Reduction-"<>quarkGluonVTX$StrName<>"-1L"}];
+Quiet[CreateDirectory[quarkGluonVTX$dir]];
+
+
+KiraCreateJobFile[quarkGluonVTX$FinalTopos, quarkGluonVTX$GLIs, quarkGluonVTX$dir]
+
+
+KiraCreateIntegralFile[quarkGluonVTX$GLIs, quarkGluonVTX$FinalTopos, quarkGluonVTX$dir]
+KiraCreateConfigFiles[quarkGluonVTX$FinalTopos, quarkGluonVTX$GLIs, quarkGluonVTX$dir, 
+ KiraMassDimensions -> {pp -> 2,mq->1,mxt->1}]
+
+
+KiraRunReduction[quarkGluonVTX$dir, quarkGluonVTX$FinalTopos, 
+ KiraBinaryPath -> FileNameJoin[{$HomeDirectory, ".local", "bin", "kira"}],
+ KiraFermatPath -> FileNameJoin[{$HomeDirectory, "bin", "ferl64", "fer64"}]]
+
+
+quarkGluonVTX$ReductionTables=KiraImportResults[quarkGluonVTX$FinalTopos, quarkGluonVTX$dir]//Flatten;
+
+
+quarkGluonVTX$resPreFinal=Collect2[Total[quarkGluonVTX$AmpGLI/.Dispatch[quarkGluonVTX$ReductionTables]]//FeynAmpDenominatorExplicit,GLI,
+GaugeXi,flagCheck,D,DiracGamma,FCParallelize->True];
+
+
+quarkGluonVTX$masters=Cases2[quarkGluonVTX$resPreFinal,GLI];
+
+
+quarkGluonVTX$MIMappings=FCLoopFindIntegralMappings[quarkGluonVTX$masters,Join[tadpoleMaster1[[2]],tadpoleMaster2[[2]],
+quarkGluonVTX$FinalTopos],PreferredIntegrals->{tadpoleMaster1[[1]][[1]],tadpoleMaster2[[1]][[1]]}]
+
+
+(* ::Text:: *)
+(*Our master integrals are calculated using the standard multiloop normalization. To convert it back to the textbook normalization*)
+(*we need to multiply by I*(4 Pi)^(ep-2)*)
+
+
+quarkGluonVTX$resFinal=Collect2[quarkGluonVTX$resPreFinal,D,GLI,IsolateNames->KK]//FCReplaceD[#,D->4-2ep]&//
+ReplaceAll[#,quarkGluonVTX$MIMappings[[1]]]&//ReplaceAll[#,{tadpoleMaster1[[1]],tadpoleMaster2[[1]]}]&//
+Collect2[#,ep,IsolateNames->KK2]&//Series[(I*(4*Pi)^(-2 + ep)) #,{ep,0,-1}]&//Normal//FRH//Collect2[#,DiracGamma]&
+
+
+quarkGluonVTX$RenConstants=(quarkGluonVTX$resFinal+Total[quarkGluonVTXCT$RawAmp])//ReplaceRepeated[#,{
+	(h:renConstants):>1+alpha as4 rc[ToExpression["del"<>ToString[h]],1]}]&//
+	Series[#,{alpha,0,1}]&//Normal//ReplaceAll[#,Join[gluonSE$RenConstants,quarkSE$RenConstants]]&//
+	ReplaceAll[#,alpha->1]&//Collect2[#,DiracGamma,pp,Pair,mxt]&//
+	FCMatchSolve[#,{ep,CF,DiracGamma,mq,mxt,SUNDelta,SUNTF,SUNFDelta,CA,GaugeXi,as4,Pair,pp,Nf}]&
 
 
 (* ::Section:: *)
 (*Check the final results*)
 
 
+(* ::Text:: *)
+(*Our final QCD 1-loop renormalization constants*)
+
+
+finalResults=Thread[Rule[List@@renConstants,
+(List@@renConstants/.(h:renConstants):>1+ as4 rc[ToExpression["del"<>ToString[h]],1])//ReplaceAll[#,Join[gluonSE$RenConstants,quarkSE$RenConstants,
+ghostSE$RenConstants,quarkGluonVTX$RenConstants]]&]]
+
+
 knownResult = {
-	SMP["d_psi^MS"]->-SMP["alpha_s"]/(4Pi) 1/Epsilon CF GaugeXi["G"],
-	SMP["d_m^MS"]->-SMP["alpha_s"]/(4Pi) 1/Epsilon 3 CF,
-	SMP["d_psi^MSbar"]->-SMP["alpha_s"]/(4Pi) SMP["Delta"] CF GaugeXi["G"],
-	SMP["d_m^MSbar"]->-SMP["alpha_s"]/(4Pi) SMP["Delta"] 3 CF,
-	SMP["d_A^MS"]->SMP["alpha_s"]/(4Pi) 1/Epsilon (1/2 CA(13/3-GaugeXi["G"])-2/3 Nf),
-	SMP["d_A^MSbar"]->SMP["alpha_s"]/(4Pi) SMP["Delta"] (1/2 CA(13/3-GaugeXi["G"])-2/3 Nf),
-	SMP["d_u^MS"]->SMP["alpha_s"]/(4Pi) CA/Epsilon (3-GaugeXi["G"])/4,
-	SMP["d_u^MSbar"]->SMP["alpha_s"]/(4Pi) CA SMP["Delta"] (3-GaugeXi["G"])/4,
-	SMP["d_g^MS"]->((-11*CA*SMP["alpha_s"])/(24*Epsilon*Pi) + (Nf*SMP["alpha_s"])/(12*Epsilon*Pi)),
-	SMP["d_g^MSbar"]->((-11*CA*SMP["alpha_s"])/(24 Pi)SMP["Delta"] + (Nf*SMP["alpha_s"])/(12*Pi)SMP["Delta"])
-}//Factor2;
-FCCompareResults[Join[solMS1,solMSbar1,solMS2,solMSbar2,solMS3,solMSbar3,solMS4,solMSbar4]//Factor2,knownResult,
-Text->{"\tCompare to Muta, Foundations of QCD, \
-Eqs 2.5.131-2.5.147:",
-"CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
+rc[delZA, 1] -> (13*CA - 4*Nf - 3*CA*GaugeXi["G"])/(6*ep), 
+ rc[delZAmxt, 1] -> - (CA*(1 + 3*GaugeXi["G"]))/(8*ep), 
+ rc[delZxi, 1] -> (13*CA - 4*Nf - 3*CA*GaugeXi["G"])/(6*ep), 
+ rc[delZm, 1] -> - (3*CF)/ep, 
+ rc[delZpsi, 1] -> -((CF*GaugeXi["G"])/ep), 
+ rc[delZumxt, 1] -> 0, 
+ rc[delZu, 1] -> (CA*(3 - GaugeXi["G"]))/(4*ep), 
+ rc[delZg, 1] -> -1/6*(11*CA - 2*Nf)/ep};
+
+
+FCCompareResults[Join[gluonSE$RenConstants,quarkSE$RenConstants,
+ghostSE$RenConstants,quarkGluonVTX$RenConstants]/.Rule->Equal,knownResult/.Rule->Equal,
+Text->{"\tCompare to Muta, Foundations of QCD, Eqs 2.5.131-2.5.147:",
+"CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}]
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
+
 
 
 
