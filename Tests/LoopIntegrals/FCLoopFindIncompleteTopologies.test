@@ -1,0 +1,29 @@
+
+
+(* :Title: FCLoopFindIncompleteTopologies.test													*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopFindIncompleteTopologies				*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopFindIncompleteTopologies =
+({{"fcstFCLoopFindIncompleteTopologies-ID1",
+"FCLoopFindIncompleteTopologies[{}]",
+"{{}, {}}"}, {"fcstFCLoopFindIncompleteTopologies-ID2",
+"FCLoopFindIncompleteTopologies[{FCTopology[topo1,{SFAD[k1],SFAD[k1+p],SFAD[k1-p]},{k1},{p},{},{}],
+FCTopology[topo2,{SFAD[k1],SFAD[k1+p]},{k1},{p},{},{}],
+FCTopology[topo3,{SFAD[k1],SFAD[k2]},{k1,k2},{},{},{}]},FC\
+E->True]",
+"{{FCTopology[topo3, {SFAD[{{k1, 0}, {0, 1}, 1}], SFAD[{{k2, 0}, {0, 1}, 1}]}, {k1, k2},
+{}, {}, {}]}, {FCTopology[topo1, {SFAD[{{k1, 0}, {0, 1}, 1}],
+	SFAD[{{k1 + p, 0}, {0, 1}, 1}], SFAD[{{k1 - p, 0}, {0, 1}, 1}]}, {k1}, {p}, {},
+{}], FCTopology[topo2, {SFAD[{{k1, 0}, {0, 1}, 1}], SFAD[{{k1 + p, 0}, {0, 1}, 1}]},
+{k1}, {p}, {}, {}]}}"}
+});

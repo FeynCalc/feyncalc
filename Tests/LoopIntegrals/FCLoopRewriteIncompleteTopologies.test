@@ -1,0 +1,24 @@
+
+
+(* :Title: FCLoopRewriteIncompleteTopologies.test													*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2020 Rolf Mertig
+	Copyright (C) 1997-2020 Frederik Orellana
+	Copyright (C) 2014-2020 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopRewriteIncompleteTopologies				*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopRewriteIncompleteTopologies =
+({{"fcstFCLoopRewriteIncompleteTopologies-ID1",
+"FCLoopRewriteIncompleteTopologies[
+gliHead[SPD[k1, p],
+GLI[topo1, {1, 1}]], {FCTopology[
+topo1, {FAD[k1], FAD[k2]}, {k1, k2}, {}, {}, {}]}, Head -> gliHead,
+Method -> {SFAD[k1 - k2]}, FCVerbose -> -1, FCE -> True]",
+"{gliHead[SPD[k1, p], GLI[topo1Aug, {1, 1, 0}]],
+{FCTopology[topo1Aug, {FAD[k1], FAD[k2], SFAD[{{k1 - k2, 0}, {0, 1}, 1}]}, {k1, k2}, {}, {}, {1}]}}"}});
