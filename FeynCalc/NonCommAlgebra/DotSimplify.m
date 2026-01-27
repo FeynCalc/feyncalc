@@ -11,7 +11,12 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Simplifies non-commututative products							*)
+(*
+	:Summary: 	Simplifies non-commututative products
+
+				Supports parallel evaluation [X]
+
+*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -56,7 +61,6 @@ End[]
 
 Begin["`DotSimplify`Private`"]
 
-dsVerbose::usage="";
 optExpanding::usage="";
 optDotSimplifyRelations::usage="";
 optMaxIterations::usage="";
@@ -65,42 +69,74 @@ antiCommutatorEvaluationRules::usage="";
 
 DeclareNonCommutative[dotsimpHold];
 
-(*Error messages for calling DotSimplify with less or more than 1 argument*)
-DotSimplify[a__, z_/;Head[z] =!= Rule, ___Rule] :=
-	(Message[DotSimplify::argrx, DotSimplify, Length[{a}]+1, 1];
-	Abort[]);
-
-DotSimplify[___Rule] :=
-	(Message[DotSimplify::argrx, DotSimplify, 0, 1];
-	Abort[]);
-
 Options[DotSimplify] = {
-	DotPower 						-> False, (*True*)(*CHANGE 26/9-2002. To have this work: FermionSpinSum[ComplexConjugate[Spinor[p,m].Spinor[p,m]]]. F.Orellana*)
+	DotPower 						-> False,
 	DotSimplifyRelations			-> {},
 	Expanding						-> True,
 	FCE								-> False,
 	FCI								-> False,
+	FCParallelize					-> False,
 	FCJoinDOTs						-> True,
 	FCVerbose						-> False,
-	MaxIterations				-> 100,
+	MaxIterations					-> 100,
+	ParallelKernels					-> False,
 	PreservePropagatorStructures	-> False,
 	SortBy 	 						-> {Automatic,Automatic}
 };
 
 
-DotSimplify[expr_, OptionsPattern[]] :=
+DotSimplify[expr_List, opts:OptionsPattern[]] :=
+	Block[{optVerbose, res, time},
+
+		If [OptionValue[FCVerbose]===False,
+			optVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				optVerbose=OptionValue[FCVerbose]
+			];
+		];
+		time = AbsoluteTime[];
+
+		FCPrint[1, "DotSimplify: Entering.", FCDoControl->optVerbose];
+
+		If[	$ParallelizeFeynCalc && OptionValue[FCParallelize],
+			FCPrint[1,"DotSimplify: Applying DotSimplify in parallel.", FCDoControl->optVerbose];
+
+			res = ParallelMap[DotSimplify[#, FilterRules[{opts}, Except[FCParallelize | FCVerbose]],ParallelKernels->True]&,expr,
+			DistributedContexts -> None, Method->"ItemsPerEvaluation" -> Ceiling[N[Length[expr]/$KernelCount]/10]];
+			FCPrint[1, "DotSimplify: Done applying DotSimplify in parallel, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose],
+
+			FCPrint[1,"DotSimplify: Applying Contract.", FCDoControl->optVerbose];
+			res = Map[DotSimplify[#,FilterRules[{opts}, Except[FCParallelize | FCVerbose]]]&,expr];
+			FCPrint[1, "DotSimplify: Done applying DotSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose]
+		];
+
+		FCPrint[1, "DotSimplify: Leaving.", FCDoControl->optVerbose];
+
+		res
+	];
+
+(* DotSimplify[... == ...] *)
+DotSimplify[Equal[a_, b_], opts:OptionsPattern[]] :=
+	DotSimplify[a, opts] == DotSimplify[b, opts];
+
+DotSimplify[expr_/;Head[expr]=!=List, OptionsPattern[]] :=
 	Block[{	ne, x, ruleCommutator, ruleAntiCommutator, commm, acommm,
 			sdoot, actorules, cotorules,
 			vars,rest1,rest2,condition,sameQ,hold, ex, sunTrace, tmpDOT,
 			holdDOTColor, holdDOTDirac, holdDOTPauli, holdDOTRest1, holdDOTRest2, holdDOTRest3,
 			nvar, time, time0, momList, momListEval, momRule,
-			optSortBy, commSortBy, acommSortBy},
+			optSortBy, commSortBy, acommSortBy,dsVerbose},
 
 		If [OptionValue[FCVerbose]===False,
 			dsVerbose=$VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer],
 				dsVerbose=OptionValue[FCVerbose]
 			];
+		];
+
+		If[	OptionValue[ParallelKernels] && $KernelID===0,
+			Message[DotSimplify::failmsg,"Tasks for parallel kernels are being executed on the main kernel."];
+			Abort[]
 		];
 
 		optExpanding			= OptionValue[Expanding];
@@ -517,12 +553,6 @@ dotExpand[x_]:=
 		(*FCPrint[4, "DotSimplify: dotExpand: Leaving with: ", tmp, FCDoControl->dsVerbose];*)
 		tmp
 	];
-
-
-
-
-
-
 
 dootpow[a__] :=
 	If[ FreeQ2[{a}, {DiracGamma,SUNT,Spinor}],
