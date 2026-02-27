@@ -174,5 +174,14 @@ fctopology31CR12467, {SFAD[{{l1, 0}, {mt^2, 1}, 1}],
 SFAD[{{l1 - l2 - p1 - p2, 0}, {mw^2, 1}, 1}]}, {l1, l2}, {p1,
 p2}, {Hold[Pair][Momentum[p1, D], Momentum[p1, D]] -> mt^2,
 Hold[Pair][Momentum[p2, D], Momentum[p2, D]] -> 0,
-Hold[Pair][Momentum[p1, D], Momentum[p2, D]] -> (mt^2 - s)/2}, {}]]","{{}}"}
+Hold[Pair][Momentum[p1, D], Momentum[p2, D]] -> (mt^2 - s)/2}, {}]]","{{}}"},
+{"fcstFCLoopFindMomentumShifts-ID15",
+"FCLoopFindMomentumShifts[{FCTopology[
+loopint$105, {SFAD[{{I p4, 0}, {0, 1}, 1}],
+	SFAD[{{I (p1 + q1), 0}, {-m1^2, 1}, 1}],
+	SFAD[{{I (p1 - p4), 0}, {-m2^2, 1}, 1}]}, {p1, p4}, {q1}, {}, {}]},
+FCTopology[
+loopint$172, {SFAD[{{I p2, 0}, {0, 1}, 1}],
+SFAD[{{I (p3 + q1), 0}, {-m1^2, 1}, 1}],
+SFAD[{{I (p2 - p3), 0}, {-m2^2, 1}, 1}]}, {p2, p3}, {q1}, {}, {}]]","{{p1->p3,p4->p2}}"}
 });
