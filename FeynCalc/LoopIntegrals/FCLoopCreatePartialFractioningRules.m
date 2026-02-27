@@ -14,7 +14,7 @@
 (*
 	:Summary:	Creates GLI-replacement rules for subtopologies
 
-					Supports parallel evaluation [X]
+				Supports parallel evaluation [X]
 
 *)
 
