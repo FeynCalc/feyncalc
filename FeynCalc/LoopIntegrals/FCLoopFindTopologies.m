@@ -56,7 +56,7 @@ Options[FCLoopFindTopologies] = {
 	FCE							 -> False,
 	FCI 						 -> False,
 	FCParallelize				 -> True,
-	FCLoopBasisOverdeterminedQ	 -> False,
+	FCLoopBasisOverdeterminedQ	 -> True,
 	FCLoopGetKinematicInvariants -> True,
 	FCLoopIsolate				 -> True,
 	FCLoopScalelessQ			 -> False,
