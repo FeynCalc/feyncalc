@@ -389,7 +389,7 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 
 		FCPrint[1, "FCFeynmanPrepare: Calling FCLoopBasisExtract.", FCDoControl -> fcszVerbose];
 
-		tmp = FCLoopBasisExtract[scalarPart, lmoms, SetDimensions->{dim}, SortBy -> sortBy];
+		tmp = FCLoopBasisExtract[scalarPart, lmoms, SetDimensions->{dim}, SortBy -> sortBy,Pair->False,CartesianPair->False];
 		(* We don't need this list of scalar products here and removing it makes the output a transposable matrix *)
 		tmp[[2]] = ConstantArray[0,Length[tmp[[1]]]];
 

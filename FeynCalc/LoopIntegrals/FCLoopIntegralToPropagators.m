@@ -275,7 +275,7 @@ FCLoopIntegralToPropagators[expr_, lmoms_List/; FreeQ[lmoms, OptionQ], OptionsPa
 			}
 		];
 
-		(*	If we do not want the scalar products to be represent as FADs, we can undo it here.	*)
+		(*	If we do not want the scalar products to be represented as FADs, we can undo it here.	*)
 		If[ OptionValue[Pair],
 			res = res /. FeynAmpDenominator[StandardPropagatorDenominator[0, sp_, 0, {-1, _}]] :> sp
 
@@ -346,6 +346,9 @@ auxIntegralToPropagators[exp_FeynAmpDenominator, lmoms_List]:=
 	SelectNotFree[FeynAmpDenominatorSplit[exp, FCI->True, MomentumExpand->False, List->True],lmoms]/; Length[List@@exp]>1 && Head[exp]=!=Power;
 *)
 
+
+auxIntegralToPropagators[Power[FeynAmpDenominator[StandardPropagatorDenominator[args__, {pow_, s_}]], n_Integer?Negative], lmoms_]:=
+	auxIntegralToPropagators[FeynAmpDenominator[StandardPropagatorDenominator[args, {pow n, s}]], lmoms];
 
 auxIntegralToPropagators[a_FeynAmpDenominator b_FeynAmpDenominator c_., lmoms_]:=
 	{auxIntegralToPropagators[a, lmoms],auxIntegralToPropagators[b c, lmoms]};

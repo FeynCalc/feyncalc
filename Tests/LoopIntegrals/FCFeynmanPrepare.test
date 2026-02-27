@@ -76,7 +76,7 @@ m2^2*x[2] + SPD[p1, p1]*x[2] - 2*SPD[p1, p2]*x[2] + SPD[p2, p2]*x[2], \
 4*m1^2*x[1]*x[2] + 4*m2^2*x[1]*x[2] + 8*SPD[p1, p2]*x[1]*x[2] - \
 4*SPD[p2, p2]*x[1]*x[2] + 4*m2^2*x[2]^2 + 4*SPD[p1, p1]*x[2]^2 + \
 4*SPD[p1, p2]*x[2]*x[3] + SPD[p1, p1]*x[3]^2)/4, {{x[1], FAD[{q1, \
-m1}], 1}, {x[2], FAD[{-p1 + p2 + q1, m2}], 1}, {x[3], SPD[p1, q1], \
+m1}], 1}, {x[2], FAD[{-p1 + p2 + q1, m2}], 1}, {x[3],SFAD[{{0, p1 . q1}, {0, 1}, -1}], \
 -1}}, {{x[1] + x[2]}}, {-(FVD[p2, FCGV[\"mu\"]]*x[2]) + (FVD[p1, \
 FCGV[\"mu\"]]*(2*x[2] - x[3]))/2}, -(m1^2*x[1]) - m2^2*x[2] + SPD[p1, \
 p1]*x[2] - 2*SPD[p1, p2]*x[2] + SPD[p2, p2]*x[2], 1, 0}"},
@@ -87,7 +87,7 @@ p1]*x[2] - 2*SPD[p1, p2]*x[2] + SPD[p2, p2]*x[2], 1, 0}"},
 4*m2^2*x[1]*x[2] - 4*SPD[p1, p1]*x[1]*x[2] + 8*SPD[p1, p2]*x[1]*x[2] \
 - 4*SPD[p2, p2]*x[1]*x[2] + 4*m2^2*x[2]^2 - 4*SPD[p1, p1]*x[2]*x[3] + \
 4*SPD[p1, p2]*x[2]*x[3] + SPD[p1, p1]*x[3]^2)/4, {{x[1], FAD[{q1, \
-m1}], 1}, {x[2], FAD[{-p1 + p2 + q1, m2}], 1}, {x[3], SPD[p1, q1], \
+m1}], 1}, {x[2], FAD[{-p1 + p2 + q1, m2}], 1}, {x[3], SFAD[{{0, p1 . q1}, {0, 1}, -1}], \
 -1}}, {{x[1] + x[2]}}, {-(FVD[p2, FCGV[\"mu\"]]*x[2]) + (FVD[p1, \
 FCGV[\"mu\"]]*(2*x[2] - x[3]))/2}, -(m1^2*x[1]) - m2^2*x[2] + SPD[p1, \
 p1]*x[2] - 2*SPD[p1, p2]*x[2] + SPD[p2, p2]*x[2], 1, 0}"},
@@ -117,7 +117,7 @@ p1]*x[2] - 2*SPD[p1, p2]*x[2] + SPD[p2, p2]*x[2], 1, 0}"},
 "FCFeynmanPrepare[{SPD[q1]-m1^2,SPD[p1,q1]},{q1},Names\[Rule]x,FCE\
 \[Rule]True]",
 "{x[1], (4*m1^2*x[1]^2 + SPD[p1, p1]*x[2]^2)/4, {{x[1], \
-GFAD[{{-m1^2 + SPD[q1, q1], 1}, -1}], -1}, {x[2], SPD[p1, q1], -1}}, \
+GFAD[{{-m1^2 + SPD[q1, q1], 1}, -1}], -1}, {x[2], SFAD[{{0, p1 . q1}, {0, 1}, -1}], -1}}, \
 {{x[1]}}, {-(FVD[p1, FCGV[\"mu\"]]*x[2])/2}, -(m1^2*x[1]), 1, 0}"},
 {"fcstFCFeynmanPrepare-ID17",
 "FCFeynmanPrepare[{FAD[{q1,m1}]},{q1},Names\[Rule]x,FCE\[Rule]True]\
@@ -131,8 +131,8 @@ GFAD[{{-m1^2 + SPD[q1, q1], 1}, -1}], -1}, {x[2], SPD[p1, q1], -1}}, \
 "FCFeynmanPrepare[{SPD[q1]-m1^2,SPD[q1-p1]},{q1},Names\[Rule]x,FCE\
 \[Rule]True]",
 "{x[1] + x[2], x[1]*(m1^2*x[1] + m1^2*x[2] - SPD[p1, p1]*x[2]), \
-{{x[1], GFAD[{{-m1^2 + SPD[q1, q1], 1}, -1}], -1}, {x[2], SPD[p1, p1] \
-- 2*SPD[p1, q1] + SPD[q1, q1], -1}}, {{x[1] + x[2]}}, {FVD[p1, \
+{{x[1], GFAD[{{-m1^2 + SPD[q1, q1], 1}, -1}], -1}, {x[2], SFAD[{{0, p1 . (p1 - 2*q1) + q1 . q1}, {0, 1}, -1}],
+-1}}, {{x[1] + x[2]}}, {FVD[p1, \
 FCGV[\"mu\"]]*x[2]}, -(m1^2*x[1]) + SPD[p1, p1]*x[2], 1, 0}"},
 {"fcstFCFeynmanPrepare-ID20",
 "FCFeynmanPrepare[{FAD[{q1,m1}],FAD[q1-p1]},{q1},Names\[Rule]x,FCE\
@@ -167,7 +167,7 @@ q1]*x[4], 1, 0}"},
 "FCFeynmanPrepare[{SPD[q1]-m1^2,SPD[p1,q1]},{q1},Names\[Rule]x,FCE\
 \[Rule]True]",
 "{x[1], (4*m1^2*x[1]^2 + SPD[p1, p1]*x[2]^2)/4, {{x[1], \
-GFAD[{{-m1^2 + SPD[q1, q1], 1}, -1}], -1}, {x[2], SPD[p1, q1], -1}}, \
+GFAD[{{-m1^2 + SPD[q1, q1], 1}, -1}], -1}, {x[2], SFAD[{{0, p1 . q1}, {0, 1}, -1}], -1}}, \
 {{x[1]}}, {-(FVD[p1, FCGV[\"mu\"]]*x[2])/2}, -(m1^2*x[1]), 1, 0}"},
 {"fcstFCFeynmanPrepare-ID25",
 "FCFeynmanPrepare[{FAD[{q1,m1}]},{q1},Names\[Rule]x,FCE\[Rule]True]\
@@ -181,8 +181,8 @@ GFAD[{{-m1^2 + SPD[q1, q1], 1}, -1}], -1}, {x[2], SPD[p1, q1], -1}}, \
 "FCFeynmanPrepare[{SPD[q1]-m1^2,SPD[q1-p1]},{q1},Names\[Rule]x,FCE\
 \[Rule]True]",
 "{x[1] + x[2], x[1]*(m1^2*x[1] + m1^2*x[2] - SPD[p1, p1]*x[2]), \
-{{x[1], GFAD[{{-m1^2 + SPD[q1, q1], 1}, -1}], -1}, {x[2], SPD[p1, p1] \
-- 2*SPD[p1, q1] + SPD[q1, q1], -1}}, {{x[1] + x[2]}}, {FVD[p1, \
+{{x[1], GFAD[{{-m1^2 + SPD[q1, q1], 1}, -1}], -1}, {x[2], SFAD[{{0, p1 . (p1 - 2*q1) + q1 . q1}, {0, 1}, -1}],
+-1}}, {{x[1] + x[2]}}, {FVD[p1, \
 FCGV[\"mu\"]]*x[2]}, -(m1^2*x[1]) + SPD[p1, p1]*x[2], 1, 0}"},
 {"fcstFCFeynmanPrepare-ID28",
 "FCFeynmanPrepare[{FAD[{q1,m1}],FAD[q1-p1]},{q1},Names\[Rule]x,FCE\
@@ -348,7 +348,7 @@ rho])/2, 3}"
 \[Rule]x,Reduce\[Rule]True,FCE\[Rule]True]",
 "{x[1] + x[2], -1/4*(SPD[q, q]*(4*x[2] - 4*x[2]^2 - x[3]^2)), {{x[1], \
 SFAD[{{p, 0}, {0, 1}, 1}], 1}, {x[2], SFAD[{{p - q, 0}, {0, 1}, 1}], \
-1}, {x[3], SPD[p, q], -1}}, {{x[1] + x[2]}}, {(FVD[q, \
+1}, {x[3], SFAD[{{0, p . q}, {0, 1}, -1}], -1}}, {{x[1] + x[2]}}, {(FVD[q, \
 FCGV[\"mu\"]]*(2*x[2] - x[3]))/2}, SPD[q, q]*x[2], \
 -1/2*(FCGV[\"F\"]*Gamma[-1/2*D]*MTD[mu, nu]) + (FVD[q, mu]*FVD[q, \
 nu]*Gamma[1 - D/2]*(2*x[2] - x[3])^2)/4, 2}"},
@@ -356,7 +356,7 @@ nu]*Gamma[1 - D/2]*(2*x[2] - x[3])^2)/4, 2}"},
 "FCFeynmanPrepare[FVD[q,mu]SPD[p,q]FAD[{q,m}],{q},Names\[Rule]x,\
 FCE\[Rule]True]",
 "{x[1], (4*m^2*x[1]^2 + SPD[p, p]*x[2]^2)/4, {{x[1], FAD[{q, m}], \
-1}, {x[2], SPD[p, q], -1}}, {{x[1]}}, {-(FVD[p, \
+1}, {x[2], SFAD[{{0, p . q}, {0, 1}, -1}], -1}}, {{x[1]}}, {-(FVD[p, \
 FCGV[\"mu\"]]*x[2])/2}, -(m^2*x[1]), -(FVD[p, \
 mu]*Gamma[-D/2]*x[2])/2, 1}"},
 {"fcstFCFeynmanPrepare-ID51",
@@ -364,7 +364,7 @@ mu]*Gamma[-D/2]*x[2])/2, 1}"},
 FCE\[Rule]True]",
 "{x[1] + x[2], -(SPD[q, q]*(4*x[1]*x[2] + 4*x[2]*x[3] - \
 x[3]^2))/4, {{x[1], SFAD[{{p, 0}, {0, 1}, 1}], 1}, {x[2], SFAD[{{p - \
-q, 0}, {0, 1}, 1}], 1}, {x[3], SPD[p, q], -1}}, {{x[1] + x[2]}}, \
+q, 0}, {0, 1}, 1}], 1}, {x[3], SFAD[{{0, p . q}, {0, 1}, -1}], -1}}, {{x[1] + x[2]}}, \
 {(FVD[q, FCGV[\"mu\"]]*(2*x[2] - x[3]))/2}, SPD[q, q]*x[2], (FVD[q, \
 mu]*Gamma[1 - D/2]*(2*x[2] - x[3]))/2, 1}"},
 {"fcstFCFeynmanPrepare-ID52",
@@ -409,8 +409,8 @@ q1]*x[2]*x[3] + 8*SPD[q1, q2]*x[2]*x[3] - 4*SPD[q2, q2]*x[2]*x[3] - \
 q1]*x[4]^2 - 4*SPD[q1, q2]*x[2]*x[5] - 4*SPD[q2, q2]*x[3]*x[5] + \
 2*SPD[q1, q2]*x[4]*x[5] + SPD[q2, q2]*x[5]^2)/4, {{x[1], SFAD[{{p, \
 0}, {m, 1}, 1}], 1}, {x[2], SFAD[{{p - q1, 0}, {0, 1}, 1}], 1}, \
-{x[3], SFAD[{{p - q2, 0}, {0, 1}, 1}], 1}, {x[4], SPD[p, q1], -2}, \
-{x[5], SPD[p, q2], -1}}, {{x[1] + x[2] + x[3]}}, {(FVD[q1, \
+{x[3], SFAD[{{p - q2, 0}, {0, 1}, 1}], 1}, {x[4], SFAD[{{0, p . q1}, {0, 1}, -1}], -2}, \
+{x[5], SFAD[{{0, p . q2}, {0, 1}, -1}], -1}}, {{x[1] + x[2] + x[3]}}, {(FVD[q1, \
 FCGV[\"mu\"]]*(2*x[2] - x[4]))/2 + (FVD[q2, FCGV[\"mu\"]]*(2*x[3] - \
 x[5]))/2}, -(m*x[1]) + SPD[q1, q1]*x[2] + SPD[q2, q2]*x[3], 1, 0}"},
 
