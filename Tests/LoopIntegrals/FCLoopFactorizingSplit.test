@@ -1,0 +1,143 @@
+
+
+(* :Title: FCLoopFactorizingSplit.test                                              	    *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopFactorizingSplit	  		*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopFactorizingSplit =
+{{"FCLoopFactorizingSplit-ID1",
+"FCLoopFactorizingSplit[FAD[{k1,m},{k2,m},{k3,m},{k4,m}]/.{k1->k1+k\
+2,k2->k2+k3,k3->k3+k1,k4->k4-k3},{k1,k2,k3,k4},FCE->True]",
+"{{FAD[{k1, m}], {k1}, {}}, {FAD[{k4, m}], {k4}, {}}, {FAD[{k2, m}], \
+{k2}, {}}, {FAD[{k3, m}], {k3}, {}}}"}, {"FCLoopFactorizingSplit-ID2",
+	"FCLoopFactorizingSplit[{FAD[{k1,m},{k2,m},{k3,m},{k4,m}]/.{k1->k1\
++k2,k2->k2+k3,k3->k3+k1,k4->k4-k3}},{k1,k2,k3,k4},FCE->True]",
+"{{{FAD[{k1, m}], {k1}, {}}, {FAD[{k4, m}], {k4}, {}}, {FAD[{k2, m}], \
+{k2}, {}}, {FAD[{k3, m}], {k3}, {}}}}"}, {"FCLoopFactorizingSplit-ID3",
+	"FCLoopFactorizingSplit[{FAD[{k1,m},{k2,m},{k3,m},{k4,m}]/.{k1->k1\
++k2,k2->k2+k3,k3->k3+k1,k4->k4-k3},\[IndentingNewLine]\
+FAD[{k1,m},{k2,m}]/.{k1->k1+k2}\[IndentingNewLine]\
+},{k1,k2,k3,k4},FCE->True]",
+"{{{FAD[{k1, m}], {k1}, {}}, {FAD[{k4, m}], {k4}, {}}, {FAD[{k2, m}], \
+{k2}, {}}, {FAD[{k3, m}], {k3}, {}}}, {{FAD[{k1, m}], {k1}, {}}, \
+{FAD[{k2, m}], {k2}, {}}}}"}, {"FCLoopFactorizingSplit-ID4",
+"FCLoopFactorizingSplit[SFAD[{{I*p1,0},{-m1^2,-1},1}]*SFAD[{{I*(p2-p\
+3),0},{-m1^5,-1},1}]*SFAD[{{I*(p3+0 \
+q1),0},{-m1^2,-1},1}],{p1,p2,p3},FCE->True]",
+"{{SFAD[{{I*p2, 0}, {-m1^5, -1}, 1}], {p2}, {}}, {SFAD[{{I*p1, 0}, \
+{-m1^2, -1}, 1}], {p1}, {}}, {SFAD[{{I*p3, 0}, {-m1^2, -1}, 1}], {p3}, \
+{}}}"}, {"FCLoopFactorizingSplit-ID5",
+"FCLoopFactorizingSplit[{FAD[{k1,m},{k2,m},{k1-k2}],FAD[{k1,m},{k2,m\
+}]},{k1,k2},FCE->True]",
+"{{{FAD[k1 - k2]*FAD[{k1, m}]*FAD[{k2, m}], {k1, k2}, {}}}, \
+{{FAD[{k1, m}], {k1}, {}}, {FAD[{k2, m}], {k2}, {}}}}"}, \
+{"FCLoopFactorizingSplit-ID6",
+"FCLoopFactorizingSplit[{FAD[{k1,m1}]FAD[k2,k2-p1\
+],\[IndentingNewLine]FAD[{k1,m1}]FAD[{k2,m1}],\[IndentingNewLine]\
+FAD[{k1,m1}]FAD[{k2,m1}]FAD[k1-k2],\[IndentingNewLine]\
+FAD[k1,k1-p1]FAD[k2,k2-p2],\[IndentingNewLine]\
+FAD[k1,k1-p1]FAD[k2,k2-p2]/.k2->k2+k1},{k1,k2},FCE->True]",
+"{{{FAD[{k1, m1}], {k1}, {}}, {FAD[k2]*FAD[k2 - p1], {k2}, {}}}, \
+{{FAD[{k1, m1}], {k1}, {}}, {FAD[{k2, m1}], {k2}, {}}}, {{FAD[k1 - \
+k2]*FAD[{k1, m1}]*FAD[{k2, m1}], {k1, k2}, {}}}, {{FAD[k1]*FAD[k1 - \
+p1], {k1}, {}}, {FAD[k2]*FAD[k2 - p2], {k2}, {}}}, {{FAD[k2]*FAD[k2 - \
+p2], {k2}, {}}, {FAD[k1]*FAD[k1 - p1], {k1}, {}}}}"}, \
+{"FCLoopFactorizingSplit-ID7",
+"FCLoopFactorizingSplit[FAD[{k1,m},{k2-k1},{k2-p},{k3},{k3-p2}],{k1\
+,k2,k3},FCE->True]",
+"{{FAD[-k1 + k2]*FAD[k2 - p]*FAD[{k1, m}], {k1, k2}, {}}, \
+{FAD[k3]*FAD[k3 - p2], {k3}, {}}}"}, {"FCLoopFactorizingSplit-ID8",
+"FCLoopFactorizingSplit[{GLI[prop2Ltopo31313,{0,0,1,0,1}]},{FCTopol\
+ogy[prop2Ltopo31313,{SFAD[{{I p1,0},{-m3^2,-1},1}],SFAD[{{I \
+(p1+q1),0},{-m1^2,-1},1}],SFAD[{{I p3,0},{-m3^2,-1},1}],SFAD[{{I \
+(p3+q1),0},{-m1^2,-1},1}],SFAD[{{I \
+(p1-p3),0},{-m3^2,-1},1}]},{p1,p3},{q1},{SPD[q1,q1]->m1^2},{}]},FCE->T\
+rue]", "{{{SFAD[{{I*p1, 0}, {-m3^2, -1}, 1}], {p1}, {SPD[q1, q1] -> \
+m1^2}}, {SFAD[{{I*p3, 0}, {-m3^2, -1}, 1}], {p3}, {SPD[q1, q1] -> \
+m1^2}}}}"},
+{"fcstFCLoopFactorizingSplit-ID8",
+"FCLoopFactorizingSplit[{GLI[prop3L1topo00112211,{0,0,1,1,1,0,1,0,0\
+}]},{FCTopology[prop3L1topo00112211,{SFAD[{{\[ImaginaryI] \
+p1,0},{0,1},1}],SFAD[{{\[ImaginaryI] p2,0},{0,1},1}],SFAD\
+[{{\[ImaginaryI] p3,0},{-\!\(\*SuperscriptBox[\(m1\), \
+\(2\)]\),1},1}],SFAD[{{\[ImaginaryI] \
+(p1-p2),0},{-\!\(\*SuperscriptBox[\(m1\), \(2\)]\),1},1}],SFAD\
+[{{\[ImaginaryI] (p2-p3),0},{0,1},1}],SFAD[{{\[ImaginaryI] \
+(p1+q1),0},{-\!\(\*SuperscriptBox[\(m2\), \(2\)]\),1},1}],SFAD\
+[{{\[ImaginaryI] (p2+q1),0},{-\!\(\*SuperscriptBox[\(m1\), \
+\(2\)]\),1},1}],SFAD[{{\[ImaginaryI] \
+(p3+q1),0},{-\!\(\*SuperscriptBox[\(m1\), \
+\(2\)]\),1},1}],SFAD[{{0,-p1.p3},{0,1},1}]},{p1,p2,p3},{q1},{},{}]},FC\
+E->True]",
+"{{{SFAD[{{I*(p2 - p3), 0}, {0, 1}, 1}]*SFAD[{{I*p3, 0}, {-m1^2, 1}, \
+1}]*SFAD[{{I*(p2 + q1), 0}, {-m1^2, 1}, 1}], {p2, p3}, {}}, \
+{SFAD[{{I*p1, 0}, {-m1^2, 1}, 1}], {p1}, {}}}}"}, \
+{"fcstFCLoopFactorizingSplit-ID9",
+"FCLoopFactorizingSplit[{GLI[prop3L3topo02222112,{0,1,0,0,1,0,1,2,0\
+}]},{FCTopology[prop3L3topo02222112,{SFAD[{{\[ImaginaryI] \
+p1,0},{0,1},1}],SFAD[{{\[ImaginaryI] \
+(p1-p4),0},{-\!\(\*SuperscriptBox[\(m2\), \(2\)]\),1},1}],SFAD\
+[{{\[ImaginaryI] p3,0},{-\!\(\*SuperscriptBox[\(m2\), \
+\(2\)]\),1},1}],SFAD[{{\[ImaginaryI] \
+p4,0},{-\!\(\*SuperscriptBox[\(m2\), \(2\)]\),1},1}],SFAD\
+[{{\[ImaginaryI] (p1-p3-p4),0},{0,1},1}],SFAD[{{\[ImaginaryI] \
+(p1+q1),0},{-\!\(\*SuperscriptBox[\(m1\), \(2\)]\),1},1}],SFAD\
+[{{\[ImaginaryI] (p3+p4+q1),0},{-\!\(\*SuperscriptBox[\(m1\), \
+\(2\)]\),1},1}],SFAD[{{\[ImaginaryI] \
+(p3+q1),0},{-\!\(\*SuperscriptBox[\(m2\), \
+\(2\)]\),1},1}],SFAD[{{0,-p4.q1},{0,1},1}]},{p1,p3,p4},{q1},{},{}]},FC\
+E->True]",
+"{{{SFAD[{{I*p1, 0}, {-m2^2, 1}, 1}]*SFAD[{{I*(p1 - p3), 0}, {0, 1}, \
+1}]*SFAD[{{I*(p3 + q1), 0}, {-m2^2, 1}, 1}]^2, {p1, p3}, {}}, \
+{SFAD[{{I*(p4 + q1), 0}, {-m1^2, 1}, 1}], {p4}, {}}}}"}, \
+{"fcstFCLoopFactorizingSplit-ID10",
+"FCLoopFactorizingSplit[{GLI[prop3L3topo20220112,{1,0,1,1,1,0,2,0,0\
+}]},{FCTopology[prop3L3topo20220112,{SFAD[{{\[ImaginaryI] \
+p1,0},{-\!\(\*SuperscriptBox[\(m2\), \(2\)]\),1},1}],SFAD\
+[{{\[ImaginaryI] (p1-p4),0},{0,1},1}],SFAD[{{\[ImaginaryI] \
+p3,0},{-\!\(\*SuperscriptBox[\(m2\), \(2\)]\),1},1}],SFAD\
+[{{\[ImaginaryI] p4,0},{-\!\(\*SuperscriptBox[\(m2\), \
+\(2\)]\),1},1}],SFAD[{{\[ImaginaryI] \
+(p1-p3-p4),0},{-\!\(\*SuperscriptBox[\(m2\), \(2\)]\),1},1}],SFAD\
+[{{\[ImaginaryI] (p1+q1),0},{-\!\(\*SuperscriptBox[\(m1\), \
+\(2\)]\),1},1}],SFAD[{{\[ImaginaryI] \
+(p3+p4+q1),0},{-\!\(\*SuperscriptBox[\(m1\), \(2\)]\),1},1}],SFAD\
+[{{\[ImaginaryI] (p3+q1),0},{-\!\(\*SuperscriptBox[\(m2\), \
+\(2\)]\),1},1}],SFAD[{{0,-p4.q1},{0,1},1}]},{p1,p3,p4},{q1},{},{}]},FC\
+E->True]",
+"{{{SFAD[{{I*p1, 0}, {-m2^2, 1}, 1}]*SFAD[{{I*p3, 0}, {-m2^2, 1}, \
+1}]*SFAD[{{I*(p1 - p3 - p4), 0}, {-m2^2, 1}, 1}]*SFAD[{{I*p4, 0}, \
+{-m2^2, 1}, 1}]*SFAD[{{I*(p3 + p4 + q1), 0}, {-m1^2, 1}, 1}]^2, {p1, \
+p3, p4}, {}}}}"}, {"fcstFCLoopFactorizingSplit-ID11",
+"FCLoopFactorizingSplit[{GLI[prop3L3topo22002112,{0,0,1,1,1,0,1,1,0\
+}]},{FCTopology[prop3L3topo22002112,{SFAD[{{\[ImaginaryI] \
+p1,0},{-\!\(\*SuperscriptBox[\(m2\), \(2\)]\),1},1}],SFAD\
+[{{\[ImaginaryI] (p1-p4),0},{-\!\(\*SuperscriptBox[\(m2\), \
+\(2\)]\),1},1}],SFAD[{{\[ImaginaryI] p3,0},{0,1},1}],SFAD\
+[{{\[ImaginaryI] p4,0},{0,1},1}],SFAD[{{\[ImaginaryI] \
+(p1-p3-p4),0},{-\!\(\*SuperscriptBox[\(m2\), \(2\)]\),1},1}],SFAD\
+[{{\[ImaginaryI] (p1+q1),0},{-\!\(\*SuperscriptBox[\(m1\), \
+\(2\)]\),1},1}],SFAD[{{\[ImaginaryI] \
+(p3+p4+q1),0},{-\!\(\*SuperscriptBox[\(m1\), \(2\)]\),1},1}],SFAD\
+[{{\[ImaginaryI] (p3+q1),0},{-\!\(\*SuperscriptBox[\(m2\), \
+\(2\)]\),1},1}],SFAD[{{0,-p4.q1},{0,1},1}]},{p1,p3,p4},{q1},{},{}]},FC\
+E->True]",
+"{{{SFAD[{{I*p3, 0}, {0, 1}, 1}]*SFAD[{{I*p4, 0}, {0, 1}, \
+1}]*SFAD[{{I*(p3 + q1), 0}, {-m2^2, 1}, 1}]*SFAD[{{I*(p3 + p4 + q1), \
+0}, {-m1^2, 1}, 1}], {p3, p4}, {}}, {SFAD[{{I*p1, 0}, {-m2^2, 1}, 1}], \
+{p1}, {}}}}"}
+};
+
+
+
+
+

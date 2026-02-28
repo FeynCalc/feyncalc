@@ -1,0 +1,1281 @@
+
+
+(* :Title: FCLoopToGLI.test                                          		*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for FCLoopToGLI	  			*)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`LoopIntegrals`fcstFCLoopToGLI =
+({{"fcstFCLoopToGLI-ID1",
+"FCLoopToGLI[SFAD[{{I*(p1 - q1), 0}, {-m5^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - q1, \
+D], 0, m5^2, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, {"fcstFCLoopToGLI-ID2",
+	"FCLoopToGLI[SFAD[{{I*(p1 - q1), 0}, {-m7^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - q1, \
+D], 0, m7^2, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, {"fcstFCLoopToGLI-ID3",
+	"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 - q1), 0}, \
+{-m7^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - q1, \
+D], 0, m7^2, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, {"fcstFCLoopToGLI-ID4",
+	"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, m1^2, {1, 1}]]}, {p1}, {}, {}, {}]}"}, {"fcstFCLoopToGLI-ID5",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p1 - q1), \
+0}, {-m5^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - q1, \
+D], 0, m5^2, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, {"fcstFCLoopToGLI-ID6",
+	"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m2^2, 1}, 1}]*SFAD[{{I*(p1 - q1), \
+0}, {-m7^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, m2^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - q1, \
+D], 0, m7^2, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, {"fcstFCLoopToGLI-ID7",
+	"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p1 - q1), \
+0}, {-m1^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - q1, \
+D], 0, m1^2, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, {"fcstFCLoopToGLI-ID8",
+	"FCLoopToGLI[SFAD[{{I*(p1 - q1), 0}, {-m2^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - q1, \
+D], 0, m2^2, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, {"fcstFCLoopToGLI-ID9",
+	"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m2^2, 1}, 1}]*SFAD[{{I*(p1 - q1), \
+0}, {-m2^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, m2^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - q1, \
+D], 0, m2^2, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID10",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 - q1), 0}, \
+{0, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - q1, \
+D], 0, 0, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, {"fcstFCLoopToGLI-ID11",
+"FCLoopToGLI[SFAD[{{I*(p1 - q1), 0}, {-m3^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - q1, \
+D], 0, m3^2, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID12",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p1 - q1), \
+0}, {-m3^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - q1, \
+D], 0, m3^2, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID13",
+"FCLoopToGLI[SFAD[{{I*(p1 - p3), 0}, {-m3^2, 1}, 1}]*SFAD[{{I*(p1 + \
+q1), 0}, {0, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, {0, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m3^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID14",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, m1^2, {1, 1}]]}, {p1}, {}, {}, {}]}"}, {"fcstFCLoopToGLI-ID15",
+"FCLoopToGLI[SFAD[{{I*(p3 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]]}, {p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID16",
+"FCLoopToGLI[SFAD[{{I*(p1 - p3), 0}, {-m1^2, 1}, 1}]*SFAD[{{I*p3, \
+0}, {0, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, {0, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m1^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID17",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 - p3), 0}, \
+{-m1^2, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m1^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID18",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 - p3), 0}, \
+{-m1^2, 1}, 1}]^2*SFAD[{{I*(p3 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, \
+p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 2}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m1^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID19",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 - p3), 0}, \
+{-m1^2, 1}, 1}]*SFAD[{{I*p3, 0}, {0, 1}, 1}], {p1, p2, p3}, Unique -> \
+False]",
+"{GLI[\"loopint\", {1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], 0, \
+0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m1^2, {1, 1}]]}, {p1, p3}, {}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID20",
+"FCLoopToGLI[SFAD[{{(-I)*p3, 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[(-I)*Momentum[p3, D], \
+0, m1^2, {1, 1}]]}, {p3}, {}, {}, {}]}"}, {"fcstFCLoopToGLI-ID21",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, \
+{0, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, 0, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, {"fcstFCLoopToGLI-ID22",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 - p3), 0}, \
+{-m1^2, 1}, 1}]*SFAD[{{I*p3, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, \
+{0, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], 0, \
+0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m1^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID23",
+"FCLoopToGLI[SFAD[{{I*(p1 - p3), 0}, {0, 1}, 1}]*SFAD[{{I*p3, 0}, \
+{-m1^2, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, {0, 1}, 1}]*SFAD[{{I*(p3 + q1), \
+0}, {-m1^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], 0, \
+m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, 0, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID24",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, \
+{0, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, 0, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, {"fcstFCLoopToGLI-ID25",
+"FCLoopToGLI[SFAD[{{I*p3, 0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p3 + q1), \
+0}, {-m1^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]]}, {p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID26",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, m1^2, {1, 1}]]}, {p1}, {}, {}, {}]}"}, {"fcstFCLoopToGLI-ID27",
+"FCLoopToGLI[SFAD[{{I*p3, 0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p3 + q1), \
+0}, {-m1^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]]}, {p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID28",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 - p3), 0}, \
+{-m1^2, 1}, 1}]*SFAD[{{I*p3, 0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p1 + q1), \
+0}, {0, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], 0, \
+m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m1^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID29",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m3^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, m3^2, {1, 1}]]}, {p1}, {}, {}, {}]}"}, {"fcstFCLoopToGLI-ID30",
+"FCLoopToGLI[SFAD[{{I*p3, 0}, {-m3^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m3^2, {1, 1}]]}, {p3}, {}, {}, {}]}"}, {"fcstFCLoopToGLI-ID31",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 - p3), 0}, \
+{0, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, {0, 1}, 1}], {p1, p2, p3}, Unique \
+-> False]",
+"{GLI[\"loopint\", {1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, 0, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID32",
+"FCLoopToGLI[SFAD[{{I*(p1 - p3), 0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p1 + \
+q1), 0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, {-m1^2, 1}, 1}], {p1, \
+p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m1^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID33",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 - p3), 0}, \
+{-m1^2, 1}, 1}]*SFAD[{{I*p3, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, \
+{-m1^2, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], 0, \
+0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m1^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID34",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m3^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, m3^2, {1, 1}]]}, {p1}, {}, {}, {}]}"}, {"fcstFCLoopToGLI-ID35",
+"FCLoopToGLI[SFAD[{{I*(p3 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]]}, {p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID36",
+"FCLoopToGLI[SFAD[{{I*(p1 - p3), 0}, {-m3^2, 1}, 1}]*SFAD[{{I*(p1 + \
+q1), 0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, {-m1^2, 1}, 1}], {p1, \
+p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m3^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID37",
+"FCLoopToGLI[SFAD[{{I*(p1 - p3), 0}, {-m3^2, 1}, 1}]*SFAD[{{I*p3, \
+0}, {0, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m3^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID38",
+"FCLoopToGLI[SFAD[{{I*(p1 - p3), 0}, {-m3^2, 1}, 1}]^2*SFAD[{{I*p3, \
+0}, {0, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 2}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m3^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID39",
+"FCLoopToGLI[SFAD[{{I*(p1 - p3), 0}, {-m3^2, 1}, 1}]*SFAD[{{I*p3, \
+0}, {0, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, {-m1^2, 1}, 1}]^2, {p1, p2, \
+p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 2, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m3^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID40",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 - p3), 0}, \
+{-m3^2, 1}, 1}]*SFAD[{{I*p3, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, \
+{-m1^2, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], 0, \
+0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m3^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID41",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 - p3), 0}, \
+{0, 1}, 1}]*SFAD[{{I*p3, 0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, \
+{-m1^2, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, {0, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], 0, \
+m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, 0, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID42",
+"FCLoopToGLI[SFAD[{{I*(p1 - p3), 0}, {-m1^2, 1}, 1}]*SFAD[{{I*p3, \
+0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, \
+p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m1^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID43",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 - p3), 0}, \
+{0, 1}, 1}]*SFAD[{{I*p3, 0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, \
+{-m1^2, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], 0, \
+m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, 0, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID44",
+"FCLoopToGLI[SFAD[{{I*(p1 - p3), 0}, {-m1^2, 1}, 1}]*SFAD[{{I*p3, \
+0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, {-m1^2, 1}, \
+1}]*SFAD[{{I*(p3 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, Unique -> \
+False]",
+"{GLI[\"loopint\", {1, 1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m1^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID45",
+"FCLoopToGLI[SFAD[{{I*(p1 - p3), 0}, {0, 1}, 1}]^2*SFAD[{{I*p3, 0}, \
+{-m3^2, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 2}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m3^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, 0, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID46",
+"FCLoopToGLI[SFAD[{{I*(p1 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m1^2, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID47",
+"FCLoopToGLI[SFAD[{{I*p3, 0}, {-m3^2, 1}, 1}]*SFAD[{{I*(p3 + q1), \
+0}, {-m1^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m3^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]]}, {p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID48",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 - p3), 0}, \
+{0, 1}, 1}]*SFAD[{{I*p3, 0}, {-m3^2, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, \
+{-m1^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], 0, \
+m3^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, 0, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID49",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 - p3), 0}, \
+{0, 1}, 1}]*SFAD[{{I*p3, 0}, {-m3^2, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, \
+{-m1^2, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], 0, \
+m3^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, 0, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID50",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m3^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, m3^2, {1, 1}]]}, {p1}, {}, {}, {}]}"}, {"fcstFCLoopToGLI-ID51",
+"FCLoopToGLI[SFAD[{{I*p3, 0}, {-m3^2, 1}, 1}]*SFAD[{{I*(p3 + q1), \
+0}, {-m1^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m3^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]]}, {p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID52",
+"FCLoopToGLI[SFAD[{{I*(p1 - p3), 0}, {-m3^2, 1}, 1}]*SFAD[{{I*p3, \
+0}, {-m3^2, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, \
+p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m3^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m3^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID53",
+"FCLoopToGLI[SFAD[{{I*(p1 - p3), 0}, {-m3^2, 1}, 1}]^2*SFAD[{{I*p3, \
+0}, {-m3^2, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, \
+p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 2}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m3^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m3^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID54",
+"FCLoopToGLI[SFAD[{{I*(p1 - p3), 0}, {-m3^2, 1}, 1}]*SFAD[{{I*p3, \
+0}, {-m3^2, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, {-m1^2, 1}, \
+1}]*SFAD[{{I*(p3 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, Unique -> \
+False]",
+"{GLI[\"loopint\", {1, 1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m3^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m3^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID55",
+"FCLoopToGLI[SFAD[{{I*(p1 + q1), 0}, {-m2^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m2^2, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID56",
+"FCLoopToGLI[SFAD[{{I*(p3 + q1), 0}, {-m2^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m2^2, {1, 1}]]}, {p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID57",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m3^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, m3^2, {1, 1}]]}, {p1}, {}, {}, {}]}"}, {"fcstFCLoopToGLI-ID58",
+"FCLoopToGLI[SFAD[{{I*(p3 + q1), 0}, {-m2^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m2^2, {1, 1}]]}, {p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID59",
+"FCLoopToGLI[SFAD[{{I*(p1 - p3), 0}, {-m3^2, 1}, 1}]*SFAD[{{I*(p1 + \
+q1), 0}, {-m2^2, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, {-m2^2, 1}, 1}], {p1, \
+p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m2^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m2^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m3^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID60",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m2^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, m2^2, {1, 1}]]}, {p1}, {}, {}, {}]}"}, {"fcstFCLoopToGLI-ID61",
+"FCLoopToGLI[SFAD[{{I*p3, 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m1^2, {1, 1}]]}, {p3}, {}, {}, {}]}"}, {"fcstFCLoopToGLI-ID62",
+"FCLoopToGLI[SFAD[{{I*(p1 - p3), 0}, {-m2^2, 1}, 1}]*SFAD[{{I*p3, \
+0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, {-m2^2, 1}, 1}], {p1, p2, \
+p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m2^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m2^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID63",
+"FCLoopToGLI[SFAD[{{I*(p1 - p3), 0}, {-m2^2, 1}, 1}]^2*SFAD[{{I*p3, \
+0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, {-m2^2, 1}, 1}], {p1, p2, \
+p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 2}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m2^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m2^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID64",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 - p3), 0}, \
+{-m2^2, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, {0, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m2^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID65",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 - p3), 0}, \
+{-m2^2, 1}, 1}]^2*SFAD[{{I*(p3 + q1), 0}, {0, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 2}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m2^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID66",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 - p3), 0}, \
+{-m2^2, 1}, 1}]*SFAD[{{I*p3, 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], 0, \
+m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m2^2, {1, 1}]]}, {p1, p3}, {}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID67",
+"FCLoopToGLI[SFAD[{{(-I)*p3, 0}, {-m2^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[(-I)*Momentum[p3, D], \
+0, m2^2, {1, 1}]]}, {p3}, {}, {}, {}]}"}, {"fcstFCLoopToGLI-ID68",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, \
+{-m2^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m2^2, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID69",
+"FCLoopToGLI[SFAD[{{I*p3, 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m1^2, {1, 1}]]}, {p3}, {}, {}, {}]}"}, {"fcstFCLoopToGLI-ID70",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, \
+{-m2^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m2^2, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID71",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, \
+{0, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, 0, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, {"fcstFCLoopToGLI-ID72",
+"FCLoopToGLI[SFAD[{{I*p3, 0}, {0, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, \
+{0, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, 0, {1, 1}]]}, {p3}, {q1}, {}, {}]}"}, {"fcstFCLoopToGLI-ID73",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p1 - p3), \
+0}, {-m1^2, 1}, 1}]*SFAD[{{I*p3, 0}, {-m3^2, 1}, 1}]*SFAD[{{I*(p3 + \
+q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m3^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], 0, \
+m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m1^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID74",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p1 + q1), \
+0}, {-m1^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m1^2, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID75",
+"FCLoopToGLI[SFAD[{{I*p3, 0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p3 + q1), \
+0}, {-m1^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]]}, {p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID76",
+"FCLoopToGLI[SFAD[{{I*(p1 - p3), 0}, {-m1^2, 1}, 1}]^2*SFAD[{{I*p3, \
+0}, {-m3^2, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, {-m3^2, 1}, 1}], {p1, p2, \
+p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 2}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m3^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m3^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m1^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID77",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p1 + q1), \
+0}, {-m3^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m3^2, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID78",
+"FCLoopToGLI[SFAD[{{I*p3, 0}, {-m3^2, 1}, 1}]*SFAD[{{I*(p3 + q1), \
+0}, {-m1^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m3^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]]}, {p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID79",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p1 - p3), \
+0}, {-m1^2, 1}, 1}]*SFAD[{{I*p3, 0}, {-m3^2, 1}, 1}]*SFAD[{{I*(p1 + \
+q1), 0}, {-m3^2, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, {-m1^2, 1}, 1}], {p1, \
+p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m3^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], 0, \
+m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m3^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m1^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID80",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m2^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, m2^2, {1, 1}]]}, {p1}, {}, {}, {}]}"}, {"fcstFCLoopToGLI-ID81",
+"FCLoopToGLI[SFAD[{{I*p3, 0}, {0, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, \
+{0, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, 0, {1, 1}]]}, {p3}, {q1}, {}, {}]}"}, {"fcstFCLoopToGLI-ID82",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m2^2, 1}, 1}]*SFAD[{{I*(p1 - p3), \
+0}, {-m2^2, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, {0, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], 0, \
+m2^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m2^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID83",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m2^2, 1}, 1}]*SFAD[{{I*(p1 - p3), \
+0}, {-m2^2, 1}, 1}]^2*SFAD[{{I*(p3 + q1), 0}, {0, 1}, 1}], {p1, p2, \
+p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 2}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], 0, \
+m2^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m2^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID84",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m2^2, 1}, 1}]*SFAD[{{I*(p1 - p3), \
+0}, {0, 1}, 1}]^2*SFAD[{{I*(p3 + q1), 0}, {0, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 2}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], 0, \
+m2^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, 0, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID85",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m2^2, 1}, 1}]*SFAD[{{I*(p1 - p3), \
+0}, {0, 1}, 1}]*SFAD[{{I*p3, 0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p1 + q1), \
+0}, {0, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], 0, \
+m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], 0, \
+m2^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, 0, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID86",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m2^2, 1}, 1}]*SFAD[{{I*(p1 + q1), \
+0}, {0, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], 0, \
+m2^2, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, {"fcstFCLoopToGLI-ID87",
+"FCLoopToGLI[SFAD[{{I*p3, 0}, {-m2^2, 1}, 1}]*SFAD[{{I*(p3 + q1), \
+0}, {0, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], 0, \
+m2^2, {1, 1}]]}, {p3}, {q1}, {}, {}]}"}, {"fcstFCLoopToGLI-ID88",
+"FCLoopToGLI[SFAD[{{(-I)*p3, 0}, {-m2^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[(-I)*Momentum[p3, D], \
+0, m2^2, {1, 1}]]}, {p3}, {}, {}, {}]}"}, {"fcstFCLoopToGLI-ID89",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m2^2, 1}, 1}]*SFAD[{{I*(p1 + q1), \
+0}, {-m2^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, m2^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m2^2, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID90",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m2^2, 1}, 1}]*SFAD[{{I*(p1 + q1), \
+0}, {-m2^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, m2^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m2^2, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID91",
+"FCLoopToGLI[SFAD[{{I*p3, 0}, {0, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, \
+{0, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, 0, {1, 1}]]}, {p3}, {q1}, {}, {}]}"}, {"fcstFCLoopToGLI-ID92",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m2^2, 1}, 1}]*SFAD[{{I*(p1 - p3), \
+0}, {-m2^2, 1}, 1}]*SFAD[{{I*p3, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 + q1), \
+0}, {-m2^2, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, {0, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], 0, \
+m2^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m2^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m2^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID93",
+"FCLoopToGLI[SFAD[{{I*(p1 - p3), 0}, {-m2^2, 1}, 1}]*SFAD[{{I*(p1 + \
+q1), 0}, {-m2^2, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, {-m1^2, 1}, 1}], {p1, \
+p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m2^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m2^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID94",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m2^2, 1}, 1}]*SFAD[{{I*(p1 + q1), \
+0}, {-m2^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, m2^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m2^2, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID95",
+"FCLoopToGLI[SFAD[{{I*(p3 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]]}, {p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID96",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m2^2, 1}, 1}]*SFAD[{{I*(p1 - p3), \
+0}, {-m2^2, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, {-m2^2, 1}, \
+1}]*SFAD[{{I*(p3 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, Unique -> \
+False]",
+"{GLI[\"loopint\", {1, 1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, m2^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m2^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m2^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID97",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m2^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, m2^2, {1, 1}]]}, {p1}, {}, {}, {}]}"}, {"fcstFCLoopToGLI-ID98",
+"FCLoopToGLI[SFAD[{{I*p3, 0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p3 + q1), \
+0}, {-m1^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]]}, {p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID99",
+"FCLoopToGLI[SFAD[{{I*(p1 - p3), 0}, {-m2^2, 1}, 1}]*SFAD[{{I*p3, \
+0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, {-m2^2, 1}, \
+1}]*SFAD[{{I*(p3 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, Unique -> \
+False]",
+"{GLI[\"loopint\", {1, 1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m2^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m2^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID100",
+"FCLoopToGLI[SFAD[{{I*(p1 - p3), 0}, {0, 1}, 1}]^2*SFAD[{{I*p3, 0}, \
+{-m2^2, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, {-m2^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 2}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m2^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m2^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, 0, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID101",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m2^2, 1}, 1}]*SFAD[{{I*(p1 + q1), \
+0}, {-m2^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, m2^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m2^2, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID102",
+"FCLoopToGLI[SFAD[{{I*p3, 0}, {-m2^2, 1}, 1}]*SFAD[{{I*(p3 + q1), \
+0}, {-m2^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m2^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m2^2, {1, 1}]]}, {p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID103",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m3^2, 1}, 1}]*SFAD[{{I*(p1 - p3), \
+0}, {-m3^2, 1}, 1}]*SFAD[{{I*p3, 0}, {-m3^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m3^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], 0, \
+m3^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m3^2, {1, 1}]]}, {p1, p3}, {}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID104",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m3^2, 1}, 1}]*SFAD[{{I*(p1 - p3), \
+0}, {-m3^2, 1}, 1}]*SFAD[{{I*p3, 0}, {-m3^2, 1}, 1}]*SFAD[{{I*(p1 + \
+q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m3^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], 0, \
+m3^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m3^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID105",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m3^2, 1}, 1}]*SFAD[{{I*(p1 - p3), \
+0}, {-m3^2, 1}, 1}]*SFAD[{{I*p3, 0}, {-m3^2, 1}, 1}]*SFAD[{{I*(p1 + \
+q1), 0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, {-m1^2, 1}, 1}], {p1, \
+p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, m3^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], 0, \
+m3^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, m3^2, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID106",
+"FCLoopToGLI[SFAD[{{I*(p1 - p3), 0}, {0, 1}, 1}]*SFAD[{{I*p3, 0}, \
+{0, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, {-m3^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m3^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, 0, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID107",
+"FCLoopToGLI[SFAD[{{I*(p1 - p3), 0}, {0, 1}, 1}]^2*SFAD[{{I*p3, 0}, \
+{0, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, {-m3^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 2}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m3^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, 0, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID108",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p1 - p3), \
+0}, {0, 1}, 1}]*SFAD[{{I*p3, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, \
+{-m3^2, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], 0, \
+m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m3^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p3, \
+D], 0, 0, {1, 1}]]}, {p1, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID109",
+"FCLoopToGLI[SFAD[{{I*(p1 - p2), 0}, {0, 1}, 1}]*SFAD[{{I*(p2 - p3), \
+0}, {0, 1}, 1}]*SFAD[{{I*p3, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, \
+{0, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p2 - p3, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p2, \
+D], 0, 0, {1, 1}]]}, {p1, p2, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID110",
+"FCLoopToGLI[SFAD[{{I*(p1 - p2), 0}, {0, 1}, 1}]*SFAD[{{I*p2, 0}, \
+{0, 1}, 1}]*SFAD[{{I*(p2 - p3), 0}, {0, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, \
+{0, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, {0, 1}, 1}], {p1, p2, p3}, Unique \
+-> False]",
+"{GLI[\"loopint\", {1, 1, 1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p2, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p2 - p3, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p2, \
+D], 0, 0, {1, 1}]]}, {p1, p2, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID111",
+"FCLoopToGLI[SFAD[{{I*(p1 - p2), 0}, {0, 1}, 1}]*SFAD[{{I*p2, 0}, \
+{0, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, {0, 1}, 1}], {p1, p2, p3}, Unique \
+-> False]",
+"{GLI[\"loopint\", {1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p2, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p2, \
+D], 0, 0, {1, 1}]]}, {p1, p2}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID112",
+"FCLoopToGLI[SFAD[{{I*p3, 0}, {0, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, \
+{0, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, 0, {1, 1}]]}, {p3}, {q1}, {}, {}]}"}, {"fcstFCLoopToGLI-ID113",
+	"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 - p2), 0}, \
+{0, 1}, 1}]*SFAD[{{I*(p2 - p3), 0}, {0, 1}, 1}]*SFAD[{{I*p3, 0}, {0, \
+1}, 1}]*SFAD[{{I*(p1 + q1), 0}, {0, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, \
+{0, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1, 1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], 0, \
+0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p2 - p3, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p2, \
+D], 0, 0, {1, 1}]]}, {p1, p2, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID114",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, \
+{0, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, 0, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, {"fcstFCLoopToGLI-ID115",
+	"FCLoopToGLI[SFAD[{{I*p2, 0}, {0, 1}, 1}]*SFAD[{{I*(p2 + q1), 0}, \
+{0, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p2, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p2 + q1, \
+D], 0, 0, {1, 1}]]}, {p2}, {q1}, {}, {}]}"}, {"fcstFCLoopToGLI-ID116",
+	"FCLoopToGLI[SFAD[{{I*p3, 0}, {0, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, \
+{0, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, 0, {1, 1}]]}, {p3}, {q1}, {}, {}]}"}, {"fcstFCLoopToGLI-ID117",
+	"FCLoopToGLI[SFAD[{{I*(p1 - p2), 0}, {0, 1}, 1}]*SFAD[{{I*p2, 0}, \
+{0, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, {0, 1}, 1}], {p1, p2, p3}, Unique \
+-> False]",
+"{GLI[\"loopint\", {1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p2, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p2, \
+D], 0, 0, {1, 1}]]}, {p1, p2}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID118",
+"FCLoopToGLI[SFAD[{{I*(p3 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]]}, {p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID119",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, \
+{0, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, 0, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, {"fcstFCLoopToGLI-ID120",
+	"FCLoopToGLI[SFAD[{{I*p2, 0}, {0, 1}, 1}]*SFAD[{{I*(p2 + q1), 0}, \
+{0, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p2, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p2 + q1, \
+D], 0, 0, {1, 1}]]}, {p2}, {q1}, {}, {}]}"}, {"fcstFCLoopToGLI-ID121",
+	"FCLoopToGLI[SFAD[{{I*(p3 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]]}, {p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID122",
+"FCLoopToGLI[SFAD[{{I*(p1 - p2), 0}, {0, 1}, 1}]*SFAD[{{I*(p2 - p3), \
+0}, {0, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, {0, 1}, 1}]*SFAD[{{I*(p2 + q1), \
+0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, {0, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p2 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p2 - p3, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p2, \
+D], 0, 0, {1, 1}]]}, {p1, p2, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID123",
+"FCLoopToGLI[SFAD[{{I*(p1 - p2), 0}, {0, 1}, 1}]*SFAD[{{I*(p1 + q1), \
+0}, {0, 1}, 1}]*SFAD[{{I*(p2 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p2 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p2, \
+D], 0, 0, {1, 1}]]}, {p1, p2}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID124",
+"FCLoopToGLI[SFAD[{{I*p3, 0}, {0, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, \
+{0, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, 0, {1, 1}]]}, {p3}, {q1}, {}, {}]}"}, {"fcstFCLoopToGLI-ID125",
+	"FCLoopToGLI[SFAD[{{I*(p1 - p2), 0}, {0, 1}, 1}]*SFAD[{{I*(p2 - \
+p3), 0}, {0, 1}, 1}]*SFAD[{{I*p3, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 + q1), \
+0}, {0, 1}, 1}]*SFAD[{{I*(p2 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p2 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p2 - p3, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 - p2, \
+D], 0, 0, {1, 1}]]}, {p1, p2, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID126",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, \
+{0, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, 0, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, {"fcstFCLoopToGLI-ID127",
+	"FCLoopToGLI[SFAD[{{I*(p2 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p2 + q1, \
+D], 0, m1^2, {1, 1}]]}, {p2}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID128",
+"FCLoopToGLI[SFAD[{{I*(p3 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]]}, {p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID129",
+"FCLoopToGLI[SFAD[{{I*(p2 - p3), 0}, {0, 1}, 1}]*SFAD[{{I*(p2 + q1), \
+0}, {-m1^2, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, {0, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p2 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p2 - p3, \
+D], 0, 0, {1, 1}]]}, {p2, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID130",
+"FCLoopToGLI[SFAD[{{I*(p1 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m1^2, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID131",
+"FCLoopToGLI[SFAD[{{I*(p2 - p3), 0}, {0, 1}, 1}]*SFAD[{{I*p3, 0}, \
+{0, 1}, 1}]*SFAD[{{I*(p2 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p2 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p2 - p3, \
+D], 0, 0, {1, 1}]]}, {p2, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID132",
+"FCLoopToGLI[SFAD[{{I*(p1 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, m1^2, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID133",
+"FCLoopToGLI[SFAD[{{I*p2, 0}, {0, 1}, 1}]*SFAD[{{I*(p2 - p3), 0}, \
+{-m1^2, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, {-m1^2, 1}, 1}], {p1, p2, p3}, \
+Unique -> False]",
+"{GLI[\"loopint\", {1, 1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p2, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p2 - p3, \
+D], 0, m1^2, {1, 1}]]}, {p2, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID134",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, \
+{0, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, 0, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}, {"fcstFCLoopToGLI-ID135",
+	"FCLoopToGLI[SFAD[{{I*p2, 0}, {0, 1}, 1}]*SFAD[{{I*(p2 - p3), 0}, \
+{-m1^2, 1}, 1}]*SFAD[{{I*(p3 + q1), 0}, {-m1^2, 1}, 1}]^2, {p1, p2, \
+p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 2, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p2, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p3 + q1, \
+D], 0, m1^2, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p2 - p3, \
+D], 0, m1^2, {1, 1}]]}, {p2, p3}, {q1}, {}, {}]}"}, \
+{"fcstFCLoopToGLI-ID136",
+"FCLoopToGLI[SFAD[{{I*p1, 0}, {0, 1}, 1}]*SFAD[{{I*(p1 + q1), 0}, \
+{0, 1}, 1}], {p1, p2, p3}, Unique -> False]",
+"{GLI[\"loopint\", {1, 1}], FCTopology[\"loopint\", \
+{FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1, D], \
+0, 0, {1, 1}]], \
+FeynAmpDenominator[StandardPropagatorDenominator[I*Momentum[p1 + q1, \
+D], 0, 0, {1, 1}]]}, {p1}, {q1}, {}, {}]}"}})
