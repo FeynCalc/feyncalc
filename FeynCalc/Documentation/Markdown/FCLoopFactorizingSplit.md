@@ -4,6 +4,8 @@
 
 Notice that the output is always given in the `FAD` notation even if the input was provided using `GLI`s.
 
+In most cases the routine will fail to find a factorization of integrals with numerators.
+
 ### See also
 
 [Overview](Extra/FeynCalc.md), [FCLoopFactorizingQ](FCLoopFactorizingQ.md), [FCLoopCreateFactorizingRules](FCLoopCreateFactorizingRules.md).

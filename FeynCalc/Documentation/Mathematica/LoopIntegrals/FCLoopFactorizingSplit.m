@@ -12,6 +12,10 @@
 (*Notice that the output is always given in the `FAD` notation even if the input was provided using `GLI`s.*)
 
 
+(* ::Text:: *)
+(*In most cases the routine will fail to find a factorization of integrals with numerators.*)
+
+
 (* ::Subsection:: *)
 (*See also*)
 
