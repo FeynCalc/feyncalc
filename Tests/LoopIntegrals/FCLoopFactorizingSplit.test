@@ -134,10 +134,12 @@ E->True]",
 "{{{SFAD[{{I*p3, 0}, {0, 1}, 1}]*SFAD[{{I*p4, 0}, {0, 1}, \
 1}]*SFAD[{{I*(p3 + q1), 0}, {-m2^2, 1}, 1}]*SFAD[{{I*(p3 + p4 + q1), \
 0}, {-m1^2, 1}, 1}], {p3, p4}, {}}, {SFAD[{{I*p1, 0}, {-m2^2, 1}, 1}], \
-{p1}, {}}}}"}
+{p1}, {}}}}"},
+{"FCLoopFactorizingSplit-ID12",
+"FCLoopFactorizingSplit[SFAD[-k2 - k3 - k1], {k1, k2, k3}]",
+"{{0, {}, {}}}"},
+{"FCLoopFactorizingSplit-ID13",
+"FCLoopFactorizingSplit[FAD[k - p1, k - p2] SPD[k, p1], {k},
+FCE -> True]",
+"{{FAD[k - p1]*FAD[k - p2]*SPD[k, p1], {k}, {}}}"}
 };
-
-
-
-
-

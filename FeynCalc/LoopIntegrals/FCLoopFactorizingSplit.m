@@ -56,7 +56,10 @@ FCLoopFactorizingSplit[expr: {__FCTopology}, opts:OptionsPattern[]] :=
 FCLoopFactorizingSplit[expr_FCTopology, opts:OptionsPattern[]] :=
 	FCLoopFactorizingSplit[expr, {FCGV["dummy"]}, opts];
 
-FCLoopFactorizingSplit[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
+FCLoopFactorizingSplit[{}, ___, OptionsPattern[]] :=
+	{};
+
+FCLoopFactorizingSplit[expr_/; expr=!={}, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 	Block[{	uPoly, fPoly, res, time, x, lmoms, optFinalSubstitutions, aux,
 			ex, notList = False, tmp, loopMomenta, optVerbose, kinematics,
 			propsAndPows, optFCParallelize, optHead},
@@ -122,33 +125,44 @@ FCLoopFactorizingSplit[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] 
 		FCPrint[3, "FCLoopFactorizingSplit: U: ", uPoly, FCDoControl -> optVerbose];
 		FCPrint[3, "FCLoopFactorizingSplit: Loop momenta: ", loopMomenta, FCDoControl -> optVerbose];
 
+		FCPrint[3, "FCLoopFactorizingSplit: Propagators and powers: ", propsAndPows, FCDoControl -> optVerbose];
 
+
+
+		(*U=0 case not covered!*)
 
 		If[	$ParallelizeFeynCalc && OptionValue[FCParallelize],
 				time=AbsoluteTime[];
 				FCPrint[1,"FCLoopFactorizingSplit: Applying processIntegrands in parallel." , FCDoControl->optVerbose];
 				With[{xxx=x}, ParallelEvaluate[FCContext`FCLoopFactorizingSplit`x = xxx,DistributedContexts->False]];
 				aux = Transpose[{propsAndPows,uPoly,loopMomenta}];
-				tmp = ParallelMap[processIntegrands[#[[1]],#[[2]],#[[3]],FCContext`FCLoopFactorizingSplit`x]&,aux, DistributedContexts -> None,
+				tmp = ParallelMap[processIntegrands[#[[1]],#[[2]],#[[3]],FCContext`FCLoopFactorizingSplit`x,0]&,aux, DistributedContexts -> None,
 					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[uPoly]/$KernelCount]/10]];
 
 				FCPrint[1, "FCLoopFactorizingSplit: processIntegrands done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
+
+				FCPrint[3, "FCLoopFactorizingSplit: After processIntegrands: ", tmp, FCDoControl->optVerbose];
 
 				time=AbsoluteTime[];
 				FCPrint[1,"FCLoopFactorizingSplit: Applying getCorrectLoopMomentaPre in parallel." , FCDoControl->optVerbose];
 				res = ParallelMap[getCorrectLoopMomentaPre[#,{},0]&,tmp, DistributedContexts -> None,
 					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[uPoly]/$KernelCount]/10]];
 				FCPrint[1, "FCLoopFactorizingSplit: getCorrectLoopMomentaPre done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
+
+				FCPrint[3, "FCLoopFactorizingSplit: After getCorrectLoopMomentaPre: ", res, FCDoControl->optVerbose];
+
 				,
 				time=AbsoluteTime[];
 				FCPrint[1,"FCLoopFactorizingSplit: Applying processIntegrands." , FCDoControl->optVerbose];
-				tmp = MapThread[processIntegrands[#1,#2,#3,x]&,{propsAndPows,uPoly,loopMomenta}];
+				tmp = MapThread[processIntegrands[#1,#2,#3,x,optVerbose]&,{propsAndPows,uPoly,loopMomenta}];
 				FCPrint[1, "FCLoopFactorizingSplit: processIntegrands done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
+				FCPrint[3, "FCLoopFactorizingSplit: After processIntegrands: ", tmp, FCDoControl->optVerbose];
 
 				time=AbsoluteTime[];
 				FCPrint[1,"FCLoopFactorizingSplit: Applying getCorrectLoopMomentaPre." , FCDoControl->optVerbose];
 				res = Map[getCorrectLoopMomentaPre[#,{},optVerbose]&,tmp];
 				FCPrint[1, "FCLoopFactorizingSplit: getCorrectLoopMomentaPre done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
+				FCPrint[3, "FCLoopFactorizingSplit: After getCorrectLoopMomentaPre: ", res, FCDoControl->optVerbose];
 		];
 
 		time=AbsoluteTime[];
@@ -174,20 +188,48 @@ FCLoopFactorizingSplit[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] 
 		res
 	];
 
+processIntegrands[_,0,_,_,_]:=
+	{{0, {}}};
 
-processIntegrands[propsAndPows_,uPolyRaw_,lmoms_,x_]:=
-	Block[{xVars,tmp,uPoly},
+processIntegrands[propsAndPows_,uPolyRaw_/;uPolyRaw=!=0,lmoms_,x_,optVerbose_]:=
+	Block[{xVars,tmp,uPoly,diff},
+		(*e.g. FactorList[(x[1] + x[2]) (x[3] + x[4])]*)
 		uPoly = FactorList[uPolyRaw];
+
+		(*Obtain sets of x-variables for factorizable integrals*)
 		xVars = Map[Cases2[#, x] &, SelectNotFree[uPoly, x]];
+
 		tmp = Map[SelectNotFree[propsAndPows, #] &, xVars];
-		tmp = MomentumExpand[Map[Times @@ Map[Function[{xx}, Power[xx[[2]], xx[[3]]]], #] &, tmp]];
+		diff = Complement[propsAndPows,Sequence@@@tmp];
+
+		FCPrint[4, "FCLoopFactorizingSplit: processIntegrands: Dangling propagators: ",diff, FCDoControl -> optVerbose];
+		(*	Scalar products in the numerator may lead to nonfactorizable
+			integrals even though the U-polynomial criterion admits a factorization *)
+		If[	diff=!={},
+			If[TrueQ[Length[tmp]===1],
+				tmp = {Join[tmp[[1]],diff]},
+				(*TODO: Perhaps think of better ways to deal with numerators*)
+				tmp = {propsAndPows}
+			]
+		];
+
+		diff = Complement[propsAndPows,Sequence@@@tmp];
+		FCPrint[4, "FCLoopFactorizingSplit: processIntegrands: Dangling propagators 2: ",diff, FCDoControl -> optVerbose];
+
+		If[	diff=!={},
+			Message[FCLoopFactorizingSplit::failmsg,"Something went wrong when extracting propagators of factorizing integrals"];
+			Abort[]
+		];
+
+		tmp = MomentumExpand[Map[Times @@ Map[Function[{xx}, If[xx[[3]]>=0,  Power[xx[[2]], xx[[3]]], Power[FeynAmpDenominatorExplicit[xx[[2]]], -xx[[3]]] ]  ], #] &, tmp]];
 
 		If[	TrueQ[Length[tmp]>1],
 			tmp = Map[List[#,Union[SelectNotFree[Cases[#, Momentum[k_, ___] :> k, Infinity], lmoms]]] &, tmp],
 			tmp = {{tmp[[1]],lmoms}}
 		];
+
 		tmp
-	]
+	];
 
 addHead[xx_,head_]:=
 	Map[{head[#[[1]],#[[2]],#[[3]]]}&,xx];
@@ -195,7 +237,10 @@ addHead[xx_,head_]:=
 addKinematics[xx_,kinematics_]:=
 	Map[Join[#,{kinematics}]&,xx];
 
-getCorrectLoopMomentaPre[intsToCheck_List, oneLoopInts_,optVerbose_] :=
+getCorrectLoopMomentaPre[{{0, {}}}, {}, _]:=
+	{{0, {}}};
+
+getCorrectLoopMomentaPre[intsToCheck_List/; intsToCheck=!={{0, {}}}, oneLoopInts_,optVerbose_] :=
 	Block[{	oneLoopIntegrals,lmomsToNullify,aux,newOneLoopIntegrals,allSubsets,
 			uniqueMomenta},
 
@@ -204,6 +249,7 @@ getCorrectLoopMomentaPre[intsToCheck_List, oneLoopInts_,optVerbose_] :=
 			it cannot be nullified there! *)
 		uniqueMomenta = Cases[Tally[Flatten[allSubsets]], {a_, 1} :> a, Infinity];
 
+		FCPrint[4, "FCLoopFactorizingSplit: getCorrectLoopMomentaPre: Integrals to check: ",intsToCheck, FCDoControl -> optVerbose];
 		FCPrint[4, "FCLoopFactorizingSplit: getCorrectLoopMomentaPre: Unique loop momenta: ",uniqueMomenta, FCDoControl -> optVerbose];
 
 		oneLoopIntegrals=Select[intsToCheck, (Length[#[[2]]] === 1) &];
