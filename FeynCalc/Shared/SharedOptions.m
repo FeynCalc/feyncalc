@@ -55,7 +55,7 @@ CouplingConstant is also the head of coupling constants.  CouplingConstant
 takes three extra optional arguments, with heads RenormalizationState,
 RenormalizationScheme and ExpansionState respectively.  E.g.
 CouplingConstant[QED[1]] is the unit charge, CouplingConstant[ChPT2[4],1] is
-the first of the coupling constants of the Lagrangian ChPT2[4].  
+the first of the coupling constants of the Lagrangian ChPT2[4].
 
 CouplingConstant[a_,b_,c___][i_] :=
 CouplingConstant[a,b,RenormalizationState[i],c].";
@@ -74,7 +74,7 @@ DiracSpinorNormalization::usage=
 "DiracSpinorNormalization is an option for SpinorChainEvaluate, DiracSimplify
 and other functions. It specifies the normalization of the spinor inner
 products $\\bar{u}(p) u(p)$ and $\\bar{v}(p) v(p)$. Following values are
-supported: 
+supported:
 
 - \"Relativistic\" - this is the standard value corresponding to $\\bar{u}(p)
 u(p) = 2 m$, $\\bar{v}(p) v(p) = - 2 m$.
@@ -136,7 +136,7 @@ True, the result will be factored, using Factor2. If set to any function f,
 this function will be used.";
 
 ExtraFactor::usage=
-"ExtraFactor is an option for FermionSpinSum. The setting ExtraFactor -> fa 
+"ExtraFactor is an option for FermionSpinSum. The setting ExtraFactor -> fa
 multiplies the whole amplitude with the factor fa before squaring.";
 
 Factorout::usage =
@@ -176,7 +176,7 @@ of a loop integral in the usual FeynAmpDenominator-notation. The prefactor is
 the quantity that multiplies the loop integral measure $d^D q_1 \\ldots d^D
 q_n$ and plays an important role e.g. when deriving the Feynman parameter
 representation of the given integral. Apart from specifying an explicit value,
-the user may also choose from the following predefined conventions: 
+the user may also choose from the following predefined conventions:
 
 - \"Unity\" - 1 for each loop
 - \"Textbook\" - $\\frac{1}{(2\\pi)^D}$ for each loop.
@@ -205,10 +205,6 @@ prevent us from cutting the integral.";
 InitialSubstitutions::usage =
 "InitialSubstitutions is an option for OneLoop and OneLoopSum and Write2. All
 substitutions indicated hereby are done at the end of the calculation.";
-
-IntegralTable::usage=
-"IntegralTable is an option of OneLoopSimplify and FeynAmpDenominatorSimplify.
-It may be set to a list of the form {FCIntegral[ ... ] :> bla, ...}.";
 
 IntermediateSubstitutions::usage =
 "IntermediateSubstitutions is an option of various FeynCalc functions. All
