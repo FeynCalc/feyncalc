@@ -942,13 +942,6 @@ FormBox[FormBox[RowBox[{OverscriptBox[FormBox[\"p\", \
 TraditionalForm], \"^\"], \"+\", OverscriptBox[FormBox[\"q\", \
 TraditionalForm], \"^\"]}], TraditionalForm], TraditionalForm], \
 \")\"}], TraditionalForm]"},
-{"fcstSharedObjectsTypesetting-ID156",
-"MakeBoxes[IFPD[x, y], TraditionalForm]",
-"RowBox[{FormBox[\"\\\"(\\\"\", TraditionalForm], \
-FormBox[SuperscriptBox[\"x\", \"2\"], TraditionalForm], \
-FormBox[\"\\\" - \\\"\", TraditionalForm], FormBox[SuperscriptBox[\"y\
-\", \"2\"], TraditionalForm], FormBox[\"\\\")\\\"\", \
-TraditionalForm]}]"},
 {"fcstSharedObjectsTypesetting-ID157",
 "MakeBoxes[Integratedx[x, 0, 1], TraditionalForm]",
 "RowBox[{SubsuperscriptBox[\"\[Integral]\", FormBox[\"0\", \

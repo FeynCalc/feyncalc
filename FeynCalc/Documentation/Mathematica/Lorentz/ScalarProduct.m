@@ -40,7 +40,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [Calc](Calc.md), [FCClearScalarProducts](FCClearScalarProducts.md), [ExpandScalarProduct](ExpandScalarProduct.md), [ScalarProductCancel](ScalarProductCancel.md), [Pair](Pair.md), [SP](SP.md), [SPD](SPD.md).*)
+(*[Overview](Extra/FeynCalc.md), [Calc](Calc.md), [FCClearScalarProducts](FCClearScalarProducts.md), [ExpandScalarProduct](ExpandScalarProduct.md), [Pair](Pair.md), [SP](SP.md), [SPD](SPD.md).*)
 
 
 (* ::Subsection:: *)

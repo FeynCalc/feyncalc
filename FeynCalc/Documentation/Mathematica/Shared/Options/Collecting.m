@@ -8,7 +8,7 @@
 
 
 (* ::Text:: *)
-(*`Collecting` is an option of `ScalarProductCancel`, `Series2`, `TID` and related functions. Setting it to `True` will trigger some kind of collecting of the result.*)
+(*`Collecting` is an option of various functions. Setting it to `True` will trigger some kind of collecting of the result.*)
 
 
 (* ::Subsection:: *)
@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [ScalarProductCancel](ScalarProductCancel.md), [Series2](Series2.md), [TID](TID.md).*)
+(*[Overview](Extra/FeynCalc.md).*)
 
 
 (* ::Subsection:: *)
