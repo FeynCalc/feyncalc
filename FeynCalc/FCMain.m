@@ -15,14 +15,9 @@
 
 (* ------------------------------------------------------------------------ *)
 
-$Abbreviations::usage =
-"$Abbreviations are a list of string substitution rules used when generating
-names for storing intermediate results. It is used by OneLoop and PaVeReduce.
-The elements of the list should be of the form \"name\" -> \"abbreviation\".";
-
 $AL::usage =
-"$AL is the head for dummy indices which may be introduced by Amputate and
-Uncontract. By default it is unset, but may be set to anything.";
+"$AL is the head for dummy indices which may be introduced by different
+functions. By default it is unset, but may be set to anything.";
 
 $Containers::usage =
 "$Containers is a set of heads over which FieldDerivative should distribute, in
@@ -162,8 +157,7 @@ $KeepLogDivergentScalelessIntegrals::usage =
 "$KeepLogDivergentScalelessIntegrals is an experimental global option that
 forces FeynCalc not to set 1-loop integrals of type $\\frac{1}/{q^4}$ to zero.
 This is useful when one has to explicitly distinguish between IR- and
-UV-divergences in dimensional regularization. Notice that OneLoop is not
-guaranteed to respect this option.";
+UV-divergences in dimensional regularization.";
 
 $LeviCivitaSign::usage =
 "$LeviCivitaSign is a global variable that determines the sign in the result of
@@ -372,7 +366,7 @@ dimensions. Following schemes are supported:
 - \"None\" - This is the default value. The anticommutator relation is not
 applied to $D-1$ dimensional Pauli matrices.
 
-- \"Naive\" - Naively apply the commutator relation in $D-1$-dimensions, i.e.
+- \"Naive\" - Naively apply the commutator relation in $D-1$-dimensions, i.e. 
 $\{\\sigma^i, \\sigma^j \} = 2 i \\varepsilon^{ijk} \\sigma^k$. The Levi-Civita
 tensor lives in $D-1$-dimensions, so that a contraction of two such tensors
 which have all indices in common yields $(D-3) (D-2) (D-1)$.";
@@ -404,20 +398,6 @@ FCStyle;
 End[]
 
 Begin["`Private`"];
-
-
-
-$Abbreviations /:
-	Set[$Abbreviations , val_] :=
-		(
-		If[	$ParallelizeFeynCalc && ($KernelID===0),
-			With[{xxx=val},	ParallelEvaluate[OwnValues[$Abbreviations] = {HoldPattern[$Abbreviations] :> xxx};,DistributedContexts -> None]];
-		];
-
-		With[{xxx=val},	OwnValues[$Abbreviations] = {HoldPattern[$Abbreviations] :> xxx}];
-
-		val
-		);
 
 $Containers /:
 	Set[$Containers , val_] :=
@@ -600,21 +580,7 @@ $FCDefaultLightconeVectorNB /:
 		val
 		);
 
-$Abbreviations = {
-	", "->"",
-	"^"->"",
-	"{"->"",
-	"/" -> "",
-	"Subscript"->"su",
-	"SmallVariable"->"sma",
-	"}"->"",
-	"["->"",
-	"]"->"",
-	"*" -> "",
-	" " -> "" ,
-	"\n" -> "",
-	"\r" -> ""
-};
+
 
 $ParallelizeFeynCalc				= False;
 $Containers							= {};

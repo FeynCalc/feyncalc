@@ -8,7 +8,7 @@ Parameters that are complex, like a CKM matrix element, have an `I` as an additi
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [SMVertex](SMVertex.md), [SMPToSymbol](SMPToSymbol.md).
+[Overview](Extra/FeynCalc.md), [SMPToSymbol](SMPToSymbol.md).
 
 ### Examples
 

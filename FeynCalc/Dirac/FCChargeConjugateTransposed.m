@@ -54,7 +54,6 @@ Options[FCChargeConjugateTransposed] = {
 };
 
 FCCCT = FCChargeConjugateTransposed;
-Abbreviation[FCChargeConjugateTransposed] = HoldForm[FCCCT];
 
 FCChargeConjugateTransposed /:
 	MakeBoxes[FCChargeConjugateTransposed[ex_, OptionsPattern[]], TraditionalForm] :=

@@ -6,7 +6,7 @@ The automatic symmetrization of the tensor basis is done using Alexey Pak's algo
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [TID](TID.md), [TIDL](TIDL.md), [OneLoopSimplify](OneLoopSimplify.md).
+[Overview](Extra/FeynCalc.md), [TID](TID.md), [TIDL](TIDL.md).
 
 ### Examples
 

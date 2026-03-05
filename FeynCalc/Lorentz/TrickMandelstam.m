@@ -26,10 +26,6 @@ End[]
 
 Begin["`TrickMandelstam`Private`"]
 
-factor3[x_] :=
-	Factor2[x, FactorFull -> False];
-
-
 nterms[x_Plus] :=
 	Length[x];
 
@@ -55,7 +51,7 @@ TrickMandelstam[y_, {}] :=
 	y;
 
 TrickMandelstam[ y_, __ ] :=
-	factor3[y] /; FreeQ[y,Plus];
+	Factor2[y] /; FreeQ[y,Plus];
 
 TrickMandelstam[x_,es_,te_,uu_, mas_] :=
 	TrickMandelstam[x, {es,te,uu,mas}];
@@ -66,12 +62,12 @@ TrickMandelstam[x_List,y__] :=
 TrickMandelstam[a_ , {es_, te_, uu_, mm_}] :=
 	Block[ {tres},
 
-		tres = trickmandelstam[a//factor3, {es,te,uu,mm}];
+		tres = trickmandelstam[a//Factor2, {es,te,uu,mm}];
 		If[ LeafCount[tres]<2000,
 			tres = Cancel[tres]
 		];
 
-		tres//factor3
+		tres//Factor2
 	];
 
 trickmandelstam[yy_Times, ar_List] :=
@@ -114,7 +110,7 @@ trickmandelstam[x_Plus,man_List] :=
 			drickstu[Plus[z],man]/; (Length[{z}]===(Length[Plus@@man]-1))&& FreeQ[{z},Plus];
 
 		plusch[z__] :=
-			(factor3 /@ Collect2[ Plus[z], Take[man, 3] ] ) /; Length[{z}]=!=(Length[Plus@@man]-1);
+			(Factor2 /@ Collect2[ Plus[z], Take[man, 3] ] ) /; Length[{z}]=!=(Length[Plus@@man]-1);
 
 		tricktemp = drickstu[nx,man];
 
@@ -127,15 +123,15 @@ drickback[x_,__] :=
 drickstu[ x_Plus,{s_,t_,u_,m_}  ] :=
 	Block[ {result,tristemp,eM,otherv,nuLL,trickman},
 		(* Check if an overall factorization is possible *)
-		tristemp = factor3[ x/.s->(m-t-u) ];
+		tristemp = Factor2[ x/.s->(m-t-u) ];
 		If[ Head[tristemp]=!=Plus,
 			result = TrickMandelstam[tristemp,{s,t,u,m}],
 			otherv = Complement[ Variables[tristemp], Variables[s+t+u+m] ];
 			(* The simplifications cannot occur outside certain coefficients *)
 			If[ otherv =!= {},
-				result = factor3/@ (Collect2[eM tristemp, Append[otherv,eM]]);
+				result = Factor2/@ (Collect2[eM tristemp, Append[otherv,eM]]);
 				result = Map[short1[#,s,t,u,m]&,result+nuLL]/.nuLL->0/.eM->1;
-				result = Map[factor3, result],
+				result = Map[Factor2, result],
 				result = short1[tristemp, s,t,u,m]
 			]
 		];

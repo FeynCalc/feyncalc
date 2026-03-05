@@ -21,9 +21,6 @@ configuration fields of the Lagrangian lag.
 
 FeynRule does not calculate propagator Feynman rules.
 
-The option ZeroMomentumInsertion can be used for twist-2 and higher twist
-operators.
-
 FeynRule is not very versatile and was primarily developed for QCD
 calculations. It is often more useful when dealing with bosonic fields than
 with fermions. If you need a more powerful and universal solution for deriving
@@ -49,6 +46,21 @@ localSUND::usage="";
 localSUNF::usage="";
 sdummy::usage="";
 
+
+factor1[x_] :=
+	Block[{factor1t1,factor1t2,factor1t3,mt,mi,m1,mp1,nx=x,iIii},
+		mt = (((# /. Plus -> mi /. mi -> Plus) /. m1 -> (-1)/.mp1 -> (-Plus[##]&)) /. iIii -> I)&;
+		mi[y_, z__] := (m1 mp1[y,z] )/; (If[ Head[#] === Complex, False,
+			If[# < 0, True, False]]& @ NumericalFactor[y]);
+		nx = x /. Complex[0, b_] -> (b iIii);
+		If[Head[nx] =!= Plus,
+			mt[nx /. Plus -> (factor1[Plus[##]]&)],
+			factor1t1 = Apply[ List, Map[# /. Plus -> factor1t3&, nx]];
+			factor1t2 = (PolynomialGCD @@ factor1t1) /. factor1t3 -> Plus;
+			mt[(factor1t2 Apply[Plus, Map[((# /. factor1t3 -> Plus) / factor1t2)&, factor1t1]])]
+		]
+	];
+
 (* Functions that are applied to the expression first.
 Added 3/8-2000 by Frederik Orellana to allow interoperability with Phi:
 InitialFunction could e.g. be set to PhiToFC *)
@@ -63,13 +75,13 @@ sununique[a_] :=
 
 (*Added ExplicitSUNIndex. F.Orellana, 16/9-2002*)
 
-	pluc[xx__] :=
-		If[ !FreeQ[{xx}, SUNIndex],
-			Map[(#/.Plus->((Factor1 /@ Collect[Plus[##],Variables[Plus[##]]] )&))&,
-				Factor1 /@ Collect2[Plus[xx], SUNIndex,ExplicitSUNIndex, Factoring -> False]],
-			Map[Factor1,
-				Collect2[Plus[xx], {Pair[LorentzIndex[_], LorentzIndex[_]] },
-						Factoring->False] ]
+pluc[xx__] :=
+	If[ !FreeQ[{xx}, SUNIndex],
+		Map[(#/.Plus->((factor1 /@ Collect[Plus[##],Variables[Plus[##]]] )&))&,
+			factor1 /@ Collect2[Plus[xx], SUNIndex,ExplicitSUNIndex, Factoring -> False]],
+		Map[factor1,
+			Collect2[Plus[xx], {Pair[LorentzIndex[_], LorentzIndex[_]] },
+					Factoring->False] ]
 		];
 
 frex[nl_] :=
@@ -165,16 +177,16 @@ dirdot[yy_] :=
 		]
 	];
 
-Options[FeynRule] = {Anti5 -> -Infinity,
-					Assumptions -> Automatic,
-					Contract -> False,
-					Factor1 -> False,
-					FinalSubstitutions -> {},
-					FCPartialD -> RightPartialD,
-					FCVerbose -> False,
-					Schouten -> False,
-					InitialFunction -> Identity
-					};
+Options[FeynRule] = {
+	Anti5 				-> -Infinity,
+	Assumptions 		-> Automatic,
+	Contract 			-> False,
+	FinalSubstitutions	-> {},
+	FCPartialD 			-> RightPartialD,
+	FCVerbose 			-> False,
+	Schouten 			-> False,
+	InitialFunction 	-> Identity
+};
 
 (*FeynRuledef*)
 FeynRule[a_,b_ /; Head[b] =!=Rule && Head[b]=!= List, c___,
@@ -402,7 +414,7 @@ FeynRule[lag_, fii_List, ru___Rule] :=
 
 				If[ (!FreeQ2[result, {SUNT, DiracGamma}]),
 
-					result = ExpandScalarProduct[result /. plist[[1]] :> (-(Plus @@ Rest[plist]))]//Factor1;
+					result = ExpandScalarProduct[result /. plist[[1]] :> (-(Plus @@ Rest[plist]))]//factor1;
 
 					If[ !FreeQ2[result, {SUNIndex,ExplicitSUNIndex}],
 						result = Collect2[result, SUNIndex,ExplicitSUNIndex, Factoring -> False, Expanding -> False];
@@ -410,17 +422,13 @@ FeynRule[lag_, fii_List, ru___Rule] :=
 					FCPrint[1, "collect2ing done; ", FCDoControl->frVerbose];
 
 					If[ (Length[plist]<4),
-						result = Factor1[result];
+						result = factor1[result];
 					];
 
 					result = result /. Plus :> pluc;
 
 					FCPrint[1, "feinarbeit ", FCDoControl->frVerbose];
-					If[ ((Factor1 /. {ru} /. Options[FeynRule]) === True),
-						If[ (Head[result] === Plus),
-							result  = Factor1[result]
-						];
-					];
+
 				];
 
 			];

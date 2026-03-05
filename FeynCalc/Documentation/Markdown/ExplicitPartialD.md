@@ -28,26 +28,6 @@ $$\overleftrightarrow{\partial }_{\mu }$$
 
 $$\overleftarrow{\partial }_{\mu }+\vec{\partial }_{\mu }$$
 
-```mathematica
-LeftRightPartialD[OPEDelta] 
- 
-ExplicitPartialD[%]
-```
-
-$$\overleftrightarrow{\partial }_{\Delta }$$
-
-$$\frac{1}{2} \left(\vec{\partial }_{\Delta }-\overleftarrow{\partial }_{\Delta }\right)$$
-
-```mathematica
-16 LeftRightPartialD[OPEDelta]^4 
- 
-ExplicitPartialD[%]
-```
-
-$$16 \overleftrightarrow{\partial }_{\Delta }^4$$
-
-$$\left(\vec{\partial }_{\Delta }-\overleftarrow{\partial }_{\Delta }\right){}^4$$
-
 Notice that by definition $\nabla^i = \partial_i = - \partial^i$, where the last equality depends on the metric signature.
 
 ```mathematica

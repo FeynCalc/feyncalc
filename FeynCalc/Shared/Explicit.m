@@ -16,15 +16,13 @@
 (* ------------------------------------------------------------------------ *)
 
 Explicit::usage =
-"Explicit[exp] inserts explicit expressions of GluonVertex,
-Twist2GluonOperator, SUNF etc. in exp.
+"Explicit[exp] inserts explicit expressions of GluonVertex, SUNF etc. in exp.
 
 To rewrite the $SU(N)$ structure constants in terms of traces, please set the
 corresponding options SUNF or SUND to True.
 
-Explicit is also an option for FieldStrength, GluonVertex, SUNF,
-Twist2GluonOperator etc. If set to True the full form of the operator is
-inserted.";
+Explicit is also an option for FieldStrength, GluonVertex, SUNF  etc. If set
+to True the full form of the operator is inserted.";
 
 (* ------------------------------------------------------------------------ *)
 

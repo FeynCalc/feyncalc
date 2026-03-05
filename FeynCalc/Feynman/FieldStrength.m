@@ -24,8 +24,7 @@ FieldStrength[mu, nu] is the field strength tensor $(\\partial _{\\mu } A_{\\nu}
 
 The name of the field ($A$) and the coupling constant ($g$) can be set through
 the options or by additional arguments. The first two indices are interpreted
-as type LorentzIndex, except OPEDelta, which is converted to
-Momentum[OPEDelta].";
+as type LorentzIndex.";
 
 IndexPosition::usage =
 "IndexPosition is an option for FieldStrength.";

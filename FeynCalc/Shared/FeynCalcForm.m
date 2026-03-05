@@ -198,9 +198,6 @@ diracslm[a_, b__, rul_Rule] :=
 diracslm[a_, b__] :=
 	SequenceForm @@ Map[DiracSlash[#]&, {a, b}];
 
-plusdi[a_] :=
-	Subscript[SequenceForm["(", a, ")"], " + "];
-
 feynCalcForm[x_,opt___Rule]:=
 	Block[{xxxx = Evaluate[x], subs, fcdot, diracsldid},
 		subs = FinalSubstitutions /. {opt} /. Options[FeynCalcForm];
@@ -347,14 +344,8 @@ feynCalcForm[x_,opt___Rule]:=
 				QuantumField[v__] :>
 					"Q"[v] /.
 				FCPartialD[v_] :> "P"[v] /.
-				PlusDistribution[v_] :>
-					plusdi[v] /.
 				SUNIndex[i_] :>
 					sunident[i]/.
-				DeltaFunction :>
-					"delta" /.
-				Twist2GluonOperator:>
-					"GO"/.
 				sunident :>
 					SUNIndex /.
 				FeynAmpDenominator[v__] :>

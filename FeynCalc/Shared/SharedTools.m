@@ -218,9 +218,6 @@ FCMemoryAvailable::usage =
 n is the available amount of main memory in MiB. The default setting is
 $FCMemoryAvailable.";
 
-MLimit::usage=
-"MLimit[expr, lims] takes multiple limits of expr using the limits lims.";
-
 NTerms::usage=
 "NTerms[x] is equivalent to Length if x is a sum; otherwise NTerms[x] returns
 1, except NTerms[0] -> 0.";

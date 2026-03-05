@@ -50,45 +50,13 @@ QuantumField[GaugeField, {\[Mu]}, {a}] // StandardForm
 
 $A_{\Delta}^a$ is a short form for $\Delta ^{mu } A_{mu }^a$ 
 
-```mathematica
-QuantumField[A, {OPEDelta}, {a}]
-```
-
-$$A_{\Delta }^a$$
-
-The first list of indices is usually interpreted as type `LorentzIndex`, except for `OPEDelta`, which gets converted to type `Momentum`.
-
-```mathematica
-QuantumField[A, {OPEDelta}, {a}] // StandardForm
-
-(*QuantumField[A, Momentum[OPEDelta], SUNIndex[a]]*)
-```
-
 Derivatives of fields are denoted as follows.
 
 ```mathematica
 QuantumField[FCPartialD[LorentzIndex[\[Mu]]], A, {\[Mu]}]
 ```
 
-$$\left.(\partial _{\mu }A_{\mu }\right)$$
-
-```mathematica
-QuantumField[FCPartialD[OPEDelta], S]
-```
-
-$$\left.(\partial _{\Delta }S\right)$$
-
-```mathematica
-QuantumField[FCPartialD[OPEDelta], A, {OPEDelta}, {a}]
-```
-
-$$\left.(\partial _{\Delta }A_{\Delta }^a\right)$$
-
-```mathematica
-QuantumField[FCPartialD[OPEDelta]^OPEm, A, {OPEDelta}, {a}]
-```
-
-$$\partial _{\Delta }^m{}^{A\Delta a}$$
+$$\left(\partial _{\mu }A_{\mu }\right)$$
 
 ```mathematica
 QuantumField[QuantumField[A]] === QuantumField[A]

@@ -349,20 +349,6 @@ AntiQuarkField /:
 	MakeBoxes[AntiQuarkField, TraditionalForm]:=
 		OverscriptBox["\[Psi]","_"];
 
-DeltaFunction /:
-	MakeBoxes[ DeltaFunction[y_], TraditionalForm]:=
-		RowBox[{"\[Delta]", "(", TBox[y], ")"}];
-
-DeltaFunctionDoublePrime /:
-	MakeBoxes[ DeltaFunctionDoublePrime[y_], TraditionalForm]:=
-		RowBox[{SuperscriptBox["\[Delta]","\[DoublePrime]"],
-		"(", TBox[y], ")"}];
-
-DeltaFunctionPrime /:
-	MakeBoxes[ DeltaFunctionPrime[y_], TraditionalForm]:=
-		RowBox[{SuperscriptBox["\[Delta]","\[Prime]"],
-		"(", TBox[y], ")"}];
-
 
 (*    Typesetting for Dirac matrices and slashes.    *)
 (* ------------------------------------------------------------------------ *)
@@ -967,15 +953,7 @@ MakeBoxes[pref_. SFAD[a__, opts:OptionsPattern[]], TraditionalForm] :=
 GLI /: MakeBoxes[GLI[id_, indices_List], TraditionalForm] :=
 	RowBox[{SuperscriptBox["G", ToBoxes[id]], "(", TBox[Sequence @@ Riffle[indices, ","]], ")"}];
 
-FeynAmp /:
-	MakeBoxes[FeynAmp[q__Symbol, amp_], TraditionalForm ]:=
-		RowBox[Join[Map[RowBox[{"\[Integral]",
-		RowBox[{SuperscriptBox["\[DifferentialD]", "D"],
-		TBox[#]}]}] &, {q}], {"(", TBox[amp], ")"}]];
 
-FeynAmp /:
-	MakeBoxes[FeynAmp[_[__], q__Symbol, amp_], TraditionalForm]:=
-		ToBoxes[FeynAmp[q,amp], TraditionalForm];
 
 MakeBoxes[pref_. FeynAmpDenominator[a__], TraditionalForm]:=
 	ToBoxes[pref / (Apply[DOT, (feynAmpDenominatorTypeset/@{a})]/. DOT -> dootpow), TraditionalForm]/; FCPatternFreeQ[{a}];
@@ -1271,11 +1249,6 @@ GSLRD /:
 
 (* ------------------------------------------------------------------------ *)
 
-Integratedx /:
-	MakeBoxes[Integratedx[x_, low_, up_], TraditionalForm]:=
-		RowBox[{SubsuperscriptBox["\[Integral]", TBox[low],
-		TBox[up]], "\[DifferentialD]",
-		MakeBoxes[TraditionalForm[x]], "\[VeryThinSpace]" }];
 
 LC/:
 	MakeBoxes[LC[x___][y___] ,TraditionalForm]:=
@@ -1681,11 +1654,6 @@ FCPartialD /:
 		RowBox[{"\[PartialD]", "/", "\[PartialD]", SuperscriptBox[ToBoxes[x,TraditionalForm],
 		ToBoxes[LorentzIndex[mu],TraditionalForm]]}]/; Head[x]=!=FCGV;
 
-PlusDistribution /:
-	MakeBoxes[PlusDistribution[ a_ ], TraditionalForm]:=
-		SubscriptBox[RowBox[{"(", MakeBoxes[a,
-		TraditionalForm],")"}],"+"];
-
 QuantumField /:
 	MakeBoxes[ QuantumField[a_/;Head[a]=!=FCPartialD][p_], TraditionalForm]:=
 		TBox[a,"(",p,")"];
@@ -1812,32 +1780,9 @@ SDF /:
 	MakeBoxes[SDF[a_, b_], TraditionalForm]:=
 		SubscriptBox["\[Delta]", TBox[a,b]];
 
-SmallDelta /:
-	MakeBoxes[SmallDelta, TraditionalForm]:=
-		"\[Delta]";
-
-SmallEpsilon /:
-	MakeBoxes[SmallEpsilon, TraditionalForm]:=
-		"\[Epsilon]";
-
 SmallVariable /:
 	MakeBoxes[SmallVariable[a_], TraditionalForm]:=
 		MakeBoxes[a, TraditionalForm];
-
-SO /:
-	MakeBoxes[SO[x_],TraditionalForm]:=
-		If[ Head[x] =!= Plus,
-			TBox["\[CapitalDelta]",  "\[CenterDot]", x],
-			TBox["\[CapitalDelta]", "\[CenterDot]", "(",x,")"]
-		];
-
-
-SOD /:
-	MakeBoxes[SOD[x_],TraditionalForm]:=
-		If[ Head[x] =!= Plus,
-			TBox["\[CapitalDelta]",  "\[CenterDot]",x],
-			TBox["\[CapitalDelta]", "\[CenterDot]", "(",x,")"]
-		];
 
 (*    Typesetting for scalar products in the FCE notation.    *)
 (* ------------------------------------------------------------------------ *)

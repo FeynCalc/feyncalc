@@ -34,7 +34,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [GluonSelfEnergy](GluonSelfEnergy.md), [GluonVertex](GluonVertex.md), [GluonGhostVertex](GluonGhostVertex.md), [GhostPropagator](GhostPropagator.md), [GluonGhostVertex](GluonGhostVertex.md).*)
+(*[Overview](Extra/FeynCalc.md), [GluonVertex](GluonVertex.md), [GluonGhostVertex](GluonGhostVertex.md), [GhostPropagator](GhostPropagator.md), [GluonGhostVertex](GluonGhostVertex.md).*)
 
 
 (* ::Subsection:: *)
@@ -58,18 +58,3 @@ GP[p,\[Mu],\[Nu]]
 
 
 Explicit[%]
-
-
-GluonPropagator[p,\[Mu],a,\[Nu],b,CounterTerm-> 1]//Explicit
-
-
-GluonPropagator[p,\[Mu],a,\[Nu],b,CounterTerm-> 2]//Explicit
-
-
-GluonPropagator[p,\[Mu],a,\[Nu],b,CounterTerm-> 3]//Explicit
-
-
-GluonPropagator[p,\[Mu],a,\[Nu],b,CounterTerm-> 4]//Explicit
-
-
-GluonPropagator[p,\[Mu],a,\[Nu],b,CounterTerm-> 5]//Explicit

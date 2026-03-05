@@ -51,35 +51,6 @@ $$\overleftrightarrow{\nabla }_i.A_{\nu }$$
 $$\frac{1}{2} \left(\overleftarrow{\partial }_i.A_{\nu }-\left(\partial _iA_{\nu }\right)\right)$$
 
 ```mathematica
-QuantumField[A, LorentzIndex[\[Mu]]] . (LeftRightPartialD[OPEDelta]^2) . QuantumField[A, 
-    LorentzIndex[\[Rho]]] 
- 
-ExpandPartialD[%]
-```
-
-$$A_{\mu }.\overleftrightarrow{\partial }_{\Delta }^2.A_{\rho }$$
-
-$$\frac{1}{4} \left(A_{\mu }.\left(\partial _{\Delta }\partial _{\Delta }A_{\rho }\right)-2 \left(\partial _{\Delta }A_{\mu }\right).\left(\partial _{\Delta }A_{\rho }\right)+\left(\partial _{\Delta }\partial _{\Delta }A_{\mu }\right).A_{\rho }\right)$$
-
-```mathematica
-8 LeftRightPartialD[OPEDelta]^3
-```
-
-$$8 \overleftrightarrow{\partial }_{\Delta }^3$$
-
-```mathematica
-ExplicitPartialD[%]
-```
-
-$$\left(\vec{\partial }_{\Delta }-\overleftarrow{\partial }_{\Delta }\right){}^3$$
-
-```mathematica
-ExpandPartialD[%]
-```
-
-$$-\overleftarrow{\partial }_{\Delta }.\overleftarrow{\partial }_{\Delta }.\overleftarrow{\partial }_{\Delta }+3 \overleftarrow{\partial }_{\Delta }.\overleftarrow{\partial }_{\Delta }.\vec{\partial }_{\Delta }-3 \overleftarrow{\partial }_{\Delta }.\vec{\partial }_{\Delta }.\vec{\partial }_{\Delta }+\vec{\partial }_{\Delta }.\vec{\partial }_{\Delta }.\vec{\partial }_{\Delta }$$
-
-```mathematica
 LC[\[Mu], \[Nu], \[Rho], \[Tau]] RightPartialD[\[Alpha], \[Mu], \[Beta], \[Nu]] 
  
 ExpandPartialD[%]

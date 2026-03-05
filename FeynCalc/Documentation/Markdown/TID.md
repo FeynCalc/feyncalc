@@ -4,7 +4,7 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [OneLoopSimplify](OneLoopSimplify.md), [TIDL](TIDL.md), [PaVeLimitTo4](PaVeLimitTo4.md).
+[Overview](Extra/FeynCalc.md), [TIDL](TIDL.md), [PaVeLimitTo4](PaVeLimitTo4.md).
 
 ### Examples
 
@@ -137,7 +137,7 @@ Running `FCLoopFindTensorBasis` we get a suggestion to introduce an auxiliary ve
 FCLoopFindTensorBasis[{-p}, {}, n]
 ```
 
-$$\{\{-p,n\},\{\},\{\}\}$$
+$$\{\{n,-p\},\{\},\{\}\}$$
 
 ```mathematica
 SPD[n] = 0; 
@@ -147,7 +147,7 @@ TID[FAD[{k, m}, k - p] FVD[k, \[Mu]], k, TensorReductionBasisChange -> {{-p} -> 
 
 $$\frac{-2 p^{\mu } (k\cdot n)+m^2 n^{\mu }+2 p^{\mu } (n\cdot p)}{2 (n\cdot p) k^2.\left((k-p)^2-m^2\right)}-\frac{n^{\mu }}{2 (n\cdot p) \left(k^2-m^2\right)}$$
 
-Unfortunately, in this case `TID` alone cannot eliminate the scalar products of $n$ with the loop momentum in the numerator. For that we need to use IBPs. Still, it manages to reduce the tensor integral to scalars, even though at this stage not all of them can be mapped to scalar PaVe functions. 
+Unfortunately, in this case `TID` alone cannot eliminate the scalar products of $n$ with the loop momentum in the numerator. For that we need to use IBPs. Still, it manages to reduce the tensor integral to scalars, even though at this stage not all of them can be mapped to scalar PaVe functions.
 
 The dependence on the auxiliary vector $n$ must cancel in the final result for this integral, as the auxiliary vector is unphysical and the original integral does not depend on it. To arrive at these cancellations for more complicated tensor integral it might be necessary to exploit the relations between the physical vectors as given by `FCLoopFindTensorBasis` and contract those with $n$.
 

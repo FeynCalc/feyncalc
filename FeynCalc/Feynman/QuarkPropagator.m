@@ -44,7 +44,6 @@ Options[QuarkPropagator] = {
 };
 
 QP = QuarkPropagator;
-Abbreviation[QuarkPropagator] = HoldForm[QP];
 
 QuarkPropagator[pi:Except[_?OptionQ], opt:OptionsPattern[]] :=
 	QuarkPropagator[{pi,0}, opt]/; Head[pi]=!=List;

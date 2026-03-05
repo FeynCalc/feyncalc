@@ -25,7 +25,10 @@ factorizes and separates it into factorizing integrals if it is the case. The
 input can be made integrals in the GLI or FAD notation.
 
 Notice that the output is always given in the FAD notation even if the input
-was provided using GLIs.";
+was provided using GLIs.
+
+In most cases the routine will fail to find a factorization of integrals with
+numerators.";
 
 FCLoopFactorizingSplit::failmsg =
 "Error! FCLoopFactorizingSplit has encountered a fatal problem and must abort the computation. \

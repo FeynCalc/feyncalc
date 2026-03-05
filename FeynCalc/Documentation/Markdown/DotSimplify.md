@@ -4,7 +4,7 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [FCAntiCommutator](FCAntiCommutator.md), [FCCommutator](FCCommutator.md), [Calc](Calc.md).
+[Overview](Extra/FeynCalc.md), [FCAntiCommutator](FCAntiCommutator.md), [FCCommutator](FCCommutator.md).
 
 ### Examples
 

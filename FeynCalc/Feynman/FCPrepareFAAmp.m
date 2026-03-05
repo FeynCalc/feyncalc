@@ -117,7 +117,6 @@ FCPrepareFAAmp[expr_, OptionsPattern[]] :=
 					Global`FASUNT[a_,b_,c_] :> SUNTF[a,b,c],
 					FeynArts`IndexDelta[a: (_SUNFIndex| _ExplicitSUNFIndex), b:(_SUNFIndex| _ExplicitSUNFIndex)]:> SUNFDelta[a,b],
 					FeynArts`IndexDelta[a: (_SUNIndex| _ExplicitSUNIndex), b:(_SUNIndex| _ExplicitSUNIndex)]:> SUNDelta[a,b],
-					FeynArts`FAFeynAmp :> FeynAmp,
 					FeynArts`FAFeynAmpDenominator[x__] :> (
 						FeynAmpDenominator@@({x}/. z_Momentum:>z[[1]]/. {
 						FeynArts`FAPropagatorDenominator[a_,b_] :> PropagatorDenominator[Momentum[a],b],

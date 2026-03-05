@@ -4,6 +4,6 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [OneLoop](OneLoop.md).
+[Overview](Extra/FeynCalc.md).
 
 ### Examples

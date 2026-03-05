@@ -98,7 +98,7 @@ Options[FCFAConvert] = {
 	UndoChiralSplittings 			-> False
 	};
 
-FCFAConvert[(FeynArts`FAFeynAmpList|FeynAmpList)[infos__][diags___], OptionsPattern[]] :=
+FCFAConvert[(FeynArts`FAFeynAmpList)[infos__][diags___], OptionsPattern[]] :=
 	Block[ {	diagsConverted,repRuleMomenta,repRuleLorentzIndices,
 				repRulePolVectors,inMoms,outMoms,liNames,polVecs,loopMoms,dim,
 				sunNames, sunfNames, repRuleSUNIndices, repRuleSUNFIndices,

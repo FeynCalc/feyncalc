@@ -4,7 +4,7 @@
 
 `FieldStrength[mu, nu]` is the field strength tensor $(\partial _{\mu } A_{\nu}- \partial_{\nu } A_{\mu})$.
 
-The name of the field ($A$) and the coupling constant ($g$) can be set through the options or by additional arguments. The first two indices are interpreted as type `LorentzIndex`, except `OPEDelta`, which is converted to `Momentum[OPEDelta]`.
+The name of the field ($A$) and the coupling constant ($g$) can be set through the options or by additional arguments. The first two indices are interpreted as type `LorentzIndex`.
 
 ### See also
 
@@ -28,16 +28,16 @@ $$F_{\mu \nu }^a$$
 FieldStrength[\[Mu], \[Nu], Explicit -> True]
 ```
 
-$$\left.(\partial _{\mu }A_{\nu }\right)-\left.(\partial _{\nu }A_{\mu }\right)$$
+$$\left(\partial _{\mu }A_{\nu }\right)-\left(\partial _{\nu }A_{\mu }\right)$$
 
 ```mathematica
 FieldStrength[\[Mu], \[Nu], a, Explicit -> True]
 ```
 
-$$g_s f^{a\text{b19}\;\text{c20}} A_{\mu }^{\text{b19}}.A_{\nu }^{\text{c20}}+\left.(\partial _{\mu }A_{\nu }^a\right)-\left.(\partial _{\nu }A_{\mu }^a\right)$$
+$$g_s f^{a\text{b12}\;\text{c13}} A_{\mu }^{\text{b12}}.A_{\nu }^{\text{c13}}+\left(\partial _{\mu }A_{\nu }^a\right)-\left(\partial _{\nu }A_{\mu }^a\right)$$
 
 ```mathematica
 FieldStrength[\[Mu], \[Nu], a, CouplingConstant -> -SMP["g_s"], Explicit -> True]
 ```
 
-$$-g_s f^{a\text{b21}\;\text{c22}} A_{\mu }^{\text{b21}}.A_{\nu }^{\text{c22}}+\left.(\partial _{\mu }A_{\nu }^a\right)-\left.(\partial _{\nu }A_{\mu }^a\right)$$
+$$-g_s f^{a\text{b14}\;\text{c15}} A_{\mu }^{\text{b14}}.A_{\nu }^{\text{c15}}+\left(\partial _{\mu }A_{\nu }^a\right)-\left(\partial _{\nu }A_{\mu }^a\right)$$

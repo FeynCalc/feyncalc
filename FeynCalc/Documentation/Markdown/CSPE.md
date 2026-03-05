@@ -23,7 +23,7 @@ CSPE[p - q, q + 2 p]
 $$(\hat{p}-\hat{q})\cdot (2 \hat{p}+\hat{q})$$
 
 ```mathematica
-Calc[ CSPE[p - q, q + 2 p] ]
+ExpandScalarProduct[ CSPE[p - q, q + 2 p] ]
 ```
 
 $$-\hat{p}\cdot \hat{q}+2 \hat{p}^2-\hat{q}^2$$

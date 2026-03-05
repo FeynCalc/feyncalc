@@ -35,7 +35,6 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 
 ## Basic objects
 
-- [Abbreviation](../Abbreviation.md) - gives a shortname for name (in `HoldForm`)
 - [AntiQuarkField](../AntiQuarkField.md), [QuarkField](../QuarkField.md), [QuarkFieldPsi](../QuarkFieldPsi.md), [QuarkFieldPsiDagger](../QuarkFieldPsiDagger.md), [QuarkFieldChi](../QuarkFieldChi.md), [QuarkFieldChiDagger](../QuarkFieldChiDagger.md) - name of a fermionic field
 - [CA](../CA.md), [CF](../CF.md) - Casimir operator eigenvalues of $SU(N)$
 - [CGA](../CGA.md), [CGS](../CGS.md), [CGAD](../CGAD.md), [CGSD](../CGSD.md), [CGAE](../CGAE.md), [CGSE](../CGSE.md) - representation of Dirac matrices with Cartesian indices or Dirac matrices contracted to $3$-momenta
@@ -46,7 +45,6 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [CartesianMomentum](../CartesianMomentum.md) - internal representation of $3$-momenta
 - [CartesianPair](../CartesianPair.md) - special pairing used in the internal representation to represent Kronecker deltas, $3$-vectors or Cartesian scalar products
 - [DiracBasis](../DiracBasis.md) - can be used as a separator in the SPVAT-decomposition
-- [DeltaFunction](../DeltaFunction.md), [DeltaFunctionPrime](../DeltaFunctionPrime.md), [DeltaFunctionDoublePrime](../DeltaFunctionDoublePrime.md) - Dirac delta function and its derivatives
 - [DiracGamma](../DiracGamma.md), [GA](../GA.md), [GA5](../GA5.md), [GS](../GS.md), [GAD](../GAD.md), [GSD](../GSD.md), [GAE](../GAE.md), [GSE](../GSE.md) - Dirac matrices and Feynman slashes
 - [GALP](../GALP.md), [GALN](../GALN.md), [GALR](../GALR.md), [GALPD](../GALPD.md), [GALND](../GALND.md), [GALRD](../GALRD.md), [GSLP](../GSLP.md), [GSLN](../GSLN.md), [GSLR](../GSLR.md), [GSLPD](../GSLPD.md), [GSLND](../GSLND.md), [GSLRD](../GSLRD.md) - Lightcone components of Dirac matrices and Feynman slashes
 - [DiracIndexDelta](../DiracIndexDelta.md), [DIDelta](../DIDelta.md) - Kronecker delta in the Dirac space
@@ -65,10 +63,9 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCIteratedIntegral](../FCIteratedIntegral.md) - Chen's iterated integral
 - [FCHPL](../FCHPL.md), [FCGPL](../FCGPL.md) - harmonic and Goncharov polylogarithms
 - [FCPartialFractionForm](../FCPartialFractionForm.md) - partial fractioned form of rational functions
-- [FCTensor](../FCTensor.md), [FCVariable](../FCVariable.md), [FreeIndex](../FreeIndex.md), [GrassmannParity](../GrassmannParity.md), [ImplicitDiracIndex](../ImplicitDiracIndex.md), [ImplicitPauliIndex](../ImplicitPauliIndex.md), [ImplicitSUNFIndex](../ImplicitSUNFIndex.md), [NegativeInteger](../NegativeInteger.md), [NonCommutative](../NonCommutative.md), [PositiveInteger](../PositiveInteger.md), [PositiveNumber](../PositiveNumber.md) - various datatypes
+- [FCTensor](../FCTensor.md), [FCVariable](../FCVariable.md), [FreeIndex](../FreeIndex.md), [ImplicitDiracIndex](../ImplicitDiracIndex.md), [ImplicitPauliIndex](../ImplicitPauliIndex.md), [ImplicitSUNFIndex](../ImplicitSUNFIndex.md), [NonCommutative](../NonCommutative.md) - various datatypes
 - [FUNCTION](../FUNCTION.md) - declaration of functions for [Write2](../Write2.md)
 - [DCHN](../DCHN.md), [DiracChain](../DiracChain.md) - Dirac chain with explicit open Dirac indices
-- [FeynAmp](../FeynAmp.md), [FeynAmpList](../FeynAmpList.md) - Feynman amplitudes
 - [FCPartialD](../FCPartialD.md), [LeftNablaD](../LeftNablaD.md), [LeftRightNablaD](../LeftRightNablaD.md), [LeftRightNablaD2](../LeftRightNablaD2.md), [LeftPartialD](../LeftNablaD.md), [LeftRightPartialD](../LeftRightPartialD.md), [LeftRightPartialD2](../LeftRightNablaD2.md), [RightNablaD](../RightNablaD.md), [RightPartialD](../RightPartialD.md) - partial derivatives acting on operators
 - [FCTopology](../FCTopology.md) - representation of a loop integral family topology
 - [FV](../FV.md), [FVD](../FVD.md), [FVE](../FVE.md) - Minkowskian $4$-vectors
@@ -90,14 +87,12 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [PauliSigma](../PauliSigma.md) - internal representation of Pauli matrices
 - [Polarization](../Polarization.md) - internal representation of polarizations
 - [PolarizationVector](../PolarizationVector.md) - polarization vector
-- [PlusDistribution](../PlusDistribution.md) - a special distribution
 - [PropagatorDenominator](../PropagatorDenominator.md), [PD](../PD.md), [StandardPropagatorDenominator](../StandardPropagatorDenominator.md), [CartesianPropagatorDenominator](../CartesianPropagatorDenominator.md), [GenericPropagatorDenominator](../GenericPropagatorDenominator.md) - internal representation of propagator denominators
 - [QuantumField](../QuantumField.md) - generic name of a quantum field
 - [ScaleMu](../ScaleMu.md) - $\mu$ scale in dimensional regularization
 - [SD](../SD.md), [SUNDelta](../SUNDelta.md) - Kronecker delta for adjoint $SU(N)$ indices
 - [SDF](../SDF.md), [SUNFDelta](../SUNFDelta.md) - Kronecker delta for fundamental $SU(N)$ indices
 - [SI](../SI.md), [SID](../SID.md), [SIE](../SIE.md), [SIS](../SIS.md), [SISD](../SISD.md), [SISE](../SISE.md) - Pauli matrices with Lorentz indices or Pauli matrices contracted to $4$-momenta
-- [SmallDelta](../SmallDelta.md), [SmallEpsilon](../SmallEpsilon.md) - some small positive numbers
 - [SmallVariable](../SmallVariable.md) - small variable to be used as a regulator in Passarino-Veltman functions
 - [Spinor](../Spinor.md), [SpinorU](../SpinorU.md), [SpinorUBar](../SpinorUBar.md), [SpinorV](../SpinorV.md), [SpinorVBar](../SpinorVBar.md), [SpinorUD](../SpinorUD.md), [SpinorUBarD](../SpinorUBarD.md), [SpinorVD](../SpinorVD.md), [SpinorVBarD](../SpinorVBarD.md) - Dirac spinors
 - [SP](../SP.md), [SPD](../SPD.md), [SPE](../SPE.md) - scalar products of $4$-momenta
@@ -119,14 +114,12 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [Apart1](../Apart1.md), [Apart3](../Apart3.md) - alternative to Mathematica's `Apart`
 - [Cases2](../Cases2.md) - alternative to Mathematica's `Cases`
 - [Coefficient2](../Coefficient2.md) - alternative to Mathematica's `Coefficient`
-- [Combine](../Combine.md) - alternative to Mathematica's `Together`
-- [Complement1](../Complement1.md) - alternative to Mathematica's `Complement`
 - [Collect2](../Collect2.md) - alternative to Mathematica's `Collect`
 - [DataType](../DataType.md) - defines data types
 - [Expand2](../Expand2.md) - alternative to Mathematica's `Expand`
 - [ExpandAll2](../ExpandAll2.md) - alternative to Mathematica's `ExpandAll`
 - [Explicit](../Explicit.md) - inserts explicit expressions for certain objects
-- [Factor1](../Factor1.md), [Factor2](../Factor2.md), [Factor3](../Factor3.md) - alternatives to Mathematica's `Factor`
+- [Factor2](../Factor2.md), [Factor3](../Factor3.md) - alternatives to Mathematica's `Factor`
 - [FactorList2](../FactorList2.md) - alternative to Mathematica's `FactorList2`
 - [FC](../FC.md) - changes the output format to [FeynCalcForm](../FeynCalcForm.md)
 - [FCAbbreviate](../FCAbbreviate.md) - introduces abbreviations
@@ -155,27 +148,19 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCReorderList](../FCReorderList.md) - reorder elements of a list
 - [FCReplaceRepeated](../FCReplaceRepeated.md) - alternative to Mathematica's `ReplaceRepeated`
 - [FCShowReferenceCard](../FCShowReferenceCard.md) - FeynArts cheatsheet
-- [FCSplit](../FCSplit.md), [FCProductSplit](../FCProductSplit.md), [PartitHead](../PartitHead.md), [SelectFree](../SelectFree.md), [SelectNotFree](../SelectNotFree.md), [SelectFree2](../SelectFree2.md), [SelectNotFree2](../SelectNotFree2.md), [SelectSplit](../SelectSplit.md) - alternatives to Mathematica's `Select`
+- [FCSplit](../FCSplit.md), [FCProductSplit](../FCProductSplit.md), [PartitHead](../PartitHead.md), [SelectFree](../SelectFree.md), [SelectNotFree](../SelectNotFree.md), [SelectFree2](../SelectFree2.md), [SelectNotFree2](../SelectNotFree2.md) - alternatives to Mathematica's `Select`
 - [FCSymmetrize](../FCSymmetrize.md) - symmetrizes with respect to the given variables
 - [FCValuesSynchronizedQ](../FCValuesSynchronizedQ.md) - checks consistency of specified definitions in the parallel mode
 - [FeynCalcHowToCite](../FeynCalcHowToCite.md) - lists relevant FeynCalc publications
 - [FI](../FI.md) - changes the output format to `InputForm`
 - [FreeQ2](../FreeQ2.md) - alternative to Mathematica's `FreeQ`
 - [FRH](../FRH.md), [FRH2](../FRH2.md) - alternative to Mathematica's `ReleaseHold`
-- [ILimit](../ILimit.md), [MLimit](../MLimit.md) - alternatives to Mathematica's `Limit`
 - [Isolate](../Isolate.md), [KK](../KK.md) - replaces expressions by abbreviations
 - [Map2](../Map2.md) - alternative to Mathematica's `Map`
 - [MemSet](../MemSet.md) - memoization depending on the amount of free RAM
 - [NTerms](../NTerms.md) - alternative to Mathematica's `Length`
 - [NumericalFactor](../NumericalFactor.md) - gives the overall numerical factor
-- [NumericQ1](../NumericQ1.md) - alternative to Mathematica's `NumericQ`
-- [Power2](../Power2.md) - alternative to Mathematica's `Power`
-- [PowerFactor](../PowerFactor.md), [PowerSimplify](../PowerSimplify.md), [XYT](../XYT.md) - simplification of expressions with exponents
-- [Series2](../Series2.md), [Series3](../Series3.md) - alternatives to Mathematica's `Series`
-- [SetStandardMatrixElements](../SetStandardMatrixElements.md) - introduces abbreviations for [StandardMatrixElement](../StandardMatrixElement.md)s
 - [Solve2](../Solve2.md), [Solve3](../Solve3.md) - alternatives to Mathematica's `Solve`
-- [SumP](../SumP.md), [SumS](../SumS.md), [SumT](../SumT.md) - different summations
-- [TimedIntegrate](../TimedIntegrate.md) - alternative to Mathematica's `Integrate`
 - [ToFCPartialFractionForm](../ToFCPartialFractionForm.md), [FromFCPartialFractionForm](../FromFCPartialFractionForm.md) - switching between the usual and partial fractioned form representations for rational functions
 - [TBox](../TBox.md) - helps implementing typesetting rules
 - [TypesettingExplicitLorentzIndex](../TypesettingExplicitLorentzIndex.md) - typesettings of explicit Lorentz indices 
@@ -184,12 +169,10 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 
 ## Lorentz and Cartesian tensors
 
-- [Amputate](../Amputate.md) - amputates $4$-vectors, Dirac matrices or Levi-Civita tensors
 - [CartesianToLorentz](../CartesianToLorentz.md) - rewrties certain Cartesian tensors in terms of Lorentz tensors
 - [CartesianPairContract](../CartesianPairContract.md) - like [CartesianPair](../CartesianPair.md) but with local contraction properties
 - [CartesianScalarProduct](../CartesianScalarProduct.md) - defines scalar products of $3$-vectors
 - [ChangeDimension](../ChangeDimension.md) - changes dimension of Lorentz or Cartesian indices and momenta
-- [CompleteSquare](../CompleteSquare.md) - completes the square of a second order polynomial in the given momentum
 - [Contract](../Contract.md) - contracts Lorentz or Cartesian indices of tensors and Dirac matrices
 - [DeclareFCTensor](../DeclareFCTensor.md) - declares the given head to be a tensor
 - [DummyIndexFreeQ](../DummyIndexFreeQ.md) - checks if the expression contains dummy indices
@@ -223,7 +206,6 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [Schouten](../Schouten.md) - applies [Schouten](../Schouten.md)'s identity (random guess)
 - [SetMandelstam](../SetMandelstam.md) - defines the Mandelstam variables
 - [SetTemporalComponent](../SetTemporalComponent.md) - assings values to temporal components of Lorentz vectors
-- [TensorFunction](../TensorFunction.md) - defines an unspecified Lorentz tensor
 - [ThreeDivergence](../ThreeDivergence.md) - calculates partial derivative with respect to a $3$-vector
 - [TrickMandelstam](../TrickMandelstam.md) - simplifies the expression by eliminating one of the Mandelstam variables
 - [ToLightConeComponents](../ToLightConeComponents.md) - rewrties Lorentz tensors in terms of their components along the lightcone
@@ -276,7 +258,6 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 
 ## Algebra of noncommutative objects
 
-- [Calc](../Calc.md), [Trick](../Trick.md) - multiple simplifications for Dirac and $SU(N)$ algebra
 - [CommutatorExplicit](../CommutatorExplicit.md) - substitutes explicit definitions of commutators and anticommutators
 - [CommutatorOrder](../CommutatorOrder.md) - canonical ordering of (anti)commutator arguments
 - [DeclareNonCommutative](../DeclareNonCommutative.md) - declares noncommutative objects
@@ -297,7 +278,6 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 ## $SU(N)$ algebra
 
 - [FCColorIsolate](../FCColorIsolate.md) - wraps color matrices and structure constants into specified heads
-- [CalcColorFactor](../CalcColorFactor.md) - calculates the color factor
 - [SUNDeltaContract](../SUNDeltaContract.md) - contracts Kronecker deltas with adjoint color indices
 - [SUNFDeltaContract](../SUNFDeltaContract.md) - contracts Kronecker deltas with fundamental color indices
 - [SUNFierz](../SUNFierz.md) - applies color Fierz identity
@@ -387,38 +367,25 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FeynAmpDenominatorSimplify](../FeynAmpDenominatorSimplify.md), [FDS](../FDS.md) - simplifies loop integrals by doing shifts and detects integrals that vanish by symmetry
 - [FeynAmpDenominatorSplit](../FeynAmpDenominatorSplit.md) - splits all [FeynAmpDenominator](../FeynAmpDenominator.md)s into products of single propagators
 - [FromGFAD](../FromGFAD.md) - tries to convert generic propagators ([GenericPropagatorDenominator](../GenericPropagatorDenominator.md)) into the standard ones ([StandardPropagatorDenominator](../StandardPropagatorDenominator.md), [CartesianPropagatorDenominator](../CartesianPropagatorDenominator.md))
-- [GammaExpand](../GammaExpand.md) - rewrites $\Gamma(n+m)$ where $n$ is an integer
 - [GenPaVe](../GenPaVe.md), [PaVe](../PaVe.md) - denotes invariant Passarino-Veltman integrals
 - [GLI](../GLI.md) - represents generic loop multiloop integrals
 - [GLIMultiply](../GLIMultiply.md) - local products of [GLI](../GLI.md) objects belonging to the same topology
 - [Hill](../Hill.md) - gives the Hill identity
-- [HypergeometricAC](../HypergeometricAC.md) - analytically continues ${}_2 F_1$ functions
-- [HypergeometricIR](../HypergeometricIR.md) - substitutes a particular integral represenetation for all `Hypergeometric2F1[a,b,c,d]`
-- [HypergeometricSE](../HypergeometricSE.md) - expresses hypergeometric functions by their series expansion
-- [HypExplicit](../HypExplicit.md) - expresses hypergeometric functions by their definition in terms of a sum
-- [HypInt](../HypInt.md) - substitutes ${}_2 F_1$ functions by their integral definition
-- [IntegrateByParts](../IntegrateByParts.md), [PartialIntegrate](../PartialIntegrate.md) - integration by parts for particular Feynman parameter integrals
 - [NPointTo4Point](../NPointTo4Point.md) - rewrites IR-finite $1$-loop pentagons in terms of box integrals
-- [OneLoopSimplify](../OneLoopSimplify.md) - simplifies $1$-loop Feynman diagram amplitudes
-- [ToHypergeometric](../ToHypergeometric.md) - introduces ${}_2 F_1$
 - [PaVeToABCD](../PaVeToABCD.md) - converts [PaVe](../PaVe.md) functions to direct ([A0](../A0.md), [B0](../B0.md) etc.) functions
 - [PaVeOrder](../PaVeOrder.md) - orders the arguments of Passarino-Veltman functions in a particular way
 - [PaVeLimitTo4](../PaVeLimitTo4.md) - simplifies UV-finite $D$-dimensional expressions written in terms of[PaVe](../PaVe.md) functions
 - [PaVeReduce](../PaVeReduce.md) - reduces Passarino-Veltman integrals down to $A_0$, $B_0$, $C_0$ and $D_0$
 - [PaVeUVPart](../PaVeUVPart.md) - returns the UV-divergent pieces of arbitrary Passarino-Veltman functions
-- [SimplifyDeltaFunction](../SimplifyDeltaFunction.md) - applies some simplifications to [DeltaFunction](../DeltaFunction.md)
-- [Sn](../Sn.md) - denotes $\pi^{(n/2)}/(2 \pi)^n$
 - [TarcerToFC](../TarcerToFC.md) - converts TARCER integral into [FeynAmpDenominator](../FeynAmpDenominator.md) notation
 - [TFIOrder](../TFIOrder.md) - orders the arguments of some `TFI` functions in a standard way
 - [TID](../TID.md) - does a 1-loop tensor integral decomposition
 - [TIDL](../TIDL.md) - library of tensor integral decomposition formulas
-- [ToDistribution](../ToDistribution.md) - introduces [DeltaFunction](../DeltaFunction.md), [DeltaFunctionPrime](../DeltaFunctionPrime.md) and [PlusDistribution](../PlusDistribution.md)
 - [ToFI](../ToFI.md), [ToTFI](../ToTFI.md) - converts 1- and 2-loop scalar self-energy integrals to the Tarcer notation
 - [ToGFAD](../ToSFAD.md) - converts [FAD](../FAD.md)s, [SFAD](../SFAD.md)s and [CFAD](../CFAD.md)s to [GFAD](../GFAD.md)s
 - [ToPaVe](../ToPaVe.md) - converts scalar 1-loop integrals to Passarino-Veltman scalar functions
 - [ToPaVe2](../ToPaVe2.md) - rewrites Passarino-Veltman functions [A0](../A0.md), [A00](../A00.md), [B0](../B0.md), [B1](../B1.md), [B00](../B00.md), [B11](../B11.md), [C0](../C0.md) and [D0](../D0.md) as [PaVe](../PaVe.md) objects
 - [ToSFAD](../ToSFAD.md) - converts [FAD](../FAD.md)s to [SFAD](../SFAD.md)s
-- [TrickIntegrate](../TrickIntegrate.md) - integration of some special distributions
 
 ## Export and import
 
@@ -426,10 +393,6 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCLoopGLIToSymbol](../FCLoopGLIToSymbol.md) - converts [GLI](../GLI.md)s to symbols
 - [FCToTeXReorder](../FCToTeXReorder.md) - custom ordering of terms in expressions
 - [FCToTeXPreviewTermOrder](../FCToTeXPreviewTermOrder.md) - previews the output of [FCToTeXReorder](../FCToTeXReorder.md)
-- [FeynCalc2FORM](../FeynCalc2FORM.md) - displays expression in FORM syntax
-- [FeynCalcToLaTeX](../FeynCalcToLaTeX.md) - generates LaTeX
-- [FORM2FeynCalc](../FORM2FeynCalc.md) - translates the FORM expression in file into FeynCalc notation
-- [StringChomp](../StringChomp.md) - chops initial and final white space of a string
 - [SMPToSymbol](../SMPToSymbol.md) - converts [SMP](../SMP.md)s to symbols
 - [Write2](../Write2.md) - writes the given settings in sequence followed by a newline to the specified output file
 
@@ -448,14 +411,13 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCPrepareFAAmp](../FCPrepareFAAmp.md) - auxiliary function for a partial conversion of a FeynArts amplitude to FeynCalc
 - [FCTP](../FCTP.md), [FCTripleProduct](../FCTripleProduct.md) - triple product in 3 dimensions
 - [FermionSpinSum](../FermionSpinSum.md) - constructs Dirac traces out of squared ampliudes with external Dirac fermions
-- [FeynRule](../FeynRule.md) - determines Feynman rules from [Lagrangian](../Lagrangian.md)s
+- [FeynRule](../FeynRule.md) - determines Feynman rules from operators
 - [FieldDerivative](../FieldDerivative.md), [FDr](../FDr.md) - field derivative
 - [FieldStrength](../FieldStrength.md) - field strength tensor $F^{\mu \nu}$
 - [FunctionalD](../FunctionalD.md) - functional derivative
 - [GhostPropagator](../GhostPropagator.md), [GHP](../GHP.md) - ghost propagator
 - [GluonGhostVertex](../GluonGhostVertex.md), [GGV](../GGV.md) - gluon ghost vertex
 - [GluonPropagator](../GluonPropagator.md), [GP](../GP.md) - gluon propagator
-- [GluonSelfEnergy](../GluonSelfEnergy.md) - 1-loop gluon self-energy
 - [GluonVertex](../GluonVertex.md), [GV](../GV.md) - $3$- and $4$-gluon vertices
 - [QuarkGluonVertex](../QuarkGluonVertex.md), [QGV](../QGV.md) - quark gluon vertex
 - [QuarkPropagator](../QuarkPropagator.md), [QP](../QP.md) - quark propagator
@@ -463,36 +425,21 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [ShiftPartialD](../ShiftPartialD.md) - shifts partial derivatives acting on [QuantumField](../QuantumField.md)s using IBPs
 - [SquareAmplitude](../SquareAmplitude.md) - writes $|\mathcal{M}|^2$ as a list of amplitude products
 - [SMP](../SMP.md) - symbols for various SM paremeters
-- [SMVertex](../SMVertex.md) - some SM vertices
 - [ToStandardMatrixElement](../ToStandardMatrixElement.md) - wraps Dirac structures, color structures and polarization vectors with a special head
 - [QCDFeynmanRuleConvention](../QCDFeynmanRuleConvention.md) - signs of Feynman rules in some functions
 
 ## Tables
 
-- [Amplitude](../Amplitude.md) - database of Feynman amplitudes
-- [AnomalousDimension](../AnomalousDimension.md) - non-singlet one-loop contribution to the anomalous dimension in the $\overline{{\textrm{MS}}}$ scheme
 - [CheckDB](../CheckDB.md) - saves or retrieves expressions from the database
-- [Convolute](../Convolute.md), [ConvoluteTable](../ConvoluteTable.md) - convolution of functions
-- [CounterTerm](../CounterTerm.md) - database of counter terms
-- [Gamma1](../Gamma1.md), [Gamma2](../Gamma2.md), [Gamma3](../Gamma3.md), [GammaEpsilon](../GammaEpsilon.md) - special products and expansions of $\Gamma$ functions
-- [Integrate2](../Integrate2.md), [Integrate3](../Integrate3.md), [Integrate5](../Integrate5.md) - some integrals
-- [InverseMellin](../InverseMellin.md) - inverse Mellin transform for some polynomials
-- [Kummer](../Kummer.md) - applies [Kummer](../Kummer.md) relations
-- [Lagrangian](../Lagrangian.md) - database of [Lagrangian](../Lagrangian.md)s
 - [Nielsen](../Nielsen.md) - denotes [Nielsen](../Nielsen.md)'s polylogarithm
 - [SimplifyPolyLog](../SimplifyPolyLog.md), [SPL](../SPL.md) - several simplifications for `Log` and `PolyLog` functions under certain assumptions
-- [SplittingFunction](../SplittingFunction.md) - database of splitting functiosn
 
 ## Options
 
 - [\$DisableMemSet](../\$DisableMemSet.md), [\$FAPatch](../\$FAPatch.md), [\$FCCheckContext](../\$FCCheckContext.md), [\$FCCloudTraditionalForm](../\$FCCloudTraditionalForm.md), [\$FCTraditionalFormOutput](../\$FCTraditionalFormOutput.md), [\$FeynArtsDirectory](../\$FeynArtsDirectory.md), [\$FeynCalcDevelopmentVersion](../\$FeynCalcDevelopmentVersion.md), [\$FeynCalcDirectory](../\$FeynCalcDirectory.md), [\$FeynCalcLastCommitDateHash](../\$FeynCalcLastCommitDateHash.md) [\$FeynCalcStartupMessages](../\$FeynCalcStartupMessages.md), [\$LoadAddOns](../\$LoadAddOns.md), [\$Multiplications](../\$Multiplications.md), [\$RenameFeynCalcObjects](../\$RenameFeynCalcObjects.md), [\$ParallelizeFeynCalc](../\$ParallelizeFeynCalc.md) - global switches that can be set before loading FeynCalc
 - [\$Containers](../\$Containers.md), [\$DistributiveFunctions](../\$DistributiveFunctions.md), [\$DisableMemSet](../\$DisableMemSet.md), [\$FCAdvice](../\$FCAdvice.md), [\$FCMemoryAvailable](../\$FCMemoryAvailable.md), [\$FCShowIEta](../\$FCShowIEta.md), [\$FortranContinuationCharacter](../\$FortranContinuationCharacter.md), [\$KeepLogDivergentScalelessIntegrals](../\$KeepLogDivergentScalelessIntegrals.md), [\$LeviCivitaSign](../\$LeviCivitaSign.md), [\$LimitTo4](../\$LimitTo4.md), [\$LimitTo4IRUnsafe](../\$LimitTo4IRUnsafe.md), [\$VeryVerbose](../\$VeryVerbose.md), [\$FAPatch](../\$FAPatch.md) - global switches that can be changed during the operation of FeynCalc
-- [\$Abbreviations](../\$Abbreviations.md), [\$AL](../\$AL.md), [\$FCTensorList](../\$FCTensorList.md), [\$FeynCalcVersion](../\$FeynCalcVersion.md), [\$MU](../\$MU.md), [\$NonComm](../\$NonComm.md), [\$ScalarProducts](../\$ScalarProducts.md) - global variables needed for the proper functioning of FeynCalc 
-- [A0ToB0](../A0ToB0.md), [AuxiliaryMomenta](../AuxiliaryMomenta.md), [AugmentedTopologyMarker](../AugmentedTopologyMarker.md), [B0Real](../B0Real.md), [B0Unique](../B0Unique.md), [Bracket](../Bracket.md), [BReduce](../BReduce.md), [CartesianIndexNames](../CartesianIndexNames.md), [ClearHeads](../ClearHeads.md), [Collecting](../Collecting.md), [CombineGraphs](../CombineGraphs.md), [CounterT](../CounterT.md), [CouplingConstant](../CouplingConstant.md), [CustomIndexNames](../CustomIndexNames.md), [D0Convention](../D0Convention.md), [DetectLoopTopologies](../DetectLoopTopologies.md), [Dimension](../Dimension.md), [DiracIndexNames](../DiracIndexNames.md), [DiracSpinorNormalization](../DiracSpinorNormalization.md), [DiracTraceEvaluate](../DiracTraceEvaluate.md), [Divideout](../Divideout.md), [DotPower](../DotPower.md), [DotSimplifyRelations](../DotSimplifyRelations.md), [DropIndexSum](../DropIndexSum.md), [DropScaleless](../DropScaleless.md), [DropSumOver](../DropSumOver.md), [DummyIndex](../DummyIndex.md), [EpsDiscard](../EpsDiscard.md), [EpsExpand](../EpsExpand.md), [EpsilonOrder](../EpsilonOrder.md), [EtaSign](../EtaSign.md), [ExceptHeads](../ExceptHeads.md), [ExcludeMasses](../ExcludeMasses.md), [Expanding](../Expanding.md), [ExtraFactor](../ExtraFactor.md), [ExtraPropagators](../ExtraPropagators.md), [ExtraVariables](../ExtraVariables.md), [FactorFull](../FactorFull.md), [Factoring](../Factoring.md), [FactoringDenominator](../FactoringDenominator.md), [Factorout](../Factorout.md), [FAModelsDirectory](../FAModelsDirectory.md), [FCDoControl](../FCDoControl.md), [FCParallelize](../FCParallelize.md), [FCJoinDOTs](../FCJoinDOTs.md), [FCVerbose](../FCVerbose.md), [FeynmanIntegralPrefactor](../FeynmanIntegralPrefactor.md), [FinalFunction](../FinalFunction.md), [FinalSubstitutions](../FinalSubstitutions.md), [ForceSave](../ForceSave.md), [FORMAbbreviations](../FORMAbbreviations.md), [FORMEpilog](../FORMEpilog.md), [FORMIdStatements](../FORMIdStatements.md), [FORMProlog](../FORMProlog.md), [FortranFormatDoublePrecision](../FortranFormatDoublePrecision.md), [FunctionLimits](../FunctionLimits.md), [Gauge](../Gauge.md), [IncomingMomenta](../IncomingMomenta.md), [IndexPosition](../IndexPosition.md), [InitialFunction](../InitialFunction.md), [InitialSubstitutions](../InitialSubstitutions.md), [InsideDiracTrace](../InsideDiracTrace.md), [InsidePauliTrace](../InsidePauliTrace.md), [IntermediateSubstitutions](../IntermediateSubstitutions.md), [IsolateFast](../IsolateFast.md), [IsolateNames](../IsolateNames.md), [IsolatePlus](../IsolatePlus.md), [IsolatePrint](../IsolatePrint.md), [IsolateSplit](../IsolateSplit.md), [IsolateTimes](../IsolateTimes.md), [LarinMVV](../LarinMVV.md), [LightPak](../LightPak.md), [\$FCDefaultLightconeVectorN](../\$FCDefaultLightconeVectorN.md), [\$FCDefaultLightconeVectorNB](../\$FCDefaultLightconeVectorNB.md), [Loop](../Loop.md), [LoopMomenta](../LoopMomenta.md), [LorentzIndexNames](../LorentzIndexNames.md), [Mandelstam](../Mandelstam.md), [MultiLoop](../MultiLoop.md), [NoSave](../NoSave.md), [NumberOfPolarizations](../NumberOfPolarizations.md), [NotMomentum](../NotMomentum.md), [OtherLoopMomenta](../OtherLoopMomenta.md), [OutgoingMomenta](../OutgoingMomenta.md), [PairCollect](../PairCollect.md), [PartialDRelations](../PartialDRelations.md), [PatchModelsOnly](../PatchModelsOnly.md),[PauliIndexNames](../PauliIndexNames.md),  [PauliReduce](../PauliReduce.md), [PauliTraceEvaluate](../PauliTraceEvaluate.md), [PaVeAutoOrder](../PaVeAutoOrder.md), [PaVeAutoReduce](../PaVeAutoReduce.md), [PaVeIntegralHeads](../PaVeIntegralHeads.md), [PaVeOrderList](../PaVeOrderList.md), [PostFortranFile](../PostFortranFile.md), [Prefactor](../Prefactor.md), [PreferredIntegrals](../PreferredIntegrals.md), [PreferredTopologies](../PreferredTopologies.md), [PreFortranFile](../PreFortranFile.md), [PreservePropagatorStructures](../PreservePropagatorStructures.md), [QuarkMass](../QuarkMass.md), [ReduceGamma](../ReduceGamma.md), [ReduceToScalars](../ReduceToScalars.md), [Rename](../Rename.md), [SameSideExternalEdges](../SameSideExternalEdges.md), [SchoutenAllowNegativeGain](../SchoutenAllowNegativeGain.md), [SchoutenAllowZeroGain](../SchoutenAllowZeroGain.md), [SelectGraphs](../SelectGraphs.md), [SetDimensions](../SetDimensions.md), [SmallVariables](../SmallVariables.md), [SplitSymbolicPowers](../SplitSymbolicPowers.md), [SubLoop](../SubLoop.md), [SubtopologyMarker](../SubtopologyMarker.md), [SUNFJacobi](../SUNFJacobi.md), [SUNIndexNames](../SUNIndexNames.md), [SUNFIndexNames](../SUNFIndexNames.md), [SUNTraceEvaluate](../SUNTraceEvaluate.md), [SUNNToCACF](../SUNNToCACF.md), [TensorReductionBasisChange](../TensorReductionBasisChange.md), [TraceDimension](../TraceDimension.md), [TraceOfOne](../TraceOfOne.md), [Transversality](../Transversality.md), [TransversePolarizationVectors](../TransversePolarizationVectors.md), [UndoChiralSplittings](../UndoChiralSplittings.md), [UsePaVeBasis](../UsePaVeBasis.md), [UseTIDL](../UseTIDL.md), [UseWriteString](../UseWriteString.md), [VirtualBoson](../VirtualBoson.md), [West](../West.md), [WriteOut](../WriteOut.md), [WriteOutPaVe](../WriteOutPaVe.md), [WriteStringOutput](../WriteStringOutput.md), [ZeroMomentumInsertion](../ZeroMomentumInsertion.md) - options of various functions and symbols
-
-## Misc
-
-- [CalculateCounterTerm](../CalculateCounterTerm.md), [GO](../GO.md), [Integratedx](../Integratedx.md), [\$MIntegrate](../\$MIntegrate.md), [\$OPEWard](../\$OPEWard.md), [OPE](../OPE.md), [OPE1Loop](../OPE1Loop.md), [OPE2TID](../OPE2TID.md), [OPEDelta](../OPEDelta.md), [OPEi](../OPEi.md), [OPEInt](../OPEInt.md), [OPEIntegrate](../OPEIntegrate.md), [OPEIntegrate2](../OPEIntegrate2.md), [OPEIntegrateDelta](../OPEIntegrateDelta.md), [OPEj](../OPEj.md), [OPEk](../OPEk.md), [OPEl](../OPEl.md), [OPEm](../OPEm.md), [OPEn](../OPEn.md), [OPEo](../OPEo.md), [OPESum](../OPESum.md), [OPESumExplicit](../OPESumExplicit.md), [OPESumSimplify](../OPESumSimplify.md), [QO](../QO.md), [SO](../SO.md), [SOD](../SOD.md), [SymbolicSum2](../SymbolicSum2.md), [SymbolicSum3](../SymbolicSum3.md), [Twist2AlienOperator](../Twist2AlienOperator.md), [Twist2CounterOperator](../Twist2CounterOperator.md), [Twist2GluonOperator](../Twist2GluonOperator.md), [Twist2QuarkOperator](../Twist2QuarkOperator.md), [Twist3QuarkOperator](../Twist3QuarkOperator.md), [Twist4GluonOperator](../Twist4GluonOperator.md) - various (often unfinished and undocumented) functions for QCD OPE calculations
+- [\$AL](../\$AL.md), [\$FCTensorList](../\$FCTensorList.md), [\$FeynCalcVersion](../\$FeynCalcVersion.md), [\$MU](../\$MU.md), [\$NonComm](../\$NonComm.md), [\$ScalarProducts](../\$ScalarProducts.md) - global variables needed for the proper functioning of FeynCalc
+- [A0ToB0](../A0ToB0.md), [AuxiliaryMomenta](../AuxiliaryMomenta.md), [AugmentedTopologyMarker](../AugmentedTopologyMarker.md), [B0Real](../B0Real.md), [B0Unique](../B0Unique.md), [BReduce](../BReduce.md), [CartesianIndexNames](../CartesianIndexNames.md), [ClearHeads](../ClearHeads.md), [Collecting](../Collecting.md), [CouplingConstant](../CouplingConstant.md), [CustomIndexNames](../CustomIndexNames.md), [D0Convention](../D0Convention.md), [DetectLoopTopologies](../DetectLoopTopologies.md), [Dimension](../Dimension.md), [DiracIndexNames](../DiracIndexNames.md), [DiracSpinorNormalization](../DiracSpinorNormalization.md), [DiracTraceEvaluate](../DiracTraceEvaluate.md), [DotPower](../DotPower.md), [DotSimplifyRelations](../DotSimplifyRelations.md), [DropIndexSum](../DropIndexSum.md), [DropScaleless](../DropScaleless.md), [DropSumOver](../DropSumOver.md), [DummyIndex](../DummyIndex.md), [EpsExpand](../EpsExpand.md), [EtaSign](../EtaSign.md), [ExceptHeads](../ExceptHeads.md), [ExcludeMasses](../ExcludeMasses.md), [Expanding](../Expanding.md), [ExtraFactor](../ExtraFactor.md), [ExtraPropagators](../ExtraPropagators.md), [Factoring](../Factoring.md), [FactoringDenominator](../FactoringDenominator.md), [FAModelsDirectory](../FAModelsDirectory.md), [FCDoControl](../FCDoControl.md), [FCParallelize](../FCParallelize.md), [FCJoinDOTs](../FCJoinDOTs.md), [FCVerbose](../FCVerbose.md), [FeynmanIntegralPrefactor](../FeynmanIntegralPrefactor.md), [FinalSubstitutions](../FinalSubstitutions.md), [ForceSave](../ForceSave.md), [FortranFormatDoublePrecision](../FortranFormatDoublePrecision.md), [Gauge](../Gauge.md), [IncomingMomenta](../IncomingMomenta.md), [IndexPosition](../IndexPosition.md), [InitialFunction](../InitialFunction.md), [InitialSubstitutions](../InitialSubstitutions.md), [InsideDiracTrace](../InsideDiracTrace.md), [InsidePauliTrace](../InsidePauliTrace.md), [IntermediateSubstitutions](../IntermediateSubstitutions.md), [IsolateFast](../IsolateFast.md), [IsolateNames](../IsolateNames.md), [IsolatePlus](../IsolatePlus.md), [IsolatePrint](../IsolatePrint.md), [IsolateSplit](../IsolateSplit.md), [IsolateTimes](../IsolateTimes.md), [LarinMVV](../LarinMVV.md), [LightPak](../LightPak.md), [\$FCDefaultLightconeVectorN](../\$FCDefaultLightconeVectorN.md), [\$FCDefaultLightconeVectorNB](../\$FCDefaultLightconeVectorNB.md),[LoopMomenta](../LoopMomenta.md), [LorentzIndexNames](../LorentzIndexNames.md), [Mandelstam](../Mandelstam.md), [MultiLoop](../MultiLoop.md), [NoSave](../NoSave.md), [NumberOfPolarizations](../NumberOfPolarizations.md), [NotMomentum](../NotMomentum.md), [OtherLoopMomenta](../OtherLoopMomenta.md), [OutgoingMomenta](../OutgoingMomenta.md), [PairCollect](../PairCollect.md), [PartialDRelations](../PartialDRelations.md), [PatchModelsOnly](../PatchModelsOnly.md),[PauliIndexNames](../PauliIndexNames.md),  [PauliReduce](../PauliReduce.md), [PauliTraceEvaluate](../PauliTraceEvaluate.md), [PaVeAutoOrder](../PaVeAutoOrder.md), [PaVeAutoReduce](../PaVeAutoReduce.md), [PaVeIntegralHeads](../PaVeIntegralHeads.md), [PaVeOrderList](../PaVeOrderList.md), [PostFortranFile](../PostFortranFile.md), [Prefactor](../Prefactor.md), [PreferredIntegrals](../PreferredIntegrals.md), [PreferredTopologies](../PreferredTopologies.md), [PreFortranFile](../PreFortranFile.md), [PreservePropagatorStructures](../PreservePropagatorStructures.md), [Rename](../Rename.md), [SameSideExternalEdges](../SameSideExternalEdges.md), [SchoutenAllowNegativeGain](../SchoutenAllowNegativeGain.md), [SchoutenAllowZeroGain](../SchoutenAllowZeroGain.md), [SetDimensions](../SetDimensions.md), [SplitSymbolicPowers](../SplitSymbolicPowers.md), [SubtopologyMarker](../SubtopologyMarker.md), [SUNFJacobi](../SUNFJacobi.md), [SUNIndexNames](../SUNIndexNames.md), [SUNFIndexNames](../SUNFIndexNames.md), [SUNTraceEvaluate](../SUNTraceEvaluate.md), [SUNNToCACF](../SUNNToCACF.md), [TensorReductionBasisChange](../TensorReductionBasisChange.md), [TraceOfOne](../TraceOfOne.md), [Transversality](../Transversality.md), [TransversePolarizationVectors](../TransversePolarizationVectors.md), [UndoChiralSplittings](../UndoChiralSplittings.md), [UsePaVeBasis](../UsePaVeBasis.md), [UseTIDL](../UseTIDL.md), [UseWriteString](../UseWriteString.md), [VirtualBoson](../VirtualBoson.md), [West](../West.md), [WriteOutPaVe](../WriteOutPaVe.md), [WriteStringOutput](../WriteStringOutput.md) - options of various functions and symbols
 
 ## Deprecated or legacy functions
 
@@ -508,7 +455,6 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [LeviCivita](../LeviCivita.md) - use [LC](../LC.md) instead
 - [\$LoadFeynArts](../\$LoadFeynArts.md), [\$LoadPhi](../\$LoadPhi.md), [\$LoadTARCER](../\$LoadTARCER.md) - use [\$LoadAddOns](../\$LoadAddOns.md)
 - [MetricTensor](../MetricTensor.md) - use [MT](../MT.md) instead
-- [OneLoop](../OneLoop.md), [OneLoopSum](../OneLoopSum.md) - use [TID](../TID.md) instead
 - [PartialFourVector](../PartialFourVector.md) - use [TID](../TID.md) instead
 - [PropagatorDenominatorExplicit](../PropagatorDenominatorExplicit.md) - use [FeynAmpDenominator](../FeynAmpDenominator.md) instead
 - [ScalarProductExpand](../ScalarProductExpand.md) - use [ExpandScalarProduct](../ExpandScalarProduct.md) instead

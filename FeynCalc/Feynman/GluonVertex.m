@@ -20,7 +20,7 @@ GV::usage =
 
 GluonVertex::usage =
 "GluonVertex[{p, mu, a}, {q, nu, b}, {k, la, c}] or GluonVertex[p, mu, a, q,
-nu, b, k, la, c] yields the 3-gluon vertex.
+nu, b, k, la, c] yields the 3-gluon vertex.    
 
 GluonVertex[{p, mu}, {q, nu}, {k, la}] yields the 3-gluon vertex without color
 structure and the coupling constant.
@@ -50,7 +50,6 @@ Options[GluonVertex] = {
 };
 
 GV = GluonVertex;
-Abbreviation[GluonVertex] = HoldForm[GV];
 
 lorfix[w_] :=
 	MomentumCombine[w,LeafCount -> 1000] /. LorentzIndex -> lorf /. lorf -> LorentzIndex;

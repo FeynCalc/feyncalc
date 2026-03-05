@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [OneLoopSimplify](OneLoopSimplify.md), [TIDL](TIDL.md), [PaVeLimitTo4](PaVeLimitTo4.md).*)
+(*[Overview](Extra/FeynCalc.md), [TIDL](TIDL.md), [PaVeLimitTo4](PaVeLimitTo4.md).*)
 
 
 (* ::Subsection:: *)
@@ -184,6 +184,4 @@ DataType[b, FCVariable] = True;
 ExpandScalarProduct[SP[P,Q]/.P->a P1 +b P2]
 
 StandardForm[%]
-
-
 

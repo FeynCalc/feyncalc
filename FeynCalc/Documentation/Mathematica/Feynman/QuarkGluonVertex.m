@@ -38,18 +38,3 @@ QGV[\[Mu],a]
 
 
 Explicit[%]
-
-
-QuarkGluonVertex[\[Mu],a,CounterTerm ->1,Explicit->True]
-
-
-QuarkGluonVertex[\[Mu],a,CounterTerm ->2,Explicit->True]
-
-
-QuarkGluonVertex[\[Mu],a,CounterTerm ->3,Explicit->True]
-
-
-QuarkGluonVertex[{p,\[Mu],a},{q},{k},OPE->True,Explicit->True]
-
-
-QuarkGluonVertex[{p,\[Mu],a},{q},{k},OPE->False,Explicit->True]

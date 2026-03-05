@@ -41,18 +41,6 @@ TraditionalForm]",
 TraditionalForm]",
 "FormBox[SuperscriptBox[RowBox[{OverscriptBox[\"\[Gamma]\", \
 \"_\"]}], FormBox[\"7\", TraditionalForm]], TraditionalForm]"},
-{"fcstSharedObjectsTypesetting-ID6",
-"MakeBoxes[DeltaFunction[x - y], TraditionalForm]",
-"RowBox[{\"\[Delta]\", \"(\", FormBox[RowBox[{\"x\", \"-\", \
-\"y\"}], TraditionalForm], \")\"}]"},
-{"fcstSharedObjectsTypesetting-ID7",
-"MakeBoxes[DeltaFunctionPrime[x - y], TraditionalForm]",
-"RowBox[{SuperscriptBox[\"\[Delta]\", \"\[Prime]\"], \"(\", \
-FormBox[RowBox[{\"x\", \"-\", \"y\"}], TraditionalForm], \")\"}]"},
-{"fcstSharedObjectsTypesetting-ID8",
-"MakeBoxes[DeltaFunctionDoublePrime[x - y], TraditionalForm]",
-"RowBox[{SuperscriptBox[\"\[Delta]\", \"\[DoublePrime]\"], \"(\", \
-FormBox[RowBox[{\"x\", \"-\", \"y\"}], TraditionalForm], \")\"}]"},
 {"fcstSharedObjectsTypesetting-ID9",
 "MakeBoxes[DiracGamma[Momentum[p]], TraditionalForm]",
 "RowBox[{OverscriptBox[\"\[Gamma]\", \"_\"], \"\[CenterDot]\", \
@@ -690,51 +678,6 @@ FormBox[\"p\", TraditionalForm], \"^\"], TraditionalForm], 2], \"\
 SuperscriptBox[\"m\", \"2\"]}], Pair[Momentum[p, -4 + D], Momentum[p, \
 -4 + D]]\"-\"m^2, Editable -> False], \")\"}], \"2\"]}]], \
 TraditionalForm]"},
-{"fcstSharedObjectsTypesetting-ID115",
-"MakeBoxes[FeynAmp[q, x], TraditionalForm]",
-"RowBox[{RowBox[{\"\[Integral]\", RowBox[{SuperscriptBox[\"\
-\[DifferentialD]\", \"D\"], FormBox[\"q\", TraditionalForm]}]}], \
-\"(\", FormBox[\"x\", TraditionalForm], \")\"}]"},
-{"fcstSharedObjectsTypesetting-ID116",
-"MakeBoxes[FeynAmp[a[b], q, x], TraditionalForm]",
-"FormBox[RowBox[{RowBox[{\"\[Integral]\", \
-RowBox[{SuperscriptBox[\"\[DifferentialD]\", \"D\"], FormBox[\"q\", \
-TraditionalForm]}]}], \"(\", FormBox[\"x\", TraditionalForm], \
-\")\"}], TraditionalForm]"},
-{"fcstSharedObjectsTypesetting-ID117",
-"MakeBoxes[FeynAmp[q1, q2, x], TraditionalForm]",
-"RowBox[{RowBox[{\"\[Integral]\", RowBox[{SuperscriptBox[\"\
-\[DifferentialD]\", \"D\"], FormBox[\"q1\", TraditionalForm]}]}], \
-RowBox[{\"\[Integral]\", RowBox[{SuperscriptBox[\"\[DifferentialD]\", \
-\"D\"], FormBox[\"q2\", TraditionalForm]}]}], \"(\", FormBox[\"x\", \
-TraditionalForm], \")\"}]"},
-{"fcstSharedObjectsTypesetting-ID118",
-"MakeBoxes[FeynAmp[a[b], q1, q2, x], TraditionalForm]",
-"FormBox[RowBox[{RowBox[{\"\[Integral]\", \
-RowBox[{SuperscriptBox[\"\[DifferentialD]\", \"D\"], FormBox[\"q1\", \
-TraditionalForm]}]}], RowBox[{\"\[Integral]\", \
-RowBox[{SuperscriptBox[\"\[DifferentialD]\", \"D\"], FormBox[\"q2\", \
-TraditionalForm]}]}], \"(\", FormBox[\"x\", TraditionalForm], \
-\")\"}], TraditionalForm]"},
-{"fcstSharedObjectsTypesetting-ID119",
-"MakeBoxes[FeynAmp[q1, q2, q3, x], TraditionalForm]",
-"RowBox[{RowBox[{\"\[Integral]\", RowBox[{SuperscriptBox[\"\
-\[DifferentialD]\", \"D\"], FormBox[\"q1\", TraditionalForm]}]}], \
-RowBox[{\"\[Integral]\", RowBox[{SuperscriptBox[\"\[DifferentialD]\", \
-\"D\"], FormBox[\"q2\", TraditionalForm]}]}], \
-RowBox[{\"\[Integral]\", RowBox[{SuperscriptBox[\"\[DifferentialD]\", \
-\"D\"], FormBox[\"q3\", TraditionalForm]}]}], \"(\", FormBox[\"x\", \
-TraditionalForm], \")\"}]"},
-{"fcstSharedObjectsTypesetting-ID120",
-"MakeBoxes[FeynAmp[a[b], q1, q2, q3, x], TraditionalForm]",
-"FormBox[RowBox[{RowBox[{\"\[Integral]\", \
-RowBox[{SuperscriptBox[\"\[DifferentialD]\", \"D\"], FormBox[\"q1\", \
-TraditionalForm]}]}], RowBox[{\"\[Integral]\", \
-RowBox[{SuperscriptBox[\"\[DifferentialD]\", \"D\"], FormBox[\"q2\", \
-TraditionalForm]}]}], RowBox[{\"\[Integral]\", \
-RowBox[{SuperscriptBox[\"\[DifferentialD]\", \"D\"], FormBox[\"q3\", \
-TraditionalForm]}]}], \"(\", FormBox[\"x\", TraditionalForm], \
-\")\"}], TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID121",
 "MakeBoxes[Pair[LorentzIndex[mu], Momentum[a]], TraditionalForm]",
 "SuperscriptBox[RowBox[{FormBox[OverscriptBox[FormBox[\"a\", \
@@ -942,12 +885,6 @@ FormBox[FormBox[RowBox[{OverscriptBox[FormBox[\"p\", \
 TraditionalForm], \"^\"], \"+\", OverscriptBox[FormBox[\"q\", \
 TraditionalForm], \"^\"]}], TraditionalForm], TraditionalForm], \
 \")\"}], TraditionalForm]"},
-{"fcstSharedObjectsTypesetting-ID157",
-"MakeBoxes[Integratedx[x, 0, 1], TraditionalForm]",
-"RowBox[{SubsuperscriptBox[\"\[Integral]\", FormBox[\"0\", \
-TraditionalForm], FormBox[\"1\", TraditionalForm]], \
-\"\[DifferentialD]\", TagBox[FormBox[\"x\", TraditionalForm], \
-TraditionalForm, Editable -> True], \"\[VeryThinSpace]\"}]"},
 {"fcstSharedObjectsTypesetting-ID158",
 "MakeBoxes[LC[a, b, c, d], TraditionalForm]",
 "FormBox[SuperscriptBox[OverscriptBox[\"\[Epsilon]\", \"_\"], \
@@ -1543,9 +1480,6 @@ TraditionalForm], TraditionalForm]]"},
 "RowBox[{\"\[PartialD]\", \"/\", \"\[PartialD]\", \
 SuperscriptBox[FormBox[\"x\", TraditionalForm], \
 FormBox[FormBox[\"mu\", TraditionalForm], TraditionalForm]]}]"},
-{"fcstSharedObjectsTypesetting-ID256",
-"MakeBoxes[PlusDistribution[x], TraditionalForm]",
-"SubscriptBox[RowBox[{\"(\", \"x\", \")\"}], \"+\"]"},
 {"fcstSharedObjectsTypesetting-ID257",
 "MakeBoxes[QuantumField[f], TraditionalForm]",
 "FormBox[\"f\", TraditionalForm]"},
@@ -1695,10 +1629,6 @@ TraditionalForm], FormBox[\"b\", TraditionalForm]}]]"},
 "SubscriptBox[\"\[Delta]\", RowBox[{FormBox[\"a\", \
 TraditionalForm], FormBox[\"b\", TraditionalForm]}]]"},
 {"fcstSharedObjectsTypesetting-ID283",
-"MakeBoxes[SmallDelta, TraditionalForm]", "\"\[Delta]\""},
-{"fcstSharedObjectsTypesetting-ID284",
-"MakeBoxes[SmallEpsilon, TraditionalForm]", "\"\[Epsilon]\""},
-{"fcstSharedObjectsTypesetting-ID285",
 "MakeBoxes[SmallVariable[a], TraditionalForm]", "\"a\""},
 {"fcstSharedObjectsTypesetting-ID288",
 "MakeBoxes[SP[a, b], TraditionalForm]",

@@ -4,28 +4,24 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [SUND](SUND.md), [SUNDelta](SUNDelta.md), [SUNIndex](SUNIndex.md), [SUNSimplify](SUNSimplify.md), [SUNT](SUNT.md), [Trick](Trick.md).
+[Overview](Extra/FeynCalc.md), [SUND](SUND.md), [SUNDelta](SUNDelta.md), [SUNIndex](SUNIndex.md), [SUNSimplify](SUNSimplify.md), [SUNT](SUNT.md).
 
 ### Examples
 
 ```mathematica
 SUNF[a, b, c] x + SUNF[b, a, c] 
  
-Calc[%] 
- 
-SUNSimplify[%%]
+SUNSimplify[%]
 ```
 
 $$x f^{abc}+f^{bac}$$
-
-$$x f^{abc}-f^{abc}$$
 
 $$(x-1) f^{abc}$$
 
 ```mathematica
 SUNF[a, a, b] 
  
-% // Calc
+SUNSimplify[%]
 ```
 
 $$f^{aab}$$
@@ -38,7 +34,7 @@ This is a consequence of the usual choice for the normalization of the $T_a$ gen
 SUNF[a, b, c, Explicit -> True]
 ```
 
-$$2 i \left(\text{tr}(T^a.T^c.T^b)-\text{tr}(T^a.T^b.T^c)\right)$$
+$$2 i \left(\text{tr}\left(T^a.T^c.T^b\right)-\text{tr}\left(T^a.T^b.T^c\right)\right)$$
 
 ```mathematica
 SUNSimplify[SUNF[a, b, c] SUNF[a, b, d]]
@@ -50,7 +46,7 @@ $$C_A \delta ^{cd}$$
 SUNSimplify[SUNF[a, b, c], Explicit -> True]
 ```
 
-$$-2 i \left(\text{tr}(T^a.T^b.T^c)-\text{tr}(T^b.T^a.T^c)\right)$$
+$$f^{abc}$$
 
 ```mathematica
 SUNF[a, b, c] // StandardForm

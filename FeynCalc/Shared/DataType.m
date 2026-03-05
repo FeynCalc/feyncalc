@@ -26,7 +26,7 @@ This information can be supplied e.g. via DataType[QuarkField,
 ImplicitDiracIndex] = True, where QuarkField is a possible name of the
 relevant field.
 
-The ImplicitDiracIndex property becomes relevant when simplifying
+The ImplicitDiracIndex property becomes relevant when simplifying 
 noncommutative products involving QuantumFields via ExpandPartialD,
 DotSimplify.";
 
@@ -39,7 +39,7 @@ This information can be supplied e.g. via DataType[QuarkFieldChi,
 ImplicitPauliIndex] = True, where QuarkFieldChi is a possible name of the
 relevant field.
 
-The ImplicitDiracIndex property becomes relevant when simplifying
+The ImplicitDiracIndex property becomes relevant when simplifying 
 noncommutative products involving QuantumFields via ExpandPartialD,
 DotSimplify.";
 
@@ -52,7 +52,7 @@ This information can be supplied e.g. via DataType[QuarkField,
 ImplicitSUNFIndex] = True, where QuarkField is a possible name of the relevant
 field.
 
-The ImplicitSUNFIndex property becomes relevant when simplifying
+The ImplicitSUNFIndex property becomes relevant when simplifying 
 noncommutative products involving QuantumFields via ExpandPartialD,
 DotSimplify.";
 
@@ -64,30 +64,22 @@ data-type type.
 
 The default setting is DataType[__, _] := False.
 
-To assign a certain data-type, do, e.g., DataType[x, PositiveInteger] = True.
-Currently used DataTypes:
+To assign a certain data-type, do, e.g., DataType[x, FCVariable] = True.
+Currently used DataTypes: 
 
 - NonCommutative
 
-- PositiveInteger
-
-- NegativeInteger
-
-- PositiveNumber
-
 - FreeIndex
 
-- GrassmannParity
-
 - FCTensor
+
+- FCVariable
 
 - ImplicitDiracIndex
 
 - ImplicitPauliIndex
 
-- ImplicitSUNFIndex
-
-If loaded, PHI adds the DataTypes: UMatrix, UScalar.";
+- ImplicitSUNFIndex";
 
 DataType::notsync =
 "You are using FeynCalc in the parallel mode, but the DataType values \

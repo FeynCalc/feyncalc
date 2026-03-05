@@ -62,30 +62,11 @@ QuantumField[GaugeField,{\[Mu]},{a}]//StandardForm
 (*$A_{\Delta}^a$ is a short form for $\Delta ^{mu } A_{mu }^a$ *)
 
 
-QuantumField[A,{OPEDelta},{a}]
-
-
-(* ::Text:: *)
-(*The first list of indices is usually interpreted as type `LorentzIndex`, except for `OPEDelta`, which gets converted to type `Momentum`.*)
-
-
-QuantumField[A,{OPEDelta},{a}]//StandardForm
-
-
 (* ::Text:: *)
 (*Derivatives of fields are denoted as follows.*)
 
 
 QuantumField[FCPartialD[LorentzIndex[\[Mu]]],A,{\[Mu]}]
-
-
-QuantumField[FCPartialD[OPEDelta],S]
-
-
-QuantumField[FCPartialD[OPEDelta],A,{OPEDelta},{a}]
-
-
-QuantumField[FCPartialD[OPEDelta]^OPEm,A,{OPEDelta},{a}]
 
 
 QuantumField[QuantumField[A]] === QuantumField[A]

@@ -23,7 +23,7 @@ CSPD[p - q, q + 2 p]
 $$(p-q)\cdot (2 p+q)$$
 
 ```mathematica
-Calc[ CSPD[p - q, q + 2 p] ]
+ExpandScalarProduct[ CSPD[p - q, q + 2 p] ]
 ```
 
 $$-p\cdot q+2 p^2-q^2$$

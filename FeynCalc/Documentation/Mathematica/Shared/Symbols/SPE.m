@@ -20,7 +20,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [PD](PD.md), [Calc](Calc.md), [ExpandScalarProduct](ExpandScalarProduct.md), [ScalarProduct](ScalarProduct.md), [SPD](SPD.md).*)
+(*[Overview](Extra/FeynCalc.md), [PD](PD.md), [ExpandScalarProduct](ExpandScalarProduct.md), [ScalarProduct](ScalarProduct.md), [SPD](SPD.md).*)
 
 
 (* ::Subsection:: *)
@@ -33,7 +33,7 @@ SPE[p,q] + SPE[q]
 SPE[p-q,q+2p]
 
 
-Calc[ SPE[p-q,q+2p] ]
+ExpandScalarProduct[ SPE[p-q,q+2p] ]
 
 
 ExpandScalarProduct[SPE[p-q]]

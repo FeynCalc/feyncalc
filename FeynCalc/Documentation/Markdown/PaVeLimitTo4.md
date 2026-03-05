@@ -6,8 +6,6 @@ This is possible because the UV poles of arbitrary Passarino-Veltman functions c
 
 Warning! This simplification always ignores possible IR poles of Passarino-Veltman functions. Therefore, it can be used only if all IR poles are regulated without using dimensional regularization (e.g. by assigning gluons or photons a fake mass) or if it is known in advance that the given expression is free of IR singularities.
 
-The application of `PaVeLimitTo4` is equivalent to using the old `OneLoop` routine with the flags `$LimitTo4` and `$LimitTo4IRUnsafe` set to `True`.
-
 ### See also
 
 [Overview](Extra/FeynCalc.md), [\$LimitTo4](\$LimitTo4.md).

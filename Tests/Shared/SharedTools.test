@@ -19,19 +19,6 @@ Tests`Shared`fcstSharedToolsCases2 = {
 {"fcstSharedToolsCases2-ID5","Cases2[a PolyLog[2, x] + Log[y] b + c PolyLog[2, x] Log[z], Log, PolyLog]","{Log[y], Log[z], PolyLog[2, x]}"}
 };
 
-
-
-Tests`Shared`fcstSharedToolsCombine = {
-{"fcstSharedToolsCombine-ID1","Combine[((a - b) (c - d))/e + g]","((a-b) (c-d)+e g)/e"},
-{"fcstSharedToolsCombine-ID2","Combine[((a - b) (c - d))/e + g, Expanding -> True]",
-	"(a c-a d-b c+b d+e g)/e"},
-{"fcstSharedToolsCombine-ID3","Combine[((a - b) (c - d))/e + ((h - j) (k - l))/g + m]",
-	"(g (a-b) (c-d)+e g m+e (h-j) (k-l))/(e g)"},
-{"fcstSharedToolsCombine-ID4",
-	"Combine[((a - b) (c - d))/e + ((h - j) (k - l))/g + m, Expanding -> True]",
-	"(a c g-a d g-b c g+b d g+e g m+e h k-e h l-e j k+e j l)/(e g)"}
-};
-
 Tests`Shared`fcstSharedToolsExpandAll2 =
 ({
 {"fcstSharedToolsExpandAll2-ID1", "ExpandAll2[a]", "a"},

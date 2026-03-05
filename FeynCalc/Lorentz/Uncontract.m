@@ -21,7 +21,7 @@ Uncontract::usage =
 Uncontract[exp, q1, q2, Pair -> {p}] uncontracts also $p \\cdot q_1$ and $p
 \\cdot q_2$;
 
-The option Pair -> All uncontracts all momenta except OPEDelta.";
+The option Pair -> All uncontracts all momenta.";
 
 Uncontract::failmsg =
 "Error! Uncontract has encountered a fatal problem and must abort the computation. \

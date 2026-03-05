@@ -15,12 +15,6 @@
 
 (* ------------------------------------------------------------------------ *)
 
-Abbreviation::usage =
-"Abbreviation is a function used by OneLoop and PaVeReduce for generating
-smaller files when saving results to the hard disk. The convention is that a
-definition like GP = GluonPropagator should be accompanied by the definition
-Abbreviation[GluonPropagator] = HoldForm[GP].";
-
 AntiQuarkField::usage =
 "AntiQuarkField is the name of a fermionic field. AntiQuarkField is just a name
 with no functional properties. Only typesetting rules are attached.";
@@ -68,20 +62,6 @@ PropagatorDenominator[Momentum[q, D], m]. What is meant is $1/(q^2-m^2)$.
 
 PropagatorDenominator must appear inside FeynAmpDenominator, it is not a
 standalone object.";
-
-DeltaFunction::usage =
-"DeltaFunction[x] is the Dirac delta-function $\\delta (x)$.
-
-Mathematica also provides a built-in function DiracDelta with comparable
-properties.";
-
-DeltaFunctionDoublePrime::usage =
-"DeltaFunctionDoublePrime[1 - x] is the second derivative of the Dirac
-delta-function $\\delta (x)$.";
-
-DeltaFunctionPrime::usage =
-"DeltaFunctionPrime[1 - x] is the derivative of the Dirac delta-function
-$\\delta (x)$.";
 
 DiracBasis::usage =
 "DiracBasis[any] is a head which is wrapped around Dirac structures (and the 1)
@@ -138,9 +118,7 @@ corresponding index slots. For example,  $\\varepsilon^{p_1 p_2 p_3 p_4}$
 \\sigma} p_1^\\mu p_2^\\nu p_3^\\rho p_4^\\sigma$.";
 
 Epsilon::usage =
-"Epsilon is $(n-4)$, where $n$ is the space-time dimension.
-
-Epsilon stands for a small positive number.";
+"Epsilon is $(n-4)$, where $n$ is the space-time dimension.";
 
 EpsilonUV::usage =
 "EpsilonUV denotes $(D-4)$, where $D$ is the number of space-time dimensions.
@@ -224,24 +202,12 @@ HyperInt for the integration of multiple polylogarithms.
 Use ToFCPartialFractionForm to convert the given expression to this notation
 and FromFCPartialFractionForm to return back to the usual representation.";
 
-FeynAmp::usage =
-"FeynAmp[q, amp] is the head of a Feynman amplitude, where amp denotes the
-analytical expression for the amplitude and q is the integration variable.
-FeynAmp[q1, q2, amp] denotes a two-loop amplitude. FeynAmp has no functional
-properties and serves just as a head. There are however special typesetting
-rules attached.";
-
 FeynAmpDenominator::usage =
 "FeynAmpDenominator[...] represents the inverse denominators of the
 propagators, i.e. FeynAmpDenominator[x] is $1/x$. Different propagator
 denominators are represented using special heads such as
 PropagatorDenominator, StandardPropagatorDenominator,
 CartesianPropagatorDenominator etc.";
-
-FeynAmpList::usage =
-"FeynAmpList[info][FeynAmp[...], FeynAmp[...], ...] is a head of a list of
-Feynman amplitudes. FeynAmpList has no functional properties and serves just
-as a head.";
 
 FV::usage =
 "FV[p, mu] is the $4$-dimensional vector $p^{\\mu }$.";
@@ -337,10 +303,6 @@ GSE::usage =
 "GSE[p] can be used as input for a $D-4$-dimensional $\\gamma \\cdot p =
 \\gamma^\\mu p_\\mu$ and is transformed into DiracGamma[Momentum[p,D-4],D-4] by
 FeynCalcInternal (FCI). GSE[p,q, ...] is a short form for GSE[p].GSE[q]. ....";
-
-Integratedx::usage =
-"Integratedx[x, low, up] is a variable representing the integration operator
-Integrate[#, {x,low,up}]&.";
 
 LC::usage =
 "LC[m, n, r, s] evaluates to 4-dimensional $\\varepsilon^{m n r s}$ by virtue of
@@ -477,10 +439,6 @@ If you need to specify a derivative with respect to a particular variable it
 also possible to use FCPartialD[{LorentzIndex[mu],y}] or
 FCPartialD[{CartesianIndex[i],x}]although this notation is still somewhat
 experimental";
-
-PlusDistribution::usage =
-"PlusDistribution[1/(1 - x)] denotes a distribution (in the sense of the \"+\"
-prescription).";
 
 Polarization::usage =
 "Polarization[k] is the head of a polarization momentum with momentum k.
@@ -623,11 +581,6 @@ SDF::usage =
 the fundamental representation. SDF[i,j] is transformed into
 SUNFDelta[SUNFIndex[i],SUNFIndex[j]] by FeynCalcInternal.";
 
-SmallDelta::usage =
-"SmallDelta denotes some small positive number.";
-
-SmallEpsilon::usage =
-"SmallEpsilon denotes some small positive number.";
 
 SmallVariable::usage =
 "SmallVariable[me] is the head of small (negligible) variables. This means any
@@ -734,7 +687,8 @@ SUNFIndex::usage =
 argument is an integer, SUNFIndex[a] turns into ExplicitSUNFIndex[a].";
 
 SUNN::usage =
-"SUNN denotes the number of colors. Trick[SUNDelta[a, a]] yields $n_c^2 -1$.";
+"SUNN denotes the number of colors. SUNSimplify[SUNDelta[a, a]] yields $n_c^2
+-1$.";
 
 SUNT::usage =
 "SUNT[a] is the $SU(N)$ $T^a$ generator in the fundamental representation. The
@@ -1457,15 +1411,7 @@ $TypesettingDimE = "^";
 $TypesettingDimD = "";
 TypesettingExplicitLorentzIndex = Function[x,x];
 
-DataType[Epsilon, PositiveNumber] = True;
 
-Unprotect[Greater];
-Greater[Re[Epsilon],-4] = True;
-Greater[Re[Epsilon],-3] = True;
-Greater[Re[Epsilon],-2] = True;
-Greater[Re[Epsilon],-1] = True;
-Greater[Re[Epsilon],0] = True;
-Protect[Greater];
 
 Unprotect[Conjugate];
 Conjugate[x_Pair] :=
@@ -1751,11 +1697,6 @@ CSISD[0] =
 CSISE[0] =
 	0;
 
-DeltaFunction[_?((NumericQ[#]===True&&(Positive[#]===True||Negative[#]===True))&)] :=
-	0;
-
-DeltaFunction[0] :=
-	1;
 
 (* ------------------------------------------------------------------------ *)
 

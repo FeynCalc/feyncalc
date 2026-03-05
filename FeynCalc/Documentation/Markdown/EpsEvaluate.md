@@ -4,7 +4,7 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [Contract](Contract.md), [Eps](Eps.md), [LC](LC.md), [Trick](Trick.md).
+[Overview](Extra/FeynCalc.md), [Contract](Contract.md), [Eps](Eps.md), [LC](LC.md).
 
 ### Examples
 

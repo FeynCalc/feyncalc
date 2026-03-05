@@ -4,6 +4,6 @@
 
 ### See also
 
-[Overview](Extra/FeynCalc.md), [Amplitude](Amplitude.md), [CounterTerm](CounterTerm.md), [Convolute](Convolute.md), [AnomalousDimension](AnomalousDimension.md), [SplittingFunction](SplittingFunction.md).
+[Overview](Extra/FeynCalc.md).
 
 ### Examples

@@ -47,7 +47,6 @@ Options[GluonPropagator] = {
 };
 
 GP = GluonPropagator;
-Abbreviation[GluonPropagator] = HoldForm[GP];
 
 GluonPropagator[a_, b_,c_, d_,e_, opt:OptionsPattern[]] :=
 	GluonPropagator[a, {b,c}, {d,e}, opt]/;FreeQ[{a,b,c,d,e},Rule];

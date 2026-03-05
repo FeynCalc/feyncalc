@@ -16,7 +16,7 @@
 
 
 (* ::Text:: *)
-(*The name of the field ($A$) and the coupling constant ($g$) can be set through the options or by additional arguments. The first two indices are interpreted as type `LorentzIndex`, except `OPEDelta`, which is converted to `Momentum[OPEDelta]`.*)
+(*The name of the field ($A$) and the coupling constant ($g$) can be set through the options or by additional arguments. The first two indices are interpreted as type `LorentzIndex`.*)
 
 
 (* ::Subsection:: *)

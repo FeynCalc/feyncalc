@@ -40,7 +40,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [Calc](Calc.md), [FCClearScalarProducts](FCClearScalarProducts.md), [ExpandScalarProduct](ExpandScalarProduct.md), [Pair](Pair.md), [SP](SP.md), [SPD](SPD.md).*)
+(*[Overview](Extra/FeynCalc.md), [FCClearScalarProducts](FCClearScalarProducts.md), [ExpandScalarProduct](ExpandScalarProduct.md), [Pair](Pair.md), [SP](SP.md), [SPD](SPD.md).*)
 
 
 (* ::Subsection:: *)
@@ -69,9 +69,6 @@ ScalarProduct[Subscript[p, 1],Subscript[p, 2]] = s/2
 
 
 ExpandScalarProduct[ ScalarProduct[Subscript[p, 1]-q,Subscript[p, 2]-k]]
-
-
-Calc[ ScalarProduct[Subscript[p, 1]-q,Subscript[p, 2]-k]]
 
 
 ScalarProduct[q1]=qq;
