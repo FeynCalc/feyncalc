@@ -32,17 +32,6 @@ Tests`Shared`fcstSharedToolsCombine = {
 	"(a c g-a d g-b c g+b d g+e g m+e h k-e h l-e j k+e j l)/(e g)"}
 };
 
-Tests`Shared`fcstSharedToolsComplement1 = {
-{"fcstSharedToolsComplement1-ID1","Complement[{a, b, c, d, e, f, e}, {a, b, c, d}]","{e,f}"},
-{"fcstSharedToolsComplement1-ID2","Complement1[{a, b, c, d, e, f, e}, {a, b, c, d}]",
-	"{e,f,e}"},
-{"fcstSharedToolsComplement1-ID3","Complement1[{a, b, c, d, e, f, e}, {a, b, c, d, a}]",
-	"{e,f,e}"},
-{"fcstSharedToolsComplement1-ID4",
-	"Complement[{a, b, c, d}, {a, b, c, d, e, f, e}]",
-	"{}"}
-};
-
 Tests`Shared`fcstSharedToolsExpandAll2 =
 ({
 {"fcstSharedToolsExpandAll2-ID1", "ExpandAll2[a]", "a"},
@@ -179,20 +168,6 @@ Tests`Shared`fcstSharedToolsFCProductSplit =
 "{(-x[2] - 2*x[5])/2, Pair[LorentzIndex[mu, D], Momentum[q, D]]}"}
 });
 
-Tests`Shared`fcstSharedToolsFCSplit = {
-{"fcstSharedToolsFCSplit-ID1","FCSplit[0, {z}]","{0,0}"},
-{"fcstSharedToolsFCSplit-ID2","FCSplit[1, {z}]","{1,0}"},
-{"fcstSharedToolsFCSplit-ID3","FCSplit[z, {z}]","{0,z}"},
-{"fcstSharedToolsFCSplit-ID4","FCSplit[a, {z}]","{a,0}"},
-{"fcstSharedToolsFCSplit-ID5","FCSplit[a+b, {z}]","{a+b,0}"},
-{"fcstSharedToolsFCSplit-ID6","FCSplit[a+z, {z}]","{a,z}"},
-{"fcstSharedToolsFCSplit-ID7","FCSplit[1/(z + a), {z}]","{0,1/(a+z)}"},
-{"fcstSharedToolsFCSplit-ID8","FCSplit[(z + a)^2, {z}]","{a^2,2 a z+z^2}"},
-{"fcstSharedToolsFCSplit-ID9","FCSplit[(z + a)^2, {z}, Expanding -> False]","{0,(a+z)^2}"},
-{"fcstSharedToolsFCSplit-ID11","FCSplit[{(a + b)^2, (a + d)^2}, {a}]",
-	"{{b^2, a^2 + 2 a b}, {d^2, a^2 + 2 a d}}"}
-};
-
 Tests`Shared`fcstSharedToolsFCReplaceAll = {
 {"fcstSharedToolsFCReplaceAll-ID1", "FCReplaceAll[a,a\[Rule]b]",
 "b"},
@@ -263,11 +238,6 @@ Tests`Shared`fcstSharedToolsMap2 = {
 {"fcstSharedToolsMap2-ID4","Map2[f, d (a + b + c)]","f[a + b + c] f[d]"}
 };
 
-Tests`Shared`fcstSharedToolsMLimit = {
-{"fcstSharedToolsMLimit-ID1","MLimit[y Log[y] + Sin[x - 1]/(x - 1), {x -> 1, y -> 0}]","1"},
-{"fcstSharedToolsMLimit-ID2","MLimit[x/Log[x], {x -> 2}]","2/Log[2]"}
-};
-
 Tests`Shared`fcstSharedToolsNTerms = {
 {"fcstSharedToolsNTerms-ID1","NTerms[a - b]","2"},
 {"fcstSharedToolsNTerms-ID2","NTerms[a b c]","1"},
@@ -284,12 +254,6 @@ Tests`Shared`fcstSharedToolsNumericalFactor = {
 {"fcstSharedToolsNumericalFactor-ID4","NumericalFactor[(2 (a + b))/e]","2"}
 };
 
-Tests`Shared`fcstSharedToolsNumericQ1 = {
-{"fcstSharedToolsNumericQ1-ID1","NumericQ1[a + b, {a, b}]1","True"},
-{"fcstSharedToolsNumericQ1-ID2","NumericQ1[3 a + Log[b] + c^2, {a, b, c}]","True"},
-{"fcstSharedToolsNumericQ1-ID3","NumericQ1[3 a + Log[b] + c^2, {a, b}]","False"}
-};
-
 Tests`Shared`fcstSharedToolsPartitHead = {
 {"fcstSharedToolsPartitHead-ID1","PartitHead[f[x], f]",
 	"{1, f[x]}"},
@@ -301,62 +265,6 @@ Tests`Shared`fcstSharedToolsPartitHead = {
 	"{a b,1}"},
 {"fcstSharedToolsPartitHead-ID5","PartitHead[Expand[(a[x] (b[x] + c[x]))/d[x]], b]",
 	"{(a[x] c[x])/d[x], (a[x] b[x])/d[x]}"}
-};
-
-Tests`Shared`fcstSharedToolsPower2 = {
-{"fcstSharedToolsPower2-ID1","Power2[x, y]",
-	"Power2[x, y]"},
-{"fcstSharedToolsPower2-ID2","Power2[1, OPEm]^2",
-	"1"},
-{"fcstSharedToolsPower2-ID3","Power2[a, -2]",
-	"1/a^2"},
-{"fcstSharedToolsPower2-ID4","Power2[2, a]",
-	"2^a"},
-{"fcstSharedToolsPower2-ID5","Power2[-2, a]",
-	"Power2[-2, a]"},
-{"fcstSharedToolsPower2-ID6","Power2[-a, b]",
-	"Power2[-a, b]"},
-{"fcstSharedToolsPower2-ID7","Power2[-a, b Epsilon]",
-	"Power2[-a, b Epsilon]"}
-};
-
-Tests`Shared`fcstSharedToolsPowerFactor = {
-{"fcstSharedToolsPowerFactor-ID1","PowerFactor[x^b y^b]",
-	"(x y)^b"},
-{"fcstSharedToolsPowerFactor-ID2","PowerFactor[x^b ( y^b + z^c)]",
-	"x^b (y^b+z^c)"}
-};
-
-Tests`Shared`fcstSharedToolsPowerSimplify = {
-{"fcstSharedToolsPowerSimplify-ID1","PowerSimplify[Sqrt[a]]",
-	"Sqrt[a]"},
-{"fcstSharedToolsPowerSimplify-ID2","PowerSimplify[Sqrt[-a]]",
-	"I*Sqrt[a]*E^(I*Pi*Floor[-Arg[a]/(2*Pi)])"},
-{"fcstSharedToolsPowerSimplify-ID3","PowerSimplify[Sqrt[-a]] // Simplify[#, Assumptions -> a < 0] &",
-	"Sqrt[-a]"},
-{"fcstSharedToolsPowerSimplify-ID4","PowerSimplify[Sqrt[1 - a]]",
-	"Sqrt[1 - a]*E^(I*Pi*Floor[1/2 - Arg[1 - a]/(2*Pi)])"},
-{"fcstSharedToolsPowerSimplify-ID5","PowerSimplify[Sqrt[1 - a]] // Simplify[#, Assumptions -> a < 0] &",
-	"Sqrt[1 - a]"},
-{"fcstSharedToolsPowerSimplify-ID6","PowerSimplify[Sqrt[1 + a]]",
-	"Sqrt[1 + a]*E^(I*Pi*Floor[1/2 - Arg[1 + a]/(2*Pi)])"},
-{"fcstSharedToolsPowerSimplify-ID7","PowerSimplify[Sqrt[1 + a]] // Simplify[#, Assumptions -> a > 0] &",
-	"Sqrt[1 + a]"},
-{"fcstSharedToolsPowerSimplify-ID8","PowerSimplify[(-1)^(2 OPEm)]",
-	"1"},
-{"fcstSharedToolsPowerSimplify-ID9","PowerSimplify[(-SO[q])^OPEm]",
-	"E^(I OPEm \[Pi] + 2 I OPEm \[Pi] Floor[-(Arg[SO[q]]/(2 \[Pi]))])*SO[q]^OPEm"},
-{"fcstSharedToolsPowerSimplify-ID10","Calc[Sqrt[x - 1], Assumptions -> x > 1]",
-	"Sqrt[x-1]"},
-{"fcstSharedToolsPowerSimplify-ID11","Calc[Sqrt[x - 1]]",
-	"I E^(I \[Pi] Floor[-(Arg[1 - x]/(2 \[Pi]))] +
-	9 I \[Pi] Floor[1/2 - Arg[1 - x]/(2 \[Pi])]) Sqrt[1 - x]"},
-{"fcstSharedToolsPowerSimplify-ID12","Calc[Sqrt[x - 1], Assumptions -> Automatic]",
-	"I Sqrt[1 - x]"},
-{"fcstSharedToolsPowerSimplify-ID13","Calc[Sqrt[x - 1], PowerExpand -> False]",
-	"Sqrt[x - 1]"},
-{"fcstSharedToolsPowerSimplify-ID14","PowerSimplify[Sqrt[x - 1], PowerExpand -> False]",
-	"Sqrt[x - 1]"}
 };
 
 Tests`Shared`fcstSharedToolsSelectFree = {

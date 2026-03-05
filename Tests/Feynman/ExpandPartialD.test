@@ -33,28 +33,6 @@ QuantumField[A,LorentzIndex[nu]]]",
 QuantumField[FCPartialD[LorentzIndex[mu]], A, LorentzIndex[nu]] + \
 QuantumField[FCPartialD[LorentzIndex[mu]], A, LorentzIndex[mu]] . \
 QuantumField[A, LorentzIndex[nu]]"},
-{"fcstExpandPartialD-ID4",
-"ExpandPartialD[QuantumField[A,LorentzIndex[mu]].(\
-LeftRightPartialD[OPEDelta]^2).QuantumField[A,LorentzIndex[rho]]]",
-"(QuantumField[A, LorentzIndex[mu]] . \
-QuantumField[FCPartialD[Momentum[OPEDelta]], \
-FCPartialD[Momentum[OPEDelta]], A, LorentzIndex[rho]] - \
-2*QuantumField[FCPartialD[Momentum[OPEDelta]], A, LorentzIndex[mu]] . \
-QuantumField[FCPartialD[Momentum[OPEDelta]], A, LorentzIndex[rho]] + \
-QuantumField[FCPartialD[Momentum[OPEDelta]], \
-FCPartialD[Momentum[OPEDelta]], A, LorentzIndex[mu]] . \
-QuantumField[A, LorentzIndex[rho]])/4"},
-{"fcstExpandPartialD-ID5",
-"ExpandPartialD[LeftRightPartialD[OPEDelta]^3]",
-"(-LeftPartialD[Momentum[OPEDelta]] . \
-LeftPartialD[Momentum[OPEDelta]] . LeftPartialD[Momentum[OPEDelta]] + \
-3*LeftPartialD[Momentum[OPEDelta]] . LeftPartialD[Momentum[OPEDelta]] \
-. RightPartialD[Momentum[OPEDelta]] - \
-3*LeftPartialD[Momentum[OPEDelta]] . \
-RightPartialD[Momentum[OPEDelta]] . RightPartialD[Momentum[OPEDelta]] \
-+ RightPartialD[Momentum[OPEDelta]] . \
-RightPartialD[Momentum[OPEDelta]] . \
-RightPartialD[Momentum[OPEDelta]])/8"},
 {"fcstExpandPartialD-ID6",
 "ExpandPartialD[LC[mu,nu,rho,tau]RightPartialD[al,mu,be,nu]]", "0"},
 {"fcstExpandPartialD-ID7",

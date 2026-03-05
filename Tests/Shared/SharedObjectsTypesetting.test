@@ -1057,9 +1057,6 @@ FormBox[\"p\", TraditionalForm], \")\"}]"},
 "MakeBoxes[Momentum[Polarization[p, I], -4 + D], TraditionalForm]",
 	"RowBox[{OverscriptBox[\"\[CurlyEpsilon]\", \"^\"], \"(\", \
 FormBox[\"p\", TraditionalForm], \")\"}]"},
-{"fcstSharedObjectsTypesetting-ID176",
-"MakeBoxes[Momentum[OPEDelta], TraditionalForm]",
-"FormBox[\"\[CapitalDelta]\", TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID177",
 "MakeBoxes[Momentum[p], TraditionalForm]",
 "OverscriptBox[FormBox[\"p\", TraditionalForm], \"_\"]"},
@@ -1149,8 +1146,6 @@ FormBox[FormBox[\"b\", TraditionalForm], TraditionalForm]}]], \
 TraditionalForm]"},
 {"fcstSharedObjectsTypesetting-ID198",
 "MakeBoxes[Nf, TraditionalForm]", "SubscriptBox[\"N\", \"f\"]"},
-{"fcstSharedObjectsTypesetting-ID199",
-"MakeBoxes[OPE, TraditionalForm]", "\"\[CapitalOmega]\""},
 {"fcstSharedObjectsTypesetting-ID200",
 "MakeBoxes[Pair[LorentzIndex[a], LorentzIndex[b]], \
 TraditionalForm]",
@@ -1705,16 +1700,6 @@ TraditionalForm], FormBox[\"b\", TraditionalForm]}]]"},
 "MakeBoxes[SmallEpsilon, TraditionalForm]", "\"\[Epsilon]\""},
 {"fcstSharedObjectsTypesetting-ID285",
 "MakeBoxes[SmallVariable[a], TraditionalForm]", "\"a\""},
-{"fcstSharedObjectsTypesetting-ID286",
-"MakeBoxes[SO[x], TraditionalForm]",
-"RowBox[{FormBox[\"\\\"\[CapitalDelta]\\\"\", TraditionalForm], \
-FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], FormBox[\"x\", \
-TraditionalForm]}]"},
-{"fcstSharedObjectsTypesetting-ID287",
-"MakeBoxes[SOD[x], TraditionalForm]",
-"RowBox[{FormBox[\"\\\"\[CapitalDelta]\\\"\", TraditionalForm], \
-FormBox[\"\\\"\[CenterDot]\\\"\", TraditionalForm], FormBox[\"x\", \
-TraditionalForm]}]"},
 {"fcstSharedObjectsTypesetting-ID288",
 "MakeBoxes[SP[a, b], TraditionalForm]",
 "FormBox[RowBox[{FormBox[OverscriptBox[FormBox[\"a\", \

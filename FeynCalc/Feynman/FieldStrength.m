@@ -50,6 +50,12 @@ FieldStrength[mu_, nu_, OptionsPattern[]] :=
 	LorentzIndex[nu]] -    QuantumField[FCPartialD[LorentzIndex[nu]], OptionValue[QuantumField],
 	LorentzIndex[mu]]) /; OptionValue[Explicit];
 
+FieldStrength[mu_, nu_, a_, {aA_, b_, c_}, g_ /; Head[g] =!= Rule, OptionsPattern[]] :=
+	(QuantumField[FCPartialD[LorentzIndex[mu]],aA, LorentzIndex[nu], SUNIndex[a]] -
+	QuantumField[FCPartialD[LorentzIndex[nu]],aA,    LorentzIndex[mu], SUNIndex[a]] +
+	g SUNF[a, b, c] DOT[QuantumField[aA, LorentzIndex[mu], SUNIndex[b]],
+	QuantumField[aA, LorentzIndex[nu], SUNIndex[c]]]) /; OptionValue[Explicit];
+
 FieldStrength[mu_, nu_, a_, opts:OptionsPattern[]] :=
 	Block[ {g,b,c},
 		b = Unique["b"];

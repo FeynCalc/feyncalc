@@ -15,11 +15,14 @@
 
 Tests`Feynman`fcstFeynRule = {
 
-{"fcstFeynRule-ID1","(FeynRule[Lagrangian[
-	\"QCD\"]/. FCGV[x_] :> ToExpression[x], {QuantumField[GaugeField, {mu1}, {i1}][p1],
-	QuantumField[GaugeField, {mu2}, {i2}][p2],
-	QuantumField[GaugeField, {mu3}, {i3}][p3],
-	QuantumField[GaugeField, {mu4}, {i4}][p4]}]// FCRenameDummyIndices)/. {$AL[x_] -> si10}","I*Gstrong^2*(Pair[LorentzIndex[mu1], LorentzIndex[mu3]]*Pair[LorentzIndex[mu2], LorentzIndex[mu4]] -
+{"fcstFeynRule-ID1","Collect2[(FeynRule[-1/4 DOT[FieldStrength[al, be, a], 
+        FieldStrength[al, be, a]] /. 
+      FCGV[x_] :> 
+       ToExpression[x], {QuantumField[GaugeField, {mu1}, {i1}][p1], 
+      QuantumField[GaugeField, {mu2}, {i2}][p2], 
+      QuantumField[GaugeField, {mu3}, {i3}][p3], 
+      QuantumField[GaugeField, {mu4}, {i4}][p4]}] // 
+    FCRenameDummyIndices) /. {$AL[x_] -> si10}, SUNF]","I*Gstrong^2*(Pair[LorentzIndex[mu1], LorentzIndex[mu3]]*Pair[LorentzIndex[mu2], LorentzIndex[mu4]] -
 	Pair[LorentzIndex[mu1], LorentzIndex[mu2]]*Pair[LorentzIndex[mu3], LorentzIndex[mu4]])*
 	SUNF[SUNIndex[i1], SUNIndex[i4], SUNIndex[si10]]*SUNF[SUNIndex[i2], SUNIndex[i3], SUNIndex[si10]] +
 I*Gstrong^2*(Pair[LorentzIndex[mu1], LorentzIndex[mu4]]*Pair[LorentzIndex[mu2], LorentzIndex[mu3]] -
