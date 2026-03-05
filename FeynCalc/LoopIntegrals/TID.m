@@ -981,12 +981,7 @@ tidConvert[expr_, q_, optTensorReductionBasisChange_]:=
 
 		(* get the momenta on which the integral depends *)
 		qQQprepare[FeynAmpDenominator[a__] f_ /; (!FreeQ[f, Momentum[q,___]])] :=
-			(FeynAmpDenominator[a] qQQ[getfdp[a] f]) /; FreeQ[f, OPEDelta];
-
-		qQQprepare[FeynAmpDenominator[a__] f_ /; (!FreeQ[f, Momentum[q,___]])] :=
-			(FeynAmpDenominator[a] SelectNotFree[SelectNotFree[f,q],OPEDelta]*
-			qQQ[Append[getfdp[a],OPEDelta] f/SelectNotFree[SelectNotFree[f,q],OPEDelta]])/;
-			!FreeQ[SelectNotFree[f,q], OPEDelta] && (getfdp[a]=!=1); (* avoid tadpoles *)
+			(FeynAmpDenominator[a] qQQ[getfdp[a] f]);
 
 		temp = qQQprepare[ex];
 		res = temp/. ffdp[0,r___]:>ffdp[r]/.repRule;
@@ -1021,7 +1016,7 @@ tidConvert[expr_, q_, _]:=
 		];
 
 		res
-	]/; Head[expr]=!=Plus && FreeQ[expr,OPEDelta] && MatchQ[expr,(FeynAmpDenominator[(x : CartesianPropagatorDenominator[__] ..)]/;
+	]/; Head[expr]=!=Plus && MatchQ[expr,(FeynAmpDenominator[(x : CartesianPropagatorDenominator[__] ..)]/;
 		!FreeQ[{x}, q]) Times[CartesianPair[CartesianMomentum[q, ___], CartesianIndex[_, ___]] ..]];
 
 (* 	Integrals that have no FeynAmpDenominator correspond to the scaleless integrals and are

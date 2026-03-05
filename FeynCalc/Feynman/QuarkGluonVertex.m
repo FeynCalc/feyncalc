@@ -34,11 +34,9 @@ Begin["`QuarkGluonVertex`Private`"]
 DeclareNonCommutative[QuarkGluonVertex];
 
 Options[QuarkGluonVertex] = {
-	CounterTerm -> False,
 	CouplingConstant -> SMP["g_s"],
 	Dimension -> D,
 	Explicit -> False,
-	OPE -> False,
 	Polarization -> 0
 };
 
@@ -55,27 +53,12 @@ QuarkGluonVertex[mui_, ai_/;Head[ai]=!=Rule, opt:OptionsPattern[]] :=
 QuarkGluonVertex[{p_, mui_, ai_}, {q_,___}, {k_,___}, OptionsPattern[]] :=
 	Block[ {gauge, dim, mu, a, gl3v, coun, coup, ope, pol},
 		coup  = OptionValue[CouplingConstant];
-		coun  = OptionValue[CounterTerm];
 		dim   = OptionValue[Dimension];
-		ope   = OptionValue[OPE];
+
 		pol   = OptionValue[Polarization];
 		mu = LorentzIndex[mui, dim];
 		a  = SUNIndex[ai];
-		If[ !ope,
-			gl3v = 0,
-			gl3v = OPE Twist2QuarkOperator[{q}, {k}, {p,mui,ai}, Polarization -> pol]
-		];
-		Which[
-			coun === 1,
-				gl3v = gl3v + (I) Sn coup^3 (CF-CA/2) DOT[SUNT[a], DiracGamma[mu,dim]] 2/Epsilon,
-			coun === 2,
-				gl3v = gl3v + (I) Sn coup^3 CA DOT[SUNT[a], DiracGamma[mu,dim]] 3/Epsilon,
-			coun === 3,
-				gl3v = gl3v + (I) Sn coup^3 (CF+CA) DOT[SUNT[a], DiracGamma[mu,dim]] 2/Epsilon
-		];
-		If[ !coun,
-			gl3v = gl3v + I coup DOT[SUNT[a], DiracGamma[mu, dim]]
-		];
+		gl3v = I coup DOT[SUNT[a], DiracGamma[mu, dim]];
 		gl3v
 	] /; OptionValue[Explicit] &&
 					FreeQ[Union[Map[Head, {mui,ai}]], Integer];
@@ -83,26 +66,14 @@ QuarkGluonVertex[{p_, mui_, ai_}, {q_,___}, {k_,___}, OptionsPattern[]] :=
 QuarkGluonVertex[mui_, OptionsPattern[]] :=
 	Block[ {gauge, dim, mu, a, gl3v, coun, coup, ope, pol},
 		coup  = OptionValue[CouplingConstant];
-		coun  = OptionValue[CounterTerm];
+
 		dim   = OptionValue[Dimension];
-		ope   = OptionValue[OPE];
+
 		pol   = OptionValue[Polarization];
 		mu = LorentzIndex[mui, dim];
-		If[ !ope,
-			gl3v = 0,
-			gl3v = OPE Twist2QuarkOperator[{q}, {k}, {p,mui}, Polarization -> pol]
-		];
-		Which[
-			coun === 1,
-				gl3v = gl3v + (I) Sn coup^3 (CF-CA/2) DiracGamma[mu,dim] 2/Epsilon,
-			coun === 2,
-				gl3v = gl3v + (I) Sn coup^3 CA DiracGamma[mu,dim] 3/Epsilon,
-			coun === 3,
-				gl3v = gl3v + (I) Sn coup^3 (CF+CA) DiracGamma[mu,dim] 2/Epsilon
-		];
-		If[ !coun,
-			gl3v = gl3v + I coup DiracGamma[mu, dim]
-		];
+
+		gl3v =  I coup DiracGamma[mu, dim];
+
 		gl3v
 	] /; OptionValue[Explicit] && FreeQ[Union[Map[Head, {mui}]], Integer];
 

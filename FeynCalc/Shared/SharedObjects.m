@@ -611,11 +611,6 @@ field theories such as HQET or SCET.
 StandardPropagatorDenominator is an internal object. To enter such propagators
 in FeynCalc you should use SFAD.";
 
-OPE::usage =
-"OPE is a convenience variable to separate OPE insertions.
-
-OPE is also an option of several input functions like GluonPropagator.";
-
 SD::usage =
 "SD[i, j] denotes the $SU(N)$ Kronecker delta with color indices i and j in the
 adjoint representation.
@@ -638,14 +633,6 @@ SmallVariable::usage =
 "SmallVariable[me] is the head of small (negligible) variables. This means any
 mass with this head can be neglected if it appears in a sum, but not as an
 argument of Passarino-Veltman (PaVe) functions or PropagatorDenominator.";
-
-SO::usage =
-"SO[q] is a four-dimensional scalar product of OPEDelta with q. It is
-transformed into Pair[Momentum[q], Momentum[OPEDelta] by FCI.";
-
-SOD::usage =
-"SOD[q] is a $D$-dimensional scalar product of OPEDelta with q. It is
-transformed into Pair[Momentum[q,D], Momentum[OPEDelta,D] by FeynCalcInternal.";
 
 SP::usage =
 "SP[a, b] denotes a $4$-dimensional scalar product. SP[a, b] is transformed
@@ -1431,7 +1418,6 @@ DeclareNonCommutative[LeftRightNablaD];
 DeclareNonCommutative[LeftRightNablaD2];
 
 DeclareNonCommutative[FCPartialD];
-DeclareNonCommutative[OPESum];
 DeclareNonCommutative[QuantumField];
 DeclareNonCommutative[RightPartialD];
 DeclareNonCommutative[RightNablaD];
@@ -2133,7 +2119,7 @@ LCD[___][___,p_,___,p_,___]:=
 
 LeftNablaD[x__] :=
 	LeftNablaD @@ (CartesianIndex /@ {x}) /;FreeQ2[{x},
-	{LorentzIndex, ExplicitLorentzIndex, CartesianIndex, Momentum, CartesianMomentum, OPEDelta, RowBox,
+	{LorentzIndex, ExplicitLorentzIndex, CartesianIndex, Momentum, CartesianMomentum, RowBox,
 	Pattern, Blank}] && (Union[{x}]=!={1});
 
 LeftNablaD[x_, y__]/; MatchQ[{x,y},{(__ExplicitLorentzIndex | __CartesianIndex | __CartesianMomentum)}] :=
@@ -2141,14 +2127,11 @@ LeftNablaD[x_, y__]/; MatchQ[{x,y},{(__ExplicitLorentzIndex | __CartesianIndex |
 
 LeftPartialD[x__] :=
 	LeftPartialD @@ (LorentzIndex /@ {x}) /;FreeQ2[{x},
-	{LorentzIndex, ExplicitLorentzIndex, CartesianIndex, Momentum, CartesianMomentum, OPEDelta, RowBox,
+	{LorentzIndex, ExplicitLorentzIndex, CartesianIndex, Momentum, CartesianMomentum, RowBox,
 	Pattern, Blank}] && (Union[{x}]=!={1});
 
 LeftPartialD[(1)..] =
 	1;
-
-LeftPartialD[c:OPEDelta..] :=
-	LeftPartialD @@ (Momentum /@ {c});
 
 LeftPartialD[x_, y__]/; MatchQ[{x,y},{(__LorentzIndex | __ExplicitLorentzIndex | __CartesianIndex | __Momentum | __CartesianMomentum)}] :=
 	DOT @@ Map[LeftPartialD, {x, y}];
@@ -2173,7 +2156,7 @@ ToExpression["FCCommutator[RightPartialD[x_], LeftPartialD[y_]] = 0;"];
 LeftRightNablaD[xx__] :=
 	LeftRightNablaD@@ (CartesianIndex /@ {xx}) /;
 	FreeQ2[{xx}, {LorentzIndex, ExplicitLorentzIndex, CartesianIndex,
-		Momentum, CartesianMomentum, OPEDelta, RowBox, Pattern, Blank}] && (Union[{xx}]=!={1});
+		Momentum, CartesianMomentum, RowBox, Pattern, Blank}] && (Union[{xx}]=!={1});
 
 LeftRightNablaD[x_, y__]/; MatchQ[{x,y},{(__ExplicitLorentzIndex | __CartesianIndex | __CartesianMomentum)}] :=
 	DOT @@ Map[LeftRightNablaD, {x, y}]
@@ -2181,7 +2164,7 @@ LeftRightNablaD[x_, y__]/; MatchQ[{x,y},{(__ExplicitLorentzIndex | __CartesianIn
 LeftRightNablaD2[xx__] :=
 	LeftRightNablaD2@@ (CartesianIndex /@ {xx}) /;
 	FreeQ2[{xx}, {LorentzIndex, ExplicitLorentzIndex, CartesianIndex,
-		Momentum, CartesianMomentum, OPEDelta, RowBox, Pattern, Blank}] && (Union[{xx}]=!={1});
+		Momentum, CartesianMomentum, RowBox, Pattern, Blank}] && (Union[{xx}]=!={1});
 
 LeftRightNablaD2[x_, y__]/; MatchQ[{x,y},{(__ExplicitLorentzIndex | __CartesianIndex | __CartesianMomentum)}] :=
 	DOT @@ Map[LeftRightNablaD2, {x, y}];
@@ -2190,13 +2173,9 @@ LeftRightNablaD2[x_, y__]/; MatchQ[{x,y},{(__ExplicitLorentzIndex | __CartesianI
 LeftRightPartialD[xx__] :=
 	LeftRightPartialD@@ (LorentzIndex /@ {xx}) /;
 	FreeQ2[{xx}, {LorentzIndex, ExplicitLorentzIndex, CartesianIndex,
-		Momentum, CartesianMomentum, OPEDelta, RowBox, Pattern, Blank}] && (Union[{xx}]=!={1});
+		Momentum, CartesianMomentum, RowBox, Pattern, Blank}] && (Union[{xx}]=!={1});
 
 LeftRightPartialD[(1)..] = 1;
-
-LeftRightPartialD[c:OPEDelta..] :=
-	LeftRightPartialD @@ (Momentum /@ {c});
-
 
 LeftRightPartialD[x_, y__]/; MatchQ[{x,y},{(__LorentzIndex | __ExplicitLorentzIndex | __CartesianIndex | __Momentum | __CartesianMomentum)}] :=
 	DOT @@ Map[LeftRightPartialD, {x, y}]
@@ -2205,19 +2184,13 @@ LeftRightPartialD[x_, y__]/; MatchQ[{x,y},{(__LorentzIndex | __ExplicitLorentzIn
 LeftRightPartialD2[xx__] :=
 	LeftRightPartialD2@@ (LorentzIndex /@ {xx}) /;
 	FreeQ2[{xx}, {LorentzIndex, ExplicitLorentzIndex, CartesianIndex,
-		Momentum, CartesianMomentum, OPEDelta, RowBox, Pattern, Blank}] && (Union[{xx}]=!={1});
+		Momentum, CartesianMomentum, RowBox, Pattern, Blank}] && (Union[{xx}]=!={1});
 
 LeftRightPartialD2[(1)..] = 1;
 
-LeftRightPartialD2[c:OPEDelta..] :=
-	LeftRightPartialD2 @@ (Momentum /@ {c});
 
 LeftRightPartialD2[x_, y__]/; MatchQ[{x,y},{(__LorentzIndex | __ExplicitLorentzIndex | __CartesianIndex | __Momentum | __CartesianMomentum)}] :=
 	DOT @@ Map[LeftRightPartialD2, {x, y}];
-
-
-LeftRightPartialD2[Momentum[OPEDelta]^n_Integer?Positive] :=
-	DOT @@ Map[LeftRightPartialD2, Table[Momentum[OPEDelta],{n}]];
 
 Li4 =
 	PolyLog[4,#]&;
@@ -2317,10 +2290,6 @@ Momentum[Momentum[x_, dim1_:4], dim2_:4] :=
 
 Momentum[LightConePerpendicularComponent[p_,rest__], dim___]:=
 	LightConePerpendicularComponent[Momentum[p, dim],rest];
-
-
-OPE /:
-	OPE^_Integer?Positive := 0;
 
 Pair[0,_] :=
 	0;
@@ -2480,8 +2449,7 @@ Pair[LightConePerpendicularComponent[x_, Momentum[n_,dim___], Momentum[nb_,dim__
 FCPartialD[(1)..] =
 	1;
 
-FCPartialD[c:OPEDelta..] :=
-	FCPartialD @@ (Momentum /@ {c});
+
 
 FCPartialD[x_, y__]/; MatchQ[{x,y},{(__LorentzIndex | __ExplicitLorentzIndex | __CartesianIndex | __Momentum | __CartesianMomentum)}] :=
 	DOT @@ Map[FCPartialD, {x, y}];
@@ -2520,9 +2488,6 @@ PropagatorDenominator[a_ /; FCPatternFreeQ[{a}]] :=
 
 PD = PropagatorDenominator;
 
-lori[OPEDelta] :=
-	Momentum[OPEDelta];
-
 lori[a_SUNIndex] :=
 	a;
 
@@ -2540,7 +2505,7 @@ QuantumField[f1_QuantumField] :=
 
 RightNablaD[x__] :=
 	RightNablaD @@ (CartesianIndex /@ {x}) /;FreeQ2[{x},
-	{LorentzIndex, ExplicitLorentzIndex, CartesianIndex, Momentum, CartesianMomentum, OPEDelta, RowBox,
+	{LorentzIndex, ExplicitLorentzIndex, CartesianIndex, Momentum, CartesianMomentum, RowBox,
 	Pattern, Blank}] && (Union[{x}]=!={1});
 
 
@@ -2549,14 +2514,12 @@ RightNablaD[x_, y__]/; MatchQ[{x,y},{(__ExplicitLorentzIndex | __CartesianIndex 
 
 RightPartialD[x__] :=
 	RightPartialD @@ (LorentzIndex /@ {x}) /;FreeQ2[{x},
-	{LorentzIndex, ExplicitLorentzIndex, CartesianIndex, Momentum, CartesianMomentum, OPEDelta, RowBox,
+	{LorentzIndex, ExplicitLorentzIndex, CartesianIndex, Momentum, CartesianMomentum, RowBox,
 	Pattern, Blank}] && (Union[{x}]=!={1});
 
 RightPartialD[(1)..] =
 	1;
 
-RightPartialD[c:OPEDelta..] :=
-	RightPartialD @@ (Momentum /@ {c});
 
 RightPartialD[r1__, {i_, x_} ,r2__]:=
 	DOT[RightPartialD[r1], RightPartialD[{i, x}], RightPartialD[r2]]/;

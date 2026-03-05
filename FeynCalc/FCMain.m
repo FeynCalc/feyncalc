@@ -241,8 +241,6 @@ $ScalarProducts::usage =
 "$ScalarProducts contains a list of all vector pairs for which a scalar product
 value has been defined.";
 
-$OPEWard::usage =
-"$OPEWard is experimental.";
 
 $RenameFeynCalcObjects::usage =
 "$RenameFeynCalcObjects specifies a list of replacement rules that allow to
@@ -374,7 +372,7 @@ dimensions. Following schemes are supported:
 - \"None\" - This is the default value. The anticommutator relation is not
 applied to $D-1$ dimensional Pauli matrices.
 
-- \"Naive\" - Naively apply the commutator relation in $D-1$-dimensions, i.e. 
+- \"Naive\" - Naively apply the commutator relation in $D-1$-dimensions, i.e.
 $\{\\sigma^i, \\sigma^j \} = 2 i \\varepsilon^{ijk} \\sigma^k$. The Levi-Civita
 tensor lives in $D-1$-dimensions, so that a contraction of two such tensors
 which have all indices in common yields $(D-3) (D-2) (D-1)$.";
@@ -541,18 +539,6 @@ $Multiplications /:
 		val
 		);
 
-$OPEWard /:
-	Set[$OPEWard , val_] :=
-		(
-		If[	$ParallelizeFeynCalc && ($KernelID===0),
-			With[{xxx=val},	ParallelEvaluate[OwnValues[$OPEWard] = {HoldPattern[$OPEWard] :> xxx};,DistributedContexts -> None]];
-		];
-
-		With[{xxx=val},	OwnValues[$OPEWard] = {HoldPattern[$OPEWard] :> xxx}];
-
-		val
-		);
-
 $NonComm /:
 	Set[$NonComm , val_] :=
 		(
@@ -641,7 +627,7 @@ $LimitTo4							= False;
 $LimitTo4IRUnsafe					= False;
 $FCMemoryAvailable					= Floor[$SystemMemory/10^6/4];
 $Multiplications					= {Times, DOT};
-$OPEWard							= False;
+
 
 
 $ParallelizeFeynCalc/:

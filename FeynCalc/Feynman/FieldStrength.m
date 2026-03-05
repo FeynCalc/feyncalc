@@ -45,32 +45,6 @@ Options[FieldStrength] = {
 	QuantumField -> GaugeField
 };
 
-FieldStrength[mu___, OPEDelta, nu___] :=
-	FieldStrength[mu, Momentum[OPEDelta], nu];
-
-FieldStrength[mu_, nu_, a_, {aA_, b_, c_}, g_ /; Head[g] =!= Rule, OptionsPattern[]] :=
-	(QuantumField[FCPartialD[LorentzIndex[mu]],aA, LorentzIndex[nu], SUNIndex[a]] -
-	QuantumField[FCPartialD[LorentzIndex[nu]],aA,    LorentzIndex[mu], SUNIndex[a]] +
-	g SUNF[a, b, c] DOT[QuantumField[aA, LorentzIndex[mu], SUNIndex[b]],
-	QuantumField[aA, LorentzIndex[nu], SUNIndex[c]]]) /;
-	FreeQ2[{mu,nu}, {Momentum, OPEDelta}] && OptionValue[Explicit];
-
-FieldStrength[mu_, Momentum[OPEDelta], a_, {aA_, b_, c_}, g_ /; Head[g] =!= Rule, OptionsPattern[]] :=
-	(QuantumField[FCPartialD[LorentzIndex[mu]], aA, Momentum[OPEDelta], SUNIndex[a]] -
-	QuantumField[FCPartialD[Momentum[OPEDelta]],aA, LorentzIndex[mu], SUNIndex[a]] +
-	g SUNF[a, b, c] DOT[QuantumField[aA, LorentzIndex[mu], SUNIndex[b]],
-	QuantumField[aA, Momentum[OPEDelta], SUNIndex[c]]]) /;
-	FreeQ2[{mu}, {Momentum, OPEDelta}] && OptionValue[Explicit];
-
-
-FieldStrength[Momentum[OPEDelta], nu_, a_, {aA_, b_, c_}, g_ /; Head[g] =!= Rule, OptionsPattern[]] :=
-	(QuantumField[FCPartialD[Momentum[OPEDelta]], aA, LorentzIndex[nu], SUNIndex[a]] -
-	QuantumField[FCPartialD[LorentzIndex[nu]],aA, Momentum[OPEDelta], SUNIndex[a]] +
-	g SUNF[a, b, c] DOT[QuantumField[aA, Momentum[OPEDelta], SUNIndex[b]],
-	QuantumField[aA, LorentzIndex[nu], SUNIndex[c]]]) /;
-	FreeQ2[{nu}, {Momentum, OPEDelta}] && OptionValue[Explicit];
-
-
 FieldStrength[mu_, nu_, OptionsPattern[]] :=
 	(QuantumField[FCPartialD[LorentzIndex[mu]], OptionValue[QuantumField],
 	LorentzIndex[nu]] -    QuantumField[FCPartialD[LorentzIndex[nu]], OptionValue[QuantumField],

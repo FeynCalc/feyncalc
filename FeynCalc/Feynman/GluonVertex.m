@@ -20,7 +20,7 @@ GV::usage =
 
 GluonVertex::usage =
 "GluonVertex[{p, mu, a}, {q, nu, b}, {k, la, c}] or GluonVertex[p, mu, a, q,
-nu, b, k, la, c] yields the 3-gluon vertex.    
+nu, b, k, la, c] yields the 3-gluon vertex.
 
 GluonVertex[{p, mu}, {q, nu}, {k, la}] yields the 3-gluon vertex without color
 structure and the coupling constant.
@@ -46,8 +46,7 @@ Begin["`GluonVertex`Private`"]
 Options[GluonVertex] = {
 	CouplingConstant -> SMP["g_s"],
 	Dimension -> D,
-	Explicit -> False,
-	OPE -> False
+	Explicit -> False
 };
 
 GV = GluonVertex;
@@ -70,18 +69,13 @@ GluonVertex[x1_,x2_,x3_,x4_,x5_,x6_,x7_,x8_, x9_, y___Rule] :=
 	FreeQ2[Union[Map[Head, {x1,x2,x3,x4,x5,x6,x7,x8,x9}]], {Integer,Rule,RuleDelayed}];
 
 GluonVertex[{pi_, mui_, ai_}, {qi_, nui_, bi_}, {ki_, lai_, ci_}, opt:OptionsPattern[]] :=
-	Block[ {gauge, dim, p, q, k, mu, nu, la, a, b, c, gl3v, ope, expl},
+	Block[ {gauge, dim, p, q, k, mu, nu, la, a, b, c, gl3v, expl},
 		dim   = OptionValue[Dimension];
-		ope   = OptionValue[OPE];
 		expl  = OptionValue[Explicit];
 		{a,b,c} = Map[SUNIndex[#]&, {ai,bi,ci}];
 		{mu,nu,la} = Map[LorentzIndex[#, dim]&, {mui,nui,lai} /. ExplicitLorentzIndex[0]->0] // lorfix;
 		{p,q,k}    = Map[Momentum[#, dim]&, {pi,qi,ki}]//momfix;
-		gl3v = SUNF[a,b,c] Apply[GluonVertex, Join[{ {p,mu}, {q,nu}, {k,la} },
-		Select[{opt}, FreeQ[#, OPE]&]]];
-		If[ ope,
-			gl3v = gl3v + OPE Twist2GluonOperator[{pi, mui, ai}, {qi, nui, bi}, {ki, lai, ci}]
-		];
+		gl3v = SUNF[a,b,c] Apply[GluonVertex, Join[{ {p,mu}, {q,nu}, {k,la} }, {opt}]];
 		gl3v
 	];
 
@@ -105,20 +99,18 @@ GluonVertex[_,x1_,x2_,_, x3_,x4_,_, x5_,x6_,_, x7_,x8_,    opts:OptionsPattern[]
 	GluonVertex[{x1,x2}, {x3,x4}, {x5,x6}, {x7,x8}, opts] /;
 	FreeQ2[Union[Map[Head, {x1,x2,x3,x4,x5,x6,x7,x8}]], {Integer, Rule, RuleDelayed}];
 
-GluonVertex[{p___, mui_, ai_}, {q___, nui_, bi_}, {r___, lai_, ci_}, {s___, sii_, di_}, OptionsPattern[]] :=
-	Block[ {gauge, dim, mu, nu, la, si, a, b, c, d, e, gl4v, ope, coup},
+GluonVertex[{(*p*)___, mui_, ai_}, {(*q*)___, nui_, bi_}, {(*r*)___, lai_, ci_}, {(*s*)___, sii_, di_}, OptionsPattern[]] :=
+	Block[ {gauge, dim, mu, nu, la, si, a, b, c, d, e, gl4v, coup},
 		coup  = OptionValue[CouplingConstant];
 		dim   = OptionValue[Dimension];
-		ope   = OptionValue[OPE];
+
 		{mu,nu,la,si} = Map[LorentzIndex[#, dim]&, {mui,nui,lai,sii}/. ExplicitLorentzIndex[0]->0] // lorfix;
 		{a,b,c,d}    = Map[SUNIndex[#]&, {ai,bi,ci,di}]//momfix;
 		e = SUNIndex[FCGV[ToString[Unique["u"]]]];
 		gl4v = - I coup^2 ( SUNF[a,b,e] SUNF[c,d,e] (Pair[mu,la] Pair[nu,si] - Pair[mu,si] Pair[nu,la]) +
 		SUNF[a,c,e] SUNF[b,d,e] (Pair[mu,nu] Pair[la,si] - Pair[mu,si] Pair[nu,la]) +
 		SUNF[a,d,e] SUNF[b,c,e] (Pair[mu,nu] Pair[la,si] - Pair[mu,la] Pair[nu,si]));
-		If[ ope,
-			gl4v = gl4v + OPE Twist2GluonOperator[{p, mui, ai},    {q, nui, bi}, {r, lai, ci}, {s, sii, di}]
-		];
+
 		gl4v
 	]/; OptionValue[Explicit];
 

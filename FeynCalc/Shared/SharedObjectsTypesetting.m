@@ -1357,13 +1357,10 @@ Momentum /:
 	TraditionalForm   ]:=
 		RowBox[{polarizationRep[b,dim],"(",TBox[a],")"}];
 
-Momentum /:
-	MakeBoxes[ Momentum[ OPEDelta, _:4 ], TraditionalForm]:=
-		TBox[OPEDelta];
 
 Momentum /:
 	MakeBoxes[ Momentum[p:Except[_Subscript | _Superscript | _Plus],dim_:4], TraditionalForm]:=
-		momentumRep[p,dim]/; p=!=OPEDelta;
+		momentumRep[p,dim];
 
 Momentum /:
 	MakeBoxes[Momentum[(p:Subscript|Superscript)[x_,y_], dim_: 4], TraditionalForm] :=
@@ -1424,9 +1421,6 @@ Nf /:
 	MakeBoxes[Nf, TraditionalForm]:=
 		SubscriptBox["N", "f"];
 
-OPE /:
-	MakeBoxes[OPE, TraditionalForm]:=
-		"\[CapitalOmega]";
 
 (*    Typesetting for the metric tensor.    *)
 (* ------------------------------------------------------------------------ *)

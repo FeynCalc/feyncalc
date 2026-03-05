@@ -10,23 +10,6 @@ FreeIndex::usage =
 
 Possible use: DataType[mu, FreeIndex] = True.";
 
-GrassmannParity::usage =
-"GrassmannParity is a data type.
-
-E.g. DataType[F, GrassmannParity] = 1 declares F to be of bosonic type and
-DataType[F, GrassmannParity] = -1 of fermionic one.";
-
-NegativeInteger::usage =
-"NegativeInteger is a data type. E.g. DataType[n, NegativeInteger] can be set
-to True.";
-
-PositiveInteger::usage =
-"PositiveInteger is a data type. E.g. DataType[OPEm, PositiveInteger] gives
-True.";
-
-PositiveNumber::usage =
-"PositiveNumber is a data type. E.g. DataType[Epsilon, PositiveNumber] = True
-(by default).";
 
 FCTensor::usage =
 "FCTensor is a data type. E.g. DataType[R, FCTensor] = True.";
@@ -43,7 +26,7 @@ This information can be supplied e.g. via DataType[QuarkField,
 ImplicitDiracIndex] = True, where QuarkField is a possible name of the
 relevant field.
 
-The ImplicitDiracIndex property becomes relevant when simplifying 
+The ImplicitDiracIndex property becomes relevant when simplifying
 noncommutative products involving QuantumFields via ExpandPartialD,
 DotSimplify.";
 
@@ -56,7 +39,7 @@ This information can be supplied e.g. via DataType[QuarkFieldChi,
 ImplicitPauliIndex] = True, where QuarkFieldChi is a possible name of the
 relevant field.
 
-The ImplicitDiracIndex property becomes relevant when simplifying 
+The ImplicitDiracIndex property becomes relevant when simplifying
 noncommutative products involving QuantumFields via ExpandPartialD,
 DotSimplify.";
 
@@ -69,7 +52,7 @@ This information can be supplied e.g. via DataType[QuarkField,
 ImplicitSUNFIndex] = True, where QuarkField is a possible name of the relevant
 field.
 
-The ImplicitSUNFIndex property becomes relevant when simplifying 
+The ImplicitSUNFIndex property becomes relevant when simplifying
 noncommutative products involving QuantumFields via ExpandPartialD,
 DotSimplify.";
 
@@ -82,7 +65,7 @@ data-type type.
 The default setting is DataType[__, _] := False.
 
 To assign a certain data-type, do, e.g., DataType[x, PositiveInteger] = True.
-Currently used DataTypes: 
+Currently used DataTypes:
 
 - NonCommutative
 
@@ -130,10 +113,6 @@ Options[DataType] = {
 
 DataType[] = {
 	FreeIndex,
-	GrassmannParity,
-	NegativeInteger,
-	PositiveInteger,
-	PositiveNumber,
 	FCTensor,
 	FCVariable
 };

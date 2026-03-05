@@ -285,30 +285,14 @@ fcovcheck[y_] :=
 	y /. FieldStrength[ab__] :> FieldStrength[ab, Explicit -> True]/. CovariantD[ab__] :> CovariantD[ab, Explicit -> True] /;
 	Length[{ab}] =!= 2 || Or@@((Head[#]===List)&/@{ab});
 
-opesumplus2[y_,b__] :=
-	If[ Head[y]===Plus,
-		Map[OPESum[#,b]&, y],
-		OPESum[y,b]
-	];
-opesumplus[a_,b__] :=
-	opesumplus2[Expand[a],b];
-
 qfe[dot_, x_] :=
-	Block[{tmp,aux,ru},
+	Block[{tmp,aux},
 
 		FCPrint[4,"ExpandPartialD: qfe: Entering with: ", {dot,x}, FCDoControl->epdVerbose];
 
 		(*The replacement below commented out by F.Orellana, 12/3/2005.
 		It breaks the procedure of applying the expansion to all
 		products in $Multiplications (see above). What is it good for?*)
-		ru = {
-			FCPartialD[Momentum[OPEDelta]]^ (mm_ (*/; Head[mm]=!=Integer*)):>
-				FCPartialD[Momentum[OPEDelta]^mm],
-			LeftPartialD[Momentum[OPEDelta]]^ (mm_ (*/; Head[mm]=!=Integer*)):>
-				LeftPartialD[Momentum[OPEDelta]^mm],
-			RightPartialD[Momentum[OPEDelta]]^ (mm_ (*/; Head[mm]=!=Integer*)):>
-				RightPartialD[Momentum[OPEDelta]^mm]
-		};
 
 		aux = fcovcheck[x(*/.Times->dot*)];
 		FCPrint[4,"ExpandPartialD: qfe: After fcovcheck: ", aux, FCDoControl->epdVerbose];
@@ -340,24 +324,17 @@ qfe[dot_, x_] :=
 		aux = aux /. qf5 -> dot /. QuantumField -> quantumFieldSimplify;
 		FCPrint[4,"ExpandPartialD: qfe: After quantumFieldSimplify: ", aux, FCDoControl->epdVerbose];
 
-		aux = aux /. quantumFieldSimplify -> QuantumField /. OPESum -> opesumplus;
+		aux = aux /. quantumFieldSimplify -> QuantumField;
 		FCPrint[4,"ExpandPartialD: qfe: After quantumFieldSimplify: ", aux, FCDoControl->epdVerbose];
 
 		tmp = DotSimplify[aux, FCI->True , SortBy->optSortBy];
 		FCPrint[4,"ExpandPartialD: qfe: After DotSimplify: ", aux, FCDoControl->epdVerbose];
 
-		(*tmp = DotSimplify[
-		DotSimplify[ExplicitPartialD[fcovcheck[x(*/.Times->dot*)]] /. ru
-		, FCI->True] /. dot -> qf1 /. qf1 -> qf2 /. qf2 -> qf1 /. qf1 -> qf3 /. qf3 -> qf5 /. qf5 -> dot /. QuantumField ->
-		quantumFieldSimplify /. quantumFieldSimplify -> QuantumField /. OPESum -> opesumplus, FCI->True];*)
 		tmp
 	];
 (* linearity *)
 qf1[1,b___] :=
 	qf1[b];
-
-qf1[a__, OPESum[b_, c__], d___] :=
-	OPESum[qf1[a, b, d], c];
 
 qf1[a___, b_Plus, c___] :=
 	Expand[Map[qf1[a, #, c]&, b]];
@@ -391,15 +368,6 @@ qf2[a___, (b:QuantumField[___FCPartialD,fName_,___]), n_SUNT, c___] :=
 
 qf3[f1_qf3] :=
 	f1;
-
-qf3[a___, FCPartialD[Momentum[OPEDelta]^m_], FCPartialD[Momentum[OPEDelta]^n_], b___] :=
-	qf3[a, FCPartialD[Momentum[OPEDelta]^(m+n)], b];
-
-qf3[a___, LeftPartialD[Momentum[OPEDelta]^m_], LeftPartialD[Momentum[OPEDelta]^n_], b___] :=
-	qf3[a, LeftPartialD[Momentum[OPEDelta]^(m+n)], b];
-
-qf3[a___, RightPartialD[Momentum[OPEDelta]^m_], RightPartialD[Momentum[OPEDelta]^n_], b___] :=
-	qf3[a, RightPartialD[Momentum[OPEDelta]^(m+n)], b];
 
 (* Keine Experimente!!!! (...) *)
 qf3[a___, n_. f1_QuantumField f2_QuantumField, b___] :=
@@ -453,66 +421,6 @@ tallySort[ex_List]:=
 		] &
 	];
 
-(* OPEDelta stuff *)
-
-$OPEKCOUNT = 0;
-
-qf5st[a___, RightPartialD[Momentum[OPEDelta]^m_], RightPartialD[Momentum[OPEDelta]^n_], b___] :=
-	qf5st[a, RightPartialD[Momentum[OPEDelta]^(m+n)], b];
-
-qf5st[a___, LeftPartialD[Momentum[OPEDelta]^m_], LeftPartialD[Momentum[OPEDelta]^n_], b___] :=
-	qf5st[a, LeftPartialD[Momentum[OPEDelta]^(m+n)], b];
-
-qf5st[a___, FCPartialD[Momentum[OPEDelta]^m_], FCPartialD[Momentum[OPEDelta]^n_], b___] :=
-	qf5st[a, FCPartialD[Momentum[OPEDelta]^(m+n)], b];
-
-(* start from the right*) (* who wants to do this in FORM or Maple ??? *)
-qf5[c_/;Head[c] =!= LeftPartialD, b___, QuantumField[f1__], LeftPartialD[Momentum[OPEDelta]^m_], a___] :=
-	(
-	(opk = OPEk[$OPEKCOUNT++];
-	OPESum[Binomial[m, opk] qf5st[c, b, LeftPartialD[Momentum[OPEDelta]^(m-opk)], quantumFieldSimplify[FCPartialD[Momentum[OPEDelta]^opk], f1], a], {opk, 0, m}]
-	)/. quantumFieldSimplify -> QuantumField /. qf5st -> qf5
-	);
-
-(* start from the left *)
-
-qf5[a___,RightPartialD[Momentum[OPEDelta]^m_], QuantumField[f1__], b___,c_/;FreeQ[{FCPartialD,RightPartialD},Head[c]]] :=
-	(
-	(opk = OPEk[$OPEKCOUNT++];
-	OPESum[Binomial[m, opk] qf5st[a, quantumFieldSimplify[FCPartialD[Momentum[OPEDelta]^opk], f1],
-		RightPartialD[Momentum[OPEDelta]^(m-opk)], b, c], {opk, 0, m} ]
-	)/. quantumFieldSimplify -> QuantumField /. qf5st -> qf5
-	);
-
-quantumFieldSimplify[quantumFieldSimplify[a__], b___, c_ /; Head[c] =!= FCPartialD] :=
-	quanfDot[quantumFieldSimplify[a], qf5[b,c]];
-
-quantumFieldSimplify[f1___, FCPartialD[Momentum[OPEDelta]^m_], FCPartialD[Momentum[OPEDelta]], f2___] :=
-	quantumFieldSimplify[f1, FCPartialD[Momentum[OPEDelta]^(m+1)], f2];
-
-quantumFieldSimplify[f1___, LeftPartialD[Momentum[OPEDelta]^m_], LeftPartialD[Momentum[OPEDelta]], f2___] :=
-	quantumFieldSimplify[f1, LeftPartialD[Momentum[OPEDelta]^(m+1)], f2];
-
-quantumFieldSimplify[f1___, RightPartialD[Momentum[OPEDelta]^m_], RightPartialD[Momentum[OPEDelta]], f2___] :=
-	quantumFieldSimplify[f1, RightPartialD[Momentum[OPEDelta]^(m+1)], f2];
-
-quantumFieldSimplify[f1___, FCPartialD[Momentum[OPEDelta]], FCPartialD[Momentum[OPEDelta]^m_], f2___] :=
-	quantumFieldSimplify[f1, FCPartialD[Momentum[OPEDelta]^(m+1)], f2];
-
-quantumFieldSimplify[f1___, RightPartialD[Momentum[OPEDelta]], RightPartialD[Momentum[OPEDelta]^m_], f2___] :=
-	quantumFieldSimplify[f1, RightPartialD[Momentum[OPEDelta]^(m+1)], f2];
-
-quantumFieldSimplify[f1___, LeftPartialD[Momentum[OPEDelta]], LeftPartialD[Momentum[OPEDelta]^m_], f2___] :=
-	quantumFieldSimplify[f1, LeftPartialD[Momentum[OPEDelta]^(m+1)], f2];
-
-quantumFieldSimplify[f1___, FCPartialD[Momentum[OPEDelta]^m_], FCPartialD[Momentum[OPEDelta]^n_], f2___] :=
-	quantumFieldSimplify[f1, FCPartialD[Momentum[OPEDelta]^(m+n)], f2];
-
-quantumFieldSimplify[f1___, LeftPartialD[Momentum[OPEDelta]^m_], LeftPartialD[Momentum[OPEDelta]^n_], f2___] :=
-	quantumFieldSimplify[f1, LeftPartialD[Momentum[OPEDelta]^(m+n)], f2];
-
-quantumFieldSimplify[f1___, RightPartialD[Momentum[OPEDelta]^m_], RightPartialD[Momentum[OPEDelta]^n_], f2___] :=
-	quantumFieldSimplify[f1, RightPartialD[Momentum[OPEDelta]^(m+n)], f2];
 
 FCPrint[1,"ExpandPartialD.m loaded."];
 End[]

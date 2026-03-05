@@ -77,8 +77,8 @@ FeynCalcExternal[x_, OptionsPattern[]] :=
 			SUNTF 				:> suntfback,
 			SUNDeltaContract 	:> sundeltanoi,
 			SUNFDeltaContract 	:> sunfdeltanoi,
-			ScalarProduct 		:> scalarmul,
-			Power2 :> Power} /. LorentzIndex -> iDent /. SUNIndex -> iDent /. SUNFIndex -> iDent;
+			ScalarProduct 		:> scalarmul
+		} /. LorentzIndex -> iDent /. SUNIndex -> iDent /. SUNFIndex -> iDent;
 
 		If[	optFinalSubstitutions=!={},
 			ru = Join[ru, Flatten[optFinalSubstitutions]];
@@ -106,8 +106,7 @@ FeynCalcExternal[x_, OptionsPattern[]] :=
 				SUNDeltaContract,
 				SUNFDeltaContract,
 				ScalarProduct,
-				TemporalPair,
-				Power2
+				TemporalPair
 			} /. sequence -> Sequence];
 
 		rv[x2_] := x2 /. Dispatch@Map[(# ->  ((momentumCombine[#])/.ru ) )&, vv[x2]];
@@ -221,18 +220,7 @@ pairback[LorentzIndex[a_, D-4], Momentum[b_, D-4]] :=
 pairback[LorentzIndex[a_,d_], Momentum[b_,d_]] :=
 	Pair[LorentzIndex[a,d], Momentum[b,d]] /;(d=!=D && d=!= D-4);
 
-pairback[Momentum[OPEDelta], Momentum[b_]] :=
-	SO[b];
-pairback[Momentum[b_], Momentum[OPEDelta] ] :=
-	SO[b];
-pairback[Momentum[OPEDelta, D], Momentum[b_, D]] :=
-	SOD[b];
-pairback[Momentum[OPEDelta, d_], Momentum[b_, d_]] /;d=!=D :=
-	Pair[Momentum[OPEDelta,d], Momentum[b,d]];
-pairback[Momentum[b_, D], Momentum[OPEDelta, D]] :=
-	SOD[b];
-pairback[Momentum[b_, d_], Momentum[OPEDelta, d_]] /;d=!=D :=
-	Pair[Momentum[OPEDelta,d], Momentum[b,d]];
+
 
 pairback[Momentum[a_], Momentum[b_]] :=
 	SP[a, b];

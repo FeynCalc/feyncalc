@@ -89,10 +89,6 @@ DiracTraceEvaluate::usage =
 functions. If set to False, Dirac traces remain unevaluated. For more details,
 see the documentation for DiracTrace and DiracSimplify.";
 
-Divideout::usage =
-"Divideout is an option for OPEInt and OPEIntegrate. The setting is divided out
-at the end.";
-
 DropScaleless::usage =
 "DropScaleless is an option for FCLoopIsolate, ApartFF, FourDivergence and
 other functions. When set to True, all loop integrals that do not contain a
@@ -103,10 +99,6 @@ EpsExpand::usage =
 "EpsExpand is an option for EpsEvaluate and other functions that use
 EpsEvaluate internally. When set to False, sums of momenta in the Eps tensor
 will not be rewritten as a sum of Eps tensors.";
-
-EpsilonOrder::usage =
-"EpsilonOrder is an option of OPEIntegrateDelta and other functions. The
-setting determines the order n (Epsilon^n) which should be kept.";
 
 EtaSign::usage =
 "EtaSign is an option for SFAD, GFAD, CFAD and other objects representing
@@ -138,9 +130,6 @@ this function will be used.";
 ExtraFactor::usage=
 "ExtraFactor is an option for FermionSpinSum. The setting ExtraFactor -> fa
 multiplies the whole amplitude with the factor fa before squaring.";
-
-Factorout::usage =
-"Factorout is an option for OPEInt and OPEIntegrate.";
 
 FCJoinDOTs::usage =
 "FCJoinDOTs is an option for DotSimplify and other functions that use
@@ -417,9 +406,6 @@ WriteOutPaVe::usage=
 the results of all Passarino-Veltman PaVe's are stored in files with names
 generated from this string and the arguments of PaVe.";
 
-ZeroMomentumInsertion::usage=
-"ZeroMomentumInsertion is an option of FeynRule, Twist2GluonOperator and
-Twist2QuarkOperator.";
 
 (* ------------------------------------------------------------------------ *)
 

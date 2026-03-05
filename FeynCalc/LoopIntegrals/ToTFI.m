@@ -256,7 +256,6 @@ saveToTFI[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts:OptionsPattern[]] :=
 		dim = Dimension /. {opts} /. Options[ToTFI];
 		met = Method /. {opts} /. Options[ToTFI];
 		pp  = FeynCalcExternal[Pair[Momentum[p,dim],Momentum[p,dim]]];
-		deltap = FeynCalcExternal[Pair[Momentum[p,dim],Momentum[OPEDelta,dim]]];
 		t0 = If[ FreeQ2[z, {FeynAmpDenominator,FAD}],
 				result = z,
 				If[ met =!= Automatic,
@@ -318,14 +317,11 @@ saveToTFI[z_/;Head[z]=!=Plus, q1_, q2_, p_, opts:OptionsPattern[]] :=
 						];
 					t1 = t0 /. FeynAmpDenominator[a__] :> Apply[Times, {a}] /. PropagatorDenominator -> prtoci /.
 								{
-								Pair[Momentum[OPEDelta,___], Momentum[q1, ___]] :> dq1,
-								Pair[Momentum[OPEDelta,___], Momentum[q2, ___]] :> dq2,
 								Pair[Momentum[p,___], Momentum[q1, ___]] :> pq1,
 								Pair[Momentum[p,___], Momentum[q2, ___]] :> pq2,
 								Pair[Momentum[q1,___], Momentum[q1, ___]] :> q1q1,
 								Pair[Momentum[q1,___], Momentum[q2, ___]] :> q1q2,
-								Pair[Momentum[q2,___], Momentum[q2, ___]] :> q2q2,
-								Pair[Momentum[OPEDelta,___], Momentum[p, ___]] :> deltap };
+								Pair[Momentum[q2,___], Momentum[q2, ___]] :> q2q2};
 					If[ FreeQ[t1, c1],
 						t1 = t1 c1[FakeMass]
 					];

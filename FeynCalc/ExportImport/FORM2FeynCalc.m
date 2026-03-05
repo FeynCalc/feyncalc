@@ -16,7 +16,7 @@ FORM2FeynCalc::usage =
 "FORM2FeynCalc[exp] translates the FORM expression exp into FeynCalc notation.
 
 FORM2FeynCalc[file]  translates the FORM expressions in file into FeynCalc
-notation.   
+notation.
 
 FORM2FeynCalc[file, x1, x2, ...] reads in a file in FORM-format and translates
 the assignments for the variables $a, b, \\ldots$ into FeynCalc syntax.
@@ -53,33 +53,7 @@ Dot -> Dot,
 HoldForm -> True,
 LorentzIndex -> {FCGV["mu"], FCGV["nu"], FCGV["al"], FCGV["be"]},
 Set -> False,
-Replace -> {   (*     "d_" -> "SUNDelta",*)
-(*
-							"d_(a1,a2)" -> "SUNDelta[a1,a2]",
-							"[d0^m]"    -> "SO[p]^OPEm",
-							"Li2" -> "(PolyLog[2,#]&)",
-							"li2" -> "(PolyLog[2,#]&)",
-							"Li3" -> "(PolyLog[3,#]&)",
-							"Li4" -> "(PolyLog[4,#]&)",
-							"li3" -> "(PolyLog[3,#]&)",
-							"S12(1 - y)" -> "Nielsen[1,2,1-y]",
-							"[d_(1-x)]"  -> "DeltaFunction[1-x]",
-							"[(-)^m]"    -> "(-1)^OPEm",
-							"[1-x]^-1"  -> "1/(1-x)",
-							"[1-x]"  -> "(1-x)",
-							"[1+x]"  -> "(1+x)",
-							"zeta2"    -> "Zeta2",
-							"zeta3"    -> "Zeta[3]",
-							"[s12(1-x)]" -> "Nielsen[1,2, 1-x]",
-							"s12(1-x)" -> "Nielsen[1,2, 1-x]",
-							"[li2(1-x)]" -> "PolyLog[2,1-x]",
-							"[li3(1-x)]" -> "PolyLog[3,1-x]",
-							"[li2(-x)]"  -> "PolyLog[2,-x]",
-							"[log(x)]"   -> "Log[x]",
-							"[log(1+x)]" -> "Log[1+x]",
-							"[log(1-x)]" -> "Log[1-x]"
-*)
-					},
+Replace -> {},
 Vectors -> Automatic
 };
 

@@ -1070,17 +1070,11 @@ oldFeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern
 			Map[fadallq1q2[#, zq1,zq2]&,zexp] /. fadallq1q2 -> fadalll;
 
 		fadalll[zexp_/;Head[zexp] =!= Plus, zq1_, zq2_ ] :=
-			If[ !FreeQ[zexp, OPESum],
-				(* to improve speed *)
-				zexp /. FeynAmpDenominator -> amucheck[zq1,zq2] /.	amucheck ->  nopcheck,
 				(* normal procedure *)
 				translat[ zexp /. FeynAmpDenominator -> amucheck[zq1,zq2] /. amucheck ->  nopcheck,  zq1, zq2] /.
 				FeynAmpDenominator -> feynsimp[{zq1}] /. FeynAmpDenominator -> feynsimp[{zq2}] /.
-				FeynAmpDenominator -> feynord
-			]  /. {
-				((_. + _. Pair[Momentum[zq1,___],Momentum[OPEDelta,___]])^(vv_/; Head[vv] =!= Integer)) *
-				FeynAmpDenominator[pr1___, PD[_. + Momentum[zq1,_:4], _], pr2___	] :> 0 /; FreeQ[{pr1, pr2}, zq1]
-			};
+				FeynAmpDenominator -> feynord;
+
 
 		(*Seems that for some reason we are not allowed to touch those named blanks*)
 		amucheck[k1_, _][PD[_. Momentum[k1_,___] + bb_. ,0].., b___] :=
@@ -1122,8 +1116,8 @@ oldFeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern
 
 			fcInt[_. FeynAmpDenominator[aa__ ]] :> 0 /; (FreeQ[{aa}, PD[_,em_/;em=!=0]] &&
 			((Sort[{q1,q2}] === (Cases2[{aa}//MomentumExpand, Momentum]	/. Momentum[a_, ___] :> a)) ||
-			(Sort[{q1,q2}] === (SelectFree[Cases2[({aa}/.{q1 :> -q1+pe[q1,q2,{aa}]} /.
-			{q2 :> -q2+pe[q1,q2,{aa}]})//MomentumExpand,Momentum],OPEDelta] /. Momentum[a_, ___] :> a)))),
+			(Sort[{q1,q2}] === (Cases2[({aa}/.{q1 :> -q1+pe[q1,q2,{aa}]} /.
+			{q2 :> -q2+pe[q1,q2,{aa}]})//MomentumExpand,Momentum] /. Momentum[a_, ___] :> a)))),
 
 			(*scaleless tadpole*)
 			fcInt[_. FeynAmpDenominator[PD[Momentum[q1,___],0].., aa__]] :> 0 /; FreeQ[{aa},q1],
@@ -1131,8 +1125,8 @@ oldFeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern
 			(*NEW*)
 			fcInt[any_. FeynAmpDenominator[aa__ ] ] :>
 				MomentumExpand[(any FeynAmpDenominator[aa] ) /. {q1 :> -q1+pe[q1,q2,{aa}]} /. {q2 :> -q2+pe[q1,q2,{aa}]}]/;
-				(!FreeQ[{aa}, PD[_,em_/;em=!=0]] && (((Sort[{q1,q2}]) === ((SelectFree[Cases2[({aa}/.{q1 :> (-q1+(pe[q1,q2,{aa}]))}/.
-				{q2 :> -q2+pe[q1,q2,{aa}]})//MomentumExpand,Momentum],OPEDelta] /. Momentum[a_, ___] :> a))))),
+				(!FreeQ[{aa}, PD[_,em_/;em=!=0]] && (((Sort[{q1,q2}]) === ((Cases2[({aa}/.{q1 :> (-q1+(pe[q1,q2,{aa}]))}/.
+				{q2 :> -q2+pe[q1,q2,{aa}]})//MomentumExpand,Momentum] /. Momentum[a_, ___] :> a))))),
 
 			(*01 1999*)
 			fcInt[any_. FeynAmpDenominator[aa___, PD[Momentum[pp_,dim_] + Momentum[q1, dim_] + Momentum[q2,dim_], em_], b___ ] ] :>
@@ -1141,7 +1135,7 @@ oldFeynAmpDenominatorSimplify[ex_, q1_, q2_/;Head[q2]=!=Rule, opt:OptionsPattern
 		};
 
 
-		pot = ot /. Power2->Power;
+		pot = ot;
 		topi[y_ /; FreeQ2[y,{q1,q2,Pattern}]] :=
 			y;
 
@@ -1683,10 +1677,7 @@ trachit[x_, q1_, q2_] :=
 			If[ !FreeQ[nx, Eps],
 				nx = EpsEvaluate[nx]
 			];
-			If[ FreeQ[nx,(_. + _. Pair[Momentum[OPEDelta,___],
-				Momentum[q1,___]]^(hhh_/;Head[hhh] =!= Integer))] && nx =!= {},
-				nx = Sort[FDS[{nx, nx /. {q1 :> q2, q2 :> q1}}]][[1]]
-			];
+			nx = Sort[FDS[{nx, nx /. {q1 :> q2, q2 :> q1}}]][[1]];
 			nx
 		]
 	];

@@ -238,8 +238,7 @@ feynCalcForm[x_,opt___Rule]:=
 					DiracGamma[6] /.
 				ChiralityProjector[-1] :>
 					DiracGamma[7] /.
-				OPEDelta :>
-					"De"/.
+
 				DiracMatrix[6] :> DiracGamma[6] /.
 				{
 					DiracGamma[LorentzIndex[v_]] :>
@@ -317,13 +316,7 @@ feynCalcForm[x_,opt___Rule]:=
 				{
 				SUNT[a_] :>  "T"[a],
 				SUNT[a_,b__] :> (fcdot2 @@ Map["T"[#]&,{a, b}])
-				} /.
-				OPEm :> "m" /.
-				OPEi :> "i" /.
-				OPEj :> "j" /.
-				OPEl :> "l" /.
-				OPEk :> "k" /.
-				{
+				} /. {
 					QuantumField[a_] :>
 						a,
 					QuantumField[a_, lori___Momentum, suni___SUNIndex][p___] :>
@@ -358,8 +351,6 @@ feynCalcForm[x_,opt___Rule]:=
 					plusdi[v] /.
 				SUNIndex[i_] :>
 					sunident[i]/.
-				OPESum :>
-					"OPESum"/.
 				DeltaFunction :>
 					"delta" /.
 				Twist2GluonOperator:>

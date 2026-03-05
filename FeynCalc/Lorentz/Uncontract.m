@@ -301,7 +301,7 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 						Message[Uncontract::failmsg,"Unknown Pair input"];
 						Abort[]
 			];
-			selectedObjects = SelectFree[selectedObjects, OPEDelta];
+
 			If[ !OptionValue[Polarization],
 				selectedObjects = SelectFree[selectedObjects, Polarization];
 			];
@@ -337,7 +337,7 @@ Uncontract[ex_, q:Except[_?OptionQ], OptionsPattern[]] :=
 						Message[Uncontract::failmsg,"Unknown CartesianPair input"];
 						Abort[]
 			];
-			selectedObjects = SelectFree[selectedObjects, OPEDelta];
+
 			If[ !OptionValue[Polarization],
 				selectedObjects = SelectFree[selectedObjects, Polarization];
 			];
