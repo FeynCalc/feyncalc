@@ -72,7 +72,7 @@ FCCanonicalizeDummyIndices[%-%%]//Factor
 -(1/4) FieldStrength[\[Alpha],\[Beta],i] . FieldStrength[\[Alpha],\[Beta],i]
 
 FeynRule[%,{QuantumField[GaugeField,{\[Mu]},{a}][p],QuantumField[GaugeField,{\[Nu]},{b}][q],
-QuantumField[GaugeField,{\[Rho]},{c}][r]}]
+QuantumField[GaugeField,{\[Rho]},{c}][r]},Collecting->{SUNF}]
 
 GluonVertex[{p,\[Mu],a},{q,\[Nu],b},{r,\[Rho],c},Dimension->4,Explicit->True]
 
@@ -91,7 +91,7 @@ heftInt=-(1/4) CH FieldStrength[mu,nu,a] . FieldStrength[mu,nu,a] . QuantumField
 
 
 FeynRule[heftInt,{QuantumField[GaugeField,{i},{a}][p1],QuantumField[GaugeField,
-{j},{b}][p2],QuantumField[H][p3]}]
+{j},{b}][p2],QuantumField[H][p3]},Collecting->{SUNDelta}]
 
 
 (* ::Text:: *)
@@ -99,7 +99,7 @@ FeynRule[heftInt,{QuantumField[GaugeField,{i},{a}][p1],QuantumField[GaugeField,
 
 
 FeynRule[heftInt,{QuantumField[GaugeField,{i},{a}][p1],QuantumField[GaugeField,
-{j},{b}][p2],QuantumField[GaugeField,{k},{c}][p3],QuantumField[H][p4]}]//Simplify
+{j},{b}][p2],QuantumField[GaugeField,{k},{c}][p3],QuantumField[H][p4]},Collecting->{SUNF}]
 
 
 (* ::Text:: *)
@@ -108,6 +108,12 @@ FeynRule[heftInt,{QuantumField[GaugeField,{i},{a}][p1],QuantumField[GaugeField,
 
 FeynRule[heftInt,{QuantumField[GaugeField,{i},{a}][p1],QuantumField[GaugeField,{j},
 {b}][p2],QuantumField[GaugeField,{k},{c}][p3],
-QuantumField[GaugeField,{l},{d}][p4],QuantumField[H][p5]}]//
-FCCanonicalizeDummyIndices[#,SUNIndexNames->{e}]&//Collect2[#,SUNF,
-FCFactorOut-> I CH SMP["g_s"]^2]&
+QuantumField[GaugeField,{l},{d}][p4],QuantumField[H][p5]},
+SUNIndexNames->{e},Collecting->{SUNF},FCFactorOut-> I CH SMP["g_s"]^2,FCVerbose->0]
+
+
+FeynRule[QuantumField[FCPartialD[LorentzIndex[b]], GaugeField,
+	LorentzIndex[a], SUNIndex[aa]] . QuantumField[
+	FCPartialD[LorentzIndex[b]], GaugeField, LorentzIndex[a],
+	SUNIndex[aa]], {QuantumField[GaugeField, {mu1}, {i1}][p1],
+	QuantumField[GaugeField, {mu2}, {i2}][p2]}]

@@ -28,7 +28,7 @@
 
 
 (* ::Text:: *)
-(*[Overview](Extra/FeynCalc.md), [ToFI](ToFI.md).*)
+(*[Overview](Extra/FeynCalc.md), [ToTFI](ToTFI.md).*)
 
 
 (* ::Subsection:: *)

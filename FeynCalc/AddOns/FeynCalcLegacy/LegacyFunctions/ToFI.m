@@ -26,7 +26,7 @@ End[]
 
 Begin["`ToFI`Private`"]
 
-(*TODO ToFI should be generalized *)
+(*ToFI should be generalized *)
 
 ToFI[x_,y_List, z_List] :=
 	tofi[x,y,z] /. {

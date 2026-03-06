@@ -1,0 +1,19 @@
+
+
+(* :Title: Calc.test                    	                                *)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Framework independent unit tests for Calc	                *)
+
+(* ------------------------------------------------------------------------ *)
+
+Tests`NonCommAlgebra`fcstCalc = {
+{"fcstCalc-ID1","Calc[Sqrt[a - 1]] // Simplify[#, Assumptions -> {a > 1}]& ","Sqrt[a - 1]"},
+{"fcstCalc-ID3","Calc[CV[p + r, i] KD[i, j] CV[q - p, j]] // FCE","-CSP[p, p] + CSP[p, q] - CSP[p, r] + CSP[q, r]"}
+};
