@@ -32,12 +32,6 @@ power in formi, write it as {var,pow}.
 To keep the prefactor whose coefficient you extracted you need to set the
 option Prefactor to True.";
 
-Combine::usage=
-"Combine[expr] puts terms in a sum over a common denominator and cancels
-factors in the result. Combine is similar to Together, but accepts the option
-Expanding and works usually better than Together for polynomials involving
-rationals with sums in the denominator.";
-
 Expand2::usage=
 "Expand2[exp, x] expands all sums containing x.
 
@@ -45,6 +39,28 @@ Expand2[exp, {x1, x2, ...}]  expands all sums containing x1, x2, ....";
 
 ExpandAll2::usage=
 "ExpandAll2[exp] is similar to ExpandAll, but much faster on simple structures.";
+
+Factor2::usage =
+"Factor2[poly] factors a polynomial in a standard way.
+
+Factor2 works sometimes better than Factor on polynomials involving rationals
+with sums in the denominator.
+
+Factor2 uses Factor internally and is in general slower than Factor.";
+
+Factor3::usage=
+"Factor3[exp] factors a rational function exp over the field of complex
+numbers.
+
+Factor3 is primarily meant to be used on matrices from differential equations
+and Feynman parametric
+representations of loop integrals. Its main goal is to rewrite all
+denominators such, that they can be integrated in terms of HPLs or GPLs (when
+possible).
+
+To avoid performance bottlenecks, in the case of rational functions only the
+denominator will be factored by default. This can be changed by setting the
+option Numerator to True.";
 
 FactorList2::usage=
 "FactorList2[exp] is similar to FactorList except that it correctly handles
@@ -301,6 +317,11 @@ FRH2::failmsg =
 "Error! FRH2 has encountered a fatal problem and must abort the computation. \n
 The problem reads: `1`";
 
+Factor3::failmsg = "Error! Factor3 has encountered a fatal problem and must \
+abort the computation. The problem reads: `1`";
+
+Factor3::nonfact = "Factor3 failed to factor `1`";
+
 Begin["`Package`"];
 End[]
 
@@ -318,8 +339,16 @@ Options[Coefficient2] = {
 	Prefactor -> False
 };
 
-Options[Combine] = {
-	Expanding -> False
+Options[Factor2] = {
+};
+
+
+Options[Factor3] = {
+	Check 		-> True,
+	FCVerbose 	-> False,
+	Numerator	-> False,
+	RandomPrime	-> 10^8,
+	Variables 	-> Automatic
 };
 
 Options[FactorList2] = {
@@ -403,32 +432,6 @@ Coefficient2[ex_, form1_, form2_, rest___, opts:OptionsPattern[]] :=
 	Coefficient2[Coefficient2[ex,{form1,1},opts],form2,rest,opts]/;
 		Head[form2]=!=Integer && Head[form1]=!=List;
 
-Combine[x_, OptionsPattern[]] :=
-	Block[{combinet1, combinet2, expanding, num, le},
-		expanding = OptionValue[Expanding];
-		combinet2 = Together[ x /. Plus ->
-		(If[FreeQ[{##}, _^_?Negative] && FreeQ[{##}, Rational],
-				combinet1[##],
-				Plus[##]
-		]&)] /. combinet1 -> Plus;
-		Which[	expanding === All,
-				combinet2 = ExpandNumerator[combinet2 // ExpandDenominator] ,
-				expanding === True,
-				num = Numerator[combinet2];
-				If[Head[num] =!= Plus,
-					combinet2 = Expand[num]/Denominator[combinet2],
-					If[LeafCount[num]<1000,
-							combinet2 = Expand[num]/Denominator[combinet2],
-							le = Length[num];
-							combinet2 = Sum[FCPrint[2,"expanding ", i," out of ",le];
-							Expand[num[[i]]],{i,Length[num]}]/ Denominator[combinet2]
-					]
-				],
-				True,
-				combinet2
-		];
-		combinet2
-	];
 
 Expand2[x_] :=
 	Block[{pow},
@@ -498,6 +501,173 @@ FactorList2[poly_, OptionsPattern[]]:=
 
 		res
 	];
+
+
+
+Factor2[ex_, OptionsPattern[]] :=
+	Block[{mi,m1,mp1,num,den,iI,holdPlus,tmp,factorPre},
+
+
+		factorPre[x_Times]:=
+			Map[factorPre, x];
+
+		factorPre[Power[x_,n_]]:=
+			factorPre[x]^n;
+
+		factorPre[x_]:=
+			Factor[Expand[x]]/; !MemberQ[{Times,Power},Head[x]];
+
+		mi[y_, z__] :=
+			(m1 mp1[y,z] )/; (	If[Head[#] === Complex,
+									False,
+									If[ # < 0,
+										True,
+										False
+									]
+								]& @ NumericalFactor[y]);
+
+		If[FreeQ[ex,Complex],
+			tmp = ex,
+			tmp = ex /. Complex[0,in_] :> iI in
+		];
+
+		tmp = tmp /. Plus -> (If[FreeQ[{##}, _^_?Negative] && FreeQ[{##}, Rational],
+				holdPlus[##],
+				Plus[##]
+		]&);
+
+		tmp = Together[tmp] /. holdPlus -> Plus;
+
+		tmp = factorPre[Numerator[tmp]]/factorPre[Denominator[tmp]];
+
+		{num,den} = {Numerator[tmp],Denominator[tmp]};
+
+		{num,den} = {num,den} /. Plus -> holdPlus //. {
+			fa_. holdPlus[a_, b_]^n_. holdPlus[a_, c_]^n_. :>
+				(fa holdPlus[a^2, -b^2]^n) /; (((b + c) === 0) && IntegerQ[n]),
+			fa_. holdPlus[a_, b_]^n_. holdPlus[c_, b_]^n_. :>
+				(fa holdPlus[b^2, -a^2]^n) /; (((a + c) === 0) && IntegerQ[n])
+		} /. holdPlus -> Plus;
+
+		tmp = num/den;
+
+		tmp = tmp /. Plus -> mi /. mi -> Plus /. m1 -> (-1) /. mp1 -> (-Plus[##]&);
+
+		tmp/.iI->I
+	];
+
+
+Factor3[poly_/;Head[poly] =!= List, opts:OptionsPattern[]] :=
+	Factor3[Numerator[poly], opts]/Factor3[Denominator[poly], opts]/; Denominator[poly] =!= 1 && poly=!=0 && OptionValue[Numerator];
+
+Factor3[poly_/;Head[poly] =!= List, opts:OptionsPattern[]] :=
+	Numerator[poly]/Factor3[Denominator[poly], opts]/; Denominator[poly] =!= 1 && poly=!=0 && !OptionValue[Numerator];
+
+Factor3[ex_List, opts:OptionsPattern[]] :=
+	Factor3[#,opts]& /@ ex;
+
+Factor3[0, OptionsPattern[]]:=
+	0;
+
+Factor3[poly_/;Head[poly] =!= List, OptionsPattern[]] :=
+	Block[{	factors, vars, polyNew, termsList, pref, res, dummy,
+			optVariables, optRandomPrime, varsNum, repRule, allVars,
+			f3Verbose, test},
+
+		If [OptionValue[FCVerbose]===False,
+			f3Verbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				f3Verbose=OptionValue[FCVerbose]
+			];
+		];
+
+		optVariables = OptionValue[Variables];
+		optRandomPrime = OptionValue[RandomPrime];
+
+		If[	TrueQ[optVariables===Automatic],
+			vars = Variables[poly],
+			If[	Head[optVariables]===List,
+				vars = optVariables,
+				Message[Factor3::failmsg, "Incorrection value of the Variables option."];
+				Abort[]
+			]
+		];
+
+		FCPrint[1, "Factor3: Variables: ", vars, FCDoControl->f3Verbose];
+
+		If[	vars==={} || FreeQ2[poly,vars] || !PolynomialQ[poly,vars],
+			(*Nothing to do*)
+			FCPrint[1, "Factor3: Leaving.", FCDoControl->f3Verbose];
+			Return[poly]
+		];
+
+		allVars = Variables2[poly];
+
+		FCPrint[1, "Factor3: All variables: ", allVars, FCDoControl->f3Verbose];
+
+	(*
+		Using the idea from
+		https://mathematica.stackexchange.com/questions/256129/how-to-factor-real-polynomials-over-complex-field/
+	*)
+
+
+		Quiet[factors = Solve[poly == 0, #, Complexes]&/@vars, Solve::svars];
+
+		If[!FreeQ[factors,Root],
+			factors = ToRadicals[factors]
+		];
+
+		FCPrint[1, "Factor3: Factors: ", factors, FCDoControl->f3Verbose];
+
+		If[	factors==={},
+			Message[Factor3::nonfact,ToString[poly,InputForm]];
+			Return[poly](*,
+			factors = First[factors]*)
+		];
+
+		varsNum	= Table[RandomPrime[optRandomPrime],{i,1,Length[vars]}];
+		repRule = Thread[Rule[vars, varsNum]];
+
+		FCPrint[2, "Factor3: First numerical replacement rule: ", repRule, FCDoControl->f3Verbose];
+
+		(*For cases such as (4*(5-2*(4-2*eps))*x-2*eps+2) *)
+		If[	!FreeQ2[Last/@Flatten[factors],vars],
+			Return[poly]
+		];
+
+		res = (Times @@ Flatten[factors /. Rule -> Subtract]);
+
+		FCPrint[2, "Factor3: Raw result: ", res, FCDoControl->f3Verbose];
+
+		pref = (poly/res)/.repRule;
+
+		FCPrint[1, "Factor3: Intermediate prefactor: ", pref, FCDoControl->f3Verbose];
+
+		pref = Simplify[pref];
+
+		res = pref res;
+
+		FCPrint[1, "Factor3: Overall prefactor: ", pref, FCDoControl->f3Verbose];
+		FCPrint[3, "Factor3: Preliminary result: ", res, FCDoControl->f3Verbose];
+
+		varsNum	= Table[RandomPrime[optRandomPrime],{i,1,Length[allVars]}];
+		repRule = Thread[Rule[allVars, varsNum]];
+
+		FCPrint[2, "Factor3: Second numerical replacement rule: ", repRule, FCDoControl->f3Verbose];
+
+
+		If[	OptionValue[Check],
+			test = Simplify[(poly - res) /. repRule];
+			FCPrint[3, "Factor3: Check: ", test, FCDoControl->f3Verbose];
+			If[	test=!=0,
+				Message[Factor3::failmsg, "Something went wrong when factoring the input expression."];
+				Abort[]
+			];
+		];
+
+		res
+
+	]/; Denominator[poly] === 1 && poly=!=0;
 
 
 

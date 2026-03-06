@@ -13,6 +13,5 @@
 
 Tests`Shared`fcstFactor2 = {
 {"fcstFactor2-ID1","Factor2[(a - x) (b - x)]", "(a-x) (b-x)"},
-{"fcstFactor2-ID2","Factor2[a^2 - b^2]", "a^2-b^2"},
-{"fcstFactor2-ID3","Factor2[a^2 - b^2, FactorFull -> True]", "(a-b) (a+b)"}
+{"fcstFactor2-ID2","Factor2[a^2 - b^2]", "a^2-b^2"}
 };
