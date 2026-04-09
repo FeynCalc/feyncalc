@@ -1,18 +1,19 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FeynRule *)
+(* :Title: FeynRule															*)
 
-(* :Author: Rolf Mertig *)
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
+*)
+
+(* :Summary:  Derivation of feynman rules via functional differentiation	*)
 
 (* ------------------------------------------------------------------------ *)
-(* :History: File created on 12 March '98 at 0:04 *)
-(* ------------------------------------------------------------------------ *)
-
-(* :Summary: derivation of feynman rules via functional differentiation *)
-
-(* ------------------------------------------------------------------------ *)
-
-
 
 
 FeynRule::usage =
@@ -31,6 +32,12 @@ InitialFunction::usage =
 "InitialFunction is an option of FeynRule the setting of which is applied to
 the first argument of FeynRule before anything else.";
 
+
+FeynRule::failmsg =
+"Error! FeynRule has encountered a fatal problem and must abort the computation. \
+The problem reads: `1`";
+
+
 (* ------------------------------------------------------------------------ *)
 
 Begin["`Package`"]
@@ -38,406 +45,312 @@ End[]
 
 Begin["`FeynRule`Private`"]
 
-assumptions::usage="";
-frVerbose::usage="";
-schouten::usage="";
-opes::usage="";
-localSUND::usage="";
-localSUNF::usage="";
-sdummy::usage="";
-
-
-factor1[x_] :=
-	Block[{factor1t1,factor1t2,factor1t3,mt,mi,m1,mp1,nx=x,iIii},
-		mt = (((# /. Plus -> mi /. mi -> Plus) /. m1 -> (-1)/.mp1 -> (-Plus[##]&)) /. iIii -> I)&;
-		mi[y_, z__] := (m1 mp1[y,z] )/; (If[ Head[#] === Complex, False,
-			If[# < 0, True, False]]& @ NumericalFactor[y]);
-		nx = x /. Complex[0, b_] -> (b iIii);
-		If[Head[nx] =!= Plus,
-			mt[nx /. Plus -> (factor1[Plus[##]]&)],
-			factor1t1 = Apply[ List, Map[# /. Plus -> factor1t3&, nx]];
-			factor1t2 = (PolynomialGCD @@ factor1t1) /. factor1t3 -> Plus;
-			mt[(factor1t2 Apply[Plus, Map[((# /. factor1t3 -> Plus) / factor1t2)&, factor1t1]])]
-		]
-	];
-
-(* Functions that are applied to the expression first.
-Added 3/8-2000 by Frederik Orellana to allow interoperability with Phi:
-InitialFunction could e.g. be set to PhiToFC *)
-
-(* ******************************************************************** *)
-lorunique[a_] :=
-	lorunique[a] = LorentzIndex[FCGV[ToString[Unique["li"]]]];
-lorunique[a_,dim_] :=
-	lorunique[a,dim] = LorentzIndex[FCGV[ToString[Unique["li"]]],dim];
-sununique[a_] :=
-	sununique[a] = SUNIndex[FCGV[ToString[Unique["si"]]]];
-
-(*Added ExplicitSUNIndex. F.Orellana, 16/9-2002*)
-
-pluc[xx__] :=
-	If[ !FreeQ[{xx}, SUNIndex],
-		Map[(#/.Plus->((factor1 /@ Collect[Plus[##],Variables[Plus[##]]] )&))&,
-			factor1 /@ Collect2[Plus[xx], SUNIndex,ExplicitSUNIndex, Factoring -> False]],
-		Map[factor1,
-			Collect2[Plus[xx], {Pair[LorentzIndex[_], LorentzIndex[_]] },
-					Factoring->False] ]
-		];
-
-frex[nl_] :=
-	frex[nl] = Block[ {nla = DotSimplify[nl],sdum, flag, ff, fm,ff1, ff2, cli,tem,
-	nlafirst, newlorlist, lorindlist, sunindlist, newsunlist, uniquelist},
-
-
-				FCPrint[1, "FeynRule: frex: Entering with ", nla, FCDoControl->frVerbose];
-
-				sdum = SUNIndex[ToExpression[StringJoin@@(ToString /@ {Unique[System`D], "k"})]];
-				flag = Select[Expand2[Select[nla, FreeQ[#, DOT]&], SUNF] + null1 + null2,
-							(Count[#, SUNF[__]] === 2)&
-							] /. null1 ->1 /. null2 ->0;
-							If[ flag =!= 0,
-					If[ Head[flag] === Times,
-						ff = Select[flag, !FreeQ[#, SUNF]&],
-						If[ Head[flag] === Plus,
-							ff = Select[flag[[1]], !FreeQ[#, SUNF]&];
-						];
-					];
-					If[ Length[ff] === 2,
-						ff1 = List @@ ff[[1]];
-						ff2 = List@@ff[[2]];
-						cli = Complement[ff1, Complement[ff1, ff2]];
-						If[ Length[cli] > 0,
-							sdum = cli[[1]]
-						];
-					];
-							];
-				FCPrint[1, "FeynRule: frex: flag ", flag, FCDoControl->frVerbose];
-			(* change 05/94 *)
-				nlafirst = If[ Head[nla]===Plus,
-								nla[[1]],
-								nla
-							];
-				(* get a list of all LorentzIndex *)
-				lorindlist = Cases2[nla, LorentzIndex];
-				sunindlist = Cases2[nla, SUNIndex,ExplicitSUNIndex];
-				(* select those which occur an even number of times *)
-				newlorlist = {};
-				newsunlist = {};
-				For[r = 1, r <= Length[lorindlist], r++,
-					If[ EvenQ[Length[Position[nlafirst, lorindlist[[r]]]]],
-						AppendTo[newlorlist, lorindlist[[r]]]
-					];
-				];
-				For[r = 1, r <= Length[sunindlist], r++,
-					If[ EvenQ[Length[Position[nlafirst, sunindlist[[r]]]]],
-						AppendTo[newsunlist, sunindlist[[r]]]
-					]
-					];
-				FCPrint[1, "FeynRule: frex: newlorlist ", newlorlist, FCDoControl->frVerbose];
-				FCPrint[1, "FeynRule: frex: newsunlist ", newsunlist, FCDoControl->frVerbose];
-
-				uniquelist = Join[Table[newlorlist[[i]] ->
-										(newlorlist[[i]]/.LorentzIndex -> lorunique),
-										{i, Length[newlorlist]}
-										],
-									Table[newsunlist[[j]] ->
-										(newsunlist[[j]]/.SUNIndex -> sununique),
-										{j, Length[newsunlist]}
-										]
-								];
-				FCPrint[1, "FeynRule: frex: uniquelist = ", uniquelist, FCDoControl->frVerbose];
-				nla = nla /. uniquelist;
-				nla = DotSimplify[nla, Expanding -> True];
-				FCPrint[1, "FeynRule: frex: nla = ", nla, FCDoControl->frVerbose];
-				tem = Contract[Expand2[nla /. QuantumField -> (QuantumField[##][]&) ]] + null1;
-
-				FCPrint[1, "FeynRule: frex: tem = ", tem, FCDoControl->frVerbose];
-
-				fm/: (fm[aa___][bb___] * fm[xx___][yy___] )   := fm[aa][bb]**fm[xx][yy];
-				fm/: fm[aa___][bb___]^n_Integer?Positive :=
-					(fm[aa][bb]^(n-1))**fm[aa][bb];
-				tem = tem /. QuantumField -> fm /. fm -> QuantumField;
-				{tem, sdum}
-			];
-
-fcis[x_] :=
-	fcis[x] = FeynCalcInternal[x];
-
-getpes[__][pe_] :=
-	pe/. Momentum -> Identity;
-
-
-
-dirdot[yy_] :=
-	If[ FreeQ[yy, DOT],
-		yy,
-		If[ FreeQ[yy, DiracGamma],
-			DotSimplify[yy, Expanding -> False],
-			DiracTrick[yy]
-		]
-	];
-
 Options[FeynRule] = {
-	Anti5 				-> -Infinity,
-	Assumptions 		-> Automatic,
-	Contract 			-> False,
-	FinalSubstitutions	-> {},
-	FCPartialD 			-> RightPartialD,
-	FCVerbose 			-> False,
-	Schouten 			-> False,
-	InitialFunction 	-> Identity
+	"MomentumConservation"	-> False,
+	Anti5 					-> -Infinity,
+	Collecting				-> True,
+	Contract 				-> False,
+	FCE						-> False,
+	FCI						-> False,
+	FCFactorOut				-> 1,
+	FCPartialD 				-> RightPartialD,
+	FCVerbose 				-> False,
+	Factoring				-> {Factor2, 5000},
+	FinalSubstitutions		-> {},
+	InitialFunction 		-> Identity,
+	LorentzIndexNames		-> {},
+	SUNIndexNames			-> {},
+	SUNFIndexNames			-> {},
+	TimeConstrained 		-> 3
 };
 
-(*FeynRuledef*)
+
 FeynRule[a_,b_ /; Head[b] =!=Rule && Head[b]=!= List, c___,
-			d_ /; Head[d] =!= Rule && Head[d] =!= List, e___Rule
-		] :=
+			d_ /; Head[d] =!= Rule && Head[d] =!= List, e___Rule] :=
 	FeynRule[a, {b,c,d}, e];
 
-FeynRule[lag_, fii_List, ru___Rule] :=
-	If[ Length[lag] === 0,
-		Print[lag, " does not look like a lagrangian"],
-		Block[ {(*InitialFunction stuff added by F.Orellana 3/8-2000*)
-		initf, nlag, temp1, temp,
-				fili = fii, lfili, qli,specope,
-				groupindices,
-				result,fields,tfields,plist,
-				vert, getsu,gsu,subs,
-				qfi, qqq, oldnoncomm, onepm, onemm,
+FeynRule[expr_, fieldsRaw_List/;!OptionQ[fieldsRaw], OptionsPattern[]] :=
+	Block[{	fieldMultiply, null1, null2, ex, lfili, qli, result, fields,
+			tfields, vert, qfi, qqq, anti5, partiald, fcVerbose, plist,
+			puref, optVerbose, time, optLorentzIndexNames, optSUNIndexNames,
+			optSUNFIndexNames, optFCCanonicalizeDummyIndices=False, optCollecting},
 
-				indd, anti5,
-				coup,cdp,cedepe,
-				partiald,fcVerbose,
-				puref, nres, nee
-				},
+			anti5    	= OptionValue[Anti5];
+			partiald 	= OptionValue[FCPartialD];
+			fcVerbose	= OptionValue[FCVerbose];
+
+			optCollecting			= OptionValue[Collecting];
+			optLorentzIndexNames 	= OptionValue[LorentzIndexNames];
+			optSUNIndexNames 		= OptionValue[SUNIndexNames];
+			optSUNFIndexNames		= OptionValue[SUNFIndexNames];
 
 
-			initf = InitialFunction /. {ru} /. Options[FeynRule];
-			nlag = ExpandAll[fcis[initf[lag]]];
+			If[ OptionValue[LorentzIndexNames]=!={} || OptionValue[SUNIndexNames]=!={}|| OptionValue[SUNFIndexNames]=!={},
+				optFCCanonicalizeDummyIndices = True
+			];
 
-			If[	!FreeQ2[{lag,fii}, FeynCalc`Package`NRStuff],
+			If [OptionValue[FCVerbose]===False,
+				optVerbose=$VeryVerbose,
+				If[MatchQ[OptionValue[FCVerbose], _Integer],
+					optVerbose=OptionValue[FCVerbose]
+				];
+			];
+
+			If[ OptionValue[FCI],
+				ex = expr,
+				ex = FCI[expr]
+			];
+
+			FCPrint[3, "FeynRule: Entering.", FCDoControl->optVerbose];
+			FCPrint[3, "FeynRule: Entering with ", ex, FCDoControl->optVerbose];
+
+			ex = OptionValue[InitialFunction][ex];
+
+			ex = ExpandAll[ex];
+
+			If[	!FreeQ2[{ex,fieldsRaw}, FeynCalc`Package`NRStuff],
 				Message[FeynCalc::nrfail];
 				Abort[]
 			];
 
+			fields = Map[ ( QuantumField[___, #, Pattern @@ {Unique["dm"], ___}][___])&, #[[0, 1]]& /@ fieldsRaw];
 
-			FCPrint[1, "FeynRule: Entering with ", lag, FCDoControl->frVerbose];
+			FCPrint[2, "FeynRule: Fields: ", fields, FCDoControl->optVerbose];
 
-			nlag = nlag /. SUND -> localSUND /. SUNF -> localSUNF;
-			anti5    = Anti5 /. {ru} /. Options[FeynRule];
-			subs     = FinalSubstitutions /. {ru} /. Options[FeynRule];
-			schouten = Schouten /. {ru} /. Options[FeynRule];
-			partiald = FCPartialD /. {ru} /. Options[FeynRule];
-			assumptions = Assumptions /. {ru} /. Options[FeynRule];
-			fcVerbose = FCVerbose /. {ru} /. Options[FeynRule];
+			If[	!FreeQ[ex,FieldStrength],
+				ex = ex /. FieldStrength[a__] :> FieldStrength[a, Explicit->True];
+			];
+			ex = ex /. CovariantD[args__] :> CovariantD[args, FCPartialD->partiald,Explicit->True];
 
-			If [fcVerbose===False,
-				frVerbose=$VeryVerbose,
-				If[MatchQ[fcVerbose, _Integer?Positive | 0],
-					frVerbose=fcVerbose
-				];
+			If[	!FreeQ[ex,CovariantD],
+				Message[FeynRule::failmsg,"Failed to eliminate all occurrences of CovariantD"];
+				Abort[]
 			];
 
-			SetOptions[CovariantD, FCPartialD -> partiald];
+			time=AbsoluteTime[];
+			FCPrint[1, "FeynRule: Applying DotSimplify.", FCDoControl->optVerbose];
+			ex = DotSimplify[ex];
+			FCPrint[1,"FeynRule: DotSimplify done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+			FCPrint[3, "FeynRule: After DotSimplify: ", ex, FCDoControl->optVerbose];
 
-			$NONZERO = False;
-
-
-			fields = Map[ ( QuantumField[___, #,
-					Pattern @@ {Unique["dm"], ___}][___])&, #[[0, 1]]& /@ fili];
-
-			FCPrint[1, "non-commutative expansion", FCDoControl->frVerbose];
-
-			nlag = nlag /. FieldStrength[a__] :> FieldStrength[a, Explicit->True];
-
-			If[ False,
-				nlag = DotSimplify[nlag],
-				If[ !FreeQ[nlag, CovariantD[w__/;FreeQ[{w}, Rule]
-											]^hh_ /; Head[hh]=!=Integer],
-					cdp /: cdp[aa__]^(h_ /; Head[h]=!=Integer) :=
-						cedepe[aa, {h, Length[fii] - 2}];
-					nlag = nlag /. CovariantD -> cdp /.
-							{cdp[aa__] :> CovariantD[aa, Explicit->True],
-							cedepe :> CovariantD
-							};
-					coup = CouplingConstant /. Options[CovariantD];
-					nlag = DotSimplify[nlag] /.coup^(nn_ /; nn>(Length[fii]-2)) :> 0;,
-					nlag = DotSimplify[nlag];
-				]
+			If[ !FreeQ2[ex, {SUNDelta,SUNFDelta}],
+				time=AbsoluteTime[];
+				FCPrint[1, "FeynRule: Applying color delta contractions.", FCDoControl->optVerbose];
+				ex = Expand2[ex, {SUNIndex,SUNFIndex,ExplicitSUNIndex,ExplicitSUNFIndex}];
+				ex = ex /.{SUNDelta-> SUNDeltaContract,SUNFDelta-> SUNFDeltaContract}/. {SUNDeltaContract->SUNDelta, SUNFDeltaContract->SUNFDelta};
+				FCPrint[1,"FeynRule: Color delta contractions done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+				FCPrint[3, "FeynRule: After color delta contractions: ", ex, FCDoControl->optVerbose];
 			];
 
-			FCPrint[1, "FeynRule: After DotSimplify ", nlag, FCDoControl->frVerbose];
-
-			If[ !FreeQ[nlag, SUNDelta],
-				nlag = Expand2[nlag, {SUNIndex,ExplicitSUNIndex}]/.SUNDelta-> SUNDeltaContract/.
-				SUNDeltaContract->SUNDelta
-			];
-
-			FCPrint[1, "FeynRule: After SUNDeltaContract ", nlag, FCDoControl->frVerbose];
-
-			nlag = ExpandPartialD[nlag](* /. DOT -> dotsunt /. dotsunt -> DOT*);
-
-			FCPrint[1, "FeynRule: After applying Leibniz rule ", nlag, FCDoControl->frVerbose];
-
-			(* check for Leibniz - sums *) (* trick17 *)
-
-			nlag = ExpandPartialD[nlag];
-
-			FCPrint[1, "FeynRule: After ExpandPartialD: ", nlag, FCDoControl->frVerbose];
-
-			temp1 = Expand2[frex[nlag],QuantumField];
-
-			FCPrint[1, "FeynRule: After frex: ", temp1, FCDoControl->frVerbose];
-
-			temp = temp1[[1]];
-			sdummy = temp1[[2]];
+			time=AbsoluteTime[];
+			FCPrint[1, "FeynRule: Applying ExpandPartialD.", FCDoControl->optVerbose];
+			ex = ExpandPartialD[ex,FCI->True];
+			FCPrint[1,"FeynRule: ExpandPartialD done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+			FCPrint[3, "FeynRule: After ExpandPartialD: ", ex, FCDoControl->optVerbose];
 
 
+			time=AbsoluteTime[];
+			FCPrint[1, "FeynRule: Applying FCRenameDummyIndices.", FCDoControl->optVerbose];
+			ex = FCRenameDummyIndices[ex,FCI->True,DotSimplify->True,Expanding->True];
+			FCPrint[1,"FeynRule: FCRenameDummyIndices done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+			FCPrint[3, "FeynRule: After FCRenameDummyIndices: ", ex, FCDoControl->optVerbose];
 
-			vert = Select[temp, (Length[Position[#, QuantumField]]===
-								Length[fields]) &];
+			time=AbsoluteTime[];
+			FCPrint[1, "FeynRule: Applying Contract.", FCDoControl->optVerbose];
+			ex = Contract[ex /. QuantumField -> (QuantumField[##][]&), FCI->True];
+			FCPrint[1,"FeynRule: Contract done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+			FCPrint[3, "FeynRule: After Contract: ", ex, FCDoControl->optVerbose];
 
-			FCPrint[1, "FeynRule: temp: ", temp, FCDoControl->frVerbose];
-			FCPrint[1, "FeynRule: sdummy: ", sdummy, FCDoControl->frVerbose];
-			FCPrint[1, "FeynRule: 1st vert: ", vert, FCDoControl->frVerbose];
+			time=AbsoluteTime[];
+			FCPrint[1, "FeynRule: Applying fieldMultiply.", FCDoControl->optVerbose];
+			fieldMultiply /: (fieldMultiply[aa___][bb___] * fieldMultiply[xx___][yy___] ):=
+				fieldMultiply[aa][bb]**fieldMultiply[xx][yy];
+			ex = Expand2[Expand2[ex /. QuantumField -> fieldMultiply,QuantumField] /. fieldMultiply -> QuantumField,QuantumField];
+			FCPrint[1,"FeynRule: fieldMultiply done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+			FCPrint[3, "FeynRule: After fieldMultiply: ", ex, FCDoControl->optVerbose];
 
+
+			(* Now we select vertices of suitable length. For that aim the expression must be expanded in QuantumField beforehand.*)
+
+			vert = Select[ex + null1+null2, (Length[Position[#, QuantumField]]===Length[fields]) &];
+			FCPrint[3, "FeynRule: Raw selected vertices: ", vert, FCDoControl->optVerbose];
+
+			(* Keep only vertices that depend on the fields w.r.t which we are differentiating .*)
 			tfields = fields;
 			vert = vert + null1 + null2;
 			While[(Length[tfields] > 0) && (Head[vert] === Plus),
 					vert = Select[vert, !FreeQ[#, First[tfields]]&];
 					tfields = Rest[tfields];
 				];
-			FCPrint[1, "FeynRule: 2nd vert: ", vert, FCDoControl->frVerbose];
+			FCPrint[3, "FeynRule: Prefinal selected vertices: ", vert, FCDoControl->optVerbose];
 
-			FCPrint[1, "FeynRule: vert: ", vert/.QuantumField->qfi, FCDoControl->frVerbose];
-
-
-			(* there might be still a sum ... *)
+			(* There might be still a sum ... *)
 			If[ Head[vert] === Plus,
+
 				qfi[___FCPartialD, fiii_, ___LorentzIndex, ___SUNIndex|___ExplicitSUNIndex][___] :=
 					qqq[fiii];
+
 				qfi[___FCPartialD, fiii_, ___Momentum, ___SUNIndex|___ExplicitSUNIndex][___] :=
 					qqq[fiii];
+
 				qfi[___BlankNullSequence, fiii_, ___Pattern][___] :=
 					qqq[fiii];
-				puref = (Sort[Select[Variables[# /.   QuantumField -> qfi /. DOT -> Times /.
-															NonCommutativeMultiply -> Times
-												]//Flatten//Union,
-													Head[#]===qqq&
-										]      ] ===
-											Sort[Variables[fields /. QuantumField -> qfi]]
-									)&;
+
+				puref = (Sort[Select[Variables[# /. QuantumField -> qfi /. DOT -> Times /. NonCommutativeMultiply -> Times]//Flatten//Union,Head[#]===qqq&]] ===
+					Sort[Variables[fields /. QuantumField -> qfi]])&;
 				vert = Select[vert, puref];
 			];
-			FCPrint[1, "FeynRule: vert: ", vert, FCDoControl->frVerbose];
-			If[ vert === 0,
-				result = 0,
-				FCPrint[1, "FeynRule: vert is not zero!", FCDoControl->frVerbose];
-				vert = vert /. NonCommutativeMultiply -> Times;
-				vert = Expand[ SUNSimplify[dirdot[vert],Explicit->False] ];
-				FCPrint[1, "functional differentiation ", FCDoControl->frVerbose];
-				groupindices = Map[First,Cases2[{vert,fili},{SUNIndex,ExplicitSUNIndex,LorentzIndex}]];
-				UnDeclareNonCommutative[groupindices];
-				If[ Head[vert] === Plus,
-					result = 0;
-					For[j = 1, j <= Length[vert], j++,
-							FCPrint[2, "iij of FunctionalD = ", j, " out of ", Length[vert], FCDoControl->frVerbose];
-							result = result + DotSimplify[FunctionalD[vert[[j]], fili], Expanding -> False];
-						],
-					result = DotSimplify[FunctionalD[vert, fili],Expanding -> False];
-				];
-				FCPrint[1, "FeynRule: After functional differentiation ", result, FCDoControl->frVerbose];
-				qli[__,el__LorentzIndex, ___][_] :=
-					{el};
-				lfili  = Flatten[fili /. QuantumField  -> qli];
-				result = Expand2[result/.SUNDelta->SUNDeltaContract/.SUNDeltaContract->SUNDelta];
-				FCPrint[1, "there are now ", Length[result], " terms", FCDoControl->frVerbose];
-				result = result /. Pair -> PairContract /. Pair -> PairContract /.
-							PairContract -> Pair;
-				FCPrint[1, "FeynRule: After simple contractions ", result, FCDoControl->frVerbose];
-				If[ !FreeQ[result, Eps],
-					result = EpsEvaluate[result];
-					FCPrint[1, "FeynRule: After EpsEvaluate ", result, FCDoControl->frVerbose];
-				];
-				If[ !FreeQ[result, DOT],
-					result = dirdot[result];
-					FCPrint[1, "FeynRule: After dirdot ", result, FCDoControl->frVerbose];
-				];
 
-				FCPrint[1, "FeynRule: After Cases ", result, FCDoControl->frVerbose];
+			FCPrint[3, "FeynRule: Final selected vertices: ", vert, FCDoControl->optVerbose];
 
-				If[ Union[Cases[result, LorentzIndex[__], Infinity]] =!= Sort[lfili],
-					If[ (Contract /. Options[FeynRule]) === True,
-						result = result// Contract//ExpandAll;
-						FCPrint[1, "FeynRule: After another contraction ", result, FCDoControl->frVerbose];
-					]
-				];
-
-				If[ !FreeQ[result, Eps],
-					result = EpsEvaluate[result]
-				];
-				If[ !FreeQ[result, DOT],
-					result = DotSimplify[result, Expanding -> False]
-				];
-				FCPrint[1, "there are ", Length[result], " terms ", FCDoControl->frVerbose];
-				If[ !FreeQ[result, SUNDelta],
-					result = result /. SUNDelta -> SUNDeltaContract /. SUNDeltaContract -> SUNDelta;
-				];
-				FCPrint[1, "FeynRule: After serveral simplifications ", result, FCDoControl->frVerbose];
-				plist =  fii /. QuantumField -> getpes /. Momentum -> Identity;
-
-				result = I result;
-
-				result = Expand[result];
-
-
-				If[ !FreeQ[result, SUNIndex],
-					result = SUNSimplify[result,Explicit->False];
-					If[ !FreeQ[result, SUNT],
-						result = SUNSimplify[result,Explicit->False]
-					]
-				];
-				FCPrint[1, "FeynRule: After color simplifications ", result, FCDoControl->frVerbose];
-				result = result//Expand;
-				FCPrint[1, "FeynRule: After another Expand ", result, FCDoControl->frVerbose];
-
-				(* in case the incoming momenta are a sum *)
-				If[ !FreeQ[fii, Plus],
-					result = ExpandScalarProduct[result]
-				];
-				If[ !FreeQ[result, DiracGamma[5]],
-					result = Anti5[result, anti5]
-				];
-				result = Expand[result] /. subs;
-
-				FCPrint[1, "FeynRule: After more simplifications ", result, FCDoControl->frVerbose];
-
-				If[ (!FreeQ2[result, {SUNT, DiracGamma}]),
-
-					result = ExpandScalarProduct[result /. plist[[1]] :> (-(Plus @@ Rest[plist]))]//factor1;
-
-					If[ !FreeQ2[result, {SUNIndex,ExplicitSUNIndex}],
-						result = Collect2[result, SUNIndex,ExplicitSUNIndex, Factoring -> False, Expanding -> False];
-					];
-					FCPrint[1, "collect2ing done; ", FCDoControl->frVerbose];
-
-					If[ (Length[plist]<4),
-						result = factor1[result];
-					];
-
-					result = result /. Plus :> pluc;
-
-					FCPrint[1, "feinarbeit ", FCDoControl->frVerbose];
-
-				];
-
+			If[	vert===0,
+				Return[0]
 			];
 
-			FCPrint[1, "FeynRule: Preliminary result ", result, FCDoControl->frVerbose];
+			vert = vert /. NonCommutativeMultiply -> Times;
+
+			If[	!FreeQ[vert, DOT],
+				time=AbsoluteTime[];
+				FCPrint[1, "FeynRule: Applying noncommutative simplifications.", FCDoControl->optVerbose];
+				If[ FreeQ[vert, DiracGamma],
+					vert = DotSimplify[vert, Expanding -> False],
+					vert = DiracTrick[vert,FCI->True]
+				];
+				FCPrint[1,"FeynRule: Noncommutative simplifications done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+			];
+
+			If[ !FreeQ2[result, {SUNDelta,SUNFDelta}],
+				time=AbsoluteTime[];
+				FCPrint[1, "FeynRule: Applying SUNSimplify.", FCDoControl->optVerbose];
+				vert = SUNSimplify[vert,FCI->True];
+				FCPrint[1,"FeynRule: SUNSimplify done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+				FCPrint[3, "FeynRule: After SUNSimplify: ", vert, FCDoControl->optVerbose];
+			];
+
+			time=AbsoluteTime[];
+			FCPrint[1, "FeynRule: Applying FunctionalD.", FCDoControl->optVerbose];
+			result = DotSimplify[Map[FunctionalD[#, fieldsRaw]&,vert+null1+null2], Expanding -> False];
+			FCPrint[1,"FeynRule: FunctionalD done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+			FCPrint[3, "FeynRule: After FunctionalD: ", result, FCDoControl->optVerbose];
+
+			If[ !FreeQ2[result, {SUNDelta,SUNFDelta}],
+				time=AbsoluteTime[];
+				FCPrint[1, "FeynRule: Applying color delta contractions.", FCDoControl->optVerbose];
+				result = Expand2[result, {SUNIndex,SUNFIndex,ExplicitSUNIndex,ExplicitSUNFIndex}];
+				result = result /.{SUNDelta-> SUNDeltaContract,SUNFDelta-> SUNFDeltaContract}/. {SUNDeltaContract->SUNDelta, SUNFDeltaContract->SUNFDelta};
+				FCPrint[1,"FeynRule: Color delta contractions done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+				FCPrint[3, "FeynRule: After color delta contractions: ", result, FCDoControl->optVerbose];
+			];
+
+			FCPrint[2, "FeynRule: Number of terms: ", Length[result], FCDoControl->optVerbose];
+
+			If[ !FreeQ2[result, {LorentzIndex}],
+				FCPrint[1, "FeynRule: Applying PairContract.", FCDoControl->optVerbose];
+				result = result /. Pair -> PairContract /. Pair -> PairContract /. PairContract -> Pair;
+				FCPrint[3, "FeynRule: After PairContract: ", result, FCDoControl->optVerbose];
+			];
+
+			If[ !FreeQ[result, Eps],
+				FCPrint[1, "FeynRule: Applying EpsEvaluate.", FCDoControl->optVerbose];
+				result = EpsEvaluate[result,FCI->True];
+				FCPrint[3, "FeynRule: After EpsEvaluate ", result, FCDoControl->optVerbose];
+			];
+
+			If[	!FreeQ[result, DOT],
+				time=AbsoluteTime[];
+				FCPrint[1, "FeynRule: Applying noncommutative simplifications.", FCDoControl->optVerbose];
+				If[ FreeQ[result, DiracGamma],
+					result = DotSimplify[result, Expanding -> False],
+					result = DiracTrick[result,FCI->True]
+				];
+				FCPrint[1,"FeynRule: Noncommutative simplifications done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+			];
+
+
+			lfili  = Flatten[fieldsRaw /. QuantumField[__,el__LorentzIndex, ___][_]  -> {el}];
+			If[ Union[Cases[result, LorentzIndex[__], Infinity]] =!= Sort[lfili],
+				If[ OptionValue[Contract],
+					result = Contract[result,FCI->True]//ExpandAll;
+					FCPrint[1, "FeynRule: After another contraction ", result, FCDoControl->optVerbose];
+				]
+			];
+
+			If[ !FreeQ[result, Eps],
+				FCPrint[1, "FeynRule: Applying EpsEvaluate.", FCDoControl->optVerbose];
+				result = EpsEvaluate[result,FCI->True];
+				FCPrint[3, "FeynRule: After EpsEvaluate ", result, FCDoControl->optVerbose];
+			];
+
+			If[ !FreeQ[result, DOT],
+				time=AbsoluteTime[];
+				FCPrint[1, "FeynRule: Applying DotSimplify.", FCDoControl->optVerbose];
+				result = DotSimplify[result, Expanding -> False];
+				FCPrint[1,"FeynRule: DotSimplify done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+			];
+
+			FCPrint[2, "FeynRule: Number of terms: ", Length[result], FCDoControl->optVerbose];
+
+
+			If[ !FreeQ2[result, {SUNIndex,SUNFIndex}],
+				time=AbsoluteTime[];
+				FCPrint[1, "FeynRule: Applying SUNSimplify.", FCDoControl->optVerbose];
+				result = SUNSimplify[result,Explicit->False];
+				FCPrint[1,"FeynRule: SUNSimplify done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+			];
+
+			(* in case the incoming momenta are a sum *)
+			If[ !FreeQ[fieldsRaw, Plus],
+				time=AbsoluteTime[];
+				FCPrint[1, "FeynRule: Applying ExpandScalarProduct.", FCDoControl->optVerbose];
+				result = ExpandScalarProduct[result];
+				FCPrint[1,"FeynRule: ExpandScalarProduct done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+			];
+
+			If[ !FreeQ[result, DiracGamma[5]],
+				time=AbsoluteTime[];
+				FCPrint[1, "FeynRule: Applying Anti5.", FCDoControl->optVerbose];
+				result = Anti5[result, anti5];
+				FCPrint[1,"FeynRule: Anti5 done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+			];
+
+			(* Momentum conservation, eliminate first momentum*)
+			If[OptionValue["MomentumConservation"],
+				plist =  fieldsRaw /. QuantumField[__][pe_] -> pe /. Momentum -> Identity;
+				result = ExpandScalarProduct[result /. plist[[1]] :> (-(Plus @@ Rest[plist]))];
+			];
+
+			result = Expand[I result] /. OptionValue[FinalSubstitutions];
+
+			If[	optFCCanonicalizeDummyIndices,
+				time=AbsoluteTime[];
+				FCPrint[1, "FeynRule: Applying FCCanonicalizeDummyIndices.", FCDoControl->optVerbose];
+				result = FCCanonicalizeDummyIndices[result, FCI->True, LorentzIndexNames->optLorentzIndexNames,
+					SUNIndexNames->optSUNIndexNames, SUNFIndexNames->optSUNFIndexNames];
+				FCPrint[1,"FeynRule: FCCanonicalizeDummyIndices done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+			];
+
+			If[	OptionValue[Collecting]=!=False,
+				time=AbsoluteTime[];
+				FCPrint[1, "FeynRule: Applying Collect2.", FCDoControl->optVerbose];
+				If[	TrueQ[Head[optCollecting]===List],
+					result = Collect2[result, optCollecting, Factoring->OptionValue[Factoring],
+						TimeConstrained->OptionValue[TimeConstrained], FCFactorOut->OptionValue[FCFactorOut]],
+					result = Collect2[result, {LorentzIndex,SUNIndex,SUNFIndex}, Factoring->OptionValue[Factoring],
+						TimeConstrained->OptionValue[TimeConstrained], FCFactorOut->OptionValue[FCFactorOut]];
+				];
+				FCPrint[1,"FeynRule: Collect2 done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+			];
+
+
+			If[OptionValue[FCE],
+				result = FCE[result];
+			];
+
+
+			FCPrint[1, "FeynRule: Preliminary result ", result, FCDoControl->optVerbose];
 
 			result
-		]/. {localSUND :> SUND, localSUNF :> SUNF}
-	];
+		]
 
-FCPrint[1, "FeynRule.m loaded.", FCDoControl->frVerbose];
+FCPrint[1, "FeynRule.m loaded."];
 End[]

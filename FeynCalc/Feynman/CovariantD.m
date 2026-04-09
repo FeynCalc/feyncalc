@@ -1,14 +1,17 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: CovariantD *)
+(* :Title: CovariantD														*)
 
-(* :Author: Rolf Mertig *)
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
+*)
 
-(* ------------------------------------------------------------------------ *)
-(* :History: File created on 16 March '98 at 11:52 *)
-(* ------------------------------------------------------------------------ *)
-
-(* :Summary: Covariant derivative *)
+(* :Summary: Covariant derivative											*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -22,9 +25,7 @@ CovariantD[mu, a, b] is a covariant derivative for a bosonic field that acts
 on QuantumField[f, {}, {a, b}], where f is some field name and a and b are two
 $SU(N)$ indices in the adjoint representation.";
 
-DummyIndex::usage =
-"DummyIndex is an option of CovariantD specifying an index to use as dummy
-summation index. If set to Automatic, unique indices are generated.";
+
 
 (* ------------------------------------------------------------------------ *)
 
@@ -36,85 +37,12 @@ Begin["`CovariantD`Private`"]
 
 DeclareNonCommutative[CovariantD];
 
-Options[CovariantD] = { CouplingConstant -> SMP["g_s"],
-						DummyIndex -> Automatic,
-						Explicit -> False,
-						FCPartialD -> RightPartialD,
-						QuantumField -> GaugeField
-						};
-
-isunt[a_] :=
-	FeynCalcInternal[I SUNT[a]];
-subsit[un_][in_] :=
-	If[ $Notebooks,
-		Subscript[un,in],
-		un[in]
-	];
-
-Unique2[x_] :=
-	If[ $Notebooks === True,
-		subsit[Unique[x]],
-		Unique[x]
-	];
-
-$dummycount = 1;
-
-CovariantD[al_, ru___Rule ] :=
-	Block[ {aA, g, cC, du, partial},
-		partial = FCPartialD /. {ru} /. Options[CovariantD];
-		aA = QuantumField     /. {ru}  /. Options[CovariantD];
-		g = CouplingConstant /. {ru}  /. Options[CovariantD];
-		du = DummyIndex /. {ru}  /. Options[CovariantD];
-		If[ du === Automatic,
-			cC = Unique["c"],
-			cC = du
-		];
-		(
-			partial[al] - g I (DOT[SUNT[SUNIndex[cC]] ,
-		If[ (Head[al]=== Momentum),
-			QuantumField[aA, Momentum[al], SUNIndex[cC]],
-			QuantumField[aA, LorentzIndex[al], SUNIndex[cC]]
-		]]                 )
-		)] /;(Explicit /. {ru} /. Options[CovariantD]);
-
-CovariantD[al_, a_, b_, ru___Rule ] :=
-	Block[ {aA, cC, du, partial},
-		aA = QuantumField     /. {ru}  /. Options[CovariantD];
-		g = CouplingConstant /. {ru}  /. Options[CovariantD];
-		partial = FCPartialD /. {ru} /. Options[CovariantD];
-		du = DummyIndex /. {ru}  /. Options[CovariantD];
-		If[ du === Automatic,
-			cC = Unique["c"],
-			cC = du
-		];
-		SUNDelta[a, b] partial[al] -
-		g SUNF[a,b,cC] *
-		If[ (Head[al]=== Momentum),
-			QuantumField[aA, Momentum[al], SUNIndex[cC]],
-			QuantumField[aA, LorentzIndex[al], SUNIndex[cC]]
-		]
-	] /;
-	(Explicit /. {ru} /. Options[CovariantD]) && Head[a]=!=SUNFIndex;
-
-
-
-CovariantD[al_, a_SUNFIndex, b_SUNFIndex, OptionsPattern[]] :=
-	Block[ {aA, cC, du, partial,g},
-		aA = OptionValue[QuantumField];
-		g = OptionValue[CouplingConstant];
-		partial = OptionValue[FCPartialD];
-		du = OptionValue[DummyIndex];
-		If[ du === Automatic,
-			cC = Unique["c"],
-			cC = du
-		];
-		SUNFDelta[a, b] partial[al] -
-		I g SUNTF[cC,a,b] *
-		If[ (Head[al]=== Momentum),
-			QuantumField[aA, Momentum[al], SUNIndex[cC]],
-			QuantumField[aA, LorentzIndex[al], SUNIndex[cC]]
-		]
-	] /; OptionValue[Explicit];
+Options[CovariantD] = {
+	CouplingConstant	-> SMP["g_s"],
+	Explicit			-> False,
+	FCPartialD 			-> RightPartialD,
+	QuantumField 		-> GaugeField
+};
 
 CovariantD /:
 	MakeBoxes[CovariantD[mud_], TraditionalForm] :=
@@ -127,6 +55,62 @@ CovariantD /:
 CovariantD /:
 	MakeBoxes[CovariantD[x_, LorentzIndex[mu__]], TraditionalForm] :=
 		RowBox[{"\[PartialD]", "/", "D", SuperscriptBox[ToBoxes[x,TraditionalForm], ToBoxes[LorentzIndex[mu],TraditionalForm]]}];
+
+
+CovariantD[al_, OptionsPattern[]] :=
+	Block[ {aA, g, cC, res, partial,qf},
+
+		aA 		= OptionValue[QuantumField];
+		g 		= OptionValue[CouplingConstant];
+		partial = OptionValue[FCPartialD];
+
+
+		cC = Unique["c"];
+
+		If[ TrueQ[Head[al]=== Momentum],
+			qf = QuantumField[aA, Momentum[al], SUNIndex[cC]],
+			qf = QuantumField[aA, LorentzIndex[al], SUNIndex[cC]]
+		];
+
+		partial[al] - g I DOT[SUNT[SUNIndex[cC]], qf]
+		]/; OptionValue[Explicit];
+
+CovariantD[al_, a_, b_/;!OptionQ[{b}], OptionsPattern[]] :=
+	Block[{aA, g, cC, partial, qf},
+
+		aA 		= OptionValue[QuantumField];
+		g 		= OptionValue[CouplingConstant];
+		partial = OptionValue[FCPartialD];
+
+		cC = Unique["c"];
+
+		If[ TrueQ[Head[al]=== Momentum],
+			qf = QuantumField[aA, Momentum[al], SUNIndex[cC]],
+			qf = QuantumField[aA, LorentzIndex[al], SUNIndex[cC]]
+		];
+
+		SUNDelta[a, b] partial[al] - g SUNF[a,b,cC]  qf
+	]/; OptionValue[Explicit] && Head[a]=!=SUNFIndex;
+
+
+
+CovariantD[al_, a_SUNFIndex, b_SUNFIndex, OptionsPattern[]] :=
+	Block[ {aA, cC, du, partial, g, qf},
+
+		aA 		= OptionValue[QuantumField];
+		g 		= OptionValue[CouplingConstant];
+		partial = OptionValue[FCPartialD];
+
+		cC = Unique["c"];
+
+		If[ TrueQ[Head[al]=== Momentum],
+			qf = QuantumField[aA, Momentum[al], SUNIndex[cC]],
+			qf = QuantumField[aA, LorentzIndex[al], SUNIndex[cC]]
+		];
+
+		SUNFDelta[a, b] partial[al] - I g SUNTF[cC,a,b] qf
+	] /; OptionValue[Explicit];
+
 
 FCPrint[1,"CovariantD.m loaded."];
 End[]
