@@ -15,14 +15,14 @@
 
 Tests`Feynman`fcstFeynRule = {
 
-{"fcstFeynRule-ID1","Collect2[(FeynRule[-1/4 DOT[FieldStrength[al, be, a], 
-        FieldStrength[al, be, a]] /. 
-      FCGV[x_] :> 
-       ToExpression[x], {QuantumField[GaugeField, {mu1}, {i1}][p1], 
-      QuantumField[GaugeField, {mu2}, {i2}][p2], 
-      QuantumField[GaugeField, {mu3}, {i3}][p3], 
-      QuantumField[GaugeField, {mu4}, {i4}][p4]}] // 
-    FCRenameDummyIndices) /. {$AL[x_] -> si10}, SUNF]","I*Gstrong^2*(Pair[LorentzIndex[mu1], LorentzIndex[mu3]]*Pair[LorentzIndex[mu2], LorentzIndex[mu4]] -
+{"fcstFeynRule-ID1","Collect2[(FeynRule[-1/4 DOT[FieldStrength[al, be, a],
+		FieldStrength[al, be, a]] /.
+	FCGV[x_] :>
+	ToExpression[x], {QuantumField[GaugeField, {mu1}, {i1}][p1],
+	QuantumField[GaugeField, {mu2}, {i2}][p2],
+	QuantumField[GaugeField, {mu3}, {i3}][p3],
+	QuantumField[GaugeField, {mu4}, {i4}][p4]}] //
+	FCRenameDummyIndices) /. {$AL[x_] -> si10}, SUNF]","I*Gstrong^2*(Pair[LorentzIndex[mu1], LorentzIndex[mu3]]*Pair[LorentzIndex[mu2], LorentzIndex[mu4]] -
 	Pair[LorentzIndex[mu1], LorentzIndex[mu2]]*Pair[LorentzIndex[mu3], LorentzIndex[mu4]])*
 	SUNF[SUNIndex[i1], SUNIndex[i4], SUNIndex[si10]]*SUNF[SUNIndex[i2], SUNIndex[i3], SUNIndex[si10]] +
 I*Gstrong^2*(Pair[LorentzIndex[mu1], LorentzIndex[mu4]]*Pair[LorentzIndex[mu2], LorentzIndex[mu3]] -
@@ -33,12 +33,19 @@ I*Gstrong^2*(Pair[LorentzIndex[mu1], LorentzIndex[mu4]]*Pair[LorentzIndex[mu2], 
 	SUNF[SUNIndex[i1], SUNIndex[i2], SUNIndex[si10]]*SUNF[SUNIndex[i3], SUNIndex[i4], SUNIndex[si10]]"},
 
 {"fcstFeynRule-ID2","FeynRule[QuantumField[FCPartialD[LorentzIndex[b]], GaugeField,
-	LorentzIndex[a], SUNIndex[a]].QuantumField[
+	LorentzIndex[a], SUNIndex[aa]].QuantumField[
 	FCPartialD[LorentzIndex[b]], GaugeField, LorentzIndex[a],
-	SUNIndex[a]], {QuantumField[GaugeField, {mu1}, {i1}][p1],
+	SUNIndex[aa]], {QuantumField[GaugeField, {mu1}, {i1}][p1],
 	QuantumField[GaugeField, {mu2}, {i2}][p2]}]","-2 I Pair[LorentzIndex[mu1], LorentzIndex[mu2]] Pair[Momentum[p1],
 	Momentum[p2]] SUNDelta[SUNIndex[i1], SUNIndex[i2]]"},
 {"fcstFeynRule-ID3","FeynRule[2*(QuantumField[AntiQuarkField].LeftRightPartialD[
 	i1].QuantumField[QuarkField]), {QuantumField[QuarkField][p1],
-QuantumField[AntiQuarkField][p2]}] // FCE","FV[p1, i1] - FV[p2, i1]"}
+QuantumField[AntiQuarkField][p2]}] // FCE","FV[p1, i1] - FV[p2, i1]"},
+{"fcstFeynRule-ID4","FeynRule[- la/4! QuantumField[phi]^4, {QuantumField[phi][p1],
+QuantumField[phi][p2],QuantumField[phi][p3], QuantumField[phi][p4]}]","(-I)*la"},
+{"fcstFeynRule-ID5","FeynRule[
+I QuantumField[AntiQuarkField] . GA[mu] . CovariantD[mu] .
+	QuantumField[QuarkField], {QuantumField[GaugeField, {mu}, {a}][p1],
+QuantumField[QuarkField][p2], QuantumField[AntiQuarkField][p3]},
+FCE -> True] // SMPToSymbol","I*gs*GA[mu]*SUNT[a]"}
 };
