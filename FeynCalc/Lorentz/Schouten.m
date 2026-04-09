@@ -31,17 +31,28 @@ End[]
 
 Begin["`Schouten`Private`"]
 
-Schouten[y_, 0] :=
+Options[Schouten] = {
+	FCI -> False,
+	FCE -> False,
+	MaxIterations -> 10
+};
+
+Schouten[y_, 0, OptionsPattern[]] :=
 	y;
-Schouten[y_, oparg_:42] :=
-	(
+
+Schouten[y_, oparg_:42, OptionsPattern[]] :=
+	Block[{res},
+
 	If[	!FreeQ2[{y}, FeynCalc`Package`NRStuff],
 			Message[FeynCalc::nrfail];
 			Abort[]
 	];
 
-	FixedPoint[schouten[#, oparg]&, FeynCalcInternal[y], 14]
-	);
+	res = FixedPoint[schouten[#, oparg]&, FeynCalcInternal[y], OptionValue[MaxIterations]];
+
+	res
+
+	];
 
 liget[_. Eps[x1_[y1_], x2_[y2_], x3_[y3_], x4_[y4_]] Pair[x5_[y5_], x6_[y6_]]] :=
 	{x1[y1],x2[y2],x3[y3],x4[y4],x5[y5],x6[y6]};

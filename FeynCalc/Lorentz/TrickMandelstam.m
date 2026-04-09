@@ -26,27 +26,6 @@ End[]
 
 Begin["`TrickMandelstam`Private`"]
 
-nterms[x_Plus] :=
-	Length[x];
-
-nterms[x_] :=
-	Block[ {ntermslex = Expand[x]},
-		If[ Head[ntermslex]===Plus,
-			ntermslex = Length[ntermslex],
-			If[ x===0,
-				ntermslex = 0,
-				ntermslex = 1
-			]
-		];
-		ntermslex
-	];
-
-nsortQ[x_,y_] :=
-	True/;nterms[x]<=nterms[y];
-
-nsortQ[x_,y_] :=
-	False/;nterms[x]>nterms[y];
-
 TrickMandelstam[y_, {}] :=
 	y;
 
@@ -69,6 +48,29 @@ TrickMandelstam[a_ , {es_, te_, uu_, mm_}] :=
 
 		tres//Factor2
 	];
+
+nterms[x_Plus] :=
+	Length[x];
+
+nterms[x_] :=
+	Block[ {ntermslex = Expand[x]},
+		If[ Head[ntermslex]===Plus,
+			ntermslex = Length[ntermslex],
+			If[ x===0,
+				ntermslex = 0,
+				ntermslex = 1
+			]
+		];
+		ntermslex
+	];
+
+nsortQ[x_,y_] :=
+	True/;nterms[x]<=nterms[y];
+
+nsortQ[x_,y_] :=
+	False/;nterms[x]>nterms[y];
+
+
 
 trickmandelstam[yy_Times, ar_List] :=
 	Map[TrickMandelstam[#, ar]&, yy];
@@ -115,12 +117,9 @@ trickmandelstam[x_Plus,man_List] :=
 		tricktemp = drickstu[nx,man];
 
 		(tricktemp/.Plus->plusch0/.plusch0->plusch /. plusch->Plus)
-	]/;(Length[man]===4 || man==={}) && Head[x]=!=Times;
+	]/;(Length[man]===4 || man==={});
 
-drickback[x_,__] :=
-	x;
-
-drickstu[ x_Plus,{s_,t_,u_,m_}  ] :=
+drickstu[x_Plus, {s_,t_,u_,m_}] :=
 	Block[ {result,tristemp,eM,otherv,nuLL,trickman},
 		(* Check if an overall factorization is possible *)
 		tristemp = Factor2[ x/.s->(m-t-u) ];

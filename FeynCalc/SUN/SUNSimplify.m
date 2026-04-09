@@ -55,12 +55,9 @@ End[]
 
 Begin["`SUNSimplify`Private`"]
 
-sunSiVerbose::usage="";
 dummyInd::usage="";
 optSUNTraceEvaluate::usage="";
-(*
-SetAttributes[SUNSimplify, Listable];
-*)
+
 Options[SUNSimplify] = {
 	Check				-> True,
 	Collecting			-> True,
@@ -84,19 +81,19 @@ SUNSimplify[a_ == b_, opts:OptionsPattern[]] :=
 (*	Given a list of expressions/amplitudes, SUNSimplify can distribute
 	the evaluation over subkernels *)
 SUNSimplify[expr_List, opts:OptionsPattern[]] :=
-	Block[{sunSiVerbose, time, res},
+	Block[{optVerbose, time, res},
 
 		If [OptionValue[FCVerbose]===False,
-			sunSiVerbose=$VeryVerbose,
+			optVerbose=$VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer],
-				sunSiVerbose=OptionValue[FCVerbose]
+				optVerbose=OptionValue[FCVerbose]
 			];
 		];
 
 		time=AbsoluteTime[];
 
 		If[	$ParallelizeFeynCalc && OptionValue[FCParallelize],
-				FCPrint[1, "SUNSimplify: Applying SUNSimplify to a list in parallel." , FCDoControl->sunSiVerbose];
+				FCPrint[1, "SUNSimplify: Applying SUNSimplify to a list in parallel." , FCDoControl->optVerbose];
 
 				With[{ooo = {opts}},
 					ParallelEvaluate[
@@ -106,11 +103,11 @@ SUNSimplify[expr_List, opts:OptionsPattern[]] :=
 				res = ParallelMap[(SUNSimplify[#,FCParallelContext`SUNSimplify`pOpts, FCParallelize->False])&,expr, DistributedContexts->None,
 					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[expr]/$KernelCount]/10]],
 
-				FCPrint[1, "SUNSimplify: Applying SUNSimplify to a list.", FCDoControl->sunSiVerbose];
+				FCPrint[1, "SUNSimplify: Applying SUNSimplify to a list.", FCDoControl->optVerbose];
 				res = (SUNSimplify[#, FilterRules[{opts}, Except[FCParallelize|FCVerbose]]]& /@ expr)
 		];
 
-		FCPrint[1, "SUNSimplify: Done applying SUNSimplify to a list, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->sunSiVerbose];
+		FCPrint[1, "SUNSimplify: Done applying SUNSimplify to a list, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 		res
 
 	];
@@ -118,7 +115,7 @@ SUNSimplify[expr_List, opts:OptionsPattern[]] :=
 SUNSimplify[expr_/; !MemberQ[{List,Equal},Head[expr]], OptionsPattern[]] :=
 	Block[{	ex, temp, optSUNNToCACF, optExplicit, optFactoring, time, sunsiIso, listColoredObjects,
 			listColoredObjectsEval, finalRepRule, optSUNFJacobi, optCollecting, res, optTimeConstrained,
-			listColorFactor, listColorFactorEval, check, mark, hash},
+			listColorFactor, listColorFactorEval, check, mark, hash, optVerbose},
 
 		optCollecting		= OptionValue[Collecting];
 		optFactoring		= OptionValue[Factoring];
@@ -129,9 +126,9 @@ SUNSimplify[expr_/; !MemberQ[{List,Equal},Head[expr]], OptionsPattern[]] :=
 		optTimeConstrained	= OptionValue[TimeConstrained];
 
 		If [OptionValue[FCVerbose]===False,
-			sunSiVerbose=$VeryVerbose,
+			optVerbose=$VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer?Positive | 0],
-				sunSiVerbose=OptionValue[FCVerbose]
+				optVerbose=OptionValue[FCVerbose]
 			];
 		];
 
@@ -141,16 +138,16 @@ SUNSimplify[expr_/; !MemberQ[{List,Equal},Head[expr]], OptionsPattern[]] :=
 		];
 		temp = ex;
 
-		FCPrint[1, "SUNSimplify: Entering.", FCDoControl->sunSiVerbose];
-		FCPrint[3, "SUNSimplify: Entering with ", temp, FCDoControl->sunSiVerbose];
+		FCPrint[1, "SUNSimplify: Entering.", FCDoControl->optVerbose];
+		FCPrint[3, "SUNSimplify: Entering with ", temp, FCDoControl->optVerbose];
 
 		(* Isolate everything except for the color structures that we are interested in*)
 		time=AbsoluteTime[];
-		FCPrint[1, "SUNSimplify: Collecting terms w.r.t. colored objects.", FCDoControl->sunSiVerbose];
+		FCPrint[1, "SUNSimplify: Collecting terms w.r.t. colored objects.", FCDoControl->optVerbose];
 		temp = FCColorIsolate[temp, FCI->True,Isolate->True, IsolateFast->True, IsolateNames->sunsiIso, Head->sunObj,
 			ClearHeads->{sunObj}, ExceptHeads->{SUNN,CA,CF}, "ExpandNestedDOTs" -> True, FCTraceExpand->True];
-		FCPrint[1,"SUNSimplify: collecting done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->sunSiVerbose];
-		FCPrint[3, "SUNSimplify: After collecting terms w.r.t. coloredcolorSimplifyFromSUNF2SUND2 objects: ",temp, FCDoControl->sunSiVerbose];
+		FCPrint[1,"SUNSimplify: collecting done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+		FCPrint[3, "SUNSimplify: After collecting terms w.r.t. coloredcolorSimplifyFromSUNF2SUND2 objects: ",temp, FCDoControl->optVerbose];
 
 		(*	Verify that all color expressions have been properly isolated *)
 		If[	OptionValue[Check],
@@ -158,7 +155,7 @@ SUNSimplify[expr_/; !MemberQ[{List,Equal},Head[expr]], OptionsPattern[]] :=
 			check = check /. sunTrace[holdDOTColor[x__SUNT]] :> hash[Hash[{x}]] /. sunObj[x_]/;!FreeQ[x,Plus] :> mark[sunObj[x]];
 
 			If[	!FreeQ[check,sunTrace] || !FreeQ[check,mark],
-				FCPrint[4, "SUNSimplify: Check: ",check, FCDoControl->sunSiVerbose];
+				FCPrint[4, "SUNSimplify: Check: ",check, FCDoControl->optVerbose];
 				Message[SUNSimplify::failmsg,"Failed to properly isolate the color algebraic expressions."];
 				Abort[]
 			];
@@ -167,10 +164,10 @@ SUNSimplify[expr_/; !MemberQ[{List,Equal},Head[expr]], OptionsPattern[]] :=
 
 		(* It is better to canonicalize the indices at the very beginning. FCCanonicalizeDummyIndices can handle this automatically*)
 		time=AbsoluteTime[];
-		FCPrint[1, "SUNSimplify: Renaming.", FCDoControl->sunSiVerbose];
+		FCPrint[1, "SUNSimplify: Renaming.", FCDoControl->optVerbose];
 		temp = FCCanonicalizeDummyIndices[temp, FCI -> True, Head ->{SUNIndex,SUNFIndex}];
-		FCPrint[1, "SUNSimplify: Renaming done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->sunSiVerbose];
-		FCPrint[3, "SUNSimplify: After renaming, ", temp, FCDoControl->sunSiVerbose];
+		FCPrint[1, "SUNSimplify: Renaming done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+		FCPrint[3, "SUNSimplify: After renaming, ", temp, FCDoControl->optVerbose];
 
 		ex = temp;
 
@@ -188,16 +185,16 @@ SUNSimplify[expr_/; !MemberQ[{List,Equal},Head[expr]], OptionsPattern[]] :=
 			SUND[args__, OptionsPattern[]] :> sund[args]
 		};
 
-		FCPrint[3, "SUNSimplify: Unique colored objects: ", listColoredObjectsEval, FCDoControl->sunSiVerbose];
+		FCPrint[3, "SUNSimplify: Unique colored objects: ", listColoredObjectsEval, FCDoControl->optVerbose];
 
 		listColoredObjectsEval = Expand2[#,{sunTrace, holdDOTColor, SUNT,sunf,sund,sunf2,sund2,SUNDelta,SUNFDelta}]&/@listColoredObjectsEval;
 		listColoredObjectsEval = colorIndexContract/@listColoredObjectsEval;
 
-		FCPrint[3, "SUNSimplify: After initial contractions of color deltas: ", listColoredObjectsEval, FCDoControl->sunSiVerbose];
+		FCPrint[3, "SUNSimplify: After initial contractions of color deltas: ", listColoredObjectsEval, FCDoControl->optVerbose];
 
 		listColoredObjectsEval = listColoredObjectsEval /. colorIndexContract->colorSimplifyGeneric /.
 		colorSimplifyGeneric->colorSimplifyGenericTripleTrace /. colorSimplifyGenericTripleTrace->colorSimplifyGeneric;
-		FCPrint[3, "SUNSimplify: After colorSimplifyGeneric: ", listColoredObjectsEval, FCDoControl->sunSiVerbose];
+		FCPrint[3, "SUNSimplify: After colorSimplifyGeneric: ", listColoredObjectsEval, FCDoControl->optVerbose];
 
 		(*Switching to sunf2/sund2*)
 		If[	!FreeQ2[listColoredObjectsEval,{sunf,sund}],
@@ -206,7 +203,7 @@ SUNSimplify[expr_/; !MemberQ[{List,Equal},Head[expr]], OptionsPattern[]] :=
 			colorSimplifyGenericTripleTrace->colorSimplifyGeneric;
 		];
 
-		FCPrint[3, "SUNSimplify: After simplifying terms with SUNFs and SUNDs: ", listColoredObjectsEval, FCDoControl->sunSiVerbose];
+		FCPrint[3, "SUNSimplify: After simplifying terms with SUNFs and SUNDs: ", listColoredObjectsEval, FCDoControl->optVerbose];
 
 
 		If[ optSUNTraceEvaluate===True,
@@ -218,7 +215,7 @@ SUNSimplify[expr_/; !MemberQ[{List,Equal},Head[expr]], OptionsPattern[]] :=
 				SUND[args__, OptionsPattern[]] :> sund[args]
 			};
 			listColoredObjectsEval= listColoredObjectsEval/. colorSimplifyGeneric[x_] :> Expand2[x,{sunTrace, holdDOTColor, SUNT,sunf,sund,sunf2,sund2}];
-			FCPrint[3, "SUNSimplify: After taking care of color traces: ", listColoredObjectsEval, FCDoControl->sunSiVerbose];
+			FCPrint[3, "SUNSimplify: After taking care of color traces: ", listColoredObjectsEval, FCDoControl->optVerbose];
 		];
 
 		(* Back substitution of the remaining sunf2/sund2 symbols *)
@@ -232,13 +229,13 @@ SUNSimplify[expr_/; !MemberQ[{List,Equal},Head[expr]], OptionsPattern[]] :=
 		If[ TrueQ[optExplicit],
 			listColoredObjectsEval = listColoredObjectsEval /. colorSimplifyGeneric -> insertColorTraces /. insertColorTraces -> colorSimplifyGeneric/.
 			colorSimplifyGeneric-> colorSimplifyGenericTripleTrace /. colorSimplifyGenericTripleTrace->colorSimplifyGeneric;
-			FCPrint[3, "SUNSimplify: After reinserting SUNF/SUND symbols: ", listColoredObjectsEval, FCDoControl->sunSiVerbose];
+			FCPrint[3, "SUNSimplify: After reinserting SUNF/SUND symbols: ", listColoredObjectsEval, FCDoControl->optVerbose];
 			listColoredObjectsEval = Expand2[#,{colorSimplifyGeneric}]&/@listColoredObjectsEval
 		];
 
 		listColoredObjectsEval = listColoredObjectsEval /. {sunf -> SUNF, sund -> SUND};
 
-		FCPrint[3, "SUNSimplify: After reinserting SUNF/SUND symbols: ", listColoredObjectsEval, FCDoControl->sunSiVerbose];
+		FCPrint[3, "SUNSimplify: After reinserting SUNF/SUND symbols: ", listColoredObjectsEval, FCDoControl->optVerbose];
 
 		listColoredObjectsEval = listColoredObjectsEval/. colorSimplifyGeneric->Identity;
 		listColoredObjectsEval = listColoredObjectsEval /. holdDOTColor[] -> 1 /. holdDOTColor -> DOT /. SUNTrace -> sunTrace;
@@ -248,23 +245,23 @@ SUNSimplify[expr_/; !MemberQ[{List,Equal},Head[expr]], OptionsPattern[]] :=
 		(*Final replacement rule*)
 		finalRepRule = Thread[Rule[listColoredObjects, listColoredObjectsEval]];
 
-		FCPrint[3, "SUNSimplify: Final replacement rule: ", finalRepRule, FCDoControl->sunSiVerbose];
+		FCPrint[3, "SUNSimplify: Final replacement rule: ", finalRepRule, FCDoControl->optVerbose];
 
 		temp = ex /. Dispatch[finalRepRule] /. sunObj->Identity;
 
 		(* Canonicalize indices once again to account for the introduced dummy indices *)
 		time=AbsoluteTime[];
-		FCPrint[1, "SUNSimplify: Renaming.", FCDoControl->sunSiVerbose];
+		FCPrint[1, "SUNSimplify: Renaming.", FCDoControl->optVerbose];
 		temp = FCCanonicalizeDummyIndices[temp, FCI -> True, Head ->{SUNIndex,SUNFIndex}, SUNIndexNames->OptionValue[SUNIndexNames], SUNFIndexNames->OptionValue[SUNFIndexNames]];
-		FCPrint[1, "SUNSimplify: Renaming done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->sunSiVerbose];
-		FCPrint[3, "SUNSimplify: After renaming, ", temp, FCDoControl->sunSiVerbose];
+		FCPrint[1, "SUNSimplify: Renaming done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+		FCPrint[3, "SUNSimplify: After renaming, ", temp, FCDoControl->optVerbose];
 
 		(*Remove isolations*)
 		temp = FRH[temp, IsolateNames->sunsiIso];
 
 		If[ optSUNFJacobi && !FreeQ[temp, SUNF],
 			time=AbsoluteTime[];
-			FCPrint[1, "SUNSimplify: Applying the Jacobi identity for SUNFs.", FCDoControl->sunSiVerbose];
+			FCPrint[1, "SUNSimplify: Applying the Jacobi identity for SUNFs.", FCDoControl->optVerbose];
 				temp = temp /. SUNF -> sunf;
 				temp = temp /. (sunf[a_, b_, c_] sunf[d_, c_, e_] ) :> (- sunf[a, b, c] sunf[d, e, c]);
 				temp = temp /. (sunf[a_, b_, c_] sunf[c_, d_, e_] ) :> (sunf[a, b, c] sunf[d, e, c]);
@@ -276,12 +273,12 @@ SUNSimplify[expr_/; !MemberQ[{List,Equal},Head[expr]], OptionsPattern[]] :=
 				};
 				temp = temp /. sunf -> SUNF;
 
-			FCPrint[1, "SUNSimplify: Done applying Jacobi identity for SUNFs, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->sunSiVerbose];
+			FCPrint[1, "SUNSimplify: Done applying Jacobi identity for SUNFs, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
 		];
 
 		temp = temp /. SUNTrace-> sunTrace /. DOT->holdDOTColor /. sunTrace -> sunTraceOrder /. holdDOTColor->DOT /. sunTrace->SUNTrace;
 
-		FCPrint[3, "SUNSimplify: After reordering color traces: ", temp, FCDoControl->sunSiVerbose];
+		FCPrint[3, "SUNSimplify: After reordering color traces: ", temp, FCDoControl->optVerbose];
 
 		If[	!FreeQ[temp, sunTraceOrder],
 			Message[SUNSimplify::failmsg, "Something went wrong when reordering the color traces."];
@@ -294,7 +291,7 @@ SUNSimplify[expr_/; !MemberQ[{List,Equal},Head[expr]], OptionsPattern[]] :=
 		*)
 
 		time=AbsoluteTime[];
-		FCPrint[1, "SUNSimplify: Introducing SU(N) structure constants.", FCDoControl->sunSiVerbose];
+		FCPrint[1, "SUNSimplify: Introducing SU(N) structure constants.", FCDoControl->optVerbose];
 		If[	!FreeQ2[temp,{SUNIndex,SUNFIndex}],
 			temp = Collect2[temp,{SUNIndex,SUNFIndex}, Factoring->optFactoring, TimeConstrained->optTimeConstrained,Head->{Identity,colorFactor}],
 			temp = colorFactor[temp,1]
@@ -312,7 +309,7 @@ SUNSimplify[expr_/; !MemberQ[{List,Equal},Head[expr]], OptionsPattern[]] :=
 		listColorFactor = Cases2[temp,colorFactor];
 
 		listColorFactorEval = (listColorFactor /. colorFactor->Identity /. {CA ->SUNN, CF -> (SUNN^2-1)/(2 SUNN)});
-		FCPrint[3, "SUNSimplify: Prefactors containing SUNN:", listColorFactorEval, FCDoControl->sunSiVerbose];
+		FCPrint[3, "SUNSimplify: Prefactors containing SUNN:", listColorFactorEval, FCDoControl->optVerbose];
 
 		If[	optFactoring=!=False,
 				If[TrueQ[Head[optFactoring]=!=List],
@@ -340,8 +337,8 @@ SUNSimplify[expr_/; !MemberQ[{List,Equal},Head[expr]], OptionsPattern[]] :=
 			listColorFactorEval = listColorFactorEval /. (1-CA^2) -> (-2 CA CF) /. (1/CA) -> (CA - 2 CF) /. ((1 - CA^2)*(CA - 2*CF)) -> (-2*CF) /. (CA (CA-2 CF)) -> 1
 		];
 
-		FCPrint[1, "SUNSimplify: Done introducing SU(N) structure constants, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->sunSiVerbose];
-		FCPrint[3, "SUNSimplify: Rewritten prefactors:", listColorFactorEval, FCDoControl->sunSiVerbose];
+		FCPrint[1, "SUNSimplify: Done introducing SU(N) structure constants, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+		FCPrint[3, "SUNSimplify: Rewritten prefactors:", listColorFactorEval, FCDoControl->optVerbose];
 
 		finalRepRule = Thread[Rule[listColorFactor,listColorFactorEval]];
 
