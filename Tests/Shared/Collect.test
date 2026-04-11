@@ -156,9 +156,26 @@ b[43, c1 + c2, c3 + c4] + b[44, c1 + c2, c3 + c4] +
 b[45, c1 + c2, c3 + c4] + b[46, c1 + c2, c3 + c4] +
 b[47, c1 + c2, c3 + c4] + b[48, c1 + c2, c3 + c4] +
 b[49, c1 + c2, c3 + c4] + b[50, c1 + c2, c3 + c4])"},
-{"fcstCollect2-ID27","Collect2[Expand[(a - b - c - d)^5], a, Head -> {Identity, h2}]",
+{"fcstCollect2-ID28","Collect2[Expand[(a - b - c - d)^5], a, Head -> {Identity, h2}]",
 "h2[1, a^5] + h2[-5*(b + c + d), a^4] + h2[10*(b + c + d)^2, a^3] +
 h2[-10*(b + c + d)^3, a^2] + h2[5*(b + c + d)^4, a] + h2[-(b + c + d)^5, 1]"},
-{"fcstCollect2-ID28","Head[Collect2[a + b + c, d, IsolateNames -> KK]] === HoldForm",
-"True"}
+{"fcstCollect2-ID29","Head[Collect2[a + b + c, d, IsolateNames -> KK]] === HoldForm",
+"True"},
+{"fcstCollect2-ID30","Collect2[
+4 I Eps[Momentum[p1], Momentum[p4], Momentum[p5], Momentum[p6]] Pair[
+	Momentum[p2], Momentum[p3]] -
+4 I Eps[Momentum[p1], Momentum[p2], Momentum[p5],
+	Momentum[p6]] Pair[Momentum[p3], Momentum[p4]] +
+4 I Eps[Momentum[p1], Momentum[p2], Momentum[p4],
+	Momentum[p6]] Pair[Momentum[p3], Momentum[p5]] -
+4 I Eps[Momentum[p1], Momentum[p2], Momentum[p4],
+	Momentum[p5]] Pair[Momentum[p3], Momentum[p6]] -
+4 I (Eps[Momentum[p1], Momentum[p4], Momentum[p5],
+	Momentum[p6]] Pair[Momentum[p2], Momentum[p3]] -
+	Eps[Momentum[p1], Momentum[p2], Momentum[p5], Momentum[p6]] Pair[
+	Momentum[p3], Momentum[p4]] +
+	Eps[Momentum[p1], Momentum[p2], Momentum[p4], Momentum[p6]] Pair[
+	Momentum[p3], Momentum[p5]] -
+	Eps[Momentum[p1], Momentum[p2], Momentum[p4], Momentum[p5]] Pair[
+	Momentum[p3], Momentum[p6]]), Eps, Pair]","0"}
 };

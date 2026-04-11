@@ -77,12 +77,12 @@ Collect2[(h:Rule|RuleDelayed)[a_,b_], y__] :=
 
 
 Collect2[x_List, y__,  opts:OptionsPattern[]] :=
-	Block[{res,time,cl2Verbose,optIsolateNames},
+	Block[{res,time,optVerbose,optIsolateNames},
 
 		If[OptionValue[FCVerbose]===False,
-				cl2Verbose=$VeryVerbose,
+				optVerbose=$VeryVerbose,
 				If[MatchQ[OptionValue[FCVerbose], _Integer],
-					cl2Verbose=OptionValue[FCVerbose]
+					optVerbose=OptionValue[FCVerbose]
 				];
 			];
 
@@ -90,7 +90,7 @@ Collect2[x_List, y__,  opts:OptionsPattern[]] :=
 		optIsolateNames = OptionValue[IsolateNames];
 
 		If[	$ParallelizeFeynCalc && OptionValue[FCParallelize],
-				FCPrint[1, "Collect2: Applying Collect2 to a list in parallel." , FCDoControl->cl2Verbose];
+				FCPrint[1, "Collect2: Applying Collect2 to a list in parallel." , FCDoControl->optVerbose];
 				If[	optIsolateNames=!=False,
 					If[	TrueQ[!(Head[optIsolateNames] === List && Length[optIsolateNames]===$KernelCount)],
 						Message[Collect2::failmsg,"In the parallel mode, the option IsolateNames should be set to a list with the length being equal to the number of parallel kernels."];
@@ -101,20 +101,19 @@ Collect2[x_List, y__,  opts:OptionsPattern[]] :=
 				];
 
 				With[{xxx = {y}, ooo = {opts}},
-					ParallelEvaluate[FCParallelContext`Collect`pArgs = xxx; FCParallelContext`Collect`pOpts = FilterRules[ooo, Except[FCParallelize|FCVerbose|IsolateNames]];, DistributedContexts -> None]
+					ParallelEvaluate[FCParallelContext`Collect`pArgs = Flatten[xxx]; FCParallelContext`Collect`pOpts = FilterRules[ooo, Except[FCParallelize|FCVerbose|IsolateNames]];, DistributedContexts -> None]
 				];
-
 				res = ParallelMap[(Collect2[#,FCParallelContext`Collect`pArgs,FCParallelContext`Collect`pOpts, FCParallelize->False])&,x, DistributedContexts->None,
 					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[x]/$KernelCount]/10]];
 
 				If[	optIsolateNames=!=False,
 					Table[ParallelEvaluate[SetOptions[Collect2, IsolateNames -> False];, DistributedContexts -> None],{i,1,$KernelCount}];
 				],
-				FCPrint[1, "Collect2: Applying Collect2 to a list.", FCDoControl->cl2Verbose];
+				FCPrint[1, "Collect2: Applying Collect2 to a list.", FCDoControl->optVerbose];
 				res = (Collect2[#, y, FilterRules[{opts}, Except[FCParallelize|FCVerbose]]]& /@ x)
 		];
 
-		FCPrint[1, "Collect2: Collecing done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
+		FCPrint[1, "Collect2: Collecing done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 		res
 	];
 
@@ -125,11 +124,11 @@ Collect2[x_, z__, y_, opts:OptionsPattern[]] :=
 	Collect2[x, {z,y}, opts] /; (Head[y]=!=List && !OptionQ[y] && Head[x]=!=List && !OptionQ[x]);
 
 Collect2[expr_/; !MemberQ[{List,Equal},Head[expr]], vv_List/; (!OptionQ[vv] || vv==={}), opts:OptionsPattern[]] :=
-	Block[{monomList,ru,nx,lk,factoring,optIsolateNames,tog,fr0,frx,lin,tv={},mp,monomialHead,cd,co,dde,
-		new = 0, unity,re,compCON,ccflag = False, factor,expanding, times,time,time0,
-		null1,null2,coeffArray,tvm,coeffHead,optIsolateFast,tempIso,factorOut, monomRepRule={},
+	Block[{monomList,ru,ex,holdForm2,factoring,optIsolateNames,tog,fr0,frx,lin,tv={},mp,monomialHead,cd,co,dde,
+		new = 0, unity,res,compCON,ccflag = False, factor,expanding, times,time,time0, sparseArray, tmp,
+		null1,null2,coeffArray,tvm,coeffHead,optIsolateFast,tempIso,factorOut, monomRepRule={}, coeffs,
 		nonAtomicMonomials,optHead,firstHead,secondHead=Null,optInitialFunction,numerator,denominator,
-		optNumerator, optFactoringDenominator, optTimeConstrained, ident, cl2Verbose,optFCParallelize, frh},
+		optNumerator, optFactoringDenominator, optTimeConstrained, ident, optVerbose,optFCParallelize, frh},
 
 		If[	OptionValue[ParallelKernels] && $KernelID===0,
 			Message[Collect2::failmsg,"Tasks for parallel kernels are being executed on the main kernel."];
@@ -137,9 +136,9 @@ Collect2[expr_/; !MemberQ[{List,Equal},Head[expr]], vv_List/; (!OptionQ[vv] || v
 		];
 
 		If [OptionValue[FCVerbose]===False,
-			cl2Verbose=$VeryVerbose,
+			optVerbose=$VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer],
-				cl2Verbose=OptionValue[FCVerbose]
+				optVerbose=OptionValue[FCVerbose]
 			];
 		];
 
@@ -158,12 +157,6 @@ Collect2[expr_/; !MemberQ[{List,Equal},Head[expr]], vv_List/; (!OptionQ[vv] || v
 		optTimeConstrained 		= OptionValue[TimeConstrained];
 		factorOut 				= OptionValue[FCFactorOut];
 		optFCParallelize		= OptionValue[FCParallelize];
-
-		If[	optFCParallelize && optIsolateNames,
-			Message[Collect2::failmsg,"In the parallel mode, when applied to a single expression, the option IsolateNames must be set to False."];
-			Abort[]
-
-		];
 
 		If[	Head[optHead]===List,
 			firstHead 	= optHead[[1]];
@@ -199,198 +192,201 @@ Collect2[expr_/; !MemberQ[{List,Equal},Head[expr]], vv_List/; (!OptionQ[vv] || v
 				factor = factoring
 		];
 
-		FCPrint[1, "Collect2: Entering Collect2.", FCDoControl->cl2Verbose];
-		FCPrint[2, "Collect2: Entering with: ", expr, FCDoControl->cl2Verbose];
+		FCPrint[1, "Collect2: Entering Collect2.", FCDoControl->optVerbose];
+		FCPrint[2, "Collect2: Entering with: ", expr, FCDoControl->optVerbose];
 
-		nx = expr;
+		ex = expr;
 
-		If[	!FreeQ2[nx,{SeriesData,ConditionalExpression}],
+		If[	!FreeQ2[ex,{SeriesData,ConditionalExpression}],
 			Message[Collect2::failmsg,"Collect2 cannot work on expressions that contain SeriesData or ConditionalExpression!"];
 			Abort[]
 		];
 
-		If[	optNumerator && Head[nx]===Times,
-			numerator=Numerator[nx];
+		If[	optNumerator && Head[ex]===Times,
+			numerator=Numerator[ex];
 			If[ optFactoringDenominator===False,
-				denominator=Denominator[nx],
-				denominator=optFactoringDenominator[Denominator[nx]]
+				denominator=Denominator[ex],
+				denominator=optFactoringDenominator[Denominator[ex]]
 			];
-			nx = numerator,
+			ex = numerator,
 			denominator = 1
 		];
 
-		nx = nx /. OptionValue[IntermediateSubstitutions];
+		ex = ex /. OptionValue[IntermediateSubstitutions];
 
-		nx = nx/factorOut;
+		ex = ex/factorOut;
 
-		FCPrint[2,"Collect2: After factoring out ", factorOut, " : ", nx,  FCDoControl->cl2Verbose];
+		FCPrint[2,"Collect2: After factoring out ", factorOut, " : ", ex,  FCDoControl->optVerbose];
 
-		FCPrint[1, "Collect2: Applying initial function.", FCDoControl->cl2Verbose];
+		FCPrint[1, "Collect2: Applying initial function.", FCDoControl->optVerbose];
 		If[	Head[optInitialFunction]===List,
-			nx = (Composition@@optInitialFunction)[nx],
-			nx = optInitialFunction[nx]
+			ex = (Composition@@optInitialFunction)[ex],
+			ex = optInitialFunction[ex]
 		];
-		FCPrint[3, "Collect2: After initial function ", nx,  FCDoControl->cl2Verbose];
+		FCPrint[3, "Collect2: After initial function ", ex,  FCDoControl->optVerbose];
 
 		monomList = Union[Select[ vv, ((Head[#] =!= Plus) && (Head[#] =!= Times) && (!NumberQ[#]))& ]];
-		monomList = Select[ monomList, !FreeQ[nx, #]&];
+		monomList = Select[ monomList, !FreeQ[ex, #]&];
 
 		(*If the monomials are not atomic, we should better mask them beforehand *)
 		nonAtomicMonomials = Select[monomList, ! AtomQ[#] &];
 		If[nonAtomicMonomials=!={} && FCPatternFreeQ[nonAtomicMonomials],
 			monomRepRule = Thread[Rule[nonAtomicMonomials,Table[Unique["monom"], {r,1,Length[nonAtomicMonomials]} ]]];
 			monomList = monomList/.monomRepRule;
-			nx = nx/.monomRepRule;
+			ex = ex/.monomRepRule;
 			monomRepRule = Reverse/@monomRepRule
 		];
 
-		FCPrint[1, "Collect2: Monomials w.r.t which we will collect: ", monomList, FCDoControl->cl2Verbose];
+		FCPrint[1, "Collect2: Monomials w.r.t which we will collect: ", monomList, FCDoControl->optVerbose];
 
 		If[Length[monomList] === 0,
-			FCPrint[1, "Collect2: The input expression contains no relevant monomials, leaving.", FCDoControl->cl2Verbose];
+			FCPrint[1, "Collect2: The input expression contains no relevant monomials, leaving.", FCDoControl->optVerbose];
 			unity = 1;
-			re = factorOut factor[nx]/denominator;
+			res = factorOut factor[ex]/denominator;
 			If[	optIsolateNames=!=False,
-				re  = Isolate[re,IsolateNames -> optIsolateNames, IsolateFast-> optIsolateFast]
+				res  = Isolate[res,IsolateNames -> optIsolateNames, IsolateFast-> optIsolateFast]
 			];
-			Return[re]
+			Return[res]
 		];
 
 
 		(* Hm, that's a problem, maybe *)
-		If[!FreeQ[nx, ComplexConjugate],
+		If[!FreeQ[ex, ComplexConjugate],
 			ccflag = True;
-			nx = nx /. ComplexConjugate -> compCON;
+			ex = ex /. ComplexConjugate -> compCON;
 			monomList = monomList /. ComplexConjugate -> compCON;
 		];
 
-		nx = nx/. holdForm[k_[ii_]] -> lk[k][ii];
+		ex = ex/. holdForm[k_[ii_]] -> holdForm2[k][ii];
 
 		time=AbsoluteTime[];
 
 		frh[x_] := FRH[x/.holdForm->Identity, IsolateNames->{optIsolateNames,tempIso}];
 
 		If[ factoring === False,
-			FCPrint[1, "Collect2: No factoring function defined.", FCDoControl->cl2Verbose];
+			FCPrint[1, "Collect2: No factoring function defined.", FCDoControl->optVerbose];
 			(* 	This can speed things up, if the expression contains very large sums free of
 				monomials *)
-			nx = nx /. Plus -> holdPlus /. holdPlus[x__] /; FreeQ2[{x}, monomList] :>
+			ex = ex /. Plus -> holdPlus /. holdPlus[x__] /; FreeQ2[{x}, monomList] :>
 				Isolate[(Plus[x]/.holdPlus -> Plus), IsolateFast -> True, IsolateNames -> tempIso] /. holdPlus -> Plus;
 			tog[x_] := frh[x],
 
 
-			FCPrint[1, "Collect2: Factoring function is ", factor, FCDoControl->cl2Verbose];
+			FCPrint[1, "Collect2: Factoring function is ", factor, FCDoControl->optVerbose];
 			fr0[x__] :=
 				Plus[x] /; !FreeQ2[{x}, monomList];
 			tog[x_]  :=
 				factor[frh[x]];
 			frx[x__] :=
 				holdForm[Plus[x]];
-			nx = nx /. Plus -> fr0 /. fr0 -> frx
+			ex = ex /. Plus -> fr0 /. fr0 -> frx
 		];
 
 
 		If[ expanding =!= False,
 			time=AbsoluteTime[];
-			FCPrint[1, "Collect2: Expanding", FCDoControl->cl2Verbose];
-			nx  = Expand2[nx,monomList];
-			FCPrint[1, "Collect2: Expanding done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cl2Verbose]
+			FCPrint[1, "Collect2: Expanding", FCDoControl->optVerbose];
+			ex  = Expand2[ex,monomList];
+			FCPrint[1, "Collect2: Expanding done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose]
 		];
 
 		time=AbsoluteTime[];
-		FCPrint[1, "Collect2: Separating the part free of the monomials (linear part)", FCDoControl->cl2Verbose];
+		FCPrint[1, "Collect2: Separating the part free of the monomials (linear part)", FCDoControl->optVerbose];
 		(* lin denotes the part free of monomList *)
-		{lin,nx} = FCSplit[nx,monomList,Expanding->False];
-		FCPrint[1, "Collect2: Separation done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cl2Verbose];
-		FCPrint[3, "Collect2: Part that contains the monomials: ", nx, FCDoControl->cl2Verbose];
-		FCPrint[3, "Collect2: Linear part: ", lin, FCDoControl->cl2Verbose];
+		{lin,ex} = FCSplit[ex,monomList,Expanding->False];
+		FCPrint[1, "Collect2: Separation done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
+		FCPrint[3, "Collect2: Part that contains the monomials: ", ex, FCDoControl->optVerbose];
+		FCPrint[3, "Collect2: Linear part: ", lin, FCDoControl->optVerbose];
 
 		If[factoring =!= False && lin=!=0,
 			time=AbsoluteTime[];
-			FCPrint[1, "Collect2: Factoring the linear part", FCDoControl->cl2Verbose];
+			FCPrint[1, "Collect2: Factoring the linear part", FCDoControl->optVerbose];
 			lin = tog[lin];
-			FCPrint[1, "Collect2: Factoring done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cl2Verbose];
+			FCPrint[1, "Collect2: Factoring done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
 
 		];
 
 		time=AbsoluteTime[];
-		FCPrint[1, "Collect2: Wrapping the momomials with special heads.", FCDoControl->cl2Verbose];
+		FCPrint[1, "Collect2: Wrapping the momomials with special heads.", FCDoControl->optVerbose];
 
-		nx = (Map[(SelectFree[#, monomList] monomialHead[SelectNotFree[#, monomList]]) &,
-				nx + null1 + null2] /. {null1 | null2 -> 0}) ;
-		tv = Cases2[nx,monomialHead];
-		FCPrint[1, "Collect2: Wrapping done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->cl2Verbose];
+		ex = (Map[(SelectFree[#, monomList] monomialHead[SelectNotFree[#, monomList]]) &,
+				ex + null1 + null2] /. {null1 | null2 -> 0}) ;
+		tv = Cases2[ex,monomialHead];
+		FCPrint[1, "Collect2: Wrapping done, timing: ", N[AbsoluteTime[] - time, 4] , FCDoControl->optVerbose];
 
-		FCPrint[3, "Collect2: nx: ", nx , FCDoControl->cl2Verbose];
-		FCPrint[3, "Collect2: tv: ", tv , FCDoControl->cl2Verbose];
+		FCPrint[3, "Collect2: ex: ", ex , FCDoControl->optVerbose];
+		FCPrint[3, "Collect2: tv: ", tv , FCDoControl->optVerbose];
 
 		If[dde === True,
-			FCPrint[1, "Collect2: Also denominators containing variables will be collected", FCDoControl->cl2Verbose];
+			FCPrint[1, "Collect2: Also denominators containing variables will be collected", FCDoControl->optVerbose];
 			cd[x_] := ((Numerator[#]/(factor[Denominator[#]] /.
 			Plus-> (Collect2[Plus[##], monomList, opts]&)))& @ x ) /;
 			(!FreeQ[Denominator[x], Plus]) && (!FreeQ2[Denominator[x], monomList])
 		];
 
-		FCPrint[1, "Collect2: There are ", Length[tv] , " momomials to collect", FCDoControl->cl2Verbose];
+		FCPrint[1, "Collect2: There are ", Length[tv] , " momomials to collect", FCDoControl->optVerbose];
 
 		time=AbsoluteTime[];
-		FCPrint[1, "Collect2: Computing CoefficientArrays.", FCDoControl->cl2Verbose];
-		coeffArray = CoefficientArrays[nx,tv];
-		FCPrint[1, "Collect2: CoefficientArrays ready, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
-		FCPrint[3, "Collect2: CoefficientArrays: ", coeffArray, FCDoControl->cl2Verbose];
+		FCPrint[1, "Collect2: Computing CoefficientArrays.", FCDoControl->optVerbose];
+		coeffArray = CoefficientArrays[ex,tv];
+		FCPrint[1, "Collect2: CoefficientArrays ready, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
+		FCPrint[3, "Collect2: CoefficientArrays: ", coeffArray, FCDoControl->optVerbose];
 
-		time=AbsoluteTime[];
-		FCPrint[1, "Collect2: Collecting the monomials.", FCDoControl->cl2Verbose];
+		If[	coeffArray=!={0},
 
-		tvm = (frh[#] /. monomialHead -> cd /. cd -> firstHead)&/@tv;
+			If[	Length[coeffArray]>2 || Head[coeffArray[[2]]]=!=SparseArray,
+				Message[Collect2::failmsg,"Something went wrong when applying CoefficientArrays."];
+				Abort[]
+			];
 
-		FCPrint[3, "Collect2: tvm: ", tvm, FCDoControl->cl2Verbose];
+			If[	coeffArray[[1]]=!=0,
+				Message[Collect2::failmsg,"There is another linear part!"];
+				Abort[]
+			];
 
-		If[	coeffArray[[1]]=!=0,
-			Message[Collect2::failmsg,"There is another linear part!"];
-			Abort[]
-		];
+			sparseArray = coeffArray[[2]];
 
-		FCPrint[1, "Collect2: Done collecting the monomials, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
-		(*FCPrint[3, "Collect2: prelminiary new: ", new, FCDoControl->cl2Verbose];*)
-		time=AbsoluteTime[];
+			time=AbsoluteTime[];
+			FCPrint[1, "Collect2: Collecting the monomials.", FCDoControl->optVerbose];
 
+			tvm = (frh[#] /. monomialHead -> cd /. cd -> firstHead)&/@tv;
 
-		If[	optIsolateNames===False,
+			FCPrint[3, "Collect2: tvm: ", tvm, FCDoControl->optVerbose];
+			FCPrint[1, "Collect2: Done collecting the monomials, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
+
+			time=AbsoluteTime[];
 			If[	$ParallelizeFeynCalc && optFCParallelize,
-				FCPrint[1, "Collect2: Factoring the coefficients of the monomials in parallel.", FCDoControl->cl2Verbose];
-				With[{xxx = unity, yyy=factor},
-					ParallelEvaluate[FCParallelContext`Collect2`unity = xxx; FCParallelContext`Collect2`factor = yyy;, DistributedContexts -> None]
-				];
-				DistributeDefinitions[factor,factoring,optTimeConstrained];
+					FCPrint[1, "Collect2: Factoring coefficients of the monomials in parallel.", FCDoControl->optVerbose];
+					With[{xxx = unity, yyy=factor},
+						ParallelEvaluate[FCParallelContext`Collect2`unity = xxx; FCParallelContext`Collect2`factor = yyy;, DistributedContexts -> None]
+					];
+					DistributeDefinitions[factor,factoring,optTimeConstrained];
 
-				coeffHead[li_SparseArray]:=
-					Block[{tmp,res},
-						tmp = frh/@Normal[li];
-						res = ParallelMap[factor[FCParallelContext`Collect2`unity*#]&,tmp,
-						DistributedContexts -> None, Method->"ItemsPerEvaluation" -> Ceiling[N[Length[tmp]/$KernelCount]/10]];
-						res
-				],
+					coeffs = frh/@Normal[sparseArray];
+					coeffs = ParallelMap[factor[FCParallelContext`Collect2`unity*#]&,coeffs,
+							DistributedContexts -> None, Method->"ItemsPerEvaluation" -> Ceiling[N[Length[coeffs]/$KernelCount]/10]];
+					coeffs = coeffs /. FCParallelContext`Collect2`unity->unity;
 
-				FCPrint[1, "Collect2: Factoring the coefficients of the monomials (no isolation).", FCDoControl->cl2Verbose];
-				coeffHead[li_SparseArray]:=
-					tog[unity*#]&/@li
-			],
+					,
 
-			FCPrint[1, "Collect2: Factoring the coefficients of the monomials (with isolation).", FCDoControl->cl2Verbose];
-			coeffHead[li_SparseArray]:=
-				Isolate[tog[unity*#]/. {unity:>1, lk[ka_][j_] :> holdForm[ka[j]]},
-					IsolateNames -> optIsolateNames, IsolateFast-> optIsolateFast]&/@li;
+					FCPrint[1, "Collect2: Factoring coefficients of the monomials.", FCDoControl->optVerbose];
+					coeffs = tog[unity*#]&/@sparseArray
+			];
+			FCPrint[1, "Collect2: Done factoring coefficients of the monomials, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
+
+			If[	optIsolateNames=!=False,
+				time=AbsoluteTime[];
+				FCPrint[1, "Collect2: Isolating coefficients of the monomials.", FCDoControl->optVerbose];
+				coeffs = Isolate[#/. {unity->1, holdForm2[ka_][j_] :> holdForm[ka[j]]}, IsolateNames -> optIsolateNames, IsolateFast-> optIsolateFast]&/@coeffs;
+				FCPrint[1, "Collect2: Done isolating coefficients of the monomials, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
+			];
+
+			new =  Dot[coeffs,tvm],
+
+			new = 0
 		];
 
-		new =  Sum[dotHold[coeffHead[coeffArray[[i]]] , Sequence @@ Table[tvm, {i - 1}]], {i, 2, Length[coeffArray]}];
-
-		FCPrint[1, "Collect2: Done factoring the coefficients of the monomials, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
-
-
-		new = new /. dotHold-> Dot;
-
-		FCPrint[3, "Collect2: new: ", new, FCDoControl->cl2Verbose];
+		FCPrint[3, "Collect2: new: ", new, FCDoControl->optVerbose];
 
 		If[	!FreeQ2[lin,monomList],
 			Message[Collect2::failmsg,"Linear part contains monomials!"];
@@ -400,50 +396,40 @@ Collect2[expr_/; !MemberQ[{List,Equal},Head[expr]], vv_List/; (!OptionQ[vv] || v
 
 		time=AbsoluteTime[];
 
-		FCPrint[1, "Collect2: Releasing tempIso.", FCDoControl->cl2Verbose];
+		FCPrint[1, "Collect2: Releasing tempIso.", FCDoControl->optVerbose];
 		If[ optIsolateNames =!= False,
 			lin = Isolate[frh[lin], IsolateNames->optIsolateNames, IsolateFast->optIsolateFast],
 			lin = frh[lin/.holdForm->Identity]
 		];
-		FCPrint[1, "Collect2: Done releasing tempIso, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
+		FCPrint[1, "Collect2: Done releasing tempIso, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 
 		If[	secondHead=!=Null,
 			time=AbsoluteTime[];
-			FCPrint[1, "Collect2: Applying secondHead.", FCDoControl->cl2Verbose];
+			FCPrint[1, "Collect2: Applying secondHead.", FCDoControl->optVerbose];
 			lin = secondHead[lin,1] /. secondHead[0,_] -> 0;
 			new = secondHead/@(new + null1 + null2) /. secondHead[null1|null2]->0 /. secondHead[a_firstHead b_]:> secondHead[b,a] /. ident->Identity;
-			FCPrint[1, "Collect2: Done applying secondHead, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
+			FCPrint[1, "Collect2: Done applying secondHead, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 		];
 
 		time=AbsoluteTime[];
-		FCPrint[1, "Collect2: Putting re togehter.", FCDoControl->cl2Verbose];
-		re = ((new + lin) /. lk[ka_][j_] -> holdForm[ka[j]] /.	frx->Plus);
-		FCPrint[1, "Collect2: Done putting re togehter, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
+		FCPrint[1, "Collect2: Putting res togehter.", FCDoControl->optVerbose];
+		res = ((new + lin) /. holdForm2[ka_][j_] -> holdForm[ka[j]] /.	frx->Plus);
+		FCPrint[1, "Collect2: Done putting res togehter, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 
-
-		(*	(*Just a small consistency check *)
-		If[	optIsolateNames =!= False,
-			If[	!FreeQ2[FRH[Cases[re,_HoldForm,Infinity]//Sort//DeleteDuplicates,IsolateNames->{optIsolateNames}], monomList],
-				Message[Collect2::failmsg,"Isolated prefactors contain monomials!"];
-				Abort[]
-			]
-		];*)
-
-
-		FCPrint[1, "Collect2: Done releasing tempIso, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->cl2Verbose];
+		FCPrint[1, "Collect2: Done releasing tempIso, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 
 		If[ccflag,
-			re = re /. compCON -> ComplexConjugate
+			res = res /. compCON -> ComplexConjugate
 		];
 
 		unity=1;
 
-		re = (factorOut (re/denominator))/.monomRepRule;
+		res = (factorOut (res/denominator))/.monomRepRule;
 
-		FCPrint[1, "Collect2: Leaving.", FCDoControl->cl2Verbose];
-		FCPrint[3, "Collect2: Leaving with", re, FCDoControl->cl2Verbose];
+		FCPrint[1, "Collect2: Leaving.", FCDoControl->optVerbose];
+		FCPrint[3, "Collect2: Leaving with ", res, FCDoControl->optVerbose];
 
-		re
+		res
 	];
 
 FCPrint[1, "Collect2 loaded"];
