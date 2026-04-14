@@ -200,6 +200,10 @@ DummyIndex::usage =
 "DummyIndex is an option of CovariantD specifying an index to use as dummy
 summation index. If set to Automatic, unique indices are generated.";
 
+PartitHead::usage=
+"PartitHead[expr, h] returns a list {ex1, h[ex2]} with ex1 free of expressions
+with head h, and h[ex2] having head h.";
+
 Begin["`Package`"];
 End[]
 
@@ -638,6 +642,20 @@ PowerSimplify[x_, OptionsPattern[]] :=
 
 
 
+PartitHead[x_, y_] :=
+	{1, x} /; Head[x] === y;
+
+PartitHead[x_Times, y_] :=
+	{x, 1} /; FreeQ[x, y];
+
+PartitHead[x_, y_] :=
+	{x, 0} /; FreeQ[x, y];
+
+PartitHead[x_Plus, y_] :=
+	{#, x - #}& @ Select[x, FreeQ[#, y[___]]&];
+
+PartitHead[x_Times,y_] :=
+	{x/#, #}& @ Select[x,If[Head[#]===y,True]&];
 
 
 

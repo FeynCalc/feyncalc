@@ -615,8 +615,8 @@ pavereduce[w_ , opts:OptionsPattern[]] :=
 			For[i = 1, i<=nn, i++,
 				FCPrint[2,"breaking down # ", i, " / ", nn];
 				If[ nn===1,
-					pre = PartitHead[nw,StandardMatrixElement],
-					pre = PartitHead[nw[[i]],StandardMatrixElement]
+					pre = FCSplit[nw,{StandardMatrixElement}],
+					pre = FCSplit[nw[[i]],{StandardMatrixElement}]
 				];
 				re = re + pre[[2]] pavereduce[ pre[[1]], opts]
 			];

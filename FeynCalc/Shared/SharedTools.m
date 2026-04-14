@@ -241,11 +241,6 @@ NTerms::usage=
 NumericalFactor::usage =
 "NumericalFactor[expr] gives the overall numerical factor of expr.";
 
-PartitHead::usage=
-"PartitHead[expr, h] returns a list {ex1, h[ex2]} with ex1 free of expressions
-with head h, and h[ex2] having head h.";
-
-
 SelectFree2::usage=
 "SelectFree2[expr, a, b, ...] is similar to SelectFree but it also differs from
 the latter in several respects.
@@ -1052,21 +1047,6 @@ NumericalFactor[x_]:=
 			1
 		]
 	];
-
-PartitHead[x_, y_] :=
-	{1, x} /; Head[x] === y;
-
-PartitHead[x_Times, y_] :=
-	{x, 1} /; FreeQ[x, y];
-
-PartitHead[x_, y_] :=
-	{x, 0} /; FreeQ[x, y];
-
-PartitHead[x_Plus, y_] :=
-	{#, x - #}& @ Select[x, FreeQ[#, y[___]]&];
-
-PartitHead[x_Times,y_] :=
-	{x/#, #}& @ Select[x,If[Head[#]===y,True]&];
 
 SelectFree[0,__] :=
 	0;

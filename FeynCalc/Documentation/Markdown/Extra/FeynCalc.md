@@ -148,7 +148,7 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCReorderList](../FCReorderList.md) - reorder elements of a list
 - [FCReplaceRepeated](../FCReplaceRepeated.md) - alternative to Mathematica's `ReplaceRepeated`
 - [FCShowReferenceCard](../FCShowReferenceCard.md) - FeynArts cheatsheet
-- [FCSplit](../FCSplit.md), [FCProductSplit](../FCProductSplit.md), [PartitHead](../PartitHead.md), [SelectFree](../SelectFree.md), [SelectNotFree](../SelectNotFree.md), [SelectFree2](../SelectFree2.md), [SelectNotFree2](../SelectNotFree2.md) - alternatives to Mathematica's `Select`
+- [FCSplit](../FCSplit.md), [FCProductSplit](../FCProductSplit.md), [SelectFree](../SelectFree.md), [SelectNotFree](../SelectNotFree.md), [SelectFree2](../SelectFree2.md), [SelectNotFree2](../SelectNotFree2.md) - alternatives to Mathematica's `Select`
 - [FCSymmetrize](../FCSymmetrize.md) - symmetrizes with respect to the given variables
 - [FCValuesSynchronizedQ](../FCValuesSynchronizedQ.md) - checks consistency of specified definitions in the parallel mode
 - [FeynCalcHowToCite](../FeynCalcHowToCite.md) - lists relevant FeynCalc publications

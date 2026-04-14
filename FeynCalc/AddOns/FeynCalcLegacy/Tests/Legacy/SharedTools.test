@@ -104,3 +104,17 @@ Tests`Shared`fcstSharedToolsPower2 = {
 	"Power2[-a, b Epsilon]"}
 };
 
+
+Tests`Shared`fcstSharedToolsPartitHead = {
+{"fcstSharedToolsPartitHead-ID1","PartitHead[f[x], f]",
+	"{1, f[x]}"},
+{"fcstSharedToolsPartitHead-ID2","PartitHead[f[x], g]",
+	"{f[x], 0}"},
+{"fcstSharedToolsPartitHead-ID3","PartitHead[a b f[x], f]",
+	"{a b,f[x]}"},
+{"fcstSharedToolsPartitHead-ID4","PartitHead[a b , f]",
+	"{a b,1}"},
+{"fcstSharedToolsPartitHead-ID5","PartitHead[Expand[(a[x] (b[x] + c[x]))/d[x]], b]",
+	"{(a[x] c[x])/d[x], (a[x] b[x])/d[x]}"}
+};
+
