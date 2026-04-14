@@ -25,6 +25,7 @@ FeynCalc/Documentation/Scripts/template.latex
 build/*
 .settings/*
 .amateras
+*.code-workspace
 /.DS_Store
 /.gitignore
 /.project
