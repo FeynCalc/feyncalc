@@ -18,8 +18,9 @@ Tests`LoopIntegrals`fcstTdec = {
 	"{{X1 -> D, X2 -> SPD[l, l], X3 -> SPD[l, p1], X4 -> SPD[p1, p1]},
 	-(((X1 X3^2 - X2 X4) FVD[p1, i1] FVD[p1,i2])/((1 - X1) X4^2)) + ((X3^2 - X2 X4) MTD[i1,	i2])/((1 - X1) X4)}"},
 {"fcstTdec-ID2","Tdec[{{l, i1}, {l, i2}}, {p1},UseTIDL->False]",
-	"{{X1 -> D, X2 -> SPD[l, l], X3 -> SPD[l, p1], X4 -> SPD[p1, p1]},
-	-(((X1 X3^2 - X2 X4) FVD[p1, i1] FVD[p1,i2])/((1 - X1) X4^2)) + ((X3^2 - X2 X4) MTD[i1,	i2])/((1 - X1) X4)}"},
+	"{{X1 -> D, X2 -> SPD[l, l], X3 -> SPD[l, p1],
+		X4 -> SPD[p1,p1]}, ((X1*X3^2 - X2*X4)*FVD[p1, i1]*FVD[p1, i2])/((-1 + X1)*
+	X4^2) + ((-X3^2 + X2*X4)*MTD[i1, i2])/((-1 + X1)*X4)}"},
 {"fcstTdec-ID3","Tdec[{{l, i1}, {l, i2}}, {p1}, List -> False]","(MTD[i1, i2] (SPD[l, p1]^2 - SPD[l, l] SPD[p1, p1]))/((1 - D) SPD[p1,
 	p1]) - (FVD[p1, i1] FVD[p1, i2] (D SPD[l, p1]^2 - SPD[l, l] SPD[p1, p1]))/((1 - D) SPD[p1,p1]^2)"},
 {"fcstTdec-ID4","Tdec[{{l, i1}, {l, i2}}, {p1}, UseTIDL->False,List -> False]","(MTD[i1, i2] (SPD[l, p1]^2 - SPD[l, l] SPD[p1, p1]))/((1 - D) SPD[p1,
@@ -54,7 +55,7 @@ FeynCalcExternal -> False]","-((Pair[LorentzIndex[i1], LorentzIndex[i2]] (Pair[M
 {"fcstTdec-ID13","Tdec[{{l1, i1}, {l1, i2}, {l2, i3}}, {}, UseTIDL -> False]","{0,0}"},
 {"fcstTdec-ID14","Tdec[{{l1, i1}, {l1, i2}, {l2, i3}}, {}, UseTIDL -> False, List->False]","0"},
 {"fcstTdec-ID15","Tdec[{{q2, mu1}, {q1, mu2}, {q1, mu3}, {q1, mu4}, {q1, mu5}}, {k1},
-Parallelize -> False, List -> False]","-(((FVD[k1, mu1]*MTD[mu2, mu5]*MTD[mu3, mu4] + FVD[k1, mu1]*MTD[mu2, mu4]*MTD[mu3, mu5] + FVD[k1, mu1]*MTD[mu2, mu3]*MTD[mu4, mu5])*SPD[k1, q2]*(SPD[k1, q1]^2 - SPD[k1, k1]*SPD[q1, q1])^2)/
+List -> False]","-(((FVD[k1, mu1]*MTD[mu2, mu5]*MTD[mu3, mu4] + FVD[k1, mu1]*MTD[mu2, mu4]*MTD[mu3, mu5] + FVD[k1, mu1]*MTD[mu2, mu3]*MTD[mu4, mu5])*SPD[k1, q2]*(SPD[k1, q1]^2 - SPD[k1, k1]*SPD[q1, q1])^2)/
 ((1 - D^2)*SPD[k1, k1]^3)) + ((FVD[k1, mu3]*FVD[k1, mu4]*FVD[k1, mu5]*MTD[mu1, mu2] + FVD[k1, mu2]*FVD[k1, mu4]*FVD[k1, mu5]*MTD[mu1, mu3] + FVD[k1, mu2]*FVD[k1, mu3]*FVD[k1, mu5]*MTD[mu1, mu4] +
 	FVD[k1, mu2]*FVD[k1, mu3]*FVD[k1, mu4]*MTD[mu1, mu5])*SPD[k1, q1]*(4*SPD[k1, q1]^2 + D*SPD[k1, q1]^2 - 3*SPD[k1, k1]*SPD[q1, q1])*(SPD[k1, q1]*SPD[k1, q2] - SPD[k1, k1]*SPD[q1, q2]))/
 ((1 - D^2)*SPD[k1, k1]^4) - ((FVD[k1, mu5]*MTD[mu1, mu4]*MTD[mu2, mu3] + FVD[k1, mu4]*MTD[mu1, mu5]*MTD[mu2, mu3] + FVD[k1, mu5]*MTD[mu1, mu3]*MTD[mu2, mu4] + FVD[k1, mu3]*MTD[mu1, mu5]*MTD[mu2, mu4] +
