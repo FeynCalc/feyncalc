@@ -1,15 +1,17 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: TrickMandelstam *)
+(* :Title: Schouten															*)
 
-(* :Author: Rolf Mertig *)
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
+*)
 
-(* ------------------------------------------------------------------------ *)
-(* :History: File created on 22 June '97 at 23:01 *)
-(* ------------------------------------------------------------------------ *)
-
-(* :Summary: simplification of expressions involving s,t,u *)
-
+(* :Summary: Simplification of expressions involving Mandelstam variables	*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -32,56 +34,29 @@ TrickMandelstam[y_, {}] :=
 TrickMandelstam[ y_, __ ] :=
 	Factor2[y] /; FreeQ[y,Plus];
 
-TrickMandelstam[x_,es_,te_,uu_, mas_] :=
-	TrickMandelstam[x, {es,te,uu,mas}];
+TrickMandelstam[x_,s_,t_,u_, mm_] :=
+	TrickMandelstam[x, {s,t,u,mm}];
 
 TrickMandelstam[x_List,y__] :=
 	Map[TrickMandelstam[#,y]&, x];
 
-TrickMandelstam[a_ , {es_, te_, uu_, mm_}] :=
+TrickMandelstam[expr_ , {s_, t_, u_, mm_}] :=
 	Block[ {tres},
 
-		tres = trickmandelstam[a//Factor2, {es,te,uu,mm}];
+		tres = trickmandelstam[expr//Factor2, {s,t,u,mm}];
+
 		If[ LeafCount[tres]<2000,
 			tres = Cancel[tres]
 		];
 
-		tres//Factor2
-	];
-
-nterms[x_Plus] :=
-	Length[x];
-
-nterms[x_] :=
-	Block[ {ntermslex = Expand[x]},
-		If[ Head[ntermslex]===Plus,
-			ntermslex = Length[ntermslex],
-			If[ x===0,
-				ntermslex = 0,
-				ntermslex = 1
-			]
-		];
-		ntermslex
+		Factor2[tres]
 	];
 
 nsortQ[x_,y_] :=
-	True/;nterms[x]<=nterms[y];
-
-nsortQ[x_,y_] :=
-	False/;nterms[x]>nterms[y];
-
-
-
-trickmandelstam[yy_Times, ar_List] :=
-	Map[TrickMandelstam[#, ar]&, yy];
-
-trickmandelstam[yy_Power, ar_List] :=
-	TrickMandelstam[yy[[1]], ar]^yy[[2]];
-
-trickmandelstam[y_, args_List] :=
-	Block[ {nulLl},
-		trickmandelstam[nulLl+y,args]/.nulLl->0
-	] /; (Head[y]=!=Times) && (Head[y]=!=Power) && (Head[y]=!=Plus);
+	If[	TrueQ[NTerms[x]<=NTerms[y]],
+		True,
+		False
+	];
 
 drickstu[exp_,{},___] :=
 	exp;
@@ -101,8 +76,37 @@ short1[a_^n_,c__] :=
 short1[x_,__] :=
 	x/;(Head[x]=!=Plus) && (Head[x]=!=Times) && (Head[x]=!=Power);
 
+drickstu[x_Plus, {s_,t_,u_,m_}] :=
+	Block[ {result, tristemp, eM, otherv, null, trickman},
+		(* Check if an overall factorization is possible *)
+		tristemp = Factor2[ x/.s->(m-t-u) ];
+		If[ Head[tristemp]=!=Plus,
+			result = TrickMandelstam[tristemp,{s,t,u,m}],
+			otherv = Complement[ Variables[tristemp], Variables[s+t+u+m] ];
+			(* The simplifications cannot occur outside certain coefficients *)
+			If[ otherv =!= {},
+				result = Factor2/@ (Collect2[eM tristemp, Append[otherv,eM]]);
+				result = Map[short1[#,s,t,u,m]&,result+null]/.null->0/.eM->1;
+				result = Map[Factor2, result],
+				result = short1[tristemp, s,t,u,m]
+			]
+		];
+		result
+	];
+
+trickmandelstam[yy_Times, ar_List] :=
+	Map[TrickMandelstam[#, ar]&, yy];
+
+trickmandelstam[yy_Power, ar_List] :=
+	TrickMandelstam[yy[[1]], ar]^yy[[2]];
+
+trickmandelstam[y_, args_List] :=
+	Block[{	null},
+		trickmandelstam[null+y,args]/.null->0
+	]/; !MemberQ[{Times,Power,Plus},Head[y]];
+
 trickmandelstam[x_Plus,man_List] :=
-	Block[ {tricktemp,merk,nx = x,plusch, plusch0},
+	Block[{	tricktemp,merk,nx = x,plusch, plusch0},
 
 		plusch0[z__] :=
 			Plus[z] /; !FreeQ[{z},plusch0];
@@ -117,25 +121,8 @@ trickmandelstam[x_Plus,man_List] :=
 		tricktemp = drickstu[nx,man];
 
 		(tricktemp/.Plus->plusch0/.plusch0->plusch /. plusch->Plus)
-	]/;(Length[man]===4 || man==={});
 
-drickstu[x_Plus, {s_,t_,u_,m_}] :=
-	Block[ {result,tristemp,eM,otherv,nuLL,trickman},
-		(* Check if an overall factorization is possible *)
-		tristemp = Factor2[ x/.s->(m-t-u) ];
-		If[ Head[tristemp]=!=Plus,
-			result = TrickMandelstam[tristemp,{s,t,u,m}],
-			otherv = Complement[ Variables[tristemp], Variables[s+t+u+m] ];
-			(* The simplifications cannot occur outside certain coefficients *)
-			If[ otherv =!= {},
-				result = Factor2/@ (Collect2[eM tristemp, Append[otherv,eM]]);
-				result = Map[short1[#,s,t,u,m]&,result+nuLL]/.nuLL->0/.eM->1;
-				result = Map[Factor2, result],
-				result = short1[tristemp, s,t,u,m]
-			]
-		];
-		result
-	];
+	]/;(Length[man]===4 || man==={});
 
 FCPrint[1,"TrickMandelstam.m loaded."];
 End[]
