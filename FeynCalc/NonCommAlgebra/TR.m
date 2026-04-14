@@ -1,27 +1,29 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: TR  *)
+(* :Title: TR														*)
 
-(* :Author: Rolf Mertig *)
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
+*)
 
-(* ------------------------------------------------------------------------ *)
-
-(* :Summary: Dirac trace calculation  (see also DiracTrace) *)
+(* :Summary:  Dirac trace calculation										*)
 
 (* ------------------------------------------------------------------------ *)
 
 TR::usage=
-"TR[exp] calculates the Dirac trace of exp. Depending on the setting of the
-option SUNTrace also a trace over $SU(N)$ objects is performed.
+"TR[exp] calculates the Dirac trace of exp.
 
-TR[list] finds the trace of the matrix or tensor list.
+If the option SUNSimplify is set to True (default), $SU(N)$ algebra is
+simplified as well.
 
-TR[list, f] finds a generalized trace, combining terms with f instead of Plus.
-
-TR[list, f, n] goes down to level n in list.
-
-TR[expression] calculates the DiracTrace, i.e., TR[expression] if any of
-DiracGamma, GA, GAD, GS or GSD is present in expression.";
+Notice that TR is a legacy function that should not be used in new codes.
+Instead, you can wrap your string Dirac matrices with DiracTrace and
+subsequently apply DiracSimplify to calculate the trace.";
 
 (* ------------------------------------------------------------------------ *)
 
@@ -30,7 +32,7 @@ End[]
 
 Begin["`TR`Private`"]
 
-trVerbose::usage="";
+optVerbose::usage="";
 
 Options[TR] = {
 	Contract			-> True,
@@ -38,79 +40,61 @@ Options[TR] = {
 	EpsContract			-> True,
 	Expand				-> True,
 	Explicit			-> True,
+	FCI					-> False,
 	FCE					-> False,
 	FCVerbose			-> True,
 	Factoring			-> Automatic,
 	Mandelstam			-> {},
 	PairCollect			-> False,
-	SUNNToCACF			-> False,
-	SUNTraceEvaluate			-> False,
-	Schouten			-> 0,
+	SUNSimplify			-> True,
+	SUNNToCACF			-> True,
 	TraceOfOne			-> 4,
 	West				-> True
 };
 
 
 TR[expr_, rul:OptionsPattern[]] :=
-	Block[{ex, doot, diractr, dit, fcex, diractrev, sunntocacf,
-		diracTraceOpts,sunTraceOpts,trOpts},
+	Block[{	ex, time, optSUNNToCACF, diracTraceOpts, trOpts, optVerbose},
 
 		If [OptionValue[FCVerbose]===False,
-			trVerbose=$VeryVerbose,
+			optVerbose=$VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer],
-				trVerbose=OptionValue[FCVerbose]
+				optVerbose=OptionValue[FCVerbose]
 			];
 		];
 
-		FCPrint[1,"TR: Entering with: ", expr, FCDoControl->trVerbose];
+		FCPrint[1,"TR: Entering.", FCDoControl->optVerbose];
+		FCPrint[3,"TR: Entering with: ", expr, FCDoControl->optVerbose];
 
-		ex=FeynCalcInternal[expr];
-
-		diractrev		= OptionValue[DiracTraceEvaluate];
-		sunntocacf		= OptionValue[SUNNToCACF];
-		trOpts 			= Flatten[Join[{rul}, FilterRules[Options[TR], Except[{rul}]]]];
-		diracTraceOpts	= Flatten[FilterRules[Options[trOpts], Options[DiracTrace]]];
-		sunTraceOpts	= Flatten[FilterRules[Options[trOpts], Options[SUNTraceEvaluate]]];
-
-		If[!FreeQ2[ex, {CF,CA}],
-			sunntocacf = True
+		If[ OptionValue[FCI],
+			ex = expr,
+			ex = FCI[expr]
 		];
 
-		If[OptionValue[Explicit],
+		optSUNNToCACF			= OptionValue[SUNNToCACF];
+		trOpts 					= Flatten[Join[{rul}, FilterRules[Options[TR], Except[{rul}]]]];
+		diracTraceOpts			= Flatten[FilterRules[Options[trOpts], Options[DiracTrace]]];
+
+		If[	OptionValue[Explicit],
 			ex = Explicit[ex]
 		];
 
-		If[OptionValue[SUNTraceEvaluate] && !FreeQ2[ex, {SUNIndex,ExplicitSUNIndex}],
-			FCPrint[1,"TR: Computing the SU(N) trace.", FCDoControl->trVerbose];
-			ex = DiracTrace[ex,diracTraceOpts];
-			ex = SUNSimplify[ex, SUNNToCACF -> sunntocacf, SUNTraceEvaluate -> True, Explicit -> False];
-			ex = ex /. (DiracTraceEvaluate -> False) :>	(DiracTraceEvaluate -> diractrev) //
-			SUNSimplify[#, SUNTraceEvaluate -> False, SUNNToCACF -> sunntocacf, Explicit -> False]&,
+		time=AbsoluteTime[];
+		FCPrint[1,"TR: Computing the overall Dirac trace.", FCDoControl->optVerbose];
+		ex = DiracTrace[ex, FCI->True, diracTraceOpts];
+		FCPrint[1,"TR: Done computing the overall Dirac trace, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 
-			If[FreeQ[ex, SUNIndex|ExplicitSUNIndex],
-				ex = DiracTrace[ex, diracTraceOpts];
-				If[	OptionValue[SUNTraceEvaluate],
-					ex = SUNSimplify[ex, SUNTraceEvaluate -> True, SUNNToCACF -> sunntocacf, Explicit -> False]
-				];
-						ex = ex /. (DiracTraceEvaluate -> False) :> (DiracTraceEvaluate -> diractrev) //
-						SUNSimplify[#, SUNTraceEvaluate -> False, SUNNToCACF -> sunntocacf, Explicit -> False]&,
-						(*!FreeQ[ex, SUNIndex|ExplicitSUNIndex] -> !SUNTraceEvaluate*)
-						ex = DiracTrace[ex// SUNSimplify[#, SUNNToCACF -> sunntocacf,
-						SUNTraceEvaluate -> OptionValue[SUNTraceEvaluate],	Explicit -> OptionValue[Explicit]]&, diracTraceOpts]
-			]
-		];
-
-		FCPrint[1,"TR: Computing the Dirac trace.", FCDoControl->trVerbose];
-		FCPrint[4,"TR: Options for Dirac trace: ", {diracTraceOpts}, FCDoControl->trVerbose];
-		diractr[y__] :=
-			(DiracTrace @@ Join[{y}, diracTraceOpts]);
-		ex = ex /. DiracTrace -> diractr;
+		time=AbsoluteTime[];
+		FCPrint[1,"TR: Applying SUNSimplify.", FCDoControl->optVerbose];
+		ex = SUNSimplify[ex, FCI->True, SUNNToCACF -> optSUNNToCACF];
+		FCPrint[1,"TR: Done applying SUNSimplify, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 
 		If[	OptionValue[FCE],
 			ex = FCE[ex]
 		];
 
-		FCPrint[1,"TR: Leaving with: ", ex, FCDoControl->trVerbose];
+		FCPrint[1,"TR: Leaving.", FCDoControl->optVerbose];
+		FCPrint[3,"TR: Leaving with: ", ex, FCDoControl->optVerbose];
 		ex
 	];
 

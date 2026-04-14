@@ -271,7 +271,6 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [FCTraceFactor](../FCTraceFactor.md) - pulls $c$-numbers out of traces
 - [NonCommFreeQ](../NonCommFreeQ.md), [NonCommQ](../NonCommQ.md) - checks if the expression contains noncommutative quantities
 - [NonCommHeadQ](../NonCommHeadQ.md) - checks if the head of the expression is noncommutative
-- [TR](../TR.md) - calculates Dirac and possibly also $SU(N)$ traces
 - [UnDeclareAllAntiCommutators](../UnDeclareAllAntiCommutators.md), [UnDeclareAllCommutators](../UnDeclareAllCommutators.md), [UnDeclareAntiCommutator](../UnDeclareAntiCommutator.md), [UnDeclareCommutator](../UnDeclareCommutator.md) - removes definitions of (anti)commutators
 - [UnDeclareNonCommutative](../UnDeclareNonCommutative.md) - undeclares noncommutative objects
 
@@ -458,3 +457,4 @@ FeynCalc is a Mathematica package for algebraic calculations in Quantum Field Th
 - [PartialFourVector](../PartialFourVector.md) - use [TID](../TID.md) instead
 - [PropagatorDenominatorExplicit](../PropagatorDenominatorExplicit.md) - use [FeynAmpDenominator](../FeynAmpDenominator.md) instead
 - [ScalarProductExpand](../ScalarProductExpand.md) - use [ExpandScalarProduct](../ExpandScalarProduct.md) instead
+- [TR](../TR.md) - calculates Dirac and possibly also $SU(N)$ traces
