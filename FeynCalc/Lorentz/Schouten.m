@@ -1,14 +1,17 @@
+(* ::Package:: *)
 
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: Schouten *)
+(* :Title: Schouten															*)
 
-(* :Author: Rolf Mertig *)
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
+*)
 
-(* ------------------------------------------------------------------------ *)
-(* :History: File created on 22 June '97 at 23:00 *)
-(* ------------------------------------------------------------------------ *)
-
-(* :Summary: Option and Function *)
+(* :Summary: Applies Schouten identity 										*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -40,18 +43,21 @@ Options[Schouten] = {
 Schouten[y_, 0, OptionsPattern[]] :=
 	y;
 
-Schouten[y_, oparg_:42, OptionsPattern[]] :=
-	Block[{res},
+Schouten[expr_, oparg_:42, OptionsPattern[]] :=
+	Block[{res,ex},
 
-	If[	!FreeQ2[{y}, FeynCalc`Package`NRStuff],
-			Message[FeynCalc::nrfail];
-			Abort[]
-	];
+		If[	!OptionValue[FCI],
+			ex = FCI[expr],
+			ex = expr
+		];
 
-	res = FixedPoint[schouten[#, oparg]&, FeynCalcInternal[y], OptionValue[MaxIterations]];
+		res = FixedPoint[schouten[#, oparg]&, ex, OptionValue[MaxIterations]];
 
-	res
+		If[ OptionValue[FCE],
+			res = FCE[res]
+		];
 
+		res
 	];
 
 liget[_. Eps[x1_[y1_], x2_[y2_], x3_[y3_], x4_[y4_]] Pair[x5_[y5_], x6_[y6_]]] :=
@@ -62,7 +68,7 @@ lisch[{a1_,a2_,a3_,a4_,a5_,a6_}] :=
 
 
 epc[a_, b_] :=
-	If[ Length[Position[PartitHead[a, Eps][[2]], LorentzIndex]] <Length[Position[PartitHead[b, Eps][[2]], LorentzIndex]],
+	If[ Length[Position[FCSplit[a, {Eps}][[2]], LorentzIndex]] <Length[Position[FCSplit[b, {Eps}][[2]], LorentzIndex]],
 		True,
 		False,
 		False
@@ -80,28 +86,23 @@ epsnterms[a_] :=
 		]
 	];
 
-schouten[x_,opar_:42] :=
-	Block[ {i=0,nx,temp0,temp,lind,ltemp,ntemp,
-			schou,sor, all,result,numberofli, optarg = opar,
-			temp1, nxf = 1},
+schouten[x_, optarg_] :=
+	Block[{	i=0, nx, temp0, temp, lind, ltemp, ntemp,
+			schou, sor, all, result, numberofli, temp1, nxf = 1},
 
-		nx = EpsEvaluate[ExpandScalarProduct[x]//Expand]//Expand;
+		nx = EpsEvaluate[ExpandScalarProduct[x,FCI->True],FCI->True];
 		(* Split the sum into two parts *)
 		result = nx;
 
 		(* eps x1 + eps x2 + ... + rest, then split the eps part from the rest! *)
-		all  = PartitHead[nx, Eps];
+		all = FCSplit[nx,{Eps}];
 
 		If[ !(Head[all[[2]]]===Plus),
 			Return[result nxf]
 		];
 
-		temp0 = PartitHead[all[[2]], Pair];
-
+		temp0 = FCSplit[all[[2]], {Pair}];
 		temp = temp0[[2]];
-
-		(*let us assume that optarg is always an Integer! *)
-		(* then dummIlabel is always false! *)
 
 		If[ !((Head[temp]===Plus) && Length[temp] > 1 && (Length[temp] < optarg)),
 			Return[result nxf]
@@ -129,7 +130,7 @@ schouten[x_,opar_:42] :=
 							*)
 							lind = liget[temp[[i]]];
 
-							(* Strange, can lind return something different than 6??*)
+							(* If lind returns something different than 6, then the structure Eps Pair is not there.*)
 							If[ Length[lind]===6,
 								(* create a list of 5 possible arrangements of terms of Schouten ident. *)
 
@@ -138,18 +139,14 @@ schouten[x_,opar_:42] :=
 								(*special sorting, w.r.t the position of the Lorentz indices in eps *)
 								sor = Sort[ schou, epc ]//Reverse;
 								(*rotate one position to the left if temp does not contain the first element of sor *)
-								Do[
-									If[ FreeQ[temp, sor[[1]]],
-										sor = RotateLeft[sor]
-									],
-									{6}
-								];
+								sor = Nest[If[ FreeQ[temp, #[[1]]],
+										RotateLeft[#], #]&, sor, 6];
 
 								If[ !FreeQ[temp, sor[[1]]],
-									(*for the case that temp does contain an element of sort, apply the identity*)
-									ntemp = Expand[EpsEvaluate[temp/.sor[[1]]-> (-Plus@@Rest[sor])]];
-									(* or all LorentzIndices are inside all Eps's *)
-									(* if the number of terms containing eps is smaller than the original length, or the number o
+									(*for the case that temp does contain an element of sort, apply the Schouten identity*)
+									ntemp = Expand[EpsEvaluate[temp/.sor[[1]]-> (-Plus@@Rest[sor]),FCI->True]];
+
+									(* if the number of terms containing eps is smaller than the original length, or the number
 									of the Lorentz indices remains unchanged, take this identity(?).*)
 									If[ (epsnterms[ntemp] < ltemp) ||
 										(Union[Length[Position[#, LorentzIndex]]& /@ Select[Variables[ntemp], Head[#]===Eps&]]  === {numberofli}),
