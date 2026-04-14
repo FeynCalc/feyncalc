@@ -4,13 +4,20 @@ M$Information = {
   Authors      -> {"Vladyslav Shtabovenko"},
   Institutions -> {"FeynCalc project"},
   Emails       -> {""},
-  Date         -> "08.08.2024"
+  Date         -> "27.03.2026"
 };
 
 M$Parameters = {
  la == {ParameterType -> Internal},
- ga == {ParameterType -> Internal}
+ ga == {ParameterType -> Internal},
+ Zg == {ParameterType -> Internal},
+ Zla == {ParameterType -> Internal},
+ Zx == {ParameterType -> Internal},
+ Zphi == {ParameterType -> Internal},
+ Zmphi == {ParameterType -> Internal},
+ Zmx == {ParameterType -> Internal},
 }
+
 
 M$ClassesDescription = {
 

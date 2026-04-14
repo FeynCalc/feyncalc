@@ -33,8 +33,8 @@ LoadModel[frModelPath];
 
 (*Without FR$Loop=True; the counter-terms will not be included into the model file *)
 FR$Loop=True;
-SetDirectory[FileNameJoin[{$UserBaseDirectory,"Applications","FeynCalc","FeynArts","Models"}]];
-WriteFeynArtsOutput[LY,Output->"LY",CouplingRename->False]
+SetDirectory[FileNameJoin[{$UserBaseDirectory,"Applications","FeynCalc","Examples","Models"}]];
+WriteFeynArtsOutput[LY,Output->"Yukawa",CouplingRename->False]
 
 
 
