@@ -52,9 +52,6 @@ End[]
 
 Begin["`FCLoopApplyTopologyMappings`Private`"]
 
-fclamVerbose::usage = "";
-rule::usage = "";
-
 Options[FCLoopApplyTopologyMappings] = {
 	Collecting					-> True,
 	ExpandScalarProduct			-> True,
@@ -76,14 +73,14 @@ FCLoopApplyTopologyMappings[expr_, toposRaw:{__FCTopology}, opts:OptionsPattern[
 	FCLoopApplyTopologyMappings[expr, {{}, toposRaw}, opts];
 
 FCLoopApplyTopologyMappings[expr_, {mappings_List, toposRaw_List}, OptionsPattern[]] :=
-	Block[{	ex, res, time, uniqueProductsList, tmp, repRule, optFCLoopCreateRulesToGLI,
-			topos, optHead, rulesToGLI, topoIDs, rulesToGLIFinal, sps, spsEval, ruleSP,
+	Block[{	ex, res, time, uniqueProductsList, tmp, repRule, optFCLoopCreateRulesToGLI, rule,
+			topos, optHead, rulesToGLI, topoIDs, rulesToGLIFinal, sps, spsEval, ruleSP, optVerbose,
 			lmoms, repRuleExtra, aux, optFCParallelize, optTimeConstrained, optFactoring, optIsolateNames},
 
 		If[	OptionValue[FCVerbose] === False,
-			fclamVerbose = $VeryVerbose,
+			optVerbose = $VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer],
-			fclamVerbose = OptionValue[FCVerbose]];
+			optVerbose = OptionValue[FCVerbose]];
 		];
 
 		optHead 					= OptionValue[Head];
@@ -97,28 +94,28 @@ FCLoopApplyTopologyMappings[expr_, {mappings_List, toposRaw_List}, OptionsPatter
 		If[	!OptionValue[FCI],
 			(*	For large expressions FCI might require a considerable amount of time! *)
 			time=AbsoluteTime[];
-			FCPrint[1,"FCLoopApplyTopologyMappings: Applying FCI.", FCDoControl->fclamVerbose];
+			FCPrint[1,"FCLoopApplyTopologyMappings: Applying FCI.", FCDoControl->optVerbose];
 			{ex, topos} = FCI[{expr,toposRaw}];
-			FCPrint[1, "FCLoopApplyTopologyMappings: Done applying FCI, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclamVerbose],
+			FCPrint[1, "FCLoopApplyTopologyMappings: Done applying FCI, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose],
 			{ex, topos} = {expr,toposRaw}
 		];
 
-		If[	TrueQ[!FreeQ[tmp,optHead]],
+		If[	TrueQ[!FreeQ[ex,optHead]],
 			tmp = ex;
 			uniqueProductsList = Cases2[tmp,optHead],
 
 			time=AbsoluteTime[];
-			FCPrint[1,"FCLoopApplyTopologyMappings: Applying Collect2.", FCDoControl->fclamVerbose];
-			tmp = Collect2[ex,GLI,Factoring->optFactoring,TimeConstrained->optTimeConstrained, FCParallelize->optFCParallelize];
+			FCPrint[1,"FCLoopApplyTopologyMappings: Applying Collect2.", FCDoControl->optVerbose];
+			tmp = Collect2[ex,GLI,Factoring->optFactoring,Head -> {Identity,optHead},TimeConstrained->optTimeConstrained, FCParallelize->optFCParallelize];
 			uniqueProductsList = Cases2[tmp,optHead];
-			FCPrint[1, "FCLoopApplyTopologyMappings: Collect2 done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclamVerbose]
+			FCPrint[1, "FCLoopApplyTopologyMappings: Collect2 done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose]
 		];
 
-		FCPrint[3,"FCLoopApplyTopologyMappings: Unique products of GLIs and scalar products: ", uniqueProductsList , FCDoControl->fclamVerbose];
+		FCPrint[3,"FCLoopApplyTopologyMappings: Unique products of GLIs and scalar products: ", uniqueProductsList , FCDoControl->optVerbose];
 
 		If[	uniqueProductsList==={},
 			(*Nothing to do*)
-			FCPrint[1, "FCLoopApplyTopologyMappings: Leaving.", FCDoControl->fclamVerbose];
+			FCPrint[1, "FCLoopApplyTopologyMappings: Leaving.", FCDoControl->optVerbose];
 			res = ex;
 			If[	OptionValue[FCE],
 				res = FCE[res]
@@ -128,21 +125,21 @@ FCLoopApplyTopologyMappings[expr_, {mappings_List, toposRaw_List}, OptionsPatter
 
 		(*TODO More checks ...*)
 		time=AbsoluteTime[];
-		FCPrint[1,"FCLoopApplyTopologyMappings: Creating initial replacement rules for the products.", FCDoControl->fclamVerbose];
+		FCPrint[1,"FCLoopApplyTopologyMappings: Creating initial replacement rules for the products.", FCDoControl->optVerbose];
 
 		If[	TrueQ[mappings==={}],
 			aux = Map[List[#,{},{}]&,topos],
 			aux = mappings
 		];
 
-		repRule = Map[applyMapping[(SelectNotFree[uniqueProductsList, #[[1]][[1]]]), #] &, aux];
+		repRule = Map[applyMapping[(SelectNotFree[uniqueProductsList, #[[1]][[1]]]), #, rule] &, aux];
 
 		(*
 			repRule is a list of mappings where the number of entries corresponds to the number
 			of topologies that can be mapped to other topologies.
 		*)
 
-		FCPrint[3,"FCLoopApplyTopologyMappings: repRule: ", repRule, FCDoControl->fclamVerbose];
+		FCPrint[3,"FCLoopApplyTopologyMappings: repRule: ", repRule, FCDoControl->optVerbose];
 
 		aux = Complement[uniqueProductsList,First/@Flatten[repRule]];
 
@@ -157,18 +154,18 @@ FCLoopApplyTopologyMappings[expr_, {mappings_List, toposRaw_List}, OptionsPatter
 		repRuleExtra = Thread[Rule[aux,aux]];
 
 		repRule = Flatten[repRule] /. rule->Rule;
-		FCPrint[1, "FCLoopApplyTopologyMappings: Done creating rules, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclamVerbose];
-		FCPrint[2, "FCLoopApplyTopologyMappings: Generated ", Length[repRule], " initial replacement rules", FCDoControl->fclamVerbose];
-		FCPrint[3, "FCLoopApplyTopologyMappings: Replacement rules: ",repRule, FCDoControl->fclamVerbose];
+		FCPrint[1, "FCLoopApplyTopologyMappings: Done creating rules, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
+		FCPrint[2, "FCLoopApplyTopologyMappings: Generated ", Length[repRule], " initial replacement rules", FCDoControl->optVerbose];
+		FCPrint[3, "FCLoopApplyTopologyMappings: Replacement rules: ",repRule, FCDoControl->optVerbose];
 
 		If[	TrueQ[optFCLoopCreateRulesToGLI=!=False],
 			time=AbsoluteTime[];
-			FCPrint[1,"FCLoopApplyTopologyMappings: Rewriting numerators with loop momenta as GLIs.", FCDoControl->fclamVerbose];
+			FCPrint[1,"FCLoopApplyTopologyMappings: Rewriting numerators with loop momenta as GLIs.", FCDoControl->optVerbose];
 
 			repRule = Join[repRule,repRuleExtra];
 			rulesToGLI = FCLoopCreateRulesToGLI[topos,FCI->True];
 
-			FCPrint[3,"FCLoopApplyTopologyMappings: Replacement rules for numerators in terms of GLIs: ", rulesToGLI, FCDoControl->fclamVerbose];
+			FCPrint[3,"FCLoopApplyTopologyMappings: Replacement rules for numerators in terms of GLIs: ", rulesToGLI, FCDoControl->optVerbose];
 
 			topoIDs = First[(Last[#] /. optHead[_, x_] :> x)] & /@ (repRule);
 
@@ -180,7 +177,7 @@ FCLoopApplyTopologyMappings[expr_, {mappings_List, toposRaw_List}, OptionsPatter
 
 			rulesToGLIFinal= Map[First[SelectNotFree[rulesToGLI,#]]&,topoIDs];
 
-			FCPrint[3, "FCLoopApplyTopologyMappings: Final rules for numerators: ", rulesToGLIFinal, FCDoControl->fclamVerbose];
+			FCPrint[3, "FCLoopApplyTopologyMappings: Final rules for numerators: ", rulesToGLIFinal, FCDoControl->optVerbose];
 
 			If[	OptionValue[ExpandScalarProduct],
 				sps = Cases2[Last/@repRule, Pair,CartesianPair];
@@ -191,14 +188,14 @@ FCLoopApplyTopologyMappings[expr_, {mappings_List, toposRaw_List}, OptionsPatter
 
 			repRule = MapThread[Rule[First[#1],Last[#1]/. Dispatch[ruleSP] /. #2  ]&, {repRule,rulesToGLIFinal}];
 
-			FCPrint[1, "FCLoopApplyTopologyMappings: Done rewriting numerators, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclamVerbose];
-			FCPrint[3, "FCLoopApplyTopologyMappings: Replacement rule: ",  repRule, FCDoControl->fclamVerbose];
+			FCPrint[1, "FCLoopApplyTopologyMappings: Done rewriting numerators, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
+			FCPrint[3, "FCLoopApplyTopologyMappings: Replacement rule: ",  repRule, FCDoControl->optVerbose];
 
 			If[	OptionValue[GLIMultiply],
 				time=AbsoluteTime[];
 
 				If[	$ParallelizeFeynCalc && optFCParallelize,
-					FCPrint[1,"FCLoopApplyTopologyMappings: Rewriting remaining products of GLIs in parallel.", FCDoControl->fclamVerbose];
+					FCPrint[1,"FCLoopApplyTopologyMappings: Rewriting remaining products of GLIs in parallel.", FCDoControl->optVerbose];
 					With[{xxx = optHead},
 						ParallelEvaluate[FCParallelContext`FCLoopApplyTopologyMappings`optHead = xxx;, DistributedContexts -> None]
 					];
@@ -208,51 +205,51 @@ FCLoopApplyTopologyMappings[expr_, {mappings_List, toposRaw_List}, OptionsPatter
 						Method->"ItemsPerEvaluation" -> Ceiling[N[Length[repRule]/$KernelCount]/10]
 						],
 
-					FCPrint[1, "FCLoopApplyTopologyMappings: Rewriting remaining products of GLIs.", FCDoControl->fclamVerbose];
+					FCPrint[1, "FCLoopApplyTopologyMappings: Rewriting remaining products of GLIs.", FCDoControl->optVerbose];
 					repRule = Map[Rule[First[#],Expand2[Last[#]/. optHead->Times,GLI]/.GLI->GLIMultiply/.GLIMultiply->GLI]&,repRule];
 				];
-				FCPrint[1, "FCLoopApplyTopologyMappings: Done rewriting products of GLIs, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclamVerbose]
+				FCPrint[1, "FCLoopApplyTopologyMappings: Done rewriting products of GLIs, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose]
 			];
 
 		];
 
 
-		FCPrint[3, "FCLoopApplyTopologyMappings: Final replacement rule: ",  repRule, FCDoControl->fclamVerbose];
+		FCPrint[3, "FCLoopApplyTopologyMappings: Final replacement rule: ",  repRule, FCDoControl->optVerbose];
 		time = AbsoluteTime[];
-		FCPrint[1,"FCLoopApplyTopologyMappings: Applying the final replacement rule.", FCDoControl->fclamVerbose];
+		FCPrint[1,"FCLoopApplyTopologyMappings: Applying the final replacement rule.", FCDoControl->optVerbose];
 		res = tmp /. Dispatch[repRule] ;
-		FCPrint[1, "FCLoopApplyTopologyMappings: Done applying the final replacement rule, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclamVerbose];
+		FCPrint[1, "FCLoopApplyTopologyMappings: Done applying the final replacement rule, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 
 		If[	OptionValue[GLIMultiply] && optFCLoopCreateRulesToGLI,
-			FCPrint[1,"FCLoopApplyTopologyMappings: Checking for the remaining loop momenta.", FCDoControl->fclamVerbose];
+			FCPrint[1,"FCLoopApplyTopologyMappings: Checking for the remaining loop momenta.", FCDoControl->optVerbose];
 			time = AbsoluteTime[];
 			lmoms = Union[Flatten[#[[3]]&/@topos]];
 			If[	!FreeQ2[res,lmoms],
 				Message[FCLoopApplyTopologyMappings::lmoms]
 			];
-			FCPrint[1, "FCLoopApplyTopologyMappings: Done checking for the remaining loop momenta, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclamVerbose]
+			FCPrint[1, "FCLoopApplyTopologyMappings: Done checking for the remaining loop momenta, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose]
 		];
 
 		If[	OptionValue[Collecting],
-			FCPrint[1,"FCLoopApplyTopologyMappings: Collecting w.r.t. GLIs.", FCDoControl->fclamVerbose];
+			FCPrint[1,"FCLoopApplyTopologyMappings: Collecting w.r.t. GLIs.", FCDoControl->optVerbose];
 			time = AbsoluteTime[];
 			res = Collect2[res,GLI,Factoring->optFactoring,TimeConstrained->optTimeConstrained,IsolateNames->optIsolateNames,
 				FCParallelize->optFCParallelize];
-			FCPrint[1, "FCLoopApplyTopologyMappings: Done collecting w.r.t. GLIs, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclamVerbose]
+			FCPrint[1, "FCLoopApplyTopologyMappings: Done collecting w.r.t. GLIs, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose]
 		];
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
 		];
 
-		FCPrint[1, "FCLoopApplyTopologyMappings: Leaving.", FCDoControl->fclamVerbose];
+		FCPrint[1, "FCLoopApplyTopologyMappings: Leaving.", FCDoControl->optVerbose];
 
 		res
 
 	];
 
-applyMapping[terms_List, mappingRules_List] :=
-	Map[rule[#, # /. mappingRules[[2]] /. mappingRules[[3]]] &, terms]
+applyMapping[terms_List, mappingRules_List, rule_] :=
+	Map[rule[#, # /. Dispatch[mappingRules[[2]]] /. Dispatch[mappingRules[[3]]]] &, terms]
 
 FCPrint[1,"FCLoopApplyTopologyMappings.m loaded."];
 End[]
