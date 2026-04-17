@@ -533,6 +533,14 @@ GLI[fctopology10C, {1, 0, 1, 1, 1, 0, 0}]}, {FCTopology[
 	q2}, {Hold[Pair][Momentum[q1, D], Momentum[q1, D]] -> 0,
 	Hold[Pair][Momentum[q2, D], Momentum[q2, D]] -> 0,
 	Hold[Pair][Momentum[q1, D], Momentum[q2, D]] -> s/2}, {}]}]",
-	"{{}, {GLI[fctopology10C, {1, 0, 1, 1, 1, 0, -1}], GLI[fctopology10C, {1, 0, 1, 1, 1, 0, 0}]}}"
-}
+	"{{}, {GLI[fctopology10C, {1, 0, 1, 1, 1, 0, -1}], GLI[fctopology10C, {1, 0, 1, 1, 1, 0, 0}]}}"},
+{"fcstFCLoopFindIntegralMappings-ID16","FCLoopFindIntegralMappings[{GLI[topo1, {0, 0}], GLI[topo1, {0, -1}],
+GLI[topo1, {1, 1}], GLI[topo1, {1, 2}], GLI[topo1, {2, 1}],
+GLI[topo2, {1, 1}],
+GLI[topo2, {2, 2}]}, {FCTopology[
+topo1, {SFAD[{p1, m^2}], SFAD[{p2, m^2}]}, {p1, p2}, {}, {}, {}],
+FCTopology[
+topo2, {SFAD[{p3, m^2}], SFAD[{p4, m^2}]}, {p3, p4}, {}, {}, {}]}]",
+"{{GLI[topo2, {1, 1}] -> GLI[topo1, {1, 1}], GLI[topo1, {2, 1}] -> GLI[topo1, {1, 2}]},
+{GLI[topo1, {0, -1}], GLI[topo1, {0, 0}], GLI[topo1, {1, 1}], GLI[topo1, {1, 2}], GLI[topo2, {2, 2}]}}"}
 });

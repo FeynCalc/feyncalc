@@ -292,6 +292,11 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 			{ex,optFinalSubstitutions} = FCI[{expr,optFinalSubstitutions}]
 		];
 
+		If[	expr===0,
+			FCPrint[1, "FCFeynmanPrepare: The integral vanishes, leaving.", FCDoControl->fcszVerbose];
+			Return[{0, 0, {{0,1,0}}, {{}}, {0}, 0, 0, 0}]
+		];
+
 		FCPrint[1,"FCFeynmanPrepare: Entering. ", FCDoControl->fcszVerbose];
 		FCPrint[3,"FCFeynmanPrepare: Entering  with: ", ex, FCDoControl->fcszVerbose];
 		FCPrint[3,"FCFeynmanPrepare: Final substitutions: ", optFinalSubstitutions, FCDoControl->fcszVerbose];
@@ -407,6 +412,11 @@ FCFeynmanPrepare[expr_/;FreeQ[expr,{GLI,FCTopology}], lmomsRaw_List /; !OptionQ[
 		FCPrint[1, "FCFeynmanPrepare: FCLoopBasisExtract done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fcszVerbose];
 
 		FCPrint[3,"FCFeynmanPrepare: List of denominators: ", tmp, FCDoControl->fcszVerbose];
+
+		If[	tmp==={},
+			FCPrint[1, "FCFeynmanPrepare: The integral vanishes, leaving.", FCDoControl->fcszVerbose];
+			Return[{0, 0, {{0,1,0}}, {{}}, {0}, 0, 0, 0}]
+		];
 
 		If[	OptionValue[FCLoopGetEtaSigns],
 			etaSigns = FCLoopGetEtaSigns[tmp[[4]]];
