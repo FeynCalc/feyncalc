@@ -63,12 +63,12 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 			preferredIDs, finalMappings, list, topoIDs, mappedTopoIDs, unmappedTopoIDs,
 			relevantTopoIDs, optFinalSubstitutions, allTopos, relevantTopos, optSubtopologyMarker,
 			bigTopos, subTopos, tmp, rulesSubtopoToTopo, optInitialSubstitutions, optMomentum,
-			optFCParallelize, fclftpVerbose},
+			optFCParallelize, optVerbose, assoc},
 
 		If[	OptionValue[FCVerbose] === False,
-			fclftpVerbose = $VeryVerbose,
+			optVerbose = $VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer],
-			fclftpVerbose = OptionValue[FCVerbose]];
+			optVerbose = OptionValue[FCVerbose]];
 		];
 
 		optPreferredTopologies 					= OptionValue[PreferredTopologies];
@@ -79,15 +79,15 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 		optFCParallelize						= OptionValue[FCParallelize];
 		optFCVerboseFCLoopFindMomentumShifts	= OptionValue["FCVerboseFCLoopFindMomentumShifts"];
 
-		FCPrint[1, "FCLoopFindTopologyMappings: Entering.", FCDoControl -> fclftpVerbose];
-		FCPrint[3, "FCLoopFindTopologyMappings: Entering with: ", toposRaw, FCDoControl -> fclftpVerbose];
+		FCPrint[1, "FCLoopFindTopologyMappings: Entering.", FCDoControl -> optVerbose];
+		FCPrint[3, "FCLoopFindTopologyMappings: Entering with: ", toposRaw, FCDoControl -> optVerbose];
 
 		If[ !OptionValue[FCI],
 			{topos, optPreferredTopologies, optInitialSubstitutions} = FCI[{toposRaw, optPreferredTopologies, FRH[optInitialSubstitutions]}],
 			{topos, optPreferredTopologies, optInitialSubstitutions} = {toposRaw, optPreferredTopologies, FRH[optInitialSubstitutions]}
 		];
 
-		(*Since FCLoopFindSubtopologies usually generated lists of lists ... *)
+		(*Since FCLoopFindSubtopologies usually generates lists of lists ... *)
 		If[	Head[optPreferredTopologies]===List,
 			optPreferredTopologies = Flatten[optPreferredTopologies]
 		];
@@ -99,7 +99,7 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 				],#
 			]&/@ optPreferredTopologies;
 
-		FCPrint[3, "FCLoopFindTopologyMappings: Preferred topologies: ", optPreferredTopologies, FCDoControl -> fclftpVerbose];
+		FCPrint[3, "FCLoopFindTopologyMappings: Preferred topologies: ", optPreferredTopologies, FCDoControl -> optVerbose];
 
 		If[	!MatchQ[optPreferredTopologies,{_FCTopology...}],
 			Message[FCLoopFindTopologyMappings::failmsg, "The value of the PreferredTopologies option is not a valid list of topologies."]
@@ -111,21 +111,24 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 		allTopos 	 = Union[Join[topos,optPreferredTopologies]];
 
 
+		time=AbsoluteTime[];
+		FCPrint[1, "FCLoopFindTopologyMappings: Checking topologies.", FCDoControl -> optVerbose];
 		If[	!FCLoopValidTopologyQ[allTopos],
-			Message[FCLoopFromGLI::failmsg, "The list of supplied topologies is incorrect."];
+			Message[FCLoopFindTopologyMappings::failmsg, "The list of supplied topologies is incorrect."];
 			Abort[]
 		];
+		FCPrint[1, "FCLoopFindTopologyMappings: Done checking topologies, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 
 		time=AbsoluteTime[];
-		FCPrint[1, "FCLoopFindTopologyMappings: Calling FCLoopFindIntegralMappings.", FCDoControl -> fclftpVerbose];
+		FCPrint[1, "FCLoopFindTopologyMappings: Calling FCLoopFindIntegralMappings.", FCDoControl -> optVerbose];
 		pakMappings = FCLoopFindIntegralMappings[allTopos, FCI->True, FinalSubstitutions->optFinalSubstitutions,
 			List->True, LightPak -> OptionValue[LightPak], FCParallelize->optFCParallelize];
-		FCPrint[1, "FCLoopFindTopologyMappings: FCLoopFindIntegralMappings done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclftpVerbose];
-		FCPrint[3, "FCLoopFindTopologyMappings: After FCLoopFindIntegralMappings: ", pakMappings, FCDoControl->fclftpVerbose];
+		FCPrint[1, "FCLoopFindTopologyMappings: FCLoopFindIntegralMappings done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
+		FCPrint[3, "FCLoopFindTopologyMappings: After FCLoopFindIntegralMappings: ", pakMappings, FCDoControl->optVerbose];
 
 		time=AbsoluteTime[];
 		If[	$ParallelizeFeynCalc && optFCParallelize,
-			FCPrint[1,"FCLoopFindTopologyMappings: Calling findMappings in parallel.", FCDoControl->fclftpVerbose];
+			FCPrint[1,"FCLoopFindTopologyMappings: Calling findMappings in parallel.", FCDoControl->optVerbose];
 			With[{xxx = optInitialSubstitutions, yyy = optMomentum, zzz = preferredIDs },
 				ParallelEvaluate[FCContext`FCLoopFindTopologyMappings`initialSubsts = xxx;
 								FCContext`FCLoopFindTopologyMappings`optMom = yyy;
@@ -133,26 +136,28 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 								DistributedContexts -> None]];
 
 			res = ParallelMap[findMappings[#,FCContext`FCLoopFindTopologyMappings`prefIDs ,FCContext`FCLoopFindTopologyMappings`initialSubsts,
-				FCContext`FCLoopFindTopologyMappings`optMom,fclftpVerbose]&, pakMappings,
+				FCContext`FCLoopFindTopologyMappings`optMom,optVerbose]&, pakMappings,
 				DistributedContexts -> None,
 				Method->"ItemsPerEvaluation" -> Ceiling[N[Length[pakMappings]/$KernelCount]/10]
 				(*Method -> "CoarsestGrained"*)],
 
-			FCPrint[1,"FCLoopFindTopologyMappings: Calling findMappings.", FCDoControl->fclftpVerbose];
-			res = findMappings[#,preferredIDs,optInitialSubstitutions,optMomentum,fclftpVerbose]&/@ pakMappings;
+			FCPrint[1,"FCLoopFindTopologyMappings: Calling findMappings.", FCDoControl->optVerbose];
+			res = findMappings[#,preferredIDs,optInitialSubstitutions,optMomentum,optVerbose]&/@ pakMappings;
 
 		];
 
 		res = Flatten[res /. {a_FCTopology, rest___} :> list[a, rest]] /. list -> List;
 
-		FCPrint[1, "FCLoopFindTopologyMappings: findMappings done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclftpVerbose];
+		FCPrint[1, "FCLoopFindTopologyMappings: findMappings done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 
 		time=AbsoluteTime[];
-		FCPrint[1, "FCLoopFindTopologyMappings: Removing irrelevant topologies.", FCDoControl -> fclftpVerbose];
-		(* Removes mappings between preferred topologies *)
-		res = Select[res, MemberQ[topoIDs, First[First[#]]] &];
+		FCPrint[1, "FCLoopFindTopologyMappings: Removing irrelevant topologies.", FCDoControl -> optVerbose];
 
-		FCPrint[3, "FCLoopFindTopologyMappings: After removing irrelevant topologies: ", res, FCDoControl -> fclftpVerbose];
+		(* Removes mappings between preferred topologies *)
+		assoc = AssociationThread[topoIDs -> True];
+		res = Select[res, KeyExistsQ[assoc, #[[1]][[1]]] &];
+
+		FCPrint[3, "FCLoopFindTopologyMappings: After removing irrelevant topologies: ", res, FCDoControl -> optVerbose];
 
 
 		mappedTopoIDs = First[#[[1]]] & /@ res;
@@ -161,21 +166,22 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 		(*Topologies onto which something could be mapped*)
 		relevantTopoIDs = First[Last[#[[3]]]] & /@ res;
 
-		FCPrint[2, "FCLoopFindTopologyMappings: Topologies mapped to other topologies: ", mappedTopoIDs, FCDoControl -> fclftpVerbose];
-		FCPrint[2, "FCLoopFindTopologyMappings: Independent topologies: ", unmappedTopoIDs, FCDoControl -> fclftpVerbose];
+		FCPrint[2, "FCLoopFindTopologyMappings: Topologies mapped to other topologies: ", mappedTopoIDs, FCDoControl -> optVerbose];
+		FCPrint[2, "FCLoopFindTopologyMappings: Independent topologies: ", unmappedTopoIDs, FCDoControl -> optVerbose];
 
 		relevantTopoIDs = Union[unmappedTopoIDs,relevantTopoIDs];
 
-		FCPrint[2, "FCLoopFindTopologyMappings: Relevant topologies: ", relevantTopoIDs, FCDoControl -> fclftpVerbose];
+		FCPrint[2, "FCLoopFindTopologyMappings: Relevant topologies: ", relevantTopoIDs, FCDoControl -> optVerbose];
 
-		relevantTopos = Select[allTopos,MemberQ[relevantTopoIDs,First[#]]&];
+		assoc = AssociationThread[relevantTopoIDs -> True];
+		relevantTopos = Select[allTopos,KeyExistsQ[assoc, #[[1]]]&];
 
-		FCPrint[1, "FCLoopFindTopologyMappings: Done removing irrelevant topologies, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclftpVerbose];
+		FCPrint[1, "FCLoopFindTopologyMappings: Done removing irrelevant topologies, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 
 
 		If[	TrueQ[optSubtopologyMarker=!=False] && !FreeQ[relevantTopos,optSubtopologyMarker],
 			time=AbsoluteTime[];
-			FCPrint[1, "FCLoopFindTopologyMappings: Handling subtopologies of larger topologies.", FCDoControl -> fclftpVerbose];
+			FCPrint[1, "FCLoopFindTopologyMappings: Handling subtopologies of larger topologies.", FCDoControl -> optVerbose];
 
 
 			subTopos = SelectNotFree[relevantTopos, optSubtopologyMarker];
@@ -187,27 +193,29 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 												Unevaluated[Sequence[]]
 											]&,
 											{tmp, subTopos}];
-			FCPrint[2, "FCLoopFindTopologyMappings: Found ", Length[rulesSubtopoToTopo], " subtopologies of larger topologies.", FCDoControl -> fclftpVerbose];
+			FCPrint[2, "FCLoopFindTopologyMappings: Found ", Length[rulesSubtopoToTopo], " subtopologies of larger topologies.", FCDoControl -> optVerbose];
 			res = res /. Dispatch[rulesSubtopoToTopo];
-			FCPrint[1, "FCLoopFindTopologyMappings: Done handling subtopologies, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclftpVerbose];
+			FCPrint[1, "FCLoopFindTopologyMappings: Done handling subtopologies, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 
 			(*Updating the list of relevant topologies*)
 			relevantTopoIDs = First[Last[#[[3]]]] & /@ res;
 			mappedTopoIDs = First[#[[1]]] & /@ res;
-			FCPrint[2, "FCLoopFindTopologyMappings: Topologies mapped to other topologies: ", mappedTopoIDs, FCDoControl -> fclftpVerbose];
+			FCPrint[2, "FCLoopFindTopologyMappings: Topologies mapped to other topologies: ", mappedTopoIDs, FCDoControl -> optVerbose];
 			unmappedTopoIDs = Complement[topoIDs,mappedTopoIDs];
-			FCPrint[2, "FCLoopFindTopologyMappings: Independent topologies: ", unmappedTopoIDs, FCDoControl -> fclftpVerbose];
+			FCPrint[2, "FCLoopFindTopologyMappings: Independent topologies: ", unmappedTopoIDs, FCDoControl -> optVerbose];
 			relevantTopoIDs = Union[unmappedTopoIDs,relevantTopoIDs];
-			FCPrint[2, "FCLoopFindTopologyMappings: New relevant topologies: ", relevantTopoIDs, FCDoControl -> fclftpVerbose];
-			relevantTopos = Select[allTopos,MemberQ[relevantTopoIDs,First[#]]&];
+			FCPrint[2, "FCLoopFindTopologyMappings: New relevant topologies: ", relevantTopoIDs, FCDoControl -> optVerbose];
+
+			assoc = AssociationThread[relevantTopoIDs -> True];
+			relevantTopos = Select[allTopos,KeyExistsQ[assoc,First[#]]&];
 		];
 
-		FCPrint[0, "FCLoopFindTopologyMappings: ", FCStyle["Found ", {Darker[Green,0.55], Bold}], Length[res], FCStyle[" mapping relations ", {Darker[Green,0.55], Bold}], FCDoControl->fclftpVerbose];
-		FCPrint[0, "FCLoopFindTopologyMappings: ", FCStyle["Final number of independent topologies: ", {Darker[Green,0.55], Bold}], Length[relevantTopos], FCDoControl->fclftpVerbose];
+		FCPrint[0, "FCLoopFindTopologyMappings: ", FCStyle["Found ", {Darker[Green,0.55], Bold}], Length[res], FCStyle[" mapping relations ", {Darker[Green,0.55], Bold}], FCDoControl->optVerbose];
+		FCPrint[0, "FCLoopFindTopologyMappings: ", FCStyle["Final number of independent topologies: ", {Darker[Green,0.55], Bold}], Length[relevantTopos], FCDoControl->optVerbose];
 
 		res = {res,relevantTopos};
 
-		FCPrint[2, "FCLoopFindTopologyMappings: Found: ", relevantTopoIDs, FCDoControl -> fclftpVerbose];
+		FCPrint[2, "FCLoopFindTopologyMappings: Found: ", relevantTopoIDs, FCDoControl -> optVerbose];
 
 
 
@@ -215,16 +223,17 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 			res = FCE[res]
 		];
 
-		FCPrint[1, "FCLoopFindTopologyMappings: Leaving.", FCDoControl -> fclftpVerbose];
-		FCPrint[3, "FCLoopFindTopologyMappings: Leaving with: ", res, FCDoControl -> fclftpVerbose];
+		FCPrint[1, "FCLoopFindTopologyMappings: Leaving.", FCDoControl -> optVerbose];
+		FCPrint[3, "FCLoopFindTopologyMappings: Leaving with: ", res, FCDoControl -> optVerbose];
 
 		res
 	];
 
-findMappings[input_List, preferred_List, optInitialSubstitutions_, optMomentum_, targetEl_:1, fclftpVerbose_] :=
-	Block[{target, source, shifts, gliRules, sourceShifted, time,aux, sourceFirst, noShiftFound, res},
+findMappings[input_List, preferred_List, optInitialSubstitutions_, optMomentum_, targetEl_:1, optVerbose_] :=
+	Block[{target, source, shifts, gliRules, sourceShifted, time,aux, sourceFirst, noShiftFound, res, assoc},
 
-	FCPrint[2, "FCLoopFindTopologyMappings: findMappings: Checking for mappings between topologies: ", First /@ First[Transpose[input]], FCDoControl -> fclftpVerbose];
+	FCPrint[2, "FCLoopFindTopologyMappings: findMappings: Checking for mappings between topologies: ", First /@ First[Transpose[input]], FCDoControl -> optVerbose];
+	assoc = AssociationThread[preferred -> True];
 
 	If[	preferred === {},
 		(* No preferred topologies given -> use the ith topology from the input list as target topology. *)
@@ -238,7 +247,7 @@ findMappings[input_List, preferred_List, optInitialSubstitutions_, optMomentum_,
 
 
 		(* Preferred topologies given: Get candidate target topologies by selecting preferred topologies from the mappings *)
-		target = Select[input, MemberQ[preferred,#[[1]][[1]]]&];
+		target = Select[input, KeyExistsQ[assoc,#[[1]][[1]]]&];
 
 		If[	target === {},
 			(*No candidate target topologies -> just use the ith topology the input list as the target topology*)
@@ -256,21 +265,21 @@ findMappings[input_List, preferred_List, optInitialSubstitutions_, optMomentum_,
 		We are not interested in mappings between preferred topologies, so we automatically remove all
 		those from candidate source topologies
 	*)
-	source = Select[Complement[input, {target}], !MemberQ[preferred,#[[1]][[1]]]&];
+	source = Select[Complement[input, {target}], !KeyExistsQ[assoc, #[[1]]]&];
 
 	If[	source==={},
-		FCPrint[2, "FCLoopFindTopologyMappings: findMappings: No nonpreferred topologies to analyze, leaving.", FCDoControl -> fclftpVerbose];
+		FCPrint[2, "FCLoopFindTopologyMappings: findMappings: No nonpreferred topologies to analyze, leaving.", FCDoControl -> optVerbose];
 		Return[{}]
 	];
 
-	FCPrint[2, "FCLoopFindTopologyMappings: findMappings: Source topologies: ", First/@(Last/@source), FCDoControl -> fclftpVerbose];
-	FCPrint[2, "FCLoopFindTopologyMappings: findMappings: Target topology: ", First[Last[target]], FCDoControl -> fclftpVerbose];
+	FCPrint[2, "FCLoopFindTopologyMappings: findMappings: Source topologies: ", First/@(Last/@source), FCDoControl -> optVerbose];
+	FCPrint[2, "FCLoopFindTopologyMappings: findMappings: Target topology: ", First[Last[target]], FCDoControl -> optVerbose];
 
-	FCPrint[3, "FCLoopFindTopologyMappings: findMappings: Explicit source topologies: ", Last/@source, FCDoControl -> fclftpVerbose];
-	FCPrint[3, "FCLoopFindTopologyMappings: findMappings: Explicit target topology: ", Last[target], FCDoControl -> fclftpVerbose];
+	FCPrint[3, "FCLoopFindTopologyMappings: findMappings: Explicit source topologies: ", Last/@source, FCDoControl -> optVerbose];
+	FCPrint[3, "FCLoopFindTopologyMappings: findMappings: Explicit target topology: ", Last[target], FCDoControl -> optVerbose];
 
 	time=AbsoluteTime[];
-	FCPrint[3, "FCLoopFindTopologyMappings: findMappings: Calling FCLoopFindMomentumShifts.", FCDoControl -> fclftpVerbose];
+	FCPrint[3, "FCLoopFindTopologyMappings: findMappings: Calling FCLoopFindMomentumShifts.", FCDoControl -> optVerbose];
 	(*Some shifts cannot be found unless shifts of external momenta are explicitly allowed!*)
 
 	shifts = Quiet[FCLoopFindMomentumShifts[Last/@source, Last[target], {Momentum->optMomentum,Abort->False, InitialSubstitutions->
@@ -282,20 +291,20 @@ findMappings[input_List, preferred_List, optInitialSubstitutions_, optMomentum_,
 	];
 
 
-	FCPrint[2, "FCLoopFindTopologyMappings: findMappings: Raw shifts: ", shifts, FCDoControl->fclftpVerbose];
+	FCPrint[2, "FCLoopFindTopologyMappings: findMappings: Raw shifts: ", shifts, FCDoControl->optVerbose];
 
 	If[	MatchQ[shifts,{{}..}],
 		(*If no shifts at all were found, we redo the search using another topology as our target topology *)
 		If[	Length[input]>2 && targetEl<Length[input],
-			FCPrint[3, "FCLoopFindTopologyMappings: findMappings: Trying to map to another topology.", FCDoControl -> fclftpVerbose];
-			Return[findMappings[input, preferred,optInitialSubstitutions,optMomentum,targetEl+1,fclftpVerbose]],
+			FCPrint[3, "FCLoopFindTopologyMappings: findMappings: Trying to map to another topology.", FCDoControl -> optVerbose];
+			Return[findMappings[input, preferred,optInitialSubstitutions,optMomentum,targetEl+1,optVerbose]],
 			Return[{}]
 		]
 	];
 	shifts = Map[If[#==={},noShiftFound,#]&,shifts];
 
-	FCPrint[3, "FCLoopFindTopologyMappings: findMappings: FCLoopFindMomentumShifts done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->fclftpVerbose];
-	FCPrint[3, "FCLoopFindTopologyMappings: findMappings: Shifts: ", shifts, FCDoControl->fclftpVerbose];
+	FCPrint[3, "FCLoopFindTopologyMappings: findMappings: FCLoopFindMomentumShifts done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
+	FCPrint[3, "FCLoopFindTopologyMappings: findMappings: Shifts: ", shifts, FCDoControl->optVerbose];
 
 	aux = MapThread[If[	FreeQ[#2,noShiftFound],
 									{First[#1], #2, FCReplaceMomenta[First[#1], #2]},
@@ -307,14 +316,14 @@ findMappings[input_List, preferred_List, optInitialSubstitutions_, optMomentum_,
 		{sourceFirst,shifts,sourceShifted} = Transpose[aux]
 	];
 
-	FCPrint[4, "FCLoopFindTopologyMappings: findMappings: Preliminary sourceShifted: ", sourceShifted, FCDoControl->fclftpVerbose];
+	FCPrint[4, "FCLoopFindTopologyMappings: findMappings: Preliminary sourceShifted: ", sourceShifted, FCDoControl->optVerbose];
 
 	sourceShifted = FDS[#,FCI->True]&/@sourceShifted;
 	target = FDS[target,FCI->True];
 
 
-	FCPrint[4, "FCLoopFindTopologyMappings: findMappings: sourceShifted: ", sourceShifted, FCDoControl->fclftpVerbose];
-	FCPrint[4, "FCLoopFindTopologyMappings: findMappings: target: ", First[target], FCDoControl->fclftpVerbose];
+	FCPrint[4, "FCLoopFindTopologyMappings: findMappings: sourceShifted: ", sourceShifted, FCDoControl->optVerbose];
+	FCPrint[4, "FCLoopFindTopologyMappings: findMappings: target: ", First[target], FCDoControl->optVerbose];
 
 	gliRules = FCLoopCreateRuleGLIToGLI[First[target], #, FeynAmpDenominatorExplicit->True]&/@sourceShifted;
 
@@ -325,7 +334,7 @@ findMappings[input_List, preferred_List, optInitialSubstitutions_, optMomentum_,
 
 	res = Transpose[{sourceFirst,shifts,gliRules}];
 
-	FCPrint[3, "FCLoopFindTopologyMappings: findMappings: Leaving with: ", res, FCDoControl->fclftpVerbose];
+	FCPrint[3, "FCLoopFindTopologyMappings: findMappings: Leaving with: ", res, FCDoControl->optVerbose];
 
 	res
 
