@@ -265,7 +265,7 @@ findMappings[input_List, preferred_List, optInitialSubstitutions_, optMomentum_,
 		We are not interested in mappings between preferred topologies, so we automatically remove all
 		those from candidate source topologies
 	*)
-	source = Select[Complement[input, {target}], !KeyExistsQ[assoc, #[[1]]]&];
+	source = Select[Complement[input, {target}], !KeyExistsQ[assoc, #[[1]][[1]]]&];
 
 	If[	source==={},
 		FCPrint[2, "FCLoopFindTopologyMappings: findMappings: No nonpreferred topologies to analyze, leaving.", FCDoControl -> optVerbose];
