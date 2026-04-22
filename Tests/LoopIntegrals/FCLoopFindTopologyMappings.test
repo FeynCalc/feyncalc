@@ -16,6 +16,268 @@
 
 Tests`LoopIntegrals`fcstFCLoopFindTopologyMappings =
 ({
+{"fcstFCLoopFindTopologyMappings-ID1",
+"FCLoopFindTopologyMappings[{FCTopology[topo0,{SFAD[{{q2,0},{0,1},1\
+}],SFAD[{{q2+p1,0},{1,1},1}],SFAD[{{q1,0},{1/16,1},1}],SFAD[{{q1-p2/4,0\
+},{0,1},1}],SFAD[{{q2-p1/4+p2/2,0},{1/16,1},1}],SFAD[{{q1+p1/4-p2/4,0},{1\
+/16,1},1}]},{q1,q2},{p1,p2},{Hold[Pair][Momentum[p1,D],Momentum[p1,D]]->1\
+,Hold[Pair][Momentum[p2,D],Momentum[p1,D]]->13/10,Hold[Pair][Momentum[p\
+2,D],Momentum[p2,D]]->1},{}],FCTopology[topoA,{SFAD[{{q2,0},{0,1},1}],S\
+FAD[{{q2+p1,0},{1,1},1}],SFAD[{{q1,0},{1/16,1},1}],SFAD[{{q1+p1/4,0},{0\
+,1},1}],SFAD[{{q2-p1/4+p2/2,0},{1/16,1},1}],SFAD[{{q1+p1/4-p2/4,0},{1/1\
+6,1},1}]},{q1,q2},{p1,p2},{Hold[Pair][Momentum[p1,D],Momentum[p1,D]]->1\
+,Hold[Pair][Momentum[p2,D],Momentum[p1,D]]->13/10,Hold[Pair][Momentum[p\
+2,D],Momentum[p2,D]]->1},{}]},PreferredTopologies->{FCTopology[topo1,{S\
+FAD[{{q1,0},{1,1},1}],SFAD[{{q1-p1,0},{0,1},1}],SFAD[{{q2-p2/4,0},{0,1\
+},1}],SFAD[{{q1+q2-p1,0},{1/16,1},1}],SFAD[{{q1+q2-p1+p2/4,0},{0,1},1}],S\
+FAD[{{q1-(5 p1)/4+p2/2,0},{1/16,1},1}],SFAD[{{q1+q2-(5 \
+p1)/4+p2/4,0},{1/16,1},1}]},{q1,q2},{p1,p2},{Hold[Pair][Momentum[p1,D],M\
+omentum[p1,D]]->1,Hold[Pair][Momentum[p2,D],Momentum[p1,D]]->13/10,Hol\
+d[Pair][Momentum[p2,D],Momentum[p2,D]]->1},{}],FCTopology[topo2,{SFAD[{{q\
+1,0},{1,1},1}],SFAD[{{q2,0},{1/16,1},1}],SFAD[{{q1-p1,0},{0,1},1}],SFA\
+D[{{q2-p2/4,0},{0,1},1}],SFAD[{{q1+q2-p1,0},{1/16,1},1}],SFAD[{{q1-(5 \
+p1)/4+p2/2,0},{1/16,1},1}],SFAD[{{q2+p1/4-p2/4,0},{1/16,1},1}]},{q1,q2\
+},{p1,p2},{Hold[Pair][Momentum[p1,D],Momentum[p1,D]]->1,Hold[Pair][Mom\
+entum[p2,D],Momentum[p1,D]]->13/10,Hold[Pair][Momentum[p2,D],Momentum[p\
+2,D]]->1},{}],FCTopology[topoB,{SFAD[{{q2,0},{0,1},1}],SFAD[{{q2+p1,0},{1\
+,1},1}],SFAD[{{q1,0},{1/16,1},1}],SFAD[{{q1+p1/4,0},{0,1},1}],SFAD[{{q\
+2-p1/4+p2/2,0},{1/16,1},1}],SFAD[{{q1+p1/4-p2/4,0},{1/16,1},1}]},{q1,q\
+2},{p1,p2},{Hold[Pair][Momentum[p1,D],Momentum[p1,D]]->1,Hold[Pair][Mo\
+mentum[p2,D],Momentum[p1,D]]->13/10,Hold[Pair][Momentum[p2,D],Momentum\
+[p2,D]]->1},{}]},FCE->True,FCVerbose->-2]",
+"{{{FCTopology[topoA, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{p1 + q2, \
+0}, {1, 1}, 1}], SFAD[{{q1, 0}, {1/16, 1}, 1}], SFAD[{{p1/4 + q1, 0}, \
+{0, 1}, 1}], SFAD[{{-1/4*p1 + p2/2 + q2, 0}, {1/16, 1}, 1}], \
+SFAD[{{p1/4 - p2/4 + q1, 0}, {1/16, 1}, 1}]}, {q1, q2}, {p1, p2}, \
+{Hold[Pair][Momentum[p1, D], Momentum[p1, D]] -> 1, \
+Hold[Pair][Momentum[p2, D], Momentum[p1, D]] -> 13/10, \
+Hold[Pair][Momentum[p2, D], Momentum[p2, D]] -> 1}, {}], {q1 -> q1, \
+q2 -> q2}, GLI[topoA, {n1_, n2_, n3_, n4_, n5_, n6_}] :> GLI[topoB, \
+{n1, n2, n3, n4, n5, n6}]}}, {FCTopology[topo0, {SFAD[{{q2, 0}, {0, 1}, \
+1}], SFAD[{{p1 + q2, 0}, {1, 1}, 1}], SFAD[{{q1, 0}, {1/16, 1}, 1}], \
+SFAD[{{-1/4*p2 + q1, 0}, {0, 1}, 1}], SFAD[{{-1/4*p1 + p2/2 + q2, 0}, \
+{1/16, 1}, 1}], SFAD[{{p1/4 - p2/4 + q1, 0}, {1/16, 1}, 1}]}, {q1, q2}, \
+{p1, p2}, {Hold[Pair][Momentum[p1, D], Momentum[p1, D]] -> 1, \
+Hold[Pair][Momentum[p2, D], Momentum[p1, D]] -> 13/10, \
+Hold[Pair][Momentum[p2, D], Momentum[p2, D]] -> 1}, {}], \
+FCTopology[topoB, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{p1 + q2, 0}, {1, \
+1}, 1}], SFAD[{{q1, 0}, {1/16, 1}, 1}], SFAD[{{p1/4 + q1, 0}, {0, 1}, \
+1}], SFAD[{{-1/4*p1 + p2/2 + q2, 0}, {1/16, 1}, 1}], SFAD[{{p1/4 - \
+p2/4 + q1, 0}, {1/16, 1}, 1}]}, {q1, q2}, {p1, p2}, \
+{Hold[Pair][Momentum[p1, D], Momentum[p1, D]] -> 1, \
+Hold[Pair][Momentum[p2, D], Momentum[p1, D]] -> 13/10, \
+Hold[Pair][Momentum[p2, D], Momentum[p2, D]] -> 1}, {}]}}"}, \
+{"fcstFCLoopFindTopologyMappings-ID2",
+"FCLoopFindTopologyMappings[{FCTopology[topo0,{SFAD[{{q2,0},{0,1},1\
+}],SFAD[{{q2+p1,0},{1,1},1}],SFAD[{{q1,0},{1/16,1},1}],SFAD[{{q1-p2/4,0\
+},{0,1},1}],SFAD[{{q2-p1/4+p2/2,0},{1/16,1},1}],SFAD[{{q1+p1/4-p2/4,0},{1\
+/16,1},1}]},{q1,q2},{p1,p2},{Hold[Pair][Momentum[p1,D],Momentum[p1,D]]->1\
+,Hold[Pair][Momentum[p2,D],Momentum[p1,D]]->13/10,Hold[Pair][Momentum[p\
+2,D],Momentum[p2,D]]->1},{}],FCTopology[topoA,{SFAD[{{q2,0},{0,1},1}],S\
+FAD[{{q2+p1,0},{1,1},1}],SFAD[{{q1,0},{1/16,1},1}],SFAD[{{q1+p1/4,0},{0\
+,1},1}],SFAD[{{q2-p1/4+p2/2,0},{1/16,1},1}],SFAD[{{q1+p1/4-p2/4,0},{1/1\
+6,1},1}]},{q1,q2},{p1,p2},{Hold[Pair][Momentum[p1,D],Momentum[p1,D]]->1\
+,Hold[Pair][Momentum[p2,D],Momentum[p1,D]]->13/10,Hold[Pair][Momentum[p\
+2,D],Momentum[p2,D]]->1},{}]},PreferredTopologies->FCLoopFindSubtopolo\
+gies[{FCTopology[topoB,{SFAD[{{q2,0},{0,1},1}],SFAD[{{p1+q2,0},{1,1},1\
+}],SFAD[{{q1,0},{1/16,1},1}],SFAD[{{p1/4+q1,0},{0,1},1}],SFAD[{{-1/4*p\
+1+p2/2+q2,0},{1/16,1},1}],SFAD[{{p1/4-p2/4+q1,0},{1/16,1},1}]},{q1,q2},{p\
+1,p2},{Hold[Pair][Momentum[p1,D],Momentum[p1,D]]->1,Hold[Pair][Momentu\
+m[p2,D],Momentum[p1,D]]->13/10,Hold[Pair][Momentum[p2,D],Momentum[p2,D\
+]]->1},{}]}],FCE->True,FCVerbose->-2]",
+"{{{FCTopology[topoA, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{p1 + q2, \
+0}, {1, 1}, 1}], SFAD[{{q1, 0}, {1/16, 1}, 1}], SFAD[{{p1/4 + q1, 0}, \
+{0, 1}, 1}], SFAD[{{-1/4*p1 + p2/2 + q2, 0}, {1/16, 1}, 1}], \
+SFAD[{{p1/4 - p2/4 + q1, 0}, {1/16, 1}, 1}]}, {q1, q2}, {p1, p2}, \
+{Hold[Pair][Momentum[p1, D], Momentum[p1, D]] -> 1, \
+Hold[Pair][Momentum[p2, D], Momentum[p1, D]] -> 13/10, \
+Hold[Pair][Momentum[p2, D], Momentum[p2, D]] -> 1}, {}], {q1 -> q1, \
+q2 -> q2}, GLI[topoA, {n1_, n2_, n3_, n4_, n5_, n6_}] :> GLI[topoB, \
+{n1, n2, n3, n4, n5, n6}]}}, {FCTopology[topo0, {SFAD[{{q2, 0}, {0, 1}, \
+1}], SFAD[{{p1 + q2, 0}, {1, 1}, 1}], SFAD[{{q1, 0}, {1/16, 1}, 1}], \
+SFAD[{{-1/4*p2 + q1, 0}, {0, 1}, 1}], SFAD[{{-1/4*p1 + p2/2 + q2, 0}, \
+{1/16, 1}, 1}], SFAD[{{p1/4 - p2/4 + q1, 0}, {1/16, 1}, 1}]}, {q1, q2}, \
+{p1, p2}, {Hold[Pair][Momentum[p1, D], Momentum[p1, D]] -> 1, \
+Hold[Pair][Momentum[p2, D], Momentum[p1, D]] -> 13/10, \
+Hold[Pair][Momentum[p2, D], Momentum[p2, D]] -> 1}, {}], \
+FCTopology[topoB, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{p1 + q2, 0}, {1, \
+1}, 1}], SFAD[{{q1, 0}, {1/16, 1}, 1}], SFAD[{{p1/4 + q1, 0}, {0, 1}, \
+1}], SFAD[{{-1/4*p1 + p2/2 + q2, 0}, {1/16, 1}, 1}], SFAD[{{p1/4 - \
+p2/4 + q1, 0}, {1/16, 1}, 1}]}, {q1, q2}, {p1, p2}, \
+{Hold[Pair][Momentum[p1, D], Momentum[p1, D]] -> 1, \
+Hold[Pair][Momentum[p2, D], Momentum[p1, D]] -> 13/10, \
+Hold[Pair][Momentum[p2, D], Momentum[p2, D]] -> 1}, {}]}}"}, \
+{"fcstFCLoopFindTopologyMappings-ID3",
+"FCLoopFindTopologyMappings[{FCTopology[topo0,{SFAD[{{q2,0},{0,1},1\
+}],SFAD[{{q2+p1,0},{1,1},1}],SFAD[{{q1,0},{1/16,1},1}],SFAD[{{q1-p2/4,0\
+},{0,1},1}],SFAD[{{q2-p1/4+p2/2,0},{1/16,1},1}],SFAD[{{q1+p1/4-p2/4,0},{1\
+/16,1},1}]},{q1,q2},{p1,p2},{Hold[Pair][Momentum[p1,D],Momentum[p1,D]]->1\
+,Hold[Pair][Momentum[p2,D],Momentum[p1,D]]->13/10,Hold[Pair][Momentum[p\
+2,D],Momentum[p2,D]]->1},{}],FCTopology[topoA,{SFAD[{{q2,0},{0,1},1}],S\
+FAD[{{q2+p1,0},{1,1},1}],SFAD[{{q1,0},{1/16,1},1}],SFAD[{{q1+p1/4,0},{0\
+,1},1}],SFAD[{{q2-p1/4+p2/2,0},{1/16,1},1}],SFAD[{{q1+p1/4-p2/4,0},{1/1\
+6,1},1}]},{q1,q2},{p1,p2},{Hold[Pair][Momentum[p1,D],Momentum[p1,D]]->1\
+,Hold[Pair][Momentum[p2,D],Momentum[p1,D]]->13/10,Hold[Pair][Momentum[p\
+2,D],Momentum[p2,D]]->1},{}]},PreferredTopologies->FCLoopFindSubtopolo\
+gies[{FCTopology[topo1,{SFAD[{{q1,0},{1,1},1}],SFAD[{{q1-p1,0},{0,1},1\
+}],SFAD[{{q2-p2/4,0},{0,1},1}],SFAD[{{q1+q2-p1,0},{1/16,1},1}],SFAD[{{q\
+1+q2-p1+p2/4,0},{0,1},1}],SFAD[{{q1-(5 \
+p1)/4+p2/2,0},{1/16,1},1}],SFAD[{{q1+q2-(5 \
+p1)/4+p2/4,0},{1/16,1},1}]},{q1,q2},{p1,p2},{Hold[Pair][Momentum[p1,D],M\
+omentum[p1,D]]->1,Hold[Pair][Momentum[p2,D],Momentum[p1,D]]->13/10,Hol\
+d[Pair][Momentum[p2,D],Momentum[p2,D]]->1},{}],FCTopology[topo2,{SFAD[{{q\
+1,0},{1,1},1}],SFAD[{{q2,0},{1/16,1},1}],SFAD[{{q1-p1,0},{0,1},1}],SFA\
+D[{{q2-p2/4,0},{0,1},1}],SFAD[{{q1+q2-p1,0},{1/16,1},1}],SFAD[{{q1-(5 \
+p1)/4+p2/2,0},{1/16,1},1}],SFAD[{{q2+p1/4-p2/4,0},{1/16,1},1}]},{q1,q2\
+},{p1,p2},{Hold[Pair][Momentum[p1,D],Momentum[p1,D]]->1,Hold[Pair][Mom\
+entum[p2,D],Momentum[p1,D]]->13/10,Hold[Pair][Momentum[p2,D],Momentum[p\
+2,D]]->1},{}],FCTopology[topoB,{SFAD[{{q2,0},{0,1},1}],SFAD[{{q2+p1,0},{1\
+,1},1}],SFAD[{{q1,0},{1/16,1},1}],SFAD[{{q1+p1/4,0},{0,1},1}],SFAD[{{q\
+2-p1/4+p2/2,0},{1/16,1},1}],SFAD[{{q1+p1/4-p2/4,0},{1/16,1},1}]},{q1,q\
+2},{p1,p2},{Hold[Pair][Momentum[p1,D],Momentum[p1,D]]->1,Hold[Pair][Mo\
+mentum[p2,D],Momentum[p1,D]]->13/10,Hold[Pair][Momentum[p2,D],Momentum\
+[p2,D]]->1},{}]}],FCE->True,FCVerbose->-2]",
+"{{{FCTopology[topo0, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{p1 + q2, \
+0}, {1, 1}, 1}], SFAD[{{q1, 0}, {1/16, 1}, 1}], SFAD[{{-1/4*p2 + q1, \
+0}, {0, 1}, 1}], SFAD[{{-1/4*p1 + p2/2 + q2, 0}, {1/16, 1}, 1}], \
+SFAD[{{p1/4 - p2/4 + q1, 0}, {1/16, 1}, 1}]}, {q1, q2}, {p1, p2}, \
+{Hold[Pair][Momentum[p1, D], Momentum[p1, D]] -> 1, \
+Hold[Pair][Momentum[p2, D], Momentum[p1, D]] -> 13/10, \
+Hold[Pair][Momentum[p2, D], Momentum[p2, D]] -> 1}, {}], {q1 -> p1 - \
+q1 - q2, q2 -> -p1 + q1}, GLI[topo0, {n2_, n1_, n3_, n4_, n5_, n6_}] :> \
+GLI[topo1, {n1, n2, 0, n3, n4, n5, n6}]}, {FCTopology[topoA, \
+{SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{p1 + q2, 0}, {1, 1}, 1}], \
+SFAD[{{q1, 0}, {1/16, 1}, 1}], SFAD[{{p1/4 + q1, 0}, {0, 1}, 1}], \
+SFAD[{{-1/4*p1 + p2/2 + q2, 0}, {1/16, 1}, 1}], SFAD[{{p1/4 - p2/4 + \
+q1, 0}, {1/16, 1}, 1}]}, {q1, q2}, {p1, p2}, {Hold[Pair][Momentum[p1, \
+D], Momentum[p1, D]] -> 1, Hold[Pair][Momentum[p2, D], Momentum[p1, D]] \
+-> 13/10, Hold[Pair][Momentum[p2, D], Momentum[p2, D]] -> 1}, {}], \
+{q1 -> q1, q2 -> q2}, GLI[topoA, {n1_, n2_, n3_, n4_, n5_, n6_}] :> \
+GLI[topoB, {n1, n2, n3, n4, n5, n6}]}}, {FCTopology[topo1, {SFAD[{{q1, \
+0}, {1, 1}, 1}], SFAD[{{-p1 + q1, 0}, {0, 1}, 1}], SFAD[{{-1/4*p2 + \
+q2, 0}, {0, 1}, 1}], SFAD[{{-p1 + q1 + q2, 0}, {1/16, 1}, 1}], \
+SFAD[{{-p1 + p2/4 + q1 + q2, 0}, {0, 1}, 1}], SFAD[{{(-5*p1)/4 + p2/2 \
++ q1, 0}, {1/16, 1}, 1}], SFAD[{{(-5*p1)/4 + p2/4 + q1 + q2, 0}, \
+{1/16, 1}, 1}]}, {q1, q2}, {p1, p2}, {Hold[Pair][Momentum[p1, D], \
+Momentum[p1, D]] -> 1, Hold[Pair][Momentum[p2, D], Momentum[p1, D]] -> \
+13/10, Hold[Pair][Momentum[p2, D], Momentum[p2, D]] -> 1}, {}], \
+FCTopology[topoB, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{p1 + q2, 0}, {1, \
+1}, 1}], SFAD[{{q1, 0}, {1/16, 1}, 1}], SFAD[{{p1/4 + q1, 0}, {0, 1}, \
+1}], SFAD[{{-1/4*p1 + p2/2 + q2, 0}, {1/16, 1}, 1}], SFAD[{{p1/4 - \
+p2/4 + q1, 0}, {1/16, 1}, 1}]}, {q1, q2}, {p1, p2}, \
+{Hold[Pair][Momentum[p1, D], Momentum[p1, D]] -> 1, \
+Hold[Pair][Momentum[p2, D], Momentum[p1, D]] -> 13/10, \
+Hold[Pair][Momentum[p2, D], Momentum[p2, D]] -> 1}, {}]}}"}, \
+{"fcstFCLoopFindTopologyMappings-ID4",
+"FCLoopFindTopologyMappings[{FCTopology[topo0,{SFAD[{{q2,0},{0,1},1\
+}],SFAD[{{q2+p1,0},{1,1},1}],SFAD[{{q1,0},{1/16,1},1}],SFAD[{{q1-p2/4,0\
+},{0,1},1}],SFAD[{{q2-p1/4+p2/2,0},{1/16,1},1}],SFAD[{{q1+p1/4-p2/4,0},{1\
+/16,1},1}]},{q1,q2},{p1,p2},{Hold[Pair][Momentum[p1,D],Momentum[p1,D]]->1\
+,Hold[Pair][Momentum[p2,D],Momentum[p1,D]]->13/10,Hold[Pair][Momentum[p\
+2,D],Momentum[p2,D]]->1},{}],FCTopology[topoA,{SFAD[{{q2,0},{0,1},1}],S\
+FAD[{{q2+p1,0},{1,1},1}],SFAD[{{q1,0},{1/16,1},1}],SFAD[{{q1+p1/4,0},{0\
+,1},1}],SFAD[{{q2-p1/4+p2/2,0},{1/16,1},1}],SFAD[{{q1+p1/4-p2/4,0},{1/1\
+6,1},1}]},{q1,q2},{p1,p2},{Hold[Pair][Momentum[p1,D],Momentum[p1,D]]->1\
+,Hold[Pair][Momentum[p2,D],Momentum[p1,D]]->13/10,Hold[Pair][Momentum[p\
+2,D],Momentum[p2,D]]->1},{}]},PreferredTopologies->FCLoopFindSubtopolo\
+gies[{FCTopology[topo1,{SFAD[{{q1,0},{1,1},1}],SFAD[{{-p1+q1,0},{0,1},1\
+}],SFAD[{{-1/4*p2+q2,0},{0,1},1}],SFAD[{{-p1+q1+q2,0},{1/16,1},1}],SFA\
+D[{{-p1+p2/4+q1+q2,0},{0,1},1}],SFAD[{{(-5*p1)/4+p2/2+q1,0},{1/16,1},1\
+}],SFAD[{{(-5*p1)/4+p2/4+q1+q2,0},{1/16,1},1}]},{q1,q2},{p1,p2},{Hold[P\
+air][Momentum[p1,D],Momentum[p1,D]]->1,Hold[Pair][Momentum[p2,D],Momen\
+tum[p1,D]]->13/10,Hold[Pair][Momentum[p2,D],Momentum[p2,D]]->1},{}],FC\
+Topology[topoB,{SFAD[{{q2,0},{0,1},1}],SFAD[{{p1+q2,0},{1,1},1}],SFAD[{{q\
+1,0},{1/16,1},1}],SFAD[{{p1/4+q1,0},{0,1},1}],SFAD[{{-1/4*p1+p2/2+q2,0\
+},{1/16,1},1}],SFAD[{{p1/4-p2/4+q1,0},{1/16,1},1}]},{q1,q2},{p1,p2},{H\
+old[Pair][Momentum[p1,D],Momentum[p1,D]]->1,Hold[Pair][Momentum[p2,D],M\
+omentum[p1,D]]->13/10,Hold[Pair][Momentum[p2,D],Momentum[p2,D]]->1},{}]}],F\
+CE->True,FCVerbose->-2]",
+"{{{FCTopology[topo0, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{p1 + q2, \
+0}, {1, 1}, 1}], SFAD[{{q1, 0}, {1/16, 1}, 1}], SFAD[{{-1/4*p2 + q1, \
+0}, {0, 1}, 1}], SFAD[{{-1/4*p1 + p2/2 + q2, 0}, {1/16, 1}, 1}], \
+SFAD[{{p1/4 - p2/4 + q1, 0}, {1/16, 1}, 1}]}, {q1, q2}, {p1, p2}, \
+{Hold[Pair][Momentum[p1, D], Momentum[p1, D]] -> 1, \
+Hold[Pair][Momentum[p2, D], Momentum[p1, D]] -> 13/10, \
+Hold[Pair][Momentum[p2, D], Momentum[p2, D]] -> 1}, {}], {q1 -> p1 - \
+q1 - q2, q2 -> -p1 + q1}, GLI[topo0, {n2_, n1_, n3_, n4_, n5_, n6_}] :> \
+GLI[topo1, {n1, n2, 0, n3, n4, n5, n6}]}, {FCTopology[topoA, \
+{SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{p1 + q2, 0}, {1, 1}, 1}], \
+SFAD[{{q1, 0}, {1/16, 1}, 1}], SFAD[{{p1/4 + q1, 0}, {0, 1}, 1}], \
+SFAD[{{-1/4*p1 + p2/2 + q2, 0}, {1/16, 1}, 1}], SFAD[{{p1/4 - p2/4 + \
+q1, 0}, {1/16, 1}, 1}]}, {q1, q2}, {p1, p2}, {Hold[Pair][Momentum[p1, \
+D], Momentum[p1, D]] -> 1, Hold[Pair][Momentum[p2, D], Momentum[p1, D]] \
+-> 13/10, Hold[Pair][Momentum[p2, D], Momentum[p2, D]] -> 1}, {}], \
+{q1 -> q1, q2 -> q2}, GLI[topoA, {n1_, n2_, n3_, n4_, n5_, n6_}] :> \
+GLI[topoB, {n1, n2, n3, n4, n5, n6}]}}, {FCTopology[topo1, {SFAD[{{q1, \
+0}, {1, 1}, 1}], SFAD[{{-p1 + q1, 0}, {0, 1}, 1}], SFAD[{{-1/4*p2 + \
+q2, 0}, {0, 1}, 1}], SFAD[{{-p1 + q1 + q2, 0}, {1/16, 1}, 1}], \
+SFAD[{{-p1 + p2/4 + q1 + q2, 0}, {0, 1}, 1}], SFAD[{{(-5*p1)/4 + p2/2 \
++ q1, 0}, {1/16, 1}, 1}], SFAD[{{(-5*p1)/4 + p2/4 + q1 + q2, 0}, \
+{1/16, 1}, 1}]}, {q1, q2}, {p1, p2}, {Hold[Pair][Momentum[p1, D], \
+Momentum[p1, D]] -> 1, Hold[Pair][Momentum[p2, D], Momentum[p1, D]] -> \
+13/10, Hold[Pair][Momentum[p2, D], Momentum[p2, D]] -> 1}, {}], \
+FCTopology[topoB, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{p1 + q2, 0}, {1, \
+1}, 1}], SFAD[{{q1, 0}, {1/16, 1}, 1}], SFAD[{{p1/4 + q1, 0}, {0, 1}, \
+1}], SFAD[{{-1/4*p1 + p2/2 + q2, 0}, {1/16, 1}, 1}], SFAD[{{p1/4 - \
+p2/4 + q1, 0}, {1/16, 1}, 1}]}, {q1, q2}, {p1, p2}, \
+{Hold[Pair][Momentum[p1, D], Momentum[p1, D]] -> 1, \
+Hold[Pair][Momentum[p2, D], Momentum[p1, D]] -> 13/10, \
+Hold[Pair][Momentum[p2, D], Momentum[p2, D]] -> 1}, {}]}}"}, \
+{"fcstFCLoopFindTopologyMappings-ID5",
+"FCLoopFindTopologyMappings[{FCTopology[topo0,{SFAD[{{q2,0},{0,1},1\
+}],SFAD[{{q2+p1,0},{1,1},1}],SFAD[{{q1,0},{1/16,1},1}],SFAD[{{q1-p2/4,0\
+},{0,1},1}],SFAD[{{q2-p1/4+p2/2,0},{1/16,1},1}],SFAD[{{q1+p1/4-p2/4,0},{1\
+/16,1},1}]},{q1,q2},{p1,p2},{Hold[Pair][Momentum[p1,D],Momentum[p1,D]]->1\
+,Hold[Pair][Momentum[p2,D],Momentum[p1,D]]->13/10,Hold[Pair][Momentum[p\
+2,D],Momentum[p2,D]]->1},{}],FCTopology[topoA,{SFAD[{{q2,0},{0,1},1}],S\
+FAD[{{q2+p1,0},{1,1},1}],SFAD[{{q1,0},{1/16,1},1}],SFAD[{{q1+p1/4,0},{0\
+,1},1}],SFAD[{{q2-p1/4+p2/2,0},{1/16,1},1}],SFAD[{{q1+p1/4-p2/4,0},{1/1\
+6,1},1}]},{q1,q2},{p1,p2},{Hold[Pair][Momentum[p1,D],Momentum[p1,D]]->1\
+,Hold[Pair][Momentum[p2,D],Momentum[p1,D]]->13/10,Hold[Pair][Momentum[p\
+2,D],Momentum[p2,D]]->1},{}]},PreferredTopologies->FCLoopFindSubtopolo\
+gies[{FCTopology[topo2,{SFAD[{{q1,0},{1,1},1}],SFAD[{{q2,0},{1/16,1},1\
+}],SFAD[{{-p1+q1,0},{0,1},1}],SFAD[{{-1/4*p2+q2,0},{0,1},1}],SFAD[{{-p\
+1+q1+q2,0},{1/16,1},1}],SFAD[{{(-5*p1)/4+p2/2+q1,0},{1/16,1},1}],SFAD[{{p\
+1/4-p2/4+q2,0},{1/16,1},1}]},{q1,q2},{p1,p2},{Hold[Pair][Momentum[p1,D\
+],Momentum[p1,D]]->1,Hold[Pair][Momentum[p2,D],Momentum[p1,D]]->13/10,H\
+old[Pair][Momentum[p2,D],Momentum[p2,D]]->1},{}],FCTopology[topoB,{SFA\
+D[{{q2,0},{0,1},1}],SFAD[{{p1+q2,0},{1,1},1}],SFAD[{{q1,0},{1/16,1},1}],S\
+FAD[{{p1/4+q1,0},{0,1},1}],SFAD[{{-1/4*p1+p2/2+q2,0},{1/16,1},1}],SFAD\
+[{{p1/4-p2/4+q1,0},{1/16,1},1}]},{q1,q2},{p1,p2},{Hold[Pair][Momentum[p\
+1,D],Momentum[p1,D]]->1,Hold[Pair][Momentum[p2,D],Momentum[p1,D]]->13/1\
+0,Hold[Pair][Momentum[p2,D],Momentum[p2,D]]->1},{}]}],FCE->True,FCVerb\
+ose->-2]",
+"{{{FCTopology[topo0, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{p1 + q2, \
+0}, {1, 1}, 1}], SFAD[{{q1, 0}, {1/16, 1}, 1}], SFAD[{{-1/4*p2 + q1, \
+0}, {0, 1}, 1}], SFAD[{{-1/4*p1 + p2/2 + q2, 0}, {1/16, 1}, 1}], \
+SFAD[{{p1/4 - p2/4 + q1, 0}, {1/16, 1}, 1}]}, {q1, q2}, {p1, p2}, \
+{Hold[Pair][Momentum[p1, D], Momentum[p1, D]] -> 1, \
+Hold[Pair][Momentum[p2, D], Momentum[p1, D]] -> 13/10, \
+Hold[Pair][Momentum[p2, D], Momentum[p2, D]] -> 1}, {}], {q1 -> q2, \
+q2 -> -p1 + q1}, GLI[topo0, {n3_, n1_, n2_, n4_, n5_, n6_}] :> \
+GLI[topo2, {n1, n2, n3, n4, 0, n5, n6}]}, {FCTopology[topoA, \
+{SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{p1 + q2, 0}, {1, 1}, 1}], \
+SFAD[{{q1, 0}, {1/16, 1}, 1}], SFAD[{{p1/4 + q1, 0}, {0, 1}, 1}], \
+SFAD[{{-1/4*p1 + p2/2 + q2, 0}, {1/16, 1}, 1}], SFAD[{{p1/4 - p2/4 + \
+q1, 0}, {1/16, 1}, 1}]}, {q1, q2}, {p1, p2}, {Hold[Pair][Momentum[p1, \
+D], Momentum[p1, D]] -> 1, Hold[Pair][Momentum[p2, D], Momentum[p1, D]] \
+-> 13/10, Hold[Pair][Momentum[p2, D], Momentum[p2, D]] -> 1}, {}], \
+{q1 -> q1, q2 -> q2}, GLI[topoA, {n1_, n2_, n3_, n4_, n5_, n6_}] :> \
+GLI[topoB, {n1, n2, n3, n4, n5, n6}]}}, {FCTopology[topo2, {SFAD[{{q1, \
+0}, {1, 1}, 1}], SFAD[{{q2, 0}, {1/16, 1}, 1}], SFAD[{{-p1 + q1, 0}, \
+{0, 1}, 1}], SFAD[{{-1/4*p2 + q2, 0}, {0, 1}, 1}], SFAD[{{-p1 + q1 + \
+q2, 0}, {1/16, 1}, 1}], SFAD[{{(-5*p1)/4 + p2/2 + q1, 0}, {1/16, 1}, \
+1}], SFAD[{{p1/4 - p2/4 + q2, 0}, {1/16, 1}, 1}]}, {q1, q2}, {p1, p2}, \
+{Hold[Pair][Momentum[p1, D], Momentum[p1, D]] -> 1, \
+Hold[Pair][Momentum[p2, D], Momentum[p1, D]] -> 13/10, \
+Hold[Pair][Momentum[p2, D], Momentum[p2, D]] -> 1}, {}], \
+FCTopology[topoB, {SFAD[{{q2, 0}, {0, 1}, 1}], SFAD[{{p1 + q2, 0}, {1, \
+1}, 1}], SFAD[{{q1, 0}, {1/16, 1}, 1}], SFAD[{{p1/4 + q1, 0}, {0, 1}, \
+1}], SFAD[{{-1/4*p1 + p2/2 + q2, 0}, {1/16, 1}, 1}], SFAD[{{p1/4 - \
+p2/4 + q1, 0}, {1/16, 1}, 1}]}, {q1, q2}, {p1, p2}, \
+{Hold[Pair][Momentum[p1, D], Momentum[p1, D]] -> 1, \
+Hold[Pair][Momentum[p2, D], Momentum[p1, D]] -> 13/10, \
+Hold[Pair][Momentum[p2, D], Momentum[p2, D]] -> 1}, {}]}}"},
 {"fcstFCLoopFindTopologyMappings-ID8",
 "FCLoopFindTopologyMappings[{FCTopology[fctopology1,{SFAD[{{p1+Q,0}\
 ,{0,1},1}],SFAD[{{p2,0},{m1^2,1},1}],SFAD[{{p1,0},{m1^2,1},1}],SFAD[{{\
