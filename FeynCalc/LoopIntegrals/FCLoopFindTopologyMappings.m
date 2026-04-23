@@ -63,7 +63,7 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 			preferredIDs, finalMappings, list, topoIDs, mappedTopoIDs, unmappedTopoIDs,
 			relevantTopoIDs, optFinalSubstitutions, allTopos, relevantTopos, optSubtopologyMarker,
 			bigTopos, subTopos, tmp, rulesSubtopoToTopo, optInitialSubstitutions, optMomentum,
-			optFCParallelize, optVerbose, assoc},
+			optFCParallelize, optVerbose, assoc, mappingIDs},
 
 		If[	OptionValue[FCVerbose] === False,
 			optVerbose = $VeryVerbose,
@@ -123,11 +123,35 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 		FCPrint[1, "FCLoopFindTopologyMappings: Calling FCLoopFindIntegralMappings.", FCDoControl -> optVerbose];
 		pakMappings = FCLoopFindIntegralMappings[allTopos, FCI->True, FinalSubstitutions->optFinalSubstitutions,
 			List->True, LightPak -> OptionValue[LightPak], FCParallelize->optFCParallelize];
+		FCPrint[1, "FCLoopFindTopologyMappings: FCLoopFindIntegralMappings done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
+
+		time=AbsoluteTime[];
+		FCPrint[1, "FCLoopFindTopologyMappings: Filtering out irrelevant mappings.", FCDoControl -> optVerbose];
 
 		(*Select only mappings involving at least two topologies *)
 		pakMappings = Select[pakMappings, Length[#] > 1 &];
 
-		FCPrint[1, "FCLoopFindTopologyMappings: FCLoopFindIntegralMappings done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
+		FCPrint[1, "FCLoopFindTopologyMappings: Done filtering out irrelevant mappings, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
+
+		If[	preferredIDs=!={},
+			assoc = AssociationThread[preferredIDs -> True];
+			mappingIDs = Map[(First /@ Transpose[#][[1]]) &, pakMappings];
+			selectorFun[z_] :=
+				Select[z, ! KeyExistsQ[assoc, #] &];
+
+			pakMappings = MapThread[
+					If[	selectorFun[#1] =!= {},
+						#2,
+						Nothing
+					] &, {mappingIDs, pakMappings}];
+			mappingIDs = Map[(First /@ Transpose[#][[1]]) &, pakMappings]//Flatten//Union;
+			preferredIDs = Intersection[preferredIDs,mappingIDs]
+		];
+
+		FCPrint[2, "FCLoopFindTopologyMappings: Found " ,Length[pakMappings], " potential mappings sets", FCDoControl -> optVerbose];
+
+		FCPrint[2, "FCLoopFindTopologyMappings: Number of relevant preferred topologies: " ,Length[preferredIDs], FCDoControl -> optVerbose];
+
 		FCPrint[3, "FCLoopFindTopologyMappings: After FCLoopFindIntegralMappings: ", pakMappings, FCDoControl->optVerbose];
 
 		time=AbsoluteTime[];
@@ -156,13 +180,6 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 		time=AbsoluteTime[];
 		FCPrint[1, "FCLoopFindTopologyMappings: Removing irrelevant topologies.", FCDoControl -> optVerbose];
 
-		(* Removes mappings between preferred topologies *)
-		assoc = AssociationThread[topoIDs -> True];
-		res = Select[res, KeyExistsQ[assoc, #[[1]][[1]]] &];
-
-		FCPrint[3, "FCLoopFindTopologyMappings: After removing irrelevant topologies: ", res, FCDoControl -> optVerbose];
-
-
 		mappedTopoIDs = First[#[[1]]] & /@ res;
 		unmappedTopoIDs = Complement[topoIDs,mappedTopoIDs];
 
@@ -176,8 +193,9 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 
 		FCPrint[2, "FCLoopFindTopologyMappings: Relevant topologies: ", relevantTopoIDs, FCDoControl -> optVerbose];
 
-		assoc = AssociationThread[relevantTopoIDs -> True];
-		relevantTopos = Select[allTopos,KeyExistsQ[assoc, #[[1]]]&];
+
+		assoc = AssociationThread[allTopos[[All,1]] -> allTopos];
+		relevantTopos =  Lookup[assoc, relevantTopoIDs,Nothing];
 
 		FCPrint[1, "FCLoopFindTopologyMappings: Done removing irrelevant topologies, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 
@@ -209,8 +227,8 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 			relevantTopoIDs = Union[unmappedTopoIDs,relevantTopoIDs];
 			FCPrint[2, "FCLoopFindTopologyMappings: New relevant topologies: ", relevantTopoIDs, FCDoControl -> optVerbose];
 
-			assoc = AssociationThread[relevantTopoIDs -> True];
-			relevantTopos = Select[allTopos,KeyExistsQ[assoc,First[#]]&];
+			assoc = AssociationThread[allTopos[[All,1]] -> allTopos];
+			relevantTopos =  Lookup[assoc, relevantTopoIDs,Nothing];
 		];
 
 		FCPrint[0, "FCLoopFindTopologyMappings: ", FeynCalc`Package`FCStyle["Found ", {Darker[Green,0.55], Bold}], Length[res], FeynCalc`Package`FCStyle[" mapping relations ", {Darker[Green,0.55], Bold}], FCDoControl->optVerbose];
@@ -219,8 +237,6 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 		res = {res,relevantTopos};
 
 		FCPrint[2, "FCLoopFindTopologyMappings: Found: ", relevantTopoIDs, FCDoControl -> optVerbose];
-
-
 
 		If[	OptionValue[FCE],
 			res = FCE[res]
@@ -242,9 +258,11 @@ findMappings[input_List/; Length[input]>1, preferred_List, optInitialSubstitutio
 			mappings=findMappings2[input,{},{},optInitialSubstitutions, optMomentum, optVerbose],
 
 			(* Preferred topologies present *)
-			assoc = AssociationThread[preferred -> True];
-			targets = Select[input, KeyExistsQ[assoc,#[[1]][[1]]]&];
+
+			assoc = AssociationThread[input[[All,1,1]] -> input];
+			targets = Lookup[assoc, preferred,Nothing];
 			source = Complement[input, targets];
+
 			If[ source==={},
 				FCPrint[3, "FCLoopFindTopologyMappings: findMappings: Only preferred topologies in the input, leaving.", FCDoControl->optVerbose];
 				Return[{}]
