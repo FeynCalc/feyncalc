@@ -148,7 +148,7 @@ FCLoopScalelessQ[expr_, lmomsRaw_/; !OptionQ[lmomsRaw], OptionsPattern[]] :=
 					Abort[]
 				];
 				If[	extraRules=!={},
-					extraRules=First/@extraRules;
+					extraRules=extraRules[[All,1]];
 					res = ReplaceAt[res,_->True,extraRules]
 				]
 			]

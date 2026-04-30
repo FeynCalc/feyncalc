@@ -63,7 +63,7 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 			preferredIDs, finalMappings, list, topoIDs, mappedTopoIDs, unmappedTopoIDs,
 			relevantTopoIDs, optFinalSubstitutions, allTopos, relevantTopos, optSubtopologyMarker,
 			bigTopos, subTopos, tmp, rulesSubtopoToTopo, optInitialSubstitutions, optMomentum,
-			optFCParallelize, optVerbose, assoc, mappingIDs},
+			optFCParallelize, optVerbose, assoc, mappingIDs, selectorFun, duplicates},
 
 		If[	OptionValue[FCVerbose] === False,
 			optVerbose = $VeryVerbose,
@@ -80,7 +80,7 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 		optFCVerboseFCLoopFindMomentumShifts	= OptionValue["FCVerboseFCLoopFindMomentumShifts"];
 
 		FCPrint[1, "FCLoopFindTopologyMappings: Entering.", FCDoControl -> optVerbose];
-		FCPrint[3, "FCLoopFindTopologyMappings: Entering with: ", toposRaw, FCDoControl -> optVerbose];
+		FCPrint[3, "FCLoopFindTopologyMappings: Entering with: ", toposRaw[[All,1]], FCDoControl -> optVerbose];
 
 		If[ !OptionValue[FCI],
 			{topos, optPreferredTopologies, optInitialSubstitutions} = FCI[{toposRaw, optPreferredTopologies, FRH[optInitialSubstitutions]}],
@@ -99,16 +99,37 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 				],#
 			]&/@ optPreferredTopologies;
 
-		FCPrint[3, "FCLoopFindTopologyMappings: Preferred topologies: ", optPreferredTopologies, FCDoControl -> optVerbose];
+		FCPrint[3, "FCLoopFindTopologyMappings: Preferred topologies: ", optPreferredTopologies[[All,1]], FCDoControl -> optVerbose];
 
 		If[	!MatchQ[optPreferredTopologies,{_FCTopology...}],
 			Message[FCLoopFindTopologyMappings::failmsg, "The value of the PreferredTopologies option is not a valid list of topologies."]
 		];
 
-		preferredIDs = First/@optPreferredTopologies;
-		topoIDs 	 = First/@topos;
-
+		preferredIDs = optPreferredTopologies[[All,1]];
+		topoIDs 	 = topos[[All,1]];
 		allTopos 	 = Union[Join[topos,optPreferredTopologies]];
+
+		(*
+			3 different cases:
+
+			1. topoA is in input, but not preferred -> topoA can be mapped to one of the preferred topologies or to some other input topologies.
+			2. topoA is preferred, but not input -> some input topologies can be mapped to topoA
+			3. topoA is in input and in preferred -> some input topologies can be mapped to topoA.
+
+			Important: preferred topologies are assumed to be minimal. We are not returning any mappings between preferred topologies
+
+			Special case: When a list of topos is sent to FCLoopFindSubtopologies, the default output will not contain the original topos, only
+			their subtopos. So the mappings of topos into subtopos will work.
+
+		*)
+
+
+		duplicates=Lookup[AssociationThread[topoIDs -> topoIDs], preferredIDs, Nothing];
+		If[	duplicates=!={},
+			FCPrint[0, "FCLoopFindTopologyMappings: ", FeynCalc`Package`FCStyle["Following topologies ", {Darker[Yellow,0.55], Bold}], duplicates,
+				FeynCalc`Package`FCStyle[" appear both in input and the preferred list.", {Darker[Yellow,0.55], Bold}], FCDoControl->optVerbose];
+		];
+
 
 
 		time=AbsoluteTime[];
@@ -126,31 +147,40 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 		FCPrint[1, "FCLoopFindTopologyMappings: FCLoopFindIntegralMappings done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 
 		time=AbsoluteTime[];
-		FCPrint[1, "FCLoopFindTopologyMappings: Filtering out irrelevant mappings.", FCDoControl -> optVerbose];
-
+		FCPrint[1, "FCLoopFindTopologyMappings: Filtering out irrelevant 1-to-1 mappings.", FCDoControl -> optVerbose];
 		(*Select only mappings involving at least two topologies *)
 		pakMappings = Select[pakMappings, Length[#] > 1 &];
-
 		FCPrint[1, "FCLoopFindTopologyMappings: Done filtering out irrelevant mappings, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
+		FCPrint[2, "FCLoopFindTopologyMappings: Found " ,Length[pakMappings], " potential mappings sets", FCDoControl -> optVerbose];
 
 		If[	preferredIDs=!={},
+			time=AbsoluteTime[];
+			FCPrint[1, "FCLoopFindTopologyMappings: Extra filtering because of preferred topologies.", FCDoControl -> optVerbose];
 			assoc = AssociationThread[preferredIDs -> True];
 			mappingIDs = Map[(First /@ Transpose[#][[1]]) &, pakMappings];
-			selectorFun[z_] :=
-				Select[z, ! KeyExistsQ[assoc, #] &];
+			FCPrint[3, "FCLoopFindTopologyMappings: Mapping IDs: ", mappingIDs , FCDoControl -> optVerbose];
 
+			(* Selects only topologies not contained in the preferred set *)
+			selectorFun[z_] :=
+				Select[z, !KeyExistsQ[assoc, #] &];
+
+			(*
+				Selects only sets not entirely made of preferred topologies:
+				An empty set here means that the original contained only preferred topologies
+			*)
 			pakMappings = MapThread[
 					If[	selectorFun[#1] =!= {},
 						#2,
 						Nothing
 					] &, {mappingIDs, pakMappings}];
 			mappingIDs = Map[(First /@ Transpose[#][[1]]) &, pakMappings]//Flatten//Union;
-			preferredIDs = Intersection[preferredIDs,mappingIDs]
+			preferredIDs = Intersection[preferredIDs,mappingIDs];
+			FCPrint[1, "FCLoopFindTopologyMappings: Extra filtering done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
+			FCPrint[2, "FCLoopFindTopologyMappings: Found " ,Length[pakMappings], " potential mappings sets", FCDoControl -> optVerbose];
+			FCPrint[2, "FCLoopFindTopologyMappings: Number of relevant preferred topologies: " ,Length[preferredIDs], FCDoControl -> optVerbose]
 		];
 
-		FCPrint[2, "FCLoopFindTopologyMappings: Found " ,Length[pakMappings], " potential mappings sets", FCDoControl -> optVerbose];
 
-		FCPrint[2, "FCLoopFindTopologyMappings: Number of relevant preferred topologies: " ,Length[preferredIDs], FCDoControl -> optVerbose];
 
 		FCPrint[3, "FCLoopFindTopologyMappings: After FCLoopFindIntegralMappings: ", pakMappings, FCDoControl->optVerbose];
 

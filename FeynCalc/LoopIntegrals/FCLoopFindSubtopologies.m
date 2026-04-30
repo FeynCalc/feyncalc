@@ -44,12 +44,12 @@ Options[FCLoopFindSubtopologies] = {
 	FCParallelize				-> False,
 	FCVerbose 					-> False,
 	FinalSubstitutions			-> {},
-	Flatten						-> False,
+	Flatten						-> True,
 	LightPak					-> False,
 	MaxIterations				-> Infinity,
 	Names						-> "R",
 	"Separator"					-> "x",
-	Remove						-> False,
+	Remove						-> True,
 	SubtopologyMarker			-> FCGV["SubtopologyOf"],
 	ToSFAD						-> True
 };
@@ -183,7 +183,7 @@ FCLoopFindSubtopologies[topoRaw_FCTopology, OptionsPattern[]] :=
 		];
 
 		If[	OptionValue[Remove],
-			res = SelectFree[res,topo[[1]]]
+			res = Select[res,FreeQ[#[[1]],topo[[1]]]&]
 		];
 
 		FCPrint[3, "FCLoopFindSubtopologies: Leaving.", FCDoControl -> fclfsVerbose];

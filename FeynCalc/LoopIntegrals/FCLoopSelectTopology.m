@@ -63,7 +63,7 @@ FCLoopSelectTopology[glisRaw_List, topos:{__FCTopology}, OptionsPattern[]] :=
 
 				(*Amplitude*)
 				glis = Cases2[glisRaw+null,GLI];
-				gliTopos=List/@First/@glis
+				gliTopos=List/@(glis[[All,1]])
 			],
 			(*List of GLIs without any products*)
 			glis = glisRaw;
