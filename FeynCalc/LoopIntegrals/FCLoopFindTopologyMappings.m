@@ -180,32 +180,32 @@ FCLoopFindTopologyMappings[toposRaw:{__FCTopology}, OptionsPattern[]] :=
 			FCPrint[2, "FCLoopFindTopologyMappings: Number of relevant preferred topologies: " ,Length[preferredIDs], FCDoControl -> optVerbose]
 		];
 
-
-
 		FCPrint[3, "FCLoopFindTopologyMappings: After FCLoopFindIntegralMappings: ", pakMappings, FCDoControl->optVerbose];
 
-		time=AbsoluteTime[];
-		If[	$ParallelizeFeynCalc && optFCParallelize,
-			FCPrint[1,"FCLoopFindTopologyMappings: Calling findMappings in parallel.", FCDoControl->optVerbose];
-			With[{xxx = optInitialSubstitutions, yyy = optMomentum, zzz = preferredIDs },
-				ParallelEvaluate[FCContext`FCLoopFindTopologyMappings`initialSubsts = xxx;
-								FCContext`FCLoopFindTopologyMappings`optMom = yyy;
-								FCContext`FCLoopFindTopologyMappings`prefIDs = zzz;,
-								DistributedContexts -> None]];
+		If[	Length[pakMappings]>0,
+			time=AbsoluteTime[];
+			If[	$ParallelizeFeynCalc && optFCParallelize,
+				FCPrint[1,"FCLoopFindTopologyMappings: Calling findMappings in parallel.", FCDoControl->optVerbose];
+				With[{xxx = optInitialSubstitutions, yyy = optMomentum, zzz = preferredIDs },
+					ParallelEvaluate[FCContext`FCLoopFindTopologyMappings`initialSubsts = xxx;
+									FCContext`FCLoopFindTopologyMappings`optMom = yyy;
+									FCContext`FCLoopFindTopologyMappings`prefIDs = zzz;,
+									DistributedContexts -> None]];
 
-			res = ParallelMap[findMappings[#,FCContext`FCLoopFindTopologyMappings`prefIDs ,FCContext`FCLoopFindTopologyMappings`initialSubsts,
-				FCContext`FCLoopFindTopologyMappings`optMom,optVerbose]&, pakMappings,
-				DistributedContexts -> None,
-				Method->"ItemsPerEvaluation" -> Ceiling[N[Length[pakMappings]/$KernelCount]/10]],
+				res = ParallelMap[findMappings[#,FCContext`FCLoopFindTopologyMappings`prefIDs ,FCContext`FCLoopFindTopologyMappings`initialSubsts,
+					FCContext`FCLoopFindTopologyMappings`optMom,optVerbose]&, pakMappings,
+					DistributedContexts -> None,
+					Method->"ItemsPerEvaluation" -> Ceiling[N[Length[pakMappings]/$KernelCount]/10]],
 
-			FCPrint[1,"FCLoopFindTopologyMappings: Calling findMappings.", FCDoControl->optVerbose];
-			res = findMappings[#,preferredIDs,optInitialSubstitutions,optMomentum,optVerbose]&/@ pakMappings;
+				FCPrint[1,"FCLoopFindTopologyMappings: Calling findMappings.", FCDoControl->optVerbose];
+				res = findMappings[#,preferredIDs,optInitialSubstitutions,optMomentum,optVerbose]&/@ pakMappings;
 
+			];
+			res = Flatten[res /. {a_FCTopology, rest___} :> list[a, rest]] /. list -> List;
+			FCPrint[1, "FCLoopFindTopologyMappings: findMappings done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose],
+
+			res = {}
 		];
-
-		res = Flatten[res /. {a_FCTopology, rest___} :> list[a, rest]] /. list -> List;
-
-		FCPrint[1, "FCLoopFindTopologyMappings: findMappings done, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 
 		time=AbsoluteTime[];
 		FCPrint[1, "FCLoopFindTopologyMappings: Removing irrelevant topologies.", FCDoControl -> optVerbose];
