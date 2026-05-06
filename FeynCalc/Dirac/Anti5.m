@@ -95,7 +95,7 @@ Anti5[expr_/; !MemberQ[{List,Equal},expr], n_/; !OptionQ[n] && MatchQ[n, Infinit
 			FCPrint[1, "Anti5: Normal mode.", FCDoControl->a5Verbose];
 			time=AbsoluteTime[];
 			FCPrint[1, "Anti5: Extracting Dirac objects.", FCDoControl->a5Verbose];
-			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DiracGammaCombine->True, LorentzIndex->False, DiracChain->True];
+			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DiracGammaCombine->True, LorentzIndex->False, DiracChain->True, "ExpandNestedDOTs"->True];
 			ex = ex /. h_dsHead/; FreeQ2[h,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] :> Identity@@h;
 
 			{freePart,dsPart} = FCSplit[ex,{dsHead}];
