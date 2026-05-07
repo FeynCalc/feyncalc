@@ -253,7 +253,9 @@ DiracGamma[LorentzIndex[rho, -4 + D], -4 + D]"},
 {"fcstAnti5ToTheLeft-ID30.7","FCSetDiracGammaScheme[\"NDR\"]; Anti5[GAD[
 5] . (a GAD[u] + b GAD[u] . GSD[p] +
 	c GSD[p] . GAD[u] . GSD[q]), Infinity, FCE -> True]",
-	"-(a*GAD[u] . GA[5]) + b*GAD[u] . GSD[p] . GA[5] - c*GSD[p] . GAD[u] . GSD[q] . GA[5]"}
+	"-(a*GAD[u] . GA[5]) + b*GAD[u] . GSD[p] . GA[5] - c*GSD[p] . GAD[u] . GSD[q] . GA[5]"},
+{"fcstAnti5ToTheLeft-ID30.8","Anti5[GAD[5] . (a GSD[p] + b GSD[q]) . GAD[u], Infinity, FCE -> True]",
+	"a*GSD[p] . GAD[u] . GA[5] + b*GSD[q] . GAD[u] . GA[5]"}
 };
 
 Tests`Dirac`fcstAnti5EvenGamma5 = {

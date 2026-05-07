@@ -95,7 +95,7 @@ Anti5[expr_/; !MemberQ[{List,Equal},expr], n_/; !OptionQ[n] && MatchQ[n, Infinit
 			FCPrint[1, "Anti5: Normal mode.", FCDoControl->a5Verbose];
 			time=AbsoluteTime[];
 			FCPrint[1, "Anti5: Extracting Dirac objects.", FCDoControl->a5Verbose];
-			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DiracGammaCombine->True, LorentzIndex->False, DiracChain->True, "ExpandNestedDOTs"->True];
+			ex = FCDiracIsolate[ex,FCI->True,Head->dsHead, DiracGammaCombine->True, LorentzIndex->False, DiracChain->True,"ExpandNestedDOTs"->True];
 			ex = ex /. h_dsHead/; FreeQ2[h,{DiracGamma[5],DiracGamma[6],DiracGamma[7]}] :> Identity@@h;
 
 			{freePart,dsPart} = FCSplit[ex,{dsHead}];
@@ -108,14 +108,16 @@ Anti5[expr_/; !MemberQ[{List,Equal},expr], n_/; !OptionQ[n] && MatchQ[n, Infinit
 			dsPart = dsHead[ex];
 			diracObjects = {dsPart}
 		];
-		FCPrint[3,"Anti5: dsPart: ",dsPart , FCDoControl->a5Verbose];
-		FCPrint[3,"Anti5: freePart: ",freePart , FCDoControl->a5Verbose];
-		FCPrint[3,"Anti5: diracObjects: ",diracObjects , FCDoControl->a5Verbose];
+		FCPrint[3, "Anti5: dsPart: ",dsPart , FCDoControl->a5Verbose];
+		FCPrint[3, "Anti5: freePart: ",freePart , FCDoControl->a5Verbose];
+		FCPrint[3, "Anti5: diracObjects: ",diracObjects , FCDoControl->a5Verbose];
 
 		FCPrint[1, "Anti5: Moving g^5.", FCDoControl->a5Verbose];
 		time=AbsoluteTime[];
 
-		diracObjectsEval = (diracObjects /. DOT->holdDOT /. dsHead->Identity);
+		diracObjectsEval = Map[Distribute[DotSimplify[#,Expanding->True]]&,diracObjects];
+
+		diracObjectsEval = (diracObjectsEval /. DOT->holdDOT /. dsHead->Identity);
 		Switch[n,
 
 			_Integer?Positive,
@@ -138,14 +140,12 @@ Anti5[expr_/; !MemberQ[{List,Equal},expr], n_/; !OptionQ[n] && MatchQ[n, Infinit
 		time=AbsoluteTime[];
 		FCPrint[1, "Anti5: Inserting Dirac objects back.", FCDoControl->a5Verbose];
 
-		diracObjectsEval = diracObjectsEval /. {
-			holdDOT->DOT
-		} /. (anti5MoveLeft|anti5MoveRight)[z_,_]-> z;
+		diracObjectsEval = diracObjectsEval /. holdDOT->DOT /. (anti5MoveLeft|anti5MoveRight)[z_,_]-> z;
 		repRule = Thread[Rule[diracObjects,diracObjectsEval]];
-		FCPrint[3,"Anti5: repRule: ", repRule, FCDoControl->a5Verbose];
+		FCPrint[3, "Anti5: repRule: ", repRule, FCDoControl->a5Verbose];
 		res = freePart + ( dsPart/. Dispatch[repRule]);
 		FCPrint[1, "Anti5: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->a5Verbose];
-		FCPrint[3,"Anti5: Intermediate result: ", res, FCDoControl->a5Verbose];
+		FCPrint[3, "Anti5: Intermediate result: ", res, FCDoControl->a5Verbose];
 
 		If[ OptionValue[FCE],
 			res = FCE[res]
