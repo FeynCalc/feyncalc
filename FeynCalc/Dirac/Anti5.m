@@ -178,7 +178,7 @@ anti5MoveRight[0, _]:=
 anti5MoveRight[DiracChain[ex_, i_, j_], c_]:=
 	DiracChain[anti5MoveRight[ex, c],i,j];
 
-anti5MoveRight[c1_. a_holdDOT + c2_. b_holdDOT + c3_:0, i_]:=
+anti5MoveRight[c1_. a_ + c2_. b_ + c3_:0, i_]:=
 	anti5MoveRight[c1 a,i] + anti5MoveRight[c2 b,i] + anti5MoveRight[c3,i];
 
 (*	4-dimensions, any scheme, move to the right	*)
@@ -241,7 +241,7 @@ anti5MoveLeft[0, _]:=
 anti5MoveLeft[DiracChain[ex_, i_, j_], c_]:=
 	DiracChain[anti5MoveLeft[ex, c],i,j];
 
-anti5MoveLeft[c1_. a_holdDOT + c2_. b_holdDOT + c3_:0, i_]:=
+anti5MoveLeft[c1_. a_ + c2_. b_ + c3_:0, i_]:=
 	anti5MoveLeft[c1 a,i] + anti5MoveLeft[c2 b,i] + anti5MoveLeft[c3,i];
 
 (*	4-dimensions, any scheme, move to the left	*)
