@@ -48,10 +48,13 @@ gamma5MoveBMHVLeft 					= FeynCalc`DiracTrick`Private`gamma5MoveBMHVLeft;
 holdDOT 							= commonGamma5Properties;
 
 Options[Anti5] = {
+	Collecting		-> True,
+	Factoring		-> {Factor2, 5000},
 	FCDiracIsolate	-> True,
 	FCE				-> False,
 	FCI				-> False,
-	FCVerbose		-> False
+	FCVerbose		-> False,
+	TimeConstrained	-> 3
 };
 
 Anti5[a_ == b_, rest___] :=
@@ -146,6 +149,10 @@ Anti5[expr_/; !MemberQ[{List,Equal},expr], n_/; !OptionQ[n] && MatchQ[n, Infinit
 		res = freePart + ( dsPart/. Dispatch[repRule]);
 		FCPrint[1, "Anti5: Done inserting Dirac objects back, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->a5Verbose];
 		FCPrint[3, "Anti5: Intermediate result: ", res, FCDoControl->a5Verbose];
+
+		If[ OptionValue[Collecting],
+			res = Collect2[res,{DiracGamma[5],DiracGamma[6],DiracGamma[7]},TimeConstrained->OptionValue[TimeConstrained],Factoring->OptionValue[Factoring]]
+		];
 
 		If[ OptionValue[FCE],
 			res = FCE[res]
