@@ -23,15 +23,68 @@ FCLoopFindTopologyMappings::usage =
 "FCLoopFindTopologyMappings[{topo1, topo2, ...}] finds mappings between
 topologies (written as FCTopology objects) topo1, topo2, .... For each source
 topology the function returns a list of loop momentum shifts and a GLI
-replacement rule needed to map it to the given target topology. If you need to
-map everything to a particular set of target topologies, you can specify them
-via the PreferredTopologies option.
+replacement rule needed to map it to the given target topology.
+
+The mappings are being identified using Pak's algorithm. Once a group of
+identical topologies has been found, the algorithm will try to map all of them
+to the first topology in the list. All topologies that have been successfully
+mapped to the first topology are then removed from the list (including the
+target topology) and the same procedure is repeated for the remaining
+topologies until there are no topologies left in the group. 
+
+Notice that not every Pak mapping between topologies can be converted to a
+mapping in terms of loop momentum shifts. Some of the identified mappings only
+exist on the level of loop integrals but not topologies.
 
 The output is a list of two lists, the former containing the mappings and  the
 latter enumerating the final contributing topologies
 
-To enable shifts in the external momenta you need to set the option Momentum
-to All.";
+To enable exchanges of external momenta (e.g. $p_i \\leftrightarrow p_j$) you
+need to set the option Momentum to All. Notice that this usually makes sense
+only for a very specific set of processes (e.g. QCD diagrams with massless
+partons). Exchanging the momenta of say a massive and a massless particle will
+obviously lead to inconsistent results.
+
+If you need to map everything to a particular set of target topologies, you
+can specify them via the PreferredTopologies option.  The usage of this option
+may have some side effects that one should be aware of.
+
+- If a topology topo1 appears in the input but not in the preferred topologies
+list, it can be mapped to one of the preferred topologies or otherwise to some
+other input topologies. This usually happens when preferred topologies and
+input topologies are completely distinct.
+
+- If a topology topo1 appears only in the preferred topologies list, then some
+other topologies from the input can be mapped to it. However, any mappings
+between topo1 and other preferred topologies will be automatically discarded.
+This behavior is intentional  and helps to keep the code logic simple and
+straightforward. Therefore, the list of preferred topologies is tacitly
+expected to contain only unique topologies. Supplying a list with topologies
+that can be mapped to each other will not cause errors but it may result in
+mappings that include more topologies than necessary.
+
+- If a topology topo1 appears both in the input and in the preferred
+topologies list, then it will be regarded as a preferred topology only. This
+means that only some other topologies from the input can be mapped to it.
+However, topo1 will not be mapped to other preferred topologies, even though
+such mappings may exist. This is why it is better to avoid situations where
+the same topologies appear in both lists.
+
+In real life the output of FCLoopFindSubtopologies is often used as the value
+for the PreferredTopologies option with the aim of finding mappings between
+smaller and larger topologies. In this case one has to distinguish between the
+following situations
+
+- FCLoopFindSubtopologies is applied to the same list of topologies that is
+passed as input to FCLoopFindTopologyMappings. Here everything should work as
+expected, because by default FCLoopFindSubtopologiesremoves the original input
+topologies from its output. Hence, there are no topologies appearing both in
+the input and preferred topologies lists.
+
+- FCLoopFindSubtopologies is applied to a same list of preferred topologies
+that are distinct from the input topologies. In this case one should set the
+Remove to False to ensure that the original preferred topologies are kept in
+the output.";
 
 FCLoopFindTopologyMappings::failmsg =
 "Error! FCLoopFindTopologyMappings has encountered a fatal problem and must abort the computation. \
