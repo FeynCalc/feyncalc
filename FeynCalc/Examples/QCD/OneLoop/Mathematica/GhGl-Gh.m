@@ -137,9 +137,6 @@ amp2[0] = FCFAConvert[CreateFeynAmp[diagsCT,
 (*Ghost-gluon vertex*)
 
 
-?Quiet
-
-
 AbsoluteTiming[amp1[1]=TID[(FCE[amp1[0]]/.{-p2-p3->-p1}),l,
 	UsePaVeBasis->True,ToPaVe->True,FCParallelize->True];]
 
@@ -200,6 +197,4 @@ Text->{"\tCompare to Muta, Foundations of QCD, \
 Eq. 2.5.142:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
-
-
 

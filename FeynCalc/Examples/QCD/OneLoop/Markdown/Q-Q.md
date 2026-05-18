@@ -27,7 +27,7 @@ If[ToExpression[StringSplit[$FeynHelpersVersion, "."]][[1]] < 2,
  ]
 ```
 
-$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2025-12-22 21:09:03 +01:00, fcd53f9b). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
+$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2026-05-18 14:09:14 +02:00, 9ab9d838). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{If you use FeynCalc in your research, please evaluate FeynCalcHowToCite[] to learn how to cite this software.}$$
 
@@ -39,7 +39,7 @@ $$\text{If you use FeynArts in your research, please cite}$$
 
 $$\text{ $\bullet $ T. Hahn, Comput. Phys. Commun., 140, 418-431, 2001, arXiv:hep-ph/0012260}$$
 
-$$\text{FeynHelpers }\;\text{2.0.0 (2025-12-22 19:07:44 +01:00, c92fb9f5). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
+$$\text{FeynHelpers }\;\text{2.0.0 (2026-02-05 17:03:01 +02:00, 5db84fbb). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{ If you use FeynHelpers in your research, please evaluate FeynHelpersHowToCite[] to learn how to cite this work.}$$
 
@@ -78,7 +78,7 @@ amp[0] = FCFAConvert[CreateFeynAmp[diags, Truncated -> True,
   	Contract -> True, FinalSubstitutions -> {SMP["m_u"] -> SMP["m_q"]}]
 ```
 
-$$\left\{-\frac{g_s^2 T_{\text{Col3}\;\text{Col1}}^{\text{Glu3}} T_{\text{Col2}\;\text{Col3}}^{\text{Glu3}} \gamma ^{\text{Lor2}}.\left(m_q+\gamma \cdot q\right).\gamma ^{\text{Lor2}}}{\left(q^2-m_q^2\right).(q-p)^2}-\frac{\left(1-\xi _g\right) g_s^2 T_{\text{Col3}\;\text{Col1}}^{\text{Glu3}} T_{\text{Col2}\;\text{Col3}}^{\text{Glu3}} (\gamma \cdot (p-q)).\left(m_q+\gamma \cdot q\right).(\gamma \cdot (q-p))}{\left(q^2-m_q^2\right).(q-p)^4}\right\}$$
+$$\left\{-\left(g_s^2 T_{\text{Col3}\;\text{Col1}}^{\text{Glu3}} T_{\text{Col2}\;\text{Col3}}^{\text{Glu3}} \left(-\frac{\xi _g (\gamma \cdot (p-q)).\left(m_q+\gamma \cdot q\right).(-(\gamma \cdot (p-q)))}{\left(q^2-m_q^2\right).(p-q)^4}+\frac{\gamma ^{\text{Lor2}}.\left(m_q+\gamma \cdot q\right).\gamma ^{\text{Lor2}}}{\left(q^2-m_q^2\right).(p-q)^2}+\frac{(\gamma \cdot (p-q)).\left(m_q+\gamma \cdot q\right).(-(\gamma \cdot (p-q)))}{\left(q^2-m_q^2\right).(p-q)^4}\right)\right)\right\}$$
 
 ## Calculate the amplitude
 
@@ -133,4 +133,4 @@ $$\text{$\backslash $tCompare to Muto, Foundations of QCD, Eq 10.41:} \;\text{CO
 
 $$\text{True}$$
 
-$$\text{$\backslash $tCPU Time used: }18.781\text{ s.}$$
+$$\text{$\backslash $tCPU Time used: }37.82\text{ s.}$$

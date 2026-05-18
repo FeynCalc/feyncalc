@@ -21,7 +21,7 @@ $FAVerbose = 0;
 $ParallelizeFeynCalc = True;
 ```
 
-$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2025-12-22 21:09:03 +01:00, fcd53f9b). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
+$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2026-05-18 14:09:14 +02:00, 9ab9d838). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{If you use FeynCalc in your research, please evaluate FeynCalcHowToCite[] to learn how to cite this software.}$$
 
@@ -149,8 +149,6 @@ amp4[0] = amp[0][[4]] // SUNSimplify[#, FCParallelize -> True] & //
    TID[#, q, ToPaVe -> True, FCParallelize -> True] &
 ```
 
-![1cedw3mv5u88h](img/1cedw3mv5u88h.svg)
-
 $$-\frac{i C_A \pi ^2 \;\text{D}_0\left(0,p^2,0,p^2,p^2,p^2,0,0,0,0\right) \left(1-\xi _g\right){}^2 p^4 \left((1-D) p^{\mu } p^{\nu }+D p^{\mu } p^{\nu }-g^{\mu \nu } p^2\right) \delta ^{\text{Glu1}\;\text{Glu2}} g_s^2}{8 (1-D)}-\frac{i C_A \pi ^2 \;\text{B}_0(0,0,0) \left(1-\xi _g\right) \left(7 (1-D) p^{\mu } p^{\nu }+3 D p^{\mu } p^{\nu }-(1-D) \xi _g p^{\mu } p^{\nu }-D \xi _g p^{\mu } p^{\nu }-4 (1-D) g^{\mu \nu } p^2+\xi _g g^{\mu \nu } p^2-3 g^{\mu \nu } p^2\right) \delta ^{\text{Glu1}\;\text{Glu2}} g_s^2}{4 (1-D)}+\frac{i C_A \pi ^2 \;\text{C}_0\left(0,p^2,p^2,0,0,0\right) \left(1-\xi _g\right) p^2 \left(3 (1-D) p^{\mu } p^{\nu }+D p^{\mu } p^{\nu }-\xi _g p^{\mu } p^{\nu }+p^{\mu } p^{\nu }-2 (1-D) g^{\mu \nu } p^2+\xi _g g^{\mu \nu } p^2-2 g^{\mu \nu } p^2\right) \delta ^{\text{Glu1}\;\text{Glu2}} g_s^2}{2 (1-D)}-\frac{1}{4 (1-D)}i C_A \pi ^2 \;\text{B}_0\left(p^2,0,0\right) \left(2 p^{\mu } p^{\nu } D^2-\xi _g^2 p^{\mu } p^{\nu } D+2 (1-D) p^{\mu } p^{\nu } D+6 \xi _g p^{\mu } p^{\nu } D-8 p^{\mu } p^{\nu } D-2 g^{\mu \nu } p^2 D-(1-D) \xi _g^2 p^{\mu } p^{\nu }+(1-D) p^{\mu } p^{\nu }+6 (1-D) \xi _g p^{\mu } p^{\nu }-8 \xi _g p^{\mu } p^{\nu }+8 p^{\mu } p^{\nu }+\xi _g^2 g^{\mu \nu } p^2-8 (1-D) g^{\mu \nu } p^2+2 \xi _g g^{\mu \nu } p^2\right) \delta ^{\text{Glu1}\;\text{Glu2}} g_s^2$$
 
 The contribution of the gluon loop alone is not gauge invariant. Notice, however, that the sum
@@ -210,9 +208,8 @@ FCCompareResults[pi[0], knownResult,
    Text -> {"\tCompare to Muta, Foundations of QCD, Eqs 2.5.131-2.5.132:", 
      "CORRECT.", "WRONG!"}, Interrupt -> {Hold[Quit[1]], Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
-
-```mathematica
+```
 
 $$\text{$\backslash $tCompare to Muta, Foundations of QCD, Eqs 2.5.131-2.5.132:} \;\text{CORRECT.}$$
 
-$$\text{$\backslash $tCPU Time used: }39.496\text{ s.}$$
+$$\text{$\backslash $tCPU Time used: }30.666\text{ s.}$$

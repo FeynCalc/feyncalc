@@ -30,7 +30,7 @@ If[ToExpression[StringSplit[$FeynHelpersVersion, "."]][[1]] < 2,
  ]
 ```
 
-$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2025-12-22 21:09:03 +01:00, fcd53f9b). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
+$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2026-05-18 14:09:14 +02:00, 9ab9d838). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{If you use FeynCalc in your research, please evaluate FeynCalcHowToCite[] to learn how to cite this software.}$$
 
@@ -42,7 +42,7 @@ $$\text{If you use FeynArts in your research, please cite}$$
 
 $$\text{ $\bullet $ T. Hahn, Comput. Phys. Commun., 140, 418-431, 2001, arXiv:hep-ph/0012260}$$
 
-$$\text{FeynHelpers }\;\text{2.0.0 (2025-12-22 19:07:44 +01:00, c92fb9f5). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
+$$\text{FeynHelpers }\;\text{2.0.0 (2026-02-05 17:03:01 +02:00, 5db84fbb). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{ If you use FeynHelpers in your research, please evaluate FeynHelpersHowToCite[] to learn how to cite this work.}$$
 
@@ -177,7 +177,7 @@ AbsoluteTiming[amp1[1] = (FCE[amp1[0]] /. {p2 + p3 -> -p1, -p2 - p3 -> p1}) //
      TID[#, l, UsePaVeBasis -> True, ToPaVe -> True, FCParallelize -> True] &;]
 ```
 
-$$\{2.15465,\text{Null}\}$$
+$$\{2.37966,\text{Null}\}$$
 
 ```mathematica
 amp1Div[0] = amp1[1] // PaVeUVPart[#, Prefactor -> 1/(2 Pi)^D, FCLoopExtract -> False] &;
@@ -208,7 +208,7 @@ AbsoluteTiming[amp2[1] = (FCE[amp2[0]] /. {p2 + p3 -> -p1, -p2 - p3 -> p1}) //
      TID[#, l, UsePaVeBasis -> True, ToPaVe -> True, FCParallelize -> True] &;]
 ```
 
-$$\{0.515619,\text{Null}\}$$
+$$\{0.533427,\text{Null}\}$$
 
 ```mathematica
 amp2Div[0] = amp2[1] // PaVeUVPart[#, Prefactor -> 1/(2 Pi)^D, FCLoopExtract -> False] &;
@@ -241,7 +241,7 @@ AbsoluteTiming[amp3[1] = (FCE[amp3[0]] /. {p2 + p3 -> -p1, -p2 - p3 -> p1}) //
      TID[#, l, UsePaVeBasis -> True, ToPaVe -> True, FCParallelize -> True] &;]
 ```
 
-$$\{47.6532,\text{Null}\}$$
+$$\{47.8747,\text{Null}\}$$
 
 ```mathematica
 amp3Div[0] = amp3[1] // PaVeUVPart[#, Prefactor -> 1/(2 Pi)^D, FCLoopExtract -> False] &;
@@ -275,7 +275,7 @@ amp4[1] = amp4[0] // ReplaceAll[#, {SMP["Z_A"] -> 1 + alpha SMP["d_A"],
   	Collect2[#, MTD, GaugeXi, Factoring -> Function[x, MomentumCombine[Factor[x]]]] &
 ```
 
-$$\left\{-\frac{1}{2} g_s \left(3 \delta _A+2 \delta _g\right) g^{\mu \nu } (\text{p1}-\text{p2})^{\rho } f^{abc}-\frac{1}{2} g_s \left(3 \delta _A+2 \delta _g\right) g^{\mu \rho } (\text{p3}-\text{p1})^{\nu } f^{abc}-\frac{1}{2} g_s \left(3 \delta _A+2 \delta _g\right) g^{\nu \rho } (\text{p2}-\text{p3})^{\mu } f^{abc}\right\}$$
+$$\left\{-\frac{1}{2} g_s \left(3 \delta _A+2 \delta _g\right) g^{\mu \nu } (\text{p1}-\text{p2})^{\rho } f^{abc}+\frac{1}{2} g_s \left(3 \delta _A+2 \delta _g\right) g^{\mu \rho } (\text{p1}-\text{p3})^{\nu } f^{abc}-\frac{1}{2} g_s \left(3 \delta _A+2 \delta _g\right) g^{\nu \rho } (\text{p2}-\text{p3})^{\mu } f^{abc}\right\}$$
 
 Check the cancellation of the UV divergences in the MSbar scheme. The renormalization constants
 are obtained from another example calculation, "Renormalization.m"
@@ -336,4 +336,4 @@ Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
 
 $$\text{$\backslash $tCompare to Pascual and Tarrach, QCD: Renormalization for the Practitioner, Eq III.46:} \;\text{CORRECT.}$$
 
-$$\text{$\backslash $tCPU Time used: }39.106\text{ s.}$$
+$$\text{$\backslash $tCPU Time used: }51.23\text{ s.}$$
