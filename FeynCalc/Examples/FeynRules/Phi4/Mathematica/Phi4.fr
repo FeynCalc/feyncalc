@@ -4,12 +4,12 @@ M$Information = {
   Authors      -> {"Vladyslav Shtabovenko"},
   Institutions -> {"FeynCalc project"},
   Emails       -> {""},
-  Date         -> "08.08.2024"
+  Date         -> "13.05.2026"
 };
 
 M$Parameters =
 Join[{g == {ParameterType ->
-    Internal}}, (# == {ParameterType -> External}) & /@ {Zm, Zphi, Zg}]
+    Internal}}, (# == {ParameterType -> External}) & /@ {Zmphi, Zphi, Zg}]
 
 M$ClassesDescription = {
 
@@ -18,12 +18,12 @@ M$ClassesDescription = {
       ParticleName    -> "\[Phi]",
       PropagatorLabel -> "\[Phi]",
       SelfConjugate -> True,
-      Mass -> Mphi
+      Mass -> mphi
   }
 
 };
 
 LPhi4 = LPhi4R + LPhi4CT;
 
-LPhi4R = 1/2 del[phi, mu] del[phi, mu] - 1/2 Mphi^2*phi^2 - 1/(4!) g*phi^4;
-LPhi4CT =  1/2 FR$CT (Zphi-1) del[phi, mu] del[phi, mu] - 1/2 Mphi^2 FR$CT (Zm Zphi-1)*phi^2 - 1/(4!) FR$CT (Zg Zphi^2-1)*g*phi^4;
+LPhi4R = 1/2 del[phi, mu] del[phi, mu] - 1/2 mphi^2*phi^2 - 1/(4!) g*phi^4;
+LPhi4CT =  1/2 FR$CT (Zphi-1) del[phi, mu] del[phi, mu] - 1/2 mphi^2 FR$CT (Zmphi Zphi-1)*phi^2 - 1/(4!) FR$CT (Zg Zphi^2-1)*g*phi^4;

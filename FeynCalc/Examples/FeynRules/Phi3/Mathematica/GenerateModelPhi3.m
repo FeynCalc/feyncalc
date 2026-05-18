@@ -46,5 +46,5 @@ LoadModel[frModelPath];
 
 
 FR$Loop=True;
-SetDirectory[FileNameJoin[{$UserBaseDirectory,"Applications","FeynCalc","FeynArts","Models"}]];
+SetDirectory[FileNameJoin[{$UserBaseDirectory,"Applications","FeynCalc","Examples","Models"}]];
 WriteFeynArtsOutput[LPhi3,Output->"Phi3",CouplingRename->False];
