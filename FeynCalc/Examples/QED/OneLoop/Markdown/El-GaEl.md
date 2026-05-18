@@ -27,7 +27,7 @@ If[ToExpression[StringSplit[$FeynHelpersVersion, "."]][[1]] < 2,
  ]
 ```
 
-$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2025-12-22 21:09:03 +01:00, fcd53f9b). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
+$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2026-05-18 15:58:48 +02:00, 1a8e687c). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{If you use FeynCalc in your research, please evaluate FeynCalcHowToCite[] to learn how to cite this software.}$$
 
@@ -39,7 +39,7 @@ $$\text{If you use FeynArts in your research, please cite}$$
 
 $$\text{ $\bullet $ T. Hahn, Comput. Phys. Commun., 140, 418-431, 2001, arXiv:hep-ph/0012260}$$
 
-$$\text{FeynHelpers }\;\text{2.0.0 (2025-12-22 19:07:44 +01:00, c92fb9f5). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
+$$\text{FeynHelpers }\;\text{2.0.0 (2026-02-05 17:03:01 +02:00, 5db84fbb). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{ If you use FeynHelpers in your research, please evaluate FeynHelpersHowToCite[] to learn how to cite this work.}$$
 
@@ -122,6 +122,8 @@ $$\text{FCLoopFindTopologies: Number of the preferred topologies among the uniqu
 
 $$\text{FCLoopFindTopologies: Number of the identified subtopologies: }0$$
 
+$$\text{FCLoopFindTopologyMappings: }\;\text{Final number of found topologies: }1$$
+
 ```mathematica
 mappings = FCLoopFindTopologyMappings[topos, FCParallelize -> True];
 ```
@@ -149,13 +151,13 @@ AbsoluteTiming[ampReduced = FCLoopTensorReduce[amp[3], topos, FCParallelize -> T
      TensorReductionBasisChange -> {{p1, p2} -> {p1}}];]
 ```
 
-$$\{0.317605,\text{Null}\}$$
+$$\{0.454538,\text{Null}\}$$
 
 ```mathematica
 AbsoluteTiming[ampPreFinal = FCLoopApplyTopologyMappings[ampReduced, mappings, FCParallelize -> True];]
 ```
 
-$$\{0.131764,\text{Null}\}$$
+$$\{0.073843,\text{Null}\}$$
 
 ```mathematica
 ampFinal = ampPreFinal // DiracSimplify[#, FCParallelize -> True] & // Collect2[#, Dirac, FCParallelize -> True] &;
@@ -168,7 +170,7 @@ ints = Cases2[ampFinal, GLI]
 $$\left\{G^{\text{fctopology1}}(-1,1,1),G^{\text{fctopology1}}(0,1,0),G^{\text{fctopology1}}(0,1,1),G^{\text{fctopology1}}(1,0,1),G^{\text{fctopology1}}(1,1,-1),G^{\text{fctopology1}}(1,1,0),G^{\text{fctopology1}}(1,1,1)\right\}$$
 
 ```mathematica
-dir = FileNameJoin[{$TemporaryDirectory, "Reduction-ElToGaEl"}];
+dir = FileNameJoin[{$TemporaryDirectory, "Reduction-1L-ElToGaEl"}];
 Quiet[CreateDirectory[dir]];
 ```
 
@@ -188,7 +190,7 @@ KiraCreateConfigFiles[topos, ints, dir, KiraMassDimensions -> {me -> 1}];
 
 ```mathematica
 KiraRunReduction[dir, topos, 
-  KiraBinaryPath -> FileNameJoin[{$HomeDirectory, "bin", "kira"}], 
+  KiraBinaryPath -> FileNameJoin[{$HomeDirectory, ".local", "bin", "kira"}], 
   KiraFermatPath -> FileNameJoin[{$HomeDirectory, "bin", "ferl64", "fer64"}]]
 ```
 
@@ -265,4 +267,4 @@ Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
 
 $$\text{$\backslash $tCompare to J. Schwinger, Phys. Rev. 73, 416-417, 1948:} \;\text{CORRECT.}$$
 
-$$\text{$\backslash $tCPU Time used: }34.061\text{ s.}$$
+$$\text{$\backslash $tCPU Time used: }29.136\text{ s.}$$

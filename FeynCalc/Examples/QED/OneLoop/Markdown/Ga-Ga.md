@@ -21,7 +21,7 @@ $FAVerbose = 0;
 $ParallelizeFeynCalc = True;
 ```
 
-$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2025-12-22 21:09:03 +01:00, fcd53f9b). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
+$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2026-05-18 15:58:48 +02:00, 1a8e687c). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{If you use FeynCalc in your research, please evaluate FeynCalcHowToCite[] to learn how to cite this software.}$$
 
@@ -72,7 +72,7 @@ amp[0] = FCFAConvert[CreateFeynAmp[diags, Truncated -> True, PreFactor -> 1],
   	ChangeDimension -> D, SMP -> True, Contract -> True]
 ```
 
-$$\left\{\frac{\text{tr}\left(\left(m_e-\gamma \cdot q\right).\left(i \;\text{e} \gamma ^{\nu }\right).\left(m_e+\gamma \cdot (p-q)\right).\left(i \;\text{e} \gamma ^{\mu }\right)\right)}{\left(q^2-m_e^2\right).\left((q-p)^2-m_e^2\right)}\right\}$$
+$$\left\{\frac{\text{tr}\left(\left(m_e-\gamma \cdot q\right).\left(i \;\text{e} \gamma ^{\nu }\right).\left(m_e+\gamma \cdot (p-q)\right).\left(i \;\text{e} \gamma ^{\mu }\right)\right)}{\left(q^2-m_e^2\right).\left((p-q)^2-m_e^2\right)}\right\}$$
 
 ## Calculate the amplitude
 
@@ -135,4 +135,4 @@ Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
 
 $$\text{$\backslash $tCompare to Peskin and Schroeder, An Introduction to QFT, Eq 10.44:} \;\text{CORRECT.}$$
 
-$$\text{$\backslash $tCPU Time used: }23.132\text{ s.}$$
+$$\text{$\backslash $tCPU Time used: }38.655\text{ s.}$$

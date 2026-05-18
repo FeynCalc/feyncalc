@@ -22,7 +22,7 @@ $ParallelizeFeynCalc = True;
 FCCheckVersion[10, 2, 0];
 ```
 
-$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2025-12-22 21:09:03 +01:00, fcd53f9b). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
+$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2026-05-18 15:58:48 +02:00, 1a8e687c). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{If you use FeynCalc in your research, please evaluate FeynCalcHowToCite[] to learn how to cite this software.}$$
 
@@ -110,4 +110,4 @@ Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
 
 $$\text{$\backslash $tVerify Furry's theorem for 5-photons at 1-loop:} \;\text{CORRECT.}$$
 
-$$\text{$\backslash $tCPU Time used: }34.486\text{ s.}$$
+$$\text{$\backslash $tCPU Time used: }51.702\text{ s.}$$

@@ -472,5 +472,3 @@ hep-ph/0508242:",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}]
 Print["\tCPU Time used: ", Round[N[TimeUsed[],4],0.001], " s."];
 
-
-

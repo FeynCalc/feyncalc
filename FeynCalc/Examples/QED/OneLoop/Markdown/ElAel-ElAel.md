@@ -43,7 +43,7 @@ If[ToExpression[StringSplit[$FeynHelpersVersion, "."]][[1]] < 2,
  ]
 ```
 
-$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2025-12-22 21:09:03 +01:00, fcd53f9b). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
+$$\text{FeynCalc }\;\text{10.2.0 (dev version, 2026-05-18 15:58:48 +02:00, 1a8e687c). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{If you use FeynCalc in your research, please evaluate FeynCalcHowToCite[] to learn how to cite this software.}$$
 
@@ -55,7 +55,7 @@ $$\text{If you use FeynArts in your research, please cite}$$
 
 $$\text{ $\bullet $ T. Hahn, Comput. Phys. Commun., 140, 418-431, 2001, arXiv:hep-ph/0012260}$$
 
-$$\text{FeynHelpers }\;\text{2.0.0 (2025-12-22 19:07:44 +01:00, c92fb9f5). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
+$$\text{FeynHelpers }\;\text{2.0.0 (2026-02-05 17:03:01 +02:00, 5db84fbb). For help, use the }\underline{\text{online} \;\text{documentation},}\;\text{ visit the }\underline{\text{forum}}\;\text{ and have a look at the supplied }\underline{\text{examples}.}\;\text{ The PDF-version of the manual can be downloaded }\underline{\text{here}.}$$
 
 $$\text{ If you use FeynHelpers in your research, please evaluate FeynHelpersHowToCite[] to learn how to cite this work.}$$
 
@@ -161,7 +161,7 @@ amlLoop[0] = Join[ampLoop[0][[1 ;; 8]], Nf ampLoop[0][[9 ;; 9]], Nf ampLoop[0][[
 AbsoluteTiming[amlLoop[1] = amlLoop[0] // Contract[#, FCParallelize -> True] & // DiracSimplify[#, FCParallelize -> True] &;]
 ```
 
-$$\{0.39252,\text{Null}\}$$
+$$\{0.425778,\text{Null}\}$$
 
 ## Identify and minimize the topologies
 
@@ -176,6 +176,8 @@ $$\text{FCLoopFindTopologies: Number of the identified unique topologies: }6$$
 $$\text{FCLoopFindTopologies: Number of the preferred topologies among the unique topologies: }0$$
 
 $$\text{FCLoopFindTopologies: Number of the identified subtopologies: }3$$
+
+$$\text{FCLoopFindTopologyMappings: }\;\text{Final number of found topologies: }6$$
 
 ```mathematica
 subtopos = FCLoopFindSubtopologies[topos, FCParallelize -> True];
@@ -195,13 +197,13 @@ $$\text{FCLoopFindTopologyMappings: }\;\text{Final number of independent topolog
 AbsoluteTiming[ampReduced = FCLoopTensorReduce[amlLoop[2], topos, FCParallelize -> True];]
 ```
 
-$$\{2.04755,\text{Null}\}$$
+$$\{2.36918,\text{Null}\}$$
 
 ```mathematica
 AbsoluteTiming[ampPreFinal = FCLoopApplyTopologyMappings[ampReduced, mappings, FCParallelize -> True];]
 ```
 
-$$\{4.54486,\text{Null}\}$$
+$$\{2.65016,\text{Null}\}$$
 
 ```mathematica
 AbsoluteTiming[ampFinal = ampPreFinal // DiracSimplify[#, FCParallelize -> True] & // 
@@ -209,7 +211,7 @@ AbsoluteTiming[ampFinal = ampPreFinal // DiracSimplify[#, FCParallelize -> True]
       FeynAmpDenominatorExplicit // Collect2[#, DOT, FCParallelize -> True] &;]
 ```
 
-$$\{7.16698,\text{Null}\}$$
+$$\{7.4303,\text{Null}\}$$
 
 ```mathematica
 dir = FileNameJoin[{$TemporaryDirectory, "Reduction-ElAelToElAel2"}];
@@ -281,7 +283,7 @@ Obtain the Born-virtual interference term
       	FRH // Collect2[#, GLI, FCParallelize -> True] &;]
 ```
 
-$$\{14.8367,\text{Null}\}$$
+$$\{17.6064,\text{Null}\}$$
 
 Master integrals using the standard textbook normalization
 
@@ -372,7 +374,7 @@ bornCTAndResidue[0] = fullCTAndResidue[0] ComplexConjugate[ampTree[2]] // Fermio
        DiracSimplify // Simplify // FCReplaceD[#, D -> 4 - 2 ep] & // Series[#, {ep, 0, 0}] & // Normal
 ```
 
-$$\frac{\text{e}^6 N_f \left(t^4+2 t^3 u+3 t^2 u^2+2 t u^3+u^4\right)}{3 \pi ^2 \;\text{ep} t^2 (t+u)^2}+\frac{\text{e}^6 N_f \left(4 t^2 u^2-4 (\gamma -\log (4 \pi )) \left(t^4+2 t^3 u+3 t^2 u^2+2 t u^3+u^4\right)+4 t u^3\right)}{12 \pi ^2 t^2 (t+u)^2}$$
+$$\frac{\text{e}^6 N_f \left(t^2+t u+u^2\right)^2}{3 \pi ^2 \;\text{ep} t^2 (t+u)^2}+\frac{\text{e}^6 N_f \left(4 t u^2 (t+u)-4 (\gamma -\log (4 \pi )) \left(t^2+t u+u^2\right)^2\right)}{12 \pi ^2 t^2 (t+u)^2}$$
 
 Finally, we obtain the UV-finite but IR-divergent Born-virtual interference term
 
@@ -387,7 +389,7 @@ bornVirtualRenormalized[1] = Series[FCReplaceD[1/Exp[ep (Log[4 Pi] - EulerGamma)
     ReplaceAll[#, Log[4 Pi] -> 2 Log[2] + Log[Pi]] & // Collect2[#, ep, FCParallelize -> True] &
 ```
 
-$$-\frac{\left(t^2+u t+u^2\right)^2 \;\text{e}^6}{\text{ep}^2 \pi ^2 t^2 (t+u)^2}+\frac{1}{2 \;\text{ep} \pi ^2 t^2 (t+u)^2}\left(2 \log (-t) t^4+2 \log (-t-u) t^4-2 \log (-u) t^4+2 i \pi  t^4-3 t^4+4 i \pi  u t^3-6 u t^3+4 u \log (-t) t^3+4 u \log (-t-u) t^3-4 u \log (-u) t^3+6 i \pi  u^2 t^2-11 u^2 t^2+6 u^2 \log (-t) t^2+6 u^2 \log (-t-u) t^2-6 u^2 \log (-u) t^2+4 i \pi  u^3 t-8 u^3 t+4 u^3 \log (-t) t+4 u^3 \log (-t-u) t-4 u^3 \log (-u) t+2 i \pi  u^4-3 u^4+2 u^4 \log (-t)+2 u^4 \log (-t-u)-2 u^4 \log (-u)\right) \;\text{e}^6+\frac{1}{72 \pi ^2 t^2 (t+u)^2}\left(-9 \log ^2(-t) t^4-9 \log ^2(-t-u) t^4+18 \log ^2(-u) t^4-40 N_f t^4+12 N_f \log (-t) t^4-72 i \pi  \log (-t) t^4+72 \log (-t) t^4+12 N_f \log (-t-u) t^4-72 \log (-t) \log (-t-u) t^4-18 i \pi  \log (-t-u) t^4+72 \log (-t-u) t^4+18 \log (-t) \log (-u) t^4+18 \log (-t-u) \log (-u) t^4+18 i \pi  \log (-u) t^4-36 \log (-u) t^4+33 \pi ^2 t^4+12 i N_f \pi  t^4+72 i \pi  t^4-216 t^4-36 u \log ^2(-t) t^3+36 u \log ^2(-u) t^3-80 N_f u t^3+48 \pi ^2 u t^3+18 i \pi  u t^3-432 u t^3+48 N_f u \log (-t) t^3-144 i \pi  u \log (-t) t^3+270 u \log (-t) t^3+18 u \log (-t-u) t^3-144 u \log (-t) \log (-t-u) t^3-72 u \log (-u) t^3+72 u \log (-t) \log (-u) t^3-120 N_f u^2 t^2+63 \pi ^2 u^2 t^2+72 i \pi  u^2 t^2-900 u^2 t^2-36 u^2 \log ^2(-t) t^2+18 u^2 \log ^2(-t-u) t^2+36 u^2 \log ^2(-u) t^2+72 N_f u^2 \log (-t) t^2-270 i \pi  u^2 \log (-t) t^2+450 u^2 \log (-t) t^2+36 i \pi  u^2 \log (-t-u) t^2+72 u^2 \log (-t-u) t^2-270 u^2 \log (-t) \log (-t-u) t^2+18 i \pi  u^2 \log (-u) t^2-126 u^2 \log (-u) t^2+126 u^2 \log (-t) \log (-u) t^2+18 u^2 \log (-t-u) \log (-u) t^2-80 N_f u^3 t+12 \pi ^2 u^3 t-12 i N_f \pi  u^3 t+18 i \pi  u^3 t-684 u^3 t-45 u^3 \log ^2(-t) t+45 u^3 \log ^2(-t-u) t+18 u^3 \log ^2(-u) t+60 N_f u^3 \log (-t) t-198 i \pi  u^3 \log (-t) t+360 u^3 \log (-t) t-12 N_f u^3 \log (-t-u) t+90 i \pi  u^3 \log (-t-u) t+18 u^3 \log (-t-u) t-198 u^3 \log (-t) \log (-t-u) t-36 i \pi  u^3 \log (-u) t-90 u^3 \log (-u) t+144 u^3 \log (-t) \log (-u) t-36 u^3 \log (-t-u) \log (-u) t-40 N_f u^4+6 \pi ^2 u^4-288 u^4-36 u^4 \log ^2(-t)+24 N_f u^4 \log (-t)-72 i \pi  u^4 \log (-t)+108 u^4 \log (-t)-72 u^4 \log (-t) \log (-t-u)+72 u^4 \log (-t) \log (-u)\right) \;\text{e}^6$$
+$$-\frac{\left(t^2+u t+u^2\right)^2 \;\text{e}^6}{\text{ep}^2 \pi ^2 t^2 (t+u)^2}+\frac{1}{2 \;\text{ep} \pi ^2 t^2 (t+u)^2}\left(2 \log (-t) t^4+2 \log (-t-u) t^4-2 \log (-u) t^4+2 i \pi  t^4-3 t^4+4 i \pi  u t^3-6 u t^3+4 u \log (-t) t^3+4 u \log (-t-u) t^3-4 u \log (-u) t^3+6 i \pi  u^2 t^2-11 u^2 t^2+6 u^2 \log (-t) t^2+6 u^2 \log (-t-u) t^2-6 u^2 \log (-u) t^2+4 i \pi  u^3 t-8 u^3 t+4 u^3 \log (-t) t+4 u^3 \log (-t-u) t-4 u^3 \log (-u) t+2 i \pi  u^4-3 u^4+2 u^4 \log (-t)+2 u^4 \log (-t-u)-2 u^4 \log (-u)\right) \;\text{e}^6+\frac{1}{72 \pi ^2 t^2 (t+u)^2}\left(-9 \log ^2(-t) t^4-9 \log ^2(-t-u) t^4+18 \log ^2(-u) t^4-40 N_f t^4+12 N_f \log (-t) t^4-72 i \pi  \log (-t) t^4+72 \log (-t) t^4+12 N_f \log (-t-u) t^4-72 \log (-t) \log (-t-u) t^4-18 i \pi  \log (-t-u) t^4+72 \log (-t-u) t^4+18 \log (-t) \log (-u) t^4+18 \log (-t-u) \log (-u) t^4+18 i \pi  \log (-u) t^4-36 \log (-u) t^4+\log (4) \log (22300745198530623141535718272648361505980416) t^4-36 \log ^2(4) t^4-72 i \pi  \log (4) t^4-144 \log ^2(2) t^4+144 i \pi  \log (2) t^4+33 \pi ^2 t^4+12 i N_f \pi  t^4+72 i \pi  t^4-216 t^4-36 u \log ^2(-t) t^3+36 u \log ^2(-u) t^3-80 N_f u t^3+48 \pi ^2 u t^3+18 i \pi  u t^3-432 u t^3+48 N_f u \log (-t) t^3-144 i \pi  u \log (-t) t^3+270 u \log (-t) t^3+18 u \log (-t-u) t^3-144 u \log (-t) \log (-t-u) t^3-72 u \log (-u) t^3+72 u \log (-t) \log (-u) t^3+u \log (4) \log (497323236409786642155382248146820840100456150797347717440463976893159497012533375533056) t^3-72 u \log ^2(4) t^3-144 i \pi  u \log (4) t^3-288 u \log ^2(2) t^3+288 i \pi  u \log (2) t^3-120 N_f u^2 t^2+63 \pi ^2 u^2 t^2+72 i \pi  u^2 t^2-900 u^2 t^2-36 u^2 \log ^2(-t) t^2+18 u^2 \log ^2(-t-u) t^2+36 u^2 \log ^2(-u) t^2+72 N_f u^2 \log (-t) t^2-270 i \pi  u^2 \log (-t) t^2+450 u^2 \log (-t) t^2+36 i \pi  u^2 \log (-t-u) t^2+72 u^2 \log (-t-u) t^2-270 u^2 \log (-t) \log (-t-u) t^2+18 i \pi  u^2 \log (-u) t^2-126 u^2 \log (-u) t^2+126 u^2 \log (-t) \log (-u) t^2+18 u^2 \log (-t-u) \log (-u) t^2+u^2 \log (4) \log (11090678776483259438313656736572334813745748301503266300681918322458485231222502492159897624416558312389564843845614287315896631296) t^2-108 u^2 \log ^2(4) t^2-216 i \pi  u^2 \log (4) t^2-432 u^2 \log ^2(2) t^2+432 i \pi  u^2 \log (2) t^2-80 N_f u^3 t+12 \pi ^2 u^3 t-12 i N_f \pi  u^3 t+18 i \pi  u^3 t-684 u^3 t-45 u^3 \log ^2(-t) t+45 u^3 \log ^2(-t-u) t+18 u^3 \log ^2(-u) t+60 N_f u^3 \log (-t) t-198 i \pi  u^3 \log (-t) t+360 u^3 \log (-t) t-12 N_f u^3 \log (-t-u) t+90 i \pi  u^3 \log (-t-u) t+18 u^3 \log (-t-u) t-198 u^3 \log (-t) \log (-t-u) t-36 i \pi  u^3 \log (-u) t-90 u^3 \log (-u) t+144 u^3 \log (-t) \log (-u) t-36 u^3 \log (-t-u) \log (-u) t+u^3 \log (4) \log (497323236409786642155382248146820840100456150797347717440463976893159497012533375533056) t-72 u^3 \log ^2(4) t-144 i \pi  u^3 \log (4) t-288 u^3 \log ^2(2) t+288 i \pi  u^3 \log (2) t-40 N_f u^4+6 \pi ^2 u^4-288 u^4-36 u^4 \log ^2(-t)+24 N_f u^4 \log (-t)-72 i \pi  u^4 \log (-t)+108 u^4 \log (-t)-72 u^4 \log (-t) \log (-t-u)+72 u^4 \log (-t) \log (-u)+u^4 \log (4) \log (22300745198530623141535718272648361505980416)-36 u^4 \log ^2(4)-72 i \pi  u^4 \log (4)-144 u^4 \log ^2(2)+144 i \pi  u^4 \log (2)\right) \;\text{e}^6$$
 
 We can compare our O(eps^0) result to Eq. 2.32 in arXiv:hep-ph/0010075
 
@@ -494,4 +496,4 @@ Print["\tCPU Time used: ", Round[N[TimeUsed[], 4], 0.001], " s."];
 
 $$\text{$\backslash $tCompare to arXiv:hep-ph/0010075:} \;\text{CORRECT.}$$
 
-$$\text{$\backslash $tCPU Time used: }57.136\text{ s.}$$
+$$\text{$\backslash $tCPU Time used: }74.798\text{ s.}$$
