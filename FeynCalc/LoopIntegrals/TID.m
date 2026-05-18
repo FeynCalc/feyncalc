@@ -487,7 +487,8 @@ TID[am_/;Head[am]=!=List , q_/; Head[q]=!=List, OptionsPattern[]] :=
 					Abort[]
 				];
 
-				gramCheckList = (FCLoopPropagatorsToLineMomenta[FeynAmpDenominatorSplit[#,FCI->True,List->True], FCI->True]&/@gramCheckList)/.q->0;
+				gramCheckList = DeleteDuplicates[FeynAmpDenominatorSplit[#,FCI->True,List->True]]&/@gramCheckList;
+				gramCheckList = (FCLoopPropagatorsToLineMomenta[#, FCI->True]&/@gramCheckList)/.q->0;
 				gramCheckList = Union[First/@gramCheckList]//.{x___,0,y___}:>{x,y};
 
 				gramDetValues = Map[FCGramDeterminant[#]&,gramCheckList];
