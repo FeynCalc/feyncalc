@@ -36,7 +36,8 @@ SOURCEDIR="$mainDir"/Markdown/img
 OUTDIR=$1
 
 if [[ $# -eq 2 ]] ; then
-    inkscape --export-type=svg "$1" -o "$2"/$(basename -s .pdf "$1").svg    
+    #inkscape --export-type=svg "$1" -o "$2"/$(basename -s .pdf "$1").svg    
+    pdftocairo -svg "$1" "$2"/$(basename -s .pdf "$1").svg    
 else
 
 allFilesRaw=$(find $SOURCEDIR -type f -name '*.pdf' -print)

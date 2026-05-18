@@ -5,6 +5,14 @@ _FeynCalc_.
 
 # Generating markdown
 
+For single directories
+
+```
+
+export feynCalcDir="/media/Data/Projects/VS/FeynCalc"; export MAKE_DO_NOT_LOAD_FEYNCALC="True" MAKE_DOCU_LOAD_ADDONS="{}"; export DOCU_SOURCE_DIR="${feynCalcDir}/FeynCalc/Examples/QCD/OneLoop"; export FILES_TO_SKIP="Reduction|Validate|Raw"; ./exportToMD.sh math14.3 "$DOCU_SOURCE_DIR"/Markdown
+```
+
+
 ```
 
 bash
