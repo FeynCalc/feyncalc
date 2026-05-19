@@ -76,13 +76,12 @@ smaller and larger topologies. In this case one has to distinguish between the
 following situations
 
 - FCLoopFindSubtopologies is applied to the same list of topologies that is
-passed as input to FCLoopFindTopologyMappings. Here everything should work as
-expected, because by default FCLoopFindSubtopologiesremoves the original input
-topologies from its output. Hence, there are no topologies appearing both in
-the input and preferred topologies lists.
+passed as input to FCLoopFindTopologyMappings. Here FCLoopFindSubtopologies
+removes the original input topologies from its output by default. Hence, there
+are no topologies appearing both in the input and preferred topologies lists.
 
-- FCLoopFindSubtopologies is applied to a same list of preferred topologies
-that are distinct from the input topologies. In this case one should set the
+- FCLoopFindSubtopologies is applied to a list of preferred topologies that
+are distinct from the input topologies. In this case one should set the option
 Remove to False to ensure that the original preferred topologies are kept in
 the output.";
 
