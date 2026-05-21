@@ -108,7 +108,8 @@ FCLoopBasisFindCompletion[topoRaw_FCTopology, opts:OptionsPattern[]] :=
 
 			aux = head/@tmp[[2]];
 			auxEval = aux/.{
-				head[pref_. Pair[Momentum[a_,dim___],Momentum[b_,dim___]]] :> FeynAmpDenominator[StandardPropagatorDenominator[0,pref Pair[Momentum[a,dim],Momentum[b,dim]],0,{1,etaSign}]],
+				head[pref_. Pair[Momentum[a_,dim___],Momentum[b_,dim___]]]/;a=!=b :> FeynAmpDenominator[StandardPropagatorDenominator[0,pref Pair[Momentum[a,dim],Momentum[b,dim]],0,{1,etaSign}]],
+				head[Pair[Momentum[a_,dim___],Momentum[a_,dim___]]] :> FeynAmpDenominator[StandardPropagatorDenominator[Momentum[a,dim],0,0,{1,etaSign}]],
 				head[f_FeynAmpDenominator] :> f
 			};
 
