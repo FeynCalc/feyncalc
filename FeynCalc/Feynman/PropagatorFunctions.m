@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: GluonPropagator													*)
+(* :Title: PropagatorFunctions												*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -11,9 +11,22 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary: Gluon propagator												*)
+(* :Summary: Propagators													*)
 
 (* ------------------------------------------------------------------------ *)
+
+GHP::usage =
+"GHP[p, a, b] gives the ghost propagator where a and b are the color indices.
+
+GHP[p] omits the $\\delta _{ab}$.";
+
+GhostPropagator::usage =
+"GhostPropagator[p, a, b] gives the ghost propagator where a and b are the
+color indices.
+
+GhostPropagator[p] omits the $\\delta _{ab}$.
+
+GHP can be used as an abbreviation of GhostPropagator.";
 
 GP::usage =
 "GP is equivalent to GluonPropagator.";
@@ -34,10 +47,42 @@ The following settings of Gauge are possible:
 - alpha for the general covariant gauge
 - {Momentum[n] ,1} for the axial gauge";
 
+QP::usage =
+"QP is an alias for QuarkPropagator.
+
+QP[p] is the massless quark propagator.
+
+QP[{p,m}] gives the  quark propagator with mass m.";
+
+QuarkPropagator::usage =
+"QuarkPropagator[p] is the massless quark propagator.
+
+QuarkPropagator[{p, m}] gives the quark propagator with mass $m$.
+
+QP can be used as an abbreviation of QuarkPropagator.";
+
+(* ------------------------------------------------------------------------ *)
+
 Begin["`Package`"]
 End[]
 
-Begin["`GluonPropagator`Private`"]
+Begin["`PropagatorFunctions`Private`"]
+
+GHP = GhostPropagator;
+GP	= GluonPropagator;
+QP	= QuarkPropagator;
+
+DeclareNonCommutative[QuarkPropagator];
+
+Options[QuarkPropagator] = {
+	Dimension -> D,
+	Explicit -> False
+};
+
+Options[GhostPropagator] = {
+	Dimension -> D,
+	Explicit -> False
+};
 
 Options[GluonPropagator] = {
 	CouplingConstant -> SMP["g_s"],
@@ -46,7 +91,29 @@ Options[GluonPropagator] = {
 	Gauge -> 1
 };
 
-GP = GluonPropagator;
+GhostPropagator[pi_, OptionsPattern[]] :=
+	Block[ {p, glp},
+		p = Momentum[pi, OptionValue[Dimension]];
+		glp  = I FeynAmpDenominator[PropagatorDenominator[p, 0]];
+		QCDFeynmanRuleConvention[GhostPropagator] glp
+	] /; OptionValue[Explicit];
+
+GhostPropagator[pi_, ai_, bi_, OptionsPattern[]] :=
+	Block[ {p, a, b, glp},
+		p = Momentum[pi, OptionValue[Dimension]];
+		a = SUNIndex[ai];
+		b = SUNIndex[bi];
+		glp  = I FeynAmpDenominator[PropagatorDenominator[p, 0]] SUNDelta[a, b];
+		QCDFeynmanRuleConvention[GhostPropagator] glp
+	] /; OptionValue[Explicit];
+
+GhostPropagator /:
+	MakeBoxes[GhostPropagator[p_,a_,b_], TraditionalForm] :=
+		RowBox[{SubscriptBox["\[CapitalPi]", TBox[a,b]],"(", TBox[p], ")"}];
+
+GhostPropagator /:
+	MakeBoxes[GhostPropagator[p_], TraditionalForm] :=
+		RowBox[{SubscriptBox["\[CapitalPi]", "u"], "(", TBox[p], ")" }];
 
 GluonPropagator[a_, b_,c_, d_,e_, opt:OptionsPattern[]] :=
 	GluonPropagator[a, {b,c}, {d,e}, opt]/;FreeQ[{a,b,c,d,e},Rule];
@@ -107,5 +174,21 @@ GluonPropagator /:
 	MakeBoxes[GluonPropagator[p_,{mu_},{nu_}, OptionsPattern[]], TraditionalForm] :=
 		RowBox[{SubsuperscriptBox["\[CapitalPi]", "g", TBox[mu,nu]], "(", TBox[p], ")"}];
 
-FCPrint[1,"GluonPropagator.m loaded"];
+
+QuarkPropagator[pi:Except[_?OptionQ], opt:OptionsPattern[]] :=
+	QuarkPropagator[{pi,0}, opt]/; Head[pi]=!=List;
+
+QuarkPropagator[{pi_, m_},  OptionsPattern[]] :=
+	Block[ {dim, re, ope, pol, cou, cop, loo},
+		dim    = OptionValue[Dimension];
+		re = I (DiracGamma[Momentum[pi, dim], dim]+m) FeynAmpDenominator[PropagatorDenominator[MomentumExpand[Momentum[pi,dim]], m]];
+		re
+	]/; OptionValue[Explicit];
+
+
+QuarkPropagator /:
+	MakeBoxes[QuarkPropagator[{p_,_}, OptionsPattern[]], TraditionalForm] :=
+		RowBox[{SubscriptBox["\[CapitalPi]","q"],"(", TBox[p], ")"}];
+
+FCPrint[1,"PropagatorFunctions.m loaded"];
 End[]
