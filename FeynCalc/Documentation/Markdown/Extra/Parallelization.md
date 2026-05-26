@@ -10,7 +10,7 @@ To this aim the number of subkernels should roughly correspond to the number of 
 
 ### Enabling parallelization
 
-To enable the parallelization you need to actively launch some parallel kernels and then set the variable `$ParallelizeFeynCalc` to `True`. In this case a copy of FeynCalc will be loaded on each of the parallel kernels and used to parallelize some selected operations. For example,
+To enable the parallelization you need to actively launch some parallel kernels and then set the variable `$ParallelizeFeynCalc` to `True`. In this case a copy of FeynCalc will be loaded on each of the parallel kernels and used to parallelize some selected operations. For example, for parallel 8 kernels, use
 
 ```mathematica
 LaunchKernels[8]
@@ -37,24 +37,62 @@ Alternatively, you can *first* activate the parallel mode without making any def
 
 ### Functions that support automatic execution on parallel kernels
 
- - `FCLoopFromGLI`
- - `FCFeynmanPrepare`
- - `FCLoopToPakForm`
- - `FCLoopFindIntegralMappings`
- - `FCLoopFindTopologyMappings`
- - `FCLoopFindSubtopologies`
- - `FCLoopFindTopologies`
- - `FCLoopCreatePartialFractioningRules`
- - `FCLoopApplyTopologyMappings`
- - `FCLoopGetKinematicInvariants`
- - `FCLoopTensorReduce`
- - `Tdec`
- - `FCLoopIsolate`
- - `MomentumCombine`
- - `Collect2` (only when isolation is disabled)
- - `FCClearScalarProducts` (parallelization is enabled by default)
- - `ScalarProduct` (parallelization is enabled by default)
- - `DataType` (parallelization is enabled by default)
- - `FCClearDataTypes` (parallelization is enabled by default)
+## Shared tools
 
+- `Collect2` (isolation requires special care)
+- `DataType` (parallelization is enabled by default)
+- `FCClearDataTypes` (parallelization is enabled by default)
+- `FCValuesSynchronizedQ`
+- `FRH2`
+- `Solve2`
+- `Solve3`
 
+## Tensor algebra
+
+- `Contract`
+- `FCCanonicalizeDummyIndices`
+- `FCClearScalarProducts` (parallelization is enabled by default)
+- `FCScalarProductsSynchronizedQ`
+- `FourSeries`
+- `MomentumCombine`
+- `ScalarProduct` (parallelization is enabled by default)
+- `SetMandelstam`
+
+## Dirac algebra
+
+ - `DiracSimplify`
+
+## Color algebra
+
+- `SUNSimplify`
+
+## Noncommutative algebra
+
+ - `DotSimplify`
+ - `FCTraceFactor`
+
+## Loop integrals
+
+- `CTdec`
+- `FCFeynmanPrepare`
+- `FCLoopCreateFactorizingRules`
+- `FCLoopCreatePartialFractioningRules`
+- `FCLoopFactorizingQ`
+- `FCLoopFactorizingSplit`
+- `FCLoopFindIncompleteTopologies`
+- `FCLoopFindIntegralMappings`
+- `FCLoopFindOverdeterminedTopologies`
+- `FCLoopFindScalelessTopologies`
+- `FCLoopFindSubtopologies`
+- `FCLoopFindTopologies`
+- `FCLoopFindTopologyMappings`
+- `FCLoopFromGLI`
+- `FCLoopGetFeynAmpDenominators`
+- `FCLoopGetKinematicInvariants`
+- `FCLoopIsolate`
+- `FCLoopRewriteIncompleteTopologies`
+- `FCLoopRewriteOverdeterminedTopologies`
+- `FCLoopTensorReduce`
+- `FCLoopToPakForm`
+- `Tdec`
+- `TID`
