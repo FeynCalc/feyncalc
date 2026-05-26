@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
 (* :Title: DiracTrick                                                       *)
 
@@ -11,7 +11,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Contraction and simplification rules for Dirac matrices                                        *)
+(* :Summary:  Contraction and simplification rules for Dirac matrices		*)
 
 (* ------------------------------------------------------------------------ *)
 

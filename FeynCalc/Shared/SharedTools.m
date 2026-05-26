@@ -1,4 +1,4 @@
-(* Wolfram Language package *)
+(* ::Package:: *)
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
@@ -953,16 +953,7 @@ FreeQ2[x_, y_]	:=
 
 FreeQ2[x_, {y_}] :=
 	FreeQ[x, y];
-(*
-This recursive option is not compatible with parallelized calculations involving very long (>5K elements) lists
-FreeQ2[x_, {y_, z__}] :=
-	Block[{$IterationLimit=Infinity, $RecursionLimit=Infinity},
-		If[FreeQ[x, y],
-			FreeQ2[x, {z}],
-			False
-		]
-	];
-*)
+
 FreeQ2[x_, {y_, z__}] :=
 	FreeQ[x, Alternatives@@{y,z}];
 

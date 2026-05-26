@@ -11,7 +11,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  	Provides information on the UV/IR poles						*)
+(* :Summary:	Provides information on the UV/IR poles						*)
 
 (* ------------------------------------------------------------------------ *)
 

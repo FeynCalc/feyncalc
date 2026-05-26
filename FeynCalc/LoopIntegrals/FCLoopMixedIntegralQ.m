@@ -12,7 +12,8 @@
 *)
 
 (* :Summary:	Returns True if the integral depends both on Lorentzian and
-				Cartesian quantities *)
+				Cartesian quantities
+*)
 
 (* ------------------------------------------------------------------------ *)
 

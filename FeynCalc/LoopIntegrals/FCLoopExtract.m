@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FCLoopExtract												*)
+(* :Title: FCLoopExtract													*)
 
 (*
 	This software is covered by the GNU General Public License 3.

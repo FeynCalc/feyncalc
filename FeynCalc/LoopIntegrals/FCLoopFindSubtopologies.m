@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FCLoopFindSubtopologies										*)
+(* :Title: FCLoopFindSubtopologies											*)
 
 (*
 	This software is covered by the GNU General Public License 3.

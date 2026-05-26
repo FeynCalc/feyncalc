@@ -1,8 +1,8 @@
 (* ::Package:: *)
 
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-
-(* :Title: TID                                                       *)
+(* :Title: TID                                                       		*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -11,8 +11,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(*
-	:Summary:	Tensor reduction of 1-loop integrals
+(*	:Summary:	Tensor reduction of 1-loop integrals
 
 				Supports parallel evaluation [X]
 

@@ -11,8 +11,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(*
-	:Summary:	Defines kinematical invariants
+(*	:Summary:	Defines kinematical invariants
 
 				Supports parallel evaluation [X]
 

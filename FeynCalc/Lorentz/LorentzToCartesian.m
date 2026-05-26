@@ -11,7 +11,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary: Converts selected Lorentz tensors into Cartesian tensors.		*)
+(* :Summary: Converts selected Lorentz tensors into Cartesian tensors		*)
 
 (* ------------------------------------------------------------------------ *)
 

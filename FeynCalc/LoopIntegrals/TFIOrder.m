@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
 (* :Title: TFIOrder                                                       	*)
 
@@ -19,7 +19,6 @@
 TFIOrder::usage =
 "TFIOrder[exp] orders the arguments of some TFI functions in exp in a standard
 way.";
-
 
 (* ------------------------------------------------------------------------ *)
 

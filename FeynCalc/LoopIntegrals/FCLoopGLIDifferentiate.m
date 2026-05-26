@@ -1,3 +1,5 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
 (* :Title: FCLoopGLIDifferentiate											*)
@@ -9,7 +11,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:	Differentiates GLIs w.r.t the given invariant		*)
+(* :Summary:	Differentiates GLIs w.r.t the given invariant				*)
 
 (* ------------------------------------------------------------------------ *)
 

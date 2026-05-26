@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FCFAConvert                                                   *)
+(* :Title: FCFAConvert														*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -11,7 +11,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  FCFAConvert converts a FeynArts amplitude to FeynCalc      *)
+(* :Summary:  FCFAConvert converts a FeynArts amplitude to FeynCalc			*)
 
 (* ------------------------------------------------------------------------ *)
 

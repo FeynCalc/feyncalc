@@ -1,8 +1,8 @@
-(* Wolfram Language package *)
+(* ::Package:: *)
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FCTraceExpand														*)
+(* :Title: FCTraceExpand													*)
 
 (*
 	This software is covered by the GNU General Public License 3.

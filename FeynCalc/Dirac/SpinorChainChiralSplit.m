@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: SpinorChainChiralSplit													*)
+(* :Title: SpinorChainChiralSplit											*)
 
 (*
 	This software is covered by the GNU General Public License 3.

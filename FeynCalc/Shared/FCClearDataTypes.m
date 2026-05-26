@@ -1,8 +1,8 @@
-(* Wolfram Language package *)
+(* ::Package:: *)
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FCClearDataTypes											*)
+(* :Title: FCClearDataTypes													*)
 
 (*
 	This software is covered by the GNU General Public License 3.

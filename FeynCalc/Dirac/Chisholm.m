@@ -1,9 +1,8 @@
 (* ::Package:: *)
 
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: Chisholm *)
-
-(* :Title: Chisholm														*)
+(* :Title: Chisholm															*)
 
 (*
 	This software is covered by the GNU General Public License 3.

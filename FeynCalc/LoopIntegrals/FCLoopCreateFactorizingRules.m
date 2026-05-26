@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FCLoopCreateFactorizingRules												*)
+(* :Title: FCLoopCreateFactorizingRules										*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -12,7 +12,6 @@
 *)
 
 (* :Summary:  	Detects factorizing loop integrals
-
 
 				Supports parallel evaluation [X]
 

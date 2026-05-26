@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
 (* :Title: FCGram															*)
 
@@ -11,7 +11,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:	Gram matrix and Gram determinant		*)
+(* :Summary:	Gram matrix and Gram determinant							*)
 
 (* ------------------------------------------------------------------------ *)
 

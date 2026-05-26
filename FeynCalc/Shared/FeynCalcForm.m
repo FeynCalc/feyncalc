@@ -1,9 +1,18 @@
-(* ------------------------------------------------------------------------ *)
-(* ------------------------------------------------------------------------ *)
+(* ::Package:: *)
 
-(* :Summary: FeynCalcForm[expr] formats expr in a short form.
-						In FeynCalc.m  $PrePrint can be set to
-						$PrePrint = FeynCalcForm
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
+
+(* :Title: FeynCalcForm														*)
+
+(*
+	This software is covered by the GNU General Public License 3.
+	Copyright (C) 1990-2026 Rolf Mertig
+	Copyright (C) 1997-2026 Frederik Orellana
+	Copyright (C) 2014-2026 Vladyslav Shtabovenko
+*)
+
+(* :Summary:	FeynCalcForm[expr] formats expr in a short form.
+				$PrePrint can be set to	$PrePrint = FeynCalcForm
 *)
 
 (* ------------------------------------------------------------------------ *)

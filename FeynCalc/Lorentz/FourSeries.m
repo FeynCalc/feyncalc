@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FourSeries													*)
+(* :Title: FourSeries														*)
 
 (*
 	This software is covered by the GNU General Public License 3.

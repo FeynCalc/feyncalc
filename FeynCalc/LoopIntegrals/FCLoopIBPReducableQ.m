@@ -11,8 +11,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:	Returns True if the integral contains propagators raised to
-				integer powers and False otherwise							*)
+(* :Summary:	Checks for propagators raised to integer powers				*)
 
 (* ------------------------------------------------------------------------ *)
 

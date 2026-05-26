@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
 (* :Title: Contract															*)
 
@@ -11,8 +11,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(*
-	:Summary:	Contraction routines for Lorentz algebra
+(*	:Summary:	Contraction routines for Lorentz algebra
 
 				Supports parallel evaluation [X]
 *)

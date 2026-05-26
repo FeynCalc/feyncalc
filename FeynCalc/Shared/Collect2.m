@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
 (* :Title: Collect2															*)
 
@@ -11,8 +11,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(*
-	:Summary:	Extension of the Mathematica Collect
+(*	:Summary:	Extension of the Mathematica Collect
 
 				Supports parallel evaluation [X]
 *)

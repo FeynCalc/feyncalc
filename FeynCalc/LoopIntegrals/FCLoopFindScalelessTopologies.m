@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FCLoopFindScalelessTopologies										*)
+(* :Title: FCLoopFindScalelessTopologies									*)
 
 (*
 	This software is covered by the GNU General Public License 3.

@@ -1,6 +1,8 @@
+(* ::Package:: *)
+
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FCCanonicalizeDummyIndices												*)
+(* :Title: FCCanonicalizeDummyIndices										*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -9,8 +11,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(*
-	:Summary:	Canonicalizes dummy Lorentz indices
+(*	:Summary:	Canonicalizes dummy Lorentz indices
 
 				Supports parallel evaluation [X]
 *)

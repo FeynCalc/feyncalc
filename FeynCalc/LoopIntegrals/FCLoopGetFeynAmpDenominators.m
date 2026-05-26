@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: FCLoopGetFeynAmpDenominators							*)
+(* :Title: FCLoopGetFeynAmpDenominators										*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -11,7 +11,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:	Adds auxiliary mass to massless propagators				*)
+(* :Summary:	Adds auxiliary mass to massless propagators					*)
 
 (* ------------------------------------------------------------------------ *)
 

@@ -1,6 +1,6 @@
 (* ::Package:: *)
 
-
+(* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
 (* :Title: Solve															*)
 
@@ -11,8 +11,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(*
-	:Summary:	Extension of the Mathematica Solve
+(*	:Summary:	Extension of Mathematica's Solve
 
 				Supports parallel evaluation [X]
 *)

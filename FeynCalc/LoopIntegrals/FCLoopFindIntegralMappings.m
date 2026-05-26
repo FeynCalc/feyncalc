@@ -11,8 +11,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(*
-	:Summary:  	Finds equivalent loop integrals
+(*	:Summary:  	Finds equivalent loop integrals
 
 				Supports parallel evaluation [X]
 *)
