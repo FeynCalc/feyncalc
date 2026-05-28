@@ -6,7 +6,7 @@ title: Higgs decaying into two gluons
 ## Load FeynCalc and the necessary add-ons or other packages
 
 ```mathematica
-description = "H -> Gl Gl, EW, total decay rate, 1-loop";
+description = "H -> Gl Gl, QCD, total decay rate, 1-loop";
 If[ $FrontEnd === Null, 
   	$FeynCalcStartupMessages = False; 
   	Print[description]; 

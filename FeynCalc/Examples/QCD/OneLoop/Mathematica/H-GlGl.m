@@ -9,7 +9,7 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  H -> Gl Gl, EW, total decay rate, 1-loop              			*)
+(* :Summary:  H -> Gl Gl, QCD, total decay rate, 1-loop              			*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -23,7 +23,7 @@
 (*Load FeynCalc and the necessary add-ons or other packages*)
 
 
-description="H -> Gl Gl, EW, total decay rate, 1-loop";
+description="H -> Gl Gl, QCD, total decay rate, 1-loop";
 If[ $FrontEnd === Null,
 	$FeynCalcStartupMessages = False;
 	Print[description];
@@ -178,6 +178,4 @@ Text->{"\tCompare to Peskin and Schroeder,An Introduction to QFT, \
 Final Project III, part (c):",
 "CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic}];
 Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];
-
-
 
