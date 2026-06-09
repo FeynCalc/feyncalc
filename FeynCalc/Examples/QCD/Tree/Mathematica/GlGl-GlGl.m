@@ -34,8 +34,10 @@ If[ $Notebooks === False,
 $LoadAddOns={"FeynArts"};
 <<FeynCalc`
 $FAVerbose = 0;
+LaunchKernels[8];
 
-FCCheckVersion[9,3,1];
+$ParallelizeFeynCalc = True; 
+FCCheckVersion[10,2,0];
 
 
 (* ::Section:: *)
@@ -46,27 +48,27 @@ FCCheckVersion[9,3,1];
 (*Nicer typesetting*)
 
 
-MakeBoxes[k1,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(1\)]\)";
-MakeBoxes[k2,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(2\)]\)";
-MakeBoxes[k3,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(3\)]\)";
-MakeBoxes[k4,TraditionalForm]:="\!\(\*SubscriptBox[\(k\), \(4\)]\)";
+FCAttachTypesettingRule[k1,{SubscriptBox,k,1}]
+FCAttachTypesettingRule[k2,{SubscriptBox,k,2}]
+FCAttachTypesettingRule[k3,{SubscriptBox,k,3}]
+FCAttachTypesettingRule[k4,{SubscriptBox,k,4}]
 
 
 diags = InsertFields[CreateTopologies[0, 2 -> 2], {V[5], V[5]} ->
 		{V[5], V[5]}, InsertionLevel -> {Classes}, Model -> "SMQCD"];
 
-Paint[diags, ColumnsXRows -> {2, 1}, Numbering -> Simple,
-	SheetHeader->None,ImageSize->{512,256}];
+Paint[diags, ColumnsXRows -> {4, 1}, Numbering -> Simple,
+	SheetHeader->None,ImageSize->128 {4, 1}];
 
 
 (* ::Section:: *)
 (*Obtain the amplitude*)
 
 
-amp[0] = FCFAConvert[CreateFeynAmp[diags], IncomingMomenta->{k1,k2},
-	OutgoingMomenta->{k3,k4},UndoChiralSplittings->True,ChangeDimension->4,
-	TransversePolarizationVectors->{k1,k2,k3,k4}, List->True, SMP->True,
-	Contract->True,DropSumOver->True]
+amp[0] = FCFAConvert[CreateFeynAmp[diags], IncomingMomenta->{p1,p2},
+	OutgoingMomenta->{q1,q2},UndoChiralSplittings->True,ChangeDimension->D,
+	TransversePolarizationVectors->{p1,p2,q1,q2}, List->True, SMP->True,
+	Contract->True,DropSumOver->True];
 
 
 (* ::Section:: *)
@@ -74,47 +76,36 @@ amp[0] = FCFAConvert[CreateFeynAmp[diags], IncomingMomenta->{k1,k2},
 
 
 FCClearScalarProducts[];
-SetMandelstam[s, t, u, k1, k2, -k3, -k4, 0, 0, 0, 0];
+SetMandelstam[s, t, u, p1, p2, -q1, -q2, 0, 0, 0, 0];
 
 
 (* ::Section:: *)
 (*Square the amplitude*)
 
 
-polsums[x_,vec_,aux_,spinfac_]:=x//Collect2[#,Pair[_,
-Momentum[Polarization[vec,__]]]]&//Isolate[#,{Polarization[vec,__]}]&//
-DoPolarizationSums[#,vec,aux,ExtraFactor->spinfac]&//FixedPoint[ReleaseHold,#]&
+ampSquared[0]=SquareAmplitude[amp[0],ComplexConjugate[amp[0]],Real->True];
 
 
-ClearAll[re];
-Table[Print["    calculating color factors in products of the amplitudes ", i,
-" and ", j," (CC), time = ",
-Timing[re[i,j]=(amp[0][[i]]ComplexConjugate[amp[0]][[j]]//
-FeynAmpDenominatorExplicit//
-SUNSimplify[#,Explicit->True,SUNNToCACF->False]&)][[1]]];re[i,j],{i,4},{j,i}];
+AbsoluteTiming[ampSquared[1]=FeynAmpDenominatorExplicit[ampSquared[0],FCParallelize->True]//SUNSimplify[#,FCParallelize->True]&;]
 
 
-ClearAll[pre];
-Table[Print["    calculating product of the amplitudes ", i, " and ", j,
-" (CC), time = ", Timing[pre[i,j]=re[i,j]//polsums[#,k1,k2,
-1/2]&//polsums[#,k2,k1,1/2]&//polsums[#,k3,k4,1]&//
-polsums[#,k4,k3,1]&//Simplify][[1]]];pre[i,j],{i,4},{j,i}];
+AbsoluteTiming[ampSquared[2]=ampSquared[1]//DoPolarizationSums[#,p1,p2,FCParallelize->True,ExtraFactor->1/2]&;]
 
 
-fpre[i_,j_]:=pre[i,j]/;(i>=j);
-fpre[i_,j_]:=ComplexConjugate[pre[j,i]]/;(i<j);
-ampSquared[0]=1/((SUNN^2-1)^2)(Sum[fpre[i,j],{i,1,4},{j,1,4}])//
-TrickMandelstam[#,{s,t,u,0}]&//Simplify
+AbsoluteTiming[ampSquared[3]=ampSquared[2]//DoPolarizationSums[#,p2,p1,FCParallelize->True,ExtraFactor->1/2]&;]
 
 
-ampSquaredSUNN3[0]=ampSquared[0]/.SUNN->3
+AbsoluteTiming[ampSquared[4]=ampSquared[3]//DoPolarizationSums[#,q1,q2,FCParallelize->True]&;]
 
 
-ampSquaredMassless[0] = ampSquared[0]//ReplaceAll[#,{SMP["m_u"] -> 0}]&//
-	TrickMandelstam[#,{s,t,u,0}]&
+AbsoluteTiming[ampSquared[5]=ampSquared[4]//DoPolarizationSums[#,q2,q1,FCParallelize->True]&;]
 
 
-ampSquaredMasslessSUNN3[0] = ampSquaredMassless[0]/.SUNN->3
+ampSquared[6]=SUNSimplify[1/((SUNN^2-1)^2) ampSquared[5],FCParallelize->True,SUNNToCACF->False]//TrickMandelstam[#,{s,t,u,0},FCParallelize->True]&//Total//Collect2[#,D,FCParallelize->True]&//
+TrickMandelstam[#,{s,t,u,0}]&
+
+
+ampSquaredSUNN3[0]=ampSquared[6]/.D->4/.SUNN->3
 
 
 (* ::Section:: *)
@@ -124,11 +115,9 @@ ampSquaredMasslessSUNN3[0] = ampSquaredMassless[0]/.SUNN->3
 knownResults = {
 	(9/2)SMP["g_s"]^4 (3 - t u/s^2 - s u/t^2 - s t/u^2)
 };
-FCCompareResults[{ampSquaredMasslessSUNN3[0]},{knownResults},
+FCCompareResults[{ampSquaredSUNN3[0]},{knownResults},
 Text->{"\tCompare to Ellis, Stirling and Weber, QCD and Collider Physics, \
 Table 7.1:","CORRECT.","WRONG!"}, Interrupt->{Hold[Quit[1]],Automatic},Factoring->
 Function[x,Simplify[TrickMandelstam[x,{s,t,u,0}]]]]
 Print["\tCPU Time used: ", Round[N[TimeUsed[],3],0.001], " s."];
-
-
 
