@@ -57,6 +57,7 @@ Alternatively, you can *first* activate the parallel mode without making any def
 - `MomentumCombine`
 - `ScalarProduct` (parallelization is enabled by default)
 - `SetMandelstam`
+- `TrickMandelstam`
 
 ## Dirac algebra
 
@@ -70,6 +71,11 @@ Alternatively, you can *first* activate the parallel mode without making any def
 
  - `DotSimplify`
  - `FCTraceFactor`
+ 
+## Feynman rules and amplitudes
+ 
+ - `DoPolarizationSums`
+ - `FermionSpinSum`
 
 ## Loop integrals
 
@@ -94,5 +100,6 @@ Alternatively, you can *first* activate the parallel mode without making any def
 - `FCLoopRewriteOverdeterminedTopologies`
 - `FCLoopTensorReduce`
 - `FCLoopToPakForm`
+- `FeynAmpDenominatorExplicit`
 - `Tdec`
 - `TID`

@@ -11,7 +11,10 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:  Compute polarization sums of vector bosons *)
+(* :Summary:	Compute polarization sums of vector bosons 
+
+				Supports parallel evaluation [X]
+*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -84,52 +87,81 @@ End[]
 
 Begin["`DoPolarizationSums`Private`"]
 
-dpsVerbose::usage="";
-
 Options[DoPolarizationSums] = {
+	Collecting				-> True,
 	Contract				-> True,
 	ExtraFactor 			-> 1,
+	Factoring				-> {Factor2, 5000},	
 	FCE						-> False,
 	FCI						-> False,
+	FCParallelize			-> False,
 	FCVerbose				-> False,
 	Head					-> Identity,
 	NumberOfPolarizations 	-> Automatic,
+	TimeConstrained			-> 3,
 	VirtualBoson			-> False
 };
 
-DoPolarizationSums[expr_, bosonMomentum_, opts:OptionsPattern[]]:=
+DoPolarizationSums[expr_, bosonMomentum_/;!OptionQ[bosonMomentum], opts:OptionsPattern[]]:=
 	DoPolarizationSums[expr, bosonMomentum, -1, opts];
+	
+DoPolarizationSums[expr_List, bosonMomentum_, auxMomentum_/;!OptionQ[auxMomentum], opts:OptionsPattern[]] :=
+	Block[{optVerbose, res, time},
 
-DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
+		If [OptionValue[FCVerbose]===False,
+			optVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				optVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		time=AbsoluteTime[];
+
+		If[	$ParallelizeFeynCalc && OptionValue[FCParallelize],
+			FCPrint[1,"DoPolarizationSums: Applying DoPolarizationSums for the momentum "<> ToString[bosonMomentum] <>" in parallel.", FCDoControl->optVerbose];
+			res = ParallelMap[DoPolarizationSums[#, bosonMomentum, auxMomentum, FilterRules[{opts}, Except[FCParallelize | FCVerbose]]]&,expr,
+			DistributedContexts -> None, Method->"ItemsPerEvaluation" -> Ceiling[N[Length[expr]/$KernelCount]/10]];
+			FCPrint[1, "DoPolarizationSums: Done applying DoPolarizationSums in parallel, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose],
+
+			FCPrint[1,"DoPolarizationSums: Applying DoPolarizationSums for the momentum "<> ToString[bosonMomentum] <>".", FCDoControl->optVerbose];
+			res = Map[DoPolarizationSums[#,bosonMomentum, auxMomentum,FilterRules[{opts}, Except[FCParallelize | FCVerbose]]]&,expr];
+			FCPrint[1, "DoPolarizationSums: Done applying DoPolarizationSums, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose]
+		];
+
+		res
+	];
+
+
+DoPolarizationSums[expr_/;Head[expr]=!=List, bosonMomentum_, auxMomentum_/;!OptionQ[auxMomentum], OptionsPattern[]] :=
 	Block[ {polInd1, polInd2, res, ex, tmp, dim, polVectorsList, freePart,
-			polPart, optNumberOfPolarizations, nPolarizations,
+			polPart, optNumberOfPolarizations, nPolarizations, optVerbose,
 			optVirtualBoson, dummyInd1, dummyInd2, time},
 
 		If [OptionValue[FCVerbose]===False,
-			dpsVerbose=$VeryVerbose,
+			optVerbose=$VeryVerbose,
 			If[MatchQ[OptionValue[FCVerbose], _Integer],
-				dpsVerbose=OptionValue[FCVerbose]
+				optVerbose=OptionValue[FCVerbose]
 			];
 		];
 
 		optNumberOfPolarizations	= OptionValue[NumberOfPolarizations];
 		optVirtualBoson 			= OptionValue[VirtualBoson];
+		optFactoring 				= OptionValue[Factoring];
+		optTimeConstrained 			= OptionValue[TimeConstrained];
 
-		FCPrint[1,"DoPolarizationSums: Entering.", FCDoControl->dpsVerbose];
-		FCPrint[3,"DoPolarizationSums: Entering with: ", expr, FCDoControl->dpsVerbose];
+		FCPrint[1,"DoPolarizationSums: Entering.", FCDoControl->optVerbose];
+		FCPrint[3,"DoPolarizationSums: Entering with: ", expr, FCDoControl->optVerbose];
 
-		FCPrint[1,"DoPolarizationSums: Vector boson momentum: ", bosonMomentum, FCDoControl->dpsVerbose];
-		FCPrint[1,"DoPolarizationSums: Auxiliary momentum: ", auxMomentum, FCDoControl->dpsVerbose];
+		FCPrint[1,"DoPolarizationSums: Vector boson momentum: ", bosonMomentum, FCDoControl->optVerbose];
+		FCPrint[1,"DoPolarizationSums: Auxiliary momentum: ", auxMomentum, FCDoControl->optVerbose];
 
-		If[	Internal`SyntacticNegativeQ[bosonMomentum] || NumericQ[bosonMomentum]
-			|| MemberQ[{Times,Plus}, Head[bosonMomentum]],
+		If[	Internal`SyntacticNegativeQ[bosonMomentum] || NumericQ[bosonMomentum] || MemberQ[{Times,Plus}, Head[bosonMomentum]],
 			Message[DoPolarizationSums::failmsg, "Illegal variable denoting the vector boson momentum."];
 			Abort[]
 		];
 
 		If[	!MemberQ[{0,-1},auxMomentum],
-			If[	Internal`SyntacticNegativeQ[auxMomentum] || NumericQ[auxMomentum]
-				|| MemberQ[{Times,Plus}, Head[auxMomentum]],
+			If[	Internal`SyntacticNegativeQ[auxMomentum] || NumericQ[auxMomentum] || MemberQ[{Times,Plus}, Head[auxMomentum]],
 				Message[DoPolarizationSums::failmsg, "Illegal variable denoting the auxiliary momentum."];
 				Abort[]
 			];
@@ -153,10 +185,7 @@ DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
 		];
 
 
-		ex = ex /.
-
-
-			{
+		ex = ex /. {
 			CartesianPair[CartesianMomentum[Polarization[bosonMomentum,rest1__],di_:3],CartesianMomentum[Polarization[bosonMomentum,rest2__],di_:3]] :>
 				(dummyInd1=Unique["polInd"]; dummyInd2=Unique["polInd"];
 				Pair[Momentum[Polarization[bosonMomentum,rest1],di+1],LorentzIndex[dummyInd1,di+1]]*
@@ -170,14 +199,14 @@ DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
 				CartesianPair[slot_,CartesianMomentum[Polarization[bosonMomentum,rest__],di_:3]] :>
 				(dummyInd1=Unique["polInd"]; Pair[Momentum[Polarization[bosonMomentum,rest],di+1],LorentzIndex[dummyInd1,di+1]]*
 					Pair[slot,LorentzIndex[dummyInd1,di+1]])
-		};
+			};
 
-		FCPrint[3,"DoPolarizationSums: Intermediate expression: ", ex, FCDoControl->dpsVerbose];
+		FCPrint[3,"DoPolarizationSums: Intermediate expression: ", ex, FCDoControl->optVerbose];
 
 		polVectorsList = SelectNotFree[SelectNotFree[Sort[DeleteDuplicates[Cases[ex ,_Momentum | _CartesianMomentum | _TemporalMomentum,
 			Infinity]]],Polarization],bosonMomentum];
 
-		FCPrint[1,"DoPolarizationSums: Polarization vectors present in the expression: ", polVectorsList, FCDoControl->dpsVerbose];
+		FCPrint[1,"DoPolarizationSums: Polarization vectors present in the expression: ", polVectorsList, FCDoControl->optVerbose];
 
 		If[	polVectorsList==={},
 
@@ -191,7 +220,7 @@ DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
 
 			(* Polarization vectors present *)
 
-			FCPrint[1,"DoPolarizationSums: Polarization vectors in the expression: ", polVectorsList, FCDoControl->dpsVerbose];
+			FCPrint[1,"DoPolarizationSums: Polarization vectors in the expression: ", polVectorsList, FCDoControl->optVerbose];
 
 			If[	!MatchQ[polVectorsList, {
 					(Momentum)[Polarization[bosonMomentum,Complex[0,1], ___Rule],di___],
@@ -204,15 +233,13 @@ DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
 
 			dim = FCGetDimensions[polVectorsList,ChangeDimension->True];
 
-			FCPrint[1,"DoPolarizationSums: Spacetime dimension of polarization vectors: ", dim, FCDoControl->dpsVerbose];
+			FCPrint[1,"DoPolarizationSums: Spacetime dimension of polarization vectors: ", dim, FCDoControl->optVerbose];
 
 			If[	Length[dim]=!=1,
 				Message[DoPolarizationSums::mutidim];
 				Abort[],
 				dim = First[dim]
 			];
-
-
 
 			tmp = ex /.{
 				Momentum[Polarization[bosonMomentum,Complex[0,1], ___Rule],dim] :>
@@ -221,7 +248,14 @@ DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
 					LorentzIndex[polInd2,dim]
 			};
 
-			FCPrint[3,"DoPolarizationSums: Intermediate expression: ", tmp, FCDoControl->dpsVerbose];
+			If[	OptionValue[Collecting],
+				time=AbsoluteTime[];
+				FCPrint[1,"DoPolarizationSums: Applying Collect2: ", FCDoControl->optVerbose];
+				tmp = Collect2[tmp,{polInd1,polInd2},IsolateNames->polIso, Factoring->optFactoring, TimeConstrained->optTimeConstrained];
+				FCPrint[1,"DoPolarizationSums: Done applying Collect2, timing; ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose]
+			];
+
+			FCPrint[3,"DoPolarizationSums: Intermediate expression: ", tmp, FCDoControl->optVerbose];
 
 			{freePart, polPart} = FCSplit[tmp,{polInd1,polInd2}]
 		];
@@ -230,7 +264,7 @@ DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
 		Which[
 			(*massive vector boson*)
 			bosonMomentum=!=0 && auxMomentum===-1,
-				FCPrint[1,"DoPolarizationSums: Inserting polarization sum for a massive vector boson.", FCDoControl->dpsVerbose];
+				FCPrint[1,"DoPolarizationSums: Inserting polarization sum for a massive vector boson.", FCDoControl->optVerbose];
 				If[ polPart=!=0,
 					polPart = OptionValue[Head][PolarizationSum[polInd1,polInd2,bosonMomentum, Dimension->dim, Heads->{LorentzIndex,LorentzIndex}]] polPart
 				];
@@ -241,7 +275,7 @@ DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
 
 			(*massless vector boson with the gauge trick*)
 			bosonMomentum=!=0 && auxMomentum===0,
-				FCPrint[1,"DoPolarizationSums: Inserting polarization sum for a massless vector boson with 4 polarizations (2 of which are unphysical).", FCDoControl->dpsVerbose];
+				FCPrint[1,"DoPolarizationSums: Inserting polarization sum for a massless vector boson with 4 polarizations (2 of which are unphysical).", FCDoControl->optVerbose];
 				If[	polPart=!=0,
 					polPart = OptionValue[Head][PolarizationSum[polInd1,polInd2,bosonMomentum, auxMomentum, Dimension->dim, VirtualBoson-> optVirtualBoson, Heads->{LorentzIndex,LorentzIndex}]] polPart;
 				];
@@ -256,7 +290,7 @@ DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
 
 			(*true massless vector boson*)
 			bosonMomentum=!=0 && !MemberQ[{0,-1}, auxMomentum],
-				FCPrint[1,"DoPolarizationSums: Inserting polarization sum for a massless vector boson with 2 physical polarizations (axial gauge).", FCDoControl->dpsVerbose];
+				FCPrint[1,"DoPolarizationSums: Inserting polarization sum for a massless vector boson with 2 physical polarizations (axial gauge).", FCDoControl->optVerbose];
 				If[	polPart=!=0,
 					polPart = OptionValue[Head][PolarizationSum[polInd1,polInd2,bosonMomentum, auxMomentum, Dimension->dim, VirtualBoson-> optVirtualBoson, Heads->{LorentzIndex,LorentzIndex}]] polPart;
 				];
@@ -271,17 +305,21 @@ DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
 
 		If[	freePart=!=0,
 			FCPrint[0,"DoPolarizationSums: The input expression contains terms free of polarization vectors. " <>
-				"Those will be multiplied with the number of polarizations given by ", nPolarizations, ".", FCDoControl->dpsVerbose];
+				"Those will be multiplied with the number of polarizations given by ", nPolarizations, ".", FCDoControl->optVerbose];
 			freePart = nPolarizations freePart
 		];
 
-
 		If[ OptionValue[Contract],
 			time=AbsoluteTime[];
-			FCPrint[1,"DoPolarizationSums: Applying Contract: ", FCDoControl->dpsVerbose];
+			FCPrint[1,"DoPolarizationSums: Applying Contract: ", FCDoControl->optVerbose];
 			polPart = Contract[polPart,FCI->True];
-			FCPrint[1,"DoPolarizationSums: Done applying Contract, timing; ", N[AbsoluteTime[] - time, 4], FCDoControl->dpsVerbose];
+			FCPrint[1,"DoPolarizationSums: Done applying Contract, timing; ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 		];
+
+		time=AbsoluteTime[];
+		FCPrint[1,"DoPolarizationSums: Applying FRH: ", FCDoControl->optVerbose];
+		polPart = FRH[polPart,IsolateNames->polIso];
+		FCPrint[1,"DoPolarizationSums: Done applying FRH, timing; ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose];
 
 		res = OptionValue[ExtraFactor] freePart + OptionValue[ExtraFactor] polPart;
 
@@ -289,7 +327,7 @@ DoPolarizationSums[expr_, bosonMomentum_, auxMomentum_, OptionsPattern[]] :=
 			res = FCE[res]
 		];
 
-		FCPrint[1,"DoPolarizationSums: Leaving.", FCDoControl->dpsVerbose];
+		FCPrint[1,"DoPolarizationSums: Leaving.", FCDoControl->optVerbose];
 
 		res
 

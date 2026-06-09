@@ -11,7 +11,10 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary:	Rewrite FADs into SPDs										*)
+(* :Summary:	Rewrite FADs into SPDs
+
+				Supports parallel evaluation [X]
+*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -39,19 +42,47 @@ Options[FeynAmpDenominatorExplicit] = {
 	ExpandScalarProduct -> True,
 	FCE 				-> False,
 	FCI 				-> False,
+	FCParallelize		-> False,
+	FCVerbose			-> False,
 	Head 				-> Identity,
 	Mandelstam 			-> {},
 	MomentumCombine 	-> False,
 	SmallVariable 		-> False
 };
 
-id[x_, ___]:=
-	x;
 
-(*TODO: Memoization*)
-FeynAmpDenominatorExplicit[expr_, OptionsPattern[]] :=
-	Block[{	ex, dim, res, head1, head2, mandel, ruleNormal,
+FeynAmpDenominatorExplicit[expr_List, opts:OptionsPattern[]] :=
+	Block[{optVerbose, res, time},
+
+		If [OptionValue[FCVerbose]===False,
+			optVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				optVerbose=OptionValue[FCVerbose]
+			];
+		];
+
+		time=AbsoluteTime[];
+
+		If[	$ParallelizeFeynCalc && OptionValue[FCParallelize],
+			FCPrint[1,"FeynAmpDenominatorExplicit: Applying FeynAmpDenominatorExplicit in parallel.", FCDoControl->optVerbose];
+			res = ParallelMap[FeynAmpDenominatorExplicit[#, FilterRules[{opts}, Except[FCParallelize | FCVerbose]]]&,expr,
+			DistributedContexts -> None, Method->"ItemsPerEvaluation" -> Ceiling[N[Length[expr]/$KernelCount]/10]];
+			FCPrint[1, "FeynAmpDenominatorExplicit: Done applying FeynAmpDenominatorExplicit in parallel, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose],
+
+			FCPrint[1,"FeynAmpDenominatorExplicit: Applying FeynAmpDenominatorExplicit.", FCDoControl->optVerbose];
+			res = Map[FeynAmpDenominatorExplicit[#, FilterRules[{opts}, Except[FCParallelize | FCVerbose]]]&,expr];
+			FCPrint[1, "FeynAmpDenominatorExplicit: Done applying FeynAmpDenominatorExplicit, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose]
+		];
+
+		res
+	];
+
+FeynAmpDenominatorExplicit[expr_/;Head[expr]=!=List, OptionsPattern[]] :=
+	Block[{	ex, dim, res, head1, head2, mandel, ruleNormal, id,
 			ruleMandelstam, fad, esp, mc, fadList, fadListEval},
+
+		id[x_, ___]:=
+			x;
 
 		If[ OptionValue[ExpandScalarProduct],
 			esp=ExpandScalarProduct,

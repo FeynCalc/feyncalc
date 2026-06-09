@@ -14,7 +14,6 @@
 (*	:Summary:	Tensor reduction of 1-loop integrals
 
 				Supports parallel evaluation [X]
-
 *)
 
 (* ------------------------------------------------------------------------ *)
@@ -131,7 +130,7 @@ TID[am_ , {q_}, opts:OptionsPattern[]] :=
 
 (* TID[{..., ...}, q] *)
 TID[expr_List, q_/; Head[q]=!=List, opts:OptionsPattern[]] :=
-	Block[{tidVerbose, res, optFCParallelize, time},
+	Block[{tidVerbose, res, time},
 
 		If [OptionValue[FCVerbose]===False,
 			tidVerbose=$VeryVerbose,
@@ -139,6 +138,8 @@ TID[expr_List, q_/; Head[q]=!=List, opts:OptionsPattern[]] :=
 				tidVerbose=OptionValue[FCVerbose]
 			];
 		];
+
+		time=AbsoluteTime[];
 
 		If[	$ParallelizeFeynCalc && OptionValue[FCParallelize],
 			FCPrint[1,"TID: Applying TID in parallel.", FCDoControl->tidVerbose];

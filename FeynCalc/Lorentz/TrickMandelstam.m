@@ -2,7 +2,7 @@
 
 (* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *)
 
-(* :Title: Schouten															*)
+(* :Title: TrickMandelstam															*)
 
 (*
 	This software is covered by the GNU General Public License 3.
@@ -11,7 +11,10 @@
 	Copyright (C) 2014-2026 Vladyslav Shtabovenko
 *)
 
-(* :Summary: Simplification of expressions involving Mandelstam variables	*)
+(* :Summary:	Simplification of expressions involving Mandelstam variables
+
+				Supports parallel evaluation [X]
+*)
 
 (* ------------------------------------------------------------------------ *)
 
@@ -28,101 +31,146 @@ End[]
 
 Begin["`TrickMandelstam`Private`"]
 
-TrickMandelstam[y_, {}] :=
-	y;
 
-TrickMandelstam[ y_, __ ] :=
-	Factor2[y] /; FreeQ[y,Plus];
+Options[TrickMandelstam] = {
+	FCParallelize			-> False,
+	FCVerbose				-> False
+};
 
-TrickMandelstam[x_,s_,t_,u_, mm_] :=
-	TrickMandelstam[x, {s,t,u,mm}];
+TrickMandelstam[ex_, {}, OptionsPattern[]] :=
+	ex;
 
-TrickMandelstam[x_List,y__] :=
-	Map[TrickMandelstam[#,y]&, x];
+TrickMandelstam[ex_,s_,t_,u_, mm_/;!OptionQ[mm], opts:OptionsPattern[]] :=
+	TrickMandelstam[ex, {s,t,u,mm}, opts];
 
-TrickMandelstam[expr_ , {s_, t_, u_, mm_}] :=
-	Block[ {tres},
+TrickMandelstam[ex_List,y__] :=
+	Map[TrickMandelstam[#,y]&, ex];
 
-		tres = trickmandelstam[expr//Factor2, {s,t,u,mm}];
 
-		If[ LeafCount[tres]<2000,
-			tres = Cancel[tres]
+TrickMandelstam[expr_List, {s,t,u,mm}/;!OptionQ[{s,t,u,mm}], opts:OptionsPattern[]] :=
+	Block[{optVerbose, res, time},
+
+		If [OptionValue[FCVerbose]===False,
+			optVerbose=$VeryVerbose,
+			If[MatchQ[OptionValue[FCVerbose], _Integer],
+				optVerbose=OptionValue[FCVerbose]
+			];
 		];
 
-		Factor2[tres]
-	];
+		time=AbsoluteTime[];
 
-nsortQ[x_,y_] :=
-	If[	TrueQ[NTerms[x]<=NTerms[y]],
-		True,
-		False
-	];
+		If[	$ParallelizeFeynCalc && OptionValue[FCParallelize],
+			FCPrint[1,"TrickMandelstam: Applying TrickMandelstam in parallel.", FCDoControl->optVerbose];
+			res = ParallelMap[TrickMandelstam[#, {s,t,u,mm}, FilterRules[{opts}, Except[FCParallelize | FCVerbose]]]&,expr,
+			DistributedContexts -> None, Method->"ItemsPerEvaluation" -> Ceiling[N[Length[expr]/$KernelCount]/10]];
+			FCPrint[1, "TrickMandelstam: Done applying TrickMandelstam in parallel, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose],
 
-drickstu[exp_,{},___] :=
-	exp;
-
-drickstu[exp_,{s_,t_,u_,_},___] :=
-	exp /; !FreeQ[{s,t,u},Plus];
-
-short1[x_Plus,es_,te_,uu_,ma_] :=
-	(Sort[{x, Expand[ x/.te->(ma-es-uu) ], Expand[x/.uu->(ma-te-es)]},nsortQ]//First );
-
-short1[a_ b_,c__] :=
-	short1[a,c] short1[b,c];
-
-short1[a_^n_,c__] :=
-	short1[a,c]^n;
-
-short1[x_,__] :=
-	x/;(Head[x]=!=Plus) && (Head[x]=!=Times) && (Head[x]=!=Power);
-
-drickstu[x_Plus, {s_,t_,u_,m_}] :=
-	Block[ {result, tristemp, eM, otherv, null, trickman},
-		(* Check if an overall factorization is possible *)
-		tristemp = Factor2[ x/.s->(m-t-u) ];
-		If[ Head[tristemp]=!=Plus,
-			result = TrickMandelstam[tristemp,{s,t,u,m}],
-			otherv = Complement[ Variables[tristemp], Variables[s+t+u+m] ];
-			(* The simplifications cannot occur outside certain coefficients *)
-			If[ otherv =!= {},
-				result = Factor2/@ (Collect2[eM tristemp, Append[otherv,eM]]);
-				result = Map[short1[#,s,t,u,m]&,result+null]/.null->0/.eM->1;
-				result = Map[Factor2, result],
-				result = short1[tristemp, s,t,u,m]
-			]
+			FCPrint[1,"TrickMandelstam: Applying TrickMandelstam.", FCDoControl->optVerbose];
+			res = Map[TrickMandelstam[#, {s,t,u,mm},FilterRules[{opts}, Except[FCParallelize | FCVerbose]]]&,expr];
+			FCPrint[1, "TrickMandelstam: Done applying TrickMandelstam, timing: ", N[AbsoluteTime[] - time, 4], FCDoControl->optVerbose]
 		];
-		result
+
+		res
 	];
 
-trickmandelstam[yy_Times, ar_List] :=
-	Map[TrickMandelstam[#, ar]&, yy];
+TrickMandelstam[expr_/;Head[expr]=!=List, {s_, t_, u_, mm_}/;!OptionQ[{s,t,u,mm}], OptionsPattern[]] :=
+	Block[ {tmp, null},
 
-trickmandelstam[yy_Power, ar_List] :=
-	TrickMandelstam[yy[[1]], ar]^yy[[2]];
+		tmp = Factor2[expr];
 
-trickmandelstam[y_, args_List] :=
-	Block[{	null},
-		trickmandelstam[null+y,args]/.null->0
-	]/; !MemberQ[{Times,Power,Plus},Head[y]];
+		If[	FreeQ[tmp,Plus],
+			Return[tmp]
+		];
 
-trickmandelstam[x_Plus,man_List] :=
-	Block[{	tricktemp,merk,nx = x,plusch, plusch0},
+		Switch[Head[tmp],
+			Times,
+			tmp = Map[TrickMandelstam[#, {s,t,u,mm}]&, tmp],
+			Power,
+			tmp = TrickMandelstam[tmp[[1]], {s,t,u,mm}]^tmp[[2]],
+			Plus,
+			tmp = trickPlus[tmp, {s,t,u,mm}],
+			_,
+			tmp = trickPlus[tmp+null, {s,t,u,mm}]/.null->0
+		];
+
+		If[ LeafCount[tmp]<2000,
+			tmp = Cancel[tmp]
+		];
+
+		Factor2[tmp]
+	];
+
+trickPlus[x_Plus,args_List] :=
+	Block[{	tricktemp, merk, nx = x, plusch, plusch0},
 
 		plusch0[z__] :=
 			Plus[z] /; !FreeQ[{z},plusch0];
 
 		(* This is for arguments of D0, etc. ... *)
 		plusch[z__] :=
-			drickstu[Plus[z],man]/; (Length[{z}]===(Length[Plus@@man]-1))&& FreeQ[{z},Plus];
+			drickstu[Plus[z],args]/; (Length[{z}]===(Length[Plus@@args]-1))&& FreeQ[{z},Plus];
 
 		plusch[z__] :=
-			(Factor2 /@ Collect2[ Plus[z], Take[man, 3] ] ) /; Length[{z}]=!=(Length[Plus@@man]-1);
+			(Factor2 /@ Collect2[ Plus[z], Take[args, 3] ] ) /; Length[{z}]=!=(Length[Plus@@args]-1);
 
-		tricktemp = drickstu[nx,man];
+		tricktemp = drickstu[nx,args];
 
 		(tricktemp/.Plus->plusch0/.plusch0->plusch /. plusch->Plus)
 
-	]/;(Length[man]===4 || man==={});
+	]/;(Length[args]===4 || args==={});
+
+
+
+drickstu[exp_,{}] :=
+	exp;
+
+drickstu[exp_,{s_,t_,u_,_}] :=
+	exp /; !FreeQ[{s,t,u},Plus];
+
+drickstu[x_Plus, {s_,t_,u_,m_}] :=
+	Block[{	result, tristemp, eM, otherVars, null, trickargs, takeShortest, nsortQ},
+
+		takeShortest[xx_Plus,es_,te_,uu_,ma_] :=
+			(Sort[{xx, Expand[ xx/.te->(ma-es-uu) ], Expand[xx/.uu->(ma-te-es)]},nsortQ]//First );
+
+		takeShortest[a_*b_,c__] :=
+			takeShortest[a,c] takeShortest[b,c];
+
+		takeShortest[a_^n_,c__] :=
+			takeShortest[a,c]^n;
+
+		takeShortest[xx_,__] :=
+			xx/;(Head[xx]=!=Plus) && (Head[xx]=!=Times) && (Head[xx]=!=Power);
+
+		nsortQ[xx_,y_] :=
+			If[	TrueQ[NTerms[xx]<=NTerms[y]],
+				True,
+				False
+			];
+
+		(* Check if an overall factorization is possible *)
+		tristemp = Factor2[ x/.s->(m-t-u) ];
+		If[ Head[tristemp]=!=Plus,
+			(*Factorization found, returning back to the main function*)
+			result = TrickMandelstam[tristemp,{s,t,u,m}],
+
+			(*No factorization, need to try more tricks*)
+
+			(*Check if there are other variables than the Mandelstam ones *)
+			otherVars = Complement[Variables[tristemp], Variables[s+t+u+m]];
+
+			If[ otherVars =!= {},
+				(* Yes, so exploit the fact that simplifications cannot occur outside certain coefficients *)
+				result = Factor2/@ (Collect2[eM tristemp, Append[otherVars,eM]]);
+				result = Map[takeShortest[#,s,t,u,m]&,result+null]/.null->0/.eM->1;
+
+				(* No, so just try to make each factor as short as possible *)
+				result = Map[Factor2, result],
+				result = takeShortest[tristemp, s,t,u,m]
+			]
+		];
+		result
+	];
 
 FCPrint[1,"TrickMandelstam.m loaded."];
 End[]
